@@ -53,21 +53,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setIndex(int  index);
+	void setIndex(int index);
 	/*! \brief Get Array with image objects.
 	 */
 	std::list<PinMediaSourceImagesBase64Item> getItems();
 
 	/*! \brief Set Array with image objects.
 	 */
-	void setItems(std::list <PinMediaSourceImagesBase64Item> items);
+	void setItems(std::list<PinMediaSourceImagesBase64Item> items);
 	/*! \brief Get The source type of the media.
 	 */
 	std::string getSourceType();
 
 	/*! \brief Set The source type of the media.
 	 */
-	void setSourceType(std::string  source_type);
+	void setSourceType(std::string source_type);
 
 
     private:

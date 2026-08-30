@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Match type for an attributed event. P for probabilistic, D for deterministic, NA for Not applicable.",
+  "name": "AttributionMatchType",
+  "symbols": [
+    "P",
+    "D",
+    "NA"
+  ]
+}

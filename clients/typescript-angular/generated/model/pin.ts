@@ -9,14 +9,15 @@
  */
 import { PinMedia } from './pinMedia';
 import { BoardOwner } from './boardOwner';
+import { AiDisclosures } from './aiDisclosures';
 import { CreativeType } from './creativeType';
 
 
-/**
- * Pin model containing properties related to a Pinterest Pin.
- */
 export interface Pin { 
-    alt_text?: string | null;
+    /**
+     * AI disclosure declarations the creator has made about this Pin.
+     */
+    ai_disclosures?: AiDisclosures;
     /**
      * The board to which this Pin belongs.
      */
@@ -28,7 +29,6 @@ export interface Pin {
     board_section_id?: string | null;
     readonly created_at?: string;
     readonly creative_type?: CreativeType | null;
-    description?: string | null;
     /**
      * Dominant pin color. Hex number, e.g. `#6E7874`.
      */
@@ -43,10 +43,13 @@ export interface Pin {
      */
     readonly is_owner?: boolean;
     /**
+     * Whether the Pin is a product Pin.
+     */
+    readonly is_product?: boolean;
+    /**
      * Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
      */
     readonly is_standard?: boolean;
-    link?: string | null;
     readonly media?: PinMedia;
     /**
      * The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
@@ -56,6 +59,9 @@ export interface Pin {
      * Pin metrics with associated time intervals if any.
      */
     readonly pin_metrics?: object | null;
+    alt_text?: string | null;
+    description?: string | null;
+    link?: string | null;
     title?: string | null;
 }
 export namespace Pin {

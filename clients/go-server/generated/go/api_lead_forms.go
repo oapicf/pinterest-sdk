@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -136,6 +137,13 @@ func (c *LeadFormsAPIController) LeadFormsList(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
 		param, err := parseNumericParameter[int32](
@@ -154,21 +162,14 @@ func (c *LeadFormsAPIController) LeadFormsList(w http.ResponseWriter, r *http.Re
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var orderParam string
+	var orderParam PinterestLibPaginationOrder
 	if query.Has("order") {
-		param := query.Get("order")
+		param := PinterestLibPaginationOrder(query.Get("order"))
 
 		orderParam = param
 	} else {
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.LeadFormsList(r.Context(), adAccountIdParam, pageSizeParam, orderParam, bookmarkParam)
+	result, err := c.service.LeadFormsList(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, orderParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -186,20 +187,25 @@ func (c *LeadFormsAPIController) LeadFormsCreate(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var leadFormCreateRequestParam []LeadFormCreateRequest
+	var leadFormCreateParam []LeadFormCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&leadFormCreateRequestParam); err != nil {
+	if err := d.Decode(&leadFormCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	for _, el := range leadFormCreateRequestParam {
-		if err := AssertLeadFormCreateRequestRequired(el); err != nil {
+	for _, el := range leadFormCreateParam {
+		if err := AssertLeadFormCreateRequired(el); err != nil {
 			c.errorHandler(w, r, err, nil)
 			return
 		}
 	}
-	result, err := c.service.LeadFormsCreate(r.Context(), adAccountIdParam, leadFormCreateRequestParam)
+	result, err := c.service.LeadFormsCreate(r.Context(), adAccountIdParam, leadFormCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -217,20 +223,25 @@ func (c *LeadFormsAPIController) LeadFormsUpdate(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var leadFormUpdateRequestParam []LeadFormUpdateRequest
+	var leadFormBatchUpdateParam []LeadFormBatchUpdate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&leadFormUpdateRequestParam); err != nil {
+	if err := d.Decode(&leadFormBatchUpdateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	for _, el := range leadFormUpdateRequestParam {
-		if err := AssertLeadFormUpdateRequestRequired(el); err != nil {
+	for _, el := range leadFormBatchUpdateParam {
+		if err := AssertLeadFormBatchUpdateRequired(el); err != nil {
 			c.errorHandler(w, r, err, nil)
 			return
 		}
 	}
-	result, err := c.service.LeadFormsUpdate(r.Context(), adAccountIdParam, leadFormUpdateRequestParam)
+	result, err := c.service.LeadFormsUpdate(r.Context(), adAccountIdParam, leadFormBatchUpdateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -243,17 +254,17 @@ func (c *LeadFormsAPIController) LeadFormsUpdate(w http.ResponseWriter, r *http.
 // LeadFormGet - Get lead form by id
 func (c *LeadFormsAPIController) LeadFormGet(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
-		return
-	}
 	leadFormIdParam := params["lead_form_id"]
 	if leadFormIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"lead_form_id"}, nil)
 		return
 	}
-	result, err := c.service.LeadFormGet(r.Context(), adAccountIdParam, leadFormIdParam)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	result, err := c.service.LeadFormGet(r.Context(), leadFormIdParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -276,22 +287,27 @@ func (c *LeadFormsAPIController) LeadFormTestCreate(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &RequiredError{"lead_form_id"}, nil)
 		return
 	}
-	var leadFormTestRequestParam LeadFormTestRequest
+	var leadFormTestCreateParam LeadFormTestCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&leadFormTestRequestParam); err != nil {
+	if err := d.Decode(&leadFormTestCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertLeadFormTestRequestRequired(leadFormTestRequestParam); err != nil {
+	if err := AssertLeadFormTestCreateRequired(leadFormTestCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertLeadFormTestRequestConstraints(leadFormTestRequestParam); err != nil {
+	if err := AssertLeadFormTestCreateConstraints(leadFormTestCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.LeadFormTestCreate(r.Context(), adAccountIdParam, leadFormIdParam, leadFormTestRequestParam)
+	result, err := c.service.LeadFormTestCreate(r.Context(), adAccountIdParam, leadFormIdParam, leadFormTestCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

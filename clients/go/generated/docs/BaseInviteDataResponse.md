@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique identifier of the invite/request. | [optional] 
-**InviteData** | Pointer to [**BaseInviteDataResponseInviteData**](BaseInviteDataResponseInviteData.md) |  | [optional] 
+**InviteData** | Pointer to [**InviteDataResponse**](InviteDataResponse.md) |  | [optional] 
 **IsReceivedInvite** | Pointer to **bool** | Indicates whether the invite/request was received. | [optional] 
 **User** | Pointer to [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | Metadata for the member/partner that was sent the invite/request. | [optional] 
 
@@ -55,20 +55,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetInviteData
 
-`func (o *BaseInviteDataResponse) GetInviteData() BaseInviteDataResponseInviteData`
+`func (o *BaseInviteDataResponse) GetInviteData() InviteDataResponse`
 
 GetInviteData returns the InviteData field if non-nil, zero value otherwise.
 
 ### GetInviteDataOk
 
-`func (o *BaseInviteDataResponse) GetInviteDataOk() (*BaseInviteDataResponseInviteData, bool)`
+`func (o *BaseInviteDataResponse) GetInviteDataOk() (*InviteDataResponse, bool)`
 
 GetInviteDataOk returns a tuple with the InviteData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInviteData
 
-`func (o *BaseInviteDataResponse) SetInviteData(v BaseInviteDataResponseInviteData)`
+`func (o *BaseInviteDataResponse) SetInviteData(v InviteDataResponse)`
 
 SetInviteData sets InviteData field to given value.
 

@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -17,14 +16,18 @@ import org.openapitools.model.CatalogsReportFeedIngestionFilter;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelReportStatsParametersReport   {
+  @JsonProperty("feed_id")
+  private String feedId;
+
+  @JsonProperty("processing_result_id")
+  private String processingResultId;
+
   /**
    * Gets or Sets reportType
    */
   public enum ReportTypeEnum {
-    FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
-    
     DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
 
     private String value;
@@ -53,31 +56,8 @@ public class CatalogsHotelReportStatsParametersReport   {
   @JsonProperty("report_type")
   private ReportTypeEnum reportType;
 
-  @JsonProperty("feed_id")
-  private String feedId;
-
-  @JsonProperty("processing_result_id")
-  private String processingResultId;
-
   @JsonProperty("catalog_id")
   private String catalogId;
-
-  /**
-   **/
-  public CatalogsHotelReportStatsParametersReport reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   /**
    * ID of the feed entity.
@@ -116,6 +96,23 @@ public class CatalogsHotelReportStatsParametersReport   {
   }
 
   /**
+   **/
+  public CatalogsHotelReportStatsParametersReport reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+  /**
    * Unique identifier of a catalog. If not given, oldest catalog will be used
    **/
   public CatalogsHotelReportStatsParametersReport catalogId(String catalogId) {
@@ -143,15 +140,15 @@ public class CatalogsHotelReportStatsParametersReport   {
       return false;
     }
     CatalogsHotelReportStatsParametersReport catalogsHotelReportStatsParametersReport = (CatalogsHotelReportStatsParametersReport) o;
-    return Objects.equals(reportType, catalogsHotelReportStatsParametersReport.reportType) &&
-        Objects.equals(feedId, catalogsHotelReportStatsParametersReport.feedId) &&
+    return Objects.equals(feedId, catalogsHotelReportStatsParametersReport.feedId) &&
         Objects.equals(processingResultId, catalogsHotelReportStatsParametersReport.processingResultId) &&
+        Objects.equals(reportType, catalogsHotelReportStatsParametersReport.reportType) &&
         Objects.equals(catalogId, catalogsHotelReportStatsParametersReport.catalogId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, feedId, processingResultId, catalogId);
+    return Objects.hash(feedId, processingResultId, reportType, catalogId);
   }
 
   @Override
@@ -159,9 +156,9 @@ public class CatalogsHotelReportStatsParametersReport   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelReportStatsParametersReport {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    processingResultId: ").append(toIndentedString(processingResultId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -172,10 +169,7 @@ public class CatalogsHotelReportStatsParametersReport   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

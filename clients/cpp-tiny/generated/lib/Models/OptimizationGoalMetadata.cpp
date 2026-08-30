@@ -6,9 +6,9 @@ using namespace Tiny;
 
 OptimizationGoalMetadata::OptimizationGoalMetadata()
 {
-	conversion_tag_v3_goal_metadata = OptimizationGoalMetadata_conversion_tag_v3_goal_metadata();
-	frequency_goal_metadata = OptimizationGoalMetadata_frequency_goal_metadata();
-	scrollup_goal_metadata = OptimizationGoalMetadata_scrollup_goal_metadata();
+	conversion_tag_v3_goal_metadata = ConversionTagV3GoalMetadata();
+	frequency_goal_metadata = FrequencyGoalMetadata();
+	scrollup_goal_metadata = ScrollupGoalMetadata();
 }
 
 OptimizationGoalMetadata::OptimizationGoalMetadata(std::string jsonString)
@@ -35,7 +35,7 @@ OptimizationGoalMetadata::fromJson(std::string jsonObj)
 
 
 
-        OptimizationGoalMetadata_conversion_tag_v3_goal_metadata* obj = &conversion_tag_v3_goal_metadata;
+        ConversionTagV3GoalMetadata* obj = &conversion_tag_v3_goal_metadata;
 		obj->fromJson(value.dump());
 
     }
@@ -49,7 +49,7 @@ OptimizationGoalMetadata::fromJson(std::string jsonObj)
 
 
 
-        OptimizationGoalMetadata_frequency_goal_metadata* obj = &frequency_goal_metadata;
+        FrequencyGoalMetadata* obj = &frequency_goal_metadata;
 		obj->fromJson(value.dump());
 
     }
@@ -63,7 +63,7 @@ OptimizationGoalMetadata::fromJson(std::string jsonObj)
 
 
 
-        OptimizationGoalMetadata_scrollup_goal_metadata* obj = &scrollup_goal_metadata;
+        ScrollupGoalMetadata* obj = &scrollup_goal_metadata;
 		obj->fromJson(value.dump());
 
     }
@@ -102,38 +102,38 @@ OptimizationGoalMetadata::toJson()
 
 }
 
-OptimizationGoalMetadata_conversion_tag_v3_goal_metadata
+ConversionTagV3GoalMetadata
 OptimizationGoalMetadata::getConversionTagV3GoalMetadata()
 {
 	return conversion_tag_v3_goal_metadata;
 }
 
 void
-OptimizationGoalMetadata::setConversionTagV3GoalMetadata(OptimizationGoalMetadata_conversion_tag_v3_goal_metadata  conversion_tag_v3_goal_metadata)
+OptimizationGoalMetadata::setConversionTagV3GoalMetadata(ConversionTagV3GoalMetadata conversion_tag_v3_goal_metadata)
 {
 	this->conversion_tag_v3_goal_metadata = conversion_tag_v3_goal_metadata;
 }
 
-OptimizationGoalMetadata_frequency_goal_metadata
+FrequencyGoalMetadata
 OptimizationGoalMetadata::getFrequencyGoalMetadata()
 {
 	return frequency_goal_metadata;
 }
 
 void
-OptimizationGoalMetadata::setFrequencyGoalMetadata(OptimizationGoalMetadata_frequency_goal_metadata  frequency_goal_metadata)
+OptimizationGoalMetadata::setFrequencyGoalMetadata(FrequencyGoalMetadata frequency_goal_metadata)
 {
 	this->frequency_goal_metadata = frequency_goal_metadata;
 }
 
-OptimizationGoalMetadata_scrollup_goal_metadata
+ScrollupGoalMetadata
 OptimizationGoalMetadata::getScrollupGoalMetadata()
 {
 	return scrollup_goal_metadata;
 }
 
 void
-OptimizationGoalMetadata::setScrollupGoalMetadata(OptimizationGoalMetadata_scrollup_goal_metadata  scrollup_goal_metadata)
+OptimizationGoalMetadata::setScrollupGoalMetadata(ScrollupGoalMetadata scrollup_goal_metadata)
 {
 	this->scrollup_goal_metadata = scrollup_goal_metadata;
 }

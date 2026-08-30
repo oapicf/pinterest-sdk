@@ -276,7 +276,7 @@ BoardBase::getBoardPinsModifiedAt()
 }
 
 void
-BoardBase::setBoardPinsModifiedAt(std::string  board_pins_modified_at)
+BoardBase::setBoardPinsModifiedAt(std::string board_pins_modified_at)
 {
 	this->board_pins_modified_at = board_pins_modified_at;
 }
@@ -288,7 +288,7 @@ BoardBase::getCollaboratorCount()
 }
 
 void
-BoardBase::setCollaboratorCount(int  collaborator_count)
+BoardBase::setCollaboratorCount(int collaborator_count)
 {
 	this->collaborator_count = collaborator_count;
 }
@@ -300,7 +300,7 @@ BoardBase::getCreatedAt()
 }
 
 void
-BoardBase::setCreatedAt(std::string  created_at)
+BoardBase::setCreatedAt(std::string created_at)
 {
 	this->created_at = created_at;
 }
@@ -312,7 +312,7 @@ BoardBase::getDescription()
 }
 
 void
-BoardBase::setDescription(std::string  description)
+BoardBase::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -324,7 +324,7 @@ BoardBase::getFollowerCount()
 }
 
 void
-BoardBase::setFollowerCount(int  follower_count)
+BoardBase::setFollowerCount(int follower_count)
 {
 	this->follower_count = follower_count;
 }
@@ -336,7 +336,7 @@ BoardBase::getId()
 }
 
 void
-BoardBase::setId(std::string  id)
+BoardBase::setId(std::string id)
 {
 	this->id = id;
 }
@@ -348,7 +348,7 @@ BoardBase::isIsAdsOnly()
 }
 
 void
-BoardBase::setIsAdsOnly(bool  is_ads_only)
+BoardBase::setIsAdsOnly(bool is_ads_only)
 {
 	this->is_ads_only = is_ads_only;
 }
@@ -360,7 +360,7 @@ BoardBase::getMedia()
 }
 
 void
-BoardBase::setMedia(BoardMedia  media)
+BoardBase::setMedia(BoardMedia media)
 {
 	this->media = media;
 }
@@ -372,7 +372,7 @@ BoardBase::getName()
 }
 
 void
-BoardBase::setName(std::string  name)
+BoardBase::setName(std::string name)
 {
 	this->name = name;
 }
@@ -384,7 +384,7 @@ BoardBase::getOwner()
 }
 
 void
-BoardBase::setOwner(BoardOwner  owner)
+BoardBase::setOwner(BoardOwner owner)
 {
 	this->owner = owner;
 }
@@ -396,7 +396,7 @@ BoardBase::getPinCount()
 }
 
 void
-BoardBase::setPinCount(int  pin_count)
+BoardBase::setPinCount(int pin_count)
 {
 	this->pin_count = pin_count;
 }

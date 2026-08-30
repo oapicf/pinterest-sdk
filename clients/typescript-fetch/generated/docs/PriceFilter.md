@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`pRICE` | [CatalogsProductGroupPricingCurrencyCriteria](CatalogsProductGroupPricingCurrencyCriteria.md)
+`pRICE` | [PriceFilterPrice](PriceFilterPrice.md)
 
 ## Example
 

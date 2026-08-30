@@ -30,7 +30,7 @@ Create multiple new promotions.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **promotionCreateRequest** | [**array[PromotionCreateRequest]**](PromotionCreateRequest.md) | List of promotions to create, size limit [1, 30]. |
+ **promotionCreate** | [**array[PromotionCreate]**](PromotionCreate.md) |  |
 
 ### Return type
 
@@ -57,7 +57,7 @@ Delete a promotion within Pinterest.
 ### Example
 
 ```bash
- promotionsDelete ad_account_id=value promotion_id=value
+ promotionsDelete promotion_id=value ad_account_id=value
 ```
 
 ### Parameters
@@ -65,12 +65,12 @@ Delete a promotion within Pinterest.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotionId** | **string** | Promotion ID | [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **promotionId** | **string** | Unique identifier of a promotion | [default to null]
 
 ### Return type
 
-(empty response body)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -93,7 +93,7 @@ Get a promotion by its Pinterest-specific id. It must be associated with the pro
 ### Example
 
 ```bash
- promotionsGet ad_account_id=value promotion_id=value
+ promotionsGet promotion_id=value ad_account_id=value
 ```
 
 ### Parameters
@@ -101,12 +101,12 @@ Get a promotion by its Pinterest-specific id. It must be associated with the pro
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotionId** | **string** | Promotion ID | [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **promotionId** | **string** | Unique identifier of a promotion | [default to null]
 
 ### Return type
 
-[**PromotionResponse**](PromotionResponse.md)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -124,12 +124,14 @@ Name | Type | Description  | Notes
 
 Get promotions
 
-Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
+Gets all promotions associated with an ad account ID that can be
+applied to an ad group. Can be either internally-saved promotions or external
+promotions imported from a commerce integration.
 
 ### Example
 
 ```bash
- promotionsList ad_account_id=value  page_size=value  order=value  bookmark=value
+ promotionsList ad_account_id=value  bookmark=value  page_size=value  order=value
 ```
 
 ### Parameters
@@ -138,11 +140,11 @@ Gets all promotions associated with an ad account ID that can be applied to an a
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
-by ID. Note that higher-value IDs are associated with more-recently added
-items. | [optional] [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md) | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID.
+Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
 
 ### Return type
 
@@ -178,7 +180,7 @@ Update multiple promotions.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **promotionUpdateRequest** | [**array[PromotionUpdateRequest]**](PromotionUpdateRequest.md) | List of promotions to create, size limit [1, 30]. |
+ **promotionBatchUpdate** | [**array[PromotionBatchUpdate]**](PromotionBatchUpdate.md) |  |
 
 ### Return type
 

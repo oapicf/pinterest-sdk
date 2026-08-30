@@ -15,9 +15,11 @@
   | {'AUDIENCE_INCLUDE', list(binary()) }
   | {'GENDER', list(openapi_targeting_spec_gender:openapi_targeting_spec_gender()) }
   | {'GEO', list(binary()) }
+  | {'GEO_EXCLUDE', list(binary()) }
   | {'INTEREST', list(binary()) }
   | {'LOCALE', list(binary()) }
   | {'LOCATION', list(binary()) }
+  | {'LOCATION_EXCLUDE', list(binary()) }
   | {'MAXIMUM_AGE', binary() }
   | {'MINIMUM_AGE', binary() }
   | {'SHOPPING_RETARGETING', list(openapi_targeting_spec_shopping_retargeting:openapi_targeting_spec_shopping_retargeting()) }
@@ -35,9 +37,11 @@ openapi_targeting_spec(Fields) ->
             , {'AUDIENCE_INCLUDE', list(binary()) }
             , {'GENDER', list(openapi_targeting_spec_gender:openapi_targeting_spec_gender()) }
             , {'GEO', list(binary()) }
+            , {'GEO_EXCLUDE', list(binary()) }
             , {'INTEREST', list(binary()) }
             , {'LOCALE', list(binary()) }
             , {'LOCATION', list(binary()) }
+            , {'LOCATION_EXCLUDE', list(binary()) }
             , {'MAXIMUM_AGE', binary() }
             , {'MINIMUM_AGE', binary() }
             , {'SHOPPING_RETARGETING', list(openapi_targeting_spec_shopping_retargeting:openapi_targeting_spec_shopping_retargeting()) }

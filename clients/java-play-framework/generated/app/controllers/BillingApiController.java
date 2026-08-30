@@ -1,19 +1,22 @@
 package controllers;
 
-import apimodels.AdsCreditRedeemRequest;
-import apimodels.AdsCreditRedeemResponse;
+import apimodels.AdsCreditRedeem;
+import apimodels.AdsCreditRedeemCreate;
 import apimodels.AdsCreditsDiscountsGet200Response;
+import apimodels.BillingInvoiceDocumentType;
 import apimodels.BillingInvoiceDownloadResponse;
+import apimodels.BillingInvoiceSortField;
+import apimodels.BillingInvoiceStatus;
 import apimodels.BillingInvoicesGet200Response;
 import apimodels.BillingProfilesGet200Response;
-import apimodels.Error;
 import java.time.LocalDate;
-import apimodels.SSIOAccountResponse;
-import apimodels.SSIOCreateInsertionOrderRequest;
-import apimodels.SSIOCreateInsertionOrderResponse;
-import apimodels.SSIOEditInsertionOrderRequest;
-import apimodels.SSIOEditInsertionOrderResponse;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.SSIOAccount;
+import apimodels.SSIOInsertionOrder;
+import apimodels.SSIOInsertionOrderCreate;
 import apimodels.SSIOInsertionOrderStatusResponse;
+import apimodels.SSIOInsertionOrderUpdate;
 import apimodels.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import apimodels.SsioOrderLinesGetByAdAccount200Response;
 
@@ -39,7 +42,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BillingApiController extends Controller {
     private final BillingApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -54,17 +57,17 @@ public class BillingApiController extends Controller {
 
     @ApiAction
     public Result adsCreditRedeem(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeadsCreditRedeemRequest = request.body().asJson();
-        AdsCreditRedeemRequest adsCreditRedeemRequest;
-        if (nodeadsCreditRedeemRequest != null) {
-            adsCreditRedeemRequest = mapper.readValue(nodeadsCreditRedeemRequest.toString(), AdsCreditRedeemRequest.class);
+        JsonNode nodeadsCreditRedeemCreate = request.body().asJson();
+        AdsCreditRedeemCreate adsCreditRedeemCreate;
+        if (nodeadsCreditRedeemCreate != null) {
+            adsCreditRedeemCreate = mapper.readValue(nodeadsCreditRedeemCreate.toString(), AdsCreditRedeemCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(adsCreditRedeemRequest);
+                OpenAPIUtils.validate(adsCreditRedeemCreate);
             }
         } else {
-            throw new IllegalArgumentException("'AdsCreditRedeemRequest' parameter is required");
+            throw new IllegalArgumentException("'AdsCreditRedeemCreate' parameter is required");
         }
-        return imp.adsCreditRedeemHttp(request, adAccountId, adsCreditRedeemRequest);
+        return imp.adsCreditRedeemHttp(request, adAccountId, adsCreditRedeemCreate);
     }
 
     @ApiAction
@@ -107,29 +110,29 @@ public class BillingApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        String valuesort = request.getQueryString("sort");
-        String sort;
-        if (valuesort != null) {
-            sort = valuesort;
-        } else {
-            sort = "DUE_DATE";
-        }
         String valueorder = request.getQueryString("order");
-        String order;
+        PinterestLibPaginationOrder order;
         if (valueorder != null) {
             order = valueorder;
         } else {
             order = null;
         }
+        String valuesort = request.getQueryString("sort");
+        BillingInvoiceSortField sort;
+        if (valuesort != null) {
+            sort = valuesort;
+        } else {
+            sort = DUE_DATE;
+        }
         String valuestatus = request.getQueryString("status");
-        String status;
+        BillingInvoiceStatus status;
         if (valuestatus != null) {
             status = valuestatus;
         } else {
             status = null;
         }
         String valuedocumentType = request.getQueryString("document_type");
-        String documentType;
+        BillingInvoiceDocumentType documentType;
         if (valuedocumentType != null) {
             documentType = valuedocumentType;
         } else {
@@ -149,7 +152,7 @@ public class BillingApiController extends Controller {
         } else {
             endDueDate = null;
         }
-        return imp.billingInvoicesGetHttp(request, adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate);
+        return imp.billingInvoicesGetHttp(request, adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate);
     }
 
     @ApiAction
@@ -175,7 +178,7 @@ public class BillingApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        return imp.billingProfilesGetHttp(request, adAccountId, isActive, bookmark, pageSize);
+        return imp.billingProfilesGetHttp(request, isActive, adAccountId, bookmark, pageSize);
     }
 
     @ApiAction
@@ -185,32 +188,32 @@ public class BillingApiController extends Controller {
 
     @ApiAction
     public Result ssioInsertionOrderCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodessIOCreateInsertionOrderRequest = request.body().asJson();
-        SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest;
-        if (nodessIOCreateInsertionOrderRequest != null) {
-            ssIOCreateInsertionOrderRequest = mapper.readValue(nodessIOCreateInsertionOrderRequest.toString(), SSIOCreateInsertionOrderRequest.class);
+        JsonNode nodessIOInsertionOrderCreate = request.body().asJson();
+        SSIOInsertionOrderCreate ssIOInsertionOrderCreate;
+        if (nodessIOInsertionOrderCreate != null) {
+            ssIOInsertionOrderCreate = mapper.readValue(nodessIOInsertionOrderCreate.toString(), SSIOInsertionOrderCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(ssIOCreateInsertionOrderRequest);
+                OpenAPIUtils.validate(ssIOInsertionOrderCreate);
             }
         } else {
-            throw new IllegalArgumentException("'SSIOCreateInsertionOrderRequest' parameter is required");
+            throw new IllegalArgumentException("'SSIOInsertionOrderCreate' parameter is required");
         }
-        return imp.ssioInsertionOrderCreateHttp(request, adAccountId, ssIOCreateInsertionOrderRequest);
+        return imp.ssioInsertionOrderCreateHttp(request, adAccountId, ssIOInsertionOrderCreate);
     }
 
     @ApiAction
     public Result ssioInsertionOrderEdit(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodessIOEditInsertionOrderRequest = request.body().asJson();
-        SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest;
-        if (nodessIOEditInsertionOrderRequest != null) {
-            ssIOEditInsertionOrderRequest = mapper.readValue(nodessIOEditInsertionOrderRequest.toString(), SSIOEditInsertionOrderRequest.class);
+        JsonNode nodessIOInsertionOrderUpdate = request.body().asJson();
+        SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate;
+        if (nodessIOInsertionOrderUpdate != null) {
+            ssIOInsertionOrderUpdate = mapper.readValue(nodessIOInsertionOrderUpdate.toString(), SSIOInsertionOrderUpdate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(ssIOEditInsertionOrderRequest);
+                OpenAPIUtils.validate(ssIOInsertionOrderUpdate);
             }
         } else {
-            throw new IllegalArgumentException("'SSIOEditInsertionOrderRequest' parameter is required");
+            throw new IllegalArgumentException("'SSIOInsertionOrderUpdate' parameter is required");
         }
-        return imp.ssioInsertionOrderEditHttp(request, adAccountId, ssIOEditInsertionOrderRequest);
+        return imp.ssioInsertionOrderEditHttp(request, adAccountId, ssIOInsertionOrderUpdate);
     }
 
     @ApiAction
@@ -239,6 +242,13 @@ public class BillingApiController extends Controller {
 
     @ApiAction
     public Result ssioOrderLinesGetByAdAccount(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String valuepinOrderId = request.getQueryString("pin_order_id");
+        String pinOrderId;
+        if (valuepinOrderId != null) {
+            pinOrderId = valuepinOrderId;
+        } else {
+            pinOrderId = null;
+        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -253,14 +263,7 @@ public class BillingApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        String valuepinOrderId = request.getQueryString("pin_order_id");
-        String pinOrderId;
-        if (valuepinOrderId != null) {
-            pinOrderId = valuepinOrderId;
-        } else {
-            pinOrderId = null;
-        }
-        return imp.ssioOrderLinesGetByAdAccountHttp(request, adAccountId, bookmark, pageSize, pinOrderId);
+        return imp.ssioOrderLinesGetByAdAccountHttp(request, adAccountId, pinOrderId, bookmark, pageSize);
     }
 
 }

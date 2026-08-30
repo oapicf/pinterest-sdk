@@ -15,7 +15,7 @@
 
 typedef struct advanced_auction_items_get_request_t advanced_auction_items_get_request_t;
 
-#include "advanced_auction_items_get_record.h"
+#include "advanced_auction_key.h"
 
 
 

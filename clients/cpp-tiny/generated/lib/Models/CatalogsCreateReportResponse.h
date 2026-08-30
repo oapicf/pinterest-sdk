@@ -51,7 +51,7 @@ public:
 
 	/*! \brief Set Token to be used to get the report
 	 */
-	void setToken(std::string  token);
+	void setToken(std::string token);
 
 
     private:

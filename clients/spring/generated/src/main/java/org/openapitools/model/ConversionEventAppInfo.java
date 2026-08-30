@@ -2,43 +2,53 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Object containing information about the application where event occurred.
  */
 
 @Schema(name = "ConversionEventAppInfo", description = "Object containing information about the application where event occurred.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionEventAppInfo {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String appId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String appName;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String appPackageName;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String appStore;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String appVersion;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer installTime;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String userAgent;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer windowHeight;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer windowWidth;
 
   public ConversionEventAppInfo appId(@Nullable String appId) {
@@ -57,6 +67,7 @@ public class ConversionEventAppInfo {
     return appId;
   }
 
+  @JsonProperty("app_id")
   public void setAppId(@Nullable String appId) {
     this.appId = appId;
   }
@@ -77,6 +88,7 @@ public class ConversionEventAppInfo {
     return appName;
   }
 
+  @JsonProperty("app_name")
   public void setAppName(@Nullable String appName) {
     this.appName = appName;
   }
@@ -97,6 +109,7 @@ public class ConversionEventAppInfo {
     return appPackageName;
   }
 
+  @JsonProperty("app_package_name")
   public void setAppPackageName(@Nullable String appPackageName) {
     this.appPackageName = appPackageName;
   }
@@ -117,6 +130,7 @@ public class ConversionEventAppInfo {
     return appStore;
   }
 
+  @JsonProperty("app_store")
   public void setAppStore(@Nullable String appStore) {
     this.appStore = appStore;
   }
@@ -137,6 +151,7 @@ public class ConversionEventAppInfo {
     return appVersion;
   }
 
+  @JsonProperty("app_version")
   public void setAppVersion(@Nullable String appVersion) {
     this.appVersion = appVersion;
   }
@@ -158,6 +173,7 @@ public class ConversionEventAppInfo {
     return installTime;
   }
 
+  @JsonProperty("install_time")
   public void setInstallTime(@Nullable Integer installTime) {
     this.installTime = installTime;
   }
@@ -178,6 +194,7 @@ public class ConversionEventAppInfo {
     return userAgent;
   }
 
+  @JsonProperty("user_agent")
   public void setUserAgent(@Nullable String userAgent) {
     this.userAgent = userAgent;
   }
@@ -200,6 +217,7 @@ public class ConversionEventAppInfo {
     return windowHeight;
   }
 
+  @JsonProperty("window_height")
   public void setWindowHeight(@Nullable Integer windowHeight) {
     this.windowHeight = windowHeight;
   }
@@ -222,6 +240,7 @@ public class ConversionEventAppInfo {
     return windowWidth;
   }
 
+  @JsonProperty("window_width")
   public void setWindowWidth(@Nullable Integer windowWidth) {
     this.windowWidth = windowWidth;
   }
@@ -272,11 +291,8 @@ public class ConversionEventAppInfo {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

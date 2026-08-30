@@ -4,21 +4,23 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.AdAccountsCountryResponse
-import model.BookClosedResponse
-import model.DeliveryMetricsResponse
+import model.AdAccountCountriesGet200Response
+import model.BookClosed
+import model.DeliveryMetricsGet200Response
 import model.Error
 import model.JsObject
-import model.SingleInterestTargetingOptionResponse
+import model.PublicTargetingType
+import model.ReportType
+import model.SingleInterestTargetingOption
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class ResourcesApiController @Inject()(cc: ControllerComponents, api: ResourcesApi) extends AbstractController(cc) {
   /**
     * GET /v5/resources/ad_account_countries
     */
   def adAccountCountriesGet(): Action[AnyContent] = Action { request =>
-    def executeApi(): AdAccountsCountryResponse = {
+    def executeApi(): AdAccountCountriesGet200Response = {
       api.adAccountCountriesGet()
     }
 
@@ -31,8 +33,9 @@ class ResourcesApiController @Inject()(cc: ControllerComponents, api: ResourcesA
     * GET /v5/resources/delivery_metrics?reportType=[value]
     */
   def deliveryMetricsGet(): Action[AnyContent] = Action { request =>
-    def executeApi(): DeliveryMetricsResponse = {
+    def executeApi(): DeliveryMetricsGet200Response = {
       val reportType = request.getQueryString("report_type")
+        .map(value => )
         
       api.deliveryMetricsGet(reportType)
     }
@@ -47,7 +50,7 @@ class ResourcesApiController @Inject()(cc: ControllerComponents, api: ResourcesA
     * @param interestId Unique identifier of an interest.
     */
   def interestTargetingOptionsGet(interestId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): SingleInterestTargetingOptionResponse = {
+    def executeApi(): SingleInterestTargetingOption = {
       api.interestTargetingOptionsGet(interestId)
     }
 
@@ -72,7 +75,7 @@ class ResourcesApiController @Inject()(cc: ControllerComponents, api: ResourcesA
     * GET /v5/resources/metrics_ready_state?date=[value]
     */
   def metricsReadyStateGet(): Action[AnyContent] = Action { request =>
-    def executeApi(): BookClosedResponse = {
+    def executeApi(): BookClosed = {
       val date = request.getQueryString("date")
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("date", "query string")
@@ -87,20 +90,20 @@ class ResourcesApiController @Inject()(cc: ControllerComponents, api: ResourcesA
   }
 
   /**
-    * GET /v5/resources/targeting/:targetingType?clientId=[value]&oauthSignature=[value]&timestamp=[value]&adAccountId=[value]
-    * @param targetingType Public targeting type.
+    * GET /v5/resources/targeting/:targetingType?adAccountId=[value]&clientId=[value]&oauthSignature=[value]&timestamp=[value]
+    * @param targetingType Public targeting type
     */
-  def targetingOptionsGet(targetingType: String): Action[AnyContent] = Action { request =>
+  def targetingOptionsGet(targetingType: PublicTargetingType): Action[AnyContent] = Action { request =>
     def executeApi(): List[JsObject] = {
+      val adAccountId = request.getQueryString("ad_account_id")
+        
       val clientId = request.getQueryString("client_id")
         
       val oauthSignature = request.getQueryString("oauth_signature")
         
       val timestamp = request.getQueryString("timestamp")
         
-      val adAccountId = request.getQueryString("ad_account_id")
-        
-      api.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId)
+      api.targetingOptionsGet(targetingType, adAccountId, clientId, oauthSignature, timestamp)
     }
 
     val result = executeApi()

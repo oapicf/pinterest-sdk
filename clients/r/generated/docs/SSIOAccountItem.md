@@ -1,5 +1,6 @@
 # openapi::SSIOAccountItem
 
+Salesforce account item with billing and terms information.
 
 ## Properties
 Name | Type | Description | Notes

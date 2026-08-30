@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,8 +23,61 @@ type CustomLabel3Filter struct {
 
 	CUSTOMLABEL3 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_3"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CustomLabel3Filter
+func (o *CustomLabel3Filter) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"CUSTOM_LABEL_3",
+	}
 
-// AssertCustomLabel3FilterRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"CUSTOM_LABEL_3": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"CUSTOM_LABEL_3": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CustomLabel3Filter
+
+	if value, exists := allProperties["CUSTOM_LABEL_3"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMLABEL3); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCustomLabel3FilterRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCustomLabel3FilterRequired(obj CustomLabel3Filter) error {
 	elements := map[string]interface{}{
 		"CUSTOM_LABEL_3": obj.CUSTOMLABEL3,
@@ -30,10 +88,16 @@ func AssertCustomLabel3FilterRequired(obj CustomLabel3Filter) error {
 		}
 	}
 
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaRequired(obj.CUSTOMLABEL3); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertCustomLabel3FilterConstraints checks if the values respects the defined constraints
 func AssertCustomLabel3FilterConstraints(obj CustomLabel3Filter) error {
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaConstraints(obj.CUSTOMLABEL3); err != nil {
+		return err
+	}
 	return nil
 }

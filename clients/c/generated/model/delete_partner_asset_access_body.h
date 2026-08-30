@@ -1,7 +1,7 @@
 /*
  * delete_partner_asset_access_body.h
  *
- * 
+ * An object with a list of partner asset accesses to delete.
  */
 
 #ifndef _delete_partner_asset_access_body_H_
@@ -15,7 +15,7 @@
 
 typedef struct delete_partner_asset_access_body_t delete_partner_asset_access_body_t;
 
-#include "delete_partner_asset_access_body_accesses_inner.h"
+#include "delete_partner_asset_access_item.h"
 
 
 

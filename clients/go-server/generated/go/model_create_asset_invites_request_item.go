@@ -5,33 +5,105 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 // CreateAssetInvitesRequestItem - Object declaring an asset role update to an invite.
 type CreateAssetInvitesRequestItem struct {
 
-	// An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+	// An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.
 	AssetIdToPermissions map[string][]Permissions `json:"asset_id_to_permissions"`
 
 	// Unique identifier of an invite.
-	InviteId string `json:"invite_id" validate:"regexp=^\\\\d+$"`
+	InviteId string `json:"invite_id" validate:"regexp=^\\d+$"`
 
 	InviteType InviteType `json:"invite_type"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CreateAssetInvitesRequestItem
+func (o *CreateAssetInvitesRequestItem) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"asset_id_to_permissions",
+		"invite_id",
+		"invite_type",
+	}
 
-// AssertCreateAssetInvitesRequestItemRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"asset_id_to_permissions": false,
+		"invite_id": false,
+		"invite_type": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"asset_id_to_permissions": {},
+		"invite_id": {},
+		"invite_type": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CreateAssetInvitesRequestItem
+
+	if value, exists := allProperties["asset_id_to_permissions"]; exists {
+		if err = json.Unmarshal(value, &decoded.AssetIdToPermissions); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["invite_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.InviteId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["invite_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.InviteType); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCreateAssetInvitesRequestItemRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCreateAssetInvitesRequestItemRequired(obj CreateAssetInvitesRequestItem) error {
 	elements := map[string]interface{}{
 		"asset_id_to_permissions": obj.AssetIdToPermissions,
-		"invite_id": obj.InviteId,
-		"invite_type": obj.InviteType,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

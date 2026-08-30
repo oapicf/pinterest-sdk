@@ -53,12 +53,14 @@ import LeadAdsApiPatterns.adAccountIdPattern
 
 object LeadAdsApiPatterns {
 
-    val subscriptionIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
-val adAccountIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
+    val subscriptionIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
+val adAccountIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
 }
 
 trait LeadAdsApiService {
 
+  def adAccountsSubscriptionsDelById200(responseLeadSubscription: LeadSubscription)(implicit toEntityMarshallerLeadSubscription: ToEntityMarshaller[LeadSubscription]): Route =
+    complete((200, responseLeadSubscription))
   def adAccountsSubscriptionsDelById204: Route =
     complete((204, "Resource deleted successfully."))
   def adAccountsSubscriptionsDelById400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
@@ -74,6 +76,7 @@ trait LeadAdsApiService {
   def adAccountsSubscriptionsDelByIdDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
+   * Code: 200, Message: The request has succeeded., DataType: LeadSubscription
    * Code: 204, Message: Resource deleted successfully.
    * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
    * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
@@ -83,7 +86,7 @@ trait LeadAdsApiService {
    * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def adAccountsSubscriptionsDelById(adAccountId: String, subscriptionId: String)
-      (implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerLeadSubscription: ToEntityMarshaller[LeadSubscription], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def adAccountsSubscriptionsGetById200(responseLeadSubscription: LeadSubscription)(implicit toEntityMarshallerLeadSubscription: ToEntityMarshaller[LeadSubscription]): Route =
     complete((200, responseLeadSubscription))
@@ -163,9 +166,9 @@ trait LeadAdsApiMarshaller {
 
   implicit def toEntityMarshallerAdAccountsSubscriptionsGetList200Response: ToEntityMarshaller[AdAccountsSubscriptionsGetList200Response]
 
-  implicit def toEntityMarshallerError: ToEntityMarshaller[Error]
-
   implicit def toEntityMarshallerLeadSubscription: ToEntityMarshaller[LeadSubscription]
+
+  implicit def toEntityMarshallerError: ToEntityMarshaller[Error]
 
 }
 

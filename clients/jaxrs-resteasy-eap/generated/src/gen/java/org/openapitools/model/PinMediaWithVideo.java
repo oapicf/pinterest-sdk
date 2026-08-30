@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Pin with video.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Pin with video.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PinMediaWithVideo   {
   
   private String coverImageUrl;
@@ -42,6 +42,7 @@ public class PinMediaWithVideo   {
 
   private MediaTypeEnum mediaType;
   private String videoUrl;
+  private String videoUrlHls;
   private Integer width;
 
   /**
@@ -121,6 +122,19 @@ public class PinMediaWithVideo   {
   }
 
   /**
+   * Video url (HLS).  **Note:** This field is limited and not available to all apps.
+   **/
+  
+  @ApiModelProperty(value = "Video url (HLS).  **Note:** This field is limited and not available to all apps.")
+  @JsonProperty("video_url_hls")
+  public String getVideoUrlHls() {
+    return videoUrlHls;
+  }
+  public void setVideoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+  }
+
+  /**
    * Width (in pixels). Field maybe null after creation due to video processing time.
    **/
   
@@ -149,12 +163,13 @@ public class PinMediaWithVideo   {
         Objects.equals(this.images, pinMediaWithVideo.images) &&
         Objects.equals(this.mediaType, pinMediaWithVideo.mediaType) &&
         Objects.equals(this.videoUrl, pinMediaWithVideo.videoUrl) &&
+        Objects.equals(this.videoUrlHls, pinMediaWithVideo.videoUrlHls) &&
         Objects.equals(this.width, pinMediaWithVideo.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(coverImageUrl, duration, height, images, mediaType, videoUrl, width);
+    return Objects.hash(coverImageUrl, duration, height, images, mediaType, videoUrl, videoUrlHls, width);
   }
 
   @Override
@@ -168,6 +183,7 @@ public class PinMediaWithVideo   {
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    videoUrlHls: ").append(toIndentedString(videoUrlHls)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -178,10 +194,7 @@ public class PinMediaWithVideo   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

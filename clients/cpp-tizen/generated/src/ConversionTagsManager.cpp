@@ -289,6 +289,31 @@ static bool conversionTagsGetProcessor(MemoryStruct_s p_chunk, long code, char* 
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -771,6 +796,31 @@ static bool pageVisitConversionTagsGetProcessor(MemoryStruct_s p_chunk, long cod
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -791,7 +841,7 @@ static bool pageVisitConversionTagsGetProcessor(MemoryStruct_s p_chunk, long cod
 }
 
 static bool pageVisitConversionTagsGetHelper(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, 
 	void(* handler)(Page_visit_conversion_tags_get_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -809,6 +859,13 @@ static bool pageVisitConversionTagsGetHelper(char * accessToken,
 	string itemAtq;
 	
 
+	itemAtq = stringify(&bookmark, "std::string");
+	queryParams.insert(pair<string, string>("bookmark", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("bookmark");
+	}
+
+
 	itemAtq = stringify(&pageSize, "int");
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
@@ -816,17 +873,10 @@ static bool pageVisitConversionTagsGetHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&order, "std::string");
+	itemAtq = stringify(&order, "Pinterest.Lib.PaginationOrder");
 	queryParams.insert(pair<string, string>("order", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("order");
-	}
-
-
-	itemAtq = stringify(&bookmark, "std::string");
-	queryParams.insert(pair<string, string>("bookmark", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("bookmark");
 	}
 
 	string mBody = "";
@@ -889,22 +939,22 @@ static bool pageVisitConversionTagsGetHelper(char * accessToken,
 
 
 bool ConversionTagsManager::pageVisitConversionTagsGetAsync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, 
 	void(* handler)(Page_visit_conversion_tags_get_200_response, Error, void* )
 	, void* userData)
 {
 	return pageVisitConversionTagsGetHelper(accessToken,
-	adAccountId, pageSize, order, bookmark, 
+	adAccountId, bookmark, pageSize, order, 
 	handler, userData, true);
 }
 
 bool ConversionTagsManager::pageVisitConversionTagsGetSync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, 
 	void(* handler)(Page_visit_conversion_tags_get_200_response, Error, void* )
 	, void* userData)
 {
 	return pageVisitConversionTagsGetHelper(accessToken,
-	adAccountId, pageSize, order, bookmark, 
+	adAccountId, bookmark, pageSize, order, 
 	handler, userData, false);
 }
 

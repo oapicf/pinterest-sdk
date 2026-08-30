@@ -11,10 +11,10 @@ part 'label_status.g.dart';
 
 class LabelStatus extends EnumClass {
 
-  /// The new status you want to give the label, either `ACTIVE` (in use) or no longer in use (`ARCHIVED`).
+  /// Label status values.
   @BuiltValueEnumConst(wireName: r'ACTIVE')
   static const LabelStatus ACTIVE = _$ACTIVE;
-  /// The new status you want to give the label, either `ACTIVE` (in use) or no longer in use (`ARCHIVED`).
+  /// Label status values.
   @BuiltValueEnumConst(wireName: r'ARCHIVED')
   static const LabelStatus ARCHIVED = _$ARCHIVED;
 

@@ -1,6 +1,6 @@
 package org.openapitools.model;
 
-import org.openapitools.model.CatalogsProductGroupPricingCurrencyCriteria;
+import org.openapitools.model.PriceFilterPrice;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -11,21 +11,21 @@ public class PriceFilter  {
   
   @ApiModelProperty(required = true, value = "")
 
-  private CatalogsProductGroupPricingCurrencyCriteria PRICE;
+  private PriceFilterPrice PRICE;
  /**
    * Get PRICE
    * @return PRICE
   **/
   @JsonProperty("PRICE")
-  public CatalogsProductGroupPricingCurrencyCriteria getPRICE() {
+  public PriceFilterPrice getPRICE() {
     return PRICE;
   }
 
-  public void setPRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public void setPRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
   }
 
-  public PriceFilter PRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public PriceFilter PRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
     return this;
   }
@@ -62,10 +62,7 @@ public class PriceFilter  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

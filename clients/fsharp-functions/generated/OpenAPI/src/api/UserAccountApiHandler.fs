@@ -33,6 +33,22 @@ module UserAccountApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | BoardsUserFollowsListStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | BoardsUserFollowsListStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | BoardsUserFollowsListStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | BoardsUserFollowsListStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | BoardsUserFollowsListDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -64,10 +80,30 @@ module UserAccountApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | FollowUserUpdateStatusCode201 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(201))
+      | FollowUserUpdateStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | FollowUserUpdateStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | FollowUserUpdateStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
       | FollowUserUpdateStatusCode404 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | FollowUserUpdateStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | FollowUserUpdateDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -92,6 +128,22 @@ module UserAccountApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | FollowersListStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | FollowersListStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | FollowersListStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | FollowersListStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | FollowersListDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -112,6 +164,26 @@ module UserAccountApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | LinkedBusinessAccountsGetStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | LinkedBusinessAccountsGetStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | LinkedBusinessAccountsGetStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | LinkedBusinessAccountsGetStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | LinkedBusinessAccountsGetStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | LinkedBusinessAccountsGetDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -128,14 +200,34 @@ module UserAccountApiHandlers =
 
       let result = UserAccountApiService.UnverifyWebsiteDelete ()
       match result with
+      | UnverifyWebsiteDeleteStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
       | UnverifyWebsiteDeleteStatusCode204 resolved ->
           let content = resolved.content
           let responseContentType = "text/plain"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(204))
+      | UnverifyWebsiteDeleteStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | UnverifyWebsiteDeleteStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | UnverifyWebsiteDeleteStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
       | UnverifyWebsiteDeleteStatusCode404 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | UnverifyWebsiteDeleteStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | UnverifyWebsiteDeleteDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -160,10 +252,22 @@ module UserAccountApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | UserAccountAnalyticsStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
       | UserAccountAnalyticsStatusCode403 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | UserAccountAnalyticsStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | UserAccountAnalyticsStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | UserAccountAnalyticsDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -184,10 +288,26 @@ module UserAccountApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | UserAccountAnalyticsTopPinsStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | UserAccountAnalyticsTopPinsStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
       | UserAccountAnalyticsTopPinsStatusCode403 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | UserAccountAnalyticsTopPinsStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | UserAccountAnalyticsTopPinsStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | UserAccountAnalyticsTopPinsDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -208,10 +328,26 @@ module UserAccountApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | UserAccountAnalyticsTopVideoPinsStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | UserAccountAnalyticsTopVideoPinsStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
       | UserAccountAnalyticsTopVideoPinsStatusCode403 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | UserAccountAnalyticsTopVideoPinsStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | UserAccountAnalyticsTopVideoPinsStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | UserAccountAnalyticsTopVideoPinsDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -264,10 +400,26 @@ module UserAccountApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | UserAccountGetStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | UserAccountGetStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
       | UserAccountGetStatusCode403 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | UserAccountGetStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | UserAccountGetStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | UserAccountGetDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -288,6 +440,26 @@ module UserAccountApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | UserFollowingGetStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | UserFollowingGetStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | UserFollowingGetStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | UserFollowingGetStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | UserFollowingGetStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | UserFollowingGetDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -308,10 +480,26 @@ module UserAccountApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | UserWebsitesGetStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | UserWebsitesGetStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
       | UserWebsitesGetStatusCode403 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | UserWebsitesGetStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | UserWebsitesGetStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | UserWebsitesGetDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -343,6 +531,30 @@ module UserAccountApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | VerifyWebsiteUpdateStatusCode201 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(201))
+      | VerifyWebsiteUpdateStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | VerifyWebsiteUpdateStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | VerifyWebsiteUpdateStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | VerifyWebsiteUpdateStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | VerifyWebsiteUpdateStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | VerifyWebsiteUpdateDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -363,10 +575,26 @@ module UserAccountApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | WebsiteVerificationGetStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | WebsiteVerificationGetStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
       | WebsiteVerificationGetStatusCode403 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | WebsiteVerificationGetStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | WebsiteVerificationGetStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | WebsiteVerificationGetDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"

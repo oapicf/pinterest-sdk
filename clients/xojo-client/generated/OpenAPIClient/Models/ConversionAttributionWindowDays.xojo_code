@@ -18,6 +18,11 @@ Protected Class ConversionAttributionWindowDaysOptional
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function ToString() As String
+		  Return OpenAPIClient.Models.ConversionAttributionWindowDaysToString(Value)
+		End Function
+	#tag EndMethod
 
 	#tag Property, Flags = &h0
 		Value As OpenAPIClient.Models.ConversionAttributionWindowDays

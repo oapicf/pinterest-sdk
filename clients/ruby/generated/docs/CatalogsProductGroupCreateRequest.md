@@ -7,7 +7,7 @@
 | **description** | **String** |  | [optional] |
 | **feed_id** | **String** | Catalog Feed id pertaining to the catalog product group. |  |
 | **filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  |  |
-| **is_featured** | **Boolean** | boolean indicator of whether the product group is being featured or not | [optional][default to false] |
+| **is_featured** | **Boolean** | boolean indicator of whether the product group is being featured or not | [optional] |
 | **name** | **String** |  |  |
 
 ## Example

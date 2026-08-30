@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  AdvancedAuctionItemsGetRecord = openapi_server.resourceTypes.AdvancedAuctionItemsGetRecord
+  AdvancedAuctionKey = openapi_server.resourceTypes.AdvancedAuctionKey
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -24,7 +24,7 @@ resourceTypes {
         }
         items {
           type = array
-          items.type = AdvancedAuctionItemsGetRecord
+          items.type = AdvancedAuctionKey
           description = "A list of retail catalog items to fetch bid options for"
           optional = true
         }

@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -25,20 +30,78 @@ type ErrorDetail struct {
 	// Error message description
 	Message string `json:"message"`
 }
-
-// AssertErrorDetailRequired checks if the required fields are not zero-ed
-func AssertErrorDetailRequired(obj ErrorDetail) error {
-	elements := map[string]interface{}{
-		"count": obj.Count,
-		"error_code": obj.ErrorCode,
-		"message": obj.Message,
+// UnmarshalJSON validates required property keys then unmarshals into ErrorDetail
+func (o *ErrorDetail) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"count",
+		"error_code",
+		"message",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"count": false,
+		"error_code": false,
+		"message": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"count": {},
+		"error_code": {},
+		"message": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded ErrorDetail
+
+	if value, exists := allProperties["count"]; exists {
+		if err = json.Unmarshal(value, &decoded.Count); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["error_code"]; exists {
+		if err = json.Unmarshal(value, &decoded.ErrorCode); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["message"]; exists {
+		if err = json.Unmarshal(value, &decoded.Message); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertErrorDetailRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertErrorDetailRequired(obj ErrorDetail) error {
 	return nil
 }
 

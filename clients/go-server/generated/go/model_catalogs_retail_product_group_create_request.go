@@ -5,20 +5,25 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 // CatalogsRetailProductGroupCreateRequest - Request object for creating a product group.
 type CatalogsRetailProductGroupCreateRequest struct {
 
-	// Catalog id pertaining to the retail product group.
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	// Catalog ID pertaining to the product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\d+$"`
 
 	// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
 	CatalogType string `json:"catalog_type"`
@@ -33,14 +38,106 @@ type CatalogsRetailProductGroupCreateRequest struct {
 
 	Name string `json:"name"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsRetailProductGroupCreateRequest
+func (o *CatalogsRetailProductGroupCreateRequest) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"catalog_id",
+		"catalog_type",
+		"filters",
+		"name",
+	}
 
-// AssertCatalogsRetailProductGroupCreateRequestRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"catalog_id": false,
+		"catalog_type": false,
+		"filters": false,
+		"name": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"catalog_id": {},
+		"catalog_type": {},
+		"country": {},
+		"description": {},
+		"filters": {},
+		"locale": {},
+		"name": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsRetailProductGroupCreateRequest
+
+	if value, exists := allProperties["catalog_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["catalog_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["country"]; exists {
+		if err = json.Unmarshal(value, &decoded.Country); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["description"]; exists {
+		if err = json.Unmarshal(value, &decoded.Description); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["filters"]; exists {
+		if err = json.Unmarshal(value, &decoded.Filters); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["locale"]; exists {
+		if err = json.Unmarshal(value, &decoded.Locale); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsRetailProductGroupCreateRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsRetailProductGroupCreateRequestRequired(obj CatalogsRetailProductGroupCreateRequest) error {
 	elements := map[string]interface{}{
-		"catalog_id": obj.CatalogId,
-		"catalog_type": obj.CatalogType,
 		"filters": obj.Filters,
-		"name": obj.Name,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

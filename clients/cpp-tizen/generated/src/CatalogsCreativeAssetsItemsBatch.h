@@ -10,7 +10,6 @@
 
 #include <string>
 #include "BatchOperationStatus.h"
-#include "CatalogsType.h"
 #include "CreativeAssetsProcessingRecord.h"
 #include <list>
 #include "Object.h"
@@ -58,11 +57,11 @@ public:
 	void setBatchId(std::string  batch_id);
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 	 */
 	std::string getCompletedTime();
@@ -94,7 +93,7 @@ public:
 
 private:
 	std::string batch_id;
-	CatalogsType catalog_type;
+	std::string catalog_type;
 	std::string completed_time;
 	std::string created_time;
 	std::list <CreativeAssetsProcessingRecord>items;

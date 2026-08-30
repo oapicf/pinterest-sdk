@@ -23,7 +23,7 @@ AppTypeMultipliers::~AppTypeMultipliers()
 void
 AppTypeMultipliers::__init()
 {
-	//aPP_TYPE = std::string();
+	//aPP_TYPE = null;
 }
 
 void
@@ -47,9 +47,12 @@ AppTypeMultipliers::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&aPP_TYPE, node, "std::string", "");
+		if (isprimitive("TargetingSpecAppType")) {
+			jsonToValue(&aPP_TYPE, node, "TargetingSpecAppType", "TargetingSpecAppType");
 		} else {
+			
+			TargetingSpecAppType* obj = static_cast<TargetingSpecAppType*> (&aPP_TYPE);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -65,11 +68,16 @@ AppTypeMultipliers::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getAPPTYPE();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("TargetingSpecAppType")) {
+		TargetingSpecAppType obj = getAPPTYPE();
+		node = converttoJson(&obj, "TargetingSpecAppType", "");
 	}
 	else {
+		
+		TargetingSpecAppType obj = static_cast<TargetingSpecAppType> (getAPPTYPE());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *aPP_TYPEKey = "APP_TYPE";
@@ -82,14 +90,14 @@ AppTypeMultipliers::toJson()
 	return ret;
 }
 
-std::string
+TargetingSpecAppType
 AppTypeMultipliers::getAPPTYPE()
 {
 	return aPP_TYPE;
 }
 
 void
-AppTypeMultipliers::setAPPTYPE(std::string  aPP_TYPE)
+AppTypeMultipliers::setAPPTYPE(TargetingSpecAppType  aPP_TYPE)
 {
 	this->aPP_TYPE = aPP_TYPE;
 }

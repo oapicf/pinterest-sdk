@@ -51,28 +51,28 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCanonicalUrl(std::string  canonical_url);
+	void setCanonicalUrl(std::string canonical_url);
 	/*! \brief Get 
 	 */
 	std::string getId();
 
 	/*! \brief Set 
 	 */
-	void setId(std::string  id);
+	void setId(std::string id);
 	/*! \brief Get 
 	 */
 	std::string getKey();
 
 	/*! \brief Set 
 	 */
-	void setKey(std::string  key);
+	void setKey(std::string key);
 	/*! \brief Get 
 	 */
 	std::string getName();
 
 	/*! \brief Set 
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 
 
     private:

@@ -31,11 +31,11 @@ static item_update_batch_record_t *item_update_batch_record_create_internal(
     if (!item_update_batch_record_local_var) {
         return NULL;
     }
+    memset(item_update_batch_record_local_var, 0, sizeof(item_update_batch_record_t));
+    item_update_batch_record_local_var->_library_owned = 1;
     item_update_batch_record_local_var->attributes = attributes;
     item_update_batch_record_local_var->item_id = item_id;
     item_update_batch_record_local_var->update_mask = update_mask;
-
-    item_update_batch_record_local_var->_library_owned = 1;
     return item_update_batch_record_local_var;
 }
 
@@ -44,11 +44,14 @@ __attribute__((deprecated)) item_update_batch_record_t *item_update_batch_record
     char *item_id,
     list_t *update_mask
     ) {
-    return item_update_batch_record_create_internal (
+    item_update_batch_record_t *result = item_update_batch_record_create_internal (
         attributes,
         item_id,
         update_mask
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void item_update_batch_record_free(item_update_batch_record_t *item_update_batch_record) {
@@ -136,6 +139,8 @@ item_update_batch_record_t *item_update_batch_record_parseFromJSON(cJSON *item_u
     // define the local variable for item_update_batch_record->attributes
     updatable_item_attributes_t *attributes_local_nonprim = NULL;
 
+    char *item_id_local_str = NULL;
+
     // define the local list for item_update_batch_record->update_mask
     list_t *update_maskList = NULL;
 
@@ -185,17 +190,27 @@ item_update_batch_record_t *item_update_batch_record_parseFromJSON(cJSON *item_u
     }
 
 
+    if (item_id && !cJSON_IsNull(item_id)) item_id_local_str = strdup(item_id->valuestring);
+
     item_update_batch_record_local_var = item_update_batch_record_create_internal (
         attributes ? attributes_local_nonprim : NULL,
-        item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
+        item_id_local_str,
         update_mask ? update_maskList : NULL
         );
+
+    if (!item_update_batch_record_local_var) {
+        goto end;
+    }
 
     return item_update_batch_record_local_var;
 end:
     if (attributes_local_nonprim) {
         updatable_item_attributes_free(attributes_local_nonprim);
         attributes_local_nonprim = NULL;
+    }
+    if (item_id_local_str) {
+        free(item_id_local_str);
+        item_id_local_str = NULL;
     }
     if (update_maskList) {
         listEntry_t *listEntry = NULL;

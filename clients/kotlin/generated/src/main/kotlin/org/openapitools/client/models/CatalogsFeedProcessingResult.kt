@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -28,11 +36,11 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param createdAt 
- * @param id 
- * @param updatedAt 
+ * @param id ID of the feed processing result.
  * @param ingestionDetails 
  * @param productCounts 
  * @param status 
+ * @param updatedAt 
  * @param validationDetails 
  * @param videoCounts 
  */
@@ -43,11 +51,9 @@ data class CatalogsFeedProcessingResult (
     @Json(name = "created_at")
     val createdAt: java.time.OffsetDateTime,
 
+    /* ID of the feed processing result. */
     @Json(name = "id")
     val id: kotlin.String,
-
-    @Json(name = "updated_at")
-    val updatedAt: java.time.OffsetDateTime,
 
     @Json(name = "ingestion_details")
     val ingestionDetails: CatalogsFeedIngestionDetails,
@@ -57,6 +63,9 @@ data class CatalogsFeedProcessingResult (
 
     @Json(name = "status")
     val status: CatalogsFeedProcessingStatus,
+
+    @Json(name = "updated_at")
+    val updatedAt: java.time.OffsetDateTime,
 
     @Json(name = "validation_details")
     val validationDetails: CatalogsFeedValidationDetails,

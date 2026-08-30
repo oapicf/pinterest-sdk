@@ -51,7 +51,7 @@ public:
 
 	/*! \brief Set Month-over-month percentage change
 	 */
-	void setPctChangeMom(long  pct_change_mom);
+	void setPctChangeMom(long pct_change_mom);
 
 
     private:

@@ -16,13 +16,14 @@
 typedef struct asset_id_permissions_t asset_id_permissions_t;
 
 #include "asset_group_binding.h"
+#include "asset_type_response.h"
 
 
 
 typedef struct asset_id_permissions_t {
     struct asset_group_binding_t *asset_group_info; //model
     char *asset_id; // string
-    char *asset_type; // string
+    pinterest_rest_api_asset_type_response__e asset_type; //referenced enum
     list_t *permissions; //primitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -31,7 +32,7 @@ typedef struct asset_id_permissions_t {
 __attribute__((deprecated)) asset_id_permissions_t *asset_id_permissions_create(
     asset_group_binding_t *asset_group_info,
     char *asset_id,
-    char *asset_type,
+    pinterest_rest_api_asset_type_response__e asset_type,
     list_t *permissions
 );
 

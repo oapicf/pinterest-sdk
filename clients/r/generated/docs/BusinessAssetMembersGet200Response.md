@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **character** |  | [optional] 
-**items** | [**array[UserSingleAssetBinding]**](UserSingleAssetBinding.md) | List of members with permissions to the asset. | 
+**items** | [**array[UserSingleAssetBinding]**](UserSingleAssetBinding.md) |  | 
 
 

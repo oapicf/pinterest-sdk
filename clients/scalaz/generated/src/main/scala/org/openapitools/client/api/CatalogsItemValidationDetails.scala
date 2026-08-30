@@ -12,6 +12,7 @@ import org.joda.time.DateTime
 import CatalogsItemValidationDetails._
 
 case class CatalogsItemValidationDetails (
+  /* Attribute that has a validation issue. */
   attributeName: NullableCatalogsItemFieldType,
 /* Provided value that caused the validation issue. */
   providedValue: String)

@@ -12,6 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include "AdsCreditDiscountType.h"
 
 namespace Tiny {
 
@@ -51,49 +52,49 @@ public:
 
 	/*! \brief Set True if the offer code is currently active.
 	 */
-	void setActive(bool  active);
+	void setActive(bool active);
 	/*! \brief Get Advertiser ID the offer was applied to.
 	 */
 	std::string getAdvertiserId();
 
 	/*! \brief Set Advertiser ID the offer was applied to.
 	 */
-	void setAdvertiserId(std::string  advertiser_id);
+	void setAdvertiserId(std::string advertiser_id);
 	/*! \brief Get Currency value for the discount.
 	 */
 	std::string getDiscountCurrency();
 
 	/*! \brief Set Currency value for the discount.
 	 */
-	void setDiscountCurrency(std::string  discountCurrency);
-	/*! \brief Get The discount applied in the offer’s currency value.
+	void setDiscountCurrency(std::string discountCurrency);
+	/*! \brief Get The discount applied in the offer's currency value.
 	 */
 	long getDiscountInMicroCurrency();
 
-	/*! \brief Set The discount applied in the offer’s currency value.
+	/*! \brief Set The discount applied in the offer's currency value.
 	 */
-	void setDiscountInMicroCurrency(long  discountInMicroCurrency);
+	void setDiscountInMicroCurrency(long discountInMicroCurrency);
 	/*! \brief Get The type of discount of this credit
 	 */
-	std::string getDiscountType();
+	AdsCreditDiscountType getDiscountType();
 
 	/*! \brief Set The type of discount of this credit
 	 */
-	void setDiscountType(std::string  discountType);
+	void setDiscountType(AdsCreditDiscountType discountType);
 	/*! \brief Get The credits left to spend.
 	 */
 	long getRemainingDiscountInMicroCurrency();
 
 	/*! \brief Set The credits left to spend.
 	 */
-	void setRemainingDiscountInMicroCurrency(long  remainingDiscountInMicroCurrency);
+	void setRemainingDiscountInMicroCurrency(long remainingDiscountInMicroCurrency);
 	/*! \brief Get Human readable title of the offer code.
 	 */
 	std::string getTitle();
 
 	/*! \brief Set Human readable title of the offer code.
 	 */
-	void setTitle(std::string  title);
+	void setTitle(std::string title);
 
 
     private:
@@ -101,7 +102,7 @@ public:
     std::string advertiser_id{};
     std::string discountCurrency{};
     long discountInMicroCurrency{};
-    std::string discountType{};
+    AdsCreditDiscountType discountType;
     long remainingDiscountInMicroCurrency{};
     std::string title{};
 };

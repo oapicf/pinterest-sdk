@@ -20,9 +20,9 @@ import org.openapitools.server.api.model.ConversionEventResponse
 import org.openapitools.server.api.model.ConversionTag
 import org.openapitools.server.api.model.ConversionTagCreate
 import org.openapitools.server.api.model.ConversionTagsList200Response
-import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.PageVisitConversionTagsGet200Response
 import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
 
 class ConversionTagsApiVertxProxyHandler(private val vertx: Vertx, private val service: ConversionTagsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -150,11 +150,12 @@ class ConversionTagsApiVertxProxyHandler(private val vertx: Vertx, private val s
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val order = ApiHandlerUtils.searchStringInJson(params,"order")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
+                    val orderParam = ApiHandlerUtils.searchJsonObjectInJson(params,"order")
+                    val order = if(orderParam ==null) null else Gson().fromJson(orderParam.encode(), PinterestLibPaginationOrder::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.pageVisitConversionTagsGet(adAccountId,pageSize,order,bookmark,context)
+                        val result = service.pageVisitConversionTagsGet(adAccountId,bookmark,pageSize,order,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

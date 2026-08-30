@@ -13,6 +13,7 @@ Name | Type
 `name` | string
 `owner` | [AdAccountOwner](AdAccountOwner.md)
 `permissions` | [Array&lt;BusinessAccessRole&gt;](BusinessAccessRole.md)
+`timeZone` | string
 `updatedTime` | number
 
 ## Example
@@ -29,6 +30,7 @@ const example = {
   "name": null,
   "owner": null,
   "permissions": null,
+  "timeZone": America/Los_Angeles,
   "updatedTime": null,
 } satisfies AdAccount
 

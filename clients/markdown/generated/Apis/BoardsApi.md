@@ -19,7 +19,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a name="boardSections/create"></a>
 # **boardSections/create**
-> BoardSection boardSections/create(board\_id, BoardSection, ad\_account\_id)
+> BoardSection boardSections/create(board\_id, BoardSectionCreate, ad\_account\_id)
 
 Create board section
 
@@ -30,7 +30,7 @@ Create board section
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **board\_id** | **String**| Unique identifier of a board. | [default to null] |
-| **BoardSection** | [**BoardSection**](../Models/BoardSection.md)| Create a board section. | |
+| **BoardSectionCreate** | [**BoardSectionCreate**](../Models/BoardSectionCreate.md)|  | |
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null] |
 
 ### Return type
@@ -48,7 +48,7 @@ Create board section
 
 <a name="boardSections/delete"></a>
 # **boardSections/delete**
-> boardSections/delete(board\_id, section\_id, ad\_account\_id)
+> BoardSection boardSections/delete(board\_id, section\_id, ad\_account\_id)
 
 Delete board section
 
@@ -64,7 +64,7 @@ Delete board section
 
 ### Return type
 
-null (empty response body)
+[**BoardSection**](../Models/BoardSection.md)
 
 ### Authorization
 
@@ -90,7 +90,7 @@ List board sections
 | **board\_id** | **String**| Unique identifier of a board. | [default to null] |
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -121,7 +121,7 @@ List Pins on board section
 | **section\_id** | **String**| Unique identifier of a board section. | [default to null] |
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -138,7 +138,7 @@ List Pins on board section
 
 <a name="boardSections/update"></a>
 # **boardSections/update**
-> BoardSection boardSections/update(board\_id, section\_id, BoardSection, ad\_account\_id)
+> BoardSection boardSections/update(board\_id, section\_id, BoardSectionUpdateWithRequiredBody, ad\_account\_id)
 
 Update board section
 
@@ -150,7 +150,7 @@ Update board section
 |------------- | ------------- | ------------- | -------------|
 | **board\_id** | **String**| Unique identifier of a board. | [default to null] |
 | **section\_id** | **String**| Unique identifier of a board section. | [default to null] |
-| **BoardSection** | [**BoardSection**](../Models/BoardSection.md)| Update a board section. | |
+| **BoardSectionUpdateWithRequiredBody** | [**BoardSectionUpdateWithRequiredBody**](../Models/BoardSectionUpdateWithRequiredBody.md)|  | |
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null] |
 
 ### Return type
@@ -196,7 +196,7 @@ Create board
 
 <a name="boards/delete"></a>
 # **boards/delete**
-> boards/delete(board\_id, ad\_account\_id)
+> Board boards/delete(board\_id, ad\_account\_id)
 
 Delete board
 
@@ -211,7 +211,7 @@ Delete board
 
 ### Return type
 
-null (empty response body)
+[**Board**](../Models/Board.md)
 
 ### Authorization
 
@@ -282,7 +282,7 @@ List boards
 
 <a name="boards/listPins"></a>
 # **boards/listPins**
-> boards_list_pins_200_response boards/listPins(board\_id, bookmark, page\_size, creative\_types, ad\_account\_id, pin\_metrics)
+> boards_list_pins_200_response boards/listPins(board\_id, creative\_types, ad\_account\_id, pin\_metrics, bookmark, page\_size)
 
 List Pins on board
 
@@ -293,11 +293,11 @@ List Pins on board
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **board\_id** | **String**| Unique identifier of a board. | [default to null] |
-| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **creative\_types** | [**List**](../Models/CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [default to null] |
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null] |
 | **pin\_metrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
+| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 

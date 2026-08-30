@@ -9,8 +9,13 @@
 
 
 #include <string>
+#include "AgeBucketMultipliers.h"
 #include "AppTypeMultipliers.h"
 #include "CampaignAudienceMultipliers.h"
+#include "CampaignBidOptionsUpdateMaskItems.h"
+#include "FreqBidMultiplierTimeWindow.h"
+#include "FrequencyMultipliers.h"
+#include "GenderMultipliers.h"
 #include "PlacementMultipliers.h"
 #include <list>
 #include "Object.h"
@@ -49,40 +54,72 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get Age bucket multipliers for bid adjustments.
+	 */
+	AgeBucketMultipliers getAgeBucketMultipliers();
+
+	/*! \brief Set Age bucket multipliers for bid adjustments.
+	 */
+	void setAgeBucketMultipliers(AgeBucketMultipliers  age_bucket_multipliers);
+	/*! \brief Get App type multipliers for bid adjustments.
 	 */
 	AppTypeMultipliers getAppTypeMultipliers();
 
-	/*! \brief Set 
+	/*! \brief Set App type multipliers for bid adjustments.
 	 */
 	void setAppTypeMultipliers(AppTypeMultipliers  app_type_multipliers);
-	/*! \brief Get 
+	/*! \brief Get Audience multipliers for bid adjustments.
 	 */
 	CampaignAudienceMultipliers getAudienceMultipliers();
 
-	/*! \brief Set 
+	/*! \brief Set Audience multipliers for bid adjustments.
 	 */
 	void setAudienceMultipliers(CampaignAudienceMultipliers  audience_multipliers);
-	/*! \brief Get 
+	/*! \brief Get The time window for frequency bid multipliers.
+	 */
+	FreqBidMultiplierTimeWindow getFreqBidMultiplierTimeWindow();
+
+	/*! \brief Set The time window for frequency bid multipliers.
+	 */
+	void setFreqBidMultiplierTimeWindow(FreqBidMultiplierTimeWindow  freq_bid_multiplier_time_window);
+	/*! \brief Get Frequency multipliers for bid adjustments.
+	 */
+	FrequencyMultipliers getFrequencyMultipliers();
+
+	/*! \brief Set Frequency multipliers for bid adjustments.
+	 */
+	void setFrequencyMultipliers(FrequencyMultipliers  frequency_multipliers);
+	/*! \brief Get Gender multipliers for bid adjustments.
+	 */
+	GenderMultipliers getGenderMultipliers();
+
+	/*! \brief Set Gender multipliers for bid adjustments.
+	 */
+	void setGenderMultipliers(GenderMultipliers  gender_multipliers);
+	/*! \brief Get Placement multipliers for bid adjustments.
 	 */
 	PlacementMultipliers getPlacementMultipliers();
 
-	/*! \brief Set 
+	/*! \brief Set Placement multipliers for bid adjustments.
 	 */
 	void setPlacementMultipliers(PlacementMultipliers  placement_multipliers);
-	/*! \brief Get List of fields to update, only the fields in the list will be updated.
+	/*! \brief Get List of fields to update. Only the fields in the list will be updated.
 	 */
-	std::list<std::string> getUpdateMask();
+	std::list<CampaignBidOptionsUpdateMaskItems> getUpdateMask();
 
-	/*! \brief Set List of fields to update, only the fields in the list will be updated.
+	/*! \brief Set List of fields to update. Only the fields in the list will be updated.
 	 */
-	void setUpdateMask(std::list <std::string> update_mask);
+	void setUpdateMask(std::list <CampaignBidOptionsUpdateMaskItems> update_mask);
 
 private:
+	AgeBucketMultipliers age_bucket_multipliers;
 	AppTypeMultipliers app_type_multipliers;
 	CampaignAudienceMultipliers audience_multipliers;
+	FreqBidMultiplierTimeWindow freq_bid_multiplier_time_window;
+	FrequencyMultipliers frequency_multipliers;
+	GenderMultipliers gender_multipliers;
 	PlacementMultipliers placement_multipliers;
-	std::list <std::string>update_mask;
+	std::list <CampaignBidOptionsUpdateMaskItems>update_mask;
 	void __init();
 	void __cleanup();
 

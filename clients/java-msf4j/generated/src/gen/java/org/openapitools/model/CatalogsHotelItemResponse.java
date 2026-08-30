@@ -11,23 +11,83 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsHotelAttributes;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Pin;
 
 /**
  * Object describing a hotel record
  */
 @ApiModel(description = "Object describing a hotel record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelItemResponse   {
   @JsonProperty("attributes")
   private CatalogsHotelAttributes attributes;
 
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    HOTEL("HOTEL");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String text) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("hotel_id")
   private String hotelId;
+
+  /**
+   * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+   */
+  public enum ItemResponseKindEnum {
+    HOTEL_ITEM("hotel_item");
+
+    private String value;
+
+    ItemResponseKindEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ItemResponseKindEnum fromValue(String text) {
+      for (ItemResponseKindEnum b : ItemResponseKindEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
+  @JsonProperty("item_response_kind")
+  private ItemResponseKindEnum itemResponseKind;
 
   @JsonProperty("pins")
   private List<@Valid Pin> pins = null;
@@ -50,7 +110,7 @@ public class CatalogsHotelItemResponse   {
     this.attributes = attributes;
   }
 
-  public CatalogsHotelItemResponse catalogType(CatalogsType catalogType) {
+  public CatalogsHotelItemResponse catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -60,11 +120,11 @@ public class CatalogsHotelItemResponse   {
    * @return catalogType
   **/
   @ApiModelProperty(required = true, value = "")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -84,6 +144,24 @@ public class CatalogsHotelItemResponse   {
 
   public void setHotelId(String hotelId) {
     this.hotelId = hotelId;
+  }
+
+  public CatalogsHotelItemResponse itemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+    return this;
+  }
+
+   /**
+   * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+   * @return itemResponseKind
+  **/
+  @ApiModelProperty(required = true, value = "Discriminator literal identifying this leaf inside an `ItemResponse` payload.")
+  public ItemResponseKindEnum getItemResponseKind() {
+    return itemResponseKind;
+  }
+
+  public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
   }
 
   public CatalogsHotelItemResponse pins(List<@Valid Pin> pins) {
@@ -125,12 +203,13 @@ public class CatalogsHotelItemResponse   {
     return Objects.equals(this.attributes, catalogsHotelItemResponse.attributes) &&
         Objects.equals(this.catalogType, catalogsHotelItemResponse.catalogType) &&
         Objects.equals(this.hotelId, catalogsHotelItemResponse.hotelId) &&
+        Objects.equals(this.itemResponseKind, catalogsHotelItemResponse.itemResponseKind) &&
         Objects.equals(this.pins, catalogsHotelItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, catalogType, hotelId, pins);
+    return Objects.hash(attributes, catalogType, hotelId, itemResponseKind, pins);
   }
 
   @Override
@@ -141,6 +220,7 @@ public class CatalogsHotelItemResponse   {
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -151,10 +231,7 @@ public class CatalogsHotelItemResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -23,7 +23,7 @@ typedef struct product_category_details_t product_category_details_t;
 
 typedef struct product_category_details_t {
     struct product_categories_demographic_t *demographics; //model
-    int has_prediction; //boolean
+    int *has_prediction; //boolean
     struct product_categories_metrics_highlights_t *metrics_highlights; //model
     list_t* predicted_time_series; //map
     pinterest_rest_api_product_category_enum__e product_category; //referenced enum
@@ -35,7 +35,7 @@ typedef struct product_category_details_t {
 
 __attribute__((deprecated)) product_category_details_t *product_category_details_create(
     product_categories_demographic_t *demographics,
-    int has_prediction,
+    int *has_prediction,
     product_categories_metrics_highlights_t *metrics_highlights,
     list_t* predicted_time_series,
     pinterest_rest_api_product_category_enum__e product_category,

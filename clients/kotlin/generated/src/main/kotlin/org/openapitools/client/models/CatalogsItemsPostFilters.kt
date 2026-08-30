@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -18,7 +26,6 @@ package org.openapitools.client.models
 import org.openapitools.client.models.CatalogsCreativeAssetsItemsPostFilter
 import org.openapitools.client.models.CatalogsHotelItemsPostFilter
 import org.openapitools.client.models.CatalogsRetailItemsPostFilter
-import org.openapitools.client.models.CatalogsType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -37,7 +44,7 @@ import com.squareup.moshi.JsonClass
 interface CatalogsItemsPostFilters {
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType
+    val catalogType: CatalogsItemsPostFilters.CatalogType
     @Json(name = "item_ids")
     val itemIds: kotlin.collections.List<kotlin.String>
     @Json(name = "hotel_ids")
@@ -47,6 +54,15 @@ interface CatalogsItemsPostFilters {
     /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String?
+    /**
+     * 
+     *
+     * Values: CREATIVE_ASSETS
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "CREATIVE_ASSETS") CREATIVE_ASSETS("CREATIVE_ASSETS");
+    }
 
 }
 

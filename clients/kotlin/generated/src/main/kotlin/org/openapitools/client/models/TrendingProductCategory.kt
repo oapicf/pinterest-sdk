@@ -8,15 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.ProductCategoriesEngagementType
-import org.openapitools.client.models.VerticalProductCategory
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -27,6 +34,7 @@ import com.squareup.moshi.JsonClass
  * @param engagementType Engagement type
  * @param pctChangeMom Month-over-month change percentage
  * @param percentRelativeVolume Relative volume percentage
+ * @param pinterestProductCategoryId Pinterest Product Category Id
  * @param productCategory Product Category Name
  * @param verticals Vertical name associated with the product category
  */
@@ -46,13 +54,17 @@ data class TrendingProductCategory (
     @Json(name = "percent_relative_volume")
     val percentRelativeVolume: kotlin.Int,
 
+    /* Pinterest Product Category Id */
+    @Json(name = "pinterest_product_category_id")
+    val pinterestProductCategoryId: kotlin.Int,
+
     /* Product Category Name */
     @Json(name = "product_category")
     val productCategory: kotlin.String,
 
     /* Vertical name associated with the product category */
     @Json(name = "verticals")
-    val verticals: kotlin.collections.List<VerticalProductCategory>? = null
+    val verticals: kotlin.collections.List<kotlin.String>? = null
 
 ) {
 

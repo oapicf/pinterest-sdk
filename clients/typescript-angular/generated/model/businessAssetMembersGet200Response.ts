@@ -12,9 +12,6 @@ import { UserSingleAssetBinding } from './userSingleAssetBinding';
 
 export interface BusinessAssetMembersGet200Response { 
     bookmark?: string | null;
-    /**
-     * List of members with permissions to the asset.
-     */
     items: Array<UserSingleAssetBinding>;
 }
 

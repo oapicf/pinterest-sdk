@@ -4,7 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_description** | **NSString*** | Description of the trending topic | 
-**percentGrowthMom** | **NSNumber*** | Month-over-month growth percentage | 
+**_id** | **NSString*** | Unique identifier for the trending topic | 
+**percentGrowthMom** | **NSNumber*** | Month-over-month growth percentage | [optional] 
 **pins** | [**NSArray&lt;OAITrendingPin&gt;***](OAITrendingPin.md) | Array of pin images related to this trend (up to 6) | 
 **relatedInterests** | **NSArray&lt;NSString*&gt;*** | List of related interest categories | 
 **relatedSearches** | **NSArray&lt;NSString*&gt;*** | List of related search terms | 

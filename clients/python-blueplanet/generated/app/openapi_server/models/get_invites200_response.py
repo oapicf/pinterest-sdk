@@ -73,7 +73,6 @@ class GetInvites200Response(Model):
     def items(self) -> List[InviteResponse]:
         """Gets the items of this GetInvites200Response.
 
-        List of invite and request data.  # noqa: E501
 
         :return: The items of this GetInvites200Response.
         :rtype: List[InviteResponse]
@@ -84,7 +83,6 @@ class GetInvites200Response(Model):
     def items(self, items: List[InviteResponse]):
         """Sets the items of this GetInvites200Response.
 
-        List of invite and request data.  # noqa: E501
 
         :param items: The items of this GetInvites200Response.
         :type items: List[InviteResponse]

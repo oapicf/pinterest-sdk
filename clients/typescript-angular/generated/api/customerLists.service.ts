@@ -19,11 +19,15 @@ import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 // @ts-ignore
 import { CustomerList } from '../model/customerList';
 // @ts-ignore
-import { CustomerListRequest } from '../model/customerListRequest';
+import { CustomerListCreate } from '../model/customerListCreate';
 // @ts-ignore
-import { CustomerListUpdateRequest } from '../model/customerListUpdateRequest';
+import { CustomerListUpdateWithRequiredBody } from '../model/customerListUpdateWithRequiredBody';
 // @ts-ignore
 import { CustomerListsList200Response } from '../model/customerListsList200Response';
+// @ts-ignore
+import { PinterestLibError } from '../model/pinterestLibError';
+// @ts-ignore
+import { PinterestLibPaginationOrder } from '../model/pinterestLibPaginationOrder';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -43,23 +47,23 @@ export class CustomerListsService extends BaseService {
 
     /**
      * Create customer lists
-     * &lt;p&gt;Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).&lt;/p&gt; &lt;p&gt;A customer list is one of the four types of Pinterest audiences: for more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;p/&gt; &lt;p&gt;&lt;b&gt;Please review our &lt;u&gt;&lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting#section-13341\&quot; target&#x3D;\&quot;_blank\&quot;&gt;requirements&lt;/a&gt;&lt;/u&gt; for what type of information is allowed when uploading a customer list.&lt;/b&gt;&lt;/p&gt; &lt;p&gt;When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.&lt;/p&gt; &lt;p&gt;To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the &lt;a href&#x3D;\&quot;https://developer.pinterest.com/docs/api/v5/audiences-create\&quot; target&#x3D;\&quot;blank\&quot;&gt;create audience endpoint&lt;/a&gt;.&lt;/p&gt;
+     * Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
      * @endpoint post /ad_accounts/{ad_account_id}/customer_lists
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListRequest Parameters to get Customer lists info
+     * @param adAccountId 
+     * @param customerListCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public customerListsCreate(adAccountId: string, customerListRequest: CustomerListRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CustomerList>;
-    public customerListsCreate(adAccountId: string, customerListRequest: CustomerListRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CustomerList>>;
-    public customerListsCreate(adAccountId: string, customerListRequest: CustomerListRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CustomerList>>;
-    public customerListsCreate(adAccountId: string, customerListRequest: CustomerListRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public customerListsCreate(adAccountId: string, customerListCreate: CustomerListCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CustomerList>;
+    public customerListsCreate(adAccountId: string, customerListCreate: CustomerListCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CustomerList>>;
+    public customerListsCreate(adAccountId: string, customerListCreate: CustomerListCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CustomerList>>;
+    public customerListsCreate(adAccountId: string, customerListCreate: CustomerListCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling customerListsCreate.');
         }
-        if (customerListRequest === null || customerListRequest === undefined) {
-            throw new Error('Required parameter customerListRequest was null or undefined when calling customerListsCreate.');
+        if (customerListCreate === null || customerListCreate === undefined) {
+            throw new Error('Required parameter customerListCreate was null or undefined when calling customerListsCreate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -104,7 +108,7 @@ export class CustomerListsService extends BaseService {
         return this.httpClient.request<CustomerList>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: customerListRequest,
+                body: customerListCreate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -119,8 +123,8 @@ export class CustomerListsService extends BaseService {
      * Get customer list
      * Gets a specific customer list given the customer list ID.
      * @endpoint get /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
@@ -184,25 +188,35 @@ export class CustomerListsService extends BaseService {
 
     /**
      * Get customer lists
-     * &lt;p&gt;Get a set of customer lists including id and name based on the filters provided.&lt;/p&gt; &lt;p&gt;(Customer lists are a type of audience.) For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;  or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
+     * Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
      * @endpoint get /ad_accounts/{ad_account_id}/customer_lists
-     * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+     * @param adAccountId 
      * @param bookmark Cursor used to fetch the next page of items
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
+     * @param excludeNca When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public customerListsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CustomerListsList200Response>;
-    public customerListsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CustomerListsList200Response>>;
-    public customerListsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CustomerListsList200Response>>;
-    public customerListsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public customerListsList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, excludeNca?: boolean, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CustomerListsList200Response>;
+    public customerListsList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, excludeNca?: boolean, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CustomerListsList200Response>>;
+    public customerListsList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, excludeNca?: boolean, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CustomerListsList200Response>>;
+    public customerListsList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, excludeNca?: boolean, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling customerListsList.');
         }
 
         let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
@@ -224,8 +238,8 @@ export class CustomerListsService extends BaseService {
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
-            'bookmark',
-            <any>bookmark,
+            'exclude_nca',
+            <any>excludeNca,
             QueryParamStyle.Form,
             true,
         );
@@ -277,27 +291,27 @@ export class CustomerListsService extends BaseService {
 
     /**
      * Update customer list
-     * &lt;p&gt;Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)&lt;/p&gt; &lt;p&gt;When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
+     * Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \&quot;CUSTOMER_LIST\&quot; audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
      * @endpoint patch /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUpdateRequest 
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUpdateWithRequiredBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public customerListsUpdate(adAccountId: string, customerListId: string, customerListUpdateRequest: CustomerListUpdateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CustomerList>;
-    public customerListsUpdate(adAccountId: string, customerListId: string, customerListUpdateRequest: CustomerListUpdateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CustomerList>>;
-    public customerListsUpdate(adAccountId: string, customerListId: string, customerListUpdateRequest: CustomerListUpdateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CustomerList>>;
-    public customerListsUpdate(adAccountId: string, customerListId: string, customerListUpdateRequest: CustomerListUpdateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public customerListsUpdate(adAccountId: string, customerListId: string, customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CustomerList>;
+    public customerListsUpdate(adAccountId: string, customerListId: string, customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CustomerList>>;
+    public customerListsUpdate(adAccountId: string, customerListId: string, customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CustomerList>>;
+    public customerListsUpdate(adAccountId: string, customerListId: string, customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling customerListsUpdate.');
         }
         if (customerListId === null || customerListId === undefined) {
             throw new Error('Required parameter customerListId was null or undefined when calling customerListsUpdate.');
         }
-        if (customerListUpdateRequest === null || customerListUpdateRequest === undefined) {
-            throw new Error('Required parameter customerListUpdateRequest was null or undefined when calling customerListsUpdate.');
+        if (customerListUpdateWithRequiredBody === null || customerListUpdateWithRequiredBody === undefined) {
+            throw new Error('Required parameter customerListUpdateWithRequiredBody was null or undefined when calling customerListsUpdate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -342,7 +356,7 @@ export class CustomerListsService extends BaseService {
         return this.httpClient.request<CustomerList>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: customerListUpdateRequest,
+                body: customerListUpdateWithRequiredBody,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,

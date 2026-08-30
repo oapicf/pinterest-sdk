@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set Generation date
 	 */
-	void setDate(std::string  date);
+	void setDate(std::string date);
 	/*! \brief Get 
 	 */
 	std::string getScope();
 
 	/*! \brief Set 
 	 */
-	void setScope(std::string  scope);
+	void setScope(std::string scope);
 	/*! \brief Get 
 	 */
 	std::string getType();
 
 	/*! \brief Set 
 	 */
-	void setType(std::string  type);
+	void setType(std::string type);
 
 
     private:

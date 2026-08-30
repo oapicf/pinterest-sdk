@@ -66,12 +66,12 @@ User_websites_get_200_response::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<UserWebsiteSummary> new_list;
-			UserWebsiteSummary inst;
+			list<UserWebsite> new_list;
+			UserWebsite inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("UserWebsiteSummary")) {
-					jsonToValue(&inst, temp_json, "UserWebsiteSummary", "");
+				if (isprimitive("UserWebsite")) {
+					jsonToValue(&inst, temp_json, "UserWebsite", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ User_websites_get_200_response::toJson()
 	}
 	const gchar *bookmarkKey = "bookmark";
 	json_object_set_member(pJsonObject, bookmarkKey, node);
-	if (isprimitive("UserWebsiteSummary")) {
-		list<UserWebsiteSummary> new_list = static_cast<list <UserWebsiteSummary> > (getItems());
-		node = converttoJson(&new_list, "UserWebsiteSummary", "array");
+	if (isprimitive("UserWebsite")) {
+		list<UserWebsite> new_list = static_cast<list <UserWebsite> > (getItems());
+		node = converttoJson(&new_list, "UserWebsite", "array");
 	} else {
 		node = json_node_alloc();
-		list<UserWebsiteSummary> new_list = static_cast<list <UserWebsiteSummary> > (getItems());
+		list<UserWebsite> new_list = static_cast<list <UserWebsite> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<UserWebsiteSummary>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<UserWebsite>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			UserWebsiteSummary obj = *it;
+			UserWebsite obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ User_websites_get_200_response::setBookmark(std::string  bookmark)
 	this->bookmark = bookmark;
 }
 
-std::list<UserWebsiteSummary>
+std::list<UserWebsite>
 User_websites_get_200_response::getItems()
 {
 	return items;
 }
 
 void
-User_websites_get_200_response::setItems(std::list <UserWebsiteSummary> items)
+User_websites_get_200_response::setItems(std::list <UserWebsite> items)
 {
 	this->items = items;
 }

@@ -1,0 +1,10 @@
+
+
+# AdShoppingPreviewCreativeType
+
+## Enum
+
+
+
+
+

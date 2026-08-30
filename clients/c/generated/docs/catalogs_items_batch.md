@@ -3,10 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | **catalogs_type_t \*** |  | 
 **batch_id** | **char \*** | Id of the catalogs items batch | [optional] 
-**completed_time** | **char \*** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
-**created_time** | **char \*** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [readonly] 
+**catalog_type** | **pinterest_rest_api_catalogs_items_batch_CATALOGTYPE_e** |  | 
+**completed_time** | **char \*** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] 
+**created_time** | **char \*** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | 
 **items** | [**list_t**](creative_assets_processing_record.md) \* | Array with the catalogs items processing records part of the catalogs items batch | [optional] 
 **status** | **batch_operation_status_t \*** |  | [optional] 
 

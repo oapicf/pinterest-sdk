@@ -12,12 +12,7 @@
     {
       "name": "id",
       "type": "string",
-      "doc": ""
-    },
-    {
-      "name": "updated_at",
-      "type": "string",
-      "doc": ""
+      "doc": "ID of the feed processing result."
     },
     {
       "name": "ingestion_details",
@@ -32,6 +27,11 @@
     {
       "name": "status",
       "type": "model.CatalogsFeedProcessingStatus",
+      "doc": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "string",
       "doc": ""
     },
     {

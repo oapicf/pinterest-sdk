@@ -10,9 +10,20 @@
       "doc": "Image URL."
     },
     {
+      "name": "promotion_id",
+      "type": ["null", "string"],
+      "doc": "Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.",
+      "default": null
+    },
+    {
       "name": "title",
       "type": "string",
       "doc": "Title displayed below ad."
+    },
+    {
+      "name": "creative_type",
+      "type": "model.AdShoppingPreviewCreativeType",
+      "doc": "Ad format of the shopping ad preview."
     },
     {
       "name": "pin_id",
@@ -23,20 +34,6 @@
       "name": "catalog_product_group_id",
       "type": "string",
       "doc": "Catalog Product Group Id."
-    },
-    {
-      "name": "creative_type",
-      "type": {
-        "type": "enum",
-        "name": "AdPreviewRequest_creativeUnderscoretype",
-        "symbols": [
-          "SHOPPING",
-          "CAROUSEL",
-          "COLLECTION",
-          "REGULAR"
-        ]
-      },
-      "doc": "Ad format of the shopping ad preview."
     },
     {
       "name": "customizable_cta_type",
@@ -76,15 +73,14 @@
     },
     {
       "name": "preferred_media_type",
-      "type": ["null", {
-        "type": "enum",
-        "name": "AdPreviewRequest_preferredUnderscoremediaUnderscoretype",
-        "symbols": [
-          "VIDEO",
-          "IMAGE"
-        ]
-      }],
+      "type": ["null", "model.BasePreferredMediaType"],
       "doc": "Preferred media type.",
+      "default": null
+    },
+    {
+      "name": "show_promotion",
+      "type": ["null", "boolean"],
+      "doc": "Include promotion data in preview when available on catalog item. Defaults to false.",
       "default": null
     },
     {

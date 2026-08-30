@@ -6,7 +6,7 @@ using namespace Tiny;
 
 IntegrationLogsInvalidLogResponse::IntegrationLogsInvalidLogResponse()
 {
-	rejected_logs = std::list<IntegrationLogsInvalidLogResponse_rejected_logs_inner>();
+	rejected_logs = std::list<IntegrationLogsInvalidLogResponseRejectedLogsItems>();
 }
 
 IntegrationLogsInvalidLogResponse::IntegrationLogsInvalidLogResponse(std::string jsonString)
@@ -31,8 +31,8 @@ IntegrationLogsInvalidLogResponse::fromJson(std::string jsonObj)
         bourne::json value = object[rejected_logsKey];
 
 
-        std::list<IntegrationLogsInvalidLogResponse_rejected_logs_inner> rejected_logs_list;
-        IntegrationLogsInvalidLogResponse_rejected_logs_inner element;
+        std::list<IntegrationLogsInvalidLogResponseRejectedLogsItems> rejected_logs_list;
+        IntegrationLogsInvalidLogResponseRejectedLogsItems element;
         for(auto& var : value.array_range())
         {
 
@@ -57,12 +57,12 @@ IntegrationLogsInvalidLogResponse::toJson()
 
 
 
-    std::list<IntegrationLogsInvalidLogResponse_rejected_logs_inner> rejected_logs_list = getRejectedLogs();
+    std::list<IntegrationLogsInvalidLogResponseRejectedLogsItems> rejected_logs_list = getRejectedLogs();
     bourne::json rejected_logs_arr = bourne::json::array();
 
     for(auto& var : rejected_logs_list)
     {
-        IntegrationLogsInvalidLogResponse_rejected_logs_inner obj = var;
+        IntegrationLogsInvalidLogResponseRejectedLogsItems obj = var;
         rejected_logs_arr.append(obj.toJson());
     }
     object["rejected_logs"] = rejected_logs_arr;
@@ -74,14 +74,14 @@ IntegrationLogsInvalidLogResponse::toJson()
 
 }
 
-std::list<IntegrationLogsInvalidLogResponse_rejected_logs_inner>
+std::list<IntegrationLogsInvalidLogResponseRejectedLogsItems>
 IntegrationLogsInvalidLogResponse::getRejectedLogs()
 {
 	return rejected_logs;
 }
 
 void
-IntegrationLogsInvalidLogResponse::setRejectedLogs(std::list <IntegrationLogsInvalidLogResponse_rejected_logs_inner> rejected_logs)
+IntegrationLogsInvalidLogResponse::setRejectedLogs(std::list<IntegrationLogsInvalidLogResponseRejectedLogsItems> rejected_logs)
 {
 	this->rejected_logs = rejected_logs;
 }

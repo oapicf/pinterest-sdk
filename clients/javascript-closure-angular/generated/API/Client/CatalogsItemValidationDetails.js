@@ -6,6 +6,7 @@ goog.provide('API.Client.CatalogsItemValidationDetails');
 API.Client.CatalogsItemValidationDetails = function() {}
 
 /**
+ * Attribute that has a validation issue.
  * @type {!API.Client.NullableCatalogsItemFieldType}
  * @export
  */

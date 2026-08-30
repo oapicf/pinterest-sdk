@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Sort metric for top video pins analytics.",
+  "name": "TopVideoPinsSortBy",
+  "symbols": [
+    "SAVE",
+    "IMPRESSION",
+    "OUTBOUND_CLICK",
+    "VIDEO_MRC_VIEW",
+    "VIDEO_AVG_WATCH_TIME",
+    "VIDEO_V50_WATCH_TIME",
+    "QUARTILE_95_PERCENT_VIEW",
+    "VIDEO_10S_VIEW",
+    "VIDEO_START"
+  ]
+}

@@ -52,21 +52,21 @@ public:
 
 	/*! \brief Set Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
 	 */
-	void setCatalogId(std::string  catalog_id);
+	void setCatalogId(std::string catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getItemIds();
 
 	/*! \brief Set 
 	 */
-	void setItemIds(std::list <std::string> item_ids);
+	void setItemIds(std::list<std::string> item_ids);
 
 
     private:

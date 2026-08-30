@@ -2,7 +2,7 @@
 /*
  * QuizPinOption.h
  *
- *  This field contains multiple options to a quiz question.
+ * This field contains multiple options to a quiz question.
  */
 
 #ifndef TINY_CPP_CLIENT_QuizPinOption_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief  This field contains multiple options to a quiz question.
+/*! \brief This field contains multiple options to a quiz question.
  *
  *  \ingroup Models
  *
@@ -51,14 +51,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setId(long  id);
+	void setId(long id);
 	/*! \brief Get 
 	 */
 	std::string getText();
 
 	/*! \brief Set 
 	 */
-	void setText(std::string  text);
+	void setText(std::string text);
 
 
     private:

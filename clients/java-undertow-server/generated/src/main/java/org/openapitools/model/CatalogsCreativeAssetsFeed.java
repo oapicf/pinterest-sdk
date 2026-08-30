@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -17,11 +17,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Country;
 import org.openapitools.model.NullableCurrency;
 
@@ -32,74 +32,41 @@ import org.openapitools.model.NullableCurrency;
  */
 
 @ApiModel(description = "Catalogs Creative Asset Feed object")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsFeed   {
   
-  private Date createdAt;
-  private String id;
-  private Date updatedAt;
   private String catalogId;
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
+  private Date createdAt;
   private CatalogsFeedCredentials credentials;
   private Country defaultCountry;
   private NullableCurrency defaultCurrency;
   private String defaultLocale;
   private CatalogsFormat format;
+  private String id;
   private String location;
   private String name;
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private CatalogsStatus status;
-
-  /**
-   */
-  public CatalogsCreativeAssetsFeed createdAt(Date createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
-  @JsonProperty("created_at")
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  /**
-   */
-  public CatalogsCreativeAssetsFeed id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  /**
-   */
-  public CatalogsCreativeAssetsFeed updatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
-  @JsonProperty("updated_at")
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
+  private Date updatedAt;
 
   /**
    * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
@@ -121,7 +88,7 @@ public class CatalogsCreativeAssetsFeed   {
 
   /**
    */
-  public CatalogsCreativeAssetsFeed catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsFeed catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -129,11 +96,28 @@ public class CatalogsCreativeAssetsFeed   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
+  }
+
+  /**
+   */
+  public CatalogsCreativeAssetsFeed createdAt(Date createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("created_at")
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
   }
 
   /**
@@ -144,7 +128,7 @@ public class CatalogsCreativeAssetsFeed   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("credentials")
   public CatalogsFeedCredentials getCredentials() {
     return credentials;
@@ -178,7 +162,7 @@ public class CatalogsCreativeAssetsFeed   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("default_currency")
   public NullableCurrency getDefaultCurrency() {
     return defaultCurrency;
@@ -196,7 +180,7 @@ public class CatalogsCreativeAssetsFeed   {
   }
 
   
-  @ApiModelProperty(example = "en-US", required = true, value = "The locale used within a feed for product descriptions.")
+  @ApiModelProperty(required = true, value = "The locale used within a feed for product descriptions.")
   @JsonProperty("default_locale")
   public String getDefaultLocale() {
     return defaultLocale;
@@ -220,6 +204,24 @@ public class CatalogsCreativeAssetsFeed   {
   }
   public void setFormat(CatalogsFormat format) {
     this.format = format;
+  }
+
+  /**
+   * ID of the feed entity.
+   */
+  public CatalogsCreativeAssetsFeed id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "864344156814050986", required = true, value = "ID of the feed entity.")
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
   }
 
   /**
@@ -266,7 +268,7 @@ public class CatalogsCreativeAssetsFeed   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("preferred_processing_schedule")
   public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;
@@ -292,6 +294,23 @@ public class CatalogsCreativeAssetsFeed   {
     this.status = status;
   }
 
+  /**
+   */
+  public CatalogsCreativeAssetsFeed updatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("updated_at")
+  public Date getUpdatedAt() {
+    return updatedAt;
+  }
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -302,25 +321,25 @@ public class CatalogsCreativeAssetsFeed   {
       return false;
     }
     CatalogsCreativeAssetsFeed catalogsCreativeAssetsFeed = (CatalogsCreativeAssetsFeed) o;
-    return Objects.equals(createdAt, catalogsCreativeAssetsFeed.createdAt) &&
-        Objects.equals(id, catalogsCreativeAssetsFeed.id) &&
-        Objects.equals(updatedAt, catalogsCreativeAssetsFeed.updatedAt) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsFeed.catalogId) &&
+    return Objects.equals(catalogId, catalogsCreativeAssetsFeed.catalogId) &&
         Objects.equals(catalogType, catalogsCreativeAssetsFeed.catalogType) &&
+        Objects.equals(createdAt, catalogsCreativeAssetsFeed.createdAt) &&
         Objects.equals(credentials, catalogsCreativeAssetsFeed.credentials) &&
         Objects.equals(defaultCountry, catalogsCreativeAssetsFeed.defaultCountry) &&
         Objects.equals(defaultCurrency, catalogsCreativeAssetsFeed.defaultCurrency) &&
         Objects.equals(defaultLocale, catalogsCreativeAssetsFeed.defaultLocale) &&
         Objects.equals(format, catalogsCreativeAssetsFeed.format) &&
+        Objects.equals(id, catalogsCreativeAssetsFeed.id) &&
         Objects.equals(location, catalogsCreativeAssetsFeed.location) &&
         Objects.equals(name, catalogsCreativeAssetsFeed.name) &&
         Objects.equals(preferredProcessingSchedule, catalogsCreativeAssetsFeed.preferredProcessingSchedule) &&
-        Objects.equals(status, catalogsCreativeAssetsFeed.status);
+        Objects.equals(status, catalogsCreativeAssetsFeed.status) &&
+        Objects.equals(updatedAt, catalogsCreativeAssetsFeed.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, catalogId, catalogType, credentials, defaultCountry, defaultCurrency, defaultLocale, format, location, name, preferredProcessingSchedule, status);
+    return Objects.hash(catalogId, catalogType, createdAt, credentials, defaultCountry, defaultCurrency, defaultLocale, format, id, location, name, preferredProcessingSchedule, status, updatedAt);
   }
 
   @Override
@@ -328,20 +347,20 @@ public class CatalogsCreativeAssetsFeed   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsFeed {\n");
     
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
     sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -351,10 +370,7 @@ public class CatalogsCreativeAssetsFeed   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -35,6 +35,6 @@ class CatalogsHotelProductGroupUpdateRequest {
     String description
     
     CatalogsHotelProductGroupFilters filters
-    
+    /* Name of catalog product group */
     String name
 }

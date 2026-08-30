@@ -3,7 +3,7 @@ package models
 // CatalogsRetailFeedsUpdateRequest - Request object for updating a feed.
 type CatalogsRetailFeedsUpdateRequest struct {
 
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 
 	Credentials *CatalogsFeedCredentials `json:"credentials,omitempty"`
 
@@ -14,7 +14,7 @@ type CatalogsRetailFeedsUpdateRequest struct {
 	Format CatalogsFormat `json:"format,omitempty"`
 
 	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	Location string `json:"location,omitempty" validate:"regexp=^(http|https|ftp|sftp):\\/\\/"`
+	Location string `json:"location,omitempty" validate:"regexp=^(http|https|ftp|sftp)://"`
 
 	// A human-friendly name associated to a given feed.
 	Name string `json:"name,omitempty"`

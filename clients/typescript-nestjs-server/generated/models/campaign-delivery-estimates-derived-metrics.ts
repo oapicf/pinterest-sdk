@@ -1,0 +1,116 @@
+
+
+/**
+ * Derived metrics for an ad campaign.
+ */
+export interface CampaignDeliveryEstimatesDerivedMetrics { 
+  /**
+   * Estimated cost per click.
+   */
+  cpc?: number;
+  /**
+   * Lower estimate of the cost per click.
+   */
+  cpc_lower?: number;
+  /**
+   * Upper estimate of the cost per click.
+   */
+  cpc_upper?: number;
+  /**
+   * Estimated cost per thousand impressions.
+   */
+  cpm?: number;
+  /**
+   * Lower estimate of cost per thousand impressions.
+   */
+  cpm_lower?: number;
+  /**
+   * Upper estimate of cost per thousand impressions.
+   */
+  cpm_upper?: number;
+  /**
+   * Estimated lifetime frequency.
+   */
+  lifetime_frequency?: number;
+  /**
+   * Lower estimate of lifetime frequency.
+   */
+  lifetime_frequency_lower?: number;
+  /**
+   * Upper estimate of lifetime frequency.
+   */
+  lifetime_frequency_upper?: number;
+  /**
+   * Estimated lifetime impressions.
+   */
+  lifetime_impression?: number;
+  /**
+   * Lower estimate of lifetime impressions.
+   */
+  lifetime_impression_lower?: number;
+  /**
+   * Upper estimate of lifetime impressions.
+   */
+  lifetime_impression_upper?: number;
+  /**
+   * Estimated lifetime reach.
+   */
+  lifetime_reach?: number;
+  /**
+   * Lower estimate of lifetime reach.
+   */
+  lifetime_reach_lower?: number;
+  /**
+   * Upper estimate of lifetime reach.
+   */
+  lifetime_reach_upper?: number;
+  /**
+   * Estimated weekly clicks.
+   */
+  weekly_click?: number;
+  /**
+   * Lower estimate of weekly clicks.
+   */
+  weekly_click_lower?: number;
+  /**
+   * Upper estimate of weekly clicks.
+   */
+  weekly_click_upper?: number;
+  /**
+   * Estimated weekly frequency.
+   */
+  weekly_frequency?: number;
+  /**
+   * Lower estimate of weekly frequency.
+   */
+  weekly_frequency_lower?: number;
+  /**
+   * Upper estimate of weekly frequency.
+   */
+  weekly_frequency_upper?: number;
+  /**
+   * Estimated weekly impressions.
+   */
+  weekly_impression?: number;
+  /**
+   * Lower estimate of weekly impressions.
+   */
+  weekly_impression_lower?: number;
+  /**
+   * Upper estimate of weekly impressions.
+   */
+  weekly_impression_upper?: number;
+  /**
+   * Estimated weekly reach.
+   */
+  weekly_reach?: number;
+  /**
+   * Lower estimate of weekly reach.
+   */
+  weekly_reach_lower?: number;
+  /**
+   * Upper estimate of weekly reach.
+   */
+  weekly_reach_upper?: number;
+}
+

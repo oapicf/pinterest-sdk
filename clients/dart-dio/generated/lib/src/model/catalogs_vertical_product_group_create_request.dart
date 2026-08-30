@@ -19,7 +19,7 @@ part 'catalogs_vertical_product_group_create_request.g.dart';
 /// Request object for creating a catalog based product group.
 ///
 /// Properties:
-/// * [catalogId] - Catalog id pertaining to the creative assets product group.
+/// * [catalogId] - Catalog ID pertaining to the product group.
 /// * [catalogType] 
 /// * [country] 
 /// * [description] 

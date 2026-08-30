@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -23,16 +23,19 @@ type BulkUpsertRequestUpdate struct {
 
 	Campaigns []CampaignUpdateRequest `json:"campaigns,omitempty"`
 
-	CatalogProductGroups []CatalogsProductGroupsUpdateRequest `json:"catalog_product_groups,omitempty"`
+	CatalogProductGroups []BulkUpsertRequestUpdateCatalogProductGroupsItems `json:"catalog_product_groups,omitempty"`
 
-	Keywords []KeywordUpdate `json:"keywords,omitempty"`
+	Keywords []KeywordUpdateGenerated `json:"keywords,omitempty"`
 
 	Labels []LabelBulkUpdateRequest `json:"labels,omitempty"`
 
 	ProductGroups []ProductGroupPromotionUpdateRequest `json:"product_groups,omitempty"`
+
+	Schedules []ScheduleUpdateRequest `json:"schedules,omitempty"`
 }
 
-// AssertBulkUpsertRequestUpdateRequired checks if the required fields are not zero-ed
+// AssertBulkUpsertRequestUpdateRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertBulkUpsertRequestUpdateRequired(obj BulkUpsertRequestUpdate) error {
 	for _, el := range obj.AdGroups {
 		if err := AssertAdGroupUpdateRequestRequired(el); err != nil {
@@ -50,12 +53,12 @@ func AssertBulkUpsertRequestUpdateRequired(obj BulkUpsertRequestUpdate) error {
 		}
 	}
 	for _, el := range obj.CatalogProductGroups {
-		if err := AssertCatalogsProductGroupsUpdateRequestRequired(el); err != nil {
+		if err := AssertBulkUpsertRequestUpdateCatalogProductGroupsItemsRequired(el); err != nil {
 			return err
 		}
 	}
 	for _, el := range obj.Keywords {
-		if err := AssertKeywordUpdateRequired(el); err != nil {
+		if err := AssertKeywordUpdateGeneratedRequired(el); err != nil {
 			return err
 		}
 	}
@@ -66,6 +69,11 @@ func AssertBulkUpsertRequestUpdateRequired(obj BulkUpsertRequestUpdate) error {
 	}
 	for _, el := range obj.ProductGroups {
 		if err := AssertProductGroupPromotionUpdateRequestRequired(el); err != nil {
+			return err
+		}
+	}
+	for _, el := range obj.Schedules {
+		if err := AssertScheduleUpdateRequestRequired(el); err != nil {
 			return err
 		}
 	}
@@ -90,12 +98,12 @@ func AssertBulkUpsertRequestUpdateConstraints(obj BulkUpsertRequestUpdate) error
 		}
 	}
 	for _, el := range obj.CatalogProductGroups {
-		if err := AssertCatalogsProductGroupsUpdateRequestConstraints(el); err != nil {
+		if err := AssertBulkUpsertRequestUpdateCatalogProductGroupsItemsConstraints(el); err != nil {
 			return err
 		}
 	}
 	for _, el := range obj.Keywords {
-		if err := AssertKeywordUpdateConstraints(el); err != nil {
+		if err := AssertKeywordUpdateGeneratedConstraints(el); err != nil {
 			return err
 		}
 	}
@@ -106,6 +114,11 @@ func AssertBulkUpsertRequestUpdateConstraints(obj BulkUpsertRequestUpdate) error
 	}
 	for _, el := range obj.ProductGroups {
 		if err := AssertProductGroupPromotionUpdateRequestConstraints(el); err != nil {
+			return err
+		}
+	}
+	for _, el := range obj.Schedules {
+		if err := AssertScheduleUpdateRequestConstraints(el); err != nil {
 			return err
 		}
 	}

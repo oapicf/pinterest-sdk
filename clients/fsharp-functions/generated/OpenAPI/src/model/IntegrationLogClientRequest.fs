@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.HttpMethod
 open System.Collections.Generic
 
 module IntegrationLogClientRequest =
@@ -14,7 +15,7 @@ module IntegrationLogClientRequest =
     [<JsonProperty(PropertyName = "host")>]
     Host : string;
     [<JsonProperty(PropertyName = "method")>]
-    Method : string;
+    Method : HttpMethod;
     [<JsonProperty(PropertyName = "path")>]
     Path : string;
     [<JsonProperty(PropertyName = "request_headers")>]

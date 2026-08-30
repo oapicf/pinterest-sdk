@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | Pointer to **bool** | Returns true if the notification accepted. | [optional] 
-**ReceivedAt** | Pointer to **int32** | Received time. Unix timestamp in seconds. | [optional] 
 **ErrorMsg** | Pointer to **string** | error message when success is false | [optional] 
+**ReceivedAt** | Pointer to **int32** | Received time. Unix timestamp in seconds. | [optional] 
+**Success** | Pointer to **bool** | Returns true if the notification accepted. | [optional] 
 
 ## Methods
 
@@ -27,30 +27,30 @@ NewNotificationResponseWithDefaults instantiates a new NotificationResponse obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSuccess
+### GetErrorMsg
 
-`func (o *NotificationResponse) GetSuccess() bool`
+`func (o *NotificationResponse) GetErrorMsg() string`
 
-GetSuccess returns the Success field if non-nil, zero value otherwise.
+GetErrorMsg returns the ErrorMsg field if non-nil, zero value otherwise.
 
-### GetSuccessOk
+### GetErrorMsgOk
 
-`func (o *NotificationResponse) GetSuccessOk() (*bool, bool)`
+`func (o *NotificationResponse) GetErrorMsgOk() (*string, bool)`
 
-GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
+GetErrorMsgOk returns a tuple with the ErrorMsg field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSuccess
+### SetErrorMsg
 
-`func (o *NotificationResponse) SetSuccess(v bool)`
+`func (o *NotificationResponse) SetErrorMsg(v string)`
 
-SetSuccess sets Success field to given value.
+SetErrorMsg sets ErrorMsg field to given value.
 
-### HasSuccess
+### HasErrorMsg
 
-`func (o *NotificationResponse) HasSuccess() bool`
+`func (o *NotificationResponse) HasErrorMsg() bool`
 
-HasSuccess returns a boolean if a field has been set.
+HasErrorMsg returns a boolean if a field has been set.
 
 ### GetReceivedAt
 
@@ -77,30 +77,30 @@ SetReceivedAt sets ReceivedAt field to given value.
 
 HasReceivedAt returns a boolean if a field has been set.
 
-### GetErrorMsg
+### GetSuccess
 
-`func (o *NotificationResponse) GetErrorMsg() string`
+`func (o *NotificationResponse) GetSuccess() bool`
 
-GetErrorMsg returns the ErrorMsg field if non-nil, zero value otherwise.
+GetSuccess returns the Success field if non-nil, zero value otherwise.
 
-### GetErrorMsgOk
+### GetSuccessOk
 
-`func (o *NotificationResponse) GetErrorMsgOk() (*string, bool)`
+`func (o *NotificationResponse) GetSuccessOk() (*bool, bool)`
 
-GetErrorMsgOk returns a tuple with the ErrorMsg field if it's non-nil, zero value otherwise
+GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetErrorMsg
+### SetSuccess
 
-`func (o *NotificationResponse) SetErrorMsg(v string)`
+`func (o *NotificationResponse) SetSuccess(v bool)`
 
-SetErrorMsg sets ErrorMsg field to given value.
+SetSuccess sets Success field to given value.
 
-### HasErrorMsg
+### HasSuccess
 
-`func (o *NotificationResponse) HasErrorMsg() bool`
+`func (o *NotificationResponse) HasSuccess() bool`
 
-HasErrorMsg returns a boolean if a field has been set.
+HasSuccess returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -46,7 +46,10 @@ public class IntegrationRecord  {
 
   private String externalBusinessId;
 
-  @ApiModelProperty(value = "")
+ /**
+  * Integration record ID.
+  */
+  @ApiModelProperty(required = true, value = "Integration record ID.")
 
   private String id;
 
@@ -108,6 +111,14 @@ public class IntegrationRecord  {
     return connectedAdvertiserId;
   }
 
+  public void setConnectedAdvertiserId(String connectedAdvertiserId) {
+    this.connectedAdvertiserId = connectedAdvertiserId;
+  }
+
+  public IntegrationRecord connectedAdvertiserId(String connectedAdvertiserId) {
+    this.connectedAdvertiserId = connectedAdvertiserId;
+    return this;
+  }
 
  /**
    * Get connectedLbaId
@@ -172,6 +183,14 @@ public class IntegrationRecord  {
     return connectedUserId;
   }
 
+  public void setConnectedUserId(String connectedUserId) {
+    this.connectedUserId = connectedUserId;
+  }
+
+  public IntegrationRecord connectedUserId(String connectedUserId) {
+    this.connectedUserId = connectedUserId;
+    return this;
+  }
 
  /**
    * Get createdTime
@@ -210,7 +229,7 @@ public class IntegrationRecord  {
   }
 
  /**
-   * Get id
+   * Integration record ID.
    * @return id
   **/
   @JsonProperty("id")
@@ -218,14 +237,6 @@ public class IntegrationRecord  {
     return id;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public IntegrationRecord id(String id) {
-    this.id = id;
-    return this;
-  }
 
  /**
    * Get partnerAccessToken
@@ -435,10 +446,7 @@ public class IntegrationRecord  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

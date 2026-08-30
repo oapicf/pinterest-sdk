@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BusinessMemberSortBy"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BusinessMemberSortBy"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BusinessMemberSortBy {
+    title = BusinessMemberSortBy
+    description = BusinessMemberSortBy
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  BusinessMemberSortBy {
+    title = BusinessMemberSortBy
+    description = BusinessMemberSortBy
+    implements = openapi_server.resourceTypes.BusinessMemberSortBy
+
+  }
+}

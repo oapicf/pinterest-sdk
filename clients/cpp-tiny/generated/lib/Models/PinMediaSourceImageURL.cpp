@@ -106,7 +106,7 @@ PinMediaSourceImageURL::isIsStandard()
 }
 
 void
-PinMediaSourceImageURL::setIsStandard(bool  is_standard)
+PinMediaSourceImageURL::setIsStandard(bool is_standard)
 {
 	this->is_standard = is_standard;
 }
@@ -118,7 +118,7 @@ PinMediaSourceImageURL::getSourceType()
 }
 
 void
-PinMediaSourceImageURL::setSourceType(std::string  source_type)
+PinMediaSourceImageURL::setSourceType(std::string source_type)
 {
 	this->source_type = source_type;
 }
@@ -130,7 +130,7 @@ PinMediaSourceImageURL::getUrl()
 }
 
 void
-PinMediaSourceImageURL::setUrl(std::string  url)
+PinMediaSourceImageURL::setUrl(std::string url)
 {
 	this->url = url;
 }

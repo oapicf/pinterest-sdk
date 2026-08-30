@@ -10,40 +10,36 @@
 
 part of openapi.api;
 
-/// Refers ads entity type. Schedule enum is only applicable to beta users
-class BulkEntityType {
-  /// Instantiate a new enum with the provided [value].
-  const BulkEntityType._(this.value);
+/// Refers ads entity type.
+enum BulkEntityType {
+  CAMPAIGN._(r'CAMPAIGN'),
+  AD_GROUP._(r'AD_GROUP'),
+  PRODUCT_GROUP._(r'PRODUCT_GROUP'),
+  AD._(r'AD'),
+  KEYWORD._(r'KEYWORD'),
+  LABEL._(r'LABEL'),
+  SCHEDULE._(r'SCHEDULE'),
+  ENTITY_HISTORY._(r'ENTITY_HISTORY'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const BulkEntityType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CAMPAIGN = BulkEntityType._(r'CAMPAIGN');
-  static const AD_GROUP = BulkEntityType._(r'AD_GROUP');
-  static const PRODUCT_GROUP = BulkEntityType._(r'PRODUCT_GROUP');
-  static const AD = BulkEntityType._(r'AD');
-  static const KEYWORD = BulkEntityType._(r'KEYWORD');
-  static const LABEL = BulkEntityType._(r'LABEL');
-  static const SCHEDULE = BulkEntityType._(r'SCHEDULE');
-
-  /// List of all possible values in this [enum][BulkEntityType].
-  static const values = <BulkEntityType>[
-    CAMPAIGN,
-    AD_GROUP,
-    PRODUCT_GROUP,
-    AD,
-    KEYWORD,
-    LABEL,
-    SCHEDULE,
-  ];
-
+  /// Returns the instance of [BulkEntityType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static BulkEntityType? fromJson(dynamic value) => BulkEntityTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [BulkEntityType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<BulkEntityType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <BulkEntityType>[];
     if (json is List && json.isNotEmpty) {
@@ -65,9 +61,11 @@ class BulkEntityTypeTypeTransformer {
 
   const BulkEntityTypeTypeTransformer._();
 
-  String encode(BulkEntityType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(BulkEntityType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a BulkEntityType.
+  /// Returns the instance of [BulkEntityType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -76,6 +74,9 @@ class BulkEntityTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   BulkEntityType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is BulkEntityType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CAMPAIGN': return BulkEntityType.CAMPAIGN;
@@ -85,6 +86,7 @@ class BulkEntityTypeTypeTransformer {
         case r'KEYWORD': return BulkEntityType.KEYWORD;
         case r'LABEL': return BulkEntityType.LABEL;
         case r'SCHEDULE': return BulkEntityType.SCHEDULE;
+        case r'ENTITY_HISTORY': return BulkEntityType.ENTITY_HISTORY;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -94,7 +96,7 @@ class BulkEntityTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [BulkEntityTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static BulkEntityTypeTypeTransformer? _instance;
 }
 

@@ -25,17 +25,17 @@ typedef struct integration_record_t {
     char *connected_merchant_id; // string
     char *connected_tag_id; // string
     char *connected_user_id; // string
-    int created_time; //numeric
+    int *created_time; //numeric
     char *external_business_id; // string
     char *id; // string
     char *partner_access_token; // string
-    int partner_access_token_expiry; //numeric
+    int *partner_access_token_expiry; //numeric
     char *partner_metadata; // string
     char *partner_primary_email; // string
     char *partner_refresh_token; // string
-    int partner_refresh_token_expiry; //numeric
+    int *partner_refresh_token_expiry; //numeric
     char *scopes; // string
-    int updated_time; //numeric
+    int *updated_time; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } integration_record_t;
@@ -47,17 +47,17 @@ __attribute__((deprecated)) integration_record_t *integration_record_create(
     char *connected_merchant_id,
     char *connected_tag_id,
     char *connected_user_id,
-    int created_time,
+    int *created_time,
     char *external_business_id,
     char *id,
     char *partner_access_token,
-    int partner_access_token_expiry,
+    int *partner_access_token_expiry,
     char *partner_metadata,
     char *partner_primary_email,
     char *partner_refresh_token,
-    int partner_refresh_token_expiry,
+    int *partner_refresh_token_expiry,
     char *scopes,
-    int updated_time
+    int *updated_time
 );
 
 void integration_record_free(integration_record_t *integration_record);

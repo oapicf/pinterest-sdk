@@ -3,12 +3,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdUnderscoreat** | **string** |  | [default to null]
+**createdUnderscoreat** | **string** |  | [readonly] [default to null]
 **id** | **string** |  | [default to null]
-**updatedUnderscoreat** | **string** |  | [default to null]
 **ingestionUnderscoredetails** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | [default to null]
 **productUnderscorecounts** | [**CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | [default to null]
 **status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | [default to null]
+**updatedUnderscoreat** | **string** |  | [readonly] [default to null]
 **validationUnderscoredetails** | [**CatalogsFeedValidationDetails**](CatalogsFeedValidationDetails.md) |  | [default to null]
 **videoUnderscorecounts** | [**CatalogsFeedVideoCounts**](CatalogsFeedVideoCounts.md) |  | [optional] [default to null]
 

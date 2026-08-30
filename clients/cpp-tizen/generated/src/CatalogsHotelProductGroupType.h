@@ -1,7 +1,7 @@
 /*
  * CatalogsHotelProductGroupType.h
  *
- * &lt;p&gt;Catalog hotel product group type&lt;/p&gt; &lt;p&gt;MERCHANT_CREATED: Product groups created by merchants. &lt;br&gt;ALL_LISTINGS: Includes every hotel item in your catalog.
+ * Catalog hotel product group type
  */
 
 #ifndef _CatalogsHotelProductGroupType_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief <p>Catalog hotel product group type</p> <p>MERCHANT_CREATED: Product groups created by merchants. <br>ALL_LISTINGS: Includes every hotel item in your catalog.
+/*! \brief Catalog hotel product group type
  *
  *  \ingroup Models
  *

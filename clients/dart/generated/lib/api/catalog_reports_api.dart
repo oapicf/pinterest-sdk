@@ -18,18 +18,17 @@ class CatalogReportsApi {
 
   /// Build catalogs report
   ///
-  /// Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the All Items report type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+  /// Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: The All Items report is limited to 25 million items per catalog.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [CatalogsReportParameters] catalogsReportParameters (required):
-  ///   Request object to asynchronously create a report.
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> reportsCreateWithHttpInfo(CatalogsReportParameters catalogsReportParameters, { String? adAccountId, }) async {
+  Future<Response> reportsCreateWithHttpInfo(CatalogsReportParameters catalogsReportParameters, { String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/catalogs/reports';
 
@@ -55,22 +54,22 @@ class CatalogReportsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Build catalogs report
   ///
-  /// Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the All Items report type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+  /// Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: The All Items report is limited to 25 million items per catalog.
   ///
   /// Parameters:
   ///
   /// * [CatalogsReportParameters] catalogsReportParameters (required):
-  ///   Request object to asynchronously create a report.
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<CatalogsCreateReportResponse?> reportsCreate(CatalogsReportParameters catalogsReportParameters, { String? adAccountId, }) async {
-    final response = await reportsCreateWithHttpInfo(catalogsReportParameters,  adAccountId: adAccountId, );
+  Future<CatalogsCreateReportResponse?> reportsCreate(CatalogsReportParameters catalogsReportParameters, { String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await reportsCreateWithHttpInfo(catalogsReportParameters, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -86,18 +85,18 @@ class CatalogReportsApi {
 
   /// Get catalogs report
   ///
-  /// This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+  /// This returns a URL to a report given a token returned from [Build catalogs report](/docs/api/v5/#operation/reports/create). You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] token (required):
-  ///   Token returned from async build report call
+  ///   Token returned from the post request creation call
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> reportsGetWithHttpInfo(String token, { String? adAccountId, }) async {
+  Future<Response> reportsGetWithHttpInfo(String token, { String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/catalogs/reports';
 
@@ -124,22 +123,23 @@ class CatalogReportsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get catalogs report
   ///
-  /// This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+  /// This returns a URL to a report given a token returned from [Build catalogs report](/docs/api/v5/#operation/reports/create). You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
   ///
   /// Parameters:
   ///
   /// * [String] token (required):
-  ///   Token returned from async build report call
+  ///   Token returned from the post request creation call
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<CatalogsReport?> reportsGet(String token, { String? adAccountId, }) async {
-    final response = await reportsGetWithHttpInfo(token,  adAccountId: adAccountId, );
+  Future<CatalogsReport?> reportsGet(String token, { String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await reportsGetWithHttpInfo(token, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -155,24 +155,24 @@ class CatalogReportsApi {
 
   /// List report stats
   ///
-  /// List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+  /// List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [ReportsStatsParametersParameter] parameters (required):
+  /// * [CatalogsReportStatsParameters] parameters (required):
   ///   Contains the parameters for report identification.
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<Response> reportsStatsWithHttpInfo(ReportsStatsParametersParameter parameters, { String? adAccountId, int? pageSize, String? bookmark, }) async {
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> reportsStatsWithHttpInfo(CatalogsReportStatsParameters parameters, { String? adAccountId, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/catalogs/reports/stats';
 
@@ -186,13 +186,13 @@ class CatalogReportsApi {
     if (adAccountId != null) {
       queryParams.addAll(_queryParams('', 'ad_account_id', adAccountId));
     }
-    if (pageSize != null) {
-      queryParams.addAll(_queryParams('', 'page_size', pageSize));
-    }
+      queryParams.addAll(_queryParams('', 'parameters', parameters));
     if (bookmark != null) {
       queryParams.addAll(_queryParams('', 'bookmark', bookmark));
     }
-      queryParams.addAll(_queryParams('', 'parameters', parameters));
+    if (pageSize != null) {
+      queryParams.addAll(_queryParams('', 'page_size', pageSize));
+    }
 
     const contentTypes = <String>[];
 
@@ -205,28 +205,29 @@ class CatalogReportsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// List report stats
   ///
-  /// List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+  /// List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
   ///
   /// Parameters:
   ///
-  /// * [ReportsStatsParametersParameter] parameters (required):
+  /// * [CatalogsReportStatsParameters] parameters (required):
   ///   Contains the parameters for report identification.
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<ReportsStats200Response?> reportsStats(ReportsStatsParametersParameter parameters, { String? adAccountId, int? pageSize, String? bookmark, }) async {
-    final response = await reportsStatsWithHttpInfo(parameters,  adAccountId: adAccountId, pageSize: pageSize, bookmark: bookmark, );
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<ReportsStats200Response?> reportsStats(CatalogsReportStatsParameters parameters, { String? adAccountId, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await reportsStatsWithHttpInfo(parameters, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

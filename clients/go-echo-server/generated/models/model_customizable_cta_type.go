@@ -27,10 +27,12 @@ const (
 	DOWNLOAD CustomizableCtaType = "DOWNLOAD"
 	EXPLORE_MORE CustomizableCtaType = "EXPLORE_MORE"
 	FIND_A_LOCATION CustomizableCtaType = "FIND_A_LOCATION"
+	FIND_RETAILERS CustomizableCtaType = "FIND_RETAILERS"
 	GET_DEAL CustomizableCtaType = "GET_DEAL"
 	GET_RECIPE CustomizableCtaType = "GET_RECIPE"
 	GET_SHOWTIMES CustomizableCtaType = "GET_SHOWTIMES"
 	ON_SALE CustomizableCtaType = "ON_SALE"
 	PLAY_GAME CustomizableCtaType = "PLAY_GAME"
 	TRY_IT CustomizableCtaType = "TRY_IT"
+	TAKE_A_PEEK CustomizableCtaType = "TAKE_A_PEEK"
 )

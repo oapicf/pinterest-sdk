@@ -18,7 +18,7 @@ class CreateAssetInvitesRequestItem {
     required this.inviteType,
   });
 
-  /// An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+  /// An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.
   Map<String, List<Permissions>> assetIdToPermissions;
 
   /// Unique identifier of an invite.
@@ -61,10 +61,12 @@ class CreateAssetInvitesRequestItem {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CreateAssetInvitesRequestItem[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CreateAssetInvitesRequestItem[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'asset_id_to_permissions'), 'Required key "CreateAssetInvitesRequestItem[asset_id_to_permissions]" is missing from JSON.');
+        assert(json[r'asset_id_to_permissions'] != null, 'Required key "CreateAssetInvitesRequestItem[asset_id_to_permissions]" has a null value in JSON.');
+        assert(json.containsKey(r'invite_id'), 'Required key "CreateAssetInvitesRequestItem[invite_id]" is missing from JSON.');
+        assert(json[r'invite_id'] != null, 'Required key "CreateAssetInvitesRequestItem[invite_id]" has a null value in JSON.');
+        assert(json.containsKey(r'invite_type'), 'Required key "CreateAssetInvitesRequestItem[invite_type]" is missing from JSON.');
+        assert(json[r'invite_type'] != null, 'Required key "CreateAssetInvitesRequestItem[invite_type]" has a null value in JSON.');
         return true;
       }());
 

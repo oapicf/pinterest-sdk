@@ -17,10 +17,10 @@ postBusinessAccessBusinessHierarchyByTextBrandAccountsR businessHierarchyId = no
 --
 -- Update an existing Brand Account
 -- operationId: brandAccounts/update
-patchBusinessAccessBusinessHierarchyByTextBrandAccountsByTextR :: Text -- ^ business hierarchy node id
-                                                               -> Text -- ^ Unique identifier of a brand account.
+patchBusinessAccessBusinessHierarchyByTextBrandAccountsByTextR :: Text -- ^ 
+                                                               -> Text -- ^ business hierarchy node id
                                                                -> Handler Value
-patchBusinessAccessBusinessHierarchyByTextBrandAccountsByTextR businessHierarchyId brandAccountId = notImplemented
+patchBusinessAccessBusinessHierarchyByTextBrandAccountsByTextR brandAccountId businessHierarchyId = notImplemented
 
 -- | Terminate business memberships
 --

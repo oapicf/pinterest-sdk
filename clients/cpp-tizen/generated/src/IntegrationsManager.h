@@ -5,15 +5,15 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
-#include "Error.h"
-#include "IntegrationLogsRequest.h"
+#include "IntegrationLogsInvalidLogResponse.h"
+#include "IntegrationLogsRequestCreate.h"
 #include "IntegrationLogsSuccessResponse.h"
 #include "IntegrationMetadata.h"
+#include "IntegrationMetadataCreate.h"
+#include "IntegrationMetadataUpdate.h"
 #include "IntegrationRecord.h"
-#include "IntegrationRequest.h"
-#include "IntegrationRequestPatch.h"
 #include "Integrations_get_list_200_response.h"
-#include "Integrations_logs_post_400_response.h"
+#include "Pinterest.Lib.Error.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -42,8 +42,8 @@ public:
  */
 bool integrationsCommerceDelSync(char * accessToken,
 	std::string externalBusinessId, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(IntegrationMetadata, Error, void* )
+	, void* userData);
 
 /*! \brief Delete commerce integration. *Asynchronous*
  *
@@ -55,8 +55,8 @@ bool integrationsCommerceDelSync(char * accessToken,
  */
 bool integrationsCommerceDelAsync(char * accessToken,
 	std::string externalBusinessId, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(IntegrationMetadata, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get commerce integration. *Synchronous*
@@ -90,13 +90,13 @@ bool integrationsCommerceGetAsync(char * accessToken,
  *
  * Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
  * \param externalBusinessId External business ID for the integration. *Required*
- * \param integrationRequestPatch Parameters to get create/update the Integration Metadata *Required*
+ * \param integrationMetadataUpdate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool integrationsCommercePatchSync(char * accessToken,
-	std::string externalBusinessId, std::shared_ptr<IntegrationRequestPatch> integrationRequestPatch, 
+	std::string externalBusinessId, std::shared_ptr<IntegrationMetadataUpdate> integrationMetadataUpdate, 
 	void(* handler)(IntegrationMetadata, Error, void* )
 	, void* userData);
 
@@ -104,13 +104,13 @@ bool integrationsCommercePatchSync(char * accessToken,
  *
  * Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
  * \param externalBusinessId External business ID for the integration. *Required*
- * \param integrationRequestPatch Parameters to get create/update the Integration Metadata *Required*
+ * \param integrationMetadataUpdate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool integrationsCommercePatchAsync(char * accessToken,
-	std::string externalBusinessId, std::shared_ptr<IntegrationRequestPatch> integrationRequestPatch, 
+	std::string externalBusinessId, std::shared_ptr<IntegrationMetadataUpdate> integrationMetadataUpdate, 
 	void(* handler)(IntegrationMetadata, Error, void* )
 	, void* userData);
 
@@ -118,26 +118,26 @@ bool integrationsCommercePatchAsync(char * accessToken,
 /*! \brief Create commerce integration. *Synchronous*
  *
  * Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
- * \param integrationRequest Parameters to get create/update the Integration Metadata *Required*
+ * \param integrationMetadataCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool integrationsCommercePostSync(char * accessToken,
-	std::shared_ptr<IntegrationRequest> integrationRequest, 
+	std::shared_ptr<IntegrationMetadataCreate> integrationMetadataCreate, 
 	void(* handler)(IntegrationMetadata, Error, void* )
 	, void* userData);
 
 /*! \brief Create commerce integration. *Asynchronous*
  *
  * Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
- * \param integrationRequest Parameters to get create/update the Integration Metadata *Required*
+ * \param integrationMetadataCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool integrationsCommercePostAsync(char * accessToken,
-	std::shared_ptr<IntegrationRequest> integrationRequest, 
+	std::shared_ptr<IntegrationMetadataCreate> integrationMetadataCreate, 
 	void(* handler)(IntegrationMetadata, Error, void* )
 	, void* userData);
 
@@ -145,7 +145,7 @@ bool integrationsCommercePostAsync(char * accessToken,
 /*! \brief Get integration metadata. *Synchronous*
  *
  * Get integration metadata by ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
- * \param id Integration ID. *Required*
+ * \param id Integration record ID. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -158,7 +158,7 @@ bool integrationsGetByIdSync(char * accessToken,
 /*! \brief Get integration metadata. *Asynchronous*
  *
  * Get integration metadata by ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
- * \param id Integration ID. *Required*
+ * \param id Integration record ID. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -173,7 +173,7 @@ bool integrationsGetByIdAsync(char * accessToken,
  *
  * Get integration metadata list. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -187,7 +187,7 @@ bool integrationsGetListSync(char * accessToken,
  *
  * Get integration metadata list. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -201,26 +201,26 @@ bool integrationsGetListAsync(char * accessToken,
 /*! \brief Receives batched logs from integration applications.. *Synchronous*
  *
  * This endpoint receives batched logs from integration applications on partner platforms. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
- * \param integrationLogsRequest Ingest log information from external integration application. *Required*
+ * \param integrationLogsRequestCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool integrationsLogsPostSync(char * accessToken,
-	std::shared_ptr<IntegrationLogsRequest> integrationLogsRequest, 
+	std::shared_ptr<IntegrationLogsRequestCreate> integrationLogsRequestCreate, 
 	void(* handler)(IntegrationLogsSuccessResponse, Error, void* )
 	, void* userData);
 
 /*! \brief Receives batched logs from integration applications.. *Asynchronous*
  *
  * This endpoint receives batched logs from integration applications on partner platforms. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
- * \param integrationLogsRequest Ingest log information from external integration application. *Required*
+ * \param integrationLogsRequestCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool integrationsLogsPostAsync(char * accessToken,
-	std::shared_ptr<IntegrationLogsRequest> integrationLogsRequest, 
+	std::shared_ptr<IntegrationLogsRequestCreate> integrationLogsRequestCreate, 
 	void(* handler)(IntegrationLogsSuccessResponse, Error, void* )
 	, void* userData);
 

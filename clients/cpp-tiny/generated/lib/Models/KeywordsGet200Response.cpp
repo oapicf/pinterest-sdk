@@ -102,7 +102,7 @@ Keywords_get_200_response::getBookmark()
 }
 
 void
-Keywords_get_200_response::setBookmark(std::string  bookmark)
+Keywords_get_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Keywords_get_200_response::getItems()
 }
 
 void
-Keywords_get_200_response::setItems(std::list <Keyword> items)
+Keywords_get_200_response::setItems(std::list<Keyword> items)
 {
 	this->items = items;
 }

@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.vertxweb.server.model.CatalogsAiContentDisclosure;
 import org.openapitools.vertxweb.server.model.CatalogsHotelAddress;
-import org.openapitools.vertxweb.server.model.CatalogsHotelAttributesAllOfMainImage;
 import org.openapitools.vertxweb.server.model.CatalogsHotelGuestRatings;
+import org.openapitools.vertxweb.server.model.CatalogsHotelMainImage;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsHotelAttributes   {
@@ -33,13 +34,14 @@ public class CatalogsHotelAttributes   {
   private List<String> neighborhood;
   private String salePrice;
   private List<String> additionalImageLink;
-  private CatalogsHotelAttributesAllOfMainImage mainImage;
+  private List<CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
+  private CatalogsHotelMainImage mainImage;
 
   public CatalogsHotelAttributes () {
 
   }
 
-  public CatalogsHotelAttributes (CatalogsHotelAddress address, String basePrice, String brand, String category, String customLabel0, String customLabel1, String customLabel2, String customLabel3, String customLabel4, String description, CatalogsHotelGuestRatings guestRatings, BigDecimal latitude, String link, BigDecimal longitude, String name, List<String> neighborhood, String salePrice, List<String> additionalImageLink, CatalogsHotelAttributesAllOfMainImage mainImage) {
+  public CatalogsHotelAttributes (CatalogsHotelAddress address, String basePrice, String brand, String category, String customLabel0, String customLabel1, String customLabel2, String customLabel3, String customLabel4, String description, CatalogsHotelGuestRatings guestRatings, BigDecimal latitude, String link, BigDecimal longitude, String name, List<String> neighborhood, String salePrice, List<String> additionalImageLink, List<CatalogsAiContentDisclosure> aiDisclosures, CatalogsHotelMainImage mainImage) {
     this.address = address;
     this.basePrice = basePrice;
     this.brand = brand;
@@ -58,6 +60,7 @@ public class CatalogsHotelAttributes   {
     this.neighborhood = neighborhood;
     this.salePrice = salePrice;
     this.additionalImageLink = additionalImageLink;
+    this.aiDisclosures = aiDisclosures;
     this.mainImage = mainImage;
   }
 
@@ -224,11 +227,20 @@ public class CatalogsHotelAttributes   {
   }
 
     
+  @JsonProperty("ai_disclosures")
+  public List<CatalogsAiContentDisclosure> getAiDisclosures() {
+    return aiDisclosures;
+  }
+  public void setAiDisclosures(List<CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+  }
+
+    
   @JsonProperty("main_image")
-  public CatalogsHotelAttributesAllOfMainImage getMainImage() {
+  public CatalogsHotelMainImage getMainImage() {
     return mainImage;
   }
-  public void setMainImage(CatalogsHotelAttributesAllOfMainImage mainImage) {
+  public void setMainImage(CatalogsHotelMainImage mainImage) {
     this.mainImage = mainImage;
   }
 
@@ -260,12 +272,13 @@ public class CatalogsHotelAttributes   {
         Objects.equals(neighborhood, catalogsHotelAttributes.neighborhood) &&
         Objects.equals(salePrice, catalogsHotelAttributes.salePrice) &&
         Objects.equals(additionalImageLink, catalogsHotelAttributes.additionalImageLink) &&
+        Objects.equals(aiDisclosures, catalogsHotelAttributes.aiDisclosures) &&
         Objects.equals(mainImage, catalogsHotelAttributes.mainImage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, basePrice, brand, category, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, guestRatings, latitude, link, longitude, name, neighborhood, salePrice, additionalImageLink, mainImage);
+    return Objects.hash(address, basePrice, brand, category, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, guestRatings, latitude, link, longitude, name, neighborhood, salePrice, additionalImageLink, aiDisclosures, mainImage);
   }
 
   @Override
@@ -291,6 +304,7 @@ public class CatalogsHotelAttributes   {
     sb.append("    neighborhood: ").append(toIndentedString(neighborhood)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
     sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    mainImage: ").append(toIndentedString(mainImage)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -301,9 +315,6 @@ public class CatalogsHotelAttributes   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

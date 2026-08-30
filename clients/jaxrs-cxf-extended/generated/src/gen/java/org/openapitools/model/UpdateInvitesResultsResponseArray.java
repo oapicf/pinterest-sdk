@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.UpdateInvitesResultsResponseArrayItemsInner;
+import org.openapitools.model.InviteActionResultItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,27 +19,27 @@ public class UpdateInvitesResultsResponseArray  {
   */
   @ApiModelProperty(value = "List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.")
   @Valid
-  private List<@Valid UpdateInvitesResultsResponseArrayItemsInner> items = new ArrayList<>();
+  private List<@Valid InviteActionResultItem> items = new ArrayList<>();
  /**
   * List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
   * @return items
   */
   @JsonProperty("items")
-  public List<@Valid UpdateInvitesResultsResponseArrayItemsInner> getItems() {
+  public List<@Valid InviteActionResultItem> getItems() {
     return items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
- public void setItems(List<@Valid UpdateInvitesResultsResponseArrayItemsInner> items) {
+ public void setItems(List<@Valid InviteActionResultItem> items) {
     this.items = items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
-  public UpdateInvitesResultsResponseArray items(List<@Valid UpdateInvitesResultsResponseArrayItemsInner> items) {
+  public UpdateInvitesResultsResponseArray items(List<@Valid InviteActionResultItem> items) {
     this.items = items;
     return this;
   }
@@ -47,7 +47,7 @@ public class UpdateInvitesResultsResponseArray  {
   /**
    * Adds a new item to the <code>items</code> list.
    */
-  public UpdateInvitesResultsResponseArray addItemsItem(UpdateInvitesResultsResponseArrayItemsInner itemsItem) {
+  public UpdateInvitesResultsResponseArray addItemsItem(InviteActionResultItem itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -85,10 +85,7 @@ public class UpdateInvitesResultsResponseArray  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

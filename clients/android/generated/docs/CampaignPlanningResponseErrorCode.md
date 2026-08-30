@@ -1,0 +1,10 @@
+
+
+# CampaignPlanningResponseErrorCode
+
+## Enum
+
+
+
+
+

@@ -1,7 +1,7 @@
 /*
  * QuizPinOption.h
  *
- *  This field contains multiple options to a quiz question.
+ * This field contains multiple options to a quiz question.
  */
 
 #ifndef _QuizPinOption_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief  This field contains multiple options to a quiz question.
+/*! \brief This field contains multiple options to a quiz question.
  *
  *  \ingroup Models
  *

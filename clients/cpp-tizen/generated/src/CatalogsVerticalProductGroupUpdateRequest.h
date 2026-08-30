@@ -86,11 +86,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setLocale(CatalogsLocale  locale);
-	/*! \brief Get 
+	/*! \brief Get Name of catalog product group
 	 */
 	std::string getName();
 
-	/*! \brief Set 
+	/*! \brief Set Name of catalog product group
 	 */
 	void setName(std::string  name);
 

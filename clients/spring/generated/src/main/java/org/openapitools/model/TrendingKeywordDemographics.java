@@ -2,39 +2,40 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.TrendingKeywordDemographicsAgeDistribution;
-import org.openapitools.model.TrendingKeywordDemographicsGenderDistribution;
+import org.openapitools.model.TrendsAgeDistribution;
+import org.openapitools.model.TrendsGenderDistribution;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * A mapping of demographic dimensions (e.g. \&quot;gender\&quot;, \&quot;age\&quot;) to their category distributions. &lt;br /&gt; For each dimension: &lt;br /&gt;   - Key: The category (e.g., \&quot;female\&quot;, \&quot;18-24\&quot;). &lt;br /&gt;   - Value: The proportion of search volume (e.g., 0.12 for 12%). &lt;br /&gt;     Values less than 0.05 are set to 0.04 for privacy. &lt;br /&gt;     The sum for all categories in a dimension will approximately equal 1. &lt;br /&gt;     Only applicable when &#x60;include_demographics&#x60; query parameter is set to &#x60;true&#x60;.
+ * A mapping of demographic dimensions (e.g. \&quot;gender\&quot;, \&quot;age\&quot;) to their category distributions. For each dimension: Key: The category (e.g., \&quot;female\&quot;, \&quot;18-24\&quot;). Value: The proportion of search volume (e.g., 0.12 for 12%). Values less than 0.05 are set to 0.04 for privacy. The sum for all categories in a dimension will approximately equal 1. Only applicable when &#x60;include_demographics&#x60; query parameter is set to &#x60;true&#x60;.
  */
 
-@Schema(name = "TrendingKeyword_demographics", description = "A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. <br /> For each dimension: <br />   - Key: The category (e.g., \"female\", \"18-24\"). <br />   - Value: The proportion of search volume (e.g., 0.12 for 12%). <br />     Values less than 0.05 are set to 0.04 for privacy. <br />     The sum for all categories in a dimension will approximately equal 1. <br />     Only applicable when `include_demographics` query parameter is set to `true`.")
-@JsonTypeName("TrendingKeyword_demographics")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "TrendingKeywordDemographics", description = "A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. For each dimension: Key: The category (e.g., \"female\", \"18-24\"). Value: The proportion of search volume (e.g., 0.12 for 12%). Values less than 0.05 are set to 0.04 for privacy. The sum for all categories in a dimension will approximately equal 1. Only applicable when `include_demographics` query parameter is set to `true`.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TrendingKeywordDemographics {
 
-  private JsonNullable<TrendingKeywordDemographicsAgeDistribution> ageDistribution = JsonNullable.<TrendingKeywordDemographicsAgeDistribution>undefined();
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<TrendsAgeDistribution> ageDistribution = JsonNullable.<TrendsAgeDistribution>undefined();
 
-  private JsonNullable<TrendingKeywordDemographicsGenderDistribution> genderDistribution = JsonNullable.<TrendingKeywordDemographicsGenderDistribution>undefined();
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<TrendsGenderDistribution> genderDistribution = JsonNullable.<TrendsGenderDistribution>undefined();
 
-  public TrendingKeywordDemographics ageDistribution(TrendingKeywordDemographicsAgeDistribution ageDistribution) {
+  public TrendingKeywordDemographics ageDistribution(TrendsAgeDistribution ageDistribution) {
     this.ageDistribution = JsonNullable.of(ageDistribution);
     return this;
   }
@@ -46,15 +47,15 @@ public class TrendingKeywordDemographics {
   @Valid 
   @Schema(name = "age_distribution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("age_distribution")
-  public JsonNullable<TrendingKeywordDemographicsAgeDistribution> getAgeDistribution() {
+  public JsonNullable<TrendsAgeDistribution> getAgeDistribution() {
     return ageDistribution;
   }
 
-  public void setAgeDistribution(JsonNullable<TrendingKeywordDemographicsAgeDistribution> ageDistribution) {
+  public void setAgeDistribution(JsonNullable<TrendsAgeDistribution> ageDistribution) {
     this.ageDistribution = ageDistribution;
   }
 
-  public TrendingKeywordDemographics genderDistribution(TrendingKeywordDemographicsGenderDistribution genderDistribution) {
+  public TrendingKeywordDemographics genderDistribution(TrendsGenderDistribution genderDistribution) {
     this.genderDistribution = JsonNullable.of(genderDistribution);
     return this;
   }
@@ -66,11 +67,11 @@ public class TrendingKeywordDemographics {
   @Valid 
   @Schema(name = "gender_distribution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("gender_distribution")
-  public JsonNullable<TrendingKeywordDemographicsGenderDistribution> getGenderDistribution() {
+  public JsonNullable<TrendsGenderDistribution> getGenderDistribution() {
     return genderDistribution;
   }
 
-  public void setGenderDistribution(JsonNullable<TrendingKeywordDemographicsGenderDistribution> genderDistribution) {
+  public void setGenderDistribution(JsonNullable<TrendsGenderDistribution> genderDistribution) {
     this.genderDistribution = genderDistribution;
   }
 
@@ -118,10 +119,7 @@ public class TrendingKeywordDemographics {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

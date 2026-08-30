@@ -1,10 +1,10 @@
-# # CatalogsProduct
+# CatalogsProduct
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**\OpenAPI\Client\Model\CatalogsType**](CatalogsType.md) |  |
+**catalog_type** | **string** |  |
 **metadata** | [**\OpenAPI\Client\Model\CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  |
 **pin** | [**\OpenAPI\Client\Model\Pin**](Pin.md) |  |
 

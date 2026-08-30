@@ -8,7 +8,7 @@ The class is defined in **[CatalogsUpdatableHotelAttributes.java](../../src/main
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [`CatalogsHotelAddress`](CatalogsHotelAddress.md) |  |  [optional property]
+**address** | [`CatalogsHotelAddress`](CatalogsHotelAddress.md) | Hotel address |  [optional property]
 **basePrice** | `String` | Base price of the hotel room per night followed by the ISO currency code |  [optional property]
 **brand** | `String` | The brand to which this hotel belongs to. |  [optional property]
 **category** | `String` | The type of property. The category can be any type of internal description desired. |  [optional property]
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **customLabel3** | `String` | Custom grouping of hotels |  [optional property]
 **customLabel4** | `String` | Custom grouping of hotels |  [optional property]
 **description** | `String` | Brief description of the hotel. |  [optional property]
-**guestRatings** | [`CatalogsHotelGuestRatings`](CatalogsHotelGuestRatings.md) |  |  [optional property]
+**guestRatings** | [`CatalogsHotelGuestRatings`](CatalogsHotelGuestRatings.md) | If specified, you must provide all properties |  [optional property]
 **latitude** | `BigDecimal` | Latitude of the hotel. |  [optional property]
 **link** | `String` | Link to the product page |  [optional property]
 **longitude** | `BigDecimal` | Longitude of the hotel. |  [optional property]

@@ -15,13 +15,12 @@
 
 typedef struct catalogs_hotel_report_parameters_report_t catalogs_hotel_report_parameters_report_t;
 
-#include "catalogs_report_all_items_filter.h"
 #include "catalogs_report_distribution_issue_filter.h"
 #include "catalogs_report_feed_ingestion_filter.h"
 
 // Enum REPORTTYPE for catalogs_hotel_report_parameters_report
 
-typedef enum  { pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_NULL = 0, pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_FEED_INGESTION_ISSUES, pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_DISTRIBUTION_ISSUES, pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_ALL_ITEMS } pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e;
+typedef enum  { pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_NULL = 0, pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_DISTRIBUTION_ISSUES } pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e;
 
 char* catalogs_hotel_report_parameters_report_report_type_ToString(pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e report_type);
 
@@ -30,18 +29,18 @@ pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e catalogs
 
 
 typedef struct catalogs_hotel_report_parameters_report_t {
-    pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e report_type; //enum
     char *feed_id; // string
     char *processing_result_id; // string
+    pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e report_type; //enum
     char *catalog_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_report_parameters_report_t;
 
 __attribute__((deprecated)) catalogs_hotel_report_parameters_report_t *catalogs_hotel_report_parameters_report_create(
-    pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e report_type,
     char *feed_id,
     char *processing_result_id,
+    pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e report_type,
     char *catalog_id
 );
 

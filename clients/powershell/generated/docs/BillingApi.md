@@ -19,13 +19,13 @@ Method | HTTP request | Description
 
 <a id="Invoke-AdsCreditRedeem"></a>
 # **Invoke-AdsCreditRedeem**
-> AdsCreditRedeemResponse Invoke-AdsCreditRedeem<br>
+> AdsCreditRedeem Invoke-AdsCreditRedeem<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdsCreditRedeemRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdsCreditRedeemCreate] <PSCustomObject><br>
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```powershell
@@ -35,11 +35,11 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$AdsCreditRedeemRequest = Initialize-AdsCreditRedeemRequest -OfferCodeHash "138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67" -ValidateOnly $true # AdsCreditRedeemRequest | Redeem ad credits request.
+$AdsCreditRedeemCreate = Initialize-AdsCreditRedeemCreate -OfferCodeHash "138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67" -ValidateOnly $true # AdsCreditRedeemCreate | 
 
 # Redeem ad credits
 try {
-    $Result = Invoke-AdsCreditRedeem -AdAccountId $AdAccountId -AdsCreditRedeemRequest $AdsCreditRedeemRequest
+    $Result = Invoke-AdsCreditRedeem -AdAccountId $AdAccountId -AdsCreditRedeemCreate $AdsCreditRedeemCreate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AdsCreditRedeem: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -51,11 +51,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **AdsCreditRedeemRequest** | [**AdsCreditRedeemRequest**](AdsCreditRedeemRequest.md)| Redeem ad credits request. | 
+ **AdsCreditRedeemCreate** | [**AdsCreditRedeemCreate**](AdsCreditRedeemCreate.md)|  | 
 
 ### Return type
 
-[**AdsCreditRedeemResponse**](AdsCreditRedeemResponse.md) (PSCustomObject)
+[**AdsCreditRedeem**](AdsCreditRedeem.md) (PSCustomObject)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```powershell
@@ -88,7 +88,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # Get ads credit discounts
 try {
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -179,10 +179,10 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Sort] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Status] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-DocumentType] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Sort] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Status] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-DocumentType] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartDueDate] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EndDueDate] <System.Nullable[System.DateTime]><br>
 
@@ -199,17 +199,17 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-$Sort = "DUE_DATE" # String | Field of which to sort billing invoices (optional) (default to "DUE_DATE")
-$Order = "ASCENDING" # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-$Status = "OPEN" # String | Status of billing invoices to filter by (optional)
-$DocumentType = "INVOICE" # String | Document type of billing invoices to filter by (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+$Order = "ASCENDING" # PinterestLibPaginationOrder | The order in which to sort the items returned: ""ASCENDING"" or ""DESCENDING"" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+$Sort = "DUE_DATE" # BillingInvoiceSortField | Field of which to sort billing invoices (optional)
+$Status = "OPEN" # BillingInvoiceStatus | Status of billing invoices to filter by (optional)
+$DocumentType = "INVOICE" # BillingInvoiceDocumentType | Document type of billing invoices to filter by (optional)
 $StartDueDate = (Get-Date) # System.DateTime | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
 $EndDueDate = (Get-Date) # System.DateTime | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
 
 # Get billing invoices
 try {
-    $Result = Invoke-BillingInvoicesGet -AdAccountId $AdAccountId -Bookmark $Bookmark -PageSize $PageSize -Sort $Sort -Order $Order -Status $Status -DocumentType $DocumentType -StartDueDate $StartDueDate -EndDueDate $EndDueDate
+    $Result = Invoke-BillingInvoicesGet -AdAccountId $AdAccountId -Bookmark $Bookmark -PageSize $PageSize -Order $Order -Sort $Sort -Status $Status -DocumentType $DocumentType -StartDueDate $StartDueDate -EndDueDate $EndDueDate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BillingInvoicesGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -222,11 +222,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **Sort** | **String**| Field of which to sort billing invoices | [optional] [default to &quot;DUE_DATE&quot;]
- **Order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **Status** | **String**| Status of billing invoices to filter by | [optional] 
- **DocumentType** | **String**| Document type of billing invoices to filter by | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **Order** | [**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md)| The order in which to sort the items returned: &quot;&quot;ASCENDING&quot;&quot; or &quot;&quot;DESCENDING&quot;&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **Sort** | [**BillingInvoiceSortField**](BillingInvoiceSortField.md)| Field of which to sort billing invoices | [optional] 
+ **Status** | [**BillingInvoiceStatus**](BillingInvoiceStatus.md)| Status of billing invoices to filter by | [optional] 
+ **DocumentType** | [**BillingInvoiceDocumentType**](BillingInvoiceDocumentType.md)| Document type of billing invoices to filter by | [optional] 
  **StartDueDate** | **System.DateTime**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
  **EndDueDate** | **System.DateTime**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
 
@@ -248,14 +248,14 @@ Name | Type | Description  | Notes
 <a id="Invoke-BillingProfilesGet"></a>
 # **Invoke-BillingProfilesGet**
 > BillingProfilesGet200Response Invoke-BillingProfilesGet<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IsActive] <Boolean><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```powershell
@@ -264,14 +264,14 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $IsActive = $true # Boolean | Return active billing profiles, if false return all billing profiles.
+$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # Get billing profiles
 try {
-    $Result = Invoke-BillingProfilesGet -AdAccountId $AdAccountId -IsActive $IsActive -Bookmark $Bookmark -PageSize $PageSize
+    $Result = Invoke-BillingProfilesGet -IsActive $IsActive -AdAccountId $AdAccountId -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BillingProfilesGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -282,10 +282,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **IsActive** | **Boolean**| Return active billing profiles, if false return all billing profiles. | 
+ **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -304,12 +304,12 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-SsioAccountsGet"></a>
 # **Invoke-SsioAccountsGet**
-> SSIOAccountResponse Invoke-SsioAccountsGet<br>
+> SSIOAccount Invoke-SsioAccountsGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=""https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts"">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```powershell
@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SSIOAccountResponse**](SSIOAccountResponse.md) (PSCustomObject)
+[**SSIOAccount**](SSIOAccount.md) (PSCustomObject)
 
 ### Authorization
 
@@ -352,13 +352,13 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-SsioInsertionOrderCreate"></a>
 # **Invoke-SsioInsertionOrderCreate**
-> SSIOCreateInsertionOrderResponse Invoke-SsioInsertionOrderCreate<br>
+> SSIOInsertionOrder Invoke-SsioInsertionOrderCreate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SSIOCreateInsertionOrderRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SSIOInsertionOrderCreate] <PSCustomObject><br>
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=""https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts"">Business Access</a>: Admin, Finance, Campaign.
+  Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```powershell
@@ -368,11 +368,11 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$SSIOCreateInsertionOrderRequest = Initialize-SSIOCreateInsertionOrderRequest -AgencyLink "MyAgencyLink" -BillingContactEmail "test@example" -BillingContactFirstname "MyBillingContactFirstname" -BillingContactLastname "MyBillingContactLastname" -BudgetAmount 5000000 -EndDate "2020-12-20" -MediaContactEmail "test@example" -MediaContactFirstname "MyMediaContactFirstname" -MediaContactLastname "MyMediaContactLastname" -PoNumber "MyPoNumber" -StartDate "2020-12-20" -UserEmail "test@example" -AcceptedTermsId "MyAcceptedTermsId" -AcceptedTermsTime 0 -BilltoBillingAddressId "MyBilltoBillingAddressId" -BilltoBusinessAddressId "MyBilltoBusinessAddressId" -BilltoCompanyId "MyBilltoCompanyId" -CurrencyInfo "UNK" -EstimatedMonthlySpend 0 -OrderLineType "BUDGET" -OrderName "MyOrderName" -PmpId "MyPmpId" # SSIOCreateInsertionOrderRequest | Order line to create.
+$SSIOInsertionOrderCreate = Initialize-SSIOInsertionOrderCreate -AcceptedTermsId "MyAcceptedTermsId" -AcceptedTermsTime 0 -AgencyLink "MyAgencyLink" -BillingContactEmail "MyBillingContactEmail" -BillingContactFirstname "MyBillingContactFirstname" -BillingContactLastname "MyBillingContactLastname" -BilltoBillingAddressId "MyBilltoBillingAddressId" -BilltoBusinessAddressId "MyBilltoBusinessAddressId" -BilltoCompanyId "MyBilltoCompanyId" -BudgetAmount 0 -CurrencyInfo "UNK" -EndDate "MyEndDate" -EstimatedMonthlySpend 0 -MediaContactEmail "MyMediaContactEmail" -MediaContactFirstname "MyMediaContactFirstname" -MediaContactLastname "MyMediaContactLastname" -OrderLineType "BUDGET" -OrderName "MyOrderName" -PmpId "MyPmpId" -PoNumber "MyPoNumber" -StartDate "MyStartDate" -UserEmail "MyUserEmail" # SSIOInsertionOrderCreate | 
 
 # Create insertion order through SSIO.
 try {
-    $Result = Invoke-SsioInsertionOrderCreate -AdAccountId $AdAccountId -SSIOCreateInsertionOrderRequest $SSIOCreateInsertionOrderRequest
+    $Result = Invoke-SsioInsertionOrderCreate -AdAccountId $AdAccountId -SSIOInsertionOrderCreate $SSIOInsertionOrderCreate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-SsioInsertionOrderCreate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -384,11 +384,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **SSIOCreateInsertionOrderRequest** | [**SSIOCreateInsertionOrderRequest**](SSIOCreateInsertionOrderRequest.md)| Order line to create. | 
+ **SSIOInsertionOrderCreate** | [**SSIOInsertionOrderCreate**](SSIOInsertionOrderCreate.md)|  | 
 
 ### Return type
 
-[**SSIOCreateInsertionOrderResponse**](SSIOCreateInsertionOrderResponse.md) (PSCustomObject)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md) (PSCustomObject)
 
 ### Authorization
 
@@ -403,13 +403,13 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-SsioInsertionOrderEdit"></a>
 # **Invoke-SsioInsertionOrderEdit**
-> SSIOEditInsertionOrderResponse Invoke-SsioInsertionOrderEdit<br>
+> SSIOInsertionOrder Invoke-SsioInsertionOrderEdit<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SSIOEditInsertionOrderRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SSIOInsertionOrderUpdate] <PSCustomObject><br>
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=""https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts"">Business Access</a>: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```powershell
@@ -419,11 +419,11 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$SSIOEditInsertionOrderRequest = Initialize-SSIOEditInsertionOrderRequest -AgencyLink "MyAgencyLink" -BillingContactEmail "test@example" -BillingContactFirstname "MyBillingContactFirstname" -BillingContactLastname "MyBillingContactLastname" -BudgetAmount 5000000 -EndDate "2020-12-20" -MediaContactEmail "test@example" -MediaContactFirstname "MyMediaContactFirstname" -MediaContactLastname "MyMediaContactLastname" -PoNumber "MyPoNumber" -StartDate "2020-12-20" -UserEmail "test@example" -AdsManagerOrderLineId "MyAdsManagerOrderLineId" -OracleLineId "MyOracleLineId" -SalesforceOrderId "MySalesforceOrderId" -SalesforceOrderLineId "MySalesforceOrderLineId" # SSIOEditInsertionOrderRequest | Order line to create.
+$SSIOInsertionOrderUpdate = Initialize-SSIOInsertionOrderUpdate -AdsManagerOrderLineId "MyAdsManagerOrderLineId" -AgencyLink "MyAgencyLink" -BillingContactEmail "MyBillingContactEmail" -BillingContactFirstname "MyBillingContactFirstname" -BillingContactLastname "MyBillingContactLastname" -BudgetAmount 0 -EndDate "MyEndDate" -MediaContactEmail "MyMediaContactEmail" -MediaContactFirstname "MyMediaContactFirstname" -MediaContactLastname "MyMediaContactLastname" -OracleLineId "MyOracleLineId" -PoNumber "MyPoNumber" -SalesforceOrderId "MySalesforceOrderId" -SalesforceOrderLineId "MySalesforceOrderLineId" -StartDate "MyStartDate" -UserEmail "MyUserEmail" # SSIOInsertionOrderUpdate | 
 
 # Edit insertion order through SSIO.
 try {
-    $Result = Invoke-SsioInsertionOrderEdit -AdAccountId $AdAccountId -SSIOEditInsertionOrderRequest $SSIOEditInsertionOrderRequest
+    $Result = Invoke-SsioInsertionOrderEdit -AdAccountId $AdAccountId -SSIOInsertionOrderUpdate $SSIOInsertionOrderUpdate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-SsioInsertionOrderEdit: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -435,11 +435,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **SSIOEditInsertionOrderRequest** | [**SSIOEditInsertionOrderRequest**](SSIOEditInsertionOrderRequest.md)| Order line to create. | 
+ **SSIOInsertionOrderUpdate** | [**SSIOInsertionOrderUpdate**](SSIOInsertionOrderUpdate.md)|  | 
 
 ### Return type
 
-[**SSIOEditInsertionOrderResponse**](SSIOEditInsertionOrderResponse.md) (PSCustomObject)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md) (PSCustomObject)
 
 ### Authorization
 
@@ -461,7 +461,7 @@ Name | Type | Description  | Notes
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=""https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts"">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```powershell
@@ -472,7 +472,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # Get insertion order status by ad account id.
 try {
@@ -489,7 +489,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -514,7 +514,7 @@ Name | Type | Description  | Notes
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=""https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts"">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```powershell
@@ -524,7 +524,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$PinOrderId = "0Q01N0000015hekSVDFDC" # String | The pin order id associated with the ssio insertion order
+$PinOrderId = "MyPinOrderId" # String | The pin order id associated with the ssio insertion order
 
 # Get insertion order status by pin order id.
 try {
@@ -561,13 +561,13 @@ Name | Type | Description  | Notes
 # **Invoke-SsioOrderLinesGetByAdAccount**
 > SsioOrderLinesGetByAdAccount200Response Invoke-SsioOrderLinesGetByAdAccount<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PinOrderId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PinOrderId] <String><br>
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=""https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts"">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```powershell
@@ -577,13 +577,13 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
+$PinOrderId = "MyPinOrderId" # String | The pin order id associated with the SSIO insertion order (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-$PinOrderId = "0Q01N0000015hekSVDFDC" # String | The pin order id associated with the ssio insertino order (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # Get Salesforce order lines by ad account id.
 try {
-    $Result = Invoke-SsioOrderLinesGetByAdAccount -AdAccountId $AdAccountId -Bookmark $Bookmark -PageSize $PageSize -PinOrderId $PinOrderId
+    $Result = Invoke-SsioOrderLinesGetByAdAccount -AdAccountId $AdAccountId -PinOrderId $PinOrderId -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Invoke-SsioOrderLinesGetByAdAccount: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -595,9 +595,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
+ **PinOrderId** | **String**| The pin order id associated with the SSIO insertion order | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **PinOrderId** | **String**| The pin order id associated with the ssio insertino order | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

@@ -15,12 +15,14 @@ module AdvancedAuctionItemsSubmitDeleteRecord =
   type AdvancedAuctionItemsSubmitDeleteRecord = {
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
+    [<JsonProperty(PropertyName = "errors")>]
+    Errors : AdvancedAuctionOperationError[];
     [<JsonProperty(PropertyName = "item_id")>]
     ItemId : string;
     [<JsonProperty(PropertyName = "language")>]
     Language : Language;
-    [<JsonProperty(PropertyName = "errors")>]
-    Errors : AdvancedAuctionOperationError[];
+    [<JsonProperty(PropertyName = "operation")>]
+    Operation : string;
   }
 
   //#endregion

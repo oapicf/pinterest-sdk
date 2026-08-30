@@ -1,10 +1,11 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.TargetingTemplate;
 import org.openapitools.model.TargetingTemplateCreate;
-import org.openapitools.model.TargetingTemplateGetResponseData;
 import org.openapitools.model.TargetingTemplateList200Response;
-import org.openapitools.model.TargetingTemplateUpdateRequest;
+import org.openapitools.model.TargetingTemplateUpdateRequestReadOrUpdate;
 
 import java.util.List;
 import java.util.Map;
@@ -32,7 +33,7 @@ public interface TargetingTemplateApi  {
     /**
      * Create targeting templates
      *
-     * &lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
+     * Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
      *
      */
     @POST
@@ -41,15 +42,20 @@ public interface TargetingTemplateApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Create targeting templates", tags={ "targeting_template" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = TargetingTemplateGetResponseData.class),
-        @ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public TargetingTemplateGetResponseData targetingTemplateCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull TargetingTemplateCreate targetingTemplateCreate);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = TargetingTemplate.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = TargetingTemplate.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public TargetingTemplate targetingTemplateCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull TargetingTemplateCreate targetingTemplateCreate);
 
     /**
      * List targeting templates
      *
-     * Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
+     * Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;
      *
      */
     @GET
@@ -57,15 +63,19 @@ public interface TargetingTemplateApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List targeting templates", tags={ "targeting_template" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = TargetingTemplateList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public TargetingTemplateList200Response targetingTemplateList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("order") String order, @QueryParam("include_sizing") @DefaultValue("false")Boolean includeSizing, @QueryParam("search_query") String searchQuery, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")Integer pageSize, @QueryParam("bookmark") String bookmark);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = TargetingTemplateList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public TargetingTemplateList200Response targetingTemplateList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")Integer pageSize, @QueryParam("order") PinterestLibPaginationOrder order, @QueryParam("include_sizing") @DefaultValue("false")Boolean includeSizing, @QueryParam("search_query") String searchQuery);
 
     /**
      * Update targeting templates
      *
-     * &lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
+     * Update the targeting template given advertiser ID and targeting template ID
      *
      */
     @PATCH
@@ -74,8 +84,12 @@ public interface TargetingTemplateApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update targeting templates", tags={ "targeting_template" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success"),
-        @ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public void targetingTemplateUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull TargetingTemplateUpdateRequest targetingTemplateUpdateRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded."),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public void targetingTemplateUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate);
 }

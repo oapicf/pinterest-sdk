@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &ProductGroupPromotionCreateRequest{}
 // ProductGroupPromotionCreateRequest struct for ProductGroupPromotionCreateRequest
 type ProductGroupPromotionCreateRequest struct {
 	// ID of the Ad Group the Product Group Promotion belongs to.
-	AdGroupId string `json:"ad_group_id" validate:"regexp=^(AG)?\\\\d+$"`
+	AdGroupId string `json:"ad_group_id" validate:"regexp=^(AG)?\\d+$"`
 	ProductGroupPromotion []ProductGroupPromotion `json:"product_group_promotion"`
 }
 

@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.LabelUpdateRequestLabelsInner;
+import org.openapitools.model.LabelUpdateItem;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -17,26 +17,26 @@ public class LabelUpdateRequest  {
   */
   @ApiModelProperty(required = true, value = "Labels that you are applying to the campaign.")
 
-  private List<LabelUpdateRequestLabelsInner> labels = new ArrayList<>();
+  private List<LabelUpdateItem> labels = new ArrayList<>();
  /**
    * Labels that you are applying to the campaign.
    * @return labels
   **/
   @JsonProperty("labels")
-  public List<LabelUpdateRequestLabelsInner> getLabels() {
+  public List<LabelUpdateItem> getLabels() {
     return labels;
   }
 
-  public void setLabels(List<LabelUpdateRequestLabelsInner> labels) {
+  public void setLabels(List<LabelUpdateItem> labels) {
     this.labels = labels;
   }
 
-  public LabelUpdateRequest labels(List<LabelUpdateRequestLabelsInner> labels) {
+  public LabelUpdateRequest labels(List<LabelUpdateItem> labels) {
     this.labels = labels;
     return this;
   }
 
-  public LabelUpdateRequest addLabelsItem(LabelUpdateRequestLabelsInner labelsItem) {
+  public LabelUpdateRequest addLabelsItem(LabelUpdateItem labelsItem) {
     this.labels.add(labelsItem);
     return this;
   }
@@ -73,10 +73,7 @@ public class LabelUpdateRequest  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -1,6 +1,5 @@
 const utils = require('../utils/utils');
 const BatchOperationStatus = require('../models/BatchOperationStatus');
-const CatalogsType = require('../models/CatalogsType');
 const ItemProcessingRecord = require('../models/ItemProcessingRecord');
 
 module.exports = {
@@ -14,7 +13,12 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}catalog_type`,
-                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
+                label: `[${labelPrefix}catalog_type]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'RETAIL',
+                ],
             },
             {
                 key: `${keyPrefix}completed_time`,

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **catalog_id** | **str** | Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog | [optional] 
 **catalog_type** | **str** |  | 
 **country** | [**Country**](Country.md) |  | 
-**items** | [**List[CatalogsRetailBatchRequestItemsInner]**](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations | 
+**items** | [**List[CatalogsRetailBatchRequestItemsItems]**](CatalogsRetailBatchRequestItemsItems.md) | Array with catalogs item operations | 
 **language** | **str** | We recommend using the CatalogsLocale values. | 
 
 ## Example

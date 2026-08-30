@@ -1,11 +1,11 @@
 package controllers;
 
-import apimodels.BulkDownloadRequest;
-import apimodels.BulkDownloadResponse;
+import apimodels.BulkDownload;
+import apimodels.BulkDownloadCreate;
+import apimodels.BulkJobData;
 import apimodels.BulkUpsertRequest;
 import apimodels.BulkUpsertResponse;
-import apimodels.BulkUpsertStatusResponse;
-import apimodels.Error;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -29,7 +29,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BulkApiController extends Controller {
     private final BulkApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -44,17 +44,17 @@ public class BulkApiController extends Controller {
 
     @ApiAction
     public Result bulkDownloadCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodebulkDownloadRequest = request.body().asJson();
-        BulkDownloadRequest bulkDownloadRequest;
-        if (nodebulkDownloadRequest != null) {
-            bulkDownloadRequest = mapper.readValue(nodebulkDownloadRequest.toString(), BulkDownloadRequest.class);
+        JsonNode nodebulkDownloadCreate = request.body().asJson();
+        BulkDownloadCreate bulkDownloadCreate;
+        if (nodebulkDownloadCreate != null) {
+            bulkDownloadCreate = mapper.readValue(nodebulkDownloadCreate.toString(), BulkDownloadCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(bulkDownloadRequest);
+                OpenAPIUtils.validate(bulkDownloadCreate);
             }
         } else {
-            throw new IllegalArgumentException("'BulkDownloadRequest' parameter is required");
+            throw new IllegalArgumentException("'BulkDownloadCreate' parameter is required");
         }
-        return imp.bulkDownloadCreateHttp(request, adAccountId, bulkDownloadRequest);
+        return imp.bulkDownloadCreateHttp(request, adAccountId, bulkDownloadCreate);
     }
 
     @ApiAction

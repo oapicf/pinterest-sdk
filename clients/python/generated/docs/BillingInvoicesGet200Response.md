@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[BillingInvoiceResponse]**](BillingInvoiceResponse.md) |  | 
+**items** | [**List[BillingInvoice]**](BillingInvoice.md) |  | 
 
 ## Example
 

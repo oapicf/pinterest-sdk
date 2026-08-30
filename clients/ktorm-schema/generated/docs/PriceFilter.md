@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**PRICE** | PRICE | long NOT NULL |  | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  |  [foreignkey]
+**PRICE** | PRICE | long NOT NULL |  | [**PriceFilterPrice**](PriceFilterPrice.md) |  |  [foreignkey]
 
 
 

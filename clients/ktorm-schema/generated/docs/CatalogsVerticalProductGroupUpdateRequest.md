@@ -10,7 +10,7 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **description** | description | text |  | **kotlin.String** |  |  [optional]
 **filters** | filters | long |  | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  |  [optional] [foreignkey]
 **locale** | locale | long |  | [**CatalogsLocale**](CatalogsLocale.md) |  |  [optional] [foreignkey]
-**name** | name | text |  | **kotlin.String** |  |  [optional]
+**name** | name | text |  | **kotlin.String** | Name of catalog product group |  [optional]
 
 
 

@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCUSTOMNUMBER4(CatalogsProductGroupUint32Criteria  cUSTOM_NUMBER_4);
+	void setCUSTOMNUMBER4(CatalogsProductGroupUint32Criteria cUSTOM_NUMBER_4);
 
 
     private:

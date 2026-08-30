@@ -9,9 +9,9 @@
 -export_type([openapi_top_video_pins_analytics_response/0]).
 
 -type openapi_top_video_pins_analytics_response() ::
-  [ {'date_availability', openapi_top_pins_analytics_response_date_availability:openapi_top_pins_analytics_response_date_availability() }
-  | {'pins', list(openapi_top_video_pins_analytics_response_pins_inner:openapi_top_video_pins_analytics_response_pins_inner()) }
-  | {'sort_by', binary() }
+  [ {'date_availability', openapi_top_video_pins_analytics_response_date_availability:openapi_top_video_pins_analytics_response_date_availability() }
+  | {'pins', list(openapi_top_video_pins_analytics_response_pins_items:openapi_top_video_pins_analytics_response_pins_items()) }
+  | {'sort_by', openapi_top_video_pins_sort_by:openapi_top_video_pins_sort_by() }
   ].
 
 
@@ -19,9 +19,9 @@ openapi_top_video_pins_analytics_response() ->
     openapi_top_video_pins_analytics_response([]).
 
 openapi_top_video_pins_analytics_response(Fields) ->
-  Default = [ {'date_availability', openapi_top_pins_analytics_response_date_availability:openapi_top_pins_analytics_response_date_availability() }
-            , {'pins', list(openapi_top_video_pins_analytics_response_pins_inner:openapi_top_video_pins_analytics_response_pins_inner()) }
-            , {'sort_by', elements([<<"SAVE">>, <<"IMPRESSION">>, <<"OUTBOUND_CLICK">>, <<"VIDEO_MRC_VIEW">>, <<"VIDEO_AVG_WATCH_TIME">>, <<"VIDEO_V50_WATCH_TIME">>, <<"QUARTILE_95_PERCENT_VIEW">>, <<"VIDEO_10S_VIEW">>, <<"VIDEO_START">>]) }
+  Default = [ {'date_availability', openapi_top_video_pins_analytics_response_date_availability:openapi_top_video_pins_analytics_response_date_availability() }
+            , {'pins', list(openapi_top_video_pins_analytics_response_pins_items:openapi_top_video_pins_analytics_response_pins_items()) }
+            , {'sort_by', openapi_top_video_pins_sort_by:openapi_top_video_pins_sort_by() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

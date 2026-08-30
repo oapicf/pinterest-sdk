@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **link** | **string** |  | [optional] [default to null]
 **title** | **string** |  | [optional] [default to null]
 **visibility** | **string** |  | [optional] [default to null]
+**aiUnderscoredisclosures** | [**array[CatalogsAiContentDisclosure]**](CatalogsAiContentDisclosure.md) |  | [optional] [default to null]
 **imageUnderscorelink** | **string** |  | [optional] [default to null]
 **videoUnderscorelink** | **string** |  | [optional] [default to null]
 

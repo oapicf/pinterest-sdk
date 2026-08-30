@@ -62,6 +62,8 @@ Reporting columns
 
 * `Ctr2` (value: `'CTR_2'`)
 
+* `Campaign` (value: `'CAMPAIGN'`)
+
 * `CampaignId` (value: `'CAMPAIGN_ID'`)
 
 * `AdvertiserId` (value: `'ADVERTISER_ID'`)
@@ -149,6 +151,18 @@ Reporting columns
 * `Impression2` (value: `'IMPRESSION_2'`)
 
 * `OutboundClick2` (value: `'OUTBOUND_CLICK_2'`)
+
+* `CollectionPinItemImpression1` (value: `'COLLECTION_PIN_ITEM_IMPRESSION_1'`)
+
+* `CollectionPinItemImpression2` (value: `'COLLECTION_PIN_ITEM_IMPRESSION_2'`)
+
+* `TotalCollectionPinItemImpression` (value: `'TOTAL_COLLECTION_PIN_ITEM_IMPRESSION'`)
+
+* `CollectionPinItemClickthrough1` (value: `'COLLECTION_PIN_ITEM_CLICKTHROUGH_1'`)
+
+* `CollectionPinItemClickthrough2` (value: `'COLLECTION_PIN_ITEM_CLICKTHROUGH_2'`)
+
+* `TotalCollectionPinItemClickthrough` (value: `'TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH'`)
 
 * `TotalClickthrough` (value: `'TOTAL_CLICKTHROUGH'`)
 
@@ -379,6 +393,8 @@ Reporting columns
 * `CampaignDailySpendCap` (value: `'CAMPAIGN_DAILY_SPEND_CAP'`)
 
 * `CampaignBudgetOptimization` (value: `'CAMPAIGN_BUDGET_OPTIMIZATION'`)
+
+* `IsCatalogCreativeCampaign` (value: `'IS_CATALOG_CREATIVE_CAMPAIGN'`)
 
 * `IsPremiereCampaign` (value: `'IS_PREMIERE_CAMPAIGN'`)
 
@@ -1229,5 +1245,15 @@ Reporting columns
 * `TotalCustomConversionRate` (value: `'TOTAL_CUSTOM_CONVERSION_RATE'`)
 
 * `StandardAdFeedItemId` (value: `'STANDARD_AD_FEED_ITEM_ID'`)
+
+* `SpendOrderLineId` (value: `'SPEND_ORDER_LINE_ID'`)
+
+* `InappSkanAppInstall` (value: `'INAPP_SKAN_APP_INSTALL'`)
+
+* `InappSkanAssistedAppInstall` (value: `'INAPP_SKAN_ASSISTED_APP_INSTALL'`)
+
+* `InappSkanAppInstallCostPerAction` (value: `'INAPP_SKAN_APP_INSTALL_COST_PER_ACTION'`)
+
+* `InappSkanAppInstallConversionRate` (value: `'INAPP_SKAN_APP_INSTALL_CONVERSION_RATE'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

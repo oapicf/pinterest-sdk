@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  |  [optional]
-**items** | [**List&lt;BoardSection&gt;**](BoardSection.md) | Board sections | 
+**items** | [**List&lt;BoardSection&gt;**](BoardSection.md) |  | 
 
 
 

@@ -15,7 +15,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 
 @ApiModel(description = "Resource create operation model.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionTagCreate   {
   @JsonProperty("aem_db_enabled")
   private Boolean aemDbEnabled = false;
@@ -197,7 +197,7 @@ public class ConversionTagCreate   {
   }
 
   
-  @ApiModelProperty(example = "ACME Checkout Test Tag", required = true, value = "Conversion tag name.")
+  @ApiModelProperty(example = "download_picture", required = true, value = "Conversion tag name.")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -255,10 +255,7 @@ public class ConversionTagCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

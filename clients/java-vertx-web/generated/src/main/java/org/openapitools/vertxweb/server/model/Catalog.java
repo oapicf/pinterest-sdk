@@ -13,22 +13,31 @@ import org.openapitools.vertxweb.server.model.CatalogsType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Catalog   {
   
+  private CatalogsType catalogType;
   private OffsetDateTime createdAt;
   private String id;
-  private OffsetDateTime updatedAt;
-  private CatalogsType catalogType;
   private String name;
+  private OffsetDateTime updatedAt;
 
   public Catalog () {
 
   }
 
-  public Catalog (OffsetDateTime createdAt, String id, OffsetDateTime updatedAt, CatalogsType catalogType, String name) {
+  public Catalog (CatalogsType catalogType, OffsetDateTime createdAt, String id, String name, OffsetDateTime updatedAt) {
+    this.catalogType = catalogType;
     this.createdAt = createdAt;
     this.id = id;
-    this.updatedAt = updatedAt;
-    this.catalogType = catalogType;
     this.name = name;
+    this.updatedAt = updatedAt;
+  }
+
+    
+  @JsonProperty("catalog_type")
+  public CatalogsType getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
     
@@ -50,30 +59,21 @@ public class Catalog   {
   }
 
     
-  @JsonProperty("updated_at")
-  public OffsetDateTime getUpdatedAt() {
-    return updatedAt;
-  }
-  public void setUpdatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-    
-  @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
-    
   @JsonProperty("name")
   public String getName() {
     return name;
   }
   public void setName(String name) {
     this.name = name;
+  }
+
+    
+  @JsonProperty("updated_at")
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
 
@@ -86,16 +86,16 @@ public class Catalog   {
       return false;
     }
     Catalog catalog = (Catalog) o;
-    return Objects.equals(createdAt, catalog.createdAt) &&
+    return Objects.equals(catalogType, catalog.catalogType) &&
+        Objects.equals(createdAt, catalog.createdAt) &&
         Objects.equals(id, catalog.id) &&
-        Objects.equals(updatedAt, catalog.updatedAt) &&
-        Objects.equals(catalogType, catalog.catalogType) &&
-        Objects.equals(name, catalog.name);
+        Objects.equals(name, catalog.name) &&
+        Objects.equals(updatedAt, catalog.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, catalogType, name);
+    return Objects.hash(catalogType, createdAt, id, name, updatedAt);
   }
 
   @Override
@@ -103,11 +103,11 @@ public class Catalog   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Catalog {\n");
     
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -117,9 +117,6 @@ public class Catalog   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

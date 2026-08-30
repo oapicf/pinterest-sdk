@@ -11,8 +11,8 @@ imports {
   CatalogsCreativeAssetsItemsBatch = openapi_server.resourceTypes.CatalogsCreativeAssetsItemsBatch
   CatalogsHotelItemsBatch = openapi_server.resourceTypes.CatalogsHotelItemsBatch
   CatalogsRetailItemsBatch = openapi_server.resourceTypes.CatalogsRetailItemsBatch
-  CatalogsType = openapi_server.resourceTypes.CatalogsType
   CreativeAssetsProcessingRecord = openapi_server.resourceTypes.CreativeAssetsProcessingRecord
+  import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
 
@@ -21,15 +21,16 @@ resourceTypes {
     description = CatalogsItemsBatch
     derivedFrom = Root
     properties {
-        catalog_type {
-          type = CatalogsType
-          description = ""
-          optional = true
-        }
         batch_id {
           type =  string
           description = "Id of the catalogs items batch"
           optional = false
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["CREATIVE_ASSETS"]
+          optional = true
         }
         completed_time {
           type =  string

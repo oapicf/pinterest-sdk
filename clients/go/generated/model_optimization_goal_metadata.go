@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,9 +20,9 @@ var _ MappedNullable = &OptimizationGoalMetadata{}
 
 // OptimizationGoalMetadata struct for OptimizationGoalMetadata
 type OptimizationGoalMetadata struct {
-	ConversionTagV3GoalMetadata *OptimizationGoalMetadataConversionTagV3GoalMetadata `json:"conversion_tag_v3_goal_metadata,omitempty"`
-	FrequencyGoalMetadata *OptimizationGoalMetadataFrequencyGoalMetadata `json:"frequency_goal_metadata,omitempty"`
-	ScrollupGoalMetadata *OptimizationGoalMetadataScrollupGoalMetadata `json:"scrollup_goal_metadata,omitempty"`
+	ConversionTagV3GoalMetadata *ConversionTagV3GoalMetadata `json:"conversion_tag_v3_goal_metadata,omitempty"`
+	FrequencyGoalMetadata *FrequencyGoalMetadata `json:"frequency_goal_metadata,omitempty"`
+	ScrollupGoalMetadata *ScrollupGoalMetadata `json:"scrollup_goal_metadata,omitempty"`
 }
 
 // NewOptimizationGoalMetadata instantiates a new OptimizationGoalMetadata object
@@ -43,9 +43,9 @@ func NewOptimizationGoalMetadataWithDefaults() *OptimizationGoalMetadata {
 }
 
 // GetConversionTagV3GoalMetadata returns the ConversionTagV3GoalMetadata field value if set, zero value otherwise.
-func (o *OptimizationGoalMetadata) GetConversionTagV3GoalMetadata() OptimizationGoalMetadataConversionTagV3GoalMetadata {
+func (o *OptimizationGoalMetadata) GetConversionTagV3GoalMetadata() ConversionTagV3GoalMetadata {
 	if o == nil || IsNil(o.ConversionTagV3GoalMetadata) {
-		var ret OptimizationGoalMetadataConversionTagV3GoalMetadata
+		var ret ConversionTagV3GoalMetadata
 		return ret
 	}
 	return *o.ConversionTagV3GoalMetadata
@@ -53,7 +53,7 @@ func (o *OptimizationGoalMetadata) GetConversionTagV3GoalMetadata() Optimization
 
 // GetConversionTagV3GoalMetadataOk returns a tuple with the ConversionTagV3GoalMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OptimizationGoalMetadata) GetConversionTagV3GoalMetadataOk() (*OptimizationGoalMetadataConversionTagV3GoalMetadata, bool) {
+func (o *OptimizationGoalMetadata) GetConversionTagV3GoalMetadataOk() (*ConversionTagV3GoalMetadata, bool) {
 	if o == nil || IsNil(o.ConversionTagV3GoalMetadata) {
 		return nil, false
 	}
@@ -69,15 +69,15 @@ func (o *OptimizationGoalMetadata) HasConversionTagV3GoalMetadata() bool {
 	return false
 }
 
-// SetConversionTagV3GoalMetadata gets a reference to the given OptimizationGoalMetadataConversionTagV3GoalMetadata and assigns it to the ConversionTagV3GoalMetadata field.
-func (o *OptimizationGoalMetadata) SetConversionTagV3GoalMetadata(v OptimizationGoalMetadataConversionTagV3GoalMetadata) {
+// SetConversionTagV3GoalMetadata gets a reference to the given ConversionTagV3GoalMetadata and assigns it to the ConversionTagV3GoalMetadata field.
+func (o *OptimizationGoalMetadata) SetConversionTagV3GoalMetadata(v ConversionTagV3GoalMetadata) {
 	o.ConversionTagV3GoalMetadata = &v
 }
 
 // GetFrequencyGoalMetadata returns the FrequencyGoalMetadata field value if set, zero value otherwise.
-func (o *OptimizationGoalMetadata) GetFrequencyGoalMetadata() OptimizationGoalMetadataFrequencyGoalMetadata {
+func (o *OptimizationGoalMetadata) GetFrequencyGoalMetadata() FrequencyGoalMetadata {
 	if o == nil || IsNil(o.FrequencyGoalMetadata) {
-		var ret OptimizationGoalMetadataFrequencyGoalMetadata
+		var ret FrequencyGoalMetadata
 		return ret
 	}
 	return *o.FrequencyGoalMetadata
@@ -85,7 +85,7 @@ func (o *OptimizationGoalMetadata) GetFrequencyGoalMetadata() OptimizationGoalMe
 
 // GetFrequencyGoalMetadataOk returns a tuple with the FrequencyGoalMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OptimizationGoalMetadata) GetFrequencyGoalMetadataOk() (*OptimizationGoalMetadataFrequencyGoalMetadata, bool) {
+func (o *OptimizationGoalMetadata) GetFrequencyGoalMetadataOk() (*FrequencyGoalMetadata, bool) {
 	if o == nil || IsNil(o.FrequencyGoalMetadata) {
 		return nil, false
 	}
@@ -101,15 +101,15 @@ func (o *OptimizationGoalMetadata) HasFrequencyGoalMetadata() bool {
 	return false
 }
 
-// SetFrequencyGoalMetadata gets a reference to the given OptimizationGoalMetadataFrequencyGoalMetadata and assigns it to the FrequencyGoalMetadata field.
-func (o *OptimizationGoalMetadata) SetFrequencyGoalMetadata(v OptimizationGoalMetadataFrequencyGoalMetadata) {
+// SetFrequencyGoalMetadata gets a reference to the given FrequencyGoalMetadata and assigns it to the FrequencyGoalMetadata field.
+func (o *OptimizationGoalMetadata) SetFrequencyGoalMetadata(v FrequencyGoalMetadata) {
 	o.FrequencyGoalMetadata = &v
 }
 
 // GetScrollupGoalMetadata returns the ScrollupGoalMetadata field value if set, zero value otherwise.
-func (o *OptimizationGoalMetadata) GetScrollupGoalMetadata() OptimizationGoalMetadataScrollupGoalMetadata {
+func (o *OptimizationGoalMetadata) GetScrollupGoalMetadata() ScrollupGoalMetadata {
 	if o == nil || IsNil(o.ScrollupGoalMetadata) {
-		var ret OptimizationGoalMetadataScrollupGoalMetadata
+		var ret ScrollupGoalMetadata
 		return ret
 	}
 	return *o.ScrollupGoalMetadata
@@ -117,7 +117,7 @@ func (o *OptimizationGoalMetadata) GetScrollupGoalMetadata() OptimizationGoalMet
 
 // GetScrollupGoalMetadataOk returns a tuple with the ScrollupGoalMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OptimizationGoalMetadata) GetScrollupGoalMetadataOk() (*OptimizationGoalMetadataScrollupGoalMetadata, bool) {
+func (o *OptimizationGoalMetadata) GetScrollupGoalMetadataOk() (*ScrollupGoalMetadata, bool) {
 	if o == nil || IsNil(o.ScrollupGoalMetadata) {
 		return nil, false
 	}
@@ -133,8 +133,8 @@ func (o *OptimizationGoalMetadata) HasScrollupGoalMetadata() bool {
 	return false
 }
 
-// SetScrollupGoalMetadata gets a reference to the given OptimizationGoalMetadataScrollupGoalMetadata and assigns it to the ScrollupGoalMetadata field.
-func (o *OptimizationGoalMetadata) SetScrollupGoalMetadata(v OptimizationGoalMetadataScrollupGoalMetadata) {
+// SetScrollupGoalMetadata gets a reference to the given ScrollupGoalMetadata and assigns it to the ScrollupGoalMetadata field.
+func (o *OptimizationGoalMetadata) SetScrollupGoalMetadata(v ScrollupGoalMetadata) {
 	o.ScrollupGoalMetadata = &v
 }
 

@@ -1,14 +1,17 @@
 package controllers;
 
-import apimodels.Error;
-import apimodels.KeywordUpdateBody;
+import apimodels.Keywords;
+import apimodels.KeywordsCreate;
 import apimodels.KeywordsGet200Response;
 import apimodels.KeywordsMetricsArrayResponse;
-import apimodels.KeywordsRequest;
-import apimodels.KeywordsResponse;
+import apimodels.KeywordsUpdate;
 import apimodels.MatchType;
+import apimodels.PinterestLibError;
 import apimodels.TrendType;
 import apimodels.TrendingKeywordsResponse;
+import apimodels.TrendsAgeBucket;
+import apimodels.TrendsGenderFilter;
+import apimodels.TrendsL1Interest;
 import apimodels.TrendsSupportedRegion;
 
 import com.typesafe.config.Config;
@@ -33,7 +36,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class KeywordsApiController extends Controller {
     private final KeywordsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -72,17 +75,17 @@ public class KeywordsApiController extends Controller {
 
     @ApiAction
     public Result keywordsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodekeywordsRequest = request.body().asJson();
-        KeywordsRequest keywordsRequest;
-        if (nodekeywordsRequest != null) {
-            keywordsRequest = mapper.readValue(nodekeywordsRequest.toString(), KeywordsRequest.class);
+        JsonNode nodekeywordsCreate = request.body().asJson();
+        KeywordsCreate keywordsCreate;
+        if (nodekeywordsCreate != null) {
+            keywordsCreate = mapper.readValue(nodekeywordsCreate.toString(), KeywordsCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(keywordsRequest);
+                OpenAPIUtils.validate(keywordsCreate);
             }
         } else {
-            throw new IllegalArgumentException("'KeywordsRequest' parameter is required");
+            throw new IllegalArgumentException("'KeywordsCreate' parameter is required");
         }
-        return imp.keywordsCreateHttp(request, adAccountId, keywordsRequest);
+        return imp.keywordsCreateHttp(request, adAccountId, keywordsCreate);
     }
 
     @ApiAction
@@ -103,7 +106,7 @@ public class KeywordsApiController extends Controller {
         }
         String[] adGroupIdsArray = request.queryString().get("ad_group_ids");
         List<String> adGroupIdsList = OpenAPIUtils.parametersToList("multi", adGroupIdsArray);
-        List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds = new ArrayList<>();
+        List<@Pattern(regexp = "^\\d+$")String> adGroupIds = new ArrayList<>();
         for (String curParam : adGroupIdsList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -119,13 +122,6 @@ public class KeywordsApiController extends Controller {
                 matchTypes.add(curParam);
             }
         }
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
-        } else {
-            pageSize = 25;
-        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -133,29 +129,36 @@ public class KeywordsApiController extends Controller {
         } else {
             bookmark = null;
         }
-        return imp.keywordsGetHttp(request, adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark);
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        return imp.keywordsGetHttp(request, adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, bookmark, pageSize);
     }
 
     @ApiAction
     public Result keywordsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodekeywordUpdateBody = request.body().asJson();
-        KeywordUpdateBody keywordUpdateBody;
-        if (nodekeywordUpdateBody != null) {
-            keywordUpdateBody = mapper.readValue(nodekeywordUpdateBody.toString(), KeywordUpdateBody.class);
+        JsonNode nodekeywordsUpdate = request.body().asJson();
+        KeywordsUpdate keywordsUpdate;
+        if (nodekeywordsUpdate != null) {
+            keywordsUpdate = mapper.readValue(nodekeywordsUpdate.toString(), KeywordsUpdate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(keywordUpdateBody);
+                OpenAPIUtils.validate(keywordsUpdate);
             }
         } else {
-            throw new IllegalArgumentException("'KeywordUpdateBody' parameter is required");
+            throw new IllegalArgumentException("'KeywordsUpdate' parameter is required");
         }
-        return imp.keywordsUpdateHttp(request, adAccountId, keywordUpdateBody);
+        return imp.keywordsUpdateHttp(request, adAccountId, keywordsUpdate);
     }
 
     @ApiAction
     public Result trendingKeywordsList(Http.Request request, TrendsSupportedRegion region,TrendType trendType) throws Exception {
         String[] interestsArray = request.queryString().get("interests");
         List<String> interestsList = OpenAPIUtils.parametersToList("multi", interestsArray);
-        List<String> interests = new ArrayList<>();
+        List<TrendsL1Interest> interests = new ArrayList<>();
         for (String curParam : interestsList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -164,7 +167,7 @@ public class KeywordsApiController extends Controller {
         }
         String[] gendersArray = request.queryString().get("genders");
         List<String> gendersList = OpenAPIUtils.parametersToList("multi", gendersArray);
-        List<String> genders = new ArrayList<>();
+        List<TrendsGenderFilter> genders = new ArrayList<>();
         for (String curParam : gendersList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -173,7 +176,7 @@ public class KeywordsApiController extends Controller {
         }
         String[] agesArray = request.queryString().get("ages");
         List<String> agesList = OpenAPIUtils.parametersToList("multi", agesArray);
-        List<String> ages = new ArrayList<>();
+        List<TrendsAgeBucket> ages = new ArrayList<>();
         for (String curParam : agesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -203,13 +206,6 @@ public class KeywordsApiController extends Controller {
         } else {
             limit = 50;
         }
-        String valueincludePrediction = request.getQueryString("include_prediction");
-        Boolean includePrediction;
-        if (valueincludePrediction != null) {
-            includePrediction = Boolean.valueOf(valueincludePrediction);
-        } else {
-            includePrediction = false;
-        }
         String valueincludeDemographics = request.getQueryString("include_demographics");
         Boolean includeDemographics;
         if (valueincludeDemographics != null) {
@@ -217,7 +213,7 @@ public class KeywordsApiController extends Controller {
         } else {
             includeDemographics = false;
         }
-        return imp.trendingKeywordsListHttp(request, region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics);
+        return imp.trendingKeywordsListHttp(request, region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includeDemographics);
     }
 
 }

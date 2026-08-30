@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const HttpMethod = require('../models/HttpMethod');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -12,20 +13,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}method`,
-                label: `[${labelPrefix}method]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'GET',
-                    'HEAD',
-                    'POST',
-                    'PUT',
-                    'DELETE',
-                    'CONNECT',
-                    'OPTIONS',
-                    'TRACE',
-                    'PATCH',
-                ],
+                ...HttpMethod.fields(`${keyPrefix}method`, isInput),
             },
             {
                 key: `${keyPrefix}path`,

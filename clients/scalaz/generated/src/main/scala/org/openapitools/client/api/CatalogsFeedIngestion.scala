@@ -13,10 +13,14 @@ import java.time.OffsetDateTime
 import CatalogsFeedIngestion._
 
 case class CatalogsFeedIngestion (
+  /* Timestamp of the feed ingestion. */
   createdAt: OffsetDateTime,
-feedId: String,
-id: String,
-status: CatalogsFeedProcessingStatus)
+/* Catalog Feed id pertaining to the feed ingestion. */
+  feedId: String,
+/* Unique identifier of a feed ingestion. */
+  id: String,
+/* Status of the feed ingestion. */
+  status: CatalogsFeedProcessingStatus)
 
 object CatalogsFeedIngestion {
   import DateTimeCodecs._

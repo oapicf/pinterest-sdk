@@ -8,7 +8,7 @@ The class is defined in **[MaxPriceFilter.java](../../src/main/java/org/openapit
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MAX_PRICE** | `CatalogsProductGroupPricingCriteria` |  | 
+**MAX_PRICE** | [`CatalogsProductGroupPricingCriteria`](CatalogsProductGroupPricingCriteria.md) |  | 
 
 
 

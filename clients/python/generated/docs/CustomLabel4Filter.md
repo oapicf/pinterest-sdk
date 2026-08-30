@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**custom_label_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**custom_label_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
 
 ## Example
 

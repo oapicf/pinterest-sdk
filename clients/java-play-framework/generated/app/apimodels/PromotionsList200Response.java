@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.PromotionResponse;
+import apimodels.Promotion;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 /**
  * PromotionsList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class PromotionsList200Response   {
   @JsonProperty("bookmark")
@@ -26,7 +26,7 @@ public class PromotionsList200Response   {
   @NotNull
 @Valid
 
-  private List<@Valid PromotionResponse> items = new ArrayList<>();
+  private List<@Valid Promotion> items = new ArrayList<>();
 
   public PromotionsList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -45,12 +45,12 @@ public class PromotionsList200Response   {
     this.bookmark = bookmark;
   }
 
-  public PromotionsList200Response items(List<@Valid PromotionResponse> items) {
+  public PromotionsList200Response items(List<@Valid Promotion> items) {
     this.items = items;
     return this;
   }
 
-  public PromotionsList200Response addItemsItem(PromotionResponse itemsItem) {
+  public PromotionsList200Response addItemsItem(Promotion itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -62,11 +62,11 @@ public class PromotionsList200Response   {
    * Get items
    * @return items
   **/
-  public List<@Valid PromotionResponse> getItems() {
+  public List<@Valid Promotion> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid PromotionResponse> items) {
+  public void setItems(List<@Valid Promotion> items) {
     this.items = items;
   }
 
@@ -106,10 +106,7 @@ public class PromotionsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

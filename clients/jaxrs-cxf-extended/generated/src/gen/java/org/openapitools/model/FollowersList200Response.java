@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.UserSummary;
+import org.openapitools.model.FollowUser;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,7 +21,7 @@ public class FollowersList200Response  {
 
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private List<@Valid UserSummary> items = new ArrayList<>();
+  private List<@Valid FollowUser> items = new ArrayList<>();
  /**
   * Get bookmark
   * @return bookmark
@@ -52,21 +52,21 @@ public class FollowersList200Response  {
   */
   @JsonProperty("items")
   @NotNull
-  public List<@Valid UserSummary> getItems() {
+  public List<@Valid FollowUser> getItems() {
     return items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
- public void setItems(List<@Valid UserSummary> items) {
+ public void setItems(List<@Valid FollowUser> items) {
     this.items = items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
-  public FollowersList200Response items(List<@Valid UserSummary> items) {
+  public FollowersList200Response items(List<@Valid FollowUser> items) {
     this.items = items;
     return this;
   }
@@ -74,7 +74,7 @@ public class FollowersList200Response  {
   /**
    * Adds a new item to the <code>items</code> list.
    */
-  public FollowersList200Response addItemsItem(UserSummary itemsItem) {
+  public FollowersList200Response addItemsItem(FollowUser itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -114,10 +114,7 @@ public class FollowersList200Response  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

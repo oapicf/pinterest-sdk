@@ -65,7 +65,7 @@ CreativeAssetsIdFilter::getCREATIVEASSETSID()
 }
 
 void
-CreativeAssetsIdFilter::setCREATIVEASSETSID(CatalogsProductGroupMultipleStringCriteria  cREATIVE_ASSETS_ID)
+CreativeAssetsIdFilter::setCREATIVEASSETSID(CatalogsProductGroupMultipleStringCriteria cREATIVE_ASSETS_ID)
 {
 	this->cREATIVE_ASSETS_ID = cREATIVE_ASSETS_ID;
 }

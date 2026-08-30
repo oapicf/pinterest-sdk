@@ -23,9 +23,9 @@ TopPinsAnalyticsResponse::~TopPinsAnalyticsResponse()
 void
 TopPinsAnalyticsResponse::__init()
 {
-	//date_availability = new TopPinsAnalyticsResponse_date_availability();
+	//date_availability = new TopPinsAnalyticsResponseDateAvailability();
 	//new std::list()std::list> pins;
-	//sort_by = std::string();
+	//sort_by = new TopPinsSortBy();
 }
 
 void
@@ -59,11 +59,11 @@ TopPinsAnalyticsResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("TopPinsAnalyticsResponse_date_availability")) {
-			jsonToValue(&date_availability, node, "TopPinsAnalyticsResponse_date_availability", "TopPinsAnalyticsResponse_date_availability");
+		if (isprimitive("TopPinsAnalyticsResponseDateAvailability")) {
+			jsonToValue(&date_availability, node, "TopPinsAnalyticsResponseDateAvailability", "TopPinsAnalyticsResponseDateAvailability");
 		} else {
 			
-			TopPinsAnalyticsResponse_date_availability* obj = static_cast<TopPinsAnalyticsResponse_date_availability*> (&date_availability);
+			TopPinsAnalyticsResponseDateAvailability* obj = static_cast<TopPinsAnalyticsResponseDateAvailability*> (&date_availability);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -75,12 +75,12 @@ TopPinsAnalyticsResponse::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<TopPinsAnalyticsResponse_pins_inner> new_list;
-			TopPinsAnalyticsResponse_pins_inner inst;
+			list<TopPinsAnalyticsResponsePinsItems> new_list;
+			TopPinsAnalyticsResponsePinsItems inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("TopPinsAnalyticsResponse_pins_inner")) {
-					jsonToValue(&inst, temp_json, "TopPinsAnalyticsResponse_pins_inner", "");
+				if (isprimitive("TopPinsAnalyticsResponsePinsItems")) {
+					jsonToValue(&inst, temp_json, "TopPinsAnalyticsResponsePinsItems", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -97,9 +97,12 @@ TopPinsAnalyticsResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&sort_by, node, "std::string", "");
+		if (isprimitive("TopPinsSortBy")) {
+			jsonToValue(&sort_by, node, "TopPinsSortBy", "TopPinsSortBy");
 		} else {
+			
+			TopPinsSortBy* obj = static_cast<TopPinsSortBy*> (&sort_by);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -115,13 +118,13 @@ TopPinsAnalyticsResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("TopPinsAnalyticsResponse_date_availability")) {
-		TopPinsAnalyticsResponse_date_availability obj = getDateAvailability();
-		node = converttoJson(&obj, "TopPinsAnalyticsResponse_date_availability", "");
+	if (isprimitive("TopPinsAnalyticsResponseDateAvailability")) {
+		TopPinsAnalyticsResponseDateAvailability obj = getDateAvailability();
+		node = converttoJson(&obj, "TopPinsAnalyticsResponseDateAvailability", "");
 	}
 	else {
 		
-		TopPinsAnalyticsResponse_date_availability obj = static_cast<TopPinsAnalyticsResponse_date_availability> (getDateAvailability());
+		TopPinsAnalyticsResponseDateAvailability obj = static_cast<TopPinsAnalyticsResponseDateAvailability> (getDateAvailability());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -129,18 +132,18 @@ TopPinsAnalyticsResponse::toJson()
 	}
 	const gchar *date_availabilityKey = "date_availability";
 	json_object_set_member(pJsonObject, date_availabilityKey, node);
-	if (isprimitive("TopPinsAnalyticsResponse_pins_inner")) {
-		list<TopPinsAnalyticsResponse_pins_inner> new_list = static_cast<list <TopPinsAnalyticsResponse_pins_inner> > (getPins());
-		node = converttoJson(&new_list, "TopPinsAnalyticsResponse_pins_inner", "array");
+	if (isprimitive("TopPinsAnalyticsResponsePinsItems")) {
+		list<TopPinsAnalyticsResponsePinsItems> new_list = static_cast<list <TopPinsAnalyticsResponsePinsItems> > (getPins());
+		node = converttoJson(&new_list, "TopPinsAnalyticsResponsePinsItems", "array");
 	} else {
 		node = json_node_alloc();
-		list<TopPinsAnalyticsResponse_pins_inner> new_list = static_cast<list <TopPinsAnalyticsResponse_pins_inner> > (getPins());
+		list<TopPinsAnalyticsResponsePinsItems> new_list = static_cast<list <TopPinsAnalyticsResponsePinsItems> > (getPins());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<TopPinsAnalyticsResponse_pins_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<TopPinsAnalyticsResponsePinsItems>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			TopPinsAnalyticsResponse_pins_inner obj = *it;
+			TopPinsAnalyticsResponsePinsItems obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -154,11 +157,16 @@ TopPinsAnalyticsResponse::toJson()
 	
 	const gchar *pinsKey = "pins";
 	json_object_set_member(pJsonObject, pinsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getSortBy();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("TopPinsSortBy")) {
+		TopPinsSortBy obj = getSortBy();
+		node = converttoJson(&obj, "TopPinsSortBy", "");
 	}
 	else {
+		
+		TopPinsSortBy obj = static_cast<TopPinsSortBy> (getSortBy());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *sort_byKey = "sort_by";
@@ -171,38 +179,38 @@ TopPinsAnalyticsResponse::toJson()
 	return ret;
 }
 
-TopPinsAnalyticsResponse_date_availability
+TopPinsAnalyticsResponseDateAvailability
 TopPinsAnalyticsResponse::getDateAvailability()
 {
 	return date_availability;
 }
 
 void
-TopPinsAnalyticsResponse::setDateAvailability(TopPinsAnalyticsResponse_date_availability  date_availability)
+TopPinsAnalyticsResponse::setDateAvailability(TopPinsAnalyticsResponseDateAvailability  date_availability)
 {
 	this->date_availability = date_availability;
 }
 
-std::list<TopPinsAnalyticsResponse_pins_inner>
+std::list<TopPinsAnalyticsResponsePinsItems>
 TopPinsAnalyticsResponse::getPins()
 {
 	return pins;
 }
 
 void
-TopPinsAnalyticsResponse::setPins(std::list <TopPinsAnalyticsResponse_pins_inner> pins)
+TopPinsAnalyticsResponse::setPins(std::list <TopPinsAnalyticsResponsePinsItems> pins)
 {
 	this->pins = pins;
 }
 
-std::string
+TopPinsSortBy
 TopPinsAnalyticsResponse::getSortBy()
 {
 	return sort_by;
 }
 
 void
-TopPinsAnalyticsResponse::setSortBy(std::string  sort_by)
+TopPinsAnalyticsResponse::setSortBy(TopPinsSortBy  sort_by)
 {
 	this->sort_by = sort_by;
 }

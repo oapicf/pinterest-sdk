@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,12 +20,12 @@ var _ MappedNullable = &NotificationResponse{}
 
 // NotificationResponse struct for NotificationResponse
 type NotificationResponse struct {
-	// Returns true if the notification accepted.
-	Success *bool `json:"success,omitempty"`
-	// Received time. Unix timestamp in seconds.
-	ReceivedAt *int32 `json:"received_at,omitempty"`
 	// error message when success is false
 	ErrorMsg *string `json:"error_msg,omitempty"`
+	// Received time. Unix timestamp in seconds.
+	ReceivedAt *int32 `json:"received_at,omitempty"`
+	// Returns true if the notification accepted.
+	Success *bool `json:"success,omitempty"`
 }
 
 // NewNotificationResponse instantiates a new NotificationResponse object
@@ -43,70 +43,6 @@ func NewNotificationResponse() *NotificationResponse {
 func NewNotificationResponseWithDefaults() *NotificationResponse {
 	this := NotificationResponse{}
 	return &this
-}
-
-// GetSuccess returns the Success field value if set, zero value otherwise.
-func (o *NotificationResponse) GetSuccess() bool {
-	if o == nil || IsNil(o.Success) {
-		var ret bool
-		return ret
-	}
-	return *o.Success
-}
-
-// GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationResponse) GetSuccessOk() (*bool, bool) {
-	if o == nil || IsNil(o.Success) {
-		return nil, false
-	}
-	return o.Success, true
-}
-
-// HasSuccess returns a boolean if a field has been set.
-func (o *NotificationResponse) HasSuccess() bool {
-	if o != nil && !IsNil(o.Success) {
-		return true
-	}
-
-	return false
-}
-
-// SetSuccess gets a reference to the given bool and assigns it to the Success field.
-func (o *NotificationResponse) SetSuccess(v bool) {
-	o.Success = &v
-}
-
-// GetReceivedAt returns the ReceivedAt field value if set, zero value otherwise.
-func (o *NotificationResponse) GetReceivedAt() int32 {
-	if o == nil || IsNil(o.ReceivedAt) {
-		var ret int32
-		return ret
-	}
-	return *o.ReceivedAt
-}
-
-// GetReceivedAtOk returns a tuple with the ReceivedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationResponse) GetReceivedAtOk() (*int32, bool) {
-	if o == nil || IsNil(o.ReceivedAt) {
-		return nil, false
-	}
-	return o.ReceivedAt, true
-}
-
-// HasReceivedAt returns a boolean if a field has been set.
-func (o *NotificationResponse) HasReceivedAt() bool {
-	if o != nil && !IsNil(o.ReceivedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetReceivedAt gets a reference to the given int32 and assigns it to the ReceivedAt field.
-func (o *NotificationResponse) SetReceivedAt(v int32) {
-	o.ReceivedAt = &v
 }
 
 // GetErrorMsg returns the ErrorMsg field value if set, zero value otherwise.
@@ -141,6 +77,70 @@ func (o *NotificationResponse) SetErrorMsg(v string) {
 	o.ErrorMsg = &v
 }
 
+// GetReceivedAt returns the ReceivedAt field value if set, zero value otherwise.
+func (o *NotificationResponse) GetReceivedAt() int32 {
+	if o == nil || IsNil(o.ReceivedAt) {
+		var ret int32
+		return ret
+	}
+	return *o.ReceivedAt
+}
+
+// GetReceivedAtOk returns a tuple with the ReceivedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationResponse) GetReceivedAtOk() (*int32, bool) {
+	if o == nil || IsNil(o.ReceivedAt) {
+		return nil, false
+	}
+	return o.ReceivedAt, true
+}
+
+// HasReceivedAt returns a boolean if a field has been set.
+func (o *NotificationResponse) HasReceivedAt() bool {
+	if o != nil && !IsNil(o.ReceivedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetReceivedAt gets a reference to the given int32 and assigns it to the ReceivedAt field.
+func (o *NotificationResponse) SetReceivedAt(v int32) {
+	o.ReceivedAt = &v
+}
+
+// GetSuccess returns the Success field value if set, zero value otherwise.
+func (o *NotificationResponse) GetSuccess() bool {
+	if o == nil || IsNil(o.Success) {
+		var ret bool
+		return ret
+	}
+	return *o.Success
+}
+
+// GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationResponse) GetSuccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.Success) {
+		return nil, false
+	}
+	return o.Success, true
+}
+
+// HasSuccess returns a boolean if a field has been set.
+func (o *NotificationResponse) HasSuccess() bool {
+	if o != nil && !IsNil(o.Success) {
+		return true
+	}
+
+	return false
+}
+
+// SetSuccess gets a reference to the given bool and assigns it to the Success field.
+func (o *NotificationResponse) SetSuccess(v bool) {
+	o.Success = &v
+}
+
 func (o NotificationResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -151,14 +151,14 @@ func (o NotificationResponse) MarshalJSON() ([]byte, error) {
 
 func (o NotificationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Success) {
-		toSerialize["success"] = o.Success
+	if !IsNil(o.ErrorMsg) {
+		toSerialize["error_msg"] = o.ErrorMsg
 	}
 	if !IsNil(o.ReceivedAt) {
 		toSerialize["received_at"] = o.ReceivedAt
 	}
-	if !IsNil(o.ErrorMsg) {
-		toSerialize["error_msg"] = o.ErrorMsg
+	if !IsNil(o.Success) {
+		toSerialize["success"] = o.Success
 	}
 	return toSerialize, nil
 }

@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class PromotionArrayElement (
-    _data: Option[PromotionResponse],
+    _data: Option[Promotion],
     _exception: Option[Exception]
 )
 object PromotionArrayElement {

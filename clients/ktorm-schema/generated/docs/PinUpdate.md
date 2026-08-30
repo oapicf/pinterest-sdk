@@ -5,6 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
+**aiDisclosures** | ai_disclosures | long |  | [**AiDisclosuresUpdate**](AiDisclosuresUpdate.md) | AI disclosure declarations the creator has made about this Pin. |  [optional] [foreignkey]
 **altText** | alt_text | text |  | **kotlin.String** |  |  [optional]
 **boardId** | board_id | text |  | **kotlin.String** | The board to which this Pin belongs. |  [optional]
 **boardSectionId** | board_section_id | text |  | **kotlin.String** | The board section to which this Pin belongs. |  [optional]
@@ -12,6 +13,7 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **description** | description | text |  | **kotlin.String** |  |  [optional]
 **link** | link | text |  | **kotlin.String** |  |  [optional]
 **title** | title | text |  | **kotlin.String** |  |  [optional]
+
 
 
 

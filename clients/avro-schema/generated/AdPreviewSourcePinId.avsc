@@ -1,0 +1,20 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Ad preview source from an existing Pin.",
+  "name": "AdPreviewSourcePinId",
+  "fields": [
+    {
+      "name": "creative_type",
+      "type": ["null", "model.AdPinPreviewCreativeType"],
+      "doc": "Creative type of the ad preview.",
+      "default": null
+    },
+    {
+      "name": "pin_id",
+      "type": "string",
+      "doc": "Pin ID."
+    }
+  ]
+
+}

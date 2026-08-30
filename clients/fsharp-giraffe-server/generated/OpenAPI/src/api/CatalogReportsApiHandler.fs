@@ -10,9 +10,9 @@ open CatalogReportsApiServiceImplementation
 open OpenAPI.Model.CatalogsCreateReportResponse
 open OpenAPI.Model.CatalogsReport
 open OpenAPI.Model.CatalogsReportParameters
-open OpenAPI.Model.Error
+open OpenAPI.Model.CatalogsReportStatsParameters
+open OpenAPI.Model.PinterestLibError
 open OpenAPI.Model.ReportsStats200Response
-open OpenAPI.Model.ReportsStatsParametersParameter
 
 module CatalogReportsApiHandler =
 
@@ -36,10 +36,18 @@ module CatalogReportsApiHandler =
           return! (match result with
                       | ReportsCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | ReportsCreateStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
+                      | ReportsCreateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | ReportsCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | ReportsCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | ReportsCreateStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
-                      | ReportsCreateStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | ReportsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | ReportsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -62,8 +70,14 @@ module CatalogReportsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | ReportsGetStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
-                      | ReportsGetStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | ReportsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | ReportsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | ReportsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | ReportsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | ReportsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -84,8 +98,16 @@ module CatalogReportsApiHandler =
           return! (match result with
                       | ReportsStatsStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | ReportsStatsStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
                       | ReportsStatsStatusCode401 resolved ->
                             setStatusCode 401 >=> json resolved.content
+                      | ReportsStatsStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | ReportsStatsStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | ReportsStatsStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | ReportsStatsDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

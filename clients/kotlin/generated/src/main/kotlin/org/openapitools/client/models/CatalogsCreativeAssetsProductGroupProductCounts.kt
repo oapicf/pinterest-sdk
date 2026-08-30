@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,7 +30,9 @@ import com.squareup.moshi.JsonClass
 /**
  * Product counts for a Creative Assets CatalogsProductGroup
  *
+ * @param appLinks 
  * @param catalogType 
+ * @param images 
  * @param total 
  * @param videos 
  */
@@ -30,8 +40,14 @@ import com.squareup.moshi.JsonClass
 
 data class CatalogsCreativeAssetsProductGroupProductCounts (
 
+    @Json(name = "app_links")
+    val appLinks: java.math.BigDecimal,
+
     @Json(name = "catalog_type")
     val catalogType: CatalogsCreativeAssetsProductGroupProductCounts.CatalogType,
+
+    @Json(name = "images")
+    val images: java.math.BigDecimal,
 
     @Json(name = "total")
     val total: java.math.BigDecimal,

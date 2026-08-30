@@ -13,7 +13,7 @@ package org.openapitools.server.model
 */
 final case class IntegrationLogClientRequest (
   host: String,
-  method: String,
+  method: HttpMethod,
   path: String,
   requestHeaders: Option[Map[String, String]] = None,
   responseHeaders: Option[Map[String, String]] = None,

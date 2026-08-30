@@ -87,7 +87,7 @@ my $api_instance = WWW::OpenAPIClient::ConversionTagsApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $conversion_tag_id = 2617998078212; # string | Id of the conversion tag.
+my $conversion_tag_id = "conversion_tag_id_example"; # string | Id of the conversion tag.
 
 eval {
     my $result = $api_instance->conversion_tags_get(ad_account_id => $ad_account_id, conversion_tag_id => $conversion_tag_id);
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **page_visit_conversion_tags_get**
-> PageVisitConversionTagsGet200Response page_visit_conversion_tags_get(ad_account_id => $ad_account_id, page_size => $page_size, order => $order, bookmark => $bookmark)
+> PageVisitConversionTagsGet200Response page_visit_conversion_tags_get(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, order => $order)
 
 Get page visit conversion tags
 
@@ -244,12 +244,12 @@ my $api_instance = WWW::OpenAPIClient::ConversionTagsApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-my $order = ASCENDING; # string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+my $order = new WWW::OpenAPIClient.PinterestLibPaginationOrder(); # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 
 eval {
-    my $result = $api_instance->page_visit_conversion_tags_get(ad_account_id => $ad_account_id, page_size => $page_size, order => $order, bookmark => $bookmark);
+    my $result = $api_instance->page_visit_conversion_tags_get(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, order => $order);
     print Dumper($result);
 };
 if ($@) {
@@ -262,9 +262,9 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 

@@ -102,7 +102,7 @@ Order_lines_list_200_response::getBookmark()
 }
 
 void
-Order_lines_list_200_response::setBookmark(std::string  bookmark)
+Order_lines_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Order_lines_list_200_response::getItems()
 }
 
 void
-Order_lines_list_200_response::setItems(std::list <OrderLine> items)
+Order_lines_list_200_response::setItems(std::list<OrderLine> items)
 {
 	this->items = items;
 }

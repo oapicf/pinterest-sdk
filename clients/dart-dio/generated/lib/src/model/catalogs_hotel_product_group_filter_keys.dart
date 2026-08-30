@@ -7,9 +7,9 @@ import 'package:openapi/src/model/custom_label3_filter.dart';
 import 'package:openapi/src/model/country_filter.dart';
 import 'package:openapi/src/model/custom_label2_filter.dart';
 import 'package:openapi/src/model/custom_label4_filter.dart';
+import 'package:openapi/src/model/price_filter_price.dart';
 import 'package:openapi/src/model/custom_label1_filter.dart';
 import 'package:openapi/src/model/catalogs_product_group_multiple_string_criteria.dart';
-import 'package:openapi/src/model/catalogs_product_group_pricing_currency_criteria.dart';
 import 'package:openapi/src/model/custom_label0_filter.dart';
 import 'package:openapi/src/model/price_filter.dart';
 import 'package:openapi/src/model/brand_filter.dart';
@@ -29,11 +29,11 @@ part 'catalogs_hotel_product_group_filter_keys.g.dart';
 /// * [PRICE] 
 /// * [HOTEL_ID] 
 /// * [BRAND] 
-/// * [cUSTOMLABEL0] 
-/// * [cUSTOMLABEL1] 
-/// * [cUSTOMLABEL2] 
-/// * [cUSTOMLABEL3] 
-/// * [cUSTOMLABEL4] 
+/// * [CUSTOM_LABEL_0] 
+/// * [CUSTOM_LABEL_1] 
+/// * [CUSTOM_LABEL_2] 
+/// * [CUSTOM_LABEL_3] 
+/// * [CUSTOM_LABEL_4] 
 /// * [COUNTRY] 
 /// * [TITLE_KEYWORDS] 
 @BuiltValue()

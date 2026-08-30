@@ -4,6 +4,9 @@ import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -22,13 +25,15 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CatalogsHotelProductGroupProductCounts(
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsHotelProductGroupProductCounts.CatalogType,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("catalog_type")
+    @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsHotelProductGroupProductCounts.CatalogType = kotlin.String.HOTEL,
 
     @get:DecimalMin(value="0")
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("total")
     @get:JsonProperty("total", required = true) val total: java.math.BigDecimal
-) {
+) : CatalogsProductGroupProductCountsVertical {
 
     /**
     * 
@@ -43,7 +48,7 @@ data class CatalogsHotelProductGroupProductCounts(
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsHotelProductGroupProductCounts'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }
     }

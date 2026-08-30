@@ -1,9 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.LeadsExportCreateRequest;
-import org.openapitools.vertxweb.server.model.LeadsExportCreateResponse;
 import org.openapitools.vertxweb.server.model.LeadsExportResponseData;
+import org.openapitools.vertxweb.server.model.LeadsExports;
+import org.openapitools.vertxweb.server.model.LeadsExportsCreate;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -47,12 +47,12 @@ public class LeadsExportApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        LeadsExportCreateRequest leadsExportCreateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<LeadsExportCreateRequest>(){}) : null;
+        LeadsExportsCreate leadsExportsCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<LeadsExportsCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter leadsExportCreateRequest is {}", leadsExportCreateRequest);
+        logger.debug("Parameter leadsExportsCreate is {}", leadsExportsCreate);
 
-        api.leadsExportCreate(adAccountId, leadsExportCreateRequest)
+        api.leadsExportCreate(adAccountId, leadsExportsCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

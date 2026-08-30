@@ -3,28 +3,28 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/base_invite_data_response_invite_data.dart';
 import 'package:openapi/src/model/business_access_user_summary.dart';
+import 'package:openapi/src/model/invite_data_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'base_invite_data_response.g.dart';
 
-/// BaseInviteDataResponse
+/// Common invite/request data returned by the business access endpoints.
 ///
 /// Properties:
 /// * [id] - Unique identifier of the invite/request.
 /// * [inviteData] 
 /// * [isReceivedInvite] - Indicates whether the invite/request was received.
 /// * [user] - Metadata for the member/partner that was sent the invite/request.
-@BuiltValue(instantiable: false)
-abstract class BaseInviteDataResponse  {
+@BuiltValue()
+abstract class BaseInviteDataResponse implements Built<BaseInviteDataResponse, BaseInviteDataResponseBuilder> {
   /// Unique identifier of the invite/request.
   @BuiltValueField(wireName: r'id')
   String? get id;
 
   @BuiltValueField(wireName: r'invite_data')
-  BaseInviteDataResponseInviteData? get inviteData;
+  InviteDataResponse? get inviteData;
 
   /// Indicates whether the invite/request was received.
   @BuiltValueField(wireName: r'is_received_invite')
@@ -34,13 +34,20 @@ abstract class BaseInviteDataResponse  {
   @BuiltValueField(wireName: r'user')
   BusinessAccessUserSummary? get user;
 
+  BaseInviteDataResponse._();
+
+  factory BaseInviteDataResponse([void updates(BaseInviteDataResponseBuilder b)]) = _$BaseInviteDataResponse;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(BaseInviteDataResponseBuilder b) => b;
+
   @BuiltValueSerializer(custom: true)
   static Serializer<BaseInviteDataResponse> get serializer => _$BaseInviteDataResponseSerializer();
 }
 
 class _$BaseInviteDataResponseSerializer implements PrimitiveSerializer<BaseInviteDataResponse> {
   @override
-  final Iterable<Type> types = const [BaseInviteDataResponse];
+  final Iterable<Type> types = const [BaseInviteDataResponse, _$BaseInviteDataResponse];
 
   @override
   final String wireName = r'BaseInviteDataResponse';
@@ -61,7 +68,7 @@ class _$BaseInviteDataResponseSerializer implements PrimitiveSerializer<BaseInvi
       yield r'invite_data';
       yield serializers.serialize(
         object.inviteData,
-        specifiedType: const FullType(BaseInviteDataResponseInviteData),
+        specifiedType: const FullType(InviteDataResponse),
       );
     }
     if (object.isReceivedInvite != null) {
@@ -89,46 +96,6 @@ class _$BaseInviteDataResponseSerializer implements PrimitiveSerializer<BaseInvi
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
-  @override
-  BaseInviteDataResponse deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($BaseInviteDataResponse)) as $BaseInviteDataResponse;
-  }
-}
-
-/// a concrete implementation of [BaseInviteDataResponse], since [BaseInviteDataResponse] is not instantiable
-@BuiltValue(instantiable: true)
-abstract class $BaseInviteDataResponse implements BaseInviteDataResponse, Built<$BaseInviteDataResponse, $BaseInviteDataResponseBuilder> {
-  $BaseInviteDataResponse._();
-
-  factory $BaseInviteDataResponse([void Function($BaseInviteDataResponseBuilder)? updates]) = _$$BaseInviteDataResponse;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($BaseInviteDataResponseBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<$BaseInviteDataResponse> get serializer => _$$BaseInviteDataResponseSerializer();
-}
-
-class _$$BaseInviteDataResponseSerializer implements PrimitiveSerializer<$BaseInviteDataResponse> {
-  @override
-  final Iterable<Type> types = const [$BaseInviteDataResponse, _$$BaseInviteDataResponse];
-
-  @override
-  final String wireName = r'$BaseInviteDataResponse';
-
-  @override
-  Object serialize(
-    Serializers serializers,
-    $BaseInviteDataResponse object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.serialize(object, specifiedType: FullType(BaseInviteDataResponse))!;
-  }
-
   void _deserializeProperties(
     Serializers serializers,
     Object serialized, {
@@ -144,29 +111,33 @@ class _$$BaseInviteDataResponseSerializer implements PrimitiveSerializer<$BaseIn
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'invite_data':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BaseInviteDataResponseInviteData),
-          ) as BaseInviteDataResponseInviteData;
+            specifiedType: const FullType.nullable(InviteDataResponse),
+          ) as InviteDataResponse?;
+          if (valueDes == null) continue;
           result.inviteData.replace(valueDes);
           break;
         case r'is_received_invite':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.isReceivedInvite = valueDes;
           break;
         case r'user':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BusinessAccessUserSummary),
-          ) as BusinessAccessUserSummary;
+            specifiedType: const FullType.nullable(BusinessAccessUserSummary),
+          ) as BusinessAccessUserSummary?;
+          if (valueDes == null) continue;
           result.user.replace(valueDes);
           break;
         default:
@@ -178,12 +149,12 @@ class _$$BaseInviteDataResponseSerializer implements PrimitiveSerializer<$BaseIn
   }
 
   @override
-  $BaseInviteDataResponse deserialize(
+  BaseInviteDataResponse deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $BaseInviteDataResponseBuilder();
+    final result = BaseInviteDataResponseBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

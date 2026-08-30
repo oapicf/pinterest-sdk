@@ -1,2 +1,2 @@
-testCase,httpStatusCode,catalogsItemsRequest,adAccountId,batchId,adAccountId,itemsBatchPostRequest,adAccountId
+testCase,httpStatusCode,catalogsItemsRequest,adAccountId,batchId,adAccountId,catalogsItemsBatchPostRequest,adAccountId
 Success,200,0,0,0,0,0,0

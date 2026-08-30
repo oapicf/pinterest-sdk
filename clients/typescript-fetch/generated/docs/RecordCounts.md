@@ -1,7 +1,6 @@
 
 # RecordCounts
 
-Record processing counts
 
 ## Properties
 
@@ -18,9 +17,9 @@ import type { RecordCounts } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "invalid": 50,
-  "processed": 1000,
-  "valid": 950,
+  "invalid": null,
+  "processed": null,
+  "valid": null,
 } satisfies RecordCounts
 
 console.log(example)

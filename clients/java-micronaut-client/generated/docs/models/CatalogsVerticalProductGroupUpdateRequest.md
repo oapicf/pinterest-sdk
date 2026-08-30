@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **description** | `String` |  |  [optional property]
 **filters** | [`CatalogsCreativeAssetsProductGroupFilters`](CatalogsCreativeAssetsProductGroupFilters.md) |  |  [optional property]
 **locale** | `CatalogsLocale` |  |  [optional property]
-**name** | `String` |  |  [optional property]
+**name** | `String` | Name of catalog product group |  [optional property]
 
 ## CatalogTypeEnum
 

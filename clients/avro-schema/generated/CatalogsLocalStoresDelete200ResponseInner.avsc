@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsLocalStoresDelete200ResponseInner",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "The ID of the local store."
+    },
+    {
+      "name": "status",
+      "type": "model.CampaignAdPreviewDelete200ResponseInnerStatus",
+      "doc": ""
+    }
+  ]
+
+}

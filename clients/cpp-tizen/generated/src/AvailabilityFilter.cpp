@@ -48,7 +48,7 @@ AvailabilityFilter::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&aVAILABILITY, node, "CatalogsProductGroupMultipleStringCriteria", "");
+			jsonToValue(&aVAILABILITY, node, "CatalogsProductGroupMultipleStringCriteria", "CatalogsProductGroupMultipleStringCriteria");
 		} else {
 			
 			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&aVAILABILITY);

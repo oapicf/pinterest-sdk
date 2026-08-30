@@ -4,12 +4,12 @@
 #include "catalogs_creative_assets_filter_values_map.h"
 
 
-char* catalogs_creative_assets_filter_values_map_media_type_ToString(pinterest_rest_api_catalogs_creative_assets_filter_values_map_MEDIATYPE_e media_type) {
+char* catalogs_creative_assets_filter_values_map_media_type_ToString(pinterest_rest_api_catalogs_creative_assets_filter_values_map__e media_type) {
     char *media_typeArray[] =  { "NULL", "IMAGE", "VIDEO" };
     return media_typeArray[media_type - 1];
 }
 
-pinterest_rest_api_catalogs_creative_assets_filter_values_map_MEDIATYPE_e catalogs_creative_assets_filter_values_map_media_type_FromString(char* media_type) {
+pinterest_rest_api_catalogs_creative_assets_filter_values_map__e catalogs_creative_assets_filter_values_map_media_type_FromString(char* media_type) {
     int stringToReturn = 0;
     char *media_typeArray[] =  { "NULL", "IMAGE", "VIDEO" };
     size_t sizeofArray = sizeof(media_typeArray) / sizeof(media_typeArray[0]);
@@ -41,6 +41,8 @@ static catalogs_creative_assets_filter_values_map_t *catalogs_creative_assets_fi
     if (!catalogs_creative_assets_filter_values_map_local_var) {
         return NULL;
     }
+    memset(catalogs_creative_assets_filter_values_map_local_var, 0, sizeof(catalogs_creative_assets_filter_values_map_t));
+    catalogs_creative_assets_filter_values_map_local_var->_library_owned = 1;
     catalogs_creative_assets_filter_values_map_local_var->custom_label_0 = custom_label_0;
     catalogs_creative_assets_filter_values_map_local_var->custom_label_1 = custom_label_1;
     catalogs_creative_assets_filter_values_map_local_var->custom_label_2 = custom_label_2;
@@ -54,8 +56,6 @@ static catalogs_creative_assets_filter_values_map_t *catalogs_creative_assets_fi
     catalogs_creative_assets_filter_values_map_local_var->google_product_category_5 = google_product_category_5;
     catalogs_creative_assets_filter_values_map_local_var->google_product_category_6 = google_product_category_6;
     catalogs_creative_assets_filter_values_map_local_var->media_type = media_type;
-
-    catalogs_creative_assets_filter_values_map_local_var->_library_owned = 1;
     return catalogs_creative_assets_filter_values_map_local_var;
 }
 
@@ -74,7 +74,7 @@ __attribute__((deprecated)) catalogs_creative_assets_filter_values_map_t *catalo
     list_t *google_product_category_6,
     list_t *media_type
     ) {
-    return catalogs_creative_assets_filter_values_map_create_internal (
+    catalogs_creative_assets_filter_values_map_t *result = catalogs_creative_assets_filter_values_map_create_internal (
         custom_label_0,
         custom_label_1,
         custom_label_2,
@@ -89,6 +89,9 @@ __attribute__((deprecated)) catalogs_creative_assets_filter_values_map_t *catalo
         google_product_category_6,
         media_type
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_creative_assets_filter_values_map_free(catalogs_creative_assets_filter_values_map_t *catalogs_creative_assets_filter_values_map) {
@@ -186,7 +189,7 @@ void catalogs_creative_assets_filter_values_map_free(catalogs_creative_assets_fi
     }
     if (catalogs_creative_assets_filter_values_map->media_type) {
         list_ForEach(listEntry, catalogs_creative_assets_filter_values_map->media_type) {
-            free(listEntry->data);
+            media_type_free(listEntry->data);
         }
         list_freeList(catalogs_creative_assets_filter_values_map->media_type);
         catalogs_creative_assets_filter_values_map->media_type = NULL;
@@ -402,17 +405,20 @@ cJSON *catalogs_creative_assets_filter_values_map_convertToJSON(catalogs_creativ
 
 
     // catalogs_creative_assets_filter_values_map->media_type
-    if(catalogs_creative_assets_filter_values_map->media_type != pinterest_rest_api_catalogs_creative_assets_filter_values_map_MEDIATYPE_NULL) {
+    if(catalogs_creative_assets_filter_values_map->media_type != pinterest_rest_api_list_MEDIATYPE_NULL) {
     cJSON *media_type = cJSON_AddArrayToObject(item, "media_type");
     if(media_type == NULL) {
-        goto fail; //primitive container
+    goto fail; //nonprimitive container
     }
 
     listEntry_t *media_typeListEntry;
+    if (catalogs_creative_assets_filter_values_map->media_type) {
     list_ForEach(media_typeListEntry, catalogs_creative_assets_filter_values_map->media_type) {
-    if(cJSON_AddStringToObject(media_type, "", media_typeListEntry->data) == NULL)
-    {
-        goto fail;
+    cJSON *itemLocal = media_type_convertToJSON((pinterest_rest_api_catalogs_creative_assets_filter_values_map__e)media_typeListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(media_type, itemLocal);
     }
     }
     }
@@ -738,21 +744,24 @@ catalogs_creative_assets_filter_values_map_t *catalogs_creative_assets_filter_va
         media_type = NULL;
     }
     if (media_type) { 
-    cJSON *media_type_local = NULL;
-    if(!cJSON_IsArray(media_type)) {
-        goto end;//primitive container
+    cJSON *media_type_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(media_type)){
+        goto end; //nonprimitive container
     }
+
     media_typeList = list_createList();
 
-    cJSON_ArrayForEach(media_type_local, media_type)
+    cJSON_ArrayForEach(media_type_local_nonprimitive,media_type )
     {
-        if(!cJSON_IsString(media_type_local))
-        {
+        if(!cJSON_IsObject(media_type_local_nonprimitive)){
             goto end;
         }
-        list_addElement(media_typeList , strdup(media_type_local->valuestring));
+        catalogs_creative_assets_filter_values_map_media_type_e media_typeItem = media_type_parseFromJSON(media_type_local_nonprimitive);
+
+        list_addElement(media_typeList, (void *)media_typeItem);
     }
     }
+
 
 
     catalogs_creative_assets_filter_values_map_local_var = catalogs_creative_assets_filter_values_map_create_internal (
@@ -770,6 +779,10 @@ catalogs_creative_assets_filter_values_map_t *catalogs_creative_assets_filter_va
         google_product_category_6 ? google_product_category_6List : NULL,
         media_type ? media_typeList : NULL
         );
+
+    if (!catalogs_creative_assets_filter_values_map_local_var) {
+        goto end;
+    }
 
     return catalogs_creative_assets_filter_values_map_local_var;
 end:
@@ -884,7 +897,7 @@ end:
     if (media_typeList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, media_typeList) {
-            free(listEntry->data);
+            media_type_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(media_typeList);

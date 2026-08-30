@@ -16,7 +16,7 @@
         "type": "array",
         "items": "model.BoardSection"
       },
-      "doc": "Board sections"
+      "doc": ""
     }
   ]
 

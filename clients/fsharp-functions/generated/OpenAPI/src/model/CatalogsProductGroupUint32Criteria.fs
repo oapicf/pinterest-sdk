@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.NumericFilterOperatorType
 
 module CatalogsProductGroupUint32Criteria =
 
@@ -13,7 +14,7 @@ module CatalogsProductGroupUint32Criteria =
     [<JsonProperty(PropertyName = "negated")>]
     Negated : bool;
     [<JsonProperty(PropertyName = "operator")>]
-    Operator : string;
+    Operator : NumericFilterOperatorType;
     [<JsonProperty(PropertyName = "value")>]
     Value : int;
   }

@@ -1,0 +1,57 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DeletePartnerAssetAccessResult"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DeletePartnerAssetAccessResult"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  DeletePartnerAssetAccessResult {
+    title = DeletePartnerAssetAccessResult
+    description = DeletePartnerAssetAccessResult
+    derivedFrom = Root
+    properties {
+        asset_id {
+          type =  string
+          description = "Unique identifier of a business asset."
+          optional = false
+        }
+        asset_type {
+          type =  string
+          description = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG."
+          optional = false
+        }
+        is_shared_partner {
+          type =  boolean
+          description = "If is_shared_partner&#x3D;FALSE, you terminated a partner&#39;s asset access to your business asset. If is_shared_partner&#x3D;TRUE, you terminated your asset access to your partner&#39;s business asset."
+          optional = false
+        }
+        partner_id {
+          type =  string
+          description = "Unique identifier of a business partner."
+          optional = false
+        }
+        permissions {
+          type = array
+          items.type =  string
+          description = "Permission levels member or partner has on an asset."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DeletePartnerAssetAccessResult {
+    title = DeletePartnerAssetAccessResult
+    description = DeletePartnerAssetAccessResult
+    implements = openapi_server.resourceTypes.DeletePartnerAssetAccessResult
+
+  }
+}

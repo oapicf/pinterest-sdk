@@ -5,10 +5,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.model.DeletePartnerAssetAccessBodyAccessesInner;
+import org.openapitools.model.DeletePartnerAssetAccessItem;
 
 @Canonical
 class DeletePartnerAssetAccessBody {
-    
-    List<DeletePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>()
+    /* List of partner asset accesses to delete. */
+    List<DeletePartnerAssetAccessItem> accesses = new ArrayList<>()
 }

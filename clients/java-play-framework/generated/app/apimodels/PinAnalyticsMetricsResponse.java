@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.PinAnalyticsMetricsResponseDailyMetricsInner;
+import apimodels.PinAnalyticsDailyMetrics;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,13 +16,13 @@ import javax.validation.Valid;
 /**
  * PinAnalyticsMetricsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class PinAnalyticsMetricsResponse   {
   @JsonProperty("daily_metrics")
   @Valid
 
-  private List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = null;
+  private List<@Valid PinAnalyticsDailyMetrics> dailyMetrics = null;
 
   @JsonProperty("lifetime_metrics")
   
@@ -33,12 +33,12 @@ public class PinAnalyticsMetricsResponse   {
 
   private Map<String, BigDecimal> summaryMetrics = null;
 
-  public PinAnalyticsMetricsResponse dailyMetrics(List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
+  public PinAnalyticsMetricsResponse dailyMetrics(List<@Valid PinAnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
     return this;
   }
 
-  public PinAnalyticsMetricsResponse addDailyMetricsItem(PinAnalyticsMetricsResponseDailyMetricsInner dailyMetricsItem) {
+  public PinAnalyticsMetricsResponse addDailyMetricsItem(PinAnalyticsDailyMetrics dailyMetricsItem) {
     if (this.dailyMetrics == null) {
       this.dailyMetrics = new ArrayList<>();
     }
@@ -50,11 +50,11 @@ public class PinAnalyticsMetricsResponse   {
    * Array with the requested daily metric records
    * @return dailyMetrics
   **/
-  public List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> getDailyMetrics() {
+  public List<@Valid PinAnalyticsDailyMetrics> getDailyMetrics() {
     return dailyMetrics;
   }
 
-  public void setDailyMetrics(List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
+  public void setDailyMetrics(List<@Valid PinAnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
   }
 
@@ -146,10 +146,7 @@ public class PinAnalyticsMetricsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

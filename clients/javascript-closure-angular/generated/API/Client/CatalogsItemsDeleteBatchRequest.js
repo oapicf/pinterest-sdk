@@ -27,7 +27,7 @@ API.Client.CatalogsItemsDeleteBatchRequest.prototype.items;
 API.Client.CatalogsItemsDeleteBatchRequest.prototype.language;
 
 /**
- * @type {!API.Client.BatchOperation}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsItemsDeleteBatchRequest.prototype.operation;
@@ -123,7 +123,7 @@ API.Client.CatalogsItemsDeleteBatchRequest.LanguageEnum = {
   NB: 'NB',
   NE: 'NE',
   NL: 'NL',
-  NO: 'NO',
+  false: 'false',
   PL: 'PL',
   PT: 'PT',
   RO: 'RO',
@@ -141,4 +141,8 @@ API.Client.CatalogsItemsDeleteBatchRequest.LanguageEnum = {
   TR: 'TR',
   XX: 'XX',
   ZH: 'ZH',
+}
+/** @enum {string} */
+API.Client.CatalogsItemsDeleteBatchRequest.OperationEnum = { 
+  DELETE: 'DELETE',
 }

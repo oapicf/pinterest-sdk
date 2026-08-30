@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -36,65 +36,110 @@ func (s *UserAccountAPIService) UserAccountGet(ctx context.Context, adAccountId 
 	// TODO: Uncomment the next line to return response Response(200, Account{}) or use other options such as http.Ok ...
 	// return Response(200, Account{}), nil
 
-	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
-	// return Response(403, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("UserAccountGet method not implemented")
 }
 
 // UserAccountAnalytics - Get user account analytics
-func (s *UserAccountAPIService) UserAccountAnalytics(ctx context.Context, startDate string, endDate string, fromClaimedContent string, pinFormat string, appTypes string, contentType string, source string, metricTypes []string, splitField string, adAccountId string) (ImplResponse, error) {
+func (s *UserAccountAPIService) UserAccountAnalytics(ctx context.Context, startDate string, endDate string, fromClaimedContent string, pinFormat string, appTypes string, contentType string, source string, metricTypes []QuerymetrictypesItems, splitField string, adAccountId string) (ImplResponse, error) {
 	// TODO - update UserAccountAnalytics with the required logic for this service method.
 	// Add api_user_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, map[string]AnalyticsMetricsResponse{}) or use other options such as http.Ok ...
 	// return Response(200, map[string]AnalyticsMetricsResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
-	// return Response(403, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("UserAccountAnalytics method not implemented")
 }
 
 // UserAccountAnalyticsTopPins - Get user account top pins analytics
-func (s *UserAccountAPIService) UserAccountAnalyticsTopPins(ctx context.Context, startDate string, endDate string, sortBy string, fromClaimedContent string, pinFormat string, appTypes string, contentType string, source string, metricTypes []string, numOfPins int32, createdInLastNDays int32, adAccountId string) (ImplResponse, error) {
+func (s *UserAccountAPIService) UserAccountAnalyticsTopPins(ctx context.Context, startDate string, endDate string, sortBy TopPinsSortBy, fromClaimedContent string, pinFormat string, appTypes string, contentType string, source string, metricTypes []QuerymetrictypesItems, numOfPins int32, createdInLastNDays float32, adAccountId string) (ImplResponse, error) {
 	// TODO - update UserAccountAnalyticsTopPins with the required logic for this service method.
 	// Add api_user_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, TopPinsAnalyticsResponse{}) or use other options such as http.Ok ...
 	// return Response(200, TopPinsAnalyticsResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
-	// return Response(403, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("UserAccountAnalyticsTopPins method not implemented")
 }
 
 // UserAccountAnalyticsTopVideoPins - Get user account top video pins analytics
-func (s *UserAccountAPIService) UserAccountAnalyticsTopVideoPins(ctx context.Context, startDate string, endDate string, sortBy string, fromClaimedContent string, pinFormat string, appTypes string, contentType string, source string, metricTypes []string, numOfPins int32, createdInLastNDays int32, adAccountId string) (ImplResponse, error) {
+func (s *UserAccountAPIService) UserAccountAnalyticsTopVideoPins(ctx context.Context, startDate string, endDate string, sortBy TopVideoPinsSortBy, fromClaimedContent string, pinFormat string, appTypes string, contentType string, source string, metricTypes []QueryvideopinmetrictypesItems, numOfPins int32, createdInLastNDays float32, adAccountId string) (ImplResponse, error) {
 	// TODO - update UserAccountAnalyticsTopVideoPins with the required logic for this service method.
 	// Add api_user_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, TopVideoPinsAnalyticsResponse{}) or use other options such as http.Ok ...
 	// return Response(200, TopVideoPinsAnalyticsResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
-	// return Response(403, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("UserAccountAnalyticsTopVideoPins method not implemented")
 }
@@ -107,8 +152,23 @@ func (s *UserAccountAPIService) LinkedBusinessAccountsGet(ctx context.Context) (
 	// TODO: Uncomment the next line to return response Response(200, []LinkedBusiness{}) or use other options such as http.Ok ...
 	// return Response(200, []LinkedBusiness{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("LinkedBusinessAccountsGet method not implemented")
 }
@@ -121,59 +181,113 @@ func (s *UserAccountAPIService) FollowersList(ctx context.Context, bookmark stri
 	// TODO: Uncomment the next line to return response Response(200, FollowersList200Response{}) or use other options such as http.Ok ...
 	// return Response(200, FollowersList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("FollowersList method not implemented")
 }
 
 // UserFollowingGet - List following
-func (s *UserAccountAPIService) UserFollowingGet(ctx context.Context, bookmark string, pageSize int32, feedType UserFollowingFeedType, explicitFollowing bool, adAccountId string) (ImplResponse, error) {
+func (s *UserAccountAPIService) UserFollowingGet(ctx context.Context, adAccountId string, explicitFollowing bool, feedType UserFollowingFeedType, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update UserFollowingGet with the required logic for this service method.
 	// Add api_user_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, UserFollowingGet200Response{}) or use other options such as http.Ok ...
-	// return Response(200, UserFollowingGet200Response{}), nil
+	// TODO: Uncomment the next line to return response Response(200, FollowersList200Response{}) or use other options such as http.Ok ...
+	// return Response(200, FollowersList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("UserFollowingGet method not implemented")
 }
 
 // BoardsUserFollowsList - List following boards
-func (s *UserAccountAPIService) BoardsUserFollowsList(ctx context.Context, bookmark string, pageSize int32, explicitFollowing bool, adAccountId string) (ImplResponse, error) {
+func (s *UserAccountAPIService) BoardsUserFollowsList(ctx context.Context, adAccountId string, explicitFollowing bool, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update BoardsUserFollowsList with the required logic for this service method.
 	// Add api_user_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, BoardsUserFollowsList200Response{}) or use other options such as http.Ok ...
-	// return Response(200, BoardsUserFollowsList200Response{}), nil
+	// TODO: Uncomment the next line to return response Response(200, BoardsList200Response{}) or use other options such as http.Ok ...
+	// return Response(200, BoardsList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BoardsUserFollowsList method not implemented")
 }
 
 // FollowUserUpdate - Follow user
-func (s *UserAccountAPIService) FollowUserUpdate(ctx context.Context, username string, followUserRequest FollowUserRequest) (ImplResponse, error) {
+func (s *UserAccountAPIService) FollowUserUpdate(ctx context.Context, username string, followUserCreate FollowUserCreate) (ImplResponse, error) {
 	// TODO - update FollowUserUpdate with the required logic for this service method.
 	// Add api_user_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, UserSummary{}) or use other options such as http.Ok ...
-	// return Response(200, UserSummary{}), nil
+	// TODO: Uncomment the next line to return response Response(200, FollowUser{}) or use other options such as http.Ok ...
+	// return Response(200, FollowUser{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, FollowUser{}) or use other options such as http.Ok ...
+	// return Response(201, FollowUser{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("FollowUserUpdate method not implemented")
 }
@@ -186,25 +300,55 @@ func (s *UserAccountAPIService) UserWebsitesGet(ctx context.Context, bookmark st
 	// TODO: Uncomment the next line to return response Response(200, UserWebsitesGet200Response{}) or use other options such as http.Ok ...
 	// return Response(200, UserWebsitesGet200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
-	// return Response(403, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("UserWebsitesGet method not implemented")
 }
 
 // VerifyWebsiteUpdate - Verify website
-func (s *UserAccountAPIService) VerifyWebsiteUpdate(ctx context.Context, userWebsiteVerifyRequest UserWebsiteVerifyRequest, adAccountId string) (ImplResponse, error) {
+func (s *UserAccountAPIService) VerifyWebsiteUpdate(ctx context.Context, userWebsiteCreate UserWebsiteCreate, adAccountId string) (ImplResponse, error) {
 	// TODO - update VerifyWebsiteUpdate with the required logic for this service method.
 	// Add api_user_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, UserWebsiteSummary{}) or use other options such as http.Ok ...
-	// return Response(200, UserWebsiteSummary{}), nil
+	// TODO: Uncomment the next line to return response Response(200, UserWebsite{}) or use other options such as http.Ok ...
+	// return Response(200, UserWebsite{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, UserWebsite{}) or use other options such as http.Ok ...
+	// return Response(201, UserWebsite{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("VerifyWebsiteUpdate method not implemented")
 }
@@ -214,14 +358,29 @@ func (s *UserAccountAPIService) UnverifyWebsiteDelete(ctx context.Context, websi
 	// TODO - update UnverifyWebsiteDelete with the required logic for this service method.
 	// Add api_user_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
+	// TODO: Uncomment the next line to return response Response(200, UserWebsite{}) or use other options such as http.Ok ...
+	// return Response(200, UserWebsite{}), nil
+
 	// TODO: Uncomment the next line to return response Response(204, {}) or use other options such as http.Ok ...
 	// return Response(204, nil),nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("UnverifyWebsiteDelete method not implemented")
 }
@@ -231,20 +390,31 @@ func (s *UserAccountAPIService) WebsiteVerificationGet(ctx context.Context, adAc
 	// TODO - update WebsiteVerificationGet with the required logic for this service method.
 	// Add api_user_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, UserWebsiteVerificationCode{}) or use other options such as http.Ok ...
-	// return Response(200, UserWebsiteVerificationCode{}), nil
+	// TODO: Uncomment the next line to return response Response(200, UserWebsiteVerification{}) or use other options such as http.Ok ...
+	// return Response(200, UserWebsiteVerification{}), nil
 
-	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
-	// return Response(403, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("WebsiteVerificationGet method not implemented")
 }
 
 // UserAccountFollowedInterests - List following interests
-// Deprecated
 func (s *UserAccountAPIService) UserAccountFollowedInterests(ctx context.Context, username string, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update UserAccountFollowedInterests with the required logic for this service method.
 	// Add api_user_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
@@ -252,17 +422,17 @@ func (s *UserAccountAPIService) UserAccountFollowedInterests(ctx context.Context
 	// TODO: Uncomment the next line to return response Response(200, UserAccountFollowedInterests200Response{}) or use other options such as http.Ok ...
 	// return Response(200, UserAccountFollowedInterests200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(401, Error{}) or use other options such as http.Ok ...
-	// return Response(401, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("UserAccountFollowedInterests method not implemented")
 }

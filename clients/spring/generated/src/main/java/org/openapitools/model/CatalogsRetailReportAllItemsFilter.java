@@ -1,0 +1,184 @@
+package org.openapitools.model;
+
+import java.net.URI;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.springframework.lang.Nullable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import jakarta.annotation.Generated;
+
+/**
+ * ALL_ITEMS filter for retail catalogs. Optional product_group_id scopes the report to items in that product group. If omitted, all items are included.
+ */
+
+@Schema(name = "CatalogsRetailReportAllItemsFilter", description = "ALL_ITEMS filter for retail catalogs. Optional product_group_id scopes the report to items in that product group. If omitted, all items are included.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class CatalogsRetailReportAllItemsFilter implements CatalogsRetailReportParametersReport {
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable String catalogId;
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable String productGroupId;
+
+  /**
+   * Gets or Sets reportType
+   */
+  public enum ReportTypeEnum {
+    ALL_ITEMS("ALL_ITEMS");
+
+    private final String value;
+
+    ReportTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ReportTypeEnum fromValue(String value) {
+      for (ReportTypeEnum b : ReportTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private ReportTypeEnum reportType;
+
+  public CatalogsRetailReportAllItemsFilter() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public CatalogsRetailReportAllItemsFilter(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+  public CatalogsRetailReportAllItemsFilter catalogId(@Nullable String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Unique identifier of a catalog. If not given, oldest catalog will be used
+   * @return catalogId
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "catalog_id", description = "Unique identifier of a catalog. If not given, oldest catalog will be used", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("catalog_id")
+  public @Nullable String getCatalogId() {
+    return catalogId;
+  }
+
+  @JsonProperty("catalog_id")
+  public void setCatalogId(@Nullable String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  public CatalogsRetailReportAllItemsFilter productGroupId(@Nullable String productGroupId) {
+    this.productGroupId = productGroupId;
+    return this;
+  }
+
+  /**
+   * Optional product group ID. If omitted, all items are included. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature.
+   * @return productGroupId
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "product_group_id", description = "Optional product group ID. If omitted, all items are included. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("product_group_id")
+  public @Nullable String getProductGroupId() {
+    return productGroupId;
+  }
+
+  @JsonProperty("product_group_id")
+  public void setProductGroupId(@Nullable String productGroupId) {
+    this.productGroupId = productGroupId;
+  }
+
+  public CatalogsRetailReportAllItemsFilter reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+  /**
+   * Get reportType
+   * @return reportType
+   */
+  @NotNull 
+  @Schema(name = "report_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+  @JsonProperty("report_type")
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    CatalogsRetailReportAllItemsFilter catalogsRetailReportAllItemsFilter = (CatalogsRetailReportAllItemsFilter) o;
+    return Objects.equals(this.catalogId, catalogsRetailReportAllItemsFilter.catalogId) &&
+        Objects.equals(this.productGroupId, catalogsRetailReportAllItemsFilter.productGroupId) &&
+        Objects.equals(this.reportType, catalogsRetailReportAllItemsFilter.reportType);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(catalogId, productGroupId, reportType);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CatalogsRetailReportAllItemsFilter {\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    productGroupId: ").append(toIndentedString(productGroupId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

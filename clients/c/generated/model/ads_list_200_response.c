@@ -13,10 +13,10 @@ static ads_list_200_response_t *ads_list_200_response_create_internal(
     if (!ads_list_200_response_local_var) {
         return NULL;
     }
+    memset(ads_list_200_response_local_var, 0, sizeof(ads_list_200_response_t));
+    ads_list_200_response_local_var->_library_owned = 1;
     ads_list_200_response_local_var->bookmark = bookmark;
     ads_list_200_response_local_var->items = items;
-
-    ads_list_200_response_local_var->_library_owned = 1;
     return ads_list_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) ads_list_200_response_t *ads_list_200_response_creat
     char *bookmark,
     list_t *items
     ) {
-    return ads_list_200_response_create_internal (
+    ads_list_200_response_t *result = ads_list_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ads_list_200_response_free(ads_list_200_response_t *ads_list_200_response) {
@@ -45,7 +48,7 @@ void ads_list_200_response_free(ads_list_200_response_t *ads_list_200_response) 
     }
     if (ads_list_200_response->items) {
         list_ForEach(listEntry, ads_list_200_response->items) {
-            ad_response_free(listEntry->data);
+            ad_free(listEntry->data);
         }
         list_freeList(ads_list_200_response->items);
         ads_list_200_response->items = NULL;
@@ -76,7 +79,7 @@ cJSON *ads_list_200_response_convertToJSON(ads_list_200_response_t *ads_list_200
     listEntry_t *itemsListEntry;
     if (ads_list_200_response->items) {
     list_ForEach(itemsListEntry, ads_list_200_response->items) {
-    cJSON *itemLocal = ad_response_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = ad_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -95,6 +98,8 @@ fail:
 ads_list_200_response_t *ads_list_200_response_parseFromJSON(cJSON *ads_list_200_responseJSON){
 
     ads_list_200_response_t *ads_list_200_response_local_var = NULL;
+
+    char *bookmark_local_str = NULL;
 
     // define the local list for ads_list_200_response->items
     list_t *itemsList = NULL;
@@ -133,23 +138,33 @@ ads_list_200_response_t *ads_list_200_response_parseFromJSON(cJSON *ads_list_200
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        ad_response_t *itemsItem = ad_response_parseFromJSON(items_local_nonprimitive);
+        ad_t *itemsItem = ad_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     ads_list_200_response_local_var = ads_list_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!ads_list_200_response_local_var) {
+        goto end;
+    }
+
     return ads_list_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            ad_response_free(listEntry->data);
+            ad_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

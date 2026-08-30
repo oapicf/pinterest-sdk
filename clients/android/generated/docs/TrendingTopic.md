@@ -7,7 +7,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **String** | Description of the trending topic | 
-**percentGrowthMom** | **Integer** | Month-over-month growth percentage | 
+**id** | **String** | Unique identifier for the trending topic | 
+**percentGrowthMom** | **Integer** | Month-over-month growth percentage |  [optional]
 **pins** | [**List&lt;TrendingPin&gt;**](TrendingPin.md) | Array of pin images related to this trend (up to 6) | 
 **relatedInterests** | **List&lt;String&gt;** | List of related interest categories | 
 **relatedSearches** | **List&lt;String&gt;** | List of related search terms | 

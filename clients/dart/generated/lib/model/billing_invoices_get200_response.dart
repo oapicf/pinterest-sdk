@@ -19,7 +19,7 @@ class BillingInvoicesGet200Response {
 
   String? bookmark;
 
-  List<BillingInvoiceResponse> items;
+  List<BillingInvoice> items;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BillingInvoicesGet200Response &&
@@ -57,16 +57,14 @@ class BillingInvoicesGet200Response {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BillingInvoicesGet200Response[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BillingInvoicesGet200Response[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'items'), 'Required key "BillingInvoicesGet200Response[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "BillingInvoicesGet200Response[items]" has a null value in JSON.');
         return true;
       }());
 
       return BillingInvoicesGet200Response(
         bookmark: mapValueOfType<String>(json, r'bookmark'),
-        items: BillingInvoiceResponse.listFromJson(json[r'items']),
+        items: BillingInvoice.listFromJson(json[r'items']),
       );
     }
     return null;

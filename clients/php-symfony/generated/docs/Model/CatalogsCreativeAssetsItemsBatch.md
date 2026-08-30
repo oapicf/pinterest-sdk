@@ -4,9 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **batchId** | **string** | Id of the catalogs items batch | [optional] 
-**catalogType** | [**OpenAPI\Server\Model\CatalogsType**](CatalogsType.md) |  | 
-**completedTime** | **\DateTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
-**createdTime** | **\DateTime** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
+**catalogType** | **string** |  | 
+**completedTime** | **\DateTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] 
+**createdTime** | **\DateTime** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] 
 **items** | [**OpenAPI\Server\Model\CreativeAssetsProcessingRecord**](CreativeAssetsProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] 
 **status** | [**OpenAPI\Server\Model\BatchOperationStatus**](BatchOperationStatus.md) |  | [optional] 
 

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -33,25 +33,55 @@ func (s *ResourcesAPIService) AdAccountCountriesGet(ctx context.Context) (ImplRe
 	// TODO - update AdAccountCountriesGet with the required logic for this service method.
 	// Add api_resources_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, AdAccountsCountryResponse{}) or use other options such as http.Ok ...
-	// return Response(200, AdAccountsCountryResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, AdAccountCountriesGet200Response{}) or use other options such as http.Ok ...
+	// return Response(200, AdAccountCountriesGet200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AdAccountCountriesGet method not implemented")
 }
 
 // DeliveryMetricsGet - Get available metrics&#39; definitions
-func (s *ResourcesAPIService) DeliveryMetricsGet(ctx context.Context, reportType string) (ImplResponse, error) {
+func (s *ResourcesAPIService) DeliveryMetricsGet(ctx context.Context, reportType ReportType) (ImplResponse, error) {
 	// TODO - update DeliveryMetricsGet with the required logic for this service method.
 	// Add api_resources_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, DeliveryMetricsResponse{}) or use other options such as http.Ok ...
-	// return Response(200, DeliveryMetricsResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, DeliveryMetricsGet200Response{}) or use other options such as http.Ok ...
+	// return Response(200, DeliveryMetricsGet200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("DeliveryMetricsGet method not implemented")
 }
@@ -64,8 +94,23 @@ func (s *ResourcesAPIService) LeadFormQuestionsGet(ctx context.Context) (ImplRes
 	// TODO: Uncomment the next line to return response Response(200, {}) or use other options such as http.Ok ...
 	// return Response(200, nil),nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("LeadFormQuestionsGet method not implemented")
 }
@@ -75,11 +120,26 @@ func (s *ResourcesAPIService) MetricsReadyStateGet(ctx context.Context, date str
 	// TODO - update MetricsReadyStateGet with the required logic for this service method.
 	// Add api_resources_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, BookClosedResponse{}) or use other options such as http.Ok ...
-	// return Response(200, BookClosedResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, BookClosed{}) or use other options such as http.Ok ...
+	// return Response(200, BookClosed{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("MetricsReadyStateGet method not implemented")
 }
@@ -89,25 +149,55 @@ func (s *ResourcesAPIService) InterestTargetingOptionsGet(ctx context.Context, i
 	// TODO - update InterestTargetingOptionsGet with the required logic for this service method.
 	// Add api_resources_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, SingleInterestTargetingOptionResponse{}) or use other options such as http.Ok ...
-	// return Response(200, SingleInterestTargetingOptionResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, SingleInterestTargetingOption{}) or use other options such as http.Ok ...
+	// return Response(200, SingleInterestTargetingOption{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("InterestTargetingOptionsGet method not implemented")
 }
 
 // TargetingOptionsGet - Get targeting options
-func (s *ResourcesAPIService) TargetingOptionsGet(ctx context.Context, targetingType string, clientId string, oauthSignature string, timestamp string, adAccountId string) (ImplResponse, error) {
+func (s *ResourcesAPIService) TargetingOptionsGet(ctx context.Context, targetingType PublicTargetingType, adAccountId string, clientId string, oauthSignature string, timestamp string) (ImplResponse, error) {
 	// TODO - update TargetingOptionsGet with the required logic for this service method.
 	// Add api_resources_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, []map[string]interface{}{}) or use other options such as http.Ok ...
 	// return Response(200, []map[string]interface{}{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("TargetingOptionsGet method not implemented")
 }

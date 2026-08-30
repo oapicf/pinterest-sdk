@@ -2,12 +2,20 @@
 Protected Class AdvancedAuctionItemsSubmitRecord
 
 	#tag Property, Flags = &h0
-		operation As String
+		bid_options As OpenAPIClient.Models.AdvancedAuctionBidOptions
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		country As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+		#tag EndNote
+		errors() As OpenAPIClient.Models.AdvancedAuctionOperationError
 	#tag EndProperty
 
 
@@ -25,15 +33,7 @@ Protected Class AdvancedAuctionItemsSubmitRecord
 
 
 	#tag Property, Flags = &h0
-		bid_options As OpenAPIClient.Models.AdvancedAuctionBidOptions
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
-		#tag EndNote
-		errors() As OpenAPIClient.Models.AdvancedAuctionOperationError
+		operation As String
 	#tag EndProperty
 
 
@@ -45,7 +45,24 @@ Protected Class AdvancedAuctionItemsSubmitRecord
 	#tag EndProperty
 
 
+    #tag Enum, Name = OperationEnum, Type = Integer, Flags = &h0
+        
+        Delete
+        
+    #tag EndEnum
 
+
+	#tag Method, Flags = &h0
+		Shared Function OperationEnumToString(value As OperationEnum) As String
+		  Select Case value
+		    
+		    Case OperationEnum.Delete
+		      Return "DELETE"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -82,11 +99,11 @@ Protected Class AdvancedAuctionItemsSubmitRecord
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="operation"
+			Name="bid_options"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AdvancedAuctionOperation"
+			Type="AdvancedAuctionBidOptions"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -95,6 +112,14 @@ Protected Class AdvancedAuctionItemsSubmitRecord
 			Group="Behavior"
 			InitialValue=""
 			Type="Country"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="errors"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AdvancedAuctionOperationError"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -111,22 +136,6 @@ Protected Class AdvancedAuctionItemsSubmitRecord
 			Group="Behavior"
 			InitialValue=""
 			Type="Language"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="bid_options"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="AdvancedAuctionBidOptions"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="errors"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="AdvancedAuctionOperationError"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -127,7 +127,7 @@ Interest::getCanonicalUrl()
 }
 
 void
-Interest::setCanonicalUrl(std::string  canonical_url)
+Interest::setCanonicalUrl(std::string canonical_url)
 {
 	this->canonical_url = canonical_url;
 }
@@ -139,7 +139,7 @@ Interest::getId()
 }
 
 void
-Interest::setId(std::string  id)
+Interest::setId(std::string id)
 {
 	this->id = id;
 }
@@ -151,7 +151,7 @@ Interest::getKey()
 }
 
 void
-Interest::setKey(std::string  key)
+Interest::setKey(std::string key)
 {
 	this->key = key;
 }
@@ -163,7 +163,7 @@ Interest::getName()
 }
 
 void
-Interest::setName(std::string  name)
+Interest::setName(std::string name)
 {
 	this->name = name;
 }

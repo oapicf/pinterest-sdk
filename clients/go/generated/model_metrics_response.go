@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &MetricsResponse{}
 
 // MetricsResponse struct for MetricsResponse
 type MetricsResponse struct {
-	Data []map[string]interface{} `json:"data,omitempty"`
+	Data []MetricsResponseDataItems `json:"data,omitempty"`
 }
 
 // NewMetricsResponse instantiates a new MetricsResponse object
@@ -41,9 +41,9 @@ func NewMetricsResponseWithDefaults() *MetricsResponse {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *MetricsResponse) GetData() []map[string]interface{} {
+func (o *MetricsResponse) GetData() []MetricsResponseDataItems {
 	if o == nil || IsNil(o.Data) {
-		var ret []map[string]interface{}
+		var ret []MetricsResponseDataItems
 		return ret
 	}
 	return o.Data
@@ -51,7 +51,7 @@ func (o *MetricsResponse) GetData() []map[string]interface{} {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricsResponse) GetDataOk() ([]map[string]interface{}, bool) {
+func (o *MetricsResponse) GetDataOk() ([]MetricsResponseDataItems, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *MetricsResponse) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []map[string]interface{} and assigns it to the Data field.
-func (o *MetricsResponse) SetData(v []map[string]interface{}) {
+// SetData gets a reference to the given []MetricsResponseDataItems and assigns it to the Data field.
+func (o *MetricsResponse) SetData(v []MetricsResponseDataItems) {
 	o.Data = v
 }
 

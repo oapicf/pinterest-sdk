@@ -17,7 +17,7 @@ class UpdateMemberAssetsResultsResponseArray {
   });
 
   /// List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.
-  List<UpdateMemberAssetsResultsResponseArrayItemsInner> items;
+  List<UpdateMemberAssetResultItem> items;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateMemberAssetsResultsResponseArray &&
@@ -48,15 +48,11 @@ class UpdateMemberAssetsResultsResponseArray {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UpdateMemberAssetsResultsResponseArray[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UpdateMemberAssetsResultsResponseArray[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return UpdateMemberAssetsResultsResponseArray(
-        items: UpdateMemberAssetsResultsResponseArrayItemsInner.listFromJson(json[r'items']),
+        items: UpdateMemberAssetResultItem.listFromJson(json[r'items']),
       );
     }
     return null;

@@ -5,7 +5,6 @@ import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.NullableCurrency;
 
 import io.swagger.annotations.ApiModel;
@@ -20,9 +19,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsCreativeAssetsFeedsUpdateRequest  {
   
+public enum CatalogTypeEnum {
+
+CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
+
+
+    private String value;
+
+    CatalogTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
   @ApiModelProperty(required = true, value = "")
 
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(value = "")
 
@@ -62,15 +91,18 @@ public class CatalogsCreativeAssetsFeedsUpdateRequest  {
    * @return catalogType
   **/
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
+  public String getCatalogType() {
+    if (catalogType == null) {
+      return null;
+    }
+    return catalogType.value();
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
-  public CatalogsCreativeAssetsFeedsUpdateRequest catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsFeedsUpdateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -247,10 +279,7 @@ public class CatalogsCreativeAssetsFeedsUpdateRequest  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

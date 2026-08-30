@@ -23,45 +23,14 @@ case class CustomerListUpload (
 /* Customer List Upload ID. */
   id: String,
 operation: UserListOperationType,
-recordCounts: Option[RecordCounts],
-/* Workload processing state */
-  state: State,
+/* Record processing counts */
+  recordCounts: Option[RecordCounts],
+state: WorkloadState,
 /* Customer List Upload updated_time. Epoch (seconds). */
   updatedTime: Integer)
 
 object CustomerListUpload {
   import DateTimeCodecs._
-  sealed trait State
-  case object NOTSTARTED extends State
-  case object RUNNING extends State
-  case object PAUSED extends State
-  case object SUCCEEDED extends State
-  case object FAILED extends State
-
-  object State {
-    def toState(s: String): Option[State] = s match {
-      case "NOTSTARTED" => Some(NOTSTARTED)
-      case "RUNNING" => Some(RUNNING)
-      case "PAUSED" => Some(PAUSED)
-      case "SUCCEEDED" => Some(SUCCEEDED)
-      case "FAILED" => Some(FAILED)
-      case _ => None
-    }
-
-    def fromState(x: State): String = x match {
-      case NOTSTARTED => "NOTSTARTED"
-      case RUNNING => "RUNNING"
-      case PAUSED => "PAUSED"
-      case SUCCEEDED => "SUCCEEDED"
-      case FAILED => "FAILED"
-    }
-  }
-
-  implicit val StateEnumEncoder: EncodeJson[State] =
-    EncodeJson[State](is => StringEncodeJson(State.fromState(is)))
-
-  implicit val StateEnumDecoder: DecodeJson[State] =
-    DecodeJson.optionDecoder[State](n => n.string.flatMap(jStr => State.toState(jStr)), "State failed to de-serialize")
 
   implicit val CustomerListUploadCodecJson: CodecJson[CustomerListUpload] = CodecJson.derive[CustomerListUpload]
   implicit val CustomerListUploadDecoder: EntityDecoder[CustomerListUpload] = jsonOf[CustomerListUpload]

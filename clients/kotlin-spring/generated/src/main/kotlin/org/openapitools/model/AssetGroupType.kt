@@ -16,7 +16,7 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Asset group type
+* Asset group type.
 * Values: BRAND,LOCATION_OR_LANGUAGE,PRODUCT_LINE,OTHER
 */
 enum class AssetGroupType(@get:JsonValue val value: kotlin.String) {

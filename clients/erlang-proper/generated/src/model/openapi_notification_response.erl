@@ -9,9 +9,9 @@
 -export_type([openapi_notification_response/0]).
 
 -type openapi_notification_response() ::
-  [ {'success', boolean() }
+  [ {'error_msg', binary() }
   | {'received_at', integer() }
-  | {'error_msg', binary() }
+  | {'success', boolean() }
   ].
 
 
@@ -19,9 +19,9 @@ openapi_notification_response() ->
     openapi_notification_response([]).
 
 openapi_notification_response(Fields) ->
-  Default = [ {'success', boolean() }
+  Default = [ {'error_msg', binary() }
             , {'received_at', integer() }
-            , {'error_msg', binary() }
+            , {'success', boolean() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

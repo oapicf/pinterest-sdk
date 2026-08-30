@@ -170,7 +170,7 @@ SummaryPin::getAltText()
 }
 
 void
-SummaryPin::setAltText(std::string  alt_text)
+SummaryPin::setAltText(std::string alt_text)
 {
 	this->alt_text = alt_text;
 }
@@ -182,7 +182,7 @@ SummaryPin::getDescription()
 }
 
 void
-SummaryPin::setDescription(std::string  description)
+SummaryPin::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -194,7 +194,7 @@ SummaryPin::getId()
 }
 
 void
-SummaryPin::setId(std::string  id)
+SummaryPin::setId(std::string id)
 {
 	this->id = id;
 }
@@ -206,7 +206,7 @@ SummaryPin::getLink()
 }
 
 void
-SummaryPin::setLink(std::string  link)
+SummaryPin::setLink(std::string link)
 {
 	this->link = link;
 }
@@ -218,7 +218,7 @@ SummaryPin::getMedia()
 }
 
 void
-SummaryPin::setMedia(PinMedia  media)
+SummaryPin::setMedia(PinMedia media)
 {
 	this->media = media;
 }
@@ -230,7 +230,7 @@ SummaryPin::getTitle()
 }
 
 void
-SummaryPin::setTitle(std::string  title)
+SummaryPin::setTitle(std::string title)
 {
 	this->title = title;
 }

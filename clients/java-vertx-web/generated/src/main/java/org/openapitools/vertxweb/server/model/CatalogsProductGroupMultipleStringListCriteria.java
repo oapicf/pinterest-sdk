@@ -10,7 +10,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupMultipleStringListCriteria   {
   
-  private Boolean negated = false;
+  private Boolean negated;
   private List<List<String>> values = new ArrayList<>();
 
   public CatalogsProductGroupMultipleStringListCriteria () {
@@ -75,9 +75,6 @@ public class CatalogsProductGroupMultipleStringListCriteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

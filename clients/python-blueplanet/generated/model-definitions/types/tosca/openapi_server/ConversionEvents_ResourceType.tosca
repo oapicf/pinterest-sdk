@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  ConversionEventsDataInner = openapi_server.resourceTypes.ConversionEventsDataInner
+  ConversionApiResponseEventsItems = openapi_server.resourceTypes.ConversionApiResponseEventsItems
 }
 resourceTypes {
 
@@ -16,10 +16,20 @@ resourceTypes {
     description = ConversionEvents
     derivedFrom = Root
     properties {
-        data {
+        events {
           type = array
-          items.type = ConversionEventsDataInner
-          description = ""
+          items.type = ConversionApiResponseEventsItems
+          description = "Specific messages for each event received. The order will match the order in which the events were received in the request."
+          optional = true
+        }
+        num_events_processed {
+          type =  integer
+          description = "Number of events that were successfully processed from the events."
+          optional = true
+        }
+        num_events_received {
+          type =  integer
+          description = "Total number of events received in the request."
           optional = true
         }
     }

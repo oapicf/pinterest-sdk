@@ -29,9 +29,6 @@ CatalogsFormat <- R6::R6Class(
           stop("Use one of the valid values: ",
             paste0(enumvec, collapse = ", "))
         }
-        warning("Initializing CatalogsFormat with DUMMY_ENUM. Use one of the valid values: ",
-          paste0(enumvec, collapse = ", "),
-          ". If you did not manually initialize CatalogsFormat, this may already be overwritten by an enum loaded from a JSON config.")
       }
       private$value <- val
     },
@@ -92,7 +89,7 @@ CatalogsFormat <- R6::R6Class(
 
 # add to utils.R
 .parse_CatalogsFormat <- function(vals) {
-  res <- gsub("^\\[|\\]$", "", "[TSV, CSV, XML]")
+  res <- gsub("^\\[|\\]$", "", "[TSV, CSV, XML, INTEGRATION]")
   unlist(strsplit(res, ", "))
 }
 

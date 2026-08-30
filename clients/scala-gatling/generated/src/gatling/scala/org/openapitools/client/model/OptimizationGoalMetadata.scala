@@ -3,9 +3,9 @@ package org.openapitools.client.model
 
 
 case class OptimizationGoalMetadata (
-    _conversionTagV3GoalMetadata: Option[OptimizationGoalMetadataConversionTagV3GoalMetadata],
-    _frequencyGoalMetadata: Option[OptimizationGoalMetadataFrequencyGoalMetadata],
-    _scrollupGoalMetadata: Option[OptimizationGoalMetadataScrollupGoalMetadata]
+    _conversionTagV3GoalMetadata: Option[ConversionTagV3GoalMetadata],
+    _frequencyGoalMetadata: Option[FrequencyGoalMetadata],
+    _scrollupGoalMetadata: Option[ScrollupGoalMetadata]
 )
 object OptimizationGoalMetadata {
     def toStringBody(var_conversionTagV3GoalMetadata: Object, var_frequencyGoalMetadata: Object, var_scrollupGoalMetadata: Object) =

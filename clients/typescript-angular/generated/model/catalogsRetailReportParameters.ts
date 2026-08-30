@@ -7,7 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { CatalogsHotelReportParametersReport } from './catalogsHotelReportParametersReport';
+import { CatalogsRetailReportParametersReport } from './catalogsRetailReportParametersReport';
 
 
 /**
@@ -15,7 +15,7 @@ import { CatalogsHotelReportParametersReport } from './catalogsHotelReportParame
  */
 export interface CatalogsRetailReportParameters { 
     catalog_type: CatalogsRetailReportParameters.CatalogTypeEnum;
-    report: CatalogsHotelReportParametersReport;
+    report: CatalogsRetailReportParametersReport;
 }
 export namespace CatalogsRetailReportParameters {
     export const CatalogTypeEnum = {

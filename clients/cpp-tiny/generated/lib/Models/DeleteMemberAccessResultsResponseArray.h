@@ -53,7 +53,7 @@ public:
 
 	/*! \brief Set List of member asset permissions that were deleted.
 	 */
-	void setItems(std::list <DeleteMemberAccessResult> items);
+	void setItems(std::list<DeleteMemberAccessResult> items);
 
 
     private:

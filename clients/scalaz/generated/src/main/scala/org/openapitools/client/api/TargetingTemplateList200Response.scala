@@ -13,7 +13,7 @@ import TargetingTemplateList200Response._
 
 case class TargetingTemplateList200Response (
   bookmark: Option[String],
-items: List[TargetingTemplateGetResponseData])
+items: List[TargetingTemplate])
 
 object TargetingTemplateList200Response {
   import DateTimeCodecs._

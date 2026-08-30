@@ -3,7 +3,7 @@ package org.openapitools.model;
 
 
 /**
- * Summary status for campaign
+ * Gets or Sets CampaignSummaryStatus
  */
 public enum CampaignSummaryStatus {
   

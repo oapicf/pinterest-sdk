@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  |  [optional]
-**items** | [**List&lt;Audience&gt;**](Audience.md) |  | 
+**items** | [**List&lt;AdAccountsAudience&gt;**](AdAccountsAudience.md) |  | 
 
 
 

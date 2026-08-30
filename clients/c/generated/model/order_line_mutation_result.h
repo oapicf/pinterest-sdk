@@ -1,0 +1,42 @@
+/*
+ * order_line_mutation_result.h
+ *
+ * 
+ */
+
+#ifndef _order_line_mutation_result_H_
+#define _order_line_mutation_result_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct order_line_mutation_result_t order_line_mutation_result_t;
+
+#include "order_line.h"
+#include "order_line_mutation_error.h"
+
+
+
+typedef struct order_line_mutation_result_t {
+    list_t *errors; //nonprimitive container
+    list_t *order_line; //nonprimitive container
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} order_line_mutation_result_t;
+
+__attribute__((deprecated)) order_line_mutation_result_t *order_line_mutation_result_create(
+    list_t *errors,
+    list_t *order_line
+);
+
+void order_line_mutation_result_free(order_line_mutation_result_t *order_line_mutation_result);
+
+order_line_mutation_result_t *order_line_mutation_result_parseFromJSON(cJSON *order_line_mutation_resultJSON);
+
+cJSON *order_line_mutation_result_convertToJSON(order_line_mutation_result_t *order_line_mutation_result);
+
+#endif /* _order_line_mutation_result_H_ */
+

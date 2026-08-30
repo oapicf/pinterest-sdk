@@ -13,7 +13,7 @@
   | {'default_availability', openapi_product_availability_type:openapi_product_availability_type() }
   | {'default_country', openapi_country:openapi_country() }
   | {'default_currency', openapi_nullable_currency:openapi_nullable_currency() }
-  | {'default_locale', openapi_catalogs_feeds_create_request_default_locale:openapi_catalogs_feeds_create_request_default_locale() }
+  | {'default_locale', openapi_catalogs_creative_assets_feeds_create_request_default_locale:openapi_catalogs_creative_assets_feeds_create_request_default_locale() }
   | {'format', openapi_catalogs_format:openapi_catalogs_format() }
   | {'location', binary() }
   | {'name', binary() }
@@ -30,7 +30,7 @@ openapi_catalogs_feeds_create_request(Fields) ->
             , {'default_availability', openapi_product_availability_type:openapi_product_availability_type() }
             , {'default_country', openapi_country:openapi_country() }
             , {'default_currency', openapi_nullable_currency:openapi_nullable_currency() }
-            , {'default_locale', openapi_catalogs_feeds_create_request_default_locale:openapi_catalogs_feeds_create_request_default_locale() }
+            , {'default_locale', openapi_catalogs_creative_assets_feeds_create_request_default_locale:openapi_catalogs_creative_assets_feeds_create_request_default_locale() }
             , {'format', openapi_catalogs_format:openapi_catalogs_format() }
             , {'location', binary() }
             , {'name', binary() }

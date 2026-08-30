@@ -26,7 +26,7 @@ CatalogsFeedIngestion::__init()
 	//created_at = null;
 	//feed_id = std::string();
 	//id = std::string();
-	//status = new CatalogsFeedProcessingStatus();
+	//status = null;
 }
 
 void

@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.AiDisclosuresUpdate
 open OpenAPI.Model.CarouselSlot
 open OpenAPI.Model.string option
 
@@ -12,6 +13,8 @@ module PinUpdate =
 
   [<CLIMutable>]
   type PinUpdate = {
+    [<JsonProperty(PropertyName = "ai_disclosures")>]
+    AiDisclosures : AiDisclosuresUpdate;
     [<JsonProperty(PropertyName = "alt_text")>]
     AltText : string option;
     [<JsonProperty(PropertyName = "board_id")>]

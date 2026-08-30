@@ -17,16 +17,18 @@ public class AdAccountCreate   {
   private Currency currency;
   private String name;
   private String ownerUserId;
+  private String timeZone;
 
   public AdAccountCreate () {
 
   }
 
-  public AdAccountCreate (Country country, Currency currency, String name, String ownerUserId) {
+  public AdAccountCreate (Country country, Currency currency, String name, String ownerUserId, String timeZone) {
     this.country = country;
     this.currency = currency;
     this.name = name;
     this.ownerUserId = ownerUserId;
+    this.timeZone = timeZone;
   }
 
     
@@ -65,6 +67,15 @@ public class AdAccountCreate   {
     this.ownerUserId = ownerUserId;
   }
 
+    
+  @JsonProperty("time_zone")
+  public String getTimeZone() {
+    return timeZone;
+  }
+  public void setTimeZone(String timeZone) {
+    this.timeZone = timeZone;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -78,12 +89,13 @@ public class AdAccountCreate   {
     return Objects.equals(country, adAccountCreate.country) &&
         Objects.equals(currency, adAccountCreate.currency) &&
         Objects.equals(name, adAccountCreate.name) &&
-        Objects.equals(ownerUserId, adAccountCreate.ownerUserId);
+        Objects.equals(ownerUserId, adAccountCreate.ownerUserId) &&
+        Objects.equals(timeZone, adAccountCreate.timeZone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, currency, name, ownerUserId);
+    return Objects.hash(country, currency, name, ownerUserId, timeZone);
   }
 
   @Override
@@ -95,6 +107,7 @@ public class AdAccountCreate   {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ownerUserId: ").append(toIndentedString(ownerUserId)).append("\n");
+    sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -104,9 +117,6 @@ public class AdAccountCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

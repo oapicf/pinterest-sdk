@@ -81,7 +81,7 @@ PromotionsResponse::getPromotions()
 }
 
 void
-PromotionsResponse::setPromotions(std::list <PromotionArrayElement> promotions)
+PromotionsResponse::setPromotions(std::list<PromotionArrayElement> promotions)
 {
 	this->promotions = promotions;
 }

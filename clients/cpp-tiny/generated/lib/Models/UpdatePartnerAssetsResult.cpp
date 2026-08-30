@@ -7,7 +7,7 @@ using namespace Tiny;
 UpdatePartnerAssetsResult::UpdatePartnerAssetsResult()
 {
 	asset_id = std::string();
-	asset_type = std::string();
+	asset_type = AssetTypeResponse();
 	partner_id = std::string();
 	permissions = std::list<std::string>();
 }
@@ -48,8 +48,9 @@ UpdatePartnerAssetsResult::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&asset_type, value, "std::string");
 
+        AssetTypeResponse* obj = &asset_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -107,8 +108,8 @@ UpdatePartnerAssetsResult::toJson()
 
 
 
-    object["asset_type"] = getAssetType();
 
+	object["asset_type"] = getAssetType().toJson();
 
 
 
@@ -145,19 +146,19 @@ UpdatePartnerAssetsResult::getAssetId()
 }
 
 void
-UpdatePartnerAssetsResult::setAssetId(std::string  asset_id)
+UpdatePartnerAssetsResult::setAssetId(std::string asset_id)
 {
 	this->asset_id = asset_id;
 }
 
-std::string
+AssetTypeResponse
 UpdatePartnerAssetsResult::getAssetType()
 {
 	return asset_type;
 }
 
 void
-UpdatePartnerAssetsResult::setAssetType(std::string  asset_type)
+UpdatePartnerAssetsResult::setAssetType(AssetTypeResponse asset_type)
 {
 	this->asset_type = asset_type;
 }
@@ -169,7 +170,7 @@ UpdatePartnerAssetsResult::getPartnerId()
 }
 
 void
-UpdatePartnerAssetsResult::setPartnerId(std::string  partner_id)
+UpdatePartnerAssetsResult::setPartnerId(std::string partner_id)
 {
 	this->partner_id = partner_id;
 }
@@ -181,7 +182,7 @@ UpdatePartnerAssetsResult::getPermissions()
 }
 
 void
-UpdatePartnerAssetsResult::setPermissions(std::list <std::string> permissions)
+UpdatePartnerAssetsResult::setPermissions(std::list<std::string> permissions)
 {
 	this->permissions = permissions;
 }

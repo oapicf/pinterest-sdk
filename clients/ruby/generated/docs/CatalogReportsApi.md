@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Build catalogs report
 
-Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the All Items report type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: The All Items report is limited to 25 million items per catalog.
 
 ### Examples
 
@@ -29,7 +29,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CatalogReportsApi.new
-catalogs_report_parameters = PinterestSdkClient::CatalogsHotelReportParameters.new({catalog_type: 'HOTEL', report: PinterestSdkClient::CatalogsReportAllItemsFilter.new({report_type: 'ALL_ITEMS'})}) # CatalogsReportParameters | Request object to asynchronously create a report.
+catalogs_report_parameters = PinterestSdkClient::CatalogsHotelReportParameters.new({catalog_type: 'HOTEL', report: PinterestSdkClient::CatalogsReportDistributionIssueFilter.new({report_type: 'DISTRIBUTION_ISSUES'})}) # CatalogsReportParameters | 
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
@@ -65,7 +65,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **catalogs_report_parameters** | [**CatalogsReportParameters**](CatalogsReportParameters.md) | Request object to asynchronously create a report. |  |
+| **catalogs_report_parameters** | [**CatalogsReportParameters**](CatalogsReportParameters.md) |  |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -88,7 +88,7 @@ end
 
 Get catalogs report
 
-This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+This returns a URL to a report given a token returned from [Build catalogs report](/docs/api/v5/#operation/reports/create). You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Examples
 
@@ -102,7 +102,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CatalogReportsApi.new
-token = 'token_example' # String | Token returned from async build report call
+token = 'token_example' # String | Token returned from the post request creation call
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
@@ -138,7 +138,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **token** | **String** | Token returned from async build report call |  |
+| **token** | **String** | Token returned from the post request creation call |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -161,7 +161,7 @@ end
 
 List report stats
 
-List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Examples
 
@@ -175,11 +175,11 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CatalogReportsApi.new
-parameters = PinterestSdkClient::CatalogsHotelReportStatsParameters.new({catalog_type: 'HOTEL', report: PinterestSdkClient::CatalogsReportDistributionIssueFilter.new({report_type: 'DISTRIBUTION_ISSUES'})}) # ReportsStatsParametersParameter | Contains the parameters for report identification.
+parameters = { ... } # CatalogsReportStatsParameters | Contains the parameters for report identification.
 opts = {
   ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  bookmark: 'bookmark_example' # String | Cursor used to fetch the next page of items
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -213,10 +213,10 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **parameters** | [**ReportsStatsParametersParameter**](.md) | Contains the parameters for report identification. |  |
+| **parameters** | [**CatalogsReportStatsParameters**](.md) | Contains the parameters for report identification. |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 

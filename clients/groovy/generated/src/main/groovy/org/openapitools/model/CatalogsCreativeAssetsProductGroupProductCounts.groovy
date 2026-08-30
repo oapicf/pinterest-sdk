@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 
 @Canonical
 class CatalogsCreativeAssetsProductGroupProductCounts {
+    
+    BigDecimal appLinks
 
     enum CatalogTypeEnum {
     
@@ -30,6 +32,8 @@ class CatalogsCreativeAssetsProductGroupProductCounts {
 
     
     CatalogTypeEnum catalogType
+    
+    BigDecimal images
     
     BigDecimal total
     

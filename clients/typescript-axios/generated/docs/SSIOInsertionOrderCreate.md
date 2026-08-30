@@ -1,0 +1,63 @@
+# SSIOInsertionOrderCreate
+
+Resource create operation model.
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**accepted_terms_id** | **string** | The SFDC id for the terms | [default to undefined]
+**accepted_terms_time** | **number** | The UTC timestamp (to the nearest sec) of when terms were accepted | [optional] [default to undefined]
+**agency_link** | **string** | URL link for agency | [optional] [default to undefined]
+**billing_contact_email** | **string** | The billing contact email | [default to undefined]
+**billing_contact_firstname** | **string** | The billing contact first name | [default to undefined]
+**billing_contact_lastname** | **string** | The billing contact last name | [default to undefined]
+**billto_billing_address_id** | **string** | The bill-to billing address id | [default to undefined]
+**billto_business_address_id** | **string** | The bill-to business address id | [default to undefined]
+**billto_company_id** | **string** | The bill-to company id | [default to undefined]
+**budget_amount** | **number** | If Budget order line, the budget amount. | [optional] [default to undefined]
+**currency_info** | [**Currency**](Currency.md) |  | [default to undefined]
+**end_date** | **string** | End date of time period. Format: YYYY-MM-DD | [optional] [default to undefined]
+**estimated_monthly_spend** | **number** | If Ongoing (perpetual) order line, the estimated monthly spend | [optional] [default to undefined]
+**media_contact_email** | **string** | The media contact email | [default to undefined]
+**media_contact_firstname** | **string** | The media contact first name | [default to undefined]
+**media_contact_lastname** | **string** | The media contact last name | [default to undefined]
+**order_line_type** | [**SSIOOrderLineType**](SSIOOrderLineType.md) | Type can be Budget or Perpetual | [default to undefined]
+**order_name** | **string** | The order name | [default to undefined]
+**pmp_id** | **string** | The pmp id | [default to undefined]
+**po_number** | **string** | The po number | [default to undefined]
+**start_date** | **string** | Starting date of time period. Format: YYYY-MM-DD | [default to undefined]
+**user_email** | **string** | The email of user submitting the insertion order | [optional] [default to undefined]
+
+## Example
+
+```typescript
+import { SSIOInsertionOrderCreate } from './api';
+
+const instance: SSIOInsertionOrderCreate = {
+    accepted_terms_id,
+    accepted_terms_time,
+    agency_link,
+    billing_contact_email,
+    billing_contact_firstname,
+    billing_contact_lastname,
+    billto_billing_address_id,
+    billto_business_address_id,
+    billto_company_id,
+    budget_amount,
+    currency_info,
+    end_date,
+    estimated_monthly_spend,
+    media_contact_email,
+    media_contact_firstname,
+    media_contact_lastname,
+    order_line_type,
+    order_name,
+    pmp_id,
+    po_number,
+    start_date,
+    user_email,
+};
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

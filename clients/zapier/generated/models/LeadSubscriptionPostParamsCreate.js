@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const LeadSubscriptionPostParamsCreate_allOf_partner_metadata = require('../models/LeadSubscriptionPostParamsCreate_allOf_partner_metadata');
+const PartnerMetadata = require('../models/PartnerMetadata');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -21,7 +21,7 @@ module.exports = {
                 label: `Partner access token. Only for clients that requires authentication. We recommend to avoid this param. - [${labelPrefix}partner_access_token]`,
                 type: 'string',
             },
-            ...LeadSubscriptionPostParamsCreate_allOf_partner_metadata.fields(`${keyPrefix}partner_metadata`, isInput),
+            ...PartnerMetadata.fields(`${keyPrefix}partner_metadata`, isInput),
             {
                 key: `${keyPrefix}partner_refresh_token`,
                 label: `Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. - [${labelPrefix}partner_refresh_token]`,
@@ -35,7 +35,7 @@ module.exports = {
             'lead_form_id': bundle.inputData?.[`${keyPrefix}lead_form_id`],
             'webhook_url': bundle.inputData?.[`${keyPrefix}webhook_url`],
             'partner_access_token': bundle.inputData?.[`${keyPrefix}partner_access_token`],
-            'partner_metadata': utils.removeIfEmpty(LeadSubscriptionPostParamsCreate_allOf_partner_metadata.mapping(bundle, `${keyPrefix}partner_metadata`)),
+            'partner_metadata': utils.removeIfEmpty(PartnerMetadata.mapping(bundle, `${keyPrefix}partner_metadata`)),
             'partner_refresh_token': bundle.inputData?.[`${keyPrefix}partner_refresh_token`],
         }
     },

@@ -45,7 +45,7 @@ module.exports = {
             ...BoardMedia.fields(`${keyPrefix}media`, isInput),
             {
                 key: `${keyPrefix}name`,
-                label: `     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". - [${labelPrefix}name]`,
+                label: `    Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". - [${labelPrefix}name]`,
                 required: true,
                 type: 'string',
             },

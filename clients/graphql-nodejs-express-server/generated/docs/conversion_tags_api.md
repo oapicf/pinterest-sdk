@@ -41,7 +41,7 @@ Get Ocpm eligible conversion tags
 Get Ocpm eligible conversion tag events for an ad account.
 <a name="PageVisitConversionTagsGet"></a>
 # **PageVisitConversionTagsGet**
-> PageVisitConversionTagsGet200Response PageVisitConversionTagsGet(adAccountId, pageSize, order, bookmark)
+> PageVisitConversionTagsGet200Response PageVisitConversionTagsGet(adAccountId, bookmark, pageSize, order)
 
 Get page visit conversion tags
 

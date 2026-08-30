@@ -81,7 +81,7 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
       CreateAssetInvitesRequestItemObject <- list()
       if (!is.null(self$`asset_id_to_permissions`)) {
         CreateAssetInvitesRequestItemObject[["asset_id_to_permissions"]] <-
-          lapply(self$`asset_id_to_permissions`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`asset_id_to_permissions`)
       }
       if (!is.null(self$`invite_id`)) {
         CreateAssetInvitesRequestItemObject[["invite_id"]] <-
@@ -89,9 +89,32 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
       }
       if (!is.null(self$`invite_type`)) {
         CreateAssetInvitesRequestItemObject[["invite_type"]] <-
-          self$`invite_type`$toSimpleType()
+          self$extractSimpleType(self$`invite_type`)
       }
       return(CreateAssetInvitesRequestItemObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -102,7 +125,7 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`asset_id_to_permissions`)) {
-        self$`asset_id_to_permissions` <- ApiClient$new()$deserializeObj(this_object$`asset_id_to_permissions`, "map(array[Permissions])", loadNamespace("openapi"))
+        self$`asset_id_to_permissions` <- ApiClient$new()$deserializeObj(this_object$`asset_id_to_permissions`, "map(Array)", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`invite_id`)) {
         self$`invite_id` <- this_object$`invite_id`
@@ -133,7 +156,7 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
     #' @return the instance of CreateAssetInvitesRequestItem
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`asset_id_to_permissions` <- ApiClient$new()$deserializeObj(this_object$`asset_id_to_permissions`, "map(array[Permissions])", loadNamespace("openapi"))
+      self$`asset_id_to_permissions` <- ApiClient$new()$deserializeObj(this_object$`asset_id_to_permissions`, "map(Array)", loadNamespace("openapi"))
       self$`invite_id` <- this_object$`invite_id`
       self$`invite_type` <- InviteType$new()$fromJSON(jsonlite::toJSON(this_object$`invite_type`, auto_unbox = TRUE, digits = NA))
       self
@@ -186,10 +209,6 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
         return(FALSE)
       }
 
-      if (length(self$`asset_id_to_permissions`) < 1) {
-        return(FALSE)
-      }
-
       # check if the required `invite_id` is null
       if (is.null(self$`invite_id`)) {
         return(FALSE)
@@ -216,10 +235,6 @@ CreateAssetInvitesRequestItem <- R6::R6Class(
       # check if the required `asset_id_to_permissions` is null
       if (is.null(self$`asset_id_to_permissions`)) {
         invalid_fields["asset_id_to_permissions"] <- "Non-nullable required field `asset_id_to_permissions` cannot be null."
-      }
-
-      if (length(self$`asset_id_to_permissions`) < 1) {
-        invalid_fields["asset_id_to_permissions"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       # check if the required `invite_id` is null

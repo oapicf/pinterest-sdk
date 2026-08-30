@@ -10,7 +10,7 @@
 
 #include <string>
 #include "NonNullableCatalogsCurrency.h"
-#include "NonNullableProductAvailabilityType.h"
+#include "ProductAvailability.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -49,11 +49,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	NonNullableProductAvailabilityType getAvailability();
+	ProductAvailability getAvailability();
 
 	/*! \brief Set 
 	 */
-	void setAvailability(NonNullableProductAvailabilityType  availability);
+	void setAvailability(ProductAvailability  availability);
 	/*! \brief Get 
 	 */
 	NonNullableCatalogsCurrency getCurrency();
@@ -91,7 +91,7 @@ public:
 	void setSalePrice(long long  sale_price);
 
 private:
-	NonNullableProductAvailabilityType availability;
+	ProductAvailability availability;
 	NonNullableCatalogsCurrency currency;
 	std::string item_group_id;
 	std::string item_id;

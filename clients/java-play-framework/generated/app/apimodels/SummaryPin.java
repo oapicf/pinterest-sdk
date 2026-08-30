@@ -11,7 +11,7 @@ import javax.validation.Valid;
 /**
  * Summarized pin information
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class SummaryPin   {
   @JsonProperty("alt_text")
@@ -20,11 +20,14 @@ public class SummaryPin   {
   private String altText;
 
   @JsonProperty("description")
-  
+  @Size(max=800)
+
   private String description;
 
   @JsonProperty("id")
-  
+  @NotNull
+@Pattern(regexp="^\\d+$")
+
   private String id;
 
   @JsonProperty("link")
@@ -38,7 +41,8 @@ public class SummaryPin   {
   private PinMedia media;
 
   @JsonProperty("title")
-  
+  @Size(max=100)
+
   private String title;
 
   public SummaryPin altText(String altText) {
@@ -187,10 +191,7 @@ public class SummaryPin   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -1,16 +1,16 @@
 #tag Class
 Protected Class UserAccountApi
 	#tag Method, Flags = &h0
-		Sub BoardsUserFollowsList(, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, Optional explicitFollowing As Xoson.O.OptionalBoolean, Optional adAccountId As Xoson.O.OptionalString)
+		Sub BoardsUserFollowsList(, Optional adAccountId As Xoson.O.OptionalString, Optional explicitFollowing As Xoson.O.OptionalBoolean, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation boards_user_follows/list
 		  // List following boards
 		  // - 
-		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-		  // - parameter explicitFollowing: (query) Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
+		  // - parameter explicitFollowing: (query) Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
+		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
-		  // Invokes UserAccountApiCallbackHandler.BoardsUserFollowsListCallback(BoardsUserFollowsList200Response) on completion. 
+		  // Invokes UserAccountApiCallbackHandler.BoardsUserFollowsListCallback(BoardsList200Response) on completion. 
 		  //
 		  // - GET /user_account/following/boards
 		  // - Get a list of the boards a user follows. The request returns a board summary object array.
@@ -28,13 +28,13 @@ Protected Class UserAccountApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
-		  
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
+		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 		  If explicitFollowing <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("explicit_following") + "=" + EncodeURLComponent(explicitFollowing.ToString)
 		  
-		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
 		  
@@ -60,7 +60,7 @@ Protected Class UserAccountApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function BoardsUserFollowsListPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BoardsUserFollowsList200Response) As Boolean
+		Private Function BoardsUserFollowsListPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BoardsList200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -68,7 +68,7 @@ Protected Class UserAccountApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.BoardsUserFollowsList200Response
+			  outData = New OpenAPIClient.Models.BoardsList200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -121,7 +121,7 @@ Protected Class UserAccountApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.BoardsUserFollowsList200Response
+		  Dim data As OpenAPIClient.Models.BoardsList200Response
 		  CallbackHandler.BoardsUserFollowsListCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -135,7 +135,7 @@ Protected Class UserAccountApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.BoardsUserFollowsList200Response
+		  Dim data As OpenAPIClient.Models.BoardsList200Response
 		  Call BoardsUserFollowsListPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.BoardsUserFollowsListCallback(error, data)
@@ -146,17 +146,17 @@ Protected Class UserAccountApi
 
 
 	#tag Method, Flags = &h0
-		Sub FollowUserUpdate(, username As String, followUserRequest As OpenAPIClient.Models.FollowUserRequest)
+		Sub FollowUserUpdate(, username As String, followUserCreate As OpenAPIClient.Models.FollowUserCreate)
 		  // Operation follow_user/update
 		  // Follow user
 		  // - 
 		  // - parameter username: (path) A valid username 
-		  // - parameter followUserRequest: (body) Follow a user. 
+		  // - parameter followUserCreate: (body)  
 		  //
-		  // Invokes UserAccountApiCallbackHandler.FollowUserUpdateCallback(UserSummary) on completion. 
+		  // Invokes UserAccountApiCallbackHandler.FollowUserUpdateCallback(FollowUser) on completion. 
 		  //
 		  // - POST /user_account/following/{username}
-		  // - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+		  // - **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -166,7 +166,7 @@ Protected Class UserAccountApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(followUserRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(followUserCreate), "application/json")
 		  
 		  
 		  
@@ -193,7 +193,7 @@ Protected Class UserAccountApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function FollowUserUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.UserSummary) As Boolean
+		Private Function FollowUserUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.FollowUser) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -201,7 +201,7 @@ Protected Class UserAccountApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.UserSummary
+			  outData = New OpenAPIClient.Models.FollowUser
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -254,7 +254,7 @@ Protected Class UserAccountApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.UserSummary
+		  Dim data As OpenAPIClient.Models.FollowUser
 		  CallbackHandler.FollowUserUpdateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -268,7 +268,7 @@ Protected Class UserAccountApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.UserSummary
+		  Dim data As OpenAPIClient.Models.FollowUser
 		  Call FollowUserUpdatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.FollowUserUpdateCallback(error, data)
@@ -284,7 +284,7 @@ Protected Class UserAccountApi
 		  // List followers
 		  // - 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes UserAccountApiCallbackHandler.FollowersListCallback(FollowersList200Response) on completion. 
 		  //
@@ -551,12 +551,14 @@ Protected Class UserAccountApi
 		Sub UnverifyWebsiteDelete(, website As String)
 		  // Operation unverify_website/delete
 		  // Unverify website
+		  // - 
 		  // - parameter website: (query) Website with path or domain only 
 		  //
-		  // Invokes UserAccountApiCallbackHandler.UnverifyWebsiteDeleteCallback() on completion. 
+		  // Invokes UserAccountApiCallbackHandler.UnverifyWebsiteDeleteCallback(UserWebsite) on completion. Note that the response is optional. 
 		  //
 		  // - DELETE /user_account/websites
-		  // - Unverifu a website verified by the signed-in user.
+		  // - Unverify a website verified by the signed-in user.
+		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -578,8 +580,9 @@ Protected Class UserAccountApi
 		  
 		  
 		  
-		  AddHandler localVarHTTPSocket.PageReceived, addressof Me.UnverifyWebsiteDelete_handler
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.UnverifyWebsiteDelete_handler
 		  AddHandler localVarHTTPSocket.Error, addressof Me.UnverifyWebsiteDelete_error
+		  
 		  
 		  localVarHTTPSocket.SendRequest("DELETE", Me.BasePath + localVarPath + localVarQueryParams)
 		  if localVarHTTPSocket.LastErrorCode <> 0 then
@@ -590,29 +593,86 @@ Protected Class UserAccountApi
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Function UnverifyWebsiteDeletePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.UserWebsite) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.UserWebsite
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub UnverifyWebsiteDelete_error(sender As HTTPSecureSocket, Code As Integer)
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  CallbackHandler.UnverifyWebsiteDeleteCallback(error)
+		  Dim data As OpenAPIClient.Models.UserWebsite
+		  CallbackHandler.UnverifyWebsiteDeleteCallback(error, data)
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub UnverifyWebsiteDelete_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
 		  #Pragma Unused URL
-		  #Pragma Unused Headers
-		  #Pragma Unused Content
+		  
 
 		  If sender <> nil Then sender.Close()
 		  
-		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", "")
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
+		  Dim data As OpenAPIClient.Models.UserWebsite
+		  Call UnverifyWebsiteDeletePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
-		  
-		  CallbackHandler.UnverifyWebsiteDeleteCallback(error)
+		  CallbackHandler.UnverifyWebsiteDeleteCallback(error, data)
 		End Sub
 	#tag EndMethod
 
@@ -620,7 +680,7 @@ Protected Class UserAccountApi
 
 
 	#tag Method, Flags = &h0
-		Sub UserAccountAnalytics(, startDate As Date, endDate As Date, fromClaimedContent As From_claimed_contentEnum_UserAccountAnalytics, pinFormat As Pin_formatEnum_UserAccountAnalytics, appTypes As App_typesEnum_UserAccountAnalytics, contentType As Content_typeEnum_UserAccountAnalytics, source As SourceEnum_UserAccountAnalytics, metricTypes() As Metric_typesEnum_UserAccountAnalytics, splitField As Split_fieldEnum_UserAccountAnalytics, Optional adAccountId As Xoson.O.OptionalString)
+		Sub UserAccountAnalytics(, startDate As Date, endDate As Date, fromClaimedContent As From_claimed_contentEnum_UserAccountAnalytics, pinFormat As Pin_formatEnum_UserAccountAnalytics, appTypes As App_typesEnum_UserAccountAnalytics, contentType As Content_typeEnum_UserAccountAnalytics, source As SourceEnum_UserAccountAnalytics, metricTypes() As QuerymetrictypesItems, splitField As Split_fieldEnum_UserAccountAnalytics, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation user_account/analytics
 		  // Get user account analytics
 		  // - 
@@ -631,7 +691,7 @@ Protected Class UserAccountApi
 		  // - parameter appTypes: (query) Apps or devices to get data for, default is all. (optional, default to ALL)
 		  // - parameter contentType: (query) Filter to paid or organic data. Default is all. (optional, default to ALL)
 		  // - parameter source: (query) Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to ALL)
-		  // - parameter metricTypes: (query) Metric types to get data for, default is all.  (optional, default to Nil)
+		  // - parameter metricTypes: (query) Metric types to get data for, default is all. (optional, default to Nil)
 		  // - parameter splitField: (query) How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to NO_SPLIT)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
@@ -666,23 +726,23 @@ Protected Class UserAccountApi
 		  
 		  
 		  Dim localVarQueryStringsmetricTypes() As String
-		  For Each localVarItemmetricTypes As Metric_typesEnum_UserAccountAnalytics in metricTypes
-		    Dim encodedParameter As String = EncodeURLComponent(Metric_typesEnum_UserAccountAnalyticsToString(localVarItemmetricTypes))
+		  For Each localVarItemmetricTypes As QuerymetrictypesItems in metricTypes
+		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarItemmetricTypes))
 		    localVarQueryStringsmetricTypes.Append(encodedParameter)
 		  Next
 		  
 		  Dim localVarQueryStringmetricTypes As String
 		  Select Case "form"
 		    Case "form"
-			  localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, ",")
+			  localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, ",")
 		    Case "spaceDelimited"
-		      localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, " ")
+		      localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, " ")
 		    Case "pipeDelimited"
-		      localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, "|")
+		      localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, "|")
 		    Case "deepObject"
 		      Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
 		  End Select
-		  If localVarQueryStringsmetricTypes.Ubound() > -1 Then localVarQueryParams = localVarQueryParams + "&"  + EncodeURLComponent("metric_types") + "=" + EncodeURLComponent(localVarQueryStringmetricTypes)
+		  If localVarQueryStringsmetricTypes.Ubound() > -1 Then localVarQueryParams = localVarQueryParams + "&"  + EncodeURLComponent("inner") + "=" + EncodeURLComponent(localVarQueryStringmetricTypes)
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("split_field") + "=" + EncodeURLComponent(Split_fieldEnum_UserAccountAnalyticsToString(splitField))
 		  
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
@@ -882,33 +942,6 @@ Protected Class UserAccountApi
 		End Function
 	#tag EndMethod
 	#tag Method, Flags = &h21
-		Private Function Metric_typesEnum_UserAccountAnalyticsToString(value As Metric_typesEnum_UserAccountAnalytics) As String
-		  Select Case value
-		    
-		    Case Metric_typesEnum_UserAccountAnalytics.Engagement
-		      Return "ENGAGEMENT"
-		    Case Metric_typesEnum_UserAccountAnalytics.EngagementRate
-		      Return "ENGAGEMENT_RATE"
-		    Case Metric_typesEnum_UserAccountAnalytics.Impression
-		      Return "IMPRESSION"
-		    Case Metric_typesEnum_UserAccountAnalytics.OutboundClick
-		      Return "OUTBOUND_CLICK"
-		    Case Metric_typesEnum_UserAccountAnalytics.OutboundClickRate
-		      Return "OUTBOUND_CLICK_RATE"
-		    Case Metric_typesEnum_UserAccountAnalytics.PinClick
-		      Return "PIN_CLICK"
-		    Case Metric_typesEnum_UserAccountAnalytics.PinClickRate
-		      Return "PIN_CLICK_RATE"
-		    Case Metric_typesEnum_UserAccountAnalytics.Save
-		      Return "SAVE"
-		    Case Metric_typesEnum_UserAccountAnalytics.SaveRate
-		      Return "SAVE_RATE"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h21
 		Private Function Split_fieldEnum_UserAccountAnalyticsToString(value As Split_fieldEnum_UserAccountAnalytics) As String
 		  Select Case value
 		    
@@ -929,7 +962,7 @@ Protected Class UserAccountApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub UserAccountAnalyticsTopPins(, startDate As Date, endDate As Date, sortBy As Sort_byEnum_UserAccountAnalyticsTopPins, fromClaimedContent As From_claimed_contentEnum_UserAccountAnalyticsTopPins, pinFormat As Pin_formatEnum_UserAccountAnalyticsTopPins, appTypes As App_typesEnum_UserAccountAnalyticsTopPins, contentType As Content_typeEnum_UserAccountAnalyticsTopPins, source As SourceEnum_UserAccountAnalyticsTopPins, metricTypes() As Metric_typesEnum_UserAccountAnalyticsTopPins, Optional numOfPins As Xoson.O.OptionalInteger, createdInLastNDays As Created_in_last_n_daysEnum_UserAccountAnalyticsTopPins, Optional adAccountId As Xoson.O.OptionalString)
+		Sub UserAccountAnalyticsTopPins(, startDate As Date, endDate As Date, sortBy As OpenAPIClient.Models.TopPinsSortBy, fromClaimedContent As From_claimed_contentEnum_UserAccountAnalyticsTopPins, pinFormat As Pin_formatEnum_UserAccountAnalyticsTopPins, appTypes As App_typesEnum_UserAccountAnalyticsTopPins, contentType As Content_typeEnum_UserAccountAnalyticsTopPins, source As SourceEnum_UserAccountAnalyticsTopPins, metricTypes() As QuerymetrictypesItems, Optional numOfPins As Xoson.O.OptionalInteger, createdInLastNDays As Created_in_last_n_daysEnum_UserAccountAnalyticsTopPins, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation user_account/analytics/top_pins
 		  // Get user account top pins analytics
 		  // - 
@@ -941,7 +974,7 @@ Protected Class UserAccountApi
 		  // - parameter appTypes: (query) Apps or devices to get data for, default is all. (optional, default to ALL)
 		  // - parameter contentType: (query) Filter to paid or organic data. Default is all. (optional, default to ALL)
 		  // - parameter source: (query) Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to ALL)
-		  // - parameter metricTypes: (query) Metric types to get data for, default is all.  (optional, default to Nil)
+		  // - parameter metricTypes: (query) Metric types to get data for, default is all. (optional, default to Nil)
 		  // - parameter numOfPins: (query) Number of pins to include, default is 10. Max is 50. (optional, default to 10)
 		  // - parameter createdInLastNDays: (query) Get metrics for pins created in the last &quot;n&quot; days. (optional, default to 0)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
@@ -968,7 +1001,7 @@ Protected Class UserAccountApi
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("end_date") + "=" + EncodeURLComponent(endDate.ToRFC3339)
 		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("sort_by") + "=" + EncodeURLComponent(Sort_byEnum_UserAccountAnalyticsTopPinsToString(sortBy))
+		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("sort_by") + "=" + EncodeURLComponent(Xoson.toJSON(sortBy))
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("from_claimed_content") + "=" + EncodeURLComponent(From_claimed_contentEnum_UserAccountAnalyticsTopPinsToString(fromClaimedContent))
 		  
@@ -982,23 +1015,23 @@ Protected Class UserAccountApi
 		  
 		  
 		  Dim localVarQueryStringsmetricTypes() As String
-		  For Each localVarItemmetricTypes As Metric_typesEnum_UserAccountAnalyticsTopPins in metricTypes
-		    Dim encodedParameter As String = EncodeURLComponent(Metric_typesEnum_UserAccountAnalyticsTopPinsToString(localVarItemmetricTypes))
+		  For Each localVarItemmetricTypes As QuerymetrictypesItems in metricTypes
+		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarItemmetricTypes))
 		    localVarQueryStringsmetricTypes.Append(encodedParameter)
 		  Next
 		  
 		  Dim localVarQueryStringmetricTypes As String
 		  Select Case "form"
 		    Case "form"
-			  localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, ",")
+			  localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, ",")
 		    Case "spaceDelimited"
-		      localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, " ")
+		      localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, " ")
 		    Case "pipeDelimited"
-		      localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, "|")
+		      localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, "|")
 		    Case "deepObject"
 		      Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
 		  End Select
-		  If localVarQueryStringsmetricTypes.Ubound() > -1 Then localVarQueryParams = localVarQueryParams + "&"  + EncodeURLComponent("metric_types") + "=" + EncodeURLComponent(localVarQueryStringmetricTypes)
+		  If localVarQueryStringsmetricTypes.Ubound() > -1 Then localVarQueryParams = localVarQueryParams + "&"  + EncodeURLComponent("inner") + "=" + EncodeURLComponent(localVarQueryStringmetricTypes)
 		  If numOfPins <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("num_of_pins") + "=" + EncodeURLComponent(numOfPins.ToString)
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("created_in_last_n_days") + "=" + EncodeURLComponent(Created_in_last_n_daysEnum_UserAccountAnalyticsTopPinsToString(createdInLastNDays))
@@ -1114,25 +1147,6 @@ Protected Class UserAccountApi
 
 
 	#tag Method, Flags = &h21
-		Private Function Sort_byEnum_UserAccountAnalyticsTopPinsToString(value As Sort_byEnum_UserAccountAnalyticsTopPins) As String
-		  Select Case value
-		    
-		    Case Sort_byEnum_UserAccountAnalyticsTopPins.Engagement
-		      Return "ENGAGEMENT"
-		    Case Sort_byEnum_UserAccountAnalyticsTopPins.Impression
-		      Return "IMPRESSION"
-		    Case Sort_byEnum_UserAccountAnalyticsTopPins.OutboundClick
-		      Return "OUTBOUND_CLICK"
-		    Case Sort_byEnum_UserAccountAnalyticsTopPins.PinClick
-		      Return "PIN_CLICK"
-		    Case Sort_byEnum_UserAccountAnalyticsTopPins.Save
-		      Return "SAVE"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h21
 		Private Function From_claimed_contentEnum_UserAccountAnalyticsTopPinsToString(value As From_claimed_contentEnum_UserAccountAnalyticsTopPins) As String
 		  Select Case value
 		    
@@ -1220,27 +1234,11 @@ Protected Class UserAccountApi
 		End Function
 	#tag EndMethod
 	#tag Method, Flags = &h21
-		Private Function Metric_typesEnum_UserAccountAnalyticsTopPinsToString(value As Metric_typesEnum_UserAccountAnalyticsTopPins) As String
+		Private Function Created_in_last_n_daysEnum_UserAccountAnalyticsTopPinsToString(value As Created_in_last_n_daysEnum_UserAccountAnalyticsTopPins) As String
 		  Select Case value
 		    
-		    Case Metric_typesEnum_UserAccountAnalyticsTopPins.Engagement
-		      Return "ENGAGEMENT"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopPins.EngagementRate
-		      Return "ENGAGEMENT_RATE"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopPins.Impression
-		      Return "IMPRESSION"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopPins.OutboundClick
-		      Return "OUTBOUND_CLICK"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopPins.OutboundClickRate
-		      Return "OUTBOUND_CLICK_RATE"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopPins.PinClick
-		      Return "PIN_CLICK"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopPins.PinClickRate
-		      Return "PIN_CLICK_RATE"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopPins.Save
-		      Return "SAVE"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopPins.SaveRate
-		      Return "SAVE_RATE"
+		    Case Created_in_last_n_daysEnum_UserAccountAnalyticsTopPins.Escaped30
+		      Return "30"
 		    
 		  End Select
 		  Return ""
@@ -1248,7 +1246,7 @@ Protected Class UserAccountApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub UserAccountAnalyticsTopVideoPins(, startDate As Date, endDate As Date, sortBy As Sort_byEnum_UserAccountAnalyticsTopVideoPins, fromClaimedContent As From_claimed_contentEnum_UserAccountAnalyticsTopVideoPins, pinFormat As Pin_formatEnum_UserAccountAnalyticsTopVideoPins, appTypes As App_typesEnum_UserAccountAnalyticsTopVideoPins, contentType As Content_typeEnum_UserAccountAnalyticsTopVideoPins, source As SourceEnum_UserAccountAnalyticsTopVideoPins, metricTypes() As Metric_typesEnum_UserAccountAnalyticsTopVideoPins, Optional numOfPins As Xoson.O.OptionalInteger, createdInLastNDays As Created_in_last_n_daysEnum_UserAccountAnalyticsTopVideoPins, Optional adAccountId As Xoson.O.OptionalString)
+		Sub UserAccountAnalyticsTopVideoPins(, startDate As Date, endDate As Date, sortBy As OpenAPIClient.Models.TopVideoPinsSortBy, fromClaimedContent As From_claimed_contentEnum_UserAccountAnalyticsTopVideoPins, pinFormat As Pin_formatEnum_UserAccountAnalyticsTopVideoPins, appTypes As App_typesEnum_UserAccountAnalyticsTopVideoPins, contentType As Content_typeEnum_UserAccountAnalyticsTopVideoPins, source As SourceEnum_UserAccountAnalyticsTopVideoPins, metricTypes() As QueryvideopinmetrictypesItems, Optional numOfPins As Xoson.O.OptionalInteger, createdInLastNDays As Created_in_last_n_daysEnum_UserAccountAnalyticsTopVideoPins, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation user_account/analytics/top_video_pins
 		  // Get user account top video pins analytics
 		  // - 
@@ -1260,7 +1258,7 @@ Protected Class UserAccountApi
 		  // - parameter appTypes: (query) Apps or devices to get data for, default is all. (optional, default to ALL)
 		  // - parameter contentType: (query) Filter to paid or organic data. Default is all. (optional, default to ALL)
 		  // - parameter source: (query) Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to ALL)
-		  // - parameter metricTypes: (query) Metric types to get video data for, default is all.  (optional, default to Nil)
+		  // - parameter metricTypes: (query) Metric types to get video data for, default is all. (optional, default to Nil)
 		  // - parameter numOfPins: (query) Number of pins to include, default is 10. Max is 50. (optional, default to 10)
 		  // - parameter createdInLastNDays: (query) Get metrics for pins created in the last &quot;n&quot; days. (optional, default to 0)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
@@ -1287,7 +1285,7 @@ Protected Class UserAccountApi
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("end_date") + "=" + EncodeURLComponent(endDate.ToRFC3339)
 		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("sort_by") + "=" + EncodeURLComponent(Sort_byEnum_UserAccountAnalyticsTopVideoPinsToString(sortBy))
+		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("sort_by") + "=" + EncodeURLComponent(Xoson.toJSON(sortBy))
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("from_claimed_content") + "=" + EncodeURLComponent(From_claimed_contentEnum_UserAccountAnalyticsTopVideoPinsToString(fromClaimedContent))
 		  
@@ -1301,23 +1299,23 @@ Protected Class UserAccountApi
 		  
 		  
 		  Dim localVarQueryStringsmetricTypes() As String
-		  For Each localVarItemmetricTypes As Metric_typesEnum_UserAccountAnalyticsTopVideoPins in metricTypes
-		    Dim encodedParameter As String = EncodeURLComponent(Metric_typesEnum_UserAccountAnalyticsTopVideoPinsToString(localVarItemmetricTypes))
+		  For Each localVarItemmetricTypes As QueryvideopinmetrictypesItems in metricTypes
+		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarItemmetricTypes))
 		    localVarQueryStringsmetricTypes.Append(encodedParameter)
 		  Next
 		  
 		  Dim localVarQueryStringmetricTypes As String
 		  Select Case "form"
 		    Case "form"
-			  localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, ",")
+			  localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, ",")
 		    Case "spaceDelimited"
-		      localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, " ")
+		      localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, " ")
 		    Case "pipeDelimited"
-		      localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, "|")
+		      localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, "|")
 		    Case "deepObject"
 		      Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
 		  End Select
-		  If localVarQueryStringsmetricTypes.Ubound() > -1 Then localVarQueryParams = localVarQueryParams + "&"  + EncodeURLComponent("metric_types") + "=" + EncodeURLComponent(localVarQueryStringmetricTypes)
+		  If localVarQueryStringsmetricTypes.Ubound() > -1 Then localVarQueryParams = localVarQueryParams + "&"  + EncodeURLComponent("inner") + "=" + EncodeURLComponent(localVarQueryStringmetricTypes)
 		  If numOfPins <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("num_of_pins") + "=" + EncodeURLComponent(numOfPins.ToString)
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("created_in_last_n_days") + "=" + EncodeURLComponent(Created_in_last_n_daysEnum_UserAccountAnalyticsTopVideoPinsToString(createdInLastNDays))
@@ -1433,33 +1431,6 @@ Protected Class UserAccountApi
 
 
 	#tag Method, Flags = &h21
-		Private Function Sort_byEnum_UserAccountAnalyticsTopVideoPinsToString(value As Sort_byEnum_UserAccountAnalyticsTopVideoPins) As String
-		  Select Case value
-		    
-		    Case Sort_byEnum_UserAccountAnalyticsTopVideoPins.Impression
-		      Return "IMPRESSION"
-		    Case Sort_byEnum_UserAccountAnalyticsTopVideoPins.Save
-		      Return "SAVE"
-		    Case Sort_byEnum_UserAccountAnalyticsTopVideoPins.OutboundClick
-		      Return "OUTBOUND_CLICK"
-		    Case Sort_byEnum_UserAccountAnalyticsTopVideoPins.VideoMrcView
-		      Return "VIDEO_MRC_VIEW"
-		    Case Sort_byEnum_UserAccountAnalyticsTopVideoPins.VideoAvgWatchTime
-		      Return "VIDEO_AVG_WATCH_TIME"
-		    Case Sort_byEnum_UserAccountAnalyticsTopVideoPins.VideoV50WatchTime
-		      Return "VIDEO_V50_WATCH_TIME"
-		    Case Sort_byEnum_UserAccountAnalyticsTopVideoPins.Quartile95PercentView
-		      Return "QUARTILE_95_PERCENT_VIEW"
-		    Case Sort_byEnum_UserAccountAnalyticsTopVideoPins.Video10sView
-		      Return "VIDEO_10S_VIEW"
-		    Case Sort_byEnum_UserAccountAnalyticsTopVideoPins.VideoStart
-		      Return "VIDEO_START"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h21
 		Private Function From_claimed_contentEnum_UserAccountAnalyticsTopVideoPinsToString(value As From_claimed_contentEnum_UserAccountAnalyticsTopVideoPins) As String
 		  Select Case value
 		    
@@ -1547,27 +1518,11 @@ Protected Class UserAccountApi
 		End Function
 	#tag EndMethod
 	#tag Method, Flags = &h21
-		Private Function Metric_typesEnum_UserAccountAnalyticsTopVideoPinsToString(value As Metric_typesEnum_UserAccountAnalyticsTopVideoPins) As String
+		Private Function Created_in_last_n_daysEnum_UserAccountAnalyticsTopVideoPinsToString(value As Created_in_last_n_daysEnum_UserAccountAnalyticsTopVideoPins) As String
 		  Select Case value
 		    
-		    Case Metric_typesEnum_UserAccountAnalyticsTopVideoPins.Impression
-		      Return "IMPRESSION"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopVideoPins.Save
-		      Return "SAVE"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopVideoPins.VideoMrcView
-		      Return "VIDEO_MRC_VIEW"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopVideoPins.VideoAvgWatchTime
-		      Return "VIDEO_AVG_WATCH_TIME"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopVideoPins.VideoV50WatchTime
-		      Return "VIDEO_V50_WATCH_TIME"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopVideoPins.Quartile95PercentView
-		      Return "QUARTILE_95_PERCENT_VIEW"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopVideoPins.Video10sView
-		      Return "VIDEO_10S_VIEW"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopVideoPins.VideoStart
-		      Return "VIDEO_START"
-		    Case Metric_typesEnum_UserAccountAnalyticsTopVideoPins.OutboundClick
-		      Return "OUTBOUND_CLICK"
+		    Case Created_in_last_n_daysEnum_UserAccountAnalyticsTopVideoPins.Escaped30
+		      Return "30"
 		    
 		  End Select
 		  Return ""
@@ -1581,7 +1536,7 @@ Protected Class UserAccountApi
 		  // - 
 		  // - parameter username: (path) A valid username 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes UserAccountApiCallbackHandler.UserAccountFollowedInterestsCallback(UserAccountFollowedInterests200Response) on completion. 
 		  //
@@ -1727,7 +1682,7 @@ Protected Class UserAccountApi
 		  // Invokes UserAccountApiCallbackHandler.UserAccountGetCallback(Account) on completion. 
 		  //
 		  // - GET /user_account
-		  // - Get account information for the "operation user_account" - By default, the "operation user_account" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+		  // - Get account information for the "operation user_account" - By default, the "operation user_account" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ "Understanding Business Access" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See [Understanding Business Access] for more information.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1854,17 +1809,17 @@ Protected Class UserAccountApi
 
 
 	#tag Method, Flags = &h0
-		Sub UserFollowingGet(, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, feedType As Xoson.O.OptionalOpenAPIClient.Models.UserFollowingFeedTypeOptional, Optional explicitFollowing As Xoson.O.OptionalBoolean, Optional adAccountId As Xoson.O.OptionalString)
+		Sub UserFollowingGet(, Optional adAccountId As Xoson.O.OptionalString, Optional explicitFollowing As Xoson.O.OptionalBoolean, feedType As OpenAPIClient.Models.UserFollowingFeedTypeOptional, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation user_following/get
 		  // List following
 		  // - 
-		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-		  // - parameter feedType: (query) Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to Sample)
-		  // - parameter explicitFollowing: (query) Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
+		  // - parameter explicitFollowing: (query) Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
+		  // - parameter feedType: (query) Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to Nil)
+		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
-		  // Invokes UserAccountApiCallbackHandler.UserFollowingGetCallback(UserFollowingGet200Response) on completion. 
+		  // Invokes UserAccountApiCallbackHandler.UserFollowingGetCallback(FollowersList200Response) on completion. 
 		  //
 		  // - GET /user_account/following
 		  // - Get a list of who a certain user follows.
@@ -1882,15 +1837,15 @@ Protected Class UserAccountApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
-		  
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
-		  
-		  If feedType <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("feed_type") + "=" + EncodeURLComponent(feedType)
+		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 		  If explicitFollowing <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("explicit_following") + "=" + EncodeURLComponent(explicitFollowing.ToString)
 		  
-		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
+		  If feedType <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("feed_type") + "=" + EncodeURLComponent(Xoson.toJSON(feedType))
+		  
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
 		  
@@ -1916,7 +1871,7 @@ Protected Class UserAccountApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function UserFollowingGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.UserFollowingGet200Response) As Boolean
+		Private Function UserFollowingGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.FollowersList200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -1924,7 +1879,7 @@ Protected Class UserAccountApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.UserFollowingGet200Response
+			  outData = New OpenAPIClient.Models.FollowersList200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -1977,7 +1932,7 @@ Protected Class UserAccountApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.UserFollowingGet200Response
+		  Dim data As OpenAPIClient.Models.FollowersList200Response
 		  CallbackHandler.UserFollowingGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -1991,7 +1946,7 @@ Protected Class UserAccountApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.UserFollowingGet200Response
+		  Dim data As OpenAPIClient.Models.FollowersList200Response
 		  Call UserFollowingGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.UserFollowingGetCallback(error, data)
@@ -2007,7 +1962,7 @@ Protected Class UserAccountApi
 		  // Get user websites
 		  // - 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes UserAccountApiCallbackHandler.UserWebsitesGetCallback(UserWebsitesGet200Response) on completion. 
 		  //
@@ -2137,14 +2092,14 @@ Protected Class UserAccountApi
 
 
 	#tag Method, Flags = &h0
-		Sub VerifyWebsiteUpdate(, userWebsiteVerifyRequest As OpenAPIClient.Models.UserWebsiteVerifyRequest, Optional adAccountId As Xoson.O.OptionalString)
+		Sub VerifyWebsiteUpdate(, userWebsiteCreate As OpenAPIClient.Models.UserWebsiteCreate, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation verify_website/update
 		  // Verify website
 		  // - 
-		  // - parameter userWebsiteVerifyRequest: (body) Verify a website. 
+		  // - parameter userWebsiteCreate: (body)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
-		  // Invokes UserAccountApiCallbackHandler.VerifyWebsiteUpdateCallback(UserWebsiteSummary) on completion. 
+		  // Invokes UserAccountApiCallbackHandler.VerifyWebsiteUpdateCallback(UserWebsite) on completion. 
 		  //
 		  // - POST /user_account/websites
 		  // - Verify a website as a signed-in user.
@@ -2157,7 +2112,7 @@ Protected Class UserAccountApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(userWebsiteVerifyRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(userWebsiteCreate), "application/json")
 		  Dim localVarQueryParams As String = "?"
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
@@ -2184,7 +2139,7 @@ Protected Class UserAccountApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function VerifyWebsiteUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.UserWebsiteSummary) As Boolean
+		Private Function VerifyWebsiteUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.UserWebsite) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -2192,7 +2147,7 @@ Protected Class UserAccountApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.UserWebsiteSummary
+			  outData = New OpenAPIClient.Models.UserWebsite
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -2245,7 +2200,7 @@ Protected Class UserAccountApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.UserWebsiteSummary
+		  Dim data As OpenAPIClient.Models.UserWebsite
 		  CallbackHandler.VerifyWebsiteUpdateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -2259,7 +2214,7 @@ Protected Class UserAccountApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.UserWebsiteSummary
+		  Dim data As OpenAPIClient.Models.UserWebsite
 		  Call VerifyWebsiteUpdatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.VerifyWebsiteUpdateCallback(error, data)
@@ -2276,7 +2231,7 @@ Protected Class UserAccountApi
 		  // - 
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
-		  // Invokes UserAccountApiCallbackHandler.WebsiteVerificationGetCallback(UserWebsiteVerificationCode) on completion. 
+		  // Invokes UserAccountApiCallbackHandler.WebsiteVerificationGetCallback(UserWebsiteVerification) on completion. 
 		  //
 		  // - GET /user_account/websites/verification
 		  // - Get verification code for user to install on the website to claim it.
@@ -2320,7 +2275,7 @@ Protected Class UserAccountApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function WebsiteVerificationGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.UserWebsiteVerificationCode) As Boolean
+		Private Function WebsiteVerificationGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.UserWebsiteVerification) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -2328,7 +2283,7 @@ Protected Class UserAccountApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.UserWebsiteVerificationCode
+			  outData = New OpenAPIClient.Models.UserWebsiteVerification
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -2381,7 +2336,7 @@ Protected Class UserAccountApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.UserWebsiteVerificationCode
+		  Dim data As OpenAPIClient.Models.UserWebsiteVerification
 		  CallbackHandler.WebsiteVerificationGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -2395,7 +2350,7 @@ Protected Class UserAccountApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.UserWebsiteVerificationCode
+		  Dim data As OpenAPIClient.Models.UserWebsiteVerification
 		  Call WebsiteVerificationGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.WebsiteVerificationGetCallback(error, data)
@@ -2527,20 +2482,6 @@ Protected Class UserAccountApi
 		
 	#tag EndEnum
 
-	#tag Enum, Name = Metric_typesEnum_UserAccountAnalytics, Type = Integer, Flags = &h0
-		
-        Engagement
-        EngagementRate
-        Impression
-        OutboundClick
-        OutboundClickRate
-        PinClick
-        PinClickRate
-        Save
-        SaveRate
-		
-	#tag EndEnum
-
 	#tag Enum, Name = Split_fieldEnum_UserAccountAnalytics, Type = Integer, Flags = &h0
 		
         NoSplit
@@ -2548,16 +2489,6 @@ Protected Class UserAccountApi
         OwnedContent
         Source
         PinFormat
-		
-	#tag EndEnum
-
-	#tag Enum, Name = Sort_byEnum_UserAccountAnalyticsTopPins, Type = Integer, Flags = &h0
-		
-        Engagement
-        Impression
-        OutboundClick
-        PinClick
-        Save
 		
 	#tag EndEnum
 
@@ -2607,37 +2538,9 @@ Protected Class UserAccountApi
 		
 	#tag EndEnum
 
-	#tag Enum, Name = Metric_typesEnum_UserAccountAnalyticsTopPins, Type = Integer, Flags = &h0
-		
-        Engagement
-        EngagementRate
-        Impression
-        OutboundClick
-        OutboundClickRate
-        PinClick
-        PinClickRate
-        Save
-        SaveRate
-		
-	#tag EndEnum
-
 	#tag Enum, Name = Created_in_last_n_daysEnum_UserAccountAnalyticsTopPins, Type = Integer, Flags = &h0
 		
-        Escaped30 = "30"
-		
-	#tag EndEnum
-
-	#tag Enum, Name = Sort_byEnum_UserAccountAnalyticsTopVideoPins, Type = Integer, Flags = &h0
-		
-        Impression
-        Save
-        OutboundClick
-        VideoMrcView
-        VideoAvgWatchTime
-        VideoV50WatchTime
-        Quartile95PercentView
-        Video10sView
-        VideoStart
+        Escaped30
 		
 	#tag EndEnum
 
@@ -2687,23 +2590,9 @@ Protected Class UserAccountApi
 		
 	#tag EndEnum
 
-	#tag Enum, Name = Metric_typesEnum_UserAccountAnalyticsTopVideoPins, Type = Integer, Flags = &h0
-		
-        Impression
-        Save
-        VideoMrcView
-        VideoAvgWatchTime
-        VideoV50WatchTime
-        Quartile95PercentView
-        Video10sView
-        VideoStart
-        OutboundClick
-		
-	#tag EndEnum
-
 	#tag Enum, Name = Created_in_last_n_daysEnum_UserAccountAnalyticsTopVideoPins, Type = Integer, Flags = &h0
 		
-        Escaped30 = "30"
+        Escaped30
 		
 	#tag EndEnum
 

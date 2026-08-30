@@ -5,12 +5,12 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
-#include "BulkDownloadRequest.h"
-#include "BulkDownloadResponse.h"
+#include "BulkDownload.h"
+#include "BulkDownloadCreate.h"
+#include "BulkJobData.h"
 #include "BulkUpsertRequest.h"
 #include "BulkUpsertResponse.h"
-#include "BulkUpsertStatusResponse.h"
-#include "Error.h"
+#include "Pinterest.Lib.Error.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -31,67 +31,67 @@ public:
 
 /*! \brief Get advertiser entities in bulk. *Synchronous*
  *
- * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+ * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param bulkDownloadRequest Parameters to get ad entities in bulk *Required*
+ * \param bulkDownloadCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool bulkDownloadCreateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<BulkDownloadRequest> bulkDownloadRequest, 
-	void(* handler)(BulkDownloadResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<BulkDownloadCreate> bulkDownloadCreate, 
+	void(* handler)(BulkDownload, Error, void* )
 	, void* userData);
 
 /*! \brief Get advertiser entities in bulk. *Asynchronous*
  *
- * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+ * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param bulkDownloadRequest Parameters to get ad entities in bulk *Required*
+ * \param bulkDownloadCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool bulkDownloadCreateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<BulkDownloadRequest> bulkDownloadRequest, 
-	void(* handler)(BulkDownloadResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<BulkDownloadCreate> bulkDownloadCreate, 
+	void(* handler)(BulkDownload, Error, void* )
 	, void* userData);
 
 
 /*! \brief Download advertiser entities in bulk. *Synchronous*
  *
- * Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+ * Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param bulkRequestId Unique identifier of a bulk upsert request. *Required*
- * \param includeDetails if set to True then attach the errors/details to all the requests
+ * \param bulkRequestId Bulk request ID that is from one of the entities bulk endpoints *Required*
+ * \param includeDetails If set to True then attach the errors/details to all the requests
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool bulkRequestGetSync(char * accessToken,
 	std::string adAccountId, std::string bulkRequestId, bool includeDetails, 
-	void(* handler)(BulkUpsertStatusResponse, Error, void* )
+	void(* handler)(BulkJobData, Error, void* )
 	, void* userData);
 
 /*! \brief Download advertiser entities in bulk. *Asynchronous*
  *
- * Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+ * Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param bulkRequestId Unique identifier of a bulk upsert request. *Required*
- * \param includeDetails if set to True then attach the errors/details to all the requests
+ * \param bulkRequestId Bulk request ID that is from one of the entities bulk endpoints *Required*
+ * \param includeDetails If set to True then attach the errors/details to all the requests
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool bulkRequestGetAsync(char * accessToken,
 	std::string adAccountId, std::string bulkRequestId, bool includeDetails, 
-	void(* handler)(BulkUpsertStatusResponse, Error, void* )
+	void(* handler)(BulkJobData, Error, void* )
 	, void* userData);
 
 
 /*! \brief Create/update ad entities in bulk. *Synchronous*
  *
- * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+ * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bulkUpsertRequest Parameters to get create/update ad entities in bulk *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -105,7 +105,7 @@ bool bulkUpsertCreateSync(char * accessToken,
 
 /*! \brief Create/update ad entities in bulk. *Asynchronous*
  *
- * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+ * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bulkUpsertRequest Parameters to get create/update ad entities in bulk *Required*
  * \param handler The callback function to be invoked on completion. *Required*

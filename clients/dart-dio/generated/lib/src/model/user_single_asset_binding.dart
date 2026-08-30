@@ -87,15 +87,17 @@ class _$UserSingleAssetBindingSerializer implements PrimitiveSerializer<UserSing
         case r'permissions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.permissions.replace(valueDes);
           break;
         case r'user':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BusinessAccessUserSummary),
-          ) as BusinessAccessUserSummary;
+            specifiedType: const FullType.nullable(BusinessAccessUserSummary),
+          ) as BusinessAccessUserSummary?;
+          if (valueDes == null) continue;
           result.user.replace(valueDes);
           break;
         default:

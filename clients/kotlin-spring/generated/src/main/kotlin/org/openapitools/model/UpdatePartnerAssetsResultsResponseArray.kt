@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.UpdatePartnerAssetsResult
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -21,7 +24,10 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class UpdatePartnerAssetsResultsResponseArray(
 
     @field:Valid
-    @Schema(example = "null", description = "List of assigned/updated partner asset access.")
+    @Schema(description = "List of assigned/updated partner asset access.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("items")
     @get:JsonProperty("items") val items: kotlin.collections.List<UpdatePartnerAssetsResult>? = null
 ) {
 

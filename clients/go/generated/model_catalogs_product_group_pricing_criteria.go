@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -37,8 +37,6 @@ func NewCatalogsProductGroupPricingCriteria(values float32) *CatalogsProductGrou
 	this := CatalogsProductGroupPricingCriteria{}
 	var inclusion bool = true
 	this.Inclusion = &inclusion
-	var negated bool = false
-	this.Negated = &negated
 	this.Values = values
 	return &this
 }
@@ -50,8 +48,6 @@ func NewCatalogsProductGroupPricingCriteriaWithDefaults() *CatalogsProductGroupP
 	this := CatalogsProductGroupPricingCriteria{}
 	var inclusion bool = true
 	this.Inclusion = &inclusion
-	var negated bool = false
-	this.Negated = &negated
 	return &this
 }
 

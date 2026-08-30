@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "A targeting option that enables advertisers to choose whether to run ads in fullscreen feed, two column feed, or both.",
+  "name": "PlacementTrafficType",
+  "symbols": [
+    "ALL",
+    "TWO_COLUMN_FEED",
+    "FULLSCREEN_FEED"
+  ]
+}

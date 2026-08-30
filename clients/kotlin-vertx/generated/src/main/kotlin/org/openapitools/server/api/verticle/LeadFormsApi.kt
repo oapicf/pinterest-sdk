@@ -1,13 +1,14 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.LeadFormArrayResponse
-import org.openapitools.server.api.model.LeadFormCreateRequest
-import org.openapitools.server.api.model.LeadFormResponse
-import org.openapitools.server.api.model.LeadFormTestRequest
-import org.openapitools.server.api.model.LeadFormTestResponse
-import org.openapitools.server.api.model.LeadFormUpdateRequest
+import org.openapitools.server.api.model.LeadForm
+import org.openapitools.server.api.model.LeadFormBatchUpdate
+import org.openapitools.server.api.model.LeadFormCreate
+import org.openapitools.server.api.model.LeadFormTest
+import org.openapitools.server.api.model.LeadFormTestCreate
+import org.openapitools.server.api.model.LeadFormsCreate200Response
 import org.openapitools.server.api.model.LeadFormsList200Response
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -26,19 +27,19 @@ interface LeadFormsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* leadFormGet
      * Get lead form by id */
-    suspend fun leadFormGet(adAccountId:kotlin.String?,leadFormId:kotlin.String?,context:OperationRequest):Response<LeadFormResponse>
+    suspend fun leadFormGet(leadFormId:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<LeadForm>
     /* leadFormTestCreate
      * Create lead form test data */
-    suspend fun leadFormTestCreate(adAccountId:kotlin.String?,leadFormId:kotlin.String?,leadFormTestRequest:LeadFormTestRequest?,context:OperationRequest):Response<LeadFormTestResponse>
+    suspend fun leadFormTestCreate(adAccountId:kotlin.String?,leadFormId:kotlin.String?,leadFormTestCreate:LeadFormTestCreate?,context:OperationRequest):Response<LeadFormTest>
     /* leadFormsCreate
      * Create lead forms */
-    suspend fun leadFormsCreate(adAccountId:kotlin.String?,leadFormCreateRequest:kotlin.Array<LeadFormCreateRequest>?,context:OperationRequest):Response<LeadFormArrayResponse>
+    suspend fun leadFormsCreate(adAccountId:kotlin.String?,leadFormCreate:kotlin.Array<LeadFormCreate>?,context:OperationRequest):Response<LeadFormsCreate200Response>
     /* leadFormsList
      * List lead forms */
-    suspend fun leadFormsList(adAccountId:kotlin.String?,pageSize:kotlin.Int?,order:kotlin.String?,bookmark:kotlin.String?,context:OperationRequest):Response<LeadFormsList200Response>
+    suspend fun leadFormsList(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,order:PinterestLibPaginationOrder?,context:OperationRequest):Response<LeadFormsList200Response>
     /* leadFormsUpdate
      * Update lead forms */
-    suspend fun leadFormsUpdate(adAccountId:kotlin.String?,leadFormUpdateRequest:kotlin.Array<LeadFormUpdateRequest>?,context:OperationRequest):Response<LeadFormArrayResponse>
+    suspend fun leadFormsUpdate(adAccountId:kotlin.String?,leadFormBatchUpdate:kotlin.Array<LeadFormBatchUpdate>?,context:OperationRequest):Response<LeadFormsCreate200Response>
     companion object {
         const val address = "LeadFormsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

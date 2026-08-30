@@ -1,0 +1,18 @@
+package models
+
+// BulkDownloadCreate - Resource create operation model.
+type BulkDownloadCreate struct {
+
+	CampaignFilter BulkDownloadCampaignFilter `json:"campaign_filter,omitempty"`
+
+	// All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
+	EntityIds []string `json:"entity_ids,omitempty"`
+
+	// All entity types specified will be downloaded. Fewer types result in faster downloads.
+	EntityTypes []BulkEntityType `json:"entity_types,omitempty"`
+
+	OutputFormat BulkOutputFormat `json:"output_format,omitempty"`
+
+	// Unix UTC timestamp to retrieve all entities that have changed since this time.
+	UpdatedSince string `json:"updated_since,omitempty" validate:"regexp=^\\d+$"`
+}

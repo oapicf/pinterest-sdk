@@ -41,23 +41,13 @@
     {
       "name": "record_counts",
       "type": ["null", "model.RecordCounts"],
-      "doc": "",
+      "doc": "Record processing counts",
       "default": null
     },
     {
       "name": "state",
-      "type": {
-        "type": "enum",
-        "name": "CustomerListUpload_state",
-        "symbols": [
-          "NOT_STARTED",
-          "RUNNING",
-          "PAUSED",
-          "SUCCEEDED",
-          "FAILED"
-        ]
-      },
-      "doc": "Workload processing state"
+      "type": "model.WorkloadState",
+      "doc": ""
     },
     {
       "name": "updated_time",

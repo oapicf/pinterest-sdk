@@ -83,7 +83,7 @@ class Board {
   ///
   BoardMedia? media;
 
-  ///      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+  ///     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
   String name;
 
   ///
@@ -202,10 +202,10 @@ class Board {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Board[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Board[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'id'), 'Required key "Board[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "Board[id]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "Board[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "Board[name]" has a null value in JSON.');
         return true;
       }());
 

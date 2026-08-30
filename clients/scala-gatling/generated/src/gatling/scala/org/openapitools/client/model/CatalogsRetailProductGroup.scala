@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsRetailProductGroup (
-    /* Catalog id pertaining to the retail product group. */
+    /* Catalog ID pertaining to the product group. */
     _catalogId: String,
     _catalogType: String,
     _country: Option[String],

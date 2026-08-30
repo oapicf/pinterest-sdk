@@ -130,10 +130,12 @@ class AmazonConnectRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AmazonConnectRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AmazonConnectRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'amazon_storefront_name'), 'Required key "AmazonConnectRequest[amazon_storefront_name]" is missing from JSON.');
+        assert(json[r'amazon_storefront_name'] != null, 'Required key "AmazonConnectRequest[amazon_storefront_name]" has a null value in JSON.');
+        assert(json.containsKey(r'amazon_storefront_url'), 'Required key "AmazonConnectRequest[amazon_storefront_url]" is missing from JSON.');
+        assert(json[r'amazon_storefront_url'] != null, 'Required key "AmazonConnectRequest[amazon_storefront_url]" has a null value in JSON.');
+        assert(json.containsKey(r'is_amazon_account_linked'), 'Required key "AmazonConnectRequest[is_amazon_account_linked]" is missing from JSON.');
+        assert(json[r'is_amazon_account_linked'] != null, 'Required key "AmazonConnectRequest[is_amazon_account_linked]" has a null value in JSON.');
         return true;
       }());
 

@@ -13,4 +13,8 @@
 
 * `LOCATION` (value: `"LOCATION"`)
 
+* `PLACEMENT` (value: `"PLACEMENT"`)
+
+* `AUDIENCE_INCLUDE` (value: `"AUDIENCE_INCLUDE"`)
+
 

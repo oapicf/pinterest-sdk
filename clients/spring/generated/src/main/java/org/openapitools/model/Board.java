@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -16,46 +17,56 @@ import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Board
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Board {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private @Nullable OffsetDateTime boardPinsModifiedAt;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer collaboratorCount;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private @Nullable OffsetDateTime createdAt;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer followerCount;
 
   private String id;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Boolean isAdsOnly = false;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BoardMedia media;
 
   private String name;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BoardOwner owner;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer pinCount;
 
-  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable BoardPrivacy privacy;
 
   public Board() {
     super();
@@ -85,6 +96,7 @@ public class Board {
     return boardPinsModifiedAt;
   }
 
+  @JsonProperty("board_pins_modified_at")
   public void setBoardPinsModifiedAt(@Nullable OffsetDateTime boardPinsModifiedAt) {
     this.boardPinsModifiedAt = boardPinsModifiedAt;
   }
@@ -106,6 +118,7 @@ public class Board {
     return collaboratorCount;
   }
 
+  @JsonProperty("collaborator_count")
   public void setCollaboratorCount(@Nullable Integer collaboratorCount) {
     this.collaboratorCount = collaboratorCount;
   }
@@ -126,6 +139,7 @@ public class Board {
     return createdAt;
   }
 
+  @JsonProperty("created_at")
   public void setCreatedAt(@Nullable OffsetDateTime createdAt) {
     this.createdAt = createdAt;
   }
@@ -167,6 +181,7 @@ public class Board {
     return followerCount;
   }
 
+  @JsonProperty("follower_count")
   public void setFollowerCount(@Nullable Integer followerCount) {
     this.followerCount = followerCount;
   }
@@ -187,6 +202,7 @@ public class Board {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(String id) {
     this.id = id;
   }
@@ -207,6 +223,7 @@ public class Board {
     return isAdsOnly;
   }
 
+  @JsonProperty("is_ads_only")
   public void setIsAdsOnly(Boolean isAdsOnly) {
     this.isAdsOnly = isAdsOnly;
   }
@@ -227,6 +244,7 @@ public class Board {
     return media;
   }
 
+  @JsonProperty("media")
   public void setMedia(@Nullable BoardMedia media) {
     this.media = media;
   }
@@ -237,16 +255,17 @@ public class Board {
   }
 
   /**
-   *      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+   *     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
    * @return name
    */
   @NotNull 
-  @Schema(name = "name", example = "Summer recipes", description = "     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "name", example = "Summer recipes", description = "    Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
   public String getName() {
     return name;
   }
 
+  @JsonProperty("name")
   public void setName(String name) {
     this.name = name;
   }
@@ -267,6 +286,7 @@ public class Board {
     return owner;
   }
 
+  @JsonProperty("owner")
   public void setOwner(@Nullable BoardOwner owner) {
     this.owner = owner;
   }
@@ -288,11 +308,12 @@ public class Board {
     return pinCount;
   }
 
+  @JsonProperty("pin_count")
   public void setPinCount(@Nullable Integer pinCount) {
     this.pinCount = pinCount;
   }
 
-  public Board privacy(BoardPrivacy privacy) {
+  public Board privacy(@Nullable BoardPrivacy privacy) {
     this.privacy = privacy;
     return this;
   }
@@ -304,11 +325,12 @@ public class Board {
   @Valid 
   @Schema(name = "privacy", description = "    Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. ", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("privacy")
-  public BoardPrivacy getPrivacy() {
+  public @Nullable BoardPrivacy getPrivacy() {
     return privacy;
   }
 
-  public void setPrivacy(BoardPrivacy privacy) {
+  @JsonProperty("privacy")
+  public void setPrivacy(@Nullable BoardPrivacy privacy) {
     this.privacy = privacy;
   }
 
@@ -375,11 +397,8 @@ public class Board {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

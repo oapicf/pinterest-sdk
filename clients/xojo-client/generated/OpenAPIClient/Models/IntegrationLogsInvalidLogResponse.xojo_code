@@ -2,7 +2,7 @@
 Protected Class IntegrationLogsInvalidLogResponse
 
 	#tag Property, Flags = &h0
-		rejected_logs() As OpenAPIClient.Models.IntegrationLogsInvalidLogResponseRejectedLogsInner
+		rejected_logs() As OpenAPIClient.Models.IntegrationLogsInvalidLogResponseRejectedLogsItems
 	#tag EndProperty
 
 
@@ -47,7 +47,7 @@ Protected Class IntegrationLogsInvalidLogResponse
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="IntegrationLogsInvalidLogResponseRejectedLogsInner"
+			Type="IntegrationLogsInvalidLogResponseRejectedLogsItems"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

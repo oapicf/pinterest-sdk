@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **altText** | **string** |  | [optional] 
 **description** | **string** |  | [optional] 
-**id** | **string** |  | [optional] 
+**id** | **string** |  | 
 **link** | **string** |  | [optional] 
 **media** | [**OpenAPI\Server\Model\PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **title** | **string** |  | [optional] 

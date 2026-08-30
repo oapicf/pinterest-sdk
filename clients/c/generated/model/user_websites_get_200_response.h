@@ -15,7 +15,7 @@
 
 typedef struct user_websites_get_200_response_t user_websites_get_200_response_t;
 
-#include "user_website_summary.h"
+#include "user_website.h"
 
 
 

@@ -28,6 +28,13 @@ API.Client.TrendingProductCategory.prototype.pctChangeMom;
 API.Client.TrendingProductCategory.prototype.percentRelativeVolume;
 
 /**
+ * Pinterest Product Category Id
+ * @type {!number}
+ * @export
+ */
+API.Client.TrendingProductCategory.prototype.pinterestProductCategoryId;
+
+/**
  * Product Category Name
  * @type {!string}
  * @export
@@ -36,7 +43,7 @@ API.Client.TrendingProductCategory.prototype.productCategory;
 
 /**
  * Vertical name associated with the product category
- * @type {!Array<!API.Client.VerticalProductCategory>}
+ * @type {!Array<!string>}
  * @export
  */
 API.Client.TrendingProductCategory.prototype.verticals;

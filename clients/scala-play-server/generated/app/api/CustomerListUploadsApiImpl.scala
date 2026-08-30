@@ -1,14 +1,14 @@
 package api
 
+import model.CustomerListUpload
 import model.CustomerListUploadCreateRequest
 import model.CustomerListUploadCreateResponse
-import model.CustomerListUploadResponse
 import model.Error
 
 /**
   * Provides a default implementation for [[CustomerListUploadsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class CustomerListUploadsApiImpl extends CustomerListUploadsApi {
   /**
     * @inheritdoc
@@ -16,24 +16,24 @@ class CustomerListUploadsApiImpl extends CustomerListUploadsApi {
   override def customerListUploadsCreate(adAccountId: String, customerListId: String, customerListUploadCreateRequest: CustomerListUploadCreateRequest): CustomerListUploadCreateResponse = {
     // TODO: Implement better logic
 
-    CustomerListUploadCreateResponse(CustomerListUpload("", 0, "", None, "", UserListOperationType(), None, "", 0), S3MultipartUploadData(None))
+    CustomerListUploadCreateResponse(CustomerListUpload(null, 0, null, None, null, UserListOperationType(), None, WorkloadState(), 0), S3MultipartUploadData(None))
   }
 
   /**
     * @inheritdoc
     */
-  override def customerListUploadsGet(adAccountId: String, customerListId: String, customerListUploadId: String): CustomerListUploadResponse = {
+  override def customerListUploadsGet(adAccountId: String, customerListId: String, customerListUploadId: String): CustomerListUpload = {
     // TODO: Implement better logic
 
-    CustomerListUploadResponse("", 0, "", None, "", UserListOperationType(), None, "", 0)
+    CustomerListUpload(null, 0, null, None, null, UserListOperationType(), None, WorkloadState(), 0)
   }
 
   /**
     * @inheritdoc
     */
-  override def customerListUploadsRun(adAccountId: String, customerListId: String, customerListUploadId: String): CustomerListUploadResponse = {
+  override def customerListUploadsRun(adAccountId: String, customerListId: String, customerListUploadId: String): CustomerListUpload = {
     // TODO: Implement better logic
 
-    CustomerListUploadResponse("", 0, "", None, "", UserListOperationType(), None, "", 0)
+    CustomerListUpload(null, 0, null, None, null, UserListOperationType(), None, WorkloadState(), 0)
   }
 }

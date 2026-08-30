@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -29,18 +29,18 @@ func NewNotificationAPIService() *NotificationAPIService {
 }
 
 // NotificationPost - Receive notifications from external partners.
-func (s *NotificationAPIService) NotificationPost(ctx context.Context, notificationPostRequest NotificationPostRequest) (ImplResponse, error) {
+func (s *NotificationAPIService) NotificationPost(ctx context.Context, notificationPostRequest *NotificationPostRequest) (ImplResponse, error) {
 	// TODO - update NotificationPost with the required logic for this service method.
 	// Add api_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, NotificationResponse{}) or use other options such as http.Ok ...
 	// return Response(200, NotificationResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("NotificationPost method not implemented")
 }

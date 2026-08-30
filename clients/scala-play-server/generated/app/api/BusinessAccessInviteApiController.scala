@@ -5,20 +5,21 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.AuthRespondInvitesBody
-import model.CancelInvitesBody
+import model.CancelInvitesRequest
+import model.CancelInvitesResponse
 import model.CreateAssetAccessRequestBody
 import model.CreateAssetAccessRequestResponse
 import model.CreateAssetInvitesRequest
 import model.CreateInvitesResultsResponseArray
 import model.CreateMembershipOrPartnershipInvitesBody
-import model.DeleteInvitesResultsResponseArray
 import model.Error
 import model.GetInvites200Response
+import model.InviteFilterStatus
 import model.InviteType
 import model.RespondToInvitesResponseArray
 import model.UpdateInvitesResultsResponseArray
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class BusinessAccessInviteApiController @Inject()(cc: ControllerComponents, api: BusinessAccessInviteApi) extends AbstractController(cc) {
   /**
@@ -43,11 +44,11 @@ class BusinessAccessInviteApiController @Inject()(cc: ControllerComponents, api:
     * @param businessId Unique identifier of the requesting business.
     */
   def cancelInvitesOrRequests(businessId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): DeleteInvitesResultsResponseArray = {
-      val cancelInvitesBody = request.body.asJson.map(_.as[CancelInvitesBody]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "cancelInvitesBody")
+    def executeApi(): CancelInvitesResponse = {
+      val cancelInvitesRequest = request.body.asJson.map(_.as[CancelInvitesRequest]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "cancelInvitesRequest")
       }
-      api.cancelInvitesOrRequests(businessId, cancelInvitesBody)
+      api.cancelInvitesOrRequests(businessId, cancelInvitesRequest)
     }
 
     val result = executeApi()
@@ -100,6 +101,7 @@ class BusinessAccessInviteApiController @Inject()(cc: ControllerComponents, api:
         
       val inviteStatus = request.queryString.get("invite_status")
         .map(_.toList)
+        .map(_.map(value => )
         
       val inviteType = request.getQueryString("invite_type")
         .map(value => )

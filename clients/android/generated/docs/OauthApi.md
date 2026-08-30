@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## oauthConversionToken
 
-> ConversionAccessTokenResponse oauthConversionToken()
+> ConversionAccessToken oauthConversionToken()
 
 Generate OAuth access token for conversion API
 
@@ -26,7 +26,7 @@ Generate a new and long-lived OAuth access token dedicated for sending conversio
 
 OauthApi apiInstance = new OauthApi();
 try {
-    ConversionAccessTokenResponse result = apiInstance.oauthConversionToken();
+    ConversionAccessToken result = apiInstance.oauthConversionToken();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling OauthApi#oauthConversionToken");
@@ -40,7 +40,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ConversionAccessTokenResponse**](ConversionAccessTokenResponse.md)
+[**ConversionAccessToken**](ConversionAccessToken.md)
 
 ### Authorization
 
@@ -54,11 +54,11 @@ This endpoint does not need any parameter.
 
 ## oauthToken
 
-> OauthAccessTokenResponse oauthToken(grantType)
+> OauthAccessToken oauthToken(grantType, code, continuousRefresh, redirectUri, refreshToken, scope)
 
 Generate OAuth access token
 
-Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for &lt;a href&#x3D;&#39;/docs/getting-started/set-up-authentication-and-authorization/&#39; target&#x3D;&#39;blank&#39;&gt;requesting and refreshing tokens&lt;/a&gt;.  &lt;strong&gt;Note:&lt;/strong&gt; If your app was created &lt;strong&gt;before September 25, 2025&lt;/strong&gt;, make sure to set the &lt;code&gt;continuous_refresh&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use &lt;a href&#x3D;&#39;/docs/developer-tools/token-debugger/&#39; target&#x3D;&#39;blank&#39;&gt;Token Debugger&lt;/a&gt; to validate and inspect your access token.
+Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the &#x60;continuous_refresh&#x60; parameter to &#x60;true&#x60; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
 
 ### Example
 
@@ -67,9 +67,14 @@ Generate a new OAuth access token using an authorization code; or refresh an exi
 //import org.openapitools.client.api.OauthApi;
 
 OauthApi apiInstance = new OauthApi();
-String grantType = null; // String | 
+TokenGrantType grantType = null; // TokenGrantType | 
+String code = null; // String | 
+String continuousRefresh = null; // String |   If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token.
+String redirectUri = null; // String | 
+String refreshToken = null; // String | 
+String scope = null; // String | 
 try {
-    OauthAccessTokenResponse result = apiInstance.oauthToken(grantType);
+    OauthAccessToken result = apiInstance.oauthToken(grantType, code, continuousRefresh, redirectUri, refreshToken, scope);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling OauthApi#oauthToken");
@@ -82,11 +87,16 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **grantType** | **String**|  | [default to null] [enum: authorization_code, refresh_token, client_credentials]
+ **grantType** | [**TokenGrantType**](TokenGrantType.md)|  | [default to null] [enum: authorization_code, refresh_token, client_credentials]
+ **code** | **String**|  | [optional] [default to null]
+ **continuousRefresh** | **String**|   If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. | [optional] [default to null]
+ **redirectUri** | **String**|  | [optional] [default to null]
+ **refreshToken** | **String**|  | [optional] [default to null]
+ **scope** | **String**|  | [optional] [default to null]
 
 ### Return type
 
-[**OauthAccessTokenResponse**](OauthAccessTokenResponse.md)
+[**OauthAccessToken**](OauthAccessToken.md)
 
 ### Authorization
 
@@ -114,7 +124,7 @@ Revokes an access or refresh token. Only tokens issued for system users are curr
 
 OauthApi apiInstance = new OauthApi();
 String token = null; // String | The token to revoke.
-String tokenTypeHint = null; // String | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.
+TokenTypeHint tokenTypeHint = null; // TokenTypeHint | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.
 try {
     apiInstance.tokenRevoke(token, tokenTypeHint);
 } catch (ApiException e) {
@@ -129,7 +139,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token** | **String**| The token to revoke. | [default to null]
- **tokenTypeHint** | **String**| The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional] [default to null] [enum: access_token, refresh_token]
+ **tokenTypeHint** | [**TokenTypeHint**](TokenTypeHint.md)| The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional] [default to null] [enum: access_token, refresh_token]
 
 ### Return type
 

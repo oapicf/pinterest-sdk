@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  LabelsResponse = openapi_server.resourceTypes.LabelsResponse
+  Label = openapi_server.resourceTypes.Label
 }
 resourceTypes {
 
@@ -23,7 +23,7 @@ resourceTypes {
         }
         items {
           type = array
-          items.type = LabelsResponse
+          items.type = Label
           description = ""
           optional = true
         }

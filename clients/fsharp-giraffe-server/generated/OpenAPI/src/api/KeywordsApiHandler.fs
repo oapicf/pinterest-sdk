@@ -7,15 +7,18 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open KeywordsApiHandlerParams
 open KeywordsApiServiceInterface
 open KeywordsApiServiceImplementation
-open OpenAPI.Model.Error
-open OpenAPI.Model.KeywordUpdateBody
+open OpenAPI.Model.Keywords
+open OpenAPI.Model.KeywordsCreate
 open OpenAPI.Model.KeywordsGet200Response
 open OpenAPI.Model.KeywordsMetricsArrayResponse
-open OpenAPI.Model.KeywordsRequest
-open OpenAPI.Model.KeywordsResponse
+open OpenAPI.Model.KeywordsUpdate
 open OpenAPI.Model.MatchType
+open OpenAPI.Model.PinterestLibError
 open OpenAPI.Model.TrendType
 open OpenAPI.Model.TrendingKeywordsResponse
+open OpenAPI.Model.TrendsAgeBucket
+open OpenAPI.Model.TrendsGenderFilter
+open OpenAPI.Model.TrendsL1Interest
 open OpenAPI.Model.TrendsSupportedRegion
 
 module KeywordsApiHandler =
@@ -38,6 +41,16 @@ module KeywordsApiHandler =
           return! (match result with
                       | CountryKeywordsMetricsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | CountryKeywordsMetricsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | CountryKeywordsMetricsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CountryKeywordsMetricsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CountryKeywordsMetricsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CountryKeywordsMetricsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CountryKeywordsMetricsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -59,6 +72,18 @@ module KeywordsApiHandler =
           return! (match result with
                       | KeywordsCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | KeywordsCreateStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
+                      | KeywordsCreateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | KeywordsCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | KeywordsCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | KeywordsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | KeywordsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | KeywordsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -79,6 +104,16 @@ module KeywordsApiHandler =
           return! (match result with
                       | KeywordsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | KeywordsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | KeywordsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | KeywordsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | KeywordsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | KeywordsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | KeywordsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -100,6 +135,16 @@ module KeywordsApiHandler =
           return! (match result with
                       | KeywordsUpdateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | KeywordsUpdateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | KeywordsUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | KeywordsUpdateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | KeywordsUpdateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | KeywordsUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | KeywordsUpdateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -122,6 +167,14 @@ module KeywordsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | TrendingKeywordsListStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | TrendingKeywordsListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | TrendingKeywordsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | TrendingKeywordsListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | TrendingKeywordsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | TrendingKeywordsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

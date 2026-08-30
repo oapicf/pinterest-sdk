@@ -7,9 +7,10 @@ Object describing a creative assets item error
 
 Name | Type
 ------------ | -------------
-`catalogType` | [CatalogsType](CatalogsType.md)
+`catalogType` | string
 `creativeAssetsId` | string
 `errors` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
+`itemResponseKind` | string
 
 ## Example
 
@@ -21,6 +22,7 @@ const example = {
   "catalogType": null,
   "creativeAssetsId": DS0294-M,
   "errors": null,
+  "itemResponseKind": null,
 } satisfies CatalogsCreativeAssetsItemErrorResponse
 
 console.log(example)

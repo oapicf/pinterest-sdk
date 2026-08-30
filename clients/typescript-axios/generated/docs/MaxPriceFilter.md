@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MAX_PRICE** | [**CatalogsProductGroupPricingCriteria**](.md) |  | [default to undefined]
+**MAX_PRICE** | [**CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  | [default to undefined]
 
 ## Example
 

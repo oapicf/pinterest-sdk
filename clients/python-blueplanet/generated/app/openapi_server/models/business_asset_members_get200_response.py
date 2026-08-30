@@ -73,7 +73,6 @@ class BusinessAssetMembersGet200Response(Model):
     def items(self) -> List[UserSingleAssetBinding]:
         """Gets the items of this BusinessAssetMembersGet200Response.
 
-        List of members with permissions to the asset.  # noqa: E501
 
         :return: The items of this BusinessAssetMembersGet200Response.
         :rtype: List[UserSingleAssetBinding]
@@ -84,7 +83,6 @@ class BusinessAssetMembersGet200Response(Model):
     def items(self, items: List[UserSingleAssetBinding]):
         """Sets the items of this BusinessAssetMembersGet200Response.
 
-        List of members with permissions to the asset.  # noqa: E501
 
         :param items: The items of this BusinessAssetMembersGet200Response.
         :type items: List[UserSingleAssetBinding]

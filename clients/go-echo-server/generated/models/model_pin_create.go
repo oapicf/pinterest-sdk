@@ -3,13 +3,16 @@ package models
 // PinCreate - Resource create operation model.
 type PinCreate struct {
 
+	// AI disclosure declarations the creator has made about this Pin.
+	AiDisclosures AiDisclosures `json:"ai_disclosures,omitempty"`
+
 	AltText *string `json:"alt_text,omitempty"`
 
 	// The board to which this Pin belongs.
-	BoardId string `json:"board_id,omitempty" validate:"regexp=^\\\\d+$"`
+	BoardId string `json:"board_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// The board section to which this Pin belongs.
-	BoardSectionId *string `json:"board_section_id,omitempty" validate:"regexp=^\\\\d+$"`
+	BoardSectionId *string `json:"board_section_id,omitempty" validate:"regexp=^\\d+$"`
 
 	Description *string `json:"description,omitempty"`
 
@@ -21,10 +24,10 @@ type PinCreate struct {
 	MediaSource PinMediaSource `json:"media_source,omitempty"`
 
 	// The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
-	ParentPinId *string `json:"parent_pin_id,omitempty" validate:"regexp=^\\\\d+$"`
+	ParentPinId *string `json:"parent_pin_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.
-	SponsorId *string `json:"sponsor_id,omitempty" validate:"regexp=^\\\\d+$"`
+	SponsorId *string `json:"sponsor_id,omitempty" validate:"regexp=^\\d+$"`
 
 	Title *string `json:"title,omitempty"`
 }

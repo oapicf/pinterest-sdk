@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -124,6 +124,9 @@ func (s *BoardsAPIService) BoardsDelete(ctx context.Context, boardId string, adA
 	// TODO - update BoardsDelete with the required logic for this service method.
 	// Add api_boards_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
+	// TODO: Uncomment the next line to return response Response(200, Board{}) or use other options such as http.Ok ...
+	// return Response(200, Board{}), nil
+
 	// TODO: Uncomment the next line to return response Response(204, {}) or use other options such as http.Ok ...
 	// return Response(204, nil),nil
 
@@ -178,18 +181,30 @@ func (s *BoardsAPIService) BoardsUpdate(ctx context.Context, boardId string, boa
 }
 
 // BoardsListPins - List Pins on board
-func (s *BoardsAPIService) BoardsListPins(ctx context.Context, boardId string, bookmark string, pageSize int32, creativeTypes []CreativeType, adAccountId string, pinMetrics bool) (ImplResponse, error) {
+func (s *BoardsAPIService) BoardsListPins(ctx context.Context, boardId string, creativeTypes []CreativeType, adAccountId string, pinMetrics bool, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update BoardsListPins with the required logic for this service method.
 	// Add api_boards_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, BoardsListPins200Response{}) or use other options such as http.Ok ...
 	// return Response(200, BoardsListPins200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BoardsListPins method not implemented")
 }
@@ -202,34 +217,55 @@ func (s *BoardsAPIService) BoardSectionsList(ctx context.Context, boardId string
 	// TODO: Uncomment the next line to return response Response(200, BoardSectionsList200Response{}) or use other options such as http.Ok ...
 	// return Response(200, BoardSectionsList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BoardSectionsList method not implemented")
 }
 
 // BoardSectionsCreate - Create board section
-func (s *BoardsAPIService) BoardSectionsCreate(ctx context.Context, boardId string, boardSection BoardSection, adAccountId string) (ImplResponse, error) {
+func (s *BoardsAPIService) BoardSectionsCreate(ctx context.Context, boardId string, boardSectionCreate BoardSectionCreate, adAccountId string) (ImplResponse, error) {
 	// TODO - update BoardSectionsCreate with the required logic for this service method.
 	// Add api_boards_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, BoardSection{}) or use other options such as http.Ok ...
+	// return Response(200, BoardSection{}), nil
 
 	// TODO: Uncomment the next line to return response Response(201, BoardSection{}) or use other options such as http.Ok ...
 	// return Response(201, BoardSection{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
-	// return Response(403, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(409, Error{}) or use other options such as http.Ok ...
-	// return Response(409, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(500, Error{}) or use other options such as http.Ok ...
-	// return Response(500, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BoardSectionsCreate method not implemented")
 }
@@ -239,43 +275,58 @@ func (s *BoardsAPIService) BoardSectionsDelete(ctx context.Context, boardId stri
 	// TODO - update BoardSectionsDelete with the required logic for this service method.
 	// Add api_boards_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
+	// TODO: Uncomment the next line to return response Response(200, BoardSection{}) or use other options such as http.Ok ...
+	// return Response(200, BoardSection{}), nil
+
 	// TODO: Uncomment the next line to return response Response(204, {}) or use other options such as http.Ok ...
 	// return Response(204, nil),nil
 
-	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
-	// return Response(403, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(409, Error{}) or use other options such as http.Ok ...
-	// return Response(409, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BoardSectionsDelete method not implemented")
 }
 
 // BoardSectionsUpdate - Update board section
-func (s *BoardsAPIService) BoardSectionsUpdate(ctx context.Context, boardId string, sectionId string, boardSection BoardSection, adAccountId string) (ImplResponse, error) {
+func (s *BoardsAPIService) BoardSectionsUpdate(ctx context.Context, boardId string, sectionId string, boardSectionUpdateWithRequiredBody BoardSectionUpdateWithRequiredBody, adAccountId string) (ImplResponse, error) {
 	// TODO - update BoardSectionsUpdate with the required logic for this service method.
 	// Add api_boards_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, BoardSection{}) or use other options such as http.Ok ...
 	// return Response(200, BoardSection{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
-	// return Response(403, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(409, Error{}) or use other options such as http.Ok ...
-	// return Response(409, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BoardSectionsUpdate method not implemented")
 }
@@ -288,17 +339,23 @@ func (s *BoardsAPIService) BoardSectionsListPins(ctx context.Context, boardId st
 	// TODO: Uncomment the next line to return response Response(200, BoardsListPins200Response{}) or use other options such as http.Ok ...
 	// return Response(200, BoardsListPins200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
-	// return Response(403, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(409, Error{}) or use other options such as http.Ok ...
-	// return Response(409, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BoardSectionsListPins method not implemented")
 }

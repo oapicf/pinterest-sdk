@@ -8,7 +8,7 @@ The class is defined in **[MediaTypeFilter.java](../../src/main/java/org/openapi
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MEDIA_TYPE** | `CatalogsProductGroupMultipleMediaTypesCriteria` |  | 
+**MEDIA_TYPE** | [`CatalogsProductGroupMultipleMediaTypesCriteria`](CatalogsProductGroupMultipleMediaTypesCriteria.md) |  | 
 
 
 

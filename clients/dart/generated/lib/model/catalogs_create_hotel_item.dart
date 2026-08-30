@@ -60,10 +60,12 @@ class CatalogsCreateHotelItem {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsCreateHotelItem[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsCreateHotelItem[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'attributes'), 'Required key "CatalogsCreateHotelItem[attributes]" is missing from JSON.');
+        assert(json[r'attributes'] != null, 'Required key "CatalogsCreateHotelItem[attributes]" has a null value in JSON.');
+        assert(json.containsKey(r'hotel_id'), 'Required key "CatalogsCreateHotelItem[hotel_id]" is missing from JSON.');
+        assert(json[r'hotel_id'] != null, 'Required key "CatalogsCreateHotelItem[hotel_id]" has a null value in JSON.');
+        assert(json.containsKey(r'operation'), 'Required key "CatalogsCreateHotelItem[operation]" is missing from JSON.');
+        assert(json[r'operation'] != null, 'Required key "CatalogsCreateHotelItem[operation]" has a null value in JSON.');
         return true;
       }());
 
@@ -125,27 +127,28 @@ class CatalogsCreateHotelItem {
 }
 
 
-class CatalogsCreateHotelItemOperationEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsCreateHotelItemOperationEnum._(this.value);
+enum CatalogsCreateHotelItemOperationEnum {
+  CREATE._(r'CREATE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsCreateHotelItemOperationEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CREATE = CatalogsCreateHotelItemOperationEnum._(r'CREATE');
-
-  /// List of all possible values in this [enum][CatalogsCreateHotelItemOperationEnum].
-  static const values = <CatalogsCreateHotelItemOperationEnum>[
-    CREATE,
-  ];
-
+  /// Returns the instance of [CatalogsCreateHotelItemOperationEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsCreateHotelItemOperationEnum? fromJson(dynamic value) => CatalogsCreateHotelItemOperationEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsCreateHotelItemOperationEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsCreateHotelItemOperationEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsCreateHotelItemOperationEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -167,9 +170,10 @@ class CatalogsCreateHotelItemOperationEnumTypeTransformer {
 
   const CatalogsCreateHotelItemOperationEnumTypeTransformer._();
 
-  String encode(CatalogsCreateHotelItemOperationEnum data) => data.value;
+  String encode(CatalogsCreateHotelItemOperationEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsCreateHotelItemOperationEnum.
+  /// Returns the instance of [CatalogsCreateHotelItemOperationEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -178,6 +182,9 @@ class CatalogsCreateHotelItemOperationEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsCreateHotelItemOperationEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsCreateHotelItemOperationEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CREATE': return CatalogsCreateHotelItemOperationEnum.CREATE;
@@ -190,7 +197,7 @@ class CatalogsCreateHotelItemOperationEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsCreateHotelItemOperationEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsCreateHotelItemOperationEnumTypeTransformer? _instance;
 }
 

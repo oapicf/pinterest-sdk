@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -20,12 +20,23 @@ type UpdatePartnerAssetsResultsResponseArray struct {
 	Items []UpdatePartnerAssetsResult `json:"items,omitempty"`
 }
 
-// AssertUpdatePartnerAssetsResultsResponseArrayRequired checks if the required fields are not zero-ed
+// AssertUpdatePartnerAssetsResultsResponseArrayRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertUpdatePartnerAssetsResultsResponseArrayRequired(obj UpdatePartnerAssetsResultsResponseArray) error {
+	for _, el := range obj.Items {
+		if err := AssertUpdatePartnerAssetsResultRequired(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 // AssertUpdatePartnerAssetsResultsResponseArrayConstraints checks if the values respects the defined constraints
 func AssertUpdatePartnerAssetsResultsResponseArrayConstraints(obj UpdatePartnerAssetsResultsResponseArray) error {
+	for _, el := range obj.Items {
+		if err := AssertUpdatePartnerAssetsResultConstraints(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }

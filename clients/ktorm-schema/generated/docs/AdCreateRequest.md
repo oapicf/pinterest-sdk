@@ -19,13 +19,14 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **disclosureUrl** | disclosure_url | text |  | **kotlin.String** | URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. |  [optional]
 **gridClickType** | grid_click_type | long |  | [**GridClickType**](GridClickType.md) |  |  [optional] [foreignkey]
 **iosDeepLink** | ios_deep_link | text |  | **kotlin.String** | Deep link URL for iOS devices. |  [optional]
+**isCarting** | is_carting | boolean |  | **kotlin.Boolean** | Is the ad a carting/WTB ad? |  [optional]
 **isPinDeleted** | is_pin_deleted | boolean |  | **kotlin.Boolean** | Is original pin deleted? |  [optional]
 **isRemovable** | is_removable | boolean |  | **kotlin.Boolean** | Is pin repinnable? |  [optional]
 **leadFormId** | lead_form_id | text |  | **kotlin.String** | Lead form ID for lead ad generation. |  [optional]
 **name** | name | text |  | **kotlin.String** | Name of the ad - 255 chars max. |  [optional]
-**quizPinData** | quiz_pin_data | long |  | [**QuizPinData**](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. |  [optional] [foreignkey]
+**quizPinData** | quiz_pin_data | blob |  | [**kotlin.Any**](.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. |  [optional]
 **status** | status | long |  | [**EntityStatus**](EntityStatus.md) |  |  [optional] [foreignkey]
-**trackingUrls** | tracking_urls | long |  | [**TrackingUrls**](TrackingUrls.md) |  |  [optional] [foreignkey]
+**trackingUrls** | tracking_urls | blob |  | [**kotlin.Any**](.md) |  |  [optional]
 **viewTrackingUrl** | view_tracking_url | text |  | **kotlin.String** | Tracking URL for ad impressions. |  [optional]
 
 
@@ -63,6 +64,7 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 adCreateRequest | adCreateRequest | long | | kotlin.Long | Primary Key | *one*
 carouselIosDeepLinks | carouselIosDeepLinks | text | | kotlin.String | Foreign Key | *many*
+
 
 
 

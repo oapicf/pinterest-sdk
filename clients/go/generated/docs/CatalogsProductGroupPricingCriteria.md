@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Inclusion** | Pointer to **bool** |  | [optional] [default to true]
-**Negated** | Pointer to **bool** |  | [optional] [default to false]
+**Negated** | Pointer to **bool** |  | [optional] 
 **Values** | **float32** |  | 
 
 ## Methods

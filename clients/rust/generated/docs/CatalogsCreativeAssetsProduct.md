@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | **String** |  | 
+**catalog_type** | **CatalogType** |  (enum: CREATIVE_ASSETS) | 
 **metadata** | [**models::CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  | 
 **pin** | [**models::Pin**](Pin.md) |  | 
 

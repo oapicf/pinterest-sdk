@@ -1,0 +1,13 @@
+## ConversionEventsApi
+
+### Send conversions
+## Send conversions
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/events?test={{test}}
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{bearerToken}}
+
+{
+ "data": "<string>"
+}
+

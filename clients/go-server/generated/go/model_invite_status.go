@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ import (
 )
 
 
-// InviteStatus : The current status of the invite.
+// InviteStatus : The current status of an invite or request.
 type InviteStatus string
 
 // List of InviteStatus
@@ -65,8 +65,8 @@ func NewInviteStatusFromValue(v string) (InviteStatus, error) {
 }
 
 
-
-// AssertInviteStatusRequired checks if the required fields are not zero-ed
+// AssertInviteStatusRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertInviteStatusRequired(obj InviteStatus) error {
 	return nil
 }

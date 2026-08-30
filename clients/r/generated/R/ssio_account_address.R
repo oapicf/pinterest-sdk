@@ -1,7 +1,7 @@
 #' Create a new SSIOAccountAddress
 #'
 #' @description
-#' SSIOAccountAddress Class
+#' Salesforce address information.
 #'
 #' @docType class
 #' @title SSIOAccountAddress

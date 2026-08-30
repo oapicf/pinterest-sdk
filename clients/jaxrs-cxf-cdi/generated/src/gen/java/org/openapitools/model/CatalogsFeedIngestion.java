@@ -25,6 +25,7 @@ public class CatalogsFeedIngestion   {
   private CatalogsFeedProcessingStatus status;
 
   /**
+   * Timestamp of the feed ingestion.
    **/
   public CatalogsFeedIngestion createdAt(java.util.Date createdAt) {
     this.createdAt = createdAt;
@@ -32,7 +33,7 @@ public class CatalogsFeedIngestion   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "Timestamp of the feed ingestion.")
   @JsonProperty("created_at")
   @NotNull
   public java.util.Date getCreatedAt() {
@@ -44,6 +45,7 @@ public class CatalogsFeedIngestion   {
 
 
   /**
+   * Catalog Feed id pertaining to the feed ingestion.
    **/
   public CatalogsFeedIngestion feedId(String feedId) {
     this.feedId = feedId;
@@ -51,10 +53,10 @@ public class CatalogsFeedIngestion   {
   }
 
   
-  @ApiModelProperty(example = "56789", required = true, value = "")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the feed ingestion.")
   @JsonProperty("feed_id")
   @NotNull
-  public String getFeedId() {
+ @Pattern(regexp="^\\d+$")  public String getFeedId() {
     return feedId;
   }
   public void setFeedId(String feedId) {
@@ -63,6 +65,7 @@ public class CatalogsFeedIngestion   {
 
 
   /**
+   * Unique identifier of a feed ingestion.
    **/
   public CatalogsFeedIngestion id(String id) {
     this.id = id;
@@ -70,10 +73,10 @@ public class CatalogsFeedIngestion   {
   }
 
   
-  @ApiModelProperty(example = "01234", required = true, value = "")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Unique identifier of a feed ingestion.")
   @JsonProperty("id")
   @NotNull
-  public String getId() {
+ @Pattern(regexp="^\\d+$")  public String getId() {
     return id;
   }
   public void setId(String id) {
@@ -82,6 +85,7 @@ public class CatalogsFeedIngestion   {
 
 
   /**
+   * Status of the feed ingestion.
    **/
   public CatalogsFeedIngestion status(CatalogsFeedProcessingStatus status) {
     this.status = status;
@@ -89,7 +93,7 @@ public class CatalogsFeedIngestion   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Status of the feed ingestion.")
   @JsonProperty("status")
   @NotNull
   public CatalogsFeedProcessingStatus getStatus() {
@@ -139,10 +143,7 @@ public class CatalogsFeedIngestion   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

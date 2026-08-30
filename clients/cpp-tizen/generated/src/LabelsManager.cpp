@@ -48,6 +48,212 @@ static gpointer __LabelsManagerthreadFunc(gpointer data)
 }
 
 
+static bool labelsApplyProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(LabeledEntities, Error, void* )
+	= reinterpret_cast<void(*)(LabeledEntities, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	LabeledEntities out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("LabeledEntities")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "LabeledEntities", "LabeledEntities");
+			json_node_free(pJson);
+
+			if ("LabeledEntities" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool labelsApplyHelper(char * accessToken,
+	std::string adAccountId, std::string labelId, std::shared_ptr<LabeledEntitiesCreate> labeledEntitiesCreate, 
+	void(* handler)(LabeledEntities, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("LabeledEntitiesCreate")) {
+		node = converttoJson(&labeledEntitiesCreate, "LabeledEntitiesCreate", "");
+	}
+	
+	char *jsonStr =  labeledEntitiesCreate.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/ad_accounts/{ad_account_id}/labels/{label_id}/apply");
+	int pos;
+
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
+	string s_labelId("{");
+	s_labelId.append("label_id");
+	s_labelId.append("}");
+	pos = url.find(s_labelId);
+	url.erase(pos, s_labelId.length());
+	url.insert(pos, stringify(&labelId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(LabelsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = labelsApplyProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (LabelsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), labelsApplyProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __LabelsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool LabelsManager::labelsApplyAsync(char * accessToken,
+	std::string adAccountId, std::string labelId, std::shared_ptr<LabeledEntitiesCreate> labeledEntitiesCreate, 
+	void(* handler)(LabeledEntities, Error, void* )
+	, void* userData)
+{
+	return labelsApplyHelper(accessToken,
+	adAccountId, labelId, labeledEntitiesCreate, 
+	handler, userData, true);
+}
+
+bool LabelsManager::labelsApplySync(char * accessToken,
+	std::string adAccountId, std::string labelId, std::shared_ptr<LabeledEntitiesCreate> labeledEntitiesCreate, 
+	void(* handler)(LabeledEntities, Error, void* )
+	, void* userData)
+{
+	return labelsApplyHelper(accessToken,
+	adAccountId, labelId, labeledEntitiesCreate, 
+	handler, userData, false);
+}
+
 static bool labelsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -78,6 +284,31 @@ static bool labelsCreateProcessor(MemoryStruct_s p_chunk, long code, char* error
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -264,6 +495,26 @@ static bool labelsListProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -284,7 +535,7 @@ static bool labelsListProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 }
 
 static bool labelsListHelper(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> labelIds, std::list<std::string> entityStatuses, std::list<std::string> labelTypes, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> labelIds, std::list<QueryLabelEntityStatusesItems> entityStatuses, std::list<QueryLabelTypesItems> labelTypes, std::string bookmark, int pageSize, 
 	void(* handler)(Labels_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -320,8 +571,8 @@ static bool labelsListHelper(char * accessToken,
 	}
 	
 	for (std::list
-	<std::string>::iterator queryIter = entityStatuses.begin(); queryIter != entityStatuses.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<QueryLabelEntityStatusesItems>::iterator queryIter = entityStatuses.begin(); queryIter != entityStatuses.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "QueryLabelEntityStatusesItems");
 		if( itemAt.empty()){
 			continue;
 		}
@@ -329,8 +580,8 @@ static bool labelsListHelper(char * accessToken,
 	}
 	
 	for (std::list
-	<std::string>::iterator queryIter = labelTypes.begin(); queryIter != labelTypes.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<QueryLabelTypesItems>::iterator queryIter = labelTypes.begin(); queryIter != labelTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "QueryLabelTypesItems");
 		if( itemAt.empty()){
 			continue;
 		}
@@ -338,17 +589,17 @@ static bool labelsListHelper(char * accessToken,
 	}
 	
 
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
-
-
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
 	}
 
 	string mBody = "";
@@ -411,22 +662,228 @@ static bool labelsListHelper(char * accessToken,
 
 
 bool LabelsManager::labelsListAsync(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> labelIds, std::list<std::string> entityStatuses, std::list<std::string> labelTypes, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> labelIds, std::list<QueryLabelEntityStatusesItems> entityStatuses, std::list<QueryLabelTypesItems> labelTypes, std::string bookmark, int pageSize, 
 	void(* handler)(Labels_list_200_response, Error, void* )
 	, void* userData)
 {
 	return labelsListHelper(accessToken,
-	adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, pageSize, bookmark, 
+	adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool LabelsManager::labelsListSync(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> labelIds, std::list<std::string> entityStatuses, std::list<std::string> labelTypes, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> labelIds, std::list<QueryLabelEntityStatusesItems> entityStatuses, std::list<QueryLabelTypesItems> labelTypes, std::string bookmark, int pageSize, 
 	void(* handler)(Labels_list_200_response, Error, void* )
 	, void* userData)
 {
 	return labelsListHelper(accessToken,
-	adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, pageSize, bookmark, 
+	adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, bookmark, pageSize, 
+	handler, userData, false);
+}
+
+static bool labelsRemoveProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(LabeledEntities, Error, void* )
+	= reinterpret_cast<void(*)(LabeledEntities, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	LabeledEntities out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("LabeledEntities")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "LabeledEntities", "LabeledEntities");
+			json_node_free(pJson);
+
+			if ("LabeledEntities" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool labelsRemoveHelper(char * accessToken,
+	std::string adAccountId, std::string labelId, std::shared_ptr<LabeledEntitiesCreate> labeledEntitiesCreate, 
+	void(* handler)(LabeledEntities, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("LabeledEntitiesCreate")) {
+		node = converttoJson(&labeledEntitiesCreate, "LabeledEntitiesCreate", "");
+	}
+	
+	char *jsonStr =  labeledEntitiesCreate.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/ad_accounts/{ad_account_id}/labels/{label_id}/remove");
+	int pos;
+
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
+	string s_labelId("{");
+	s_labelId.append("label_id");
+	s_labelId.append("}");
+	pos = url.find(s_labelId);
+	url.erase(pos, s_labelId.length());
+	url.insert(pos, stringify(&labelId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(LabelsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = labelsRemoveProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (LabelsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), labelsRemoveProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __LabelsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool LabelsManager::labelsRemoveAsync(char * accessToken,
+	std::string adAccountId, std::string labelId, std::shared_ptr<LabeledEntitiesCreate> labeledEntitiesCreate, 
+	void(* handler)(LabeledEntities, Error, void* )
+	, void* userData)
+{
+	return labelsRemoveHelper(accessToken,
+	adAccountId, labelId, labeledEntitiesCreate, 
+	handler, userData, true);
+}
+
+bool LabelsManager::labelsRemoveSync(char * accessToken,
+	std::string adAccountId, std::string labelId, std::shared_ptr<LabeledEntitiesCreate> labeledEntitiesCreate, 
+	void(* handler)(LabeledEntities, Error, void* )
+	, void* userData)
+{
+	return labelsRemoveHelper(accessToken,
+	adAccountId, labelId, labeledEntitiesCreate, 
 	handler, userData, false);
 }
 
@@ -460,6 +917,31 @@ static bool labelsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* error
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();

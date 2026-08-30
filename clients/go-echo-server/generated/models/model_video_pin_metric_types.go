@@ -1,0 +1,20 @@
+package models
+// VideoPinMetricTypes : Video Pin metric types
+type VideoPinMetricTypes string
+
+// List of VideoPinMetricTypes
+const (
+	IMPRESSION VideoPinMetricTypes = "IMPRESSION"
+	OUTBOUND_CLICK VideoPinMetricTypes = "OUTBOUND_CLICK"
+	PIN_CLICK VideoPinMetricTypes = "PIN_CLICK"
+	SAVE VideoPinMetricTypes = "SAVE"
+	SAVE_RATE VideoPinMetricTypes = "SAVE_RATE"
+	VIDEO_MRC_VIEW VideoPinMetricTypes = "VIDEO_MRC_VIEW"
+	VIDEO_10_S_VIEW VideoPinMetricTypes = "VIDEO_10S_VIEW"
+	QUARTILE_95_PERCENT_VIEW VideoPinMetricTypes = "QUARTILE_95_PERCENT_VIEW"
+	VIDEO_V50_WATCH_TIME VideoPinMetricTypes = "VIDEO_V50_WATCH_TIME"
+	VIDEO_START VideoPinMetricTypes = "VIDEO_START"
+	VIDEO_AVG_WATCH_TIME VideoPinMetricTypes = "VIDEO_AVG_WATCH_TIME"
+	TOTAL_COMMENTS VideoPinMetricTypes = "TOTAL_COMMENTS"
+	TOTAL_REACTIONS VideoPinMetricTypes = "TOTAL_REACTIONS"
+)

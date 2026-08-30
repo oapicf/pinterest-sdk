@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,20 +22,21 @@ var _ MappedNullable = &Keyword{}
 
 // Keyword struct for Keyword
 type Keyword struct {
-	// </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-	Bid NullableInt32 `json:"bid,omitempty"`
-	MatchType NullableMatchTypeResponse `json:"match_type"`
-	// Keyword value (120 chars max).
-	Value string `json:"value"`
 	Archived *bool `json:"archived,omitempty"`
+	// **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+	Bid NullableInt32 `json:"bid,omitempty"`
 	// Keyword ID .
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
+	// Keyword [match type](/docs/api-features/targeting-overview/)
+	MatchType NullableMatchType `json:"match_type"`
 	// Keyword parent entity ID (advertiser, campaign, ad group).
-	ParentId *string `json:"parent_id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Parent entity type
+	ParentId string `json:"parent_id" validate:"regexp=^\\d+$"`
+	// Parent entity type (advertiser, campaign, ad group).
 	ParentType *string `json:"parent_type,omitempty"`
 	// Always keyword
 	Type *string `json:"type,omitempty"`
+	// Keyword value (120 chars max).
+	Value string `json:"value"`
 }
 
 type _Keyword Keyword
@@ -44,9 +45,11 @@ type _Keyword Keyword
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKeyword(matchType NullableMatchTypeResponse, value string) *Keyword {
+func NewKeyword(id string, matchType NullableMatchType, parentId string, value string) *Keyword {
 	this := Keyword{}
+	this.Id = id
 	this.MatchType = matchType
+	this.ParentId = parentId
 	this.Value = value
 	return &this
 }
@@ -57,6 +60,38 @@ func NewKeyword(matchType NullableMatchTypeResponse, value string) *Keyword {
 func NewKeywordWithDefaults() *Keyword {
 	this := Keyword{}
 	return &this
+}
+
+// GetArchived returns the Archived field value if set, zero value otherwise.
+func (o *Keyword) GetArchived() bool {
+	if o == nil || IsNil(o.Archived) {
+		var ret bool
+		return ret
+	}
+	return *o.Archived
+}
+
+// GetArchivedOk returns a tuple with the Archived field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Keyword) GetArchivedOk() (*bool, bool) {
+	if o == nil || IsNil(o.Archived) {
+		return nil, false
+	}
+	return o.Archived, true
+}
+
+// HasArchived returns a boolean if a field has been set.
+func (o *Keyword) HasArchived() bool {
+	if o != nil && !IsNil(o.Archived) {
+		return true
+	}
+
+	return false
+}
+
+// SetArchived gets a reference to the given bool and assigns it to the Archived field.
+func (o *Keyword) SetArchived(v bool) {
+	o.Archived = &v
 }
 
 // GetBid returns the Bid field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -101,11 +136,35 @@ func (o *Keyword) UnsetBid() {
 	o.Bid.Unset()
 }
 
+// GetId returns the Id field value
+func (o *Keyword) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *Keyword) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *Keyword) SetId(v string) {
+	o.Id = v
+}
+
 // GetMatchType returns the MatchType field value
-// If the value is explicit nil, the zero value for MatchTypeResponse will be returned
-func (o *Keyword) GetMatchType() MatchTypeResponse {
+// If the value is explicit nil, the zero value for MatchType will be returned
+func (o *Keyword) GetMatchType() MatchType {
 	if o == nil || o.MatchType.Get() == nil {
-		var ret MatchTypeResponse
+		var ret MatchType
 		return ret
 	}
 
@@ -115,7 +174,7 @@ func (o *Keyword) GetMatchType() MatchTypeResponse {
 // GetMatchTypeOk returns a tuple with the MatchType field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Keyword) GetMatchTypeOk() (*MatchTypeResponse, bool) {
+func (o *Keyword) GetMatchTypeOk() (*MatchType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,128 +182,32 @@ func (o *Keyword) GetMatchTypeOk() (*MatchTypeResponse, bool) {
 }
 
 // SetMatchType sets field value
-func (o *Keyword) SetMatchType(v MatchTypeResponse) {
+func (o *Keyword) SetMatchType(v MatchType) {
 	o.MatchType.Set(&v)
 }
 
-// GetValue returns the Value field value
-func (o *Keyword) GetValue() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Value
-}
-
-// GetValueOk returns a tuple with the Value field value
-// and a boolean to check if the value has been set.
-func (o *Keyword) GetValueOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Value, true
-}
-
-// SetValue sets field value
-func (o *Keyword) SetValue(v string) {
-	o.Value = v
-}
-
-// GetArchived returns the Archived field value if set, zero value otherwise.
-func (o *Keyword) GetArchived() bool {
-	if o == nil || IsNil(o.Archived) {
-		var ret bool
-		return ret
-	}
-	return *o.Archived
-}
-
-// GetArchivedOk returns a tuple with the Archived field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Keyword) GetArchivedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Archived) {
-		return nil, false
-	}
-	return o.Archived, true
-}
-
-// HasArchived returns a boolean if a field has been set.
-func (o *Keyword) HasArchived() bool {
-	if o != nil && !IsNil(o.Archived) {
-		return true
-	}
-
-	return false
-}
-
-// SetArchived gets a reference to the given bool and assigns it to the Archived field.
-func (o *Keyword) SetArchived(v bool) {
-	o.Archived = &v
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Keyword) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Keyword) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Keyword) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Keyword) SetId(v string) {
-	o.Id = &v
-}
-
-// GetParentId returns the ParentId field value if set, zero value otherwise.
+// GetParentId returns the ParentId field value
 func (o *Keyword) GetParentId() string {
-	if o == nil || IsNil(o.ParentId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ParentId
+
+	return o.ParentId
 }
 
-// GetParentIdOk returns a tuple with the ParentId field value if set, nil otherwise
+// GetParentIdOk returns a tuple with the ParentId field value
 // and a boolean to check if the value has been set.
 func (o *Keyword) GetParentIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ParentId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ParentId, true
+	return &o.ParentId, true
 }
 
-// HasParentId returns a boolean if a field has been set.
-func (o *Keyword) HasParentId() bool {
-	if o != nil && !IsNil(o.ParentId) {
-		return true
-	}
-
-	return false
-}
-
-// SetParentId gets a reference to the given string and assigns it to the ParentId field.
+// SetParentId sets field value
 func (o *Keyword) SetParentId(v string) {
-	o.ParentId = &v
+	o.ParentId = v
 }
 
 // GetParentType returns the ParentType field value if set, zero value otherwise.
@@ -311,6 +274,30 @@ func (o *Keyword) SetType(v string) {
 	o.Type = &v
 }
 
+// GetValue returns the Value field value
+func (o *Keyword) GetValue() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Value
+}
+
+// GetValueOk returns a tuple with the Value field value
+// and a boolean to check if the value has been set.
+func (o *Keyword) GetValueOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Value, true
+}
+
+// SetValue sets field value
+func (o *Keyword) SetValue(v string) {
+	o.Value = v
+}
+
 func (o Keyword) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -321,26 +308,22 @@ func (o Keyword) MarshalJSON() ([]byte, error) {
 
 func (o Keyword) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Bid.IsSet() {
-		toSerialize["bid"] = o.Bid.Get()
-	}
-	toSerialize["match_type"] = o.MatchType.Get()
-	toSerialize["value"] = o.Value
 	if !IsNil(o.Archived) {
 		toSerialize["archived"] = o.Archived
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if o.Bid.IsSet() {
+		toSerialize["bid"] = o.Bid.Get()
 	}
-	if !IsNil(o.ParentId) {
-		toSerialize["parent_id"] = o.ParentId
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["match_type"] = o.MatchType.Get()
+	toSerialize["parent_id"] = o.ParentId
 	if !IsNil(o.ParentType) {
 		toSerialize["parent_type"] = o.ParentType
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
+	toSerialize["value"] = o.Value
 	return toSerialize, nil
 }
 
@@ -349,7 +332,9 @@ func (o *Keyword) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"id",
 		"match_type",
+		"parent_id",
 		"value",
 	}
 

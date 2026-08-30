@@ -84,6 +84,7 @@ class UserBusinessRoleBinding(Model):
     def assets_summary(self) -> BusinessMemberAssetsSummary:
         """Gets the assets_summary of this UserBusinessRoleBinding.
 
+        Ad accounts and profiles the business member/partner has access to.  # noqa: E501
 
         :return: The assets_summary of this UserBusinessRoleBinding.
         :rtype: BusinessMemberAssetsSummary
@@ -94,6 +95,7 @@ class UserBusinessRoleBinding(Model):
     def assets_summary(self, assets_summary: BusinessMemberAssetsSummary):
         """Sets the assets_summary of this UserBusinessRoleBinding.
 
+        Ad accounts and profiles the business member/partner has access to.  # noqa: E501
 
         :param assets_summary: The assets_summary of this UserBusinessRoleBinding.
         :type assets_summary: BusinessMemberAssetsSummary
@@ -222,7 +224,7 @@ class UserBusinessRoleBinding(Model):
     def is_shared_partner(self) -> bool:
         """Gets the is_shared_partner of this UserBusinessRoleBinding.
 
-        This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.  # noqa: E501
+        This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.  # noqa: E501
 
         :return: The is_shared_partner of this UserBusinessRoleBinding.
         :rtype: bool
@@ -233,7 +235,7 @@ class UserBusinessRoleBinding(Model):
     def is_shared_partner(self, is_shared_partner: bool):
         """Sets the is_shared_partner of this UserBusinessRoleBinding.
 
-        This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.  # noqa: E501
+        This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.  # noqa: E501
 
         :param is_shared_partner: The is_shared_partner of this UserBusinessRoleBinding.
         :type is_shared_partner: bool

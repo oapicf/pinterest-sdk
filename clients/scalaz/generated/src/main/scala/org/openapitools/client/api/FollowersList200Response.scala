@@ -13,7 +13,7 @@ import FollowersList200Response._
 
 case class FollowersList200Response (
   bookmark: Option[String],
-items: List[UserSummary])
+items: List[FollowUser])
 
 object FollowersList200Response {
   import DateTimeCodecs._

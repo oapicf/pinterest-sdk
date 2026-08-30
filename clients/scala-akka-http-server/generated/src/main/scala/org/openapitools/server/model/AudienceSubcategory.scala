@@ -2,13 +2,11 @@ package org.openapitools.server.model
 
 
 /**
- * = AudienceSubcategory =
- *
- * @param id Subinterest ID. for example: ''958862518888''
- * @param index Subinterest affinity index. for example: ''1.2''
- * @param key Interest unique key (same as ID). for example: ''958862518888''
- * @param name Subinterest name. for example: ''travel destinations''
- * @param ratio Subinterest's percent of category's total audience. for example: ''0.482''
+ * @param id  for example: ''null''
+ * @param index  for example: ''null''
+ * @param key  for example: ''null''
+ * @param name  for example: ''null''
+ * @param ratio  for example: ''null''
 */
 final case class AudienceSubcategory (
   id: Option[String] = None,

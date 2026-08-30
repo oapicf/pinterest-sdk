@@ -12,9 +12,6 @@ import { SSIOOrderLine } from './sSIOOrderLine';
 
 export interface SsioOrderLinesGetByAdAccount200Response { 
     bookmark?: string | null;
-    /**
-     * SSIO order lines by ad acount id
-     */
     items: Array<SSIOOrderLine>;
 }
 

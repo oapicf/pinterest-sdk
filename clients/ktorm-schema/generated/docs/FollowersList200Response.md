@@ -5,18 +5,18 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;UserSummary&gt;**](UserSummary.md) |  | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;FollowUser&gt;**](FollowUser.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 
-# **Table `FollowersList200ResponseUserSummary`**
-(mapped from: FollowersList200ResponseUserSummary)
+# **Table `FollowersList200ResponseFollowUser`**
+(mapped from: FollowersList200ResponseFollowUser)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 followersList200Response | followersList200Response | long | | kotlin.Long | Primary Key | *one*
-userSummary | userSummary | long | | kotlin.Long | Foreign Key | *many*
+followUser | followUser | long | | kotlin.Long | Foreign Key | *many*
 
 
 

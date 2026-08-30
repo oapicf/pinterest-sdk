@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **brand** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
+| **brand** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |  |
 
 ## Example
 

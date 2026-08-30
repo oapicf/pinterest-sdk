@@ -14,13 +14,19 @@ class CatalogsProductGroupPricingCriteria {
   /// Returns a new [CatalogsProductGroupPricingCriteria] instance.
   CatalogsProductGroupPricingCriteria({
     this.inclusion = true,
-    this.negated = false,
+    this.negated,
     required this.values,
   });
 
   bool inclusion;
 
-  bool negated;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? negated;
 
   /// Minimum value: 0
   num values;
@@ -35,7 +41,7 @@ class CatalogsProductGroupPricingCriteria {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (inclusion.hashCode) +
-    (negated.hashCode) +
+    (negated == null ? 0 : negated!.hashCode) +
     (values.hashCode);
 
   @override
@@ -44,7 +50,11 @@ class CatalogsProductGroupPricingCriteria {
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'inclusion'] = this.inclusion;
+    if (this.negated != null) {
       json[r'negated'] = this.negated;
+    } else {
+      json[r'negated'] = null;
+    }
       json[r'values'] = this.values;
     return json;
   }
@@ -60,16 +70,14 @@ class CatalogsProductGroupPricingCriteria {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsProductGroupPricingCriteria[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsProductGroupPricingCriteria[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'values'), 'Required key "CatalogsProductGroupPricingCriteria[values]" is missing from JSON.');
+        assert(json[r'values'] != null, 'Required key "CatalogsProductGroupPricingCriteria[values]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsProductGroupPricingCriteria(
         inclusion: mapValueOfType<bool>(json, r'inclusion') ?? true,
-        negated: mapValueOfType<bool>(json, r'negated') ?? false,
+        negated: mapValueOfType<bool>(json, r'negated'),
         values: num.parse('${json[r'values']}'),
       );
     }

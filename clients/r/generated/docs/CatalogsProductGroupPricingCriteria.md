@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **inclusion** | **character** |  | [optional] [default to TRUE] 
-**negated** | **character** |  | [optional] [default to FALSE] 
+**negated** | **character** |  | [optional] 
 **values** | **numeric** |  | [Min: 0] 
 
 

@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.get_partner_assets_response import GetPartnerAssetsResponse  # noqa: F401,E501
+from app.openapi_server.models.base_business_assets import BaseBusinessAssets  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,17 +16,17 @@ class BusinessPartnerAssetAccessGet200Response(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, bookmark: str=None, items: List[GetPartnerAssetsResponse]=None):  # noqa: E501
+    def __init__(self, bookmark: str=None, items: List[BaseBusinessAssets]=None):  # noqa: E501
         """BusinessPartnerAssetAccessGet200Response - a model defined in Swagger
 
         :param bookmark: The bookmark of this BusinessPartnerAssetAccessGet200Response.  # noqa: E501
         :type bookmark: str
         :param items: The items of this BusinessPartnerAssetAccessGet200Response.  # noqa: E501
-        :type items: List[GetPartnerAssetsResponse]
+        :type items: List[BaseBusinessAssets]
         """
         self.swagger_types = {
             'bookmark': str,
-            'items': List[GetPartnerAssetsResponse]
+            'items': List[BaseBusinessAssets]
         }
 
         self.attribute_map = {
@@ -70,24 +70,22 @@ class BusinessPartnerAssetAccessGet200Response(Model):
         self._bookmark = bookmark
 
     @property
-    def items(self) -> List[GetPartnerAssetsResponse]:
+    def items(self) -> List[BaseBusinessAssets]:
         """Gets the items of this BusinessPartnerAssetAccessGet200Response.
 
-        List assets on which you granted access to your partner or assets on which your partner has granted you access.  # noqa: E501
 
         :return: The items of this BusinessPartnerAssetAccessGet200Response.
-        :rtype: List[GetPartnerAssetsResponse]
+        :rtype: List[BaseBusinessAssets]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[GetPartnerAssetsResponse]):
+    def items(self, items: List[BaseBusinessAssets]):
         """Sets the items of this BusinessPartnerAssetAccessGet200Response.
 
-        List assets on which you granted access to your partner or assets on which your partner has granted you access.  # noqa: E501
 
         :param items: The items of this BusinessPartnerAssetAccessGet200Response.
-        :type items: List[GetPartnerAssetsResponse]
+        :type items: List[BaseBusinessAssets]
         """
         if items is None:
             raise ValueError("Invalid value for `items`, must not be `None`")  # noqa: E501

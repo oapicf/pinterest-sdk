@@ -4,50 +4,14 @@ import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.HashMap;
+import org.openapitools.model.HttpMethod;
 
 @Canonical
 class IntegrationLogClientRequest {
     /* HTTP request host from host header. */
     String host
-
-    enum MethodEnum {
     
-        GET("GET"),
-        
-        HEAD("HEAD"),
-        
-        POST("POST"),
-        
-        PUT("PUT"),
-        
-        DELETE("DELETE"),
-        
-        CONNECT("CONNECT"),
-        
-        OPTIONS("OPTIONS"),
-        
-        TRACE("TRACE"),
-        
-        PATCH("PATCH")
-    
-        private final String value
-    
-        MethodEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
-    
-    MethodEnum method
+    HttpMethod method
     /* HTTP request path. */
     String path
     /* HTTP request headers as key-value pairs. */

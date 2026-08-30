@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **google_product_category_4** | Option<**Vec<String>**> |  | [optional]
 **google_product_category_5** | Option<**Vec<String>**> |  | [optional]
 **google_product_category_6** | Option<**Vec<String>**> |  | [optional]
-**media_type** | Option<**Vec<String>**> |  | [optional]
+**media_type** | Option<[**Vec<models::MediaType>**](MediaType.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

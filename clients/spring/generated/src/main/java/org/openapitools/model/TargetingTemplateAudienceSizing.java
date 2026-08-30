@@ -2,28 +2,30 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.model.TargetingTemplateAudienceSizingReachEstimate;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * Gets an audience size estimate for a set of given targeting spec data. &lt;p&gt;Returns:&lt;/p&gt; An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. 
+ * Gets an audience size estimate for a set of given targeting spec data. **Returns:** An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate.
  */
 
-@Schema(name = "TargetingTemplateAudienceSizing", description = "Gets an audience size estimate for a set of given targeting spec data. <p>Returns:</p> An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. ")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "TargetingTemplateAudienceSizing", description = "Gets an audience size estimate for a set of given targeting spec data. **Returns:** An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingTemplateAudienceSizing {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable TargetingTemplateAudienceSizingReachEstimate reachEstimate;
 
   public TargetingTemplateAudienceSizing reachEstimate(@Nullable TargetingTemplateAudienceSizingReachEstimate reachEstimate) {
@@ -42,6 +44,7 @@ public class TargetingTemplateAudienceSizing {
     return reachEstimate;
   }
 
+  @JsonProperty("reach_estimate")
   public void setReachEstimate(@Nullable TargetingTemplateAudienceSizingReachEstimate reachEstimate) {
     this.reachEstimate = reachEstimate;
   }
@@ -77,10 +80,7 @@ public class TargetingTemplateAudienceSizing {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

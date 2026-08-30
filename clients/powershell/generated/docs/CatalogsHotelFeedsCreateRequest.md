@@ -3,16 +3,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogId** | **String** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. | [optional] 
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CatalogId** | **String** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. | [optional] 
+**CatalogType** | **String** |  | 
 **Credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
 **DefaultCurrency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] 
-**DefaultLocale** | [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequestDefaultLocale.md) |  | 
+**DefaultLocale** | [**CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale**](CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.md) |  | 
 **Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
 **Location** | **String** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
 **Name** | **String** | A human-friendly name associated to a given feed. | 
 **PreferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
-**Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to "ACTIVE"]
+**Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
 
 ## Examples
 

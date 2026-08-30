@@ -11,17 +11,15 @@ part 'exception.g.dart';
 /// Exception
 ///
 /// Properties:
-/// * [code] - Exception error code.
-/// * [message] - Exception message.
+/// * [code] 
+/// * [message] 
 @BuiltValue()
 abstract class Exception implements Built<Exception, ExceptionBuilder> {
-  /// Exception error code.
   @BuiltValueField(wireName: r'code')
   int? get code;
 
-  /// Exception message.
   @BuiltValueField(wireName: r'message')
-  String? get message;
+  String get message;
 
   Exception._();
 
@@ -53,13 +51,11 @@ class _$ExceptionSerializer implements PrimitiveSerializer<Exception> {
         specifiedType: const FullType(int),
       );
     }
-    if (object.message != null) {
-      yield r'message';
-      yield serializers.serialize(
-        object.message,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'message';
+    yield serializers.serialize(
+      object.message,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override
@@ -86,8 +82,9 @@ class _$ExceptionSerializer implements PrimitiveSerializer<Exception> {
         case r'code':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.code = valueDes;
           break;
         case r'message':

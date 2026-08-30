@@ -31,11 +31,11 @@ static catalogs_upsert_hotel_item_t *catalogs_upsert_hotel_item_create_internal(
     if (!catalogs_upsert_hotel_item_local_var) {
         return NULL;
     }
+    memset(catalogs_upsert_hotel_item_local_var, 0, sizeof(catalogs_upsert_hotel_item_t));
+    catalogs_upsert_hotel_item_local_var->_library_owned = 1;
     catalogs_upsert_hotel_item_local_var->attributes = attributes;
     catalogs_upsert_hotel_item_local_var->hotel_id = hotel_id;
     catalogs_upsert_hotel_item_local_var->operation = operation;
-
-    catalogs_upsert_hotel_item_local_var->_library_owned = 1;
     return catalogs_upsert_hotel_item_local_var;
 }
 
@@ -44,11 +44,14 @@ __attribute__((deprecated)) catalogs_upsert_hotel_item_t *catalogs_upsert_hotel_
     char *hotel_id,
     pinterest_rest_api_catalogs_upsert_hotel_item_OPERATION_e operation
     ) {
-    return catalogs_upsert_hotel_item_create_internal (
+    catalogs_upsert_hotel_item_t *result = catalogs_upsert_hotel_item_create_internal (
         attributes,
         hotel_id,
         operation
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_upsert_hotel_item_free(catalogs_upsert_hotel_item_t *catalogs_upsert_hotel_item) {
@@ -121,6 +124,8 @@ catalogs_upsert_hotel_item_t *catalogs_upsert_hotel_item_parseFromJSON(cJSON *ca
     // define the local variable for catalogs_upsert_hotel_item->attributes
     catalogs_hotel_attributes_t *attributes_local_nonprim = NULL;
 
+    char *hotel_id_local_str = NULL;
+
     // catalogs_upsert_hotel_item->attributes
     cJSON *attributes = cJSON_GetObjectItemCaseSensitive(catalogs_upsert_hotel_itemJSON, "attributes");
     if (cJSON_IsNull(attributes)) {
@@ -166,17 +171,27 @@ catalogs_upsert_hotel_item_t *catalogs_upsert_hotel_item_parseFromJSON(cJSON *ca
     operationVariable = catalogs_upsert_hotel_item_operation_FromString(operation->valuestring);
 
 
+    if (hotel_id && !cJSON_IsNull(hotel_id)) hotel_id_local_str = strdup(hotel_id->valuestring);
+
     catalogs_upsert_hotel_item_local_var = catalogs_upsert_hotel_item_create_internal (
         attributes_local_nonprim,
-        strdup(hotel_id->valuestring),
+        hotel_id_local_str,
         operationVariable
         );
+
+    if (!catalogs_upsert_hotel_item_local_var) {
+        goto end;
+    }
 
     return catalogs_upsert_hotel_item_local_var;
 end:
     if (attributes_local_nonprim) {
         catalogs_hotel_attributes_free(attributes_local_nonprim);
         attributes_local_nonprim = NULL;
+    }
+    if (hotel_id_local_str) {
+        free(hotel_id_local_str);
+        hotel_id_local_str = NULL;
     }
     return NULL;
 

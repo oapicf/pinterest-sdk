@@ -6,7 +6,7 @@ using namespace Tiny;
 
 MetricsResponse::MetricsResponse()
 {
-	data = std::list<Object>();
+	data = std::list<MetricsResponseDataItems>();
 }
 
 MetricsResponse::MetricsResponse(std::string jsonString)
@@ -31,8 +31,8 @@ MetricsResponse::fromJson(std::string jsonObj)
         bourne::json value = object[dataKey];
 
 
-        std::list<Object> data_list;
-        Object element;
+        std::list<MetricsResponseDataItems> data_list;
+        MetricsResponseDataItems element;
         for(auto& var : value.array_range())
         {
 
@@ -57,12 +57,12 @@ MetricsResponse::toJson()
 
 
 
-    std::list<Object> data_list = getData();
+    std::list<MetricsResponseDataItems> data_list = getData();
     bourne::json data_arr = bourne::json::array();
 
     for(auto& var : data_list)
     {
-        Object obj = var;
+        MetricsResponseDataItems obj = var;
         data_arr.append(obj.toJson());
     }
     object["data"] = data_arr;
@@ -74,14 +74,14 @@ MetricsResponse::toJson()
 
 }
 
-std::list<Object>
+std::list<MetricsResponseDataItems>
 MetricsResponse::getData()
 {
 	return data;
 }
 
 void
-MetricsResponse::setData(std::list <Object> data)
+MetricsResponse::setData(std::list<MetricsResponseDataItems> data)
 {
 	this->data = data;
 }

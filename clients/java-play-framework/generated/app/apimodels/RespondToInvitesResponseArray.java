@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.RespondToInvitesResponseArrayItemsInner;
+import apimodels.RespondToInviteResultItem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,20 +13,20 @@ import javax.validation.Valid;
 /**
  * RespondToInvitesResponseArray
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class RespondToInvitesResponseArray   {
   @JsonProperty("items")
   @Valid
 
-  private List<@Valid RespondToInvitesResponseArrayItemsInner> items = null;
+  private List<@Valid RespondToInviteResultItem> items = null;
 
-  public RespondToInvitesResponseArray items(List<@Valid RespondToInvitesResponseArrayItemsInner> items) {
+  public RespondToInvitesResponseArray items(List<@Valid RespondToInviteResultItem> items) {
     this.items = items;
     return this;
   }
 
-  public RespondToInvitesResponseArray addItemsItem(RespondToInvitesResponseArrayItemsInner itemsItem) {
+  public RespondToInvitesResponseArray addItemsItem(RespondToInviteResultItem itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -38,11 +38,11 @@ public class RespondToInvitesResponseArray   {
    * List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.
    * @return items
   **/
-  public List<@Valid RespondToInvitesResponseArrayItemsInner> getItems() {
+  public List<@Valid RespondToInviteResultItem> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid RespondToInvitesResponseArrayItemsInner> items) {
+  public void setItems(List<@Valid RespondToInviteResultItem> items) {
     this.items = items;
   }
 
@@ -80,10 +80,7 @@ public class RespondToInvitesResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

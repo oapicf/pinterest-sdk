@@ -2,8 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.InviteAssetsSummaryAdAccountsInner
-open OpenAPI.Model.InviteAssetsSummaryProfilesInner
+open OpenAPI.Model.InviteAssetsSummaryItem
 
 module InviteAssetsSummary =
 
@@ -11,7 +10,7 @@ module InviteAssetsSummary =
 
 
   type InviteAssetsSummary = {
-    AdAccounts : InviteAssetsSummaryAdAccountsInner[];
-    Profiles : InviteAssetsSummaryProfilesInner[];
+    AdAccounts : InviteAssetsSummaryItem[];
+    Profiles : InviteAssetsSummaryItem[];
   }
   //#endregion

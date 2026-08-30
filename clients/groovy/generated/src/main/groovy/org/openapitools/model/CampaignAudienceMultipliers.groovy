@@ -7,6 +7,6 @@ import java.util.HashMap;
 
 @Canonical
 class CampaignAudienceMultipliers {
-    
+    /* Audience ID for the multiplier. */
     String AUDIENCE_ID
 }

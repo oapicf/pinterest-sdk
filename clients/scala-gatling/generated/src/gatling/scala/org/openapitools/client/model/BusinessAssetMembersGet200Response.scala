@@ -4,7 +4,6 @@ package org.openapitools.client.model
 
 case class BusinessAssetMembersGet200Response (
     _bookmark: Option[String],
-    /* List of members with permissions to the asset. */
     _items: List[UserSingleAssetBinding]
 )
 object BusinessAssetMembersGet200Response {

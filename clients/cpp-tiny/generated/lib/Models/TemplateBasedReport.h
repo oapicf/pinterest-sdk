@@ -52,28 +52,28 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setMessage(std::string  message);
+	void setMessage(std::string message);
 	/*! \brief Get 
 	 */
 	BulkReportingJobStatus getReportStatus();
 
 	/*! \brief Set 
 	 */
-	void setReportStatus(BulkReportingJobStatus  report_status);
+	void setReportStatus(BulkReportingJobStatus report_status);
 	/*! \brief Get Unique identifier of a template.
 	 */
 	std::string getTemplateId();
 
 	/*! \brief Set Unique identifier of a template.
 	 */
-	void setTemplateId(std::string  template_id);
+	void setTemplateId(std::string template_id);
 	/*! \brief Get 
 	 */
 	std::string getToken();
 
 	/*! \brief Set 
 	 */
-	void setToken(std::string  token);
+	void setToken(std::string token);
 
 
     private:

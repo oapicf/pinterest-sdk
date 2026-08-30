@@ -10,58 +10,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.TopPinsAnalyticsResponseDateAvailability;
-import org.openapitools.model.TopPinsAnalyticsResponsePinsInner;
+import org.openapitools.model.TopPinsAnalyticsResponsePinsItems;
+import org.openapitools.model.TopPinsSortBy;
 
 /**
  * TopPinsAnalyticsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TopPinsAnalyticsResponse   {
   @JsonProperty("date_availability")
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
 
   @JsonProperty("pins")
-  private List<@Valid TopPinsAnalyticsResponsePinsInner> pins = null;
-
-  /**
-   * Gets or Sets sortBy
-   */
-  public enum SortByEnum {
-    ENGAGEMENT("ENGAGEMENT"),
-    
-    SAVE("SAVE"),
-    
-    IMPRESSION("IMPRESSION"),
-    
-    OUTBOUND_CLICK("OUTBOUND_CLICK"),
-    
-    PIN_CLICK("PIN_CLICK");
-
-    private String value;
-
-    SortByEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SortByEnum fromValue(String text) {
-      for (SortByEnum b : SortByEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
+  private List<@Valid TopPinsAnalyticsResponsePinsItems> pins = null;
 
   @JsonProperty("sort_by")
-  private SortByEnum sortBy;
+  private TopPinsSortBy sortBy;
 
   public TopPinsAnalyticsResponse dateAvailability(TopPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;
@@ -81,12 +45,12 @@ public class TopPinsAnalyticsResponse   {
     this.dateAvailability = dateAvailability;
   }
 
-  public TopPinsAnalyticsResponse pins(List<@Valid TopPinsAnalyticsResponsePinsInner> pins) {
+  public TopPinsAnalyticsResponse pins(List<@Valid TopPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
     return this;
   }
 
-  public TopPinsAnalyticsResponse addPinsItem(TopPinsAnalyticsResponsePinsInner pinsItem) {
+  public TopPinsAnalyticsResponse addPinsItem(TopPinsAnalyticsResponsePinsItems pinsItem) {
     if (this.pins == null) {
       this.pins = new ArrayList<>();
     }
@@ -99,15 +63,15 @@ public class TopPinsAnalyticsResponse   {
    * @return pins
   **/
   @ApiModelProperty(value = "")
-  public List<@Valid TopPinsAnalyticsResponsePinsInner> getPins() {
+  public List<@Valid TopPinsAnalyticsResponsePinsItems> getPins() {
     return pins;
   }
 
-  public void setPins(List<@Valid TopPinsAnalyticsResponsePinsInner> pins) {
+  public void setPins(List<@Valid TopPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
   }
 
-  public TopPinsAnalyticsResponse sortBy(SortByEnum sortBy) {
+  public TopPinsAnalyticsResponse sortBy(TopPinsSortBy sortBy) {
     this.sortBy = sortBy;
     return this;
   }
@@ -116,12 +80,12 @@ public class TopPinsAnalyticsResponse   {
    * Get sortBy
    * @return sortBy
   **/
-  @ApiModelProperty(example = "IMPRESSION", value = "")
-  public SortByEnum getSortBy() {
+  @ApiModelProperty(value = "")
+  public TopPinsSortBy getSortBy() {
     return sortBy;
   }
 
-  public void setSortBy(SortByEnum sortBy) {
+  public void setSortBy(TopPinsSortBy sortBy) {
     this.sortBy = sortBy;
   }
 
@@ -162,10 +126,7 @@ public class TopPinsAnalyticsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

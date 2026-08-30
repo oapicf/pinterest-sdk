@@ -1,0 +1,96 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LeadForm"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LeadForm"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  LeadFormPolicyLink = openapi_server.resourceTypes.LeadFormPolicyLink
+  LeadFormQuestion = openapi_server.resourceTypes.LeadFormQuestion
+  LeadFormStatus = openapi_server.resourceTypes.LeadFormStatus
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  LeadForm {
+    title = LeadForm
+    description = LeadForm
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = "The Ad Account ID that this lead form belongs to."
+          optional = false
+        }
+        completion_message {
+          type =  string
+          description = "A message for people who complete the form to let them know what happens next."
+          optional = true
+        }
+        created_time {
+          type =  integer
+          description = "Lead form creation time. Unix timestamp in seconds."
+          optional = false
+        }
+        disclosure_language {
+          type =  string
+          description = "Additional disclosure language to be included in the lead form."
+          optional = false
+        }
+        has_accepted_terms {
+          type =  boolean
+          description = "Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s [Lead Ad Terms](https://policy.pinterest.com/en/lead-ad-terms). As a reminder, all advertising on Pinterest is subject to the [Pinterest Advertising Services Agreement](https://business.pinterest.com/en/pinterest-advertising-services-agreement/) or an equivalent agreement as set forth on an IO"
+          optional = true
+        }
+        id {
+          type =  string
+          description = "The ID of this lead form"
+          optional = true
+        }
+        name {
+          type =  string
+          description = "Internal name of the lead form."
+          optional = true
+        }
+        policy_links {
+          type = array
+          items.type = LeadFormPolicyLink
+          description = "List of additional policy links to be displayed on the lead form."
+          optional = false
+        }
+        privacy_policy_link {
+          type =  string
+          description = "A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language."
+          optional = true
+        }
+        questions {
+          type = array
+          items.type = LeadFormQuestion
+          description = "List of questions to be displayed on the lead form."
+          optional = true
+        }
+        status {
+          type = LeadFormStatus
+          description = ""
+          optional = false
+        }
+        updated_time {
+          type =  integer
+          description = "Last update time. Unix timestamp in seconds."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LeadForm {
+    title = LeadForm
+    description = LeadForm
+    implements = openapi_server.resourceTypes.LeadForm
+
+  }
+}

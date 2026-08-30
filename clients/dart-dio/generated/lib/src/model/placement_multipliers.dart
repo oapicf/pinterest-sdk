@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/placement_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -12,11 +13,12 @@ part 'placement_multipliers.g.dart';
 /// This represents a mapping from placement to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified placement in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. All placement multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
 ///
 /// Properties:
-/// * [PLACEMENT] 
+/// * [PLACEMENT] - Placement type identifier.
 @BuiltValue()
 abstract class PlacementMultipliers implements Built<PlacementMultipliers, PlacementMultipliersBuilder> {
+  /// Placement type identifier.
   @BuiltValueField(wireName: r'PLACEMENT')
-  PlacementMultipliersPLACEMENTEnum? get PLACEMENT;
+  PlacementType? get PLACEMENT;
   // enum PLACEMENTEnum {  SEARCH,  BROWSE,  RELATED_PINS,  };
 
   PlacementMultipliers._();
@@ -46,7 +48,7 @@ class _$PlacementMultipliersSerializer implements PrimitiveSerializer<PlacementM
       yield r'PLACEMENT';
       yield serializers.serialize(
         object.PLACEMENT,
-        specifiedType: const FullType(PlacementMultipliersPLACEMENTEnum),
+        specifiedType: const FullType(PlacementType),
       );
     }
   }
@@ -75,8 +77,9 @@ class _$PlacementMultipliersSerializer implements PrimitiveSerializer<PlacementM
         case r'PLACEMENT':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(PlacementMultipliersPLACEMENTEnum),
-          ) as PlacementMultipliersPLACEMENTEnum;
+            specifiedType: const FullType.nullable(PlacementType),
+          ) as PlacementType?;
+          if (valueDes == null) continue;
           result.PLACEMENT = valueDes;
           break;
         default:
@@ -106,22 +109,5 @@ class _$PlacementMultipliersSerializer implements PrimitiveSerializer<PlacementM
     );
     return result.build();
   }
-}
-
-class PlacementMultipliersPLACEMENTEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'SEARCH')
-  static const PlacementMultipliersPLACEMENTEnum SEARCH = _$placementMultipliersPLACEMENTEnum_SEARCH;
-  @BuiltValueEnumConst(wireName: r'BROWSE')
-  static const PlacementMultipliersPLACEMENTEnum BROWSE = _$placementMultipliersPLACEMENTEnum_BROWSE;
-  @BuiltValueEnumConst(wireName: r'RELATED_PINS')
-  static const PlacementMultipliersPLACEMENTEnum RELATED_PINS = _$placementMultipliersPLACEMENTEnum_RELATED_PINS;
-
-  static Serializer<PlacementMultipliersPLACEMENTEnum> get serializer => _$placementMultipliersPLACEMENTEnumSerializer;
-
-  const PlacementMultipliersPLACEMENTEnum._(String name): super(name);
-
-  static BuiltSet<PlacementMultipliersPLACEMENTEnum> get values => _$placementMultipliersPLACEMENTEnumValues;
-  static PlacementMultipliersPLACEMENTEnum valueOf(String name) => _$placementMultipliersPLACEMENTEnumValueOf(name);
 }
 

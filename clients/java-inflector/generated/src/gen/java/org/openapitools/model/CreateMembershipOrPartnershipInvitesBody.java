@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.BusinessRoleForInvite;
 import org.openapitools.model.InviteType;
 
 
@@ -18,43 +19,10 @@ import org.openapitools.model.InviteType;
  **/
 
 @ApiModel(description = "Body to be used on path to send Members or Partners Invite or Request")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CreateMembershipOrPartnershipInvitesBody   {
-  /**
-   * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-   */
-  public enum BusinessRoleEnum {
-    EMPLOYEE("EMPLOYEE"),
-    
-    BIZ_ADMIN("BIZ_ADMIN"),
-    
-    PARTNER("PARTNER");
-
-    private String value;
-
-    BusinessRoleEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static BusinessRoleEnum fromValue(String text) {
-      for (BusinessRoleEnum b : BusinessRoleEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
   @JsonProperty("business_role")
-  private BusinessRoleEnum businessRole;
+  private BusinessRoleForInvite businessRole;
 
   @JsonProperty("invite_type")
   private InviteType inviteType;
@@ -66,20 +34,19 @@ public class CreateMembershipOrPartnershipInvitesBody   {
   private List<String> partners = null;
 
   /**
-   * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
    **/
-  public CreateMembershipOrPartnershipInvitesBody businessRole(BusinessRoleEnum businessRole) {
+  public CreateMembershipOrPartnershipInvitesBody businessRole(BusinessRoleForInvite businessRole) {
     this.businessRole = businessRole;
     return this;
   }
 
   
-  @ApiModelProperty(example = "BIZ_ADMIN", required = true, value = "The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.")
+  @ApiModelProperty(example = "BIZ_ADMIN", required = true, value = "")
   @JsonProperty("business_role")
-  public BusinessRoleEnum getBusinessRole() {
+  public BusinessRoleForInvite getBusinessRole() {
     return businessRole;
   }
-  public void setBusinessRole(BusinessRoleEnum businessRole) {
+  public void setBusinessRole(BusinessRoleForInvite businessRole) {
     this.businessRole = businessRole;
   }
 
@@ -175,10 +142,7 @@ public class CreateMembershipOrPartnershipInvitesBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

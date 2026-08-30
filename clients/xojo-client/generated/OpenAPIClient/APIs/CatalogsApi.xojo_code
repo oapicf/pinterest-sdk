@@ -14,7 +14,7 @@ Protected Class CatalogsApi
 		  // Invokes CatalogsApiCallbackHandler.CatalogsAvailableFilterValuesCallback(CatalogsAvailableFilterValues) on completion. 
 		  //
 		  // - GET /catalogs/available_filter_values
-		  // - Get the available filter attributes and values associated with a given feed or catalog owned by the "operation user_account". - By default, the "operation user_account" is the token user_account. - <code>country</code>, <code>language</code>, and <code>feed_id</code> are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+		  // - Get the available filter attributes and values associated with a given feed or catalog owned by the "operation user_account". - By default, the "operation user_account" is the token user_account. - `country`, `language`, and `feed_id` are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -145,17 +145,17 @@ Protected Class CatalogsApi
 
 
 	#tag Method, Flags = &h0
-		Sub CatalogsCreate(, catalogsCreateRequest As OpenAPIClient.Models.CatalogsCreateRequest, Optional adAccountId As Xoson.O.OptionalString)
+		Sub CatalogsCreate(, catalogCreate As OpenAPIClient.Models.CatalogCreate, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation catalogs/create
 		  // Create catalog
 		  // - 
-		  // - parameter catalogsCreateRequest: (body) Request object used to created a feed. 
+		  // - parameter catalogCreate: (body)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes CatalogsApiCallbackHandler.CatalogsCreateCallback(Catalog) on completion. 
 		  //
 		  // - POST /catalogs
-		  // - Create a new catalog owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+		  // - Create a new catalog owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an ad_account_id (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -165,7 +165,7 @@ Protected Class CatalogsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(catalogsCreateRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(catalogCreate), "application/json")
 		  Dim localVarQueryParams As String = "?"
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
@@ -278,18 +278,18 @@ Protected Class CatalogsApi
 
 
 	#tag Method, Flags = &h0
-		Sub CatalogsList(, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, Optional adAccountId As Xoson.O.OptionalString)
+		Sub CatalogsList(, Optional adAccountId As Xoson.O.OptionalString, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation catalogs/list
 		  // List catalogs
 		  // - 
-		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
+		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes CatalogsApiCallbackHandler.CatalogsListCallback(CatalogsList200Response) on completion. 
 		  //
 		  // - GET /catalogs
-		  // - Fetch catalogs owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+		  // - Fetch catalogs owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an ad_account_id (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -301,11 +301,11 @@ Protected Class CatalogsApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
+		  
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
-		  
-		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
 		  

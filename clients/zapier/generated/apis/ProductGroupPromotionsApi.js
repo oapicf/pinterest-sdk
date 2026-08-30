@@ -1,11 +1,14 @@
 const samples = require('../samples/ProductGroupPromotionsApi');
-const Error = require('../models/Error');
+const EntityStatus = require('../models/EntityStatus');
 const Granularity = require('../models/Granularity');
-const ProductGroupAnalyticsResponse_inner = require('../models/ProductGroupAnalyticsResponse_inner');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
+const Pinterest.Lib.PaginationOrder = require('../models/Pinterest.Lib.PaginationOrder');
+const ProductGroupAnalyticsItems = require('../models/ProductGroupAnalyticsItems');
 const ProductGroupPromotion = require('../models/ProductGroupPromotion');
-const ProductGroupPromotionCreateRequest = require('../models/ProductGroupPromotionCreateRequest');
-const ProductGroupPromotionResponse = require('../models/ProductGroupPromotionResponse');
-const ProductGroupPromotionUpdateRequest = require('../models/ProductGroupPromotionUpdateRequest');
+const ProductGroupPromotions = require('../models/ProductGroupPromotions');
+const ProductGroupPromotionsCreate = require('../models/ProductGroupPromotionsCreate');
+const ProductGroupPromotionsUpdateWithRequiredBody = require('../models/ProductGroupPromotionsUpdateWithRequiredBody');
+const ReportingColumnSync = require('../models/ReportingColumnSync');
 const ReportingTimeZone = require('../models/ReportingTimeZone');
 const product_group_promotions_list_200_response = require('../models/product_group_promotions_list_200_response');
 const utils = require('../utils/utils');
@@ -27,10 +30,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...ProductGroupPromotionCreateRequest.fields(),
+                ...ProductGroupPromotionsCreate.fields(),
             ],
             outputFields: [
-                ...ProductGroupPromotionResponse.fields('', false),
+                ...ProductGroupPromotions.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -44,7 +47,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...ProductGroupPromotionCreateRequest.mapping(bundle),
+                        ...ProductGroupPromotionsCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -53,7 +56,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['ProductGroupPromotionResponseSample']
+            sample: samples['ProductGroupPromotionsSample']samples['ProductGroupPromotionsSample']
         }
     },
     productGroupPromotions/get: {
@@ -110,7 +113,7 @@ module.exports = {
         noun: 'product_group_promotions',
         display: {
             label: 'Get product group promotions',
-            description: 'List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  &lt;b&gt;Note:&lt;/b&gt; ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.',
+            description: 'List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  **Note:** ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.',
             hidden: false,
         },
         operation: {
@@ -121,6 +124,17 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
+                {
+                    key: 'bookmark',
+                    label: 'Cursor used to fetch the next page of items',
+                    type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
+                },
+                ....fields(),
                 {
                     key: 'product_group_promotion_ids',
                     label: 'List of Product group promotion Ids.',
@@ -134,25 +148,6 @@ module.exports = {
                 {
                     key: 'ad_group_id',
                     label: 'Ad group Id.',
-                    type: 'string',
-                },
-                {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
-                },
-                {
-                    key: 'order',
-                    label: 'The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.',
-                    type: 'string',
-                    choices: [
-                        'ASCENDING',
-                        'DESCENDING',
-                    ],
-                },
-                {
-                    key: 'bookmark',
-                    label: 'Cursor used to fetch the next page of items',
                     type: 'string',
                 },
             ],
@@ -169,12 +164,12 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
+                        'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
+                        'order': bundle.inputData?.['order'],
                         'product_group_promotion_ids': bundle.inputData?.['product_group_promotion_ids'],
                         'entity_statuses': bundle.inputData?.['entity_statuses'],
                         'ad_group_id': bundle.inputData?.['ad_group_id'],
-                        'page_size': bundle.inputData?.['page_size'],
-                        'order': bundle.inputData?.['order'],
-                        'bookmark': bundle.inputData?.['bookmark'],
                     },
                     body: {
                     },
@@ -204,10 +199,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...ProductGroupPromotionUpdateRequest.fields(),
+                ...ProductGroupPromotionsUpdateWithRequiredBody.fields(),
             ],
             outputFields: [
-                ...ProductGroupPromotionResponse.fields('', false),
+                ...ProductGroupPromotions.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -221,7 +216,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...ProductGroupPromotionUpdateRequest.mapping(bundle),
+                        ...ProductGroupPromotionsUpdateWithRequiredBody.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -230,7 +225,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['ProductGroupPromotionResponseSample']
+            sample: samples['ProductGroupPromotionsSample']
         }
     },
     productGroups/analytics: {
@@ -238,17 +233,11 @@ module.exports = {
         noun: 'product_group_promotions',
         display: {
             label: 'Get product group analytics',
-            description: 'Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.',
+            description: 'Get analytics for the specified product groups in the specified &#x60;ad_account_id&#x60;, filtered by the specified options.  - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.',
             hidden: false,
         },
         operation: {
             inputFields: [
-                {
-                    key: 'ad_account_id',
-                    label: 'Unique identifier of an ad account.',
-                    type: 'string',
-                    required: true,
-                },
                 {
                     key: 'start_date',
                     label: 'Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.',
@@ -268,14 +257,20 @@ module.exports = {
                 }
                 {
                     key: 'columns',
-                    label: 'Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned',
+                    label: 'Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.',
                     type: 'string',
                 }
                 ....fields(),
                 {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                    required: true,
+                },
+                {
                     key: 'click_window_days',
                     label: 'Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.',
-                    type: 'integer',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -287,8 +282,8 @@ module.exports = {
                 },
                 {
                     key: 'engagement_window_days',
-                    label: 'Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.',
-                    type: 'integer',
+                    label: 'Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -301,7 +296,7 @@ module.exports = {
                 {
                     key: 'view_window_days',
                     label: 'Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.',
-                    type: 'integer',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -354,7 +349,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['ProductGroupAnalyticsResponse_innerSample']
+            sample: samples['ProductGroupAnalyticsItemsSample']
         }
     },
 }

@@ -5,6 +5,7 @@ import play.api.libs.json._
 /**
   * Individual trending topic within an interest category
   * @param description Description of the trending topic
+  * @param id Unique identifier for the trending topic
   * @param percentGrowthMom Month-over-month growth percentage
   * @param pins Array of pin images related to this trend (up to 6)
   * @param relatedInterests List of related interest categories
@@ -12,10 +13,11 @@ import play.api.libs.json._
   * @param timeSeries Time series data showing trend values over time, with dates as keys and values as numeric
   * @param title Title of the trending topic
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class TrendingTopic(
   description: String,
-  percentGrowthMom: Int,
+  id: String,
+  percentGrowthMom: Option[Int],
   pins: List[TrendingPin],
   relatedInterests: List[String],
   relatedSearches: List[String],

@@ -22,7 +22,7 @@ class TargetingSpecOperationShoppingRetargeting {
 
   TargetingSpecOperationShoppingRetargetingOperationEnum operation;
 
-  List<TargetingSpecShoppingRetargeting>? values;
+  List<TargetingSpecShoppingRetargeting> values;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TargetingSpecOperationShoppingRetargeting &&
@@ -35,7 +35,7 @@ class TargetingSpecOperationShoppingRetargeting {
     // ignore: unnecessary_parenthesis
     (field.hashCode) +
     (operation.hashCode) +
-    (values == null ? 0 : values!.hashCode);
+    (values.hashCode);
 
   @override
   String toString() => 'TargetingSpecOperationShoppingRetargeting[field=$field, operation=$operation, values=$values]';
@@ -44,11 +44,7 @@ class TargetingSpecOperationShoppingRetargeting {
     final json = <String, dynamic>{};
       json[r'field'] = this.field;
       json[r'operation'] = this.operation;
-    if (this.values != null) {
       json[r'values'] = this.values;
-    } else {
-      json[r'values'] = null;
-    }
     return json;
   }
 
@@ -63,10 +59,12 @@ class TargetingSpecOperationShoppingRetargeting {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "TargetingSpecOperationShoppingRetargeting[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "TargetingSpecOperationShoppingRetargeting[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'field'), 'Required key "TargetingSpecOperationShoppingRetargeting[field]" is missing from JSON.');
+        assert(json[r'field'] != null, 'Required key "TargetingSpecOperationShoppingRetargeting[field]" has a null value in JSON.');
+        assert(json.containsKey(r'operation'), 'Required key "TargetingSpecOperationShoppingRetargeting[operation]" is missing from JSON.');
+        assert(json[r'operation'] != null, 'Required key "TargetingSpecOperationShoppingRetargeting[operation]" has a null value in JSON.');
+        assert(json.containsKey(r'values'), 'Required key "TargetingSpecOperationShoppingRetargeting[values]" is missing from JSON.');
+        assert(json[r'values'] != null, 'Required key "TargetingSpecOperationShoppingRetargeting[values]" has a null value in JSON.');
         return true;
       }());
 
@@ -128,27 +126,28 @@ class TargetingSpecOperationShoppingRetargeting {
 }
 
 
-class TargetingSpecOperationShoppingRetargetingFieldEnum {
-  /// Instantiate a new enum with the provided [value].
-  const TargetingSpecOperationShoppingRetargetingFieldEnum._(this.value);
+enum TargetingSpecOperationShoppingRetargetingFieldEnum {
+  SHOPPING_RETARGETING._(r'SHOPPING_RETARGETING'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const TargetingSpecOperationShoppingRetargetingFieldEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const SHOPPING_RETARGETING = TargetingSpecOperationShoppingRetargetingFieldEnum._(r'SHOPPING_RETARGETING');
-
-  /// List of all possible values in this [enum][TargetingSpecOperationShoppingRetargetingFieldEnum].
-  static const values = <TargetingSpecOperationShoppingRetargetingFieldEnum>[
-    SHOPPING_RETARGETING,
-  ];
-
+  /// Returns the instance of [TargetingSpecOperationShoppingRetargetingFieldEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static TargetingSpecOperationShoppingRetargetingFieldEnum? fromJson(dynamic value) => TargetingSpecOperationShoppingRetargetingFieldEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [TargetingSpecOperationShoppingRetargetingFieldEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<TargetingSpecOperationShoppingRetargetingFieldEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <TargetingSpecOperationShoppingRetargetingFieldEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -170,9 +169,10 @@ class TargetingSpecOperationShoppingRetargetingFieldEnumTypeTransformer {
 
   const TargetingSpecOperationShoppingRetargetingFieldEnumTypeTransformer._();
 
-  String encode(TargetingSpecOperationShoppingRetargetingFieldEnum data) => data.value;
+  String encode(TargetingSpecOperationShoppingRetargetingFieldEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a TargetingSpecOperationShoppingRetargetingFieldEnum.
+  /// Returns the instance of [TargetingSpecOperationShoppingRetargetingFieldEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -181,6 +181,9 @@ class TargetingSpecOperationShoppingRetargetingFieldEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   TargetingSpecOperationShoppingRetargetingFieldEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is TargetingSpecOperationShoppingRetargetingFieldEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'SHOPPING_RETARGETING': return TargetingSpecOperationShoppingRetargetingFieldEnum.SHOPPING_RETARGETING;
@@ -193,33 +196,34 @@ class TargetingSpecOperationShoppingRetargetingFieldEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [TargetingSpecOperationShoppingRetargetingFieldEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static TargetingSpecOperationShoppingRetargetingFieldEnumTypeTransformer? _instance;
 }
 
 
 
-class TargetingSpecOperationShoppingRetargetingOperationEnum {
-  /// Instantiate a new enum with the provided [value].
-  const TargetingSpecOperationShoppingRetargetingOperationEnum._(this.value);
+enum TargetingSpecOperationShoppingRetargetingOperationEnum {
+  SET._(r'SET'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const TargetingSpecOperationShoppingRetargetingOperationEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const SET = TargetingSpecOperationShoppingRetargetingOperationEnum._(r'SET');
-
-  /// List of all possible values in this [enum][TargetingSpecOperationShoppingRetargetingOperationEnum].
-  static const values = <TargetingSpecOperationShoppingRetargetingOperationEnum>[
-    SET,
-  ];
-
+  /// Returns the instance of [TargetingSpecOperationShoppingRetargetingOperationEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static TargetingSpecOperationShoppingRetargetingOperationEnum? fromJson(dynamic value) => TargetingSpecOperationShoppingRetargetingOperationEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [TargetingSpecOperationShoppingRetargetingOperationEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<TargetingSpecOperationShoppingRetargetingOperationEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <TargetingSpecOperationShoppingRetargetingOperationEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -241,9 +245,10 @@ class TargetingSpecOperationShoppingRetargetingOperationEnumTypeTransformer {
 
   const TargetingSpecOperationShoppingRetargetingOperationEnumTypeTransformer._();
 
-  String encode(TargetingSpecOperationShoppingRetargetingOperationEnum data) => data.value;
+  String encode(TargetingSpecOperationShoppingRetargetingOperationEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a TargetingSpecOperationShoppingRetargetingOperationEnum.
+  /// Returns the instance of [TargetingSpecOperationShoppingRetargetingOperationEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -252,6 +257,9 @@ class TargetingSpecOperationShoppingRetargetingOperationEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   TargetingSpecOperationShoppingRetargetingOperationEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is TargetingSpecOperationShoppingRetargetingOperationEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'SET': return TargetingSpecOperationShoppingRetargetingOperationEnum.SET;
@@ -264,7 +272,7 @@ class TargetingSpecOperationShoppingRetargetingOperationEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [TargetingSpecOperationShoppingRetargetingOperationEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static TargetingSpecOperationShoppingRetargetingOperationEnumTypeTransformer? _instance;
 }
 

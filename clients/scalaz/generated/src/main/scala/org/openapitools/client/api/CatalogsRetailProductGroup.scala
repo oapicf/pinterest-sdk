@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import CatalogsRetailProductGroup._
 
 case class CatalogsRetailProductGroup (
-  /* Catalog id pertaining to the retail product group. */
+  /* Catalog ID pertaining to the product group. */
   catalogId: String,
 catalogType: CatalogType,
 country: Option[String],

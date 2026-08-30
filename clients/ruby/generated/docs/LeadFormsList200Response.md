@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** |  | [optional] |
-| **items** | [**Array&lt;LeadFormResponse&gt;**](LeadFormResponse.md) |  |  |
+| **items** | [**Array&lt;LeadForm&gt;**](LeadForm.md) |  |  |
 
 ## Example
 

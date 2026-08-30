@@ -53,21 +53,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setField(std::string  field);
+	void setField(std::string field);
 	/*! \brief Get 
 	 */
 	std::string getOperation();
 
 	/*! \brief Set 
 	 */
-	void setOperation(std::string  operation);
+	void setOperation(std::string operation);
 	/*! \brief Get 
 	 */
 	std::list<TargetingSpecAgeBucket> getValues();
 
 	/*! \brief Set 
 	 */
-	void setValues(std::list <TargetingSpecAgeBucket> values);
+	void setValues(std::list<TargetingSpecAgeBucket> values);
 
 
     private:

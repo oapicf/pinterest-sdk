@@ -1,9 +1,10 @@
 package controllers;
 
-import apimodels.Error;
-import apimodels.PromotionCreateRequest;
-import apimodels.PromotionResponse;
-import apimodels.PromotionUpdateRequest;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.Promotion;
+import apimodels.PromotionBatchUpdate;
+import apimodels.PromotionCreate;
 import apimodels.PromotionsList200Response;
 import apimodels.PromotionsResponse;
 
@@ -32,12 +33,12 @@ public abstract class PromotionsApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result promotionsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid PromotionCreateRequest> promotionCreateRequest) throws Exception {
+    public Result promotionsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid PromotionCreate> promotionCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        PromotionsResponse obj = promotionsCreate(request, adAccountId, promotionCreateRequest);
+        PromotionsResponse obj = promotionsCreate(request, adAccountId, promotionCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -49,26 +50,14 @@ public abstract class PromotionsApiControllerImpInterface {
 
     }
 
-    public abstract PromotionsResponse promotionsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid PromotionCreateRequest> promotionCreateRequest) throws Exception;
+    public abstract PromotionsResponse promotionsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid PromotionCreate> promotionCreate) throws Exception;
 
-    public Result promotionsDeleteHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String promotionId) throws Exception {
+    public Result promotionsDeleteHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String promotionId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        promotionsDelete(request, adAccountId, promotionId);
-        return ok();
-
-    }
-
-    public abstract void promotionsDelete(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String promotionId) throws Exception;
-
-    public Result promotionsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String promotionId) throws Exception {
-        if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
-            return unauthorized();
-        }
-
-        PromotionResponse obj = promotionsGet(request, adAccountId, promotionId);
+        Promotion obj = promotionsDelete(request, promotionId, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -80,14 +69,14 @@ public abstract class PromotionsApiControllerImpInterface {
 
     }
 
-    public abstract PromotionResponse promotionsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String promotionId) throws Exception;
+    public abstract Promotion promotionsDelete(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String promotionId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result promotionsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception {
+    public Result promotionsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String promotionId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        PromotionsList200Response obj = promotionsList(request, adAccountId, pageSize, order, bookmark);
+        Promotion obj = promotionsGet(request, promotionId, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -99,14 +88,14 @@ public abstract class PromotionsApiControllerImpInterface {
 
     }
 
-    public abstract PromotionsList200Response promotionsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception;
+    public abstract Promotion promotionsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String promotionId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result promotionsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid PromotionUpdateRequest> promotionUpdateRequest) throws Exception {
+    public Result promotionsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        PromotionsResponse obj = promotionsUpdate(request, adAccountId, promotionUpdateRequest);
+        PromotionsList200Response obj = promotionsList(request, adAccountId, bookmark, pageSize, order);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -118,6 +107,25 @@ public abstract class PromotionsApiControllerImpInterface {
 
     }
 
-    public abstract PromotionsResponse promotionsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid PromotionUpdateRequest> promotionUpdateRequest) throws Exception;
+    public abstract PromotionsList200Response promotionsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order) throws Exception;
+
+    public Result promotionsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid PromotionBatchUpdate> promotionBatchUpdate) throws Exception {
+        if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
+            return unauthorized();
+        }
+
+        PromotionsResponse obj = promotionsUpdate(request, adAccountId, promotionBatchUpdate);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract PromotionsResponse promotionsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid PromotionBatchUpdate> promotionBatchUpdate) throws Exception;
 
 }

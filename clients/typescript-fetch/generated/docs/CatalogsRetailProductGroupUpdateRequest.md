@@ -26,7 +26,7 @@ const example = {
   "description": null,
   "filters": null,
   "locale": null,
-  "name": null,
+  "name": Most Popular,
 } satisfies CatalogsRetailProductGroupUpdateRequest
 
 console.log(example)

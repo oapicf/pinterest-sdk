@@ -7,12 +7,11 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale = openapi_server.resourceTypes.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
   CatalogsFeedCredentials = openapi_server.resourceTypes.CatalogsFeedCredentials
   CatalogsFeedProcessingSchedule = openapi_server.resourceTypes.CatalogsFeedProcessingSchedule
-  CatalogsFeedsCreateRequestDefaultLocale = openapi_server.resourceTypes.CatalogsFeedsCreateRequestDefaultLocale
   CatalogsFormat = openapi_server.resourceTypes.CatalogsFormat
   CatalogsStatus = openapi_server.resourceTypes.CatalogsStatus
-  CatalogsType = openapi_server.resourceTypes.CatalogsType
   Country = openapi_server.resourceTypes.Country
   NullableCurrency = openapi_server.resourceTypes.NullableCurrency
   ProductAvailabilityType = openapi_server.resourceTypes.ProductAvailabilityType
@@ -27,12 +26,13 @@ resourceTypes {
     properties {
         catalog_id {
           type =  string
-          description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect."
+          description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type."
           optional = false
         }
         catalog_type {
-          type = CatalogsType
+          type =  string
           description = ""
+          enum = ["RETAIL"]
           optional = true
         }
         credentials {
@@ -56,7 +56,7 @@ resourceTypes {
           optional = false
         }
         default_locale {
-          type = CatalogsFeedsCreateRequestDefaultLocale
+          type = CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
           description = ""
           optional = true
         }

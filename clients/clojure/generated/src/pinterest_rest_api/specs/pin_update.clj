@@ -1,6 +1,7 @@
 (ns pinterest-rest-api.specs.pin-update
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
+            [pinterest-rest-api.specs.ai-disclosures-update :refer :all]
             [pinterest-rest-api.specs.carousel-slot :refer :all]
             )
   (:import (java.io File)))
@@ -8,6 +9,7 @@
 
 (def pin-update-data
   {
+   (ds/opt :ai_disclosures) ai-disclosures-update-spec
    (ds/opt :alt_text) string?
    (ds/opt :board_id) string?
    (ds/opt :board_section_id) string?

@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CampaignAdPreviewDelete200ResponseInnerStatus",
+  "fields": [
+    {
+      "name": "statusCode",
+      "type": {
+        "type": "enum",
+        "name": "CampaignAdPreviewDelete200ResponseInnerStatus_statusCode",
+        "symbols": [
+          "_204"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "code",
+      "type": "int",
+      "doc": ""
+    },
+    {
+      "name": "message",
+      "type": "string",
+      "doc": ""
+    }
+  ]
+
+}

@@ -1,22 +1,22 @@
 
 
-#include "Catalogs_retail_filter_values_map.h"
+#include "CatalogsRetailFilterValuesMap.h"
 
 using namespace Tiny;
 
-Catalogs_retail_filter_values_map::Catalogs_retail_filter_values_map()
+CatalogsRetailFilterValuesMap::CatalogsRetailFilterValuesMap()
 {
 	ad_image_tags = std::list<std::string>();
 	ad_video_tags = std::list<std::string>();
-	availability = std::list<std::string>();
+	availability = std::list<ProductAvailability>();
 	brand = std::list<std::string>();
-	condition = std::list<std::string>();
+	condition = std::list<ProductCondition>();
 	custom_label_0 = std::list<std::string>();
 	custom_label_1 = std::list<std::string>();
 	custom_label_2 = std::list<std::string>();
 	custom_label_3 = std::list<std::string>();
 	custom_label_4 = std::list<std::string>();
-	gender = std::list<std::string>();
+	gender = std::list<Gender>();
 	google_product_category_0 = std::list<std::string>();
 	google_product_category_1 = std::list<std::string>();
 	google_product_category_2 = std::list<std::string>();
@@ -24,7 +24,7 @@ Catalogs_retail_filter_values_map::Catalogs_retail_filter_values_map()
 	google_product_category_4 = std::list<std::string>();
 	google_product_category_5 = std::list<std::string>();
 	google_product_category_6 = std::list<std::string>();
-	media_type = std::list<std::string>();
+	media_type = std::list<MediaType>();
 	product_type_0 = std::list<std::string>();
 	product_type_1 = std::list<std::string>();
 	product_type_2 = std::list<std::string>();
@@ -32,18 +32,18 @@ Catalogs_retail_filter_values_map::Catalogs_retail_filter_values_map()
 	product_type_4 = std::list<std::string>();
 }
 
-Catalogs_retail_filter_values_map::Catalogs_retail_filter_values_map(std::string jsonString)
+CatalogsRetailFilterValuesMap::CatalogsRetailFilterValuesMap(std::string jsonString)
 {
 	this->fromJson(jsonString);
 }
 
-Catalogs_retail_filter_values_map::~Catalogs_retail_filter_values_map()
+CatalogsRetailFilterValuesMap::~CatalogsRetailFilterValuesMap()
 {
 
 }
 
 void
-Catalogs_retail_filter_values_map::fromJson(std::string jsonObj)
+CatalogsRetailFilterValuesMap::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
@@ -98,13 +98,13 @@ Catalogs_retail_filter_values_map::fromJson(std::string jsonObj)
         bourne::json value = object[availabilityKey];
 
 
-        std::list<std::string> availability_list;
-        std::string element;
+        std::list<ProductAvailability> availability_list;
+        ProductAvailability element;
         for(auto& var : value.array_range())
         {
 
-            jsonToValue(&element, var, "std::string");
 
+            element.fromJson(var.dump());
 
             availability_list.push_back(element);
         }
@@ -142,13 +142,13 @@ Catalogs_retail_filter_values_map::fromJson(std::string jsonObj)
         bourne::json value = object[conditionKey];
 
 
-        std::list<std::string> condition_list;
-        std::string element;
+        std::list<ProductCondition> condition_list;
+        ProductCondition element;
         for(auto& var : value.array_range())
         {
 
-            jsonToValue(&element, var, "std::string");
 
+            element.fromJson(var.dump());
 
             condition_list.push_back(element);
         }
@@ -274,13 +274,13 @@ Catalogs_retail_filter_values_map::fromJson(std::string jsonObj)
         bourne::json value = object[genderKey];
 
 
-        std::list<std::string> gender_list;
-        std::string element;
+        std::list<Gender> gender_list;
+        Gender element;
         for(auto& var : value.array_range())
         {
 
-            jsonToValue(&element, var, "std::string");
 
+            element.fromJson(var.dump());
 
             gender_list.push_back(element);
         }
@@ -450,13 +450,13 @@ Catalogs_retail_filter_values_map::fromJson(std::string jsonObj)
         bourne::json value = object[media_typeKey];
 
 
-        std::list<std::string> media_type_list;
-        std::string element;
+        std::list<MediaType> media_type_list;
+        MediaType element;
         for(auto& var : value.array_range())
         {
 
-            jsonToValue(&element, var, "std::string");
 
+            element.fromJson(var.dump());
 
             media_type_list.push_back(element);
         }
@@ -579,7 +579,7 @@ Catalogs_retail_filter_values_map::fromJson(std::string jsonObj)
 }
 
 bourne::json
-Catalogs_retail_filter_values_map::toJson()
+CatalogsRetailFilterValuesMap::toJson()
 {
     bourne::json object = bourne::json::object();
 
@@ -618,16 +618,15 @@ Catalogs_retail_filter_values_map::toJson()
 
 
 
-    std::list<std::string> availability_list = getAvailability();
+    std::list<ProductAvailability> availability_list = getAvailability();
     bourne::json availability_arr = bourne::json::array();
 
     for(auto& var : availability_list)
     {
-        availability_arr.append(var);
+        ProductAvailability obj = var;
+        availability_arr.append(obj.toJson());
     }
     object["availability"] = availability_arr;
-
-
 
 
 
@@ -650,16 +649,15 @@ Catalogs_retail_filter_values_map::toJson()
 
 
 
-    std::list<std::string> condition_list = getCondition();
+    std::list<ProductCondition> condition_list = getCondition();
     bourne::json condition_arr = bourne::json::array();
 
     for(auto& var : condition_list)
     {
-        condition_arr.append(var);
+        ProductCondition obj = var;
+        condition_arr.append(obj.toJson());
     }
     object["condition"] = condition_arr;
-
-
 
 
 
@@ -746,16 +744,15 @@ Catalogs_retail_filter_values_map::toJson()
 
 
 
-    std::list<std::string> gender_list = getGender();
+    std::list<Gender> gender_list = getGender();
     bourne::json gender_arr = bourne::json::array();
 
     for(auto& var : gender_list)
     {
-        gender_arr.append(var);
+        Gender obj = var;
+        gender_arr.append(obj.toJson());
     }
     object["gender"] = gender_arr;
-
-
 
 
 
@@ -874,16 +871,15 @@ Catalogs_retail_filter_values_map::toJson()
 
 
 
-    std::list<std::string> media_type_list = getMediaType();
+    std::list<MediaType> media_type_list = getMediaType();
     bourne::json media_type_arr = bourne::json::array();
 
     for(auto& var : media_type_list)
     {
-        media_type_arr.append(var);
+        MediaType obj = var;
+        media_type_arr.append(obj.toJson());
     }
     object["media_type"] = media_type_arr;
-
-
 
 
 
@@ -973,289 +969,289 @@ Catalogs_retail_filter_values_map::toJson()
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getAdImageTags()
+CatalogsRetailFilterValuesMap::getAdImageTags()
 {
 	return ad_image_tags;
 }
 
 void
-Catalogs_retail_filter_values_map::setAdImageTags(std::list <std::string> ad_image_tags)
+CatalogsRetailFilterValuesMap::setAdImageTags(std::list<std::string> ad_image_tags)
 {
 	this->ad_image_tags = ad_image_tags;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getAdVideoTags()
+CatalogsRetailFilterValuesMap::getAdVideoTags()
 {
 	return ad_video_tags;
 }
 
 void
-Catalogs_retail_filter_values_map::setAdVideoTags(std::list <std::string> ad_video_tags)
+CatalogsRetailFilterValuesMap::setAdVideoTags(std::list<std::string> ad_video_tags)
 {
 	this->ad_video_tags = ad_video_tags;
 }
 
-std::list<std::string>
-Catalogs_retail_filter_values_map::getAvailability()
+std::list<ProductAvailability>
+CatalogsRetailFilterValuesMap::getAvailability()
 {
 	return availability;
 }
 
 void
-Catalogs_retail_filter_values_map::setAvailability(std::list <std::string> availability)
+CatalogsRetailFilterValuesMap::setAvailability(std::list<ProductAvailability> availability)
 {
 	this->availability = availability;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getBrand()
+CatalogsRetailFilterValuesMap::getBrand()
 {
 	return brand;
 }
 
 void
-Catalogs_retail_filter_values_map::setBrand(std::list <std::string> brand)
+CatalogsRetailFilterValuesMap::setBrand(std::list<std::string> brand)
 {
 	this->brand = brand;
 }
 
-std::list<std::string>
-Catalogs_retail_filter_values_map::getCondition()
+std::list<ProductCondition>
+CatalogsRetailFilterValuesMap::getCondition()
 {
 	return condition;
 }
 
 void
-Catalogs_retail_filter_values_map::setCondition(std::list <std::string> condition)
+CatalogsRetailFilterValuesMap::setCondition(std::list<ProductCondition> condition)
 {
 	this->condition = condition;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getCustomLabel0()
+CatalogsRetailFilterValuesMap::getCustomLabel0()
 {
 	return custom_label_0;
 }
 
 void
-Catalogs_retail_filter_values_map::setCustomLabel0(std::list <std::string> custom_label_0)
+CatalogsRetailFilterValuesMap::setCustomLabel0(std::list<std::string> custom_label_0)
 {
 	this->custom_label_0 = custom_label_0;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getCustomLabel1()
+CatalogsRetailFilterValuesMap::getCustomLabel1()
 {
 	return custom_label_1;
 }
 
 void
-Catalogs_retail_filter_values_map::setCustomLabel1(std::list <std::string> custom_label_1)
+CatalogsRetailFilterValuesMap::setCustomLabel1(std::list<std::string> custom_label_1)
 {
 	this->custom_label_1 = custom_label_1;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getCustomLabel2()
+CatalogsRetailFilterValuesMap::getCustomLabel2()
 {
 	return custom_label_2;
 }
 
 void
-Catalogs_retail_filter_values_map::setCustomLabel2(std::list <std::string> custom_label_2)
+CatalogsRetailFilterValuesMap::setCustomLabel2(std::list<std::string> custom_label_2)
 {
 	this->custom_label_2 = custom_label_2;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getCustomLabel3()
+CatalogsRetailFilterValuesMap::getCustomLabel3()
 {
 	return custom_label_3;
 }
 
 void
-Catalogs_retail_filter_values_map::setCustomLabel3(std::list <std::string> custom_label_3)
+CatalogsRetailFilterValuesMap::setCustomLabel3(std::list<std::string> custom_label_3)
 {
 	this->custom_label_3 = custom_label_3;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getCustomLabel4()
+CatalogsRetailFilterValuesMap::getCustomLabel4()
 {
 	return custom_label_4;
 }
 
 void
-Catalogs_retail_filter_values_map::setCustomLabel4(std::list <std::string> custom_label_4)
+CatalogsRetailFilterValuesMap::setCustomLabel4(std::list<std::string> custom_label_4)
 {
 	this->custom_label_4 = custom_label_4;
 }
 
-std::list<std::string>
-Catalogs_retail_filter_values_map::getGender()
+std::list<Gender>
+CatalogsRetailFilterValuesMap::getGender()
 {
 	return gender;
 }
 
 void
-Catalogs_retail_filter_values_map::setGender(std::list <std::string> gender)
+CatalogsRetailFilterValuesMap::setGender(std::list<Gender> gender)
 {
 	this->gender = gender;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getGoogleProductCategory0()
+CatalogsRetailFilterValuesMap::getGoogleProductCategory0()
 {
 	return google_product_category_0;
 }
 
 void
-Catalogs_retail_filter_values_map::setGoogleProductCategory0(std::list <std::string> google_product_category_0)
+CatalogsRetailFilterValuesMap::setGoogleProductCategory0(std::list<std::string> google_product_category_0)
 {
 	this->google_product_category_0 = google_product_category_0;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getGoogleProductCategory1()
+CatalogsRetailFilterValuesMap::getGoogleProductCategory1()
 {
 	return google_product_category_1;
 }
 
 void
-Catalogs_retail_filter_values_map::setGoogleProductCategory1(std::list <std::string> google_product_category_1)
+CatalogsRetailFilterValuesMap::setGoogleProductCategory1(std::list<std::string> google_product_category_1)
 {
 	this->google_product_category_1 = google_product_category_1;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getGoogleProductCategory2()
+CatalogsRetailFilterValuesMap::getGoogleProductCategory2()
 {
 	return google_product_category_2;
 }
 
 void
-Catalogs_retail_filter_values_map::setGoogleProductCategory2(std::list <std::string> google_product_category_2)
+CatalogsRetailFilterValuesMap::setGoogleProductCategory2(std::list<std::string> google_product_category_2)
 {
 	this->google_product_category_2 = google_product_category_2;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getGoogleProductCategory3()
+CatalogsRetailFilterValuesMap::getGoogleProductCategory3()
 {
 	return google_product_category_3;
 }
 
 void
-Catalogs_retail_filter_values_map::setGoogleProductCategory3(std::list <std::string> google_product_category_3)
+CatalogsRetailFilterValuesMap::setGoogleProductCategory3(std::list<std::string> google_product_category_3)
 {
 	this->google_product_category_3 = google_product_category_3;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getGoogleProductCategory4()
+CatalogsRetailFilterValuesMap::getGoogleProductCategory4()
 {
 	return google_product_category_4;
 }
 
 void
-Catalogs_retail_filter_values_map::setGoogleProductCategory4(std::list <std::string> google_product_category_4)
+CatalogsRetailFilterValuesMap::setGoogleProductCategory4(std::list<std::string> google_product_category_4)
 {
 	this->google_product_category_4 = google_product_category_4;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getGoogleProductCategory5()
+CatalogsRetailFilterValuesMap::getGoogleProductCategory5()
 {
 	return google_product_category_5;
 }
 
 void
-Catalogs_retail_filter_values_map::setGoogleProductCategory5(std::list <std::string> google_product_category_5)
+CatalogsRetailFilterValuesMap::setGoogleProductCategory5(std::list<std::string> google_product_category_5)
 {
 	this->google_product_category_5 = google_product_category_5;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getGoogleProductCategory6()
+CatalogsRetailFilterValuesMap::getGoogleProductCategory6()
 {
 	return google_product_category_6;
 }
 
 void
-Catalogs_retail_filter_values_map::setGoogleProductCategory6(std::list <std::string> google_product_category_6)
+CatalogsRetailFilterValuesMap::setGoogleProductCategory6(std::list<std::string> google_product_category_6)
 {
 	this->google_product_category_6 = google_product_category_6;
 }
 
-std::list<std::string>
-Catalogs_retail_filter_values_map::getMediaType()
+std::list<MediaType>
+CatalogsRetailFilterValuesMap::getMediaType()
 {
 	return media_type;
 }
 
 void
-Catalogs_retail_filter_values_map::setMediaType(std::list <std::string> media_type)
+CatalogsRetailFilterValuesMap::setMediaType(std::list<MediaType> media_type)
 {
 	this->media_type = media_type;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getProductType0()
+CatalogsRetailFilterValuesMap::getProductType0()
 {
 	return product_type_0;
 }
 
 void
-Catalogs_retail_filter_values_map::setProductType0(std::list <std::string> product_type_0)
+CatalogsRetailFilterValuesMap::setProductType0(std::list<std::string> product_type_0)
 {
 	this->product_type_0 = product_type_0;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getProductType1()
+CatalogsRetailFilterValuesMap::getProductType1()
 {
 	return product_type_1;
 }
 
 void
-Catalogs_retail_filter_values_map::setProductType1(std::list <std::string> product_type_1)
+CatalogsRetailFilterValuesMap::setProductType1(std::list<std::string> product_type_1)
 {
 	this->product_type_1 = product_type_1;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getProductType2()
+CatalogsRetailFilterValuesMap::getProductType2()
 {
 	return product_type_2;
 }
 
 void
-Catalogs_retail_filter_values_map::setProductType2(std::list <std::string> product_type_2)
+CatalogsRetailFilterValuesMap::setProductType2(std::list<std::string> product_type_2)
 {
 	this->product_type_2 = product_type_2;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getProductType3()
+CatalogsRetailFilterValuesMap::getProductType3()
 {
 	return product_type_3;
 }
 
 void
-Catalogs_retail_filter_values_map::setProductType3(std::list <std::string> product_type_3)
+CatalogsRetailFilterValuesMap::setProductType3(std::list<std::string> product_type_3)
 {
 	this->product_type_3 = product_type_3;
 }
 
 std::list<std::string>
-Catalogs_retail_filter_values_map::getProductType4()
+CatalogsRetailFilterValuesMap::getProductType4()
 {
 	return product_type_4;
 }
 
 void
-Catalogs_retail_filter_values_map::setProductType4(std::list <std::string> product_type_4)
+CatalogsRetailFilterValuesMap::setProductType4(std::list<std::string> product_type_4)
 {
 	this->product_type_4 = product_type_4;
 }

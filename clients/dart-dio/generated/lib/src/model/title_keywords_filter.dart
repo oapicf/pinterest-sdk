@@ -74,7 +74,7 @@ class _$TitleKeywordsFilterSerializer implements PrimitiveSerializer<TitleKeywor
             value,
             specifiedType: const FullType(CatalogsProductGroupMultipleStringCriteria),
           ) as CatalogsProductGroupMultipleStringCriteria;
-          result.TITLE_KEYWORDS = valueDes;
+          result.TITLE_KEYWORDS.replace(valueDes);
           break;
         default:
           unhandled.add(key);

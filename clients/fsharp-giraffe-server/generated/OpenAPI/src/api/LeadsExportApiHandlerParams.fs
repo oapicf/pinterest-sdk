@@ -1,9 +1,9 @@
 namespace OpenAPI
 
-open OpenAPI.Model.Error
-open OpenAPI.Model.LeadsExportCreateRequest
-open OpenAPI.Model.LeadsExportCreateResponse
 open OpenAPI.Model.LeadsExportResponseData
+open OpenAPI.Model.LeadsExports
+open OpenAPI.Model.LeadsExportsCreate
+open OpenAPI.Model.PinterestLibError
 open System.Collections.Generic
 open System
 
@@ -18,25 +18,50 @@ module LeadsExportApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type LeadsExportCreateBodyParams = LeadsExportCreateRequest
+    type LeadsExportCreateBodyParams = LeadsExportsCreate
     //#endregion
 
 
     type LeadsExportCreateStatusCode200Response = {
-      content:LeadsExportCreateResponse;
+      content:LeadsExports;
+      
+    }
+
+    type LeadsExportCreateStatusCode201Response = {
+      content:LeadsExports;
       
     }
 
     type LeadsExportCreateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type LeadsExportCreateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type LeadsExportCreateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type LeadsExportCreateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type LeadsExportCreateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type LeadsExportCreateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type LeadsExportCreateResult = LeadsExportCreateStatusCode200 of LeadsExportCreateStatusCode200Response|LeadsExportCreateStatusCode400 of LeadsExportCreateStatusCode400Response|LeadsExportCreateDefaultStatusCode of LeadsExportCreateDefaultStatusCodeResponse
+    type LeadsExportCreateResult = LeadsExportCreateStatusCode200 of LeadsExportCreateStatusCode200Response|LeadsExportCreateStatusCode201 of LeadsExportCreateStatusCode201Response|LeadsExportCreateStatusCode400 of LeadsExportCreateStatusCode400Response|LeadsExportCreateStatusCode401 of LeadsExportCreateStatusCode401Response|LeadsExportCreateStatusCode403 of LeadsExportCreateStatusCode403Response|LeadsExportCreateStatusCode404 of LeadsExportCreateStatusCode404Response|LeadsExportCreateStatusCode429 of LeadsExportCreateStatusCode429Response|LeadsExportCreateDefaultStatusCode of LeadsExportCreateDefaultStatusCodeResponse
 
     type LeadsExportCreateArgs = {
       pathParams:LeadsExportCreatePathParams;
@@ -58,20 +83,35 @@ module LeadsExportApiHandlerParams =
     }
 
     type LeadsExportGetStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type LeadsExportGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type LeadsExportGetStatusCode403Response = {
+      content:PinterestLibError;
       
     }
 
     type LeadsExportGetStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type LeadsExportGetStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type LeadsExportGetDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type LeadsExportGetResult = LeadsExportGetStatusCode200 of LeadsExportGetStatusCode200Response|LeadsExportGetStatusCode400 of LeadsExportGetStatusCode400Response|LeadsExportGetStatusCode404 of LeadsExportGetStatusCode404Response|LeadsExportGetDefaultStatusCode of LeadsExportGetDefaultStatusCodeResponse
+    type LeadsExportGetResult = LeadsExportGetStatusCode200 of LeadsExportGetStatusCode200Response|LeadsExportGetStatusCode400 of LeadsExportGetStatusCode400Response|LeadsExportGetStatusCode401 of LeadsExportGetStatusCode401Response|LeadsExportGetStatusCode403 of LeadsExportGetStatusCode403Response|LeadsExportGetStatusCode404 of LeadsExportGetStatusCode404Response|LeadsExportGetStatusCode429 of LeadsExportGetStatusCode429Response|LeadsExportGetDefaultStatusCode of LeadsExportGetDefaultStatusCodeResponse
 
     type LeadsExportGetArgs = {
       pathParams:LeadsExportGetPathParams;

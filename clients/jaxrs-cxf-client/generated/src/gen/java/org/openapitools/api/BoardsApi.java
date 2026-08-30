@@ -4,13 +4,14 @@ import org.openapitools.model.Board;
 import org.openapitools.model.BoardCreate;
 import org.openapitools.model.BoardPrivacyFilter;
 import org.openapitools.model.BoardSection;
+import org.openapitools.model.BoardSectionCreate;
+import org.openapitools.model.BoardSectionUpdateWithRequiredBody;
 import org.openapitools.model.BoardSectionsList200Response;
 import org.openapitools.model.BoardWithUpdatePrivacy;
 import org.openapitools.model.BoardWithUpdatePrivacyUpdate;
 import org.openapitools.model.BoardsList200Response;
 import org.openapitools.model.BoardsListPins200Response;
 import org.openapitools.model.CreativeType;
-import org.openapitools.model.Error;
 import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
@@ -46,13 +47,15 @@ public interface BoardsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Create board section", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "response", response = BoardSection.class),
-        @ApiResponse(code = 400, message = "Invalid board section parameters.", response = Error.class),
-        @ApiResponse(code = 403, message = "Not authorized to create board sections.", response = Error.class),
-        @ApiResponse(code = 409, message = "Could not get exclusive access to the board to create a new section.", response = Error.class),
-        @ApiResponse(code = 500, message = "Could not create a new board section.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public BoardSection boardSectionsCreate(@PathParam("board_id") String boardId, BoardSection boardSection, @QueryParam("ad_account_id") String adAccountId);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BoardSection.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = BoardSection.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public BoardSection boardSectionsCreate(@PathParam("board_id") String boardId, BoardSectionCreate boardSectionCreate, @QueryParam("ad_account_id") String adAccountId);
 
     /**
      * Delete board section
@@ -65,12 +68,15 @@ public interface BoardsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Delete board section", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 204, message = "Board section deleted successfully"),
-        @ApiResponse(code = 403, message = "Not authorized to delete board section.", response = Error.class),
-        @ApiResponse(code = 404, message = "Board section not found.", response = Error.class),
-        @ApiResponse(code = 409, message = "Board section conflict.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public void boardSectionsDelete(@PathParam("board_id") String boardId, @PathParam("section_id") String sectionId, @QueryParam("ad_account_id") String adAccountId);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BoardSection.class),
+        @ApiResponse(code = 204, message = "Resource deleted successfully."),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public BoardSection boardSectionsDelete(@PathParam("board_id") String boardId, @PathParam("section_id") String sectionId, @QueryParam("ad_account_id") String adAccountId);
 
     /**
      * List board sections
@@ -83,8 +89,13 @@ public interface BoardsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List board sections", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = BoardSectionsList200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BoardSectionsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public BoardSectionsList200Response boardSectionsList(@PathParam("board_id") String boardId, @QueryParam("ad_account_id") String adAccountId, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize);
 
     /**
@@ -98,11 +109,13 @@ public interface BoardsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List Pins on board section", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = BoardsListPins200Response.class),
-        @ApiResponse(code = 403, message = "Not authorized to access Pins on board section.", response = Error.class),
-        @ApiResponse(code = 404, message = "Board or section not found.", response = Error.class),
-        @ApiResponse(code = 409, message = "Board section conflict.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BoardsListPins200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public BoardsListPins200Response boardSectionsListPins(@PathParam("board_id") String boardId, @PathParam("section_id") String sectionId, @QueryParam("ad_account_id") String adAccountId, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize);
 
     /**
@@ -117,12 +130,14 @@ public interface BoardsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update board section", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = BoardSection.class),
-        @ApiResponse(code = 400, message = "Invalid board section parameters.", response = Error.class),
-        @ApiResponse(code = 403, message = "Not authorized to update board section.", response = Error.class),
-        @ApiResponse(code = 409, message = "Board section conflict.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public BoardSection boardSectionsUpdate(@PathParam("board_id") String boardId, @PathParam("section_id") String sectionId, BoardSection boardSection, @QueryParam("ad_account_id") String adAccountId);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BoardSection.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public BoardSection boardSectionsUpdate(@PathParam("board_id") String boardId, @PathParam("section_id") String sectionId, BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody, @QueryParam("ad_account_id") String adAccountId);
 
     /**
      * Create board
@@ -157,6 +172,7 @@ public interface BoardsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Delete board", tags={  })
     @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Board.class),
         @ApiResponse(code = 204, message = "Resource deleted successfully."),
         @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
         @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
@@ -164,7 +180,7 @@ public interface BoardsApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public void boardsDelete(@PathParam("board_id") String boardId, @QueryParam("ad_account_id") String adAccountId);
+    public Board boardsDelete(@PathParam("board_id") String boardId, @QueryParam("ad_account_id") String adAccountId);
 
     /**
      * Get board
@@ -217,10 +233,14 @@ public interface BoardsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List Pins on board", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = BoardsListPins200Response.class),
-        @ApiResponse(code = 404, message = "Board not found.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public BoardsListPins200Response boardsListPins(@PathParam("board_id") String boardId, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize, @QueryParam("creative_types") List<CreativeType> creativeTypes, @QueryParam("ad_account_id") String adAccountId, @QueryParam("pin_metrics") @DefaultValue("false")Boolean pinMetrics);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BoardsListPins200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public BoardsListPins200Response boardsListPins(@PathParam("board_id") String boardId, @QueryParam("creative_types") List<CreativeType> creativeTypes, @QueryParam("ad_account_id") String adAccountId, @QueryParam("pin_metrics") @DefaultValue("false")Boolean pinMetrics, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize);
 
     /**
      * Update board

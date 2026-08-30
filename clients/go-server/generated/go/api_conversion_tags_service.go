@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -97,22 +97,52 @@ func (s *ConversionTagsAPIService) OcpmEligibleConversionTagsGet(ctx context.Con
 	// TODO: Uncomment the next line to return response Response(200, map[string][]ConversionEventResponse{}) or use other options such as http.Ok ...
 	// return Response(200, map[string][]ConversionEventResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("OcpmEligibleConversionTagsGet method not implemented")
 }
 
 // PageVisitConversionTagsGet - Get page visit conversion tags
-func (s *ConversionTagsAPIService) PageVisitConversionTagsGet(ctx context.Context, adAccountId string, pageSize int32, order string, bookmark string) (ImplResponse, error) {
+func (s *ConversionTagsAPIService) PageVisitConversionTagsGet(ctx context.Context, adAccountId string, bookmark string, pageSize int32, order PinterestLibPaginationOrder) (ImplResponse, error) {
 	// TODO - update PageVisitConversionTagsGet with the required logic for this service method.
 	// Add api_conversion_tags_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, PageVisitConversionTagsGet200Response{}) or use other options such as http.Ok ...
 	// return Response(200, PageVisitConversionTagsGet200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("PageVisitConversionTagsGet method not implemented")
 }
@@ -125,8 +155,23 @@ func (s *ConversionTagsAPIService) ConversionTagsGet(ctx context.Context, adAcco
 	// TODO: Uncomment the next line to return response Response(200, ConversionTag{}) or use other options such as http.Ok ...
 	// return Response(200, ConversionTag{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("ConversionTagsGet method not implemented")
 }

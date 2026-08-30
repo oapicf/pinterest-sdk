@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -14,8 +15,9 @@ part 'video_metadata_with_item_type.g.dart';
 /// * [coverImageUrl] 
 /// * [duration] - Duration (in miliseconds). Field maybe null after creation due to video processing time.
 /// * [height] - Height (in pixels). Field maybe null after creation due to video processing time.
-/// * [itemType] 
+/// * [itemType] - Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
 /// * [videoUrl] - Video url (720p).  **Note:** This field is limited and not available to all apps.
+/// * [videoUrlHls] - Video url (HLS).  **Note:** This field is limited and not available to all apps.
 /// * [width] - Width (in pixels). Field maybe null after creation due to video processing time.
 @BuiltValue()
 abstract class VideoMetadataWithItemType implements Built<VideoMetadataWithItemType, VideoMetadataWithItemTypeBuilder> {
@@ -30,12 +32,18 @@ abstract class VideoMetadataWithItemType implements Built<VideoMetadataWithItemT
   @BuiltValueField(wireName: r'height')
   int? get height;
 
+  /// Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
   @BuiltValueField(wireName: r'item_type')
-  String? get itemType;
+  VideoMetadataWithItemTypeItemTypeEnum get itemType;
+  // enum itemTypeEnum {  video,  };
 
   /// Video url (720p).  **Note:** This field is limited and not available to all apps.
   @BuiltValueField(wireName: r'video_url')
   String? get videoUrl;
+
+  /// Video url (HLS).  **Note:** This field is limited and not available to all apps.
+  @BuiltValueField(wireName: r'video_url_hls')
+  String? get videoUrlHls;
 
   /// Width (in pixels). Field maybe null after creation due to video processing time.
   @BuiltValueField(wireName: r'width')
@@ -85,17 +93,22 @@ class _$VideoMetadataWithItemTypeSerializer implements PrimitiveSerializer<Video
         specifiedType: const FullType.nullable(int),
       );
     }
-    if (object.itemType != null) {
-      yield r'item_type';
-      yield serializers.serialize(
-        object.itemType,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'item_type';
+    yield serializers.serialize(
+      object.itemType,
+      specifiedType: const FullType(VideoMetadataWithItemTypeItemTypeEnum),
+    );
     if (object.videoUrl != null) {
       yield r'video_url';
       yield serializers.serialize(
         object.videoUrl,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.videoUrlHls != null) {
+      yield r'video_url_hls';
+      yield serializers.serialize(
+        object.videoUrlHls,
         specifiedType: const FullType.nullable(String),
       );
     }
@@ -132,8 +145,9 @@ class _$VideoMetadataWithItemTypeSerializer implements PrimitiveSerializer<Video
         case r'cover_image_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.coverImageUrl = valueDes;
           break;
         case r'duration':
@@ -155,8 +169,8 @@ class _$VideoMetadataWithItemTypeSerializer implements PrimitiveSerializer<Video
         case r'item_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType(VideoMetadataWithItemTypeItemTypeEnum),
+          ) as VideoMetadataWithItemTypeItemTypeEnum;
           result.itemType = valueDes;
           break;
         case r'video_url':
@@ -166,6 +180,14 @@ class _$VideoMetadataWithItemTypeSerializer implements PrimitiveSerializer<Video
           ) as String?;
           if (valueDes == null) continue;
           result.videoUrl = valueDes;
+          break;
+        case r'video_url_hls':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.videoUrlHls = valueDes;
           break;
         case r'width':
           final valueDes = serializers.deserialize(
@@ -202,5 +224,19 @@ class _$VideoMetadataWithItemTypeSerializer implements PrimitiveSerializer<Video
     );
     return result.build();
   }
+}
+
+class VideoMetadataWithItemTypeItemTypeEnum extends EnumClass {
+
+  /// Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
+  @BuiltValueEnumConst(wireName: r'video')
+  static const VideoMetadataWithItemTypeItemTypeEnum video = _$videoMetadataWithItemTypeItemTypeEnum_video;
+
+  static Serializer<VideoMetadataWithItemTypeItemTypeEnum> get serializer => _$videoMetadataWithItemTypeItemTypeEnumSerializer;
+
+  const VideoMetadataWithItemTypeItemTypeEnum._(String name): super(name);
+
+  static BuiltSet<VideoMetadataWithItemTypeItemTypeEnum> get values => _$videoMetadataWithItemTypeItemTypeEnumValues;
+  static VideoMetadataWithItemTypeItemTypeEnum valueOf(String name) => _$videoMetadataWithItemTypeItemTypeEnumValueOf(name);
 }
 

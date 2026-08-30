@@ -12,6 +12,7 @@
        'name' => binary(),
        'owner' => openapi_ad_account_owner:openapi_ad_account_owner(),
        'permissions' => list(),
+       'time_zone' => binary(),
        'updated_time' => integer()
      }.
 
@@ -22,6 +23,7 @@ encode(#{ 'country' := Country,
           'name' := Name,
           'owner' := Owner,
           'permissions' := Permissions,
+          'time_zone' := TimeZone,
           'updated_time' := UpdatedTime
         }) ->
     #{ 'country' => Country,
@@ -31,5 +33,6 @@ encode(#{ 'country' := Country,
        'name' => Name,
        'owner' => Owner,
        'permissions' => Permissions,
+       'time_zone' => TimeZone,
        'updated_time' => UpdatedTime
      }.

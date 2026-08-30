@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "LabelsResponse.h"
+#include "Label.h"
 #include <list>
 #include "Object.h"
 
@@ -56,15 +56,15 @@ public:
 	void setBookmark(std::string  bookmark);
 	/*! \brief Get 
 	 */
-	std::list<LabelsResponse> getItems();
+	std::list<Label> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <LabelsResponse> items);
+	void setItems(std::list <Label> items);
 
 private:
 	std::string bookmark;
-	std::list <LabelsResponse>items;
+	std::list <Label>items;
 	void __init();
 	void __cleanup();
 

@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "Catalogs_product_group_pricing_currency_criteria.h"
+#include "PriceFilterPrice.h"
 
 namespace Tiny {
 
@@ -48,15 +48,15 @@ public:
 
 	/*! \brief Get 
 	 */
-	Catalogs_product_group_pricing_currency_criteria getPRICE();
+	PriceFilterPrice getPRICE();
 
 	/*! \brief Set 
 	 */
-	void setPRICE(Catalogs_product_group_pricing_currency_criteria  pRICE);
+	void setPRICE(PriceFilterPrice pRICE);
 
 
     private:
-    Catalogs_product_group_pricing_currency_criteria pRICE;
+    PriceFilterPrice pRICE;
 };
 }
 

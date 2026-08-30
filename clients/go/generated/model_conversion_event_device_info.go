@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -33,7 +33,7 @@ type ConversionEventDeviceInfo struct {
 	// External storage size in GB
 	ExternalStorageSize *int32 `json:"external_storage_size,omitempty"`
 	// Device form factor
-	FormFactor *string `json:"form_factor,omitempty"`
+	FormFactor *FormFactor `json:"form_factor,omitempty"`
 	// Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release
 	KernelVersion *string `json:"kernel_version,omitempty"`
 	// List of user installed languages. ISO 639-1 format
@@ -43,9 +43,9 @@ type ConversionEventDeviceInfo struct {
 	// Device model name
 	Model *string `json:"model,omitempty"`
 	// Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-	NetworkType *string `json:"network_type,omitempty"`
+	NetworkType *NetworkType `json:"network_type,omitempty"`
 	// OS Family
-	OsFamily *string `json:"os_family,omitempty"`
+	OsFamily *OsFamily `json:"os_family,omitempty"`
 	// Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch
 	OsName *string `json:"os_name,omitempty"`
 	// Marketing name for the release version iOS: Dawn Android: Baklava MacOS: Sequoia Ubuntu Linux: Plucky Puffin
@@ -280,9 +280,9 @@ func (o *ConversionEventDeviceInfo) SetExternalStorageSize(v int32) {
 }
 
 // GetFormFactor returns the FormFactor field value if set, zero value otherwise.
-func (o *ConversionEventDeviceInfo) GetFormFactor() string {
+func (o *ConversionEventDeviceInfo) GetFormFactor() FormFactor {
 	if o == nil || IsNil(o.FormFactor) {
-		var ret string
+		var ret FormFactor
 		return ret
 	}
 	return *o.FormFactor
@@ -290,7 +290,7 @@ func (o *ConversionEventDeviceInfo) GetFormFactor() string {
 
 // GetFormFactorOk returns a tuple with the FormFactor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConversionEventDeviceInfo) GetFormFactorOk() (*string, bool) {
+func (o *ConversionEventDeviceInfo) GetFormFactorOk() (*FormFactor, bool) {
 	if o == nil || IsNil(o.FormFactor) {
 		return nil, false
 	}
@@ -306,8 +306,8 @@ func (o *ConversionEventDeviceInfo) HasFormFactor() bool {
 	return false
 }
 
-// SetFormFactor gets a reference to the given string and assigns it to the FormFactor field.
-func (o *ConversionEventDeviceInfo) SetFormFactor(v string) {
+// SetFormFactor gets a reference to the given FormFactor and assigns it to the FormFactor field.
+func (o *ConversionEventDeviceInfo) SetFormFactor(v FormFactor) {
 	o.FormFactor = &v
 }
 
@@ -440,9 +440,9 @@ func (o *ConversionEventDeviceInfo) SetModel(v string) {
 }
 
 // GetNetworkType returns the NetworkType field value if set, zero value otherwise.
-func (o *ConversionEventDeviceInfo) GetNetworkType() string {
+func (o *ConversionEventDeviceInfo) GetNetworkType() NetworkType {
 	if o == nil || IsNil(o.NetworkType) {
-		var ret string
+		var ret NetworkType
 		return ret
 	}
 	return *o.NetworkType
@@ -450,7 +450,7 @@ func (o *ConversionEventDeviceInfo) GetNetworkType() string {
 
 // GetNetworkTypeOk returns a tuple with the NetworkType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConversionEventDeviceInfo) GetNetworkTypeOk() (*string, bool) {
+func (o *ConversionEventDeviceInfo) GetNetworkTypeOk() (*NetworkType, bool) {
 	if o == nil || IsNil(o.NetworkType) {
 		return nil, false
 	}
@@ -466,15 +466,15 @@ func (o *ConversionEventDeviceInfo) HasNetworkType() bool {
 	return false
 }
 
-// SetNetworkType gets a reference to the given string and assigns it to the NetworkType field.
-func (o *ConversionEventDeviceInfo) SetNetworkType(v string) {
+// SetNetworkType gets a reference to the given NetworkType and assigns it to the NetworkType field.
+func (o *ConversionEventDeviceInfo) SetNetworkType(v NetworkType) {
 	o.NetworkType = &v
 }
 
 // GetOsFamily returns the OsFamily field value if set, zero value otherwise.
-func (o *ConversionEventDeviceInfo) GetOsFamily() string {
+func (o *ConversionEventDeviceInfo) GetOsFamily() OsFamily {
 	if o == nil || IsNil(o.OsFamily) {
-		var ret string
+		var ret OsFamily
 		return ret
 	}
 	return *o.OsFamily
@@ -482,7 +482,7 @@ func (o *ConversionEventDeviceInfo) GetOsFamily() string {
 
 // GetOsFamilyOk returns a tuple with the OsFamily field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConversionEventDeviceInfo) GetOsFamilyOk() (*string, bool) {
+func (o *ConversionEventDeviceInfo) GetOsFamilyOk() (*OsFamily, bool) {
 	if o == nil || IsNil(o.OsFamily) {
 		return nil, false
 	}
@@ -498,8 +498,8 @@ func (o *ConversionEventDeviceInfo) HasOsFamily() bool {
 	return false
 }
 
-// SetOsFamily gets a reference to the given string and assigns it to the OsFamily field.
-func (o *ConversionEventDeviceInfo) SetOsFamily(v string) {
+// SetOsFamily gets a reference to the given OsFamily and assigns it to the OsFamily field.
+func (o *ConversionEventDeviceInfo) SetOsFamily(v OsFamily) {
 	o.OsFamily = &v
 }
 

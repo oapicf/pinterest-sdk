@@ -19,14 +19,14 @@ typedef struct pinterest_lib_error_t pinterest_lib_error_t;
 
 
 typedef struct pinterest_lib_error_t {
-    int code; //numeric
+    int *code; //numeric
     char *message; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pinterest_lib_error_t;
 
 __attribute__((deprecated)) pinterest_lib_error_t *pinterest_lib_error_create(
-    int code,
+    int *code,
     char *message
 );
 

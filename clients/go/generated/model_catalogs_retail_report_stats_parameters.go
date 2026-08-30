@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &CatalogsRetailReportStatsParameters{}
 // CatalogsRetailReportStatsParameters Parameters for retail report
 type CatalogsRetailReportStatsParameters struct {
 	CatalogType string `json:"catalog_type"`
-	Report CatalogsHotelReportStatsParametersReport `json:"report"`
+	Report CatalogsRetailReportStatsParametersReport `json:"report"`
 }
 
 type _CatalogsRetailReportStatsParameters CatalogsRetailReportStatsParameters
@@ -32,7 +32,7 @@ type _CatalogsRetailReportStatsParameters CatalogsRetailReportStatsParameters
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailReportStatsParameters(catalogType string, report CatalogsHotelReportStatsParametersReport) *CatalogsRetailReportStatsParameters {
+func NewCatalogsRetailReportStatsParameters(catalogType string, report CatalogsRetailReportStatsParametersReport) *CatalogsRetailReportStatsParameters {
 	this := CatalogsRetailReportStatsParameters{}
 	this.CatalogType = catalogType
 	this.Report = report
@@ -72,9 +72,9 @@ func (o *CatalogsRetailReportStatsParameters) SetCatalogType(v string) {
 }
 
 // GetReport returns the Report field value
-func (o *CatalogsRetailReportStatsParameters) GetReport() CatalogsHotelReportStatsParametersReport {
+func (o *CatalogsRetailReportStatsParameters) GetReport() CatalogsRetailReportStatsParametersReport {
 	if o == nil {
-		var ret CatalogsHotelReportStatsParametersReport
+		var ret CatalogsRetailReportStatsParametersReport
 		return ret
 	}
 
@@ -83,7 +83,7 @@ func (o *CatalogsRetailReportStatsParameters) GetReport() CatalogsHotelReportSta
 
 // GetReportOk returns a tuple with the Report field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailReportStatsParameters) GetReportOk() (*CatalogsHotelReportStatsParametersReport, bool) {
+func (o *CatalogsRetailReportStatsParameters) GetReportOk() (*CatalogsRetailReportStatsParametersReport, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -91,7 +91,7 @@ func (o *CatalogsRetailReportStatsParameters) GetReportOk() (*CatalogsHotelRepor
 }
 
 // SetReport sets field value
-func (o *CatalogsRetailReportStatsParameters) SetReport(v CatalogsHotelReportStatsParametersReport) {
+func (o *CatalogsRetailReportStatsParameters) SetReport(v CatalogsRetailReportStatsParametersReport) {
 	o.Report = v
 }
 

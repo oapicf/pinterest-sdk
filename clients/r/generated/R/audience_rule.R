@@ -1,7 +1,7 @@
 #' Create a new AudienceRule
 #'
 #' @description
-#' JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.example.com\"], \"engager_type\": 1}<br>Learn more about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience\" target=\"_blank\">engagement audiences</a>.
+#' JSON object defining targeted audience users. Example rule formats per audience type:  CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}  ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" } (Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10. The targeted audience should be this % size across Pinterest.)  VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}} (Retention days should be 1-540. Retention applies to specific customers.)  ENGAGEMENT: {\"engagement_domain\": [\"www.example.com\"], \"engager_type\": 1} Learn more about [engagement audiences](/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience).
 #'
 #' @docType class
 #' @title AudienceRule
@@ -25,7 +25,7 @@
 #' @field prefill Optional for VISITOR `audience_type`. If `true`, the specified rule on existing engagement data is applied to pre-populate the audience. If `false`, the audience is empty at creation time. The default is `true`. character [optional]
 #' @field retention_days Number of days a Pinterest user remains in the audience. Optional for ENGAGEMENT and VISITOR `audience_type`. Accepted range is 1-540. Defaults to 180 if not specified. integer [optional]
 #' @field seed_id Audience ID(s). For ACTALIKE `audience_type`. list(character) [optional]
-#' @field url Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains].<br>Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\"<br>Example 2: \"url\": {\"contains\": \"/view_item/shoe\"} list(character) [optional]
+#' @field url Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains]. Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\" Example 2: \"url\": {\"contains\": \"/view_item/shoe\"} list(character) [optional]
 #' @field visitor_source_id The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -75,7 +75,7 @@ AudienceRule <- R6::R6Class(
     #' @param prefill Optional for VISITOR `audience_type`. If `true`, the specified rule on existing engagement data is applied to pre-populate the audience. If `false`, the audience is empty at creation time. The default is `true`.
     #' @param retention_days Number of days a Pinterest user remains in the audience. Optional for ENGAGEMENT and VISITOR `audience_type`. Accepted range is 1-540. Defaults to 180 if not specified.
     #' @param seed_id Audience ID(s). For ACTALIKE `audience_type`.
-    #' @param url Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains].<br>Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\"<br>Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}
+    #' @param url Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains]. Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\" Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}
     #' @param visitor_source_id The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`.
     #' @param ... Other optional arguments.
     initialize = function(`ad_account_id` = NULL, `ad_id` = NULL, `campaign_id` = NULL, `country` = NULL, `customer_list_id` = NULL, `engagement_domain` = NULL, `engagement_type` = NULL, `engager_type` = NULL, `event` = NULL, `event_data` = NULL, `event_source` = NULL, `ingestion_source` = NULL, `objective_type` = NULL, `percentage` = NULL, `pin_id` = NULL, `prefill` = NULL, `retention_days` = NULL, `seed_id` = NULL, `url` = NULL, `visitor_source_id` = NULL, ...) {
@@ -255,7 +255,7 @@ AudienceRule <- R6::R6Class(
       }
       if (!is.null(self$`event_data`)) {
         AudienceRuleObject[["event_data"]] <-
-          self$`event_data`$toSimpleType()
+          self$extractSimpleType(self$`event_data`)
       }
       if (!is.null(self$`event_source`)) {
         AudienceRuleObject[["event_source"]] <-
@@ -267,7 +267,7 @@ AudienceRule <- R6::R6Class(
       }
       if (!is.null(self$`objective_type`)) {
         AudienceRuleObject[["objective_type"]] <-
-          lapply(self$`objective_type`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`objective_type`)
       }
       if (!is.null(self$`percentage`)) {
         AudienceRuleObject[["percentage"]] <-
@@ -298,6 +298,29 @@ AudienceRule <- R6::R6Class(
           self$`visitor_source_id`
       }
       return(AudienceRuleObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

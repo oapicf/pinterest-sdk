@@ -6,8 +6,8 @@
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **about** | about | text |  | **kotlin.String** | Profile about description. |  [optional]
-**accountType** | account_type | text |  | [**account_type**](#AccountType) | Type of account |  [optional]
-**boardCount** | board_count | int |  | **kotlin.Int** | User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. |  [optional] [readonly]
+**accountType** | account_type | long |  | [**UserAccountType**](UserAccountType.md) | Type of account |  [optional] [foreignkey]
+**boardCount** | board_count | int |  | **kotlin.Int** |   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. |  [optional] [readonly]
 **businessName** | business_name | text |  | **kotlin.String** |  |  [optional]
 **followerCount** | follower_count | int |  | **kotlin.Int** | User account follower count. |  [optional] [readonly]
 **followingCount** | following_count | int |  | **kotlin.Int** | User account following count. |  [optional] [readonly]

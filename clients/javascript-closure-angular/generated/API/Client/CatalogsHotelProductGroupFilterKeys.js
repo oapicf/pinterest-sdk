@@ -6,7 +6,7 @@ goog.provide('API.Client.CatalogsHotelProductGroupFilterKeys');
 API.Client.CatalogsHotelProductGroupFilterKeys = function() {}
 
 /**
- * @type {!API.Client.catalogs_product_group_pricing_currency_criteria}
+ * @type {!API.Client.PriceFilterPrice}
  * @export
  */
 API.Client.CatalogsHotelProductGroupFilterKeys.prototype.PRICE;

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,10 +27,10 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
+import org.openapitools.client.models.CustomerListUpload
 import org.openapitools.client.models.CustomerListUploadCreateRequest
 import org.openapitools.client.models.CustomerListUploadCreateResponse
-import org.openapitools.client.models.CustomerListUploadResponse
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -44,17 +52,17 @@ open class CustomerListUploadsApi(basePath: kotlin.String = defaultBasePath, cli
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * POST /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads
      * Create customer list upload
-     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt;  &lt;p&gt;Create a customer list upload request for multipart S3 upload.&lt;/p&gt; &lt;p&gt;Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Please review the &lt;u&gt;&lt;a href&#x3D;\&quot;/docs/api/v5/customer_lists-update/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;update customer list endpoint&lt;/a&gt;&lt;/u&gt; documentation for additional information.&lt;/b&gt;&lt;/p&gt;
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUploadCreateRequest Parameters to create a customer list upload request
+     * Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUploadCreateRequest 
      * @return CustomerListUploadCreateResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -85,10 +93,10 @@ open class CustomerListUploadsApi(basePath: kotlin.String = defaultBasePath, cli
     /**
      * POST /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads
      * Create customer list upload
-     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt;  &lt;p&gt;Create a customer list upload request for multipart S3 upload.&lt;/p&gt; &lt;p&gt;Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Please review the &lt;u&gt;&lt;a href&#x3D;\&quot;/docs/api/v5/customer_lists-update/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;update customer list endpoint&lt;/a&gt;&lt;/u&gt; documentation for additional information.&lt;/b&gt;&lt;/p&gt;
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUploadCreateRequest Parameters to create a customer list upload request
+     * Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUploadCreateRequest 
      * @return ApiResponse<CustomerListUploadCreateResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -106,9 +114,9 @@ open class CustomerListUploadsApi(basePath: kotlin.String = defaultBasePath, cli
     /**
      * To obtain the request config of the operation customerListUploadsCreate
      *
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUploadCreateRequest Parameters to create a customer list upload request
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUploadCreateRequest 
      * @return RequestConfig
      */
     fun customerListUploadsCreateRequestConfig(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUploadCreateRequest: CustomerListUploadCreateRequest) : RequestConfig<CustomerListUploadCreateRequest> {
@@ -131,11 +139,11 @@ open class CustomerListUploadsApi(basePath: kotlin.String = defaultBasePath, cli
     /**
      * GET /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}
      * Get customer list upload
-     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Get the metadata for a given upload by its ID.&lt;/p&gt;
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUploadId Unique identifier of a customer list upload
-     * @return CustomerListUploadResponse
+     * Get the metadata for a given upload by its ID.
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUploadId Customer List Upload ID.
+     * @return CustomerListUpload
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -144,11 +152,11 @@ open class CustomerListUploadsApi(basePath: kotlin.String = defaultBasePath, cli
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun customerListUploadsGet(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUploadId: kotlin.String) : CustomerListUploadResponse {
+    fun customerListUploadsGet(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUploadId: kotlin.String) : CustomerListUpload {
         val localVarResponse = customerListUploadsGetWithHttpInfo(adAccountId = adAccountId, customerListId = customerListId, customerListUploadId = customerListUploadId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerListUploadResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerListUpload
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -165,20 +173,20 @@ open class CustomerListUploadsApi(basePath: kotlin.String = defaultBasePath, cli
     /**
      * GET /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}
      * Get customer list upload
-     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Get the metadata for a given upload by its ID.&lt;/p&gt;
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUploadId Unique identifier of a customer list upload
-     * @return ApiResponse<CustomerListUploadResponse?>
+     * Get the metadata for a given upload by its ID.
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUploadId Customer List Upload ID.
+     * @return ApiResponse<CustomerListUpload?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun customerListUploadsGetWithHttpInfo(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUploadId: kotlin.String) : ApiResponse<CustomerListUploadResponse?> {
+    fun customerListUploadsGetWithHttpInfo(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUploadId: kotlin.String) : ApiResponse<CustomerListUpload?> {
         val localVariableConfig = customerListUploadsGetRequestConfig(adAccountId = adAccountId, customerListId = customerListId, customerListUploadId = customerListUploadId)
 
-        return request<Unit, CustomerListUploadResponse>(
+        return request<Unit, CustomerListUpload>(
             localVariableConfig
         )
     }
@@ -186,9 +194,9 @@ open class CustomerListUploadsApi(basePath: kotlin.String = defaultBasePath, cli
     /**
      * To obtain the request config of the operation customerListUploadsGet
      *
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUploadId Unique identifier of a customer list upload
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUploadId Customer List Upload ID.
      * @return RequestConfig
      */
     fun customerListUploadsGetRequestConfig(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUploadId: kotlin.String) : RequestConfig<Unit> {
@@ -210,11 +218,11 @@ open class CustomerListUploadsApi(basePath: kotlin.String = defaultBasePath, cli
     /**
      * POST /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run
      * Run customer list upload
-     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Begin processing a customer list upload.&lt;/p&gt;
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUploadId Unique identifier of a customer list upload
-     * @return CustomerListUploadResponse
+     * Begin processing a customer list upload.
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUploadId Customer List Upload ID.
+     * @return CustomerListUpload
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -223,11 +231,11 @@ open class CustomerListUploadsApi(basePath: kotlin.String = defaultBasePath, cli
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun customerListUploadsRun(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUploadId: kotlin.String) : CustomerListUploadResponse {
+    fun customerListUploadsRun(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUploadId: kotlin.String) : CustomerListUpload {
         val localVarResponse = customerListUploadsRunWithHttpInfo(adAccountId = adAccountId, customerListId = customerListId, customerListUploadId = customerListUploadId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerListUploadResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerListUpload
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -244,20 +252,20 @@ open class CustomerListUploadsApi(basePath: kotlin.String = defaultBasePath, cli
     /**
      * POST /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run
      * Run customer list upload
-     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Begin processing a customer list upload.&lt;/p&gt;
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUploadId Unique identifier of a customer list upload
-     * @return ApiResponse<CustomerListUploadResponse?>
+     * Begin processing a customer list upload.
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUploadId Customer List Upload ID.
+     * @return ApiResponse<CustomerListUpload?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun customerListUploadsRunWithHttpInfo(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUploadId: kotlin.String) : ApiResponse<CustomerListUploadResponse?> {
+    fun customerListUploadsRunWithHttpInfo(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUploadId: kotlin.String) : ApiResponse<CustomerListUpload?> {
         val localVariableConfig = customerListUploadsRunRequestConfig(adAccountId = adAccountId, customerListId = customerListId, customerListUploadId = customerListUploadId)
 
-        return request<Unit, CustomerListUploadResponse>(
+        return request<Unit, CustomerListUpload>(
             localVariableConfig
         )
     }
@@ -265,9 +273,9 @@ open class CustomerListUploadsApi(basePath: kotlin.String = defaultBasePath, cli
     /**
      * To obtain the request config of the operation customerListUploadsRun
      *
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUploadId Unique identifier of a customer list upload
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUploadId Customer List Upload ID.
      * @return RequestConfig
      */
     fun customerListUploadsRunRequestConfig(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUploadId: kotlin.String) : RequestConfig<Unit> {

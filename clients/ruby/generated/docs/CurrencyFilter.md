@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **currency** | [**CatalogsProductGroupCurrencyCriteria**](.md) |  |  |
+| **currency** | [**CatalogsProductGroupCurrencyCriteria**](CatalogsProductGroupCurrencyCriteria.md) |  |  |
 
 ## Example
 

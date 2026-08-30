@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,16 +23,76 @@ package openapi
 type AdvancedAuctionItemsGetRequest struct {
 
 	// Catalog id pertaining to the retail item
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\d+$"`
 
 	// A list of retail catalog items to fetch bid options for
-	Items []AdvancedAuctionItemsGetRecord `json:"items"`
+	Items []AdvancedAuctionKey `json:"items"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into AdvancedAuctionItemsGetRequest
+func (o *AdvancedAuctionItemsGetRequest) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"catalog_id",
+		"items",
+	}
+
+	requiredNullableProperties := map[string]bool{
+		"catalog_id": false,
+		"items": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"catalog_id": {},
+		"items": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded AdvancedAuctionItemsGetRequest
+
+	if value, exists := allProperties["catalog_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["items"]; exists {
+		if err = json.Unmarshal(value, &decoded.Items); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
 }
 
-// AssertAdvancedAuctionItemsGetRequestRequired checks if the required fields are not zero-ed
+// AssertAdvancedAuctionItemsGetRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAdvancedAuctionItemsGetRequestRequired(obj AdvancedAuctionItemsGetRequest) error {
 	elements := map[string]interface{}{
-		"catalog_id": obj.CatalogId,
 		"items": obj.Items,
 	}
 	for name, el := range elements {
@@ -37,7 +102,7 @@ func AssertAdvancedAuctionItemsGetRequestRequired(obj AdvancedAuctionItemsGetReq
 	}
 
 	for _, el := range obj.Items {
-		if err := AssertAdvancedAuctionItemsGetRecordRequired(el); err != nil {
+		if err := AssertAdvancedAuctionKeyRequired(el); err != nil {
 			return err
 		}
 	}
@@ -47,7 +112,7 @@ func AssertAdvancedAuctionItemsGetRequestRequired(obj AdvancedAuctionItemsGetReq
 // AssertAdvancedAuctionItemsGetRequestConstraints checks if the values respects the defined constraints
 func AssertAdvancedAuctionItemsGetRequestConstraints(obj AdvancedAuctionItemsGetRequest) error {
 	for _, el := range obj.Items {
-		if err := AssertAdvancedAuctionItemsGetRecordConstraints(el); err != nil {
+		if err := AssertAdvancedAuctionKeyConstraints(el); err != nil {
 			return err
 		}
 	}

@@ -6,27 +6,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.LabelUpdateRequestLabelsInner;
+import org.openapitools.vertxweb.server.model.LabelUpdateItem;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LabelUpdateRequest   {
   
-  private List<LabelUpdateRequestLabelsInner> labels = new ArrayList<>();
+  private List<LabelUpdateItem> labels = new ArrayList<>();
 
   public LabelUpdateRequest () {
 
   }
 
-  public LabelUpdateRequest (List<LabelUpdateRequestLabelsInner> labels) {
+  public LabelUpdateRequest (List<LabelUpdateItem> labels) {
     this.labels = labels;
   }
 
     
   @JsonProperty("labels")
-  public List<LabelUpdateRequestLabelsInner> getLabels() {
+  public List<LabelUpdateItem> getLabels() {
     return labels;
   }
-  public void setLabels(List<LabelUpdateRequestLabelsInner> labels) {
+  public void setLabels(List<LabelUpdateItem> labels) {
     this.labels = labels;
   }
 
@@ -63,9 +63,6 @@ public class LabelUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -94,6 +94,26 @@ static bool promotionsCreateProcessor(MemoryStruct_s p_chunk, long code, char* e
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -114,7 +134,7 @@ static bool promotionsCreateProcessor(MemoryStruct_s p_chunk, long code, char* e
 }
 
 static bool promotionsCreateHelper(char * accessToken,
-	std::string adAccountId, std::list<PromotionCreateRequest> promotionCreateRequest, 
+	std::string adAccountId, std::list<PromotionCreate> promotionCreate, 
 	void(* handler)(PromotionsResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -135,14 +155,14 @@ static bool promotionsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 	//TODO: Map Container
-	if (isprimitive("PromotionCreateRequest")) {
-		node = converttoJson(&promotionCreateRequest, "PromotionCreateRequest", "array");
+	if (isprimitive("PromotionCreate")) {
+		node = converttoJson(&promotionCreate, "PromotionCreate", "array");
 	} else {
 		node = json_node_alloc();
 		json_array = json_array_new();
 		for (std::list
-			<PromotionCreateRequest>::iterator bodyIter = promotionCreateRequest.begin(); bodyIter != promotionCreateRequest.end(); ++bodyIter) {
-			PromotionCreateRequest itemAt = (*bodyIter);
+			<PromotionCreate>::iterator bodyIter = promotionCreate.begin(); bodyIter != promotionCreate.end(); ++bodyIter) {
+			PromotionCreate itemAt = (*bodyIter);
 			char *jsonStr =  itemAt.toJson();
 			JsonNode *node_temp = json_from_string(jsonStr, NULL);
 			g_free(static_cast<gpointer>(jsonStr));
@@ -216,43 +236,95 @@ static bool promotionsCreateHelper(char * accessToken,
 
 
 bool PromotionsManager::promotionsCreateAsync(char * accessToken,
-	std::string adAccountId, std::list<PromotionCreateRequest> promotionCreateRequest, 
+	std::string adAccountId, std::list<PromotionCreate> promotionCreate, 
 	void(* handler)(PromotionsResponse, Error, void* )
 	, void* userData)
 {
 	return promotionsCreateHelper(accessToken,
-	adAccountId, promotionCreateRequest, 
+	adAccountId, promotionCreate, 
 	handler, userData, true);
 }
 
 bool PromotionsManager::promotionsCreateSync(char * accessToken,
-	std::string adAccountId, std::list<PromotionCreateRequest> promotionCreateRequest, 
+	std::string adAccountId, std::list<PromotionCreate> promotionCreate, 
 	void(* handler)(PromotionsResponse, Error, void* )
 	, void* userData)
 {
 	return promotionsCreateHelper(accessToken,
-	adAccountId, promotionCreateRequest, 
+	adAccountId, promotionCreate, 
 	handler, userData, false);
 }
 
 static bool promotionsDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(Promotion, Error, void* )
+	= reinterpret_cast<void(*)(Promotion, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	Promotion out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("Promotion")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "Promotion", "Promotion");
+			json_node_free(pJson);
+
+			if ("Promotion" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -263,15 +335,15 @@ static bool promotionsDeleteProcessor(MemoryStruct_s p_chunk, long code, char* e
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool promotionsDeleteHelper(char * accessToken,
-	std::string adAccountId, std::string promotionId, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	std::string promotionId, std::string adAccountId, 
+	void(* handler)(Promotion, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -293,18 +365,18 @@ static bool promotionsDeleteHelper(char * accessToken,
 	string url("/ad_accounts/{ad_account_id}/promotions/{promotion_id}");
 	int pos;
 
-	string s_adAccountId("{");
-	s_adAccountId.append("ad_account_id");
-	s_adAccountId.append("}");
-	pos = url.find(s_adAccountId);
-	url.erase(pos, s_adAccountId.length());
-	url.insert(pos, stringify(&adAccountId, "std::string"));
 	string s_promotionId("{");
 	s_promotionId.append("promotion_id");
 	s_promotionId.append("}");
 	pos = url.find(s_promotionId);
 	url.erase(pos, s_promotionId.length());
 	url.insert(pos, stringify(&promotionId, "std::string"));
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -352,36 +424,36 @@ static bool promotionsDeleteHelper(char * accessToken,
 
 
 bool PromotionsManager::promotionsDeleteAsync(char * accessToken,
-	std::string adAccountId, std::string promotionId, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	std::string promotionId, std::string adAccountId, 
+	void(* handler)(Promotion, Error, void* )
+	, void* userData)
 {
 	return promotionsDeleteHelper(accessToken,
-	adAccountId, promotionId, 
+	promotionId, adAccountId, 
 	handler, userData, true);
 }
 
 bool PromotionsManager::promotionsDeleteSync(char * accessToken,
-	std::string adAccountId, std::string promotionId, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	std::string promotionId, std::string adAccountId, 
+	void(* handler)(Promotion, Error, void* )
+	, void* userData)
 {
 	return promotionsDeleteHelper(accessToken,
-	adAccountId, promotionId, 
+	promotionId, adAccountId, 
 	handler, userData, false);
 }
 
 static bool promotionsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(PromotionResponse, Error, void* )
-	= reinterpret_cast<void(*)(PromotionResponse, Error, void* )> (voidHandler);
+	void(* handler)(Promotion, Error, void* )
+	= reinterpret_cast<void(*)(Promotion, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	PromotionResponse out;
+	Promotion out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -389,18 +461,38 @@ static bool promotionsGetProcessor(MemoryStruct_s p_chunk, long code, char* erro
 
 
 
-		if (isprimitive("PromotionResponse")) {
+		if (isprimitive("Promotion")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "PromotionResponse", "PromotionResponse");
+			jsonToValue(&out, pJson, "Promotion", "Promotion");
 			json_node_free(pJson);
 
-			if ("PromotionResponse" == "std::string") {
+			if ("Promotion" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -437,8 +529,8 @@ static bool promotionsGetProcessor(MemoryStruct_s p_chunk, long code, char* erro
 }
 
 static bool promotionsGetHelper(char * accessToken,
-	std::string adAccountId, std::string promotionId, 
-	void(* handler)(PromotionResponse, Error, void* )
+	std::string promotionId, std::string adAccountId, 
+	void(* handler)(Promotion, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -461,18 +553,18 @@ static bool promotionsGetHelper(char * accessToken,
 	string url("/ad_accounts/{ad_account_id}/promotions/{promotion_id}");
 	int pos;
 
-	string s_adAccountId("{");
-	s_adAccountId.append("ad_account_id");
-	s_adAccountId.append("}");
-	pos = url.find(s_adAccountId);
-	url.erase(pos, s_adAccountId.length());
-	url.insert(pos, stringify(&adAccountId, "std::string"));
 	string s_promotionId("{");
 	s_promotionId.append("promotion_id");
 	s_promotionId.append("}");
 	pos = url.find(s_promotionId);
 	url.erase(pos, s_promotionId.length());
 	url.insert(pos, stringify(&promotionId, "std::string"));
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -520,22 +612,22 @@ static bool promotionsGetHelper(char * accessToken,
 
 
 bool PromotionsManager::promotionsGetAsync(char * accessToken,
-	std::string adAccountId, std::string promotionId, 
-	void(* handler)(PromotionResponse, Error, void* )
+	std::string promotionId, std::string adAccountId, 
+	void(* handler)(Promotion, Error, void* )
 	, void* userData)
 {
 	return promotionsGetHelper(accessToken,
-	adAccountId, promotionId, 
+	promotionId, adAccountId, 
 	handler, userData, true);
 }
 
 bool PromotionsManager::promotionsGetSync(char * accessToken,
-	std::string adAccountId, std::string promotionId, 
-	void(* handler)(PromotionResponse, Error, void* )
+	std::string promotionId, std::string adAccountId, 
+	void(* handler)(Promotion, Error, void* )
 	, void* userData)
 {
 	return promotionsGetHelper(accessToken,
-	adAccountId, promotionId, 
+	promotionId, adAccountId, 
 	handler, userData, false);
 }
 
@@ -585,6 +677,26 @@ static bool promotionsListProcessor(MemoryStruct_s p_chunk, long code, char* err
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -605,7 +717,7 @@ static bool promotionsListProcessor(MemoryStruct_s p_chunk, long code, char* err
 }
 
 static bool promotionsListHelper(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, 
 	void(* handler)(Promotions_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -623,6 +735,13 @@ static bool promotionsListHelper(char * accessToken,
 	string itemAtq;
 	
 
+	itemAtq = stringify(&bookmark, "std::string");
+	queryParams.insert(pair<string, string>("bookmark", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("bookmark");
+	}
+
+
 	itemAtq = stringify(&pageSize, "int");
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
@@ -630,17 +749,10 @@ static bool promotionsListHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&order, "std::string");
+	itemAtq = stringify(&order, "Pinterest.Lib.PaginationOrder");
 	queryParams.insert(pair<string, string>("order", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("order");
-	}
-
-
-	itemAtq = stringify(&bookmark, "std::string");
-	queryParams.insert(pair<string, string>("bookmark", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("bookmark");
 	}
 
 	string mBody = "";
@@ -703,22 +815,22 @@ static bool promotionsListHelper(char * accessToken,
 
 
 bool PromotionsManager::promotionsListAsync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, 
 	void(* handler)(Promotions_list_200_response, Error, void* )
 	, void* userData)
 {
 	return promotionsListHelper(accessToken,
-	adAccountId, pageSize, order, bookmark, 
+	adAccountId, bookmark, pageSize, order, 
 	handler, userData, true);
 }
 
 bool PromotionsManager::promotionsListSync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, 
 	void(* handler)(Promotions_list_200_response, Error, void* )
 	, void* userData)
 {
 	return promotionsListHelper(accessToken,
-	adAccountId, pageSize, order, bookmark, 
+	adAccountId, bookmark, pageSize, order, 
 	handler, userData, false);
 }
 
@@ -768,6 +880,26 @@ static bool promotionsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* e
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -788,7 +920,7 @@ static bool promotionsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* e
 }
 
 static bool promotionsUpdateHelper(char * accessToken,
-	std::string adAccountId, std::list<PromotionUpdateRequest> promotionUpdateRequest, 
+	std::string adAccountId, std::list<PromotionBatchUpdate> promotionBatchUpdate, 
 	void(* handler)(PromotionsResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -809,14 +941,14 @@ static bool promotionsUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 	//TODO: Map Container
-	if (isprimitive("PromotionUpdateRequest")) {
-		node = converttoJson(&promotionUpdateRequest, "PromotionUpdateRequest", "array");
+	if (isprimitive("PromotionBatchUpdate")) {
+		node = converttoJson(&promotionBatchUpdate, "PromotionBatchUpdate", "array");
 	} else {
 		node = json_node_alloc();
 		json_array = json_array_new();
 		for (std::list
-			<PromotionUpdateRequest>::iterator bodyIter = promotionUpdateRequest.begin(); bodyIter != promotionUpdateRequest.end(); ++bodyIter) {
-			PromotionUpdateRequest itemAt = (*bodyIter);
+			<PromotionBatchUpdate>::iterator bodyIter = promotionBatchUpdate.begin(); bodyIter != promotionBatchUpdate.end(); ++bodyIter) {
+			PromotionBatchUpdate itemAt = (*bodyIter);
 			char *jsonStr =  itemAt.toJson();
 			JsonNode *node_temp = json_from_string(jsonStr, NULL);
 			g_free(static_cast<gpointer>(jsonStr));
@@ -890,22 +1022,22 @@ static bool promotionsUpdateHelper(char * accessToken,
 
 
 bool PromotionsManager::promotionsUpdateAsync(char * accessToken,
-	std::string adAccountId, std::list<PromotionUpdateRequest> promotionUpdateRequest, 
+	std::string adAccountId, std::list<PromotionBatchUpdate> promotionBatchUpdate, 
 	void(* handler)(PromotionsResponse, Error, void* )
 	, void* userData)
 {
 	return promotionsUpdateHelper(accessToken,
-	adAccountId, promotionUpdateRequest, 
+	adAccountId, promotionBatchUpdate, 
 	handler, userData, true);
 }
 
 bool PromotionsManager::promotionsUpdateSync(char * accessToken,
-	std::string adAccountId, std::list<PromotionUpdateRequest> promotionUpdateRequest, 
+	std::string adAccountId, std::list<PromotionBatchUpdate> promotionBatchUpdate, 
 	void(* handler)(PromotionsResponse, Error, void* )
 	, void* userData)
 {
 	return promotionsUpdateHelper(accessToken,
-	adAccountId, promotionUpdateRequest, 
+	adAccountId, promotionBatchUpdate, 
 	handler, userData, false);
 }
 

@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | **String** |  | [optional] 
-**Items** | [**TemplateResponse[]**](TemplateResponse.md) |  | 
+**Items** | [**AccountTemplate[]**](AccountTemplate.md) |  | 
 
 ## Examples
 

@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AdResponse } from './adResponse';
+import { Ad } from './ad';
 
 
 export interface AdsList200Response { 
     bookmark?: string | null;
-    items: Array<AdResponse>;
+    items: Array<Ad>;
 }
 

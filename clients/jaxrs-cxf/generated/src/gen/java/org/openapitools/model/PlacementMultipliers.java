@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.model.PlacementType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,58 +20,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PlacementMultipliers extends HashMap<String, Double> {
   
-public enum PLACEMENTEnum {
-
-SEARCH(String.valueOf("SEARCH")), BROWSE(String.valueOf("BROWSE")), RELATED_PINS(String.valueOf("RELATED_PINS"));
-
-
-    private String value;
-
-    PLACEMENTEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PLACEMENTEnum fromValue(String value) {
-        for (PLACEMENTEnum b : PLACEMENTEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  @ApiModelProperty(value = "")
-
-  private PLACEMENTEnum PLACEMENT;
  /**
-   * Get PLACEMENT
+  * Placement type identifier.
+  */
+  @ApiModelProperty(value = "Placement type identifier.")
+
+  @Valid
+
+  private PlacementType PLACEMENT;
+ /**
+   * Placement type identifier.
    * @return PLACEMENT
   **/
   @JsonProperty("PLACEMENT")
-  public String getPLACEMENT() {
-    if (PLACEMENT == null) {
-      return null;
-    }
-    return PLACEMENT.value();
+  public PlacementType getPLACEMENT() {
+    return PLACEMENT;
   }
 
-  public void setPLACEMENT(PLACEMENTEnum PLACEMENT) {
+  public void setPLACEMENT(PlacementType PLACEMENT) {
     this.PLACEMENT = PLACEMENT;
   }
 
-  public PlacementMultipliers PLACEMENT(PLACEMENTEnum PLACEMENT) {
+  public PlacementMultipliers PLACEMENT(PlacementType PLACEMENT) {
     this.PLACEMENT = PLACEMENT;
     return this;
   }
@@ -108,10 +79,7 @@ SEARCH(String.valueOf("SEARCH")), BROWSE(String.valueOf("BROWSE")), RELATED_PINS
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

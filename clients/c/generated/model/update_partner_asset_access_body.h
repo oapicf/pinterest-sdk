@@ -1,7 +1,7 @@
 /*
  * update_partner_asset_access_body.h
  *
- * 
+ * An object with a list of partner asset accesses to assign or update.
  */
 
 #ifndef _update_partner_asset_access_body_H_
@@ -15,7 +15,7 @@
 
 typedef struct update_partner_asset_access_body_t update_partner_asset_access_body_t;
 
-#include "update_partner_asset_access_body_accesses_inner.h"
+#include "update_partner_asset_access_item.h"
 
 
 

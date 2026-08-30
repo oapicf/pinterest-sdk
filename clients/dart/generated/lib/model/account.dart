@@ -37,9 +37,15 @@ class Account {
   String? about;
 
   /// Type of account
-  AccountAccountTypeEnum? accountType;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  UserAccountType? accountType;
 
-  /// User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+  ///   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
   int? boardCount;
 
   String? businessName;
@@ -199,16 +205,12 @@ class Account {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Account[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Account[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return Account(
         about: mapValueOfType<String>(json, r'about'),
-        accountType: AccountAccountTypeEnum.fromJson(json[r'account_type']),
+        accountType: UserAccountType.fromJson(json[r'account_type']),
         boardCount: mapValueOfType<int>(json, r'board_count'),
         businessName: mapValueOfType<String>(json, r'business_name'),
         followerCount: mapValueOfType<int>(json, r'follower_count'),
@@ -268,78 +270,4 @@ class Account {
   static const requiredKeys = <String>{
   };
 }
-
-/// Type of account
-class AccountAccountTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const AccountAccountTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const PINNER = AccountAccountTypeEnum._(r'PINNER');
-  static const BUSINESS = AccountAccountTypeEnum._(r'BUSINESS');
-
-  /// List of all possible values in this [enum][AccountAccountTypeEnum].
-  static const values = <AccountAccountTypeEnum>[
-    PINNER,
-    BUSINESS,
-  ];
-
-  static AccountAccountTypeEnum? fromJson(dynamic value) => AccountAccountTypeEnumTypeTransformer().decode(value);
-
-  static List<AccountAccountTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <AccountAccountTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = AccountAccountTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [AccountAccountTypeEnum] to String,
-/// and [decode] dynamic data back to [AccountAccountTypeEnum].
-class AccountAccountTypeEnumTypeTransformer {
-  factory AccountAccountTypeEnumTypeTransformer() => _instance ??= const AccountAccountTypeEnumTypeTransformer._();
-
-  const AccountAccountTypeEnumTypeTransformer._();
-
-  String encode(AccountAccountTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a AccountAccountTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  AccountAccountTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'PINNER': return AccountAccountTypeEnum.PINNER;
-        case r'BUSINESS': return AccountAccountTypeEnum.BUSINESS;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [AccountAccountTypeEnumTypeTransformer] instance.
-  static AccountAccountTypeEnumTypeTransformer? _instance;
-}
-
 

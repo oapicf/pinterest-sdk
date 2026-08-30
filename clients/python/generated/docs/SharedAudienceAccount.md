@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_id** | **str** | Account ID (ad account or business ID). | 
 **account_name** | **str** | Account name. | 
-**account_type** | **str** | account type | 
+**account_type** | [**AudienceAccountType**](AudienceAccountType.md) | account type | 
 **shared_on_timestamp** | **int** | Epoch timestamp in seconds for the shared audience event | 
 
 ## Example

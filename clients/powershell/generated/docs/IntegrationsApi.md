@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a id="ConvertTo-tegrationsCommerceDel"></a>
 # **ConvertTo-tegrationsCommerceDel**
-> void ConvertTo-tegrationsCommerceDel<br>
+> IntegrationMetadata ConvertTo-tegrationsCommerceDel<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ExternalBusinessId] <String><br>
 
 Delete commerce integration
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**IntegrationMetadata**](IntegrationMetadata.md) (PSCustomObject)
 
 ### Authorization
 
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 # **ConvertTo-tegrationsCommercePatch**
 > IntegrationMetadata ConvertTo-tegrationsCommercePatch<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ExternalBusinessId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IntegrationRequestPatch] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IntegrationMetadataUpdate] <PSCustomObject><br>
 
 Update commerce integration
 
@@ -127,11 +127,11 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $ExternalBusinessId = "MyExternalBusinessId" # String | External business ID for the integration.
-$IntegrationRequestPatch = Initialize-IntegrationRequestPatch -AdditionalId1 "MyAdditionalId1" -ConnectedAdvertiserId "MyConnectedAdvertiserId" -ConnectedLbaId "MyConnectedLbaId" -ConnectedMerchantId "MyConnectedMerchantId" -ConnectedTagId "MyConnectedTagId" -PartnerAccessToken "MyPartnerAccessToken" -PartnerAccessTokenExpiry 0 -PartnerMetadata "MyPartnerMetadata" -PartnerPrimaryEmail "MyPartnerPrimaryEmail" -PartnerRefreshToken "MyPartnerRefreshToken" -PartnerRefreshTokenExpiry 0 -Scopes "MyScopes" # IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
+$IntegrationMetadataUpdate = Initialize-IntegrationMetadataUpdate -AdditionalId1 "MyAdditionalId1" -ConnectedAdvertiserId "MyConnectedAdvertiserId" -ConnectedLbaId "MyConnectedLbaId" -ConnectedMerchantId "MyConnectedMerchantId" -ConnectedTagId "MyConnectedTagId" -PartnerAccessToken "MyPartnerAccessToken" -PartnerAccessTokenExpiry 0 -PartnerMetadata "MyPartnerMetadata" -PartnerPrimaryEmail "MyPartnerPrimaryEmail" -PartnerRefreshToken "MyPartnerRefreshToken" -PartnerRefreshTokenExpiry 0 -Scopes "MyScopes" # IntegrationMetadataUpdate | 
 
 # Update commerce integration
 try {
-    $Result = ConvertTo-tegrationsCommercePatch -ExternalBusinessId $ExternalBusinessId -IntegrationRequestPatch $IntegrationRequestPatch
+    $Result = ConvertTo-tegrationsCommercePatch -ExternalBusinessId $ExternalBusinessId -IntegrationMetadataUpdate $IntegrationMetadataUpdate
 } catch {
     Write-Host ("Exception occurred when calling ConvertTo-tegrationsCommercePatch: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -143,7 +143,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ExternalBusinessId** | **String**| External business ID for the integration. | 
- **IntegrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | 
+ **IntegrationMetadataUpdate** | [**IntegrationMetadataUpdate**](IntegrationMetadataUpdate.md)|  | 
 
 ### Return type
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 <a id="ConvertTo-tegrationsCommercePost"></a>
 # **ConvertTo-tegrationsCommercePost**
 > IntegrationMetadata ConvertTo-tegrationsCommercePost<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IntegrationRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IntegrationMetadataCreate] <PSCustomObject><br>
 
 Create commerce integration
 
@@ -176,11 +176,11 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$IntegrationRequest = Initialize-IntegrationRequest -AdditionalId1 "MyAdditionalId1" -ConnectedAdvertiserId "MyConnectedAdvertiserId" -ConnectedLbaId "MyConnectedLbaId" -ConnectedMerchantId "MyConnectedMerchantId" -ConnectedTagId "MyConnectedTagId" -ExternalBusinessId "MyExternalBusinessId" -PartnerAccessToken "MyPartnerAccessToken" -PartnerAccessTokenExpiry 0 -PartnerMetadata "MyPartnerMetadata" -PartnerPrimaryEmail "MyPartnerPrimaryEmail" -PartnerRefreshToken "MyPartnerRefreshToken" -PartnerRefreshTokenExpiry 0 -Scopes "MyScopes" # IntegrationRequest | Parameters to get create/update the Integration Metadata
+$IntegrationMetadataCreate = Initialize-IntegrationMetadataCreate -AdditionalId1 "MyAdditionalId1" -ConnectedAdvertiserId "MyConnectedAdvertiserId" -ConnectedLbaId "MyConnectedLbaId" -ConnectedMerchantId "MyConnectedMerchantId" -ConnectedTagId "MyConnectedTagId" -ExternalBusinessId "MyExternalBusinessId" -PartnerAccessToken "MyPartnerAccessToken" -PartnerAccessTokenExpiry 0 -PartnerMetadata "MyPartnerMetadata" -PartnerPrimaryEmail "MyPartnerPrimaryEmail" -PartnerRefreshToken "MyPartnerRefreshToken" -PartnerRefreshTokenExpiry 0 -Scopes "MyScopes" # IntegrationMetadataCreate | 
 
 # Create commerce integration
 try {
-    $Result = ConvertTo-tegrationsCommercePost -IntegrationRequest $IntegrationRequest
+    $Result = ConvertTo-tegrationsCommercePost -IntegrationMetadataCreate $IntegrationMetadataCreate
 } catch {
     Write-Host ("Exception occurred when calling ConvertTo-tegrationsCommercePost: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -191,7 +191,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **IntegrationRequest** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | 
+ **IntegrationMetadataCreate** | [**IntegrationMetadataCreate**](IntegrationMetadataCreate.md)|  | 
 
 ### Return type
 
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 <a id="ConvertTo-tegrationsLogsPost"></a>
 # **ConvertTo-tegrationsLogsPost**
 > IntegrationLogsSuccessResponse ConvertTo-tegrationsLogsPost<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IntegrationLogsRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IntegrationLogsRequestCreate] <PSCustomObject><br>
 
 Receives batched logs from integration applications.
 
@@ -228,11 +228,11 @@ $IntegrationLogClientError = Initialize-IntegrationLogClientError -Cause "MyCaus
 $IntegrationLogClientRequest = Initialize-IntegrationLogClientRequest -VarHost "MyVarHost" -Method "GET" -Path "MyPath" -RequestHeaders @{ key_example = "MyInner" } -ResponseHeaders @{ key_example = "MyInner" } -ResponseStatusCode 0
 $IntegrationLog = Initialize-IntegrationLog -AdvertiserId "MyAdvertiserId" -AppVersionNumber "MyAppVersionNumber" -ClientTimestamp 0 -VarError $IntegrationLogClientError -EventType "APP" -ExternalBusinessId "MyExternalBusinessId" -FeedProfileId "MyFeedProfileId" -LogLevel "INFO" -MerchantId "MyMerchantId" -Message "MyMessage" -PlatformVersionNumber "MyPlatformVersionNumber" -Request $IntegrationLogClientRequest -TagId "MyTagId"
 
-$IntegrationLogsRequest = Initialize-IntegrationLogsRequest -Logs $IntegrationLog # IntegrationLogsRequest | Ingest log information from external integration application.
+$IntegrationLogsRequestCreate = Initialize-IntegrationLogsRequestCreate -Logs $IntegrationLog # IntegrationLogsRequestCreate | 
 
 # Receives batched logs from integration applications.
 try {
-    $Result = ConvertTo-tegrationsLogsPost -IntegrationLogsRequest $IntegrationLogsRequest
+    $Result = ConvertTo-tegrationsLogsPost -IntegrationLogsRequestCreate $IntegrationLogsRequestCreate
 } catch {
     Write-Host ("Exception occurred when calling ConvertTo-tegrationsLogsPost: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -243,7 +243,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **IntegrationLogsRequest** | [**IntegrationLogsRequest**](IntegrationLogsRequest.md)| Ingest log information from external integration application. | 
+ **IntegrationLogsRequestCreate** | [**IntegrationLogsRequestCreate**](IntegrationLogsRequestCreate.md)|  | 
 
 ### Return type
 
@@ -276,7 +276,7 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$Id = "MyId" # String | Integration ID.
+$Id = "MyId" # String | Integration record ID.
 
 # Get integration metadata
 try {
@@ -291,7 +291,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **String**| Integration ID. | 
+ **Id** | **String**| Integration record ID. | 
 
 ### Return type
 
@@ -326,7 +326,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # Get integration metadata list
 try {
@@ -342,7 +342,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

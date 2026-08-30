@@ -6,27 +6,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.DeletePartnerAssetAccessBodyAccessesInner;
+import org.openapitools.vertxweb.server.model.DeletePartnerAssetAccessItem;
 
+/**
+ * An object with a list of partner asset accesses to delete.
+ **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DeletePartnerAssetAccessBody   {
   
-  private List<DeletePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+  private List<DeletePartnerAssetAccessItem> accesses = new ArrayList<>();
 
   public DeletePartnerAssetAccessBody () {
 
   }
 
-  public DeletePartnerAssetAccessBody (List<DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public DeletePartnerAssetAccessBody (List<DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
     
   @JsonProperty("accesses")
-  public List<DeletePartnerAssetAccessBodyAccessesInner> getAccesses() {
+  public List<DeletePartnerAssetAccessItem> getAccesses() {
     return accesses;
   }
-  public void setAccesses(List<DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
@@ -63,9 +66,6 @@ public class DeletePartnerAssetAccessBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

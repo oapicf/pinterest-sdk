@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 	"reflect"
@@ -53,6 +54,30 @@ func NewBusinessAccessAssetsAPIController(s BusinessAccessAssetsAPIServicer, opt
 // Routes returns all the api routes for the BusinessAccessAssetsAPIController
 func (c *BusinessAccessAssetsAPIController) Routes() Routes {
 	return Routes{
+		"AssetGroupCreate": Route{
+			"AssetGroupCreate",
+			strings.ToUpper("Post"),
+			"/v5/businesses/{business_id}/asset_groups",
+			c.AssetGroupCreate,
+		},
+		"AssetGroupDelete": Route{
+			"AssetGroupDelete",
+			strings.ToUpper("Delete"),
+			"/v5/businesses/{business_id}/asset_groups",
+			c.AssetGroupDelete,
+		},
+		"AssetGroupUpdate": Route{
+			"AssetGroupUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/businesses/{business_id}/asset_groups",
+			c.AssetGroupUpdate,
+		},
+		"BusinessAssetsGet": Route{
+			"BusinessAssetsGet",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/assets",
+			c.BusinessAssetsGet,
+		},
 		"BusinessAssetMembersGet": Route{
 			"BusinessAssetMembersGet",
 			strings.ToUpper("Get"),
@@ -65,18 +90,6 @@ func (c *BusinessAccessAssetsAPIController) Routes() Routes {
 			"/v5/businesses/{business_id}/assets/{asset_id}/partners",
 			c.BusinessAssetPartnersGet,
 		},
-		"BusinessAssetsGet": Route{
-			"BusinessAssetsGet",
-			strings.ToUpper("Get"),
-			"/v5/businesses/{business_id}/assets",
-			c.BusinessAssetsGet,
-		},
-		"BusinessMemberAssetsGet": Route{
-			"BusinessMemberAssetsGet",
-			strings.ToUpper("Get"),
-			"/v5/businesses/{business_id}/members/{member_id}/assets",
-			c.BusinessMemberAssetsGet,
-		},
 		"BusinessMembersAssetAccessDelete": Route{
 			"BusinessMembersAssetAccessDelete",
 			strings.ToUpper("Delete"),
@@ -88,6 +101,12 @@ func (c *BusinessAccessAssetsAPIController) Routes() Routes {
 			strings.ToUpper("Patch"),
 			"/v5/businesses/{business_id}/members/assets/access",
 			c.BusinessMembersAssetAccessUpdate,
+		},
+		"BusinessMemberAssetsGet": Route{
+			"BusinessMemberAssetsGet",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/members/{member_id}/assets",
+			c.BusinessMemberAssetsGet,
 		},
 		"DeletePartnerAssetAccessHandlerImpl": Route{
 			"DeletePartnerAssetAccessHandlerImpl",
@@ -107,30 +126,36 @@ func (c *BusinessAccessAssetsAPIController) Routes() Routes {
 			"/v5/businesses/{business_id}/partners/{partner_id}/assets",
 			c.BusinessPartnerAssetAccessGet,
 		},
-		"AssetGroupCreate": Route{
-			"AssetGroupCreate",
-			strings.ToUpper("Post"),
-			"/v5/businesses/{business_id}/asset_groups",
-			c.AssetGroupCreate,
-		},
-		"AssetGroupDelete": Route{
-			"AssetGroupDelete",
-			strings.ToUpper("Delete"),
-			"/v5/businesses/{business_id}/asset_groups",
-			c.AssetGroupDelete,
-		},
-		"AssetGroupUpdate": Route{
-			"AssetGroupUpdate",
-			strings.ToUpper("Patch"),
-			"/v5/businesses/{business_id}/asset_groups",
-			c.AssetGroupUpdate,
-		},
 	}
 }
 
 // OrderedRoutes returns all the api routes in a deterministic order for the BusinessAccessAssetsAPIController
 func (c *BusinessAccessAssetsAPIController) OrderedRoutes() []Route {
 	return []Route{
+		Route{
+			"AssetGroupCreate",
+			strings.ToUpper("Post"),
+			"/v5/businesses/{business_id}/asset_groups",
+			c.AssetGroupCreate,
+		},
+		Route{
+			"AssetGroupDelete",
+			strings.ToUpper("Delete"),
+			"/v5/businesses/{business_id}/asset_groups",
+			c.AssetGroupDelete,
+		},
+		Route{
+			"AssetGroupUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/businesses/{business_id}/asset_groups",
+			c.AssetGroupUpdate,
+		},
+		Route{
+			"BusinessAssetsGet",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/assets",
+			c.BusinessAssetsGet,
+		},
 		Route{
 			"BusinessAssetMembersGet",
 			strings.ToUpper("Get"),
@@ -144,18 +169,6 @@ func (c *BusinessAccessAssetsAPIController) OrderedRoutes() []Route {
 			c.BusinessAssetPartnersGet,
 		},
 		Route{
-			"BusinessAssetsGet",
-			strings.ToUpper("Get"),
-			"/v5/businesses/{business_id}/assets",
-			c.BusinessAssetsGet,
-		},
-		Route{
-			"BusinessMemberAssetsGet",
-			strings.ToUpper("Get"),
-			"/v5/businesses/{business_id}/members/{member_id}/assets",
-			c.BusinessMemberAssetsGet,
-		},
-		Route{
 			"BusinessMembersAssetAccessDelete",
 			strings.ToUpper("Delete"),
 			"/v5/businesses/{business_id}/members/assets/access",
@@ -166,6 +179,12 @@ func (c *BusinessAccessAssetsAPIController) OrderedRoutes() []Route {
 			strings.ToUpper("Patch"),
 			"/v5/businesses/{business_id}/members/assets/access",
 			c.BusinessMembersAssetAccessUpdate,
+		},
+		Route{
+			"BusinessMemberAssetsGet",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/members/{member_id}/assets",
+			c.BusinessMemberAssetsGet,
 		},
 		Route{
 			"DeletePartnerAssetAccessHandlerImpl",
@@ -185,106 +204,40 @@ func (c *BusinessAccessAssetsAPIController) OrderedRoutes() []Route {
 			"/v5/businesses/{business_id}/partners/{partner_id}/assets",
 			c.BusinessPartnerAssetAccessGet,
 		},
-		Route{
-			"AssetGroupCreate",
-			strings.ToUpper("Post"),
-			"/v5/businesses/{business_id}/asset_groups",
-			c.AssetGroupCreate,
-		},
-		Route{
-			"AssetGroupDelete",
-			strings.ToUpper("Delete"),
-			"/v5/businesses/{business_id}/asset_groups",
-			c.AssetGroupDelete,
-		},
-		Route{
-			"AssetGroupUpdate",
-			strings.ToUpper("Patch"),
-			"/v5/businesses/{business_id}/asset_groups",
-			c.AssetGroupUpdate,
-		},
 	}
 }
 
 
 
-// BusinessAssetMembersGet - Get members with access to asset
-func (c *BusinessAccessAssetsAPIController) BusinessAssetMembersGet(w http.ResponseWriter, r *http.Request) {
+// AssetGroupCreate - Create a new asset group.
+func (c *BusinessAccessAssetsAPIController) AssetGroupCreate(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	query, err := parseQuery(r.URL.RawQuery)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
 	businessIdParam := params["business_id"]
 	if businessIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	assetIdParam := params["asset_id"]
-	if assetIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"asset_id"}, nil)
+	var assetGroupInputCreateParam AssetGroupInputCreate
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&assetGroupInputCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	var fetchSystemUsersParam bool
-	if query.Has("fetch_system_users") {
-		param, err := parseBoolParameter(
-			query.Get("fetch_system_users"),
-			WithParse[bool](parseBool),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "fetch_system_users", Err: err}, nil)
-			return
-		}
-
-		fetchSystemUsersParam = param
-	} else {
-		var param bool = false
-		fetchSystemUsersParam = param
+	if err := AssertAssetGroupInputCreateRequired(assetGroupInputCreateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
+	if err := AssertAssetGroupInputCreateConstraints(assetGroupInputCreateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
 	}
-	var pageSizeParam int32
-	if query.Has("page_size") {
-		param, err := parseNumericParameter[int32](
-			query.Get("page_size"),
-			WithParse[int32](parseInt32),
-			WithMinimum[int32](1),
-			WithMaximum[int32](250),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
-			return
-		}
-
-		pageSizeParam = param
-	} else {
-		var param int32 = 25
-		pageSizeParam = param
-	}
-	var startIndexParam int32
-	if query.Has("start_index") {
-		param, err := parseNumericParameter[int32](
-			query.Get("start_index"),
-			WithParse[int32](parseInt32),
-			WithMinimum[int32](0),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "start_index", Err: err}, nil)
-			return
-		}
-
-		startIndexParam = param
-	} else {
-		var param int32 = 0
-		startIndexParam = param
-	}
-	result, err := c.service.BusinessAssetMembersGet(r.Context(), businessIdParam, assetIdParam, fetchSystemUsersParam, bookmarkParam, pageSizeParam, startIndexParam)
+	result, err := c.service.AssetGroupCreate(r.Context(), businessIdParam, assetGroupInputCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -294,67 +247,73 @@ func (c *BusinessAccessAssetsAPIController) BusinessAssetMembersGet(w http.Respo
 	_ = EncodeJSONResponse(result.Body, &result.Code, w)
 }
 
-// BusinessAssetPartnersGet - Get partners with access to asset
-func (c *BusinessAccessAssetsAPIController) BusinessAssetPartnersGet(w http.ResponseWriter, r *http.Request) {
+// AssetGroupDelete - Delete asset groups.
+func (c *BusinessAccessAssetsAPIController) AssetGroupDelete(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	query, err := parseQuery(r.URL.RawQuery)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
 	businessIdParam := params["business_id"]
 	if businessIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	assetIdParam := params["asset_id"]
-	if assetIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"asset_id"}, nil)
+	var assetGroupDeletionDeleteParam AssetGroupDeletionDelete
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&assetGroupDeletionDeleteParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	var startIndexParam int32
-	if query.Has("start_index") {
-		param, err := parseNumericParameter[int32](
-			query.Get("start_index"),
-			WithParse[int32](parseInt32),
-			WithMinimum[int32](0),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "start_index", Err: err}, nil)
+	if err := AssertAssetGroupDeletionDeleteRequired(assetGroupDeletionDeleteParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertAssetGroupDeletionDeleteConstraints(assetGroupDeletionDeleteParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.AssetGroupDelete(r.Context(), businessIdParam, assetGroupDeletionDeleteParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// AssetGroupUpdate - Update asset groups.
+func (c *BusinessAccessAssetsAPIController) AssetGroupUpdate(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	businessIdParam := params["business_id"]
+	if businessIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
+		return
+	}
+	var assetGroupModificationReadOrUpdateParam AssetGroupModificationReadOrUpdate
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&assetGroupModificationReadOrUpdateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
 			return
 		}
-
-		startIndexParam = param
-	} else {
-		var param int32 = 0
-		startIndexParam = param
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
+	if err := AssertAssetGroupModificationReadOrUpdateRequired(assetGroupModificationReadOrUpdateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
 	}
-	var pageSizeParam int32
-	if query.Has("page_size") {
-		param, err := parseNumericParameter[int32](
-			query.Get("page_size"),
-			WithParse[int32](parseInt32),
-			WithMinimum[int32](1),
-			WithMaximum[int32](250),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
-			return
-		}
-
-		pageSizeParam = param
-	} else {
-		var param int32 = 25
-		pageSizeParam = param
+	if err := AssertAssetGroupModificationReadOrUpdateConstraints(assetGroupModificationReadOrUpdateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
 	}
-	result, err := c.service.BusinessAssetPartnersGet(r.Context(), businessIdParam, assetIdParam, startIndexParam, bookmarkParam, pageSizeParam)
+	result, err := c.service.AssetGroupUpdate(r.Context(), businessIdParam, assetGroupModificationReadOrUpdateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -465,6 +424,238 @@ func (c *BusinessAccessAssetsAPIController) BusinessAssetsGet(w http.ResponseWri
 	_ = EncodeJSONResponse(result.Body, &result.Code, w)
 }
 
+// BusinessAssetMembersGet - Get members with access to asset
+func (c *BusinessAccessAssetsAPIController) BusinessAssetMembersGet(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	query, err := parseQuery(r.URL.RawQuery)
+	if err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	businessIdParam := params["business_id"]
+	if businessIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
+		return
+	}
+	assetIdParam := params["asset_id"]
+	if assetIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"asset_id"}, nil)
+		return
+	}
+	var startIndexParam int32
+	if query.Has("start_index") {
+		param, err := parseNumericParameter[int32](
+			query.Get("start_index"),
+			WithParse[int32](parseInt32),
+			WithMinimum[int32](0),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "start_index", Err: err}, nil)
+			return
+		}
+
+		startIndexParam = param
+	} else {
+		var param int32 = 0
+		startIndexParam = param
+	}
+	var fetchSystemUsersParam bool
+	if query.Has("fetch_system_users") {
+		param, err := parseBoolParameter(
+			query.Get("fetch_system_users"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "fetch_system_users", Err: err}, nil)
+			return
+		}
+
+		fetchSystemUsersParam = param
+	} else {
+		var param bool = false
+		fetchSystemUsersParam = param
+	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
+	var pageSizeParam int32
+	if query.Has("page_size") {
+		param, err := parseNumericParameter[int32](
+			query.Get("page_size"),
+			WithParse[int32](parseInt32),
+			WithMinimum[int32](1),
+			WithMaximum[int32](250),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
+			return
+		}
+
+		pageSizeParam = param
+	} else {
+		var param int32 = 25
+		pageSizeParam = param
+	}
+	result, err := c.service.BusinessAssetMembersGet(r.Context(), businessIdParam, assetIdParam, startIndexParam, fetchSystemUsersParam, bookmarkParam, pageSizeParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// BusinessAssetPartnersGet - Get partners with access to asset
+func (c *BusinessAccessAssetsAPIController) BusinessAssetPartnersGet(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	query, err := parseQuery(r.URL.RawQuery)
+	if err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	businessIdParam := params["business_id"]
+	if businessIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
+		return
+	}
+	assetIdParam := params["asset_id"]
+	if assetIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"asset_id"}, nil)
+		return
+	}
+	var startIndexParam int32
+	if query.Has("start_index") {
+		param, err := parseNumericParameter[int32](
+			query.Get("start_index"),
+			WithParse[int32](parseInt32),
+			WithMinimum[int32](0),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "start_index", Err: err}, nil)
+			return
+		}
+
+		startIndexParam = param
+	} else {
+		var param int32 = 0
+		startIndexParam = param
+	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
+	var pageSizeParam int32
+	if query.Has("page_size") {
+		param, err := parseNumericParameter[int32](
+			query.Get("page_size"),
+			WithParse[int32](parseInt32),
+			WithMinimum[int32](1),
+			WithMaximum[int32](250),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
+			return
+		}
+
+		pageSizeParam = param
+	} else {
+		var param int32 = 25
+		pageSizeParam = param
+	}
+	result, err := c.service.BusinessAssetPartnersGet(r.Context(), businessIdParam, assetIdParam, startIndexParam, bookmarkParam, pageSizeParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// BusinessMembersAssetAccessDelete - Delete member access to asset
+func (c *BusinessAccessAssetsAPIController) BusinessMembersAssetAccessDelete(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	businessIdParam := params["business_id"]
+	if businessIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
+		return
+	}
+	var businessMembersAssetAccessDeleteBodyParam BusinessMembersAssetAccessDeleteBody
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&businessMembersAssetAccessDeleteBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertBusinessMembersAssetAccessDeleteBodyRequired(businessMembersAssetAccessDeleteBodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertBusinessMembersAssetAccessDeleteBodyConstraints(businessMembersAssetAccessDeleteBodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.BusinessMembersAssetAccessDelete(r.Context(), businessIdParam, businessMembersAssetAccessDeleteBodyParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// BusinessMembersAssetAccessUpdate - Assign/Update member asset permissions
+func (c *BusinessAccessAssetsAPIController) BusinessMembersAssetAccessUpdate(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	businessIdParam := params["business_id"]
+	if businessIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
+		return
+	}
+	var updateMemberAssetAccessBodyParam UpdateMemberAssetAccessBody
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&updateMemberAssetAccessBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertUpdateMemberAssetAccessBodyRequired(updateMemberAssetAccessBodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertUpdateMemberAssetAccessBodyConstraints(updateMemberAssetAccessBodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.BusinessMembersAssetAccessUpdate(r.Context(), businessIdParam, updateMemberAssetAccessBodyParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
 // BusinessMemberAssetsGet - Get assets assigned to a member
 func (c *BusinessAccessAssetsAPIController) BusinessMemberAssetsGet(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
@@ -509,6 +700,63 @@ func (c *BusinessAccessAssetsAPIController) BusinessMemberAssetsGet(w http.Respo
 		var param int32 = 0
 		startIndexParam = param
 	}
+	var sortByParam AssetSortBy
+	if query.Has("sort_by") {
+		param := AssetSortBy(query.Get("sort_by"))
+
+		sortByParam = param
+	} else {
+	}
+	var sortAscendingParam bool
+	if query.Has("sort_ascending") {
+		param, err := parseBoolParameter(
+			query.Get("sort_ascending"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "sort_ascending", Err: err}, nil)
+			return
+		}
+
+		sortAscendingParam = param
+	} else {
+		var param bool = true
+		sortAscendingParam = param
+	}
+	var searchByParam AssetSearchBy
+	if query.Has("search_by") {
+		param := AssetSearchBy(query.Get("search_by"))
+
+		searchByParam = param
+	} else {
+	}
+	var searchValueParam string
+	if query.Has("search_value") {
+		param := query.Get("search_value")
+
+		searchValueParam = param
+	} else {
+	}
+	var assetPermissionTypeParam AssetPermissionType
+	if query.Has("asset_permission_type") {
+		param := AssetPermissionType(query.Get("asset_permission_type"))
+
+		assetPermissionTypeParam = param
+	} else {
+	}
+	var adAccountStatusesParam []NonDraftEntityStatus
+	if query.Has("ad_account_statuses") {
+		paramSplits := strings.Split(query.Get("ad_account_statuses"), ",")
+		adAccountStatusesParam = make([]NonDraftEntityStatus, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewNonDraftEntityStatusFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "ad_account_statuses", Err: err}, nil)
+				return
+			}
+			adAccountStatusesParam = append(adAccountStatusesParam, paramEnum)
+		}
+	}
 	var bookmarkParam string
 	if query.Has("bookmark") {
 		param := query.Get("bookmark")
@@ -534,73 +782,7 @@ func (c *BusinessAccessAssetsAPIController) BusinessMemberAssetsGet(w http.Respo
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	result, err := c.service.BusinessMemberAssetsGet(r.Context(), businessIdParam, memberIdParam, assetTypeParam, startIndexParam, bookmarkParam, pageSizeParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// BusinessMembersAssetAccessDelete - Delete member access to asset
-func (c *BusinessAccessAssetsAPIController) BusinessMembersAssetAccessDelete(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	businessIdParam := params["business_id"]
-	if businessIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
-		return
-	}
-	var businessMembersAssetAccessDeleteRequestParam BusinessMembersAssetAccessDeleteRequest
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&businessMembersAssetAccessDeleteRequestParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertBusinessMembersAssetAccessDeleteRequestRequired(businessMembersAssetAccessDeleteRequestParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertBusinessMembersAssetAccessDeleteRequestConstraints(businessMembersAssetAccessDeleteRequestParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.BusinessMembersAssetAccessDelete(r.Context(), businessIdParam, businessMembersAssetAccessDeleteRequestParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// BusinessMembersAssetAccessUpdate - Assign/Update member asset permissions
-func (c *BusinessAccessAssetsAPIController) BusinessMembersAssetAccessUpdate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	businessIdParam := params["business_id"]
-	if businessIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
-		return
-	}
-	var updateMemberAssetAccessBodyParam UpdateMemberAssetAccessBody
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&updateMemberAssetAccessBodyParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertUpdateMemberAssetAccessBodyRequired(updateMemberAssetAccessBodyParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertUpdateMemberAssetAccessBodyConstraints(updateMemberAssetAccessBodyParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.BusinessMembersAssetAccessUpdate(r.Context(), businessIdParam, updateMemberAssetAccessBodyParam)
+	result, err := c.service.BusinessMemberAssetsGet(r.Context(), businessIdParam, memberIdParam, assetTypeParam, startIndexParam, sortByParam, sortAscendingParam, searchByParam, searchValueParam, assetPermissionTypeParam, adAccountStatusesParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -622,6 +804,11 @@ func (c *BusinessAccessAssetsAPIController) DeletePartnerAssetAccessHandlerImpl(
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&deletePartnerAssetAccessBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -655,6 +842,11 @@ func (c *BusinessAccessAssetsAPIController) UpdatePartnerAssetAccessHandlerImpl(
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&updatePartnerAssetAccessBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -694,13 +886,13 @@ func (c *BusinessAccessAssetsAPIController) BusinessPartnerAssetAccessGet(w http
 		c.errorHandler(w, r, &RequiredError{"partner_id"}, nil)
 		return
 	}
-	var partnerTypeParam PartnerType
+	var partnerTypeParam string
 	if query.Has("partner_type") {
-		param := PartnerType(query.Get("partner_type"))
+		param := query.Get("partner_type")
 
 		partnerTypeParam = param
 	} else {
-		param := PartnerType("INTERNAL")
+		param := "INTERNAL"
 		partnerTypeParam = param
 	}
 	var assetTypeParam string
@@ -729,6 +921,50 @@ func (c *BusinessAccessAssetsAPIController) BusinessPartnerAssetAccessGet(w http
 		var param int32 = 0
 		startIndexParam = param
 	}
+	var sortByParam AssetSortBy
+	if query.Has("sort_by") {
+		param := AssetSortBy(query.Get("sort_by"))
+
+		sortByParam = param
+	} else {
+	}
+	var sortAscendingParam bool
+	if query.Has("sort_ascending") {
+		param, err := parseBoolParameter(
+			query.Get("sort_ascending"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "sort_ascending", Err: err}, nil)
+			return
+		}
+
+		sortAscendingParam = param
+	} else {
+		var param bool = true
+		sortAscendingParam = param
+	}
+	var searchByParam AssetSearchBy
+	if query.Has("search_by") {
+		param := AssetSearchBy(query.Get("search_by"))
+
+		searchByParam = param
+	} else {
+	}
+	var searchValueParam string
+	if query.Has("search_value") {
+		param := query.Get("search_value")
+
+		searchValueParam = param
+	} else {
+	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
 		param, err := parseNumericParameter[int32](
@@ -747,113 +983,7 @@ func (c *BusinessAccessAssetsAPIController) BusinessPartnerAssetAccessGet(w http
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.BusinessPartnerAssetAccessGet(r.Context(), businessIdParam, partnerIdParam, partnerTypeParam, assetTypeParam, startIndexParam, pageSizeParam, bookmarkParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// AssetGroupCreate - Create a new asset group.
-func (c *BusinessAccessAssetsAPIController) AssetGroupCreate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	businessIdParam := params["business_id"]
-	if businessIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
-		return
-	}
-	var createAssetGroupBodyParam CreateAssetGroupBody
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&createAssetGroupBodyParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertCreateAssetGroupBodyRequired(createAssetGroupBodyParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertCreateAssetGroupBodyConstraints(createAssetGroupBodyParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.AssetGroupCreate(r.Context(), businessIdParam, createAssetGroupBodyParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// AssetGroupDelete - Delete asset groups.
-func (c *BusinessAccessAssetsAPIController) AssetGroupDelete(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	businessIdParam := params["business_id"]
-	if businessIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
-		return
-	}
-	var deleteAssetGroupBodyParam DeleteAssetGroupBody
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&deleteAssetGroupBodyParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertDeleteAssetGroupBodyRequired(deleteAssetGroupBodyParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertDeleteAssetGroupBodyConstraints(deleteAssetGroupBodyParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.AssetGroupDelete(r.Context(), businessIdParam, deleteAssetGroupBodyParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// AssetGroupUpdate - Update asset groups.
-func (c *BusinessAccessAssetsAPIController) AssetGroupUpdate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	businessIdParam := params["business_id"]
-	if businessIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
-		return
-	}
-	var updateAssetGroupBodyParam UpdateAssetGroupBody
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&updateAssetGroupBodyParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertUpdateAssetGroupBodyRequired(updateAssetGroupBodyParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertUpdateAssetGroupBodyConstraints(updateAssetGroupBodyParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.AssetGroupUpdate(r.Context(), businessIdParam, updateAssetGroupBodyParam)
+	result, err := c.service.BusinessPartnerAssetAccessGet(r.Context(), businessIdParam, partnerIdParam, partnerTypeParam, assetTypeParam, startIndexParam, sortByParam, sortAscendingParam, searchByParam, searchValueParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

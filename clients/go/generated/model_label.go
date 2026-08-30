@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the Label type satisfies the MappedNullable interface at compile time
@@ -21,23 +23,24 @@ var _ MappedNullable = &Label{}
 // Label struct for Label
 type Label struct {
 	// Label ID.
-	Id *string `json:"id,omitempty"`
-	LabelType NullableLabelType `json:"label_type,omitempty"`
-	// Label parent entity ID.
-	ParentId *string `json:"parent_id,omitempty"`
-	// Label parent entity type.
-	ParentType NullableString `json:"parent_type,omitempty"`
-	Status NullableLabelStatus `json:"status,omitempty"`
-	// Label name.
-	Value *string `json:"value,omitempty"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
+	LabelType NullableNullableLabelType `json:"label_type"`
+	Status NullableNullableLabelStatus `json:"status,omitempty"`
+	// Label name. 100-character limit.
+	Value string `json:"value"`
 }
+
+type _Label Label
 
 // NewLabel instantiates a new Label object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLabel() *Label {
+func NewLabel(id string, labelType NullableNullableLabelType, value string) *Label {
 	this := Label{}
+	this.Id = id
+	this.LabelType = labelType
+	this.Value = value
 	return &this
 }
 
@@ -49,158 +52,60 @@ func NewLabelWithDefaults() *Label {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *Label) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *Label) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *Label) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *Label) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetLabelType returns the LabelType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Label) GetLabelType() LabelType {
-	if o == nil || IsNil(o.LabelType.Get()) {
-		var ret LabelType
+// GetLabelType returns the LabelType field value
+// If the value is explicit nil, the zero value for NullableLabelType will be returned
+func (o *Label) GetLabelType() NullableLabelType {
+	if o == nil || o.LabelType.Get() == nil {
+		var ret NullableLabelType
 		return ret
 	}
+
 	return *o.LabelType.Get()
 }
 
-// GetLabelTypeOk returns a tuple with the LabelType field value if set, nil otherwise
+// GetLabelTypeOk returns a tuple with the LabelType field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Label) GetLabelTypeOk() (*LabelType, bool) {
+func (o *Label) GetLabelTypeOk() (*NullableLabelType, bool) {
 	if o == nil {
 		return nil, false
 	}
 	return o.LabelType.Get(), o.LabelType.IsSet()
 }
 
-// HasLabelType returns a boolean if a field has been set.
-func (o *Label) HasLabelType() bool {
-	if o != nil && o.LabelType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLabelType gets a reference to the given NullableLabelType and assigns it to the LabelType field.
-func (o *Label) SetLabelType(v LabelType) {
+// SetLabelType sets field value
+func (o *Label) SetLabelType(v NullableLabelType) {
 	o.LabelType.Set(&v)
-}
-// SetLabelTypeNil sets the value for LabelType to be an explicit nil
-func (o *Label) SetLabelTypeNil() {
-	o.LabelType.Set(nil)
-}
-
-// UnsetLabelType ensures that no value is present for LabelType, not even an explicit nil
-func (o *Label) UnsetLabelType() {
-	o.LabelType.Unset()
-}
-
-// GetParentId returns the ParentId field value if set, zero value otherwise.
-func (o *Label) GetParentId() string {
-	if o == nil || IsNil(o.ParentId) {
-		var ret string
-		return ret
-	}
-	return *o.ParentId
-}
-
-// GetParentIdOk returns a tuple with the ParentId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Label) GetParentIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ParentId) {
-		return nil, false
-	}
-	return o.ParentId, true
-}
-
-// HasParentId returns a boolean if a field has been set.
-func (o *Label) HasParentId() bool {
-	if o != nil && !IsNil(o.ParentId) {
-		return true
-	}
-
-	return false
-}
-
-// SetParentId gets a reference to the given string and assigns it to the ParentId field.
-func (o *Label) SetParentId(v string) {
-	o.ParentId = &v
-}
-
-// GetParentType returns the ParentType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Label) GetParentType() string {
-	if o == nil || IsNil(o.ParentType.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ParentType.Get()
-}
-
-// GetParentTypeOk returns a tuple with the ParentType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Label) GetParentTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ParentType.Get(), o.ParentType.IsSet()
-}
-
-// HasParentType returns a boolean if a field has been set.
-func (o *Label) HasParentType() bool {
-	if o != nil && o.ParentType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetParentType gets a reference to the given NullableString and assigns it to the ParentType field.
-func (o *Label) SetParentType(v string) {
-	o.ParentType.Set(&v)
-}
-// SetParentTypeNil sets the value for ParentType to be an explicit nil
-func (o *Label) SetParentTypeNil() {
-	o.ParentType.Set(nil)
-}
-
-// UnsetParentType ensures that no value is present for ParentType, not even an explicit nil
-func (o *Label) UnsetParentType() {
-	o.ParentType.Unset()
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Label) GetStatus() LabelStatus {
+func (o *Label) GetStatus() NullableLabelStatus {
 	if o == nil || IsNil(o.Status.Get()) {
-		var ret LabelStatus
+		var ret NullableLabelStatus
 		return ret
 	}
 	return *o.Status.Get()
@@ -209,7 +114,7 @@ func (o *Label) GetStatus() LabelStatus {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Label) GetStatusOk() (*LabelStatus, bool) {
+func (o *Label) GetStatusOk() (*NullableLabelStatus, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -225,8 +130,8 @@ func (o *Label) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given NullableLabelStatus and assigns it to the Status field.
-func (o *Label) SetStatus(v LabelStatus) {
+// SetStatus gets a reference to the given NullableNullableLabelStatus and assigns it to the Status field.
+func (o *Label) SetStatus(v NullableLabelStatus) {
 	o.Status.Set(&v)
 }
 // SetStatusNil sets the value for Status to be an explicit nil
@@ -239,36 +144,28 @@ func (o *Label) UnsetStatus() {
 	o.Status.Unset()
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value
 func (o *Label) GetValue() string {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Value
+
+	return o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
 func (o *Label) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return &o.Value, true
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *Label) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
-		return true
-	}
-
-	return false
-}
-
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue sets field value
 func (o *Label) SetValue(v string) {
-	o.Value = &v
+	o.Value = v
 }
 
 func (o Label) MarshalJSON() ([]byte, error) {
@@ -281,25 +178,52 @@ func (o Label) MarshalJSON() ([]byte, error) {
 
 func (o Label) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.LabelType.IsSet() {
-		toSerialize["label_type"] = o.LabelType.Get()
-	}
-	if !IsNil(o.ParentId) {
-		toSerialize["parent_id"] = o.ParentId
-	}
-	if o.ParentType.IsSet() {
-		toSerialize["parent_type"] = o.ParentType.Get()
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["label_type"] = o.LabelType.Get()
 	if o.Status.IsSet() {
 		toSerialize["status"] = o.Status.Get()
 	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
-	}
+	toSerialize["value"] = o.Value
 	return toSerialize, nil
+}
+
+func (o *Label) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"label_type",
+		"value",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLabel := _Label{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLabel)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Label(varLabel)
+
+	return err
 }
 
 type NullableLabel struct {

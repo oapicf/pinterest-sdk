@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const BusinessRoleForInvite = require('../models/BusinessRoleForInvite');
 const InviteType = require('../models/InviteType');
 
 module.exports = {
@@ -7,14 +8,7 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}business_role`,
-                label: `The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you. - [${labelPrefix}business_role]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'EMPLOYEE',
-                    'BIZ_ADMIN',
-                    'PARTNER',
-                ],
+                ...BusinessRoleForInvite.fields(`${keyPrefix}business_role`, isInput),
             },
             {
                 key: `${keyPrefix}invite_type`,

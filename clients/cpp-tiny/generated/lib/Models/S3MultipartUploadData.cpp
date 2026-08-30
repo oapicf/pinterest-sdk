@@ -81,7 +81,7 @@ S3MultipartUploadData::getFileParts()
 }
 
 void
-S3MultipartUploadData::setFileParts(std::list <S3FilePart> file_parts)
+S3MultipartUploadData::setFileParts(std::list<S3FilePart> file_parts)
 {
 	this->file_parts = file_parts;
 }

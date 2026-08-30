@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,10 +27,10 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.LeadsExportCreateRequest
-import org.openapitools.client.models.LeadsExportCreateResponse
 import org.openapitools.client.models.LeadsExportResponseData
+import org.openapitools.client.models.LeadsExports
+import org.openapitools.client.models.LeadsExportsCreate
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -44,17 +52,17 @@ open class LeadsExportApi(basePath: kotlin.String = defaultBasePath, client: Cal
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * POST /ad_accounts/{ad_account_id}/leads_export
      * Create a request to export leads collected from a lead ad
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps. If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a &#x60;leads_export_id&#x60; token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      * @param adAccountId Unique identifier of an ad account.
-     * @param leadsExportCreateRequest 
-     * @return LeadsExportCreateResponse
+     * @param leadsExportsCreate 
+     * @return LeadsExports
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -63,11 +71,11 @@ open class LeadsExportApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun leadsExportCreate(adAccountId: kotlin.String, leadsExportCreateRequest: LeadsExportCreateRequest) : LeadsExportCreateResponse {
-        val localVarResponse = leadsExportCreateWithHttpInfo(adAccountId = adAccountId, leadsExportCreateRequest = leadsExportCreateRequest)
+    fun leadsExportCreate(adAccountId: kotlin.String, leadsExportsCreate: LeadsExportsCreate) : LeadsExports {
+        val localVarResponse = leadsExportCreateWithHttpInfo(adAccountId = adAccountId, leadsExportsCreate = leadsExportsCreate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as LeadsExportCreateResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as LeadsExports
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -84,19 +92,19 @@ open class LeadsExportApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * POST /ad_accounts/{ad_account_id}/leads_export
      * Create a request to export leads collected from a lead ad
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps. If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a &#x60;leads_export_id&#x60; token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      * @param adAccountId Unique identifier of an ad account.
-     * @param leadsExportCreateRequest 
-     * @return ApiResponse<LeadsExportCreateResponse?>
+     * @param leadsExportsCreate 
+     * @return ApiResponse<LeadsExports?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun leadsExportCreateWithHttpInfo(adAccountId: kotlin.String, leadsExportCreateRequest: LeadsExportCreateRequest) : ApiResponse<LeadsExportCreateResponse?> {
-        val localVariableConfig = leadsExportCreateRequestConfig(adAccountId = adAccountId, leadsExportCreateRequest = leadsExportCreateRequest)
+    fun leadsExportCreateWithHttpInfo(adAccountId: kotlin.String, leadsExportsCreate: LeadsExportsCreate) : ApiResponse<LeadsExports?> {
+        val localVariableConfig = leadsExportCreateRequestConfig(adAccountId = adAccountId, leadsExportsCreate = leadsExportsCreate)
 
-        return request<LeadsExportCreateRequest, LeadsExportCreateResponse>(
+        return request<LeadsExportsCreate, LeadsExports>(
             localVariableConfig
         )
     }
@@ -105,11 +113,11 @@ open class LeadsExportApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * To obtain the request config of the operation leadsExportCreate
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param leadsExportCreateRequest 
+     * @param leadsExportsCreate 
      * @return RequestConfig
      */
-    fun leadsExportCreateRequestConfig(adAccountId: kotlin.String, leadsExportCreateRequest: LeadsExportCreateRequest) : RequestConfig<LeadsExportCreateRequest> {
-        val localVariableBody = leadsExportCreateRequest
+    fun leadsExportCreateRequestConfig(adAccountId: kotlin.String, leadsExportsCreate: LeadsExportsCreate) : RequestConfig<LeadsExportsCreate> {
+        val localVariableBody = leadsExportsCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -128,7 +136,7 @@ open class LeadsExportApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * GET /ad_accounts/{ad_account_id}/leads_export/{leads_export_id}
      * Get the lead export from the lead export create call
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps. If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      * @param adAccountId Unique identifier of an ad account.
      * @param leadsExportId lead_export_id token returned from the create a lead export endpoint
      * @return LeadsExportResponseData
@@ -161,7 +169,7 @@ open class LeadsExportApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * GET /ad_accounts/{ad_account_id}/leads_export/{leads_export_id}
      * Get the lead export from the lead export create call
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps. If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      * @param adAccountId Unique identifier of an ad account.
      * @param leadsExportId lead_export_id token returned from the create a lead export endpoint
      * @return ApiResponse<LeadsExportResponseData?>

@@ -2,7 +2,7 @@
 /*
  * BulkEntityType.h
  *
- * Refers ads entity type. Schedule enum is only applicable to beta users
+ * Refers ads entity type.
  */
 
 #ifndef TINY_CPP_CLIENT_BulkEntityType_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief Refers ads entity type. Schedule enum is only applicable to beta users
+/*! \brief Refers ads entity type.
  *
  *  \ingroup Models
  *

@@ -1,0 +1,243 @@
+package org.openapitools.model;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.model.BrandAccountProfileImageUpdate;
+import org.openapitools.model.Country;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+/**
+ * Resource create or update operation model.
+ */
+@ApiModel(description="Resource create or update operation model.")
+
+public class BrandAccountUpdate  {
+  
+ /**
+  * Brand Account about information
+  */
+  @ApiModelProperty(value = "Brand Account about information")
+  private String about;
+
+  @ApiModelProperty(value = "")
+  @Valid
+  private Country country;
+
+ /**
+  * Brand Account name
+  */
+  @ApiModelProperty(value = "Brand Account name")
+  private String name;
+
+  @ApiModelProperty(value = "")
+  @Valid
+  private BrandAccountProfileImageUpdate profileImage;
+
+ /**
+  * Brand Account username
+  */
+  @ApiModelProperty(value = "Brand Account username")
+  private String username;
+
+ /**
+  * Brand Account website
+  */
+  @ApiModelProperty(value = "Brand Account website")
+  private String website;
+ /**
+  * Brand Account about information
+  * @return about
+  */
+  @JsonProperty("about")
+  public String getAbout() {
+    return about;
+  }
+
+  /**
+   * Sets the <code>about</code> property.
+   */
+ public void setAbout(String about) {
+    this.about = about;
+  }
+
+  /**
+   * Sets the <code>about</code> property.
+   */
+  public BrandAccountUpdate about(String about) {
+    this.about = about;
+    return this;
+  }
+
+ /**
+  * Get country
+  * @return country
+  */
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
+  }
+
+  /**
+   * Sets the <code>country</code> property.
+   */
+ public void setCountry(Country country) {
+    this.country = country;
+  }
+
+  /**
+   * Sets the <code>country</code> property.
+   */
+  public BrandAccountUpdate country(Country country) {
+    this.country = country;
+    return this;
+  }
+
+ /**
+  * Brand Account name
+  * @return name
+  */
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Sets the <code>name</code> property.
+   */
+ public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * Sets the <code>name</code> property.
+   */
+  public BrandAccountUpdate name(String name) {
+    this.name = name;
+    return this;
+  }
+
+ /**
+  * Get profileImage
+  * @return profileImage
+  */
+  @JsonProperty("profile_image")
+  public BrandAccountProfileImageUpdate getProfileImage() {
+    return profileImage;
+  }
+
+  /**
+   * Sets the <code>profileImage</code> property.
+   */
+ public void setProfileImage(BrandAccountProfileImageUpdate profileImage) {
+    this.profileImage = profileImage;
+  }
+
+  /**
+   * Sets the <code>profileImage</code> property.
+   */
+  public BrandAccountUpdate profileImage(BrandAccountProfileImageUpdate profileImage) {
+    this.profileImage = profileImage;
+    return this;
+  }
+
+ /**
+  * Brand Account username
+  * @return username
+  */
+  @JsonProperty("username")
+  public String getUsername() {
+    return username;
+  }
+
+  /**
+   * Sets the <code>username</code> property.
+   */
+ public void setUsername(String username) {
+    this.username = username;
+  }
+
+  /**
+   * Sets the <code>username</code> property.
+   */
+  public BrandAccountUpdate username(String username) {
+    this.username = username;
+    return this;
+  }
+
+ /**
+  * Brand Account website
+  * @return website
+  */
+  @JsonProperty("website")
+  public String getWebsite() {
+    return website;
+  }
+
+  /**
+   * Sets the <code>website</code> property.
+   */
+ public void setWebsite(String website) {
+    this.website = website;
+  }
+
+  /**
+   * Sets the <code>website</code> property.
+   */
+  public BrandAccountUpdate website(String website) {
+    this.website = website;
+    return this;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    BrandAccountUpdate brandAccountUpdate = (BrandAccountUpdate) o;
+    return Objects.equals(this.about, brandAccountUpdate.about) &&
+        Objects.equals(this.country, brandAccountUpdate.country) &&
+        Objects.equals(this.name, brandAccountUpdate.name) &&
+        Objects.equals(this.profileImage, brandAccountUpdate.profileImage) &&
+        Objects.equals(this.username, brandAccountUpdate.username) &&
+        Objects.equals(this.website, brandAccountUpdate.website);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(about, country, name, profileImage, username, website);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class BrandAccountUpdate {\n");
+    
+    sb.append("    about: ").append(toIndentedString(about)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    profileImage: ").append(toIndentedString(profileImage)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    website: ").append(toIndentedString(website)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private static String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

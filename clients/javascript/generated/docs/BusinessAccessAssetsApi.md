@@ -21,11 +21,11 @@ Method | HTTP request | Description
 
 ## assetGroupCreate
 
-> CreateAssetGroupResponse assetGroupCreate(businessId, createAssetGroupBody)
+> AssetGroupInput assetGroupCreate(businessId, assetGroupInputCreate)
 
 Create a new asset group.
 
-Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 
 ### Example
 
@@ -37,9 +37,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessAssetsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let createAssetGroupBody = new PinterestSdk.CreateAssetGroupBody(); // CreateAssetGroupBody | 
-apiInstance.assetGroupCreate(businessId, createAssetGroupBody, (error, data, response) => {
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let assetGroupInputCreate = new PinterestSdk.AssetGroupInputCreate(); // AssetGroupInputCreate | 
+apiInstance.assetGroupCreate(businessId, assetGroupInputCreate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -54,11 +54,11 @@ apiInstance.assetGroupCreate(businessId, createAssetGroupBody, (error, data, res
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
- **createAssetGroupBody** | [**CreateAssetGroupBody**](CreateAssetGroupBody.md)|  | 
+ **assetGroupInputCreate** | [**AssetGroupInputCreate**](AssetGroupInputCreate.md)|  | 
 
 ### Return type
 
-[**CreateAssetGroupResponse**](CreateAssetGroupResponse.md)
+[**AssetGroupInput**](AssetGroupInput.md)
 
 ### Authorization
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 ## assetGroupDelete
 
-> DeleteAssetGroupResponse assetGroupDelete(businessId, deleteAssetGroupBody)
+> AssetGroupDeletion assetGroupDelete(businessId, assetGroupDeletionDelete)
 
 Delete asset groups.
 
@@ -88,9 +88,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessAssetsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let deleteAssetGroupBody = new PinterestSdk.DeleteAssetGroupBody(); // DeleteAssetGroupBody | 
-apiInstance.assetGroupDelete(businessId, deleteAssetGroupBody, (error, data, response) => {
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let assetGroupDeletionDelete = new PinterestSdk.AssetGroupDeletionDelete(); // AssetGroupDeletionDelete | 
+apiInstance.assetGroupDelete(businessId, assetGroupDeletionDelete, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -105,11 +105,11 @@ apiInstance.assetGroupDelete(businessId, deleteAssetGroupBody, (error, data, res
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
- **deleteAssetGroupBody** | [**DeleteAssetGroupBody**](DeleteAssetGroupBody.md)|  | 
+ **assetGroupDeletionDelete** | [**AssetGroupDeletionDelete**](AssetGroupDeletionDelete.md)|  | 
 
 ### Return type
 
-[**DeleteAssetGroupResponse**](DeleteAssetGroupResponse.md)
+[**AssetGroupDeletion**](AssetGroupDeletion.md)
 
 ### Authorization
 
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ## assetGroupUpdate
 
-> UpdateAssetGroupResponse assetGroupUpdate(businessId, updateAssetGroupBody)
+> AssetGroupModification assetGroupUpdate(businessId, assetGroupModificationReadOrUpdate)
 
 Update asset groups.
 
@@ -139,9 +139,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessAssetsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let updateAssetGroupBody = new PinterestSdk.UpdateAssetGroupBody(); // UpdateAssetGroupBody | 
-apiInstance.assetGroupUpdate(businessId, updateAssetGroupBody, (error, data, response) => {
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let assetGroupModificationReadOrUpdate = new PinterestSdk.AssetGroupModificationReadOrUpdate(); // AssetGroupModificationReadOrUpdate | 
+apiInstance.assetGroupUpdate(businessId, assetGroupModificationReadOrUpdate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -156,11 +156,11 @@ apiInstance.assetGroupUpdate(businessId, updateAssetGroupBody, (error, data, res
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
- **updateAssetGroupBody** | [**UpdateAssetGroupBody**](UpdateAssetGroupBody.md)|  | 
+ **assetGroupModificationReadOrUpdate** | [**AssetGroupModificationReadOrUpdate**](AssetGroupModificationReadOrUpdate.md)|  | 
 
 ### Return type
 
-[**UpdateAssetGroupResponse**](UpdateAssetGroupResponse.md)
+[**AssetGroupModification**](AssetGroupModification.md)
 
 ### Authorization
 
@@ -190,13 +190,13 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessAssetsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let assetId = "729090764583391194"; // String | Unique identifier of a business asset.
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let assetId = "assetId_example"; // String | Unique identifier of a business asset.
 let opts = {
+  'startIndex': 0, // Number | An index to start fetching the results from. Only the results starting from this index will be returned.
   'fetchSystemUsers': false, // Boolean | Fetches system users if True. Fetches regular user employees if False.
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  'startIndex': 0 // Number | An index to start fetching the results from. Only the results starting from this index will be returned.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.businessAssetMembersGet(businessId, assetId, opts, (error, data, response) => {
   if (error) {
@@ -214,10 +214,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
  **assetId** | **String**| Unique identifier of a business asset. | 
+ **startIndex** | **Number**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **fetchSystemUsers** | **Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **startIndex** | **Number**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## businessAssetPartnersGet
 
-> BusinessAssetPartnersGet200Response businessAssetPartnersGet(businessId, assetId, opts)
+> BusinessAssetMembersGet200Response businessAssetPartnersGet(businessId, assetId, opts)
 
 Get partners with access to asset
 
@@ -251,12 +251,12 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessAssetsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let assetId = "729090764583391194"; // String | Unique identifier of a business asset.
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let assetId = "assetId_example"; // String | Unique identifier of a business asset.
 let opts = {
   'startIndex': 0, // Number | An index to start fetching the results from. Only the results starting from this index will be returned.
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.businessAssetPartnersGet(businessId, assetId, opts, (error, data, response) => {
   if (error) {
@@ -276,11 +276,11 @@ Name | Type | Description  | Notes
  **assetId** | **String**| Unique identifier of a business asset. | 
  **startIndex** | **Number**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BusinessAssetPartnersGet200Response**](BusinessAssetPartnersGet200Response.md)
+[**BusinessAssetMembersGet200Response**](BusinessAssetMembersGet200Response.md)
 
 ### Authorization
 
@@ -310,15 +310,15 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessAssetsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
 let opts = {
   'permissions': [new PinterestSdk.PermissionsWithOwner()], // [PermissionsWithOwner] | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.
-  'childAssetId': "549764894835", // String | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
-  'assetGroupId': "7078106104032", // String | An asset group unique identifier. Used to fetch assets contained within the specified asset group.
-  'assetType': "AD_ACCOUNT", // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
+  'childAssetId': "childAssetId_example", // String | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
+  'assetGroupId': "assetGroupId_example", // String | An asset group unique identifier. Used to fetch assets contained within the specified asset group.
+  'assetType': "'AD_ACCOUNT'", // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
   'startIndex': 0, // Number | An index to start fetching the results from. Only the results starting from this index will be returned.
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.businessAssetsGet(businessId, opts, (error, data, response) => {
   if (error) {
@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
  **assetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &#39;AD_ACCOUNT&#39;]
  **startIndex** | **Number**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 
 ## businessMemberAssetsGet
 
-> BusinessMemberAssetsGet200Response businessMemberAssetsGet(businessId, memberId, opts)
+> BusinessMemberAssetsGetResponse businessMemberAssetsGet(businessId, memberId, opts)
 
 Get assets assigned to a member
 
@@ -375,13 +375,19 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessAssetsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let memberId = "729090764583391194"; // String | The member id to fetch assets for.
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let memberId = "memberId_example"; // String | The member id to fetch assets for.
 let opts = {
-  'assetType': "AD_ACCOUNT", // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
+  'assetType': "'AD_ACCOUNT'", // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
   'startIndex': 0, // Number | An index to start fetching the results from. Only the results starting from this index will be returned.
+  'sortBy': new PinterestSdk.AssetSortBy(), // AssetSortBy | The field to sort member assets by
+  'sortAscending': true, // Boolean | Sort assets in ascending order
+  'searchBy': new PinterestSdk.AssetSearchBy(), // AssetSearchBy | The field to search member assets by
+  'searchValue': "searchValue_example", // String | The value to search for
+  'assetPermissionType': new PinterestSdk.AssetPermissionType(), // AssetPermissionType | The type of asset permission to filter by
+  'adAccountStatuses': [new PinterestSdk.NonDraftEntityStatus()], // [NonDraftEntityStatus] | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.businessMemberAssetsGet(businessId, memberId, opts, (error, data, response) => {
   if (error) {
@@ -401,12 +407,18 @@ Name | Type | Description  | Notes
  **memberId** | **String**| The member id to fetch assets for. | 
  **assetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &#39;AD_ACCOUNT&#39;]
  **startIndex** | **Number**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
+ **sortBy** | [**AssetSortBy**](.md)| The field to sort member assets by | [optional] 
+ **sortAscending** | **Boolean**| Sort assets in ascending order | [optional] [default to true]
+ **searchBy** | [**AssetSearchBy**](.md)| The field to search member assets by | [optional] 
+ **searchValue** | **String**| The value to search for | [optional] 
+ **assetPermissionType** | [**AssetPermissionType**](.md)| The type of asset permission to filter by | [optional] 
+ **adAccountStatuses** | [**[NonDraftEntityStatus]**](NonDraftEntityStatus.md)| A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | [optional] 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BusinessMemberAssetsGet200Response**](BusinessMemberAssetsGet200Response.md)
+[**BusinessMemberAssetsGetResponse**](BusinessMemberAssetsGetResponse.md)
 
 ### Authorization
 
@@ -420,7 +432,7 @@ Name | Type | Description  | Notes
 
 ## businessMembersAssetAccessDelete
 
-> DeleteMemberAccessResultsResponseArray businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest)
+> DeleteMemberAccessResultsResponseArray businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteBody)
 
 Delete member access to asset
 
@@ -436,9 +448,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessAssetsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let businessMembersAssetAccessDeleteRequest = new PinterestSdk.BusinessMembersAssetAccessDeleteRequest(); // BusinessMembersAssetAccessDeleteRequest | List member assset permissions to delete.
-apiInstance.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest, (error, data, response) => {
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let businessMembersAssetAccessDeleteBody = new PinterestSdk.BusinessMembersAssetAccessDeleteBody(); // BusinessMembersAssetAccessDeleteBody | 
+apiInstance.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteBody, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -453,7 +465,7 @@ apiInstance.businessMembersAssetAccessDelete(businessId, businessMembersAssetAcc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
- **businessMembersAssetAccessDeleteRequest** | [**BusinessMembersAssetAccessDeleteRequest**](BusinessMembersAssetAccessDeleteRequest.md)| List member assset permissions to delete. | 
+ **businessMembersAssetAccessDeleteBody** | [**BusinessMembersAssetAccessDeleteBody**](BusinessMembersAssetAccessDeleteBody.md)|  | 
 
 ### Return type
 
@@ -475,7 +487,7 @@ Name | Type | Description  | Notes
 
 Assign/Update member asset permissions
 
-Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 
 ### Example
 
@@ -487,8 +499,8 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessAssetsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let updateMemberAssetAccessBody = new PinterestSdk.UpdateMemberAssetAccessBody(); // UpdateMemberAssetAccessBody | List of member asset permissions to create or update.
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let updateMemberAssetAccessBody = new PinterestSdk.UpdateMemberAssetAccessBody(); // UpdateMemberAssetAccessBody | 
 apiInstance.businessMembersAssetAccessUpdate(businessId, updateMemberAssetAccessBody, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -504,7 +516,7 @@ apiInstance.businessMembersAssetAccessUpdate(businessId, updateMemberAssetAccess
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
- **updateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md)| List of member asset permissions to create or update. | 
+ **updateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md)|  | 
 
 ### Return type
 
@@ -538,14 +550,18 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessAssetsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let partnerId = "729090764583391194"; // String | The partner id to be bound to the Business
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let partnerId = "partnerId_example"; // String | The partner id to be bound to the Business
 let opts = {
-  'partnerType': new PinterestSdk.PartnerType(), // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
-  'assetType': "AD_ACCOUNT", // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
+  'partnerType': "'INTERNAL'", // String | Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+  'assetType': "'AD_ACCOUNT'", // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
   'startIndex': 0, // Number | An index to start fetching the results from. Only the results starting from this index will be returned.
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  'bookmark': "bookmark_example" // String | Cursor used to fetch the next page of items
+  'sortBy': new PinterestSdk.AssetSortBy(), // AssetSortBy | The field to sort member assets by
+  'sortAscending': true, // Boolean | Sort assets in ascending order
+  'searchBy': new PinterestSdk.AssetSearchBy(), // AssetSearchBy | The field to search member assets by
+  'searchValue': "searchValue_example", // String | The value to search for
+  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.businessPartnerAssetAccessGet(businessId, partnerId, opts, (error, data, response) => {
   if (error) {
@@ -563,11 +579,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
  **partnerId** | **String**| The partner id to be bound to the Business | 
- **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
+ **partnerType** | **String**| Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to &#39;INTERNAL&#39;]
  **assetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &#39;AD_ACCOUNT&#39;]
  **startIndex** | **Number**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **sortBy** | [**AssetSortBy**](.md)| The field to sort member assets by | [optional] 
+ **sortAscending** | **Boolean**| Sort assets in ascending order | [optional] [default to true]
+ **searchBy** | [**AssetSearchBy**](.md)| The field to search member assets by | [optional] 
+ **searchValue** | **String**| The value to search for | [optional] 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -585,7 +605,7 @@ Name | Type | Description  | Notes
 
 ## deletePartnerAssetAccessHandlerImpl
 
-> DeletePartnerAssetsResultsResponseArray deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody)
+> DeletePartnerAssetAccessResultsResponseArray deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody)
 
 Delete partner access to asset
 
@@ -601,7 +621,7 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessAssetsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
 let deletePartnerAssetAccessBody = new PinterestSdk.DeletePartnerAssetAccessBody(); // DeletePartnerAssetAccessBody | 
 apiInstance.deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody, (error, data, response) => {
   if (error) {
@@ -622,7 +642,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeletePartnerAssetsResultsResponseArray**](DeletePartnerAssetsResultsResponseArray.md)
+[**DeletePartnerAssetAccessResultsResponseArray**](DeletePartnerAssetAccessResultsResponseArray.md)
 
 ### Authorization
 
@@ -652,8 +672,8 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessAssetsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let updatePartnerAssetAccessBody = new PinterestSdk.UpdatePartnerAssetAccessBody(); // UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let updatePartnerAssetAccessBody = new PinterestSdk.UpdatePartnerAssetAccessBody(); // UpdatePartnerAssetAccessBody | 
 apiInstance.updatePartnerAssetAccessHandlerImpl(businessId, updatePartnerAssetAccessBody, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -669,7 +689,7 @@ apiInstance.updatePartnerAssetAccessHandlerImpl(businessId, updatePartnerAssetAc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
- **updatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md)| A list of assets and permissions to assign to your partners. | 
+ **updatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md)|  | 
 
 ### Return type
 

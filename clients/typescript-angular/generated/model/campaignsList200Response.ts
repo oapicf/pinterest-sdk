@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { CampaignResponse } from './campaignResponse';
+import { Campaign } from './campaign';
 
 
 export interface CampaignsList200Response { 
     bookmark?: string | null;
-    items: Array<CampaignResponse>;
+    items: Array<Campaign>;
 }
 

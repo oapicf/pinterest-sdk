@@ -8,24 +8,32 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.CatalogsCreativeAssetsAttributes
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Pin
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Object describing a hotel record
+ * Object describing a creative assets item record
  *
  * @param catalogType 
+ * @param itemResponseKind Discriminator literal identifying this leaf inside an `ItemResponse` payload.
  * @param attributes 
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  * @param pins The pins mapped to the item
@@ -35,7 +43,11 @@ import com.squareup.moshi.JsonClass
 data class CatalogsCreativeAssetsItemResponse (
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
+    val catalogType: CatalogsCreativeAssetsItemResponse.CatalogType,
+
+    /* Discriminator literal identifying this leaf inside an `ItemResponse` payload. */
+    @Json(name = "item_response_kind")
+    val itemResponseKind: CatalogsCreativeAssetsItemResponse.ItemResponseKind,
 
     @Json(name = "attributes")
     val attributes: CatalogsCreativeAssetsAttributes? = null,
@@ -50,6 +62,24 @@ data class CatalogsCreativeAssetsItemResponse (
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: CREATIVE_ASSETS
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "CREATIVE_ASSETS") CREATIVE_ASSETS("CREATIVE_ASSETS");
+    }
+    /**
+     * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+     *
+     * Values: creative_assets_item
+     */
+    @JsonClass(generateAdapter = false)
+    enum class ItemResponseKind(val value: kotlin.String) {
+        @Json(name = "creative_assets_item") creative_assets_item("creative_assets_item");
+    }
 
 }
 

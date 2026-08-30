@@ -24,9 +24,10 @@ void
 AdvancedAuctionItemsSubmitDeleteRecord::__init()
 {
 	//country = new Country();
+	//new std::list()std::list> errors;
 	//item_id = std::string();
 	//language = new Language();
-	//new std::list()std::list> errors;
+	//operation = std::string();
 }
 
 void
@@ -36,6 +37,11 @@ AdvancedAuctionItemsSubmitDeleteRecord::__cleanup()
 	//
 	//delete country;
 	//country = NULL;
+	//}
+	//if(errors != NULL) {
+	//errors.RemoveAll(true);
+	//delete errors;
+	//errors = NULL;
 	//}
 	//if(item_id != NULL) {
 	//
@@ -47,10 +53,10 @@ AdvancedAuctionItemsSubmitDeleteRecord::__cleanup()
 	//delete language;
 	//language = NULL;
 	//}
-	//if(errors != NULL) {
-	//errors.RemoveAll(true);
-	//delete errors;
-	//errors = NULL;
+	//if(operation != NULL) {
+	//
+	//delete operation;
+	//operation = NULL;
 	//}
 	//
 }
@@ -70,31 +76,6 @@ AdvancedAuctionItemsSubmitDeleteRecord::fromJson(char* jsonStr)
 		} else {
 			
 			Country* obj = static_cast<Country*> (&country);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *item_idKey = "item_id";
-	node = json_object_get_member(pJsonObject, item_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&item_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *languageKey = "language";
-	node = json_object_get_member(pJsonObject, languageKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("Language")) {
-			jsonToValue(&language, node, "Language", "Language");
-		} else {
-			
-			Language* obj = static_cast<Language*> (&language);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -123,6 +104,42 @@ AdvancedAuctionItemsSubmitDeleteRecord::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *item_idKey = "item_id";
+	node = json_object_get_member(pJsonObject, item_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&item_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *languageKey = "language";
+	node = json_object_get_member(pJsonObject, languageKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("Language")) {
+			jsonToValue(&language, node, "Language", "Language");
+		} else {
+			
+			Language* obj = static_cast<Language*> (&language);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *operationKey = "operation";
+	node = json_object_get_member(pJsonObject, operationKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&operation, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 AdvancedAuctionItemsSubmitDeleteRecord::AdvancedAuctionItemsSubmitDeleteRecord(char* json)
@@ -149,29 +166,6 @@ AdvancedAuctionItemsSubmitDeleteRecord::toJson()
 	}
 	const gchar *countryKey = "country";
 	json_object_set_member(pJsonObject, countryKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getItemId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *item_idKey = "item_id";
-	json_object_set_member(pJsonObject, item_idKey, node);
-	if (isprimitive("Language")) {
-		Language obj = getLanguage();
-		node = converttoJson(&obj, "Language", "");
-	}
-	else {
-		
-		Language obj = static_cast<Language> (getLanguage());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *languageKey = "language";
-	json_object_set_member(pJsonObject, languageKey, node);
 	if (isprimitive("AdvancedAuctionOperationError")) {
 		list<AdvancedAuctionOperationError> new_list = static_cast<list <AdvancedAuctionOperationError> > (getErrors());
 		node = converttoJson(&new_list, "AdvancedAuctionOperationError", "array");
@@ -197,6 +191,38 @@ AdvancedAuctionItemsSubmitDeleteRecord::toJson()
 	
 	const gchar *errorsKey = "errors";
 	json_object_set_member(pJsonObject, errorsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getItemId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *item_idKey = "item_id";
+	json_object_set_member(pJsonObject, item_idKey, node);
+	if (isprimitive("Language")) {
+		Language obj = getLanguage();
+		node = converttoJson(&obj, "Language", "");
+	}
+	else {
+		
+		Language obj = static_cast<Language> (getLanguage());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *languageKey = "language";
+	json_object_set_member(pJsonObject, languageKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getOperation();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *operationKey = "operation";
+	json_object_set_member(pJsonObject, operationKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -215,6 +241,18 @@ void
 AdvancedAuctionItemsSubmitDeleteRecord::setCountry(Country  country)
 {
 	this->country = country;
+}
+
+std::list<AdvancedAuctionOperationError>
+AdvancedAuctionItemsSubmitDeleteRecord::getErrors()
+{
+	return errors;
+}
+
+void
+AdvancedAuctionItemsSubmitDeleteRecord::setErrors(std::list <AdvancedAuctionOperationError> errors)
+{
+	this->errors = errors;
 }
 
 std::string
@@ -241,16 +279,16 @@ AdvancedAuctionItemsSubmitDeleteRecord::setLanguage(Language  language)
 	this->language = language;
 }
 
-std::list<AdvancedAuctionOperationError>
-AdvancedAuctionItemsSubmitDeleteRecord::getErrors()
+std::string
+AdvancedAuctionItemsSubmitDeleteRecord::getOperation()
 {
-	return errors;
+	return operation;
 }
 
 void
-AdvancedAuctionItemsSubmitDeleteRecord::setErrors(std::list <AdvancedAuctionOperationError> errors)
+AdvancedAuctionItemsSubmitDeleteRecord::setOperation(std::string  operation)
 {
-	this->errors = errors;
+	this->operation = operation;
 }
 
 

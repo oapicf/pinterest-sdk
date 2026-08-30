@@ -23,27 +23,32 @@ AdvancedAuctionItemsSubmitRecord::~AdvancedAuctionItemsSubmitRecord()
 void
 AdvancedAuctionItemsSubmitRecord::__init()
 {
-	//operation = new AdvancedAuctionOperation();
+	//bid_options = new AdvancedAuctionBidOptions();
 	//country = new Country();
+	//new std::list()std::list> errors;
 	//item_id = std::string();
 	//language = new Language();
-	//bid_options = new AdvancedAuctionBidOptions();
-	//new std::list()std::list> errors;
+	//operation = std::string();
 	//new std::list()std::list> update_mask;
 }
 
 void
 AdvancedAuctionItemsSubmitRecord::__cleanup()
 {
-	//if(operation != NULL) {
+	//if(bid_options != NULL) {
 	//
-	//delete operation;
-	//operation = NULL;
+	//delete bid_options;
+	//bid_options = NULL;
 	//}
 	//if(country != NULL) {
 	//
 	//delete country;
 	//country = NULL;
+	//}
+	//if(errors != NULL) {
+	//errors.RemoveAll(true);
+	//delete errors;
+	//errors = NULL;
 	//}
 	//if(item_id != NULL) {
 	//
@@ -55,15 +60,10 @@ AdvancedAuctionItemsSubmitRecord::__cleanup()
 	//delete language;
 	//language = NULL;
 	//}
-	//if(bid_options != NULL) {
+	//if(operation != NULL) {
 	//
-	//delete bid_options;
-	//bid_options = NULL;
-	//}
-	//if(errors != NULL) {
-	//errors.RemoveAll(true);
-	//delete errors;
-	//errors = NULL;
+	//delete operation;
+	//operation = NULL;
 	//}
 	//if(update_mask != NULL) {
 	//update_mask.RemoveAll(true);
@@ -78,16 +78,16 @@ AdvancedAuctionItemsSubmitRecord::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *operationKey = "operation";
-	node = json_object_get_member(pJsonObject, operationKey);
+	const gchar *bid_optionsKey = "bid_options";
+	node = json_object_get_member(pJsonObject, bid_optionsKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AdvancedAuctionOperation")) {
-			jsonToValue(&operation, node, "AdvancedAuctionOperation", "AdvancedAuctionOperation");
+		if (isprimitive("AdvancedAuctionBidOptions")) {
+			jsonToValue(&bid_options, node, "AdvancedAuctionBidOptions", "AdvancedAuctionBidOptions");
 		} else {
 			
-			AdvancedAuctionOperation* obj = static_cast<AdvancedAuctionOperation*> (&operation);
+			AdvancedAuctionBidOptions* obj = static_cast<AdvancedAuctionBidOptions*> (&bid_options);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -102,45 +102,6 @@ AdvancedAuctionItemsSubmitRecord::fromJson(char* jsonStr)
 		} else {
 			
 			Country* obj = static_cast<Country*> (&country);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *item_idKey = "item_id";
-	node = json_object_get_member(pJsonObject, item_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&item_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *languageKey = "language";
-	node = json_object_get_member(pJsonObject, languageKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("Language")) {
-			jsonToValue(&language, node, "Language", "Language");
-		} else {
-			
-			Language* obj = static_cast<Language*> (&language);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *bid_optionsKey = "bid_options";
-	node = json_object_get_member(pJsonObject, bid_optionsKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("AdvancedAuctionBidOptions")) {
-			jsonToValue(&bid_options, node, "AdvancedAuctionBidOptions", "AdvancedAuctionBidOptions");
-		} else {
-			
-			AdvancedAuctionBidOptions* obj = static_cast<AdvancedAuctionBidOptions*> (&bid_options);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -168,6 +129,42 @@ AdvancedAuctionItemsSubmitRecord::fromJson(char* jsonStr)
 			errors = new_list;
 		}
 		
+	}
+	const gchar *item_idKey = "item_id";
+	node = json_object_get_member(pJsonObject, item_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&item_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *languageKey = "language";
+	node = json_object_get_member(pJsonObject, languageKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("Language")) {
+			jsonToValue(&language, node, "Language", "Language");
+		} else {
+			
+			Language* obj = static_cast<Language*> (&language);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *operationKey = "operation";
+	node = json_object_get_member(pJsonObject, operationKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&operation, node, "std::string", "");
+		} else {
+			
+		}
 	}
 	const gchar *update_maskKey = "update_mask";
 	node = json_object_get_member(pJsonObject, update_maskKey);
@@ -205,57 +202,6 @@ AdvancedAuctionItemsSubmitRecord::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("AdvancedAuctionOperation")) {
-		AdvancedAuctionOperation obj = getOperation();
-		node = converttoJson(&obj, "AdvancedAuctionOperation", "");
-	}
-	else {
-		
-		AdvancedAuctionOperation obj = static_cast<AdvancedAuctionOperation> (getOperation());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *operationKey = "operation";
-	json_object_set_member(pJsonObject, operationKey, node);
-	if (isprimitive("Country")) {
-		Country obj = getCountry();
-		node = converttoJson(&obj, "Country", "");
-	}
-	else {
-		
-		Country obj = static_cast<Country> (getCountry());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *countryKey = "country";
-	json_object_set_member(pJsonObject, countryKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getItemId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *item_idKey = "item_id";
-	json_object_set_member(pJsonObject, item_idKey, node);
-	if (isprimitive("Language")) {
-		Language obj = getLanguage();
-		node = converttoJson(&obj, "Language", "");
-	}
-	else {
-		
-		Language obj = static_cast<Language> (getLanguage());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *languageKey = "language";
-	json_object_set_member(pJsonObject, languageKey, node);
 	if (isprimitive("AdvancedAuctionBidOptions")) {
 		AdvancedAuctionBidOptions obj = getBidOptions();
 		node = converttoJson(&obj, "AdvancedAuctionBidOptions", "");
@@ -270,6 +216,20 @@ AdvancedAuctionItemsSubmitRecord::toJson()
 	}
 	const gchar *bid_optionsKey = "bid_options";
 	json_object_set_member(pJsonObject, bid_optionsKey, node);
+	if (isprimitive("Country")) {
+		Country obj = getCountry();
+		node = converttoJson(&obj, "Country", "");
+	}
+	else {
+		
+		Country obj = static_cast<Country> (getCountry());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *countryKey = "country";
+	json_object_set_member(pJsonObject, countryKey, node);
 	if (isprimitive("AdvancedAuctionOperationError")) {
 		list<AdvancedAuctionOperationError> new_list = static_cast<list <AdvancedAuctionOperationError> > (getErrors());
 		node = converttoJson(&new_list, "AdvancedAuctionOperationError", "array");
@@ -295,6 +255,38 @@ AdvancedAuctionItemsSubmitRecord::toJson()
 	
 	const gchar *errorsKey = "errors";
 	json_object_set_member(pJsonObject, errorsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getItemId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *item_idKey = "item_id";
+	json_object_set_member(pJsonObject, item_idKey, node);
+	if (isprimitive("Language")) {
+		Language obj = getLanguage();
+		node = converttoJson(&obj, "Language", "");
+	}
+	else {
+		
+		Language obj = static_cast<Language> (getLanguage());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *languageKey = "language";
+	json_object_set_member(pJsonObject, languageKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getOperation();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *operationKey = "operation";
+	json_object_set_member(pJsonObject, operationKey, node);
 	if (isprimitive("UpdateMaskBidOptionField")) {
 		list<UpdateMaskBidOptionField> new_list = static_cast<list <UpdateMaskBidOptionField> > (getUpdateMask());
 		node = converttoJson(&new_list, "UpdateMaskBidOptionField", "array");
@@ -328,16 +320,16 @@ AdvancedAuctionItemsSubmitRecord::toJson()
 	return ret;
 }
 
-AdvancedAuctionOperation
-AdvancedAuctionItemsSubmitRecord::getOperation()
+AdvancedAuctionBidOptions
+AdvancedAuctionItemsSubmitRecord::getBidOptions()
 {
-	return operation;
+	return bid_options;
 }
 
 void
-AdvancedAuctionItemsSubmitRecord::setOperation(AdvancedAuctionOperation  operation)
+AdvancedAuctionItemsSubmitRecord::setBidOptions(AdvancedAuctionBidOptions  bid_options)
 {
-	this->operation = operation;
+	this->bid_options = bid_options;
 }
 
 Country
@@ -350,6 +342,18 @@ void
 AdvancedAuctionItemsSubmitRecord::setCountry(Country  country)
 {
 	this->country = country;
+}
+
+std::list<AdvancedAuctionOperationError>
+AdvancedAuctionItemsSubmitRecord::getErrors()
+{
+	return errors;
+}
+
+void
+AdvancedAuctionItemsSubmitRecord::setErrors(std::list <AdvancedAuctionOperationError> errors)
+{
+	this->errors = errors;
 }
 
 std::string
@@ -376,28 +380,16 @@ AdvancedAuctionItemsSubmitRecord::setLanguage(Language  language)
 	this->language = language;
 }
 
-AdvancedAuctionBidOptions
-AdvancedAuctionItemsSubmitRecord::getBidOptions()
+std::string
+AdvancedAuctionItemsSubmitRecord::getOperation()
 {
-	return bid_options;
+	return operation;
 }
 
 void
-AdvancedAuctionItemsSubmitRecord::setBidOptions(AdvancedAuctionBidOptions  bid_options)
+AdvancedAuctionItemsSubmitRecord::setOperation(std::string  operation)
 {
-	this->bid_options = bid_options;
-}
-
-std::list<AdvancedAuctionOperationError>
-AdvancedAuctionItemsSubmitRecord::getErrors()
-{
-	return errors;
-}
-
-void
-AdvancedAuctionItemsSubmitRecord::setErrors(std::list <AdvancedAuctionOperationError> errors)
-{
-	this->errors = errors;
+	this->operation = operation;
 }
 
 std::list<UpdateMaskBidOptionField>

@@ -24,18 +24,18 @@ class UserAccountApi {
   ///
   /// Parameters:
   ///
-  /// * [String] bookmark:
-  ///   Cursor used to fetch the next page of items
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [String] adAccountId:
+  ///   Unique identifier of an ad account.
   ///
   /// * [bool] explicitFollowing:
   ///   Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
   ///
-  /// * [String] adAccountId:
-  ///   Unique identifier of an ad account.
-  Future<Response> boardsUserFollowsListWithHttpInfo({ String? bookmark, int? pageSize, bool? explicitFollowing, String? adAccountId, }) async {
+  /// * [String] bookmark:
+  ///   Cursor used to fetch the next page of items
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> boardsUserFollowsListWithHttpInfo({ String? adAccountId, bool? explicitFollowing, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_account/following/boards';
 
@@ -46,17 +46,17 @@ class UserAccountApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (adAccountId != null) {
+      queryParams.addAll(_queryParams('', 'ad_account_id', adAccountId));
+    }
+    if (explicitFollowing != null) {
+      queryParams.addAll(_queryParams('', 'explicit_following', explicitFollowing));
+    }
     if (bookmark != null) {
       queryParams.addAll(_queryParams('', 'bookmark', bookmark));
     }
     if (pageSize != null) {
       queryParams.addAll(_queryParams('', 'page_size', pageSize));
-    }
-    if (explicitFollowing != null) {
-      queryParams.addAll(_queryParams('', 'explicit_following', explicitFollowing));
-    }
-    if (adAccountId != null) {
-      queryParams.addAll(_queryParams('', 'ad_account_id', adAccountId));
     }
 
     const contentTypes = <String>[];
@@ -70,6 +70,7 @@ class UserAccountApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -79,19 +80,19 @@ class UserAccountApi {
   ///
   /// Parameters:
   ///
-  /// * [String] bookmark:
-  ///   Cursor used to fetch the next page of items
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [String] adAccountId:
+  ///   Unique identifier of an ad account.
   ///
   /// * [bool] explicitFollowing:
   ///   Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
   ///
-  /// * [String] adAccountId:
-  ///   Unique identifier of an ad account.
-  Future<BoardsUserFollowsList200Response?> boardsUserFollowsList({ String? bookmark, int? pageSize, bool? explicitFollowing, String? adAccountId, }) async {
-    final response = await boardsUserFollowsListWithHttpInfo( bookmark: bookmark, pageSize: pageSize, explicitFollowing: explicitFollowing, adAccountId: adAccountId, );
+  /// * [String] bookmark:
+  ///   Cursor used to fetch the next page of items
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<BoardsList200Response?> boardsUserFollowsList({ String? adAccountId, bool? explicitFollowing, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await boardsUserFollowsListWithHttpInfo(adAccountId: adAccountId, explicitFollowing: explicitFollowing, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -99,7 +100,7 @@ class UserAccountApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BoardsUserFollowsList200Response',) as BoardsUserFollowsList200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BoardsList200Response',) as BoardsList200Response;
     
     }
     return null;
@@ -107,7 +108,7 @@ class UserAccountApi {
 
   /// Follow user
   ///
-  /// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+  /// **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -116,15 +117,14 @@ class UserAccountApi {
   /// * [String] username (required):
   ///   A valid username
   ///
-  /// * [FollowUserRequest] followUserRequest (required):
-  ///   Follow a user.
-  Future<Response> followUserUpdateWithHttpInfo(String username, FollowUserRequest followUserRequest,) async {
+  /// * [FollowUserCreate] followUserCreate (required):
+  Future<Response> followUserUpdateWithHttpInfo(String username, FollowUserCreate followUserCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_account/following/{username}'
       .replaceAll('{username}', username);
 
     // ignore: prefer_final_locals
-    Object? postBody = followUserRequest;
+    Object? postBody = followUserCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -141,22 +141,22 @@ class UserAccountApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Follow user
   ///
-  /// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+  /// **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
   ///
   /// Parameters:
   ///
   /// * [String] username (required):
   ///   A valid username
   ///
-  /// * [FollowUserRequest] followUserRequest (required):
-  ///   Follow a user.
-  Future<UserSummary?> followUserUpdate(String username, FollowUserRequest followUserRequest,) async {
-    final response = await followUserUpdateWithHttpInfo(username, followUserRequest,);
+  /// * [FollowUserCreate] followUserCreate (required):
+  Future<FollowUser?> followUserUpdate(String username, FollowUserCreate followUserCreate, { Future<void>? abortTrigger, }) async {
+    final response = await followUserUpdateWithHttpInfo(username, followUserCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -164,7 +164,7 @@ class UserAccountApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserSummary',) as UserSummary;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FollowUser',) as FollowUser;
     
     }
     return null;
@@ -182,8 +182,8 @@ class UserAccountApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<Response> followersListWithHttpInfo({ String? bookmark, int? pageSize, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> followersListWithHttpInfo({ String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_account/followers';
 
@@ -212,6 +212,7 @@ class UserAccountApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -225,9 +226,9 @@ class UserAccountApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<FollowersList200Response?> followersList({ String? bookmark, int? pageSize, }) async {
-    final response = await followersListWithHttpInfo( bookmark: bookmark, pageSize: pageSize, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<FollowersList200Response?> followersList({ String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await followersListWithHttpInfo(bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -246,7 +247,7 @@ class UserAccountApi {
   /// Get a list of your linked business accounts.
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> linkedBusinessAccountsGetWithHttpInfo() async {
+  Future<Response> linkedBusinessAccountsGetWithHttpInfo({ Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_account/businesses';
 
@@ -268,14 +269,15 @@ class UserAccountApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// List linked businesses
   ///
   /// Get a list of your linked business accounts.
-  Future<List<LinkedBusiness>?> linkedBusinessAccountsGet() async {
-    final response = await linkedBusinessAccountsGetWithHttpInfo();
+  Future<List<LinkedBusiness>?> linkedBusinessAccountsGet({ Future<void>? abortTrigger, }) async {
+    final response = await linkedBusinessAccountsGetWithHttpInfo(abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -294,7 +296,7 @@ class UserAccountApi {
 
   /// Unverify website
   ///
-  /// Unverifu a website verified by the signed-in user.
+  /// Unverify a website verified by the signed-in user.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -302,7 +304,7 @@ class UserAccountApi {
   ///
   /// * [String] website (required):
   ///   Website with path or domain only
-  Future<Response> unverifyWebsiteDeleteWithHttpInfo(String website,) async {
+  Future<Response> unverifyWebsiteDeleteWithHttpInfo(String website, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_account/websites';
 
@@ -326,22 +328,31 @@ class UserAccountApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Unverify website
   ///
-  /// Unverifu a website verified by the signed-in user.
+  /// Unverify a website verified by the signed-in user.
   ///
   /// Parameters:
   ///
   /// * [String] website (required):
   ///   Website with path or domain only
-  Future<void> unverifyWebsiteDelete(String website,) async {
-    final response = await unverifyWebsiteDeleteWithHttpInfo(website,);
+  Future<UserWebsite?> unverifyWebsiteDelete(String website, { Future<void>? abortTrigger, }) async {
+    final response = await unverifyWebsiteDeleteWithHttpInfo(website, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserWebsite',) as UserWebsite;
+    
+    }
+    return null;
   }
 
   /// Get user account analytics
@@ -373,15 +384,15 @@ class UserAccountApi {
   /// * [String] source_:
   ///   Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
   ///
-  /// * [List<String>] metricTypes:
-  ///   Metric types to get data for, default is all. 
+  /// * [List<QuerymetrictypesItems>] metricTypes:
+  ///   Metric types to get data for, default is all.
   ///
   /// * [String] splitField:
   ///   How to split the data into groups. Not including this param means data won't be split.
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> userAccountAnalyticsWithHttpInfo(DateTime startDate, DateTime endDate, { String? fromClaimedContent, String? pinFormat, String? appTypes, String? contentType, String? source_, List<String>? metricTypes, String? splitField, String? adAccountId, }) async {
+  Future<Response> userAccountAnalyticsWithHttpInfo(DateTime startDate, DateTime endDate, { String? fromClaimedContent, String? pinFormat, String? appTypes, String? contentType, String? source_, List<QuerymetrictypesItems>? metricTypes, String? splitField, String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_account/analytics';
 
@@ -430,6 +441,7 @@ class UserAccountApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -460,16 +472,16 @@ class UserAccountApi {
   /// * [String] source_:
   ///   Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
   ///
-  /// * [List<String>] metricTypes:
-  ///   Metric types to get data for, default is all. 
+  /// * [List<QuerymetrictypesItems>] metricTypes:
+  ///   Metric types to get data for, default is all.
   ///
   /// * [String] splitField:
   ///   How to split the data into groups. Not including this param means data won't be split.
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Map<String, AnalyticsMetricsResponse>?> userAccountAnalytics(DateTime startDate, DateTime endDate, { String? fromClaimedContent, String? pinFormat, String? appTypes, String? contentType, String? source_, List<String>? metricTypes, String? splitField, String? adAccountId, }) async {
-    final response = await userAccountAnalyticsWithHttpInfo(startDate, endDate,  fromClaimedContent: fromClaimedContent, pinFormat: pinFormat, appTypes: appTypes, contentType: contentType, source_: source_, metricTypes: metricTypes, splitField: splitField, adAccountId: adAccountId, );
+  Future<Map<String, AnalyticsMetricsResponse>?> userAccountAnalytics(DateTime startDate, DateTime endDate, { String? fromClaimedContent, String? pinFormat, String? appTypes, String? contentType, String? source_, List<QuerymetrictypesItems>? metricTypes, String? splitField, String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await userAccountAnalyticsWithHttpInfo(startDate, endDate, fromClaimedContent: fromClaimedContent, pinFormat: pinFormat, appTypes: appTypes, contentType: contentType, source_: source_, metricTypes: metricTypes, splitField: splitField, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -497,7 +509,7 @@ class UserAccountApi {
   /// * [DateTime] endDate (required):
   ///   Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
   ///
-  /// * [String] sortBy (required):
+  /// * [TopPinsSortBy] sortBy (required):
   ///   Specify sorting order for metrics
   ///
   /// * [String] fromClaimedContent:
@@ -515,18 +527,18 @@ class UserAccountApi {
   /// * [String] source_:
   ///   Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
   ///
-  /// * [List<String>] metricTypes:
-  ///   Metric types to get data for, default is all. 
+  /// * [List<QuerymetrictypesItems>] metricTypes:
+  ///   Metric types to get data for, default is all.
   ///
   /// * [int] numOfPins:
   ///   Number of pins to include, default is 10. Max is 50.
   ///
-  /// * [int] createdInLastNDays:
+  /// * [num] createdInLastNDays:
   ///   Get metrics for pins created in the last \"n\" days.
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> userAccountAnalyticsTopPinsWithHttpInfo(DateTime startDate, DateTime endDate, String sortBy, { String? fromClaimedContent, String? pinFormat, String? appTypes, String? contentType, String? source_, List<String>? metricTypes, int? numOfPins, int? createdInLastNDays, String? adAccountId, }) async {
+  Future<Response> userAccountAnalyticsTopPinsWithHttpInfo(DateTime startDate, DateTime endDate, TopPinsSortBy sortBy, { String? fromClaimedContent, String? pinFormat, String? appTypes, String? contentType, String? source_, List<QuerymetrictypesItems>? metricTypes, int? numOfPins, num? createdInLastNDays, String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_account/analytics/top_pins';
 
@@ -579,6 +591,7 @@ class UserAccountApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -594,7 +607,7 @@ class UserAccountApi {
   /// * [DateTime] endDate (required):
   ///   Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
   ///
-  /// * [String] sortBy (required):
+  /// * [TopPinsSortBy] sortBy (required):
   ///   Specify sorting order for metrics
   ///
   /// * [String] fromClaimedContent:
@@ -612,19 +625,19 @@ class UserAccountApi {
   /// * [String] source_:
   ///   Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
   ///
-  /// * [List<String>] metricTypes:
-  ///   Metric types to get data for, default is all. 
+  /// * [List<QuerymetrictypesItems>] metricTypes:
+  ///   Metric types to get data for, default is all.
   ///
   /// * [int] numOfPins:
   ///   Number of pins to include, default is 10. Max is 50.
   ///
-  /// * [int] createdInLastNDays:
+  /// * [num] createdInLastNDays:
   ///   Get metrics for pins created in the last \"n\" days.
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<TopPinsAnalyticsResponse?> userAccountAnalyticsTopPins(DateTime startDate, DateTime endDate, String sortBy, { String? fromClaimedContent, String? pinFormat, String? appTypes, String? contentType, String? source_, List<String>? metricTypes, int? numOfPins, int? createdInLastNDays, String? adAccountId, }) async {
-    final response = await userAccountAnalyticsTopPinsWithHttpInfo(startDate, endDate, sortBy,  fromClaimedContent: fromClaimedContent, pinFormat: pinFormat, appTypes: appTypes, contentType: contentType, source_: source_, metricTypes: metricTypes, numOfPins: numOfPins, createdInLastNDays: createdInLastNDays, adAccountId: adAccountId, );
+  Future<TopPinsAnalyticsResponse?> userAccountAnalyticsTopPins(DateTime startDate, DateTime endDate, TopPinsSortBy sortBy, { String? fromClaimedContent, String? pinFormat, String? appTypes, String? contentType, String? source_, List<QuerymetrictypesItems>? metricTypes, int? numOfPins, num? createdInLastNDays, String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await userAccountAnalyticsTopPinsWithHttpInfo(startDate, endDate, sortBy, fromClaimedContent: fromClaimedContent, pinFormat: pinFormat, appTypes: appTypes, contentType: contentType, source_: source_, metricTypes: metricTypes, numOfPins: numOfPins, createdInLastNDays: createdInLastNDays, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -652,7 +665,7 @@ class UserAccountApi {
   /// * [DateTime] endDate (required):
   ///   Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
   ///
-  /// * [String] sortBy (required):
+  /// * [TopVideoPinsSortBy] sortBy (required):
   ///   Specify sorting order for video metrics
   ///
   /// * [String] fromClaimedContent:
@@ -670,18 +683,18 @@ class UserAccountApi {
   /// * [String] source_:
   ///   Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
   ///
-  /// * [List<String>] metricTypes:
-  ///   Metric types to get video data for, default is all. 
+  /// * [List<QueryvideopinmetrictypesItems>] metricTypes:
+  ///   Metric types to get video data for, default is all.
   ///
   /// * [int] numOfPins:
   ///   Number of pins to include, default is 10. Max is 50.
   ///
-  /// * [int] createdInLastNDays:
+  /// * [num] createdInLastNDays:
   ///   Get metrics for pins created in the last \"n\" days.
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> userAccountAnalyticsTopVideoPinsWithHttpInfo(DateTime startDate, DateTime endDate, String sortBy, { String? fromClaimedContent, String? pinFormat, String? appTypes, String? contentType, String? source_, List<String>? metricTypes, int? numOfPins, int? createdInLastNDays, String? adAccountId, }) async {
+  Future<Response> userAccountAnalyticsTopVideoPinsWithHttpInfo(DateTime startDate, DateTime endDate, TopVideoPinsSortBy sortBy, { String? fromClaimedContent, String? pinFormat, String? appTypes, String? contentType, String? source_, List<QueryvideopinmetrictypesItems>? metricTypes, int? numOfPins, num? createdInLastNDays, String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_account/analytics/top_video_pins';
 
@@ -734,6 +747,7 @@ class UserAccountApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -749,7 +763,7 @@ class UserAccountApi {
   /// * [DateTime] endDate (required):
   ///   Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
   ///
-  /// * [String] sortBy (required):
+  /// * [TopVideoPinsSortBy] sortBy (required):
   ///   Specify sorting order for video metrics
   ///
   /// * [String] fromClaimedContent:
@@ -767,19 +781,19 @@ class UserAccountApi {
   /// * [String] source_:
   ///   Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
   ///
-  /// * [List<String>] metricTypes:
-  ///   Metric types to get video data for, default is all. 
+  /// * [List<QueryvideopinmetrictypesItems>] metricTypes:
+  ///   Metric types to get video data for, default is all.
   ///
   /// * [int] numOfPins:
   ///   Number of pins to include, default is 10. Max is 50.
   ///
-  /// * [int] createdInLastNDays:
+  /// * [num] createdInLastNDays:
   ///   Get metrics for pins created in the last \"n\" days.
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<TopVideoPinsAnalyticsResponse?> userAccountAnalyticsTopVideoPins(DateTime startDate, DateTime endDate, String sortBy, { String? fromClaimedContent, String? pinFormat, String? appTypes, String? contentType, String? source_, List<String>? metricTypes, int? numOfPins, int? createdInLastNDays, String? adAccountId, }) async {
-    final response = await userAccountAnalyticsTopVideoPinsWithHttpInfo(startDate, endDate, sortBy,  fromClaimedContent: fromClaimedContent, pinFormat: pinFormat, appTypes: appTypes, contentType: contentType, source_: source_, metricTypes: metricTypes, numOfPins: numOfPins, createdInLastNDays: createdInLastNDays, adAccountId: adAccountId, );
+  Future<TopVideoPinsAnalyticsResponse?> userAccountAnalyticsTopVideoPins(DateTime startDate, DateTime endDate, TopVideoPinsSortBy sortBy, { String? fromClaimedContent, String? pinFormat, String? appTypes, String? contentType, String? source_, List<QueryvideopinmetrictypesItems>? metricTypes, int? numOfPins, num? createdInLastNDays, String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await userAccountAnalyticsTopVideoPinsWithHttpInfo(startDate, endDate, sortBy, fromClaimedContent: fromClaimedContent, pinFormat: pinFormat, appTypes: appTypes, contentType: contentType, source_: source_, metricTypes: metricTypes, numOfPins: numOfPins, createdInLastNDays: createdInLastNDays, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -808,8 +822,8 @@ class UserAccountApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<Response> userAccountFollowedInterestsWithHttpInfo(String username, { String? bookmark, int? pageSize, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> userAccountFollowedInterestsWithHttpInfo(String username, { String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/users/{username}/interests/follow'
       .replaceAll('{username}', username);
@@ -839,6 +853,7 @@ class UserAccountApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -855,9 +870,9 @@ class UserAccountApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<UserAccountFollowedInterests200Response?> userAccountFollowedInterests(String username, { String? bookmark, int? pageSize, }) async {
-    final response = await userAccountFollowedInterestsWithHttpInfo(username,  bookmark: bookmark, pageSize: pageSize, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<UserAccountFollowedInterests200Response?> userAccountFollowedInterests(String username, { String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await userAccountFollowedInterestsWithHttpInfo(username, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -873,7 +888,7 @@ class UserAccountApi {
 
   /// Get user account
   ///
-  /// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+  /// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -881,7 +896,7 @@ class UserAccountApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> userAccountGetWithHttpInfo({ String? adAccountId, }) async {
+  Future<Response> userAccountGetWithHttpInfo({ String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_account';
 
@@ -907,19 +922,20 @@ class UserAccountApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get user account
   ///
-  /// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+  /// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Account?> userAccountGet({ String? adAccountId, }) async {
-    final response = await userAccountGetWithHttpInfo( adAccountId: adAccountId, );
+  Future<Account?> userAccountGet({ String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await userAccountGetWithHttpInfo(adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -941,21 +957,21 @@ class UserAccountApi {
   ///
   /// Parameters:
   ///
-  /// * [String] bookmark:
-  ///   Cursor used to fetch the next page of items
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [UserFollowingFeedType] feedType:
-  ///   Thrift param specifying what type of followees will be kept. Default to include all followees.
+  /// * [String] adAccountId:
+  ///   Unique identifier of an ad account.
   ///
   /// * [bool] explicitFollowing:
   ///   Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
   ///
-  /// * [String] adAccountId:
-  ///   Unique identifier of an ad account.
-  Future<Response> userFollowingGetWithHttpInfo({ String? bookmark, int? pageSize, UserFollowingFeedType? feedType, bool? explicitFollowing, String? adAccountId, }) async {
+  /// * [UserFollowingFeedType] feedType:
+  ///   Thrift param specifying what type of followees will be kept. Default to include all followees.
+  ///
+  /// * [String] bookmark:
+  ///   Cursor used to fetch the next page of items
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> userFollowingGetWithHttpInfo({ String? adAccountId, bool? explicitFollowing, UserFollowingFeedType? feedType, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_account/following';
 
@@ -966,20 +982,20 @@ class UserAccountApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (adAccountId != null) {
+      queryParams.addAll(_queryParams('', 'ad_account_id', adAccountId));
+    }
+    if (explicitFollowing != null) {
+      queryParams.addAll(_queryParams('', 'explicit_following', explicitFollowing));
+    }
+    if (feedType != null) {
+      queryParams.addAll(_queryParams('', 'feed_type', feedType));
+    }
     if (bookmark != null) {
       queryParams.addAll(_queryParams('', 'bookmark', bookmark));
     }
     if (pageSize != null) {
       queryParams.addAll(_queryParams('', 'page_size', pageSize));
-    }
-    if (feedType != null) {
-      queryParams.addAll(_queryParams('', 'feed_type', feedType));
-    }
-    if (explicitFollowing != null) {
-      queryParams.addAll(_queryParams('', 'explicit_following', explicitFollowing));
-    }
-    if (adAccountId != null) {
-      queryParams.addAll(_queryParams('', 'ad_account_id', adAccountId));
     }
 
     const contentTypes = <String>[];
@@ -993,6 +1009,7 @@ class UserAccountApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -1002,22 +1019,22 @@ class UserAccountApi {
   ///
   /// Parameters:
   ///
-  /// * [String] bookmark:
-  ///   Cursor used to fetch the next page of items
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [UserFollowingFeedType] feedType:
-  ///   Thrift param specifying what type of followees will be kept. Default to include all followees.
+  /// * [String] adAccountId:
+  ///   Unique identifier of an ad account.
   ///
   /// * [bool] explicitFollowing:
   ///   Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
   ///
-  /// * [String] adAccountId:
-  ///   Unique identifier of an ad account.
-  Future<UserFollowingGet200Response?> userFollowingGet({ String? bookmark, int? pageSize, UserFollowingFeedType? feedType, bool? explicitFollowing, String? adAccountId, }) async {
-    final response = await userFollowingGetWithHttpInfo( bookmark: bookmark, pageSize: pageSize, feedType: feedType, explicitFollowing: explicitFollowing, adAccountId: adAccountId, );
+  /// * [UserFollowingFeedType] feedType:
+  ///   Thrift param specifying what type of followees will be kept. Default to include all followees.
+  ///
+  /// * [String] bookmark:
+  ///   Cursor used to fetch the next page of items
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<FollowersList200Response?> userFollowingGet({ String? adAccountId, bool? explicitFollowing, UserFollowingFeedType? feedType, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await userFollowingGetWithHttpInfo(adAccountId: adAccountId, explicitFollowing: explicitFollowing, feedType: feedType, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1025,7 +1042,7 @@ class UserAccountApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserFollowingGet200Response',) as UserFollowingGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FollowersList200Response',) as FollowersList200Response;
     
     }
     return null;
@@ -1043,8 +1060,8 @@ class UserAccountApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<Response> userWebsitesGetWithHttpInfo({ String? bookmark, int? pageSize, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> userWebsitesGetWithHttpInfo({ String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_account/websites';
 
@@ -1073,6 +1090,7 @@ class UserAccountApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -1086,9 +1104,9 @@ class UserAccountApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<UserWebsitesGet200Response?> userWebsitesGet({ String? bookmark, int? pageSize, }) async {
-    final response = await userWebsitesGetWithHttpInfo( bookmark: bookmark, pageSize: pageSize, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<UserWebsitesGet200Response?> userWebsitesGet({ String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await userWebsitesGetWithHttpInfo(bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1110,17 +1128,16 @@ class UserAccountApi {
   ///
   /// Parameters:
   ///
-  /// * [UserWebsiteVerifyRequest] userWebsiteVerifyRequest (required):
-  ///   Verify a website.
+  /// * [UserWebsiteCreate] userWebsiteCreate (required):
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> verifyWebsiteUpdateWithHttpInfo(UserWebsiteVerifyRequest userWebsiteVerifyRequest, { String? adAccountId, }) async {
+  Future<Response> verifyWebsiteUpdateWithHttpInfo(UserWebsiteCreate userWebsiteCreate, { String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_account/websites';
 
     // ignore: prefer_final_locals
-    Object? postBody = userWebsiteVerifyRequest;
+    Object? postBody = userWebsiteCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1141,6 +1158,7 @@ class UserAccountApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -1150,13 +1168,12 @@ class UserAccountApi {
   ///
   /// Parameters:
   ///
-  /// * [UserWebsiteVerifyRequest] userWebsiteVerifyRequest (required):
-  ///   Verify a website.
+  /// * [UserWebsiteCreate] userWebsiteCreate (required):
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<UserWebsiteSummary?> verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest, { String? adAccountId, }) async {
-    final response = await verifyWebsiteUpdateWithHttpInfo(userWebsiteVerifyRequest,  adAccountId: adAccountId, );
+  Future<UserWebsite?> verifyWebsiteUpdate(UserWebsiteCreate userWebsiteCreate, { String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await verifyWebsiteUpdateWithHttpInfo(userWebsiteCreate, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1164,7 +1181,7 @@ class UserAccountApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserWebsiteSummary',) as UserWebsiteSummary;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserWebsite',) as UserWebsite;
     
     }
     return null;
@@ -1180,7 +1197,7 @@ class UserAccountApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> websiteVerificationGetWithHttpInfo({ String? adAccountId, }) async {
+  Future<Response> websiteVerificationGetWithHttpInfo({ String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/user_account/websites/verification';
 
@@ -1206,6 +1223,7 @@ class UserAccountApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -1217,8 +1235,8 @@ class UserAccountApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<UserWebsiteVerificationCode?> websiteVerificationGet({ String? adAccountId, }) async {
-    final response = await websiteVerificationGetWithHttpInfo( adAccountId: adAccountId, );
+  Future<UserWebsiteVerification?> websiteVerificationGet({ String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await websiteVerificationGetWithHttpInfo(adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1226,7 +1244,7 @@ class UserAccountApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserWebsiteVerificationCode',) as UserWebsiteVerificationCode;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserWebsiteVerification',) as UserWebsiteVerification;
     
     }
     return null;

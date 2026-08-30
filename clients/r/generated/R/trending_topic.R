@@ -8,7 +8,8 @@
 #' @description TrendingTopic Class
 #' @format An \code{R6Class} generator object
 #' @field description Description of the trending topic character
-#' @field percent_growth_mom Month-over-month growth percentage integer
+#' @field id Unique identifier for the trending topic character
+#' @field percent_growth_mom Month-over-month growth percentage integer [optional]
 #' @field pins Array of pin images related to this trend (up to 6) list(\link{TrendingPin})
 #' @field related_interests List of related interest categories list(character)
 #' @field related_searches List of related search terms list(character)
@@ -21,6 +22,7 @@ TrendingTopic <- R6::R6Class(
   "TrendingTopic",
   public = list(
     `description` = NULL,
+    `id` = NULL,
     `percent_growth_mom` = NULL,
     `pins` = NULL,
     `related_interests` = NULL,
@@ -32,25 +34,26 @@ TrendingTopic <- R6::R6Class(
     #' Initialize a new TrendingTopic class.
     #'
     #' @param description Description of the trending topic
-    #' @param percent_growth_mom Month-over-month growth percentage
+    #' @param id Unique identifier for the trending topic
     #' @param pins Array of pin images related to this trend (up to 6)
     #' @param related_interests List of related interest categories
     #' @param related_searches List of related search terms
     #' @param time_series Time series data showing trend values over time, with dates as keys and values as numeric
     #' @param title Title of the trending topic
+    #' @param percent_growth_mom Month-over-month growth percentage
     #' @param ... Other optional arguments.
-    initialize = function(`description`, `percent_growth_mom`, `pins`, `related_interests`, `related_searches`, `time_series`, `title`, ...) {
+    initialize = function(`description`, `id`, `pins`, `related_interests`, `related_searches`, `time_series`, `title`, `percent_growth_mom` = NULL, ...) {
       if (!missing(`description`)) {
         if (!(is.character(`description`) && length(`description`) == 1)) {
           stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
         }
         self$`description` <- `description`
       }
-      if (!missing(`percent_growth_mom`)) {
-        if (!(is.numeric(`percent_growth_mom`) && length(`percent_growth_mom`) == 1)) {
-          stop(paste("Error! Invalid data for `percent_growth_mom`. Must be an integer:", `percent_growth_mom`))
+      if (!missing(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
         }
-        self$`percent_growth_mom` <- `percent_growth_mom`
+        self$`id` <- `id`
       }
       if (!missing(`pins`)) {
         stopifnot(is.vector(`pins`), length(`pins`) != 0)
@@ -77,6 +80,12 @@ TrendingTopic <- R6::R6Class(
           stop(paste("Error! Invalid data for `title`. Must be a string:", `title`))
         }
         self$`title` <- `title`
+      }
+      if (!is.null(`percent_growth_mom`)) {
+        if (!(is.numeric(`percent_growth_mom`) && length(`percent_growth_mom`) == 1)) {
+          stop(paste("Error! Invalid data for `percent_growth_mom`. Must be an integer:", `percent_growth_mom`))
+        }
+        self$`percent_growth_mom` <- `percent_growth_mom`
       }
     },
 
@@ -115,13 +124,17 @@ TrendingTopic <- R6::R6Class(
         TrendingTopicObject[["description"]] <-
           self$`description`
       }
+      if (!is.null(self$`id`)) {
+        TrendingTopicObject[["id"]] <-
+          self$`id`
+      }
       if (!is.null(self$`percent_growth_mom`)) {
         TrendingTopicObject[["percent_growth_mom"]] <-
           self$`percent_growth_mom`
       }
       if (!is.null(self$`pins`)) {
         TrendingTopicObject[["pins"]] <-
-          lapply(self$`pins`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`pins`)
       }
       if (!is.null(self$`related_interests`)) {
         TrendingTopicObject[["related_interests"]] <-
@@ -142,6 +155,29 @@ TrendingTopic <- R6::R6Class(
       return(TrendingTopicObject)
     },
 
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
+    },
+
     #' @description
     #' Deserialize JSON string into an instance of TrendingTopic
     #'
@@ -151,6 +187,9 @@ TrendingTopic <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`description`)) {
         self$`description` <- this_object$`description`
+      }
+      if (!is.null(this_object$`id`)) {
+        self$`id` <- this_object$`id`
       }
       if (!is.null(this_object$`percent_growth_mom`)) {
         self$`percent_growth_mom` <- this_object$`percent_growth_mom`
@@ -192,6 +231,7 @@ TrendingTopic <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`description` <- this_object$`description`
+      self$`id` <- this_object$`id`
       self$`percent_growth_mom` <- this_object$`percent_growth_mom`
       self$`pins` <- ApiClient$new()$deserializeObj(this_object$`pins`, "array[TrendingPin]", loadNamespace("openapi"))
       self$`related_interests` <- ApiClient$new()$deserializeObj(this_object$`related_interests`, "array[character]", loadNamespace("openapi"))
@@ -215,13 +255,13 @@ TrendingTopic <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TrendingTopic: the required field `description` is missing."))
       }
-      # check the required field `percent_growth_mom`
-      if (!is.null(input_json$`percent_growth_mom`)) {
-        if (!(is.numeric(input_json$`percent_growth_mom`) && length(input_json$`percent_growth_mom`) == 1)) {
-          stop(paste("Error! Invalid data for `percent_growth_mom`. Must be an integer:", input_json$`percent_growth_mom`))
+      # check the required field `id`
+      if (!is.null(input_json$`id`)) {
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for TrendingTopic: the required field `percent_growth_mom` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for TrendingTopic: the required field `id` is missing."))
       }
       # check the required field `pins`
       if (!is.null(input_json$`pins`)) {
@@ -279,8 +319,8 @@ TrendingTopic <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `percent_growth_mom` is null
-      if (is.null(self$`percent_growth_mom`)) {
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
         return(FALSE)
       }
 
@@ -327,9 +367,9 @@ TrendingTopic <- R6::R6Class(
         invalid_fields["description"] <- "Non-nullable required field `description` cannot be null."
       }
 
-      # check if the required `percent_growth_mom` is null
-      if (is.null(self$`percent_growth_mom`)) {
-        invalid_fields["percent_growth_mom"] <- "Non-nullable required field `percent_growth_mom` cannot be null."
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
       }
 
       # check if the required `pins` is null

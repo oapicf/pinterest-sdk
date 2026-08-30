@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]UserSingleAssetBinding**](UserSingleAssetBinding.md) | List of members with permissions to the asset. | 
+**Items** | [**[]UserSingleAssetBinding**](UserSingleAssetBinding.md) |  | 
 
 ## Methods
 

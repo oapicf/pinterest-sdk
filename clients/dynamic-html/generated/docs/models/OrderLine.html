@@ -1,7 +1,7 @@
 
 <h2>OrderLine</h2>
 <ul class="parameter">
-  <li class="param-required-false">adUnderscoreaccountUnderscoreid : String
+  <li class="param-required-true">adUnderscoreaccountUnderscoreid : String
     <br/>Ad account ID.
   </li>
 </ul>
@@ -11,12 +11,17 @@
   </li>
 </ul>
 <ul class="parameter">
+  <li class="param-required-true">campaignUnderscoreids : List
+    <br/>Associated List of campaign IDs.
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-false">endUnderscoretime : BigDecimal
     <br/>End time. Unix timestamp.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">id : String
+  <li class="param-required-true">id : String
     <br/>Order line ID.
   </li>
 </ul>
@@ -46,17 +51,12 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">status : OrderLineStatus
+  <li class="param-required-true">status : OrderLineStatus
     <br/>Order line status.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">type : String
+  <li class="param-required-true">type : String
     <br/>Always \&quot;orderline\&quot;.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">campaignUnderscoreids : List
-    <br/>Associated List of campaign IDs.
   </li>
 </ul>

@@ -7,14 +7,14 @@ import java.math.BigDecimal;
 
 @Canonical
 class AudienceSubcategory {
-    /* Subinterest ID. */
+    
     String id
-    /* Subinterest affinity index. */
+    
     BigDecimal index
-    /* Interest unique key (same as ID). */
+    
     String key
-    /* Subinterest name. */
+    
     String name
-    /* Subinterest's percent of category's total audience. */
+    
     BigDecimal ratio
 }

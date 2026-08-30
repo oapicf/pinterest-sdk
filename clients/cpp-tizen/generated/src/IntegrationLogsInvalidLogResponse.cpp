@@ -49,12 +49,12 @@ IntegrationLogsInvalidLogResponse::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<IntegrationLogsInvalidLogResponse_rejected_logs_inner> new_list;
-			IntegrationLogsInvalidLogResponse_rejected_logs_inner inst;
+			list<IntegrationLogsInvalidLogResponseRejectedLogsItems> new_list;
+			IntegrationLogsInvalidLogResponseRejectedLogsItems inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("IntegrationLogsInvalidLogResponse_rejected_logs_inner")) {
-					jsonToValue(&inst, temp_json, "IntegrationLogsInvalidLogResponse_rejected_logs_inner", "");
+				if (isprimitive("IntegrationLogsInvalidLogResponseRejectedLogsItems")) {
+					jsonToValue(&inst, temp_json, "IntegrationLogsInvalidLogResponseRejectedLogsItems", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -78,18 +78,18 @@ IntegrationLogsInvalidLogResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("IntegrationLogsInvalidLogResponse_rejected_logs_inner")) {
-		list<IntegrationLogsInvalidLogResponse_rejected_logs_inner> new_list = static_cast<list <IntegrationLogsInvalidLogResponse_rejected_logs_inner> > (getRejectedLogs());
-		node = converttoJson(&new_list, "IntegrationLogsInvalidLogResponse_rejected_logs_inner", "array");
+	if (isprimitive("IntegrationLogsInvalidLogResponseRejectedLogsItems")) {
+		list<IntegrationLogsInvalidLogResponseRejectedLogsItems> new_list = static_cast<list <IntegrationLogsInvalidLogResponseRejectedLogsItems> > (getRejectedLogs());
+		node = converttoJson(&new_list, "IntegrationLogsInvalidLogResponseRejectedLogsItems", "array");
 	} else {
 		node = json_node_alloc();
-		list<IntegrationLogsInvalidLogResponse_rejected_logs_inner> new_list = static_cast<list <IntegrationLogsInvalidLogResponse_rejected_logs_inner> > (getRejectedLogs());
+		list<IntegrationLogsInvalidLogResponseRejectedLogsItems> new_list = static_cast<list <IntegrationLogsInvalidLogResponseRejectedLogsItems> > (getRejectedLogs());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<IntegrationLogsInvalidLogResponse_rejected_logs_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<IntegrationLogsInvalidLogResponseRejectedLogsItems>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			IntegrationLogsInvalidLogResponse_rejected_logs_inner obj = *it;
+			IntegrationLogsInvalidLogResponseRejectedLogsItems obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -111,14 +111,14 @@ IntegrationLogsInvalidLogResponse::toJson()
 	return ret;
 }
 
-std::list<IntegrationLogsInvalidLogResponse_rejected_logs_inner>
+std::list<IntegrationLogsInvalidLogResponseRejectedLogsItems>
 IntegrationLogsInvalidLogResponse::getRejectedLogs()
 {
 	return rejected_logs;
 }
 
 void
-IntegrationLogsInvalidLogResponse::setRejectedLogs(std::list <IntegrationLogsInvalidLogResponse_rejected_logs_inner> rejected_logs)
+IntegrationLogsInvalidLogResponse::setRejectedLogs(std::list <IntegrationLogsInvalidLogResponseRejectedLogsItems> rejected_logs)
 {
 	this->rejected_logs = rejected_logs;
 }

@@ -61,9 +61,32 @@ ProductType4Filter <- R6::R6Class(
       ProductType4FilterObject <- list()
       if (!is.null(self$`PRODUCT_TYPE_4`)) {
         ProductType4FilterObject[["PRODUCT_TYPE_4"]] <-
-          self$`PRODUCT_TYPE_4`$toSimpleType()
+          self$extractSimpleType(self$`PRODUCT_TYPE_4`)
       }
       return(ProductType4FilterObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

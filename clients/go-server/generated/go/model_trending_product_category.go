@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -26,27 +31,109 @@ type TrendingProductCategory struct {
 	// Relative volume percentage
 	PercentRelativeVolume int32 `json:"percent_relative_volume"`
 
+	// Pinterest Product Category Id
+	PinterestProductCategoryId int32 `json:"pinterest_product_category_id"`
+
 	// Product Category Name
 	ProductCategory string `json:"product_category"`
 
 	// Vertical name associated with the product category
-	Verticals []VerticalProductCategory `json:"verticals,omitempty"`
+	Verticals []string `json:"verticals,omitempty"`
 }
-
-// AssertTrendingProductCategoryRequired checks if the required fields are not zero-ed
-func AssertTrendingProductCategoryRequired(obj TrendingProductCategory) error {
-	elements := map[string]interface{}{
-		"engagement_type": obj.EngagementType,
-		"pct_change_mom": obj.PctChangeMom,
-		"percent_relative_volume": obj.PercentRelativeVolume,
-		"product_category": obj.ProductCategory,
+// UnmarshalJSON validates required property keys then unmarshals into TrendingProductCategory
+func (o *TrendingProductCategory) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"engagement_type",
+		"pct_change_mom",
+		"percent_relative_volume",
+		"pinterest_product_category_id",
+		"product_category",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"engagement_type": false,
+		"pct_change_mom": false,
+		"percent_relative_volume": false,
+		"pinterest_product_category_id": false,
+		"product_category": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"engagement_type": {},
+		"pct_change_mom": {},
+		"percent_relative_volume": {},
+		"pinterest_product_category_id": {},
+		"product_category": {},
+		"verticals": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded TrendingProductCategory
+
+	if value, exists := allProperties["engagement_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.EngagementType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["pct_change_mom"]; exists {
+		if err = json.Unmarshal(value, &decoded.PctChangeMom); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["percent_relative_volume"]; exists {
+		if err = json.Unmarshal(value, &decoded.PercentRelativeVolume); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["pinterest_product_category_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.PinterestProductCategoryId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["product_category"]; exists {
+		if err = json.Unmarshal(value, &decoded.ProductCategory); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["verticals"]; exists {
+		if err = json.Unmarshal(value, &decoded.Verticals); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertTrendingProductCategoryRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertTrendingProductCategoryRequired(obj TrendingProductCategory) error {
 	return nil
 }
 

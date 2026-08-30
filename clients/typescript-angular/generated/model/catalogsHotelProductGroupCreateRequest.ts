@@ -15,7 +15,7 @@ import { CatalogsHotelProductGroupFilters } from './catalogsHotelProductGroupFil
  */
 export interface CatalogsHotelProductGroupCreateRequest { 
     /**
-     * Catalog id pertaining to the hotel product group.
+     * Catalog ID pertaining to the product group.
      */
     catalog_id: string;
     catalog_type: CatalogsHotelProductGroupCreateRequest.CatalogTypeEnum;

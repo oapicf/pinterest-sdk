@@ -19,11 +19,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## ads_credit_redeem
 
-> <AdsCreditRedeemResponse> ads_credit_redeem(ad_account_id, ads_credit_redeem_request)
+> <AdsCreditRedeem> ads_credit_redeem(ad_account_id, ads_credit_redeem_create)
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Examples
 
@@ -38,11 +38,11 @@ end
 
 api_instance = PinterestSdkClient::BillingApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-ads_credit_redeem_request = PinterestSdkClient::AdsCreditRedeemRequest.new({offer_code_hash: '138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67', validate_only: true}) # AdsCreditRedeemRequest | Redeem ad credits request.
+ads_credit_redeem_create = PinterestSdkClient::AdsCreditRedeemCreate.new({offer_code_hash: '138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67', validate_only: true}) # AdsCreditRedeemCreate | 
 
 begin
   # Redeem ad credits
-  result = api_instance.ads_credit_redeem(ad_account_id, ads_credit_redeem_request)
+  result = api_instance.ads_credit_redeem(ad_account_id, ads_credit_redeem_create)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BillingApi->ads_credit_redeem: #{e}"
@@ -53,15 +53,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AdsCreditRedeemResponse>, Integer, Hash)> ads_credit_redeem_with_http_info(ad_account_id, ads_credit_redeem_request)
+> <Array(<AdsCreditRedeem>, Integer, Hash)> ads_credit_redeem_with_http_info(ad_account_id, ads_credit_redeem_create)
 
 ```ruby
 begin
   # Redeem ad credits
-  data, status_code, headers = api_instance.ads_credit_redeem_with_http_info(ad_account_id, ads_credit_redeem_request)
+  data, status_code, headers = api_instance.ads_credit_redeem_with_http_info(ad_account_id, ads_credit_redeem_create)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <AdsCreditRedeemResponse>
+  p data # => <AdsCreditRedeem>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BillingApi->ads_credit_redeem_with_http_info: #{e}"
 end
@@ -72,11 +72,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **ads_credit_redeem_request** | [**AdsCreditRedeemRequest**](AdsCreditRedeemRequest.md) | Redeem ad credits request. |  |
+| **ads_credit_redeem_create** | [**AdsCreditRedeemCreate**](AdsCreditRedeemCreate.md) |  |  |
 
 ### Return type
 
-[**AdsCreditRedeemResponse**](AdsCreditRedeemResponse.md)
+[**AdsCreditRedeem**](AdsCreditRedeem.md)
 
 ### Authorization
 
@@ -94,7 +94,7 @@ end
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Examples
 
@@ -111,7 +111,7 @@ api_instance = PinterestSdkClient::BillingApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -147,7 +147,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -257,13 +257,13 @@ api_instance = PinterestSdkClient::BillingApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  sort: 'DUE_DATE', # String | Field of which to sort billing invoices
-  order: 'ASCENDING', # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  status: 'OPEN', # String | Status of billing invoices to filter by
-  document_type: 'INVOICE', # String | Document type of billing invoices to filter by
-  start_due_date: Date.parse('Sun Jan 01 00:00:00 UTC 2023'), # Date | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
-  end_due_date: Date.parse('Mon Jan 01 00:00:00 UTC 2024') # Date | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+  page_size: 56, # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  order: PinterestSdkClient::PinterestLibPaginationOrder::ASCENDING, # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  sort: PinterestSdkClient::BillingInvoiceSortField::DUE_DATE, # BillingInvoiceSortField | Field of which to sort billing invoices
+  status: PinterestSdkClient::BillingInvoiceStatus::OPEN, # BillingInvoiceStatus | Status of billing invoices to filter by
+  document_type: PinterestSdkClient::BillingInvoiceDocumentType::INVOICE, # BillingInvoiceDocumentType | Document type of billing invoices to filter by
+  start_due_date: Date.parse('2013-10-20'), # Date | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+  end_due_date: Date.parse('2013-10-20') # Date | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
 }
 
 begin
@@ -299,11 +299,11 @@ end
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
-| **sort** | **String** | Field of which to sort billing invoices | [optional][default to &#39;DUE_DATE&#39;] |
-| **order** | **String** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
-| **status** | **String** | Status of billing invoices to filter by | [optional] |
-| **document_type** | **String** | Document type of billing invoices to filter by | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
+| **order** | [**PinterestLibPaginationOrder**](.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
+| **sort** | [**BillingInvoiceSortField**](.md) | Field of which to sort billing invoices | [optional][default to &#39;DUE_DATE&#39;] |
+| **status** | [**BillingInvoiceStatus**](.md) | Status of billing invoices to filter by | [optional] |
+| **document_type** | [**BillingInvoiceDocumentType**](.md) | Document type of billing invoices to filter by | [optional] |
 | **start_due_date** | **Date** | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] |
 | **end_due_date** | **Date** | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] |
 
@@ -323,11 +323,11 @@ end
 
 ## billing_profiles_get
 
-> <BillingProfilesGet200Response> billing_profiles_get(ad_account_id, is_active, opts)
+> <BillingProfilesGet200Response> billing_profiles_get(is_active, ad_account_id, opts)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Examples
 
@@ -341,16 +341,16 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BillingApi.new
-ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 is_active = true # Boolean | Return active billing profiles, if false return all billing profiles.
+ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
   # Get billing profiles
-  result = api_instance.billing_profiles_get(ad_account_id, is_active, opts)
+  result = api_instance.billing_profiles_get(is_active, ad_account_id, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BillingApi->billing_profiles_get: #{e}"
@@ -361,12 +361,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BillingProfilesGet200Response>, Integer, Hash)> billing_profiles_get_with_http_info(ad_account_id, is_active, opts)
+> <Array(<BillingProfilesGet200Response>, Integer, Hash)> billing_profiles_get_with_http_info(is_active, ad_account_id, opts)
 
 ```ruby
 begin
   # Get billing profiles
-  data, status_code, headers = api_instance.billing_profiles_get_with_http_info(ad_account_id, is_active, opts)
+  data, status_code, headers = api_instance.billing_profiles_get_with_http_info(is_active, ad_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <BillingProfilesGet200Response>
@@ -379,10 +379,10 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **is_active** | **Boolean** | Return active billing profiles, if false return all billing profiles. |  |
+| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -400,11 +400,11 @@ end
 
 ## ssio_accounts_get
 
-> <SSIOAccountResponse> ssio_accounts_get(ad_account_id)
+> <SSIOAccount> ssio_accounts_get(ad_account_id)
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Examples
 
@@ -433,7 +433,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SSIOAccountResponse>, Integer, Hash)> ssio_accounts_get_with_http_info(ad_account_id)
+> <Array(<SSIOAccount>, Integer, Hash)> ssio_accounts_get_with_http_info(ad_account_id)
 
 ```ruby
 begin
@@ -441,7 +441,7 @@ begin
   data, status_code, headers = api_instance.ssio_accounts_get_with_http_info(ad_account_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <SSIOAccountResponse>
+  p data # => <SSIOAccount>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BillingApi->ssio_accounts_get_with_http_info: #{e}"
 end
@@ -455,7 +455,7 @@ end
 
 ### Return type
 
-[**SSIOAccountResponse**](SSIOAccountResponse.md)
+[**SSIOAccount**](SSIOAccount.md)
 
 ### Authorization
 
@@ -469,11 +469,11 @@ end
 
 ## ssio_insertion_order_create
 
-> <SSIOCreateInsertionOrderResponse> ssio_insertion_order_create(ad_account_id, ssio_create_insertion_order_request)
+> <SSIOInsertionOrder> ssio_insertion_order_create(ad_account_id, ssio_insertion_order_create)
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Examples
 
@@ -488,11 +488,11 @@ end
 
 api_instance = PinterestSdkClient::BillingApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-ssio_create_insertion_order_request = PinterestSdkClient::SSIOCreateInsertionOrderRequest.new({billing_contact_email: 'test@example', billing_contact_firstname: 'billing_contact_firstname_example', billing_contact_lastname: 'billing_contact_lastname_example', media_contact_email: 'test@example', media_contact_firstname: 'media_contact_firstname_example', media_contact_lastname: 'media_contact_lastname_example', po_number: 'po_number_example', start_date: '2020-12-20', accepted_terms_id: 'accepted_terms_id_example', billto_billing_address_id: 'billto_billing_address_id_example', billto_business_address_id: 'billto_business_address_id_example', billto_company_id: 'billto_company_id_example', currency_info: PinterestSdkClient::Currency::UNK, order_line_type: 'BUDGET', order_name: 'order_name_example', pmp_id: 'pmp_id_example'}) # SSIOCreateInsertionOrderRequest | Order line to create.
+ssio_insertion_order_create = PinterestSdkClient::SSIOInsertionOrderCreate.new({accepted_terms_id: 'accepted_terms_id_example', billing_contact_email: 'billing_contact_email_example', billing_contact_firstname: 'billing_contact_firstname_example', billing_contact_lastname: 'billing_contact_lastname_example', billto_billing_address_id: 'billto_billing_address_id_example', billto_business_address_id: 'billto_business_address_id_example', billto_company_id: 'billto_company_id_example', currency_info: PinterestSdkClient::Currency::UNK, media_contact_email: 'media_contact_email_example', media_contact_firstname: 'media_contact_firstname_example', media_contact_lastname: 'media_contact_lastname_example', order_line_type: PinterestSdkClient::SSIOOrderLineType::BUDGET, order_name: 'order_name_example', pmp_id: 'pmp_id_example', po_number: 'po_number_example', start_date: 'start_date_example'}) # SSIOInsertionOrderCreate | 
 
 begin
   # Create insertion order through SSIO.
-  result = api_instance.ssio_insertion_order_create(ad_account_id, ssio_create_insertion_order_request)
+  result = api_instance.ssio_insertion_order_create(ad_account_id, ssio_insertion_order_create)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BillingApi->ssio_insertion_order_create: #{e}"
@@ -503,15 +503,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SSIOCreateInsertionOrderResponse>, Integer, Hash)> ssio_insertion_order_create_with_http_info(ad_account_id, ssio_create_insertion_order_request)
+> <Array(<SSIOInsertionOrder>, Integer, Hash)> ssio_insertion_order_create_with_http_info(ad_account_id, ssio_insertion_order_create)
 
 ```ruby
 begin
   # Create insertion order through SSIO.
-  data, status_code, headers = api_instance.ssio_insertion_order_create_with_http_info(ad_account_id, ssio_create_insertion_order_request)
+  data, status_code, headers = api_instance.ssio_insertion_order_create_with_http_info(ad_account_id, ssio_insertion_order_create)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <SSIOCreateInsertionOrderResponse>
+  p data # => <SSIOInsertionOrder>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BillingApi->ssio_insertion_order_create_with_http_info: #{e}"
 end
@@ -522,11 +522,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **ssio_create_insertion_order_request** | [**SSIOCreateInsertionOrderRequest**](SSIOCreateInsertionOrderRequest.md) | Order line to create. |  |
+| **ssio_insertion_order_create** | [**SSIOInsertionOrderCreate**](SSIOInsertionOrderCreate.md) |  |  |
 
 ### Return type
 
-[**SSIOCreateInsertionOrderResponse**](SSIOCreateInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -540,11 +540,11 @@ end
 
 ## ssio_insertion_order_edit
 
-> <SSIOEditInsertionOrderResponse> ssio_insertion_order_edit(ad_account_id, ssio_edit_insertion_order_request)
+> <SSIOInsertionOrder> ssio_insertion_order_edit(ad_account_id, ssio_insertion_order_update)
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Examples
 
@@ -559,11 +559,11 @@ end
 
 api_instance = PinterestSdkClient::BillingApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-ssio_edit_insertion_order_request = PinterestSdkClient::SSIOEditInsertionOrderRequest.new # SSIOEditInsertionOrderRequest | Order line to create.
+ssio_insertion_order_update = PinterestSdkClient::SSIOInsertionOrderUpdate.new # SSIOInsertionOrderUpdate | 
 
 begin
   # Edit insertion order through SSIO.
-  result = api_instance.ssio_insertion_order_edit(ad_account_id, ssio_edit_insertion_order_request)
+  result = api_instance.ssio_insertion_order_edit(ad_account_id, ssio_insertion_order_update)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BillingApi->ssio_insertion_order_edit: #{e}"
@@ -574,15 +574,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SSIOEditInsertionOrderResponse>, Integer, Hash)> ssio_insertion_order_edit_with_http_info(ad_account_id, ssio_edit_insertion_order_request)
+> <Array(<SSIOInsertionOrder>, Integer, Hash)> ssio_insertion_order_edit_with_http_info(ad_account_id, ssio_insertion_order_update)
 
 ```ruby
 begin
   # Edit insertion order through SSIO.
-  data, status_code, headers = api_instance.ssio_insertion_order_edit_with_http_info(ad_account_id, ssio_edit_insertion_order_request)
+  data, status_code, headers = api_instance.ssio_insertion_order_edit_with_http_info(ad_account_id, ssio_insertion_order_update)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <SSIOEditInsertionOrderResponse>
+  p data # => <SSIOInsertionOrder>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BillingApi->ssio_insertion_order_edit_with_http_info: #{e}"
 end
@@ -593,11 +593,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **ssio_edit_insertion_order_request** | [**SSIOEditInsertionOrderRequest**](SSIOEditInsertionOrderRequest.md) | Order line to create. |  |
+| **ssio_insertion_order_update** | [**SSIOInsertionOrderUpdate**](SSIOInsertionOrderUpdate.md) |  |  |
 
 ### Return type
 
-[**SSIOEditInsertionOrderResponse**](SSIOEditInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -615,7 +615,7 @@ end
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Examples
 
@@ -632,7 +632,7 @@ api_instance = PinterestSdkClient::BillingApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -668,7 +668,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -690,7 +690,7 @@ end
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Examples
 
@@ -705,7 +705,7 @@ end
 
 api_instance = PinterestSdkClient::BillingApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-pin_order_id = '0Q01N0000015hekSVDFDC' # String | The pin order id associated with the ssio insertion order
+pin_order_id = 'pin_order_id_example' # String | The pin order id associated with the ssio insertion order
 
 begin
   # Get insertion order status by pin order id.
@@ -761,7 +761,7 @@ end
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Examples
 
@@ -777,9 +777,9 @@ end
 api_instance = PinterestSdkClient::BillingApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
+  pin_order_id: 'pin_order_id_example', # String | The pin order id associated with the SSIO insertion order
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  pin_order_id: '0Q01N0000015hekSVDFDC' # String | The pin order id associated with the ssio insertino order
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -814,9 +814,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
+| **pin_order_id** | **String** | The pin order id associated with the SSIO insertion order | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
-| **pin_order_id** | **String** | The pin order id associated with the ssio insertino order | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 

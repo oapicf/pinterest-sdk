@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Availability of the item",
+  "name": "ItemAvailability",
+  "symbols": [
+    "in_stock",
+    "out_of_stock",
+    "preorder"
+  ]
+}

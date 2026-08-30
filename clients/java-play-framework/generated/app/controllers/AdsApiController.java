@@ -1,19 +1,29 @@
 package controllers;
 
-import apimodels.AdArrayResponse;
-import apimodels.AdCreateRequest;
+import apimodels.Ad;
+import apimodels.AdBatchUpdate;
+import apimodels.AdBatchWriteResponseModel;
+import apimodels.AdCreate;
 import apimodels.AdPreviewRequest;
 import apimodels.AdPreviewURLResponse;
-import apimodels.AdResponse;
-import apimodels.AdUpdateRequest;
+import apimodels.AdsAnalytics;
 import apimodels.AdsAnalyticsAdTargetingType;
-import apimodels.AdsAnalyticsResponseInner;
 import apimodels.AdsList200Response;
+import java.math.BigDecimal;
+import apimodels.CampaignAdPreview;
+import apimodels.CampaignAdPreviewCreate;
+import apimodels.CampaignAdPreviewCreate200ResponseInner;
+import apimodels.CampaignAdPreviewDelete200ResponseInner;
+import apimodels.ConversionAttributionWindowDays;
 import apimodels.ConversionReportAttributionType;
-import apimodels.Error;
+import apimodels.ConversionReportTimeType;
+import apimodels.EntityStatus;
 import apimodels.Granularity;
 import java.time.LocalDate;
 import apimodels.MetricsResponse;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.ReportingColumnSync;
 import apimodels.ReportingTimeZone;
 
 import com.typesafe.config.Config;
@@ -38,7 +48,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdsApiController extends Controller {
     private final AdsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -111,7 +121,7 @@ public class AdsApiController extends Controller {
             throw new IllegalArgumentException("'columns' parameter is required");
         }
         List<String> columnsList = OpenAPIUtils.parametersToList("csv", columnsArray);
-        List<String> columns = new ArrayList<>();
+        List<ReportingColumnSync> columns = new ArrayList<>();
         for (String curParam : columnsList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -126,32 +136,32 @@ public class AdsApiController extends Controller {
             throw new IllegalArgumentException("'granularity' parameter is required");
         }
         String valueclickWindowDays = request.getQueryString("click_window_days");
-        Integer clickWindowDays;
+        ConversionAttributionWindowDays clickWindowDays;
         if (valueclickWindowDays != null) {
-            clickWindowDays = Integer.parseInt(valueclickWindowDays);
+            clickWindowDays = valueclickWindowDays;
         } else {
-            clickWindowDays = 30;
+            clickWindowDays = null;
         }
         String valueengagementWindowDays = request.getQueryString("engagement_window_days");
-        Integer engagementWindowDays;
+        ConversionAttributionWindowDays engagementWindowDays;
         if (valueengagementWindowDays != null) {
-            engagementWindowDays = Integer.parseInt(valueengagementWindowDays);
+            engagementWindowDays = valueengagementWindowDays;
         } else {
-            engagementWindowDays = 30;
+            engagementWindowDays = null;
         }
         String valueviewWindowDays = request.getQueryString("view_window_days");
-        Integer viewWindowDays;
+        ConversionAttributionWindowDays viewWindowDays;
         if (valueviewWindowDays != null) {
-            viewWindowDays = Integer.parseInt(valueviewWindowDays);
+            viewWindowDays = valueviewWindowDays;
         } else {
-            viewWindowDays = 1;
+            viewWindowDays = null;
         }
         String valueconversionReportTime = request.getQueryString("conversion_report_time");
-        String conversionReportTime;
+        ConversionReportTimeType conversionReportTime;
         if (valueconversionReportTime != null) {
             conversionReportTime = valueconversionReportTime;
         } else {
-            conversionReportTime = "TIME_OF_AD_ACTION";
+            conversionReportTime = null;
         }
         String[] attributionTypesArray = request.queryString().get("attribution_types");
         List<String> attributionTypesList = OpenAPIUtils.parametersToList("csv", attributionTypesArray);
@@ -169,11 +179,36 @@ public class AdsApiController extends Controller {
         } else {
             reportingTimezone = null;
         }
-        return imp.adTargetingAnalyticsGetHttp(request, adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone);
+        String[] sortColumnsArray = request.queryString().get("sort_columns");
+        List<String> sortColumnsList = OpenAPIUtils.parametersToList("multi", sortColumnsArray);
+        List<String> sortColumns = new ArrayList<>();
+        for (String curParam : sortColumnsList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                sortColumns.add(curParam);
+            }
+        }
+        String valuesortAscending = request.getQueryString("sort_ascending");
+        Boolean sortAscending;
+        if (valuesortAscending != null) {
+            sortAscending = Boolean.valueOf(valuesortAscending);
+        } else {
+            sortAscending = null;
+        }
+        return imp.adTargetingAnalyticsGetHttp(request, adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone, sortColumns, sortAscending);
     }
 
     @ApiAction
     public Result adsAnalytics(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String[] pinIdsArray = request.queryString().get("pin_ids");
+        List<String> pinIdsList = OpenAPIUtils.parametersToList("multi", pinIdsArray);
+        List<String> pinIds = new ArrayList<>();
+        for (String curParam : pinIdsList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                pinIds.add(curParam);
+            }
+        }
         String valuestartDate = request.getQueryString("start_date");
         LocalDate startDate;
         if (valuestartDate != null) {
@@ -202,7 +237,7 @@ public class AdsApiController extends Controller {
             throw new IllegalArgumentException("'columns' parameter is required");
         }
         List<String> columnsList = OpenAPIUtils.parametersToList("csv", columnsArray);
-        List<String> columns = new ArrayList<>();
+        List<ReportingColumnSync> columns = new ArrayList<>();
         for (String curParam : columnsList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -217,23 +252,23 @@ public class AdsApiController extends Controller {
             throw new IllegalArgumentException("'granularity' parameter is required");
         }
         String valueclickWindowDays = request.getQueryString("click_window_days");
-        Integer clickWindowDays;
+        BigDecimal clickWindowDays;
         if (valueclickWindowDays != null) {
-            clickWindowDays = Integer.parseInt(valueclickWindowDays);
+            clickWindowDays = new BigDecimal(valueclickWindowDays);
         } else {
             clickWindowDays = 30;
         }
         String valueengagementWindowDays = request.getQueryString("engagement_window_days");
-        Integer engagementWindowDays;
+        BigDecimal engagementWindowDays;
         if (valueengagementWindowDays != null) {
-            engagementWindowDays = Integer.parseInt(valueengagementWindowDays);
+            engagementWindowDays = new BigDecimal(valueengagementWindowDays);
         } else {
             engagementWindowDays = 30;
         }
         String valueviewWindowDays = request.getQueryString("view_window_days");
-        Integer viewWindowDays;
+        BigDecimal viewWindowDays;
         if (valueviewWindowDays != null) {
-            viewWindowDays = Integer.parseInt(valueviewWindowDays);
+            viewWindowDays = new BigDecimal(valueviewWindowDays);
         } else {
             viewWindowDays = 1;
         }
@@ -243,15 +278,6 @@ public class AdsApiController extends Controller {
             conversionReportTime = valueconversionReportTime;
         } else {
             conversionReportTime = "TIME_OF_AD_ACTION";
-        }
-        String[] pinIdsArray = request.queryString().get("pin_ids");
-        List<String> pinIdsList = OpenAPIUtils.parametersToList("multi", pinIdsArray);
-        List<@Pattern(regexp = "^\\d+$")String> pinIds = new ArrayList<>();
-        for (String curParam : pinIdsList) {
-            if (!curParam.isEmpty()) {
-                //noinspection UseBulkOperation
-                pinIds.add(curParam);
-            }
         }
         String[] campaignIdsArray = request.queryString().get("campaign_ids");
         List<String> campaignIdsList = OpenAPIUtils.parametersToList("multi", campaignIdsArray);
@@ -269,33 +295,54 @@ public class AdsApiController extends Controller {
         } else {
             reportingTimezone = null;
         }
-        return imp.adsAnalyticsHttp(request, adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds, reportingTimezone);
+        return imp.adsAnalyticsHttp(request, startDate, endDate, columns, granularity, adAccountId, pinIds, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, campaignIds, reportingTimezone);
     }
 
     @ApiAction
     public Result adsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeadCreateRequest = request.body().asJson();
-        List<@Valid AdCreateRequest> adCreateRequest;
-        if (nodeadCreateRequest != null) {
-            adCreateRequest = mapper.readValue(nodeadCreateRequest.toString(), new TypeReference<List<@Valid AdCreateRequest>>(){});
+        JsonNode nodeadCreate = request.body().asJson();
+        List<@Valid AdCreate> adCreate;
+        if (nodeadCreate != null) {
+            adCreate = mapper.readValue(nodeadCreate.toString(), new TypeReference<List<@Valid AdCreate>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
-                for (AdCreateRequest curItem : adCreateRequest) {
+                for (AdCreate curItem : adCreate) {
                     OpenAPIUtils.validate(curItem);
                 }
             }
         } else {
-            throw new IllegalArgumentException("'AdCreateRequest' parameter is required");
+            throw new IllegalArgumentException("'AdCreate' parameter is required");
         }
-        return imp.adsCreateHttp(request, adAccountId, adCreateRequest);
+        return imp.adsCreateHttp(request, adAccountId, adCreate);
     }
 
     @ApiAction
-    public Result adsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String adId) throws Exception {
-        return imp.adsGetHttp(request, adAccountId, adId);
+    public Result adsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adId, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        return imp.adsGetHttp(request, adId, adAccountId);
     }
 
     @ApiAction
     public Result adsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        String valueorder = request.getQueryString("order");
+        PinterestLibPaginationOrder order;
+        if (valueorder != null) {
+            order = valueorder;
+        } else {
+            order = null;
+        }
         String[] campaignIdsArray = request.queryString().get("campaign_ids");
         List<String> campaignIdsList = OpenAPIUtils.parametersToList("multi", campaignIdsArray);
         List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds = new ArrayList<>();
@@ -325,52 +372,82 @@ public class AdsApiController extends Controller {
         }
         String[] entityStatusesArray = request.queryString().get("entity_statuses");
         List<String> entityStatusesList = OpenAPIUtils.parametersToList("multi", entityStatusesArray);
-        List<String> entityStatuses = new ArrayList<>();
+        List<EntityStatus> entityStatuses = new ArrayList<>();
         for (String curParam : entityStatusesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
                 entityStatuses.add(curParam);
             }
         }
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
-        } else {
-            pageSize = 25;
-        }
-        String valueorder = request.getQueryString("order");
-        String order;
-        if (valueorder != null) {
-            order = valueorder;
-        } else {
-            order = null;
-        }
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
-        } else {
-            bookmark = null;
-        }
-        return imp.adsListHttp(request, adAccountId, campaignIds, adGroupIds, adIds, entityStatuses, pageSize, order, bookmark);
+        return imp.adsListHttp(request, adAccountId, bookmark, pageSize, order, campaignIds, adGroupIds, adIds, entityStatuses);
     }
 
     @ApiAction
     public Result adsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeadUpdateRequest = request.body().asJson();
-        List<@Valid AdUpdateRequest> adUpdateRequest;
-        if (nodeadUpdateRequest != null) {
-            adUpdateRequest = mapper.readValue(nodeadUpdateRequest.toString(), new TypeReference<List<@Valid AdUpdateRequest>>(){});
+        JsonNode nodeadBatchUpdate = request.body().asJson();
+        List<@Valid AdBatchUpdate> adBatchUpdate;
+        if (nodeadBatchUpdate != null) {
+            adBatchUpdate = mapper.readValue(nodeadBatchUpdate.toString(), new TypeReference<List<@Valid AdBatchUpdate>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
-                for (AdUpdateRequest curItem : adUpdateRequest) {
+                for (AdBatchUpdate curItem : adBatchUpdate) {
                     OpenAPIUtils.validate(curItem);
                 }
             }
         } else {
-            throw new IllegalArgumentException("'AdUpdateRequest' parameter is required");
+            throw new IllegalArgumentException("'AdBatchUpdate' parameter is required");
         }
-        return imp.adsUpdateHttp(request, adAccountId, adUpdateRequest);
+        return imp.adsUpdateHttp(request, adAccountId, adBatchUpdate);
+    }
+
+    @ApiAction
+    public Result campaignAdPreviewCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        JsonNode nodecampaignAdPreviewCreate = request.body().asJson();
+        List<@Valid CampaignAdPreviewCreate> campaignAdPreviewCreate;
+        if (nodecampaignAdPreviewCreate != null) {
+            campaignAdPreviewCreate = mapper.readValue(nodecampaignAdPreviewCreate.toString(), new TypeReference<List<@Valid CampaignAdPreviewCreate>>(){});
+            if (configuration.getBoolean("useInputBeanValidation")) {
+                for (CampaignAdPreviewCreate curItem : campaignAdPreviewCreate) {
+                    OpenAPIUtils.validate(curItem);
+                }
+            }
+        } else {
+            throw new IllegalArgumentException("'CampaignAdPreviewCreate' parameter is required");
+        }
+        return imp.campaignAdPreviewCreateHttp(request, adAccountId, campaignAdPreviewCreate);
+    }
+
+    @ApiAction
+    public Result campaignAdPreviewDelete(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String[] adGroupIdsArray = request.queryString().get("ad_group_ids");
+        if (adGroupIdsArray == null) {
+            throw new IllegalArgumentException("'ad_group_ids' parameter is required");
+        }
+        List<String> adGroupIdsList = OpenAPIUtils.parametersToList("multi", adGroupIdsArray);
+        List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds = new ArrayList<>();
+        for (String curParam : adGroupIdsList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                adGroupIds.add(curParam);
+            }
+        }
+        return imp.campaignAdPreviewDeleteHttp(request, adGroupIds, adAccountId);
+    }
+
+    @ApiAction
+    public Result campaignAdPreviewRead(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String[] adGroupIdsArray = request.queryString().get("ad_group_ids");
+        if (adGroupIdsArray == null) {
+            throw new IllegalArgumentException("'ad_group_ids' parameter is required");
+        }
+        List<String> adGroupIdsList = OpenAPIUtils.parametersToList("multi", adGroupIdsArray);
+        List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds = new ArrayList<>();
+        for (String curParam : adGroupIdsList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                adGroupIds.add(curParam);
+            }
+        }
+        return imp.campaignAdPreviewReadHttp(request, adGroupIds, adAccountId);
     }
 
 }

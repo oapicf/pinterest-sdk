@@ -1,7 +1,8 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Host};
+use axum_extra::extract::CookieJar;
 use bytes::Bytes;
+use headers::Host;
 use http::Method;
 use serde::{Deserialize, Serialize};
 
@@ -11,77 +12,197 @@ use crate::{models, types::*};
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum AdAccountCountriesSlashGetResponse {
-    /// Success
-    Status200_Success
-    (models::AdAccountsCountryResponse)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::AdAccountCountriesGet200Response)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum DeliveryMetricsSlashGetResponse {
-    /// Success
-    Status200_Success
-    (models::DeliveryMetricsResponse)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::DeliveryMetricsGet200Response)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum InterestTargetingOptionsSlashGetResponse {
-    /// Success
-    Status200_Success
-    (models::SingleInterestTargetingOptionResponse)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::SingleInterestTargetingOption)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum LeadFormQuestionsSlashGetResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum MetricsReadyStateSlashGetResponse {
-    /// Success
-    Status200_Success
-    (models::BookClosedResponse)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::BookClosed)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum TargetingOptionsSlashGetResponse {
-    /// Success
-    Status200_Success
-    (Vec<crate::types::Object>)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (Vec<models::TargetingOption>)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 

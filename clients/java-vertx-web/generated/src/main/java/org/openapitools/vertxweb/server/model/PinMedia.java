@@ -47,6 +47,7 @@ public class PinMedia   {
   private BigDecimal duration;
   private Integer height;
   private String videoUrl;
+  private String videoUrlHls;
   private Integer width;
   private List<PinMediaMetadata> items = new ArrayList<>();
 
@@ -54,13 +55,14 @@ public class PinMedia   {
 
   }
 
-  public PinMedia (ImageSize images, MediaTypeEnum mediaType, String coverImageUrl, BigDecimal duration, Integer height, String videoUrl, Integer width, List<PinMediaMetadata> items) {
+  public PinMedia (ImageSize images, MediaTypeEnum mediaType, String coverImageUrl, BigDecimal duration, Integer height, String videoUrl, String videoUrlHls, Integer width, List<PinMediaMetadata> items) {
     this.images = images;
     this.mediaType = mediaType;
     this.coverImageUrl = coverImageUrl;
     this.duration = duration;
     this.height = height;
     this.videoUrl = videoUrl;
+    this.videoUrlHls = videoUrlHls;
     this.width = width;
     this.items = items;
   }
@@ -120,6 +122,15 @@ public class PinMedia   {
   }
 
     
+  @JsonProperty("video_url_hls")
+  public String getVideoUrlHls() {
+    return videoUrlHls;
+  }
+  public void setVideoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+  }
+
+    
   @JsonProperty("width")
   public Integer getWidth() {
     return width;
@@ -153,13 +164,14 @@ public class PinMedia   {
         Objects.equals(duration, pinMedia.duration) &&
         Objects.equals(height, pinMedia.height) &&
         Objects.equals(videoUrl, pinMedia.videoUrl) &&
+        Objects.equals(videoUrlHls, pinMedia.videoUrlHls) &&
         Objects.equals(width, pinMedia.width) &&
         Objects.equals(items, pinMedia.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(images, mediaType, coverImageUrl, duration, height, videoUrl, width, items);
+    return Objects.hash(images, mediaType, coverImageUrl, duration, height, videoUrl, videoUrlHls, width, items);
   }
 
   @Override
@@ -173,6 +185,7 @@ public class PinMedia   {
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    videoUrlHls: ").append(toIndentedString(videoUrlHls)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
@@ -184,9 +197,6 @@ public class PinMedia   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

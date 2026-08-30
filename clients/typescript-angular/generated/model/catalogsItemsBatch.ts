@@ -10,7 +10,6 @@
 import { CatalogsCreativeAssetsItemsBatch } from './catalogsCreativeAssetsItemsBatch';
 import { CreativeAssetsProcessingRecord } from './creativeAssetsProcessingRecord';
 import { CatalogsRetailItemsBatch } from './catalogsRetailItemsBatch';
-import { CatalogsType } from './catalogsType';
 import { BatchOperationStatus } from './batchOperationStatus';
 import { CatalogsHotelItemsBatch } from './catalogsHotelItemsBatch';
 

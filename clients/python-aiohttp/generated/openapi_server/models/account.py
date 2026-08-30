@@ -5,6 +5,7 @@ from datetime import date, datetime
 from typing import List, Dict, Type
 
 from openapi_server.models.base_model import Model
+from openapi_server.models.user_account_type import UserAccountType
 import re
 from openapi_server import util
 
@@ -15,7 +16,7 @@ class Account(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, about: str=None, account_type: str=None, board_count: int=None, business_name: str=None, follower_count: int=None, following_count: int=None, id: str=None, monthly_views: int=None, pin_count: int=None, profile_image: str=None, username: str=None, website_url: str=None):
+    def __init__(self, about: str=None, account_type: UserAccountType=None, board_count: int=None, business_name: str=None, follower_count: int=None, following_count: int=None, id: str=None, monthly_views: int=None, pin_count: int=None, profile_image: str=None, username: str=None, website_url: str=None):
         """Account - a model defined in OpenAPI
 
         :param about: The about of this Account.
@@ -33,7 +34,7 @@ class Account(Model):
         """
         self.openapi_types = {
             'about': str,
-            'account_type': str,
+            'account_type': UserAccountType,
             'board_count': int,
             'business_name': str,
             'follower_count': int,
@@ -113,7 +114,7 @@ class Account(Model):
         Type of account
 
         :return: The account_type of this Account.
-        :rtype: str
+        :rtype: UserAccountType
         """
         return self._account_type
 
@@ -124,14 +125,8 @@ class Account(Model):
         Type of account
 
         :param account_type: The account_type of this Account.
-        :type account_type: str
+        :type account_type: UserAccountType
         """
-        allowed_values = ["PINNER", "BUSINESS"]  # noqa: E501
-        if account_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `account_type` ({0}), must be one of {1}"
-                .format(account_type, allowed_values)
-            )
 
         self._account_type = account_type
 
@@ -139,7 +134,7 @@ class Account(Model):
     def board_count(self):
         """Gets the board_count of this Account.
 
-        User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+          User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
 
         :return: The board_count of this Account.
         :rtype: int
@@ -150,7 +145,7 @@ class Account(Model):
     def board_count(self, board_count):
         """Sets the board_count of this Account.
 
-        User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+          User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
 
         :param board_count: The board_count of this Account.
         :type board_count: int

@@ -7,13 +7,13 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**orderLinesGet()**](OrderLinesApi.md#orderLinesGet) | **GET** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line |
-| [**orderLinesList()**](OrderLinesApi.md#orderLinesList) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines |
+| [**orderLinesList()**](OrderLinesApi.md#orderLinesList) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines. |
 
 
 ## `orderLinesGet()`
 
 ```php
-orderLinesGet($ad_account_id, $order_line_id): \OpenAPI\Client\Model\OrderLine
+orderLinesGet($order_line_id, $ad_account_id): \OpenAPI\Client\Model\OrderLine
 ```
 
 Get order line
@@ -37,11 +37,11 @@ $apiInstance = new OpenAPI\Client\Api\OrderLinesApi(
     new GuzzleHttp\Client(),
     $config
 );
+$order_line_id = 'order_line_id_example'; // string | Order line ID.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$order_line_id = 'order_line_id_example'; // string | Unique identifier of an order line.
 
 try {
-    $result = $apiInstance->orderLinesGet($ad_account_id, $order_line_id);
+    $result = $apiInstance->orderLinesGet($order_line_id, $ad_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrderLinesApi->orderLinesGet: ', $e->getMessage(), PHP_EOL;
@@ -52,8 +52,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **order_line_id** | **string**| Order line ID. | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **order_line_id** | **string**| Unique identifier of an order line. | |
 
 ### Return type
 
@@ -75,10 +75,10 @@ try {
 ## `orderLinesList()`
 
 ```php
-orderLinesList($ad_account_id, $page_size, $order, $bookmark): \OpenAPI\Client\Model\OrderLinesList200Response
+orderLinesList($ad_account_id, $bookmark, $page_size, $order): \OpenAPI\Client\Model\OrderLinesList200Response
 ```
 
-Get order lines
+Get order lines.
 
 List existing order lines associated with an ad account.
 
@@ -100,12 +100,12 @@ $apiInstance = new OpenAPI\Client\Api\OrderLinesApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-$order = ASCENDING; // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+$order = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\PinterestLibPaginationOrder(); // \OpenAPI\Client\Model\PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 
 try {
-    $result = $apiInstance->orderLinesList($ad_account_id, $page_size, $order, $bookmark);
+    $result = $apiInstance->orderLinesList($ad_account_id, $bookmark, $page_size, $order);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrderLinesApi->orderLinesList: ', $e->getMessage(), PHP_EOL;
@@ -117,9 +117,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | [**\OpenAPI\Client\Model\PinterestLibPaginationOrder**](../Model/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 
 ### Return type
 

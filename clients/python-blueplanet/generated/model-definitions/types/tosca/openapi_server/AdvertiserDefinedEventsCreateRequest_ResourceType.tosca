@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdvertiserDefinedEventsCreateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdvertiserDefinedEventsCreateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdvertiserDefinedEventInput = openapi_server.resourceTypes.AdvertiserDefinedEventInput
+}
+resourceTypes {
+
+  AdvertiserDefinedEventsCreateRequest {
+    title = AdvertiserDefinedEventsCreateRequest
+    description = AdvertiserDefinedEventsCreateRequest
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = AdvertiserDefinedEventInput
+          description = "List of advertiser defined events to create or update"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdvertiserDefinedEventsCreateRequest {
+    title = AdvertiserDefinedEventsCreateRequest
+    description = AdvertiserDefinedEventsCreateRequest
+    implements = openapi_server.resourceTypes.AdvertiserDefinedEventsCreateRequest
+
+  }
+}

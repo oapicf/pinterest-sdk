@@ -8,7 +8,7 @@ import play.api.libs.json._
   * @param items Array with catalogs item operations
   * @param language We recommend using the CatalogsLocale values.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class CatalogsHotelBatchRequest(
   catalogId: Option[String],
   catalogType: CatalogsHotelBatchRequest.CatalogType.Value,
@@ -119,7 +119,7 @@ object CatalogsHotelBatchRequest {
     val NB = Value("NB")
     val NE = Value("NE")
     val NL = Value("NL")
-    val NO = Value("NO")
+    val False = Value("false")
     val PL = Value("PL")
     val PT = Value("PT")
     val RO = Value("RO")

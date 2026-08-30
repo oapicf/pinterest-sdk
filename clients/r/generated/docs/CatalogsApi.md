@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 List available filter values
 
-Get the available filter attributes and values associated with a given feed or catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - <code>country</code>, <code>language</code>, and <code>feed_id</code> are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+Get the available filter attributes and values associated with a given feed or catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - `country`, `language`, and `feed_id` are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 ```R
@@ -64,20 +64,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **401** | Unauthorized access. |  -  |
-| **403** | Forbidden. Account not authorized to access available filter values. |  -  |
-| **404** | Data feed not found. |  -  |
-| **409** | Can&#39;t access this feature without an existing catalog. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **CatalogsCreate**
-> Catalog CatalogsCreate(catalogs_create_request, ad_account_id = var.ad_account_id)
+> Catalog CatalogsCreate(catalog_create, ad_account_id = var.ad_account_id)
 
 Create catalog
 
-Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
 ### Example
 ```R
@@ -86,15 +86,15 @@ library(openapi)
 # Create catalog
 #
 # prepare function argument(s)
-var_catalogs_create_request <- CatalogsCreateRequest$new(CatalogsType$new(), "name_example") # CatalogsCreateRequest | Request object used to created a feed.
+var_catalog_create <- CatalogCreate$new(CatalogsType$new(), "name_example") # CatalogCreate | 
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- CatalogsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$CatalogsCreate(var_catalogs_create_request, ad_account_id = var_ad_account_iddata_file = "result.txt")
-result <- api_instance$CatalogsCreate(var_catalogs_create_request, ad_account_id = var_ad_account_id)
+# result <- api_instance$CatalogsCreate(var_catalog_create, ad_account_id = var_ad_account_iddata_file = "result.txt")
+result <- api_instance$CatalogsCreate(var_catalog_create, ad_account_id = var_ad_account_id)
 dput(result)
 ```
 
@@ -102,7 +102,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogs_create_request** | [**CatalogsCreateRequest**](CatalogsCreateRequest.md)| Request object used to created a feed. | 
+ **catalog_create** | [**CatalogCreate**](CatalogCreate.md)|  | 
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -121,17 +121,21 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **401** | Unauthorized access. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **CatalogsList**
-> CatalogsList200Response CatalogsList(bookmark = var.bookmark, page_size = 25, ad_account_id = var.ad_account_id)
+> CatalogsList200Response CatalogsList(ad_account_id = var.ad_account_id, bookmark = var.bookmark, page_size = 25)
 
 List catalogs
 
-Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 ```R
@@ -140,16 +144,16 @@ library(openapi)
 # List catalogs
 #
 # prepare function argument(s)
-var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
+var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- CatalogsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$CatalogsList(bookmark = var_bookmark, page_size = var_page_size, ad_account_id = var_ad_account_iddata_file = "result.txt")
-result <- api_instance$CatalogsList(bookmark = var_bookmark, page_size = var_page_size, ad_account_id = var_ad_account_id)
+# result <- api_instance$CatalogsList(ad_account_id = var_ad_account_id, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$CatalogsList(ad_account_id = var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -157,9 +161,9 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
+ **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -177,8 +181,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **401** | Unauthorized access. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

@@ -22,9 +22,9 @@ import scalaz.concurrent.Task
 import HelperCodecs._
 
 import org.openapitools.client.api.Error
-import org.openapitools.client.api.LeadsExportCreateRequest
-import org.openapitools.client.api.LeadsExportCreateResponse
 import org.openapitools.client.api.LeadsExportResponseData
+import org.openapitools.client.api.LeadsExports
+import org.openapitools.client.api.LeadsExportsCreate
 
 object LeadsExportApi {
 
@@ -32,8 +32,8 @@ object LeadsExportApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def leadsExportCreate(host: String, adAccountId: String, leadsExportCreateRequest: LeadsExportCreateRequest): Task[LeadsExportCreateResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[LeadsExportCreateResponse] = jsonOf[LeadsExportCreateResponse]
+  def leadsExportCreate(host: String, adAccountId: String, leadsExportsCreate: LeadsExportsCreate): Task[LeadsExports] = {
+    implicit val returnTypeDecoder: EntityDecoder[LeadsExports] = jsonOf[LeadsExports]
 
     val path = "/ad_accounts/{ad_account_id}/leads_export".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -47,8 +47,8 @@ object LeadsExportApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(leadsExportCreateRequest)
-      resp          <- client.expect[LeadsExportCreateResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(leadsExportsCreate)
+      resp          <- client.expect[LeadsExports](req)
 
     } yield resp
   }
@@ -81,8 +81,8 @@ class HttpServiceLeadsExportApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def leadsExportCreate(adAccountId: String, leadsExportCreateRequest: LeadsExportCreateRequest): Task[LeadsExportCreateResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[LeadsExportCreateResponse] = jsonOf[LeadsExportCreateResponse]
+  def leadsExportCreate(adAccountId: String, leadsExportsCreate: LeadsExportsCreate): Task[LeadsExports] = {
+    implicit val returnTypeDecoder: EntityDecoder[LeadsExports] = jsonOf[LeadsExports]
 
     val path = "/ad_accounts/{ad_account_id}/leads_export".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -96,8 +96,8 @@ class HttpServiceLeadsExportApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(leadsExportCreateRequest)
-      resp          <- client.expect[LeadsExportCreateResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(leadsExportsCreate)
+      resp          <- client.expect[LeadsExports](req)
 
     } yield resp
   }

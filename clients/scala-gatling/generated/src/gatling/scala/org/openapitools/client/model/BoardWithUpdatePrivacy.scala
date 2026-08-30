@@ -18,7 +18,7 @@ case class BoardWithUpdatePrivacy (
     _isAdsOnly: Option[Boolean],
     /* Board media. */
     _media: Option[BoardMedia],
-    /*      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". */
+    /*     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". */
     _name: String,
     _owner: Option[BoardOwner],
     /* Count of Pins on the board. */

@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.LabelUpdateRequestLabelsInner
+open OpenAPI.Model.LabelUpdateItem
 
 module LabelUpdateRequest =
 
@@ -10,6 +10,6 @@ module LabelUpdateRequest =
 
 
   type LabelUpdateRequest = {
-    Labels : LabelUpdateRequestLabelsInner[];
+    Labels : LabelUpdateItem[];
   }
   //#endregion

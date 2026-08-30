@@ -11,51 +11,40 @@
 part of openapi.api;
 
 /// Level of the reporting request
-class MetricsReportingLevel {
-  /// Instantiate a new enum with the provided [value].
-  const MetricsReportingLevel._(this.value);
+enum MetricsReportingLevel {
+  ADVERTISER._(r'ADVERTISER'),
+  ADVERTISER_TARGETING._(r'ADVERTISER_TARGETING'),
+  CAMPAIGN._(r'CAMPAIGN'),
+  CAMPAIGN_TARGETING._(r'CAMPAIGN_TARGETING'),
+  AD_GROUP._(r'AD_GROUP'),
+  AD_GROUP_TARGETING._(r'AD_GROUP_TARGETING'),
+  PIN_PROMOTION._(r'PIN_PROMOTION'),
+  PIN_PROMOTION_TARGETING._(r'PIN_PROMOTION_TARGETING'),
+  KEYWORD._(r'KEYWORD'),
+  PRODUCT_GROUP._(r'PRODUCT_GROUP'),
+  PRODUCT_GROUP_TARGETING._(r'PRODUCT_GROUP_TARGETING'),
+  PRODUCT_ITEM._(r'PRODUCT_ITEM'),
+  PRODUCT_ITEM_TARGETING._(r'PRODUCT_ITEM_TARGETING'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const MetricsReportingLevel._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const ADVERTISER = MetricsReportingLevel._(r'ADVERTISER');
-  static const ADVERTISER_TARGETING = MetricsReportingLevel._(r'ADVERTISER_TARGETING');
-  static const CAMPAIGN = MetricsReportingLevel._(r'CAMPAIGN');
-  static const CAMPAIGN_TARGETING = MetricsReportingLevel._(r'CAMPAIGN_TARGETING');
-  static const AD_GROUP = MetricsReportingLevel._(r'AD_GROUP');
-  static const AD_GROUP_TARGETING = MetricsReportingLevel._(r'AD_GROUP_TARGETING');
-  static const PIN_PROMOTION = MetricsReportingLevel._(r'PIN_PROMOTION');
-  static const PIN_PROMOTION_TARGETING = MetricsReportingLevel._(r'PIN_PROMOTION_TARGETING');
-  static const KEYWORD = MetricsReportingLevel._(r'KEYWORD');
-  static const PRODUCT_GROUP = MetricsReportingLevel._(r'PRODUCT_GROUP');
-  static const PRODUCT_GROUP_TARGETING = MetricsReportingLevel._(r'PRODUCT_GROUP_TARGETING');
-  static const PRODUCT_ITEM = MetricsReportingLevel._(r'PRODUCT_ITEM');
-  static const PRODUCT_ITEM_TARGETING = MetricsReportingLevel._(r'PRODUCT_ITEM_TARGETING');
-
-  /// List of all possible values in this [enum][MetricsReportingLevel].
-  static const values = <MetricsReportingLevel>[
-    ADVERTISER,
-    ADVERTISER_TARGETING,
-    CAMPAIGN,
-    CAMPAIGN_TARGETING,
-    AD_GROUP,
-    AD_GROUP_TARGETING,
-    PIN_PROMOTION,
-    PIN_PROMOTION_TARGETING,
-    KEYWORD,
-    PRODUCT_GROUP,
-    PRODUCT_GROUP_TARGETING,
-    PRODUCT_ITEM,
-    PRODUCT_ITEM_TARGETING,
-  ];
-
+  /// Returns the instance of [MetricsReportingLevel] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static MetricsReportingLevel? fromJson(dynamic value) => MetricsReportingLevelTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [MetricsReportingLevel]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<MetricsReportingLevel> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <MetricsReportingLevel>[];
     if (json is List && json.isNotEmpty) {
@@ -77,9 +66,11 @@ class MetricsReportingLevelTypeTransformer {
 
   const MetricsReportingLevelTypeTransformer._();
 
-  String encode(MetricsReportingLevel data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(MetricsReportingLevel data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a MetricsReportingLevel.
+  /// Returns the instance of [MetricsReportingLevel] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -88,6 +79,9 @@ class MetricsReportingLevelTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   MetricsReportingLevel? decode(dynamic data, {bool allowNull = true}) {
+    if (data is MetricsReportingLevel) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'ADVERTISER': return MetricsReportingLevel.ADVERTISER;
@@ -112,7 +106,7 @@ class MetricsReportingLevelTypeTransformer {
     return null;
   }
 
-  /// Singleton [MetricsReportingLevelTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static MetricsReportingLevelTypeTransformer? _instance;
 }
 

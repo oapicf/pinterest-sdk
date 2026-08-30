@@ -12,21 +12,25 @@ part 'catalogs_feed_ingestion.g.dart';
 /// CatalogsFeedIngestion
 ///
 /// Properties:
-/// * [createdAt] 
-/// * [feedId] 
-/// * [id] 
-/// * [status] 
+/// * [createdAt] - Timestamp of the feed ingestion.
+/// * [feedId] - Catalog Feed id pertaining to the feed ingestion.
+/// * [id] - Unique identifier of a feed ingestion.
+/// * [status] - Status of the feed ingestion.
 @BuiltValue()
 abstract class CatalogsFeedIngestion implements Built<CatalogsFeedIngestion, CatalogsFeedIngestionBuilder> {
+  /// Timestamp of the feed ingestion.
   @BuiltValueField(wireName: r'created_at')
   DateTime get createdAt;
 
+  /// Catalog Feed id pertaining to the feed ingestion.
   @BuiltValueField(wireName: r'feed_id')
   String get feedId;
 
+  /// Unique identifier of a feed ingestion.
   @BuiltValueField(wireName: r'id')
   String get id;
 
+  /// Status of the feed ingestion.
   @BuiltValueField(wireName: r'status')
   CatalogsFeedProcessingStatus get status;
   // enum statusEnum {  COMPLETED,  FAILED,  PROCESSING,  };

@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## brandAccountsCreate
 
-> BrandAccountsCreate200Response brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest)
+> BrandAccount brandAccountsCreate(businessHierarchyId, brandAccountCreate)
 
 Create a Brand Account
 
@@ -31,10 +31,10 @@ Create a Brand Account that will be a child business of a business hierarchy. Re
 //import org.openapitools.client.api.BusinessAccessRelationshipsApi;
 
 BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi();
-String businessHierarchyId = 7009386637860; // String | business hierarchy node id
-BrandAccountsCreateRequest brandAccountsCreateRequest = new BrandAccountsCreateRequest(); // BrandAccountsCreateRequest | 
+String businessHierarchyId = null; // String | business hierarchy node id
+BrandAccountCreate brandAccountCreate = new BrandAccountCreate(); // BrandAccountCreate | 
 try {
-    BrandAccountsCreate200Response result = apiInstance.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest);
+    BrandAccount result = apiInstance.brandAccountsCreate(businessHierarchyId, brandAccountCreate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessRelationshipsApi#brandAccountsCreate");
@@ -48,11 +48,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessHierarchyId** | **String**| business hierarchy node id | [default to null]
- **brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md)|  |
+ **brandAccountCreate** | [**BrandAccountCreate**](BrandAccountCreate.md)|  |
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ## brandAccountsUpdate
 
-> BrandAccountsCreate200Response brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest)
+> BrandAccount brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate)
 
 Update a Brand Account
 
@@ -79,11 +79,11 @@ Update an existing Brand Account
 //import org.openapitools.client.api.BusinessAccessRelationshipsApi;
 
 BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi();
-String businessHierarchyId = 7009386637860; // String | business hierarchy node id
-String brandAccountId = 729090764583391194; // String | Unique identifier of a brand account.
-BrandAccountsUpdateRequest brandAccountsUpdateRequest = new BrandAccountsUpdateRequest(); // BrandAccountsUpdateRequest | 
+String brandAccountId = null; // String | 
+String businessHierarchyId = null; // String | business hierarchy node id
+BrandAccountUpdate brandAccountUpdate = new BrandAccountUpdate(); // BrandAccountUpdate | 
 try {
-    BrandAccountsCreate200Response result = apiInstance.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest);
+    BrandAccount result = apiInstance.brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessRelationshipsApi#brandAccountsUpdate");
@@ -96,13 +96,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **brandAccountId** | **String**|  | [default to null]
  **businessHierarchyId** | **String**| business hierarchy node id | [default to null]
- **brandAccountId** | **String**| Unique identifier of a brand account. | [default to null]
- **brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md)|  |
+ **brandAccountUpdate** | [**BrandAccountUpdate**](BrandAccountUpdate.md)|  |
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 ## deleteBusinessMembership
 
-> DeletedMembersResponse deleteBusinessMembership(businessId, membersToDeleteBody)
+> DeleteBusinessMembership200Response deleteBusinessMembership(businessId, deleteBusinessMembershipBody)
 
 Terminate business memberships
 
@@ -129,10 +129,10 @@ Terminate memberships between the specified members and your business.
 //import org.openapitools.client.api.BusinessAccessRelationshipsApi;
 
 BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi();
-String businessId = 729090764583391194; // String | Business id
-MembersToDeleteBody membersToDeleteBody = new MembersToDeleteBody(); // MembersToDeleteBody | List of members with role to delete.
+String businessId = null; // String | Business id
+DeleteBusinessMembershipBody deleteBusinessMembershipBody = new DeleteBusinessMembershipBody(); // DeleteBusinessMembershipBody | 
 try {
-    DeletedMembersResponse result = apiInstance.deleteBusinessMembership(businessId, membersToDeleteBody);
+    DeleteBusinessMembership200Response result = apiInstance.deleteBusinessMembership(businessId, deleteBusinessMembershipBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessRelationshipsApi#deleteBusinessMembership");
@@ -146,11 +146,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Business id | [default to null]
- **membersToDeleteBody** | [**MembersToDeleteBody**](MembersToDeleteBody.md)| List of members with role to delete. |
+ **deleteBusinessMembershipBody** | [**DeleteBusinessMembershipBody**](DeleteBusinessMembershipBody.md)|  |
 
 ### Return type
 
-[**DeletedMembersResponse**](DeletedMembersResponse.md)
+[**DeleteBusinessMembership200Response**](DeleteBusinessMembership200Response.md)
 
 ### Authorization
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 ## deleteBusinessPartners
 
-> DeletePartnersResponse deleteBusinessPartners(businessId, deletePartnersRequest)
+> DeleteBusinessPartners deleteBusinessPartners(businessId, deleteBusinessPartnersDelete)
 
 Terminate business partnerships
 
@@ -177,10 +177,10 @@ Terminate partnerships between the specified partners and your business. Note: Y
 //import org.openapitools.client.api.BusinessAccessRelationshipsApi;
 
 BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
-DeletePartnersRequest deletePartnersRequest = new DeletePartnersRequest(); // DeletePartnersRequest | An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
+String businessId = null; // String | Unique identifier of the requesting business.
+DeleteBusinessPartnersDelete deleteBusinessPartnersDelete = new DeleteBusinessPartnersDelete(); // DeleteBusinessPartnersDelete | 
 try {
-    DeletePartnersResponse result = apiInstance.deleteBusinessPartners(businessId, deletePartnersRequest);
+    DeleteBusinessPartners result = apiInstance.deleteBusinessPartners(businessId, deleteBusinessPartnersDelete);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessRelationshipsApi#deleteBusinessPartners");
@@ -194,11 +194,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
- **deletePartnersRequest** | [**DeletePartnersRequest**](DeletePartnersRequest.md)| An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete.  |
+ **deleteBusinessPartnersDelete** | [**DeleteBusinessPartnersDelete**](DeleteBusinessPartnersDelete.md)|  |
 
 ### Return type
 
-[**DeletePartnersResponse**](DeletePartnersResponse.md)
+[**DeleteBusinessPartners**](DeleteBusinessPartners.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 
 ## getBusinessEmployers
 
-> GetBusinessEmployers200Response getBusinessEmployers(pageSize, bookmark)
+> GetBusinessEmployers200Response getBusinessEmployers(assetsSummary, bookmark, pageSize)
 
 List business employers for user
 
@@ -225,10 +225,11 @@ Get all of the viewing user&#39;s business employers.
 //import org.openapitools.client.api.BusinessAccessRelationshipsApi;
 
 BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi();
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+Boolean assetsSummary = true; // Boolean | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
 String bookmark = null; // String | Cursor used to fetch the next page of items
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    GetBusinessEmployers200Response result = apiInstance.getBusinessEmployers(pageSize, bookmark);
+    GetBusinessEmployers200Response result = apiInstance.getBusinessEmployers(assetsSummary, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessRelationshipsApi#getBusinessEmployers");
@@ -241,8 +242,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **assetsSummary** | **Boolean**| Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to true]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -260,7 +262,7 @@ Name | Type | Description  | Notes
 
 ## getBusinessMembers
 
-> GetBusinessMembers200Response getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
+> GetBusinessEmployers200Response getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
 
 Get business members
 
@@ -273,16 +275,16 @@ Get all members of the specified business. The return response will include the 
 //import org.openapitools.client.api.BusinessAccessRelationshipsApi;
 
 BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
+String businessId = null; // String | Unique identifier of the requesting business.
 Boolean fetchSystemUsers = false; // Boolean | Fetches system users if True. Fetches regular user employees if False.
 Boolean assetsSummary = false; // Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
 List<MemberBusinessRole> businessRoles = null; // List<MemberBusinessRole> | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
-String memberIds = 00101010101,2222220101; // String | A list of business members ids separated by comma.
+String memberIds = null; // String | A list of business members ids separated by comma.
 Integer startIndex = 0; // Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    GetBusinessMembers200Response result = apiInstance.getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize);
+    GetBusinessEmployers200Response result = apiInstance.getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessRelationshipsApi#getBusinessMembers");
@@ -302,11 +304,11 @@ Name | Type | Description  | Notes
  **memberIds** | **String**| A list of business members ids separated by comma. | [optional] [default to null]
  **startIndex** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**GetBusinessMembers200Response**](GetBusinessMembers200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -320,7 +322,7 @@ Name | Type | Description  | Notes
 
 ## getBusinessPartners
 
-> GetBusinessPartners200Response getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark)
+> GetBusinessEmployers200Response getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, sortAscending, bookmark, pageSize)
 
 Get business partners
 
@@ -333,15 +335,16 @@ Get all partners of the specified business.  If the assets_summary&#x3D;TRUE and
 //import org.openapitools.client.api.BusinessAccessRelationshipsApi;
 
 BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
+String businessId = null; // String | Unique identifier of the requesting business.
 Boolean assetsSummary = false; // Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
-PartnerType partnerType = INTERNAL; // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
-String partnerIds = 00101010101,2222220101; // String | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
+PartnerType partnerType = null; // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+String partnerIds = null; // String | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
 Integer startIndex = 0; // Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+Boolean sortAscending = null; // Boolean | Sort ascending.
 String bookmark = null; // String | Cursor used to fetch the next page of items
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    GetBusinessPartners200Response result = apiInstance.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark);
+    GetBusinessEmployers200Response result = apiInstance.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, sortAscending, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessRelationshipsApi#getBusinessPartners");
@@ -356,15 +359,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
  **assetsSummary** | **Boolean**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false]
- **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to null] [enum: INTERNAL, EXTERNAL]
+ **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to null] [enum: INTERNAL, EXTERNAL]
  **partnerIds** | **String**| A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional] [default to null]
  **startIndex** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **sortAscending** | **Boolean**| Sort ascending. | [optional] [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**GetBusinessPartners200Response**](GetBusinessPartners200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -378,7 +382,7 @@ Name | Type | Description  | Notes
 
 ## systemUserUpdate
 
-> systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest)
+> systemUserUpdate(businessId, systemUserId, systemUserUpdateWithRequiredBody)
 
 Update a system user information.
 
@@ -391,11 +395,11 @@ Update a system user information such as name.
 //import org.openapitools.client.api.BusinessAccessRelationshipsApi;
 
 BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
-String systemUserId = 729090764583391194; // String | Unique identifier of a system user.
-SystemUserUpdateRequest systemUserUpdateRequest = new SystemUserUpdateRequest(); // SystemUserUpdateRequest | 
+String businessId = null; // String | Unique identifier of the requesting business.
+String systemUserId = null; // String | Unique identifier of a system user.
+SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody = new SystemUserUpdateWithRequiredBody(); // SystemUserUpdateWithRequiredBody | 
 try {
-    apiInstance.systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest);
+    apiInstance.systemUserUpdate(businessId, systemUserId, systemUserUpdateWithRequiredBody);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessRelationshipsApi#systemUserUpdate");
     e.printStackTrace();
@@ -409,7 +413,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
  **systemUserId** | **String**| Unique identifier of a system user. | [default to null]
- **systemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md)|  |
+ **systemUserUpdateWithRequiredBody** | [**SystemUserUpdateWithRequiredBody**](SystemUserUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
@@ -427,7 +431,7 @@ null (empty response body)
 
 ## updateBusinessMemberships
 
-> UpdateMemberResultsResponseArray updateBusinessMemberships(businessId, updateMemberBusinessRoleBody)
+> UpdateBusinessMembershipsResponse updateBusinessMemberships(businessId, businessMembershipMember)
 
 Update member&#39;s business role
 
@@ -440,10 +444,10 @@ Update a member&#39;s business role within the business.
 //import org.openapitools.client.api.BusinessAccessRelationshipsApi;
 
 BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi();
-String businessId = 729090764583391194; // String | Business id
-List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody = Arrays.asList(new UpdateMemberBusinessRoleBody()); // List<UpdateMemberBusinessRoleBody> | List of objects with the member id and the business_role.
+String businessId = null; // String | Business id
+List<BusinessMembershipMember> businessMembershipMember = Arrays.asList(new BusinessMembershipMember()); // List<BusinessMembershipMember> | 
 try {
-    UpdateMemberResultsResponseArray result = apiInstance.updateBusinessMemberships(businessId, updateMemberBusinessRoleBody);
+    UpdateBusinessMembershipsResponse result = apiInstance.updateBusinessMemberships(businessId, businessMembershipMember);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessRelationshipsApi#updateBusinessMemberships");
@@ -457,11 +461,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Business id | [default to null]
- **updateMemberBusinessRoleBody** | [**List&lt;UpdateMemberBusinessRoleBody&gt;**](UpdateMemberBusinessRoleBody.md)| List of objects with the member id and the business_role. |
+ **businessMembershipMember** | [**List&lt;BusinessMembershipMember&gt;**](BusinessMembershipMember.md)|  |
 
 ### Return type
 
-[**UpdateMemberResultsResponseArray**](UpdateMemberResultsResponseArray.md)
+[**UpdateBusinessMembershipsResponse**](UpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 

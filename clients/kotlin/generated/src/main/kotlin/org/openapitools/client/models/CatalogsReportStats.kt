@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -24,12 +32,12 @@ import com.squareup.moshi.JsonClass
 /**
  * Diagnostics aggregated numbers
  *
- * @param reportType 
  * @param catalogId ID of the catalog entity.
  * @param code The event code that a diagnostics aggregated number references
  * @param codeLabel A human-friendly label for the event code (e.g, 'SPAM')
  * @param message Title message describing the diagnostic issue
  * @param occurrences Number of occurrences of the issue
+ * @param reportType 
  * @param severity An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
  * @param ineligibleForAds Indicates if issue makes items ineligible for ads distribution
  * @param ineligibleForOrganic Indicates if issue makes items ineligible for organic distribution
@@ -38,8 +46,6 @@ import com.squareup.moshi.JsonClass
 
 interface CatalogsReportStats {
 
-    @Json(name = "report_type")
-    val reportType: CatalogsReportStats.ReportType
     /* ID of the catalog entity. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String?
@@ -55,6 +61,8 @@ interface CatalogsReportStats {
     /* Number of occurrences of the issue */
     @Json(name = "occurrences")
     val occurrences: kotlin.Int?
+    @Json(name = "report_type")
+    val reportType: CatalogsReportStats.ReportType?
     /* An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue */
     @Json(name = "severity")
     val severity: CatalogsReportStats.Severity?
@@ -67,11 +75,10 @@ interface CatalogsReportStats {
     /**
      * 
      *
-     * Values: FEED_INGESTION_ISSUES,DISTRIBUTION_ISSUES
+     * Values: DISTRIBUTION_ISSUES
      */
     @JsonClass(generateAdapter = false)
     enum class ReportType(val value: kotlin.String) {
-        @Json(name = "FEED_INGESTION_ISSUES") FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
         @Json(name = "DISTRIBUTION_ISSUES") DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
     }
     /**

@@ -6,8 +6,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **report** | [**CatalogsHotelReportParametersReport**](CatalogsHotelReportParametersReport.md) |  | 
+
+
+## Enum: CatalogTypeEnum
+
+Name | Value
+---- | -----
 
 
 

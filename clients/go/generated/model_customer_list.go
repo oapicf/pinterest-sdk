@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CustomerList type satisfies the MappedNullable interface at compile time
@@ -24,32 +26,38 @@ type CustomerList struct {
 	AdAccountId *string `json:"ad_account_id,omitempty"`
 	// Creation time. Unix timestamp in seconds.
 	CreatedTime *float32 `json:"created_time,omitempty"`
-	// Customer list errors
+	// Customer list errors.
 	Exceptions map[string]interface{} `json:"exceptions,omitempty"`
 	// Customer list ID.
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
+	// Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.
+	IsNca *bool `json:"is_nca,omitempty"`
 	// Customer list name.
-	Name *string `json:"name,omitempty"`
-	// Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
+	Name string `json:"name"`
+	// Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.
 	NumBatches *float32 `json:"num_batches,omitempty"`
-	// Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
+	// Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.
 	NumRemovedUserRecords *float32 `json:"num_removed_user_records,omitempty"`
-	// Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
+	// Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.
 	NumUploadedUserRecords *float32 `json:"num_uploaded_user_records,omitempty"`
-	// Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-	Status *string `json:"status,omitempty"`
-	// Always \"customerlist\".
+	// Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
+	Status *CustomerListStatus `json:"status,omitempty"`
+	// Always `customerlist`.
 	Type *string `json:"type,omitempty"`
 	// Last update time. Unix timestamp in seconds.
 	UpdatedTime *float32 `json:"updated_time,omitempty"`
 }
 
+type _CustomerList CustomerList
+
 // NewCustomerList instantiates a new CustomerList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerList() *CustomerList {
+func NewCustomerList(id string, name string) *CustomerList {
 	this := CustomerList{}
+	this.Id = id
+	this.Name = name
 	return &this
 }
 
@@ -157,68 +165,84 @@ func (o *CustomerList) SetExceptions(v map[string]interface{}) {
 	o.Exceptions = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *CustomerList) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *CustomerList) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *CustomerList) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+// SetId sets field value
+func (o *CustomerList) SetId(v string) {
+	o.Id = v
+}
+
+// GetIsNca returns the IsNca field value if set, zero value otherwise.
+func (o *CustomerList) GetIsNca() bool {
+	if o == nil || IsNil(o.IsNca) {
+		var ret bool
+		return ret
+	}
+	return *o.IsNca
+}
+
+// GetIsNcaOk returns a tuple with the IsNca field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerList) GetIsNcaOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsNca) {
+		return nil, false
+	}
+	return o.IsNca, true
+}
+
+// HasIsNca returns a boolean if a field has been set.
+func (o *CustomerList) HasIsNca() bool {
+	if o != nil && !IsNil(o.IsNca) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *CustomerList) SetId(v string) {
-	o.Id = &v
+// SetIsNca gets a reference to the given bool and assigns it to the IsNca field.
+func (o *CustomerList) SetIsNca(v bool) {
+	o.IsNca = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *CustomerList) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *CustomerList) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *CustomerList) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *CustomerList) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetNumBatches returns the NumBatches field value if set, zero value otherwise.
@@ -318,9 +342,9 @@ func (o *CustomerList) SetNumUploadedUserRecords(v float32) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *CustomerList) GetStatus() string {
+func (o *CustomerList) GetStatus() CustomerListStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret string
+		var ret CustomerListStatus
 		return ret
 	}
 	return *o.Status
@@ -328,7 +352,7 @@ func (o *CustomerList) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CustomerList) GetStatusOk() (*string, bool) {
+func (o *CustomerList) GetStatusOk() (*CustomerListStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -344,8 +368,8 @@ func (o *CustomerList) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *CustomerList) SetStatus(v string) {
+// SetStatus gets a reference to the given CustomerListStatus and assigns it to the Status field.
+func (o *CustomerList) SetStatus(v CustomerListStatus) {
 	o.Status = &v
 }
 
@@ -432,12 +456,11 @@ func (o CustomerList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Exceptions) {
 		toSerialize["exceptions"] = o.Exceptions
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize["id"] = o.Id
+	if !IsNil(o.IsNca) {
+		toSerialize["is_nca"] = o.IsNca
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 	if !IsNil(o.NumBatches) {
 		toSerialize["num_batches"] = o.NumBatches
 	}
@@ -457,6 +480,44 @@ func (o CustomerList) ToMap() (map[string]interface{}, error) {
 		toSerialize["updated_time"] = o.UpdatedTime
 	}
 	return toSerialize, nil
+}
+
+func (o *CustomerList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCustomerList := _CustomerList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCustomerList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerList(varCustomerList)
+
+	return err
 }
 
 type NullableCustomerList struct {

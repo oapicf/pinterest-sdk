@@ -11,147 +11,88 @@
 part of openapi.api;
 
 /// Language code, which is among the official ISO 639-1 language list.
-class Language {
-  /// Instantiate a new enum with the provided [value].
-  const Language._(this.value);
+enum Language {
+  AM._(r'AM'),
+  AR._(r'AR'),
+  AZ._(r'AZ'),
+  BG._(r'BG'),
+  BN._(r'BN'),
+  BS._(r'BS'),
+  CA._(r'CA'),
+  CS._(r'CS'),
+  DA._(r'DA'),
+  DV._(r'DV'),
+  DZ._(r'DZ'),
+  DE._(r'DE'),
+  EL._(r'EL'),
+  EN._(r'EN'),
+  ES._(r'ES'),
+  ET._(r'ET'),
+  FA._(r'FA'),
+  FI._(r'FI'),
+  FR._(r'FR'),
+  HE._(r'HE'),
+  HI._(r'HI'),
+  HR._(r'HR'),
+  HU._(r'HU'),
+  HY._(r'HY'),
+  ID._(r'ID'),
+  IN._(r'IN'),
+  IS._(r'IS'),
+  IT._(r'IT'),
+  IW._(r'IW'),
+  JA._(r'JA'),
+  KA._(r'KA'),
+  KM._(r'KM'),
+  KO._(r'KO'),
+  LO._(r'LO'),
+  LT._(r'LT'),
+  LV._(r'LV'),
+  MK._(r'MK'),
+  MN._(r'MN'),
+  MS._(r'MS'),
+  MY._(r'MY'),
+  NB._(r'NB'),
+  NE._(r'NE'),
+  NL._(r'NL'),
+  false_._(r'false'),
+  PL._(r'PL'),
+  PT._(r'PT'),
+  RO._(r'RO'),
+  RU._(r'RU'),
+  SK._(r'SK'),
+  SL._(r'SL'),
+  SQ._(r'SQ'),
+  SR._(r'SR'),
+  SV._(r'SV'),
+  TL._(r'TL'),
+  UK._(r'UK'),
+  VI._(r'VI'),
+  TE._(r'TE'),
+  TH._(r'TH'),
+  TR._(r'TR'),
+  XX._(r'XX'),
+  ZH._(r'ZH'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const Language._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const AM = Language._(r'AM');
-  static const AR = Language._(r'AR');
-  static const AZ = Language._(r'AZ');
-  static const BG = Language._(r'BG');
-  static const BN = Language._(r'BN');
-  static const BS = Language._(r'BS');
-  static const CA = Language._(r'CA');
-  static const CS = Language._(r'CS');
-  static const DA = Language._(r'DA');
-  static const DV = Language._(r'DV');
-  static const DZ = Language._(r'DZ');
-  static const DE = Language._(r'DE');
-  static const EL = Language._(r'EL');
-  static const EN = Language._(r'EN');
-  static const ES = Language._(r'ES');
-  static const ET = Language._(r'ET');
-  static const FA = Language._(r'FA');
-  static const FI = Language._(r'FI');
-  static const FR = Language._(r'FR');
-  static const HE = Language._(r'HE');
-  static const HI = Language._(r'HI');
-  static const HR = Language._(r'HR');
-  static const HU = Language._(r'HU');
-  static const HY = Language._(r'HY');
-  static const ID = Language._(r'ID');
-  static const IN = Language._(r'IN');
-  static const IS = Language._(r'IS');
-  static const IT = Language._(r'IT');
-  static const IW = Language._(r'IW');
-  static const JA = Language._(r'JA');
-  static const KA = Language._(r'KA');
-  static const KM = Language._(r'KM');
-  static const KO = Language._(r'KO');
-  static const LO = Language._(r'LO');
-  static const LT = Language._(r'LT');
-  static const LV = Language._(r'LV');
-  static const MK = Language._(r'MK');
-  static const MN = Language._(r'MN');
-  static const MS = Language._(r'MS');
-  static const MY = Language._(r'MY');
-  static const NB = Language._(r'NB');
-  static const NE = Language._(r'NE');
-  static const NL = Language._(r'NL');
-  static const NO = Language._(r'NO');
-  static const PL = Language._(r'PL');
-  static const PT = Language._(r'PT');
-  static const RO = Language._(r'RO');
-  static const RU = Language._(r'RU');
-  static const SK = Language._(r'SK');
-  static const SL = Language._(r'SL');
-  static const SQ = Language._(r'SQ');
-  static const SR = Language._(r'SR');
-  static const SV = Language._(r'SV');
-  static const TL = Language._(r'TL');
-  static const UK = Language._(r'UK');
-  static const VI = Language._(r'VI');
-  static const TE = Language._(r'TE');
-  static const TH = Language._(r'TH');
-  static const TR = Language._(r'TR');
-  static const XX = Language._(r'XX');
-  static const ZH = Language._(r'ZH');
-
-  /// List of all possible values in this [enum][Language].
-  static const values = <Language>[
-    AM,
-    AR,
-    AZ,
-    BG,
-    BN,
-    BS,
-    CA,
-    CS,
-    DA,
-    DV,
-    DZ,
-    DE,
-    EL,
-    EN,
-    ES,
-    ET,
-    FA,
-    FI,
-    FR,
-    HE,
-    HI,
-    HR,
-    HU,
-    HY,
-    ID,
-    IN,
-    IS,
-    IT,
-    IW,
-    JA,
-    KA,
-    KM,
-    KO,
-    LO,
-    LT,
-    LV,
-    MK,
-    MN,
-    MS,
-    MY,
-    NB,
-    NE,
-    NL,
-    NO,
-    PL,
-    PT,
-    RO,
-    RU,
-    SK,
-    SL,
-    SQ,
-    SR,
-    SV,
-    TL,
-    UK,
-    VI,
-    TE,
-    TH,
-    TR,
-    XX,
-    ZH,
-  ];
-
+  /// Returns the instance of [Language] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static Language? fromJson(dynamic value) => LanguageTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [Language]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<Language> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Language>[];
     if (json is List && json.isNotEmpty) {
@@ -173,9 +114,11 @@ class LanguageTypeTransformer {
 
   const LanguageTypeTransformer._();
 
-  String encode(Language data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(Language data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a Language.
+  /// Returns the instance of [Language] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -184,6 +127,9 @@ class LanguageTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   Language? decode(dynamic data, {bool allowNull = true}) {
+    if (data is Language) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'AM': return Language.AM;
@@ -229,7 +175,7 @@ class LanguageTypeTransformer {
         case r'NB': return Language.NB;
         case r'NE': return Language.NE;
         case r'NL': return Language.NL;
-        case r'NO': return Language.NO;
+        case r'false': return Language.false_;
         case r'PL': return Language.PL;
         case r'PT': return Language.PT;
         case r'RO': return Language.RO;
@@ -256,7 +202,7 @@ class LanguageTypeTransformer {
     return null;
   }
 
-  /// Singleton [LanguageTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static LanguageTypeTransformer? _instance;
 }
 

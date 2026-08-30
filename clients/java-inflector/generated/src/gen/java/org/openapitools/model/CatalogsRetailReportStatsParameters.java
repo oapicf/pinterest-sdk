@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.CatalogsHotelReportStatsParametersReport;
+import org.openapitools.model.CatalogsRetailReportStatsParametersReport;
 
 
 
@@ -15,7 +15,7 @@ import org.openapitools.model.CatalogsHotelReportStatsParametersReport;
  **/
 
 @ApiModel(description = "Parameters for retail report")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailReportStatsParameters   {
   /**
    * Gets or Sets catalogType
@@ -50,7 +50,7 @@ public class CatalogsRetailReportStatsParameters   {
   private CatalogTypeEnum catalogType;
 
   @JsonProperty("report")
-  private CatalogsHotelReportStatsParametersReport report;
+  private CatalogsRetailReportStatsParametersReport report;
 
   /**
    **/
@@ -71,7 +71,7 @@ public class CatalogsRetailReportStatsParameters   {
 
   /**
    **/
-  public CatalogsRetailReportStatsParameters report(CatalogsHotelReportStatsParametersReport report) {
+  public CatalogsRetailReportStatsParameters report(CatalogsRetailReportStatsParametersReport report) {
     this.report = report;
     return this;
   }
@@ -79,10 +79,10 @@ public class CatalogsRetailReportStatsParameters   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("report")
-  public CatalogsHotelReportStatsParametersReport getReport() {
+  public CatalogsRetailReportStatsParametersReport getReport() {
     return report;
   }
-  public void setReport(CatalogsHotelReportStatsParametersReport report) {
+  public void setReport(CatalogsRetailReportStatsParametersReport report) {
     this.report = report;
   }
 
@@ -121,10 +121,7 @@ public class CatalogsRetailReportStatsParameters   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -83,7 +83,7 @@ API.Client.CatalogsUpdatableCreativeAssetsAttributes.prototype.link;
 API.Client.CatalogsUpdatableCreativeAssetsAttributes.prototype.title;
 
 /**
- * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+ * Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
  * @type {!string}
  * @export
  */

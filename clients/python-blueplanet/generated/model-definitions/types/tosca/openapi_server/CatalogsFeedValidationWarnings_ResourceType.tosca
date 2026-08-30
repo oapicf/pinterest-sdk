@@ -893,7 +893,6 @@ resourceTypes {
         fetch_same_signature {
           type =  integer
           description = "Ingestion completed early because there are no changes to your feed since the last successful update."
-          enum = ["1"]
           optional = false
         }
         gender_invalid {

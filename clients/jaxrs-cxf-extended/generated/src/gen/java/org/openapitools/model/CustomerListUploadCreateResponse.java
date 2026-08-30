@@ -12,15 +12,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CustomerListUploadCreateResponse  {
   
-  @ApiModelProperty(required = true, value = "")
+ /**
+  * The Customer List Upload created.
+  */
+  @ApiModelProperty(required = true, value = "The Customer List Upload created.")
   @Valid
   private CustomerListUpload customerListUpload;
 
-  @ApiModelProperty(required = true, value = "")
+ /**
+  * Pre-signed upload URLs corresponding to each part of the upload.
+  */
+  @ApiModelProperty(required = true, value = "Pre-signed upload URLs corresponding to each part of the upload.")
   @Valid
   private S3MultipartUploadData s3MultipartUploadData;
  /**
-  * Get customerListUpload
+  * The Customer List Upload created.
   * @return customerListUpload
   */
   @JsonProperty("customer_list_upload")
@@ -45,7 +51,7 @@ public class CustomerListUploadCreateResponse  {
   }
 
  /**
-  * Get s3MultipartUploadData
+  * Pre-signed upload URLs corresponding to each part of the upload.
   * @return s3MultipartUploadData
   */
   @JsonProperty("s3_multipart_upload_data")
@@ -104,10 +110,7 @@ public class CustomerListUploadCreateResponse  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

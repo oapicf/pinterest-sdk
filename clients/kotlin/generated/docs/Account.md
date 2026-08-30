@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
 | **about** | **kotlin.String** | Profile about description. |  [optional] |
-| **accountType** | [**inline**](#AccountType) | Type of account |  [optional] |
-| **boardCount** | **kotlin.Int** | User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. |  [optional] [readonly] |
+| **accountType** | [**UserAccountType**](UserAccountType.md) | Type of account |  [optional] |
+| **boardCount** | **kotlin.Int** |   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. |  [optional] [readonly] |
 | **businessName** | **kotlin.String** |  |  [optional] |
 | **followerCount** | **kotlin.Int** | User account follower count. |  [optional] [readonly] |
 | **followingCount** | **kotlin.Int** | User account following count. |  [optional] [readonly] |
@@ -16,13 +16,6 @@
 | **profileImage** | **kotlin.String** |  |  [optional] |
 | **username** | **kotlin.String** |  |  [optional] |
 | **websiteUrl** | **kotlin.String** |  |  [optional] |
-
-
-<a id="AccountType"></a>
-## Enum: account_type
-| Name | Value |
-| ---- | ----- |
-| accountType | PINNER, BUSINESS |
 
 
 

@@ -43,48 +43,7 @@ Protected Class IntegrationLogClientRequest
 	#tag EndProperty
 
 
-    #tag Enum, Name = MethodEnum, Type = Integer, Flags = &h0
-        
-        Get
-        Head
-        Post
-        Put
-        Delete
-        Connect
-        Options
-        Trace
-        Patch
-        
-    #tag EndEnum
 
-
-	#tag Method, Flags = &h0
-		Shared Function MethodEnumToString(value As MethodEnum) As String
-		  Select Case value
-		    
-		    Case MethodEnum.Get
-		      Return "GET"
-		    Case MethodEnum.Head
-		      Return "HEAD"
-		    Case MethodEnum.Post
-		      Return "POST"
-		    Case MethodEnum.Put
-		      Return "PUT"
-		    Case MethodEnum.Delete
-		      Return "DELETE"
-		    Case MethodEnum.Connect
-		      Return "CONNECT"
-		    Case MethodEnum.Options
-		      Return "OPTIONS"
-		    Case MethodEnum.Trace
-		      Return "TRACE"
-		    Case MethodEnum.Patch
-		      Return "PATCH"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -126,6 +85,14 @@ Protected Class IntegrationLogClientRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="method"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="HttpMethod"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

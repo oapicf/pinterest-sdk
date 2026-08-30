@@ -113,29 +113,33 @@ class _$CreativeAssetsProcessingRecordSerializer implements PrimitiveSerializer<
         case r'creative_assets_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.creativeAssetsId = valueDes;
           break;
         case r'errors':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ItemValidationEvent)]),
-          ) as BuiltList<ItemValidationEvent>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(ItemValidationEvent)]),
+          ) as BuiltList<ItemValidationEvent>?;
+          if (valueDes == null) continue;
           result.errors.replace(valueDes);
           break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ItemProcessingStatus),
-          ) as ItemProcessingStatus;
+            specifiedType: const FullType.nullable(ItemProcessingStatus),
+          ) as ItemProcessingStatus?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         case r'warnings':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ItemValidationEvent)]),
-          ) as BuiltList<ItemValidationEvent>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(ItemValidationEvent)]),
+          ) as BuiltList<ItemValidationEvent>?;
+          if (valueDes == null) continue;
           result.warnings.replace(valueDes);
           break;
         default:

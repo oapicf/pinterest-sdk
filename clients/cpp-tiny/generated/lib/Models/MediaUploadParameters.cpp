@@ -211,7 +211,7 @@ MediaUploadParameters::getContentType()
 }
 
 void
-MediaUploadParameters::setContentType(std::string  contentType)
+MediaUploadParameters::setContentType(std::string contentType)
 {
 	this->contentType = contentType;
 }
@@ -223,7 +223,7 @@ MediaUploadParameters::getKey()
 }
 
 void
-MediaUploadParameters::setKey(std::string  key)
+MediaUploadParameters::setKey(std::string key)
 {
 	this->key = key;
 }
@@ -235,7 +235,7 @@ MediaUploadParameters::getPolicy()
 }
 
 void
-MediaUploadParameters::setPolicy(std::string  policy)
+MediaUploadParameters::setPolicy(std::string policy)
 {
 	this->policy = policy;
 }
@@ -247,7 +247,7 @@ MediaUploadParameters::getXamzalgorithm()
 }
 
 void
-MediaUploadParameters::setXamzalgorithm(std::string  xamzalgorithm)
+MediaUploadParameters::setXamzalgorithm(std::string xamzalgorithm)
 {
 	this->xamzalgorithm = xamzalgorithm;
 }
@@ -259,7 +259,7 @@ MediaUploadParameters::getXamzcredential()
 }
 
 void
-MediaUploadParameters::setXamzcredential(std::string  xamzcredential)
+MediaUploadParameters::setXamzcredential(std::string xamzcredential)
 {
 	this->xamzcredential = xamzcredential;
 }
@@ -271,7 +271,7 @@ MediaUploadParameters::getXamzdate()
 }
 
 void
-MediaUploadParameters::setXamzdate(std::string  xamzdate)
+MediaUploadParameters::setXamzdate(std::string xamzdate)
 {
 	this->xamzdate = xamzdate;
 }
@@ -283,7 +283,7 @@ MediaUploadParameters::getXamzsecuritytoken()
 }
 
 void
-MediaUploadParameters::setXamzsecuritytoken(std::string  xamzsecuritytoken)
+MediaUploadParameters::setXamzsecuritytoken(std::string xamzsecuritytoken)
 {
 	this->xamzsecuritytoken = xamzsecuritytoken;
 }
@@ -295,7 +295,7 @@ MediaUploadParameters::getXamzsignature()
 }
 
 void
-MediaUploadParameters::setXamzsignature(std::string  xamzsignature)
+MediaUploadParameters::setXamzsignature(std::string xamzsignature)
 {
 	this->xamzsignature = xamzsignature;
 }

@@ -41,6 +41,6 @@ class CatalogsRetailProductGroupUpdateRequest {
     CatalogsProductGroupFiltersRequest filters
     
     CatalogsLocale locale
-    
+    /* Name of catalog product group */
     String name
 }

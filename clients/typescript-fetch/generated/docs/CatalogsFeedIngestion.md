@@ -18,9 +18,9 @@ import type { CatalogsFeedIngestion } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "createdAt": 2022-03-14T15:16:34Z,
-  "feedId": 56789,
-  "id": 01234,
+  "createdAt": 2022-03-14T15:15:22Z,
+  "feedId": 2680059592705,
+  "id": 2680059592705,
   "status": null,
 } satisfies CatalogsFeedIngestion
 

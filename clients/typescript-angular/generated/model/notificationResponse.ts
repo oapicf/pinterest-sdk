@@ -11,16 +11,16 @@
 
 export interface NotificationResponse { 
     /**
-     * Returns true if the notification accepted.
+     * error message when success is false
      */
-    success?: boolean;
+    error_msg?: string;
     /**
      * Received time. Unix timestamp in seconds.
      */
     received_at?: number;
     /**
-     * error message when success is false
+     * Returns true if the notification accepted.
      */
-    error_msg?: string;
+    success?: boolean;
 }
 

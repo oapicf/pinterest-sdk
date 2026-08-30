@@ -25,7 +25,7 @@ class ConversionEqsApi : public Service {
 public:
     ConversionEqsApi() = default;
 
-    virtual ~ConversionEqsApi() = default;
+    virtual ~ConversionEqsApi();
 
     /**
     * Get event quality score (EQS).

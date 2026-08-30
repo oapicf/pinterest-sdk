@@ -1,4 +1,4 @@
-goog.provide('API.Client.UpdatableItemAttributes_gtin');
+goog.provide('API.Client.UpdatableItemAttributesGtin');
 
 /**
  * The unique universal product identifier.

@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**PLACEMENT** | PLACEMENT | text |  | [**PLACEMENT**](#PLACEMENT) |  |  [optional]
+**PLACEMENT** | PLACEMENT | long |  | [**PlacementType**](PlacementType.md) | Placement type identifier. |  [optional] [foreignkey]
 
 
 

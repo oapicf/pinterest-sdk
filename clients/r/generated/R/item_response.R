@@ -16,23 +16,35 @@ ItemResponse <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("ItemResponseOneOf", "ItemResponseOneOf1"),
+    one_of = list("CatalogsCreativeAssetsItemErrorResponse", "CatalogsCreativeAssetsItemResponse", "CatalogsHotelItemErrorResponse", "CatalogsHotelItemResponse", "CatalogsRetailItemErrorResponse", "CatalogsRetailItemResponse"),
 
     #' @description
     #' Initialize a new ItemResponse.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "ItemResponseOneOf", "ItemResponseOneOf1"
+    #' @param instance an instance of the object defined in the oneOf schemas: "CatalogsCreativeAssetsItemErrorResponse", "CatalogsCreativeAssetsItemResponse", "CatalogsHotelItemErrorResponse", "CatalogsHotelItemResponse", "CatalogsRetailItemErrorResponse", "CatalogsRetailItemResponse"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ItemResponseOneOf") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsCreativeAssetsItemErrorResponse") {
         self$actual_instance <- instance
-        self$actual_type <- "ItemResponseOneOf"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ItemResponseOneOf1") {
+        self$actual_type <- "CatalogsCreativeAssetsItemErrorResponse"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsCreativeAssetsItemResponse") {
         self$actual_instance <- instance
-        self$actual_type <- "ItemResponseOneOf1"
+        self$actual_type <- "CatalogsCreativeAssetsItemResponse"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsHotelItemErrorResponse") {
+        self$actual_instance <- instance
+        self$actual_type <- "CatalogsHotelItemErrorResponse"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsHotelItemResponse") {
+        self$actual_instance <- instance
+        self$actual_type <- "CatalogsHotelItemResponse"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsRetailItemErrorResponse") {
+        self$actual_instance <- instance
+        self$actual_type <- "CatalogsRetailItemErrorResponse"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsRetailItemResponse") {
+        self$actual_instance <- instance
+        self$actual_type <- "CatalogsRetailItemResponse"
       } else {
-        stop(paste("Failed to initialize ItemResponse with oneOf schemas ItemResponseOneOf, ItemResponseOneOf1. Provided class name: ",
+        stop(paste("Failed to initialize ItemResponse with oneOf schemas CatalogsCreativeAssetsItemErrorResponse, CatalogsCreativeAssetsItemResponse, CatalogsHotelItemErrorResponse, CatalogsHotelItemResponse, CatalogsRetailItemErrorResponse, CatalogsRetailItemResponse. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -60,34 +72,94 @@ ItemResponse <- R6::R6Class(
       error_messages <- list()
       instance <- NULL
 
-      `ItemResponseOneOf_result` <- tryCatch({
-          `ItemResponseOneOf`$public_methods$validateJSON(input)
-          `ItemResponseOneOf_instance` <- `ItemResponseOneOf`$new()
-          instance <- `ItemResponseOneOf_instance`$fromJSON(input)
-          instance_type <- "ItemResponseOneOf"
-          matched_schemas <- append(matched_schemas, "ItemResponseOneOf")
+      `CatalogsRetailItemResponse_result` <- tryCatch({
+          `CatalogsRetailItemResponse`$public_methods$validateJSON(input)
+          `CatalogsRetailItemResponse_instance` <- `CatalogsRetailItemResponse`$new()
+          instance <- `CatalogsRetailItemResponse_instance`$fromJSON(input)
+          instance_type <- "CatalogsRetailItemResponse"
+          matched_schemas <- append(matched_schemas, "CatalogsRetailItemResponse")
           matched <- matched + 1
         },
         error = function(err) err
       )
 
-      if (!is.null(`ItemResponseOneOf_result`["error"])) {
-        error_messages <- append(error_messages, `ItemResponseOneOf_result`["message"])
+      if (!is.null(`CatalogsRetailItemResponse_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsRetailItemResponse_result`["message"])
       }
 
-      `ItemResponseOneOf1_result` <- tryCatch({
-          `ItemResponseOneOf1`$public_methods$validateJSON(input)
-          `ItemResponseOneOf1_instance` <- `ItemResponseOneOf1`$new()
-          instance <- `ItemResponseOneOf1_instance`$fromJSON(input)
-          instance_type <- "ItemResponseOneOf1"
-          matched_schemas <- append(matched_schemas, "ItemResponseOneOf1")
+      `CatalogsHotelItemResponse_result` <- tryCatch({
+          `CatalogsHotelItemResponse`$public_methods$validateJSON(input)
+          `CatalogsHotelItemResponse_instance` <- `CatalogsHotelItemResponse`$new()
+          instance <- `CatalogsHotelItemResponse_instance`$fromJSON(input)
+          instance_type <- "CatalogsHotelItemResponse"
+          matched_schemas <- append(matched_schemas, "CatalogsHotelItemResponse")
           matched <- matched + 1
         },
         error = function(err) err
       )
 
-      if (!is.null(`ItemResponseOneOf1_result`["error"])) {
-        error_messages <- append(error_messages, `ItemResponseOneOf1_result`["message"])
+      if (!is.null(`CatalogsHotelItemResponse_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsHotelItemResponse_result`["message"])
+      }
+
+      `CatalogsCreativeAssetsItemResponse_result` <- tryCatch({
+          `CatalogsCreativeAssetsItemResponse`$public_methods$validateJSON(input)
+          `CatalogsCreativeAssetsItemResponse_instance` <- `CatalogsCreativeAssetsItemResponse`$new()
+          instance <- `CatalogsCreativeAssetsItemResponse_instance`$fromJSON(input)
+          instance_type <- "CatalogsCreativeAssetsItemResponse"
+          matched_schemas <- append(matched_schemas, "CatalogsCreativeAssetsItemResponse")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CatalogsCreativeAssetsItemResponse_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsCreativeAssetsItemResponse_result`["message"])
+      }
+
+      `CatalogsRetailItemErrorResponse_result` <- tryCatch({
+          `CatalogsRetailItemErrorResponse`$public_methods$validateJSON(input)
+          `CatalogsRetailItemErrorResponse_instance` <- `CatalogsRetailItemErrorResponse`$new()
+          instance <- `CatalogsRetailItemErrorResponse_instance`$fromJSON(input)
+          instance_type <- "CatalogsRetailItemErrorResponse"
+          matched_schemas <- append(matched_schemas, "CatalogsRetailItemErrorResponse")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CatalogsRetailItemErrorResponse_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsRetailItemErrorResponse_result`["message"])
+      }
+
+      `CatalogsHotelItemErrorResponse_result` <- tryCatch({
+          `CatalogsHotelItemErrorResponse`$public_methods$validateJSON(input)
+          `CatalogsHotelItemErrorResponse_instance` <- `CatalogsHotelItemErrorResponse`$new()
+          instance <- `CatalogsHotelItemErrorResponse_instance`$fromJSON(input)
+          instance_type <- "CatalogsHotelItemErrorResponse"
+          matched_schemas <- append(matched_schemas, "CatalogsHotelItemErrorResponse")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CatalogsHotelItemErrorResponse_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsHotelItemErrorResponse_result`["message"])
+      }
+
+      `CatalogsCreativeAssetsItemErrorResponse_result` <- tryCatch({
+          `CatalogsCreativeAssetsItemErrorResponse`$public_methods$validateJSON(input)
+          `CatalogsCreativeAssetsItemErrorResponse_instance` <- `CatalogsCreativeAssetsItemErrorResponse`$new()
+          instance <- `CatalogsCreativeAssetsItemErrorResponse_instance`$fromJSON(input)
+          instance_type <- "CatalogsCreativeAssetsItemErrorResponse"
+          matched_schemas <- append(matched_schemas, "CatalogsCreativeAssetsItemErrorResponse")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CatalogsCreativeAssetsItemErrorResponse_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsCreativeAssetsItemErrorResponse_result`["message"])
       }
 
       if (matched == 1) {
@@ -96,11 +168,11 @@ ItemResponse <- R6::R6Class(
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into ItemResponse with oneOf schemas ItemResponseOneOf, ItemResponseOneOf1. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into ItemResponse with oneOf schemas CatalogsCreativeAssetsItemErrorResponse, CatalogsCreativeAssetsItemResponse, CatalogsHotelItemErrorResponse, CatalogsHotelItemResponse, CatalogsRetailItemErrorResponse, CatalogsRetailItemResponse. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into ItemResponse with oneOf schemas ItemResponseOneOf, ItemResponseOneOf1. Details: >>",
+        stop(paste("No match found when deserializing the input into ItemResponse with oneOf schemas CatalogsCreativeAssetsItemErrorResponse, CatalogsCreativeAssetsItemResponse, CatalogsHotelItemErrorResponse, CatalogsHotelItemResponse, CatalogsRetailItemErrorResponse, CatalogsRetailItemResponse. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

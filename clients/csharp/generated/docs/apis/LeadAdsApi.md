@@ -11,7 +11,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="adaccountssubscriptionsdelbyid"></a>
 # **AdAccountsSubscriptionsDelById**
-> void AdAccountsSubscriptionsDelById (string adAccountId, string subscriptionId)
+> LeadSubscription AdAccountsSubscriptionsDelById (string adAccountId, string subscriptionId)
 
 Delete lead ads subscription
 
@@ -27,7 +27,7 @@ Delete an existing lead ads webhook subscription by ID.   - Only requests for th
 
 ### Return type
 
-void (empty response body)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 
@@ -42,6 +42,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
 | **204** | Resource deleted successfully. |  -  |
 | **400** | The request could not be understood by the server due to unexpected data. |  -  |
 | **401** | Authentication is required and has either failed or not been provided. |  -  |

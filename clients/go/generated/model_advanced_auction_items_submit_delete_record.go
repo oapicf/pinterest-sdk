@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,11 +23,12 @@ var _ MappedNullable = &AdvancedAuctionItemsSubmitDeleteRecord{}
 // AdvancedAuctionItemsSubmitDeleteRecord Object describing an item bid option deletion operation
 type AdvancedAuctionItemsSubmitDeleteRecord struct {
 	Country Country `json:"country"`
+	// Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+	Errors []AdvancedAuctionOperationError `json:"errors,omitempty"`
 	// The catalog retail item id in the merchant namespace
 	ItemId string `json:"item_id"`
 	Language Language `json:"language"`
-	// Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
-	Errors []AdvancedAuctionOperationError `json:"errors,omitempty"`
+	Operation string `json:"operation"`
 }
 
 type _AdvancedAuctionItemsSubmitDeleteRecord AdvancedAuctionItemsSubmitDeleteRecord
@@ -36,11 +37,12 @@ type _AdvancedAuctionItemsSubmitDeleteRecord AdvancedAuctionItemsSubmitDeleteRec
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdvancedAuctionItemsSubmitDeleteRecord(country Country, itemId string, language Language) *AdvancedAuctionItemsSubmitDeleteRecord {
+func NewAdvancedAuctionItemsSubmitDeleteRecord(country Country, itemId string, language Language, operation string) *AdvancedAuctionItemsSubmitDeleteRecord {
 	this := AdvancedAuctionItemsSubmitDeleteRecord{}
 	this.Country = country
 	this.ItemId = itemId
 	this.Language = language
+	this.Operation = operation
 	return &this
 }
 
@@ -74,6 +76,38 @@ func (o *AdvancedAuctionItemsSubmitDeleteRecord) GetCountryOk() (*Country, bool)
 // SetCountry sets field value
 func (o *AdvancedAuctionItemsSubmitDeleteRecord) SetCountry(v Country) {
 	o.Country = v
+}
+
+// GetErrors returns the Errors field value if set, zero value otherwise.
+func (o *AdvancedAuctionItemsSubmitDeleteRecord) GetErrors() []AdvancedAuctionOperationError {
+	if o == nil || IsNil(o.Errors) {
+		var ret []AdvancedAuctionOperationError
+		return ret
+	}
+	return o.Errors
+}
+
+// GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdvancedAuctionItemsSubmitDeleteRecord) GetErrorsOk() ([]AdvancedAuctionOperationError, bool) {
+	if o == nil || IsNil(o.Errors) {
+		return nil, false
+	}
+	return o.Errors, true
+}
+
+// HasErrors returns a boolean if a field has been set.
+func (o *AdvancedAuctionItemsSubmitDeleteRecord) HasErrors() bool {
+	if o != nil && !IsNil(o.Errors) {
+		return true
+	}
+
+	return false
+}
+
+// SetErrors gets a reference to the given []AdvancedAuctionOperationError and assigns it to the Errors field.
+func (o *AdvancedAuctionItemsSubmitDeleteRecord) SetErrors(v []AdvancedAuctionOperationError) {
+	o.Errors = v
 }
 
 // GetItemId returns the ItemId field value
@@ -124,36 +158,28 @@ func (o *AdvancedAuctionItemsSubmitDeleteRecord) SetLanguage(v Language) {
 	o.Language = v
 }
 
-// GetErrors returns the Errors field value if set, zero value otherwise.
-func (o *AdvancedAuctionItemsSubmitDeleteRecord) GetErrors() []AdvancedAuctionOperationError {
-	if o == nil || IsNil(o.Errors) {
-		var ret []AdvancedAuctionOperationError
+// GetOperation returns the Operation field value
+func (o *AdvancedAuctionItemsSubmitDeleteRecord) GetOperation() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return o.Errors
+
+	return o.Operation
 }
 
-// GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
+// GetOperationOk returns a tuple with the Operation field value
 // and a boolean to check if the value has been set.
-func (o *AdvancedAuctionItemsSubmitDeleteRecord) GetErrorsOk() ([]AdvancedAuctionOperationError, bool) {
-	if o == nil || IsNil(o.Errors) {
+func (o *AdvancedAuctionItemsSubmitDeleteRecord) GetOperationOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Errors, true
+	return &o.Operation, true
 }
 
-// HasErrors returns a boolean if a field has been set.
-func (o *AdvancedAuctionItemsSubmitDeleteRecord) HasErrors() bool {
-	if o != nil && !IsNil(o.Errors) {
-		return true
-	}
-
-	return false
-}
-
-// SetErrors gets a reference to the given []AdvancedAuctionOperationError and assigns it to the Errors field.
-func (o *AdvancedAuctionItemsSubmitDeleteRecord) SetErrors(v []AdvancedAuctionOperationError) {
-	o.Errors = v
+// SetOperation sets field value
+func (o *AdvancedAuctionItemsSubmitDeleteRecord) SetOperation(v string) {
+	o.Operation = v
 }
 
 func (o AdvancedAuctionItemsSubmitDeleteRecord) MarshalJSON() ([]byte, error) {
@@ -167,11 +193,12 @@ func (o AdvancedAuctionItemsSubmitDeleteRecord) MarshalJSON() ([]byte, error) {
 func (o AdvancedAuctionItemsSubmitDeleteRecord) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["country"] = o.Country
-	toSerialize["item_id"] = o.ItemId
-	toSerialize["language"] = o.Language
 	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
 	}
+	toSerialize["item_id"] = o.ItemId
+	toSerialize["language"] = o.Language
+	toSerialize["operation"] = o.Operation
 	return toSerialize, nil
 }
 
@@ -183,6 +210,7 @@ func (o *AdvancedAuctionItemsSubmitDeleteRecord) UnmarshalJSON(data []byte) (err
 		"country",
 		"item_id",
 		"language",
+		"operation",
 	}
 
 	allProperties := make(map[string]interface{})

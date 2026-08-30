@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**invites** | [**List&lt;AuthRespondInvitesBodyInvitesInner&gt;**](AuthRespondInvitesBodyInvitesInner.md) |  | 
+**invites** | [**List&lt;AuthRespondInvitesBodyItem&gt;**](AuthRespondInvitesBodyItem.md) |  | 
 
 
 

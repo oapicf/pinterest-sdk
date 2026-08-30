@@ -6,15 +6,15 @@ using namespace Tiny;
 
 InviteResponse::InviteResponse()
 {
-	id = std::string();
-	invite_data = BaseInviteDataResponse_invite_data();
-	is_received_invite = bool(false);
-	user = null;
 	assets_summary = InviteAssetsSummary();
 	business_roles = std::list<std::string>();
 	created_by_business = null;
 	created_by_user = null;
 	created_time = int(0);
+	id = std::string();
+	invite_data = InviteDataResponse();
+	is_received_invite = bool(false);
+	user = null;
 }
 
 InviteResponse::InviteResponse(std::string jsonString)
@@ -31,60 +31,6 @@ void
 InviteResponse::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
-
-    const char *idKey = "id";
-
-    if(object.has_key(idKey))
-    {
-        bourne::json value = object[idKey];
-
-
-
-        jsonToValue(&id, value, "std::string");
-
-
-    }
-
-    const char *invite_dataKey = "invite_data";
-
-    if(object.has_key(invite_dataKey))
-    {
-        bourne::json value = object[invite_dataKey];
-
-
-
-
-        BaseInviteDataResponse_invite_data* obj = &invite_data;
-		obj->fromJson(value.dump());
-
-    }
-
-    const char *is_received_inviteKey = "is_received_invite";
-
-    if(object.has_key(is_received_inviteKey))
-    {
-        bourne::json value = object[is_received_inviteKey];
-
-
-
-        jsonToValue(&is_received_invite, value, "bool");
-
-
-    }
-
-    const char *userKey = "user";
-
-    if(object.has_key(userKey))
-    {
-        bourne::json value = object[userKey];
-
-
-
-
-        BusinessAccessUserSummary* obj = &user;
-		obj->fromJson(value.dump());
-
-    }
 
     const char *assets_summaryKey = "assets_summary";
 
@@ -131,7 +77,7 @@ InviteResponse::fromJson(std::string jsonObj)
 
 
 
-        Object* obj = &created_by_business;
+        BusinessAccessUserSummary* obj = &created_by_business;
 		obj->fromJson(value.dump());
 
     }
@@ -145,7 +91,7 @@ InviteResponse::fromJson(std::string jsonObj)
 
 
 
-        Object* obj = &created_by_user;
+        BusinessAccessUserSummary* obj = &created_by_user;
 		obj->fromJson(value.dump());
 
     }
@@ -163,6 +109,60 @@ InviteResponse::fromJson(std::string jsonObj)
 
     }
 
+    const char *idKey = "id";
+
+    if(object.has_key(idKey))
+    {
+        bourne::json value = object[idKey];
+
+
+
+        jsonToValue(&id, value, "std::string");
+
+
+    }
+
+    const char *invite_dataKey = "invite_data";
+
+    if(object.has_key(invite_dataKey))
+    {
+        bourne::json value = object[invite_dataKey];
+
+
+
+
+        InviteDataResponse* obj = &invite_data;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *is_received_inviteKey = "is_received_invite";
+
+    if(object.has_key(is_received_inviteKey))
+    {
+        bourne::json value = object[is_received_inviteKey];
+
+
+
+        jsonToValue(&is_received_invite, value, "bool");
+
+
+    }
+
+    const char *userKey = "user";
+
+    if(object.has_key(userKey))
+    {
+        bourne::json value = object[userKey];
+
+
+
+
+        BusinessAccessUserSummary* obj = &user;
+		obj->fromJson(value.dump());
+
+    }
+
 
 }
 
@@ -170,34 +170,6 @@ bourne::json
 InviteResponse::toJson()
 {
     bourne::json object = bourne::json::object();
-
-
-
-
-
-    object["id"] = getId();
-
-
-
-
-
-
-
-	object["invite_data"] = getInviteData().toJson();
-
-
-
-
-
-    object["is_received_invite"] = isIsReceivedInvite();
-
-
-
-
-
-
-
-	object["user"] = getUser().toJson();
 
 
 
@@ -244,56 +216,36 @@ InviteResponse::toJson()
 
 
 
+
+
+
+    object["id"] = getId();
+
+
+
+
+
+
+
+	object["invite_data"] = getInviteData().toJson();
+
+
+
+
+
+    object["is_received_invite"] = isIsReceivedInvite();
+
+
+
+
+
+
+
+	object["user"] = getUser().toJson();
+
+
     return object;
 
-}
-
-std::string
-InviteResponse::getId()
-{
-	return id;
-}
-
-void
-InviteResponse::setId(std::string  id)
-{
-	this->id = id;
-}
-
-BaseInviteDataResponse_invite_data
-InviteResponse::getInviteData()
-{
-	return invite_data;
-}
-
-void
-InviteResponse::setInviteData(BaseInviteDataResponse_invite_data  invite_data)
-{
-	this->invite_data = invite_data;
-}
-
-bool
-InviteResponse::isIsReceivedInvite()
-{
-	return is_received_invite;
-}
-
-void
-InviteResponse::setIsReceivedInvite(bool  is_received_invite)
-{
-	this->is_received_invite = is_received_invite;
-}
-
-BusinessAccessUserSummary
-InviteResponse::getUser()
-{
-	return user;
-}
-
-void
-InviteResponse::setUser(BusinessAccessUserSummary  user)
-{
-	this->user = user;
 }
 
 InviteAssetsSummary
@@ -303,7 +255,7 @@ InviteResponse::getAssetsSummary()
 }
 
 void
-InviteResponse::setAssetsSummary(InviteAssetsSummary  assets_summary)
+InviteResponse::setAssetsSummary(InviteAssetsSummary assets_summary)
 {
 	this->assets_summary = assets_summary;
 }
@@ -315,31 +267,31 @@ InviteResponse::getBusinessRoles()
 }
 
 void
-InviteResponse::setBusinessRoles(std::list <std::string> business_roles)
+InviteResponse::setBusinessRoles(std::list<std::string> business_roles)
 {
 	this->business_roles = business_roles;
 }
 
-Object
+BusinessAccessUserSummary
 InviteResponse::getCreatedByBusiness()
 {
 	return created_by_business;
 }
 
 void
-InviteResponse::setCreatedByBusiness(Object  created_by_business)
+InviteResponse::setCreatedByBusiness(BusinessAccessUserSummary created_by_business)
 {
 	this->created_by_business = created_by_business;
 }
 
-Object
+BusinessAccessUserSummary
 InviteResponse::getCreatedByUser()
 {
 	return created_by_user;
 }
 
 void
-InviteResponse::setCreatedByUser(Object  created_by_user)
+InviteResponse::setCreatedByUser(BusinessAccessUserSummary created_by_user)
 {
 	this->created_by_user = created_by_user;
 }
@@ -351,9 +303,57 @@ InviteResponse::getCreatedTime()
 }
 
 void
-InviteResponse::setCreatedTime(int  created_time)
+InviteResponse::setCreatedTime(int created_time)
 {
 	this->created_time = created_time;
+}
+
+std::string
+InviteResponse::getId()
+{
+	return id;
+}
+
+void
+InviteResponse::setId(std::string id)
+{
+	this->id = id;
+}
+
+InviteDataResponse
+InviteResponse::getInviteData()
+{
+	return invite_data;
+}
+
+void
+InviteResponse::setInviteData(InviteDataResponse invite_data)
+{
+	this->invite_data = invite_data;
+}
+
+bool
+InviteResponse::isIsReceivedInvite()
+{
+	return is_received_invite;
+}
+
+void
+InviteResponse::setIsReceivedInvite(bool is_received_invite)
+{
+	this->is_received_invite = is_received_invite;
+}
+
+BusinessAccessUserSummary
+InviteResponse::getUser()
+{
+	return user;
+}
+
+void
+InviteResponse::setUser(BusinessAccessUserSummary user)
+{
+	this->user = user;
 }
 
 

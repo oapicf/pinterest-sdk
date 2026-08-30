@@ -102,7 +102,7 @@ Product_group_promotions_list_200_response::getBookmark()
 }
 
 void
-Product_group_promotions_list_200_response::setBookmark(std::string  bookmark)
+Product_group_promotions_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Product_group_promotions_list_200_response::getItems()
 }
 
 void
-Product_group_promotions_list_200_response::setItems(std::list <ProductGroupPromotion> items)
+Product_group_promotions_list_200_response::setItems(std::list<ProductGroupPromotion> items)
 {
 	this->items = items;
 }

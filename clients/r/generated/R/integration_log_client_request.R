@@ -8,7 +8,7 @@
 #' @description IntegrationLogClientRequest Class
 #' @format An \code{R6Class} generator object
 #' @field host HTTP request host from host header. character
-#' @field method  character
+#' @field method  \link{HttpMethod}
 #' @field path HTTP request path. character
 #' @field request_headers HTTP request headers as key-value pairs. named list(character) [optional]
 #' @field response_headers HTTP response headers as key-value pairs. named list(character) [optional]
@@ -44,12 +44,10 @@ IntegrationLogClientRequest <- R6::R6Class(
         self$`host` <- `host`
       }
       if (!missing(`method`)) {
-        if (!(`method` %in% c("GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"))) {
-          stop(paste("Error! \"", `method`, "\" cannot be assigned to `method`. Must be \"GET\", \"HEAD\", \"POST\", \"PUT\", \"DELETE\", \"CONNECT\", \"OPTIONS\", \"TRACE\", \"PATCH\".", sep = ""))
+        if (!(`method` %in% c())) {
+          stop(paste("Error! \"", `method`, "\" cannot be assigned to `method`. Must be .", sep = ""))
         }
-        if (!(is.character(`method`) && length(`method`) == 1)) {
-          stop(paste("Error! Invalid data for `method`. Must be a string:", `method`))
-        }
+        stopifnot(R6::is.R6(`method`))
         self$`method` <- `method`
       }
       if (!missing(`path`)) {
@@ -113,7 +111,7 @@ IntegrationLogClientRequest <- R6::R6Class(
       }
       if (!is.null(self$`method`)) {
         IntegrationLogClientRequestObject[["method"]] <-
-          self$`method`
+          self$extractSimpleType(self$`method`)
       }
       if (!is.null(self$`path`)) {
         IntegrationLogClientRequestObject[["path"]] <-
@@ -134,6 +132,29 @@ IntegrationLogClientRequest <- R6::R6Class(
       return(IntegrationLogClientRequestObject)
     },
 
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
+    },
+
     #' @description
     #' Deserialize JSON string into an instance of IntegrationLogClientRequest
     #'
@@ -145,10 +166,9 @@ IntegrationLogClientRequest <- R6::R6Class(
         self$`host` <- this_object$`host`
       }
       if (!is.null(this_object$`method`)) {
-        if (!is.null(this_object$`method`) && !(this_object$`method` %in% c("GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"))) {
-          stop(paste("Error! \"", this_object$`method`, "\" cannot be assigned to `method`. Must be \"GET\", \"HEAD\", \"POST\", \"PUT\", \"DELETE\", \"CONNECT\", \"OPTIONS\", \"TRACE\", \"PATCH\".", sep = ""))
-        }
-        self$`method` <- this_object$`method`
+        `method_object` <- HttpMethod$new()
+        `method_object`$fromJSON(jsonlite::toJSON(this_object$`method`, auto_unbox = TRUE, digits = NA))
+        self$`method` <- `method_object`
       }
       if (!is.null(this_object$`path`)) {
         self$`path` <- this_object$`path`
@@ -184,10 +204,7 @@ IntegrationLogClientRequest <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`host` <- this_object$`host`
-      if (!is.null(this_object$`method`) && !(this_object$`method` %in% c("GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"))) {
-        stop(paste("Error! \"", this_object$`method`, "\" cannot be assigned to `method`. Must be \"GET\", \"HEAD\", \"POST\", \"PUT\", \"DELETE\", \"CONNECT\", \"OPTIONS\", \"TRACE\", \"PATCH\".", sep = ""))
-      }
-      self$`method` <- this_object$`method`
+      self$`method` <- HttpMethod$new()$fromJSON(jsonlite::toJSON(this_object$`method`, auto_unbox = TRUE, digits = NA))
       self$`path` <- this_object$`path`
       self$`request_headers` <- ApiClient$new()$deserializeObj(this_object$`request_headers`, "map(character)", loadNamespace("openapi"))
       self$`response_headers` <- ApiClient$new()$deserializeObj(this_object$`response_headers`, "map(character)", loadNamespace("openapi"))
@@ -211,9 +228,7 @@ IntegrationLogClientRequest <- R6::R6Class(
       }
       # check the required field `method`
       if (!is.null(input_json$`method`)) {
-        if (!(is.character(input_json$`method`) && length(input_json$`method`) == 1)) {
-          stop(paste("Error! Invalid data for `method`. Must be a string:", input_json$`method`))
-        }
+        stopifnot(R6::is.R6(input_json$`method`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for IntegrationLogClientRequest: the required field `method` is missing."))
       }

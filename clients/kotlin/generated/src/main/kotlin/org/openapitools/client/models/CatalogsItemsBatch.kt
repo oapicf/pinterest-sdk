@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -19,7 +27,6 @@ import org.openapitools.client.models.BatchOperationStatus
 import org.openapitools.client.models.CatalogsCreativeAssetsItemsBatch
 import org.openapitools.client.models.CatalogsHotelItemsBatch
 import org.openapitools.client.models.CatalogsRetailItemsBatch
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.CreativeAssetsProcessingRecord
 
 import com.squareup.moshi.Json
@@ -40,7 +47,7 @@ import com.squareup.moshi.JsonClass
 interface CatalogsItemsBatch {
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType
+    val catalogType: CatalogsItemsBatch.CatalogType
     /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
     @Json(name = "created_time")
     val createdTime: java.time.OffsetDateTime
@@ -55,6 +62,15 @@ interface CatalogsItemsBatch {
     val items: kotlin.collections.List<CreativeAssetsProcessingRecord>?
     @Json(name = "status")
     val status: BatchOperationStatus?
+    /**
+     * 
+     *
+     * Values: CREATIVE_ASSETS
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "CREATIVE_ASSETS") CREATIVE_ASSETS("CREATIVE_ASSETS");
+    }
 
 }
 

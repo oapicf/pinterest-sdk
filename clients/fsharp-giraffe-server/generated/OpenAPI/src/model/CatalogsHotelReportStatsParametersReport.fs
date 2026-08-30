@@ -10,13 +10,13 @@ module CatalogsHotelReportStatsParametersReport =
   //#region CatalogsHotelReportStatsParametersReport
 
   //#region enums
-  type ReportTypeEnum = FEEDINGESTIONISSUESEnum of string  |  DISTRIBUTIONISSUESEnum of string  
+  type ReportTypeEnum = DISTRIBUTIONISSUESEnum of string  
   //#endregion
 
-  type CatalogsHotelReportStatsParameters_report = {
-    ReportType : ReportTypeEnum;
+  type CatalogsHotelReportStatsParametersReport = {
     FeedId : string;
     ProcessingResultId : string;
+    ReportType : ReportTypeEnum;
     CatalogId : string;
   }
   //#endregion

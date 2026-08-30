@@ -51,14 +51,14 @@ static gpointer __AudienceInsightsManagerthreadFunc(gpointer data)
 static bool audienceInsightsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(AudienceInsightsResponse, Error, void* )
-	= reinterpret_cast<void(*)(AudienceInsightsResponse, Error, void* )> (voidHandler);
+	void(* handler)(AudienceInsights, Error, void* )
+	= reinterpret_cast<void(*)(AudienceInsights, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	AudienceInsightsResponse out;
+	AudienceInsights out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,43 @@ static bool audienceInsightsGetProcessor(MemoryStruct_s p_chunk, long code, char
 
 
 
-		if (isprimitive("AudienceInsightsResponse")) {
+		if (isprimitive("AudienceInsights")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "AudienceInsightsResponse", "AudienceInsightsResponse");
+			jsonToValue(&out, pJson, "AudienceInsights", "AudienceInsights");
 			json_node_free(pJson);
 
-			if ("AudienceInsightsResponse" == "std::string") {
+			if ("AudienceInsights" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -110,7 +135,7 @@ static bool audienceInsightsGetProcessor(MemoryStruct_s p_chunk, long code, char
 
 static bool audienceInsightsGetHelper(char * accessToken,
 	std::string adAccountId, AudienceInsightType audienceInsightType, 
-	void(* handler)(AudienceInsightsResponse, Error, void* )
+	void(* handler)(AudienceInsights, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -191,7 +216,7 @@ static bool audienceInsightsGetHelper(char * accessToken,
 
 bool AudienceInsightsManager::audienceInsightsGetAsync(char * accessToken,
 	std::string adAccountId, AudienceInsightType audienceInsightType, 
-	void(* handler)(AudienceInsightsResponse, Error, void* )
+	void(* handler)(AudienceInsights, Error, void* )
 	, void* userData)
 {
 	return audienceInsightsGetHelper(accessToken,
@@ -201,7 +226,7 @@ bool AudienceInsightsManager::audienceInsightsGetAsync(char * accessToken,
 
 bool AudienceInsightsManager::audienceInsightsGetSync(char * accessToken,
 	std::string adAccountId, AudienceInsightType audienceInsightType, 
-	void(* handler)(AudienceInsightsResponse, Error, void* )
+	void(* handler)(AudienceInsights, Error, void* )
 	, void* userData)
 {
 	return audienceInsightsGetHelper(accessToken,
@@ -212,14 +237,14 @@ bool AudienceInsightsManager::audienceInsightsGetSync(char * accessToken,
 static bool audienceInsightsScopeAndTypeGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(AudienceDefinitionResponse, Error, void* )
-	= reinterpret_cast<void(*)(AudienceDefinitionResponse, Error, void* )> (voidHandler);
+	void(* handler)(Audience_insights_scope_and_type_get_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Audience_insights_scope_and_type_get_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	AudienceDefinitionResponse out;
+	Audience_insights_scope_and_type_get_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -227,18 +252,43 @@ static bool audienceInsightsScopeAndTypeGetProcessor(MemoryStruct_s p_chunk, lon
 
 
 
-		if (isprimitive("AudienceDefinitionResponse")) {
+		if (isprimitive("Audience_insights_scope_and_type_get_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "AudienceDefinitionResponse", "AudienceDefinitionResponse");
+			jsonToValue(&out, pJson, "Audience_insights_scope_and_type_get_200_response", "Audience_insights_scope_and_type_get_200_response");
 			json_node_free(pJson);
 
-			if ("AudienceDefinitionResponse" == "std::string") {
+			if ("Audience_insights_scope_and_type_get_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -271,7 +321,7 @@ static bool audienceInsightsScopeAndTypeGetProcessor(MemoryStruct_s p_chunk, lon
 
 static bool audienceInsightsScopeAndTypeGetHelper(char * accessToken,
 	std::string adAccountId, 
-	void(* handler)(AudienceDefinitionResponse, Error, void* )
+	void(* handler)(Audience_insights_scope_and_type_get_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -348,7 +398,7 @@ static bool audienceInsightsScopeAndTypeGetHelper(char * accessToken,
 
 bool AudienceInsightsManager::audienceInsightsScopeAndTypeGetAsync(char * accessToken,
 	std::string adAccountId, 
-	void(* handler)(AudienceDefinitionResponse, Error, void* )
+	void(* handler)(Audience_insights_scope_and_type_get_200_response, Error, void* )
 	, void* userData)
 {
 	return audienceInsightsScopeAndTypeGetHelper(accessToken,
@@ -358,7 +408,7 @@ bool AudienceInsightsManager::audienceInsightsScopeAndTypeGetAsync(char * access
 
 bool AudienceInsightsManager::audienceInsightsScopeAndTypeGetSync(char * accessToken,
 	std::string adAccountId, 
-	void(* handler)(AudienceDefinitionResponse, Error, void* )
+	void(* handler)(Audience_insights_scope_and_type_get_200_response, Error, void* )
 	, void* userData)
 {
 	return audienceInsightsScopeAndTypeGetHelper(accessToken,

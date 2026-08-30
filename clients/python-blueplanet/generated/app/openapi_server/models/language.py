@@ -61,7 +61,7 @@ class Language(Model):
     NB = 'NB'
     NE = 'NE'
     NL = 'NL'
-    NO = 'NO'
+    FALSE = 'false'
     PL = 'PL'
     PT = 'PT'
     RO = 'RO'

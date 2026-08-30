@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.LabelUpdateRequestLabelsInner;
+import org.openapitools.model.LabelUpdateItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,28 +19,28 @@ public class LabelUpdateRequest  {
   */
   @ApiModelProperty(required = true, value = "Labels that you are applying to the campaign.")
   @Valid
-  private List<@Valid LabelUpdateRequestLabelsInner> labels = new ArrayList<>();
+  private List<@Valid LabelUpdateItem> labels = new ArrayList<>();
  /**
   * Labels that you are applying to the campaign.
   * @return labels
   */
   @JsonProperty("labels")
   @NotNull
-  public List<@Valid LabelUpdateRequestLabelsInner> getLabels() {
+  public List<@Valid LabelUpdateItem> getLabels() {
     return labels;
   }
 
   /**
    * Sets the <code>labels</code> property.
    */
- public void setLabels(List<@Valid LabelUpdateRequestLabelsInner> labels) {
+ public void setLabels(List<@Valid LabelUpdateItem> labels) {
     this.labels = labels;
   }
 
   /**
    * Sets the <code>labels</code> property.
    */
-  public LabelUpdateRequest labels(List<@Valid LabelUpdateRequestLabelsInner> labels) {
+  public LabelUpdateRequest labels(List<@Valid LabelUpdateItem> labels) {
     this.labels = labels;
     return this;
   }
@@ -48,7 +48,7 @@ public class LabelUpdateRequest  {
   /**
    * Adds a new item to the <code>labels</code> list.
    */
-  public LabelUpdateRequest addLabelsItem(LabelUpdateRequestLabelsInner labelsItem) {
+  public LabelUpdateRequest addLabelsItem(LabelUpdateItem labelsItem) {
     this.labels.add(labelsItem);
     return this;
   }
@@ -86,10 +86,7 @@ public class LabelUpdateRequest  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

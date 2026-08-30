@@ -1,4 +1,5 @@
 # Org.OpenAPITools.Model.SSIOAccountAddress
+Salesforce address information.
 
 ## Properties
 

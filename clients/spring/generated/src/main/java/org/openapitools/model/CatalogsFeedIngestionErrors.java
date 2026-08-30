@@ -2,76 +2,52 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsFeedIngestionErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedIngestionErrors {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ACCOUNT_FLAGGED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer FETCH_GOOGLE_SHEET_NOT_SHARED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_FILE_NOT_ACCESSIBLE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_FILE_NOT_FOUND;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_INVALID_FILE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_LEVEL_INTERNAL_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_MALFORMED_URL;
 
-  /**
-   * The product count has decreased by more than 99% compared to the last successful ingestion.
-   */
-  public enum LARGEPRODUCTCOUNTDECREASEEnum {
-    NUMBER_1(1);
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable Integer LARGE_PRODUCT_COUNT_DECREASE;
 
-    private final Integer value;
-
-    LARGEPRODUCTCOUNTDECREASEEnum(Integer value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public Integer getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static LARGEPRODUCTCOUNTDECREASEEnum fromValue(Integer value) {
-      for (LARGEPRODUCTCOUNTDECREASEEnum b : LARGEPRODUCTCOUNTDECREASEEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private @Nullable LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE;
-
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer LINE_LEVEL_INTERNAL_ERROR;
 
   public CatalogsFeedIngestionErrors ACCOUNT_FLAGGED(@Nullable Integer ACCOUNT_FLAGGED) {
@@ -90,6 +66,7 @@ public class CatalogsFeedIngestionErrors {
     return ACCOUNT_FLAGGED;
   }
 
+  @JsonProperty("ACCOUNT_FLAGGED")
   public void setACCOUNTFLAGGED(@Nullable Integer ACCOUNT_FLAGGED) {
     this.ACCOUNT_FLAGGED = ACCOUNT_FLAGGED;
   }
@@ -110,6 +87,7 @@ public class CatalogsFeedIngestionErrors {
     return FETCH_GOOGLE_SHEET_NOT_SHARED;
   }
 
+  @JsonProperty("FETCH_GOOGLE_SHEET_NOT_SHARED")
   public void setFETCHGOOGLESHEETNOTSHARED(@Nullable Integer FETCH_GOOGLE_SHEET_NOT_SHARED) {
     this.FETCH_GOOGLE_SHEET_NOT_SHARED = FETCH_GOOGLE_SHEET_NOT_SHARED;
   }
@@ -130,6 +108,7 @@ public class CatalogsFeedIngestionErrors {
     return IMAGE_FILE_NOT_ACCESSIBLE;
   }
 
+  @JsonProperty("IMAGE_FILE_NOT_ACCESSIBLE")
   public void setIMAGEFILENOTACCESSIBLE(@Nullable Integer IMAGE_FILE_NOT_ACCESSIBLE) {
     this.IMAGE_FILE_NOT_ACCESSIBLE = IMAGE_FILE_NOT_ACCESSIBLE;
   }
@@ -150,6 +129,7 @@ public class CatalogsFeedIngestionErrors {
     return IMAGE_FILE_NOT_FOUND;
   }
 
+  @JsonProperty("IMAGE_FILE_NOT_FOUND")
   public void setIMAGEFILENOTFOUND(@Nullable Integer IMAGE_FILE_NOT_FOUND) {
     this.IMAGE_FILE_NOT_FOUND = IMAGE_FILE_NOT_FOUND;
   }
@@ -170,6 +150,7 @@ public class CatalogsFeedIngestionErrors {
     return IMAGE_INVALID_FILE;
   }
 
+  @JsonProperty("IMAGE_INVALID_FILE")
   public void setIMAGEINVALIDFILE(@Nullable Integer IMAGE_INVALID_FILE) {
     this.IMAGE_INVALID_FILE = IMAGE_INVALID_FILE;
   }
@@ -190,6 +171,7 @@ public class CatalogsFeedIngestionErrors {
     return IMAGE_LEVEL_INTERNAL_ERROR;
   }
 
+  @JsonProperty("IMAGE_LEVEL_INTERNAL_ERROR")
   public void setIMAGELEVELINTERNALERROR(@Nullable Integer IMAGE_LEVEL_INTERNAL_ERROR) {
     this.IMAGE_LEVEL_INTERNAL_ERROR = IMAGE_LEVEL_INTERNAL_ERROR;
   }
@@ -210,11 +192,12 @@ public class CatalogsFeedIngestionErrors {
     return IMAGE_MALFORMED_URL;
   }
 
+  @JsonProperty("IMAGE_MALFORMED_URL")
   public void setIMAGEMALFORMEDURL(@Nullable Integer IMAGE_MALFORMED_URL) {
     this.IMAGE_MALFORMED_URL = IMAGE_MALFORMED_URL;
   }
 
-  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(@Nullable LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(@Nullable Integer LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
     return this;
   }
@@ -226,11 +209,12 @@ public class CatalogsFeedIngestionErrors {
   
   @Schema(name = "LARGE_PRODUCT_COUNT_DECREASE", description = "The product count has decreased by more than 99% compared to the last successful ingestion.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LARGE_PRODUCT_COUNT_DECREASE")
-  public @Nullable LARGEPRODUCTCOUNTDECREASEEnum getLARGEPRODUCTCOUNTDECREASE() {
+  public @Nullable Integer getLARGEPRODUCTCOUNTDECREASE() {
     return LARGE_PRODUCT_COUNT_DECREASE;
   }
 
-  public void setLARGEPRODUCTCOUNTDECREASE(@Nullable LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  @JsonProperty("LARGE_PRODUCT_COUNT_DECREASE")
+  public void setLARGEPRODUCTCOUNTDECREASE(@Nullable Integer LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
   }
 
@@ -250,6 +234,7 @@ public class CatalogsFeedIngestionErrors {
     return LINE_LEVEL_INTERNAL_ERROR;
   }
 
+  @JsonProperty("LINE_LEVEL_INTERNAL_ERROR")
   public void setLINELEVELINTERNALERROR(@Nullable Integer LINE_LEVEL_INTERNAL_ERROR) {
     this.LINE_LEVEL_INTERNAL_ERROR = LINE_LEVEL_INTERNAL_ERROR;
   }
@@ -300,11 +285,8 @@ public class CatalogsFeedIngestionErrors {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

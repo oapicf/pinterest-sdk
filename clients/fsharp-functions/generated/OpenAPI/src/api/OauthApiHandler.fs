@@ -29,6 +29,26 @@ module OauthApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | OauthConversionTokenStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | OauthConversionTokenStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | OauthConversionTokenStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | OauthConversionTokenStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | OauthConversionTokenStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | OauthConversionTokenDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -49,6 +69,30 @@ module OauthApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | OauthTokenStatusCode201 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(201))
+      | OauthTokenStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | OauthTokenStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | OauthTokenStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | OauthTokenStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | OauthTokenStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | OauthTokenDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"

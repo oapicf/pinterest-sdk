@@ -21,7 +21,9 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
-import org.openapitools.client.api.AdvertiserDefinedEventsResponse
+import org.openapitools.client.api.AdvertiserDefinedEventsCreate200Response
+import org.openapitools.client.api.AdvertiserDefinedEventsCreateRequest
+import org.openapitools.client.api.AdvertiserDefinedEventsGet200Response
 import org.openapitools.client.api.Error
 
 object ConversionsApi {
@@ -30,8 +32,50 @@ object ConversionsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def advertiserDefinedEventsGet(host: String, adAccountId: String): Task[AdvertiserDefinedEventsResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[AdvertiserDefinedEventsResponse] = jsonOf[AdvertiserDefinedEventsResponse]
+  def advertiserDefinedEventsCreate(host: String, adAccountId: String, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest): Task[AdvertiserDefinedEventsCreate200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdvertiserDefinedEventsCreate200Response] = jsonOf[AdvertiserDefinedEventsCreate200Response]
+
+    val path = "/ad_accounts/{ad_account_id}/advertiser_defined_events".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.POST
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(advertiserDefinedEventsCreateRequest)
+      resp          <- client.expect[AdvertiserDefinedEventsCreate200Response](req)
+
+    } yield resp
+  }
+
+  def advertiserDefinedEventsDelete(host: String, adAccountId: String, eventNames: List[String] = List.empty[String] )(implicit eventNamesQuery: QueryParam[List[String]]): Task[AdvertiserDefinedEventsCreate200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdvertiserDefinedEventsCreate200Response] = jsonOf[AdvertiserDefinedEventsCreate200Response]
+
+    val path = "/ad_accounts/{ad_account_id}/advertiser_defined_events".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.DELETE
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      ("eventNames", Some(event_namesQuery.toParamString(event_names))))
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[AdvertiserDefinedEventsCreate200Response](req)
+
+    } yield resp
+  }
+
+  def advertiserDefinedEventsGet(host: String, adAccountId: String): Task[AdvertiserDefinedEventsGet200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdvertiserDefinedEventsGet200Response] = jsonOf[AdvertiserDefinedEventsGet200Response]
 
     val path = "/ad_accounts/{ad_account_id}/advertiser_defined_events".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -46,7 +90,28 @@ object ConversionsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[AdvertiserDefinedEventsResponse](req)
+      resp          <- client.expect[AdvertiserDefinedEventsGet200Response](req)
+
+    } yield resp
+  }
+
+  def advertiserDefinedEventsUpdate(host: String, adAccountId: String, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest): Task[AdvertiserDefinedEventsCreate200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdvertiserDefinedEventsCreate200Response] = jsonOf[AdvertiserDefinedEventsCreate200Response]
+
+    val path = "/ad_accounts/{ad_account_id}/advertiser_defined_events".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.PATCH
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(advertiserDefinedEventsCreateRequest)
+      resp          <- client.expect[AdvertiserDefinedEventsCreate200Response](req)
 
     } yield resp
   }
@@ -58,8 +123,50 @@ class HttpServiceConversionsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def advertiserDefinedEventsGet(adAccountId: String): Task[AdvertiserDefinedEventsResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[AdvertiserDefinedEventsResponse] = jsonOf[AdvertiserDefinedEventsResponse]
+  def advertiserDefinedEventsCreate(adAccountId: String, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest): Task[AdvertiserDefinedEventsCreate200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdvertiserDefinedEventsCreate200Response] = jsonOf[AdvertiserDefinedEventsCreate200Response]
+
+    val path = "/ad_accounts/{ad_account_id}/advertiser_defined_events".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.POST
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(advertiserDefinedEventsCreateRequest)
+      resp          <- client.expect[AdvertiserDefinedEventsCreate200Response](req)
+
+    } yield resp
+  }
+
+  def advertiserDefinedEventsDelete(adAccountId: String, eventNames: List[String] = List.empty[String] )(implicit eventNamesQuery: QueryParam[List[String]]): Task[AdvertiserDefinedEventsCreate200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdvertiserDefinedEventsCreate200Response] = jsonOf[AdvertiserDefinedEventsCreate200Response]
+
+    val path = "/ad_accounts/{ad_account_id}/advertiser_defined_events".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.DELETE
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      ("eventNames", Some(event_namesQuery.toParamString(event_names))))
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[AdvertiserDefinedEventsCreate200Response](req)
+
+    } yield resp
+  }
+
+  def advertiserDefinedEventsGet(adAccountId: String): Task[AdvertiserDefinedEventsGet200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdvertiserDefinedEventsGet200Response] = jsonOf[AdvertiserDefinedEventsGet200Response]
 
     val path = "/ad_accounts/{ad_account_id}/advertiser_defined_events".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -74,7 +181,28 @@ class HttpServiceConversionsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[AdvertiserDefinedEventsResponse](req)
+      resp          <- client.expect[AdvertiserDefinedEventsGet200Response](req)
+
+    } yield resp
+  }
+
+  def advertiserDefinedEventsUpdate(adAccountId: String, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest): Task[AdvertiserDefinedEventsCreate200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdvertiserDefinedEventsCreate200Response] = jsonOf[AdvertiserDefinedEventsCreate200Response]
+
+    val path = "/ad_accounts/{ad_account_id}/advertiser_defined_events".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.PATCH
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(advertiserDefinedEventsCreateRequest)
+      resp          <- client.expect[AdvertiserDefinedEventsCreate200Response](req)
 
     } yield resp
   }

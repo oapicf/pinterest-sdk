@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { AdsCreditDiscountType } from './adsCreditDiscountType';
 
 
 export interface AdsCreditDiscountsResponse { 
@@ -23,13 +24,13 @@ export interface AdsCreditDiscountsResponse {
      */
     discountCurrency?: string | null;
     /**
-     * The discount applied in the offer’s currency value.
+     * The discount applied in the offer\'s currency value.
      */
     discountInMicroCurrency?: number | null;
     /**
      * The type of discount of this credit
      */
-    discountType?: AdsCreditDiscountsResponse.DiscountTypeEnum | null;
+    discountType?: AdsCreditDiscountType | null;
     /**
      * The credits left to spend.
      */
@@ -40,29 +41,6 @@ export interface AdsCreditDiscountsResponse {
     title?: string | null;
 }
 export namespace AdsCreditDiscountsResponse {
-    export const DiscountTypeEnum = {
-        Coupon: 'COUPON',
-        Credit: 'CREDIT',
-        CouponApplied: 'COUPON_APPLIED',
-        CreditApplied: 'CREDIT_APPLIED',
-        MarketingOfferCredit: 'MARKETING_OFFER_CREDIT',
-        MarketingOfferCreditApplied: 'MARKETING_OFFER_CREDIT_APPLIED',
-        GoodwillCredit: 'GOODWILL_CREDIT',
-        GoodwillCreditApplied: 'GOODWILL_CREDIT_APPLIED',
-        InternalCredit: 'INTERNAL_CREDIT',
-        InternalCreditApplied: 'INTERNAL_CREDIT_APPLIED',
-        PrepaidCredit: 'PREPAID_CREDIT',
-        PrepaidCreditApplied: 'PREPAID_CREDIT_APPLIED',
-        SalesIncentiveCredit: 'SALES_INCENTIVE_CREDIT',
-        SalesIncentiveCreditApplied: 'SALES_INCENTIVE_CREDIT_APPLIED',
-        CreditExpired: 'CREDIT_EXPIRED',
-        FutureCredit: 'FUTURE_CREDIT',
-        ReferralCredit: 'REFERRAL_CREDIT',
-        InvoiceSalesIncentiveCredit: 'INVOICE_SALES_INCENTIVE_CREDIT',
-        InvoiceSalesIncentiveCreditApplied: 'INVOICE_SALES_INCENTIVE_CREDIT_APPLIED',
-        PrepaidCreditRefund: 'PREPAID_CREDIT_REFUND'
-    } as const;
-    export type DiscountTypeEnum = typeof DiscountTypeEnum[keyof typeof DiscountTypeEnum];
 }
 
 

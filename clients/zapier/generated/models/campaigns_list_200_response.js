@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const CampaignResponse = require('../models/CampaignResponse');
+const Campaign = require('../models/Campaign');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -13,7 +13,7 @@ module.exports = {
             {
                 key: `${keyPrefix}items`,
                 label: `[${labelPrefix}items]`,
-                children: CampaignResponse.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
+                children: Campaign.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
             },
         ]
     },
@@ -21,7 +21,7 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'bookmark': bundle.inputData?.[`${keyPrefix}bookmark`],
-            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, CampaignResponse),
+            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, Campaign),
         }
     },
 }

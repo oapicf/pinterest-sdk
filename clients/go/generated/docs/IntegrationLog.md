@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **AppVersionNumber** | Pointer to **string** | Version number of the integration application. | [optional] 
 **ClientTimestamp** | **int32** | Timestamp in milliseconds of when the log was executed at the client. | 
 **Error** | Pointer to [**IntegrationLogClientError**](IntegrationLogClientError.md) |  | [optional] 
-**EventType** | **string** | Log event type | 
+**EventType** | [**IntegrationLogEventType**](IntegrationLogEventType.md) | Log event type | 
 **ExternalBusinessId** | Pointer to **NullableString** |  | [optional] 
 **FeedProfileId** | Pointer to **NullableString** |  | [optional] 
-**LogLevel** | **string** | Log level type | 
+**LogLevel** | [**IntegrationLogLevel**](IntegrationLogLevel.md) | Log level type | 
 **MerchantId** | Pointer to **NullableString** |  | [optional] 
 **Message** | Pointer to **string** | Explanation of the event that occured. | [optional] 
 **PlatformVersionNumber** | Pointer to **string** | Version number of the platform the integration application is running on. | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewIntegrationLog
 
-`func NewIntegrationLog(clientTimestamp int32, eventType string, logLevel string, ) *IntegrationLog`
+`func NewIntegrationLog(clientTimestamp int32, eventType IntegrationLogEventType, logLevel IntegrationLogLevel, ) *IntegrationLog`
 
 NewIntegrationLog instantiates a new IntegrationLog object
 This constructor will assign default values to properties that have it defined,
@@ -144,20 +144,20 @@ HasError returns a boolean if a field has been set.
 
 ### GetEventType
 
-`func (o *IntegrationLog) GetEventType() string`
+`func (o *IntegrationLog) GetEventType() IntegrationLogEventType`
 
 GetEventType returns the EventType field if non-nil, zero value otherwise.
 
 ### GetEventTypeOk
 
-`func (o *IntegrationLog) GetEventTypeOk() (*string, bool)`
+`func (o *IntegrationLog) GetEventTypeOk() (*IntegrationLogEventType, bool)`
 
 GetEventTypeOk returns a tuple with the EventType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEventType
 
-`func (o *IntegrationLog) SetEventType(v string)`
+`func (o *IntegrationLog) SetEventType(v IntegrationLogEventType)`
 
 SetEventType sets EventType field to given value.
 
@@ -234,20 +234,20 @@ HasFeedProfileId returns a boolean if a field has been set.
 UnsetFeedProfileId ensures that no value is present for FeedProfileId, not even an explicit nil
 ### GetLogLevel
 
-`func (o *IntegrationLog) GetLogLevel() string`
+`func (o *IntegrationLog) GetLogLevel() IntegrationLogLevel`
 
 GetLogLevel returns the LogLevel field if non-nil, zero value otherwise.
 
 ### GetLogLevelOk
 
-`func (o *IntegrationLog) GetLogLevelOk() (*string, bool)`
+`func (o *IntegrationLog) GetLogLevelOk() (*IntegrationLogLevel, bool)`
 
 GetLogLevelOk returns a tuple with the LogLevel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLogLevel
 
-`func (o *IntegrationLog) SetLogLevel(v string)`
+`func (o *IntegrationLog) SetLogLevel(v IntegrationLogLevel)`
 
 SetLogLevel sets LogLevel field to given value.
 

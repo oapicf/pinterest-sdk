@@ -108,7 +108,7 @@ CatalogsHotelProduct::getCatalogType()
 }
 
 void
-CatalogsHotelProduct::setCatalogType(std::string  catalog_type)
+CatalogsHotelProduct::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -120,7 +120,7 @@ CatalogsHotelProduct::getMetadata()
 }
 
 void
-CatalogsHotelProduct::setMetadata(CatalogsHotelProductMetadata  metadata)
+CatalogsHotelProduct::setMetadata(CatalogsHotelProductMetadata metadata)
 {
 	this->metadata = metadata;
 }
@@ -132,7 +132,7 @@ CatalogsHotelProduct::getPin()
 }
 
 void
-CatalogsHotelProduct::setPin(Pin  pin)
+CatalogsHotelProduct::setPin(Pin pin)
 {
 	this->pin = pin;
 }

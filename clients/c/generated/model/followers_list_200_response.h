@@ -15,7 +15,7 @@
 
 typedef struct followers_list_200_response_t followers_list_200_response_t;
 
-#include "user_summary.h"
+#include "follow_user.h"
 
 
 

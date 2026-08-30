@@ -9,7 +9,7 @@ The class is defined in **[TargetingSpecOperationGender.java](../../src/main/jav
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **field** | [**FieldEnum**](#FieldEnum) |  | 
-**operation** | [**OperationEnum**](#OperationEnum) |  | 
+**operation** | `TargetingSpecListOperation` |  | 
 **values** | `List&lt;TargetingSpecGender&gt;` |  | 
 
 ## FieldEnum
@@ -18,13 +18,6 @@ Name | Value
 ---- | -----
 GENDER | `"GENDER"`
 
-## OperationEnum
-
-Name | Value
----- | -----
-SET | `"SET"`
-ADD | `"ADD"`
-REMOVE | `"REMOVE"`
 
 
 

@@ -10,6 +10,7 @@ AdAccountCreate::AdAccountCreate()
 	currency = Currency();
 	name = std::string();
 	owner_user_id = std::string();
+	time_zone = std::string();
 }
 
 AdAccountCreate::AdAccountCreate(std::string jsonString)
@@ -81,6 +82,19 @@ AdAccountCreate::fromJson(std::string jsonObj)
 
     }
 
+    const char *time_zoneKey = "time_zone";
+
+    if(object.has_key(time_zoneKey))
+    {
+        bourne::json value = object[time_zoneKey];
+
+
+
+        jsonToValue(&time_zone, value, "std::string");
+
+
+    }
+
 
 }
 
@@ -118,6 +132,13 @@ AdAccountCreate::toJson()
 
 
 
+
+
+
+    object["time_zone"] = getTimeZone();
+
+
+
     return object;
 
 }
@@ -129,7 +150,7 @@ AdAccountCreate::getCountry()
 }
 
 void
-AdAccountCreate::setCountry(Country  country)
+AdAccountCreate::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -141,7 +162,7 @@ AdAccountCreate::getCurrency()
 }
 
 void
-AdAccountCreate::setCurrency(Currency  currency)
+AdAccountCreate::setCurrency(Currency currency)
 {
 	this->currency = currency;
 }
@@ -153,7 +174,7 @@ AdAccountCreate::getName()
 }
 
 void
-AdAccountCreate::setName(std::string  name)
+AdAccountCreate::setName(std::string name)
 {
 	this->name = name;
 }
@@ -165,9 +186,21 @@ AdAccountCreate::getOwnerUserId()
 }
 
 void
-AdAccountCreate::setOwnerUserId(std::string  owner_user_id)
+AdAccountCreate::setOwnerUserId(std::string owner_user_id)
 {
 	this->owner_user_id = owner_user_id;
+}
+
+std::string
+AdAccountCreate::getTimeZone()
+{
+	return time_zone;
+}
+
+void
+AdAccountCreate::setTimeZone(std::string time_zone)
+{
+	this->time_zone = time_zone;
 }
 
 

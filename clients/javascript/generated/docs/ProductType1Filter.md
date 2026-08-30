@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pRODUCTTYPE1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
+**pRODUCTTYPE1** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
 
 

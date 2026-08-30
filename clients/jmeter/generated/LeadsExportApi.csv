@@ -1,2 +1,2 @@
-testCase,httpStatusCode,adAccountId,leadsExportCreateRequest,adAccountId,leadsExportId
+testCase,httpStatusCode,adAccountId,leadsExportsCreate,adAccountId,leadsExportId
 Success,200,0,0,0,0

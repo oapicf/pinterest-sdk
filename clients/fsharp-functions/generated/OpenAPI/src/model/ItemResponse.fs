@@ -4,9 +4,12 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.CatalogsCreativeAssetsAttributes
-open OpenAPI.Model.CatalogsType
-open OpenAPI.Model.ItemResponseOneOf
-open OpenAPI.Model.ItemResponseOneOf1
+open OpenAPI.Model.CatalogsCreativeAssetsItemErrorResponse
+open OpenAPI.Model.CatalogsCreativeAssetsItemResponse
+open OpenAPI.Model.CatalogsHotelItemErrorResponse
+open OpenAPI.Model.CatalogsHotelItemResponse
+open OpenAPI.Model.CatalogsRetailItemErrorResponse
+open OpenAPI.Model.CatalogsRetailItemResponse
 open OpenAPI.Model.ItemValidationEvent
 open OpenAPI.Model.Pin
 
@@ -16,12 +19,14 @@ module ItemResponse =
 
   [<CLIMutable>]
   type ItemResponse = {
-    [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : CatalogsType;
     [<JsonProperty(PropertyName = "attributes")>]
     Attributes : CatalogsCreativeAssetsAttributes;
+    [<JsonProperty(PropertyName = "catalog_type")>]
+    CatalogType : string;
     [<JsonProperty(PropertyName = "item_id")>]
     ItemId : string;
+    [<JsonProperty(PropertyName = "item_response_kind")>]
+    ItemResponseKind : string;
     [<JsonProperty(PropertyName = "pins")>]
     Pins : Pin[];
     [<JsonProperty(PropertyName = "hotel_id")>]

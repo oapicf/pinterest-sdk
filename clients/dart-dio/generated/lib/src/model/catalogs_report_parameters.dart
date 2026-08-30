@@ -3,9 +3,9 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/catalogs_retail_report_parameters.dart';
 import 'package:openapi/src/model/catalogs_hotel_report_parameters.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:openapi/src/model/catalogs_hotel_report_parameters_report.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -124,5 +124,18 @@ class _$CatalogsReportParametersSerializer implements PrimitiveSerializer<Catalo
     result.oneOf = OneOfDynamic(typeIndex: oneOfTypes.indexOf(oneOfType), types: oneOfTypes, value: oneOfResult);
     return result.build();
   }
+}
+
+class CatalogsReportParametersCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'HOTEL')
+  static const CatalogsReportParametersCatalogTypeEnum HOTEL = _$catalogsReportParametersCatalogTypeEnum_HOTEL;
+
+  static Serializer<CatalogsReportParametersCatalogTypeEnum> get serializer => _$catalogsReportParametersCatalogTypeEnumSerializer;
+
+  const CatalogsReportParametersCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsReportParametersCatalogTypeEnum> get values => _$catalogsReportParametersCatalogTypeEnumValues;
+  static CatalogsReportParametersCatalogTypeEnum valueOf(String name) => _$catalogsReportParametersCatalogTypeEnumValueOf(name);
 }
 

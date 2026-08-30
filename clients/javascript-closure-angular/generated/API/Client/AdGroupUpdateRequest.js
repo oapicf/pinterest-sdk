@@ -6,6 +6,27 @@ goog.provide('API.Client.AdGroupUpdateRequest');
 API.Client.AdGroupUpdateRequest = function() {}
 
 /**
+ * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+ * @type {!number}
+ * @export
+ */
+API.Client.AdGroupUpdateRequest.prototype.bidMultiplier;
+
+/**
+ * Ad group ID.
+ * @type {!string}
+ * @export
+ */
+API.Client.AdGroupUpdateRequest.prototype.id;
+
+/**
+ * <div>Targeting spec operations define modifications to apply to the targeting spec.</div> <br /> <div><strong>NOTE:</strong> The <code>targeting_spec</code> and <code>targeting_spec_operations</code> cannot be sent at the same time.</div> <br /> <div>The supported operations are:</div> <ul> <li><code>SET</code>: sets the field with the given values. If value is set to <code>null</code>, the field will be removed.</li> <li><code>ADD</code>: adds the given values to the field.</li> <li><code>REMOVE</code>: removes the given values from the field.</li> </ul> <div>Note the following:</div> <ul> <li>Same items are not added and removed at the same time.</li> <li>For a given field, only <code>ADD</code>/<code>REMOVE</code> or <code>SET</code> operations are allowed, not a mix of them.</li> <li>Only one SET operation is allowed for a given field.</li> <li>The <code>AGE_BUCKET</code>, <code>MAXIMUM_AGE</code>, <code>MINIMUM_AGE</code> and <code>SHOPPING_RETARGETING</code> fields only support the <code>SET</code> operation.</li> </ul>
+ * @type {!Array<!API.Client.TargetingSpecOperations>}
+ * @export
+ */
+API.Client.AdGroupUpdateRequest.prototype.targetingSpecOperations;
+
+/**
  * Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
  * @type {!boolean}
  * @export
@@ -20,8 +41,7 @@ API.Client.AdGroupUpdateRequest.prototype.autoTargetingEnabled;
 API.Client.AdGroupUpdateRequest.prototype.bidInMicroCurrency;
 
 /**
- * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
- * @type {!string}
+ * @type {!API.Client.BidStrategyType}
  * @export
  */
 API.Client.AdGroupUpdateRequest.prototype.bidStrategyType;
@@ -82,7 +102,7 @@ API.Client.AdGroupUpdateRequest.prototype.name;
 
 /**
  * Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
- * @type {!API.Client.OptimizationGoalMetadata}
+ * @type {!API.Client.Object}
  * @export
  */
 API.Client.AdGroupUpdateRequest.prototype.optimizationGoalMetadata;
@@ -115,6 +135,13 @@ API.Client.AdGroupUpdateRequest.prototype.promotionApplicationLevel;
 API.Client.AdGroupUpdateRequest.prototype.promotionId;
 
 /**
+ * Promotion IDs list. To clear this field, set to an empty array [].
+ * @type {!Array<!string>}
+ * @export
+ */
+API.Client.AdGroupUpdateRequest.prototype.promotionIds;
+
+/**
  * Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
  * @type {!number}
  * @export
@@ -142,33 +169,12 @@ API.Client.AdGroupUpdateRequest.prototype.targetingSpec;
 API.Client.AdGroupUpdateRequest.prototype.targetingTemplateIds;
 
 /**
- * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
- * @type {!API.Client.TrackingUrls}
+ * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+ * @type {!API.Client.Object}
  * @export
  */
 API.Client.AdGroupUpdateRequest.prototype.trackingUrls;
 
-/**
- * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
- * @type {!number}
- * @export
- */
-API.Client.AdGroupUpdateRequest.prototype.bidMultiplier;
-
-/**
- * Ad group ID.
- * @type {!string}
- * @export
- */
-API.Client.AdGroupUpdateRequest.prototype.id;
-
-/** @enum {string} */
-API.Client.AdGroupUpdateRequest.BidStrategyTypeEnum = { 
-  AUTOMATIC_BID: 'AUTOMATIC_BID',
-  MAX_BID: 'MAX_BID',
-  TARGET_AVG: 'TARGET_AVG',
-  : '',
-}
 /** @enum {string} */
 API.Client.AdGroupUpdateRequest.PromotionApplicationLevelEnum = { 
   NONE: 'NONE',

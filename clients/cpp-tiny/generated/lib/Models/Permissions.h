@@ -2,7 +2,7 @@
 /*
  * Permissions.h
  *
- * 
+ * Permission levels available on a business asset.
  */
 
 #ifndef TINY_CPP_CLIENT_Permissions_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief 
+/*! \brief Permission levels available on a business asset.
  *
  *  \ingroup Models
  *

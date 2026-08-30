@@ -176,7 +176,7 @@ class SSIOOrderLine(Model):
     def accepted_terms_time(self) -> str:
         """Gets the accepted_terms_time of this SSIOOrderLine.
 
-        The UTC timestamp (to the nearest sec) of when terms were accepted  # noqa: E501
+        The UTC timestamp (to the nearest second) when terms were accepted.  # noqa: E501
 
         :return: The accepted_terms_time of this SSIOOrderLine.
         :rtype: str
@@ -187,13 +187,13 @@ class SSIOOrderLine(Model):
     def accepted_terms_time(self, accepted_terms_time: str):
         """Sets the accepted_terms_time of this SSIOOrderLine.
 
-        The UTC timestamp (to the nearest sec) of when terms were accepted  # noqa: E501
+        The UTC timestamp (to the nearest second) when terms were accepted.  # noqa: E501
 
         :param accepted_terms_time: The accepted_terms_time of this SSIOOrderLine.
         :type accepted_terms_time: str
         """
-        if accepted_terms_time is not None and not re.search(r'^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}).(\d{3})Z$', accepted_terms_time):  # noqa: E501
-            raise ValueError("Invalid value for `accepted_terms_time`, must be a follow pattern or equal to `/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}).(\d{3})Z$/`")  # noqa: E501
+        if accepted_terms_time is not None and not re.search(r'^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})\.(\d{3})Z$', accepted_terms_time):  # noqa: E501
+            raise ValueError("Invalid value for `accepted_terms_time`, must be a follow pattern or equal to `/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})\.(\d{3})Z$/`")  # noqa: E501
 
         self._accepted_terms_time = accepted_terms_time
 
@@ -201,7 +201,7 @@ class SSIOOrderLine(Model):
     def ads_manager_order_line_id(self) -> str:
         """Gets the ads_manager_order_line_id of this SSIOOrderLine.
 
-        Ads manager OrderLineId  # noqa: E501
+        Ads manager order line id  # noqa: E501
 
         :return: The ads_manager_order_line_id of this SSIOOrderLine.
         :rtype: str
@@ -212,7 +212,7 @@ class SSIOOrderLine(Model):
     def ads_manager_order_line_id(self, ads_manager_order_line_id: str):
         """Sets the ads_manager_order_line_id of this SSIOOrderLine.
 
-        Ads manager OrderLineId  # noqa: E501
+        Ads manager order line id  # noqa: E501
 
         :param ads_manager_order_line_id: The ads_manager_order_line_id of this SSIOOrderLine.
         :type ads_manager_order_line_id: str
@@ -247,7 +247,7 @@ class SSIOOrderLine(Model):
     def bill_to_company_name(self) -> str:
         """Gets the bill_to_company_name of this SSIOOrderLine.
 
-        Bill To Company name  # noqa: E501
+        Bill-to company name  # noqa: E501
 
         :return: The bill_to_company_name of this SSIOOrderLine.
         :rtype: str
@@ -258,7 +258,7 @@ class SSIOOrderLine(Model):
     def bill_to_company_name(self, bill_to_company_name: str):
         """Sets the bill_to_company_name of this SSIOOrderLine.
 
-        Bill To Company name  # noqa: E501
+        Bill-to company name  # noqa: E501
 
         :param bill_to_company_name: The bill_to_company_name of this SSIOOrderLine.
         :type bill_to_company_name: str
@@ -339,7 +339,7 @@ class SSIOOrderLine(Model):
     def budget_amount(self) -> float:
         """Gets the budget_amount of this SSIOOrderLine.
 
-        If Budget order line, the budget amount.  # noqa: E501
+        If budget order line, the budget amount.  # noqa: E501
 
         :return: The budget_amount of this SSIOOrderLine.
         :rtype: float
@@ -350,7 +350,7 @@ class SSIOOrderLine(Model):
     def budget_amount(self, budget_amount: float):
         """Sets the budget_amount of this SSIOOrderLine.
 
-        If Budget order line, the budget amount.  # noqa: E501
+        If budget order line, the budget amount.  # noqa: E501
 
         :param budget_amount: The budget_amount of this SSIOOrderLine.
         :type budget_amount: float
@@ -406,7 +406,7 @@ class SSIOOrderLine(Model):
     def estimated_monthly_spend(self) -> float:
         """Gets the estimated_monthly_spend of this SSIOOrderLine.
 
-        If Ongoing (perpetual) order line, the estimated monthly spend  # noqa: E501
+        If ongoing (perpetual) order line, the estimated monthly spend.  # noqa: E501
 
         :return: The estimated_monthly_spend of this SSIOOrderLine.
         :rtype: float
@@ -417,7 +417,7 @@ class SSIOOrderLine(Model):
     def estimated_monthly_spend(self, estimated_monthly_spend: float):
         """Sets the estimated_monthly_spend of this SSIOOrderLine.
 
-        If Ongoing (perpetual) order line, the estimated monthly spend  # noqa: E501
+        If ongoing (perpetual) order line, the estimated monthly spend.  # noqa: E501
 
         :param estimated_monthly_spend: The estimated_monthly_spend of this SSIOOrderLine.
         :type estimated_monthly_spend: float
@@ -445,8 +445,8 @@ class SSIOOrderLine(Model):
         :param last_modified_date_time: The last_modified_date_time of this SSIOOrderLine.
         :type last_modified_date_time: str
         """
-        if last_modified_date_time is not None and not re.search(r'^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}).(\d{3})Z$', last_modified_date_time):  # noqa: E501
-            raise ValueError("Invalid value for `last_modified_date_time`, must be a follow pattern or equal to `/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}).(\d{3})Z$/`")  # noqa: E501
+        if last_modified_date_time is not None and not re.search(r'^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})\.(\d{3})Z$', last_modified_date_time):  # noqa: E501
+            raise ValueError("Invalid value for `last_modified_date_time`, must be a follow pattern or equal to `/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})\.(\d{3})Z$/`")  # noqa: E501
 
         self._last_modified_date_time = last_modified_date_time
 
@@ -477,7 +477,7 @@ class SSIOOrderLine(Model):
     def media_contact_firstname(self) -> str:
         """Gets the media_contact_firstname of this SSIOOrderLine.
 
-        Billing contact first name  # noqa: E501
+        Billing media contact first name  # noqa: E501
 
         :return: The media_contact_firstname of this SSIOOrderLine.
         :rtype: str
@@ -488,7 +488,7 @@ class SSIOOrderLine(Model):
     def media_contact_firstname(self, media_contact_firstname: str):
         """Sets the media_contact_firstname of this SSIOOrderLine.
 
-        Billing contact first name  # noqa: E501
+        Billing media contact first name  # noqa: E501
 
         :param media_contact_firstname: The media_contact_firstname of this SSIOOrderLine.
         :type media_contact_firstname: str
@@ -500,7 +500,7 @@ class SSIOOrderLine(Model):
     def media_contact_lastname(self) -> str:
         """Gets the media_contact_lastname of this SSIOOrderLine.
 
-        Billing contact first name  # noqa: E501
+        Billing media contact last name  # noqa: E501
 
         :return: The media_contact_lastname of this SSIOOrderLine.
         :rtype: str
@@ -511,7 +511,7 @@ class SSIOOrderLine(Model):
     def media_contact_lastname(self, media_contact_lastname: str):
         """Sets the media_contact_lastname of this SSIOOrderLine.
 
-        Billing contact first name  # noqa: E501
+        Billing media contact last name  # noqa: E501
 
         :param media_contact_lastname: The media_contact_lastname of this SSIOOrderLine.
         :type media_contact_lastname: str
@@ -592,7 +592,7 @@ class SSIOOrderLine(Model):
     def po_number(self) -> str:
         """Gets the po_number of this SSIOOrderLine.
 
-        The po number  # noqa: E501
+        The PO number  # noqa: E501
 
         :return: The po_number of this SSIOOrderLine.
         :rtype: str
@@ -603,7 +603,7 @@ class SSIOOrderLine(Model):
     def po_number(self, po_number: str):
         """Sets the po_number of this SSIOOrderLine.
 
-        The po number  # noqa: E501
+        The PO number  # noqa: E501
 
         :param po_number: The po_number of this SSIOOrderLine.
         :type po_number: str
@@ -615,7 +615,7 @@ class SSIOOrderLine(Model):
     def salesforce_order_line_id(self) -> str:
         """Gets the salesforce_order_line_id of this SSIOOrderLine.
 
-        OrderLineId in SFDC  # noqa: E501
+        Order line id in SFDC  # noqa: E501
 
         :return: The salesforce_order_line_id of this SSIOOrderLine.
         :rtype: str
@@ -626,7 +626,7 @@ class SSIOOrderLine(Model):
     def salesforce_order_line_id(self, salesforce_order_line_id: str):
         """Sets the salesforce_order_line_id of this SSIOOrderLine.
 
-        OrderLineId in SFDC  # noqa: E501
+        Order line id in SFDC  # noqa: E501
 
         :param salesforce_order_line_id: The salesforce_order_line_id of this SSIOOrderLine.
         :type salesforce_order_line_id: str

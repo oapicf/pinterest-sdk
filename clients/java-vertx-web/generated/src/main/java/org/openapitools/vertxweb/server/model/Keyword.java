@@ -5,59 +5,32 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.MatchTypeResponse;
+import org.openapitools.vertxweb.server.model.MatchType;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Keyword   {
   
-  private Integer bid;
-  private MatchTypeResponse matchType;
-  private String value;
   private Boolean archived;
+  private Integer bid;
   private String id;
+  private MatchType matchType;
   private String parentId;
   private String parentType;
   private String type;
+  private String value;
 
   public Keyword () {
 
   }
 
-  public Keyword (Integer bid, MatchTypeResponse matchType, String value, Boolean archived, String id, String parentId, String parentType, String type) {
-    this.bid = bid;
-    this.matchType = matchType;
-    this.value = value;
+  public Keyword (Boolean archived, Integer bid, String id, MatchType matchType, String parentId, String parentType, String type, String value) {
     this.archived = archived;
+    this.bid = bid;
     this.id = id;
+    this.matchType = matchType;
     this.parentId = parentId;
     this.parentType = parentType;
     this.type = type;
-  }
-
-    
-  @JsonProperty("bid")
-  public Integer getBid() {
-    return bid;
-  }
-  public void setBid(Integer bid) {
-    this.bid = bid;
-  }
-
-    
-  @JsonProperty("match_type")
-  public MatchTypeResponse getMatchType() {
-    return matchType;
-  }
-  public void setMatchType(MatchTypeResponse matchType) {
-    this.matchType = matchType;
-  }
-
-    
-  @JsonProperty("value")
-  public String getValue() {
-    return value;
-  }
-  public void setValue(String value) {
     this.value = value;
   }
 
@@ -71,12 +44,30 @@ public class Keyword   {
   }
 
     
+  @JsonProperty("bid")
+  public Integer getBid() {
+    return bid;
+  }
+  public void setBid(Integer bid) {
+    this.bid = bid;
+  }
+
+    
   @JsonProperty("id")
   public String getId() {
     return id;
   }
   public void setId(String id) {
     this.id = id;
+  }
+
+    
+  @JsonProperty("match_type")
+  public MatchType getMatchType() {
+    return matchType;
+  }
+  public void setMatchType(MatchType matchType) {
+    this.matchType = matchType;
   }
 
     
@@ -106,6 +97,15 @@ public class Keyword   {
     this.type = type;
   }
 
+    
+  @JsonProperty("value")
+  public String getValue() {
+    return value;
+  }
+  public void setValue(String value) {
+    this.value = value;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -116,19 +116,19 @@ public class Keyword   {
       return false;
     }
     Keyword keyword = (Keyword) o;
-    return Objects.equals(bid, keyword.bid) &&
-        Objects.equals(matchType, keyword.matchType) &&
-        Objects.equals(value, keyword.value) &&
-        Objects.equals(archived, keyword.archived) &&
+    return Objects.equals(archived, keyword.archived) &&
+        Objects.equals(bid, keyword.bid) &&
         Objects.equals(id, keyword.id) &&
+        Objects.equals(matchType, keyword.matchType) &&
         Objects.equals(parentId, keyword.parentId) &&
         Objects.equals(parentType, keyword.parentType) &&
-        Objects.equals(type, keyword.type);
+        Objects.equals(type, keyword.type) &&
+        Objects.equals(value, keyword.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bid, matchType, value, archived, id, parentId, parentType, type);
+    return Objects.hash(archived, bid, id, matchType, parentId, parentType, type, value);
   }
 
   @Override
@@ -136,14 +136,14 @@ public class Keyword   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Keyword {\n");
     
-    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
-    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
+    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    parentType: ").append(toIndentedString(parentType)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -153,9 +153,6 @@ public class Keyword   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

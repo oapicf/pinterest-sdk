@@ -5,9 +5,11 @@ import org.openapitools.model.*;
 
 
 
-import org.openapitools.model.ConversionAccessTokenResponse;
-import org.openapitools.model.Error;
-import org.openapitools.model.OauthAccessTokenResponse;
+import org.openapitools.model.ConversionAccessToken;
+import org.openapitools.model.OauthAccessToken;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.TokenGrantType;
+import org.openapitools.model.TokenTypeHint;
 
 import java.util.List;
 import org.openapitools.api.NotFoundException;
@@ -19,13 +21,13 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public interface OauthApiService {
       Response oauthConversionToken(SecurityContext securityContext)
       throws NotFoundException;
-      Response oauthToken(String grantType,SecurityContext securityContext)
+      Response oauthToken(TokenGrantType grantType,String code,String continuousRefresh,String redirectUri,String refreshToken,String scope,SecurityContext securityContext)
       throws NotFoundException;
-      Response tokenRevoke(String token,String tokenTypeHint,SecurityContext securityContext)
+      Response tokenRevoke(String token,TokenTypeHint tokenTypeHint,SecurityContext securityContext)
       throws NotFoundException;
 
 

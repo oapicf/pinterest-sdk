@@ -13,13 +13,22 @@ part of openapi.api;
 class CampaignBidOptions {
   /// Returns a new [CampaignBidOptions] instance.
   CampaignBidOptions({
+    this.ageBucketMultipliers,
     this.appTypeMultipliers,
     this.audienceMultipliers,
+    this.freqBidMultiplierTimeWindow,
+    this.frequencyMultipliers,
+    this.genderMultipliers,
     this.placementMultipliers,
   });
 
+  /// Age bucket multipliers for bid adjustments.
+  AgeBucketMultipliers? ageBucketMultipliers;
+
+  /// App type multipliers for bid adjustments.
   AppTypeMultipliers? appTypeMultipliers;
 
+  /// Audience multipliers for bid adjustments.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -28,26 +37,49 @@ class CampaignBidOptions {
   ///
   CampaignAudienceMultipliers? audienceMultipliers;
 
+  /// The time window for frequency bid multipliers.
+  FreqBidMultiplierTimeWindow? freqBidMultiplierTimeWindow;
+
+  /// Frequency multipliers for bid adjustments.
+  FrequencyMultipliers? frequencyMultipliers;
+
+  /// Gender multipliers for bid adjustments.
+  GenderMultipliers? genderMultipliers;
+
+  /// Placement multipliers for bid adjustments.
   PlacementMultipliers? placementMultipliers;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CampaignBidOptions &&
+    other.ageBucketMultipliers == ageBucketMultipliers &&
     other.appTypeMultipliers == appTypeMultipliers &&
     other.audienceMultipliers == audienceMultipliers &&
+    other.freqBidMultiplierTimeWindow == freqBidMultiplierTimeWindow &&
+    other.frequencyMultipliers == frequencyMultipliers &&
+    other.genderMultipliers == genderMultipliers &&
     other.placementMultipliers == placementMultipliers;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (ageBucketMultipliers == null ? 0 : ageBucketMultipliers!.hashCode) +
     (appTypeMultipliers == null ? 0 : appTypeMultipliers!.hashCode) +
     (audienceMultipliers == null ? 0 : audienceMultipliers!.hashCode) +
+    (freqBidMultiplierTimeWindow == null ? 0 : freqBidMultiplierTimeWindow!.hashCode) +
+    (frequencyMultipliers == null ? 0 : frequencyMultipliers!.hashCode) +
+    (genderMultipliers == null ? 0 : genderMultipliers!.hashCode) +
     (placementMultipliers == null ? 0 : placementMultipliers!.hashCode);
 
   @override
-  String toString() => 'CampaignBidOptions[appTypeMultipliers=$appTypeMultipliers, audienceMultipliers=$audienceMultipliers, placementMultipliers=$placementMultipliers]';
+  String toString() => 'CampaignBidOptions[ageBucketMultipliers=$ageBucketMultipliers, appTypeMultipliers=$appTypeMultipliers, audienceMultipliers=$audienceMultipliers, freqBidMultiplierTimeWindow=$freqBidMultiplierTimeWindow, frequencyMultipliers=$frequencyMultipliers, genderMultipliers=$genderMultipliers, placementMultipliers=$placementMultipliers]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.ageBucketMultipliers != null) {
+      json[r'age_bucket_multipliers'] = this.ageBucketMultipliers;
+    } else {
+      json[r'age_bucket_multipliers'] = null;
+    }
     if (this.appTypeMultipliers != null) {
       json[r'app_type_multipliers'] = this.appTypeMultipliers;
     } else {
@@ -57,6 +89,21 @@ class CampaignBidOptions {
       json[r'audience_multipliers'] = this.audienceMultipliers;
     } else {
       json[r'audience_multipliers'] = null;
+    }
+    if (this.freqBidMultiplierTimeWindow != null) {
+      json[r'freq_bid_multiplier_time_window'] = this.freqBidMultiplierTimeWindow;
+    } else {
+      json[r'freq_bid_multiplier_time_window'] = null;
+    }
+    if (this.frequencyMultipliers != null) {
+      json[r'frequency_multipliers'] = this.frequencyMultipliers;
+    } else {
+      json[r'frequency_multipliers'] = null;
+    }
+    if (this.genderMultipliers != null) {
+      json[r'gender_multipliers'] = this.genderMultipliers;
+    } else {
+      json[r'gender_multipliers'] = null;
     }
     if (this.placementMultipliers != null) {
       json[r'placement_multipliers'] = this.placementMultipliers;
@@ -77,16 +124,16 @@ class CampaignBidOptions {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CampaignBidOptions[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CampaignBidOptions[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return CampaignBidOptions(
+        ageBucketMultipliers: AgeBucketMultipliers.fromJson(json[r'age_bucket_multipliers']),
         appTypeMultipliers: AppTypeMultipliers.fromJson(json[r'app_type_multipliers']),
         audienceMultipliers: CampaignAudienceMultipliers.fromJson(json[r'audience_multipliers']),
+        freqBidMultiplierTimeWindow: FreqBidMultiplierTimeWindow.fromJson(json[r'freq_bid_multiplier_time_window']),
+        frequencyMultipliers: FrequencyMultipliers.fromJson(json[r'frequency_multipliers']),
+        genderMultipliers: GenderMultipliers.fromJson(json[r'gender_multipliers']),
         placementMultipliers: PlacementMultipliers.fromJson(json[r'placement_multipliers']),
       );
     }

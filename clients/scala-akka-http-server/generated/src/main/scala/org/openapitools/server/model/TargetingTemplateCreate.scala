@@ -2,11 +2,13 @@ package org.openapitools.server.model
 
 
 /**
- * @param autoTargetingEnabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. for example: ''null''
- * @param keywords  for example: ''[{value=cats, match_type=EXACT_NEGATIVE}]''
- * @param name Name of targeting template. for example: ''Gaming''
+ * Resource create operation model.
+ *
+ * @param autoTargetingEnabled Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting). for example: ''null''
+ * @param keywords  for example: ''null''
+ * @param name targeting template name for example: ''null''
  * @param placementGroup  for example: ''null''
- * @param targetingAttributes  for example: ''null''
+ * @param targetingAttributes targeting profile attributes for example: ''null''
  * @param trackingUrls  for example: ''null''
 */
 final case class TargetingTemplateCreate (
@@ -14,7 +16,7 @@ final case class TargetingTemplateCreate (
   keywords: Option[Seq[TargetingTemplateKeyword]] = None,
   name: String,
   placementGroup: Option[PlacementGroupType] = None,
-  targetingAttributes: TargetingSpec,
+  targetingAttributes: TargetingSpecOptimal,
   trackingUrls: Option[TrackingUrls] = None
 )
 

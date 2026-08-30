@@ -1,4 +1,5 @@
 # Org.OpenAPITools.Model.SSIOAccountPMPName
+Pinterest marketing partner name.
 
 ## Properties
 

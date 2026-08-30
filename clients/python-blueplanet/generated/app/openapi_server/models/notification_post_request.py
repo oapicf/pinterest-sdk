@@ -31,7 +31,7 @@ class NotificationPostRequest(Model):
 
         :param dikt: A dict.
         :type: dict
-        :return: The notification_post_request of this NotificationPostRequest.  # noqa: E501
+        :return: The NotificationPostRequest of this NotificationPostRequest.  # noqa: E501
         :rtype: NotificationPostRequest
         """
         return util.deserialize_model(dikt, cls)

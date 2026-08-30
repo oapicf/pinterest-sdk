@@ -11,7 +11,7 @@ import org.openapitools.vertxweb.server.model.MediaType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupMultipleMediaTypesCriteria   {
   
-  private Boolean negated = false;
+  private Boolean negated;
   private List<MediaType> values = new ArrayList<>();
 
   public CatalogsProductGroupMultipleMediaTypesCriteria () {
@@ -76,9 +76,6 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

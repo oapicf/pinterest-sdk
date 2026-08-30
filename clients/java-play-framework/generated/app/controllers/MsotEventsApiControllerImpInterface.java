@@ -1,7 +1,7 @@
 package controllers;
 
-import apimodels.ConversionMSOTEvents;
-import apimodels.Error;
+import apimodels.ConversionMSOTEventsCreate;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -28,16 +28,16 @@ public abstract class MsotEventsApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result msotEventsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionMSOTEvents conversionMSOTEvents) throws Exception {
+    public Result msotEventsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionMSOTEventsCreate conversionMSOTEventsCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        msotEventsCreate(request, adAccountId, conversionMSOTEvents);
+        msotEventsCreate(request, adAccountId, conversionMSOTEventsCreate);
         return ok();
 
     }
 
-    public abstract void msotEventsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionMSOTEvents conversionMSOTEvents) throws Exception;
+    public abstract void msotEventsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionMSOTEventsCreate conversionMSOTEventsCreate) throws Exception;
 
 }

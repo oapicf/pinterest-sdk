@@ -295,6 +295,7 @@ class IntegrationRecord(Model):
     def id(self) -> str:
         """Gets the id of this IntegrationRecord.
 
+        Integration record ID.  # noqa: E501
 
         :return: The id of this IntegrationRecord.
         :rtype: str
@@ -305,10 +306,13 @@ class IntegrationRecord(Model):
     def id(self, id: str):
         """Sets the id of this IntegrationRecord.
 
+        Integration record ID.  # noqa: E501
 
         :param id: The id of this IntegrationRecord.
         :type id: str
         """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
         if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
             raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 

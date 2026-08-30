@@ -5,7 +5,8 @@
 -export_type([openapi_pin_create/0]).
 
 -type openapi_pin_create() ::
-    #{ 'alt_text' => binary(),
+    #{ 'ai_disclosures' => openapi_ai_disclosures:openapi_ai_disclosures(),
+       'alt_text' => binary(),
        'board_id' => binary(),
        'board_section_id' => binary(),
        'description' => binary(),
@@ -17,7 +18,8 @@
        'title' => binary()
      }.
 
-encode(#{ 'alt_text' := AltText,
+encode(#{ 'ai_disclosures' := AiDisclosures,
+          'alt_text' := AltText,
           'board_id' := BoardId,
           'board_section_id' := BoardSectionId,
           'description' := Description,
@@ -28,7 +30,8 @@ encode(#{ 'alt_text' := AltText,
           'sponsor_id' := SponsorId,
           'title' := Title
         }) ->
-    #{ 'alt_text' => AltText,
+    #{ 'ai_disclosures' => AiDisclosures,
+       'alt_text' => AltText,
        'board_id' => BoardId,
        'board_section_id' => BoardSectionId,
        'description' => Description,

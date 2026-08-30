@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "PinAnalyticsMetricsResponse_daily_metrics_inner.h"
+#include "PinAnalyticsDailyMetrics.h"
 #include <list>
 #include <map>
 
@@ -50,31 +50,31 @@ public:
 
 	/*! \brief Get Array with the requested daily metric records
 	 */
-	std::list<PinAnalyticsMetricsResponse_daily_metrics_inner> getDailyMetrics();
+	std::list<PinAnalyticsDailyMetrics> getDailyMetrics();
 
 	/*! \brief Set Array with the requested daily metric records
 	 */
-	void setDailyMetrics(std::list <PinAnalyticsMetricsResponse_daily_metrics_inner> daily_metrics);
+	void setDailyMetrics(std::list<PinAnalyticsDailyMetrics> daily_metrics);
 	/*! \brief Get The lifetime metric name and value.
 	 */
-	Map<std::string, std::string> getLifetimeMetrics();
+	std::map<std::string, int> getLifetimeMetrics();
 
 	/*! \brief Set The lifetime metric name and value.
 	 */
-	void setLifetimeMetrics(Map <std::string, std::string> lifetime_metrics);
+	void setLifetimeMetrics(std::map<std::string, int> lifetime_metrics);
 	/*! \brief Get The metric name and value over the requested period for each requested metric
 	 */
-	Map<std::string, std::string> getSummaryMetrics();
+	std::map<std::string, long> getSummaryMetrics();
 
 	/*! \brief Set The metric name and value over the requested period for each requested metric
 	 */
-	void setSummaryMetrics(Map <std::string, std::string> summary_metrics);
+	void setSummaryMetrics(std::map<std::string, long> summary_metrics);
 
 
     private:
-    std::list<PinAnalyticsMetricsResponse_daily_metrics_inner> daily_metrics;
-    Map<std::string, std::string> lifetime_metrics;
-    Map<std::string, std::string> summary_metrics;
+    std::list<PinAnalyticsDailyMetrics> daily_metrics;
+    std::map<std::string, int> lifetime_metrics;
+    std::map<std::string, long> summary_metrics;
 };
 }
 

@@ -1,7 +1,7 @@
 /*
  * terms_of_service.h
  *
- * 
+ * The ID of the ad account.
  */
 
 #ifndef _terms_of_service_H_
@@ -20,7 +20,7 @@ typedef struct terms_of_service_t terms_of_service_t;
 
 typedef struct terms_of_service_t {
     char *ad_account_id; // string
-    int has_accepted; //boolean
+    int *has_accepted; //boolean
     char *html; // string
     char *id; // string
 
@@ -29,7 +29,7 @@ typedef struct terms_of_service_t {
 
 __attribute__((deprecated)) terms_of_service_t *terms_of_service_create(
     char *ad_account_id,
-    int has_accepted,
+    int *has_accepted,
     char *html,
     char *id
 );

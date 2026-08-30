@@ -78,7 +78,7 @@ ItemUpdateBatchRecord <- R6::R6Class(
       ItemUpdateBatchRecordObject <- list()
       if (!is.null(self$`attributes`)) {
         ItemUpdateBatchRecordObject[["attributes"]] <-
-          self$`attributes`$toSimpleType()
+          self$extractSimpleType(self$`attributes`)
       }
       if (!is.null(self$`item_id`)) {
         ItemUpdateBatchRecordObject[["item_id"]] <-
@@ -86,9 +86,32 @@ ItemUpdateBatchRecord <- R6::R6Class(
       }
       if (!is.null(self$`update_mask`)) {
         ItemUpdateBatchRecordObject[["update_mask"]] <-
-          lapply(self$`update_mask`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`update_mask`)
       }
       return(ItemUpdateBatchRecordObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -295,6 +296,11 @@ func (c *AdAccountsAPIController) AdAccountsCreate(w http.ResponseWriter, r *htt
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&adAccountCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -342,11 +348,6 @@ func (c *AdAccountsAPIController) AdAccountAnalytics(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
-		return
-	}
 	var startDateParam string
 	if query.Has("start_date") {
 		param := string(query.Get("start_date"))
@@ -365,9 +366,18 @@ func (c *AdAccountsAPIController) AdAccountAnalytics(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &RequiredError{Field: "end_date"}, nil)
 		return
 	}
-	var columnsParam []string
+	var columnsParam []ReportingColumnSync
 	if query.Has("columns") {
-		columnsParam = strings.Split(query.Get("columns"), ",")
+		paramSplits := strings.Split(query.Get("columns"), ",")
+		columnsParam = make([]ReportingColumnSync, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewReportingColumnSyncFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "columns", Err: err}, nil)
+				return
+			}
+			columnsParam = append(columnsParam, paramEnum)
+		}
 	}
 	var granularityParam Granularity
 	if query.Has("granularity") {
@@ -378,11 +388,16 @@ func (c *AdAccountsAPIController) AdAccountAnalytics(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &RequiredError{Field: "granularity"}, nil)
 		return
 	}
-	var clickWindowDaysParam int32
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var clickWindowDaysParam float32
 	if query.Has("click_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("click_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "click_window_days", Err: err}, nil)
@@ -391,14 +406,14 @@ func (c *AdAccountsAPIController) AdAccountAnalytics(w http.ResponseWriter, r *h
 
 		clickWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		clickWindowDaysParam = param
 	}
-	var engagementWindowDaysParam int32
+	var engagementWindowDaysParam float32
 	if query.Has("engagement_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("engagement_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "engagement_window_days", Err: err}, nil)
@@ -407,14 +422,14 @@ func (c *AdAccountsAPIController) AdAccountAnalytics(w http.ResponseWriter, r *h
 
 		engagementWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		engagementWindowDaysParam = param
 	}
-	var viewWindowDaysParam int32
+	var viewWindowDaysParam float32
 	if query.Has("view_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("view_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "view_window_days", Err: err}, nil)
@@ -423,7 +438,7 @@ func (c *AdAccountsAPIController) AdAccountAnalytics(w http.ResponseWriter, r *h
 
 		viewWindowDaysParam = param
 	} else {
-		var param int32 = 1
+		var param float32 = 1
 		viewWindowDaysParam = param
 	}
 	var conversionReportTimeParam string
@@ -442,7 +457,7 @@ func (c *AdAccountsAPIController) AdAccountAnalytics(w http.ResponseWriter, r *h
 		reportingTimezoneParam = param
 	} else {
 	}
-	result, err := c.service.AdAccountAnalytics(r.Context(), adAccountIdParam, startDateParam, endDateParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, reportingTimezoneParam)
+	result, err := c.service.AdAccountAnalytics(r.Context(), startDateParam, endDateParam, columnsParam, granularityParam, adAccountIdParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, reportingTimezoneParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -492,22 +507,27 @@ func (c *AdAccountsAPIController) AnalyticsCreateMmmReport(w http.ResponseWriter
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var createMmmReportRequestParam CreateMmmReportRequest
+	var mmmReportCreateParam MmmReportCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&createMmmReportRequestParam); err != nil {
+	if err := d.Decode(&mmmReportCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertCreateMmmReportRequestRequired(createMmmReportRequestParam); err != nil {
+	if err := AssertMmmReportCreateRequired(mmmReportCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertCreateMmmReportRequestConstraints(createMmmReportRequestParam); err != nil {
+	if err := AssertMmmReportCreateConstraints(mmmReportCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.AnalyticsCreateMmmReport(r.Context(), adAccountIdParam, createMmmReportRequestParam)
+	result, err := c.service.AnalyticsCreateMmmReport(r.Context(), adAccountIdParam, mmmReportCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -561,6 +581,11 @@ func (c *AdAccountsAPIController) AnalyticsCreateReport(w http.ResponseWriter, r
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&adsAnalyticsCreateAsyncRequestParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -622,22 +647,27 @@ func (c *AdAccountsAPIController) AnalyticsCreateConversionProductReport(w http.
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var conversionProductReportRequestParam ConversionProductReportRequest
+	var conversionProductReportCreateParam ConversionProductReportCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&conversionProductReportRequestParam); err != nil {
+	if err := d.Decode(&conversionProductReportCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertConversionProductReportRequestRequired(conversionProductReportRequestParam); err != nil {
+	if err := AssertConversionProductReportCreateRequired(conversionProductReportCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertConversionProductReportRequestConstraints(conversionProductReportRequestParam); err != nil {
+	if err := AssertConversionProductReportCreateConstraints(conversionProductReportCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.AnalyticsCreateConversionProductReport(r.Context(), adAccountIdParam, conversionProductReportRequestParam)
+	result, err := c.service.AnalyticsCreateConversionProductReport(r.Context(), adAccountIdParam, conversionProductReportCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -696,12 +726,12 @@ func (c *AdAccountsAPIController) AdAccountTargetingAnalyticsGet(w http.Response
 		c.errorHandler(w, r, &RequiredError{Field: "end_date"}, nil)
 		return
 	}
-	var targetingTypesParam []AdsAnalyticsTargetingType
+	var targetingTypesParam []AdsAnalyticsAccountTargetingType
 	if query.Has("targeting_types") {
 		paramSplits := strings.Split(query.Get("targeting_types"), ",")
-		targetingTypesParam = make([]AdsAnalyticsTargetingType, 0, len(paramSplits))
+		targetingTypesParam = make([]AdsAnalyticsAccountTargetingType, 0, len(paramSplits))
 		for _, param := range paramSplits {
-			paramEnum, err := NewAdsAnalyticsTargetingTypeFromValue(param)
+			paramEnum, err := NewAdsAnalyticsAccountTargetingTypeFromValue(param)
 			if err != nil {
 				c.errorHandler(w, r, &ParsingError{Param: "targeting_types", Err: err}, nil)
 				return
@@ -709,9 +739,18 @@ func (c *AdAccountsAPIController) AdAccountTargetingAnalyticsGet(w http.Response
 			targetingTypesParam = append(targetingTypesParam, paramEnum)
 		}
 	}
-	var columnsParam []string
+	var columnsParam []ReportingColumnSync
 	if query.Has("columns") {
-		columnsParam = strings.Split(query.Get("columns"), ",")
+		paramSplits := strings.Split(query.Get("columns"), ",")
+		columnsParam = make([]ReportingColumnSync, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewReportingColumnSyncFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "columns", Err: err}, nil)
+				return
+			}
+			columnsParam = append(columnsParam, paramEnum)
+		}
 	}
 	var granularityParam Granularity
 	if query.Has("granularity") {
@@ -722,11 +761,11 @@ func (c *AdAccountsAPIController) AdAccountTargetingAnalyticsGet(w http.Response
 		c.errorHandler(w, r, &RequiredError{Field: "granularity"}, nil)
 		return
 	}
-	var clickWindowDaysParam int32
+	var clickWindowDaysParam float32
 	if query.Has("click_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("click_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "click_window_days", Err: err}, nil)
@@ -735,14 +774,14 @@ func (c *AdAccountsAPIController) AdAccountTargetingAnalyticsGet(w http.Response
 
 		clickWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		clickWindowDaysParam = param
 	}
-	var engagementWindowDaysParam int32
+	var engagementWindowDaysParam float32
 	if query.Has("engagement_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("engagement_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "engagement_window_days", Err: err}, nil)
@@ -751,14 +790,14 @@ func (c *AdAccountsAPIController) AdAccountTargetingAnalyticsGet(w http.Response
 
 		engagementWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		engagementWindowDaysParam = param
 	}
-	var viewWindowDaysParam int32
+	var viewWindowDaysParam float32
 	if query.Has("view_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("view_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "view_window_days", Err: err}, nil)
@@ -767,7 +806,7 @@ func (c *AdAccountsAPIController) AdAccountTargetingAnalyticsGet(w http.Response
 
 		viewWindowDaysParam = param
 	} else {
-		var param int32 = 1
+		var param float32 = 1
 		viewWindowDaysParam = param
 	}
 	var conversionReportTimeParam string
@@ -822,6 +861,13 @@ func (c *AdAccountsAPIController) TemplatesList(w http.ResponseWriter, r *http.R
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
 		param, err := parseNumericParameter[int32](
@@ -840,21 +886,14 @@ func (c *AdAccountsAPIController) TemplatesList(w http.ResponseWriter, r *http.R
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var orderParam string
+	var orderParam PinterestLibPaginationOrder
 	if query.Has("order") {
-		param := query.Get("order")
+		param := PinterestLibPaginationOrder(query.Get("order"))
 
 		orderParam = param
 	} else {
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.TemplatesList(r.Context(), adAccountIdParam, pageSizeParam, orderParam, bookmarkParam)
+	result, err := c.service.TemplatesList(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, orderParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

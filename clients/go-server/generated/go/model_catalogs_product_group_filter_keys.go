@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -70,8 +75,6 @@ type CatalogsProductGroupFilterKeys struct {
 
 	GOOGLEPRODUCTCATEGORY0 CatalogsProductGroupMultipleStringListCriteria `json:"GOOGLE_PRODUCT_CATEGORY_0"`
 
-	PRODUCT_GROUP CatalogsProductGroupMultipleStringCriteria `json:"PRODUCT_GROUP"`
-
 	CUSTOMNUMBER0 CatalogsProductGroupUint32Criteria `json:"CUSTOM_NUMBER_0"`
 
 	CUSTOMNUMBER1 CatalogsProductGroupUint32Criteria `json:"CUSTOM_NUMBER_1"`
@@ -83,9 +86,338 @@ type CatalogsProductGroupFilterKeys struct {
 	CUSTOMNUMBER4 CatalogsProductGroupUint32Criteria `json:"CUSTOM_NUMBER_4"`
 
 	TITLE_KEYWORDS CatalogsProductGroupMultipleStringCriteria `json:"TITLE_KEYWORDS"`
+
+	PINTEREST_PRODUCT_CATEGORIES CatalogsProductGroupMultiplePinterestProductCategoryCriteria `json:"PINTEREST_PRODUCT_CATEGORIES"`
+
+	PRODUCT_GROUP CatalogsProductGroupMultipleStringCriteria `json:"PRODUCT_GROUP"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsProductGroupFilterKeys
+func (o *CatalogsProductGroupFilterKeys) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"MIN_PRICE",
+		"MAX_PRICE",
+		"CURRENCY",
+		"ITEM_ID",
+		"AVAILABILITY",
+		"BRAND",
+		"CONDITION",
+		"CUSTOM_LABEL_0",
+		"CUSTOM_LABEL_1",
+		"CUSTOM_LABEL_2",
+		"CUSTOM_LABEL_3",
+		"CUSTOM_LABEL_4",
+		"ITEM_GROUP_ID",
+		"GENDER",
+		"MEDIA_TYPE",
+		"PRODUCT_TYPE_4",
+		"PRODUCT_TYPE_3",
+		"PRODUCT_TYPE_2",
+		"PRODUCT_TYPE_1",
+		"PRODUCT_TYPE_0",
+		"GOOGLE_PRODUCT_CATEGORY_6",
+		"GOOGLE_PRODUCT_CATEGORY_5",
+		"GOOGLE_PRODUCT_CATEGORY_4",
+		"GOOGLE_PRODUCT_CATEGORY_3",
+		"GOOGLE_PRODUCT_CATEGORY_2",
+		"GOOGLE_PRODUCT_CATEGORY_1",
+		"GOOGLE_PRODUCT_CATEGORY_0",
+		"CUSTOM_NUMBER_0",
+		"CUSTOM_NUMBER_1",
+		"CUSTOM_NUMBER_2",
+		"CUSTOM_NUMBER_3",
+		"CUSTOM_NUMBER_4",
+		"TITLE_KEYWORDS",
+		"PINTEREST_PRODUCT_CATEGORIES",
+		"PRODUCT_GROUP",
+	}
+
+	requiredNullableProperties := map[string]bool{
+		"MIN_PRICE": false,
+		"MAX_PRICE": false,
+		"CURRENCY": false,
+		"ITEM_ID": false,
+		"AVAILABILITY": false,
+		"BRAND": false,
+		"CONDITION": false,
+		"CUSTOM_LABEL_0": false,
+		"CUSTOM_LABEL_1": false,
+		"CUSTOM_LABEL_2": false,
+		"CUSTOM_LABEL_3": false,
+		"CUSTOM_LABEL_4": false,
+		"ITEM_GROUP_ID": false,
+		"GENDER": false,
+		"MEDIA_TYPE": false,
+		"PRODUCT_TYPE_4": false,
+		"PRODUCT_TYPE_3": false,
+		"PRODUCT_TYPE_2": false,
+		"PRODUCT_TYPE_1": false,
+		"PRODUCT_TYPE_0": false,
+		"GOOGLE_PRODUCT_CATEGORY_6": false,
+		"GOOGLE_PRODUCT_CATEGORY_5": false,
+		"GOOGLE_PRODUCT_CATEGORY_4": false,
+		"GOOGLE_PRODUCT_CATEGORY_3": false,
+		"GOOGLE_PRODUCT_CATEGORY_2": false,
+		"GOOGLE_PRODUCT_CATEGORY_1": false,
+		"GOOGLE_PRODUCT_CATEGORY_0": false,
+		"CUSTOM_NUMBER_0": false,
+		"CUSTOM_NUMBER_1": false,
+		"CUSTOM_NUMBER_2": false,
+		"CUSTOM_NUMBER_3": false,
+		"CUSTOM_NUMBER_4": false,
+		"TITLE_KEYWORDS": false,
+		"PINTEREST_PRODUCT_CATEGORIES": false,
+		"PRODUCT_GROUP": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"MIN_PRICE": {},
+		"MAX_PRICE": {},
+		"CURRENCY": {},
+		"ITEM_ID": {},
+		"AVAILABILITY": {},
+		"BRAND": {},
+		"CONDITION": {},
+		"CUSTOM_LABEL_0": {},
+		"CUSTOM_LABEL_1": {},
+		"CUSTOM_LABEL_2": {},
+		"CUSTOM_LABEL_3": {},
+		"CUSTOM_LABEL_4": {},
+		"ITEM_GROUP_ID": {},
+		"GENDER": {},
+		"MEDIA_TYPE": {},
+		"PRODUCT_TYPE_4": {},
+		"PRODUCT_TYPE_3": {},
+		"PRODUCT_TYPE_2": {},
+		"PRODUCT_TYPE_1": {},
+		"PRODUCT_TYPE_0": {},
+		"GOOGLE_PRODUCT_CATEGORY_6": {},
+		"GOOGLE_PRODUCT_CATEGORY_5": {},
+		"GOOGLE_PRODUCT_CATEGORY_4": {},
+		"GOOGLE_PRODUCT_CATEGORY_3": {},
+		"GOOGLE_PRODUCT_CATEGORY_2": {},
+		"GOOGLE_PRODUCT_CATEGORY_1": {},
+		"GOOGLE_PRODUCT_CATEGORY_0": {},
+		"CUSTOM_NUMBER_0": {},
+		"CUSTOM_NUMBER_1": {},
+		"CUSTOM_NUMBER_2": {},
+		"CUSTOM_NUMBER_3": {},
+		"CUSTOM_NUMBER_4": {},
+		"TITLE_KEYWORDS": {},
+		"PINTEREST_PRODUCT_CATEGORIES": {},
+		"PRODUCT_GROUP": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsProductGroupFilterKeys
+
+	if value, exists := allProperties["MIN_PRICE"]; exists {
+		if err = json.Unmarshal(value, &decoded.MIN_PRICE); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["MAX_PRICE"]; exists {
+		if err = json.Unmarshal(value, &decoded.MAX_PRICE); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CURRENCY"]; exists {
+		if err = json.Unmarshal(value, &decoded.CURRENCY); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["ITEM_ID"]; exists {
+		if err = json.Unmarshal(value, &decoded.ITEM_ID); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["AVAILABILITY"]; exists {
+		if err = json.Unmarshal(value, &decoded.AVAILABILITY); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["BRAND"]; exists {
+		if err = json.Unmarshal(value, &decoded.BRAND); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CONDITION"]; exists {
+		if err = json.Unmarshal(value, &decoded.CONDITION); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_LABEL_0"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMLABEL0); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_LABEL_1"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMLABEL1); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_LABEL_2"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMLABEL2); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_LABEL_3"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMLABEL3); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_LABEL_4"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMLABEL4); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["ITEM_GROUP_ID"]; exists {
+		if err = json.Unmarshal(value, &decoded.ITEM_GROUP_ID); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["GENDER"]; exists {
+		if err = json.Unmarshal(value, &decoded.GENDER); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["MEDIA_TYPE"]; exists {
+		if err = json.Unmarshal(value, &decoded.MEDIA_TYPE); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["PRODUCT_TYPE_4"]; exists {
+		if err = json.Unmarshal(value, &decoded.PRODUCTTYPE4); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["PRODUCT_TYPE_3"]; exists {
+		if err = json.Unmarshal(value, &decoded.PRODUCTTYPE3); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["PRODUCT_TYPE_2"]; exists {
+		if err = json.Unmarshal(value, &decoded.PRODUCTTYPE2); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["PRODUCT_TYPE_1"]; exists {
+		if err = json.Unmarshal(value, &decoded.PRODUCTTYPE1); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["PRODUCT_TYPE_0"]; exists {
+		if err = json.Unmarshal(value, &decoded.PRODUCTTYPE0); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["GOOGLE_PRODUCT_CATEGORY_6"]; exists {
+		if err = json.Unmarshal(value, &decoded.GOOGLEPRODUCTCATEGORY6); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["GOOGLE_PRODUCT_CATEGORY_5"]; exists {
+		if err = json.Unmarshal(value, &decoded.GOOGLEPRODUCTCATEGORY5); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["GOOGLE_PRODUCT_CATEGORY_4"]; exists {
+		if err = json.Unmarshal(value, &decoded.GOOGLEPRODUCTCATEGORY4); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["GOOGLE_PRODUCT_CATEGORY_3"]; exists {
+		if err = json.Unmarshal(value, &decoded.GOOGLEPRODUCTCATEGORY3); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["GOOGLE_PRODUCT_CATEGORY_2"]; exists {
+		if err = json.Unmarshal(value, &decoded.GOOGLEPRODUCTCATEGORY2); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["GOOGLE_PRODUCT_CATEGORY_1"]; exists {
+		if err = json.Unmarshal(value, &decoded.GOOGLEPRODUCTCATEGORY1); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["GOOGLE_PRODUCT_CATEGORY_0"]; exists {
+		if err = json.Unmarshal(value, &decoded.GOOGLEPRODUCTCATEGORY0); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_NUMBER_0"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMNUMBER0); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_NUMBER_1"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMNUMBER1); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_NUMBER_2"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMNUMBER2); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_NUMBER_3"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMNUMBER3); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_NUMBER_4"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMNUMBER4); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["TITLE_KEYWORDS"]; exists {
+		if err = json.Unmarshal(value, &decoded.TITLE_KEYWORDS); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["PINTEREST_PRODUCT_CATEGORIES"]; exists {
+		if err = json.Unmarshal(value, &decoded.PINTEREST_PRODUCT_CATEGORIES); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["PRODUCT_GROUP"]; exists {
+		if err = json.Unmarshal(value, &decoded.PRODUCT_GROUP); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
 }
 
-// AssertCatalogsProductGroupFilterKeysRequired checks if the required fields are not zero-ed
+// AssertCatalogsProductGroupFilterKeysRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsProductGroupFilterKeysRequired(obj CatalogsProductGroupFilterKeys) error {
 	elements := map[string]interface{}{
 		"MIN_PRICE": obj.MIN_PRICE,
@@ -115,13 +447,14 @@ func AssertCatalogsProductGroupFilterKeysRequired(obj CatalogsProductGroupFilter
 		"GOOGLE_PRODUCT_CATEGORY_2": obj.GOOGLEPRODUCTCATEGORY2,
 		"GOOGLE_PRODUCT_CATEGORY_1": obj.GOOGLEPRODUCTCATEGORY1,
 		"GOOGLE_PRODUCT_CATEGORY_0": obj.GOOGLEPRODUCTCATEGORY0,
-		"PRODUCT_GROUP": obj.PRODUCT_GROUP,
 		"CUSTOM_NUMBER_0": obj.CUSTOMNUMBER0,
 		"CUSTOM_NUMBER_1": obj.CUSTOMNUMBER1,
 		"CUSTOM_NUMBER_2": obj.CUSTOMNUMBER2,
 		"CUSTOM_NUMBER_3": obj.CUSTOMNUMBER3,
 		"CUSTOM_NUMBER_4": obj.CUSTOMNUMBER4,
 		"TITLE_KEYWORDS": obj.TITLE_KEYWORDS,
+		"PINTEREST_PRODUCT_CATEGORIES": obj.PINTEREST_PRODUCT_CATEGORIES,
+		"PRODUCT_GROUP": obj.PRODUCT_GROUP,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {
@@ -129,10 +462,220 @@ func AssertCatalogsProductGroupFilterKeysRequired(obj CatalogsProductGroupFilter
 		}
 	}
 
+	if err := AssertCatalogsProductGroupPricingCriteriaRequired(obj.MIN_PRICE); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupPricingCriteriaRequired(obj.MAX_PRICE); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupCurrencyCriteriaRequired(obj.CURRENCY); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaRequired(obj.ITEM_ID); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaRequired(obj.AVAILABILITY); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaRequired(obj.BRAND); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaRequired(obj.CONDITION); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaRequired(obj.CUSTOMLABEL0); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaRequired(obj.CUSTOMLABEL1); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaRequired(obj.CUSTOMLABEL2); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaRequired(obj.CUSTOMLABEL3); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaRequired(obj.CUSTOMLABEL4); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaRequired(obj.ITEM_GROUP_ID); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleGenderCriteriaRequired(obj.GENDER); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleMediaTypesCriteriaRequired(obj.MEDIA_TYPE); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaRequired(obj.PRODUCTTYPE4); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaRequired(obj.PRODUCTTYPE3); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaRequired(obj.PRODUCTTYPE2); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaRequired(obj.PRODUCTTYPE1); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaRequired(obj.PRODUCTTYPE0); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaRequired(obj.GOOGLEPRODUCTCATEGORY6); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaRequired(obj.GOOGLEPRODUCTCATEGORY5); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaRequired(obj.GOOGLEPRODUCTCATEGORY4); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaRequired(obj.GOOGLEPRODUCTCATEGORY3); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaRequired(obj.GOOGLEPRODUCTCATEGORY2); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaRequired(obj.GOOGLEPRODUCTCATEGORY1); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaRequired(obj.GOOGLEPRODUCTCATEGORY0); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupUint32CriteriaRequired(obj.CUSTOMNUMBER0); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupUint32CriteriaRequired(obj.CUSTOMNUMBER1); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupUint32CriteriaRequired(obj.CUSTOMNUMBER2); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupUint32CriteriaRequired(obj.CUSTOMNUMBER3); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupUint32CriteriaRequired(obj.CUSTOMNUMBER4); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaRequired(obj.TITLE_KEYWORDS); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultiplePinterestProductCategoryCriteriaRequired(obj.PINTEREST_PRODUCT_CATEGORIES); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaRequired(obj.PRODUCT_GROUP); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertCatalogsProductGroupFilterKeysConstraints checks if the values respects the defined constraints
 func AssertCatalogsProductGroupFilterKeysConstraints(obj CatalogsProductGroupFilterKeys) error {
+	if err := AssertCatalogsProductGroupPricingCriteriaConstraints(obj.MIN_PRICE); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupPricingCriteriaConstraints(obj.MAX_PRICE); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupCurrencyCriteriaConstraints(obj.CURRENCY); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaConstraints(obj.ITEM_ID); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaConstraints(obj.AVAILABILITY); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaConstraints(obj.BRAND); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaConstraints(obj.CONDITION); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaConstraints(obj.CUSTOMLABEL0); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaConstraints(obj.CUSTOMLABEL1); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaConstraints(obj.CUSTOMLABEL2); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaConstraints(obj.CUSTOMLABEL3); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaConstraints(obj.CUSTOMLABEL4); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaConstraints(obj.ITEM_GROUP_ID); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleGenderCriteriaConstraints(obj.GENDER); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleMediaTypesCriteriaConstraints(obj.MEDIA_TYPE); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaConstraints(obj.PRODUCTTYPE4); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaConstraints(obj.PRODUCTTYPE3); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaConstraints(obj.PRODUCTTYPE2); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaConstraints(obj.PRODUCTTYPE1); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaConstraints(obj.PRODUCTTYPE0); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaConstraints(obj.GOOGLEPRODUCTCATEGORY6); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaConstraints(obj.GOOGLEPRODUCTCATEGORY5); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaConstraints(obj.GOOGLEPRODUCTCATEGORY4); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaConstraints(obj.GOOGLEPRODUCTCATEGORY3); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaConstraints(obj.GOOGLEPRODUCTCATEGORY2); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaConstraints(obj.GOOGLEPRODUCTCATEGORY1); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaConstraints(obj.GOOGLEPRODUCTCATEGORY0); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupUint32CriteriaConstraints(obj.CUSTOMNUMBER0); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupUint32CriteriaConstraints(obj.CUSTOMNUMBER1); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupUint32CriteriaConstraints(obj.CUSTOMNUMBER2); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupUint32CriteriaConstraints(obj.CUSTOMNUMBER3); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupUint32CriteriaConstraints(obj.CUSTOMNUMBER4); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaConstraints(obj.TITLE_KEYWORDS); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultiplePinterestProductCategoryCriteriaConstraints(obj.PINTEREST_PRODUCT_CATEGORIES); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaConstraints(obj.PRODUCT_GROUP); err != nil {
+		return err
+	}
 	return nil
 }

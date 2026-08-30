@@ -6,6 +6,7 @@
   "symbols": [
     "TSV",
     "CSV",
-    "XML"
+    "XML",
+    "INTEGRATION"
   ]
 }

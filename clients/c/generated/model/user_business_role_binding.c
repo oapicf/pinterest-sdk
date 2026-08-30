@@ -10,15 +10,17 @@ static user_business_role_binding_t *user_business_role_binding_create_internal(
     list_t *business_roles,
     business_access_user_summary_t *created_by_business,
     business_access_user_summary_t *created_by_user,
-    int created_time,
+    int *created_time,
     char *id,
-    int is_shared_partner,
+    int *is_shared_partner,
     business_access_user_summary_t *user
     ) {
     user_business_role_binding_t *user_business_role_binding_local_var = malloc(sizeof(user_business_role_binding_t));
     if (!user_business_role_binding_local_var) {
         return NULL;
     }
+    memset(user_business_role_binding_local_var, 0, sizeof(user_business_role_binding_t));
+    user_business_role_binding_local_var->_library_owned = 1;
     user_business_role_binding_local_var->assets_summary = assets_summary;
     user_business_role_binding_local_var->business_roles = business_roles;
     user_business_role_binding_local_var->created_by_business = created_by_business;
@@ -27,8 +29,6 @@ static user_business_role_binding_t *user_business_role_binding_create_internal(
     user_business_role_binding_local_var->id = id;
     user_business_role_binding_local_var->is_shared_partner = is_shared_partner;
     user_business_role_binding_local_var->user = user;
-
-    user_business_role_binding_local_var->_library_owned = 1;
     return user_business_role_binding_local_var;
 }
 
@@ -37,21 +37,36 @@ __attribute__((deprecated)) user_business_role_binding_t *user_business_role_bin
     list_t *business_roles,
     business_access_user_summary_t *created_by_business,
     business_access_user_summary_t *created_by_user,
-    int created_time,
+    int *created_time,
     char *id,
-    int is_shared_partner,
+    int *is_shared_partner,
     business_access_user_summary_t *user
     ) {
-    return user_business_role_binding_create_internal (
+    int *created_time_copy = NULL;
+    if (created_time) {
+        created_time_copy = malloc(sizeof(int));
+        if (created_time_copy) *created_time_copy = *created_time;
+    }
+    int *is_shared_partner_copy = NULL;
+    if (is_shared_partner) {
+        is_shared_partner_copy = malloc(sizeof(int));
+        if (is_shared_partner_copy) *is_shared_partner_copy = *is_shared_partner;
+    }
+    user_business_role_binding_t *result = user_business_role_binding_create_internal (
         assets_summary,
         business_roles,
         created_by_business,
         created_by_user,
-        created_time,
+        created_time_copy,
         id,
-        is_shared_partner,
+        is_shared_partner_copy,
         user
         );
+    if (!result) {
+        free(created_time_copy);
+        free(is_shared_partner_copy);
+    }
+    return result;
 }
 
 void user_business_role_binding_free(user_business_role_binding_t *user_business_role_binding) {
@@ -82,9 +97,17 @@ void user_business_role_binding_free(user_business_role_binding_t *user_business
         business_access_user_summary_free(user_business_role_binding->created_by_user);
         user_business_role_binding->created_by_user = NULL;
     }
+    if (user_business_role_binding->created_time) {
+        free(user_business_role_binding->created_time);
+        user_business_role_binding->created_time = NULL;
+    }
     if (user_business_role_binding->id) {
         free(user_business_role_binding->id);
         user_business_role_binding->id = NULL;
+    }
+    if (user_business_role_binding->is_shared_partner) {
+        free(user_business_role_binding->is_shared_partner);
+        user_business_role_binding->is_shared_partner = NULL;
     }
     if (user_business_role_binding->user) {
         business_access_user_summary_free(user_business_role_binding->user);
@@ -154,7 +177,7 @@ cJSON *user_business_role_binding_convertToJSON(user_business_role_binding_t *us
 
     // user_business_role_binding->created_time
     if(user_business_role_binding->created_time) {
-    if(cJSON_AddNumberToObject(item, "created_time", user_business_role_binding->created_time) == NULL) {
+    if(cJSON_AddNumberToObject(item, "created_time", *user_business_role_binding->created_time) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -170,7 +193,7 @@ cJSON *user_business_role_binding_convertToJSON(user_business_role_binding_t *us
 
     // user_business_role_binding->is_shared_partner
     if(user_business_role_binding->is_shared_partner) {
-    if(cJSON_AddBoolToObject(item, "is_shared_partner", user_business_role_binding->is_shared_partner) == NULL) {
+    if(cJSON_AddBoolToObject(item, "is_shared_partner", *user_business_role_binding->is_shared_partner) == NULL) {
     goto fail; //Bool
     }
     }
@@ -211,6 +234,14 @@ user_business_role_binding_t *user_business_role_binding_parseFromJSON(cJSON *us
 
     // define the local variable for user_business_role_binding->created_by_user
     business_access_user_summary_t *created_by_user_local_nonprim = NULL;
+
+    // define the local variable for user_business_role_binding->created_time
+    int *created_time_local_var = NULL;
+
+    char *id_local_str = NULL;
+
+    // define the local variable for user_business_role_binding->is_shared_partner
+    int *is_shared_partner_local_var = NULL;
 
     // define the local variable for user_business_role_binding->user
     business_access_user_summary_t *user_local_nonprim = NULL;
@@ -274,6 +305,12 @@ user_business_role_binding_t *user_business_role_binding_parseFromJSON(cJSON *us
     {
     goto end; //Numeric
     }
+    created_time_local_var = malloc(sizeof(int));
+    if(!created_time_local_var)
+    {
+        goto end;
+    }
+    *created_time_local_var = created_time->valuedouble;
     }
 
     // user_business_role_binding->id
@@ -298,6 +335,12 @@ user_business_role_binding_t *user_business_role_binding_parseFromJSON(cJSON *us
     {
     goto end; //Bool
     }
+    is_shared_partner_local_var = malloc(sizeof(int));
+    if(!is_shared_partner_local_var)
+    {
+        goto end;
+    }
+    *is_shared_partner_local_var = is_shared_partner->valueint;
     }
 
     // user_business_role_binding->user
@@ -310,16 +353,22 @@ user_business_role_binding_t *user_business_role_binding_parseFromJSON(cJSON *us
     }
 
 
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+
     user_business_role_binding_local_var = user_business_role_binding_create_internal (
         assets_summary ? assets_summary_local_nonprim : NULL,
         business_roles ? business_rolesList : NULL,
         created_by_business ? created_by_business_local_nonprim : NULL,
         created_by_user ? created_by_user_local_nonprim : NULL,
-        created_time ? created_time->valuedouble : 0,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        is_shared_partner ? is_shared_partner->valueint : 0,
+        created_time_local_var,
+        id_local_str,
+        is_shared_partner_local_var,
         user ? user_local_nonprim : NULL
         );
+
+    if (!user_business_role_binding_local_var) {
+        goto end;
+    }
 
     return user_business_role_binding_local_var;
 end:
@@ -343,6 +392,18 @@ end:
     if (created_by_user_local_nonprim) {
         business_access_user_summary_free(created_by_user_local_nonprim);
         created_by_user_local_nonprim = NULL;
+    }
+    if (created_time_local_var) {
+        free(created_time_local_var);
+        created_time_local_var = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (is_shared_partner_local_var) {
+        free(is_shared_partner_local_var);
+        is_shared_partner_local_var = NULL;
     }
     if (user_local_nonprim) {
         business_access_user_summary_free(user_local_nonprim);

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -27,8 +27,9 @@ type IntegrationMetadata struct {
 	ConnectedTagId *string `json:"connected_tag_id,omitempty"`
 	ConnectedUserId *string `json:"connected_user_id,omitempty"`
 	CreatedTimestamp *float32 `json:"created_timestamp,omitempty"`
+	// External business ID for the integration.
 	ExternalBusinessId *string `json:"external_business_id,omitempty"`
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 	PartnerAccessTokenExpiry *float32 `json:"partner_access_token_expiry,omitempty"`
 	PartnerMetadata *string `json:"partner_metadata,omitempty"`
 	PartnerRefreshTokenExpiry *float32 `json:"partner_refresh_token_expiry,omitempty"`

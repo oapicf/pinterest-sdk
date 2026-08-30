@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **error_counts** | [**ARRAY[ErrorDetail]**](ErrorDetail.md) | Error counts by error code | [optional] 
 **id** | **string** | Customer List Upload ID. | 
 **operation** | [**UserListOperationType**](UserListOperationType.md) |  | 
-**record_counts** | [**RecordCounts**](RecordCounts.md) |  | [optional] 
-**state** | **string** | Workload processing state | 
+**record_counts** | [**RecordCounts**](RecordCounts.md) | Record processing counts | [optional] 
+**state** | [**WorkloadState**](WorkloadState.md) |  | 
 **updated_time** | **int** | Customer List Upload updated_time. Epoch (seconds). | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

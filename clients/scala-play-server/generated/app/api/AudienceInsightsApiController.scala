@@ -4,12 +4,12 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.AudienceDefinitionResponse
 import model.AudienceInsightType
-import model.AudienceInsightsResponse
+import model.AudienceInsights
+import model.AudienceInsightsScopeAndTypeGet200Response
 import model.Error
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class AudienceInsightsApiController @Inject()(cc: ControllerComponents, api: AudienceInsightsApi) extends AbstractController(cc) {
   /**
@@ -17,7 +17,7 @@ class AudienceInsightsApiController @Inject()(cc: ControllerComponents, api: Aud
     * @param adAccountId Unique identifier of an ad account.
     */
   def audienceInsightsGet(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): AudienceInsightsResponse = {
+    def executeApi(): AudienceInsights = {
       val audienceInsightType = request.getQueryString("audience_insight_type")
         .map(value => )
         .getOrElse {
@@ -37,7 +37,7 @@ class AudienceInsightsApiController @Inject()(cc: ControllerComponents, api: Aud
     * @param adAccountId Unique identifier of an ad account.
     */
   def audienceInsightsScopeAndTypeGet(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): AudienceDefinitionResponse = {
+    def executeApi(): AudienceInsightsScopeAndTypeGet200Response = {
       api.audienceInsightsScopeAndTypeGet(adAccountId)
     }
 

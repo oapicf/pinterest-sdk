@@ -1,0 +1,25 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Ad preview source from an image URL.",
+  "name": "AdPreviewSourceImage",
+  "fields": [
+    {
+      "name": "image_url",
+      "type": "string",
+      "doc": "Image URL."
+    },
+    {
+      "name": "promotion_id",
+      "type": ["null", "string"],
+      "doc": "Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.",
+      "default": null
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "doc": "Title displayed below ad."
+    }
+  ]
+
+}

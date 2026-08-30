@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server GenderMultipliers"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a GenderMultipliers"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TargetingSpecGender = openapi_server.resourceTypes.TargetingSpecGender
+}
+resourceTypes {
+
+  GenderMultipliers {
+    title = GenderMultipliers
+    description = GenderMultipliers
+    derivedFrom = Root
+    properties {
+        gender {
+          type = TargetingSpecGender
+          description = "Gender identifier."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  GenderMultipliers {
+    title = GenderMultipliers
+    description = GenderMultipliers
+    implements = openapi_server.resourceTypes.GenderMultipliers
+
+  }
+}

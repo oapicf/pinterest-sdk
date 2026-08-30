@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Placement type for bid multiplier targeting.",
+  "name": "PlacementType",
+  "symbols": [
+    "SEARCH",
+    "BROWSE",
+    "RELATED_PINS"
+  ]
+}

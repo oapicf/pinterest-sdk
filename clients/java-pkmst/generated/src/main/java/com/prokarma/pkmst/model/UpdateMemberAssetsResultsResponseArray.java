@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.UpdateMemberAssetsResultsResponseArrayItemsInner;
+import com.prokarma.pkmst.model.UpdateMemberAssetResultItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -18,18 +18,18 @@ import java.util.List;
  * UpdateMemberAssetsResultsResponseArray
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UpdateMemberAssetsResultsResponseArray   {
   @JsonProperty("items")
   
-  private List<UpdateMemberAssetsResultsResponseArrayItemsInner> items = null;
+  private List<UpdateMemberAssetResultItem> items = null;
 
-  public UpdateMemberAssetsResultsResponseArray items(List<UpdateMemberAssetsResultsResponseArrayItemsInner> items) {
+  public UpdateMemberAssetsResultsResponseArray items(List<UpdateMemberAssetResultItem> items) {
     this.items = items;
     return this;
   }
 
-  public UpdateMemberAssetsResultsResponseArray addItemsItem(UpdateMemberAssetsResultsResponseArrayItemsInner itemsItem) {
+  public UpdateMemberAssetsResultsResponseArray addItemsItem(UpdateMemberAssetResultItem itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -42,11 +42,11 @@ public class UpdateMemberAssetsResultsResponseArray   {
    * @return items
    */
   @ApiModelProperty(value = "List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.")
-  public List<UpdateMemberAssetsResultsResponseArrayItemsInner> getItems() {
+  public List<UpdateMemberAssetResultItem> getItems() {
     return items;
   }
 
-  public void setItems(List<UpdateMemberAssetsResultsResponseArrayItemsInner> items) {
+  public void setItems(List<UpdateMemberAssetResultItem> items) {
     this.items = items;
   }
 
@@ -83,10 +83,7 @@ public class UpdateMemberAssetsResultsResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

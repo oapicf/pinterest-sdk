@@ -1,9 +1,9 @@
 package com.prokarma.pkmst.controller;
 
+import com.prokarma.pkmst.model.CustomerListUpload;
 import com.prokarma.pkmst.model.CustomerListUploadCreateRequest;
 import com.prokarma.pkmst.model.CustomerListUploadCreateResponse;
-import com.prokarma.pkmst.model.CustomerListUploadResponse;
-import com.prokarma.pkmst.model.Error;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 
@@ -26,7 +26,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Controller
 public class CustomerListUploadsApiController implements CustomerListUploadsApi {
     private final ObjectMapper objectMapper;
@@ -35,11 +35,36 @@ public class CustomerListUploadsApiController implements CustomerListUploadsApi 
         this.objectMapper = objectMapper;
     }
 
-    public ResponseEntity<CustomerListUploadCreateResponse> customerListUploadsCreate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Unique identifier of a customer list",required=true ) @PathVariable("customer_list_id") String customerListId,
-        @ApiParam(value = "Parameters to create a customer list upload request" ,required=true )   @RequestBody CustomerListUploadCreateRequest customerListUploadCreateRequest,
+    public ResponseEntity<CustomerListUploadCreateResponse> customerListUploadsCreate(@ApiParam(value = "",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "Customer list ID.",required=true ) @PathVariable("customer_list_id") String customerListId,
+        @ApiParam(value = "" ,required=true )   @RequestBody CustomerListUploadCreateRequest customerListUploadCreateRequest,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUploadCreateResponse>(objectMapper.readValue("", CustomerListUploadCreateResponse.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUploadCreateResponse>(objectMapper.readValue("", CustomerListUploadCreateResponse.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUploadCreateResponse>(objectMapper.readValue("", CustomerListUploadCreateResponse.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUploadCreateResponse>(objectMapper.readValue("", CustomerListUploadCreateResponse.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUploadCreateResponse>(objectMapper.readValue("", CustomerListUploadCreateResponse.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<CustomerListUploadCreateResponse>(objectMapper.readValue("", CustomerListUploadCreateResponse.class), HttpStatus.OK);
@@ -53,40 +78,90 @@ public class CustomerListUploadsApiController implements CustomerListUploadsApi 
         return new ResponseEntity<CustomerListUploadCreateResponse>(HttpStatus.OK);
     }
 
-    public ResponseEntity<CustomerListUploadResponse> customerListUploadsGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Unique identifier of a customer list",required=true ) @PathVariable("customer_list_id") String customerListId,
-        @ApiParam(value = "Unique identifier of a customer list upload",required=true ) @PathVariable("customer_list_upload_id") String customerListUploadId,
+    public ResponseEntity<CustomerListUpload> customerListUploadsGet(@ApiParam(value = "",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "Customer list ID.",required=true ) @PathVariable("customer_list_id") String customerListId,
+        @ApiParam(value = "Customer List Upload ID.",required=true ) @PathVariable("customer_list_upload_id") String customerListUploadId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<CustomerListUploadResponse>(objectMapper.readValue("", CustomerListUploadResponse.class), HttpStatus.OK);
+            return new ResponseEntity<CustomerListUpload>(objectMapper.readValue("", CustomerListUpload.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<CustomerListUploadResponse>(objectMapper.readValue("", CustomerListUploadResponse.class), HttpStatus.OK);
+            return new ResponseEntity<CustomerListUpload>(objectMapper.readValue("", CustomerListUpload.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<CustomerListUploadResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUpload>(objectMapper.readValue("", CustomerListUpload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUpload>(objectMapper.readValue("", CustomerListUpload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUpload>(objectMapper.readValue("", CustomerListUpload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUpload>(objectMapper.readValue("", CustomerListUpload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUpload>(objectMapper.readValue("", CustomerListUpload.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<CustomerListUpload>(HttpStatus.OK);
     }
 
-    public ResponseEntity<CustomerListUploadResponse> customerListUploadsRun(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Unique identifier of a customer list",required=true ) @PathVariable("customer_list_id") String customerListId,
-        @ApiParam(value = "Unique identifier of a customer list upload",required=true ) @PathVariable("customer_list_upload_id") String customerListUploadId,
+    public ResponseEntity<CustomerListUpload> customerListUploadsRun(@ApiParam(value = "",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "Customer list ID.",required=true ) @PathVariable("customer_list_id") String customerListId,
+        @ApiParam(value = "Customer List Upload ID.",required=true ) @PathVariable("customer_list_upload_id") String customerListUploadId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<CustomerListUploadResponse>(objectMapper.readValue("", CustomerListUploadResponse.class), HttpStatus.OK);
+            return new ResponseEntity<CustomerListUpload>(objectMapper.readValue("", CustomerListUpload.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<CustomerListUploadResponse>(objectMapper.readValue("", CustomerListUploadResponse.class), HttpStatus.OK);
+            return new ResponseEntity<CustomerListUpload>(objectMapper.readValue("", CustomerListUpload.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<CustomerListUploadResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUpload>(objectMapper.readValue("", CustomerListUpload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUpload>(objectMapper.readValue("", CustomerListUpload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUpload>(objectMapper.readValue("", CustomerListUpload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUpload>(objectMapper.readValue("", CustomerListUpload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CustomerListUpload>(objectMapper.readValue("", CustomerListUpload.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<CustomerListUpload>(HttpStatus.OK);
     }
 
 }

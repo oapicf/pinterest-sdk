@@ -1,14 +1,15 @@
 const samples = require('../samples/BusinessAccessInviteApi');
 const AuthRespondInvitesBody = require('../models/AuthRespondInvitesBody');
-const CancelInvitesBody = require('../models/CancelInvitesBody');
+const CancelInvitesRequest = require('../models/CancelInvitesRequest');
+const CancelInvitesResponse = require('../models/CancelInvitesResponse');
 const CreateAssetAccessRequestBody = require('../models/CreateAssetAccessRequestBody');
 const CreateAssetAccessRequestResponse = require('../models/CreateAssetAccessRequestResponse');
 const CreateAssetInvitesRequest = require('../models/CreateAssetInvitesRequest');
 const CreateInvitesResultsResponseArray = require('../models/CreateInvitesResultsResponseArray');
 const CreateMembershipOrPartnershipInvitesBody = require('../models/CreateMembershipOrPartnershipInvitesBody');
-const DeleteInvitesResultsResponseArray = require('../models/DeleteInvitesResultsResponseArray');
-const Error = require('../models/Error');
+const InviteFilterStatus = require('../models/InviteFilterStatus');
 const InviteType = require('../models/InviteType');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
 const RespondToInvitesResponseArray = require('../models/RespondToInvitesResponseArray');
 const UpdateInvitesResultsResponseArray = require('../models/UpdateInvitesResultsResponseArray');
 const get_invites_200_response = require('../models/get_invites_200_response');
@@ -57,7 +58,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['CreateAssetAccessRequestResponseSample']
+            sample: samples['CreateAssetAccessRequestResponseSample']samples['CreateAssetAccessRequestResponseSample']
         }
     },
     cancelInvitesOrRequests: {
@@ -76,10 +77,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...CancelInvitesBody.fields(),
+                ...CancelInvitesRequest.fields(),
             ],
             outputFields: [
-                ...DeleteInvitesResultsResponseArray.fields('', false),
+                ...CancelInvitesResponse.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -93,7 +94,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...CancelInvitesBody.mapping(bundle),
+                        ...CancelInvitesRequest.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -102,7 +103,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['DeleteInvitesResultsResponseArraySample']
+            sample: samples['CancelInvitesResponseSample']
         }
     },
     createAssetInvites: {
@@ -147,7 +148,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['UpdateInvitesResultsResponseArraySample']
+            sample: samples['UpdateInvitesResultsResponseArraySample']samples['UpdateInvitesResultsResponseArraySample']
         }
     },
     createMembershipOrPartnershipInvites: {
@@ -192,7 +193,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['CreateInvitesResultsResponseArraySample']
+            sample: samples['CreateInvitesResultsResponseArraySample']samples['CreateInvitesResultsResponseArraySample']
         }
     },
     get/invites: {
@@ -229,7 +230,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],

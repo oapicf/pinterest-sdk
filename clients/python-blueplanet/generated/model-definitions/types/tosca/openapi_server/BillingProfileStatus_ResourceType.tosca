@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BillingProfileStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BillingProfileStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BillingProfileStatus {
+    title = BillingProfileStatus
+    description = BillingProfileStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  BillingProfileStatus {
+    title = BillingProfileStatus
+    description = BillingProfileStatus
+    implements = openapi_server.resourceTypes.BillingProfileStatus
+
+  }
+}

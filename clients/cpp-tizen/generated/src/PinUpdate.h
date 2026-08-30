@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "AiDisclosuresUpdate.h"
 #include "CarouselSlot.h"
 #include <list>
 #include "Object.h"
@@ -47,6 +48,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get AI disclosure declarations the creator has made about this Pin.
+	 */
+	AiDisclosuresUpdate getAiDisclosures();
+
+	/*! \brief Set AI disclosure declarations the creator has made about this Pin.
+	 */
+	void setAiDisclosures(AiDisclosuresUpdate  ai_disclosures);
 	/*! \brief Get 
 	 */
 	std::string getAltText();
@@ -98,6 +106,7 @@ public:
 	void setTitle(std::string  title);
 
 private:
+	AiDisclosuresUpdate ai_disclosures;
 	std::string alt_text;
 	std::string board_id;
 	std::string board_section_id;

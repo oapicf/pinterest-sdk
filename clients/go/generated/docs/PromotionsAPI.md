@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## PromotionsCreate
 
-> PromotionsResponse PromotionsCreate(ctx, adAccountId).PromotionCreateRequest(promotionCreateRequest).Execute()
+> PromotionsResponse PromotionsCreate(ctx, adAccountId).PromotionCreate(promotionCreate).Execute()
 
 Create promotions
 
@@ -34,11 +34,11 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	promotionCreateRequest := []openapiclient.PromotionCreateRequest{*openapiclient.NewPromotionCreateRequest("Black Friday 10% off", openapiclient.PromotionType("VARIABLE"))} // []PromotionCreateRequest | List of promotions to create, size limit [1, 30].
+	promotionCreate := []openapiclient.PromotionCreate{*openapiclient.NewPromotionCreate("PromotionTitle_example", openapiclient.PromotionType("VARIABLE"))} // []PromotionCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PromotionsAPI.PromotionsCreate(context.Background(), adAccountId).PromotionCreateRequest(promotionCreateRequest).Execute()
+	resp, r, err := apiClient.PromotionsAPI.PromotionsCreate(context.Background(), adAccountId).PromotionCreate(promotionCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PromotionsAPI.PromotionsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,7 +64,7 @@ Other parameters are passed through a pointer to a apiPromotionsCreateRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **promotionCreateRequest** | [**[]PromotionCreateRequest**](PromotionCreateRequest.md) | List of promotions to create, size limit [1, 30]. | 
+ **promotionCreate** | [**[]PromotionCreate**](PromotionCreate.md) |  | 
 
 ### Return type
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## PromotionsDelete
 
-> PromotionsDelete(ctx, adAccountId, promotionId).Execute()
+> Promotion PromotionsDelete(ctx, promotionId, adAccountId).Execute()
 
 Delete promotion by id
 
@@ -105,16 +105,18 @@ import (
 )
 
 func main() {
+	promotionId := "promotionId_example" // string | Promotion ID
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	promotionId := "promotionId_example" // string | Unique identifier of a promotion
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.PromotionsAPI.PromotionsDelete(context.Background(), adAccountId, promotionId).Execute()
+	resp, r, err := apiClient.PromotionsAPI.PromotionsDelete(context.Background(), promotionId, adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PromotionsAPI.PromotionsDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `PromotionsDelete`: Promotion
+	fmt.Fprintf(os.Stdout, "Response from `PromotionsAPI.PromotionsDelete`: %v\n", resp)
 }
 ```
 
@@ -124,8 +126,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**promotionId** | **string** | Promotion ID | 
 **adAccountId** | **string** | Unique identifier of an ad account. | 
-**promotionId** | **string** | Unique identifier of a promotion | 
 
 ### Other Parameters
 
@@ -139,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -157,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## PromotionsGet
 
-> PromotionResponse PromotionsGet(ctx, adAccountId, promotionId).Execute()
+> Promotion PromotionsGet(ctx, promotionId, adAccountId).Execute()
 
 Get promotion by id
 
@@ -176,17 +178,17 @@ import (
 )
 
 func main() {
+	promotionId := "promotionId_example" // string | Promotion ID
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	promotionId := "promotionId_example" // string | Unique identifier of a promotion
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PromotionsAPI.PromotionsGet(context.Background(), adAccountId, promotionId).Execute()
+	resp, r, err := apiClient.PromotionsAPI.PromotionsGet(context.Background(), promotionId, adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PromotionsAPI.PromotionsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PromotionsGet`: PromotionResponse
+	// response from `PromotionsGet`: Promotion
 	fmt.Fprintf(os.Stdout, "Response from `PromotionsAPI.PromotionsGet`: %v\n", resp)
 }
 ```
@@ -197,8 +199,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**promotionId** | **string** | Promotion ID | 
 **adAccountId** | **string** | Unique identifier of an ad account. | 
-**promotionId** | **string** | Unique identifier of a promotion | 
 
 ### Other Parameters
 
@@ -212,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PromotionResponse**](PromotionResponse.md)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -230,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## PromotionsList
 
-> PromotionsList200Response PromotionsList(ctx, adAccountId).PageSize(pageSize).Order(order).Bookmark(bookmark).Execute()
+> PromotionsList200Response PromotionsList(ctx, adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).Execute()
 
 Get promotions
 
@@ -250,13 +252,13 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-	order := "ASCENDING" // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+	order := openapiclient.Pinterest.Lib.PaginationOrder("ASCENDING") // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PromotionsAPI.PromotionsList(context.Background(), adAccountId).PageSize(pageSize).Order(order).Bookmark(bookmark).Execute()
+	resp, r, err := apiClient.PromotionsAPI.PromotionsList(context.Background(), adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PromotionsAPI.PromotionsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -282,9 +284,9 @@ Other parameters are passed through a pointer to a apiPromotionsListRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | 
 
 ### Return type
 
@@ -306,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## PromotionsUpdate
 
-> PromotionsResponse PromotionsUpdate(ctx, adAccountId).PromotionUpdateRequest(promotionUpdateRequest).Execute()
+> PromotionsResponse PromotionsUpdate(ctx, adAccountId).PromotionBatchUpdate(promotionBatchUpdate).Execute()
 
 Update promotions
 
@@ -326,11 +328,11 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	promotionUpdateRequest := []openapiclient.PromotionUpdateRequest{*openapiclient.NewPromotionUpdateRequest("7834020347906")} // []PromotionUpdateRequest | List of promotions to create, size limit [1, 30].
+	promotionBatchUpdate := []openapiclient.PromotionBatchUpdate{*openapiclient.NewPromotionBatchUpdate("Id_example")} // []PromotionBatchUpdate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PromotionsAPI.PromotionsUpdate(context.Background(), adAccountId).PromotionUpdateRequest(promotionUpdateRequest).Execute()
+	resp, r, err := apiClient.PromotionsAPI.PromotionsUpdate(context.Background(), adAccountId).PromotionBatchUpdate(promotionBatchUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PromotionsAPI.PromotionsUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -356,7 +358,7 @@ Other parameters are passed through a pointer to a apiPromotionsUpdateRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **promotionUpdateRequest** | [**[]PromotionUpdateRequest**](PromotionUpdateRequest.md) | List of promotions to create, size limit [1, 30]. | 
+ **promotionBatchUpdate** | [**[]PromotionBatchUpdate**](PromotionBatchUpdate.md) |  | 
 
 ### Return type
 

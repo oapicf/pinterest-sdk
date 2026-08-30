@@ -27,7 +27,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}is_shared_partner`,
-                label: `This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to. - [${labelPrefix}is_shared_partner]`,
+                label: `This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to. - [${labelPrefix}is_shared_partner]`,
                 type: 'boolean',
             },
             ...BusinessAccessUserSummary.fields(`${keyPrefix}user`, isInput),

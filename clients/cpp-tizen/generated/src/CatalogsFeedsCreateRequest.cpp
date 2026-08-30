@@ -27,12 +27,12 @@ CatalogsFeedsCreateRequest::__init()
 	//default_availability = new ProductAvailabilityType();
 	//default_country = new Country();
 	//default_currency = new NullableCurrency();
-	//default_locale = new CatalogsFeedsCreateRequest_default_locale();
+	//default_locale = new CatalogsCreativeAssetsFeedsCreateRequest_default_locale();
 	//format = new CatalogsFormat();
 	//location = std::string();
 	//name = std::string();
 	//preferred_processing_schedule = new CatalogsFeedProcessingSchedule();
-	//status = std::string();
+	//status = null;
 }
 
 void
@@ -157,11 +157,11 @@ CatalogsFeedsCreateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsFeedsCreateRequest_default_locale")) {
-			jsonToValue(&default_locale, node, "CatalogsFeedsCreateRequest_default_locale", "CatalogsFeedsCreateRequest_default_locale");
+		if (isprimitive("CatalogsCreativeAssetsFeedsCreateRequest_default_locale")) {
+			jsonToValue(&default_locale, node, "CatalogsCreativeAssetsFeedsCreateRequest_default_locale", "CatalogsCreativeAssetsFeedsCreateRequest_default_locale");
 		} else {
 			
-			CatalogsFeedsCreateRequest_default_locale* obj = static_cast<CatalogsFeedsCreateRequest_default_locale*> (&default_locale);
+			CatalogsCreativeAssetsFeedsCreateRequest_default_locale* obj = static_cast<CatalogsCreativeAssetsFeedsCreateRequest_default_locale*> (&default_locale);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -298,13 +298,13 @@ CatalogsFeedsCreateRequest::toJson()
 	}
 	const gchar *default_currencyKey = "default_currency";
 	json_object_set_member(pJsonObject, default_currencyKey, node);
-	if (isprimitive("CatalogsFeedsCreateRequest_default_locale")) {
-		CatalogsFeedsCreateRequest_default_locale obj = getDefaultLocale();
-		node = converttoJson(&obj, "CatalogsFeedsCreateRequest_default_locale", "");
+	if (isprimitive("CatalogsCreativeAssetsFeedsCreateRequest_default_locale")) {
+		CatalogsCreativeAssetsFeedsCreateRequest_default_locale obj = getDefaultLocale();
+		node = converttoJson(&obj, "CatalogsCreativeAssetsFeedsCreateRequest_default_locale", "");
 	}
 	else {
 		
-		CatalogsFeedsCreateRequest_default_locale obj = static_cast<CatalogsFeedsCreateRequest_default_locale> (getDefaultLocale());
+		CatalogsCreativeAssetsFeedsCreateRequest_default_locale obj = static_cast<CatalogsCreativeAssetsFeedsCreateRequest_default_locale> (getDefaultLocale());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -428,14 +428,14 @@ CatalogsFeedsCreateRequest::setDefaultCurrency(NullableCurrency  default_currenc
 	this->default_currency = default_currency;
 }
 
-CatalogsFeedsCreateRequest_default_locale
+CatalogsCreativeAssetsFeedsCreateRequest_default_locale
 CatalogsFeedsCreateRequest::getDefaultLocale()
 {
 	return default_locale;
 }
 
 void
-CatalogsFeedsCreateRequest::setDefaultLocale(CatalogsFeedsCreateRequest_default_locale  default_locale)
+CatalogsFeedsCreateRequest::setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequest_default_locale  default_locale)
 {
 	this->default_locale = default_locale;
 }

@@ -3,17 +3,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AppTypeMultipliers** | [**AppTypeMultipliers**](AppTypeMultipliers.md) |  | [optional] 
-**AudienceMultipliers** | [**CampaignAudienceMultipliers**](CampaignAudienceMultipliers.md) |  | [optional] 
-**PlacementMultipliers** | [**PlacementMultipliers**](PlacementMultipliers.md) |  | [optional] 
-**UpdateMask** | **String[]** | List of fields to update, only the fields in the list will be updated. | 
+**AgeBucketMultipliers** | [**AgeBucketMultipliers**](AgeBucketMultipliers.md) | Age bucket multipliers for bid adjustments. | [optional] 
+**AppTypeMultipliers** | [**AppTypeMultipliers**](AppTypeMultipliers.md) | App type multipliers for bid adjustments. | [optional] 
+**AudienceMultipliers** | [**CampaignAudienceMultipliers**](CampaignAudienceMultipliers.md) | Audience multipliers for bid adjustments. | [optional] 
+**FreqBidMultiplierTimeWindow** | [**FreqBidMultiplierTimeWindow**](FreqBidMultiplierTimeWindow.md) | The time window for frequency bid multipliers. | [optional] 
+**FrequencyMultipliers** | [**FrequencyMultipliers**](FrequencyMultipliers.md) | Frequency multipliers for bid adjustments. | [optional] 
+**GenderMultipliers** | [**GenderMultipliers**](GenderMultipliers.md) | Gender multipliers for bid adjustments. | [optional] 
+**PlacementMultipliers** | [**PlacementMultipliers**](PlacementMultipliers.md) | Placement multipliers for bid adjustments. | [optional] 
+**UpdateMask** | [**CampaignBidOptionsUpdateMaskItems[]**](CampaignBidOptionsUpdateMaskItems.md) | List of fields to update. Only the fields in the list will be updated. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CampaignBidOptionsUpdate = Initialize-PSOpenAPIToolsCampaignBidOptionsUpdate  -AppTypeMultipliers null `
+$CampaignBidOptionsUpdate = Initialize-PSOpenAPIToolsCampaignBidOptionsUpdate  -AgeBucketMultipliers null `
+ -AppTypeMultipliers null `
  -AudienceMultipliers null `
+ -FreqBidMultiplierTimeWindow null `
+ -FrequencyMultipliers null `
+ -GenderMultipliers null `
  -PlacementMultipliers null `
  -UpdateMask null
 ```

@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/integration_logs_invalid_log_response_rejected_logs_inner.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/integration_logs_invalid_log_response_rejected_logs_items.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,7 +17,7 @@ part 'integration_logs_invalid_log_response.g.dart';
 @BuiltValue()
 abstract class IntegrationLogsInvalidLogResponse implements Built<IntegrationLogsInvalidLogResponse, IntegrationLogsInvalidLogResponseBuilder> {
   @BuiltValueField(wireName: r'rejected_logs')
-  BuiltList<IntegrationLogsInvalidLogResponseRejectedLogsInner>? get rejectedLogs;
+  BuiltList<IntegrationLogsInvalidLogResponseRejectedLogsItems>? get rejectedLogs;
 
   IntegrationLogsInvalidLogResponse._();
 
@@ -46,7 +46,7 @@ class _$IntegrationLogsInvalidLogResponseSerializer implements PrimitiveSerializ
       yield r'rejected_logs';
       yield serializers.serialize(
         object.rejectedLogs,
-        specifiedType: const FullType(BuiltList, [FullType(IntegrationLogsInvalidLogResponseRejectedLogsInner)]),
+        specifiedType: const FullType(BuiltList, [FullType(IntegrationLogsInvalidLogResponseRejectedLogsItems)]),
       );
     }
   }
@@ -75,8 +75,9 @@ class _$IntegrationLogsInvalidLogResponseSerializer implements PrimitiveSerializ
         case r'rejected_logs':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(IntegrationLogsInvalidLogResponseRejectedLogsInner)]),
-          ) as BuiltList<IntegrationLogsInvalidLogResponseRejectedLogsInner>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(IntegrationLogsInvalidLogResponseRejectedLogsItems)]),
+          ) as BuiltList<IntegrationLogsInvalidLogResponseRejectedLogsItems>?;
+          if (valueDes == null) continue;
           result.rejectedLogs.replace(valueDes);
           break;
         default:

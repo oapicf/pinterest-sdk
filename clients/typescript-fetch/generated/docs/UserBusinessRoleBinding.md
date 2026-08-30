@@ -27,7 +27,7 @@ const example = {
   "createdByBusiness": null,
   "createdByUser": null,
   "createdTime": 1646767577816,
-  "id": 383791336903426391,
+  "id": 549755885175,
   "isSharedPartner": false,
   "user": null,
 } satisfies UserBusinessRoleBinding

@@ -17,7 +17,7 @@ class CreateInvitesResultsResponseArray {
   });
 
   /// List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
-  List<CreateInvitesResultsResponseArrayItemsInner> items;
+  List<InviteActionResultItem> items;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateInvitesResultsResponseArray &&
@@ -48,15 +48,11 @@ class CreateInvitesResultsResponseArray {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CreateInvitesResultsResponseArray[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CreateInvitesResultsResponseArray[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return CreateInvitesResultsResponseArray(
-        items: CreateInvitesResultsResponseArrayItemsInner.listFromJson(json[r'items']),
+        items: InviteActionResultItem.listFromJson(json[r'items']),
       );
     }
     return null;

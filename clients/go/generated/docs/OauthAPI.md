@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## OauthConversionToken
 
-> ConversionAccessTokenResponse OauthConversionToken(ctx).Execute()
+> ConversionAccessToken OauthConversionToken(ctx).Execute()
 
 Generate OAuth access token for conversion API
 
@@ -39,7 +39,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OauthAPI.OauthConversionToken``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OauthConversionToken`: ConversionAccessTokenResponse
+	// response from `OauthConversionToken`: ConversionAccessToken
 	fmt.Fprintf(os.Stdout, "Response from `OauthAPI.OauthConversionToken`: %v\n", resp)
 }
 ```
@@ -55,7 +55,7 @@ Other parameters are passed through a pointer to a apiOauthConversionTokenReques
 
 ### Return type
 
-[**ConversionAccessTokenResponse**](ConversionAccessTokenResponse.md)
+[**ConversionAccessToken**](ConversionAccessToken.md)
 
 ### Authorization
 
@@ -73,7 +73,7 @@ Other parameters are passed through a pointer to a apiOauthConversionTokenReques
 
 ## OauthToken
 
-> OauthAccessTokenResponse OauthToken(ctx).GrantType(grantType).Execute()
+> OauthAccessToken OauthToken(ctx).GrantType(grantType).Code(code).ContinuousRefresh(continuousRefresh).RedirectUri(redirectUri).RefreshToken(refreshToken).Scope(scope).Execute()
 
 Generate OAuth access token
 
@@ -92,16 +92,21 @@ import (
 )
 
 func main() {
-	grantType := "grantType_example" // string | 
+	grantType := openapiclient.TokenGrantType("authorization_code") // TokenGrantType | 
+	code := "code_example" // string |  (optional)
+	continuousRefresh := "continuousRefresh_example" // string |   If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. (optional)
+	redirectUri := "redirectUri_example" // string |  (optional)
+	refreshToken := "refreshToken_example" // string |  (optional)
+	scope := "scope_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OauthAPI.OauthToken(context.Background()).GrantType(grantType).Execute()
+	resp, r, err := apiClient.OauthAPI.OauthToken(context.Background()).GrantType(grantType).Code(code).ContinuousRefresh(continuousRefresh).RedirectUri(redirectUri).RefreshToken(refreshToken).Scope(scope).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OauthAPI.OauthToken``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OauthToken`: OauthAccessTokenResponse
+	// response from `OauthToken`: OauthAccessToken
 	fmt.Fprintf(os.Stdout, "Response from `OauthAPI.OauthToken`: %v\n", resp)
 }
 ```
@@ -117,11 +122,16 @@ Other parameters are passed through a pointer to a apiOauthTokenRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **grantType** | **string** |  | 
+ **grantType** | [**TokenGrantType**](TokenGrantType.md) |  | 
+ **code** | **string** |  | 
+ **continuousRefresh** | **string** |   If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. | 
+ **redirectUri** | **string** |  | 
+ **refreshToken** | **string** |  | 
+ **scope** | **string** |  | 
 
 ### Return type
 
-[**OauthAccessTokenResponse**](OauthAccessTokenResponse.md)
+[**OauthAccessToken**](OauthAccessToken.md)
 
 ### Authorization
 
@@ -159,7 +169,7 @@ import (
 
 func main() {
 	token := "token_example" // string | The token to revoke.
-	tokenTypeHint := "tokenTypeHint_example" // string | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. (optional)
+	tokenTypeHint := openapiclient.TokenTypeHint("access_token") // TokenTypeHint | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -183,7 +193,7 @@ Other parameters are passed through a pointer to a apiTokenRevokeRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token** | **string** | The token to revoke. | 
- **tokenTypeHint** | **string** | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | 
+ **tokenTypeHint** | [**TokenTypeHint**](TokenTypeHint.md) | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | 
 
 ### Return type
 

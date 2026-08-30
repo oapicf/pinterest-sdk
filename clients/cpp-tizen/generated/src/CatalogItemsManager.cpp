@@ -109,6 +109,11 @@ static bool itemsBatchGetProcessor(MemoryStruct_s p_chunk, long code, char* erro
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -288,6 +293,16 @@ static bool itemsBatchPostProcessor(MemoryStruct_s p_chunk, long code, char* err
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -308,7 +323,7 @@ static bool itemsBatchPostProcessor(MemoryStruct_s p_chunk, long code, char* err
 }
 
 static bool itemsBatchPostHelper(char * accessToken,
-	std::shared_ptr<Items_batch_post_request> itemsBatchPostRequest, std::string adAccountId, 
+	std::shared_ptr<CatalogsItemsBatchPostRequest> catalogsItemsBatchPostRequest, std::string adAccountId, 
 	void(* handler)(CatalogsItemsBatch, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -336,11 +351,11 @@ static bool itemsBatchPostHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("Items_batch_post_request")) {
-		node = converttoJson(&itemsBatchPostRequest, "Items_batch_post_request", "");
+	if (isprimitive("CatalogsItemsBatchPostRequest")) {
+		node = converttoJson(&catalogsItemsBatchPostRequest, "CatalogsItemsBatchPostRequest", "");
 	}
 	
-	char *jsonStr =  itemsBatchPostRequest.toJson();
+	char *jsonStr =  catalogsItemsBatchPostRequest.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -399,36 +414,36 @@ static bool itemsBatchPostHelper(char * accessToken,
 
 
 bool CatalogItemsManager::itemsBatchPostAsync(char * accessToken,
-	std::shared_ptr<Items_batch_post_request> itemsBatchPostRequest, std::string adAccountId, 
+	std::shared_ptr<CatalogsItemsBatchPostRequest> catalogsItemsBatchPostRequest, std::string adAccountId, 
 	void(* handler)(CatalogsItemsBatch, Error, void* )
 	, void* userData)
 {
 	return itemsBatchPostHelper(accessToken,
-	itemsBatchPostRequest, adAccountId, 
+	catalogsItemsBatchPostRequest, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogItemsManager::itemsBatchPostSync(char * accessToken,
-	std::shared_ptr<Items_batch_post_request> itemsBatchPostRequest, std::string adAccountId, 
+	std::shared_ptr<CatalogsItemsBatchPostRequest> catalogsItemsBatchPostRequest, std::string adAccountId, 
 	void(* handler)(CatalogsItemsBatch, Error, void* )
 	, void* userData)
 {
 	return itemsBatchPostHelper(accessToken,
-	itemsBatchPostRequest, adAccountId, 
+	catalogsItemsBatchPostRequest, adAccountId, 
 	handler, userData, false);
 }
 
 static bool itemsPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(CatalogsItems, Error, void* )
-	= reinterpret_cast<void(*)(CatalogsItems, Error, void* )> (voidHandler);
+	void(* handler)(Items_post_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Items_post_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	CatalogsItems out;
+	Items_post_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -436,18 +451,28 @@ static bool itemsPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 
 
 
-		if (isprimitive("CatalogsItems")) {
+		if (isprimitive("Items_post_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "CatalogsItems", "CatalogsItems");
+			jsonToValue(&out, pJson, "Items_post_200_response", "Items_post_200_response");
 			json_node_free(pJson);
 
-			if ("CatalogsItems" == "std::string") {
+			if ("Items_post_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -495,7 +520,7 @@ static bool itemsPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 
 static bool itemsPostHelper(char * accessToken,
 	std::shared_ptr<CatalogsItemsRequest> catalogsItemsRequest, std::string adAccountId, 
-	void(* handler)(CatalogsItems, Error, void* )
+	void(* handler)(Items_post_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -586,7 +611,7 @@ static bool itemsPostHelper(char * accessToken,
 
 bool CatalogItemsManager::itemsPostAsync(char * accessToken,
 	std::shared_ptr<CatalogsItemsRequest> catalogsItemsRequest, std::string adAccountId, 
-	void(* handler)(CatalogsItems, Error, void* )
+	void(* handler)(Items_post_200_response, Error, void* )
 	, void* userData)
 {
 	return itemsPostHelper(accessToken,
@@ -596,7 +621,7 @@ bool CatalogItemsManager::itemsPostAsync(char * accessToken,
 
 bool CatalogItemsManager::itemsPostSync(char * accessToken,
 	std::shared_ptr<CatalogsItemsRequest> catalogsItemsRequest, std::string adAccountId, 
-	void(* handler)(CatalogsItems, Error, void* )
+	void(* handler)(Items_post_200_response, Error, void* )
 	, void* userData)
 {
 	return itemsPostHelper(accessToken,

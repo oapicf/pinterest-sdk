@@ -7,17 +7,9 @@ goog.provide('API.Client.AppTypeMultipliers');
 API.Client.AppTypeMultipliers = function() {}
 
 /**
- * @type {!string}
+ * App type identifier.
+ * @type {!API.Client.TargetingSpecAppType}
  * @export
  */
 API.Client.AppTypeMultipliers.prototype.APP_TYPE;
 
-/** @enum {string} */
-API.Client.AppTypeMultipliers.APP_TYPEEnum = { 
-  android_mobile: 'android_mobile',
-  android_tablet: 'android_tablet',
-  ipad: 'ipad',
-  iphone: 'iphone',
-  web: 'web',
-  web_mobile: 'web_mobile',
-}

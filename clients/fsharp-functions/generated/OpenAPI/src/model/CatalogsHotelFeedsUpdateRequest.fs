@@ -7,7 +7,6 @@ open OpenAPI.Model.CatalogsFeedCredentials
 open OpenAPI.Model.CatalogsFeedProcessingSchedule
 open OpenAPI.Model.CatalogsFormat
 open OpenAPI.Model.CatalogsStatus
-open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.NullableCurrency
 
 module CatalogsHotelFeedsUpdateRequest =
@@ -17,7 +16,7 @@ module CatalogsHotelFeedsUpdateRequest =
   [<CLIMutable>]
   type CatalogsHotelFeedsUpdateRequest = {
     [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : CatalogsType;
+    CatalogType : string;
     [<JsonProperty(PropertyName = "credentials")>]
     Credentials : CatalogsFeedCredentials;
     [<JsonProperty(PropertyName = "default_currency")>]

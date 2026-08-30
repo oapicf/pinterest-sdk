@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// PermissionsWithOwner the model 'PermissionsWithOwner'
+// PermissionsWithOwner Permission levels including the OWNER role.
 type PermissionsWithOwner string
 
 // List of PermissionsWithOwner

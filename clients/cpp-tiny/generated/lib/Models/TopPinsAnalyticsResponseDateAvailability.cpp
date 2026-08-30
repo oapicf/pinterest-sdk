@@ -1,27 +1,27 @@
 
 
-#include "TopPinsAnalyticsResponse_date_availability.h"
+#include "TopPinsAnalyticsResponseDateAvailability.h"
 
 using namespace Tiny;
 
-TopPinsAnalyticsResponse_date_availability::TopPinsAnalyticsResponse_date_availability()
+TopPinsAnalyticsResponseDateAvailability::TopPinsAnalyticsResponseDateAvailability()
 {
 	is_realtime = bool(false);
 	latest_available_timestamp = float(0);
 }
 
-TopPinsAnalyticsResponse_date_availability::TopPinsAnalyticsResponse_date_availability(std::string jsonString)
+TopPinsAnalyticsResponseDateAvailability::TopPinsAnalyticsResponseDateAvailability(std::string jsonString)
 {
 	this->fromJson(jsonString);
 }
 
-TopPinsAnalyticsResponse_date_availability::~TopPinsAnalyticsResponse_date_availability()
+TopPinsAnalyticsResponseDateAvailability::~TopPinsAnalyticsResponseDateAvailability()
 {
 
 }
 
 void
-TopPinsAnalyticsResponse_date_availability::fromJson(std::string jsonObj)
+TopPinsAnalyticsResponseDateAvailability::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
@@ -55,7 +55,7 @@ TopPinsAnalyticsResponse_date_availability::fromJson(std::string jsonObj)
 }
 
 bourne::json
-TopPinsAnalyticsResponse_date_availability::toJson()
+TopPinsAnalyticsResponseDateAvailability::toJson()
 {
     bourne::json object = bourne::json::object();
 
@@ -79,25 +79,25 @@ TopPinsAnalyticsResponse_date_availability::toJson()
 }
 
 bool
-TopPinsAnalyticsResponse_date_availability::isIsRealtime()
+TopPinsAnalyticsResponseDateAvailability::isIsRealtime()
 {
 	return is_realtime;
 }
 
 void
-TopPinsAnalyticsResponse_date_availability::setIsRealtime(bool  is_realtime)
+TopPinsAnalyticsResponseDateAvailability::setIsRealtime(bool is_realtime)
 {
 	this->is_realtime = is_realtime;
 }
 
 long
-TopPinsAnalyticsResponse_date_availability::getLatestAvailableTimestamp()
+TopPinsAnalyticsResponseDateAvailability::getLatestAvailableTimestamp()
 {
 	return latest_available_timestamp;
 }
 
 void
-TopPinsAnalyticsResponse_date_availability::setLatestAvailableTimestamp(long  latest_available_timestamp)
+TopPinsAnalyticsResponseDateAvailability::setLatestAvailableTimestamp(long latest_available_timestamp)
 {
 	this->latest_available_timestamp = latest_available_timestamp;
 }

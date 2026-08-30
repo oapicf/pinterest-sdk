@@ -1,0 +1,32 @@
+/*
+ * campaign_bid_options_update_mask_items.h
+ *
+ * Fields that can be updated in campaign bid options.
+ */
+
+#ifndef _campaign_bid_options_update_mask_items_H_
+#define _campaign_bid_options_update_mask_items_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct campaign_bid_options_update_mask_items_t campaign_bid_options_update_mask_items_t;
+
+
+// Enum  for campaign_bid_options_update_mask_items
+
+typedef enum { pinterest_rest_api_campaign_bid_options_update_mask_items__NULL = 0, pinterest_rest_api_campaign_bid_options_update_mask_items__AUDIENCE, pinterest_rest_api_campaign_bid_options_update_mask_items__APP_TYPE, pinterest_rest_api_campaign_bid_options_update_mask_items__PLACEMENT, pinterest_rest_api_campaign_bid_options_update_mask_items__GENDER, pinterest_rest_api_campaign_bid_options_update_mask_items__AGE_BUCKET, pinterest_rest_api_campaign_bid_options_update_mask_items__FREQUENCY } pinterest_rest_api_campaign_bid_options_update_mask_items__e;
+
+char* campaign_bid_options_update_mask_items_campaign_bid_options_update_mask_items_ToString(pinterest_rest_api_campaign_bid_options_update_mask_items__e campaign_bid_options_update_mask_items);
+
+pinterest_rest_api_campaign_bid_options_update_mask_items__e campaign_bid_options_update_mask_items_campaign_bid_options_update_mask_items_FromString(char* campaign_bid_options_update_mask_items);
+
+cJSON *campaign_bid_options_update_mask_items_convertToJSON(pinterest_rest_api_campaign_bid_options_update_mask_items__e campaign_bid_options_update_mask_items);
+
+pinterest_rest_api_campaign_bid_options_update_mask_items__e campaign_bid_options_update_mask_items_parseFromJSON(cJSON *campaign_bid_options_update_mask_itemsJSON);
+
+#endif /* _campaign_bid_options_update_mask_items_H_ */
+

@@ -11,6 +11,7 @@ from app.openapi_server.models.catalogs_feed_processing_status import CatalogsFe
 from app.openapi_server.models.catalogs_feed_product_counts import CatalogsFeedProductCounts  # noqa: F401,E501
 from app.openapi_server.models.catalogs_feed_validation_details import CatalogsFeedValidationDetails  # noqa: F401,E501
 from app.openapi_server.models.catalogs_feed_video_counts import CatalogsFeedVideoCounts  # noqa: F401,E501
+import re  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -20,21 +21,21 @@ class CatalogsFeedProcessingResult(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, created_at: datetime=None, id: str=None, updated_at: datetime=None, ingestion_details: CatalogsFeedIngestionDetails=None, product_counts: CatalogsFeedProductCounts=None, status: CatalogsFeedProcessingStatus=None, validation_details: CatalogsFeedValidationDetails=None, video_counts: CatalogsFeedVideoCounts=None):  # noqa: E501
+    def __init__(self, created_at: datetime=None, id: str=None, ingestion_details: CatalogsFeedIngestionDetails=None, product_counts: CatalogsFeedProductCounts=None, status: CatalogsFeedProcessingStatus=None, updated_at: datetime=None, validation_details: CatalogsFeedValidationDetails=None, video_counts: CatalogsFeedVideoCounts=None):  # noqa: E501
         """CatalogsFeedProcessingResult - a model defined in Swagger
 
         :param created_at: The created_at of this CatalogsFeedProcessingResult.  # noqa: E501
         :type created_at: datetime
         :param id: The id of this CatalogsFeedProcessingResult.  # noqa: E501
         :type id: str
-        :param updated_at: The updated_at of this CatalogsFeedProcessingResult.  # noqa: E501
-        :type updated_at: datetime
         :param ingestion_details: The ingestion_details of this CatalogsFeedProcessingResult.  # noqa: E501
         :type ingestion_details: CatalogsFeedIngestionDetails
         :param product_counts: The product_counts of this CatalogsFeedProcessingResult.  # noqa: E501
         :type product_counts: CatalogsFeedProductCounts
         :param status: The status of this CatalogsFeedProcessingResult.  # noqa: E501
         :type status: CatalogsFeedProcessingStatus
+        :param updated_at: The updated_at of this CatalogsFeedProcessingResult.  # noqa: E501
+        :type updated_at: datetime
         :param validation_details: The validation_details of this CatalogsFeedProcessingResult.  # noqa: E501
         :type validation_details: CatalogsFeedValidationDetails
         :param video_counts: The video_counts of this CatalogsFeedProcessingResult.  # noqa: E501
@@ -43,10 +44,10 @@ class CatalogsFeedProcessingResult(Model):
         self.swagger_types = {
             'created_at': datetime,
             'id': str,
-            'updated_at': datetime,
             'ingestion_details': CatalogsFeedIngestionDetails,
             'product_counts': CatalogsFeedProductCounts,
             'status': CatalogsFeedProcessingStatus,
+            'updated_at': datetime,
             'validation_details': CatalogsFeedValidationDetails,
             'video_counts': CatalogsFeedVideoCounts
         }
@@ -54,20 +55,20 @@ class CatalogsFeedProcessingResult(Model):
         self.attribute_map = {
             'created_at': 'created_at',
             'id': 'id',
-            'updated_at': 'updated_at',
             'ingestion_details': 'ingestion_details',
             'product_counts': 'product_counts',
             'status': 'status',
+            'updated_at': 'updated_at',
             'validation_details': 'validation_details',
             'video_counts': 'video_counts'
         }
 
         self._created_at = created_at
         self._id = id
-        self._updated_at = updated_at
         self._ingestion_details = ingestion_details
         self._product_counts = product_counts
         self._status = status
+        self._updated_at = updated_at
         self._validation_details = validation_details
         self._video_counts = video_counts
 
@@ -109,6 +110,7 @@ class CatalogsFeedProcessingResult(Model):
     def id(self) -> str:
         """Gets the id of this CatalogsFeedProcessingResult.
 
+        ID of the feed processing result.  # noqa: E501
 
         :return: The id of this CatalogsFeedProcessingResult.
         :rtype: str
@@ -119,37 +121,17 @@ class CatalogsFeedProcessingResult(Model):
     def id(self, id: str):
         """Sets the id of this CatalogsFeedProcessingResult.
 
+        ID of the feed processing result.  # noqa: E501
 
         :param id: The id of this CatalogsFeedProcessingResult.
         :type id: str
         """
         if id is None:
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
+            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
         self._id = id
-
-    @property
-    def updated_at(self) -> datetime:
-        """Gets the updated_at of this CatalogsFeedProcessingResult.
-
-
-        :return: The updated_at of this CatalogsFeedProcessingResult.
-        :rtype: datetime
-        """
-        return self._updated_at
-
-    @updated_at.setter
-    def updated_at(self, updated_at: datetime):
-        """Sets the updated_at of this CatalogsFeedProcessingResult.
-
-
-        :param updated_at: The updated_at of this CatalogsFeedProcessingResult.
-        :type updated_at: datetime
-        """
-        if updated_at is None:
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
-
-        self._updated_at = updated_at
 
     @property
     def ingestion_details(self) -> CatalogsFeedIngestionDetails:
@@ -219,6 +201,29 @@ class CatalogsFeedProcessingResult(Model):
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
 
         self._status = status
+
+    @property
+    def updated_at(self) -> datetime:
+        """Gets the updated_at of this CatalogsFeedProcessingResult.
+
+
+        :return: The updated_at of this CatalogsFeedProcessingResult.
+        :rtype: datetime
+        """
+        return self._updated_at
+
+    @updated_at.setter
+    def updated_at(self, updated_at: datetime):
+        """Sets the updated_at of this CatalogsFeedProcessingResult.
+
+
+        :param updated_at: The updated_at of this CatalogsFeedProcessingResult.
+        :type updated_at: datetime
+        """
+        if updated_at is None:
+            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+
+        self._updated_at = updated_at
 
     @property
     def validation_details(self) -> CatalogsFeedValidationDetails:

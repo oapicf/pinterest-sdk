@@ -9,6 +9,9 @@
  */
 
 
+/**
+ * SSIO insertion order status response for a single pin order id lookup.
+ */
 export interface SSIOInsertionOrderStatusResponse { 
     /**
      * Salesforce insertion order creation time

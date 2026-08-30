@@ -18,11 +18,9 @@ class CatalogsReportStats(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, report_type: str=None, catalog_id: str=None, code: int=None, code_label: str=None, message: str=None, occurrences: int=None, severity: str=None, ineligible_for_ads: bool=None, ineligible_for_organic: bool=None):  # noqa: E501
+    def __init__(self, catalog_id: str=None, code: int=None, code_label: str=None, message: str=None, occurrences: int=None, report_type: str=None, severity: str=None, ineligible_for_ads: bool=None, ineligible_for_organic: bool=None):  # noqa: E501
         """CatalogsReportStats - a model defined in Swagger
 
-        :param report_type: The report_type of this CatalogsReportStats.  # noqa: E501
-        :type report_type: str
         :param catalog_id: The catalog_id of this CatalogsReportStats.  # noqa: E501
         :type catalog_id: str
         :param code: The code of this CatalogsReportStats.  # noqa: E501
@@ -33,6 +31,8 @@ class CatalogsReportStats(Model):
         :type message: str
         :param occurrences: The occurrences of this CatalogsReportStats.  # noqa: E501
         :type occurrences: int
+        :param report_type: The report_type of this CatalogsReportStats.  # noqa: E501
+        :type report_type: str
         :param severity: The severity of this CatalogsReportStats.  # noqa: E501
         :type severity: str
         :param ineligible_for_ads: The ineligible_for_ads of this CatalogsReportStats.  # noqa: E501
@@ -41,35 +41,35 @@ class CatalogsReportStats(Model):
         :type ineligible_for_organic: bool
         """
         self.swagger_types = {
-            'report_type': str,
             'catalog_id': str,
             'code': int,
             'code_label': str,
             'message': str,
             'occurrences': int,
+            'report_type': str,
             'severity': str,
             'ineligible_for_ads': bool,
             'ineligible_for_organic': bool
         }
 
         self.attribute_map = {
-            'report_type': 'report_type',
             'catalog_id': 'catalog_id',
             'code': 'code',
             'code_label': 'code_label',
             'message': 'message',
             'occurrences': 'occurrences',
+            'report_type': 'report_type',
             'severity': 'severity',
             'ineligible_for_ads': 'ineligible_for_ads',
             'ineligible_for_organic': 'ineligible_for_organic'
         }
 
-        self._report_type = report_type
         self._catalog_id = catalog_id
         self._code = code
         self._code_label = code_label
         self._message = message
         self._occurrences = occurrences
+        self._report_type = report_type
         self._severity = severity
         self._ineligible_for_ads = ineligible_for_ads
         self._ineligible_for_organic = ineligible_for_organic
@@ -84,33 +84,6 @@ class CatalogsReportStats(Model):
         :rtype: CatalogsReportStats
         """
         return util.deserialize_model(dikt, cls)
-
-    @property
-    def report_type(self) -> str:
-        """Gets the report_type of this CatalogsReportStats.
-
-
-        :return: The report_type of this CatalogsReportStats.
-        :rtype: str
-        """
-        return self._report_type
-
-    @report_type.setter
-    def report_type(self, report_type: str):
-        """Sets the report_type of this CatalogsReportStats.
-
-
-        :param report_type: The report_type of this CatalogsReportStats.
-        :type report_type: str
-        """
-        allowed_values = ["FEED_INGESTION_ISSUES", "DISTRIBUTION_ISSUES"]  # noqa: E501
-        if report_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `report_type` ({0}), must be one of {1}"
-                .format(report_type, allowed_values)
-            )
-
-        self._report_type = report_type
 
     @property
     def catalog_id(self) -> str:
@@ -228,6 +201,33 @@ class CatalogsReportStats(Model):
         """
 
         self._occurrences = occurrences
+
+    @property
+    def report_type(self) -> str:
+        """Gets the report_type of this CatalogsReportStats.
+
+
+        :return: The report_type of this CatalogsReportStats.
+        :rtype: str
+        """
+        return self._report_type
+
+    @report_type.setter
+    def report_type(self, report_type: str):
+        """Sets the report_type of this CatalogsReportStats.
+
+
+        :param report_type: The report_type of this CatalogsReportStats.
+        :type report_type: str
+        """
+        allowed_values = ["DISTRIBUTION_ISSUES"]  # noqa: E501
+        if report_type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `report_type` ({0}), must be one of {1}"
+                .format(report_type, allowed_values)
+            )
+
+        self._report_type = report_type
 
     @property
     def severity(self) -> str:

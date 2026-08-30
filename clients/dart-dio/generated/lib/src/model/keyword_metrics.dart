@@ -74,8 +74,9 @@ class _$KeywordMetricsSerializer implements PrimitiveSerializer<KeywordMetrics> 
         case r'keyword_query_volume':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.keywordQueryVolume = valueDes;
           break;
         default:

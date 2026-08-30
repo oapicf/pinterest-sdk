@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.GetPartnerAssetsResponse
+import org.openapitools.model.BaseBusinessAssets
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -16,16 +16,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param items List assets on which you granted access to your partner or assets on which your partner has granted you access.
+ * @param items 
  * @param bookmark 
  */
 data class BusinessPartnerAssetAccessGet200Response(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "List assets on which you granted access to your partner or assets on which your partner has granted you access.")
-    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<GetPartnerAssetsResponse>,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("items")
+    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<BaseBusinessAssets>,
 
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @param:JsonProperty("bookmark")
     @get:JsonProperty("bookmark") val bookmark: kotlin.String? = null
 ) {
 

@@ -9,75 +9,19 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AdsCreditDiscountType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdsCreditDiscountsResponse   {
   
   private Boolean active;
   private String advertiserId;
   private String discountCurrency;
   private BigDecimal discountInMicroCurrency;
-
-  /**
-   * The type of discount of this credit
-   */
-  public enum DiscountTypeEnum {
-    COUPON("COUPON"),
-
-        CREDIT("CREDIT"),
-
-        COUPON_APPLIED("COUPON_APPLIED"),
-
-        CREDIT_APPLIED("CREDIT_APPLIED"),
-
-        MARKETING_OFFER_CREDIT("MARKETING_OFFER_CREDIT"),
-
-        MARKETING_OFFER_CREDIT_APPLIED("MARKETING_OFFER_CREDIT_APPLIED"),
-
-        GOODWILL_CREDIT("GOODWILL_CREDIT"),
-
-        GOODWILL_CREDIT_APPLIED("GOODWILL_CREDIT_APPLIED"),
-
-        INTERNAL_CREDIT("INTERNAL_CREDIT"),
-
-        INTERNAL_CREDIT_APPLIED("INTERNAL_CREDIT_APPLIED"),
-
-        PREPAID_CREDIT("PREPAID_CREDIT"),
-
-        PREPAID_CREDIT_APPLIED("PREPAID_CREDIT_APPLIED"),
-
-        SALES_INCENTIVE_CREDIT("SALES_INCENTIVE_CREDIT"),
-
-        SALES_INCENTIVE_CREDIT_APPLIED("SALES_INCENTIVE_CREDIT_APPLIED"),
-
-        CREDIT_EXPIRED("CREDIT_EXPIRED"),
-
-        FUTURE_CREDIT("FUTURE_CREDIT"),
-
-        REFERRAL_CREDIT("REFERRAL_CREDIT"),
-
-        INVOICE_SALES_INCENTIVE_CREDIT("INVOICE_SALES_INCENTIVE_CREDIT"),
-
-        INVOICE_SALES_INCENTIVE_CREDIT_APPLIED("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"),
-
-        PREPAID_CREDIT_REFUND("PREPAID_CREDIT_REFUND");
-    private String value;
-
-    DiscountTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private DiscountTypeEnum discountType;
+  private AdsCreditDiscountType discountType;
   private BigDecimal remainingDiscountInMicroCurrency;
   private String title;
 
@@ -121,10 +65,10 @@ public class AdsCreditDiscountsResponse   {
   }
 
   /**
-   * The discount applied in the offer’s currency value.
+   * The discount applied in the offer&#39;s currency value.
    **/
   
-  @ApiModelProperty(example = "125000000", value = "The discount applied in the offer’s currency value.")
+  @ApiModelProperty(example = "125000000", value = "The discount applied in the offer's currency value.")
   @JsonProperty("discountInMicroCurrency")
   public BigDecimal getDiscountInMicroCurrency() {
     return discountInMicroCurrency;
@@ -139,10 +83,10 @@ public class AdsCreditDiscountsResponse   {
   
   @ApiModelProperty(value = "The type of discount of this credit")
   @JsonProperty("discountType")
-  public DiscountTypeEnum getDiscountType() {
+  public AdsCreditDiscountType getDiscountType() {
     return discountType;
   }
-  public void setDiscountType(DiscountTypeEnum discountType) {
+  public void setDiscountType(AdsCreditDiscountType discountType) {
     this.discountType = discountType;
   }
 
@@ -217,10 +161,7 @@ public class AdsCreditDiscountsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

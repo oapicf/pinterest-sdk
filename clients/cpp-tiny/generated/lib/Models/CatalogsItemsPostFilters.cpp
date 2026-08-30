@@ -6,8 +6,8 @@ using namespace Tiny;
 
 CatalogsItemsPostFilters::CatalogsItemsPostFilters()
 {
-	catalog_type = CatalogsType();
 	catalog_id = std::string();
+	catalog_type = std::string();
 	item_ids = std::list<std::string>();
 	hotel_ids = std::list<std::string>();
 	creative_assets_ids = std::list<std::string>();
@@ -28,20 +28,6 @@ CatalogsItemsPostFilters::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
-    const char *catalog_typeKey = "catalog_type";
-
-    if(object.has_key(catalog_typeKey))
-    {
-        bourne::json value = object[catalog_typeKey];
-
-
-
-
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
-
-    }
-
     const char *catalog_idKey = "catalog_id";
 
     if(object.has_key(catalog_idKey))
@@ -51,6 +37,19 @@ CatalogsItemsPostFilters::fromJson(std::string jsonObj)
 
 
         jsonToValue(&catalog_id, value, "std::string");
+
+
+    }
+
+    const char *catalog_typeKey = "catalog_type";
+
+    if(object.has_key(catalog_typeKey))
+    {
+        bourne::json value = object[catalog_typeKey];
+
+
+
+        jsonToValue(&catalog_type, value, "std::string");
 
 
     }
@@ -133,14 +132,14 @@ CatalogsItemsPostFilters::toJson()
 
 
 
-
-	object["catalog_type"] = getCatalogType().toJson();
-
-
-
-
-
     object["catalog_id"] = getCatalogId();
+
+
+
+
+
+
+    object["catalog_type"] = getCatalogType();
 
 
 
@@ -196,18 +195,6 @@ CatalogsItemsPostFilters::toJson()
 
 }
 
-CatalogsType
-CatalogsItemsPostFilters::getCatalogType()
-{
-	return catalog_type;
-}
-
-void
-CatalogsItemsPostFilters::setCatalogType(CatalogsType  catalog_type)
-{
-	this->catalog_type = catalog_type;
-}
-
 std::string
 CatalogsItemsPostFilters::getCatalogId()
 {
@@ -215,9 +202,21 @@ CatalogsItemsPostFilters::getCatalogId()
 }
 
 void
-CatalogsItemsPostFilters::setCatalogId(std::string  catalog_id)
+CatalogsItemsPostFilters::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
+}
+
+std::string
+CatalogsItemsPostFilters::getCatalogType()
+{
+	return catalog_type;
+}
+
+void
+CatalogsItemsPostFilters::setCatalogType(std::string catalog_type)
+{
+	this->catalog_type = catalog_type;
 }
 
 std::list<std::string>
@@ -227,7 +226,7 @@ CatalogsItemsPostFilters::getItemIds()
 }
 
 void
-CatalogsItemsPostFilters::setItemIds(std::list <std::string> item_ids)
+CatalogsItemsPostFilters::setItemIds(std::list<std::string> item_ids)
 {
 	this->item_ids = item_ids;
 }
@@ -239,7 +238,7 @@ CatalogsItemsPostFilters::getHotelIds()
 }
 
 void
-CatalogsItemsPostFilters::setHotelIds(std::list <std::string> hotel_ids)
+CatalogsItemsPostFilters::setHotelIds(std::list<std::string> hotel_ids)
 {
 	this->hotel_ids = hotel_ids;
 }
@@ -251,7 +250,7 @@ CatalogsItemsPostFilters::getCreativeAssetsIds()
 }
 
 void
-CatalogsItemsPostFilters::setCreativeAssetsIds(std::list <std::string> creative_assets_ids)
+CatalogsItemsPostFilters::setCreativeAssetsIds(std::list<std::string> creative_assets_ids)
 {
 	this->creative_assets_ids = creative_assets_ids;
 }

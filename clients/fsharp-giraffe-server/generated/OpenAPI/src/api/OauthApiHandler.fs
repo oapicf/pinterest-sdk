@@ -7,9 +7,11 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open OauthApiHandlerParams
 open OauthApiServiceInterface
 open OauthApiServiceImplementation
-open OpenAPI.Model.ConversionAccessTokenResponse
-open OpenAPI.Model.Error
-open OpenAPI.Model.OauthAccessTokenResponse
+open OpenAPI.Model.ConversionAccessToken
+open OpenAPI.Model.OauthAccessToken
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.TokenGrantType
+open OpenAPI.Model.TokenTypeHint
 
 module OauthApiHandler =
 
@@ -29,6 +31,16 @@ module OauthApiHandler =
           return! (match result with
                       | OauthConversionTokenStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | OauthConversionTokenStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | OauthConversionTokenStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | OauthConversionTokenStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | OauthConversionTokenStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | OauthConversionTokenStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | OauthConversionTokenDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -49,6 +61,18 @@ module OauthApiHandler =
           return! (match result with
                       | OauthTokenStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | OauthTokenStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
+                      | OauthTokenStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | OauthTokenStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | OauthTokenStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | OauthTokenStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | OauthTokenStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | OauthTokenDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

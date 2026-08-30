@@ -1,0 +1,13 @@
+package models
+
+// CatalogsRetailReportAllItemsFilter - ALL_ITEMS filter for retail catalogs. Optional product_group_id scopes the report to items in that product group. If omitted, all items are included.
+type CatalogsRetailReportAllItemsFilter struct {
+
+	// Unique identifier of a catalog. If not given, oldest catalog will be used
+	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\d+$"`
+
+	// Optional product group ID. If omitted, all items are included. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature.
+	ProductGroupId string `json:"product_group_id,omitempty" validate:"regexp=^\\d+$"`
+
+	ReportType string `json:"report_type"`
+}

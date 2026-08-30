@@ -19,6 +19,7 @@ open OpenAPI.Model.GoogleProductCategory3Filter
 open OpenAPI.Model.GoogleProductCategory4Filter
 open OpenAPI.Model.GoogleProductCategory5Filter
 open OpenAPI.Model.GoogleProductCategory6Filter
+open OpenAPI.Model.LinkFilter
 open OpenAPI.Model.MediaTypeFilter
 open OpenAPI.Model.TitleKeywordsFilter
 
@@ -43,5 +44,6 @@ module CatalogsCreativeAssetsProductGroupFilterKeys =
     GOOGLEPRODUCTCATEGORY0 : CatalogsProductGroupMultipleStringListCriteria;
     MEDIA_TYPE : CatalogsProductGroupMultipleMediaTypesCriteria;
     TITLE_KEYWORDS : CatalogsProductGroupMultipleStringCriteria;
+    LINK : CatalogsProductGroupFilterOperatorTypeCriteria;
   }
   //#endregion

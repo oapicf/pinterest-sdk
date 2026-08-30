@@ -6,7 +6,7 @@ Report parameters
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | 
+**catalog_type** | **str** |  | 
 **report** | [**CatalogsHotelReportParametersReport**](CatalogsHotelReportParametersReport.md) |  | 
 
 ## Example

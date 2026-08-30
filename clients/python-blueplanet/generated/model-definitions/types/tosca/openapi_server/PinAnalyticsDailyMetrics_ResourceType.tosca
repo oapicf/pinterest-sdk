@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinAnalyticsDailyMetrics"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinAnalyticsDailyMetrics"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  DataStatus = openapi_server.resourceTypes.DataStatus
+}
+resourceTypes {
+
+  PinAnalyticsDailyMetrics {
+    title = PinAnalyticsDailyMetrics
+    description = PinAnalyticsDailyMetrics
+    derivedFrom = Root
+    properties {
+        data_status {
+          type = DataStatus
+          description = ""
+          optional = false
+        }
+        _date {
+          type =  string
+          description = "Metrics date (UTC): YYYY-MM-DD."
+          optional = false
+        }
+        metrics {
+          # TODO
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinAnalyticsDailyMetrics {
+    title = PinAnalyticsDailyMetrics
+    description = PinAnalyticsDailyMetrics
+    implements = openapi_server.resourceTypes.PinAnalyticsDailyMetrics
+
+  }
+}

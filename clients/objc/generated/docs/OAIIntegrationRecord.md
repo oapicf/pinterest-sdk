@@ -4,14 +4,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **additionalId1** | **NSString*** |  | [optional] 
-**connectedAdvertiserId** | **NSString*** |  | [optional] [readonly] 
+**connectedAdvertiserId** | **NSString*** |  | [optional] 
 **connectedLbaId** | **NSString*** |  | [optional] 
 **connectedMerchantId** | **NSString*** |  | [optional] 
 **connectedTagId** | **NSString*** |  | [optional] 
-**connectedUserId** | **NSString*** |  | [optional] [readonly] 
+**connectedUserId** | **NSString*** |  | [optional] 
 **createdTime** | **NSNumber*** |  | [optional] 
 **externalBusinessId** | **NSString*** |  | [optional] 
-**_id** | **NSString*** |  | [optional] 
+**_id** | **NSString*** | Integration record ID. | [readonly] 
 **partnerAccessToken** | **NSString*** |  | [optional] 
 **partnerAccessTokenExpiry** | **NSNumber*** |  | [optional] 
 **partnerMetadata** | **NSString*** |  | [optional] 

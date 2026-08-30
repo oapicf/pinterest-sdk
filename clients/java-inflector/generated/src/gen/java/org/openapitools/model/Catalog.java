@@ -16,22 +16,39 @@ import org.openapitools.model.CatalogsType;
  **/
 
 @ApiModel(description = "Catalog entity")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Catalog   {
+  @JsonProperty("catalog_type")
+  private CatalogsType catalogType;
+
   @JsonProperty("created_at")
   private Date createdAt;
 
   @JsonProperty("id")
   private String id;
 
+  @JsonProperty("name")
+  private String name;
+
   @JsonProperty("updated_at")
   private Date updatedAt;
 
-  @JsonProperty("catalog_type")
-  private CatalogsType catalogType;
+  /**
+   **/
+  public Catalog catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
 
-  @JsonProperty("name")
-  private String name;
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("catalog_type")
+  public CatalogsType getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+  }
 
   /**
    **/
@@ -69,40 +86,6 @@ public class Catalog   {
   }
 
   /**
-   **/
-  public Catalog updatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
-  @JsonProperty("updated_at")
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  /**
-   **/
-  public Catalog catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
-  /**
    * A human-friendly name associated to a catalog entity.
    **/
   public Catalog name(String name) {
@@ -120,6 +103,23 @@ public class Catalog   {
     this.name = name;
   }
 
+  /**
+   **/
+  public Catalog updatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+  @JsonProperty("updated_at")
+  public Date getUpdatedAt() {
+    return updatedAt;
+  }
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -130,16 +130,16 @@ public class Catalog   {
       return false;
     }
     Catalog catalog = (Catalog) o;
-    return Objects.equals(createdAt, catalog.createdAt) &&
+    return Objects.equals(catalogType, catalog.catalogType) &&
+        Objects.equals(createdAt, catalog.createdAt) &&
         Objects.equals(id, catalog.id) &&
-        Objects.equals(updatedAt, catalog.updatedAt) &&
-        Objects.equals(catalogType, catalog.catalogType) &&
-        Objects.equals(name, catalog.name);
+        Objects.equals(name, catalog.name) &&
+        Objects.equals(updatedAt, catalog.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, catalogType, name);
+    return Objects.hash(catalogType, createdAt, id, name, updatedAt);
   }
 
   @Override
@@ -147,11 +147,11 @@ public class Catalog   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Catalog {\n");
     
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -161,10 +161,7 @@ public class Catalog   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Diagnostics aggregated numbers")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "report_type", visible = true)
+@ApiModel(description="Diagnostics aggregated numbers")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "report_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsReportDistributionStats.class, name = "DISTRIBUTION_ISSUES"),
   @JsonSubTypes.Type(value = CatalogsReportFeedIngestionStats.class, name = "FEED_INGESTION_ISSUES"),
@@ -24,14 +24,17 @@ import io.swagger.annotations.*;
 
 public class CatalogsReportStats   {
   
+  private String catalogId;
+  private Integer code;
+  private String codeLabel;
+  private String message;
+  private Integer occurrences;
 
   /**
    * Gets or Sets reportType
    */
   public enum ReportTypeEnum {
-    FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
-
-        DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
+    DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
     private String value;
 
     ReportTypeEnum(String value) {
@@ -46,11 +49,6 @@ public class CatalogsReportStats   {
   }
 
   private ReportTypeEnum reportType;
-  private String catalogId;
-  private Integer code;
-  private String codeLabel;
-  private String message;
-  private Integer occurrences;
 
   /**
    * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
@@ -75,19 +73,6 @@ public class CatalogsReportStats   {
   private SeverityEnum severity;
   private Boolean ineligibleForAds;
   private Boolean ineligibleForOrganic;
-
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("report_type")
-  @NotNull
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   /**
    * ID of the catalog entity.
@@ -155,6 +140,18 @@ public class CatalogsReportStats   {
   }
 
   /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+  /**
    * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
    **/
   
@@ -203,12 +200,12 @@ public class CatalogsReportStats   {
       return false;
     }
     CatalogsReportStats catalogsReportStats = (CatalogsReportStats) o;
-    return Objects.equals(this.reportType, catalogsReportStats.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportStats.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsReportStats.catalogId) &&
         Objects.equals(this.code, catalogsReportStats.code) &&
         Objects.equals(this.codeLabel, catalogsReportStats.codeLabel) &&
         Objects.equals(this.message, catalogsReportStats.message) &&
         Objects.equals(this.occurrences, catalogsReportStats.occurrences) &&
+        Objects.equals(this.reportType, catalogsReportStats.reportType) &&
         Objects.equals(this.severity, catalogsReportStats.severity) &&
         Objects.equals(this.ineligibleForAds, catalogsReportStats.ineligibleForAds) &&
         Objects.equals(this.ineligibleForOrganic, catalogsReportStats.ineligibleForOrganic);
@@ -216,7 +213,7 @@ public class CatalogsReportStats   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, severity, ineligibleForAds, ineligibleForOrganic);
+    return Objects.hash(catalogId, code, codeLabel, message, occurrences, reportType, severity, ineligibleForAds, ineligibleForOrganic);
   }
 
   @Override
@@ -224,12 +221,12 @@ public class CatalogsReportStats   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("    ineligibleForAds: ").append(toIndentedString(ineligibleForAds)).append("\n");
     sb.append("    ineligibleForOrganic: ").append(toIndentedString(ineligibleForOrganic)).append("\n");
@@ -242,10 +239,7 @@ public class CatalogsReportStats   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

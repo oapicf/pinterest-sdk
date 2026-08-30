@@ -13,14 +13,14 @@ part 'catalogs_hotel_product_group_create_request.g.dart';
 /// Request object for creating a hotel product group.
 ///
 /// Properties:
-/// * [catalogId] - Catalog id pertaining to the hotel product group.
+/// * [catalogId] - Catalog ID pertaining to the product group.
 /// * [catalogType] 
 /// * [description] 
 /// * [filters] 
 /// * [name] 
 @BuiltValue()
 abstract class CatalogsHotelProductGroupCreateRequest implements Built<CatalogsHotelProductGroupCreateRequest, CatalogsHotelProductGroupCreateRequestBuilder> {
-  /// Catalog id pertaining to the hotel product group.
+  /// Catalog ID pertaining to the product group.
   @BuiltValueField(wireName: r'catalog_id')
   String get catalogId;
 

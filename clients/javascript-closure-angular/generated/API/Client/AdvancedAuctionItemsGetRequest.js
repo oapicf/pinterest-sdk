@@ -15,7 +15,7 @@ API.Client.AdvancedAuctionItemsGetRequest.prototype.catalogId;
 
 /**
  * A list of retail catalog items to fetch bid options for
- * @type {!Array<!API.Client.AdvancedAuctionItemsGetRecord>}
+ * @type {!Array<!API.Client.AdvancedAuctionKey>}
  * @export
  */
 API.Client.AdvancedAuctionItemsGetRequest.prototype.items;

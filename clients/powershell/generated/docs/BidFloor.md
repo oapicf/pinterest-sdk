@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BidFloors** | **Int32[]** | A list of bid floors in micro currency. For example, [100000, 200000] | [optional] 
-**Type** | **String** | Always the string &#39;bidfloor&#39; | [optional] [default to "bidfloor"]
+**BidFloors** | **Int32[]** | A list of bid floors in micro currency. For example, [100000, 200000] | [optional] [readonly] 
+**Type** | **String** | Always the string &#39;bidfloor&#39;. | [optional] [readonly] [default to "bidfloor"]
 
 ## Examples
 

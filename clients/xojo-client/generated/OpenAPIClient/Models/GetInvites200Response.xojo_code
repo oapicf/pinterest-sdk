@@ -7,9 +7,6 @@ Protected Class GetInvites200Response
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			List of invite and request data.
-		#tag EndNote
 		items() As OpenAPIClient.Models.InviteResponse
 	#tag EndProperty
 

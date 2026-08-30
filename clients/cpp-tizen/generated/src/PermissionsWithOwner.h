@@ -1,7 +1,7 @@
 /*
  * PermissionsWithOwner.h
  *
- * 
+ * Permission levels including the OWNER role.
  */
 
 #ifndef _PermissionsWithOwner_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief Permission levels including the OWNER role.
  *
  *  \ingroup Models
  *

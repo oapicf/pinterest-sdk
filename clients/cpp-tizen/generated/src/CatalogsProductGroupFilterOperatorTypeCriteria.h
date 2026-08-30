@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "FilterOperatorType.h"
 #include <list>
 #include "Object.h"
 
@@ -48,11 +49,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getFilterOperatorType();
+	FilterOperatorType getFilterOperatorType();
 
 	/*! \brief Set 
 	 */
-	void setFilterOperatorType(std::string  filter_operator_type);
+	void setFilterOperatorType(FilterOperatorType  filter_operator_type);
 	/*! \brief Get 
 	 */
 	bool getNegated();
@@ -69,7 +70,7 @@ public:
 	void setValues(std::list <std::string> values);
 
 private:
-	std::string filter_operator_type;
+	FilterOperatorType filter_operator_type;
 	bool negated;
 	std::list <std::string>values;
 	void __init();

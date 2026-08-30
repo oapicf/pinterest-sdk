@@ -13,7 +13,6 @@
 #include "CatalogsCreativeAssetsItemsBatch.h"
 #include "CatalogsHotelItemsBatch.h"
 #include "CatalogsRetailItemsBatch.h"
-#include "CatalogsType.h"
 #include "CreativeAssetsProcessingRecord.h"
 #include <list>
 #include "Object.h"
@@ -52,13 +51,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
-	 */
-	CatalogsType getCatalogType();
-
-	/*! \brief Set 
-	 */
-	void setCatalogType(CatalogsType  catalog_type);
 	/*! \brief Get Id of the catalogs items batch
 	 */
 	std::string getBatchId();
@@ -66,6 +58,13 @@ public:
 	/*! \brief Set Id of the catalogs items batch
 	 */
 	void setBatchId(std::string  batch_id);
+	/*! \brief Get 
+	 */
+	std::string getCatalogType();
+
+	/*! \brief Set 
+	 */
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 	 */
 	std::string getCompletedTime();
@@ -96,8 +95,8 @@ public:
 	void setStatus(BatchOperationStatus  status);
 
 private:
-	CatalogsType catalog_type;
 	std::string batch_id;
+	std::string catalog_type;
 	std::string completed_time;
 	std::string created_time;
 	std::list <CreativeAssetsProcessingRecord>items;

@@ -1,10 +1,11 @@
 package org.openapitools.api;
 
 import org.openapitools.model.CustomerList;
-import org.openapitools.model.CustomerListRequest;
-import org.openapitools.model.CustomerListUpdateRequest;
+import org.openapitools.model.CustomerListCreate;
+import org.openapitools.model.CustomerListUpdateWithRequiredBody;
 import org.openapitools.model.CustomerListsList200Response;
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -29,25 +30,31 @@ import javax.validation.Valid;
  * <p>Pinterest's REST API
  *
  */
-@Path("/ad_accounts/{ad_account_id}/customer_lists")
+@Path("")
 @Api(value = "/", description = "")
 public interface CustomerListsApi  {
 
     /**
      * Create customer lists
      *
-     * &lt;p&gt;Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).&lt;/p&gt; &lt;p&gt;A customer list is one of the four types of Pinterest audiences: for more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;p/&gt; &lt;p&gt;&lt;b&gt;Please review our &lt;u&gt;&lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting#section-13341\&quot; target&#x3D;\&quot;_blank\&quot;&gt;requirements&lt;/a&gt;&lt;/u&gt; for what type of information is allowed when uploading a customer list.&lt;/b&gt;&lt;/p&gt; &lt;p&gt;When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.&lt;/p&gt; &lt;p&gt;To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the &lt;a href&#x3D;\&quot;https://developer.pinterest.com/docs/api/v5/audiences-create\&quot; target&#x3D;\&quot;blank\&quot;&gt;create audience endpoint&lt;/a&gt;.&lt;/p&gt;
+     * Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
      *
      */
     @POST
-    
+    @Path("/ad_accounts/{ad_account_id}/customer_lists")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Create customer lists", tags={ "customer_lists" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CustomerList.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public CustomerList customerListsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid CustomerListRequest customerListRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CustomerList.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = CustomerList.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public CustomerList customerListsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid CustomerListCreate customerListCreate);
 
     /**
      * Get customer list
@@ -56,42 +63,57 @@ public interface CustomerListsApi  {
      *
      */
     @GET
-    @Path("/{customer_list_id}")
+    @Path("/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get customer list", tags={ "customer_lists" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CustomerList.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CustomerList.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public CustomerList customerListsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @PathParam("customer_list_id") @Pattern(regexp="^\\d+$") @Size(max=18) String customerListId);
 
     /**
      * Get customer lists
      *
-     * &lt;p&gt;Get a set of customer lists including id and name based on the filters provided.&lt;/p&gt; &lt;p&gt;(Customer lists are a type of audience.) For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;  or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
+     * Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
      *
      */
     @GET
-    
+    @Path("/ad_accounts/{ad_account_id}/customer_lists")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get customer lists", tags={ "customer_lists" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CustomerListsList200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public CustomerListsList200Response customerListsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize, @QueryParam("order") String order, @QueryParam("bookmark") String bookmark);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CustomerListsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public CustomerListsList200Response customerListsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize, @QueryParam("order") PinterestLibPaginationOrder order, @QueryParam("exclude_nca") @DefaultValue("false") Boolean excludeNca);
 
     /**
      * Update customer list
      *
-     * &lt;p&gt;Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)&lt;/p&gt; &lt;p&gt;When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
+     * Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \&quot;CUSTOMER_LIST\&quot; audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
      *
      */
     @PATCH
-    @Path("/{customer_list_id}")
+    @Path("/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Update customer list", tags={ "customer_lists" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CustomerList.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public CustomerList customerListsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @PathParam("customer_list_id") @Pattern(regexp="^\\d+$") @Size(max=18) String customerListId, @Valid CustomerListUpdateRequest customerListUpdateRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CustomerList.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public CustomerList customerListsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @PathParam("customer_list_id") @Pattern(regexp="^\\d+$") @Size(max=18) String customerListId, @Valid CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody);
 }

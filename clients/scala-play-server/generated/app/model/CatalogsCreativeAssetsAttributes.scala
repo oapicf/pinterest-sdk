@@ -15,12 +15,13 @@ import play.api.libs.json._
   * @param iosDeepLink IOS deep link to the creative assets page.
   * @param link Link to the creative assets page.
   * @param title The name of the creative assets.
-  * @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+  * @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
+  * @param aiDisclosures AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
   * @param imageLink The creative assets image.
   * @param videoLink The creative assets video.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class CatalogsCreativeAssetsAttributes(
   androidDeepLink: Option[String],
   customLabel0: Option[String],
@@ -34,6 +35,7 @@ case class CatalogsCreativeAssetsAttributes(
   link: Option[String],
   title: Option[String],
   visibility: Option[String],
+  aiDisclosures: Option[List[CatalogsAiContentDisclosure]],
   imageLink: Option[String],
   videoLink: Option[String]
   additionalProperties: 
@@ -42,7 +44,7 @@ case class CatalogsCreativeAssetsAttributes(
 object CatalogsCreativeAssetsAttributes {
   implicit lazy val catalogsCreativeAssetsAttributesJsonFormat: Format[CatalogsCreativeAssetsAttributes] = {
     val realJsonFormat = Json.format[CatalogsCreativeAssetsAttributes]
-    val declaredPropNames = Set("androidDeepLink", "customLabel0", "customLabel1", "customLabel2", "customLabel3", "customLabel4", "description", "googleProductCategory", "iosDeepLink", "link", "title", "visibility", "imageLink", "videoLink")
+    val declaredPropNames = Set("androidDeepLink", "customLabel0", "customLabel1", "customLabel2", "customLabel3", "customLabel4", "description", "googleProductCategory", "iosDeepLink", "link", "title", "visibility", "aiDisclosures", "imageLink", "videoLink")
     
     Format(
       Reads {

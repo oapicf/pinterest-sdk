@@ -6,27 +6,27 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}id`,
-                label: `Subinterest ID. - [${labelPrefix}id]`,
+                label: `[${labelPrefix}id]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}index`,
-                label: `Subinterest affinity index. - [${labelPrefix}index]`,
+                label: `[${labelPrefix}index]`,
                 type: 'number',
             },
             {
                 key: `${keyPrefix}key`,
-                label: `Interest unique key (same as ID). - [${labelPrefix}key]`,
+                label: `[${labelPrefix}key]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}name`,
-                label: `Subinterest name. - [${labelPrefix}name]`,
+                label: `[${labelPrefix}name]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}ratio`,
-                label: `Subinterest's percent of category's total audience. - [${labelPrefix}ratio]`,
+                label: `[${labelPrefix}ratio]`,
                 type: 'number',
             },
         ]

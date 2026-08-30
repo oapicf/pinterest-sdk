@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **char \*** | Catalog id pertaining to the retail product group. | 
+**catalog_id** | **char \*** | Catalog ID pertaining to the product group. | 
 **catalog_type** | **pinterest_rest_api_catalogs_retail_product_group_CATALOGTYPE_e** |  | 
 **country** | **char \*** |  | [optional] 
 **created_at** | **int** | Unix timestamp in seconds of when catalog product group was created. | [optional] 

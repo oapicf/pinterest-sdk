@@ -14,11 +14,11 @@ static advanced_auction_key_t *advanced_auction_key_create_internal(
     if (!advanced_auction_key_local_var) {
         return NULL;
     }
+    memset(advanced_auction_key_local_var, 0, sizeof(advanced_auction_key_t));
+    advanced_auction_key_local_var->_library_owned = 1;
     advanced_auction_key_local_var->country = country;
     advanced_auction_key_local_var->item_id = item_id;
     advanced_auction_key_local_var->language = language;
-
-    advanced_auction_key_local_var->_library_owned = 1;
     return advanced_auction_key_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) advanced_auction_key_t *advanced_auction_key_create(
     char *item_id,
     pinterest_rest_api_language__e language
     ) {
-    return advanced_auction_key_create_internal (
+    advanced_auction_key_t *result = advanced_auction_key_create_internal (
         country,
         item_id,
         language
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void advanced_auction_key_free(advanced_auction_key_t *advanced_auction_key) {
@@ -104,6 +107,8 @@ advanced_auction_key_t *advanced_auction_key_parseFromJSON(cJSON *advanced_aucti
     // define the local variable for advanced_auction_key->country
     pinterest_rest_api_country__e country_local_nonprim = 0;
 
+    char *item_id_local_str = NULL;
+
     // define the local variable for advanced_auction_key->language
     pinterest_rest_api_language__e language_local_nonprim = 0;
 
@@ -147,16 +152,26 @@ advanced_auction_key_t *advanced_auction_key_parseFromJSON(cJSON *advanced_aucti
     language_local_nonprim = language_parseFromJSON(language); //custom
 
 
+    if (item_id && !cJSON_IsNull(item_id)) item_id_local_str = strdup(item_id->valuestring);
+
     advanced_auction_key_local_var = advanced_auction_key_create_internal (
         country_local_nonprim,
-        strdup(item_id->valuestring),
+        item_id_local_str,
         language_local_nonprim
         );
+
+    if (!advanced_auction_key_local_var) {
+        goto end;
+    }
 
     return advanced_auction_key_local_var;
 end:
     if (country_local_nonprim) {
         country_local_nonprim = 0;
+    }
+    if (item_id_local_str) {
+        free(item_id_local_str);
+        item_id_local_str = NULL;
     }
     if (language_local_nonprim) {
         language_local_nonprim = 0;

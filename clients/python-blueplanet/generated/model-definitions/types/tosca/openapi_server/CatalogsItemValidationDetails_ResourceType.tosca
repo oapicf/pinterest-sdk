@@ -18,7 +18,7 @@ resourceTypes {
     properties {
         attribute_name {
           type = NullableCatalogsItemFieldType
-          description = ""
+          description = "Attribute that has a validation issue."
           optional = true
         }
         provided_value {

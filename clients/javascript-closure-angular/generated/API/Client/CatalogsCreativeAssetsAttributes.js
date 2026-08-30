@@ -83,11 +83,18 @@ API.Client.CatalogsCreativeAssetsAttributes.prototype.link;
 API.Client.CatalogsCreativeAssetsAttributes.prototype.title;
 
 /**
- * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+ * Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsCreativeAssetsAttributes.prototype.visibility;
+
+/**
+ * AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
+ * @type {!Array<!API.Client.CatalogsAiContentDisclosure>}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsAttributes.prototype.aiDisclosures;
 
 /**
  * The creative assets image.

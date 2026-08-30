@@ -5,7 +5,7 @@ Protected Class InviteAssetsSummary
 		#tag Note
 			List of ad account IDs and respective permission levels that will be assigned.
 		#tag EndNote
-		ad_accounts() As OpenAPIClient.Models.InviteAssetsSummaryAdAccountsInner
+		ad_accounts() As OpenAPIClient.Models.InviteAssetsSummaryItem
 	#tag EndProperty
 
 
@@ -13,7 +13,7 @@ Protected Class InviteAssetsSummary
 		#tag Note
 			List of profile IDs and respective permission levels that will be assigned.
 		#tag EndNote
-		profiles() As OpenAPIClient.Models.InviteAssetsSummaryProfilesInner
+		profiles() As OpenAPIClient.Models.InviteAssetsSummaryItem
 	#tag EndProperty
 
 
@@ -58,7 +58,7 @@ Protected Class InviteAssetsSummary
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="InviteAssetsSummaryAdAccountsInner"
+			Type="InviteAssetsSummaryItem"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -66,7 +66,7 @@ Protected Class InviteAssetsSummary
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="InviteAssetsSummaryProfilesInner"
+			Type="InviteAssetsSummaryItem"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

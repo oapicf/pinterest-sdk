@@ -16,9 +16,9 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.NotificationPostRequest
 import org.openapitools.server.api.model.NotificationResponse
+import org.openapitools.server.api.model.PinterestLibError
 
 class NotificationApiVertxProxyHandler(private val vertx: Vertx, private val service: NotificationApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long

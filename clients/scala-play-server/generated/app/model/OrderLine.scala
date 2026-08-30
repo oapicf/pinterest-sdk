@@ -6,6 +6,7 @@ import play.api.libs.json._
   * Represents the Swagger definition for OrderLine.
   * @param adAccountId Ad account ID.
   * @param budget Order line budget in micro currency.
+  * @param campaignIds Associated List of campaign IDs.
   * @param endTime End time. Unix timestamp.
   * @param id Order line ID.
   * @param name Order line name.
@@ -15,50 +16,24 @@ import play.api.libs.json._
   * @param startTime Start time. Unix timestamp.
   * @param status Order line status.
   * @param `type` Always \"orderline\".
-  * @param campaignIds Associated List of campaign IDs.
-  * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class OrderLine(
-  adAccountId: Option[String],
+  adAccountId: String,
   budget: Option[BigDecimal],
+  campaignIds: List[String],
   endTime: Option[BigDecimal],
-  id: Option[String],
+  id: String,
   name: Option[String],
   paidBudget: Option[BigDecimal],
   paidType: Option[OrderLinePaidType],
   purchaseOrderId: Option[String],
   startTime: Option[BigDecimal],
-  status: Option[OrderLineStatus],
-  `type`: Option[String],
-  campaignIds: List[String]
-  additionalProperties: 
+  status: OrderLineStatus,
+  `type`: String
 )
 
 object OrderLine {
-  implicit lazy val orderLineJsonFormat: Format[OrderLine] = {
-    val realJsonFormat = Json.format[OrderLine]
-    val declaredPropNames = Set("adAccountId", "budget", "endTime", "id", "name", "paidBudget", "paidType", "purchaseOrderId", "startTime", "status", "`type`", "campaignIds")
-    
-    Format(
-      Reads {
-        case JsObject(xs) =>
-          val declaredProps = xs.filterKeys(declaredPropNames)
-          val additionalProps = JsObject(xs -- declaredPropNames)
-          val restructuredProps = declaredProps + ("additionalProperties" -> additionalProps)
-          val newObj = JsObject(restructuredProps)
-          realJsonFormat.reads(newObj)
-        case _ =>
-          JsError("error.expected.jsobject")
-      },
-      Writes { orderLine =>
-        val jsObj = realJsonFormat.writes(orderLine)
-        val additionalProps = jsObj.value("additionalProperties").as[JsObject]
-        val declaredProps = jsObj - "additionalProperties"
-        val newObj = declaredProps ++ additionalProps
-        newObj
-      }
-    )
-  }
+  implicit lazy val orderLineJsonFormat: Format[OrderLine] = Json.format[OrderLine]
 }
 

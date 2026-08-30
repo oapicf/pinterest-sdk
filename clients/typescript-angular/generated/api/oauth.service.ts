@@ -17,9 +17,15 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { ConversionAccessTokenResponse } from '../model/conversionAccessTokenResponse';
+import { ConversionAccessToken } from '../model/conversionAccessToken';
 // @ts-ignore
-import { OauthAccessTokenResponse } from '../model/oauthAccessTokenResponse';
+import { OauthAccessToken } from '../model/oauthAccessToken';
+// @ts-ignore
+import { PinterestLibError } from '../model/pinterestLibError';
+// @ts-ignore
+import { TokenGrantType } from '../model/tokenGrantType';
+// @ts-ignore
+import { TokenTypeHint } from '../model/tokenTypeHint';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -45,9 +51,9 @@ export class OauthService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public oauthConversionToken(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<ConversionAccessTokenResponse>;
-    public oauthConversionToken(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ConversionAccessTokenResponse>>;
-    public oauthConversionToken(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ConversionAccessTokenResponse>>;
+    public oauthConversionToken(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<ConversionAccessToken>;
+    public oauthConversionToken(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ConversionAccessToken>>;
+    public oauthConversionToken(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ConversionAccessToken>>;
     public oauthConversionToken(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
@@ -80,7 +86,7 @@ export class OauthService extends BaseService {
 
         let localVarPath = `/oauth/conversion_token`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<ConversionAccessTokenResponse>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<ConversionAccessToken>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -95,17 +101,22 @@ export class OauthService extends BaseService {
 
     /**
      * Generate OAuth access token
-     * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for &lt;a href&#x3D;\&#39;/docs/getting-started/set-up-authentication-and-authorization/\&#39; target&#x3D;\&#39;blank\&#39;&gt;requesting and refreshing tokens&lt;/a&gt;.  &lt;strong&gt;Note:&lt;/strong&gt; If your app was created &lt;strong&gt;before September 25, 2025&lt;/strong&gt;, make sure to set the &lt;code&gt;continuous_refresh&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use &lt;a href&#x3D;\&#39;/docs/developer-tools/token-debugger/\&#39; target&#x3D;\&#39;blank\&#39;&gt;Token Debugger&lt;/a&gt; to validate and inspect your access token.
+     * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the &#x60;continuous_refresh&#x60; parameter to &#x60;true&#x60; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
      * @endpoint post /oauth/token
      * @param grantType 
+     * @param code 
+     * @param continuousRefresh   If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token.
+     * @param redirectUri 
+     * @param refreshToken 
+     * @param scope 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public oauthToken(grantType: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<OauthAccessTokenResponse>;
-    public oauthToken(grantType: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<OauthAccessTokenResponse>>;
-    public oauthToken(grantType: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<OauthAccessTokenResponse>>;
-    public oauthToken(grantType: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public oauthToken(grantType: TokenGrantType, code?: string, continuousRefresh?: string, redirectUri?: string, refreshToken?: string, scope?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<OauthAccessToken>;
+    public oauthToken(grantType: TokenGrantType, code?: string, continuousRefresh?: string, redirectUri?: string, refreshToken?: string, scope?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<OauthAccessToken>>;
+    public oauthToken(grantType: TokenGrantType, code?: string, continuousRefresh?: string, redirectUri?: string, refreshToken?: string, scope?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<OauthAccessToken>>;
+    public oauthToken(grantType: TokenGrantType, code?: string, continuousRefresh?: string, redirectUri?: string, refreshToken?: string, scope?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (grantType === null || grantType === undefined) {
             throw new Error('Required parameter grantType was null or undefined when calling oauthToken.');
         }
@@ -142,8 +153,23 @@ export class OauthService extends BaseService {
             localVarFormParams = new HttpParams({encoder: this.encoder});
         }
 
+        if (code !== undefined) {
+            localVarFormParams = localVarFormParams.append('code', <any>code) as any || localVarFormParams;
+        }
+        if (continuousRefresh !== undefined) {
+            localVarFormParams = localVarFormParams.append('continuous_refresh', <any>continuousRefresh) as any || localVarFormParams;
+        }
         if (grantType !== undefined) {
             localVarFormParams = localVarFormParams.append('grant_type', <any>grantType) as any || localVarFormParams;
+        }
+        if (redirectUri !== undefined) {
+            localVarFormParams = localVarFormParams.append('redirect_uri', <any>redirectUri) as any || localVarFormParams;
+        }
+        if (refreshToken !== undefined) {
+            localVarFormParams = localVarFormParams.append('refresh_token', <any>refreshToken) as any || localVarFormParams;
+        }
+        if (scope !== undefined) {
+            localVarFormParams = localVarFormParams.append('scope', <any>scope) as any || localVarFormParams;
         }
 
         let responseType_: 'text' | 'json' | 'blob' = 'json';
@@ -159,7 +185,7 @@ export class OauthService extends BaseService {
 
         let localVarPath = `/oauth/token`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<OauthAccessTokenResponse>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<OauthAccessToken>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: localVarConvertFormParamsToString ? localVarFormParams.toString() : localVarFormParams,
@@ -183,10 +209,10 @@ export class OauthService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public tokenRevoke(token: string, tokenTypeHint?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public tokenRevoke(token: string, tokenTypeHint?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public tokenRevoke(token: string, tokenTypeHint?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public tokenRevoke(token: string, tokenTypeHint?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public tokenRevoke(token: string, tokenTypeHint?: TokenTypeHint, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public tokenRevoke(token: string, tokenTypeHint?: TokenTypeHint, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public tokenRevoke(token: string, tokenTypeHint?: TokenTypeHint, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public tokenRevoke(token: string, tokenTypeHint?: TokenTypeHint, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (token === null || token === undefined) {
             throw new Error('Required parameter token was null or undefined when calling tokenRevoke.');
         }

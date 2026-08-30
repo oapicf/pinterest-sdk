@@ -11,39 +11,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AudienceSubcategory  {
   
- /**
-  * Subinterest ID.
-  */
-  @ApiModelProperty(example = "958862518888", value = "Subinterest ID.")
+  @ApiModelProperty(value = "")
   private String id;
 
- /**
-  * Subinterest affinity index.
-  */
-  @ApiModelProperty(example = "1.2", value = "Subinterest affinity index.")
+  @ApiModelProperty(value = "")
   @Valid
   private BigDecimal index;
 
- /**
-  * Interest unique key (same as ID).
-  */
-  @ApiModelProperty(example = "958862518888", value = "Interest unique key (same as ID).")
+  @ApiModelProperty(value = "")
   private String key;
 
- /**
-  * Subinterest name.
-  */
-  @ApiModelProperty(example = "travel destinations", value = "Subinterest name.")
+  @ApiModelProperty(value = "")
   private String name;
 
- /**
-  * Subinterest's percent of category's total audience.
-  */
-  @ApiModelProperty(example = "0.482", value = "Subinterest's percent of category's total audience.")
+  @ApiModelProperty(value = "")
   @Valid
   private BigDecimal ratio;
  /**
-  * Subinterest ID.
+  * Get id
   * @return id
   */
   @JsonProperty("id")
@@ -67,7 +52,7 @@ public class AudienceSubcategory  {
   }
 
  /**
-  * Subinterest affinity index.
+  * Get index
   * @return index
   */
   @JsonProperty("index")
@@ -91,7 +76,7 @@ public class AudienceSubcategory  {
   }
 
  /**
-  * Interest unique key (same as ID).
+  * Get key
   * @return key
   */
   @JsonProperty("key")
@@ -115,7 +100,7 @@ public class AudienceSubcategory  {
   }
 
  /**
-  * Subinterest name.
+  * Get name
   * @return name
   */
   @JsonProperty("name")
@@ -139,7 +124,7 @@ public class AudienceSubcategory  {
   }
 
  /**
-  * Subinterest&#39;s percent of category&#39;s total audience.
+  * Get ratio
   * @return ratio
   */
   @JsonProperty("ratio")
@@ -203,10 +188,7 @@ public class AudienceSubcategory  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

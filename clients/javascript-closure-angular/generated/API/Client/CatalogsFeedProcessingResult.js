@@ -12,16 +12,11 @@ API.Client.CatalogsFeedProcessingResult = function() {}
 API.Client.CatalogsFeedProcessingResult.prototype.createdAt;
 
 /**
+ * ID of the feed processing result.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsFeedProcessingResult.prototype.id;
-
-/**
- * @type {!Date}
- * @export
- */
-API.Client.CatalogsFeedProcessingResult.prototype.updatedAt;
 
 /**
  * @type {!API.Client.CatalogsFeedIngestionDetails}
@@ -40,6 +35,12 @@ API.Client.CatalogsFeedProcessingResult.prototype.productCounts;
  * @export
  */
 API.Client.CatalogsFeedProcessingResult.prototype.status;
+
+/**
+ * @type {!Date}
+ * @export
+ */
+API.Client.CatalogsFeedProcessingResult.prototype.updatedAt;
 
 /**
  * @type {!API.Client.CatalogsFeedValidationDetails}

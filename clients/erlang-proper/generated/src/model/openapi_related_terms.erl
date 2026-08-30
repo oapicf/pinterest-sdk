@@ -11,7 +11,7 @@
 -type openapi_related_terms() ::
   [ {'id', binary() }
   | {'related_term_count', integer() }
-  | {'related_terms_list', list(openapi_related_terms_related_terms_list_inner:openapi_related_terms_related_terms_list_inner()) }
+  | {'related_terms_list', list(openapi_related_terms_related_terms_list_items:openapi_related_terms_related_terms_list_items()) }
   ].
 
 
@@ -21,7 +21,7 @@ openapi_related_terms() ->
 openapi_related_terms(Fields) ->
   Default = [ {'id', binary() }
             , {'related_term_count', integer() }
-            , {'related_terms_list', list(openapi_related_terms_related_terms_list_inner:openapi_related_terms_related_terms_list_inner()) }
+            , {'related_terms_list', list(openapi_related_terms_related_terms_list_items:openapi_related_terms_related_terms_list_items()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

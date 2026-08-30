@@ -15,7 +15,7 @@
 
 typedef struct campaigns_list_200_response_t campaigns_list_200_response_t;
 
-#include "campaign_response.h"
+#include "campaign.h"
 
 
 

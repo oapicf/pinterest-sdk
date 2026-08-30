@@ -9,6 +9,9 @@ import java.time.LocalDate;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.Currency;
 
+/**
+ * A Salesforce SSIO order line.
+ **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SSIOOrderLine   {
   
@@ -337,9 +340,6 @@ public class SSIOOrderLine   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

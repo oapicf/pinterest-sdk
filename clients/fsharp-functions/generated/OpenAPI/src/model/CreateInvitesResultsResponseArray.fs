@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.CreateInvitesResultsResponseArrayItemsInner
+open OpenAPI.Model.InviteActionResultItem
 
 module CreateInvitesResultsResponseArray =
 
@@ -12,7 +12,7 @@ module CreateInvitesResultsResponseArray =
   [<CLIMutable>]
   type CreateInvitesResultsResponseArray = {
     [<JsonProperty(PropertyName = "items")>]
-    Items : CreateInvitesResultsResponseArrayItemsInner[];
+    Items : InviteActionResultItem[];
   }
 
   //#endregion

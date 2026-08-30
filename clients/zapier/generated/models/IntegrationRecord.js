@@ -46,7 +46,8 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}id`,
-                label: `[${labelPrefix}id]`,
+                label: `Integration record ID. - [${labelPrefix}id]`,
+                required: true,
                 type: 'string',
             },
             {

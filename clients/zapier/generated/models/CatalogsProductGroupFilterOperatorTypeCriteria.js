@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const FilterOperatorType = require('../models/FilterOperatorType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -6,12 +7,7 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}filter_operator_type`,
-                label: `[${labelPrefix}filter_operator_type]`,
-                type: 'string',
-                choices: [
-                    'IS',
-                    'CONTAINS',
-                ],
+                ...FilterOperatorType.fields(`${keyPrefix}filter_operator_type`, isInput),
             },
             {
                 key: `${keyPrefix}negated`,

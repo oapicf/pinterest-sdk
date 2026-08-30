@@ -11,33 +11,31 @@
 part of openapi.api;
 
 /// Specifies the type of followees to be kept when filtering them.
-class UserFollowingFeedType {
-  /// Instantiate a new enum with the provided [value].
-  const UserFollowingFeedType._(this.value);
+enum UserFollowingFeedType {
+  ALL._(r'ALL'),
+  RANKED._(r'RANKED'),
+  CREATOR_ONLY._(r'CREATOR_ONLY'),
+  RANKED_CREATOR_ONLY._(r'RANKED_CREATOR_ONLY'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const UserFollowingFeedType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const ALL = UserFollowingFeedType._(r'ALL');
-  static const RANKED = UserFollowingFeedType._(r'RANKED');
-  static const CREATOR_ONLY = UserFollowingFeedType._(r'CREATOR_ONLY');
-  static const RANKED_CREATOR_ONLY = UserFollowingFeedType._(r'RANKED_CREATOR_ONLY');
-
-  /// List of all possible values in this [enum][UserFollowingFeedType].
-  static const values = <UserFollowingFeedType>[
-    ALL,
-    RANKED,
-    CREATOR_ONLY,
-    RANKED_CREATOR_ONLY,
-  ];
-
+  /// Returns the instance of [UserFollowingFeedType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static UserFollowingFeedType? fromJson(dynamic value) => UserFollowingFeedTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [UserFollowingFeedType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<UserFollowingFeedType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <UserFollowingFeedType>[];
     if (json is List && json.isNotEmpty) {
@@ -59,9 +57,11 @@ class UserFollowingFeedTypeTypeTransformer {
 
   const UserFollowingFeedTypeTypeTransformer._();
 
-  String encode(UserFollowingFeedType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(UserFollowingFeedType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a UserFollowingFeedType.
+  /// Returns the instance of [UserFollowingFeedType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -70,6 +70,9 @@ class UserFollowingFeedTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   UserFollowingFeedType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is UserFollowingFeedType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'ALL': return UserFollowingFeedType.ALL;
@@ -85,7 +88,7 @@ class UserFollowingFeedTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [UserFollowingFeedTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static UserFollowingFeedTypeTypeTransformer? _instance;
 }
 

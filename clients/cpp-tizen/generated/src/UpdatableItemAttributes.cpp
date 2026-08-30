@@ -94,7 +94,7 @@ UpdatableItemAttributes::__init()
 	//free_shipping_limit = std::string();
 	//gender = std::string();
 	//google_product_category = std::string();
-	//gtin = new UpdatableItemAttributes_gtin();
+	//gtin = new UpdatableItemAttributesGtin();
 	//id = std::string();
 	//installment_price = std::string();
 	//ios_deep_link = std::string();
@@ -1443,11 +1443,11 @@ UpdatableItemAttributes::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("UpdatableItemAttributes_gtin")) {
-			jsonToValue(&gtin, node, "UpdatableItemAttributes_gtin", "UpdatableItemAttributes_gtin");
+		if (isprimitive("UpdatableItemAttributesGtin")) {
+			jsonToValue(&gtin, node, "UpdatableItemAttributesGtin", "UpdatableItemAttributesGtin");
 		} else {
 			
-			UpdatableItemAttributes_gtin* obj = static_cast<UpdatableItemAttributes_gtin*> (&gtin);
+			UpdatableItemAttributesGtin* obj = static_cast<UpdatableItemAttributesGtin*> (&gtin);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -2471,13 +2471,13 @@ UpdatableItemAttributes::toJson()
 	}
 	const gchar *google_product_categoryKey = "google_product_category";
 	json_object_set_member(pJsonObject, google_product_categoryKey, node);
-	if (isprimitive("UpdatableItemAttributes_gtin")) {
-		UpdatableItemAttributes_gtin obj = getGtin();
-		node = converttoJson(&obj, "UpdatableItemAttributes_gtin", "");
+	if (isprimitive("UpdatableItemAttributesGtin")) {
+		UpdatableItemAttributesGtin obj = getGtin();
+		node = converttoJson(&obj, "UpdatableItemAttributesGtin", "");
 	}
 	else {
 		
-		UpdatableItemAttributes_gtin obj = static_cast<UpdatableItemAttributes_gtin> (getGtin());
+		UpdatableItemAttributesGtin obj = static_cast<UpdatableItemAttributesGtin> (getGtin());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -3636,14 +3636,14 @@ UpdatableItemAttributes::setGoogleProductCategory(std::string  google_product_ca
 	this->google_product_category = google_product_category;
 }
 
-UpdatableItemAttributes_gtin
+UpdatableItemAttributesGtin
 UpdatableItemAttributes::getGtin()
 {
 	return gtin;
 }
 
 void
-UpdatableItemAttributes::setGtin(UpdatableItemAttributes_gtin  gtin)
+UpdatableItemAttributes::setGtin(UpdatableItemAttributesGtin  gtin)
 {
 	this->gtin = gtin;
 }

@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsReportParameters (
-    _catalogType: CatalogsType,
+    _catalogType: String,
     _report: CatalogsHotelReportParametersReport
 )
 object CatalogsReportParameters {

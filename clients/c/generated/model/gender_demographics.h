@@ -19,17 +19,17 @@ typedef struct gender_demographics_t gender_demographics_t;
 
 
 typedef struct gender_demographics_t {
-    double female; //numeric
-    double male; //numeric
-    double unspecified; //numeric
+    double *female; //numeric
+    double *male; //numeric
+    double *unspecified; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } gender_demographics_t;
 
 __attribute__((deprecated)) gender_demographics_t *gender_demographics_create(
-    double female,
-    double male,
-    double unspecified
+    double *female,
+    double *male,
+    double *unspecified
 );
 
 void gender_demographics_free(gender_demographics_t *gender_demographics);

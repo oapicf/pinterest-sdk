@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Label ID. | [default to undefined]
-**status** | **string** | Set status to &#x60;ARCHIVED&#x60; to remove the label from the parent entity. | [optional] [default to undefined]
-**value** | **string** | &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; value field will be deprecated. Label name. 100-character limit. | [optional] [default to undefined]
+**parent_id** | **string** | Unique identifier of the asset you are labelling. Currently, you can only label campaigns. | [default to undefined]
+**status** | [**LabelStatusBulkUpdate**](LabelStatusBulkUpdate.md) |  | [default to undefined]
 
 ## Example
 
@@ -16,8 +16,8 @@ import { LabelBulkUpdateRequest } from './api';
 
 const instance: LabelBulkUpdateRequest = {
     id,
+    parent_id,
     status,
-    value,
 };
 ```
 

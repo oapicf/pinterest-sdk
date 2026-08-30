@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -71,6 +71,8 @@ public enum CustomizableCTAType {
         
         FIND_A_LOCATION("FIND_A_LOCATION"),
         
+        FIND_RETAILERS("FIND_RETAILERS"),
+        
         GET_DEAL("GET_DEAL"),
         
         GET_RECIPE("GET_RECIPE"),
@@ -81,7 +83,9 @@ public enum CustomizableCTAType {
         
         PLAY_GAME("PLAY_GAME"),
         
-        TRY_IT("TRY_IT");
+        TRY_IT("TRY_IT"),
+        
+        TAKE_A_PEEK("TAKE_A_PEEK");
 
 private String value;
 

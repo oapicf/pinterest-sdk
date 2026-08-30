@@ -24,6 +24,7 @@ import HelperCodecs._
 import org.openapitools.client.api.Error
 import org.openapitools.client.api.OrderLine
 import org.openapitools.client.api.OrderLinesList200Response
+import org.openapitools.client.api.PaginationOrder
 
 object OrderLinesApi {
 
@@ -31,10 +32,10 @@ object OrderLinesApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def orderLinesGet(host: String, adAccountId: String, orderLineId: String): Task[OrderLine] = {
+  def orderLinesGet(host: String, orderLineId: String, adAccountId: String): Task[OrderLine] = {
     implicit val returnTypeDecoder: EntityDecoder[OrderLine] = jsonOf[OrderLine]
 
-    val path = "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "order_line_id" + "\\}",escape(orderLineId.toString))
+    val path = "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}".replaceAll("\\{" + "order_line_id" + "\\}",escape(orderLineId.toString)).replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
     val httpMethod = Method.GET
     val contentType = `Content-Type`(MediaType.`application/json`)
@@ -52,7 +53,7 @@ object OrderLinesApi {
     } yield resp
   }
 
-  def orderLinesList(host: String, adAccountId: String, pageSize: Integer = 25, order: String, bookmark: String)(implicit pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[String], bookmarkQuery: QueryParam[String]): Task[OrderLinesList200Response] = {
+  def orderLinesList(host: String, adAccountId: String, bookmark: String, pageSize: Integer = 25, order: PaginationOrder)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[PaginationOrder]): Task[OrderLinesList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[OrderLinesList200Response] = jsonOf[OrderLinesList200Response]
 
     val path = "/ad_accounts/{ad_account_id}/order_lines".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -62,7 +63,7 @@ object OrderLinesApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -80,10 +81,10 @@ class HttpServiceOrderLinesApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def orderLinesGet(adAccountId: String, orderLineId: String): Task[OrderLine] = {
+  def orderLinesGet(orderLineId: String, adAccountId: String): Task[OrderLine] = {
     implicit val returnTypeDecoder: EntityDecoder[OrderLine] = jsonOf[OrderLine]
 
-    val path = "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "order_line_id" + "\\}",escape(orderLineId.toString))
+    val path = "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}".replaceAll("\\{" + "order_line_id" + "\\}",escape(orderLineId.toString)).replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
     val httpMethod = Method.GET
     val contentType = `Content-Type`(MediaType.`application/json`)
@@ -101,7 +102,7 @@ class HttpServiceOrderLinesApi(service: HttpService) {
     } yield resp
   }
 
-  def orderLinesList(adAccountId: String, pageSize: Integer = 25, order: String, bookmark: String)(implicit pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[String], bookmarkQuery: QueryParam[String]): Task[OrderLinesList200Response] = {
+  def orderLinesList(adAccountId: String, bookmark: String, pageSize: Integer = 25, order: PaginationOrder)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[PaginationOrder]): Task[OrderLinesList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[OrderLinesList200Response] = jsonOf[OrderLinesList200Response]
 
     val path = "/ad_accounts/{ad_account_id}/order_lines".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -111,7 +112,7 @@ class HttpServiceOrderLinesApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

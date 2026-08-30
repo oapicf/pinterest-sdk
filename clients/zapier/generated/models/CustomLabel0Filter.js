@@ -5,12 +5,13 @@ module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            ...CatalogsProductGroupFilterOperatorTypeCriteria.fields(`${keyPrefix}CUSTOM_LABEL_0`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'CUSTOM_LABEL_0': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_0`)),
+            'CUSTOM_LABEL_0': utils.removeIfEmpty(CatalogsProductGroupFilterOperatorTypeCriteria.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_0`)),
         }
     },
 }

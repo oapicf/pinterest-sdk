@@ -81,7 +81,7 @@ TrendingKeywordsResponse::getTrends()
 }
 
 void
-TrendingKeywordsResponse::setTrends(std::list <TrendingKeyword> trends)
+TrendingKeywordsResponse::setTrends(std::list<TrendingKeyword> trends)
 {
 	this->trends = trends;
 }

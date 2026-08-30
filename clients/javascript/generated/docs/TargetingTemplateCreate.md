@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**autoTargetingEnabled** | **Boolean** | Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;. | [optional] [default to true]
+**autoTargetingEnabled** | **Boolean** | Enable auto-targeting for ad group. Also known as [\&quot;expanded targeting\&quot;](https://help.pinterest.com/en/business/article/expanded-targeting). | [optional] [default to true]
 **keywords** | [**[TargetingTemplateKeyword]**](TargetingTemplateKeyword.md) |  | [optional] 
-**name** | **String** | Name of targeting template. | 
+**name** | **String** | targeting template name | 
 **placementGroup** | [**PlacementGroupType**](PlacementGroupType.md) |  | [optional] 
-**targetingAttributes** | [**TargetingSpec**](TargetingSpec.md) |  | 
+**targetingAttributes** | [**TargetingSpecOptimal**](TargetingSpecOptimal.md) | targeting profile attributes | 
 **trackingUrls** | [**TrackingUrls**](TrackingUrls.md) |  | [optional] 
 
 

@@ -2,7 +2,7 @@
 Protected Class CurrencyFilter
 
 	#tag Property, Flags = &h0
-		CURRENCY As CatalogsProductGroupCurrencyCriteria
+		CURRENCY As OpenAPIClient.Models.CatalogsProductGroupCurrencyCriteria
 	#tag EndProperty
 
 

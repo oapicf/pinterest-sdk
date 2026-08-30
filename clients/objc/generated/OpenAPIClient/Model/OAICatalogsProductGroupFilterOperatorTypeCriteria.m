@@ -6,8 +6,6 @@
   self = [super init];
   if (self) {
     // initialize property's default value, if any
-    self.filterOperatorType = @"IS";
-    self.negated = @(NO);
     
   }
   return self;

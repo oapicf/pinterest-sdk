@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **BrandAccountsCreate**
-> BrandAccountsCreate200Response BrandAccountsCreate(business_hierarchy_id, brand_accounts_create_request)
+> BrandAccount BrandAccountsCreate(business_hierarchy_id, brand_account_create)
 
 Create a Brand Account
 
@@ -29,15 +29,15 @@ library(openapi)
 # Create a Brand Account
 #
 # prepare function argument(s)
-var_business_hierarchy_id <- "7009386637860" # character | business hierarchy node id
-var_brand_accounts_create_request <- brand_accounts_create_request$new("name_example", "username_example", Country$new(), "about_example", "website_example", Image_Base64$new("image/jpeg", "data_example")) # BrandAccountsCreateRequest | 
+var_business_hierarchy_id <- "business_hierarchy_id_example" # character | business hierarchy node id
+var_brand_account_create <- BrandAccountCreate$new(Country$new(), "name_example", "username_example", "about_example", BrandAccountProfileImage$new("image/jpeg", "data_example"), "website_example") # BrandAccountCreate | 
 
 api_instance <- BusinessAccessRelationshipsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BrandAccountsCreate(var_business_hierarchy_id, var_brand_accounts_create_requestdata_file = "result.txt")
-result <- api_instance$BrandAccountsCreate(var_business_hierarchy_id, var_brand_accounts_create_request)
+# result <- api_instance$BrandAccountsCreate(var_business_hierarchy_id, var_brand_account_createdata_file = "result.txt")
+result <- api_instance$BrandAccountsCreate(var_business_hierarchy_id, var_brand_account_create)
 dput(result)
 ```
 
@@ -46,11 +46,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_hierarchy_id** | **character**| business hierarchy node id | 
- **brand_accounts_create_request** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md)|  | 
+ **brand_account_create** | [**BrandAccountCreate**](BrandAccountCreate.md)|  | 
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](brand_accounts_create_200_response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -64,12 +64,17 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BrandAccountsUpdate**
-> BrandAccountsCreate200Response BrandAccountsUpdate(business_hierarchy_id, brand_account_id, brand_accounts_update_request)
+> BrandAccount BrandAccountsUpdate(brand_account_id, business_hierarchy_id, brand_account_update)
 
 Update a Brand Account
 
@@ -82,16 +87,16 @@ library(openapi)
 # Update a Brand Account
 #
 # prepare function argument(s)
-var_business_hierarchy_id <- "7009386637860" # character | business hierarchy node id
-var_brand_account_id <- "729090764583391194" # character | Unique identifier of a brand account.
-var_brand_accounts_update_request <- brand_accounts_update_request$new("name_example", "username_example", Country$new(), "about_example", "website_example", Image_Base64$new("image/jpeg", "data_example")) # BrandAccountsUpdateRequest | 
+var_brand_account_id <- "brand_account_id_example" # character | 
+var_business_hierarchy_id <- "business_hierarchy_id_example" # character | business hierarchy node id
+var_brand_account_update <- BrandAccountUpdate$new("about_example", Country$new(), "name_example", BrandAccountProfileImageUpdate$new("image/jpeg", "data_example"), "username_example", "website_example") # BrandAccountUpdate | 
 
 api_instance <- BusinessAccessRelationshipsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BrandAccountsUpdate(var_business_hierarchy_id, var_brand_account_id, var_brand_accounts_update_requestdata_file = "result.txt")
-result <- api_instance$BrandAccountsUpdate(var_business_hierarchy_id, var_brand_account_id, var_brand_accounts_update_request)
+# result <- api_instance$BrandAccountsUpdate(var_brand_account_id, var_business_hierarchy_id, var_brand_account_updatedata_file = "result.txt")
+result <- api_instance$BrandAccountsUpdate(var_brand_account_id, var_business_hierarchy_id, var_brand_account_update)
 dput(result)
 ```
 
@@ -99,13 +104,13 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **brand_account_id** | **character**|  | 
  **business_hierarchy_id** | **character**| business hierarchy node id | 
- **brand_account_id** | **character**| Unique identifier of a brand account. | 
- **brand_accounts_update_request** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md)|  | 
+ **brand_account_update** | [**BrandAccountUpdate**](BrandAccountUpdate.md)|  | 
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](brand_accounts_create_200_response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -119,17 +124,17 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **401** | Not authenticated to update Brand Account |  -  |
-| **403** | Not authorized to update Brand Account |  -  |
-| **404** | Brand account not found |  -  |
-| **409** | This account is not a brand account. |  -  |
-| **429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **409** | The request could not be processed because of a conflict in the current state of the resource. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **DeleteBusinessMembership**
-> DeletedMembersResponse DeleteBusinessMembership(business_id, members_to_delete_body)
+> DeleteBusinessMembership200Response DeleteBusinessMembership(business_id, delete_business_membership_body)
 
 Terminate business memberships
 
@@ -142,15 +147,15 @@ library(openapi)
 # Terminate business memberships
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Business id
-var_members_to_delete_body <- MembersToDeleteBody$new(c(MembersToDeleteBody_members_inner$new(BusinessRoleForMembers$new(), "member_id_example"))) # MembersToDeleteBody | List of members with role to delete.
+var_business_id <- "business_id_example" # character | Business id
+var_delete_business_membership_body <- DeleteBusinessMembershipBody$new(c(DeleteBusinessMembershipMember$new(BusinessRoleForMembers$new(), "member_id_example"))) # DeleteBusinessMembershipBody | 
 
 api_instance <- BusinessAccessRelationshipsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$DeleteBusinessMembership(var_business_id, var_members_to_delete_bodydata_file = "result.txt")
-result <- api_instance$DeleteBusinessMembership(var_business_id, var_members_to_delete_body)
+# result <- api_instance$DeleteBusinessMembership(var_business_id, var_delete_business_membership_bodydata_file = "result.txt")
+result <- api_instance$DeleteBusinessMembership(var_business_id, var_delete_business_membership_body)
 dput(result)
 ```
 
@@ -159,11 +164,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Business id | 
- **members_to_delete_body** | [**MembersToDeleteBody**](MembersToDeleteBody.md)| List of members with role to delete. | 
+ **delete_business_membership_body** | [**DeleteBusinessMembershipBody**](DeleteBusinessMembershipBody.md)|  | 
 
 ### Return type
 
-[**DeletedMembersResponse**](DeletedMembersResponse.md)
+[**DeleteBusinessMembership200Response**](delete_business_membership_200_response.md)
 
 ### Authorization
 
@@ -177,11 +182,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **DeleteBusinessPartners**
-> DeletePartnersResponse DeleteBusinessPartners(business_id, delete_partners_request)
+> DeleteBusinessPartners DeleteBusinessPartners(business_id, delete_business_partners_delete)
 
 Terminate business partnerships
 
@@ -194,15 +199,15 @@ library(openapi)
 # Terminate business partnerships
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_delete_partners_request <- DeletePartnersRequest$new(c("partner_ids_example"), "partner_type_example") # DeletePartnersRequest | An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_delete_business_partners_delete <- DeleteBusinessPartnersDelete$new(c("partner_ids_example"), NullablePartnerType$new()) # DeleteBusinessPartnersDelete | 
 
 api_instance <- BusinessAccessRelationshipsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$DeleteBusinessPartners(var_business_id, var_delete_partners_requestdata_file = "result.txt")
-result <- api_instance$DeleteBusinessPartners(var_business_id, var_delete_partners_request)
+# result <- api_instance$DeleteBusinessPartners(var_business_id, var_delete_business_partners_deletedata_file = "result.txt")
+result <- api_instance$DeleteBusinessPartners(var_business_id, var_delete_business_partners_delete)
 dput(result)
 ```
 
@@ -211,11 +216,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
- **delete_partners_request** | [**DeletePartnersRequest**](DeletePartnersRequest.md)| An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete.  | 
+ **delete_business_partners_delete** | [**DeleteBusinessPartnersDelete**](DeleteBusinessPartnersDelete.md)|  | 
 
 ### Return type
 
-[**DeletePartnersResponse**](DeletePartnersResponse.md)
+[**DeleteBusinessPartners**](DeleteBusinessPartners.md)
 
 ### Authorization
 
@@ -229,12 +234,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | A supplied partner id doesn&#39;t exist |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **GetBusinessEmployers**
-> GetBusinessEmployers200Response GetBusinessEmployers(page_size = 25, bookmark = var.bookmark)
+> GetBusinessEmployers200Response GetBusinessEmployers(assets_summary = TRUE, bookmark = var.bookmark, page_size = 25)
 
 List business employers for user
 
@@ -247,15 +252,16 @@ library(openapi)
 # List business employers for user
 #
 # prepare function argument(s)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_assets_summary <- TRUE # character | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BusinessAccessRelationshipsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$GetBusinessEmployers(page_size = var_page_size, bookmark = var_bookmarkdata_file = "result.txt")
-result <- api_instance$GetBusinessEmployers(page_size = var_page_size, bookmark = var_bookmark)
+# result <- api_instance$GetBusinessEmployers(assets_summary = var_assets_summary, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$GetBusinessEmployers(assets_summary = var_assets_summary, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -263,8 +269,9 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **assets_summary** | **character**| Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to TRUE]
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -282,11 +289,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **GetBusinessMembers**
-> GetBusinessMembers200Response GetBusinessMembers(business_id, fetch_system_users = FALSE, assets_summary = FALSE, business_roles = var.business_roles, member_ids = var.member_ids, start_index = 0, bookmark = var.bookmark, page_size = 25)
+> GetBusinessEmployers200Response GetBusinessMembers(business_id, fetch_system_users = FALSE, assets_summary = FALSE, business_roles = var.business_roles, member_ids = var.member_ids, start_index = 0, bookmark = var.bookmark, page_size = 25)
 
 Get business members
 
@@ -299,14 +311,14 @@ library(openapi)
 # Get business members
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
 var_fetch_system_users <- FALSE # character | Fetches system users if True. Fetches regular user employees if False. (Optional)
 var_assets_summary <- FALSE # character | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (Optional)
 var_business_roles <- c(MemberBusinessRole$new()) # array[MemberBusinessRole] | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (Optional)
-var_member_ids <- "00101010101,2222220101" # character | A list of business members ids separated by comma. (Optional)
+var_member_ids <- "member_ids_example" # character | A list of business members ids separated by comma. (Optional)
 var_start_index <- 0 # integer | An index to start fetching the results from. Only the results starting from this index will be returned. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BusinessAccessRelationshipsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -328,11 +340,11 @@ Name | Type | Description  | Notes
  **member_ids** | **character**| A list of business members ids separated by comma. | [optional] 
  **start_index** | **integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**GetBusinessMembers200Response**](get_business_members_200_response.md)
+[**GetBusinessEmployers200Response**](get_business_employers_200_response.md)
 
 ### Authorization
 
@@ -346,11 +358,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **GetBusinessPartners**
-> GetBusinessPartners200Response GetBusinessPartners(business_id, assets_summary = FALSE, partner_type = var.partner_type, partner_ids = var.partner_ids, start_index = 0, page_size = 25, bookmark = var.bookmark)
+> GetBusinessEmployers200Response GetBusinessPartners(business_id, assets_summary = FALSE, partner_type = var.partner_type, partner_ids = var.partner_ids, start_index = 0, sort_ascending = var.sort_ascending, bookmark = var.bookmark, page_size = 25)
 
 Get business partners
 
@@ -363,20 +380,21 @@ library(openapi)
 # Get business partners
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
 var_assets_summary <- FALSE # character | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (Optional)
-var_partner_type <- PartnerType$new() # PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (Optional)
-var_partner_ids <- "00101010101,2222220101" # character | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. (Optional)
+var_partner_type <- PartnerType$new() # PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (Optional)
+var_partner_ids <- "partner_ids_example" # character | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. (Optional)
 var_start_index <- 0 # integer | An index to start fetching the results from. Only the results starting from this index will be returned. (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_sort_ascending <- "sort_ascending_example" # character | Sort ascending. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BusinessAccessRelationshipsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$GetBusinessPartners(var_business_id, assets_summary = var_assets_summary, partner_type = var_partner_type, partner_ids = var_partner_ids, start_index = var_start_index, page_size = var_page_size, bookmark = var_bookmarkdata_file = "result.txt")
-result <- api_instance$GetBusinessPartners(var_business_id, assets_summary = var_assets_summary, partner_type = var_partner_type, partner_ids = var_partner_ids, start_index = var_start_index, page_size = var_page_size, bookmark = var_bookmark)
+# result <- api_instance$GetBusinessPartners(var_business_id, assets_summary = var_assets_summary, partner_type = var_partner_type, partner_ids = var_partner_ids, start_index = var_start_index, sort_ascending = var_sort_ascending, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$GetBusinessPartners(var_business_id, assets_summary = var_assets_summary, partner_type = var_partner_type, partner_ids = var_partner_ids, start_index = var_start_index, sort_ascending = var_sort_ascending, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -386,15 +404,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
  **assets_summary** | **character**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to FALSE]
- **partner_type** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
+ **partner_type** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
  **partner_ids** | **character**| A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional] 
  **start_index** | **integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **sort_ascending** | **character**| Sort ascending. | [optional] 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**GetBusinessPartners200Response**](get_business_partners_200_response.md)
+[**GetBusinessEmployers200Response**](get_business_employers_200_response.md)
 
 ### Authorization
 
@@ -408,11 +427,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **SystemUserUpdate**
-> SystemUserUpdate(business_id, system_user_id, system_user_update_request)
+> SystemUserUpdate(business_id, system_user_id, system_user_update_with_required_body)
 
 Update a system user information.
 
@@ -425,14 +449,14 @@ library(openapi)
 # Update a system user information.
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_system_user_id <- "729090764583391194" # character | Unique identifier of a system user.
-var_system_user_update_request <- system_user_update_request$new("name_example") # SystemUserUpdateRequest | 
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_system_user_id <- "system_user_id_example" # character | Unique identifier of a system user.
+var_system_user_update_with_required_body <- SystemUserUpdateWithRequiredBody$new("name_example") # SystemUserUpdateWithRequiredBody | 
 
 api_instance <- BusinessAccessRelationshipsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
-api_instance$SystemUserUpdate(var_business_id, var_system_user_id, var_system_user_update_request)
+api_instance$SystemUserUpdate(var_business_id, var_system_user_id, var_system_user_update_with_required_body)
 ```
 
 ### Parameters
@@ -441,7 +465,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
  **system_user_id** | **character**| Unique identifier of a system user. | 
- **system_user_update_request** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md)|  | 
+ **system_user_update_with_required_body** | [**SystemUserUpdateWithRequiredBody**](SystemUserUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
@@ -459,12 +483,16 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | System user updated successfully. |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **UpdateBusinessMemberships**
-> UpdateMemberResultsResponseArray UpdateBusinessMemberships(business_id, update_member_business_role_body)
+> UpdateBusinessMembershipsResponse UpdateBusinessMemberships(business_id, business_membership_member)
 
 Update member's business role
 
@@ -477,15 +505,15 @@ library(openapi)
 # Update member's business role
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Business id
-var_update_member_business_role_body <- c(UpdateMemberBusinessRoleBody$new(BusinessRoleForMembers$new(), "member_id_example")) # array[UpdateMemberBusinessRoleBody] | List of objects with the member id and the business_role.
+var_business_id <- "business_id_example" # character | Business id
+var_business_membership_member <- c(BusinessMembershipMember$new(BusinessRoleForMembers$new(), "member_id_example")) # array[BusinessMembershipMember] | 
 
 api_instance <- BusinessAccessRelationshipsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$UpdateBusinessMemberships(var_business_id, var_update_member_business_role_bodydata_file = "result.txt")
-result <- api_instance$UpdateBusinessMemberships(var_business_id, var_update_member_business_role_body)
+# result <- api_instance$UpdateBusinessMemberships(var_business_id, var_business_membership_memberdata_file = "result.txt")
+result <- api_instance$UpdateBusinessMemberships(var_business_id, var_business_membership_member)
 dput(result)
 ```
 
@@ -494,11 +522,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Business id | 
- **update_member_business_role_body** | list( [**UpdateMemberBusinessRoleBody**](UpdateMemberBusinessRoleBody.md) )| List of objects with the member id and the business_role. | 
+ **business_membership_member** | list( [**BusinessMembershipMember**](BusinessMembershipMember.md) )|  | 
 
 ### Return type
 
-[**UpdateMemberResultsResponseArray**](UpdateMemberResultsResponseArray.md)
+[**UpdateBusinessMembershipsResponse**](UpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 
@@ -512,6 +540,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

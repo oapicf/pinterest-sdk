@@ -15,7 +15,7 @@
 
 typedef struct label_update_request_t label_update_request_t;
 
-#include "label_update_request_labels_inner.h"
+#include "label_update_item.h"
 
 
 

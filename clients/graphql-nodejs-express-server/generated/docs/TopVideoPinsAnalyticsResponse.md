@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dateAvailability** | [***TopPinsAnalyticsResponseDateAvailability**](TopPinsAnalyticsResponse_date_availability.md) |  | [optional] [default to null]
-**pins** | [**TopVideoPinsAnalyticsResponsePinsInner**](TopVideoPinsAnalyticsResponse_pins_inner.md) |  | [optional] [default to null]
-**sortBy** | **String!** |  | [optional] [default to null]
+**dateAvailability** | [***TopVideoPinsAnalyticsResponseDateAvailability**](TopVideoPinsAnalyticsResponseDateAvailability.md) |  | [optional] [default to null]
+**pins** | [**TopVideoPinsAnalyticsResponsePinsItems**](TopVideoPinsAnalyticsResponsePinsItems.md) |  | [optional] [default to null]
+**sortBy** | [***TopVideoPinsSortBy**](TopVideoPinsSortBy.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

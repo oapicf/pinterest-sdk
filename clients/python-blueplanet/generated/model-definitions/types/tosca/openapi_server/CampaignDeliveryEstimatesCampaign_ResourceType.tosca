@@ -1,0 +1,70 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignDeliveryEstimatesCampaign"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignDeliveryEstimatesCampaign"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdGroupDeliveryEstimates = openapi_server.resourceTypes.AdGroupDeliveryEstimates
+  BudgetDurationType = openapi_server.resourceTypes.BudgetDurationType
+  DeliveryEstimateObjectiveType = openapi_server.resourceTypes.DeliveryEstimateObjectiveType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CampaignDeliveryEstimatesCampaign {
+    title = CampaignDeliveryEstimatesCampaign
+    description = CampaignDeliveryEstimatesCampaign
+    derivedFrom = Root
+    properties {
+        ad_groups {
+          type = array
+          items.type = AdGroupDeliveryEstimates
+          description = ""
+          optional = true
+        }
+        budget_duration_type {
+          type = BudgetDurationType
+          description = "Duration type of the budget"
+          optional = true
+        }
+        daily_spend_cap {
+          type =  integer
+          description = "Campaign daily spend cap. When the budget_duration_type is FIXED_DAILY or FLEXIBLE_DAILY, this field is required."
+          optional = false
+        }
+        end_date {
+          type =  string
+          description = "End date of the date range for an ad campaign, pattern YYYY-MM-DD. Required when budget_duration_type is LIFETIME."
+          optional = false
+        }
+        lifetime_spend_cap {
+          type =  integer
+          description = "Campaign total spending cap. When the budget_duration_type is LIFETIME, this field is required. The end date field is also required for lifetime spending."
+          optional = false
+        }
+        objective_type {
+          type = DeliveryEstimateObjectiveType
+          description = ""
+          optional = true
+        }
+        start_date {
+          type =  string
+          description = "Start date of the date range for an ad campaign, pattern YYYY-MM-DD."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignDeliveryEstimatesCampaign {
+    title = CampaignDeliveryEstimatesCampaign
+    description = CampaignDeliveryEstimatesCampaign
+    implements = openapi_server.resourceTypes.CampaignDeliveryEstimatesCampaign
+
+  }
+}

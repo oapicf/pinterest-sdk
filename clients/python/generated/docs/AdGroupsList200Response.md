@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[AdGroupResponse]**](AdGroupResponse.md) |  | 
+**items** | [**List[AdGroup]**](AdGroup.md) |  | 
 
 ## Example
 

@@ -105,7 +105,7 @@ class TrendingKeyword(Model):
     def has_prediction(self) -> bool:
         """Gets the has_prediction of this TrendingKeyword.
 
-        Indicates whether the keyword has a prediction available for the next 90 days.<br /> This field is only applicable when `include_prediction` query parameter is set to `true`. <br /> By default, the value is `false` and no prediction data is included in the response.  # noqa: E501
+        Indicates whether the keyword has a prediction available for the next 90 days. This field is only applicable when `include_prediction` query parameter is set to `true`. By default, the value is `false` and no prediction data is included in the response.  # noqa: E501
 
         :return: The has_prediction of this TrendingKeyword.
         :rtype: bool
@@ -116,7 +116,7 @@ class TrendingKeyword(Model):
     def has_prediction(self, has_prediction: bool):
         """Sets the has_prediction of this TrendingKeyword.
 
-        Indicates whether the keyword has a prediction available for the next 90 days.<br /> This field is only applicable when `include_prediction` query parameter is set to `true`. <br /> By default, the value is `false` and no prediction data is included in the response.  # noqa: E501
+        Indicates whether the keyword has a prediction available for the next 90 days. This field is only applicable when `include_prediction` query parameter is set to `true`. By default, the value is `false` and no prediction data is included in the response.  # noqa: E501
 
         :param has_prediction: The has_prediction of this TrendingKeyword.
         :type has_prediction: bool
@@ -153,7 +153,7 @@ class TrendingKeyword(Model):
     def pct_growth_mom(self) -> int:
         """Gets the pct_growth_mom of this TrendingKeyword.
 
-        The month-over-month percent change in search volume for this keyword.<br /> For example, a value of \"400\" would represent a 400% increase in searches in the last 30 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% month-over-month growth.  # noqa: E501
+        The month-over-month percent change in search volume for this keyword. For example, a value of \"400\" would represent a 400% increase in searches in the last 30 days compared to the month prior. **Note**: growth rates are rounded, with a maximum of +/- 10000% change. A value of 10001 indicates that this keyword experienced > 10000% month-over-month growth.  # noqa: E501
 
         :return: The pct_growth_mom of this TrendingKeyword.
         :rtype: int
@@ -164,7 +164,7 @@ class TrendingKeyword(Model):
     def pct_growth_mom(self, pct_growth_mom: int):
         """Sets the pct_growth_mom of this TrendingKeyword.
 
-        The month-over-month percent change in search volume for this keyword.<br /> For example, a value of \"400\" would represent a 400% increase in searches in the last 30 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% month-over-month growth.  # noqa: E501
+        The month-over-month percent change in search volume for this keyword. For example, a value of \"400\" would represent a 400% increase in searches in the last 30 days compared to the month prior. **Note**: growth rates are rounded, with a maximum of +/- 10000% change. A value of 10001 indicates that this keyword experienced > 10000% month-over-month growth.  # noqa: E501
 
         :param pct_growth_mom: The pct_growth_mom of this TrendingKeyword.
         :type pct_growth_mom: int
@@ -176,7 +176,7 @@ class TrendingKeyword(Model):
     def pct_growth_wow(self) -> int:
         """Gets the pct_growth_wow of this TrendingKeyword.
 
-        The week-over-week percent change in search volume for this keyword.<br /> For example, a value of \"50\" would represent a 50% increase in searches in the last seven days compared to the week prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% week-over-week growth.  # noqa: E501
+        The week-over-week percent change in search volume for this keyword. For example, a value of \"50\" would represent a 50% increase in searches in the last seven days compared to the week prior. **Note**: growth rates are rounded, with a maximum of +/- 10000% change. A value of 10001 indicates that this keyword experienced > 10000% week-over-week growth.  # noqa: E501
 
         :return: The pct_growth_wow of this TrendingKeyword.
         :rtype: int
@@ -187,7 +187,7 @@ class TrendingKeyword(Model):
     def pct_growth_wow(self, pct_growth_wow: int):
         """Sets the pct_growth_wow of this TrendingKeyword.
 
-        The week-over-week percent change in search volume for this keyword.<br /> For example, a value of \"50\" would represent a 50% increase in searches in the last seven days compared to the week prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% week-over-week growth.  # noqa: E501
+        The week-over-week percent change in search volume for this keyword. For example, a value of \"50\" would represent a 50% increase in searches in the last seven days compared to the week prior. **Note**: growth rates are rounded, with a maximum of +/- 10000% change. A value of 10001 indicates that this keyword experienced > 10000% week-over-week growth.  # noqa: E501
 
         :param pct_growth_wow: The pct_growth_wow of this TrendingKeyword.
         :type pct_growth_wow: int
@@ -199,7 +199,7 @@ class TrendingKeyword(Model):
     def pct_growth_yoy(self) -> int:
         """Gets the pct_growth_yoy of this TrendingKeyword.
 
-        The year-over-year percent change in search volume for this keyword.<br /> For example, a value of \"-5\" would represent a 5% decrease in searches in the last 365 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% year-over-year growth.  # noqa: E501
+        The year-over-year percent change in search volume for this keyword. For example, a value of \"-5\" would represent a 5% decrease in searches in the last 365 days compared to the month prior. **Note**: growth rates are rounded, with a maximum of +/- 10000% change. A value of 10001 indicates that this keyword experienced > 10000% year-over-year growth.  # noqa: E501
 
         :return: The pct_growth_yoy of this TrendingKeyword.
         :rtype: int
@@ -210,7 +210,7 @@ class TrendingKeyword(Model):
     def pct_growth_yoy(self, pct_growth_yoy: int):
         """Sets the pct_growth_yoy of this TrendingKeyword.
 
-        The year-over-year percent change in search volume for this keyword.<br /> For example, a value of \"-5\" would represent a 5% decrease in searches in the last 365 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% year-over-year growth.  # noqa: E501
+        The year-over-year percent change in search volume for this keyword. For example, a value of \"-5\" would represent a 5% decrease in searches in the last 365 days compared to the month prior. **Note**: growth rates are rounded, with a maximum of +/- 10000% change. A value of 10001 indicates that this keyword experienced > 10000% year-over-year growth.  # noqa: E501
 
         :param pct_growth_yoy: The pct_growth_yoy of this TrendingKeyword.
         :type pct_growth_yoy: int
@@ -222,6 +222,7 @@ class TrendingKeyword(Model):
     def predicted_time_series(self) -> PredictedTimeSeries:
         """Gets the predicted_time_series of this TrendingKeyword.
 
+        A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months. These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword. Similar to the historical `time_series`, normalization is applied independently to the predicted time series of each keyword, but the `normalize_against_group` query parameter can be used in cases where you wish to compare relative predicted volume between keywords.  **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.  **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week. For example, a value of `2024-01-07` would include predicted searches for the week ending on `2024-01-07`.  # noqa: E501
 
         :return: The predicted_time_series of this TrendingKeyword.
         :rtype: PredictedTimeSeries
@@ -232,6 +233,7 @@ class TrendingKeyword(Model):
     def predicted_time_series(self, predicted_time_series: PredictedTimeSeries):
         """Sets the predicted_time_series of this TrendingKeyword.
 
+        A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months. These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword. Similar to the historical `time_series`, normalization is applied independently to the predicted time series of each keyword, but the `normalize_against_group` query parameter can be used in cases where you wish to compare relative predicted volume between keywords.  **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.  **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week. For example, a value of `2024-01-07` would include predicted searches for the week ending on `2024-01-07`.  # noqa: E501
 
         :param predicted_time_series: The predicted_time_series of this TrendingKeyword.
         :type predicted_time_series: PredictedTimeSeries
@@ -243,6 +245,7 @@ class TrendingKeyword(Model):
     def time_series(self) -> TimeSeries:
         """Gets the time_series of this TrendingKeyword.
 
+        A sequence of weekly observations of the relative search volume for this keyword over the past year. These values are normalized to a [0-100] range, and can be used to visualize the history of user interest in this keyword. By default, normalization is applied independently to the time series of each keyword, but the `normalize_against_group` query parameter can be used in cases where you wish to compare relative volume between keywords.  **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week. For example, a value of `2023-10-31` would include searches that happened between `2023-10-25` and `2023-10-31`.  # noqa: E501
 
         :return: The time_series of this TrendingKeyword.
         :rtype: TimeSeries
@@ -253,6 +256,7 @@ class TrendingKeyword(Model):
     def time_series(self, time_series: TimeSeries):
         """Sets the time_series of this TrendingKeyword.
 
+        A sequence of weekly observations of the relative search volume for this keyword over the past year. These values are normalized to a [0-100] range, and can be used to visualize the history of user interest in this keyword. By default, normalization is applied independently to the time series of each keyword, but the `normalize_against_group` query parameter can be used in cases where you wish to compare relative volume between keywords.  **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week. For example, a value of `2023-10-31` would include searches that happened between `2023-10-25` and `2023-10-31`.  # noqa: E501
 
         :param time_series: The time_series of this TrendingKeyword.
         :type time_series: TimeSeries

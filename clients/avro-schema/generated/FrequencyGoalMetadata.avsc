@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Frequency target can only be between 2 and 20",
+  "name": "FrequencyGoalMetadata",
+  "fields": [
+    {
+      "name": "frequency",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "timerange",
+      "type": ["null", "model.FrequencyGoalMetadataTimerange"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

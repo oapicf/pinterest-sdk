@@ -4,11 +4,12 @@ open System
 open System.Collections.Generic
 open OpenAPI.Model.AdGroupUpdateRequest
 open OpenAPI.Model.AdUpdateRequest
+open OpenAPI.Model.BulkUpsertRequestUpdateCatalogProductGroupsItems
 open OpenAPI.Model.CampaignUpdateRequest
-open OpenAPI.Model.CatalogsProductGroupsUpdateRequest
-open OpenAPI.Model.KeywordUpdate
+open OpenAPI.Model.KeywordUpdateGenerated
 open OpenAPI.Model.LabelBulkUpdateRequest
 open OpenAPI.Model.ProductGroupPromotionUpdateRequest
+open OpenAPI.Model.ScheduleUpdateRequest
 
 module BulkUpsertRequestUpdate =
 
@@ -19,9 +20,10 @@ module BulkUpsertRequestUpdate =
     AdGroups : AdGroupUpdateRequest[];
     Ads : AdUpdateRequest[];
     Campaigns : CampaignUpdateRequest[];
-    CatalogProductGroups : CatalogsProductGroupsUpdateRequest[];
-    Keywords : KeywordUpdate[];
+    CatalogProductGroups : BulkUpsertRequestUpdateCatalogProductGroupsItems[];
+    Keywords : KeywordUpdateGenerated[];
     Labels : LabelBulkUpdateRequest[];
     ProductGroups : ProductGroupPromotionUpdateRequest[];
+    Schedules : ScheduleUpdateRequest[];
   }
   //#endregion

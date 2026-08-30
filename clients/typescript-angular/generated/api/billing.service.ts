@@ -17,29 +17,37 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { AdsCreditRedeemRequest } from '../model/adsCreditRedeemRequest';
+import { AdsCreditRedeem } from '../model/adsCreditRedeem';
 // @ts-ignore
-import { AdsCreditRedeemResponse } from '../model/adsCreditRedeemResponse';
+import { AdsCreditRedeemCreate } from '../model/adsCreditRedeemCreate';
 // @ts-ignore
 import { AdsCreditsDiscountsGet200Response } from '../model/adsCreditsDiscountsGet200Response';
 // @ts-ignore
+import { BillingInvoiceDocumentType } from '../model/billingInvoiceDocumentType';
+// @ts-ignore
 import { BillingInvoiceDownloadResponse } from '../model/billingInvoiceDownloadResponse';
+// @ts-ignore
+import { BillingInvoiceSortField } from '../model/billingInvoiceSortField';
+// @ts-ignore
+import { BillingInvoiceStatus } from '../model/billingInvoiceStatus';
 // @ts-ignore
 import { BillingInvoicesGet200Response } from '../model/billingInvoicesGet200Response';
 // @ts-ignore
 import { BillingProfilesGet200Response } from '../model/billingProfilesGet200Response';
 // @ts-ignore
-import { SSIOAccountResponse } from '../model/sSIOAccountResponse';
+import { PinterestLibError } from '../model/pinterestLibError';
 // @ts-ignore
-import { SSIOCreateInsertionOrderRequest } from '../model/sSIOCreateInsertionOrderRequest';
+import { PinterestLibPaginationOrder } from '../model/pinterestLibPaginationOrder';
 // @ts-ignore
-import { SSIOCreateInsertionOrderResponse } from '../model/sSIOCreateInsertionOrderResponse';
+import { SSIOAccount } from '../model/sSIOAccount';
 // @ts-ignore
-import { SSIOEditInsertionOrderRequest } from '../model/sSIOEditInsertionOrderRequest';
+import { SSIOInsertionOrder } from '../model/sSIOInsertionOrder';
 // @ts-ignore
-import { SSIOEditInsertionOrderResponse } from '../model/sSIOEditInsertionOrderResponse';
+import { SSIOInsertionOrderCreate } from '../model/sSIOInsertionOrderCreate';
 // @ts-ignore
 import { SSIOInsertionOrderStatusResponse } from '../model/sSIOInsertionOrderStatusResponse';
+// @ts-ignore
+import { SSIOInsertionOrderUpdate } from '../model/sSIOInsertionOrderUpdate';
 // @ts-ignore
 import { SsioInsertionOrdersStatusGetByAdAccount200Response } from '../model/ssioInsertionOrdersStatusGetByAdAccount200Response';
 // @ts-ignore
@@ -63,23 +71,23 @@ export class BillingService extends BaseService {
 
     /**
      * Redeem ad credits
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      * @endpoint post /ad_accounts/{ad_account_id}/ads_credit/redeem
      * @param adAccountId Unique identifier of an ad account.
-     * @param adsCreditRedeemRequest Redeem ad credits request.
+     * @param adsCreditRedeemCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public adsCreditRedeem(adAccountId: string, adsCreditRedeemRequest: AdsCreditRedeemRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdsCreditRedeemResponse>;
-    public adsCreditRedeem(adAccountId: string, adsCreditRedeemRequest: AdsCreditRedeemRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdsCreditRedeemResponse>>;
-    public adsCreditRedeem(adAccountId: string, adsCreditRedeemRequest: AdsCreditRedeemRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AdsCreditRedeemResponse>>;
-    public adsCreditRedeem(adAccountId: string, adsCreditRedeemRequest: AdsCreditRedeemRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public adsCreditRedeem(adAccountId: string, adsCreditRedeemCreate: AdsCreditRedeemCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdsCreditRedeem>;
+    public adsCreditRedeem(adAccountId: string, adsCreditRedeemCreate: AdsCreditRedeemCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdsCreditRedeem>>;
+    public adsCreditRedeem(adAccountId: string, adsCreditRedeemCreate: AdsCreditRedeemCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AdsCreditRedeem>>;
+    public adsCreditRedeem(adAccountId: string, adsCreditRedeemCreate: AdsCreditRedeemCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling adsCreditRedeem.');
         }
-        if (adsCreditRedeemRequest === null || adsCreditRedeemRequest === undefined) {
-            throw new Error('Required parameter adsCreditRedeemRequest was null or undefined when calling adsCreditRedeem.');
+        if (adsCreditRedeemCreate === null || adsCreditRedeemCreate === undefined) {
+            throw new Error('Required parameter adsCreditRedeemCreate was null or undefined when calling adsCreditRedeem.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -121,10 +129,10 @@ export class BillingService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/ads_credit/redeem`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<AdsCreditRedeemResponse>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<AdsCreditRedeem>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: adsCreditRedeemRequest,
+                body: adsCreditRedeemCreate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -137,11 +145,11 @@ export class BillingService extends BaseService {
 
     /**
      * Get ads credit discounts
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      * @endpoint get /ad_accounts/{ad_account_id}/ads_credit/discounts
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
@@ -288,9 +296,9 @@ export class BillingService extends BaseService {
      * @endpoint get /ad_accounts/{ad_account_id}/billing_invoices
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
      * @param sort Field of which to sort billing invoices
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
      * @param status Status of billing invoices to filter by
      * @param documentType Document type of billing invoices to filter by
      * @param startDueDate Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
@@ -299,10 +307,10 @@ export class BillingService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public billingInvoicesGet(adAccountId: string, bookmark?: string, pageSize?: number, sort?: 'DUE_DATE' | 'BILLING_PERIOD' | 'DOCUMENT_TYPE' | 'TOTAL_AMOUNT' | 'INVOICE_NUMBER', order?: 'ASCENDING' | 'DESCENDING', status?: 'OPEN' | 'CLOSED', documentType?: 'INVOICE' | 'CREDIT_MEMO', startDueDate?: string, endDueDate?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BillingInvoicesGet200Response>;
-    public billingInvoicesGet(adAccountId: string, bookmark?: string, pageSize?: number, sort?: 'DUE_DATE' | 'BILLING_PERIOD' | 'DOCUMENT_TYPE' | 'TOTAL_AMOUNT' | 'INVOICE_NUMBER', order?: 'ASCENDING' | 'DESCENDING', status?: 'OPEN' | 'CLOSED', documentType?: 'INVOICE' | 'CREDIT_MEMO', startDueDate?: string, endDueDate?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BillingInvoicesGet200Response>>;
-    public billingInvoicesGet(adAccountId: string, bookmark?: string, pageSize?: number, sort?: 'DUE_DATE' | 'BILLING_PERIOD' | 'DOCUMENT_TYPE' | 'TOTAL_AMOUNT' | 'INVOICE_NUMBER', order?: 'ASCENDING' | 'DESCENDING', status?: 'OPEN' | 'CLOSED', documentType?: 'INVOICE' | 'CREDIT_MEMO', startDueDate?: string, endDueDate?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BillingInvoicesGet200Response>>;
-    public billingInvoicesGet(adAccountId: string, bookmark?: string, pageSize?: number, sort?: 'DUE_DATE' | 'BILLING_PERIOD' | 'DOCUMENT_TYPE' | 'TOTAL_AMOUNT' | 'INVOICE_NUMBER', order?: 'ASCENDING' | 'DESCENDING', status?: 'OPEN' | 'CLOSED', documentType?: 'INVOICE' | 'CREDIT_MEMO', startDueDate?: string, endDueDate?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public billingInvoicesGet(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, sort?: BillingInvoiceSortField, status?: BillingInvoiceStatus, documentType?: BillingInvoiceDocumentType, startDueDate?: string, endDueDate?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BillingInvoicesGet200Response>;
+    public billingInvoicesGet(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, sort?: BillingInvoiceSortField, status?: BillingInvoiceStatus, documentType?: BillingInvoiceDocumentType, startDueDate?: string, endDueDate?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BillingInvoicesGet200Response>>;
+    public billingInvoicesGet(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, sort?: BillingInvoiceSortField, status?: BillingInvoiceStatus, documentType?: BillingInvoiceDocumentType, startDueDate?: string, endDueDate?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BillingInvoicesGet200Response>>;
+    public billingInvoicesGet(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, sort?: BillingInvoiceSortField, status?: BillingInvoiceStatus, documentType?: BillingInvoiceDocumentType, startDueDate?: string, endDueDate?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling billingInvoicesGet.');
         }
@@ -329,8 +337,8 @@ export class BillingService extends BaseService {
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
-            'sort',
-            <any>sort,
+            'order',
+            <any>order,
             QueryParamStyle.Form,
             true,
         );
@@ -338,8 +346,8 @@ export class BillingService extends BaseService {
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
-            'order',
-            <any>order,
+            'sort',
+            <any>sort,
             QueryParamStyle.Form,
             true,
         );
@@ -427,25 +435,25 @@ export class BillingService extends BaseService {
 
     /**
      * Get billing profiles
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      * @endpoint get /ad_accounts/{ad_account_id}/billing_profiles
-     * @param adAccountId Unique identifier of an ad account.
      * @param isActive Return active billing profiles, if false return all billing profiles.
+     * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public billingProfilesGet(adAccountId: string, isActive: boolean, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BillingProfilesGet200Response>;
-    public billingProfilesGet(adAccountId: string, isActive: boolean, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BillingProfilesGet200Response>>;
-    public billingProfilesGet(adAccountId: string, isActive: boolean, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BillingProfilesGet200Response>>;
-    public billingProfilesGet(adAccountId: string, isActive: boolean, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (adAccountId === null || adAccountId === undefined) {
-            throw new Error('Required parameter adAccountId was null or undefined when calling billingProfilesGet.');
-        }
+    public billingProfilesGet(isActive: boolean, adAccountId: string, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BillingProfilesGet200Response>;
+    public billingProfilesGet(isActive: boolean, adAccountId: string, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BillingProfilesGet200Response>>;
+    public billingProfilesGet(isActive: boolean, adAccountId: string, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BillingProfilesGet200Response>>;
+    public billingProfilesGet(isActive: boolean, adAccountId: string, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (isActive === null || isActive === undefined) {
             throw new Error('Required parameter isActive was null or undefined when calling billingProfilesGet.');
+        }
+        if (adAccountId === null || adAccountId === undefined) {
+            throw new Error('Required parameter adAccountId was null or undefined when calling billingProfilesGet.');
         }
 
         let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
@@ -523,16 +531,16 @@ export class BillingService extends BaseService {
 
     /**
      * Get Salesforce account details including bill-to information.
-     * Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token\&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @endpoint get /ad_accounts/{ad_account_id}/ssio/accounts
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public ssioAccountsGet(adAccountId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<SSIOAccountResponse>;
-    public ssioAccountsGet(adAccountId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<SSIOAccountResponse>>;
-    public ssioAccountsGet(adAccountId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<SSIOAccountResponse>>;
+    public ssioAccountsGet(adAccountId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<SSIOAccount>;
+    public ssioAccountsGet(adAccountId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<SSIOAccount>>;
+    public ssioAccountsGet(adAccountId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<SSIOAccount>>;
     public ssioAccountsGet(adAccountId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling ssioAccountsGet.');
@@ -568,7 +576,7 @@ export class BillingService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/ssio/accounts`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<SSIOAccountResponse>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<SSIOAccount>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -583,23 +591,23 @@ export class BillingService extends BaseService {
 
     /**
      * Create insertion order through SSIO.
-     * Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token\&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @endpoint post /ad_accounts/{ad_account_id}/ssio/insertion_orders
      * @param adAccountId Unique identifier of an ad account.
-     * @param sSIOCreateInsertionOrderRequest Order line to create.
+     * @param sSIOInsertionOrderCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public ssioInsertionOrderCreate(adAccountId: string, sSIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<SSIOCreateInsertionOrderResponse>;
-    public ssioInsertionOrderCreate(adAccountId: string, sSIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<SSIOCreateInsertionOrderResponse>>;
-    public ssioInsertionOrderCreate(adAccountId: string, sSIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<SSIOCreateInsertionOrderResponse>>;
-    public ssioInsertionOrderCreate(adAccountId: string, sSIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public ssioInsertionOrderCreate(adAccountId: string, sSIOInsertionOrderCreate: SSIOInsertionOrderCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<SSIOInsertionOrder>;
+    public ssioInsertionOrderCreate(adAccountId: string, sSIOInsertionOrderCreate: SSIOInsertionOrderCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<SSIOInsertionOrder>>;
+    public ssioInsertionOrderCreate(adAccountId: string, sSIOInsertionOrderCreate: SSIOInsertionOrderCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<SSIOInsertionOrder>>;
+    public ssioInsertionOrderCreate(adAccountId: string, sSIOInsertionOrderCreate: SSIOInsertionOrderCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling ssioInsertionOrderCreate.');
         }
-        if (sSIOCreateInsertionOrderRequest === null || sSIOCreateInsertionOrderRequest === undefined) {
-            throw new Error('Required parameter sSIOCreateInsertionOrderRequest was null or undefined when calling ssioInsertionOrderCreate.');
+        if (sSIOInsertionOrderCreate === null || sSIOInsertionOrderCreate === undefined) {
+            throw new Error('Required parameter sSIOInsertionOrderCreate was null or undefined when calling ssioInsertionOrderCreate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -641,10 +649,10 @@ export class BillingService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/ssio/insertion_orders`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<SSIOCreateInsertionOrderResponse>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<SSIOInsertionOrder>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: sSIOCreateInsertionOrderRequest,
+                body: sSIOInsertionOrderCreate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -657,23 +665,23 @@ export class BillingService extends BaseService {
 
     /**
      * Edit insertion order through SSIO.
-     * Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token\&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @endpoint patch /ad_accounts/{ad_account_id}/ssio/insertion_orders
      * @param adAccountId Unique identifier of an ad account.
-     * @param sSIOEditInsertionOrderRequest Order line to create.
+     * @param sSIOInsertionOrderUpdate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public ssioInsertionOrderEdit(adAccountId: string, sSIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<SSIOEditInsertionOrderResponse>;
-    public ssioInsertionOrderEdit(adAccountId: string, sSIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<SSIOEditInsertionOrderResponse>>;
-    public ssioInsertionOrderEdit(adAccountId: string, sSIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<SSIOEditInsertionOrderResponse>>;
-    public ssioInsertionOrderEdit(adAccountId: string, sSIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public ssioInsertionOrderEdit(adAccountId: string, sSIOInsertionOrderUpdate: SSIOInsertionOrderUpdate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<SSIOInsertionOrder>;
+    public ssioInsertionOrderEdit(adAccountId: string, sSIOInsertionOrderUpdate: SSIOInsertionOrderUpdate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<SSIOInsertionOrder>>;
+    public ssioInsertionOrderEdit(adAccountId: string, sSIOInsertionOrderUpdate: SSIOInsertionOrderUpdate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<SSIOInsertionOrder>>;
+    public ssioInsertionOrderEdit(adAccountId: string, sSIOInsertionOrderUpdate: SSIOInsertionOrderUpdate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling ssioInsertionOrderEdit.');
         }
-        if (sSIOEditInsertionOrderRequest === null || sSIOEditInsertionOrderRequest === undefined) {
-            throw new Error('Required parameter sSIOEditInsertionOrderRequest was null or undefined when calling ssioInsertionOrderEdit.');
+        if (sSIOInsertionOrderUpdate === null || sSIOInsertionOrderUpdate === undefined) {
+            throw new Error('Required parameter sSIOInsertionOrderUpdate was null or undefined when calling ssioInsertionOrderEdit.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -715,10 +723,10 @@ export class BillingService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/ssio/insertion_orders`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<SSIOEditInsertionOrderResponse>('patch', `${basePath}${localVarPath}`,
+        return this.httpClient.request<SSIOInsertionOrder>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: sSIOEditInsertionOrderRequest,
+                body: sSIOInsertionOrderUpdate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -731,11 +739,11 @@ export class BillingService extends BaseService {
 
     /**
      * Get insertion order status by ad account id.
-     * Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get insertion order status for &#x60;ad_account_id&#x60;.   - The token\&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @endpoint get /ad_accounts/{ad_account_id}/ssio/insertion_orders/status
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
@@ -814,7 +822,7 @@ export class BillingService extends BaseService {
 
     /**
      * Get insertion order status by pin order id.
-     * Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get insertion order status for &#x60;pin_order_id&#x60;.   - The token\&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @endpoint get /ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status
      * @param adAccountId Unique identifier of an ad account.
      * @param pinOrderId The pin order id associated with the ssio insertion order
@@ -878,25 +886,34 @@ export class BillingService extends BaseService {
 
     /**
      * Get Salesforce order lines by ad account id.
-     * Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token\&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @endpoint get /ad_accounts/{ad_account_id}/ssio/order_lines
      * @param adAccountId Unique identifier of an ad account.
+     * @param pinOrderId The pin order id associated with the SSIO insertion order
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * @param pinOrderId The pin order id associated with the ssio insertino order
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public ssioOrderLinesGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, pinOrderId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<SsioOrderLinesGetByAdAccount200Response>;
-    public ssioOrderLinesGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, pinOrderId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<SsioOrderLinesGetByAdAccount200Response>>;
-    public ssioOrderLinesGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, pinOrderId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<SsioOrderLinesGetByAdAccount200Response>>;
-    public ssioOrderLinesGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, pinOrderId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public ssioOrderLinesGetByAdAccount(adAccountId: string, pinOrderId?: string, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<SsioOrderLinesGetByAdAccount200Response>;
+    public ssioOrderLinesGetByAdAccount(adAccountId: string, pinOrderId?: string, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<SsioOrderLinesGetByAdAccount200Response>>;
+    public ssioOrderLinesGetByAdAccount(adAccountId: string, pinOrderId?: string, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<SsioOrderLinesGetByAdAccount200Response>>;
+    public ssioOrderLinesGetByAdAccount(adAccountId: string, pinOrderId?: string, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling ssioOrderLinesGetByAdAccount.');
         }
 
         let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'pin_order_id',
+            <any>pinOrderId,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
@@ -911,15 +928,6 @@ export class BillingService extends BaseService {
             localVarQueryParameters,
             'page_size',
             <any>pageSize,
-            QueryParamStyle.Form,
-            true,
-        );
-
-
-        localVarQueryParameters = this.addToHttpParams(
-            localVarQueryParameters,
-            'pin_order_id',
-            <any>pinOrderId,
             QueryParamStyle.Form,
             true,
         );

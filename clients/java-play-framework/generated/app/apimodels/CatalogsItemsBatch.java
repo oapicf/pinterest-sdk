@@ -4,7 +4,6 @@ import apimodels.BatchOperationStatus;
 import apimodels.CatalogsCreativeAssetsItemsBatch;
 import apimodels.CatalogsHotelItemsBatch;
 import apimodels.CatalogsRetailItemsBatch;
-import apimodels.CatalogsType;
 import apimodels.CreativeAssetsProcessingRecord;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -23,18 +22,47 @@ import javax.validation.Valid;
 /**
  * Object describing the catalogs items batch
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsItemsBatch   {
+  @JsonProperty("batch_id")
+  @Pattern(regexp="^\\d+$")
+
+  private String batchId;
+
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
   @NotNull
-@Valid
 
-  private CatalogsType catalogType;
-
-  @JsonProperty("batch_id")
-  
-  private String batchId;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("completed_time")
   @Valid
@@ -57,23 +85,6 @@ public class CatalogsItemsBatch   {
 
   private BatchOperationStatus status;
 
-  public CatalogsItemsBatch catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-   /**
-   * Get catalogType
-   * @return catalogType
-  **/
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
   public CatalogsItemsBatch batchId(String batchId) {
     this.batchId = batchId;
     return this;
@@ -89,6 +100,23 @@ public class CatalogsItemsBatch   {
 
   public void setBatchId(String batchId) {
     this.batchId = batchId;
+  }
+
+  public CatalogsItemsBatch catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
+   /**
+   * Get catalogType
+   * @return catalogType
+  **/
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
+  }
+
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsItemsBatch completedTime(OffsetDateTime completedTime) {
@@ -177,8 +205,8 @@ public class CatalogsItemsBatch   {
       return false;
     }
     CatalogsItemsBatch catalogsItemsBatch = (CatalogsItemsBatch) o;
-    return Objects.equals(catalogType, catalogsItemsBatch.catalogType) &&
-        Objects.equals(batchId, catalogsItemsBatch.batchId) &&
+    return Objects.equals(batchId, catalogsItemsBatch.batchId) &&
+        Objects.equals(catalogType, catalogsItemsBatch.catalogType) &&
         Objects.equals(completedTime, catalogsItemsBatch.completedTime) &&
         Objects.equals(createdTime, catalogsItemsBatch.createdTime) &&
         Objects.equals(items, catalogsItemsBatch.items) &&
@@ -187,7 +215,7 @@ public class CatalogsItemsBatch   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, batchId, completedTime, createdTime, items, status);
+    return Objects.hash(batchId, catalogType, completedTime, createdTime, items, status);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -196,8 +224,8 @@ public class CatalogsItemsBatch   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemsBatch {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
@@ -211,10 +239,7 @@ public class CatalogsItemsBatch   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

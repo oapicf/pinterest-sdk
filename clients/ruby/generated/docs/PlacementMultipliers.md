@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **placement** | **String** |  | [optional] |
+| **placement** | [**PlacementType**](PlacementType.md) | Placement type identifier. | [optional] |
 
 ## Example
 

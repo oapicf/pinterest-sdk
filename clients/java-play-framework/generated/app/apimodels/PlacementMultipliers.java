@@ -1,5 +1,6 @@
 package apimodels;
 
+import apimodels.PlacementType;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.*;
@@ -11,60 +12,28 @@ import javax.validation.Valid;
 /**
  * This represents a mapping from placement to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified placement in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All placement multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class PlacementMultipliers extends HashMap<String, Double>  {
-  /**
-   * Gets or Sets PLACEMENT
-   */
-  public enum PLACEMENTEnum {
-    SEARCH("SEARCH"),
-    
-    BROWSE("BROWSE"),
-    
-    RELATED_PINS("RELATED_PINS");
-
-    private final String value;
-
-    PLACEMENTEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PLACEMENTEnum fromValue(String value) {
-      for (PLACEMENTEnum b : PLACEMENTEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @JsonProperty("PLACEMENT")
-  
-  private PLACEMENTEnum PLACEMENT;
+  @Valid
 
-  public PlacementMultipliers PLACEMENT(PLACEMENTEnum PLACEMENT) {
+  private PlacementType PLACEMENT;
+
+  public PlacementMultipliers PLACEMENT(PlacementType PLACEMENT) {
     this.PLACEMENT = PLACEMENT;
     return this;
   }
 
    /**
-   * Get PLACEMENT
+   * Placement type identifier.
    * @return PLACEMENT
   **/
-  public PLACEMENTEnum getPLACEMENT() {
+  public PlacementType getPLACEMENT() {
     return PLACEMENT;
   }
 
-  public void setPLACEMENT(PLACEMENTEnum PLACEMENT) {
+  public void setPLACEMENT(PlacementType PLACEMENT) {
     this.PLACEMENT = PLACEMENT;
   }
 
@@ -103,10 +72,7 @@ public class PlacementMultipliers extends HashMap<String, Double>  {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

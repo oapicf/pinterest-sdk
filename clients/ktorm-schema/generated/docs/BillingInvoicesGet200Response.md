@@ -5,18 +5,18 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;BillingInvoiceResponse&gt;**](BillingInvoiceResponse.md) |  | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;BillingInvoice&gt;**](BillingInvoice.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 
-# **Table `BillingInvoicesGet200ResponseBillingInvoiceResponse`**
-(mapped from: BillingInvoicesGet200ResponseBillingInvoiceResponse)
+# **Table `BillingInvoicesGet200ResponseBillingInvoice`**
+(mapped from: BillingInvoicesGet200ResponseBillingInvoice)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 billingInvoicesGet200Response | billingInvoicesGet200Response | long | | kotlin.Long | Primary Key | *one*
-billingInvoiceResponse | billingInvoiceResponse | long | | kotlin.Long | Foreign Key | *many*
+billingInvoice | billingInvoice | long | | kotlin.Long | Foreign Key | *many*
 
 
 

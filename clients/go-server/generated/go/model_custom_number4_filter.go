@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,8 +23,61 @@ type CustomNumber4Filter struct {
 
 	CUSTOMNUMBER4 CatalogsProductGroupUint32Criteria `json:"CUSTOM_NUMBER_4"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CustomNumber4Filter
+func (o *CustomNumber4Filter) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"CUSTOM_NUMBER_4",
+	}
 
-// AssertCustomNumber4FilterRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"CUSTOM_NUMBER_4": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"CUSTOM_NUMBER_4": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CustomNumber4Filter
+
+	if value, exists := allProperties["CUSTOM_NUMBER_4"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMNUMBER4); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCustomNumber4FilterRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCustomNumber4FilterRequired(obj CustomNumber4Filter) error {
 	elements := map[string]interface{}{
 		"CUSTOM_NUMBER_4": obj.CUSTOMNUMBER4,
@@ -30,10 +88,16 @@ func AssertCustomNumber4FilterRequired(obj CustomNumber4Filter) error {
 		}
 	}
 
+	if err := AssertCatalogsProductGroupUint32CriteriaRequired(obj.CUSTOMNUMBER4); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertCustomNumber4FilterConstraints checks if the values respects the defined constraints
 func AssertCustomNumber4FilterConstraints(obj CustomNumber4Filter) error {
+	if err := AssertCatalogsProductGroupUint32CriteriaConstraints(obj.CUSTOMNUMBER4); err != nil {
+		return err
+	}
 	return nil
 }

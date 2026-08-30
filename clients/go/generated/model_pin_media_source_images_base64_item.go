@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &PinMediaSourceImagesBase64Item{}
 // PinMediaSourceImagesBase64Item struct for PinMediaSourceImagesBase64Item
 type PinMediaSourceImagesBase64Item struct {
 	ContentType ContentType `json:"content_type"`
-	Data string `json:"data" validate:"regexp=^[a-zA-Z0-9+\\/=]+$"`
+	Data string `json:"data" validate:"regexp=^[a-zA-Z0-9+/=]+$"`
 	Description *string `json:"description,omitempty"`
 	Link *string `json:"link,omitempty"`
 	Title *string `json:"title,omitempty"`

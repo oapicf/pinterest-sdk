@@ -48,7 +48,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="boardSectionsCreate"></a>
 # **boardSectionsCreate**
 ```java
-Mono<BoardSection> BoardsApi.boardSectionsCreate(boardIdboardSectionadAccountId)
+Mono<BoardSection> BoardsApi.boardSectionsCreate(boardIdboardSectionCreateadAccountId)
 ```
 
 Create board section
@@ -59,7 +59,7 @@ Create a board section on a board owned by the \&quot;operation user_account\&qu
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **boardId** | `String`| Unique identifier of a board. | |
-| **boardSection** | [**BoardSection**](BoardSection.md)| Create a board section. | |
+| **boardSectionCreate** | [**BoardSectionCreate**](BoardSectionCreate.md)|  | |
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 
 
@@ -76,7 +76,7 @@ Create a board section on a board owned by the \&quot;operation user_account\&qu
 <a id="boardSectionsDelete"></a>
 # **boardSectionsDelete**
 ```java
-Mono<Void> BoardsApi.boardSectionsDelete(boardIdsectionIdadAccountId)
+Mono<BoardSection> BoardsApi.boardSectionsDelete(boardIdsectionIdadAccountId)
 ```
 
 Delete board section
@@ -91,7 +91,8 @@ Delete a board section on a board owned by the \&quot;operation user_account\&qu
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 
 
-
+### Return type
+[**BoardSection**](BoardSection.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `boards:read`, `boards:write`
@@ -116,7 +117,7 @@ Get a list of all board sections from a board owned by the \&quot;operation user
 | **boardId** | `String`| Unique identifier of a board. | |
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
@@ -147,7 +148,7 @@ Get a list of the Pins on a board section of a board owned by the \&quot;operati
 | **sectionId** | `String`| Unique identifier of a board section. | |
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
@@ -164,7 +165,7 @@ Get a list of the Pins on a board section of a board owned by the \&quot;operati
 <a id="boardSectionsUpdate"></a>
 # **boardSectionsUpdate**
 ```java
-Mono<BoardSection> BoardsApi.boardSectionsUpdate(boardIdsectionIdboardSectionadAccountId)
+Mono<BoardSection> BoardsApi.boardSectionsUpdate(boardIdsectionIdboardSectionUpdateWithRequiredBodyadAccountId)
 ```
 
 Update board section
@@ -176,7 +177,7 @@ Update a board section on a board owned by the \&quot;operation user_account\&qu
 |------------- | ------------- | ------------- | -------------|
 | **boardId** | `String`| Unique identifier of a board. | |
 | **sectionId** | `String`| Unique identifier of a board section. | |
-| **boardSection** | [**BoardSection**](BoardSection.md)| Update a board section. | |
+| **boardSectionUpdateWithRequiredBody** | [**BoardSectionUpdateWithRequiredBody**](BoardSectionUpdateWithRequiredBody.md)|  | |
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 
 
@@ -221,7 +222,7 @@ Create a board owned by the \&quot;operation user_account\&quot;. Optional: Busi
 <a id="boardsDelete"></a>
 # **boardsDelete**
 ```java
-Mono<Void> BoardsApi.boardsDelete(boardIdadAccountId)
+Mono<Board> BoardsApi.boardsDelete(boardIdadAccountId)
 ```
 
 Delete board
@@ -235,7 +236,8 @@ Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Bu
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 
 
-
+### Return type
+[**Board**](Board.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `boards:read`, `boards:write`
@@ -305,7 +307,7 @@ Get a list of the boards owned by the \&quot;operation user_account\&quot; + gro
 <a id="boardsListPins"></a>
 # **boardsListPins**
 ```java
-Mono<BoardsListPins200Response> BoardsApi.boardsListPins(boardIdbookmarkpageSizecreativeTypesadAccountIdpinMetrics)
+Mono<BoardsListPins200Response> BoardsApi.boardsListPins(boardIdcreativeTypesadAccountIdpinMetricsbookmarkpageSize)
 ```
 
 List Pins on board
@@ -316,11 +318,11 @@ Get a list of the Pins on a board owned by the \&quot;operation user_account\&qu
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **boardId** | `String`| Unique identifier of a board. | |
-| **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
 | **creativeTypes** | [**List&lt;CreativeType&gt;**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional parameter] |
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 | **pinMetrics** | `Boolean`| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional parameter] [default to `false`] |
+| **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type

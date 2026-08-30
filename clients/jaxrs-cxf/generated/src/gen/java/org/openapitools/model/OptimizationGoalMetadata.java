@@ -1,8 +1,8 @@
 package org.openapitools.model;
 
-import org.openapitools.model.OptimizationGoalMetadataConversionTagV3GoalMetadata;
-import org.openapitools.model.OptimizationGoalMetadataFrequencyGoalMetadata;
-import org.openapitools.model.OptimizationGoalMetadataScrollupGoalMetadata;
+import org.openapitools.model.ConversionTagV3GoalMetadata;
+import org.openapitools.model.FrequencyGoalMetadata;
+import org.openapitools.model.ScrollupGoalMetadata;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -17,33 +17,33 @@ public class OptimizationGoalMetadata  {
 
   @Valid
 
-  private OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
+  private ConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
 
   @ApiModelProperty(value = "")
 
   @Valid
 
-  private OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata;
+  private FrequencyGoalMetadata frequencyGoalMetadata;
 
   @ApiModelProperty(value = "")
 
   @Valid
 
-  private OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata;
+  private ScrollupGoalMetadata scrollupGoalMetadata;
  /**
    * Get conversionTagV3GoalMetadata
    * @return conversionTagV3GoalMetadata
   **/
   @JsonProperty("conversion_tag_v3_goal_metadata")
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata getConversionTagV3GoalMetadata() {
+  public ConversionTagV3GoalMetadata getConversionTagV3GoalMetadata() {
     return conversionTagV3GoalMetadata;
   }
 
-  public void setConversionTagV3GoalMetadata(OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
+  public void setConversionTagV3GoalMetadata(ConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
     this.conversionTagV3GoalMetadata = conversionTagV3GoalMetadata;
   }
 
-  public OptimizationGoalMetadata conversionTagV3GoalMetadata(OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
+  public OptimizationGoalMetadata conversionTagV3GoalMetadata(ConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
     this.conversionTagV3GoalMetadata = conversionTagV3GoalMetadata;
     return this;
   }
@@ -53,15 +53,15 @@ public class OptimizationGoalMetadata  {
    * @return frequencyGoalMetadata
   **/
   @JsonProperty("frequency_goal_metadata")
-  public OptimizationGoalMetadataFrequencyGoalMetadata getFrequencyGoalMetadata() {
+  public FrequencyGoalMetadata getFrequencyGoalMetadata() {
     return frequencyGoalMetadata;
   }
 
-  public void setFrequencyGoalMetadata(OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata) {
+  public void setFrequencyGoalMetadata(FrequencyGoalMetadata frequencyGoalMetadata) {
     this.frequencyGoalMetadata = frequencyGoalMetadata;
   }
 
-  public OptimizationGoalMetadata frequencyGoalMetadata(OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata) {
+  public OptimizationGoalMetadata frequencyGoalMetadata(FrequencyGoalMetadata frequencyGoalMetadata) {
     this.frequencyGoalMetadata = frequencyGoalMetadata;
     return this;
   }
@@ -71,15 +71,15 @@ public class OptimizationGoalMetadata  {
    * @return scrollupGoalMetadata
   **/
   @JsonProperty("scrollup_goal_metadata")
-  public OptimizationGoalMetadataScrollupGoalMetadata getScrollupGoalMetadata() {
+  public ScrollupGoalMetadata getScrollupGoalMetadata() {
     return scrollupGoalMetadata;
   }
 
-  public void setScrollupGoalMetadata(OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata) {
+  public void setScrollupGoalMetadata(ScrollupGoalMetadata scrollupGoalMetadata) {
     this.scrollupGoalMetadata = scrollupGoalMetadata;
   }
 
-  public OptimizationGoalMetadata scrollupGoalMetadata(OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata) {
+  public OptimizationGoalMetadata scrollupGoalMetadata(ScrollupGoalMetadata scrollupGoalMetadata) {
     this.scrollupGoalMetadata = scrollupGoalMetadata;
     return this;
   }
@@ -120,10 +120,7 @@ public class OptimizationGoalMetadata  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

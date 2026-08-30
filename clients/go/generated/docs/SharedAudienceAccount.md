@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountId** | **string** | Account ID (ad account or business ID). | 
 **AccountName** | **string** | Account name. | 
-**AccountType** | **string** | account type | 
+**AccountType** | [**AudienceAccountType**](AudienceAccountType.md) | account type | 
 **SharedOnTimestamp** | **int32** | Epoch timestamp in seconds for the shared audience event | 
 
 ## Methods
 
 ### NewSharedAudienceAccount
 
-`func NewSharedAudienceAccount(accountId string, accountName string, accountType string, sharedOnTimestamp int32, ) *SharedAudienceAccount`
+`func NewSharedAudienceAccount(accountId string, accountName string, accountType AudienceAccountType, sharedOnTimestamp int32, ) *SharedAudienceAccount`
 
 NewSharedAudienceAccount instantiates a new SharedAudienceAccount object
 This constructor will assign default values to properties that have it defined,
@@ -70,20 +70,20 @@ SetAccountName sets AccountName field to given value.
 
 ### GetAccountType
 
-`func (o *SharedAudienceAccount) GetAccountType() string`
+`func (o *SharedAudienceAccount) GetAccountType() AudienceAccountType`
 
 GetAccountType returns the AccountType field if non-nil, zero value otherwise.
 
 ### GetAccountTypeOk
 
-`func (o *SharedAudienceAccount) GetAccountTypeOk() (*string, bool)`
+`func (o *SharedAudienceAccount) GetAccountTypeOk() (*AudienceAccountType, bool)`
 
 GetAccountTypeOk returns a tuple with the AccountType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountType
 
-`func (o *SharedAudienceAccount) SetAccountType(v string)`
+`func (o *SharedAudienceAccount) SetAccountType(v AudienceAccountType)`
 
 SetAccountType sets AccountType field to given value.
 

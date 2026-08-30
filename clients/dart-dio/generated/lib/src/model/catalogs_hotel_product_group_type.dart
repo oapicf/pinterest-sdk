@@ -11,10 +11,10 @@ part 'catalogs_hotel_product_group_type.g.dart';
 
 class CatalogsHotelProductGroupType extends EnumClass {
 
-  /// <p>Catalog hotel product group type</p> <p>MERCHANT_CREATED: Product groups created by merchants. <br>ALL_LISTINGS: Includes every hotel item in your catalog.
+  /// Catalog hotel product group type
   @BuiltValueEnumConst(wireName: r'MERCHANT_CREATED')
   static const CatalogsHotelProductGroupType MERCHANT_CREATED = _$MERCHANT_CREATED;
-  /// <p>Catalog hotel product group type</p> <p>MERCHANT_CREATED: Product groups created by merchants. <br>ALL_LISTINGS: Includes every hotel item in your catalog.
+  /// Catalog hotel product group type
   @BuiltValueEnumConst(wireName: r'ALL_LISTINGS')
   static const CatalogsHotelProductGroupType ALL_LISTINGS = _$ALL_LISTINGS;
 

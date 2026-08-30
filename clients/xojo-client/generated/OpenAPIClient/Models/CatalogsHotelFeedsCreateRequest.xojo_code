@@ -3,7 +3,7 @@ Protected Class CatalogsHotelFeedsCreateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+			Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
 		#tag EndNote
 		catalog_id As Xoson.O.OptionalString
 	#tag EndProperty
@@ -25,7 +25,7 @@ Protected Class CatalogsHotelFeedsCreateRequest
 
 
 	#tag Property, Flags = &h0
-		default_locale As OpenAPIClient.Models.CatalogsFeedsCreateRequestDefaultLocale
+		default_locale As OpenAPIClient.Models.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
 	#tag EndProperty
 
 
@@ -60,7 +60,24 @@ Protected Class CatalogsHotelFeedsCreateRequest
 	#tag EndProperty
 
 
+    #tag Enum, Name = Catalog_typeEnum, Type = Integer, Flags = &h0
+        
+        Hotel
+        
+    #tag EndEnum
 
+
+	#tag Method, Flags = &h0
+		Shared Function Catalog_typeEnumToString(value As Catalog_typeEnum) As String
+		  Select Case value
+		    
+		    Case Catalog_typeEnum.Hotel
+		      Return "HOTEL"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -105,14 +122,6 @@ Protected Class CatalogsHotelFeedsCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="catalog_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsType"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="credentials"
 			Visible=false
 			Group="Behavior"
@@ -133,7 +142,7 @@ Protected Class CatalogsHotelFeedsCreateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsFeedsCreateRequestDefaultLocale"
+			Type="CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

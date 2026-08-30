@@ -2,16 +2,17 @@
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
 #import "OAIAuthRespondInvitesBody.h"
-#import "OAICancelInvitesBody.h"
+#import "OAICancelInvitesRequest.h"
+#import "OAICancelInvitesResponse.h"
 #import "OAICreateAssetAccessRequestBody.h"
 #import "OAICreateAssetAccessRequestResponse.h"
 #import "OAICreateAssetInvitesRequest.h"
 #import "OAICreateInvitesResultsResponseArray.h"
 #import "OAICreateMembershipOrPartnershipInvitesBody.h"
-#import "OAIDeleteInvitesResultsResponseArray.h"
-#import "OAIError.h"
 #import "OAIGetInvites200Response.h"
+#import "OAIInviteFilterStatus.h"
 #import "OAIInviteType.h"
+#import "OAIPinterestLibError.h"
 #import "OAIRespondToInvitesResponseArray.h"
 #import "OAIUpdateInvitesResultsResponseArray.h"
 
@@ -149,13 +150,13 @@ NSInteger kOAIBusinessAccessInviteApiMissingParamErrorCode = 234513;
 /// Cancel membership/partnership invites and/or requests.
 ///  @param businessId Unique identifier of the requesting business. 
 ///
-///  @param cancelInvitesBody A list with invite ids 
+///  @param cancelInvitesRequest  
 ///
-///  @returns OAIDeleteInvitesResultsResponseArray*
+///  @returns OAICancelInvitesResponse*
 ///
 -(NSURLSessionTask*) cancelInvitesOrRequestsWithBusinessId: (NSString*) businessId
-    cancelInvitesBody: (OAICancelInvitesBody*) cancelInvitesBody
-    completionHandler: (void (^)(OAIDeleteInvitesResultsResponseArray* output, NSError* error)) handler {
+    cancelInvitesRequest: (OAICancelInvitesRequest*) cancelInvitesRequest
+    completionHandler: (void (^)(OAICancelInvitesResponse* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -167,11 +168,11 @@ NSInteger kOAIBusinessAccessInviteApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'cancelInvitesBody' is set
-    if (cancelInvitesBody == nil) {
-        NSParameterAssert(cancelInvitesBody);
+    // verify the required parameter 'cancelInvitesRequest' is set
+    if (cancelInvitesRequest == nil) {
+        NSParameterAssert(cancelInvitesRequest);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"cancelInvitesBody"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"cancelInvitesRequest"] };
             NSError* error = [NSError errorWithDomain:kOAIBusinessAccessInviteApiErrorDomain code:kOAIBusinessAccessInviteApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -206,7 +207,7 @@ NSInteger kOAIBusinessAccessInviteApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = cancelInvitesBody;
+    bodyParam = cancelInvitesRequest;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"DELETE"
@@ -219,10 +220,10 @@ NSInteger kOAIBusinessAccessInviteApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIDeleteInvitesResultsResponseArray*"
+                              responseType: @"OAICancelInvitesResponse*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIDeleteInvitesResultsResponseArray*)data, error);
+                                    handler((OAICancelInvitesResponse*)data, error);
                                 }
                             }];
 }
@@ -232,7 +233,7 @@ NSInteger kOAIBusinessAccessInviteApiMissingParamErrorCode = 234513;
 /// Assign asset permissions information to an existing invite/request. Can be used to: - Request access to a partner's asset. Note: This is only for when no existing partnership exists. If an existing   partnership exists, use \"Create a request to access an existing partner's assets\" to request access to your   partner's assets.     - invite_type=\"PARTNER_REQUEST\" - Invite a partner to access your business assets. Note: This is only for when there is no existing partnership.   If there is an existing partnership, use \"Assign/Update partner asset permissions\" to assign a partner access to   new assets.     - invite_type=\"PARTNER_INVITE\" - Invite a member to access your business assets. Note: This is only for when there is no existing membership.   If there is an existing membership, use \"Assign/Update member asset permissions\" to assign a member access to new   assets.     - invite_type=\"MEMBER_INVITE\"  To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview.
 ///  @param businessId Unique identifier of the requesting business. 
 ///
-///  @param createAssetInvitesRequest A list of invites/requests together with the asset permissions to be assigned to the invite/request.  
+///  @param createAssetInvitesRequest  
 ///
 ///  @returns OAIUpdateInvitesResultsResponseArray*
 ///
@@ -315,7 +316,7 @@ NSInteger kOAIBusinessAccessInviteApiMissingParamErrorCode = 234513;
 /// Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type=\"MEMBER_INVITE\"     - business_role=\"EMPLOYEE\" OR business_role=\"BIZ_ADMIN\" (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type=\"PARTNER_INVITE\"     - business_role=\"PARTNER\"     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type=\"PARTNER_REQUEST\"     - business_role=\"PARTNER\"     - partners
 ///  @param businessId Unique identifier of the requesting business. 
 ///
-///  @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role 
+///  @param createMembershipOrPartnershipInvitesBody  
 ///
 ///  @returns OAICreateInvitesResultsResponseArray*
 ///
@@ -406,13 +407,13 @@ NSInteger kOAIBusinessAccessInviteApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIGetInvites200Response*
 ///
 -(NSURLSessionTask*) getInvitesWithBusinessId: (NSString*) businessId
     isMember: (NSNumber*) isMember
-    inviteStatus: (NSArray<NSString*>*) inviteStatus
+    inviteStatus: (NSArray<OAIInviteFilterStatus>*) inviteStatus
     inviteType: (OAIInviteType) inviteType
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize

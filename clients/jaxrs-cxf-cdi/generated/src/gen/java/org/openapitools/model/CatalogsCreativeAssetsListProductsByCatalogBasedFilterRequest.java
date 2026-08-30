@@ -57,7 +57,7 @@ public enum CatalogTypeEnum {
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
   /**
-   * Catalog id pertaining to the creative assets product group.
+   * Catalog ID pertaining to the product group.
    **/
   public CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -65,7 +65,7 @@ public enum CatalogTypeEnum {
   }
 
   
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog ID pertaining to the product group.")
   @JsonProperty("catalog_id")
   @NotNull
  @Pattern(regexp="^\\d+$")  public String getCatalogId() {
@@ -151,10 +151,7 @@ public enum CatalogTypeEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

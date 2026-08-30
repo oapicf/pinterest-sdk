@@ -12,16 +12,17 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CustomerListUploadCreateResponse   {
   
   private CustomerListUpload customerListUpload;
   private S3MultipartUploadData s3MultipartUploadData;
 
   /**
+   * The Customer List Upload created.
    **/
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The Customer List Upload created.")
   @JsonProperty("customer_list_upload")
   @NotNull
   public CustomerListUpload getCustomerListUpload() {
@@ -32,9 +33,10 @@ public class CustomerListUploadCreateResponse   {
   }
 
   /**
+   * Pre-signed upload URLs corresponding to each part of the upload.
    **/
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Pre-signed upload URLs corresponding to each part of the upload.")
   @JsonProperty("s3_multipart_upload_data")
   @NotNull
   public S3MultipartUploadData getS3MultipartUploadData() {
@@ -79,10 +81,7 @@ public class CustomerListUploadCreateResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

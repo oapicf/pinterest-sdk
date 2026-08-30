@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.UpdatePartnerAssetAccessBodyAccessesInner;
+import org.openapitools.model.UpdatePartnerAssetAccessItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -12,32 +12,40 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
+/**
+ * An object with a list of partner asset accesses to assign or update.
+ */
+@ApiModel(description="An object with a list of partner asset accesses to assign or update.")
+
 public class UpdatePartnerAssetAccessBody  {
   
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private List<@Valid UpdatePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
  /**
-  * Get accesses
+  * List of partner asset accesses to assign or update.
+  */
+  @ApiModelProperty(required = true, value = "List of partner asset accesses to assign or update.")
+  @Valid
+  private List<@Valid UpdatePartnerAssetAccessItem> accesses = new ArrayList<>();
+ /**
+  * List of partner asset accesses to assign or update.
   * @return accesses
   */
   @JsonProperty("accesses")
   @NotNull
- @Size(min=1,max=50)  public List<@Valid UpdatePartnerAssetAccessBodyAccessesInner> getAccesses() {
+ @Size(min=1,max=50)  public List<@Valid UpdatePartnerAssetAccessItem> getAccesses() {
     return accesses;
   }
 
   /**
    * Sets the <code>accesses</code> property.
    */
- public void setAccesses(List<@Valid UpdatePartnerAssetAccessBodyAccessesInner> accesses) {
+ public void setAccesses(List<@Valid UpdatePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
   /**
    * Sets the <code>accesses</code> property.
    */
-  public UpdatePartnerAssetAccessBody accesses(List<@Valid UpdatePartnerAssetAccessBodyAccessesInner> accesses) {
+  public UpdatePartnerAssetAccessBody accesses(List<@Valid UpdatePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
@@ -45,7 +53,7 @@ public class UpdatePartnerAssetAccessBody  {
   /**
    * Adds a new item to the <code>accesses</code> list.
    */
-  public UpdatePartnerAssetAccessBody addAccessesItem(UpdatePartnerAssetAccessBodyAccessesInner accessesItem) {
+  public UpdatePartnerAssetAccessBody addAccessesItem(UpdatePartnerAssetAccessItem accessesItem) {
     this.accesses.add(accessesItem);
     return this;
   }
@@ -83,10 +91,7 @@ public class UpdatePartnerAssetAccessBody  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/label.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/label_error_data.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -18,7 +18,7 @@ part 'label_error.g.dart';
 @BuiltValue()
 abstract class LabelError implements Built<LabelError, LabelErrorBuilder> {
   @BuiltValueField(wireName: r'data')
-  Label? get data;
+  LabelErrorData? get data;
 
   @BuiltValueField(wireName: r'error_messages')
   BuiltList<String>? get errorMessages;
@@ -50,7 +50,7 @@ class _$LabelErrorSerializer implements PrimitiveSerializer<LabelError> {
       yield r'data';
       yield serializers.serialize(
         object.data,
-        specifiedType: const FullType(Label),
+        specifiedType: const FullType(LabelErrorData),
       );
     }
     if (object.errorMessages != null) {
@@ -86,15 +86,17 @@ class _$LabelErrorSerializer implements PrimitiveSerializer<LabelError> {
         case r'data':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(Label),
-          ) as Label;
+            specifiedType: const FullType.nullable(LabelErrorData),
+          ) as LabelErrorData?;
+          if (valueDes == null) continue;
           result.data.replace(valueDes);
           break;
         case r'error_messages':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.errorMessages.replace(valueDes);
           break;
         default:

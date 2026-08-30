@@ -1,0 +1,28 @@
+--
+-- "Pinterest REST API"
+-- Prepared SQL queries for 'advertiser_defined_events_create_200_response' definition.
+-- Created using 'openapi-generator' ('postgresql-schema' generator)
+-- (https://openapi-generator.tech/docs/generators/postgresql-schema)
+--
+
+
+--
+-- SELECT template for table 'advertiser_defined_events_create_200_response'
+--
+SELECT items FROM advertiser_defined_events_create_200_response WHERE 1=1;
+
+--
+-- INSERT template for table 'advertiser_defined_events_create_200_response'
+--
+INSERT INTO advertiser_defined_events_create_200_response (items) VALUES (?);
+
+--
+-- UPDATE template for table 'advertiser_defined_events_create_200_response'
+--
+UPDATE advertiser_defined_events_create_200_response SET items = ? WHERE 1=2;
+
+--
+-- DELETE template for table 'advertiser_defined_events_create_200_response'
+--
+DELETE FROM advertiser_defined_events_create_200_response WHERE 1=2;
+

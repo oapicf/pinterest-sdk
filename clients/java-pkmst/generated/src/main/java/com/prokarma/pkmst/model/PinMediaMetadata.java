@@ -1,8 +1,12 @@
 package com.prokarma.pkmst.model;
 
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.prokarma.pkmst.model.ImageMetadata;
 import com.prokarma.pkmst.model.ImageSize;
 import com.prokarma.pkmst.model.VideoMetadataWithItemType;
@@ -16,10 +20,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
  *
  */
 /**
- * PinMediaMetadata
+ * Per-item entry inside &#x60;PinMedia.items&#x60; for mixed image/video pins. Discriminated by &#x60;item_type&#x60;.
  */
+@ApiModel(description = "Per-item entry inside `PinMedia.items` for mixed image/video pins. Discriminated by `item_type`.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "item_type", visible = true)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value = ImageMetadata.class, name = "image"),
+  @JsonSubTypes.Type(value = VideoMetadataWithItemType.class, name = "video"),
+})
+
 public class PinMediaMetadata   {
   @JsonProperty("description")
   private String description;
@@ -27,8 +38,37 @@ public class PinMediaMetadata   {
   @JsonProperty("images")
   private ImageSize images;
 
+  /**
+   * Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
+   */
+  public enum ItemTypeEnum {
+    VIDEO("video");
+
+    private String value;
+
+    ItemTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ItemTypeEnum fromValue(String text) {
+      for (ItemTypeEnum b : ItemTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
   @JsonProperty("item_type")
-  private String itemType;
+  private ItemTypeEnum itemType;
 
   @JsonProperty("link")
   private String link;
@@ -47,6 +87,9 @@ public class PinMediaMetadata   {
 
   @JsonProperty("video_url")
   private String videoUrl;
+
+  @JsonProperty("video_url_hls")
+  private String videoUrlHls;
 
   @JsonProperty("width")
   private Integer width;
@@ -87,21 +130,21 @@ public class PinMediaMetadata   {
     this.images = images;
   }
 
-  public PinMediaMetadata itemType(String itemType) {
+  public PinMediaMetadata itemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
     return this;
   }
 
   /**
-   * Get itemType
+   * Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
    * @return itemType
    */
-  @ApiModelProperty(value = "")
-  public String getItemType() {
+  @ApiModelProperty(required = true, value = "Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.")
+  public ItemTypeEnum getItemType() {
     return itemType;
   }
 
-  public void setItemType(String itemType) {
+  public void setItemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
   }
 
@@ -213,6 +256,24 @@ public class PinMediaMetadata   {
     this.videoUrl = videoUrl;
   }
 
+  public PinMediaMetadata videoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+    return this;
+  }
+
+  /**
+   * Video url (HLS).  **Note:** This field is limited and not available to all apps.
+   * @return videoUrlHls
+   */
+  @ApiModelProperty(value = "Video url (HLS).  **Note:** This field is limited and not available to all apps.")
+  public String getVideoUrlHls() {
+    return videoUrlHls;
+  }
+
+  public void setVideoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+  }
+
   public PinMediaMetadata width(Integer width) {
     this.width = width;
     return this;
@@ -250,12 +311,13 @@ public class PinMediaMetadata   {
         Objects.equals(this.duration, pinMediaMetadata.duration) &&
         Objects.equals(this.height, pinMediaMetadata.height) &&
         Objects.equals(this.videoUrl, pinMediaMetadata.videoUrl) &&
+        Objects.equals(this.videoUrlHls, pinMediaMetadata.videoUrlHls) &&
         Objects.equals(this.width, pinMediaMetadata.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, images, itemType, link, title, coverImageUrl, duration, height, videoUrl, width);
+    return Objects.hash(description, images, itemType, link, title, coverImageUrl, duration, height, videoUrl, videoUrlHls, width);
   }
 
   @Override
@@ -272,6 +334,7 @@ public class PinMediaMetadata   {
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    videoUrlHls: ").append(toIndentedString(videoUrlHls)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -282,10 +345,7 @@ public class PinMediaMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -23,9 +31,9 @@ import com.squareup.moshi.JsonClass
 /**
  * Summarized pin information
  *
+ * @param id 
  * @param altText 
  * @param description 
- * @param id 
  * @param link 
  * @param media 
  * @param title 
@@ -34,14 +42,14 @@ import com.squareup.moshi.JsonClass
 
 data class SummaryPin (
 
+    @Json(name = "id")
+    val id: kotlin.String,
+
     @Json(name = "alt_text")
     val altText: kotlin.String? = null,
 
     @Json(name = "description")
     val description: kotlin.String? = null,
-
-    @Json(name = "id")
-    val id: kotlin.String? = null,
 
     @Json(name = "link")
     val link: kotlin.String? = null,

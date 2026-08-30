@@ -13,7 +13,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            ConversionMSOTEvents conversionMSOTEvents
+            ConversionMSOTEventsCreate conversionMSOTEventsCreate
             
         )
         {
@@ -42,11 +42,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | conversionMSOTEvents
+            // Body     | conversionMSOTEventsCreate
 
 
 
-            payload = conversionMSOTEvents.toJson().dump();
+            payload = conversionMSOTEventsCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 

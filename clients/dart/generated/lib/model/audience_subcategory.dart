@@ -20,7 +20,6 @@ class AudienceSubcategory {
     this.ratio,
   });
 
-  /// Subinterest ID.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -29,7 +28,6 @@ class AudienceSubcategory {
   ///
   String? id;
 
-  /// Subinterest affinity index.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -38,7 +36,6 @@ class AudienceSubcategory {
   ///
   num? index;
 
-  /// Interest unique key (same as ID).
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -47,7 +44,6 @@ class AudienceSubcategory {
   ///
   String? key;
 
-  /// Subinterest name.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -56,7 +52,6 @@ class AudienceSubcategory {
   ///
   String? name;
 
-  /// Subinterest's percent of category's total audience.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -126,10 +121,6 @@ class AudienceSubcategory {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AudienceSubcategory[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AudienceSubcategory[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

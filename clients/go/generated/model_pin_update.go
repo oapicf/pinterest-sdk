@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,11 +20,13 @@ var _ MappedNullable = &PinUpdate{}
 
 // PinUpdate Resource create or update operation model.
 type PinUpdate struct {
+	// AI disclosure declarations the creator has made about this Pin.
+	AiDisclosures *AiDisclosuresUpdate `json:"ai_disclosures,omitempty"`
 	AltText NullableString `json:"alt_text,omitempty"`
 	// The board to which this Pin belongs.
-	BoardId *string `json:"board_id,omitempty" validate:"regexp=^\\\\d+$"`
+	BoardId *string `json:"board_id,omitempty" validate:"regexp=^\\d+$"`
 	// The board section to which this Pin belongs.
-	BoardSectionId NullableString `json:"board_section_id,omitempty" validate:"regexp=^\\\\d+$"`
+	BoardSectionId NullableString `json:"board_section_id,omitempty" validate:"regexp=^\\d+$"`
 	// Carousel Pin slots data.
 	CarouselSlots []CarouselSlot `json:"carousel_slots,omitempty"`
 	Description NullableString `json:"description,omitempty"`
@@ -47,6 +49,38 @@ func NewPinUpdate() *PinUpdate {
 func NewPinUpdateWithDefaults() *PinUpdate {
 	this := PinUpdate{}
 	return &this
+}
+
+// GetAiDisclosures returns the AiDisclosures field value if set, zero value otherwise.
+func (o *PinUpdate) GetAiDisclosures() AiDisclosuresUpdate {
+	if o == nil || IsNil(o.AiDisclosures) {
+		var ret AiDisclosuresUpdate
+		return ret
+	}
+	return *o.AiDisclosures
+}
+
+// GetAiDisclosuresOk returns a tuple with the AiDisclosures field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PinUpdate) GetAiDisclosuresOk() (*AiDisclosuresUpdate, bool) {
+	if o == nil || IsNil(o.AiDisclosures) {
+		return nil, false
+	}
+	return o.AiDisclosures, true
+}
+
+// HasAiDisclosures returns a boolean if a field has been set.
+func (o *PinUpdate) HasAiDisclosures() bool {
+	if o != nil && !IsNil(o.AiDisclosures) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiDisclosures gets a reference to the given AiDisclosuresUpdate and assigns it to the AiDisclosures field.
+func (o *PinUpdate) SetAiDisclosures(v AiDisclosuresUpdate) {
+	o.AiDisclosures = &v
 }
 
 // GetAltText returns the AltText field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -333,6 +367,9 @@ func (o PinUpdate) MarshalJSON() ([]byte, error) {
 
 func (o PinUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AiDisclosures) {
+		toSerialize["ai_disclosures"] = o.AiDisclosures
+	}
 	if o.AltText.IsSet() {
 		toSerialize["alt_text"] = o.AltText.Get()
 	}

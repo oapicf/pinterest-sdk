@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## AdAccountsSubscriptionsDelById
 
-> AdAccountsSubscriptionsDelById(ctx, adAccountId, subscriptionId).Execute()
+> LeadSubscription AdAccountsSubscriptionsDelById(ctx, adAccountId, subscriptionId).Execute()
 
 Delete lead ads subscription
 
@@ -37,11 +37,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.LeadAdsAPI.AdAccountsSubscriptionsDelById(context.Background(), adAccountId, subscriptionId).Execute()
+	resp, r, err := apiClient.LeadAdsAPI.AdAccountsSubscriptionsDelById(context.Background(), adAccountId, subscriptionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LeadAdsAPI.AdAccountsSubscriptionsDelById``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `AdAccountsSubscriptionsDelById`: LeadSubscription
+	fmt.Fprintf(os.Stdout, "Response from `LeadAdsAPI.AdAccountsSubscriptionsDelById`: %v\n", resp)
 }
 ```
 
@@ -66,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 

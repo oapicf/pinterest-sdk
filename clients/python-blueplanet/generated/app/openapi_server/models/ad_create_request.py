@@ -11,8 +11,6 @@ from app.openapi_server.models.customizable_cta_type import CustomizableCTAType 
 from app.openapi_server.models.disclosure_type import DisclosureType  # noqa: F401,E501
 from app.openapi_server.models.entity_status import EntityStatus  # noqa: F401,E501
 from app.openapi_server.models.grid_click_type import GridClickType  # noqa: F401,E501
-from app.openapi_server.models.quiz_pin_data import QuizPinData  # noqa: F401,E501
-from app.openapi_server.models.tracking_urls import TrackingUrls  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -23,7 +21,7 @@ class AdCreateRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, ad_group_id: str=None, android_deep_link: str=None, carousel_android_deep_links: List[str]=None, carousel_destination_urls: List[str]=None, carousel_ios_deep_links: List[str]=None, click_tracking_url: str=None, creative_type: CreativeType=None, customizable_cta_type: CustomizableCTAType=None, destination_url: str=None, disclosure_type: DisclosureType=None, disclosure_url: str=None, grid_click_type: GridClickType=None, ios_deep_link: str=None, is_pin_deleted: bool=None, is_removable: bool=None, lead_form_id: str=None, name: str=None, quiz_pin_data: QuizPinData=None, status: EntityStatus=None, tracking_urls: TrackingUrls=None, view_tracking_url: str=None, pin_id: str=None):  # noqa: E501
+    def __init__(self, ad_group_id: str=None, android_deep_link: str=None, carousel_android_deep_links: List[str]=None, carousel_destination_urls: List[str]=None, carousel_ios_deep_links: List[str]=None, click_tracking_url: str=None, creative_type: CreativeType=None, customizable_cta_type: CustomizableCTAType=None, destination_url: str=None, disclosure_type: DisclosureType=None, disclosure_url: str=None, grid_click_type: GridClickType=None, ios_deep_link: str=None, is_carting: bool=None, is_pin_deleted: bool=None, is_removable: bool=None, lead_form_id: str=None, name: str=None, pin_id: str=None, quiz_pin_data: object=None, status: EntityStatus=None, tracking_urls: object=None, view_tracking_url: str=None):  # noqa: E501
         """AdCreateRequest - a model defined in Swagger
 
         :param ad_group_id: The ad_group_id of this AdCreateRequest.  # noqa: E501
@@ -52,6 +50,8 @@ class AdCreateRequest(Model):
         :type grid_click_type: GridClickType
         :param ios_deep_link: The ios_deep_link of this AdCreateRequest.  # noqa: E501
         :type ios_deep_link: str
+        :param is_carting: The is_carting of this AdCreateRequest.  # noqa: E501
+        :type is_carting: bool
         :param is_pin_deleted: The is_pin_deleted of this AdCreateRequest.  # noqa: E501
         :type is_pin_deleted: bool
         :param is_removable: The is_removable of this AdCreateRequest.  # noqa: E501
@@ -60,16 +60,16 @@ class AdCreateRequest(Model):
         :type lead_form_id: str
         :param name: The name of this AdCreateRequest.  # noqa: E501
         :type name: str
+        :param pin_id: The pin_id of this AdCreateRequest.  # noqa: E501
+        :type pin_id: str
         :param quiz_pin_data: The quiz_pin_data of this AdCreateRequest.  # noqa: E501
-        :type quiz_pin_data: QuizPinData
+        :type quiz_pin_data: object
         :param status: The status of this AdCreateRequest.  # noqa: E501
         :type status: EntityStatus
         :param tracking_urls: The tracking_urls of this AdCreateRequest.  # noqa: E501
-        :type tracking_urls: TrackingUrls
+        :type tracking_urls: object
         :param view_tracking_url: The view_tracking_url of this AdCreateRequest.  # noqa: E501
         :type view_tracking_url: str
-        :param pin_id: The pin_id of this AdCreateRequest.  # noqa: E501
-        :type pin_id: str
         """
         self.swagger_types = {
             'ad_group_id': str,
@@ -85,15 +85,16 @@ class AdCreateRequest(Model):
             'disclosure_url': str,
             'grid_click_type': GridClickType,
             'ios_deep_link': str,
+            'is_carting': bool,
             'is_pin_deleted': bool,
             'is_removable': bool,
             'lead_form_id': str,
             'name': str,
-            'quiz_pin_data': QuizPinData,
+            'pin_id': str,
+            'quiz_pin_data': object,
             'status': EntityStatus,
-            'tracking_urls': TrackingUrls,
-            'view_tracking_url': str,
-            'pin_id': str
+            'tracking_urls': object,
+            'view_tracking_url': str
         }
 
         self.attribute_map = {
@@ -110,15 +111,16 @@ class AdCreateRequest(Model):
             'disclosure_url': 'disclosure_url',
             'grid_click_type': 'grid_click_type',
             'ios_deep_link': 'ios_deep_link',
+            'is_carting': 'is_carting',
             'is_pin_deleted': 'is_pin_deleted',
             'is_removable': 'is_removable',
             'lead_form_id': 'lead_form_id',
             'name': 'name',
+            'pin_id': 'pin_id',
             'quiz_pin_data': 'quiz_pin_data',
             'status': 'status',
             'tracking_urls': 'tracking_urls',
-            'view_tracking_url': 'view_tracking_url',
-            'pin_id': 'pin_id'
+            'view_tracking_url': 'view_tracking_url'
         }
 
         self._ad_group_id = ad_group_id
@@ -134,15 +136,16 @@ class AdCreateRequest(Model):
         self._disclosure_url = disclosure_url
         self._grid_click_type = grid_click_type
         self._ios_deep_link = ios_deep_link
+        self._is_carting = is_carting
         self._is_pin_deleted = is_pin_deleted
         self._is_removable = is_removable
         self._lead_form_id = lead_form_id
         self._name = name
+        self._pin_id = pin_id
         self._quiz_pin_data = quiz_pin_data
         self._status = status
         self._tracking_urls = tracking_urls
         self._view_tracking_url = view_tracking_url
-        self._pin_id = pin_id
 
     @classmethod
     def from_dict(cls, dikt) -> 'AdCreateRequest':
@@ -453,6 +456,29 @@ class AdCreateRequest(Model):
         self._ios_deep_link = ios_deep_link
 
     @property
+    def is_carting(self) -> bool:
+        """Gets the is_carting of this AdCreateRequest.
+
+        Is the ad a carting/WTB ad?  # noqa: E501
+
+        :return: The is_carting of this AdCreateRequest.
+        :rtype: bool
+        """
+        return self._is_carting
+
+    @is_carting.setter
+    def is_carting(self, is_carting: bool):
+        """Sets the is_carting of this AdCreateRequest.
+
+        Is the ad a carting/WTB ad?  # noqa: E501
+
+        :param is_carting: The is_carting of this AdCreateRequest.
+        :type is_carting: bool
+        """
+
+        self._is_carting = is_carting
+
+    @property
     def is_pin_deleted(self) -> bool:
         """Gets the is_pin_deleted of this AdCreateRequest.
 
@@ -547,24 +573,51 @@ class AdCreateRequest(Model):
         self._name = name
 
     @property
-    def quiz_pin_data(self) -> QuizPinData:
+    def pin_id(self) -> str:
+        """Gets the pin_id of this AdCreateRequest.
+
+        Pin ID.  # noqa: E501
+
+        :return: The pin_id of this AdCreateRequest.
+        :rtype: str
+        """
+        return self._pin_id
+
+    @pin_id.setter
+    def pin_id(self, pin_id: str):
+        """Sets the pin_id of this AdCreateRequest.
+
+        Pin ID.  # noqa: E501
+
+        :param pin_id: The pin_id of this AdCreateRequest.
+        :type pin_id: str
+        """
+        if pin_id is None:
+            raise ValueError("Invalid value for `pin_id`, must not be `None`")  # noqa: E501
+        if pin_id is not None and not re.search(r'^\d+$', pin_id):  # noqa: E501
+            raise ValueError("Invalid value for `pin_id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
+
+        self._pin_id = pin_id
+
+    @property
+    def quiz_pin_data(self) -> object:
         """Gets the quiz_pin_data of this AdCreateRequest.
 
         Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.  # noqa: E501
 
         :return: The quiz_pin_data of this AdCreateRequest.
-        :rtype: QuizPinData
+        :rtype: object
         """
         return self._quiz_pin_data
 
     @quiz_pin_data.setter
-    def quiz_pin_data(self, quiz_pin_data: QuizPinData):
+    def quiz_pin_data(self, quiz_pin_data: object):
         """Sets the quiz_pin_data of this AdCreateRequest.
 
         Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.  # noqa: E501
 
         :param quiz_pin_data: The quiz_pin_data of this AdCreateRequest.
-        :type quiz_pin_data: QuizPinData
+        :type quiz_pin_data: object
         """
 
         self._quiz_pin_data = quiz_pin_data
@@ -591,22 +644,22 @@ class AdCreateRequest(Model):
         self._status = status
 
     @property
-    def tracking_urls(self) -> TrackingUrls:
+    def tracking_urls(self) -> object:
         """Gets the tracking_urls of this AdCreateRequest.
 
 
         :return: The tracking_urls of this AdCreateRequest.
-        :rtype: TrackingUrls
+        :rtype: object
         """
         return self._tracking_urls
 
     @tracking_urls.setter
-    def tracking_urls(self, tracking_urls: TrackingUrls):
+    def tracking_urls(self, tracking_urls: object):
         """Sets the tracking_urls of this AdCreateRequest.
 
 
         :param tracking_urls: The tracking_urls of this AdCreateRequest.
-        :type tracking_urls: TrackingUrls
+        :type tracking_urls: object
         """
 
         self._tracking_urls = tracking_urls
@@ -633,30 +686,3 @@ class AdCreateRequest(Model):
         """
 
         self._view_tracking_url = view_tracking_url
-
-    @property
-    def pin_id(self) -> str:
-        """Gets the pin_id of this AdCreateRequest.
-
-        Pin ID.  # noqa: E501
-
-        :return: The pin_id of this AdCreateRequest.
-        :rtype: str
-        """
-        return self._pin_id
-
-    @pin_id.setter
-    def pin_id(self, pin_id: str):
-        """Sets the pin_id of this AdCreateRequest.
-
-        Pin ID.  # noqa: E501
-
-        :param pin_id: The pin_id of this AdCreateRequest.
-        :type pin_id: str
-        """
-        if pin_id is None:
-            raise ValueError("Invalid value for `pin_id`, must not be `None`")  # noqa: E501
-        if pin_id is not None and not re.search(r'^\d+$', pin_id):  # noqa: E501
-            raise ValueError("Invalid value for `pin_id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
-
-        self._pin_id = pin_id

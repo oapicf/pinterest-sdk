@@ -13,10 +13,10 @@ static product_group_promotion_update_request_t *product_group_promotion_update_
     if (!product_group_promotion_update_request_local_var) {
         return NULL;
     }
+    memset(product_group_promotion_update_request_local_var, 0, sizeof(product_group_promotion_update_request_t));
+    product_group_promotion_update_request_local_var->_library_owned = 1;
     product_group_promotion_update_request_local_var->ad_group_id = ad_group_id;
     product_group_promotion_update_request_local_var->product_group_promotion = product_group_promotion;
-
-    product_group_promotion_update_request_local_var->_library_owned = 1;
     return product_group_promotion_update_request_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) product_group_promotion_update_request_t *product_gr
     char *ad_group_id,
     list_t *product_group_promotion
     ) {
-    return product_group_promotion_update_request_create_internal (
+    product_group_promotion_update_request_t *result = product_group_promotion_update_request_create_internal (
         ad_group_id,
         product_group_promotion
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void product_group_promotion_update_request_free(product_group_promotion_update_request_t *product_group_promotion_update_request) {
@@ -97,6 +100,8 @@ product_group_promotion_update_request_t *product_group_promotion_update_request
 
     product_group_promotion_update_request_t *product_group_promotion_update_request_local_var = NULL;
 
+    char *ad_group_id_local_str = NULL;
+
     // define the local list for product_group_promotion_update_request->product_group_promotion
     list_t *product_group_promotionList = NULL;
 
@@ -143,13 +148,23 @@ product_group_promotion_update_request_t *product_group_promotion_update_request
     }
 
 
+    if (ad_group_id && !cJSON_IsNull(ad_group_id)) ad_group_id_local_str = strdup(ad_group_id->valuestring);
+
     product_group_promotion_update_request_local_var = product_group_promotion_update_request_create_internal (
-        strdup(ad_group_id->valuestring),
+        ad_group_id_local_str,
         product_group_promotionList
         );
 
+    if (!product_group_promotion_update_request_local_var) {
+        goto end;
+    }
+
     return product_group_promotion_update_request_local_var;
 end:
+    if (ad_group_id_local_str) {
+        free(ad_group_id_local_str);
+        ad_group_id_local_str = NULL;
+    }
     if (product_group_promotionList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, product_group_promotionList) {

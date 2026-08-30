@@ -62,6 +62,13 @@ public:
 	/*! \brief Set Order line budget in micro currency.
 	 */
 	void setBudget(long long  budget);
+	/*! \brief Get Associated List of campaign IDs.
+	 */
+	std::list<std::string> getCampaignIds();
+
+	/*! \brief Set Associated List of campaign IDs.
+	 */
+	void setCampaignIds(std::list <std::string> campaign_ids);
 	/*! \brief Get End time. Unix timestamp.
 	 */
 	long long getEndTime();
@@ -125,17 +132,11 @@ public:
 	/*! \brief Set Always \"orderline\".
 	 */
 	void setType(std::string  type);
-	/*! \brief Get Associated List of campaign IDs.
-	 */
-	std::list<std::string> getCampaignIds();
-
-	/*! \brief Set Associated List of campaign IDs.
-	 */
-	void setCampaignIds(std::list <std::string> campaign_ids);
 
 private:
 	std::string ad_account_id;
 	long long budget;
+	std::list <std::string>campaign_ids;
 	long long end_time;
 	std::string id;
 	std::string name;
@@ -145,7 +146,6 @@ private:
 	long long start_time;
 	OrderLineStatus status;
 	std::string type;
-	std::list <std::string>campaign_ids;
 	void __init();
 	void __cleanup();
 

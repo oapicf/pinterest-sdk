@@ -2,7 +2,7 @@ package models
 
 type CatalogsProductGroupFilterOperatorTypeCriteria struct {
 
-	FilterOperatorType string `json:"filter_operator_type,omitempty"`
+	FilterOperatorType FilterOperatorType `json:"filter_operator_type,omitempty"`
 
 	Negated bool `json:"negated,omitempty"`
 

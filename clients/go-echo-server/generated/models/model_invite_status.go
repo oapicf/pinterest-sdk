@@ -1,5 +1,5 @@
 package models
-// InviteStatus : The current status of the invite.
+// InviteStatus : The current status of an invite or request.
 type InviteStatus string
 
 // List of InviteStatus

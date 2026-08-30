@@ -5,18 +5,6 @@
   "name": "CatalogsReportStats",
   "fields": [
     {
-      "name": "report_type",
-      "type": {
-        "type": "enum",
-        "name": "CatalogsReportStats_reportUnderscoretype",
-        "symbols": [
-          "FEED_INGESTION_ISSUES",
-          "DISTRIBUTION_ISSUES"
-        ]
-      },
-      "doc": ""
-    },
-    {
       "name": "catalog_id",
       "type": ["null", "string"],
       "doc": "ID of the catalog entity.",
@@ -44,6 +32,18 @@
       "name": "occurrences",
       "type": ["null", "int"],
       "doc": "Number of occurrences of the issue",
+      "default": null
+    },
+    {
+      "name": "report_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "CatalogsReportStats_reportUnderscoretype",
+        "symbols": [
+          "DISTRIBUTION_ISSUES"
+        ]
+      }],
+      "doc": "",
       "default": null
     },
     {

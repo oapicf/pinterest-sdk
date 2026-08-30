@@ -11,7 +11,6 @@ import { CatalogsFeedProcessingSchedule } from './catalogsFeedProcessingSchedule
 import { ProductAvailabilityType } from './productAvailabilityType';
 import { CatalogsStatus } from './catalogsStatus';
 import { CatalogsFeedCredentials } from './catalogsFeedCredentials';
-import { CatalogsType } from './catalogsType';
 import { CatalogsFormat } from './catalogsFormat';
 import { NullableCurrency } from './nullableCurrency';
 
@@ -20,7 +19,7 @@ import { NullableCurrency } from './nullableCurrency';
  * Request object for updating a feed.
  */
 export interface CatalogsRetailFeedsUpdateRequest { 
-    catalog_type: CatalogsType;
+    catalog_type: CatalogsRetailFeedsUpdateRequest.CatalogTypeEnum;
     credentials?: CatalogsFeedCredentials | null;
     default_availability?: ProductAvailabilityType | null;
     default_currency?: NullableCurrency | null;
@@ -37,6 +36,10 @@ export interface CatalogsRetailFeedsUpdateRequest {
     status?: CatalogsStatus;
 }
 export namespace CatalogsRetailFeedsUpdateRequest {
+    export const CatalogTypeEnum = {
+        Retail: 'RETAIL'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

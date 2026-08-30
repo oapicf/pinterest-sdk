@@ -1,0 +1,10 @@
+
+
+# PinnerListType
+
+## Enum
+
+
+
+
+

@@ -9,9 +9,9 @@
 
 
 #include <string>
+#include "CatalogsCreativeAssetsFeedsCreateRequest_default_locale.h"
 #include "CatalogsFeedCredentials.h"
 #include "CatalogsFeedProcessingSchedule.h"
-#include "CatalogsFeedsCreateRequest_default_locale.h"
 #include "CatalogsFormat.h"
 #include "CatalogsStatus.h"
 #include "Country.h"
@@ -83,11 +83,11 @@ public:
 	void setDefaultCurrency(NullableCurrency  default_currency);
 	/*! \brief Get 
 	 */
-	CatalogsFeedsCreateRequest_default_locale getDefaultLocale();
+	CatalogsCreativeAssetsFeedsCreateRequest_default_locale getDefaultLocale();
 
 	/*! \brief Set 
 	 */
-	void setDefaultLocale(CatalogsFeedsCreateRequest_default_locale  default_locale);
+	void setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequest_default_locale  default_locale);
 	/*! \brief Get 
 	 */
 	CatalogsFormat getFormat();
@@ -129,7 +129,7 @@ private:
 	ProductAvailabilityType default_availability;
 	Country default_country;
 	NullableCurrency default_currency;
-	CatalogsFeedsCreateRequest_default_locale default_locale;
+	CatalogsCreativeAssetsFeedsCreateRequest_default_locale default_locale;
 	CatalogsFormat format;
 	std::string location;
 	std::string name;

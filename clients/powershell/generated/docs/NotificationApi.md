@@ -26,7 +26,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 # Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$NotificationPostRequest = Initialize-NotificationPostRequest # NotificationPostRequest | notification event.
+$NotificationPostRequest = Initialize-NotificationPostRequest # NotificationPostRequest | 
 
 # Receive notifications from external partners.
 try {
@@ -41,7 +41,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **NotificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md)| notification event. | 
+ **NotificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md)|  | 
 
 ### Return type
 

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -19,7 +27,6 @@ import org.openapitools.client.models.CatalogsFeedCredentials
 import org.openapitools.client.models.CatalogsFeedProcessingSchedule
 import org.openapitools.client.models.CatalogsFormat
 import org.openapitools.client.models.CatalogsStatus
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.NullableCurrency
 import org.openapitools.client.models.ProductAvailabilityType
 
@@ -44,7 +51,7 @@ import com.squareup.moshi.JsonClass
 data class CatalogsRetailFeedsUpdateRequest (
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
+    val catalogType: CatalogsRetailFeedsUpdateRequest.CatalogType,
 
     @Json(name = "credentials")
     val credentials: CatalogsFeedCredentials? = null,
@@ -74,6 +81,15 @@ data class CatalogsRetailFeedsUpdateRequest (
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: RETAIL
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "RETAIL") RETAIL("RETAIL");
+    }
 
 }
 

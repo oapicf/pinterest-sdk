@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**AVAILABILITY** | AVAILABILITY | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
+**AVAILABILITY** | AVAILABILITY | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |  [foreignkey]
 
 
 

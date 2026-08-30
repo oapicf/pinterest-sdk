@@ -17,13 +17,19 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { Audience } from '../model/audience';
+import { AdAccountsAudience } from '../model/adAccountsAudience';
 // @ts-ignore
-import { AudienceCreateRequest } from '../model/audienceCreateRequest';
+import { AdAccountsAudienceCreate } from '../model/adAccountsAudienceCreate';
 // @ts-ignore
-import { AudienceUpdateRequest } from '../model/audienceUpdateRequest';
+import { AdAccountsAudienceUpdate } from '../model/adAccountsAudienceUpdate';
+// @ts-ignore
+import { AudienceOwnershipType } from '../model/audienceOwnershipType';
 // @ts-ignore
 import { AudiencesList200Response } from '../model/audiencesList200Response';
+// @ts-ignore
+import { PinterestLibError } from '../model/pinterestLibError';
+// @ts-ignore
+import { PinterestLibPaginationOrder } from '../model/pinterestLibPaginationOrder';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -43,23 +49,23 @@ export class AudiencesService extends BaseService {
 
     /**
      * Create audience
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+     * Create a new audience for the ad account.
      * @endpoint post /ad_accounts/{ad_account_id}/audiences
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceCreateRequest List of ads to create, size limit [1, 30]
+     * @param adAccountsAudienceCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public audiencesCreate(adAccountId: string, audienceCreateRequest: AudienceCreateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Audience>;
-    public audiencesCreate(adAccountId: string, audienceCreateRequest: AudienceCreateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Audience>>;
-    public audiencesCreate(adAccountId: string, audienceCreateRequest: AudienceCreateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Audience>>;
-    public audiencesCreate(adAccountId: string, audienceCreateRequest: AudienceCreateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public audiencesCreate(adAccountId: string, adAccountsAudienceCreate: AdAccountsAudienceCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdAccountsAudience>;
+    public audiencesCreate(adAccountId: string, adAccountsAudienceCreate: AdAccountsAudienceCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdAccountsAudience>>;
+    public audiencesCreate(adAccountId: string, adAccountsAudienceCreate: AdAccountsAudienceCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AdAccountsAudience>>;
+    public audiencesCreate(adAccountId: string, adAccountsAudienceCreate: AdAccountsAudienceCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling audiencesCreate.');
         }
-        if (audienceCreateRequest === null || audienceCreateRequest === undefined) {
-            throw new Error('Required parameter audienceCreateRequest was null or undefined when calling audiencesCreate.');
+        if (adAccountsAudienceCreate === null || adAccountsAudienceCreate === undefined) {
+            throw new Error('Required parameter adAccountsAudienceCreate was null or undefined when calling audiencesCreate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -101,10 +107,10 @@ export class AudiencesService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/audiences`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<Audience>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<AdAccountsAudience>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: audienceCreateRequest,
+                body: adAccountsAudienceCreate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -119,21 +125,21 @@ export class AudiencesService extends BaseService {
      * Get audience
      * Get a specific audience given the audience ID.
      * @endpoint get /ad_accounts/{ad_account_id}/audiences/{audience_id}
+     * @param audienceId Audience ID.
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceId Unique identifier of an audience
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public audiencesGet(adAccountId: string, audienceId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Audience>;
-    public audiencesGet(adAccountId: string, audienceId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Audience>>;
-    public audiencesGet(adAccountId: string, audienceId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Audience>>;
-    public audiencesGet(adAccountId: string, audienceId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (adAccountId === null || adAccountId === undefined) {
-            throw new Error('Required parameter adAccountId was null or undefined when calling audiencesGet.');
-        }
+    public audiencesGet(audienceId: string, adAccountId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdAccountsAudience>;
+    public audiencesGet(audienceId: string, adAccountId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdAccountsAudience>>;
+    public audiencesGet(audienceId: string, adAccountId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AdAccountsAudience>>;
+    public audiencesGet(audienceId: string, adAccountId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (audienceId === null || audienceId === undefined) {
             throw new Error('Required parameter audienceId was null or undefined when calling audiencesGet.');
+        }
+        if (adAccountId === null || adAccountId === undefined) {
+            throw new Error('Required parameter adAccountId was null or undefined when calling audiencesGet.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -169,7 +175,7 @@ export class AudiencesService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/audiences/${this.configuration.encodeParam({name: "audienceId", value: audienceId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<Audience>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<AdAccountsAudience>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -188,17 +194,18 @@ export class AudiencesService extends BaseService {
      * @endpoint get /ad_accounts/{ad_account_id}/audiences
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * @param ownershipType Filter audiences by ownership type.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
+     * @param ownershipType 
+     * @param excludeNca When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public audiencesList(adAccountId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, ownershipType?: 'OWNED' | 'RECEIVED', observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AudiencesList200Response>;
-    public audiencesList(adAccountId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, ownershipType?: 'OWNED' | 'RECEIVED', observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AudiencesList200Response>>;
-    public audiencesList(adAccountId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, ownershipType?: 'OWNED' | 'RECEIVED', observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AudiencesList200Response>>;
-    public audiencesList(adAccountId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, ownershipType?: 'OWNED' | 'RECEIVED', observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public audiencesList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, ownershipType?: AudienceOwnershipType, excludeNca?: boolean, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AudiencesList200Response>;
+    public audiencesList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, ownershipType?: AudienceOwnershipType, excludeNca?: boolean, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AudiencesList200Response>>;
+    public audiencesList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, ownershipType?: AudienceOwnershipType, excludeNca?: boolean, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AudiencesList200Response>>;
+    public audiencesList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, ownershipType?: AudienceOwnershipType, excludeNca?: boolean, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling audiencesList.');
         }
@@ -216,15 +223,6 @@ export class AudiencesService extends BaseService {
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
-            'order',
-            <any>order,
-            QueryParamStyle.Form,
-            true,
-        );
-
-
-        localVarQueryParameters = this.addToHttpParams(
-            localVarQueryParameters,
             'page_size',
             <any>pageSize,
             QueryParamStyle.Form,
@@ -234,8 +232,26 @@ export class AudiencesService extends BaseService {
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
+            'order',
+            <any>order,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
             'ownership_type',
             <any>ownershipType,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'exclude_nca',
+            <any>excludeNca,
             QueryParamStyle.Form,
             true,
         );
@@ -290,27 +306,27 @@ export class AudiencesService extends BaseService {
 
     /**
      * Update audience
-     * Update (edit or remove) an existing targeting audience.
+     * Update an existing audience for the ad account.
      * @endpoint patch /ad_accounts/{ad_account_id}/audiences/{audience_id}
+     * @param audienceId Audience ID.
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceId Unique identifier of an audience
-     * @param audienceUpdateRequest The audience to be updated.
+     * @param adAccountsAudienceUpdate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest: AudienceUpdateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Audience>;
-    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest: AudienceUpdateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Audience>>;
-    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest: AudienceUpdateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Audience>>;
-    public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest: AudienceUpdateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (adAccountId === null || adAccountId === undefined) {
-            throw new Error('Required parameter adAccountId was null or undefined when calling audiencesUpdate.');
-        }
+    public audiencesUpdate(audienceId: string, adAccountId: string, adAccountsAudienceUpdate: AdAccountsAudienceUpdate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdAccountsAudience>;
+    public audiencesUpdate(audienceId: string, adAccountId: string, adAccountsAudienceUpdate: AdAccountsAudienceUpdate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdAccountsAudience>>;
+    public audiencesUpdate(audienceId: string, adAccountId: string, adAccountsAudienceUpdate: AdAccountsAudienceUpdate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AdAccountsAudience>>;
+    public audiencesUpdate(audienceId: string, adAccountId: string, adAccountsAudienceUpdate: AdAccountsAudienceUpdate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (audienceId === null || audienceId === undefined) {
             throw new Error('Required parameter audienceId was null or undefined when calling audiencesUpdate.');
         }
-        if (audienceUpdateRequest === null || audienceUpdateRequest === undefined) {
-            throw new Error('Required parameter audienceUpdateRequest was null or undefined when calling audiencesUpdate.');
+        if (adAccountId === null || adAccountId === undefined) {
+            throw new Error('Required parameter adAccountId was null or undefined when calling audiencesUpdate.');
+        }
+        if (adAccountsAudienceUpdate === null || adAccountsAudienceUpdate === undefined) {
+            throw new Error('Required parameter adAccountsAudienceUpdate was null or undefined when calling audiencesUpdate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -352,10 +368,10 @@ export class AudiencesService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/audiences/${this.configuration.encodeParam({name: "audienceId", value: audienceId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<Audience>('patch', `${basePath}${localVarPath}`,
+        return this.httpClient.request<AdAccountsAudience>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: audienceUpdateRequest,
+                body: adAccountsAudienceUpdate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,

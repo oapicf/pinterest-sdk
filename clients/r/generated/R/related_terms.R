@@ -9,7 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field id First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\" character [optional]
 #' @field related_term_count Total number of related terms returned integer [optional]
-#' @field related_terms_list The id of the advertiser. list(\link{RelatedTermsRelatedTermsListInner}) [optional]
+#' @field related_terms_list The id of the advertiser. list(\link{RelatedTermsRelatedTermsListItems}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -88,9 +88,32 @@ RelatedTerms <- R6::R6Class(
       }
       if (!is.null(self$`related_terms_list`)) {
         RelatedTermsObject[["related_terms_list"]] <-
-          lapply(self$`related_terms_list`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`related_terms_list`)
       }
       return(RelatedTermsObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -107,7 +130,7 @@ RelatedTerms <- R6::R6Class(
         self$`related_term_count` <- this_object$`related_term_count`
       }
       if (!is.null(this_object$`related_terms_list`)) {
-        self$`related_terms_list` <- ApiClient$new()$deserializeObj(this_object$`related_terms_list`, "array[RelatedTermsRelatedTermsListInner]", loadNamespace("openapi"))
+        self$`related_terms_list` <- ApiClient$new()$deserializeObj(this_object$`related_terms_list`, "array[RelatedTermsRelatedTermsListItems]", loadNamespace("openapi"))
       }
       self
     },
@@ -132,7 +155,7 @@ RelatedTerms <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
       self$`related_term_count` <- this_object$`related_term_count`
-      self$`related_terms_list` <- ApiClient$new()$deserializeObj(this_object$`related_terms_list`, "array[RelatedTermsRelatedTermsListInner]", loadNamespace("openapi"))
+      self$`related_terms_list` <- ApiClient$new()$deserializeObj(this_object$`related_terms_list`, "array[RelatedTermsRelatedTermsListItems]", loadNamespace("openapi"))
       self
     },
 

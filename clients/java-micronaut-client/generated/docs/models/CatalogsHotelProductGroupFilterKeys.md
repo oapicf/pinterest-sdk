@@ -8,16 +8,16 @@ The class is defined in **[CatalogsHotelProductGroupFilterKeys.java](../../src/m
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PRICE** | [`CatalogsProductGroupPricingCurrencyCriteria`](CatalogsProductGroupPricingCurrencyCriteria.md) |  | 
-**HOTEL_ID** | `CatalogsProductGroupMultipleStringCriteria` |  | 
-**BRAND** | `CatalogsProductGroupMultipleStringCriteria` |  | 
-**CUSTOM_LABEL_0** | `CatalogsProductGroupFilterOperatorTypeCriteria` |  | 
-**CUSTOM_LABEL_1** | `CatalogsProductGroupFilterOperatorTypeCriteria` |  | 
-**CUSTOM_LABEL_2** | `CatalogsProductGroupFilterOperatorTypeCriteria` |  | 
-**CUSTOM_LABEL_3** | `CatalogsProductGroupFilterOperatorTypeCriteria` |  | 
-**CUSTOM_LABEL_4** | `CatalogsProductGroupFilterOperatorTypeCriteria` |  | 
-**COUNTRY** | `CatalogsProductGroupMultipleCountriesCriteria` |  | 
-**TITLE_KEYWORDS** | `CatalogsProductGroupMultipleStringCriteria` |  | 
+**PRICE** | [`PriceFilterPrice`](PriceFilterPrice.md) |  | 
+**HOTEL_ID** | [`CatalogsProductGroupMultipleStringCriteria`](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**BRAND** | [`CatalogsProductGroupMultipleStringCriteria`](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**CUSTOM_LABEL_0** | [`CatalogsProductGroupFilterOperatorTypeCriteria`](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**CUSTOM_LABEL_1** | [`CatalogsProductGroupFilterOperatorTypeCriteria`](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**CUSTOM_LABEL_2** | [`CatalogsProductGroupFilterOperatorTypeCriteria`](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**CUSTOM_LABEL_3** | [`CatalogsProductGroupFilterOperatorTypeCriteria`](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**CUSTOM_LABEL_4** | [`CatalogsProductGroupFilterOperatorTypeCriteria`](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**COUNTRY** | [`CatalogsProductGroupMultipleCountriesCriteria`](CatalogsProductGroupMultipleCountriesCriteria.md) |  | 
+**TITLE_KEYWORDS** | [`CatalogsProductGroupMultipleStringCriteria`](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 
 

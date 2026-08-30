@@ -9,7 +9,7 @@
 -export_type([openapi_catalogs_product_group_filter_operator_type_criteria/0]).
 
 -type openapi_catalogs_product_group_filter_operator_type_criteria() ::
-  [ {'filter_operator_type', binary() }
+  [ {'filter_operator_type', openapi_filter_operator_type:openapi_filter_operator_type() }
   | {'negated', boolean() }
   | {'values', list(binary()) }
   ].
@@ -19,7 +19,7 @@ openapi_catalogs_product_group_filter_operator_type_criteria() ->
     openapi_catalogs_product_group_filter_operator_type_criteria([]).
 
 openapi_catalogs_product_group_filter_operator_type_criteria(Fields) ->
-  Default = [ {'filter_operator_type', elements([<<"IS">>, <<"CONTAINS">>]) }
+  Default = [ {'filter_operator_type', openapi_filter_operator_type:openapi_filter_operator_type() }
             , {'negated', boolean() }
             , {'values', list(binary()) }
             ],

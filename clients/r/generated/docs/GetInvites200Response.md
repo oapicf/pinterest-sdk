@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **character** |  | [optional] 
-**items** | [**array[InviteResponse]**](InviteResponse.md) | List of invite and request data. | 
+**items** | [**array[InviteResponse]**](InviteResponse.md) |  | 
 
 

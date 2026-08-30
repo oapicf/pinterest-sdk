@@ -9,7 +9,7 @@ import java.util.Arrays;
 @Canonical
 class CatalogsProductGroupMultipleStringListCriteria {
     
-    Boolean negated = false
+    Boolean negated
     
     List<List<String>> values = new ArrayList<>()
 }

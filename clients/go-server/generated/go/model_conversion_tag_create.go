@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -44,18 +49,110 @@ type ConversionTagCreate struct {
 	// Conversion tag name.
 	Name string `json:"name"`
 }
-
-// AssertConversionTagCreateRequired checks if the required fields are not zero-ed
-func AssertConversionTagCreateRequired(obj ConversionTagCreate) error {
-	elements := map[string]interface{}{
-		"name": obj.Name,
+// UnmarshalJSON validates required property keys then unmarshals into ConversionTagCreate
+func (o *ConversionTagCreate) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"name",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"name": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"aem_db_enabled": {},
+		"aem_enabled": {},
+		"aem_external_id_enabled": {},
+		"aem_fnln_enabled": {},
+		"aem_ge_enabled": {},
+		"aem_loc_enabled": {},
+		"aem_ph_enabled": {},
+		"md_frequency": {},
+		"name": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded ConversionTagCreate
+
+	if value, exists := allProperties["aem_db_enabled"]; exists {
+		if err = json.Unmarshal(value, &decoded.AemDbEnabled); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["aem_enabled"]; exists {
+		if err = json.Unmarshal(value, &decoded.AemEnabled); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["aem_external_id_enabled"]; exists {
+		if err = json.Unmarshal(value, &decoded.AemExternalIdEnabled); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["aem_fnln_enabled"]; exists {
+		if err = json.Unmarshal(value, &decoded.AemFnlnEnabled); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["aem_ge_enabled"]; exists {
+		if err = json.Unmarshal(value, &decoded.AemGeEnabled); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["aem_loc_enabled"]; exists {
+		if err = json.Unmarshal(value, &decoded.AemLocEnabled); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["aem_ph_enabled"]; exists {
+		if err = json.Unmarshal(value, &decoded.AemPhEnabled); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["md_frequency"]; exists {
+		if err = json.Unmarshal(value, &decoded.MdFrequency); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertConversionTagCreateRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertConversionTagCreateRequired(obj ConversionTagCreate) error {
 	return nil
 }
 

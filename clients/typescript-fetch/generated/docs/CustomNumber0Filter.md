@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`cUSTOMNUMBER0` | [CatalogsProductGroupUint32Criteria](.md)
+`cUSTOMNUMBER0` | [CatalogsProductGroupUint32Criteria](CatalogsProductGroupUint32Criteria.md)
 
 ## Example
 

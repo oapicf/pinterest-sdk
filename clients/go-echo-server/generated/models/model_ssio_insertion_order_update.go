@@ -1,0 +1,53 @@
+package models
+
+// SsioInsertionOrderUpdate - Resource create or update operation model.
+type SsioInsertionOrderUpdate struct {
+
+	// Ads manager OrderLineId
+	AdsManagerOrderLineId string `json:"ads_manager_order_line_id,omitempty"`
+
+	// URL link for agency
+	AgencyLink string `json:"agency_link,omitempty"`
+
+	// The billing contact email
+	BillingContactEmail string `json:"billing_contact_email,omitempty"`
+
+	// The billing contact first name
+	BillingContactFirstname string `json:"billing_contact_firstname,omitempty"`
+
+	// The billing contact last name
+	BillingContactLastname string `json:"billing_contact_lastname,omitempty"`
+
+	// If Budget order line, the budget amount.
+	BudgetAmount float64 `json:"budget_amount,omitempty"`
+
+	// End date of time period. Format: YYYY-MM-DD
+	EndDate string `json:"end_date,omitempty" validate:"regexp=^\\d{4}-\\d{2}-\\d{2}$"`
+
+	// The media contact email
+	MediaContactEmail string `json:"media_contact_email,omitempty"`
+
+	// The media contact first name
+	MediaContactFirstname string `json:"media_contact_firstname,omitempty"`
+
+	// The media contact last name
+	MediaContactLastname string `json:"media_contact_lastname,omitempty"`
+
+	// LineId in the Oracle DB
+	OracleLineId string `json:"oracle_line_id,omitempty"`
+
+	// The po number
+	PoNumber string `json:"po_number,omitempty"`
+
+	// OrderId in SFDC
+	SalesforceOrderId string `json:"salesforce_order_id,omitempty"`
+
+	// OrderLineId in SFDC
+	SalesforceOrderLineId string `json:"salesforce_order_line_id,omitempty"`
+
+	// Starting date of time period. Format: YYYY-MM-DD
+	StartDate string `json:"start_date,omitempty" validate:"regexp=^\\d{4}-\\d{2}-\\d{2}$"`
+
+	// The email of user submitting the insertion order
+	UserEmail string `json:"user_email,omitempty"`
+}

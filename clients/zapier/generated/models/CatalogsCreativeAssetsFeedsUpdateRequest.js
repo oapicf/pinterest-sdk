@@ -3,7 +3,6 @@ const CatalogsFeedCredentials = require('../models/CatalogsFeedCredentials');
 const CatalogsFeedProcessingSchedule = require('../models/CatalogsFeedProcessingSchedule');
 const CatalogsFormat = require('../models/CatalogsFormat');
 const CatalogsStatus = require('../models/CatalogsStatus');
-const CatalogsType = require('../models/CatalogsType');
 const NullableCurrency = require('../models/NullableCurrency');
 
 module.exports = {
@@ -12,7 +11,12 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}catalog_type`,
-                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
+                label: `[${labelPrefix}catalog_type]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'CREATIVE_ASSETS',
+                ],
             },
             ...CatalogsFeedCredentials.fields(`${keyPrefix}credentials`, isInput),
             {

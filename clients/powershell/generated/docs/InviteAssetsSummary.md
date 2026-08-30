@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdAccounts** | [**InviteAssetsSummaryAdAccountsInner[]**](InviteAssetsSummaryAdAccountsInner.md) | List of ad account IDs and respective permission levels that will be assigned. | [optional] 
-**Profiles** | [**InviteAssetsSummaryProfilesInner[]**](InviteAssetsSummaryProfilesInner.md) | List of profile IDs and respective permission levels that will be assigned. | [optional] 
+**AdAccounts** | [**InviteAssetsSummaryItem[]**](InviteAssetsSummaryItem.md) | List of ad account IDs and respective permission levels that will be assigned. | [optional] 
+**Profiles** | [**InviteAssetsSummaryItem[]**](InviteAssetsSummaryItem.md) | List of profile IDs and respective permission levels that will be assigned. | [optional] 
 
 ## Examples
 

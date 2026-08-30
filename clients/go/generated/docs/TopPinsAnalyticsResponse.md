@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DateAvailability** | Pointer to [**TopPinsAnalyticsResponseDateAvailability**](TopPinsAnalyticsResponseDateAvailability.md) |  | [optional] 
-**Pins** | Pointer to [**[]TopPinsAnalyticsResponsePinsInner**](TopPinsAnalyticsResponsePinsInner.md) |  | [optional] 
-**SortBy** | Pointer to **string** |  | [optional] 
+**Pins** | Pointer to [**[]TopPinsAnalyticsResponsePinsItems**](TopPinsAnalyticsResponsePinsItems.md) |  | [optional] 
+**SortBy** | Pointer to [**TopPinsSortBy**](TopPinsSortBy.md) |  | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasDateAvailability returns a boolean if a field has been set.
 
 ### GetPins
 
-`func (o *TopPinsAnalyticsResponse) GetPins() []TopPinsAnalyticsResponsePinsInner`
+`func (o *TopPinsAnalyticsResponse) GetPins() []TopPinsAnalyticsResponsePinsItems`
 
 GetPins returns the Pins field if non-nil, zero value otherwise.
 
 ### GetPinsOk
 
-`func (o *TopPinsAnalyticsResponse) GetPinsOk() (*[]TopPinsAnalyticsResponsePinsInner, bool)`
+`func (o *TopPinsAnalyticsResponse) GetPinsOk() (*[]TopPinsAnalyticsResponsePinsItems, bool)`
 
 GetPinsOk returns a tuple with the Pins field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPins
 
-`func (o *TopPinsAnalyticsResponse) SetPins(v []TopPinsAnalyticsResponsePinsInner)`
+`func (o *TopPinsAnalyticsResponse) SetPins(v []TopPinsAnalyticsResponsePinsItems)`
 
 SetPins sets Pins field to given value.
 
@@ -79,20 +79,20 @@ HasPins returns a boolean if a field has been set.
 
 ### GetSortBy
 
-`func (o *TopPinsAnalyticsResponse) GetSortBy() string`
+`func (o *TopPinsAnalyticsResponse) GetSortBy() TopPinsSortBy`
 
 GetSortBy returns the SortBy field if non-nil, zero value otherwise.
 
 ### GetSortByOk
 
-`func (o *TopPinsAnalyticsResponse) GetSortByOk() (*string, bool)`
+`func (o *TopPinsAnalyticsResponse) GetSortByOk() (*TopPinsSortBy, bool)`
 
 GetSortByOk returns a tuple with the SortBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSortBy
 
-`func (o *TopPinsAnalyticsResponse) SetSortBy(v string)`
+`func (o *TopPinsAnalyticsResponse) SetSortBy(v TopPinsSortBy)`
 
 SetSortBy sets SortBy field to given value.
 

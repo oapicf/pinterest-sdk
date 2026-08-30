@@ -7,7 +7,7 @@ goog.provide('API.Client.CreateAssetAccessRequestBody');
 API.Client.CreateAssetAccessRequestBody = function() {}
 
 /**
- * @type {!Array<!API.Client.CreateAssetAccessRequestBody_asset_requests_inner>}
+ * @type {!Array<!API.Client.CreateAssetAccessRequestItem>}
  * @export
  */
 API.Client.CreateAssetAccessRequestBody.prototype.assetRequests;

@@ -16,7 +16,7 @@ class CatalogsProductGroupCurrencyCriteria(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, negated: bool=False, values: NonNullableCatalogsCurrency=None):  # noqa: E501
+    def __init__(self, negated: bool=None, values: NonNullableCatalogsCurrency=None):  # noqa: E501
         """CatalogsProductGroupCurrencyCriteria - a model defined in Swagger
 
         :param negated: The negated of this CatalogsProductGroupCurrencyCriteria.  # noqa: E501

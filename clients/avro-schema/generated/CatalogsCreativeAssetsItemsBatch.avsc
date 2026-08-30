@@ -12,7 +12,13 @@
     },
     {
       "name": "catalog_type",
-      "type": "model.CatalogsType",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsCreativeAssetsItemsBatch_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
       "doc": ""
     },
     {

@@ -4,7 +4,6 @@ import apimodels.BrandFilter;
 import apimodels.CatalogsProductGroupFilterOperatorTypeCriteria;
 import apimodels.CatalogsProductGroupMultipleCountriesCriteria;
 import apimodels.CatalogsProductGroupMultipleStringCriteria;
-import apimodels.CatalogsProductGroupPricingCurrencyCriteria;
 import apimodels.CountryFilter;
 import apimodels.CustomLabel0Filter;
 import apimodels.CustomLabel1Filter;
@@ -13,6 +12,7 @@ import apimodels.CustomLabel3Filter;
 import apimodels.CustomLabel4Filter;
 import apimodels.HotelIdFilter;
 import apimodels.PriceFilter;
+import apimodels.PriceFilterPrice;
 import apimodels.TitleKeywordsFilter;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -23,14 +23,14 @@ import javax.validation.Valid;
 /**
  * CatalogsHotelProductGroupFilterKeys
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsHotelProductGroupFilterKeys   {
   @JsonProperty("PRICE")
   @NotNull
 @Valid
 
-  private CatalogsProductGroupPricingCurrencyCriteria PRICE;
+  private PriceFilterPrice PRICE;
 
   @JsonProperty("HOTEL_ID")
   @NotNull
@@ -86,7 +86,7 @@ public class CatalogsHotelProductGroupFilterKeys   {
 
   private CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS;
 
-  public CatalogsHotelProductGroupFilterKeys PRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public CatalogsHotelProductGroupFilterKeys PRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
     return this;
   }
@@ -95,11 +95,11 @@ public class CatalogsHotelProductGroupFilterKeys   {
    * Get PRICE
    * @return PRICE
   **/
-  public CatalogsProductGroupPricingCurrencyCriteria getPRICE() {
+  public PriceFilterPrice getPRICE() {
     return PRICE;
   }
 
-  public void setPRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public void setPRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
   }
 
@@ -308,10 +308,7 @@ public class CatalogsHotelProductGroupFilterKeys   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

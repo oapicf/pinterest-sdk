@@ -9,12 +9,14 @@
 -export_type([openapi_catalogs_product_group_product_counts_vertical/0]).
 
 -type openapi_catalogs_product_group_product_counts_vertical() ::
-  [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+  [ {'catalog_type', binary() }
   | {'in_stock', integer() }
   | {'out_of_stock', integer() }
   | {'preorder', integer() }
   | {'total', integer() }
   | {'videos', integer() }
+  | {'app_links', integer() }
+  | {'images', integer() }
   ].
 
 
@@ -22,12 +24,14 @@ openapi_catalogs_product_group_product_counts_vertical() ->
     openapi_catalogs_product_group_product_counts_vertical([]).
 
 openapi_catalogs_product_group_product_counts_vertical(Fields) ->
-  Default = [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+  Default = [ {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
             , {'in_stock', integer() }
             , {'out_of_stock', integer() }
             , {'preorder', integer() }
             , {'total', integer() }
             , {'videos', integer() }
+            , {'app_links', integer() }
+            , {'images', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

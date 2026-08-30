@@ -8,6 +8,8 @@ import model.Board
 import model.BoardCreate
 import model.BoardPrivacyFilter
 import model.BoardSection
+import model.BoardSectionCreate
+import model.BoardSectionUpdateWithRequiredBody
 import model.BoardSectionsList200Response
 import model.BoardWithUpdatePrivacy
 import model.BoardWithUpdatePrivacyUpdate
@@ -16,7 +18,7 @@ import model.BoardsListPins200Response
 import model.CreativeType
 import model.Error
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class BoardsApiController @Inject()(cc: ControllerComponents, api: BoardsApi) extends AbstractController(cc) {
   /**
@@ -25,12 +27,12 @@ class BoardsApiController @Inject()(cc: ControllerComponents, api: BoardsApi) ex
     */
   def boardSectionsCreate(boardId: String): Action[AnyContent] = Action { request =>
     def executeApi(): BoardSection = {
-      val boardSection = request.body.asJson.map(_.as[BoardSection]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "boardSection")
+      val boardSectionCreate = request.body.asJson.map(_.as[BoardSectionCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "boardSectionCreate")
       }
       val adAccountId = request.getQueryString("ad_account_id")
         
-      api.boardSectionsCreate(boardId, boardSection, adAccountId)
+      api.boardSectionsCreate(boardId, boardSectionCreate, adAccountId)
     }
 
     val result = executeApi()
@@ -44,14 +46,15 @@ class BoardsApiController @Inject()(cc: ControllerComponents, api: BoardsApi) ex
     * @param sectionId Unique identifier of a board section.
     */
   def boardSectionsDelete(boardId: String, sectionId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): Unit = {
+    def executeApi(): BoardSection = {
       val adAccountId = request.getQueryString("ad_account_id")
         
       api.boardSectionsDelete(boardId, sectionId, adAccountId)
     }
 
-    executeApi()
-    Ok
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
   }
 
   /**
@@ -104,12 +107,12 @@ class BoardsApiController @Inject()(cc: ControllerComponents, api: BoardsApi) ex
     */
   def boardSectionsUpdate(boardId: String, sectionId: String): Action[AnyContent] = Action { request =>
     def executeApi(): BoardSection = {
-      val boardSection = request.body.asJson.map(_.as[BoardSection]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "boardSection")
+      val boardSectionUpdateWithRequiredBody = request.body.asJson.map(_.as[BoardSectionUpdateWithRequiredBody]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "boardSectionUpdateWithRequiredBody")
       }
       val adAccountId = request.getQueryString("ad_account_id")
         
-      api.boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId)
+      api.boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId)
     }
 
     val result = executeApi()
@@ -139,14 +142,15 @@ class BoardsApiController @Inject()(cc: ControllerComponents, api: BoardsApi) ex
     * DELETE /v5/boards/:boardId?adAccountId=[value]
     */
   def boardsDelete(boardId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): Unit = {
+    def executeApi(): Board = {
       val adAccountId = request.getQueryString("ad_account_id")
         
       api.boardsDelete(boardId, adAccountId)
     }
 
-    executeApi()
-    Ok
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
   }
 
   /**
@@ -188,16 +192,11 @@ class BoardsApiController @Inject()(cc: ControllerComponents, api: BoardsApi) ex
   }
 
   /**
-    * GET /v5/boards/:boardId/pins?bookmark=[value]&pageSize=[value]&creativeTypes=[value]&adAccountId=[value]&pinMetrics=[value]
+    * GET /v5/boards/:boardId/pins?creativeTypes=[value]&adAccountId=[value]&pinMetrics=[value]&bookmark=[value]&pageSize=[value]
     * @param boardId Unique identifier of a board.
     */
   def boardsListPins(boardId: String): Action[AnyContent] = Action { request =>
     def executeApi(): BoardsListPins200Response = {
-      val bookmark = request.getQueryString("bookmark")
-        
-      val pageSize = request.getQueryString("page_size")
-        .map(value => value.toInt)
-        
       val creativeTypes = request.queryString.get("creative_types")
         .map(_.toList)
         .map(_.map(value => )
@@ -207,7 +206,12 @@ class BoardsApiController @Inject()(cc: ControllerComponents, api: BoardsApi) ex
       val pinMetrics = request.getQueryString("pin_metrics")
         .map(value => value.toBoolean)
         
-      api.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics)
+      val bookmark = request.getQueryString("bookmark")
+        
+      val pageSize = request.getQueryString("page_size")
+        .map(value => value.toInt)
+        
+      api.boardsListPins(boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize)
     }
 
     val result = executeApi()

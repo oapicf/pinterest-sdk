@@ -1,0 +1,32 @@
+/*
+ * frequency_goal_metadata_timerange.h
+ *
+ * 
+ */
+
+#ifndef _frequency_goal_metadata_timerange_H_
+#define _frequency_goal_metadata_timerange_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct frequency_goal_metadata_timerange_t frequency_goal_metadata_timerange_t;
+
+
+// Enum  for frequency_goal_metadata_timerange
+
+typedef enum { pinterest_rest_api_frequency_goal_metadata_timerange__NULL = 0, pinterest_rest_api_frequency_goal_metadata_timerange__THIRTY_DAY, pinterest_rest_api_frequency_goal_metadata_timerange__DAY, pinterest_rest_api_frequency_goal_metadata_timerange__SEVEN_DAY, pinterest_rest_api_frequency_goal_metadata_timerange__TWENTY_MINUTE, pinterest_rest_api_frequency_goal_metadata_timerange__TEN_MINUTE, pinterest_rest_api_frequency_goal_metadata_timerange__TWENTY_FOUR_HOUR } pinterest_rest_api_frequency_goal_metadata_timerange__e;
+
+char* frequency_goal_metadata_timerange_frequency_goal_metadata_timerange_ToString(pinterest_rest_api_frequency_goal_metadata_timerange__e frequency_goal_metadata_timerange);
+
+pinterest_rest_api_frequency_goal_metadata_timerange__e frequency_goal_metadata_timerange_frequency_goal_metadata_timerange_FromString(char* frequency_goal_metadata_timerange);
+
+cJSON *frequency_goal_metadata_timerange_convertToJSON(pinterest_rest_api_frequency_goal_metadata_timerange__e frequency_goal_metadata_timerange);
+
+pinterest_rest_api_frequency_goal_metadata_timerange__e frequency_goal_metadata_timerange_parseFromJSON(cJSON *frequency_goal_metadata_timerangeJSON);
+
+#endif /* _frequency_goal_metadata_timerange_H_ */
+

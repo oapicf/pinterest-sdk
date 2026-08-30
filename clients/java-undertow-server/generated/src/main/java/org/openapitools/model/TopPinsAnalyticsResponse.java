@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -20,40 +20,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.TopPinsAnalyticsResponseDateAvailability;
-import org.openapitools.model.TopPinsAnalyticsResponsePinsInner;
+import org.openapitools.model.TopPinsAnalyticsResponsePinsItems;
+import org.openapitools.model.TopPinsSortBy;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TopPinsAnalyticsResponse   {
   
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
-  private List<TopPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
-
-
-  public enum SortByEnum {
-    ENGAGEMENT("ENGAGEMENT"),
-    SAVE("SAVE"),
-    IMPRESSION("IMPRESSION"),
-    OUTBOUND_CLICK("OUTBOUND_CLICK"),
-    PIN_CLICK("PIN_CLICK");
-
-    private String value;
-
-    SortByEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private SortByEnum sortBy;
+  private List<TopPinsAnalyticsResponsePinsItems> pins = new ArrayList<>();
+  private TopPinsSortBy sortBy;
 
   /**
    */
@@ -74,7 +53,7 @@ public class TopPinsAnalyticsResponse   {
 
   /**
    */
-  public TopPinsAnalyticsResponse pins(List<TopPinsAnalyticsResponsePinsInner> pins) {
+  public TopPinsAnalyticsResponse pins(List<TopPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
     return this;
   }
@@ -82,27 +61,27 @@ public class TopPinsAnalyticsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("pins")
-  public List<TopPinsAnalyticsResponsePinsInner> getPins() {
+  public List<TopPinsAnalyticsResponsePinsItems> getPins() {
     return pins;
   }
-  public void setPins(List<TopPinsAnalyticsResponsePinsInner> pins) {
+  public void setPins(List<TopPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
   }
 
   /**
    */
-  public TopPinsAnalyticsResponse sortBy(SortByEnum sortBy) {
+  public TopPinsAnalyticsResponse sortBy(TopPinsSortBy sortBy) {
     this.sortBy = sortBy;
     return this;
   }
 
   
-  @ApiModelProperty(example = "IMPRESSION", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("sort_by")
-  public SortByEnum getSortBy() {
+  public TopPinsSortBy getSortBy() {
     return sortBy;
   }
-  public void setSortBy(SortByEnum sortBy) {
+  public void setSortBy(TopPinsSortBy sortBy) {
     this.sortBy = sortBy;
   }
 
@@ -143,10 +122,7 @@ public class TopPinsAnalyticsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

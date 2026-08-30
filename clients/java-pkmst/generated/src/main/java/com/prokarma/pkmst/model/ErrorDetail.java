@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * ErrorDetail
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ErrorDetail   {
   @JsonProperty("count")
   private Integer count;
@@ -34,7 +34,7 @@ public class ErrorDetail   {
    * Number of records with this error
    * @return count
    */
-  @ApiModelProperty(example = "20", required = true, value = "Number of records with this error")
+  @ApiModelProperty(required = true, value = "Number of records with this error")
   public Integer getCount() {
     return count;
   }
@@ -52,7 +52,7 @@ public class ErrorDetail   {
    * Numeric error code
    * @return errorCode
    */
-  @ApiModelProperty(example = "42", required = true, value = "Numeric error code")
+  @ApiModelProperty(required = true, value = "Numeric error code")
   public Integer getErrorCode() {
     return errorCode;
   }
@@ -70,7 +70,7 @@ public class ErrorDetail   {
    * Error message description
    * @return message
    */
-  @ApiModelProperty(example = "Invalid email", required = true, value = "Error message description")
+  @ApiModelProperty(required = true, value = "Error message description")
   public String getMessage() {
     return message;
   }
@@ -116,10 +116,7 @@ public class ErrorDetail   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

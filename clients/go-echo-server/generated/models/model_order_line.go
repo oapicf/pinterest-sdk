@@ -3,16 +3,19 @@ package models
 type OrderLine struct {
 
 	// Ad account ID.
-	AdAccountId string `json:"ad_account_id,omitempty"`
+	AdAccountId string `json:"ad_account_id"`
 
 	// Order line budget in micro currency.
 	Budget *float32 `json:"budget,omitempty"`
+
+	// Associated List of campaign IDs.
+	CampaignIds []string `json:"campaign_ids"`
 
 	// End time. Unix timestamp.
 	EndTime *float32 `json:"end_time,omitempty"`
 
 	// Order line ID.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
 	// Order line name.
 	Name *string `json:"name,omitempty"`
@@ -30,11 +33,8 @@ type OrderLine struct {
 	StartTime float32 `json:"start_time,omitempty"`
 
 	// Order line status.
-	Status OrderLineStatus `json:"status,omitempty"`
+	Status OrderLineStatus `json:"status"`
 
 	// Always \"orderline\".
-	Type string `json:"type,omitempty"`
-
-	// Associated List of campaign IDs.
-	CampaignIds []string `json:"campaign_ids"`
+	Type string `json:"type"`
 }

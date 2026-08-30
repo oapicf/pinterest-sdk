@@ -22,18 +22,18 @@ Method | HTTP request | Description
 
 <a name="BoardsUserFollowsList"></a>
 # **BoardsUserFollowsList**
-> BoardsUserFollowsList200Response BoardsUserFollowsList(bookmark, pageSize, explicitFollowing, adAccountId)
+> BoardsList200Response BoardsUserFollowsList(adAccountId, explicitFollowing, bookmark, pageSize)
 
 List following boards
 
 Get a list of the boards a user follows. The request returns a board summary object array.
 <a name="FollowUserUpdate"></a>
 # **FollowUserUpdate**
-> UserSummary FollowUserUpdate(username, followUserRequest)
+> FollowUser FollowUserUpdate(username, followUserCreate)
 
 Follow user
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 <a name="FollowersList"></a>
 # **FollowersList**
 > FollowersList200Response FollowersList(bookmark, pageSize)
@@ -50,11 +50,11 @@ List linked businesses
 Get a list of your linked business accounts.
 <a name="UnverifyWebsiteDelete"></a>
 # **UnverifyWebsiteDelete**
-> UnverifyWebsiteDelete(website)
+> UserWebsite UnverifyWebsiteDelete(website)
 
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 <a name="UserAccountAnalytics"></a>
 # **UserAccountAnalytics**
 > AnalyticsMetricsResponse UserAccountAnalytics(startDate, endDate, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, splitField, adAccountId)
@@ -89,10 +89,10 @@ Get a list of a user&#39;s following interests in one place.
 
 Get user account
 
-Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.
 <a name="UserFollowingGet"></a>
 # **UserFollowingGet**
-> UserFollowingGet200Response UserFollowingGet(bookmark, pageSize, feedType, explicitFollowing, adAccountId)
+> FollowersList200Response UserFollowingGet(adAccountId, explicitFollowing, feedType, bookmark, pageSize)
 
 List following
 
@@ -106,14 +106,14 @@ Get user websites
 Get user websites, claimed or not
 <a name="VerifyWebsiteUpdate"></a>
 # **VerifyWebsiteUpdate**
-> UserWebsiteSummary VerifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
+> UserWebsite VerifyWebsiteUpdate(userWebsiteCreate, adAccountId)
 
 Verify website
 
 Verify a website as a signed-in user.
 <a name="WebsiteVerificationGet"></a>
 # **WebsiteVerificationGet**
-> UserWebsiteVerificationCode WebsiteVerificationGet(adAccountId)
+> UserWebsiteVerification WebsiteVerificationGet(adAccountId)
 
 Get user verification code for website claiming
 

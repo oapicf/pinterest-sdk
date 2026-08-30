@@ -4,8 +4,15 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **catalogType** | [**CatalogsType**](CatalogsType.md) |  |  |
+| **catalogType** | [**inline**](#CatalogType) |  |  |
 | **report** | [**CatalogsHotelReportParametersReport**](CatalogsHotelReportParametersReport.md) |  |  |
+
+
+<a id="CatalogType"></a>
+## Enum: catalog_type
+| Name | Value |
+| ---- | ----- |
+| catalogType | HOTEL |
 
 
 

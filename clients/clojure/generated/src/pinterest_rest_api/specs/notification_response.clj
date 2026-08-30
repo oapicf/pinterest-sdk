@@ -7,9 +7,9 @@
 
 (def notification-response-data
   {
-   (ds/opt :success) boolean?
-   (ds/opt :received_at) int?
    (ds/opt :error_msg) string?
+   (ds/opt :received_at) int?
+   (ds/opt :success) boolean?
    })
 
 (def notification-response-spec

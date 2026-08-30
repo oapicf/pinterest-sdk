@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Label ID. | 
-**Status** | Pointer to **string** | Set status to &#x60;ARCHIVED&#x60; to remove the label from the parent entity. | [optional] 
-**Value** | Pointer to **string** | &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; value field will be deprecated. Label name. 100-character limit. | [optional] 
+**ParentId** | **string** | Unique identifier of the asset you are labelling. Currently, you can only label campaigns. | 
+**Status** | [**LabelStatusBulkUpdate**](LabelStatusBulkUpdate.md) |  | 
 
 ## Methods
 
 ### NewLabelBulkUpdateRequest
 
-`func NewLabelBulkUpdateRequest(id string, ) *LabelBulkUpdateRequest`
+`func NewLabelBulkUpdateRequest(id string, parentId string, status LabelStatusBulkUpdate, ) *LabelBulkUpdateRequest`
 
 NewLabelBulkUpdateRequest instantiates a new LabelBulkUpdateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -47,55 +47,45 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### GetParentId
+
+`func (o *LabelBulkUpdateRequest) GetParentId() string`
+
+GetParentId returns the ParentId field if non-nil, zero value otherwise.
+
+### GetParentIdOk
+
+`func (o *LabelBulkUpdateRequest) GetParentIdOk() (*string, bool)`
+
+GetParentIdOk returns a tuple with the ParentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentId
+
+`func (o *LabelBulkUpdateRequest) SetParentId(v string)`
+
+SetParentId sets ParentId field to given value.
+
+
 ### GetStatus
 
-`func (o *LabelBulkUpdateRequest) GetStatus() string`
+`func (o *LabelBulkUpdateRequest) GetStatus() LabelStatusBulkUpdate`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *LabelBulkUpdateRequest) GetStatusOk() (*string, bool)`
+`func (o *LabelBulkUpdateRequest) GetStatusOk() (*LabelStatusBulkUpdate, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *LabelBulkUpdateRequest) SetStatus(v string)`
+`func (o *LabelBulkUpdateRequest) SetStatus(v LabelStatusBulkUpdate)`
 
 SetStatus sets Status field to given value.
 
-### HasStatus
-
-`func (o *LabelBulkUpdateRequest) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
-
-### GetValue
-
-`func (o *LabelBulkUpdateRequest) GetValue() string`
-
-GetValue returns the Value field if non-nil, zero value otherwise.
-
-### GetValueOk
-
-`func (o *LabelBulkUpdateRequest) GetValueOk() (*string, bool)`
-
-GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetValue
-
-`func (o *LabelBulkUpdateRequest) SetValue(v string)`
-
-SetValue sets Value field to given value.
-
-### HasValue
-
-`func (o *LabelBulkUpdateRequest) HasValue() bool`
-
-HasValue returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

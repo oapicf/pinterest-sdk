@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BusinessMembershipMember"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BusinessMembershipMember"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BusinessRoleForMembers = openapi_server.resourceTypes.BusinessRoleForMembers
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  BusinessMembershipMember {
+    title = BusinessMembershipMember
+    description = BusinessMembershipMember
+    derivedFrom = Root
+    properties {
+        business_role {
+          type = BusinessRoleForMembers
+          description = ""
+          optional = true
+        }
+        member_id {
+          type =  string
+          description = "Unique identifier of the member."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BusinessMembershipMember {
+    title = BusinessMembershipMember
+    description = BusinessMembershipMember
+    implements = openapi_server.resourceTypes.BusinessMembershipMember
+
+  }
+}

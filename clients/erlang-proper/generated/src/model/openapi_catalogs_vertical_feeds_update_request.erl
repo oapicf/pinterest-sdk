@@ -9,7 +9,7 @@
 -export_type([openapi_catalogs_vertical_feeds_update_request/0]).
 
 -type openapi_catalogs_vertical_feeds_update_request() ::
-  [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+  [ {'catalog_type', binary() }
   | {'credentials', openapi_catalogs_feed_credentials:openapi_catalogs_feed_credentials() }
   | {'default_availability', openapi_product_availability_type:openapi_product_availability_type() }
   | {'default_currency', openapi_nullable_currency:openapi_nullable_currency() }
@@ -25,7 +25,7 @@ openapi_catalogs_vertical_feeds_update_request() ->
     openapi_catalogs_vertical_feeds_update_request([]).
 
 openapi_catalogs_vertical_feeds_update_request(Fields) ->
-  Default = [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+  Default = [ {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
             , {'credentials', openapi_catalogs_feed_credentials:openapi_catalogs_feed_credentials() }
             , {'default_availability', openapi_product_availability_type:openapi_product_availability_type() }
             , {'default_currency', openapi_nullable_currency:openapi_nullable_currency() }

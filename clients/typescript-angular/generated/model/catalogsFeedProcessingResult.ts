@@ -15,12 +15,15 @@ import { CatalogsFeedIngestionDetails } from './catalogsFeedIngestionDetails';
 
 
 export interface CatalogsFeedProcessingResult { 
-    created_at: string;
+    readonly created_at: string;
+    /**
+     * ID of the feed processing result.
+     */
     id: string;
-    updated_at: string;
     ingestion_details: CatalogsFeedIngestionDetails;
     product_counts: CatalogsFeedProductCounts | null;
     status: CatalogsFeedProcessingStatus;
+    readonly updated_at: string;
     validation_details: CatalogsFeedValidationDetails;
     video_counts?: CatalogsFeedVideoCounts;
 }

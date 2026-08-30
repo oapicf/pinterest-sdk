@@ -10,36 +10,36 @@
 
 part of openapi.api;
 
-/// Intended result of the campaign.  You can only update objectives for draft campaigns. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter. 
-class ObjectiveType {
-  /// Instantiate a new enum with the provided [value].
-  const ObjectiveType._(this.value);
+/// Advertiser campaign objective type. You can only update objectives for draft campaigns. `CTV_CONSIDERATION` is in BETA. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter.
+enum ObjectiveType {
+  AWARENESS._(r'AWARENESS'),
+  CONSIDERATION._(r'CONSIDERATION'),
+  WEB_CONVERSION._(r'WEB_CONVERSION'),
+  CATALOG_SALES._(r'CATALOG_SALES'),
+  VIDEO_COMPLETION._(r'VIDEO_COMPLETION'),
+  SALES._(r'SALES'),
+  APP_INSTALL._(r'APP_INSTALL'),
+  CTV_CONSIDERATION._(r'CTV_CONSIDERATION'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const ObjectiveType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const AWARENESS = ObjectiveType._(r'AWARENESS');
-  static const CONSIDERATION = ObjectiveType._(r'CONSIDERATION');
-  static const WEB_CONVERSION = ObjectiveType._(r'WEB_CONVERSION');
-  static const CATALOG_SALES = ObjectiveType._(r'CATALOG_SALES');
-  static const VIDEO_COMPLETION = ObjectiveType._(r'VIDEO_COMPLETION');
-
-  /// List of all possible values in this [enum][ObjectiveType].
-  static const values = <ObjectiveType>[
-    AWARENESS,
-    CONSIDERATION,
-    WEB_CONVERSION,
-    CATALOG_SALES,
-    VIDEO_COMPLETION,
-  ];
-
+  /// Returns the instance of [ObjectiveType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static ObjectiveType? fromJson(dynamic value) => ObjectiveTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [ObjectiveType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<ObjectiveType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ObjectiveType>[];
     if (json is List && json.isNotEmpty) {
@@ -61,9 +61,11 @@ class ObjectiveTypeTypeTransformer {
 
   const ObjectiveTypeTypeTransformer._();
 
-  String encode(ObjectiveType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(ObjectiveType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a ObjectiveType.
+  /// Returns the instance of [ObjectiveType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -72,6 +74,9 @@ class ObjectiveTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   ObjectiveType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is ObjectiveType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'AWARENESS': return ObjectiveType.AWARENESS;
@@ -79,6 +84,9 @@ class ObjectiveTypeTypeTransformer {
         case r'WEB_CONVERSION': return ObjectiveType.WEB_CONVERSION;
         case r'CATALOG_SALES': return ObjectiveType.CATALOG_SALES;
         case r'VIDEO_COMPLETION': return ObjectiveType.VIDEO_COMPLETION;
+        case r'SALES': return ObjectiveType.SALES;
+        case r'APP_INSTALL': return ObjectiveType.APP_INSTALL;
+        case r'CTV_CONSIDERATION': return ObjectiveType.CTV_CONSIDERATION;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -88,7 +96,7 @@ class ObjectiveTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [ObjectiveTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static ObjectiveTypeTypeTransformer? _instance;
 }
 

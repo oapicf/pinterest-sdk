@@ -11,16 +11,16 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.openapitools.model.PinAnalyticsMetricsResponseDailyMetricsInner;
+import org.openapitools.model.PinAnalyticsDailyMetrics;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PinAnalyticsMetricsResponse   {
   @JsonProperty("daily_metrics")
-  private List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = null;
+  private List<PinAnalyticsDailyMetrics> dailyMetrics = null;
 
   @JsonProperty("lifetime_metrics")
   private Map<String, Integer> lifetimeMetrics = null;
@@ -31,7 +31,7 @@ public class PinAnalyticsMetricsResponse   {
   /**
    * Array with the requested daily metric records
    **/
-  public PinAnalyticsMetricsResponse dailyMetrics(List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
+  public PinAnalyticsMetricsResponse dailyMetrics(List<PinAnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
     return this;
   }
@@ -39,10 +39,10 @@ public class PinAnalyticsMetricsResponse   {
   
   @ApiModelProperty(value = "Array with the requested daily metric records")
   @JsonProperty("daily_metrics")
-  public List<PinAnalyticsMetricsResponseDailyMetricsInner> getDailyMetrics() {
+  public List<PinAnalyticsDailyMetrics> getDailyMetrics() {
     return dailyMetrics;
   }
-  public void setDailyMetrics(List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
+  public void setDailyMetrics(List<PinAnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
   }
 
@@ -119,10 +119,7 @@ public class PinAnalyticsMetricsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

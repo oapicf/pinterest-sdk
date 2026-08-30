@@ -12,7 +12,7 @@ API.Client.TemplatesList200Response = function() {}
 API.Client.TemplatesList200Response.prototype.bookmark;
 
 /**
- * @type {!Array<!API.Client.TemplateResponse>}
+ * @type {!Array<!API.Client.AccountTemplate>}
  * @export
  */
 API.Client.TemplatesList200Response.prototype.items;

@@ -8,8 +8,8 @@
 #' @description TopPinsAnalyticsResponse Class
 #' @format An \code{R6Class} generator object
 #' @field date_availability  \link{TopPinsAnalyticsResponseDateAvailability} [optional]
-#' @field pins  list(\link{TopPinsAnalyticsResponsePinsInner}) [optional]
-#' @field sort_by  character [optional]
+#' @field pins  list(\link{TopPinsAnalyticsResponsePinsItems}) [optional]
+#' @field sort_by  \link{TopPinsSortBy} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -38,12 +38,10 @@ TopPinsAnalyticsResponse <- R6::R6Class(
         self$`pins` <- `pins`
       }
       if (!is.null(`sort_by`)) {
-        if (!(`sort_by` %in% c("ENGAGEMENT", "SAVE", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK"))) {
-          stop(paste("Error! \"", `sort_by`, "\" cannot be assigned to `sort_by`. Must be \"ENGAGEMENT\", \"SAVE\", \"IMPRESSION\", \"OUTBOUND_CLICK\", \"PIN_CLICK\".", sep = ""))
+        if (!(`sort_by` %in% c())) {
+          stop(paste("Error! \"", `sort_by`, "\" cannot be assigned to `sort_by`. Must be .", sep = ""))
         }
-        if (!(is.character(`sort_by`) && length(`sort_by`) == 1)) {
-          stop(paste("Error! Invalid data for `sort_by`. Must be a string:", `sort_by`))
-        }
+        stopifnot(R6::is.R6(`sort_by`))
         self$`sort_by` <- `sort_by`
       }
     },
@@ -81,17 +79,40 @@ TopPinsAnalyticsResponse <- R6::R6Class(
       TopPinsAnalyticsResponseObject <- list()
       if (!is.null(self$`date_availability`)) {
         TopPinsAnalyticsResponseObject[["date_availability"]] <-
-          self$`date_availability`$toSimpleType()
+          self$extractSimpleType(self$`date_availability`)
       }
       if (!is.null(self$`pins`)) {
         TopPinsAnalyticsResponseObject[["pins"]] <-
-          lapply(self$`pins`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`pins`)
       }
       if (!is.null(self$`sort_by`)) {
         TopPinsAnalyticsResponseObject[["sort_by"]] <-
-          self$`sort_by`
+          self$extractSimpleType(self$`sort_by`)
       }
       return(TopPinsAnalyticsResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -107,13 +128,12 @@ TopPinsAnalyticsResponse <- R6::R6Class(
         self$`date_availability` <- `date_availability_object`
       }
       if (!is.null(this_object$`pins`)) {
-        self$`pins` <- ApiClient$new()$deserializeObj(this_object$`pins`, "array[TopPinsAnalyticsResponsePinsInner]", loadNamespace("openapi"))
+        self$`pins` <- ApiClient$new()$deserializeObj(this_object$`pins`, "array[TopPinsAnalyticsResponsePinsItems]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`sort_by`)) {
-        if (!is.null(this_object$`sort_by`) && !(this_object$`sort_by` %in% c("ENGAGEMENT", "SAVE", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK"))) {
-          stop(paste("Error! \"", this_object$`sort_by`, "\" cannot be assigned to `sort_by`. Must be \"ENGAGEMENT\", \"SAVE\", \"IMPRESSION\", \"OUTBOUND_CLICK\", \"PIN_CLICK\".", sep = ""))
-        }
-        self$`sort_by` <- this_object$`sort_by`
+        `sort_by_object` <- TopPinsSortBy$new()
+        `sort_by_object`$fromJSON(jsonlite::toJSON(this_object$`sort_by`, auto_unbox = TRUE, digits = NA))
+        self$`sort_by` <- `sort_by_object`
       }
       self
     },
@@ -137,11 +157,8 @@ TopPinsAnalyticsResponse <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`date_availability` <- TopPinsAnalyticsResponseDateAvailability$new()$fromJSON(jsonlite::toJSON(this_object$`date_availability`, auto_unbox = TRUE, digits = NA))
-      self$`pins` <- ApiClient$new()$deserializeObj(this_object$`pins`, "array[TopPinsAnalyticsResponsePinsInner]", loadNamespace("openapi"))
-      if (!is.null(this_object$`sort_by`) && !(this_object$`sort_by` %in% c("ENGAGEMENT", "SAVE", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK"))) {
-        stop(paste("Error! \"", this_object$`sort_by`, "\" cannot be assigned to `sort_by`. Must be \"ENGAGEMENT\", \"SAVE\", \"IMPRESSION\", \"OUTBOUND_CLICK\", \"PIN_CLICK\".", sep = ""))
-      }
-      self$`sort_by` <- this_object$`sort_by`
+      self$`pins` <- ApiClient$new()$deserializeObj(this_object$`pins`, "array[TopPinsAnalyticsResponsePinsItems]", loadNamespace("openapi"))
+      self$`sort_by` <- TopPinsSortBy$new()$fromJSON(jsonlite::toJSON(this_object$`sort_by`, auto_unbox = TRUE, digits = NA))
       self
     },
 

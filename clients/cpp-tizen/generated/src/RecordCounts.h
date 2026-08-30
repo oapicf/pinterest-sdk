@@ -1,7 +1,7 @@
 /*
  * RecordCounts.h
  *
- * Record processing counts
+ * 
  */
 
 #ifndef _RecordCounts_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Record processing counts
+/*! \brief 
  *
  *  \ingroup Models
  *

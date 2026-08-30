@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[UserSingleAssetBinding]**](UserSingleAssetBinding.md) | List of members with permissions to the asset. | 
+**items** | [**List[UserSingleAssetBinding]**](UserSingleAssetBinding.md) |  | 
 
 ## Example
 

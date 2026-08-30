@@ -52,14 +52,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setMatchType(MatchType  match_type);
+	void setMatchType(MatchType match_type);
 	/*! \brief Get The keyword targeting (120 chars max).
 	 */
 	std::string getValue();
 
 	/*! \brief Set The keyword targeting (120 chars max).
 	 */
-	void setValue(std::string  value);
+	void setValue(std::string value);
 
 
     private:

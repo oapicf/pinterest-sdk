@@ -61,11 +61,11 @@ public:
 	/*! \brief Set Metrics date (UTC): YYYY-MM-DD.
 	 */
 	void setDate(std::string  date);
-	/*! \brief Get The metric name and daily value for each requested metric
+	/*! \brief Get 
 	 */
 	std::map<std::string, std::string> getMetrics();
 
-	/*! \brief Set The metric name and daily value for each requested metric
+	/*! \brief Set 
 	 */
 	void setMetrics(std::map <std::string, std::string> metrics);
 

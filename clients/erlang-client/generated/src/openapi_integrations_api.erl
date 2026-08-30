@@ -54,11 +54,11 @@ integrations/get_list(Ctx, Optional) ->
 
 %% @doc Delete commerce integration
 %% Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
--spec integrations_commerce/del(ctx:ctx(), binary()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec integrations_commerce/del(ctx:ctx(), binary()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 integrations_commerce/del(Ctx, ExternalBusinessId) ->
     integrations_commerce/del(Ctx, ExternalBusinessId, #{}).
 
--spec integrations_commerce/del(ctx:ctx(), binary(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec integrations_commerce/del(ctx:ctx(), binary(), maps:map()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 integrations_commerce/del(Ctx, ExternalBusinessId, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -96,12 +96,12 @@ integrations_commerce/get(Ctx, ExternalBusinessId, Optional) ->
 
 %% @doc Update commerce integration
 %% Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
--spec integrations_commerce/patch(ctx:ctx(), binary(), openapi_integration_request_patch:openapi_integration_request_patch()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-integrations_commerce/patch(Ctx, ExternalBusinessId, OpenapiIntegrationRequestPatch) ->
-    integrations_commerce/patch(Ctx, ExternalBusinessId, OpenapiIntegrationRequestPatch, #{}).
+-spec integrations_commerce/patch(ctx:ctx(), binary(), openapi_integration_metadata_update:openapi_integration_metadata_update()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+integrations_commerce/patch(Ctx, ExternalBusinessId, OpenapiIntegrationMetadataUpdate) ->
+    integrations_commerce/patch(Ctx, ExternalBusinessId, OpenapiIntegrationMetadataUpdate, #{}).
 
--spec integrations_commerce/patch(ctx:ctx(), binary(), openapi_integration_request_patch:openapi_integration_request_patch(), maps:map()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-integrations_commerce/patch(Ctx, ExternalBusinessId, OpenapiIntegrationRequestPatch, Optional) ->
+-spec integrations_commerce/patch(ctx:ctx(), binary(), openapi_integration_metadata_update:openapi_integration_metadata_update(), maps:map()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+integrations_commerce/patch(Ctx, ExternalBusinessId, OpenapiIntegrationMetadataUpdate, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -109,7 +109,7 @@ integrations_commerce/patch(Ctx, ExternalBusinessId, OpenapiIntegrationRequestPa
     Path = [?BASE_URL, "/integrations/commerce/", ExternalBusinessId, ""],
     QS = [],
     Headers = [],
-    Body1 = OpenapiIntegrationRequestPatch,
+    Body1 = OpenapiIntegrationMetadataUpdate,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
@@ -117,12 +117,12 @@ integrations_commerce/patch(Ctx, ExternalBusinessId, OpenapiIntegrationRequestPa
 
 %% @doc Create commerce integration
 %% Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
--spec integrations_commerce/post(ctx:ctx(), openapi_integration_request:openapi_integration_request()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-integrations_commerce/post(Ctx, OpenapiIntegrationRequest) ->
-    integrations_commerce/post(Ctx, OpenapiIntegrationRequest, #{}).
+-spec integrations_commerce/post(ctx:ctx(), openapi_integration_metadata_create:openapi_integration_metadata_create()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+integrations_commerce/post(Ctx, OpenapiIntegrationMetadataCreate) ->
+    integrations_commerce/post(Ctx, OpenapiIntegrationMetadataCreate, #{}).
 
--spec integrations_commerce/post(ctx:ctx(), openapi_integration_request:openapi_integration_request(), maps:map()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-integrations_commerce/post(Ctx, OpenapiIntegrationRequest, Optional) ->
+-spec integrations_commerce/post(ctx:ctx(), openapi_integration_metadata_create:openapi_integration_metadata_create(), maps:map()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+integrations_commerce/post(Ctx, OpenapiIntegrationMetadataCreate, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -130,7 +130,7 @@ integrations_commerce/post(Ctx, OpenapiIntegrationRequest, Optional) ->
     Path = [?BASE_URL, "/integrations/commerce"],
     QS = [],
     Headers = [],
-    Body1 = OpenapiIntegrationRequest,
+    Body1 = OpenapiIntegrationMetadataCreate,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
@@ -138,12 +138,12 @@ integrations_commerce/post(Ctx, OpenapiIntegrationRequest, Optional) ->
 
 %% @doc Receives batched logs from integration applications.
 %% This endpoint receives batched logs from integration applications on partner platforms. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
--spec integrations_logs/post(ctx:ctx(), openapi_integration_logs_request:openapi_integration_logs_request()) -> {ok, openapi_integration_logs_success_response:openapi_integration_logs_success_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-integrations_logs/post(Ctx, OpenapiIntegrationLogsRequest) ->
-    integrations_logs/post(Ctx, OpenapiIntegrationLogsRequest, #{}).
+-spec integrations_logs/post(ctx:ctx(), openapi_integration_logs_request_create:openapi_integration_logs_request_create()) -> {ok, openapi_integration_logs_success_response:openapi_integration_logs_success_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+integrations_logs/post(Ctx, OpenapiIntegrationLogsRequestCreate) ->
+    integrations_logs/post(Ctx, OpenapiIntegrationLogsRequestCreate, #{}).
 
--spec integrations_logs/post(ctx:ctx(), openapi_integration_logs_request:openapi_integration_logs_request(), maps:map()) -> {ok, openapi_integration_logs_success_response:openapi_integration_logs_success_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-integrations_logs/post(Ctx, OpenapiIntegrationLogsRequest, Optional) ->
+-spec integrations_logs/post(ctx:ctx(), openapi_integration_logs_request_create:openapi_integration_logs_request_create(), maps:map()) -> {ok, openapi_integration_logs_success_response:openapi_integration_logs_success_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+integrations_logs/post(Ctx, OpenapiIntegrationLogsRequestCreate, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -151,7 +151,7 @@ integrations_logs/post(Ctx, OpenapiIntegrationLogsRequest, Optional) ->
     Path = [?BASE_URL, "/integrations/logs"],
     QS = [],
     Headers = [],
-    Body1 = OpenapiIntegrationLogsRequest,
+    Body1 = OpenapiIntegrationLogsRequestCreate,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 

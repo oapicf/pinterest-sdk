@@ -23,24 +23,33 @@ pinterest_rest_api_pinterest_lib_status204_STATUSCODE_e pinterest_lib_status204_
 }
 
 static pinterest_lib_status204_t *pinterest_lib_status204_create_internal(
-    double status_code
+    double *status_code
     ) {
     pinterest_lib_status204_t *pinterest_lib_status204_local_var = malloc(sizeof(pinterest_lib_status204_t));
     if (!pinterest_lib_status204_local_var) {
         return NULL;
     }
-    pinterest_lib_status204_local_var->status_code = status_code;
-
+    memset(pinterest_lib_status204_local_var, 0, sizeof(pinterest_lib_status204_t));
     pinterest_lib_status204_local_var->_library_owned = 1;
+    pinterest_lib_status204_local_var->status_code = status_code;
     return pinterest_lib_status204_local_var;
 }
 
 __attribute__((deprecated)) pinterest_lib_status204_t *pinterest_lib_status204_create(
-    double status_code
+    double *status_code
     ) {
-    return pinterest_lib_status204_create_internal (
-        status_code
+    double *status_code_copy = NULL;
+    if (status_code) {
+        status_code_copy = malloc(sizeof(double));
+        if (status_code_copy) *status_code_copy = *status_code;
+    }
+    pinterest_lib_status204_t *result = pinterest_lib_status204_create_internal (
+        status_code_copy
         );
+    if (!result) {
+        free(status_code_copy);
+    }
+    return result;
 }
 
 void pinterest_lib_status204_free(pinterest_lib_status204_t *pinterest_lib_status204) {
@@ -52,6 +61,10 @@ void pinterest_lib_status204_free(pinterest_lib_status204_t *pinterest_lib_statu
         return ;
     }
     listEntry_t *listEntry;
+    if (pinterest_lib_status204->status_code) {
+        free(pinterest_lib_status204->status_code);
+        pinterest_lib_status204->status_code = NULL;
+    }
     free(pinterest_lib_status204);
 }
 
@@ -62,7 +75,7 @@ cJSON *pinterest_lib_status204_convertToJSON(pinterest_lib_status204_t *pinteres
     if (pinterest_rest_api_pinterest_lib_status204_STATUSCODE_NULL == pinterest_lib_status204->status_code) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "statusCode", pinterest_lib_status204->status_code) == NULL) {
+    if(cJSON_AddNumberToObject(item, "statusCode", *pinterest_lib_status204->status_code) == NULL) {
     goto fail; //Numeric
     }
 
@@ -78,6 +91,9 @@ pinterest_lib_status204_t *pinterest_lib_status204_parseFromJSON(cJSON *pinteres
 
     pinterest_lib_status204_t *pinterest_lib_status204_local_var = NULL;
 
+    // define the local variable for pinterest_lib_status204->status_code
+    double *status_code_local_var = NULL;
+
     // pinterest_lib_status204->status_code
     cJSON *status_code = cJSON_GetObjectItemCaseSensitive(pinterest_lib_status204JSON, "statusCode");
     if (cJSON_IsNull(status_code)) {
@@ -92,14 +108,29 @@ pinterest_lib_status204_t *pinterest_lib_status204_parseFromJSON(cJSON *pinteres
     {
     goto end; //Numeric
     }
+    status_code_local_var = malloc(sizeof(double));
+    if(!status_code_local_var)
+    {
+        goto end;
+    }
+    *status_code_local_var = status_code->valuedouble;
+
 
 
     pinterest_lib_status204_local_var = pinterest_lib_status204_create_internal (
-        status_code->valuedouble
+        status_code_local_var
         );
+
+    if (!pinterest_lib_status204_local_var) {
+        goto end;
+    }
 
     return pinterest_lib_status204_local_var;
 end:
+    if (status_code_local_var) {
+        free(status_code_local_var);
+        status_code_local_var = NULL;
+    }
     return NULL;
 
 }

@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.BatchOperation;
 import org.openapitools.model.Country;
 import org.openapitools.model.ItemDeleteBatchRecord;
 
@@ -17,7 +16,7 @@ import org.openapitools.model.ItemDeleteBatchRecord;
  * Request object to delete catalogs items
  */
 @ApiModel(description = "Request object to delete catalogs items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsItemsDeleteBatchRequest   {
   @JsonProperty("country")
   private Country country;
@@ -207,7 +206,7 @@ public class CatalogsItemsDeleteBatchRequest   {
     
     NL2("NL"),
     
-    NO("NO"),
+    FALSE("false"),
     
     PL("PL"),
     
@@ -269,8 +268,37 @@ public class CatalogsItemsDeleteBatchRequest   {
   @JsonProperty("language")
   private LanguageEnum language;
 
+  /**
+   * Gets or Sets operation
+   */
+  public enum OperationEnum {
+    DELETE("DELETE");
+
+    private String value;
+
+    OperationEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static OperationEnum fromValue(String text) {
+      for (OperationEnum b : OperationEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
   @JsonProperty("operation")
-  private BatchOperation operation;
+  private OperationEnum operation;
 
   public CatalogsItemsDeleteBatchRequest country(Country country) {
     this.country = country;
@@ -331,7 +359,7 @@ public class CatalogsItemsDeleteBatchRequest   {
     this.language = language;
   }
 
-  public CatalogsItemsDeleteBatchRequest operation(BatchOperation operation) {
+  public CatalogsItemsDeleteBatchRequest operation(OperationEnum operation) {
     this.operation = operation;
     return this;
   }
@@ -341,11 +369,11 @@ public class CatalogsItemsDeleteBatchRequest   {
    * @return operation
   **/
   @ApiModelProperty(required = true, value = "")
-  public BatchOperation getOperation() {
+  public OperationEnum getOperation() {
     return operation;
   }
 
-  public void setOperation(BatchOperation operation) {
+  public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
 
@@ -388,10 +416,7 @@ public class CatalogsItemsDeleteBatchRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

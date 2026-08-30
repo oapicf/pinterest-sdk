@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **alt_text** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 
-**id** | **char \*** |  | [optional] 
+**id** | **char \*** |  | 
 **link** | **char \*** |  | [optional] 
 **media** | [**pin_media_t**](pin_media.md) \* |  | [optional] [readonly] 
 **title** | **char \*** |  | [optional] 

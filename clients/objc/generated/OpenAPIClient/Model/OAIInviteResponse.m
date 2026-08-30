@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"inviteData": @"invite_data", @"isReceivedInvite": @"is_received_invite", @"user": @"user", @"assetsSummary": @"assets_summary", @"businessRoles": @"business_roles", @"createdByBusiness": @"created_by_business", @"createdByUser": @"created_by_user", @"createdTime": @"created_time" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"assetsSummary": @"assets_summary", @"businessRoles": @"business_roles", @"createdByBusiness": @"created_by_business", @"createdByUser": @"created_by_user", @"createdTime": @"created_time", @"_id": @"id", @"inviteData": @"invite_data", @"isReceivedInvite": @"is_received_invite", @"user": @"user" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"_id", @"inviteData", @"isReceivedInvite", @"user", @"assetsSummary", @"businessRoles", @"createdByBusiness", @"createdByUser", @"createdTime"];
+  NSArray *optionalProperties = @[@"assetsSummary", @"businessRoles", @"createdByBusiness", @"createdByUser", @"createdTime", @"_id", @"inviteData", @"isReceivedInvite", @"user"];
   return [optionalProperties containsObject:propertyName];
 }
 

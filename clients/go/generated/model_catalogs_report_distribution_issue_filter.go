@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &CatalogsReportDistributionIssueFilter{}
 // CatalogsReportDistributionIssueFilter struct for CatalogsReportDistributionIssueFilter
 type CatalogsReportDistributionIssueFilter struct {
 	// Unique identifier of a catalog. If not given, oldest catalog will be used
-	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\d+$"`
 	ReportType string `json:"report_type"`
 }
 

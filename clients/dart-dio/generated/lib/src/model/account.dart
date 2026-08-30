@@ -3,18 +3,18 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/user_account_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'account.g.dart';
 
-/// Account
+/// User account model containing properties related to a user's account.
 ///
 /// Properties:
 /// * [about] - Profile about description.
 /// * [accountType] - Type of account
-/// * [boardCount] - User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+/// * [boardCount] -   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
 /// * [businessName] 
 /// * [followerCount] - User account follower count.
 /// * [followingCount] - User account following count.
@@ -32,10 +32,10 @@ abstract class Account implements Built<Account, AccountBuilder> {
 
   /// Type of account
   @BuiltValueField(wireName: r'account_type')
-  AccountAccountTypeEnum? get accountType;
+  UserAccountType? get accountType;
   // enum accountTypeEnum {  PINNER,  BUSINESS,  };
 
-  /// User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+  ///   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
   @BuiltValueField(wireName: r'board_count')
   int? get boardCount;
 
@@ -105,7 +105,7 @@ class _$AccountSerializer implements PrimitiveSerializer<Account> {
       yield r'account_type';
       yield serializers.serialize(
         object.accountType,
-        specifiedType: const FullType(AccountAccountTypeEnum),
+        specifiedType: const FullType(UserAccountType),
       );
     }
     if (object.boardCount != null) {
@@ -204,15 +204,17 @@ class _$AccountSerializer implements PrimitiveSerializer<Account> {
         case r'about':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.about = valueDes;
           break;
         case r'account_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(AccountAccountTypeEnum),
-          ) as AccountAccountTypeEnum;
+            specifiedType: const FullType.nullable(UserAccountType),
+          ) as UserAccountType?;
+          if (valueDes == null) continue;
           result.accountType = valueDes;
           break;
         case r'board_count':
@@ -250,8 +252,9 @@ class _$AccountSerializer implements PrimitiveSerializer<Account> {
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'monthly_views':
@@ -273,22 +276,25 @@ class _$AccountSerializer implements PrimitiveSerializer<Account> {
         case r'profile_image':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.profileImage = valueDes;
           break;
         case r'username':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.username = valueDes;
           break;
         case r'website_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.websiteUrl = valueDes;
           break;
         default:
@@ -318,22 +324,5 @@ class _$AccountSerializer implements PrimitiveSerializer<Account> {
     );
     return result.build();
   }
-}
-
-class AccountAccountTypeEnum extends EnumClass {
-
-  /// Type of account
-  @BuiltValueEnumConst(wireName: r'PINNER')
-  static const AccountAccountTypeEnum PINNER = _$accountAccountTypeEnum_PINNER;
-  /// Type of account
-  @BuiltValueEnumConst(wireName: r'BUSINESS')
-  static const AccountAccountTypeEnum BUSINESS = _$accountAccountTypeEnum_BUSINESS;
-
-  static Serializer<AccountAccountTypeEnum> get serializer => _$accountAccountTypeEnumSerializer;
-
-  const AccountAccountTypeEnum._(String name): super(name);
-
-  static BuiltSet<AccountAccountTypeEnum> get values => _$accountAccountTypeEnumValues;
-  static AccountAccountTypeEnum valueOf(String name) => _$accountAccountTypeEnumValueOf(name);
 }
 

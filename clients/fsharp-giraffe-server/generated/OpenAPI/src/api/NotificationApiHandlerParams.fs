@@ -1,8 +1,8 @@
 namespace OpenAPI
 
-open OpenAPI.Model.Error
 open OpenAPI.Model.NotificationPostRequest
 open OpenAPI.Model.NotificationResponse
+open OpenAPI.Model.PinterestLibError
 open System.Collections.Generic
 open System
 
@@ -21,12 +21,12 @@ module NotificationApiHandlerParams =
     }
 
     type NotificationPostStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type NotificationPostDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
     type NotificationPostResult = NotificationPostStatusCode200 of NotificationPostStatusCode200Response|NotificationPostStatusCode400 of NotificationPostStatusCode400Response|NotificationPostDefaultStatusCode of NotificationPostDefaultStatusCodeResponse

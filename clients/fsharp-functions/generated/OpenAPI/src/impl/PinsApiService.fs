@@ -1,14 +1,17 @@
 namespace OpenAPI
 open OpenAPI.Model.CreativeType
-open OpenAPI.Model.Error
 open System.Collections.Generic
+open OpenAPI.Model.MultiPinsAnalyticsMetricTypesItem
 open OpenAPI.Model.Pin
 open OpenAPI.Model.PinAnalyticsMetricsResponse
 open OpenAPI.Model.PinCreate
+open OpenAPI.Model.PinFilter
+open OpenAPI.Model.PinType
 open OpenAPI.Model.PinUpdate
 open OpenAPI.Model.PinsList200Response
-open OpenAPI.Model.PinsSaveRequest
+open OpenAPI.Model.PinsSaveRequestCreate
 open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.QuerypinanalyticsmetrictypesItems
 open PinsApiHandlerParams
 open PinsApiServiceInterface
 open System.Collections.Generic
@@ -22,39 +25,48 @@ module PinsApiServiceImplementation =
 
         member this.MultiPinsAnalytics () =
           if true then
-            let content = "response" :> obj :?> IDictionary<string, IDictionary> // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> IDictionary<string, IDictionary> // this cast is obviously wrong, and is only intended to allow generated project to compile   
             MultiPinsAnalyticsStatusCode200 { content = content }
           else if true then
-            let content = "Invalid pins analytics parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             MultiPinsAnalyticsStatusCode400 { content = content }
           else if true then
-            let content = "Not authorized to access board or Pin." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             MultiPinsAnalyticsStatusCode401 { content = content }
           else if true then
-            let content = "Pin not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            MultiPinsAnalyticsStatusCode403 { content = content }
+          else if true then
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             MultiPinsAnalyticsStatusCode404 { content = content }
           else if true then
-            let content = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             MultiPinsAnalyticsStatusCode429 { content = content }
           else
-            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             MultiPinsAnalyticsDefaultStatusCode { content = content }
 
         member this.PinsAnalytics () =
           if true then
-            let content = "response" :> obj :?> IDictionary<string, PinAnalyticsMetricsResponse> // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> IDictionary<string, PinAnalyticsMetricsResponse> // this cast is obviously wrong, and is only intended to allow generated project to compile   
             PinsAnalyticsStatusCode200 { content = content }
           else if true then
-            let content = "Invalid pins analytics parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             PinsAnalyticsStatusCode400 { content = content }
           else if true then
-            let content = "Not authorized to access board or Pin." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            PinsAnalyticsStatusCode401 { content = content }
+          else if true then
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             PinsAnalyticsStatusCode403 { content = content }
           else if true then
-            let content = "Pin not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             PinsAnalyticsStatusCode404 { content = content }
+          else if true then
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            PinsAnalyticsStatusCode429 { content = content }
           else
-            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             PinsAnalyticsDefaultStatusCode { content = content }
 
         member this.PinsCreate (parameters:PinsCreateBodyParams) =
@@ -85,6 +97,9 @@ module PinsApiServiceImplementation =
 
         member this.PinsDelete () =
           if true then
+            let content = "The request has succeeded." :> obj :?> Pin // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            PinsDeleteStatusCode200 { content = content }
+          else if true then
             let content = "Resource deleted successfully." 
             PinsDeleteStatusCode204 { content = content }
           else if true then
@@ -154,16 +169,25 @@ module PinsApiServiceImplementation =
 
         member this.PinsSave (parameters:PinsSaveBodyParams) =
           if true then
-            let content = "Successfully saved pin." :> obj :?> Pin // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded and a new resource has been created as a result." :> obj :?> Pin // this cast is obviously wrong, and is only intended to allow generated project to compile   
             PinsSaveStatusCode201 { content = content }
           else if true then
-            let content = "Not authorized to access Board or Pin." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            PinsSaveStatusCode400 { content = content }
+          else if true then
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            PinsSaveStatusCode401 { content = content }
+          else if true then
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             PinsSaveStatusCode403 { content = content }
           else if true then
-            let content = "Board or Pin not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             PinsSaveStatusCode404 { content = content }
+          else if true then
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            PinsSaveStatusCode429 { content = content }
           else
-            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             PinsSaveDefaultStatusCode { content = content }
 
         member this.PinsUpdate (parameters:PinsUpdateBodyParams) =

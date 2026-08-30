@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `InviteBusinessRoleBinding`
 --
-SELECT `id`, `invite_data`, `is_received_invite`, `user`, `created_by_business_id`, `created_by_user_id` FROM `InviteBusinessRoleBinding` WHERE 1;
+SELECT `created_by_business_id`, `created_by_user_id`, `id`, `invite_data`, `is_received_invite`, `user` FROM `InviteBusinessRoleBinding` WHERE 1;
 
 --
 -- INSERT template for table `InviteBusinessRoleBinding`
 --
-INSERT INTO `InviteBusinessRoleBinding`(`id`, `invite_data`, `is_received_invite`, `user`, `created_by_business_id`, `created_by_user_id`) VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO `InviteBusinessRoleBinding`(`created_by_business_id`, `created_by_user_id`, `id`, `invite_data`, `is_received_invite`, `user`) VALUES (?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `InviteBusinessRoleBinding`
 --
-UPDATE `InviteBusinessRoleBinding` SET `id` = ?, `invite_data` = ?, `is_received_invite` = ?, `user` = ?, `created_by_business_id` = ?, `created_by_user_id` = ? WHERE 1;
+UPDATE `InviteBusinessRoleBinding` SET `created_by_business_id` = ?, `created_by_user_id` = ?, `id` = ?, `invite_data` = ?, `is_received_invite` = ?, `user` = ? WHERE 1;
 
 --
 -- DELETE template for table `InviteBusinessRoleBinding`

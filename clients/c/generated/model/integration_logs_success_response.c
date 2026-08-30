@@ -12,18 +12,21 @@ static integration_logs_success_response_t *integration_logs_success_response_cr
     if (!integration_logs_success_response_local_var) {
         return NULL;
     }
-    integration_logs_success_response_local_var->message = message;
-
+    memset(integration_logs_success_response_local_var, 0, sizeof(integration_logs_success_response_t));
     integration_logs_success_response_local_var->_library_owned = 1;
+    integration_logs_success_response_local_var->message = message;
     return integration_logs_success_response_local_var;
 }
 
 __attribute__((deprecated)) integration_logs_success_response_t *integration_logs_success_response_create(
     char *message
     ) {
-    return integration_logs_success_response_create_internal (
+    integration_logs_success_response_t *result = integration_logs_success_response_create_internal (
         message
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void integration_logs_success_response_free(integration_logs_success_response_t *integration_logs_success_response) {
@@ -64,6 +67,8 @@ integration_logs_success_response_t *integration_logs_success_response_parseFrom
 
     integration_logs_success_response_t *integration_logs_success_response_local_var = NULL;
 
+    char *message_local_str = NULL;
+
     // integration_logs_success_response->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(integration_logs_success_responseJSON, "message");
     if (cJSON_IsNull(message)) {
@@ -77,12 +82,22 @@ integration_logs_success_response_t *integration_logs_success_response_parseFrom
     }
 
 
+    if (message && !cJSON_IsNull(message)) message_local_str = strdup(message->valuestring);
+
     integration_logs_success_response_local_var = integration_logs_success_response_create_internal (
-        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL
+        message_local_str
         );
+
+    if (!integration_logs_success_response_local_var) {
+        goto end;
+    }
 
     return integration_logs_success_response_local_var;
 end:
+    if (message_local_str) {
+        free(message_local_str);
+        message_local_str = NULL;
+    }
     return NULL;
 
 }

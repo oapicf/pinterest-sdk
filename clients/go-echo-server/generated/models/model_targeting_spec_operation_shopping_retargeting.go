@@ -6,5 +6,5 @@ type TargetingSpecOperationShoppingRetargeting struct {
 
 	Operation string `json:"operation"`
 
-	Values *[]TargetingSpecShoppingRetargeting `json:"values"`
+	Values []TargetingSpecShoppingRetargeting `json:"values"`
 }

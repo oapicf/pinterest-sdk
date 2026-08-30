@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.BusinessRoleForInvite;
 import org.openapitools.model.InviteType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -22,56 +23,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Body to be used on path to send Members or Partners Invite or Request")
 @JsonTypeName("CreateMembershipOrPartnershipInvitesBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CreateMembershipOrPartnershipInvitesBody   {
-  public enum BusinessRoleEnum {
-
-    EMPLOYEE(String.valueOf("EMPLOYEE")), BIZ_ADMIN(String.valueOf("BIZ_ADMIN")), PARTNER(String.valueOf("PARTNER"));
-
-
-    private String value;
-
-    BusinessRoleEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static BusinessRoleEnum fromString(String s) {
-        for (BusinessRoleEnum b : BusinessRoleEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static BusinessRoleEnum fromValue(String value) {
-        for (BusinessRoleEnum b : BusinessRoleEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private BusinessRoleEnum businessRole;
+  private BusinessRoleForInvite businessRole;
   private InviteType inviteType;
   private @Valid List<String> members = new ArrayList<>();
   private @Valid List<@Pattern(regexp = "^\\d+$")@Size(max = 25)String> partners = new ArrayList<>();
@@ -81,7 +35,7 @@ public class CreateMembershipOrPartnershipInvitesBody   {
 
   @JsonCreator
   public CreateMembershipOrPartnershipInvitesBody(
-    @JsonProperty(required = true, value = "business_role") BusinessRoleEnum businessRole,
+    @JsonProperty(required = true, value = "business_role") BusinessRoleForInvite businessRole,
     @JsonProperty(required = true, value = "invite_type") InviteType inviteType
   ) {
     this.businessRole = businessRole;
@@ -89,22 +43,21 @@ public class CreateMembershipOrPartnershipInvitesBody   {
   }
 
   /**
-   * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
    **/
-  public CreateMembershipOrPartnershipInvitesBody businessRole(BusinessRoleEnum businessRole) {
+  public CreateMembershipOrPartnershipInvitesBody businessRole(BusinessRoleForInvite businessRole) {
     this.businessRole = businessRole;
     return this;
   }
 
   
-  @ApiModelProperty(example = "BIZ_ADMIN", required = true, value = "The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.")
+  @ApiModelProperty(example = "BIZ_ADMIN", required = true, value = "")
   @JsonProperty(required = true, value = "business_role")
-  @NotNull public BusinessRoleEnum getBusinessRole() {
+  @NotNull public BusinessRoleForInvite getBusinessRole() {
     return businessRole;
   }
 
   @JsonProperty(required = true, value = "business_role")
-  public void setBusinessRole(BusinessRoleEnum businessRole) {
+  public void setBusinessRole(BusinessRoleForInvite businessRole) {
     this.businessRole = businessRole;
   }
 
@@ -238,12 +191,8 @@ public class CreateMembershipOrPartnershipInvitesBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

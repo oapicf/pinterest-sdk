@@ -8,7 +8,7 @@ The class is defined in **[PriceFilter.java](../../src/main/java/org/openapitool
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PRICE** | [`CatalogsProductGroupPricingCurrencyCriteria`](CatalogsProductGroupPricingCurrencyCriteria.md) |  | 
+**PRICE** | [`PriceFilterPrice`](PriceFilterPrice.md) |  | 
 
 
 

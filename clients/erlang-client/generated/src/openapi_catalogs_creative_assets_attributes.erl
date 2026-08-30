@@ -17,6 +17,7 @@
        'link' => binary(),
        'title' => binary(),
        'visibility' => binary(),
+       'ai_disclosures' => list(),
        'image_link' => binary(),
        'video_link' => binary()
      }.
@@ -33,6 +34,7 @@ encode(#{ 'android_deep_link' := AndroidDeepLink,
           'link' := Link,
           'title' := Title,
           'visibility' := Visibility,
+          'ai_disclosures' := AiDisclosures,
           'image_link' := ImageLink,
           'video_link' := VideoLink
         }) ->
@@ -48,6 +50,7 @@ encode(#{ 'android_deep_link' := AndroidDeepLink,
        'link' => Link,
        'title' => Title,
        'visibility' => Visibility,
+       'ai_disclosures' => AiDisclosures,
        'image_link' => ImageLink,
        'video_link' => VideoLink
      }.

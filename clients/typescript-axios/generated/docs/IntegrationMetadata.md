@@ -7,19 +7,19 @@ Integration metadata
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **additional_id_1** | **string** |  | [optional] [default to undefined]
-**connected_advertiser_id** | **string** |  | [optional] [readonly] [default to undefined]
+**connected_advertiser_id** | **string** |  | [optional] [default to undefined]
 **connected_lba_id** | **string** |  | [optional] [default to undefined]
 **connected_merchant_id** | **string** |  | [optional] [default to undefined]
 **connected_tag_id** | **string** |  | [optional] [default to undefined]
 **connected_user_id** | **string** |  | [optional] [readonly] [default to undefined]
-**created_timestamp** | **number** |  | [optional] [default to undefined]
-**external_business_id** | **string** |  | [optional] [default to undefined]
-**id** | **string** |  | [optional] [default to undefined]
+**created_timestamp** | **number** |  | [optional] [readonly] [default to undefined]
+**external_business_id** | **string** | External business ID for the integration. | [optional] [default to undefined]
+**id** | **string** |  | [optional] [readonly] [default to undefined]
 **partner_access_token_expiry** | **number** |  | [optional] [default to undefined]
 **partner_metadata** | **string** |  | [optional] [default to undefined]
 **partner_refresh_token_expiry** | **number** |  | [optional] [default to undefined]
 **scopes** | **string** |  | [optional] [default to undefined]
-**updated_timestamp** | **number** |  | [optional] [default to undefined]
+**updated_timestamp** | **number** |  | [optional] [readonly] [default to undefined]
 
 ## Example
 

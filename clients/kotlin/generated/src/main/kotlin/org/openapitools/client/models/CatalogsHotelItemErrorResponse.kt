@@ -8,14 +8,21 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.ItemValidationEvent
 
 import com.squareup.moshi.Json
@@ -26,6 +33,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param catalogType 
  * @param errors Array with the errors for the item id requested
+ * @param itemResponseKind Discriminator literal identifying this leaf inside an `ItemResponse` payload.
  * @param hotelId The catalog hotel id in the merchant namespace
  */
 
@@ -33,11 +41,15 @@ import com.squareup.moshi.JsonClass
 data class CatalogsHotelItemErrorResponse (
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
+    val catalogType: CatalogsHotelItemErrorResponse.CatalogType,
 
     /* Array with the errors for the item id requested */
     @Json(name = "errors")
     val errors: kotlin.collections.List<ItemValidationEvent>,
+
+    /* Discriminator literal identifying this leaf inside an `ItemResponse` payload. */
+    @Json(name = "item_response_kind")
+    val itemResponseKind: CatalogsHotelItemErrorResponse.ItemResponseKind,
 
     /* The catalog hotel id in the merchant namespace */
     @Json(name = "hotel_id")
@@ -45,6 +57,24 @@ data class CatalogsHotelItemErrorResponse (
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: HOTEL
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "HOTEL") HOTEL("HOTEL");
+    }
+    /**
+     * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+     *
+     * Values: hotel_item_error
+     */
+    @JsonClass(generateAdapter = false)
+    enum class ItemResponseKind(val value: kotlin.String) {
+        @Json(name = "hotel_item_error") hotel_item_error("hotel_item_error");
+    }
 
 }
 

@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -9,72 +10,34 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.TopPinsAnalyticsResponseDateAvailability;
-import org.openapitools.model.TopPinsAnalyticsResponsePinsInner;
+import org.openapitools.model.TopPinsAnalyticsResponsePinsItems;
+import org.openapitools.model.TopPinsSortBy;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * TopPinsAnalyticsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TopPinsAnalyticsResponse {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable TopPinsAnalyticsResponseDateAvailability dateAvailability;
 
-  @Valid
-  private List<@Valid TopPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<@Valid TopPinsAnalyticsResponsePinsItems> pins = new ArrayList<>();
 
-  /**
-   * Gets or Sets sortBy
-   */
-  public enum SortByEnum {
-    ENGAGEMENT("ENGAGEMENT"),
-    
-    SAVE("SAVE"),
-    
-    IMPRESSION("IMPRESSION"),
-    
-    OUTBOUND_CLICK("OUTBOUND_CLICK"),
-    
-    PIN_CLICK("PIN_CLICK");
-
-    private final String value;
-
-    SortByEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SortByEnum fromValue(String value) {
-      for (SortByEnum b : SortByEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private @Nullable SortByEnum sortBy;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable TopPinsSortBy sortBy;
 
   public TopPinsAnalyticsResponse dateAvailability(@Nullable TopPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;
@@ -92,16 +55,17 @@ public class TopPinsAnalyticsResponse {
     return dateAvailability;
   }
 
+  @JsonProperty("date_availability")
   public void setDateAvailability(@Nullable TopPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;
   }
 
-  public TopPinsAnalyticsResponse pins(List<@Valid TopPinsAnalyticsResponsePinsInner> pins) {
+  public TopPinsAnalyticsResponse pins(List<@Valid TopPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
     return this;
   }
 
-  public TopPinsAnalyticsResponse addPinsItem(TopPinsAnalyticsResponsePinsInner pinsItem) {
+  public TopPinsAnalyticsResponse addPinsItem(TopPinsAnalyticsResponsePinsItems pinsItem) {
     if (this.pins == null) {
       this.pins = new ArrayList<>();
     }
@@ -116,15 +80,16 @@ public class TopPinsAnalyticsResponse {
   @Valid 
   @Schema(name = "pins", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pins")
-  public List<@Valid TopPinsAnalyticsResponsePinsInner> getPins() {
+  public List<@Valid TopPinsAnalyticsResponsePinsItems> getPins() {
     return pins;
   }
 
-  public void setPins(List<@Valid TopPinsAnalyticsResponsePinsInner> pins) {
+  @JsonProperty("pins")
+  public void setPins(List<@Valid TopPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
   }
 
-  public TopPinsAnalyticsResponse sortBy(@Nullable SortByEnum sortBy) {
+  public TopPinsAnalyticsResponse sortBy(@Nullable TopPinsSortBy sortBy) {
     this.sortBy = sortBy;
     return this;
   }
@@ -133,14 +98,15 @@ public class TopPinsAnalyticsResponse {
    * Get sortBy
    * @return sortBy
    */
-  
-  @Schema(name = "sort_by", example = "IMPRESSION", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Valid 
+  @Schema(name = "sort_by", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("sort_by")
-  public @Nullable SortByEnum getSortBy() {
+  public @Nullable TopPinsSortBy getSortBy() {
     return sortBy;
   }
 
-  public void setSortBy(@Nullable SortByEnum sortBy) {
+  @JsonProperty("sort_by")
+  public void setSortBy(@Nullable TopPinsSortBy sortBy) {
     this.sortBy = sortBy;
   }
 
@@ -178,11 +144,8 @@ public class TopPinsAnalyticsResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

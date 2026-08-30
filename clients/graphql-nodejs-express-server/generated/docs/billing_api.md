@@ -19,18 +19,18 @@ Method | HTTP request | Description
 
 <a name="AdsCreditRedeem"></a>
 # **AdsCreditRedeem**
-> AdsCreditRedeemResponse AdsCreditRedeem(adAccountId, adsCreditRedeemRequest)
+> AdsCreditRedeem AdsCreditRedeem(adAccountId, adsCreditRedeemCreate)
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 <a name="AdsCreditsDiscountsGet"></a>
 # **AdsCreditsDiscountsGet**
 > AdsCreditsDiscountsGet200Response AdsCreditsDiscountsGet(adAccountId, bookmark, pageSize)
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 <a name="BillingInvoiceDownloadGet"></a>
 # **BillingInvoiceDownloadGet**
 > BillingInvoiceDownloadResponse BillingInvoiceDownloadGet(adAccountId, billingInvoiceId)
@@ -40,57 +40,57 @@ Get download url for a billing invoice
 Get download url for a billing invoice.
 <a name="BillingInvoicesGet"></a>
 # **BillingInvoicesGet**
-> BillingInvoicesGet200Response BillingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
+> BillingInvoicesGet200Response BillingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate)
 
 Get billing invoices
 
 Get billing invoices in the advertiser account.
 <a name="BillingProfilesGet"></a>
 # **BillingProfilesGet**
-> BillingProfilesGet200Response BillingProfilesGet(adAccountId, isActive, bookmark, pageSize)
+> BillingProfilesGet200Response BillingProfilesGet(isActive, adAccountId, bookmark, pageSize)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 <a name="SsioAccountsGet"></a>
 # **SsioAccountsGet**
-> SsioAccountResponse SsioAccountsGet(adAccountId)
+> SsioAccount SsioAccountsGet(adAccountId)
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 <a name="SsioInsertionOrderCreate"></a>
 # **SsioInsertionOrderCreate**
-> SsioCreateInsertionOrderResponse SsioInsertionOrderCreate(adAccountId, ssioCreateInsertionOrderRequest)
+> SsioInsertionOrder SsioInsertionOrderCreate(adAccountId, ssioInsertionOrderCreate)
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 <a name="SsioInsertionOrderEdit"></a>
 # **SsioInsertionOrderEdit**
-> SsioEditInsertionOrderResponse SsioInsertionOrderEdit(adAccountId, ssioEditInsertionOrderRequest)
+> SsioInsertionOrder SsioInsertionOrderEdit(adAccountId, ssioInsertionOrderUpdate)
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 <a name="SsioInsertionOrdersStatusGetByAdAccount"></a>
 # **SsioInsertionOrdersStatusGetByAdAccount**
 > SsioInsertionOrdersStatusGetByAdAccount200Response SsioInsertionOrdersStatusGetByAdAccount(adAccountId, bookmark, pageSize)
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 <a name="SsioInsertionOrdersStatusGetByPinOrderId"></a>
 # **SsioInsertionOrdersStatusGetByPinOrderId**
 > SsioInsertionOrderStatusResponse SsioInsertionOrdersStatusGetByPinOrderId(adAccountId, pinOrderId)
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 <a name="SsioOrderLinesGetByAdAccount"></a>
 # **SsioOrderLinesGetByAdAccount**
-> SsioOrderLinesGetByAdAccount200Response SsioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId)
+> SsioOrderLinesGetByAdAccount200Response SsioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize)
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.

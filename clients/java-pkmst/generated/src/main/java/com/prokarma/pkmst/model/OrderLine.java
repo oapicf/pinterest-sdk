@@ -22,13 +22,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * OrderLine
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class OrderLine   {
   @JsonProperty("ad_account_id")
   private String adAccountId;
 
   @JsonProperty("budget")
   private BigDecimal budget;
+
+  @JsonProperty("campaign_ids")
+  
+  private List<String> campaignIds = new ArrayList<>();
 
   @JsonProperty("end_time")
   private BigDecimal endTime;
@@ -57,10 +61,6 @@ public class OrderLine   {
   @JsonProperty("type")
   private String type;
 
-  @JsonProperty("campaign_ids")
-  
-  private List<String> campaignIds = new ArrayList<>();
-
   public OrderLine adAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
@@ -70,7 +70,7 @@ public class OrderLine   {
    * Ad account ID.
    * @return adAccountId
    */
-  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
+  @ApiModelProperty(required = true, value = "Ad account ID.")
   public String getAdAccountId() {
     return adAccountId;
   }
@@ -88,13 +88,39 @@ public class OrderLine   {
    * Order line budget in micro currency.
    * @return budget
    */
-  @ApiModelProperty(example = "5000000", value = "Order line budget in micro currency.")
+  @ApiModelProperty(value = "Order line budget in micro currency.")
   public BigDecimal getBudget() {
     return budget;
   }
 
   public void setBudget(BigDecimal budget) {
     this.budget = budget;
+  }
+
+  public OrderLine campaignIds(List<String> campaignIds) {
+    this.campaignIds = campaignIds;
+    return this;
+  }
+
+  public OrderLine addCampaignIdsItem(String campaignIdsItem) {
+    if (this.campaignIds == null) {
+      this.campaignIds = new ArrayList<>();
+    }
+    this.campaignIds.add(campaignIdsItem);
+    return this;
+  }
+
+  /**
+   * Associated List of campaign IDs.
+   * @return campaignIds
+   */
+  @ApiModelProperty(example = "[\"626735565838\"]", required = true, value = "Associated List of campaign IDs.")
+  public List<String> getCampaignIds() {
+    return campaignIds;
+  }
+
+  public void setCampaignIds(List<String> campaignIds) {
+    this.campaignIds = campaignIds;
   }
 
   public OrderLine endTime(BigDecimal endTime) {
@@ -106,7 +132,7 @@ public class OrderLine   {
    * End time. Unix timestamp.
    * @return endTime
    */
-  @ApiModelProperty(example = "1461269616", value = "End time. Unix timestamp.")
+  @ApiModelProperty(value = "End time. Unix timestamp.")
   public BigDecimal getEndTime() {
     return endTime;
   }
@@ -124,7 +150,7 @@ public class OrderLine   {
    * Order line ID.
    * @return id
    */
-  @ApiModelProperty(example = "2680059592705", value = "Order line ID.")
+  @ApiModelProperty(required = true, value = "Order line ID.")
   public String getId() {
     return id;
   }
@@ -142,7 +168,7 @@ public class OrderLine   {
    * Order line name.
    * @return name
    */
-  @ApiModelProperty(example = "Order Line Name 1", value = "Order line name.")
+  @ApiModelProperty(value = "Order line name.")
   public String getName() {
     return name;
   }
@@ -160,7 +186,7 @@ public class OrderLine   {
    * Order line paid budget in micro currency.
    * @return paidBudget
    */
-  @ApiModelProperty(example = "5000000", value = "Order line paid budget in micro currency.")
+  @ApiModelProperty(value = "Order line paid budget in micro currency.")
   public BigDecimal getPaidBudget() {
     return paidBudget;
   }
@@ -196,7 +222,7 @@ public class OrderLine   {
    * Purchase order ID.
    * @return purchaseOrderId
    */
-  @ApiModelProperty(example = "PO12345", value = "Purchase order ID.")
+  @ApiModelProperty(value = "Purchase order ID.")
   public String getPurchaseOrderId() {
     return purchaseOrderId;
   }
@@ -214,7 +240,7 @@ public class OrderLine   {
    * Start time. Unix timestamp.
    * @return startTime
    */
-  @ApiModelProperty(example = "1452208622", value = "Start time. Unix timestamp.")
+  @ApiModelProperty(value = "Start time. Unix timestamp.")
   public BigDecimal getStartTime() {
     return startTime;
   }
@@ -232,7 +258,7 @@ public class OrderLine   {
    * Order line status.
    * @return status
    */
-  @ApiModelProperty(value = "Order line status.")
+  @ApiModelProperty(required = true, value = "Order line status.")
   public OrderLineStatus getStatus() {
     return status;
   }
@@ -250,39 +276,13 @@ public class OrderLine   {
    * Always \"orderline\".
    * @return type
    */
-  @ApiModelProperty(example = "orderline", value = "Always \"orderline\".")
+  @ApiModelProperty(required = true, value = "Always \"orderline\".")
   public String getType() {
     return type;
   }
 
   public void setType(String type) {
     this.type = type;
-  }
-
-  public OrderLine campaignIds(List<String> campaignIds) {
-    this.campaignIds = campaignIds;
-    return this;
-  }
-
-  public OrderLine addCampaignIdsItem(String campaignIdsItem) {
-    if (this.campaignIds == null) {
-      this.campaignIds = new ArrayList<>();
-    }
-    this.campaignIds.add(campaignIdsItem);
-    return this;
-  }
-
-  /**
-   * Associated List of campaign IDs.
-   * @return campaignIds
-   */
-  @ApiModelProperty(example = "[\"626735565838\"]", required = true, value = "Associated List of campaign IDs.")
-  public List<String> getCampaignIds() {
-    return campaignIds;
-  }
-
-  public void setCampaignIds(List<String> campaignIds) {
-    this.campaignIds = campaignIds;
   }
 
 
@@ -297,6 +297,7 @@ public class OrderLine   {
     OrderLine orderLine = (OrderLine) o;
     return Objects.equals(this.adAccountId, orderLine.adAccountId) &&
         Objects.equals(this.budget, orderLine.budget) &&
+        Objects.equals(this.campaignIds, orderLine.campaignIds) &&
         Objects.equals(this.endTime, orderLine.endTime) &&
         Objects.equals(this.id, orderLine.id) &&
         Objects.equals(this.name, orderLine.name) &&
@@ -305,13 +306,12 @@ public class OrderLine   {
         Objects.equals(this.purchaseOrderId, orderLine.purchaseOrderId) &&
         Objects.equals(this.startTime, orderLine.startTime) &&
         Objects.equals(this.status, orderLine.status) &&
-        Objects.equals(this.type, orderLine.type) &&
-        Objects.equals(this.campaignIds, orderLine.campaignIds);
+        Objects.equals(this.type, orderLine.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, budget, endTime, id, name, paidBudget, paidType, purchaseOrderId, startTime, status, type, campaignIds);
+    return Objects.hash(adAccountId, budget, campaignIds, endTime, id, name, paidBudget, paidType, purchaseOrderId, startTime, status, type);
   }
 
   @Override
@@ -321,6 +321,7 @@ public class OrderLine   {
     
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -330,7 +331,6 @@ public class OrderLine   {
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -340,10 +340,7 @@ public class OrderLine   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

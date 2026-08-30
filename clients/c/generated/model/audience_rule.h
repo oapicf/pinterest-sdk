@@ -1,7 +1,7 @@
 /*
  * audience_rule.h
  *
- * JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.example.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;Learn more about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience\&quot; target&#x3D;\&quot;_blank\&quot;&gt;engagement audiences&lt;/a&gt;.
+ * JSON object defining targeted audience users. Example rule formats per audience type:  CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}  ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; } (Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10. The targeted audience should be this % size across Pinterest.)  VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}} (Retention days should be 1-540. Retention applies to specific customers.)  ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.example.com\&quot;], \&quot;engager_type\&quot;: 1} Learn more about [engagement audiences](/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience).
  */
 
 #ifndef _audience_rule_H_
@@ -21,7 +21,7 @@ typedef struct audience_rule_t audience_rule_t;
 
 // Enum  for audience_rule
 
-typedef enum  { pinterest_rest_api_audience_rule__NULL = 0, pinterest_rest_api_audience_rule__AWARENESS, pinterest_rest_api_audience_rule__CONSIDERATION, pinterest_rest_api_audience_rule__WEB_CONVERSION, pinterest_rest_api_audience_rule__CATALOG_SALES, pinterest_rest_api_audience_rule__VIDEO_COMPLETION } pinterest_rest_api_audience_rule__e;
+typedef enum  { pinterest_rest_api_audience_rule__NULL = 0, pinterest_rest_api_audience_rule__AWARENESS, pinterest_rest_api_audience_rule__CONSIDERATION, pinterest_rest_api_audience_rule__WEB_CONVERSION, pinterest_rest_api_audience_rule__CATALOG_SALES, pinterest_rest_api_audience_rule__VIDEO_COMPLETION, pinterest_rest_api_audience_rule__SALES, pinterest_rest_api_audience_rule__APP_INSTALL, pinterest_rest_api_audience_rule__CTV_CONSIDERATION } pinterest_rest_api_audience_rule__e;
 
 char* audience_rule_objective_type_ToString(pinterest_rest_api_audience_rule__e objective_type);
 
@@ -37,16 +37,16 @@ typedef struct audience_rule_t {
     char *customer_list_id; // string
     list_t *engagement_domain; //primitive container
     char *engagement_type; // string
-    int engager_type; //numeric
+    int *engager_type; //numeric
     char *event; // string
     struct event_data_t *event_data; //model
     object_t *event_source; //object
     object_t *ingestion_source; //object
     list_t *objective_type; //nonprimitive container
-    int percentage; //numeric
+    int *percentage; //numeric
     list_t *pin_id; //primitive container
-    int prefill; //boolean
-    int retention_days; //numeric
+    int *prefill; //boolean
+    int *retention_days; //numeric
     list_t *seed_id; //primitive container
     list_t *url; //primitive container
     char *visitor_source_id; // string
@@ -62,16 +62,16 @@ __attribute__((deprecated)) audience_rule_t *audience_rule_create(
     char *customer_list_id,
     list_t *engagement_domain,
     char *engagement_type,
-    int engager_type,
+    int *engager_type,
     char *event,
     event_data_t *event_data,
     object_t *event_source,
     object_t *ingestion_source,
     list_t *objective_type,
-    int percentage,
+    int *percentage,
     list_t *pin_id,
-    int prefill,
-    int retention_days,
+    int *prefill,
+    int *retention_days,
     list_t *seed_id,
     list_t *url,
     char *visitor_source_id

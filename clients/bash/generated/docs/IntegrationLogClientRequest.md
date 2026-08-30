@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **host** | **string** |  | [default to null]
-**method** | **string** |  | [default to null]
+**method** | [**HttpMethod**](HttpMethod.md) |  | [default to null]
 **path** | **string** |  | [default to null]
 **requestUnderscoreheaders** | **map[String, string]** |  | [optional] [default to null]
 **responseUnderscoreheaders** | **map[String, string]** |  | [optional] [default to null]

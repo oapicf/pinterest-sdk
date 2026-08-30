@@ -93,6 +93,13 @@ API.Client.AdCreateRequest.prototype.gridClickType;
 API.Client.AdCreateRequest.prototype.iosDeepLink;
 
 /**
+ * Is the ad a carting/WTB ad?
+ * @type {!boolean}
+ * @export
+ */
+API.Client.AdCreateRequest.prototype.isCarting;
+
+/**
  * Is original pin deleted?
  * @type {!boolean}
  * @export
@@ -121,8 +128,15 @@ API.Client.AdCreateRequest.prototype.leadFormId;
 API.Client.AdCreateRequest.prototype.name;
 
 /**
+ * Pin ID.
+ * @type {!string}
+ * @export
+ */
+API.Client.AdCreateRequest.prototype.pinId;
+
+/**
  * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
- * @type {!API.Client.QuizPinData}
+ * @type {!API.Client.Object}
  * @export
  */
 API.Client.AdCreateRequest.prototype.quizPinData;
@@ -134,7 +148,7 @@ API.Client.AdCreateRequest.prototype.quizPinData;
 API.Client.AdCreateRequest.prototype.status;
 
 /**
- * @type {!API.Client.TrackingUrls}
+ * @type {!API.Client.Object}
  * @export
  */
 API.Client.AdCreateRequest.prototype.trackingUrls;
@@ -145,11 +159,4 @@ API.Client.AdCreateRequest.prototype.trackingUrls;
  * @export
  */
 API.Client.AdCreateRequest.prototype.viewTrackingUrl;
-
-/**
- * Pin ID.
- * @type {!string}
- * @export
- */
-API.Client.AdCreateRequest.prototype.pinId;
 

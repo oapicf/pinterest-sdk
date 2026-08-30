@@ -9,10 +9,15 @@ import org.openapitools.model.Currency;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * A Salesforce SSIO order line.
+ */
+@ApiModel(description="A Salesforce SSIO order line.")
 
 public class SSIOOrderLine  {
   
@@ -24,16 +29,16 @@ public class SSIOOrderLine  {
   private String acceptedTermsId;
 
  /**
-  * The UTC timestamp (to the nearest sec) of when terms were accepted
+  * The UTC timestamp (to the nearest second) when terms were accepted.
   */
-  @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "The UTC timestamp (to the nearest sec) of when terms were accepted")
+  @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "The UTC timestamp (to the nearest second) when terms were accepted.")
 
   private String acceptedTermsTime;
 
  /**
-  * Ads manager OrderLineId
+  * Ads manager order line id
   */
-  @ApiModelProperty(value = "Ads manager OrderLineId")
+  @ApiModelProperty(value = "Ads manager order line id")
 
   private String adsManagerOrderLineId;
 
@@ -45,9 +50,9 @@ public class SSIOOrderLine  {
   private String agencyLink;
 
  /**
-  * Bill To Company name
+  * Bill-to company name
   */
-  @ApiModelProperty(example = "Home Depot Inc.", value = "Bill To Company name")
+  @ApiModelProperty(example = "Home Depot Inc.", value = "Bill-to company name")
 
   private String billToCompanyName;
 
@@ -73,9 +78,9 @@ public class SSIOOrderLine  {
   private String billingContactLastname;
 
  /**
-  * If Budget order line, the budget amount.
+  * If budget order line, the budget amount.
   */
-  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
+  @ApiModelProperty(example = "5000000", value = "If budget order line, the budget amount.")
 
   @Valid
 
@@ -90,14 +95,14 @@ public class SSIOOrderLine  {
  /**
   * End date of the order line.
   */
-  @ApiModelProperty(example = "2020-10-05", value = "End date of the order line.")
+  @ApiModelProperty(value = "End date of the order line.")
 
   private LocalDate endDate;
 
  /**
-  * If Ongoing (perpetual) order line, the estimated monthly spend
+  * If ongoing (perpetual) order line, the estimated monthly spend.
   */
-  @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
+  @ApiModelProperty(value = "If ongoing (perpetual) order line, the estimated monthly spend.")
 
   @Valid
 
@@ -118,16 +123,16 @@ public class SSIOOrderLine  {
   private String mediaContactEmail;
 
  /**
-  * Billing contact first name
+  * Billing media contact first name
   */
-  @ApiModelProperty(example = "John", value = "Billing contact first name")
+  @ApiModelProperty(example = "John", value = "Billing media contact first name")
 
   private String mediaContactFirstname;
 
  /**
-  * Billing contact first name
+  * Billing media contact last name
   */
-  @ApiModelProperty(example = "Doe", value = "Billing contact first name")
+  @ApiModelProperty(example = "Doe", value = "Billing media contact last name")
 
   private String mediaContactLastname;
 
@@ -153,23 +158,23 @@ public class SSIOOrderLine  {
   private String pmpName;
 
  /**
-  * The po number
+  * The PO number
   */
-  @ApiModelProperty(value = "The po number")
+  @ApiModelProperty(value = "The PO number")
 
   private String poNumber;
 
  /**
-  * OrderLineId in SFDC
+  * Order line id in SFDC
   */
-  @ApiModelProperty(value = "OrderLineId in SFDC")
+  @ApiModelProperty(value = "Order line id in SFDC")
 
   private String salesforceOrderLineId;
 
  /**
   * Start date of the order line.
   */
-  @ApiModelProperty(example = "2018-03-01", value = "Start date of the order line.")
+  @ApiModelProperty(value = "Start date of the order line.")
 
   private LocalDate startDate;
  /**
@@ -191,11 +196,11 @@ public class SSIOOrderLine  {
   }
 
  /**
-   * The UTC timestamp (to the nearest sec) of when terms were accepted
+   * The UTC timestamp (to the nearest second) when terms were accepted.
    * @return acceptedTermsTime
   **/
   @JsonProperty("accepted_terms_time")
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")  public String getAcceptedTermsTime() {
+ @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$")  public String getAcceptedTermsTime() {
     return acceptedTermsTime;
   }
 
@@ -209,7 +214,7 @@ public class SSIOOrderLine  {
   }
 
  /**
-   * Ads manager OrderLineId
+   * Ads manager order line id
    * @return adsManagerOrderLineId
   **/
   @JsonProperty("ads_manager_order_line_id")
@@ -245,7 +250,7 @@ public class SSIOOrderLine  {
   }
 
  /**
-   * Bill To Company name
+   * Bill-to company name
    * @return billToCompanyName
   **/
   @JsonProperty("bill_to_company_name")
@@ -317,7 +322,7 @@ public class SSIOOrderLine  {
   }
 
  /**
-   * If Budget order line, the budget amount.
+   * If budget order line, the budget amount.
    * @return budgetAmount
   **/
   @JsonProperty("budget_amount")
@@ -371,7 +376,7 @@ public class SSIOOrderLine  {
   }
 
  /**
-   * If Ongoing (perpetual) order line, the estimated monthly spend
+   * If ongoing (perpetual) order line, the estimated monthly spend.
    * @return estimatedMonthlySpend
   **/
   @JsonProperty("estimated_monthly_spend")
@@ -393,7 +398,7 @@ public class SSIOOrderLine  {
    * @return lastModifiedDateTime
   **/
   @JsonProperty("last_modified_date_time")
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")  public String getLastModifiedDateTime() {
+ @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$")  public String getLastModifiedDateTime() {
     return lastModifiedDateTime;
   }
 
@@ -425,7 +430,7 @@ public class SSIOOrderLine  {
   }
 
  /**
-   * Billing contact first name
+   * Billing media contact first name
    * @return mediaContactFirstname
   **/
   @JsonProperty("media_contact_firstname")
@@ -443,7 +448,7 @@ public class SSIOOrderLine  {
   }
 
  /**
-   * Billing contact first name
+   * Billing media contact last name
    * @return mediaContactLastname
   **/
   @JsonProperty("media_contact_lastname")
@@ -515,7 +520,7 @@ public class SSIOOrderLine  {
   }
 
  /**
-   * The po number
+   * The PO number
    * @return poNumber
   **/
   @JsonProperty("po_number")
@@ -533,7 +538,7 @@ public class SSIOOrderLine  {
   }
 
  /**
-   * OrderLineId in SFDC
+   * Order line id in SFDC
    * @return salesforceOrderLineId
   **/
   @JsonProperty("salesforce_order_line_id")
@@ -642,10 +647,7 @@ public class SSIOOrderLine  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

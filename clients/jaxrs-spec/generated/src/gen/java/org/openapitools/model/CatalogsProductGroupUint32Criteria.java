@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.NumericFilterOperatorType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -16,57 +17,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsProductGroupUint32Criteria")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupUint32Criteria   {
-  private Boolean negated = false;
-  public enum OperatorEnum {
-
-    GREATER_THAN(String.valueOf("GREATER_THAN")), GREATER_THAN_OR_EQUALS(String.valueOf("GREATER_THAN_OR_EQUALS")), LESS_THAN(String.valueOf("LESS_THAN")), LESS_THAN_OR_EQUALS(String.valueOf("LESS_THAN_OR_EQUALS"));
-
-
-    private String value;
-
-    OperatorEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static OperatorEnum fromString(String s) {
-        for (OperatorEnum b : OperatorEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static OperatorEnum fromValue(String value) {
-        for (OperatorEnum b : OperatorEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private OperatorEnum operator;
+  private Boolean negated;
+  private NumericFilterOperatorType operator;
   private Integer value;
 
   public CatalogsProductGroupUint32Criteria() {
@@ -74,7 +28,7 @@ public class CatalogsProductGroupUint32Criteria   {
 
   @JsonCreator
   public CatalogsProductGroupUint32Criteria(
-    @JsonProperty(required = true, value = "operator") OperatorEnum operator,
+    @JsonProperty(required = true, value = "operator") NumericFilterOperatorType operator,
     @JsonProperty(required = true, value = "value") Integer value
   ) {
     this.operator = operator;
@@ -102,7 +56,7 @@ public class CatalogsProductGroupUint32Criteria   {
 
   /**
    **/
-  public CatalogsProductGroupUint32Criteria operator(OperatorEnum operator) {
+  public CatalogsProductGroupUint32Criteria operator(NumericFilterOperatorType operator) {
     this.operator = operator;
     return this;
   }
@@ -110,12 +64,12 @@ public class CatalogsProductGroupUint32Criteria   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "operator")
-  @NotNull public OperatorEnum getOperator() {
+  @NotNull public NumericFilterOperatorType getOperator() {
     return operator;
   }
 
   @JsonProperty(required = true, value = "operator")
-  public void setOperator(OperatorEnum operator) {
+  public void setOperator(NumericFilterOperatorType operator) {
     this.operator = operator;
   }
 
@@ -177,12 +131,8 @@ public class CatalogsProductGroupUint32Criteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

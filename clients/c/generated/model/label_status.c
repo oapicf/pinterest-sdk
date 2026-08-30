@@ -5,13 +5,13 @@
 
 
 char* label_status_label_status_ToString(pinterest_rest_api_label_status__e label_status) {
-    char *label_statusArray[] =  { "NULL", "ACTIVE", "ARCHIVED", "" };
+    char *label_statusArray[] =  { "NULL", "ACTIVE", "ARCHIVED" };
     return label_statusArray[label_status];
 }
 
 pinterest_rest_api_label_status__e label_status_label_status_FromString(char* label_status) {
     int stringToReturn = 0;
-    char *label_statusArray[] =  { "NULL", "ACTIVE", "ARCHIVED", "" };
+    char *label_statusArray[] =  { "NULL", "ACTIVE", "ARCHIVED" };
     size_t sizeofArray = sizeof(label_statusArray) / sizeof(label_statusArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(label_status, label_statusArray[stringToReturn]) == 0) {

@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.model.TargetingSpecAppType;
+import org.openapitools.model.TargetingSpecListOperation;
 
 @Canonical
 class TargetingSpecOperationAppType {
@@ -32,33 +33,8 @@ class TargetingSpecOperationAppType {
 
     
     FieldEnum field
-
-    enum OperationEnum {
     
-        SET("SET"),
-        
-        ADD("ADD"),
-        
-        REMOVE("REMOVE")
+    TargetingSpecListOperation operation
     
-        private final String value
-    
-        OperationEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
-    
-    OperationEnum operation
-    
-    List<TargetingSpecAppType> values
+    List<TargetingSpecAppType> values = new ArrayList<>()
 }

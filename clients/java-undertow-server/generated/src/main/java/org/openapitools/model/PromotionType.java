@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -17,11 +17,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 
 /**
- * Determines the displayed promotion text along with what parameters (if any) are needed to complete the template. This list is not finalized, and will be updated as new types are supported.
+ * Determines the displayed promotion text along with what parameters (if any) are needed to complete the template.
  */
 
 /**
- * Determines the displayed promotion text along with what parameters (if any) are needed to complete the template. This list is not finalized, and will be updated as new types are supported.
+ * Determines the displayed promotion text along with what parameters (if any) are needed to complete the template.
  */
 public enum PromotionType {
     

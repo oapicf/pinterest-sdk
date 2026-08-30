@@ -8,15 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.BusinessMemberAssetsSummaryAdAccountsInner
-import org.openapitools.client.models.BusinessMemberAssetsSummaryProfilesInner
+import org.openapitools.client.models.AssetIdWithPermissions
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -33,11 +40,11 @@ data class BusinessMemberAssetsSummary (
 
     /* List of ad account IDs and respective permission levels. */
     @Json(name = "ad_accounts")
-    val adAccounts: kotlin.collections.List<BusinessMemberAssetsSummaryAdAccountsInner>? = null,
+    val adAccounts: kotlin.collections.List<AssetIdWithPermissions>? = null,
 
     /* List of profile IDs and respective permission levels. */
     @Json(name = "profiles")
-    val profiles: kotlin.collections.List<BusinessMemberAssetsSummaryProfilesInner>? = null
+    val profiles: kotlin.collections.List<AssetIdWithPermissions>? = null
 
 ) {
 

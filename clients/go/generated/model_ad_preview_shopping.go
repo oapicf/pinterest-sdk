@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,12 +20,12 @@ import (
 // checks if the AdPreviewShopping type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AdPreviewShopping{}
 
-// AdPreviewShopping struct for AdPreviewShopping
+// AdPreviewShopping Ad preview from a catalog product group (shopping).
 type AdPreviewShopping struct {
 	// Catalog Product Group Id.
-	CatalogProductGroupId string `json:"catalog_product_group_id" validate:"regexp=^\\\\d+$"`
+	CatalogProductGroupId string `json:"catalog_product_group_id" validate:"regexp=^\\d+$"`
 	// Ad format of the shopping ad preview.
-	CreativeType string `json:"creative_type"`
+	CreativeType AdShoppingPreviewCreativeType `json:"creative_type"`
 	// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE`
 	CustomizableCtaType NullableCustomizableCTAType `json:"customizable_cta_type,omitempty"`
 	// Title displayed below ad.
@@ -33,13 +33,15 @@ type AdPreviewShopping struct {
 	// Hero image URL.
 	HeroImageUrl *string `json:"hero_image_url,omitempty"`
 	// Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required.
-	HeroPinId *string `json:"hero_pin_id,omitempty" validate:"regexp=^\\\\d+$"`
+	HeroPinId *string `json:"hero_pin_id,omitempty" validate:"regexp=^\\d+$"`
 	// Multi image template tag.
 	ImageTag *string `json:"image_tag,omitempty"`
 	// Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING.
 	ItemId *string `json:"item_id,omitempty"`
 	// Preferred media type.
-	PreferredMediaType *string `json:"preferred_media_type,omitempty"`
+	PreferredMediaType *BasePreferredMediaType `json:"preferred_media_type,omitempty"`
+	// Include promotion data in preview when available on catalog item. Defaults to false.
+	ShowPromotion *bool `json:"show_promotion,omitempty"`
 	// Multi video template tag, image_tag and video_tag are mutual exclusive.
 	VideoTag *string `json:"video_tag,omitempty"`
 }
@@ -50,7 +52,7 @@ type _AdPreviewShopping AdPreviewShopping
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdPreviewShopping(catalogProductGroupId string, creativeType string) *AdPreviewShopping {
+func NewAdPreviewShopping(catalogProductGroupId string, creativeType AdShoppingPreviewCreativeType) *AdPreviewShopping {
 	this := AdPreviewShopping{}
 	this.CatalogProductGroupId = catalogProductGroupId
 	this.CreativeType = creativeType
@@ -90,9 +92,9 @@ func (o *AdPreviewShopping) SetCatalogProductGroupId(v string) {
 }
 
 // GetCreativeType returns the CreativeType field value
-func (o *AdPreviewShopping) GetCreativeType() string {
+func (o *AdPreviewShopping) GetCreativeType() AdShoppingPreviewCreativeType {
 	if o == nil {
-		var ret string
+		var ret AdShoppingPreviewCreativeType
 		return ret
 	}
 
@@ -101,7 +103,7 @@ func (o *AdPreviewShopping) GetCreativeType() string {
 
 // GetCreativeTypeOk returns a tuple with the CreativeType field value
 // and a boolean to check if the value has been set.
-func (o *AdPreviewShopping) GetCreativeTypeOk() (*string, bool) {
+func (o *AdPreviewShopping) GetCreativeTypeOk() (*AdShoppingPreviewCreativeType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -109,7 +111,7 @@ func (o *AdPreviewShopping) GetCreativeTypeOk() (*string, bool) {
 }
 
 // SetCreativeType sets field value
-func (o *AdPreviewShopping) SetCreativeType(v string) {
+func (o *AdPreviewShopping) SetCreativeType(v AdShoppingPreviewCreativeType) {
 	o.CreativeType = v
 }
 
@@ -316,9 +318,9 @@ func (o *AdPreviewShopping) SetItemId(v string) {
 }
 
 // GetPreferredMediaType returns the PreferredMediaType field value if set, zero value otherwise.
-func (o *AdPreviewShopping) GetPreferredMediaType() string {
+func (o *AdPreviewShopping) GetPreferredMediaType() BasePreferredMediaType {
 	if o == nil || IsNil(o.PreferredMediaType) {
-		var ret string
+		var ret BasePreferredMediaType
 		return ret
 	}
 	return *o.PreferredMediaType
@@ -326,7 +328,7 @@ func (o *AdPreviewShopping) GetPreferredMediaType() string {
 
 // GetPreferredMediaTypeOk returns a tuple with the PreferredMediaType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdPreviewShopping) GetPreferredMediaTypeOk() (*string, bool) {
+func (o *AdPreviewShopping) GetPreferredMediaTypeOk() (*BasePreferredMediaType, bool) {
 	if o == nil || IsNil(o.PreferredMediaType) {
 		return nil, false
 	}
@@ -342,9 +344,41 @@ func (o *AdPreviewShopping) HasPreferredMediaType() bool {
 	return false
 }
 
-// SetPreferredMediaType gets a reference to the given string and assigns it to the PreferredMediaType field.
-func (o *AdPreviewShopping) SetPreferredMediaType(v string) {
+// SetPreferredMediaType gets a reference to the given BasePreferredMediaType and assigns it to the PreferredMediaType field.
+func (o *AdPreviewShopping) SetPreferredMediaType(v BasePreferredMediaType) {
 	o.PreferredMediaType = &v
+}
+
+// GetShowPromotion returns the ShowPromotion field value if set, zero value otherwise.
+func (o *AdPreviewShopping) GetShowPromotion() bool {
+	if o == nil || IsNil(o.ShowPromotion) {
+		var ret bool
+		return ret
+	}
+	return *o.ShowPromotion
+}
+
+// GetShowPromotionOk returns a tuple with the ShowPromotion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdPreviewShopping) GetShowPromotionOk() (*bool, bool) {
+	if o == nil || IsNil(o.ShowPromotion) {
+		return nil, false
+	}
+	return o.ShowPromotion, true
+}
+
+// HasShowPromotion returns a boolean if a field has been set.
+func (o *AdPreviewShopping) HasShowPromotion() bool {
+	if o != nil && !IsNil(o.ShowPromotion) {
+		return true
+	}
+
+	return false
+}
+
+// SetShowPromotion gets a reference to the given bool and assigns it to the ShowPromotion field.
+func (o *AdPreviewShopping) SetShowPromotion(v bool) {
+	o.ShowPromotion = &v
 }
 
 // GetVideoTag returns the VideoTag field value if set, zero value otherwise.
@@ -411,6 +445,9 @@ func (o AdPreviewShopping) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PreferredMediaType) {
 		toSerialize["preferred_media_type"] = o.PreferredMediaType
+	}
+	if !IsNil(o.ShowPromotion) {
+		toSerialize["show_promotion"] = o.ShowPromotion
 	}
 	if !IsNil(o.VideoTag) {
 		toSerialize["video_tag"] = o.VideoTag

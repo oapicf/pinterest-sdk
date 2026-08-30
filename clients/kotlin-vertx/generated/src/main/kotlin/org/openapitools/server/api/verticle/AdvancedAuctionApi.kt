@@ -4,7 +4,7 @@ import org.openapitools.server.api.model.AdvancedAuctionItems
 import org.openapitools.server.api.model.AdvancedAuctionItemsGetRequest
 import org.openapitools.server.api.model.AdvancedAuctionItemsSubmitRequest
 import org.openapitools.server.api.model.AdvancedAuctionProcessedItems
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray

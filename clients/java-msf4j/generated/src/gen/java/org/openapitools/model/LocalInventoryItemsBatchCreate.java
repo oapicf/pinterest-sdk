@@ -1,0 +1,81 @@
+package org.openapitools.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.openapitools.model.LocalInventoryOperation;
+
+/**
+ * Resource create operation model.
+ */
+@ApiModel(description = "Resource create operation model.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class LocalInventoryItemsBatchCreate   {
+  @JsonProperty("operations")
+  private List<@Valid LocalInventoryOperation> operations = new ArrayList<>();
+
+  public LocalInventoryItemsBatchCreate operations(List<@Valid LocalInventoryOperation> operations) {
+    this.operations = operations;
+    return this;
+  }
+
+  public LocalInventoryItemsBatchCreate addOperationsItem(LocalInventoryOperation operationsItem) {
+    this.operations.add(operationsItem);
+    return this;
+  }
+
+   /**
+   * Array of inventory operations. Up to 1000 items per request.
+   * @return operations
+  **/
+  @ApiModelProperty(required = true, value = "Array of inventory operations. Up to 1000 items per request.")
+  public List<@Valid LocalInventoryOperation> getOperations() {
+    return operations;
+  }
+
+  public void setOperations(List<@Valid LocalInventoryOperation> operations) {
+    this.operations = operations;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    LocalInventoryItemsBatchCreate localInventoryItemsBatchCreate = (LocalInventoryItemsBatchCreate) o;
+    return Objects.equals(this.operations, localInventoryItemsBatchCreate.operations);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(operations);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class LocalInventoryItemsBatchCreate {\n");
+    
+    sb.append("    operations: ").append(toIndentedString(operations)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

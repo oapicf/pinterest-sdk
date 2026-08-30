@@ -128,7 +128,7 @@ CatalogsHotelProductGroupUpdateRequest::getCatalogType()
 }
 
 void
-CatalogsHotelProductGroupUpdateRequest::setCatalogType(std::string  catalog_type)
+CatalogsHotelProductGroupUpdateRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -140,7 +140,7 @@ CatalogsHotelProductGroupUpdateRequest::getDescription()
 }
 
 void
-CatalogsHotelProductGroupUpdateRequest::setDescription(std::string  description)
+CatalogsHotelProductGroupUpdateRequest::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -152,7 +152,7 @@ CatalogsHotelProductGroupUpdateRequest::getFilters()
 }
 
 void
-CatalogsHotelProductGroupUpdateRequest::setFilters(CatalogsHotelProductGroupFilters  filters)
+CatalogsHotelProductGroupUpdateRequest::setFilters(CatalogsHotelProductGroupFilters filters)
 {
 	this->filters = filters;
 }
@@ -164,7 +164,7 @@ CatalogsHotelProductGroupUpdateRequest::getName()
 }
 
 void
-CatalogsHotelProductGroupUpdateRequest::setName(std::string  name)
+CatalogsHotelProductGroupUpdateRequest::setName(std::string name)
 {
 	this->name = name;
 }

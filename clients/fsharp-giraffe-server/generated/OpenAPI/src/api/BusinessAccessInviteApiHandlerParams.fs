@@ -1,16 +1,17 @@
 namespace OpenAPI
 
 open OpenAPI.Model.AuthRespondInvitesBody
-open OpenAPI.Model.CancelInvitesBody
+open OpenAPI.Model.CancelInvitesRequest
+open OpenAPI.Model.CancelInvitesResponse
 open OpenAPI.Model.CreateAssetAccessRequestBody
 open OpenAPI.Model.CreateAssetAccessRequestResponse
 open OpenAPI.Model.CreateAssetInvitesRequest
 open OpenAPI.Model.CreateInvitesResultsResponseArray
 open OpenAPI.Model.CreateMembershipOrPartnershipInvitesBody
-open OpenAPI.Model.DeleteInvitesResultsResponseArray
-open OpenAPI.Model.Error
 open OpenAPI.Model.GetInvites200Response
+open OpenAPI.Model.InviteFilterStatus
 open OpenAPI.Model.InviteType
+open OpenAPI.Model.PinterestLibError
 open OpenAPI.Model.RespondToInvitesResponseArray
 open OpenAPI.Model.UpdateInvitesResultsResponseArray
 open System.Collections.Generic
@@ -36,11 +37,41 @@ module BusinessAccessInviteApiHandlerParams =
       
     }
 
-    type AssetAccessRequestsCreateDefaultStatusCodeResponse = {
-      content:Error;
+    type AssetAccessRequestsCreateStatusCode201Response = {
+      content:CreateAssetAccessRequestResponse;
       
     }
-    type AssetAccessRequestsCreateResult = AssetAccessRequestsCreateStatusCode200 of AssetAccessRequestsCreateStatusCode200Response|AssetAccessRequestsCreateDefaultStatusCode of AssetAccessRequestsCreateDefaultStatusCodeResponse
+
+    type AssetAccessRequestsCreateStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AssetAccessRequestsCreateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AssetAccessRequestsCreateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AssetAccessRequestsCreateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AssetAccessRequestsCreateStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AssetAccessRequestsCreateDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type AssetAccessRequestsCreateResult = AssetAccessRequestsCreateStatusCode200 of AssetAccessRequestsCreateStatusCode200Response|AssetAccessRequestsCreateStatusCode201 of AssetAccessRequestsCreateStatusCode201Response|AssetAccessRequestsCreateStatusCode400 of AssetAccessRequestsCreateStatusCode400Response|AssetAccessRequestsCreateStatusCode401 of AssetAccessRequestsCreateStatusCode401Response|AssetAccessRequestsCreateStatusCode403 of AssetAccessRequestsCreateStatusCode403Response|AssetAccessRequestsCreateStatusCode404 of AssetAccessRequestsCreateStatusCode404Response|AssetAccessRequestsCreateStatusCode429 of AssetAccessRequestsCreateStatusCode429Response|AssetAccessRequestsCreateDefaultStatusCode of AssetAccessRequestsCreateDefaultStatusCodeResponse
 
     type AssetAccessRequestsCreateArgs = {
       pathParams:AssetAccessRequestsCreatePathParams;
@@ -55,17 +86,17 @@ module BusinessAccessInviteApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type CancelInvitesOrRequestsBodyParams = CancelInvitesBody
+    type CancelInvitesOrRequestsBodyParams = CancelInvitesRequest
     //#endregion
 
 
     type CancelInvitesOrRequestsStatusCode200Response = {
-      content:DeleteInvitesResultsResponseArray;
+      content:CancelInvitesResponse;
       
     }
 
     type CancelInvitesOrRequestsDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
     type CancelInvitesOrRequestsResult = CancelInvitesOrRequestsStatusCode200 of CancelInvitesOrRequestsStatusCode200Response|CancelInvitesOrRequestsDefaultStatusCode of CancelInvitesOrRequestsDefaultStatusCodeResponse
@@ -92,11 +123,41 @@ module BusinessAccessInviteApiHandlerParams =
       
     }
 
-    type CreateAssetInvitesDefaultStatusCodeResponse = {
-      content:Error;
+    type CreateAssetInvitesStatusCode201Response = {
+      content:UpdateInvitesResultsResponseArray;
       
     }
-    type CreateAssetInvitesResult = CreateAssetInvitesStatusCode200 of CreateAssetInvitesStatusCode200Response|CreateAssetInvitesDefaultStatusCode of CreateAssetInvitesDefaultStatusCodeResponse
+
+    type CreateAssetInvitesStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CreateAssetInvitesStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CreateAssetInvitesStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CreateAssetInvitesStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CreateAssetInvitesStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CreateAssetInvitesDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type CreateAssetInvitesResult = CreateAssetInvitesStatusCode200 of CreateAssetInvitesStatusCode200Response|CreateAssetInvitesStatusCode201 of CreateAssetInvitesStatusCode201Response|CreateAssetInvitesStatusCode400 of CreateAssetInvitesStatusCode400Response|CreateAssetInvitesStatusCode401 of CreateAssetInvitesStatusCode401Response|CreateAssetInvitesStatusCode403 of CreateAssetInvitesStatusCode403Response|CreateAssetInvitesStatusCode404 of CreateAssetInvitesStatusCode404Response|CreateAssetInvitesStatusCode429 of CreateAssetInvitesStatusCode429Response|CreateAssetInvitesDefaultStatusCode of CreateAssetInvitesDefaultStatusCodeResponse
 
     type CreateAssetInvitesArgs = {
       pathParams:CreateAssetInvitesPathParams;
@@ -120,11 +181,41 @@ module BusinessAccessInviteApiHandlerParams =
       
     }
 
-    type CreateMembershipOrPartnershipInvitesDefaultStatusCodeResponse = {
-      content:Error;
+    type CreateMembershipOrPartnershipInvitesStatusCode201Response = {
+      content:CreateInvitesResultsResponseArray;
       
     }
-    type CreateMembershipOrPartnershipInvitesResult = CreateMembershipOrPartnershipInvitesStatusCode200 of CreateMembershipOrPartnershipInvitesStatusCode200Response|CreateMembershipOrPartnershipInvitesDefaultStatusCode of CreateMembershipOrPartnershipInvitesDefaultStatusCodeResponse
+
+    type CreateMembershipOrPartnershipInvitesStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CreateMembershipOrPartnershipInvitesStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CreateMembershipOrPartnershipInvitesStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CreateMembershipOrPartnershipInvitesStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CreateMembershipOrPartnershipInvitesStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CreateMembershipOrPartnershipInvitesDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type CreateMembershipOrPartnershipInvitesResult = CreateMembershipOrPartnershipInvitesStatusCode200 of CreateMembershipOrPartnershipInvitesStatusCode200Response|CreateMembershipOrPartnershipInvitesStatusCode201 of CreateMembershipOrPartnershipInvitesStatusCode201Response|CreateMembershipOrPartnershipInvitesStatusCode400 of CreateMembershipOrPartnershipInvitesStatusCode400Response|CreateMembershipOrPartnershipInvitesStatusCode401 of CreateMembershipOrPartnershipInvitesStatusCode401Response|CreateMembershipOrPartnershipInvitesStatusCode403 of CreateMembershipOrPartnershipInvitesStatusCode403Response|CreateMembershipOrPartnershipInvitesStatusCode404 of CreateMembershipOrPartnershipInvitesStatusCode404Response|CreateMembershipOrPartnershipInvitesStatusCode429 of CreateMembershipOrPartnershipInvitesStatusCode429Response|CreateMembershipOrPartnershipInvitesDefaultStatusCode of CreateMembershipOrPartnershipInvitesDefaultStatusCodeResponse
 
     type CreateMembershipOrPartnershipInvitesArgs = {
       pathParams:CreateMembershipOrPartnershipInvitesPathParams;
@@ -143,7 +234,7 @@ module BusinessAccessInviteApiHandlerParams =
       isMember : bool option;
 
 
-      inviteStatus : string[] option;
+      inviteStatus : InviteFilterStatus[] option;
 
 
       inviteType : InviteType option;
@@ -163,11 +254,36 @@ module BusinessAccessInviteApiHandlerParams =
       
     }
 
-    type GetInvitesDefaultStatusCodeResponse = {
-      content:Error;
+    type GetInvitesStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type GetInvitesResult = GetInvitesStatusCode200 of GetInvitesStatusCode200Response|GetInvitesDefaultStatusCode of GetInvitesDefaultStatusCodeResponse
+
+    type GetInvitesStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetInvitesStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetInvitesStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetInvitesStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetInvitesDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type GetInvitesResult = GetInvitesStatusCode200 of GetInvitesStatusCode200Response|GetInvitesStatusCode400 of GetInvitesStatusCode400Response|GetInvitesStatusCode401 of GetInvitesStatusCode401Response|GetInvitesStatusCode403 of GetInvitesStatusCode403Response|GetInvitesStatusCode404 of GetInvitesStatusCode404Response|GetInvitesStatusCode429 of GetInvitesStatusCode429Response|GetInvitesDefaultStatusCode of GetInvitesDefaultStatusCodeResponse
 
     type GetInvitesArgs = {
       pathParams:GetInvitesPathParams;
@@ -185,11 +301,36 @@ module BusinessAccessInviteApiHandlerParams =
       
     }
 
-    type RespondBusinessAccessInvitesDefaultStatusCodeResponse = {
-      content:Error;
+    type RespondBusinessAccessInvitesStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type RespondBusinessAccessInvitesResult = RespondBusinessAccessInvitesStatusCode200 of RespondBusinessAccessInvitesStatusCode200Response|RespondBusinessAccessInvitesDefaultStatusCode of RespondBusinessAccessInvitesDefaultStatusCodeResponse
+
+    type RespondBusinessAccessInvitesStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type RespondBusinessAccessInvitesStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type RespondBusinessAccessInvitesStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type RespondBusinessAccessInvitesStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type RespondBusinessAccessInvitesDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type RespondBusinessAccessInvitesResult = RespondBusinessAccessInvitesStatusCode200 of RespondBusinessAccessInvitesStatusCode200Response|RespondBusinessAccessInvitesStatusCode400 of RespondBusinessAccessInvitesStatusCode400Response|RespondBusinessAccessInvitesStatusCode401 of RespondBusinessAccessInvitesStatusCode401Response|RespondBusinessAccessInvitesStatusCode403 of RespondBusinessAccessInvitesStatusCode403Response|RespondBusinessAccessInvitesStatusCode404 of RespondBusinessAccessInvitesStatusCode404Response|RespondBusinessAccessInvitesStatusCode429 of RespondBusinessAccessInvitesStatusCode429Response|RespondBusinessAccessInvitesDefaultStatusCode of RespondBusinessAccessInvitesDefaultStatusCodeResponse
 
     type RespondBusinessAccessInvitesArgs = {
       bodyParams:RespondBusinessAccessInvitesBodyParams

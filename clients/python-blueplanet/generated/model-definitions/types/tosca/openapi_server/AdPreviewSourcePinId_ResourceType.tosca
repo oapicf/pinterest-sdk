@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdPreviewSourcePinId"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdPreviewSourcePinId"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdPinPreviewCreativeType = openapi_server.resourceTypes.AdPinPreviewCreativeType
+}
+resourceTypes {
+
+  AdPreviewSourcePinId {
+    title = AdPreviewSourcePinId
+    description = AdPreviewSourcePinId
+    derivedFrom = Root
+    properties {
+        creative_type {
+          type = AdPinPreviewCreativeType
+          description = "Creative type of the ad preview."
+          optional = false
+        }
+        pin_id {
+          type =  string
+          description = "Pin ID."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdPreviewSourcePinId {
+    title = AdPreviewSourcePinId
+    description = AdPreviewSourcePinId
+    implements = openapi_server.resourceTypes.AdPreviewSourcePinId
+
+  }
+}

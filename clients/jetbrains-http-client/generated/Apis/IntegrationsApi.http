@@ -1,0 +1,77 @@
+## IntegrationsApi
+
+### Get integration metadata
+## Get integration metadata
+GET https://api.pinterest.com/v5/integrations/{{id}}
+Accept: application/json
+
+### Get integration metadata list
+## Get integration metadata list
+GET https://api.pinterest.com/v5/integrations?bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Delete commerce integration
+## Delete commerce integration
+DELETE https://api.pinterest.com/v5/integrations/commerce/{{external_business_id}}
+Accept: application/json
+
+### Get commerce integration
+## Get commerce integration
+GET https://api.pinterest.com/v5/integrations/commerce/{{external_business_id}}
+Accept: application/json
+
+### Update commerce integration
+## Update commerce integration
+PATCH https://api.pinterest.com/v5/integrations/commerce/{{external_business_id}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "additional_id_1": "<string>",
+ "connected_advertiser_id": "<string>",
+ "connected_lba_id": "<string>",
+ "connected_merchant_id": "<string>",
+ "connected_tag_id": "<string>",
+ "partner_access_token": "<string>",
+ "partner_access_token_expiry": "<number>",
+ "partner_metadata": "<string>",
+ "partner_primary_email": "<string>",
+ "partner_refresh_token": "<string>",
+ "partner_refresh_token_expiry": "<number>",
+ "scopes": "<string>"
+}
+
+
+### Create commerce integration
+## Create commerce integration
+POST https://api.pinterest.com/v5/integrations/commerce
+Content-Type: application/json
+Accept: application/json
+
+{
+ "additional_id_1": "<string>",
+ "connected_advertiser_id": "<string>",
+ "connected_lba_id": "<string>",
+ "connected_merchant_id": "<string>",
+ "connected_tag_id": "<string>",
+ "external_business_id": "<string>",
+ "partner_access_token": "<string>",
+ "partner_access_token_expiry": "<number>",
+ "partner_metadata": "<string>",
+ "partner_primary_email": "<string>",
+ "partner_refresh_token": "<string>",
+ "partner_refresh_token_expiry": "<number>",
+ "scopes": "<string>"
+}
+
+
+### Receives batched logs from integration applications.
+## Receives batched logs from integration applications.
+POST https://api.pinterest.com/v5/integrations/logs
+Content-Type: application/json
+Accept: application/json
+
+{
+ "logs": "<string>"
+}
+

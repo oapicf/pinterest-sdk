@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "LeadFormResponse.h"
+#include "LeadForm.h"
 #include <list>
 
 namespace Tiny {
@@ -53,19 +53,19 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setBookmark(std::string  bookmark);
+	void setBookmark(std::string bookmark);
 	/*! \brief Get 
 	 */
-	std::list<LeadFormResponse> getItems();
+	std::list<LeadForm> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <LeadFormResponse> items);
+	void setItems(std::list<LeadForm> items);
 
 
     private:
     std::string bookmark{};
-    std::list<LeadFormResponse> items;
+    std::list<LeadForm> items;
 };
 }
 

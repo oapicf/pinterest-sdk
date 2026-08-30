@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **country** | [**Country**](Country.md) |  | [default to undefined]
 **items** | [**Array&lt;ItemDeleteBatchRecord&gt;**](ItemDeleteBatchRecord.md) | Array with catalogs items | [default to undefined]
 **language** | **string** | We recommend using the CatalogsLocale values. | [default to undefined]
-**operation** | [**BatchOperation**](BatchOperation.md) |  | [default to undefined]
+**operation** | **string** |  | [default to undefined]
 
 ## Example
 

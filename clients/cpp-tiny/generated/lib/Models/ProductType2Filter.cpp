@@ -65,7 +65,7 @@ ProductType2Filter::getPRODUCTTYPE2()
 }
 
 void
-ProductType2Filter::setPRODUCTTYPE2(CatalogsProductGroupMultipleStringListCriteria  pRODUCT_TYPE_2)
+ProductType2Filter::setPRODUCTTYPE2(CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_2)
 {
 	this->pRODUCT_TYPE_2 = pRODUCT_TYPE_2;
 }

@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.CatalogsHotelReportParametersReport;
+import apimodels.CatalogsRetailReportParametersReport;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -10,7 +10,7 @@ import javax.validation.Valid;
 /**
  * Parameters for retail report
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsRetailReportParameters   {
   /**
@@ -51,7 +51,7 @@ public class CatalogsRetailReportParameters   {
   @NotNull
 @Valid
 
-  private CatalogsHotelReportParametersReport report;
+  private CatalogsRetailReportParametersReport report;
 
   public CatalogsRetailReportParameters catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -70,7 +70,7 @@ public class CatalogsRetailReportParameters   {
     this.catalogType = catalogType;
   }
 
-  public CatalogsRetailReportParameters report(CatalogsHotelReportParametersReport report) {
+  public CatalogsRetailReportParameters report(CatalogsRetailReportParametersReport report) {
     this.report = report;
     return this;
   }
@@ -79,11 +79,11 @@ public class CatalogsRetailReportParameters   {
    * Get report
    * @return report
   **/
-  public CatalogsHotelReportParametersReport getReport() {
+  public CatalogsRetailReportParametersReport getReport() {
     return report;
   }
 
-  public void setReport(CatalogsHotelReportParametersReport report) {
+  public void setReport(CatalogsRetailReportParametersReport report) {
     this.report = report;
   }
 
@@ -123,10 +123,7 @@ public class CatalogsRetailReportParameters   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

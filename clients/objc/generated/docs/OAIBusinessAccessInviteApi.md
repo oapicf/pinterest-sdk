@@ -31,7 +31,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
 OAICreateAssetAccessRequestBody* createAssetAccessRequestBody = [[OAICreateAssetAccessRequestBody alloc] init]; // 
 
 OAIBusinessAccessInviteApi*apiInstance = [[OAIBusinessAccessInviteApi alloc] init];
@@ -74,8 +74,8 @@ Name | Type | Description  | Notes
 # **cancelInvitesOrRequests**
 ```objc
 -(NSURLSessionTask*) cancelInvitesOrRequestsWithBusinessId: (NSString*) businessId
-    cancelInvitesBody: (OAICancelInvitesBody*) cancelInvitesBody
-        completionHandler: (void (^)(OAIDeleteInvitesResultsResponseArray* output, NSError* error)) handler;
+    cancelInvitesRequest: (OAICancelInvitesRequest*) cancelInvitesRequest
+        completionHandler: (void (^)(OAICancelInvitesResponse* output, NSError* error)) handler;
 ```
 
 Cancel invites/requests
@@ -90,15 +90,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-OAICancelInvitesBody* cancelInvitesBody = [[OAICancelInvitesBody alloc] init]; // A list with invite ids
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+OAICancelInvitesRequest* cancelInvitesRequest = [[OAICancelInvitesRequest alloc] init]; // 
 
 OAIBusinessAccessInviteApi*apiInstance = [[OAIBusinessAccessInviteApi alloc] init];
 
 // Cancel invites/requests
 [apiInstance cancelInvitesOrRequestsWithBusinessId:businessId
-              cancelInvitesBody:cancelInvitesBody
-          completionHandler: ^(OAIDeleteInvitesResultsResponseArray* output, NSError* error) {
+              cancelInvitesRequest:cancelInvitesRequest
+          completionHandler: ^(OAICancelInvitesResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -113,11 +113,11 @@ OAIBusinessAccessInviteApi*apiInstance = [[OAIBusinessAccessInviteApi alloc] ini
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
- **cancelInvitesBody** | [**OAICancelInvitesBody***](OAICancelInvitesBody.md)| A list with invite ids | 
+ **cancelInvitesRequest** | [**OAICancelInvitesRequest***](OAICancelInvitesRequest.md)|  | 
 
 ### Return type
 
-[**OAIDeleteInvitesResultsResponseArray***](OAIDeleteInvitesResultsResponseArray.md)
+[**OAICancelInvitesResponse***](OAICancelInvitesResponse.md)
 
 ### Authorization
 
@@ -149,8 +149,8 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-OAICreateAssetInvitesRequest* createAssetInvitesRequest = [[OAICreateAssetInvitesRequest alloc] init]; // A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+OAICreateAssetInvitesRequest* createAssetInvitesRequest = [[OAICreateAssetInvitesRequest alloc] init]; // 
 
 OAIBusinessAccessInviteApi*apiInstance = [[OAIBusinessAccessInviteApi alloc] init];
 
@@ -172,7 +172,7 @@ OAIBusinessAccessInviteApi*apiInstance = [[OAIBusinessAccessInviteApi alloc] ini
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
- **createAssetInvitesRequest** | [**OAICreateAssetInvitesRequest***](OAICreateAssetInvitesRequest.md)| A list of invites/requests together with the asset permissions to be assigned to the invite/request.  | 
+ **createAssetInvitesRequest** | [**OAICreateAssetInvitesRequest***](OAICreateAssetInvitesRequest.md)|  | 
 
 ### Return type
 
@@ -208,8 +208,8 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-OAICreateMembershipOrPartnershipInvitesBody* createMembershipOrPartnershipInvitesBody = [[OAICreateMembershipOrPartnershipInvitesBody alloc] init]; // An object with the properties: invite_type, partners, members, business_role
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+OAICreateMembershipOrPartnershipInvitesBody* createMembershipOrPartnershipInvitesBody = [[OAICreateMembershipOrPartnershipInvitesBody alloc] init]; // 
 
 OAIBusinessAccessInviteApi*apiInstance = [[OAIBusinessAccessInviteApi alloc] init];
 
@@ -231,7 +231,7 @@ OAIBusinessAccessInviteApi*apiInstance = [[OAIBusinessAccessInviteApi alloc] ini
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
- **createMembershipOrPartnershipInvitesBody** | [**OAICreateMembershipOrPartnershipInvitesBody***](OAICreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | 
+ **createMembershipOrPartnershipInvitesBody** | [**OAICreateMembershipOrPartnershipInvitesBody***](OAICreateMembershipOrPartnershipInvitesBody.md)|  | 
 
 ### Return type
 
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) getInvitesWithBusinessId: (NSString*) businessId
     isMember: (NSNumber*) isMember
-    inviteStatus: (NSArray<NSString*>*) inviteStatus
+    inviteStatus: (NSArray<OAIInviteFilterStatus>*) inviteStatus
     inviteType: (OAIInviteType) inviteType
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
@@ -271,12 +271,12 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
 NSNumber* isMember = @(YES); // A boolean field to indicate whether the invite is to create a partnership or a membership. (optional) (default to @(YES))
-NSArray<NSString*>* inviteStatus = @[@"inviteStatus_example"]; // A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. (optional)
+NSArray<OAIInviteFilterStatus>* inviteStatus = @[[[OAIInviteFilterStatus alloc] init]]; // A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. (optional)
 OAIInviteType inviteType = [[OAIInviteType alloc] init]; // Invite type to filter invites by. Only invites of the specified type will be returned. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBusinessAccessInviteApi*apiInstance = [[OAIBusinessAccessInviteApi alloc] init];
 
@@ -303,10 +303,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
  **isMember** | **NSNumber***| A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional] [default to @(YES)]
- **inviteStatus** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] 
+ **inviteStatus** | [**NSArray&lt;OAIInviteFilterStatus&gt;***](OAIInviteFilterStatus*.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] 
  **inviteType** | [**OAIInviteType**](.md)| Invite type to filter invites by. Only invites of the specified type will be returned. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 

@@ -1,9 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.BoardsList200Response;
+import org.openapitools.vertxweb.server.model.PinsList200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 import org.openapitools.vertxweb.server.model.SearchPartnerPins200Response;
-import org.openapitools.vertxweb.server.model.SearchUserBoardsGet200Response;
-import org.openapitools.vertxweb.server.model.SearchUserPinsList200Response;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -21,11 +21,11 @@ public class SearchApiImpl implements SearchApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<SearchUserBoardsGet200Response>> searchUserBoardsGet(String adAccountId, String bookmark, Integer pageSize, String query) {
+    public Future<ApiResponse<BoardsList200Response>> searchUserBoardsGet(String adAccountId, String query, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<SearchUserPinsList200Response>> searchUserPinsList(String query, String adAccountId, String bookmark) {
+    public Future<ApiResponse<PinsList200Response>> searchUserPinsList(String query, String adAccountId, String bookmark) {
         return Future.failedFuture(new HttpException(501));
     }
 

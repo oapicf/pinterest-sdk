@@ -102,8 +102,9 @@ class _$CatalogsReportFeedIngestionFilterSerializer implements PrimitiveSerializ
         case r'processing_result_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.processingResultId = valueDes;
           break;
         case r'report_type':

@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]LeadFormResponse**](LeadFormResponse.md) |  | 
+**Items** | [**[]LeadForm**](LeadForm.md) |  | 
 
 ## Methods
 
 ### NewLeadFormsList200Response
 
-`func NewLeadFormsList200Response(items []LeadFormResponse, ) *LeadFormsList200Response`
+`func NewLeadFormsList200Response(items []LeadForm, ) *LeadFormsList200Response`
 
 NewLeadFormsList200Response instantiates a new LeadFormsList200Response object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ HasBookmark returns a boolean if a field has been set.
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
 ### GetItems
 
-`func (o *LeadFormsList200Response) GetItems() []LeadFormResponse`
+`func (o *LeadFormsList200Response) GetItems() []LeadForm`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *LeadFormsList200Response) GetItemsOk() (*[]LeadFormResponse, bool)`
+`func (o *LeadFormsList200Response) GetItemsOk() (*[]LeadForm, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *LeadFormsList200Response) SetItems(v []LeadFormResponse)`
+`func (o *LeadFormsList200Response) SetItems(v []LeadForm)`
 
 SetItems sets Items field to given value.
 

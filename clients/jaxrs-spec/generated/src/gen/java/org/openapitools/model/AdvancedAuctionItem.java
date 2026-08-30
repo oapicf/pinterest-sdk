@@ -19,26 +19,45 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AdvancedAuctionItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdvancedAuctionItem   {
+  private AdvancedAuctionBidOptions bidOptions;
   private Country country;
   private String itemId;
   private Language language;
-  private AdvancedAuctionBidOptions bidOptions;
 
   public AdvancedAuctionItem() {
   }
 
   @JsonCreator
   public AdvancedAuctionItem(
+    @JsonProperty(required = true, value = "bid_options") AdvancedAuctionBidOptions bidOptions,
     @JsonProperty(required = true, value = "country") Country country,
     @JsonProperty(required = true, value = "item_id") String itemId,
-    @JsonProperty(required = true, value = "language") Language language,
-    @JsonProperty(required = true, value = "bid_options") AdvancedAuctionBidOptions bidOptions
+    @JsonProperty(required = true, value = "language") Language language
   ) {
+    this.bidOptions = bidOptions;
     this.country = country;
     this.itemId = itemId;
     this.language = language;
+  }
+
+  /**
+   **/
+  public AdvancedAuctionItem bidOptions(AdvancedAuctionBidOptions bidOptions) {
+    this.bidOptions = bidOptions;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "bid_options")
+  @NotNull @Valid public AdvancedAuctionBidOptions getBidOptions() {
+    return bidOptions;
+  }
+
+  @JsonProperty(required = true, value = "bid_options")
+  public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
     this.bidOptions = bidOptions;
   }
 
@@ -100,25 +119,6 @@ public class AdvancedAuctionItem   {
     this.language = language;
   }
 
-  /**
-   **/
-  public AdvancedAuctionItem bidOptions(AdvancedAuctionBidOptions bidOptions) {
-    this.bidOptions = bidOptions;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "bid_options")
-  @NotNull @Valid public AdvancedAuctionBidOptions getBidOptions() {
-    return bidOptions;
-  }
-
-  @JsonProperty(required = true, value = "bid_options")
-  public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
-    this.bidOptions = bidOptions;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -129,15 +129,15 @@ public class AdvancedAuctionItem   {
       return false;
     }
     AdvancedAuctionItem advancedAuctionItem = (AdvancedAuctionItem) o;
-    return Objects.equals(this.country, advancedAuctionItem.country) &&
+    return Objects.equals(this.bidOptions, advancedAuctionItem.bidOptions) &&
+        Objects.equals(this.country, advancedAuctionItem.country) &&
         Objects.equals(this.itemId, advancedAuctionItem.itemId) &&
-        Objects.equals(this.language, advancedAuctionItem.language) &&
-        Objects.equals(this.bidOptions, advancedAuctionItem.bidOptions);
+        Objects.equals(this.language, advancedAuctionItem.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, itemId, language, bidOptions);
+    return Objects.hash(bidOptions, country, itemId, language);
   }
 
   @Override
@@ -145,10 +145,10 @@ public class AdvancedAuctionItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItem {\n");
     
+    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
-    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -158,12 +158,8 @@ public class AdvancedAuctionItem   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

@@ -14,10 +14,10 @@ static ssio_order_line_t *ssio_order_line_create_internal(
     char *billing_contact_email,
     char *billing_contact_firstname,
     char *billing_contact_lastname,
-    double budget_amount,
+    double *budget_amount,
     pinterest_rest_api_currency__e currency_info,
     char *end_date,
-    double estimated_monthly_spend,
+    double *estimated_monthly_spend,
     char *last_modified_date_time,
     char *media_contact_email,
     char *media_contact_firstname,
@@ -33,6 +33,8 @@ static ssio_order_line_t *ssio_order_line_create_internal(
     if (!ssio_order_line_local_var) {
         return NULL;
     }
+    memset(ssio_order_line_local_var, 0, sizeof(ssio_order_line_t));
+    ssio_order_line_local_var->_library_owned = 1;
     ssio_order_line_local_var->accepted_terms_id = accepted_terms_id;
     ssio_order_line_local_var->accepted_terms_time = accepted_terms_time;
     ssio_order_line_local_var->ads_manager_order_line_id = ads_manager_order_line_id;
@@ -55,8 +57,6 @@ static ssio_order_line_t *ssio_order_line_create_internal(
     ssio_order_line_local_var->po_number = po_number;
     ssio_order_line_local_var->salesforce_order_line_id = salesforce_order_line_id;
     ssio_order_line_local_var->start_date = start_date;
-
-    ssio_order_line_local_var->_library_owned = 1;
     return ssio_order_line_local_var;
 }
 
@@ -69,10 +69,10 @@ __attribute__((deprecated)) ssio_order_line_t *ssio_order_line_create(
     char *billing_contact_email,
     char *billing_contact_firstname,
     char *billing_contact_lastname,
-    double budget_amount,
+    double *budget_amount,
     pinterest_rest_api_currency__e currency_info,
     char *end_date,
-    double estimated_monthly_spend,
+    double *estimated_monthly_spend,
     char *last_modified_date_time,
     char *media_contact_email,
     char *media_contact_firstname,
@@ -84,7 +84,17 @@ __attribute__((deprecated)) ssio_order_line_t *ssio_order_line_create(
     char *salesforce_order_line_id,
     char *start_date
     ) {
-    return ssio_order_line_create_internal (
+    double *budget_amount_copy = NULL;
+    if (budget_amount) {
+        budget_amount_copy = malloc(sizeof(double));
+        if (budget_amount_copy) *budget_amount_copy = *budget_amount;
+    }
+    double *estimated_monthly_spend_copy = NULL;
+    if (estimated_monthly_spend) {
+        estimated_monthly_spend_copy = malloc(sizeof(double));
+        if (estimated_monthly_spend_copy) *estimated_monthly_spend_copy = *estimated_monthly_spend;
+    }
+    ssio_order_line_t *result = ssio_order_line_create_internal (
         accepted_terms_id,
         accepted_terms_time,
         ads_manager_order_line_id,
@@ -93,10 +103,10 @@ __attribute__((deprecated)) ssio_order_line_t *ssio_order_line_create(
         billing_contact_email,
         billing_contact_firstname,
         billing_contact_lastname,
-        budget_amount,
+        budget_amount_copy,
         currency_info,
         end_date,
-        estimated_monthly_spend,
+        estimated_monthly_spend_copy,
         last_modified_date_time,
         media_contact_email,
         media_contact_firstname,
@@ -108,6 +118,11 @@ __attribute__((deprecated)) ssio_order_line_t *ssio_order_line_create(
         salesforce_order_line_id,
         start_date
         );
+    if (!result) {
+        free(budget_amount_copy);
+        free(estimated_monthly_spend_copy);
+    }
+    return result;
 }
 
 void ssio_order_line_free(ssio_order_line_t *ssio_order_line) {
@@ -151,9 +166,17 @@ void ssio_order_line_free(ssio_order_line_t *ssio_order_line) {
         free(ssio_order_line->billing_contact_lastname);
         ssio_order_line->billing_contact_lastname = NULL;
     }
+    if (ssio_order_line->budget_amount) {
+        free(ssio_order_line->budget_amount);
+        ssio_order_line->budget_amount = NULL;
+    }
     if (ssio_order_line->end_date) {
         free(ssio_order_line->end_date);
         ssio_order_line->end_date = NULL;
+    }
+    if (ssio_order_line->estimated_monthly_spend) {
+        free(ssio_order_line->estimated_monthly_spend);
+        ssio_order_line->estimated_monthly_spend = NULL;
     }
     if (ssio_order_line->last_modified_date_time) {
         free(ssio_order_line->last_modified_date_time);
@@ -267,7 +290,7 @@ cJSON *ssio_order_line_convertToJSON(ssio_order_line_t *ssio_order_line) {
 
     // ssio_order_line->budget_amount
     if(ssio_order_line->budget_amount) {
-    if(cJSON_AddNumberToObject(item, "budget_amount", ssio_order_line->budget_amount) == NULL) {
+    if(cJSON_AddNumberToObject(item, "budget_amount", *ssio_order_line->budget_amount) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -296,7 +319,7 @@ cJSON *ssio_order_line_convertToJSON(ssio_order_line_t *ssio_order_line) {
 
     // ssio_order_line->estimated_monthly_spend
     if(ssio_order_line->estimated_monthly_spend) {
-    if(cJSON_AddNumberToObject(item, "estimated_monthly_spend", ssio_order_line->estimated_monthly_spend) == NULL) {
+    if(cJSON_AddNumberToObject(item, "estimated_monthly_spend", *ssio_order_line->estimated_monthly_spend) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -393,8 +416,52 @@ ssio_order_line_t *ssio_order_line_parseFromJSON(cJSON *ssio_order_lineJSON){
 
     ssio_order_line_t *ssio_order_line_local_var = NULL;
 
+    char *accepted_terms_id_local_str = NULL;
+
+    char *accepted_terms_time_local_str = NULL;
+
+    char *ads_manager_order_line_id_local_str = NULL;
+
+    char *agency_link_local_str = NULL;
+
+    char *bill_to_company_name_local_str = NULL;
+
+    char *billing_contact_email_local_str = NULL;
+
+    char *billing_contact_firstname_local_str = NULL;
+
+    char *billing_contact_lastname_local_str = NULL;
+
+    // define the local variable for ssio_order_line->budget_amount
+    double *budget_amount_local_var = NULL;
+
     // define the local variable for ssio_order_line->currency_info
     pinterest_rest_api_currency__e currency_info_local_nonprim = 0;
+
+    char *end_date_local_str = NULL;
+
+    // define the local variable for ssio_order_line->estimated_monthly_spend
+    double *estimated_monthly_spend_local_var = NULL;
+
+    char *last_modified_date_time_local_str = NULL;
+
+    char *media_contact_email_local_str = NULL;
+
+    char *media_contact_firstname_local_str = NULL;
+
+    char *media_contact_lastname_local_str = NULL;
+
+    char *order_name_local_str = NULL;
+
+    char *pin_order_id_local_str = NULL;
+
+    char *pmp_name_local_str = NULL;
+
+    char *po_number_local_str = NULL;
+
+    char *salesforce_order_line_id_local_str = NULL;
+
+    char *start_date_local_str = NULL;
 
     // ssio_order_line->accepted_terms_id
     cJSON *accepted_terms_id = cJSON_GetObjectItemCaseSensitive(ssio_order_lineJSON, "accepted_terms_id");
@@ -502,6 +569,12 @@ ssio_order_line_t *ssio_order_line_parseFromJSON(cJSON *ssio_order_lineJSON){
     {
     goto end; //Numeric
     }
+    budget_amount_local_var = malloc(sizeof(double));
+    if(!budget_amount_local_var)
+    {
+        goto end;
+    }
+    *budget_amount_local_var = budget_amount->valuedouble;
     }
 
     // ssio_order_line->currency_info
@@ -535,6 +608,12 @@ ssio_order_line_t *ssio_order_line_parseFromJSON(cJSON *ssio_order_lineJSON){
     {
     goto end; //Numeric
     }
+    estimated_monthly_spend_local_var = malloc(sizeof(double));
+    if(!estimated_monthly_spend_local_var)
+    {
+        goto end;
+    }
+    *estimated_monthly_spend_local_var = estimated_monthly_spend->valuedouble;
     }
 
     // ssio_order_line->last_modified_date_time
@@ -658,35 +737,143 @@ ssio_order_line_t *ssio_order_line_parseFromJSON(cJSON *ssio_order_lineJSON){
     }
 
 
+    if (accepted_terms_id && !cJSON_IsNull(accepted_terms_id)) accepted_terms_id_local_str = strdup(accepted_terms_id->valuestring);
+    if (accepted_terms_time && !cJSON_IsNull(accepted_terms_time)) accepted_terms_time_local_str = strdup(accepted_terms_time->valuestring);
+    if (ads_manager_order_line_id && !cJSON_IsNull(ads_manager_order_line_id)) ads_manager_order_line_id_local_str = strdup(ads_manager_order_line_id->valuestring);
+    if (agency_link && !cJSON_IsNull(agency_link)) agency_link_local_str = strdup(agency_link->valuestring);
+    if (bill_to_company_name && !cJSON_IsNull(bill_to_company_name)) bill_to_company_name_local_str = strdup(bill_to_company_name->valuestring);
+    if (billing_contact_email && !cJSON_IsNull(billing_contact_email)) billing_contact_email_local_str = strdup(billing_contact_email->valuestring);
+    if (billing_contact_firstname && !cJSON_IsNull(billing_contact_firstname)) billing_contact_firstname_local_str = strdup(billing_contact_firstname->valuestring);
+    if (billing_contact_lastname && !cJSON_IsNull(billing_contact_lastname)) billing_contact_lastname_local_str = strdup(billing_contact_lastname->valuestring);
+    if (end_date) end_date_local_str = strdup(end_date->valuestring);
+    if (last_modified_date_time && !cJSON_IsNull(last_modified_date_time)) last_modified_date_time_local_str = strdup(last_modified_date_time->valuestring);
+    if (media_contact_email && !cJSON_IsNull(media_contact_email)) media_contact_email_local_str = strdup(media_contact_email->valuestring);
+    if (media_contact_firstname && !cJSON_IsNull(media_contact_firstname)) media_contact_firstname_local_str = strdup(media_contact_firstname->valuestring);
+    if (media_contact_lastname && !cJSON_IsNull(media_contact_lastname)) media_contact_lastname_local_str = strdup(media_contact_lastname->valuestring);
+    if (order_name && !cJSON_IsNull(order_name)) order_name_local_str = strdup(order_name->valuestring);
+    if (pin_order_id && !cJSON_IsNull(pin_order_id)) pin_order_id_local_str = strdup(pin_order_id->valuestring);
+    if (pmp_name && !cJSON_IsNull(pmp_name)) pmp_name_local_str = strdup(pmp_name->valuestring);
+    if (po_number && !cJSON_IsNull(po_number)) po_number_local_str = strdup(po_number->valuestring);
+    if (salesforce_order_line_id && !cJSON_IsNull(salesforce_order_line_id)) salesforce_order_line_id_local_str = strdup(salesforce_order_line_id->valuestring);
+    if (start_date) start_date_local_str = strdup(start_date->valuestring);
+
     ssio_order_line_local_var = ssio_order_line_create_internal (
-        accepted_terms_id && !cJSON_IsNull(accepted_terms_id) ? strdup(accepted_terms_id->valuestring) : NULL,
-        accepted_terms_time && !cJSON_IsNull(accepted_terms_time) ? strdup(accepted_terms_time->valuestring) : NULL,
-        ads_manager_order_line_id && !cJSON_IsNull(ads_manager_order_line_id) ? strdup(ads_manager_order_line_id->valuestring) : NULL,
-        agency_link && !cJSON_IsNull(agency_link) ? strdup(agency_link->valuestring) : NULL,
-        bill_to_company_name && !cJSON_IsNull(bill_to_company_name) ? strdup(bill_to_company_name->valuestring) : NULL,
-        billing_contact_email && !cJSON_IsNull(billing_contact_email) ? strdup(billing_contact_email->valuestring) : NULL,
-        billing_contact_firstname && !cJSON_IsNull(billing_contact_firstname) ? strdup(billing_contact_firstname->valuestring) : NULL,
-        billing_contact_lastname && !cJSON_IsNull(billing_contact_lastname) ? strdup(billing_contact_lastname->valuestring) : NULL,
-        budget_amount ? budget_amount->valuedouble : 0,
+        accepted_terms_id_local_str,
+        accepted_terms_time_local_str,
+        ads_manager_order_line_id_local_str,
+        agency_link_local_str,
+        bill_to_company_name_local_str,
+        billing_contact_email_local_str,
+        billing_contact_firstname_local_str,
+        billing_contact_lastname_local_str,
+        budget_amount_local_var,
         currency_info ? currency_info_local_nonprim : 0,
-        end_date ? strdup(end_date->valuestring) : NULL,
-        estimated_monthly_spend ? estimated_monthly_spend->valuedouble : 0,
-        last_modified_date_time && !cJSON_IsNull(last_modified_date_time) ? strdup(last_modified_date_time->valuestring) : NULL,
-        media_contact_email && !cJSON_IsNull(media_contact_email) ? strdup(media_contact_email->valuestring) : NULL,
-        media_contact_firstname && !cJSON_IsNull(media_contact_firstname) ? strdup(media_contact_firstname->valuestring) : NULL,
-        media_contact_lastname && !cJSON_IsNull(media_contact_lastname) ? strdup(media_contact_lastname->valuestring) : NULL,
-        order_name && !cJSON_IsNull(order_name) ? strdup(order_name->valuestring) : NULL,
-        pin_order_id && !cJSON_IsNull(pin_order_id) ? strdup(pin_order_id->valuestring) : NULL,
-        pmp_name && !cJSON_IsNull(pmp_name) ? strdup(pmp_name->valuestring) : NULL,
-        po_number && !cJSON_IsNull(po_number) ? strdup(po_number->valuestring) : NULL,
-        salesforce_order_line_id && !cJSON_IsNull(salesforce_order_line_id) ? strdup(salesforce_order_line_id->valuestring) : NULL,
-        start_date ? strdup(start_date->valuestring) : NULL
+        end_date_local_str,
+        estimated_monthly_spend_local_var,
+        last_modified_date_time_local_str,
+        media_contact_email_local_str,
+        media_contact_firstname_local_str,
+        media_contact_lastname_local_str,
+        order_name_local_str,
+        pin_order_id_local_str,
+        pmp_name_local_str,
+        po_number_local_str,
+        salesforce_order_line_id_local_str,
+        start_date_local_str
         );
+
+    if (!ssio_order_line_local_var) {
+        goto end;
+    }
 
     return ssio_order_line_local_var;
 end:
+    if (accepted_terms_id_local_str) {
+        free(accepted_terms_id_local_str);
+        accepted_terms_id_local_str = NULL;
+    }
+    if (accepted_terms_time_local_str) {
+        free(accepted_terms_time_local_str);
+        accepted_terms_time_local_str = NULL;
+    }
+    if (ads_manager_order_line_id_local_str) {
+        free(ads_manager_order_line_id_local_str);
+        ads_manager_order_line_id_local_str = NULL;
+    }
+    if (agency_link_local_str) {
+        free(agency_link_local_str);
+        agency_link_local_str = NULL;
+    }
+    if (bill_to_company_name_local_str) {
+        free(bill_to_company_name_local_str);
+        bill_to_company_name_local_str = NULL;
+    }
+    if (billing_contact_email_local_str) {
+        free(billing_contact_email_local_str);
+        billing_contact_email_local_str = NULL;
+    }
+    if (billing_contact_firstname_local_str) {
+        free(billing_contact_firstname_local_str);
+        billing_contact_firstname_local_str = NULL;
+    }
+    if (billing_contact_lastname_local_str) {
+        free(billing_contact_lastname_local_str);
+        billing_contact_lastname_local_str = NULL;
+    }
+    if (budget_amount_local_var) {
+        free(budget_amount_local_var);
+        budget_amount_local_var = NULL;
+    }
     if (currency_info_local_nonprim) {
         currency_info_local_nonprim = 0;
+    }
+    if (end_date_local_str) {
+        free(end_date_local_str);
+        end_date_local_str = NULL;
+    }
+    if (estimated_monthly_spend_local_var) {
+        free(estimated_monthly_spend_local_var);
+        estimated_monthly_spend_local_var = NULL;
+    }
+    if (last_modified_date_time_local_str) {
+        free(last_modified_date_time_local_str);
+        last_modified_date_time_local_str = NULL;
+    }
+    if (media_contact_email_local_str) {
+        free(media_contact_email_local_str);
+        media_contact_email_local_str = NULL;
+    }
+    if (media_contact_firstname_local_str) {
+        free(media_contact_firstname_local_str);
+        media_contact_firstname_local_str = NULL;
+    }
+    if (media_contact_lastname_local_str) {
+        free(media_contact_lastname_local_str);
+        media_contact_lastname_local_str = NULL;
+    }
+    if (order_name_local_str) {
+        free(order_name_local_str);
+        order_name_local_str = NULL;
+    }
+    if (pin_order_id_local_str) {
+        free(pin_order_id_local_str);
+        pin_order_id_local_str = NULL;
+    }
+    if (pmp_name_local_str) {
+        free(pmp_name_local_str);
+        pmp_name_local_str = NULL;
+    }
+    if (po_number_local_str) {
+        free(po_number_local_str);
+        po_number_local_str = NULL;
+    }
+    if (salesforce_order_line_id_local_str) {
+        free(salesforce_order_line_id_local_str);
+        salesforce_order_line_id_local_str = NULL;
+    }
+    if (start_date_local_str) {
+        free(start_date_local_str);
+        start_date_local_str = NULL;
     }
     return NULL;
 

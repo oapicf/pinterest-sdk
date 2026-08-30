@@ -48,7 +48,7 @@ TitleKeywordsFilter::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&tITLE_KEYWORDS, node, "CatalogsProductGroupMultipleStringCriteria", "");
+			jsonToValue(&tITLE_KEYWORDS, node, "CatalogsProductGroupMultipleStringCriteria", "CatalogsProductGroupMultipleStringCriteria");
 		} else {
 			
 			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&tITLE_KEYWORDS);

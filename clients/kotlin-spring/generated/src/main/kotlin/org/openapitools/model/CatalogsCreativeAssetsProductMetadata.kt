@@ -24,10 +24,12 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsCreativeAssetsProductMetadata(
 
     @Schema(example = "123abc", required = true, description = "The user-created unique ID that represents the creative assets item.")
+    @param:JsonProperty("creative_assets_id")
     @get:JsonProperty("creative_assets_id", required = true) val creativeAssetsId: kotlin.String,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("visibility")
     @get:JsonProperty("visibility", required = true) val visibility: CreativeAssetsVisibilityType
 ) {
 

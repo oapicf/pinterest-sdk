@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -52,18 +53,6 @@ func NewCatalogProductGroupsAPIController(s CatalogProductGroupsAPIServicer, opt
 // Routes returns all the api routes for the CatalogProductGroupsAPIController
 func (c *CatalogProductGroupsAPIController) Routes() Routes {
 	return Routes{
-		"CatalogsProductGroupsCreateMany": Route{
-			"CatalogsProductGroupsCreateMany",
-			strings.ToUpper("Post"),
-			"/v5/catalogs/product_groups/multiple",
-			c.CatalogsProductGroupsCreateMany,
-		},
-		"CatalogsProductGroupsDeleteMany": Route{
-			"CatalogsProductGroupsDeleteMany",
-			strings.ToUpper("Delete"),
-			"/v5/catalogs/product_groups/multiple",
-			c.CatalogsProductGroupsDeleteMany,
-		},
 		"CatalogsProductGroupsList": Route{
 			"CatalogsProductGroupsList",
 			strings.ToUpper("Get"),
@@ -75,6 +64,18 @@ func (c *CatalogProductGroupsAPIController) Routes() Routes {
 			strings.ToUpper("Post"),
 			"/v5/catalogs/product_groups",
 			c.CatalogsProductGroupsCreate,
+		},
+		"CatalogsProductGroupsCreateMany": Route{
+			"CatalogsProductGroupsCreateMany",
+			strings.ToUpper("Post"),
+			"/v5/catalogs/product_groups/multiple",
+			c.CatalogsProductGroupsCreateMany,
+		},
+		"CatalogsProductGroupsDeleteMany": Route{
+			"CatalogsProductGroupsDeleteMany",
+			strings.ToUpper("Delete"),
+			"/v5/catalogs/product_groups/multiple",
+			c.CatalogsProductGroupsDeleteMany,
 		},
 		"CatalogsProductGroupsGet": Route{
 			"CatalogsProductGroupsGet",
@@ -119,18 +120,6 @@ func (c *CatalogProductGroupsAPIController) Routes() Routes {
 func (c *CatalogProductGroupsAPIController) OrderedRoutes() []Route {
 	return []Route{
 		Route{
-			"CatalogsProductGroupsCreateMany",
-			strings.ToUpper("Post"),
-			"/v5/catalogs/product_groups/multiple",
-			c.CatalogsProductGroupsCreateMany,
-		},
-		Route{
-			"CatalogsProductGroupsDeleteMany",
-			strings.ToUpper("Delete"),
-			"/v5/catalogs/product_groups/multiple",
-			c.CatalogsProductGroupsDeleteMany,
-		},
-		Route{
 			"CatalogsProductGroupsList",
 			strings.ToUpper("Get"),
 			"/v5/catalogs/product_groups",
@@ -141,6 +130,18 @@ func (c *CatalogProductGroupsAPIController) OrderedRoutes() []Route {
 			strings.ToUpper("Post"),
 			"/v5/catalogs/product_groups",
 			c.CatalogsProductGroupsCreate,
+		},
+		Route{
+			"CatalogsProductGroupsCreateMany",
+			strings.ToUpper("Post"),
+			"/v5/catalogs/product_groups/multiple",
+			c.CatalogsProductGroupsCreateMany,
+		},
+		Route{
+			"CatalogsProductGroupsDeleteMany",
+			strings.ToUpper("Delete"),
+			"/v5/catalogs/product_groups/multiple",
+			c.CatalogsProductGroupsDeleteMany,
 		},
 		Route{
 			"CatalogsProductGroupsGet",
@@ -183,6 +184,121 @@ func (c *CatalogProductGroupsAPIController) OrderedRoutes() []Route {
 
 
 
+// CatalogsProductGroupsList - List product groups
+func (c *CatalogProductGroupsAPIController) CatalogsProductGroupsList(w http.ResponseWriter, r *http.Request) {
+	query, err := parseQuery(r.URL.RawQuery)
+	if err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	idParam, err := parseNumericArrayParameter[int32](
+		query.Get("id"), ",", false,
+		WithParse[int32](parseInt32),
+	)
+	if err != nil {
+		c.errorHandler(w, r, &ParsingError{Param: "id", Err: err}, nil)
+		return
+	}
+	var feedIdParam string
+	if query.Has("feed_id") {
+		param := query.Get("feed_id")
+
+		feedIdParam = param
+	} else {
+	}
+	var catalogIdParam string
+	if query.Has("catalog_id") {
+		param := query.Get("catalog_id")
+
+		catalogIdParam = param
+	} else {
+	}
+	var adAccountIdParam string
+	if query.Has("ad_account_id") {
+		param := query.Get("ad_account_id")
+
+		adAccountIdParam = param
+	} else {
+	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
+	var pageSizeParam int32
+	if query.Has("page_size") {
+		param, err := parseNumericParameter[int32](
+			query.Get("page_size"),
+			WithParse[int32](parseInt32),
+			WithMinimum[int32](1),
+			WithMaximum[int32](250),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
+			return
+		}
+
+		pageSizeParam = param
+	} else {
+		var param int32 = 25
+		pageSizeParam = param
+	}
+	result, err := c.service.CatalogsProductGroupsList(r.Context(), idParam, feedIdParam, catalogIdParam, adAccountIdParam, bookmarkParam, pageSizeParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// CatalogsProductGroupsCreate - Create product group
+func (c *CatalogProductGroupsAPIController) CatalogsProductGroupsCreate(w http.ResponseWriter, r *http.Request) {
+	query, err := parseQuery(r.URL.RawQuery)
+	if err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	var catalogsProductGroupsCreateRequestSchemaParam CatalogsProductGroupsCreateRequestSchema
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&catalogsProductGroupsCreateRequestSchemaParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertCatalogsProductGroupsCreateRequestSchemaRequired(catalogsProductGroupsCreateRequestSchemaParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertCatalogsProductGroupsCreateRequestSchemaConstraints(catalogsProductGroupsCreateRequestSchemaParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	var adAccountIdParam string
+	if query.Has("ad_account_id") {
+		param := query.Get("ad_account_id")
+
+		adAccountIdParam = param
+	} else {
+	}
+	result, err := c.service.CatalogsProductGroupsCreate(r.Context(), catalogsProductGroupsCreateRequestSchemaParam, adAccountIdParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
 // CatalogsProductGroupsCreateMany - Create product groups
 func (c *CatalogProductGroupsAPIController) CatalogsProductGroupsCreateMany(w http.ResponseWriter, r *http.Request) {
 	query, err := parseQuery(r.URL.RawQuery)
@@ -190,15 +306,20 @@ func (c *CatalogProductGroupsAPIController) CatalogsProductGroupsCreateMany(w ht
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	var multipleProductGroupsInnerParam []MultipleProductGroupsInner
+	var catalogsProductGroupsCreateManyRequestItemsParam []CatalogsProductGroupsCreateManyRequestItems
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&multipleProductGroupsInnerParam); err != nil {
+	if err := d.Decode(&catalogsProductGroupsCreateManyRequestItemsParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	for _, el := range multipleProductGroupsInnerParam {
-		if err := AssertMultipleProductGroupsInnerRequired(el); err != nil {
+	for _, el := range catalogsProductGroupsCreateManyRequestItemsParam {
+		if err := AssertCatalogsProductGroupsCreateManyRequestItemsRequired(el); err != nil {
 			c.errorHandler(w, r, err, nil)
 			return
 		}
@@ -210,7 +331,7 @@ func (c *CatalogProductGroupsAPIController) CatalogsProductGroupsCreateMany(w ht
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.CatalogsProductGroupsCreateMany(r.Context(), multipleProductGroupsInnerParam, adAccountIdParam)
+	result, err := c.service.CatalogsProductGroupsCreateMany(r.Context(), catalogsProductGroupsCreateManyRequestItemsParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -243,116 +364,6 @@ func (c *CatalogProductGroupsAPIController) CatalogsProductGroupsDeleteMany(w ht
 	} else {
 	}
 	result, err := c.service.CatalogsProductGroupsDeleteMany(r.Context(), idParam, adAccountIdParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// CatalogsProductGroupsList - List product groups
-func (c *CatalogProductGroupsAPIController) CatalogsProductGroupsList(w http.ResponseWriter, r *http.Request) {
-	query, err := parseQuery(r.URL.RawQuery)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	idParam, err := parseNumericArrayParameter[int32](
-		query.Get("id"), ",", false,
-		WithParse[int32](parseInt32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "id", Err: err}, nil)
-		return
-	}
-	var feedIdParam string
-	if query.Has("feed_id") {
-		param := query.Get("feed_id")
-
-		feedIdParam = param
-	} else {
-	}
-	var catalogIdParam string
-	if query.Has("catalog_id") {
-		param := query.Get("catalog_id")
-
-		catalogIdParam = param
-	} else {
-	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	var pageSizeParam int32
-	if query.Has("page_size") {
-		param, err := parseNumericParameter[int32](
-			query.Get("page_size"),
-			WithParse[int32](parseInt32),
-			WithMinimum[int32](1),
-			WithMaximum[int32](250),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
-			return
-		}
-
-		pageSizeParam = param
-	} else {
-		var param int32 = 25
-		pageSizeParam = param
-	}
-	var adAccountIdParam string
-	if query.Has("ad_account_id") {
-		param := query.Get("ad_account_id")
-
-		adAccountIdParam = param
-	} else {
-	}
-	result, err := c.service.CatalogsProductGroupsList(r.Context(), idParam, feedIdParam, catalogIdParam, bookmarkParam, pageSizeParam, adAccountIdParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// CatalogsProductGroupsCreate - Create product group
-func (c *CatalogProductGroupsAPIController) CatalogsProductGroupsCreate(w http.ResponseWriter, r *http.Request) {
-	query, err := parseQuery(r.URL.RawQuery)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	var multipleProductGroupsInnerParam MultipleProductGroupsInner
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&multipleProductGroupsInnerParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertMultipleProductGroupsInnerRequired(multipleProductGroupsInnerParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertMultipleProductGroupsInnerConstraints(multipleProductGroupsInnerParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	var adAccountIdParam string
-	if query.Has("ad_account_id") {
-		param := query.Get("ad_account_id")
-
-		adAccountIdParam = param
-	} else {
-	}
-	result, err := c.service.CatalogsProductGroupsCreate(r.Context(), multipleProductGroupsInnerParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -435,18 +446,23 @@ func (c *CatalogProductGroupsAPIController) CatalogsProductGroupsUpdate(w http.R
 		c.errorHandler(w, r, &RequiredError{"product_group_id"}, nil)
 		return
 	}
-	var catalogsProductGroupsUpdateRequestParam CatalogsProductGroupsUpdateRequest
+	var catalogsProductGroupsUpdateRequestSchemaParam CatalogsProductGroupsUpdateRequestSchema
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&catalogsProductGroupsUpdateRequestParam); err != nil {
+	if err := d.Decode(&catalogsProductGroupsUpdateRequestSchemaParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertCatalogsProductGroupsUpdateRequestRequired(catalogsProductGroupsUpdateRequestParam); err != nil {
+	if err := AssertCatalogsProductGroupsUpdateRequestSchemaRequired(catalogsProductGroupsUpdateRequestSchemaParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertCatalogsProductGroupsUpdateRequestConstraints(catalogsProductGroupsUpdateRequestParam); err != nil {
+	if err := AssertCatalogsProductGroupsUpdateRequestSchemaConstraints(catalogsProductGroupsUpdateRequestSchemaParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
@@ -457,7 +473,7 @@ func (c *CatalogProductGroupsAPIController) CatalogsProductGroupsUpdate(w http.R
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.CatalogsProductGroupsUpdate(r.Context(), productGroupIdParam, catalogsProductGroupsUpdateRequestParam, adAccountIdParam)
+	result, err := c.service.CatalogsProductGroupsUpdate(r.Context(), productGroupIdParam, catalogsProductGroupsUpdateRequestSchemaParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -510,6 +526,29 @@ func (c *CatalogProductGroupsAPIController) CatalogsProductGroupPinsList(w http.
 		c.errorHandler(w, r, &RequiredError{"product_group_id"}, nil)
 		return
 	}
+	var adAccountIdParam string
+	if query.Has("ad_account_id") {
+		param := query.Get("ad_account_id")
+
+		adAccountIdParam = param
+	} else {
+	}
+	var pinMetricsParam bool
+	if query.Has("pin_metrics") {
+		param, err := parseBoolParameter(
+			query.Get("pin_metrics"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "pin_metrics", Err: err}, nil)
+			return
+		}
+
+		pinMetricsParam = param
+	} else {
+		var param bool = false
+		pinMetricsParam = param
+	}
 	var bookmarkParam string
 	if query.Has("bookmark") {
 		param := query.Get("bookmark")
@@ -535,30 +574,7 @@ func (c *CatalogProductGroupsAPIController) CatalogsProductGroupPinsList(w http.
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var adAccountIdParam string
-	if query.Has("ad_account_id") {
-		param := query.Get("ad_account_id")
-
-		adAccountIdParam = param
-	} else {
-	}
-	var pinMetricsParam bool
-	if query.Has("pin_metrics") {
-		param, err := parseBoolParameter(
-			query.Get("pin_metrics"),
-			WithParse[bool](parseBool),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "pin_metrics", Err: err}, nil)
-			return
-		}
-
-		pinMetricsParam = param
-	} else {
-		var param bool = false
-		pinMetricsParam = param
-	}
-	result, err := c.service.CatalogsProductGroupPinsList(r.Context(), productGroupIdParam, bookmarkParam, pageSizeParam, adAccountIdParam, pinMetricsParam)
+	result, err := c.service.CatalogsProductGroupPinsList(r.Context(), productGroupIdParam, adAccountIdParam, pinMetricsParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -579,6 +595,11 @@ func (c *CatalogProductGroupsAPIController) ProductsByProductGroupFilterList(w h
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&catalogsListProductsByFilterRequestParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}

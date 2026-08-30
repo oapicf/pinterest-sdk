@@ -1,7 +1,8 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Host};
+use axum_extra::extract::CookieJar;
 use bytes::Bytes;
+use headers::Host;
 use http::Method;
 use serde::{Deserialize, Serialize};
 
@@ -11,17 +12,17 @@ use crate::{models, types::*};
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum NotificationSlashPostResponse {
-    /// Successfully received notification
-    Status200_SuccessfullyReceivedNotification
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::NotificationResponse)
     ,
-    /// Invalid request parameter.
-    Status400_InvalidRequestParameter
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 

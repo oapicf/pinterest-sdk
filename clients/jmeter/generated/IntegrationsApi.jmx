@@ -445,9 +445,9 @@
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="integrationRequestPatch" elementType="HTTPArgument">
+              <elementProp name="integrationMetadataUpdate" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">${__javaScript("${integrationRequestPatch}".replace(/'/g\, '"'),)}</stringProp>
+                <stringProp name="Argument.value">${__javaScript("${integrationMetadataUpdate}".replace(/'/g\, '"'),)}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -529,9 +529,9 @@
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="integrationRequest" elementType="HTTPArgument">
+              <elementProp name="integrationMetadataCreate" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">${__javaScript("${integrationRequest}".replace(/'/g\, '"'),)}</stringProp>
+                <stringProp name="Argument.value">${__javaScript("${integrationMetadataCreate}".replace(/'/g\, '"'),)}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -613,9 +613,9 @@
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="integrationLogsRequest" elementType="HTTPArgument">
+              <elementProp name="integrationLogsRequestCreate" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">${__javaScript("${integrationLogsRequest}".replace(/'/g\, '"'),)}</stringProp>
+                <stringProp name="Argument.value">${__javaScript("${integrationLogsRequestCreate}".replace(/'/g\, '"'),)}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>

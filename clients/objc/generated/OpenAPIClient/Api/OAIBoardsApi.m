@@ -5,13 +5,14 @@
 #import "OAIBoardCreate.h"
 #import "OAIBoardPrivacyFilter.h"
 #import "OAIBoardSection.h"
+#import "OAIBoardSectionCreate.h"
+#import "OAIBoardSectionUpdateWithRequiredBody.h"
 #import "OAIBoardSectionsList200Response.h"
 #import "OAIBoardWithUpdatePrivacy.h"
 #import "OAIBoardWithUpdatePrivacyUpdate.h"
 #import "OAIBoardsList200Response.h"
 #import "OAIBoardsListPins200Response.h"
 #import "OAICreativeType.h"
-#import "OAIError.h"
 #import "OAIPinterestLibError.h"
 
 
@@ -65,14 +66,14 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 /// Create a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 ///  @param boardId Unique identifier of a board. 
 ///
-///  @param boardSection Create a board section. 
+///  @param boardSectionCreate  
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
 ///  @returns OAIBoardSection*
 ///
 -(NSURLSessionTask*) boardSectionsCreateWithBoardId: (NSString*) boardId
-    boardSection: (OAIBoardSection*) boardSection
+    boardSectionCreate: (OAIBoardSectionCreate*) boardSectionCreate
     adAccountId: (NSString*) adAccountId
     completionHandler: (void (^)(OAIBoardSection* output, NSError* error)) handler {
     // verify the required parameter 'boardId' is set
@@ -86,11 +87,11 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'boardSection' is set
-    if (boardSection == nil) {
-        NSParameterAssert(boardSection);
+    // verify the required parameter 'boardSectionCreate' is set
+    if (boardSectionCreate == nil) {
+        NSParameterAssert(boardSectionCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"boardSection"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"boardSectionCreate"] };
             NSError* error = [NSError errorWithDomain:kOAIBoardsApiErrorDomain code:kOAIBoardsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -128,7 +129,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = boardSection;
+    bodyParam = boardSectionCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -158,19 +159,19 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
-///  @returns void
+///  @returns OAIBoardSection*
 ///
 -(NSURLSessionTask*) boardSectionsDeleteWithBoardId: (NSString*) boardId
     sectionId: (NSString*) sectionId
     adAccountId: (NSString*) adAccountId
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(OAIBoardSection* output, NSError* error)) handler {
     // verify the required parameter 'boardId' is set
     if (boardId == nil) {
         NSParameterAssert(boardId);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"boardId"] };
             NSError* error = [NSError errorWithDomain:kOAIBoardsApiErrorDomain code:kOAIBoardsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -181,7 +182,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"sectionId"] };
             NSError* error = [NSError errorWithDomain:kOAIBoardsApiErrorDomain code:kOAIBoardsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -232,10 +233,10 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"OAIBoardSection*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((OAIBoardSection*)data, error);
                                 }
                             }];
 }
@@ -249,7 +250,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIBoardSectionsList200Response*
 ///
@@ -337,7 +338,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIBoardsListPins200Response*
 ///
@@ -436,7 +437,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 ///
 ///  @param sectionId Unique identifier of a board section. 
 ///
-///  @param boardSection Update a board section. 
+///  @param boardSectionUpdateWithRequiredBody  
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
@@ -444,7 +445,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 ///
 -(NSURLSessionTask*) boardSectionsUpdateWithBoardId: (NSString*) boardId
     sectionId: (NSString*) sectionId
-    boardSection: (OAIBoardSection*) boardSection
+    boardSectionUpdateWithRequiredBody: (OAIBoardSectionUpdateWithRequiredBody*) boardSectionUpdateWithRequiredBody
     adAccountId: (NSString*) adAccountId
     completionHandler: (void (^)(OAIBoardSection* output, NSError* error)) handler {
     // verify the required parameter 'boardId' is set
@@ -469,11 +470,11 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'boardSection' is set
-    if (boardSection == nil) {
-        NSParameterAssert(boardSection);
+    // verify the required parameter 'boardSectionUpdateWithRequiredBody' is set
+    if (boardSectionUpdateWithRequiredBody == nil) {
+        NSParameterAssert(boardSectionUpdateWithRequiredBody);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"boardSection"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"boardSectionUpdateWithRequiredBody"] };
             NSError* error = [NSError errorWithDomain:kOAIBoardsApiErrorDomain code:kOAIBoardsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -514,7 +515,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = boardSection;
+    bodyParam = boardSectionUpdateWithRequiredBody;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"
@@ -614,18 +615,18 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
-///  @returns void
+///  @returns OAIBoard*
 ///
 -(NSURLSessionTask*) boardsDeleteWithBoardId: (NSString*) boardId
     adAccountId: (NSString*) adAccountId
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(OAIBoard* output, NSError* error)) handler {
     // verify the required parameter 'boardId' is set
     if (boardId == nil) {
         NSParameterAssert(boardId);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"boardId"] };
             NSError* error = [NSError errorWithDomain:kOAIBoardsApiErrorDomain code:kOAIBoardsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -673,10 +674,10 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"OAIBoard*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((OAIBoard*)data, error);
                                 }
                             }];
 }
@@ -835,24 +836,24 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 /// Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 ///  @param boardId Unique identifier of a board. 
 ///
-///  @param bookmark Cursor used to fetch the next page of items (optional)
-///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
-///
 ///  @param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
 ///  @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to @(NO))
 ///
+///  @param bookmark Cursor used to fetch the next page of items (optional)
+///
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
+///
 ///  @returns OAIBoardsListPins200Response*
 ///
 -(NSURLSessionTask*) boardsListPinsWithBoardId: (NSString*) boardId
-    bookmark: (NSString*) bookmark
-    pageSize: (NSNumber*) pageSize
     creativeTypes: (NSArray<OAICreativeType>*) creativeTypes
     adAccountId: (NSString*) adAccountId
     pinMetrics: (NSNumber*) pinMetrics
+    bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
     completionHandler: (void (^)(OAIBoardsListPins200Response* output, NSError* error)) handler {
     // verify the required parameter 'boardId' is set
     if (boardId == nil) {
@@ -873,12 +874,6 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    if (bookmark != nil) {
-        queryParams[@"bookmark"] = bookmark;
-    }
-    if (pageSize != nil) {
-        queryParams[@"page_size"] = pageSize;
-    }
     if (creativeTypes != nil) {
         queryParams[@"creative_types"] = [[OAIQueryParamCollection alloc] initWithValuesAndFormat: creativeTypes format: @"multi"];
     }
@@ -887,6 +882,12 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
     }
     if (pinMetrics != nil) {
         queryParams[@"pin_metrics"] = [pinMetrics isEqual:@(YES)] ? @"true" : @"false";
+    }
+    if (bookmark != nil) {
+        queryParams[@"bookmark"] = bookmark;
+    }
+    if (pageSize != nil) {
+        queryParams[@"page_size"] = pageSize;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];

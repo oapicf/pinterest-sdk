@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | **NSString*** | Catalog id pertaining to the retail product group. | 
+**catalogId** | **NSString*** | Catalog ID pertaining to the product group. | 
 **catalogType** | **NSString*** | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | 
 **country** | [**OAICountry***](OAICountry.md) |  | [optional] 
 **_description** | **NSString*** |  | [optional] 

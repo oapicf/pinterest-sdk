@@ -1,10 +1,13 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.OptimizationGoalMetadataConversionTagV3GoalMetadata
-import org.openapitools.model.OptimizationGoalMetadataFrequencyGoalMetadata
-import org.openapitools.model.OptimizationGoalMetadataScrollupGoalMetadata
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
+import org.openapitools.model.ConversionTagV3GoalMetadata
+import org.openapitools.model.FrequencyGoalMetadata
+import org.openapitools.model.ScrollupGoalMetadata
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -25,16 +28,25 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class OptimizationGoalMetadata(
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("conversion_tag_v3_goal_metadata") val conversionTagV3GoalMetadata: OptimizationGoalMetadataConversionTagV3GoalMetadata? = null,
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("conversion_tag_v3_goal_metadata")
+    @get:JsonProperty("conversion_tag_v3_goal_metadata") val conversionTagV3GoalMetadata: ConversionTagV3GoalMetadata? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("frequency_goal_metadata") val frequencyGoalMetadata: OptimizationGoalMetadataFrequencyGoalMetadata? = null,
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("frequency_goal_metadata")
+    @get:JsonProperty("frequency_goal_metadata") val frequencyGoalMetadata: FrequencyGoalMetadata? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("scrollup_goal_metadata") val scrollupGoalMetadata: OptimizationGoalMetadataScrollupGoalMetadata? = null
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("scrollup_goal_metadata")
+    @get:JsonProperty("scrollup_goal_metadata") val scrollupGoalMetadata: ScrollupGoalMetadata? = null
 ) {
 
 }

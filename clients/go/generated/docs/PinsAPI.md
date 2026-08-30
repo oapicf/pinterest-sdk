@@ -40,7 +40,7 @@ func main() {
 	pinIds := []string{"Inner_example"} // []string | List of Pin IDs.
 	startDate := time.Now() // string | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 	endDate := time.Now() // string | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-	metricTypes := []string{"MetricTypes_example"} // []string | Pin metric types to get data for.
+	metricTypes := []openapiclient.MultiPinsAnalyticsMetricTypesItem{openapiclient.MultiPinsAnalyticsMetricTypesItem("IMPRESSION")} // []MultiPinsAnalyticsMetricTypesItem | Pin metric types to get data for.
 	appTypes := "appTypes_example" // string | Apps or devices to get data for, default is all. (optional) (default to "ALL")
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
  **pinIds** | **[]string** | List of Pin IDs. | 
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **metricTypes** | **[]string** | Pin metric types to get data for. | 
+ **metricTypes** | [**[]MultiPinsAnalyticsMetricTypesItem**](MultiPinsAnalyticsMetricTypesItem.md) | Pin metric types to get data for. | 
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [default to &quot;ALL&quot;]
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
@@ -117,7 +117,7 @@ func main() {
 	pinId := "pinId_example" // string | Unique identifier of a Pin.
 	startDate := time.Now() // string | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 	endDate := time.Now() // string | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-	metricTypes := []string{"MetricTypes_example"} // []string | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+	metricTypes := []openapiclient.QuerypinanalyticsmetrictypesItems{openapiclient.QuerypinanalyticsmetrictypesItems("IMPRESSION")} // []QuerypinanalyticsmetrictypesItems | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before `2023-03-20`, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than `NO_SPLIT`.
 	appTypes := "appTypes_example" // string | Apps or devices to get data for, default is all. (optional) (default to "ALL")
 	splitField := "splitField_example" // string | How to split the data into groups. Not including this param means data won't be split. (optional) (default to "NO_SPLIT")
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **metricTypes** | **[]string** | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | 
+ **metricTypes** | [**[]QuerypinanalyticsmetrictypesItems**](QuerypinanalyticsmetrictypesItems.md) | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &#x60;2023-03-20&#x60;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &#x60;NO_SPLIT&#x60;. | 
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [default to &quot;ALL&quot;]
  **splitField** | **string** | How to split the data into groups. Not including this param means data won&#39;t be split. | [default to &quot;NO_SPLIT&quot;]
  **adAccountId** | **string** | Unique identifier of an ad account. | 
@@ -245,7 +245,7 @@ Name | Type | Description  | Notes
 
 ## PinsDelete
 
-> PinsDelete(ctx, pinId).AdAccountId(adAccountId).Execute()
+> Pin PinsDelete(ctx, pinId).AdAccountId(adAccountId).Execute()
 
 Delete Pin
 
@@ -269,11 +269,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.PinsAPI.PinsDelete(context.Background(), pinId).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.PinsAPI.PinsDelete(context.Background(), pinId).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PinsAPI.PinsDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `PinsDelete`: Pin
+	fmt.Fprintf(os.Stdout, "Response from `PinsAPI.PinsDelete`: %v\n", resp)
 }
 ```
 
@@ -297,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Pin**](Pin.md)
 
 ### Authorization
 
@@ -389,7 +391,7 @@ Name | Type | Description  | Notes
 
 ## PinsList
 
-> PinsList200Response PinsList(ctx).PinFilter(pinFilter).PinMetrics(pinMetrics).IncludeProtectedPins(includeProtectedPins).PinType(pinType).CreativeTypes(creativeTypes).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
+> PinsList200Response PinsList(ctx).PinFilter(pinFilter).PinMetrics(pinMetrics).IncludeProtectedPins(includeProtectedPins).PinType(pinType).CreativeTypes(creativeTypes).AdAccountId(adAccountId).Domain(domain).Domains(domains).IncludeProductTagObj(includeProductTagObj).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List Pins
 
@@ -408,18 +410,21 @@ import (
 )
 
 func main() {
-	pinFilter := "pinFilter_example" // string | The filter to apply to the pins (optional)
+	pinFilter := openapiclient.PinFilter("exclude_native") // PinFilter | The filter to apply to the pins (optional)
 	pinMetrics := true // bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
 	includeProtectedPins := true // bool | Whether to include protected pins in the results (optional) (default to false)
-	pinType := "pinType_example" // string | The type of pins to return, currently only enabled for private pins (optional)
+	pinType := openapiclient.PinType("PRIVATE") // PinType | The type of pins to return, currently only enabled for private pins (optional)
 	creativeTypes := []openapiclient.CreativeType{openapiclient.CreativeType("REGULAR")} // []CreativeType | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
+	domain := "domain_example" // string | Only return pins with links that match the exact domain. Domain should not include 'www.' prefix. For example, 'pinterest.com' is a valid domain, but 'www.pinterest.com' is not (will not match any pins). (optional)
+	domains := []string{"Inner_example"} // []string | Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. `?domains=instagram.com,jcpenney.com`). (optional)
+	includeProductTagObj := true // bool | Include product tag objects in the response with their associated links. (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
 	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PinsAPI.PinsList(context.Background()).PinFilter(pinFilter).PinMetrics(pinMetrics).IncludeProtectedPins(includeProtectedPins).PinType(pinType).CreativeTypes(creativeTypes).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
+	resp, r, err := apiClient.PinsAPI.PinsList(context.Background()).PinFilter(pinFilter).PinMetrics(pinMetrics).IncludeProtectedPins(includeProtectedPins).PinType(pinType).CreativeTypes(creativeTypes).AdAccountId(adAccountId).Domain(domain).Domains(domains).IncludeProductTagObj(includeProductTagObj).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PinsAPI.PinsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -440,12 +445,15 @@ Other parameters are passed through a pointer to a apiPinsListRequest struct via
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pinFilter** | **string** | The filter to apply to the pins | 
+ **pinFilter** | [**PinFilter**](PinFilter.md) | The filter to apply to the pins | 
  **pinMetrics** | **bool** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [default to false]
  **includeProtectedPins** | **bool** | Whether to include protected pins in the results | [default to false]
- **pinType** | **string** | The type of pins to return, currently only enabled for private pins | 
+ **pinType** | [**PinType**](PinType.md) | The type of pins to return, currently only enabled for private pins | 
  **creativeTypes** | [**[]CreativeType**](CreativeType.md) | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
+ **domain** | **string** | Only return pins with links that match the exact domain. Domain should not include &#39;www.&#39; prefix. For example, &#39;pinterest.com&#39; is a valid domain, but &#39;www.pinterest.com&#39; is not (will not match any pins). | 
+ **domains** | **[]string** | Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. &#x60;?domains&#x3D;instagram.com,jcpenney.com&#x60;). | 
+ **includeProductTagObj** | **bool** | Include product tag objects in the response with their associated links. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
  **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
@@ -469,7 +477,7 @@ Name | Type | Description  | Notes
 
 ## PinsSave
 
-> Pin PinsSave(ctx, pinId).PinsSaveRequest(pinsSaveRequest).AdAccountId(adAccountId).Execute()
+> Pin PinsSave(ctx, pinId).PinsSaveRequestCreate(pinsSaveRequestCreate).AdAccountId(adAccountId).Execute()
 
 Save Pin
 
@@ -489,12 +497,12 @@ import (
 
 func main() {
 	pinId := "pinId_example" // string | Unique identifier of a Pin.
-	pinsSaveRequest := *openapiclient.NewPinsSaveRequest() // PinsSaveRequest | Request object used to save an existing pin
+	pinsSaveRequestCreate := *openapiclient.NewPinsSaveRequestCreate() // PinsSaveRequestCreate | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PinsAPI.PinsSave(context.Background(), pinId).PinsSaveRequest(pinsSaveRequest).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.PinsAPI.PinsSave(context.Background(), pinId).PinsSaveRequestCreate(pinsSaveRequestCreate).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PinsAPI.PinsSave``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -520,7 +528,7 @@ Other parameters are passed through a pointer to a apiPinsSaveRequest struct via
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **pinsSaveRequest** | [**PinsSaveRequest**](PinsSaveRequest.md) | Request object used to save an existing pin | 
+ **pinsSaveRequestCreate** | [**PinsSaveRequestCreate**](PinsSaveRequestCreate.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type

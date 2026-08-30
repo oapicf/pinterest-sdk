@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsVerticalsListProductsByCatalogBasedFilterRequest::CatalogsVerticalsListProductsByCatalogBasedFilterRequest()
 {
-	catalog_id = std::string();
+	catalog_id = null;
 	catalog_type = std::string();
 	country = Country();
 	filters = CatalogsCreativeAssetsProductGroupFilters();
@@ -151,7 +151,7 @@ CatalogsVerticalsListProductsByCatalogBasedFilterRequest::getCatalogId()
 }
 
 void
-CatalogsVerticalsListProductsByCatalogBasedFilterRequest::setCatalogId(std::string  catalog_id)
+CatalogsVerticalsListProductsByCatalogBasedFilterRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -163,7 +163,7 @@ CatalogsVerticalsListProductsByCatalogBasedFilterRequest::getCatalogType()
 }
 
 void
-CatalogsVerticalsListProductsByCatalogBasedFilterRequest::setCatalogType(std::string  catalog_type)
+CatalogsVerticalsListProductsByCatalogBasedFilterRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -175,7 +175,7 @@ CatalogsVerticalsListProductsByCatalogBasedFilterRequest::getCountry()
 }
 
 void
-CatalogsVerticalsListProductsByCatalogBasedFilterRequest::setCountry(Country  country)
+CatalogsVerticalsListProductsByCatalogBasedFilterRequest::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -187,7 +187,7 @@ CatalogsVerticalsListProductsByCatalogBasedFilterRequest::getFilters()
 }
 
 void
-CatalogsVerticalsListProductsByCatalogBasedFilterRequest::setFilters(CatalogsCreativeAssetsProductGroupFilters  filters)
+CatalogsVerticalsListProductsByCatalogBasedFilterRequest::setFilters(CatalogsCreativeAssetsProductGroupFilters filters)
 {
 	this->filters = filters;
 }
@@ -199,7 +199,7 @@ CatalogsVerticalsListProductsByCatalogBasedFilterRequest::getLocale()
 }
 
 void
-CatalogsVerticalsListProductsByCatalogBasedFilterRequest::setLocale(CatalogsLocale  locale)
+CatalogsVerticalsListProductsByCatalogBasedFilterRequest::setLocale(CatalogsLocale locale)
 {
 	this->locale = locale;
 }

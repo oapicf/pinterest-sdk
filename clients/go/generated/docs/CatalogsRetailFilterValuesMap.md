@@ -6,15 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdImageTags** | Pointer to **[]string** |  | [optional] 
 **AdVideoTags** | Pointer to **[]string** |  | [optional] 
-**Availability** | Pointer to **[]string** |  | [optional] 
+**Availability** | Pointer to [**[]ProductAvailability**](ProductAvailability.md) |  | [optional] 
 **Brand** | Pointer to **[]string** |  | [optional] 
-**Condition** | Pointer to **[]string** |  | [optional] 
+**Condition** | Pointer to [**[]ProductCondition**](ProductCondition.md) |  | [optional] 
 **CustomLabel0** | Pointer to **[]string** |  | [optional] 
 **CustomLabel1** | Pointer to **[]string** |  | [optional] 
 **CustomLabel2** | Pointer to **[]string** |  | [optional] 
 **CustomLabel3** | Pointer to **[]string** |  | [optional] 
 **CustomLabel4** | Pointer to **[]string** |  | [optional] 
-**Gender** | Pointer to **[]string** |  | [optional] 
+**Gender** | Pointer to [**[]Gender**](Gender.md) |  | [optional] 
 **GoogleProductCategory0** | Pointer to **[]string** |  | [optional] 
 **GoogleProductCategory1** | Pointer to **[]string** |  | [optional] 
 **GoogleProductCategory2** | Pointer to **[]string** |  | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **GoogleProductCategory4** | Pointer to **[]string** |  | [optional] 
 **GoogleProductCategory5** | Pointer to **[]string** |  | [optional] 
 **GoogleProductCategory6** | Pointer to **[]string** |  | [optional] 
-**MediaType** | Pointer to **[]string** |  | [optional] 
+**MediaType** | Pointer to [**[]MediaType**](MediaType.md) |  | [optional] 
 **ProductType0** | Pointer to **[]string** |  | [optional] 
 **ProductType1** | Pointer to **[]string** |  | [optional] 
 **ProductType2** | Pointer to **[]string** |  | [optional] 
@@ -100,20 +100,20 @@ HasAdVideoTags returns a boolean if a field has been set.
 
 ### GetAvailability
 
-`func (o *CatalogsRetailFilterValuesMap) GetAvailability() []string`
+`func (o *CatalogsRetailFilterValuesMap) GetAvailability() []ProductAvailability`
 
 GetAvailability returns the Availability field if non-nil, zero value otherwise.
 
 ### GetAvailabilityOk
 
-`func (o *CatalogsRetailFilterValuesMap) GetAvailabilityOk() (*[]string, bool)`
+`func (o *CatalogsRetailFilterValuesMap) GetAvailabilityOk() (*[]ProductAvailability, bool)`
 
 GetAvailabilityOk returns a tuple with the Availability field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAvailability
 
-`func (o *CatalogsRetailFilterValuesMap) SetAvailability(v []string)`
+`func (o *CatalogsRetailFilterValuesMap) SetAvailability(v []ProductAvailability)`
 
 SetAvailability sets Availability field to given value.
 
@@ -150,20 +150,20 @@ HasBrand returns a boolean if a field has been set.
 
 ### GetCondition
 
-`func (o *CatalogsRetailFilterValuesMap) GetCondition() []string`
+`func (o *CatalogsRetailFilterValuesMap) GetCondition() []ProductCondition`
 
 GetCondition returns the Condition field if non-nil, zero value otherwise.
 
 ### GetConditionOk
 
-`func (o *CatalogsRetailFilterValuesMap) GetConditionOk() (*[]string, bool)`
+`func (o *CatalogsRetailFilterValuesMap) GetConditionOk() (*[]ProductCondition, bool)`
 
 GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCondition
 
-`func (o *CatalogsRetailFilterValuesMap) SetCondition(v []string)`
+`func (o *CatalogsRetailFilterValuesMap) SetCondition(v []ProductCondition)`
 
 SetCondition sets Condition field to given value.
 
@@ -300,20 +300,20 @@ HasCustomLabel4 returns a boolean if a field has been set.
 
 ### GetGender
 
-`func (o *CatalogsRetailFilterValuesMap) GetGender() []string`
+`func (o *CatalogsRetailFilterValuesMap) GetGender() []Gender`
 
 GetGender returns the Gender field if non-nil, zero value otherwise.
 
 ### GetGenderOk
 
-`func (o *CatalogsRetailFilterValuesMap) GetGenderOk() (*[]string, bool)`
+`func (o *CatalogsRetailFilterValuesMap) GetGenderOk() (*[]Gender, bool)`
 
 GetGenderOk returns a tuple with the Gender field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGender
 
-`func (o *CatalogsRetailFilterValuesMap) SetGender(v []string)`
+`func (o *CatalogsRetailFilterValuesMap) SetGender(v []Gender)`
 
 SetGender sets Gender field to given value.
 
@@ -500,20 +500,20 @@ HasGoogleProductCategory6 returns a boolean if a field has been set.
 
 ### GetMediaType
 
-`func (o *CatalogsRetailFilterValuesMap) GetMediaType() []string`
+`func (o *CatalogsRetailFilterValuesMap) GetMediaType() []MediaType`
 
 GetMediaType returns the MediaType field if non-nil, zero value otherwise.
 
 ### GetMediaTypeOk
 
-`func (o *CatalogsRetailFilterValuesMap) GetMediaTypeOk() (*[]string, bool)`
+`func (o *CatalogsRetailFilterValuesMap) GetMediaTypeOk() (*[]MediaType, bool)`
 
 GetMediaTypeOk returns a tuple with the MediaType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMediaType
 
-`func (o *CatalogsRetailFilterValuesMap) SetMediaType(v []string)`
+`func (o *CatalogsRetailFilterValuesMap) SetMediaType(v []MediaType)`
 
 SetMediaType sets MediaType field to given value.
 

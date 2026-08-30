@@ -54,14 +54,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setData(ProductGroupPromotion  data);
+	void setData(ProductGroupPromotion data);
 	/*! \brief Get 
 	 */
 	std::list<Exception> getExceptions();
 
 	/*! \brief Set 
 	 */
-	void setExceptions(std::list <Exception> exceptions);
+	void setExceptions(std::list<Exception> exceptions);
 
 
     private:

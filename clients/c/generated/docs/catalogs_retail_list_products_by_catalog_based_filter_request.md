@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **char \*** | Catalog id pertaining to the retail product group. | 
+**catalog_id** | **char \*** | Catalog ID pertaining to the product group. | 
 **catalog_type** | **pinterest_rest_api_catalogs_retail_list_products_by_catalog_based_filter_request_CATALOGTYPE_e** | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | 
 **country** | **country_t \*** |  | 
 **filters** | [**catalogs_product_group_filters_t**](catalogs_product_group_filters.md) \* |  | 

@@ -15,12 +15,12 @@ static lead_form_question_t *lead_form_question_create_internal(
     if (!lead_form_question_local_var) {
         return NULL;
     }
+    memset(lead_form_question_local_var, 0, sizeof(lead_form_question_t));
+    lead_form_question_local_var->_library_owned = 1;
     lead_form_question_local_var->custom_question_field_type = custom_question_field_type;
     lead_form_question_local_var->custom_question_label = custom_question_label;
     lead_form_question_local_var->custom_question_options = custom_question_options;
     lead_form_question_local_var->question_type = question_type;
-
-    lead_form_question_local_var->_library_owned = 1;
     return lead_form_question_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) lead_form_question_t *lead_form_question_create(
     list_t *custom_question_options,
     pinterest_rest_api_lead_form_question_type__e question_type
     ) {
-    return lead_form_question_create_internal (
+    lead_form_question_t *result = lead_form_question_create_internal (
         custom_question_field_type,
         custom_question_label,
         custom_question_options,
         question_type
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void lead_form_question_free(lead_form_question_t *lead_form_question) {
@@ -129,6 +132,8 @@ lead_form_question_t *lead_form_question_parseFromJSON(cJSON *lead_form_question
     // define the local variable for lead_form_question->custom_question_field_type
     pinterest_rest_api_lead_form_question_field_type__e custom_question_field_type_local_nonprim = 0;
 
+    char *custom_question_label_local_str = NULL;
+
     // define the local list for lead_form_question->custom_question_options
     list_t *custom_question_optionsList = NULL;
 
@@ -188,17 +193,27 @@ lead_form_question_t *lead_form_question_parseFromJSON(cJSON *lead_form_question
     }
 
 
+    if (custom_question_label && !cJSON_IsNull(custom_question_label)) custom_question_label_local_str = strdup(custom_question_label->valuestring);
+
     lead_form_question_local_var = lead_form_question_create_internal (
         custom_question_field_type ? custom_question_field_type_local_nonprim : 0,
-        custom_question_label && !cJSON_IsNull(custom_question_label) ? strdup(custom_question_label->valuestring) : NULL,
+        custom_question_label_local_str,
         custom_question_options ? custom_question_optionsList : NULL,
         question_type ? question_type_local_nonprim : 0
         );
+
+    if (!lead_form_question_local_var) {
+        goto end;
+    }
 
     return lead_form_question_local_var;
 end:
     if (custom_question_field_type_local_nonprim) {
         custom_question_field_type_local_nonprim = 0;
+    }
+    if (custom_question_label_local_str) {
+        free(custom_question_label_local_str);
+        custom_question_label_local_str = NULL;
     }
     if (custom_question_optionsList) {
         listEntry_t *listEntry = NULL;

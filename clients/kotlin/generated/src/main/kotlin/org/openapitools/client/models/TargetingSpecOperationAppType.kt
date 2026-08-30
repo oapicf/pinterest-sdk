@@ -8,14 +8,23 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.TargetingSpecAppType
+import org.openapitools.client.models.TargetingSpecListOperation
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -35,10 +44,10 @@ data class TargetingSpecOperationAppType (
     val `field`: TargetingSpecOperationAppType.`Field`,
 
     @Json(name = "operation")
-    val operation: TargetingSpecOperationAppType.Operation,
+    val operation: TargetingSpecListOperation,
 
     @Json(name = "values")
-    val propertyValues: kotlin.collections.List<TargetingSpecAppType>?
+    val propertyValues: kotlin.collections.List<TargetingSpecAppType>
 
 ) {
 
@@ -50,17 +59,6 @@ data class TargetingSpecOperationAppType (
     @JsonClass(generateAdapter = false)
     enum class `Field`(val value: kotlin.String) {
         @Json(name = "APPTYPE") APPTYPE("APPTYPE");
-    }
-    /**
-     * 
-     *
-     * Values: SET,ADD,REMOVE
-     */
-    @JsonClass(generateAdapter = false)
-    enum class Operation(val value: kotlin.String) {
-        @Json(name = "SET") SET("SET"),
-        @Json(name = "ADD") ADD("ADD"),
-        @Json(name = "REMOVE") REMOVE("REMOVE");
     }
 
 }

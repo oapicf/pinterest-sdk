@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`success` | boolean
-`receivedAt` | number
 `errorMsg` | string
+`receivedAt` | number
+`success` | boolean
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { NotificationResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "success": false,
-  "receivedAt": 1677003860,
   "errorMsg": null,
+  "receivedAt": null,
+  "success": null,
 } satisfies NotificationResponse
 
 console.log(example)

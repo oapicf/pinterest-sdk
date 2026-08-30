@@ -13,9 +13,9 @@ Method | HTTP request | Description
 ```c
 // Get advertiser entities in bulk
 //
-// Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+// Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 //
-bulk_download_response_t* BulkAPI_bulkDownloadCreate(apiClient_t *apiClient, char *ad_account_id, bulk_download_request_t *bulk_download_request);
+bulk_download_t* BulkAPI_bulkDownloadCreate(apiClient_t *apiClient, char *ad_account_id, bulk_download_create_t *bulk_download_create);
 ```
 
 ### Parameters
@@ -23,11 +23,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**bulk_download_request** | **[bulk_download_request_t](bulk_download_request.md) \*** | Parameters to get ad entities in bulk | 
+**bulk_download_create** | **[bulk_download_create_t](bulk_download_create.md) \*** |  | 
 
 ### Return type
 
-[bulk_download_response_t](bulk_download_response.md) *
+[bulk_download_t](bulk_download.md) *
 
 
 ### Authorization
@@ -45,9 +45,9 @@ Name | Type | Description  | Notes
 ```c
 // Download advertiser entities in bulk
 //
-// Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+// Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 //
-bulk_upsert_status_response_t* BulkAPI_bulkRequestGet(apiClient_t *apiClient, char *ad_account_id, char *bulk_request_id, int *include_details);
+bulk_job_data_t* BulkAPI_bulkRequestGet(apiClient_t *apiClient, char *ad_account_id, char *bulk_request_id, int *include_details);
 ```
 
 ### Parameters
@@ -55,12 +55,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**bulk_request_id** | **char \*** | Unique identifier of a bulk upsert request. | 
-**include_details** | **int \*** | if set to True then attach the errors/details to all the requests | [optional] [default to false]
+**bulk_request_id** | **char \*** | Bulk request ID that is from one of the entities bulk endpoints | 
+**include_details** | **int \*** | If set to True then attach the errors/details to all the requests | [optional] [default to false]
 
 ### Return type
 
-[bulk_upsert_status_response_t](bulk_upsert_status_response.md) *
+[bulk_job_data_t](bulk_job_data.md) *
 
 
 ### Authorization
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 ```c
 // Create/update ad entities in bulk
 //
-// Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+// Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 //
 bulk_upsert_response_t* BulkAPI_bulkUpsertCreate(apiClient_t *apiClient, char *ad_account_id, bulk_upsert_request_t *bulk_upsert_request);
 ```

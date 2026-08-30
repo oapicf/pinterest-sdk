@@ -1,7 +1,7 @@
 /*
  * CatalogsProductGroupFiltersRequest.h
  *
- * Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
+ * Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
  */
 
 #ifndef _CatalogsProductGroupFiltersRequest_H_
@@ -9,9 +9,9 @@
 
 
 #include <string>
-#include "All_of.h"
-#include "Any_of.h"
 #include "CatalogsProductGroupFilterKeys.h"
+#include "CatalogsProductGroupFiltersRequestAnyOfItems0.h"
+#include "CatalogsProductGroupFiltersRequestAnyOfItems1.h"
 #include <list>
 #include "Object.h"
 
@@ -24,7 +24,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
+/*! \brief Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
  *
  *  \ingroup Models
  *

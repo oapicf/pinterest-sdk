@@ -8,7 +8,7 @@ Name | Type
 ------------ | -------------
 `accountId` | string
 `accountName` | string
-`accountType` | string
+`accountType` | [AudienceAccountType](AudienceAccountType.md)
 `sharedOnTimestamp` | number
 
 ## Example

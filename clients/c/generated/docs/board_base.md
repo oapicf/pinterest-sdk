@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **char \*** |  | [readonly] 
 **is_ads_only** | **int** | If set to &#x60;true&#x60;, the board will be ad-only and can store ad-only Pins. | [optional] [default to false]
 **media** | [**board_media_t**](board_media.md) \* | Board media. | [optional] [readonly] 
-**name** | **char \*** |      Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;. | 
+**name** | **char \*** |     Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;. | 
 **owner** | [**board_owner_t**](board_owner.md) \* |  | [optional] [readonly] 
 **pin_count** | **int** | Count of Pins on the board. | [optional] [readonly] 
 

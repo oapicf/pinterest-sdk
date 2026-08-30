@@ -8,24 +8,26 @@ import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
+import org.openapitools.server.model.AssetGroupDeletion
+import org.openapitools.server.model.AssetGroupDeletionDelete
+import org.openapitools.server.model.AssetGroupInput
+import org.openapitools.server.model.AssetGroupInputCreate
+import org.openapitools.server.model.AssetGroupModification
+import org.openapitools.server.model.AssetGroupModificationReadOrUpdate
+import org.openapitools.server.model.AssetPermissionType
+import org.openapitools.server.model.AssetSearchBy
+import org.openapitools.server.model.AssetSortBy
 import org.openapitools.server.model.BusinessAssetMembersGet200Response
-import org.openapitools.server.model.BusinessAssetPartnersGet200Response
 import org.openapitools.server.model.BusinessAssetsGet200Response
-import org.openapitools.server.model.BusinessMemberAssetsGet200Response
-import org.openapitools.server.model.BusinessMembersAssetAccessDeleteRequest
+import org.openapitools.server.model.BusinessMemberAssetsGetResponse
+import org.openapitools.server.model.BusinessMembersAssetAccessDeleteBody
 import org.openapitools.server.model.BusinessPartnerAssetAccessGet200Response
-import org.openapitools.server.model.CreateAssetGroupBody
-import org.openapitools.server.model.CreateAssetGroupResponse
-import org.openapitools.server.model.DeleteAssetGroupBody
-import org.openapitools.server.model.DeleteAssetGroupResponse
 import org.openapitools.server.model.DeleteMemberAccessResultsResponseArray
 import org.openapitools.server.model.DeletePartnerAssetAccessBody
-import org.openapitools.server.model.DeletePartnerAssetsResultsResponseArray
+import org.openapitools.server.model.DeletePartnerAssetAccessResultsResponseArray
 import org.openapitools.server.model.Error
-import org.openapitools.server.model.PartnerType
+import org.openapitools.server.model.NonDraftEntityStatus
 import org.openapitools.server.model.PermissionsWithOwner
-import org.openapitools.server.model.UpdateAssetGroupBody
-import org.openapitools.server.model.UpdateAssetGroupResponse
 import org.openapitools.server.model.UpdateMemberAssetAccessBody
 import org.openapitools.server.model.UpdateMemberAssetsResultsResponseArray
 import org.openapitools.server.model.UpdatePartnerAssetAccessBody
@@ -47,29 +49,29 @@ import BusinessAccessAssetsApiPatterns.memberIdPattern
   lazy val route: Route =
     path("businesses" / businessIdPattern / "asset_groups") { (businessId) => 
       post {  
-            entity(as[CreateAssetGroupBody]){ createAssetGroupBody =>
-              businessAccessAssetsService.assetGroupCreate(businessId = businessId, createAssetGroupBody = createAssetGroupBody)
+            entity(as[AssetGroupInputCreate]){ assetGroupInputCreate =>
+              businessAccessAssetsService.assetGroupCreate(businessId = businessId, assetGroupInputCreate = assetGroupInputCreate)
             }
       }
     } ~
     path("businesses" / businessIdPattern / "asset_groups") { (businessId) => 
       delete {  
-            entity(as[DeleteAssetGroupBody]){ deleteAssetGroupBody =>
-              businessAccessAssetsService.assetGroupDelete(businessId = businessId, deleteAssetGroupBody = deleteAssetGroupBody)
+            entity(as[AssetGroupDeletionDelete]){ assetGroupDeletionDelete =>
+              businessAccessAssetsService.assetGroupDelete(businessId = businessId, assetGroupDeletionDelete = assetGroupDeletionDelete)
             }
       }
     } ~
     path("businesses" / businessIdPattern / "asset_groups") { (businessId) => 
       patch {  
-            entity(as[UpdateAssetGroupBody]){ updateAssetGroupBody =>
-              businessAccessAssetsService.assetGroupUpdate(businessId = businessId, updateAssetGroupBody = updateAssetGroupBody)
+            entity(as[AssetGroupModificationReadOrUpdate]){ assetGroupModificationReadOrUpdate =>
+              businessAccessAssetsService.assetGroupUpdate(businessId = businessId, assetGroupModificationReadOrUpdate = assetGroupModificationReadOrUpdate)
             }
       }
     } ~
     path("businesses" / businessIdPattern / "assets" / assetIdPattern / "members") { (businessId, assetId) => 
       get { 
-        parameters("fetch_system_users".as[Boolean].?(false), "bookmark".as[String].?, "page_size".as[Int].?(25), "start_index".as[Int].?(0)) { (fetchSystemUsers, bookmark, pageSize, startIndex) => 
-            businessAccessAssetsService.businessAssetMembersGet(businessId = businessId, assetId = assetId, fetchSystemUsers = fetchSystemUsers, bookmark = bookmark, pageSize = pageSize, startIndex = startIndex)
+        parameters("start_index".as[Int].?(0), "fetch_system_users".as[Boolean].?(false), "bookmark".as[String].?, "page_size".as[Int].?(25)) { (startIndex, fetchSystemUsers, bookmark, pageSize) => 
+            businessAccessAssetsService.businessAssetMembersGet(businessId = businessId, assetId = assetId, startIndex = startIndex, fetchSystemUsers = fetchSystemUsers, bookmark = bookmark, pageSize = pageSize)
         }
       }
     } ~
@@ -89,15 +91,15 @@ import BusinessAccessAssetsApiPatterns.memberIdPattern
     } ~
     path("businesses" / businessIdPattern / "members" / memberIdPattern / "assets") { (businessId, memberId) => 
       get { 
-        parameters("asset_type".as[String].?("AD_ACCOUNT"), "start_index".as[Int].?(0), "bookmark".as[String].?, "page_size".as[Int].?(25)) { (assetType, startIndex, bookmark, pageSize) => 
-            businessAccessAssetsService.businessMemberAssetsGet(businessId = businessId, memberId = memberId, assetType = assetType, startIndex = startIndex, bookmark = bookmark, pageSize = pageSize)
+        parameters("asset_type".as[String].?("AD_ACCOUNT"), "start_index".as[Int].?(0), "sort_by".as[String].?, "sort_ascending".as[Boolean].?(true), "search_by".as[String].?, "search_value".as[String].?, "asset_permission_type".as[String].?, "ad_account_statuses".as[String].?, "bookmark".as[String].?, "page_size".as[Int].?(25)) { (assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, assetPermissionType, adAccountStatuses, bookmark, pageSize) => 
+            businessAccessAssetsService.businessMemberAssetsGet(businessId = businessId, memberId = memberId, assetType = assetType, startIndex = startIndex, sortBy = sortBy, sortAscending = sortAscending, searchBy = searchBy, searchValue = searchValue, assetPermissionType = assetPermissionType, adAccountStatuses = adAccountStatuses, bookmark = bookmark, pageSize = pageSize)
         }
       }
     } ~
     path("businesses" / businessIdPattern / "members" / "assets" / "access") { (businessId) => 
       delete {  
-            entity(as[BusinessMembersAssetAccessDeleteRequest]){ businessMembersAssetAccessDeleteRequest =>
-              businessAccessAssetsService.businessMembersAssetAccessDelete(businessId = businessId, businessMembersAssetAccessDeleteRequest = businessMembersAssetAccessDeleteRequest)
+            entity(as[BusinessMembersAssetAccessDeleteBody]){ businessMembersAssetAccessDeleteBody =>
+              businessAccessAssetsService.businessMembersAssetAccessDelete(businessId = businessId, businessMembersAssetAccessDeleteBody = businessMembersAssetAccessDeleteBody)
             }
       }
     } ~
@@ -110,8 +112,8 @@ import BusinessAccessAssetsApiPatterns.memberIdPattern
     } ~
     path("businesses" / businessIdPattern / "partners" / partnerIdPattern / "assets") { (businessId, partnerId) => 
       get { 
-        parameters("partner_type".as[String].?, "asset_type".as[String].?("AD_ACCOUNT"), "start_index".as[Int].?(0), "page_size".as[Int].?(25), "bookmark".as[String].?) { (partnerType, assetType, startIndex, pageSize, bookmark) => 
-            businessAccessAssetsService.businessPartnerAssetAccessGet(businessId = businessId, partnerId = partnerId, partnerType = partnerType, assetType = assetType, startIndex = startIndex, pageSize = pageSize, bookmark = bookmark)
+        parameters("partner_type".as[String].?("INTERNAL"), "asset_type".as[String].?("AD_ACCOUNT"), "start_index".as[Int].?(0), "sort_by".as[String].?, "sort_ascending".as[Boolean].?(true), "search_by".as[String].?, "search_value".as[String].?, "bookmark".as[String].?, "page_size".as[Int].?(25)) { (partnerType, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, bookmark, pageSize) => 
+            businessAccessAssetsService.businessPartnerAssetAccessGet(businessId = businessId, partnerId = partnerId, partnerType = partnerType, assetType = assetType, startIndex = startIndex, sortBy = sortBy, sortAscending = sortAscending, searchBy = searchBy, searchValue = searchValue, bookmark = bookmark, pageSize = pageSize)
         }
       }
     } ~
@@ -133,151 +135,280 @@ import BusinessAccessAssetsApiPatterns.memberIdPattern
 
 object BusinessAccessAssetsApiPatterns {
 
-    val businessIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
-val partnerIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
-val assetIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
-val memberIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
+    val businessIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
+val partnerIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
+val assetIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
+val memberIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
 }
 
 trait BusinessAccessAssetsApiService {
 
-  def assetGroupCreate200(responseCreateAssetGroupResponse: CreateAssetGroupResponse)(implicit toEntityMarshallerCreateAssetGroupResponse: ToEntityMarshaller[CreateAssetGroupResponse]): Route =
-    complete((200, responseCreateAssetGroupResponse))
+  def assetGroupCreate200(responseAssetGroupInput: AssetGroupInput)(implicit toEntityMarshallerAssetGroupInput: ToEntityMarshaller[AssetGroupInput]): Route =
+    complete((200, responseAssetGroupInput))
+  def assetGroupCreate201(responseAssetGroupInput: AssetGroupInput)(implicit toEntityMarshallerAssetGroupInput: ToEntityMarshaller[AssetGroupInput]): Route =
+    complete((201, responseAssetGroupInput))
   def assetGroupCreate400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def assetGroupCreate401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def assetGroupCreate403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def assetGroupCreate404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def assetGroupCreate429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def assetGroupCreateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: CreateAssetGroupResponse
-   * Code: 400, Message: Invalid parameters., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: AssetGroupInput
+   * Code: 201, Message: Resource create operation completed successfully., DataType: AssetGroupInput
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def assetGroupCreate(businessId: String, createAssetGroupBody: CreateAssetGroupBody)
-      (implicit toEntityMarshallerCreateAssetGroupResponse: ToEntityMarshaller[CreateAssetGroupResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def assetGroupCreate(businessId: String, assetGroupInputCreate: AssetGroupInputCreate)
+      (implicit toEntityMarshallerAssetGroupInput: ToEntityMarshaller[AssetGroupInput], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def assetGroupDelete200(responseDeleteAssetGroupResponse: DeleteAssetGroupResponse)(implicit toEntityMarshallerDeleteAssetGroupResponse: ToEntityMarshaller[DeleteAssetGroupResponse]): Route =
-    complete((200, responseDeleteAssetGroupResponse))
-  def assetGroupDelete400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
-    complete((400, responseError))
+  def assetGroupDelete200(responseAssetGroupDeletion: AssetGroupDeletion)(implicit toEntityMarshallerAssetGroupDeletion: ToEntityMarshaller[AssetGroupDeletion]): Route =
+    complete((200, responseAssetGroupDeletion))
   def assetGroupDeleteDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: DeleteAssetGroupResponse
-   * Code: 400, Message: Invalid parameters., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: AssetGroupDeletion
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def assetGroupDelete(businessId: String, deleteAssetGroupBody: DeleteAssetGroupBody)
-      (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerDeleteAssetGroupResponse: ToEntityMarshaller[DeleteAssetGroupResponse]): Route
+  def assetGroupDelete(businessId: String, assetGroupDeletionDelete: AssetGroupDeletionDelete)
+      (implicit toEntityMarshallerAssetGroupDeletion: ToEntityMarshaller[AssetGroupDeletion], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def assetGroupUpdate200(responseUpdateAssetGroupResponse: UpdateAssetGroupResponse)(implicit toEntityMarshallerUpdateAssetGroupResponse: ToEntityMarshaller[UpdateAssetGroupResponse]): Route =
-    complete((200, responseUpdateAssetGroupResponse))
+  def assetGroupUpdate200(responseAssetGroupModification: AssetGroupModification)(implicit toEntityMarshallerAssetGroupModification: ToEntityMarshaller[AssetGroupModification]): Route =
+    complete((200, responseAssetGroupModification))
   def assetGroupUpdate400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def assetGroupUpdate401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def assetGroupUpdate403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def assetGroupUpdate404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def assetGroupUpdate429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def assetGroupUpdateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: UpdateAssetGroupResponse
-   * Code: 400, Message: Invalid parameters., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: AssetGroupModification
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def assetGroupUpdate(businessId: String, updateAssetGroupBody: UpdateAssetGroupBody)
-      (implicit toEntityMarshallerUpdateAssetGroupResponse: ToEntityMarshaller[UpdateAssetGroupResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def assetGroupUpdate(businessId: String, assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate)
+      (implicit toEntityMarshallerAssetGroupModification: ToEntityMarshaller[AssetGroupModification], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def businessAssetMembersGet200(responseBusinessAssetMembersGet200Response: BusinessAssetMembersGet200Response)(implicit toEntityMarshallerBusinessAssetMembersGet200Response: ToEntityMarshaller[BusinessAssetMembersGet200Response]): Route =
     complete((200, responseBusinessAssetMembersGet200Response))
+  def businessAssetMembersGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def businessAssetMembersGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def businessAssetMembersGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def businessAssetMembersGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def businessAssetMembersGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def businessAssetMembersGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Sucess, DataType: BusinessAssetMembersGet200Response
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: BusinessAssetMembersGet200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def businessAssetMembersGet(businessId: String, assetId: String, fetchSystemUsers: Boolean, bookmark: Option[String], pageSize: Int, startIndex: Int)
+  def businessAssetMembersGet(businessId: String, assetId: String, startIndex: Int, fetchSystemUsers: Boolean, bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerBusinessAssetMembersGet200Response: ToEntityMarshaller[BusinessAssetMembersGet200Response]): Route
 
-  def businessAssetPartnersGet200(responseBusinessAssetPartnersGet200Response: BusinessAssetPartnersGet200Response)(implicit toEntityMarshallerBusinessAssetPartnersGet200Response: ToEntityMarshaller[BusinessAssetPartnersGet200Response]): Route =
-    complete((200, responseBusinessAssetPartnersGet200Response))
+  def businessAssetPartnersGet200(responseBusinessAssetMembersGet200Response: BusinessAssetMembersGet200Response)(implicit toEntityMarshallerBusinessAssetMembersGet200Response: ToEntityMarshaller[BusinessAssetMembersGet200Response]): Route =
+    complete((200, responseBusinessAssetMembersGet200Response))
+  def businessAssetPartnersGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def businessAssetPartnersGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def businessAssetPartnersGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def businessAssetPartnersGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def businessAssetPartnersGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def businessAssetPartnersGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Sucess, DataType: BusinessAssetPartnersGet200Response
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: BusinessAssetMembersGet200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def businessAssetPartnersGet(businessId: String, assetId: String, startIndex: Int, bookmark: Option[String], pageSize: Int)
-      (implicit toEntityMarshallerBusinessAssetPartnersGet200Response: ToEntityMarshaller[BusinessAssetPartnersGet200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerBusinessAssetMembersGet200Response: ToEntityMarshaller[BusinessAssetMembersGet200Response]): Route
 
   def businessAssetsGet200(responseBusinessAssetsGet200Response: BusinessAssetsGet200Response)(implicit toEntityMarshallerBusinessAssetsGet200Response: ToEntityMarshaller[BusinessAssetsGet200Response]): Route =
     complete((200, responseBusinessAssetsGet200Response))
+  def businessAssetsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def businessAssetsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def businessAssetsGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def businessAssetsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def businessAssetsGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def businessAssetsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: BusinessAssetsGet200Response
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: BusinessAssetsGet200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def businessAssetsGet(businessId: String, permissions: Option[String], childAssetId: Option[String], assetGroupId: Option[String], assetType: String, startIndex: Int, bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerBusinessAssetsGet200Response: ToEntityMarshaller[BusinessAssetsGet200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def businessMemberAssetsGet200(responseBusinessMemberAssetsGet200Response: BusinessMemberAssetsGet200Response)(implicit toEntityMarshallerBusinessMemberAssetsGet200Response: ToEntityMarshaller[BusinessMemberAssetsGet200Response]): Route =
-    complete((200, responseBusinessMemberAssetsGet200Response))
+  def businessMemberAssetsGet200(responseBusinessMemberAssetsGetResponse: BusinessMemberAssetsGetResponse)(implicit toEntityMarshallerBusinessMemberAssetsGetResponse: ToEntityMarshaller[BusinessMemberAssetsGetResponse]): Route =
+    complete((200, responseBusinessMemberAssetsGetResponse))
+  def businessMemberAssetsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def businessMemberAssetsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def businessMemberAssetsGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def businessMemberAssetsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def businessMemberAssetsGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def businessMemberAssetsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: BusinessMemberAssetsGet200Response
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: BusinessMemberAssetsGetResponse
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def businessMemberAssetsGet(businessId: String, memberId: String, assetType: String, startIndex: Int, bookmark: Option[String], pageSize: Int)
-      (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerBusinessMemberAssetsGet200Response: ToEntityMarshaller[BusinessMemberAssetsGet200Response]): Route
+  def businessMemberAssetsGet(businessId: String, memberId: String, assetType: String, startIndex: Int, sortBy: Option[String], sortAscending: Boolean, searchBy: Option[String], searchValue: Option[String], assetPermissionType: Option[String], adAccountStatuses: Option[String], bookmark: Option[String], pageSize: Int)
+      (implicit toEntityMarshallerBusinessMemberAssetsGetResponse: ToEntityMarshaller[BusinessMemberAssetsGetResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def businessMembersAssetAccessDelete200(responseDeleteMemberAccessResultsResponseArray: DeleteMemberAccessResultsResponseArray)(implicit toEntityMarshallerDeleteMemberAccessResultsResponseArray: ToEntityMarshaller[DeleteMemberAccessResultsResponseArray]): Route =
     complete((200, responseDeleteMemberAccessResultsResponseArray))
   def businessMembersAssetAccessDeleteDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: response, DataType: DeleteMemberAccessResultsResponseArray
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: DeleteMemberAccessResultsResponseArray
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def businessMembersAssetAccessDelete(businessId: String, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest)
+  def businessMembersAssetAccessDelete(businessId: String, businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody)
       (implicit toEntityMarshallerDeleteMemberAccessResultsResponseArray: ToEntityMarshaller[DeleteMemberAccessResultsResponseArray], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def businessMembersAssetAccessUpdate200(responseUpdateMemberAssetsResultsResponseArray: UpdateMemberAssetsResultsResponseArray)(implicit toEntityMarshallerUpdateMemberAssetsResultsResponseArray: ToEntityMarshaller[UpdateMemberAssetsResultsResponseArray]): Route =
     complete((200, responseUpdateMemberAssetsResultsResponseArray))
+  def businessMembersAssetAccessUpdate400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def businessMembersAssetAccessUpdate401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def businessMembersAssetAccessUpdate403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def businessMembersAssetAccessUpdate404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def businessMembersAssetAccessUpdate429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def businessMembersAssetAccessUpdateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: response, DataType: UpdateMemberAssetsResultsResponseArray
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: UpdateMemberAssetsResultsResponseArray
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def businessMembersAssetAccessUpdate(businessId: String, updateMemberAssetAccessBody: UpdateMemberAssetAccessBody)
       (implicit toEntityMarshallerUpdateMemberAssetsResultsResponseArray: ToEntityMarshaller[UpdateMemberAssetsResultsResponseArray], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def businessPartnerAssetAccessGet200(responseBusinessPartnerAssetAccessGet200Response: BusinessPartnerAssetAccessGet200Response)(implicit toEntityMarshallerBusinessPartnerAssetAccessGet200Response: ToEntityMarshaller[BusinessPartnerAssetAccessGet200Response]): Route =
     complete((200, responseBusinessPartnerAssetAccessGet200Response))
+  def businessPartnerAssetAccessGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def businessPartnerAssetAccessGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def businessPartnerAssetAccessGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def businessPartnerAssetAccessGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def businessPartnerAssetAccessGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def businessPartnerAssetAccessGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: BusinessPartnerAssetAccessGet200Response
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: BusinessPartnerAssetAccessGet200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def businessPartnerAssetAccessGet(businessId: String, partnerId: String, partnerType: Option[String], assetType: String, startIndex: Int, pageSize: Int, bookmark: Option[String])
+  def businessPartnerAssetAccessGet(businessId: String, partnerId: String, partnerType: String, assetType: String, startIndex: Int, sortBy: Option[String], sortAscending: Boolean, searchBy: Option[String], searchValue: Option[String], bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerBusinessPartnerAssetAccessGet200Response: ToEntityMarshaller[BusinessPartnerAssetAccessGet200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def deletePartnerAssetAccessHandlerImpl200(responseDeletePartnerAssetsResultsResponseArray: DeletePartnerAssetsResultsResponseArray)(implicit toEntityMarshallerDeletePartnerAssetsResultsResponseArray: ToEntityMarshaller[DeletePartnerAssetsResultsResponseArray]): Route =
-    complete((200, responseDeletePartnerAssetsResultsResponseArray))
+  def deletePartnerAssetAccessHandlerImpl200(responseDeletePartnerAssetAccessResultsResponseArray: DeletePartnerAssetAccessResultsResponseArray)(implicit toEntityMarshallerDeletePartnerAssetAccessResultsResponseArray: ToEntityMarshaller[DeletePartnerAssetAccessResultsResponseArray]): Route =
+    complete((200, responseDeletePartnerAssetAccessResultsResponseArray))
   def deletePartnerAssetAccessHandlerImplDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: DeletePartnerAssetsResultsResponseArray
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: DeletePartnerAssetAccessResultsResponseArray
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def deletePartnerAssetAccessHandlerImpl(businessId: String, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody)
-      (implicit toEntityMarshallerDeletePartnerAssetsResultsResponseArray: ToEntityMarshaller[DeletePartnerAssetsResultsResponseArray], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerDeletePartnerAssetAccessResultsResponseArray: ToEntityMarshaller[DeletePartnerAssetAccessResultsResponseArray], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def updatePartnerAssetAccessHandlerImpl200(responseUpdatePartnerAssetsResultsResponseArray: UpdatePartnerAssetsResultsResponseArray)(implicit toEntityMarshallerUpdatePartnerAssetsResultsResponseArray: ToEntityMarshaller[UpdatePartnerAssetsResultsResponseArray]): Route =
     complete((200, responseUpdatePartnerAssetsResultsResponseArray))
+  def updatePartnerAssetAccessHandlerImpl400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def updatePartnerAssetAccessHandlerImpl401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def updatePartnerAssetAccessHandlerImpl403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def updatePartnerAssetAccessHandlerImpl404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def updatePartnerAssetAccessHandlerImpl429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def updatePartnerAssetAccessHandlerImplDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: UpdatePartnerAssetsResultsResponseArray
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: UpdatePartnerAssetsResultsResponseArray
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def updatePartnerAssetAccessHandlerImpl(businessId: String, updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody)
       (implicit toEntityMarshallerUpdatePartnerAssetsResultsResponseArray: ToEntityMarshaller[UpdatePartnerAssetsResultsResponseArray], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
@@ -285,47 +416,45 @@ trait BusinessAccessAssetsApiService {
 }
 
 trait BusinessAccessAssetsApiMarshaller {
-  implicit def fromEntityUnmarshallerCreateAssetGroupBody: FromEntityUnmarshaller[CreateAssetGroupBody]
-
-  implicit def fromEntityUnmarshallerDeleteAssetGroupBody: FromEntityUnmarshaller[DeleteAssetGroupBody]
+  implicit def fromEntityUnmarshallerAssetGroupInputCreate: FromEntityUnmarshaller[AssetGroupInputCreate]
 
   implicit def fromEntityUnmarshallerDeletePartnerAssetAccessBody: FromEntityUnmarshaller[DeletePartnerAssetAccessBody]
 
-  implicit def fromEntityUnmarshallerBusinessMembersAssetAccessDeleteRequest: FromEntityUnmarshaller[BusinessMembersAssetAccessDeleteRequest]
-
   implicit def fromEntityUnmarshallerUpdateMemberAssetAccessBody: FromEntityUnmarshaller[UpdateMemberAssetAccessBody]
+
+  implicit def fromEntityUnmarshallerAssetGroupModificationReadOrUpdate: FromEntityUnmarshaller[AssetGroupModificationReadOrUpdate]
 
   implicit def fromEntityUnmarshallerUpdatePartnerAssetAccessBody: FromEntityUnmarshaller[UpdatePartnerAssetAccessBody]
 
-  implicit def fromEntityUnmarshallerUpdateAssetGroupBody: FromEntityUnmarshaller[UpdateAssetGroupBody]
+  implicit def fromEntityUnmarshallerBusinessMembersAssetAccessDeleteBody: FromEntityUnmarshaller[BusinessMembersAssetAccessDeleteBody]
+
+  implicit def fromEntityUnmarshallerAssetGroupDeletionDelete: FromEntityUnmarshaller[AssetGroupDeletionDelete]
 
 
 
   implicit def toEntityMarshallerBusinessAssetsGet200Response: ToEntityMarshaller[BusinessAssetsGet200Response]
 
+  implicit def toEntityMarshallerBusinessMemberAssetsGetResponse: ToEntityMarshaller[BusinessMemberAssetsGetResponse]
+
+  implicit def toEntityMarshallerAssetGroupDeletion: ToEntityMarshaller[AssetGroupDeletion]
+
+  implicit def toEntityMarshallerAssetGroupModification: ToEntityMarshaller[AssetGroupModification]
+
   implicit def toEntityMarshallerDeleteMemberAccessResultsResponseArray: ToEntityMarshaller[DeleteMemberAccessResultsResponseArray]
 
   implicit def toEntityMarshallerBusinessPartnerAssetAccessGet200Response: ToEntityMarshaller[BusinessPartnerAssetAccessGet200Response]
+
+  implicit def toEntityMarshallerAssetGroupInput: ToEntityMarshaller[AssetGroupInput]
+
+  implicit def toEntityMarshallerDeletePartnerAssetAccessResultsResponseArray: ToEntityMarshaller[DeletePartnerAssetAccessResultsResponseArray]
 
   implicit def toEntityMarshallerUpdatePartnerAssetsResultsResponseArray: ToEntityMarshaller[UpdatePartnerAssetsResultsResponseArray]
 
   implicit def toEntityMarshallerUpdateMemberAssetsResultsResponseArray: ToEntityMarshaller[UpdateMemberAssetsResultsResponseArray]
 
-  implicit def toEntityMarshallerDeleteAssetGroupResponse: ToEntityMarshaller[DeleteAssetGroupResponse]
-
-  implicit def toEntityMarshallerBusinessAssetMembersGet200Response: ToEntityMarshaller[BusinessAssetMembersGet200Response]
-
-  implicit def toEntityMarshallerBusinessMemberAssetsGet200Response: ToEntityMarshaller[BusinessMemberAssetsGet200Response]
-
-  implicit def toEntityMarshallerDeletePartnerAssetsResultsResponseArray: ToEntityMarshaller[DeletePartnerAssetsResultsResponseArray]
-
-  implicit def toEntityMarshallerBusinessAssetPartnersGet200Response: ToEntityMarshaller[BusinessAssetPartnersGet200Response]
-
-  implicit def toEntityMarshallerCreateAssetGroupResponse: ToEntityMarshaller[CreateAssetGroupResponse]
-
   implicit def toEntityMarshallerError: ToEntityMarshaller[Error]
 
-  implicit def toEntityMarshallerUpdateAssetGroupResponse: ToEntityMarshaller[UpdateAssetGroupResponse]
+  implicit def toEntityMarshallerBusinessAssetMembersGet200Response: ToEntityMarshaller[BusinessAssetMembersGet200Response]
 
 }
 

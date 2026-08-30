@@ -18,12 +18,6 @@ resourceTypes {
     description = CatalogsReportStats
     derivedFrom = Root
     properties {
-        report_type {
-          type =  string
-          description = ""
-          enum = ["FEED_INGESTION_ISSUES", "DISTRIBUTION_ISSUES"]
-          optional = true
-        }
         catalog_id {
           type =  string
           description = "ID of the catalog entity."
@@ -47,6 +41,12 @@ resourceTypes {
         occurrences {
           type =  integer
           description = "Number of occurrences of the issue"
+          optional = false
+        }
+        report_type {
+          type =  string
+          description = ""
+          enum = ["DISTRIBUTION_ISSUES"]
           optional = false
         }
         severity {

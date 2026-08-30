@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &TargetingTemplateList200Response{}
 // TargetingTemplateList200Response struct for TargetingTemplateList200Response
 type TargetingTemplateList200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	Items []TargetingTemplateGetResponseData `json:"items"`
+	Items []TargetingTemplate `json:"items"`
 }
 
 type _TargetingTemplateList200Response TargetingTemplateList200Response
@@ -32,7 +32,7 @@ type _TargetingTemplateList200Response TargetingTemplateList200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTargetingTemplateList200Response(items []TargetingTemplateGetResponseData) *TargetingTemplateList200Response {
+func NewTargetingTemplateList200Response(items []TargetingTemplate) *TargetingTemplateList200Response {
 	this := TargetingTemplateList200Response{}
 	this.Items = items
 	return &this
@@ -89,9 +89,9 @@ func (o *TargetingTemplateList200Response) UnsetBookmark() {
 }
 
 // GetItems returns the Items field value
-func (o *TargetingTemplateList200Response) GetItems() []TargetingTemplateGetResponseData {
+func (o *TargetingTemplateList200Response) GetItems() []TargetingTemplate {
 	if o == nil {
-		var ret []TargetingTemplateGetResponseData
+		var ret []TargetingTemplate
 		return ret
 	}
 
@@ -100,7 +100,7 @@ func (o *TargetingTemplateList200Response) GetItems() []TargetingTemplateGetResp
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *TargetingTemplateList200Response) GetItemsOk() ([]TargetingTemplateGetResponseData, bool) {
+func (o *TargetingTemplateList200Response) GetItemsOk() ([]TargetingTemplate, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *TargetingTemplateList200Response) GetItemsOk() ([]TargetingTemplateGetR
 }
 
 // SetItems sets field value
-func (o *TargetingTemplateList200Response) SetItems(v []TargetingTemplateGetResponseData) {
+func (o *TargetingTemplateList200Response) SetItems(v []TargetingTemplate) {
 	o.Items = v
 }
 

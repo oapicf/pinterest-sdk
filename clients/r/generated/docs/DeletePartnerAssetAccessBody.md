@@ -1,9 +1,10 @@
 # openapi::DeletePartnerAssetAccessBody
 
+An object with a list of partner asset accesses to delete.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accesses** | [**array[DeletePartnerAssetAccessBodyAccessesInner]**](DeletePartnerAssetAccessBody_accesses_inner.md) |  | [Max. items: 50] [Min. items: 1] 
+**accesses** | [**array[DeletePartnerAssetAccessItem]**](DeletePartnerAssetAccessItem.md) | List of partner asset accesses to delete. | [Max. items: 50] [Min. items: 1] 
 
 

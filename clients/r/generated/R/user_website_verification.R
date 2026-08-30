@@ -1,0 +1,227 @@
+#' Create a new UserWebsiteVerification
+#'
+#' @description
+#' UserWebsiteVerification Class
+#'
+#' @docType class
+#' @title UserWebsiteVerification
+#' @description UserWebsiteVerification Class
+#' @format An \code{R6Class} generator object
+#' @field dns_txt_record DNS TXT record to check against for the website to be claimed character [optional]
+#' @field file_content A full html file to upload to the website in order for it to be claimed character [optional]
+#' @field filename File expected to find on the website being claimed character [optional]
+#' @field metatag Metatag the verification process searchs for the website to be claimed character [optional]
+#' @field verification_code Code to check against the user claiming the website character [optional]
+#' @importFrom R6 R6Class
+#' @importFrom jsonlite fromJSON toJSON
+#' @export
+UserWebsiteVerification <- R6::R6Class(
+  "UserWebsiteVerification",
+  public = list(
+    `dns_txt_record` = NULL,
+    `file_content` = NULL,
+    `filename` = NULL,
+    `metatag` = NULL,
+    `verification_code` = NULL,
+
+    #' @description
+    #' Initialize a new UserWebsiteVerification class.
+    #'
+    #' @param dns_txt_record DNS TXT record to check against for the website to be claimed
+    #' @param file_content A full html file to upload to the website in order for it to be claimed
+    #' @param filename File expected to find on the website being claimed
+    #' @param metatag Metatag the verification process searchs for the website to be claimed
+    #' @param verification_code Code to check against the user claiming the website
+    #' @param ... Other optional arguments.
+    initialize = function(`dns_txt_record` = NULL, `file_content` = NULL, `filename` = NULL, `metatag` = NULL, `verification_code` = NULL, ...) {
+      if (!is.null(`dns_txt_record`)) {
+        if (!(is.character(`dns_txt_record`) && length(`dns_txt_record`) == 1)) {
+          stop(paste("Error! Invalid data for `dns_txt_record`. Must be a string:", `dns_txt_record`))
+        }
+        self$`dns_txt_record` <- `dns_txt_record`
+      }
+      if (!is.null(`file_content`)) {
+        if (!(is.character(`file_content`) && length(`file_content`) == 1)) {
+          stop(paste("Error! Invalid data for `file_content`. Must be a string:", `file_content`))
+        }
+        self$`file_content` <- `file_content`
+      }
+      if (!is.null(`filename`)) {
+        if (!(is.character(`filename`) && length(`filename`) == 1)) {
+          stop(paste("Error! Invalid data for `filename`. Must be a string:", `filename`))
+        }
+        self$`filename` <- `filename`
+      }
+      if (!is.null(`metatag`)) {
+        if (!(is.character(`metatag`) && length(`metatag`) == 1)) {
+          stop(paste("Error! Invalid data for `metatag`. Must be a string:", `metatag`))
+        }
+        self$`metatag` <- `metatag`
+      }
+      if (!is.null(`verification_code`)) {
+        if (!(is.character(`verification_code`) && length(`verification_code`) == 1)) {
+          stop(paste("Error! Invalid data for `verification_code`. Must be a string:", `verification_code`))
+        }
+        self$`verification_code` <- `verification_code`
+      }
+    },
+
+    #' @description
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
+    toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return UserWebsiteVerification as a base R list.
+    #' @examples
+    #' # convert array of UserWebsiteVerification (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert UserWebsiteVerification to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
+      UserWebsiteVerificationObject <- list()
+      if (!is.null(self$`dns_txt_record`)) {
+        UserWebsiteVerificationObject[["dns_txt_record"]] <-
+          self$`dns_txt_record`
+      }
+      if (!is.null(self$`file_content`)) {
+        UserWebsiteVerificationObject[["file_content"]] <-
+          self$`file_content`
+      }
+      if (!is.null(self$`filename`)) {
+        UserWebsiteVerificationObject[["filename"]] <-
+          self$`filename`
+      }
+      if (!is.null(self$`metatag`)) {
+        UserWebsiteVerificationObject[["metatag"]] <-
+          self$`metatag`
+      }
+      if (!is.null(self$`verification_code`)) {
+        UserWebsiteVerificationObject[["verification_code"]] <-
+          self$`verification_code`
+      }
+      return(UserWebsiteVerificationObject)
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of UserWebsiteVerification
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of UserWebsiteVerification
+    fromJSON = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`dns_txt_record`)) {
+        self$`dns_txt_record` <- this_object$`dns_txt_record`
+      }
+      if (!is.null(this_object$`file_content`)) {
+        self$`file_content` <- this_object$`file_content`
+      }
+      if (!is.null(this_object$`filename`)) {
+        self$`filename` <- this_object$`filename`
+      }
+      if (!is.null(this_object$`metatag`)) {
+        self$`metatag` <- this_object$`metatag`
+      }
+      if (!is.null(this_object$`verification_code`)) {
+        self$`verification_code` <- this_object$`verification_code`
+      }
+      self
+    },
+
+    #' @description
+    #' To JSON String
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
+    #' @return UserWebsiteVerification in JSON format
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of UserWebsiteVerification
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of UserWebsiteVerification
+    fromJSONString = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      self$`dns_txt_record` <- this_object$`dns_txt_record`
+      self$`file_content` <- this_object$`file_content`
+      self$`filename` <- this_object$`filename`
+      self$`metatag` <- this_object$`metatag`
+      self$`verification_code` <- this_object$`verification_code`
+      self
+    },
+
+    #' @description
+    #' Validate JSON input with respect to UserWebsiteVerification and throw an exception if invalid
+    #'
+    #' @param input the JSON input
+    validateJSON = function(input) {
+      input_json <- jsonlite::fromJSON(input)
+    },
+
+    #' @description
+    #' To string (JSON format)
+    #'
+    #' @return String representation of UserWebsiteVerification
+    toString = function() {
+      self$toJSONString()
+    },
+
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    isValid = function() {
+      TRUE
+    },
+
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      invalid_fields
+    },
+
+    #' @description
+    #' Print the object
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
+)
+## Uncomment below to unlock the class to allow modifications of the method or field
+# UserWebsiteVerification$unlock()
+#
+## Below is an example to define the print function
+# UserWebsiteVerification$set("public", "print", function(...) {
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
+# })
+## Uncomment below to lock the class to prevent modifications to the method or field
+# UserWebsiteVerification$lock()
+

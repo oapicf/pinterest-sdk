@@ -26,7 +26,7 @@ CatalogsItemsUpsertBatchRequest::__init()
 	//country = new Country();
 	//new std::list()std::list> items;
 	//language = std::string();
-	//operation = new BatchOperation();
+	//operation = std::string();
 }
 
 void
@@ -114,12 +114,9 @@ CatalogsItemsUpsertBatchRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("BatchOperation")) {
-			jsonToValue(&operation, node, "BatchOperation", "BatchOperation");
+		if (isprimitive("std::string")) {
+			jsonToValue(&operation, node, "std::string", "");
 		} else {
-			
-			BatchOperation* obj = static_cast<BatchOperation*> (&operation);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -183,16 +180,11 @@ CatalogsItemsUpsertBatchRequest::toJson()
 	}
 	const gchar *languageKey = "language";
 	json_object_set_member(pJsonObject, languageKey, node);
-	if (isprimitive("BatchOperation")) {
-		BatchOperation obj = getOperation();
-		node = converttoJson(&obj, "BatchOperation", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getOperation();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		BatchOperation obj = static_cast<BatchOperation> (getOperation());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *operationKey = "operation";
@@ -241,14 +233,14 @@ CatalogsItemsUpsertBatchRequest::setLanguage(std::string  language)
 	this->language = language;
 }
 
-BatchOperation
+std::string
 CatalogsItemsUpsertBatchRequest::getOperation()
 {
 	return operation;
 }
 
 void
-CatalogsItemsUpsertBatchRequest::setOperation(BatchOperation  operation)
+CatalogsItemsUpsertBatchRequest::setOperation(std::string  operation)
 {
 	this->operation = operation;
 }

@@ -131,7 +131,7 @@ ImageSize::get1200x()
 }
 
 void
-ImageSize::set1200x(ImageDetails  1200x)
+ImageSize::set1200x(ImageDetails 1200x)
 {
 	this->1200x = 1200x;
 }
@@ -143,7 +143,7 @@ ImageSize::get150x150()
 }
 
 void
-ImageSize::set150x150(ImageDetails  150x150)
+ImageSize::set150x150(ImageDetails 150x150)
 {
 	this->150x150 = 150x150;
 }
@@ -155,7 +155,7 @@ ImageSize::get400x300()
 }
 
 void
-ImageSize::set400x300(ImageDetails  400x300)
+ImageSize::set400x300(ImageDetails 400x300)
 {
 	this->400x300 = 400x300;
 }
@@ -167,7 +167,7 @@ ImageSize::get600x()
 }
 
 void
-ImageSize::set600x(ImageDetails  600x)
+ImageSize::set600x(ImageDetails 600x)
 {
 	this->600x = 600x;
 }

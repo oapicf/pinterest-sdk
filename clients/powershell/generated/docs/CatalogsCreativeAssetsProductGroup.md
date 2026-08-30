@@ -3,20 +3,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
+**CatalogId** | **String** | Catalog ID pertaining to the product group. | 
 **CatalogType** | **String** |  | 
 **CreatedAt** | **Int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **Description** | **String** |  | [optional] 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**Id** | **String** | ID of the creative assets product group. | 
-**Name** | **String** | Name of creative assets product group | [optional] 
+**Id** | **String** | ID of the catalog product group. | 
+**Name** | **String** | Name of catalog product group | [optional] 
 **UpdatedAt** | **Int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsCreativeAssetsProductGroup = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsProductGroup  -CatalogId null `
+$CatalogsCreativeAssetsProductGroup = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsProductGroup  -CatalogId 2680059592705 `
  -CatalogType null `
  -CreatedAt 1621350033000 `
  -Description null `

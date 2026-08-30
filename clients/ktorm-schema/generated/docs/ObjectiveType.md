@@ -14,5 +14,11 @@
 
     * `VIDEO_COMPLETION` (value: `"VIDEO_COMPLETION"`)
 
+    * `SALES` (value: `"SALES"`)
+
+    * `APP_INSTALL` (value: `"APP_INSTALL"`)
+
+    * `CTV_CONSIDERATION` (value: `"CTV_CONSIDERATION"`)
+
 
 

@@ -7,6 +7,6 @@ package org.openapitools.server.model
  * @param invites  for example: ''null''
 */
 final case class AuthRespondInvitesBody (
-  invites: Seq[AuthRespondInvitesBodyInvitesInner]
+  invites: Seq[AuthRespondInvitesBodyItem]
 )
 

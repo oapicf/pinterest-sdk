@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`gOOGLEPRODUCTCATEGORY4` | [CatalogsProductGroupMultipleStringListCriteria](.md)
+`gOOGLEPRODUCTCATEGORY4` | [CatalogsProductGroupMultipleStringListCriteria](CatalogsProductGroupMultipleStringListCriteria.md)
 
 ## Example
 

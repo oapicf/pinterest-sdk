@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.BillingInvoiceResponse;
+import org.openapitools.model.BillingInvoice;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -19,7 +19,7 @@ public class BillingInvoicesGet200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  private List<BillingInvoiceResponse> items = new ArrayList<>();
+  private List<BillingInvoice> items = new ArrayList<>();
  /**
    * Get bookmark
    * @return bookmark
@@ -43,20 +43,20 @@ public class BillingInvoicesGet200Response  {
    * @return items
   **/
   @JsonProperty("items")
-  public List<BillingInvoiceResponse> getItems() {
+  public List<BillingInvoice> getItems() {
     return items;
   }
 
-  public void setItems(List<BillingInvoiceResponse> items) {
+  public void setItems(List<BillingInvoice> items) {
     this.items = items;
   }
 
-  public BillingInvoicesGet200Response items(List<BillingInvoiceResponse> items) {
+  public BillingInvoicesGet200Response items(List<BillingInvoice> items) {
     this.items = items;
     return this;
   }
 
-  public BillingInvoicesGet200Response addItemsItem(BillingInvoiceResponse itemsItem) {
+  public BillingInvoicesGet200Response addItemsItem(BillingInvoice itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -95,10 +95,7 @@ public class BillingInvoicesGet200Response  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -8,7 +8,7 @@ import 'package:built_value/serializer.dart';
 
 part 'record_counts.g.dart';
 
-/// Record processing counts
+/// RecordCounts
 ///
 /// Properties:
 /// * [invalid] - Number of invalid records processed

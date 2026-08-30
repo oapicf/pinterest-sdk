@@ -106,10 +106,11 @@ class AudiencesApiSimulation extends Simulation {
         .feed(audiences/listPATHFeeder)
         .exec(http("audiencesList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/audiences")
+        .queryParam("exclude_nca","${exclude_nca}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("ownership_type","${ownership_type}")
         .queryParam("page_size","${page_size}")
         .queryParam("order","${order}")
-        .queryParam("ownership_type","${ownership_type}")
 )
 
     // Run scnaudiencesList with warm up and reach a constant rate for entire duration

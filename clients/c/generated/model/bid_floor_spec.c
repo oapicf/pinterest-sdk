@@ -5,13 +5,13 @@
 
 
 char* bid_floor_spec_countries_ToString(pinterest_rest_api_bid_floor_spec__e countries) {
-    char *countriesArray[] =  { "NULL", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW" };
+    char *countriesArray[] =  { "NULL", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "false", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW" };
     return countriesArray[countries - 1];
 }
 
 pinterest_rest_api_bid_floor_spec__e bid_floor_spec_countries_FromString(char* countries) {
     int stringToReturn = 0;
-    char *countriesArray[] =  { "NULL", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW" };
+    char *countriesArray[] =  { "NULL", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "false", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW" };
     size_t sizeofArray = sizeof(countriesArray) / sizeof(countriesArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(countries, countriesArray[stringToReturn]) == 0) {
@@ -23,37 +23,37 @@ pinterest_rest_api_bid_floor_spec__e bid_floor_spec_countries_FromString(char* c
 }
 
 static bid_floor_spec_t *bid_floor_spec_create_internal(
-    pinterest_rest_api_action_type__e billable_event,
+    action_type_t *billable_event,
     list_t *countries,
-    pinterest_rest_api_creative_type__e creative_type,
-    pinterest_rest_api_currency__e currency,
-    pinterest_rest_api_objective_type__e objective_type,
+    creative_type_t *creative_type,
+    currency_t *currency,
+    bid_floor_objective_type_t *objective_type,
     optimization_goal_metadata_t *optimization_goal_metadata
     ) {
     bid_floor_spec_t *bid_floor_spec_local_var = malloc(sizeof(bid_floor_spec_t));
     if (!bid_floor_spec_local_var) {
         return NULL;
     }
+    memset(bid_floor_spec_local_var, 0, sizeof(bid_floor_spec_t));
+    bid_floor_spec_local_var->_library_owned = 1;
     bid_floor_spec_local_var->billable_event = billable_event;
     bid_floor_spec_local_var->countries = countries;
     bid_floor_spec_local_var->creative_type = creative_type;
     bid_floor_spec_local_var->currency = currency;
     bid_floor_spec_local_var->objective_type = objective_type;
     bid_floor_spec_local_var->optimization_goal_metadata = optimization_goal_metadata;
-
-    bid_floor_spec_local_var->_library_owned = 1;
     return bid_floor_spec_local_var;
 }
 
 __attribute__((deprecated)) bid_floor_spec_t *bid_floor_spec_create(
-    pinterest_rest_api_action_type__e billable_event,
+    action_type_t *billable_event,
     list_t *countries,
-    pinterest_rest_api_creative_type__e creative_type,
-    pinterest_rest_api_currency__e currency,
-    pinterest_rest_api_objective_type__e objective_type,
+    creative_type_t *creative_type,
+    currency_t *currency,
+    bid_floor_objective_type_t *objective_type,
     optimization_goal_metadata_t *optimization_goal_metadata
     ) {
-    return bid_floor_spec_create_internal (
+    bid_floor_spec_t *result = bid_floor_spec_create_internal (
         billable_event,
         countries,
         creative_type,
@@ -61,6 +61,9 @@ __attribute__((deprecated)) bid_floor_spec_t *bid_floor_spec_create(
         objective_type,
         optimization_goal_metadata
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void bid_floor_spec_free(bid_floor_spec_t *bid_floor_spec) {
@@ -72,12 +75,28 @@ void bid_floor_spec_free(bid_floor_spec_t *bid_floor_spec) {
         return ;
     }
     listEntry_t *listEntry;
+    if (bid_floor_spec->billable_event) {
+        action_type_free(bid_floor_spec->billable_event);
+        bid_floor_spec->billable_event = NULL;
+    }
     if (bid_floor_spec->countries) {
         list_ForEach(listEntry, bid_floor_spec->countries) {
             country_free(listEntry->data);
         }
         list_freeList(bid_floor_spec->countries);
         bid_floor_spec->countries = NULL;
+    }
+    if (bid_floor_spec->creative_type) {
+        creative_type_free(bid_floor_spec->creative_type);
+        bid_floor_spec->creative_type = NULL;
+    }
+    if (bid_floor_spec->currency) {
+        currency_free(bid_floor_spec->currency);
+        bid_floor_spec->currency = NULL;
+    }
+    if (bid_floor_spec->objective_type) {
+        bid_floor_objective_type_free(bid_floor_spec->objective_type);
+        bid_floor_spec->objective_type = NULL;
     }
     if (bid_floor_spec->optimization_goal_metadata) {
         optimization_goal_metadata_free(bid_floor_spec->optimization_goal_metadata);
@@ -90,7 +109,7 @@ cJSON *bid_floor_spec_convertToJSON(bid_floor_spec_t *bid_floor_spec) {
     cJSON *item = cJSON_CreateObject();
 
     // bid_floor_spec->billable_event
-    if (pinterest_rest_api_action_type__NULL == bid_floor_spec->billable_event) {
+    if (!bid_floor_spec->billable_event) {
         goto fail;
     }
     cJSON *billable_event_local_JSON = action_type_convertToJSON(bid_floor_spec->billable_event);
@@ -124,7 +143,7 @@ cJSON *bid_floor_spec_convertToJSON(bid_floor_spec_t *bid_floor_spec) {
 
 
     // bid_floor_spec->creative_type
-    if(bid_floor_spec->creative_type != pinterest_rest_api_creative_type__NULL) {
+    if(bid_floor_spec->creative_type) {
     cJSON *creative_type_local_JSON = creative_type_convertToJSON(bid_floor_spec->creative_type);
     if(creative_type_local_JSON == NULL) {
         goto fail; // custom
@@ -137,7 +156,7 @@ cJSON *bid_floor_spec_convertToJSON(bid_floor_spec_t *bid_floor_spec) {
 
 
     // bid_floor_spec->currency
-    if (pinterest_rest_api_currency__NULL == bid_floor_spec->currency) {
+    if (!bid_floor_spec->currency) {
         goto fail;
     }
     cJSON *currency_local_JSON = currency_convertToJSON(bid_floor_spec->currency);
@@ -151,8 +170,8 @@ cJSON *bid_floor_spec_convertToJSON(bid_floor_spec_t *bid_floor_spec) {
 
 
     // bid_floor_spec->objective_type
-    if(bid_floor_spec->objective_type != pinterest_rest_api_objective_type__NULL) {
-    cJSON *objective_type_local_JSON = objective_type_convertToJSON(bid_floor_spec->objective_type);
+    if(bid_floor_spec->objective_type) {
+    cJSON *objective_type_local_JSON = bid_floor_objective_type_convertToJSON(bid_floor_spec->objective_type);
     if(objective_type_local_JSON == NULL) {
         goto fail; // custom
     }
@@ -188,19 +207,19 @@ bid_floor_spec_t *bid_floor_spec_parseFromJSON(cJSON *bid_floor_specJSON){
     bid_floor_spec_t *bid_floor_spec_local_var = NULL;
 
     // define the local variable for bid_floor_spec->billable_event
-    pinterest_rest_api_action_type__e billable_event_local_nonprim = 0;
+    action_type_t *billable_event_local_nonprim = NULL;
 
     // define the local list for bid_floor_spec->countries
     list_t *countriesList = NULL;
 
     // define the local variable for bid_floor_spec->creative_type
-    pinterest_rest_api_creative_type__e creative_type_local_nonprim = 0;
+    creative_type_t *creative_type_local_nonprim = NULL;
 
     // define the local variable for bid_floor_spec->currency
-    pinterest_rest_api_currency__e currency_local_nonprim = 0;
+    currency_t *currency_local_nonprim = NULL;
 
     // define the local variable for bid_floor_spec->objective_type
-    pinterest_rest_api_objective_type__e objective_type_local_nonprim = 0;
+    bid_floor_objective_type_t *objective_type_local_nonprim = NULL;
 
     // define the local variable for bid_floor_spec->optimization_goal_metadata
     optimization_goal_metadata_t *optimization_goal_metadata_local_nonprim = NULL;
@@ -268,7 +287,7 @@ bid_floor_spec_t *bid_floor_spec_parseFromJSON(cJSON *bid_floor_specJSON){
         objective_type = NULL;
     }
     if (objective_type) { 
-    objective_type_local_nonprim = objective_type_parseFromJSON(objective_type); //custom
+    objective_type_local_nonprim = bid_floor_objective_type_parseFromJSON(objective_type); //custom
     }
 
     // bid_floor_spec->optimization_goal_metadata
@@ -281,19 +300,25 @@ bid_floor_spec_t *bid_floor_spec_parseFromJSON(cJSON *bid_floor_specJSON){
     }
 
 
+
     bid_floor_spec_local_var = bid_floor_spec_create_internal (
         billable_event_local_nonprim,
         countries ? countriesList : NULL,
-        creative_type ? creative_type_local_nonprim : 0,
+        creative_type ? creative_type_local_nonprim : NULL,
         currency_local_nonprim,
-        objective_type ? objective_type_local_nonprim : 0,
+        objective_type ? objective_type_local_nonprim : NULL,
         optimization_goal_metadata ? optimization_goal_metadata_local_nonprim : NULL
         );
+
+    if (!bid_floor_spec_local_var) {
+        goto end;
+    }
 
     return bid_floor_spec_local_var;
 end:
     if (billable_event_local_nonprim) {
-        billable_event_local_nonprim = 0;
+        action_type_free(billable_event_local_nonprim);
+        billable_event_local_nonprim = NULL;
     }
     if (countriesList) {
         listEntry_t *listEntry = NULL;
@@ -305,13 +330,16 @@ end:
         countriesList = NULL;
     }
     if (creative_type_local_nonprim) {
-        creative_type_local_nonprim = 0;
+        creative_type_free(creative_type_local_nonprim);
+        creative_type_local_nonprim = NULL;
     }
     if (currency_local_nonprim) {
-        currency_local_nonprim = 0;
+        currency_free(currency_local_nonprim);
+        currency_local_nonprim = NULL;
     }
     if (objective_type_local_nonprim) {
-        objective_type_local_nonprim = 0;
+        bid_floor_objective_type_free(objective_type_local_nonprim);
+        objective_type_local_nonprim = NULL;
     }
     if (optimization_goal_metadata_local_nonprim) {
         optimization_goal_metadata_free(optimization_goal_metadata_local_nonprim);

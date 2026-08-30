@@ -47,15 +47,13 @@ class MinPriceFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MinPriceFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MinPriceFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'MIN_PRICE'), 'Required key "MinPriceFilter[MIN_PRICE]" is missing from JSON.');
+        assert(json[r'MIN_PRICE'] != null, 'Required key "MinPriceFilter[MIN_PRICE]" has a null value in JSON.');
         return true;
       }());
 
       return MinPriceFilter(
-        MIN_PRICE: mapValueOfType<CatalogsProductGroupPricingCriteria>(json, r'MIN_PRICE')!,
+        MIN_PRICE: CatalogsProductGroupPricingCriteria.fromJson(json[r'MIN_PRICE'])!,
       );
     }
     return null;

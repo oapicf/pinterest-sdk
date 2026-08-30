@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] 
-**items** | [**OpenAPI\Server\Model\UserBusinessRoleBinding**](UserBusinessRoleBinding.md) | List of employers. | 
+**items** | [**OpenAPI\Server\Model\UserBusinessRoleBinding**](UserBusinessRoleBinding.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

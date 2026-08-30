@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CURRENCY** | [**CatalogsProductGroupCurrencyCriteria**](.md) |  | [default to undefined]
+**CURRENCY** | [**CatalogsProductGroupCurrencyCriteria**](CatalogsProductGroupCurrencyCriteria.md) |  | [default to undefined]
 
 ## Example
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &TrendingKeywordsResponse{}
 
 // TrendingKeywordsResponse struct for TrendingKeywordsResponse
 type TrendingKeywordsResponse struct {
-	// The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
+	// The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.
 	Trends []TrendingKeyword `json:"trends,omitempty"`
 }
 

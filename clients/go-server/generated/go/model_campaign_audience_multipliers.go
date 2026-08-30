@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,10 +17,12 @@ package openapi
 // CampaignAudienceMultipliers - This represents a mapping from Audience ID to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified audience in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. All audience multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
 type CampaignAudienceMultipliers struct {
 
-	AUDIENCE_ID string `json:"AUDIENCE_ID,omitempty" validate:"regexp=^\\\\d+$"`
+	// Audience ID for the multiplier.
+	AUDIENCE_ID string `json:"AUDIENCE_ID,omitempty" validate:"regexp=^\\d+$"`
 }
 
-// AssertCampaignAudienceMultipliersRequired checks if the required fields are not zero-ed
+// AssertCampaignAudienceMultipliersRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCampaignAudienceMultipliersRequired(obj CampaignAudienceMultipliers) error {
 	return nil
 }

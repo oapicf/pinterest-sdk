@@ -7,14 +7,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { OptimizationGoalMetadataScrollupGoalMetadata } from './optimizationGoalMetadataScrollupGoalMetadata';
-import { OptimizationGoalMetadataConversionTagV3GoalMetadata } from './optimizationGoalMetadataConversionTagV3GoalMetadata';
-import { OptimizationGoalMetadataFrequencyGoalMetadata } from './optimizationGoalMetadataFrequencyGoalMetadata';
+import { ScrollupGoalMetadata } from './scrollupGoalMetadata';
+import { FrequencyGoalMetadata } from './frequencyGoalMetadata';
+import { ConversionTagV3GoalMetadata } from './conversionTagV3GoalMetadata';
 
 
 export interface OptimizationGoalMetadata { 
-    conversion_tag_v3_goal_metadata?: OptimizationGoalMetadataConversionTagV3GoalMetadata;
-    frequency_goal_metadata?: OptimizationGoalMetadataFrequencyGoalMetadata;
-    scrollup_goal_metadata?: OptimizationGoalMetadataScrollupGoalMetadata;
+    conversion_tag_v3_goal_metadata?: ConversionTagV3GoalMetadata;
+    frequency_goal_metadata?: FrequencyGoalMetadata;
+    scrollup_goal_metadata?: ScrollupGoalMetadata;
 }
 

@@ -7,7 +7,7 @@
 
 static board_create_t *board_create_create_internal(
     char *description,
-    int is_ads_only,
+    int *is_ads_only,
     char *name,
     board_privacy_t *privacy
     ) {
@@ -15,27 +15,36 @@ static board_create_t *board_create_create_internal(
     if (!board_create_local_var) {
         return NULL;
     }
+    memset(board_create_local_var, 0, sizeof(board_create_t));
+    board_create_local_var->_library_owned = 1;
     board_create_local_var->description = description;
     board_create_local_var->is_ads_only = is_ads_only;
     board_create_local_var->name = name;
     board_create_local_var->privacy = privacy;
-
-    board_create_local_var->_library_owned = 1;
     return board_create_local_var;
 }
 
 __attribute__((deprecated)) board_create_t *board_create_create(
     char *description,
-    int is_ads_only,
+    int *is_ads_only,
     char *name,
     board_privacy_t *privacy
     ) {
-    return board_create_create_internal (
+    int *is_ads_only_copy = NULL;
+    if (is_ads_only) {
+        is_ads_only_copy = malloc(sizeof(int));
+        if (is_ads_only_copy) *is_ads_only_copy = *is_ads_only;
+    }
+    board_create_t *result = board_create_create_internal (
         description,
-        is_ads_only,
+        is_ads_only_copy,
         name,
         privacy
         );
+    if (!result) {
+        free(is_ads_only_copy);
+    }
+    return result;
 }
 
 void board_create_free(board_create_t *board_create) {
@@ -50,6 +59,10 @@ void board_create_free(board_create_t *board_create) {
     if (board_create->description) {
         free(board_create->description);
         board_create->description = NULL;
+    }
+    if (board_create->is_ads_only) {
+        free(board_create->is_ads_only);
+        board_create->is_ads_only = NULL;
     }
     if (board_create->name) {
         free(board_create->name);
@@ -75,7 +88,7 @@ cJSON *board_create_convertToJSON(board_create_t *board_create) {
 
     // board_create->is_ads_only
     if(board_create->is_ads_only) {
-    if(cJSON_AddBoolToObject(item, "is_ads_only", board_create->is_ads_only) == NULL) {
+    if(cJSON_AddBoolToObject(item, "is_ads_only", *board_create->is_ads_only) == NULL) {
     goto fail; //Bool
     }
     }
@@ -114,6 +127,13 @@ board_create_t *board_create_parseFromJSON(cJSON *board_createJSON){
 
     board_create_t *board_create_local_var = NULL;
 
+    char *description_local_str = NULL;
+
+    // define the local variable for board_create->is_ads_only
+    int *is_ads_only_local_var = NULL;
+
+    char *name_local_str = NULL;
+
     // define the local variable for board_create->privacy
     board_privacy_t *privacy_local_nonprim = NULL;
 
@@ -139,6 +159,12 @@ board_create_t *board_create_parseFromJSON(cJSON *board_createJSON){
     {
     goto end; //Bool
     }
+    is_ads_only_local_var = malloc(sizeof(int));
+    if(!is_ads_only_local_var)
+    {
+        goto end;
+    }
+    *is_ads_only_local_var = is_ads_only->valueint;
     }
 
     // board_create->name
@@ -166,15 +192,34 @@ board_create_t *board_create_parseFromJSON(cJSON *board_createJSON){
     }
 
 
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     board_create_local_var = board_create_create_internal (
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        is_ads_only ? is_ads_only->valueint : 0,
-        strdup(name->valuestring),
+        description_local_str,
+        is_ads_only_local_var,
+        name_local_str,
         privacy ? privacy_local_nonprim : NULL
         );
 
+    if (!board_create_local_var) {
+        goto end;
+    }
+
     return board_create_local_var;
 end:
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (is_ads_only_local_var) {
+        free(is_ads_only_local_var);
+        is_ads_only_local_var = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
     if (privacy_local_nonprim) {
         board_privacy_free(privacy_local_nonprim);
         privacy_local_nonprim = NULL;

@@ -16,7 +16,7 @@ part 'catalogs_hotel_product_group_update_request.g.dart';
 /// * [catalogType] 
 /// * [description] 
 /// * [filters] 
-/// * [name] 
+/// * [name] - Name of catalog product group
 @BuiltValue()
 abstract class CatalogsHotelProductGroupUpdateRequest implements Built<CatalogsHotelProductGroupUpdateRequest, CatalogsHotelProductGroupUpdateRequestBuilder> {
   @BuiltValueField(wireName: r'catalog_type')
@@ -29,6 +29,7 @@ abstract class CatalogsHotelProductGroupUpdateRequest implements Built<CatalogsH
   @BuiltValueField(wireName: r'filters')
   CatalogsHotelProductGroupFilters? get filters;
 
+  /// Name of catalog product group
   @BuiltValueField(wireName: r'name')
   String? get name;
 
@@ -109,8 +110,9 @@ class _$CatalogsHotelProductGroupUpdateRequestSerializer implements PrimitiveSer
         case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum),
-          ) as CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum;
+            specifiedType: const FullType.nullable(CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum),
+          ) as CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum?;
+          if (valueDes == null) continue;
           result.catalogType = valueDes;
           break;
         case r'description':
@@ -124,15 +126,17 @@ class _$CatalogsHotelProductGroupUpdateRequestSerializer implements PrimitiveSer
         case r'filters':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsHotelProductGroupFilters),
-          ) as CatalogsHotelProductGroupFilters;
+            specifiedType: const FullType.nullable(CatalogsHotelProductGroupFilters),
+          ) as CatalogsHotelProductGroupFilters?;
+          if (valueDes == null) continue;
           result.filters.replace(valueDes);
           break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         default:

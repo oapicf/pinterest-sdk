@@ -13,10 +13,10 @@ Method | HTTP request | Description
 
 ## audiences_slash_create
 
-> models::Audience audiences_slash_create(ad_account_id, audience_create_request)
+> models::AdAccountsAudience audiences_slash_create(ad_account_id, ad_accounts_audience_create)
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+Create a new audience for the ad account.
 
 ### Parameters
 
@@ -24,11 +24,11 @@ Create an audience you can use in targeting for specific ad groups. Targeting co
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**audience_create_request** | [**AudienceCreateRequest**](AudienceCreateRequest.md) | List of ads to create, size limit [1, 30] | [required] |
+**ad_accounts_audience_create** | [**AdAccountsAudienceCreate**](AdAccountsAudienceCreate.md) |  | [required] |
 
 ### Return type
 
-[**models::Audience**](Audience.md)
+[**models::AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -44,7 +44,7 @@ Name | Type | Description  | Required | Notes
 
 ## audiences_slash_get
 
-> models::Audience audiences_slash_get(ad_account_id, audience_id)
+> models::AdAccountsAudience audiences_slash_get(audience_id, ad_account_id)
 Get audience
 
 Get a specific audience given the audience ID.
@@ -54,12 +54,12 @@ Get a specific audience given the audience ID.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**audience_id** | **String** | Audience ID. | [required] |
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**audience_id** | **String** | Unique identifier of an audience | [required] |
 
 ### Return type
 
-[**models::Audience**](Audience.md)
+[**models::AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Required | Notes
 
 ## audiences_slash_list
 
-> models::AudiencesList200Response audiences_slash_list(ad_account_id, bookmark, order, page_size, ownership_type)
+> models::AudiencesList200Response audiences_slash_list(ad_account_id, bookmark, page_size, order, ownership_type, exclude_nca)
 List audiences
 
 Get list of audiences for the ad account.
@@ -87,9 +87,10 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**order** | Option<**String**> | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
-**ownership_type** | Option<**String**> | Filter audiences by ownership type. |  |[default to OWNED]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
+**order** | Option<[**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md)> | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. |  |
+**ownership_type** | Option<[**AudienceOwnershipType**](AudienceOwnershipType.md)> |  |  |
+**exclude_nca** | Option<**bool**> | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). |  |[default to false]
 
 ### Return type
 
@@ -109,23 +110,23 @@ Name | Type | Description  | Required | Notes
 
 ## audiences_slash_update
 
-> models::Audience audiences_slash_update(ad_account_id, audience_id, audience_update_request)
+> models::AdAccountsAudience audiences_slash_update(audience_id, ad_account_id, ad_accounts_audience_update)
 Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**audience_id** | **String** | Audience ID. | [required] |
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**audience_id** | **String** | Unique identifier of an audience | [required] |
-**audience_update_request** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md) | The audience to be updated. | [required] |
+**ad_accounts_audience_update** | [**AdAccountsAudienceUpdate**](AdAccountsAudienceUpdate.md) |  | [required] |
 
 ### Return type
 
-[**models::Audience**](Audience.md)
+[**models::AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 

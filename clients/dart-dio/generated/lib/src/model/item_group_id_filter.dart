@@ -74,7 +74,7 @@ class _$ItemGroupIdFilterSerializer implements PrimitiveSerializer<ItemGroupIdFi
             value,
             specifiedType: const FullType(CatalogsProductGroupMultipleStringCriteria),
           ) as CatalogsProductGroupMultipleStringCriteria;
-          result.ITEM_GROUP_ID = valueDes;
+          result.ITEM_GROUP_ID.replace(valueDes);
           break;
         default:
           unhandled.add(key);

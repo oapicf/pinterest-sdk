@@ -15,35 +15,45 @@ class TrendingPin(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, height: int=None, id: str=None, src: str=None, width: int=None):  # noqa: E501
+    def __init__(self, color: str=None, height: int=None, id: str=None, src: str=None, vertical_offset: float=None, width: int=None):  # noqa: E501
         """TrendingPin - a model defined in Swagger
 
+        :param color: The color of this TrendingPin.  # noqa: E501
+        :type color: str
         :param height: The height of this TrendingPin.  # noqa: E501
         :type height: int
         :param id: The id of this TrendingPin.  # noqa: E501
         :type id: str
         :param src: The src of this TrendingPin.  # noqa: E501
         :type src: str
+        :param vertical_offset: The vertical_offset of this TrendingPin.  # noqa: E501
+        :type vertical_offset: float
         :param width: The width of this TrendingPin.  # noqa: E501
         :type width: int
         """
         self.swagger_types = {
+            'color': str,
             'height': int,
             'id': str,
             'src': str,
+            'vertical_offset': float,
             'width': int
         }
 
         self.attribute_map = {
+            'color': 'color',
             'height': 'height',
             'id': 'id',
             'src': 'src',
+            'vertical_offset': 'vertical_offset',
             'width': 'width'
         }
 
+        self._color = color
         self._height = height
         self._id = id
         self._src = src
+        self._vertical_offset = vertical_offset
         self._width = width
 
     @classmethod
@@ -56,6 +66,31 @@ class TrendingPin(Model):
         :rtype: TrendingPin
         """
         return util.deserialize_model(dikt, cls)
+
+    @property
+    def color(self) -> str:
+        """Gets the color of this TrendingPin.
+
+        Dominant color of the pin image in hex format  # noqa: E501
+
+        :return: The color of this TrendingPin.
+        :rtype: str
+        """
+        return self._color
+
+    @color.setter
+    def color(self, color: str):
+        """Sets the color of this TrendingPin.
+
+        Dominant color of the pin image in hex format  # noqa: E501
+
+        :param color: The color of this TrendingPin.
+        :type color: str
+        """
+        if color is None:
+            raise ValueError("Invalid value for `color`, must not be `None`")  # noqa: E501
+
+        self._color = color
 
     @property
     def height(self) -> int:
@@ -131,6 +166,29 @@ class TrendingPin(Model):
             raise ValueError("Invalid value for `src`, must not be `None`")  # noqa: E501
 
         self._src = src
+
+    @property
+    def vertical_offset(self) -> float:
+        """Gets the vertical_offset of this TrendingPin.
+
+        The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.  # noqa: E501
+
+        :return: The vertical_offset of this TrendingPin.
+        :rtype: float
+        """
+        return self._vertical_offset
+
+    @vertical_offset.setter
+    def vertical_offset(self, vertical_offset: float):
+        """Sets the vertical_offset of this TrendingPin.
+
+        The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.  # noqa: E501
+
+        :param vertical_offset: The vertical_offset of this TrendingPin.
+        :type vertical_offset: float
+        """
+
+        self._vertical_offset = vertical_offset
 
     @property
     def width(self) -> int:

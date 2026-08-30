@@ -7,6 +7,7 @@ Resource create operation model.
 
 Name | Type
 ------------ | -------------
+`aiDisclosures` | [AiDisclosures](AiDisclosures.md)
 `altText` | string
 `boardId` | string
 `boardSectionId` | string
@@ -25,6 +26,7 @@ import type { PinCreate } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "aiDisclosures": null,
   "altText": null,
   "boardId": null,
   "boardSectionId": null,

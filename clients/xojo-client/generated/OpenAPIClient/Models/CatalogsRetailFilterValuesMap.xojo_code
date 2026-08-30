@@ -12,7 +12,7 @@ Protected Class CatalogsRetailFilterValuesMap
 
 
 	#tag Property, Flags = &h0
-		availability() As String
+		availability() As ProductAvailability
 	#tag EndProperty
 
 
@@ -22,7 +22,7 @@ Protected Class CatalogsRetailFilterValuesMap
 
 
 	#tag Property, Flags = &h0
-		condition() As String
+		condition() As ProductCondition
 	#tag EndProperty
 
 
@@ -52,7 +52,7 @@ Protected Class CatalogsRetailFilterValuesMap
 
 
 	#tag Property, Flags = &h0
-		gender() As String
+		gender() As Gender
 	#tag EndProperty
 
 
@@ -92,7 +92,7 @@ Protected Class CatalogsRetailFilterValuesMap
 
 
 	#tag Property, Flags = &h0
-		media_type() As String
+		media_type() As MediaType
 	#tag EndProperty
 
 
@@ -121,99 +121,7 @@ Protected Class CatalogsRetailFilterValuesMap
 	#tag EndProperty
 
 
-    #tag Enum, Name = AvailabilityEnum, Type = Integer, Flags = &h0
-        
-        InStock
-        OutOfStock
-        Preorder
-        Unavailable
-        
-    #tag EndEnum
 
-    #tag Enum, Name = ConditionEnum, Type = Integer, Flags = &h0
-        
-        Escapednew
-        Used
-        Refurbished
-        
-    #tag EndEnum
-
-    #tag Enum, Name = GenderEnum, Type = Integer, Flags = &h0
-        
-        Female
-        Male
-        Unisex
-        
-    #tag EndEnum
-
-    #tag Enum, Name = Media_typeEnum, Type = Integer, Flags = &h0
-        
-        Image
-        Video
-        
-    #tag EndEnum
-
-
-	#tag Method, Flags = &h0
-		Shared Function AvailabilityEnumToString(value As AvailabilityEnum) As String
-		  Select Case value
-		    
-		    Case AvailabilityEnum.InStock
-		      Return "IN_STOCK"
-		    Case AvailabilityEnum.OutOfStock
-		      Return "OUT_OF_STOCK"
-		    Case AvailabilityEnum.Preorder
-		      Return "PREORDER"
-		    Case AvailabilityEnum.Unavailable
-		      Return "UNAVAILABLE"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function ConditionEnumToString(value As ConditionEnum) As String
-		  Select Case value
-		    
-		    Case ConditionEnum.Escapednew
-		      Return "NEW"
-		    Case ConditionEnum.Used
-		      Return "USED"
-		    Case ConditionEnum.Refurbished
-		      Return "REFURBISHED"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function GenderEnumToString(value As GenderEnum) As String
-		  Select Case value
-		    
-		    Case GenderEnum.Female
-		      Return "FEMALE"
-		    Case GenderEnum.Male
-		      Return "MALE"
-		    Case GenderEnum.Unisex
-		      Return "UNISEX"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function Media_typeEnumToString(value As Media_typeEnum) As String
-		  Select Case value
-		    
-		    Case Media_typeEnum.Image
-		      Return "IMAGE"
-		    Case Media_typeEnum.Video
-		      Return "VIDEO"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -266,11 +174,27 @@ Protected Class CatalogsRetailFilterValuesMap
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="availability"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ProductAvailability"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="brand"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="condition"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ProductCondition"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -311,6 +235,14 @@ Protected Class CatalogsRetailFilterValuesMap
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="gender"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Gender"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -367,6 +299,14 @@ Protected Class CatalogsRetailFilterValuesMap
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="media_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="MediaType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

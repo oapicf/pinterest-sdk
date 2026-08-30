@@ -10,59 +10,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.TopPinsAnalyticsResponseDateAvailability;
-import org.openapitools.model.TopPinsAnalyticsResponsePinsInner;
+import org.openapitools.model.TopPinsAnalyticsResponsePinsItems;
+import org.openapitools.model.TopPinsSortBy;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TopPinsAnalyticsResponse   {
   @JsonProperty("date_availability")
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
 
   @JsonProperty("pins")
-  private List<TopPinsAnalyticsResponsePinsInner> pins = null;
-
-  /**
-   * Gets or Sets sortBy
-   */
-  public enum SortByEnum {
-    ENGAGEMENT("ENGAGEMENT"),
-    
-    SAVE("SAVE"),
-    
-    IMPRESSION("IMPRESSION"),
-    
-    OUTBOUND_CLICK("OUTBOUND_CLICK"),
-    
-    PIN_CLICK("PIN_CLICK");
-
-    private String value;
-
-    SortByEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SortByEnum fromValue(String text) {
-      for (SortByEnum b : SortByEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
+  private List<TopPinsAnalyticsResponsePinsItems> pins = null;
 
   @JsonProperty("sort_by")
-  private SortByEnum sortBy;
+  private TopPinsSortBy sortBy;
 
   /**
    **/
@@ -83,7 +47,7 @@ public class TopPinsAnalyticsResponse   {
 
   /**
    **/
-  public TopPinsAnalyticsResponse pins(List<TopPinsAnalyticsResponsePinsInner> pins) {
+  public TopPinsAnalyticsResponse pins(List<TopPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
     return this;
   }
@@ -91,27 +55,27 @@ public class TopPinsAnalyticsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("pins")
-  public List<TopPinsAnalyticsResponsePinsInner> getPins() {
+  public List<TopPinsAnalyticsResponsePinsItems> getPins() {
     return pins;
   }
-  public void setPins(List<TopPinsAnalyticsResponsePinsInner> pins) {
+  public void setPins(List<TopPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
   }
 
   /**
    **/
-  public TopPinsAnalyticsResponse sortBy(SortByEnum sortBy) {
+  public TopPinsAnalyticsResponse sortBy(TopPinsSortBy sortBy) {
     this.sortBy = sortBy;
     return this;
   }
 
   
-  @ApiModelProperty(example = "IMPRESSION", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("sort_by")
-  public SortByEnum getSortBy() {
+  public TopPinsSortBy getSortBy() {
     return sortBy;
   }
-  public void setSortBy(SortByEnum sortBy) {
+  public void setSortBy(TopPinsSortBy sortBy) {
     this.sortBy = sortBy;
   }
 
@@ -152,10 +116,7 @@ public class TopPinsAnalyticsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

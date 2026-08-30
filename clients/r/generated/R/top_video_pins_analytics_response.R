@@ -7,9 +7,9 @@
 #' @title TopVideoPinsAnalyticsResponse
 #' @description TopVideoPinsAnalyticsResponse Class
 #' @format An \code{R6Class} generator object
-#' @field date_availability  \link{TopPinsAnalyticsResponseDateAvailability} [optional]
-#' @field pins  list(\link{TopVideoPinsAnalyticsResponsePinsInner}) [optional]
-#' @field sort_by  character [optional]
+#' @field date_availability  \link{TopVideoPinsAnalyticsResponseDateAvailability} [optional]
+#' @field pins  list(\link{TopVideoPinsAnalyticsResponsePinsItems}) [optional]
+#' @field sort_by  \link{TopVideoPinsSortBy} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -38,12 +38,10 @@ TopVideoPinsAnalyticsResponse <- R6::R6Class(
         self$`pins` <- `pins`
       }
       if (!is.null(`sort_by`)) {
-        if (!(`sort_by` %in% c("SAVE", "IMPRESSION", "OUTBOUND_CLICK", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START"))) {
-          stop(paste("Error! \"", `sort_by`, "\" cannot be assigned to `sort_by`. Must be \"SAVE\", \"IMPRESSION\", \"OUTBOUND_CLICK\", \"VIDEO_MRC_VIEW\", \"VIDEO_AVG_WATCH_TIME\", \"VIDEO_V50_WATCH_TIME\", \"QUARTILE_95_PERCENT_VIEW\", \"VIDEO_10S_VIEW\", \"VIDEO_START\".", sep = ""))
+        if (!(`sort_by` %in% c())) {
+          stop(paste("Error! \"", `sort_by`, "\" cannot be assigned to `sort_by`. Must be .", sep = ""))
         }
-        if (!(is.character(`sort_by`) && length(`sort_by`) == 1)) {
-          stop(paste("Error! Invalid data for `sort_by`. Must be a string:", `sort_by`))
-        }
+        stopifnot(R6::is.R6(`sort_by`))
         self$`sort_by` <- `sort_by`
       }
     },
@@ -81,17 +79,40 @@ TopVideoPinsAnalyticsResponse <- R6::R6Class(
       TopVideoPinsAnalyticsResponseObject <- list()
       if (!is.null(self$`date_availability`)) {
         TopVideoPinsAnalyticsResponseObject[["date_availability"]] <-
-          self$`date_availability`$toSimpleType()
+          self$extractSimpleType(self$`date_availability`)
       }
       if (!is.null(self$`pins`)) {
         TopVideoPinsAnalyticsResponseObject[["pins"]] <-
-          lapply(self$`pins`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`pins`)
       }
       if (!is.null(self$`sort_by`)) {
         TopVideoPinsAnalyticsResponseObject[["sort_by"]] <-
-          self$`sort_by`
+          self$extractSimpleType(self$`sort_by`)
       }
       return(TopVideoPinsAnalyticsResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -102,18 +123,17 @@ TopVideoPinsAnalyticsResponse <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`date_availability`)) {
-        `date_availability_object` <- TopPinsAnalyticsResponseDateAvailability$new()
+        `date_availability_object` <- TopVideoPinsAnalyticsResponseDateAvailability$new()
         `date_availability_object`$fromJSON(jsonlite::toJSON(this_object$`date_availability`, auto_unbox = TRUE, digits = NA))
         self$`date_availability` <- `date_availability_object`
       }
       if (!is.null(this_object$`pins`)) {
-        self$`pins` <- ApiClient$new()$deserializeObj(this_object$`pins`, "array[TopVideoPinsAnalyticsResponsePinsInner]", loadNamespace("openapi"))
+        self$`pins` <- ApiClient$new()$deserializeObj(this_object$`pins`, "array[TopVideoPinsAnalyticsResponsePinsItems]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`sort_by`)) {
-        if (!is.null(this_object$`sort_by`) && !(this_object$`sort_by` %in% c("SAVE", "IMPRESSION", "OUTBOUND_CLICK", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START"))) {
-          stop(paste("Error! \"", this_object$`sort_by`, "\" cannot be assigned to `sort_by`. Must be \"SAVE\", \"IMPRESSION\", \"OUTBOUND_CLICK\", \"VIDEO_MRC_VIEW\", \"VIDEO_AVG_WATCH_TIME\", \"VIDEO_V50_WATCH_TIME\", \"QUARTILE_95_PERCENT_VIEW\", \"VIDEO_10S_VIEW\", \"VIDEO_START\".", sep = ""))
-        }
-        self$`sort_by` <- this_object$`sort_by`
+        `sort_by_object` <- TopVideoPinsSortBy$new()
+        `sort_by_object`$fromJSON(jsonlite::toJSON(this_object$`sort_by`, auto_unbox = TRUE, digits = NA))
+        self$`sort_by` <- `sort_by_object`
       }
       self
     },
@@ -136,12 +156,9 @@ TopVideoPinsAnalyticsResponse <- R6::R6Class(
     #' @return the instance of TopVideoPinsAnalyticsResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`date_availability` <- TopPinsAnalyticsResponseDateAvailability$new()$fromJSON(jsonlite::toJSON(this_object$`date_availability`, auto_unbox = TRUE, digits = NA))
-      self$`pins` <- ApiClient$new()$deserializeObj(this_object$`pins`, "array[TopVideoPinsAnalyticsResponsePinsInner]", loadNamespace("openapi"))
-      if (!is.null(this_object$`sort_by`) && !(this_object$`sort_by` %in% c("SAVE", "IMPRESSION", "OUTBOUND_CLICK", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START"))) {
-        stop(paste("Error! \"", this_object$`sort_by`, "\" cannot be assigned to `sort_by`. Must be \"SAVE\", \"IMPRESSION\", \"OUTBOUND_CLICK\", \"VIDEO_MRC_VIEW\", \"VIDEO_AVG_WATCH_TIME\", \"VIDEO_V50_WATCH_TIME\", \"QUARTILE_95_PERCENT_VIEW\", \"VIDEO_10S_VIEW\", \"VIDEO_START\".", sep = ""))
-      }
-      self$`sort_by` <- this_object$`sort_by`
+      self$`date_availability` <- TopVideoPinsAnalyticsResponseDateAvailability$new()$fromJSON(jsonlite::toJSON(this_object$`date_availability`, auto_unbox = TRUE, digits = NA))
+      self$`pins` <- ApiClient$new()$deserializeObj(this_object$`pins`, "array[TopVideoPinsAnalyticsResponsePinsItems]", loadNamespace("openapi"))
+      self$`sort_by` <- TopVideoPinsSortBy$new()$fromJSON(jsonlite::toJSON(this_object$`sort_by`, auto_unbox = TRUE, digits = NA))
       self
     },
 

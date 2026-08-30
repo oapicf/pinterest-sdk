@@ -1,0 +1,32 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "ALL_ITEMS filter for retail catalogs. Optional product_group_id scopes the report to items in that product group. If omitted, all items are included.",
+  "name": "CatalogsRetailReportAllItemsFilter",
+  "fields": [
+    {
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of a catalog. If not given, oldest catalog will be used",
+      "default": null
+    },
+    {
+      "name": "product_group_id",
+      "type": ["null", "string"],
+      "doc": "Optional product group ID. If omitted, all items are included. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature.",
+      "default": null
+    },
+    {
+      "name": "report_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsRetailReportAllItemsFilter_reportUnderscoretype",
+        "symbols": [
+          "ALL_ITEMS"
+        ]
+      },
+      "doc": ""
+    }
+  ]
+
+}

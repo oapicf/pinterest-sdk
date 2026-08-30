@@ -48,47 +48,47 @@ public:
 
 	/*! \brief Get 
 	 */
+	CatalogsType getCatalogType();
+
+	/*! \brief Set 
+	 */
+	void setCatalogType(CatalogsType catalog_type);
+	/*! \brief Get 
+	 */
 	std::string getCreatedAt();
 
 	/*! \brief Set 
 	 */
-	void setCreatedAt(std::string  created_at);
+	void setCreatedAt(std::string created_at);
 	/*! \brief Get ID of the catalog entity.
 	 */
 	std::string getId();
 
 	/*! \brief Set ID of the catalog entity.
 	 */
-	void setId(std::string  id);
-	/*! \brief Get 
-	 */
-	std::string getUpdatedAt();
-
-	/*! \brief Set 
-	 */
-	void setUpdatedAt(std::string  updated_at);
-	/*! \brief Get 
-	 */
-	CatalogsType getCatalogType();
-
-	/*! \brief Set 
-	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setId(std::string id);
 	/*! \brief Get A human-friendly name associated to a catalog entity.
 	 */
 	std::string getName();
 
 	/*! \brief Set A human-friendly name associated to a catalog entity.
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
+	/*! \brief Get 
+	 */
+	std::string getUpdatedAt();
+
+	/*! \brief Set 
+	 */
+	void setUpdatedAt(std::string updated_at);
 
 
     private:
+    CatalogsType catalog_type;
     std::string created_at{};
     std::string id{};
-    std::string updated_at{};
-    CatalogsType catalog_type;
     std::string name{};
+    std::string updated_at{};
 };
 }
 

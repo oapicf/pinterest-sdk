@@ -6,7 +6,13 @@
   "fields": [
     {
       "name": "catalog_type",
-      "type": "model.CatalogsType",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsVerticalFeedsUpdateRequest_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
       "doc": ""
     },
     {

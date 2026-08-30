@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const catalogs_retail_filter_values_map = require('../models/catalogs_retail_filter_values_map');
+const CatalogsRetailFilterValuesMap = require('../models/CatalogsRetailFilterValuesMap');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -14,14 +14,14 @@ module.exports = {
                     'RETAIL',
                 ],
             },
-            ...catalogs_retail_filter_values_map.fields(`${keyPrefix}filter_values`, isInput),
+            ...CatalogsRetailFilterValuesMap.fields(`${keyPrefix}filter_values`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
-            'filter_values': utils.removeIfEmpty(catalogs_retail_filter_values_map.mapping(bundle, `${keyPrefix}filter_values`)),
+            'filter_values': utils.removeIfEmpty(CatalogsRetailFilterValuesMap.mapping(bundle, `${keyPrefix}filter_values`)),
         }
     },
 }

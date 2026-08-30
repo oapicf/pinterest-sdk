@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -17,11 +17,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 
 /**
- * The current status of the invite.
+ * The current status of an invite or request.
  */
 
 /**
- * The current status of the invite.
+ * The current status of an invite or request.
  */
 public enum InviteStatus {
     

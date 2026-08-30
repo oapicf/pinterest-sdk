@@ -61,12 +61,12 @@ PinAnalyticsMetricsResponse::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<PinAnalyticsMetricsResponse_daily_metrics_inner> new_list;
-			PinAnalyticsMetricsResponse_daily_metrics_inner inst;
+			list<PinAnalyticsDailyMetrics> new_list;
+			PinAnalyticsDailyMetrics inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("PinAnalyticsMetricsResponse_daily_metrics_inner")) {
-					jsonToValue(&inst, temp_json, "PinAnalyticsMetricsResponse_daily_metrics_inner", "");
+				if (isprimitive("PinAnalyticsDailyMetrics")) {
+					jsonToValue(&inst, temp_json, "PinAnalyticsDailyMetrics", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -114,18 +114,18 @@ PinAnalyticsMetricsResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("PinAnalyticsMetricsResponse_daily_metrics_inner")) {
-		list<PinAnalyticsMetricsResponse_daily_metrics_inner> new_list = static_cast<list <PinAnalyticsMetricsResponse_daily_metrics_inner> > (getDailyMetrics());
-		node = converttoJson(&new_list, "PinAnalyticsMetricsResponse_daily_metrics_inner", "array");
+	if (isprimitive("PinAnalyticsDailyMetrics")) {
+		list<PinAnalyticsDailyMetrics> new_list = static_cast<list <PinAnalyticsDailyMetrics> > (getDailyMetrics());
+		node = converttoJson(&new_list, "PinAnalyticsDailyMetrics", "array");
 	} else {
 		node = json_node_alloc();
-		list<PinAnalyticsMetricsResponse_daily_metrics_inner> new_list = static_cast<list <PinAnalyticsMetricsResponse_daily_metrics_inner> > (getDailyMetrics());
+		list<PinAnalyticsDailyMetrics> new_list = static_cast<list <PinAnalyticsDailyMetrics> > (getDailyMetrics());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<PinAnalyticsMetricsResponse_daily_metrics_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<PinAnalyticsDailyMetrics>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			PinAnalyticsMetricsResponse_daily_metrics_inner obj = *it;
+			PinAnalyticsDailyMetrics obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -185,14 +185,14 @@ PinAnalyticsMetricsResponse::toJson()
 	return ret;
 }
 
-std::list<PinAnalyticsMetricsResponse_daily_metrics_inner>
+std::list<PinAnalyticsDailyMetrics>
 PinAnalyticsMetricsResponse::getDailyMetrics()
 {
 	return daily_metrics;
 }
 
 void
-PinAnalyticsMetricsResponse::setDailyMetrics(std::list <PinAnalyticsMetricsResponse_daily_metrics_inner> daily_metrics)
+PinAnalyticsMetricsResponse::setDailyMetrics(std::list <PinAnalyticsDailyMetrics> daily_metrics)
 {
 	this->daily_metrics = daily_metrics;
 }

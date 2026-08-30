@@ -1,17 +1,17 @@
 #tag Class
 Protected Class BillingApi
 	#tag Method, Flags = &h0
-		Sub AdsCreditRedeem(, adAccountId As String, adsCreditRedeemRequest As OpenAPIClient.Models.AdsCreditRedeemRequest)
+		Sub AdsCreditRedeem(, adAccountId As String, adsCreditRedeemCreate As OpenAPIClient.Models.AdsCreditRedeemCreate)
 		  // Operation ads_credit/redeem
 		  // Redeem ad credits
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter adsCreditRedeemRequest: (body) Redeem ad credits request. 
+		  // - parameter adsCreditRedeemCreate: (body)  
 		  //
-		  // Invokes BillingApiCallbackHandler.AdsCreditRedeemCallback(AdsCreditRedeemResponse) on completion. 
+		  // Invokes BillingApiCallbackHandler.AdsCreditRedeemCallback(AdsCreditRedeem) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/ads_credit/redeem
-		  // - Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+		  // - Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -21,7 +21,7 @@ Protected Class BillingApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(adsCreditRedeemRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(adsCreditRedeemCreate), "application/json")
 		  
 		  
 		  
@@ -48,7 +48,7 @@ Protected Class BillingApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function AdsCreditRedeemPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AdsCreditRedeemResponse) As Boolean
+		Private Function AdsCreditRedeemPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AdsCreditRedeem) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -56,7 +56,7 @@ Protected Class BillingApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.AdsCreditRedeemResponse
+			  outData = New OpenAPIClient.Models.AdsCreditRedeem
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -109,7 +109,7 @@ Protected Class BillingApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.AdsCreditRedeemResponse
+		  Dim data As OpenAPIClient.Models.AdsCreditRedeem
 		  CallbackHandler.AdsCreditRedeemCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -123,7 +123,7 @@ Protected Class BillingApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.AdsCreditRedeemResponse
+		  Dim data As OpenAPIClient.Models.AdsCreditRedeem
 		  Call AdsCreditRedeemPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.AdsCreditRedeemCallback(error, data)
@@ -140,12 +140,12 @@ Protected Class BillingApi
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes BillingApiCallbackHandler.AdsCreditsDiscountsGetCallback(AdsCreditsDiscountsGet200Response) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/ads_credit/discounts
-		  // - Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+		  // - Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -409,17 +409,17 @@ Protected Class BillingApi
 
 
 	#tag Method, Flags = &h0
-		Sub BillingInvoicesGet(, adAccountId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, sort As SortEnum_BillingInvoicesGet, order As OrderEnum_BillingInvoicesGet, status As StatusEnum_BillingInvoicesGet, documentType As Document_typeEnum_BillingInvoicesGet, Optional startDueDate As Date, Optional endDueDate As Date)
+		Sub BillingInvoicesGet(, adAccountId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, order As OpenAPIClient.Models.PinterestLibPaginationOrderOptional, sort As OpenAPIClient.Models.BillingInvoiceSortFieldOptional, status As OpenAPIClient.Models.BillingInvoiceStatusOptional, documentType As OpenAPIClient.Models.BillingInvoiceDocumentTypeOptional, Optional startDueDate As Date, Optional endDueDate As Date)
 		  // Operation billing_invoices/get
 		  // Get billing invoices
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-		  // - parameter sort: (query) Field of which to sort billing invoices (optional, default to DUE_DATE)
-		  // - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Sample)
-		  // - parameter status: (query) Status of billing invoices to filter by (optional, default to Sample)
-		  // - parameter documentType: (query) Document type of billing invoices to filter by (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+		  // - parameter order: (query) The order in which to sort the items returned: &quot;ASCENDING&quot; or &quot;DESCENDING&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Nil)
+		  // - parameter sort: (query) Field of which to sort billing invoices (optional, default to Nil)
+		  // - parameter status: (query) Status of billing invoices to filter by (optional, default to Nil)
+		  // - parameter documentType: (query) Document type of billing invoices to filter by (optional, default to Nil)
 		  // - parameter startDueDate: (query) Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional, default to Nil)
 		  // - parameter endDueDate: (query) Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional, default to Nil)
 		  //
@@ -442,13 +442,13 @@ Protected Class BillingApi
 		  
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("sort") + "=" + EncodeURLComponent(SortEnum_BillingInvoicesGetToString(sort))
+		  If order <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("order") + "=" + EncodeURLComponent(Xoson.toJSON(order))
 		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("order") + "=" + EncodeURLComponent(OrderEnum_BillingInvoicesGetToString(order))
+		  If sort <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("sort") + "=" + EncodeURLComponent(Xoson.toJSON(sort))
 		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("status") + "=" + EncodeURLComponent(StatusEnum_BillingInvoicesGetToString(status))
+		  If status <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("status") + "=" + EncodeURLComponent(Xoson.toJSON(status))
 		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("document_type") + "=" + EncodeURLComponent(Document_typeEnum_BillingInvoicesGetToString(documentType))
+		  If documentType <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("document_type") + "=" + EncodeURLComponent(Xoson.toJSON(documentType))
 		  
 		  If startDueDate <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("start_due_date") + "=" + EncodeURLComponent(startDueDate.ToRFC3339)
 		  
@@ -564,79 +564,21 @@ Protected Class BillingApi
 
 
 
-	#tag Method, Flags = &h21
-		Private Function SortEnum_BillingInvoicesGetToString(value As SortEnum_BillingInvoicesGet) As String
-		  Select Case value
-		    
-		    Case SortEnum_BillingInvoicesGet.DueDate
-		      Return "DUE_DATE"
-		    Case SortEnum_BillingInvoicesGet.BillingPeriod
-		      Return "BILLING_PERIOD"
-		    Case SortEnum_BillingInvoicesGet.DocumentType
-		      Return "DOCUMENT_TYPE"
-		    Case SortEnum_BillingInvoicesGet.TotalAmount
-		      Return "TOTAL_AMOUNT"
-		    Case SortEnum_BillingInvoicesGet.InvoiceNumber
-		      Return "INVOICE_NUMBER"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h21
-		Private Function OrderEnum_BillingInvoicesGetToString(value As OrderEnum_BillingInvoicesGet) As String
-		  Select Case value
-		    
-		    Case OrderEnum_BillingInvoicesGet.Ascending
-		      Return "ASCENDING"
-		    Case OrderEnum_BillingInvoicesGet.Descending
-		      Return "DESCENDING"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h21
-		Private Function StatusEnum_BillingInvoicesGetToString(value As StatusEnum_BillingInvoicesGet) As String
-		  Select Case value
-		    
-		    Case StatusEnum_BillingInvoicesGet.Open
-		      Return "OPEN"
-		    Case StatusEnum_BillingInvoicesGet.Closed
-		      Return "CLOSED"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h21
-		Private Function Document_typeEnum_BillingInvoicesGetToString(value As Document_typeEnum_BillingInvoicesGet) As String
-		  Select Case value
-		    
-		    Case Document_typeEnum_BillingInvoicesGet.Invoice
-		      Return "INVOICE"
-		    Case Document_typeEnum_BillingInvoicesGet.CreditMemo
-		      Return "CREDIT_MEMO"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub BillingProfilesGet(, adAccountId As String, isActive As Boolean, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
+		Sub BillingProfilesGet(, isActive As Boolean, adAccountId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation billing_profiles/get
 		  // Get billing profiles
 		  // - 
-		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter isActive: (query) Return active billing profiles, if false return all billing profiles. 
+		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes BillingApiCallbackHandler.BillingProfilesGetCallback(BillingProfilesGet200Response) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/billing_profiles
-		  // - Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+		  // - Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -772,10 +714,10 @@ Protected Class BillingApi
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  //
-		  // Invokes BillingApiCallbackHandler.SsioAccountsGetCallback(SSIOAccountResponse) on completion. 
+		  // Invokes BillingApiCallbackHandler.SsioAccountsGetCallback(SSIOAccount) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/ssio/accounts
-		  // - Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Finance, Campaign.
+		  // -   Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -812,7 +754,7 @@ Protected Class BillingApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function SsioAccountsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.SSIOAccountResponse) As Boolean
+		Private Function SsioAccountsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.SSIOAccount) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -820,7 +762,7 @@ Protected Class BillingApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.SSIOAccountResponse
+			  outData = New OpenAPIClient.Models.SSIOAccount
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -873,7 +815,7 @@ Protected Class BillingApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.SSIOAccountResponse
+		  Dim data As OpenAPIClient.Models.SSIOAccount
 		  CallbackHandler.SsioAccountsGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -887,7 +829,7 @@ Protected Class BillingApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.SSIOAccountResponse
+		  Dim data As OpenAPIClient.Models.SSIOAccount
 		  Call SsioAccountsGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.SsioAccountsGetCallback(error, data)
@@ -898,17 +840,17 @@ Protected Class BillingApi
 
 
 	#tag Method, Flags = &h0
-		Sub SsioInsertionOrderCreate(, adAccountId As String, sSIOCreateInsertionOrderRequest As OpenAPIClient.Models.SSIOCreateInsertionOrderRequest)
+		Sub SsioInsertionOrderCreate(, adAccountId As String, sSIOInsertionOrderCreate As OpenAPIClient.Models.SSIOInsertionOrderCreate)
 		  // Operation ssio_insertion_order/create
 		  // Create insertion order through SSIO.
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter sSIOCreateInsertionOrderRequest: (body) Order line to create. 
+		  // - parameter sSIOInsertionOrderCreate: (body)  
 		  //
-		  // Invokes BillingApiCallbackHandler.SsioInsertionOrderCreateCallback(SSIOCreateInsertionOrderResponse) on completion. 
+		  // Invokes BillingApiCallbackHandler.SsioInsertionOrderCreateCallback(SSIOInsertionOrder) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/ssio/insertion_orders
-		  // - Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Finance, Campaign.
+		  // -   Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -918,7 +860,7 @@ Protected Class BillingApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(sSIOCreateInsertionOrderRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(sSIOInsertionOrderCreate), "application/json")
 		  
 		  
 		  
@@ -945,7 +887,7 @@ Protected Class BillingApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function SsioInsertionOrderCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.SSIOCreateInsertionOrderResponse) As Boolean
+		Private Function SsioInsertionOrderCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.SSIOInsertionOrder) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -953,7 +895,7 @@ Protected Class BillingApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.SSIOCreateInsertionOrderResponse
+			  outData = New OpenAPIClient.Models.SSIOInsertionOrder
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -1006,7 +948,7 @@ Protected Class BillingApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.SSIOCreateInsertionOrderResponse
+		  Dim data As OpenAPIClient.Models.SSIOInsertionOrder
 		  CallbackHandler.SsioInsertionOrderCreateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -1020,7 +962,7 @@ Protected Class BillingApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.SSIOCreateInsertionOrderResponse
+		  Dim data As OpenAPIClient.Models.SSIOInsertionOrder
 		  Call SsioInsertionOrderCreatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.SsioInsertionOrderCreateCallback(error, data)
@@ -1031,17 +973,17 @@ Protected Class BillingApi
 
 
 	#tag Method, Flags = &h0
-		Sub SsioInsertionOrderEdit(, adAccountId As String, sSIOEditInsertionOrderRequest As OpenAPIClient.Models.SSIOEditInsertionOrderRequest)
+		Sub SsioInsertionOrderEdit(, adAccountId As String, sSIOInsertionOrderUpdate As OpenAPIClient.Models.SSIOInsertionOrderUpdate)
 		  // Operation ssio_insertion_order/edit
 		  // Edit insertion order through SSIO.
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter sSIOEditInsertionOrderRequest: (body) Order line to create. 
+		  // - parameter sSIOInsertionOrderUpdate: (body)  
 		  //
-		  // Invokes BillingApiCallbackHandler.SsioInsertionOrderEditCallback(SSIOEditInsertionOrderResponse) on completion. 
+		  // Invokes BillingApiCallbackHandler.SsioInsertionOrderEditCallback(SSIOInsertionOrder) on completion. 
 		  //
 		  // - PATCH /ad_accounts/{ad_account_id}/ssio/insertion_orders
-		  // - Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Finance, Campaign.
+		  // -   Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1051,7 +993,7 @@ Protected Class BillingApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(sSIOEditInsertionOrderRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(sSIOInsertionOrderUpdate), "application/json")
 		  
 		  
 		  
@@ -1078,7 +1020,7 @@ Protected Class BillingApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function SsioInsertionOrderEditPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.SSIOEditInsertionOrderResponse) As Boolean
+		Private Function SsioInsertionOrderEditPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.SSIOInsertionOrder) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -1086,7 +1028,7 @@ Protected Class BillingApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.SSIOEditInsertionOrderResponse
+			  outData = New OpenAPIClient.Models.SSIOInsertionOrder
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -1139,7 +1081,7 @@ Protected Class BillingApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.SSIOEditInsertionOrderResponse
+		  Dim data As OpenAPIClient.Models.SSIOInsertionOrder
 		  CallbackHandler.SsioInsertionOrderEditCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -1153,7 +1095,7 @@ Protected Class BillingApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.SSIOEditInsertionOrderResponse
+		  Dim data As OpenAPIClient.Models.SSIOInsertionOrder
 		  Call SsioInsertionOrderEditPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.SsioInsertionOrderEditCallback(error, data)
@@ -1170,12 +1112,12 @@ Protected Class BillingApi
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes BillingApiCallbackHandler.SsioInsertionOrdersStatusGetByAdAccountCallback(SsioInsertionOrdersStatusGetByAdAccount200Response) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/ssio/insertion_orders/status
-		  // - Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Finance, Campaign.
+		  // -   Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1313,7 +1255,7 @@ Protected Class BillingApi
 		  // Invokes BillingApiCallbackHandler.SsioInsertionOrdersStatusGetByPinOrderIdCallback(SSIOInsertionOrderStatusResponse) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status
-		  // - Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Finance, Campaign.
+		  // -   Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1439,19 +1381,19 @@ Protected Class BillingApi
 
 
 	#tag Method, Flags = &h0
-		Sub SsioOrderLinesGetByAdAccount(, adAccountId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, Optional pinOrderId As Xoson.O.OptionalString)
+		Sub SsioOrderLinesGetByAdAccount(, adAccountId As String, Optional pinOrderId As Xoson.O.OptionalString, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation ssio_order_lines/get_by_ad_account
 		  // Get Salesforce order lines by ad account id.
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
+		  // - parameter pinOrderId: (query) The pin order id associated with the SSIO insertion order (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-		  // - parameter pinOrderId: (query) The pin order id associated with the ssio insertino order (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes BillingApiCallbackHandler.SsioOrderLinesGetByAdAccountCallback(SsioOrderLinesGetByAdAccount200Response) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/ssio/order_lines
-		  // - Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Finance, Campaign.
+		  // -   Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1463,11 +1405,11 @@ Protected Class BillingApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  If pinOrderId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("pin_order_id") + "=" + EncodeURLComponent(pinOrderId)
+		  
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
-		  
-		  If pinOrderId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("pin_order_id") + "=" + EncodeURLComponent(pinOrderId)
 		  
 
 		  
@@ -1655,37 +1597,6 @@ Protected Class BillingApi
 	#tag Property, Flags = &h0
 		UseHTTPS As Boolean = true
 	#tag EndProperty
-
-	#tag Enum, Name = SortEnum_BillingInvoicesGet, Type = Integer, Flags = &h0
-		
-        DueDate
-        BillingPeriod
-        DocumentType
-        TotalAmount
-        InvoiceNumber
-		
-	#tag EndEnum
-
-	#tag Enum, Name = OrderEnum_BillingInvoicesGet, Type = Integer, Flags = &h0
-		
-        Ascending
-        Descending
-		
-	#tag EndEnum
-
-	#tag Enum, Name = StatusEnum_BillingInvoicesGet, Type = Integer, Flags = &h0
-		
-        Open
-        Closed
-		
-	#tag EndEnum
-
-	#tag Enum, Name = Document_typeEnum_BillingInvoicesGet, Type = Integer, Flags = &h0
-		
-        Invoice
-        CreditMemo
-		
-	#tag EndEnum
 
 
 	#tag ViewBehavior

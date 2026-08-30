@@ -27,16 +27,17 @@ from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
 from openapi_server.models.auth_respond_invites_body import AuthRespondInvitesBody
-from openapi_server.models.cancel_invites_body import CancelInvitesBody
+from openapi_server.models.cancel_invites_request import CancelInvitesRequest
+from openapi_server.models.cancel_invites_response import CancelInvitesResponse
 from openapi_server.models.create_asset_access_request_body import CreateAssetAccessRequestBody
 from openapi_server.models.create_asset_access_request_response import CreateAssetAccessRequestResponse
 from openapi_server.models.create_asset_invites_request import CreateAssetInvitesRequest
 from openapi_server.models.create_invites_results_response_array import CreateInvitesResultsResponseArray
 from openapi_server.models.create_membership_or_partnership_invites_body import CreateMembershipOrPartnershipInvitesBody
-from openapi_server.models.delete_invites_results_response_array import DeleteInvitesResultsResponseArray
-from openapi_server.models.error import Error
 from openapi_server.models.get_invites200_response import GetInvites200Response
+from openapi_server.models.invite_filter_status import InviteFilterStatus
 from openapi_server.models.invite_type import InviteType
+from openapi_server.models.pinterest_lib_error import PinterestLibError
 from openapi_server.models.respond_to_invites_response_array import RespondToInvitesResponseArray
 from openapi_server.models.update_invites_results_response_array import UpdateInvitesResultsResponseArray
 from openapi_server.security_api import get_token_pinterest_oauth2
@@ -51,8 +52,13 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
 @router.patch(
     "/businesses/invites",
     responses={
-        200: {"model": RespondToInvitesResponseArray, "description": "Success"},
-        "default": {"model": Error, "description": "Unexpected error"},
+        200: {"model": RespondToInvitesResponseArray, "description": "The request has succeeded."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
     },
     tags=["business_access_invite"],
     summary="Accept or decline an invite/request",
@@ -70,11 +76,101 @@ async def respond_business_access_invites(
     return await BaseBusinessAccessInviteApi.subclasses[0]().respond_business_access_invites(auth_respond_invites_body)
 
 
+@router.get(
+    "/businesses/{business_id}/invites",
+    responses={
+        200: {"model": GetInvites200Response, "description": "The request has succeeded."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
+    },
+    tags=["business_access_invite"],
+    summary="Get invites/requests",
+    response_model_by_alias=True,
+)
+async def get_invites(
+    business_id: Annotated[str, Field(min_length=1, strict=True, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1),
+    is_member: Annotated[Optional[StrictBool], Field(description="A boolean field to indicate whether the invite is to create a partnership or a membership.")] = Query(True, description="A boolean field to indicate whether the invite is to create a partnership or a membership.", alias="is_member"),
+    invite_status: Annotated[Optional[Annotated[List[InviteFilterStatus], Field(min_length=1)]], Field(description="A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.")] = Query(None, description="A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.", alias="invite_status"),
+    invite_type: Annotated[Optional[InviteType], Field(description="Invite type to filter invites by. Only invites of the specified type will be returned.")] = Query(None, description="Invite type to filter invites by. Only invites of the specified type will be returned.", alias="invite_type"),
+    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    token_pinterest_oauth2: TokenModel = Security(
+        get_token_pinterest_oauth2, scopes=["biz_access:read"]
+    ),
+) -> GetInvites200Response:
+    """Get the membership/partnership invites and/or requests for the authorized user."""
+    if not BaseBusinessAccessInviteApi.subclasses:
+        raise HTTPException(status_code=500, detail="Not implemented")
+    return await BaseBusinessAccessInviteApi.subclasses[0]().get_invites(business_id, is_member, invite_status, invite_type, bookmark, page_size)
+
+
+@router.post(
+    "/businesses/{business_id}/invites",
+    responses={
+        200: {"model": CreateInvitesResultsResponseArray, "description": "The request has succeeded."},
+        201: {"model": CreateInvitesResultsResponseArray, "description": "Resource create operation completed successfully."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
+    },
+    tags=["business_access_invite"],
+    summary="Create invites or requests",
+    response_model_by_alias=True,
+)
+async def create_membership_or_partnership_invites(
+    business_id: Annotated[str, Field(min_length=1, strict=True, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1),
+    create_membership_or_partnership_invites_body: CreateMembershipOrPartnershipInvitesBody = Body(None, description=""),
+    token_pinterest_oauth2: TokenModel = Security(
+        get_token_pinterest_oauth2, scopes=["biz_access:write"]
+    ),
+) -> CreateInvitesResultsResponseArray:
+    """Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;     - business_role&#x3D;\&quot;EMPLOYEE\&quot; OR business_role&#x3D;\&quot;BIZ_ADMIN\&quot; (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners"""
+    if not BaseBusinessAccessInviteApi.subclasses:
+        raise HTTPException(status_code=500, detail="Not implemented")
+    return await BaseBusinessAccessInviteApi.subclasses[0]().create_membership_or_partnership_invites(business_id, create_membership_or_partnership_invites_body)
+
+
+@router.delete(
+    "/businesses/{business_id}/invites",
+    responses={
+        200: {"model": CancelInvitesResponse, "description": "The request has succeeded."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
+    },
+    tags=["business_access_invite"],
+    summary="Cancel invites/requests",
+    response_model_by_alias=True,
+)
+async def cancel_invites_or_requests(
+    business_id: Annotated[str, Field(min_length=1, strict=True, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1),
+    cancel_invites_request: CancelInvitesRequest = Body(None, description=""),
+    token_pinterest_oauth2: TokenModel = Security(
+        get_token_pinterest_oauth2, scopes=["biz_access:write"]
+    ),
+) -> CancelInvitesResponse:
+    """Cancel membership/partnership invites and/or requests."""
+    if not BaseBusinessAccessInviteApi.subclasses:
+        raise HTTPException(status_code=500, detail="Not implemented")
+    return await BaseBusinessAccessInviteApi.subclasses[0]().cancel_invites_or_requests(business_id, cancel_invites_request)
+
+
 @router.post(
     "/businesses/{business_id}/invites/assets/access",
     responses={
-        200: {"model": UpdateInvitesResultsResponseArray, "description": "Success"},
-        "default": {"model": Error, "description": "Unexpected error"},
+        200: {"model": UpdateInvitesResultsResponseArray, "description": "The request has succeeded."},
+        201: {"model": UpdateInvitesResultsResponseArray, "description": "Resource create operation completed successfully."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
     },
     tags=["business_access_invite"],
     summary="Update invite/request with an asset permission",
@@ -82,7 +178,7 @@ async def respond_business_access_invites(
 )
 async def create_asset_invites(
     business_id: Annotated[str, Field(min_length=1, strict=True, max_length=20, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1, max_length=20),
-    create_asset_invites_request: Annotated[CreateAssetInvitesRequest, Field(description="A list of invites/requests together with the asset permissions to be assigned to the invite/request. ")] = Body(None, description="A list of invites/requests together with the asset permissions to be assigned to the invite/request. "),
+    create_asset_invites_request: CreateAssetInvitesRequest = Body(None, description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:read", "biz_access:write"]
     ),
@@ -96,8 +192,14 @@ async def create_asset_invites(
 @router.post(
     "/businesses/{business_id}/requests/assets/access",
     responses={
-        200: {"model": CreateAssetAccessRequestResponse, "description": "Success"},
-        "default": {"model": Error, "description": "Unexpected error"},
+        200: {"model": CreateAssetAccessRequestResponse, "description": "The request has succeeded."},
+        201: {"model": CreateAssetAccessRequestResponse, "description": "Resource create operation completed successfully."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
     },
     tags=["business_access_invite"],
     summary="Create a request to access an existing partner&#39;s assets.",
@@ -114,76 +216,3 @@ async def asset_access_requests_create(
     if not BaseBusinessAccessInviteApi.subclasses:
         raise HTTPException(status_code=500, detail="Not implemented")
     return await BaseBusinessAccessInviteApi.subclasses[0]().asset_access_requests_create(business_id, create_asset_access_request_body)
-
-
-@router.get(
-    "/businesses/{business_id}/invites",
-    responses={
-        200: {"model": GetInvites200Response, "description": "Success"},
-        "default": {"model": Error, "description": "Unexpected error"},
-    },
-    tags=["business_access_invite"],
-    summary="Get invites/requests",
-    response_model_by_alias=True,
-)
-async def get_invites(
-    business_id: Annotated[str, Field(min_length=1, strict=True, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1),
-    is_member: Annotated[Optional[StrictBool], Field(description="A boolean field to indicate whether the invite is to create a partnership or a membership.")] = Query(True, description="A boolean field to indicate whether the invite is to create a partnership or a membership.", alias="is_member"),
-    invite_status: Annotated[Optional[Annotated[List[StrictStr], Field(min_length=1)]], Field(description="A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.")] = Query(None, description="A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.", alias="invite_status"),
-    invite_type: Annotated[Optional[InviteType], Field(description="Invite type to filter invites by. Only invites of the specified type will be returned.")] = Query(None, description="Invite type to filter invites by. Only invites of the specified type will be returned.", alias="invite_type"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.")] = Query(25, description="Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.", alias="page_size", ge=1, le=250),
-    token_pinterest_oauth2: TokenModel = Security(
-        get_token_pinterest_oauth2, scopes=["biz_access:read"]
-    ),
-) -> GetInvites200Response:
-    """Get the membership/partnership invites and/or requests for the authorized user."""
-    if not BaseBusinessAccessInviteApi.subclasses:
-        raise HTTPException(status_code=500, detail="Not implemented")
-    return await BaseBusinessAccessInviteApi.subclasses[0]().get_invites(business_id, is_member, invite_status, invite_type, bookmark, page_size)
-
-
-@router.post(
-    "/businesses/{business_id}/invites",
-    responses={
-        200: {"model": CreateInvitesResultsResponseArray, "description": "Success"},
-        "default": {"model": Error, "description": "Unexpected error"},
-    },
-    tags=["business_access_invite"],
-    summary="Create invites or requests",
-    response_model_by_alias=True,
-)
-async def create_membership_or_partnership_invites(
-    business_id: Annotated[str, Field(min_length=1, strict=True, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1),
-    create_membership_or_partnership_invites_body: Annotated[CreateMembershipOrPartnershipInvitesBody, Field(description="An object with the properties: invite_type, partners, members, business_role")] = Body(None, description="An object with the properties: invite_type, partners, members, business_role"),
-    token_pinterest_oauth2: TokenModel = Security(
-        get_token_pinterest_oauth2, scopes=["biz_access:write"]
-    ),
-) -> CreateInvitesResultsResponseArray:
-    """Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;     - business_role&#x3D;\&quot;EMPLOYEE\&quot; OR business_role&#x3D;\&quot;BIZ_ADMIN\&quot; (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners"""
-    if not BaseBusinessAccessInviteApi.subclasses:
-        raise HTTPException(status_code=500, detail="Not implemented")
-    return await BaseBusinessAccessInviteApi.subclasses[0]().create_membership_or_partnership_invites(business_id, create_membership_or_partnership_invites_body)
-
-
-@router.delete(
-    "/businesses/{business_id}/invites",
-    responses={
-        200: {"model": DeleteInvitesResultsResponseArray, "description": "Success"},
-        "default": {"model": Error, "description": "Unexpected error"},
-    },
-    tags=["business_access_invite"],
-    summary="Cancel invites/requests",
-    response_model_by_alias=True,
-)
-async def cancel_invites_or_requests(
-    business_id: Annotated[str, Field(min_length=1, strict=True, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1),
-    cancel_invites_body: Annotated[CancelInvitesBody, Field(description="A list with invite ids")] = Body(None, description="A list with invite ids"),
-    token_pinterest_oauth2: TokenModel = Security(
-        get_token_pinterest_oauth2, scopes=["biz_access:write"]
-    ),
-) -> DeleteInvitesResultsResponseArray:
-    """Cancel membership/partnership invites and/or requests."""
-    if not BaseBusinessAccessInviteApi.subclasses:
-        raise HTTPException(status_code=500, detail="Not implemented")
-    return await BaseBusinessAccessInviteApi.subclasses[0]().cancel_invites_or_requests(business_id, cancel_invites_body)

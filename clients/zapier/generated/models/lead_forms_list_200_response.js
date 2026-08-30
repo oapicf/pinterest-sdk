@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const LeadFormResponse = require('../models/LeadFormResponse');
+const LeadForm = require('../models/LeadForm');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -13,7 +13,7 @@ module.exports = {
             {
                 key: `${keyPrefix}items`,
                 label: `[${labelPrefix}items]`,
-                children: LeadFormResponse.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
+                children: LeadForm.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
             },
         ]
     },
@@ -21,7 +21,7 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'bookmark': bundle.inputData?.[`${keyPrefix}bookmark`],
-            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, LeadFormResponse),
+            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, LeadForm),
         }
     },
 }

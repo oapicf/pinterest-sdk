@@ -21,7 +21,7 @@ class IntegrationMetadata {
     String connectedUserId
     
     BigDecimal createdTimestamp
-    
+    /* External business ID for the integration. */
     String externalBusinessId
     
     String id

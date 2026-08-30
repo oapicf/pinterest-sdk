@@ -32,13 +32,14 @@
        'GOOGLE_PRODUCT_CATEGORY_2' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
        'GOOGLE_PRODUCT_CATEGORY_1' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
        'GOOGLE_PRODUCT_CATEGORY_0' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
-       'PRODUCT_GROUP' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria(),
        'CUSTOM_NUMBER_0' := openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria(),
        'CUSTOM_NUMBER_1' := openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria(),
        'CUSTOM_NUMBER_2' := openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria(),
        'CUSTOM_NUMBER_3' := openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria(),
        'CUSTOM_NUMBER_4' := openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria(),
-       'TITLE_KEYWORDS' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria()
+       'TITLE_KEYWORDS' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria(),
+       'PINTEREST_PRODUCT_CATEGORIES' := openapi_catalogs_product_group_multiple_pinterest_product_category_criteria:openapi_catalogs_product_group_multiple_pinterest_product_category_criteria(),
+       'PRODUCT_GROUP' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria()
      }.
 
 encode(#{ 'MIN_PRICE' := MINPRICE,
@@ -68,13 +69,14 @@ encode(#{ 'MIN_PRICE' := MINPRICE,
           'GOOGLE_PRODUCT_CATEGORY_2' := GOOGLEPRODUCTCATEGORY2,
           'GOOGLE_PRODUCT_CATEGORY_1' := GOOGLEPRODUCTCATEGORY1,
           'GOOGLE_PRODUCT_CATEGORY_0' := GOOGLEPRODUCTCATEGORY0,
-          'PRODUCT_GROUP' := PRODUCTGROUP,
           'CUSTOM_NUMBER_0' := CUSTOMNUMBER0,
           'CUSTOM_NUMBER_1' := CUSTOMNUMBER1,
           'CUSTOM_NUMBER_2' := CUSTOMNUMBER2,
           'CUSTOM_NUMBER_3' := CUSTOMNUMBER3,
           'CUSTOM_NUMBER_4' := CUSTOMNUMBER4,
-          'TITLE_KEYWORDS' := TITLEKEYWORDS
+          'TITLE_KEYWORDS' := TITLEKEYWORDS,
+          'PINTEREST_PRODUCT_CATEGORIES' := PINTERESTPRODUCTCATEGORIES,
+          'PRODUCT_GROUP' := PRODUCTGROUP
         }) ->
     #{ 'MIN_PRICE' => MINPRICE,
        'MAX_PRICE' => MAXPRICE,
@@ -103,11 +105,12 @@ encode(#{ 'MIN_PRICE' := MINPRICE,
        'GOOGLE_PRODUCT_CATEGORY_2' => GOOGLEPRODUCTCATEGORY2,
        'GOOGLE_PRODUCT_CATEGORY_1' => GOOGLEPRODUCTCATEGORY1,
        'GOOGLE_PRODUCT_CATEGORY_0' => GOOGLEPRODUCTCATEGORY0,
-       'PRODUCT_GROUP' => PRODUCTGROUP,
        'CUSTOM_NUMBER_0' => CUSTOMNUMBER0,
        'CUSTOM_NUMBER_1' => CUSTOMNUMBER1,
        'CUSTOM_NUMBER_2' => CUSTOMNUMBER2,
        'CUSTOM_NUMBER_3' => CUSTOMNUMBER3,
        'CUSTOM_NUMBER_4' => CUSTOMNUMBER4,
-       'TITLE_KEYWORDS' => TITLEKEYWORDS
+       'TITLE_KEYWORDS' => TITLEKEYWORDS,
+       'PINTEREST_PRODUCT_CATEGORIES' => PINTERESTPRODUCTCATEGORIES,
+       'PRODUCT_GROUP' => PRODUCTGROUP
      }.

@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.label_status_bulk_update import LabelStatusBulkUpdate  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -15,31 +16,31 @@ class LabelBulkUpdateRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, id: str=None, status: str=None, value: str=None):  # noqa: E501
+    def __init__(self, id: str=None, parent_id: str=None, status: LabelStatusBulkUpdate=None):  # noqa: E501
         """LabelBulkUpdateRequest - a model defined in Swagger
 
         :param id: The id of this LabelBulkUpdateRequest.  # noqa: E501
         :type id: str
+        :param parent_id: The parent_id of this LabelBulkUpdateRequest.  # noqa: E501
+        :type parent_id: str
         :param status: The status of this LabelBulkUpdateRequest.  # noqa: E501
-        :type status: str
-        :param value: The value of this LabelBulkUpdateRequest.  # noqa: E501
-        :type value: str
+        :type status: LabelStatusBulkUpdate
         """
         self.swagger_types = {
             'id': str,
-            'status': str,
-            'value': str
+            'parent_id': str,
+            'status': LabelStatusBulkUpdate
         }
 
         self.attribute_map = {
             'id': 'id',
-            'status': 'status',
-            'value': 'value'
+            'parent_id': 'parent_id',
+            'status': 'status'
         }
 
         self._id = id
+        self._parent_id = parent_id
         self._status = status
-        self._value = value
 
     @classmethod
     def from_dict(cls, dikt) -> 'LabelBulkUpdateRequest':
@@ -78,55 +79,49 @@ class LabelBulkUpdateRequest(Model):
         self._id = id
 
     @property
-    def status(self) -> str:
+    def parent_id(self) -> str:
+        """Gets the parent_id of this LabelBulkUpdateRequest.
+
+        Unique identifier of the asset you are labelling. Currently, you can only label campaigns.  # noqa: E501
+
+        :return: The parent_id of this LabelBulkUpdateRequest.
+        :rtype: str
+        """
+        return self._parent_id
+
+    @parent_id.setter
+    def parent_id(self, parent_id: str):
+        """Sets the parent_id of this LabelBulkUpdateRequest.
+
+        Unique identifier of the asset you are labelling. Currently, you can only label campaigns.  # noqa: E501
+
+        :param parent_id: The parent_id of this LabelBulkUpdateRequest.
+        :type parent_id: str
+        """
+        if parent_id is None:
+            raise ValueError("Invalid value for `parent_id`, must not be `None`")  # noqa: E501
+
+        self._parent_id = parent_id
+
+    @property
+    def status(self) -> LabelStatusBulkUpdate:
         """Gets the status of this LabelBulkUpdateRequest.
 
-        Set status to `ARCHIVED` to remove the label from the parent entity.  # noqa: E501
 
         :return: The status of this LabelBulkUpdateRequest.
-        :rtype: str
+        :rtype: LabelStatusBulkUpdate
         """
         return self._status
 
     @status.setter
-    def status(self, status: str):
+    def status(self, status: LabelStatusBulkUpdate):
         """Sets the status of this LabelBulkUpdateRequest.
 
-        Set status to `ARCHIVED` to remove the label from the parent entity.  # noqa: E501
 
         :param status: The status of this LabelBulkUpdateRequest.
-        :type status: str
+        :type status: LabelStatusBulkUpdate
         """
-        allowed_values = ["ARCHIVED"]  # noqa: E501
-        if status not in allowed_values:
-            raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}"
-                .format(status, allowed_values)
-            )
+        if status is None:
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
 
         self._status = status
-
-    @property
-    def value(self) -> str:
-        """Gets the value of this LabelBulkUpdateRequest.
-
-        </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.  # noqa: E501
-
-        :return: The value of this LabelBulkUpdateRequest.
-        :rtype: str
-        """
-        return self._value
-
-    @value.setter
-    def value(self, value: str):
-        """Sets the value of this LabelBulkUpdateRequest.
-
-        </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.  # noqa: E501
-
-        :param value: The value of this LabelBulkUpdateRequest.
-        :type value: str
-        """
-        if value is not None and len(value) > 100:
-            raise ValueError("Invalid value for `value`, length must be less than or equal to `100`")  # noqa: E501
-
-        self._value = value

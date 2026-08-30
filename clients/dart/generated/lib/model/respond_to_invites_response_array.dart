@@ -17,7 +17,7 @@ class RespondToInvitesResponseArray {
   });
 
   /// List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.
-  List<RespondToInvitesResponseArrayItemsInner> items;
+  List<RespondToInviteResultItem> items;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is RespondToInvitesResponseArray &&
@@ -48,15 +48,11 @@ class RespondToInvitesResponseArray {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "RespondToInvitesResponseArray[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "RespondToInvitesResponseArray[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return RespondToInvitesResponseArray(
-        items: RespondToInvitesResponseArrayItemsInner.listFromJson(json[r'items']),
+        items: RespondToInviteResultItem.listFromJson(json[r'items']),
       );
     }
     return null;

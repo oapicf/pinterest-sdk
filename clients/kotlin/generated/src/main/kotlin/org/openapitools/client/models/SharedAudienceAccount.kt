@@ -8,13 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.AudienceAccountType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -41,7 +50,7 @@ data class SharedAudienceAccount (
 
     /* account type */
     @Json(name = "account_type")
-    val accountType: SharedAudienceAccount.AccountType,
+    val accountType: AudienceAccountType,
 
     /* Epoch timestamp in seconds for the shared audience event */
     @Json(name = "shared_on_timestamp")
@@ -49,16 +58,6 @@ data class SharedAudienceAccount (
 
 ) {
 
-    /**
-     * account type
-     *
-     * Values: AD_ACCOUNT,BUSINESS_ACCOUNT
-     */
-    @JsonClass(generateAdapter = false)
-    enum class AccountType(val value: kotlin.String) {
-        @Json(name = "AD_ACCOUNT") AD_ACCOUNT("AD_ACCOUNT"),
-        @Json(name = "BUSINESS_ACCOUNT") BUSINESS_ACCOUNT("BUSINESS_ACCOUNT");
-    }
 
 }
 

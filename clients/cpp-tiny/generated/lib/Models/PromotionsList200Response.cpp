@@ -7,7 +7,7 @@ using namespace Tiny;
 Promotions_list_200_response::Promotions_list_200_response()
 {
 	bookmark = std::string();
-	items = std::list<PromotionResponse>();
+	items = std::list<Promotion>();
 }
 
 Promotions_list_200_response::Promotions_list_200_response(std::string jsonString)
@@ -45,8 +45,8 @@ Promotions_list_200_response::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<PromotionResponse> items_list;
-        PromotionResponse element;
+        std::list<Promotion> items_list;
+        Promotion element;
         for(auto& var : value.array_range())
         {
 
@@ -78,12 +78,12 @@ Promotions_list_200_response::toJson()
 
 
 
-    std::list<PromotionResponse> items_list = getItems();
+    std::list<Promotion> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        PromotionResponse obj = var;
+        Promotion obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -102,19 +102,19 @@ Promotions_list_200_response::getBookmark()
 }
 
 void
-Promotions_list_200_response::setBookmark(std::string  bookmark)
+Promotions_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
 
-std::list<PromotionResponse>
+std::list<Promotion>
 Promotions_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Promotions_list_200_response::setItems(std::list <PromotionResponse> items)
+Promotions_list_200_response::setItems(std::list<Promotion> items)
 {
 	this->items = items;
 }

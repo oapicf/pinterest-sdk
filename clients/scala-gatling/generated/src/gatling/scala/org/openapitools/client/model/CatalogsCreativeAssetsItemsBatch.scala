@@ -6,7 +6,7 @@ import java.time.OffsetDateTime
 case class CatalogsCreativeAssetsItemsBatch (
     /* Id of the catalogs items batch */
     _batchId: Option[String],
-    _catalogType: CatalogsType,
+    _catalogType: String,
     /* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
     _completedTime: Option[OffsetDateTime],
     /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */

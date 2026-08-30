@@ -1,11 +1,11 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.BulkDownloadRequest;
-import com.prokarma.pkmst.model.BulkDownloadResponse;
+import com.prokarma.pkmst.model.BulkDownload;
+import com.prokarma.pkmst.model.BulkDownloadCreate;
+import com.prokarma.pkmst.model.BulkJobData;
 import com.prokarma.pkmst.model.BulkUpsertRequest;
 import com.prokarma.pkmst.model.BulkUpsertResponse;
-import com.prokarma.pkmst.model.BulkUpsertStatusResponse;
-import com.prokarma.pkmst.model.Error;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 
@@ -28,7 +28,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Controller
 public class BulkApiController implements BulkApi {
     private final ObjectMapper objectMapper;
@@ -37,39 +37,94 @@ public class BulkApiController implements BulkApi {
         this.objectMapper = objectMapper;
     }
 
-    public ResponseEntity<BulkDownloadResponse> bulkDownloadCreate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Parameters to get ad entities in bulk" ,required=true )   @RequestBody BulkDownloadRequest bulkDownloadRequest,
+    public ResponseEntity<BulkDownload> bulkDownloadCreate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "" ,required=true )   @RequestBody BulkDownloadCreate bulkDownloadCreate,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<BulkDownloadResponse>(objectMapper.readValue("", BulkDownloadResponse.class), HttpStatus.OK);
+            return new ResponseEntity<BulkDownload>(objectMapper.readValue("", BulkDownload.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<BulkDownloadResponse>(objectMapper.readValue("", BulkDownloadResponse.class), HttpStatus.OK);
+            return new ResponseEntity<BulkDownload>(objectMapper.readValue("", BulkDownload.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<BulkDownloadResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BulkDownload>(objectMapper.readValue("", BulkDownload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BulkDownload>(objectMapper.readValue("", BulkDownload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BulkDownload>(objectMapper.readValue("", BulkDownload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BulkDownload>(objectMapper.readValue("", BulkDownload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BulkDownload>(objectMapper.readValue("", BulkDownload.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BulkDownload>(objectMapper.readValue("", BulkDownload.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<BulkDownload>(HttpStatus.OK);
     }
 
-    public ResponseEntity<BulkUpsertStatusResponse> bulkRequestGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Unique identifier of a bulk upsert request.",required=true ) @PathVariable("bulk_request_id") String bulkRequestId,
-        @ApiParam(value = "if set to True then attach the errors/details to all the requests", defaultValue = "false")  @RequestParam(value = "include_details", required = false, defaultValue="false") Boolean includeDetails,
+    public ResponseEntity<BulkJobData> bulkRequestGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "Bulk request ID that is from one of the entities bulk endpoints",required=true ) @PathVariable("bulk_request_id") String bulkRequestId,
+        @ApiParam(value = "If set to True then attach the errors/details to all the requests", defaultValue = "false")  @RequestParam(value = "include_details", required = false, defaultValue="false") Boolean includeDetails,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<BulkUpsertStatusResponse>(objectMapper.readValue("", BulkUpsertStatusResponse.class), HttpStatus.OK);
+            return new ResponseEntity<BulkJobData>(objectMapper.readValue("", BulkJobData.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<BulkUpsertStatusResponse>(objectMapper.readValue("", BulkUpsertStatusResponse.class), HttpStatus.OK);
+            return new ResponseEntity<BulkJobData>(objectMapper.readValue("", BulkJobData.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<BulkUpsertStatusResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BulkJobData>(objectMapper.readValue("", BulkJobData.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BulkJobData>(objectMapper.readValue("", BulkJobData.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BulkJobData>(objectMapper.readValue("", BulkJobData.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BulkJobData>(objectMapper.readValue("", BulkJobData.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BulkJobData>(objectMapper.readValue("", BulkJobData.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<BulkJobData>(HttpStatus.OK);
     }
 
     public ResponseEntity<BulkUpsertResponse> bulkUpsertCreate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,

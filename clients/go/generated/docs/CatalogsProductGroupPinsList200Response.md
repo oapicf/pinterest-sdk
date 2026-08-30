@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]CatalogsProduct**](CatalogsProduct.md) | Pins | 
+**Items** | [**[]CatalogsProduct**](CatalogsProduct.md) |  | 
 
 ## Methods
 

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;CampaignResponse&gt;**](CampaignResponse.md) |  | [default to undefined]
+**items** | [**Array&lt;Campaign&gt;**](Campaign.md) |  | [default to undefined]
 
 ## Example
 

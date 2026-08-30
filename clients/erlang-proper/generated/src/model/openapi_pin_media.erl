@@ -15,6 +15,7 @@
   | {'duration', integer() }
   | {'height', integer() }
   | {'video_url', binary() }
+  | {'video_url_hls', binary() }
   | {'width', integer() }
   | {'items', list(openapi_pin_media_metadata:openapi_pin_media_metadata()) }
   ].
@@ -30,6 +31,7 @@ openapi_pin_media(Fields) ->
             , {'duration', integer() }
             , {'height', integer() }
             , {'video_url', binary() }
+            , {'video_url_hls', binary() }
             , {'width', integer() }
             , {'items', list(openapi_pin_media_metadata:openapi_pin_media_metadata()) }
             ],

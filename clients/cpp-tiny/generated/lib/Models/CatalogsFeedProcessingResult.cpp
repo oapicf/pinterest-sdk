@@ -8,10 +8,10 @@ CatalogsFeedProcessingResult::CatalogsFeedProcessingResult()
 {
 	created_at = std::string();
 	id = std::string();
-	updated_at = std::string();
 	ingestion_details = CatalogsFeedIngestionDetails();
 	product_counts = CatalogsFeedProductCounts();
 	status = CatalogsFeedProcessingStatus();
+	updated_at = std::string();
 	validation_details = CatalogsFeedValidationDetails();
 	video_counts = CatalogsFeedVideoCounts();
 }
@@ -57,19 +57,6 @@ CatalogsFeedProcessingResult::fromJson(std::string jsonObj)
 
     }
 
-    const char *updated_atKey = "updated_at";
-
-    if(object.has_key(updated_atKey))
-    {
-        bourne::json value = object[updated_atKey];
-
-
-
-        jsonToValue(&updated_at, value, "std::string");
-
-
-    }
-
     const char *ingestion_detailsKey = "ingestion_details";
 
     if(object.has_key(ingestion_detailsKey))
@@ -109,6 +96,19 @@ CatalogsFeedProcessingResult::fromJson(std::string jsonObj)
 
         CatalogsFeedProcessingStatus* obj = &status;
 		obj->fromJson(value.dump());
+
+    }
+
+    const char *updated_atKey = "updated_at";
+
+    if(object.has_key(updated_atKey))
+    {
+        bourne::json value = object[updated_atKey];
+
+
+
+        jsonToValue(&updated_at, value, "std::string");
+
 
     }
 
@@ -166,13 +166,6 @@ CatalogsFeedProcessingResult::toJson()
 
 
 
-    object["updated_at"] = getUpdatedAt();
-
-
-
-
-
-
 
 	object["ingestion_details"] = getIngestionDetails().toJson();
 
@@ -189,6 +182,13 @@ CatalogsFeedProcessingResult::toJson()
 
 
 	object["status"] = getStatus().toJson();
+
+
+
+
+
+    object["updated_at"] = getUpdatedAt();
+
 
 
 
@@ -216,7 +216,7 @@ CatalogsFeedProcessingResult::getCreatedAt()
 }
 
 void
-CatalogsFeedProcessingResult::setCreatedAt(std::string  created_at)
+CatalogsFeedProcessingResult::setCreatedAt(std::string created_at)
 {
 	this->created_at = created_at;
 }
@@ -228,21 +228,9 @@ CatalogsFeedProcessingResult::getId()
 }
 
 void
-CatalogsFeedProcessingResult::setId(std::string  id)
+CatalogsFeedProcessingResult::setId(std::string id)
 {
 	this->id = id;
-}
-
-std::string
-CatalogsFeedProcessingResult::getUpdatedAt()
-{
-	return updated_at;
-}
-
-void
-CatalogsFeedProcessingResult::setUpdatedAt(std::string  updated_at)
-{
-	this->updated_at = updated_at;
 }
 
 CatalogsFeedIngestionDetails
@@ -252,7 +240,7 @@ CatalogsFeedProcessingResult::getIngestionDetails()
 }
 
 void
-CatalogsFeedProcessingResult::setIngestionDetails(CatalogsFeedIngestionDetails  ingestion_details)
+CatalogsFeedProcessingResult::setIngestionDetails(CatalogsFeedIngestionDetails ingestion_details)
 {
 	this->ingestion_details = ingestion_details;
 }
@@ -264,7 +252,7 @@ CatalogsFeedProcessingResult::getProductCounts()
 }
 
 void
-CatalogsFeedProcessingResult::setProductCounts(CatalogsFeedProductCounts  product_counts)
+CatalogsFeedProcessingResult::setProductCounts(CatalogsFeedProductCounts product_counts)
 {
 	this->product_counts = product_counts;
 }
@@ -276,9 +264,21 @@ CatalogsFeedProcessingResult::getStatus()
 }
 
 void
-CatalogsFeedProcessingResult::setStatus(CatalogsFeedProcessingStatus  status)
+CatalogsFeedProcessingResult::setStatus(CatalogsFeedProcessingStatus status)
 {
 	this->status = status;
+}
+
+std::string
+CatalogsFeedProcessingResult::getUpdatedAt()
+{
+	return updated_at;
+}
+
+void
+CatalogsFeedProcessingResult::setUpdatedAt(std::string updated_at)
+{
+	this->updated_at = updated_at;
 }
 
 CatalogsFeedValidationDetails
@@ -288,7 +288,7 @@ CatalogsFeedProcessingResult::getValidationDetails()
 }
 
 void
-CatalogsFeedProcessingResult::setValidationDetails(CatalogsFeedValidationDetails  validation_details)
+CatalogsFeedProcessingResult::setValidationDetails(CatalogsFeedValidationDetails validation_details)
 {
 	this->validation_details = validation_details;
 }
@@ -300,7 +300,7 @@ CatalogsFeedProcessingResult::getVideoCounts()
 }
 
 void
-CatalogsFeedProcessingResult::setVideoCounts(CatalogsFeedVideoCounts  video_counts)
+CatalogsFeedProcessingResult::setVideoCounts(CatalogsFeedVideoCounts video_counts)
 {
 	this->video_counts = video_counts;
 }

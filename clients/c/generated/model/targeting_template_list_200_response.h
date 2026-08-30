@@ -15,7 +15,7 @@
 
 typedef struct targeting_template_list_200_response_t targeting_template_list_200_response_t;
 
-#include "targeting_template_get_response_data.h"
+#include "targeting_template.h"
 
 
 

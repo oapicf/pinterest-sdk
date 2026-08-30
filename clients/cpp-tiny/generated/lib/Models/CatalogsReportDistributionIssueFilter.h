@@ -51,14 +51,14 @@ public:
 
 	/*! \brief Set Unique identifier of a catalog. If not given, oldest catalog will be used
 	 */
-	void setCatalogId(std::string  catalog_id);
+	void setCatalogId(std::string catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getReportType();
 
 	/*! \brief Set 
 	 */
-	void setReportType(std::string  report_type);
+	void setReportType(std::string report_type);
 
 
     private:

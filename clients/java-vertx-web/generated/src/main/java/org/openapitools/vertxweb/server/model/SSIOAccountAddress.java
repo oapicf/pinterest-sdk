@@ -4,6 +4,9 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Salesforce address information.
+ **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SSIOAccountAddress   {
   
@@ -98,9 +101,6 @@ public class SSIOAccountAddress   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

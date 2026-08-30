@@ -31,7 +31,7 @@ IntegrationRecord::__init()
 	//connected_user_id = std::string();
 	//created_time = int(0);
 	//external_business_id = std::string();
-	//id = std::string();
+	//id = null;
 	//partner_access_token = std::string();
 	//partner_access_token_expiry = int(0);
 	//partner_metadata = std::string();

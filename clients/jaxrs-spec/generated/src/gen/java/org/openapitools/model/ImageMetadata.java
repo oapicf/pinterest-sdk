@@ -18,15 +18,69 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("ImageMetadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ImageMetadata   {
   private String description;
   private ImageSize images;
-  private String itemType;
+  public enum ItemTypeEnum {
+
+    IMAGE(String.valueOf("image"));
+
+
+    private String value;
+
+    ItemTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    /**
+     * Convert a String into String, as specified in the
+     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
+     */
+    public static ItemTypeEnum fromString(String s) {
+        for (ItemTypeEnum b : ItemTypeEnum.values()) {
+            // using Objects.toString() to be safe if value type non-object type
+            // because types like 'int' etc. will be auto-boxed
+            if (java.util.Objects.toString(b.value).equals(s)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
+    }
+
+    @JsonCreator
+    public static ItemTypeEnum fromValue(String value) {
+        for (ItemTypeEnum b : ItemTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private ItemTypeEnum itemType;
   private String link;
   private String title;
 
   public ImageMetadata() {
+  }
+
+  @JsonCreator
+  public ImageMetadata(
+    @JsonProperty(required = true, value = "item_type") ItemTypeEnum itemType
+  ) {
+    this.itemType = itemType;
   }
 
   /**
@@ -68,21 +122,22 @@ public class ImageMetadata   {
   }
 
   /**
+   * Discriminator literal identifying this as image metadata inside a &#x60;PinMediaMetadata&#x60; payload.
    **/
-  public ImageMetadata itemType(String itemType) {
+  public ImageMetadata itemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("item_type")
-  public String getItemType() {
+  @ApiModelProperty(required = true, value = "Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.")
+  @JsonProperty(required = true, value = "item_type")
+  @NotNull public ItemTypeEnum getItemType() {
     return itemType;
   }
 
-  @JsonProperty("item_type")
-  public void setItemType(String itemType) {
+  @JsonProperty(required = true, value = "item_type")
+  public void setItemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
   }
 
@@ -165,12 +220,8 @@ public class ImageMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

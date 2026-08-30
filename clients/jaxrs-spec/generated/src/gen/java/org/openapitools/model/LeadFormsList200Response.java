@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.LeadFormResponse;
+import org.openapitools.model.LeadForm;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,17 +22,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("lead_forms_list_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LeadFormsList200Response   {
   private String bookmark;
-  private @Valid List<@Valid LeadFormResponse> items = new ArrayList<>();
+  private @Valid List<@Valid LeadForm> items = new ArrayList<>();
 
   public LeadFormsList200Response() {
   }
 
   @JsonCreator
   public LeadFormsList200Response(
-    @JsonProperty(required = true, value = "items") List<@Valid LeadFormResponse> items
+    @JsonProperty(required = true, value = "items") List<@Valid LeadForm> items
   ) {
     this.items = items;
   }
@@ -58,7 +58,7 @@ public class LeadFormsList200Response   {
 
   /**
    **/
-  public LeadFormsList200Response items(List<@Valid LeadFormResponse> items) {
+  public LeadFormsList200Response items(List<@Valid LeadForm> items) {
     this.items = items;
     return this;
   }
@@ -66,16 +66,16 @@ public class LeadFormsList200Response   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "items")
-  @NotNull @Valid public List<@Valid LeadFormResponse> getItems() {
+  @NotNull @Valid public List<@Valid LeadForm> getItems() {
     return items;
   }
 
   @JsonProperty(required = true, value = "items")
-  public void setItems(List<@Valid LeadFormResponse> items) {
+  public void setItems(List<@Valid LeadForm> items) {
     this.items = items;
   }
 
-  public LeadFormsList200Response addItemsItem(LeadFormResponse itemsItem) {
+  public LeadFormsList200Response addItemsItem(LeadForm itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -84,7 +84,7 @@ public class LeadFormsList200Response   {
     return this;
   }
 
-  public LeadFormsList200Response removeItemsItem(LeadFormResponse itemsItem) {
+  public LeadFormsList200Response removeItemsItem(LeadForm itemsItem) {
     if (itemsItem != null && this.items != null) {
       this.items.remove(itemsItem);
     }
@@ -126,12 +126,8 @@ public class LeadFormsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

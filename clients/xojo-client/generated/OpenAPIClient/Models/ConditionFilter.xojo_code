@@ -2,7 +2,7 @@
 Protected Class ConditionFilter
 
 	#tag Property, Flags = &h0
-		CONDITION As CatalogsProductGroupMultipleStringCriteria
+		CONDITION As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 

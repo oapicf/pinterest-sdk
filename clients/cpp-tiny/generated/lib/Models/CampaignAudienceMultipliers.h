@@ -12,6 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include <map>
 
 namespace Tiny {
 
@@ -45,13 +46,13 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get 
+	/*! \brief Get Audience ID for the multiplier.
 	 */
 	std::string getAUDIENCEID();
 
-	/*! \brief Set 
+	/*! \brief Set Audience ID for the multiplier.
 	 */
-	void setAUDIENCEID(std::string  aUDIENCE_ID);
+	void setAUDIENCEID(std::string aUDIENCE_ID);
 
 
     private:

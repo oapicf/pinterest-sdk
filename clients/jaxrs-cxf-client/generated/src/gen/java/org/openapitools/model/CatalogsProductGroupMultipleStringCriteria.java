@@ -13,7 +13,7 @@ public class CatalogsProductGroupMultipleStringCriteria  {
   
   @ApiModelProperty(value = "")
 
-  private Boolean negated = false;
+  private Boolean negated;
 
   @ApiModelProperty(required = true, value = "")
 
@@ -93,10 +93,7 @@ public class CatalogsProductGroupMultipleStringCriteria  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

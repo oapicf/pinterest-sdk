@@ -11,35 +11,32 @@
 part of openapi.api;
 
 /// Specifies the time interval at which analytics data is broken down. Determines how metrics are grouped within the requested date range. **Note:** The `HOUR` enum no longer provides data for conversion metrics, but it still returns data for non-conversion metrics. All other enums are unchanged.
-class Granularity {
-  /// Instantiate a new enum with the provided [value].
-  const Granularity._(this.value);
+enum Granularity {
+  TOTAL._(r'TOTAL'),
+  DAY._(r'DAY'),
+  HOUR._(r'HOUR'),
+  WEEK._(r'WEEK'),
+  MONTH._(r'MONTH'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const Granularity._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const TOTAL = Granularity._(r'TOTAL');
-  static const DAY = Granularity._(r'DAY');
-  static const HOUR = Granularity._(r'HOUR');
-  static const WEEK = Granularity._(r'WEEK');
-  static const MONTH = Granularity._(r'MONTH');
-
-  /// List of all possible values in this [enum][Granularity].
-  static const values = <Granularity>[
-    TOTAL,
-    DAY,
-    HOUR,
-    WEEK,
-    MONTH,
-  ];
-
+  /// Returns the instance of [Granularity] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static Granularity? fromJson(dynamic value) => GranularityTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [Granularity]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<Granularity> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Granularity>[];
     if (json is List && json.isNotEmpty) {
@@ -61,9 +58,11 @@ class GranularityTypeTransformer {
 
   const GranularityTypeTransformer._();
 
-  String encode(Granularity data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(Granularity data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a Granularity.
+  /// Returns the instance of [Granularity] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -72,6 +71,9 @@ class GranularityTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   Granularity? decode(dynamic data, {bool allowNull = true}) {
+    if (data is Granularity) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'TOTAL': return Granularity.TOTAL;
@@ -88,7 +90,7 @@ class GranularityTypeTransformer {
     return null;
   }
 
-  /// Singleton [GranularityTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static GranularityTypeTransformer? _instance;
 }
 

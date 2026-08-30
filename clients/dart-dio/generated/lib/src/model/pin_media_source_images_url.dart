@@ -96,8 +96,9 @@ class _$PinMediaSourceImagesURLSerializer implements PrimitiveSerializer<PinMedi
         case r'index':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.index = valueDes;
           break;
         case r'items':

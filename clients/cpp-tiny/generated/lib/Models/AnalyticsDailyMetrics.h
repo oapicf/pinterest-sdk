@@ -53,27 +53,27 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setDataStatus(DataStatus  data_status);
+	void setDataStatus(DataStatus data_status);
 	/*! \brief Get Metrics date (UTC): YYYY-MM-DD.
 	 */
 	std::string getDate();
 
 	/*! \brief Set Metrics date (UTC): YYYY-MM-DD.
 	 */
-	void setDate(std::string  date);
-	/*! \brief Get The metric name and daily value for each requested metric
+	void setDate(std::string date);
+	/*! \brief Get 
 	 */
-	Map<std::string, std::string> getMetrics();
+	std::map<std::string, long> getMetrics();
 
-	/*! \brief Set The metric name and daily value for each requested metric
+	/*! \brief Set 
 	 */
-	void setMetrics(Map <std::string, std::string> metrics);
+	void setMetrics(std::map<std::string, long> metrics);
 
 
     private:
     DataStatus data_status;
     std::string date{};
-    Map<std::string, std::string> metrics;
+    std::map<std::string, long> metrics;
 };
 }
 

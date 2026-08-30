@@ -15,5 +15,6 @@ public enum CatalogsProductGroupType {
   BACK_IN_STOCK,
   NEW_ARRIVALS,
   SHOPIFY_COLLECTIONS,
-  I2_PC;
+  I2_PC,
+  CATALOG_EXPANSION;
 }

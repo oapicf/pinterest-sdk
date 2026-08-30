@@ -26,7 +26,7 @@ public class BoardCreate   {
 
   private String name;
 
-  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
+  private BoardPrivacy privacy;
 
   /**
    **/
@@ -66,7 +66,7 @@ public class BoardCreate   {
 
 
   /**
-   *      Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;.
+   *     Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;.
    **/
   public BoardCreate name(String name) {
     this.name = name;
@@ -74,7 +74,7 @@ public class BoardCreate   {
   }
 
   
-  @ApiModelProperty(example = "Summer recipes", required = true, value = "     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".")
+  @ApiModelProperty(example = "Summer recipes", required = true, value = "    Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".")
   @JsonProperty("name")
   @NotNull
   public String getName() {
@@ -143,10 +143,7 @@ public class BoardCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

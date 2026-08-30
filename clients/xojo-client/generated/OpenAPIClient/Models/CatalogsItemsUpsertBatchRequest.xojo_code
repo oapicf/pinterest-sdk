@@ -118,7 +118,7 @@ Protected Class CatalogsItemsUpsertBatchRequest
         Nb
         Ne
         Nl2
-        No
+        Escapedfalse
         Pl
         Pt
         Ro
@@ -136,6 +136,12 @@ Protected Class CatalogsItemsUpsertBatchRequest
         Tr2
         Xx
         Zh
+        
+    #tag EndEnum
+
+    #tag Enum, Name = OperationEnum, Type = Integer, Flags = &h0
+        
+        Upsert
         
     #tag EndEnum
 
@@ -322,8 +328,8 @@ Protected Class CatalogsItemsUpsertBatchRequest
 		      Return "NE"
 		    Case LanguageEnum.Nl2
 		      Return "NL"
-		    Case LanguageEnum.No
-		      Return "NO"
+		    Case LanguageEnum.Escapedfalse
+		      Return "false"
 		    Case LanguageEnum.Pl
 		      Return "PL"
 		    Case LanguageEnum.Pt
@@ -358,6 +364,17 @@ Protected Class CatalogsItemsUpsertBatchRequest
 		      Return "XX"
 		    Case LanguageEnum.Zh
 		      Return "ZH"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+	#tag Method, Flags = &h0
+		Shared Function OperationEnumToString(value As OperationEnum) As String
+		  Select Case value
+		    
+		    Case OperationEnum.Upsert
+		      Return "UPSERT"
 		    
 		  End Select
 		  Return ""
@@ -412,14 +429,6 @@ Protected Class CatalogsItemsUpsertBatchRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="ItemUpsertBatchRecord"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="operation"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="BatchOperation"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

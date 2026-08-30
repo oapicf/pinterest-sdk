@@ -1,42 +1,54 @@
 #' Create a new InviteBusinessRoleBinding
 #'
 #' @description
-#' InviteBusinessRoleBinding Class
+#' An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
 #'
 #' @docType class
 #' @title InviteBusinessRoleBinding
 #' @description InviteBusinessRoleBinding Class
 #' @format An \code{R6Class} generator object
-#' @field id Unique identifier of the invite/request. character [optional]
-#' @field invite_data  \link{BaseInviteDataResponseInviteData} [optional]
-#' @field is_received_invite Indicates whether the invite/request was received. character [optional]
-#' @field user Metadata for the user that updated the invite/request. object [optional]
 #' @field created_by_business_id Unique identifier for the business that created the invite/request. character [optional]
 #' @field created_by_user_id Unique identifier for the user that created the invite/request. character [optional]
+#' @field id Unique identifier of the invite/request. character [optional]
+#' @field invite_data  \link{InviteDataResponse} [optional]
+#' @field is_received_invite Indicates whether the invite/request was received. character [optional]
+#' @field user Metadata for the member/partner that was sent the invite/request. \link{BusinessAccessUserSummary} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 InviteBusinessRoleBinding <- R6::R6Class(
   "InviteBusinessRoleBinding",
   public = list(
+    `created_by_business_id` = NULL,
+    `created_by_user_id` = NULL,
     `id` = NULL,
     `invite_data` = NULL,
     `is_received_invite` = NULL,
     `user` = NULL,
-    `created_by_business_id` = NULL,
-    `created_by_user_id` = NULL,
 
     #' @description
     #' Initialize a new InviteBusinessRoleBinding class.
     #'
+    #' @param created_by_business_id Unique identifier for the business that created the invite/request.
+    #' @param created_by_user_id Unique identifier for the user that created the invite/request.
     #' @param id Unique identifier of the invite/request.
     #' @param invite_data invite_data
     #' @param is_received_invite Indicates whether the invite/request was received.
-    #' @param user Metadata for the user that updated the invite/request.
-    #' @param created_by_business_id Unique identifier for the business that created the invite/request.
-    #' @param created_by_user_id Unique identifier for the user that created the invite/request.
+    #' @param user Metadata for the member/partner that was sent the invite/request.
     #' @param ... Other optional arguments.
-    initialize = function(`id` = NULL, `invite_data` = NULL, `is_received_invite` = NULL, `user` = NULL, `created_by_business_id` = NULL, `created_by_user_id` = NULL, ...) {
+    initialize = function(`created_by_business_id` = NULL, `created_by_user_id` = NULL, `id` = NULL, `invite_data` = NULL, `is_received_invite` = NULL, `user` = NULL, ...) {
+      if (!is.null(`created_by_business_id`)) {
+        if (!(is.character(`created_by_business_id`) && length(`created_by_business_id`) == 1)) {
+          stop(paste("Error! Invalid data for `created_by_business_id`. Must be a string:", `created_by_business_id`))
+        }
+        self$`created_by_business_id` <- `created_by_business_id`
+      }
+      if (!is.null(`created_by_user_id`)) {
+        if (!(is.character(`created_by_user_id`) && length(`created_by_user_id`) == 1)) {
+          stop(paste("Error! Invalid data for `created_by_user_id`. Must be a string:", `created_by_user_id`))
+        }
+        self$`created_by_user_id` <- `created_by_user_id`
+      }
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
@@ -54,19 +66,8 @@ InviteBusinessRoleBinding <- R6::R6Class(
         self$`is_received_invite` <- `is_received_invite`
       }
       if (!is.null(`user`)) {
+        stopifnot(R6::is.R6(`user`))
         self$`user` <- `user`
-      }
-      if (!is.null(`created_by_business_id`)) {
-        if (!(is.character(`created_by_business_id`) && length(`created_by_business_id`) == 1)) {
-          stop(paste("Error! Invalid data for `created_by_business_id`. Must be a string:", `created_by_business_id`))
-        }
-        self$`created_by_business_id` <- `created_by_business_id`
-      }
-      if (!is.null(`created_by_user_id`)) {
-        if (!(is.character(`created_by_user_id`) && length(`created_by_user_id`) == 1)) {
-          stop(paste("Error! Invalid data for `created_by_user_id`. Must be a string:", `created_by_user_id`))
-        }
-        self$`created_by_user_id` <- `created_by_user_id`
       }
     },
 
@@ -101,22 +102,6 @@ InviteBusinessRoleBinding <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       InviteBusinessRoleBindingObject <- list()
-      if (!is.null(self$`id`)) {
-        InviteBusinessRoleBindingObject[["id"]] <-
-          self$`id`
-      }
-      if (!is.null(self$`invite_data`)) {
-        InviteBusinessRoleBindingObject[["invite_data"]] <-
-          self$`invite_data`$toSimpleType()
-      }
-      if (!is.null(self$`is_received_invite`)) {
-        InviteBusinessRoleBindingObject[["is_received_invite"]] <-
-          self$`is_received_invite`
-      }
-      if (!is.null(self$`user`)) {
-        InviteBusinessRoleBindingObject[["user"]] <-
-          self$`user`
-      }
       if (!is.null(self$`created_by_business_id`)) {
         InviteBusinessRoleBindingObject[["created_by_business_id"]] <-
           self$`created_by_business_id`
@@ -125,7 +110,46 @@ InviteBusinessRoleBinding <- R6::R6Class(
         InviteBusinessRoleBindingObject[["created_by_user_id"]] <-
           self$`created_by_user_id`
       }
+      if (!is.null(self$`id`)) {
+        InviteBusinessRoleBindingObject[["id"]] <-
+          self$`id`
+      }
+      if (!is.null(self$`invite_data`)) {
+        InviteBusinessRoleBindingObject[["invite_data"]] <-
+          self$extractSimpleType(self$`invite_data`)
+      }
+      if (!is.null(self$`is_received_invite`)) {
+        InviteBusinessRoleBindingObject[["is_received_invite"]] <-
+          self$`is_received_invite`
+      }
+      if (!is.null(self$`user`)) {
+        InviteBusinessRoleBindingObject[["user"]] <-
+          self$extractSimpleType(self$`user`)
+      }
       return(InviteBusinessRoleBindingObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -135,11 +159,17 @@ InviteBusinessRoleBinding <- R6::R6Class(
     #' @return the instance of InviteBusinessRoleBinding
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`created_by_business_id`)) {
+        self$`created_by_business_id` <- this_object$`created_by_business_id`
+      }
+      if (!is.null(this_object$`created_by_user_id`)) {
+        self$`created_by_user_id` <- this_object$`created_by_user_id`
+      }
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
       }
       if (!is.null(this_object$`invite_data`)) {
-        `invite_data_object` <- BaseInviteDataResponseInviteData$new()
+        `invite_data_object` <- InviteDataResponse$new()
         `invite_data_object`$fromJSON(jsonlite::toJSON(this_object$`invite_data`, auto_unbox = TRUE, digits = NA))
         self$`invite_data` <- `invite_data_object`
       }
@@ -147,13 +177,9 @@ InviteBusinessRoleBinding <- R6::R6Class(
         self$`is_received_invite` <- this_object$`is_received_invite`
       }
       if (!is.null(this_object$`user`)) {
-        self$`user` <- this_object$`user`
-      }
-      if (!is.null(this_object$`created_by_business_id`)) {
-        self$`created_by_business_id` <- this_object$`created_by_business_id`
-      }
-      if (!is.null(this_object$`created_by_user_id`)) {
-        self$`created_by_user_id` <- this_object$`created_by_user_id`
+        `user_object` <- BusinessAccessUserSummary$new()
+        `user_object`$fromJSON(jsonlite::toJSON(this_object$`user`, auto_unbox = TRUE, digits = NA))
+        self$`user` <- `user_object`
       }
       self
     },
@@ -176,12 +202,12 @@ InviteBusinessRoleBinding <- R6::R6Class(
     #' @return the instance of InviteBusinessRoleBinding
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`id` <- this_object$`id`
-      self$`invite_data` <- BaseInviteDataResponseInviteData$new()$fromJSON(jsonlite::toJSON(this_object$`invite_data`, auto_unbox = TRUE, digits = NA))
-      self$`is_received_invite` <- this_object$`is_received_invite`
-      self$`user` <- this_object$`user`
       self$`created_by_business_id` <- this_object$`created_by_business_id`
       self$`created_by_user_id` <- this_object$`created_by_user_id`
+      self$`id` <- this_object$`id`
+      self$`invite_data` <- InviteDataResponse$new()$fromJSON(jsonlite::toJSON(this_object$`invite_data`, auto_unbox = TRUE, digits = NA))
+      self$`is_received_invite` <- this_object$`is_received_invite`
+      self$`user` <- BusinessAccessUserSummary$new()$fromJSON(jsonlite::toJSON(this_object$`user`, auto_unbox = TRUE, digits = NA))
       self
     },
 

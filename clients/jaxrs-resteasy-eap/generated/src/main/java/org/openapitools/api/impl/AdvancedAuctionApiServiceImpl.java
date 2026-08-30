@@ -8,7 +8,7 @@ import org.openapitools.model.AdvancedAuctionItems;
 import org.openapitools.model.AdvancedAuctionItemsGetRequest;
 import org.openapitools.model.AdvancedAuctionItemsSubmitRequest;
 import org.openapitools.model.AdvancedAuctionProcessedItems;
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdvancedAuctionApiServiceImpl implements AdvancedAuctionApi {
       public Response advancedAuctionItemsGetPost(AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest,String adAccountId,SecurityContext securityContext) {
       // do some magic!

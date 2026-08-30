@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** |  | [optional] |
-| **items** | [**Array&lt;BoardSection&gt;**](BoardSection.md) | Board sections |  |
+| **items** | [**Array&lt;BoardSection&gt;**](BoardSection.md) |  |  |
 
 ## Example
 

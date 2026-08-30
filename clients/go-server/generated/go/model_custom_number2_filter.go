@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,8 +23,61 @@ type CustomNumber2Filter struct {
 
 	CUSTOMNUMBER2 CatalogsProductGroupUint32Criteria `json:"CUSTOM_NUMBER_2"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CustomNumber2Filter
+func (o *CustomNumber2Filter) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"CUSTOM_NUMBER_2",
+	}
 
-// AssertCustomNumber2FilterRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"CUSTOM_NUMBER_2": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"CUSTOM_NUMBER_2": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CustomNumber2Filter
+
+	if value, exists := allProperties["CUSTOM_NUMBER_2"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMNUMBER2); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCustomNumber2FilterRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCustomNumber2FilterRequired(obj CustomNumber2Filter) error {
 	elements := map[string]interface{}{
 		"CUSTOM_NUMBER_2": obj.CUSTOMNUMBER2,
@@ -30,10 +88,16 @@ func AssertCustomNumber2FilterRequired(obj CustomNumber2Filter) error {
 		}
 	}
 
+	if err := AssertCatalogsProductGroupUint32CriteriaRequired(obj.CUSTOMNUMBER2); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertCustomNumber2FilterConstraints checks if the values respects the defined constraints
 func AssertCustomNumber2FilterConstraints(obj CustomNumber2Filter) error {
+	if err := AssertCatalogsProductGroupUint32CriteriaConstraints(obj.CUSTOMNUMBER2); err != nil {
+		return err
+	}
 	return nil
 }

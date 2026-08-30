@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 Create customer lists
 
-&lt;p&gt;Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).&lt;/p&gt; &lt;p&gt;A customer list is one of the four types of Pinterest audiences: for more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;p/&gt; &lt;p&gt;&lt;b&gt;Please review our &lt;u&gt;&lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting#section-13341\&quot; target&#x3D;\&quot;_blank\&quot;&gt;requirements&lt;/a&gt;&lt;/u&gt; for what type of information is allowed when uploading a customer list.&lt;/b&gt;&lt;/p&gt; &lt;p&gt;When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.&lt;/p&gt; &lt;p&gt;To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the &lt;a href&#x3D;\&quot;https://developer.pinterest.com/docs/api/v5/audiences-create\&quot; target&#x3D;\&quot;blank\&quot;&gt;create audience endpoint&lt;/a&gt;.&lt;/p&gt;
+Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
 
 ### Example
 
@@ -45,11 +45,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = CustomerListsApi("https://api.pinterest.com/v5")
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    val adAccountId: String = adAccountId_example // String | 
 
-    val customerListRequest: CustomerListRequest =  // CustomerListRequest | Parameters to get Customer lists info
+    val customerListCreate: CustomerListCreate =  // CustomerListCreate | 
     
-    val request = apiInstance.customerListsCreate(adAccountId, customerListRequest)
+    val request = apiInstance.customerListsCreate(adAccountId, customerListCreate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -77,8 +77,8 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. |
- **customerListRequest** | [**CustomerListRequest**](CustomerListRequest.md)| Parameters to get Customer lists info |
+ **adAccountId** | **String**|  |
+ **customerListCreate** | [**CustomerListCreate**](CustomerListCreate.md)|  |
 
 ### Return type
 
@@ -97,8 +97,14 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## customerListsGet
@@ -130,9 +136,9 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = CustomerListsApi("https://api.pinterest.com/v5")
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    val adAccountId: String = adAccountId_example // String | 
 
-    val customerListId: String = customerListId_example // String | Unique identifier of a customer list
+    val customerListId: String = customerListId_example // String | Customer list ID.
     
     val request = apiInstance.customerListsGet(adAccountId, customerListId)
     val response = apiInvoker.execute(request)
@@ -162,8 +168,8 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. |
- **customerListId** | **String**| Unique identifier of a customer list |
+ **adAccountId** | **String**|  |
+ **customerListId** | **String**| Customer list ID. |
 
 ### Return type
 
@@ -182,8 +188,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## customerListsList
@@ -192,12 +203,13 @@ No authorization required
 
 Get customer lists
 
-&lt;p&gt;Get a set of customer lists including id and name based on the filters provided.&lt;/p&gt; &lt;p&gt;(Customer lists are a type of audience.) For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;  or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
+Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 
 ### Example
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -215,15 +227,17 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = CustomerListsApi("https://api.pinterest.com/v5")
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
-
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-
-    val order: String = ASCENDING // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+    val adAccountId: String = adAccountId_example // String | 
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+
+    val order: PaginationOrder =  // PaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+
+    val excludeNca: Boolean = true // Boolean | When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).
     
-    val request = apiInstance.customerListsList(adAccountId, pageSize, order, bookmark)
+    val request = apiInstance.customerListsList(adAccountId, bookmark, pageSize, order, excludeNca)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -251,10 +265,11 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. |
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
+ **adAccountId** | **String**|  |
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
+ **order** | [**PaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
+ **excludeNca** | **Boolean**| When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all). | [optional]
 
 ### Return type
 
@@ -273,8 +288,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## customerListsUpdate
@@ -283,7 +303,7 @@ No authorization required
 
 Update customer list
 
-&lt;p&gt;Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)&lt;/p&gt; &lt;p&gt;When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
+Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \&quot;CUSTOMER_LIST\&quot; audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 
 ### Example
 
@@ -307,13 +327,13 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = CustomerListsApi("https://api.pinterest.com/v5")
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    val adAccountId: String = adAccountId_example // String | 
 
-    val customerListId: String = customerListId_example // String | Unique identifier of a customer list
+    val customerListId: String = customerListId_example // String | Customer list ID.
 
-    val customerListUpdateRequest: CustomerListUpdateRequest =  // CustomerListUpdateRequest | 
+    val customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody =  // CustomerListUpdateWithRequiredBody | 
     
-    val request = apiInstance.customerListsUpdate(adAccountId, customerListId, customerListUpdateRequest)
+    val request = apiInstance.customerListsUpdate(adAccountId, customerListId, customerListUpdateWithRequiredBody)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -341,9 +361,9 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. |
- **customerListId** | **String**| Unique identifier of a customer list |
- **customerListUpdateRequest** | [**CustomerListUpdateRequest**](CustomerListUpdateRequest.md)|  |
+ **adAccountId** | **String**|  |
+ **customerListId** | **String**| Customer list ID. |
+ **customerListUpdateWithRequiredBody** | [**CustomerListUpdateWithRequiredBody**](CustomerListUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
@@ -362,6 +382,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

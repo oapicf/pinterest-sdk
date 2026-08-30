@@ -4,7 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.openapitools.vertxweb.server.model.CatalogsHotelReportStatsParametersReport;
+import org.openapitools.vertxweb.server.model.CatalogsRetailReportStatsParametersReport;
 
 /**
  * Parameters for retail report
@@ -31,13 +31,13 @@ public class CatalogsRetailReportStatsParameters   {
   }
 
   private CatalogTypeEnum catalogType;
-  private CatalogsHotelReportStatsParametersReport report;
+  private CatalogsRetailReportStatsParametersReport report;
 
   public CatalogsRetailReportStatsParameters () {
 
   }
 
-  public CatalogsRetailReportStatsParameters (CatalogTypeEnum catalogType, CatalogsHotelReportStatsParametersReport report) {
+  public CatalogsRetailReportStatsParameters (CatalogTypeEnum catalogType, CatalogsRetailReportStatsParametersReport report) {
     this.catalogType = catalogType;
     this.report = report;
   }
@@ -53,10 +53,10 @@ public class CatalogsRetailReportStatsParameters   {
 
     
   @JsonProperty("report")
-  public CatalogsHotelReportStatsParametersReport getReport() {
+  public CatalogsRetailReportStatsParametersReport getReport() {
     return report;
   }
-  public void setReport(CatalogsHotelReportStatsParametersReport report) {
+  public void setReport(CatalogsRetailReportStatsParametersReport report) {
     this.report = report;
   }
 
@@ -95,9 +95,6 @@ public class CatalogsRetailReportStatsParameters   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

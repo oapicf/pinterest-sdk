@@ -58,7 +58,7 @@ class CatalogsHotelListProductsByCatalogBasedFilterRequest(Model):
     def catalog_id(self) -> str:
         """Gets the catalog_id of this CatalogsHotelListProductsByCatalogBasedFilterRequest.
 
-        Catalog id pertaining to the hotel product group.  # noqa: E501
+        Catalog ID pertaining to the product group.  # noqa: E501
 
         :return: The catalog_id of this CatalogsHotelListProductsByCatalogBasedFilterRequest.
         :rtype: str
@@ -69,7 +69,7 @@ class CatalogsHotelListProductsByCatalogBasedFilterRequest(Model):
     def catalog_id(self, catalog_id: str):
         """Sets the catalog_id of this CatalogsHotelListProductsByCatalogBasedFilterRequest.
 
-        Catalog id pertaining to the hotel product group.  # noqa: E501
+        Catalog ID pertaining to the product group.  # noqa: E501
 
         :param catalog_id: The catalog_id of this CatalogsHotelListProductsByCatalogBasedFilterRequest.
         :type catalog_id: str

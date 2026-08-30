@@ -11,11 +11,10 @@ import io.swagger.annotations.ApiModelProperty;
  *
  */
 /**
- * Record processing counts
+ * RecordCounts
  */
-@ApiModel(description = "Record processing counts")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class RecordCounts   {
   @JsonProperty("invalid")
   private Integer invalid;
@@ -35,7 +34,7 @@ public class RecordCounts   {
    * Number of invalid records processed
    * @return invalid
    */
-  @ApiModelProperty(example = "50", required = true, value = "Number of invalid records processed")
+  @ApiModelProperty(required = true, value = "Number of invalid records processed")
   public Integer getInvalid() {
     return invalid;
   }
@@ -53,7 +52,7 @@ public class RecordCounts   {
    * Number of records processed
    * @return processed
    */
-  @ApiModelProperty(example = "1000", required = true, value = "Number of records processed")
+  @ApiModelProperty(required = true, value = "Number of records processed")
   public Integer getProcessed() {
     return processed;
   }
@@ -71,7 +70,7 @@ public class RecordCounts   {
    * Number of valid records processed
    * @return valid
    */
-  @ApiModelProperty(example = "950", required = true, value = "Number of valid records processed")
+  @ApiModelProperty(required = true, value = "Number of valid records processed")
   public Integer getValid() {
     return valid;
   }
@@ -117,10 +116,7 @@ public class RecordCounts   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

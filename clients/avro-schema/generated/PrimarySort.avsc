@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Whether to first sort the report by date or by ID",
+  "name": "PrimarySort",
+  "symbols": [
+    "BY_ID",
+    "BY_DATE"
+  ]
+}

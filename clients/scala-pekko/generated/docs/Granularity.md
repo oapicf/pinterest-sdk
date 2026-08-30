@@ -1,0 +1,9 @@
+
+
+# Granularity
+
+## Enum
+
+
+
+

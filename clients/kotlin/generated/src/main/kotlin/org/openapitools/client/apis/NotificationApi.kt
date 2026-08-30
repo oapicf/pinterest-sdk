@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,9 +27,9 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.Error
 import org.openapitools.client.models.NotificationPostRequest
 import org.openapitools.client.models.NotificationResponse
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -43,7 +51,7 @@ open class NotificationApi(basePath: kotlin.String = defaultBasePath, client: Ca
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
@@ -51,7 +59,7 @@ open class NotificationApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * POST /notifications
      * Receive notifications from external partners.
      * Used by third-party partners to send notifications to Pinterest. These notifications could be specific for your use-case or generic notification that are accepted by Pinterests&#39; systems. This API is gated and you need to request access to this feature.
-     * @param notificationPostRequest notification event.
+     * @param notificationPostRequest 
      * @return NotificationResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -83,7 +91,7 @@ open class NotificationApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * POST /notifications
      * Receive notifications from external partners.
      * Used by third-party partners to send notifications to Pinterest. These notifications could be specific for your use-case or generic notification that are accepted by Pinterests&#39; systems. This API is gated and you need to request access to this feature.
-     * @param notificationPostRequest notification event.
+     * @param notificationPostRequest 
      * @return ApiResponse<NotificationResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -101,7 +109,7 @@ open class NotificationApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * To obtain the request config of the operation notificationPost
      *
-     * @param notificationPostRequest notification event.
+     * @param notificationPostRequest 
      * @return RequestConfig
      */
     fun notificationPostRequestConfig(notificationPostRequest: NotificationPostRequest) : RequestConfig<NotificationPostRequest> {

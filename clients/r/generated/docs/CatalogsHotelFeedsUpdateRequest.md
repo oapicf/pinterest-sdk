@@ -5,7 +5,7 @@ Request object for updating a feed.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [Enum: ] 
+**catalog_type** | **character** |  | [Enum: [HOTEL]] 
 **credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
 **default_currency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] [Enum: ] 
 **format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [optional] [Enum: ] 

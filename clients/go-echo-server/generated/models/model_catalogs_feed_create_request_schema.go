@@ -1,0 +1,26 @@
+package models
+
+type CatalogsFeedCreateRequestSchema struct {
+
+	Credentials *CatalogsFeedCredentials `json:"credentials,omitempty"`
+
+	DefaultAvailability *ProductAvailabilityType `json:"default_availability,omitempty"`
+
+	DefaultCountry Country `json:"default_country,omitempty"`
+
+	DefaultCurrency *NullableCurrency `json:"default_currency,omitempty"`
+
+	DefaultLocale CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale `json:"default_locale,omitempty"`
+
+	Format CatalogsFormat `json:"format"`
+
+	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+	Location string `json:"location"`
+
+	// A human-friendly name associated to a given feed.
+	Name string `json:"name"`
+
+	PreferredProcessingSchedule *CatalogsFeedProcessingSchedule `json:"preferred_processing_schedule,omitempty"`
+
+	Status CatalogsStatus `json:"status,omitempty"`
+}

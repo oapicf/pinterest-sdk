@@ -6,6 +6,10 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.billing_profile_card_type import BillingProfileCardType  # noqa: F401,E501
+from app.openapi_server.models.billing_profile_payment_method_brand import BillingProfilePaymentMethodBrand  # noqa: F401,E501
+from app.openapi_server.models.billing_profile_status import BillingProfileStatus  # noqa: F401,E501
+from app.openapi_server.models.billing_type import BillingType  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -16,29 +20,29 @@ class BillingProfilesResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, advertiser_id: str=None, billing_type: str=None, card_type: str=None, id: str=None, payment_method_brand: str=None, status: str=None):  # noqa: E501
+    def __init__(self, advertiser_id: str=None, billing_type: BillingType=None, card_type: BillingProfileCardType=None, id: str=None, payment_method_brand: BillingProfilePaymentMethodBrand=None, status: BillingProfileStatus=None):  # noqa: E501
         """BillingProfilesResponse - a model defined in Swagger
 
         :param advertiser_id: The advertiser_id of this BillingProfilesResponse.  # noqa: E501
         :type advertiser_id: str
         :param billing_type: The billing_type of this BillingProfilesResponse.  # noqa: E501
-        :type billing_type: str
+        :type billing_type: BillingType
         :param card_type: The card_type of this BillingProfilesResponse.  # noqa: E501
-        :type card_type: str
+        :type card_type: BillingProfileCardType
         :param id: The id of this BillingProfilesResponse.  # noqa: E501
         :type id: str
         :param payment_method_brand: The payment_method_brand of this BillingProfilesResponse.  # noqa: E501
-        :type payment_method_brand: str
+        :type payment_method_brand: BillingProfilePaymentMethodBrand
         :param status: The status of this BillingProfilesResponse.  # noqa: E501
-        :type status: str
+        :type status: BillingProfileStatus
         """
         self.swagger_types = {
             'advertiser_id': str,
-            'billing_type': str,
-            'card_type': str,
+            'billing_type': BillingType,
+            'card_type': BillingProfileCardType,
             'id': str,
-            'payment_method_brand': str,
-            'status': str
+            'payment_method_brand': BillingProfilePaymentMethodBrand,
+            'status': BillingProfileStatus
         }
 
         self.attribute_map = {
@@ -94,60 +98,48 @@ class BillingProfilesResponse(Model):
         self._advertiser_id = advertiser_id
 
     @property
-    def billing_type(self) -> str:
+    def billing_type(self) -> BillingType:
         """Gets the billing_type of this BillingProfilesResponse.
 
         Billing type of the advertiser  # noqa: E501
 
         :return: The billing_type of this BillingProfilesResponse.
-        :rtype: str
+        :rtype: BillingType
         """
         return self._billing_type
 
     @billing_type.setter
-    def billing_type(self, billing_type: str):
+    def billing_type(self, billing_type: BillingType):
         """Sets the billing_type of this BillingProfilesResponse.
 
         Billing type of the advertiser  # noqa: E501
 
         :param billing_type: The billing_type of this BillingProfilesResponse.
-        :type billing_type: str
+        :type billing_type: BillingType
         """
-        allowed_values = ["CREDIT_CARD", "INVOICE", "INTERNAL", "RECURRING", "PREPAID"]  # noqa: E501
-        if billing_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `billing_type` ({0}), must be one of {1}"
-                .format(billing_type, allowed_values)
-            )
 
         self._billing_type = billing_type
 
     @property
-    def card_type(self) -> str:
+    def card_type(self) -> BillingProfileCardType:
         """Gets the card_type of this BillingProfilesResponse.
 
         Type of the card.  # noqa: E501
 
         :return: The card_type of this BillingProfilesResponse.
-        :rtype: str
+        :rtype: BillingProfileCardType
         """
         return self._card_type
 
     @card_type.setter
-    def card_type(self, card_type: str):
+    def card_type(self, card_type: BillingProfileCardType):
         """Sets the card_type of this BillingProfilesResponse.
 
         Type of the card.  # noqa: E501
 
         :param card_type: The card_type of this BillingProfilesResponse.
-        :type card_type: str
+        :type card_type: BillingProfileCardType
         """
-        allowed_values = ["UNKNOWN", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "ELO"]  # noqa: E501
-        if card_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `card_type` ({0}), must be one of {1}"
-                .format(card_type, allowed_values)
-            )
 
         self._card_type = card_type
 
@@ -177,59 +169,47 @@ class BillingProfilesResponse(Model):
         self._id = id
 
     @property
-    def payment_method_brand(self) -> str:
+    def payment_method_brand(self) -> BillingProfilePaymentMethodBrand:
         """Gets the payment_method_brand of this BillingProfilesResponse.
 
         Brand of the payment method.  # noqa: E501
 
         :return: The payment_method_brand of this BillingProfilesResponse.
-        :rtype: str
+        :rtype: BillingProfilePaymentMethodBrand
         """
         return self._payment_method_brand
 
     @payment_method_brand.setter
-    def payment_method_brand(self, payment_method_brand: str):
+    def payment_method_brand(self, payment_method_brand: BillingProfilePaymentMethodBrand):
         """Sets the payment_method_brand of this BillingProfilesResponse.
 
         Brand of the payment method.  # noqa: E501
 
         :param payment_method_brand: The payment_method_brand of this BillingProfilesResponse.
-        :type payment_method_brand: str
+        :type payment_method_brand: BillingProfilePaymentMethodBrand
         """
-        allowed_values = ["UNKNOWN", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "SOFORT", "DINERS_CLUB", "ELO", "CARTE_BANCAIRE"]  # noqa: E501
-        if payment_method_brand not in allowed_values:
-            raise ValueError(
-                "Invalid value for `payment_method_brand` ({0}), must be one of {1}"
-                .format(payment_method_brand, allowed_values)
-            )
 
         self._payment_method_brand = payment_method_brand
 
     @property
-    def status(self) -> str:
+    def status(self) -> BillingProfileStatus:
         """Gets the status of this BillingProfilesResponse.
 
         Status of the billing.  # noqa: E501
 
         :return: The status of this BillingProfilesResponse.
-        :rtype: str
+        :rtype: BillingProfileStatus
         """
         return self._status
 
     @status.setter
-    def status(self, status: str):
+    def status(self, status: BillingProfileStatus):
         """Sets the status of this BillingProfilesResponse.
 
         Status of the billing.  # noqa: E501
 
         :param status: The status of this BillingProfilesResponse.
-        :type status: str
+        :type status: BillingProfileStatus
         """
-        allowed_values = ["UNSPECIFIED", "VALID", "INVALID", "PENDING", "DELETED", "SECONDARY", "PENDING_SECONDARY"]  # noqa: E501
-        if status not in allowed_values:
-            raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}"
-                .format(status, allowed_values)
-            )
 
         self._status = status

@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.create_asset_access_request_error_message_inner import CreateAssetAccessRequestErrorMessageInner  # noqa: F401,E501
+from app.openapi_server.models.asset_access_request_error import AssetAccessRequestError  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,16 +16,16 @@ class CreateAssetAccessRequestResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, exceptions: List[CreateAssetAccessRequestErrorMessageInner]=None, invites: Dict[str, str]=None):  # noqa: E501
+    def __init__(self, exceptions: List[AssetAccessRequestError]=None, invites: Dict[str, str]=None):  # noqa: E501
         """CreateAssetAccessRequestResponse - a model defined in Swagger
 
         :param exceptions: The exceptions of this CreateAssetAccessRequestResponse.  # noqa: E501
-        :type exceptions: List[CreateAssetAccessRequestErrorMessageInner]
+        :type exceptions: List[AssetAccessRequestError]
         :param invites: The invites of this CreateAssetAccessRequestResponse.  # noqa: E501
         :type invites: Dict[str, str]
         """
         self.swagger_types = {
-            'exceptions': List[CreateAssetAccessRequestErrorMessageInner],
+            'exceptions': List[AssetAccessRequestError],
             'invites': Dict[str, str]
         }
 
@@ -49,24 +49,24 @@ class CreateAssetAccessRequestResponse(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def exceptions(self) -> List[CreateAssetAccessRequestErrorMessageInner]:
+    def exceptions(self) -> List[AssetAccessRequestError]:
         """Gets the exceptions of this CreateAssetAccessRequestResponse.
 
         A list of errors associated with the asset access requests. Will be returned if there is an error.  # noqa: E501
 
         :return: The exceptions of this CreateAssetAccessRequestResponse.
-        :rtype: List[CreateAssetAccessRequestErrorMessageInner]
+        :rtype: List[AssetAccessRequestError]
         """
         return self._exceptions
 
     @exceptions.setter
-    def exceptions(self, exceptions: List[CreateAssetAccessRequestErrorMessageInner]):
+    def exceptions(self, exceptions: List[AssetAccessRequestError]):
         """Sets the exceptions of this CreateAssetAccessRequestResponse.
 
         A list of errors associated with the asset access requests. Will be returned if there is an error.  # noqa: E501
 
         :param exceptions: The exceptions of this CreateAssetAccessRequestResponse.
-        :type exceptions: List[CreateAssetAccessRequestErrorMessageInner]
+        :type exceptions: List[AssetAccessRequestError]
         """
 
         self._exceptions = exceptions
@@ -75,6 +75,7 @@ class CreateAssetAccessRequestResponse(Model):
     def invites(self) -> Dict[str, str]:
         """Gets the invites of this CreateAssetAccessRequestResponse.
 
+        An object mapping each partner id to the asset access request id. Only one request id is returned per partner.  # noqa: E501
 
         :return: The invites of this CreateAssetAccessRequestResponse.
         :rtype: Dict[str, str]
@@ -85,6 +86,7 @@ class CreateAssetAccessRequestResponse(Model):
     def invites(self, invites: Dict[str, str]):
         """Sets the invites of this CreateAssetAccessRequestResponse.
 
+        An object mapping each partner id to the asset access request id. Only one request id is returned per partner.  # noqa: E501
 
         :param invites: The invites of this CreateAssetAccessRequestResponse.
         :type invites: Dict[str, str]

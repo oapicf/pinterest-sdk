@@ -53,8 +53,10 @@ Name | Type
 `adVideo1Tag` | string
 `adVideo2Link` | string
 `adVideo2Tag` | string
+`additionalImageLink` | Array&lt;string&gt;
 `adult` | boolean
 `ageGroup` | string
+`aiDisclosures` | [Array&lt;CatalogsAiContentDisclosure&gt;](CatalogsAiContentDisclosure.md)
 `androidDeepLink` | string
 `availability` | string
 `averageReviewRating` | number
@@ -79,6 +81,7 @@ Name | Type
 `googleProductCategory` | string
 `gtin` | [UpdatableItemAttributesGtin](UpdatableItemAttributesGtin.md)
 `id` | string
+`imageLink` | [ItemAttributesRequestImageLink](ItemAttributesRequestImageLink.md)
 `installmentPrice` | string
 `iosDeepLink` | string
 `itemGroupId` | string
@@ -96,6 +99,7 @@ Name | Type
 `promotionId` | string
 `salePrice` | string
 `salePriceEffectiveDate` | string
+`savePinDisabled` | boolean
 `shipping` | string
 `shippingHeight` | string
 `shippingWeight` | string
@@ -109,9 +113,6 @@ Name | Type
 `unitPricingMeasure` | string
 `variantNames` | Array&lt;string&gt;
 `variantValues` | Array&lt;string&gt;
-`additionalImageLink` | Array&lt;string&gt;
-`imageLink` | [ItemAttributesRequestAllOfImageLink](ItemAttributesRequestAllOfImageLink.md)
-`savePinDisabled` | boolean
 `videoLink` | string
 
 ## Example
@@ -168,12 +169,14 @@ const example = {
   "adVideo1Tag": black friday,
   "adVideo2Link": https://www.example.com/video/video_v2.mov,
   "adVideo2Tag": black friday,
+  "additionalImageLink": null,
   "adult": true,
   "ageGroup": newborn,
+  "aiDisclosures": [{"url":"https://scene.example.com/image/image_v3.jpg","disclosure":["ai_modified"]}],
   "androidDeepLink": pinterest://item/1234567890,
   "availability": in stock,
   "averageReviewRating": 5,
-  "brand": Josie’s Denim,
+  "brand": Josie's Denim,
   "checkoutEnabled": false,
   "color": blue,
   "condition": new,
@@ -194,6 +197,7 @@ const example = {
   "googleProductCategory": Apparel & Accessories > Clothing > Shirts & Tops,
   "gtin": null,
   "id": DS0294-L,
+  "imageLink": null,
   "installmentPrice": 10:10.00 USD,
   "iosDeepLink": pinterest://item/1234567890,
   "itemGroupId": DS0294,
@@ -207,10 +211,11 @@ const example = {
   "numberOfReviews": 10,
   "pattern": plaid,
   "price": 24.99 USD,
-  "productType": Clothing > Women’s > Shirts > Denim,
+  "productType": Clothing > Women's > Shirts > Denim,
   "promotionId": promotion_1,
   "salePrice": 14.99 USD,
   "salePriceEffectiveDate": 2025-01-01T00:00:00.000000Z/2025-01-07T00:00:00.000000Z,
+  "savePinDisabled": null,
   "shipping": US:CA:Ground:0 USD,
   "shippingHeight": 12 in,
   "shippingWeight": 3 kg,
@@ -219,15 +224,12 @@ const example = {
   "sizeSystem": US,
   "sizeType": regular,
   "tax": US:1025433:6.00:y,
-  "title": Women’s denim shirt, large,
+  "title": Women's denim shirt, large,
   "unitPricingBaseMeasure": 10 ML,
   "unitPricingMeasure": 10 ML,
-  "variantNames": [Color, Size],
-  "variantValues": [Red, Small],
-  "additionalImageLink": ["https://scene.example.com/image/image_v2.jpg","https://scene.example.com/image/image_v3.jpg"],
-  "imageLink": null,
-  "savePinDisabled": true,
-  "videoLink": https://www.example.com/cat/womens-clothing/denim-shirt-0294.mp4,
+  "variantNames": ["Color","Size"],
+  "variantValues": ["Red","Small"],
+  "videoLink": null,
 } satisfies ItemAttributesRequest
 
 console.log(example)

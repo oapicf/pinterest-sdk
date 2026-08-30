@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.user_website_summary import UserWebsiteSummary  # noqa: F401,E501
+from app.openapi_server.models.user_website import UserWebsite  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,17 +16,17 @@ class UserWebsitesGet200Response(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, bookmark: str=None, items: List[UserWebsiteSummary]=None):  # noqa: E501
+    def __init__(self, bookmark: str=None, items: List[UserWebsite]=None):  # noqa: E501
         """UserWebsitesGet200Response - a model defined in Swagger
 
         :param bookmark: The bookmark of this UserWebsitesGet200Response.  # noqa: E501
         :type bookmark: str
         :param items: The items of this UserWebsitesGet200Response.  # noqa: E501
-        :type items: List[UserWebsiteSummary]
+        :type items: List[UserWebsite]
         """
         self.swagger_types = {
             'bookmark': str,
-            'items': List[UserWebsiteSummary]
+            'items': List[UserWebsite]
         }
 
         self.attribute_map = {
@@ -70,22 +70,22 @@ class UserWebsitesGet200Response(Model):
         self._bookmark = bookmark
 
     @property
-    def items(self) -> List[UserWebsiteSummary]:
+    def items(self) -> List[UserWebsite]:
         """Gets the items of this UserWebsitesGet200Response.
 
 
         :return: The items of this UserWebsitesGet200Response.
-        :rtype: List[UserWebsiteSummary]
+        :rtype: List[UserWebsite]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[UserWebsiteSummary]):
+    def items(self, items: List[UserWebsite]):
         """Sets the items of this UserWebsitesGet200Response.
 
 
         :param items: The items of this UserWebsitesGet200Response.
-        :type items: List[UserWebsiteSummary]
+        :type items: List[UserWebsite]
         """
         if items is None:
             raise ValueError("Invalid value for `items`, must not be `None`")  # noqa: E501

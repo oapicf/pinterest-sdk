@@ -2,8 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.TrendingKeywordDemographicsAgeDistribution
-import org.openapitools.model.TrendingKeywordDemographicsGenderDistribution
+import org.openapitools.model.TrendsAgeDistribution
+import org.openapitools.model.TrendsGenderDistribution
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -16,19 +16,21 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
- * A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. <br /> For each dimension: <br />   - Key: The category (e.g., \"female\", \"18-24\"). <br />   - Value: The proportion of search volume (e.g., 0.12 for 12%). <br />     Values less than 0.05 are set to 0.04 for privacy. <br />     The sum for all categories in a dimension will approximately equal 1. <br />     Only applicable when `include_demographics` query parameter is set to `true`.
+ * A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. For each dimension: Key: The category (e.g., \"female\", \"18-24\"). Value: The proportion of search volume (e.g., 0.12 for 12%). Values less than 0.05 are set to 0.04 for privacy. The sum for all categories in a dimension will approximately equal 1. Only applicable when `include_demographics` query parameter is set to `true`.
  * @param ageDistribution 
  * @param genderDistribution 
  */
 data class TrendingKeywordDemographics(
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("age_distribution") val ageDistribution: TrendingKeywordDemographicsAgeDistribution? = null,
+    @Schema(description = "")
+    @param:JsonProperty("age_distribution")
+    @get:JsonProperty("age_distribution") val ageDistribution: TrendsAgeDistribution? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("gender_distribution") val genderDistribution: TrendingKeywordDemographicsGenderDistribution? = null
+    @Schema(description = "")
+    @param:JsonProperty("gender_distribution")
+    @get:JsonProperty("gender_distribution") val genderDistribution: TrendsGenderDistribution? = null
 ) {
 
 }

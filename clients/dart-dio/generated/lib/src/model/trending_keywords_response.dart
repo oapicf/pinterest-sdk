@@ -13,10 +13,10 @@ part 'trending_keywords_response.g.dart';
 /// TrendingKeywordsResponse
 ///
 /// Properties:
-/// * [trends] - The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
+/// * [trends] - The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.
 @BuiltValue()
 abstract class TrendingKeywordsResponse implements Built<TrendingKeywordsResponse, TrendingKeywordsResponseBuilder> {
-  /// The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
+  /// The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.
   @BuiltValueField(wireName: r'trends')
   BuiltList<TrendingKeyword>? get trends;
 
@@ -76,8 +76,9 @@ class _$TrendingKeywordsResponseSerializer implements PrimitiveSerializer<Trendi
         case r'trends':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(TrendingKeyword)]),
-          ) as BuiltList<TrendingKeyword>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(TrendingKeyword)]),
+          ) as BuiltList<TrendingKeyword>?;
+          if (valueDes == null) continue;
           result.trends.replace(valueDes);
           break;
         default:

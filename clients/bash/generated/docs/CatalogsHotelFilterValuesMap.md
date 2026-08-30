@@ -1,4 +1,4 @@
-# catalogs_hotel_filter_values_map
+# CatalogsHotelFilterValuesMap
 
 ## Properties
 Name | Type | Description | Notes

@@ -3,7 +3,6 @@ package apimodels;
 import apimodels.CatalogsCreativeAssetsProductGroupProductCounts;
 import apimodels.CatalogsHotelProductGroupProductCounts;
 import apimodels.CatalogsRetailProductGroupProductCounts;
-import apimodels.CatalogsType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -17,14 +16,42 @@ import javax.validation.Valid;
 /**
  * Product counts for a CatalogsProductGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsProductGroupProductCountsVertical   {
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
   @NotNull
-@Valid
 
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("in_stock")
   @NotNull
@@ -61,7 +88,21 @@ public class CatalogsProductGroupProductCountsVertical   {
 
   private BigDecimal videos;
 
-  public CatalogsProductGroupProductCountsVertical catalogType(CatalogsType catalogType) {
+  @JsonProperty("app_links")
+  @NotNull
+@DecimalMin("0")
+@Valid
+
+  private BigDecimal appLinks;
+
+  @JsonProperty("images")
+  @NotNull
+@DecimalMin("0")
+@Valid
+
+  private BigDecimal images;
+
+  public CatalogsProductGroupProductCountsVertical catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -70,11 +111,11 @@ public class CatalogsProductGroupProductCountsVertical   {
    * Get catalogType
    * @return catalogType
   **/
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -168,6 +209,42 @@ public class CatalogsProductGroupProductCountsVertical   {
     this.videos = videos;
   }
 
+  public CatalogsProductGroupProductCountsVertical appLinks(BigDecimal appLinks) {
+    this.appLinks = appLinks;
+    return this;
+  }
+
+   /**
+   * Get appLinks
+   * minimum: 0
+   * @return appLinks
+  **/
+  public BigDecimal getAppLinks() {
+    return appLinks;
+  }
+
+  public void setAppLinks(BigDecimal appLinks) {
+    this.appLinks = appLinks;
+  }
+
+  public CatalogsProductGroupProductCountsVertical images(BigDecimal images) {
+    this.images = images;
+    return this;
+  }
+
+   /**
+   * Get images
+   * minimum: 0
+   * @return images
+  **/
+  public BigDecimal getImages() {
+    return images;
+  }
+
+  public void setImages(BigDecimal images) {
+    this.images = images;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -183,12 +260,14 @@ public class CatalogsProductGroupProductCountsVertical   {
         Objects.equals(outOfStock, catalogsProductGroupProductCountsVertical.outOfStock) &&
         Objects.equals(preorder, catalogsProductGroupProductCountsVertical.preorder) &&
         Objects.equals(total, catalogsProductGroupProductCountsVertical.total) &&
-        Objects.equals(videos, catalogsProductGroupProductCountsVertical.videos);
+        Objects.equals(videos, catalogsProductGroupProductCountsVertical.videos) &&
+        Objects.equals(appLinks, catalogsProductGroupProductCountsVertical.appLinks) &&
+        Objects.equals(images, catalogsProductGroupProductCountsVertical.images);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, inStock, outOfStock, preorder, total, videos);
+    return Objects.hash(catalogType, inStock, outOfStock, preorder, total, videos, appLinks, images);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -203,6 +282,8 @@ public class CatalogsProductGroupProductCountsVertical   {
     sb.append("    preorder: ").append(toIndentedString(preorder)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    videos: ").append(toIndentedString(videos)).append("\n");
+    sb.append("    appLinks: ").append(toIndentedString(appLinks)).append("\n");
+    sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -212,10 +293,7 @@ public class CatalogsProductGroupProductCountsVertical   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

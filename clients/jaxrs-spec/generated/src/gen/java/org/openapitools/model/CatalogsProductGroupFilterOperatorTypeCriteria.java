@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.FilterOperatorType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,57 +20,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsProductGroupFilterOperatorTypeCriteria")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupFilterOperatorTypeCriteria   {
-  public enum FilterOperatorTypeEnum {
-
-    IS(String.valueOf("IS")), CONTAINS(String.valueOf("CONTAINS"));
-
-
-    private String value;
-
-    FilterOperatorTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static FilterOperatorTypeEnum fromString(String s) {
-        for (FilterOperatorTypeEnum b : FilterOperatorTypeEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static FilterOperatorTypeEnum fromValue(String value) {
-        for (FilterOperatorTypeEnum b : FilterOperatorTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private FilterOperatorTypeEnum filterOperatorType = FilterOperatorTypeEnum.IS;
-  private Boolean negated = false;
+  private FilterOperatorType filterOperatorType;
+  private Boolean negated;
   private @Valid List<String> values = new ArrayList<>();
 
   public CatalogsProductGroupFilterOperatorTypeCriteria() {
@@ -84,7 +38,7 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria   {
 
   /**
    **/
-  public CatalogsProductGroupFilterOperatorTypeCriteria filterOperatorType(FilterOperatorTypeEnum filterOperatorType) {
+  public CatalogsProductGroupFilterOperatorTypeCriteria filterOperatorType(FilterOperatorType filterOperatorType) {
     this.filterOperatorType = filterOperatorType;
     return this;
   }
@@ -92,12 +46,12 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("filter_operator_type")
-  public FilterOperatorTypeEnum getFilterOperatorType() {
+  public FilterOperatorType getFilterOperatorType() {
     return filterOperatorType;
   }
 
   @JsonProperty("filter_operator_type")
-  public void setFilterOperatorType(FilterOperatorTypeEnum filterOperatorType) {
+  public void setFilterOperatorType(FilterOperatorType filterOperatorType) {
     this.filterOperatorType = filterOperatorType;
   }
 
@@ -192,12 +146,8 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

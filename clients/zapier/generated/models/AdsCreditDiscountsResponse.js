@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const AdsCreditDiscountType = require('../models/AdsCreditDiscountType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -21,35 +22,12 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}discountInMicroCurrency`,
-                label: `The discount applied in the offer’s currency value. - [${labelPrefix}discountInMicroCurrency]`,
+                label: `The discount applied in the offer's currency value. - [${labelPrefix}discountInMicroCurrency]`,
                 type: 'number',
             },
             {
                 key: `${keyPrefix}discountType`,
-                label: `The type of discount of this credit - [${labelPrefix}discountType]`,
-                type: 'string',
-                choices: [
-                    'COUPON',
-                    'CREDIT',
-                    'COUPON_APPLIED',
-                    'CREDIT_APPLIED',
-                    'MARKETING_OFFER_CREDIT',
-                    'MARKETING_OFFER_CREDIT_APPLIED',
-                    'GOODWILL_CREDIT',
-                    'GOODWILL_CREDIT_APPLIED',
-                    'INTERNAL_CREDIT',
-                    'INTERNAL_CREDIT_APPLIED',
-                    'PREPAID_CREDIT',
-                    'PREPAID_CREDIT_APPLIED',
-                    'SALES_INCENTIVE_CREDIT',
-                    'SALES_INCENTIVE_CREDIT_APPLIED',
-                    'CREDIT_EXPIRED',
-                    'FUTURE_CREDIT',
-                    'REFERRAL_CREDIT',
-                    'INVOICE_SALES_INCENTIVE_CREDIT',
-                    'INVOICE_SALES_INCENTIVE_CREDIT_APPLIED',
-                    'PREPAID_CREDIT_REFUND',
-                ],
+                ...AdsCreditDiscountType.fields(`${keyPrefix}discountType`, isInput),
             },
             {
                 key: `${keyPrefix}remainingDiscountInMicroCurrency`,

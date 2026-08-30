@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CreateAssetAccessRequestResponse::CreateAssetAccessRequestResponse()
 {
-	exceptions = std::list<CreateAssetAccessRequestErrorMessage_inner>();
+	exceptions = std::list<AssetAccessRequestError>();
 	invites = null<std::string>();
 }
 
@@ -32,8 +32,8 @@ CreateAssetAccessRequestResponse::fromJson(std::string jsonObj)
         bourne::json value = object[exceptionsKey];
 
 
-        std::list<CreateAssetAccessRequestErrorMessage_inner> exceptions_list;
-        CreateAssetAccessRequestErrorMessage_inner element;
+        std::list<AssetAccessRequestError> exceptions_list;
+        AssetAccessRequestError element;
         for(auto& var : value.array_range())
         {
 
@@ -67,12 +67,12 @@ CreateAssetAccessRequestResponse::toJson()
 
 
 
-    std::list<CreateAssetAccessRequestErrorMessage_inner> exceptions_list = getExceptions();
+    std::list<AssetAccessRequestError> exceptions_list = getExceptions();
     bourne::json exceptions_arr = bourne::json::array();
 
     for(auto& var : exceptions_list)
     {
-        CreateAssetAccessRequestErrorMessage_inner obj = var;
+        AssetAccessRequestError obj = var;
         exceptions_arr.append(obj.toJson());
     }
     object["exceptions"] = exceptions_arr;
@@ -87,26 +87,26 @@ CreateAssetAccessRequestResponse::toJson()
 
 }
 
-std::list<CreateAssetAccessRequestErrorMessage_inner>
+std::list<AssetAccessRequestError>
 CreateAssetAccessRequestResponse::getExceptions()
 {
 	return exceptions;
 }
 
 void
-CreateAssetAccessRequestResponse::setExceptions(std::list <CreateAssetAccessRequestErrorMessage_inner> exceptions)
+CreateAssetAccessRequestResponse::setExceptions(std::list<AssetAccessRequestError> exceptions)
 {
 	this->exceptions = exceptions;
 }
 
-Map<string, string>
+std::map<std::string, std::string>
 CreateAssetAccessRequestResponse::getInvites()
 {
 	return invites;
 }
 
 void
-CreateAssetAccessRequestResponse::setInvites(Map <string, string> invites)
+CreateAssetAccessRequestResponse::setInvites(std::map<std::string, std::string> invites)
 {
 	this->invites = invites;
 }

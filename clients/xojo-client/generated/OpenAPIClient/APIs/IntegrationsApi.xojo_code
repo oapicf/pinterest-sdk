@@ -4,12 +4,14 @@ Protected Class IntegrationsApi
 		Sub IntegrationsCommerceDel(, externalBusinessId As String)
 		  // Operation integrations_commerce/del
 		  // Delete commerce integration
+		  // - 
 		  // - parameter externalBusinessId: (path) External business ID for the integration. 
 		  //
-		  // Invokes IntegrationsApiCallbackHandler.IntegrationsCommerceDelCallback() on completion. 
+		  // Invokes IntegrationsApiCallbackHandler.IntegrationsCommerceDelCallback(IntegrationMetadata) on completion. Note that the response is optional. 
 		  //
 		  // - DELETE /integrations/commerce/{external_business_id}
 		  // - Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -31,8 +33,9 @@ Protected Class IntegrationsApi
 		  localVarPath = localVarPath.ReplaceAllB("{external_business_id}", localVarPathStringexternalBusinessId)
 		  
 		  
-		  AddHandler localVarHTTPSocket.PageReceived, addressof Me.IntegrationsCommerceDel_handler
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.IntegrationsCommerceDel_handler
 		  AddHandler localVarHTTPSocket.Error, addressof Me.IntegrationsCommerceDel_error
+		  
 		  
 		  localVarHTTPSocket.SendRequest("DELETE", Me.BasePath + localVarPath)
 		  if localVarHTTPSocket.LastErrorCode <> 0 then
@@ -43,29 +46,86 @@ Protected Class IntegrationsApi
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Function IntegrationsCommerceDelPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.IntegrationMetadata) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.IntegrationMetadata
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub IntegrationsCommerceDel_error(sender As HTTPSecureSocket, Code As Integer)
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  CallbackHandler.IntegrationsCommerceDelCallback(error)
+		  Dim data As OpenAPIClient.Models.IntegrationMetadata
+		  CallbackHandler.IntegrationsCommerceDelCallback(error, data)
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub IntegrationsCommerceDel_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
 		  #Pragma Unused URL
-		  #Pragma Unused Headers
-		  #Pragma Unused Content
+		  
 
 		  If sender <> nil Then sender.Close()
 		  
-		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", "")
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
+		  Dim data As OpenAPIClient.Models.IntegrationMetadata
+		  Call IntegrationsCommerceDelPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
-		  
-		  CallbackHandler.IntegrationsCommerceDelCallback(error)
+		  CallbackHandler.IntegrationsCommerceDelCallback(error, data)
 		End Sub
 	#tag EndMethod
 
@@ -205,12 +265,12 @@ Protected Class IntegrationsApi
 
 
 	#tag Method, Flags = &h0
-		Sub IntegrationsCommercePatch(, externalBusinessId As String, integrationRequestPatch As OpenAPIClient.Models.IntegrationRequestPatch)
+		Sub IntegrationsCommercePatch(, externalBusinessId As String, integrationMetadataUpdate As OpenAPIClient.Models.IntegrationMetadataUpdate)
 		  // Operation integrations_commerce/patch
 		  // Update commerce integration
 		  // - 
 		  // - parameter externalBusinessId: (path) External business ID for the integration. 
-		  // - parameter integrationRequestPatch: (body) Parameters to get create/update the Integration Metadata 
+		  // - parameter integrationMetadataUpdate: (body)  
 		  //
 		  // Invokes IntegrationsApiCallbackHandler.IntegrationsCommercePatchCallback(IntegrationMetadata) on completion. 
 		  //
@@ -225,7 +285,7 @@ Protected Class IntegrationsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(integrationRequestPatch), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(integrationMetadataUpdate), "application/json")
 		  
 		  
 		  
@@ -338,11 +398,11 @@ Protected Class IntegrationsApi
 
 
 	#tag Method, Flags = &h0
-		Sub IntegrationsCommercePost(, integrationRequest As OpenAPIClient.Models.IntegrationRequest)
+		Sub IntegrationsCommercePost(, integrationMetadataCreate As OpenAPIClient.Models.IntegrationMetadataCreate)
 		  // Operation integrations_commerce/post
 		  // Create commerce integration
 		  // - 
-		  // - parameter integrationRequest: (body) Parameters to get create/update the Integration Metadata 
+		  // - parameter integrationMetadataCreate: (body)  
 		  //
 		  // Invokes IntegrationsApiCallbackHandler.IntegrationsCommercePostCallback(IntegrationMetadata) on completion. 
 		  //
@@ -357,7 +417,7 @@ Protected Class IntegrationsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(integrationRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(integrationMetadataCreate), "application/json")
 		  
 		  
 		  
@@ -471,7 +531,7 @@ Protected Class IntegrationsApi
 		  // Operation integrations/get_by_id
 		  // Get integration metadata
 		  // - 
-		  // - parameter id: (path) Integration ID. 
+		  // - parameter id: (path) Integration record ID. 
 		  //
 		  // Invokes IntegrationsApiCallbackHandler.IntegrationsGetByIdCallback(IntegrationRecord) on completion. 
 		  //
@@ -604,7 +664,7 @@ Protected Class IntegrationsApi
 		  // Get integration metadata list
 		  // - 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes IntegrationsApiCallbackHandler.IntegrationsGetListCallback(IntegrationsGetList200Response) on completion. 
 		  //
@@ -734,11 +794,11 @@ Protected Class IntegrationsApi
 
 
 	#tag Method, Flags = &h0
-		Sub IntegrationsLogsPost(, integrationLogsRequest As OpenAPIClient.Models.IntegrationLogsRequest)
+		Sub IntegrationsLogsPost(, integrationLogsRequestCreate As OpenAPIClient.Models.IntegrationLogsRequestCreate)
 		  // Operation integrations_logs/post
 		  // Receives batched logs from integration applications.
 		  // - 
-		  // - parameter integrationLogsRequest: (body) Ingest log information from external integration application. 
+		  // - parameter integrationLogsRequestCreate: (body)  
 		  //
 		  // Invokes IntegrationsApiCallbackHandler.IntegrationsLogsPostCallback(IntegrationLogsSuccessResponse) on completion. 
 		  //
@@ -753,7 +813,7 @@ Protected Class IntegrationsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(integrationLogsRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(integrationLogsRequestCreate), "application/json")
 		  
 		  
 		  

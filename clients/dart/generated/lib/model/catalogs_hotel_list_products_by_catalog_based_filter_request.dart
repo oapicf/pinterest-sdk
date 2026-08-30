@@ -18,7 +18,7 @@ class CatalogsHotelListProductsByCatalogBasedFilterRequest {
     required this.filters,
   });
 
-  /// Catalog id pertaining to the hotel product group.
+  /// Catalog ID pertaining to the product group.
   String catalogId;
 
   CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum catalogType;
@@ -60,10 +60,12 @@ class CatalogsHotelListProductsByCatalogBasedFilterRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsHotelListProductsByCatalogBasedFilterRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsHotelListProductsByCatalogBasedFilterRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_id'), 'Required key "CatalogsHotelListProductsByCatalogBasedFilterRequest[catalog_id]" is missing from JSON.');
+        assert(json[r'catalog_id'] != null, 'Required key "CatalogsHotelListProductsByCatalogBasedFilterRequest[catalog_id]" has a null value in JSON.');
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsHotelListProductsByCatalogBasedFilterRequest[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsHotelListProductsByCatalogBasedFilterRequest[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'filters'), 'Required key "CatalogsHotelListProductsByCatalogBasedFilterRequest[filters]" is missing from JSON.');
+        assert(json[r'filters'] != null, 'Required key "CatalogsHotelListProductsByCatalogBasedFilterRequest[filters]" has a null value in JSON.');
         return true;
       }());
 
@@ -125,27 +127,28 @@ class CatalogsHotelListProductsByCatalogBasedFilterRequest {
 }
 
 
-class CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum._(this.value);
+enum CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum {
+  HOTEL._(r'HOTEL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const HOTEL = CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum._(r'HOTEL');
-
-  /// List of all possible values in this [enum][CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum].
-  static const values = <CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum>[
-    HOTEL,
-  ];
-
+  /// Returns the instance of [CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum? fromJson(dynamic value) => CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -167,9 +170,10 @@ class CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnumTypeTra
 
   const CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum data) => data.value;
+  String encode(CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum.
+  /// Returns the instance of [CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -178,6 +182,9 @@ class CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnumTypeTra
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'HOTEL': return CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum.HOTEL;
@@ -190,7 +197,7 @@ class CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnumTypeTra
     return null;
   }
 
-  /// Singleton [CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnumTypeTransformer? _instance;
 }
 

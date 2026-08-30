@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -23,9 +23,12 @@ import org.openapitools.model.Currency;
 
 
 
+/**
+ * A Salesforce SSIO order line.
+ */
 
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "A Salesforce SSIO order line.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SSIOOrderLine   {
   
   private String acceptedTermsId;
@@ -70,7 +73,7 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * The UTC timestamp (to the nearest sec) of when terms were accepted
+   * The UTC timestamp (to the nearest second) when terms were accepted.
    */
   public SSIOOrderLine acceptedTermsTime(String acceptedTermsTime) {
     this.acceptedTermsTime = acceptedTermsTime;
@@ -78,7 +81,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "The UTC timestamp (to the nearest sec) of when terms were accepted")
+  @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "The UTC timestamp (to the nearest second) when terms were accepted.")
   @JsonProperty("accepted_terms_time")
   public String getAcceptedTermsTime() {
     return acceptedTermsTime;
@@ -88,7 +91,7 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * Ads manager OrderLineId
+   * Ads manager order line id
    */
   public SSIOOrderLine adsManagerOrderLineId(String adsManagerOrderLineId) {
     this.adsManagerOrderLineId = adsManagerOrderLineId;
@@ -96,7 +99,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(value = "Ads manager OrderLineId")
+  @ApiModelProperty(value = "Ads manager order line id")
   @JsonProperty("ads_manager_order_line_id")
   public String getAdsManagerOrderLineId() {
     return adsManagerOrderLineId;
@@ -124,7 +127,7 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * Bill To Company name
+   * Bill-to company name
    */
   public SSIOOrderLine billToCompanyName(String billToCompanyName) {
     this.billToCompanyName = billToCompanyName;
@@ -132,7 +135,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(example = "Home Depot Inc.", value = "Bill To Company name")
+  @ApiModelProperty(example = "Home Depot Inc.", value = "Bill-to company name")
   @JsonProperty("bill_to_company_name")
   public String getBillToCompanyName() {
     return billToCompanyName;
@@ -196,7 +199,7 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * If Budget order line, the budget amount.
+   * If budget order line, the budget amount.
    */
   public SSIOOrderLine budgetAmount(BigDecimal budgetAmount) {
     this.budgetAmount = budgetAmount;
@@ -204,7 +207,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
+  @ApiModelProperty(example = "5000000", value = "If budget order line, the budget amount.")
   @JsonProperty("budget_amount")
   public BigDecimal getBudgetAmount() {
     return budgetAmount;
@@ -239,7 +242,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(example = "2020-10-05", value = "End date of the order line.")
+  @ApiModelProperty(value = "End date of the order line.")
   @JsonProperty("end_date")
   public Date getEndDate() {
     return endDate;
@@ -249,7 +252,7 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * If Ongoing (perpetual) order line, the estimated monthly spend
+   * If ongoing (perpetual) order line, the estimated monthly spend.
    */
   public SSIOOrderLine estimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
     this.estimatedMonthlySpend = estimatedMonthlySpend;
@@ -257,7 +260,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
+  @ApiModelProperty(value = "If ongoing (perpetual) order line, the estimated monthly spend.")
   @JsonProperty("estimated_monthly_spend")
   public BigDecimal getEstimatedMonthlySpend() {
     return estimatedMonthlySpend;
@@ -303,7 +306,7 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * Billing contact first name
+   * Billing media contact first name
    */
   public SSIOOrderLine mediaContactFirstname(String mediaContactFirstname) {
     this.mediaContactFirstname = mediaContactFirstname;
@@ -311,7 +314,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(example = "John", value = "Billing contact first name")
+  @ApiModelProperty(example = "John", value = "Billing media contact first name")
   @JsonProperty("media_contact_firstname")
   public String getMediaContactFirstname() {
     return mediaContactFirstname;
@@ -321,7 +324,7 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * Billing contact first name
+   * Billing media contact last name
    */
   public SSIOOrderLine mediaContactLastname(String mediaContactLastname) {
     this.mediaContactLastname = mediaContactLastname;
@@ -329,7 +332,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(example = "Doe", value = "Billing contact first name")
+  @ApiModelProperty(example = "Doe", value = "Billing media contact last name")
   @JsonProperty("media_contact_lastname")
   public String getMediaContactLastname() {
     return mediaContactLastname;
@@ -393,7 +396,7 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * The po number
+   * The PO number
    */
   public SSIOOrderLine poNumber(String poNumber) {
     this.poNumber = poNumber;
@@ -401,7 +404,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(value = "The po number")
+  @ApiModelProperty(value = "The PO number")
   @JsonProperty("po_number")
   public String getPoNumber() {
     return poNumber;
@@ -411,7 +414,7 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * OrderLineId in SFDC
+   * Order line id in SFDC
    */
   public SSIOOrderLine salesforceOrderLineId(String salesforceOrderLineId) {
     this.salesforceOrderLineId = salesforceOrderLineId;
@@ -419,7 +422,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(value = "OrderLineId in SFDC")
+  @ApiModelProperty(value = "Order line id in SFDC")
   @JsonProperty("salesforce_order_line_id")
   public String getSalesforceOrderLineId() {
     return salesforceOrderLineId;
@@ -437,7 +440,7 @@ public class SSIOOrderLine   {
   }
 
   
-  @ApiModelProperty(example = "2018-03-01", value = "Start date of the order line.")
+  @ApiModelProperty(value = "Start date of the order line.")
   @JsonProperty("start_date")
   public Date getStartDate() {
     return startDate;
@@ -521,10 +524,7 @@ public class SSIOOrderLine   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

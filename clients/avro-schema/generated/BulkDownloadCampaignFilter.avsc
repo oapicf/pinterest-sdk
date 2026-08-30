@@ -1,0 +1,45 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BulkDownloadCampaignFilter",
+  "fields": [
+    {
+      "name": "campaign_status",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.SummaryStatus"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "end_time",
+      "type": ["null", "string"],
+      "doc": "Unix UTC timestamp.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Campaign name",
+      "default": null
+    },
+    {
+      "name": "objective_type",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ConversionObjectiveType"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "start_time",
+      "type": ["null", "string"],
+      "doc": "Unix UTC timestamp.",
+      "default": null
+    }
+  ]
+
+}

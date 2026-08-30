@@ -109,7 +109,7 @@ ProductCategoriesMetricsHighlights::getEngagement()
 }
 
 void
-ProductCategoriesMetricsHighlights::setEngagement(InnerProductCategoriesMetricsHighlights  engagement)
+ProductCategoriesMetricsHighlights::setEngagement(InnerProductCategoriesMetricsHighlights engagement)
 {
 	this->engagement = engagement;
 }
@@ -121,7 +121,7 @@ ProductCategoriesMetricsHighlights::getOutboundClicks()
 }
 
 void
-ProductCategoriesMetricsHighlights::setOutboundClicks(InnerProductCategoriesMetricsHighlights  outbound_clicks)
+ProductCategoriesMetricsHighlights::setOutboundClicks(InnerProductCategoriesMetricsHighlights outbound_clicks)
 {
 	this->outbound_clicks = outbound_clicks;
 }
@@ -133,7 +133,7 @@ ProductCategoriesMetricsHighlights::getPinSaves()
 }
 
 void
-ProductCategoriesMetricsHighlights::setPinSaves(InnerProductCategoriesMetricsHighlights  pin_saves)
+ProductCategoriesMetricsHighlights::setPinSaves(InnerProductCategoriesMetricsHighlights pin_saves)
 {
 	this->pin_saves = pin_saves;
 }

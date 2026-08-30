@@ -4,8 +4,8 @@ package org.openapitools.client.model
 
 case class TopPinsAnalyticsResponse (
     _dateAvailability: Option[TopPinsAnalyticsResponseDateAvailability],
-    _pins: Option[List[TopPinsAnalyticsResponsePinsInner]],
-    _sortBy: Option[String]
+    _pins: Option[List[TopPinsAnalyticsResponsePinsItems]],
+    _sortBy: Option[TopPinsSortBy]
 )
 object TopPinsAnalyticsResponse {
     def toStringBody(var_dateAvailability: Object, var_pins: Object, var_sortBy: Object) =

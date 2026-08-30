@@ -15,7 +15,7 @@
 
 typedef struct auth_respond_invites_body_t auth_respond_invites_body_t;
 
-#include "auth_respond_invites_body_invites_inner.h"
+#include "auth_respond_invites_body_item.h"
 
 
 

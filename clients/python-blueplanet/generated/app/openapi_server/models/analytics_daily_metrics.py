@@ -101,7 +101,6 @@ class AnalyticsDailyMetrics(Model):
     def metrics(self) -> Dict[str, float]:
         """Gets the metrics of this AnalyticsDailyMetrics.
 
-        The metric name and daily value for each requested metric  # noqa: E501
 
         :return: The metrics of this AnalyticsDailyMetrics.
         :rtype: Dict[str, float]
@@ -112,7 +111,6 @@ class AnalyticsDailyMetrics(Model):
     def metrics(self, metrics: Dict[str, float]):
         """Sets the metrics of this AnalyticsDailyMetrics.
 
-        The metric name and daily value for each requested metric  # noqa: E501
 
         :param metrics: The metrics of this AnalyticsDailyMetrics.
         :type metrics: Dict[str, float]

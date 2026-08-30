@@ -10,7 +10,7 @@ Name | Type
 `catalogId` | string
 `catalogType` | string
 `country` | [Country](Country.md)
-`items` | [Array&lt;CatalogsRetailBatchRequestItemsInner&gt;](CatalogsRetailBatchRequestItemsInner.md)
+`items` | [Array&lt;CatalogsRetailBatchRequestItemsItems&gt;](CatalogsRetailBatchRequestItemsItems.md)
 `language` | string
 
 ## Example

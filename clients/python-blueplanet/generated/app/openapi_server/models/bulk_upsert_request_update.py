@@ -8,11 +8,12 @@ from typing import List, Dict  # noqa: F401
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.ad_group_update_request import AdGroupUpdateRequest  # noqa: F401,E501
 from app.openapi_server.models.ad_update_request import AdUpdateRequest  # noqa: F401,E501
+from app.openapi_server.models.bulk_upsert_request_update_catalog_product_groups_items import BulkUpsertRequestUpdateCatalogProductGroupsItems  # noqa: F401,E501
 from app.openapi_server.models.campaign_update_request import CampaignUpdateRequest  # noqa: F401,E501
-from app.openapi_server.models.catalogs_product_groups_update_request import CatalogsProductGroupsUpdateRequest  # noqa: F401,E501
-from app.openapi_server.models.keyword_update import KeywordUpdate  # noqa: F401,E501
+from app.openapi_server.models.keyword_update_generated import KeywordUpdateGenerated  # noqa: F401,E501
 from app.openapi_server.models.label_bulk_update_request import LabelBulkUpdateRequest  # noqa: F401,E501
 from app.openapi_server.models.product_group_promotion_update_request import ProductGroupPromotionUpdateRequest  # noqa: F401,E501
+from app.openapi_server.models.schedule_update_request import ScheduleUpdateRequest  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -22,7 +23,7 @@ class BulkUpsertRequestUpdate(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, ad_groups: List[AdGroupUpdateRequest]=None, ads: List[AdUpdateRequest]=None, campaigns: List[CampaignUpdateRequest]=None, catalog_product_groups: List[CatalogsProductGroupsUpdateRequest]=None, keywords: List[KeywordUpdate]=None, labels: List[LabelBulkUpdateRequest]=None, product_groups: List[ProductGroupPromotionUpdateRequest]=None):  # noqa: E501
+    def __init__(self, ad_groups: List[AdGroupUpdateRequest]=None, ads: List[AdUpdateRequest]=None, campaigns: List[CampaignUpdateRequest]=None, catalog_product_groups: List[BulkUpsertRequestUpdateCatalogProductGroupsItems]=None, keywords: List[KeywordUpdateGenerated]=None, labels: List[LabelBulkUpdateRequest]=None, product_groups: List[ProductGroupPromotionUpdateRequest]=None, schedules: List[ScheduleUpdateRequest]=None):  # noqa: E501
         """BulkUpsertRequestUpdate - a model defined in Swagger
 
         :param ad_groups: The ad_groups of this BulkUpsertRequestUpdate.  # noqa: E501
@@ -32,22 +33,25 @@ class BulkUpsertRequestUpdate(Model):
         :param campaigns: The campaigns of this BulkUpsertRequestUpdate.  # noqa: E501
         :type campaigns: List[CampaignUpdateRequest]
         :param catalog_product_groups: The catalog_product_groups of this BulkUpsertRequestUpdate.  # noqa: E501
-        :type catalog_product_groups: List[CatalogsProductGroupsUpdateRequest]
+        :type catalog_product_groups: List[BulkUpsertRequestUpdateCatalogProductGroupsItems]
         :param keywords: The keywords of this BulkUpsertRequestUpdate.  # noqa: E501
-        :type keywords: List[KeywordUpdate]
+        :type keywords: List[KeywordUpdateGenerated]
         :param labels: The labels of this BulkUpsertRequestUpdate.  # noqa: E501
         :type labels: List[LabelBulkUpdateRequest]
         :param product_groups: The product_groups of this BulkUpsertRequestUpdate.  # noqa: E501
         :type product_groups: List[ProductGroupPromotionUpdateRequest]
+        :param schedules: The schedules of this BulkUpsertRequestUpdate.  # noqa: E501
+        :type schedules: List[ScheduleUpdateRequest]
         """
         self.swagger_types = {
             'ad_groups': List[AdGroupUpdateRequest],
             'ads': List[AdUpdateRequest],
             'campaigns': List[CampaignUpdateRequest],
-            'catalog_product_groups': List[CatalogsProductGroupsUpdateRequest],
-            'keywords': List[KeywordUpdate],
+            'catalog_product_groups': List[BulkUpsertRequestUpdateCatalogProductGroupsItems],
+            'keywords': List[KeywordUpdateGenerated],
             'labels': List[LabelBulkUpdateRequest],
-            'product_groups': List[ProductGroupPromotionUpdateRequest]
+            'product_groups': List[ProductGroupPromotionUpdateRequest],
+            'schedules': List[ScheduleUpdateRequest]
         }
 
         self.attribute_map = {
@@ -57,7 +61,8 @@ class BulkUpsertRequestUpdate(Model):
             'catalog_product_groups': 'catalog_product_groups',
             'keywords': 'keywords',
             'labels': 'labels',
-            'product_groups': 'product_groups'
+            'product_groups': 'product_groups',
+            'schedules': 'schedules'
         }
 
         self._ad_groups = ad_groups
@@ -67,6 +72,7 @@ class BulkUpsertRequestUpdate(Model):
         self._keywords = keywords
         self._labels = labels
         self._product_groups = product_groups
+        self._schedules = schedules
 
     @classmethod
     def from_dict(cls, dikt) -> 'BulkUpsertRequestUpdate':
@@ -143,43 +149,43 @@ class BulkUpsertRequestUpdate(Model):
         self._campaigns = campaigns
 
     @property
-    def catalog_product_groups(self) -> List[CatalogsProductGroupsUpdateRequest]:
+    def catalog_product_groups(self) -> List[BulkUpsertRequestUpdateCatalogProductGroupsItems]:
         """Gets the catalog_product_groups of this BulkUpsertRequestUpdate.
 
 
         :return: The catalog_product_groups of this BulkUpsertRequestUpdate.
-        :rtype: List[CatalogsProductGroupsUpdateRequest]
+        :rtype: List[BulkUpsertRequestUpdateCatalogProductGroupsItems]
         """
         return self._catalog_product_groups
 
     @catalog_product_groups.setter
-    def catalog_product_groups(self, catalog_product_groups: List[CatalogsProductGroupsUpdateRequest]):
+    def catalog_product_groups(self, catalog_product_groups: List[BulkUpsertRequestUpdateCatalogProductGroupsItems]):
         """Sets the catalog_product_groups of this BulkUpsertRequestUpdate.
 
 
         :param catalog_product_groups: The catalog_product_groups of this BulkUpsertRequestUpdate.
-        :type catalog_product_groups: List[CatalogsProductGroupsUpdateRequest]
+        :type catalog_product_groups: List[BulkUpsertRequestUpdateCatalogProductGroupsItems]
         """
 
         self._catalog_product_groups = catalog_product_groups
 
     @property
-    def keywords(self) -> List[KeywordUpdate]:
+    def keywords(self) -> List[KeywordUpdateGenerated]:
         """Gets the keywords of this BulkUpsertRequestUpdate.
 
 
         :return: The keywords of this BulkUpsertRequestUpdate.
-        :rtype: List[KeywordUpdate]
+        :rtype: List[KeywordUpdateGenerated]
         """
         return self._keywords
 
     @keywords.setter
-    def keywords(self, keywords: List[KeywordUpdate]):
+    def keywords(self, keywords: List[KeywordUpdateGenerated]):
         """Sets the keywords of this BulkUpsertRequestUpdate.
 
 
         :param keywords: The keywords of this BulkUpsertRequestUpdate.
-        :type keywords: List[KeywordUpdate]
+        :type keywords: List[KeywordUpdateGenerated]
         """
 
         self._keywords = keywords
@@ -225,3 +231,24 @@ class BulkUpsertRequestUpdate(Model):
         """
 
         self._product_groups = product_groups
+
+    @property
+    def schedules(self) -> List[ScheduleUpdateRequest]:
+        """Gets the schedules of this BulkUpsertRequestUpdate.
+
+
+        :return: The schedules of this BulkUpsertRequestUpdate.
+        :rtype: List[ScheduleUpdateRequest]
+        """
+        return self._schedules
+
+    @schedules.setter
+    def schedules(self, schedules: List[ScheduleUpdateRequest]):
+        """Sets the schedules of this BulkUpsertRequestUpdate.
+
+
+        :param schedules: The schedules of this BulkUpsertRequestUpdate.
+        :type schedules: List[ScheduleUpdateRequest]
+        """
+
+        self._schedules = schedules

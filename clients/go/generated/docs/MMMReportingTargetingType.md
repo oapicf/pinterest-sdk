@@ -13,6 +13,10 @@
 
 * `LOCATION` (value: `"LOCATION"`)
 
+* `PLACEMENT` (value: `"PLACEMENT"`)
+
+* `AUDIENCE_INCLUDE` (value: `"AUDIENCE_INCLUDE"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

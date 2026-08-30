@@ -10,7 +10,6 @@ imports {
   CatalogsHotelReportParameters = openapi_server.resourceTypes.CatalogsHotelReportParameters
   CatalogsHotelReportParametersReport = openapi_server.resourceTypes.CatalogsHotelReportParametersReport
   CatalogsRetailReportParameters = openapi_server.resourceTypes.CatalogsRetailReportParameters
-  CatalogsType = openapi_server.resourceTypes.CatalogsType
 }
 resourceTypes {
 
@@ -20,8 +19,9 @@ resourceTypes {
     derivedFrom = Root
     properties {
         catalog_type {
-          type = CatalogsType
+          type =  string
           description = ""
+          enum = ["HOTEL"]
           optional = true
         }
         report {

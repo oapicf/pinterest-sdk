@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -25,19 +30,82 @@ type TemplateBasedReport struct {
 
 	Token string `json:"token,omitempty"`
 }
-
-// AssertTemplateBasedReportRequired checks if the required fields are not zero-ed
-func AssertTemplateBasedReportRequired(obj TemplateBasedReport) error {
-	elements := map[string]interface{}{
-		"report_status": obj.ReportStatus,
-		"template_id": obj.TemplateId,
+// UnmarshalJSON validates required property keys then unmarshals into TemplateBasedReport
+func (o *TemplateBasedReport) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"report_status",
+		"template_id",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"report_status": false,
+		"template_id": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"message": {},
+		"report_status": {},
+		"template_id": {},
+		"token": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded TemplateBasedReport
+
+	if value, exists := allProperties["message"]; exists {
+		if err = json.Unmarshal(value, &decoded.Message); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["report_status"]; exists {
+		if err = json.Unmarshal(value, &decoded.ReportStatus); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["template_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.TemplateId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["token"]; exists {
+		if err = json.Unmarshal(value, &decoded.Token); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertTemplateBasedReportRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertTemplateBasedReportRequired(obj TemplateBasedReport) error {
 	return nil
 }
 

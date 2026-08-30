@@ -1,13 +1,15 @@
 
 # ConversionEvents
 
-A list of events (one or more) encapsulated by a data object.
+Conversion events.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`data` | [Array&lt;ConversionEventsDataInner&gt;](ConversionEventsDataInner.md)
+`events` | [Array&lt;ConversionApiResponseEventsItems&gt;](ConversionApiResponseEventsItems.md)
+`numEventsProcessed` | number
+`numEventsReceived` | number
 
 ## Example
 
@@ -16,7 +18,9 @@ import type { ConversionEvents } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "data": null,
+  "events": null,
+  "numEventsProcessed": 1,
+  "numEventsReceived": 1,
 } satisfies ConversionEvents
 
 console.log(example)

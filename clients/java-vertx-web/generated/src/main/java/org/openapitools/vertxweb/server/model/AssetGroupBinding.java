@@ -6,22 +6,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.BusinessAccessUserSummary;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AssetGroupBinding   {
   
-  private List<String> adAccountsIds;
+  private List<String> adAccountsIds = new ArrayList<>();
   private String assetGroupDescription;
   private String assetGroupName;
   private List<String> assetGroupTypes = new ArrayList<>();
-  private List<String> catalogsIds;
+  private List<String> catalogsIds = new ArrayList<>();
   private BusinessAccessUserSummary createdBy;
   private Integer createdTime;
   private String id;
   private BusinessAccessUserSummary owner;
-  private List<String> profilesIds;
+  private List<String> profilesIds = new ArrayList<>();
   private Integer updatedTime;
 
   public AssetGroupBinding () {
@@ -194,9 +193,6 @@ public class AssetGroupBinding   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

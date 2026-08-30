@@ -3,7 +3,8 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.ItemAttributesRequestAllOfImageLink
+open OpenAPI.Model.CatalogsAiContentDisclosure
+open OpenAPI.Model.ItemAttributesRequestImageLink
 open OpenAPI.Model.UpdatableItemAttributesGtin
 open OpenAPI.Model.bool option
 open OpenAPI.Model.decimal option
@@ -110,10 +111,14 @@ module ItemAttributesRequest =
     AdVideo2Link : string option;
     [<JsonProperty(PropertyName = "ad_video_2_tag")>]
     AdVideo2Tag : string option;
+    [<JsonProperty(PropertyName = "additional_image_link")>]
+    AdditionalImageLink : string[];
     [<JsonProperty(PropertyName = "adult")>]
     Adult : bool option;
     [<JsonProperty(PropertyName = "age_group")>]
     AgeGroup : string option;
+    [<JsonProperty(PropertyName = "ai_disclosures")>]
+    AiDisclosures : CatalogsAiContentDisclosure[];
     [<JsonProperty(PropertyName = "android_deep_link")>]
     AndroidDeepLink : string;
     [<JsonProperty(PropertyName = "availability")>]
@@ -162,6 +167,8 @@ module ItemAttributesRequest =
     Gtin : UpdatableItemAttributesGtin;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
+    [<JsonProperty(PropertyName = "image_link")>]
+    ImageLink : ItemAttributesRequestImageLink;
     [<JsonProperty(PropertyName = "installment_price")>]
     InstallmentPrice : string option;
     [<JsonProperty(PropertyName = "ios_deep_link")>]
@@ -196,6 +203,8 @@ module ItemAttributesRequest =
     SalePrice : string option;
     [<JsonProperty(PropertyName = "sale_price_effective_date")>]
     SalePriceEffectiveDate : string option;
+    [<JsonProperty(PropertyName = "save_pin_disabled")>]
+    SavePinDisabled : bool;
     [<JsonProperty(PropertyName = "shipping")>]
     Shipping : string option;
     [<JsonProperty(PropertyName = "shipping_height")>]
@@ -222,12 +231,6 @@ module ItemAttributesRequest =
     VariantNames : string[];
     [<JsonProperty(PropertyName = "variant_values")>]
     VariantValues : string[];
-    [<JsonProperty(PropertyName = "additional_image_link")>]
-    AdditionalImageLink : string[];
-    [<JsonProperty(PropertyName = "image_link")>]
-    ImageLink : ItemAttributesRequestAllOfImageLink;
-    [<JsonProperty(PropertyName = "save_pin_disabled")>]
-    SavePinDisabled : bool;
     [<JsonProperty(PropertyName = "video_link")>]
     VideoLink : string option;
   }

@@ -36,7 +36,7 @@ class ConversionEqsApi(
 
 object ConversionEqsApiPatterns {
 
-    val adAccountIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
+    val adAccountIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
 }
 
 trait ConversionEqsApiService {

@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "HTTP request method.",
+  "name": "HttpMethod",
+  "symbols": [
+    "GET",
+    "HEAD",
+    "POST",
+    "PUT",
+    "DELETE",
+    "CONNECT",
+    "OPTIONS",
+    "TRACE",
+    "PATCH"
+  ]
+}

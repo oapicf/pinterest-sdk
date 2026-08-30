@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **negated** | **Boolean** |  | [optional][default to false] |
-| **operator** | **String** |  |  |
+| **negated** | **Boolean** |  | [optional] |
+| **operator** | [**NumericFilterOperatorType**](NumericFilterOperatorType.md) |  |  |
 | **value** | **Integer** |  |  |
 
 ## Example

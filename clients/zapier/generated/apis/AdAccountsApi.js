@@ -1,20 +1,21 @@
 const samples = require('../samples/AdAccountsApi');
 const AdAccount = require('../models/AdAccount');
-const AdAccountAnalyticsResponse_inner = require('../models/AdAccountAnalyticsResponse_inner');
+const AdAccountAnalyticsItems = require('../models/AdAccountAnalyticsItems');
 const AdAccountCreate = require('../models/AdAccountCreate');
+const AdsAnalyticsAccountTargetingType = require('../models/AdsAnalyticsAccountTargetingType');
 const AdsAnalyticsCreateAsyncRequest = require('../models/AdsAnalyticsCreateAsyncRequest');
 const AdsAnalyticsCreateAsyncResponse = require('../models/AdsAnalyticsCreateAsyncResponse');
 const AdsAnalyticsGetAsyncResponse = require('../models/AdsAnalyticsGetAsyncResponse');
-const AdsAnalyticsTargetingType = require('../models/AdsAnalyticsTargetingType');
-const ConversionProductReportRequest = require('../models/ConversionProductReportRequest');
+const ConversionProductReport = require('../models/ConversionProductReport');
+const ConversionProductReportCreate = require('../models/ConversionProductReportCreate');
 const ConversionReportAttributionType = require('../models/ConversionReportAttributionType');
-const CreateMMMReportRequest = require('../models/CreateMMMReportRequest');
-const CreateMMMReportResponse = require('../models/CreateMMMReportResponse');
-const Error = require('../models/Error');
-const GetMMMReportResponse = require('../models/GetMMMReportResponse');
 const Granularity = require('../models/Granularity');
+const MMMReport = require('../models/MMMReport');
+const MMMReportCreate = require('../models/MMMReportCreate');
 const MetricsResponse = require('../models/MetricsResponse');
 const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
+const Pinterest.Lib.PaginationOrder = require('../models/Pinterest.Lib.PaginationOrder');
+const ReportingColumnSync = require('../models/ReportingColumnSync');
 const ReportingTimeZone = require('../models/ReportingTimeZone');
 const TemplateBasedReport = require('../models/TemplateBasedReport');
 const ad_accounts_list_200_response = require('../models/ad_accounts_list_200_response');
@@ -27,17 +28,11 @@ module.exports = {
         noun: 'ad_accounts',
         display: {
             label: 'Get ad account analytics',
-            description: 'Get analytics for the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.',
+            description: '  Get analytics for the specified &#x60;ad_account_id&#x60;, filtered by the specified options.    - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.    - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.    - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.',
             hidden: false,
         },
         operation: {
             inputFields: [
-                {
-                    key: 'ad_account_id',
-                    label: 'Unique identifier of an ad account.',
-                    type: 'string',
-                    required: true,
-                },
                 {
                     key: 'start_date',
                     label: 'Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.',
@@ -52,14 +47,20 @@ module.exports = {
                 },
                 {
                     key: 'columns',
-                    label: 'Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned',
+                    label: 'Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.',
                     type: 'string',
                 }
                 ....fields(),
                 {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                    required: true,
+                },
+                {
                     key: 'click_window_days',
                     label: 'Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.',
-                    type: 'integer',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -71,8 +72,8 @@ module.exports = {
                 },
                 {
                     key: 'engagement_window_days',
-                    label: 'Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.',
-                    type: 'integer',
+                    label: 'Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -85,7 +86,7 @@ module.exports = {
                 {
                     key: 'view_window_days',
                     label: 'Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.',
-                    type: 'integer',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -137,7 +138,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AdAccountAnalyticsResponse_innerSample']
+            sample: samples['AdAccountAnalyticsItemsSample']
         }
     },
     adAccountTargetingAnalytics/get: {
@@ -145,7 +146,7 @@ module.exports = {
         noun: 'ad_accounts',
         display: {
             label: 'Get targeting analytics for an ad account',
-            description: 'Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.',
+            description: 'Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt;  * The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.',
             hidden: false,
         },
         operation: {
@@ -170,19 +171,19 @@ module.exports = {
                 },
                 {
                     key: 'targeting_types',
-                    label: 'Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.',
+                    label: 'Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.',
                     type: 'string',
                 }
                 {
                     key: 'columns',
-                    label: 'Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned',
+                    label: 'Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.',
                     type: 'string',
                 }
                 ....fields(),
                 {
                     key: 'click_window_days',
                     label: 'Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.',
-                    type: 'integer',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -194,8 +195,8 @@ module.exports = {
                 },
                 {
                     key: 'engagement_window_days',
-                    label: 'Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.',
-                    type: 'integer',
+                    label: 'Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -208,7 +209,7 @@ module.exports = {
                 {
                     key: 'view_window_days',
                     label: 'Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.',
-                    type: 'integer',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -413,7 +414,7 @@ module.exports = {
         noun: 'ad_accounts',
         display: {
             label: 'Create a request for a brand, category, SKU report',
-            description: '&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.',
+            description: '  [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.',
             hidden: false,
         },
         operation: {
@@ -424,10 +425,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...ConversionProductReportRequest.fields(),
+                ...ConversionProductReportCreate.fields(),
             ],
             outputFields: [
-                ...AdsAnalyticsCreateAsyncResponse.fields('', false),
+                ...ConversionProductReport.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -441,7 +442,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...ConversionProductReportRequest.mapping(bundle),
+                        ...ConversionProductReportCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -450,7 +451,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AdsAnalyticsCreateAsyncResponseSample']
+            sample: samples['ConversionProductReportSample']samples['ConversionProductReportSample']
         }
     },
     analytics/createMmmReport: {
@@ -458,21 +459,21 @@ module.exports = {
         noun: 'ad_accounts',
         display: {
             label: 'Create a request for a Marketing Mix Modeling (MMM) report',
-            description: 'This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it&#39;s in beta release.',
+            description: '    This creates an asynchronous mmm report based on the given request.     It returns a token that you can use to download the report when it is     ready. NOTE: An additional limit of 5 queries per minute per advertiser     applies to this endpoint while it&#39;s in beta release.     For the ADVERTISER_PAID_SPEND_IN_DOLLAR,     ADVERTISER_PAID_ECPC_IN_DOLLAR, and ADVERTISER_PAID_ECPM_IN_DOLLAR     columns: if you receive bonus media, this value still includes that spend, and it will     need to be removed manually with support from your Pinterest account team for a     fully netted value. Over time, we&#39;ll also subtract bonus media and other incentives as     data becomes available. Production and other non-media fees are excluded.',
             hidden: false,
         },
         operation: {
             inputFields: [
                 {
                     key: 'ad_account_id',
-                    label: 'Unique identifier of an ad account.',
+                    label: '',
                     type: 'string',
                     required: true,
                 },
-                ...CreateMMMReportRequest.fields(),
+                ...MMMReportCreate.fields(),
             ],
             outputFields: [
-                ...CreateMMMReportResponse.fields('', false),
+                ...MMMReport.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -486,7 +487,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...CreateMMMReportRequest.mapping(bundle),
+                        ...MMMReportCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -495,7 +496,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['CreateMMMReportResponseSample']
+            sample: samples['MMMReportSample']samples['MMMReportSample']
         }
     },
     analytics/createReport: {
@@ -503,7 +504,7 @@ module.exports = {
         noun: 'ad_accounts',
         display: {
             label: 'Create async request for an account analytics report',
-            description: 'This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.',
+            description: '  This returns a token that you can use to download the report when it is ready.   Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters.   - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days.   - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.   - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days.   - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.',
             hidden: false,
         },
         operation: {
@@ -548,7 +549,7 @@ module.exports = {
         noun: 'ad_accounts',
         display: {
             label: 'Create async request for an analytics report using a template',
-            description: '   This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.',
+            description: '  This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.',
             hidden: false,
         },
         operation: {
@@ -611,7 +612,7 @@ module.exports = {
         noun: 'ad_accounts',
         display: {
             label: 'Get advertiser brand, category, SKU report',
-            description: '&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.',
+            description: '  [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.',
             hidden: false,
         },
         operation: {
@@ -630,7 +631,7 @@ module.exports = {
                 },
             ],
             outputFields: [
-                ...AdsAnalyticsGetAsyncResponse.fields('', false),
+                ...ConversionProductReport.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -653,7 +654,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AdsAnalyticsGetAsyncResponseSample']
+            sample: samples['ConversionProductReportSample']
         }
     },
     analytics/getMmmReport: {
@@ -661,14 +662,14 @@ module.exports = {
         noun: 'ad_accounts',
         display: {
             label: 'Get advertiser Marketing Mix Modeling (MMM) report.',
-            description: 'Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the create mmm report endpoint.',
+            description: '    Get an mmm report for an ad account. This returns a URL to an     mmm metrics report given a token returned from the create mmm report endpoint.',
             hidden: false,
         },
         operation: {
             inputFields: [
                 {
                     key: 'ad_account_id',
-                    label: 'Unique identifier of an ad account.',
+                    label: '',
                     type: 'string',
                     required: true,
                 },
@@ -680,7 +681,7 @@ module.exports = {
                 },
             ],
             outputFields: [
-                ...GetMMMReportResponse.fields('', false),
+                ...MMMReport.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -703,7 +704,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['GetMMMReportResponseSample']
+            sample: samples['MMMReportSample']
         }
     },
     analytics/getReport: {
@@ -711,7 +712,7 @@ module.exports = {
         noun: 'ad_accounts',
         display: {
             label: 'Get the account analytics report created by the async call',
-            description: 'This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.',
+            description: '  This returns a URL to an analytics report given a token returned from the post request report creation call.   You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour.   - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.',
             hidden: false,
         },
         operation: {
@@ -815,24 +816,16 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
-                },
-                {
-                    key: 'order',
-                    label: 'The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.',
-                    type: 'string',
-                    choices: [
-                        'ASCENDING',
-                        'DESCENDING',
-                    ],
-                },
-                {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
                     type: 'string',
                 },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
+                },
+                ....fields(),
             ],
             outputFields: [
                 ...templates_list_200_response.fields('', false),
@@ -847,9 +840,9 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
+                        'bookmark': bundle.inputData?.['bookmark'],
                         'page_size': bundle.inputData?.['page_size'],
                         'order': bundle.inputData?.['order'],
-                        'bookmark': bundle.inputData?.['bookmark'],
                     },
                     body: {
                     },

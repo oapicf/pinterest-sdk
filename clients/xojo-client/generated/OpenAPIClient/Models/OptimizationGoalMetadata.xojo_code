@@ -2,17 +2,17 @@
 Protected Class OptimizationGoalMetadata
 
 	#tag Property, Flags = &h0
-		conversion_tag_v3_goal_metadata As OpenAPIClient.Models.OptimizationGoalMetadataConversionTagV3GoalMetadata
+		conversion_tag_v3_goal_metadata As OpenAPIClient.Models.ConversionTagV3GoalMetadata
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		frequency_goal_metadata As OpenAPIClient.Models.OptimizationGoalMetadataFrequencyGoalMetadata
+		frequency_goal_metadata As OpenAPIClient.Models.FrequencyGoalMetadata
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		scrollup_goal_metadata As OpenAPIClient.Models.OptimizationGoalMetadataScrollupGoalMetadata
+		scrollup_goal_metadata As OpenAPIClient.Models.ScrollupGoalMetadata
 	#tag EndProperty
 
 
@@ -57,7 +57,7 @@ Protected Class OptimizationGoalMetadata
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="OptimizationGoalMetadataConversionTagV3GoalMetadata"
+			Type="ConversionTagV3GoalMetadata"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -65,7 +65,7 @@ Protected Class OptimizationGoalMetadata
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="OptimizationGoalMetadataFrequencyGoalMetadata"
+			Type="FrequencyGoalMetadata"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -73,7 +73,7 @@ Protected Class OptimizationGoalMetadata
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="OptimizationGoalMetadataScrollupGoalMetadata"
+			Type="ScrollupGoalMetadata"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

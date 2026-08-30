@@ -12,12 +12,12 @@ module CatalogsHotelReportStatsParametersReport =
 
   [<CLIMutable>]
   type CatalogsHotelReportStatsParametersReport = {
-    [<JsonProperty(PropertyName = "report_type")>]
-    ReportType : string;
     [<JsonProperty(PropertyName = "feed_id")>]
     FeedId : string;
     [<JsonProperty(PropertyName = "processing_result_id")>]
     ProcessingResultId : string;
+    [<JsonProperty(PropertyName = "report_type")>]
+    ReportType : string;
     [<JsonProperty(PropertyName = "catalog_id")>]
     CatalogId : string;
   }

@@ -1,0 +1,14 @@
+# LocalInventoryCreateOperation
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**attributes** | [**models::RetailLocalInventoryItemAttributes**](RetailLocalInventoryItemAttributes.md) |  | 
+**item_id** | **String** | Catalog item id in the merchant namespace | 
+**operation** | **Operation** |  (enum: CREATE) | 
+**store_code** | **String** | Store code for the local inventory item | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

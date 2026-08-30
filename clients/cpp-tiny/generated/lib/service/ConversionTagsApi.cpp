@@ -243,13 +243,13 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
+            std::string bookmark
+            , 
+            
             int pageSize
             , 
             
-            std::string order
-            , 
-            
-            std::string bookmark
+            Pinterest.Lib.PaginationOrder order
             
         )
         {
@@ -258,10 +258,10 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | pageSize order bookmark 
+            // Query    | bookmark pageSize order 
+            addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
             addQueryParam("order",order);
-            addQueryParam("bookmark",bookmark);
 
             // Form     | 
 

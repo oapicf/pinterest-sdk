@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProductGroupPromotionUpdateRequest = Initialize-PSOpenAPIToolsProductGroupPromotionUpdateRequest  -AdGroupId 2680059592705 `
+$ProductGroupPromotionUpdateRequest = Initialize-PSOpenAPIToolsProductGroupPromotionUpdateRequest  -AdGroupId null `
  -ProductGroupPromotion null
 ```
 

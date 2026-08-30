@@ -19,7 +19,7 @@ Protected Class ProductGroupPromotion
 
 	#tag Property, Flags = &h0
 		#tag Note
-			ID of the catalogs product group that this product group promotion references
+			ID of the catalogs product group that this product group promotion references (required for create operations)
 		#tag EndNote
 		catalog_product_group_id As Xoson.O.OptionalString
 	#tag EndProperty
@@ -34,9 +34,6 @@ Protected Class ProductGroupPromotion
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Collections ad header type
-		#tag EndNote
 		collections_header_type As Xoson.O.OptionalString
 	#tag EndProperty
 
@@ -63,9 +60,6 @@ Protected Class ProductGroupPromotion
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-		#tag EndNote
 		customizable_cta_type As Xoson.O.OptionalString
 	#tag EndProperty
 
@@ -85,7 +79,7 @@ Protected Class ProductGroupPromotion
 
 	#tag Property, Flags = &h0
 		#tag Note
-			ID of the product group promotion.
+			ID of the product group promotion (required for update operations).
 		#tag EndNote
 		id As Xoson.O.OptionalString
 	#tag EndProperty
@@ -109,6 +103,14 @@ Protected Class ProductGroupPromotion
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.
+		#tag EndNote
+		is_image_auto_resizing As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
 		#tag EndNote
 		is_mdl As Xoson.O.OptionalBoolean
@@ -124,9 +126,6 @@ Protected Class ProductGroupPromotion
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
-		#tag EndNote
 		preferred_media_type As Xoson.O.OptionalString
 	#tag EndProperty
 
@@ -184,85 +183,7 @@ Protected Class ProductGroupPromotion
 	#tag EndProperty
 
 
-    #tag Enum, Name = Collections_header_typeEnum, Type = Integer, Flags = &h0
-        
-        ShopThisCollection
-        ExploreThisCollection
-        NoHeader
-        OnSale
-        GetDeal
-        
-    #tag EndEnum
 
-    #tag Enum, Name = Customizable_cta_typeEnum, Type = Integer, Flags = &h0
-        
-        ShopNow
-        BookNow
-        OnSale
-        GetDeal
-        BuyOnlinePickupInStore
-        
-    #tag EndEnum
-
-    #tag Enum, Name = Preferred_media_typeEnum, Type = Integer, Flags = &h0
-        
-        Video
-        Image
-        
-    #tag EndEnum
-
-
-	#tag Method, Flags = &h0
-		Shared Function Collections_header_typeEnumToString(value As Collections_header_typeEnum) As String
-		  Select Case value
-		    
-		    Case Collections_header_typeEnum.ShopThisCollection
-		      Return "SHOP_THIS_COLLECTION"
-		    Case Collections_header_typeEnum.ExploreThisCollection
-		      Return "EXPLORE_THIS_COLLECTION"
-		    Case Collections_header_typeEnum.NoHeader
-		      Return "NO_HEADER"
-		    Case Collections_header_typeEnum.OnSale
-		      Return "ON_SALE"
-		    Case Collections_header_typeEnum.GetDeal
-		      Return "GET_DEAL"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function Customizable_cta_typeEnumToString(value As Customizable_cta_typeEnum) As String
-		  Select Case value
-		    
-		    Case Customizable_cta_typeEnum.ShopNow
-		      Return "SHOP_NOW"
-		    Case Customizable_cta_typeEnum.BookNow
-		      Return "BOOK_NOW"
-		    Case Customizable_cta_typeEnum.OnSale
-		      Return "ON_SALE"
-		    Case Customizable_cta_typeEnum.GetDeal
-		      Return "GET_DEAL"
-		    Case Customizable_cta_typeEnum.BuyOnlinePickupInStore
-		      Return "BUY_ONLINE_PICKUP_IN_STORE"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function Preferred_media_typeEnumToString(value As Preferred_media_typeEnum) As String
-		  Select Case value
-		    
-		    Case Preferred_media_typeEnum.Video
-		      Return "VIDEO"
-		    Case Preferred_media_typeEnum.Image
-		      Return "IMAGE"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -331,6 +252,14 @@ Protected Class ProductGroupPromotion
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="collections_header_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CollectionsHeaderType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="collections_hero_destination_url"
 			Visible=false
 			Group="Behavior"
@@ -352,6 +281,14 @@ Protected Class ProductGroupPromotion
 			Group="Behavior"
 			InitialValue=""
 			Type="CreativeType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="customizable_cta_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ProductGroupPromotionCustomizableCTAType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -395,6 +332,14 @@ Protected Class ProductGroupPromotion
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="is_image_auto_resizing"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="is_mdl"
 			Visible=false
 			Group="Behavior"
@@ -408,6 +353,14 @@ Protected Class ProductGroupPromotion
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="preferred_media_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="PreferredMediaType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

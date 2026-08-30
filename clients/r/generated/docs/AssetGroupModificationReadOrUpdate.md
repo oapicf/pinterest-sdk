@@ -1,0 +1,11 @@
+# openapi::AssetGroupModificationReadOrUpdate
+
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**asset_groups_to_update** | [**array[AssetGroupUpdateItemReadOrUpdateItem]**](AssetGroupUpdateItemReadOrUpdateItem.md) | A list of asset groups and the data that will be used to update them. | [optional] 
+**exceptions** | [**array[AssetGroupUpdateError]**](AssetGroupUpdateError.md) | A list of errors associated with the asset groups. Will be returned if there is an error. | [optional] [readonly] 
+**updated_asset_groups** | [**array[AssetGroupBinding]**](AssetGroupBinding.md) | A list of successfully edited asset groups. | [optional] [readonly] 
+
+

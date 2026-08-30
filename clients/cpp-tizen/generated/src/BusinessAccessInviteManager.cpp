@@ -89,6 +89,36 @@ static bool assetAccessRequestsCreateProcessor(MemoryStruct_s p_chunk, long code
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -221,14 +251,14 @@ bool BusinessAccessInviteManager::assetAccessRequestsCreateSync(char * accessTok
 static bool cancelInvitesOrRequestsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(DeleteInvitesResultsResponseArray, Error, void* )
-	= reinterpret_cast<void(*)(DeleteInvitesResultsResponseArray, Error, void* )> (voidHandler);
+	void(* handler)(CancelInvitesResponse, Error, void* )
+	= reinterpret_cast<void(*)(CancelInvitesResponse, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	DeleteInvitesResultsResponseArray out;
+	CancelInvitesResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -236,12 +266,12 @@ static bool cancelInvitesOrRequestsProcessor(MemoryStruct_s p_chunk, long code, 
 
 
 
-		if (isprimitive("DeleteInvitesResultsResponseArray")) {
+		if (isprimitive("CancelInvitesResponse")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "DeleteInvitesResultsResponseArray", "DeleteInvitesResultsResponseArray");
+			jsonToValue(&out, pJson, "CancelInvitesResponse", "CancelInvitesResponse");
 			json_node_free(pJson);
 
-			if ("DeleteInvitesResultsResponseArray" == "std::string") {
+			if ("CancelInvitesResponse" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -279,8 +309,8 @@ static bool cancelInvitesOrRequestsProcessor(MemoryStruct_s p_chunk, long code, 
 }
 
 static bool cancelInvitesOrRequestsHelper(char * accessToken,
-	std::string businessId, std::shared_ptr<CancelInvitesBody> cancelInvitesBody, 
-	void(* handler)(DeleteInvitesResultsResponseArray, Error, void* )
+	std::string businessId, std::shared_ptr<CancelInvitesRequest> cancelInvitesRequest, 
+	void(* handler)(CancelInvitesResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -300,11 +330,11 @@ static bool cancelInvitesOrRequestsHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("CancelInvitesBody")) {
-		node = converttoJson(&cancelInvitesBody, "CancelInvitesBody", "");
+	if (isprimitive("CancelInvitesRequest")) {
+		node = converttoJson(&cancelInvitesRequest, "CancelInvitesRequest", "");
 	}
 	
-	char *jsonStr =  cancelInvitesBody.toJson();
+	char *jsonStr =  cancelInvitesRequest.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -369,22 +399,22 @@ static bool cancelInvitesOrRequestsHelper(char * accessToken,
 
 
 bool BusinessAccessInviteManager::cancelInvitesOrRequestsAsync(char * accessToken,
-	std::string businessId, std::shared_ptr<CancelInvitesBody> cancelInvitesBody, 
-	void(* handler)(DeleteInvitesResultsResponseArray, Error, void* )
+	std::string businessId, std::shared_ptr<CancelInvitesRequest> cancelInvitesRequest, 
+	void(* handler)(CancelInvitesResponse, Error, void* )
 	, void* userData)
 {
 	return cancelInvitesOrRequestsHelper(accessToken,
-	businessId, cancelInvitesBody, 
+	businessId, cancelInvitesRequest, 
 	handler, userData, true);
 }
 
 bool BusinessAccessInviteManager::cancelInvitesOrRequestsSync(char * accessToken,
-	std::string businessId, std::shared_ptr<CancelInvitesBody> cancelInvitesBody, 
-	void(* handler)(DeleteInvitesResultsResponseArray, Error, void* )
+	std::string businessId, std::shared_ptr<CancelInvitesRequest> cancelInvitesRequest, 
+	void(* handler)(CancelInvitesResponse, Error, void* )
 	, void* userData)
 {
 	return cancelInvitesOrRequestsHelper(accessToken,
-	businessId, cancelInvitesBody, 
+	businessId, cancelInvitesRequest, 
 	handler, userData, false);
 }
 
@@ -418,6 +448,36 @@ static bool createAssetInvitesProcessor(MemoryStruct_s p_chunk, long code, char*
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -599,6 +659,36 @@ static bool createMembershipOrPartnershipInvitesProcessor(MemoryStruct_s p_chunk
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -769,6 +859,31 @@ static bool getInvitesProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -789,7 +904,7 @@ static bool getInvitesProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 }
 
 static bool getInvitesHelper(char * accessToken,
-	std::string businessId, bool isMember, std::list<std::string> inviteStatus, InviteType inviteType, std::string bookmark, int pageSize, 
+	std::string businessId, bool isMember, std::list<InviteFilterStatus> inviteStatus, InviteType inviteType, std::string bookmark, int pageSize, 
 	void(* handler)(Get_invites_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -814,8 +929,8 @@ static bool getInvitesHelper(char * accessToken,
 	}
 
 	for (std::list
-	<std::string>::iterator queryIter = inviteStatus.begin(); queryIter != inviteStatus.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<InviteFilterStatus>::iterator queryIter = inviteStatus.begin(); queryIter != inviteStatus.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "InviteFilterStatus");
 		if( itemAt.empty()){
 			continue;
 		}
@@ -903,7 +1018,7 @@ static bool getInvitesHelper(char * accessToken,
 
 
 bool BusinessAccessInviteManager::getInvitesAsync(char * accessToken,
-	std::string businessId, bool isMember, std::list<std::string> inviteStatus, InviteType inviteType, std::string bookmark, int pageSize, 
+	std::string businessId, bool isMember, std::list<InviteFilterStatus> inviteStatus, InviteType inviteType, std::string bookmark, int pageSize, 
 	void(* handler)(Get_invites_200_response, Error, void* )
 	, void* userData)
 {
@@ -913,7 +1028,7 @@ bool BusinessAccessInviteManager::getInvitesAsync(char * accessToken,
 }
 
 bool BusinessAccessInviteManager::getInvitesSync(char * accessToken,
-	std::string businessId, bool isMember, std::list<std::string> inviteStatus, InviteType inviteType, std::string bookmark, int pageSize, 
+	std::string businessId, bool isMember, std::list<InviteFilterStatus> inviteStatus, InviteType inviteType, std::string bookmark, int pageSize, 
 	void(* handler)(Get_invites_200_response, Error, void* )
 	, void* userData)
 {
@@ -952,6 +1067,31 @@ static bool respondBusinessAccessInvitesProcessor(MemoryStruct_s p_chunk, long c
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();

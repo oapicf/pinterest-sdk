@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::CatalogsRetailProductMetadata;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**availability** | [**NonNullableProductAvailabilityType**](NonNullableProductAvailabilityType.md) |  | 
+**availability** | [**ProductAvailability**](ProductAvailability.md) |  | 
 **currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | 
 **item_group_id** | **string** | The parent ID of the product. | 
 **item_id** | **string** | The user-created unique ID that represents the product. | 

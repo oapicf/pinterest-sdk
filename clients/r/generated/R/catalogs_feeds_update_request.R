@@ -126,19 +126,19 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
       CatalogsFeedsUpdateRequestObject <- list()
       if (!is.null(self$`credentials`)) {
         CatalogsFeedsUpdateRequestObject[["credentials"]] <-
-          self$`credentials`$toSimpleType()
+          self$extractSimpleType(self$`credentials`)
       }
       if (!is.null(self$`default_availability`)) {
         CatalogsFeedsUpdateRequestObject[["default_availability"]] <-
-          self$`default_availability`$toSimpleType()
+          self$extractSimpleType(self$`default_availability`)
       }
       if (!is.null(self$`default_currency`)) {
         CatalogsFeedsUpdateRequestObject[["default_currency"]] <-
-          self$`default_currency`$toSimpleType()
+          self$extractSimpleType(self$`default_currency`)
       }
       if (!is.null(self$`format`)) {
         CatalogsFeedsUpdateRequestObject[["format"]] <-
-          self$`format`$toSimpleType()
+          self$extractSimpleType(self$`format`)
       }
       if (!is.null(self$`location`)) {
         CatalogsFeedsUpdateRequestObject[["location"]] <-
@@ -150,13 +150,36 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
       }
       if (!is.null(self$`preferred_processing_schedule`)) {
         CatalogsFeedsUpdateRequestObject[["preferred_processing_schedule"]] <-
-          self$`preferred_processing_schedule`$toSimpleType()
+          self$extractSimpleType(self$`preferred_processing_schedule`)
       }
       if (!is.null(self$`status`)) {
         CatalogsFeedsUpdateRequestObject[["status"]] <-
-          self$`status`$toSimpleType()
+          self$extractSimpleType(self$`status`)
       }
       return(CatalogsFeedsUpdateRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

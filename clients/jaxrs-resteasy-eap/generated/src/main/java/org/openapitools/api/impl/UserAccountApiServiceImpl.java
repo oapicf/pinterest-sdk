@@ -6,21 +6,25 @@ import org.openapitools.model.*;
 
 import org.openapitools.model.Account;
 import org.openapitools.model.AnalyticsMetricsResponse;
-import org.openapitools.model.BoardsUserFollowsList200Response;
+import java.math.BigDecimal;
+import org.openapitools.model.BoardsList200Response;
 import java.util.Date;
-import org.openapitools.model.Error;
-import org.openapitools.model.FollowUserRequest;
+import org.openapitools.model.FollowUser;
+import org.openapitools.model.FollowUserCreate;
 import org.openapitools.model.FollowersList200Response;
 import org.openapitools.model.LinkedBusiness;
 import java.util.Map;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.QuerymetrictypesItems;
+import org.openapitools.model.QueryvideopinmetrictypesItems;
 import org.openapitools.model.TopPinsAnalyticsResponse;
+import org.openapitools.model.TopPinsSortBy;
 import org.openapitools.model.TopVideoPinsAnalyticsResponse;
+import org.openapitools.model.TopVideoPinsSortBy;
 import org.openapitools.model.UserFollowingFeedType;
-import org.openapitools.model.UserFollowingGet200Response;
-import org.openapitools.model.UserSummary;
-import org.openapitools.model.UserWebsiteSummary;
-import org.openapitools.model.UserWebsiteVerificationCode;
-import org.openapitools.model.UserWebsiteVerifyRequest;
+import org.openapitools.model.UserWebsite;
+import org.openapitools.model.UserWebsiteCreate;
+import org.openapitools.model.UserWebsiteVerification;
 import org.openapitools.model.UserWebsitesGet200Response;
 
 import java.util.List;
@@ -32,13 +36,13 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UserAccountApiServiceImpl implements UserAccountApi {
-      public Response boardsUserFollowsList(String bookmark,Integer pageSize,Boolean explicitFollowing,String adAccountId,SecurityContext securityContext) {
+      public Response boardsUserFollowsList(String adAccountId,Boolean explicitFollowing,String bookmark,Integer pageSize,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response followUserUpdate(String username,FollowUserRequest followUserRequest,SecurityContext securityContext) {
+      public Response followUserUpdate(String username,FollowUserCreate followUserCreate,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -54,15 +58,15 @@ public class UserAccountApiServiceImpl implements UserAccountApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response userAccountAnalytics(Date startDate,Date endDate,String fromClaimedContent,String pinFormat,String appTypes,String contentType,String source,List<String> metricTypes,String splitField,String adAccountId,SecurityContext securityContext) {
+      public Response userAccountAnalytics(Date startDate,Date endDate,String fromClaimedContent,String pinFormat,String appTypes,String contentType,String source,List<QuerymetrictypesItems> metricTypes,String splitField,String adAccountId,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response userAccountAnalyticsTopPins(Date startDate,Date endDate,String sortBy,String fromClaimedContent,String pinFormat,String appTypes,String contentType,String source,List<String> metricTypes,Integer numOfPins,Integer createdInLastNDays,String adAccountId,SecurityContext securityContext) {
+      public Response userAccountAnalyticsTopPins(Date startDate,Date endDate,TopPinsSortBy sortBy,String fromClaimedContent,String pinFormat,String appTypes,String contentType,String source,List<QuerymetrictypesItems> metricTypes,Integer numOfPins,BigDecimal createdInLastNDays,String adAccountId,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response userAccountAnalyticsTopVideoPins(Date startDate,Date endDate,String sortBy,String fromClaimedContent,String pinFormat,String appTypes,String contentType,String source,List<String> metricTypes,Integer numOfPins,Integer createdInLastNDays,String adAccountId,SecurityContext securityContext) {
+      public Response userAccountAnalyticsTopVideoPins(Date startDate,Date endDate,TopVideoPinsSortBy sortBy,String fromClaimedContent,String pinFormat,String appTypes,String contentType,String source,List<QueryvideopinmetrictypesItems> metricTypes,Integer numOfPins,BigDecimal createdInLastNDays,String adAccountId,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -70,7 +74,7 @@ public class UserAccountApiServiceImpl implements UserAccountApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response userFollowingGet(String bookmark,Integer pageSize,UserFollowingFeedType feedType,Boolean explicitFollowing,String adAccountId,SecurityContext securityContext) {
+      public Response userFollowingGet(String adAccountId,Boolean explicitFollowing,UserFollowingFeedType feedType,String bookmark,Integer pageSize,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -78,7 +82,7 @@ public class UserAccountApiServiceImpl implements UserAccountApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest,String adAccountId,SecurityContext securityContext) {
+      public Response verifyWebsiteUpdate(UserWebsiteCreate userWebsiteCreate,String adAccountId,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

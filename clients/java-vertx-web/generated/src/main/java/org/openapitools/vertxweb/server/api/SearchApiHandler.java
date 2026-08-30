@@ -1,9 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.BoardsList200Response;
+import org.openapitools.vertxweb.server.model.PinsList200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 import org.openapitools.vertxweb.server.model.SearchPartnerPins200Response;
-import org.openapitools.vertxweb.server.model.SearchUserBoardsGet200Response;
-import org.openapitools.vertxweb.server.model.SearchUserPinsList200Response;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -77,16 +77,16 @@ public class SearchApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+        String query = requestParameters.queryParameter("query") != null ? requestParameters.queryParameter("query").getString() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
-        String query = requestParameters.queryParameter("query") != null ? requestParameters.queryParameter("query").getString() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter query is {}", query);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
-        logger.debug("Parameter query is {}", query);
 
-        api.searchUserBoardsGet(adAccountId, bookmark, pageSize, query)
+        api.searchUserBoardsGet(adAccountId, query, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

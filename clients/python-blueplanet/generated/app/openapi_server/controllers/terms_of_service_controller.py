@@ -1,6 +1,6 @@
 import connexion
 
-from app.openapi_server.models.error import Error  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
 from app.openapi_server.models.terms_of_service import TermsOfService  # noqa: E501
 from openapi_server import util
 

@@ -7,7 +7,7 @@ Protected Class CatalogsRetailReportParameters
 
 
 	#tag Property, Flags = &h0
-		report As OpenAPIClient.Models.CatalogsHotelReportParametersReport
+		report As OpenAPIClient.Models.CatalogsRetailReportParametersReport
 	#tag EndProperty
 
 
@@ -69,7 +69,7 @@ Protected Class CatalogsRetailReportParameters
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsHotelReportParametersReport"
+			Type="CatalogsRetailReportParametersReport"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

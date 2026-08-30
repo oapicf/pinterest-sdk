@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PLACEMENT** | **String** |  | [optional] 
+**PLACEMENT** | [**PlacementType**](PlacementType.md) | Placement type identifier. | [optional] 
 
 ## Examples
 

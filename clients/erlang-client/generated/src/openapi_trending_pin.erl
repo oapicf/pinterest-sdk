@@ -5,19 +5,25 @@
 -export_type([openapi_trending_pin/0]).
 
 -type openapi_trending_pin() ::
-    #{ 'height' := integer(),
+    #{ 'color' := binary(),
+       'height' := integer(),
        'id' := binary(),
        'src' := binary(),
+       'vertical_offset' => float(),
        'width' := integer()
      }.
 
-encode(#{ 'height' := Height,
+encode(#{ 'color' := Color,
+          'height' := Height,
           'id' := Id,
           'src' := Src,
+          'vertical_offset' := VerticalOffset,
           'width' := Width
         }) ->
-    #{ 'height' => Height,
+    #{ 'color' => Color,
+       'height' => Height,
        'id' => Id,
        'src' => Src,
+       'vertical_offset' => VerticalOffset,
        'width' => Width
      }.

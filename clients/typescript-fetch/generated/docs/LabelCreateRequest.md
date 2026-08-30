@@ -6,8 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`labels` | [Array&lt;LabelCreateRequestLabelsInner&gt;](LabelCreateRequestLabelsInner.md)
-`parentId` | string
+`labels` | [Array&lt;LabelCreateItem&gt;](LabelCreateItem.md)
 
 ## Example
 
@@ -17,7 +16,6 @@ import type { LabelCreateRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "labels": null,
-  "parentId": 626753052072,
 } satisfies LabelCreateRequest
 
 console.log(example)

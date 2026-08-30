@@ -13,10 +13,10 @@ static user_websites_get_200_response_t *user_websites_get_200_response_create_i
     if (!user_websites_get_200_response_local_var) {
         return NULL;
     }
+    memset(user_websites_get_200_response_local_var, 0, sizeof(user_websites_get_200_response_t));
+    user_websites_get_200_response_local_var->_library_owned = 1;
     user_websites_get_200_response_local_var->bookmark = bookmark;
     user_websites_get_200_response_local_var->items = items;
-
-    user_websites_get_200_response_local_var->_library_owned = 1;
     return user_websites_get_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) user_websites_get_200_response_t *user_websites_get_
     char *bookmark,
     list_t *items
     ) {
-    return user_websites_get_200_response_create_internal (
+    user_websites_get_200_response_t *result = user_websites_get_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void user_websites_get_200_response_free(user_websites_get_200_response_t *user_websites_get_200_response) {
@@ -45,7 +48,7 @@ void user_websites_get_200_response_free(user_websites_get_200_response_t *user_
     }
     if (user_websites_get_200_response->items) {
         list_ForEach(listEntry, user_websites_get_200_response->items) {
-            user_website_summary_free(listEntry->data);
+            user_website_free(listEntry->data);
         }
         list_freeList(user_websites_get_200_response->items);
         user_websites_get_200_response->items = NULL;
@@ -76,7 +79,7 @@ cJSON *user_websites_get_200_response_convertToJSON(user_websites_get_200_respon
     listEntry_t *itemsListEntry;
     if (user_websites_get_200_response->items) {
     list_ForEach(itemsListEntry, user_websites_get_200_response->items) {
-    cJSON *itemLocal = user_website_summary_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = user_website_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -95,6 +98,8 @@ fail:
 user_websites_get_200_response_t *user_websites_get_200_response_parseFromJSON(cJSON *user_websites_get_200_responseJSON){
 
     user_websites_get_200_response_t *user_websites_get_200_response_local_var = NULL;
+
+    char *bookmark_local_str = NULL;
 
     // define the local list for user_websites_get_200_response->items
     list_t *itemsList = NULL;
@@ -133,23 +138,33 @@ user_websites_get_200_response_t *user_websites_get_200_response_parseFromJSON(c
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        user_website_summary_t *itemsItem = user_website_summary_parseFromJSON(items_local_nonprimitive);
+        user_website_t *itemsItem = user_website_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     user_websites_get_200_response_local_var = user_websites_get_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!user_websites_get_200_response_local_var) {
+        goto end;
+    }
+
     return user_websites_get_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            user_website_summary_free(listEntry->data);
+            user_website_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

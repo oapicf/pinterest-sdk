@@ -1,0 +1,14 @@
+package models
+
+type TrendsAgeBucket string
+
+// List of TrendsAgeBucket
+const (
+	_18_24 TrendsAgeBucket = "18-24"
+	_25_34 TrendsAgeBucket = "25-34"
+	_35_44 TrendsAgeBucket = "35-44"
+	_45_49 TrendsAgeBucket = "45-49"
+	_50_54 TrendsAgeBucket = "50-54"
+	_55_64 TrendsAgeBucket = "55-64"
+	_65 TrendsAgeBucket = "65+"
+)

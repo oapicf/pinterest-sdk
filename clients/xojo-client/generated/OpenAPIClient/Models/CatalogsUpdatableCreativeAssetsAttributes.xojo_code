@@ -91,7 +91,7 @@ Protected Class CatalogsUpdatableCreativeAssetsAttributes
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+			Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
 		#tag EndNote
 		visibility As Xoson.O.OptionalString
 	#tag EndProperty

@@ -11,7 +11,7 @@ MyApp.add_route('POST', '/v5/notifications', {
   "parameters" => [
     {
       "name" => "body",
-      "description" => "notification event.",
+      "description" => "",
       "dataType" => "NotificationPostRequest",
       "paramType" => "body",
     }

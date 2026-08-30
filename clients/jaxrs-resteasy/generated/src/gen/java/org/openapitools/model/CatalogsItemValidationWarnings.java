@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsItemValidationWarnings   {
   
   private CatalogsItemValidationDetails AD_IMAGE_0_LINK_DUPLICATED;
@@ -222,9 +222,10 @@ public class CatalogsItemValidationWarnings   {
   private CatalogsItemValidationDetails WEIGHT_UNIT_INVALID;
 
   /**
+   * ad_image_0_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_0_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_0_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE0LINKDUPLICATED() {
@@ -235,9 +236,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 0 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 0 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_0_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE0LINKLENGTHTOOLONG() {
@@ -248,9 +250,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 0 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 0 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_0_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE0LINKREQUIRED() {
@@ -261,9 +264,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 0 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 0 format is unsupported.")
   @JsonProperty("AD_IMAGE_0_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE0LINKWARNING() {
@@ -274,9 +278,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_0_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_0_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_0_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE0TAGDUPLICATED() {
@@ -287,9 +292,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 0 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 0 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_0_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE0TAGLENGTHTOOLONG() {
@@ -300,9 +306,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 0 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 0 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_0_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE0TAGREQUIRED() {
@@ -313,9 +320,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_10_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_10_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_10_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE10LINKDUPLICATED() {
@@ -326,9 +334,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 10 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 10 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_10_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE10LINKLENGTHTOOLONG() {
@@ -339,9 +348,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 10 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 10 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_10_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE10LINKREQUIRED() {
@@ -352,9 +362,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 10 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 10 format is unsupported.")
   @JsonProperty("AD_IMAGE_10_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE10LINKWARNING() {
@@ -365,9 +376,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_10_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_10_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_10_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE10TAGDUPLICATED() {
@@ -378,9 +390,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 10 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 10 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_10_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE10TAGLENGTHTOOLONG() {
@@ -391,9 +404,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 10 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 10 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_10_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE10TAGREQUIRED() {
@@ -404,9 +418,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_11_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_11_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_11_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE11LINKDUPLICATED() {
@@ -417,9 +432,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 11 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 11 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_11_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE11LINKLENGTHTOOLONG() {
@@ -430,9 +446,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 11 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 11 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_11_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE11LINKREQUIRED() {
@@ -443,9 +460,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 11 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 11 format is unsupported.")
   @JsonProperty("AD_IMAGE_11_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE11LINKWARNING() {
@@ -456,9 +474,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_11_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_11_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_11_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE11TAGDUPLICATED() {
@@ -469,9 +488,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 11 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 11 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_11_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE11TAGLENGTHTOOLONG() {
@@ -482,9 +502,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 11 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 11 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_11_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE11TAGREQUIRED() {
@@ -495,9 +516,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_12_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_12_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_12_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE12LINKDUPLICATED() {
@@ -508,9 +530,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 12 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 12 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_12_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE12LINKLENGTHTOOLONG() {
@@ -521,9 +544,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 12 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 12 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_12_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE12LINKREQUIRED() {
@@ -534,9 +558,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 12 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 12 format is unsupported.")
   @JsonProperty("AD_IMAGE_12_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE12LINKWARNING() {
@@ -547,9 +572,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_12_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_12_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_12_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE12TAGDUPLICATED() {
@@ -560,9 +586,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 12 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 12 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_12_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE12TAGLENGTHTOOLONG() {
@@ -573,9 +600,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 12 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 12 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_12_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE12TAGREQUIRED() {
@@ -586,9 +614,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_13_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_13_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_13_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE13LINKDUPLICATED() {
@@ -599,9 +628,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 13 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 13 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_13_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE13LINKLENGTHTOOLONG() {
@@ -612,9 +642,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 13 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 13 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_13_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE13LINKREQUIRED() {
@@ -625,9 +656,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 13 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 13 format is unsupported.")
   @JsonProperty("AD_IMAGE_13_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE13LINKWARNING() {
@@ -638,9 +670,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_13_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_13_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_13_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE13TAGDUPLICATED() {
@@ -651,9 +684,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 13 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 13 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_13_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE13TAGLENGTHTOOLONG() {
@@ -664,9 +698,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 13 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 13 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_13_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE13TAGREQUIRED() {
@@ -677,9 +712,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_14_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_14_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_14_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE14LINKDUPLICATED() {
@@ -690,9 +726,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 14 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 14 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_14_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE14LINKLENGTHTOOLONG() {
@@ -703,9 +740,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 14 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 14 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_14_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE14LINKREQUIRED() {
@@ -716,9 +754,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 14 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 14 format is unsupported.")
   @JsonProperty("AD_IMAGE_14_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE14LINKWARNING() {
@@ -729,9 +768,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_14_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_14_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_14_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE14TAGDUPLICATED() {
@@ -742,9 +782,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 14 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 14 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_14_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE14TAGLENGTHTOOLONG() {
@@ -755,9 +796,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 14 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 14 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_14_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE14TAGREQUIRED() {
@@ -768,9 +810,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_15_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_15_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_15_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE15LINKDUPLICATED() {
@@ -781,9 +824,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 15 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 15 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_15_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE15LINKLENGTHTOOLONG() {
@@ -794,9 +838,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 15 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 15 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_15_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE15LINKREQUIRED() {
@@ -807,9 +852,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 15 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 15 format is unsupported.")
   @JsonProperty("AD_IMAGE_15_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE15LINKWARNING() {
@@ -820,9 +866,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_15_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_15_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_15_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE15TAGDUPLICATED() {
@@ -833,9 +880,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 15 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 15 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_15_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE15TAGLENGTHTOOLONG() {
@@ -846,9 +894,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 15 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 15 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_15_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE15TAGREQUIRED() {
@@ -859,9 +908,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_16_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_16_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_16_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE16LINKDUPLICATED() {
@@ -872,9 +922,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 16 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 16 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_16_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE16LINKLENGTHTOOLONG() {
@@ -885,9 +936,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 16 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 16 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_16_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE16LINKREQUIRED() {
@@ -898,9 +950,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 16 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 16 format is unsupported.")
   @JsonProperty("AD_IMAGE_16_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE16LINKWARNING() {
@@ -911,9 +964,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_16_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_16_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_16_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE16TAGDUPLICATED() {
@@ -924,9 +978,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 16 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 16 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_16_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE16TAGLENGTHTOOLONG() {
@@ -937,9 +992,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 16 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 16 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_16_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE16TAGREQUIRED() {
@@ -950,9 +1006,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_17_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_17_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_17_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE17LINKDUPLICATED() {
@@ -963,9 +1020,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 17 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 17 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_17_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE17LINKLENGTHTOOLONG() {
@@ -976,9 +1034,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 17 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 17 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_17_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE17LINKREQUIRED() {
@@ -989,9 +1048,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 17 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 17 format is unsupported.")
   @JsonProperty("AD_IMAGE_17_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE17LINKWARNING() {
@@ -1002,9 +1062,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_17_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_17_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_17_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE17TAGDUPLICATED() {
@@ -1015,9 +1076,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 17 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 17 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_17_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE17TAGLENGTHTOOLONG() {
@@ -1028,9 +1090,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 17 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 17 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_17_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE17TAGREQUIRED() {
@@ -1041,9 +1104,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_18_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_18_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_18_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE18LINKDUPLICATED() {
@@ -1054,9 +1118,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 18 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 18 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_18_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE18LINKLENGTHTOOLONG() {
@@ -1067,9 +1132,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 18 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 18 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_18_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE18LINKREQUIRED() {
@@ -1080,9 +1146,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 18 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 18 format is unsupported.")
   @JsonProperty("AD_IMAGE_18_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE18LINKWARNING() {
@@ -1093,9 +1160,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_18_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_18_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_18_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE18TAGDUPLICATED() {
@@ -1106,9 +1174,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 18 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 18 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_18_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE18TAGLENGTHTOOLONG() {
@@ -1119,9 +1188,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 18 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 18 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_18_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE18TAGREQUIRED() {
@@ -1132,9 +1202,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_19_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_19_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_19_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE19LINKDUPLICATED() {
@@ -1145,9 +1216,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 19 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 19 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_19_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE19LINKLENGTHTOOLONG() {
@@ -1158,9 +1230,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 19 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 19 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_19_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE19LINKREQUIRED() {
@@ -1171,9 +1244,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 19 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 19 format is unsupported.")
   @JsonProperty("AD_IMAGE_19_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE19LINKWARNING() {
@@ -1184,9 +1258,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_19_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_19_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_19_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE19TAGDUPLICATED() {
@@ -1197,9 +1272,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 19 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 19 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_19_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE19TAGLENGTHTOOLONG() {
@@ -1210,9 +1286,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 19 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 19 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_19_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE19TAGREQUIRED() {
@@ -1223,9 +1300,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_1_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_1_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_1_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE1LINKDUPLICATED() {
@@ -1236,9 +1314,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 1 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 1 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_1_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE1LINKLENGTHTOOLONG() {
@@ -1249,9 +1328,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 1 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 1 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_1_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE1LINKREQUIRED() {
@@ -1262,9 +1342,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 1 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 1 format is unsupported.")
   @JsonProperty("AD_IMAGE_1_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE1LINKWARNING() {
@@ -1275,9 +1356,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_1_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_1_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_1_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE1TAGDUPLICATED() {
@@ -1288,9 +1370,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 1 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 1 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_1_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE1TAGLENGTHTOOLONG() {
@@ -1301,9 +1384,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 1 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 1 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_1_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE1TAGREQUIRED() {
@@ -1314,9 +1398,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_2_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_2_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_2_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE2LINKDUPLICATED() {
@@ -1327,9 +1412,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 2 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 2 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_2_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE2LINKLENGTHTOOLONG() {
@@ -1340,9 +1426,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 2 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 2 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_2_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE2LINKREQUIRED() {
@@ -1353,9 +1440,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 2 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 2 format is unsupported.")
   @JsonProperty("AD_IMAGE_2_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE2LINKWARNING() {
@@ -1366,9 +1454,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_2_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_2_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_2_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE2TAGDUPLICATED() {
@@ -1379,9 +1468,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 2 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 2 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_2_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE2TAGLENGTHTOOLONG() {
@@ -1392,9 +1482,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 2 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 2 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_2_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE2TAGREQUIRED() {
@@ -1405,9 +1496,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_3_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_3_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_3_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE3LINKDUPLICATED() {
@@ -1418,9 +1510,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 3 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 3 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_3_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE3LINKLENGTHTOOLONG() {
@@ -1431,9 +1524,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 3 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 3 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_3_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE3LINKREQUIRED() {
@@ -1444,9 +1538,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 3 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 3 format is unsupported.")
   @JsonProperty("AD_IMAGE_3_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE3LINKWARNING() {
@@ -1457,9 +1552,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_3_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_3_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_3_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE3TAGDUPLICATED() {
@@ -1470,9 +1566,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 3 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 3 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_3_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE3TAGLENGTHTOOLONG() {
@@ -1483,9 +1580,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 3 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 3 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_3_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE3TAGREQUIRED() {
@@ -1496,9 +1594,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_4_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_4_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_4_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE4LINKDUPLICATED() {
@@ -1509,9 +1608,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 4 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 4 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_4_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE4LINKLENGTHTOOLONG() {
@@ -1522,9 +1622,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 4 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 4 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_4_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE4LINKREQUIRED() {
@@ -1535,9 +1636,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 4 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 4 format is unsupported.")
   @JsonProperty("AD_IMAGE_4_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE4LINKWARNING() {
@@ -1548,9 +1650,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_4_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_4_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_4_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE4TAGDUPLICATED() {
@@ -1561,9 +1664,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 4 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 4 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_4_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE4TAGLENGTHTOOLONG() {
@@ -1574,9 +1678,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 4 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 4 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_4_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE4TAGREQUIRED() {
@@ -1587,9 +1692,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_5_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_5_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_5_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE5LINKDUPLICATED() {
@@ -1600,9 +1706,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 5 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 5 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_5_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE5LINKLENGTHTOOLONG() {
@@ -1613,9 +1720,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 5 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 5 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_5_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE5LINKREQUIRED() {
@@ -1626,9 +1734,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 5 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 5 format is unsupported.")
   @JsonProperty("AD_IMAGE_5_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE5LINKWARNING() {
@@ -1639,9 +1748,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_5_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_5_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_5_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE5TAGDUPLICATED() {
@@ -1652,9 +1762,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 5 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 5 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_5_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE5TAGLENGTHTOOLONG() {
@@ -1665,9 +1776,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 5 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 5 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_5_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE5TAGREQUIRED() {
@@ -1678,9 +1790,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_6_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_6_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_6_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE6LINKDUPLICATED() {
@@ -1691,9 +1804,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 6 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 6 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_6_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE6LINKLENGTHTOOLONG() {
@@ -1704,9 +1818,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 6 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 6 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_6_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE6LINKREQUIRED() {
@@ -1717,9 +1832,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 6 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 6 format is unsupported.")
   @JsonProperty("AD_IMAGE_6_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE6LINKWARNING() {
@@ -1730,9 +1846,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_6_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_6_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_6_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE6TAGDUPLICATED() {
@@ -1743,9 +1860,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 6 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 6 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_6_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE6TAGLENGTHTOOLONG() {
@@ -1756,9 +1874,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 6 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 6 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_6_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE6TAGREQUIRED() {
@@ -1769,9 +1888,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_7_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_7_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_7_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE7LINKDUPLICATED() {
@@ -1782,9 +1902,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 7 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 7 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_7_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE7LINKLENGTHTOOLONG() {
@@ -1795,9 +1916,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 7 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 7 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_7_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE7LINKREQUIRED() {
@@ -1808,9 +1930,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 7 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 7 format is unsupported.")
   @JsonProperty("AD_IMAGE_7_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE7LINKWARNING() {
@@ -1821,9 +1944,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_7_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_7_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_7_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE7TAGDUPLICATED() {
@@ -1834,9 +1958,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 7 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 7 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_7_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE7TAGLENGTHTOOLONG() {
@@ -1847,9 +1972,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 7 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 7 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_7_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE7TAGREQUIRED() {
@@ -1860,9 +1986,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_8_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_8_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_8_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE8LINKDUPLICATED() {
@@ -1873,9 +2000,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 8 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 8 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_8_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE8LINKLENGTHTOOLONG() {
@@ -1886,9 +2014,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 8 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 8 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_8_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE8LINKREQUIRED() {
@@ -1899,9 +2028,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 8 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 8 format is unsupported.")
   @JsonProperty("AD_IMAGE_8_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE8LINKWARNING() {
@@ -1912,9 +2042,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_8_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_8_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_8_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE8TAGDUPLICATED() {
@@ -1925,9 +2056,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 8 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 8 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_8_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE8TAGLENGTHTOOLONG() {
@@ -1938,9 +2070,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 8 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 8 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_8_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE8TAGREQUIRED() {
@@ -1951,9 +2084,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_9_link is duplicated with another ad image link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_9_link is duplicated with another ad image link.")
   @JsonProperty("AD_IMAGE_9_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE9LINKDUPLICATED() {
@@ -1964,9 +2098,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 9 length is too long. The maximum length is 2047 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 9 length is too long. The maximum length is 2047 characters.")
   @JsonProperty("AD_IMAGE_9_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE9LINKLENGTHTOOLONG() {
@@ -1977,9 +2112,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 9 is required because an image tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 9 is required because an image tag was provided.")
   @JsonProperty("AD_IMAGE_9_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE9LINKREQUIRED() {
@@ -1990,9 +2126,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image link 9 format is unsupported.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image link 9 format is unsupported.")
   @JsonProperty("AD_IMAGE_9_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE9LINKWARNING() {
@@ -2003,9 +2140,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_image_9_tag is duplicated with another ad image tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_image_9_tag is duplicated with another ad image tag.")
   @JsonProperty("AD_IMAGE_9_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE9TAGDUPLICATED() {
@@ -2016,9 +2154,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 9 length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 9 length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_IMAGE_9_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE9TAGLENGTHTOOLONG() {
@@ -2029,9 +2168,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Ad image tag 9 is required because an image link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad image tag 9 is required because an image link was provided.")
   @JsonProperty("AD_IMAGE_9_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADIMAGE9TAGREQUIRED() {
@@ -2042,9 +2182,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an ad link that is formatted incorrectly.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an ad link that is formatted incorrectly.")
   @JsonProperty("AD_LINK_FORMAT_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADLINKFORMATWARNING() {
@@ -2055,9 +2196,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an ad link URL that is duplicate of the link URL.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an ad link URL that is duplicate of the link URL.")
   @JsonProperty("AD_LINK_SAME_AS_LINK")
   @Valid
   public CatalogsItemValidationDetails getADLINKSAMEASLINK() {
@@ -2068,9 +2210,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_0_link is duplicated with another ad video link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_0_link is duplicated with another ad video link.")
   @JsonProperty("AD_VIDEO_0_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO0LINKDUPLICATED() {
@@ -2081,9 +2224,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_0_link length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_0_link length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_VIDEO_0_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO0LINKLENGTHTOOLONG() {
@@ -2094,9 +2238,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_0_link is required for this item because ad_video_0_tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_0_link is required for this item because ad_video_0_tag was provided.")
   @JsonProperty("AD_VIDEO_0_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO0LINKREQUIRED() {
@@ -2107,9 +2252,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_0_link is formatted incorrectly and will not be published with your items.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_0_link is formatted incorrectly and will not be published with your items.")
   @JsonProperty("AD_VIDEO_0_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO0LINKWARNING() {
@@ -2120,9 +2266,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_0_tag is duplicated with another ad video tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_0_tag is duplicated with another ad video tag.")
   @JsonProperty("AD_VIDEO_0_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO0TAGDUPLICATED() {
@@ -2133,9 +2280,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_0_tag length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_0_tag length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_VIDEO_0_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO0TAGLENGTHTOOLONG() {
@@ -2146,9 +2294,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_0_tag is required because ad_video_0_link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_0_tag is required because ad_video_0_link was provided.")
   @JsonProperty("AD_VIDEO_0_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO0TAGREQUIRED() {
@@ -2159,9 +2308,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_1_link is duplicated with another ad video link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_1_link is duplicated with another ad video link.")
   @JsonProperty("AD_VIDEO_1_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO1LINKDUPLICATED() {
@@ -2172,9 +2322,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_1_link length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_1_link length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_VIDEO_1_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO1LINKLENGTHTOOLONG() {
@@ -2185,9 +2336,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_1_link is required for this item because ad_video_1_tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_1_link is required for this item because ad_video_1_tag was provided.")
   @JsonProperty("AD_VIDEO_1_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO1LINKREQUIRED() {
@@ -2198,9 +2350,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_1_link is formatted incorrectly and will not be published with your items.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_1_link is formatted incorrectly and will not be published with your items.")
   @JsonProperty("AD_VIDEO_1_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO1LINKWARNING() {
@@ -2211,9 +2364,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_1_tag is duplicated with another ad video tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_1_tag is duplicated with another ad video tag.")
   @JsonProperty("AD_VIDEO_1_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO1TAGDUPLICATED() {
@@ -2224,9 +2378,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_1_tag length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_1_tag length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_VIDEO_1_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO1TAGLENGTHTOOLONG() {
@@ -2237,9 +2392,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_1_tag is required because ad_video_1_link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_1_tag is required because ad_video_1_link was provided.")
   @JsonProperty("AD_VIDEO_1_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO1TAGREQUIRED() {
@@ -2250,9 +2406,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_2_link is duplicated with another ad video link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_2_link is duplicated with another ad video link.")
   @JsonProperty("AD_VIDEO_2_LINK_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO2LINKDUPLICATED() {
@@ -2263,9 +2420,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_2_link length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_2_link length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_VIDEO_2_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO2LINKLENGTHTOOLONG() {
@@ -2276,9 +2434,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_2_link is required for this item because ad_video_2_tag was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_2_link is required for this item because ad_video_2_tag was provided.")
   @JsonProperty("AD_VIDEO_2_LINK_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO2LINKREQUIRED() {
@@ -2289,9 +2448,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_2_link is formatted incorrectly and will not be published with your items.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_2_link is formatted incorrectly and will not be published with your items.")
   @JsonProperty("AD_VIDEO_2_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO2LINKWARNING() {
@@ -2302,9 +2462,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_2_tag is duplicated with another ad video tag.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_2_tag is duplicated with another ad video tag.")
   @JsonProperty("AD_VIDEO_2_TAG_DUPLICATED")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO2TAGDUPLICATED() {
@@ -2315,9 +2476,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_2_tag length is too long. The maximum length is 511 characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_2_tag length is too long. The maximum length is 511 characters.")
   @JsonProperty("AD_VIDEO_2_TAG_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO2TAGLENGTHTOOLONG() {
@@ -2328,9 +2490,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * ad_video_2_tag is required because ad_video_2_link was provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ad_video_2_tag is required because ad_video_2_link was provided.")
   @JsonProperty("AD_VIDEO_2_TAG_REQUIRED")
   @Valid
   public CatalogsItemValidationDetails getADVIDEO2TAGREQUIRED() {
@@ -2341,9 +2504,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an additional_image_link URL that contains too many characters, so the item will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an additional_image_link URL that contains too many characters, so the item will not be published.")
   @JsonProperty("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getADDITIONALIMAGELINKLENGTHTOOLONG() {
@@ -2354,9 +2518,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has additional_image_link URLs that are formatted incorrectly and will not be published with your items.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has additional_image_link URLs that are formatted incorrectly and will not be published with your items.")
   @JsonProperty("ADDITIONAL_IMAGE_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADDITIONALIMAGELINKWARNING() {
@@ -2367,9 +2532,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an adwords_redirect link that is formatted incorrectly.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an adwords_redirect link that is formatted incorrectly.")
   @JsonProperty("ADWORDS_FORMAT_WARNING")
   @Valid
   public CatalogsItemValidationDetails getADWORDSFORMATWARNING() {
@@ -2380,9 +2546,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an adwords_redirect URL that is duplicate of the link URL.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an adwords_redirect URL that is duplicate of the link URL.")
   @JsonProperty("ADWORDS_SAME_AS_LINK")
   @Valid
   public CatalogsItemValidationDetails getADWORDSSAMEASLINK() {
@@ -2393,9 +2560,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an age group value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an age group value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
   @JsonProperty("AGE_GROUP_INVALID")
   @Valid
   public CatalogsItemValidationDetails getAGEGROUPINVALID() {
@@ -2406,9 +2574,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item includes an invalid android_deep_link.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item includes an invalid android_deep_link.")
   @JsonProperty("ANDROID_DEEP_LINK_INVALID")
   @Valid
   public CatalogsItemValidationDetails getANDROIDDEEPLINKINVALID() {
@@ -2419,9 +2588,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an availability_date value that is formatted incorrectly, this item will be published without an availability date.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an availability_date value that is formatted incorrectly, this item will be published without an availability date.")
   @JsonProperty("AVAILABILITY_DATE_INVALID")
   @Valid
   public CatalogsItemValidationDetails getAVAILABILITYDATEINVALID() {
@@ -2432,9 +2602,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item includes a currency that doesn&#39;t match the usual currency for the location where the product is sold or shipped.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item includes a currency that doesn't match the usual currency for the location where the product is sold or shipped.")
   @JsonProperty("COUNTRY_DOES_NOT_MAP_TO_CURRENCY")
   @Valid
   public CatalogsItemValidationDetails getCOUNTRYDOESNOTMAPTOCURRENCY() {
@@ -2445,9 +2616,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has a custom_label value that is too long, this item will be published without that custom label.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a custom_label value that is too long, this item will be published without that custom label.")
   @JsonProperty("CUSTOM_LABEL_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getCUSTOMLABELLENGTHTOOLONG() {
@@ -2458,9 +2630,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * The description for this item was truncated because it contains too many characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The description for this item was truncated because it contains too many characters.")
   @JsonProperty("DESCRIPTION_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getDESCRIPTIONLENGTHTOOLONG() {
@@ -2471,9 +2644,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an expiration_date value that is formatted incorrectly, this item will be published without an expiration date.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an expiration_date value that is formatted incorrectly, this item will be published without an expiration date.")
   @JsonProperty("EXPIRATION_DATE_INVALID")
   @Valid
   public CatalogsItemValidationDetails getEXPIRATIONDATEINVALID() {
@@ -2484,9 +2658,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has a gender value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a gender value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
   @JsonProperty("GENDER_INVALID")
   @Valid
   public CatalogsItemValidationDetails getGENDERINVALID() {
@@ -2497,9 +2672,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has a GTIN value that is formatted incorrectly.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a GTIN value that is formatted incorrectly.")
   @JsonProperty("GTIN_INVALID")
   @Valid
   public CatalogsItemValidationDetails getGTININVALID() {
@@ -2510,9 +2686,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an image_link URL that is formatted incorrectly and will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an image_link URL that is formatted incorrectly and will not be published.")
   @JsonProperty("IMAGE_LINK_WARNING")
   @Valid
   public CatalogsItemValidationDetails getIMAGELINKWARNING() {
@@ -2523,9 +2700,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item includes an invalid ios_deep_link value.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item includes an invalid ios_deep_link value.")
   @JsonProperty("IOS_DEEP_LINK_INVALID")
   @Valid
   public CatalogsItemValidationDetails getIOSDEEPLINKINVALID() {
@@ -2536,9 +2714,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an is_bundle value that is formatted incorrectly, this item will be published without being bundled with other products.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an is_bundle value that is formatted incorrectly, this item will be published without being bundled with other products.")
   @JsonProperty("IS_BUNDLE_INVALID")
   @Valid
   public CatalogsItemValidationDetails getISBUNDLEINVALID() {
@@ -2549,9 +2728,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item includes additional_image_links that can&#39;t be found.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item includes additional_image_links that can't be found.")
   @JsonProperty("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE")
   @Valid
   public CatalogsItemValidationDetails getITEMADDITIONALIMAGEDOWNLOADFAILURE() {
@@ -2562,9 +2742,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an invalid product link which contains invalid UTM tracking paramaters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an invalid product link which contains invalid UTM tracking paramaters.")
   @JsonProperty("LINK_FORMAT_WARNING")
   @Valid
   public CatalogsItemValidationDetails getLINKFORMATWARNING() {
@@ -2575,9 +2756,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item includes a min_ad_price value that is formatted incorrectly.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item includes a min_ad_price value that is formatted incorrectly.")
   @JsonProperty("MIN_AD_PRICE_INVALID")
   @Valid
   public CatalogsItemValidationDetails getMINADPRICEINVALID() {
@@ -2588,9 +2770,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has a MPN value that is formatted incorrectly.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a MPN value that is formatted incorrectly.")
   @JsonProperty("MPN_INVALID")
   @Valid
   public CatalogsItemValidationDetails getMPNINVALID() {
@@ -2601,9 +2784,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an invalid multipack value.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an invalid multipack value.")
   @JsonProperty("MULTIPACK_INVALID")
   @Valid
   public CatalogsItemValidationDetails getMULTIPACKINVALID() {
@@ -2614,9 +2798,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item includes a condition value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item includes a condition value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
   @JsonProperty("OPTIONAL_CONDITION_INVALID")
   @Valid
   public CatalogsItemValidationDetails getOPTIONALCONDITIONINVALID() {
@@ -2627,9 +2812,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item is missing condition value, which may limit visibility in recommendations, search results and shopping experiences.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item is missing condition value, which may limit visibility in recommendations, search results and shopping experiences.")
   @JsonProperty("OPTIONAL_CONDITION_MISSING")
   @Valid
   public CatalogsItemValidationDetails getOPTIONALCONDITIONMISSING() {
@@ -2640,9 +2826,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item includes a google_product_category value that is not formatted correctly according to the GPC taxonomy.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item includes a google_product_category value that is not formatted correctly according to the GPC taxonomy.")
   @JsonProperty("OPTIONAL_PRODUCT_CATEGORY_INVALID")
   @Valid
   public CatalogsItemValidationDetails getOPTIONALPRODUCTCATEGORYINVALID() {
@@ -2653,9 +2840,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item is missing google_product_category.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item is missing google_product_category.")
   @JsonProperty("OPTIONAL_PRODUCT_CATEGORY_MISSING")
   @Valid
   public CatalogsItemValidationDetails getOPTIONALPRODUCTCATEGORYMISSING() {
@@ -2666,9 +2854,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item only has 1 or 2 levels of google_product_category value, which may limit visibility in recommendations, search results and shopping experiences.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item only has 1 or 2 levels of google_product_category value, which may limit visibility in recommendations, search results and shopping experiences.")
   @JsonProperty("PRODUCT_CATEGORY_DEPTH_WARNING")
   @Valid
   public CatalogsItemValidationDetails getPRODUCTCATEGORYDEPTHWARNING() {
@@ -2679,9 +2868,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has a product_type value that is too long, this item will be published without that product type.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a product_type value that is too long, this item will be published without that product type.")
   @JsonProperty("PRODUCT_TYPE_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getPRODUCTTYPELENGTHTOOLONG() {
@@ -2692,9 +2882,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has a sale_price_effective_date value that is formatted incorrectly, this item will be published without a sale date.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a sale_price_effective_date value that is formatted incorrectly, this item will be published without a sale date.")
   @JsonProperty("SALE_DATE_INVALID")
   @Valid
   public CatalogsItemValidationDetails getSALEDATEINVALID() {
@@ -2705,9 +2896,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an incorrectly formatted sales price.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an incorrectly formatted sales price.")
   @JsonProperty("SALES_PRICE_INVALID")
   @Valid
   public CatalogsItemValidationDetails getSALESPRICEINVALID() {
@@ -2718,9 +2910,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has a sale price value that is higher than the original price of the item.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a sale price value that is higher than the original price of the item.")
   @JsonProperty("SALES_PRICE_TOO_HIGH")
   @Valid
   public CatalogsItemValidationDetails getSALESPRICETOOHIGH() {
@@ -2731,9 +2924,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has a sale price value that is discounted very low compared to the price.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a sale price value that is discounted very low compared to the price.")
   @JsonProperty("SALES_PRICE_TOO_LOW")
   @Valid
   public CatalogsItemValidationDetails getSALESPRICETOOLOW() {
@@ -2744,9 +2938,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an incorrectly formatted shipping_height value. The value must first contain a numeric value then a valid dimension unit type.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an incorrectly formatted shipping_height value. The value must first contain a numeric value then a valid dimension unit type.")
   @JsonProperty("SHIPPING_HEIGHT_INVALID")
   @Valid
   public CatalogsItemValidationDetails getSHIPPINGHEIGHTINVALID() {
@@ -2757,9 +2952,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has a shipping value that is formatted incorrectly.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a shipping value that is formatted incorrectly.")
   @JsonProperty("SHIPPING_INVALID")
   @Valid
   public CatalogsItemValidationDetails getSHIPPINGINVALID() {
@@ -2770,9 +2966,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an invalid shipping_weight value.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an invalid shipping_weight value.")
   @JsonProperty("SHIPPING_WEIGHT_INVALID")
   @Valid
   public CatalogsItemValidationDetails getSHIPPINGWEIGHTINVALID() {
@@ -2783,9 +2980,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has an incorrectly formatted shipping_width value. The value must first contain a numeric value then a valid dimension unit type.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an incorrectly formatted shipping_width value. The value must first contain a numeric value then a valid dimension unit type.")
   @JsonProperty("SHIPPING_WIDTH_INVALID")
   @Valid
   public CatalogsItemValidationDetails getSHIPPINGWIDTHINVALID() {
@@ -2796,9 +2994,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Some items have size system values which are not one of the supported size systems.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Some items have size system values which are not one of the supported size systems.")
   @JsonProperty("SIZE_SYSTEM_INVALID")
   @Valid
   public CatalogsItemValidationDetails getSIZESYSTEMINVALID() {
@@ -2809,9 +3008,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has a size type value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a size type value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
   @JsonProperty("SIZE_TYPE_INVALID")
   @Valid
   public CatalogsItemValidationDetails getSIZETYPEINVALID() {
@@ -2822,9 +3022,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has a tax value that is formatted incorrectly.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a tax value that is formatted incorrectly.")
   @JsonProperty("TAX_INVALID")
   @Valid
   public CatalogsItemValidationDetails getTAXINVALID() {
@@ -2835,9 +3036,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * The title for the item was truncated because it contains too many characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The title for the item was truncated because it contains too many characters.")
   @JsonProperty("TITLE_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getTITLELENGTHTOOLONG() {
@@ -2848,9 +3050,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has a additional_image_link value that exceed the limit for additional images, this item will be published without some of your images.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a additional_image_link value that exceed the limit for additional images, this item will be published without some of your images.")
   @JsonProperty("TOO_MANY_ADDITIONAL_IMAGE_LINKS")
   @Valid
   public CatalogsItemValidationDetails getTOOMANYADDITIONALIMAGELINKS() {
@@ -2861,9 +3064,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item includes an utm_source value that is formatted incorrectly and has been automatically corrected.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item includes an utm_source value that is formatted incorrectly and has been automatically corrected.")
   @JsonProperty("UTM_SOURCE_AUTO_CORRECTED")
   @Valid
   public CatalogsItemValidationDetails getUTMSOURCEAUTOCORRECTED() {
@@ -2874,9 +3078,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * A video is required in the item when ad_video fields are provided.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A video is required in the item when ad_video fields are provided.")
   @JsonProperty("VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED")
   @Valid
   public CatalogsItemValidationDetails getVIDEOREQUIREDWHENADVIDEOPROVIDED() {
@@ -2887,9 +3092,10 @@ public class CatalogsItemValidationWarnings   {
   }
 
   /**
+   * Item has a weight_unit value that is formatted incorrectly, this item will be published without a weight unit.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a weight_unit value that is formatted incorrectly, this item will be published without a weight unit.")
   @JsonProperty("WEIGHT_UNIT_INVALID")
   @Valid
   public CatalogsItemValidationDetails getWEIGHTUNITINVALID() {
@@ -3342,10 +3548,7 @@ public class CatalogsItemValidationWarnings   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

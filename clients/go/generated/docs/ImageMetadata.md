@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Images** | Pointer to [**ImageSize**](ImageSize.md) |  | [optional] 
-**ItemType** | Pointer to **string** |  | [optional] 
+**ItemType** | **string** | Discriminator literal identifying this as image metadata inside a &#x60;PinMediaMetadata&#x60; payload. | 
 **Link** | Pointer to **NullableString** |  | [optional] 
 **Title** | Pointer to **NullableString** |  | [optional] 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewImageMetadata
 
-`func NewImageMetadata() *ImageMetadata`
+`func NewImageMetadata(itemType string, ) *ImageMetadata`
 
 NewImageMetadata instantiates a new ImageMetadata object
 This constructor will assign default values to properties that have it defined,
@@ -108,11 +108,6 @@ and a boolean to check if the value has been set.
 
 SetItemType sets ItemType field to given value.
 
-### HasItemType
-
-`func (o *ImageMetadata) HasItemType() bool`
-
-HasItemType returns a boolean if a field has been set.
 
 ### GetLink
 

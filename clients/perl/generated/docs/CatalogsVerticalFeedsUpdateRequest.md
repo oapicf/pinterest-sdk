@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::CatalogsVerticalFeedsUpdateRequest;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | 
+**catalog_type** | **string** |  | 
 **credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
 **default_availability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
 **default_currency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] 

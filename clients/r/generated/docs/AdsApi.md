@@ -11,6 +11,9 @@ Method | HTTP request | Description
 [**AdsGet**](AdsApi.md#AdsGet) | **GET** /ad_accounts/{ad_account_id}/ads/{ad_id} | Get ad
 [**AdsList**](AdsApi.md#AdsList) | **GET** /ad_accounts/{ad_account_id}/ads | List ads
 [**AdsUpdate**](AdsApi.md#AdsUpdate) | **PATCH** /ad_accounts/{ad_account_id}/ads | Update ads
+[**CampaignAdPreviewCreate**](AdsApi.md#CampaignAdPreviewCreate) | **POST** /ad_accounts/{ad_account_id}/campaign_ad_preview | Create ad preview records for one or more ad groups
+[**CampaignAdPreviewDelete**](AdsApi.md#CampaignAdPreviewDelete) | **DELETE** /ad_accounts/{ad_account_id}/campaign_ad_preview | Delete ad preview records for one or more ad groups
+[**CampaignAdPreviewRead**](AdsApi.md#CampaignAdPreviewRead) | **GET** /ad_accounts/{ad_account_id}/campaign_ad_preview | Fetch ad preview records for one or more ad groups
 
 
 # **AdPreviewsCreate**
@@ -18,7 +21,7 @@ Method | HTTP request | Description
 
 Create ad preview with pin or image
 
-Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.  Creating ad preview from catalog product group is currently in BETA and is not available to all users.
+Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad.  If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See [Ads Overview](https://help.pinterest.com/en/business/article/promoted-pins-overview).)  You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
 
 ### Example
 ```R
@@ -28,7 +31,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_ad_preview_request <- AdPreviewRequest$new("image_url_example", "title_example", "pin_id_example", "catalog_product_group_id_example", "SHOPPING", CustomizableCTAType$new(), "hero_image_title_example", "hero_image_url_example", "hero_pin_id_example", "image_tag_example", "item_id_example", "VIDEO", "video_tag_example") # AdPreviewRequest | Create ad preview with pin or image.
+var_ad_preview_request <- AdPreviewRequest$new("image_url_example", "title_example", AdShoppingPreviewCreativeType$new(), "pin_id_example", "catalog_product_group_id_example", "promotion_id_example", CustomizableCTAType$new(), "hero_image_title_example", "hero_image_url_example", "hero_pin_id_example", "image_tag_example", "item_id_example", BasePreferredMediaType$new(), "show_promotion_example", "video_tag_example") # AdPreviewRequest | 
 
 api_instance <- AdsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -44,7 +47,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **ad_preview_request** | [**AdPreviewRequest**](AdPreviewRequest.md)| Create ad preview with pin or image. | 
+ **ad_preview_request** | [**AdPreviewRequest**](AdPreviewRequest.md)|  | 
 
 ### Return type
 
@@ -62,16 +65,21 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successful ad preview creation. |  -  |
-| **400** | Invalid Pin parameters response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **AdTargetingAnalyticsGet**
-> MetricsResponse AdTargetingAnalyticsGet(ad_account_id, ad_ids, start_date, end_date, targeting_types, columns, granularity, click_window_days = 30, engagement_window_days = 30, view_window_days = 1, conversion_report_time = "TIME_OF_AD_ACTION", attribution_types = var.attribution_types, reporting_timezone = var.reporting_timezone)
+> MetricsResponse AdTargetingAnalyticsGet(ad_account_id, ad_ids, start_date, end_date, targeting_types, columns, granularity, click_window_days = var.click_window_days, engagement_window_days = var.engagement_window_days, view_window_days = var.view_window_days, conversion_report_time = var.conversion_report_time, attribution_types = var.attribution_types, reporting_timezone = var.reporting_timezone, sort_columns = var.sort_columns, sort_ascending = var.sort_ascending)
 
 Get targeting analytics for ads
 
-Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\").  * The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 ```R
@@ -84,15 +92,17 @@ var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of 
 var_ad_ids <- c("inner_example") # array[character] | List of Ad Ids to use to filter the results.
 var_start_date <- "start_date_example" # character | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 var_end_date <- "end_date_example" # character | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-var_targeting_types <- c(AdsAnalyticsAdTargetingType$new()) # array[AdsAnalyticsAdTargetingType] | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-var_columns <- c("SPEND_IN_MICRO_DOLLAR") # array[character] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-var_granularity <- Granularity$new() # Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-var_click_window_days <- 30 # integer | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (Optional)
-var_engagement_window_days <- 30 # integer | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (Optional)
-var_view_window_days <- 1 # integer | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (Optional)
-var_conversion_report_time <- "TIME_OF_AD_ACTION" # character | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (Optional)
+var_targeting_types <- c(AdsAnalyticsAdTargetingType$new()) # array[AdsAnalyticsAdTargetingType] | Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+var_columns <- c(ReportingColumnSync$new()) # array[ReportingColumnSync] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+var_granularity <- Granularity$new() # Granularity |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+var_click_window_days <- ConversionAttributionWindowDays$new() # ConversionAttributionWindowDays | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (Optional)
+var_engagement_window_days <- ConversionAttributionWindowDays$new() # ConversionAttributionWindowDays | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.  **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (Optional)
+var_view_window_days <- ConversionAttributionWindowDays$new() # ConversionAttributionWindowDays | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (Optional)
+var_conversion_report_time <- ConversionReportTimeType$new() # ConversionReportTimeType | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (Optional)
 var_attribution_types <- c(ConversionReportAttributionType$new()) # array[ConversionReportAttributionType] | List of types of attribution for the conversion report (Optional)
 var_reporting_timezone <- ReportingTimeZone$new() # ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (Optional)
+var_sort_columns <- c("inner_example") # array[character] | Sort Columns. (Optional)
+var_sort_ascending <- "sort_ascending_example" # character | Sort ascending. (Optional)
 
 api_instance <- AdsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -100,8 +110,8 @@ api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # Configure OAuth2 access token for authorization: client_credentials
 # api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$AdTargetingAnalyticsGet(var_ad_account_id, var_ad_ids, var_start_date, var_end_date, var_targeting_types, var_columns, var_granularity, click_window_days = var_click_window_days, engagement_window_days = var_engagement_window_days, view_window_days = var_view_window_days, conversion_report_time = var_conversion_report_time, attribution_types = var_attribution_types, reporting_timezone = var_reporting_timezonedata_file = "result.txt")
-result <- api_instance$AdTargetingAnalyticsGet(var_ad_account_id, var_ad_ids, var_start_date, var_end_date, var_targeting_types, var_columns, var_granularity, click_window_days = var_click_window_days, engagement_window_days = var_engagement_window_days, view_window_days = var_view_window_days, conversion_report_time = var_conversion_report_time, attribution_types = var_attribution_types, reporting_timezone = var_reporting_timezone)
+# result <- api_instance$AdTargetingAnalyticsGet(var_ad_account_id, var_ad_ids, var_start_date, var_end_date, var_targeting_types, var_columns, var_granularity, click_window_days = var_click_window_days, engagement_window_days = var_engagement_window_days, view_window_days = var_view_window_days, conversion_report_time = var_conversion_report_time, attribution_types = var_attribution_types, reporting_timezone = var_reporting_timezone, sort_columns = var_sort_columns, sort_ascending = var_sort_ascendingdata_file = "result.txt")
+result <- api_instance$AdTargetingAnalyticsGet(var_ad_account_id, var_ad_ids, var_start_date, var_end_date, var_targeting_types, var_columns, var_granularity, click_window_days = var_click_window_days, engagement_window_days = var_engagement_window_days, view_window_days = var_view_window_days, conversion_report_time = var_conversion_report_time, attribution_types = var_attribution_types, reporting_timezone = var_reporting_timezone, sort_columns = var_sort_columns, sort_ascending = var_sort_ascending)
 dput(result)
 ```
 
@@ -113,15 +123,17 @@ Name | Type | Description  | Notes
  **ad_ids** | list( **character** )| List of Ad Ids to use to filter the results. | 
  **start_date** | **character**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **end_date** | **character**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **targeting_types** | list( [**AdsAnalyticsAdTargetingType**](AdsAnalyticsAdTargetingType.md) )| Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | 
- **columns** | Enum [SPEND_IN_MICRO_DOLLAR, PAID_IMPRESSION, SPEND_IN_DOLLAR, CPC_IN_MICRO_DOLLAR, ECPC_IN_MICRO_DOLLAR, ECPC_IN_DOLLAR, CTR, ECTR, OUTBOUND_CTR_1, CAMPAIGN_NAME, CAMPAIGN_BRAND_LABEL, PIN_ID, TOTAL_ENGAGEMENT, ENGAGEMENT_1, ENGAGEMENT_2, ECPE_IN_DOLLAR, ENGAGEMENT_RATE, EENGAGEMENT_RATE, ECPM_IN_MICRO_DOLLAR, REPIN_RATE, CTR_2, CAMPAIGN_ID, ADVERTISER_ID, AD_ACCOUNT_ID, PIN_PROMOTION_ID, AD_ID, AD_GROUP_ID, CAMPAIGN_ENTITY_STATUS, CAMPAIGN_OBJECTIVE_TYPE, CPM_IN_MICRO_DOLLAR, CPM_IN_DOLLAR, AD_GROUP_NAME, AD_GROUP_BUDGET_TYPE, AD_GROUP_BUDGET_IN_LOCAL_CURRENCY, AD_GROUP_ENTITY_STATUS, AD_GROUP_BID_MULTIPLIER, PROMO_ID, PROMO_NAME, ORDER_LINE_ID, ORDER_LINE_NAME, CLICKTHROUGH_1, REPIN_1, IMPRESSION_1, IMPRESSION_1_GROSS, CLICKTHROUGH_1_GROSS, OUTBOUND_CLICK_1, CLICKTHROUGH_2, REPIN_2, IMPRESSION_2, OUTBOUND_CLICK_2, TOTAL_CLICKTHROUGH, TOTAL_IMPRESSION, TOTAL_IMPRESSION_USER, TOTAL_IMPRESSION_FREQUENCY, COST_PER_OUTBOUND_CLICK_IN_DOLLAR, COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1, TOTAL_ENGAGEMENT_SIGNUP, TOTAL_ENGAGEMENT_CHECKOUT, TOTAL_ENGAGEMENT_LEAD, TOTAL_CLICK_SIGNUP, TOTAL_CLICK_CHECKOUT, TOTAL_CLICK_ADD_TO_CART, TOTAL_CLICK_LEAD, TOTAL_VIEW_SIGNUP, TOTAL_VIEW_CHECKOUT, TOTAL_VIEW_ADD_TO_CART, TOTAL_VIEW_LEAD, TOTAL_CONVERSIONS, TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_SESSIONS, WEB_SESSIONS_1, WEB_SESSIONS_2, AD_NAME, CAMPAIGN_LIFETIME_SPEND_CAP, AD_GROUP_OPTIMIZATION, CAMPAIGN_DAILY_SPEND_CAP, CAMPAIGN_BUDGET_OPTIMIZATION, IS_PREMIERE_CAMPAIGN, TOTAL_PAGE_VISIT, TOTAL_SIGNUP, TOTAL_CHECKOUT, TOTAL_CUSTOM, TOTAL_LEAD, TOTAL_ADD_TO_WISHLIST, TOTAL_SUBSCRIBE, TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR, PAGE_VISIT_COST_PER_ACTION, PAGE_VISIT_ROAS, CHECKOUT_ROAS, CUSTOM_ROAS, PRODUCT_GROUP_AD_IMAGE_TAG, PRODUCT_GROUP_AD_VIDEO_TAG, VIDEO_3SEC_VIEWS_1, VIDEO_15SEC_UNIQUE_VIEWS_1, VIDEO_MRC_VIEWS_1, VIDEO_3SEC_VIEWS_2, VIDEO_15SEC_UNIQUE_VIEWS_2, VIDEO_P100_COMPLETE_2, VIDEO_P0_COMBINED_2, VIDEO_P25_COMBINED_2, VIDEO_P50_COMBINED_2, VIDEO_P75_COMBINED_2, VIDEO_P95_COMBINED_2, VIDEO_MRC_VIEWS_2, PAID_VIDEO_VIEWABLE_RATE, VIDEO_LENGTH, VIDEO_SPEND_IN_DOLLAR, ECPV_IN_DOLLAR, ECPCV_IN_DOLLAR, ECPCV_P95_IN_DOLLAR, TOTAL_VIDEO_3SEC_VIEWS, TOTAL_VIDEO_15SEC_UNIQUE_VIEWS, TOTAL_VIDEO_P100_COMPLETE, TOTAL_VIDEO_P0_COMBINED, TOTAL_VIDEO_P25_COMBINED, TOTAL_VIDEO_P50_COMBINED, TOTAL_VIDEO_P75_COMBINED, TOTAL_VIDEO_P95_COMBINED, TOTAL_VIDEO_MRC_VIEWS, TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND, TOTAL_REPIN_RATE, WEB_CHECKOUT_COST_PER_ACTION, WEB_CHECKOUT_ROAS, TOTAL_WEB_CHECKOUT, TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_CLICK_CHECKOUT, TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_ENGAGEMENT_CHECKOUT, TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_VIEW_CHECKOUT, TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR, INAPP_CHECKOUT_COST_PER_ACTION, TOTAL_OFFLINE_CHECKOUT, TOTAL_APP_INSTALL_CONVERSION_RATE, TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE, IDEA_PIN_PRODUCT_TAG_VISIT_1, IDEA_PIN_PRODUCT_TAG_VISIT_2, TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT, LEADS, COST_PER_LEAD, QUIZ_COMPLETED, QUIZ_PIN_RESULT_OPEN, QUIZ_COMPLETION_RATE, SHOWCASE_PIN_CLICKTHROUGH, SHOWCASE_SUBPAGE_CLICKTHROUGH, SHOWCASE_SUBPIN_CLICKTHROUGH, SHOWCASE_SUBPAGE_IMPRESSION, SHOWCASE_SUBPIN_IMPRESSION, SHOWCASE_SUBPAGE_SWIPE_LEFT, SHOWCASE_SUBPAGE_SWIPE_RIGHT, SHOWCASE_SUBPIN_SWIPE_LEFT, SHOWCASE_SUBPIN_SWIPE_RIGHT, SHOWCASE_SUBPAGE_REPIN, SHOWCASE_SUBPIN_REPIN, SHOWCASE_SUBPAGE_CLOSEUP, SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD, SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD, SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION, TOTAL_CHECKOUT_CONVERSION_RATE, TOTAL_VIEW_CATEGORY_CONVERSION_RATE, TOTAL_ADD_TO_CART_CONVERSION_RATE, TOTAL_SIGNUP_CONVERSION_RATE, TOTAL_PAGE_VISIT_CONVERSION_RATE, TOTAL_LEAD_CONVERSION_RATE, TOTAL_SEARCH_CONVERSION_RATE, TOTAL_WATCH_VIDEO_CONVERSION_RATE, TOTAL_UNKNOWN_CONVERSION_RATE, TOTAL_CUSTOM_CONVERSION_RATE] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
- **granularity** | [**Granularity**](.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
- **click_window_days** | Enum [0, 1, 7, 14, 30, 60] | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
- **engagement_window_days** | Enum [0, 1, 7, 14, 30, 60] | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to 30]
- **view_window_days** | Enum [0, 1, 7, 14, 30, 60] | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to 1]
- **conversion_report_time** | Enum [TIME_OF_AD_ACTION, TIME_OF_CONVERSION] | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to &quot;TIME_OF_AD_ACTION&quot;]
+ **targeting_types** | list( [**AdsAnalyticsAdTargetingType**](AdsAnalyticsAdTargetingType.md) )| Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | 
+ **columns** | list( [**ReportingColumnSync**](ReportingColumnSync.md) )| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | 
+ **granularity** | [**Granularity**](.md)|   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | 
+ **click_window_days** | [**ConversionAttributionWindowDays**](.md)| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] 
+ **engagement_window_days** | [**ConversionAttributionWindowDays**](.md)| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.  **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional] 
+ **view_window_days** | [**ConversionAttributionWindowDays**](.md)| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] 
+ **conversion_report_time** | [**ConversionReportTimeType**](.md)| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] 
  **attribution_types** | list( [**ConversionReportAttributionType**](ConversionReportAttributionType.md) )| List of types of attribution for the conversion report | [optional] 
  **reporting_timezone** | [**ReportingTimeZone**](.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] 
+ **sort_columns** | list( **character** )| Sort Columns. | [optional] 
+ **sort_ascending** | **character**| Sort ascending. | [optional] 
 
 ### Return type
 
@@ -139,15 +151,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **AdsAnalytics**
-> array[AdsAnalyticsResponseInner] AdsAnalytics(ad_account_id, start_date, end_date, columns, granularity, ad_ids = var.ad_ids, click_window_days = 30, engagement_window_days = 30, view_window_days = 1, conversion_report_time = "TIME_OF_AD_ACTION", pin_ids = var.pin_ids, campaign_ids = var.campaign_ids, reporting_timezone = var.reporting_timezone)
+> array[AdsAnalytics] AdsAnalytics(start_date, end_date, columns, granularity, ad_account_id, pin_ids = var.pin_ids, ad_ids = var.ad_ids, click_window_days = 30, engagement_window_days = 30, view_window_days = 1, conversion_report_time = "TIME_OF_AD_ACTION", campaign_ids = var.campaign_ids, reporting_timezone = var.reporting_timezone)
 
 Get ad analytics
 
-Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+    Get analytics for the specified ads in the specified `ad_account_id`, filtered by the specified options.     - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.     - The request must contain either ad_ids or both campaign_ids and pin_ids.     - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.     - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 ```R
@@ -156,17 +173,17 @@ library(openapi)
 # Get ad analytics
 #
 # prepare function argument(s)
-var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
 var_start_date <- "start_date_example" # character | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 var_end_date <- "end_date_example" # character | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-var_columns <- c("SPEND_IN_MICRO_DOLLAR") # array[character] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-var_granularity <- Granularity$new() # Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-var_ad_ids <- c("inner_example") # array[character] | List of Ad Ids to use to filter the results. (Optional)
-var_click_window_days <- 30 # integer | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (Optional)
-var_engagement_window_days <- 30 # integer | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (Optional)
-var_view_window_days <- 1 # integer | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (Optional)
-var_conversion_report_time <- "TIME_OF_AD_ACTION" # character | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (Optional)
+var_columns <- c(ReportingColumnSync$new()) # array[ReportingColumnSync] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+var_granularity <- Granularity$new() # Granularity |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
 var_pin_ids <- c("inner_example") # array[character] | List of Pin IDs. (Optional)
+var_ad_ids <- c("inner_example") # array[character] | List of Ad Ids to use to filter the results. (Optional)
+var_click_window_days <- 30 # numeric | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (Optional)
+var_engagement_window_days <- 30 # numeric | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (Optional)
+var_view_window_days <- 1 # numeric | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (Optional)
+var_conversion_report_time <- "TIME_OF_AD_ACTION" # character | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (Optional)
 var_campaign_ids <- c("inner_example") # array[character] | List of Campaign Ids to use to filter the results. (Optional)
 var_reporting_timezone <- ReportingTimeZone$new() # ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (Optional)
 
@@ -176,8 +193,8 @@ api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # Configure OAuth2 access token for authorization: client_credentials
 # api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$AdsAnalytics(var_ad_account_id, var_start_date, var_end_date, var_columns, var_granularity, ad_ids = var_ad_ids, click_window_days = var_click_window_days, engagement_window_days = var_engagement_window_days, view_window_days = var_view_window_days, conversion_report_time = var_conversion_report_time, pin_ids = var_pin_ids, campaign_ids = var_campaign_ids, reporting_timezone = var_reporting_timezonedata_file = "result.txt")
-result <- api_instance$AdsAnalytics(var_ad_account_id, var_start_date, var_end_date, var_columns, var_granularity, ad_ids = var_ad_ids, click_window_days = var_click_window_days, engagement_window_days = var_engagement_window_days, view_window_days = var_view_window_days, conversion_report_time = var_conversion_report_time, pin_ids = var_pin_ids, campaign_ids = var_campaign_ids, reporting_timezone = var_reporting_timezone)
+# result <- api_instance$AdsAnalytics(var_start_date, var_end_date, var_columns, var_granularity, var_ad_account_id, pin_ids = var_pin_ids, ad_ids = var_ad_ids, click_window_days = var_click_window_days, engagement_window_days = var_engagement_window_days, view_window_days = var_view_window_days, conversion_report_time = var_conversion_report_time, campaign_ids = var_campaign_ids, reporting_timezone = var_reporting_timezonedata_file = "result.txt")
+result <- api_instance$AdsAnalytics(var_start_date, var_end_date, var_columns, var_granularity, var_ad_account_id, pin_ids = var_pin_ids, ad_ids = var_ad_ids, click_window_days = var_click_window_days, engagement_window_days = var_engagement_window_days, view_window_days = var_view_window_days, conversion_report_time = var_conversion_report_time, campaign_ids = var_campaign_ids, reporting_timezone = var_reporting_timezone)
 dput(result)
 ```
 
@@ -185,23 +202,23 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **character**| Unique identifier of an ad account. | 
  **start_date** | **character**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **end_date** | **character**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **columns** | Enum [SPEND_IN_MICRO_DOLLAR, PAID_IMPRESSION, SPEND_IN_DOLLAR, CPC_IN_MICRO_DOLLAR, ECPC_IN_MICRO_DOLLAR, ECPC_IN_DOLLAR, CTR, ECTR, OUTBOUND_CTR_1, CAMPAIGN_NAME, CAMPAIGN_BRAND_LABEL, PIN_ID, TOTAL_ENGAGEMENT, ENGAGEMENT_1, ENGAGEMENT_2, ECPE_IN_DOLLAR, ENGAGEMENT_RATE, EENGAGEMENT_RATE, ECPM_IN_MICRO_DOLLAR, REPIN_RATE, CTR_2, CAMPAIGN_ID, ADVERTISER_ID, AD_ACCOUNT_ID, PIN_PROMOTION_ID, AD_ID, AD_GROUP_ID, CAMPAIGN_ENTITY_STATUS, CAMPAIGN_OBJECTIVE_TYPE, CPM_IN_MICRO_DOLLAR, CPM_IN_DOLLAR, AD_GROUP_NAME, AD_GROUP_BUDGET_TYPE, AD_GROUP_BUDGET_IN_LOCAL_CURRENCY, AD_GROUP_ENTITY_STATUS, AD_GROUP_BID_MULTIPLIER, PROMO_ID, PROMO_NAME, ORDER_LINE_ID, ORDER_LINE_NAME, CLICKTHROUGH_1, REPIN_1, IMPRESSION_1, IMPRESSION_1_GROSS, CLICKTHROUGH_1_GROSS, OUTBOUND_CLICK_1, CLICKTHROUGH_2, REPIN_2, IMPRESSION_2, OUTBOUND_CLICK_2, TOTAL_CLICKTHROUGH, TOTAL_IMPRESSION, TOTAL_IMPRESSION_USER, TOTAL_IMPRESSION_FREQUENCY, COST_PER_OUTBOUND_CLICK_IN_DOLLAR, COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1, TOTAL_ENGAGEMENT_SIGNUP, TOTAL_ENGAGEMENT_CHECKOUT, TOTAL_ENGAGEMENT_LEAD, TOTAL_CLICK_SIGNUP, TOTAL_CLICK_CHECKOUT, TOTAL_CLICK_ADD_TO_CART, TOTAL_CLICK_LEAD, TOTAL_VIEW_SIGNUP, TOTAL_VIEW_CHECKOUT, TOTAL_VIEW_ADD_TO_CART, TOTAL_VIEW_LEAD, TOTAL_CONVERSIONS, TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_SESSIONS, WEB_SESSIONS_1, WEB_SESSIONS_2, AD_NAME, CAMPAIGN_LIFETIME_SPEND_CAP, AD_GROUP_OPTIMIZATION, CAMPAIGN_DAILY_SPEND_CAP, CAMPAIGN_BUDGET_OPTIMIZATION, IS_PREMIERE_CAMPAIGN, TOTAL_PAGE_VISIT, TOTAL_SIGNUP, TOTAL_CHECKOUT, TOTAL_CUSTOM, TOTAL_LEAD, TOTAL_ADD_TO_WISHLIST, TOTAL_SUBSCRIBE, TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR, PAGE_VISIT_COST_PER_ACTION, PAGE_VISIT_ROAS, CHECKOUT_ROAS, CUSTOM_ROAS, PRODUCT_GROUP_AD_IMAGE_TAG, PRODUCT_GROUP_AD_VIDEO_TAG, VIDEO_3SEC_VIEWS_1, VIDEO_15SEC_UNIQUE_VIEWS_1, VIDEO_MRC_VIEWS_1, VIDEO_3SEC_VIEWS_2, VIDEO_15SEC_UNIQUE_VIEWS_2, VIDEO_P100_COMPLETE_2, VIDEO_P0_COMBINED_2, VIDEO_P25_COMBINED_2, VIDEO_P50_COMBINED_2, VIDEO_P75_COMBINED_2, VIDEO_P95_COMBINED_2, VIDEO_MRC_VIEWS_2, PAID_VIDEO_VIEWABLE_RATE, VIDEO_LENGTH, VIDEO_SPEND_IN_DOLLAR, ECPV_IN_DOLLAR, ECPCV_IN_DOLLAR, ECPCV_P95_IN_DOLLAR, TOTAL_VIDEO_3SEC_VIEWS, TOTAL_VIDEO_15SEC_UNIQUE_VIEWS, TOTAL_VIDEO_P100_COMPLETE, TOTAL_VIDEO_P0_COMBINED, TOTAL_VIDEO_P25_COMBINED, TOTAL_VIDEO_P50_COMBINED, TOTAL_VIDEO_P75_COMBINED, TOTAL_VIDEO_P95_COMBINED, TOTAL_VIDEO_MRC_VIEWS, TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND, TOTAL_REPIN_RATE, WEB_CHECKOUT_COST_PER_ACTION, WEB_CHECKOUT_ROAS, TOTAL_WEB_CHECKOUT, TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_CLICK_CHECKOUT, TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_ENGAGEMENT_CHECKOUT, TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_VIEW_CHECKOUT, TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR, INAPP_CHECKOUT_COST_PER_ACTION, TOTAL_OFFLINE_CHECKOUT, TOTAL_APP_INSTALL_CONVERSION_RATE, TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE, IDEA_PIN_PRODUCT_TAG_VISIT_1, IDEA_PIN_PRODUCT_TAG_VISIT_2, TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT, LEADS, COST_PER_LEAD, QUIZ_COMPLETED, QUIZ_PIN_RESULT_OPEN, QUIZ_COMPLETION_RATE, SHOWCASE_PIN_CLICKTHROUGH, SHOWCASE_SUBPAGE_CLICKTHROUGH, SHOWCASE_SUBPIN_CLICKTHROUGH, SHOWCASE_SUBPAGE_IMPRESSION, SHOWCASE_SUBPIN_IMPRESSION, SHOWCASE_SUBPAGE_SWIPE_LEFT, SHOWCASE_SUBPAGE_SWIPE_RIGHT, SHOWCASE_SUBPIN_SWIPE_LEFT, SHOWCASE_SUBPIN_SWIPE_RIGHT, SHOWCASE_SUBPAGE_REPIN, SHOWCASE_SUBPIN_REPIN, SHOWCASE_SUBPAGE_CLOSEUP, SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD, SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD, SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION, TOTAL_CHECKOUT_CONVERSION_RATE, TOTAL_VIEW_CATEGORY_CONVERSION_RATE, TOTAL_ADD_TO_CART_CONVERSION_RATE, TOTAL_SIGNUP_CONVERSION_RATE, TOTAL_PAGE_VISIT_CONVERSION_RATE, TOTAL_LEAD_CONVERSION_RATE, TOTAL_SEARCH_CONVERSION_RATE, TOTAL_WATCH_VIDEO_CONVERSION_RATE, TOTAL_UNKNOWN_CONVERSION_RATE, TOTAL_CUSTOM_CONVERSION_RATE] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
- **granularity** | [**Granularity**](.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
+ **columns** | list( [**ReportingColumnSync**](ReportingColumnSync.md) )| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | 
+ **granularity** | [**Granularity**](.md)|   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | 
+ **ad_account_id** | **character**| Unique identifier of an ad account. | 
+ **pin_ids** | list( **character** )| List of Pin IDs. | [optional] 
  **ad_ids** | list( **character** )| List of Ad Ids to use to filter the results. | [optional] 
  **click_window_days** | Enum [0, 1, 7, 14, 30, 60] | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
- **engagement_window_days** | Enum [0, 1, 7, 14, 30, 60] | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to 30]
+ **engagement_window_days** | Enum [0, 1, 7, 14, 30, 60] | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional] [default to 30]
  **view_window_days** | Enum [0, 1, 7, 14, 30, 60] | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to 1]
  **conversion_report_time** | Enum [TIME_OF_AD_ACTION, TIME_OF_CONVERSION] | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to &quot;TIME_OF_AD_ACTION&quot;]
- **pin_ids** | list( **character** )| List of Pin IDs. | [optional] 
  **campaign_ids** | list( **character** )| List of Campaign Ids to use to filter the results. | [optional] 
  **reporting_timezone** | [**ReportingTimeZone**](.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] 
 
 ### Return type
 
-[**array[AdsAnalyticsResponseInner]**](AdsAnalyticsResponse_inner.md)
+[**array[AdsAnalytics]**](AdsAnalytics.md)
 
 ### Authorization
 
@@ -215,16 +232,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account ads analytics parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **AdsCreate**
-> AdArrayResponse AdsCreate(ad_account_id, ad_create_request)
+> AdBatchWriteResponseModel AdsCreate(ad_account_id, ad_create)
 
 Create ads
 
-Create multiple new ads. Request must contain `ad_group_id`, `creative_type`, and the source Pin `pin_id`.
+Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
 
 ### Example
 ```R
@@ -234,14 +255,14 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_ad_create_request <- c(AdCreateRequest$new("ad_group_id_example", CreativeType$new(), "pin_id_example", "android_deep_link_example", c("carousel_android_deep_links_example"), c("carousel_destination_urls_example"), c("carousel_ios_deep_links_example"), "click_tracking_url_example", CustomizableCTAType$new(), "destination_url_example", DisclosureType$new(), "disclosure_url_example", GridClickType$new(), "ios_deep_link_example", "is_pin_deleted_example", "is_removable_example", "lead_form_id_example", "name_example", QuizPinData$new(c(QuizPinQuestion$new(c(QuizPinOption$new(123, "text_example")), 123, "question_text_example")), c(QuizPinResult$new("android_deep_link_example", "destination_url_example", "ios_deep_link_example", "organic_pin_id_example", 123)), QuizPinResult$new("android_deep_link_example", "destination_url_example", "ios_deep_link_example", "organic_pin_id_example", 123), "RANDOM"), EntityStatus$new(), TrackingUrls$new(c("audience_verification_example"), c("buyable_button_example"), c("click_example"), c("engagement_example"), c("impression_example")), "view_tracking_url_example")) # array[AdCreateRequest] | List of ads to create, size limit [1, 30].
+var_ad_create <- c(AdCreate$new("ad_group_id_example", CreativeType$new(), "pin_id_example", "android_deep_link_example", c("carousel_android_deep_links_example"), c("carousel_destination_urls_example"), c("carousel_ios_deep_links_example"), "click_tracking_url_example", "collection_items_destination_url_template_example", AdCollectionsHeaderType$new(), CustomizableCTAType$new(), "destination_url_example", DisclosureType$new(), "disclosure_url_example", GridClickType$new(), "ios_deep_link_example", "is_carting_example", "is_collage_accepted_terms_example", "is_collage_single_destination_example", "is_pin_deleted_example", "is_removable_example", "lead_form_id_example", "name_example", QuizPinData$new(c(QuizPinQuestion$new(c(QuizPinOption$new(123, "text_example")), 123, "question_text_example")), c(QuizPinResult$new("android_deep_link_example", "destination_url_example", "ios_deep_link_example", "organic_pin_id_example", 123)), QuizPinResult$new("android_deep_link_example", "destination_url_example", "ios_deep_link_example", "organic_pin_id_example", 123), TieBreakerType$new()), EntityStatus$new(), TrackingUrls$new(c("audience_verification_example"), c("buyable_button_example"), c("click_example"), c("engagement_example"), c("impression_example")), "view_tracking_url_example")) # array[AdCreate] | 
 
 api_instance <- AdsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$AdsCreate(var_ad_account_id, var_ad_create_requestdata_file = "result.txt")
-result <- api_instance$AdsCreate(var_ad_account_id, var_ad_create_request)
+# result <- api_instance$AdsCreate(var_ad_account_id, var_ad_createdata_file = "result.txt")
+result <- api_instance$AdsCreate(var_ad_account_id, var_ad_create)
 dput(result)
 ```
 
@@ -250,11 +271,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **ad_create_request** | list( [**AdCreateRequest**](AdCreateRequest.md) )| List of ads to create, size limit [1, 30]. | 
+ **ad_create** | list( [**AdCreate**](AdCreate.md) )|  | 
 
 ### Return type
 
-[**AdArrayResponse**](AdArrayResponse.md)
+[**AdBatchWriteResponseModel**](AdBatchWriteResponseModel.md)
 
 ### Authorization
 
@@ -268,15 +289,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **AdsGet**
-> AdResponse AdsGet(ad_account_id, ad_id)
+> Ad AdsGet(ad_id, ad_account_id)
 
 Get ad
 
-Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>.
+Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the [Pinterest advertising standards](https://www.pinterest.com/_/_/policy/advertising-guidelines/).
 
 ### Example
 ```R
@@ -285,8 +311,8 @@ library(openapi)
 # Get ad
 #
 # prepare function argument(s)
+var_ad_id <- "ad_id_example" # character | The ID of this ad.
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_ad_id <- "ad_id_example" # character | Unique identifier of an ad.
 
 api_instance <- AdsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -294,8 +320,8 @@ api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # Configure OAuth2 access token for authorization: client_credentials
 # api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$AdsGet(var_ad_account_id, var_ad_iddata_file = "result.txt")
-result <- api_instance$AdsGet(var_ad_account_id, var_ad_id)
+# result <- api_instance$AdsGet(var_ad_id, var_ad_account_iddata_file = "result.txt")
+result <- api_instance$AdsGet(var_ad_id, var_ad_account_id)
 dput(result)
 ```
 
@@ -303,12 +329,12 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **ad_id** | **character**| The ID of this ad. | 
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **ad_id** | **character**| Unique identifier of an ad. | 
 
 ### Return type
 
-[**AdResponse**](AdResponse.md)
+[**Ad**](Ad.md)
 
 ### Authorization
 
@@ -322,15 +348,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **AdsList**
-> AdsList200Response AdsList(ad_account_id, campaign_ids = var.campaign_ids, ad_group_ids = var.ad_group_ids, ad_ids = var.ad_ids, entity_statuses = ["ACTIVE","PAUSED"], page_size = 25, order = var.order, bookmark = var.bookmark)
+> AdsList200Response AdsList(ad_account_id, bookmark = var.bookmark, page_size = 25, order = var.order, campaign_ids = var.campaign_ids, ad_group_ids = var.ad_group_ids, ad_ids = var.ad_ids, entity_statuses = ["ACTIVE","PAUSED"])
 
 List ads
 
-List ads that meet the filters provided:   - Listed campaign ids or ad group ids or ad ids   - Listed entity statuses <p/> If no filter is provided, all ads in the ad account are returned. <p/> <strong>Note:</strong><p/> Provide only campaign_id or ad_group_id or ad_id. Do not provide more than one type. <p/> Review status is provided for each ad; if review_status is REJECTED, the rejected_reasons field will contain additional information. For more, see <a href=\"https://policy.pinterest.com/en/advertising-guidelines\">Pinterest advertising standards</a>.
+List ads that meet the filters provided:     - Listed campaign ids or ad group ids or ad ids     - Listed entity statuses  If no filter is provided, all ads in the ad account are returned.  **Note:** Provide only `campaign_id` or `ad_group_id` or `ad_id`. Do not provide more than one type.  Review status is provided for each ad; if `review_status` is `REJECTED`, the `rejected_reasons` field will contain additional information.  For more, see [Pinterest advertising standards](https://policy.pinterest.com/en/advertising-guidelines).
 
 ### Example
 ```R
@@ -340,13 +371,13 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_campaign_ids <- c("inner_example") # array[character] | List of Campaign Ids to use to filter the results. (Optional)
-var_ad_group_ids <- c("inner_example") # array[character] | List of Ad group Ids to use to filter the results. (Optional)
-var_ad_ids <- c("inner_example") # array[character] | List of Ad Ids to use to filter the results. (Optional)
-var_entity_statuses <- c("ACTIVE") # array[character] | Entity status (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
-var_order <- "ASCENDING" # character | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
+var_order <- Pinterest.Lib.PaginationOrder$new() # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (Optional)
+var_campaign_ids <- c("inner_example") # array[character] | List of Campaign Ids to use to filter the results. (Optional)
+var_ad_group_ids <- c("inner_example") # array[character] | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (Optional)
+var_ad_ids <- c("inner_example") # array[character] | List of Ad Ids to use to filter the results. (Optional)
+var_entity_statuses <- c(EntityStatus$new()) # array[EntityStatus] | Entity status (Optional)
 
 api_instance <- AdsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -354,8 +385,8 @@ api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # Configure OAuth2 access token for authorization: client_credentials
 # api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$AdsList(var_ad_account_id, campaign_ids = var_campaign_ids, ad_group_ids = var_ad_group_ids, ad_ids = var_ad_ids, entity_statuses = var_entity_statuses, page_size = var_page_size, order = var_order, bookmark = var_bookmarkdata_file = "result.txt")
-result <- api_instance$AdsList(var_ad_account_id, campaign_ids = var_campaign_ids, ad_group_ids = var_ad_group_ids, ad_ids = var_ad_ids, entity_statuses = var_entity_statuses, page_size = var_page_size, order = var_order, bookmark = var_bookmark)
+# result <- api_instance$AdsList(var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, order = var_order, campaign_ids = var_campaign_ids, ad_group_ids = var_ad_group_ids, ad_ids = var_ad_ids, entity_statuses = var_entity_statusesdata_file = "result.txt")
+result <- api_instance$AdsList(var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, order = var_order, campaign_ids = var_campaign_ids, ad_group_ids = var_ad_group_ids, ad_ids = var_ad_ids, entity_statuses = var_entity_statuses)
 dput(result)
 ```
 
@@ -364,13 +395,13 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **campaign_ids** | list( **character** )| List of Campaign Ids to use to filter the results. | [optional] 
- **ad_group_ids** | list( **character** )| List of Ad group Ids to use to filter the results. | [optional] 
- **ad_ids** | list( **character** )| List of Ad Ids to use to filter the results. | [optional] 
- **entity_statuses** | Enum [ACTIVE, PAUSED, ARCHIVED, DRAFT, DELETED_DRAFT] | Entity status | [optional] [default to [&quot;ACTIVE&quot;,&quot;PAUSED&quot;]]
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | Enum [ASCENDING, DESCENDING] | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **campaign_ids** | list( **character** )| List of Campaign Ids to use to filter the results. | [optional] 
+ **ad_group_ids** | list( **character** )| List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. | [optional] 
+ **ad_ids** | list( **character** )| List of Ad Ids to use to filter the results. | [optional] 
+ **entity_statuses** | list( [**EntityStatus**](EntityStatus.md) )| Entity status | [optional] [default to [&quot;ACTIVE&quot;,&quot;PAUSED&quot;]]
 
 ### Return type
 
@@ -388,12 +419,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account ads parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **AdsUpdate**
-> AdArrayResponse AdsUpdate(ad_account_id, ad_update_request)
+> AdBatchWriteResponseModel AdsUpdate(ad_account_id, ad_batch_update)
 
 Update ads
 
@@ -407,14 +442,14 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_ad_update_request <- c(AdUpdateRequest$new("id_example", "ad_group_id_example", "android_deep_link_example", c("carousel_android_deep_links_example"), c("carousel_destination_urls_example"), c("carousel_ios_deep_links_example"), "click_tracking_url_example", CreativeType$new(), CustomizableCTAType$new(), "destination_url_example", DisclosureType$new(), "disclosure_url_example", GridClickType$new(), "ios_deep_link_example", "is_pin_deleted_example", "is_removable_example", "lead_form_id_example", "name_example", QuizPinData$new(c(QuizPinQuestion$new(c(QuizPinOption$new(123, "text_example")), 123, "question_text_example")), c(QuizPinResult$new("android_deep_link_example", "destination_url_example", "ios_deep_link_example", "organic_pin_id_example", 123)), QuizPinResult$new("android_deep_link_example", "destination_url_example", "ios_deep_link_example", "organic_pin_id_example", 123), "RANDOM"), EntityStatus$new(), TrackingUrls$new(c("audience_verification_example"), c("buyable_button_example"), c("click_example"), c("engagement_example"), c("impression_example")), "view_tracking_url_example", "pin_id_example")) # array[AdUpdateRequest] | List of ads to update, size limit [1, 30]
+var_ad_batch_update <- c(AdBatchUpdate$new("id_example", "ad_group_id_example", "android_deep_link_example", c("carousel_android_deep_links_example"), c("carousel_destination_urls_example"), c("carousel_ios_deep_links_example"), "click_tracking_url_example", "collection_items_destination_url_template_example", AdCollectionsHeaderType$new(), CreativeType$new(), CustomizableCTAType$new(), "destination_url_example", DisclosureType$new(), "disclosure_url_example", GridClickType$new(), "ios_deep_link_example", "is_carting_example", "is_collage_accepted_terms_example", "is_collage_single_destination_example", "is_pin_deleted_example", "is_removable_example", "lead_form_id_example", "name_example", "pin_id_example", QuizPinData$new(c(QuizPinQuestion$new(c(QuizPinOption$new(123, "text_example")), 123, "question_text_example")), c(QuizPinResult$new("android_deep_link_example", "destination_url_example", "ios_deep_link_example", "organic_pin_id_example", 123)), QuizPinResult$new("android_deep_link_example", "destination_url_example", "ios_deep_link_example", "organic_pin_id_example", 123), TieBreakerType$new()), EntityStatus$new(), TrackingUrls$new(c("audience_verification_example"), c("buyable_button_example"), c("click_example"), c("engagement_example"), c("impression_example")), "view_tracking_url_example")) # array[AdBatchUpdate] | 
 
 api_instance <- AdsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$AdsUpdate(var_ad_account_id, var_ad_update_requestdata_file = "result.txt")
-result <- api_instance$AdsUpdate(var_ad_account_id, var_ad_update_request)
+# result <- api_instance$AdsUpdate(var_ad_account_id, var_ad_batch_updatedata_file = "result.txt")
+result <- api_instance$AdsUpdate(var_ad_account_id, var_ad_batch_update)
 dput(result)
 ```
 
@@ -423,11 +458,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **ad_update_request** | list( [**AdUpdateRequest**](AdUpdateRequest.md) )| List of ads to update, size limit [1, 30] | 
+ **ad_batch_update** | list( [**AdBatchUpdate**](AdBatchUpdate.md) )|  | 
 
 ### Return type
 
-[**AdArrayResponse**](AdArrayResponse.md)
+[**AdBatchWriteResponseModel**](AdBatchWriteResponseModel.md)
 
 ### Authorization
 
@@ -441,6 +476,184 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
+
+# **CampaignAdPreviewCreate**
+> array[CampaignAdPreviewCreate200ResponseInner] CampaignAdPreviewCreate(ad_account_id, campaign_ad_preview_create)
+
+Create ad preview records for one or more ad groups
+
+Create ad preview records for one or more ad groups that can be shared. Each ad group is processed independently; individual failures do not block other previews.
+
+### Example
+```R
+library(openapi)
+
+# Create ad preview records for one or more ad groups
+#
+# prepare function argument(s)
+var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
+var_campaign_ad_preview_create <- c(CampaignAdPreviewCreate$new("ad_group_id_example")) # array[CampaignAdPreviewCreate] | 
+
+api_instance <- AdsApi$new()
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$CampaignAdPreviewCreate(var_ad_account_id, var_campaign_ad_preview_createdata_file = "result.txt")
+result <- api_instance$CampaignAdPreviewCreate(var_ad_account_id, var_campaign_ad_preview_create)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **character**| Unique identifier of an ad account. | 
+ **campaign_ad_preview_create** | list( [**CampaignAdPreviewCreate**](CampaignAdPreviewCreate.md) )|  | 
+
+### Return type
+
+[**array[CampaignAdPreviewCreate200ResponseInner]**](campaign_ad_preview_create_200_response_inner.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
+
+# **CampaignAdPreviewDelete**
+> array[CampaignAdPreviewDelete200ResponseInner] CampaignAdPreviewDelete(ad_group_ids, ad_account_id)
+
+Delete ad preview records for one or more ad groups
+
+Delete ad preview records for one or more ad groups. All ad groups are validated before deleting any records.
+
+### Example
+```R
+library(openapi)
+
+# Delete ad preview records for one or more ad groups
+#
+# prepare function argument(s)
+var_ad_group_ids <- c("inner_example") # array[character] | List of Ad group Ids to use to filter the results.
+var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
+
+api_instance <- AdsApi$new()
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$CampaignAdPreviewDelete(var_ad_group_ids, var_ad_account_iddata_file = "result.txt")
+result <- api_instance$CampaignAdPreviewDelete(var_ad_group_ids, var_ad_account_id)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_group_ids** | list( **character** )| List of Ad group Ids to use to filter the results. | 
+ **ad_account_id** | **character**| Unique identifier of an ad account. | 
+
+### Return type
+
+[**array[CampaignAdPreviewDelete200ResponseInner]**](campaign_ad_preview_delete_200_response_inner.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
+
+# **CampaignAdPreviewRead**
+> array[CampaignAdPreview] CampaignAdPreviewRead(ad_group_ids, ad_account_id)
+
+Fetch ad preview records for one or more ad groups
+
+Fetch ad preview records for one or more ad groups. Returns all active previews associated with the provided ad group IDs.
+
+### Example
+```R
+library(openapi)
+
+# Fetch ad preview records for one or more ad groups
+#
+# prepare function argument(s)
+var_ad_group_ids <- c("inner_example") # array[character] | List of Ad group Ids to use to filter the results.
+var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
+
+api_instance <- AdsApi$new()
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$CampaignAdPreviewRead(var_ad_group_ids, var_ad_account_iddata_file = "result.txt")
+result <- api_instance$CampaignAdPreviewRead(var_ad_group_ids, var_ad_account_id)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_group_ids** | list( **character** )| List of Ad group Ids to use to filter the results. | 
+ **ad_account_id** | **character**| Unique identifier of an ad account. | 
+
+### Return type
+
+[**array[CampaignAdPreview]**](CampaignAdPreview.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

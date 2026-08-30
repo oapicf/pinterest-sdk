@@ -12,7 +12,7 @@ import { CatalogsCreativeAssetsProductGroupFilters } from './catalogsCreativeAss
 
 export interface CatalogsCreativeAssetsProductGroup { 
     /**
-     * Catalog id pertaining to the creative assets product group.
+     * Catalog ID pertaining to the product group.
      */
     catalog_id: string;
     catalog_type: CatalogsCreativeAssetsProductGroup.CatalogTypeEnum;
@@ -23,11 +23,11 @@ export interface CatalogsCreativeAssetsProductGroup {
     description?: string | null;
     filters: CatalogsCreativeAssetsProductGroupFilters;
     /**
-     * ID of the creative assets product group.
+     * ID of the catalog product group.
      */
     id: string;
     /**
-     * Name of creative assets product group
+     * Name of catalog product group
      */
     name?: string;
     /**

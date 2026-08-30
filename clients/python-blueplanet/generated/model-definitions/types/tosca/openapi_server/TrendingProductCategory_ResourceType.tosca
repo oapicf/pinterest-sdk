@@ -8,7 +8,6 @@ authors     = ["F. Bar (foo@bar.baz)"]
 imports {
   Root = tosca.resourceTypes.Root
   ProductCategoriesEngagementType = openapi_server.resourceTypes.ProductCategoriesEngagementType
-  VerticalProductCategory = openapi_server.resourceTypes.VerticalProductCategory
 }
 resourceTypes {
 
@@ -32,6 +31,11 @@ resourceTypes {
           description = "Relative volume percentage"
           optional = true
         }
+        pinterest_product_category_id {
+          type =  integer
+          description = "Pinterest Product Category Id"
+          optional = true
+        }
         product_category {
           type =  string
           description = "Product Category Name"
@@ -39,7 +43,7 @@ resourceTypes {
         }
         verticals {
           type = array
-          items.type = VerticalProductCategory
+          items.type =  string
           description = "Vertical name associated with the product category"
           optional = false
         }

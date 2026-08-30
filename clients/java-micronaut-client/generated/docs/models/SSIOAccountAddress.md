@@ -2,6 +2,8 @@
 
 # SSIOAccountAddress
 
+Salesforce address information.
+
 The class is defined in **[SSIOAccountAddress.java](../../src/main/java/org/openapitools/model/SSIOAccountAddress.java)**
 
 ## Properties

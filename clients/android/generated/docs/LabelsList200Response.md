@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  |  [optional]
-**items** | [**List&lt;LabelsResponse&gt;**](LabelsResponse.md) |  | 
+**items** | [**List&lt;Label&gt;**](Label.md) |  | 
 
 
 

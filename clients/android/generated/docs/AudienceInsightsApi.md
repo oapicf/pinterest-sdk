@@ -11,11 +11,11 @@ Method | HTTP request | Description
 
 ## audienceInsightsGet
 
-> AudienceInsightsResponse audienceInsightsGet(adAccountId, audienceInsightType)
+> AudienceInsights audienceInsightsGet(adAccountId, audienceInsightType)
 
 Get audience insights
 
-Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
+Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 
 ### Example
 
@@ -27,7 +27,7 @@ AudienceInsightsApi apiInstance = new AudienceInsightsApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
 AudienceInsightType audienceInsightType = null; // AudienceInsightType | Type of audience insights.
 try {
-    AudienceInsightsResponse result = apiInstance.audienceInsightsGet(adAccountId, audienceInsightType);
+    AudienceInsights result = apiInstance.audienceInsightsGet(adAccountId, audienceInsightType);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AudienceInsightsApi#audienceInsightsGet");
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AudienceInsightsResponse**](AudienceInsightsResponse.md)
+[**AudienceInsights**](AudienceInsights.md)
 
 ### Authorization
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ## audienceInsightsScopeAndTypeGet
 
-> AudienceDefinitionResponse audienceInsightsScopeAndTypeGet(adAccountId)
+> AudienceInsightsScopeAndTypeGet200Response audienceInsightsScopeAndTypeGet(adAccountId)
 
 Get audience insights scope and type
 
@@ -74,7 +74,7 @@ Get the scope and type of available audiences, which along with a date, is an au
 AudienceInsightsApi apiInstance = new AudienceInsightsApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
 try {
-    AudienceDefinitionResponse result = apiInstance.audienceInsightsScopeAndTypeGet(adAccountId);
+    AudienceInsightsScopeAndTypeGet200Response result = apiInstance.audienceInsightsScopeAndTypeGet(adAccountId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AudienceInsightsApi#audienceInsightsScopeAndTypeGet");
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AudienceDefinitionResponse**](AudienceDefinitionResponse.md)
+[**AudienceInsightsScopeAndTypeGet200Response**](AudienceInsightsScopeAndTypeGet200Response.md)
 
 ### Authorization
 

@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class MinPriceFilter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("MIN_PRICE")
     @get:JsonProperty("MIN_PRICE", required = true) val MIN_PRICE: CatalogsProductGroupPricingCriteria
 ) {
 

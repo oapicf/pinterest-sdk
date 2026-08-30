@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountId": @"ad_account_id", @"budget": @"budget", @"endTime": @"end_time", @"_id": @"id", @"name": @"name", @"paidBudget": @"paid_budget", @"paidType": @"paid_type", @"purchaseOrderId": @"purchase_order_id", @"startTime": @"start_time", @"status": @"status", @"type": @"type", @"campaignIds": @"campaign_ids" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountId": @"ad_account_id", @"budget": @"budget", @"campaignIds": @"campaign_ids", @"endTime": @"end_time", @"_id": @"id", @"name": @"name", @"paidBudget": @"paid_budget", @"paidType": @"paid_type", @"purchaseOrderId": @"purchase_order_id", @"startTime": @"start_time", @"status": @"status", @"type": @"type" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"adAccountId", @"budget", @"endTime", @"_id", @"name", @"paidBudget", @"paidType", @"purchaseOrderId", @"startTime", @"status", @"type", ];
+  NSArray *optionalProperties = @[@"budget", @"endTime", @"name", @"paidBudget", @"paidType", @"purchaseOrderId", @"startTime", ];
   return [optionalProperties containsObject:propertyName];
 }
 

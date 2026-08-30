@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -37,6 +37,19 @@ const (
 	APP_INSTALL ConversionTagType = "APP_INSTALL"
 	WEB_SESSION ConversionTagType = "WEB_SESSION"
 	EXTERNAL_MEASUREMENT ConversionTagType = "EXTERNAL_MEASUREMENT"
+	ADD_PAYMENT_INFO ConversionTagType = "ADD_PAYMENT_INFO"
+	ADD_TO_WISHLIST ConversionTagType = "ADD_TO_WISHLIST"
+	INITIATE_CHECKOUT ConversionTagType = "INITIATE_CHECKOUT"
+	SUBSCRIBE ConversionTagType = "SUBSCRIBE"
+	VIEW_CONTENT ConversionTagType = "VIEW_CONTENT"
+	ADVERTISER_DEFINED_EVENT ConversionTagType = "ADVERTISER_DEFINED_EVENT"
+	APP_OPEN ConversionTagType = "APP_OPEN"
+	CONTACT ConversionTagType = "CONTACT"
+	SCHEDULE ConversionTagType = "SCHEDULE"
+	FIND_LOCATION ConversionTagType = "FIND_LOCATION"
+	CUSTOMIZE_PRODUCT ConversionTagType = "CUSTOMIZE_PRODUCT"
+	SUBMIT_APPLICATION ConversionTagType = "SUBMIT_APPLICATION"
+	START_TRIAL ConversionTagType = "START_TRIAL"
 )
 
 // AllowedConversionTagTypeEnumValues is all the allowed values of ConversionTagType enum
@@ -56,6 +69,19 @@ var AllowedConversionTagTypeEnumValues = []ConversionTagType{
 	"APP_INSTALL",
 	"WEB_SESSION",
 	"EXTERNAL_MEASUREMENT",
+	"ADD_PAYMENT_INFO",
+	"ADD_TO_WISHLIST",
+	"INITIATE_CHECKOUT",
+	"SUBSCRIBE",
+	"VIEW_CONTENT",
+	"ADVERTISER_DEFINED_EVENT",
+	"APP_OPEN",
+	"CONTACT",
+	"SCHEDULE",
+	"FIND_LOCATION",
+	"CUSTOMIZE_PRODUCT",
+	"SUBMIT_APPLICATION",
+	"START_TRIAL",
 }
 
 // validConversionTagTypeEnumValue provides a map of ConversionTagTypes for fast verification of use input
@@ -75,6 +101,19 @@ var validConversionTagTypeEnumValues = map[ConversionTagType]struct{}{
 	"APP_INSTALL": {},
 	"WEB_SESSION": {},
 	"EXTERNAL_MEASUREMENT": {},
+	"ADD_PAYMENT_INFO": {},
+	"ADD_TO_WISHLIST": {},
+	"INITIATE_CHECKOUT": {},
+	"SUBSCRIBE": {},
+	"VIEW_CONTENT": {},
+	"ADVERTISER_DEFINED_EVENT": {},
+	"APP_OPEN": {},
+	"CONTACT": {},
+	"SCHEDULE": {},
+	"FIND_LOCATION": {},
+	"CUSTOMIZE_PRODUCT": {},
+	"SUBMIT_APPLICATION": {},
+	"START_TRIAL": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
@@ -95,8 +134,8 @@ func NewConversionTagTypeFromValue(v string) (ConversionTagType, error) {
 }
 
 
-
-// AssertConversionTagTypeRequired checks if the required fields are not zero-ed
+// AssertConversionTagTypeRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertConversionTagTypeRequired(obj ConversionTagType) error {
 	return nil
 }

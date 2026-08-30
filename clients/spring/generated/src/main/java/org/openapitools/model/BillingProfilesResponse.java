@@ -2,216 +2,49 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.model.BillingProfileCardType;
+import org.openapitools.model.BillingProfilePaymentMethodBrand;
+import org.openapitools.model.BillingProfileStatus;
+import org.openapitools.model.BillingType;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * BillingProfilesResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BillingProfilesResponse {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String advertiserId;
 
-  /**
-   * Billing type of the advertiser
-   */
-  public enum BillingTypeEnum {
-    CREDIT_CARD("CREDIT_CARD"),
-    
-    INVOICE("INVOICE"),
-    
-    INTERNAL("INTERNAL"),
-    
-    RECURRING("RECURRING"),
-    
-    PREPAID("PREPAID");
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable BillingType billingType;
 
-    private final String value;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable BillingProfileCardType cardType;
 
-    BillingTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static BillingTypeEnum fromValue(String value) {
-      for (BillingTypeEnum b : BillingTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private @Nullable BillingTypeEnum billingType;
-
-  /**
-   * Type of the card.
-   */
-  public enum CardTypeEnum {
-    UNKNOWN("UNKNOWN"),
-    
-    VISA("VISA"),
-    
-    MASTERCARD("MASTERCARD"),
-    
-    AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
-    
-    DISCOVER("DISCOVER"),
-    
-    ELO("ELO");
-
-    private final String value;
-
-    CardTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CardTypeEnum fromValue(String value) {
-      for (CardTypeEnum b : CardTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private @Nullable CardTypeEnum cardType;
-
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
-  /**
-   * Brand of the payment method.
-   */
-  public enum PaymentMethodBrandEnum {
-    UNKNOWN("UNKNOWN"),
-    
-    VISA("VISA"),
-    
-    MASTERCARD("MASTERCARD"),
-    
-    AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
-    
-    DISCOVER("DISCOVER"),
-    
-    SOFORT("SOFORT"),
-    
-    DINERS_CLUB("DINERS_CLUB"),
-    
-    ELO("ELO"),
-    
-    CARTE_BANCAIRE("CARTE_BANCAIRE");
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable BillingProfilePaymentMethodBrand paymentMethodBrand;
 
-    private final String value;
-
-    PaymentMethodBrandEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PaymentMethodBrandEnum fromValue(String value) {
-      for (PaymentMethodBrandEnum b : PaymentMethodBrandEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private @Nullable PaymentMethodBrandEnum paymentMethodBrand;
-
-  /**
-   * Status of the billing.
-   */
-  public enum StatusEnum {
-    UNSPECIFIED("UNSPECIFIED"),
-    
-    VALID("VALID"),
-    
-    INVALID("INVALID"),
-    
-    PENDING("PENDING"),
-    
-    DELETED("DELETED"),
-    
-    SECONDARY("SECONDARY"),
-    
-    PENDING_SECONDARY("PENDING_SECONDARY");
-
-    private final String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private @Nullable StatusEnum status;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable BillingProfileStatus status;
 
   public BillingProfilesResponse advertiserId(@Nullable String advertiserId) {
     this.advertiserId = advertiserId;
@@ -229,11 +62,12 @@ public class BillingProfilesResponse {
     return advertiserId;
   }
 
+  @JsonProperty("advertiser_id")
   public void setAdvertiserId(@Nullable String advertiserId) {
     this.advertiserId = advertiserId;
   }
 
-  public BillingProfilesResponse billingType(@Nullable BillingTypeEnum billingType) {
+  public BillingProfilesResponse billingType(@Nullable BillingType billingType) {
     this.billingType = billingType;
     return this;
   }
@@ -242,18 +76,19 @@ public class BillingProfilesResponse {
    * Billing type of the advertiser
    * @return billingType
    */
-  
+  @Valid 
   @Schema(name = "billing_type", example = "CREDIT_CARD", description = "Billing type of the advertiser", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billing_type")
-  public @Nullable BillingTypeEnum getBillingType() {
+  public @Nullable BillingType getBillingType() {
     return billingType;
   }
 
-  public void setBillingType(@Nullable BillingTypeEnum billingType) {
+  @JsonProperty("billing_type")
+  public void setBillingType(@Nullable BillingType billingType) {
     this.billingType = billingType;
   }
 
-  public BillingProfilesResponse cardType(@Nullable CardTypeEnum cardType) {
+  public BillingProfilesResponse cardType(@Nullable BillingProfileCardType cardType) {
     this.cardType = cardType;
     return this;
   }
@@ -262,14 +97,15 @@ public class BillingProfilesResponse {
    * Type of the card.
    * @return cardType
    */
-  
+  @Valid 
   @Schema(name = "card_type", example = "VISA", description = "Type of the card.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("card_type")
-  public @Nullable CardTypeEnum getCardType() {
+  public @Nullable BillingProfileCardType getCardType() {
     return cardType;
   }
 
-  public void setCardType(@Nullable CardTypeEnum cardType) {
+  @JsonProperty("card_type")
+  public void setCardType(@Nullable BillingProfileCardType cardType) {
     this.cardType = cardType;
   }
 
@@ -289,11 +125,12 @@ public class BillingProfilesResponse {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public BillingProfilesResponse paymentMethodBrand(@Nullable PaymentMethodBrandEnum paymentMethodBrand) {
+  public BillingProfilesResponse paymentMethodBrand(@Nullable BillingProfilePaymentMethodBrand paymentMethodBrand) {
     this.paymentMethodBrand = paymentMethodBrand;
     return this;
   }
@@ -302,18 +139,19 @@ public class BillingProfilesResponse {
    * Brand of the payment method.
    * @return paymentMethodBrand
    */
-  
+  @Valid 
   @Schema(name = "payment_method_brand", example = "VISA", description = "Brand of the payment method.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("payment_method_brand")
-  public @Nullable PaymentMethodBrandEnum getPaymentMethodBrand() {
+  public @Nullable BillingProfilePaymentMethodBrand getPaymentMethodBrand() {
     return paymentMethodBrand;
   }
 
-  public void setPaymentMethodBrand(@Nullable PaymentMethodBrandEnum paymentMethodBrand) {
+  @JsonProperty("payment_method_brand")
+  public void setPaymentMethodBrand(@Nullable BillingProfilePaymentMethodBrand paymentMethodBrand) {
     this.paymentMethodBrand = paymentMethodBrand;
   }
 
-  public BillingProfilesResponse status(@Nullable StatusEnum status) {
+  public BillingProfilesResponse status(@Nullable BillingProfileStatus status) {
     this.status = status;
     return this;
   }
@@ -322,14 +160,15 @@ public class BillingProfilesResponse {
    * Status of the billing.
    * @return status
    */
-  
+  @Valid 
   @Schema(name = "status", example = "INVALID", description = "Status of the billing.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public @Nullable StatusEnum getStatus() {
+  public @Nullable BillingProfileStatus getStatus() {
     return status;
   }
 
-  public void setStatus(@Nullable StatusEnum status) {
+  @JsonProperty("status")
+  public void setStatus(@Nullable BillingProfileStatus status) {
     this.status = status;
   }
 
@@ -373,11 +212,8 @@ public class BillingProfilesResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

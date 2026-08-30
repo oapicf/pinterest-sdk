@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setBookmark(std::string  bookmark);
-	/*! \brief Get List of members with permissions to the asset.
+	void setBookmark(std::string bookmark);
+	/*! \brief Get 
 	 */
 	std::list<UserSingleAssetBinding> getItems();
 
-	/*! \brief Set List of members with permissions to the asset.
+	/*! \brief Set 
 	 */
-	void setItems(std::list <UserSingleAssetBinding> items);
+	void setItems(std::list<UserSingleAssetBinding> items);
 
 
     private:

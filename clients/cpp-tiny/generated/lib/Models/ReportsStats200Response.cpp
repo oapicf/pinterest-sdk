@@ -102,7 +102,7 @@ Reports_stats_200_response::getBookmark()
 }
 
 void
-Reports_stats_200_response::setBookmark(std::string  bookmark)
+Reports_stats_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Reports_stats_200_response::getItems()
 }
 
 void
-Reports_stats_200_response::setItems(std::list <CatalogsReportStats> items)
+Reports_stats_200_response::setItems(std::list<CatalogsReportStats> items)
 {
 	this->items = items;
 }

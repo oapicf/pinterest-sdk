@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,14 +16,15 @@ package openapi
 
 type LabelError struct {
 
-	Data Label `json:"data,omitempty"`
+	Data LabelErrorData `json:"data,omitempty"`
 
 	ErrorMessages []string `json:"error_messages,omitempty"`
 }
 
-// AssertLabelErrorRequired checks if the required fields are not zero-ed
+// AssertLabelErrorRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertLabelErrorRequired(obj LabelError) error {
-	if err := AssertLabelRequired(obj.Data); err != nil {
+	if err := AssertLabelErrorDataRequired(obj.Data); err != nil {
 		return err
 	}
 	return nil
@@ -31,7 +32,7 @@ func AssertLabelErrorRequired(obj LabelError) error {
 
 // AssertLabelErrorConstraints checks if the values respects the defined constraints
 func AssertLabelErrorConstraints(obj LabelError) error {
-	if err := AssertLabelConstraints(obj.Data); err != nil {
+	if err := AssertLabelErrorDataConstraints(obj.Data); err != nil {
 		return err
 	}
 	return nil

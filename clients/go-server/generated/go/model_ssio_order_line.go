@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,21 +14,22 @@ package openapi
 
 
 
+// SsioOrderLine - A Salesforce SSIO order line.
 type SsioOrderLine struct {
 
 	// The SFDC id for the terms
 	AcceptedTermsId *string `json:"accepted_terms_id,omitempty"`
 
-	// The UTC timestamp (to the nearest sec) of when terms were accepted
-	AcceptedTermsTime *string `json:"accepted_terms_time,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})T(\\\\d{2}):(\\\\d{2}):(\\\\d{2}).(\\\\d{3})Z$"`
+	// The UTC timestamp (to the nearest second) when terms were accepted.
+	AcceptedTermsTime *string `json:"accepted_terms_time,omitempty" validate:"regexp=^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$"`
 
-	// Ads manager OrderLineId
+	// Ads manager order line id
 	AdsManagerOrderLineId *string `json:"ads_manager_order_line_id,omitempty"`
 
 	// Agency link
 	AgencyLink *string `json:"agency_link,omitempty"`
 
-	// Bill To Company name
+	// Bill-to company name
 	BillToCompanyName *string `json:"bill_to_company_name,omitempty"`
 
 	// Billing contact email
@@ -40,7 +41,7 @@ type SsioOrderLine struct {
 	// Billing contact last name
 	BillingContactLastname *string `json:"billing_contact_lastname,omitempty"`
 
-	// If Budget order line, the budget amount.
+	// If budget order line, the budget amount.
 	BudgetAmount *float32 `json:"budget_amount,omitempty"`
 
 	CurrencyInfo Currency `json:"currency_info,omitempty"`
@@ -48,19 +49,19 @@ type SsioOrderLine struct {
 	// End date of the order line.
 	EndDate *string `json:"end_date,omitempty"`
 
-	// If Ongoing (perpetual) order line, the estimated monthly spend
+	// If ongoing (perpetual) order line, the estimated monthly spend.
 	EstimatedMonthlySpend *float32 `json:"estimated_monthly_spend,omitempty"`
 
 	// Last modified date.
-	LastModifiedDateTime *string `json:"last_modified_date_time,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})T(\\\\d{2}):(\\\\d{2}):(\\\\d{2}).(\\\\d{3})Z$"`
+	LastModifiedDateTime *string `json:"last_modified_date_time,omitempty" validate:"regexp=^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$"`
 
 	// Billing media email
 	MediaContactEmail *string `json:"media_contact_email,omitempty"`
 
-	// Billing contact first name
+	// Billing media contact first name
 	MediaContactFirstname *string `json:"media_contact_firstname,omitempty"`
 
-	// Billing contact first name
+	// Billing media contact last name
 	MediaContactLastname *string `json:"media_contact_lastname,omitempty"`
 
 	// The order name
@@ -72,17 +73,18 @@ type SsioOrderLine struct {
 	// The Pinterest marketing partner name
 	PmpName *string `json:"pmp_name,omitempty"`
 
-	// The po number
+	// The PO number
 	PoNumber *string `json:"po_number,omitempty"`
 
-	// OrderLineId in SFDC
+	// Order line id in SFDC
 	SalesforceOrderLineId *string `json:"salesforce_order_line_id,omitempty"`
 
 	// Start date of the order line.
 	StartDate *string `json:"start_date,omitempty"`
 }
 
-// AssertSsioOrderLineRequired checks if the required fields are not zero-ed
+// AssertSsioOrderLineRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertSsioOrderLineRequired(obj SsioOrderLine) error {
 	return nil
 }

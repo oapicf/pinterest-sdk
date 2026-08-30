@@ -1,0 +1,10 @@
+# AgeBucketMultipliers
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AGE_BUCKET** | [**TargetingSpecAgeBucket**](TargetingSpecAgeBucket.md) | Age bucket identifier. | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

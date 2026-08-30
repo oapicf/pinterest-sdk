@@ -1,8 +1,13 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CatalogsProductGroupFiltersRequest
+import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -23,20 +28,30 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CatalogsProductGroupUpdateRequest(
 
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @param:JsonProperty("description")
     @get:JsonProperty("description") val description: kotlin.String? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("filters")
     @get:JsonProperty("filters") val filters: CatalogsProductGroupFiltersRequest? = null,
 
-    @Schema(example = "null", description = "boolean indicator of whether the product group is being featured or not")
+    @Schema(description = "boolean indicator of whether the product group is being featured or not")
     @Deprecated(message = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("is_featured")
     @get:JsonProperty("is_featured") val isFeatured: kotlin.Boolean? = null,
 
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("name")
     @get:JsonProperty("name") val name: kotlin.String? = null
-) {
+) : BulkUpsertRequestUpdateCatalogProductGroupsItems, CatalogsProductGroupsUpdateRequestSchema {
 
 }
 

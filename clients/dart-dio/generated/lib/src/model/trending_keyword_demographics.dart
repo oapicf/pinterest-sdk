@@ -3,14 +3,14 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/trending_keyword_demographics_gender_distribution.dart';
-import 'package:openapi/src/model/trending_keyword_demographics_age_distribution.dart';
+import 'package:openapi/src/model/trends_gender_distribution.dart';
+import 'package:openapi/src/model/trends_age_distribution.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'trending_keyword_demographics.g.dart';
 
-/// A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. <br /> For each dimension: <br />   - Key: The category (e.g., \"female\", \"18-24\"). <br />   - Value: The proportion of search volume (e.g., 0.12 for 12%). <br />     Values less than 0.05 are set to 0.04 for privacy. <br />     The sum for all categories in a dimension will approximately equal 1. <br />     Only applicable when `include_demographics` query parameter is set to `true`.
+/// A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. For each dimension: Key: The category (e.g., \"female\", \"18-24\"). Value: The proportion of search volume (e.g., 0.12 for 12%). Values less than 0.05 are set to 0.04 for privacy. The sum for all categories in a dimension will approximately equal 1. Only applicable when `include_demographics` query parameter is set to `true`.
 ///
 /// Properties:
 /// * [ageDistribution] 
@@ -18,10 +18,10 @@ part 'trending_keyword_demographics.g.dart';
 @BuiltValue()
 abstract class TrendingKeywordDemographics implements Built<TrendingKeywordDemographics, TrendingKeywordDemographicsBuilder> {
   @BuiltValueField(wireName: r'age_distribution')
-  TrendingKeywordDemographicsAgeDistribution? get ageDistribution;
+  TrendsAgeDistribution? get ageDistribution;
 
   @BuiltValueField(wireName: r'gender_distribution')
-  TrendingKeywordDemographicsGenderDistribution? get genderDistribution;
+  TrendsGenderDistribution? get genderDistribution;
 
   TrendingKeywordDemographics._();
 
@@ -50,14 +50,14 @@ class _$TrendingKeywordDemographicsSerializer implements PrimitiveSerializer<Tre
       yield r'age_distribution';
       yield serializers.serialize(
         object.ageDistribution,
-        specifiedType: const FullType.nullable(TrendingKeywordDemographicsAgeDistribution),
+        specifiedType: const FullType.nullable(TrendsAgeDistribution),
       );
     }
     if (object.genderDistribution != null) {
       yield r'gender_distribution';
       yield serializers.serialize(
         object.genderDistribution,
-        specifiedType: const FullType.nullable(TrendingKeywordDemographicsGenderDistribution),
+        specifiedType: const FullType.nullable(TrendsGenderDistribution),
       );
     }
   }
@@ -86,16 +86,16 @@ class _$TrendingKeywordDemographicsSerializer implements PrimitiveSerializer<Tre
         case r'age_distribution':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(TrendingKeywordDemographicsAgeDistribution),
-          ) as TrendingKeywordDemographicsAgeDistribution?;
+            specifiedType: const FullType.nullable(TrendsAgeDistribution),
+          ) as TrendsAgeDistribution?;
           if (valueDes == null) continue;
           result.ageDistribution = valueDes;
           break;
         case r'gender_distribution':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(TrendingKeywordDemographicsGenderDistribution),
-          ) as TrendingKeywordDemographicsGenderDistribution?;
+            specifiedType: const FullType.nullable(TrendsGenderDistribution),
+          ) as TrendsGenderDistribution?;
           if (valueDes == null) continue;
           result.genderDistribution = valueDes;
           break;

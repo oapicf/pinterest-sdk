@@ -11,7 +11,7 @@ import 'package:openapi/src/model/catalogs_upsert_creative_assets_item.dart';
 import 'package:openapi/src/model/catalogs_create_creative_assets_item.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:one_of/any_of.dart';
+import 'package:one_of/one_of.dart';
 
 part 'catalogs_creative_assets_batch_item.g.dart';
 
@@ -23,18 +23,62 @@ part 'catalogs_creative_assets_batch_item.g.dart';
 /// * [operation] 
 @BuiltValue()
 abstract class CatalogsCreativeAssetsBatchItem implements Built<CatalogsCreativeAssetsBatchItem, CatalogsCreativeAssetsBatchItemBuilder> {
-  /// Any Of [CatalogsCreateCreativeAssetsItem], [CatalogsDeleteCreativeAssetsItem], [CatalogsUpdateCreativeAssetsItem], [CatalogsUpsertCreativeAssetsItem]
-  AnyOf get anyOf;
+  /// One Of [CatalogsCreateCreativeAssetsItem], [CatalogsDeleteCreativeAssetsItem], [CatalogsUpdateCreativeAssetsItem], [CatalogsUpsertCreativeAssetsItem]
+  OneOf get oneOf;
+
+  static const String discriminatorFieldName = r'operation';
+
+  static const Map<String, Type> discriminatorMapping = {
+    r'CREATE': CatalogsCreateCreativeAssetsItem,
+    r'DELETE': CatalogsDeleteCreativeAssetsItem,
+    r'UPDATE': CatalogsUpdateCreativeAssetsItem,
+    r'UPSERT': CatalogsUpsertCreativeAssetsItem,
+  };
 
   CatalogsCreativeAssetsBatchItem._();
 
   factory CatalogsCreativeAssetsBatchItem([void updates(CatalogsCreativeAssetsBatchItemBuilder b)]) = _$CatalogsCreativeAssetsBatchItem;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CatalogsCreativeAssetsBatchItemBuilder b) => b..operation=b.discriminatorValue;
+  static void _defaults(CatalogsCreativeAssetsBatchItemBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<CatalogsCreativeAssetsBatchItem> get serializer => _$CatalogsCreativeAssetsBatchItemSerializer();
+}
+
+extension CatalogsCreativeAssetsBatchItemDiscriminatorExt on CatalogsCreativeAssetsBatchItem {
+    String? get discriminatorValue {
+        if (this is CatalogsCreateCreativeAssetsItem) {
+            return r'CREATE';
+        }
+        if (this is CatalogsDeleteCreativeAssetsItem) {
+            return r'DELETE';
+        }
+        if (this is CatalogsUpdateCreativeAssetsItem) {
+            return r'UPDATE';
+        }
+        if (this is CatalogsUpsertCreativeAssetsItem) {
+            return r'UPSERT';
+        }
+        return null;
+    }
+}
+extension CatalogsCreativeAssetsBatchItemBuilderDiscriminatorExt on CatalogsCreativeAssetsBatchItemBuilder {
+    String? get discriminatorValue {
+        if (this is CatalogsCreateCreativeAssetsItemBuilder) {
+            return r'CREATE';
+        }
+        if (this is CatalogsDeleteCreativeAssetsItemBuilder) {
+            return r'DELETE';
+        }
+        if (this is CatalogsUpdateCreativeAssetsItemBuilder) {
+            return r'UPDATE';
+        }
+        if (this is CatalogsUpsertCreativeAssetsItemBuilder) {
+            return r'UPSERT';
+        }
+        return null;
+    }
 }
 
 class _$CatalogsCreativeAssetsBatchItemSerializer implements PrimitiveSerializer<CatalogsCreativeAssetsBatchItem> {
@@ -57,8 +101,8 @@ class _$CatalogsCreativeAssetsBatchItemSerializer implements PrimitiveSerializer
     CatalogsCreativeAssetsBatchItem object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final anyOf = object.anyOf;
-    return serializers.serialize(anyOf, specifiedType: FullType(AnyOf, anyOf.valueTypes.map((type) => FullType(type)).toList()))!;
+    final oneOf = object.oneOf;
+    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
   }
 
   @override
@@ -68,7 +112,47 @@ class _$CatalogsCreativeAssetsBatchItemSerializer implements PrimitiveSerializer
     FullType specifiedType = FullType.unspecified,
   }) {
     final result = CatalogsCreativeAssetsBatchItemBuilder();
-    Object? anyOfDataSrc;
+    Object? oneOfDataSrc;
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final discIndex = serializedList.indexOf(CatalogsCreativeAssetsBatchItem.discriminatorFieldName) + 1;
+    final discValue = serializers.deserialize(serializedList[discIndex], specifiedType: FullType(String)) as String;
+    oneOfDataSrc = serialized;
+    final oneOfTypes = [CatalogsCreateCreativeAssetsItem, CatalogsDeleteCreativeAssetsItem, CatalogsUpdateCreativeAssetsItem, CatalogsUpsertCreativeAssetsItem, ];
+    Object oneOfResult;
+    Type oneOfType;
+    switch (discValue) {
+      case r'CREATE':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(CatalogsCreateCreativeAssetsItem),
+        ) as CatalogsCreateCreativeAssetsItem;
+        oneOfType = CatalogsCreateCreativeAssetsItem;
+        break;
+      case r'DELETE':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(CatalogsDeleteCreativeAssetsItem),
+        ) as CatalogsDeleteCreativeAssetsItem;
+        oneOfType = CatalogsDeleteCreativeAssetsItem;
+        break;
+      case r'UPDATE':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(CatalogsUpdateCreativeAssetsItem),
+        ) as CatalogsUpdateCreativeAssetsItem;
+        oneOfType = CatalogsUpdateCreativeAssetsItem;
+        break;
+      case r'UPSERT':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(CatalogsUpsertCreativeAssetsItem),
+        ) as CatalogsUpsertCreativeAssetsItem;
+        oneOfType = CatalogsUpsertCreativeAssetsItem;
+        break;
+      default:
+        throw UnsupportedError("Couldn't deserialize oneOf for the discriminator value: ${discValue}");
+    }
+    result.oneOf = OneOfDynamic(typeIndex: oneOfTypes.indexOf(oneOfType), types: oneOfTypes, value: oneOfResult);
     return result.build();
   }
 }

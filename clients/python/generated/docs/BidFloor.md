@@ -1,12 +1,13 @@
 # BidFloor
 
+Bid floor request and response model.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bid_floors** | **List[int]** | A list of bid floors in micro currency. For example, [100000, 200000] | [optional] 
-**type** | **str** | Always the string &#39;bidfloor&#39; | [optional] [default to 'bidfloor']
+**bid_floors** | **List[int]** | A list of bid floors in micro currency. For example, [100000, 200000] | [optional] [readonly] 
+**type** | **str** | Always the string &#39;bidfloor&#39;. | [optional] [readonly] [default to 'bidfloor']
 
 ## Example
 

@@ -4,9 +4,9 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.prokarma.pkmst.model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
 import com.prokarma.pkmst.model.CatalogsFeedCredentials;
 import com.prokarma.pkmst.model.CatalogsFeedProcessingSchedule;
-import com.prokarma.pkmst.model.CatalogsFeedsCreateRequestDefaultLocale;
 import com.prokarma.pkmst.model.CatalogsFormat;
 import com.prokarma.pkmst.model.CatalogsStatus;
 import com.prokarma.pkmst.model.Country;
@@ -25,7 +25,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedsCreateRequest   {
   @JsonProperty("credentials")
   private CatalogsFeedCredentials credentials;
@@ -40,7 +40,7 @@ public class CatalogsFeedsCreateRequest   {
   private NullableCurrency defaultCurrency;
 
   @JsonProperty("default_locale")
-  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  private CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale;
 
   @JsonProperty("format")
   private CatalogsFormat format;
@@ -55,7 +55,7 @@ public class CatalogsFeedsCreateRequest   {
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @JsonProperty("status")
-  private CatalogsStatus status = "ACTIVE";
+  private CatalogsStatus status;
 
   public CatalogsFeedsCreateRequest credentials(CatalogsFeedCredentials credentials) {
     this.credentials = credentials;
@@ -129,7 +129,7 @@ public class CatalogsFeedsCreateRequest   {
     this.defaultCurrency = defaultCurrency;
   }
 
-  public CatalogsFeedsCreateRequest defaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public CatalogsFeedsCreateRequest defaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
     return this;
   }
@@ -139,11 +139,11 @@ public class CatalogsFeedsCreateRequest   {
    * @return defaultLocale
    */
   @ApiModelProperty(value = "")
-  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+  public CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
   }
 
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public void setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
 
@@ -288,10 +288,7 @@ public class CatalogsFeedsCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

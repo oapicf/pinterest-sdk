@@ -105,8 +105,9 @@ class _$TemplateBasedReportSerializer implements PrimitiveSerializer<TemplateBas
         case r'message':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.message = valueDes;
           break;
         case r'report_status':
@@ -126,8 +127,9 @@ class _$TemplateBasedReportSerializer implements PrimitiveSerializer<TemplateBas
         case r'token':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.token = valueDes;
           break;
         default:

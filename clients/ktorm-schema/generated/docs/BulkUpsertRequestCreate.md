@@ -8,10 +8,11 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **adGroups** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdGroupCreateRequest&gt;**](AdGroupCreateRequest.md) |  |  [optional]
 **ads** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdCreateRequest&gt;**](AdCreateRequest.md) |  |  [optional]
 **campaigns** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;CampaignCreateRequest&gt;**](CampaignCreateRequest.md) |  |  [optional]
-**catalogProductGroups** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;MultipleProductGroupsInner&gt;**](MultipleProductGroupsInner.md) |  |  [optional]
+**catalogProductGroups** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;BulkUpsertRequestCreateCatalogProductGroupsItems&gt;**](BulkUpsertRequestCreateCatalogProductGroupsItems.md) |  |  [optional]
 **keywords** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;KeywordsRequest&gt;**](KeywordsRequest.md) |  |  [optional]
-**labels** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;LabelCreateRequest&gt;**](LabelCreateRequest.md) |  |  [optional]
+**labels** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;LabelBulkCreateRequest&gt;**](LabelBulkCreateRequest.md) |  |  [optional]
 **productGroups** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ProductGroupPromotionCreateRequest&gt;**](ProductGroupPromotionCreateRequest.md) |  |  [optional]
+**schedules** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ScheduleCreateRequest&gt;**](ScheduleCreateRequest.md) |  |  [optional]
 
 
 # **Table `BulkUpsertRequestCreateAdGroupCreateRequest`**
@@ -47,14 +48,14 @@ campaignCreateRequest | campaignCreateRequest | long | | kotlin.Long | Foreign K
 
 
 
-# **Table `BulkUpsertRequestCreateMultipleProductGroupsInner`**
-(mapped from: BulkUpsertRequestCreateMultipleProductGroupsInner)
+# **Table `BulkUpsertRequestCreateBulkUpsertRequestCreateCatalogProductGroupsItems`**
+(mapped from: BulkUpsertRequestCreateBulkUpsertRequestCreateCatalogProductGroupsItems)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 bulkUpsertRequestCreate | bulkUpsertRequestCreate | long | | kotlin.Long | Primary Key | *one*
-multipleProductGroupsInner | multipleProductGroupsInner | long | | kotlin.Long | Foreign Key | *many*
+bulkUpsertRequestCreateCatalogProductGroupsItems | bulkUpsertRequestCreateCatalogProductGroupsItems | long | | kotlin.Long | Foreign Key | *many*
 
 
 
@@ -69,14 +70,14 @@ keywordsRequest | keywordsRequest | long | | kotlin.Long | Foreign Key | *many*
 
 
 
-# **Table `BulkUpsertRequestCreateLabelCreateRequest`**
-(mapped from: BulkUpsertRequestCreateLabelCreateRequest)
+# **Table `BulkUpsertRequestCreateLabelBulkCreateRequest`**
+(mapped from: BulkUpsertRequestCreateLabelBulkCreateRequest)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 bulkUpsertRequestCreate | bulkUpsertRequestCreate | long | | kotlin.Long | Primary Key | *one*
-labelCreateRequest | labelCreateRequest | long | | kotlin.Long | Foreign Key | *many*
+labelBulkCreateRequest | labelBulkCreateRequest | long | | kotlin.Long | Foreign Key | *many*
 
 
 
@@ -88,6 +89,17 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 bulkUpsertRequestCreate | bulkUpsertRequestCreate | long | | kotlin.Long | Primary Key | *one*
 productGroupPromotionCreateRequest | productGroupPromotionCreateRequest | long | | kotlin.Long | Foreign Key | *many*
+
+
+
+# **Table `BulkUpsertRequestCreateScheduleCreateRequest`**
+(mapped from: BulkUpsertRequestCreateScheduleCreateRequest)
+
+## Properties
+Name | Mapping | SQL Type | Default | Type | Description | Notes
+---- | ------- | -------- | ------- | ---- | ----------- | -----
+bulkUpsertRequestCreate | bulkUpsertRequestCreate | long | | kotlin.Long | Primary Key | *one*
+scheduleCreateRequest | scheduleCreateRequest | long | | kotlin.Long | Foreign Key | *many*
 
 
 

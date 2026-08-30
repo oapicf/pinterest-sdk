@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const CustomerListStatus = require('../models/CustomerListStatus');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -16,48 +17,48 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}exceptions`,
-                label: `Customer list errors - [${labelPrefix}exceptions]`,
+                label: `Customer list errors. - [${labelPrefix}exceptions]`,
                 dict: true,
             },
             {
                 key: `${keyPrefix}id`,
                 label: `Customer list ID. - [${labelPrefix}id]`,
+                required: true,
                 type: 'string',
+            },
+            {
+                key: `${keyPrefix}is_nca`,
+                label: `Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation. - [${labelPrefix}is_nca]`,
+                type: 'boolean',
             },
             {
                 key: `${keyPrefix}name`,
                 label: `Customer list name. - [${labelPrefix}name]`,
+                required: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}num_batches`,
-                label: `Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists. - [${labelPrefix}num_batches]`,
+                label: `Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists. - [${labelPrefix}num_batches]`,
                 type: 'number',
             },
             {
                 key: `${keyPrefix}num_removed_user_records`,
-                label: `Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list. - [${labelPrefix}num_removed_user_records]`,
+                label: `Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list. - [${labelPrefix}num_removed_user_records]`,
                 type: 'number',
             },
             {
                 key: `${keyPrefix}num_uploaded_user_records`,
-                label: `Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list. - [${labelPrefix}num_uploaded_user_records]`,
+                label: `Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list. - [${labelPrefix}num_uploaded_user_records]`,
                 type: 'number',
             },
             {
                 key: `${keyPrefix}status`,
-                label: `Customer list status. TOO_SMALL - the list has less than 100 Pinterest users. - [${labelPrefix}status]`,
-                type: 'string',
-                choices: [
-                    'PROCESSING',
-                    'READY',
-                    'TOO_SMALL',
-                    'UPLOADING',
-                ],
+                ...CustomerListStatus.fields(`${keyPrefix}status`, isInput),
             },
             {
                 key: `${keyPrefix}type`,
-                label: `Always \"customerlist\". - [${labelPrefix}type]`,
+                label: `Always `customerlist`. - [${labelPrefix}type]`,
                 type: 'string',
             },
             {
@@ -74,6 +75,7 @@ module.exports = {
             'created_time': bundle.inputData?.[`${keyPrefix}created_time`],
             'exceptions': bundle.inputData?.[`${keyPrefix}exceptions`],
             'id': bundle.inputData?.[`${keyPrefix}id`],
+            'is_nca': bundle.inputData?.[`${keyPrefix}is_nca`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'num_batches': bundle.inputData?.[`${keyPrefix}num_batches`],
             'num_removed_user_records': bundle.inputData?.[`${keyPrefix}num_removed_user_records`],

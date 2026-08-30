@@ -8,7 +8,6 @@ import com.prokarma.pkmst.model.CatalogsFeedCredentials;
 import com.prokarma.pkmst.model.CatalogsFeedProcessingSchedule;
 import com.prokarma.pkmst.model.CatalogsFormat;
 import com.prokarma.pkmst.model.CatalogsStatus;
-import com.prokarma.pkmst.model.CatalogsType;
 import com.prokarma.pkmst.model.NullableCurrency;
 import com.prokarma.pkmst.model.ProductAvailabilityType;
 import io.swagger.annotations.ApiModel;
@@ -24,10 +23,39 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Request object for updating a feed.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailFeedsUpdateRequest   {
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    RETAIL("RETAIL");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String text) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("credentials")
   private CatalogsFeedCredentials credentials;
@@ -53,7 +81,7 @@ public class CatalogsRetailFeedsUpdateRequest   {
   @JsonProperty("status")
   private CatalogsStatus status;
 
-  public CatalogsRetailFeedsUpdateRequest catalogType(CatalogsType catalogType) {
+  public CatalogsRetailFeedsUpdateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -63,11 +91,11 @@ public class CatalogsRetailFeedsUpdateRequest   {
    * @return catalogType
    */
   @ApiModelProperty(required = true, value = "")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -264,10 +292,7 @@ public class CatalogsRetailFeedsUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

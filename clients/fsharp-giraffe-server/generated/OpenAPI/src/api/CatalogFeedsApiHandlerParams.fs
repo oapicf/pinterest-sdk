@@ -1,14 +1,14 @@
 namespace OpenAPI
 
 open OpenAPI.Model.CatalogsFeed
+open OpenAPI.Model.CatalogsFeedCreateRequestSchema
 open OpenAPI.Model.CatalogsFeedIngestion
+open OpenAPI.Model.CatalogsFeedUpdateRequestSchema
 open OpenAPI.Model.CatalogsItemValidationIssue
-open OpenAPI.Model.Error
 open OpenAPI.Model.FeedProcessingResultsList200Response
-open OpenAPI.Model.FeedsCreateRequest
 open OpenAPI.Model.FeedsList200Response
-open OpenAPI.Model.FeedsUpdateRequest
 open OpenAPI.Model.ItemsIssuesList200Response
+open OpenAPI.Model.PinterestLibError
 open System.Collections.Generic
 open System
 
@@ -24,13 +24,13 @@ module CatalogFeedsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type FeedProcessingResultsListQueryParams = {
+      adAccountId : string option;
+
+
       bookmark : string option;
 
 
       pageSize : int option;
-
-
-      adAccountId : string option;
 
     }
     //#endregion
@@ -42,25 +42,35 @@ module CatalogFeedsApiHandlerParams =
     }
 
     type FeedProcessingResultsListStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type FeedProcessingResultsListStatusCode401Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type FeedProcessingResultsListStatusCode403Response = {
+      content:PinterestLibError;
       
     }
 
     type FeedProcessingResultsListStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type FeedProcessingResultsListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type FeedProcessingResultsListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type FeedProcessingResultsListResult = FeedProcessingResultsListStatusCode200 of FeedProcessingResultsListStatusCode200Response|FeedProcessingResultsListStatusCode400 of FeedProcessingResultsListStatusCode400Response|FeedProcessingResultsListStatusCode401 of FeedProcessingResultsListStatusCode401Response|FeedProcessingResultsListStatusCode404 of FeedProcessingResultsListStatusCode404Response|FeedProcessingResultsListDefaultStatusCode of FeedProcessingResultsListDefaultStatusCodeResponse
+    type FeedProcessingResultsListResult = FeedProcessingResultsListStatusCode200 of FeedProcessingResultsListStatusCode200Response|FeedProcessingResultsListStatusCode400 of FeedProcessingResultsListStatusCode400Response|FeedProcessingResultsListStatusCode401 of FeedProcessingResultsListStatusCode401Response|FeedProcessingResultsListStatusCode403 of FeedProcessingResultsListStatusCode403Response|FeedProcessingResultsListStatusCode404 of FeedProcessingResultsListStatusCode404Response|FeedProcessingResultsListStatusCode429 of FeedProcessingResultsListStatusCode429Response|FeedProcessingResultsListDefaultStatusCode of FeedProcessingResultsListDefaultStatusCodeResponse
 
     type FeedProcessingResultsListArgs = {
       pathParams:FeedProcessingResultsListPathParams;
@@ -77,9 +87,14 @@ module CatalogFeedsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type FeedsCreateBodyParams = FeedsCreateRequest
+    type FeedsCreateBodyParams = CatalogsFeedCreateRequestSchema
     //#endregion
 
+
+    type FeedsCreateStatusCode200Response = {
+      content:CatalogsFeed;
+      
+    }
 
     type FeedsCreateStatusCode201Response = {
       content:CatalogsFeed;
@@ -87,40 +102,35 @@ module CatalogFeedsApiHandlerParams =
     }
 
     type FeedsCreateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type FeedsCreateStatusCode401Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type FeedsCreateStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
-    type FeedsCreateStatusCode409Response = {
-      content:Error;
+    type FeedsCreateStatusCode404Response = {
+      content:PinterestLibError;
       
     }
 
-    type FeedsCreateStatusCode422Response = {
-      content:Error;
-      
-    }
-
-    type FeedsCreateStatusCode501Response = {
-      content:Error;
+    type FeedsCreateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type FeedsCreateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type FeedsCreateResult = FeedsCreateStatusCode201 of FeedsCreateStatusCode201Response|FeedsCreateStatusCode400 of FeedsCreateStatusCode400Response|FeedsCreateStatusCode401 of FeedsCreateStatusCode401Response|FeedsCreateStatusCode403 of FeedsCreateStatusCode403Response|FeedsCreateStatusCode409 of FeedsCreateStatusCode409Response|FeedsCreateStatusCode422 of FeedsCreateStatusCode422Response|FeedsCreateStatusCode501 of FeedsCreateStatusCode501Response|FeedsCreateDefaultStatusCode of FeedsCreateDefaultStatusCodeResponse
+    type FeedsCreateResult = FeedsCreateStatusCode200 of FeedsCreateStatusCode200Response|FeedsCreateStatusCode201 of FeedsCreateStatusCode201Response|FeedsCreateStatusCode400 of FeedsCreateStatusCode400Response|FeedsCreateStatusCode401 of FeedsCreateStatusCode401Response|FeedsCreateStatusCode403 of FeedsCreateStatusCode403Response|FeedsCreateStatusCode404 of FeedsCreateStatusCode404Response|FeedsCreateStatusCode429 of FeedsCreateStatusCode429Response|FeedsCreateDefaultStatusCode of FeedsCreateDefaultStatusCodeResponse
 
     type FeedsCreateArgs = {
       queryParams:Result<FeedsCreateQueryParams,string>;
@@ -142,36 +152,46 @@ module CatalogFeedsApiHandlerParams =
     //#endregion
 
 
+    type FeedsDeleteStatusCode200Response = {
+      content:CatalogsFeed;
+      
+    }
+
     type FeedsDeleteStatusCode204Response = {
       content:string;
       
     }
 
     type FeedsDeleteStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type FeedsDeleteStatusCode401Response = {
+      content:PinterestLibError;
       
     }
 
     type FeedsDeleteStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type FeedsDeleteStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
-    type FeedsDeleteStatusCode409Response = {
-      content:Error;
+    type FeedsDeleteStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type FeedsDeleteDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type FeedsDeleteResult = FeedsDeleteStatusCode204 of FeedsDeleteStatusCode204Response|FeedsDeleteStatusCode400 of FeedsDeleteStatusCode400Response|FeedsDeleteStatusCode403 of FeedsDeleteStatusCode403Response|FeedsDeleteStatusCode404 of FeedsDeleteStatusCode404Response|FeedsDeleteStatusCode409 of FeedsDeleteStatusCode409Response|FeedsDeleteDefaultStatusCode of FeedsDeleteDefaultStatusCodeResponse
+    type FeedsDeleteResult = FeedsDeleteStatusCode200 of FeedsDeleteStatusCode200Response|FeedsDeleteStatusCode204 of FeedsDeleteStatusCode204Response|FeedsDeleteStatusCode400 of FeedsDeleteStatusCode400Response|FeedsDeleteStatusCode401 of FeedsDeleteStatusCode401Response|FeedsDeleteStatusCode403 of FeedsDeleteStatusCode403Response|FeedsDeleteStatusCode404 of FeedsDeleteStatusCode404Response|FeedsDeleteStatusCode429 of FeedsDeleteStatusCode429Response|FeedsDeleteDefaultStatusCode of FeedsDeleteDefaultStatusCodeResponse
 
     type FeedsDeleteArgs = {
       pathParams:FeedsDeletePathParams;
@@ -199,25 +219,35 @@ module CatalogFeedsApiHandlerParams =
     }
 
     type FeedsGetStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type FeedsGetStatusCode401Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type FeedsGetStatusCode403Response = {
+      content:PinterestLibError;
       
     }
 
     type FeedsGetStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type FeedsGetStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type FeedsGetDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type FeedsGetResult = FeedsGetStatusCode200 of FeedsGetStatusCode200Response|FeedsGetStatusCode400 of FeedsGetStatusCode400Response|FeedsGetStatusCode401 of FeedsGetStatusCode401Response|FeedsGetStatusCode404 of FeedsGetStatusCode404Response|FeedsGetDefaultStatusCode of FeedsGetDefaultStatusCodeResponse
+    type FeedsGetResult = FeedsGetStatusCode200 of FeedsGetStatusCode200Response|FeedsGetStatusCode400 of FeedsGetStatusCode400Response|FeedsGetStatusCode401 of FeedsGetStatusCode401Response|FeedsGetStatusCode403 of FeedsGetStatusCode403Response|FeedsGetStatusCode404 of FeedsGetStatusCode404Response|FeedsGetStatusCode429 of FeedsGetStatusCode429Response|FeedsGetDefaultStatusCode of FeedsGetDefaultStatusCodeResponse
 
     type FeedsGetArgs = {
       pathParams:FeedsGetPathParams;
@@ -245,25 +275,35 @@ module CatalogFeedsApiHandlerParams =
     }
 
     type FeedsIngestStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type FeedsIngestStatusCode401Response = {
+      content:PinterestLibError;
       
     }
 
     type FeedsIngestStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type FeedsIngestStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type FeedsIngestStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type FeedsIngestDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type FeedsIngestResult = FeedsIngestStatusCode200 of FeedsIngestStatusCode200Response|FeedsIngestStatusCode400 of FeedsIngestStatusCode400Response|FeedsIngestStatusCode403 of FeedsIngestStatusCode403Response|FeedsIngestStatusCode404 of FeedsIngestStatusCode404Response|FeedsIngestDefaultStatusCode of FeedsIngestDefaultStatusCodeResponse
+    type FeedsIngestResult = FeedsIngestStatusCode200 of FeedsIngestStatusCode200Response|FeedsIngestStatusCode400 of FeedsIngestStatusCode400Response|FeedsIngestStatusCode401 of FeedsIngestStatusCode401Response|FeedsIngestStatusCode403 of FeedsIngestStatusCode403Response|FeedsIngestStatusCode404 of FeedsIngestStatusCode404Response|FeedsIngestStatusCode429 of FeedsIngestStatusCode429Response|FeedsIngestDefaultStatusCode of FeedsIngestDefaultStatusCodeResponse
 
     type FeedsIngestArgs = {
       pathParams:FeedsIngestPathParams;
@@ -273,16 +313,16 @@ module CatalogFeedsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type FeedsListQueryParams = {
-      bookmark : string option;
-
-
-      pageSize : int option;
-
-
       catalogId : string option;
 
 
       adAccountId : string option;
+
+
+      bookmark : string option;
+
+
+      pageSize : int option;
 
     }
     //#endregion
@@ -294,20 +334,35 @@ module CatalogFeedsApiHandlerParams =
     }
 
     type FeedsListStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type FeedsListStatusCode401Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type FeedsListStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type FeedsListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type FeedsListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type FeedsListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type FeedsListResult = FeedsListStatusCode200 of FeedsListStatusCode200Response|FeedsListStatusCode400 of FeedsListStatusCode400Response|FeedsListStatusCode401 of FeedsListStatusCode401Response|FeedsListDefaultStatusCode of FeedsListDefaultStatusCodeResponse
+    type FeedsListResult = FeedsListStatusCode200 of FeedsListStatusCode200Response|FeedsListStatusCode400 of FeedsListStatusCode400Response|FeedsListStatusCode401 of FeedsListStatusCode401Response|FeedsListStatusCode403 of FeedsListStatusCode403Response|FeedsListStatusCode404 of FeedsListStatusCode404Response|FeedsListStatusCode429 of FeedsListStatusCode429Response|FeedsListDefaultStatusCode of FeedsListDefaultStatusCodeResponse
 
     type FeedsListArgs = {
       queryParams:Result<FeedsListQueryParams,string>;
@@ -329,7 +384,7 @@ module CatalogFeedsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type FeedsUpdateBodyParams = FeedsUpdateRequest
+    type FeedsUpdateBodyParams = CatalogsFeedUpdateRequestSchema
     //#endregion
 
 
@@ -339,25 +394,35 @@ module CatalogFeedsApiHandlerParams =
     }
 
     type FeedsUpdateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type FeedsUpdateStatusCode401Response = {
+      content:PinterestLibError;
       
     }
 
     type FeedsUpdateStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type FeedsUpdateStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type FeedsUpdateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type FeedsUpdateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type FeedsUpdateResult = FeedsUpdateStatusCode200 of FeedsUpdateStatusCode200Response|FeedsUpdateStatusCode400 of FeedsUpdateStatusCode400Response|FeedsUpdateStatusCode403 of FeedsUpdateStatusCode403Response|FeedsUpdateStatusCode404 of FeedsUpdateStatusCode404Response|FeedsUpdateDefaultStatusCode of FeedsUpdateDefaultStatusCodeResponse
+    type FeedsUpdateResult = FeedsUpdateStatusCode200 of FeedsUpdateStatusCode200Response|FeedsUpdateStatusCode400 of FeedsUpdateStatusCode400Response|FeedsUpdateStatusCode401 of FeedsUpdateStatusCode401Response|FeedsUpdateStatusCode403 of FeedsUpdateStatusCode403Response|FeedsUpdateStatusCode404 of FeedsUpdateStatusCode404Response|FeedsUpdateStatusCode429 of FeedsUpdateStatusCode429Response|FeedsUpdateDefaultStatusCode of FeedsUpdateDefaultStatusCodeResponse
 
     type FeedsUpdateArgs = {
       pathParams:FeedsUpdatePathParams;
@@ -374,12 +439,6 @@ module CatalogFeedsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type ItemsIssuesListQueryParams = {
-      bookmark : string option;
-
-
-      pageSize : int option;
-
-
       itemNumbers : int[] option;
 
 
@@ -387,6 +446,12 @@ module CatalogFeedsApiHandlerParams =
 
 
       adAccountId : string option;
+
+
+      bookmark : string option;
+
+
+      pageSize : int option;
 
     }
     //#endregion
@@ -397,26 +462,36 @@ module CatalogFeedsApiHandlerParams =
       
     }
 
+    type ItemsIssuesListStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
     type ItemsIssuesListStatusCode401Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type ItemsIssuesListStatusCode403Response = {
+      content:PinterestLibError;
       
     }
 
     type ItemsIssuesListStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
-    type ItemsIssuesListStatusCode501Response = {
-      content:Error;
+    type ItemsIssuesListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type ItemsIssuesListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type ItemsIssuesListResult = ItemsIssuesListStatusCode200 of ItemsIssuesListStatusCode200Response|ItemsIssuesListStatusCode401 of ItemsIssuesListStatusCode401Response|ItemsIssuesListStatusCode404 of ItemsIssuesListStatusCode404Response|ItemsIssuesListStatusCode501 of ItemsIssuesListStatusCode501Response|ItemsIssuesListDefaultStatusCode of ItemsIssuesListDefaultStatusCodeResponse
+    type ItemsIssuesListResult = ItemsIssuesListStatusCode200 of ItemsIssuesListStatusCode200Response|ItemsIssuesListStatusCode400 of ItemsIssuesListStatusCode400Response|ItemsIssuesListStatusCode401 of ItemsIssuesListStatusCode401Response|ItemsIssuesListStatusCode403 of ItemsIssuesListStatusCode403Response|ItemsIssuesListStatusCode404 of ItemsIssuesListStatusCode404Response|ItemsIssuesListStatusCode429 of ItemsIssuesListStatusCode429Response|ItemsIssuesListDefaultStatusCode of ItemsIssuesListDefaultStatusCodeResponse
 
     type ItemsIssuesListArgs = {
       pathParams:ItemsIssuesListPathParams;

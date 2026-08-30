@@ -7,7 +7,7 @@ Protected Class FollowersList200Response
 
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.UserSummary
+		items() As OpenAPIClient.Models.FollowUser
 	#tag EndProperty
 
 
@@ -60,7 +60,7 @@ Protected Class FollowersList200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="UserSummary"
+			Type="FollowUser"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

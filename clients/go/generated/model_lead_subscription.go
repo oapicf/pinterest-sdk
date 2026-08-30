@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &LeadSubscription{}
 // LeadSubscription struct for LeadSubscription
 type LeadSubscription struct {
 	// The Ad Account ID that this lead form belongs to.
-	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\d+$"`
 	// API version.
 	ApiVersion *string `json:"api_version,omitempty"`
 	// Subscription creation time. Unix timestamp in milliseconds.
@@ -31,11 +31,11 @@ type LeadSubscription struct {
 	// Base64 encoded key for client to decrypt lead data.
 	CryptographicKey NullableString `json:"cryptographic_key,omitempty"`
 	// Subscription ID.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 	// Lead form ID.
-	LeadFormId NullableString `json:"lead_form_id,omitempty" validate:"regexp=^\\\\d+$"`
+	LeadFormId NullableString `json:"lead_form_id,omitempty" validate:"regexp=^\\d+$"`
 	// User account used to subscribe lead data.
-	UserAccountId *string `json:"user_account_id,omitempty" validate:"regexp=^\\\\d+$"`
+	UserAccountId *string `json:"user_account_id,omitempty" validate:"regexp=^\\d+$"`
 	// Standard HTTPS webhook URL.
 	WebhookUrl *string `json:"webhook_url,omitempty"`
 }

@@ -7,7 +7,8 @@ Individual trending topic within an interest category
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **string** | Description of the trending topic | [default to undefined]
-**percent_growth_mom** | **number** | Month-over-month growth percentage | [default to undefined]
+**id** | **string** | Unique identifier for the trending topic | [default to undefined]
+**percent_growth_mom** | **number** | Month-over-month growth percentage | [optional] [default to undefined]
 **pins** | [**Array&lt;TrendingPin&gt;**](TrendingPin.md) | Array of pin images related to this trend (up to 6) | [default to undefined]
 **related_interests** | **Array&lt;string&gt;** | List of related interest categories | [default to undefined]
 **related_searches** | **Array&lt;string&gt;** | List of related search terms | [default to undefined]
@@ -21,6 +22,7 @@ import { TrendingTopic } from './api';
 
 const instance: TrendingTopic = {
     description,
+    id,
     percent_growth_mom,
     pins,
     related_interests,

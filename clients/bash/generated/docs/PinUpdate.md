@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**aiUnderscoredisclosures** | [**AiDisclosuresUpdate**](AiDisclosuresUpdate.md) |  | [optional] [default to null]
 **altUnderscoretext** | **string** |  | [optional] [default to null]
 **boardUnderscoreid** | **string** |  | [optional] [default to null]
 **boardUnderscoresectionUnderscoreid** | **string** |  | [optional] [default to null]

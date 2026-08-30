@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "UpdateMemberAssetsResultsResponseArray_items_inner.h"
+#include "UpdateMemberAssetResultItem.h"
 #include <list>
 
 namespace Tiny {
@@ -49,15 +49,15 @@ public:
 
 	/*! \brief Get List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.
 	 */
-	std::list<UpdateMemberAssetsResultsResponseArray_items_inner> getItems();
+	std::list<UpdateMemberAssetResultItem> getItems();
 
 	/*! \brief Set List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.
 	 */
-	void setItems(std::list <UpdateMemberAssetsResultsResponseArray_items_inner> items);
+	void setItems(std::list<UpdateMemberAssetResultItem> items);
 
 
     private:
-    std::list<UpdateMemberAssetsResultsResponseArray_items_inner> items;
+    std::list<UpdateMemberAssetResultItem> items;
 };
 }
 

@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setBookmark(std::string  bookmark);
+	void setBookmark(std::string bookmark);
 	/*! \brief Get 
 	 */
 	std::list<CatalogsItemValidationIssues> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <CatalogsItemValidationIssues> items);
+	void setItems(std::list<CatalogsItemValidationIssues> items);
 
 
     private:

@@ -1,0 +1,250 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "Ad",
+  "fields": [
+    {
+      "name": "ad_account_id",
+      "type": "string",
+      "doc": "The ID of the advertiser that this ad belongs to."
+    },
+    {
+      "name": "ad_group_id",
+      "type": "string",
+      "doc": "ID of the ad group that contains the ad."
+    },
+    {
+      "name": "android_deep_link",
+      "type": ["null", "string"],
+      "doc": "Deep link URL for Android devices.",
+      "default": null
+    },
+    {
+      "name": "campaign_id",
+      "type": "string",
+      "doc": "ID of the ad campaign that contains this ad."
+    },
+    {
+      "name": "carousel_android_deep_links",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Comma-separated deep links for the carousel pin on Android.",
+      "default": null
+    },
+    {
+      "name": "carousel_destination_urls",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Comma-separated destination URLs for the carousel pin to promote.",
+      "default": null
+    },
+    {
+      "name": "carousel_ios_deep_links",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Comma-separated deep links for the carousel pin on iOS.",
+      "default": null
+    },
+    {
+      "name": "carting_platform_type",
+      "type": ["null", "int"],
+      "doc": "The vendor platform type of the carting/WTB ad.",
+      "default": null
+    },
+    {
+      "name": "carting_products",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CartingProduct"
+      }],
+      "doc": "Array of carting/WTB products for the ad.",
+      "default": null
+    },
+    {
+      "name": "click_tracking_url",
+      "type": ["null", "string"],
+      "doc": "Tracking url for the ad clicks.",
+      "default": null
+    },
+    {
+      "name": "collection_items_destination_url_template",
+      "type": ["null", "string"],
+      "doc": "Destination URL template for all items within a collections drawer.",
+      "default": null
+    },
+    {
+      "name": "collections_header_type",
+      "type": ["null", "model.AdCollectionsHeaderType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "created_time",
+      "type": ["null", "int"],
+      "doc": "Pin creation time. Unix timestamp in seconds.",
+      "default": null
+    },
+    {
+      "name": "creative_type",
+      "type": "model.CreativeType",
+      "doc": ""
+    },
+    {
+      "name": "customizable_cta_type",
+      "type": ["null", "model.CustomizableCTAType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "destination_url",
+      "type": ["null", "string"],
+      "doc": "Destination URL.",
+      "default": null
+    },
+    {
+      "name": "disclosure_type",
+      "type": ["null", "model.DisclosureType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "disclosure_url",
+      "type": ["null", "string"],
+      "doc": "URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.",
+      "default": null
+    },
+    {
+      "name": "grid_click_type",
+      "type": ["null", "model.GridClickType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "The ID of this ad."
+    },
+    {
+      "name": "ios_deep_link",
+      "type": ["null", "string"],
+      "doc": "Deep link URL for iOS devices.",
+      "default": null
+    },
+    {
+      "name": "is_carting",
+      "type": ["null", "boolean"],
+      "doc": "Is the ad a carting/WTB ad?",
+      "default": null
+    },
+    {
+      "name": "is_collage_accepted_terms",
+      "type": ["null", "boolean"],
+      "doc": "Whether the advertiser has accepted the terms and conditions for collage ad.",
+      "default": null
+    },
+    {
+      "name": "is_collage_single_destination",
+      "type": ["null", "boolean"],
+      "doc": "Whether the collage ad has a single destination url override.",
+      "default": null
+    },
+    {
+      "name": "is_pin_deleted",
+      "type": ["null", "boolean"],
+      "doc": "Is original pin deleted?",
+      "default": null
+    },
+    {
+      "name": "is_removable",
+      "type": ["null", "boolean"],
+      "doc": "Is pin repinnable?",
+      "default": null
+    },
+    {
+      "name": "lead_form_id",
+      "type": ["null", "string"],
+      "doc": "Lead form ID for lead ad generation.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Name of the ad - 255 chars max.",
+      "default": null
+    },
+    {
+      "name": "pin_id",
+      "type": "string",
+      "doc": "Pin ID. This field may only be updated for draft ads."
+    },
+    {
+      "name": "quiz_pin_data",
+      "type": ["null", "model.QuizPinData"],
+      "doc": "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.",
+      "default": null
+    },
+    {
+      "name": "rejected_reasons",
+      "type": {
+        "type": "array",
+        "items": "model.AdDisapprovalReasons"
+      },
+      "doc": "Enum reason why the pin was rejected. Returned if `review_status` is \"REJECTED\"."
+    },
+    {
+      "name": "rejection_labels",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "Text reason why the pin was rejected. Returned if `review_status` is \"REJECTED\"."
+    },
+    {
+      "name": "review_status",
+      "type": "model.AdReviewStatus",
+      "doc": "Ad review status"
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.EntityStatus"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "summary_status",
+      "type": "model.PinPromotionSummaryStatus",
+      "doc": "Ad summary status"
+    },
+    {
+      "name": "tracking_urls",
+      "type": ["null", "model.TrackingUrls"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "doc": "Always \"ad\"."
+    },
+    {
+      "name": "updated_time",
+      "type": ["null", "int"],
+      "doc": "Last update time. Unix timestamp in seconds.",
+      "default": null
+    },
+    {
+      "name": "view_tracking_url",
+      "type": ["null", "string"],
+      "doc": "Tracking URL for ad impressions.",
+      "default": null
+    }
+  ]
+
+}

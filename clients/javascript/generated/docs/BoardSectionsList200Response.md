@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  | [optional] 
-**items** | [**[BoardSection]**](BoardSection.md) | Board sections | 
+**items** | [**[BoardSection]**](BoardSection.md) |  | 
 
 

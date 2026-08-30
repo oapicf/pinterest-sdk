@@ -13,7 +13,7 @@ using namespace Tiny;
             std::string boardId
             , 
             
-            BoardSection boardSection
+            BoardSectionCreate boardSectionCreate
             , 
             
             std::string adAccountId
@@ -46,11 +46,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | boardSection
+            // Body     | boardSectionCreate
 
 
 
-            payload = boardSection.toJson().dump();
+            payload = boardSectionCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -69,7 +69,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            BoardSection
         >
         BoardsApi::
         boardSections_delete(
@@ -125,7 +125,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            BoardSection obj(output_string);
+
+
+            Response<BoardSection> response(obj, httpCode);
             return response;
         }
 
@@ -278,7 +283,7 @@ using namespace Tiny;
             std::string sectionId
             , 
             
-            BoardSection boardSection
+            BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody
             , 
             
             std::string adAccountId
@@ -319,11 +324,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | boardSection
+            // Body     | boardSectionUpdateWithRequiredBody
 
 
 
-            payload = boardSection.toJson().dump();
+            payload = boardSectionUpdateWithRequiredBody.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -395,7 +400,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            Board
         >
         BoardsApi::
         boards_delete(
@@ -440,7 +445,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            Board obj(output_string);
+
+
+            Response<Board> response(obj, httpCode);
             return response;
         }
 
@@ -563,12 +573,6 @@ using namespace Tiny;
             
             std::string boardId
             , 
-            
-            std::string bookmark
-            , 
-            
-            int pageSize
-            , 
             std::list<CreativeType> creativeTypes
             
             , 
@@ -577,6 +581,12 @@ using namespace Tiny;
             , 
             
             bool pinMetrics
+            , 
+            
+            std::string bookmark
+            , 
+            
+            int pageSize
             
         )
         {
@@ -585,14 +595,14 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | bookmark pageSize creativeTypes adAccountId pinMetrics 
-            addQueryParam("bookmark",bookmark);
-            addQueryParam("page_size",pageSize);
+            // Query    | creativeTypes adAccountId pinMetrics bookmark pageSize 
             for (auto &x : creativeTypes){
                 addQueryParam("creative_types", std::string(x));
             }
             addQueryParam("ad_account_id",adAccountId);
             addQueryParam("pin_metrics",pinMetrics);
+            addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
 
             // Form     | 
 

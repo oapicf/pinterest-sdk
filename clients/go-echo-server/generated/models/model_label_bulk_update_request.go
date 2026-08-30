@@ -5,9 +5,8 @@ type LabelBulkUpdateRequest struct {
 	// Label ID.
 	Id string `json:"id"`
 
-	// Set status to `ARCHIVED` to remove the label from the parent entity.
-	Status string `json:"status,omitempty"`
+	// Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
+	ParentId string `json:"parent_id"`
 
-	// </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
-	Value string `json:"value,omitempty"`
+	Status LabelStatusBulkUpdate `json:"status"`
 }

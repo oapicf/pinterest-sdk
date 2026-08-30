@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | Option<**String**> | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect. | [optional]
-**catalog_type** | [**models::CatalogsType**](CatalogsType.md) |  | 
+**catalog_id** | Option<**String**> | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. | [optional]
+**catalog_type** | **CatalogType** |  (enum: RETAIL) | 
 **credentials** | Option<[**models::CatalogsFeedCredentials**](CatalogsFeedCredentials.md)> |  | [optional]
 **default_availability** | Option<[**models::ProductAvailabilityType**](ProductAvailabilityType.md)> |  | [optional]
 **default_country** | [**models::Country**](Country.md) |  | 
 **default_currency** | Option<[**models::NullableCurrency**](NullableCurrency.md)> |  | [optional]
-**default_locale** | [**models::CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequest_default_locale.md) |  | 
+**default_locale** | [**models::CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale**](CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.md) |  | 
 **format** | [**models::CatalogsFormat**](CatalogsFormat.md) |  | 
 **location** | **String** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
 **name** | **String** | A human-friendly name associated to a given feed. | 

@@ -7,36 +7,39 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { MatchTypeResponse } from './matchTypeResponse';
+import { MatchType } from './matchType';
 
 
 export interface Keyword { 
+    archived?: boolean;
     /**
-     * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+     * **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
      */
     bid?: number | null;
-    match_type: MatchTypeResponse | null;
+    /**
+     * Keyword ID .
+     */
+    id: string;
+    /**
+     * Keyword [match type](/docs/api-features/targeting-overview/)
+     */
+    match_type: MatchType | null;
+    /**
+     * Keyword parent entity ID (advertiser, campaign, ad group).
+     */
+    readonly parent_id: string;
+    /**
+     * Parent entity type (advertiser, campaign, ad group).
+     */
+    readonly parent_type?: string;
+    /**
+     * Always keyword
+     */
+    readonly type?: string;
     /**
      * Keyword value (120 chars max).
      */
     value: string;
-    archived?: boolean;
-    /**
-     * Keyword ID .
-     */
-    id?: string;
-    /**
-     * Keyword parent entity ID (advertiser, campaign, ad group).
-     */
-    parent_id?: string;
-    /**
-     * Parent entity type
-     */
-    parent_type?: string;
-    /**
-     * Always keyword
-     */
-    type?: string;
 }
 export namespace Keyword {
 }

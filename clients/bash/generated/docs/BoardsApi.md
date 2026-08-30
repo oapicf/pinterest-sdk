@@ -38,7 +38,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **string** | Unique identifier of a board. | [default to null]
- **boardSection** | [**BoardSection**](BoardSection.md) | Create a board section. |
+ **boardSectionCreate** | [**BoardSectionCreate**](BoardSectionCreate.md) |  |
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+[**BoardSection**](BoardSection.md)
 
 ### Authorization
 
@@ -118,7 +118,8 @@ Name | Type | Description  | Notes
  **boardId** | **string** | Unique identifier of a board. | [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -159,7 +160,8 @@ Name | Type | Description  | Notes
  **sectionId** | **string** | Unique identifier of a board section. | [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -198,7 +200,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **string** | Unique identifier of a board. | [default to null]
  **sectionId** | **string** | Unique identifier of a board section. | [default to null]
- **boardSection** | [**BoardSection**](BoardSection.md) | Update a board section. |
+ **boardSectionUpdateWithRequiredBody** | [**BoardSectionUpdateWithRequiredBody**](BoardSectionUpdateWithRequiredBody.md) |  |
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -279,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+[**Board**](Board.md)
 
 ### Authorization
 
@@ -384,7 +386,7 @@ Get a list of the Pins on a board owned by the \"operation user_account\" - or o
 ### Example
 
 ```bash
- boardsListPins board_id=value  bookmark=value  page_size=value  Specify as:  creative_types=value1 creative_types=value2 creative_types=...  ad_account_id=value  pin_metrics=value
+ boardsListPins board_id=value  Specify as:  creative_types=value1 creative_types=value2 creative_types=...  ad_account_id=value  pin_metrics=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -393,8 +395,6 @@ Get a list of the Pins on a board owned by the \"operation user_account\" - or o
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **string** | Unique identifier of a board. | [default to null]
- **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
  **creativeTypes** | [**array[CreativeType]**](CreativeType.md) | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
  **pinMetrics** | **boolean** | Specify whether to return 90d and lifetime Pin metrics. Total comments
@@ -402,6 +402,9 @@ and total reactions are only available with lifetime Pin metrics. If Pin was
 created before '2023-03-20' lifetime metrics will only be available
 for Video and Idea Pin formats. Lifetime metrics are available for all Pin
 formats since then. | [optional] [default to false]
+ **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

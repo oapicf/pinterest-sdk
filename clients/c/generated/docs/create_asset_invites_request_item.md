@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**asset_id_to_permissions** | **list_t*** | An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  | 
+**asset_id_to_permissions** | **list_t*** | An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. | 
 **invite_id** | **char \*** | Unique identifier of an invite. | 
 **invite_type** | **invite_type_t \*** |  | 
 

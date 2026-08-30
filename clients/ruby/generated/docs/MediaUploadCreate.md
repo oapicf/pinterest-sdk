@@ -12,7 +12,7 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::MediaUploadCreate.new(
-  media_type: null
+  media_type: video
 )
 ```
 

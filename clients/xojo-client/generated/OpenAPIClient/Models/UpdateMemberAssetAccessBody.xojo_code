@@ -2,7 +2,10 @@
 Protected Class UpdateMemberAssetAccessBody
 
 	#tag Property, Flags = &h0
-		accesses() As OpenAPIClient.Models.UpdateMemberAssetAccessBodyAccessesInner
+		#tag Note
+			List of member asset accesses to assign or update.
+		#tag EndNote
+		accesses() As OpenAPIClient.Models.UpdateMemberAssetAccessItem
 	#tag EndProperty
 
 
@@ -47,7 +50,7 @@ Protected Class UpdateMemberAssetAccessBody
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="UpdateMemberAssetAccessBodyAccessesInner"
+			Type="UpdateMemberAssetAccessItem"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

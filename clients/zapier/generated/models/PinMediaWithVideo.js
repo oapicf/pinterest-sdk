@@ -36,6 +36,11 @@ module.exports = {
                 type: 'string',
             },
             {
+                key: `${keyPrefix}video_url_hls`,
+                label: `Video url (HLS).  **Note:** This field is limited and not available to all apps. - [${labelPrefix}video_url_hls]`,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}width`,
                 label: `Width (in pixels). Field maybe null after creation due to video processing time. - [${labelPrefix}width]`,
                 type: 'integer',
@@ -51,6 +56,7 @@ module.exports = {
             'images': utils.removeIfEmpty(ImageSize.mapping(bundle, `${keyPrefix}images`)),
             'media_type': bundle.inputData?.[`${keyPrefix}media_type`],
             'video_url': bundle.inputData?.[`${keyPrefix}video_url`],
+            'video_url_hls': bundle.inputData?.[`${keyPrefix}video_url_hls`],
             'width': bundle.inputData?.[`${keyPrefix}width`],
         }
     },

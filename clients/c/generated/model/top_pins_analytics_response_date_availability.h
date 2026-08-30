@@ -19,15 +19,15 @@ typedef struct top_pins_analytics_response_date_availability_t top_pins_analytic
 
 
 typedef struct top_pins_analytics_response_date_availability_t {
-    int is_realtime; //boolean
-    double latest_available_timestamp; //numeric
+    int *is_realtime; //boolean
+    double *latest_available_timestamp; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } top_pins_analytics_response_date_availability_t;
 
 __attribute__((deprecated)) top_pins_analytics_response_date_availability_t *top_pins_analytics_response_date_availability_create(
-    int is_realtime,
-    double latest_available_timestamp
+    int *is_realtime,
+    double *latest_available_timestamp
 );
 
 void top_pins_analytics_response_date_availability_free(top_pins_analytics_response_date_availability_t *top_pins_analytics_response_date_availability);

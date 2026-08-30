@@ -107,7 +107,7 @@ public class CatalogsItemsRequest   {
     NB("NB"),
     NE("NE"),
     NL2("NL"),
-    NO("NO"),
+    FALSE("false"),
     PL("PL"),
     PT("PT"),
     RO("RO"),
@@ -215,9 +215,6 @@ public class CatalogsItemsRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCUSTOMLABEL1(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_1);
+	void setCUSTOMLABEL1(CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_1);
 
 
     private:

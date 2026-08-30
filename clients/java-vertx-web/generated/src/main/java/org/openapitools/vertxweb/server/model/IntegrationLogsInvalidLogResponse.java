@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.IntegrationLogsInvalidLogResponseRejectedLogsInner;
+import org.openapitools.vertxweb.server.model.IntegrationLogsInvalidLogResponseRejectedLogsItems;
 
 /**
  * Schema describing the response when a log has invalid fields.
@@ -14,22 +14,22 @@ import org.openapitools.vertxweb.server.model.IntegrationLogsInvalidLogResponseR
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class IntegrationLogsInvalidLogResponse   {
   
-  private List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = new ArrayList<>();
+  private List<IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs = new ArrayList<>();
 
   public IntegrationLogsInvalidLogResponse () {
 
   }
 
-  public IntegrationLogsInvalidLogResponse (List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
+  public IntegrationLogsInvalidLogResponse (List<IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs) {
     this.rejectedLogs = rejectedLogs;
   }
 
     
   @JsonProperty("rejected_logs")
-  public List<IntegrationLogsInvalidLogResponseRejectedLogsInner> getRejectedLogs() {
+  public List<IntegrationLogsInvalidLogResponseRejectedLogsItems> getRejectedLogs() {
     return rejectedLogs;
   }
-  public void setRejectedLogs(List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
+  public void setRejectedLogs(List<IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs) {
     this.rejectedLogs = rejectedLogs;
   }
 
@@ -66,9 +66,6 @@ public class IntegrationLogsInvalidLogResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

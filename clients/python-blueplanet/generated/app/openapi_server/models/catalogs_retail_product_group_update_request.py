@@ -187,6 +187,7 @@ class CatalogsRetailProductGroupUpdateRequest(Model):
     def name(self) -> str:
         """Gets the name of this CatalogsRetailProductGroupUpdateRequest.
 
+        Name of catalog product group  # noqa: E501
 
         :return: The name of this CatalogsRetailProductGroupUpdateRequest.
         :rtype: str
@@ -197,6 +198,7 @@ class CatalogsRetailProductGroupUpdateRequest(Model):
     def name(self, name: str):
         """Sets the name of this CatalogsRetailProductGroupUpdateRequest.
 
+        Name of catalog product group  # noqa: E501
 
         :param name: The name of this CatalogsRetailProductGroupUpdateRequest.
         :type name: str

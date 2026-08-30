@@ -8,19 +8,19 @@ import org.openapitools.model.CustomerListUpload;
 import org.openapitools.model.S3MultipartUploadData;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CustomerListUploadCreateResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CustomerListUploadCreateResponse {
 
   private CustomerListUpload customerListUpload;
@@ -45,11 +45,11 @@ public class CustomerListUploadCreateResponse {
   }
 
   /**
-   * Get customerListUpload
+   * The Customer List Upload created.
    * @return customerListUpload
    */
   @NotNull @Valid 
-  @Schema(name = "customer_list_upload", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "customer_list_upload", description = "The Customer List Upload created.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("customer_list_upload")
   public CustomerListUpload getCustomerListUpload() {
     return customerListUpload;
@@ -65,11 +65,11 @@ public class CustomerListUploadCreateResponse {
   }
 
   /**
-   * Get s3MultipartUploadData
+   * Pre-signed upload URLs corresponding to each part of the upload.
    * @return s3MultipartUploadData
    */
   @NotNull @Valid 
-  @Schema(name = "s3_multipart_upload_data", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "s3_multipart_upload_data", description = "Pre-signed upload URLs corresponding to each part of the upload.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("s3_multipart_upload_data")
   public S3MultipartUploadData getS3MultipartUploadData() {
     return s3MultipartUploadData;
@@ -112,10 +112,7 @@ public class CustomerListUploadCreateResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -2,7 +2,10 @@
 Protected Class DeletePartnerAssetAccessBody
 
 	#tag Property, Flags = &h0
-		accesses() As OpenAPIClient.Models.DeletePartnerAssetAccessBodyAccessesInner
+		#tag Note
+			List of partner asset accesses to delete.
+		#tag EndNote
+		accesses() As OpenAPIClient.Models.DeletePartnerAssetAccessItem
 	#tag EndProperty
 
 
@@ -47,7 +50,7 @@ Protected Class DeletePartnerAssetAccessBody
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="DeletePartnerAssetAccessBodyAccessesInner"
+			Type="DeletePartnerAssetAccessItem"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

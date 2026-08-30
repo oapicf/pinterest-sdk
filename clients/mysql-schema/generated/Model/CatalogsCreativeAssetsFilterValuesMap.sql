@@ -1,26 +1,26 @@
 --
 -- Pinterest REST API.
--- Prepared SQL queries for 'catalogs_creative_assets_filter_values_map' definition.
+-- Prepared SQL queries for 'CatalogsCreativeAssetsFilterValuesMap' definition.
 --
 
 
 --
--- SELECT template for table `catalogs_creative_assets_filter_values_map`
+-- SELECT template for table `CatalogsCreativeAssetsFilterValuesMap`
 --
-SELECT `custom_label_0`, `custom_label_1`, `custom_label_2`, `custom_label_3`, `custom_label_4`, `google_product_category_0`, `google_product_category_1`, `google_product_category_2`, `google_product_category_3`, `google_product_category_4`, `google_product_category_5`, `google_product_category_6`, `media_type` FROM `catalogs_creative_assets_filter_values_map` WHERE 1;
+SELECT `custom_label_0`, `custom_label_1`, `custom_label_2`, `custom_label_3`, `custom_label_4`, `google_product_category_0`, `google_product_category_1`, `google_product_category_2`, `google_product_category_3`, `google_product_category_4`, `google_product_category_5`, `google_product_category_6`, `media_type` FROM `CatalogsCreativeAssetsFilterValuesMap` WHERE 1;
 
 --
--- INSERT template for table `catalogs_creative_assets_filter_values_map`
+-- INSERT template for table `CatalogsCreativeAssetsFilterValuesMap`
 --
-INSERT INTO `catalogs_creative_assets_filter_values_map`(`custom_label_0`, `custom_label_1`, `custom_label_2`, `custom_label_3`, `custom_label_4`, `google_product_category_0`, `google_product_category_1`, `google_product_category_2`, `google_product_category_3`, `google_product_category_4`, `google_product_category_5`, `google_product_category_6`, `media_type`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsCreativeAssetsFilterValuesMap`(`custom_label_0`, `custom_label_1`, `custom_label_2`, `custom_label_3`, `custom_label_4`, `google_product_category_0`, `google_product_category_1`, `google_product_category_2`, `google_product_category_3`, `google_product_category_4`, `google_product_category_5`, `google_product_category_6`, `media_type`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
--- UPDATE template for table `catalogs_creative_assets_filter_values_map`
+-- UPDATE template for table `CatalogsCreativeAssetsFilterValuesMap`
 --
-UPDATE `catalogs_creative_assets_filter_values_map` SET `custom_label_0` = ?, `custom_label_1` = ?, `custom_label_2` = ?, `custom_label_3` = ?, `custom_label_4` = ?, `google_product_category_0` = ?, `google_product_category_1` = ?, `google_product_category_2` = ?, `google_product_category_3` = ?, `google_product_category_4` = ?, `google_product_category_5` = ?, `google_product_category_6` = ?, `media_type` = ? WHERE 1;
+UPDATE `CatalogsCreativeAssetsFilterValuesMap` SET `custom_label_0` = ?, `custom_label_1` = ?, `custom_label_2` = ?, `custom_label_3` = ?, `custom_label_4` = ?, `google_product_category_0` = ?, `google_product_category_1` = ?, `google_product_category_2` = ?, `google_product_category_3` = ?, `google_product_category_4` = ?, `google_product_category_5` = ?, `google_product_category_6` = ?, `media_type` = ? WHERE 1;
 
 --
--- DELETE template for table `catalogs_creative_assets_filter_values_map`
+-- DELETE template for table `CatalogsCreativeAssetsFilterValuesMap`
 --
-DELETE FROM `catalogs_creative_assets_filter_values_map` WHERE 0;
+DELETE FROM `CatalogsCreativeAssetsFilterValuesMap` WHERE 0;
 

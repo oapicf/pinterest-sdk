@@ -13,26 +13,35 @@ part of openapi.api;
 class Pin {
   /// Returns a new [Pin] instance.
   Pin({
-    this.altText,
+    this.aiDisclosures,
     this.boardId,
     this.boardOwner,
     this.boardSectionId,
     this.createdAt,
     this.creativeType,
-    this.description,
     this.dominantColor,
     this.hasBeenPromoted,
     required this.id,
     this.isOwner,
+    this.isProduct,
     this.isStandard,
-    this.link,
     this.media,
     this.parentPinId,
     this.pinMetrics,
+    this.altText,
+    this.description,
+    this.link,
     this.title,
   });
 
-  String? altText;
+  /// AI disclosure declarations the creator has made about this Pin.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  AiDisclosures? aiDisclosures;
 
   /// The board to which this Pin belongs.
   ///
@@ -64,8 +73,6 @@ class Pin {
 
   CreativeType? creativeType;
 
-  String? description;
-
   /// Dominant pin color. Hex number, e.g. `#6E7874`.
   String? dominantColor;
 
@@ -89,6 +96,15 @@ class Pin {
   ///
   bool? isOwner;
 
+  /// Whether the Pin is a product Pin.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isProduct;
+
   /// Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -97,8 +113,6 @@ class Pin {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? isStandard;
-
-  String? link;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -114,58 +128,68 @@ class Pin {
   /// Pin metrics with associated time intervals if any.
   Object? pinMetrics;
 
+  String? altText;
+
+  String? description;
+
+  String? link;
+
   String? title;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Pin &&
-    other.altText == altText &&
+    other.aiDisclosures == aiDisclosures &&
     other.boardId == boardId &&
     other.boardOwner == boardOwner &&
     other.boardSectionId == boardSectionId &&
     other.createdAt == createdAt &&
     other.creativeType == creativeType &&
-    other.description == description &&
     other.dominantColor == dominantColor &&
     other.hasBeenPromoted == hasBeenPromoted &&
     other.id == id &&
     other.isOwner == isOwner &&
+    other.isProduct == isProduct &&
     other.isStandard == isStandard &&
-    other.link == link &&
     other.media == media &&
     other.parentPinId == parentPinId &&
     other.pinMetrics == pinMetrics &&
+    other.altText == altText &&
+    other.description == description &&
+    other.link == link &&
     other.title == title;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (altText == null ? 0 : altText!.hashCode) +
+    (aiDisclosures == null ? 0 : aiDisclosures!.hashCode) +
     (boardId == null ? 0 : boardId!.hashCode) +
     (boardOwner == null ? 0 : boardOwner!.hashCode) +
     (boardSectionId == null ? 0 : boardSectionId!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (creativeType == null ? 0 : creativeType!.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
     (dominantColor == null ? 0 : dominantColor!.hashCode) +
     (hasBeenPromoted == null ? 0 : hasBeenPromoted!.hashCode) +
     (id.hashCode) +
     (isOwner == null ? 0 : isOwner!.hashCode) +
+    (isProduct == null ? 0 : isProduct!.hashCode) +
     (isStandard == null ? 0 : isStandard!.hashCode) +
-    (link == null ? 0 : link!.hashCode) +
     (media == null ? 0 : media!.hashCode) +
     (parentPinId == null ? 0 : parentPinId!.hashCode) +
     (pinMetrics == null ? 0 : pinMetrics!.hashCode) +
+    (altText == null ? 0 : altText!.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
+    (link == null ? 0 : link!.hashCode) +
     (title == null ? 0 : title!.hashCode);
 
   @override
-  String toString() => 'Pin[altText=$altText, boardId=$boardId, boardOwner=$boardOwner, boardSectionId=$boardSectionId, createdAt=$createdAt, creativeType=$creativeType, description=$description, dominantColor=$dominantColor, hasBeenPromoted=$hasBeenPromoted, id=$id, isOwner=$isOwner, isStandard=$isStandard, link=$link, media=$media, parentPinId=$parentPinId, pinMetrics=$pinMetrics, title=$title]';
+  String toString() => 'Pin[aiDisclosures=$aiDisclosures, boardId=$boardId, boardOwner=$boardOwner, boardSectionId=$boardSectionId, createdAt=$createdAt, creativeType=$creativeType, dominantColor=$dominantColor, hasBeenPromoted=$hasBeenPromoted, id=$id, isOwner=$isOwner, isProduct=$isProduct, isStandard=$isStandard, media=$media, parentPinId=$parentPinId, pinMetrics=$pinMetrics, altText=$altText, description=$description, link=$link, title=$title]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.altText != null) {
-      json[r'alt_text'] = this.altText;
+    if (this.aiDisclosures != null) {
+      json[r'ai_disclosures'] = this.aiDisclosures;
     } else {
-      json[r'alt_text'] = null;
+      json[r'ai_disclosures'] = null;
     }
     if (this.boardId != null) {
       json[r'board_id'] = this.boardId;
@@ -192,11 +216,6 @@ class Pin {
     } else {
       json[r'creative_type'] = null;
     }
-    if (this.description != null) {
-      json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
-    }
     if (this.dominantColor != null) {
       json[r'dominant_color'] = this.dominantColor;
     } else {
@@ -213,15 +232,15 @@ class Pin {
     } else {
       json[r'is_owner'] = null;
     }
+    if (this.isProduct != null) {
+      json[r'is_product'] = this.isProduct;
+    } else {
+      json[r'is_product'] = null;
+    }
     if (this.isStandard != null) {
       json[r'is_standard'] = this.isStandard;
     } else {
       json[r'is_standard'] = null;
-    }
-    if (this.link != null) {
-      json[r'link'] = this.link;
-    } else {
-      json[r'link'] = null;
     }
     if (this.media != null) {
       json[r'media'] = this.media;
@@ -237,6 +256,21 @@ class Pin {
       json[r'pin_metrics'] = this.pinMetrics;
     } else {
       json[r'pin_metrics'] = null;
+    }
+    if (this.altText != null) {
+      json[r'alt_text'] = this.altText;
+    } else {
+      json[r'alt_text'] = null;
+    }
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
+    if (this.link != null) {
+      json[r'link'] = this.link;
+    } else {
+      json[r'link'] = null;
     }
     if (this.title != null) {
       json[r'title'] = this.title;
@@ -257,30 +291,30 @@ class Pin {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Pin[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Pin[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'id'), 'Required key "Pin[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "Pin[id]" has a null value in JSON.');
         return true;
       }());
 
       return Pin(
-        altText: mapValueOfType<String>(json, r'alt_text'),
+        aiDisclosures: AiDisclosures.fromJson(json[r'ai_disclosures']),
         boardId: mapValueOfType<String>(json, r'board_id'),
         boardOwner: BoardOwner.fromJson(json[r'board_owner']),
         boardSectionId: mapValueOfType<String>(json, r'board_section_id'),
         createdAt: mapDateTime(json, r'created_at', r''),
         creativeType: CreativeType.fromJson(json[r'creative_type']),
-        description: mapValueOfType<String>(json, r'description'),
         dominantColor: mapValueOfType<String>(json, r'dominant_color'),
         hasBeenPromoted: mapValueOfType<bool>(json, r'has_been_promoted'),
         id: mapValueOfType<String>(json, r'id')!,
         isOwner: mapValueOfType<bool>(json, r'is_owner'),
+        isProduct: mapValueOfType<bool>(json, r'is_product'),
         isStandard: mapValueOfType<bool>(json, r'is_standard'),
-        link: mapValueOfType<String>(json, r'link'),
         media: PinMedia.fromJson(json[r'media']),
         parentPinId: mapValueOfType<String>(json, r'parent_pin_id'),
         pinMetrics: mapValueOfType<Object>(json, r'pin_metrics'),
+        altText: mapValueOfType<String>(json, r'alt_text'),
+        description: mapValueOfType<String>(json, r'description'),
+        link: mapValueOfType<String>(json, r'link'),
         title: mapValueOfType<String>(json, r'title'),
       );
     }

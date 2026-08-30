@@ -11,6 +11,7 @@ Name | Type
 `height` | number
 `itemType` | string
 `videoUrl` | string
+`videoUrlHls` | string
 `width` | number
 
 ## Example
@@ -25,6 +26,7 @@ const example = {
   "height": null,
   "itemType": null,
   "videoUrl": null,
+  "videoUrlHls": null,
   "width": null,
 } satisfies VideoMetadataWithItemType
 

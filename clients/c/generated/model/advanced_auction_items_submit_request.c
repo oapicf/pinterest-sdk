@@ -13,10 +13,10 @@ static advanced_auction_items_submit_request_t *advanced_auction_items_submit_re
     if (!advanced_auction_items_submit_request_local_var) {
         return NULL;
     }
+    memset(advanced_auction_items_submit_request_local_var, 0, sizeof(advanced_auction_items_submit_request_t));
+    advanced_auction_items_submit_request_local_var->_library_owned = 1;
     advanced_auction_items_submit_request_local_var->catalog_id = catalog_id;
     advanced_auction_items_submit_request_local_var->items = items;
-
-    advanced_auction_items_submit_request_local_var->_library_owned = 1;
     return advanced_auction_items_submit_request_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) advanced_auction_items_submit_request_t *advanced_au
     char *catalog_id,
     list_t *items
     ) {
-    return advanced_auction_items_submit_request_create_internal (
+    advanced_auction_items_submit_request_t *result = advanced_auction_items_submit_request_create_internal (
         catalog_id,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void advanced_auction_items_submit_request_free(advanced_auction_items_submit_request_t *advanced_auction_items_submit_request) {
@@ -97,6 +100,8 @@ advanced_auction_items_submit_request_t *advanced_auction_items_submit_request_p
 
     advanced_auction_items_submit_request_t *advanced_auction_items_submit_request_local_var = NULL;
 
+    char *catalog_id_local_str = NULL;
+
     // define the local list for advanced_auction_items_submit_request->items
     list_t *itemsList = NULL;
 
@@ -143,13 +148,23 @@ advanced_auction_items_submit_request_t *advanced_auction_items_submit_request_p
     }
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+
     advanced_auction_items_submit_request_local_var = advanced_auction_items_submit_request_create_internal (
-        strdup(catalog_id->valuestring),
+        catalog_id_local_str,
         itemsList
         );
 
+    if (!advanced_auction_items_submit_request_local_var) {
+        goto end;
+    }
+
     return advanced_auction_items_submit_request_local_var;
 end:
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {

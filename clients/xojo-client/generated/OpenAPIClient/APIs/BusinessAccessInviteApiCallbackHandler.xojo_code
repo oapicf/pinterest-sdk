@@ -7,7 +7,7 @@ Protected Interface BusinessAccessInviteApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub CancelInvitesOrRequestsCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.DeleteInvitesResultsResponseArray)
+		Sub CancelInvitesOrRequestsCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CancelInvitesResponse)
 		  
 		End Sub
 	#tag EndMethod

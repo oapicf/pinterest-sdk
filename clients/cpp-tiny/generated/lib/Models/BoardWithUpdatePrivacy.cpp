@@ -298,7 +298,7 @@ BoardWithUpdatePrivacy::getBoardPinsModifiedAt()
 }
 
 void
-BoardWithUpdatePrivacy::setBoardPinsModifiedAt(std::string  board_pins_modified_at)
+BoardWithUpdatePrivacy::setBoardPinsModifiedAt(std::string board_pins_modified_at)
 {
 	this->board_pins_modified_at = board_pins_modified_at;
 }
@@ -310,7 +310,7 @@ BoardWithUpdatePrivacy::getCollaboratorCount()
 }
 
 void
-BoardWithUpdatePrivacy::setCollaboratorCount(int  collaborator_count)
+BoardWithUpdatePrivacy::setCollaboratorCount(int collaborator_count)
 {
 	this->collaborator_count = collaborator_count;
 }
@@ -322,7 +322,7 @@ BoardWithUpdatePrivacy::getCreatedAt()
 }
 
 void
-BoardWithUpdatePrivacy::setCreatedAt(std::string  created_at)
+BoardWithUpdatePrivacy::setCreatedAt(std::string created_at)
 {
 	this->created_at = created_at;
 }
@@ -334,7 +334,7 @@ BoardWithUpdatePrivacy::getDescription()
 }
 
 void
-BoardWithUpdatePrivacy::setDescription(std::string  description)
+BoardWithUpdatePrivacy::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -346,7 +346,7 @@ BoardWithUpdatePrivacy::getFollowerCount()
 }
 
 void
-BoardWithUpdatePrivacy::setFollowerCount(int  follower_count)
+BoardWithUpdatePrivacy::setFollowerCount(int follower_count)
 {
 	this->follower_count = follower_count;
 }
@@ -358,7 +358,7 @@ BoardWithUpdatePrivacy::getId()
 }
 
 void
-BoardWithUpdatePrivacy::setId(std::string  id)
+BoardWithUpdatePrivacy::setId(std::string id)
 {
 	this->id = id;
 }
@@ -370,7 +370,7 @@ BoardWithUpdatePrivacy::isIsAdsOnly()
 }
 
 void
-BoardWithUpdatePrivacy::setIsAdsOnly(bool  is_ads_only)
+BoardWithUpdatePrivacy::setIsAdsOnly(bool is_ads_only)
 {
 	this->is_ads_only = is_ads_only;
 }
@@ -382,7 +382,7 @@ BoardWithUpdatePrivacy::getMedia()
 }
 
 void
-BoardWithUpdatePrivacy::setMedia(BoardMedia  media)
+BoardWithUpdatePrivacy::setMedia(BoardMedia media)
 {
 	this->media = media;
 }
@@ -394,7 +394,7 @@ BoardWithUpdatePrivacy::getName()
 }
 
 void
-BoardWithUpdatePrivacy::setName(std::string  name)
+BoardWithUpdatePrivacy::setName(std::string name)
 {
 	this->name = name;
 }
@@ -406,7 +406,7 @@ BoardWithUpdatePrivacy::getOwner()
 }
 
 void
-BoardWithUpdatePrivacy::setOwner(BoardOwner  owner)
+BoardWithUpdatePrivacy::setOwner(BoardOwner owner)
 {
 	this->owner = owner;
 }
@@ -418,7 +418,7 @@ BoardWithUpdatePrivacy::getPinCount()
 }
 
 void
-BoardWithUpdatePrivacy::setPinCount(int  pin_count)
+BoardWithUpdatePrivacy::setPinCount(int pin_count)
 {
 	this->pin_count = pin_count;
 }
@@ -430,7 +430,7 @@ BoardWithUpdatePrivacy::getPrivacy()
 }
 
 void
-BoardWithUpdatePrivacy::setPrivacy(BoardUpdatePrivacy  privacy)
+BoardWithUpdatePrivacy::setPrivacy(BoardUpdatePrivacy privacy)
 {
 	this->privacy = privacy;
 }

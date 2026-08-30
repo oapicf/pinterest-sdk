@@ -1,0 +1,12 @@
+
+# ScheduleType
+
+## Enum
+
+
+    * `CAMPAIGN_BUDGET_CHANGE` (value: `"CAMPAIGN_BUDGET_CHANGE"`)
+
+    * `CAMPAIGN_BID_MULTIPLIERS` (value: `"CAMPAIGN_BID_MULTIPLIERS"`)
+
+
+

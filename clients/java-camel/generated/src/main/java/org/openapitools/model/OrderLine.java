@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -15,24 +16,27 @@ import org.openapitools.model.OrderLineStatus;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * OrderLine
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class OrderLine {
 
   private String adAccountId;
 
   private JsonNullable<BigDecimal> budget = JsonNullable.<BigDecimal>undefined();
+
+  @Valid
+  private List<String> campaignIds = new ArrayList<>();
 
   private JsonNullable<BigDecimal> endTime = JsonNullable.<BigDecimal>undefined();
 
@@ -52,9 +56,6 @@ public class OrderLine {
 
   private String type;
 
-  @Valid
-  private List<String> campaignIds = new ArrayList<>();
-
   public OrderLine() {
     super();
   }
@@ -62,8 +63,12 @@ public class OrderLine {
   /**
    * Constructor with only required parameters
    */
-  public OrderLine(List<String> campaignIds) {
+  public OrderLine(String adAccountId, List<String> campaignIds, String id, OrderLineStatus status, String type) {
+    this.adAccountId = adAccountId;
     this.campaignIds = campaignIds;
+    this.id = id;
+    this.status = status;
+    this.type = type;
   }
 
   public OrderLine adAccountId(String adAccountId) {
@@ -75,8 +80,8 @@ public class OrderLine {
    * Ad account ID.
    * @return adAccountId
    */
-  
-  @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "ad_account_id", description = "Ad account ID.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("ad_account_id")
   public String getAdAccountId() {
     return adAccountId;
@@ -96,7 +101,7 @@ public class OrderLine {
    * @return budget
    */
   @Valid 
-  @Schema(name = "budget", example = "5000000", description = "Order line budget in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "budget", description = "Order line budget in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("budget")
   public JsonNullable<BigDecimal> getBudget() {
     return budget;
@@ -104,6 +109,34 @@ public class OrderLine {
 
   public void setBudget(JsonNullable<BigDecimal> budget) {
     this.budget = budget;
+  }
+
+  public OrderLine campaignIds(List<String> campaignIds) {
+    this.campaignIds = campaignIds;
+    return this;
+  }
+
+  public OrderLine addCampaignIdsItem(String campaignIdsItem) {
+    if (this.campaignIds == null) {
+      this.campaignIds = new ArrayList<>();
+    }
+    this.campaignIds.add(campaignIdsItem);
+    return this;
+  }
+
+  /**
+   * Associated List of campaign IDs.
+   * @return campaignIds
+   */
+  @NotNull 
+  @Schema(name = "campaign_ids", example = "[\"626735565838\"]", description = "Associated List of campaign IDs.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("campaign_ids")
+  public List<String> getCampaignIds() {
+    return campaignIds;
+  }
+
+  public void setCampaignIds(List<String> campaignIds) {
+    this.campaignIds = campaignIds;
   }
 
   public OrderLine endTime(BigDecimal endTime) {
@@ -116,7 +149,7 @@ public class OrderLine {
    * @return endTime
    */
   @Valid 
-  @Schema(name = "end_time", example = "1461269616", description = "End time. Unix timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "end_time", description = "End time. Unix timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_time")
   public JsonNullable<BigDecimal> getEndTime() {
     return endTime;
@@ -135,8 +168,8 @@ public class OrderLine {
    * Order line ID.
    * @return id
    */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "2680059592705", description = "Order line ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", description = "Order line ID.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -156,7 +189,7 @@ public class OrderLine {
    * @return name
    */
   
-  @Schema(name = "name", example = "Order Line Name 1", description = "Order line name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "name", description = "Order line name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
   public JsonNullable<String> getName() {
     return name;
@@ -176,7 +209,7 @@ public class OrderLine {
    * @return paidBudget
    */
   @Valid 
-  @Schema(name = "paid_budget", example = "5000000", description = "Order line paid budget in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "paid_budget", description = "Order line paid budget in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("paid_budget")
   public JsonNullable<BigDecimal> getPaidBudget() {
     return paidBudget;
@@ -216,7 +249,7 @@ public class OrderLine {
    * @return purchaseOrderId
    */
   
-  @Schema(name = "purchase_order_id", example = "PO12345", description = "Purchase order ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "purchase_order_id", description = "Purchase order ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("purchase_order_id")
   public JsonNullable<String> getPurchaseOrderId() {
     return purchaseOrderId;
@@ -236,7 +269,7 @@ public class OrderLine {
    * @return startTime
    */
   @Valid 
-  @Schema(name = "start_time", example = "1452208622", description = "Start time. Unix timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "start_time", description = "Start time. Unix timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_time")
   public BigDecimal getStartTime() {
     return startTime;
@@ -255,8 +288,8 @@ public class OrderLine {
    * Order line status.
    * @return status
    */
-  @Valid 
-  @Schema(name = "status", description = "Order line status.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "status", description = "Order line status.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("status")
   public OrderLineStatus getStatus() {
     return status;
@@ -275,8 +308,8 @@ public class OrderLine {
    * Always \"orderline\".
    * @return type
    */
-  
-  @Schema(name = "type", example = "orderline", description = "Always \"orderline\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "type", description = "Always \"orderline\".", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("type")
   public String getType() {
     return type;
@@ -284,34 +317,6 @@ public class OrderLine {
 
   public void setType(String type) {
     this.type = type;
-  }
-
-  public OrderLine campaignIds(List<String> campaignIds) {
-    this.campaignIds = campaignIds;
-    return this;
-  }
-
-  public OrderLine addCampaignIdsItem(String campaignIdsItem) {
-    if (this.campaignIds == null) {
-      this.campaignIds = new ArrayList<>();
-    }
-    this.campaignIds.add(campaignIdsItem);
-    return this;
-  }
-
-  /**
-   * Associated List of campaign IDs.
-   * @return campaignIds
-   */
-  @NotNull 
-  @Schema(name = "campaign_ids", example = "[\"626735565838\"]", description = "Associated List of campaign IDs.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("campaign_ids")
-  public List<String> getCampaignIds() {
-    return campaignIds;
-  }
-
-  public void setCampaignIds(List<String> campaignIds) {
-    this.campaignIds = campaignIds;
   }
 
   @Override
@@ -325,6 +330,7 @@ public class OrderLine {
     OrderLine orderLine = (OrderLine) o;
     return Objects.equals(this.adAccountId, orderLine.adAccountId) &&
         equalsNullable(this.budget, orderLine.budget) &&
+        Objects.equals(this.campaignIds, orderLine.campaignIds) &&
         equalsNullable(this.endTime, orderLine.endTime) &&
         Objects.equals(this.id, orderLine.id) &&
         equalsNullable(this.name, orderLine.name) &&
@@ -333,8 +339,7 @@ public class OrderLine {
         equalsNullable(this.purchaseOrderId, orderLine.purchaseOrderId) &&
         Objects.equals(this.startTime, orderLine.startTime) &&
         Objects.equals(this.status, orderLine.status) &&
-        Objects.equals(this.type, orderLine.type) &&
-        Objects.equals(this.campaignIds, orderLine.campaignIds);
+        Objects.equals(this.type, orderLine.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -343,7 +348,7 @@ public class OrderLine {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, hashCodeNullable(budget), hashCodeNullable(endTime), id, hashCodeNullable(name), hashCodeNullable(paidBudget), hashCodeNullable(paidType), hashCodeNullable(purchaseOrderId), startTime, status, type, campaignIds);
+    return Objects.hash(adAccountId, hashCodeNullable(budget), campaignIds, hashCodeNullable(endTime), id, hashCodeNullable(name), hashCodeNullable(paidBudget), hashCodeNullable(paidType), hashCodeNullable(purchaseOrderId), startTime, status, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -359,6 +364,7 @@ public class OrderLine {
     sb.append("class OrderLine {\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -368,7 +374,6 @@ public class OrderLine {
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -378,10 +383,7 @@ public class OrderLine {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -142,49 +142,72 @@ QualityComponents <- R6::R6Class(
       QualityComponentsObject <- list()
       if (!is.null(self$`advertiser_external_id`)) {
         QualityComponentsObject[["advertiser_external_id"]] <-
-          lapply(self$`advertiser_external_id`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`advertiser_external_id`)
       }
       if (!is.null(self$`click_id_epik`)) {
         QualityComponentsObject[["click_id_epik"]] <-
-          lapply(self$`click_id_epik`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`click_id_epik`)
       }
       if (!is.null(self$`external_event_id`)) {
         QualityComponentsObject[["external_event_id"]] <-
-          lapply(self$`external_event_id`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`external_event_id`)
       }
       if (!is.null(self$`hashed_email`)) {
         QualityComponentsObject[["hashed_email"]] <-
-          lapply(self$`hashed_email`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`hashed_email`)
       }
       if (!is.null(self$`hashed_maid`)) {
         QualityComponentsObject[["hashed_maid"]] <-
-          lapply(self$`hashed_maid`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`hashed_maid`)
       }
       if (!is.null(self$`ip_address`)) {
         QualityComponentsObject[["ip_address"]] <-
-          lapply(self$`ip_address`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`ip_address`)
       }
       if (!is.null(self$`order_id`)) {
         QualityComponentsObject[["order_id"]] <-
-          lapply(self$`order_id`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`order_id`)
       }
       if (!is.null(self$`order_value`)) {
         QualityComponentsObject[["order_value"]] <-
-          lapply(self$`order_value`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`order_value`)
       }
       if (!is.null(self$`product_id`)) {
         QualityComponentsObject[["product_id"]] <-
-          lapply(self$`product_id`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`product_id`)
       }
       if (!is.null(self$`source_url`)) {
         QualityComponentsObject[["source_url"]] <-
-          lapply(self$`source_url`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`source_url`)
       }
       if (!is.null(self$`user_agent`)) {
         QualityComponentsObject[["user_agent"]] <-
-          lapply(self$`user_agent`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`user_agent`)
       }
       return(QualityComponentsObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

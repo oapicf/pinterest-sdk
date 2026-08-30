@@ -1,7 +1,7 @@
 /*
  * ssio_account_item.h
  *
- * 
+ * Salesforce account item with billing and terms information.
  */
 
 #ifndef _ssio_account_item_H_

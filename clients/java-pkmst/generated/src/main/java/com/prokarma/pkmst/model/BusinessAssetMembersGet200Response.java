@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * BusinessAssetMembersGet200Response
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessAssetMembersGet200Response   {
   @JsonProperty("bookmark")
   private String bookmark;
@@ -61,10 +61,10 @@ public class BusinessAssetMembersGet200Response   {
   }
 
   /**
-   * List of members with permissions to the asset.
+   * Get items
    * @return items
    */
-  @ApiModelProperty(required = true, value = "List of members with permissions to the asset.")
+  @ApiModelProperty(required = true, value = "")
   public List<UserSingleAssetBinding> getItems() {
     return items;
   }
@@ -108,10 +108,7 @@ public class BusinessAssetMembersGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

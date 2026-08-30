@@ -44,7 +44,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cancel_invites_or_requests**
-> cancel_invites_or_requests (business_id: STRING_32 ; cancel_invites_body: CANCEL_INVITES_BODY ): detachable DELETE_INVITES_RESULTS_RESPONSE_ARRAY
+> cancel_invites_or_requests (business_id: STRING_32 ; cancel_invites_request: CANCEL_INVITES_REQUEST ): detachable CANCEL_INVITES_RESPONSE
 
 
 Cancel invites/requests
@@ -57,11 +57,11 @@ Cancel membership/partnership invites and/or requests.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **STRING_32**| Unique identifier of the requesting business. | [default to null]
- **cancel_invites_body** | [**CANCEL_INVITES_BODY**](CANCEL_INVITES_BODY.md)| A list with invite ids | 
+ **cancel_invites_request** | [**CANCEL_INVITES_REQUEST**](CANCEL_INVITES_REQUEST.md)|  | 
 
 ### Return type
 
-[**DELETE_INVITES_RESULTS_RESPONSE_ARRAY**](DeleteInvitesResultsResponseArray.md)
+[**CANCEL_INVITES_RESPONSE**](CancelInvitesResponse.md)
 
 ### Authorization
 
@@ -88,7 +88,7 @@ Assign asset permissions information to an existing invite/request. Can be used 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **STRING_32**| Unique identifier of the requesting business. | [default to null]
- **create_asset_invites_request** | [**CREATE_ASSET_INVITES_REQUEST**](CREATE_ASSET_INVITES_REQUEST.md)| A list of invites/requests together with the asset permissions to be assigned to the invite/request.  | 
+ **create_asset_invites_request** | [**CREATE_ASSET_INVITES_REQUEST**](CREATE_ASSET_INVITES_REQUEST.md)|  | 
 
 ### Return type
 
@@ -119,7 +119,7 @@ Create batch invites or requests. Can create batch invites or requests as descri
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **STRING_32**| Unique identifier of the requesting business. | [default to null]
- **create_membership_or_partnership_invites_body** | [**CREATE_MEMBERSHIP_OR_PARTNERSHIP_INVITES_BODY**](CREATE_MEMBERSHIP_OR_PARTNERSHIP_INVITES_BODY.md)| An object with the properties: invite_type, partners, members, business_role | 
+ **create_membership_or_partnership_invites_body** | [**CREATE_MEMBERSHIP_OR_PARTNERSHIP_INVITES_BODY**](CREATE_MEMBERSHIP_OR_PARTNERSHIP_INVITES_BODY.md)|  | 
 
 ### Return type
 
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **invites**
-> invites (business_id: STRING_32 ; is_member:  detachable BOOLEAN ; invite_status:  detachable LIST [STRING_32] ; invite_type:  detachable INVITE_TYPE ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ): detachable GET_INVITES_200_RESPONSE
+> invites (business_id: STRING_32 ; is_member:  detachable BOOLEAN ; invite_status:  detachable LIST [INVITE_FILTER_STATUS] ; invite_type:  detachable INVITE_TYPE ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ): detachable GET_INVITES_200_RESPONSE
 
 
 Get invites/requests
@@ -151,10 +151,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **STRING_32**| Unique identifier of the requesting business. | [default to null]
  **is_member** | **BOOLEAN**| A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional] [default to true]
- **invite_status** | [**LIST [STRING_32]**](STRING_32.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] [default to null]
+ **invite_status** | [**LIST [INVITE_FILTER_STATUS]**](INVITE_FILTER_STATUS.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] [default to null]
  **invite_type** | [**INVITE_TYPE**](.md)| Invite type to filter invites by. Only invites of the specified type will be returned. | [optional] [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

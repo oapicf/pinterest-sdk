@@ -1,2 +1,2 @@
-testCase,httpStatusCode,adAccountId
-Success,200,0
+testCase,httpStatusCode,adAccountId,advertiserDefinedEventsCreateRequest,adAccountId,eventNames,adAccountId,adAccountId,advertiserDefinedEventsCreateRequest
+Success,200,0,0,0,0,0,0,0

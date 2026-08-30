@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -56,8 +56,8 @@ func NewPacingDeliveryTypeFromValue(v string) (PacingDeliveryType, error) {
 }
 
 
-
-// AssertPacingDeliveryTypeRequired checks if the required fields are not zero-ed
+// AssertPacingDeliveryTypeRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertPacingDeliveryTypeRequired(obj PacingDeliveryType) error {
 	return nil
 }

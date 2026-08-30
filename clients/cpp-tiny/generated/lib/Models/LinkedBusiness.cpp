@@ -148,7 +148,7 @@ LinkedBusiness::getImageLargeUrl()
 }
 
 void
-LinkedBusiness::setImageLargeUrl(std::string  image_large_url)
+LinkedBusiness::setImageLargeUrl(std::string image_large_url)
 {
 	this->image_large_url = image_large_url;
 }
@@ -160,7 +160,7 @@ LinkedBusiness::getImageMediumUrl()
 }
 
 void
-LinkedBusiness::setImageMediumUrl(std::string  image_medium_url)
+LinkedBusiness::setImageMediumUrl(std::string image_medium_url)
 {
 	this->image_medium_url = image_medium_url;
 }
@@ -172,7 +172,7 @@ LinkedBusiness::getImageSmallUrl()
 }
 
 void
-LinkedBusiness::setImageSmallUrl(std::string  image_small_url)
+LinkedBusiness::setImageSmallUrl(std::string image_small_url)
 {
 	this->image_small_url = image_small_url;
 }
@@ -184,7 +184,7 @@ LinkedBusiness::getImageXlargeUrl()
 }
 
 void
-LinkedBusiness::setImageXlargeUrl(std::string  image_xlarge_url)
+LinkedBusiness::setImageXlargeUrl(std::string image_xlarge_url)
 {
 	this->image_xlarge_url = image_xlarge_url;
 }
@@ -196,7 +196,7 @@ LinkedBusiness::getUsername()
 }
 
 void
-LinkedBusiness::setUsername(std::string  username)
+LinkedBusiness::setUsername(std::string username)
 {
 	this->username = username;
 }

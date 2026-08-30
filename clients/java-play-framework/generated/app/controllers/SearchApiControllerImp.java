@@ -1,9 +1,9 @@
 package controllers;
 
-import apimodels.Error;
+import apimodels.BoardsList200Response;
+import apimodels.PinsList200Response;
+import apimodels.PinterestLibError;
 import apimodels.SearchPartnerPins200Response;
-import apimodels.SearchUserBoardsGet200Response;
-import apimodels.SearchUserPinsList200Response;
 
 import play.mvc.Http;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SearchApiControllerImp extends SearchApiControllerImpInterface {
     @Override
     public SearchPartnerPins200Response searchPartnerPins(Http.Request request, @NotNull String term, @NotNull String countryCode, String bookmark, String locale,  @Min(1) @Max(50)Integer limit) throws Exception {
@@ -23,15 +23,15 @@ public class SearchApiControllerImp extends SearchApiControllerImpInterface {
     }
 
     @Override
-    public SearchUserBoardsGet200Response searchUserBoardsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String query) throws Exception {
+    public BoardsList200Response searchUserBoardsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String query, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
-        return new SearchUserBoardsGet200Response();
+        return new BoardsList200Response();
     }
 
     @Override
-    public SearchUserPinsList200Response searchUserPinsList(Http.Request request, @NotNull String query,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark) throws Exception {
+    public PinsList200Response searchUserPinsList(Http.Request request, @NotNull String query,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark) throws Exception {
         //Do your magic!!!
-        return new SearchUserPinsList200Response();
+        return new PinsList200Response();
     }
 
 }

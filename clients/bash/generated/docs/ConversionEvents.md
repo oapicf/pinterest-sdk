@@ -3,7 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**array[ConversionEventsDataInner]**](ConversionEventsDataInner.md) |  | [default to null]
+**events** | [**array[ConversionApiResponseEventsItems]**](ConversionApiResponseEventsItems.md) |  | [readonly] [default to null]
+**numUnderscoreeventsUnderscoreprocessed** | **integer** |  | [readonly] [default to null]
+**numUnderscoreeventsUnderscorereceived** | **integer** |  | [readonly] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

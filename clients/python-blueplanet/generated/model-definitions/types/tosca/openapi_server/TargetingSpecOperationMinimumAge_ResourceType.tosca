@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TargetingSpecOperationMinimumAge"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TargetingSpecOperationMinimumAge"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  TargetingSpecOperationMinimumAge {
+    title = TargetingSpecOperationMinimumAge
+    description = TargetingSpecOperationMinimumAge
+    derivedFrom = Root
+    properties {
+        _field {
+          type =  string
+          description = ""
+          enum = ["MINIMUM_AGE"]
+          optional = true
+        }
+        operation {
+          type =  string
+          description = ""
+          enum = ["SET"]
+          optional = true
+        }
+        value {
+          type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TargetingSpecOperationMinimumAge {
+    title = TargetingSpecOperationMinimumAge
+    description = TargetingSpecOperationMinimumAge
+    implements = openapi_server.resourceTypes.TargetingSpecOperationMinimumAge
+
+  }
+}

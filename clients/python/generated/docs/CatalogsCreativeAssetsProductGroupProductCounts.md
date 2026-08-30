@@ -6,7 +6,9 @@ Product counts for a Creative Assets CatalogsProductGroup
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**app_links** | **float** |  | 
 **catalog_type** | **str** |  | 
+**images** | **float** |  | 
 **total** | **float** |  | 
 **videos** | **float** |  | 
 

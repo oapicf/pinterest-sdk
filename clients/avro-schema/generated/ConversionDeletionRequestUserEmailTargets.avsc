@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ConversionDeletionRequestUserEmailTargets",
+  "fields": [
+    {
+      "name": "user_emails",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "Array of plain text user emails."
+    }
+  ]
+
+}

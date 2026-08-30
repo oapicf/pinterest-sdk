@@ -23,9 +23,10 @@ CatalogsCreativeAssetsItemErrorResponse::~CatalogsCreativeAssetsItemErrorRespons
 void
 CatalogsCreativeAssetsItemErrorResponse::__init()
 {
-	//catalog_type = new CatalogsType();
+	//catalog_type = std::string();
 	//creative_assets_id = std::string();
 	//new std::list()std::list> errors;
+	//item_response_kind = std::string();
 }
 
 void
@@ -46,6 +47,11 @@ CatalogsCreativeAssetsItemErrorResponse::__cleanup()
 	//delete errors;
 	//errors = NULL;
 	//}
+	//if(item_response_kind != NULL) {
+	//
+	//delete item_response_kind;
+	//item_response_kind = NULL;
+	//}
 	//
 }
 
@@ -59,12 +65,9 @@ CatalogsCreativeAssetsItemErrorResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsType")) {
-			jsonToValue(&catalog_type, node, "CatalogsType", "CatalogsType");
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_type, node, "std::string", "");
 		} else {
-			
-			CatalogsType* obj = static_cast<CatalogsType*> (&catalog_type);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -103,6 +106,17 @@ CatalogsCreativeAssetsItemErrorResponse::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *item_response_kindKey = "item_response_kind";
+	node = json_object_get_member(pJsonObject, item_response_kindKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&item_response_kind, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 CatalogsCreativeAssetsItemErrorResponse::CatalogsCreativeAssetsItemErrorResponse(char* json)
@@ -115,16 +129,11 @@ CatalogsCreativeAssetsItemErrorResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("CatalogsType")) {
-		CatalogsType obj = getCatalogType();
-		node = converttoJson(&obj, "CatalogsType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogType();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		CatalogsType obj = static_cast<CatalogsType> (getCatalogType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *catalog_typeKey = "catalog_type";
@@ -163,6 +172,15 @@ CatalogsCreativeAssetsItemErrorResponse::toJson()
 	
 	const gchar *errorsKey = "errors";
 	json_object_set_member(pJsonObject, errorsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getItemResponseKind();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *item_response_kindKey = "item_response_kind";
+	json_object_set_member(pJsonObject, item_response_kindKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -171,14 +189,14 @@ CatalogsCreativeAssetsItemErrorResponse::toJson()
 	return ret;
 }
 
-CatalogsType
+std::string
 CatalogsCreativeAssetsItemErrorResponse::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsCreativeAssetsItemErrorResponse::setCatalogType(CatalogsType  catalog_type)
+CatalogsCreativeAssetsItemErrorResponse::setCatalogType(std::string  catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -205,6 +223,18 @@ void
 CatalogsCreativeAssetsItemErrorResponse::setErrors(std::list <ItemValidationEvent> errors)
 {
 	this->errors = errors;
+}
+
+std::string
+CatalogsCreativeAssetsItemErrorResponse::getItemResponseKind()
+{
+	return item_response_kind;
+}
+
+void
+CatalogsCreativeAssetsItemErrorResponse::setItemResponseKind(std::string  item_response_kind)
+{
+	this->item_response_kind = item_response_kind;
 }
 
 

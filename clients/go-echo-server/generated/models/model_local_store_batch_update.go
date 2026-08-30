@@ -1,0 +1,37 @@
+package models
+
+type LocalStoreBatchUpdate struct {
+
+	// Primary address line of the store.
+	AddressPrimary string `json:"address_primary,omitempty"`
+
+	// Secondary address line of the store.
+	AddressSecondary string `json:"address_secondary,omitempty"`
+
+	// City where the store is located.
+	City string `json:"city,omitempty"`
+
+	// Country code where the store is located.
+	Country Country `json:"country,omitempty"`
+
+	// The ID of the local store.
+	Id string `json:"id" validate:"regexp=^\\d+$"`
+
+	// Geographic latitude coordinate of the store.
+	Latitude float32 `json:"latitude,omitempty"`
+
+	// Geographic longitude coordinate of the store.
+	Longitude float32 `json:"longitude,omitempty"`
+
+	// The name of the local store.
+	Name string `json:"name,omitempty"`
+
+	// Postal or ZIP code of the store.
+	PostalCode string `json:"postal_code,omitempty"`
+
+	// State or region code where the store is located.
+	Region string `json:"region,omitempty"`
+
+	// Merchant provided code for the local store. Unique within the merchant's catalog.
+	StoreCode string `json:"store_code,omitempty"`
+}

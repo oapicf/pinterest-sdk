@@ -14,4 +14,8 @@ Ad targeting types for MMM report
 
 * `Location` (value: `'LOCATION'`)
 
+* `Placement` (value: `'PLACEMENT'`)
+
+* `AudienceInclude` (value: `'AUDIENCE_INCLUDE'`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

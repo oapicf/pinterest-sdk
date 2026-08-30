@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **IntegrationsCommerceDel**
-> IntegrationsCommerceDel(external_business_id)
+> IntegrationMetadata IntegrationsCommerceDel(external_business_id)
 
 Delete commerce integration
 
@@ -32,7 +32,10 @@ var_external_business_id <- "external_business_id_example" # character | Externa
 api_instance <- IntegrationsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
-api_instance$IntegrationsCommerceDel(var_external_business_id)
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$IntegrationsCommerceDel(var_external_business_iddata_file = "result.txt")
+result <- api_instance$IntegrationsCommerceDel(var_external_business_id)
+dput(result)
 ```
 
 ### Parameters
@@ -43,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**IntegrationMetadata**](IntegrationMetadata.md)
 
 ### Authorization
 
@@ -57,8 +60,14 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Commerce Integration deleted successfully |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **IntegrationsCommerceGet**
 > IntegrationMetadata IntegrationsCommerceGet(external_business_id)
@@ -107,13 +116,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **409** | Can&#39;t access this integration metadata. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **IntegrationsCommercePatch**
-> IntegrationMetadata IntegrationsCommercePatch(external_business_id, integration_request_patch)
+> IntegrationMetadata IntegrationsCommercePatch(external_business_id, integration_metadata_update)
 
 Update commerce integration
 
@@ -127,14 +139,14 @@ library(openapi)
 #
 # prepare function argument(s)
 var_external_business_id <- "external_business_id_example" # character | External business ID for the integration.
-var_integration_request_patch <- IntegrationRequestPatch$new("additional_id_1_example", "connected_advertiser_id_example", "connected_lba_id_example", "connected_merchant_id_example", "connected_tag_id_example", "partner_access_token_example", 123, "partner_metadata_example", "partner_primary_email_example", "partner_refresh_token_example", 123, "scopes_example") # IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
+var_integration_metadata_update <- IntegrationMetadataUpdate$new("additional_id_1_example", "connected_advertiser_id_example", "connected_lba_id_example", "connected_merchant_id_example", "connected_tag_id_example", "partner_access_token_example", 123, "partner_metadata_example", "partner_primary_email_example", "partner_refresh_token_example", 123, "scopes_example") # IntegrationMetadataUpdate | 
 
 api_instance <- IntegrationsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$IntegrationsCommercePatch(var_external_business_id, var_integration_request_patchdata_file = "result.txt")
-result <- api_instance$IntegrationsCommercePatch(var_external_business_id, var_integration_request_patch)
+# result <- api_instance$IntegrationsCommercePatch(var_external_business_id, var_integration_metadata_updatedata_file = "result.txt")
+result <- api_instance$IntegrationsCommercePatch(var_external_business_id, var_integration_metadata_update)
 dput(result)
 ```
 
@@ -143,7 +155,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **external_business_id** | **character**| External business ID for the integration. | 
- **integration_request_patch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | 
+ **integration_metadata_update** | [**IntegrationMetadataUpdate**](IntegrationMetadataUpdate.md)|  | 
 
 ### Return type
 
@@ -161,13 +173,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **409** | Can&#39;t access this integration metadata. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **IntegrationsCommercePost**
-> IntegrationMetadata IntegrationsCommercePost(integration_request)
+> IntegrationMetadata IntegrationsCommercePost(integration_metadata_create)
 
 Create commerce integration
 
@@ -180,14 +195,14 @@ library(openapi)
 # Create commerce integration
 #
 # prepare function argument(s)
-var_integration_request <- IntegrationRequest$new("additional_id_1_example", "connected_advertiser_id_example", "connected_lba_id_example", "connected_merchant_id_example", "connected_tag_id_example", "external_business_id_example", "partner_access_token_example", 123, "partner_metadata_example", "partner_primary_email_example", "partner_refresh_token_example", 123, "scopes_example") # IntegrationRequest | Parameters to get create/update the Integration Metadata
+var_integration_metadata_create <- IntegrationMetadataCreate$new("additional_id_1_example", "connected_advertiser_id_example", "connected_lba_id_example", "connected_merchant_id_example", "connected_tag_id_example", "external_business_id_example", "partner_access_token_example", 123, "partner_metadata_example", "partner_primary_email_example", "partner_refresh_token_example", 123, "scopes_example") # IntegrationMetadataCreate | 
 
 api_instance <- IntegrationsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$IntegrationsCommercePost(var_integration_requestdata_file = "result.txt")
-result <- api_instance$IntegrationsCommercePost(var_integration_request)
+# result <- api_instance$IntegrationsCommercePost(var_integration_metadata_createdata_file = "result.txt")
+result <- api_instance$IntegrationsCommercePost(var_integration_metadata_create)
 dput(result)
 ```
 
@@ -195,7 +210,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_request** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | 
+ **integration_metadata_create** | [**IntegrationMetadataCreate**](IntegrationMetadataCreate.md)|  | 
 
 ### Return type
 
@@ -213,10 +228,14 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **409** | Can&#39;t access this integration metadata. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **IntegrationsGetById**
 > IntegrationRecord IntegrationsGetById(id)
@@ -232,7 +251,7 @@ library(openapi)
 # Get integration metadata
 #
 # prepare function argument(s)
-var_id <- "id_example" # character | Integration ID.
+var_id <- "id_example" # character | Integration record ID.
 
 api_instance <- IntegrationsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -247,7 +266,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **character**| Integration ID. | 
+ **id** | **character**| Integration record ID. | 
 
 ### Return type
 
@@ -265,9 +284,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **IntegrationsGetList**
 > IntegrationsGetList200Response IntegrationsGetList(bookmark = var.bookmark, page_size = 25)
@@ -284,7 +307,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- IntegrationsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -300,7 +323,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -318,11 +341,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **IntegrationsLogsPost**
-> IntegrationLogsSuccessResponse IntegrationsLogsPost(integration_logs_request)
+> IntegrationLogsSuccessResponse IntegrationsLogsPost(integration_logs_request_create)
 
 Receives batched logs from integration applications.
 
@@ -335,14 +363,14 @@ library(openapi)
 # Receives batched logs from integration applications.
 #
 # prepare function argument(s)
-var_integration_logs_request <- IntegrationLogsRequest$new(c(IntegrationLog$new(123, "APP", "INFO", "advertiser_id_example", "app_version_number_example", IntegrationLogClientError$new("cause_example", 123, "file_name_example", 123, "message_example", "message_detail_example", "name_example", 123, "stack_trace_example"), "external_business_id_example", "feed_profile_id_example", "merchant_id_example", "message_example", "platform_version_number_example", IntegrationLogClientRequest$new("host_example", "GET", "path_example", c(key = "inner_example"), c(key = "inner_example"), 123), "tag_id_example"))) # IntegrationLogsRequest | Ingest log information from external integration application.
+var_integration_logs_request_create <- IntegrationLogsRequestCreate$new(c(IntegrationLog$new(123, IntegrationLogEventType$new(), IntegrationLogLevel$new(), "advertiser_id_example", "app_version_number_example", IntegrationLogClientError$new("cause_example", 123, "file_name_example", 123, "message_example", "message_detail_example", "name_example", 123, "stack_trace_example"), "external_business_id_example", "feed_profile_id_example", "merchant_id_example", "message_example", "platform_version_number_example", IntegrationLogClientRequest$new("host_example", HttpMethod$new(), "path_example", c(key = "inner_example"), c(key = "inner_example"), 123), "tag_id_example"))) # IntegrationLogsRequestCreate | 
 
 api_instance <- IntegrationsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$IntegrationsLogsPost(var_integration_logs_requestdata_file = "result.txt")
-result <- api_instance$IntegrationsLogsPost(var_integration_logs_request)
+# result <- api_instance$IntegrationsLogsPost(var_integration_logs_request_createdata_file = "result.txt")
+result <- api_instance$IntegrationsLogsPost(var_integration_logs_request_create)
 dput(result)
 ```
 
@@ -350,7 +378,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_logs_request** | [**IntegrationLogsRequest**](IntegrationLogsRequest.md)| Ingest log information from external integration application. | 
+ **integration_logs_request_create** | [**IntegrationLogsRequestCreate**](IntegrationLogsRequestCreate.md)|  | 
 
 ### Return type
 
@@ -368,7 +396,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success. |  -  |
-| **400** | Bad request. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The server could not understand the request due to invalid syntax. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

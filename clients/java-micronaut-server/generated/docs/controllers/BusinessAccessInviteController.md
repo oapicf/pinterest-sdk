@@ -42,7 +42,7 @@ Name | Type | Description  | Notes
 <a id="cancelInvitesOrRequests"></a>
 # **cancelInvitesOrRequests**
 ```java
-Mono<DeleteInvitesResultsResponseArray> BusinessAccessInviteController.cancelInvitesOrRequests(businessIdcancelInvitesBody)
+Mono<CancelInvitesResponse> BusinessAccessInviteController.cancelInvitesOrRequests(businessIdcancelInvitesRequest)
 ```
 
 Cancel invites/requests
@@ -53,10 +53,10 @@ Cancel membership/partnership invites and/or requests.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **businessId** | `String` | Unique identifier of the requesting business. |
-**cancelInvitesBody** | [**CancelInvitesBody**](../../docs/models/CancelInvitesBody.md) | A list with invite ids |
+**cancelInvitesRequest** | [**CancelInvitesRequest**](../../docs/models/CancelInvitesRequest.md) |  |
 
 ### Return type
-[**DeleteInvitesResultsResponseArray**](../../docs/models/DeleteInvitesResultsResponseArray.md)
+[**CancelInvitesResponse**](../../docs/models/CancelInvitesResponse.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `biz_access:write`
@@ -79,7 +79,7 @@ Assign asset permissions information to an existing invite/request. Can be used 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **businessId** | `String` | Unique identifier of the requesting business. |
-**createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](../../docs/models/CreateAssetInvitesRequest.md) | A list of invites/requests together with the asset permissions to be assigned to the invite/request.  |
+**createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](../../docs/models/CreateAssetInvitesRequest.md) |  |
 
 ### Return type
 [**UpdateInvitesResultsResponseArray**](../../docs/models/UpdateInvitesResultsResponseArray.md)
@@ -105,7 +105,7 @@ Create batch invites or requests. Can create batch invites or requests as descri
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **businessId** | `String` | Unique identifier of the requesting business. |
-**createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](../../docs/models/CreateMembershipOrPartnershipInvitesBody.md) | An object with the properties: invite_type, partners, members, business_role |
+**createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](../../docs/models/CreateMembershipOrPartnershipInvitesBody.md) |  |
 
 ### Return type
 [**CreateInvitesResultsResponseArray**](../../docs/models/CreateInvitesResultsResponseArray.md)
@@ -132,10 +132,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **businessId** | `String` | Unique identifier of the requesting business. |
 **isMember** | `Boolean` | A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional parameter] [default to `true`]
-**inviteStatus** | [**List&lt;String&gt;**](../../docs/models/String.md) | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional parameter] [enum: `PENDING`, `EXPIRED`]
+**inviteStatus** | [**List&lt;InviteFilterStatus&gt;**](../../docs/models/InviteFilterStatus.md) | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional parameter]
 **inviteType** | [**InviteType**](../../docs/models/.md) | Invite type to filter invites by. Only invites of the specified type will be returned. | [optional parameter] [enum: `MEMBER_INVITE`, `PARTNER_INVITE`, `PARTNER_REQUEST`]
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`]
 
 ### Return type
 [**GetInvites200Response**](../../docs/models/GetInvites200Response.md)

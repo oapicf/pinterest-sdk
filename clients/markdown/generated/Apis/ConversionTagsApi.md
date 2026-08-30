@@ -124,7 +124,7 @@ Get Ocpm eligible conversion tags
 
 <a name="pageVisitConversionTags/get"></a>
 # **pageVisitConversionTags/get**
-> page_visit_conversion_tags_get_200_response pageVisitConversionTags/get(ad\_account\_id, page\_size, order, bookmark)
+> page_visit_conversion_tags_get_200_response pageVisitConversionTags/get(ad\_account\_id, bookmark, page\_size, order)
 
 Get page visit conversion tags
 
@@ -135,9 +135,9 @@ Get page visit conversion tags
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | [**Pinterest.Lib.PaginationOrder**](../Models/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING] |
 
 ### Return type
 

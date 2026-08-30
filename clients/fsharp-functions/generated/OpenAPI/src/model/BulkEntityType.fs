@@ -15,6 +15,7 @@ module BulkEntityType =
   let KEYWORDEnum = "KEYWORD"
   let LABELEnum = "LABEL"
   let SCHEDULEEnum = "SCHEDULE"
+  let ENTITYHISTORYEnum = "ENTITY_HISTORY"
   type BulkEntityType = string
 
   //#endregion

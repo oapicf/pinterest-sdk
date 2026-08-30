@@ -9,14 +9,13 @@ Method | HTTP request | Description
 
 
 # **audience_insights_get**
-> AudienceInsightsResponse audience_insights_get(ad_account_id, audience_insight_type)
+> AudienceInsights audience_insights_get(ad_account_id, audience_insight_type)
 
 Get audience insights
 
-Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the
-ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's
-total audience.<p/>
-<a href="https://help.pinterest.com/en/business/article/audience-insights" target="_blank">Learn more about Audience Insights</a>.
+Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.
+
+[Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 
 ### Example
 
@@ -26,7 +25,7 @@ total audience.<p/>
 ```python
 import pinterestsdk
 from pinterestsdk.models.audience_insight_type import AudienceInsightType
-from pinterestsdk.models.audience_insights_response import AudienceInsightsResponse
+from pinterestsdk.models.audience_insights import AudienceInsights
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -50,7 +49,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AudienceInsightsApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    audience_insight_type = YOUR_TOTAL_AUDIENCE # AudienceInsightType | Type of audience insights. (default to YOUR_TOTAL_AUDIENCE)
+    audience_insight_type = pinterestsdk.AudienceInsightType() # AudienceInsightType | Type of audience insights.
 
     try:
         # Get audience insights
@@ -69,11 +68,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **audience_insight_type** | [**AudienceInsightType**](.md)| Type of audience insights. | [default to YOUR_TOTAL_AUDIENCE]
+ **audience_insight_type** | [**AudienceInsightType**](.md)| Type of audience insights. | 
 
 ### Return type
 
-[**AudienceInsightsResponse**](AudienceInsightsResponse.md)
+[**AudienceInsights**](AudienceInsights.md)
 
 ### Authorization
 
@@ -88,13 +87,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **audience_insights_scope_and_type_get**
-> AudienceDefinitionResponse audience_insights_scope_and_type_get(ad_account_id)
+> AudienceInsightsScopeAndTypeGet200Response audience_insights_scope_and_type_get(ad_account_id)
 
 Get audience insights scope and type
 
@@ -107,7 +111,7 @@ Get the scope and type of available audiences, which along with a date, is an au
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.audience_definition_response import AudienceDefinitionResponse
+from pinterestsdk.models.audience_insights_scope_and_type_get200_response import AudienceInsightsScopeAndTypeGet200Response
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -152,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AudienceDefinitionResponse**](AudienceDefinitionResponse.md)
+[**AudienceInsightsScopeAndTypeGet200Response**](AudienceInsightsScopeAndTypeGet200Response.md)
 
 ### Authorization
 
@@ -167,8 +171,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

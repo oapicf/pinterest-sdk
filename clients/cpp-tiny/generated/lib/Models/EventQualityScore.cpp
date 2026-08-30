@@ -153,7 +153,7 @@ EventQualityScore::getIngestionSource()
 }
 
 void
-EventQualityScore::setIngestionSource(IngestionSourceOptions  ingestion_source)
+EventQualityScore::setIngestionSource(IngestionSourceOptions ingestion_source)
 {
 	this->ingestion_source = ingestion_source;
 }
@@ -165,7 +165,7 @@ EventQualityScore::getLookbackPeriod()
 }
 
 void
-EventQualityScore::setLookbackPeriod(LookbackPeriodOptions  lookback_period)
+EventQualityScore::setLookbackPeriod(LookbackPeriodOptions lookback_period)
 {
 	this->lookback_period = lookback_period;
 }
@@ -177,7 +177,7 @@ EventQualityScore::getOverallStatus()
 }
 
 void
-EventQualityScore::setOverallStatus(OverallStatusOptions  overall_status)
+EventQualityScore::setOverallStatus(OverallStatusOptions overall_status)
 {
 	this->overall_status = overall_status;
 }
@@ -189,7 +189,7 @@ EventQualityScore::getQualityComponents()
 }
 
 void
-EventQualityScore::setQualityComponents(QualityComponents  quality_components)
+EventQualityScore::setQualityComponents(QualityComponents quality_components)
 {
 	this->quality_components = quality_components;
 }
@@ -201,7 +201,7 @@ EventQualityScore::getSourcePlatform()
 }
 
 void
-EventQualityScore::setSourcePlatform(SourcePlatformOptions  source_platform)
+EventQualityScore::setSourcePlatform(SourcePlatformOptions source_platform)
 {
 	this->source_platform = source_platform;
 }

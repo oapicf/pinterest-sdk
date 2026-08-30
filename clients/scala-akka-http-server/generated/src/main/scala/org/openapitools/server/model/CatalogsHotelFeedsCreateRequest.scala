@@ -6,7 +6,7 @@ package org.openapitools.server.model
  *
  * Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
  *
- * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. for example: ''null''
+ * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. for example: ''null''
  * @param catalogType  for example: ''null''
  * @param credentials  for example: ''null''
  * @param defaultCurrency  for example: ''null''
@@ -19,10 +19,10 @@ package org.openapitools.server.model
 */
 final case class CatalogsHotelFeedsCreateRequest (
   catalogId: Option[String] = None,
-  catalogType: CatalogsType,
+  catalogType: String,
   credentials: Option[CatalogsFeedCredentials] = None,
   defaultCurrency: Option[NullableCurrency] = None,
-  defaultLocale: CatalogsFeedsCreateRequestDefaultLocale,
+  defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale,
   format: CatalogsFormat,
   location: String,
   name: String,

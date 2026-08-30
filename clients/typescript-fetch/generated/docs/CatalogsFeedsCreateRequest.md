@@ -11,7 +11,7 @@ Name | Type
 `defaultAvailability` | [ProductAvailabilityType](ProductAvailabilityType.md)
 `defaultCountry` | [Country](Country.md)
 `defaultCurrency` | [NullableCurrency](NullableCurrency.md)
-`defaultLocale` | [CatalogsFeedsCreateRequestDefaultLocale](CatalogsFeedsCreateRequestDefaultLocale.md)
+`defaultLocale` | [CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale](CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.md)
 `format` | [CatalogsFormat](CatalogsFormat.md)
 `location` | string
 `name` | string

@@ -1,0 +1,29 @@
+package models
+
+// CustomerListRecordRow - A single row in a multi-field customer list (v2 format).
+type CustomerListRecordRow struct {
+
+	// Email address (plain or hashed with SHA1, SHA256, or MD5).
+	Email string `json:"email,omitempty"`
+
+	// External ID identifier (not hashed).
+	ExternalId string `json:"external_id,omitempty"`
+
+	// Hashed phone number (hashed with SHA1, SHA256, or MD5).
+	HashedPhoneNumber string `json:"hashed_phone_number,omitempty"`
+
+	// Hashed pinner ID (hashed with SHA1, SHA256, or MD5).
+	HashedPinnerId string `json:"hashed_pinner_id,omitempty"`
+
+	// IP address (not hashed).
+	IpAddress string `json:"ip_address,omitempty"`
+
+	// LiveRamp envelope identifier (Base64-encoded, not hashed).
+	LiverampEnvelope string `json:"liveramp_envelope,omitempty"`
+
+	// Mobile advertising ID (plain or hashed with SHA1, SHA256, or MD5).
+	Maid string `json:"maid,omitempty"`
+
+	// User agent string (not hashed).
+	UserAgent string `json:"user_agent,omitempty"`
+}

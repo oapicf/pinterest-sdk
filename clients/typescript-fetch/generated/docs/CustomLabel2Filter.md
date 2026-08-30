@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`cUSTOMLABEL2` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
+`cUSTOMLABEL2` | [CatalogsProductGroupFilterOperatorTypeCriteria](CatalogsProductGroupFilterOperatorTypeCriteria.md)
 
 ## Example
 

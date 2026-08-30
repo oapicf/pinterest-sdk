@@ -6,14 +6,14 @@
 
 Name | Type
 ------------ | -------------
-`bid` | number
-`matchType` | [MatchTypeResponse](MatchTypeResponse.md)
-`value` | string
 `archived` | boolean
+`bid` | number
 `id` | string
+`matchType` | [MatchType](MatchType.md)
 `parentId` | string
 `parentType` | string
 `type` | string
+`value` | string
 
 ## Example
 
@@ -22,14 +22,14 @@ import type { Keyword } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "bid": null,
-  "matchType": null,
-  "value": null,
   "archived": false,
+  "bid": null,
   "id": 383791336903426391,
+  "matchType": null,
   "parentId": 383791336903426391,
   "parentType": campaign,
   "type": keyword,
+  "value": null,
 } satisfies Keyword
 
 console.log(example)

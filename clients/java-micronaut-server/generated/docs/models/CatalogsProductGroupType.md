@@ -25,5 +25,7 @@ The class is defined in **[CatalogsProductGroupType.java](../../src/main/java/or
 
 * `I2_PC` (value: `"I2PC"`)
 
+* `CATALOG_EXPANSION` (value: `"CATALOG_EXPANSION"`)
+
 
 

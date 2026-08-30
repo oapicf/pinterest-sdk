@@ -65,7 +65,7 @@ GoogleProductCategory6Filter::getGOOGLEPRODUCTCATEGORY6()
 }
 
 void
-GoogleProductCategory6Filter::setGOOGLEPRODUCTCATEGORY6(CatalogsProductGroupMultipleStringListCriteria  gOOGLE_PRODUCT_CATEGORY_6)
+GoogleProductCategory6Filter::setGOOGLEPRODUCTCATEGORY6(CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_6)
 {
 	this->gOOGLE_PRODUCT_CATEGORY_6 = gOOGLE_PRODUCT_CATEGORY_6;
 }

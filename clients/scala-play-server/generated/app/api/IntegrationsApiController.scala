@@ -5,16 +5,16 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.Error
-import model.IntegrationLogsRequest
+import model.IntegrationLogsInvalidLogResponse
+import model.IntegrationLogsRequestCreate
 import model.IntegrationLogsSuccessResponse
 import model.IntegrationMetadata
+import model.IntegrationMetadataCreate
+import model.IntegrationMetadataUpdate
 import model.IntegrationRecord
-import model.IntegrationRequest
-import model.IntegrationRequestPatch
 import model.IntegrationsGetList200Response
-import model.IntegrationsLogsPost400Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class IntegrationsApiController @Inject()(cc: ControllerComponents, api: IntegrationsApi) extends AbstractController(cc) {
   /**
@@ -22,12 +22,13 @@ class IntegrationsApiController @Inject()(cc: ControllerComponents, api: Integra
     * @param externalBusinessId External business ID for the integration.
     */
   def integrationsCommerceDel(externalBusinessId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): Unit = {
+    def executeApi(): IntegrationMetadata = {
       api.integrationsCommerceDel(externalBusinessId)
     }
 
-    executeApi()
-    Ok
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
   }
 
   /**
@@ -50,10 +51,10 @@ class IntegrationsApiController @Inject()(cc: ControllerComponents, api: Integra
     */
   def integrationsCommercePatch(externalBusinessId: String): Action[AnyContent] = Action { request =>
     def executeApi(): IntegrationMetadata = {
-      val integrationRequestPatch = request.body.asJson.map(_.as[IntegrationRequestPatch]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "integrationRequestPatch")
+      val integrationMetadataUpdate = request.body.asJson.map(_.as[IntegrationMetadataUpdate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "integrationMetadataUpdate")
       }
-      api.integrationsCommercePatch(externalBusinessId, integrationRequestPatch)
+      api.integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate)
     }
 
     val result = executeApi()
@@ -66,10 +67,10 @@ class IntegrationsApiController @Inject()(cc: ControllerComponents, api: Integra
     */
   def integrationsCommercePost(): Action[AnyContent] = Action { request =>
     def executeApi(): IntegrationMetadata = {
-      val integrationRequest = request.body.asJson.map(_.as[IntegrationRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "integrationRequest")
+      val integrationMetadataCreate = request.body.asJson.map(_.as[IntegrationMetadataCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "integrationMetadataCreate")
       }
-      api.integrationsCommercePost(integrationRequest)
+      api.integrationsCommercePost(integrationMetadataCreate)
     }
 
     val result = executeApi()
@@ -79,7 +80,7 @@ class IntegrationsApiController @Inject()(cc: ControllerComponents, api: Integra
 
   /**
     * GET /v5/integrations/:id
-    * @param id Integration ID.
+    * @param id Integration record ID.
     */
   def integrationsGetById(id: String): Action[AnyContent] = Action { request =>
     def executeApi(): IntegrationRecord = {
@@ -114,10 +115,10 @@ class IntegrationsApiController @Inject()(cc: ControllerComponents, api: Integra
     */
   def integrationsLogsPost(): Action[AnyContent] = Action { request =>
     def executeApi(): IntegrationLogsSuccessResponse = {
-      val integrationLogsRequest = request.body.asJson.map(_.as[IntegrationLogsRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "integrationLogsRequest")
+      val integrationLogsRequestCreate = request.body.asJson.map(_.as[IntegrationLogsRequestCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "integrationLogsRequestCreate")
       }
-      api.integrationsLogsPost(integrationLogsRequest)
+      api.integrationsLogsPost(integrationLogsRequestCreate)
     }
 
     val result = executeApi()

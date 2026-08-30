@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.LabelCreateRequestLabelsInner;
+import com.prokarma.pkmst.model.LabelCreateItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -18,21 +18,18 @@ import java.util.List;
  * LabelCreateRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LabelCreateRequest   {
   @JsonProperty("labels")
   
-  private List<LabelCreateRequestLabelsInner> labels = new ArrayList<>();
+  private List<LabelCreateItem> labels = new ArrayList<>();
 
-  @JsonProperty("parent_id")
-  private String parentId;
-
-  public LabelCreateRequest labels(List<LabelCreateRequestLabelsInner> labels) {
+  public LabelCreateRequest labels(List<LabelCreateItem> labels) {
     this.labels = labels;
     return this;
   }
 
-  public LabelCreateRequest addLabelsItem(LabelCreateRequestLabelsInner labelsItem) {
+  public LabelCreateRequest addLabelsItem(LabelCreateItem labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -45,30 +42,12 @@ public class LabelCreateRequest   {
    * @return labels
    */
   @ApiModelProperty(required = true, value = "Labels that you are applying to the campaign.")
-  public List<LabelCreateRequestLabelsInner> getLabels() {
+  public List<LabelCreateItem> getLabels() {
     return labels;
   }
 
-  public void setLabels(List<LabelCreateRequestLabelsInner> labels) {
+  public void setLabels(List<LabelCreateItem> labels) {
     this.labels = labels;
-  }
-
-  public LabelCreateRequest parentId(String parentId) {
-    this.parentId = parentId;
-    return this;
-  }
-
-  /**
-   * Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
-   * @return parentId
-   */
-  @ApiModelProperty(example = "626753052072", required = true, value = "Unique identifier of the asset you are labelling. Currently, you can only label campaigns.")
-  public String getParentId() {
-    return parentId;
-  }
-
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
   }
 
 
@@ -81,13 +60,12 @@ public class LabelCreateRequest   {
       return false;
     }
     LabelCreateRequest labelCreateRequest = (LabelCreateRequest) o;
-    return Objects.equals(this.labels, labelCreateRequest.labels) &&
-        Objects.equals(this.parentId, labelCreateRequest.parentId);
+    return Objects.equals(this.labels, labelCreateRequest.labels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(labels, parentId);
+    return Objects.hash(labels);
   }
 
   @Override
@@ -96,7 +74,6 @@ public class LabelCreateRequest   {
     sb.append("class LabelCreateRequest {\n");
     
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -106,10 +83,7 @@ public class LabelCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

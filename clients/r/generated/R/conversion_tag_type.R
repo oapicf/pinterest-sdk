@@ -29,9 +29,6 @@ ConversionTagType <- R6::R6Class(
           stop("Use one of the valid values: ",
             paste0(enumvec, collapse = ", "))
         }
-        warning("Initializing ConversionTagType with DUMMY_ENUM. Use one of the valid values: ",
-          paste0(enumvec, collapse = ", "),
-          ". If you did not manually initialize ConversionTagType, this may already be overwritten by an enum loaded from a JSON config.")
       }
       private$value <- val
     },
@@ -92,7 +89,7 @@ ConversionTagType <- R6::R6Class(
 
 # add to utils.R
 .parse_ConversionTagType <- function(vals) {
-  res <- gsub("^\\[|\\]$", "", "[PAGE_LOAD, UNKNOWN, INITIALIZED, PAGE_VISIT, SIGNUP, CHECKOUT, CUSTOM, VIEW_CATEGORY, SEARCH, ADD_TO_CART, WATCH_VIDEO, LEAD, APP_INSTALL, WEB_SESSION, EXTERNAL_MEASUREMENT]")
+  res <- gsub("^\\[|\\]$", "", "[PAGE_LOAD, UNKNOWN, INITIALIZED, PAGE_VISIT, SIGNUP, CHECKOUT, CUSTOM, VIEW_CATEGORY, SEARCH, ADD_TO_CART, WATCH_VIDEO, LEAD, APP_INSTALL, WEB_SESSION, EXTERNAL_MEASUREMENT, ADD_PAYMENT_INFO, ADD_TO_WISHLIST, INITIATE_CHECKOUT, SUBSCRIBE, VIEW_CONTENT, ADVERTISER_DEFINED_EVENT, APP_OPEN, CONTACT, SCHEDULE, FIND_LOCATION, CUSTOMIZE_PRODUCT, SUBMIT_APPLICATION, START_TRIAL]")
   unlist(strsplit(res, ", "))
 }
 

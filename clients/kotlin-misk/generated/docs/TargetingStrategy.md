@@ -1,0 +1,14 @@
+
+# TargetingStrategy
+
+## Enum
+
+
+    * `CHOOSE_YOUR_OWN` (value: `"CHOOSE_YOUR_OWN"`)
+
+    * `FIND_NEW_CUSTOMERS` (value: `"FIND_NEW_CUSTOMERS"`)
+
+    * `RECONNECT_WITH_USERS` (value: `"RECONNECT_WITH_USERS"`)
+
+
+

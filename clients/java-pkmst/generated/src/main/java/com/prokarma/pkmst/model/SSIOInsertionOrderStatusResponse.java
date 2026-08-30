@@ -12,10 +12,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
  *
  */
 /**
- * SSIOInsertionOrderStatusResponse
+ * SSIO insertion order status response for a single pin order id lookup.
  */
+@ApiModel(description = "SSIO insertion order status response for a single pin order id lookup.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SSIOInsertionOrderStatusResponse   {
   @JsonProperty("creation_time")
   private String creationTime;
@@ -117,10 +118,7 @@ public class SSIOInsertionOrderStatusResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -52,14 +52,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setImages(ImageSize  images);
+	void setImages(ImageSize images);
 	/*! \brief Get 
 	 */
 	std::string getMediaType();
 
 	/*! \brief Set 
 	 */
-	void setMediaType(std::string  media_type);
+	void setMediaType(std::string media_type);
 
 
     private:

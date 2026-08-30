@@ -5,6 +5,7 @@
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/asset_group_binding.dart';
+import 'package:openapi/src/model/asset_type_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,26 +14,27 @@ part 'asset_id_permissions.g.dart';
 /// An object containing the permissions a business member has on the asset.
 ///
 /// Properties:
-/// * [assetGroupInfo] 
+/// * [assetGroupInfo] - An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
 /// * [assetId] - Unique identifier of a business asset.
-/// * [assetType] - Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+/// * [assetType] 
 /// * [permissions] - Permission levels member or partner has on an asset.
 @BuiltValue()
 abstract class AssetIdPermissions implements Built<AssetIdPermissions, AssetIdPermissionsBuilder> {
+  /// An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
   @BuiltValueField(wireName: r'asset_group_info')
   AssetGroupBinding? get assetGroupInfo;
 
   /// Unique identifier of a business asset.
   @BuiltValueField(wireName: r'asset_id')
-  String? get assetId;
+  String get assetId;
 
-  /// Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
   @BuiltValueField(wireName: r'asset_type')
-  String? get assetType;
+  AssetTypeResponse get assetType;
+  // enum assetTypeEnum {  AD_ACCOUNT,  MERCHANT,  PROFILE,  ASSET_GROUP,  PINNER_LIST,  CONVERSION_TAG,  CATALOG,  CONVERSION_SEGMENT,  };
 
   /// Permission levels member or partner has on an asset.
   @BuiltValueField(wireName: r'permissions')
-  BuiltList<String>? get permissions;
+  BuiltList<String> get permissions;
 
   AssetIdPermissions._();
 
@@ -64,27 +66,21 @@ class _$AssetIdPermissionsSerializer implements PrimitiveSerializer<AssetIdPermi
         specifiedType: const FullType(AssetGroupBinding),
       );
     }
-    if (object.assetId != null) {
-      yield r'asset_id';
-      yield serializers.serialize(
-        object.assetId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.assetType != null) {
-      yield r'asset_type';
-      yield serializers.serialize(
-        object.assetType,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.permissions != null) {
-      yield r'permissions';
-      yield serializers.serialize(
-        object.permissions,
-        specifiedType: const FullType(BuiltList, [FullType(String)]),
-      );
-    }
+    yield r'asset_id';
+    yield serializers.serialize(
+      object.assetId,
+      specifiedType: const FullType(String),
+    );
+    yield r'asset_type';
+    yield serializers.serialize(
+      object.assetType,
+      specifiedType: const FullType(AssetTypeResponse),
+    );
+    yield r'permissions';
+    yield serializers.serialize(
+      object.permissions,
+      specifiedType: const FullType(BuiltList, [FullType(String)]),
+    );
   }
 
   @override
@@ -111,8 +107,9 @@ class _$AssetIdPermissionsSerializer implements PrimitiveSerializer<AssetIdPermi
         case r'asset_group_info':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(AssetGroupBinding),
-          ) as AssetGroupBinding;
+            specifiedType: const FullType.nullable(AssetGroupBinding),
+          ) as AssetGroupBinding?;
+          if (valueDes == null) continue;
           result.assetGroupInfo.replace(valueDes);
           break;
         case r'asset_id':
@@ -125,8 +122,8 @@ class _$AssetIdPermissionsSerializer implements PrimitiveSerializer<AssetIdPermi
         case r'asset_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType(AssetTypeResponse),
+          ) as AssetTypeResponse;
           result.assetType = valueDes;
           break;
         case r'permissions':

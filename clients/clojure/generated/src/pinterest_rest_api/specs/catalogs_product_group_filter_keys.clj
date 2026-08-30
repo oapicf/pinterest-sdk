@@ -1,40 +1,41 @@
 (ns pinterest-rest-api.specs.catalogs-product-group-filter-keys
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-pricing-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-pricing-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-currency-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filter-operator-type-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filter-operator-type-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filter-operator-type-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filter-operator-type-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filter-operator-type-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-gender-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-media-types-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-uint32-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-uint32-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-uint32-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-uint32-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-uint32-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-pinterest-product-category-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-criteria :refer :all]
             )
   (:import (java.io File)))
 
@@ -68,13 +69,14 @@
    (ds/req :GOOGLE_PRODUCT_CATEGORY_2) catalogs-product-group-multiple-string-list-criteria-spec
    (ds/req :GOOGLE_PRODUCT_CATEGORY_1) catalogs-product-group-multiple-string-list-criteria-spec
    (ds/req :GOOGLE_PRODUCT_CATEGORY_0) catalogs-product-group-multiple-string-list-criteria-spec
-   (ds/req :PRODUCT_GROUP) catalogs-product-group-multiple-string-criteria-spec
    (ds/req :CUSTOM_NUMBER_0) catalogs-product-group-uint32-criteria-spec
    (ds/req :CUSTOM_NUMBER_1) catalogs-product-group-uint32-criteria-spec
    (ds/req :CUSTOM_NUMBER_2) catalogs-product-group-uint32-criteria-spec
    (ds/req :CUSTOM_NUMBER_3) catalogs-product-group-uint32-criteria-spec
    (ds/req :CUSTOM_NUMBER_4) catalogs-product-group-uint32-criteria-spec
    (ds/req :TITLE_KEYWORDS) catalogs-product-group-multiple-string-criteria-spec
+   (ds/req :PINTEREST_PRODUCT_CATEGORIES) catalogs-product-group-multiple-pinterest-product-category-criteria-spec
+   (ds/req :PRODUCT_GROUP) catalogs-product-group-multiple-string-criteria-spec
    })
 
 (def catalogs-product-group-filter-keys-spec

@@ -13,6 +13,7 @@
    (ds/opt :currency) currency-spec
    (ds/opt :name) string?
    (ds/opt :owner_user_id) string?
+   (ds/opt :time_zone) string?
    })
 
 (def ad-account-create-spec

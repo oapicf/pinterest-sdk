@@ -47,10 +47,8 @@ class CreateAssetInvitesRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CreateAssetInvitesRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CreateAssetInvitesRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'invites'), 'Required key "CreateAssetInvitesRequest[invites]" is missing from JSON.');
+        assert(json[r'invites'] != null, 'Required key "CreateAssetInvitesRequest[invites]" has a null value in JSON.');
         return true;
       }());
 

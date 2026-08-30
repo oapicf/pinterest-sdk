@@ -11,7 +11,24 @@ Protected Class CatalogsReportParameters
 	#tag EndProperty
 
 
+    #tag Enum, Name = Catalog_typeEnum, Type = Integer, Flags = &h0
+        
+        Hotel
+        
+    #tag EndEnum
 
+
+	#tag Method, Flags = &h0
+		Shared Function Catalog_typeEnumToString(value As Catalog_typeEnum) As String
+		  Select Case value
+		    
+		    Case Catalog_typeEnum.Hotel
+		      Return "HOTEL"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -45,14 +62,6 @@ Protected Class CatalogsReportParameters
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="catalog_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

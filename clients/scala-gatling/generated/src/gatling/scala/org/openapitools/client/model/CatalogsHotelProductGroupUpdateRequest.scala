@@ -6,6 +6,7 @@ case class CatalogsHotelProductGroupUpdateRequest (
     _catalogType: Option[String],
     _description: Option[String],
     _filters: Option[CatalogsHotelProductGroupFilters],
+    /* Name of catalog product group */
     _name: Option[String]
 )
 object CatalogsHotelProductGroupUpdateRequest {

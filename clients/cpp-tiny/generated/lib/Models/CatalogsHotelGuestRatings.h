@@ -2,7 +2,7 @@
 /*
  * CatalogsHotelGuestRatings.h
  *
- * If specified, you must provide all properties
+ * 
  */
 
 #ifndef TINY_CPP_CLIENT_CatalogsHotelGuestRatings_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief If specified, you must provide all properties
+/*! \brief 
  *
  *  \ingroup Models
  *
@@ -51,28 +51,28 @@ public:
 
 	/*! \brief Set Max value for the hotel rating score.
 	 */
-	void setMaxScore(long  max_score);
+	void setMaxScore(long max_score);
 	/*! \brief Get Total number of people who have rated this hotel.
 	 */
 	int getNumberOfReviewers();
 
 	/*! \brief Set Total number of people who have rated this hotel.
 	 */
-	void setNumberOfReviewers(int  number_of_reviewers);
+	void setNumberOfReviewers(int number_of_reviewers);
 	/*! \brief Get System you use for guest reviews.
 	 */
 	std::string getRatingSystem();
 
 	/*! \brief Set System you use for guest reviews.
 	 */
-	void setRatingSystem(std::string  rating_system);
+	void setRatingSystem(std::string rating_system);
 	/*! \brief Get Your hotel's rating.
 	 */
 	long getScore();
 
 	/*! \brief Set Your hotel's rating.
 	 */
-	void setScore(long  score);
+	void setScore(long score);
 
 
     private:

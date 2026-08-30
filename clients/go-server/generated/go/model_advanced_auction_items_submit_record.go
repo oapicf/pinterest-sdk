@@ -5,45 +5,144 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 // AdvancedAuctionItemsSubmitRecord - Object describing an item bid option operation
 type AdvancedAuctionItemsSubmitRecord struct {
 
-	Operation AdvancedAuctionOperation `json:"operation"`
+	BidOptions AdvancedAuctionBidOptions `json:"bid_options"`
 
 	Country Country `json:"country"`
+
+	// Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+	Errors []AdvancedAuctionOperationError `json:"errors,omitempty"`
 
 	// The catalog retail item id in the merchant namespace
 	ItemId string `json:"item_id"`
 
 	Language Language `json:"language"`
 
-	BidOptions AdvancedAuctionBidOptions `json:"bid_options"`
-
-	// Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
-	Errors []AdvancedAuctionOperationError `json:"errors,omitempty"`
+	Operation string `json:"operation"`
 
 	// The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
 	UpdateMask *[]UpdateMaskBidOptionField `json:"update_mask"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into AdvancedAuctionItemsSubmitRecord
+func (o *AdvancedAuctionItemsSubmitRecord) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"bid_options",
+		"country",
+		"item_id",
+		"language",
+		"operation",
+		"update_mask",
+	}
 
-// AssertAdvancedAuctionItemsSubmitRecordRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"bid_options": false,
+		"country": false,
+		"item_id": false,
+		"language": false,
+		"operation": false,
+		"update_mask": true,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"bid_options": {},
+		"country": {},
+		"errors": {},
+		"item_id": {},
+		"language": {},
+		"operation": {},
+		"update_mask": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded AdvancedAuctionItemsSubmitRecord
+
+	if value, exists := allProperties["bid_options"]; exists {
+		if err = json.Unmarshal(value, &decoded.BidOptions); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["country"]; exists {
+		if err = json.Unmarshal(value, &decoded.Country); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["errors"]; exists {
+		if err = json.Unmarshal(value, &decoded.Errors); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["item_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.ItemId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["language"]; exists {
+		if err = json.Unmarshal(value, &decoded.Language); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["operation"]; exists {
+		if err = json.Unmarshal(value, &decoded.Operation); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["update_mask"]; exists {
+		if err = json.Unmarshal(value, &decoded.UpdateMask); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertAdvancedAuctionItemsSubmitRecordRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAdvancedAuctionItemsSubmitRecordRequired(obj AdvancedAuctionItemsSubmitRecord) error {
 	elements := map[string]interface{}{
-		"operation": obj.Operation,
-		"country": obj.Country,
-		"item_id": obj.ItemId,
-		"language": obj.Language,
 		"bid_options": obj.BidOptions,
-		"update_mask": obj.UpdateMask,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

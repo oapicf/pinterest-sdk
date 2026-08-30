@@ -1,0 +1,13 @@
+# EventProcessingStatus
+
+Status of a single event in the response.
+
+## Enum
+
+* `FAILED` (value: `'failed'`)
+
+* `PROCESSED` (value: `'processed'`)
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

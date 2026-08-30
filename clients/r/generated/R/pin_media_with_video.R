@@ -13,6 +13,7 @@
 #' @field images  \link{ImageSize} [optional]
 #' @field media_type  character
 #' @field video_url Video url (720p).  **Note:** This field is limited and not available to all apps. character [optional]
+#' @field video_url_hls Video url (HLS).  **Note:** This field is limited and not available to all apps. character [optional]
 #' @field width Width (in pixels). Field maybe null after creation due to video processing time. integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,6 +27,7 @@ PinMediaWithVideo <- R6::R6Class(
     `images` = NULL,
     `media_type` = NULL,
     `video_url` = NULL,
+    `video_url_hls` = NULL,
     `width` = NULL,
 
     #' @description
@@ -37,9 +39,10 @@ PinMediaWithVideo <- R6::R6Class(
     #' @param height Height (in pixels). Field maybe null after creation due to video processing time.
     #' @param images images
     #' @param video_url Video url (720p).  **Note:** This field is limited and not available to all apps.
+    #' @param video_url_hls Video url (HLS).  **Note:** This field is limited and not available to all apps.
     #' @param width Width (in pixels). Field maybe null after creation due to video processing time.
     #' @param ... Other optional arguments.
-    initialize = function(`media_type`, `cover_image_url` = NULL, `duration` = NULL, `height` = NULL, `images` = NULL, `video_url` = NULL, `width` = NULL, ...) {
+    initialize = function(`media_type`, `cover_image_url` = NULL, `duration` = NULL, `height` = NULL, `images` = NULL, `video_url` = NULL, `video_url_hls` = NULL, `width` = NULL, ...) {
       if (!missing(`media_type`)) {
         if (!(`media_type` %in% c("video"))) {
           stop(paste("Error! \"", `media_type`, "\" cannot be assigned to `media_type`. Must be \"video\".", sep = ""))
@@ -73,6 +76,12 @@ PinMediaWithVideo <- R6::R6Class(
           stop(paste("Error! Invalid data for `video_url`. Must be a string:", `video_url`))
         }
         self$`video_url` <- `video_url`
+      }
+      if (!is.null(`video_url_hls`)) {
+        if (!(is.character(`video_url_hls`) && length(`video_url_hls`) == 1)) {
+          stop(paste("Error! Invalid data for `video_url_hls`. Must be a string:", `video_url_hls`))
+        }
+        self$`video_url_hls` <- `video_url_hls`
       }
       if (!is.null(`width`)) {
         if (!(is.numeric(`width`) && length(`width`) == 1)) {
@@ -127,7 +136,7 @@ PinMediaWithVideo <- R6::R6Class(
       }
       if (!is.null(self$`images`)) {
         PinMediaWithVideoObject[["images"]] <-
-          self$`images`$toSimpleType()
+          self$extractSimpleType(self$`images`)
       }
       if (!is.null(self$`media_type`)) {
         PinMediaWithVideoObject[["media_type"]] <-
@@ -137,11 +146,38 @@ PinMediaWithVideo <- R6::R6Class(
         PinMediaWithVideoObject[["video_url"]] <-
           self$`video_url`
       }
+      if (!is.null(self$`video_url_hls`)) {
+        PinMediaWithVideoObject[["video_url_hls"]] <-
+          self$`video_url_hls`
+      }
       if (!is.null(self$`width`)) {
         PinMediaWithVideoObject[["width"]] <-
           self$`width`
       }
       return(PinMediaWithVideoObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -173,6 +209,9 @@ PinMediaWithVideo <- R6::R6Class(
       }
       if (!is.null(this_object$`video_url`)) {
         self$`video_url` <- this_object$`video_url`
+      }
+      if (!is.null(this_object$`video_url_hls`)) {
+        self$`video_url_hls` <- this_object$`video_url_hls`
       }
       if (!is.null(this_object$`width`)) {
         self$`width` <- this_object$`width`
@@ -207,6 +246,7 @@ PinMediaWithVideo <- R6::R6Class(
       }
       self$`media_type` <- this_object$`media_type`
       self$`video_url` <- this_object$`video_url`
+      self$`video_url_hls` <- this_object$`video_url_hls`
       self$`width` <- this_object$`width`
       self
     },

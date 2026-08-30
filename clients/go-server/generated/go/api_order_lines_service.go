@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -28,30 +28,60 @@ func NewOrderLinesAPIService() *OrderLinesAPIService {
 	return &OrderLinesAPIService{}
 }
 
-// OrderLinesList - Get order lines
-func (s *OrderLinesAPIService) OrderLinesList(ctx context.Context, adAccountId string, pageSize int32, order string, bookmark string) (ImplResponse, error) {
+// OrderLinesList - Get order lines.
+func (s *OrderLinesAPIService) OrderLinesList(ctx context.Context, adAccountId string, bookmark string, pageSize int32, order PinterestLibPaginationOrder) (ImplResponse, error) {
 	// TODO - update OrderLinesList with the required logic for this service method.
 	// Add api_order_lines_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, OrderLinesList200Response{}) or use other options such as http.Ok ...
 	// return Response(200, OrderLinesList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("OrderLinesList method not implemented")
 }
 
 // OrderLinesGet - Get order line
-func (s *OrderLinesAPIService) OrderLinesGet(ctx context.Context, adAccountId string, orderLineId string) (ImplResponse, error) {
+func (s *OrderLinesAPIService) OrderLinesGet(ctx context.Context, orderLineId string, adAccountId string) (ImplResponse, error) {
 	// TODO - update OrderLinesGet with the required logic for this service method.
 	// Add api_order_lines_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, OrderLine{}) or use other options such as http.Ok ...
 	// return Response(200, OrderLine{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("OrderLinesGet method not implemented")
 }

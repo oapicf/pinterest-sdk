@@ -7,8 +7,9 @@ using namespace Tiny;
 CatalogsHotelItemResponse::CatalogsHotelItemResponse()
 {
 	attributes = CatalogsHotelAttributes();
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
 	hotel_id = std::string();
+	item_response_kind = std::string();
 	pins = std::list<Pin>();
 }
 
@@ -49,9 +50,8 @@ CatalogsHotelItemResponse::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -64,6 +64,19 @@ CatalogsHotelItemResponse::fromJson(std::string jsonObj)
 
 
         jsonToValue(&hotel_id, value, "std::string");
+
+
+    }
+
+    const char *item_response_kindKey = "item_response_kind";
+
+    if(object.has_key(item_response_kindKey))
+    {
+        bourne::json value = object[item_response_kindKey];
+
+
+
+        jsonToValue(&item_response_kind, value, "std::string");
 
 
     }
@@ -109,14 +122,21 @@ CatalogsHotelItemResponse::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
 
 
     object["hotel_id"] = getHotelId();
+
+
+
+
+
+
+    object["item_response_kind"] = getItemResponseKind();
 
 
 
@@ -146,19 +166,19 @@ CatalogsHotelItemResponse::getAttributes()
 }
 
 void
-CatalogsHotelItemResponse::setAttributes(CatalogsHotelAttributes  attributes)
+CatalogsHotelItemResponse::setAttributes(CatalogsHotelAttributes attributes)
 {
 	this->attributes = attributes;
 }
 
-CatalogsType
+std::string
 CatalogsHotelItemResponse::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsHotelItemResponse::setCatalogType(CatalogsType  catalog_type)
+CatalogsHotelItemResponse::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -170,9 +190,21 @@ CatalogsHotelItemResponse::getHotelId()
 }
 
 void
-CatalogsHotelItemResponse::setHotelId(std::string  hotel_id)
+CatalogsHotelItemResponse::setHotelId(std::string hotel_id)
 {
 	this->hotel_id = hotel_id;
+}
+
+std::string
+CatalogsHotelItemResponse::getItemResponseKind()
+{
+	return item_response_kind;
+}
+
+void
+CatalogsHotelItemResponse::setItemResponseKind(std::string item_response_kind)
+{
+	this->item_response_kind = item_response_kind;
 }
 
 std::list<Pin>
@@ -182,7 +214,7 @@ CatalogsHotelItemResponse::getPins()
 }
 
 void
-CatalogsHotelItemResponse::setPins(std::list <Pin> pins)
+CatalogsHotelItemResponse::setPins(std::list<Pin> pins)
 {
 	this->pins = pins;
 }

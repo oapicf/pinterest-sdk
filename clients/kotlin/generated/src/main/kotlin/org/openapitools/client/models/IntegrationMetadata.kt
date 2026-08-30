@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -29,7 +37,7 @@ import com.squareup.moshi.JsonClass
  * @param connectedTagId 
  * @param connectedUserId 
  * @param createdTimestamp 
- * @param externalBusinessId 
+ * @param externalBusinessId External business ID for the integration.
  * @param id 
  * @param partnerAccessTokenExpiry 
  * @param partnerMetadata 
@@ -62,6 +70,7 @@ data class IntegrationMetadata (
     @Json(name = "created_timestamp")
     val createdTimestamp: java.math.BigDecimal? = null,
 
+    /* External business ID for the integration. */
     @Json(name = "external_business_id")
     val externalBusinessId: kotlin.String? = null,
 

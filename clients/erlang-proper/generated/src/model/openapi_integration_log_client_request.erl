@@ -10,7 +10,7 @@
 
 -type openapi_integration_log_client_request() ::
   [ {'host', binary() }
-  | {'method', binary() }
+  | {'method', openapi_http_method:openapi_http_method() }
   | {'path', binary() }
   | {'request_headers', map() }
   | {'response_headers', map() }
@@ -23,7 +23,7 @@ openapi_integration_log_client_request() ->
 
 openapi_integration_log_client_request(Fields) ->
   Default = [ {'host', binary() }
-            , {'method', elements([<<"GET">>, <<"HEAD">>, <<"POST">>, <<"PUT">>, <<"DELETE">>, <<"CONNECT">>, <<"OPTIONS">>, <<"TRACE">>, <<"PATCH">>]) }
+            , {'method', openapi_http_method:openapi_http_method() }
             , {'path', binary() }
             , {'request_headers', map() }
             , {'response_headers', map() }

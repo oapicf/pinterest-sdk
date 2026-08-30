@@ -1,33 +1,33 @@
 #' Create a new SSIOOrderLine
 #'
 #' @description
-#' SSIOOrderLine Class
+#' A Salesforce SSIO order line.
 #'
 #' @docType class
 #' @title SSIOOrderLine
 #' @description SSIOOrderLine Class
 #' @format An \code{R6Class} generator object
 #' @field accepted_terms_id The SFDC id for the terms character [optional]
-#' @field accepted_terms_time The UTC timestamp (to the nearest sec) of when terms were accepted character [optional]
-#' @field ads_manager_order_line_id Ads manager OrderLineId character [optional]
+#' @field accepted_terms_time The UTC timestamp (to the nearest second) when terms were accepted. character [optional]
+#' @field ads_manager_order_line_id Ads manager order line id character [optional]
 #' @field agency_link Agency link character [optional]
-#' @field bill_to_company_name Bill To Company name character [optional]
+#' @field bill_to_company_name Bill-to company name character [optional]
 #' @field billing_contact_email Billing contact email character [optional]
 #' @field billing_contact_firstname Billing contact first name character [optional]
 #' @field billing_contact_lastname Billing contact last name character [optional]
-#' @field budget_amount If Budget order line, the budget amount. numeric [optional]
+#' @field budget_amount If budget order line, the budget amount. numeric [optional]
 #' @field currency_info  \link{Currency} [optional]
 #' @field end_date End date of the order line. character [optional]
-#' @field estimated_monthly_spend If Ongoing (perpetual) order line, the estimated monthly spend numeric [optional]
+#' @field estimated_monthly_spend If ongoing (perpetual) order line, the estimated monthly spend. numeric [optional]
 #' @field last_modified_date_time Last modified date. character [optional]
 #' @field media_contact_email Billing media email character [optional]
-#' @field media_contact_firstname Billing contact first name character [optional]
-#' @field media_contact_lastname Billing contact first name character [optional]
+#' @field media_contact_firstname Billing media contact first name character [optional]
+#' @field media_contact_lastname Billing media contact last name character [optional]
 #' @field order_name The order name character [optional]
 #' @field pin_order_id The pin order id associated with the order line in SFDC character [optional]
 #' @field pmp_name The Pinterest marketing partner name character [optional]
-#' @field po_number The po number character [optional]
-#' @field salesforce_order_line_id OrderLineId in SFDC character [optional]
+#' @field po_number The PO number character [optional]
+#' @field salesforce_order_line_id Order line id in SFDC character [optional]
 #' @field start_date Start date of the order line. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -62,26 +62,26 @@ SSIOOrderLine <- R6::R6Class(
     #' Initialize a new SSIOOrderLine class.
     #'
     #' @param accepted_terms_id The SFDC id for the terms
-    #' @param accepted_terms_time The UTC timestamp (to the nearest sec) of when terms were accepted
-    #' @param ads_manager_order_line_id Ads manager OrderLineId
+    #' @param accepted_terms_time The UTC timestamp (to the nearest second) when terms were accepted.
+    #' @param ads_manager_order_line_id Ads manager order line id
     #' @param agency_link Agency link
-    #' @param bill_to_company_name Bill To Company name
+    #' @param bill_to_company_name Bill-to company name
     #' @param billing_contact_email Billing contact email
     #' @param billing_contact_firstname Billing contact first name
     #' @param billing_contact_lastname Billing contact last name
-    #' @param budget_amount If Budget order line, the budget amount.
+    #' @param budget_amount If budget order line, the budget amount.
     #' @param currency_info currency_info
     #' @param end_date End date of the order line.
-    #' @param estimated_monthly_spend If Ongoing (perpetual) order line, the estimated monthly spend
+    #' @param estimated_monthly_spend If ongoing (perpetual) order line, the estimated monthly spend.
     #' @param last_modified_date_time Last modified date.
     #' @param media_contact_email Billing media email
-    #' @param media_contact_firstname Billing contact first name
-    #' @param media_contact_lastname Billing contact first name
+    #' @param media_contact_firstname Billing media contact first name
+    #' @param media_contact_lastname Billing media contact last name
     #' @param order_name The order name
     #' @param pin_order_id The pin order id associated with the order line in SFDC
     #' @param pmp_name The Pinterest marketing partner name
-    #' @param po_number The po number
-    #' @param salesforce_order_line_id OrderLineId in SFDC
+    #' @param po_number The PO number
+    #' @param salesforce_order_line_id Order line id in SFDC
     #' @param start_date Start date of the order line.
     #' @param ... Other optional arguments.
     initialize = function(`accepted_terms_id` = NULL, `accepted_terms_time` = NULL, `ads_manager_order_line_id` = NULL, `agency_link` = NULL, `bill_to_company_name` = NULL, `billing_contact_email` = NULL, `billing_contact_firstname` = NULL, `billing_contact_lastname` = NULL, `budget_amount` = NULL, `currency_info` = NULL, `end_date` = NULL, `estimated_monthly_spend` = NULL, `last_modified_date_time` = NULL, `media_contact_email` = NULL, `media_contact_firstname` = NULL, `media_contact_lastname` = NULL, `order_name` = NULL, `pin_order_id` = NULL, `pmp_name` = NULL, `po_number` = NULL, `salesforce_order_line_id` = NULL, `start_date` = NULL, ...) {
@@ -283,7 +283,7 @@ SSIOOrderLine <- R6::R6Class(
       }
       if (!is.null(self$`currency_info`)) {
         SSIOOrderLineObject[["currency_info"]] <-
-          self$`currency_info`$toSimpleType()
+          self$extractSimpleType(self$`currency_info`)
       }
       if (!is.null(self$`end_date`)) {
         SSIOOrderLineObject[["end_date"]] <-
@@ -334,6 +334,29 @@ SSIOOrderLine <- R6::R6Class(
           self$`start_date`
       }
       return(SSIOOrderLineObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -478,11 +501,11 @@ SSIOOrderLine <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      if (!str_detect(self$`accepted_terms_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")) {
+      if (!str_detect(self$`accepted_terms_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$")) {
         return(FALSE)
       }
 
-      if (!str_detect(self$`last_modified_date_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")) {
+      if (!str_detect(self$`last_modified_date_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$")) {
         return(FALSE)
       }
 
@@ -495,12 +518,12 @@ SSIOOrderLine <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (!str_detect(self$`accepted_terms_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")) {
-        invalid_fields["accepted_terms_time"] <- "Invalid value for `accepted_terms_time`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$."
+      if (!str_detect(self$`accepted_terms_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$")) {
+        invalid_fields["accepted_terms_time"] <- "Invalid value for `accepted_terms_time`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$."
       }
 
-      if (!str_detect(self$`last_modified_date_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")) {
-        invalid_fields["last_modified_date_time"] <- "Invalid value for `last_modified_date_time`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$."
+      if (!str_detect(self$`last_modified_date_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$")) {
+        invalid_fields["last_modified_date_time"] <- "Invalid value for `last_modified_date_time`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$."
       }
 
       invalid_fields

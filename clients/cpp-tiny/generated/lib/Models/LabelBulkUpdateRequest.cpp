@@ -7,8 +7,8 @@ using namespace Tiny;
 LabelBulkUpdateRequest::LabelBulkUpdateRequest()
 {
 	id = std::string();
-	status = std::string();
-	value = std::string();
+	parent_id = std::string();
+	status = LabelStatusBulkUpdate();
 }
 
 LabelBulkUpdateRequest::LabelBulkUpdateRequest(std::string jsonString)
@@ -39,6 +39,19 @@ LabelBulkUpdateRequest::fromJson(std::string jsonObj)
 
     }
 
+    const char *parent_idKey = "parent_id";
+
+    if(object.has_key(parent_idKey))
+    {
+        bourne::json value = object[parent_idKey];
+
+
+
+        jsonToValue(&parent_id, value, "std::string");
+
+
+    }
+
     const char *statusKey = "status";
 
     if(object.has_key(statusKey))
@@ -47,21 +60,9 @@ LabelBulkUpdateRequest::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&status, value, "std::string");
 
-
-    }
-
-    const char *valueKey = "value";
-
-    if(object.has_key(valueKey))
-    {
-        bourne::json value = object[valueKey];
-
-
-
-        jsonToValue(&value, value, "std::string");
-
+        LabelStatusBulkUpdate* obj = &status;
+		obj->fromJson(value.dump());
 
     }
 
@@ -84,15 +85,15 @@ LabelBulkUpdateRequest::toJson()
 
 
 
-    object["status"] = getStatus();
+    object["parent_id"] = getParentId();
 
 
 
 
 
 
-    object["value"] = getValue();
 
+	object["status"] = getStatus().toJson();
 
 
     return object;
@@ -106,33 +107,33 @@ LabelBulkUpdateRequest::getId()
 }
 
 void
-LabelBulkUpdateRequest::setId(std::string  id)
+LabelBulkUpdateRequest::setId(std::string id)
 {
 	this->id = id;
 }
 
 std::string
+LabelBulkUpdateRequest::getParentId()
+{
+	return parent_id;
+}
+
+void
+LabelBulkUpdateRequest::setParentId(std::string parent_id)
+{
+	this->parent_id = parent_id;
+}
+
+LabelStatusBulkUpdate
 LabelBulkUpdateRequest::getStatus()
 {
 	return status;
 }
 
 void
-LabelBulkUpdateRequest::setStatus(std::string  status)
+LabelBulkUpdateRequest::setStatus(LabelStatusBulkUpdate status)
 {
 	this->status = status;
-}
-
-std::string
-LabelBulkUpdateRequest::getValue()
-{
-	return value;
-}
-
-void
-LabelBulkUpdateRequest::setValue(std::string  value)
-{
-	this->value = value;
 }
 
 

@@ -3,10 +3,10 @@ package models
 // CatalogsItemsBatch - Object describing the catalogs items batch
 type CatalogsItemsBatch struct {
 
-	CatalogType CatalogsType `json:"catalog_type"`
-
 	// Id of the catalogs items batch
 	BatchId string `json:"batch_id,omitempty"`
+
+	CatalogType string `json:"catalog_type"`
 
 	// Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 	CompletedTime *time.Time `json:"completed_time,omitempty"`

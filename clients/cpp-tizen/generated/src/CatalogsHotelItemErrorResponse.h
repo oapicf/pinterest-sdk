@@ -9,7 +9,6 @@
 
 
 #include <string>
-#include "CatalogsType.h"
 #include "ItemValidationEvent.h"
 #include <list>
 #include "Object.h"
@@ -50,11 +49,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get Array with the errors for the item id requested
 	 */
 	std::list<ItemValidationEvent> getErrors();
@@ -69,11 +68,19 @@ public:
 	/*! \brief Set The catalog hotel id in the merchant namespace
 	 */
 	void setHotelId(std::string  hotel_id);
+	/*! \brief Get Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	 */
+	std::string getItemResponseKind();
+
+	/*! \brief Set Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	 */
+	void setItemResponseKind(std::string  item_response_kind);
 
 private:
-	CatalogsType catalog_type;
+	std::string catalog_type;
 	std::list <ItemValidationEvent>errors;
 	std::string hotel_id;
+	std::string item_response_kind;
 	void __init();
 	void __cleanup();
 

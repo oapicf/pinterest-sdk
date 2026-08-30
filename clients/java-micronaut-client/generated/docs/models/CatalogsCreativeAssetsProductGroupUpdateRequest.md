@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  |  [optional property]
 **description** | `String` |  |  [optional property]
 **filters** | [`CatalogsCreativeAssetsProductGroupFilters`](CatalogsCreativeAssetsProductGroupFilters.md) |  |  [optional property]
-**name** | `String` |  |  [optional property]
+**name** | `String` | Name of catalog product group |  [optional property]
 
 ## CatalogTypeEnum
 

@@ -7,14 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { GetPartnerAssetsResponse } from './getPartnerAssetsResponse';
+import { BaseBusinessAssets } from './baseBusinessAssets';
 
 
 export interface BusinessPartnerAssetAccessGet200Response { 
     bookmark?: string | null;
-    /**
-     * List assets on which you granted access to your partner or assets on which your partner has granted you access.
-     */
-    items: Array<GetPartnerAssetsResponse>;
+    items: Array<BaseBusinessAssets>;
 }
 

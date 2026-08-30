@@ -123,7 +123,7 @@ QuizPinQuestion::getOptions()
 }
 
 void
-QuizPinQuestion::setOptions(std::list <QuizPinOption> options)
+QuizPinQuestion::setOptions(std::list<QuizPinOption> options)
 {
 	this->options = options;
 }
@@ -135,7 +135,7 @@ QuizPinQuestion::getQuestionId()
 }
 
 void
-QuizPinQuestion::setQuestionId(long  question_id)
+QuizPinQuestion::setQuestionId(long question_id)
 {
 	this->question_id = question_id;
 }
@@ -147,7 +147,7 @@ QuizPinQuestion::getQuestionText()
 }
 
 void
-QuizPinQuestion::setQuestionText(std::string  question_text)
+QuizPinQuestion::setQuestionText(std::string question_text)
 {
 	this->question_text = question_text;
 }

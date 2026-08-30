@@ -7,15 +7,15 @@ import org.openapitools.api.factories.IntegrationsApiServiceFactory;
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
 
-import org.openapitools.model.Error;
-import org.openapitools.model.IntegrationLogsRequest;
+import org.openapitools.model.IntegrationLogsInvalidLogResponse;
+import org.openapitools.model.IntegrationLogsRequestCreate;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
 import org.openapitools.model.IntegrationMetadata;
+import org.openapitools.model.IntegrationMetadataCreate;
+import org.openapitools.model.IntegrationMetadataUpdate;
 import org.openapitools.model.IntegrationRecord;
-import org.openapitools.model.IntegrationRequest;
-import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
-import org.openapitools.model.IntegrationsLogsPost400Response;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 import org.openapitools.api.NotFoundException;
@@ -34,7 +34,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the integrations API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationsApi  {
    private final IntegrationsApiService delegate = IntegrationsApiServiceFactory.getIntegrationsApi();
 
@@ -42,15 +42,27 @@ public class IntegrationsApi  {
     @Path("/commerce/{external_business_id}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Delete commerce integration", notes = "Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.", response = Void.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Delete commerce integration", notes = "Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.", response = IntegrationMetadata.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
     }, tags={ "integrations", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 204, message = "Commerce Integration deleted successfully", response = Void.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationMetadata.class),
         
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = Void.class) })
+        @io.swagger.annotations.ApiResponse(code = 204, message = "Resource deleted successfully.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = IntegrationMetadata.class) })
     public Response integrationsCommerceDel(@ApiParam(value = "External business ID for the integration.",required=true) @PathParam("external_business_id") String externalBusinessId
 )
     throws NotFoundException {
@@ -66,13 +78,19 @@ public class IntegrationsApi  {
         })
     }, tags={ "integrations", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = IntegrationMetadata.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationMetadata.class),
         
-        @io.swagger.annotations.ApiResponse(code = 404, message = "Integration not found.", response = IntegrationMetadata.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = IntegrationMetadata.class),
         
-        @io.swagger.annotations.ApiResponse(code = 409, message = "Can't access this integration metadata.", response = IntegrationMetadata.class),
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = IntegrationMetadata.class),
         
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = IntegrationMetadata.class) })
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = IntegrationMetadata.class) })
     public Response integrationsCommerceGet(@ApiParam(value = "External business ID for the integration.",required=true) @PathParam("external_business_id") String externalBusinessId
 )
     throws NotFoundException {
@@ -88,18 +106,24 @@ public class IntegrationsApi  {
         })
     }, tags={ "integrations", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = IntegrationMetadata.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationMetadata.class),
         
-        @io.swagger.annotations.ApiResponse(code = 404, message = "Integration not found.", response = IntegrationMetadata.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = IntegrationMetadata.class),
         
-        @io.swagger.annotations.ApiResponse(code = 409, message = "Can't access this integration metadata.", response = IntegrationMetadata.class),
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = IntegrationMetadata.class),
         
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = IntegrationMetadata.class) })
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = IntegrationMetadata.class) })
     public Response integrationsCommercePatch(@ApiParam(value = "External business ID for the integration.",required=true) @PathParam("external_business_id") String externalBusinessId
-,@ApiParam(value = "Parameters to get create/update the Integration Metadata" ,required=true) IntegrationRequestPatch integrationRequestPatch
+,@ApiParam(value = "" ,required=true) IntegrationMetadataUpdate integrationMetadataUpdate
 )
     throws NotFoundException {
-        return delegate.integrationsCommercePatch(externalBusinessId,integrationRequestPatch);
+        return delegate.integrationsCommercePatch(externalBusinessId,integrationMetadataUpdate);
     }
     @POST
     @Path("/commerce")
@@ -111,17 +135,25 @@ public class IntegrationsApi  {
         })
     }, tags={ "integrations", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = IntegrationMetadata.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationMetadata.class),
         
-        @io.swagger.annotations.ApiResponse(code = 404, message = "Integration not found.", response = IntegrationMetadata.class),
+        @io.swagger.annotations.ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = IntegrationMetadata.class),
         
-        @io.swagger.annotations.ApiResponse(code = 409, message = "Can't access this integration metadata.", response = IntegrationMetadata.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = IntegrationMetadata.class),
         
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = IntegrationMetadata.class) })
-    public Response integrationsCommercePost(@ApiParam(value = "Parameters to get create/update the Integration Metadata" ,required=true) IntegrationRequest integrationRequest
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = IntegrationMetadata.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = IntegrationMetadata.class) })
+    public Response integrationsCommercePost(@ApiParam(value = "" ,required=true) IntegrationMetadataCreate integrationMetadataCreate
 )
     throws NotFoundException {
-        return delegate.integrationsCommercePost(integrationRequest);
+        return delegate.integrationsCommercePost(integrationMetadataCreate);
     }
     @GET
     @Path("/{id}")
@@ -133,12 +165,20 @@ public class IntegrationsApi  {
         })
     }, tags={ "integrations", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = IntegrationRecord.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationRecord.class),
         
-        @io.swagger.annotations.ApiResponse(code = 404, message = "Integration not found.", response = IntegrationRecord.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = IntegrationRecord.class),
         
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = IntegrationRecord.class) })
-    public Response integrationsGetById(@ApiParam(value = "Integration ID.",required=true) @PathParam("id") String id
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = IntegrationRecord.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = IntegrationRecord.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = IntegrationRecord.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = IntegrationRecord.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = IntegrationRecord.class) })
+    public Response integrationsGetById(@ApiParam(value = "Integration record ID.",required=true) @PathParam("id") String id
 )
     throws NotFoundException {
         return delegate.integrationsGetById(id);
@@ -153,11 +193,21 @@ public class IntegrationsApi  {
         })
     }, tags={ "integrations", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = IntegrationsGetList200Response.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationsGetList200Response.class),
         
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = IntegrationsGetList200Response.class) })
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = IntegrationsGetList200Response.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = IntegrationsGetList200Response.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = IntegrationsGetList200Response.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = IntegrationsGetList200Response.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = IntegrationsGetList200Response.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = IntegrationsGetList200Response.class) })
     public Response integrationsGetList(@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark") String bookmark
-,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25") @QueryParam("page_size") Integer pageSize
+,@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25") @QueryParam("page_size") Integer pageSize
 )
     throws NotFoundException {
         return delegate.integrationsGetList(bookmark,pageSize);
@@ -172,14 +222,22 @@ public class IntegrationsApi  {
         })
     }, tags={ "integrations", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success.", response = IntegrationLogsSuccessResponse.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationLogsSuccessResponse.class),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad request.", response = IntegrationLogsSuccessResponse.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The server could not understand the request due to invalid syntax.", response = IntegrationLogsSuccessResponse.class),
         
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = IntegrationLogsSuccessResponse.class) })
-    public Response integrationsLogsPost(@ApiParam(value = "Ingest log information from external integration application." ,required=true) IntegrationLogsRequest integrationLogsRequest
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = IntegrationLogsSuccessResponse.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = IntegrationLogsSuccessResponse.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = IntegrationLogsSuccessResponse.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = IntegrationLogsSuccessResponse.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = IntegrationLogsSuccessResponse.class) })
+    public Response integrationsLogsPost(@ApiParam(value = "" ,required=true) IntegrationLogsRequestCreate integrationLogsRequestCreate
 )
     throws NotFoundException {
-        return delegate.integrationsLogsPost(integrationLogsRequest);
+        return delegate.integrationsLogsPost(integrationLogsRequestCreate);
     }
 }

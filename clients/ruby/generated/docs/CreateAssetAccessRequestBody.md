@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **asset_requests** | [**Array&lt;CreateAssetAccessRequestBodyAssetRequestsInner&gt;**](CreateAssetAccessRequestBodyAssetRequestsInner.md) |  |  |
+| **asset_requests** | [**Array&lt;CreateAssetAccessRequestItem&gt;**](CreateAssetAccessRequestItem.md) |  |  |
 
 ## Example
 

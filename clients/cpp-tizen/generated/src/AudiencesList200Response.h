@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "Audience.h"
+#include "AdAccountsAudience.h"
 #include <list>
 #include "Object.h"
 
@@ -56,15 +56,15 @@ public:
 	void setBookmark(std::string  bookmark);
 	/*! \brief Get 
 	 */
-	std::list<Audience> getItems();
+	std::list<AdAccountsAudience> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <Audience> items);
+	void setItems(std::list <AdAccountsAudience> items);
 
 private:
 	std::string bookmark;
-	std::list <Audience>items;
+	std::list <AdAccountsAudience>items;
 	void __init();
 	void __cleanup();
 

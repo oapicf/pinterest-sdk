@@ -1,14 +1,19 @@
 #import "OAIAudienceSharingApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
+#import "OAIAdAccountToAdAccountSharedAudience.h"
+#import "OAIAdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.h"
+#import "OAIAdAccountToBusinessSharedAudience.h"
+#import "OAIAdAccountToBusinessSharedAudienceUpdateWithRequiredBody.h"
 #import "OAIAdAccountsAudiencesSharedAccountsList200Response.h"
 #import "OAIAudienceAccountType.h"
-#import "OAIAudiencesList200Response.h"
-#import "OAIBusinessSharedAudience.h"
-#import "OAIBusinessSharedAudienceResponse.h"
-#import "OAIError.h"
-#import "OAISharedAudience.h"
-#import "OAISharedAudienceResponse.h"
+#import "OAIBusinessToAdAccountSharedAudience.h"
+#import "OAIBusinessToAdAccountSharedAudienceUpdateWithRequiredBody.h"
+#import "OAIBusinessToBusinessSharedAudience.h"
+#import "OAIBusinessToBusinessSharedAudienceUpdateWithRequiredBody.h"
+#import "OAIOrder.h"
+#import "OAIPinterestLibError.h"
+#import "OAISharedAudiencesForBusinessList200Response.h"
 
 
 @interface OAIAudienceSharingApi ()
@@ -59,35 +64,24 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
 ///
 /// List accounts with access to an audience owned by an ad account
 /// List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
-///  @param adAccountId Unique identifier of an ad account. 
-///
 ///  @param audienceId Unique identifier of the audience to use to filter the results. 
 ///
 ///  @param accountType Filter accounts by account type. 
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
+///
 ///  @returns OAIAdAccountsAudiencesSharedAccountsList200Response*
 ///
--(NSURLSessionTask*) adAccountsAudiencesSharedAccountsListWithAdAccountId: (NSString*) adAccountId
-    audienceId: (NSString*) audienceId
+-(NSURLSessionTask*) adAccountsAudiencesSharedAccountsListWithAudienceId: (NSString*) audienceId
     accountType: (OAIAudienceAccountType) accountType
-    pageSize: (NSNumber*) pageSize
+    adAccountId: (NSString*) adAccountId
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
     completionHandler: (void (^)(OAIAdAccountsAudiencesSharedAccountsList200Response* output, NSError* error)) handler {
-    // verify the required parameter 'adAccountId' is set
-    if (adAccountId == nil) {
-        NSParameterAssert(adAccountId);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
-            NSError* error = [NSError errorWithDomain:kOAIAudienceSharingApiErrorDomain code:kOAIAudienceSharingApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
     // verify the required parameter 'audienceId' is set
     if (audienceId == nil) {
         NSParameterAssert(audienceId);
@@ -110,6 +104,17 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
         return nil;
     }
 
+    // verify the required parameter 'adAccountId' is set
+    if (adAccountId == nil) {
+        NSParameterAssert(adAccountId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
+            NSError* error = [NSError errorWithDomain:kOAIAudienceSharingApiErrorDomain code:kOAIAudienceSharingApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/ad_accounts/{ad_account_id}/audiences/shared/accounts"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -124,11 +129,11 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
     if (accountType != nil) {
         queryParams[@"account_type"] = accountType;
     }
-    if (pageSize != nil) {
-        queryParams[@"page_size"] = pageSize;
-    }
     if (bookmark != nil) {
         queryParams[@"bookmark"] = bookmark;
+    }
+    if (pageSize != nil) {
+        queryParams[@"page_size"] = pageSize;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -179,17 +184,17 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
 ///
 ///  @param accountType Filter accounts by account type. 
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
-///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
+///
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIAdAccountsAudiencesSharedAccountsList200Response*
 ///
 -(NSURLSessionTask*) businessAccountAudiencesSharedAccountsListWithBusinessId: (NSString*) businessId
     audienceId: (NSString*) audienceId
     accountType: (OAIAudienceAccountType) accountType
-    pageSize: (NSNumber*) pageSize
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
     completionHandler: (void (^)(OAIAdAccountsAudiencesSharedAccountsList200Response* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
@@ -238,11 +243,11 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
     if (accountType != nil) {
         queryParams[@"account_type"] = accountType;
     }
-    if (pageSize != nil) {
-        queryParams[@"page_size"] = pageSize;
-    }
     if (bookmark != nil) {
         queryParams[@"bookmark"] = bookmark;
+    }
+    if (pageSize != nil) {
+        queryParams[@"page_size"] = pageSize;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -289,19 +294,19 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
 /// Get a list of received audiences for the given business.
 ///  @param businessId Unique identifier of the requesting business. 
 ///
+///  @param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
-///
-///  @returns OAIAudiencesList200Response*
+///  @returns OAISharedAudiencesForBusinessList200Response*
 ///
 -(NSURLSessionTask*) sharedAudiencesForBusinessListWithBusinessId: (NSString*) businessId
+    order: (OAIOrder) order
     bookmark: (NSString*) bookmark
-    order: (NSString*) order
     pageSize: (NSNumber*) pageSize
-    completionHandler: (void (^)(OAIAudiencesList200Response* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAISharedAudiencesForBusinessList200Response* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -321,11 +326,11 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    if (bookmark != nil) {
-        queryParams[@"bookmark"] = bookmark;
-    }
     if (order != nil) {
         queryParams[@"order"] = order;
+    }
+    if (bookmark != nil) {
+        queryParams[@"bookmark"] = bookmark;
     }
     if (pageSize != nil) {
         queryParams[@"page_size"] = pageSize;
@@ -362,26 +367,26 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIAudiencesList200Response*"
+                              responseType: @"OAISharedAudiencesForBusinessList200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIAudiencesList200Response*)data, error);
+                                    handler((OAISharedAudiencesForBusinessList200Response*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Update audience sharing between ad accounts
-/// From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+/// From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param sharedAudience  
+///  @param adAccountToAdAccountSharedAudienceUpdateWithRequiredBody  
 ///
-///  @returns OAISharedAudienceResponse*
+///  @returns OAIAdAccountToAdAccountSharedAudience*
 ///
 -(NSURLSessionTask*) updateAdAccountToAdAccountSharedAudienceWithAdAccountId: (NSString*) adAccountId
-    sharedAudience: (OAISharedAudience*) sharedAudience
-    completionHandler: (void (^)(OAISharedAudienceResponse* output, NSError* error)) handler {
+    adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: (OAIAdAccountToAdAccountSharedAudienceUpdateWithRequiredBody*) adAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+    completionHandler: (void (^)(OAIAdAccountToAdAccountSharedAudience* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -393,11 +398,11 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'sharedAudience' is set
-    if (sharedAudience == nil) {
-        NSParameterAssert(sharedAudience);
+    // verify the required parameter 'adAccountToAdAccountSharedAudienceUpdateWithRequiredBody' is set
+    if (adAccountToAdAccountSharedAudienceUpdateWithRequiredBody == nil) {
+        NSParameterAssert(adAccountToAdAccountSharedAudienceUpdateWithRequiredBody);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"sharedAudience"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountToAdAccountSharedAudienceUpdateWithRequiredBody"] };
             NSError* error = [NSError errorWithDomain:kOAIAudienceSharingApiErrorDomain code:kOAIAudienceSharingApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -432,7 +437,7 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = sharedAudience;
+    bodyParam = adAccountToAdAccountSharedAudienceUpdateWithRequiredBody;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"
@@ -445,26 +450,26 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAISharedAudienceResponse*"
+                              responseType: @"OAIAdAccountToAdAccountSharedAudience*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAISharedAudienceResponse*)data, error);
+                                    handler((OAIAdAccountToAdAccountSharedAudience*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Update audience sharing from an ad account to businesses
-/// From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+/// From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param businessSharedAudience  
+///  @param adAccountToBusinessSharedAudienceUpdateWithRequiredBody  
 ///
-///  @returns OAIBusinessSharedAudienceResponse*
+///  @returns OAIAdAccountToBusinessSharedAudience*
 ///
 -(NSURLSessionTask*) updateAdAccountToBusinessSharedAudienceWithAdAccountId: (NSString*) adAccountId
-    businessSharedAudience: (OAIBusinessSharedAudience*) businessSharedAudience
-    completionHandler: (void (^)(OAIBusinessSharedAudienceResponse* output, NSError* error)) handler {
+    adAccountToBusinessSharedAudienceUpdateWithRequiredBody: (OAIAdAccountToBusinessSharedAudienceUpdateWithRequiredBody*) adAccountToBusinessSharedAudienceUpdateWithRequiredBody
+    completionHandler: (void (^)(OAIAdAccountToBusinessSharedAudience* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -476,11 +481,11 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'businessSharedAudience' is set
-    if (businessSharedAudience == nil) {
-        NSParameterAssert(businessSharedAudience);
+    // verify the required parameter 'adAccountToBusinessSharedAudienceUpdateWithRequiredBody' is set
+    if (adAccountToBusinessSharedAudienceUpdateWithRequiredBody == nil) {
+        NSParameterAssert(adAccountToBusinessSharedAudienceUpdateWithRequiredBody);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"businessSharedAudience"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountToBusinessSharedAudienceUpdateWithRequiredBody"] };
             NSError* error = [NSError errorWithDomain:kOAIAudienceSharingApiErrorDomain code:kOAIAudienceSharingApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -515,7 +520,7 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = businessSharedAudience;
+    bodyParam = adAccountToBusinessSharedAudienceUpdateWithRequiredBody;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"
@@ -528,26 +533,26 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIBusinessSharedAudienceResponse*"
+                              responseType: @"OAIAdAccountToBusinessSharedAudience*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIBusinessSharedAudienceResponse*)data, error);
+                                    handler((OAIAdAccountToBusinessSharedAudience*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Update audience sharing from a business to ad accounts
-/// From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+/// From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 ///  @param businessId Unique identifier of the requesting business. 
 ///
-///  @param sharedAudience  
+///  @param businessToAdAccountSharedAudienceUpdateWithRequiredBody  
 ///
-///  @returns OAISharedAudienceResponse*
+///  @returns OAIBusinessToAdAccountSharedAudience*
 ///
 -(NSURLSessionTask*) updateBusinessToAdAccountSharedAudienceWithBusinessId: (NSString*) businessId
-    sharedAudience: (OAISharedAudience*) sharedAudience
-    completionHandler: (void (^)(OAISharedAudienceResponse* output, NSError* error)) handler {
+    businessToAdAccountSharedAudienceUpdateWithRequiredBody: (OAIBusinessToAdAccountSharedAudienceUpdateWithRequiredBody*) businessToAdAccountSharedAudienceUpdateWithRequiredBody
+    completionHandler: (void (^)(OAIBusinessToAdAccountSharedAudience* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -559,11 +564,11 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'sharedAudience' is set
-    if (sharedAudience == nil) {
-        NSParameterAssert(sharedAudience);
+    // verify the required parameter 'businessToAdAccountSharedAudienceUpdateWithRequiredBody' is set
+    if (businessToAdAccountSharedAudienceUpdateWithRequiredBody == nil) {
+        NSParameterAssert(businessToAdAccountSharedAudienceUpdateWithRequiredBody);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"sharedAudience"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"businessToAdAccountSharedAudienceUpdateWithRequiredBody"] };
             NSError* error = [NSError errorWithDomain:kOAIAudienceSharingApiErrorDomain code:kOAIAudienceSharingApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -598,7 +603,7 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = sharedAudience;
+    bodyParam = businessToAdAccountSharedAudienceUpdateWithRequiredBody;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"
@@ -611,26 +616,26 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAISharedAudienceResponse*"
+                              responseType: @"OAIBusinessToAdAccountSharedAudience*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAISharedAudienceResponse*)data, error);
+                                    handler((OAIBusinessToAdAccountSharedAudience*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Update audience sharing between businesses
-/// From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+/// From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 ///  @param businessId Unique identifier of the requesting business. 
 ///
-///  @param businessSharedAudience  
+///  @param businessToBusinessSharedAudienceUpdateWithRequiredBody  
 ///
-///  @returns OAIBusinessSharedAudienceResponse*
+///  @returns OAIBusinessToBusinessSharedAudience*
 ///
 -(NSURLSessionTask*) updateBusinessToBusinessSharedAudienceWithBusinessId: (NSString*) businessId
-    businessSharedAudience: (OAIBusinessSharedAudience*) businessSharedAudience
-    completionHandler: (void (^)(OAIBusinessSharedAudienceResponse* output, NSError* error)) handler {
+    businessToBusinessSharedAudienceUpdateWithRequiredBody: (OAIBusinessToBusinessSharedAudienceUpdateWithRequiredBody*) businessToBusinessSharedAudienceUpdateWithRequiredBody
+    completionHandler: (void (^)(OAIBusinessToBusinessSharedAudience* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -642,11 +647,11 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'businessSharedAudience' is set
-    if (businessSharedAudience == nil) {
-        NSParameterAssert(businessSharedAudience);
+    // verify the required parameter 'businessToBusinessSharedAudienceUpdateWithRequiredBody' is set
+    if (businessToBusinessSharedAudienceUpdateWithRequiredBody == nil) {
+        NSParameterAssert(businessToBusinessSharedAudienceUpdateWithRequiredBody);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"businessSharedAudience"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"businessToBusinessSharedAudienceUpdateWithRequiredBody"] };
             NSError* error = [NSError errorWithDomain:kOAIAudienceSharingApiErrorDomain code:kOAIAudienceSharingApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -681,7 +686,7 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = businessSharedAudience;
+    bodyParam = businessToBusinessSharedAudienceUpdateWithRequiredBody;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"
@@ -694,10 +699,10 @@ NSInteger kOAIAudienceSharingApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIBusinessSharedAudienceResponse*"
+                              responseType: @"OAIBusinessToBusinessSharedAudience*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIBusinessSharedAudienceResponse*)data, error);
+                                    handler((OAIBusinessToBusinessSharedAudience*)data, error);
                                 }
                             }];
 }

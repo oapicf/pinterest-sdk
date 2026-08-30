@@ -5,7 +5,7 @@ Protected Class BusinessMemberAssetsSummary
 		#tag Note
 			List of ad account IDs and respective permission levels.
 		#tag EndNote
-		ad_accounts() As OpenAPIClient.Models.BusinessMemberAssetsSummaryAdAccountsInner
+		ad_accounts() As OpenAPIClient.Models.AssetIdWithPermissions
 	#tag EndProperty
 
 
@@ -13,7 +13,7 @@ Protected Class BusinessMemberAssetsSummary
 		#tag Note
 			List of profile IDs and respective permission levels.
 		#tag EndNote
-		profiles() As OpenAPIClient.Models.BusinessMemberAssetsSummaryProfilesInner
+		profiles() As OpenAPIClient.Models.AssetIdWithPermissions
 	#tag EndProperty
 
 
@@ -58,7 +58,7 @@ Protected Class BusinessMemberAssetsSummary
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="BusinessMemberAssetsSummaryAdAccountsInner"
+			Type="AssetIdWithPermissions"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -66,7 +66,7 @@ Protected Class BusinessMemberAssetsSummary
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="BusinessMemberAssetsSummaryProfilesInner"
+			Type="AssetIdWithPermissions"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -25,6 +25,8 @@
 
 * `CONSUMER_USER` (value: `"CONSUMER_USER"`)
 
+* `BIZ_PINNER_LIST_SHARER` (value: `"BIZ_PINNER_LIST_SHARER"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

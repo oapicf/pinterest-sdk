@@ -13,14 +13,14 @@ part 'board_with_update_privacy_update.g.dart';
 ///
 /// Properties:
 /// * [description] 
-/// * [name] -      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+/// * [name] -     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
 /// * [privacy] 
 @BuiltValue()
 abstract class BoardWithUpdatePrivacyUpdate implements Built<BoardWithUpdatePrivacyUpdate, BoardWithUpdatePrivacyUpdateBuilder> {
   @BuiltValueField(wireName: r'description')
   String? get description;
 
-  ///      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+  ///     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
   @BuiltValueField(wireName: r'name')
   String? get name;
 
@@ -106,15 +106,17 @@ class _$BoardWithUpdatePrivacyUpdateSerializer implements PrimitiveSerializer<Bo
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         case r'privacy':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BoardUpdatePrivacy),
-          ) as BoardUpdatePrivacy;
+            specifiedType: const FullType.nullable(BoardUpdatePrivacy),
+          ) as BoardUpdatePrivacy?;
+          if (valueDes == null) continue;
           result.privacy = valueDes;
           break;
         default:

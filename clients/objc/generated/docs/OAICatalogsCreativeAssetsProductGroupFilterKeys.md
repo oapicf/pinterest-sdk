@@ -3,21 +3,22 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cREATIVEASSETSID** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
-**cUSTOMLABEL0** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](.md) |  | 
-**cUSTOMLABEL1** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](.md) |  | 
-**cUSTOMLABEL2** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](.md) |  | 
-**cUSTOMLABEL3** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](.md) |  | 
-**cUSTOMLABEL4** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](.md) |  | 
-**gOOGLEPRODUCTCATEGORY6** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
-**gOOGLEPRODUCTCATEGORY5** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
-**gOOGLEPRODUCTCATEGORY4** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
-**gOOGLEPRODUCTCATEGORY3** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
-**gOOGLEPRODUCTCATEGORY2** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
-**gOOGLEPRODUCTCATEGORY1** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
-**gOOGLEPRODUCTCATEGORY0** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
-**mEDIATYPE** | [**OAICatalogsProductGroupMultipleMediaTypesCriteria***](.md) |  | 
-**tITLEKEYWORDS** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
+**cREATIVEASSETSID** | [**OAICatalogsProductGroupMultipleStringCriteria***](OAICatalogsProductGroupMultipleStringCriteria.md) |  | 
+**cUSTOMLABEL0** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](OAICatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**cUSTOMLABEL1** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](OAICatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**cUSTOMLABEL2** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](OAICatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**cUSTOMLABEL3** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](OAICatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**cUSTOMLABEL4** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](OAICatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**gOOGLEPRODUCTCATEGORY6** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**gOOGLEPRODUCTCATEGORY5** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**gOOGLEPRODUCTCATEGORY4** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**gOOGLEPRODUCTCATEGORY3** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**gOOGLEPRODUCTCATEGORY2** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**gOOGLEPRODUCTCATEGORY1** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**gOOGLEPRODUCTCATEGORY0** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**mEDIATYPE** | [**OAICatalogsProductGroupMultipleMediaTypesCriteria***](OAICatalogsProductGroupMultipleMediaTypesCriteria.md) |  | 
+**tITLEKEYWORDS** | [**OAICatalogsProductGroupMultipleStringCriteria***](OAICatalogsProductGroupMultipleStringCriteria.md) |  | 
+**lINK** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](OAICatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

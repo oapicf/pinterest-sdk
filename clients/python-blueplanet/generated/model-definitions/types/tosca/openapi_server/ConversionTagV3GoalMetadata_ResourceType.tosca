@@ -1,0 +1,63 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionTagV3GoalMetadata"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionTagV3GoalMetadata"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AttributionWindows = openapi_server.resourceTypes.AttributionWindows
+  ConversionEvent = openapi_server.resourceTypes.ConversionEvent
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  ConversionTagV3GoalMetadata {
+    title = ConversionTagV3GoalMetadata
+    description = ConversionTagV3GoalMetadata
+    derivedFrom = Root
+    properties {
+        attribution_windows {
+          type = AttributionWindows
+          description = ""
+          optional = false
+        }
+        conversion_event {
+          type = ConversionEvent
+          description = ""
+          optional = false
+        }
+        conversion_tag_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        cpa_goal_value_in_micro_currency {
+          type =  string
+          description = ""
+          optional = false
+        }
+        is_roas_optimized {
+          type =  boolean
+          description = "Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when &#x60;conversion_event&#x60; is set to &#x60;\&quot;CHECKOUT\&quot;&#x60; and &#x60;bid_strategy_type&#x60; is set to &#x60;\&quot;AUTOMATIC_BID\&quot;&#x60;. This parameter is not enabled for all advertisers. [Learn more](https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/)."
+          optional = false
+        }
+        reporting_event {
+          type =  string
+          description = "Event name for custom or standard events mapped to an oCPM model"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionTagV3GoalMetadata {
+    title = ConversionTagV3GoalMetadata
+    description = ConversionTagV3GoalMetadata
+    implements = openapi_server.resourceTypes.ConversionTagV3GoalMetadata
+
+  }
+}

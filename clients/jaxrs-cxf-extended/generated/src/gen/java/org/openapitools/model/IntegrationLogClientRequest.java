@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.model.HttpMethod;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -25,45 +26,9 @@ public class IntegrationLogClientRequest  {
   @ApiModelProperty(required = true, value = "HTTP request host from host header.")
   private String host;
 
-public enum MethodEnum {
-
-    @JsonProperty("GET") GET(String.valueOf("GET")),
-    @JsonProperty("HEAD") HEAD(String.valueOf("HEAD")),
-    @JsonProperty("POST") POST(String.valueOf("POST")),
-    @JsonProperty("PUT") PUT(String.valueOf("PUT")),
-    @JsonProperty("DELETE") DELETE(String.valueOf("DELETE")),
-    @JsonProperty("CONNECT") CONNECT(String.valueOf("CONNECT")),
-    @JsonProperty("OPTIONS") OPTIONS(String.valueOf("OPTIONS")),
-    @JsonProperty("TRACE") TRACE(String.valueOf("TRACE")),
-    @JsonProperty("PATCH") PATCH(String.valueOf("PATCH"));
-
-    private String value;
-
-    MethodEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static MethodEnum fromValue(String value) {
-        for (MethodEnum b : MethodEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
   @ApiModelProperty(required = true, value = "")
-  private MethodEnum method;
+  @Valid
+  private HttpMethod method;
 
  /**
   * HTTP request path.
@@ -116,21 +81,21 @@ public enum MethodEnum {
   */
   @JsonProperty("method")
   @NotNull
-  public String getMethod() {
-    return method == null ? null : method.value();
+  public HttpMethod getMethod() {
+    return method;
   }
 
   /**
    * Sets the <code>method</code> property.
    */
- public void setMethod(MethodEnum method) {
+ public void setMethod(HttpMethod method) {
     this.method = method;
   }
 
   /**
    * Sets the <code>method</code> property.
    */
-  public IntegrationLogClientRequest method(MethodEnum method) {
+  public IntegrationLogClientRequest method(HttpMethod method) {
     this.method = method;
     return this;
   }
@@ -291,10 +256,7 @@ public enum MethodEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -11,15 +11,15 @@
 -type openapi_catalogs_retail_filter_values_map() ::
   [ {'ad_image_tags', list(binary()) }
   | {'ad_video_tags', list(binary()) }
-  | {'availability', list(binary()) }
+  | {'availability', list(openapi_product_availability:openapi_product_availability()) }
   | {'brand', list(binary()) }
-  | {'condition', list(binary()) }
+  | {'condition', list(openapi_product_condition:openapi_product_condition()) }
   | {'custom_label_0', list(binary()) }
   | {'custom_label_1', list(binary()) }
   | {'custom_label_2', list(binary()) }
   | {'custom_label_3', list(binary()) }
   | {'custom_label_4', list(binary()) }
-  | {'gender', list(binary()) }
+  | {'gender', list(openapi_gender:openapi_gender()) }
   | {'google_product_category_0', list(binary()) }
   | {'google_product_category_1', list(binary()) }
   | {'google_product_category_2', list(binary()) }
@@ -27,7 +27,7 @@
   | {'google_product_category_4', list(binary()) }
   | {'google_product_category_5', list(binary()) }
   | {'google_product_category_6', list(binary()) }
-  | {'media_type', list(binary()) }
+  | {'media_type', list(openapi_media_type:openapi_media_type()) }
   | {'product_type_0', list(binary()) }
   | {'product_type_1', list(binary()) }
   | {'product_type_2', list(binary()) }
@@ -42,15 +42,15 @@ openapi_catalogs_retail_filter_values_map() ->
 openapi_catalogs_retail_filter_values_map(Fields) ->
   Default = [ {'ad_image_tags', list(binary()) }
             , {'ad_video_tags', list(binary()) }
-            , {'availability', list(binary()) }
+            , {'availability', list(openapi_product_availability:openapi_product_availability()) }
             , {'brand', list(binary()) }
-            , {'condition', list(binary()) }
+            , {'condition', list(openapi_product_condition:openapi_product_condition()) }
             , {'custom_label_0', list(binary()) }
             , {'custom_label_1', list(binary()) }
             , {'custom_label_2', list(binary()) }
             , {'custom_label_3', list(binary()) }
             , {'custom_label_4', list(binary()) }
-            , {'gender', list(binary()) }
+            , {'gender', list(openapi_gender:openapi_gender()) }
             , {'google_product_category_0', list(binary()) }
             , {'google_product_category_1', list(binary()) }
             , {'google_product_category_2', list(binary()) }
@@ -58,7 +58,7 @@ openapi_catalogs_retail_filter_values_map(Fields) ->
             , {'google_product_category_4', list(binary()) }
             , {'google_product_category_5', list(binary()) }
             , {'google_product_category_6', list(binary()) }
-            , {'media_type', list(binary()) }
+            , {'media_type', list(openapi_media_type:openapi_media_type()) }
             , {'product_type_0', list(binary()) }
             , {'product_type_1', list(binary()) }
             , {'product_type_2', list(binary()) }

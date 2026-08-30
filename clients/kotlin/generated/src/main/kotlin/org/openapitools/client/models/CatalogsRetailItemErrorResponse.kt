@@ -8,14 +8,21 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.ItemValidationEvent
 
 import com.squareup.moshi.Json
@@ -26,6 +33,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param catalogType 
  * @param errors Array with the errors for the item id requested
+ * @param itemResponseKind Discriminator literal identifying this leaf inside an `ItemResponse` payload.
  * @param itemId The catalog item id in the merchant namespace
  */
 
@@ -33,11 +41,15 @@ import com.squareup.moshi.JsonClass
 data class CatalogsRetailItemErrorResponse (
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
+    val catalogType: CatalogsRetailItemErrorResponse.CatalogType,
 
     /* Array with the errors for the item id requested */
     @Json(name = "errors")
     val errors: kotlin.collections.List<ItemValidationEvent>,
+
+    /* Discriminator literal identifying this leaf inside an `ItemResponse` payload. */
+    @Json(name = "item_response_kind")
+    val itemResponseKind: CatalogsRetailItemErrorResponse.ItemResponseKind,
 
     /* The catalog item id in the merchant namespace */
     @Json(name = "item_id")
@@ -45,6 +57,24 @@ data class CatalogsRetailItemErrorResponse (
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: RETAIL
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "RETAIL") RETAIL("RETAIL");
+    }
+    /**
+     * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+     *
+     * Values: retail_item_error
+     */
+    @JsonClass(generateAdapter = false)
+    enum class ItemResponseKind(val value: kotlin.String) {
+        @Json(name = "retail_item_error") retail_item_error("retail_item_error");
+    }
 
 }
 

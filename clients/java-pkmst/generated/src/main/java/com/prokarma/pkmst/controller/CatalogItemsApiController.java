@@ -1,10 +1,10 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.CatalogsItems;
 import com.prokarma.pkmst.model.CatalogsItemsBatch;
+import com.prokarma.pkmst.model.CatalogsItemsBatchPostRequest;
 import com.prokarma.pkmst.model.CatalogsItemsRequest;
-import com.prokarma.pkmst.model.Error;
-import com.prokarma.pkmst.model.ItemsBatchPostRequest;
+import com.prokarma.pkmst.model.ItemsPost200Response;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 
@@ -27,7 +27,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Controller
 public class CatalogItemsApiController implements CatalogItemsApi {
     private final ObjectMapper objectMapper;
@@ -70,10 +70,15 @@ public class CatalogItemsApiController implements CatalogItemsApi {
             return new ResponseEntity<CatalogsItemsBatch>(objectMapper.readValue("", CatalogsItemsBatch.class), HttpStatus.OK);
         }
 
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CatalogsItemsBatch>(objectMapper.readValue("", CatalogsItemsBatch.class), HttpStatus.OK);
+        }
+
         return new ResponseEntity<CatalogsItemsBatch>(HttpStatus.OK);
     }
 
-    public ResponseEntity<CatalogsItemsBatch> itemsBatchPost(@ApiParam(value = "Request object used to create catalogs items in a batch" ,required=true )   @RequestBody ItemsBatchPostRequest itemsBatchPostRequest,
+    public ResponseEntity<CatalogsItemsBatch> itemsBatchPost(@ApiParam(value = "" ,required=true )   @RequestBody CatalogsItemsBatchPostRequest catalogsItemsBatchPostRequest,
         @ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
@@ -102,39 +107,59 @@ public class CatalogItemsApiController implements CatalogItemsApi {
             return new ResponseEntity<CatalogsItemsBatch>(objectMapper.readValue("", CatalogsItemsBatch.class), HttpStatus.OK);
         }
 
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CatalogsItemsBatch>(objectMapper.readValue("", CatalogsItemsBatch.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CatalogsItemsBatch>(objectMapper.readValue("", CatalogsItemsBatch.class), HttpStatus.OK);
+        }
+
         return new ResponseEntity<CatalogsItemsBatch>(HttpStatus.OK);
     }
 
-    public ResponseEntity<CatalogsItems> itemsPost(@ApiParam(value = "Request object used to get catalogs items" ,required=true )   @RequestBody CatalogsItemsRequest catalogsItemsRequest,
+    public ResponseEntity<ItemsPost200Response> itemsPost(@ApiParam(value = "" ,required=true )   @RequestBody CatalogsItemsRequest catalogsItemsRequest,
         @ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<CatalogsItems>(objectMapper.readValue("", CatalogsItems.class), HttpStatus.OK);
+            return new ResponseEntity<ItemsPost200Response>(objectMapper.readValue("", ItemsPost200Response.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<CatalogsItems>(objectMapper.readValue("", CatalogsItems.class), HttpStatus.OK);
+            return new ResponseEntity<ItemsPost200Response>(objectMapper.readValue("", ItemsPost200Response.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<CatalogsItems>(objectMapper.readValue("", CatalogsItems.class), HttpStatus.OK);
+            return new ResponseEntity<ItemsPost200Response>(objectMapper.readValue("", ItemsPost200Response.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<CatalogsItems>(objectMapper.readValue("", CatalogsItems.class), HttpStatus.OK);
+            return new ResponseEntity<ItemsPost200Response>(objectMapper.readValue("", ItemsPost200Response.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<CatalogsItems>(objectMapper.readValue("", CatalogsItems.class), HttpStatus.OK);
+            return new ResponseEntity<ItemsPost200Response>(objectMapper.readValue("", ItemsPost200Response.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<CatalogsItems>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ItemsPost200Response>(objectMapper.readValue("", ItemsPost200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ItemsPost200Response>(objectMapper.readValue("", ItemsPost200Response.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<ItemsPost200Response>(HttpStatus.OK);
     }
 
 }

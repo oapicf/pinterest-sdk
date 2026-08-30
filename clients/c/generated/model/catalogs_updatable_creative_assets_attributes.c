@@ -23,6 +23,8 @@ static catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creat
     if (!catalogs_updatable_creative_assets_attributes_local_var) {
         return NULL;
     }
+    memset(catalogs_updatable_creative_assets_attributes_local_var, 0, sizeof(catalogs_updatable_creative_assets_attributes_t));
+    catalogs_updatable_creative_assets_attributes_local_var->_library_owned = 1;
     catalogs_updatable_creative_assets_attributes_local_var->android_deep_link = android_deep_link;
     catalogs_updatable_creative_assets_attributes_local_var->custom_label_0 = custom_label_0;
     catalogs_updatable_creative_assets_attributes_local_var->custom_label_1 = custom_label_1;
@@ -35,8 +37,6 @@ static catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creat
     catalogs_updatable_creative_assets_attributes_local_var->link = link;
     catalogs_updatable_creative_assets_attributes_local_var->title = title;
     catalogs_updatable_creative_assets_attributes_local_var->visibility = visibility;
-
-    catalogs_updatable_creative_assets_attributes_local_var->_library_owned = 1;
     return catalogs_updatable_creative_assets_attributes_local_var;
 }
 
@@ -54,7 +54,7 @@ __attribute__((deprecated)) catalogs_updatable_creative_assets_attributes_t *cat
     char *title,
     char *visibility
     ) {
-    return catalogs_updatable_creative_assets_attributes_create_internal (
+    catalogs_updatable_creative_assets_attributes_t *result = catalogs_updatable_creative_assets_attributes_create_internal (
         android_deep_link,
         custom_label_0,
         custom_label_1,
@@ -68,6 +68,9 @@ __attribute__((deprecated)) catalogs_updatable_creative_assets_attributes_t *cat
         title,
         visibility
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_updatable_creative_assets_attributes_free(catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_assets_attributes) {
@@ -240,6 +243,30 @@ catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_ass
 
     catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_assets_attributes_local_var = NULL;
 
+    char *android_deep_link_local_str = NULL;
+
+    char *custom_label_0_local_str = NULL;
+
+    char *custom_label_1_local_str = NULL;
+
+    char *custom_label_2_local_str = NULL;
+
+    char *custom_label_3_local_str = NULL;
+
+    char *custom_label_4_local_str = NULL;
+
+    char *description_local_str = NULL;
+
+    char *google_product_category_local_str = NULL;
+
+    char *ios_deep_link_local_str = NULL;
+
+    char *link_local_str = NULL;
+
+    char *title_local_str = NULL;
+
+    char *visibility_local_str = NULL;
+
     // catalogs_updatable_creative_assets_attributes->android_deep_link
     cJSON *android_deep_link = cJSON_GetObjectItemCaseSensitive(catalogs_updatable_creative_assets_attributesJSON, "android_deep_link");
     if (cJSON_IsNull(android_deep_link)) {
@@ -385,23 +412,88 @@ catalogs_updatable_creative_assets_attributes_t *catalogs_updatable_creative_ass
     }
 
 
+    if (android_deep_link && !cJSON_IsNull(android_deep_link)) android_deep_link_local_str = strdup(android_deep_link->valuestring);
+    if (custom_label_0 && !cJSON_IsNull(custom_label_0)) custom_label_0_local_str = strdup(custom_label_0->valuestring);
+    if (custom_label_1 && !cJSON_IsNull(custom_label_1)) custom_label_1_local_str = strdup(custom_label_1->valuestring);
+    if (custom_label_2 && !cJSON_IsNull(custom_label_2)) custom_label_2_local_str = strdup(custom_label_2->valuestring);
+    if (custom_label_3 && !cJSON_IsNull(custom_label_3)) custom_label_3_local_str = strdup(custom_label_3->valuestring);
+    if (custom_label_4 && !cJSON_IsNull(custom_label_4)) custom_label_4_local_str = strdup(custom_label_4->valuestring);
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (google_product_category && !cJSON_IsNull(google_product_category)) google_product_category_local_str = strdup(google_product_category->valuestring);
+    if (ios_deep_link && !cJSON_IsNull(ios_deep_link)) ios_deep_link_local_str = strdup(ios_deep_link->valuestring);
+    if (link && !cJSON_IsNull(link)) link_local_str = strdup(link->valuestring);
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+    if (visibility && !cJSON_IsNull(visibility)) visibility_local_str = strdup(visibility->valuestring);
+
     catalogs_updatable_creative_assets_attributes_local_var = catalogs_updatable_creative_assets_attributes_create_internal (
-        android_deep_link && !cJSON_IsNull(android_deep_link) ? strdup(android_deep_link->valuestring) : NULL,
-        custom_label_0 && !cJSON_IsNull(custom_label_0) ? strdup(custom_label_0->valuestring) : NULL,
-        custom_label_1 && !cJSON_IsNull(custom_label_1) ? strdup(custom_label_1->valuestring) : NULL,
-        custom_label_2 && !cJSON_IsNull(custom_label_2) ? strdup(custom_label_2->valuestring) : NULL,
-        custom_label_3 && !cJSON_IsNull(custom_label_3) ? strdup(custom_label_3->valuestring) : NULL,
-        custom_label_4 && !cJSON_IsNull(custom_label_4) ? strdup(custom_label_4->valuestring) : NULL,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        google_product_category && !cJSON_IsNull(google_product_category) ? strdup(google_product_category->valuestring) : NULL,
-        ios_deep_link && !cJSON_IsNull(ios_deep_link) ? strdup(ios_deep_link->valuestring) : NULL,
-        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
-        visibility && !cJSON_IsNull(visibility) ? strdup(visibility->valuestring) : NULL
+        android_deep_link_local_str,
+        custom_label_0_local_str,
+        custom_label_1_local_str,
+        custom_label_2_local_str,
+        custom_label_3_local_str,
+        custom_label_4_local_str,
+        description_local_str,
+        google_product_category_local_str,
+        ios_deep_link_local_str,
+        link_local_str,
+        title_local_str,
+        visibility_local_str
         );
+
+    if (!catalogs_updatable_creative_assets_attributes_local_var) {
+        goto end;
+    }
 
     return catalogs_updatable_creative_assets_attributes_local_var;
 end:
+    if (android_deep_link_local_str) {
+        free(android_deep_link_local_str);
+        android_deep_link_local_str = NULL;
+    }
+    if (custom_label_0_local_str) {
+        free(custom_label_0_local_str);
+        custom_label_0_local_str = NULL;
+    }
+    if (custom_label_1_local_str) {
+        free(custom_label_1_local_str);
+        custom_label_1_local_str = NULL;
+    }
+    if (custom_label_2_local_str) {
+        free(custom_label_2_local_str);
+        custom_label_2_local_str = NULL;
+    }
+    if (custom_label_3_local_str) {
+        free(custom_label_3_local_str);
+        custom_label_3_local_str = NULL;
+    }
+    if (custom_label_4_local_str) {
+        free(custom_label_4_local_str);
+        custom_label_4_local_str = NULL;
+    }
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (google_product_category_local_str) {
+        free(google_product_category_local_str);
+        google_product_category_local_str = NULL;
+    }
+    if (ios_deep_link_local_str) {
+        free(ios_deep_link_local_str);
+        ios_deep_link_local_str = NULL;
+    }
+    if (link_local_str) {
+        free(link_local_str);
+        link_local_str = NULL;
+    }
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
+    }
+    if (visibility_local_str) {
+        free(visibility_local_str);
+        visibility_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -6,12 +6,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.AllOf;
-import org.openapitools.vertxweb.server.model.AnyOf;
 import org.openapitools.vertxweb.server.model.CatalogsProductGroupFilterKeys;
+import org.openapitools.vertxweb.server.model.CatalogsProductGroupFiltersRequestAnyOfItems0;
+import org.openapitools.vertxweb.server.model.CatalogsProductGroupFiltersRequestAnyOfItems1;
 
 /**
- * Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
+ * Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupFiltersRequest   {
@@ -81,9 +81,6 @@ public class CatalogsProductGroupFiltersRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

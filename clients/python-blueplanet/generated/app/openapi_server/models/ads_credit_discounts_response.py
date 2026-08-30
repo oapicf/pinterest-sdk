@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.ads_credit_discount_type import AdsCreditDiscountType  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -16,7 +17,7 @@ class AdsCreditDiscountsResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, active: bool=None, advertiser_id: str=None, discount_currency: str=None, discount_in_micro_currency: float=None, discount_type: str=None, remaining_discount_in_micro_currency: float=None, title: str=None):  # noqa: E501
+    def __init__(self, active: bool=None, advertiser_id: str=None, discount_currency: str=None, discount_in_micro_currency: float=None, discount_type: AdsCreditDiscountType=None, remaining_discount_in_micro_currency: float=None, title: str=None):  # noqa: E501
         """AdsCreditDiscountsResponse - a model defined in Swagger
 
         :param active: The active of this AdsCreditDiscountsResponse.  # noqa: E501
@@ -28,7 +29,7 @@ class AdsCreditDiscountsResponse(Model):
         :param discount_in_micro_currency: The discount_in_micro_currency of this AdsCreditDiscountsResponse.  # noqa: E501
         :type discount_in_micro_currency: float
         :param discount_type: The discount_type of this AdsCreditDiscountsResponse.  # noqa: E501
-        :type discount_type: str
+        :type discount_type: AdsCreditDiscountType
         :param remaining_discount_in_micro_currency: The remaining_discount_in_micro_currency of this AdsCreditDiscountsResponse.  # noqa: E501
         :type remaining_discount_in_micro_currency: float
         :param title: The title of this AdsCreditDiscountsResponse.  # noqa: E501
@@ -39,7 +40,7 @@ class AdsCreditDiscountsResponse(Model):
             'advertiser_id': str,
             'discount_currency': str,
             'discount_in_micro_currency': float,
-            'discount_type': str,
+            'discount_type': AdsCreditDiscountType,
             'remaining_discount_in_micro_currency': float,
             'title': str
         }
@@ -148,7 +149,7 @@ class AdsCreditDiscountsResponse(Model):
     def discount_in_micro_currency(self) -> float:
         """Gets the discount_in_micro_currency of this AdsCreditDiscountsResponse.
 
-        The discount applied in the offer’s currency value.  # noqa: E501
+        The discount applied in the offer's currency value.  # noqa: E501
 
         :return: The discount_in_micro_currency of this AdsCreditDiscountsResponse.
         :rtype: float
@@ -159,7 +160,7 @@ class AdsCreditDiscountsResponse(Model):
     def discount_in_micro_currency(self, discount_in_micro_currency: float):
         """Sets the discount_in_micro_currency of this AdsCreditDiscountsResponse.
 
-        The discount applied in the offer’s currency value.  # noqa: E501
+        The discount applied in the offer's currency value.  # noqa: E501
 
         :param discount_in_micro_currency: The discount_in_micro_currency of this AdsCreditDiscountsResponse.
         :type discount_in_micro_currency: float
@@ -168,31 +169,25 @@ class AdsCreditDiscountsResponse(Model):
         self._discount_in_micro_currency = discount_in_micro_currency
 
     @property
-    def discount_type(self) -> str:
+    def discount_type(self) -> AdsCreditDiscountType:
         """Gets the discount_type of this AdsCreditDiscountsResponse.
 
         The type of discount of this credit  # noqa: E501
 
         :return: The discount_type of this AdsCreditDiscountsResponse.
-        :rtype: str
+        :rtype: AdsCreditDiscountType
         """
         return self._discount_type
 
     @discount_type.setter
-    def discount_type(self, discount_type: str):
+    def discount_type(self, discount_type: AdsCreditDiscountType):
         """Sets the discount_type of this AdsCreditDiscountsResponse.
 
         The type of discount of this credit  # noqa: E501
 
         :param discount_type: The discount_type of this AdsCreditDiscountsResponse.
-        :type discount_type: str
+        :type discount_type: AdsCreditDiscountType
         """
-        allowed_values = ["COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND", ""]  # noqa: E501
-        if discount_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `discount_type` ({0}), must be one of {1}"
-                .format(discount_type, allowed_values)
-            )
 
         self._discount_type = discount_type
 

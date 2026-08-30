@@ -4,80 +4,29 @@
 #include "conversion_event_device_info.h"
 
 
-char* conversion_event_device_info_form_factor_ToString(pinterest_rest_api_conversion_event_device_info_FORMFACTOR_e form_factor) {
-    char* form_factorArray[] =  { "NULL", "desktop", "laptop", "cellphone", "tablet", "smartwatch", "tv", "vr", "console", "other" };
-    return form_factorArray[form_factor];
-}
-
-pinterest_rest_api_conversion_event_device_info_FORMFACTOR_e conversion_event_device_info_form_factor_FromString(char* form_factor){
-    int stringToReturn = 0;
-    char *form_factorArray[] =  { "NULL", "desktop", "laptop", "cellphone", "tablet", "smartwatch", "tv", "vr", "console", "other" };
-    size_t sizeofArray = sizeof(form_factorArray) / sizeof(form_factorArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(form_factor, form_factorArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-char* conversion_event_device_info_network_type_ToString(pinterest_rest_api_conversion_event_device_info_NETWORKTYPE_e network_type) {
-    char* network_typeArray[] =  { "NULL", "wifi", "cellular_2g", "cellular_3g", "cellular_4g", "cellular_5g", "cellular_6g", "ethernet", "unknown" };
-    return network_typeArray[network_type];
-}
-
-pinterest_rest_api_conversion_event_device_info_NETWORKTYPE_e conversion_event_device_info_network_type_FromString(char* network_type){
-    int stringToReturn = 0;
-    char *network_typeArray[] =  { "NULL", "wifi", "cellular_2g", "cellular_3g", "cellular_4g", "cellular_5g", "cellular_6g", "ethernet", "unknown" };
-    size_t sizeofArray = sizeof(network_typeArray) / sizeof(network_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(network_type, network_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-char* conversion_event_device_info_os_family_ToString(pinterest_rest_api_conversion_event_device_info_OSFAMILY_e os_family) {
-    char* os_familyArray[] =  { "NULL", "ios", "android", "macos", "windows", "linux", "bsd", "other" };
-    return os_familyArray[os_family];
-}
-
-pinterest_rest_api_conversion_event_device_info_OSFAMILY_e conversion_event_device_info_os_family_FromString(char* os_family){
-    int stringToReturn = 0;
-    char *os_familyArray[] =  { "NULL", "ios", "android", "macos", "windows", "linux", "bsd", "other" };
-    size_t sizeofArray = sizeof(os_familyArray) / sizeof(os_familyArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(os_family, os_familyArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static conversion_event_device_info_t *conversion_event_device_info_create_internal(
-    int battery_level,
+    int *battery_level,
     char *brand,
     char *carrier,
-    int cpu_cores,
-    int external_storage_free_space,
-    int external_storage_size,
-    pinterest_rest_api_conversion_event_device_info_FORMFACTOR_e form_factor,
+    int *cpu_cores,
+    int *external_storage_free_space,
+    int *external_storage_size,
+    form_factor_t *form_factor,
     char *kernel_version,
     list_t *languages,
     char *locale,
     char *model,
-    pinterest_rest_api_conversion_event_device_info_NETWORKTYPE_e network_type,
-    pinterest_rest_api_conversion_event_device_info_OSFAMILY_e os_family,
+    network_type_t *network_type,
+    os_family_t *os_family,
     char *os_name,
     char *os_release_name,
     char *os_version,
-    int screen_density,
-    int screen_height,
-    int screen_width,
-    int storage_free_space,
-    int storage_size,
+    int *screen_density,
+    int *screen_height,
+    int *screen_width,
+    int *storage_free_space,
+    int *storage_size,
     char *timezone,
     char *timezone_abbr,
     char *type
@@ -86,6 +35,8 @@ static conversion_event_device_info_t *conversion_event_device_info_create_inter
     if (!conversion_event_device_info_local_var) {
         return NULL;
     }
+    memset(conversion_event_device_info_local_var, 0, sizeof(conversion_event_device_info_t));
+    conversion_event_device_info_local_var->_library_owned = 1;
     conversion_event_device_info_local_var->battery_level = battery_level;
     conversion_event_device_info_local_var->brand = brand;
     conversion_event_device_info_local_var->carrier = carrier;
@@ -110,44 +61,87 @@ static conversion_event_device_info_t *conversion_event_device_info_create_inter
     conversion_event_device_info_local_var->timezone = timezone;
     conversion_event_device_info_local_var->timezone_abbr = timezone_abbr;
     conversion_event_device_info_local_var->type = type;
-
-    conversion_event_device_info_local_var->_library_owned = 1;
     return conversion_event_device_info_local_var;
 }
 
 __attribute__((deprecated)) conversion_event_device_info_t *conversion_event_device_info_create(
-    int battery_level,
+    int *battery_level,
     char *brand,
     char *carrier,
-    int cpu_cores,
-    int external_storage_free_space,
-    int external_storage_size,
-    pinterest_rest_api_conversion_event_device_info_FORMFACTOR_e form_factor,
+    int *cpu_cores,
+    int *external_storage_free_space,
+    int *external_storage_size,
+    form_factor_t *form_factor,
     char *kernel_version,
     list_t *languages,
     char *locale,
     char *model,
-    pinterest_rest_api_conversion_event_device_info_NETWORKTYPE_e network_type,
-    pinterest_rest_api_conversion_event_device_info_OSFAMILY_e os_family,
+    network_type_t *network_type,
+    os_family_t *os_family,
     char *os_name,
     char *os_release_name,
     char *os_version,
-    int screen_density,
-    int screen_height,
-    int screen_width,
-    int storage_free_space,
-    int storage_size,
+    int *screen_density,
+    int *screen_height,
+    int *screen_width,
+    int *storage_free_space,
+    int *storage_size,
     char *timezone,
     char *timezone_abbr,
     char *type
     ) {
-    return conversion_event_device_info_create_internal (
-        battery_level,
+    int *battery_level_copy = NULL;
+    if (battery_level) {
+        battery_level_copy = malloc(sizeof(int));
+        if (battery_level_copy) *battery_level_copy = *battery_level;
+    }
+    int *cpu_cores_copy = NULL;
+    if (cpu_cores) {
+        cpu_cores_copy = malloc(sizeof(int));
+        if (cpu_cores_copy) *cpu_cores_copy = *cpu_cores;
+    }
+    int *external_storage_free_space_copy = NULL;
+    if (external_storage_free_space) {
+        external_storage_free_space_copy = malloc(sizeof(int));
+        if (external_storage_free_space_copy) *external_storage_free_space_copy = *external_storage_free_space;
+    }
+    int *external_storage_size_copy = NULL;
+    if (external_storage_size) {
+        external_storage_size_copy = malloc(sizeof(int));
+        if (external_storage_size_copy) *external_storage_size_copy = *external_storage_size;
+    }
+    int *screen_density_copy = NULL;
+    if (screen_density) {
+        screen_density_copy = malloc(sizeof(int));
+        if (screen_density_copy) *screen_density_copy = *screen_density;
+    }
+    int *screen_height_copy = NULL;
+    if (screen_height) {
+        screen_height_copy = malloc(sizeof(int));
+        if (screen_height_copy) *screen_height_copy = *screen_height;
+    }
+    int *screen_width_copy = NULL;
+    if (screen_width) {
+        screen_width_copy = malloc(sizeof(int));
+        if (screen_width_copy) *screen_width_copy = *screen_width;
+    }
+    int *storage_free_space_copy = NULL;
+    if (storage_free_space) {
+        storage_free_space_copy = malloc(sizeof(int));
+        if (storage_free_space_copy) *storage_free_space_copy = *storage_free_space;
+    }
+    int *storage_size_copy = NULL;
+    if (storage_size) {
+        storage_size_copy = malloc(sizeof(int));
+        if (storage_size_copy) *storage_size_copy = *storage_size;
+    }
+    conversion_event_device_info_t *result = conversion_event_device_info_create_internal (
+        battery_level_copy,
         brand,
         carrier,
-        cpu_cores,
-        external_storage_free_space,
-        external_storage_size,
+        cpu_cores_copy,
+        external_storage_free_space_copy,
+        external_storage_size_copy,
         form_factor,
         kernel_version,
         languages,
@@ -158,15 +152,27 @@ __attribute__((deprecated)) conversion_event_device_info_t *conversion_event_dev
         os_name,
         os_release_name,
         os_version,
-        screen_density,
-        screen_height,
-        screen_width,
-        storage_free_space,
-        storage_size,
+        screen_density_copy,
+        screen_height_copy,
+        screen_width_copy,
+        storage_free_space_copy,
+        storage_size_copy,
         timezone,
         timezone_abbr,
         type
         );
+    if (!result) {
+        free(battery_level_copy);
+        free(cpu_cores_copy);
+        free(external_storage_free_space_copy);
+        free(external_storage_size_copy);
+        free(screen_density_copy);
+        free(screen_height_copy);
+        free(screen_width_copy);
+        free(storage_free_space_copy);
+        free(storage_size_copy);
+    }
+    return result;
 }
 
 void conversion_event_device_info_free(conversion_event_device_info_t *conversion_event_device_info) {
@@ -178,6 +184,10 @@ void conversion_event_device_info_free(conversion_event_device_info_t *conversio
         return ;
     }
     listEntry_t *listEntry;
+    if (conversion_event_device_info->battery_level) {
+        free(conversion_event_device_info->battery_level);
+        conversion_event_device_info->battery_level = NULL;
+    }
     if (conversion_event_device_info->brand) {
         free(conversion_event_device_info->brand);
         conversion_event_device_info->brand = NULL;
@@ -185,6 +195,22 @@ void conversion_event_device_info_free(conversion_event_device_info_t *conversio
     if (conversion_event_device_info->carrier) {
         free(conversion_event_device_info->carrier);
         conversion_event_device_info->carrier = NULL;
+    }
+    if (conversion_event_device_info->cpu_cores) {
+        free(conversion_event_device_info->cpu_cores);
+        conversion_event_device_info->cpu_cores = NULL;
+    }
+    if (conversion_event_device_info->external_storage_free_space) {
+        free(conversion_event_device_info->external_storage_free_space);
+        conversion_event_device_info->external_storage_free_space = NULL;
+    }
+    if (conversion_event_device_info->external_storage_size) {
+        free(conversion_event_device_info->external_storage_size);
+        conversion_event_device_info->external_storage_size = NULL;
+    }
+    if (conversion_event_device_info->form_factor) {
+        form_factor_free(conversion_event_device_info->form_factor);
+        conversion_event_device_info->form_factor = NULL;
     }
     if (conversion_event_device_info->kernel_version) {
         free(conversion_event_device_info->kernel_version);
@@ -205,6 +231,14 @@ void conversion_event_device_info_free(conversion_event_device_info_t *conversio
         free(conversion_event_device_info->model);
         conversion_event_device_info->model = NULL;
     }
+    if (conversion_event_device_info->network_type) {
+        network_type_free(conversion_event_device_info->network_type);
+        conversion_event_device_info->network_type = NULL;
+    }
+    if (conversion_event_device_info->os_family) {
+        os_family_free(conversion_event_device_info->os_family);
+        conversion_event_device_info->os_family = NULL;
+    }
     if (conversion_event_device_info->os_name) {
         free(conversion_event_device_info->os_name);
         conversion_event_device_info->os_name = NULL;
@@ -216,6 +250,26 @@ void conversion_event_device_info_free(conversion_event_device_info_t *conversio
     if (conversion_event_device_info->os_version) {
         free(conversion_event_device_info->os_version);
         conversion_event_device_info->os_version = NULL;
+    }
+    if (conversion_event_device_info->screen_density) {
+        free(conversion_event_device_info->screen_density);
+        conversion_event_device_info->screen_density = NULL;
+    }
+    if (conversion_event_device_info->screen_height) {
+        free(conversion_event_device_info->screen_height);
+        conversion_event_device_info->screen_height = NULL;
+    }
+    if (conversion_event_device_info->screen_width) {
+        free(conversion_event_device_info->screen_width);
+        conversion_event_device_info->screen_width = NULL;
+    }
+    if (conversion_event_device_info->storage_free_space) {
+        free(conversion_event_device_info->storage_free_space);
+        conversion_event_device_info->storage_free_space = NULL;
+    }
+    if (conversion_event_device_info->storage_size) {
+        free(conversion_event_device_info->storage_size);
+        conversion_event_device_info->storage_size = NULL;
     }
     if (conversion_event_device_info->timezone) {
         free(conversion_event_device_info->timezone);
@@ -237,7 +291,7 @@ cJSON *conversion_event_device_info_convertToJSON(conversion_event_device_info_t
 
     // conversion_event_device_info->battery_level
     if(conversion_event_device_info->battery_level) {
-    if(cJSON_AddNumberToObject(item, "battery_level", conversion_event_device_info->battery_level) == NULL) {
+    if(cJSON_AddNumberToObject(item, "battery_level", *conversion_event_device_info->battery_level) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -261,7 +315,7 @@ cJSON *conversion_event_device_info_convertToJSON(conversion_event_device_info_t
 
     // conversion_event_device_info->cpu_cores
     if(conversion_event_device_info->cpu_cores) {
-    if(cJSON_AddNumberToObject(item, "cpu_cores", conversion_event_device_info->cpu_cores) == NULL) {
+    if(cJSON_AddNumberToObject(item, "cpu_cores", *conversion_event_device_info->cpu_cores) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -269,7 +323,7 @@ cJSON *conversion_event_device_info_convertToJSON(conversion_event_device_info_t
 
     // conversion_event_device_info->external_storage_free_space
     if(conversion_event_device_info->external_storage_free_space) {
-    if(cJSON_AddNumberToObject(item, "external_storage_free_space", conversion_event_device_info->external_storage_free_space) == NULL) {
+    if(cJSON_AddNumberToObject(item, "external_storage_free_space", *conversion_event_device_info->external_storage_free_space) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -277,17 +331,21 @@ cJSON *conversion_event_device_info_convertToJSON(conversion_event_device_info_t
 
     // conversion_event_device_info->external_storage_size
     if(conversion_event_device_info->external_storage_size) {
-    if(cJSON_AddNumberToObject(item, "external_storage_size", conversion_event_device_info->external_storage_size) == NULL) {
+    if(cJSON_AddNumberToObject(item, "external_storage_size", *conversion_event_device_info->external_storage_size) == NULL) {
     goto fail; //Numeric
     }
     }
 
 
     // conversion_event_device_info->form_factor
-    if(conversion_event_device_info->form_factor != pinterest_rest_api_conversion_event_device_info_FORMFACTOR_NULL) {
-    if(cJSON_AddStringToObject(item, "form_factor", conversion_event_device_info_form_factor_ToString(conversion_event_device_info->form_factor)) == NULL)
-    {
-    goto fail; //Enum
+    if(conversion_event_device_info->form_factor) {
+    cJSON *form_factor_local_JSON = form_factor_convertToJSON(conversion_event_device_info->form_factor);
+    if(form_factor_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "form_factor", form_factor_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
@@ -334,19 +392,27 @@ cJSON *conversion_event_device_info_convertToJSON(conversion_event_device_info_t
 
 
     // conversion_event_device_info->network_type
-    if(conversion_event_device_info->network_type != pinterest_rest_api_conversion_event_device_info_NETWORKTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "network_type", conversion_event_device_info_network_type_ToString(conversion_event_device_info->network_type)) == NULL)
-    {
-    goto fail; //Enum
+    if(conversion_event_device_info->network_type) {
+    cJSON *network_type_local_JSON = network_type_convertToJSON(conversion_event_device_info->network_type);
+    if(network_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "network_type", network_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
 
     // conversion_event_device_info->os_family
-    if(conversion_event_device_info->os_family != pinterest_rest_api_conversion_event_device_info_OSFAMILY_NULL) {
-    if(cJSON_AddStringToObject(item, "os_family", conversion_event_device_info_os_family_ToString(conversion_event_device_info->os_family)) == NULL)
-    {
-    goto fail; //Enum
+    if(conversion_event_device_info->os_family) {
+    cJSON *os_family_local_JSON = os_family_convertToJSON(conversion_event_device_info->os_family);
+    if(os_family_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "os_family", os_family_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
@@ -377,7 +443,7 @@ cJSON *conversion_event_device_info_convertToJSON(conversion_event_device_info_t
 
     // conversion_event_device_info->screen_density
     if(conversion_event_device_info->screen_density) {
-    if(cJSON_AddNumberToObject(item, "screen_density", conversion_event_device_info->screen_density) == NULL) {
+    if(cJSON_AddNumberToObject(item, "screen_density", *conversion_event_device_info->screen_density) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -385,7 +451,7 @@ cJSON *conversion_event_device_info_convertToJSON(conversion_event_device_info_t
 
     // conversion_event_device_info->screen_height
     if(conversion_event_device_info->screen_height) {
-    if(cJSON_AddNumberToObject(item, "screen_height", conversion_event_device_info->screen_height) == NULL) {
+    if(cJSON_AddNumberToObject(item, "screen_height", *conversion_event_device_info->screen_height) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -393,7 +459,7 @@ cJSON *conversion_event_device_info_convertToJSON(conversion_event_device_info_t
 
     // conversion_event_device_info->screen_width
     if(conversion_event_device_info->screen_width) {
-    if(cJSON_AddNumberToObject(item, "screen_width", conversion_event_device_info->screen_width) == NULL) {
+    if(cJSON_AddNumberToObject(item, "screen_width", *conversion_event_device_info->screen_width) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -401,7 +467,7 @@ cJSON *conversion_event_device_info_convertToJSON(conversion_event_device_info_t
 
     // conversion_event_device_info->storage_free_space
     if(conversion_event_device_info->storage_free_space) {
-    if(cJSON_AddNumberToObject(item, "storage_free_space", conversion_event_device_info->storage_free_space) == NULL) {
+    if(cJSON_AddNumberToObject(item, "storage_free_space", *conversion_event_device_info->storage_free_space) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -409,7 +475,7 @@ cJSON *conversion_event_device_info_convertToJSON(conversion_event_device_info_t
 
     // conversion_event_device_info->storage_size
     if(conversion_event_device_info->storage_size) {
-    if(cJSON_AddNumberToObject(item, "storage_size", conversion_event_device_info->storage_size) == NULL) {
+    if(cJSON_AddNumberToObject(item, "storage_size", *conversion_event_device_info->storage_size) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -450,8 +516,66 @@ conversion_event_device_info_t *conversion_event_device_info_parseFromJSON(cJSON
 
     conversion_event_device_info_t *conversion_event_device_info_local_var = NULL;
 
+    // define the local variable for conversion_event_device_info->battery_level
+    int *battery_level_local_var = NULL;
+
+    char *brand_local_str = NULL;
+
+    char *carrier_local_str = NULL;
+
+    // define the local variable for conversion_event_device_info->cpu_cores
+    int *cpu_cores_local_var = NULL;
+
+    // define the local variable for conversion_event_device_info->external_storage_free_space
+    int *external_storage_free_space_local_var = NULL;
+
+    // define the local variable for conversion_event_device_info->external_storage_size
+    int *external_storage_size_local_var = NULL;
+
+    // define the local variable for conversion_event_device_info->form_factor
+    form_factor_t *form_factor_local_nonprim = NULL;
+
+    char *kernel_version_local_str = NULL;
+
     // define the local list for conversion_event_device_info->languages
     list_t *languagesList = NULL;
+
+    char *locale_local_str = NULL;
+
+    char *model_local_str = NULL;
+
+    // define the local variable for conversion_event_device_info->network_type
+    network_type_t *network_type_local_nonprim = NULL;
+
+    // define the local variable for conversion_event_device_info->os_family
+    os_family_t *os_family_local_nonprim = NULL;
+
+    char *os_name_local_str = NULL;
+
+    char *os_release_name_local_str = NULL;
+
+    char *os_version_local_str = NULL;
+
+    // define the local variable for conversion_event_device_info->screen_density
+    int *screen_density_local_var = NULL;
+
+    // define the local variable for conversion_event_device_info->screen_height
+    int *screen_height_local_var = NULL;
+
+    // define the local variable for conversion_event_device_info->screen_width
+    int *screen_width_local_var = NULL;
+
+    // define the local variable for conversion_event_device_info->storage_free_space
+    int *storage_free_space_local_var = NULL;
+
+    // define the local variable for conversion_event_device_info->storage_size
+    int *storage_size_local_var = NULL;
+
+    char *timezone_local_str = NULL;
+
+    char *timezone_abbr_local_str = NULL;
+
+    char *type_local_str = NULL;
 
     // conversion_event_device_info->battery_level
     cJSON *battery_level = cJSON_GetObjectItemCaseSensitive(conversion_event_device_infoJSON, "battery_level");
@@ -463,6 +587,12 @@ conversion_event_device_info_t *conversion_event_device_info_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    battery_level_local_var = malloc(sizeof(int));
+    if(!battery_level_local_var)
+    {
+        goto end;
+    }
+    *battery_level_local_var = battery_level->valuedouble;
     }
 
     // conversion_event_device_info->brand
@@ -499,6 +629,12 @@ conversion_event_device_info_t *conversion_event_device_info_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    cpu_cores_local_var = malloc(sizeof(int));
+    if(!cpu_cores_local_var)
+    {
+        goto end;
+    }
+    *cpu_cores_local_var = cpu_cores->valuedouble;
     }
 
     // conversion_event_device_info->external_storage_free_space
@@ -511,6 +647,12 @@ conversion_event_device_info_t *conversion_event_device_info_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    external_storage_free_space_local_var = malloc(sizeof(int));
+    if(!external_storage_free_space_local_var)
+    {
+        goto end;
+    }
+    *external_storage_free_space_local_var = external_storage_free_space->valuedouble;
     }
 
     // conversion_event_device_info->external_storage_size
@@ -523,6 +665,12 @@ conversion_event_device_info_t *conversion_event_device_info_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    external_storage_size_local_var = malloc(sizeof(int));
+    if(!external_storage_size_local_var)
+    {
+        goto end;
+    }
+    *external_storage_size_local_var = external_storage_size->valuedouble;
     }
 
     // conversion_event_device_info->form_factor
@@ -530,13 +678,8 @@ conversion_event_device_info_t *conversion_event_device_info_parseFromJSON(cJSON
     if (cJSON_IsNull(form_factor)) {
         form_factor = NULL;
     }
-    pinterest_rest_api_conversion_event_device_info_FORMFACTOR_e form_factorVariable;
     if (form_factor) { 
-    if(!cJSON_IsString(form_factor))
-    {
-    goto end; //Enum
-    }
-    form_factorVariable = conversion_event_device_info_form_factor_FromString(form_factor->valuestring);
+    form_factor_local_nonprim = form_factor_parseFromJSON(form_factor); //custom
     }
 
     // conversion_event_device_info->kernel_version
@@ -602,13 +745,8 @@ conversion_event_device_info_t *conversion_event_device_info_parseFromJSON(cJSON
     if (cJSON_IsNull(network_type)) {
         network_type = NULL;
     }
-    pinterest_rest_api_conversion_event_device_info_NETWORKTYPE_e network_typeVariable;
     if (network_type) { 
-    if(!cJSON_IsString(network_type))
-    {
-    goto end; //Enum
-    }
-    network_typeVariable = conversion_event_device_info_network_type_FromString(network_type->valuestring);
+    network_type_local_nonprim = network_type_parseFromJSON(network_type); //custom
     }
 
     // conversion_event_device_info->os_family
@@ -616,13 +754,8 @@ conversion_event_device_info_t *conversion_event_device_info_parseFromJSON(cJSON
     if (cJSON_IsNull(os_family)) {
         os_family = NULL;
     }
-    pinterest_rest_api_conversion_event_device_info_OSFAMILY_e os_familyVariable;
     if (os_family) { 
-    if(!cJSON_IsString(os_family))
-    {
-    goto end; //Enum
-    }
-    os_familyVariable = conversion_event_device_info_os_family_FromString(os_family->valuestring);
+    os_family_local_nonprim = os_family_parseFromJSON(os_family); //custom
     }
 
     // conversion_event_device_info->os_name
@@ -671,6 +804,12 @@ conversion_event_device_info_t *conversion_event_device_info_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    screen_density_local_var = malloc(sizeof(int));
+    if(!screen_density_local_var)
+    {
+        goto end;
+    }
+    *screen_density_local_var = screen_density->valuedouble;
     }
 
     // conversion_event_device_info->screen_height
@@ -683,6 +822,12 @@ conversion_event_device_info_t *conversion_event_device_info_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    screen_height_local_var = malloc(sizeof(int));
+    if(!screen_height_local_var)
+    {
+        goto end;
+    }
+    *screen_height_local_var = screen_height->valuedouble;
     }
 
     // conversion_event_device_info->screen_width
@@ -695,6 +840,12 @@ conversion_event_device_info_t *conversion_event_device_info_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    screen_width_local_var = malloc(sizeof(int));
+    if(!screen_width_local_var)
+    {
+        goto end;
+    }
+    *screen_width_local_var = screen_width->valuedouble;
     }
 
     // conversion_event_device_info->storage_free_space
@@ -707,6 +858,12 @@ conversion_event_device_info_t *conversion_event_device_info_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    storage_free_space_local_var = malloc(sizeof(int));
+    if(!storage_free_space_local_var)
+    {
+        goto end;
+    }
+    *storage_free_space_local_var = storage_free_space->valuedouble;
     }
 
     // conversion_event_device_info->storage_size
@@ -719,6 +876,12 @@ conversion_event_device_info_t *conversion_event_device_info_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    storage_size_local_var = malloc(sizeof(int));
+    if(!storage_size_local_var)
+    {
+        goto end;
+    }
+    *storage_size_local_var = storage_size->valuedouble;
     }
 
     // conversion_event_device_info->timezone
@@ -758,35 +921,83 @@ conversion_event_device_info_t *conversion_event_device_info_parseFromJSON(cJSON
     }
 
 
+    if (brand && !cJSON_IsNull(brand)) brand_local_str = strdup(brand->valuestring);
+    if (carrier && !cJSON_IsNull(carrier)) carrier_local_str = strdup(carrier->valuestring);
+    if (kernel_version && !cJSON_IsNull(kernel_version)) kernel_version_local_str = strdup(kernel_version->valuestring);
+    if (locale && !cJSON_IsNull(locale)) locale_local_str = strdup(locale->valuestring);
+    if (model && !cJSON_IsNull(model)) model_local_str = strdup(model->valuestring);
+    if (os_name && !cJSON_IsNull(os_name)) os_name_local_str = strdup(os_name->valuestring);
+    if (os_release_name && !cJSON_IsNull(os_release_name)) os_release_name_local_str = strdup(os_release_name->valuestring);
+    if (os_version && !cJSON_IsNull(os_version)) os_version_local_str = strdup(os_version->valuestring);
+    if (timezone && !cJSON_IsNull(timezone)) timezone_local_str = strdup(timezone->valuestring);
+    if (timezone_abbr && !cJSON_IsNull(timezone_abbr)) timezone_abbr_local_str = strdup(timezone_abbr->valuestring);
+    if (type && !cJSON_IsNull(type)) type_local_str = strdup(type->valuestring);
+
     conversion_event_device_info_local_var = conversion_event_device_info_create_internal (
-        battery_level ? battery_level->valuedouble : 0,
-        brand && !cJSON_IsNull(brand) ? strdup(brand->valuestring) : NULL,
-        carrier && !cJSON_IsNull(carrier) ? strdup(carrier->valuestring) : NULL,
-        cpu_cores ? cpu_cores->valuedouble : 0,
-        external_storage_free_space ? external_storage_free_space->valuedouble : 0,
-        external_storage_size ? external_storage_size->valuedouble : 0,
-        form_factor ? form_factorVariable : pinterest_rest_api_conversion_event_device_info_FORMFACTOR_NULL,
-        kernel_version && !cJSON_IsNull(kernel_version) ? strdup(kernel_version->valuestring) : NULL,
+        battery_level_local_var,
+        brand_local_str,
+        carrier_local_str,
+        cpu_cores_local_var,
+        external_storage_free_space_local_var,
+        external_storage_size_local_var,
+        form_factor ? form_factor_local_nonprim : NULL,
+        kernel_version_local_str,
         languages ? languagesList : NULL,
-        locale && !cJSON_IsNull(locale) ? strdup(locale->valuestring) : NULL,
-        model && !cJSON_IsNull(model) ? strdup(model->valuestring) : NULL,
-        network_type ? network_typeVariable : pinterest_rest_api_conversion_event_device_info_NETWORKTYPE_NULL,
-        os_family ? os_familyVariable : pinterest_rest_api_conversion_event_device_info_OSFAMILY_NULL,
-        os_name && !cJSON_IsNull(os_name) ? strdup(os_name->valuestring) : NULL,
-        os_release_name && !cJSON_IsNull(os_release_name) ? strdup(os_release_name->valuestring) : NULL,
-        os_version && !cJSON_IsNull(os_version) ? strdup(os_version->valuestring) : NULL,
-        screen_density ? screen_density->valuedouble : 0,
-        screen_height ? screen_height->valuedouble : 0,
-        screen_width ? screen_width->valuedouble : 0,
-        storage_free_space ? storage_free_space->valuedouble : 0,
-        storage_size ? storage_size->valuedouble : 0,
-        timezone && !cJSON_IsNull(timezone) ? strdup(timezone->valuestring) : NULL,
-        timezone_abbr && !cJSON_IsNull(timezone_abbr) ? strdup(timezone_abbr->valuestring) : NULL,
-        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL
+        locale_local_str,
+        model_local_str,
+        network_type ? network_type_local_nonprim : NULL,
+        os_family ? os_family_local_nonprim : NULL,
+        os_name_local_str,
+        os_release_name_local_str,
+        os_version_local_str,
+        screen_density_local_var,
+        screen_height_local_var,
+        screen_width_local_var,
+        storage_free_space_local_var,
+        storage_size_local_var,
+        timezone_local_str,
+        timezone_abbr_local_str,
+        type_local_str
         );
+
+    if (!conversion_event_device_info_local_var) {
+        goto end;
+    }
 
     return conversion_event_device_info_local_var;
 end:
+    if (battery_level_local_var) {
+        free(battery_level_local_var);
+        battery_level_local_var = NULL;
+    }
+    if (brand_local_str) {
+        free(brand_local_str);
+        brand_local_str = NULL;
+    }
+    if (carrier_local_str) {
+        free(carrier_local_str);
+        carrier_local_str = NULL;
+    }
+    if (cpu_cores_local_var) {
+        free(cpu_cores_local_var);
+        cpu_cores_local_var = NULL;
+    }
+    if (external_storage_free_space_local_var) {
+        free(external_storage_free_space_local_var);
+        external_storage_free_space_local_var = NULL;
+    }
+    if (external_storage_size_local_var) {
+        free(external_storage_size_local_var);
+        external_storage_size_local_var = NULL;
+    }
+    if (form_factor_local_nonprim) {
+        form_factor_free(form_factor_local_nonprim);
+        form_factor_local_nonprim = NULL;
+    }
+    if (kernel_version_local_str) {
+        free(kernel_version_local_str);
+        kernel_version_local_str = NULL;
+    }
     if (languagesList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, languagesList) {
@@ -795,6 +1006,66 @@ end:
         }
         list_freeList(languagesList);
         languagesList = NULL;
+    }
+    if (locale_local_str) {
+        free(locale_local_str);
+        locale_local_str = NULL;
+    }
+    if (model_local_str) {
+        free(model_local_str);
+        model_local_str = NULL;
+    }
+    if (network_type_local_nonprim) {
+        network_type_free(network_type_local_nonprim);
+        network_type_local_nonprim = NULL;
+    }
+    if (os_family_local_nonprim) {
+        os_family_free(os_family_local_nonprim);
+        os_family_local_nonprim = NULL;
+    }
+    if (os_name_local_str) {
+        free(os_name_local_str);
+        os_name_local_str = NULL;
+    }
+    if (os_release_name_local_str) {
+        free(os_release_name_local_str);
+        os_release_name_local_str = NULL;
+    }
+    if (os_version_local_str) {
+        free(os_version_local_str);
+        os_version_local_str = NULL;
+    }
+    if (screen_density_local_var) {
+        free(screen_density_local_var);
+        screen_density_local_var = NULL;
+    }
+    if (screen_height_local_var) {
+        free(screen_height_local_var);
+        screen_height_local_var = NULL;
+    }
+    if (screen_width_local_var) {
+        free(screen_width_local_var);
+        screen_width_local_var = NULL;
+    }
+    if (storage_free_space_local_var) {
+        free(storage_free_space_local_var);
+        storage_free_space_local_var = NULL;
+    }
+    if (storage_size_local_var) {
+        free(storage_size_local_var);
+        storage_size_local_var = NULL;
+    }
+    if (timezone_local_str) {
+        free(timezone_local_str);
+        timezone_local_str = NULL;
+    }
+    if (timezone_abbr_local_str) {
+        free(timezone_abbr_local_str);
+        timezone_abbr_local_str = NULL;
+    }
+    if (type_local_str) {
+        free(type_local_str);
+        type_local_str = NULL;
     }
     return NULL;
 

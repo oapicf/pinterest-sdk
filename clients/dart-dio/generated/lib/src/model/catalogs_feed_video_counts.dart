@@ -98,22 +98,25 @@ class _$CatalogsFeedVideoCountsSerializer implements PrimitiveSerializer<Catalog
         case r'ingested_videos':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ingestedVideos = valueDes;
           break;
         case r'not_ingested_videos':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.notIngestedVideos = valueDes;
           break;
         case r'total_videos':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.totalVideos = valueDes;
           break;
         default:

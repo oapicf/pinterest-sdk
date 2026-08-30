@@ -30,6 +30,7 @@ module.exports = {
                 },
             ],
             outputFields: [
+                ...LeadSubscription.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -51,7 +52,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: { data: {} }
+            sample: samples['LeadSubscriptionSample']
         }
     },
     adAccountsSubscriptions/getById: {

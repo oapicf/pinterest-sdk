@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**OpenAPI\Server\Model\CatalogsType**](CatalogsType.md) |  | 
+**catalogType** | **string** |  | 
 **credentials** | [**OpenAPI\Server\Model\CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
 **defaultCurrency** | [**OpenAPI\Server\Model\NullableCurrency**](NullableCurrency.md) |  | [optional] 
 **format** | [**OpenAPI\Server\Model\CatalogsFormat**](CatalogsFormat.md) |  | [optional] 

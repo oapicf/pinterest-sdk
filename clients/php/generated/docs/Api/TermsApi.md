@@ -18,7 +18,7 @@ termsRelatedList($terms): \OpenAPI\Client\Model\RelatedTerms
 
 List related terms
 
-Get a list of terms logically related to each input term. <p/> Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
+Get a list of terms logically related to each input term.  Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
 
 ### Example
 
@@ -78,7 +78,7 @@ termsSuggestedList($term, $limit): string[]
 
 List suggested terms
 
-Get popular search terms that begin with your input term. <p/> Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
+Get popular search terms that begin with your input term.  Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
 
 ### Example
 
@@ -97,7 +97,7 @@ $apiInstance = new OpenAPI\Client\Api\TermsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$term = sports; // string | Input term.
+$term = 'term_example'; // string | Input term.
 $limit = 4; // int | Max suggested terms to return.
 
 try {

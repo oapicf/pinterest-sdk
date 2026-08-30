@@ -8,8 +8,8 @@
 #' @description LabelBulkUpdateRequest Class
 #' @format An \code{R6Class} generator object
 #' @field id Label ID. character
-#' @field status Set status to `ARCHIVED` to remove the label from the parent entity. character [optional]
-#' @field value </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit. character [optional]
+#' @field parent_id Unique identifier of the asset you are labelling. Currently, you can only label campaigns. character
+#' @field status  \link{LabelStatusBulkUpdate}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,37 +17,35 @@ LabelBulkUpdateRequest <- R6::R6Class(
   "LabelBulkUpdateRequest",
   public = list(
     `id` = NULL,
+    `parent_id` = NULL,
     `status` = NULL,
-    `value` = NULL,
 
     #' @description
     #' Initialize a new LabelBulkUpdateRequest class.
     #'
     #' @param id Label ID.
-    #' @param status Set status to `ARCHIVED` to remove the label from the parent entity.
-    #' @param value </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
+    #' @param parent_id Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
+    #' @param status status
     #' @param ... Other optional arguments.
-    initialize = function(`id`, `status` = NULL, `value` = NULL, ...) {
+    initialize = function(`id`, `parent_id`, `status`, ...) {
       if (!missing(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
         }
         self$`id` <- `id`
       }
-      if (!is.null(`status`)) {
-        if (!(`status` %in% c("ARCHIVED"))) {
-          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be \"ARCHIVED\".", sep = ""))
+      if (!missing(`parent_id`)) {
+        if (!(is.character(`parent_id`) && length(`parent_id`) == 1)) {
+          stop(paste("Error! Invalid data for `parent_id`. Must be a string:", `parent_id`))
         }
-        if (!(is.character(`status`) && length(`status`) == 1)) {
-          stop(paste("Error! Invalid data for `status`. Must be a string:", `status`))
-        }
-        self$`status` <- `status`
+        self$`parent_id` <- `parent_id`
       }
-      if (!is.null(`value`)) {
-        if (!(is.character(`value`) && length(`value`) == 1)) {
-          stop(paste("Error! Invalid data for `value`. Must be a string:", `value`))
+      if (!missing(`status`)) {
+        if (!(`status` %in% c())) {
+          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
         }
-        self$`value` <- `value`
+        stopifnot(R6::is.R6(`status`))
+        self$`status` <- `status`
       }
     },
 
@@ -86,15 +84,38 @@ LabelBulkUpdateRequest <- R6::R6Class(
         LabelBulkUpdateRequestObject[["id"]] <-
           self$`id`
       }
+      if (!is.null(self$`parent_id`)) {
+        LabelBulkUpdateRequestObject[["parent_id"]] <-
+          self$`parent_id`
+      }
       if (!is.null(self$`status`)) {
         LabelBulkUpdateRequestObject[["status"]] <-
-          self$`status`
-      }
-      if (!is.null(self$`value`)) {
-        LabelBulkUpdateRequestObject[["value"]] <-
-          self$`value`
+          self$extractSimpleType(self$`status`)
       }
       return(LabelBulkUpdateRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -107,14 +128,13 @@ LabelBulkUpdateRequest <- R6::R6Class(
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
       }
-      if (!is.null(this_object$`status`)) {
-        if (!is.null(this_object$`status`) && !(this_object$`status` %in% c("ARCHIVED"))) {
-          stop(paste("Error! \"", this_object$`status`, "\" cannot be assigned to `status`. Must be \"ARCHIVED\".", sep = ""))
-        }
-        self$`status` <- this_object$`status`
+      if (!is.null(this_object$`parent_id`)) {
+        self$`parent_id` <- this_object$`parent_id`
       }
-      if (!is.null(this_object$`value`)) {
-        self$`value` <- this_object$`value`
+      if (!is.null(this_object$`status`)) {
+        `status_object` <- LabelStatusBulkUpdate$new()
+        `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+        self$`status` <- `status_object`
       }
       self
     },
@@ -138,11 +158,8 @@ LabelBulkUpdateRequest <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
-      if (!is.null(this_object$`status`) && !(this_object$`status` %in% c("ARCHIVED"))) {
-        stop(paste("Error! \"", this_object$`status`, "\" cannot be assigned to `status`. Must be \"ARCHIVED\".", sep = ""))
-      }
-      self$`status` <- this_object$`status`
-      self$`value` <- this_object$`value`
+      self$`parent_id` <- this_object$`parent_id`
+      self$`status` <- LabelStatusBulkUpdate$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -159,6 +176,20 @@ LabelBulkUpdateRequest <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for LabelBulkUpdateRequest: the required field `id` is missing."))
+      }
+      # check the required field `parent_id`
+      if (!is.null(input_json$`parent_id`)) {
+        if (!(is.character(input_json$`parent_id`) && length(input_json$`parent_id`) == 1)) {
+          stop(paste("Error! Invalid data for `parent_id`. Must be a string:", input_json$`parent_id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for LabelBulkUpdateRequest: the required field `parent_id` is missing."))
+      }
+      # check the required field `status`
+      if (!is.null(input_json$`status`)) {
+        stopifnot(R6::is.R6(input_json$`status`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for LabelBulkUpdateRequest: the required field `status` is missing."))
       }
     },
 
@@ -180,7 +211,13 @@ LabelBulkUpdateRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      if (nchar(self$`value`) > 100) {
+      # check if the required `parent_id` is null
+      if (is.null(self$`parent_id`)) {
+        return(FALSE)
+      }
+
+      # check if the required `status` is null
+      if (is.null(self$`status`)) {
         return(FALSE)
       }
 
@@ -198,8 +235,14 @@ LabelBulkUpdateRequest <- R6::R6Class(
         invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
       }
 
-      if (nchar(self$`value`) > 100) {
-        invalid_fields["value"] <- "Invalid length for `value`, must be smaller than or equal to 100."
+      # check if the required `parent_id` is null
+      if (is.null(self$`parent_id`)) {
+        invalid_fields["parent_id"] <- "Non-nullable required field `parent_id` cannot be null."
+      }
+
+      # check if the required `status` is null
+      if (is.null(self$`status`)) {
+        invalid_fields["status"] <- "Non-nullable required field `status` cannot be null."
       }
 
       invalid_fields

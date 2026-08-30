@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.prokarma.pkmst.model.BatchOperationStatus;
-import com.prokarma.pkmst.model.CatalogsType;
 import com.prokarma.pkmst.model.ItemProcessingRecord;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -24,13 +23,42 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Object describing the catalogs retail items batch")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailItemsBatch   {
   @JsonProperty("batch_id")
   private String batchId;
 
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    RETAIL("RETAIL");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String text) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("completed_time")
   private OffsetDateTime completedTime;
@@ -54,7 +82,7 @@ public class CatalogsRetailItemsBatch   {
    * Id of the catalogs items batch
    * @return batchId
    */
-  @ApiModelProperty(example = "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e", value = "Id of the catalogs items batch")
+  @ApiModelProperty(example = "595953100599279259", value = "Id of the catalogs items batch")
   public String getBatchId() {
     return batchId;
   }
@@ -63,7 +91,7 @@ public class CatalogsRetailItemsBatch   {
     this.batchId = batchId;
   }
 
-  public CatalogsRetailItemsBatch catalogType(CatalogsType catalogType) {
+  public CatalogsRetailItemsBatch catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -73,11 +101,11 @@ public class CatalogsRetailItemsBatch   {
    * @return catalogType
    */
   @ApiModelProperty(required = true, value = "")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -90,7 +118,7 @@ public class CatalogsRetailItemsBatch   {
    * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
    * @return completedTime
    */
-  @ApiModelProperty(readOnly = true, value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
+  @ApiModelProperty(example = "2024-01-01T20:20Z", value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
   public OffsetDateTime getCompletedTime() {
     return completedTime;
   }
@@ -108,7 +136,7 @@ public class CatalogsRetailItemsBatch   {
    * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
    * @return createdTime
    */
-  @ApiModelProperty(required = true, readOnly = true, value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.")
+  @ApiModelProperty(example = "2024-01-01T20:10:40Z", required = true, value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.")
   public OffsetDateTime getCreatedTime() {
     return createdTime;
   }
@@ -204,10 +232,7 @@ public class CatalogsRetailItemsBatch   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

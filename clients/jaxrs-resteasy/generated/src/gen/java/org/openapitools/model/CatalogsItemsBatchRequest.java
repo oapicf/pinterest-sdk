@@ -13,7 +13,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.BatchOperation;
 import org.openapitools.model.CatalogsItemsCreateBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteDiscontinuedBatchRequest;
@@ -25,7 +24,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object of catalogs items batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
+@ApiModel(description="Request object of catalogs items batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsItemsCreateBatchRequest.class, name = "CREATE"),
   @JsonSubTypes.Type(value = CatalogsItemsDeleteBatchRequest.class, name = "DELETE"),
@@ -221,7 +220,7 @@ public class CatalogsItemsBatchRequest   {
 
         NL2("NL"),
 
-        NO("NO"),
+        FALSE("false"),
 
         PL("PL"),
 
@@ -270,7 +269,26 @@ public class CatalogsItemsBatchRequest   {
   }
 
   private LanguageEnum language;
-  private BatchOperation operation;
+
+  /**
+   * Gets or Sets operation
+   */
+  public enum OperationEnum {
+    DELETE("DELETE");
+    private String value;
+
+    OperationEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+  }
+
+  private OperationEnum operation;
 
   /**
    **/
@@ -321,11 +339,10 @@ public class CatalogsItemsBatchRequest   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operation")
   @NotNull
-  @Valid
-  public BatchOperation getOperation() {
+  public OperationEnum getOperation() {
     return operation;
   }
-  public void setOperation(BatchOperation operation) {
+  public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
 
@@ -368,10 +385,7 @@ public class CatalogsItemsBatchRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

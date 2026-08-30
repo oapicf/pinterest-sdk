@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 Search pins by a given search term
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 
 ### Example
 
@@ -44,13 +44,13 @@ object Example extends App {
     val apiInstance = SearchApi("https://api.pinterest.com/v5")
     val term: String = term_example // String | Search term to look up pins.
 
-    val countryCode: String = US // String | Two letter country code (ISO 3166-1 alpha-2)
+    val countryCode: String = countryCode_example // String | Two letter country code (ISO 3166-1 alpha-2)
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
     val locale: String = locale_example // String | Search locale.
 
-    val limit: Int = 4 // Int | Max search result size
+    val limit: Int = 56 // Int | Max search result size
     
     val request = apiInstance.searchPartnerPins(term, countryCode, bookmark, locale, limit)
     val response = apiInvoker.execute(request)
@@ -103,18 +103,22 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid pins |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## searchUserBoardsGet
 
-> searchUserBoardsGet(searchUserBoardsGetRequest): ApiRequest[SearchUserBoardsGet200Response]
+> searchUserBoardsGet(searchUserBoardsGetRequest): ApiRequest[BoardsList200Response]
 
 Search user&#39;s boards
 
-Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 
@@ -139,13 +143,13 @@ object Example extends App {
     val apiInstance = SearchApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
+    val query: String = query_example // String | Search query. Can contain pin description keywords or comma-separated pin IDs.
+
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-
-    val query: String = query_example // String | Search query. Can contain pin description keywords or comma-separated pin IDs.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.searchUserBoardsGet(adAccountId, bookmark, pageSize, query)
+    val request = apiInstance.searchUserBoardsGet(adAccountId, query, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -174,13 +178,13 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
- **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
  **query** | **String**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional]
+ **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
-ApiRequest[[**SearchUserBoardsGet200Response**](SearchUserBoardsGet200Response.md)]
+ApiRequest[[**BoardsList200Response**](BoardsList200Response.md)]
 
 
 ### Authorization
@@ -195,17 +199,22 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## searchUserPinsList
 
-> searchUserPinsList(searchUserPinsListRequest): ApiRequest[SearchUserPinsList200Response]
+> searchUserPinsList(searchUserPinsListRequest): ApiRequest[PinsList200Response]
 
 Search user&#39;s Pins
 
-Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 
@@ -228,7 +237,7 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = SearchApi("https://api.pinterest.com/v5")
-    val query: String = Plants // String | Search query. Can contain pin description keywords or comma-separated pin IDs.
+    val query: String = query_example // String | Search query. Can contain pin description keywords or comma-separated pin IDs.
 
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
@@ -268,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-ApiRequest[[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)]
+ApiRequest[[**PinsList200Response**](PinsList200Response.md)]
 
 
 ### Authorization
@@ -283,7 +292,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | User not found |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

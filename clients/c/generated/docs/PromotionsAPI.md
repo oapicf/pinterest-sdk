@@ -17,7 +17,7 @@ Method | HTTP request | Description
 //
 // Create multiple new promotions.
 //
-promotions_response_t* PromotionsAPI_promotionsCreate(apiClient_t *apiClient, char *ad_account_id, list_t *promotion_create_request);
+promotions_response_t* PromotionsAPI_promotionsCreate(apiClient_t *apiClient, char *ad_account_id, list_t *promotion_create);
 ```
 
 ### Parameters
@@ -25,7 +25,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**promotion_create_request** | **[list_t](promotion_create_request.md) \*** | List of promotions to create, size limit [1, 30]. | 
+**promotion_create** | **[list_t](promotion_create.md) \*** |  | 
 
 ### Return type
 
@@ -49,19 +49,20 @@ Name | Type | Description  | Notes
 //
 // Delete a promotion within Pinterest.
 //
-void PromotionsAPI_promotionsDelete(apiClient_t *apiClient, char *ad_account_id, char *promotion_id);
+promotion_t* PromotionsAPI_promotionsDelete(apiClient_t *apiClient, char *promotion_id, char *ad_account_id);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**promotion_id** | **char \*** | Promotion ID | 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**promotion_id** | **char \*** | Unique identifier of a promotion | 
 
 ### Return type
 
-void
+[promotion_t](promotion.md) *
+
 
 ### Authorization
 
@@ -80,19 +81,19 @@ void
 //
 // Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
 //
-promotion_response_t* PromotionsAPI_promotionsGet(apiClient_t *apiClient, char *ad_account_id, char *promotion_id);
+promotion_t* PromotionsAPI_promotionsGet(apiClient_t *apiClient, char *promotion_id, char *ad_account_id);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**promotion_id** | **char \*** | Promotion ID | 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**promotion_id** | **char \*** | Unique identifier of a promotion | 
 
 ### Return type
 
-[promotion_response_t](promotion_response.md) *
+[promotion_t](promotion.md) *
 
 
 ### Authorization
@@ -112,7 +113,7 @@ Name | Type | Description  | Notes
 //
 // Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
 //
-promotions_list_200_response_t* PromotionsAPI_promotionsList(apiClient_t *apiClient, char *ad_account_id, int *page_size, pinterest_rest_api_promotionsList_order_e order, char *bookmark);
+promotions_list_200_response_t* PromotionsAPI_promotionsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_lib_pagination_order_e order);
 ```
 
 ### Parameters
@@ -120,9 +121,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
-**order** | **pinterest_rest_api_promotionsList_order_e** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+**order** | **pinterest_lib_pagination_order_e** | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 
@@ -146,7 +147,7 @@ Name | Type | Description  | Notes
 //
 // Update multiple promotions.
 //
-promotions_response_t* PromotionsAPI_promotionsUpdate(apiClient_t *apiClient, char *ad_account_id, list_t *promotion_update_request);
+promotions_response_t* PromotionsAPI_promotionsUpdate(apiClient_t *apiClient, char *ad_account_id, list_t *promotion_batch_update);
 ```
 
 ### Parameters
@@ -154,7 +155,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**promotion_update_request** | **[list_t](promotion_update_request.md) \*** | List of promotions to create, size limit [1, 30]. | 
+**promotion_batch_update** | **[list_t](promotion_batch_update.md) \*** |  | 
 
 ### Return type
 

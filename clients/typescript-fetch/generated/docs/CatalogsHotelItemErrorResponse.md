@@ -7,9 +7,10 @@ Object describing a hotel item error
 
 Name | Type
 ------------ | -------------
-`catalogType` | [CatalogsType](CatalogsType.md)
+`catalogType` | string
 `errors` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
 `hotelId` | string
+`itemResponseKind` | string
 
 ## Example
 
@@ -21,6 +22,7 @@ const example = {
   "catalogType": null,
   "errors": null,
   "hotelId": DS0294-M,
+  "itemResponseKind": null,
 } satisfies CatalogsHotelItemErrorResponse
 
 console.log(example)

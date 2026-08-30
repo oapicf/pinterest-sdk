@@ -2,7 +2,7 @@
 Protected Class CustomNumber0Filter
 
 	#tag Property, Flags = &h0
-		CUSTOM_NUMBER_0 As CatalogsProductGroupUint32Criteria
+		CUSTOM_NUMBER_0 As OpenAPIClient.Models.CatalogsProductGroupUint32Criteria
 	#tag EndProperty
 
 

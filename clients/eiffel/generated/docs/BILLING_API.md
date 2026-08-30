@@ -18,12 +18,12 @@ Feature | HTTP request | Description
 
 
 # **ads_credit_redeem**
-> ads_credit_redeem (ad_account_id: STRING_32 ; ads_credit_redeem_request: ADS_CREDIT_REDEEM_REQUEST ): detachable ADS_CREDIT_REDEEM_RESPONSE
+> ads_credit_redeem (ad_account_id: STRING_32 ; ads_credit_redeem_create: ADS_CREDIT_REDEEM_CREATE ): detachable ADS_CREDIT_REDEEM
 
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 
 ### Parameters
@@ -31,11 +31,11 @@ Redeem ads credit on behalf of the ad account id and apply it towards billing.  
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **ads_credit_redeem_request** | [**ADS_CREDIT_REDEEM_REQUEST**](ADS_CREDIT_REDEEM_REQUEST.md)| Redeem ad credits request. | 
+ **ads_credit_redeem_create** | [**ADS_CREDIT_REDEEM_CREATE**](ADS_CREDIT_REDEEM_CREATE.md)|  | 
 
 ### Return type
 
-[**ADS_CREDIT_REDEEM_RESPONSE**](AdsCreditRedeemResponse.md)
+[**ADS_CREDIT_REDEEM**](AdsCreditRedeem.md)
 
 ### Authorization
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 
 ### Parameters
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **billing_invoices_get**
-> billing_invoices_get (ad_account_id: STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; sort:  detachable STRING_32 ; order:  detachable STRING_32 ; status:  detachable STRING_32 ; document_type:  detachable STRING_32 ; start_due_date:  detachable DATE ; end_due_date:  detachable DATE ): detachable BILLING_INVOICES_GET_200_RESPONSE
+> billing_invoices_get (ad_account_id: STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; order:  detachable PINTEREST_LIB_PAGINATION_ORDER ; sort:  detachable BILLING_INVOICE_SORT_FIELD ; status:  detachable BILLING_INVOICE_STATUS ; document_type:  detachable BILLING_INVOICE_DOCUMENT_TYPE ; start_due_date:  detachable DATE ; end_due_date:  detachable DATE ): detachable BILLING_INVOICES_GET_200_RESPONSE
 
 
 Get billing invoices
@@ -126,11 +126,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **sort** | **STRING_32**| Field of which to sort billing invoices | [optional] [default to DUE_DATE]
- **order** | **STRING_32**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
- **status** | **STRING_32**| Status of billing invoices to filter by | [optional] [default to null]
- **document_type** | **STRING_32**| Document type of billing invoices to filter by | [optional] [default to null]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PINTEREST_LIB_PAGINATION_ORDER**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
+ **sort** | [**BILLING_INVOICE_SORT_FIELD**](.md)| Field of which to sort billing invoices | [optional] [default to null]
+ **status** | [**BILLING_INVOICE_STATUS**](.md)| Status of billing invoices to filter by | [optional] [default to null]
+ **document_type** | [**BILLING_INVOICE_DOCUMENT_TYPE**](.md)| Document type of billing invoices to filter by | [optional] [default to null]
  **start_due_date** | **DATE**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] [default to null]
  **end_due_date** | **DATE**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] [default to null]
 
@@ -150,22 +150,22 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **billing_profiles_get**
-> billing_profiles_get (ad_account_id: STRING_32 ; is_active: BOOLEAN ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ): detachable BILLING_PROFILES_GET_200_RESPONSE
+> billing_profiles_get (is_active: BOOLEAN ; ad_account_id: STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ): detachable BILLING_PROFILES_GET_200_RESPONSE
 
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
  **is_active** | **BOOLEAN**| Return active billing profiles, if false return all billing profiles. | [default to null]
+ **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -183,12 +183,12 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ssio_accounts_get**
-> ssio_accounts_get (ad_account_id: STRING_32 ): detachable SSIO_ACCOUNT_RESPONSE
+> ssio_accounts_get (ad_account_id: STRING_32 ): detachable SSIO_ACCOUNT
 
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 
 ### Parameters
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SSIO_ACCOUNT_RESPONSE**](SSIOAccountResponse.md)
+[**SSIO_ACCOUNT**](SSIOAccount.md)
 
 ### Authorization
 
@@ -213,12 +213,12 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ssio_insertion_order_create**
-> ssio_insertion_order_create (ad_account_id: STRING_32 ; ssio_create_insertion_order_request: SSIO_CREATE_INSERTION_ORDER_REQUEST ): detachable SSIO_CREATE_INSERTION_ORDER_RESPONSE
+> ssio_insertion_order_create (ad_account_id: STRING_32 ; ssio_insertion_order_create: SSIO_INSERTION_ORDER_CREATE ): detachable SSIO_INSERTION_ORDER
 
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 
 ### Parameters
@@ -226,11 +226,11 @@ Create insertion order through SSIO for <code>ad_account_id</code>. - The token'
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **ssio_create_insertion_order_request** | [**SSIO_CREATE_INSERTION_ORDER_REQUEST**](SSIO_CREATE_INSERTION_ORDER_REQUEST.md)| Order line to create. | 
+ **ssio_insertion_order_create** | [**SSIO_INSERTION_ORDER_CREATE**](SSIO_INSERTION_ORDER_CREATE.md)|  | 
 
 ### Return type
 
-[**SSIO_CREATE_INSERTION_ORDER_RESPONSE**](SSIOCreateInsertionOrderResponse.md)
+[**SSIO_INSERTION_ORDER**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -244,12 +244,12 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ssio_insertion_order_edit**
-> ssio_insertion_order_edit (ad_account_id: STRING_32 ; ssio_edit_insertion_order_request: SSIO_EDIT_INSERTION_ORDER_REQUEST ): detachable SSIO_EDIT_INSERTION_ORDER_RESPONSE
+> ssio_insertion_order_edit (ad_account_id: STRING_32 ; ssio_insertion_order_update: SSIO_INSERTION_ORDER_UPDATE ): detachable SSIO_INSERTION_ORDER
 
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 
 ### Parameters
@@ -257,11 +257,11 @@ Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **ssio_edit_insertion_order_request** | [**SSIO_EDIT_INSERTION_ORDER_REQUEST**](SSIO_EDIT_INSERTION_ORDER_REQUEST.md)| Order line to create. | 
+ **ssio_insertion_order_update** | [**SSIO_INSERTION_ORDER_UPDATE**](SSIO_INSERTION_ORDER_UPDATE.md)|  | 
 
 ### Return type
 
-[**SSIO_EDIT_INSERTION_ORDER_RESPONSE**](SSIOEditInsertionOrderResponse.md)
+[**SSIO_INSERTION_ORDER**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 
 ### Parameters
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 
 ### Parameters
@@ -338,12 +338,12 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ssio_order_lines_get_by_ad_account**
-> ssio_order_lines_get_by_ad_account (ad_account_id: STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; pin_order_id:  detachable STRING_32 ): detachable SSIO_ORDER_LINES_GET_BY_AD_ACCOUNT_200_RESPONSE
+> ssio_order_lines_get_by_ad_account (ad_account_id: STRING_32 ; pin_order_id:  detachable STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ): detachable SSIO_ORDER_LINES_GET_BY_AD_ACCOUNT_200_RESPONSE
 
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 
 ### Parameters
@@ -351,9 +351,9 @@ Get Salesforce order lines for account id <code>ad_account_id</code>. - The toke
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
+ **pin_order_id** | **STRING_32**| The pin order id associated with the SSIO insertion order | [optional] [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **pin_order_id** | **STRING_32**| The pin order id associated with the ssio insertino order | [optional] [default to null]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

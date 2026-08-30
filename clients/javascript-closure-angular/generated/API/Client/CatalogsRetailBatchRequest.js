@@ -27,7 +27,7 @@ API.Client.CatalogsRetailBatchRequest.prototype.country;
 
 /**
  * Array with catalogs item operations
- * @type {!Array<!API.Client.CatalogsRetailBatchRequest_items_inner>}
+ * @type {!Array<!API.Client.CatalogsRetailBatchRequestItemsItems>}
  * @export
  */
 API.Client.CatalogsRetailBatchRequest.prototype.items;
@@ -134,7 +134,7 @@ API.Client.CatalogsRetailBatchRequest.LanguageEnum = {
   NB: 'NB',
   NE: 'NE',
   NL: 'NL',
-  NO: 'NO',
+  false: 'false',
   PL: 'PL',
   PT: 'PT',
   RO: 'RO',

@@ -23,7 +23,7 @@ CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest::~CatalogsCreative
 void
 CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest::__init()
 {
-	//catalog_id = std::string();
+	//catalog_id = null;
 	//catalog_type = std::string();
 	//filters = new CatalogsCreativeAssetsProductGroupFilters();
 }

@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **asset_id** | [**STRING_32**](STRING_32.md) | Unique identifier of a business asset. | [optional] [default to null]
-**asset_type** | [**STRING_32**](STRING_32.md) | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional] [default to null]
+**asset_type** | [**ASSET_TYPE_RESPONSE**](AssetTypeResponse.md) |  | [optional] [default to null]
 **partner_id** | [**STRING_32**](STRING_32.md) | Unique identifier of a business partner. | [optional] [default to null]
 **permissions** | [**LIST [STRING_32]**](STRING_32.md) | Permission levels member or partner has on an asset. | [optional] [default to null]
 

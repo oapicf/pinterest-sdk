@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -11,7 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BatchOperationStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.HotelProcessingRecord;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
@@ -21,35 +21,72 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * Object describing the catalogs hotel items batch
+ * Object describing the catalogs hotel items batch. If specified, you must provide all properties.
  */
 
-@Schema(name = "CatalogsHotelItemsBatch", description = "Object describing the catalogs hotel items batch")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "CatalogsHotelItemsBatch", description = "Object describing the catalogs hotel items batch. If specified, you must provide all properties.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String batchId;
 
-  private CatalogsType catalogType;
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    HOTEL("HOTEL");
 
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private JsonNullable<OffsetDateTime> completedTime = JsonNullable.<OffsetDateTime>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private @Nullable OffsetDateTime createdTime;
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid HotelProcessingRecord> items = new ArrayList<>();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BatchOperationStatus status;
 
   public CatalogsHotelItemsBatch() {
@@ -59,7 +96,7 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsHotelItemsBatch(CatalogsType catalogType) {
+  public CatalogsHotelItemsBatch(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -72,18 +109,19 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
    * Id of the catalogs items batch
    * @return batchId
    */
-  
-  @Schema(name = "batch_id", example = "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e", description = "Id of the catalogs items batch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "batch_id", example = "595953100599279259", description = "Id of the catalogs items batch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("batch_id")
   public @Nullable String getBatchId() {
     return batchId;
   }
 
+  @JsonProperty("batch_id")
   public void setBatchId(@Nullable String batchId) {
     this.batchId = batchId;
   }
 
-  public CatalogsHotelItemsBatch catalogType(CatalogsType catalogType) {
+  public CatalogsHotelItemsBatch catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -92,14 +130,15 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
    * Get catalogType
    * @return catalogType
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  @JsonProperty("catalog_type")
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -113,7 +152,7 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
    * @return completedTime
    */
   @Valid 
-  @Schema(name = "completed_time", accessMode = Schema.AccessMode.READ_ONLY, description = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "completed_time", example = "2024-01-01T20:20Z", description = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("completed_time")
   public JsonNullable<OffsetDateTime> getCompletedTime() {
     return completedTime;
@@ -133,12 +172,13 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
    * @return createdTime
    */
   @Valid 
-  @Schema(name = "created_time", accessMode = Schema.AccessMode.READ_ONLY, description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "created_time", example = "2024-01-01T20:10:40Z", description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
   public @Nullable OffsetDateTime getCreatedTime() {
     return createdTime;
   }
 
+  @JsonProperty("created_time")
   public void setCreatedTime(@Nullable OffsetDateTime createdTime) {
     this.createdTime = createdTime;
   }
@@ -167,6 +207,7 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
     return items;
   }
 
+  @JsonProperty("items")
   public void setItems(List<@Valid HotelProcessingRecord> items) {
     this.items = items;
   }
@@ -187,6 +228,7 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
     return status;
   }
 
+  @JsonProperty("status")
   public void setStatus(@Nullable BatchOperationStatus status) {
     this.status = status;
   }
@@ -242,11 +284,8 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

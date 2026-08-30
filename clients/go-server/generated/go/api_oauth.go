@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -117,7 +117,22 @@ func (c *OauthAPIController) OauthToken(w http.ResponseWriter, r *http.Request) 
 	
 	
 	grantTypeParam := r.FormValue("grant_type")
-	result, err := c.service.OauthToken(r.Context(), grantTypeParam)
+	
+	
+	codeParam := r.FormValue("code")
+	
+	
+	continuousRefreshParam := r.FormValue("continuous_refresh")
+	
+	
+	redirectUriParam := r.FormValue("redirect_uri")
+	
+	
+	refreshTokenParam := r.FormValue("refresh_token")
+	
+	
+	scopeParam := r.FormValue("scope")
+	result, err := c.service.OauthToken(r.Context(), grantTypeParam, codeParam, continuousRefreshParam, redirectUriParam, refreshTokenParam, scopeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

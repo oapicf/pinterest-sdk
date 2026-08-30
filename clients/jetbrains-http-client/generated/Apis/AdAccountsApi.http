@@ -1,0 +1,152 @@
+## AdAccountsApi
+
+### Get ad account analytics
+## Get ad account analytics
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/analytics?startDate={{startDate}}&endDate={{endDate}}&columns={{columns}}&granularity={{granularity}}&clickWindowDays={{clickWindowDays}}&engagementWindowDays={{engagementWindowDays}}&viewWindowDays={{viewWindowDays}}&conversionReportTime={{conversionReportTime}}&reportingTimezone={{reportingTimezone}}
+Accept: application/json
+
+### Get targeting analytics for an ad account
+## Get targeting analytics for an ad account
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/targeting_analytics?startDate={{startDate}}&endDate={{endDate}}&targetingTypes={{targetingTypes}}&columns={{columns}}&granularity={{granularity}}&clickWindowDays={{clickWindowDays}}&engagementWindowDays={{engagementWindowDays}}&viewWindowDays={{viewWindowDays}}&conversionReportTime={{conversionReportTime}}&attributionTypes={{attributionTypes}}&reportingTimezone={{reportingTimezone}}
+Accept: application/json
+
+### Create ad account
+## Create ad account
+POST https://api.pinterest.com/v5/ad_accounts
+Content-Type: application/json
+Accept: application/json
+
+{
+ "country": "<string>",
+ "currency": "<string>",
+ "name": "<string>",
+ "owner_user_id": "<string>",
+ "time_zone": "<string>"
+}
+
+
+### Get ad account
+## Get ad account
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}
+Accept: application/json
+
+### List ad accounts
+## List ad accounts
+GET https://api.pinterest.com/v5/ad_accounts?includeSharedAccounts={{includeSharedAccounts}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Create a request for a brand, category, SKU report
+## Create a request for a brand, category, SKU report
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/reports/brand_category_sku
+Content-Type: application/json
+Accept: application/json
+
+{
+ "ad_group_ids": "<string>",
+ "campaign_ids": "<string>",
+ "campaign_objective_types": "<string>",
+ "click_window_days": "<string>",
+ "columns": "<string>",
+ "conversion_product_attribution_type": "<string>",
+ "conversion_product_breakdown": "<string>",
+ "conversion_report_time": "<string>",
+ "end_date": "<string>",
+ "granularity": "<string>",
+ "level": "<string>",
+ "product_sku_ids": "<string>",
+ "report_name": "<string>",
+ "start_date": "<string>",
+ "view_window_days": "<string>"
+}
+
+
+### Create a request for a Marketing Mix Modeling (MMM) report
+## Create a request for a Marketing Mix Modeling (MMM) report
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/mmm_reports
+Content-Type: application/json
+Accept: application/json
+
+{
+ "advertiser_ids": "<string>",
+ "columns": "<string>",
+ "countries": "<string>",
+ "custom_column_ids": "<string>",
+ "end_date": "<string>",
+ "granularity": "<string>",
+ "level": "<string>",
+ "report_name": "<string>",
+ "start_date": "<string>",
+ "targeting_types": "<string>"
+}
+
+
+### Create async request for an account analytics report
+## Create async request for an account analytics report
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/reports
+Content-Type: application/json
+Accept: application/json
+
+{
+ "ad_group_ids": "<string>",
+ "ad_group_statuses": "<string>",
+ "ad_ids": "<string>",
+ "ad_statuses": "<string>",
+ "attribution_types": "<string>",
+ "campaign_brand_label": "<string>",
+ "campaign_custom_label": "<string>",
+ "campaign_ids": "<string>",
+ "campaign_objective_types": "<string>",
+ "campaign_statuses": "<string>",
+ "click_window_days": "<string>",
+ "columns": "<string>",
+ "combine_targeting_types": "<string>",
+ "conversion_report_time": "<string>",
+ "custom_conversion_event_metrics": "<string>",
+ "end_date": "<string>",
+ "end_hour": "<number>",
+ "engagement_window_days": "<string>",
+ "granularity": "<string>",
+ "level": "<string>",
+ "metrics_filters": "<string>",
+ "primary_sort": "<string>",
+ "product_group_ids": "<string>",
+ "product_group_statuses": "<string>",
+ "product_item_ids": "<string>",
+ "report_format": "<string>",
+ "reporting_timezone": "<string>",
+ "start_date": "<string>",
+ "start_hour": "<number>",
+ "targeting_types": "<string>",
+ "view_window_days": "<string>"
+}
+
+
+### Create async request for an analytics report using a template
+## Create async request for an analytics report using a template
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/templates/{{template_id}}/reports?startDate={{startDate}}&endDate={{endDate}}&granularity={{granularity}}
+Accept: application/json
+
+### Get advertiser brand, category, SKU report
+## Get advertiser brand, category, SKU report
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/reports/brand_category_sku?token={{token}}
+Accept: application/json
+
+### Get advertiser Marketing Mix Modeling (MMM) report.
+## Get advertiser Marketing Mix Modeling (MMM) report.
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/mmm_reports?token={{token}}
+Accept: application/json
+
+### Get the account analytics report created by the async call
+## Get the account analytics report created by the async call
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/reports?token={{token}}
+Accept: application/json
+
+### Delete ads data for ad account in API Sandbox
+## Delete ads data for ad account in API Sandbox
+DELETE https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/sandbox
+Accept: application/json
+
+### List templates
+## List templates
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/templates?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}
+Accept: application/json

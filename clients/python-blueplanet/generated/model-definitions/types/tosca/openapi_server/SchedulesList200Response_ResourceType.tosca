@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SchedulesList200Response"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SchedulesList200Response"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Schedule = openapi_server.resourceTypes.Schedule
+}
+resourceTypes {
+
+  SchedulesList200Response {
+    title = SchedulesList200Response
+    description = SchedulesList200Response
+    derivedFrom = Root
+    properties {
+        bookmark {
+          type =  string
+          description = ""
+          optional = false
+        }
+        items {
+          type = array
+          items.type = Schedule
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SchedulesList200Response {
+    title = SchedulesList200Response
+    description = SchedulesList200Response
+    implements = openapi_server.resourceTypes.SchedulesList200Response
+
+  }
+}

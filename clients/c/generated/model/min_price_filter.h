@@ -20,7 +20,7 @@ typedef struct min_price_filter_t min_price_filter_t;
 
 
 typedef struct min_price_filter_t {
-    catalogs_product_group_pricing_criteria_t *min_price; //object
+    struct catalogs_product_group_pricing_criteria_t *min_price; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } min_price_filter_t;

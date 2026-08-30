@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  IntegrationLogsInvalidLogResponseRejectedLogsInner = openapi_server.resourceTypes.IntegrationLogsInvalidLogResponseRejectedLogsInner
+  IntegrationLogsInvalidLogResponseRejectedLogsItems = openapi_server.resourceTypes.IntegrationLogsInvalidLogResponseRejectedLogsItems
 }
 resourceTypes {
 
@@ -18,7 +18,7 @@ resourceTypes {
     properties {
         rejected_logs {
           type = array
-          items.type = IntegrationLogsInvalidLogResponseRejectedLogsInner
+          items.type = IntegrationLogsInvalidLogResponseRejectedLogsItems
           description = ""
           optional = false
         }

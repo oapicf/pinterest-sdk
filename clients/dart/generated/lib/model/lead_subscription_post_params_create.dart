@@ -41,13 +41,14 @@ class LeadSubscriptionPostParamsCreate {
   ///
   String? partnerAccessToken;
 
+  /// Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  LeadSubscriptionPostParamsCreateAllOfPartnerMetadata? partnerMetadata;
+  PartnerMetadata? partnerMetadata;
 
   /// Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
   ///
@@ -115,10 +116,8 @@ class LeadSubscriptionPostParamsCreate {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "LeadSubscriptionPostParamsCreate[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "LeadSubscriptionPostParamsCreate[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'webhook_url'), 'Required key "LeadSubscriptionPostParamsCreate[webhook_url]" is missing from JSON.');
+        assert(json[r'webhook_url'] != null, 'Required key "LeadSubscriptionPostParamsCreate[webhook_url]" has a null value in JSON.');
         return true;
       }());
 
@@ -126,7 +125,7 @@ class LeadSubscriptionPostParamsCreate {
         leadFormId: mapValueOfType<String>(json, r'lead_form_id'),
         webhookUrl: mapValueOfType<String>(json, r'webhook_url')!,
         partnerAccessToken: mapValueOfType<String>(json, r'partner_access_token'),
-        partnerMetadata: LeadSubscriptionPostParamsCreateAllOfPartnerMetadata.fromJson(json[r'partner_metadata']),
+        partnerMetadata: PartnerMetadata.fromJson(json[r'partner_metadata']),
         partnerRefreshToken: mapValueOfType<String>(json, r'partner_refresh_token'),
       );
     }

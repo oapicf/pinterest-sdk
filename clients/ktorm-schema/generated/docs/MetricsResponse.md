@@ -5,17 +5,17 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**data** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;kotlin.Any&gt;**](kotlin.Any.md) |  |  [optional]
+**data** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;MetricsResponseDataItems&gt;**](MetricsResponseDataItems.md) |  |  [optional]
 
 
-# **Table `MetricsResponseData`**
-(mapped from: MetricsResponseData)
+# **Table `MetricsResponseMetricsResponseDataItems`**
+(mapped from: MetricsResponseMetricsResponseDataItems)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 metricsResponse | metricsResponse | long | | kotlin.Long | Primary Key | *one*
-data | data | blob | | kotlin.Any | Foreign Key | *many*
+metricsResponseDataItems | metricsResponseDataItems | long | | kotlin.Long | Foreign Key | *many*
 
 
 

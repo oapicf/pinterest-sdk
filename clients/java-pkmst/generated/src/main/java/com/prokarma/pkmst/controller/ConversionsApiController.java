@@ -1,7 +1,10 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.AdvertiserDefinedEventsResponse;
-import com.prokarma.pkmst.model.Error;
+import com.prokarma.pkmst.model.AdvertiserDefinedEventsCreate200Response;
+import com.prokarma.pkmst.model.AdvertiserDefinedEventsCreateRequest;
+import com.prokarma.pkmst.model.AdvertiserDefinedEventsGet200Response;
+import java.util.List;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 
@@ -24,7 +27,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Controller
 public class ConversionsApiController implements ConversionsApi {
     private final ObjectMapper objectMapper;
@@ -33,20 +36,171 @@ public class ConversionsApiController implements ConversionsApi {
         this.objectMapper = objectMapper;
     }
 
-    public ResponseEntity<AdvertiserDefinedEventsResponse> advertiserDefinedEventsGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+    public ResponseEntity<AdvertiserDefinedEventsCreate200Response> advertiserDefinedEventsCreate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "" ,required=true )   @RequestBody AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdvertiserDefinedEventsResponse>(objectMapper.readValue("", AdvertiserDefinedEventsResponse.class), HttpStatus.OK);
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdvertiserDefinedEventsResponse>(objectMapper.readValue("", AdvertiserDefinedEventsResponse.class), HttpStatus.OK);
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<AdvertiserDefinedEventsResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<AdvertiserDefinedEventsCreate200Response> advertiserDefinedEventsDelete(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "List of event names to delete", required = true)  @RequestParam(value = "event_names", required = true) List<String> eventNames,
+        @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
+        // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<AdvertiserDefinedEventsGet200Response> advertiserDefinedEventsGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
+        // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsGet200Response>(objectMapper.readValue("", AdvertiserDefinedEventsGet200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsGet200Response>(objectMapper.readValue("", AdvertiserDefinedEventsGet200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsGet200Response>(objectMapper.readValue("", AdvertiserDefinedEventsGet200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsGet200Response>(objectMapper.readValue("", AdvertiserDefinedEventsGet200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsGet200Response>(objectMapper.readValue("", AdvertiserDefinedEventsGet200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsGet200Response>(objectMapper.readValue("", AdvertiserDefinedEventsGet200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsGet200Response>(objectMapper.readValue("", AdvertiserDefinedEventsGet200Response.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<AdvertiserDefinedEventsGet200Response>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<AdvertiserDefinedEventsCreate200Response> advertiserDefinedEventsUpdate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "" ,required=true )   @RequestBody AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest,
+        @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
+        // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(objectMapper.readValue("", AdvertiserDefinedEventsCreate200Response.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<AdvertiserDefinedEventsCreate200Response>(HttpStatus.OK);
     }
 
 }

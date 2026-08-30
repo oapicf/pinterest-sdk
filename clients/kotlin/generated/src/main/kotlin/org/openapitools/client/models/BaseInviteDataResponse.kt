@@ -8,21 +8,29 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.BaseInviteDataResponseInviteData
 import org.openapitools.client.models.BusinessAccessUserSummary
+import org.openapitools.client.models.InviteDataResponse
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * 
+ * Common invite/request data returned by the business access endpoints.
  *
  * @param id Unique identifier of the invite/request.
  * @param inviteData 
@@ -38,7 +46,7 @@ data class BaseInviteDataResponse (
     val id: kotlin.String? = null,
 
     @Json(name = "invite_data")
-    val inviteData: BaseInviteDataResponseInviteData? = null,
+    val inviteData: InviteDataResponse? = null,
 
     /* Indicates whether the invite/request was received. */
     @Json(name = "is_received_invite")

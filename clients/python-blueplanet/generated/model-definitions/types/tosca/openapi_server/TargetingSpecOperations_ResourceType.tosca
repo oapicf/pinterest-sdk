@@ -1,0 +1,69 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TargetingSpecOperations"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TargetingSpecOperations"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TargetingSpecOperationAgeBucket = openapi_server.resourceTypes.TargetingSpecOperationAgeBucket
+  TargetingSpecOperationAppType = openapi_server.resourceTypes.TargetingSpecOperationAppType
+  TargetingSpecOperationAudienceExclude = openapi_server.resourceTypes.TargetingSpecOperationAudienceExclude
+  TargetingSpecOperationAudienceInclude = openapi_server.resourceTypes.TargetingSpecOperationAudienceInclude
+  TargetingSpecOperationGender = openapi_server.resourceTypes.TargetingSpecOperationGender
+  TargetingSpecOperationGeo = openapi_server.resourceTypes.TargetingSpecOperationGeo
+  TargetingSpecOperationGeoExclude = openapi_server.resourceTypes.TargetingSpecOperationGeoExclude
+  TargetingSpecOperationInterest = openapi_server.resourceTypes.TargetingSpecOperationInterest
+  TargetingSpecOperationLocale = openapi_server.resourceTypes.TargetingSpecOperationLocale
+  TargetingSpecOperationLocation = openapi_server.resourceTypes.TargetingSpecOperationLocation
+  TargetingSpecOperationLocationExclude = openapi_server.resourceTypes.TargetingSpecOperationLocationExclude
+  TargetingSpecOperationMaximumAge = openapi_server.resourceTypes.TargetingSpecOperationMaximumAge
+  TargetingSpecOperationMinimumAge = openapi_server.resourceTypes.TargetingSpecOperationMinimumAge
+  TargetingSpecOperationShoppingRetargeting = openapi_server.resourceTypes.TargetingSpecOperationShoppingRetargeting
+  TargetingSpecShoppingRetargeting = openapi_server.resourceTypes.TargetingSpecShoppingRetargeting
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  TargetingSpecOperations {
+    title = TargetingSpecOperations
+    description = TargetingSpecOperations
+    derivedFrom = Root
+    properties {
+        _field {
+          type =  string
+          description = ""
+          enum = ["MINIMUM_AGE"]
+          optional = true
+        }
+        operation {
+          type =  string
+          description = ""
+          enum = ["SET"]
+          optional = true
+        }
+        values {
+          type = array
+          items.type = TargetingSpecShoppingRetargeting
+          description = ""
+          optional = true
+        }
+        value {
+          type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TargetingSpecOperations {
+    title = TargetingSpecOperations
+    description = TargetingSpecOperations
+    implements = openapi_server.resourceTypes.TargetingSpecOperations
+
+  }
+}

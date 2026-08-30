@@ -12,6 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include "LabelStatusBulkUpdate.h"
 
 namespace Tiny {
 
@@ -51,27 +52,27 @@ public:
 
 	/*! \brief Set Label ID.
 	 */
-	void setId(std::string  id);
-	/*! \brief Get Set status to `ARCHIVED` to remove the label from the parent entity.
+	void setId(std::string id);
+	/*! \brief Get Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
 	 */
-	std::string getStatus();
+	std::string getParentId();
 
-	/*! \brief Set Set status to `ARCHIVED` to remove the label from the parent entity.
+	/*! \brief Set Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
 	 */
-	void setStatus(std::string  status);
-	/*! \brief Get </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
+	void setParentId(std::string parent_id);
+	/*! \brief Get 
 	 */
-	std::string getValue();
+	LabelStatusBulkUpdate getStatus();
 
-	/*! \brief Set </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
+	/*! \brief Set 
 	 */
-	void setValue(std::string  value);
+	void setStatus(LabelStatusBulkUpdate status);
 
 
     private:
     std::string id{};
-    std::string status{};
-    std::string value{};
+    std::string parent_id{};
+    LabelStatusBulkUpdate status;
 };
 }
 

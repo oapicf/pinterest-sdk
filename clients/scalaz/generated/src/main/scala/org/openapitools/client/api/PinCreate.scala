@@ -12,7 +12,9 @@ import org.joda.time.DateTime
 import PinCreate._
 
 case class PinCreate (
-  altText: Option[String],
+  /* AI disclosure declarations the creator has made about this Pin. */
+  aiDisclosures: Option[AiDisclosures],
+altText: Option[String],
 /* The board to which this Pin belongs. */
   boardId: Option[String],
 /* The board section to which this Pin belongs. */

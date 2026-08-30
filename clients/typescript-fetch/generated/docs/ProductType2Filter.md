@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`pRODUCTTYPE2` | [CatalogsProductGroupMultipleStringListCriteria](.md)
+`pRODUCTTYPE2` | [CatalogsProductGroupMultipleStringListCriteria](CatalogsProductGroupMultipleStringListCriteria.md)
 
 ## Example
 

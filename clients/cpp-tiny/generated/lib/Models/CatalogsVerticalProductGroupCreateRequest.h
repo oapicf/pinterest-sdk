@@ -51,55 +51,55 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get Catalog id pertaining to the creative assets product group.
+	/*! \brief Get Catalog ID pertaining to the product group.
 	 */
 	std::string getCatalogId();
 
-	/*! \brief Set Catalog id pertaining to the creative assets product group.
+	/*! \brief Set Catalog ID pertaining to the product group.
 	 */
-	void setCatalogId(std::string  catalog_id);
+	void setCatalogId(std::string catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	Country getCountry();
 
 	/*! \brief Set 
 	 */
-	void setCountry(Country  country);
+	void setCountry(Country country);
 	/*! \brief Get 
 	 */
 	std::string getDescription();
 
 	/*! \brief Set 
 	 */
-	void setDescription(std::string  description);
+	void setDescription(std::string description);
 	/*! \brief Get 
 	 */
 	CatalogsCreativeAssetsProductGroupFilters getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
+	void setFilters(CatalogsCreativeAssetsProductGroupFilters filters);
 	/*! \brief Get 
 	 */
 	CatalogsLocale getLocale();
 
 	/*! \brief Set 
 	 */
-	void setLocale(CatalogsLocale  locale);
+	void setLocale(CatalogsLocale locale);
 	/*! \brief Get 
 	 */
 	std::string getName();
 
 	/*! \brief Set 
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 
 
     private:

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -63,7 +63,19 @@ public enum MMMReportingColumn {
         
         ADVERTISER_NAME("ADVERTISER_NAME"),
         
-        SPEND_ORDER_LINE_PAID_TYPE("SPEND_ORDER_LINE_PAID_TYPE");
+        SPEND_ORDER_LINE_PAID_TYPE("SPEND_ORDER_LINE_PAID_TYPE"),
+        
+        CAMPAIGN_OBJECTIVE_TYPE("CAMPAIGN_OBJECTIVE_TYPE"),
+        
+        PINNER_LIST_NAME("PINNER_LIST_NAME"),
+        
+        ADS_CREDIT_SPEND_IN_DOLLAR("ADS_CREDIT_SPEND_IN_DOLLAR"),
+        
+        ADVERTISER_PAID_SPEND_IN_DOLLAR("ADVERTISER_PAID_SPEND_IN_DOLLAR"),
+        
+        ADVERTISER_PAID_ECPC_IN_DOLLAR("ADVERTISER_PAID_ECPC_IN_DOLLAR"),
+        
+        ADVERTISER_PAID_ECPM_IN_DOLLAR("ADVERTISER_PAID_ECPM_IN_DOLLAR");
 
 private String value;
 

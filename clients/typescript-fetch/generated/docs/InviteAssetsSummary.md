@@ -7,8 +7,8 @@ Ad accounts and profiles the member/partner will be granted access to with this 
 
 Name | Type
 ------------ | -------------
-`adAccounts` | [Array&lt;InviteAssetsSummaryAdAccountsInner&gt;](InviteAssetsSummaryAdAccountsInner.md)
-`profiles` | [Array&lt;InviteAssetsSummaryProfilesInner&gt;](InviteAssetsSummaryProfilesInner.md)
+`adAccounts` | [Array&lt;InviteAssetsSummaryItem&gt;](InviteAssetsSummaryItem.md)
+`profiles` | [Array&lt;InviteAssetsSummaryItem&gt;](InviteAssetsSummaryItem.md)
 
 ## Example
 

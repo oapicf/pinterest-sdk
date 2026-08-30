@@ -7,7 +7,7 @@
 | **questions** | [**Array&lt;QuizPinQuestion&gt;**](QuizPinQuestion.md) |  | [optional] |
 | **results** | [**Array&lt;QuizPinResult&gt;**](QuizPinResult.md) |  | [optional] |
 | **tie_breaker_custom_result** | [**QuizPinResult**](QuizPinResult.md) |  | [optional] |
-| **tie_breaker_type** | **String** | Quiz ad tie breaker type, default is RANDOM | [optional] |
+| **tie_breaker_type** | [**TieBreakerType**](TieBreakerType.md) |  | [optional] |
 
 ## Example
 

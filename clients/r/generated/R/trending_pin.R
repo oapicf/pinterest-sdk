@@ -7,9 +7,11 @@
 #' @title TrendingPin
 #' @description TrendingPin Class
 #' @format An \code{R6Class} generator object
+#' @field color Dominant color of the pin image in hex format character
 #' @field height Height of the pin image in pixels integer
 #' @field id Unique identifier for the pin character
 #' @field src URL of the pin image character
+#' @field vertical_offset The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom. numeric [optional]
 #' @field width Width of the pin image in pixels integer
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -17,20 +19,30 @@
 TrendingPin <- R6::R6Class(
   "TrendingPin",
   public = list(
+    `color` = NULL,
     `height` = NULL,
     `id` = NULL,
     `src` = NULL,
+    `vertical_offset` = NULL,
     `width` = NULL,
 
     #' @description
     #' Initialize a new TrendingPin class.
     #'
+    #' @param color Dominant color of the pin image in hex format
     #' @param height Height of the pin image in pixels
     #' @param id Unique identifier for the pin
     #' @param src URL of the pin image
     #' @param width Width of the pin image in pixels
+    #' @param vertical_offset The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.
     #' @param ... Other optional arguments.
-    initialize = function(`height`, `id`, `src`, `width`, ...) {
+    initialize = function(`color`, `height`, `id`, `src`, `width`, `vertical_offset` = NULL, ...) {
+      if (!missing(`color`)) {
+        if (!(is.character(`color`) && length(`color`) == 1)) {
+          stop(paste("Error! Invalid data for `color`. Must be a string:", `color`))
+        }
+        self$`color` <- `color`
+      }
       if (!missing(`height`)) {
         if (!(is.numeric(`height`) && length(`height`) == 1)) {
           stop(paste("Error! Invalid data for `height`. Must be an integer:", `height`))
@@ -54,6 +66,12 @@ TrendingPin <- R6::R6Class(
           stop(paste("Error! Invalid data for `width`. Must be an integer:", `width`))
         }
         self$`width` <- `width`
+      }
+      if (!is.null(`vertical_offset`)) {
+        if (!(is.numeric(`vertical_offset`) && length(`vertical_offset`) == 1)) {
+          stop(paste("Error! Invalid data for `vertical_offset`. Must be a number:", `vertical_offset`))
+        }
+        self$`vertical_offset` <- `vertical_offset`
       }
     },
 
@@ -88,6 +106,10 @@ TrendingPin <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       TrendingPinObject <- list()
+      if (!is.null(self$`color`)) {
+        TrendingPinObject[["color"]] <-
+          self$`color`
+      }
       if (!is.null(self$`height`)) {
         TrendingPinObject[["height"]] <-
           self$`height`
@@ -99,6 +121,10 @@ TrendingPin <- R6::R6Class(
       if (!is.null(self$`src`)) {
         TrendingPinObject[["src"]] <-
           self$`src`
+      }
+      if (!is.null(self$`vertical_offset`)) {
+        TrendingPinObject[["vertical_offset"]] <-
+          self$`vertical_offset`
       }
       if (!is.null(self$`width`)) {
         TrendingPinObject[["width"]] <-
@@ -114,6 +140,9 @@ TrendingPin <- R6::R6Class(
     #' @return the instance of TrendingPin
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`color`)) {
+        self$`color` <- this_object$`color`
+      }
       if (!is.null(this_object$`height`)) {
         self$`height` <- this_object$`height`
       }
@@ -122,6 +151,9 @@ TrendingPin <- R6::R6Class(
       }
       if (!is.null(this_object$`src`)) {
         self$`src` <- this_object$`src`
+      }
+      if (!is.null(this_object$`vertical_offset`)) {
+        self$`vertical_offset` <- this_object$`vertical_offset`
       }
       if (!is.null(this_object$`width`)) {
         self$`width` <- this_object$`width`
@@ -147,9 +179,11 @@ TrendingPin <- R6::R6Class(
     #' @return the instance of TrendingPin
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`color` <- this_object$`color`
       self$`height` <- this_object$`height`
       self$`id` <- this_object$`id`
       self$`src` <- this_object$`src`
+      self$`vertical_offset` <- this_object$`vertical_offset`
       self$`width` <- this_object$`width`
       self
     },
@@ -160,6 +194,14 @@ TrendingPin <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `color`
+      if (!is.null(input_json$`color`)) {
+        if (!(is.character(input_json$`color`) && length(input_json$`color`) == 1)) {
+          stop(paste("Error! Invalid data for `color`. Must be a string:", input_json$`color`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for TrendingPin: the required field `color` is missing."))
+      }
       # check the required field `height`
       if (!is.null(input_json$`height`)) {
         if (!(is.numeric(input_json$`height`) && length(input_json$`height`) == 1)) {
@@ -207,6 +249,11 @@ TrendingPin <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `color` is null
+      if (is.null(self$`color`)) {
+        return(FALSE)
+      }
+
       # check if the required `height` is null
       if (is.null(self$`height`)) {
         return(FALSE)
@@ -236,6 +283,11 @@ TrendingPin <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `color` is null
+      if (is.null(self$`color`)) {
+        invalid_fields["color"] <- "Non-nullable required field `color` cannot be null."
+      }
+
       # check if the required `height` is null
       if (is.null(self$`height`)) {
         invalid_fields["height"] <- "Non-nullable required field `height` cannot be null."

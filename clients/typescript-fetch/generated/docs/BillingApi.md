@@ -4,7 +4,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**adsCreditRedeem**](BillingApi.md#adscreditredeemoperation) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits |
+| [**adsCreditRedeem**](BillingApi.md#adscreditredeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits |
 | [**adsCreditsDiscountsGet**](BillingApi.md#adscreditsdiscountsget) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts |
 | [**billingInvoiceDownloadGet**](BillingApi.md#billinginvoicedownloadget) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice |
 | [**billingInvoicesGet**](BillingApi.md#billinginvoicesget) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices |
@@ -20,11 +20,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## adsCreditRedeem
 
-> AdsCreditRedeemResponse adsCreditRedeem(adAccountId, adsCreditRedeemRequest)
+> AdsCreditRedeem adsCreditRedeem(adAccountId, adsCreditRedeemCreate)
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -33,7 +33,7 @@ import {
   Configuration,
   BillingApi,
 } from '';
-import type { AdsCreditRedeemOperationRequest } from '';
+import type { AdsCreditRedeemRequest } from '';
 
 async function example() {
   console.log("🚀 Testing  SDK...");
@@ -46,9 +46,9 @@ async function example() {
   const body = {
     // string | Unique identifier of an ad account.
     adAccountId: adAccountId_example,
-    // AdsCreditRedeemRequest | Redeem ad credits request.
-    adsCreditRedeemRequest: ...,
-  } satisfies AdsCreditRedeemOperationRequest;
+    // AdsCreditRedeemCreate
+    adsCreditRedeemCreate: ...,
+  } satisfies AdsCreditRedeemRequest;
 
   try {
     const data = await api.adsCreditRedeem(body);
@@ -68,11 +68,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **adsCreditRedeemRequest** | [AdsCreditRedeemRequest](AdsCreditRedeemRequest.md) | Redeem ad credits request. | |
+| **adsCreditRedeemCreate** | [AdsCreditRedeemCreate](AdsCreditRedeemCreate.md) |  | |
 
 ### Return type
 
-[**AdsCreditRedeemResponse**](AdsCreditRedeemResponse.md)
+[**AdsCreditRedeem**](AdsCreditRedeem.md)
 
 ### Authorization
 
@@ -87,9 +87,14 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully redeemed ad credits. |  -  |
-| **400** | Error thrown when unable to redeem offer code. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -100,7 +105,7 @@ example().catch(console.error);
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -124,7 +129,7 @@ async function example() {
     adAccountId: adAccountId_example,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
   } satisfies AdsCreditsDiscountsGetRequest;
 
@@ -147,7 +152,7 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -166,8 +171,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -241,16 +251,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully fetched Billing invoice information for a given ad account |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## billingInvoicesGet
 
-> BillingInvoicesGet200Response billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
+> BillingInvoicesGet200Response billingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate)
 
 Get billing invoices
 
@@ -278,20 +292,20 @@ async function example() {
     adAccountId: adAccountId_example,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
-    // 'DUE_DATE' | 'BILLING_PERIOD' | 'DOCUMENT_TYPE' | 'TOTAL_AMOUNT' | 'INVOICE_NUMBER' | Field of which to sort billing invoices (optional)
-    sort: DUE_DATE,
-    // 'ASCENDING' | 'DESCENDING' | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-    order: ASCENDING,
-    // 'OPEN' | 'CLOSED' | Status of billing invoices to filter by (optional)
-    status: OPEN,
-    // 'INVOICE' | 'CREDIT_MEMO' | Document type of billing invoices to filter by (optional)
-    documentType: INVOICE,
+    // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+    order: ...,
+    // BillingInvoiceSortField | Field of which to sort billing invoices (optional)
+    sort: ...,
+    // BillingInvoiceStatus | Status of billing invoices to filter by (optional)
+    status: ...,
+    // BillingInvoiceDocumentType | Document type of billing invoices to filter by (optional)
+    documentType: ...,
     // Date | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
-    startDueDate: Sun Jan 01 00:00:00 UTC 2023,
+    startDueDate: 2013-10-20,
     // Date | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
-    endDueDate: Mon Jan 01 00:00:00 UTC 2024,
+    endDueDate: 2013-10-20,
   } satisfies BillingInvoicesGetRequest;
 
   try {
@@ -313,11 +327,11 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
-| **sort** | `DUE_DATE`, `BILLING_PERIOD`, `DOCUMENT_TYPE`, `TOTAL_AMOUNT`, `INVOICE_NUMBER` | Field of which to sort billing invoices | [Optional] [Defaults to `&#39;DUE_DATE&#39;`] [Enum: DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER] |
-| **order** | `ASCENDING`, `DESCENDING` | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [Optional] [Defaults to `undefined`] [Enum: ASCENDING, DESCENDING] |
-| **status** | `OPEN`, `CLOSED` | Status of billing invoices to filter by | [Optional] [Defaults to `undefined`] [Enum: OPEN, CLOSED] |
-| **documentType** | `INVOICE`, `CREDIT_MEMO` | Document type of billing invoices to filter by | [Optional] [Defaults to `undefined`] [Enum: INVOICE, CREDIT_MEMO] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
+| **order** | `PinterestLibPaginationOrder` | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [Optional] [Defaults to `undefined`] [Enum: ASCENDING, DESCENDING] |
+| **sort** | `BillingInvoiceSortField` | Field of which to sort billing invoices | [Optional] [Defaults to `undefined`] [Enum: DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER] |
+| **status** | `BillingInvoiceStatus` | Status of billing invoices to filter by | [Optional] [Defaults to `undefined`] [Enum: OPEN, CLOSED] |
+| **documentType** | `BillingInvoiceDocumentType` | Document type of billing invoices to filter by | [Optional] [Defaults to `undefined`] [Enum: INVOICE, CREDIT_MEMO] |
 | **startDueDate** | `Date` | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [Optional] [Defaults to `undefined`] |
 | **endDueDate** | `Date` | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [Optional] [Defaults to `undefined`] |
 
@@ -338,20 +352,24 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## billingProfilesGet
 
-> BillingProfilesGet200Response billingProfilesGet(adAccountId, isActive, bookmark, pageSize)
+> BillingProfilesGet200Response billingProfilesGet(isActive, adAccountId, bookmark, pageSize)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -371,13 +389,13 @@ async function example() {
   const api = new BillingApi(config);
 
   const body = {
-    // string | Unique identifier of an ad account.
-    adAccountId: adAccountId_example,
     // boolean | Return active billing profiles, if false return all billing profiles.
     isActive: true,
+    // string | Unique identifier of an ad account.
+    adAccountId: adAccountId_example,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
   } satisfies BillingProfilesGetRequest;
 
@@ -398,10 +416,10 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
 | **isActive** | `boolean` | Return active billing profiles, if false return all billing profiles. | [Defaults to `undefined`] |
+| **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -420,19 +438,24 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## ssioAccountsGet
 
-> SSIOAccountResponse ssioAccountsGet(adAccountId)
+> SSIOAccount ssioAccountsGet(adAccountId)
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token\&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -477,7 +500,7 @@ example().catch(console.error);
 
 ### Return type
 
-[**SSIOAccountResponse**](SSIOAccountResponse.md)
+[**SSIOAccount**](SSIOAccount.md)
 
 ### Authorization
 
@@ -492,20 +515,24 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## ssioInsertionOrderCreate
 
-> SSIOCreateInsertionOrderResponse ssioInsertionOrderCreate(adAccountId, sSIOCreateInsertionOrderRequest)
+> SSIOInsertionOrder ssioInsertionOrderCreate(adAccountId, sSIOInsertionOrderCreate)
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token\&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -527,8 +554,8 @@ async function example() {
   const body = {
     // string | Unique identifier of an ad account.
     adAccountId: adAccountId_example,
-    // SSIOCreateInsertionOrderRequest | Order line to create.
-    sSIOCreateInsertionOrderRequest: ...,
+    // SSIOInsertionOrderCreate
+    sSIOInsertionOrderCreate: ...,
   } satisfies SsioInsertionOrderCreateRequest;
 
   try {
@@ -549,11 +576,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **sSIOCreateInsertionOrderRequest** | [SSIOCreateInsertionOrderRequest](SSIOCreateInsertionOrderRequest.md) | Order line to create. | |
+| **sSIOInsertionOrderCreate** | [SSIOInsertionOrderCreate](SSIOInsertionOrderCreate.md) |  | |
 
 ### Return type
 
-[**SSIOCreateInsertionOrderResponse**](SSIOCreateInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -568,20 +595,25 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## ssioInsertionOrderEdit
 
-> SSIOEditInsertionOrderResponse ssioInsertionOrderEdit(adAccountId, sSIOEditInsertionOrderRequest)
+> SSIOInsertionOrder ssioInsertionOrderEdit(adAccountId, sSIOInsertionOrderUpdate)
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token\&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -603,8 +635,8 @@ async function example() {
   const body = {
     // string | Unique identifier of an ad account.
     adAccountId: adAccountId_example,
-    // SSIOEditInsertionOrderRequest | Order line to create.
-    sSIOEditInsertionOrderRequest: ...,
+    // SSIOInsertionOrderUpdate
+    sSIOInsertionOrderUpdate: ...,
   } satisfies SsioInsertionOrderEditRequest;
 
   try {
@@ -625,11 +657,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **sSIOEditInsertionOrderRequest** | [SSIOEditInsertionOrderRequest](SSIOEditInsertionOrderRequest.md) | Order line to create. | |
+| **sSIOInsertionOrderUpdate** | [SSIOInsertionOrderUpdate](SSIOInsertionOrderUpdate.md) |  | |
 
 ### Return type
 
-[**SSIOEditInsertionOrderResponse**](SSIOEditInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -644,9 +676,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -657,7 +693,7 @@ example().catch(console.error);
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;ad_account_id&#x60;.   - The token\&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -681,7 +717,7 @@ async function example() {
     adAccountId: adAccountId_example,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
   } satisfies SsioInsertionOrdersStatusGetByAdAccountRequest;
 
@@ -704,7 +740,7 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -723,9 +759,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -736,7 +776,7 @@ example().catch(console.error);
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;pin_order_id&#x60;.   - The token\&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -759,7 +799,7 @@ async function example() {
     // string | Unique identifier of an ad account.
     adAccountId: adAccountId_example,
     // string | The pin order id associated with the ssio insertion order
-    pinOrderId: 0Q01N0000015hekSVDFDC,
+    pinOrderId: pinOrderId_example,
   } satisfies SsioInsertionOrdersStatusGetByPinOrderIdRequest;
 
   try {
@@ -799,20 +839,24 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## ssioOrderLinesGetByAdAccount
 
-> SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId)
+> SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize)
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token\&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -834,12 +878,12 @@ async function example() {
   const body = {
     // string | Unique identifier of an ad account.
     adAccountId: adAccountId_example,
+    // string | The pin order id associated with the SSIO insertion order (optional)
+    pinOrderId: pinOrderId_example,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
-    // string | The pin order id associated with the ssio insertino order (optional)
-    pinOrderId: 0Q01N0000015hekSVDFDC,
   } satisfies SsioOrderLinesGetByAdAccountRequest;
 
   try {
@@ -860,9 +904,9 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
+| **pinOrderId** | `string` | The pin order id associated with the SSIO insertion order | [Optional] [Defaults to `undefined`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
-| **pinOrderId** | `string` | The pin order id associated with the ssio insertino order | [Optional] [Defaults to `undefined`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -881,9 +925,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

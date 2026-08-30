@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Lead form test action: submit sample answers and receive the resulting subscription id.",
+  "name": "LeadFormTest",
+  "fields": [
+    {
+      "name": "subscription_id",
+      "type": ["null", "string"],
+      "doc": "Subscription ID.",
+      "default": null
+    }
+  ]
+
+}

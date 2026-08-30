@@ -1,0 +1,426 @@
+#' Create a new AdAccountsAudience
+#'
+#' @description
+#' AdAccountsAudience Class
+#'
+#' @docType class
+#' @title AdAccountsAudience
+#' @description AdAccountsAudience Class
+#' @format An \code{R6Class} generator object
+#' @field ad_account_id Ad account ID. character [optional]
+#' @field audience_type [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR \link{AudienceType} [optional]
+#' @field created_by_company_name The company that created this audience. character [optional]
+#' @field created_timestamp Creation time. Unix timestamp in seconds. integer [optional]
+#' @field description Audience description. character [optional]
+#' @field id Audience ID. character
+#' @field is_nca Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only. character [optional]
+#' @field name Audience name. character [optional]
+#' @field rule  \link{AdAccountsAudienceRule} [optional]
+#' @field size Audience size. integer [optional]
+#' @field status Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it. \link{AudienceStatus} [optional]
+#' @field type Always \"audience\". character [optional]
+#' @field updated_timestamp Last update time. Unix timestamp in seconds. integer [optional]
+#' @importFrom R6 R6Class
+#' @importFrom jsonlite fromJSON toJSON
+#' @export
+AdAccountsAudience <- R6::R6Class(
+  "AdAccountsAudience",
+  public = list(
+    `ad_account_id` = NULL,
+    `audience_type` = NULL,
+    `created_by_company_name` = NULL,
+    `created_timestamp` = NULL,
+    `description` = NULL,
+    `id` = NULL,
+    `is_nca` = NULL,
+    `name` = NULL,
+    `rule` = NULL,
+    `size` = NULL,
+    `status` = NULL,
+    `type` = NULL,
+    `updated_timestamp` = NULL,
+
+    #' @description
+    #' Initialize a new AdAccountsAudience class.
+    #'
+    #' @param id Audience ID.
+    #' @param ad_account_id Ad account ID.
+    #' @param audience_type [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+    #' @param created_by_company_name The company that created this audience.
+    #' @param created_timestamp Creation time. Unix timestamp in seconds.
+    #' @param description Audience description.
+    #' @param is_nca Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+    #' @param name Audience name.
+    #' @param rule rule
+    #' @param size Audience size.
+    #' @param status Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
+    #' @param type Always \"audience\".
+    #' @param updated_timestamp Last update time. Unix timestamp in seconds.
+    #' @param ... Other optional arguments.
+    initialize = function(`id`, `ad_account_id` = NULL, `audience_type` = NULL, `created_by_company_name` = NULL, `created_timestamp` = NULL, `description` = NULL, `is_nca` = NULL, `name` = NULL, `rule` = NULL, `size` = NULL, `status` = NULL, `type` = NULL, `updated_timestamp` = NULL, ...) {
+      if (!missing(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
+        self$`id` <- `id`
+      }
+      if (!is.null(`ad_account_id`)) {
+        if (!(is.character(`ad_account_id`) && length(`ad_account_id`) == 1)) {
+          stop(paste("Error! Invalid data for `ad_account_id`. Must be a string:", `ad_account_id`))
+        }
+        self$`ad_account_id` <- `ad_account_id`
+      }
+      if (!is.null(`audience_type`)) {
+        if (!(`audience_type` %in% c())) {
+          stop(paste("Error! \"", `audience_type`, "\" cannot be assigned to `audience_type`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`audience_type`))
+        self$`audience_type` <- `audience_type`
+      }
+      if (!is.null(`created_by_company_name`)) {
+        if (!(is.character(`created_by_company_name`) && length(`created_by_company_name`) == 1)) {
+          stop(paste("Error! Invalid data for `created_by_company_name`. Must be a string:", `created_by_company_name`))
+        }
+        self$`created_by_company_name` <- `created_by_company_name`
+      }
+      if (!is.null(`created_timestamp`)) {
+        if (!(is.numeric(`created_timestamp`) && length(`created_timestamp`) == 1)) {
+          stop(paste("Error! Invalid data for `created_timestamp`. Must be an integer:", `created_timestamp`))
+        }
+        self$`created_timestamp` <- `created_timestamp`
+      }
+      if (!is.null(`description`)) {
+        if (!(is.character(`description`) && length(`description`) == 1)) {
+          stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
+        }
+        self$`description` <- `description`
+      }
+      if (!is.null(`is_nca`)) {
+        if (!(is.logical(`is_nca`) && length(`is_nca`) == 1)) {
+          stop(paste("Error! Invalid data for `is_nca`. Must be a boolean:", `is_nca`))
+        }
+        self$`is_nca` <- `is_nca`
+      }
+      if (!is.null(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
+      }
+      if (!is.null(`rule`)) {
+        stopifnot(R6::is.R6(`rule`))
+        self$`rule` <- `rule`
+      }
+      if (!is.null(`size`)) {
+        if (!(is.numeric(`size`) && length(`size`) == 1)) {
+          stop(paste("Error! Invalid data for `size`. Must be an integer:", `size`))
+        }
+        self$`size` <- `size`
+      }
+      if (!is.null(`status`)) {
+        if (!(`status` %in% c())) {
+          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`status`))
+        self$`status` <- `status`
+      }
+      if (!is.null(`type`)) {
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
+        self$`type` <- `type`
+      }
+      if (!is.null(`updated_timestamp`)) {
+        if (!(is.numeric(`updated_timestamp`) && length(`updated_timestamp`) == 1)) {
+          stop(paste("Error! Invalid data for `updated_timestamp`. Must be an integer:", `updated_timestamp`))
+        }
+        self$`updated_timestamp` <- `updated_timestamp`
+      }
+    },
+
+    #' @description
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
+    toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AdAccountsAudience as a base R list.
+    #' @examples
+    #' # convert array of AdAccountsAudience (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AdAccountsAudience to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
+      AdAccountsAudienceObject <- list()
+      if (!is.null(self$`ad_account_id`)) {
+        AdAccountsAudienceObject[["ad_account_id"]] <-
+          self$`ad_account_id`
+      }
+      if (!is.null(self$`audience_type`)) {
+        AdAccountsAudienceObject[["audience_type"]] <-
+          self$extractSimpleType(self$`audience_type`)
+      }
+      if (!is.null(self$`created_by_company_name`)) {
+        AdAccountsAudienceObject[["created_by_company_name"]] <-
+          self$`created_by_company_name`
+      }
+      if (!is.null(self$`created_timestamp`)) {
+        AdAccountsAudienceObject[["created_timestamp"]] <-
+          self$`created_timestamp`
+      }
+      if (!is.null(self$`description`)) {
+        AdAccountsAudienceObject[["description"]] <-
+          self$`description`
+      }
+      if (!is.null(self$`id`)) {
+        AdAccountsAudienceObject[["id"]] <-
+          self$`id`
+      }
+      if (!is.null(self$`is_nca`)) {
+        AdAccountsAudienceObject[["is_nca"]] <-
+          self$`is_nca`
+      }
+      if (!is.null(self$`name`)) {
+        AdAccountsAudienceObject[["name"]] <-
+          self$`name`
+      }
+      if (!is.null(self$`rule`)) {
+        AdAccountsAudienceObject[["rule"]] <-
+          self$extractSimpleType(self$`rule`)
+      }
+      if (!is.null(self$`size`)) {
+        AdAccountsAudienceObject[["size"]] <-
+          self$`size`
+      }
+      if (!is.null(self$`status`)) {
+        AdAccountsAudienceObject[["status"]] <-
+          self$extractSimpleType(self$`status`)
+      }
+      if (!is.null(self$`type`)) {
+        AdAccountsAudienceObject[["type"]] <-
+          self$`type`
+      }
+      if (!is.null(self$`updated_timestamp`)) {
+        AdAccountsAudienceObject[["updated_timestamp"]] <-
+          self$`updated_timestamp`
+      }
+      return(AdAccountsAudienceObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of AdAccountsAudience
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of AdAccountsAudience
+    fromJSON = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`ad_account_id`)) {
+        self$`ad_account_id` <- this_object$`ad_account_id`
+      }
+      if (!is.null(this_object$`audience_type`)) {
+        `audience_type_object` <- AudienceType$new()
+        `audience_type_object`$fromJSON(jsonlite::toJSON(this_object$`audience_type`, auto_unbox = TRUE, digits = NA))
+        self$`audience_type` <- `audience_type_object`
+      }
+      if (!is.null(this_object$`created_by_company_name`)) {
+        self$`created_by_company_name` <- this_object$`created_by_company_name`
+      }
+      if (!is.null(this_object$`created_timestamp`)) {
+        self$`created_timestamp` <- this_object$`created_timestamp`
+      }
+      if (!is.null(this_object$`description`)) {
+        self$`description` <- this_object$`description`
+      }
+      if (!is.null(this_object$`id`)) {
+        self$`id` <- this_object$`id`
+      }
+      if (!is.null(this_object$`is_nca`)) {
+        self$`is_nca` <- this_object$`is_nca`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
+      }
+      if (!is.null(this_object$`rule`)) {
+        `rule_object` <- AdAccountsAudienceRule$new()
+        `rule_object`$fromJSON(jsonlite::toJSON(this_object$`rule`, auto_unbox = TRUE, digits = NA))
+        self$`rule` <- `rule_object`
+      }
+      if (!is.null(this_object$`size`)) {
+        self$`size` <- this_object$`size`
+      }
+      if (!is.null(this_object$`status`)) {
+        `status_object` <- AudienceStatus$new()
+        `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+        self$`status` <- `status_object`
+      }
+      if (!is.null(this_object$`type`)) {
+        self$`type` <- this_object$`type`
+      }
+      if (!is.null(this_object$`updated_timestamp`)) {
+        self$`updated_timestamp` <- this_object$`updated_timestamp`
+      }
+      self
+    },
+
+    #' @description
+    #' To JSON String
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
+    #' @return AdAccountsAudience in JSON format
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of AdAccountsAudience
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of AdAccountsAudience
+    fromJSONString = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      self$`ad_account_id` <- this_object$`ad_account_id`
+      self$`audience_type` <- AudienceType$new()$fromJSON(jsonlite::toJSON(this_object$`audience_type`, auto_unbox = TRUE, digits = NA))
+      self$`created_by_company_name` <- this_object$`created_by_company_name`
+      self$`created_timestamp` <- this_object$`created_timestamp`
+      self$`description` <- this_object$`description`
+      self$`id` <- this_object$`id`
+      self$`is_nca` <- this_object$`is_nca`
+      self$`name` <- this_object$`name`
+      self$`rule` <- AdAccountsAudienceRule$new()$fromJSON(jsonlite::toJSON(this_object$`rule`, auto_unbox = TRUE, digits = NA))
+      self$`size` <- this_object$`size`
+      self$`status` <- AudienceStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+      self$`type` <- this_object$`type`
+      self$`updated_timestamp` <- this_object$`updated_timestamp`
+      self
+    },
+
+    #' @description
+    #' Validate JSON input with respect to AdAccountsAudience and throw an exception if invalid
+    #'
+    #' @param input the JSON input
+    validateJSON = function(input) {
+      input_json <- jsonlite::fromJSON(input)
+      # check the required field `id`
+      if (!is.null(input_json$`id`)) {
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AdAccountsAudience: the required field `id` is missing."))
+      }
+    },
+
+    #' @description
+    #' To string (JSON format)
+    #'
+    #' @return String representation of AdAccountsAudience
+    toString = function() {
+      self$toJSONString()
+    },
+
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    isValid = function() {
+      if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        return(FALSE)
+      }
+
+      if (!str_detect(self$`id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
+      TRUE
+    },
+
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
+        invalid_fields["ad_account_id"] <- "Invalid value for `ad_account_id`, must conform to the pattern ^\\d+$."
+      }
+
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+      }
+
+      if (!str_detect(self$`id`, "^\\d+$")) {
+        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
+      }
+
+      invalid_fields
+    },
+
+    #' @description
+    #' Print the object
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
+)
+## Uncomment below to unlock the class to allow modifications of the method or field
+# AdAccountsAudience$unlock()
+#
+## Below is an example to define the print function
+# AdAccountsAudience$set("public", "print", function(...) {
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
+# })
+## Uncomment below to lock the class to prevent modifications to the method or field
+# AdAccountsAudience$lock()
+

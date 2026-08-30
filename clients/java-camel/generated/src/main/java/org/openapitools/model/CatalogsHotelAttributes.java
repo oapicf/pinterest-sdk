@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -9,25 +10,26 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsAiContentDisclosure;
 import org.openapitools.model.CatalogsHotelAddress;
-import org.openapitools.model.CatalogsHotelAttributesAllOfMainImage;
 import org.openapitools.model.CatalogsHotelGuestRatings;
+import org.openapitools.model.CatalogsHotelMainImage;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsHotelAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelAttributes {
 
   private CatalogsHotelAddress address;
@@ -68,7 +70,10 @@ public class CatalogsHotelAttributes {
   @Valid
   private JsonNullable<List<String>> additionalImageLink = JsonNullable.<List<String>>undefined();
 
-  private CatalogsHotelAttributesAllOfMainImage mainImage;
+  @Valid
+  private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
+
+  private CatalogsHotelMainImage mainImage;
 
   public CatalogsHotelAttributes address(CatalogsHotelAddress address) {
     this.address = address;
@@ -76,11 +81,11 @@ public class CatalogsHotelAttributes {
   }
 
   /**
-   * Get address
+   * Hotel address
    * @return address
    */
   @Valid 
-  @Schema(name = "address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "address", description = "Hotel address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("address")
   public CatalogsHotelAddress getAddress() {
     return address;
@@ -276,11 +281,11 @@ public class CatalogsHotelAttributes {
   }
 
   /**
-   * Get guestRatings
+   * If specified, you must provide all properties
    * @return guestRatings
    */
   @Valid 
-  @Schema(name = "guest_ratings", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "guest_ratings", description = "If specified, you must provide all properties", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("guest_ratings")
   public CatalogsHotelGuestRatings getGuestRatings() {
     return guestRatings;
@@ -432,11 +437,11 @@ public class CatalogsHotelAttributes {
   }
 
   /**
-   * <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+   * <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
    * @return additionalImageLink
    */
   
-  @Schema(name = "additional_image_link", example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", description = "<p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "additional_image_link", example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", description = "<= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("additional_image_link")
   public JsonNullable<List<String>> getAdditionalImageLink() {
     return additionalImageLink;
@@ -446,23 +451,51 @@ public class CatalogsHotelAttributes {
     this.additionalImageLink = additionalImageLink;
   }
 
-  public CatalogsHotelAttributes mainImage(CatalogsHotelAttributesAllOfMainImage mainImage) {
+  public CatalogsHotelAttributes aiDisclosures(List<@Valid CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+    return this;
+  }
+
+  public CatalogsHotelAttributes addAiDisclosuresItem(CatalogsAiContentDisclosure aiDisclosuresItem) {
+    if (this.aiDisclosures == null) {
+      this.aiDisclosures = new ArrayList<>();
+    }
+    this.aiDisclosures.add(aiDisclosuresItem);
+    return this;
+  }
+
+  /**
+   * AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+   * @return aiDisclosures
+   */
+  @Valid 
+  @Schema(name = "ai_disclosures", example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", description = "AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("ai_disclosures")
+  public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
+    return aiDisclosures;
+  }
+
+  public void setAiDisclosures(List<@Valid CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+  }
+
+  public CatalogsHotelAttributes mainImage(CatalogsHotelMainImage mainImage) {
     this.mainImage = mainImage;
     return this;
   }
 
   /**
-   * Get mainImage
+   * The main hotel image
    * @return mainImage
    */
   @Valid 
-  @Schema(name = "main_image", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "main_image", description = "The main hotel image", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("main_image")
-  public CatalogsHotelAttributesAllOfMainImage getMainImage() {
+  public CatalogsHotelMainImage getMainImage() {
     return mainImage;
   }
 
-  public void setMainImage(CatalogsHotelAttributesAllOfMainImage mainImage) {
+  public void setMainImage(CatalogsHotelMainImage mainImage) {
     this.mainImage = mainImage;
   }
 
@@ -493,6 +526,7 @@ public class CatalogsHotelAttributes {
         equalsNullable(this.neighborhood, catalogsHotelAttributes.neighborhood) &&
         equalsNullable(this.salePrice, catalogsHotelAttributes.salePrice) &&
         equalsNullable(this.additionalImageLink, catalogsHotelAttributes.additionalImageLink) &&
+        Objects.equals(this.aiDisclosures, catalogsHotelAttributes.aiDisclosures) &&
         Objects.equals(this.mainImage, catalogsHotelAttributes.mainImage);
   }
 
@@ -502,7 +536,7 @@ public class CatalogsHotelAttributes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, hashCodeNullable(basePrice), hashCodeNullable(brand), hashCodeNullable(category), hashCodeNullable(customLabel0), hashCodeNullable(customLabel1), hashCodeNullable(customLabel2), hashCodeNullable(customLabel3), hashCodeNullable(customLabel4), hashCodeNullable(description), guestRatings, latitude, hashCodeNullable(link), hashCodeNullable(longitude), hashCodeNullable(name), hashCodeNullable(neighborhood), hashCodeNullable(salePrice), hashCodeNullable(additionalImageLink), mainImage);
+    return Objects.hash(address, hashCodeNullable(basePrice), hashCodeNullable(brand), hashCodeNullable(category), hashCodeNullable(customLabel0), hashCodeNullable(customLabel1), hashCodeNullable(customLabel2), hashCodeNullable(customLabel3), hashCodeNullable(customLabel4), hashCodeNullable(description), guestRatings, latitude, hashCodeNullable(link), hashCodeNullable(longitude), hashCodeNullable(name), hashCodeNullable(neighborhood), hashCodeNullable(salePrice), hashCodeNullable(additionalImageLink), aiDisclosures, mainImage);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -534,6 +568,7 @@ public class CatalogsHotelAttributes {
     sb.append("    neighborhood: ").append(toIndentedString(neighborhood)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
     sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    mainImage: ").append(toIndentedString(mainImage)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -544,10 +579,7 @@ public class CatalogsHotelAttributes {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

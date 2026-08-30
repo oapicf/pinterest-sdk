@@ -9,15 +9,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.IntegrationLogsInvalidLogResponseRejectedLogsInner;
+import org.openapitools.model.IntegrationLogsInvalidLogResponseRejectedLogsItems;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Schema describing the response when a log has invalid fields.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Schema describing the response when a log has invalid fields.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationLogsInvalidLogResponse   {
   
-  private List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = new ArrayList<>();
+  private List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs = new ArrayList<>();
 
   /**
    **/
@@ -25,10 +25,10 @@ public class IntegrationLogsInvalidLogResponse   {
   @ApiModelProperty(value = "")
   @JsonProperty("rejected_logs")
   @Valid
-  public List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> getRejectedLogs() {
+  public List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> getRejectedLogs() {
     return rejectedLogs;
   }
-  public void setRejectedLogs(List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
+  public void setRejectedLogs(List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs) {
     this.rejectedLogs = rejectedLogs;
   }
 
@@ -65,10 +65,7 @@ public class IntegrationLogsInvalidLogResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

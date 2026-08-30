@@ -13,7 +13,7 @@ Protected Interface CatalogFeedsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub FeedsDeleteCallback(status As OpenAPIClient.OpenAPIClientException)
+		Sub FeedsDeleteCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CatalogsFeed)
 		  
 		End Sub
 	#tag EndMethod

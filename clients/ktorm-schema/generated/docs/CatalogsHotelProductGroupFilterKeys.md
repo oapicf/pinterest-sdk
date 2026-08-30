@@ -5,16 +5,16 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**PRICE** | PRICE | long NOT NULL |  | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  |  [foreignkey]
-**HOTEL_ID** | HOTEL_ID | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
-**BRAND** | BRAND | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
-**CUSTOM_LABEL_0** | CUSTOM_LABEL_0 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  [foreignkey]
-**CUSTOM_LABEL_1** | CUSTOM_LABEL_1 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  [foreignkey]
-**CUSTOM_LABEL_2** | CUSTOM_LABEL_2 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  [foreignkey]
-**CUSTOM_LABEL_3** | CUSTOM_LABEL_3 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  [foreignkey]
-**CUSTOM_LABEL_4** | CUSTOM_LABEL_4 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  [foreignkey]
-**COUNTRY** | COUNTRY | long NOT NULL |  | [**CatalogsProductGroupMultipleCountriesCriteria**](.md) |  |  [foreignkey]
-**TITLE_KEYWORDS** | TITLE_KEYWORDS | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
+**PRICE** | PRICE | long NOT NULL |  | [**PriceFilterPrice**](PriceFilterPrice.md) |  |  [foreignkey]
+**HOTEL_ID** | HOTEL_ID | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |  [foreignkey]
+**BRAND** | BRAND | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |  [foreignkey]
+**CUSTOM_LABEL_0** | CUSTOM_LABEL_0 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |  [foreignkey]
+**CUSTOM_LABEL_1** | CUSTOM_LABEL_1 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |  [foreignkey]
+**CUSTOM_LABEL_2** | CUSTOM_LABEL_2 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |  [foreignkey]
+**CUSTOM_LABEL_3** | CUSTOM_LABEL_3 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |  [foreignkey]
+**CUSTOM_LABEL_4** | CUSTOM_LABEL_4 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |  [foreignkey]
+**COUNTRY** | COUNTRY | long NOT NULL |  | [**CatalogsProductGroupMultipleCountriesCriteria**](CatalogsProductGroupMultipleCountriesCriteria.md) |  |  [foreignkey]
+**TITLE_KEYWORDS** | TITLE_KEYWORDS | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |  [foreignkey]
 
 
 

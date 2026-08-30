@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::CatalogsRetailProductGroupCreateRequest;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **string** | Catalog id pertaining to the retail product group. | 
+**catalog_id** | **string** | Catalog ID pertaining to the product group. | 
 **catalog_type** | **string** | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | 
 **country** | [**Country**](Country.md) |  | [optional] 
 **description** | **string** |  | [optional] 

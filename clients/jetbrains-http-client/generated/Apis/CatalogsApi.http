@@ -1,0 +1,23 @@
+## CatalogsApi
+
+### List available filter values
+## List available filter values
+GET https://api.pinterest.com/v5/catalogs/available_filter_values?catalogId={{catalogId}}&feedId={{feedId}}&country={{country}}&language={{language}}&adAccountId={{adAccountId}}
+Accept: application/json
+
+### Create catalog
+## Create catalog
+POST https://api.pinterest.com/v5/catalogs?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "catalog_type": "<string>",
+ "name": "<string>"
+}
+
+
+### List catalogs
+## List catalogs
+GET https://api.pinterest.com/v5/catalogs?adAccountId={{adAccountId}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json

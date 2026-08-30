@@ -4,14 +4,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogProductGroupId** | **String** | Catalog Product Group Id. | 
-**CreativeType** | **String** | Ad format of the shopping ad preview. | 
+**CreativeType** | [**AdShoppingPreviewCreativeType**](AdShoppingPreviewCreativeType.md) | Ad format of the shopping ad preview. | 
 **CustomizableCtaType** | [**CustomizableCTAType**](CustomizableCTAType.md) | Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are &#x60;SHOP_NOW&#x60;, &#x60;BOOK_NOW&#x60;, &#x60;ON_SALE&#x60;, &#x60;GET_DEAL&#x60;, &#x60;BUY_ONLINE_PICKUP_IN_STORE&#x60; | [optional] 
 **HeroImageTitle** | **String** | Title displayed below ad. | [optional] 
 **HeroImageUrl** | **String** | Hero image URL. | [optional] 
 **HeroPinId** | **String** | Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required. | [optional] 
 **ImageTag** | **String** | Multi image template tag. | [optional] 
 **ItemId** | **String** | Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING. | [optional] 
-**PreferredMediaType** | **String** | Preferred media type. | [optional] 
+**PreferredMediaType** | [**BasePreferredMediaType**](BasePreferredMediaType.md) | Preferred media type. | [optional] 
+**ShowPromotion** | **Boolean** | Include promotion data in preview when available on catalog item. Defaults to false. | [optional] 
 **VideoTag** | **String** | Multi video template tag, image_tag and video_tag are mutual exclusive. | [optional] 
 
 ## Examples
@@ -27,6 +28,7 @@ $AdPreviewShopping = Initialize-PSOpenAPIToolsAdPreviewShopping  -CatalogProduct
  -ImageTag Christmas Sale `
  -ItemId 111111111 `
  -PreferredMediaType IMAGE `
+ -ShowPromotion null `
  -VideoTag Black Friday Sale
 ```
 

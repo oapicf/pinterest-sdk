@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import org.openapitools.vertxweb.server.model.NonNullableCatalogsCurrency;
-import org.openapitools.vertxweb.server.model.NonNullableProductAvailabilityType;
+import org.openapitools.vertxweb.server.model.ProductAvailability;
 
 /**
  * Retail product metadata entity
@@ -14,7 +14,7 @@ import org.openapitools.vertxweb.server.model.NonNullableProductAvailabilityType
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsRetailProductMetadata   {
   
-  private NonNullableProductAvailabilityType availability;
+  private ProductAvailability availability;
   private NonNullableCatalogsCurrency currency;
   private String itemGroupId;
   private String itemId;
@@ -25,7 +25,7 @@ public class CatalogsRetailProductMetadata   {
 
   }
 
-  public CatalogsRetailProductMetadata (NonNullableProductAvailabilityType availability, NonNullableCatalogsCurrency currency, String itemGroupId, String itemId, BigDecimal price, BigDecimal salePrice) {
+  public CatalogsRetailProductMetadata (ProductAvailability availability, NonNullableCatalogsCurrency currency, String itemGroupId, String itemId, BigDecimal price, BigDecimal salePrice) {
     this.availability = availability;
     this.currency = currency;
     this.itemGroupId = itemGroupId;
@@ -36,10 +36,10 @@ public class CatalogsRetailProductMetadata   {
 
     
   @JsonProperty("availability")
-  public NonNullableProductAvailabilityType getAvailability() {
+  public ProductAvailability getAvailability() {
     return availability;
   }
-  public void setAvailability(NonNullableProductAvailabilityType availability) {
+  public void setAvailability(ProductAvailability availability) {
     this.availability = availability;
   }
 
@@ -131,9 +131,6 @@ public class CatalogsRetailProductMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

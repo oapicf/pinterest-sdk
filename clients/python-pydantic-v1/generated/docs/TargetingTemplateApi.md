@@ -1,0 +1,271 @@
+# openapi_client.TargetingTemplateApi
+
+All URIs are relative to *https://api.pinterest.com/v5*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**targeting_template_create**](TargetingTemplateApi.md#targeting_template_create) | **POST** /ad_accounts/{ad_account_id}/targeting_templates | Create targeting templates
+[**targeting_template_list**](TargetingTemplateApi.md#targeting_template_list) | **GET** /ad_accounts/{ad_account_id}/targeting_templates | List targeting templates
+[**targeting_template_update**](TargetingTemplateApi.md#targeting_template_update) | **PATCH** /ad_accounts/{ad_account_id}/targeting_templates | Update targeting templates
+
+
+# **targeting_template_create**
+> TargetingTemplate targeting_template_create(ad_account_id, targeting_template_create)
+
+Create targeting templates
+
+Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.
+
+Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
+
+### Example
+
+* OAuth Authentication (pinterest_oauth2):
+```python
+import time
+import os
+import openapi_client
+from openapi_client.models.targeting_template import TargetingTemplate
+from openapi_client.models.targeting_template_create import TargetingTemplateCreate
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.pinterest.com/v5
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://api.pinterest.com/v5"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openapi_client.TargetingTemplateApi(api_client)
+    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
+    targeting_template_create = openapi_client.TargetingTemplateCreate() # TargetingTemplateCreate | 
+
+    try:
+        # Create targeting templates
+        api_response = api_instance.targeting_template_create(ad_account_id, targeting_template_create)
+        print("The response of TargetingTemplateApi->targeting_template_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TargetingTemplateApi->targeting_template_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **str**| Unique identifier of an ad account. | 
+ **targeting_template_create** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md)|  | 
+
+### Return type
+
+[**TargetingTemplate**](TargetingTemplate.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **targeting_template_list**
+> TargetingTemplateList200Response targeting_template_list(ad_account_id, bookmark=bookmark, page_size=page_size, order=order, include_sizing=include_sizing, search_query=search_query)
+
+List targeting templates
+
+Get a list of the targeting templates in the specified `ad_account_id`
+
+### Example
+
+* OAuth Authentication (pinterest_oauth2):
+* OAuth Authentication (client_credentials):
+```python
+import time
+import os
+import openapi_client
+from openapi_client.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder
+from openapi_client.models.targeting_template_list200_response import TargetingTemplateList200Response
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.pinterest.com/v5
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://api.pinterest.com/v5"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openapi_client.TargetingTemplateApi(api_client)
+    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
+    bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+    order = openapi_client.PinterestLibPaginationOrder() # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+    include_sizing = False # bool | Include audience sizing in result or not (optional) (default to False)
+    search_query = 'search_query_example' # str | Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
+
+    try:
+        # List targeting templates
+        api_response = api_instance.targeting_template_list(ad_account_id, bookmark=bookmark, page_size=page_size, order=order, include_sizing=include_sizing, search_query=search_query)
+        print("The response of TargetingTemplateApi->targeting_template_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TargetingTemplateApi->targeting_template_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **str**| Unique identifier of an ad account. | 
+ **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **include_sizing** | **bool**| Include audience sizing in result or not | [optional] [default to False]
+ **search_query** | **str**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] 
+
+### Return type
+
+[**TargetingTemplateList200Response**](TargetingTemplateList200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **targeting_template_update**
+> targeting_template_update(ad_account_id, targeting_template_update_request_read_or_update)
+
+Update targeting templates
+
+Update the targeting template given advertiser ID and targeting template ID
+
+### Example
+
+* OAuth Authentication (pinterest_oauth2):
+```python
+import time
+import os
+import openapi_client
+from openapi_client.models.targeting_template_update_request_read_or_update import TargetingTemplateUpdateRequestReadOrUpdate
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.pinterest.com/v5
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://api.pinterest.com/v5"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openapi_client.TargetingTemplateApi(api_client)
+    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
+    targeting_template_update_request_read_or_update = openapi_client.TargetingTemplateUpdateRequestReadOrUpdate() # TargetingTemplateUpdateRequestReadOrUpdate | 
+
+    try:
+        # Update targeting templates
+        api_instance.targeting_template_update(ad_account_id, targeting_template_update_request_read_or_update)
+    except Exception as e:
+        print("Exception when calling TargetingTemplateApi->targeting_template_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **str**| Unique identifier of an ad account. | 
+ **targeting_template_update_request_read_or_update** | [**TargetingTemplateUpdateRequestReadOrUpdate**](TargetingTemplateUpdateRequestReadOrUpdate.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

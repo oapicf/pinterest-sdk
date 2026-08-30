@@ -10,7 +10,7 @@
 
 -type openapi_catalogs_product_group_multiple_string_list_criteria() ::
   [ {'negated', boolean() }
-  | {'values', list(list(binary())) }
+  | {'values', list(list()) }
   ].
 
 
@@ -19,7 +19,7 @@ openapi_catalogs_product_group_multiple_string_list_criteria() ->
 
 openapi_catalogs_product_group_multiple_string_list_criteria(Fields) ->
   Default = [ {'negated', boolean() }
-            , {'values', list(list(binary())) }
+            , {'values', list(list()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

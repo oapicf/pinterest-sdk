@@ -8,25 +8,35 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.AdAdsAnalyticsAsyncTargetingTypes
 import org.openapitools.client.models.AdGroupSummaryStatus
-import org.openapitools.client.models.AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics
 import org.openapitools.client.models.AdsAnalyticsMetricsFilter
+import org.openapitools.client.models.CampaignObjectiveType
 import org.openapitools.client.models.CampaignSummaryStatus
 import org.openapitools.client.models.ConversionAttributionWindowDays
 import org.openapitools.client.models.ConversionReportAttributionType
 import org.openapitools.client.models.ConversionReportTimeType
+import org.openapitools.client.models.CustomConversionEventMetrics
 import org.openapitools.client.models.DataOutputFormat
 import org.openapitools.client.models.Granularity
 import org.openapitools.client.models.MetricsReportingLevel
-import org.openapitools.client.models.ObjectiveType
 import org.openapitools.client.models.PinPromotionSummaryStatus
+import org.openapitools.client.models.PrimarySort
 import org.openapitools.client.models.ProductGroupSummaryStatus
 import org.openapitools.client.models.ReportingColumnAsync
 import org.openapitools.client.models.ReportingTimeZone
@@ -38,35 +48,36 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD
- * @param granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+ * @param granularity   TOTAL - metrics are aggregated over the specified date range.   DAY - metrics are broken down daily.   HOUR - metrics are broken down hourly.   WEEKLY - metrics are broken down weekly.   MONTHLY - metrics are broken down monthly.
  * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD
- * @param columns Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.
- * @param level Level of the report
- * @param attributionTypes List of types of attribution for the conversion report
- * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
- * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
- * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
- * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
- * @param campaignIds List of campaign ids
- * @param campaignStatuses List of status values for filtering
- * @param campaignObjectiveTypes List of values for filtering. [\"WEB_SESSIONS\"] in BETA.
- * @param campaignBrandLabel Campaign brand label for filtering.
  * @param adGroupIds List of ad group ids
  * @param adGroupStatuses List of values for filtering
- * @param adIds List of ad ids [This parameter is no supported for Product Item Level Reports]
- * @param adStatuses List of values for filtering [This parameter is not supported for Product Item Level Reports]
+ * @param adIds List of ad ids. This parameter is not supported for Product Item level reports.
+ * @param adStatuses List of values for filtering. This parameter is not supported for Product Item level reports.
+ * @param attributionTypes List of attribution types for the conversion report.
+ * @param campaignBrandLabel Campaign brand label for filtering.
+ * @param campaignCustomLabel Campaign custom label for filtering.
+ * @param campaignIds List of campaign ids
+ * @param campaignObjectiveTypes List of values for filtering. [\"WEB_SESSIONS\"] is in BETA.
+ * @param campaignStatuses List of status values for filtering
+ * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action.
+ * @param columns Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports.
+ * @param combineTargetingTypes Determines if the targeting types included in the request should be consolidated into a single breakdown.
+ * @param conversionReportTime Date dimension for conversion metrics.
+ * @param customConversionEventMetrics List of advertiser-defined custom conversion event metrics to include in the report
+ * @param endHour Which hour of the end date to stop the report (inclusive). Only allowed for hourly reports.
+ * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action.
+ * @param level Level of the report
+ * @param metricsFilters List of metrics filters
+ * @param primarySort 
  * @param productGroupIds List of product group ids
  * @param productGroupStatuses List of values for filtering
  * @param productItemIds List of product item ids
- * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
- * @param metricsFilters List of metrics filters
- * @param combineTargetingTypes Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&US. This feature is currently in BETA and is not available to all users.
- * @param customConversionEventMetrics List of advertiser-defined custom conversion event metrics to include in the report
- * @param endHour Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
- * @param primarySort Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
- * @param reportFormat Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
- * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
- * @param startHour Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+ * @param reportFormat 
+ * @param reportingTimezone Specify the timezone to be applied for the reporting.
+ * @param startHour Which hour of the start date to begin the report. Only allowed for hourly reports.
+ * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+ * @param viewWindowDays Number of days to use as the conversion attribution window for a view action.
  */
 
 
@@ -76,57 +87,13 @@ data class AdsAnalyticsCreateAsyncRequest (
     @Json(name = "end_date")
     val endDate: kotlin.String,
 
-    /* TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly */
+    /*   TOTAL - metrics are aggregated over the specified date range.   DAY - metrics are broken down daily.   HOUR - metrics are broken down hourly.   WEEKLY - metrics are broken down weekly.   MONTHLY - metrics are broken down monthly. */
     @Json(name = "granularity")
     val granularity: Granularity,
 
     /* Metric report start date (UTC). Format: YYYY-MM-DD */
     @Json(name = "start_date")
     val startDate: kotlin.String,
-
-    /* Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports. */
-    @Json(name = "columns")
-    val columns: kotlin.collections.List<ReportingColumnAsync>,
-
-    /* Level of the report */
-    @Json(name = "level")
-    val level: MetricsReportingLevel,
-
-    /* List of types of attribution for the conversion report */
-    @Json(name = "attribution_types")
-    val attributionTypes: kotlin.collections.List<ConversionReportAttributionType>? = null,
-
-    /* Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. */
-    @Json(name = "click_window_days")
-    val clickWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays._30,
-
-    /* The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. */
-    @Json(name = "conversion_report_time")
-    val conversionReportTime: ConversionReportTimeType? = "TIME_OF_AD_ACTION",
-
-    /* Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. */
-    @Json(name = "engagement_window_days")
-    val engagementWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays._30,
-
-    /* Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. */
-    @Json(name = "view_window_days")
-    val viewWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays._1,
-
-    /* List of campaign ids */
-    @Json(name = "campaign_ids")
-    val campaignIds: kotlin.collections.List<kotlin.String>? = null,
-
-    /* List of status values for filtering */
-    @Json(name = "campaign_statuses")
-    val campaignStatuses: kotlin.collections.List<CampaignSummaryStatus>? = null,
-
-    /* List of values for filtering. [\"WEB_SESSIONS\"] in BETA. */
-    @Json(name = "campaign_objective_types")
-    val campaignObjectiveTypes: kotlin.collections.List<ObjectiveType>? = null,
-
-    /* Campaign brand label for filtering. */
-    @Json(name = "campaign_brand_label")
-    val campaignBrandLabel: kotlin.String? = null,
 
     /* List of ad group ids */
     @Json(name = "ad_group_ids")
@@ -136,13 +103,76 @@ data class AdsAnalyticsCreateAsyncRequest (
     @Json(name = "ad_group_statuses")
     val adGroupStatuses: kotlin.collections.List<AdGroupSummaryStatus>? = null,
 
-    /* List of ad ids [This parameter is no supported for Product Item Level Reports] */
+    /* List of ad ids. This parameter is not supported for Product Item level reports. */
     @Json(name = "ad_ids")
     val adIds: kotlin.collections.List<kotlin.String>? = null,
 
-    /* List of values for filtering [This parameter is not supported for Product Item Level Reports] */
+    /* List of values for filtering. This parameter is not supported for Product Item level reports. */
     @Json(name = "ad_statuses")
     val adStatuses: kotlin.collections.List<PinPromotionSummaryStatus>? = null,
+
+    /* List of attribution types for the conversion report. */
+    @Json(name = "attribution_types")
+    val attributionTypes: kotlin.collections.List<ConversionReportAttributionType>? = null,
+
+    /* Campaign brand label for filtering. */
+    @Json(name = "campaign_brand_label")
+    val campaignBrandLabel: kotlin.String? = null,
+
+    /* Campaign custom label for filtering. */
+    @Json(name = "campaign_custom_label")
+    val campaignCustomLabel: kotlin.String? = null,
+
+    /* List of campaign ids */
+    @Json(name = "campaign_ids")
+    val campaignIds: kotlin.collections.List<kotlin.String>? = null,
+
+    /* List of values for filtering. [\"WEB_SESSIONS\"] is in BETA. */
+    @Json(name = "campaign_objective_types")
+    val campaignObjectiveTypes: kotlin.collections.List<CampaignObjectiveType>? = null,
+
+    /* List of status values for filtering */
+    @Json(name = "campaign_statuses")
+    val campaignStatuses: kotlin.collections.List<CampaignSummaryStatus>? = null,
+
+    /* Number of days to use as the conversion attribution window for a pin click action. */
+    @Json(name = "click_window_days")
+    val clickWindowDays: ConversionAttributionWindowDays? = null,
+
+    /* Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports. */
+    @Json(name = "columns")
+    val columns: kotlin.collections.List<ReportingColumnAsync>? = null,
+
+    /* Determines if the targeting types included in the request should be consolidated into a single breakdown. */
+    @Json(name = "combine_targeting_types")
+    val combineTargetingTypes: kotlin.Boolean? = false,
+
+    /* Date dimension for conversion metrics. */
+    @Json(name = "conversion_report_time")
+    val conversionReportTime: ConversionReportTimeType? = null,
+
+    /* List of advertiser-defined custom conversion event metrics to include in the report */
+    @Json(name = "custom_conversion_event_metrics")
+    val customConversionEventMetrics: kotlin.collections.List<CustomConversionEventMetrics>? = null,
+
+    /* Which hour of the end date to stop the report (inclusive). Only allowed for hourly reports. */
+    @Json(name = "end_hour")
+    val endHour: kotlin.Int? = null,
+
+    /* Number of days to use as the conversion attribution window for an engagement action. */
+    @Json(name = "engagement_window_days")
+    val engagementWindowDays: ConversionAttributionWindowDays? = null,
+
+    /* Level of the report */
+    @Json(name = "level")
+    val level: MetricsReportingLevel? = null,
+
+    /* List of metrics filters */
+    @Json(name = "metrics_filters")
+    val metricsFilters: kotlin.collections.List<AdsAnalyticsMetricsFilter>? = null,
+
+    @Json(name = "primary_sort")
+    val primarySort: PrimarySort? = null,
 
     /* List of product group ids */
     @Json(name = "product_group_ids")
@@ -156,79 +186,27 @@ data class AdsAnalyticsCreateAsyncRequest (
     @Json(name = "product_item_ids")
     val productItemIds: kotlin.collections.List<kotlin.String>? = null,
 
-    /* List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. */
-    @Json(name = "targeting_types")
-    val targetingTypes: kotlin.collections.List<AdsAnalyticsCreateAsyncRequest.TargetingTypes>? = null,
-
-    /* List of metrics filters */
-    @Json(name = "metrics_filters")
-    val metricsFilters: kotlin.collections.List<AdsAnalyticsMetricsFilter>? = null,
-
-    /* Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&US. This feature is currently in BETA and is not available to all users. */
-    @Json(name = "combine_targeting_types")
-    val combineTargetingTypes: kotlin.Boolean? = false,
-
-    /* List of advertiser-defined custom conversion event metrics to include in the report */
-    @Json(name = "custom_conversion_event_metrics")
-    val customConversionEventMetrics: kotlin.collections.List<AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics>? = null,
-
-    /* Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports. */
-    @Json(name = "end_hour")
-    val endHour: kotlin.Int? = null,
-
-    /* Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. */
-    @Json(name = "primary_sort")
-    val primarySort: AdsAnalyticsCreateAsyncRequest.PrimarySort? = null,
-
-    /* Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. */
     @Json(name = "report_format")
-    val reportFormat: DataOutputFormat? = "JSON",
+    val reportFormat: DataOutputFormat? = null,
 
-    /* Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. */
+    /* Specify the timezone to be applied for the reporting. */
     @Json(name = "reporting_timezone")
     val reportingTimezone: ReportingTimeZone? = null,
 
-    /* Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. */
+    /* Which hour of the start date to begin the report. Only allowed for hourly reports. */
     @Json(name = "start_hour")
-    val startHour: kotlin.Int? = null
+    val startHour: kotlin.Int? = null,
+
+    /* List of targeting types. Requires `level` to be a value ending in `_TARGETING`. */
+    @Json(name = "targeting_types")
+    val targetingTypes: kotlin.collections.List<AdAdsAnalyticsAsyncTargetingTypes>? = null,
+
+    /* Number of days to use as the conversion attribution window for a view action. */
+    @Json(name = "view_window_days")
+    val viewWindowDays: ConversionAttributionWindowDays? = null
 
 ) {
 
-    /**
-     * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-     *
-     * Values: KEYWORD,APPTYPE,GENDER,LOCATION,PLACEMENT,COUNTRY,TARGETED_INTEREST,PINNER_INTEREST,AUDIENCE_INCLUDE,GEO,AGE_BUCKET,REGION,MEDIA_TYPE,AGE_BUCKET_AND_GENDER,AUDIENCE_MULTIPLIER,CREATIVE_ENHANCEMENTS,LOCAL_ADS_STORE_CODE
-     */
-    @JsonClass(generateAdapter = false)
-    enum class TargetingTypes(val value: kotlin.String) {
-        @Json(name = "KEYWORD") KEYWORD("KEYWORD"),
-        @Json(name = "APPTYPE") APPTYPE("APPTYPE"),
-        @Json(name = "GENDER") GENDER("GENDER"),
-        @Json(name = "LOCATION") LOCATION("LOCATION"),
-        @Json(name = "PLACEMENT") PLACEMENT("PLACEMENT"),
-        @Json(name = "COUNTRY") COUNTRY("COUNTRY"),
-        @Json(name = "TARGETED_INTEREST") TARGETED_INTEREST("TARGETED_INTEREST"),
-        @Json(name = "PINNER_INTEREST") PINNER_INTEREST("PINNER_INTEREST"),
-        @Json(name = "AUDIENCE_INCLUDE") AUDIENCE_INCLUDE("AUDIENCE_INCLUDE"),
-        @Json(name = "GEO") GEO("GEO"),
-        @Json(name = "AGE_BUCKET") AGE_BUCKET("AGE_BUCKET"),
-        @Json(name = "REGION") REGION("REGION"),
-        @Json(name = "MEDIA_TYPE") MEDIA_TYPE("MEDIA_TYPE"),
-        @Json(name = "AGE_BUCKET_AND_GENDER") AGE_BUCKET_AND_GENDER("AGE_BUCKET_AND_GENDER"),
-        @Json(name = "AUDIENCE_MULTIPLIER") AUDIENCE_MULTIPLIER("AUDIENCE_MULTIPLIER"),
-        @Json(name = "CREATIVE_ENHANCEMENTS") CREATIVE_ENHANCEMENTS("CREATIVE_ENHANCEMENTS"),
-        @Json(name = "LOCAL_ADS_STORE_CODE") LOCAL_ADS_STORE_CODE("LOCAL_ADS_STORE_CODE");
-    }
-    /**
-     * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
-     *
-     * Values: BY_ID,BY_DATE
-     */
-    @JsonClass(generateAdapter = false)
-    enum class PrimarySort(val value: kotlin.String) {
-        @Json(name = "BY_ID") BY_ID("BY_ID"),
-        @Json(name = "BY_DATE") BY_DATE("BY_DATE");
-    }
 
 }
 

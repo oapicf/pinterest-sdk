@@ -12,13 +12,13 @@ Method | HTTP request | Description
 
 <a id="Invoke-AudiencesCreate"></a>
 # **Invoke-AudiencesCreate**
-> Audience Invoke-AudiencesCreate<br>
+> AdAccountsAudience Invoke-AudiencesCreate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AudienceCreateRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountsAudienceCreate] <PSCustomObject><br>
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=""/docs/work-with-targets-and-audiences/create-audiences/"" target=""_blank"">creating different kinds of audiences</a>.
+Create a new audience for the ad account.
 
 ### Example
 ```powershell
@@ -31,13 +31,13 @@ $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $LineItem = Initialize-LineItem -ProductBrand "Parker" -ProductCategory "Shoes" -ProductId 1414 -ProductName "Parker Boots" -ProductPrice "99.99" -ProductQuantity 2 -ProductVariant "Red" -ProductVariantId "1414-34832"
 $EventData = Initialize-EventData -Currency "UNK" -LeadType "Newsletter" -LineItems $LineItem -OrderId "X-151481" -OrderQuantity 1 -PageName "Our Favorite Pins on Pinterest" -PromoCode "WINTER10" -Property "Athleta" -SearchQuery "boots" -Value "199.98" -VideoTitle "How to style your Parker Boots"
 
-$AudienceRule = Initialize-AudienceRule -AdAccountId "549755885175" -AdId "MyAdId" -CampaignId "MyCampaignId" -Country "US" -CustomerListId "5497558859876" -EngagementDomain "MyEngagementDomain" -EngagementType "click" -EngagerType 1 -VarEvent "checkout" -EventData $EventData -EventSource  -IngestionSource  -ObjectiveType "AWARENESS" -Percentage 3 -PinId "MyPinId" -Prefill $true -RetentionDays 30 -SeedId "MySeedId" -Url "MyUrl" -VisitorSourceId "549755885175"
+$AdAccountsAudienceRule = Initialize-AdAccountsAudienceRule -AdAccountId "MyAdAccountId" -AdId "MyAdId" -CampaignId "MyCampaignId" -Country "MyCountry" -CustomerListId "MyCustomerListId" -EngagementDomain "MyEngagementDomain" -EngagementType "MyEngagementType" -EngagerType 0 -VarEvent "MyVarEvent" -EventData $EventData -EventSource  -IngestionSource  -ObjectiveType "AWARENESS" -Percentage 0 -PinId "MyPinId" -Prefill $false -RetentionDays 0 -SeedId "MySeedId" -Url "MyUrl" -VisitorSourceId "MyVisitorSourceId"
 
-$AudienceCreateRequest = Initialize-AudienceCreateRequest -AdAccountId "549755885175" -Name "string" -Rule $AudienceRule -AudienceType "CUSTOMER_LIST" -Description "string" # AudienceCreateRequest | List of ads to create, size limit [1, 30]
+$AdAccountsAudienceCreate = Initialize-AdAccountsAudienceCreate -AdAccountId "MyAdAccountId" -AudienceType "CUSTOMER_LIST" -Description "MyDescription" -Name "MyName" -Rule $AdAccountsAudienceRule # AdAccountsAudienceCreate | 
 
 # Create audience
 try {
-    $Result = Invoke-AudiencesCreate -AdAccountId $AdAccountId -AudienceCreateRequest $AudienceCreateRequest
+    $Result = Invoke-AudiencesCreate -AdAccountId $AdAccountId -AdAccountsAudienceCreate $AdAccountsAudienceCreate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AudiencesCreate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -49,11 +49,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **AudienceCreateRequest** | [**AudienceCreateRequest**](AudienceCreateRequest.md)| List of ads to create, size limit [1, 30] | 
+ **AdAccountsAudienceCreate** | [**AdAccountsAudienceCreate**](AdAccountsAudienceCreate.md)|  | 
 
 ### Return type
 
-[**Audience**](Audience.md) (PSCustomObject)
+[**AdAccountsAudience**](AdAccountsAudience.md) (PSCustomObject)
 
 ### Authorization
 
@@ -68,9 +68,9 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-AudiencesGet"></a>
 # **Invoke-AudiencesGet**
-> Audience Invoke-AudiencesGet<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> AdAccountsAudience Invoke-AudiencesGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AudienceId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Get audience
 
@@ -86,12 +86,12 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 # Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+$AudienceId = "MyAudienceId" # String | Audience ID.
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$AudienceId = "MyAudienceId" # String | Unique identifier of an audience
 
 # Get audience
 try {
-    $Result = Invoke-AudiencesGet -AdAccountId $AdAccountId -AudienceId $AudienceId
+    $Result = Invoke-AudiencesGet -AudienceId $AudienceId -AdAccountId $AdAccountId
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AudiencesGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -102,12 +102,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **AudienceId** | **String**| Audience ID. | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **AudienceId** | **String**| Unique identifier of an audience | 
 
 ### Return type
 
-[**Audience**](Audience.md) (PSCustomObject)
+[**AdAccountsAudience**](AdAccountsAudience.md) (PSCustomObject)
 
 ### Authorization
 
@@ -125,9 +125,10 @@ Name | Type | Description  | Notes
 > AudiencesList200Response Invoke-AudiencesList<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OwnershipType] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OwnershipType] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ExcludeNca] <System.Nullable[Boolean]><br>
 
 List audiences
 
@@ -145,13 +146,14 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$Order = "ASCENDING" # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-$OwnershipType = "OWNED" # String | Filter audiences by ownership type. (optional) (default to "OWNED")
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+$Order = "ASCENDING" # PinterestLibPaginationOrder | The order in which to sort the items returned: ""ASCENDING"" or ""DESCENDING"" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+$OwnershipType = "OWNED" # AudienceOwnershipType |  (optional)
+$ExcludeNca = $true # Boolean | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). (optional) (default to $false)
 
 # List audiences
 try {
-    $Result = Invoke-AudiencesList -AdAccountId $AdAccountId -Bookmark $Bookmark -Order $Order -PageSize $PageSize -OwnershipType $OwnershipType
+    $Result = Invoke-AudiencesList -AdAccountId $AdAccountId -Bookmark $Bookmark -PageSize $PageSize -Order $Order -OwnershipType $OwnershipType -ExcludeNca $ExcludeNca
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AudiencesList: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -164,9 +166,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **Order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **OwnershipType** | **String**| Filter audiences by ownership type. | [optional] [default to &quot;OWNED&quot;]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **Order** | [**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md)| The order in which to sort the items returned: &quot;&quot;ASCENDING&quot;&quot; or &quot;&quot;DESCENDING&quot;&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **OwnershipType** | [**AudienceOwnershipType**](AudienceOwnershipType.md)|  | [optional] 
+ **ExcludeNca** | **Boolean**| When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [optional] [default to $false]
 
 ### Return type
 
@@ -185,14 +188,14 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-AudiencesUpdate"></a>
 # **Invoke-AudiencesUpdate**
-> Audience Invoke-AudiencesUpdate<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> AdAccountsAudience Invoke-AudiencesUpdate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AudienceId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AudienceUpdateRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountsAudienceUpdate] <PSCustomObject><br>
 
 Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 ### Example
 ```powershell
@@ -201,18 +204,18 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+$AudienceId = "MyAudienceId" # String | Audience ID.
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$AudienceId = "MyAudienceId" # String | Unique identifier of an audience
 $LineItem = Initialize-LineItem -ProductBrand "Parker" -ProductCategory "Shoes" -ProductId 1414 -ProductName "Parker Boots" -ProductPrice "99.99" -ProductQuantity 2 -ProductVariant "Red" -ProductVariantId "1414-34832"
 $EventData = Initialize-EventData -Currency "UNK" -LeadType "Newsletter" -LineItems $LineItem -OrderId "X-151481" -OrderQuantity 1 -PageName "Our Favorite Pins on Pinterest" -PromoCode "WINTER10" -Property "Athleta" -SearchQuery "boots" -Value "199.98" -VideoTitle "How to style your Parker Boots"
 
-$AudienceRule = Initialize-AudienceRule -AdAccountId "549755885175" -AdId "MyAdId" -CampaignId "MyCampaignId" -Country "US" -CustomerListId "5497558859876" -EngagementDomain "MyEngagementDomain" -EngagementType "click" -EngagerType 1 -VarEvent "checkout" -EventData $EventData -EventSource  -IngestionSource  -ObjectiveType "AWARENESS" -Percentage 3 -PinId "MyPinId" -Prefill $true -RetentionDays 30 -SeedId "MySeedId" -Url "MyUrl" -VisitorSourceId "549755885175"
+$AdAccountsAudienceRule = Initialize-AdAccountsAudienceRule -AdAccountId "MyAdAccountId" -AdId "MyAdId" -CampaignId "MyCampaignId" -Country "MyCountry" -CustomerListId "MyCustomerListId" -EngagementDomain "MyEngagementDomain" -EngagementType "MyEngagementType" -EngagerType 0 -VarEvent "MyVarEvent" -EventData $EventData -EventSource  -IngestionSource  -ObjectiveType "AWARENESS" -Percentage 0 -PinId "MyPinId" -Prefill $false -RetentionDays 0 -SeedId "MySeedId" -Url "MyUrl" -VisitorSourceId "MyVisitorSourceId"
 
-$AudienceUpdateRequest = Initialize-AudienceUpdateRequest -AdAccountId "549755885175" -Name "string" -Rule $AudienceRule -Description "string" -OperationType "UPDATE" # AudienceUpdateRequest | The audience to be updated.
+$AdAccountsAudienceUpdate = Initialize-AdAccountsAudienceUpdate -AdAccountId "MyAdAccountId" -AudienceType "CUSTOMER_LIST" -Description "MyDescription" -Name "MyName" -OperationType "UPDATE" -Rule $AdAccountsAudienceRule # AdAccountsAudienceUpdate | 
 
 # Update audience
 try {
-    $Result = Invoke-AudiencesUpdate -AdAccountId $AdAccountId -AudienceId $AudienceId -AudienceUpdateRequest $AudienceUpdateRequest
+    $Result = Invoke-AudiencesUpdate -AudienceId $AudienceId -AdAccountId $AdAccountId -AdAccountsAudienceUpdate $AdAccountsAudienceUpdate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AudiencesUpdate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -223,13 +226,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **AudienceId** | **String**| Audience ID. | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **AudienceId** | **String**| Unique identifier of an audience | 
- **AudienceUpdateRequest** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md)| The audience to be updated. | 
+ **AdAccountsAudienceUpdate** | [**AdAccountsAudienceUpdate**](AdAccountsAudienceUpdate.md)|  | 
 
 ### Return type
 
-[**Audience**](Audience.md) (PSCustomObject)
+[**AdAccountsAudience**](AdAccountsAudience.md) (PSCustomObject)
 
 ### Authorization
 

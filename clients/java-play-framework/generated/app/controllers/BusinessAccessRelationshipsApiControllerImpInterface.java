@@ -1,21 +1,19 @@
 package controllers;
 
-import apimodels.BrandAccountsCreate200Response;
-import apimodels.BrandAccountsCreateRequest;
-import apimodels.BrandAccountsUpdateRequest;
-import apimodels.DeletePartnersRequest;
-import apimodels.DeletePartnersResponse;
-import apimodels.DeletedMembersResponse;
-import apimodels.Error;
+import apimodels.BrandAccount;
+import apimodels.BrandAccountCreate;
+import apimodels.BrandAccountUpdate;
+import apimodels.BusinessMembershipMember;
+import apimodels.DeleteBusinessMembership200Response;
+import apimodels.DeleteBusinessMembershipBody;
+import apimodels.DeleteBusinessPartners;
+import apimodels.DeleteBusinessPartnersDelete;
 import apimodels.GetBusinessEmployers200Response;
-import apimodels.GetBusinessMembers200Response;
-import apimodels.GetBusinessPartners200Response;
 import apimodels.MemberBusinessRole;
-import apimodels.MembersToDeleteBody;
 import apimodels.PartnerType;
-import apimodels.SystemUserUpdateRequest;
-import apimodels.UpdateMemberBusinessRoleBody;
-import apimodels.UpdateMemberResultsResponseArray;
+import apimodels.PinterestLibError;
+import apimodels.SystemUserUpdateWithRequiredBody;
+import apimodels.UpdateBusinessMembershipsResponse;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -42,12 +40,12 @@ public abstract class BusinessAccessRelationshipsApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result brandAccountsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest) throws Exception {
+    public Result brandAccountsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId, BrandAccountCreate brandAccountCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        BrandAccountsCreate200Response obj = brandAccountsCreate(request, businessHierarchyId, brandAccountsCreateRequest);
+        BrandAccount obj = brandAccountsCreate(request, businessHierarchyId, brandAccountCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -59,14 +57,14 @@ public abstract class BusinessAccessRelationshipsApiControllerImpInterface {
 
     }
 
-    public abstract BrandAccountsCreate200Response brandAccountsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest) throws Exception;
+    public abstract BrandAccount brandAccountsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId, BrandAccountCreate brandAccountCreate) throws Exception;
 
-    public Result brandAccountsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest) throws Exception {
+    public Result brandAccountsUpdateHttp(Http.Request request, String brandAccountId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId, BrandAccountUpdate brandAccountUpdate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        BrandAccountsCreate200Response obj = brandAccountsUpdate(request, businessHierarchyId, brandAccountId, brandAccountsUpdateRequest);
+        BrandAccount obj = brandAccountsUpdate(request, brandAccountId, businessHierarchyId, brandAccountUpdate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -78,14 +76,14 @@ public abstract class BusinessAccessRelationshipsApiControllerImpInterface {
 
     }
 
-    public abstract BrandAccountsCreate200Response brandAccountsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest) throws Exception;
+    public abstract BrandAccount brandAccountsUpdate(Http.Request request, String brandAccountId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId, BrandAccountUpdate brandAccountUpdate) throws Exception;
 
-    public Result deleteBusinessMembershipHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, MembersToDeleteBody membersToDeleteBody) throws Exception {
+    public Result deleteBusinessMembershipHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, DeleteBusinessMembershipBody deleteBusinessMembershipBody) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        DeletedMembersResponse obj = deleteBusinessMembership(request, businessId, membersToDeleteBody);
+        DeleteBusinessMembership200Response obj = deleteBusinessMembership(request, businessId, deleteBusinessMembershipBody);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -97,14 +95,14 @@ public abstract class BusinessAccessRelationshipsApiControllerImpInterface {
 
     }
 
-    public abstract DeletedMembersResponse deleteBusinessMembership(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, MembersToDeleteBody membersToDeleteBody) throws Exception;
+    public abstract DeleteBusinessMembership200Response deleteBusinessMembership(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, DeleteBusinessMembershipBody deleteBusinessMembershipBody) throws Exception;
 
-    public Result deleteBusinessPartnersHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, DeletePartnersRequest deletePartnersRequest) throws Exception {
+    public Result deleteBusinessPartnersHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, DeleteBusinessPartnersDelete deleteBusinessPartnersDelete) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        DeletePartnersResponse obj = deleteBusinessPartners(request, businessId, deletePartnersRequest);
+        DeleteBusinessPartners obj = deleteBusinessPartners(request, businessId, deleteBusinessPartnersDelete);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -116,14 +114,14 @@ public abstract class BusinessAccessRelationshipsApiControllerImpInterface {
 
     }
 
-    public abstract DeletePartnersResponse deleteBusinessPartners(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, DeletePartnersRequest deletePartnersRequest) throws Exception;
+    public abstract DeleteBusinessPartners deleteBusinessPartners(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, DeleteBusinessPartnersDelete deleteBusinessPartnersDelete) throws Exception;
 
-    public Result getBusinessEmployersHttp(Http.Request request,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception {
+    public Result getBusinessEmployersHttp(Http.Request request, Boolean assetsSummary, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        GetBusinessEmployers200Response obj = getBusinessEmployers(request, pageSize, bookmark);
+        GetBusinessEmployers200Response obj = getBusinessEmployers(request, assetsSummary, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -135,14 +133,14 @@ public abstract class BusinessAccessRelationshipsApiControllerImpInterface {
 
     }
 
-    public abstract GetBusinessEmployers200Response getBusinessEmployers(Http.Request request,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception;
+    public abstract GetBusinessEmployers200Response getBusinessEmployers(Http.Request request, Boolean assetsSummary, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
     public Result getBusinessMembersHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean fetchSystemUsers, Boolean assetsSummary, List<MemberBusinessRole> businessRoles,  @Size(max=500)String memberIds,  @Min(0)Integer startIndex, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        GetBusinessMembers200Response obj = getBusinessMembers(request, businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize);
+        GetBusinessEmployers200Response obj = getBusinessMembers(request, businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -154,14 +152,14 @@ public abstract class BusinessAccessRelationshipsApiControllerImpInterface {
 
     }
 
-    public abstract GetBusinessMembers200Response getBusinessMembers(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean fetchSystemUsers, Boolean assetsSummary, List<MemberBusinessRole> businessRoles,  @Size(max=500)String memberIds,  @Min(0)Integer startIndex, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
+    public abstract GetBusinessEmployers200Response getBusinessMembers(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean fetchSystemUsers, Boolean assetsSummary, List<MemberBusinessRole> businessRoles,  @Size(max=500)String memberIds,  @Min(0)Integer startIndex, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result getBusinessPartnersHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean assetsSummary, PartnerType partnerType,  @Size(max=500)String partnerIds,  @Min(0)Integer startIndex,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception {
+    public Result getBusinessPartnersHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean assetsSummary, PartnerType partnerType,  @Size(max=500)String partnerIds,  @Min(0)Integer startIndex, Boolean sortAscending, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        GetBusinessPartners200Response obj = getBusinessPartners(request, businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark);
+        GetBusinessEmployers200Response obj = getBusinessPartners(request, businessId, assetsSummary, partnerType, partnerIds, startIndex, sortAscending, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -173,26 +171,26 @@ public abstract class BusinessAccessRelationshipsApiControllerImpInterface {
 
     }
 
-    public abstract GetBusinessPartners200Response getBusinessPartners(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean assetsSummary, PartnerType partnerType,  @Size(max=500)String partnerIds,  @Min(0)Integer startIndex,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception;
+    public abstract GetBusinessEmployers200Response getBusinessPartners(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean assetsSummary, PartnerType partnerType,  @Size(max=500)String partnerIds,  @Min(0)Integer startIndex, Boolean sortAscending, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result systemUserUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest) throws Exception {
+    public Result systemUserUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String systemUserId, SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        systemUserUpdate(request, businessId, systemUserId, systemUserUpdateRequest);
+        systemUserUpdate(request, businessId, systemUserId, systemUserUpdateWithRequiredBody);
         return ok();
 
     }
 
-    public abstract void systemUserUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest) throws Exception;
+    public abstract void systemUserUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String systemUserId, SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody) throws Exception;
 
-    public Result updateBusinessMembershipsHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, List<@Valid UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody) throws Exception {
+    public Result updateBusinessMembershipsHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, List<@Valid BusinessMembershipMember> businessMembershipMember) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        UpdateMemberResultsResponseArray obj = updateBusinessMemberships(request, businessId, updateMemberBusinessRoleBody);
+        UpdateBusinessMembershipsResponse obj = updateBusinessMemberships(request, businessId, businessMembershipMember);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -204,6 +202,6 @@ public abstract class BusinessAccessRelationshipsApiControllerImpInterface {
 
     }
 
-    public abstract UpdateMemberResultsResponseArray updateBusinessMemberships(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, List<@Valid UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody) throws Exception;
+    public abstract UpdateBusinessMembershipsResponse updateBusinessMemberships(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, List<@Valid BusinessMembershipMember> businessMembershipMember) throws Exception;
 
 }

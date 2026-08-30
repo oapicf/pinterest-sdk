@@ -8,22 +8,22 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.LabelUpdateRequestLabelsInner;
+import org.openapitools.model.LabelUpdateItem;
 
 /**
  * LabelUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LabelUpdateRequest   {
   @JsonProperty("labels")
-  private List<@Valid LabelUpdateRequestLabelsInner> labels = new ArrayList<>();
+  private List<@Valid LabelUpdateItem> labels = new ArrayList<>();
 
-  public LabelUpdateRequest labels(List<@Valid LabelUpdateRequestLabelsInner> labels) {
+  public LabelUpdateRequest labels(List<@Valid LabelUpdateItem> labels) {
     this.labels = labels;
     return this;
   }
 
-  public LabelUpdateRequest addLabelsItem(LabelUpdateRequestLabelsInner labelsItem) {
+  public LabelUpdateRequest addLabelsItem(LabelUpdateItem labelsItem) {
     this.labels.add(labelsItem);
     return this;
   }
@@ -33,11 +33,11 @@ public class LabelUpdateRequest   {
    * @return labels
   **/
   @ApiModelProperty(required = true, value = "Labels that you are applying to the campaign.")
-  public List<@Valid LabelUpdateRequestLabelsInner> getLabels() {
+  public List<@Valid LabelUpdateItem> getLabels() {
     return labels;
   }
 
-  public void setLabels(List<@Valid LabelUpdateRequestLabelsInner> labels) {
+  public void setLabels(List<@Valid LabelUpdateItem> labels) {
     this.labels = labels;
   }
 
@@ -74,10 +74,7 @@ public class LabelUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

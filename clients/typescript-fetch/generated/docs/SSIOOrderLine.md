@@ -1,6 +1,7 @@
 
 # SSIOOrderLine
 
+A Salesforce SSIO order line.
 
 ## Properties
 
@@ -46,7 +47,7 @@ const example = {
   "billingContactLastname": Smith,
   "budgetAmount": 5000000,
   "currencyInfo": null,
-  "endDate": Mon Oct 05 00:00:00 UTC 2020,
+  "endDate": null,
   "estimatedMonthlySpend": null,
   "lastModifiedDateTime": 2020-10-06T13:07:04.000Z,
   "mediaContactEmail": mail@test.com,
@@ -57,7 +58,7 @@ const example = {
   "pmpName": null,
   "poNumber": null,
   "salesforceOrderLineId": null,
-  "startDate": Thu Mar 01 00:00:00 UTC 2018,
+  "startDate": null,
 } satisfies SSIOOrderLine
 
 console.log(example)

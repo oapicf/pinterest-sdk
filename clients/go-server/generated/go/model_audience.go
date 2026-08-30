@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,10 +17,10 @@ package openapi
 type Audience struct {
 
 	// Ad account ID.
-	AdAccountId string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AdAccountId string `json:"ad_account_id,omitempty" validate:"regexp=^\\d+$"`
 
-	// <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-	AudienceType string `json:"audience_type,omitempty"`
+	// [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+	AudienceType PinnerListType `json:"audience_type,omitempty"`
 
 	// The company that created this audience.
 	CreatedByCompanyName *string `json:"created_by_company_name,omitempty"`
@@ -32,7 +32,10 @@ type Audience struct {
 	Description *string `json:"description,omitempty"`
 
 	// Audience ID.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
+
+	// Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+	IsNca bool `json:"is_nca,omitempty"`
 
 	// Audience name.
 	Name string `json:"name,omitempty"`
@@ -43,7 +46,7 @@ type Audience struct {
 	Size *int32 `json:"size,omitempty"`
 
 	// Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
-	Status string `json:"status,omitempty"`
+	Status AudienceStatus `json:"status,omitempty"`
 
 	// Always \"audience\".
 	Type string `json:"type,omitempty"`
@@ -52,7 +55,8 @@ type Audience struct {
 	UpdatedTimestamp *int32 `json:"updated_timestamp,omitempty"`
 }
 
-// AssertAudienceRequired checks if the required fields are not zero-ed
+// AssertAudienceRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAudienceRequired(obj Audience) error {
 	if err := AssertAudienceRuleRequired(obj.Rule); err != nil {
 		return err

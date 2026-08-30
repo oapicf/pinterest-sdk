@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]UserWebsiteSummary**](UserWebsiteSummary.md) |  | 
+**Items** | [**[]UserWebsite**](UserWebsite.md) |  | 
 
 ## Methods
 
 ### NewUserWebsitesGet200Response
 
-`func NewUserWebsitesGet200Response(items []UserWebsiteSummary, ) *UserWebsitesGet200Response`
+`func NewUserWebsitesGet200Response(items []UserWebsite, ) *UserWebsitesGet200Response`
 
 NewUserWebsitesGet200Response instantiates a new UserWebsitesGet200Response object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ HasBookmark returns a boolean if a field has been set.
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
 ### GetItems
 
-`func (o *UserWebsitesGet200Response) GetItems() []UserWebsiteSummary`
+`func (o *UserWebsitesGet200Response) GetItems() []UserWebsite`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *UserWebsitesGet200Response) GetItemsOk() (*[]UserWebsiteSummary, bool)`
+`func (o *UserWebsitesGet200Response) GetItemsOk() (*[]UserWebsite, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *UserWebsitesGet200Response) SetItems(v []UserWebsiteSummary)`
+`func (o *UserWebsitesGet200Response) SetItems(v []UserWebsite)`
 
 SetItems sets Items field to given value.
 

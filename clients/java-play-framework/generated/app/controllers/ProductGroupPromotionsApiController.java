@@ -1,14 +1,18 @@
 package controllers;
 
-import apimodels.Error;
+import java.math.BigDecimal;
+import apimodels.EntityStatus;
 import apimodels.Granularity;
 import java.time.LocalDate;
-import apimodels.ProductGroupAnalyticsResponseInner;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.ProductGroupAnalyticsItems;
 import apimodels.ProductGroupPromotion;
-import apimodels.ProductGroupPromotionCreateRequest;
-import apimodels.ProductGroupPromotionResponse;
-import apimodels.ProductGroupPromotionUpdateRequest;
+import apimodels.ProductGroupPromotions;
+import apimodels.ProductGroupPromotionsCreate;
 import apimodels.ProductGroupPromotionsList200Response;
+import apimodels.ProductGroupPromotionsUpdateWithRequiredBody;
+import apimodels.ReportingColumnSync;
 import apimodels.ReportingTimeZone;
 
 import com.typesafe.config.Config;
@@ -33,7 +37,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ProductGroupPromotionsApiController extends Controller {
     private final ProductGroupPromotionsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -48,17 +52,17 @@ public class ProductGroupPromotionsApiController extends Controller {
 
     @ApiAction
     public Result productGroupPromotionsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeproductGroupPromotionCreateRequest = request.body().asJson();
-        ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest;
-        if (nodeproductGroupPromotionCreateRequest != null) {
-            productGroupPromotionCreateRequest = mapper.readValue(nodeproductGroupPromotionCreateRequest.toString(), ProductGroupPromotionCreateRequest.class);
+        JsonNode nodeproductGroupPromotionsCreate = request.body().asJson();
+        ProductGroupPromotionsCreate productGroupPromotionsCreate;
+        if (nodeproductGroupPromotionsCreate != null) {
+            productGroupPromotionsCreate = mapper.readValue(nodeproductGroupPromotionsCreate.toString(), ProductGroupPromotionsCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(productGroupPromotionCreateRequest);
+                OpenAPIUtils.validate(productGroupPromotionsCreate);
             }
         } else {
-            throw new IllegalArgumentException("'ProductGroupPromotionCreateRequest' parameter is required");
+            throw new IllegalArgumentException("'ProductGroupPromotionsCreate' parameter is required");
         }
-        return imp.productGroupPromotionsCreateHttp(request, adAccountId, productGroupPromotionCreateRequest);
+        return imp.productGroupPromotionsCreateHttp(request, adAccountId, productGroupPromotionsCreate);
     }
 
     @ApiAction
@@ -68,6 +72,27 @@ public class ProductGroupPromotionsApiController extends Controller {
 
     @ApiAction
     public Result productGroupPromotionsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        String valueorder = request.getQueryString("order");
+        PinterestLibPaginationOrder order;
+        if (valueorder != null) {
+            order = valueorder;
+        } else {
+            order = null;
+        }
         String[] productGroupPromotionIdsArray = request.queryString().get("product_group_promotion_ids");
         List<String> productGroupPromotionIdsList = OpenAPIUtils.parametersToList("multi", productGroupPromotionIdsArray);
         List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds = new ArrayList<>();
@@ -79,7 +104,7 @@ public class ProductGroupPromotionsApiController extends Controller {
         }
         String[] entityStatusesArray = request.queryString().get("entity_statuses");
         List<String> entityStatusesList = OpenAPIUtils.parametersToList("multi", entityStatusesArray);
-        List<String> entityStatuses = new ArrayList<>();
+        List<EntityStatus> entityStatuses = new ArrayList<>();
         for (String curParam : entityStatusesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -93,43 +118,22 @@ public class ProductGroupPromotionsApiController extends Controller {
         } else {
             adGroupId = null;
         }
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
-        } else {
-            pageSize = 25;
-        }
-        String valueorder = request.getQueryString("order");
-        String order;
-        if (valueorder != null) {
-            order = valueorder;
-        } else {
-            order = null;
-        }
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
-        } else {
-            bookmark = null;
-        }
-        return imp.productGroupPromotionsListHttp(request, adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark);
+        return imp.productGroupPromotionsListHttp(request, adAccountId, bookmark, pageSize, order, productGroupPromotionIds, entityStatuses, adGroupId);
     }
 
     @ApiAction
     public Result productGroupPromotionsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeproductGroupPromotionUpdateRequest = request.body().asJson();
-        ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest;
-        if (nodeproductGroupPromotionUpdateRequest != null) {
-            productGroupPromotionUpdateRequest = mapper.readValue(nodeproductGroupPromotionUpdateRequest.toString(), ProductGroupPromotionUpdateRequest.class);
+        JsonNode nodeproductGroupPromotionsUpdateWithRequiredBody = request.body().asJson();
+        ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody;
+        if (nodeproductGroupPromotionsUpdateWithRequiredBody != null) {
+            productGroupPromotionsUpdateWithRequiredBody = mapper.readValue(nodeproductGroupPromotionsUpdateWithRequiredBody.toString(), ProductGroupPromotionsUpdateWithRequiredBody.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(productGroupPromotionUpdateRequest);
+                OpenAPIUtils.validate(productGroupPromotionsUpdateWithRequiredBody);
             }
         } else {
-            throw new IllegalArgumentException("'ProductGroupPromotionUpdateRequest' parameter is required");
+            throw new IllegalArgumentException("'ProductGroupPromotionsUpdateWithRequiredBody' parameter is required");
         }
-        return imp.productGroupPromotionsUpdateHttp(request, adAccountId, productGroupPromotionUpdateRequest);
+        return imp.productGroupPromotionsUpdateHttp(request, adAccountId, productGroupPromotionsUpdateWithRequiredBody);
     }
 
     @ApiAction
@@ -165,7 +169,7 @@ public class ProductGroupPromotionsApiController extends Controller {
             throw new IllegalArgumentException("'columns' parameter is required");
         }
         List<String> columnsList = OpenAPIUtils.parametersToList("csv", columnsArray);
-        List<String> columns = new ArrayList<>();
+        List<ReportingColumnSync> columns = new ArrayList<>();
         for (String curParam : columnsList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -180,23 +184,23 @@ public class ProductGroupPromotionsApiController extends Controller {
             throw new IllegalArgumentException("'granularity' parameter is required");
         }
         String valueclickWindowDays = request.getQueryString("click_window_days");
-        Integer clickWindowDays;
+        BigDecimal clickWindowDays;
         if (valueclickWindowDays != null) {
-            clickWindowDays = Integer.parseInt(valueclickWindowDays);
+            clickWindowDays = new BigDecimal(valueclickWindowDays);
         } else {
             clickWindowDays = 30;
         }
         String valueengagementWindowDays = request.getQueryString("engagement_window_days");
-        Integer engagementWindowDays;
+        BigDecimal engagementWindowDays;
         if (valueengagementWindowDays != null) {
-            engagementWindowDays = Integer.parseInt(valueengagementWindowDays);
+            engagementWindowDays = new BigDecimal(valueengagementWindowDays);
         } else {
             engagementWindowDays = 30;
         }
         String valueviewWindowDays = request.getQueryString("view_window_days");
-        Integer viewWindowDays;
+        BigDecimal viewWindowDays;
         if (valueviewWindowDays != null) {
-            viewWindowDays = Integer.parseInt(valueviewWindowDays);
+            viewWindowDays = new BigDecimal(valueviewWindowDays);
         } else {
             viewWindowDays = 1;
         }
@@ -214,7 +218,7 @@ public class ProductGroupPromotionsApiController extends Controller {
         } else {
             reportingTimezone = null;
         }
-        return imp.productGroupsAnalyticsHttp(request, adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone);
+        return imp.productGroupsAnalyticsHttp(request, startDate, endDate, productGroupIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone);
     }
 
 }

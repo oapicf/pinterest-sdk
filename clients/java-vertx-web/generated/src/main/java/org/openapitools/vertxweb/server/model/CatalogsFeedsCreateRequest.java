@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
 import org.openapitools.vertxweb.server.model.CatalogsFeedCredentials;
 import org.openapitools.vertxweb.server.model.CatalogsFeedProcessingSchedule;
-import org.openapitools.vertxweb.server.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.vertxweb.server.model.CatalogsFormat;
 import org.openapitools.vertxweb.server.model.CatalogsStatus;
 import org.openapitools.vertxweb.server.model.Country;
@@ -24,18 +24,18 @@ public class CatalogsFeedsCreateRequest   {
   private ProductAvailabilityType defaultAvailability;
   private Country defaultCountry;
   private NullableCurrency defaultCurrency;
-  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  private CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale;
   private CatalogsFormat format;
   private String location;
   private String name;
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-  private CatalogsStatus status = "ACTIVE";
+  private CatalogsStatus status;
 
   public CatalogsFeedsCreateRequest () {
 
   }
 
-  public CatalogsFeedsCreateRequest (CatalogsFeedCredentials credentials, ProductAvailabilityType defaultAvailability, Country defaultCountry, NullableCurrency defaultCurrency, CatalogsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFormat format, String location, String name, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status) {
+  public CatalogsFeedsCreateRequest (CatalogsFeedCredentials credentials, ProductAvailabilityType defaultAvailability, Country defaultCountry, NullableCurrency defaultCurrency, CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFormat format, String location, String name, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status) {
     this.credentials = credentials;
     this.defaultAvailability = defaultAvailability;
     this.defaultCountry = defaultCountry;
@@ -86,10 +86,10 @@ public class CatalogsFeedsCreateRequest   {
 
     
   @JsonProperty("default_locale")
-  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+  public CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
   }
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public void setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
 
@@ -189,9 +189,6 @@ public class CatalogsFeedsCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

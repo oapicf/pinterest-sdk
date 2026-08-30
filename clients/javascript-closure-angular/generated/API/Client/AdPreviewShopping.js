@@ -1,6 +1,7 @@
 goog.provide('API.Client.AdPreviewShopping');
 
 /**
+ * Ad preview from a catalog product group (shopping).
  * @record
  */
 API.Client.AdPreviewShopping = function() {}
@@ -14,7 +15,7 @@ API.Client.AdPreviewShopping.prototype.catalogProductGroupId;
 
 /**
  * Ad format of the shopping ad preview.
- * @type {!string}
+ * @type {!API.Client.AdShoppingPreviewCreativeType}
  * @export
  */
 API.Client.AdPreviewShopping.prototype.creativeType;
@@ -63,10 +64,17 @@ API.Client.AdPreviewShopping.prototype.itemId;
 
 /**
  * Preferred media type.
- * @type {!string}
+ * @type {!API.Client.BasePreferredMediaType}
  * @export
  */
 API.Client.AdPreviewShopping.prototype.preferredMediaType;
+
+/**
+ * Include promotion data in preview when available on catalog item. Defaults to false.
+ * @type {!boolean}
+ * @export
+ */
+API.Client.AdPreviewShopping.prototype.showPromotion;
 
 /**
  * Multi video template tag, image_tag and video_tag are mutual exclusive.
@@ -75,15 +83,3 @@ API.Client.AdPreviewShopping.prototype.preferredMediaType;
  */
 API.Client.AdPreviewShopping.prototype.videoTag;
 
-/** @enum {string} */
-API.Client.AdPreviewShopping.CreativeTypeEnum = { 
-  SHOPPING: 'SHOPPING',
-  CAROUSEL: 'CAROUSEL',
-  COLLECTION: 'COLLECTION',
-  REGULAR: 'REGULAR',
-}
-/** @enum {string} */
-API.Client.AdPreviewShopping.PreferredMediaTypeEnum = { 
-  VIDEO: 'VIDEO',
-  IMAGE: 'IMAGE',
-}

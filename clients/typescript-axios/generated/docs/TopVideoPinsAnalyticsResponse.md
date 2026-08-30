@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**date_availability** | [**TopPinsAnalyticsResponseDateAvailability**](TopPinsAnalyticsResponseDateAvailability.md) |  | [optional] [default to undefined]
-**pins** | [**Array&lt;TopVideoPinsAnalyticsResponsePinsInner&gt;**](TopVideoPinsAnalyticsResponsePinsInner.md) |  | [optional] [default to undefined]
-**sort_by** | **string** |  | [optional] [default to undefined]
+**date_availability** | [**TopVideoPinsAnalyticsResponseDateAvailability**](TopVideoPinsAnalyticsResponseDateAvailability.md) |  | [optional] [default to undefined]
+**pins** | [**Array&lt;TopVideoPinsAnalyticsResponsePinsItems&gt;**](TopVideoPinsAnalyticsResponsePinsItems.md) |  | [optional] [default to undefined]
+**sort_by** | [**TopVideoPinsSortBy**](TopVideoPinsSortBy.md) |  | [optional] [default to undefined]
 
 ## Example
 

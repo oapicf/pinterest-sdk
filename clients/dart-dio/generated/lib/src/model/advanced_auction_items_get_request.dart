@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/advanced_auction_key.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/advanced_auction_items_get_record.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -23,7 +23,7 @@ abstract class AdvancedAuctionItemsGetRequest implements Built<AdvancedAuctionIt
 
   /// A list of retail catalog items to fetch bid options for
   @BuiltValueField(wireName: r'items')
-  BuiltList<AdvancedAuctionItemsGetRecord> get items;
+  BuiltList<AdvancedAuctionKey> get items;
 
   AdvancedAuctionItemsGetRequest._();
 
@@ -56,7 +56,7 @@ class _$AdvancedAuctionItemsGetRequestSerializer implements PrimitiveSerializer<
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(AdvancedAuctionItemsGetRecord)]),
+      specifiedType: const FullType(BuiltList, [FullType(AdvancedAuctionKey)]),
     );
   }
 
@@ -91,8 +91,8 @@ class _$AdvancedAuctionItemsGetRequestSerializer implements PrimitiveSerializer<
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AdvancedAuctionItemsGetRecord)]),
-          ) as BuiltList<AdvancedAuctionItemsGetRecord>;
+            specifiedType: const FullType(BuiltList, [FullType(AdvancedAuctionKey)]),
+          ) as BuiltList<AdvancedAuctionKey>;
           result.items.replace(valueDes);
           break;
         default:

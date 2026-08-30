@@ -20,11 +20,11 @@ Method | HTTP request | Description
 
 ## adsCreditRedeem
 
-> AdsCreditRedeemResponse adsCreditRedeem(adAccountId, adsCreditRedeemRequest)
+> AdsCreditRedeem adsCreditRedeem(adAccountId, adsCreditRedeemCreate)
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -34,9 +34,9 @@ Redeem ads credit on behalf of the ad account id and apply it towards billing.  
 
 BillingApi apiInstance = new BillingApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-AdsCreditRedeemRequest adsCreditRedeemRequest = new AdsCreditRedeemRequest(); // AdsCreditRedeemRequest | Redeem ad credits request.
+AdsCreditRedeemCreate adsCreditRedeemCreate = new AdsCreditRedeemCreate(); // AdsCreditRedeemCreate | 
 try {
-    AdsCreditRedeemResponse result = apiInstance.adsCreditRedeem(adAccountId, adsCreditRedeemRequest);
+    AdsCreditRedeem result = apiInstance.adsCreditRedeem(adAccountId, adsCreditRedeemCreate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BillingApi#adsCreditRedeem");
@@ -50,11 +50,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **adsCreditRedeemRequest** | [**AdsCreditRedeemRequest**](AdsCreditRedeemRequest.md)| Redeem ad credits request. |
+ **adsCreditRedeemCreate** | [**AdsCreditRedeemCreate**](AdsCreditRedeemCreate.md)|  |
 
 ### Return type
 
-[**AdsCreditRedeemResponse**](AdsCreditRedeemResponse.md)
+[**AdsCreditRedeem**](AdsCreditRedeem.md)
 
 ### Authorization
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -83,7 +83,7 @@ Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoi
 BillingApi apiInstance = new BillingApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
     AdsCreditsDiscountsGet200Response result = apiInstance.adsCreditsDiscountsGet(adAccountId, bookmark, pageSize);
     System.out.println(result);
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 ## billingInvoicesGet
 
-> BillingInvoicesGet200Response billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
+> BillingInvoicesGet200Response billingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate)
 
 Get billing invoices
 
@@ -181,15 +181,15 @@ Get billing invoices in the advertiser account.
 BillingApi apiInstance = new BillingApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-String sort = DUE_DATE; // String | Field of which to sort billing invoices
-String order = ASCENDING; // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-String status = OPEN; // String | Status of billing invoices to filter by
-String documentType = INVOICE; // String | Document type of billing invoices to filter by
-Date startDueDate = Sun Jan 01 00:00:00 UTC 2023; // Date | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
-Date endDueDate = Mon Jan 01 00:00:00 UTC 2024; // Date | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+PinterestLibPaginationOrder order = null; // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+BillingInvoiceSortField sort = null; // BillingInvoiceSortField | Field of which to sort billing invoices
+BillingInvoiceStatus status = null; // BillingInvoiceStatus | Status of billing invoices to filter by
+BillingInvoiceDocumentType documentType = null; // BillingInvoiceDocumentType | Document type of billing invoices to filter by
+Date startDueDate = null; // Date | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+Date endDueDate = null; // Date | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
 try {
-    BillingInvoicesGet200Response result = apiInstance.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate);
+    BillingInvoicesGet200Response result = apiInstance.billingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BillingApi#billingInvoicesGet");
@@ -204,11 +204,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **sort** | **String**| Field of which to sort billing invoices | [optional] [default to DUE_DATE] [enum: DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING]
- **status** | **String**| Status of billing invoices to filter by | [optional] [default to null] [enum: OPEN, CLOSED]
- **documentType** | **String**| Document type of billing invoices to filter by | [optional] [default to null] [enum: INVOICE, CREDIT_MEMO]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING]
+ **sort** | [**BillingInvoiceSortField**](.md)| Field of which to sort billing invoices | [optional] [default to null] [enum: DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER]
+ **status** | [**BillingInvoiceStatus**](.md)| Status of billing invoices to filter by | [optional] [default to null] [enum: OPEN, CLOSED]
+ **documentType** | [**BillingInvoiceDocumentType**](.md)| Document type of billing invoices to filter by | [optional] [default to null] [enum: INVOICE, CREDIT_MEMO]
  **startDueDate** | **Date**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] [default to null]
  **endDueDate** | **Date**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] [default to null]
 
@@ -228,11 +228,11 @@ Name | Type | Description  | Notes
 
 ## billingProfilesGet
 
-> BillingProfilesGet200Response billingProfilesGet(adAccountId, isActive, bookmark, pageSize)
+> BillingProfilesGet200Response billingProfilesGet(isActive, adAccountId, bookmark, pageSize)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -241,12 +241,12 @@ Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint mig
 //import org.openapitools.client.api.BillingApi;
 
 BillingApi apiInstance = new BillingApi();
-String adAccountId = null; // String | Unique identifier of an ad account.
 Boolean isActive = null; // Boolean | Return active billing profiles, if false return all billing profiles.
+String adAccountId = null; // String | Unique identifier of an ad account.
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    BillingProfilesGet200Response result = apiInstance.billingProfilesGet(adAccountId, isActive, bookmark, pageSize);
+    BillingProfilesGet200Response result = apiInstance.billingProfilesGet(isActive, adAccountId, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BillingApi#billingProfilesGet");
@@ -259,10 +259,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
  **isActive** | **Boolean**| Return active billing profiles, if false return all billing profiles. | [default to null]
+ **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -280,11 +280,11 @@ Name | Type | Description  | Notes
 
 ## ssioAccountsGet
 
-> SSIOAccountResponse ssioAccountsGet(adAccountId)
+> SSIOAccount ssioAccountsGet(adAccountId)
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -295,7 +295,7 @@ Get Salesforce account details including bill-to information to be used in inser
 BillingApi apiInstance = new BillingApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
 try {
-    SSIOAccountResponse result = apiInstance.ssioAccountsGet(adAccountId);
+    SSIOAccount result = apiInstance.ssioAccountsGet(adAccountId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BillingApi#ssioAccountsGet");
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SSIOAccountResponse**](SSIOAccountResponse.md)
+[**SSIOAccount**](SSIOAccount.md)
 
 ### Authorization
 
@@ -326,11 +326,11 @@ Name | Type | Description  | Notes
 
 ## ssioInsertionOrderCreate
 
-> SSIOCreateInsertionOrderResponse ssioInsertionOrderCreate(adAccountId, sSIOCreateInsertionOrderRequest)
+> SSIOInsertionOrder ssioInsertionOrderCreate(adAccountId, sSIOInsertionOrderCreate)
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -340,9 +340,9 @@ Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. 
 
 BillingApi apiInstance = new BillingApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-SSIOCreateInsertionOrderRequest sSIOCreateInsertionOrderRequest = new SSIOCreateInsertionOrderRequest(); // SSIOCreateInsertionOrderRequest | Order line to create.
+SSIOInsertionOrderCreate sSIOInsertionOrderCreate = new SSIOInsertionOrderCreate(); // SSIOInsertionOrderCreate | 
 try {
-    SSIOCreateInsertionOrderResponse result = apiInstance.ssioInsertionOrderCreate(adAccountId, sSIOCreateInsertionOrderRequest);
+    SSIOInsertionOrder result = apiInstance.ssioInsertionOrderCreate(adAccountId, sSIOInsertionOrderCreate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BillingApi#ssioInsertionOrderCreate");
@@ -356,11 +356,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **sSIOCreateInsertionOrderRequest** | [**SSIOCreateInsertionOrderRequest**](SSIOCreateInsertionOrderRequest.md)| Order line to create. |
+ **sSIOInsertionOrderCreate** | [**SSIOInsertionOrderCreate**](SSIOInsertionOrderCreate.md)|  |
 
 ### Return type
 
-[**SSIOCreateInsertionOrderResponse**](SSIOCreateInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -374,11 +374,11 @@ Name | Type | Description  | Notes
 
 ## ssioInsertionOrderEdit
 
-> SSIOEditInsertionOrderResponse ssioInsertionOrderEdit(adAccountId, sSIOEditInsertionOrderRequest)
+> SSIOInsertionOrder ssioInsertionOrderEdit(adAccountId, sSIOInsertionOrderUpdate)
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -388,9 +388,9 @@ Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - 
 
 BillingApi apiInstance = new BillingApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-SSIOEditInsertionOrderRequest sSIOEditInsertionOrderRequest = new SSIOEditInsertionOrderRequest(); // SSIOEditInsertionOrderRequest | Order line to create.
+SSIOInsertionOrderUpdate sSIOInsertionOrderUpdate = new SSIOInsertionOrderUpdate(); // SSIOInsertionOrderUpdate | 
 try {
-    SSIOEditInsertionOrderResponse result = apiInstance.ssioInsertionOrderEdit(adAccountId, sSIOEditInsertionOrderRequest);
+    SSIOInsertionOrder result = apiInstance.ssioInsertionOrderEdit(adAccountId, sSIOInsertionOrderUpdate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BillingApi#ssioInsertionOrderEdit");
@@ -404,11 +404,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **sSIOEditInsertionOrderRequest** | [**SSIOEditInsertionOrderRequest**](SSIOEditInsertionOrderRequest.md)| Order line to create. |
+ **sSIOInsertionOrderUpdate** | [**SSIOInsertionOrderUpdate**](SSIOInsertionOrderUpdate.md)|  |
 
 ### Return type
 
-[**SSIOEditInsertionOrderResponse**](SSIOEditInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -426,7 +426,7 @@ Name | Type | Description  | Notes
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -437,7 +437,7 @@ Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;
 BillingApi apiInstance = new BillingApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
     SsioInsertionOrdersStatusGetByAdAccount200Response result = apiInstance.ssioInsertionOrdersStatusGetByAdAccount(adAccountId, bookmark, pageSize);
     System.out.println(result);
@@ -454,7 +454,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -476,7 +476,7 @@ Name | Type | Description  | Notes
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -486,7 +486,7 @@ Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt
 
 BillingApi apiInstance = new BillingApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-String pinOrderId = 0Q01N0000015hekSVDFDC; // String | The pin order id associated with the ssio insertion order
+String pinOrderId = null; // String | The pin order id associated with the ssio insertion order
 try {
     SSIOInsertionOrderStatusResponse result = apiInstance.ssioInsertionOrdersStatusGetByPinOrderId(adAccountId, pinOrderId);
     System.out.println(result);
@@ -520,11 +520,11 @@ Name | Type | Description  | Notes
 
 ## ssioOrderLinesGetByAdAccount
 
-> SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId)
+> SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize)
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -534,11 +534,11 @@ Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;
 
 BillingApi apiInstance = new BillingApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
+String pinOrderId = null; // String | The pin order id associated with the SSIO insertion order
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-String pinOrderId = 0Q01N0000015hekSVDFDC; // String | The pin order id associated with the ssio insertino order
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    SsioOrderLinesGetByAdAccount200Response result = apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId);
+    SsioOrderLinesGetByAdAccount200Response result = apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BillingApi#ssioOrderLinesGetByAdAccount");
@@ -552,9 +552,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
+ **pinOrderId** | **String**| The pin order id associated with the SSIO insertion order | [optional] [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **pinOrderId** | **String**| The pin order id associated with the ssio insertino order | [optional] [default to null]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

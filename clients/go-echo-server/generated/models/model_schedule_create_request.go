@@ -1,0 +1,25 @@
+package models
+
+type ScheduleCreateRequest struct {
+
+	EntityId string `json:"entity_id" validate:"regexp=^[C]?\\d+$"`
+
+	// Entity type
+	EntityType string `json:"entity_type"`
+
+	DeltaValue ScheduleCommonDeltaValue `json:"delta_value"`
+
+	// Schedule end time. Unix timestamp in seconds.
+	EndTimestamp int32 `json:"end_timestamp"`
+
+	Name string `json:"name"`
+
+	ScheduleAction ScheduleAction `json:"schedule_action"`
+
+	ScheduleStatus ScheduleStatus `json:"schedule_status"`
+
+	ScheduleType ScheduleType `json:"schedule_type"`
+
+	// Schedule start time. Unix timestamp in seconds.
+	StartTimestamp int32 `json:"start_timestamp"`
+}

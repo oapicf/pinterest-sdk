@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsCreativeAssetsProductGroupFiltersAnyOf(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("any_of")
     @get:JsonProperty("any_of", required = true) val anyOf: kotlin.collections.List<CatalogsCreativeAssetsProductGroupFilterKeys>
 ) {
 

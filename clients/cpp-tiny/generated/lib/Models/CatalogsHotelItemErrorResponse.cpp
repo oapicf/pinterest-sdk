@@ -6,9 +6,10 @@ using namespace Tiny;
 
 CatalogsHotelItemErrorResponse::CatalogsHotelItemErrorResponse()
 {
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
 	errors = std::list<ItemValidationEvent>();
 	hotel_id = std::string();
+	item_response_kind = std::string();
 }
 
 CatalogsHotelItemErrorResponse::CatalogsHotelItemErrorResponse(std::string jsonString)
@@ -34,9 +35,8 @@ CatalogsHotelItemErrorResponse::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -75,6 +75,19 @@ CatalogsHotelItemErrorResponse::fromJson(std::string jsonObj)
 
     }
 
+    const char *item_response_kindKey = "item_response_kind";
+
+    if(object.has_key(item_response_kindKey))
+    {
+        bourne::json value = object[item_response_kindKey];
+
+
+
+        jsonToValue(&item_response_kind, value, "std::string");
+
+
+    }
+
 
 }
 
@@ -87,8 +100,8 @@ CatalogsHotelItemErrorResponse::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -113,18 +126,25 @@ CatalogsHotelItemErrorResponse::toJson()
 
 
 
+
+
+
+    object["item_response_kind"] = getItemResponseKind();
+
+
+
     return object;
 
 }
 
-CatalogsType
+std::string
 CatalogsHotelItemErrorResponse::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsHotelItemErrorResponse::setCatalogType(CatalogsType  catalog_type)
+CatalogsHotelItemErrorResponse::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -136,7 +156,7 @@ CatalogsHotelItemErrorResponse::getErrors()
 }
 
 void
-CatalogsHotelItemErrorResponse::setErrors(std::list <ItemValidationEvent> errors)
+CatalogsHotelItemErrorResponse::setErrors(std::list<ItemValidationEvent> errors)
 {
 	this->errors = errors;
 }
@@ -148,9 +168,21 @@ CatalogsHotelItemErrorResponse::getHotelId()
 }
 
 void
-CatalogsHotelItemErrorResponse::setHotelId(std::string  hotel_id)
+CatalogsHotelItemErrorResponse::setHotelId(std::string hotel_id)
 {
 	this->hotel_id = hotel_id;
+}
+
+std::string
+CatalogsHotelItemErrorResponse::getItemResponseKind()
+{
+	return item_response_kind;
+}
+
+void
+CatalogsHotelItemErrorResponse::setItemResponseKind(std::string item_response_kind)
+{
+	this->item_response_kind = item_response_kind;
 }
 
 

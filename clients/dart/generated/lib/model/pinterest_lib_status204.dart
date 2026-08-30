@@ -47,10 +47,8 @@ class PinterestLibStatus204 {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PinterestLibStatus204[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PinterestLibStatus204[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'statusCode'), 'Required key "PinterestLibStatus204[statusCode]" is missing from JSON.');
+        assert(json[r'statusCode'] != null, 'Required key "PinterestLibStatus204[statusCode]" has a null value in JSON.');
         return true;
       }());
 
@@ -108,27 +106,28 @@ class PinterestLibStatus204 {
 }
 
 
-class PinterestLibStatus204StatusCodeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const PinterestLibStatus204StatusCodeEnum._(this.value);
+enum PinterestLibStatus204StatusCodeEnum {
+  n204._('204'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const PinterestLibStatus204StatusCodeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final num value;
+  final num _value;
 
   @override
-  String toString() => value.toString();
+  String toString() => _value.toString();
 
-  num toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  num toJson() => _value;
 
-  static const n204 = PinterestLibStatus204StatusCodeEnum._('204');
-
-  /// List of all possible values in this [enum][PinterestLibStatus204StatusCodeEnum].
-  static const values = <PinterestLibStatus204StatusCodeEnum>[
-    n204,
-  ];
-
+  /// Returns the instance of [PinterestLibStatus204StatusCodeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static PinterestLibStatus204StatusCodeEnum? fromJson(dynamic value) => PinterestLibStatus204StatusCodeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [PinterestLibStatus204StatusCodeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<PinterestLibStatus204StatusCodeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PinterestLibStatus204StatusCodeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -150,9 +149,10 @@ class PinterestLibStatus204StatusCodeEnumTypeTransformer {
 
   const PinterestLibStatus204StatusCodeEnumTypeTransformer._();
 
-  num encode(PinterestLibStatus204StatusCodeEnum data) => data.value;
+  num encode(PinterestLibStatus204StatusCodeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a PinterestLibStatus204StatusCodeEnum.
+  /// Returns the instance of [PinterestLibStatus204StatusCodeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -161,6 +161,9 @@ class PinterestLibStatus204StatusCodeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   PinterestLibStatus204StatusCodeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is PinterestLibStatus204StatusCodeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case '204': return PinterestLibStatus204StatusCodeEnum.n204;
@@ -173,7 +176,7 @@ class PinterestLibStatus204StatusCodeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [PinterestLibStatus204StatusCodeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static PinterestLibStatus204StatusCodeEnumTypeTransformer? _instance;
 }
 

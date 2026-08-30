@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -21,7 +26,7 @@ type SummaryPin struct {
 
 	Description *string `json:"description,omitempty"`
 
-	Id string `json:"id,omitempty"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
 	Link *string `json:"link,omitempty"`
 
@@ -29,19 +34,96 @@ type SummaryPin struct {
 
 	Title *string `json:"title,omitempty"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into SummaryPin
+func (o *SummaryPin) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"id",
+	}
 
-// AssertSummaryPinRequired checks if the required fields are not zero-ed
-func AssertSummaryPinRequired(obj SummaryPin) error {
-	if err := AssertPinMediaRequired(obj.Media); err != nil {
+	requiredNullableProperties := map[string]bool{
+		"id": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"alt_text": {},
+		"description": {},
+		"id": {},
+		"link": {},
+		"media": {},
+		"title": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
 		return err
 	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded SummaryPin
+
+	if value, exists := allProperties["alt_text"]; exists {
+		if err = json.Unmarshal(value, &decoded.AltText); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["description"]; exists {
+		if err = json.Unmarshal(value, &decoded.Description); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["link"]; exists {
+		if err = json.Unmarshal(value, &decoded.Link); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["media"]; exists {
+		if err = json.Unmarshal(value, &decoded.Media); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["title"]; exists {
+		if err = json.Unmarshal(value, &decoded.Title); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertSummaryPinRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertSummaryPinRequired(obj SummaryPin) error {
 	return nil
 }
 
 // AssertSummaryPinConstraints checks if the values respects the defined constraints
 func AssertSummaryPinConstraints(obj SummaryPin) error {
-	if err := AssertPinMediaConstraints(obj.Media); err != nil {
-		return err
-	}
 	return nil
 }

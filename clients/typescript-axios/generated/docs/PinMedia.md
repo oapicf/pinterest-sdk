@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **duration** | **number** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] [default to undefined]
 **height** | **number** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] [default to undefined]
 **video_url** | **string** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] [default to undefined]
+**video_url_hls** | **string** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] [default to undefined]
 **width** | **number** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] [default to undefined]
 **items** | [**Array&lt;PinMediaMetadata&gt;**](PinMediaMetadata.md) |  | [optional] [default to undefined]
 
@@ -27,6 +28,7 @@ const instance: PinMedia = {
     duration,
     height,
     video_url,
+    video_url_hls,
     width,
     items,
 };

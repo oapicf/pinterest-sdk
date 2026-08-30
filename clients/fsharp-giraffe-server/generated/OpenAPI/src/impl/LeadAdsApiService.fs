@@ -17,6 +17,9 @@ module LeadAdsApiServiceImplementation =
 
         member this.AdAccountsSubscriptionsDelById ctx args =
           if true then
+            let content = "The request has succeeded." :> obj :?> LeadSubscription // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            AdAccountsSubscriptionsDelByIdStatusCode200 { content = content }
+          else if true then
             let content = "Resource deleted successfully." 
             AdAccountsSubscriptionsDelByIdStatusCode204 { content = content }
           else if true then

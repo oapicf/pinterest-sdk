@@ -17,5 +17,9 @@ The class is defined in **[MMMReportingTargetingType.java](../../src/main/java/o
 
 * `LOCATION` (value: `"LOCATION"`)
 
+* `PLACEMENT` (value: `"PLACEMENT"`)
+
+* `AUDIENCE_INCLUDE` (value: `"AUDIENCE_INCLUDE"`)
+
 
 

@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set Response object of item bid options
 	 */
-	void setCatalogId(std::string  catalog_id);
+	void setCatalogId(std::string catalog_id);
 	/*! \brief Get Array with item bid options
 	 */
 	std::list<AdvancedAuctionItem> getItems();
 
 	/*! \brief Set Array with item bid options
 	 */
-	void setItems(std::list <AdvancedAuctionItem> items);
+	void setItems(std::list<AdvancedAuctionItem> items);
 
 
     private:

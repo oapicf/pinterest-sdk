@@ -19,20 +19,23 @@ static ad_create_request_t *ad_create_request_create_internal(
     char *disclosure_url,
     pinterest_rest_api_grid_click_type__e grid_click_type,
     char *ios_deep_link,
-    int is_pin_deleted,
-    int is_removable,
+    int *is_carting,
+    int *is_pin_deleted,
+    int *is_removable,
     char *lead_form_id,
     char *name,
-    quiz_pin_data_t *quiz_pin_data,
+    char *pin_id,
+    object_t *quiz_pin_data,
     pinterest_rest_api_entity_status__e status,
-    tracking_urls_t *tracking_urls,
-    char *view_tracking_url,
-    char *pin_id
+    object_t *tracking_urls,
+    char *view_tracking_url
     ) {
     ad_create_request_t *ad_create_request_local_var = malloc(sizeof(ad_create_request_t));
     if (!ad_create_request_local_var) {
         return NULL;
     }
+    memset(ad_create_request_local_var, 0, sizeof(ad_create_request_t));
+    ad_create_request_local_var->_library_owned = 1;
     ad_create_request_local_var->ad_group_id = ad_group_id;
     ad_create_request_local_var->android_deep_link = android_deep_link;
     ad_create_request_local_var->carousel_android_deep_links = carousel_android_deep_links;
@@ -46,17 +49,16 @@ static ad_create_request_t *ad_create_request_create_internal(
     ad_create_request_local_var->disclosure_url = disclosure_url;
     ad_create_request_local_var->grid_click_type = grid_click_type;
     ad_create_request_local_var->ios_deep_link = ios_deep_link;
+    ad_create_request_local_var->is_carting = is_carting;
     ad_create_request_local_var->is_pin_deleted = is_pin_deleted;
     ad_create_request_local_var->is_removable = is_removable;
     ad_create_request_local_var->lead_form_id = lead_form_id;
     ad_create_request_local_var->name = name;
+    ad_create_request_local_var->pin_id = pin_id;
     ad_create_request_local_var->quiz_pin_data = quiz_pin_data;
     ad_create_request_local_var->status = status;
     ad_create_request_local_var->tracking_urls = tracking_urls;
     ad_create_request_local_var->view_tracking_url = view_tracking_url;
-    ad_create_request_local_var->pin_id = pin_id;
-
-    ad_create_request_local_var->_library_owned = 1;
     return ad_create_request_local_var;
 }
 
@@ -74,17 +76,33 @@ __attribute__((deprecated)) ad_create_request_t *ad_create_request_create(
     char *disclosure_url,
     pinterest_rest_api_grid_click_type__e grid_click_type,
     char *ios_deep_link,
-    int is_pin_deleted,
-    int is_removable,
+    int *is_carting,
+    int *is_pin_deleted,
+    int *is_removable,
     char *lead_form_id,
     char *name,
-    quiz_pin_data_t *quiz_pin_data,
+    char *pin_id,
+    object_t *quiz_pin_data,
     pinterest_rest_api_entity_status__e status,
-    tracking_urls_t *tracking_urls,
-    char *view_tracking_url,
-    char *pin_id
+    object_t *tracking_urls,
+    char *view_tracking_url
     ) {
-    return ad_create_request_create_internal (
+    int *is_carting_copy = NULL;
+    if (is_carting) {
+        is_carting_copy = malloc(sizeof(int));
+        if (is_carting_copy) *is_carting_copy = *is_carting;
+    }
+    int *is_pin_deleted_copy = NULL;
+    if (is_pin_deleted) {
+        is_pin_deleted_copy = malloc(sizeof(int));
+        if (is_pin_deleted_copy) *is_pin_deleted_copy = *is_pin_deleted;
+    }
+    int *is_removable_copy = NULL;
+    if (is_removable) {
+        is_removable_copy = malloc(sizeof(int));
+        if (is_removable_copy) *is_removable_copy = *is_removable;
+    }
+    ad_create_request_t *result = ad_create_request_create_internal (
         ad_group_id,
         android_deep_link,
         carousel_android_deep_links,
@@ -98,16 +116,23 @@ __attribute__((deprecated)) ad_create_request_t *ad_create_request_create(
         disclosure_url,
         grid_click_type,
         ios_deep_link,
-        is_pin_deleted,
-        is_removable,
+        is_carting_copy,
+        is_pin_deleted_copy,
+        is_removable_copy,
         lead_form_id,
         name,
+        pin_id,
         quiz_pin_data,
         status,
         tracking_urls,
-        view_tracking_url,
-        pin_id
+        view_tracking_url
         );
+    if (!result) {
+        free(is_carting_copy);
+        free(is_pin_deleted_copy);
+        free(is_removable_copy);
+    }
+    return result;
 }
 
 void ad_create_request_free(ad_create_request_t *ad_create_request) {
@@ -164,6 +189,18 @@ void ad_create_request_free(ad_create_request_t *ad_create_request) {
         free(ad_create_request->ios_deep_link);
         ad_create_request->ios_deep_link = NULL;
     }
+    if (ad_create_request->is_carting) {
+        free(ad_create_request->is_carting);
+        ad_create_request->is_carting = NULL;
+    }
+    if (ad_create_request->is_pin_deleted) {
+        free(ad_create_request->is_pin_deleted);
+        ad_create_request->is_pin_deleted = NULL;
+    }
+    if (ad_create_request->is_removable) {
+        free(ad_create_request->is_removable);
+        ad_create_request->is_removable = NULL;
+    }
     if (ad_create_request->lead_form_id) {
         free(ad_create_request->lead_form_id);
         ad_create_request->lead_form_id = NULL;
@@ -172,21 +209,21 @@ void ad_create_request_free(ad_create_request_t *ad_create_request) {
         free(ad_create_request->name);
         ad_create_request->name = NULL;
     }
+    if (ad_create_request->pin_id) {
+        free(ad_create_request->pin_id);
+        ad_create_request->pin_id = NULL;
+    }
     if (ad_create_request->quiz_pin_data) {
-        quiz_pin_data_free(ad_create_request->quiz_pin_data);
+        object_free(ad_create_request->quiz_pin_data);
         ad_create_request->quiz_pin_data = NULL;
     }
     if (ad_create_request->tracking_urls) {
-        tracking_urls_free(ad_create_request->tracking_urls);
+        object_free(ad_create_request->tracking_urls);
         ad_create_request->tracking_urls = NULL;
     }
     if (ad_create_request->view_tracking_url) {
         free(ad_create_request->view_tracking_url);
         ad_create_request->view_tracking_url = NULL;
-    }
-    if (ad_create_request->pin_id) {
-        free(ad_create_request->pin_id);
-        ad_create_request->pin_id = NULL;
     }
     free(ad_create_request);
 }
@@ -347,9 +384,17 @@ cJSON *ad_create_request_convertToJSON(ad_create_request_t *ad_create_request) {
     }
 
 
+    // ad_create_request->is_carting
+    if(ad_create_request->is_carting) {
+    if(cJSON_AddBoolToObject(item, "is_carting", *ad_create_request->is_carting) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
     // ad_create_request->is_pin_deleted
     if(ad_create_request->is_pin_deleted) {
-    if(cJSON_AddBoolToObject(item, "is_pin_deleted", ad_create_request->is_pin_deleted) == NULL) {
+    if(cJSON_AddBoolToObject(item, "is_pin_deleted", *ad_create_request->is_pin_deleted) == NULL) {
     goto fail; //Bool
     }
     }
@@ -357,7 +402,7 @@ cJSON *ad_create_request_convertToJSON(ad_create_request_t *ad_create_request) {
 
     // ad_create_request->is_removable
     if(ad_create_request->is_removable) {
-    if(cJSON_AddBoolToObject(item, "is_removable", ad_create_request->is_removable) == NULL) {
+    if(cJSON_AddBoolToObject(item, "is_removable", *ad_create_request->is_removable) == NULL) {
     goto fail; //Bool
     }
     }
@@ -379,13 +424,22 @@ cJSON *ad_create_request_convertToJSON(ad_create_request_t *ad_create_request) {
     }
 
 
+    // ad_create_request->pin_id
+    if (!ad_create_request->pin_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "pin_id", ad_create_request->pin_id) == NULL) {
+    goto fail; //String
+    }
+
+
     // ad_create_request->quiz_pin_data
     if(ad_create_request->quiz_pin_data) {
-    cJSON *quiz_pin_data_local_JSON = quiz_pin_data_convertToJSON(ad_create_request->quiz_pin_data);
-    if(quiz_pin_data_local_JSON == NULL) {
+    cJSON *quiz_pin_data_object = object_convertToJSON(ad_create_request->quiz_pin_data);
+    if(quiz_pin_data_object == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "quiz_pin_data", quiz_pin_data_local_JSON);
+    cJSON_AddItemToObject(item, "quiz_pin_data", quiz_pin_data_object);
     if(item->child == NULL) {
     goto fail;
     }
@@ -407,11 +461,11 @@ cJSON *ad_create_request_convertToJSON(ad_create_request_t *ad_create_request) {
 
     // ad_create_request->tracking_urls
     if(ad_create_request->tracking_urls) {
-    cJSON *tracking_urls_local_JSON = tracking_urls_convertToJSON(ad_create_request->tracking_urls);
-    if(tracking_urls_local_JSON == NULL) {
+    cJSON *tracking_urls_object = object_convertToJSON(ad_create_request->tracking_urls);
+    if(tracking_urls_object == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "tracking_urls", tracking_urls_local_JSON);
+    cJSON_AddItemToObject(item, "tracking_urls", tracking_urls_object);
     if(item->child == NULL) {
     goto fail;
     }
@@ -423,15 +477,6 @@ cJSON *ad_create_request_convertToJSON(ad_create_request_t *ad_create_request) {
     if(cJSON_AddStringToObject(item, "view_tracking_url", ad_create_request->view_tracking_url) == NULL) {
     goto fail; //String
     }
-    }
-
-
-    // ad_create_request->pin_id
-    if (!ad_create_request->pin_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "pin_id", ad_create_request->pin_id) == NULL) {
-    goto fail; //String
     }
 
     return item;
@@ -446,6 +491,10 @@ ad_create_request_t *ad_create_request_parseFromJSON(cJSON *ad_create_requestJSO
 
     ad_create_request_t *ad_create_request_local_var = NULL;
 
+    char *ad_group_id_local_str = NULL;
+
+    char *android_deep_link_local_str = NULL;
+
     // define the local list for ad_create_request->carousel_android_deep_links
     list_t *carousel_android_deep_linksList = NULL;
 
@@ -455,26 +504,45 @@ ad_create_request_t *ad_create_request_parseFromJSON(cJSON *ad_create_requestJSO
     // define the local list for ad_create_request->carousel_ios_deep_links
     list_t *carousel_ios_deep_linksList = NULL;
 
+    char *click_tracking_url_local_str = NULL;
+
     // define the local variable for ad_create_request->creative_type
     pinterest_rest_api_creative_type__e creative_type_local_nonprim = 0;
 
     // define the local variable for ad_create_request->customizable_cta_type
     pinterest_rest_api_customizable_cta_type__e customizable_cta_type_local_nonprim = 0;
 
+    char *destination_url_local_str = NULL;
+
     // define the local variable for ad_create_request->disclosure_type
     pinterest_rest_api_disclosure_type__e disclosure_type_local_nonprim = 0;
+
+    char *disclosure_url_local_str = NULL;
 
     // define the local variable for ad_create_request->grid_click_type
     pinterest_rest_api_grid_click_type__e grid_click_type_local_nonprim = 0;
 
-    // define the local variable for ad_create_request->quiz_pin_data
-    quiz_pin_data_t *quiz_pin_data_local_nonprim = NULL;
+    char *ios_deep_link_local_str = NULL;
+
+    // define the local variable for ad_create_request->is_carting
+    int *is_carting_local_var = NULL;
+
+    // define the local variable for ad_create_request->is_pin_deleted
+    int *is_pin_deleted_local_var = NULL;
+
+    // define the local variable for ad_create_request->is_removable
+    int *is_removable_local_var = NULL;
+
+    char *lead_form_id_local_str = NULL;
+
+    char *name_local_str = NULL;
+
+    char *pin_id_local_str = NULL;
 
     // define the local variable for ad_create_request->status
     pinterest_rest_api_entity_status__e status_local_nonprim = 0;
 
-    // define the local variable for ad_create_request->tracking_urls
-    tracking_urls_t *tracking_urls_local_nonprim = NULL;
+    char *view_tracking_url_local_str = NULL;
 
     // ad_create_request->ad_group_id
     cJSON *ad_group_id = cJSON_GetObjectItemCaseSensitive(ad_create_requestJSON, "ad_group_id");
@@ -656,6 +724,24 @@ ad_create_request_t *ad_create_request_parseFromJSON(cJSON *ad_create_requestJSO
     }
     }
 
+    // ad_create_request->is_carting
+    cJSON *is_carting = cJSON_GetObjectItemCaseSensitive(ad_create_requestJSON, "is_carting");
+    if (cJSON_IsNull(is_carting)) {
+        is_carting = NULL;
+    }
+    if (is_carting) { 
+    if(!cJSON_IsBool(is_carting))
+    {
+    goto end; //Bool
+    }
+    is_carting_local_var = malloc(sizeof(int));
+    if(!is_carting_local_var)
+    {
+        goto end;
+    }
+    *is_carting_local_var = is_carting->valueint;
+    }
+
     // ad_create_request->is_pin_deleted
     cJSON *is_pin_deleted = cJSON_GetObjectItemCaseSensitive(ad_create_requestJSON, "is_pin_deleted");
     if (cJSON_IsNull(is_pin_deleted)) {
@@ -666,6 +752,12 @@ ad_create_request_t *ad_create_request_parseFromJSON(cJSON *ad_create_requestJSO
     {
     goto end; //Bool
     }
+    is_pin_deleted_local_var = malloc(sizeof(int));
+    if(!is_pin_deleted_local_var)
+    {
+        goto end;
+    }
+    *is_pin_deleted_local_var = is_pin_deleted->valueint;
     }
 
     // ad_create_request->is_removable
@@ -678,6 +770,12 @@ ad_create_request_t *ad_create_request_parseFromJSON(cJSON *ad_create_requestJSO
     {
     goto end; //Bool
     }
+    is_removable_local_var = malloc(sizeof(int));
+    if(!is_removable_local_var)
+    {
+        goto end;
+    }
+    *is_removable_local_var = is_removable->valueint;
     }
 
     // ad_create_request->lead_form_id
@@ -704,13 +802,29 @@ ad_create_request_t *ad_create_request_parseFromJSON(cJSON *ad_create_requestJSO
     }
     }
 
+    // ad_create_request->pin_id
+    cJSON *pin_id = cJSON_GetObjectItemCaseSensitive(ad_create_requestJSON, "pin_id");
+    if (cJSON_IsNull(pin_id)) {
+        pin_id = NULL;
+    }
+    if (!pin_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(pin_id))
+    {
+    goto end; //String
+    }
+
     // ad_create_request->quiz_pin_data
     cJSON *quiz_pin_data = cJSON_GetObjectItemCaseSensitive(ad_create_requestJSON, "quiz_pin_data");
     if (cJSON_IsNull(quiz_pin_data)) {
         quiz_pin_data = NULL;
     }
+    object_t *quiz_pin_data_local_object = NULL;
     if (quiz_pin_data) { 
-    quiz_pin_data_local_nonprim = quiz_pin_data_parseFromJSON(quiz_pin_data); //nonprimitive
+    quiz_pin_data_local_object = object_parseFromJSON(quiz_pin_data); //object
     }
 
     // ad_create_request->status
@@ -727,8 +841,9 @@ ad_create_request_t *ad_create_request_parseFromJSON(cJSON *ad_create_requestJSO
     if (cJSON_IsNull(tracking_urls)) {
         tracking_urls = NULL;
     }
+    object_t *tracking_urls_local_object = NULL;
     if (tracking_urls) { 
-    tracking_urls_local_nonprim = tracking_urls_parseFromJSON(tracking_urls); //nonprimitive
+    tracking_urls_local_object = object_parseFromJSON(tracking_urls); //object
     }
 
     // ad_create_request->view_tracking_url
@@ -743,49 +858,58 @@ ad_create_request_t *ad_create_request_parseFromJSON(cJSON *ad_create_requestJSO
     }
     }
 
-    // ad_create_request->pin_id
-    cJSON *pin_id = cJSON_GetObjectItemCaseSensitive(ad_create_requestJSON, "pin_id");
-    if (cJSON_IsNull(pin_id)) {
-        pin_id = NULL;
-    }
-    if (!pin_id) {
-        goto end;
-    }
 
-    
-    if(!cJSON_IsString(pin_id))
-    {
-    goto end; //String
-    }
-
+    if (ad_group_id && !cJSON_IsNull(ad_group_id)) ad_group_id_local_str = strdup(ad_group_id->valuestring);
+    if (android_deep_link && !cJSON_IsNull(android_deep_link)) android_deep_link_local_str = strdup(android_deep_link->valuestring);
+    if (click_tracking_url && !cJSON_IsNull(click_tracking_url)) click_tracking_url_local_str = strdup(click_tracking_url->valuestring);
+    if (destination_url && !cJSON_IsNull(destination_url)) destination_url_local_str = strdup(destination_url->valuestring);
+    if (disclosure_url && !cJSON_IsNull(disclosure_url)) disclosure_url_local_str = strdup(disclosure_url->valuestring);
+    if (ios_deep_link && !cJSON_IsNull(ios_deep_link)) ios_deep_link_local_str = strdup(ios_deep_link->valuestring);
+    if (lead_form_id && !cJSON_IsNull(lead_form_id)) lead_form_id_local_str = strdup(lead_form_id->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (pin_id && !cJSON_IsNull(pin_id)) pin_id_local_str = strdup(pin_id->valuestring);
+    if (view_tracking_url && !cJSON_IsNull(view_tracking_url)) view_tracking_url_local_str = strdup(view_tracking_url->valuestring);
 
     ad_create_request_local_var = ad_create_request_create_internal (
-        strdup(ad_group_id->valuestring),
-        android_deep_link && !cJSON_IsNull(android_deep_link) ? strdup(android_deep_link->valuestring) : NULL,
+        ad_group_id_local_str,
+        android_deep_link_local_str,
         carousel_android_deep_links ? carousel_android_deep_linksList : NULL,
         carousel_destination_urls ? carousel_destination_urlsList : NULL,
         carousel_ios_deep_links ? carousel_ios_deep_linksList : NULL,
-        click_tracking_url && !cJSON_IsNull(click_tracking_url) ? strdup(click_tracking_url->valuestring) : NULL,
+        click_tracking_url_local_str,
         creative_type_local_nonprim,
         customizable_cta_type ? customizable_cta_type_local_nonprim : 0,
-        destination_url && !cJSON_IsNull(destination_url) ? strdup(destination_url->valuestring) : NULL,
+        destination_url_local_str,
         disclosure_type ? disclosure_type_local_nonprim : 0,
-        disclosure_url && !cJSON_IsNull(disclosure_url) ? strdup(disclosure_url->valuestring) : NULL,
+        disclosure_url_local_str,
         grid_click_type ? grid_click_type_local_nonprim : 0,
-        ios_deep_link && !cJSON_IsNull(ios_deep_link) ? strdup(ios_deep_link->valuestring) : NULL,
-        is_pin_deleted ? is_pin_deleted->valueint : 0,
-        is_removable ? is_removable->valueint : 0,
-        lead_form_id && !cJSON_IsNull(lead_form_id) ? strdup(lead_form_id->valuestring) : NULL,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        quiz_pin_data ? quiz_pin_data_local_nonprim : NULL,
+        ios_deep_link_local_str,
+        is_carting_local_var,
+        is_pin_deleted_local_var,
+        is_removable_local_var,
+        lead_form_id_local_str,
+        name_local_str,
+        pin_id_local_str,
+        quiz_pin_data ? quiz_pin_data_local_object : NULL,
         status ? status_local_nonprim : 0,
-        tracking_urls ? tracking_urls_local_nonprim : NULL,
-        view_tracking_url && !cJSON_IsNull(view_tracking_url) ? strdup(view_tracking_url->valuestring) : NULL,
-        strdup(pin_id->valuestring)
+        tracking_urls ? tracking_urls_local_object : NULL,
+        view_tracking_url_local_str
         );
+
+    if (!ad_create_request_local_var) {
+        goto end;
+    }
 
     return ad_create_request_local_var;
 end:
+    if (ad_group_id_local_str) {
+        free(ad_group_id_local_str);
+        ad_group_id_local_str = NULL;
+    }
+    if (android_deep_link_local_str) {
+        free(android_deep_link_local_str);
+        android_deep_link_local_str = NULL;
+    }
     if (carousel_android_deep_linksList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, carousel_android_deep_linksList) {
@@ -813,28 +937,64 @@ end:
         list_freeList(carousel_ios_deep_linksList);
         carousel_ios_deep_linksList = NULL;
     }
+    if (click_tracking_url_local_str) {
+        free(click_tracking_url_local_str);
+        click_tracking_url_local_str = NULL;
+    }
     if (creative_type_local_nonprim) {
         creative_type_local_nonprim = 0;
     }
     if (customizable_cta_type_local_nonprim) {
         customizable_cta_type_local_nonprim = 0;
     }
+    if (destination_url_local_str) {
+        free(destination_url_local_str);
+        destination_url_local_str = NULL;
+    }
     if (disclosure_type_local_nonprim) {
         disclosure_type_local_nonprim = 0;
+    }
+    if (disclosure_url_local_str) {
+        free(disclosure_url_local_str);
+        disclosure_url_local_str = NULL;
     }
     if (grid_click_type_local_nonprim) {
         grid_click_type_local_nonprim = 0;
     }
-    if (quiz_pin_data_local_nonprim) {
-        quiz_pin_data_free(quiz_pin_data_local_nonprim);
-        quiz_pin_data_local_nonprim = NULL;
+    if (ios_deep_link_local_str) {
+        free(ios_deep_link_local_str);
+        ios_deep_link_local_str = NULL;
+    }
+    if (is_carting_local_var) {
+        free(is_carting_local_var);
+        is_carting_local_var = NULL;
+    }
+    if (is_pin_deleted_local_var) {
+        free(is_pin_deleted_local_var);
+        is_pin_deleted_local_var = NULL;
+    }
+    if (is_removable_local_var) {
+        free(is_removable_local_var);
+        is_removable_local_var = NULL;
+    }
+    if (lead_form_id_local_str) {
+        free(lead_form_id_local_str);
+        lead_form_id_local_str = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (pin_id_local_str) {
+        free(pin_id_local_str);
+        pin_id_local_str = NULL;
     }
     if (status_local_nonprim) {
         status_local_nonprim = 0;
     }
-    if (tracking_urls_local_nonprim) {
-        tracking_urls_free(tracking_urls_local_nonprim);
-        tracking_urls_local_nonprim = NULL;
+    if (view_tracking_url_local_str) {
+        free(view_tracking_url_local_str);
+        view_tracking_url_local_str = NULL;
     }
     return NULL;
 

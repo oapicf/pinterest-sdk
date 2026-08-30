@@ -5,18 +5,18 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdGroupResponse&gt;**](AdGroupResponse.md) |  | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdGroup&gt;**](AdGroup.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 
-# **Table `AdGroupsList200ResponseAdGroupResponse`**
-(mapped from: AdGroupsList200ResponseAdGroupResponse)
+# **Table `AdGroupsList200ResponseAdGroup`**
+(mapped from: AdGroupsList200ResponseAdGroup)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 adGroupsList200Response | adGroupsList200Response | long | | kotlin.Long | Primary Key | *one*
-adGroupResponse | adGroupResponse | long | | kotlin.Long | Foreign Key | *many*
+adGroup | adGroup | long | | kotlin.Long | Foreign Key | *many*
 
 
 

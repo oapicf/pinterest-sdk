@@ -15,7 +15,7 @@ require 'pinterest_sdk'
 
 instance = PinterestSdkClient::BusinessAccessUserSummary.new(
   email: business0101@business.com,
-  id: 383791336903426391,
+  id: 549755885175,
   username: business0101
 )
 ```

@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.catalogs_retail_batch_request_items_inner import CatalogsRetailBatchRequestItemsInner  # noqa: F401,E501
+from app.openapi_server.models.catalogs_retail_batch_request_items_items import CatalogsRetailBatchRequestItemsItems  # noqa: F401,E501
 from app.openapi_server.models.country import Country  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
@@ -18,7 +18,7 @@ class CatalogsRetailBatchRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, catalog_id: str=None, catalog_type: str=None, country: Country=None, items: List[CatalogsRetailBatchRequestItemsInner]=None, language: str=None):  # noqa: E501
+    def __init__(self, catalog_id: str=None, catalog_type: str=None, country: Country=None, items: List[CatalogsRetailBatchRequestItemsItems]=None, language: str=None):  # noqa: E501
         """CatalogsRetailBatchRequest - a model defined in Swagger
 
         :param catalog_id: The catalog_id of this CatalogsRetailBatchRequest.  # noqa: E501
@@ -28,7 +28,7 @@ class CatalogsRetailBatchRequest(Model):
         :param country: The country of this CatalogsRetailBatchRequest.  # noqa: E501
         :type country: Country
         :param items: The items of this CatalogsRetailBatchRequest.  # noqa: E501
-        :type items: List[CatalogsRetailBatchRequestItemsInner]
+        :type items: List[CatalogsRetailBatchRequestItemsItems]
         :param language: The language of this CatalogsRetailBatchRequest.  # noqa: E501
         :type language: str
         """
@@ -36,7 +36,7 @@ class CatalogsRetailBatchRequest(Model):
             'catalog_id': str,
             'catalog_type': str,
             'country': Country,
-            'items': List[CatalogsRetailBatchRequestItemsInner],
+            'items': List[CatalogsRetailBatchRequestItemsItems],
             'language': str
         }
 
@@ -141,24 +141,24 @@ class CatalogsRetailBatchRequest(Model):
         self._country = country
 
     @property
-    def items(self) -> List[CatalogsRetailBatchRequestItemsInner]:
+    def items(self) -> List[CatalogsRetailBatchRequestItemsItems]:
         """Gets the items of this CatalogsRetailBatchRequest.
 
         Array with catalogs item operations  # noqa: E501
 
         :return: The items of this CatalogsRetailBatchRequest.
-        :rtype: List[CatalogsRetailBatchRequestItemsInner]
+        :rtype: List[CatalogsRetailBatchRequestItemsItems]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[CatalogsRetailBatchRequestItemsInner]):
+    def items(self, items: List[CatalogsRetailBatchRequestItemsItems]):
         """Sets the items of this CatalogsRetailBatchRequest.
 
         Array with catalogs item operations  # noqa: E501
 
         :param items: The items of this CatalogsRetailBatchRequest.
-        :type items: List[CatalogsRetailBatchRequestItemsInner]
+        :type items: List[CatalogsRetailBatchRequestItemsItems]
         """
         if items is None:
             raise ValueError("Invalid value for `items`, must not be `None`")  # noqa: E501
@@ -189,7 +189,7 @@ class CatalogsRetailBatchRequest(Model):
         :param language: The language of this CatalogsRetailBatchRequest.
         :type language: str
         """
-        allowed_values = ["af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH"]  # noqa: E501
+        allowed_values = ["af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "false", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH"]  # noqa: E501
         if language not in allowed_values:
             raise ValueError(
                 "Invalid value for `language` ({0}), must be one of {1}"

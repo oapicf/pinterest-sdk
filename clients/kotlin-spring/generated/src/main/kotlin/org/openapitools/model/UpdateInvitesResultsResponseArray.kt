@@ -1,8 +1,11 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.UpdateInvitesResultsResponseArrayItemsInner
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
+import org.openapitools.model.InviteActionResultItem
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -21,8 +24,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class UpdateInvitesResultsResponseArray(
 
     @field:Valid
-    @Schema(example = "null", description = "List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.")
-    @get:JsonProperty("items") val items: kotlin.collections.List<UpdateInvitesResultsResponseArrayItemsInner>? = null
+    @Schema(description = "List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("items")
+    @get:JsonProperty("items") val items: kotlin.collections.List<InviteActionResultItem>? = null
 ) {
 
 }

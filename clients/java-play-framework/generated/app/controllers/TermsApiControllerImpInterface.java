@@ -1,6 +1,6 @@
 package controllers;
 
-import apimodels.Error;
+import apimodels.PinterestLibError;
 import apimodels.RelatedTerms;
 
 import com.google.inject.Inject;

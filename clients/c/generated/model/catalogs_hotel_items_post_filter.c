@@ -31,11 +31,11 @@ static catalogs_hotel_items_post_filter_t *catalogs_hotel_items_post_filter_crea
     if (!catalogs_hotel_items_post_filter_local_var) {
         return NULL;
     }
+    memset(catalogs_hotel_items_post_filter_local_var, 0, sizeof(catalogs_hotel_items_post_filter_t));
+    catalogs_hotel_items_post_filter_local_var->_library_owned = 1;
     catalogs_hotel_items_post_filter_local_var->catalog_id = catalog_id;
     catalogs_hotel_items_post_filter_local_var->catalog_type = catalog_type;
     catalogs_hotel_items_post_filter_local_var->hotel_ids = hotel_ids;
-
-    catalogs_hotel_items_post_filter_local_var->_library_owned = 1;
     return catalogs_hotel_items_post_filter_local_var;
 }
 
@@ -44,11 +44,14 @@ __attribute__((deprecated)) catalogs_hotel_items_post_filter_t *catalogs_hotel_i
     pinterest_rest_api_catalogs_hotel_items_post_filter_CATALOGTYPE_e catalog_type,
     list_t *hotel_ids
     ) {
-    return catalogs_hotel_items_post_filter_create_internal (
+    catalogs_hotel_items_post_filter_t *result = catalogs_hotel_items_post_filter_create_internal (
         catalog_id,
         catalog_type,
         hotel_ids
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_hotel_items_post_filter_free(catalogs_hotel_items_post_filter_t *catalogs_hotel_items_post_filter) {
@@ -124,6 +127,8 @@ catalogs_hotel_items_post_filter_t *catalogs_hotel_items_post_filter_parseFromJS
 
     catalogs_hotel_items_post_filter_t *catalogs_hotel_items_post_filter_local_var = NULL;
 
+    char *catalog_id_local_str = NULL;
+
     // define the local list for catalogs_hotel_items_post_filter->hotel_ids
     list_t *hotel_idsList = NULL;
 
@@ -182,14 +187,24 @@ catalogs_hotel_items_post_filter_t *catalogs_hotel_items_post_filter_parseFromJS
     }
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+
     catalogs_hotel_items_post_filter_local_var = catalogs_hotel_items_post_filter_create_internal (
-        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
+        catalog_id_local_str,
         catalog_typeVariable,
         hotel_idsList
         );
 
+    if (!catalogs_hotel_items_post_filter_local_var) {
+        goto end;
+    }
+
     return catalogs_hotel_items_post_filter_local_var;
 end:
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
+    }
     if (hotel_idsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, hotel_idsList) {

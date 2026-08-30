@@ -34,11 +34,11 @@ Create a Brand Account that will be a child business of a business hierarchy. Re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessHierarchyId** | **string** | business hierarchy node id | [default to null]
- **brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md) |  |
+ **brandAccountCreate** | [**BrandAccountCreate**](BrandAccountCreate.md) |  |
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Update an existing Brand Account
 ### Example
 
 ```bash
- brandAccountsUpdate business_hierarchy_id=value brand_account_id=value
+ brandAccountsUpdate brand_account_id=value business_hierarchy_id=value
 ```
 
 ### Parameters
@@ -69,13 +69,13 @@ Update an existing Brand Account
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **brandAccountId** | **string** |  | [default to null]
  **businessHierarchyId** | **string** | business hierarchy node id | [default to null]
- **brandAccountId** | **string** | Unique identifier of a brand account. | [default to null]
- **brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md) |  |
+ **brandAccountUpdate** | [**BrandAccountUpdate**](BrandAccountUpdate.md) |  |
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -107,11 +107,11 @@ Terminate memberships between the specified members and your business.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Business id | [default to null]
- **membersToDeleteBody** | [**MembersToDeleteBody**](MembersToDeleteBody.md) | List of members with role to delete. |
+ **deleteBusinessMembershipBody** | [**DeleteBusinessMembershipBody**](DeleteBusinessMembershipBody.md) |  |
 
 ### Return type
 
-[**DeletedMembersResponse**](DeletedMembersResponse.md)
+[**DeleteBusinessMembership200Response**](DeleteBusinessMembership200Response.md)
 
 ### Authorization
 
@@ -144,11 +144,11 @@ Note: You may only batch terminate partners of the same partner type.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
- **deletePartnersRequest** | [**DeletePartnersRequest**](DeletePartnersRequest.md) | An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. |
+ **deleteBusinessPartnersDelete** | [**DeleteBusinessPartnersDelete**](DeleteBusinessPartnersDelete.md) |  |
 
 ### Return type
 
-[**DeletePartnersResponse**](DeletePartnersResponse.md)
+[**DeleteBusinessPartners**](DeleteBusinessPartners.md)
 
 ### Authorization
 
@@ -171,7 +171,7 @@ Get all of the viewing user's business employers.
 ### Example
 
 ```bash
- getBusinessEmployers  page_size=value  bookmark=value
+ getBusinessEmployers  assets_summary=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -179,8 +179,14 @@ Get all of the viewing user's business employers.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **assetsSummary** | **boolean** | Include assets summary in the response if this is true. Defaults to true.
+
+The assets summary returns a dictionary representing a summary of the assets
+for the business user ID, with information like the ad accounts and profiles
+the user has permissions for and what those permissions are | [optional] [default to true]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -202,8 +208,7 @@ Name | Type | Description  | Notes
 
 Get business members
 
-Get all members of the specified business.
-The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
+Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
 
 ### Example
 
@@ -227,11 +232,12 @@ the user has permissions for and what those permissions are | [optional] [defaul
  **memberIds** | **string** | A list of business members ids separated by comma. | [optional] [default to null]
  **startIndex** | **integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**GetBusinessMembers200Response**](GetBusinessMembers200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -259,7 +265,7 @@ If the assets_summary=TRUE and:
 ### Example
 
 ```bash
- getBusinessPartners business_id=value  assets_summary=value  partner_type=value  partner_ids=value  start_index=value  page_size=value  bookmark=value
+ getBusinessPartners business_id=value  assets_summary=value  partner_type=value  partner_ids=value  start_index=value  sort_ascending=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -274,16 +280,18 @@ The assets summary returns a dictionary representing a summary of the assets
 for the business user ID, with information like the ad accounts and profiles
 the user has permissions for and what those permissions are | [optional] [default to false]
  **partnerType** | [**PartnerType**](.md) | Specifies whether to fetch internal or external (shared) partners.
-If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br>
+If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.
 If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. | [optional] [default to null]
  **partnerIds** | **string** | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional] [default to null]
  **startIndex** | **integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **sortAscending** | **boolean** | Sort ascending. | [optional] [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**GetBusinessPartners200Response**](GetBusinessPartners200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -316,7 +324,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
  **systemUserId** | **string** | Unique identifier of a system user. | [default to null]
- **systemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md) |  |
+ **systemUserUpdateWithRequiredBody** | [**SystemUserUpdateWithRequiredBody**](SystemUserUpdateWithRequiredBody.md) |  |
 
 ### Return type
 
@@ -352,11 +360,11 @@ Update a member's business role within the business.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Business id | [default to null]
- **updateMemberBusinessRoleBody** | [**array[UpdateMemberBusinessRoleBody]**](UpdateMemberBusinessRoleBody.md) | List of objects with the member id and the business_role. |
+ **businessMembershipMember** | [**array[BusinessMembershipMember]**](BusinessMembershipMember.md) |  |
 
 ### Return type
 
-[**UpdateMemberResultsResponseArray**](UpdateMemberResultsResponseArray.md)
+[**UpdateBusinessMembershipsResponse**](UpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 

@@ -11,53 +11,41 @@
 part of openapi.api;
 
 /// Reporting targeting type for ads
-class AdsAnalyticsAdTargetingType {
-  /// Instantiate a new enum with the provided [value].
-  const AdsAnalyticsAdTargetingType._(this.value);
+enum AdsAnalyticsAdTargetingType {
+  KEYWORD._(r'KEYWORD'),
+  APPTYPE._(r'APPTYPE'),
+  GENDER._(r'GENDER'),
+  LOCATION._(r'LOCATION'),
+  PLACEMENT._(r'PLACEMENT'),
+  COUNTRY._(r'COUNTRY'),
+  TARGETED_INTEREST._(r'TARGETED_INTEREST'),
+  PINNER_INTEREST._(r'PINNER_INTEREST'),
+  AUDIENCE_INCLUDE._(r'AUDIENCE_INCLUDE'),
+  GEO._(r'GEO'),
+  AGE_BUCKET._(r'AGE_BUCKET'),
+  REGION._(r'REGION'),
+  QUIZ_RESULT._(r'QUIZ_RESULT'),
+  AGE_BUCKET_AND_GENDER._(r'AGE_BUCKET_AND_GENDER'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const AdsAnalyticsAdTargetingType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const KEYWORD = AdsAnalyticsAdTargetingType._(r'KEYWORD');
-  static const APPTYPE = AdsAnalyticsAdTargetingType._(r'APPTYPE');
-  static const GENDER = AdsAnalyticsAdTargetingType._(r'GENDER');
-  static const LOCATION = AdsAnalyticsAdTargetingType._(r'LOCATION');
-  static const PLACEMENT = AdsAnalyticsAdTargetingType._(r'PLACEMENT');
-  static const COUNTRY = AdsAnalyticsAdTargetingType._(r'COUNTRY');
-  static const TARGETED_INTEREST = AdsAnalyticsAdTargetingType._(r'TARGETED_INTEREST');
-  static const PINNER_INTEREST = AdsAnalyticsAdTargetingType._(r'PINNER_INTEREST');
-  static const AUDIENCE_INCLUDE = AdsAnalyticsAdTargetingType._(r'AUDIENCE_INCLUDE');
-  static const GEO = AdsAnalyticsAdTargetingType._(r'GEO');
-  static const AGE_BUCKET = AdsAnalyticsAdTargetingType._(r'AGE_BUCKET');
-  static const REGION = AdsAnalyticsAdTargetingType._(r'REGION');
-  static const QUIZ_RESULT = AdsAnalyticsAdTargetingType._(r'QUIZ_RESULT');
-  static const AGE_BUCKET_AND_GENDER = AdsAnalyticsAdTargetingType._(r'AGE_BUCKET_AND_GENDER');
-
-  /// List of all possible values in this [enum][AdsAnalyticsAdTargetingType].
-  static const values = <AdsAnalyticsAdTargetingType>[
-    KEYWORD,
-    APPTYPE,
-    GENDER,
-    LOCATION,
-    PLACEMENT,
-    COUNTRY,
-    TARGETED_INTEREST,
-    PINNER_INTEREST,
-    AUDIENCE_INCLUDE,
-    GEO,
-    AGE_BUCKET,
-    REGION,
-    QUIZ_RESULT,
-    AGE_BUCKET_AND_GENDER,
-  ];
-
+  /// Returns the instance of [AdsAnalyticsAdTargetingType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static AdsAnalyticsAdTargetingType? fromJson(dynamic value) => AdsAnalyticsAdTargetingTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [AdsAnalyticsAdTargetingType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<AdsAnalyticsAdTargetingType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <AdsAnalyticsAdTargetingType>[];
     if (json is List && json.isNotEmpty) {
@@ -79,9 +67,11 @@ class AdsAnalyticsAdTargetingTypeTypeTransformer {
 
   const AdsAnalyticsAdTargetingTypeTypeTransformer._();
 
-  String encode(AdsAnalyticsAdTargetingType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(AdsAnalyticsAdTargetingType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a AdsAnalyticsAdTargetingType.
+  /// Returns the instance of [AdsAnalyticsAdTargetingType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -90,6 +80,9 @@ class AdsAnalyticsAdTargetingTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   AdsAnalyticsAdTargetingType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is AdsAnalyticsAdTargetingType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'KEYWORD': return AdsAnalyticsAdTargetingType.KEYWORD;
@@ -115,7 +108,7 @@ class AdsAnalyticsAdTargetingTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [AdsAnalyticsAdTargetingTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static AdsAnalyticsAdTargetingTypeTypeTransformer? _instance;
 }
 

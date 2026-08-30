@@ -15,29 +15,39 @@ class CatalogsCreativeAssetsProductGroupProductCounts(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, catalog_type: str=None, total: float=None, videos: float=None):  # noqa: E501
+    def __init__(self, app_links: float=None, catalog_type: str=None, images: float=None, total: float=None, videos: float=None):  # noqa: E501
         """CatalogsCreativeAssetsProductGroupProductCounts - a model defined in Swagger
 
+        :param app_links: The app_links of this CatalogsCreativeAssetsProductGroupProductCounts.  # noqa: E501
+        :type app_links: float
         :param catalog_type: The catalog_type of this CatalogsCreativeAssetsProductGroupProductCounts.  # noqa: E501
         :type catalog_type: str
+        :param images: The images of this CatalogsCreativeAssetsProductGroupProductCounts.  # noqa: E501
+        :type images: float
         :param total: The total of this CatalogsCreativeAssetsProductGroupProductCounts.  # noqa: E501
         :type total: float
         :param videos: The videos of this CatalogsCreativeAssetsProductGroupProductCounts.  # noqa: E501
         :type videos: float
         """
         self.swagger_types = {
+            'app_links': float,
             'catalog_type': str,
+            'images': float,
             'total': float,
             'videos': float
         }
 
         self.attribute_map = {
+            'app_links': 'app_links',
             'catalog_type': 'catalog_type',
+            'images': 'images',
             'total': 'total',
             'videos': 'videos'
         }
 
+        self._app_links = app_links
         self._catalog_type = catalog_type
+        self._images = images
         self._total = total
         self._videos = videos
 
@@ -51,6 +61,31 @@ class CatalogsCreativeAssetsProductGroupProductCounts(Model):
         :rtype: CatalogsCreativeAssetsProductGroupProductCounts
         """
         return util.deserialize_model(dikt, cls)
+
+    @property
+    def app_links(self) -> float:
+        """Gets the app_links of this CatalogsCreativeAssetsProductGroupProductCounts.
+
+
+        :return: The app_links of this CatalogsCreativeAssetsProductGroupProductCounts.
+        :rtype: float
+        """
+        return self._app_links
+
+    @app_links.setter
+    def app_links(self, app_links: float):
+        """Sets the app_links of this CatalogsCreativeAssetsProductGroupProductCounts.
+
+
+        :param app_links: The app_links of this CatalogsCreativeAssetsProductGroupProductCounts.
+        :type app_links: float
+        """
+        if app_links is None:
+            raise ValueError("Invalid value for `app_links`, must not be `None`")  # noqa: E501
+        if app_links is not None and app_links < 0:  # noqa: E501
+            raise ValueError("Invalid value for `app_links`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._app_links = app_links
 
     @property
     def catalog_type(self) -> str:
@@ -78,6 +113,31 @@ class CatalogsCreativeAssetsProductGroupProductCounts(Model):
             )
 
         self._catalog_type = catalog_type
+
+    @property
+    def images(self) -> float:
+        """Gets the images of this CatalogsCreativeAssetsProductGroupProductCounts.
+
+
+        :return: The images of this CatalogsCreativeAssetsProductGroupProductCounts.
+        :rtype: float
+        """
+        return self._images
+
+    @images.setter
+    def images(self, images: float):
+        """Sets the images of this CatalogsCreativeAssetsProductGroupProductCounts.
+
+
+        :param images: The images of this CatalogsCreativeAssetsProductGroupProductCounts.
+        :type images: float
+        """
+        if images is None:
+            raise ValueError("Invalid value for `images`, must not be `None`")  # noqa: E501
+        if images is not None and images < 0:  # noqa: E501
+            raise ValueError("Invalid value for `images`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._images = images
 
     @property
     def total(self) -> float:

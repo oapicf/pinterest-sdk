@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
 | **&#x60;field&#x60;** | [**inline**](#&#x60;Field&#x60;) |  |  |
-| **operation** | [**inline**](#Operation) |  |  |
+| **operation** | [**TargetingSpecListOperation**](TargetingSpecListOperation.md) |  |  |
 | **propertyValues** | [**kotlin.collections.List&lt;TargetingSpecAppType&gt;**](TargetingSpecAppType.md) |  |  |
 
 
@@ -14,13 +14,6 @@
 | Name | Value |
 | ---- | ----- |
 | &#x60;field&#x60; | APPTYPE |
-
-
-<a id="Operation"></a>
-## Enum: operation
-| Name | Value |
-| ---- | ----- |
-| operation | SET, ADD, REMOVE |
 
 
 

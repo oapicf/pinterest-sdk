@@ -9,7 +9,9 @@
 -export_type([openapi_conversion_events/0]).
 
 -type openapi_conversion_events() ::
-  [ {'data', list(openapi_conversion_events_data_inner:openapi_conversion_events_data_inner()) }
+  [ {'events', list(openapi_conversion_api_response_events_items:openapi_conversion_api_response_events_items()) }
+  | {'num_events_processed', integer() }
+  | {'num_events_received', integer() }
   ].
 
 
@@ -17,7 +19,9 @@ openapi_conversion_events() ->
     openapi_conversion_events([]).
 
 openapi_conversion_events(Fields) ->
-  Default = [ {'data', list(openapi_conversion_events_data_inner:openapi_conversion_events_data_inner(), 1, 1000) }
+  Default = [ {'events', list(openapi_conversion_api_response_events_items:openapi_conversion_api_response_events_items()) }
+            , {'num_events_processed', integer() }
+            , {'num_events_received', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

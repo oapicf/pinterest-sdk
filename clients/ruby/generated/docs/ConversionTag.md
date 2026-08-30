@@ -22,10 +22,10 @@ require 'pinterest_sdk'
 instance = PinterestSdkClient::ConversionTag.new(
   code_snippet: &lt;script type&#x3D;text/javascript&gt; [...],
   configs: null,
-  enhanced_match_status: null,
+  enhanced_match_status: VALIDATION_COMPLETE,
   id: 2617998078212,
   last_fired_time_ms: 1599030000000,
-  name: ACME Checkout Test Tag,
+  name: download_picture,
   version: 3,
   ad_account_id: 549755885175,
   status: null

@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsProductGroupFilterOperatorTypeCriteria (
-    _filterOperatorType: Option[String],
+    _filterOperatorType: Option[FilterOperatorType],
     _negated: Option[Boolean],
     _values: List[String]
 )

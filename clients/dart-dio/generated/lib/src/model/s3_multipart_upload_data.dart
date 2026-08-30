@@ -76,8 +76,9 @@ class _$S3MultipartUploadDataSerializer implements PrimitiveSerializer<S3Multipa
         case r'file_parts':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(S3FilePart)]),
-          ) as BuiltList<S3FilePart>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(S3FilePart)]),
+          ) as BuiltList<S3FilePart>?;
+          if (valueDes == null) continue;
           result.fileParts.replace(valueDes);
           break;
         default:

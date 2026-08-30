@@ -1,6 +1,5 @@
 package models
 
-// RecordCounts - Record processing counts
 type RecordCounts struct {
 
 	// Number of invalid records processed

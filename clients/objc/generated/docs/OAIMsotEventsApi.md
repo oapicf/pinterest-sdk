@@ -10,13 +10,13 @@ Method | HTTP request | Description
 # **msotEventsCreate**
 ```objc
 -(NSURLSessionTask*) msotEventsCreateWithAdAccountId: (NSString*) adAccountId
-    conversionMSOTEvents: (OAIConversionMSOTEvents*) conversionMSOTEvents
+    conversionMSOTEventsCreate: (OAIConversionMSOTEventsCreate*) conversionMSOTEventsCreate
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
 Send Measurement Source Of Truth (MSOT) attributed conversion events
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong> <br> <p>Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their <code>ad_account_id</code>. The request body should be a JSON object.</p> - These events will NOT be used in Reporting.
+**This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their `ad_account_id`. The request body should be a JSON object.  - These events will not be used in Reporting.
 
 ### Example
 ```objc
@@ -27,13 +27,13 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAIConversionMSOTEvents* conversionMSOTEvents = [[OAIConversionMSOTEvents alloc] init]; // Attributed MSOT conversion events
+OAIConversionMSOTEventsCreate* conversionMSOTEventsCreate = [[OAIConversionMSOTEventsCreate alloc] init]; // 
 
 OAIMsotEventsApi*apiInstance = [[OAIMsotEventsApi alloc] init];
 
 // Send Measurement Source Of Truth (MSOT) attributed conversion events
 [apiInstance msotEventsCreateWithAdAccountId:adAccountId
-              conversionMSOTEvents:conversionMSOTEvents
+              conversionMSOTEventsCreate:conversionMSOTEventsCreate
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling OAIMsotEventsApi->msotEventsCreate: %@", error);
@@ -46,7 +46,7 @@ OAIMsotEventsApi*apiInstance = [[OAIMsotEventsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **conversionMSOTEvents** | [**OAIConversionMSOTEvents***](OAIConversionMSOTEvents.md)| Attributed MSOT conversion events | 
+ **conversionMSOTEventsCreate** | [**OAIConversionMSOTEventsCreate***](OAIConversionMSOTEventsCreate.md)|  | 
 
 ### Return type
 

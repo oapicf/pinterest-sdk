@@ -30,7 +30,7 @@ public class ErrorDetail   {
   }
 
   
-  @ApiModelProperty(example = "20", required = true, value = "Number of records with this error")
+  @ApiModelProperty(required = true, value = "Number of records with this error")
   @JsonProperty("count")
   @NotNull
   public Integer getCount() {
@@ -50,7 +50,7 @@ public class ErrorDetail   {
   }
 
   
-  @ApiModelProperty(example = "42", required = true, value = "Numeric error code")
+  @ApiModelProperty(required = true, value = "Numeric error code")
   @JsonProperty("error_code")
   @NotNull
   public Integer getErrorCode() {
@@ -70,7 +70,7 @@ public class ErrorDetail   {
   }
 
   
-  @ApiModelProperty(example = "Invalid email", required = true, value = "Error message description")
+  @ApiModelProperty(required = true, value = "Error message description")
   @JsonProperty("message")
   @NotNull
   public String getMessage() {
@@ -118,10 +118,7 @@ public class ErrorDetail   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

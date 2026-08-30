@@ -6,28 +6,43 @@
 
 
 static catalogs_feed_product_counts_t *catalogs_feed_product_counts_create_internal(
-    int ingested,
-    int original
+    int *ingested,
+    int *original
     ) {
     catalogs_feed_product_counts_t *catalogs_feed_product_counts_local_var = malloc(sizeof(catalogs_feed_product_counts_t));
     if (!catalogs_feed_product_counts_local_var) {
         return NULL;
     }
+    memset(catalogs_feed_product_counts_local_var, 0, sizeof(catalogs_feed_product_counts_t));
+    catalogs_feed_product_counts_local_var->_library_owned = 1;
     catalogs_feed_product_counts_local_var->ingested = ingested;
     catalogs_feed_product_counts_local_var->original = original;
-
-    catalogs_feed_product_counts_local_var->_library_owned = 1;
     return catalogs_feed_product_counts_local_var;
 }
 
 __attribute__((deprecated)) catalogs_feed_product_counts_t *catalogs_feed_product_counts_create(
-    int ingested,
-    int original
+    int *ingested,
+    int *original
     ) {
-    return catalogs_feed_product_counts_create_internal (
-        ingested,
-        original
+    int *ingested_copy = NULL;
+    if (ingested) {
+        ingested_copy = malloc(sizeof(int));
+        if (ingested_copy) *ingested_copy = *ingested;
+    }
+    int *original_copy = NULL;
+    if (original) {
+        original_copy = malloc(sizeof(int));
+        if (original_copy) *original_copy = *original;
+    }
+    catalogs_feed_product_counts_t *result = catalogs_feed_product_counts_create_internal (
+        ingested_copy,
+        original_copy
         );
+    if (!result) {
+        free(ingested_copy);
+        free(original_copy);
+    }
+    return result;
 }
 
 void catalogs_feed_product_counts_free(catalogs_feed_product_counts_t *catalogs_feed_product_counts) {
@@ -39,6 +54,14 @@ void catalogs_feed_product_counts_free(catalogs_feed_product_counts_t *catalogs_
         return ;
     }
     listEntry_t *listEntry;
+    if (catalogs_feed_product_counts->ingested) {
+        free(catalogs_feed_product_counts->ingested);
+        catalogs_feed_product_counts->ingested = NULL;
+    }
+    if (catalogs_feed_product_counts->original) {
+        free(catalogs_feed_product_counts->original);
+        catalogs_feed_product_counts->original = NULL;
+    }
     free(catalogs_feed_product_counts);
 }
 
@@ -47,7 +70,7 @@ cJSON *catalogs_feed_product_counts_convertToJSON(catalogs_feed_product_counts_t
 
     // catalogs_feed_product_counts->ingested
     if(catalogs_feed_product_counts->ingested) {
-    if(cJSON_AddNumberToObject(item, "ingested", catalogs_feed_product_counts->ingested) == NULL) {
+    if(cJSON_AddNumberToObject(item, "ingested", *catalogs_feed_product_counts->ingested) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -55,7 +78,7 @@ cJSON *catalogs_feed_product_counts_convertToJSON(catalogs_feed_product_counts_t
 
     // catalogs_feed_product_counts->original
     if(catalogs_feed_product_counts->original) {
-    if(cJSON_AddNumberToObject(item, "original", catalogs_feed_product_counts->original) == NULL) {
+    if(cJSON_AddNumberToObject(item, "original", *catalogs_feed_product_counts->original) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -72,6 +95,12 @@ catalogs_feed_product_counts_t *catalogs_feed_product_counts_parseFromJSON(cJSON
 
     catalogs_feed_product_counts_t *catalogs_feed_product_counts_local_var = NULL;
 
+    // define the local variable for catalogs_feed_product_counts->ingested
+    int *ingested_local_var = NULL;
+
+    // define the local variable for catalogs_feed_product_counts->original
+    int *original_local_var = NULL;
+
     // catalogs_feed_product_counts->ingested
     cJSON *ingested = cJSON_GetObjectItemCaseSensitive(catalogs_feed_product_countsJSON, "ingested");
     if (cJSON_IsNull(ingested)) {
@@ -82,6 +111,12 @@ catalogs_feed_product_counts_t *catalogs_feed_product_counts_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    ingested_local_var = malloc(sizeof(int));
+    if(!ingested_local_var)
+    {
+        goto end;
+    }
+    *ingested_local_var = ingested->valuedouble;
     }
 
     // catalogs_feed_product_counts->original
@@ -94,16 +129,35 @@ catalogs_feed_product_counts_t *catalogs_feed_product_counts_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    original_local_var = malloc(sizeof(int));
+    if(!original_local_var)
+    {
+        goto end;
+    }
+    *original_local_var = original->valuedouble;
     }
 
 
+
     catalogs_feed_product_counts_local_var = catalogs_feed_product_counts_create_internal (
-        ingested ? ingested->valuedouble : 0,
-        original ? original->valuedouble : 0
+        ingested_local_var,
+        original_local_var
         );
+
+    if (!catalogs_feed_product_counts_local_var) {
+        goto end;
+    }
 
     return catalogs_feed_product_counts_local_var;
 end:
+    if (ingested_local_var) {
+        free(ingested_local_var);
+        ingested_local_var = NULL;
+    }
+    if (original_local_var) {
+        free(original_local_var);
+        original_local_var = NULL;
+    }
     return NULL;
 
 }

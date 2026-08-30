@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | **character** |  | [Enum: [HOTEL]] 
-**filter_values** | [**CatalogsHotelFilterValuesMap**](catalogs_hotel_filter_values_map.md) |  | 
+**filter_values** | [**CatalogsHotelFilterValuesMap**](CatalogsHotelFilterValuesMap.md) |  | 
 
 

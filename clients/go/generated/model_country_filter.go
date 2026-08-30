@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -57,11 +57,11 @@ func (o *CountryFilter) GetCOUNTRY() CatalogsProductGroupMultipleCountriesCriter
 
 // GetCOUNTRYOk returns a tuple with the COUNTRY field value
 // and a boolean to check if the value has been set.
-func (o *CountryFilter) GetCOUNTRYOk() (CatalogsProductGroupMultipleCountriesCriteria, bool) {
+func (o *CountryFilter) GetCOUNTRYOk() (*CatalogsProductGroupMultipleCountriesCriteria, bool) {
 	if o == nil {
-		return CatalogsProductGroupMultipleCountriesCriteria{}, false
+		return nil, false
 	}
-	return o.COUNTRY, true
+	return &o.COUNTRY, true
 }
 
 // SetCOUNTRY sets field value

@@ -3,18 +3,18 @@ const Service = require('./Service');
 
 /**
 * Create audience
-* Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+* Create a new audience for the ad account.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* audienceCreateRequest AudienceCreateRequest List of ads to create, size limit [1, 30]
-* returns Audience
+* adAccountsAudienceCreate AdAccountsAudienceCreate 
+* returns AdAccountsAudience
 * */
-const audiences/create = ({ adUnderscoreaccountUnderscoreid, audienceCreateRequest }) => new Promise(
+const audiences/create = ({ adUnderscoreaccountUnderscoreid, adAccountsAudienceCreate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         adUnderscoreaccountUnderscoreid,
-        audienceCreateRequest,
+        adAccountsAudienceCreate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -28,16 +28,16 @@ const audiences/create = ({ adUnderscoreaccountUnderscoreid, audienceCreateReque
 * Get audience
 * Get a specific audience given the audience ID.
 *
+* audienceUnderscoreid String Audience ID.
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* audienceUnderscoreid String Unique identifier of an audience
-* returns Audience
+* returns AdAccountsAudience
 * */
-const audiences/get = ({ adUnderscoreaccountUnderscoreid, audienceUnderscoreid }) => new Promise(
+const audiences/get = ({ audienceUnderscoreid, adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
-        adUnderscoreaccountUnderscoreid,
         audienceUnderscoreid,
+        adUnderscoreaccountUnderscoreid,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -53,20 +53,22 @@ const audiences/get = ({ adUnderscoreaccountUnderscoreid, audienceUnderscoreid }
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * bookmark String Cursor used to fetch the next page of items (optional)
-* order String The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-* ownershipUnderscoretype String Filter audiences by ownership type. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+* order PinterestLibPaginationOrder The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+* ownershipUnderscoretype AudienceOwnershipType  (optional)
+* excludeUnderscorenca Boolean When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). (optional)
 * returns audiences_list_200_response
 * */
-const audiences/list = ({ adUnderscoreaccountUnderscoreid, bookmark, order, pageUnderscoresize, ownershipUnderscoretype }) => new Promise(
+const audiences/list = ({ adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize, order, ownershipUnderscoretype, excludeUnderscorenca }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         adUnderscoreaccountUnderscoreid,
         bookmark,
-        order,
         pageUnderscoresize,
+        order,
         ownershipUnderscoretype,
+        excludeUnderscorenca,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -78,20 +80,20 @@ const audiences/list = ({ adUnderscoreaccountUnderscoreid, bookmark, order, page
 );
 /**
 * Update audience
-* Update (edit or remove) an existing targeting audience.
+* Update an existing audience for the ad account.
 *
+* audienceUnderscoreid String Audience ID.
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* audienceUnderscoreid String Unique identifier of an audience
-* audienceUpdateRequest AudienceUpdateRequest The audience to be updated.
-* returns Audience
+* adAccountsAudienceUpdate AdAccountsAudienceUpdate 
+* returns AdAccountsAudience
 * */
-const audiences/update = ({ adUnderscoreaccountUnderscoreid, audienceUnderscoreid, audienceUpdateRequest }) => new Promise(
+const audiences/update = ({ audienceUnderscoreid, adUnderscoreaccountUnderscoreid, adAccountsAudienceUpdate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
-        adUnderscoreaccountUnderscoreid,
         audienceUnderscoreid,
-        audienceUpdateRequest,
+        adUnderscoreaccountUnderscoreid,
+        adAccountsAudienceUpdate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(

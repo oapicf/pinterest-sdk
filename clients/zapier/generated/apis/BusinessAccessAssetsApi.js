@@ -1,25 +1,27 @@
 const samples = require('../samples/BusinessAccessAssetsApi');
-const CreateAssetGroupBody = require('../models/CreateAssetGroupBody');
-const CreateAssetGroupResponse = require('../models/CreateAssetGroupResponse');
-const DeleteAssetGroupBody = require('../models/DeleteAssetGroupBody');
-const DeleteAssetGroupResponse = require('../models/DeleteAssetGroupResponse');
+const AssetGroupDeletion = require('../models/AssetGroupDeletion');
+const AssetGroupDeletionDelete = require('../models/AssetGroupDeletionDelete');
+const AssetGroupInput = require('../models/AssetGroupInput');
+const AssetGroupInputCreate = require('../models/AssetGroupInputCreate');
+const AssetGroupModification = require('../models/AssetGroupModification');
+const AssetGroupModificationReadOrUpdate = require('../models/AssetGroupModificationReadOrUpdate');
+const AssetPermissionType = require('../models/AssetPermissionType');
+const AssetSearchBy = require('../models/AssetSearchBy');
+const AssetSortBy = require('../models/AssetSortBy');
+const BusinessMemberAssetsGetResponse = require('../models/BusinessMemberAssetsGetResponse');
+const BusinessMembersAssetAccessDeleteBody = require('../models/BusinessMembersAssetAccessDeleteBody');
 const DeleteMemberAccessResultsResponseArray = require('../models/DeleteMemberAccessResultsResponseArray');
 const DeletePartnerAssetAccessBody = require('../models/DeletePartnerAssetAccessBody');
-const DeletePartnerAssetsResultsResponseArray = require('../models/DeletePartnerAssetsResultsResponseArray');
-const Error = require('../models/Error');
-const PartnerType = require('../models/PartnerType');
+const DeletePartnerAssetAccessResultsResponseArray = require('../models/DeletePartnerAssetAccessResultsResponseArray');
+const NonDraftEntityStatus = require('../models/NonDraftEntityStatus');
 const PermissionsWithOwner = require('../models/PermissionsWithOwner');
-const UpdateAssetGroupBody = require('../models/UpdateAssetGroupBody');
-const UpdateAssetGroupResponse = require('../models/UpdateAssetGroupResponse');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
 const UpdateMemberAssetAccessBody = require('../models/UpdateMemberAssetAccessBody');
 const UpdateMemberAssetsResultsResponseArray = require('../models/UpdateMemberAssetsResultsResponseArray');
 const UpdatePartnerAssetAccessBody = require('../models/UpdatePartnerAssetAccessBody');
 const UpdatePartnerAssetsResultsResponseArray = require('../models/UpdatePartnerAssetsResultsResponseArray');
 const business_asset_members_get_200_response = require('../models/business_asset_members_get_200_response');
-const business_asset_partners_get_200_response = require('../models/business_asset_partners_get_200_response');
 const business_assets_get_200_response = require('../models/business_assets_get_200_response');
-const business_member_assets_get_200_response = require('../models/business_member_assets_get_200_response');
-const business_members_asset_access_delete_request = require('../models/business_members_asset_access_delete_request');
 const business_partner_asset_access_get_200_response = require('../models/business_partner_asset_access_get_200_response');
 const utils = require('../utils/utils');
 
@@ -29,7 +31,7 @@ module.exports = {
         noun: 'business_access_assets',
         display: {
             label: 'Create a new asset group.',
-            description: 'Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.',
+            description: 'Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.',
             hidden: false,
         },
         operation: {
@@ -40,10 +42,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...CreateAssetGroupBody.fields(),
+                ...AssetGroupInputCreate.fields(),
             ],
             outputFields: [
-                ...CreateAssetGroupResponse.fields('', false),
+                ...AssetGroupInput.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -57,7 +59,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...CreateAssetGroupBody.mapping(bundle),
+                        ...AssetGroupInputCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -66,7 +68,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['CreateAssetGroupResponseSample']
+            sample: samples['AssetGroupInputSample']samples['AssetGroupInputSample']
         }
     },
     assetGroup/delete: {
@@ -85,10 +87,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...DeleteAssetGroupBody.fields(),
+                ...AssetGroupDeletionDelete.fields(),
             ],
             outputFields: [
-                ...DeleteAssetGroupResponse.fields('', false),
+                ...AssetGroupDeletion.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -102,7 +104,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...DeleteAssetGroupBody.mapping(bundle),
+                        ...AssetGroupDeletionDelete.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -111,7 +113,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['DeleteAssetGroupResponseSample']
+            sample: samples['AssetGroupDeletionSample']
         }
     },
     assetGroup/update: {
@@ -130,10 +132,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...UpdateAssetGroupBody.fields(),
+                ...AssetGroupModificationReadOrUpdate.fields(),
             ],
             outputFields: [
-                ...UpdateAssetGroupResponse.fields('', false),
+                ...AssetGroupModification.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -147,7 +149,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...UpdateAssetGroupBody.mapping(bundle),
+                        ...AssetGroupModificationReadOrUpdate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -156,7 +158,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['UpdateAssetGroupResponseSample']
+            sample: samples['AssetGroupModificationSample']
         }
     },
     businessAssetMembers/get: {
@@ -182,6 +184,11 @@ module.exports = {
                     required: true,
                 },
                 {
+                    key: 'start_index',
+                    label: 'An index to start fetching the results from. Only the results starting from this index will be returned.',
+                    type: 'integer',
+                },
+                {
                     key: 'fetch_system_users',
                     label: 'Fetches system users if True. Fetches regular user employees if False.',
                     type: 'boolean',
@@ -193,12 +200,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
-                },
-                {
-                    key: 'start_index',
-                    label: 'An index to start fetching the results from. Only the results starting from this index will be returned.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
@@ -215,10 +217,10 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
+                        'start_index': bundle.inputData?.['start_index'],
                         'fetch_system_users': bundle.inputData?.['fetch_system_users'],
                         'bookmark': bundle.inputData?.['bookmark'],
                         'page_size': bundle.inputData?.['page_size'],
-                        'start_index': bundle.inputData?.['start_index'],
                     },
                     body: {
                     },
@@ -266,12 +268,12 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
             outputFields: [
-                ...business_asset_partners_get_200_response.fields('', false),
+                ...business_asset_members_get_200_response.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -296,7 +298,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['business_asset_partners_get_200_responseSample']
+            sample: samples['business_asset_members_get_200_responseSample']
         }
     },
     businessAssets/get: {
@@ -354,7 +356,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
@@ -423,6 +425,7 @@ module.exports = {
                         'ASSET_GROUP',
                         'CATALOG',
                         'CONSUMER',
+                        'CONVERSION_TAG',
                     ],
                 },
                 {
@@ -430,6 +433,24 @@ module.exports = {
                     label: 'An index to start fetching the results from. Only the results starting from this index will be returned.',
                     type: 'integer',
                 },
+                ....fields(),
+                {
+                    key: 'sort_ascending',
+                    label: 'Sort assets in ascending order',
+                    type: 'boolean',
+                },
+                ....fields(),
+                {
+                    key: 'search_value',
+                    label: 'The value to search for',
+                    type: 'string',
+                },
+                ....fields(),
+                {
+                    key: 'ad_account_statuses',
+                    label: 'A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.',
+                    type: 'string',
+                }
                 {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
@@ -437,12 +458,12 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
             outputFields: [
-                ...business_member_assets_get_200_response.fields('', false),
+                ...BusinessMemberAssetsGetResponse.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -456,6 +477,12 @@ module.exports = {
                     params: {
                         'asset_type': bundle.inputData?.['asset_type'],
                         'start_index': bundle.inputData?.['start_index'],
+                        'sort_by': bundle.inputData?.['sort_by'],
+                        'sort_ascending': bundle.inputData?.['sort_ascending'],
+                        'search_by': bundle.inputData?.['search_by'],
+                        'search_value': bundle.inputData?.['search_value'],
+                        'asset_permission_type': bundle.inputData?.['asset_permission_type'],
+                        'ad_account_statuses': bundle.inputData?.['ad_account_statuses'],
                         'bookmark': bundle.inputData?.['bookmark'],
                         'page_size': bundle.inputData?.['page_size'],
                     },
@@ -468,7 +495,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['business_member_assets_get_200_responseSample']
+            sample: samples['BusinessMemberAssetsGetResponseSample']
         }
     },
     businessMembersAssetAccess/delete: {
@@ -487,7 +514,7 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...business_members_asset_access_delete_request.fields(),
+                ...BusinessMembersAssetAccessDeleteBody.fields(),
             ],
             outputFields: [
                 ...DeleteMemberAccessResultsResponseArray.fields('', false),
@@ -504,7 +531,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...business_members_asset_access_delete_request.mapping(bundle),
+                        ...BusinessMembersAssetAccessDeleteBody.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -521,7 +548,7 @@ module.exports = {
         noun: 'business_access_assets',
         display: {
             label: 'Assign/Update member asset permissions',
-            description: 'Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. ',
+            description: 'Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.',
             hidden: false,
         },
         operation: {
@@ -583,7 +610,15 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ....fields(),
+                {
+                    key: 'partner_type',
+                    label: 'Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.',
+                    type: 'string',
+                    choices: [
+                        'INTERNAL',
+                        'EXTERNAL',
+                    ],
+                },
                 {
                     key: 'asset_type',
                     label: 'A resource type to filter the assets by. Only assets of the specified type will be returned.',
@@ -592,8 +627,11 @@ module.exports = {
                         'AD_ACCOUNT',
                         'PROFILE',
                         'ASSET_GROUP',
+                        'PINNER_LIST',
+                        'CONVERSION_TAG',
                         'CATALOG',
                         'CONSUMER',
+                        'CONVERSION_SEGMENT',
                     ],
                 },
                 {
@@ -601,15 +639,27 @@ module.exports = {
                     label: 'An index to start fetching the results from. Only the results starting from this index will be returned.',
                     type: 'integer',
                 },
+                ....fields(),
                 {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
+                    key: 'sort_ascending',
+                    label: 'Sort assets in ascending order',
+                    type: 'boolean',
+                },
+                ....fields(),
+                {
+                    key: 'search_value',
+                    label: 'The value to search for',
+                    type: 'string',
                 },
                 {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
                     type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
                 },
             ],
             outputFields: [
@@ -628,8 +678,12 @@ module.exports = {
                         'partner_type': bundle.inputData?.['partner_type'],
                         'asset_type': bundle.inputData?.['asset_type'],
                         'start_index': bundle.inputData?.['start_index'],
-                        'page_size': bundle.inputData?.['page_size'],
+                        'sort_by': bundle.inputData?.['sort_by'],
+                        'sort_ascending': bundle.inputData?.['sort_ascending'],
+                        'search_by': bundle.inputData?.['search_by'],
+                        'search_value': bundle.inputData?.['search_value'],
                         'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
                     },
                     body: {
                     },
@@ -662,7 +716,7 @@ module.exports = {
                 ...DeletePartnerAssetAccessBody.fields(),
             ],
             outputFields: [
-                ...DeletePartnerAssetsResultsResponseArray.fields('', false),
+                ...DeletePartnerAssetAccessResultsResponseArray.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -685,7 +739,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['DeletePartnerAssetsResultsResponseArraySample']
+            sample: samples['DeletePartnerAssetAccessResultsResponseArraySample']
         }
     },
     updatePartnerAssetAccessHandlerImpl: {

@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class GenderFilter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("GENDER")
     @get:JsonProperty("GENDER", required = true) val GENDER: CatalogsProductGroupMultipleGenderCriteria
 ) {
 

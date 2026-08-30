@@ -16,23 +16,23 @@ NotificationPostRequest <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("array[map(AnyType)]", "object"),
+    one_of = list("array[object]", "object"),
 
     #' @description
     #' Initialize a new NotificationPostRequest.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "array[map(AnyType)]", "object"
+    #' @param instance an instance of the object defined in the oneOf schemas: "array[object]", "object"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "array[map(AnyType)]") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "array[object]") {
         self$actual_instance <- instance
-        self$actual_type <- "array[map(AnyType)]"
+        self$actual_type <- "array[object]"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "object") {
         self$actual_instance <- instance
         self$actual_type <- "object"
       } else {
-        stop(paste("Failed to initialize NotificationPostRequest with oneOf schemas array[map(AnyType)], object. Provided class name: ",
+        stop(paste("Failed to initialize NotificationPostRequest with oneOf schemas array[object], object. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -60,19 +60,20 @@ NotificationPostRequest <- R6::R6Class(
       error_messages <- list()
       instance <- NULL
 
-      `array[map(AnyType)]_result` <- tryCatch({
-          `array[map(AnyType)]`$public_methods$validateJSON(input)
-          `array[map(AnyType)]_instance` <- `array[map(AnyType)]`$new()
-          instance <- `array[map(AnyType)]_instance`$fromJSON(input)
-          instance_type <- "array[map(AnyType)]"
-          matched_schemas <- append(matched_schemas, "array[map(AnyType)]")
+      `array[object]_result` <- tryCatch({
+          instance <- jsonlite::fromJSON(input, simplifyVector = FALSE)
+          if (typeof(instance) != "array[object]") {
+            stop(sprintf("Data type doesn't match. Expected: %s. Actual: %s.", "array[object]", typeof(instance)))
+          }
+          instance_type <- "array[object]"
+          matched_schemas <- append(matched_schemas, "array[object]")
           matched <- matched + 1
         },
         error = function(err) err
       )
 
-      if (!is.null(`array[map(AnyType)]_result`["error"])) {
-        error_messages <- append(error_messages, `array[map(AnyType)]_result`["message"])
+      if (!is.null(`array[object]_result`["error"])) {
+        error_messages <- append(error_messages, `array[object]_result`["message"])
       }
 
       `object_result` <- tryCatch({
@@ -97,11 +98,11 @@ NotificationPostRequest <- R6::R6Class(
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into NotificationPostRequest with oneOf schemas array[map(AnyType)], object. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into NotificationPostRequest with oneOf schemas array[object], object. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into NotificationPostRequest with oneOf schemas array[map(AnyType)], object. Details: >>",
+        stop(paste("No match found when deserializing the input into NotificationPostRequest with oneOf schemas array[object], object. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

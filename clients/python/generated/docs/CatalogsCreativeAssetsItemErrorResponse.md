@@ -6,9 +6,10 @@ Object describing a creative assets item error
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | 
+**catalog_type** | **str** |  | 
 **creative_assets_id** | **str** | The catalog creative assets id in the merchant namespace | [optional] 
 **errors** | [**List[ItemValidationEvent]**](ItemValidationEvent.md) | Array with the errors for the item id requested | 
+**item_response_kind** | **str** | Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload. | 
 
 ## Example
 

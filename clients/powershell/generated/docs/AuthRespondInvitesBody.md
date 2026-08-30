@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Invites** | [**AuthRespondInvitesBodyInvitesInner[]**](AuthRespondInvitesBodyInvitesInner.md) |  | 
+**Invites** | [**AuthRespondInvitesBodyItem[]**](AuthRespondInvitesBodyItem.md) |  | 
 
 ## Examples
 

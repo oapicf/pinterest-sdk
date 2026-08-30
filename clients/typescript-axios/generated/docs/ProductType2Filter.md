@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PRODUCT_TYPE_2** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
+**PRODUCT_TYPE_2** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
 
 ## Example
 

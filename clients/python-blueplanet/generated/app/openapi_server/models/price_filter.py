@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.catalogs_product_group_pricing_currency_criteria import CatalogsProductGroupPricingCurrencyCriteria  # noqa: F401,E501
+from app.openapi_server.models.price_filter_price import PriceFilterPrice  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,14 +16,14 @@ class PriceFilter(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, price: CatalogsProductGroupPricingCurrencyCriteria=None):  # noqa: E501
+    def __init__(self, price: PriceFilterPrice=None):  # noqa: E501
         """PriceFilter - a model defined in Swagger
 
         :param price: The price of this PriceFilter.  # noqa: E501
-        :type price: CatalogsProductGroupPricingCurrencyCriteria
+        :type price: PriceFilterPrice
         """
         self.swagger_types = {
-            'price': CatalogsProductGroupPricingCurrencyCriteria
+            'price': PriceFilterPrice
         }
 
         self.attribute_map = {
@@ -44,22 +44,22 @@ class PriceFilter(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def price(self) -> CatalogsProductGroupPricingCurrencyCriteria:
+    def price(self) -> PriceFilterPrice:
         """Gets the price of this PriceFilter.
 
 
         :return: The price of this PriceFilter.
-        :rtype: CatalogsProductGroupPricingCurrencyCriteria
+        :rtype: PriceFilterPrice
         """
         return self._price
 
     @price.setter
-    def price(self, price: CatalogsProductGroupPricingCurrencyCriteria):
+    def price(self, price: PriceFilterPrice):
         """Sets the price of this PriceFilter.
 
 
         :param price: The price of this PriceFilter.
-        :type price: CatalogsProductGroupPricingCurrencyCriteria
+        :type price: PriceFilterPrice
         """
         if price is None:
             raise ValueError("Invalid value for `price`, must not be `None`")  # noqa: E501

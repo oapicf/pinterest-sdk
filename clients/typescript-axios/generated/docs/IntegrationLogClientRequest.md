@@ -7,7 +7,7 @@ HTTP request details included in the log sent by the client.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **host** | **string** | HTTP request host from host header. | [default to undefined]
-**method** | **string** |  | [default to undefined]
+**method** | [**HttpMethod**](HttpMethod.md) |  | [default to undefined]
 **path** | **string** | HTTP request path. | [default to undefined]
 **request_headers** | **{ [key: string]: string; }** | HTTP request headers as key-value pairs. | [optional] [default to undefined]
 **response_headers** | **{ [key: string]: string; }** | HTTP response headers as key-value pairs. | [optional] [default to undefined]

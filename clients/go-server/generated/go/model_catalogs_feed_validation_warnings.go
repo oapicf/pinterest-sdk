@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -650,7 +650,8 @@ type CatalogsFeedValidationWarnings struct {
 	WEIGHT_UNIT_INVALID int32 `json:"WEIGHT_UNIT_INVALID,omitempty"`
 }
 
-// AssertCatalogsFeedValidationWarningsRequired checks if the required fields are not zero-ed
+// AssertCatalogsFeedValidationWarningsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsFeedValidationWarningsRequired(obj CatalogsFeedValidationWarnings) error {
 	return nil
 }

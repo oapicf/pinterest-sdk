@@ -8,10 +8,10 @@
 static catalogs_feed_processing_result_t *catalogs_feed_processing_result_create_internal(
     char *created_at,
     char *id,
-    char *updated_at,
     catalogs_feed_ingestion_details_t *ingestion_details,
     catalogs_feed_product_counts_t *product_counts,
     pinterest_rest_api_catalogs_feed_processing_status__e status,
+    char *updated_at,
     catalogs_feed_validation_details_t *validation_details,
     catalogs_feed_video_counts_t *video_counts
     ) {
@@ -19,39 +19,42 @@ static catalogs_feed_processing_result_t *catalogs_feed_processing_result_create
     if (!catalogs_feed_processing_result_local_var) {
         return NULL;
     }
+    memset(catalogs_feed_processing_result_local_var, 0, sizeof(catalogs_feed_processing_result_t));
+    catalogs_feed_processing_result_local_var->_library_owned = 1;
     catalogs_feed_processing_result_local_var->created_at = created_at;
     catalogs_feed_processing_result_local_var->id = id;
-    catalogs_feed_processing_result_local_var->updated_at = updated_at;
     catalogs_feed_processing_result_local_var->ingestion_details = ingestion_details;
     catalogs_feed_processing_result_local_var->product_counts = product_counts;
     catalogs_feed_processing_result_local_var->status = status;
+    catalogs_feed_processing_result_local_var->updated_at = updated_at;
     catalogs_feed_processing_result_local_var->validation_details = validation_details;
     catalogs_feed_processing_result_local_var->video_counts = video_counts;
-
-    catalogs_feed_processing_result_local_var->_library_owned = 1;
     return catalogs_feed_processing_result_local_var;
 }
 
 __attribute__((deprecated)) catalogs_feed_processing_result_t *catalogs_feed_processing_result_create(
     char *created_at,
     char *id,
-    char *updated_at,
     catalogs_feed_ingestion_details_t *ingestion_details,
     catalogs_feed_product_counts_t *product_counts,
     pinterest_rest_api_catalogs_feed_processing_status__e status,
+    char *updated_at,
     catalogs_feed_validation_details_t *validation_details,
     catalogs_feed_video_counts_t *video_counts
     ) {
-    return catalogs_feed_processing_result_create_internal (
+    catalogs_feed_processing_result_t *result = catalogs_feed_processing_result_create_internal (
         created_at,
         id,
-        updated_at,
         ingestion_details,
         product_counts,
         status,
+        updated_at,
         validation_details,
         video_counts
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_feed_processing_result_free(catalogs_feed_processing_result_t *catalogs_feed_processing_result) {
@@ -71,10 +74,6 @@ void catalogs_feed_processing_result_free(catalogs_feed_processing_result_t *cat
         free(catalogs_feed_processing_result->id);
         catalogs_feed_processing_result->id = NULL;
     }
-    if (catalogs_feed_processing_result->updated_at) {
-        free(catalogs_feed_processing_result->updated_at);
-        catalogs_feed_processing_result->updated_at = NULL;
-    }
     if (catalogs_feed_processing_result->ingestion_details) {
         catalogs_feed_ingestion_details_free(catalogs_feed_processing_result->ingestion_details);
         catalogs_feed_processing_result->ingestion_details = NULL;
@@ -82,6 +81,10 @@ void catalogs_feed_processing_result_free(catalogs_feed_processing_result_t *cat
     if (catalogs_feed_processing_result->product_counts) {
         catalogs_feed_product_counts_free(catalogs_feed_processing_result->product_counts);
         catalogs_feed_processing_result->product_counts = NULL;
+    }
+    if (catalogs_feed_processing_result->updated_at) {
+        free(catalogs_feed_processing_result->updated_at);
+        catalogs_feed_processing_result->updated_at = NULL;
     }
     if (catalogs_feed_processing_result->validation_details) {
         catalogs_feed_validation_details_free(catalogs_feed_processing_result->validation_details);
@@ -112,15 +115,6 @@ cJSON *catalogs_feed_processing_result_convertToJSON(catalogs_feed_processing_re
     }
     if(cJSON_AddStringToObject(item, "id", catalogs_feed_processing_result->id) == NULL) {
     goto fail; //String
-    }
-
-
-    // catalogs_feed_processing_result->updated_at
-    if (!catalogs_feed_processing_result->updated_at) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "updated_at", catalogs_feed_processing_result->updated_at) == NULL) {
-    goto fail; //Date-Time
     }
 
 
@@ -166,6 +160,15 @@ cJSON *catalogs_feed_processing_result_convertToJSON(catalogs_feed_processing_re
     }
 
 
+    // catalogs_feed_processing_result->updated_at
+    if (!catalogs_feed_processing_result->updated_at) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "updated_at", catalogs_feed_processing_result->updated_at) == NULL) {
+    goto fail; //Date-Time
+    }
+
+
     // catalogs_feed_processing_result->validation_details
     if (!catalogs_feed_processing_result->validation_details) {
         goto fail;
@@ -204,6 +207,10 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
 
     catalogs_feed_processing_result_t *catalogs_feed_processing_result_local_var = NULL;
 
+    char *created_at_local_str = NULL;
+
+    char *id_local_str = NULL;
+
     // define the local variable for catalogs_feed_processing_result->ingestion_details
     catalogs_feed_ingestion_details_t *ingestion_details_local_nonprim = NULL;
 
@@ -212,6 +219,8 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
 
     // define the local variable for catalogs_feed_processing_result->status
     pinterest_rest_api_catalogs_feed_processing_status__e status_local_nonprim = 0;
+
+    char *updated_at_local_str = NULL;
 
     // define the local variable for catalogs_feed_processing_result->validation_details
     catalogs_feed_validation_details_t *validation_details_local_nonprim = NULL;
@@ -247,21 +256,6 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
     if(!cJSON_IsString(id))
     {
     goto end; //String
-    }
-
-    // catalogs_feed_processing_result->updated_at
-    cJSON *updated_at = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_resultJSON, "updated_at");
-    if (cJSON_IsNull(updated_at)) {
-        updated_at = NULL;
-    }
-    if (!updated_at) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(updated_at) && !cJSON_IsNull(updated_at))
-    {
-    goto end; //DateTime
     }
 
     // catalogs_feed_processing_result->ingestion_details
@@ -300,6 +294,21 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
     
     status_local_nonprim = catalogs_feed_processing_status_parseFromJSON(status); //custom
 
+    // catalogs_feed_processing_result->updated_at
+    cJSON *updated_at = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_resultJSON, "updated_at");
+    if (cJSON_IsNull(updated_at)) {
+        updated_at = NULL;
+    }
+    if (!updated_at) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(updated_at) && !cJSON_IsNull(updated_at))
+    {
+    goto end; //DateTime
+    }
+
     // catalogs_feed_processing_result->validation_details
     cJSON *validation_details = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_resultJSON, "validation_details");
     if (cJSON_IsNull(validation_details)) {
@@ -322,19 +331,35 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
     }
 
 
+    if (created_at && !cJSON_IsNull(created_at)) created_at_local_str = strdup(created_at->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (updated_at && !cJSON_IsNull(updated_at)) updated_at_local_str = strdup(updated_at->valuestring);
+
     catalogs_feed_processing_result_local_var = catalogs_feed_processing_result_create_internal (
-        strdup(created_at->valuestring),
-        strdup(id->valuestring),
-        strdup(updated_at->valuestring),
+        created_at_local_str,
+        id_local_str,
         ingestion_details_local_nonprim,
         product_counts_local_nonprim,
         status_local_nonprim,
+        updated_at_local_str,
         validation_details_local_nonprim,
         video_counts ? video_counts_local_nonprim : NULL
         );
 
+    if (!catalogs_feed_processing_result_local_var) {
+        goto end;
+    }
+
     return catalogs_feed_processing_result_local_var;
 end:
+    if (created_at_local_str) {
+        free(created_at_local_str);
+        created_at_local_str = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
     if (ingestion_details_local_nonprim) {
         catalogs_feed_ingestion_details_free(ingestion_details_local_nonprim);
         ingestion_details_local_nonprim = NULL;
@@ -345,6 +370,10 @@ end:
     }
     if (status_local_nonprim) {
         status_local_nonprim = 0;
+    }
+    if (updated_at_local_str) {
+        free(updated_at_local_str);
+        updated_at_local_str = NULL;
     }
     if (validation_details_local_nonprim) {
         catalogs_feed_validation_details_free(validation_details_local_nonprim);

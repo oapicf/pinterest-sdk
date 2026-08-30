@@ -11,5 +11,5 @@ type CatalogsItemsCreateBatchRequest struct {
 	// We recommend using the CatalogsLocale values.
 	Language string `json:"language"`
 
-	Operation BatchOperation `json:"operation"`
+	Operation string `json:"operation"`
 }

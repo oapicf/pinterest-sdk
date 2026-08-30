@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum CatalogsFormat {
 
-    @JsonProperty("TSV") TSV(String.valueOf("TSV")), @JsonProperty("CSV") CSV(String.valueOf("CSV")), @JsonProperty("XML") XML(String.valueOf("XML"));
+    @JsonProperty("TSV") TSV(String.valueOf("TSV")), @JsonProperty("CSV") CSV(String.valueOf("CSV")), @JsonProperty("XML") XML(String.valueOf("XML")), @JsonProperty("INTEGRATION") INTEGRATION(String.valueOf("INTEGRATION"));
 
 
     private String value;

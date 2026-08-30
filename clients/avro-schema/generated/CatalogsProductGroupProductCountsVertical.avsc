@@ -6,7 +6,13 @@
   "fields": [
     {
       "name": "catalog_type",
-      "type": "model.CatalogsType",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsProductGroupProductCountsVertical_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
       "doc": ""
     },
     {
@@ -31,6 +37,16 @@
     },
     {
       "name": "videos",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "app_links",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "images",
       "type": "double",
       "doc": ""
     }

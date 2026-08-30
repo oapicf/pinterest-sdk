@@ -7,13 +7,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AuthRespondInvitesBodyInvitesInner } from './authRespondInvitesBodyInvitesInner';
+import { AuthRespondInvitesBodyItem } from './authRespondInvitesBodyItem';
 
 
 /**
  * An object with a list of all the invites the user would like to respond to and the action to take.
  */
 export interface AuthRespondInvitesBody { 
-    invites: Array<AuthRespondInvitesBodyInvitesInner>;
+    invites: Array<AuthRespondInvitesBodyItem>;
 }
 

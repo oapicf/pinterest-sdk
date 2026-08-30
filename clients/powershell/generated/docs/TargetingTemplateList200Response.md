@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | **String** |  | [optional] 
-**Items** | [**TargetingTemplateGetResponseData[]**](TargetingTemplateGetResponseData.md) |  | 
+**Items** | [**TargetingTemplate[]**](TargetingTemplate.md) |  | 
 
 ## Examples
 

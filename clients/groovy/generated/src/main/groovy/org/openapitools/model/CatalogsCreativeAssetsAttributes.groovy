@@ -3,7 +3,10 @@ package org.openapitools.model;
 import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsAiContentDisclosure;
 
 @Canonical
 class CatalogsCreativeAssetsAttributes {
@@ -29,8 +32,10 @@ class CatalogsCreativeAssetsAttributes {
     String link
     /* The name of the creative assets. */
     String title
-    /* Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. */
+    /* Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'. */
     String visibility
+    /* AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL. */
+    List<CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>()
     /* The creative assets image. */
     String imageLink
     /* The creative assets video. */

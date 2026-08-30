@@ -7,13 +7,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { LabelUpdateRequestLabelsInner } from './labelUpdateRequestLabelsInner';
+import { LabelUpdateItem } from './labelUpdateItem';
 
 
 export interface LabelUpdateRequest { 
     /**
      * Labels that you are applying to the campaign.
      */
-    labels: Array<LabelUpdateRequestLabelsInner>;
+    labels: Array<LabelUpdateItem>;
 }
 

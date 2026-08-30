@@ -6,15 +6,15 @@
 | ---- | ---- | ----------- | ----- |
 | **ad_image_tags** | **Array&lt;String&gt;** |  | [optional] |
 | **ad_video_tags** | **Array&lt;String&gt;** |  | [optional] |
-| **availability** | **Array&lt;String&gt;** |  | [optional] |
+| **availability** | [**Array&lt;ProductAvailability&gt;**](ProductAvailability.md) |  | [optional] |
 | **brand** | **Array&lt;String&gt;** |  | [optional] |
-| **condition** | **Array&lt;String&gt;** |  | [optional] |
+| **condition** | [**Array&lt;ProductCondition&gt;**](ProductCondition.md) |  | [optional] |
 | **custom_label_0** | **Array&lt;String&gt;** |  | [optional] |
 | **custom_label_1** | **Array&lt;String&gt;** |  | [optional] |
 | **custom_label_2** | **Array&lt;String&gt;** |  | [optional] |
 | **custom_label_3** | **Array&lt;String&gt;** |  | [optional] |
 | **custom_label_4** | **Array&lt;String&gt;** |  | [optional] |
-| **gender** | **Array&lt;String&gt;** |  | [optional] |
+| **gender** | [**Array&lt;Gender&gt;**](Gender.md) |  | [optional] |
 | **google_product_category_0** | **Array&lt;String&gt;** |  | [optional] |
 | **google_product_category_1** | **Array&lt;String&gt;** |  | [optional] |
 | **google_product_category_2** | **Array&lt;String&gt;** |  | [optional] |
@@ -22,7 +22,7 @@
 | **google_product_category_4** | **Array&lt;String&gt;** |  | [optional] |
 | **google_product_category_5** | **Array&lt;String&gt;** |  | [optional] |
 | **google_product_category_6** | **Array&lt;String&gt;** |  | [optional] |
-| **media_type** | **Array&lt;String&gt;** |  | [optional] |
+| **media_type** | [**Array&lt;MediaType&gt;**](MediaType.md) |  | [optional] |
 | **product_type_0** | **Array&lt;String&gt;** |  | [optional] |
 | **product_type_1** | **Array&lt;String&gt;** |  | [optional] |
 | **product_type_2** | **Array&lt;String&gt;** |  | [optional] |

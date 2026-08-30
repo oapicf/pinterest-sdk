@@ -9,14 +9,17 @@
  */
 
 
+/**
+ * Bid floor request and response model.
+ */
 export interface BidFloor { 
     /**
      * A list of bid floors in micro currency. For example, [100000, 200000]
      */
-    bid_floors?: Array<number>;
+    readonly bid_floors?: Array<number>;
     /**
-     * Always the string \'bidfloor\'
+     * Always the string \'bidfloor\'.
      */
-    type?: string;
+    readonly type?: string;
 }
 

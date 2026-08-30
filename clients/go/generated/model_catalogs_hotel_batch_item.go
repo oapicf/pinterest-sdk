@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -14,12 +14,10 @@ package openapi
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
-// checks if the CatalogsHotelBatchItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CatalogsHotelBatchItem{}
-
-// CatalogsHotelBatchItem Hotel batch item
+// CatalogsHotelBatchItem - Hotel batch item
 type CatalogsHotelBatchItem struct {
 	CatalogsCreateHotelItem *CatalogsCreateHotelItem
 	CatalogsDeleteHotelItem *CatalogsDeleteHotelItem
@@ -27,133 +25,139 @@ type CatalogsHotelBatchItem struct {
 	CatalogsUpsertHotelItem *CatalogsUpsertHotelItem
 }
 
-// Unmarshal JSON data into any of the pointers in the struct
+// CatalogsCreateHotelItemAsCatalogsHotelBatchItem is a convenience function that returns CatalogsCreateHotelItem wrapped in CatalogsHotelBatchItem
+func CatalogsCreateHotelItemAsCatalogsHotelBatchItem(v *CatalogsCreateHotelItem) CatalogsHotelBatchItem {
+	return CatalogsHotelBatchItem{
+		CatalogsCreateHotelItem: v,
+	}
+}
+
+// CatalogsDeleteHotelItemAsCatalogsHotelBatchItem is a convenience function that returns CatalogsDeleteHotelItem wrapped in CatalogsHotelBatchItem
+func CatalogsDeleteHotelItemAsCatalogsHotelBatchItem(v *CatalogsDeleteHotelItem) CatalogsHotelBatchItem {
+	return CatalogsHotelBatchItem{
+		CatalogsDeleteHotelItem: v,
+	}
+}
+
+// CatalogsUpdateHotelItemAsCatalogsHotelBatchItem is a convenience function that returns CatalogsUpdateHotelItem wrapped in CatalogsHotelBatchItem
+func CatalogsUpdateHotelItemAsCatalogsHotelBatchItem(v *CatalogsUpdateHotelItem) CatalogsHotelBatchItem {
+	return CatalogsHotelBatchItem{
+		CatalogsUpdateHotelItem: v,
+	}
+}
+
+// CatalogsUpsertHotelItemAsCatalogsHotelBatchItem is a convenience function that returns CatalogsUpsertHotelItem wrapped in CatalogsHotelBatchItem
+func CatalogsUpsertHotelItemAsCatalogsHotelBatchItem(v *CatalogsUpsertHotelItem) CatalogsHotelBatchItem {
+	return CatalogsHotelBatchItem{
+		CatalogsUpsertHotelItem: v,
+	}
+}
+
+
+// Unmarshal JSON data into one of the pointers in the struct
 func (dst *CatalogsHotelBatchItem) UnmarshalJSON(data []byte) error {
 	var err error
-	// use discriminator value to speed up the lookup
-	var jsonDict map[string]interface{}
-	err = json.Unmarshal(data, &jsonDict)
-	if err != nil {
-		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
-	}
-
-	// check if the discriminator value is 'CREATE'
-	if jsonDict["operation"] == "CREATE" {
-		// try to unmarshal JSON data into CatalogsCreateHotelItem
-		err = json.Unmarshal(data, &dst.CatalogsCreateHotelItem);
-		if err == nil {
-			jsonCatalogsCreateHotelItem, _ := json.Marshal(dst.CatalogsCreateHotelItem)
-			if string(jsonCatalogsCreateHotelItem) == "{}" { // empty struct
-				dst.CatalogsCreateHotelItem = nil
-			} else {
-				return nil // data stored in dst.CatalogsCreateHotelItem, return on the first match
-			}
-		} else {
-			dst.CatalogsCreateHotelItem = nil
-		}
-	}
-
-	// check if the discriminator value is 'DELETE'
-	if jsonDict["operation"] == "DELETE" {
-		// try to unmarshal JSON data into CatalogsDeleteHotelItem
-		err = json.Unmarshal(data, &dst.CatalogsDeleteHotelItem);
-		if err == nil {
-			jsonCatalogsDeleteHotelItem, _ := json.Marshal(dst.CatalogsDeleteHotelItem)
-			if string(jsonCatalogsDeleteHotelItem) == "{}" { // empty struct
-				dst.CatalogsDeleteHotelItem = nil
-			} else {
-				return nil // data stored in dst.CatalogsDeleteHotelItem, return on the first match
-			}
-		} else {
-			dst.CatalogsDeleteHotelItem = nil
-		}
-	}
-
-	// check if the discriminator value is 'UPDATE'
-	if jsonDict["operation"] == "UPDATE" {
-		// try to unmarshal JSON data into CatalogsUpdateHotelItem
-		err = json.Unmarshal(data, &dst.CatalogsUpdateHotelItem);
-		if err == nil {
-			jsonCatalogsUpdateHotelItem, _ := json.Marshal(dst.CatalogsUpdateHotelItem)
-			if string(jsonCatalogsUpdateHotelItem) == "{}" { // empty struct
-				dst.CatalogsUpdateHotelItem = nil
-			} else {
-				return nil // data stored in dst.CatalogsUpdateHotelItem, return on the first match
-			}
-		} else {
-			dst.CatalogsUpdateHotelItem = nil
-		}
-	}
-
-	// check if the discriminator value is 'UPSERT'
-	if jsonDict["operation"] == "UPSERT" {
-		// try to unmarshal JSON data into CatalogsUpsertHotelItem
-		err = json.Unmarshal(data, &dst.CatalogsUpsertHotelItem);
-		if err == nil {
-			jsonCatalogsUpsertHotelItem, _ := json.Marshal(dst.CatalogsUpsertHotelItem)
-			if string(jsonCatalogsUpsertHotelItem) == "{}" { // empty struct
-				dst.CatalogsUpsertHotelItem = nil
-			} else {
-				return nil // data stored in dst.CatalogsUpsertHotelItem, return on the first match
-			}
-		} else {
-			dst.CatalogsUpsertHotelItem = nil
-		}
-	}
-
-	// try to unmarshal JSON data into CatalogsCreateHotelItem
-	err = json.Unmarshal(data, &dst.CatalogsCreateHotelItem);
+	match := 0
+	// try to unmarshal data into CatalogsCreateHotelItem
+	err = newStrictDecoder(data).Decode(&dst.CatalogsCreateHotelItem)
 	if err == nil {
 		jsonCatalogsCreateHotelItem, _ := json.Marshal(dst.CatalogsCreateHotelItem)
 		if string(jsonCatalogsCreateHotelItem) == "{}" { // empty struct
 			dst.CatalogsCreateHotelItem = nil
 		} else {
-			return nil // data stored in dst.CatalogsCreateHotelItem, return on the first match
+			if err = validator.Validate(dst.CatalogsCreateHotelItem); err != nil {
+				dst.CatalogsCreateHotelItem = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsCreateHotelItem = nil
 	}
 
-	// try to unmarshal JSON data into CatalogsDeleteHotelItem
-	err = json.Unmarshal(data, &dst.CatalogsDeleteHotelItem);
+	// try to unmarshal data into CatalogsDeleteHotelItem
+	err = newStrictDecoder(data).Decode(&dst.CatalogsDeleteHotelItem)
 	if err == nil {
 		jsonCatalogsDeleteHotelItem, _ := json.Marshal(dst.CatalogsDeleteHotelItem)
 		if string(jsonCatalogsDeleteHotelItem) == "{}" { // empty struct
 			dst.CatalogsDeleteHotelItem = nil
 		} else {
-			return nil // data stored in dst.CatalogsDeleteHotelItem, return on the first match
+			if err = validator.Validate(dst.CatalogsDeleteHotelItem); err != nil {
+				dst.CatalogsDeleteHotelItem = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsDeleteHotelItem = nil
 	}
 
-	// try to unmarshal JSON data into CatalogsUpdateHotelItem
-	err = json.Unmarshal(data, &dst.CatalogsUpdateHotelItem);
+	// try to unmarshal data into CatalogsUpdateHotelItem
+	err = newStrictDecoder(data).Decode(&dst.CatalogsUpdateHotelItem)
 	if err == nil {
 		jsonCatalogsUpdateHotelItem, _ := json.Marshal(dst.CatalogsUpdateHotelItem)
 		if string(jsonCatalogsUpdateHotelItem) == "{}" { // empty struct
 			dst.CatalogsUpdateHotelItem = nil
 		} else {
-			return nil // data stored in dst.CatalogsUpdateHotelItem, return on the first match
+			if err = validator.Validate(dst.CatalogsUpdateHotelItem); err != nil {
+				dst.CatalogsUpdateHotelItem = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsUpdateHotelItem = nil
 	}
 
-	// try to unmarshal JSON data into CatalogsUpsertHotelItem
-	err = json.Unmarshal(data, &dst.CatalogsUpsertHotelItem);
+	// try to unmarshal data into CatalogsUpsertHotelItem
+	err = newStrictDecoder(data).Decode(&dst.CatalogsUpsertHotelItem)
 	if err == nil {
 		jsonCatalogsUpsertHotelItem, _ := json.Marshal(dst.CatalogsUpsertHotelItem)
 		if string(jsonCatalogsUpsertHotelItem) == "{}" { // empty struct
 			dst.CatalogsUpsertHotelItem = nil
 		} else {
-			return nil // data stored in dst.CatalogsUpsertHotelItem, return on the first match
+			if err = validator.Validate(dst.CatalogsUpsertHotelItem); err != nil {
+				dst.CatalogsUpsertHotelItem = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsUpsertHotelItem = nil
 	}
 
-	return fmt.Errorf("data failed to match schemas in anyOf(CatalogsHotelBatchItem)")
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.CatalogsCreateHotelItem = nil
+		dst.CatalogsDeleteHotelItem = nil
+		dst.CatalogsUpdateHotelItem = nil
+		dst.CatalogsUpsertHotelItem = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(CatalogsHotelBatchItem)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsHotelBatchItem): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsHotelBatchItem)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsHotelBatchItem): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsHotelBatchItem)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsHotelBatchItem): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsHotelBatchItem)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsHotelBatchItem): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsHotelBatchItem)")
+        }
+	}
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
@@ -174,27 +178,54 @@ func (src CatalogsHotelBatchItem) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.CatalogsUpsertHotelItem)
 	}
 
-	return nil, nil // no data in anyOf schemas
+	return nil, nil // no data in oneOf schemas
 }
 
-func (src CatalogsHotelBatchItem) ToMap() (map[string]interface{}, error) {
-	if src.CatalogsCreateHotelItem != nil {
-		return src.CatalogsCreateHotelItem.ToMap()
+// Get the actual instance
+func (obj *CatalogsHotelBatchItem) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.CatalogsCreateHotelItem != nil {
+		return obj.CatalogsCreateHotelItem
 	}
 
-	if src.CatalogsDeleteHotelItem != nil {
-		return src.CatalogsDeleteHotelItem.ToMap()
+	if obj.CatalogsDeleteHotelItem != nil {
+		return obj.CatalogsDeleteHotelItem
 	}
 
-	if src.CatalogsUpdateHotelItem != nil {
-		return src.CatalogsUpdateHotelItem.ToMap()
+	if obj.CatalogsUpdateHotelItem != nil {
+		return obj.CatalogsUpdateHotelItem
 	}
 
-	if src.CatalogsUpsertHotelItem != nil {
-		return src.CatalogsUpsertHotelItem.ToMap()
+	if obj.CatalogsUpsertHotelItem != nil {
+		return obj.CatalogsUpsertHotelItem
 	}
 
-    return nil, nil // no data in anyOf schemas
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsHotelBatchItem) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsCreateHotelItem != nil {
+		return *obj.CatalogsCreateHotelItem
+	}
+
+	if obj.CatalogsDeleteHotelItem != nil {
+		return *obj.CatalogsDeleteHotelItem
+	}
+
+	if obj.CatalogsUpdateHotelItem != nil {
+		return *obj.CatalogsUpdateHotelItem
+	}
+
+	if obj.CatalogsUpsertHotelItem != nil {
+		return *obj.CatalogsUpsertHotelItem
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableCatalogsHotelBatchItem struct {

@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TokenGrantType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TokenGrantType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  TokenGrantType {
+    title = TokenGrantType
+    description = TokenGrantType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  TokenGrantType {
+    title = TokenGrantType
+    description = TokenGrantType
+    implements = openapi_server.resourceTypes.TokenGrantType
+
+  }
+}

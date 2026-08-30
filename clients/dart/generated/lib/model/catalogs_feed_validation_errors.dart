@@ -147,7 +147,7 @@ class CatalogsFeedValidationErrors {
   ///
   int? FETCH_ERROR;
 
-  /// Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+  /// Your feed wasn't ingested because it hasn't changed in the previous 90 days.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -602,10 +602,6 @@ class CatalogsFeedValidationErrors {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsFeedValidationErrors[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsFeedValidationErrors[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

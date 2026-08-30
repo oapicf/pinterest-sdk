@@ -5,12 +5,13 @@ module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            ...CatalogsProductGroupPricingCriteria.fields(`${keyPrefix}MAX_PRICE`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'MAX_PRICE': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}MAX_PRICE`)),
+            'MAX_PRICE': utils.removeIfEmpty(CatalogsProductGroupPricingCriteria.mapping(bundle, `${keyPrefix}MAX_PRICE`)),
         }
     },
 }

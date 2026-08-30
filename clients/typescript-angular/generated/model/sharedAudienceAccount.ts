@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { AudienceAccountType } from './audienceAccountType';
 
 
 export interface SharedAudienceAccount { 
@@ -21,18 +22,13 @@ export interface SharedAudienceAccount {
     /**
      * account type
      */
-    account_type: SharedAudienceAccount.AccountTypeEnum;
+    account_type: AudienceAccountType;
     /**
      * Epoch timestamp in seconds for the shared audience event
      */
     shared_on_timestamp: number;
 }
 export namespace SharedAudienceAccount {
-    export const AccountTypeEnum = {
-        AdAccount: 'AD_ACCOUNT',
-        BusinessAccount: 'BUSINESS_ACCOUNT'
-    } as const;
-    export type AccountTypeEnum = typeof AccountTypeEnum[keyof typeof AccountTypeEnum];
 }
 
 

@@ -13,7 +13,9 @@
  * Product counts for a Creative Assets CatalogsProductGroup
  */
 export interface CatalogsCreativeAssetsProductGroupProductCounts { 
+    app_links: number;
     catalog_type: CatalogsCreativeAssetsProductGroupProductCounts.CatalogTypeEnum;
+    images: number;
     total: number;
     videos: number;
 }

@@ -4,7 +4,7 @@ package models
 type CatalogsListProductsByFeedBasedFilter struct {
 
 	// Catalog Feed id pertaining to the catalog product group filter.
-	FeedId string `json:"feed_id" validate:"regexp=^\\\\d+$"`
+	FeedId string `json:"feed_id" validate:"regexp=^\\d+$"`
 
 	Filters CatalogsProductGroupFilters `json:"filters"`
 }

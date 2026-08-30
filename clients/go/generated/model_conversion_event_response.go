@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,12 +21,14 @@ var _ MappedNullable = &ConversionEventResponse{}
 // ConversionEventResponse struct for ConversionEventResponse
 type ConversionEventResponse struct {
 	// Id of the ad account.
-	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\d+$"`
 	ConversionEvent *ConversionTagType `json:"conversion_event,omitempty"`
 	// Id of the tag.
-	ConversionTagId *string `json:"conversion_tag_id,omitempty" validate:"regexp=^\\\\d+$"`
+	ConversionTagId *string `json:"conversion_tag_id,omitempty" validate:"regexp=^\\d+$"`
 	// Creation date in epoch format.
 	CreatedTime *int32 `json:"created_time,omitempty"`
+	// For advertiser-defined events, the reporting event label shown in optimization UIs.
+	ReportingConversionEvent *string `json:"reporting_conversion_event,omitempty"`
 }
 
 // NewConversionEventResponse instantiates a new ConversionEventResponse object
@@ -174,6 +176,38 @@ func (o *ConversionEventResponse) SetCreatedTime(v int32) {
 	o.CreatedTime = &v
 }
 
+// GetReportingConversionEvent returns the ReportingConversionEvent field value if set, zero value otherwise.
+func (o *ConversionEventResponse) GetReportingConversionEvent() string {
+	if o == nil || IsNil(o.ReportingConversionEvent) {
+		var ret string
+		return ret
+	}
+	return *o.ReportingConversionEvent
+}
+
+// GetReportingConversionEventOk returns a tuple with the ReportingConversionEvent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConversionEventResponse) GetReportingConversionEventOk() (*string, bool) {
+	if o == nil || IsNil(o.ReportingConversionEvent) {
+		return nil, false
+	}
+	return o.ReportingConversionEvent, true
+}
+
+// HasReportingConversionEvent returns a boolean if a field has been set.
+func (o *ConversionEventResponse) HasReportingConversionEvent() bool {
+	if o != nil && !IsNil(o.ReportingConversionEvent) {
+		return true
+	}
+
+	return false
+}
+
+// SetReportingConversionEvent gets a reference to the given string and assigns it to the ReportingConversionEvent field.
+func (o *ConversionEventResponse) SetReportingConversionEvent(v string) {
+	o.ReportingConversionEvent = &v
+}
+
 func (o ConversionEventResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -195,6 +229,9 @@ func (o ConversionEventResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CreatedTime) {
 		toSerialize["created_time"] = o.CreatedTime
+	}
+	if !IsNil(o.ReportingConversionEvent) {
+		toSerialize["reporting_conversion_event"] = o.ReportingConversionEvent
 	}
 	return toSerialize, nil
 }

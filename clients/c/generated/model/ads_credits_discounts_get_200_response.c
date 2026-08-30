@@ -13,10 +13,10 @@ static ads_credits_discounts_get_200_response_t *ads_credits_discounts_get_200_r
     if (!ads_credits_discounts_get_200_response_local_var) {
         return NULL;
     }
+    memset(ads_credits_discounts_get_200_response_local_var, 0, sizeof(ads_credits_discounts_get_200_response_t));
+    ads_credits_discounts_get_200_response_local_var->_library_owned = 1;
     ads_credits_discounts_get_200_response_local_var->bookmark = bookmark;
     ads_credits_discounts_get_200_response_local_var->items = items;
-
-    ads_credits_discounts_get_200_response_local_var->_library_owned = 1;
     return ads_credits_discounts_get_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) ads_credits_discounts_get_200_response_t *ads_credit
     char *bookmark,
     list_t *items
     ) {
-    return ads_credits_discounts_get_200_response_create_internal (
+    ads_credits_discounts_get_200_response_t *result = ads_credits_discounts_get_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ads_credits_discounts_get_200_response_free(ads_credits_discounts_get_200_response_t *ads_credits_discounts_get_200_response) {
@@ -96,6 +99,8 @@ ads_credits_discounts_get_200_response_t *ads_credits_discounts_get_200_response
 
     ads_credits_discounts_get_200_response_t *ads_credits_discounts_get_200_response_local_var = NULL;
 
+    char *bookmark_local_str = NULL;
+
     // define the local list for ads_credits_discounts_get_200_response->items
     list_t *itemsList = NULL;
 
@@ -139,13 +144,23 @@ ads_credits_discounts_get_200_response_t *ads_credits_discounts_get_200_response
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     ads_credits_discounts_get_200_response_local_var = ads_credits_discounts_get_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!ads_credits_discounts_get_200_response_local_var) {
+        goto end;
+    }
+
     return ads_credits_discounts_get_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {

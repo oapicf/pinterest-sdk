@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UpdatableItemAttributes   {
   
   private String adImage0Link;
@@ -124,12 +124,12 @@ public class UpdatableItemAttributes   {
   private List<String> variantValues;
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_0_link")
-  public String getAdImage0Link() {
+ @Size(max=2000)  public String getAdImage0Link() {
     return adImage0Link;
   }
   public void setAdImage0Link(String adImage0Link) {
@@ -137,12 +137,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_0_tag")
-  public String getAdImage0Tag() {
+ @Size(max=511)  public String getAdImage0Tag() {
     return adImage0Tag;
   }
   public void setAdImage0Tag(String adImage0Tag) {
@@ -150,12 +150,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_10_link")
-  public String getAdImage10Link() {
+ @Size(max=2000)  public String getAdImage10Link() {
     return adImage10Link;
   }
   public void setAdImage10Link(String adImage10Link) {
@@ -163,12 +163,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_10_tag")
-  public String getAdImage10Tag() {
+ @Size(max=511)  public String getAdImage10Tag() {
     return adImage10Tag;
   }
   public void setAdImage10Tag(String adImage10Tag) {
@@ -176,12 +176,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_11_link")
-  public String getAdImage11Link() {
+ @Size(max=2000)  public String getAdImage11Link() {
     return adImage11Link;
   }
   public void setAdImage11Link(String adImage11Link) {
@@ -189,12 +189,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_11_tag")
-  public String getAdImage11Tag() {
+ @Size(max=511)  public String getAdImage11Tag() {
     return adImage11Tag;
   }
   public void setAdImage11Tag(String adImage11Tag) {
@@ -202,12 +202,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_12_link")
-  public String getAdImage12Link() {
+ @Size(max=2000)  public String getAdImage12Link() {
     return adImage12Link;
   }
   public void setAdImage12Link(String adImage12Link) {
@@ -215,12 +215,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_12_tag")
-  public String getAdImage12Tag() {
+ @Size(max=511)  public String getAdImage12Tag() {
     return adImage12Tag;
   }
   public void setAdImage12Tag(String adImage12Tag) {
@@ -228,12 +228,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_13_link")
-  public String getAdImage13Link() {
+ @Size(max=2000)  public String getAdImage13Link() {
     return adImage13Link;
   }
   public void setAdImage13Link(String adImage13Link) {
@@ -241,12 +241,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_13_tag")
-  public String getAdImage13Tag() {
+ @Size(max=511)  public String getAdImage13Tag() {
     return adImage13Tag;
   }
   public void setAdImage13Tag(String adImage13Tag) {
@@ -254,12 +254,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_14_link")
-  public String getAdImage14Link() {
+ @Size(max=2000)  public String getAdImage14Link() {
     return adImage14Link;
   }
   public void setAdImage14Link(String adImage14Link) {
@@ -267,12 +267,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_14_tag")
-  public String getAdImage14Tag() {
+ @Size(max=511)  public String getAdImage14Tag() {
     return adImage14Tag;
   }
   public void setAdImage14Tag(String adImage14Tag) {
@@ -280,12 +280,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_15_link")
-  public String getAdImage15Link() {
+ @Size(max=2000)  public String getAdImage15Link() {
     return adImage15Link;
   }
   public void setAdImage15Link(String adImage15Link) {
@@ -293,12 +293,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_15_tag")
-  public String getAdImage15Tag() {
+ @Size(max=511)  public String getAdImage15Tag() {
     return adImage15Tag;
   }
   public void setAdImage15Tag(String adImage15Tag) {
@@ -306,12 +306,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_16_link")
-  public String getAdImage16Link() {
+ @Size(max=2000)  public String getAdImage16Link() {
     return adImage16Link;
   }
   public void setAdImage16Link(String adImage16Link) {
@@ -319,12 +319,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_16_tag")
-  public String getAdImage16Tag() {
+ @Size(max=511)  public String getAdImage16Tag() {
     return adImage16Tag;
   }
   public void setAdImage16Tag(String adImage16Tag) {
@@ -332,12 +332,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_17_link")
-  public String getAdImage17Link() {
+ @Size(max=2000)  public String getAdImage17Link() {
     return adImage17Link;
   }
   public void setAdImage17Link(String adImage17Link) {
@@ -345,12 +345,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_17_tag")
-  public String getAdImage17Tag() {
+ @Size(max=511)  public String getAdImage17Tag() {
     return adImage17Tag;
   }
   public void setAdImage17Tag(String adImage17Tag) {
@@ -358,12 +358,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_18_link")
-  public String getAdImage18Link() {
+ @Size(max=2000)  public String getAdImage18Link() {
     return adImage18Link;
   }
   public void setAdImage18Link(String adImage18Link) {
@@ -371,12 +371,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_18_tag")
-  public String getAdImage18Tag() {
+ @Size(max=511)  public String getAdImage18Tag() {
     return adImage18Tag;
   }
   public void setAdImage18Tag(String adImage18Tag) {
@@ -384,12 +384,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_19_link")
-  public String getAdImage19Link() {
+ @Size(max=2000)  public String getAdImage19Link() {
     return adImage19Link;
   }
   public void setAdImage19Link(String adImage19Link) {
@@ -397,12 +397,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_19_tag")
-  public String getAdImage19Tag() {
+ @Size(max=511)  public String getAdImage19Tag() {
     return adImage19Tag;
   }
   public void setAdImage19Tag(String adImage19Tag) {
@@ -410,12 +410,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_1_link")
-  public String getAdImage1Link() {
+ @Size(max=2000)  public String getAdImage1Link() {
     return adImage1Link;
   }
   public void setAdImage1Link(String adImage1Link) {
@@ -423,12 +423,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_1_tag")
-  public String getAdImage1Tag() {
+ @Size(max=511)  public String getAdImage1Tag() {
     return adImage1Tag;
   }
   public void setAdImage1Tag(String adImage1Tag) {
@@ -436,12 +436,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_2_link")
-  public String getAdImage2Link() {
+ @Size(max=2000)  public String getAdImage2Link() {
     return adImage2Link;
   }
   public void setAdImage2Link(String adImage2Link) {
@@ -449,12 +449,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_2_tag")
-  public String getAdImage2Tag() {
+ @Size(max=511)  public String getAdImage2Tag() {
     return adImage2Tag;
   }
   public void setAdImage2Tag(String adImage2Tag) {
@@ -462,12 +462,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_3_link")
-  public String getAdImage3Link() {
+ @Size(max=2000)  public String getAdImage3Link() {
     return adImage3Link;
   }
   public void setAdImage3Link(String adImage3Link) {
@@ -475,12 +475,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_3_tag")
-  public String getAdImage3Tag() {
+ @Size(max=511)  public String getAdImage3Tag() {
     return adImage3Tag;
   }
   public void setAdImage3Tag(String adImage3Tag) {
@@ -488,12 +488,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_4_link")
-  public String getAdImage4Link() {
+ @Size(max=2000)  public String getAdImage4Link() {
     return adImage4Link;
   }
   public void setAdImage4Link(String adImage4Link) {
@@ -501,12 +501,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_4_tag")
-  public String getAdImage4Tag() {
+ @Size(max=511)  public String getAdImage4Tag() {
     return adImage4Tag;
   }
   public void setAdImage4Tag(String adImage4Tag) {
@@ -514,12 +514,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_5_link")
-  public String getAdImage5Link() {
+ @Size(max=2000)  public String getAdImage5Link() {
     return adImage5Link;
   }
   public void setAdImage5Link(String adImage5Link) {
@@ -527,12 +527,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_5_tag")
-  public String getAdImage5Tag() {
+ @Size(max=511)  public String getAdImage5Tag() {
     return adImage5Tag;
   }
   public void setAdImage5Tag(String adImage5Tag) {
@@ -540,12 +540,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_6_link")
-  public String getAdImage6Link() {
+ @Size(max=2000)  public String getAdImage6Link() {
     return adImage6Link;
   }
   public void setAdImage6Link(String adImage6Link) {
@@ -553,12 +553,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_6_tag")
-  public String getAdImage6Tag() {
+ @Size(max=511)  public String getAdImage6Tag() {
     return adImage6Tag;
   }
   public void setAdImage6Tag(String adImage6Tag) {
@@ -566,12 +566,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_7_link")
-  public String getAdImage7Link() {
+ @Size(max=2000)  public String getAdImage7Link() {
     return adImage7Link;
   }
   public void setAdImage7Link(String adImage7Link) {
@@ -579,12 +579,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_7_tag")
-  public String getAdImage7Tag() {
+ @Size(max=511)  public String getAdImage7Tag() {
     return adImage7Tag;
   }
   public void setAdImage7Tag(String adImage7Tag) {
@@ -592,12 +592,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_8_link")
-  public String getAdImage8Link() {
+ @Size(max=2000)  public String getAdImage8Link() {
     return adImage8Link;
   }
   public void setAdImage8Link(String adImage8Link) {
@@ -605,12 +605,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_8_tag")
-  public String getAdImage8Tag() {
+ @Size(max=511)  public String getAdImage8Tag() {
     return adImage8Tag;
   }
   public void setAdImage8Tag(String adImage8Tag) {
@@ -618,12 +618,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad image link that supplements main image for shopping campaigns.&lt;/p&gt; &lt;p&gt;Image format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size at least 75 x 75&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder images in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/image/image_v2.jpg", value = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_image_9_link")
-  public String getAdImage9Link() {
+ @Size(max=2000)  public String getAdImage9Link() {
     return adImage9Link;
   }
   public void setAdImage9Link(String adImage9Link) {
@@ -631,12 +631,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.&lt;/p&gt;
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.")
   @JsonProperty("ad_image_9_tag")
-  public String getAdImage9Tag() {
+ @Size(max=511)  public String getAdImage9Tag() {
     return adImage9Tag;
   }
   public void setAdImage9Tag(String adImage9Tag) {
@@ -644,10 +644,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
+   * Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking. Must begin with http:// or https://.
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/cat/denim-shirt/item012?utm_source=Pinterest", value = "Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.")
+  @ApiModelProperty(example = "https://www.example.com/cat/denim-shirt/item012?utm_source=Pinterest", value = "Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking. Must begin with http:// or https://.")
   @JsonProperty("ad_link")
   public String getAdLink() {
     return adLink;
@@ -657,12 +657,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/video/video_v2.mov", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/video/video_v2.mov", value = "Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_video_0_link")
-  public String getAdVideo0Link() {
+ @Size(max=2000)  public String getAdVideo0Link() {
     return adVideo0Link;
   }
   public void setAdVideo0Link(String adVideo0Link) {
@@ -670,12 +670,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;
+   * Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.")
   @JsonProperty("ad_video_0_tag")
-  public String getAdVideo0Tag() {
+ @Size(max=511)  public String getAdVideo0Tag() {
     return adVideo0Tag;
   }
   public void setAdVideo0Tag(String adVideo0Tag) {
@@ -683,12 +683,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/video/video_v2.mov", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/video/video_v2.mov", value = "Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_video_1_link")
-  public String getAdVideo1Link() {
+ @Size(max=2000)  public String getAdVideo1Link() {
     return adVideo1Link;
   }
   public void setAdVideo1Link(String adVideo1Link) {
@@ -696,12 +696,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;
+   * Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.")
   @JsonProperty("ad_video_1_tag")
-  public String getAdVideo1Tag() {
+ @Size(max=511)  public String getAdVideo1Tag() {
     return adVideo1Tag;
   }
   public void setAdVideo1Tag(String adVideo1Tag) {
@@ -709,12 +709,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;Ad video link that supplements main video for shopping campaigns.&lt;/p&gt; &lt;p&gt;Video format:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Pixel size between 75 x 75 and 9450 x 9450&lt;/li&gt;   &lt;li&gt;File size smaller than 2 GB&lt;/li&gt;   &lt;li&gt;Time span between 4 seconds and 15 minutes&lt;/li&gt;   &lt;li&gt;Accepted formats: .MP4, .MOV, .M4V&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Link guidelines:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;Include extension in file name&lt;/li&gt;   &lt;li&gt;Do not include template or placeholder videos in link&lt;/li&gt;   &lt;li&gt;Make URL accessible to Pinterest user-agent&lt;/li&gt;   &lt;li&gt;Must start with http:// or https://&lt;/li&gt; &lt;/ul&gt;
+   * Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/video/video_v2.mov", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>")
+  @ApiModelProperty(example = "https://www.example.com/video/video_v2.mov", value = "Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://")
   @JsonProperty("ad_video_2_link")
-  public String getAdVideo2Link() {
+ @Size(max=2000)  public String getAdVideo2Link() {
     return adVideo2Link;
   }
   public void setAdVideo2Link(String adVideo2Link) {
@@ -722,12 +722,12 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.&lt;/p&gt;
+   * Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
    **/
   
-  @ApiModelProperty(example = "black friday", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>")
+  @ApiModelProperty(example = "black friday", value = "Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.")
   @JsonProperty("ad_video_2_tag")
-  public String getAdVideo2Tag() {
+ @Size(max=511)  public String getAdVideo2Tag() {
     return adVideo2Tag;
   }
   public void setAdVideo2Tag(String adVideo2Tag) {
@@ -735,10 +735,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest.
+   * Set this attribute to TRUE if you&#39;re submitting items that are considered \&quot;adult\&quot;. These will not be shown on Pinterest.
    **/
   
-  @ApiModelProperty(example = "true", value = "Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.")
+  @ApiModelProperty(example = "true", value = "Set this attribute to TRUE if you're submitting items that are considered \"adult\". These will not be shown on Pinterest.")
   @JsonProperty("adult")
   public Boolean getAdult() {
     return adult;
@@ -748,10 +748,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): &#39;newborn&#39;, &#39;infant&#39;, &#39;toddler&#39;, &#39;kids&#39;, or &#39;adult&#39;.
    **/
   
-  @ApiModelProperty(example = "newborn", value = "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.")
+  @ApiModelProperty(example = "newborn", value = "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): 'newborn', 'infant', 'toddler', 'kids', or 'adult'.")
   @JsonProperty("age_group")
   public String getAgeGroup() {
     return ageGroup;
@@ -774,10 +774,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+   * The availability of the product. Must be one of the following values (upper or lowercased): &#39;in stock&#39;, &#39;out of stock&#39;, &#39;preorder&#39;.
    **/
   
-  @ApiModelProperty(example = "in stock", value = "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.")
+  @ApiModelProperty(example = "in stock", value = "The availability of the product. Must be one of the following values (upper or lowercased): 'in stock', 'out of stock', 'preorder'.")
   @JsonProperty("availability")
   public String getAvailability() {
     return availability;
@@ -803,7 +803,7 @@ public class UpdatableItemAttributes   {
    * The brand of the product.
    **/
   
-  @ApiModelProperty(example = "Josie’s Denim", value = "The brand of the product.")
+  @ApiModelProperty(example = "Josie's Denim", value = "The brand of the product.")
   @JsonProperty("brand")
   public String getBrand() {
     return brand;
@@ -839,10 +839,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.
+   * The condition of the product. Must be one of the following values (upper or lowercased): &#39;new&#39;, &#39;used&#39;, or &#39;refurbished&#39;.
    **/
   
-  @ApiModelProperty(example = "new", value = "The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.")
+  @ApiModelProperty(example = "new", value = "The condition of the product. Must be one of the following values (upper or lowercased): 'new', 'used', or 'refurbished'.")
   @JsonProperty("condition")
   public String getCondition() {
     return condition;
@@ -852,10 +852,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
+   * &lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs. Custom grouping of products.
    **/
   
-  @ApiModelProperty(example = "Best sellers", value = "<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>")
+  @ApiModelProperty(example = "Best sellers", value = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.")
   @JsonProperty("custom_label_0")
  @Size(max=511)  public String getCustomLabel0() {
     return customLabel0;
@@ -865,10 +865,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
+   * &lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs. Custom grouping of products.
    **/
   
-  @ApiModelProperty(example = "Summer promotion", value = "<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>")
+  @ApiModelProperty(example = "Summer promotion", value = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.")
   @JsonProperty("custom_label_1")
  @Size(max=511)  public String getCustomLabel1() {
     return customLabel1;
@@ -878,10 +878,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
+   * &lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs. Custom grouping of products.
    **/
   
-  @ApiModelProperty(example = "Winter sales", value = "<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>")
+  @ApiModelProperty(example = "Winter sales", value = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.")
   @JsonProperty("custom_label_2")
  @Size(max=511)  public String getCustomLabel2() {
     return customLabel2;
@@ -891,10 +891,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
+   * &lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs. Custom grouping of products.
    **/
   
-  @ApiModelProperty(example = "Woman dress", value = "<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>")
+  @ApiModelProperty(example = "Woman dress", value = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.")
   @JsonProperty("custom_label_3")
  @Size(max=511)  public String getCustomLabel3() {
     return customLabel3;
@@ -904,10 +904,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;p&gt;&lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;
+   * &lt;&#x3D; 511 characters for retail and creative asset catalogs, &lt;&#x3D; 127 characters for hotel catalogs. Custom grouping of products.
    **/
   
-  @ApiModelProperty(example = "Man hat", value = "<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>")
+  @ApiModelProperty(example = "Man hat", value = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.")
   @JsonProperty("custom_label_4")
  @Size(max=511)  public String getCustomLabel4() {
     return customLabel4;
@@ -917,10 +917,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
    **/
   
-  @ApiModelProperty(example = "10", value = "an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
+  @ApiModelProperty(example = "10", value = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
   @JsonProperty("custom_number_0")
   public Integer getCustomNumber0() {
     return customNumber0;
@@ -930,10 +930,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
    **/
   
-  @ApiModelProperty(example = "0", value = "an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
+  @ApiModelProperty(example = "0", value = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
   @JsonProperty("custom_number_1")
   public Integer getCustomNumber1() {
     return customNumber1;
@@ -943,10 +943,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
    **/
   
-  @ApiModelProperty(example = "1520000000", value = "an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
+  @ApiModelProperty(example = "1520000000", value = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
   @JsonProperty("custom_number_2")
   public Integer getCustomNumber2() {
     return customNumber2;
@@ -956,10 +956,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
    **/
   
-  @ApiModelProperty(example = "4294967295", value = "an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
+  @ApiModelProperty(example = "4294967295", value = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
   @JsonProperty("custom_number_3")
   public Integer getCustomNumber3() {
     return customNumber3;
@@ -969,10 +969,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
    **/
   
-  @ApiModelProperty(example = "50", value = "an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
+  @ApiModelProperty(example = "50", value = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.")
   @JsonProperty("custom_number_4")
   public Integer getCustomNumber4() {
     return customNumber4;
@@ -982,10 +982,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;p&gt;&lt;&#x3D; 10000 characters&lt;/p&gt; &lt;p&gt;The description of the product.&lt;/p&gt;
+   * &lt;&#x3D; 10000 characters. The description of the product.
    **/
   
-  @ApiModelProperty(example = "Casual fit denim shirt made with the finest quality Japanese denim.", value = "<p><= 10000 characters</p> <p>The description of the product.</p>")
+  @ApiModelProperty(example = "Casual fit denim shirt made with the finest quality Japanese denim.", value = "<= 10000 characters. The description of the product.")
   @JsonProperty("description")
   public String getDescription() {
     return description;
@@ -1021,10 +1021,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+   * The gender associated with the product. Must be one of the following values (upper or lowercased): &#39;male&#39;, &#39;female&#39;, or &#39;unisex&#39;.
    **/
   
-  @ApiModelProperty(example = "unisex", value = "The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.")
+  @ApiModelProperty(example = "unisex", value = "The gender associated with the product. Must be one of the following values (upper or lowercased): 'male', 'female', or 'unisex'.")
   @JsonProperty("gender")
   public String getGender() {
     return gender;
@@ -1059,10 +1059,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The user-created unique ID that represents the product. Only Unicode characters are accepted.&lt;/p&gt;
+   * &lt;&#x3D; 127 characters. The user-created unique ID that represents the product. Only Unicode characters are accepted.
    **/
   
-  @ApiModelProperty(example = "DS0294-L", value = "<p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>")
+  @ApiModelProperty(example = "DS0294-L", value = "<= 127 characters. The user-created unique ID that represents the product. Only Unicode characters are accepted.")
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -1072,10 +1072,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;payment_count&gt;:&lt;payment_amount&gt; &lt;currency&gt;
+   * Installment price of the product. Expected format: &lt;payment_count&gt;:&lt;payment_amount&gt; &lt;currency&gt;
    **/
   
-  @ApiModelProperty(example = "10:10.00 USD", value = "Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: <payment_count>:<payment_amount> <currency>")
+  @ApiModelProperty(example = "10:10.00 USD", value = "Installment price of the product. Expected format: <payment_count>:<payment_amount> <currency>")
   @JsonProperty("installment_price")
   public String getInstallmentPrice() {
     return installmentPrice;
@@ -1098,10 +1098,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The parent ID of the product.&lt;/p&gt;
+   * &lt;&#x3D; 127 characters. The parent ID of the product.
    **/
   
-  @ApiModelProperty(example = "DS0294", value = "<p><= 127 characters</p> <p>The parent ID of the product.</p>")
+  @ApiModelProperty(example = "DS0294", value = "<= 127 characters. The parent ID of the product.")
   @JsonProperty("item_group_id")
   public String getItemGroupId() {
     return itemGroupId;
@@ -1124,10 +1124,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;The landing page for the product.&lt;/p&gt;
+   * &lt;&#x3D; 511 characters. The landing page for the product.
    **/
   
-  @ApiModelProperty(example = "https://www.example.com/cat/womens-clothing/denim-shirt-0294", value = "<p><= 511 characters</p> <p>The landing page for the product.</p>")
+  @ApiModelProperty(example = "https://www.example.com/cat/womens-clothing/denim-shirt-0294", value = "<= 511 characters. The landing page for the product.")
   @JsonProperty("link")
   public String getLink() {
     return link;
@@ -1150,10 +1150,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * The minimum advertised price of the product. It supports the following formats, \&quot;19.99 USD\&quot;, \&quot;19.99USD\&quot; and \&quot;19.99\&quot;. If the currency is not included, we default to US dollars.
+   * The minimum advertised price of the product. It supports the following formats: \&quot;19.99 USD\&quot;, \&quot;19.99USD\&quot; and \&quot;19.99\&quot;. If the currency is not included, we default to US dollars.
    **/
   
-  @ApiModelProperty(example = "19.99 USD", value = "The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.")
+  @ApiModelProperty(example = "19.99 USD", value = "The minimum advertised price of the product. It supports the following formats: \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.")
   @JsonProperty("min_ad_price")
   public String getMinAdPrice() {
     return minAdPrice;
@@ -1228,10 +1228,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * The price of the product. It supports the following formats, \&quot;24.99 USD\&quot;, \&quot;24.99USD\&quot; and \&quot;24.99\&quot;. If the currency is not included, we default to US dollars.
+   * The price of the product. It supports the following formats: \&quot;24.99 USD\&quot;, \&quot;24.99USD\&quot; and \&quot;24.99\&quot;. If the currency is not included, we default to US dollars.
    **/
   
-  @ApiModelProperty(example = "24.99 USD", value = "The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.")
+  @ApiModelProperty(example = "24.99 USD", value = "The price of the product. It supports the following formats: \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.")
   @JsonProperty("price")
   public String getPrice() {
     return price;
@@ -1241,10 +1241,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ &gt; “. The &gt; must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.&lt;/p&gt;
+   * &lt;&#x3D; 1000 characters. The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by \&quot; &gt; \&quot;.
    **/
   
-  @ApiModelProperty(example = "Clothing > Women’s > Shirts > Denim", value = "<p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>")
+  @ApiModelProperty(example = "Clothing > Women's > Shirts > Denim", value = "<= 1000 characters. The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by \" > \".")
   @JsonProperty("product_type")
   public String getProductType() {
     return productType;
@@ -1267,10 +1267,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \&quot;14.99 USD\&quot;, \&quot;14.99USD\&quot; and \&quot;14.99\&quot;. If the currency is not included, we default to US dollars.
+   * The discounted price of the product. The sale_price must be lower than the price. It supports the following formats: \&quot;14.99 USD\&quot;, \&quot;14.99USD\&quot; and \&quot;14.99\&quot;.
    **/
   
-  @ApiModelProperty(example = "14.99 USD", value = "The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.")
+  @ApiModelProperty(example = "14.99 USD", value = "The discounted price of the product. The sale_price must be lower than the price. It supports the following formats: \"14.99 USD\", \"14.99USD\" and \"14.99\".")
   @JsonProperty("sale_price")
   public String getSalePrice() {
     return salePrice;
@@ -1358,10 +1358,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+   * Indicates the country&#39;s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): &#39;US&#39;, &#39;UK&#39;, &#39;EU&#39;, &#39;DE&#39;, &#39;FR&#39;, &#39;JP&#39;, &#39;CN&#39;, &#39;IT&#39;, &#39;BR&#39;, &#39;MEX&#39;, or &#39;AU&#39;.
    **/
   
-  @ApiModelProperty(example = "US", value = "Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.")
+  @ApiModelProperty(example = "US", value = "Indicates the country's sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): 'US', 'UK', 'EU', 'DE', 'FR', 'JP', 'CN', 'IT', 'BR', 'MEX', or 'AU'.")
   @JsonProperty("size_system")
   public String getSizeSystem() {
     return sizeSystem;
@@ -1371,10 +1371,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+   * Additional description for the size. Must be one of the following values (upper or lowercased): &#39;regular&#39;, &#39;petite&#39;, &#39;plus&#39;, &#39;big_and_tall&#39;, or &#39;maternity&#39;.
    **/
   
-  @ApiModelProperty(example = "regular", value = "Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.")
+  @ApiModelProperty(example = "regular", value = "Additional description for the size. Must be one of the following values (upper or lowercased): 'regular', 'petite', 'plus', 'big_and_tall', or 'maternity'.")
   @JsonProperty("size_type")
   public String getSizeType() {
     return sizeType;
@@ -1397,10 +1397,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * &lt;p&gt;&lt;&#x3D; 500 characters&lt;/p&gt; &lt;p&gt;The name of the product.&lt;/p&gt;
+   * &lt;&#x3D; 500 characters. The name of the product.
    **/
   
-  @ApiModelProperty(example = "Women’s denim shirt, large", value = "<p><= 500 characters</p> <p>The name of the product.</p>")
+  @ApiModelProperty(example = "Women's denim shirt, large", value = "<= 500 characters. The name of the product.")
   @JsonProperty("title")
   public String getTitle() {
     return title;
@@ -1410,10 +1410,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;base_measure&gt; &lt;unit_type&gt;
+   * Unit pricing base measure of the product. Expected format: &lt;base_measure&gt; &lt;unit_type&gt;
    **/
   
-  @ApiModelProperty(example = "10 ML", value = "Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <base_measure> <unit_type>")
+  @ApiModelProperty(example = "10 ML", value = "Unit pricing base measure of the product. Expected format: <base_measure> <unit_type>")
   @JsonProperty("unit_pricing_base_measure")
   public String getUnitPricingBaseMeasure() {
     return unitPricingBaseMeasure;
@@ -1423,10 +1423,10 @@ public class UpdatableItemAttributes   {
   }
 
   /**
-   * Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: &lt;total_units&gt; &lt;unit_type&gt;
+   * Unit pricing total measure of the product. Expected format: &lt;total_units&gt; &lt;unit_type&gt;
    **/
   
-  @ApiModelProperty(example = "10 ML", value = "Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <total_units> <unit_type>")
+  @ApiModelProperty(example = "10 ML", value = "Unit pricing total measure of the product. Expected format: <total_units> <unit_type>")
   @JsonProperty("unit_pricing_measure")
   public String getUnitPricingMeasure() {
     return unitPricingMeasure;
@@ -1698,10 +1698,7 @@ public class UpdatableItemAttributes   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

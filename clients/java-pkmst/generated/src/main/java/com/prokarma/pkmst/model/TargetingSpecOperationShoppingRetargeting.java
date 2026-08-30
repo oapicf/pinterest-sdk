@@ -19,7 +19,7 @@ import java.util.List;
  * TargetingSpecOperationShoppingRetargeting
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingSpecOperationShoppingRetargeting   {
   /**
    * Gets or Sets field
@@ -87,7 +87,7 @@ public class TargetingSpecOperationShoppingRetargeting   {
 
   @JsonProperty("values")
   
-  private List<TargetingSpecShoppingRetargeting> values = ;
+  private List<TargetingSpecShoppingRetargeting> values = new ArrayList<>();
 
   public TargetingSpecOperationShoppingRetargeting field(FieldEnum field) {
     this.field = field;
@@ -188,10 +188,7 @@ public class TargetingSpecOperationShoppingRetargeting   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

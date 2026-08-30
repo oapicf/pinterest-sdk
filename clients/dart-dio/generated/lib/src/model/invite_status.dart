@@ -11,19 +11,19 @@ part 'invite_status.g.dart';
 
 class InviteStatus extends EnumClass {
 
-  /// The current status of the invite.
+  /// The current status of an invite or request.
   @BuiltValueEnumConst(wireName: r'PENDING')
   static const InviteStatus PENDING = _$PENDING;
-  /// The current status of the invite.
+  /// The current status of an invite or request.
   @BuiltValueEnumConst(wireName: r'ACCEPTED')
   static const InviteStatus ACCEPTED = _$ACCEPTED;
-  /// The current status of the invite.
+  /// The current status of an invite or request.
   @BuiltValueEnumConst(wireName: r'DECLINED')
   static const InviteStatus DECLINED = _$DECLINED;
-  /// The current status of the invite.
+  /// The current status of an invite or request.
   @BuiltValueEnumConst(wireName: r'CANCELLED')
   static const InviteStatus CANCELLED = _$CANCELLED;
-  /// The current status of the invite.
+  /// The current status of an invite or request.
   @BuiltValueEnumConst(wireName: r'EXPIRED')
   static const InviteStatus EXPIRED = _$EXPIRED;
 

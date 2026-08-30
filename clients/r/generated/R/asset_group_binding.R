@@ -7,17 +7,17 @@
 #' @title AssetGroupBinding
 #' @description AssetGroupBinding Class
 #' @format An \code{R6Class} generator object
-#' @field ad_accounts_ids A list of ad account IDs under the asset group list(character) [optional]
-#' @field asset_group_description Asset group description character [optional]
-#' @field asset_group_name Asset Group name character [optional]
-#' @field asset_group_types Asset group types list(character) [optional]
-#' @field catalogs_ids A list of catalog IDs under asset group list(character) [optional]
-#' @field created_by The data of the user that created the asset group. \link{BusinessAccessUserSummary} [optional]
-#' @field created_time The creation time of the asset group integer [optional]
-#' @field id Asset Group ID. character [optional]
-#' @field owner The data of the business that owns the asset group. \link{BusinessAccessUserSummary} [optional]
-#' @field profiles_ids A list of profile IDs under asset group list(character) [optional]
-#' @field updated_time The last update time of the asset group integer [optional]
+#' @field ad_accounts_ids A list of ad account IDs under the asset group list(character)
+#' @field asset_group_description Asset group description character
+#' @field asset_group_name Asset Group name character
+#' @field asset_group_types Asset group types list(character)
+#' @field catalogs_ids A list of catalog IDs under asset group list(character)
+#' @field created_by The data of the user that created the asset group. \link{BusinessAccessUserSummary}
+#' @field created_time The creation time of the asset group integer
+#' @field id Asset Group ID. character
+#' @field owner The data of the business that owns the asset group. \link{BusinessAccessUserSummary}
+#' @field profiles_ids A list of profile IDs under asset group list(character)
+#' @field updated_time The last update time of the asset group integer
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -51,60 +51,60 @@ AssetGroupBinding <- R6::R6Class(
     #' @param profiles_ids A list of profile IDs under asset group
     #' @param updated_time The last update time of the asset group
     #' @param ... Other optional arguments.
-    initialize = function(`ad_accounts_ids` = NULL, `asset_group_description` = NULL, `asset_group_name` = NULL, `asset_group_types` = NULL, `catalogs_ids` = NULL, `created_by` = NULL, `created_time` = NULL, `id` = NULL, `owner` = NULL, `profiles_ids` = NULL, `updated_time` = NULL, ...) {
-      if (!is.null(`ad_accounts_ids`)) {
+    initialize = function(`ad_accounts_ids`, `asset_group_description`, `asset_group_name`, `asset_group_types`, `catalogs_ids`, `created_by`, `created_time`, `id`, `owner`, `profiles_ids`, `updated_time`, ...) {
+      if (!missing(`ad_accounts_ids`)) {
         stopifnot(is.vector(`ad_accounts_ids`), length(`ad_accounts_ids`) != 0)
         sapply(`ad_accounts_ids`, function(x) stopifnot(is.character(x)))
         self$`ad_accounts_ids` <- `ad_accounts_ids`
       }
-      if (!is.null(`asset_group_description`)) {
+      if (!missing(`asset_group_description`)) {
         if (!(is.character(`asset_group_description`) && length(`asset_group_description`) == 1)) {
           stop(paste("Error! Invalid data for `asset_group_description`. Must be a string:", `asset_group_description`))
         }
         self$`asset_group_description` <- `asset_group_description`
       }
-      if (!is.null(`asset_group_name`)) {
+      if (!missing(`asset_group_name`)) {
         if (!(is.character(`asset_group_name`) && length(`asset_group_name`) == 1)) {
           stop(paste("Error! Invalid data for `asset_group_name`. Must be a string:", `asset_group_name`))
         }
         self$`asset_group_name` <- `asset_group_name`
       }
-      if (!is.null(`asset_group_types`)) {
+      if (!missing(`asset_group_types`)) {
         stopifnot(is.vector(`asset_group_types`), length(`asset_group_types`) != 0)
         sapply(`asset_group_types`, function(x) stopifnot(is.character(x)))
         self$`asset_group_types` <- `asset_group_types`
       }
-      if (!is.null(`catalogs_ids`)) {
+      if (!missing(`catalogs_ids`)) {
         stopifnot(is.vector(`catalogs_ids`), length(`catalogs_ids`) != 0)
         sapply(`catalogs_ids`, function(x) stopifnot(is.character(x)))
         self$`catalogs_ids` <- `catalogs_ids`
       }
-      if (!is.null(`created_by`)) {
+      if (!missing(`created_by`)) {
         stopifnot(R6::is.R6(`created_by`))
         self$`created_by` <- `created_by`
       }
-      if (!is.null(`created_time`)) {
+      if (!missing(`created_time`)) {
         if (!(is.numeric(`created_time`) && length(`created_time`) == 1)) {
           stop(paste("Error! Invalid data for `created_time`. Must be an integer:", `created_time`))
         }
         self$`created_time` <- `created_time`
       }
-      if (!is.null(`id`)) {
+      if (!missing(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
         }
         self$`id` <- `id`
       }
-      if (!is.null(`owner`)) {
+      if (!missing(`owner`)) {
         stopifnot(R6::is.R6(`owner`))
         self$`owner` <- `owner`
       }
-      if (!is.null(`profiles_ids`)) {
+      if (!missing(`profiles_ids`)) {
         stopifnot(is.vector(`profiles_ids`), length(`profiles_ids`) != 0)
         sapply(`profiles_ids`, function(x) stopifnot(is.character(x)))
         self$`profiles_ids` <- `profiles_ids`
       }
-      if (!is.null(`updated_time`)) {
+      if (!missing(`updated_time`)) {
         if (!(is.numeric(`updated_time`) && length(`updated_time`) == 1)) {
           stop(paste("Error! Invalid data for `updated_time`. Must be an integer:", `updated_time`))
         }
@@ -165,7 +165,7 @@ AssetGroupBinding <- R6::R6Class(
       }
       if (!is.null(self$`created_by`)) {
         AssetGroupBindingObject[["created_by"]] <-
-          self$`created_by`$toSimpleType()
+          self$extractSimpleType(self$`created_by`)
       }
       if (!is.null(self$`created_time`)) {
         AssetGroupBindingObject[["created_time"]] <-
@@ -177,7 +177,7 @@ AssetGroupBinding <- R6::R6Class(
       }
       if (!is.null(self$`owner`)) {
         AssetGroupBindingObject[["owner"]] <-
-          self$`owner`$toSimpleType()
+          self$extractSimpleType(self$`owner`)
       }
       if (!is.null(self$`profiles_ids`)) {
         AssetGroupBindingObject[["profiles_ids"]] <-
@@ -188,6 +188,29 @@ AssetGroupBinding <- R6::R6Class(
           self$`updated_time`
       }
       return(AssetGroupBindingObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -275,6 +298,86 @@ AssetGroupBinding <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `ad_accounts_ids`
+      if (!is.null(input_json$`ad_accounts_ids`)) {
+        stopifnot(is.vector(input_json$`ad_accounts_ids`), length(input_json$`ad_accounts_ids`) != 0)
+        tmp <- sapply(input_json$`ad_accounts_ids`, function(x) stopifnot(is.character(x)))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssetGroupBinding: the required field `ad_accounts_ids` is missing."))
+      }
+      # check the required field `asset_group_description`
+      if (!is.null(input_json$`asset_group_description`)) {
+        if (!(is.character(input_json$`asset_group_description`) && length(input_json$`asset_group_description`) == 1)) {
+          stop(paste("Error! Invalid data for `asset_group_description`. Must be a string:", input_json$`asset_group_description`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssetGroupBinding: the required field `asset_group_description` is missing."))
+      }
+      # check the required field `asset_group_name`
+      if (!is.null(input_json$`asset_group_name`)) {
+        if (!(is.character(input_json$`asset_group_name`) && length(input_json$`asset_group_name`) == 1)) {
+          stop(paste("Error! Invalid data for `asset_group_name`. Must be a string:", input_json$`asset_group_name`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssetGroupBinding: the required field `asset_group_name` is missing."))
+      }
+      # check the required field `asset_group_types`
+      if (!is.null(input_json$`asset_group_types`)) {
+        stopifnot(is.vector(input_json$`asset_group_types`), length(input_json$`asset_group_types`) != 0)
+        tmp <- sapply(input_json$`asset_group_types`, function(x) stopifnot(is.character(x)))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssetGroupBinding: the required field `asset_group_types` is missing."))
+      }
+      # check the required field `catalogs_ids`
+      if (!is.null(input_json$`catalogs_ids`)) {
+        stopifnot(is.vector(input_json$`catalogs_ids`), length(input_json$`catalogs_ids`) != 0)
+        tmp <- sapply(input_json$`catalogs_ids`, function(x) stopifnot(is.character(x)))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssetGroupBinding: the required field `catalogs_ids` is missing."))
+      }
+      # check the required field `created_by`
+      if (!is.null(input_json$`created_by`)) {
+        stopifnot(R6::is.R6(input_json$`created_by`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssetGroupBinding: the required field `created_by` is missing."))
+      }
+      # check the required field `created_time`
+      if (!is.null(input_json$`created_time`)) {
+        if (!(is.numeric(input_json$`created_time`) && length(input_json$`created_time`) == 1)) {
+          stop(paste("Error! Invalid data for `created_time`. Must be an integer:", input_json$`created_time`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssetGroupBinding: the required field `created_time` is missing."))
+      }
+      # check the required field `id`
+      if (!is.null(input_json$`id`)) {
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssetGroupBinding: the required field `id` is missing."))
+      }
+      # check the required field `owner`
+      if (!is.null(input_json$`owner`)) {
+        stopifnot(R6::is.R6(input_json$`owner`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssetGroupBinding: the required field `owner` is missing."))
+      }
+      # check the required field `profiles_ids`
+      if (!is.null(input_json$`profiles_ids`)) {
+        stopifnot(is.vector(input_json$`profiles_ids`), length(input_json$`profiles_ids`) != 0)
+        tmp <- sapply(input_json$`profiles_ids`, function(x) stopifnot(is.character(x)))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssetGroupBinding: the required field `profiles_ids` is missing."))
+      }
+      # check the required field `updated_time`
+      if (!is.null(input_json$`updated_time`)) {
+        if (!(is.numeric(input_json$`updated_time`) && length(input_json$`updated_time`) == 1)) {
+          stop(paste("Error! Invalid data for `updated_time`. Must be an integer:", input_json$`updated_time`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssetGroupBinding: the required field `updated_time` is missing."))
+      }
     },
 
     #' @description
@@ -290,7 +393,42 @@ AssetGroupBinding <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `ad_accounts_ids` is null
+      if (is.null(self$`ad_accounts_ids`)) {
+        return(FALSE)
+      }
+
+      # check if the required `asset_group_types` is null
+      if (is.null(self$`asset_group_types`)) {
+        return(FALSE)
+      }
+
+      # check if the required `catalogs_ids` is null
+      if (is.null(self$`catalogs_ids`)) {
+        return(FALSE)
+      }
+
+      # check if the required `created_by` is null
+      if (is.null(self$`created_by`)) {
+        return(FALSE)
+      }
+
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        return(FALSE)
+      }
+
       if (!str_detect(self$`id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
+      # check if the required `owner` is null
+      if (is.null(self$`owner`)) {
+        return(FALSE)
+      }
+
+      # check if the required `profiles_ids` is null
+      if (is.null(self$`profiles_ids`)) {
         return(FALSE)
       }
 
@@ -303,8 +441,43 @@ AssetGroupBinding <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `ad_accounts_ids` is null
+      if (is.null(self$`ad_accounts_ids`)) {
+        invalid_fields["ad_accounts_ids"] <- "Non-nullable required field `ad_accounts_ids` cannot be null."
+      }
+
+      # check if the required `asset_group_types` is null
+      if (is.null(self$`asset_group_types`)) {
+        invalid_fields["asset_group_types"] <- "Non-nullable required field `asset_group_types` cannot be null."
+      }
+
+      # check if the required `catalogs_ids` is null
+      if (is.null(self$`catalogs_ids`)) {
+        invalid_fields["catalogs_ids"] <- "Non-nullable required field `catalogs_ids` cannot be null."
+      }
+
+      # check if the required `created_by` is null
+      if (is.null(self$`created_by`)) {
+        invalid_fields["created_by"] <- "Non-nullable required field `created_by` cannot be null."
+      }
+
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+      }
+
       if (!str_detect(self$`id`, "^\\d+$")) {
         invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
+      }
+
+      # check if the required `owner` is null
+      if (is.null(self$`owner`)) {
+        invalid_fields["owner"] <- "Non-nullable required field `owner` cannot be null."
+      }
+
+      # check if the required `profiles_ids` is null
+      if (is.null(self$`profiles_ids`)) {
+        invalid_fields["profiles_ids"] <- "Non-nullable required field `profiles_ids` cannot be null."
       }
 
       invalid_fields

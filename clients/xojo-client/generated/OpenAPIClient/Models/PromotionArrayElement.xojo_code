@@ -2,7 +2,7 @@
 Protected Class PromotionArrayElement
 
 	#tag Property, Flags = &h0
-		data As OpenAPIClient.Models.PromotionResponse
+		data As OpenAPIClient.Models.Promotion
 	#tag EndProperty
 
 
@@ -52,7 +52,7 @@ Protected Class PromotionArrayElement
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="PromotionResponse"
+			Type="Promotion"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -4,15 +4,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdAccountId** | **String** | Ad account ID. | [optional] 
-**AudienceType** | **String** | &lt;a href&#x3D;&quot;&quot;/docs/reference/glossary/#Audience Types&quot;&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR | [optional] 
+**AudienceType** | [**PinnerListType**](PinnerListType.md) | [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR | [optional] 
 **CreatedByCompanyName** | **String** | The company that created this audience. | [optional] 
 **CreatedTimestamp** | **Int32** | Creation time. Unix timestamp in seconds. | [optional] 
 **Description** | **String** | Audience description. | [optional] 
 **Id** | **String** | Audience ID. | [optional] 
+**IsNca** | **Boolean** | Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only. | [optional] 
 **Name** | **String** | Audience name. | [optional] 
 **Rule** | [**AudienceRule**](AudienceRule.md) |  | [optional] 
 **Size** | **Int32** | Audience size. | [optional] 
-**Status** | **String** | Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it. | [optional] 
+**Status** | [**AudienceStatus**](AudienceStatus.md) | Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it. | [optional] 
 **Type** | **String** | Always &quot;&quot;audience&quot;&quot;. | [optional] 
 **UpdatedTimestamp** | **Int32** | Last update time. Unix timestamp in seconds. | [optional] 
 
@@ -26,6 +27,7 @@ $Audience = Initialize-PSOpenAPIToolsAudience  -AdAccountId 549755885175 `
  -CreatedTimestamp 1451431341 `
  -Description People who love making quilts. `
  -Id 1234 `
+ -IsNca null `
  -Name ACME Tools `
  -Rule null `
  -Size 1000 `

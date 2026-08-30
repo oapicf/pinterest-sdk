@@ -53,7 +53,7 @@ public:
 
 	/*! \brief Set Array of file parts with pre-signed URLs.
 	 */
-	void setFileParts(std::list <S3FilePart> file_parts);
+	void setFileParts(std::list<S3FilePart> file_parts);
 
 
     private:

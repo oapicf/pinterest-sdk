@@ -2,7 +2,7 @@
 /*
  * RecordCounts.h
  *
- * Record processing counts
+ * 
  */
 
 #ifndef TINY_CPP_CLIENT_RecordCounts_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief Record processing counts
+/*! \brief 
  *
  *  \ingroup Models
  *
@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set Number of invalid records processed
 	 */
-	void setInvalid(int  invalid);
+	void setInvalid(int invalid);
 	/*! \brief Get Number of records processed
 	 */
 	int getProcessed();
 
 	/*! \brief Set Number of records processed
 	 */
-	void setProcessed(int  processed);
+	void setProcessed(int processed);
 	/*! \brief Get Number of valid records processed
 	 */
 	int getValid();
 
 	/*! \brief Set Number of valid records processed
 	 */
-	void setValid(int  valid);
+	void setValid(int valid);
 
 
     private:

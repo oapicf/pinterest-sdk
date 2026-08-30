@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`mEDIATYPE` | [CatalogsProductGroupMultipleMediaTypesCriteria](.md)
+`mEDIATYPE` | [CatalogsProductGroupMultipleMediaTypesCriteria](CatalogsProductGroupMultipleMediaTypesCriteria.md)
 
 ## Example
 

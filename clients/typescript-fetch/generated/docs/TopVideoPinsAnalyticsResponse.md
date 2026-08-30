@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`dateAvailability` | [TopPinsAnalyticsResponseDateAvailability](TopPinsAnalyticsResponseDateAvailability.md)
-`pins` | [Array&lt;TopVideoPinsAnalyticsResponsePinsInner&gt;](TopVideoPinsAnalyticsResponsePinsInner.md)
-`sortBy` | string
+`dateAvailability` | [TopVideoPinsAnalyticsResponseDateAvailability](TopVideoPinsAnalyticsResponseDateAvailability.md)
+`pins` | [Array&lt;TopVideoPinsAnalyticsResponsePinsItems&gt;](TopVideoPinsAnalyticsResponsePinsItems.md)
+`sortBy` | [TopVideoPinsSortBy](TopVideoPinsSortBy.md)
 
 ## Example
 
@@ -19,7 +19,7 @@ import type { TopVideoPinsAnalyticsResponse } from ''
 const example = {
   "dateAvailability": null,
   "pins": null,
-  "sortBy": IMPRESSION,
+  "sortBy": null,
 } satisfies TopVideoPinsAnalyticsResponse
 
 console.log(example)

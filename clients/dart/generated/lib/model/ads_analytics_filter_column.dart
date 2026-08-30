@@ -11,29 +11,29 @@
 part of openapi.api;
 
 /// Reporting columns for sync reporting data filter
-class AdsAnalyticsFilterColumn {
-  /// Instantiate a new enum with the provided [value].
-  const AdsAnalyticsFilterColumn._(this.value);
+enum AdsAnalyticsFilterColumn {
+  SPEND_IN_DOLLAR._(r'SPEND_IN_DOLLAR'),
+  TOTAL_IMPRESSION._(r'TOTAL_IMPRESSION'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const AdsAnalyticsFilterColumn._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const SPEND_IN_DOLLAR = AdsAnalyticsFilterColumn._(r'SPEND_IN_DOLLAR');
-  static const TOTAL_IMPRESSION = AdsAnalyticsFilterColumn._(r'TOTAL_IMPRESSION');
-
-  /// List of all possible values in this [enum][AdsAnalyticsFilterColumn].
-  static const values = <AdsAnalyticsFilterColumn>[
-    SPEND_IN_DOLLAR,
-    TOTAL_IMPRESSION,
-  ];
-
+  /// Returns the instance of [AdsAnalyticsFilterColumn] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static AdsAnalyticsFilterColumn? fromJson(dynamic value) => AdsAnalyticsFilterColumnTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [AdsAnalyticsFilterColumn]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<AdsAnalyticsFilterColumn> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <AdsAnalyticsFilterColumn>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class AdsAnalyticsFilterColumnTypeTransformer {
 
   const AdsAnalyticsFilterColumnTypeTransformer._();
 
-  String encode(AdsAnalyticsFilterColumn data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(AdsAnalyticsFilterColumn data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a AdsAnalyticsFilterColumn.
+  /// Returns the instance of [AdsAnalyticsFilterColumn] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class AdsAnalyticsFilterColumnTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   AdsAnalyticsFilterColumn? decode(dynamic data, {bool allowNull = true}) {
+    if (data is AdsAnalyticsFilterColumn) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'SPEND_IN_DOLLAR': return AdsAnalyticsFilterColumn.SPEND_IN_DOLLAR;
@@ -79,7 +84,7 @@ class AdsAnalyticsFilterColumnTypeTransformer {
     return null;
   }
 
-  /// Singleton [AdsAnalyticsFilterColumnTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static AdsAnalyticsFilterColumnTypeTransformer? _instance;
 }
 

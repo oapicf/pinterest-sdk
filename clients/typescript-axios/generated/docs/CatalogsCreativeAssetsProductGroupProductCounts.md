@@ -6,7 +6,9 @@ Product counts for a Creative Assets CatalogsProductGroup
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**app_links** | **number** |  | [default to undefined]
 **catalog_type** | **string** |  | [default to undefined]
+**images** | **number** |  | [default to undefined]
 **total** | **number** |  | [default to undefined]
 **videos** | **number** |  | [default to undefined]
 
@@ -16,7 +18,9 @@ Name | Type | Description | Notes
 import { CatalogsCreativeAssetsProductGroupProductCounts } from './api';
 
 const instance: CatalogsCreativeAssetsProductGroupProductCounts = {
+    app_links,
     catalog_type,
+    images,
     total,
     videos,
 };

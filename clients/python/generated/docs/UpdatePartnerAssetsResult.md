@@ -7,7 +7,7 @@ An object containing the permissions a business partner has on the asset.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **asset_id** | **str** | Unique identifier of a business asset. | [optional] 
-**asset_type** | **str** | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional] 
+**asset_type** | [**AssetTypeResponse**](AssetTypeResponse.md) |  | [optional] 
 **partner_id** | **str** | Unique identifier of a business partner. | [optional] 
 **permissions** | **List[str]** | Permission levels member or partner has on an asset. | [optional] 
 

@@ -1,5 +1,6 @@
 # openapi::SSIOAccountPMPName
 
+Pinterest marketing partner name.
 
 ## Properties
 Name | Type | Description | Notes

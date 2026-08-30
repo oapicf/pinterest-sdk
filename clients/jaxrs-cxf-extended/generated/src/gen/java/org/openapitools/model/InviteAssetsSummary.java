@@ -3,8 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.InviteAssetsSummaryAdAccountsInner;
-import org.openapitools.model.InviteAssetsSummaryProfilesInner;
+import org.openapitools.model.InviteAssetsSummaryItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -25,34 +24,34 @@ public class InviteAssetsSummary  {
   */
   @ApiModelProperty(value = "List of ad account IDs and respective permission levels that will be assigned.")
   @Valid
-  private List<@Valid InviteAssetsSummaryAdAccountsInner> adAccounts = new ArrayList<>();
+  private List<@Valid InviteAssetsSummaryItem> adAccounts = new ArrayList<>();
 
  /**
   * List of profile IDs and respective permission levels that will be assigned.
   */
   @ApiModelProperty(value = "List of profile IDs and respective permission levels that will be assigned.")
   @Valid
-  private List<@Valid InviteAssetsSummaryProfilesInner> profiles = new ArrayList<>();
+  private List<@Valid InviteAssetsSummaryItem> profiles = new ArrayList<>();
  /**
   * List of ad account IDs and respective permission levels that will be assigned.
   * @return adAccounts
   */
   @JsonProperty("ad_accounts")
-  public List<@Valid InviteAssetsSummaryAdAccountsInner> getAdAccounts() {
+  public List<@Valid InviteAssetsSummaryItem> getAdAccounts() {
     return adAccounts;
   }
 
   /**
    * Sets the <code>adAccounts</code> property.
    */
- public void setAdAccounts(List<@Valid InviteAssetsSummaryAdAccountsInner> adAccounts) {
+ public void setAdAccounts(List<@Valid InviteAssetsSummaryItem> adAccounts) {
     this.adAccounts = adAccounts;
   }
 
   /**
    * Sets the <code>adAccounts</code> property.
    */
-  public InviteAssetsSummary adAccounts(List<@Valid InviteAssetsSummaryAdAccountsInner> adAccounts) {
+  public InviteAssetsSummary adAccounts(List<@Valid InviteAssetsSummaryItem> adAccounts) {
     this.adAccounts = adAccounts;
     return this;
   }
@@ -60,7 +59,7 @@ public class InviteAssetsSummary  {
   /**
    * Adds a new item to the <code>adAccounts</code> list.
    */
-  public InviteAssetsSummary addAdAccountsItem(InviteAssetsSummaryAdAccountsInner adAccountsItem) {
+  public InviteAssetsSummary addAdAccountsItem(InviteAssetsSummaryItem adAccountsItem) {
     this.adAccounts.add(adAccountsItem);
     return this;
   }
@@ -70,21 +69,21 @@ public class InviteAssetsSummary  {
   * @return profiles
   */
   @JsonProperty("profiles")
-  public List<@Valid InviteAssetsSummaryProfilesInner> getProfiles() {
+  public List<@Valid InviteAssetsSummaryItem> getProfiles() {
     return profiles;
   }
 
   /**
    * Sets the <code>profiles</code> property.
    */
- public void setProfiles(List<@Valid InviteAssetsSummaryProfilesInner> profiles) {
+ public void setProfiles(List<@Valid InviteAssetsSummaryItem> profiles) {
     this.profiles = profiles;
   }
 
   /**
    * Sets the <code>profiles</code> property.
    */
-  public InviteAssetsSummary profiles(List<@Valid InviteAssetsSummaryProfilesInner> profiles) {
+  public InviteAssetsSummary profiles(List<@Valid InviteAssetsSummaryItem> profiles) {
     this.profiles = profiles;
     return this;
   }
@@ -92,7 +91,7 @@ public class InviteAssetsSummary  {
   /**
    * Adds a new item to the <code>profiles</code> list.
    */
-  public InviteAssetsSummary addProfilesItem(InviteAssetsSummaryProfilesInner profilesItem) {
+  public InviteAssetsSummary addProfilesItem(InviteAssetsSummaryItem profilesItem) {
     this.profiles.add(profilesItem);
     return this;
   }
@@ -132,10 +131,7 @@ public class InviteAssetsSummary  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -17,14 +17,14 @@ import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
 import org.openapitools.server.api.model.CatalogsFeed
+import org.openapitools.server.api.model.CatalogsFeedCreateRequestSchema
 import org.openapitools.server.api.model.CatalogsFeedIngestion
+import org.openapitools.server.api.model.CatalogsFeedUpdateRequestSchema
 import org.openapitools.server.api.model.CatalogsItemValidationIssue
-import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.FeedProcessingResultsList200Response
-import org.openapitools.server.api.model.FeedsCreateRequest
 import org.openapitools.server.api.model.FeedsList200Response
-import org.openapitools.server.api.model.FeedsUpdateRequest
 import org.openapitools.server.api.model.ItemsIssuesList200Response
+import org.openapitools.server.api.model.PinterestLibError
 
 class CatalogFeedsApiVertxProxyHandler(private val vertx: Vertx, private val service: CatalogFeedsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -78,11 +78,11 @@ class CatalogFeedsApiVertxProxyHandler(private val vertx: Vertx, private val ser
                     if(feedId == null){
                         throw IllegalArgumentException("feedId is required")
                     }
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.feedProcessingResultsList(feedId,bookmark,pageSize,adAccountId,context)
+                        val result = service.feedProcessingResultsList(feedId,adAccountId,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -93,14 +93,14 @@ class CatalogFeedsApiVertxProxyHandler(private val vertx: Vertx, private val ser
         
                 "feedsCreate" -> {
                     val params = context.params
-                    val feedsCreateRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (feedsCreateRequestParam == null) {
-                        throw IllegalArgumentException("feedsCreateRequest is required")
+                    val catalogsFeedCreateRequestSchemaParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (catalogsFeedCreateRequestSchemaParam == null) {
+                        throw IllegalArgumentException("catalogsFeedCreateRequestSchema is required")
                     }
-                    val feedsCreateRequest = Gson().fromJson(feedsCreateRequestParam.encode(), FeedsCreateRequest::class.java)
+                    val catalogsFeedCreateRequestSchema = Gson().fromJson(catalogsFeedCreateRequestSchemaParam.encode(), CatalogsFeedCreateRequestSchema::class.java)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.feedsCreate(feedsCreateRequest,adAccountId,context)
+                        val result = service.feedsCreate(catalogsFeedCreateRequestSchema,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -162,12 +162,12 @@ class CatalogFeedsApiVertxProxyHandler(private val vertx: Vertx, private val ser
         
                 "feedsList" -> {
                     val params = context.params
-                    val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     val catalogId = ApiHandlerUtils.searchStringInJson(params,"catalog_id")
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.feedsList(bookmark,pageSize,catalogId,adAccountId,context)
+                        val result = service.feedsList(catalogId,adAccountId,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -182,14 +182,14 @@ class CatalogFeedsApiVertxProxyHandler(private val vertx: Vertx, private val ser
                     if(feedId == null){
                         throw IllegalArgumentException("feedId is required")
                     }
-                    val feedsUpdateRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (feedsUpdateRequestParam == null) {
-                        throw IllegalArgumentException("feedsUpdateRequest is required")
+                    val catalogsFeedUpdateRequestSchemaParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (catalogsFeedUpdateRequestSchemaParam == null) {
+                        throw IllegalArgumentException("catalogsFeedUpdateRequestSchema is required")
                     }
-                    val feedsUpdateRequest = Gson().fromJson(feedsUpdateRequestParam.encode(), FeedsUpdateRequest::class.java)
+                    val catalogsFeedUpdateRequestSchema = Gson().fromJson(catalogsFeedUpdateRequestSchemaParam.encode(), CatalogsFeedUpdateRequestSchema::class.java)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.feedsUpdate(feedId,feedsUpdateRequest,adAccountId,context)
+                        val result = service.feedsUpdate(feedId,catalogsFeedUpdateRequestSchema,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -204,8 +204,6 @@ class CatalogFeedsApiVertxProxyHandler(private val vertx: Vertx, private val ser
                     if(processingResultId == null){
                         throw IllegalArgumentException("processingResultId is required")
                     }
-                    val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     val itemNumbersParam = ApiHandlerUtils.searchJsonArrayInJson(params,"item_numbers")
                     val itemNumbers:kotlin.Array<kotlin.Int>? = if(itemNumbersParam == null) null
                             else Gson().fromJson(itemNumbersParam.encode(),
@@ -213,8 +211,10 @@ class CatalogFeedsApiVertxProxyHandler(private val vertx: Vertx, private val ser
                     val itemValidationIssueParam = ApiHandlerUtils.searchJsonObjectInJson(params,"item_validation_issue")
                     val itemValidationIssue = if(itemValidationIssueParam ==null) null else Gson().fromJson(itemValidationIssueParam.encode(), CatalogsItemValidationIssue::class.java)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.itemsIssuesList(processingResultId,bookmark,pageSize,itemNumbers,itemValidationIssue,adAccountId,context)
+                        val result = service.itemsIssuesList(processingResultId,itemNumbers,itemValidationIssue,adAccountId,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

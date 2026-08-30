@@ -5,42 +5,129 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
+
+// BidFloorSpec - Bid floor specification for a given campaign configuration.
 type BidFloorSpec struct {
 
+	// Ad group billable event type.
 	BillableEvent ActionType `json:"billable_event"`
 
+	// List of ISO 3166-1 alpha-2 country codes.
 	Countries []Country `json:"countries,omitempty"`
 
+	// Creative type for the bid floor request.
 	CreativeType CreativeType `json:"creative_type,omitempty"`
 
+	// Currency for the bid floor value.
 	Currency Currency `json:"currency"`
 
-	ObjectiveType ObjectiveType `json:"objective_type,omitempty"`
+	// Campaign objective type.
+	ObjectiveType BidFloorObjectiveType `json:"objective_type,omitempty"`
 
+	// Optimization goal metadata.
 	OptimizationGoalMetadata OptimizationGoalMetadata `json:"optimization_goal_metadata,omitempty"`
 }
-
-// AssertBidFloorSpecRequired checks if the required fields are not zero-ed
-func AssertBidFloorSpecRequired(obj BidFloorSpec) error {
-	elements := map[string]interface{}{
-		"billable_event": obj.BillableEvent,
-		"currency": obj.Currency,
+// UnmarshalJSON validates required property keys then unmarshals into BidFloorSpec
+func (o *BidFloorSpec) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"billable_event",
+		"currency",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"billable_event": false,
+		"currency": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"billable_event": {},
+		"countries": {},
+		"creative_type": {},
+		"currency": {},
+		"objective_type": {},
+		"optimization_goal_metadata": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded BidFloorSpec
+
+	if value, exists := allProperties["billable_event"]; exists {
+		if err = json.Unmarshal(value, &decoded.BillableEvent); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["countries"]; exists {
+		if err = json.Unmarshal(value, &decoded.Countries); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["creative_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreativeType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["currency"]; exists {
+		if err = json.Unmarshal(value, &decoded.Currency); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["objective_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.ObjectiveType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["optimization_goal_metadata"]; exists {
+		if err = json.Unmarshal(value, &decoded.OptimizationGoalMetadata); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertBidFloorSpecRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertBidFloorSpecRequired(obj BidFloorSpec) error {
 	if err := AssertOptimizationGoalMetadataRequired(obj.OptimizationGoalMetadata); err != nil {
 		return err
 	}

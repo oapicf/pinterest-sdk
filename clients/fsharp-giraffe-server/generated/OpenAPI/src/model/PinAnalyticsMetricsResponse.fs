@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.PinAnalyticsMetricsResponseDailyMetricsInner
+open OpenAPI.Model.PinAnalyticsDailyMetrics
 open System.Collections.Generic
 
 module PinAnalyticsMetricsResponse =
@@ -11,7 +11,7 @@ module PinAnalyticsMetricsResponse =
 
 
   type PinAnalyticsMetricsResponse = {
-    DailyMetrics : PinAnalyticsMetricsResponseDailyMetricsInner[];
+    DailyMetrics : PinAnalyticsDailyMetrics[];
     LifetimeMetrics : IDictionary<string, int>;
     SummaryMetrics : IDictionary<string, decimal>;
   }

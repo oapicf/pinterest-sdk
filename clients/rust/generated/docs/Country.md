@@ -169,7 +169,7 @@
 | Ng | NG |
 | Ni | NI |
 | Nl | NL |
-| No | NO |
+| False | false |
 | Np | NP |
 | Nr | NR |
 | Nu | NU |

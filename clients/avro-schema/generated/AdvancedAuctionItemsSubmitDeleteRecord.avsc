@@ -10,6 +10,15 @@
       "doc": ""
     },
     {
+      "name": "errors",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AdvancedAuctionOperationError"
+      }],
+      "doc": "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.",
+      "default": null
+    },
+    {
       "name": "item_id",
       "type": "string",
       "doc": "The catalog retail item id in the merchant namespace"
@@ -20,13 +29,15 @@
       "doc": ""
     },
     {
-      "name": "errors",
-      "type": ["null", {
-        "type": "array",
-        "items": "model.AdvancedAuctionOperationError"
-      }],
-      "doc": "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.",
-      "default": null
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "AdvancedAuctionItemsSubmitDeleteRecord_operation",
+        "symbols": [
+          "DELETE"
+        ]
+      },
+      "doc": ""
     }
   ]
 

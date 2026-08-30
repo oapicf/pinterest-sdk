@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -52,6 +53,12 @@ func NewIntegrationsAPIController(s IntegrationsAPIServicer, opts ...Integration
 // Routes returns all the api routes for the IntegrationsAPIController
 func (c *IntegrationsAPIController) Routes() Routes {
 	return Routes{
+		"IntegrationsGetList": Route{
+			"IntegrationsGetList",
+			strings.ToUpper("Get"),
+			"/v5/integrations",
+			c.IntegrationsGetList,
+		},
 		"IntegrationsCommercePost": Route{
 			"IntegrationsCommercePost",
 			strings.ToUpper("Post"),
@@ -82,12 +89,6 @@ func (c *IntegrationsAPIController) Routes() Routes {
 			"/v5/integrations/logs",
 			c.IntegrationsLogsPost,
 		},
-		"IntegrationsGetList": Route{
-			"IntegrationsGetList",
-			strings.ToUpper("Get"),
-			"/v5/integrations",
-			c.IntegrationsGetList,
-		},
 		"IntegrationsGetById": Route{
 			"IntegrationsGetById",
 			strings.ToUpper("Get"),
@@ -100,6 +101,12 @@ func (c *IntegrationsAPIController) Routes() Routes {
 // OrderedRoutes returns all the api routes in a deterministic order for the IntegrationsAPIController
 func (c *IntegrationsAPIController) OrderedRoutes() []Route {
 	return []Route{
+		Route{
+			"IntegrationsGetList",
+			strings.ToUpper("Get"),
+			"/v5/integrations",
+			c.IntegrationsGetList,
+		},
 		Route{
 			"IntegrationsCommercePost",
 			strings.ToUpper("Post"),
@@ -131,12 +138,6 @@ func (c *IntegrationsAPIController) OrderedRoutes() []Route {
 			c.IntegrationsLogsPost,
 		},
 		Route{
-			"IntegrationsGetList",
-			strings.ToUpper("Get"),
-			"/v5/integrations",
-			c.IntegrationsGetList,
-		},
-		Route{
 			"IntegrationsGetById",
 			strings.ToUpper("Get"),
 			"/v5/integrations/{id}",
@@ -147,24 +148,71 @@ func (c *IntegrationsAPIController) OrderedRoutes() []Route {
 
 
 
-// IntegrationsCommercePost - Create commerce integration
-func (c *IntegrationsAPIController) IntegrationsCommercePost(w http.ResponseWriter, r *http.Request) {
-	var integrationRequestParam IntegrationRequest
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&integrationRequestParam); err != nil {
+// IntegrationsGetList - Get integration metadata list
+func (c *IntegrationsAPIController) IntegrationsGetList(w http.ResponseWriter, r *http.Request) {
+	query, err := parseQuery(r.URL.RawQuery)
+	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertIntegrationRequestRequired(integrationRequestParam); err != nil {
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
+	var pageSizeParam int32
+	if query.Has("page_size") {
+		param, err := parseNumericParameter[int32](
+			query.Get("page_size"),
+			WithParse[int32](parseInt32),
+			WithMinimum[int32](1),
+			WithMaximum[int32](250),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
+			return
+		}
+
+		pageSizeParam = param
+	} else {
+		var param int32 = 25
+		pageSizeParam = param
+	}
+	result, err := c.service.IntegrationsGetList(r.Context(), bookmarkParam, pageSizeParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// IntegrationsCommercePost - Create commerce integration
+func (c *IntegrationsAPIController) IntegrationsCommercePost(w http.ResponseWriter, r *http.Request) {
+	var integrationMetadataCreateParam IntegrationMetadataCreate
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&integrationMetadataCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertIntegrationMetadataCreateRequired(integrationMetadataCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertIntegrationRequestConstraints(integrationRequestParam); err != nil {
+	if err := AssertIntegrationMetadataCreateConstraints(integrationMetadataCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.IntegrationsCommercePost(r.Context(), integrationRequestParam)
+	result, err := c.service.IntegrationsCommercePost(r.Context(), integrationMetadataCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -218,22 +266,27 @@ func (c *IntegrationsAPIController) IntegrationsCommercePatch(w http.ResponseWri
 		c.errorHandler(w, r, &RequiredError{"external_business_id"}, nil)
 		return
 	}
-	var integrationRequestPatchParam IntegrationRequestPatch
+	var integrationMetadataUpdateParam IntegrationMetadataUpdate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&integrationRequestPatchParam); err != nil {
+	if err := d.Decode(&integrationMetadataUpdateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertIntegrationRequestPatchRequired(integrationRequestPatchParam); err != nil {
+	if err := AssertIntegrationMetadataUpdateRequired(integrationMetadataUpdateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertIntegrationRequestPatchConstraints(integrationRequestPatchParam); err != nil {
+	if err := AssertIntegrationMetadataUpdateConstraints(integrationMetadataUpdateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.IntegrationsCommercePatch(r.Context(), externalBusinessIdParam, integrationRequestPatchParam)
+	result, err := c.service.IntegrationsCommercePatch(r.Context(), externalBusinessIdParam, integrationMetadataUpdateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -245,64 +298,27 @@ func (c *IntegrationsAPIController) IntegrationsCommercePatch(w http.ResponseWri
 
 // IntegrationsLogsPost - Receives batched logs from integration applications.
 func (c *IntegrationsAPIController) IntegrationsLogsPost(w http.ResponseWriter, r *http.Request) {
-	var integrationLogsRequestParam IntegrationLogsRequest
+	var integrationLogsRequestCreateParam IntegrationLogsRequestCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&integrationLogsRequestParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertIntegrationLogsRequestRequired(integrationLogsRequestParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertIntegrationLogsRequestConstraints(integrationLogsRequestParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.IntegrationsLogsPost(r.Context(), integrationLogsRequestParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// IntegrationsGetList - Get integration metadata list
-func (c *IntegrationsAPIController) IntegrationsGetList(w http.ResponseWriter, r *http.Request) {
-	query, err := parseQuery(r.URL.RawQuery)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	var pageSizeParam int32
-	if query.Has("page_size") {
-		param, err := parseNumericParameter[int32](
-			query.Get("page_size"),
-			WithParse[int32](parseInt32),
-			WithMinimum[int32](1),
-			WithMaximum[int32](250),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
+	if err := d.Decode(&integrationLogsRequestCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
 			return
 		}
-
-		pageSizeParam = param
-	} else {
-		var param int32 = 25
-		pageSizeParam = param
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
 	}
-	result, err := c.service.IntegrationsGetList(r.Context(), bookmarkParam, pageSizeParam)
+	if err := AssertIntegrationLogsRequestCreateRequired(integrationLogsRequestCreateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertIntegrationLogsRequestCreateConstraints(integrationLogsRequestCreateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.IntegrationsLogsPost(r.Context(), integrationLogsRequestCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

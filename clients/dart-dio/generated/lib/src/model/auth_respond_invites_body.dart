@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/auth_respond_invites_body_item.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/auth_respond_invites_body_invites_inner.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,7 +17,7 @@ part 'auth_respond_invites_body.g.dart';
 @BuiltValue()
 abstract class AuthRespondInvitesBody implements Built<AuthRespondInvitesBody, AuthRespondInvitesBodyBuilder> {
   @BuiltValueField(wireName: r'invites')
-  BuiltList<AuthRespondInvitesBodyInvitesInner> get invites;
+  BuiltList<AuthRespondInvitesBodyItem> get invites;
 
   AuthRespondInvitesBody._();
 
@@ -45,7 +45,7 @@ class _$AuthRespondInvitesBodySerializer implements PrimitiveSerializer<AuthResp
     yield r'invites';
     yield serializers.serialize(
       object.invites,
-      specifiedType: const FullType(BuiltList, [FullType(AuthRespondInvitesBodyInvitesInner)]),
+      specifiedType: const FullType(BuiltList, [FullType(AuthRespondInvitesBodyItem)]),
     );
   }
 
@@ -73,8 +73,8 @@ class _$AuthRespondInvitesBodySerializer implements PrimitiveSerializer<AuthResp
         case r'invites':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AuthRespondInvitesBodyInvitesInner)]),
-          ) as BuiltList<AuthRespondInvitesBodyInvitesInner>;
+            specifiedType: const FullType(BuiltList, [FullType(AuthRespondInvitesBodyItem)]),
+          ) as BuiltList<AuthRespondInvitesBodyItem>;
           result.invites.replace(valueDes);
           break;
         default:

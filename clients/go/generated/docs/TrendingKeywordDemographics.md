@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AgeDistribution** | Pointer to [**NullableTrendingKeywordDemographicsAgeDistribution**](TrendingKeywordDemographicsAgeDistribution.md) |  | [optional] 
-**GenderDistribution** | Pointer to [**NullableTrendingKeywordDemographicsGenderDistribution**](TrendingKeywordDemographicsGenderDistribution.md) |  | [optional] 
+**AgeDistribution** | Pointer to [**NullableTrendsAgeDistribution**](TrendsAgeDistribution.md) |  | [optional] 
+**GenderDistribution** | Pointer to [**NullableTrendsGenderDistribution**](TrendsGenderDistribution.md) |  | [optional] 
 
 ## Methods
 
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAgeDistribution
 
-`func (o *TrendingKeywordDemographics) GetAgeDistribution() TrendingKeywordDemographicsAgeDistribution`
+`func (o *TrendingKeywordDemographics) GetAgeDistribution() TrendsAgeDistribution`
 
 GetAgeDistribution returns the AgeDistribution field if non-nil, zero value otherwise.
 
 ### GetAgeDistributionOk
 
-`func (o *TrendingKeywordDemographics) GetAgeDistributionOk() (*TrendingKeywordDemographicsAgeDistribution, bool)`
+`func (o *TrendingKeywordDemographics) GetAgeDistributionOk() (*TrendsAgeDistribution, bool)`
 
 GetAgeDistributionOk returns a tuple with the AgeDistribution field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAgeDistribution
 
-`func (o *TrendingKeywordDemographics) SetAgeDistribution(v TrendingKeywordDemographicsAgeDistribution)`
+`func (o *TrendingKeywordDemographics) SetAgeDistribution(v TrendsAgeDistribution)`
 
 SetAgeDistribution sets AgeDistribution field to given value.
 
@@ -63,20 +63,20 @@ HasAgeDistribution returns a boolean if a field has been set.
 UnsetAgeDistribution ensures that no value is present for AgeDistribution, not even an explicit nil
 ### GetGenderDistribution
 
-`func (o *TrendingKeywordDemographics) GetGenderDistribution() TrendingKeywordDemographicsGenderDistribution`
+`func (o *TrendingKeywordDemographics) GetGenderDistribution() TrendsGenderDistribution`
 
 GetGenderDistribution returns the GenderDistribution field if non-nil, zero value otherwise.
 
 ### GetGenderDistributionOk
 
-`func (o *TrendingKeywordDemographics) GetGenderDistributionOk() (*TrendingKeywordDemographicsGenderDistribution, bool)`
+`func (o *TrendingKeywordDemographics) GetGenderDistributionOk() (*TrendsGenderDistribution, bool)`
 
 GetGenderDistributionOk returns a tuple with the GenderDistribution field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGenderDistribution
 
-`func (o *TrendingKeywordDemographics) SetGenderDistribution(v TrendingKeywordDemographicsGenderDistribution)`
+`func (o *TrendingKeywordDemographics) SetGenderDistribution(v TrendsGenderDistribution)`
 
 SetGenderDistribution sets GenderDistribution field to given value.
 

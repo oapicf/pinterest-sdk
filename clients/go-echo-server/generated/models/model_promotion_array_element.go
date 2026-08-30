@@ -2,7 +2,7 @@ package models
 
 type PromotionArrayElement struct {
 
-	Data PromotionResponse `json:"data,omitempty"`
+	Data Promotion `json:"data,omitempty"`
 
 	Exception Exception `json:"exception,omitempty"`
 }

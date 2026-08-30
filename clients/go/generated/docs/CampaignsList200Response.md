@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]CampaignResponse**](CampaignResponse.md) |  | 
+**Items** | [**[]Campaign**](Campaign.md) |  | 
 
 ## Methods
 
 ### NewCampaignsList200Response
 
-`func NewCampaignsList200Response(items []CampaignResponse, ) *CampaignsList200Response`
+`func NewCampaignsList200Response(items []Campaign, ) *CampaignsList200Response`
 
 NewCampaignsList200Response instantiates a new CampaignsList200Response object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ HasBookmark returns a boolean if a field has been set.
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
 ### GetItems
 
-`func (o *CampaignsList200Response) GetItems() []CampaignResponse`
+`func (o *CampaignsList200Response) GetItems() []Campaign`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *CampaignsList200Response) GetItemsOk() (*[]CampaignResponse, bool)`
+`func (o *CampaignsList200Response) GetItemsOk() (*[]Campaign, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *CampaignsList200Response) SetItems(v []CampaignResponse)`
+`func (o *CampaignsList200Response) SetItems(v []Campaign)`
 
 SetItems sets Items field to given value.
 

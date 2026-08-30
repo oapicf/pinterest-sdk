@@ -34,7 +34,7 @@ case class CatalogsFeedValidationErrors (
   FEED_TOO_SMALL: Option[Integer],
 /* Pinterest couldn't download your feed. */
   FETCH_ERROR: Option[Integer],
-/* Your feed wasn't ingested because it hasn’t changed in the previous 90 days. */
+/* Your feed wasn't ingested because it hasn't changed in the previous 90 days. */
   FETCH_INACTIVE_FEED_ERROR: Option[Integer],
 /* Some image links are formatted incorrectly. */
   IMAGE_LINK_INVALID: Option[Integer],

@@ -11,10 +11,10 @@ imports {
   CatalogsFeedProcessingSchedule = openapi_server.resourceTypes.CatalogsFeedProcessingSchedule
   CatalogsFormat = openapi_server.resourceTypes.CatalogsFormat
   CatalogsStatus = openapi_server.resourceTypes.CatalogsStatus
-  CatalogsType = openapi_server.resourceTypes.CatalogsType
   Country = openapi_server.resourceTypes.Country
   NullableCurrency = openapi_server.resourceTypes.NullableCurrency
   ProductAvailabilityType = openapi_server.resourceTypes.ProductAvailabilityType
+  import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
 
@@ -23,35 +23,26 @@ resourceTypes {
     description = CatalogsRetailFeed
     derivedFrom = Root
     properties {
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["RETAIL"]
+          optional = true
+        }
         created_at {
           type =  string
-          description = ""
-          optional = true
-        }
-        id {
-          type =  string
-          description = ""
-          optional = true
-        }
-        updated_at {
-          type =  string
-          description = ""
-          optional = true
-        }
-        catalog_type {
-          type = CatalogsType
           description = ""
           optional = true
         }
         credentials {
           type = CatalogsFeedCredentials
           description = ""
-          optional = true
+          optional = false
         }
         default_availability {
           type = ProductAvailabilityType
           description = ""
-          optional = true
+          optional = false
         }
         default_country {
           type = Country
@@ -61,7 +52,7 @@ resourceTypes {
         default_currency {
           type = NullableCurrency
           description = ""
-          optional = true
+          optional = false
         }
         default_locale {
           type =  string
@@ -71,6 +62,11 @@ resourceTypes {
         format {
           type = CatalogsFormat
           description = ""
+          optional = true
+        }
+        id {
+          type =  string
+          description = "ID of the feed entity."
           optional = true
         }
         location {
@@ -86,10 +82,15 @@ resourceTypes {
         preferred_processing_schedule {
           type = CatalogsFeedProcessingSchedule
           description = ""
-          optional = true
+          optional = false
         }
         status {
           type = CatalogsStatus
+          description = ""
+          optional = true
+        }
+        updated_at {
+          type =  string
           description = ""
           optional = true
         }

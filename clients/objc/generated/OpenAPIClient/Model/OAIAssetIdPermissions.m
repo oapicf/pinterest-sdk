@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"assetGroupInfo", @"assetId", @"assetType", @"permissions"];
+  NSArray *optionalProperties = @[@"assetGroupInfo", ];
   return [optionalProperties containsObject:propertyName];
 }
 

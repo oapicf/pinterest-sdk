@@ -102,7 +102,7 @@ Pins_list_200_response::getBookmark()
 }
 
 void
-Pins_list_200_response::setBookmark(std::string  bookmark)
+Pins_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Pins_list_200_response::getItems()
 }
 
 void
-Pins_list_200_response::setItems(std::list <Pin> items)
+Pins_list_200_response::setItems(std::list<Pin> items)
 {
 	this->items = items;
 }

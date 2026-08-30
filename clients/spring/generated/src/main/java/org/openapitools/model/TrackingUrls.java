@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -10,35 +11,35 @@ import java.util.List;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
+ *   Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for   each event type. Tracking URLs set at the ad group or ad level can override   those set at the campaign level. For more information, see [Third-party and dynamic tracking](https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking).
  */
 
-@Schema(name = "TrackingUrls", description = "Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "TrackingUrls", description = "  Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for   each event type. Tracking URLs set at the ad group or ad level can override   those set at the campaign level. For more information, see [Third-party and dynamic tracking](https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking).")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TrackingUrls {
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> audienceVerification = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> buyableButton = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> click = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> engagement = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> impression = new ArrayList<>();
 
   public TrackingUrls audienceVerification(List<String> audienceVerification) {
@@ -65,6 +66,7 @@ public class TrackingUrls {
     return audienceVerification;
   }
 
+  @JsonProperty("audience_verification")
   public void setAudienceVerification(List<String> audienceVerification) {
     this.audienceVerification = audienceVerification;
   }
@@ -93,6 +95,7 @@ public class TrackingUrls {
     return buyableButton;
   }
 
+  @JsonProperty("buyable_button")
   public void setBuyableButton(List<String> buyableButton) {
     this.buyableButton = buyableButton;
   }
@@ -121,6 +124,7 @@ public class TrackingUrls {
     return click;
   }
 
+  @JsonProperty("click")
   public void setClick(List<String> click) {
     this.click = click;
   }
@@ -149,6 +153,7 @@ public class TrackingUrls {
     return engagement;
   }
 
+  @JsonProperty("engagement")
   public void setEngagement(List<String> engagement) {
     this.engagement = engagement;
   }
@@ -177,6 +182,7 @@ public class TrackingUrls {
     return impression;
   }
 
+  @JsonProperty("impression")
   public void setImpression(List<String> impression) {
     this.impression = impression;
   }
@@ -220,10 +226,7 @@ public class TrackingUrls {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

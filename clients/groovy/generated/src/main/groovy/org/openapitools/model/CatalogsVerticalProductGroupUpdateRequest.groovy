@@ -44,6 +44,6 @@ class CatalogsVerticalProductGroupUpdateRequest {
     CatalogsCreativeAssetsProductGroupFilters filters
     
     CatalogsLocale locale
-    
+    /* Name of catalog product group */
     String name
 }

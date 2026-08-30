@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("KeywordsRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class KeywordsRequest   {
   private @Valid List<@Valid KeywordsCommon> keywords = new ArrayList<>();
   private String parentId;
@@ -82,7 +82,7 @@ public class KeywordsRequest   {
   }
 
   
-  @ApiModelProperty(example = "383791336903426391", required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
+  @ApiModelProperty(required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
   @JsonProperty(required = true, value = "parent_id")
   @NotNull  @Pattern(regexp="^((AG)|C)?\\d+$")public String getParentId() {
     return parentId;
@@ -128,12 +128,8 @@ public class KeywordsRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

@@ -5,12 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | Label ID. | [optional] 
-**label_type** | [**LabelType**](LabelType.md) |  | [optional] 
-**parent_id** | **str** | Label parent entity ID. | [optional] 
-**parent_type** | **str** | Label parent entity type. | [optional] 
-**status** | [**LabelStatus**](LabelStatus.md) |  | [optional] 
-**value** | **str** | Label name. | [optional] 
+**id** | **str** | Label ID. | 
+**label_type** | [**NullableLabelType**](NullableLabelType.md) |  | 
+**status** | [**NullableLabelStatus**](NullableLabelStatus.md) |  | [optional] 
+**value** | **str** | Label name. 100-character limit. | 
 
 ## Example
 

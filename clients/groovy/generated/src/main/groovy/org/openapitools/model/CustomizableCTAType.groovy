@@ -51,6 +51,8 @@ enum CustomizableCTAType {
     
     FIND_A_LOCATION("FIND_A_LOCATION"),
     
+    FIND_RETAILERS("FIND_RETAILERS"),
+    
     GET_DEAL("GET_DEAL"),
     
     GET_RECIPE("GET_RECIPE"),
@@ -61,7 +63,9 @@ enum CustomizableCTAType {
     
     PLAY_GAME("PLAY_GAME"),
     
-    TRY_IT("TRY_IT")
+    TRY_IT("TRY_IT"),
+    
+    TAKE_A_PEEK("TAKE_A_PEEK")
 
     private final String value
 

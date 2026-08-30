@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **String** | Description of the trending topic | 
-**percentGrowthMom** | **Number** | Month-over-month growth percentage | 
+**id** | **String** | Unique identifier for the trending topic | 
+**percentGrowthMom** | **Number** | Month-over-month growth percentage | [optional] 
 **pins** | [**[TrendingPin]**](TrendingPin.md) | Array of pin images related to this trend (up to 6) | 
 **relatedInterests** | **[String]** | List of related interest categories | 
 **relatedSearches** | **[String]** | List of related search terms | 

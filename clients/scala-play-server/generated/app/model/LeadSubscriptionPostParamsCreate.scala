@@ -7,15 +7,16 @@ import play.api.libs.json._
   * @param leadFormId Lead form ID.
   * @param webhookUrl Standard HTTPS webhook URL.
   * @param partnerAccessToken Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
+  * @param partnerMetadata Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
   * @param partnerRefreshToken Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class LeadSubscriptionPostParamsCreate(
   leadFormId: Option[String],
   webhookUrl: String,
   partnerAccessToken: Option[String],
-  partnerMetadata: Option[LeadSubscriptionPostParamsCreateAllOfPartnerMetadata],
+  partnerMetadata: Option[PartnerMetadata],
   partnerRefreshToken: Option[String]
   additionalProperties: 
 )

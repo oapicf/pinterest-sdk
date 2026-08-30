@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -18,21 +18,21 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.LabelUpdateRequestLabelsInner;
+import org.openapitools.model.LabelUpdateItem;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LabelUpdateRequest   {
   
-  private List<LabelUpdateRequestLabelsInner> labels = new ArrayList<>();
+  private List<LabelUpdateItem> labels = new ArrayList<>();
 
   /**
    * Labels that you are applying to the campaign.
    */
-  public LabelUpdateRequest labels(List<LabelUpdateRequestLabelsInner> labels) {
+  public LabelUpdateRequest labels(List<LabelUpdateItem> labels) {
     this.labels = labels;
     return this;
   }
@@ -40,10 +40,10 @@ public class LabelUpdateRequest   {
   
   @ApiModelProperty(required = true, value = "Labels that you are applying to the campaign.")
   @JsonProperty("labels")
-  public List<LabelUpdateRequestLabelsInner> getLabels() {
+  public List<LabelUpdateItem> getLabels() {
     return labels;
   }
-  public void setLabels(List<LabelUpdateRequestLabelsInner> labels) {
+  public void setLabels(List<LabelUpdateItem> labels) {
     this.labels = labels;
   }
 
@@ -80,10 +80,7 @@ public class LabelUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

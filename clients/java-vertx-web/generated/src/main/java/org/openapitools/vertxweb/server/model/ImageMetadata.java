@@ -3,6 +3,7 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.ImageSize;
 
@@ -11,7 +12,25 @@ public class ImageMetadata   {
   
   private String description;
   private ImageSize images;
-  private String itemType;
+
+
+  public enum ItemTypeEnum {
+    IMAGE("image");
+
+    private String value;
+
+    ItemTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private ItemTypeEnum itemType;
   private String link;
   private String title;
 
@@ -19,7 +38,7 @@ public class ImageMetadata   {
 
   }
 
-  public ImageMetadata (String description, ImageSize images, String itemType, String link, String title) {
+  public ImageMetadata (String description, ImageSize images, ItemTypeEnum itemType, String link, String title) {
     this.description = description;
     this.images = images;
     this.itemType = itemType;
@@ -47,10 +66,10 @@ public class ImageMetadata   {
 
     
   @JsonProperty("item_type")
-  public String getItemType() {
+  public ItemTypeEnum getItemType() {
     return itemType;
   }
-  public void setItemType(String itemType) {
+  public void setItemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
   }
 
@@ -113,9 +132,6 @@ public class ImageMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

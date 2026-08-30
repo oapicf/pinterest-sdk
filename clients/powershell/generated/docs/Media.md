@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $Media = Initialize-PSOpenAPIToolsMedia  -MediaId 12345 `
- -MediaType null `
+ -MediaType video `
  -Status null
 ```
 

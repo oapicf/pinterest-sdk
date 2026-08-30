@@ -18,11 +18,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="adscreditredeem"></a>
 # **AdsCreditRedeem**
-> AdsCreditRedeemResponse AdsCreditRedeem (string adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest)
+> AdsCreditRedeem AdsCreditRedeem (string adAccountId, AdsCreditRedeemCreate adsCreditRedeemCreate)
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 
 ### Parameters
@@ -30,11 +30,11 @@ Redeem ads credit on behalf of the ad account id and apply it towards billing.  
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
-| **adsCreditRedeemRequest** | [**AdsCreditRedeemRequest**](AdsCreditRedeemRequest.md) | Redeem ad credits request. |  |
+| **adsCreditRedeemCreate** | [**AdsCreditRedeemCreate**](AdsCreditRedeemCreate.md) |  |  |
 
 ### Return type
 
-[**AdsCreditRedeemResponse**](AdsCreditRedeemResponse.md)
+[**AdsCreditRedeem**](AdsCreditRedeem.md)
 
 ### Authorization
 
@@ -49,9 +49,14 @@ Redeem ads credit on behalf of the ad account id and apply it towards billing.  
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully redeemed ad credits. |  -  |
-| **400** | Error thrown when unable to redeem offer code. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -61,7 +66,7 @@ Redeem ads credit on behalf of the ad account id and apply it towards billing.  
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 
 ### Parameters
@@ -70,7 +75,7 @@ Returns the list of discounts applied to the account.  <strong>This endpoint mig
 |------|------|-------------|-------|
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -89,8 +94,13 @@ Returns the list of discounts applied to the account.  <strong>This endpoint mig
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -127,15 +137,19 @@ Get download url for a billing invoice.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully fetched Billing invoice information for a given ad account |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="billinginvoicesget"></a>
 # **BillingInvoicesGet**
-> BillingInvoicesGet200Response BillingInvoicesGet (string adAccountId, string bookmark = null, int pageSize = null, string sort = null, string order = null, string status = null, string documentType = null, DateOnly startDueDate = null, DateOnly endDueDate = null)
+> BillingInvoicesGet200Response BillingInvoicesGet (string adAccountId, string bookmark = null, int pageSize = null, PinterestLibPaginationOrder order = null, BillingInvoiceSortField sort = null, BillingInvoiceStatus status = null, BillingInvoiceDocumentType documentType = null, DateOnly startDueDate = null, DateOnly endDueDate = null)
 
 Get billing invoices
 
@@ -148,11 +162,11 @@ Get billing invoices in the advertiser account.
 |------|------|-------------|-------|
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **sort** | **string** | Field of which to sort billing invoices | [optional] [default to DUE_DATE] |
-| **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]  |
-| **status** | **string** | Status of billing invoices to filter by | [optional]  |
-| **documentType** | **string** | Document type of billing invoices to filter by | [optional]  |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | **PinterestLibPaginationOrder** | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]  |
+| **sort** | **BillingInvoiceSortField** | Field of which to sort billing invoices | [optional]  |
+| **status** | **BillingInvoiceStatus** | Status of billing invoices to filter by | [optional]  |
+| **documentType** | **BillingInvoiceDocumentType** | Document type of billing invoices to filter by | [optional]  |
 | **startDueDate** | **DateOnly** | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional]  |
 | **endDueDate** | **DateOnly** | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional]  |
 
@@ -173,29 +187,33 @@ Get billing invoices in the advertiser account.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="billingprofilesget"></a>
 # **BillingProfilesGet**
-> BillingProfilesGet200Response BillingProfilesGet (string adAccountId, bool isActive, string bookmark = null, int pageSize = null)
+> BillingProfilesGet200Response BillingProfilesGet (bool isActive, string adAccountId, string bookmark = null, int pageSize = null)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 
 ### Parameters
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **adAccountId** | **string** | Unique identifier of an ad account. |  |
 | **isActive** | **bool** | Return active billing profiles, if false return all billing profiles. |  |
+| **adAccountId** | **string** | Unique identifier of an ad account. |  |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -214,18 +232,23 @@ Get billing profiles in the advertiser account.  <strong>This endpoint might not
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="ssioaccountsget"></a>
 # **SsioAccountsGet**
-> SSIOAccountResponse SsioAccountsGet (string adAccountId)
+> SSIOAccount SsioAccountsGet (string adAccountId)
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 
 ### Parameters
@@ -236,7 +259,7 @@ Get Salesforce account details including bill-to information to be used in inser
 
 ### Return type
 
-[**SSIOAccountResponse**](SSIOAccountResponse.md)
+[**SSIOAccount**](SSIOAccount.md)
 
 ### Authorization
 
@@ -251,19 +274,23 @@ Get Salesforce account details including bill-to information to be used in inser
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="ssioinsertionordercreate"></a>
 # **SsioInsertionOrderCreate**
-> SSIOCreateInsertionOrderResponse SsioInsertionOrderCreate (string adAccountId, SSIOCreateInsertionOrderRequest sSIOCreateInsertionOrderRequest)
+> SSIOInsertionOrder SsioInsertionOrderCreate (string adAccountId, SSIOInsertionOrderCreate sSIOInsertionOrderCreate)
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 
 ### Parameters
@@ -271,11 +298,11 @@ Create insertion order through SSIO for <code>ad_account_id</code>. - The token'
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
-| **sSIOCreateInsertionOrderRequest** | [**SSIOCreateInsertionOrderRequest**](SSIOCreateInsertionOrderRequest.md) | Order line to create. |  |
+| **sSIOInsertionOrderCreate** | [**SSIOInsertionOrderCreate**](SSIOInsertionOrderCreate.md) |  |  |
 
 ### Return type
 
-[**SSIOCreateInsertionOrderResponse**](SSIOCreateInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -290,19 +317,24 @@ Create insertion order through SSIO for <code>ad_account_id</code>. - The token'
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="ssioinsertionorderedit"></a>
 # **SsioInsertionOrderEdit**
-> SSIOEditInsertionOrderResponse SsioInsertionOrderEdit (string adAccountId, SSIOEditInsertionOrderRequest sSIOEditInsertionOrderRequest)
+> SSIOInsertionOrder SsioInsertionOrderEdit (string adAccountId, SSIOInsertionOrderUpdate sSIOInsertionOrderUpdate)
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 
 ### Parameters
@@ -310,11 +342,11 @@ Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
-| **sSIOEditInsertionOrderRequest** | [**SSIOEditInsertionOrderRequest**](SSIOEditInsertionOrderRequest.md) | Order line to create. |  |
+| **sSIOInsertionOrderUpdate** | [**SSIOInsertionOrderUpdate**](SSIOInsertionOrderUpdate.md) |  |  |
 
 ### Return type
 
-[**SSIOEditInsertionOrderResponse**](SSIOEditInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -329,9 +361,13 @@ Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -341,7 +377,7 @@ Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's 
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 
 ### Parameters
@@ -350,7 +386,7 @@ Get insertion order status for account id <code>ad_account_id</code>. - The toke
 |------|------|-------------|-------|
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -369,9 +405,13 @@ Get insertion order status for account id <code>ad_account_id</code>. - The toke
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -381,7 +421,7 @@ Get insertion order status for account id <code>ad_account_id</code>. - The toke
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 
 ### Parameters
@@ -408,19 +448,23 @@ Get insertion order status for pin order id <code>pin_order_id</code>. - The tok
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="ssioorderlinesgetbyadaccount"></a>
 # **SsioOrderLinesGetByAdAccount**
-> SsioOrderLinesGetByAdAccount200Response SsioOrderLinesGetByAdAccount (string adAccountId, string bookmark = null, int pageSize = null, string pinOrderId = null)
+> SsioOrderLinesGetByAdAccount200Response SsioOrderLinesGetByAdAccount (string adAccountId, string pinOrderId = null, string bookmark = null, int pageSize = null)
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 
 ### Parameters
@@ -428,9 +472,9 @@ Get Salesforce order lines for account id <code>ad_account_id</code>. - The toke
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
+| **pinOrderId** | **string** | The pin order id associated with the SSIO insertion order | [optional]  |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **pinOrderId** | **string** | The pin order id associated with the ssio insertino order | [optional]  |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -449,9 +493,13 @@ Get Salesforce order lines for account id <code>ad_account_id</code>. - The toke
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

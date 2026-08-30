@@ -1,8 +1,10 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.ConversionAccessTokenResponse;
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.OauthAccessTokenResponse;
+import org.openapitools.vertxweb.server.model.ConversionAccessToken;
+import org.openapitools.vertxweb.server.model.OauthAccessToken;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.TokenGrantType;
+import org.openapitools.vertxweb.server.model.TokenTypeHint;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;

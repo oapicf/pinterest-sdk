@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -65,7 +65,7 @@ const (
 	NB Language = "NB"
 	NE Language = "NE"
 	NL Language = "NL"
-	NO Language = "NO"
+	FALSE Language = "false"
 	PL Language = "PL"
 	PT Language = "PT"
 	RO Language = "RO"
@@ -130,7 +130,7 @@ var AllowedLanguageEnumValues = []Language{
 	"NB",
 	"NE",
 	"NL",
-	"NO",
+	"false",
 	"PL",
 	"PT",
 	"RO",
@@ -195,7 +195,7 @@ var validLanguageEnumValues = map[Language]struct{}{
 	"NB": {},
 	"NE": {},
 	"NL": {},
-	"NO": {},
+	"false": {},
 	"PL": {},
 	"PT": {},
 	"RO": {},
@@ -233,8 +233,8 @@ func NewLanguageFromValue(v string) (Language, error) {
 }
 
 
-
-// AssertLanguageRequired checks if the required fields are not zero-ed
+// AssertLanguageRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertLanguageRequired(obj Language) error {
 	return nil
 }

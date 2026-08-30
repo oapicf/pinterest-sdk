@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "AdGroupResponse.h"
+#include "AdGroup.h"
 #include <list>
 
 namespace Tiny {
@@ -53,19 +53,19 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setBookmark(std::string  bookmark);
+	void setBookmark(std::string bookmark);
 	/*! \brief Get 
 	 */
-	std::list<AdGroupResponse> getItems();
+	std::list<AdGroup> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <AdGroupResponse> items);
+	void setItems(std::list<AdGroup> items);
 
 
     private:
     std::string bookmark{};
-    std::list<AdGroupResponse> items;
+    std::list<AdGroup> items;
 };
 }
 

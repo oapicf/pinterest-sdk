@@ -2,6 +2,8 @@ package org.openapitools.server.model
 
 
 /**
+ * = catalogs_items_request =
+ *
  * Request object of catalogs items
  *
  * @param country  for example: ''null''

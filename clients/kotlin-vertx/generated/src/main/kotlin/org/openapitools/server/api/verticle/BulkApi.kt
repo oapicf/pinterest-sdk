@@ -1,11 +1,11 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.BulkDownloadRequest
-import org.openapitools.server.api.model.BulkDownloadResponse
+import org.openapitools.server.api.model.BulkDownload
+import org.openapitools.server.api.model.BulkDownloadCreate
+import org.openapitools.server.api.model.BulkJobData
 import org.openapitools.server.api.model.BulkUpsertRequest
 import org.openapitools.server.api.model.BulkUpsertResponse
-import org.openapitools.server.api.model.BulkUpsertStatusResponse
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -24,10 +24,10 @@ interface BulkApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* bulkDownloadCreate
      * Get advertiser entities in bulk */
-    suspend fun bulkDownloadCreate(adAccountId:kotlin.String?,bulkDownloadRequest:BulkDownloadRequest?,context:OperationRequest):Response<BulkDownloadResponse>
+    suspend fun bulkDownloadCreate(adAccountId:kotlin.String?,bulkDownloadCreate:BulkDownloadCreate?,context:OperationRequest):Response<BulkDownload>
     /* bulkRequestGet
      * Download advertiser entities in bulk */
-    suspend fun bulkRequestGet(adAccountId:kotlin.String?,bulkRequestId:kotlin.String?,includeDetails:kotlin.Boolean?,context:OperationRequest):Response<BulkUpsertStatusResponse>
+    suspend fun bulkRequestGet(adAccountId:kotlin.String?,bulkRequestId:kotlin.String?,includeDetails:kotlin.Boolean?,context:OperationRequest):Response<BulkJobData>
     /* bulkUpsertCreate
      * Create/update ad entities in bulk */
     suspend fun bulkUpsertCreate(adAccountId:kotlin.String?,bulkUpsertRequest:BulkUpsertRequest?,context:OperationRequest):Response<BulkUpsertResponse>

@@ -6,7 +6,6 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.catalogs_type import CatalogsType  # noqa: F401,E501
 from app.openapi_server.models.item_validation_event import ItemValidationEvent  # noqa: F401,E501
 from openapi_server import util
 
@@ -17,31 +16,36 @@ class CatalogsRetailItemErrorResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, catalog_type: CatalogsType=None, errors: List[ItemValidationEvent]=None, item_id: str=None):  # noqa: E501
+    def __init__(self, catalog_type: str=None, errors: List[ItemValidationEvent]=None, item_id: str=None, item_response_kind: str=None):  # noqa: E501
         """CatalogsRetailItemErrorResponse - a model defined in Swagger
 
         :param catalog_type: The catalog_type of this CatalogsRetailItemErrorResponse.  # noqa: E501
-        :type catalog_type: CatalogsType
+        :type catalog_type: str
         :param errors: The errors of this CatalogsRetailItemErrorResponse.  # noqa: E501
         :type errors: List[ItemValidationEvent]
         :param item_id: The item_id of this CatalogsRetailItemErrorResponse.  # noqa: E501
         :type item_id: str
+        :param item_response_kind: The item_response_kind of this CatalogsRetailItemErrorResponse.  # noqa: E501
+        :type item_response_kind: str
         """
         self.swagger_types = {
-            'catalog_type': CatalogsType,
+            'catalog_type': str,
             'errors': List[ItemValidationEvent],
-            'item_id': str
+            'item_id': str,
+            'item_response_kind': str
         }
 
         self.attribute_map = {
             'catalog_type': 'catalog_type',
             'errors': 'errors',
-            'item_id': 'item_id'
+            'item_id': 'item_id',
+            'item_response_kind': 'item_response_kind'
         }
 
         self._catalog_type = catalog_type
         self._errors = errors
         self._item_id = item_id
+        self._item_response_kind = item_response_kind
 
     @classmethod
     def from_dict(cls, dikt) -> 'CatalogsRetailItemErrorResponse':
@@ -55,25 +59,29 @@ class CatalogsRetailItemErrorResponse(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def catalog_type(self) -> CatalogsType:
+    def catalog_type(self) -> str:
         """Gets the catalog_type of this CatalogsRetailItemErrorResponse.
 
 
         :return: The catalog_type of this CatalogsRetailItemErrorResponse.
-        :rtype: CatalogsType
+        :rtype: str
         """
         return self._catalog_type
 
     @catalog_type.setter
-    def catalog_type(self, catalog_type: CatalogsType):
+    def catalog_type(self, catalog_type: str):
         """Sets the catalog_type of this CatalogsRetailItemErrorResponse.
 
 
         :param catalog_type: The catalog_type of this CatalogsRetailItemErrorResponse.
-        :type catalog_type: CatalogsType
+        :type catalog_type: str
         """
-        if catalog_type is None:
-            raise ValueError("Invalid value for `catalog_type`, must not be `None`")  # noqa: E501
+        allowed_values = ["RETAIL"]  # noqa: E501
+        if catalog_type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `catalog_type` ({0}), must be one of {1}"
+                .format(catalog_type, allowed_values)
+            )
 
         self._catalog_type = catalog_type
 
@@ -124,3 +132,32 @@ class CatalogsRetailItemErrorResponse(Model):
         """
 
         self._item_id = item_id
+
+    @property
+    def item_response_kind(self) -> str:
+        """Gets the item_response_kind of this CatalogsRetailItemErrorResponse.
+
+        Discriminator literal identifying this leaf inside an `ItemResponse` payload.  # noqa: E501
+
+        :return: The item_response_kind of this CatalogsRetailItemErrorResponse.
+        :rtype: str
+        """
+        return self._item_response_kind
+
+    @item_response_kind.setter
+    def item_response_kind(self, item_response_kind: str):
+        """Sets the item_response_kind of this CatalogsRetailItemErrorResponse.
+
+        Discriminator literal identifying this leaf inside an `ItemResponse` payload.  # noqa: E501
+
+        :param item_response_kind: The item_response_kind of this CatalogsRetailItemErrorResponse.
+        :type item_response_kind: str
+        """
+        allowed_values = ["retail_item_error"]  # noqa: E501
+        if item_response_kind not in allowed_values:
+            raise ValueError(
+                "Invalid value for `item_response_kind` ({0}), must be one of {1}"
+                .format(item_response_kind, allowed_values)
+            )
+
+        self._item_response_kind = item_response_kind

@@ -8,7 +8,6 @@ import 'package:openapi/src/model/catalogs_hotel_items_batch.dart';
 import 'package:openapi/src/model/batch_operation_status.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/catalogs_retail_items_batch.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:openapi/src/model/creative_assets_processing_record.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -19,8 +18,8 @@ part 'catalogs_items_batch.g.dart';
 /// Object describing the catalogs items batch
 ///
 /// Properties:
-/// * [catalogType] 
 /// * [batchId] - Id of the catalogs items batch
+/// * [catalogType] 
 /// * [completedTime] - Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 /// * [createdTime] - Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
 /// * [items] - Array with the catalogs items processing records part of the catalogs items batch
@@ -145,5 +144,18 @@ class _$CatalogsItemsBatchSerializer implements PrimitiveSerializer<CatalogsItem
     result.oneOf = OneOfDynamic(typeIndex: oneOfTypes.indexOf(oneOfType), types: oneOfTypes, value: oneOfResult);
     return result.build();
   }
+}
+
+class CatalogsItemsBatchCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')
+  static const CatalogsItemsBatchCatalogTypeEnum CREATIVE_ASSETS = _$catalogsItemsBatchCatalogTypeEnum_CREATIVE_ASSETS;
+
+  static Serializer<CatalogsItemsBatchCatalogTypeEnum> get serializer => _$catalogsItemsBatchCatalogTypeEnumSerializer;
+
+  const CatalogsItemsBatchCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsItemsBatchCatalogTypeEnum> get values => _$catalogsItemsBatchCatalogTypeEnumValues;
+  static CatalogsItemsBatchCatalogTypeEnum valueOf(String name) => _$catalogsItemsBatchCatalogTypeEnumValueOf(name);
 }
 

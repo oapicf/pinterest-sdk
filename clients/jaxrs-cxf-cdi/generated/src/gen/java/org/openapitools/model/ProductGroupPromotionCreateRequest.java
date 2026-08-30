@@ -32,7 +32,7 @@ public class ProductGroupPromotionCreateRequest   {
   }
 
   
-  @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the Ad Group the Product Group Promotion belongs to.")
+  @ApiModelProperty(required = true, value = "ID of the Ad Group the Product Group Promotion belongs to.")
   @JsonProperty("ad_group_id")
   @NotNull
  @Pattern(regexp="^(AG)?\\d+$")  public String getAdGroupId() {
@@ -105,10 +105,7 @@ public class ProductGroupPromotionCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

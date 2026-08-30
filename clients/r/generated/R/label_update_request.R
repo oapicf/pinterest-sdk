@@ -7,7 +7,7 @@
 #' @title LabelUpdateRequest
 #' @description LabelUpdateRequest Class
 #' @format An \code{R6Class} generator object
-#' @field labels Labels that you are applying to the campaign. list(\link{LabelUpdateRequestLabelsInner})
+#' @field labels Labels that you are applying to the campaign. list(\link{LabelUpdateItem})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -62,9 +62,32 @@ LabelUpdateRequest <- R6::R6Class(
       LabelUpdateRequestObject <- list()
       if (!is.null(self$`labels`)) {
         LabelUpdateRequestObject[["labels"]] <-
-          lapply(self$`labels`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`labels`)
       }
       return(LabelUpdateRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -75,7 +98,7 @@ LabelUpdateRequest <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`labels`)) {
-        self$`labels` <- ApiClient$new()$deserializeObj(this_object$`labels`, "array[LabelUpdateRequestLabelsInner]", loadNamespace("openapi"))
+        self$`labels` <- ApiClient$new()$deserializeObj(this_object$`labels`, "array[LabelUpdateItem]", loadNamespace("openapi"))
       }
       self
     },
@@ -98,7 +121,7 @@ LabelUpdateRequest <- R6::R6Class(
     #' @return the instance of LabelUpdateRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`labels` <- ApiClient$new()$deserializeObj(this_object$`labels`, "array[LabelUpdateRequestLabelsInner]", loadNamespace("openapi"))
+      self$`labels` <- ApiClient$new()$deserializeObj(this_object$`labels`, "array[LabelUpdateItem]", loadNamespace("openapi"))
       self
     },
 

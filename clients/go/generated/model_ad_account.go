@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -26,12 +26,14 @@ type AdAccount struct {
 	//  Creation time. Unix timestamp in seconds.
 	CreatedTime NullableInt32 `json:"created_time,omitempty"`
 	Currency *Currency `json:"currency,omitempty"`
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 	// Ad account name.
 	Name *string `json:"name,omitempty"`
 	// Ad account owner
 	Owner *AdAccountOwner `json:"owner,omitempty"`
 	Permissions []BusinessAccessRole `json:"permissions,omitempty"`
+	// The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
+	TimeZone *string `json:"time_zone,omitempty"`
 	UpdatedTime NullableInt32 `json:"updated_time,omitempty"`
 }
 
@@ -281,6 +283,38 @@ func (o *AdAccount) SetPermissions(v []BusinessAccessRole) {
 	o.Permissions = v
 }
 
+// GetTimeZone returns the TimeZone field value if set, zero value otherwise.
+func (o *AdAccount) GetTimeZone() string {
+	if o == nil || IsNil(o.TimeZone) {
+		var ret string
+		return ret
+	}
+	return *o.TimeZone
+}
+
+// GetTimeZoneOk returns a tuple with the TimeZone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdAccount) GetTimeZoneOk() (*string, bool) {
+	if o == nil || IsNil(o.TimeZone) {
+		return nil, false
+	}
+	return o.TimeZone, true
+}
+
+// HasTimeZone returns a boolean if a field has been set.
+func (o *AdAccount) HasTimeZone() bool {
+	if o != nil && !IsNil(o.TimeZone) {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeZone gets a reference to the given string and assigns it to the TimeZone field.
+func (o *AdAccount) SetTimeZone(v string) {
+	o.TimeZone = &v
+}
+
 // GetUpdatedTime returns the UpdatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AdAccount) GetUpdatedTime() int32 {
 	if o == nil || IsNil(o.UpdatedTime.Get()) {
@@ -351,6 +385,9 @@ func (o AdAccount) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Permissions) {
 		toSerialize["permissions"] = o.Permissions
+	}
+	if !IsNil(o.TimeZone) {
+		toSerialize["time_zone"] = o.TimeZone
 	}
 	if o.UpdatedTime.IsSet() {
 		toSerialize["updated_time"] = o.UpdatedTime.Get()

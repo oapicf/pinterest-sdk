@@ -2,22 +2,26 @@ package controllers;
 
 import apimodels.Account;
 import apimodels.AnalyticsMetricsResponse;
-import apimodels.BoardsUserFollowsList200Response;
-import apimodels.Error;
-import apimodels.FollowUserRequest;
+import java.math.BigDecimal;
+import apimodels.BoardsList200Response;
+import apimodels.FollowUser;
+import apimodels.FollowUserCreate;
 import apimodels.FollowersList200Response;
 import apimodels.LinkedBusiness;
 import java.time.LocalDate;
 import java.util.Map;
+import apimodels.PinterestLibError;
+import apimodels.QuerymetrictypesItems;
+import apimodels.QueryvideopinmetrictypesItems;
 import apimodels.TopPinsAnalyticsResponse;
+import apimodels.TopPinsSortBy;
 import apimodels.TopVideoPinsAnalyticsResponse;
+import apimodels.TopVideoPinsSortBy;
 import apimodels.UserAccountFollowedInterests200Response;
 import apimodels.UserFollowingFeedType;
-import apimodels.UserFollowingGet200Response;
-import apimodels.UserSummary;
-import apimodels.UserWebsiteSummary;
-import apimodels.UserWebsiteVerificationCode;
-import apimodels.UserWebsiteVerifyRequest;
+import apimodels.UserWebsite;
+import apimodels.UserWebsiteCreate;
+import apimodels.UserWebsiteVerification;
 import apimodels.UserWebsitesGet200Response;
 
 import com.google.inject.Inject;
@@ -45,12 +49,12 @@ public abstract class UserAccountApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result boardsUserFollowsListHttp(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize, Boolean explicitFollowing,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result boardsUserFollowsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean explicitFollowing, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        BoardsUserFollowsList200Response obj = boardsUserFollowsList(request, bookmark, pageSize, explicitFollowing, adAccountId);
+        BoardsList200Response obj = boardsUserFollowsList(request, adAccountId, explicitFollowing, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -62,14 +66,14 @@ public abstract class UserAccountApiControllerImpInterface {
 
     }
 
-    public abstract BoardsUserFollowsList200Response boardsUserFollowsList(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize, Boolean explicitFollowing,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract BoardsList200Response boardsUserFollowsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean explicitFollowing, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result followUserUpdateHttp(Http.Request request,  @Pattern(regexp="(?!^\\d+$)^.+$")String username, FollowUserRequest followUserRequest) throws Exception {
+    public Result followUserUpdateHttp(Http.Request request,  @Pattern(regexp="(?!^\\d+$)^.+$")String username, FollowUserCreate followUserCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        UserSummary obj = followUserUpdate(request, username, followUserRequest);
+        FollowUser obj = followUserUpdate(request, username, followUserCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -81,7 +85,7 @@ public abstract class UserAccountApiControllerImpInterface {
 
     }
 
-    public abstract UserSummary followUserUpdate(Http.Request request,  @Pattern(regexp="(?!^\\d+$)^.+$")String username, FollowUserRequest followUserRequest) throws Exception;
+    public abstract FollowUser followUserUpdate(Http.Request request,  @Pattern(regexp="(?!^\\d+$)^.+$")String username, FollowUserCreate followUserCreate) throws Exception;
 
     public Result followersListHttp(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -128,14 +132,21 @@ public abstract class UserAccountApiControllerImpInterface {
             return unauthorized();
         }
 
-        unverifyWebsiteDelete(request, website);
-        return ok();
+        UserWebsite obj = unverifyWebsiteDelete(request, website);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
 
     }
 
-    public abstract void unverifyWebsiteDelete(Http.Request request, @NotNull String website) throws Exception;
+    public abstract UserWebsite unverifyWebsiteDelete(Http.Request request, @NotNull String website) throws Exception;
 
-    public Result userAccountAnalyticsHttp(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<String> metricTypes, String splitField,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result userAccountAnalyticsHttp(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<QuerymetrictypesItems> metricTypes, String splitField,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
@@ -154,9 +165,9 @@ public abstract class UserAccountApiControllerImpInterface {
 
     }
 
-    public abstract Map<String, AnalyticsMetricsResponse> userAccountAnalytics(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<String> metricTypes, String splitField,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract Map<String, AnalyticsMetricsResponse> userAccountAnalytics(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<QuerymetrictypesItems> metricTypes, String splitField,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result userAccountAnalyticsTopPinsHttp(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull String sortBy, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<String> metricTypes,  @Min(1) @Max(50)Integer numOfPins, Integer createdInLastNDays,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result userAccountAnalyticsTopPinsHttp(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull TopPinsSortBy sortBy, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<QuerymetrictypesItems> metricTypes,  @Min(1) @Max(50)Integer numOfPins, BigDecimal createdInLastNDays,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
@@ -173,9 +184,9 @@ public abstract class UserAccountApiControllerImpInterface {
 
     }
 
-    public abstract TopPinsAnalyticsResponse userAccountAnalyticsTopPins(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull String sortBy, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<String> metricTypes,  @Min(1) @Max(50)Integer numOfPins, Integer createdInLastNDays,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract TopPinsAnalyticsResponse userAccountAnalyticsTopPins(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull TopPinsSortBy sortBy, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<QuerymetrictypesItems> metricTypes,  @Min(1) @Max(50)Integer numOfPins, BigDecimal createdInLastNDays,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result userAccountAnalyticsTopVideoPinsHttp(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull String sortBy, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<String> metricTypes,  @Min(1) @Max(50)Integer numOfPins, Integer createdInLastNDays,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result userAccountAnalyticsTopVideoPinsHttp(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull TopVideoPinsSortBy sortBy, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<QueryvideopinmetrictypesItems> metricTypes,  @Min(1) @Max(50)Integer numOfPins, BigDecimal createdInLastNDays,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
@@ -192,7 +203,7 @@ public abstract class UserAccountApiControllerImpInterface {
 
     }
 
-    public abstract TopVideoPinsAnalyticsResponse userAccountAnalyticsTopVideoPins(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull String sortBy, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<String> metricTypes,  @Min(1) @Max(50)Integer numOfPins, Integer createdInLastNDays,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract TopVideoPinsAnalyticsResponse userAccountAnalyticsTopVideoPins(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull TopVideoPinsSortBy sortBy, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<QueryvideopinmetrictypesItems> metricTypes,  @Min(1) @Max(50)Integer numOfPins, BigDecimal createdInLastNDays,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
     public Result userAccountFollowedInterestsHttp(Http.Request request,  @Pattern(regexp="(?!^\\d+$)^.+$")String username, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -232,12 +243,12 @@ public abstract class UserAccountApiControllerImpInterface {
 
     public abstract Account userAccountGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result userFollowingGetHttp(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize, UserFollowingFeedType feedType, Boolean explicitFollowing,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result userFollowingGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean explicitFollowing, UserFollowingFeedType feedType, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        UserFollowingGet200Response obj = userFollowingGet(request, bookmark, pageSize, feedType, explicitFollowing, adAccountId);
+        FollowersList200Response obj = userFollowingGet(request, adAccountId, explicitFollowing, feedType, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -249,7 +260,7 @@ public abstract class UserAccountApiControllerImpInterface {
 
     }
 
-    public abstract UserFollowingGet200Response userFollowingGet(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize, UserFollowingFeedType feedType, Boolean explicitFollowing,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract FollowersList200Response userFollowingGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean explicitFollowing, UserFollowingFeedType feedType, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
     public Result userWebsitesGetHttp(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -270,12 +281,12 @@ public abstract class UserAccountApiControllerImpInterface {
 
     public abstract UserWebsitesGet200Response userWebsitesGet(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result verifyWebsiteUpdateHttp(Http.Request request, UserWebsiteVerifyRequest userWebsiteVerifyRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result verifyWebsiteUpdateHttp(Http.Request request, UserWebsiteCreate userWebsiteCreate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        UserWebsiteSummary obj = verifyWebsiteUpdate(request, userWebsiteVerifyRequest, adAccountId);
+        UserWebsite obj = verifyWebsiteUpdate(request, userWebsiteCreate, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -287,14 +298,14 @@ public abstract class UserAccountApiControllerImpInterface {
 
     }
 
-    public abstract UserWebsiteSummary verifyWebsiteUpdate(Http.Request request, UserWebsiteVerifyRequest userWebsiteVerifyRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract UserWebsite verifyWebsiteUpdate(Http.Request request, UserWebsiteCreate userWebsiteCreate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
     public Result websiteVerificationGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        UserWebsiteVerificationCode obj = websiteVerificationGet(request, adAccountId);
+        UserWebsiteVerification obj = websiteVerificationGet(request, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -306,6 +317,6 @@ public abstract class UserAccountApiControllerImpInterface {
 
     }
 
-    public abstract UserWebsiteVerificationCode websiteVerificationGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract UserWebsiteVerification websiteVerificationGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
 }

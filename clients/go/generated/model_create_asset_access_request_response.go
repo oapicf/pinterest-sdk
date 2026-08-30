@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,8 +21,9 @@ var _ MappedNullable = &CreateAssetAccessRequestResponse{}
 // CreateAssetAccessRequestResponse struct for CreateAssetAccessRequestResponse
 type CreateAssetAccessRequestResponse struct {
 	// A list of errors associated with the asset access requests. Will be returned if there is an error.
-	Exceptions []CreateAssetAccessRequestErrorMessageInner `json:"exceptions,omitempty"`
-	Invites map[string]string `json:"invites,omitempty"`
+	Exceptions []AssetAccessRequestError `json:"exceptions,omitempty"`
+	// An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
+	Invites *map[string]string `json:"invites,omitempty"`
 }
 
 // NewCreateAssetAccessRequestResponse instantiates a new CreateAssetAccessRequestResponse object
@@ -42,10 +43,10 @@ func NewCreateAssetAccessRequestResponseWithDefaults() *CreateAssetAccessRequest
 	return &this
 }
 
-// GetExceptions returns the Exceptions field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateAssetAccessRequestResponse) GetExceptions() []CreateAssetAccessRequestErrorMessageInner {
-	if o == nil {
-		var ret []CreateAssetAccessRequestErrorMessageInner
+// GetExceptions returns the Exceptions field value if set, zero value otherwise.
+func (o *CreateAssetAccessRequestResponse) GetExceptions() []AssetAccessRequestError {
+	if o == nil || IsNil(o.Exceptions) {
+		var ret []AssetAccessRequestError
 		return ret
 	}
 	return o.Exceptions
@@ -53,8 +54,7 @@ func (o *CreateAssetAccessRequestResponse) GetExceptions() []CreateAssetAccessRe
 
 // GetExceptionsOk returns a tuple with the Exceptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateAssetAccessRequestResponse) GetExceptionsOk() ([]CreateAssetAccessRequestErrorMessageInner, bool) {
+func (o *CreateAssetAccessRequestResponse) GetExceptionsOk() ([]AssetAccessRequestError, bool) {
 	if o == nil || IsNil(o.Exceptions) {
 		return nil, false
 	}
@@ -70,28 +70,27 @@ func (o *CreateAssetAccessRequestResponse) HasExceptions() bool {
 	return false
 }
 
-// SetExceptions gets a reference to the given []CreateAssetAccessRequestErrorMessageInner and assigns it to the Exceptions field.
-func (o *CreateAssetAccessRequestResponse) SetExceptions(v []CreateAssetAccessRequestErrorMessageInner) {
+// SetExceptions gets a reference to the given []AssetAccessRequestError and assigns it to the Exceptions field.
+func (o *CreateAssetAccessRequestResponse) SetExceptions(v []AssetAccessRequestError) {
 	o.Exceptions = v
 }
 
-// GetInvites returns the Invites field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetInvites returns the Invites field value if set, zero value otherwise.
 func (o *CreateAssetAccessRequestResponse) GetInvites() map[string]string {
-	if o == nil {
+	if o == nil || IsNil(o.Invites) {
 		var ret map[string]string
 		return ret
 	}
-	return o.Invites
+	return *o.Invites
 }
 
 // GetInvitesOk returns a tuple with the Invites field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAssetAccessRequestResponse) GetInvitesOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.Invites) {
 		return nil, false
 	}
-	return &o.Invites, true
+	return o.Invites, true
 }
 
 // HasInvites returns a boolean if a field has been set.
@@ -105,7 +104,7 @@ func (o *CreateAssetAccessRequestResponse) HasInvites() bool {
 
 // SetInvites gets a reference to the given map[string]string and assigns it to the Invites field.
 func (o *CreateAssetAccessRequestResponse) SetInvites(v map[string]string) {
-	o.Invites = v
+	o.Invites = &v
 }
 
 func (o CreateAssetAccessRequestResponse) MarshalJSON() ([]byte, error) {
@@ -118,10 +117,10 @@ func (o CreateAssetAccessRequestResponse) MarshalJSON() ([]byte, error) {
 
 func (o CreateAssetAccessRequestResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Exceptions != nil {
+	if !IsNil(o.Exceptions) {
 		toSerialize["exceptions"] = o.Exceptions
 	}
-	if o.Invites != nil {
+	if !IsNil(o.Invites) {
 		toSerialize["invites"] = o.Invites
 	}
 	return toSerialize, nil

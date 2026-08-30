@@ -42,7 +42,7 @@ class TopPinsAnalyticsResponseDateAvailability(Model):
 
         :param dikt: A dict.
         :type: dict
-        :return: The TopPinsAnalyticsResponse_date_availability of this TopPinsAnalyticsResponseDateAvailability.  # noqa: E501
+        :return: The TopPinsAnalyticsResponseDateAvailability of this TopPinsAnalyticsResponseDateAvailability.  # noqa: E501
         :rtype: TopPinsAnalyticsResponseDateAvailability
         """
         return util.deserialize_model(dikt, cls)

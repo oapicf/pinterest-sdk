@@ -9,7 +9,7 @@ use WWW::OpenAPIClient::Object::IntegrationLogClientRequest;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **host** | **string** | HTTP request host from host header. | 
-**method** | **string** |  | 
+**method** | [**HttpMethod**](HttpMethod.md) |  | 
 **path** | **string** | HTTP request path. | 
 **request_headers** | **HASH[string,string]** | HTTP request headers as key-value pairs. | [optional] 
 **response_headers** | **HASH[string,string]** | HTTP response headers as key-value pairs. | [optional] 

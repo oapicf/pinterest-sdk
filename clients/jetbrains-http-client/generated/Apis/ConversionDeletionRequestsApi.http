@@ -1,0 +1,27 @@
+## ConversionDeletionRequestsApi
+
+### Create a conversion deletion request
+## Create a conversion deletion request
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/conversion_deletion_requests
+Content-Type: application/json
+Accept: application/json
+
+{
+ "deletion_targets": "<string>"
+}
+
+
+### Delete a conversion deletion request
+## Delete a conversion deletion request
+DELETE https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/conversion_deletion_requests/{{request_id}}
+Accept: application/json
+
+### Get a single conversion deletion request
+## Get a single conversion deletion request
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/conversion_deletion_requests/{{request_id}}
+Accept: application/json
+
+### List conversion deletion requests
+## List conversion deletion requests
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/conversion_deletion_requests?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}
+Accept: application/json

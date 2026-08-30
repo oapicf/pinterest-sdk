@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,9 +23,13 @@ var _ MappedNullable = &CatalogsFeedIngestion{}
 
 // CatalogsFeedIngestion struct for CatalogsFeedIngestion
 type CatalogsFeedIngestion struct {
+	// Timestamp of the feed ingestion.
 	CreatedAt time.Time `json:"created_at"`
-	FeedId string `json:"feed_id"`
-	Id string `json:"id"`
+	// Catalog Feed id pertaining to the feed ingestion.
+	FeedId string `json:"feed_id" validate:"regexp=^\\d+$"`
+	// Unique identifier of a feed ingestion.
+	Id string `json:"id" validate:"regexp=^\\d+$"`
+	// Status of the feed ingestion.
 	Status CatalogsFeedProcessingStatus `json:"status"`
 }
 

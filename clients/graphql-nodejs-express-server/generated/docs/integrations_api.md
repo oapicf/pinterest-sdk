@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a name="IntegrationsCommerceDel"></a>
 # **IntegrationsCommerceDel**
-> IntegrationsCommerceDel(externalBusinessId)
+> IntegrationMetadata IntegrationsCommerceDel(externalBusinessId)
 
 Delete commerce integration
 
@@ -29,14 +29,14 @@ Get commerce integration
 Get commerce integration metadata associated with the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
 <a name="IntegrationsCommercePatch"></a>
 # **IntegrationsCommercePatch**
-> IntegrationMetadata IntegrationsCommercePatch(externalBusinessId, integrationRequestPatch)
+> IntegrationMetadata IntegrationsCommercePatch(externalBusinessId, integrationMetadataUpdate)
 
 Update commerce integration
 
 Update commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
 <a name="IntegrationsCommercePost"></a>
 # **IntegrationsCommercePost**
-> IntegrationMetadata IntegrationsCommercePost(integrationRequest)
+> IntegrationMetadata IntegrationsCommercePost(integrationMetadataCreate)
 
 Create commerce integration
 
@@ -57,7 +57,7 @@ Get integration metadata list
 Get integration metadata list. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
 <a name="IntegrationsLogsPost"></a>
 # **IntegrationsLogsPost**
-> IntegrationLogsSuccessResponse IntegrationsLogsPost(integrationLogsRequest)
+> IntegrationLogsSuccessResponse IntegrationsLogsPost(integrationLogsRequestCreate)
 
 Receives batched logs from integration applications.
 

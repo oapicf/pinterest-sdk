@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// AssetGroupType Asset group type
+// AssetGroupType Asset group type.
 type AssetGroupType string
 
 // List of AssetGroupType

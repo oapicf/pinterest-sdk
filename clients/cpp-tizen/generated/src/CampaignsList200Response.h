@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "CampaignResponse.h"
+#include "Campaign.h"
 #include <list>
 #include "Object.h"
 
@@ -56,15 +56,15 @@ public:
 	void setBookmark(std::string  bookmark);
 	/*! \brief Get 
 	 */
-	std::list<CampaignResponse> getItems();
+	std::list<Campaign> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <CampaignResponse> items);
+	void setItems(std::list <Campaign> items);
 
 private:
 	std::string bookmark;
-	std::list <CampaignResponse>items;
+	std::list <Campaign>items;
 	void __init();
 	void __cleanup();
 

@@ -11,6 +11,7 @@ VideoMetadataWithItemType::VideoMetadataWithItemType()
 	height = int(0);
 	item_type = std::string();
 	video_url = std::string();
+	video_url_hls = std::string();
 	width = int(0);
 }
 
@@ -94,6 +95,19 @@ VideoMetadataWithItemType::fromJson(std::string jsonObj)
 
     }
 
+    const char *video_url_hlsKey = "video_url_hls";
+
+    if(object.has_key(video_url_hlsKey))
+    {
+        bourne::json value = object[video_url_hlsKey];
+
+
+
+        jsonToValue(&video_url_hls, value, "std::string");
+
+
+    }
+
     const char *widthKey = "width";
 
     if(object.has_key(widthKey))
@@ -154,6 +168,13 @@ VideoMetadataWithItemType::toJson()
 
 
 
+    object["video_url_hls"] = getVideoUrlHls();
+
+
+
+
+
+
     object["width"] = getWidth();
 
 
@@ -169,7 +190,7 @@ VideoMetadataWithItemType::getCoverImageUrl()
 }
 
 void
-VideoMetadataWithItemType::setCoverImageUrl(std::string  cover_image_url)
+VideoMetadataWithItemType::setCoverImageUrl(std::string cover_image_url)
 {
 	this->cover_image_url = cover_image_url;
 }
@@ -181,7 +202,7 @@ VideoMetadataWithItemType::getDuration()
 }
 
 void
-VideoMetadataWithItemType::setDuration(long  duration)
+VideoMetadataWithItemType::setDuration(long duration)
 {
 	this->duration = duration;
 }
@@ -193,7 +214,7 @@ VideoMetadataWithItemType::getHeight()
 }
 
 void
-VideoMetadataWithItemType::setHeight(int  height)
+VideoMetadataWithItemType::setHeight(int height)
 {
 	this->height = height;
 }
@@ -205,7 +226,7 @@ VideoMetadataWithItemType::getItemType()
 }
 
 void
-VideoMetadataWithItemType::setItemType(std::string  item_type)
+VideoMetadataWithItemType::setItemType(std::string item_type)
 {
 	this->item_type = item_type;
 }
@@ -217,9 +238,21 @@ VideoMetadataWithItemType::getVideoUrl()
 }
 
 void
-VideoMetadataWithItemType::setVideoUrl(std::string  video_url)
+VideoMetadataWithItemType::setVideoUrl(std::string video_url)
 {
 	this->video_url = video_url;
+}
+
+std::string
+VideoMetadataWithItemType::getVideoUrlHls()
+{
+	return video_url_hls;
+}
+
+void
+VideoMetadataWithItemType::setVideoUrlHls(std::string video_url_hls)
+{
+	this->video_url_hls = video_url_hls;
 }
 
 int
@@ -229,7 +262,7 @@ VideoMetadataWithItemType::getWidth()
 }
 
 void
-VideoMetadataWithItemType::setWidth(int  width)
+VideoMetadataWithItemType::setWidth(int width)
 {
 	this->width = width;
 }

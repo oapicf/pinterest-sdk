@@ -39,7 +39,7 @@ class TargetingAdvertiserCountry(Model):
     JP = 'JP'
     KR = 'KR'
     SG = 'SG'
-    NO = 'NO'
+    FALSE = 'false'
     DK = 'DK'
     FI = 'FI'
     CY = 'CY'

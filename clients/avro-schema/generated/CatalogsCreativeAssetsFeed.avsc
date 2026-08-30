@@ -5,34 +5,31 @@
   "name": "CatalogsCreativeAssetsFeed",
   "fields": [
     {
-      "name": "created_at",
-      "type": "string",
-      "doc": ""
-    },
-    {
-      "name": "id",
-      "type": "string",
-      "doc": ""
-    },
-    {
-      "name": "updated_at",
-      "type": "string",
-      "doc": ""
-    },
-    {
       "name": "catalog_id",
       "type": "string",
       "doc": "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type."
     },
     {
       "name": "catalog_type",
-      "type": "model.CatalogsType",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsCreativeAssetsFeed_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "created_at",
+      "type": "string",
       "doc": ""
     },
     {
       "name": "credentials",
-      "type": "model.CatalogsFeedCredentials",
-      "doc": ""
+      "type": ["null", "model.CatalogsFeedCredentials"],
+      "doc": "",
+      "default": null
     },
     {
       "name": "default_country",
@@ -41,8 +38,9 @@
     },
     {
       "name": "default_currency",
-      "type": "model.NullableCurrency",
-      "doc": ""
+      "type": ["null", "model.NullableCurrency"],
+      "doc": "",
+      "default": null
     },
     {
       "name": "default_locale",
@@ -53,6 +51,11 @@
       "name": "format",
       "type": "model.CatalogsFormat",
       "doc": ""
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "ID of the feed entity."
     },
     {
       "name": "location",
@@ -66,12 +69,18 @@
     },
     {
       "name": "preferred_processing_schedule",
-      "type": "model.CatalogsFeedProcessingSchedule",
-      "doc": ""
+      "type": ["null", "model.CatalogsFeedProcessingSchedule"],
+      "doc": "",
+      "default": null
     },
     {
       "name": "status",
       "type": "model.CatalogsStatus",
+      "doc": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "string",
       "doc": ""
     }
   ]

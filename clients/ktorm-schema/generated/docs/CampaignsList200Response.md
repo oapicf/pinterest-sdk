@@ -5,18 +5,18 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;CampaignResponse&gt;**](CampaignResponse.md) |  | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;Campaign&gt;**](Campaign.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 
-# **Table `CampaignsList200ResponseCampaignResponse`**
-(mapped from: CampaignsList200ResponseCampaignResponse)
+# **Table `CampaignsList200ResponseCampaign`**
+(mapped from: CampaignsList200ResponseCampaign)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 campaignsList200Response | campaignsList200Response | long | | kotlin.Long | Primary Key | *one*
-campaignResponse | campaignResponse | long | | kotlin.Long | Foreign Key | *many*
+campaign | campaign | long | | kotlin.Long | Foreign Key | *many*
 
 
 

@@ -22,7 +22,7 @@
         "type": "map",
         "items": "double"
       }],
-      "doc": "The metric name and daily value for each requested metric",
+      "doc": "",
       "default": null
     }
   ]

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.PromotionResponse;
+import org.openapitools.model.Promotion;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,17 +22,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("promotions_list_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PromotionsList200Response   {
   private String bookmark;
-  private @Valid List<@Valid PromotionResponse> items = new ArrayList<>();
+  private @Valid List<@Valid Promotion> items = new ArrayList<>();
 
   public PromotionsList200Response() {
   }
 
   @JsonCreator
   public PromotionsList200Response(
-    @JsonProperty(required = true, value = "items") List<@Valid PromotionResponse> items
+    @JsonProperty(required = true, value = "items") List<@Valid Promotion> items
   ) {
     this.items = items;
   }
@@ -58,7 +58,7 @@ public class PromotionsList200Response   {
 
   /**
    **/
-  public PromotionsList200Response items(List<@Valid PromotionResponse> items) {
+  public PromotionsList200Response items(List<@Valid Promotion> items) {
     this.items = items;
     return this;
   }
@@ -66,16 +66,16 @@ public class PromotionsList200Response   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "items")
-  @NotNull @Valid public List<@Valid PromotionResponse> getItems() {
+  @NotNull @Valid public List<@Valid Promotion> getItems() {
     return items;
   }
 
   @JsonProperty(required = true, value = "items")
-  public void setItems(List<@Valid PromotionResponse> items) {
+  public void setItems(List<@Valid Promotion> items) {
     this.items = items;
   }
 
-  public PromotionsList200Response addItemsItem(PromotionResponse itemsItem) {
+  public PromotionsList200Response addItemsItem(Promotion itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -84,7 +84,7 @@ public class PromotionsList200Response   {
     return this;
   }
 
-  public PromotionsList200Response removeItemsItem(PromotionResponse itemsItem) {
+  public PromotionsList200Response removeItemsItem(Promotion itemsItem) {
     if (itemsItem != null && this.items != null) {
       this.items.remove(itemsItem);
     }
@@ -126,12 +126,8 @@ public class PromotionsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

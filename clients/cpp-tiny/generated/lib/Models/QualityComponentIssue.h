@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set Unique identifier for the issue check.
 	 */
-	void setId(std::string  id);
+	void setId(std::string id);
 	/*! \brief Get Human-readable name of the issue.
 	 */
 	std::string getName();
 
 	/*! \brief Set Human-readable name of the issue.
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 	/*! \brief Get Detailed reason for the issue.
 	 */
 	std::string getReason();
 
 	/*! \brief Set Detailed reason for the issue.
 	 */
-	void setReason(std::string  reason);
+	void setReason(std::string reason);
 
 
     private:

@@ -44,7 +44,6 @@ public class GetInvites200Response   {
 
 
   /**
-   * List of invite and request data.
    **/
   public GetInvites200Response items(List<@Valid InviteResponse> items) {
     this.items = items;
@@ -52,7 +51,7 @@ public class GetInvites200Response   {
   }
 
   
-  @ApiModelProperty(required = true, value = "List of invite and request data.")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   @NotNull
   public List<@Valid InviteResponse> getItems() {
@@ -106,10 +105,7 @@ public class GetInvites200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

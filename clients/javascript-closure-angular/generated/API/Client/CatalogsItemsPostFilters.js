@@ -6,17 +6,17 @@ goog.provide('API.Client.CatalogsItemsPostFilters');
 API.Client.CatalogsItemsPostFilters = function() {}
 
 /**
- * @type {!API.Client.CatalogsType}
- * @export
- */
-API.Client.CatalogsItemsPostFilters.prototype.catalogType;
-
-/**
  * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  * @type {!string}
  * @export
  */
 API.Client.CatalogsItemsPostFilters.prototype.catalogId;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsItemsPostFilters.prototype.catalogType;
 
 /**
  * @type {!Array<!string>}
@@ -36,3 +36,7 @@ API.Client.CatalogsItemsPostFilters.prototype.hotelIds;
  */
 API.Client.CatalogsItemsPostFilters.prototype.creativeAssetsIds;
 
+/** @enum {string} */
+API.Client.CatalogsItemsPostFilters.CatalogTypeEnum = { 
+  CREATIVE_ASSETS: 'CREATIVE_ASSETS',
+}

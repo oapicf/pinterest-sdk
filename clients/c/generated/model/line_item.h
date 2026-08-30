@@ -21,10 +21,10 @@ typedef struct line_item_t line_item_t;
 typedef struct line_item_t {
     char *product_brand; // string
     char *product_category; // string
-    int product_id; //numeric
+    int *product_id; //numeric
     char *product_name; // string
     char *product_price; // string
-    int product_quantity; //numeric
+    int *product_quantity; //numeric
     char *product_variant; // string
     char *product_variant_id; // string
 
@@ -34,10 +34,10 @@ typedef struct line_item_t {
 __attribute__((deprecated)) line_item_t *line_item_create(
     char *product_brand,
     char *product_category,
-    int product_id,
+    int *product_id,
     char *product_name,
     char *product_price,
-    int product_quantity,
+    int *product_quantity,
     char *product_variant,
     char *product_variant_id
 );

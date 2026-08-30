@@ -1,9 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.LeadsExportCreateRequest;
-import org.openapitools.vertxweb.server.model.LeadsExportCreateResponse;
 import org.openapitools.vertxweb.server.model.LeadsExportResponseData;
+import org.openapitools.vertxweb.server.model.LeadsExports;
+import org.openapitools.vertxweb.server.model.LeadsExportsCreate;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -17,7 +17,7 @@ import java.util.Map;
 // Implement this class
 
 public class LeadsExportApiImpl implements LeadsExportApi {
-    public Future<ApiResponse<LeadsExportCreateResponse>> leadsExportCreate(String adAccountId, LeadsExportCreateRequest leadsExportCreateRequest) {
+    public Future<ApiResponse<LeadsExports>> leadsExportCreate(String adAccountId, LeadsExportsCreate leadsExportsCreate) {
         return Future.failedFuture(new HttpException(501));
     }
 

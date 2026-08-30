@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "DeletePartnerAssetAccessResultsResponseArray",
+  "fields": [
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.DeletePartnerAssetAccessResult"
+      }],
+      "doc": "List of terminated partner asset accesses.",
+      "default": null
+    }
+  ]
+
+}

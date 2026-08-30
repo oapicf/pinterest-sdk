@@ -13,9 +13,11 @@ Name | Type
 `aUDIENCEINCLUDE` | Array&lt;string&gt;
 `gENDER` | [Array&lt;TargetingSpecGender&gt;](TargetingSpecGender.md)
 `gEO` | Array&lt;string&gt;
+`gEOEXCLUDE` | Array&lt;string&gt;
 `iNTEREST` | Array&lt;string&gt;
 `lOCALE` | Array&lt;string&gt;
 `lOCATION` | Array&lt;string&gt;
+`lOCATIONEXCLUDE` | Array&lt;string&gt;
 `mAXIMUMAGE` | string
 `mINIMUMAGE` | string
 `sHOPPINGRETARGETING` | [Array&lt;TargetingSpecShoppingRetargeting&gt;](TargetingSpecShoppingRetargeting.md)
@@ -34,9 +36,11 @@ const example = {
   "aUDIENCEINCLUDE": null,
   "gENDER": null,
   "gEO": null,
+  "gEOEXCLUDE": null,
   "iNTEREST": null,
   "lOCALE": null,
   "lOCATION": null,
+  "lOCATIONEXCLUDE": null,
   "mAXIMUMAGE": 65+,
   "mINIMUMAGE": 18,
   "sHOPPINGRETARGETING": null,

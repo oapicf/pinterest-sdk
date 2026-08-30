@@ -14,7 +14,7 @@ import SummaryPin._
 case class SummaryPin (
   altText: Option[String],
 description: Option[String],
-id: Option[String],
+id: String,
 link: Option[String],
 media: Option[PinMedia],
 title: Option[String])

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -23,9 +31,9 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param itemType Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
  * @param description 
  * @param images 
- * @param itemType 
  * @param link 
  * @param title 
  */
@@ -33,14 +41,15 @@ import com.squareup.moshi.JsonClass
 
 data class ImageMetadata (
 
+    /* Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload. */
+    @Json(name = "item_type")
+    val itemType: ImageMetadata.ItemType,
+
     @Json(name = "description")
     val description: kotlin.String? = null,
 
     @Json(name = "images")
     val images: ImageSize? = null,
-
-    @Json(name = "item_type")
-    val itemType: kotlin.String? = null,
 
     @Json(name = "link")
     val link: kotlin.String? = null,
@@ -50,6 +59,15 @@ data class ImageMetadata (
 
 ) {
 
+    /**
+     * Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
+     *
+     * Values: image
+     */
+    @JsonClass(generateAdapter = false)
+    enum class ItemType(val value: kotlin.String) {
+        @Json(name = "image") image("image");
+    }
 
 }
 

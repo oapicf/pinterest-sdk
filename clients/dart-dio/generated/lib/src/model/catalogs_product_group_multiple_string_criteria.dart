@@ -27,8 +27,7 @@ abstract class CatalogsProductGroupMultipleStringCriteria implements Built<Catal
   factory CatalogsProductGroupMultipleStringCriteria([void updates(CatalogsProductGroupMultipleStringCriteriaBuilder b)]) = _$CatalogsProductGroupMultipleStringCriteria;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CatalogsProductGroupMultipleStringCriteriaBuilder b) => b
-      ..negated = false;
+  static void _defaults(CatalogsProductGroupMultipleStringCriteriaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<CatalogsProductGroupMultipleStringCriteria> get serializer => _$CatalogsProductGroupMultipleStringCriteriaSerializer();
@@ -84,8 +83,9 @@ class _$CatalogsProductGroupMultipleStringCriteriaSerializer implements Primitiv
         case r'negated':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.negated = valueDes;
           break;
         case r'values':

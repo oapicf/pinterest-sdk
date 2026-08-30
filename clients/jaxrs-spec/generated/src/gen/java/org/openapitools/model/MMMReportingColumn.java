@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Marketing Mix Modeling (MMM) Reporting Columns
  */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public enum MMMReportingColumn {
   
   SPEND_IN_DOLLAR("SPEND_IN_DOLLAR"),
@@ -50,7 +51,19 @@ public enum MMMReportingColumn {
   
   ADVERTISER_NAME("ADVERTISER_NAME"),
   
-  SPEND_ORDER_LINE_PAID_TYPE("SPEND_ORDER_LINE_PAID_TYPE");
+  SPEND_ORDER_LINE_PAID_TYPE("SPEND_ORDER_LINE_PAID_TYPE"),
+  
+  CAMPAIGN_OBJECTIVE_TYPE("CAMPAIGN_OBJECTIVE_TYPE"),
+  
+  PINNER_LIST_NAME("PINNER_LIST_NAME"),
+  
+  ADS_CREDIT_SPEND_IN_DOLLAR("ADS_CREDIT_SPEND_IN_DOLLAR"),
+  
+  ADVERTISER_PAID_SPEND_IN_DOLLAR("ADVERTISER_PAID_SPEND_IN_DOLLAR"),
+  
+  ADVERTISER_PAID_ECPC_IN_DOLLAR("ADVERTISER_PAID_ECPC_IN_DOLLAR"),
+  
+  ADVERTISER_PAID_ECPM_IN_DOLLAR("ADVERTISER_PAID_ECPM_IN_DOLLAR");
 
   private String value;
 

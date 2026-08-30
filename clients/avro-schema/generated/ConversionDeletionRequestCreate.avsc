@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "ConversionDeletionRequestCreate",
+  "fields": [
+    {
+      "name": "deletion_targets",
+      "type": "model.ConversionDeletionRequestTargets",
+      "doc": "Object containing the targets of the conversion deletion request. Users can be identified with user_emails, epiks, or both within the same request."
+    }
+  ]
+
+}

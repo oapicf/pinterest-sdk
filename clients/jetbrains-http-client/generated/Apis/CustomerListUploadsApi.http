@@ -1,0 +1,23 @@
+## CustomerListUploadsApi
+
+### Create customer list upload
+## Create customer list upload
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/customer_lists/{{customer_list_id}}/uploads
+Content-Type: application/json
+Accept: application/json
+
+{
+ "operation": "<string>",
+ "total_parts": "<number>"
+}
+
+
+### Get customer list upload
+## Get customer list upload
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/customer_lists/{{customer_list_id}}/uploads/{{customer_list_upload_id}}
+Accept: application/json
+
+### Run customer list upload
+## Run customer list upload
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/customer_lists/{{customer_list_id}}/uploads/{{customer_list_upload_id}}/run
+Accept: application/json

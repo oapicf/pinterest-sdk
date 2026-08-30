@@ -8,13 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.MediaType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -77,20 +86,10 @@ data class CatalogsCreativeAssetsFilterValuesMap (
     val googleProductCategory6: kotlin.collections.List<kotlin.String>? = null,
 
     @Json(name = "media_type")
-    val mediaType: kotlin.collections.List<CatalogsCreativeAssetsFilterValuesMap.MediaType>? = null
+    val mediaType: kotlin.collections.List<MediaType>? = null
 
 ) {
 
-    /**
-     * 
-     *
-     * Values: IMAGE,VIDEO
-     */
-    @JsonClass(generateAdapter = false)
-    enum class MediaType(val value: kotlin.String) {
-        @Json(name = "IMAGE") IMAGE("IMAGE"),
-        @Json(name = "VIDEO") VIDEO("VIDEO");
-    }
 
 }
 

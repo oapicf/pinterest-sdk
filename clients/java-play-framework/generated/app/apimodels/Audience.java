@@ -1,6 +1,8 @@
 package apimodels;
 
 import apimodels.AudienceRule;
+import apimodels.AudienceStatus;
+import apimodels.PinnerListType;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -11,7 +13,7 @@ import javax.validation.Valid;
 /**
  * Audience
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class Audience   {
   @JsonProperty("ad_account_id")
@@ -20,8 +22,9 @@ public class Audience   {
   private String adAccountId;
 
   @JsonProperty("audience_type")
-  
-  private String audienceType;
+  @Valid
+
+  private PinnerListType audienceType;
 
   @JsonProperty("created_by_company_name")
   
@@ -40,6 +43,10 @@ public class Audience   {
 
   private String id;
 
+  @JsonProperty("is_nca")
+  
+  private Boolean isNca;
+
   @JsonProperty("name")
   
   private String name;
@@ -54,8 +61,9 @@ public class Audience   {
   private Integer size;
 
   @JsonProperty("status")
-  
-  private String status;
+  @Valid
+
+  private AudienceStatus status;
 
   @JsonProperty("type")
   
@@ -82,20 +90,20 @@ public class Audience   {
     this.adAccountId = adAccountId;
   }
 
-  public Audience audienceType(String audienceType) {
+  public Audience audienceType(PinnerListType audienceType) {
     this.audienceType = audienceType;
     return this;
   }
 
    /**
-   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+   * [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
    * @return audienceType
   **/
-  public String getAudienceType() {
+  public PinnerListType getAudienceType() {
     return audienceType;
   }
 
-  public void setAudienceType(String audienceType) {
+  public void setAudienceType(PinnerListType audienceType) {
     this.audienceType = audienceType;
   }
 
@@ -167,6 +175,23 @@ public class Audience   {
     this.id = id;
   }
 
+  public Audience isNca(Boolean isNca) {
+    this.isNca = isNca;
+    return this;
+  }
+
+   /**
+   * Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+   * @return isNca
+  **/
+  public Boolean getIsNca() {
+    return isNca;
+  }
+
+  public void setIsNca(Boolean isNca) {
+    this.isNca = isNca;
+  }
+
   public Audience name(String name) {
     this.name = name;
     return this;
@@ -218,7 +243,7 @@ public class Audience   {
     this.size = size;
   }
 
-  public Audience status(String status) {
+  public Audience status(AudienceStatus status) {
     this.status = status;
     return this;
   }
@@ -227,11 +252,11 @@ public class Audience   {
    * Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
    * @return status
   **/
-  public String getStatus() {
+  public AudienceStatus getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(AudienceStatus status) {
     this.status = status;
   }
 
@@ -285,6 +310,7 @@ public class Audience   {
         Objects.equals(createdTimestamp, audience.createdTimestamp) &&
         Objects.equals(description, audience.description) &&
         Objects.equals(id, audience.id) &&
+        Objects.equals(isNca, audience.isNca) &&
         Objects.equals(name, audience.name) &&
         Objects.equals(rule, audience.rule) &&
         Objects.equals(size, audience.size) &&
@@ -295,7 +321,7 @@ public class Audience   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, audienceType, createdByCompanyName, createdTimestamp, description, id, name, rule, size, status, type, updatedTimestamp);
+    return Objects.hash(adAccountId, audienceType, createdByCompanyName, createdTimestamp, description, id, isNca, name, rule, size, status, type, updatedTimestamp);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -310,6 +336,7 @@ public class Audience   {
     sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isNca: ").append(toIndentedString(isNca)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
@@ -325,10 +352,7 @@ public class Audience   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

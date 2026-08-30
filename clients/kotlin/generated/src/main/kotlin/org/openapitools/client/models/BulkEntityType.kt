@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -20,9 +28,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Refers ads entity type. Schedule enum is only applicable to beta users
+ * Refers ads entity type.
  *
- * Values: CAMPAIGN,AD_GROUP,PRODUCT_GROUP,AD,KEYWORD,LABEL,SCHEDULE
+ * Values: CAMPAIGN,AD_GROUP,PRODUCT_GROUP,AD,KEYWORD,LABEL,SCHEDULE,ENTITY_HISTORY
  */
 
 @JsonClass(generateAdapter = false)
@@ -47,7 +55,10 @@ enum class BulkEntityType(val value: kotlin.String) {
     LABEL("LABEL"),
 
     @Json(name = "SCHEDULE")
-    SCHEDULE("SCHEDULE");
+    SCHEDULE("SCHEDULE"),
+
+    @Json(name = "ENTITY_HISTORY")
+    ENTITY_HISTORY("ENTITY_HISTORY");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -69,7 +80,7 @@ enum class BulkEntityType(val value: kotlin.String) {
          */
         fun decode(data: kotlin.Any?): BulkEntityType? = data?.let {
           val normalizedData = "$it".lowercase()
-          values().firstOrNull { value ->
+          entries.firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()
           }
         }

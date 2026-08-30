@@ -11,15 +11,18 @@ static notification_post_request_t *notification_post_request_create_internal(
     if (!notification_post_request_local_var) {
         return NULL;
     }
-
+    memset(notification_post_request_local_var, 0, sizeof(notification_post_request_t));
     notification_post_request_local_var->_library_owned = 1;
     return notification_post_request_local_var;
 }
 
 __attribute__((deprecated)) notification_post_request_t *notification_post_request_create(
     ) {
-    return notification_post_request_create_internal (
+    notification_post_request_t *result = notification_post_request_create_internal (
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void notification_post_request_free(notification_post_request_t *notification_post_request) {
@@ -49,8 +52,13 @@ notification_post_request_t *notification_post_request_parseFromJSON(cJSON *noti
     notification_post_request_t *notification_post_request_local_var = NULL;
 
 
+
     notification_post_request_local_var = notification_post_request_create_internal (
         );
+
+    if (!notification_post_request_local_var) {
+        goto end;
+    }
 
     return notification_post_request_local_var;
 end:

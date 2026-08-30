@@ -11,45 +11,37 @@
 part of openapi.api;
 
 
-class TargetingSpecAgeBucket {
-  /// Instantiate a new enum with the provided [value].
-  const TargetingSpecAgeBucket._(this.value);
+enum TargetingSpecAgeBucket {
+  n1824._(r'18-24'),
+  n19plus._(r'19+'),
+  n20plus._(r'20+'),
+  n21plus._(r'21+'),
+  n2534._(r'25-34'),
+  n3544._(r'35-44'),
+  n4549._(r'45-49'),
+  n5054._(r'50-54'),
+  n5564._(r'55-64'),
+  n65plus._(r'65+'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const TargetingSpecAgeBucket._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const n1824 = TargetingSpecAgeBucket._(r'18-24');
-  static const n19plus = TargetingSpecAgeBucket._(r'19+');
-  static const n20plus = TargetingSpecAgeBucket._(r'20+');
-  static const n21plus = TargetingSpecAgeBucket._(r'21+');
-  static const n2534 = TargetingSpecAgeBucket._(r'25-34');
-  static const n3544 = TargetingSpecAgeBucket._(r'35-44');
-  static const n4549 = TargetingSpecAgeBucket._(r'45-49');
-  static const n5054 = TargetingSpecAgeBucket._(r'50-54');
-  static const n5564 = TargetingSpecAgeBucket._(r'55-64');
-  static const n65plus = TargetingSpecAgeBucket._(r'65+');
-
-  /// List of all possible values in this [enum][TargetingSpecAgeBucket].
-  static const values = <TargetingSpecAgeBucket>[
-    n1824,
-    n19plus,
-    n20plus,
-    n21plus,
-    n2534,
-    n3544,
-    n4549,
-    n5054,
-    n5564,
-    n65plus,
-  ];
-
+  /// Returns the instance of [TargetingSpecAgeBucket] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static TargetingSpecAgeBucket? fromJson(dynamic value) => TargetingSpecAgeBucketTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [TargetingSpecAgeBucket]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<TargetingSpecAgeBucket> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <TargetingSpecAgeBucket>[];
     if (json is List && json.isNotEmpty) {
@@ -71,9 +63,11 @@ class TargetingSpecAgeBucketTypeTransformer {
 
   const TargetingSpecAgeBucketTypeTransformer._();
 
-  String encode(TargetingSpecAgeBucket data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(TargetingSpecAgeBucket data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a TargetingSpecAgeBucket.
+  /// Returns the instance of [TargetingSpecAgeBucket] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -82,6 +76,9 @@ class TargetingSpecAgeBucketTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   TargetingSpecAgeBucket? decode(dynamic data, {bool allowNull = true}) {
+    if (data is TargetingSpecAgeBucket) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'18-24': return TargetingSpecAgeBucket.n1824;
@@ -103,7 +100,7 @@ class TargetingSpecAgeBucketTypeTransformer {
     return null;
   }
 
-  /// Singleton [TargetingSpecAgeBucketTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static TargetingSpecAgeBucketTypeTransformer? _instance;
 }
 

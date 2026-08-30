@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &CatalogsReportDistributionStats{}
 // CatalogsReportDistributionStats struct for CatalogsReportDistributionStats
 type CatalogsReportDistributionStats struct {
 	// ID of the catalog entity.
-	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\d+$"`
 	// The event code that a diagnostics aggregated number references
 	Code *int32 `json:"code,omitempty"`
 	// A human-friendly label for the event code (e.g, 'SPAM')

@@ -6,20 +6,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * Record processing counts
+ * RecordCounts
  */
 
-@Schema(name = "RecordCounts", description = "Record processing counts")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class RecordCounts {
 
   private Integer invalid;
@@ -51,7 +50,7 @@ public class RecordCounts {
    * @return invalid
    */
   @NotNull 
-  @Schema(name = "invalid", example = "50", description = "Number of invalid records processed", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "invalid", description = "Number of invalid records processed", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("invalid")
   public Integer getInvalid() {
     return invalid;
@@ -71,7 +70,7 @@ public class RecordCounts {
    * @return processed
    */
   @NotNull 
-  @Schema(name = "processed", example = "1000", description = "Number of records processed", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "processed", description = "Number of records processed", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("processed")
   public Integer getProcessed() {
     return processed;
@@ -91,7 +90,7 @@ public class RecordCounts {
    * @return valid
    */
   @NotNull 
-  @Schema(name = "valid", example = "950", description = "Number of valid records processed", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "valid", description = "Number of valid records processed", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("valid")
   public Integer getValid() {
     return valid;
@@ -136,10 +135,7 @@ public class RecordCounts {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -35,6 +35,6 @@ class CatalogsCreativeAssetsProductGroupUpdateRequest {
     String description
     
     CatalogsCreativeAssetsProductGroupFilters filters
-    
+    /* Name of catalog product group */
     String name
 }

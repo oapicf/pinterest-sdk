@@ -67,10 +67,12 @@ class PinMediaSourceImageBase64 {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PinMediaSourceImageBase64[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PinMediaSourceImageBase64[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'content_type'), 'Required key "PinMediaSourceImageBase64[content_type]" is missing from JSON.');
+        assert(json[r'content_type'] != null, 'Required key "PinMediaSourceImageBase64[content_type]" has a null value in JSON.');
+        assert(json.containsKey(r'data'), 'Required key "PinMediaSourceImageBase64[data]" is missing from JSON.');
+        assert(json[r'data'] != null, 'Required key "PinMediaSourceImageBase64[data]" has a null value in JSON.');
+        assert(json.containsKey(r'source_type'), 'Required key "PinMediaSourceImageBase64[source_type]" is missing from JSON.');
+        assert(json[r'source_type'] != null, 'Required key "PinMediaSourceImageBase64[source_type]" has a null value in JSON.');
         return true;
       }());
 
@@ -133,27 +135,28 @@ class PinMediaSourceImageBase64 {
 }
 
 /// The source type of the media.
-class PinMediaSourceImageBase64SourceTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const PinMediaSourceImageBase64SourceTypeEnum._(this.value);
+enum PinMediaSourceImageBase64SourceTypeEnum {
+  imageBase64._(r'image_base64'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const PinMediaSourceImageBase64SourceTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const imageBase64 = PinMediaSourceImageBase64SourceTypeEnum._(r'image_base64');
-
-  /// List of all possible values in this [enum][PinMediaSourceImageBase64SourceTypeEnum].
-  static const values = <PinMediaSourceImageBase64SourceTypeEnum>[
-    imageBase64,
-  ];
-
+  /// Returns the instance of [PinMediaSourceImageBase64SourceTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static PinMediaSourceImageBase64SourceTypeEnum? fromJson(dynamic value) => PinMediaSourceImageBase64SourceTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [PinMediaSourceImageBase64SourceTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<PinMediaSourceImageBase64SourceTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PinMediaSourceImageBase64SourceTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -175,9 +178,10 @@ class PinMediaSourceImageBase64SourceTypeEnumTypeTransformer {
 
   const PinMediaSourceImageBase64SourceTypeEnumTypeTransformer._();
 
-  String encode(PinMediaSourceImageBase64SourceTypeEnum data) => data.value;
+  String encode(PinMediaSourceImageBase64SourceTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a PinMediaSourceImageBase64SourceTypeEnum.
+  /// Returns the instance of [PinMediaSourceImageBase64SourceTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -186,6 +190,9 @@ class PinMediaSourceImageBase64SourceTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   PinMediaSourceImageBase64SourceTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is PinMediaSourceImageBase64SourceTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'image_base64': return PinMediaSourceImageBase64SourceTypeEnum.imageBase64;
@@ -198,7 +205,7 @@ class PinMediaSourceImageBase64SourceTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [PinMediaSourceImageBase64SourceTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static PinMediaSourceImageBase64SourceTypeEnumTypeTransformer? _instance;
 }
 

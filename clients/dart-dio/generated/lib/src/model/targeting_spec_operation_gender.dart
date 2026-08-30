@@ -4,7 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/targeting_spec_operation_list.dart';
+import 'package:openapi/src/model/targeting_spec_list_operation.dart';
 import 'package:openapi/src/model/targeting_spec_gender.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -18,7 +18,18 @@ part 'targeting_spec_operation_gender.g.dart';
 /// * [operation] 
 /// * [values] 
 @BuiltValue()
-abstract class TargetingSpecOperationGender implements TargetingSpecOperationList, Built<TargetingSpecOperationGender, TargetingSpecOperationGenderBuilder> {
+abstract class TargetingSpecOperationGender implements Built<TargetingSpecOperationGender, TargetingSpecOperationGenderBuilder> {
+  @BuiltValueField(wireName: r'field')
+  TargetingSpecOperationGenderFieldEnum get field;
+  // enum fieldEnum {  GENDER,  };
+
+  @BuiltValueField(wireName: r'operation')
+  TargetingSpecListOperation get operation;
+  // enum operationEnum {  SET,  ADD,  REMOVE,  };
+
+  @BuiltValueField(wireName: r'values')
+  BuiltList<TargetingSpecGender> get values;
+
   TargetingSpecOperationGender._();
 
   factory TargetingSpecOperationGender([void updates(TargetingSpecOperationGenderBuilder b)]) = _$TargetingSpecOperationGender;
@@ -45,17 +56,17 @@ class _$TargetingSpecOperationGenderSerializer implements PrimitiveSerializer<Ta
     yield r'field';
     yield serializers.serialize(
       object.field,
-      specifiedType: const FullType(String),
+      specifiedType: const FullType(TargetingSpecOperationGenderFieldEnum),
     );
     yield r'operation';
     yield serializers.serialize(
       object.operation,
-      specifiedType: const FullType(TargetingSpecOperationListOperationEnum),
+      specifiedType: const FullType(TargetingSpecListOperation),
     );
     yield r'values';
-    yield object.values == null ? null : serializers.serialize(
+    yield serializers.serialize(
       object.values,
-      specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+      specifiedType: const FullType(BuiltList, [FullType(TargetingSpecGender)]),
     );
   }
 
@@ -83,23 +94,22 @@ class _$TargetingSpecOperationGenderSerializer implements PrimitiveSerializer<Ta
         case r'field':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType(TargetingSpecOperationGenderFieldEnum),
+          ) as TargetingSpecOperationGenderFieldEnum;
           result.field = valueDes;
           break;
         case r'operation':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(TargetingSpecOperationListOperationEnum),
-          ) as TargetingSpecOperationListOperationEnum;
+            specifiedType: const FullType(TargetingSpecListOperation),
+          ) as TargetingSpecListOperation;
           result.operation = valueDes;
           break;
         case r'values':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(BuiltList, [FullType(TargetingSpecGender)]),
+          ) as BuiltList<TargetingSpecGender>;
           result.values.replace(valueDes);
           break;
         default:
@@ -142,22 +152,5 @@ class TargetingSpecOperationGenderFieldEnum extends EnumClass {
 
   static BuiltSet<TargetingSpecOperationGenderFieldEnum> get values => _$targetingSpecOperationGenderFieldEnumValues;
   static TargetingSpecOperationGenderFieldEnum valueOf(String name) => _$targetingSpecOperationGenderFieldEnumValueOf(name);
-}
-
-class TargetingSpecOperationGenderOperationEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'SET')
-  static const TargetingSpecOperationGenderOperationEnum SET = _$targetingSpecOperationGenderOperationEnum_SET;
-  @BuiltValueEnumConst(wireName: r'ADD')
-  static const TargetingSpecOperationGenderOperationEnum ADD = _$targetingSpecOperationGenderOperationEnum_ADD;
-  @BuiltValueEnumConst(wireName: r'REMOVE')
-  static const TargetingSpecOperationGenderOperationEnum REMOVE = _$targetingSpecOperationGenderOperationEnum_REMOVE;
-
-  static Serializer<TargetingSpecOperationGenderOperationEnum> get serializer => _$targetingSpecOperationGenderOperationEnumSerializer;
-
-  const TargetingSpecOperationGenderOperationEnum._(String name): super(name);
-
-  static BuiltSet<TargetingSpecOperationGenderOperationEnum> get values => _$targetingSpecOperationGenderOperationEnumValues;
-  static TargetingSpecOperationGenderOperationEnum valueOf(String name) => _$targetingSpecOperationGenderOperationEnumValueOf(name);
 }
 

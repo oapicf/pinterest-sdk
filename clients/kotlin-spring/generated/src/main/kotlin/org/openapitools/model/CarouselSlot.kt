@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -21,13 +24,22 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CarouselSlot(
 
-    @Schema(example = "null", description = "Carousel Pin slot description.")
+    @Schema(description = "Carousel Pin slot description.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("description")
     @get:JsonProperty("description") val description: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Carousel Pin slot link.")
+    @Schema(description = "Carousel Pin slot link.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("link")
     @get:JsonProperty("link") val link: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Carousel Pin slot title.")
+    @Schema(description = "Carousel Pin slot title.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("title")
     @get:JsonProperty("title") val title: kotlin.String? = null
 ) {
 

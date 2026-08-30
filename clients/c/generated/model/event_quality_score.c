@@ -16,13 +16,13 @@ static event_quality_score_t *event_quality_score_create_internal(
     if (!event_quality_score_local_var) {
         return NULL;
     }
+    memset(event_quality_score_local_var, 0, sizeof(event_quality_score_t));
+    event_quality_score_local_var->_library_owned = 1;
     event_quality_score_local_var->ingestion_source = ingestion_source;
     event_quality_score_local_var->lookback_period = lookback_period;
     event_quality_score_local_var->overall_status = overall_status;
     event_quality_score_local_var->quality_components = quality_components;
     event_quality_score_local_var->source_platform = source_platform;
-
-    event_quality_score_local_var->_library_owned = 1;
     return event_quality_score_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) event_quality_score_t *event_quality_score_create(
     quality_components_t *quality_components,
     pinterest_rest_api_source_platform_options__e source_platform
     ) {
-    return event_quality_score_create_internal (
+    event_quality_score_t *result = event_quality_score_create_internal (
         ingestion_source,
         lookback_period,
         overall_status,
         quality_components,
         source_platform
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void event_quality_score_free(event_quality_score_t *event_quality_score) {
@@ -218,6 +221,7 @@ event_quality_score_t *event_quality_score_parseFromJSON(cJSON *event_quality_sc
     source_platform_local_nonprim = source_platform_options_parseFromJSON(source_platform); //custom
 
 
+
     event_quality_score_local_var = event_quality_score_create_internal (
         ingestion_source_local_nonprim,
         lookback_period_local_nonprim,
@@ -225,6 +229,10 @@ event_quality_score_t *event_quality_score_parseFromJSON(cJSON *event_quality_sc
         quality_components_local_nonprim,
         source_platform_local_nonprim
         );
+
+    if (!event_quality_score_local_var) {
+        goto end;
+    }
 
     return event_quality_score_local_var;
 end:

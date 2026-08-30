@@ -50,6 +50,8 @@ class PinMedia {
     Integer height
     /* Video url (720p).  **Note:** This field is limited and not available to all apps. */
     String videoUrl
+    /* Video url (HLS).  **Note:** This field is limited and not available to all apps. */
+    String videoUrlHls
     /* Width (in pixels). Field maybe null after creation due to video processing time. */
     Integer width
     

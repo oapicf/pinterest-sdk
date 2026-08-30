@@ -4,8 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
-import 'package:openapi/src/model/pin.dart';
+import 'package:openapi/src/model/pin_read.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -15,9 +14,15 @@ part 'boards_list_pins200_response.g.dart';
 ///
 /// Properties:
 /// * [bookmark] 
-/// * [items] - Pins
+/// * [items] 
 @BuiltValue()
-abstract class BoardsListPins200Response implements Paginated, Built<BoardsListPins200Response, BoardsListPins200ResponseBuilder> {
+abstract class BoardsListPins200Response implements Built<BoardsListPins200Response, BoardsListPins200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<PinRead> get items;
+
   BoardsListPins200Response._();
 
   factory BoardsListPins200Response([void updates(BoardsListPins200ResponseBuilder b)]) = _$BoardsListPins200Response;
@@ -51,7 +56,7 @@ class _$BoardsListPins200ResponseSerializer implements PrimitiveSerializer<Board
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(PinRead)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$BoardsListPins200ResponseSerializer implements PrimitiveSerializer<Board
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(PinRead)]),
+          ) as BuiltList<PinRead>;
           result.items.replace(valueDes);
           break;
         default:

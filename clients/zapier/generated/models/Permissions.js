@@ -3,7 +3,7 @@ const utils = require('../utils/utils');
 module.exports = {
         fields: (key) => (
             {
-                label: `[${key.replaceAll('__', '.')}]`,
+                label: `Permission levels available on a business asset. - [${key.replaceAll('__', '.')}]`,
                 choices: [
                     'ADMIN',
                     'ANALYST',
@@ -16,6 +16,7 @@ module.exports = {
                     'CATALOGS_VIEWER',
                     'PROFILE_PUBLISHER',
                     'CONSUMER_USER',
+                    'BIZ_PINNER_LIST_SHARER',
                 ],
             }
         )

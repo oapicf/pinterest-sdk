@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  | [optional] 
-**items** | [**[GetBusinessAssetsResponse]**](GetBusinessAssetsResponse.md) | List of assets the requesting business has access to. | 
+**items** | [**[BusinessAssets]**](BusinessAssets.md) |  | 
 
 

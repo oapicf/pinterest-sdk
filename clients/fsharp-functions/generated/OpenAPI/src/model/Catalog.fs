@@ -4,7 +4,6 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.CatalogsType
-open OpenAPI.Model.string option
 
 module Catalog =
 
@@ -12,16 +11,16 @@ module Catalog =
 
   [<CLIMutable>]
   type Catalog = {
+    [<JsonProperty(PropertyName = "catalog_type")>]
+    CatalogType : CatalogsType;
     [<JsonProperty(PropertyName = "created_at")>]
     CreatedAt : DateTime;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string;
     [<JsonProperty(PropertyName = "updated_at")>]
     UpdatedAt : DateTime;
-    [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : CatalogsType;
-    [<JsonProperty(PropertyName = "name")>]
-    Name : string option;
   }
 
   //#endregion

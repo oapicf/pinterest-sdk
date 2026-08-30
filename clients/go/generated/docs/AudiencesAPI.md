@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## AudiencesCreate
 
-> Audience AudiencesCreate(ctx, adAccountId).AudienceCreateRequest(audienceCreateRequest).Execute()
+> AdAccountsAudience AudiencesCreate(ctx, adAccountId).AdAccountsAudienceCreate(adAccountsAudienceCreate).Execute()
 
 Create audience
 
@@ -33,16 +33,16 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	audienceCreateRequest := *openapiclient.NewAudienceCreateRequest("string", *openapiclient.NewAudienceRule(), openapiclient.AudienceType("CUSTOMER_LIST")) // AudienceCreateRequest | List of ads to create, size limit [1, 30]
+	adAccountsAudienceCreate := *openapiclient.NewAdAccountsAudienceCreate() // AdAccountsAudienceCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AudiencesAPI.AudiencesCreate(context.Background(), adAccountId).AudienceCreateRequest(audienceCreateRequest).Execute()
+	resp, r, err := apiClient.AudiencesAPI.AudiencesCreate(context.Background(), adAccountId).AdAccountsAudienceCreate(adAccountsAudienceCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AudiencesAPI.AudiencesCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AudiencesCreate`: Audience
+	// response from `AudiencesCreate`: AdAccountsAudience
 	fmt.Fprintf(os.Stdout, "Response from `AudiencesAPI.AudiencesCreate`: %v\n", resp)
 }
 ```
@@ -63,11 +63,11 @@ Other parameters are passed through a pointer to a apiAudiencesCreateRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **audienceCreateRequest** | [**AudienceCreateRequest**](AudienceCreateRequest.md) | List of ads to create, size limit [1, 30] | 
+ **adAccountsAudienceCreate** | [**AdAccountsAudienceCreate**](AdAccountsAudienceCreate.md) |  | 
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## AudiencesGet
 
-> Audience AudiencesGet(ctx, adAccountId, audienceId).Execute()
+> AdAccountsAudience AudiencesGet(ctx, audienceId, adAccountId).Execute()
 
 Get audience
 
@@ -104,17 +104,17 @@ import (
 )
 
 func main() {
+	audienceId := "audienceId_example" // string | Audience ID.
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	audienceId := "audienceId_example" // string | Unique identifier of an audience
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AudiencesAPI.AudiencesGet(context.Background(), adAccountId, audienceId).Execute()
+	resp, r, err := apiClient.AudiencesAPI.AudiencesGet(context.Background(), audienceId, adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AudiencesAPI.AudiencesGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AudiencesGet`: Audience
+	// response from `AudiencesGet`: AdAccountsAudience
 	fmt.Fprintf(os.Stdout, "Response from `AudiencesAPI.AudiencesGet`: %v\n", resp)
 }
 ```
@@ -125,8 +125,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**audienceId** | **string** | Audience ID. | 
 **adAccountId** | **string** | Unique identifier of an ad account. | 
-**audienceId** | **string** | Unique identifier of an audience | 
 
 ### Other Parameters
 
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## AudiencesList
 
-> AudiencesList200Response AudiencesList(ctx, adAccountId).Bookmark(bookmark).Order(order).PageSize(pageSize).OwnershipType(ownershipType).Execute()
+> AudiencesList200Response AudiencesList(ctx, adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).OwnershipType(ownershipType).ExcludeNca(excludeNca).Execute()
 
 List audiences
 
@@ -179,13 +179,14 @@ import (
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	order := "ASCENDING" // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-	ownershipType := "OWNED" // string | Filter audiences by ownership type. (optional) (default to "OWNED")
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+	order := openapiclient.Pinterest.Lib.PaginationOrder("ASCENDING") // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+	ownershipType := openapiclient.AudienceOwnershipType("OWNED") // AudienceOwnershipType |  (optional)
+	excludeNca := true // bool | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AudiencesAPI.AudiencesList(context.Background(), adAccountId).Bookmark(bookmark).Order(order).PageSize(pageSize).OwnershipType(ownershipType).Execute()
+	resp, r, err := apiClient.AudiencesAPI.AudiencesList(context.Background(), adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).OwnershipType(ownershipType).ExcludeNca(excludeNca).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AudiencesAPI.AudiencesList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,9 +213,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
- **ownershipType** | **string** | Filter audiences by ownership type. | [default to &quot;OWNED&quot;]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | 
+ **ownershipType** | [**AudienceOwnershipType**](AudienceOwnershipType.md) |  | 
+ **excludeNca** | **bool** | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [default to false]
 
 ### Return type
 
@@ -236,7 +238,7 @@ Name | Type | Description  | Notes
 
 ## AudiencesUpdate
 
-> Audience AudiencesUpdate(ctx, adAccountId, audienceId).AudienceUpdateRequest(audienceUpdateRequest).Execute()
+> AdAccountsAudience AudiencesUpdate(ctx, audienceId, adAccountId).AdAccountsAudienceUpdate(adAccountsAudienceUpdate).Execute()
 
 Update audience
 
@@ -255,18 +257,18 @@ import (
 )
 
 func main() {
+	audienceId := "audienceId_example" // string | Audience ID.
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	audienceId := "audienceId_example" // string | Unique identifier of an audience
-	audienceUpdateRequest := *openapiclient.NewAudienceUpdateRequest() // AudienceUpdateRequest | The audience to be updated.
+	adAccountsAudienceUpdate := *openapiclient.NewAdAccountsAudienceUpdate() // AdAccountsAudienceUpdate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AudiencesAPI.AudiencesUpdate(context.Background(), adAccountId, audienceId).AudienceUpdateRequest(audienceUpdateRequest).Execute()
+	resp, r, err := apiClient.AudiencesAPI.AudiencesUpdate(context.Background(), audienceId, adAccountId).AdAccountsAudienceUpdate(adAccountsAudienceUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AudiencesAPI.AudiencesUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AudiencesUpdate`: Audience
+	// response from `AudiencesUpdate`: AdAccountsAudience
 	fmt.Fprintf(os.Stdout, "Response from `AudiencesAPI.AudiencesUpdate`: %v\n", resp)
 }
 ```
@@ -277,8 +279,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**audienceId** | **string** | Audience ID. | 
 **adAccountId** | **string** | Unique identifier of an ad account. | 
-**audienceId** | **string** | Unique identifier of an audience | 
 
 ### Other Parameters
 
@@ -289,11 +291,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **audienceUpdateRequest** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md) | The audience to be updated. | 
+ **adAccountsAudienceUpdate** | [**AdAccountsAudienceUpdate**](AdAccountsAudienceUpdate.md) |  | 
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 

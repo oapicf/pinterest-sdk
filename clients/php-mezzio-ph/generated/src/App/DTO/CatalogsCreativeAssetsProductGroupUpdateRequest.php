@@ -1,0 +1,43 @@
+<?php
+declare(strict_types=1);
+
+namespace App\DTO;
+
+use Articus\DataTransfer\Annotation as DTA;
+
+/**
+ * Request object for updating a creative assets product group.
+ */
+class CatalogsCreativeAssetsProductGroupUpdateRequest
+{
+    /**
+     * @DTA\Data(field="catalog_type", nullable=true)
+     * @DTA\Validator(name="Scalar", options={"type":"string"})
+     * @var string|null
+     */
+    public $catalog_type;
+
+    /**
+     * @DTA\Data(field="description", nullable=true)
+     * @DTA\Validator(name="Scalar", options={"type":"string"})
+     * @var string|null
+     */
+    public $description;
+
+    /**
+     * @DTA\Data(field="filters", nullable=true)
+     * @DTA\Strategy(name="Object", options={"type":\App\DTO\CatalogsCreativeAssetsProductGroupFilters::class})
+     * @DTA\Validator(name="TypeCompliant", options={"type":\App\DTO\CatalogsCreativeAssetsProductGroupFilters::class})
+     * @var \App\DTO\CatalogsCreativeAssetsProductGroupFilters|null
+     */
+    public $filters;
+
+    /**
+     * Name of catalog product group
+     * @DTA\Data(field="name", nullable=true)
+     * @DTA\Validator(name="Scalar", options={"type":"string"})
+     * @var string|null
+     */
+    public $name;
+
+}

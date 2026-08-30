@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[CampaignResponse]**](CampaignResponse.md) |  | 
+**items** | [**List[Campaign]**](Campaign.md) |  | 
 
 ## Example
 

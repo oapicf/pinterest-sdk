@@ -1,14 +1,18 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
+import java.math.BigDecimal;
+import org.openapitools.vertxweb.server.model.EntityStatus;
 import org.openapitools.vertxweb.server.model.Granularity;
 import java.time.LocalDate;
-import org.openapitools.vertxweb.server.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PinterestLibPaginationOrder;
+import org.openapitools.vertxweb.server.model.ProductGroupAnalyticsItems;
 import org.openapitools.vertxweb.server.model.ProductGroupPromotion;
-import org.openapitools.vertxweb.server.model.ProductGroupPromotionCreateRequest;
-import org.openapitools.vertxweb.server.model.ProductGroupPromotionResponse;
-import org.openapitools.vertxweb.server.model.ProductGroupPromotionUpdateRequest;
+import org.openapitools.vertxweb.server.model.ProductGroupPromotions;
+import org.openapitools.vertxweb.server.model.ProductGroupPromotionsCreate;
 import org.openapitools.vertxweb.server.model.ProductGroupPromotionsList200Response;
+import org.openapitools.vertxweb.server.model.ProductGroupPromotionsUpdateWithRequiredBody;
+import org.openapitools.vertxweb.server.model.ReportingColumnSync;
 import org.openapitools.vertxweb.server.model.ReportingTimeZone;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -56,12 +60,12 @@ public class ProductGroupPromotionsApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ProductGroupPromotionCreateRequest>(){}) : null;
+        ProductGroupPromotionsCreate productGroupPromotionsCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ProductGroupPromotionsCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter productGroupPromotionCreateRequest is {}", productGroupPromotionCreateRequest);
+        logger.debug("Parameter productGroupPromotionsCreate is {}", productGroupPromotionsCreate);
 
-        api.productGroupPromotionsCreate(adAccountId, productGroupPromotionCreateRequest)
+        api.productGroupPromotionsCreate(adAccountId, productGroupPromotionsCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -104,22 +108,22 @@ public class ProductGroupPromotionsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
-        List<String> productGroupPromotionIds = requestParameters.queryParameter("product_group_promotion_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("product_group_promotion_ids").get(), new TypeReference<List<String>>(){}) : null;
-        List<String> entityStatuses = requestParameters.queryParameter("entity_statuses") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("entity_statuses").get(), new TypeReference<List<String>>(){}) : null;
-        String adGroupId = requestParameters.queryParameter("ad_group_id") != null ? requestParameters.queryParameter("ad_group_id").getString() : null;
-        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
-        String order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getString() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
+        PinterestLibPaginationOrder order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getPinterestLibPaginationOrder() : null;
+        List<String> productGroupPromotionIds = requestParameters.queryParameter("product_group_promotion_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("product_group_promotion_ids").get(), new TypeReference<List<String>>(){}) : null;
+        List<EntityStatus> entityStatuses = requestParameters.queryParameter("entity_statuses") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("entity_statuses").get(), new TypeReference<List<EntityStatus>>(){}) : null;
+        String adGroupId = requestParameters.queryParameter("ad_group_id") != null ? requestParameters.queryParameter("ad_group_id").getString() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter bookmark is {}", bookmark);
+        logger.debug("Parameter pageSize is {}", pageSize);
+        logger.debug("Parameter order is {}", order);
         logger.debug("Parameter productGroupPromotionIds is {}", productGroupPromotionIds);
         logger.debug("Parameter entityStatuses is {}", entityStatuses);
         logger.debug("Parameter adGroupId is {}", adGroupId);
-        logger.debug("Parameter pageSize is {}", pageSize);
-        logger.debug("Parameter order is {}", order);
-        logger.debug("Parameter bookmark is {}", bookmark);
 
-        api.productGroupPromotionsList(adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark)
+        api.productGroupPromotionsList(adAccountId, bookmark, pageSize, order, productGroupPromotionIds, entityStatuses, adGroupId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -139,12 +143,12 @@ public class ProductGroupPromotionsApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ProductGroupPromotionUpdateRequest>(){}) : null;
+        ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ProductGroupPromotionsUpdateWithRequiredBody>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter productGroupPromotionUpdateRequest is {}", productGroupPromotionUpdateRequest);
+        logger.debug("Parameter productGroupPromotionsUpdateWithRequiredBody is {}", productGroupPromotionsUpdateWithRequiredBody);
 
-        api.productGroupPromotionsUpdate(adAccountId, productGroupPromotionUpdateRequest)
+        api.productGroupPromotionsUpdate(adAccountId, productGroupPromotionsUpdateWithRequiredBody)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -162,31 +166,31 @@ public class ProductGroupPromotionsApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
-        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
         LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
         List<String> productGroupIds = requestParameters.queryParameter("product_group_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("product_group_ids").get(), new TypeReference<List<String>>(){}) : null;
-        List<String> columns = requestParameters.queryParameter("columns") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("columns").get(), new TypeReference<List<String>>(){}) : null;
+        List<ReportingColumnSync> columns = requestParameters.queryParameter("columns") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("columns").get(), new TypeReference<List<ReportingColumnSync>>(){}) : null;
         Granularity granularity = requestParameters.queryParameter("granularity") != null ? requestParameters.queryParameter("granularity").getGranularity() : null;
-        Integer clickWindowDays = requestParameters.queryParameter("click_window_days") != null ? requestParameters.queryParameter("click_window_days").getInteger() : 30;
-        Integer engagementWindowDays = requestParameters.queryParameter("engagement_window_days") != null ? requestParameters.queryParameter("engagement_window_days").getInteger() : 30;
-        Integer viewWindowDays = requestParameters.queryParameter("view_window_days") != null ? requestParameters.queryParameter("view_window_days").getInteger() : 1;
+        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
+        BigDecimal clickWindowDays = requestParameters.queryParameter("click_window_days") != null ? requestParameters.queryParameter("click_window_days").getBigDecimal() : ;
+        BigDecimal engagementWindowDays = requestParameters.queryParameter("engagement_window_days") != null ? requestParameters.queryParameter("engagement_window_days").getBigDecimal() : ;
+        BigDecimal viewWindowDays = requestParameters.queryParameter("view_window_days") != null ? requestParameters.queryParameter("view_window_days").getBigDecimal() : ;
         String conversionReportTime = requestParameters.queryParameter("conversion_report_time") != null ? requestParameters.queryParameter("conversion_report_time").getString() : "TIME_OF_AD_ACTION";
         ReportingTimeZone reportingTimezone = requestParameters.queryParameter("reporting_timezone") != null ? requestParameters.queryParameter("reporting_timezone").getReportingTimeZone() : null;
 
-        logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter startDate is {}", startDate);
         logger.debug("Parameter endDate is {}", endDate);
         logger.debug("Parameter productGroupIds is {}", productGroupIds);
         logger.debug("Parameter columns is {}", columns);
         logger.debug("Parameter granularity is {}", granularity);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter clickWindowDays is {}", clickWindowDays);
         logger.debug("Parameter engagementWindowDays is {}", engagementWindowDays);
         logger.debug("Parameter viewWindowDays is {}", viewWindowDays);
         logger.debug("Parameter conversionReportTime is {}", conversionReportTime);
         logger.debug("Parameter reportingTimezone is {}", reportingTimezone);
 
-        api.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone)
+        api.productGroupsAnalytics(startDate, endDate, productGroupIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

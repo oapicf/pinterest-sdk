@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **alt_text** | **string** |  | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
-**id** | **string** |  | [optional] [default to undefined]
+**id** | **string** |  | [default to undefined]
 **link** | **string** |  | [optional] [default to undefined]
 **media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] [default to undefined]
 **title** | **string** |  | [optional] [default to undefined]

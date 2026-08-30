@@ -13,23 +13,22 @@ import org.openapitools.model.Permissions;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Object declaring an asset role update to an invite.
  */
 
 @Schema(name = "CreateAssetInvitesRequestItem", description = "Object declaring an asset role update to an invite.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CreateAssetInvitesRequestItem {
 
-  @Valid
   private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
 
   private String inviteId;
@@ -63,16 +62,17 @@ public class CreateAssetInvitesRequestItem {
   }
 
   /**
-   * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+   * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.
    * @return assetIdToPermissions
    */
-  @NotNull @Valid @Size(min = 1) 
-  @Schema(name = "asset_id_to_permissions", example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", description = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. ", requiredMode = Schema.RequiredMode.REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "asset_id_to_permissions", example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", description = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("asset_id_to_permissions")
   public Map<String, List<Permissions>> getAssetIdToPermissions() {
     return assetIdToPermissions;
   }
 
+  @JsonProperty("asset_id_to_permissions")
   public void setAssetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
     this.assetIdToPermissions = assetIdToPermissions;
   }
@@ -93,6 +93,7 @@ public class CreateAssetInvitesRequestItem {
     return inviteId;
   }
 
+  @JsonProperty("invite_id")
   public void setInviteId(String inviteId) {
     this.inviteId = inviteId;
   }
@@ -113,6 +114,7 @@ public class CreateAssetInvitesRequestItem {
     return inviteType;
   }
 
+  @JsonProperty("invite_type")
   public void setInviteType(InviteType inviteType) {
     this.inviteType = inviteType;
   }
@@ -151,11 +153,8 @@ public class CreateAssetInvitesRequestItem {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

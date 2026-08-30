@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.MatchTypeResponse;
+import org.openapitools.model.MatchType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -17,15 +17,13 @@ import java.util.Objects;
 
 public class Keyword   {
   
-  private Integer bid;
-
-  private MatchTypeResponse matchType;
-
-  private String value;
-
   private Boolean archived;
 
+  private Integer bid;
+
   private String id;
+
+  private MatchType matchType;
 
   private String parentId;
 
@@ -33,63 +31,7 @@ public class Keyword   {
 
   private String type;
 
-  /**
-   * &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-   **/
-  public Keyword bid(Integer bid) {
-    this.bid = bid;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
-  @JsonProperty("bid")
-  public Integer getBid() {
-    return bid;
-  }
-  public void setBid(Integer bid) {
-    this.bid = bid;
-  }
-
-
-  /**
-   **/
-  public Keyword matchType(MatchTypeResponse matchType) {
-    this.matchType = matchType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("match_type")
-  @NotNull
-  public MatchTypeResponse getMatchType() {
-    return matchType;
-  }
-  public void setMatchType(MatchTypeResponse matchType) {
-    this.matchType = matchType;
-  }
-
-
-  /**
-   * Keyword value (120 chars max).
-   **/
-  public Keyword value(String value) {
-    this.value = value;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
-  @JsonProperty("value")
-  @NotNull
-  public String getValue() {
-    return value;
-  }
-  public void setValue(String value) {
-    this.value = value;
-  }
-
+  private String value;
 
   /**
    **/
@@ -110,6 +52,25 @@ public class Keyword   {
 
 
   /**
+   * **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+   **/
+  public Keyword bid(Integer bid) {
+    this.bid = bid;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "**Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+  @JsonProperty("bid")
+  public Integer getBid() {
+    return bid;
+  }
+  public void setBid(Integer bid) {
+    this.bid = bid;
+  }
+
+
+  /**
    * Keyword ID .
    **/
   public Keyword id(String id) {
@@ -118,13 +79,34 @@ public class Keyword   {
   }
 
   
-  @ApiModelProperty(example = "383791336903426391", value = "Keyword ID .")
+  @ApiModelProperty(example = "383791336903426391", required = true, value = "Keyword ID .")
   @JsonProperty("id")
+  @NotNull
  @Pattern(regexp="^\\d+$")  public String getId() {
     return id;
   }
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  /**
+   * Keyword [match type](/docs/api-features/targeting-overview/)
+   **/
+  public Keyword matchType(MatchType matchType) {
+    this.matchType = matchType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Keyword [match type](/docs/api-features/targeting-overview/)")
+  @JsonProperty("match_type")
+  @NotNull
+  public MatchType getMatchType() {
+    return matchType;
+  }
+  public void setMatchType(MatchType matchType) {
+    this.matchType = matchType;
   }
 
 
@@ -137,8 +119,9 @@ public class Keyword   {
   }
 
   
-  @ApiModelProperty(example = "383791336903426391", value = "Keyword parent entity ID (advertiser, campaign, ad group).")
+  @ApiModelProperty(example = "383791336903426391", required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
   @JsonProperty("parent_id")
+  @NotNull
  @Pattern(regexp="^\\d+$")  public String getParentId() {
     return parentId;
   }
@@ -148,7 +131,7 @@ public class Keyword   {
 
 
   /**
-   * Parent entity type
+   * Parent entity type (advertiser, campaign, ad group).
    **/
   public Keyword parentType(String parentType) {
     this.parentType = parentType;
@@ -156,7 +139,7 @@ public class Keyword   {
   }
 
   
-  @ApiModelProperty(example = "campaign", value = "Parent entity type")
+  @ApiModelProperty(example = "campaign", value = "Parent entity type (advertiser, campaign, ad group).")
   @JsonProperty("parent_type")
   public String getParentType() {
     return parentType;
@@ -185,6 +168,26 @@ public class Keyword   {
   }
 
 
+  /**
+   * Keyword value (120 chars max).
+   **/
+  public Keyword value(String value) {
+    this.value = value;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
+  @JsonProperty("value")
+  @NotNull
+  public String getValue() {
+    return value;
+  }
+  public void setValue(String value) {
+    this.value = value;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -195,19 +198,19 @@ public class Keyword   {
       return false;
     }
     Keyword keyword = (Keyword) o;
-    return Objects.equals(this.bid, keyword.bid) &&
-        Objects.equals(this.matchType, keyword.matchType) &&
-        Objects.equals(this.value, keyword.value) &&
-        Objects.equals(this.archived, keyword.archived) &&
+    return Objects.equals(this.archived, keyword.archived) &&
+        Objects.equals(this.bid, keyword.bid) &&
         Objects.equals(this.id, keyword.id) &&
+        Objects.equals(this.matchType, keyword.matchType) &&
         Objects.equals(this.parentId, keyword.parentId) &&
         Objects.equals(this.parentType, keyword.parentType) &&
-        Objects.equals(this.type, keyword.type);
+        Objects.equals(this.type, keyword.type) &&
+        Objects.equals(this.value, keyword.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bid, matchType, value, archived, id, parentId, parentType, type);
+    return Objects.hash(archived, bid, id, matchType, parentId, parentType, type, value);
   }
 
   @Override
@@ -215,14 +218,14 @@ public class Keyword   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Keyword {\n");
     
-    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
-    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
+    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    parentType: ").append(toIndentedString(parentType)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -232,10 +235,7 @@ public class Keyword   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

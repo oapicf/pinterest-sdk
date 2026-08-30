@@ -9,7 +9,7 @@ The class is defined in **[LeadFormsList200Response.java](../../src/main/java/or
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;LeadFormResponse&gt;`](LeadFormResponse.md) |  | 
+**items** | [`List&lt;LeadForm&gt;`](LeadForm.md) |  | 
 
 
 

@@ -102,7 +102,7 @@ Page_visit_conversion_tags_get_200_response::getBookmark()
 }
 
 void
-Page_visit_conversion_tags_get_200_response::setBookmark(std::string  bookmark)
+Page_visit_conversion_tags_get_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Page_visit_conversion_tags_get_200_response::getItems()
 }
 
 void
-Page_visit_conversion_tags_get_200_response::setItems(std::list <ConversionEventResponse> items)
+Page_visit_conversion_tags_get_200_response::setItems(std::list<ConversionEventResponse> items)
 {
 	this->items = items;
 }

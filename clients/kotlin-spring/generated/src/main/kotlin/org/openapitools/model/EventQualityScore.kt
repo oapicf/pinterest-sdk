@@ -31,23 +31,28 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class EventQualityScore(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("ingestion_source")
     @get:JsonProperty("ingestion_source", required = true) val ingestionSource: IngestionSourceOptions,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("lookback_period")
     @get:JsonProperty("lookback_period", required = true) val lookbackPeriod: LookbackPeriodOptions,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("overall_status")
     @get:JsonProperty("overall_status", required = true) val overallStatus: OverallStatusOptions,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("quality_components")
     @get:JsonProperty("quality_components", required = true) val qualityComponents: QualityComponents,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("source_platform")
     @get:JsonProperty("source_platform", required = true) val sourcePlatform: SourcePlatformOptions
 ) {
 

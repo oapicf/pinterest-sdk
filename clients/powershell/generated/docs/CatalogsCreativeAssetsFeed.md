@@ -3,39 +3,39 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **System.DateTime** |  | 
-**Id** | **String** |  | 
-**UpdatedAt** | **System.DateTime** |  | 
 **CatalogId** | **String** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. | 
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
-**Credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | 
+**CatalogType** | **String** |  | 
+**CreatedAt** | **System.DateTime** |  | [readonly] 
+**Credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
 **DefaultCountry** | [**Country**](Country.md) |  | 
-**DefaultCurrency** | [**NullableCurrency**](NullableCurrency.md) |  | 
+**DefaultCurrency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] 
 **DefaultLocale** | **String** | The locale used within a feed for product descriptions. | 
 **Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
+**Id** | **String** | ID of the feed entity. | [readonly] 
 **Location** | **String** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
 **Name** | **String** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
-**PreferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | 
+**PreferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | 
+**UpdatedAt** | **System.DateTime** |  | [readonly] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsCreativeAssetsFeed = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsFeed  -CreatedAt 2022-03-14T15:15:22Z `
- -Id null `
- -UpdatedAt 2022-03-14T15:16:34Z `
- -CatalogId null `
+$CatalogsCreativeAssetsFeed = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsFeed  -CatalogId null `
  -CatalogType null `
+ -CreatedAt null `
  -Credentials null `
  -DefaultCountry null `
  -DefaultCurrency null `
- -DefaultLocale en-US `
+ -DefaultLocale null `
  -Format null `
+ -Id 864344156814050986 `
  -Location null `
  -Name null `
  -PreferredProcessingSchedule null `
- -Status null
+ -Status null `
+ -UpdatedAt null
 ```
 
 - Convert the resource to JSON

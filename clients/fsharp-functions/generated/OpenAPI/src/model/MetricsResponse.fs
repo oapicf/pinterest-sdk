@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.MetricsResponseDataItems
 
 module MetricsResponse =
 
@@ -11,7 +12,7 @@ module MetricsResponse =
   [<CLIMutable>]
   type MetricsResponse = {
     [<JsonProperty(PropertyName = "data")>]
-    Data : obj[];
+    Data : MetricsResponseDataItems[];
   }
 
   //#endregion

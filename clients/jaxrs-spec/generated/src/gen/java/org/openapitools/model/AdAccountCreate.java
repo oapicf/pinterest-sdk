@@ -20,12 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Resource create operation model.")
 @JsonTypeName("AdAccountCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdAccountCreate   {
   private Country country;
   private Currency currency;
   private String name;
   private String ownerUserId;
+  private String timeZone;
 
   public AdAccountCreate() {
   }
@@ -108,6 +109,26 @@ public class AdAccountCreate   {
     this.ownerUserId = ownerUserId;
   }
 
+  /**
+   * The time zone of the ad account, in IANA format (e.g., \&quot;America/Los_Angeles\&quot;). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
+   **/
+  public AdAccountCreate timeZone(String timeZone) {
+    this.timeZone = timeZone;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "America/Los_Angeles", value = "The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.")
+  @JsonProperty("time_zone")
+  public String getTimeZone() {
+    return timeZone;
+  }
+
+  @JsonProperty("time_zone")
+  public void setTimeZone(String timeZone) {
+    this.timeZone = timeZone;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -121,12 +142,13 @@ public class AdAccountCreate   {
     return Objects.equals(this.country, adAccountCreate.country) &&
         Objects.equals(this.currency, adAccountCreate.currency) &&
         Objects.equals(this.name, adAccountCreate.name) &&
-        Objects.equals(this.ownerUserId, adAccountCreate.ownerUserId);
+        Objects.equals(this.ownerUserId, adAccountCreate.ownerUserId) &&
+        Objects.equals(this.timeZone, adAccountCreate.timeZone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, currency, name, ownerUserId);
+    return Objects.hash(country, currency, name, ownerUserId, timeZone);
   }
 
   @Override
@@ -138,6 +160,7 @@ public class AdAccountCreate   {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ownerUserId: ").append(toIndentedString(ownerUserId)).append("\n");
+    sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -147,12 +170,8 @@ public class AdAccountCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

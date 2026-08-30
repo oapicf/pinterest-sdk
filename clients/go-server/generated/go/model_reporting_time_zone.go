@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ import (
 )
 
 
-// ReportingTimeZone : [Closed beta](/docs/getting-started/using-beta-and-restricted-features/) Specify the timezone to be applied for the reporting.
+// ReportingTimeZone : Specify the timezone to be applied for the reporting.
 type ReportingTimeZone string
 
 // List of ReportingTimeZone
@@ -56,8 +56,8 @@ func NewReportingTimeZoneFromValue(v string) (ReportingTimeZone, error) {
 }
 
 
-
-// AssertReportingTimeZoneRequired checks if the required fields are not zero-ed
+// AssertReportingTimeZoneRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertReportingTimeZoneRequired(obj ReportingTimeZone) error {
 	return nil
 }

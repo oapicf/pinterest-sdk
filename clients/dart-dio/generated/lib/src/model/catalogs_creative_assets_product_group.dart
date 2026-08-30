@@ -13,17 +13,17 @@ part 'catalogs_creative_assets_product_group.g.dart';
 /// CatalogsCreativeAssetsProductGroup
 ///
 /// Properties:
-/// * [catalogId] - Catalog id pertaining to the creative assets product group.
+/// * [catalogId] - Catalog ID pertaining to the product group.
 /// * [catalogType] 
 /// * [createdAt] - Unix timestamp in seconds of when catalog product group was created.
 /// * [description] 
 /// * [filters] 
-/// * [id] - ID of the creative assets product group.
-/// * [name] - Name of creative assets product group
+/// * [id] - ID of the catalog product group.
+/// * [name] - Name of catalog product group
 /// * [updatedAt] - Unix timestamp in seconds of last time catalog product group was updated.
 @BuiltValue()
 abstract class CatalogsCreativeAssetsProductGroup implements Built<CatalogsCreativeAssetsProductGroup, CatalogsCreativeAssetsProductGroupBuilder> {
-  /// Catalog id pertaining to the creative assets product group.
+  /// Catalog ID pertaining to the product group.
   @BuiltValueField(wireName: r'catalog_id')
   String get catalogId;
 
@@ -41,11 +41,11 @@ abstract class CatalogsCreativeAssetsProductGroup implements Built<CatalogsCreat
   @BuiltValueField(wireName: r'filters')
   CatalogsCreativeAssetsProductGroupFilters get filters;
 
-  /// ID of the creative assets product group.
+  /// ID of the catalog product group.
   @BuiltValueField(wireName: r'id')
   String get id;
 
-  /// Name of creative assets product group
+  /// Name of catalog product group
   @BuiltValueField(wireName: r'name')
   String? get name;
 
@@ -164,8 +164,9 @@ class _$CatalogsCreativeAssetsProductGroupSerializer implements PrimitiveSeriali
         case r'created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdAt = valueDes;
           break;
         case r'description':
@@ -193,15 +194,17 @@ class _$CatalogsCreativeAssetsProductGroupSerializer implements PrimitiveSeriali
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         case r'updated_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.updatedAt = valueDes;
           break;
         default:

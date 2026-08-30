@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.openapitools.model.PinAnalyticsMetricsResponseDailyMetricsInner;
+import org.openapitools.model.PinAnalyticsDailyMetrics;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -20,7 +20,7 @@ public class PinAnalyticsMetricsResponse  {
   */
   @ApiModelProperty(value = "Array with the requested daily metric records")
 
-  private List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>();
+  private List<PinAnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
 
  /**
   * The lifetime metric name and value.
@@ -40,20 +40,20 @@ public class PinAnalyticsMetricsResponse  {
    * @return dailyMetrics
   **/
   @JsonProperty("daily_metrics")
-  public List<PinAnalyticsMetricsResponseDailyMetricsInner> getDailyMetrics() {
+  public List<PinAnalyticsDailyMetrics> getDailyMetrics() {
     return dailyMetrics;
   }
 
-  public void setDailyMetrics(List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
+  public void setDailyMetrics(List<PinAnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
   }
 
-  public PinAnalyticsMetricsResponse dailyMetrics(List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
+  public PinAnalyticsMetricsResponse dailyMetrics(List<PinAnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
     return this;
   }
 
-  public PinAnalyticsMetricsResponse addDailyMetricsItem(PinAnalyticsMetricsResponseDailyMetricsInner dailyMetricsItem) {
+  public PinAnalyticsMetricsResponse addDailyMetricsItem(PinAnalyticsDailyMetrics dailyMetricsItem) {
     this.dailyMetrics.add(dailyMetricsItem);
     return this;
   }
@@ -140,10 +140,7 @@ public class PinAnalyticsMetricsResponse  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -7,23 +7,26 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.model.CatalogsCreativeAssetsAttributes;
 import org.springframework.lang.Nullable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * A creative assets item to be upserted.
  */
 
 @Schema(name = "CatalogsUpsertCreativeAssetsItem", description = "A creative assets item to be upserted.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsUpsertCreativeAssetsItem {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class CatalogsUpsertCreativeAssetsItem implements CatalogsCreativeAssetsBatchItem {
 
   private CatalogsCreativeAssetsAttributes attributes;
 
@@ -93,6 +96,7 @@ public class CatalogsUpsertCreativeAssetsItem {
     return attributes;
   }
 
+  @JsonProperty("attributes")
   public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }
@@ -113,6 +117,7 @@ public class CatalogsUpsertCreativeAssetsItem {
     return creativeAssetsId;
   }
 
+  @JsonProperty("creative_assets_id")
   public void setCreativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
   }
@@ -133,6 +138,7 @@ public class CatalogsUpsertCreativeAssetsItem {
     return operation;
   }
 
+  @JsonProperty("operation")
   public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
@@ -171,11 +177,8 @@ public class CatalogsUpsertCreativeAssetsItem {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

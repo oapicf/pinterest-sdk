@@ -7,7 +7,7 @@ using namespace Tiny;
 Campaigns_list_200_response::Campaigns_list_200_response()
 {
 	bookmark = std::string();
-	items = std::list<CampaignResponse>();
+	items = std::list<Campaign>();
 }
 
 Campaigns_list_200_response::Campaigns_list_200_response(std::string jsonString)
@@ -45,8 +45,8 @@ Campaigns_list_200_response::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<CampaignResponse> items_list;
-        CampaignResponse element;
+        std::list<Campaign> items_list;
+        Campaign element;
         for(auto& var : value.array_range())
         {
 
@@ -78,12 +78,12 @@ Campaigns_list_200_response::toJson()
 
 
 
-    std::list<CampaignResponse> items_list = getItems();
+    std::list<Campaign> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        CampaignResponse obj = var;
+        Campaign obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -102,19 +102,19 @@ Campaigns_list_200_response::getBookmark()
 }
 
 void
-Campaigns_list_200_response::setBookmark(std::string  bookmark)
+Campaigns_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
 
-std::list<CampaignResponse>
+std::list<Campaign>
 Campaigns_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Campaigns_list_200_response::setItems(std::list <CampaignResponse> items)
+Campaigns_list_200_response::setItems(std::list<Campaign> items)
 {
 	this->items = items;
 }

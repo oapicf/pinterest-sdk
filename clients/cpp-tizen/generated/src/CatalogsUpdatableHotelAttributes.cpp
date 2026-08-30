@@ -23,7 +23,7 @@ CatalogsUpdatableHotelAttributes::~CatalogsUpdatableHotelAttributes()
 void
 CatalogsUpdatableHotelAttributes::__init()
 {
-	//address = new CatalogsHotelAddress();
+	//address = null;
 	//base_price = std::string();
 	//brand = std::string();
 	//category = std::string();
@@ -33,7 +33,7 @@ CatalogsUpdatableHotelAttributes::__init()
 	//custom_label_3 = std::string();
 	//custom_label_4 = std::string();
 	//description = std::string();
-	//guest_ratings = new CatalogsHotelGuestRatings();
+	//guest_ratings = null;
 	//latitude = double(0);
 	//link = std::string();
 	//longitude = double(0);

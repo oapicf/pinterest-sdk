@@ -7,31 +7,31 @@
     {
       "name": "id",
       "type": ["null", "string"],
-      "doc": "Subinterest ID.",
+      "doc": "",
       "default": null
     },
     {
       "name": "index",
       "type": ["null", "double"],
-      "doc": "Subinterest affinity index.",
+      "doc": "",
       "default": null
     },
     {
       "name": "key",
       "type": ["null", "string"],
-      "doc": "Interest unique key (same as ID).",
+      "doc": "",
       "default": null
     },
     {
       "name": "name",
       "type": ["null", "string"],
-      "doc": "Subinterest name.",
+      "doc": "",
       "default": null
     },
     {
       "name": "ratio",
       "type": ["null", "double"],
-      "doc": "Subinterest's percent of category's total audience.",
+      "doc": "",
       "default": null
     }
   ]

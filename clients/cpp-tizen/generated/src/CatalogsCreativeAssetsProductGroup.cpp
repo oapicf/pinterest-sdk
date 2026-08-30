@@ -23,12 +23,12 @@ CatalogsCreativeAssetsProductGroup::~CatalogsCreativeAssetsProductGroup()
 void
 CatalogsCreativeAssetsProductGroup::__init()
 {
-	//catalog_id = std::string();
+	//catalog_id = null;
 	//catalog_type = std::string();
 	//created_at = int(0);
 	//description = std::string();
 	//filters = new CatalogsCreativeAssetsProductGroupFilters();
-	//id = std::string();
+	//id = null;
 	//name = std::string();
 	//updated_at = int(0);
 }

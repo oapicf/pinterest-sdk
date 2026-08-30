@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## integrations_commerce_del
 
-> integrations_commerce_del(external_business_id)
+> <IntegrationMetadata> integrations_commerce_del(external_business_id)
 
 Delete commerce integration
 
@@ -37,7 +37,8 @@ external_business_id = 'external_business_id_example' # String | External busine
 
 begin
   # Delete commerce integration
-  api_instance.integrations_commerce_del(external_business_id)
+  result = api_instance.integrations_commerce_del(external_business_id)
+  p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling IntegrationsApi->integrations_commerce_del: #{e}"
 end
@@ -45,9 +46,9 @@ end
 
 #### Using the integrations_commerce_del_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> integrations_commerce_del_with_http_info(external_business_id)
+> <Array(<IntegrationMetadata>, Integer, Hash)> integrations_commerce_del_with_http_info(external_business_id)
 
 ```ruby
 begin
@@ -55,7 +56,7 @@ begin
   data, status_code, headers = api_instance.integrations_commerce_del_with_http_info(external_business_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <IntegrationMetadata>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling IntegrationsApi->integrations_commerce_del_with_http_info: #{e}"
 end
@@ -69,7 +70,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**IntegrationMetadata**](IntegrationMetadata.md)
 
 ### Authorization
 
@@ -152,7 +153,7 @@ end
 
 ## integrations_commerce_patch
 
-> <IntegrationMetadata> integrations_commerce_patch(external_business_id, integration_request_patch)
+> <IntegrationMetadata> integrations_commerce_patch(external_business_id, integration_metadata_update)
 
 Update commerce integration
 
@@ -171,11 +172,11 @@ end
 
 api_instance = PinterestSdkClient::IntegrationsApi.new
 external_business_id = 'external_business_id_example' # String | External business ID for the integration.
-integration_request_patch = PinterestSdkClient::IntegrationRequestPatch.new # IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
+integration_metadata_update = PinterestSdkClient::IntegrationMetadataUpdate.new # IntegrationMetadataUpdate | 
 
 begin
   # Update commerce integration
-  result = api_instance.integrations_commerce_patch(external_business_id, integration_request_patch)
+  result = api_instance.integrations_commerce_patch(external_business_id, integration_metadata_update)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling IntegrationsApi->integrations_commerce_patch: #{e}"
@@ -186,12 +187,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<IntegrationMetadata>, Integer, Hash)> integrations_commerce_patch_with_http_info(external_business_id, integration_request_patch)
+> <Array(<IntegrationMetadata>, Integer, Hash)> integrations_commerce_patch_with_http_info(external_business_id, integration_metadata_update)
 
 ```ruby
 begin
   # Update commerce integration
-  data, status_code, headers = api_instance.integrations_commerce_patch_with_http_info(external_business_id, integration_request_patch)
+  data, status_code, headers = api_instance.integrations_commerce_patch_with_http_info(external_business_id, integration_metadata_update)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <IntegrationMetadata>
@@ -205,7 +206,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **external_business_id** | **String** | External business ID for the integration. |  |
-| **integration_request_patch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata |  |
+| **integration_metadata_update** | [**IntegrationMetadataUpdate**](IntegrationMetadataUpdate.md) |  |  |
 
 ### Return type
 
@@ -223,7 +224,7 @@ end
 
 ## integrations_commerce_post
 
-> <IntegrationMetadata> integrations_commerce_post(integration_request)
+> <IntegrationMetadata> integrations_commerce_post(integration_metadata_create)
 
 Create commerce integration
 
@@ -241,11 +242,11 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::IntegrationsApi.new
-integration_request = PinterestSdkClient::IntegrationRequest.new # IntegrationRequest | Parameters to get create/update the Integration Metadata
+integration_metadata_create = PinterestSdkClient::IntegrationMetadataCreate.new # IntegrationMetadataCreate | 
 
 begin
   # Create commerce integration
-  result = api_instance.integrations_commerce_post(integration_request)
+  result = api_instance.integrations_commerce_post(integration_metadata_create)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling IntegrationsApi->integrations_commerce_post: #{e}"
@@ -256,12 +257,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<IntegrationMetadata>, Integer, Hash)> integrations_commerce_post_with_http_info(integration_request)
+> <Array(<IntegrationMetadata>, Integer, Hash)> integrations_commerce_post_with_http_info(integration_metadata_create)
 
 ```ruby
 begin
   # Create commerce integration
-  data, status_code, headers = api_instance.integrations_commerce_post_with_http_info(integration_request)
+  data, status_code, headers = api_instance.integrations_commerce_post_with_http_info(integration_metadata_create)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <IntegrationMetadata>
@@ -274,7 +275,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **integration_request** | [**IntegrationRequest**](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata |  |
+| **integration_metadata_create** | [**IntegrationMetadataCreate**](IntegrationMetadataCreate.md) |  |  |
 
 ### Return type
 
@@ -310,7 +311,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::IntegrationsApi.new
-id = 'id_example' # String | Integration ID.
+id = 'id_example' # String | Integration record ID.
 
 begin
   # Get integration metadata
@@ -343,7 +344,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **String** | Integration ID. |  |
+| **id** | **String** | Integration record ID. |  |
 
 ### Return type
 
@@ -381,7 +382,7 @@ end
 api_instance = PinterestSdkClient::IntegrationsApi.new
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -416,7 +417,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -434,7 +435,7 @@ end
 
 ## integrations_logs_post
 
-> <IntegrationLogsSuccessResponse> integrations_logs_post(integration_logs_request)
+> <IntegrationLogsSuccessResponse> integrations_logs_post(integration_logs_request_create)
 
 Receives batched logs from integration applications.
 
@@ -452,11 +453,11 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::IntegrationsApi.new
-integration_logs_request = PinterestSdkClient::IntegrationLogsRequest.new({logs: [PinterestSdkClient::IntegrationLog.new({client_timestamp: 37, event_type: 'APP', log_level: 'INFO'})]}) # IntegrationLogsRequest | Ingest log information from external integration application.
+integration_logs_request_create = PinterestSdkClient::IntegrationLogsRequestCreate.new({logs: [PinterestSdkClient::IntegrationLog.new({client_timestamp: 37, event_type: PinterestSdkClient::IntegrationLogEventType::APP, log_level: PinterestSdkClient::IntegrationLogLevel::INFO})]}) # IntegrationLogsRequestCreate | 
 
 begin
   # Receives batched logs from integration applications.
-  result = api_instance.integrations_logs_post(integration_logs_request)
+  result = api_instance.integrations_logs_post(integration_logs_request_create)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling IntegrationsApi->integrations_logs_post: #{e}"
@@ -467,12 +468,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<IntegrationLogsSuccessResponse>, Integer, Hash)> integrations_logs_post_with_http_info(integration_logs_request)
+> <Array(<IntegrationLogsSuccessResponse>, Integer, Hash)> integrations_logs_post_with_http_info(integration_logs_request_create)
 
 ```ruby
 begin
   # Receives batched logs from integration applications.
-  data, status_code, headers = api_instance.integrations_logs_post_with_http_info(integration_logs_request)
+  data, status_code, headers = api_instance.integrations_logs_post_with_http_info(integration_logs_request_create)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <IntegrationLogsSuccessResponse>
@@ -485,7 +486,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **integration_logs_request** | [**IntegrationLogsRequest**](IntegrationLogsRequest.md) | Ingest log information from external integration application. |  |
+| **integration_logs_request_create** | [**IntegrationLogsRequestCreate**](IntegrationLogsRequestCreate.md) |  |  |
 
 ### Return type
 

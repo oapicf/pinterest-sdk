@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 
 /**
- * The current status of the invite.
+ * The current status of an invite or request.
  **/
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * The current status of the invite.
+ * The current status of an invite or request.
  */
 public enum InviteStatus {
   

@@ -7,7 +7,7 @@ import           Import
 
 -- | Create a new asset group.
 --
--- Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+-- Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 -- operationId: assetGroup/create
 postBusinessesByTextAssetGroupsR :: Text -- ^ Unique identifier of the requesting business.
                                  -> Handler Value
@@ -74,7 +74,7 @@ deleteBusinessesByTextMembersAssetsAccessR businessId = notImplemented
 
 -- | Assign/Update member asset permissions
 --
--- Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+-- Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 -- operationId: businessMembersAssetAccess/update
 patchBusinessesByTextMembersAssetsAccessR :: Text -- ^ Unique identifier of the requesting business.
                                           -> Handler Value

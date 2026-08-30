@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **CatalogId** | Pointer to **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
+**CatalogType** | **string** |  | 
 **ItemIds** | **[]string** |  | 
 **HotelIds** | **[]string** |  | 
 **CreativeAssetsIds** | **[]string** |  | 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsItemsPostFilters
 
-`func NewCatalogsItemsPostFilters(catalogType CatalogsType, itemIds []string, hotelIds []string, creativeAssetsIds []string, ) *CatalogsItemsPostFilters`
+`func NewCatalogsItemsPostFilters(catalogType string, itemIds []string, hotelIds []string, creativeAssetsIds []string, ) *CatalogsItemsPostFilters`
 
 NewCatalogsItemsPostFilters instantiates a new CatalogsItemsPostFilters object
 This constructor will assign default values to properties that have it defined,
@@ -28,26 +28,6 @@ will change when the set of required properties is changed
 NewCatalogsItemsPostFiltersWithDefaults instantiates a new CatalogsItemsPostFilters object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCatalogType
-
-`func (o *CatalogsItemsPostFilters) GetCatalogType() CatalogsType`
-
-GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
-
-### GetCatalogTypeOk
-
-`func (o *CatalogsItemsPostFilters) GetCatalogTypeOk() (*CatalogsType, bool)`
-
-GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogType
-
-`func (o *CatalogsItemsPostFilters) SetCatalogType(v CatalogsType)`
-
-SetCatalogType sets CatalogType field to given value.
-
 
 ### GetCatalogId
 
@@ -73,6 +53,26 @@ SetCatalogId sets CatalogId field to given value.
 `func (o *CatalogsItemsPostFilters) HasCatalogId() bool`
 
 HasCatalogId returns a boolean if a field has been set.
+
+### GetCatalogType
+
+`func (o *CatalogsItemsPostFilters) GetCatalogType() string`
+
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
+
+### GetCatalogTypeOk
+
+`func (o *CatalogsItemsPostFilters) GetCatalogTypeOk() (*string, bool)`
+
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogType
+
+`func (o *CatalogsItemsPostFilters) SetCatalogType(v string)`
+
+SetCatalogType sets CatalogType field to given value.
+
 
 ### GetItemIds
 

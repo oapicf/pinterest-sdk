@@ -8,7 +8,7 @@ The class is defined in **[CustomNumber0Filter.java](../../src/main/java/org/ope
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CUSTOM_NUMBER_0** | `CatalogsProductGroupUint32Criteria` |  | 
+**CUSTOM_NUMBER_0** | [`CatalogsProductGroupUint32Criteria`](CatalogsProductGroupUint32Criteria.md) |  | 
 
 
 

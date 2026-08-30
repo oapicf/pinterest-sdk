@@ -8,29 +8,48 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.ConversionEventsDataInner
+import org.openapitools.client.models.ConversionApiResponseEventsItems
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * A list of events (one or more) encapsulated by a data object.
+ * Conversion events.
  *
- * @param `data` 
+ * @param events Specific messages for each event received. The order will match the order in which the events were received in the request.
+ * @param numEventsProcessed Number of events that were successfully processed from the events.
+ * @param numEventsReceived Total number of events received in the request.
  */
 
 
 data class ConversionEvents (
 
-    @Json(name = "data")
-    val `data`: kotlin.collections.List<ConversionEventsDataInner>
+    /* Specific messages for each event received. The order will match the order in which the events were received in the request. */
+    @Json(name = "events")
+    val events: kotlin.collections.List<ConversionApiResponseEventsItems>,
+
+    /* Number of events that were successfully processed from the events. */
+    @Json(name = "num_events_processed")
+    val numEventsProcessed: kotlin.Int,
+
+    /* Total number of events received in the request. */
+    @Json(name = "num_events_received")
+    val numEventsReceived: kotlin.Int
 
 ) {
 

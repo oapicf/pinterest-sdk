@@ -4,8 +4,8 @@ package models
 type BusinessMemberAssetsSummary struct {
 
 	// List of ad account IDs and respective permission levels.
-	AdAccounts []BusinessMemberAssetsSummaryAdAccountsInner `json:"ad_accounts,omitempty"`
+	AdAccounts []AssetIdWithPermissions `json:"ad_accounts,omitempty"`
 
 	// List of profile IDs and respective permission levels.
-	Profiles []BusinessMemberAssetsSummaryProfilesInner `json:"profiles,omitempty"`
+	Profiles []AssetIdWithPermissions `json:"profiles,omitempty"`
 }

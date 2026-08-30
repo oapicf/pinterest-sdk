@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **str** | Catalog id pertaining to the creative assets product group. | 
+**catalog_id** | **str** | Catalog ID pertaining to the product group. | 
 **catalog_type** | **str** |  | 
 **country** | **str** |  | [optional] 
 **created_at** | **int** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **description** | **str** |  | [optional] 
 **feed_id** | **str** | id of the catalogs feed belonging to this catalog product group | 
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**id** | **str** | ID of the creative assets product group. | 
+**id** | **str** | ID of the catalog product group. | 
 **is_featured** | **bool** | boolean indicator of whether the product group is being featured or not | [optional] 
 **locale** | **str** |  | [optional] 
-**name** | **str** | Name of creative assets product group | [optional] 
+**name** | **str** | Name of catalog product group | [optional] 
 **status** | [**CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  | [optional] 
 **type** | [**CatalogsHotelProductGroupType**](CatalogsHotelProductGroupType.md) |  | 
 **updated_at** | **int** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 

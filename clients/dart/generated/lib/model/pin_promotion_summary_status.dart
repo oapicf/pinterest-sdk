@@ -11,41 +11,35 @@
 part of openapi.api;
 
 /// Summary status for pin promotions
-class PinPromotionSummaryStatus {
-  /// Instantiate a new enum with the provided [value].
-  const PinPromotionSummaryStatus._(this.value);
+enum PinPromotionSummaryStatus {
+  APPROVED._(r'APPROVED'),
+  PAUSED._(r'PAUSED'),
+  PENDING._(r'PENDING'),
+  REJECTED._(r'REJECTED'),
+  ADVERTISER_DISABLED._(r'ADVERTISER_DISABLED'),
+  ARCHIVED._(r'ARCHIVED'),
+  DRAFT._(r'DRAFT'),
+  DELETED_DRAFT._(r'DELETED_DRAFT'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const PinPromotionSummaryStatus._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const APPROVED = PinPromotionSummaryStatus._(r'APPROVED');
-  static const PAUSED = PinPromotionSummaryStatus._(r'PAUSED');
-  static const PENDING = PinPromotionSummaryStatus._(r'PENDING');
-  static const REJECTED = PinPromotionSummaryStatus._(r'REJECTED');
-  static const ADVERTISER_DISABLED = PinPromotionSummaryStatus._(r'ADVERTISER_DISABLED');
-  static const ARCHIVED = PinPromotionSummaryStatus._(r'ARCHIVED');
-  static const DRAFT = PinPromotionSummaryStatus._(r'DRAFT');
-  static const DELETED_DRAFT = PinPromotionSummaryStatus._(r'DELETED_DRAFT');
-
-  /// List of all possible values in this [enum][PinPromotionSummaryStatus].
-  static const values = <PinPromotionSummaryStatus>[
-    APPROVED,
-    PAUSED,
-    PENDING,
-    REJECTED,
-    ADVERTISER_DISABLED,
-    ARCHIVED,
-    DRAFT,
-    DELETED_DRAFT,
-  ];
-
+  /// Returns the instance of [PinPromotionSummaryStatus] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static PinPromotionSummaryStatus? fromJson(dynamic value) => PinPromotionSummaryStatusTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [PinPromotionSummaryStatus]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<PinPromotionSummaryStatus> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PinPromotionSummaryStatus>[];
     if (json is List && json.isNotEmpty) {
@@ -67,9 +61,11 @@ class PinPromotionSummaryStatusTypeTransformer {
 
   const PinPromotionSummaryStatusTypeTransformer._();
 
-  String encode(PinPromotionSummaryStatus data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(PinPromotionSummaryStatus data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a PinPromotionSummaryStatus.
+  /// Returns the instance of [PinPromotionSummaryStatus] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -78,6 +74,9 @@ class PinPromotionSummaryStatusTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   PinPromotionSummaryStatus? decode(dynamic data, {bool allowNull = true}) {
+    if (data is PinPromotionSummaryStatus) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'APPROVED': return PinPromotionSummaryStatus.APPROVED;
@@ -97,7 +96,7 @@ class PinPromotionSummaryStatusTypeTransformer {
     return null;
   }
 
-  /// Singleton [PinPromotionSummaryStatusTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static PinPromotionSummaryStatusTypeTransformer? _instance;
 }
 

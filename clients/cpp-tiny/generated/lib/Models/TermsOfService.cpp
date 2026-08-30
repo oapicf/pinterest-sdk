@@ -127,7 +127,7 @@ TermsOfService::getAdAccountId()
 }
 
 void
-TermsOfService::setAdAccountId(std::string  ad_account_id)
+TermsOfService::setAdAccountId(std::string ad_account_id)
 {
 	this->ad_account_id = ad_account_id;
 }
@@ -139,7 +139,7 @@ TermsOfService::isHasAccepted()
 }
 
 void
-TermsOfService::setHasAccepted(bool  has_accepted)
+TermsOfService::setHasAccepted(bool has_accepted)
 {
 	this->has_accepted = has_accepted;
 }
@@ -151,7 +151,7 @@ TermsOfService::getHtml()
 }
 
 void
-TermsOfService::setHtml(std::string  html)
+TermsOfService::setHtml(std::string html)
 {
 	this->html = html;
 }
@@ -163,7 +163,7 @@ TermsOfService::getId()
 }
 
 void
-TermsOfService::setId(std::string  id)
+TermsOfService::setId(std::string id)
 {
 	this->id = id;
 }

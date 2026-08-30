@@ -1,21 +1,22 @@
 package api
 
 import model.Error
-import model.PromotionCreateRequest
-import model.PromotionResponse
-import model.PromotionUpdateRequest
+import model.PaginationOrder
+import model.Promotion
+import model.PromotionBatchUpdate
+import model.PromotionCreate
 import model.PromotionsList200Response
 import model.PromotionsResponse
 
 /**
   * Provides a default implementation for [[PromotionsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class PromotionsApiImpl extends PromotionsApi {
   /**
     * @inheritdoc
     */
-  override def promotionsCreate(adAccountId: String, promotionCreateRequest: List[PromotionCreateRequest]): PromotionsResponse = {
+  override def promotionsCreate(adAccountId: String, promotionCreate: List[PromotionCreate]): PromotionsResponse = {
     // TODO: Implement better logic
 
     PromotionsResponse(None)
@@ -24,34 +25,34 @@ class PromotionsApiImpl extends PromotionsApi {
   /**
     * @inheritdoc
     */
-  override def promotionsDelete(adAccountId: String, promotionId: String): Unit = {
+  override def promotionsDelete(promotionId: String, adAccountId: String): Promotion = {
     // TODO: Implement better logic
 
-    
+    Promotion("", None, None, None, "", None, None, None, "", PromotionType(), None, None, None)
   }
 
   /**
     * @inheritdoc
     */
-  override def promotionsGet(adAccountId: String, promotionId: String): PromotionResponse = {
+  override def promotionsGet(promotionId: String, adAccountId: String): Promotion = {
     // TODO: Implement better logic
 
-    PromotionResponse(None, None, None, None, None, None, None, None, None, None, None, None, None, Map.empty)
+    Promotion("", None, None, None, "", None, None, None, "", PromotionType(), None, None, None)
   }
 
   /**
     * @inheritdoc
     */
-  override def promotionsList(adAccountId: String, pageSize: Option[Int], order: Option[String], bookmark: Option[String]): PromotionsList200Response = {
+  override def promotionsList(adAccountId: String, bookmark: Option[String], pageSize: Option[Int], order: Option[PaginationOrder]): PromotionsList200Response = {
     // TODO: Implement better logic
 
-    PromotionsList200Response(None, List.empty[PromotionResponse])
+    PromotionsList200Response(None, List.empty[Promotion])
   }
 
   /**
     * @inheritdoc
     */
-  override def promotionsUpdate(adAccountId: String, promotionUpdateRequest: List[PromotionUpdateRequest]): PromotionsResponse = {
+  override def promotionsUpdate(adAccountId: String, promotionBatchUpdate: List[PromotionBatchUpdate]): PromotionsResponse = {
     // TODO: Implement better logic
 
     PromotionsResponse(None)

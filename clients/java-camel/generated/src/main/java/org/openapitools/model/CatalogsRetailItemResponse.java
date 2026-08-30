@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -9,37 +10,103 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemAttributes;
 import org.openapitools.model.Pin;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Object describing a retail item record
  */
 
 @Schema(name = "CatalogsRetailItemResponse", description = "Object describing a retail item record")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsRetailItemResponse implements ItemResponseOneOf {
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class CatalogsRetailItemResponse implements ItemResponse {
 
   private ItemAttributes attributes;
 
-  private CatalogsType catalogType;
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    RETAIL("RETAIL");
+
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
 
   private String itemId;
+
+  /**
+   * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+   */
+  public enum ItemResponseKindEnum {
+    RETAIL_ITEM("retail_item");
+
+    private final String value;
+
+    ItemResponseKindEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ItemResponseKindEnum fromValue(String value) {
+      for (ItemResponseKindEnum b : ItemResponseKindEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private ItemResponseKindEnum itemResponseKind;
 
   @Valid
   private JsonNullable<List<@Valid Pin>> pins = JsonNullable.<List<@Valid Pin>>undefined();
@@ -51,8 +118,9 @@ public class CatalogsRetailItemResponse implements ItemResponseOneOf {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailItemResponse(CatalogsType catalogType) {
+  public CatalogsRetailItemResponse(CatalogTypeEnum catalogType, ItemResponseKindEnum itemResponseKind) {
     this.catalogType = catalogType;
+    this.itemResponseKind = itemResponseKind;
   }
 
   public CatalogsRetailItemResponse attributes(ItemAttributes attributes) {
@@ -75,7 +143,7 @@ public class CatalogsRetailItemResponse implements ItemResponseOneOf {
     this.attributes = attributes;
   }
 
-  public CatalogsRetailItemResponse catalogType(CatalogsType catalogType) {
+  public CatalogsRetailItemResponse catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -84,14 +152,14 @@ public class CatalogsRetailItemResponse implements ItemResponseOneOf {
    * Get catalogType
    * @return catalogType
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -113,6 +181,26 @@ public class CatalogsRetailItemResponse implements ItemResponseOneOf {
 
   public void setItemId(String itemId) {
     this.itemId = itemId;
+  }
+
+  public CatalogsRetailItemResponse itemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+    return this;
+  }
+
+  /**
+   * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+   * @return itemResponseKind
+   */
+  @NotNull 
+  @Schema(name = "item_response_kind", description = "Discriminator literal identifying this leaf inside an `ItemResponse` payload.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("item_response_kind")
+  public ItemResponseKindEnum getItemResponseKind() {
+    return itemResponseKind;
+  }
+
+  public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
   }
 
   public CatalogsRetailItemResponse pins(List<@Valid Pin> pins) {
@@ -155,6 +243,7 @@ public class CatalogsRetailItemResponse implements ItemResponseOneOf {
     return Objects.equals(this.attributes, catalogsRetailItemResponse.attributes) &&
         Objects.equals(this.catalogType, catalogsRetailItemResponse.catalogType) &&
         Objects.equals(this.itemId, catalogsRetailItemResponse.itemId) &&
+        Objects.equals(this.itemResponseKind, catalogsRetailItemResponse.itemResponseKind) &&
         equalsNullable(this.pins, catalogsRetailItemResponse.pins);
   }
 
@@ -164,7 +253,7 @@ public class CatalogsRetailItemResponse implements ItemResponseOneOf {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, catalogType, itemId, hashCodeNullable(pins));
+    return Objects.hash(attributes, catalogType, itemId, itemResponseKind, hashCodeNullable(pins));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -181,6 +270,7 @@ public class CatalogsRetailItemResponse implements ItemResponseOneOf {
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -191,10 +281,7 @@ public class CatalogsRetailItemResponse implements ItemResponseOneOf {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

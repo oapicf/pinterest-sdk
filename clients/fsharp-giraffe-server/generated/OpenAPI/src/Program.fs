@@ -37,13 +37,16 @@ open CatalogFeedsApiHandlerParams
 open CatalogItemsApiHandlerParams
 open CatalogProductGroupsApiHandlerParams
 open CatalogReportsApiHandlerParams
+open CatalogSupplementalApiHandlerParams
 open CatalogsApiHandlerParams
+open ConversionDeletionRequestsApiHandlerParams
 open ConversionEqsApiHandlerParams
 open ConversionEventsApiHandlerParams
 open ConversionTagsApiHandlerParams
 open ConversionsApiHandlerParams
 open CustomerListUploadsApiHandlerParams
 open CustomerListsApiHandlerParams
+open CustomerSegmentApiHandlerParams
 open IntegrationsApiHandlerParams
 open KeywordsApiHandlerParams
 open LabelsApiHandlerParams
@@ -56,14 +59,16 @@ open NotificationApiHandlerParams
 open OauthApiHandlerParams
 open OrderLinesApiHandlerParams
 open PinsApiHandlerParams
-open ProductCategoriesApiHandlerParams
 open ProductGroupPromotionsApiHandlerParams
+open ProductTagsApiHandlerParams
 open PromotionsApiHandlerParams
 open ResourcesApiHandlerParams
+open SchedulesApiHandlerParams
 open SearchApiHandlerParams
 open TargetingTemplateApiHandlerParams
 open TermsApiHandlerParams
 open TermsOfServiceApiHandlerParams
+open TrendsApiHandlerParams
 open UserAccountApiHandlerParams
 open Giraffe
 
@@ -109,10 +114,15 @@ module App =
       HttpPost >=> routeBind<AdGroupsAudienceSizingPathParams> "/v5/ad_accounts/{ad_account_id}/ad_groups/audience_sizing"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  AdGroupsApiHandler.AdGroupsAudienceSizing x);
       HttpPost >=> routeBind<AdGroupsBidFloorGetPathParams> "/v5/ad_accounts/{ad_account_id}/bid_floor"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  AdGroupsApiHandler.AdGroupsBidFloorGet x);
       HttpPost >=> routeBind<AdGroupsCreatePathParams> "/v5/ad_accounts/{ad_account_id}/ad_groups"  (fun x -> requiresAuthentication authFailure >=>  AdGroupsApiHandler.AdGroupsCreate x);
+      HttpGet >=> routeBind<AdGroupsDynamicTitlesDownloadCsvPathParams> "/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/csv"  (fun x -> (fun x -> requiresAuthentication authFailure >=>  AdGroupsApiHandler.AdGroupsDynamicTitlesDownloadCsv x) x);
+      HttpGet >=> routeBind<AdGroupsDynamicTitlesGetStatusPathParams> "/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/status"  (fun x -> (fun x -> requiresAuthentication authFailure >=>  AdGroupsApiHandler.AdGroupsDynamicTitlesGetStatus x) x);
+      HttpGet >=> routeBind<AdGroupsDynamicTitlesGetUploadUrlPathParams> "/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/uploads"  (fun x -> (fun x -> requiresAuthentication authFailure >=>  AdGroupsApiHandler.AdGroupsDynamicTitlesGetUploadUrl x) x);
+      HttpPost >=> routeBind<AdGroupsDynamicTitlesProcessCsvPathParams> "/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles"  (fun x -> (fun x -> requiresAuthentication authFailure >=>  AdGroupsApiHandler.AdGroupsDynamicTitlesProcessCsv x) x);
       HttpGet >=> routeBind<AdGroupsGetPathParams> "/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}"  (fun x -> (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  AdGroupsApiHandler.AdGroupsGet x) x);
       HttpGet >=> routeBind<AdGroupsListPathParams> "/v5/ad_accounts/{ad_account_id}/ad_groups"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  AdGroupsApiHandler.AdGroupsList x);
       HttpGet >=> routeBind<AdGroupsTargetingAnalyticsGetPathParams> "/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  AdGroupsApiHandler.AdGroupsTargetingAnalyticsGet x);
       HttpPatch >=> routeBind<AdGroupsUpdatePathParams> "/v5/ad_accounts/{ad_account_id}/ad_groups"  (fun x -> requiresAuthentication authFailure >=>  AdGroupsApiHandler.AdGroupsUpdate x);
+      HttpGet >=> routeBind<GetAdGroupsByPromotionIdsListPathParams> "/v5/ad_accounts/{ad_account_id}/promotion_applied_entities"  (fun x -> requiresAuthentication authFailure >=>  AdGroupsApiHandler.GetAdGroupsByPromotionIdsList x);
       HttpPost >=> routeBind<AdPreviewsCreatePathParams> "/v5/ad_accounts/{ad_account_id}/ad_previews"  (fun x -> requiresAuthentication authFailure >=>  AdsApiHandler.AdPreviewsCreate x);
       HttpGet >=> routeBind<AdTargetingAnalyticsGetPathParams> "/v5/ad_accounts/{ad_account_id}/ads/targeting_analytics"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  AdsApiHandler.AdTargetingAnalyticsGet x);
       HttpGet >=> routeBind<AdsAnalyticsPathParams> "/v5/ad_accounts/{ad_account_id}/ads/analytics"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  AdsApiHandler.AdsAnalytics x);
@@ -120,6 +130,9 @@ module App =
       HttpGet >=> routeBind<AdsGetPathParams> "/v5/ad_accounts/{ad_account_id}/ads/{ad_id}"  (fun x -> (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  AdsApiHandler.AdsGet x) x);
       HttpGet >=> routeBind<AdsListPathParams> "/v5/ad_accounts/{ad_account_id}/ads"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  AdsApiHandler.AdsList x);
       HttpPatch >=> routeBind<AdsUpdatePathParams> "/v5/ad_accounts/{ad_account_id}/ads"  (fun x -> requiresAuthentication authFailure >=>  AdsApiHandler.AdsUpdate x);
+      HttpPost >=> routeBind<CampaignAdPreviewCreatePathParams> "/v5/ad_accounts/{ad_account_id}/campaign_ad_preview"  (fun x -> requiresAuthentication authFailure >=>  AdsApiHandler.CampaignAdPreviewCreate x);
+      HttpDelete >=> routeBind<CampaignAdPreviewDeletePathParams> "/v5/ad_accounts/{ad_account_id}/campaign_ad_preview"  (fun x -> requiresAuthentication authFailure >=>  AdsApiHandler.CampaignAdPreviewDelete x);
+      HttpGet >=> routeBind<CampaignAdPreviewReadPathParams> "/v5/ad_accounts/{ad_account_id}/campaign_ad_preview"  (fun x -> requiresAuthentication authFailure >=>  AdsApiHandler.CampaignAdPreviewRead x);
       HttpPost >=> route "/v5/advanced_auction/items/get" >=> requiresAuthentication authFailure >=>  AdvancedAuctionApiHandler.AdvancedAuctionItemsGetPost;
       HttpPost >=> route "/v5/advanced_auction/items/submit" >=> requiresAuthentication authFailure >=>  AdvancedAuctionApiHandler.AdvancedAuctionItemsSubmitPost;
       HttpGet >=> routeBind<AudienceInsightsGetPathParams> "/v5/ad_accounts/{ad_account_id}/audience_insights"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  AudienceInsightsApiHandler.AudienceInsightsGet x);
@@ -194,6 +207,7 @@ module App =
       HttpGet >=> routeBind<CampaignsGetPathParams> "/v5/ad_accounts/{ad_account_id}/campaigns/{campaign_id}"  (fun x -> (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  CampaignsApiHandler.CampaignsGet x) x);
       HttpGet >=> routeBind<CampaignsListPathParams> "/v5/ad_accounts/{ad_account_id}/campaigns"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  CampaignsApiHandler.CampaignsList x);
       HttpPatch >=> routeBind<CampaignsUpdatePathParams> "/v5/ad_accounts/{ad_account_id}/campaigns"  (fun x -> requiresAuthentication authFailure >=>  CampaignsApiHandler.CampaignsUpdate x);
+      HttpPost >=> routeBind<GetCampaignDeliveryEstimatesPathParams> "/v5/ad_accounts/{ad_account_id}/campaigns/delivery_estimates"  (fun x -> requiresAuthentication authFailure >=>  CampaignsApiHandler.GetCampaignDeliveryEstimates x);
       HttpGet >=> routeBind<FeedProcessingResultsListPathParams> "/v5/catalogs/feeds/{feed_id}/processing_results"  (fun x -> requiresAuthentication authFailure >=>  CatalogFeedsApiHandler.FeedProcessingResultsList x);
       HttpPost >=> route "/v5/catalogs/feeds" >=> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  CatalogFeedsApiHandler.FeedsCreate;
       HttpDelete >=> routeBind<FeedsDeletePathParams> "/v5/catalogs/feeds/{feed_id}"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  CatalogFeedsApiHandler.FeedsDelete x);
@@ -205,7 +219,7 @@ module App =
       HttpGet >=> routeBind<ItemsBatchGetPathParams> "/v5/catalogs/items/batch/{batch_id}"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  CatalogItemsApiHandler.ItemsBatchGet x);
       HttpPost >=> route "/v5/catalogs/items/batch" >=> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  CatalogItemsApiHandler.ItemsBatchPost;
       HttpPost >=> route "/v5/catalogs/items" >=> requiresAuthentication authFailure >=>  CatalogItemsApiHandler.ItemsPost;
-      HttpGet >=> routeBind<CatalogsProductGroupPinsListPathParams> "/v5/catalogs/product_groups/{product_group_id}/products"  (fun x -> requiresAuthentication authFailure >=>  CatalogProductGroupsApiHandler.CatalogsProductGroupPinsList x);
+      HttpGet >=> routeBind<CatalogsProductGroupPinsListPathParams> "/v5/catalogs/product_groups/{product_group_id}/products"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  CatalogProductGroupsApiHandler.CatalogsProductGroupPinsList x);
       HttpPost >=> route "/v5/catalogs/product_groups" >=> requiresAuthentication authFailure >=>  CatalogProductGroupsApiHandler.CatalogsProductGroupsCreate;
       HttpPost >=> route "/v5/catalogs/product_groups/multiple" >=> requiresAuthentication authFailure >=>  CatalogProductGroupsApiHandler.CatalogsProductGroupsCreateMany;
       HttpDelete >=> routeBind<CatalogsProductGroupsDeletePathParams> "/v5/catalogs/product_groups/{product_group_id}"  (fun x -> requiresAuthentication authFailure >=>  CatalogProductGroupsApiHandler.CatalogsProductGroupsDelete x);
@@ -218,9 +232,20 @@ module App =
       HttpPost >=> route "/v5/catalogs/reports" >=> requiresAuthentication authFailure >=>  CatalogReportsApiHandler.ReportsCreate;
       HttpGet >=> route "/v5/catalogs/reports" >=> requiresAuthentication authFailure >=>  CatalogReportsApiHandler.ReportsGet;
       HttpGet >=> route "/v5/catalogs/reports/stats" >=> requiresAuthentication authFailure >=>  CatalogReportsApiHandler.ReportsStats;
+      HttpPost >=> routeBind<CatalogsLocalInventoryItemsBatchOperatePathParams> "/v5/catalogs/{catalog_id}/local_inventory_items/batch"  (fun x -> requiresAuthentication authFailure >=>  CatalogSupplementalApiHandler.CatalogsLocalInventoryItemsBatchOperate x);
+      HttpPost >=> routeBind<CatalogsLocalInventoryItemsPostPathParams> "/v5/catalogs/{catalog_id}/local_inventory_items/query"  (fun x -> requiresAuthentication authFailure >=>  CatalogSupplementalApiHandler.CatalogsLocalInventoryItemsPost x);
+      HttpPost >=> routeBind<CatalogsLocalStoresCreatePathParams> "/v5/catalogs/{catalog_id}/local_stores"  (fun x -> requiresAuthentication authFailure >=>  CatalogSupplementalApiHandler.CatalogsLocalStoresCreate x);
+      HttpDelete >=> routeBind<CatalogsLocalStoresDeletePathParams> "/v5/catalogs/{catalog_id}/local_stores"  (fun x -> requiresAuthentication authFailure >=>  CatalogSupplementalApiHandler.CatalogsLocalStoresDelete x);
+      HttpGet >=> routeBind<CatalogsLocalStoresListPathParams> "/v5/catalogs/{catalog_id}/local_stores"  (fun x -> requiresAuthentication authFailure >=>  CatalogSupplementalApiHandler.CatalogsLocalStoresList x);
+      HttpPatch >=> routeBind<CatalogsLocalStoresUpdatePathParams> "/v5/catalogs/{catalog_id}/local_stores"  (fun x -> requiresAuthentication authFailure >=>  CatalogSupplementalApiHandler.CatalogsLocalStoresUpdate x);
+      HttpGet >=> routeBind<CatalogsSupplementalItemsBatchGetPathParams> "/v5/catalogs/{catalog_id}/supplemental_items/batch/{batch_id}"  (fun x -> (fun x -> requiresAuthentication authFailure >=>  CatalogSupplementalApiHandler.CatalogsSupplementalItemsBatchGet x) x);
       HttpGet >=> route "/v5/catalogs/available_filter_values" >=> requiresAuthentication authFailure >=>  CatalogsApiHandler.CatalogsAvailableFilterValues;
       HttpPost >=> route "/v5/catalogs" >=> requiresAuthentication authFailure >=>  CatalogsApiHandler.CatalogsCreate;
       HttpGet >=> route "/v5/catalogs" >=> requiresAuthentication authFailure >=>  CatalogsApiHandler.CatalogsList;
+      HttpPost >=> routeBind<ConversionDeletionRequestCreatePathParams> "/v5/ad_accounts/{ad_account_id}/conversion_deletion_requests"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ConversionDeletionRequestsApiHandler.ConversionDeletionRequestCreate x);
+      HttpDelete >=> routeBind<ConversionDeletionRequestDeletePathParams> "/v5/ad_accounts/{ad_account_id}/conversion_deletion_requests/{request_id}"  (fun x -> (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ConversionDeletionRequestsApiHandler.ConversionDeletionRequestDelete x) x);
+      HttpGet >=> routeBind<ConversionDeletionRequestGetPathParams> "/v5/ad_accounts/{ad_account_id}/conversion_deletion_requests/{request_id}"  (fun x -> (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ConversionDeletionRequestsApiHandler.ConversionDeletionRequestGet x) x);
+      HttpGet >=> routeBind<ConversionDeletionRequestListPathParams> "/v5/ad_accounts/{ad_account_id}/conversion_deletion_requests"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ConversionDeletionRequestsApiHandler.ConversionDeletionRequestList x);
       HttpGet >=> routeBind<ConversionEqsListPathParams> "/v5/ad_accounts/{ad_account_id}/conversion_eqs"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ConversionEqsApiHandler.ConversionEqsList x);
       HttpPost >=> routeBind<EventsCreatePathParams> "/v5/ad_accounts/{ad_account_id}/events"  (fun x -> requiresAuthentication authFailure >=>  >=>  ConversionEventsApiHandler.EventsCreate x);
       HttpPost >=> routeBind<ConversionTagsCreatePathParams> "/v5/ad_accounts/{ad_account_id}/conversion_tags"  (fun x -> requiresAuthentication authFailure >=>  ConversionTagsApiHandler.ConversionTagsCreate x);
@@ -228,7 +253,10 @@ module App =
       HttpGet >=> routeBind<ConversionTagsListPathParams> "/v5/ad_accounts/{ad_account_id}/conversion_tags"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ConversionTagsApiHandler.ConversionTagsList x);
       HttpGet >=> routeBind<OcpmEligibleConversionTagsGetPathParams> "/v5/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ConversionTagsApiHandler.OcpmEligibleConversionTagsGet x);
       HttpGet >=> routeBind<PageVisitConversionTagsGetPathParams> "/v5/ad_accounts/{ad_account_id}/conversion_tags/page_visit"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ConversionTagsApiHandler.PageVisitConversionTagsGet x);
+      HttpPost >=> routeBind<AdvertiserDefinedEventsCreatePathParams> "/v5/ad_accounts/{ad_account_id}/advertiser_defined_events"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ConversionsApiHandler.AdvertiserDefinedEventsCreate x);
+      HttpDelete >=> routeBind<AdvertiserDefinedEventsDeletePathParams> "/v5/ad_accounts/{ad_account_id}/advertiser_defined_events"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ConversionsApiHandler.AdvertiserDefinedEventsDelete x);
       HttpGet >=> routeBind<AdvertiserDefinedEventsGetPathParams> "/v5/ad_accounts/{ad_account_id}/advertiser_defined_events"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ConversionsApiHandler.AdvertiserDefinedEventsGet x);
+      HttpPatch >=> routeBind<AdvertiserDefinedEventsUpdatePathParams> "/v5/ad_accounts/{ad_account_id}/advertiser_defined_events"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ConversionsApiHandler.AdvertiserDefinedEventsUpdate x);
       HttpPost >=> routeBind<CustomerListUploadsCreatePathParams> "/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads"  (fun x -> (fun x -> requiresAuthentication authFailure >=>  CustomerListUploadsApiHandler.CustomerListUploadsCreate x) x);
       HttpGet >=> routeBind<CustomerListUploadsGetPathParams> "/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}"  (fun x -> (fun x -> (fun x -> requiresAuthentication authFailure >=>  CustomerListUploadsApiHandler.CustomerListUploadsGet x) x) x);
       HttpPost >=> routeBind<CustomerListUploadsRunPathParams> "/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run"  (fun x -> (fun x -> (fun x -> requiresAuthentication authFailure >=>  CustomerListUploadsApiHandler.CustomerListUploadsRun x) x) x);
@@ -236,6 +264,9 @@ module App =
       HttpGet >=> routeBind<CustomerListsGetPathParams> "/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}"  (fun x -> (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  CustomerListsApiHandler.CustomerListsGet x) x);
       HttpGet >=> routeBind<CustomerListsListPathParams> "/v5/ad_accounts/{ad_account_id}/customer_lists"  (fun x -> requiresAuthentication authFailure >=>  CustomerListsApiHandler.CustomerListsList x);
       HttpPatch >=> routeBind<CustomerListsUpdatePathParams> "/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}"  (fun x -> (fun x -> requiresAuthentication authFailure >=>  CustomerListsApiHandler.CustomerListsUpdate x) x);
+      HttpPost >=> routeBind<CustomerSegmentCreatePathParams> "/v5/ad_accounts/{ad_account_id}/customer_segments"  (fun x -> requiresAuthentication authFailure >=>  CustomerSegmentApiHandler.CustomerSegmentCreate x);
+      HttpGet >=> routeBind<CustomerSegmentListPathParams> "/v5/ad_accounts/{ad_account_id}/customer_segments"  (fun x -> requiresAuthentication authFailure >=>  CustomerSegmentApiHandler.CustomerSegmentList x);
+      HttpPatch >=> routeBind<CustomerSegmentUpdatePathParams> "/v5/ad_accounts/{ad_account_id}/customer_segments"  (fun x -> requiresAuthentication authFailure >=>  CustomerSegmentApiHandler.CustomerSegmentUpdate x);
       HttpDelete >=> routeBind<IntegrationsCommerceDelPathParams> "/v5/integrations/commerce/{external_business_id}"  (fun x -> requiresAuthentication authFailure >=>  IntegrationsApiHandler.IntegrationsCommerceDel x);
       HttpGet >=> routeBind<IntegrationsCommerceGetPathParams> "/v5/integrations/commerce/{external_business_id}"  (fun x -> requiresAuthentication authFailure >=>  IntegrationsApiHandler.IntegrationsCommerceGet x);
       HttpPatch >=> routeBind<IntegrationsCommercePatchPathParams> "/v5/integrations/commerce/{external_business_id}"  (fun x -> requiresAuthentication authFailure >=>  IntegrationsApiHandler.IntegrationsCommercePatch x);
@@ -248,8 +279,10 @@ module App =
       HttpGet >=> routeBind<KeywordsGetPathParams> "/v5/ad_accounts/{ad_account_id}/keywords"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  KeywordsApiHandler.KeywordsGet x);
       HttpPatch >=> routeBind<KeywordsUpdatePathParams> "/v5/ad_accounts/{ad_account_id}/keywords"  (fun x -> requiresAuthentication authFailure >=>  KeywordsApiHandler.KeywordsUpdate x);
       HttpGet >=> routeBind<TrendingKeywordsListPathParams> "/v5/trends/keywords/{region}/top/{trend_type}"  (fun x -> (fun x -> requiresAuthentication authFailure >=>  KeywordsApiHandler.TrendingKeywordsList x) x);
+      HttpPost >=> routeBind<LabelsApplyPathParams> "/v5/ad_accounts/{ad_account_id}/labels/{label_id}/apply"  (fun x -> (fun x -> requiresAuthentication authFailure >=>  LabelsApiHandler.LabelsApply x) x);
       HttpPost >=> routeBind<LabelsCreatePathParams> "/v5/ad_accounts/{ad_account_id}/labels"  (fun x -> requiresAuthentication authFailure >=>  LabelsApiHandler.LabelsCreate x);
       HttpGet >=> routeBind<LabelsListPathParams> "/v5/ad_accounts/{ad_account_id}/labels"  (fun x -> requiresAuthentication authFailure >=>  LabelsApiHandler.LabelsList x);
+      HttpPost >=> routeBind<LabelsRemovePathParams> "/v5/ad_accounts/{ad_account_id}/labels/{label_id}/remove"  (fun x -> (fun x -> requiresAuthentication authFailure >=>  LabelsApiHandler.LabelsRemove x) x);
       HttpPatch >=> routeBind<LabelsUpdatePathParams> "/v5/ad_accounts/{ad_account_id}/labels"  (fun x -> requiresAuthentication authFailure >=>  LabelsApiHandler.LabelsUpdate x);
       HttpDelete >=> routeBind<AdAccountsSubscriptionsDelByIdPathParams> "/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}"  (fun x -> (fun x -> requiresAuthentication authFailure >=>  LeadAdsApiHandler.AdAccountsSubscriptionsDelById x) x);
       HttpGet >=> routeBind<AdAccountsSubscriptionsGetByIdPathParams> "/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}"  (fun x -> (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  LeadAdsApiHandler.AdAccountsSubscriptionsGetById x) x);
@@ -280,14 +313,14 @@ module App =
       HttpGet >=> route "/v5/pins" >=> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  PinsApiHandler.PinsList;
       HttpPost >=> routeBind<PinsSavePathParams> "/v5/pins/{pin_id}/save"  (fun x -> requiresAuthentication authFailure >=>  PinsApiHandler.PinsSave x);
       HttpPatch >=> routeBind<PinsUpdatePathParams> "/v5/pins/{pin_id}"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  PinsApiHandler.PinsUpdate x);
-      HttpGet >=> route "/v5/trends/topics/featured" >=> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ProductCategoriesApiHandler.TrendsFeaturedTopicsList;
-      HttpGet >=> route "/v5/trends/product_categories/details" >=> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ProductCategoriesApiHandler.TrendsProductCategoriesDetailsList;
-      HttpGet >=> route "/v5/trends/product_categories/trending" >=> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ProductCategoriesApiHandler.TrendsProductCategoriesTrendingList;
       HttpPost >=> routeBind<ProductGroupPromotionsCreatePathParams> "/v5/ad_accounts/{ad_account_id}/product_group_promotions"  (fun x -> requiresAuthentication authFailure >=>  ProductGroupPromotionsApiHandler.ProductGroupPromotionsCreate x);
       HttpGet >=> routeBind<ProductGroupPromotionsGetPathParams> "/v5/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}"  (fun x -> (fun x -> requiresAuthentication authFailure >=>  ProductGroupPromotionsApiHandler.ProductGroupPromotionsGet x) x);
       HttpGet >=> routeBind<ProductGroupPromotionsListPathParams> "/v5/ad_accounts/{ad_account_id}/product_group_promotions"  (fun x -> requiresAuthentication authFailure >=>  ProductGroupPromotionsApiHandler.ProductGroupPromotionsList x);
       HttpPatch >=> routeBind<ProductGroupPromotionsUpdatePathParams> "/v5/ad_accounts/{ad_account_id}/product_group_promotions"  (fun x -> requiresAuthentication authFailure >=>  ProductGroupPromotionsApiHandler.ProductGroupPromotionsUpdate x);
       HttpGet >=> routeBind<ProductGroupsAnalyticsPathParams> "/v5/ad_accounts/{ad_account_id}/product_groups/analytics"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ProductGroupPromotionsApiHandler.ProductGroupsAnalytics x);
+      HttpPost >=> routeBind<ProductTagsBulkAddPathParams> "/v5/pins/{pin_id}/product_tags"  (fun x -> requiresAuthentication authFailure >=>  ProductTagsApiHandler.ProductTagsBulkAdd x);
+      HttpPost >=> routeBind<ProductTagsBulkDeletePathParams> "/v5/pins/{pin_id}/product_tags/bulk-delete"  (fun x -> requiresAuthentication authFailure >=>  ProductTagsApiHandler.ProductTagsBulkDelete x);
+      HttpGet >=> routeBind<ProductTagsListPathParams> "/v5/pins/{pin_id}/product_tags"  (fun x -> requiresAuthentication authFailure >=>  ProductTagsApiHandler.ProductTagsList x);
       HttpPost >=> routeBind<PromotionsCreatePathParams> "/v5/ad_accounts/{ad_account_id}/promotions"  (fun x -> requiresAuthentication authFailure >=>  PromotionsApiHandler.PromotionsCreate x);
       HttpDelete >=> routeBind<PromotionsDeletePathParams> "/v5/ad_accounts/{ad_account_id}/promotions/{promotion_id}"  (fun x -> (fun x -> requiresAuthentication authFailure >=>  PromotionsApiHandler.PromotionsDelete x) x);
       HttpGet >=> routeBind<PromotionsGetPathParams> "/v5/ad_accounts/{ad_account_id}/promotions/{promotion_id}"  (fun x -> (fun x -> requiresAuthentication authFailure >=>  PromotionsApiHandler.PromotionsGet x) x);
@@ -299,6 +332,9 @@ module App =
       HttpGet >=> route "/v5/resources/lead_form_questions" >=> requiresAuthentication authFailure >=>  ResourcesApiHandler.LeadFormQuestionsGet;
       HttpGet >=> route "/v5/resources/metrics_ready_state" >=> requiresAuthentication authFailure >=>  ResourcesApiHandler.MetricsReadyStateGet;
       HttpGet >=> routeBind<TargetingOptionsGetPathParams> "/v5/resources/targeting/{targeting_type}"  (fun x -> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  ResourcesApiHandler.TargetingOptionsGet x);
+      HttpPost >=> routeBind<SchedulesCreatePathParams> "/v5/ad_accounts/{ad_account_id}/schedules"  (fun x -> requiresAuthentication authFailure >=>  SchedulesApiHandler.SchedulesCreate x);
+      HttpGet >=> routeBind<SchedulesListPathParams> "/v5/ad_accounts/{ad_account_id}/schedules"  (fun x -> requiresAuthentication authFailure >=>  SchedulesApiHandler.SchedulesList x);
+      HttpPatch >=> routeBind<SchedulesUpdatePathParams> "/v5/ad_accounts/{ad_account_id}/schedules"  (fun x -> requiresAuthentication authFailure >=>  SchedulesApiHandler.SchedulesUpdate x);
       HttpGet >=> route "/v5/search/partner/pins" >=> requiresAuthentication authFailure >=>  SearchApiHandler.SearchPartnerPins;
       HttpGet >=> route "/v5/search/boards" >=> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  SearchApiHandler.SearchUserBoardsGet;
       HttpGet >=> route "/v5/search/pins" >=> requiresAuthentication authFailure >=>  SearchApiHandler.SearchUserPinsList;
@@ -308,6 +344,10 @@ module App =
       HttpGet >=> route "/v5/terms/related" >=> requiresAuthentication authFailure >=>  TermsApiHandler.TermsRelatedList;
       HttpGet >=> route "/v5/terms/suggested" >=> requiresAuthentication authFailure >=>  TermsApiHandler.TermsSuggestedList;
       HttpGet >=> routeBind<TermsOfServiceGetPathParams> "/v5/ad_accounts/{ad_account_id}/terms_of_service"  (fun x -> requiresAuthentication authFailure >=>  TermsOfServiceApiHandler.TermsOfServiceGet x);
+      HttpGet >=> route "/v5/trends/editorial_articles" >=> requiresAuthentication authFailure >=>  TrendsApiHandler.TrendsEditorialArticlesList;
+      HttpGet >=> route "/v5/trends/topics/featured" >=> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  TrendsApiHandler.TrendsFeaturedTopicsList;
+      HttpGet >=> route "/v5/trends/product_categories/details" >=> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  TrendsApiHandler.TrendsProductCategoriesDetailsList;
+      HttpGet >=> route "/v5/trends/product_categories/trending" >=> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  TrendsApiHandler.TrendsProductCategoriesTrendingList;
       HttpGet >=> route "/v5/user_account/following/boards" >=> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  UserAccountApiHandler.BoardsUserFollowsList;
       HttpPost >=> routeBind<FollowUserUpdatePathParams> "/v5/user_account/following/{username}"  (fun x -> requiresAuthentication authFailure >=>  UserAccountApiHandler.FollowUserUpdate x);
       HttpGet >=> route "/v5/user_account/followers" >=> requiresAuthentication authFailure >=> requiresAuthentication authFailure >=>  UserAccountApiHandler.FollowersList;

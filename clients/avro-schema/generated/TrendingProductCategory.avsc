@@ -20,6 +20,11 @@
       "doc": "Relative volume percentage"
     },
     {
+      "name": "pinterest_product_category_id",
+      "type": "int",
+      "doc": "Pinterest Product Category Id"
+    },
+    {
       "name": "product_category",
       "type": "string",
       "doc": "Product Category Name"
@@ -28,7 +33,7 @@
       "name": "verticals",
       "type": ["null", {
         "type": "array",
-        "items": "model.VerticalProductCategory"
+        "items": "string"
       }],
       "doc": "Vertical name associated with the product category",
       "default": null

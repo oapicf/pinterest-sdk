@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | **String** |  | [optional] 
-**Items** | [**BoardSection[]**](BoardSection.md) | Board sections | 
+**Items** | [**BoardSection[]**](BoardSection.md) |  | 
 
 ## Examples
 

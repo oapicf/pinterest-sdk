@@ -7,6 +7,7 @@ goog.provide('API.Client.CampaignAudienceMultipliers');
 API.Client.CampaignAudienceMultipliers = function() {}
 
 /**
+ * Audience ID for the multiplier.
  * @type {!string}
  * @export
  */

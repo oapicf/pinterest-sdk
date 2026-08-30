@@ -65,7 +65,7 @@ HotelIdFilter::getHOTELID()
 }
 
 void
-HotelIdFilter::setHOTELID(CatalogsProductGroupMultipleStringCriteria  hOTEL_ID)
+HotelIdFilter::setHOTELID(CatalogsProductGroupMultipleStringCriteria hOTEL_ID)
 {
 	this->hOTEL_ID = hOTEL_ID;
 }

@@ -21,24 +21,25 @@ import org.openapitools.model.GoogleProductCategory3Filter;
 import org.openapitools.model.GoogleProductCategory4Filter;
 import org.openapitools.model.GoogleProductCategory5Filter;
 import org.openapitools.model.GoogleProductCategory6Filter;
+import org.openapitools.model.LinkFilter;
 import org.openapitools.model.MediaTypeFilter;
 import org.openapitools.model.TitleKeywordsFilter;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsCreativeAssetsProductGroupFilterKeys
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsProductGroupFilterKeys {
 
   private CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID;
@@ -71,6 +72,8 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
 
   private CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS;
 
+  private CatalogsProductGroupFilterOperatorTypeCriteria LINK;
+
   public CatalogsCreativeAssetsProductGroupFilterKeys() {
     super();
   }
@@ -78,7 +81,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsCreativeAssetsProductGroupFilterKeys(CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_6, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_5, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_4, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_3, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_2, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_1, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0, CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE, CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS) {
+  public CatalogsCreativeAssetsProductGroupFilterKeys(CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_6, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_5, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_4, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_3, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_2, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_1, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0, CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE, CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS, CatalogsProductGroupFilterOperatorTypeCriteria LINK) {
     this.CREATIVE_ASSETS_ID = CREATIVE_ASSETS_ID;
     this.CUSTOM_LABEL_0 = CUSTOM_LABEL_0;
     this.CUSTOM_LABEL_1 = CUSTOM_LABEL_1;
@@ -94,6 +97,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     this.GOOGLE_PRODUCT_CATEGORY_0 = GOOGLE_PRODUCT_CATEGORY_0;
     this.MEDIA_TYPE = MEDIA_TYPE;
     this.TITLE_KEYWORDS = TITLE_KEYWORDS;
+    this.LINK = LINK;
   }
 
   public CatalogsCreativeAssetsProductGroupFilterKeys CREATIVE_ASSETS_ID(CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID) {
@@ -112,6 +116,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return CREATIVE_ASSETS_ID;
   }
 
+  @JsonProperty("CREATIVE_ASSETS_ID")
   public void setCREATIVEASSETSID(CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID) {
     this.CREATIVE_ASSETS_ID = CREATIVE_ASSETS_ID;
   }
@@ -132,6 +137,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return CUSTOM_LABEL_0;
   }
 
+  @JsonProperty("CUSTOM_LABEL_0")
   public void setCUSTOMLABEL0(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0) {
     this.CUSTOM_LABEL_0 = CUSTOM_LABEL_0;
   }
@@ -152,6 +158,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return CUSTOM_LABEL_1;
   }
 
+  @JsonProperty("CUSTOM_LABEL_1")
   public void setCUSTOMLABEL1(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1) {
     this.CUSTOM_LABEL_1 = CUSTOM_LABEL_1;
   }
@@ -172,6 +179,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return CUSTOM_LABEL_2;
   }
 
+  @JsonProperty("CUSTOM_LABEL_2")
   public void setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2) {
     this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
   }
@@ -192,6 +200,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return CUSTOM_LABEL_3;
   }
 
+  @JsonProperty("CUSTOM_LABEL_3")
   public void setCUSTOMLABEL3(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3) {
     this.CUSTOM_LABEL_3 = CUSTOM_LABEL_3;
   }
@@ -212,6 +221,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return CUSTOM_LABEL_4;
   }
 
+  @JsonProperty("CUSTOM_LABEL_4")
   public void setCUSTOMLABEL4(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4) {
     this.CUSTOM_LABEL_4 = CUSTOM_LABEL_4;
   }
@@ -232,6 +242,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return GOOGLE_PRODUCT_CATEGORY_6;
   }
 
+  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_6")
   public void setGOOGLEPRODUCTCATEGORY6(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_6) {
     this.GOOGLE_PRODUCT_CATEGORY_6 = GOOGLE_PRODUCT_CATEGORY_6;
   }
@@ -252,6 +263,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return GOOGLE_PRODUCT_CATEGORY_5;
   }
 
+  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_5")
   public void setGOOGLEPRODUCTCATEGORY5(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_5) {
     this.GOOGLE_PRODUCT_CATEGORY_5 = GOOGLE_PRODUCT_CATEGORY_5;
   }
@@ -272,6 +284,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return GOOGLE_PRODUCT_CATEGORY_4;
   }
 
+  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_4")
   public void setGOOGLEPRODUCTCATEGORY4(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_4) {
     this.GOOGLE_PRODUCT_CATEGORY_4 = GOOGLE_PRODUCT_CATEGORY_4;
   }
@@ -292,6 +305,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return GOOGLE_PRODUCT_CATEGORY_3;
   }
 
+  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_3")
   public void setGOOGLEPRODUCTCATEGORY3(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_3) {
     this.GOOGLE_PRODUCT_CATEGORY_3 = GOOGLE_PRODUCT_CATEGORY_3;
   }
@@ -312,6 +326,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return GOOGLE_PRODUCT_CATEGORY_2;
   }
 
+  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_2")
   public void setGOOGLEPRODUCTCATEGORY2(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_2) {
     this.GOOGLE_PRODUCT_CATEGORY_2 = GOOGLE_PRODUCT_CATEGORY_2;
   }
@@ -332,6 +347,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return GOOGLE_PRODUCT_CATEGORY_1;
   }
 
+  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_1")
   public void setGOOGLEPRODUCTCATEGORY1(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_1) {
     this.GOOGLE_PRODUCT_CATEGORY_1 = GOOGLE_PRODUCT_CATEGORY_1;
   }
@@ -352,6 +368,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return GOOGLE_PRODUCT_CATEGORY_0;
   }
 
+  @JsonProperty("GOOGLE_PRODUCT_CATEGORY_0")
   public void setGOOGLEPRODUCTCATEGORY0(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0) {
     this.GOOGLE_PRODUCT_CATEGORY_0 = GOOGLE_PRODUCT_CATEGORY_0;
   }
@@ -372,6 +389,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return MEDIA_TYPE;
   }
 
+  @JsonProperty("MEDIA_TYPE")
   public void setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE) {
     this.MEDIA_TYPE = MEDIA_TYPE;
   }
@@ -392,8 +410,30 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     return TITLE_KEYWORDS;
   }
 
+  @JsonProperty("TITLE_KEYWORDS")
   public void setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS) {
     this.TITLE_KEYWORDS = TITLE_KEYWORDS;
+  }
+
+  public CatalogsCreativeAssetsProductGroupFilterKeys LINK(CatalogsProductGroupFilterOperatorTypeCriteria LINK) {
+    this.LINK = LINK;
+    return this;
+  }
+
+  /**
+   * Get LINK
+   * @return LINK
+   */
+  @NotNull @Valid 
+  @Schema(name = "LINK", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("LINK")
+  public CatalogsProductGroupFilterOperatorTypeCriteria getLINK() {
+    return LINK;
+  }
+
+  @JsonProperty("LINK")
+  public void setLINK(CatalogsProductGroupFilterOperatorTypeCriteria LINK) {
+    this.LINK = LINK;
   }
 
   @Override
@@ -419,12 +459,13 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
         Objects.equals(this.GOOGLE_PRODUCT_CATEGORY_1, catalogsCreativeAssetsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_1) &&
         Objects.equals(this.GOOGLE_PRODUCT_CATEGORY_0, catalogsCreativeAssetsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_0) &&
         Objects.equals(this.MEDIA_TYPE, catalogsCreativeAssetsProductGroupFilterKeys.MEDIA_TYPE) &&
-        Objects.equals(this.TITLE_KEYWORDS, catalogsCreativeAssetsProductGroupFilterKeys.TITLE_KEYWORDS);
+        Objects.equals(this.TITLE_KEYWORDS, catalogsCreativeAssetsProductGroupFilterKeys.TITLE_KEYWORDS) &&
+        Objects.equals(this.LINK, catalogsCreativeAssetsProductGroupFilterKeys.LINK);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(CREATIVE_ASSETS_ID, CUSTOM_LABEL_0, CUSTOM_LABEL_1, CUSTOM_LABEL_2, CUSTOM_LABEL_3, CUSTOM_LABEL_4, GOOGLE_PRODUCT_CATEGORY_6, GOOGLE_PRODUCT_CATEGORY_5, GOOGLE_PRODUCT_CATEGORY_4, GOOGLE_PRODUCT_CATEGORY_3, GOOGLE_PRODUCT_CATEGORY_2, GOOGLE_PRODUCT_CATEGORY_1, GOOGLE_PRODUCT_CATEGORY_0, MEDIA_TYPE, TITLE_KEYWORDS);
+    return Objects.hash(CREATIVE_ASSETS_ID, CUSTOM_LABEL_0, CUSTOM_LABEL_1, CUSTOM_LABEL_2, CUSTOM_LABEL_3, CUSTOM_LABEL_4, GOOGLE_PRODUCT_CATEGORY_6, GOOGLE_PRODUCT_CATEGORY_5, GOOGLE_PRODUCT_CATEGORY_4, GOOGLE_PRODUCT_CATEGORY_3, GOOGLE_PRODUCT_CATEGORY_2, GOOGLE_PRODUCT_CATEGORY_1, GOOGLE_PRODUCT_CATEGORY_0, MEDIA_TYPE, TITLE_KEYWORDS, LINK);
   }
 
   @Override
@@ -446,6 +487,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
     sb.append("    GOOGLE_PRODUCT_CATEGORY_0: ").append(toIndentedString(GOOGLE_PRODUCT_CATEGORY_0)).append("\n");
     sb.append("    MEDIA_TYPE: ").append(toIndentedString(MEDIA_TYPE)).append("\n");
     sb.append("    TITLE_KEYWORDS: ").append(toIndentedString(TITLE_KEYWORDS)).append("\n");
+    sb.append("    LINK: ").append(toIndentedString(LINK)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -454,11 +496,8 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

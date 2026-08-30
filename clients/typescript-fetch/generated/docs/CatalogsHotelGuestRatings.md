@@ -1,7 +1,6 @@
 
 # CatalogsHotelGuestRatings
 
-If specified, you must provide all properties
 
 ## Properties
 

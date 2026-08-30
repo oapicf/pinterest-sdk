@@ -12,7 +12,7 @@ import javax.validation.Valid;
 /**
  * Request object to list products for a given retail catalog_id and product group filter.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsRetailListProductsByCatalogBasedFilterRequest   {
   @JsonProperty("catalog_id")
@@ -79,7 +79,7 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest   {
   }
 
    /**
-   * Catalog id pertaining to the retail product group.
+   * Catalog ID pertaining to the product group.
    * @return catalogId
   **/
   public String getCatalogId() {
@@ -200,10 +200,7 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

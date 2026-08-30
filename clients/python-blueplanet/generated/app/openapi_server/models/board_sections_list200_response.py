@@ -73,7 +73,6 @@ class BoardSectionsList200Response(Model):
     def items(self) -> List[BoardSection]:
         """Gets the items of this BoardSectionsList200Response.
 
-        Board sections  # noqa: E501
 
         :return: The items of this BoardSectionsList200Response.
         :rtype: List[BoardSection]
@@ -84,7 +83,6 @@ class BoardSectionsList200Response(Model):
     def items(self, items: List[BoardSection]):
         """Sets the items of this BoardSectionsList200Response.
 
-        Board sections  # noqa: E501
 
         :param items: The items of this BoardSectionsList200Response.
         :type items: List[BoardSection]

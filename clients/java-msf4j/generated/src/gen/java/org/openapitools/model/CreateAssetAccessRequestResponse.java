@@ -10,28 +10,27 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CreateAssetAccessRequestErrorMessageInner;
+import org.openapitools.model.AssetAccessRequestError;
 
 /**
  * CreateAssetAccessRequestResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CreateAssetAccessRequestResponse   {
   @JsonProperty("exceptions")
-  private List<@Valid CreateAssetAccessRequestErrorMessageInner> exceptions = null;
+  private List<@Valid AssetAccessRequestError> exceptions = null;
 
   @JsonProperty("invites")
   private Map<String, String> invites = null;
 
-  public CreateAssetAccessRequestResponse exceptions(List<@Valid CreateAssetAccessRequestErrorMessageInner> exceptions) {
+  public CreateAssetAccessRequestResponse exceptions(List<@Valid AssetAccessRequestError> exceptions) {
     this.exceptions = exceptions;
     return this;
   }
 
-  public CreateAssetAccessRequestResponse addExceptionsItem(CreateAssetAccessRequestErrorMessageInner exceptionsItem) {
+  public CreateAssetAccessRequestResponse addExceptionsItem(AssetAccessRequestError exceptionsItem) {
     if (this.exceptions == null) {
-      this.exceptions = ;
+      this.exceptions = new ArrayList<>();
     }
     this.exceptions.add(exceptionsItem);
     return this;
@@ -42,11 +41,11 @@ public class CreateAssetAccessRequestResponse   {
    * @return exceptions
   **/
   @ApiModelProperty(value = "A list of errors associated with the asset access requests. Will be returned if there is an error.")
-  public List<@Valid CreateAssetAccessRequestErrorMessageInner> getExceptions() {
+  public List<@Valid AssetAccessRequestError> getExceptions() {
     return exceptions;
   }
 
-  public void setExceptions(List<@Valid CreateAssetAccessRequestErrorMessageInner> exceptions) {
+  public void setExceptions(List<@Valid AssetAccessRequestError> exceptions) {
     this.exceptions = exceptions;
   }
 
@@ -57,17 +56,17 @@ public class CreateAssetAccessRequestResponse   {
 
   public CreateAssetAccessRequestResponse putInvitesItem(String key, String invitesItem) {
     if (this.invites == null) {
-      this.invites = ;
+      this.invites = new HashMap<>();
     }
     this.invites.put(key, invitesItem);
     return this;
   }
 
    /**
-   * Get invites
+   * An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
    * @return invites
   **/
-  @ApiModelProperty(example = "{\"766456567741825556\":\"5349280584552211583\",\"733242520489967216\":\"5349280584552211845\"}", value = "")
+  @ApiModelProperty(example = "{\"766456567741825556\":\"5349280584552211583\",\"733242520489967216\":\"5349280584552211845\"}", value = "An object mapping each partner id to the asset access request id. Only one request id is returned per partner.")
   public Map<String, String> getInvites() {
     return invites;
   }
@@ -111,10 +110,7 @@ public class CreateAssetAccessRequestResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

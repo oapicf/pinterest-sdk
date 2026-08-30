@@ -46,7 +46,7 @@ Name | Type | Description  | Required | Notes
 
 ## cancel_invites_or_requests
 
-> models::DeleteInvitesResultsResponseArray cancel_invites_or_requests(business_id, cancel_invites_body)
+> models::CancelInvitesResponse cancel_invites_or_requests(business_id, cancel_invites_request)
 Cancel invites/requests
 
 Cancel membership/partnership invites and/or requests.
@@ -57,11 +57,11 @@ Cancel membership/partnership invites and/or requests.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **business_id** | **String** | Unique identifier of the requesting business. | [required] |
-**cancel_invites_body** | [**CancelInvitesBody**](CancelInvitesBody.md) | A list with invite ids | [required] |
+**cancel_invites_request** | [**CancelInvitesRequest**](CancelInvitesRequest.md) |  | [required] |
 
 ### Return type
 
-[**models::DeleteInvitesResultsResponseArray**](DeleteInvitesResultsResponseArray.md)
+[**models::CancelInvitesResponse**](CancelInvitesResponse.md)
 
 ### Authorization
 
@@ -88,7 +88,7 @@ Assign asset permissions information to an existing invite/request. Can be used 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **business_id** | **String** | Unique identifier of the requesting business. | [required] |
-**create_asset_invites_request** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md) | A list of invites/requests together with the asset permissions to be assigned to the invite/request.  | [required] |
+**create_asset_invites_request** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md) |  | [required] |
 
 ### Return type
 
@@ -119,7 +119,7 @@ Create batch invites or requests. Can create batch invites or requests as descri
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **business_id** | **String** | Unique identifier of the requesting business. | [required] |
-**create_membership_or_partnership_invites_body** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md) | An object with the properties: invite_type, partners, members, business_role | [required] |
+**create_membership_or_partnership_invites_body** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md) |  | [required] |
 
 ### Return type
 
@@ -151,10 +151,10 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **business_id** | **String** | Unique identifier of the requesting business. | [required] |
 **is_member** | Option<**bool**> | A boolean field to indicate whether the invite is to create a partnership or a membership. |  |[default to true]
-**invite_status** | Option<[**Vec<String>**](String.md)> | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. |  |
-**invite_type** | Option<[**InviteType**](.md)> | Invite type to filter invites by. Only invites of the specified type will be returned. |  |
+**invite_status** | Option<[**Vec<models::InviteFilterStatus>**](Models__InviteFilterStatus.md)> | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. |  |
+**invite_type** | Option<[**InviteType**](InviteType.md)> | Invite type to filter invites by. Only invites of the specified type will be returned. |  |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
 ### Return type
 

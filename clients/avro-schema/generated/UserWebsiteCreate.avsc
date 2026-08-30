@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "UserWebsiteCreate",
+  "fields": [
+    {
+      "name": "verification_method",
+      "type": ["model.WebsiteVerificationMethod", "null"],
+      "doc": "Method used to verify website ownership.",
+      "default": METATAG
+    },
+    {
+      "name": "website",
+      "type": ["null", "string"],
+      "doc": "Website with path or domain only",
+      "default": null
+    }
+  ]
+
+}

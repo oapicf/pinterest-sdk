@@ -52,21 +52,21 @@ public:
 
 	/*! \brief Set Unique identifier of a business asset.
 	 */
-	void setAssetId(std::string  asset_id);
+	void setAssetId(std::string asset_id);
 	/*! \brief Get Unique identifier of the business member with asset access.
 	 */
 	std::string getMemberId();
 
 	/*! \brief Set Unique identifier of the business member with asset access.
 	 */
-	void setMemberId(std::string  member_id);
+	void setMemberId(std::string member_id);
 	/*! \brief Get Permission levels member or partner has on an asset.
 	 */
 	std::list<std::string> getPermissions();
 
 	/*! \brief Set Permission levels member or partner has on an asset.
 	 */
-	void setPermissions(std::list <std::string> permissions);
+	void setPermissions(std::list<std::string> permissions);
 
 
     private:

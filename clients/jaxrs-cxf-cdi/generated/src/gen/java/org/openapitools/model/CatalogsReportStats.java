@@ -28,10 +28,20 @@ import java.util.Objects;
 
 public class CatalogsReportStats   {
   
+  private String catalogId;
+
+  private Integer code;
+
+  private String codeLabel;
+
+  private String message;
+
+  private Integer occurrences;
+
 
 public enum ReportTypeEnum {
 
-    @JsonProperty("FEED_INGESTION_ISSUES") FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), @JsonProperty("DISTRIBUTION_ISSUES") DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES"));
+    @JsonProperty("DISTRIBUTION_ISSUES") DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES"));
 
 
     private String value;
@@ -60,16 +70,6 @@ public enum ReportTypeEnum {
 }
 
   private ReportTypeEnum reportType;
-
-  private String catalogId;
-
-  private Integer code;
-
-  private String codeLabel;
-
-  private String message;
-
-  private Integer occurrences;
 
 
 public enum SeverityEnum {
@@ -107,25 +107,6 @@ public enum SeverityEnum {
   private Boolean ineligibleForAds;
 
   private Boolean ineligibleForOrganic;
-
-  /**
-   **/
-  public CatalogsReportStats reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("report_type")
-  @NotNull
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
-
 
   /**
    * ID of the catalog entity.
@@ -223,6 +204,24 @@ public enum SeverityEnum {
 
 
   /**
+   **/
+  public CatalogsReportStats reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+
+  /**
    * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
    **/
   public CatalogsReportStats severity(SeverityEnum severity) {
@@ -289,12 +288,12 @@ public enum SeverityEnum {
       return false;
     }
     CatalogsReportStats catalogsReportStats = (CatalogsReportStats) o;
-    return Objects.equals(this.reportType, catalogsReportStats.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportStats.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsReportStats.catalogId) &&
         Objects.equals(this.code, catalogsReportStats.code) &&
         Objects.equals(this.codeLabel, catalogsReportStats.codeLabel) &&
         Objects.equals(this.message, catalogsReportStats.message) &&
         Objects.equals(this.occurrences, catalogsReportStats.occurrences) &&
+        Objects.equals(this.reportType, catalogsReportStats.reportType) &&
         Objects.equals(this.severity, catalogsReportStats.severity) &&
         Objects.equals(this.ineligibleForAds, catalogsReportStats.ineligibleForAds) &&
         Objects.equals(this.ineligibleForOrganic, catalogsReportStats.ineligibleForOrganic);
@@ -302,7 +301,7 @@ public enum SeverityEnum {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, severity, ineligibleForAds, ineligibleForOrganic);
+    return Objects.hash(catalogId, code, codeLabel, message, occurrences, reportType, severity, ineligibleForAds, ineligibleForOrganic);
   }
 
   @Override
@@ -310,12 +309,12 @@ public enum SeverityEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("    ineligibleForAds: ").append(toIndentedString(ineligibleForAds)).append("\n");
     sb.append("    ineligibleForOrganic: ").append(toIndentedString(ineligibleForOrganic)).append("\n");
@@ -328,10 +327,7 @@ public enum SeverityEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

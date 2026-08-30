@@ -47,6 +47,7 @@ class CampaignAudienceMultipliers(Model):
     def audience_id(self) -> str:
         """Gets the audience_id of this CampaignAudienceMultipliers.
 
+        Audience ID for the multiplier.  # noqa: E501
 
         :return: The audience_id of this CampaignAudienceMultipliers.
         :rtype: str
@@ -57,6 +58,7 @@ class CampaignAudienceMultipliers(Model):
     def audience_id(self, audience_id: str):
         """Sets the audience_id of this CampaignAudienceMultipliers.
 
+        Audience ID for the multiplier.  # noqa: E501
 
         :param audience_id: The audience_id of this CampaignAudienceMultipliers.
         :type audience_id: str

@@ -16,10 +16,10 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.ConversionApiResponse
 import org.openapitools.server.api.model.ConversionEvents
+import org.openapitools.server.api.model.ConversionEventsCreate
 import org.openapitools.server.api.model.DetailedError
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
 
 class ConversionEventsApiVertxProxyHandler(private val vertx: Vertx, private val service: ConversionEventsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -73,14 +73,14 @@ class ConversionEventsApiVertxProxyHandler(private val vertx: Vertx, private val
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val conversionEventsParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (conversionEventsParam == null) {
-                        throw IllegalArgumentException("conversionEvents is required")
+                    val conversionEventsCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (conversionEventsCreateParam == null) {
+                        throw IllegalArgumentException("conversionEventsCreate is required")
                     }
-                    val conversionEvents = Gson().fromJson(conversionEventsParam.encode(), ConversionEvents::class.java)
+                    val conversionEventsCreate = Gson().fromJson(conversionEventsCreateParam.encode(), ConversionEventsCreate::class.java)
                     val test = ApiHandlerUtils.searchStringInJson(params,"test")?.toBoolean()
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.eventsCreate(adAccountId,conversionEvents,test,context)
+                        val result = service.eventsCreate(adAccountId,conversionEventsCreate,test,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

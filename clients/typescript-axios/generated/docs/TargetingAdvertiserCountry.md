@@ -46,7 +46,7 @@ Advertiser\'s ISO two character country code.
 
 * `Sg` (value: `'SG'`)
 
-* `No` (value: `'NO'`)
+* `False` (value: `'false'`)
 
 * `Dk` (value: `'DK'`)
 

@@ -12,6 +12,6 @@ import org.openapitools.model.CatalogsProduct;
 class CatalogsProductGroupPinsList200Response {
     
     String bookmark
-    /* Pins */
+    
     List<CatalogsProduct> items = new ArrayList<>()
 }

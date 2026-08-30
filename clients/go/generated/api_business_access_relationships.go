@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -29,15 +29,15 @@ type ApiBrandAccountsCreateRequest struct {
 	ctx context.Context
 	ApiService *BusinessAccessRelationshipsAPIService
 	businessHierarchyId string
-	brandAccountsCreateRequest *BrandAccountsCreateRequest
+	brandAccountCreate *BrandAccountCreate
 }
 
-func (r ApiBrandAccountsCreateRequest) BrandAccountsCreateRequest(brandAccountsCreateRequest BrandAccountsCreateRequest) ApiBrandAccountsCreateRequest {
-	r.brandAccountsCreateRequest = &brandAccountsCreateRequest
+func (r ApiBrandAccountsCreateRequest) BrandAccountCreate(brandAccountCreate BrandAccountCreate) ApiBrandAccountsCreateRequest {
+	r.brandAccountCreate = &brandAccountCreate
 	return r
 }
 
-func (r ApiBrandAccountsCreateRequest) Execute() (*BrandAccountsCreate200Response, *http.Response, error) {
+func (r ApiBrandAccountsCreateRequest) Execute() (*BrandAccount, *http.Response, error) {
 	return r.ApiService.BrandAccountsCreateExecute(r)
 }
 
@@ -59,13 +59,13 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsCreate(ctx context.
 }
 
 // Execute executes the request
-//  @return BrandAccountsCreate200Response
-func (a *BusinessAccessRelationshipsAPIService) BrandAccountsCreateExecute(r ApiBrandAccountsCreateRequest) (*BrandAccountsCreate200Response, *http.Response, error) {
+//  @return BrandAccount
+func (a *BusinessAccessRelationshipsAPIService) BrandAccountsCreateExecute(r ApiBrandAccountsCreateRequest) (*BrandAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BrandAccountsCreate200Response
+		localVarReturnValue  *BrandAccount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BusinessAccessRelationshipsAPIService.BrandAccountsCreate")
@@ -85,8 +85,8 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsCreateExecute(r Api
 	if strlen(r.businessHierarchyId) > 20 {
 		return localVarReturnValue, nil, reportError("businessHierarchyId must have less than 20 elements")
 	}
-	if r.brandAccountsCreateRequest == nil {
-		return localVarReturnValue, nil, reportError("brandAccountsCreateRequest is required and must be specified")
+	if r.brandAccountCreate == nil {
+		return localVarReturnValue, nil, reportError("brandAccountCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -107,7 +107,7 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsCreateExecute(r Api
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.brandAccountsCreateRequest
+	localVarPostBody = r.brandAccountCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -131,7 +131,7 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsCreateExecute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -141,7 +141,51 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsCreateExecute(r Api
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -167,17 +211,17 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsCreateExecute(r Api
 type ApiBrandAccountsUpdateRequest struct {
 	ctx context.Context
 	ApiService *BusinessAccessRelationshipsAPIService
-	businessHierarchyId string
 	brandAccountId string
-	brandAccountsUpdateRequest *BrandAccountsUpdateRequest
+	businessHierarchyId string
+	brandAccountUpdate *BrandAccountUpdate
 }
 
-func (r ApiBrandAccountsUpdateRequest) BrandAccountsUpdateRequest(brandAccountsUpdateRequest BrandAccountsUpdateRequest) ApiBrandAccountsUpdateRequest {
-	r.brandAccountsUpdateRequest = &brandAccountsUpdateRequest
+func (r ApiBrandAccountsUpdateRequest) BrandAccountUpdate(brandAccountUpdate BrandAccountUpdate) ApiBrandAccountsUpdateRequest {
+	r.brandAccountUpdate = &brandAccountUpdate
 	return r
 }
 
-func (r ApiBrandAccountsUpdateRequest) Execute() (*BrandAccountsCreate200Response, *http.Response, error) {
+func (r ApiBrandAccountsUpdateRequest) Execute() (*BrandAccount, *http.Response, error) {
 	return r.ApiService.BrandAccountsUpdateExecute(r)
 }
 
@@ -187,27 +231,27 @@ BrandAccountsUpdate Update a Brand Account
 Update an existing Brand Account
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param brandAccountId
  @param businessHierarchyId business hierarchy node id
- @param brandAccountId Unique identifier of a brand account.
  @return ApiBrandAccountsUpdateRequest
 */
-func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdate(ctx context.Context, businessHierarchyId string, brandAccountId string) ApiBrandAccountsUpdateRequest {
+func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdate(ctx context.Context, brandAccountId string, businessHierarchyId string) ApiBrandAccountsUpdateRequest {
 	return ApiBrandAccountsUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
-		businessHierarchyId: businessHierarchyId,
 		brandAccountId: brandAccountId,
+		businessHierarchyId: businessHierarchyId,
 	}
 }
 
 // Execute executes the request
-//  @return BrandAccountsCreate200Response
-func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdateExecute(r ApiBrandAccountsUpdateRequest) (*BrandAccountsCreate200Response, *http.Response, error) {
+//  @return BrandAccount
+func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdateExecute(r ApiBrandAccountsUpdateRequest) (*BrandAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BrandAccountsCreate200Response
+		localVarReturnValue  *BrandAccount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BusinessAccessRelationshipsAPIService.BrandAccountsUpdate")
@@ -216,8 +260,8 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdateExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"business_hierarchy_id"+"}", url.PathEscape(parameterValueToString(r.businessHierarchyId, "businessHierarchyId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"brand_account_id"+"}", url.PathEscape(parameterValueToString(r.brandAccountId, "brandAccountId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"business_hierarchy_id"+"}", url.PathEscape(parameterValueToString(r.businessHierarchyId, "businessHierarchyId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -228,14 +272,8 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdateExecute(r Api
 	if strlen(r.businessHierarchyId) > 20 {
 		return localVarReturnValue, nil, reportError("businessHierarchyId must have less than 20 elements")
 	}
-	if strlen(r.brandAccountId) < 1 {
-		return localVarReturnValue, nil, reportError("brandAccountId must have at least 1 elements")
-	}
-	if strlen(r.brandAccountId) > 20 {
-		return localVarReturnValue, nil, reportError("brandAccountId must have less than 20 elements")
-	}
-	if r.brandAccountsUpdateRequest == nil {
-		return localVarReturnValue, nil, reportError("brandAccountsUpdateRequest is required and must be specified")
+	if r.brandAccountUpdate == nil {
+		return localVarReturnValue, nil, reportError("brandAccountUpdate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -256,7 +294,7 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdateExecute(r Api
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.brandAccountsUpdateRequest
+	localVarPostBody = r.brandAccountUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -280,7 +318,7 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdateExecute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -291,7 +329,7 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdateExecute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -302,7 +340,7 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdateExecute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -313,7 +351,7 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdateExecute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -324,7 +362,7 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdateExecute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -335,7 +373,7 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdateExecute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -345,7 +383,7 @@ func (a *BusinessAccessRelationshipsAPIService) BrandAccountsUpdateExecute(r Api
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -372,16 +410,15 @@ type ApiDeleteBusinessMembershipRequest struct {
 	ctx context.Context
 	ApiService *BusinessAccessRelationshipsAPIService
 	businessId string
-	membersToDeleteBody *MembersToDeleteBody
+	deleteBusinessMembershipBody *DeleteBusinessMembershipBody
 }
 
-// List of members with role to delete.
-func (r ApiDeleteBusinessMembershipRequest) MembersToDeleteBody(membersToDeleteBody MembersToDeleteBody) ApiDeleteBusinessMembershipRequest {
-	r.membersToDeleteBody = &membersToDeleteBody
+func (r ApiDeleteBusinessMembershipRequest) DeleteBusinessMembershipBody(deleteBusinessMembershipBody DeleteBusinessMembershipBody) ApiDeleteBusinessMembershipRequest {
+	r.deleteBusinessMembershipBody = &deleteBusinessMembershipBody
 	return r
 }
 
-func (r ApiDeleteBusinessMembershipRequest) Execute() (*DeletedMembersResponse, *http.Response, error) {
+func (r ApiDeleteBusinessMembershipRequest) Execute() (*DeleteBusinessMembership200Response, *http.Response, error) {
 	return r.ApiService.DeleteBusinessMembershipExecute(r)
 }
 
@@ -403,13 +440,13 @@ func (a *BusinessAccessRelationshipsAPIService) DeleteBusinessMembership(ctx con
 }
 
 // Execute executes the request
-//  @return DeletedMembersResponse
-func (a *BusinessAccessRelationshipsAPIService) DeleteBusinessMembershipExecute(r ApiDeleteBusinessMembershipRequest) (*DeletedMembersResponse, *http.Response, error) {
+//  @return DeleteBusinessMembership200Response
+func (a *BusinessAccessRelationshipsAPIService) DeleteBusinessMembershipExecute(r ApiDeleteBusinessMembershipRequest) (*DeleteBusinessMembership200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DeletedMembersResponse
+		localVarReturnValue  *DeleteBusinessMembership200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BusinessAccessRelationshipsAPIService.DeleteBusinessMembership")
@@ -429,8 +466,8 @@ func (a *BusinessAccessRelationshipsAPIService) DeleteBusinessMembershipExecute(
 	if strlen(r.businessId) > 20 {
 		return localVarReturnValue, nil, reportError("businessId must have less than 20 elements")
 	}
-	if r.membersToDeleteBody == nil {
-		return localVarReturnValue, nil, reportError("membersToDeleteBody is required and must be specified")
+	if r.deleteBusinessMembershipBody == nil {
+		return localVarReturnValue, nil, reportError("deleteBusinessMembershipBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -451,7 +488,7 @@ func (a *BusinessAccessRelationshipsAPIService) DeleteBusinessMembershipExecute(
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.membersToDeleteBody
+	localVarPostBody = r.deleteBusinessMembershipBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -474,7 +511,7 @@ func (a *BusinessAccessRelationshipsAPIService) DeleteBusinessMembershipExecute(
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -501,16 +538,15 @@ type ApiDeleteBusinessPartnersRequest struct {
 	ctx context.Context
 	ApiService *BusinessAccessRelationshipsAPIService
 	businessId string
-	deletePartnersRequest *DeletePartnersRequest
+	deleteBusinessPartnersDelete *DeleteBusinessPartnersDelete
 }
 
-// An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete. 
-func (r ApiDeleteBusinessPartnersRequest) DeletePartnersRequest(deletePartnersRequest DeletePartnersRequest) ApiDeleteBusinessPartnersRequest {
-	r.deletePartnersRequest = &deletePartnersRequest
+func (r ApiDeleteBusinessPartnersRequest) DeleteBusinessPartnersDelete(deleteBusinessPartnersDelete DeleteBusinessPartnersDelete) ApiDeleteBusinessPartnersRequest {
+	r.deleteBusinessPartnersDelete = &deleteBusinessPartnersDelete
 	return r
 }
 
-func (r ApiDeleteBusinessPartnersRequest) Execute() (*DeletePartnersResponse, *http.Response, error) {
+func (r ApiDeleteBusinessPartnersRequest) Execute() (*DeleteBusinessPartners, *http.Response, error) {
 	return r.ApiService.DeleteBusinessPartnersExecute(r)
 }
 
@@ -533,13 +569,13 @@ func (a *BusinessAccessRelationshipsAPIService) DeleteBusinessPartners(ctx conte
 }
 
 // Execute executes the request
-//  @return DeletePartnersResponse
-func (a *BusinessAccessRelationshipsAPIService) DeleteBusinessPartnersExecute(r ApiDeleteBusinessPartnersRequest) (*DeletePartnersResponse, *http.Response, error) {
+//  @return DeleteBusinessPartners
+func (a *BusinessAccessRelationshipsAPIService) DeleteBusinessPartnersExecute(r ApiDeleteBusinessPartnersRequest) (*DeleteBusinessPartners, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DeletePartnersResponse
+		localVarReturnValue  *DeleteBusinessPartners
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BusinessAccessRelationshipsAPIService.DeleteBusinessPartners")
@@ -559,8 +595,8 @@ func (a *BusinessAccessRelationshipsAPIService) DeleteBusinessPartnersExecute(r 
 	if strlen(r.businessId) > 20 {
 		return localVarReturnValue, nil, reportError("businessId must have less than 20 elements")
 	}
-	if r.deletePartnersRequest == nil {
-		return localVarReturnValue, nil, reportError("deletePartnersRequest is required and must be specified")
+	if r.deleteBusinessPartnersDelete == nil {
+		return localVarReturnValue, nil, reportError("deleteBusinessPartnersDelete is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -581,7 +617,7 @@ func (a *BusinessAccessRelationshipsAPIService) DeleteBusinessPartnersExecute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.deletePartnersRequest
+	localVarPostBody = r.deleteBusinessPartnersDelete
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -605,7 +641,7 @@ func (a *BusinessAccessRelationshipsAPIService) DeleteBusinessPartnersExecute(r 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -615,7 +651,7 @@ func (a *BusinessAccessRelationshipsAPIService) DeleteBusinessPartnersExecute(r 
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -641,19 +677,26 @@ func (a *BusinessAccessRelationshipsAPIService) DeleteBusinessPartnersExecute(r 
 type ApiGetBusinessEmployersRequest struct {
 	ctx context.Context
 	ApiService *BusinessAccessRelationshipsAPIService
-	pageSize *int32
+	assetsSummary *bool
 	bookmark *string
+	pageSize *int32
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-func (r ApiGetBusinessEmployersRequest) PageSize(pageSize int32) ApiGetBusinessEmployersRequest {
-	r.pageSize = &pageSize
+// Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
+func (r ApiGetBusinessEmployersRequest) AssetsSummary(assetsSummary bool) ApiGetBusinessEmployersRequest {
+	r.assetsSummary = &assetsSummary
 	return r
 }
 
 // Cursor used to fetch the next page of items
 func (r ApiGetBusinessEmployersRequest) Bookmark(bookmark string) ApiGetBusinessEmployersRequest {
 	r.bookmark = &bookmark
+	return r
+}
+
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+func (r ApiGetBusinessEmployersRequest) PageSize(pageSize int32) ApiGetBusinessEmployersRequest {
+	r.pageSize = &pageSize
 	return r
 }
 
@@ -697,15 +740,22 @@ func (a *BusinessAccessRelationshipsAPIService) GetBusinessEmployersExecute(r Ap
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	if r.assetsSummary != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "assets_summary", r.assetsSummary, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue bool = true
+		parameterAddToHeaderOrQuery(localVarQueryParams, "assets_summary", defaultValue, "form", "")
+		r.assetsSummary = &defaultValue
 	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	} else {
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -746,7 +796,62 @@ func (a *BusinessAccessRelationshipsAPIService) GetBusinessEmployersExecute(r Ap
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -818,21 +923,20 @@ func (r ApiGetBusinessMembersRequest) Bookmark(bookmark string) ApiGetBusinessMe
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiGetBusinessMembersRequest) PageSize(pageSize int32) ApiGetBusinessMembersRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
-func (r ApiGetBusinessMembersRequest) Execute() (*GetBusinessMembers200Response, *http.Response, error) {
+func (r ApiGetBusinessMembersRequest) Execute() (*GetBusinessEmployers200Response, *http.Response, error) {
 	return r.ApiService.GetBusinessMembersExecute(r)
 }
 
 /*
 GetBusinessMembers Get business members
 
-Get all members of the specified business.
-The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
+Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param businessId Unique identifier of the requesting business.
@@ -847,13 +951,13 @@ func (a *BusinessAccessRelationshipsAPIService) GetBusinessMembers(ctx context.C
 }
 
 // Execute executes the request
-//  @return GetBusinessMembers200Response
-func (a *BusinessAccessRelationshipsAPIService) GetBusinessMembersExecute(r ApiGetBusinessMembersRequest) (*GetBusinessMembers200Response, *http.Response, error) {
+//  @return GetBusinessEmployers200Response
+func (a *BusinessAccessRelationshipsAPIService) GetBusinessMembersExecute(r ApiGetBusinessMembersRequest) (*GetBusinessEmployers200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetBusinessMembers200Response
+		localVarReturnValue  *GetBusinessEmployers200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BusinessAccessRelationshipsAPIService.GetBusinessMembers")
@@ -877,16 +981,16 @@ func (a *BusinessAccessRelationshipsAPIService) GetBusinessMembersExecute(r ApiG
 	if r.fetchSystemUsers != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fetch_system_users", r.fetchSystemUsers, "form", "")
 	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "fetch_system_users", defaultValue, "form", "")
-        r.fetchSystemUsers = &defaultValue
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "fetch_system_users", defaultValue, "form", "")
+		r.fetchSystemUsers = &defaultValue
 	}
 	if r.assetsSummary != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "assets_summary", r.assetsSummary, "form", "")
 	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "assets_summary", defaultValue, "form", "")
-        r.assetsSummary = &defaultValue
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "assets_summary", defaultValue, "form", "")
+		r.assetsSummary = &defaultValue
 	}
 	if r.businessRoles != nil {
 		t := *r.businessRoles
@@ -905,9 +1009,9 @@ func (a *BusinessAccessRelationshipsAPIService) GetBusinessMembersExecute(r ApiG
 	if r.startIndex != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", r.startIndex, "form", "")
 	} else {
-        var defaultValue int32 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", defaultValue, "form", "")
-        r.startIndex = &defaultValue
+		var defaultValue int32 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", defaultValue, "form", "")
+		r.startIndex = &defaultValue
 	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
@@ -915,9 +1019,9 @@ func (a *BusinessAccessRelationshipsAPIService) GetBusinessMembersExecute(r ApiG
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -958,7 +1062,62 @@ func (a *BusinessAccessRelationshipsAPIService) GetBusinessMembersExecute(r ApiG
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -989,8 +1148,9 @@ type ApiGetBusinessPartnersRequest struct {
 	partnerType *PartnerType
 	partnerIds *string
 	startIndex *int32
-	pageSize *int32
+	sortAscending *bool
 	bookmark *string
+	pageSize *int32
 }
 
 // Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
@@ -999,7 +1159,7 @@ func (r ApiGetBusinessPartnersRequest) AssetsSummary(assetsSummary bool) ApiGetB
 	return r
 }
 
-// Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.
+// Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.
 func (r ApiGetBusinessPartnersRequest) PartnerType(partnerType PartnerType) ApiGetBusinessPartnersRequest {
 	r.partnerType = &partnerType
 	return r
@@ -1017,9 +1177,9 @@ func (r ApiGetBusinessPartnersRequest) StartIndex(startIndex int32) ApiGetBusine
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-func (r ApiGetBusinessPartnersRequest) PageSize(pageSize int32) ApiGetBusinessPartnersRequest {
-	r.pageSize = &pageSize
+// Sort ascending.
+func (r ApiGetBusinessPartnersRequest) SortAscending(sortAscending bool) ApiGetBusinessPartnersRequest {
+	r.sortAscending = &sortAscending
 	return r
 }
 
@@ -1029,7 +1189,13 @@ func (r ApiGetBusinessPartnersRequest) Bookmark(bookmark string) ApiGetBusinessP
 	return r
 }
 
-func (r ApiGetBusinessPartnersRequest) Execute() (*GetBusinessPartners200Response, *http.Response, error) {
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+func (r ApiGetBusinessPartnersRequest) PageSize(pageSize int32) ApiGetBusinessPartnersRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiGetBusinessPartnersRequest) Execute() (*GetBusinessEmployers200Response, *http.Response, error) {
 	return r.ApiService.GetBusinessPartnersExecute(r)
 }
 
@@ -1056,13 +1222,13 @@ func (a *BusinessAccessRelationshipsAPIService) GetBusinessPartners(ctx context.
 }
 
 // Execute executes the request
-//  @return GetBusinessPartners200Response
-func (a *BusinessAccessRelationshipsAPIService) GetBusinessPartnersExecute(r ApiGetBusinessPartnersRequest) (*GetBusinessPartners200Response, *http.Response, error) {
+//  @return GetBusinessEmployers200Response
+func (a *BusinessAccessRelationshipsAPIService) GetBusinessPartnersExecute(r ApiGetBusinessPartnersRequest) (*GetBusinessEmployers200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetBusinessPartners200Response
+		localVarReturnValue  *GetBusinessEmployers200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BusinessAccessRelationshipsAPIService.GetBusinessPartners")
@@ -1086,9 +1252,9 @@ func (a *BusinessAccessRelationshipsAPIService) GetBusinessPartnersExecute(r Api
 	if r.assetsSummary != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "assets_summary", r.assetsSummary, "form", "")
 	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "assets_summary", defaultValue, "form", "")
-        r.assetsSummary = &defaultValue
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "assets_summary", defaultValue, "form", "")
+		r.assetsSummary = &defaultValue
 	}
 	if r.partnerType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "partner_type", r.partnerType, "form", "")
@@ -1099,19 +1265,22 @@ func (a *BusinessAccessRelationshipsAPIService) GetBusinessPartnersExecute(r Api
 	if r.startIndex != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", r.startIndex, "form", "")
 	} else {
-        var defaultValue int32 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", defaultValue, "form", "")
-        r.startIndex = &defaultValue
+		var defaultValue int32 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", defaultValue, "form", "")
+		r.startIndex = &defaultValue
+	}
+	if r.sortAscending != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_ascending", r.sortAscending, "form", "")
+	}
+	if r.bookmark != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
-	}
-	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1152,7 +1321,62 @@ func (a *BusinessAccessRelationshipsAPIService) GetBusinessPartnersExecute(r Api
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1180,11 +1404,11 @@ type ApiSystemUserUpdateRequest struct {
 	ApiService *BusinessAccessRelationshipsAPIService
 	businessId string
 	systemUserId string
-	systemUserUpdateRequest *SystemUserUpdateRequest
+	systemUserUpdateWithRequiredBody *SystemUserUpdateWithRequiredBody
 }
 
-func (r ApiSystemUserUpdateRequest) SystemUserUpdateRequest(systemUserUpdateRequest SystemUserUpdateRequest) ApiSystemUserUpdateRequest {
-	r.systemUserUpdateRequest = &systemUserUpdateRequest
+func (r ApiSystemUserUpdateRequest) SystemUserUpdateWithRequiredBody(systemUserUpdateWithRequiredBody SystemUserUpdateWithRequiredBody) ApiSystemUserUpdateRequest {
+	r.systemUserUpdateWithRequiredBody = &systemUserUpdateWithRequiredBody
 	return r
 }
 
@@ -1243,8 +1467,8 @@ func (a *BusinessAccessRelationshipsAPIService) SystemUserUpdateExecute(r ApiSys
 	if strlen(r.systemUserId) > 20 {
 		return nil, reportError("systemUserId must have less than 20 elements")
 	}
-	if r.systemUserUpdateRequest == nil {
-		return nil, reportError("systemUserUpdateRequest is required and must be specified")
+	if r.systemUserUpdateWithRequiredBody == nil {
+		return nil, reportError("systemUserUpdateWithRequiredBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1265,7 +1489,7 @@ func (a *BusinessAccessRelationshipsAPIService) SystemUserUpdateExecute(r ApiSys
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.systemUserUpdateRequest
+	localVarPostBody = r.systemUserUpdateWithRequiredBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -1289,7 +1513,7 @@ func (a *BusinessAccessRelationshipsAPIService) SystemUserUpdateExecute(r ApiSys
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1299,7 +1523,51 @@ func (a *BusinessAccessRelationshipsAPIService) SystemUserUpdateExecute(r ApiSys
 					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1317,16 +1585,15 @@ type ApiUpdateBusinessMembershipsRequest struct {
 	ctx context.Context
 	ApiService *BusinessAccessRelationshipsAPIService
 	businessId string
-	updateMemberBusinessRoleBody *[]UpdateMemberBusinessRoleBody
+	businessMembershipMember *[]BusinessMembershipMember
 }
 
-// List of objects with the member id and the business_role.
-func (r ApiUpdateBusinessMembershipsRequest) UpdateMemberBusinessRoleBody(updateMemberBusinessRoleBody []UpdateMemberBusinessRoleBody) ApiUpdateBusinessMembershipsRequest {
-	r.updateMemberBusinessRoleBody = &updateMemberBusinessRoleBody
+func (r ApiUpdateBusinessMembershipsRequest) BusinessMembershipMember(businessMembershipMember []BusinessMembershipMember) ApiUpdateBusinessMembershipsRequest {
+	r.businessMembershipMember = &businessMembershipMember
 	return r
 }
 
-func (r ApiUpdateBusinessMembershipsRequest) Execute() (*UpdateMemberResultsResponseArray, *http.Response, error) {
+func (r ApiUpdateBusinessMembershipsRequest) Execute() (*UpdateBusinessMembershipsResponse, *http.Response, error) {
 	return r.ApiService.UpdateBusinessMembershipsExecute(r)
 }
 
@@ -1348,13 +1615,13 @@ func (a *BusinessAccessRelationshipsAPIService) UpdateBusinessMemberships(ctx co
 }
 
 // Execute executes the request
-//  @return UpdateMemberResultsResponseArray
-func (a *BusinessAccessRelationshipsAPIService) UpdateBusinessMembershipsExecute(r ApiUpdateBusinessMembershipsRequest) (*UpdateMemberResultsResponseArray, *http.Response, error) {
+//  @return UpdateBusinessMembershipsResponse
+func (a *BusinessAccessRelationshipsAPIService) UpdateBusinessMembershipsExecute(r ApiUpdateBusinessMembershipsRequest) (*UpdateBusinessMembershipsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *UpdateMemberResultsResponseArray
+		localVarReturnValue  *UpdateBusinessMembershipsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BusinessAccessRelationshipsAPIService.UpdateBusinessMemberships")
@@ -1374,11 +1641,11 @@ func (a *BusinessAccessRelationshipsAPIService) UpdateBusinessMembershipsExecute
 	if strlen(r.businessId) > 20 {
 		return localVarReturnValue, nil, reportError("businessId must have less than 20 elements")
 	}
-	if r.updateMemberBusinessRoleBody == nil {
-		return localVarReturnValue, nil, reportError("updateMemberBusinessRoleBody is required and must be specified")
+	if r.businessMembershipMember == nil {
+		return localVarReturnValue, nil, reportError("businessMembershipMember is required and must be specified")
 	}
-	if len(*r.updateMemberBusinessRoleBody) < 1 {
-		return localVarReturnValue, nil, reportError("updateMemberBusinessRoleBody must have at least 1 elements")
+	if len(*r.businessMembershipMember) < 1 {
+		return localVarReturnValue, nil, reportError("businessMembershipMember must have at least 1 elements")
 	}
 
 	// to determine the Content-Type header
@@ -1399,7 +1666,7 @@ func (a *BusinessAccessRelationshipsAPIService) UpdateBusinessMembershipsExecute
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.updateMemberBusinessRoleBody
+	localVarPostBody = r.businessMembershipMember
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1422,7 +1689,62 @@ func (a *BusinessAccessRelationshipsAPIService) UpdateBusinessMembershipsExecute
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

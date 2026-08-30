@@ -22,11 +22,11 @@ Method | HTTP request | Description
 
 <a id="Invoke-BoardsUserFollowsList"></a>
 # **Invoke-BoardsUserFollowsList**
-> BoardsUserFollowsList200Response Invoke-BoardsUserFollowsList<br>
+> BoardsList200Response Invoke-BoardsUserFollowsList<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ExplicitFollowing] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ExplicitFollowing] <System.Nullable[Boolean]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 List following boards
 
@@ -42,14 +42,14 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 # Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-$ExplicitFollowing = $true # Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to $false)
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
+$ExplicitFollowing = $true # Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to $false)
+$Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List following boards
 try {
-    $Result = Invoke-BoardsUserFollowsList -Bookmark $Bookmark -PageSize $PageSize -ExplicitFollowing $ExplicitFollowing -AdAccountId $AdAccountId
+    $Result = Invoke-BoardsUserFollowsList -AdAccountId $AdAccountId -ExplicitFollowing $ExplicitFollowing -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BoardsUserFollowsList: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -60,14 +60,14 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **ExplicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to $false]
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
+ **ExplicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to $false]
+ **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BoardsUserFollowsList200Response**](BoardsUserFollowsList200Response.md) (PSCustomObject)
+[**BoardsList200Response**](BoardsList200Response.md) (PSCustomObject)
 
 ### Authorization
 
@@ -82,13 +82,13 @@ Name | Type | Description  | Notes
 
 <a id="Trace-UserUpdate"></a>
 # **Trace-UserUpdate**
-> UserSummary Trace-UserUpdate<br>
+> FollowUser Trace-UserUpdate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Username] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FollowUserRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FollowUserCreate] <PSCustomObject><br>
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```powershell
@@ -97,12 +97,12 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$Username = "username" # String | A valid username
-$FollowUserRequest = Initialize-FollowUserRequest -AutoFollow $false # FollowUserRequest | Follow a user.
+$Username = "MyUsername" # String | A valid username
+$FollowUserCreate = Initialize-FollowUserCreate -AutoFollow $false # FollowUserCreate | 
 
 # Follow user
 try {
-    $Result = Trace-UserUpdate -Username $Username -FollowUserRequest $FollowUserRequest
+    $Result = Trace-UserUpdate -Username $Username -FollowUserCreate $FollowUserCreate
 } catch {
     Write-Host ("Exception occurred when calling Trace-UserUpdate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -114,11 +114,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Username** | **String**| A valid username | 
- **FollowUserRequest** | [**FollowUserRequest**](FollowUserRequest.md)| Follow a user. | 
+ **FollowUserCreate** | [**FollowUserCreate**](FollowUserCreate.md)|  | 
 
 ### Return type
 
-[**UserSummary**](UserSummary.md) (PSCustomObject)
+[**FollowUser**](FollowUser.md) (PSCustomObject)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List followers
 try {
@@ -168,7 +168,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -233,12 +233,12 @@ This endpoint does not need any parameter.
 
 <a id="Invoke-UnverifyWebsiteDelete"></a>
 # **Invoke-UnverifyWebsiteDelete**
-> void Invoke-UnverifyWebsiteDelete<br>
+> UserWebsite Invoke-UnverifyWebsiteDelete<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Website] <String><br>
 
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 ### Example
 ```powershell
@@ -247,7 +247,7 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$Website = "mysite.test" # String | Website with path or domain only
+$Website = "MyWebsite" # String | Website with path or domain only
 
 # Unverify website
 try {
@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**UserWebsite**](UserWebsite.md) (PSCustomObject)
 
 ### Authorization
 
@@ -289,7 +289,7 @@ void (empty response body)
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AppTypes] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ContentType] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Source] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MetricTypes] <String[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MetricTypes] <PSCustomObject[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SplitField] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
@@ -311,7 +311,7 @@ $PinFormat = "ALL" # String | Pin formats to get data for, default is all. (opti
 $AppTypes = "ALL" # String | Apps or devices to get data for, default is all. (optional) (default to "ALL")
 $ContentType = "ALL" # String | Filter to paid or organic data. Default is all. (optional) (default to "ALL")
 $Source = "ALL" # String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to "ALL")
-$MetricTypes = "ENGAGEMENT" # String[] | Metric types to get data for, default is all.  (optional)
+$MetricTypes = "ENGAGEMENT" # QuerymetrictypesItems[] | Metric types to get data for, default is all. (optional)
 $SplitField = "NO_SPLIT" # String | How to split the data into groups. Not including this param means data won't be split. (optional) (default to "NO_SPLIT")
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
@@ -335,7 +335,7 @@ Name | Type | Description  | Notes
  **AppTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **ContentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to &quot;ALL&quot;]
  **Source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &quot;ALL&quot;]
- **MetricTypes** | [**String[]**](String.md)| Metric types to get data for, default is all.  | [optional] 
+ **MetricTypes** | [**QuerymetrictypesItems[]**](QuerymetrictypesItems.md)| Metric types to get data for, default is all. | [optional] 
  **SplitField** | **String**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to &quot;NO_SPLIT&quot;]
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
@@ -359,15 +359,15 @@ Name | Type | Description  | Notes
 > TopPinsAnalyticsResponse Use-rAccountAnalyticsTopPins<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartDate] <System.DateTime><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EndDate] <System.DateTime><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortBy] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortBy] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FromClaimedContent] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PinFormat] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AppTypes] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ContentType] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Source] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MetricTypes] <String[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MetricTypes] <PSCustomObject[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NumOfPins] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedInLastNDays] <System.Nullable[Int32]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedInLastNDays] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Get user account top pins analytics
@@ -386,15 +386,15 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $StartDate = (Get-Date) # System.DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 $EndDate = (Get-Date) # System.DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-$SortBy = "ENGAGEMENT" # String | Specify sorting order for metrics
+$SortBy = "ENGAGEMENT" # TopPinsSortBy | Specify sorting order for metrics
 $FromClaimedContent = "OTHER" # String | Filter on Pins that match your claimed domain. (optional) (default to "BOTH")
 $PinFormat = "ALL" # String | Pin formats to get data for, default is all. (optional) (default to "ALL")
 $AppTypes = "ALL" # String | Apps or devices to get data for, default is all. (optional) (default to "ALL")
 $ContentType = "ALL" # String | Filter to paid or organic data. Default is all. (optional) (default to "ALL")
 $Source = "ALL" # String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to "ALL")
-$MetricTypes = "ENGAGEMENT" # String[] | Metric types to get data for, default is all.  (optional)
-$NumOfPins = 25 # Int32 | Number of pins to include, default is 10. Max is 50. (optional) (default to 10)
-$CreatedInLastNDays = "30" # Int32 | Get metrics for pins created in the last ""n"" days. (optional)
+$MetricTypes = "ENGAGEMENT" # QuerymetrictypesItems[] | Metric types to get data for, default is all. (optional)
+$NumOfPins = 56 # Int32 | Number of pins to include, default is 10. Max is 50. (optional) (default to 10)
+$CreatedInLastNDays = "30" # Decimal | Get metrics for pins created in the last ""n"" days. (optional)
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Get user account top pins analytics
@@ -412,15 +412,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **StartDate** | **System.DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **EndDate** | **System.DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **SortBy** | **String**| Specify sorting order for metrics | 
+ **SortBy** | [**TopPinsSortBy**](TopPinsSortBy.md)| Specify sorting order for metrics | 
  **FromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [default to &quot;BOTH&quot;]
  **PinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **AppTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **ContentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to &quot;ALL&quot;]
  **Source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &quot;ALL&quot;]
- **MetricTypes** | [**String[]**](String.md)| Metric types to get data for, default is all.  | [optional] 
+ **MetricTypes** | [**QuerymetrictypesItems[]**](QuerymetrictypesItems.md)| Metric types to get data for, default is all. | [optional] 
  **NumOfPins** | **Int32**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
- **CreatedInLastNDays** | **Int32**| Get metrics for pins created in the last &quot;&quot;n&quot;&quot; days. | [optional] 
+ **CreatedInLastNDays** | **Decimal**| Get metrics for pins created in the last &quot;&quot;n&quot;&quot; days. | [optional] 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -443,15 +443,15 @@ Name | Type | Description  | Notes
 > TopVideoPinsAnalyticsResponse Use-rAccountAnalyticsTopVideoPins<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartDate] <System.DateTime><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EndDate] <System.DateTime><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortBy] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortBy] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FromClaimedContent] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PinFormat] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AppTypes] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ContentType] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Source] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MetricTypes] <String[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MetricTypes] <PSCustomObject[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NumOfPins] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedInLastNDays] <System.Nullable[Int32]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedInLastNDays] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Get user account top video pins analytics
@@ -470,15 +470,15 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $StartDate = (Get-Date) # System.DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 $EndDate = (Get-Date) # System.DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-$SortBy = "IMPRESSION" # String | Specify sorting order for video metrics
+$SortBy = "SAVE" # TopVideoPinsSortBy | Specify sorting order for video metrics
 $FromClaimedContent = "OTHER" # String | Filter on Pins that match your claimed domain. (optional) (default to "BOTH")
 $PinFormat = "ALL" # String | Pin formats to get data for, default is all. (optional) (default to "ALL")
 $AppTypes = "ALL" # String | Apps or devices to get data for, default is all. (optional) (default to "ALL")
 $ContentType = "ALL" # String | Filter to paid or organic data. Default is all. (optional) (default to "ALL")
 $Source = "ALL" # String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to "ALL")
-$MetricTypes = "IMPRESSION" # String[] | Metric types to get video data for, default is all.  (optional)
-$NumOfPins = 25 # Int32 | Number of pins to include, default is 10. Max is 50. (optional) (default to 10)
-$CreatedInLastNDays = "30" # Int32 | Get metrics for pins created in the last ""n"" days. (optional)
+$MetricTypes = "IMPRESSION" # QueryvideopinmetrictypesItems[] | Metric types to get video data for, default is all. (optional)
+$NumOfPins = 56 # Int32 | Number of pins to include, default is 10. Max is 50. (optional) (default to 10)
+$CreatedInLastNDays = "30" # Decimal | Get metrics for pins created in the last ""n"" days. (optional)
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Get user account top video pins analytics
@@ -496,15 +496,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **StartDate** | **System.DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **EndDate** | **System.DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **SortBy** | **String**| Specify sorting order for video metrics | 
+ **SortBy** | [**TopVideoPinsSortBy**](TopVideoPinsSortBy.md)| Specify sorting order for video metrics | 
  **FromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [default to &quot;BOTH&quot;]
  **PinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **AppTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **ContentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to &quot;ALL&quot;]
  **Source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &quot;ALL&quot;]
- **MetricTypes** | [**String[]**](String.md)| Metric types to get video data for, default is all.  | [optional] 
+ **MetricTypes** | [**QueryvideopinmetrictypesItems[]**](QueryvideopinmetrictypesItems.md)| Metric types to get video data for, default is all. | [optional] 
  **NumOfPins** | **Int32**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
- **CreatedInLastNDays** | **Int32**| Get metrics for pins created in the last &quot;&quot;n&quot;&quot; days. | [optional] 
+ **CreatedInLastNDays** | **Decimal**| Get metrics for pins created in the last &quot;&quot;n&quot;&quot; days. | [optional] 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -543,9 +543,9 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 # Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$Username = "username" # String | A valid username
+$Username = "MyUsername" # String | A valid username
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List following interests
 try {
@@ -562,7 +562,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Username** | **String**| A valid username | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -586,7 +586,7 @@ Name | Type | Description  | Notes
 
 Get user account
 
-Get account information for the ""operation user_account"" - By default, the ""operation user_account"" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the ""operation user_account"". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Get account information for the ""operation user_account"" - By default, the ""operation user_account"" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ ""Understanding Business Access"" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the ""operation user_account"". See [Understanding Business Access] for more information.
 
 ### Example
 ```powershell
@@ -632,12 +632,12 @@ Name | Type | Description  | Notes
 
 <a id="Use-rFollowingGet"></a>
 # **Use-rFollowingGet**
-> UserFollowingGet200Response Use-rFollowingGet<br>
+> FollowersList200Response Use-rFollowingGet<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ExplicitFollowing] <System.Nullable[Boolean]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FeedType] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FeedType] <UserFollowingFeedType><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ExplicitFollowing] <System.Nullable[Boolean]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 List following
 
@@ -653,15 +653,15 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 # Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-$FeedType = "ALL" # UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
-$ExplicitFollowing = $true # Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to $false)
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
+$ExplicitFollowing = $true # Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to $false)
+$FeedType = "ALL" # UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
+$Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List following
 try {
-    $Result = Use-rFollowingGet -Bookmark $Bookmark -PageSize $PageSize -FeedType $FeedType -ExplicitFollowing $ExplicitFollowing -AdAccountId $AdAccountId
+    $Result = Use-rFollowingGet -AdAccountId $AdAccountId -ExplicitFollowing $ExplicitFollowing -FeedType $FeedType -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Use-rFollowingGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -672,15 +672,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **FeedType** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
- **ExplicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to $false]
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
+ **ExplicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to $false]
+ **FeedType** | [**UserFollowingFeedType**](UserFollowingFeedType.md)| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
+ **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**UserFollowingGet200Response**](UserFollowingGet200Response.md) (PSCustomObject)
+[**FollowersList200Response**](FollowersList200Response.md) (PSCustomObject)
 
 ### Authorization
 
@@ -711,7 +711,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # Get user websites
 try {
@@ -727,7 +727,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -746,8 +746,8 @@ Name | Type | Description  | Notes
 
 <a id="Test-WebsiteUpdate"></a>
 # **Test-WebsiteUpdate**
-> UserWebsiteSummary Test-WebsiteUpdate<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UserWebsiteVerifyRequest] <PSCustomObject><br>
+> UserWebsite Test-WebsiteUpdate<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UserWebsiteCreate] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Verify website
@@ -761,12 +761,12 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$UserWebsiteVerifyRequest = Initialize-UserWebsiteVerifyRequest -VerificationMethod "FILENAME" -Website "pintest-website-12345678.test/test_1" # UserWebsiteVerifyRequest | Verify a website.
+$UserWebsiteCreate = Initialize-UserWebsiteCreate -VerificationMethod "FILENAME" -Website "MyWebsite" # UserWebsiteCreate | 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Verify website
 try {
-    $Result = Test-WebsiteUpdate -UserWebsiteVerifyRequest $UserWebsiteVerifyRequest -AdAccountId $AdAccountId
+    $Result = Test-WebsiteUpdate -UserWebsiteCreate $UserWebsiteCreate -AdAccountId $AdAccountId
 } catch {
     Write-Host ("Exception occurred when calling Test-WebsiteUpdate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -777,12 +777,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **UserWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. | 
+ **UserWebsiteCreate** | [**UserWebsiteCreate**](UserWebsiteCreate.md)|  | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
-[**UserWebsiteSummary**](UserWebsiteSummary.md) (PSCustomObject)
+[**UserWebsite**](UserWebsite.md) (PSCustomObject)
 
 ### Authorization
 
@@ -797,7 +797,7 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-WebsiteVerificationGet"></a>
 # **Invoke-WebsiteVerificationGet**
-> UserWebsiteVerificationCode Invoke-WebsiteVerificationGet<br>
+> UserWebsiteVerification Invoke-WebsiteVerificationGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Get user verification code for website claiming
@@ -833,7 +833,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserWebsiteVerificationCode**](UserWebsiteVerificationCode.md) (PSCustomObject)
+[**UserWebsiteVerification**](UserWebsiteVerification.md) (PSCustomObject)
 
 ### Authorization
 

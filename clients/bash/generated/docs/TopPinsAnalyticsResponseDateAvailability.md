@@ -1,4 +1,4 @@
-# TopPinsAnalyticsResponse_date_availability
+# TopPinsAnalyticsResponseDateAvailability
 
 ## Properties
 Name | Type | Description | Notes

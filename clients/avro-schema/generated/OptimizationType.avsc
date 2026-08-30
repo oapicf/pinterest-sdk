@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Optimization type for ad group delivery estimates. Supported types vary by objective.",
+  "name": "OptimizationType",
+  "symbols": [
+    "CLICKTHROUGH",
+    "IMPRESSION",
+    "WEB_CONVERSION",
+    "ROAS",
+    "OUTBOUND_CLICK"
+  ]
+}

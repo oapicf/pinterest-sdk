@@ -6,7 +6,6 @@
 import 'package:openapi/src/model/catalogs_feed_ingestion_details.dart';
 import 'package:openapi/src/model/catalogs_feed_processing_status.dart';
 import 'package:openapi/src/model/catalogs_feed_product_counts.dart';
-import 'package:openapi/src/model/catalogs_db_item.dart';
 import 'package:openapi/src/model/catalogs_feed_validation_details.dart';
 import 'package:openapi/src/model/catalogs_feed_video_counts.dart';
 import 'package:built_value/built_value.dart';
@@ -18,17 +17,21 @@ part 'catalogs_feed_processing_result.g.dart';
 ///
 /// Properties:
 /// * [createdAt] 
-/// * [id] 
-/// * [updatedAt] 
+/// * [id] - ID of the feed processing result.
 /// * [ingestionDetails] 
 /// * [productCounts] 
 /// * [status] 
+/// * [updatedAt] 
 /// * [validationDetails] 
 /// * [videoCounts] 
 @BuiltValue()
-abstract class CatalogsFeedProcessingResult implements CatalogsDbItem, Built<CatalogsFeedProcessingResult, CatalogsFeedProcessingResultBuilder> {
-  @BuiltValueField(wireName: r'video_counts')
-  CatalogsFeedVideoCounts? get videoCounts;
+abstract class CatalogsFeedProcessingResult implements Built<CatalogsFeedProcessingResult, CatalogsFeedProcessingResultBuilder> {
+  @BuiltValueField(wireName: r'created_at')
+  DateTime get createdAt;
+
+  /// ID of the feed processing result.
+  @BuiltValueField(wireName: r'id')
+  String get id;
 
   @BuiltValueField(wireName: r'ingestion_details')
   CatalogsFeedIngestionDetails get ingestionDetails;
@@ -36,12 +39,18 @@ abstract class CatalogsFeedProcessingResult implements CatalogsDbItem, Built<Cat
   @BuiltValueField(wireName: r'product_counts')
   CatalogsFeedProductCounts? get productCounts;
 
-  @BuiltValueField(wireName: r'validation_details')
-  CatalogsFeedValidationDetails get validationDetails;
-
   @BuiltValueField(wireName: r'status')
   CatalogsFeedProcessingStatus get status;
   // enum statusEnum {  COMPLETED,  FAILED,  PROCESSING,  };
+
+  @BuiltValueField(wireName: r'updated_at')
+  DateTime get updatedAt;
+
+  @BuiltValueField(wireName: r'validation_details')
+  CatalogsFeedValidationDetails get validationDetails;
+
+  @BuiltValueField(wireName: r'video_counts')
+  CatalogsFeedVideoCounts? get videoCounts;
 
   CatalogsFeedProcessingResult._();
 
@@ -71,32 +80,20 @@ class _$CatalogsFeedProcessingResultSerializer implements PrimitiveSerializer<Ca
       object.createdAt,
       specifiedType: const FullType(DateTime),
     );
-    if (object.videoCounts != null) {
-      yield r'video_counts';
-      yield serializers.serialize(
-        object.videoCounts,
-        specifiedType: const FullType(CatalogsFeedVideoCounts),
-      );
-    }
-    yield r'ingestion_details';
-    yield serializers.serialize(
-      object.ingestionDetails,
-      specifiedType: const FullType(CatalogsFeedIngestionDetails),
-    );
     yield r'id';
     yield serializers.serialize(
       object.id,
       specifiedType: const FullType(String),
     );
+    yield r'ingestion_details';
+    yield serializers.serialize(
+      object.ingestionDetails,
+      specifiedType: const FullType(CatalogsFeedIngestionDetails),
+    );
     yield r'product_counts';
     yield object.productCounts == null ? null : serializers.serialize(
       object.productCounts,
       specifiedType: const FullType.nullable(CatalogsFeedProductCounts),
-    );
-    yield r'validation_details';
-    yield serializers.serialize(
-      object.validationDetails,
-      specifiedType: const FullType(CatalogsFeedValidationDetails),
     );
     yield r'status';
     yield serializers.serialize(
@@ -108,6 +105,18 @@ class _$CatalogsFeedProcessingResultSerializer implements PrimitiveSerializer<Ca
       object.updatedAt,
       specifiedType: const FullType(DateTime),
     );
+    yield r'validation_details';
+    yield serializers.serialize(
+      object.validationDetails,
+      specifiedType: const FullType(CatalogsFeedValidationDetails),
+    );
+    if (object.videoCounts != null) {
+      yield r'video_counts';
+      yield serializers.serialize(
+        object.videoCounts,
+        specifiedType: const FullType(CatalogsFeedVideoCounts),
+      );
+    }
   }
 
   @override
@@ -138,12 +147,12 @@ class _$CatalogsFeedProcessingResultSerializer implements PrimitiveSerializer<Ca
           ) as DateTime;
           result.createdAt = valueDes;
           break;
-        case r'video_counts':
+        case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsFeedVideoCounts),
-          ) as CatalogsFeedVideoCounts;
-          result.videoCounts.replace(valueDes);
+            specifiedType: const FullType(String),
+          ) as String;
+          result.id = valueDes;
           break;
         case r'ingestion_details':
           final valueDes = serializers.deserialize(
@@ -152,13 +161,6 @@ class _$CatalogsFeedProcessingResultSerializer implements PrimitiveSerializer<Ca
           ) as CatalogsFeedIngestionDetails;
           result.ingestionDetails.replace(valueDes);
           break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.id = valueDes;
-          break;
         case r'product_counts':
           final valueDes = serializers.deserialize(
             value,
@@ -166,13 +168,6 @@ class _$CatalogsFeedProcessingResultSerializer implements PrimitiveSerializer<Ca
           ) as CatalogsFeedProductCounts?;
           if (valueDes == null) continue;
           result.productCounts.replace(valueDes);
-          break;
-        case r'validation_details':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(CatalogsFeedValidationDetails),
-          ) as CatalogsFeedValidationDetails;
-          result.validationDetails.replace(valueDes);
           break;
         case r'status':
           final valueDes = serializers.deserialize(
@@ -187,6 +182,21 @@ class _$CatalogsFeedProcessingResultSerializer implements PrimitiveSerializer<Ca
             specifiedType: const FullType(DateTime),
           ) as DateTime;
           result.updatedAt = valueDes;
+          break;
+        case r'validation_details':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(CatalogsFeedValidationDetails),
+          ) as CatalogsFeedValidationDetails;
+          result.validationDetails.replace(valueDes);
+          break;
+        case r'video_counts':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(CatalogsFeedVideoCounts),
+          ) as CatalogsFeedVideoCounts?;
+          if (valueDes == null) continue;
+          result.videoCounts.replace(valueDes);
           break;
         default:
           unhandled.add(key);

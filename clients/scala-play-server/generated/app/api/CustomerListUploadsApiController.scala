@@ -4,18 +4,17 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
+import model.CustomerListUpload
 import model.CustomerListUploadCreateRequest
 import model.CustomerListUploadCreateResponse
-import model.CustomerListUploadResponse
 import model.Error
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class CustomerListUploadsApiController @Inject()(cc: ControllerComponents, api: CustomerListUploadsApi) extends AbstractController(cc) {
   /**
     * POST /v5/ad_accounts/:adAccountId/customer_lists/:customerListId/uploads
-    * @param adAccountId Unique identifier of an ad account.
-    * @param customerListId Unique identifier of a customer list
+    * @param customerListId Customer list ID.
     */
   def customerListUploadsCreate(adAccountId: String, customerListId: String): Action[AnyContent] = Action { request =>
     def executeApi(): CustomerListUploadCreateResponse = {
@@ -32,12 +31,11 @@ class CustomerListUploadsApiController @Inject()(cc: ControllerComponents, api: 
 
   /**
     * GET /v5/ad_accounts/:adAccountId/customer_lists/:customerListId/uploads/:customerListUploadId
-    * @param adAccountId Unique identifier of an ad account.
-    * @param customerListId Unique identifier of a customer list
-    * @param customerListUploadId Unique identifier of a customer list upload
+    * @param customerListId Customer list ID.
+    * @param customerListUploadId Customer List Upload ID.
     */
   def customerListUploadsGet(adAccountId: String, customerListId: String, customerListUploadId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): CustomerListUploadResponse = {
+    def executeApi(): CustomerListUpload = {
       api.customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
     }
 
@@ -48,12 +46,11 @@ class CustomerListUploadsApiController @Inject()(cc: ControllerComponents, api: 
 
   /**
     * POST /v5/ad_accounts/:adAccountId/customer_lists/:customerListId/uploads/:customerListUploadId/run
-    * @param adAccountId Unique identifier of an ad account.
-    * @param customerListId Unique identifier of a customer list
-    * @param customerListUploadId Unique identifier of a customer list upload
+    * @param customerListId Customer list ID.
+    * @param customerListUploadId Customer List Upload ID.
     */
   def customerListUploadsRun(adAccountId: String, customerListId: String, customerListUploadId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): CustomerListUploadResponse = {
+    def executeApi(): CustomerListUpload = {
       api.customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
     }
 

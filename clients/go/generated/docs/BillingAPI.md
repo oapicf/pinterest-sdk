@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## AdsCreditRedeem
 
-> AdsCreditRedeemResponse AdsCreditRedeem(ctx, adAccountId).AdsCreditRedeemRequest(adsCreditRedeemRequest).Execute()
+> AdsCreditRedeem AdsCreditRedeem(ctx, adAccountId).AdsCreditRedeemCreate(adsCreditRedeemCreate).Execute()
 
 Redeem ad credits
 
@@ -40,16 +40,16 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	adsCreditRedeemRequest := *openapiclient.NewAdsCreditRedeemRequest("138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", true) // AdsCreditRedeemRequest | Redeem ad credits request.
+	adsCreditRedeemCreate := *openapiclient.NewAdsCreditRedeemCreate("138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", true) // AdsCreditRedeemCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.AdsCreditRedeem(context.Background(), adAccountId).AdsCreditRedeemRequest(adsCreditRedeemRequest).Execute()
+	resp, r, err := apiClient.BillingAPI.AdsCreditRedeem(context.Background(), adAccountId).AdsCreditRedeemCreate(adsCreditRedeemCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.AdsCreditRedeem``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AdsCreditRedeem`: AdsCreditRedeemResponse
+	// response from `AdsCreditRedeem`: AdsCreditRedeem
 	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.AdsCreditRedeem`: %v\n", resp)
 }
 ```
@@ -70,11 +70,11 @@ Other parameters are passed through a pointer to a apiAdsCreditRedeemRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **adsCreditRedeemRequest** | [**AdsCreditRedeemRequest**](AdsCreditRedeemRequest.md) | Redeem ad credits request. | 
+ **adsCreditRedeemCreate** | [**AdsCreditRedeemCreate**](AdsCreditRedeemCreate.md) |  | 
 
 ### Return type
 
-[**AdsCreditRedeemResponse**](AdsCreditRedeemResponse.md)
+[**AdsCreditRedeem**](AdsCreditRedeem.md)
 
 ### Authorization
 
@@ -113,7 +113,7 @@ import (
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ## BillingInvoicesGet
 
-> BillingInvoicesGet200Response BillingInvoicesGet(ctx, adAccountId).Bookmark(bookmark).PageSize(pageSize).Sort(sort).Order(order).Status(status).DocumentType(documentType).StartDueDate(startDueDate).EndDueDate(endDueDate).Execute()
+> BillingInvoicesGet200Response BillingInvoicesGet(ctx, adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).Sort(sort).Status(status).DocumentType(documentType).StartDueDate(startDueDate).EndDueDate(endDueDate).Execute()
 
 Get billing invoices
 
@@ -261,17 +261,17 @@ import (
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-	sort := "DUE_DATE" // string | Field of which to sort billing invoices (optional) (default to "DUE_DATE")
-	order := "ASCENDING" // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-	status := "OPEN" // string | Status of billing invoices to filter by (optional)
-	documentType := "INVOICE" // string | Document type of billing invoices to filter by (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+	order := openapiclient.Pinterest.Lib.PaginationOrder("ASCENDING") // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+	sort := openapiclient.BillingInvoiceSortField("DUE_DATE") // BillingInvoiceSortField | Field of which to sort billing invoices (optional) (default to "DUE_DATE")
+	status := openapiclient.BillingInvoiceStatus("OPEN") // BillingInvoiceStatus | Status of billing invoices to filter by (optional)
+	documentType := openapiclient.BillingInvoiceDocumentType("INVOICE") // BillingInvoiceDocumentType | Document type of billing invoices to filter by (optional)
 	startDueDate := time.Now() // string | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
 	endDueDate := time.Now() // string | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.BillingInvoicesGet(context.Background(), adAccountId).Bookmark(bookmark).PageSize(pageSize).Sort(sort).Order(order).Status(status).DocumentType(documentType).StartDueDate(startDueDate).EndDueDate(endDueDate).Execute()
+	resp, r, err := apiClient.BillingAPI.BillingInvoicesGet(context.Background(), adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).Sort(sort).Status(status).DocumentType(documentType).StartDueDate(startDueDate).EndDueDate(endDueDate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.BillingInvoicesGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -298,11 +298,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
- **sort** | **string** | Field of which to sort billing invoices | [default to &quot;DUE_DATE&quot;]
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | 
- **status** | **string** | Status of billing invoices to filter by | 
- **documentType** | **string** | Document type of billing invoices to filter by | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | 
+ **sort** | [**BillingInvoiceSortField**](BillingInvoiceSortField.md) | Field of which to sort billing invoices | [default to &quot;DUE_DATE&quot;]
+ **status** | [**BillingInvoiceStatus**](BillingInvoiceStatus.md) | Status of billing invoices to filter by | 
+ **documentType** | [**BillingInvoiceDocumentType**](BillingInvoiceDocumentType.md) | Document type of billing invoices to filter by | 
  **startDueDate** | **string** | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | 
  **endDueDate** | **string** | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | 
 
@@ -345,10 +345,10 @@ import (
 )
 
 func main() {
-	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
 	isActive := true // bool | Return active billing profiles, if false return all billing profiles.
+	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -377,10 +377,10 @@ Other parameters are passed through a pointer to a apiBillingProfilesGetRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **isActive** | **bool** | Return active billing profiles, if false return all billing profiles. | 
+
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -402,7 +402,7 @@ Name | Type | Description  | Notes
 
 ## SsioAccountsGet
 
-> SSIOAccountResponse SsioAccountsGet(ctx, adAccountId).Execute()
+> SSIOAccount SsioAccountsGet(ctx, adAccountId).Execute()
 
 Get Salesforce account details including bill-to information.
 
@@ -430,7 +430,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.SsioAccountsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SsioAccountsGet`: SSIOAccountResponse
+	// response from `SsioAccountsGet`: SSIOAccount
 	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.SsioAccountsGet`: %v\n", resp)
 }
 ```
@@ -454,7 +454,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SSIOAccountResponse**](SSIOAccountResponse.md)
+[**SSIOAccount**](SSIOAccount.md)
 
 ### Authorization
 
@@ -472,7 +472,7 @@ Name | Type | Description  | Notes
 
 ## SsioInsertionOrderCreate
 
-> SSIOCreateInsertionOrderResponse SsioInsertionOrderCreate(ctx, adAccountId).SSIOCreateInsertionOrderRequest(sSIOCreateInsertionOrderRequest).Execute()
+> SSIOInsertionOrder SsioInsertionOrderCreate(ctx, adAccountId).SSIOInsertionOrderCreate(sSIOInsertionOrderCreate).Execute()
 
 Create insertion order through SSIO.
 
@@ -492,16 +492,16 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	sSIOCreateInsertionOrderRequest := *openapiclient.NewSSIOCreateInsertionOrderRequest("test@example", "BillingContactFirstname_example", "BillingContactLastname_example", "test@example", "MediaContactFirstname_example", "MediaContactLastname_example", "PoNumber_example", "2020-12-20", "AcceptedTermsId_example", "BilltoBillingAddressId_example", "BilltoBusinessAddressId_example", "BilltoCompanyId_example", openapiclient.Currency("UNK"), "OrderLineType_example", "OrderName_example", "PmpId_example") // SSIOCreateInsertionOrderRequest | Order line to create.
+	sSIOInsertionOrderCreate := *openapiclient.NewSSIOInsertionOrderCreate("AcceptedTermsId_example", "BillingContactEmail_example", "BillingContactFirstname_example", "BillingContactLastname_example", "BilltoBillingAddressId_example", "BilltoBusinessAddressId_example", "BilltoCompanyId_example", openapiclient.Currency("UNK"), "MediaContactEmail_example", "MediaContactFirstname_example", "MediaContactLastname_example", openapiclient.SSIOOrderLineType("BUDGET"), "OrderName_example", "PmpId_example", "PoNumber_example", "StartDate_example") // SSIOInsertionOrderCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.SsioInsertionOrderCreate(context.Background(), adAccountId).SSIOCreateInsertionOrderRequest(sSIOCreateInsertionOrderRequest).Execute()
+	resp, r, err := apiClient.BillingAPI.SsioInsertionOrderCreate(context.Background(), adAccountId).SSIOInsertionOrderCreate(sSIOInsertionOrderCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.SsioInsertionOrderCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SsioInsertionOrderCreate`: SSIOCreateInsertionOrderResponse
+	// response from `SsioInsertionOrderCreate`: SSIOInsertionOrder
 	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.SsioInsertionOrderCreate`: %v\n", resp)
 }
 ```
@@ -522,11 +522,11 @@ Other parameters are passed through a pointer to a apiSsioInsertionOrderCreateRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sSIOCreateInsertionOrderRequest** | [**SSIOCreateInsertionOrderRequest**](SSIOCreateInsertionOrderRequest.md) | Order line to create. | 
+ **sSIOInsertionOrderCreate** | [**SSIOInsertionOrderCreate**](SSIOInsertionOrderCreate.md) |  | 
 
 ### Return type
 
-[**SSIOCreateInsertionOrderResponse**](SSIOCreateInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -544,7 +544,7 @@ Name | Type | Description  | Notes
 
 ## SsioInsertionOrderEdit
 
-> SSIOEditInsertionOrderResponse SsioInsertionOrderEdit(ctx, adAccountId).SSIOEditInsertionOrderRequest(sSIOEditInsertionOrderRequest).Execute()
+> SSIOInsertionOrder SsioInsertionOrderEdit(ctx, adAccountId).SSIOInsertionOrderUpdate(sSIOInsertionOrderUpdate).Execute()
 
 Edit insertion order through SSIO.
 
@@ -564,16 +564,16 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	sSIOEditInsertionOrderRequest := *openapiclient.NewSSIOEditInsertionOrderRequest() // SSIOEditInsertionOrderRequest | Order line to create.
+	sSIOInsertionOrderUpdate := *openapiclient.NewSSIOInsertionOrderUpdate() // SSIOInsertionOrderUpdate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.SsioInsertionOrderEdit(context.Background(), adAccountId).SSIOEditInsertionOrderRequest(sSIOEditInsertionOrderRequest).Execute()
+	resp, r, err := apiClient.BillingAPI.SsioInsertionOrderEdit(context.Background(), adAccountId).SSIOInsertionOrderUpdate(sSIOInsertionOrderUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.SsioInsertionOrderEdit``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SsioInsertionOrderEdit`: SSIOEditInsertionOrderResponse
+	// response from `SsioInsertionOrderEdit`: SSIOInsertionOrder
 	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.SsioInsertionOrderEdit`: %v\n", resp)
 }
 ```
@@ -594,11 +594,11 @@ Other parameters are passed through a pointer to a apiSsioInsertionOrderEditRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sSIOEditInsertionOrderRequest** | [**SSIOEditInsertionOrderRequest**](SSIOEditInsertionOrderRequest.md) | Order line to create. | 
+ **sSIOInsertionOrderUpdate** | [**SSIOInsertionOrderUpdate**](SSIOInsertionOrderUpdate.md) |  | 
 
 ### Return type
 
-[**SSIOEditInsertionOrderResponse**](SSIOEditInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -637,7 +637,7 @@ import (
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -668,7 +668,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -710,7 +710,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	pinOrderId := "0Q01N0000015hekSVDFDC" // string | The pin order id associated with the ssio insertion order
+	pinOrderId := "pinOrderId_example" // string | The pin order id associated with the ssio insertion order
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -763,7 +763,7 @@ Name | Type | Description  | Notes
 
 ## SsioOrderLinesGetByAdAccount
 
-> SsioOrderLinesGetByAdAccount200Response SsioOrderLinesGetByAdAccount(ctx, adAccountId).Bookmark(bookmark).PageSize(pageSize).PinOrderId(pinOrderId).Execute()
+> SsioOrderLinesGetByAdAccount200Response SsioOrderLinesGetByAdAccount(ctx, adAccountId).PinOrderId(pinOrderId).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 Get Salesforce order lines by ad account id.
 
@@ -783,13 +783,13 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
+	pinOrderId := "pinOrderId_example" // string | The pin order id associated with the SSIO insertion order (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-	pinOrderId := "0Q01N0000015hekSVDFDC" // string | The pin order id associated with the ssio insertino order (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.SsioOrderLinesGetByAdAccount(context.Background(), adAccountId).Bookmark(bookmark).PageSize(pageSize).PinOrderId(pinOrderId).Execute()
+	resp, r, err := apiClient.BillingAPI.SsioOrderLinesGetByAdAccount(context.Background(), adAccountId).PinOrderId(pinOrderId).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.SsioOrderLinesGetByAdAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -815,9 +815,9 @@ Other parameters are passed through a pointer to a apiSsioOrderLinesGetByAdAccou
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **pinOrderId** | **string** | The pin order id associated with the SSIO insertion order | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
- **pinOrderId** | **string** | The pin order id associated with the ssio insertino order | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 

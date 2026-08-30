@@ -5,12 +5,12 @@ All URIs are relative to *https://api.pinterest.com/v5*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**order_lines_get**](OrderLinesApi.md#order_lines_get) | **GET** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line |
-| [**order_lines_list**](OrderLinesApi.md#order_lines_list) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines |
+| [**order_lines_list**](OrderLinesApi.md#order_lines_list) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines. |
 
 
 ## order_lines_get
 
-> <OrderLine> order_lines_get(ad_account_id, order_line_id)
+> <OrderLine> order_lines_get(order_line_id, ad_account_id)
 
 Get order line
 
@@ -28,12 +28,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::OrderLinesApi.new
+order_line_id = 'order_line_id_example' # String | Order line ID.
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-order_line_id = 'order_line_id_example' # String | Unique identifier of an order line.
 
 begin
   # Get order line
-  result = api_instance.order_lines_get(ad_account_id, order_line_id)
+  result = api_instance.order_lines_get(order_line_id, ad_account_id)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling OrderLinesApi->order_lines_get: #{e}"
@@ -44,12 +44,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<OrderLine>, Integer, Hash)> order_lines_get_with_http_info(ad_account_id, order_line_id)
+> <Array(<OrderLine>, Integer, Hash)> order_lines_get_with_http_info(order_line_id, ad_account_id)
 
 ```ruby
 begin
   # Get order line
-  data, status_code, headers = api_instance.order_lines_get_with_http_info(ad_account_id, order_line_id)
+  data, status_code, headers = api_instance.order_lines_get_with_http_info(order_line_id, ad_account_id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <OrderLine>
@@ -62,8 +62,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **order_line_id** | **String** | Order line ID. |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **order_line_id** | **String** | Unique identifier of an order line. |  |
 
 ### Return type
 
@@ -83,7 +83,7 @@ end
 
 > <OrderLinesList200Response> order_lines_list(ad_account_id, opts)
 
-Get order lines
+Get order lines.
 
 List existing order lines associated with an ad account.
 
@@ -101,13 +101,13 @@ end
 api_instance = PinterestSdkClient::OrderLinesApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  order: 'ASCENDING', # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  bookmark: 'bookmark_example' # String | Cursor used to fetch the next page of items
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56, # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  order: PinterestSdkClient::PinterestLibPaginationOrder::ASCENDING # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 }
 
 begin
-  # Get order lines
+  # Get order lines.
   result = api_instance.order_lines_list(ad_account_id, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
@@ -123,7 +123,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get order lines
+  # Get order lines.
   data, status_code, headers = api_instance.order_lines_list_with_http_info(ad_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -138,9 +138,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
-| **order** | **String** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
+| **order** | [**PinterestLibPaginationOrder**](.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 
 ### Return type
 

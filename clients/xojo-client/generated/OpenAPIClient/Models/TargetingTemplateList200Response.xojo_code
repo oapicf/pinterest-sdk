@@ -7,7 +7,7 @@ Protected Class TargetingTemplateList200Response
 
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.TargetingTemplateGetResponseData
+		items() As OpenAPIClient.Models.TargetingTemplate
 	#tag EndProperty
 
 
@@ -60,7 +60,7 @@ Protected Class TargetingTemplateList200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="TargetingTemplateGetResponseData"
+			Type="TargetingTemplate"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

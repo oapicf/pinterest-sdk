@@ -10,30 +10,30 @@
 
 part of openapi.api;
 
+/// Account type filter for audience sharing.
+enum AudienceAccountType {
+  AD_ACCOUNT._(r'AD_ACCOUNT'),
+  BUSINESS_ACCOUNT._(r'BUSINESS_ACCOUNT'),
+  ;
 
-class AudienceAccountType {
-  /// Instantiate a new enum with the provided [value].
-  const AudienceAccountType._(this.value);
+  /// Instantiate a new enum with the provided value.
+  const AudienceAccountType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const AD_ACCOUNT = AudienceAccountType._(r'AD_ACCOUNT');
-  static const BUSINESS_ACCOUNT = AudienceAccountType._(r'BUSINESS_ACCOUNT');
-
-  /// List of all possible values in this [enum][AudienceAccountType].
-  static const values = <AudienceAccountType>[
-    AD_ACCOUNT,
-    BUSINESS_ACCOUNT,
-  ];
-
+  /// Returns the instance of [AudienceAccountType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static AudienceAccountType? fromJson(dynamic value) => AudienceAccountTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [AudienceAccountType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<AudienceAccountType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <AudienceAccountType>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class AudienceAccountTypeTypeTransformer {
 
   const AudienceAccountTypeTypeTransformer._();
 
-  String encode(AudienceAccountType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(AudienceAccountType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a AudienceAccountType.
+  /// Returns the instance of [AudienceAccountType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class AudienceAccountTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   AudienceAccountType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is AudienceAccountType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'AD_ACCOUNT': return AudienceAccountType.AD_ACCOUNT;
@@ -79,7 +84,7 @@ class AudienceAccountTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [AudienceAccountTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static AudienceAccountTypeTypeTransformer? _instance;
 }
 

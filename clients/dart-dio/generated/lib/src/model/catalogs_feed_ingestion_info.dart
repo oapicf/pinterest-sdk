@@ -98,22 +98,25 @@ class _$CatalogsFeedIngestionInfoSerializer implements PrimitiveSerializer<Catal
         case r'IN_STOCK':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.IN_STOCK = valueDes;
           break;
         case r'OUT_OF_STOCK':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.OUT_OF_STOCK = valueDes;
           break;
         case r'PREORDER':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.PREORDER = valueDes;
           break;
         default:

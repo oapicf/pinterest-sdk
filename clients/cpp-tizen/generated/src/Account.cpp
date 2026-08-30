@@ -24,7 +24,7 @@ void
 Account::__init()
 {
 	//about = std::string();
-	//account_type = std::string();
+	//account_type = null;
 	//board_count = int(0);
 	//business_name = std::string();
 	//follower_count = int(0);
@@ -124,9 +124,12 @@ Account::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&account_type, node, "std::string", "");
+		if (isprimitive("UserAccountType")) {
+			jsonToValue(&account_type, node, "UserAccountType", "UserAccountType");
 		} else {
+			
+			UserAccountType* obj = static_cast<UserAccountType*> (&account_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -261,11 +264,16 @@ Account::toJson()
 	}
 	const gchar *aboutKey = "about";
 	json_object_set_member(pJsonObject, aboutKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getAccountType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("UserAccountType")) {
+		UserAccountType obj = getAccountType();
+		node = converttoJson(&obj, "UserAccountType", "");
 	}
 	else {
+		
+		UserAccountType obj = static_cast<UserAccountType> (getAccountType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *account_typeKey = "account_type";
@@ -380,14 +388,14 @@ Account::setAbout(std::string  about)
 	this->about = about;
 }
 
-std::string
+UserAccountType
 Account::getAccountType()
 {
 	return account_type;
 }
 
 void
-Account::setAccountType(std::string  account_type)
+Account::setAccountType(UserAccountType  account_type)
 {
 	this->account_type = account_type;
 }

@@ -94,8 +94,9 @@ class _$LeadsExportResponseDataSerializer implements PrimitiveSerializer<LeadsEx
         case r'export_status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(LeadsExportStatus),
-          ) as LeadsExportStatus;
+            specifiedType: const FullType.nullable(LeadsExportStatus),
+          ) as LeadsExportStatus?;
+          if (valueDes == null) continue;
           result.exportStatus = valueDes;
           break;
         default:

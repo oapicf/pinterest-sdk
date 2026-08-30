@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdBatchItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdBatchItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Ad = openapi_server.resourceTypes.Ad
+  PinterestLibError = openapi_server.resourceTypes.PinterestLibError
+}
+resourceTypes {
+
+  AdBatchItem {
+    title = AdBatchItem
+    description = AdBatchItem
+    derivedFrom = Root
+    properties {
+        data {
+          type = Ad
+          description = ""
+          optional = false
+        }
+        exceptions {
+          type = PinterestLibError
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdBatchItem {
+    title = AdBatchItem
+    description = AdBatchItem
+    implements = openapi_server.resourceTypes.AdBatchItem
+
+  }
+}

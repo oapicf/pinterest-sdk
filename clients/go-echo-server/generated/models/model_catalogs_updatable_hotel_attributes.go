@@ -2,6 +2,7 @@ package models
 
 type CatalogsUpdatableHotelAttributes struct {
 
+	// Hotel address
 	Address CatalogsHotelAddress `json:"address,omitempty"`
 
 	// Base price of the hotel room per night followed by the ISO currency code
@@ -31,6 +32,7 @@ type CatalogsUpdatableHotelAttributes struct {
 	// Brief description of the hotel.
 	Description *string `json:"description,omitempty"`
 
+	// If specified, you must provide all properties
 	GuestRatings CatalogsHotelGuestRatings `json:"guest_ratings,omitempty"`
 
 	// Latitude of the hotel.

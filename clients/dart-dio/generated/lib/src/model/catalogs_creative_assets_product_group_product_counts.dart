@@ -12,14 +12,22 @@ part 'catalogs_creative_assets_product_group_product_counts.g.dart';
 /// Product counts for a Creative Assets CatalogsProductGroup
 ///
 /// Properties:
+/// * [appLinks] 
 /// * [catalogType] 
+/// * [images] 
 /// * [total] 
 /// * [videos] 
 @BuiltValue()
 abstract class CatalogsCreativeAssetsProductGroupProductCounts implements Built<CatalogsCreativeAssetsProductGroupProductCounts, CatalogsCreativeAssetsProductGroupProductCountsBuilder> {
+  @BuiltValueField(wireName: r'app_links')
+  num get appLinks;
+
   @BuiltValueField(wireName: r'catalog_type')
   CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum get catalogType;
   // enum catalogTypeEnum {  CREATIVE_ASSETS,  };
+
+  @BuiltValueField(wireName: r'images')
+  num get images;
 
   @BuiltValueField(wireName: r'total')
   num get total;
@@ -50,10 +58,20 @@ class _$CatalogsCreativeAssetsProductGroupProductCountsSerializer implements Pri
     CatalogsCreativeAssetsProductGroupProductCounts object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    yield r'app_links';
+    yield serializers.serialize(
+      object.appLinks,
+      specifiedType: const FullType(num),
+    );
     yield r'catalog_type';
     yield serializers.serialize(
       object.catalogType,
       specifiedType: const FullType(CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum),
+    );
+    yield r'images';
+    yield serializers.serialize(
+      object.images,
+      specifiedType: const FullType(num),
     );
     yield r'total';
     yield serializers.serialize(
@@ -88,12 +106,26 @@ class _$CatalogsCreativeAssetsProductGroupProductCountsSerializer implements Pri
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'app_links':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(num),
+          ) as num;
+          result.appLinks = valueDes;
+          break;
         case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum),
           ) as CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum;
           result.catalogType = valueDes;
+          break;
+        case r'images':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(num),
+          ) as num;
+          result.images = valueDes;
           break;
         case r'total':
           final valueDes = serializers.deserialize(

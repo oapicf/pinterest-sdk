@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dailyMetrics** | [**OpenAPI\Server\Model\PinAnalyticsMetricsResponseDailyMetricsInner**](PinAnalyticsMetricsResponseDailyMetricsInner.md) | Array with the requested daily metric records | [optional] 
+**dailyMetrics** | [**OpenAPI\Server\Model\PinAnalyticsDailyMetrics**](PinAnalyticsDailyMetrics.md) | Array with the requested daily metric records | [optional] 
 **lifetimeMetrics** | **int** | The lifetime metric name and value. | [optional] 
 **summaryMetrics** | **float** | The metric name and value over the requested period for each requested metric | [optional] 
 

@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **host** | **String** | HTTP request host from host header. |  |
-| **method** | **String** |  |  |
+| **method** | [**HttpMethod**](HttpMethod.md) |  |  |
 | **path** | **String** | HTTP request path. |  |
 | **request_headers** | **Hash&lt;String, String&gt;** | HTTP request headers as key-value pairs. | [optional] |
 | **response_headers** | **Hash&lt;String, String&gt;** | HTTP response headers as key-value pairs. | [optional] |

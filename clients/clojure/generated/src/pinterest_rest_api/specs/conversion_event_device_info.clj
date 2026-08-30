@@ -1,6 +1,9 @@
 (ns pinterest-rest-api.specs.conversion-event-device-info
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
+            [pinterest-rest-api.specs.form-factor :refer :all]
+            [pinterest-rest-api.specs.network-type :refer :all]
+            [pinterest-rest-api.specs.os-family :refer :all]
             )
   (:import (java.io File)))
 
@@ -13,13 +16,13 @@
    (ds/opt :cpu_cores) int?
    (ds/opt :external_storage_free_space) int?
    (ds/opt :external_storage_size) int?
-   (ds/opt :form_factor) string?
+   (ds/opt :form_factor) form-factor-spec
    (ds/opt :kernel_version) string?
    (ds/opt :languages) (s/coll-of string?)
    (ds/opt :locale) string?
    (ds/opt :model) string?
-   (ds/opt :network_type) string?
-   (ds/opt :os_family) string?
+   (ds/opt :network_type) network-type-spec
+   (ds/opt :os_family) os-family-spec
    (ds/opt :os_name) string?
    (ds/opt :os_release_name) string?
    (ds/opt :os_version) string?

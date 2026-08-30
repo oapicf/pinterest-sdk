@@ -12,18 +12,21 @@ static keyword_metrics_t *keyword_metrics_create_internal(
     if (!keyword_metrics_local_var) {
         return NULL;
     }
-    keyword_metrics_local_var->keyword_query_volume = keyword_query_volume;
-
+    memset(keyword_metrics_local_var, 0, sizeof(keyword_metrics_t));
     keyword_metrics_local_var->_library_owned = 1;
+    keyword_metrics_local_var->keyword_query_volume = keyword_query_volume;
     return keyword_metrics_local_var;
 }
 
 __attribute__((deprecated)) keyword_metrics_t *keyword_metrics_create(
     char *keyword_query_volume
     ) {
-    return keyword_metrics_create_internal (
+    keyword_metrics_t *result = keyword_metrics_create_internal (
         keyword_query_volume
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void keyword_metrics_free(keyword_metrics_t *keyword_metrics) {
@@ -64,6 +67,8 @@ keyword_metrics_t *keyword_metrics_parseFromJSON(cJSON *keyword_metricsJSON){
 
     keyword_metrics_t *keyword_metrics_local_var = NULL;
 
+    char *keyword_query_volume_local_str = NULL;
+
     // keyword_metrics->keyword_query_volume
     cJSON *keyword_query_volume = cJSON_GetObjectItemCaseSensitive(keyword_metricsJSON, "keyword_query_volume");
     if (cJSON_IsNull(keyword_query_volume)) {
@@ -77,12 +82,22 @@ keyword_metrics_t *keyword_metrics_parseFromJSON(cJSON *keyword_metricsJSON){
     }
 
 
+    if (keyword_query_volume && !cJSON_IsNull(keyword_query_volume)) keyword_query_volume_local_str = strdup(keyword_query_volume->valuestring);
+
     keyword_metrics_local_var = keyword_metrics_create_internal (
-        keyword_query_volume && !cJSON_IsNull(keyword_query_volume) ? strdup(keyword_query_volume->valuestring) : NULL
+        keyword_query_volume_local_str
         );
+
+    if (!keyword_metrics_local_var) {
+        goto end;
+    }
 
     return keyword_metrics_local_var;
 end:
+    if (keyword_query_volume_local_str) {
+        free(keyword_query_volume_local_str);
+        keyword_query_volume_local_str = NULL;
+    }
     return NULL;
 
 }

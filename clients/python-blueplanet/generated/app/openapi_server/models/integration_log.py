@@ -8,6 +8,8 @@ from typing import List, Dict  # noqa: F401
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.integration_log_client_error import IntegrationLogClientError  # noqa: F401,E501
 from app.openapi_server.models.integration_log_client_request import IntegrationLogClientRequest  # noqa: F401,E501
+from app.openapi_server.models.integration_log_event_type import IntegrationLogEventType  # noqa: F401,E501
+from app.openapi_server.models.integration_log_level import IntegrationLogLevel  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -17,7 +19,7 @@ class IntegrationLog(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, advertiser_id: str=None, app_version_number: str=None, client_timestamp: int=None, error: IntegrationLogClientError=None, event_type: str=None, external_business_id: str=None, feed_profile_id: str=None, log_level: str=None, merchant_id: str=None, message: str=None, platform_version_number: str=None, request: IntegrationLogClientRequest=None, tag_id: str=None):  # noqa: E501
+    def __init__(self, advertiser_id: str=None, app_version_number: str=None, client_timestamp: int=None, error: IntegrationLogClientError=None, event_type: IntegrationLogEventType=None, external_business_id: str=None, feed_profile_id: str=None, log_level: IntegrationLogLevel=None, merchant_id: str=None, message: str=None, platform_version_number: str=None, request: IntegrationLogClientRequest=None, tag_id: str=None):  # noqa: E501
         """IntegrationLog - a model defined in Swagger
 
         :param advertiser_id: The advertiser_id of this IntegrationLog.  # noqa: E501
@@ -29,13 +31,13 @@ class IntegrationLog(Model):
         :param error: The error of this IntegrationLog.  # noqa: E501
         :type error: IntegrationLogClientError
         :param event_type: The event_type of this IntegrationLog.  # noqa: E501
-        :type event_type: str
+        :type event_type: IntegrationLogEventType
         :param external_business_id: The external_business_id of this IntegrationLog.  # noqa: E501
         :type external_business_id: str
         :param feed_profile_id: The feed_profile_id of this IntegrationLog.  # noqa: E501
         :type feed_profile_id: str
         :param log_level: The log_level of this IntegrationLog.  # noqa: E501
-        :type log_level: str
+        :type log_level: IntegrationLogLevel
         :param merchant_id: The merchant_id of this IntegrationLog.  # noqa: E501
         :type merchant_id: str
         :param message: The message of this IntegrationLog.  # noqa: E501
@@ -52,10 +54,10 @@ class IntegrationLog(Model):
             'app_version_number': str,
             'client_timestamp': int,
             'error': IntegrationLogClientError,
-            'event_type': str,
+            'event_type': IntegrationLogEventType,
             'external_business_id': str,
             'feed_profile_id': str,
-            'log_level': str,
+            'log_level': IntegrationLogLevel,
             'merchant_id': str,
             'message': str,
             'platform_version_number': str,
@@ -199,31 +201,27 @@ class IntegrationLog(Model):
         self._error = error
 
     @property
-    def event_type(self) -> str:
+    def event_type(self) -> IntegrationLogEventType:
         """Gets the event_type of this IntegrationLog.
 
         Log event type  # noqa: E501
 
         :return: The event_type of this IntegrationLog.
-        :rtype: str
+        :rtype: IntegrationLogEventType
         """
         return self._event_type
 
     @event_type.setter
-    def event_type(self, event_type: str):
+    def event_type(self, event_type: IntegrationLogEventType):
         """Sets the event_type of this IntegrationLog.
 
         Log event type  # noqa: E501
 
         :param event_type: The event_type of this IntegrationLog.
-        :type event_type: str
+        :type event_type: IntegrationLogEventType
         """
-        allowed_values = ["APP", "API"]  # noqa: E501
-        if event_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `event_type` ({0}), must be one of {1}"
-                .format(event_type, allowed_values)
-            )
+        if event_type is None:
+            raise ValueError("Invalid value for `event_type`, must not be `None`")  # noqa: E501
 
         self._event_type = event_type
 
@@ -274,31 +272,27 @@ class IntegrationLog(Model):
         self._feed_profile_id = feed_profile_id
 
     @property
-    def log_level(self) -> str:
+    def log_level(self) -> IntegrationLogLevel:
         """Gets the log_level of this IntegrationLog.
 
         Log level type  # noqa: E501
 
         :return: The log_level of this IntegrationLog.
-        :rtype: str
+        :rtype: IntegrationLogLevel
         """
         return self._log_level
 
     @log_level.setter
-    def log_level(self, log_level: str):
+    def log_level(self, log_level: IntegrationLogLevel):
         """Sets the log_level of this IntegrationLog.
 
         Log level type  # noqa: E501
 
         :param log_level: The log_level of this IntegrationLog.
-        :type log_level: str
+        :type log_level: IntegrationLogLevel
         """
-        allowed_values = ["INFO", "WARN", "ERROR"]  # noqa: E501
-        if log_level not in allowed_values:
-            raise ValueError(
-                "Invalid value for `log_level` ({0}), must be one of {1}"
-                .format(log_level, allowed_values)
-            )
+        if log_level is None:
+            raise ValueError("Invalid value for `log_level`, must not be `None`")  # noqa: E501
 
         self._log_level = log_level
 

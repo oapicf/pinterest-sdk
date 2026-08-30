@@ -42,21 +42,7 @@
     },
     {
       "name": "form_factor",
-      "type": ["null", {
-        "type": "enum",
-        "name": "ConversionEventDeviceInfo_formUnderscorefactor",
-        "symbols": [
-          "desktop",
-          "laptop",
-          "cellphone",
-          "tablet",
-          "smartwatch",
-          "tv",
-          "vr",
-          "console",
-          "other"
-        ]
-      }],
+      "type": ["null", "model.FormFactor"],
       "doc": "Device form factor",
       "default": null
     },
@@ -89,38 +75,13 @@
     },
     {
       "name": "network_type",
-      "type": ["null", {
-        "type": "enum",
-        "name": "ConversionEventDeviceInfo_networkUnderscoretype",
-        "symbols": [
-          "wifi",
-          "cellular_2g",
-          "cellular_3g",
-          "cellular_4g",
-          "cellular_5g",
-          "cellular_6g",
-          "ethernet",
-          "unknown"
-        ]
-      }],
+      "type": ["null", "model.NetworkType"],
       "doc": "Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()",
       "default": null
     },
     {
       "name": "os_family",
-      "type": ["null", {
-        "type": "enum",
-        "name": "ConversionEventDeviceInfo_osUnderscorefamily",
-        "symbols": [
-          "ios",
-          "android",
-          "macos",
-          "windows",
-          "linux",
-          "bsd",
-          "other"
-        ]
-      }],
+      "type": ["null", "model.OsFamily"],
       "doc": "OS Family",
       "default": null
     },

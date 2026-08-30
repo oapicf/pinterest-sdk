@@ -10,6 +10,7 @@
 import { ErrorDetail } from './errorDetail';
 import { UserListOperationType } from './userListOperationType';
 import { RecordCounts } from './recordCounts';
+import { WorkloadState } from './workloadState';
 
 
 export interface CustomerListUpload { 
@@ -34,25 +35,17 @@ export interface CustomerListUpload {
      */
     id: string;
     operation: UserListOperationType;
-    record_counts?: RecordCounts | null;
     /**
-     * Workload processing state
+     * Record processing counts
      */
-    state: CustomerListUpload.StateEnum;
+    record_counts?: RecordCounts;
+    state: WorkloadState;
     /**
      * Customer List Upload updated_time. Epoch (seconds).
      */
     updated_time: number;
 }
 export namespace CustomerListUpload {
-    export const StateEnum = {
-        NotStarted: 'NOT_STARTED',
-        Running: 'RUNNING',
-        Paused: 'PAUSED',
-        Succeeded: 'SUCCEEDED',
-        Failed: 'FAILED'
-    } as const;
-    export type StateEnum = typeof StateEnum[keyof typeof StateEnum];
 }
 
 

@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BatchOperationStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.HotelProcessingRecord;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -19,36 +18,66 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Object describing the catalogs hotel items batch
+ * Object describing the catalogs hotel items batch. If specified, you must provide all properties.
  */
-@ApiModel(description="Object describing the catalogs hotel items batch")
+@ApiModel(description="Object describing the catalogs hotel items batch. If specified, you must provide all properties.")
 
 public class CatalogsHotelItemsBatch  {
   
  /**
   * Id of the catalogs items batch
   */
-  @ApiModelProperty(example = "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e", value = "Id of the catalogs items batch")
+  @ApiModelProperty(example = "595953100599279259", value = "Id of the catalogs items batch")
 
   private String batchId;
 
+public enum CatalogTypeEnum {
+
+HOTEL(String.valueOf("HOTEL"));
+
+
+    private String value;
+
+    CatalogTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
  /**
   * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
   */
-  @ApiModelProperty(value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
+  @ApiModelProperty(example = "2024-01-01T20:20Z", value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
 
   private Date completedTime;
 
  /**
   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
   */
-  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
+  @ApiModelProperty(example = "2024-01-01T20:10:40Z", value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
 
   private Date createdTime;
 
@@ -71,7 +100,7 @@ public class CatalogsHotelItemsBatch  {
    * @return batchId
   **/
   @JsonProperty("batch_id")
-  public String getBatchId() {
+ @Pattern(regexp="^\\d+$")  public String getBatchId() {
     return batchId;
   }
 
@@ -90,15 +119,18 @@ public class CatalogsHotelItemsBatch  {
   **/
   @JsonProperty("catalog_type")
   @NotNull
-  public CatalogsType getCatalogType() {
-    return catalogType;
+  public String getCatalogType() {
+    if (catalogType == null) {
+      return null;
+    }
+    return catalogType.value();
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
-  public CatalogsHotelItemsBatch catalogType(CatalogsType catalogType) {
+  public CatalogsHotelItemsBatch catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -112,6 +144,14 @@ public class CatalogsHotelItemsBatch  {
     return completedTime;
   }
 
+  public void setCompletedTime(Date completedTime) {
+    this.completedTime = completedTime;
+  }
+
+  public CatalogsHotelItemsBatch completedTime(Date completedTime) {
+    this.completedTime = completedTime;
+    return this;
+  }
 
  /**
    * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
@@ -122,6 +162,14 @@ public class CatalogsHotelItemsBatch  {
     return createdTime;
   }
 
+  public void setCreatedTime(Date createdTime) {
+    this.createdTime = createdTime;
+  }
+
+  public CatalogsHotelItemsBatch createdTime(Date createdTime) {
+    this.createdTime = createdTime;
+    return this;
+  }
 
  /**
    * Array with the catalogs items processing records part of the catalogs items batch
@@ -206,10 +254,7 @@ public class CatalogsHotelItemsBatch  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

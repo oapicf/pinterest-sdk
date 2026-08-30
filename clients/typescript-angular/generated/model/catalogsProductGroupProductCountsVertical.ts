@@ -10,7 +10,6 @@
 import { CatalogsRetailProductGroupProductCounts } from './catalogsRetailProductGroupProductCounts';
 import { CatalogsCreativeAssetsProductGroupProductCounts } from './catalogsCreativeAssetsProductGroupProductCounts';
 import { CatalogsHotelProductGroupProductCounts } from './catalogsHotelProductGroupProductCounts';
-import { CatalogsType } from './catalogsType';
 
 
 /**

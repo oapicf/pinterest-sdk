@@ -31,11 +31,11 @@ Method | HTTP request | Description
 
 ## adsCreditRedeem
 
-> adsCreditRedeem(adsCreditRedeemRequest): ApiRequest[AdsCreditRedeemResponse]
+> adsCreditRedeem(adsCreditRedeemRequest): ApiRequest[AdsCreditRedeem]
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -61,9 +61,9 @@ object Example extends App {
     val apiInstance = BillingApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val adsCreditRedeemRequest: AdsCreditRedeemRequest =  // AdsCreditRedeemRequest | Redeem ad credits request.
+    val adsCreditRedeemCreate: AdsCreditRedeemCreate =  // AdsCreditRedeemCreate | 
     
-    val request = apiInstance.adsCreditRedeem(adAccountId, adsCreditRedeemRequest)
+    val request = apiInstance.adsCreditRedeem(adAccountId, adsCreditRedeemCreate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -92,11 +92,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **adsCreditRedeemRequest** | [**AdsCreditRedeemRequest**](AdsCreditRedeemRequest.md)| Redeem ad credits request. |
+ **adsCreditRedeemCreate** | [**AdsCreditRedeemCreate**](AdsCreditRedeemCreate.md)|  |
 
 ### Return type
 
-ApiRequest[[**AdsCreditRedeemResponse**](AdsCreditRedeemResponse.md)]
+ApiRequest[[**AdsCreditRedeem**](AdsCreditRedeem.md)]
 
 
 ### Authorization
@@ -111,9 +111,14 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully redeemed ad credits. |  -  |
-| **400** | Error thrown when unable to redeem offer code. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## adsCreditsDiscountsGet
@@ -122,7 +127,7 @@ No authorization required
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -149,7 +154,7 @@ object Example extends App {
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
     val request = apiInstance.adsCreditsDiscountsGet(adAccountId, bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -181,7 +186,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -200,8 +205,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## billingInvoiceDownloadGet
@@ -285,9 +295,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully fetched Billing invoice information for a given ad account |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## billingInvoicesGet
@@ -302,6 +316,10 @@ Get billing invoices in the advertiser account.
 
 ```scala
 // Import classes:
+import 
+import 
+import 
+import 
 import 
 import 
 import 
@@ -324,21 +342,21 @@ object Example extends App {
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
-    val sort: String = DUE_DATE // String | Field of which to sort billing invoices
+    val order: PaginationOrder =  // PaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 
-    val order: String = ASCENDING // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+    val sort: BillingInvoiceSortField =  // BillingInvoiceSortField | Field of which to sort billing invoices
 
-    val status: String = OPEN // String | Status of billing invoices to filter by
+    val status: BillingInvoiceStatus =  // BillingInvoiceStatus | Status of billing invoices to filter by
 
-    val documentType: String = INVOICE // String | Document type of billing invoices to filter by
+    val documentType: BillingInvoiceDocumentType =  // BillingInvoiceDocumentType | Document type of billing invoices to filter by
 
-    val startDueDate: LocalDate = Sun Jan 01 00:00:00 UTC 2023 // LocalDate | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+    val startDueDate: LocalDate = 2013-10-20 // LocalDate | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
 
-    val endDueDate: LocalDate = Mon Jan 01 00:00:00 UTC 2024 // LocalDate | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+    val endDueDate: LocalDate = 2013-10-20 // LocalDate | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
     
-    val request = apiInstance.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
+    val request = apiInstance.billingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -368,11 +386,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
- **sort** | **String**| Field of which to sort billing invoices | [optional] [enum: DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
- **status** | **String**| Status of billing invoices to filter by | [optional] [enum: OPEN, CLOSED]
- **documentType** | **String**| Document type of billing invoices to filter by | [optional] [enum: INVOICE, CREDIT_MEMO]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
+ **order** | [**PaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
+ **sort** | [**BillingInvoiceSortField**](.md)| Field of which to sort billing invoices | [optional] [enum: DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER]
+ **status** | [**BillingInvoiceStatus**](.md)| Status of billing invoices to filter by | [optional] [enum: OPEN, CLOSED]
+ **documentType** | [**BillingInvoiceDocumentType**](.md)| Document type of billing invoices to filter by | [optional] [enum: INVOICE, CREDIT_MEMO]
  **startDueDate** | **LocalDate**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional]
  **endDueDate** | **LocalDate**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional]
 
@@ -393,9 +411,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## billingProfilesGet
@@ -404,7 +426,7 @@ No authorization required
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -427,15 +449,15 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BillingApi("https://api.pinterest.com/v5")
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
-
     val isActive: Boolean = true // Boolean | Return active billing profiles, if false return all billing profiles.
+
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.billingProfilesGet(adAccountId, isActive, bookmark, pageSize)
+    val request = apiInstance.billingProfilesGet(isActive, adAccountId, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -463,10 +485,10 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. |
  **isActive** | **Boolean**| Return active billing profiles, if false return all billing profiles. |
+ **adAccountId** | **String**| Unique identifier of an ad account. |
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -485,17 +507,22 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## ssioAccountsGet
 
-> ssioAccountsGet(ssioAccountsGetRequest): ApiRequest[SSIOAccountResponse]
+> ssioAccountsGet(ssioAccountsGetRequest): ApiRequest[SSIOAccount]
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -552,7 +579,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-ApiRequest[[**SSIOAccountResponse**](SSIOAccountResponse.md)]
+ApiRequest[[**SSIOAccount**](SSIOAccount.md)]
 
 
 ### Authorization
@@ -567,18 +594,22 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## ssioInsertionOrderCreate
 
-> ssioInsertionOrderCreate(ssioInsertionOrderCreateRequest): ApiRequest[SSIOCreateInsertionOrderResponse]
+> ssioInsertionOrderCreate(ssioInsertionOrderCreateRequest): ApiRequest[SSIOInsertionOrder]
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -604,9 +635,9 @@ object Example extends App {
     val apiInstance = BillingApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val sSIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest =  // SSIOCreateInsertionOrderRequest | Order line to create.
+    val sSIOInsertionOrderCreate: SSIOInsertionOrderCreate =  // SSIOInsertionOrderCreate | 
     
-    val request = apiInstance.ssioInsertionOrderCreate(adAccountId, sSIOCreateInsertionOrderRequest)
+    val request = apiInstance.ssioInsertionOrderCreate(adAccountId, sSIOInsertionOrderCreate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -635,11 +666,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **sSIOCreateInsertionOrderRequest** | [**SSIOCreateInsertionOrderRequest**](SSIOCreateInsertionOrderRequest.md)| Order line to create. |
+ **sSIOInsertionOrderCreate** | [**SSIOInsertionOrderCreate**](SSIOInsertionOrderCreate.md)|  |
 
 ### Return type
 
-ApiRequest[[**SSIOCreateInsertionOrderResponse**](SSIOCreateInsertionOrderResponse.md)]
+ApiRequest[[**SSIOInsertionOrder**](SSIOInsertionOrder.md)]
 
 
 ### Authorization
@@ -654,18 +685,23 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## ssioInsertionOrderEdit
 
-> ssioInsertionOrderEdit(ssioInsertionOrderEditRequest): ApiRequest[SSIOEditInsertionOrderResponse]
+> ssioInsertionOrderEdit(ssioInsertionOrderEditRequest): ApiRequest[SSIOInsertionOrder]
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -691,9 +727,9 @@ object Example extends App {
     val apiInstance = BillingApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val sSIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest =  // SSIOEditInsertionOrderRequest | Order line to create.
+    val sSIOInsertionOrderUpdate: SSIOInsertionOrderUpdate =  // SSIOInsertionOrderUpdate | 
     
-    val request = apiInstance.ssioInsertionOrderEdit(adAccountId, sSIOEditInsertionOrderRequest)
+    val request = apiInstance.ssioInsertionOrderEdit(adAccountId, sSIOInsertionOrderUpdate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -722,11 +758,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **sSIOEditInsertionOrderRequest** | [**SSIOEditInsertionOrderRequest**](SSIOEditInsertionOrderRequest.md)| Order line to create. |
+ **sSIOInsertionOrderUpdate** | [**SSIOInsertionOrderUpdate**](SSIOInsertionOrderUpdate.md)|  |
 
 ### Return type
 
-ApiRequest[[**SSIOEditInsertionOrderResponse**](SSIOEditInsertionOrderResponse.md)]
+ApiRequest[[**SSIOInsertionOrder**](SSIOInsertionOrder.md)]
 
 
 ### Authorization
@@ -741,9 +777,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## ssioInsertionOrdersStatusGetByAdAccount
@@ -752,7 +792,7 @@ No authorization required
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -779,7 +819,7 @@ object Example extends App {
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
     val request = apiInstance.ssioInsertionOrdersStatusGetByAdAccount(adAccountId, bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -811,7 +851,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -830,9 +870,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## ssioInsertionOrdersStatusGetByPinOrderId
@@ -841,7 +885,7 @@ No authorization required
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -866,7 +910,7 @@ object Example extends App {
     val apiInstance = BillingApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val pinOrderId: String = 0Q01N0000015hekSVDFDC // String | The pin order id associated with the ssio insertion order
+    val pinOrderId: String = pinOrderId_example // String | The pin order id associated with the ssio insertion order
     
     val request = apiInstance.ssioInsertionOrdersStatusGetByPinOrderId(adAccountId, pinOrderId)
     val response = apiInvoker.execute(request)
@@ -916,9 +960,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## ssioOrderLinesGetByAdAccount
@@ -927,7 +975,7 @@ No authorization required
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -952,13 +1000,13 @@ object Example extends App {
     val apiInstance = BillingApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
+    val pinOrderId: String = pinOrderId_example // String | The pin order id associated with the SSIO insertion order
+
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-
-    val pinOrderId: String = 0Q01N0000015hekSVDFDC // String | The pin order id associated with the ssio insertino order
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId)
+    val request = apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -987,9 +1035,9 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
+ **pinOrderId** | **String**| The pin order id associated with the SSIO insertion order | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
- **pinOrderId** | **String**| The pin order id associated with the ssio insertino order | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -1008,7 +1056,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -25,6 +25,7 @@ const (
 	TSV CatalogsFormat = "TSV"
 	CSV CatalogsFormat = "CSV"
 	XML CatalogsFormat = "XML"
+	INTEGRATION CatalogsFormat = "INTEGRATION"
 )
 
 // AllowedCatalogsFormatEnumValues is all the allowed values of CatalogsFormat enum
@@ -32,6 +33,7 @@ var AllowedCatalogsFormatEnumValues = []CatalogsFormat{
 	"TSV",
 	"CSV",
 	"XML",
+	"INTEGRATION",
 }
 
 // validCatalogsFormatEnumValue provides a map of CatalogsFormats for fast verification of use input
@@ -39,6 +41,7 @@ var validCatalogsFormatEnumValues = map[CatalogsFormat]struct{}{
 	"TSV": {},
 	"CSV": {},
 	"XML": {},
+	"INTEGRATION": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
@@ -59,8 +62,8 @@ func NewCatalogsFormatFromValue(v string) (CatalogsFormat, error) {
 }
 
 
-
-// AssertCatalogsFormatRequired checks if the required fields are not zero-ed
+// AssertCatalogsFormatRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsFormatRequired(obj CatalogsFormat) error {
 	return nil
 }

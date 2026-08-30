@@ -20,10 +20,10 @@ Get the Event Quality Score (EQS) of your conversion signals.  [Event Quality Sc
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**lookback_period** | [**LookbackPeriodOptions**](.md) | Lookback window (number of days). | [required] |
+**lookback_period** | [**LookbackPeriodOptions**](LookbackPeriodOptions.md) | Lookback window (number of days). | [required] |
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**source_platform** | Option<[**SourcePlatformOptions**](.md)> | Source platform of event. |  |
-**ingestion_source** | Option<[**IngestionSourceOptions**](.md)> | Ingestion source of event. |  |
+**source_platform** | Option<[**SourcePlatformOptions**](SourcePlatformOptions.md)> | Source platform of event. |  |
+**ingestion_source** | Option<[**IngestionSourceOptions**](IngestionSourceOptions.md)> | Ingestion source of event. |  |
 
 ### Return type
 

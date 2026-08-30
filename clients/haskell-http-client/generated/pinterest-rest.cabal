@@ -8,11 +8,11 @@ description:    .
                 .
                 base path: https://api.pinterest.com/v5
                 .
-                Pinterest REST API API version: 5.23.0
+                Pinterest REST API API version: 5.28.0
                 .
                 OpenAPI version: 3.0.3
                 .
-                Generator version: 7.18.0
+                Generator version: 7.24.0
                 .
 category:       Web
 homepage:       https://openapi-generator.tech
@@ -45,7 +45,7 @@ library
     , containers >=0.5.0.0 && <0.8
     , deepseq >= 1.4 && <1.6
     , exceptions >= 0.4
-    , http-api-data >= 0.3.4 && <0.6
+    , http-api-data >= 0.3.4 && <0.7
     , http-client >=0.5 && <0.8
     , http-client-tls
     , http-media >= 0.4 && < 0.9
@@ -84,13 +84,16 @@ library
       PinterestREST.API.CatalogItems
       PinterestREST.API.CatalogProductGroups
       PinterestREST.API.CatalogReports
+      PinterestREST.API.CatalogSupplemental
       PinterestREST.API.Catalogs
+      PinterestREST.API.ConversionDeletionRequests
       PinterestREST.API.ConversionEqs
       PinterestREST.API.ConversionEvents
       PinterestREST.API.ConversionTags
       PinterestREST.API.Conversions
       PinterestREST.API.CustomerListUploads
       PinterestREST.API.CustomerLists
+      PinterestREST.API.CustomerSegment
       PinterestREST.API.Integrations
       PinterestREST.API.Keywords
       PinterestREST.API.Labels
@@ -103,14 +106,16 @@ library
       PinterestREST.API.Oauth
       PinterestREST.API.OrderLines
       PinterestREST.API.Pins
-      PinterestREST.API.ProductCategories
       PinterestREST.API.ProductGroupPromotions
+      PinterestREST.API.ProductTags
       PinterestREST.API.Promotions
       PinterestREST.API.Resources
+      PinterestREST.API.Schedules
       PinterestREST.API.Search
       PinterestREST.API.TargetingTemplate
       PinterestREST.API.Terms
       PinterestREST.API.TermsOfService
+      PinterestREST.API.Trends
       PinterestREST.API.UserAccount
       PinterestREST.Client
       PinterestREST.Core

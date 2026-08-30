@@ -11,33 +11,31 @@
 part of openapi.api;
 
 /// Lead form question field type
-class LeadFormQuestionFieldType {
-  /// Instantiate a new enum with the provided [value].
-  const LeadFormQuestionFieldType._(this.value);
+enum LeadFormQuestionFieldType {
+  TEXT_FIELD._(r'TEXT_FIELD'),
+  TEXT_AREA._(r'TEXT_AREA'),
+  RADIO_LIST._(r'RADIO_LIST'),
+  CHECKBOX._(r'CHECKBOX'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const LeadFormQuestionFieldType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const TEXT_FIELD = LeadFormQuestionFieldType._(r'TEXT_FIELD');
-  static const TEXT_AREA = LeadFormQuestionFieldType._(r'TEXT_AREA');
-  static const RADIO_LIST = LeadFormQuestionFieldType._(r'RADIO_LIST');
-  static const CHECKBOX = LeadFormQuestionFieldType._(r'CHECKBOX');
-
-  /// List of all possible values in this [enum][LeadFormQuestionFieldType].
-  static const values = <LeadFormQuestionFieldType>[
-    TEXT_FIELD,
-    TEXT_AREA,
-    RADIO_LIST,
-    CHECKBOX,
-  ];
-
+  /// Returns the instance of [LeadFormQuestionFieldType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static LeadFormQuestionFieldType? fromJson(dynamic value) => LeadFormQuestionFieldTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [LeadFormQuestionFieldType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<LeadFormQuestionFieldType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <LeadFormQuestionFieldType>[];
     if (json is List && json.isNotEmpty) {
@@ -59,9 +57,11 @@ class LeadFormQuestionFieldTypeTypeTransformer {
 
   const LeadFormQuestionFieldTypeTypeTransformer._();
 
-  String encode(LeadFormQuestionFieldType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(LeadFormQuestionFieldType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a LeadFormQuestionFieldType.
+  /// Returns the instance of [LeadFormQuestionFieldType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -70,6 +70,9 @@ class LeadFormQuestionFieldTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   LeadFormQuestionFieldType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is LeadFormQuestionFieldType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'TEXT_FIELD': return LeadFormQuestionFieldType.TEXT_FIELD;
@@ -85,7 +88,7 @@ class LeadFormQuestionFieldTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [LeadFormQuestionFieldTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static LeadFormQuestionFieldTypeTypeTransformer? _instance;
 }
 

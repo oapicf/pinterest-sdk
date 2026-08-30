@@ -7,12 +7,15 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+/**
+ * Pinterest marketing partner name.
+ **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-
+@ApiModel(description = "Pinterest marketing partner name.")
 public class SSIOAccountPMPName   {
   
   private String id;
@@ -92,10 +95,7 @@ public class SSIOAccountPMPName   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

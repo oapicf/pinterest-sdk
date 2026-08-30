@@ -12,11 +12,11 @@ import org.joda.time.DateTime
 import AdvancedAuctionItem._
 
 case class AdvancedAuctionItem (
-  country: Country,
+  bidOptions: AdvancedAuctionBidOptions,
+country: Country,
 /* The catalog retail item id in the merchant namespace */
   itemId: String,
-language: Language,
-bidOptions: AdvancedAuctionBidOptions)
+language: Language)
 
 object AdvancedAuctionItem {
   import DateTimeCodecs._

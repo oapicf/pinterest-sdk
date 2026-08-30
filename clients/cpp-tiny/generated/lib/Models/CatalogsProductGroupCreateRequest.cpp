@@ -149,7 +149,7 @@ CatalogsProductGroupCreateRequest::getDescription()
 }
 
 void
-CatalogsProductGroupCreateRequest::setDescription(std::string  description)
+CatalogsProductGroupCreateRequest::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -161,7 +161,7 @@ CatalogsProductGroupCreateRequest::getFeedId()
 }
 
 void
-CatalogsProductGroupCreateRequest::setFeedId(std::string  feed_id)
+CatalogsProductGroupCreateRequest::setFeedId(std::string feed_id)
 {
 	this->feed_id = feed_id;
 }
@@ -173,7 +173,7 @@ CatalogsProductGroupCreateRequest::getFilters()
 }
 
 void
-CatalogsProductGroupCreateRequest::setFilters(CatalogsProductGroupFiltersRequest  filters)
+CatalogsProductGroupCreateRequest::setFilters(CatalogsProductGroupFiltersRequest filters)
 {
 	this->filters = filters;
 }
@@ -185,7 +185,7 @@ CatalogsProductGroupCreateRequest::isIsFeatured()
 }
 
 void
-CatalogsProductGroupCreateRequest::setIsFeatured(bool  is_featured)
+CatalogsProductGroupCreateRequest::setIsFeatured(bool is_featured)
 {
 	this->is_featured = is_featured;
 }
@@ -197,7 +197,7 @@ CatalogsProductGroupCreateRequest::getName()
 }
 
 void
-CatalogsProductGroupCreateRequest::setName(std::string  name)
+CatalogsProductGroupCreateRequest::setName(std::string name)
 {
 	this->name = name;
 }

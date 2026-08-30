@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ActionType;
+import org.openapitools.model.BidFloorObjectiveType;
 import org.openapitools.model.Country;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.Currency;
-import org.openapitools.model.ObjectiveType;
 import org.openapitools.model.OptimizationGoalMetadata;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -19,33 +19,56 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
+/**
+ * Bid floor specification for a given campaign configuration.
+ */
+@ApiModel(description="Bid floor specification for a given campaign configuration.")
+
 public class BidFloorSpec  {
   
-  @ApiModelProperty(required = true, value = "")
+ /**
+  * Ad group billable event type.
+  */
+  @ApiModelProperty(required = true, value = "Ad group billable event type.")
   @Valid
   private ActionType billableEvent;
 
-  @ApiModelProperty(value = "")
+ /**
+  * List of ISO 3166-1 alpha-2 country codes.
+  */
+  @ApiModelProperty(value = "List of ISO 3166-1 alpha-2 country codes.")
   @Valid
   private List<Country> countries = new ArrayList<>();
 
-  @ApiModelProperty(value = "")
+ /**
+  * Creative type for the bid floor request.
+  */
+  @ApiModelProperty(value = "Creative type for the bid floor request.")
   @Valid
   private CreativeType creativeType;
 
-  @ApiModelProperty(required = true, value = "")
+ /**
+  * Currency for the bid floor value.
+  */
+  @ApiModelProperty(required = true, value = "Currency for the bid floor value.")
   @Valid
   private Currency currency;
 
-  @ApiModelProperty(value = "")
+ /**
+  * Campaign objective type.
+  */
+  @ApiModelProperty(value = "Campaign objective type.")
   @Valid
-  private ObjectiveType objectiveType;
+  private BidFloorObjectiveType objectiveType;
 
-  @ApiModelProperty(value = "")
+ /**
+  * Optimization goal metadata.
+  */
+  @ApiModelProperty(value = "Optimization goal metadata.")
   @Valid
   private OptimizationGoalMetadata optimizationGoalMetadata;
  /**
-  * Get billableEvent
+  * Ad group billable event type.
   * @return billableEvent
   */
   @JsonProperty("billable_event")
@@ -70,7 +93,7 @@ public class BidFloorSpec  {
   }
 
  /**
-  * Get countries
+  * List of ISO 3166-1 alpha-2 country codes.
   * @return countries
   */
   @JsonProperty("countries")
@@ -102,7 +125,7 @@ public class BidFloorSpec  {
   }
 
  /**
-  * Get creativeType
+  * Creative type for the bid floor request.
   * @return creativeType
   */
   @JsonProperty("creative_type")
@@ -126,7 +149,7 @@ public class BidFloorSpec  {
   }
 
  /**
-  * Get currency
+  * Currency for the bid floor value.
   * @return currency
   */
   @JsonProperty("currency")
@@ -151,31 +174,31 @@ public class BidFloorSpec  {
   }
 
  /**
-  * Get objectiveType
+  * Campaign objective type.
   * @return objectiveType
   */
   @JsonProperty("objective_type")
-  public ObjectiveType getObjectiveType() {
+  public BidFloorObjectiveType getObjectiveType() {
     return objectiveType;
   }
 
   /**
    * Sets the <code>objectiveType</code> property.
    */
- public void setObjectiveType(ObjectiveType objectiveType) {
+ public void setObjectiveType(BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
   }
 
   /**
    * Sets the <code>objectiveType</code> property.
    */
-  public BidFloorSpec objectiveType(ObjectiveType objectiveType) {
+  public BidFloorSpec objectiveType(BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
     return this;
   }
 
  /**
-  * Get optimizationGoalMetadata
+  * Optimization goal metadata.
   * @return optimizationGoalMetadata
   */
   @JsonProperty("optimization_goal_metadata")
@@ -241,10 +264,7 @@ public class BidFloorSpec  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

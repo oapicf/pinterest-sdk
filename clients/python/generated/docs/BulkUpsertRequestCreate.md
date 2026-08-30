@@ -9,10 +9,11 @@ Name | Type | Description | Notes
 **ad_groups** | [**List[AdGroupCreateRequest]**](AdGroupCreateRequest.md) |  | [optional] 
 **ads** | [**List[AdCreateRequest]**](AdCreateRequest.md) |  | [optional] 
 **campaigns** | [**List[CampaignCreateRequest]**](CampaignCreateRequest.md) |  | [optional] 
-**catalog_product_groups** | [**List[MultipleProductGroupsInner]**](MultipleProductGroupsInner.md) |  | [optional] 
+**catalog_product_groups** | [**List[BulkUpsertRequestCreateCatalogProductGroupsItems]**](BulkUpsertRequestCreateCatalogProductGroupsItems.md) |  | [optional] 
 **keywords** | [**List[KeywordsRequest]**](KeywordsRequest.md) |  | [optional] 
-**labels** | [**List[LabelCreateRequest]**](LabelCreateRequest.md) |  | [optional] 
+**labels** | [**List[LabelBulkCreateRequest]**](LabelBulkCreateRequest.md) |  | [optional] 
 **product_groups** | [**List[ProductGroupPromotionCreateRequest]**](ProductGroupPromotionCreateRequest.md) |  | [optional] 
+**schedules** | [**List[ScheduleCreateRequest]**](ScheduleCreateRequest.md) |  | [optional] 
 
 ## Example
 

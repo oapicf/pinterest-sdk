@@ -13,7 +13,7 @@ import PinAnalyticsMetricsResponse._
 
 case class PinAnalyticsMetricsResponse (
   /* Array with the requested daily metric records */
-  dailyMetrics: Option[List[PinAnalyticsMetricsResponseDailyMetricsInner]],
+  dailyMetrics: Option[List[PinAnalyticsDailyMetrics]],
 /* The lifetime metric name and value. */
   lifetimeMetrics: Option[Map[String, Integer]],
 /* The metric name and value over the requested period for each requested metric */

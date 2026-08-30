@@ -1,7 +1,6 @@
 package com.prokarma.pkmst.model;
 
 import java.util.Objects;
-import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Response class to be returned by Api
@@ -11,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Summary status for campaign
+ * Gets or Sets CampaignSummaryStatus
  */
 public enum CampaignSummaryStatus {
   

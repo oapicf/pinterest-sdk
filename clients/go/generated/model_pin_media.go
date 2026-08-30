@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -163,7 +163,31 @@ func (dst *PinMedia) UnmarshalJSON(data []byte) error {
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(PinMedia)")
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(PinMedia): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(PinMedia)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(PinMedia): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(PinMedia)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(PinMedia): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(PinMedia)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(PinMedia): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(PinMedia)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(PinMedia): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(PinMedia)")
+        }
 	}
 }
 

@@ -8,7 +8,7 @@ Get a list of the boards a user follows. The request returns a board summary obj
 
 - `POST` to `/user_account/following/:username`, OperationId: `follow_user/update`:
 Follow user.
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 
 - `GET` to `/user_account/followers`, OperationId: `followers/list`:
 List followers.
@@ -20,7 +20,7 @@ Get a list of your linked business accounts.
 
 - `DELETE` to `/user_account/websites`, OperationId: `unverify_website/delete`:
 Unverify website.
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 - `GET` to `/user_account/analytics`, OperationId: `user_account/analytics`:
 Get user account analytics.
@@ -40,7 +40,7 @@ Get a list of a user&#39;s following interests in one place.
 
 - `GET` to `/user_account`, OperationId: `user_account/get`:
 Get user account.
-Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.
 
 - `GET` to `/user_account/following`, OperationId: `user_following/get`:
 List following.

@@ -9,15 +9,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AuthRespondInvitesBodyInvitesInner;
+import org.openapitools.model.AuthRespondInvitesBodyItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="An object with a list of all the invites the user would like to respond to and the action to take.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="An object with a list of all the invites the user would like to respond to and the action to take.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AuthRespondInvitesBody   {
   
-  private List<@Valid AuthRespondInvitesBodyInvitesInner> invites = new ArrayList<>();
+  private List<@Valid AuthRespondInvitesBodyItem> invites = new ArrayList<>();
 
   /**
    **/
@@ -25,10 +25,10 @@ public class AuthRespondInvitesBody   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("invites")
   @NotNull
- @Size(min=1,max=100)  public List<@Valid AuthRespondInvitesBodyInvitesInner> getInvites() {
+ @Size(min=1,max=100)  public List<@Valid AuthRespondInvitesBodyItem> getInvites() {
     return invites;
   }
-  public void setInvites(List<@Valid AuthRespondInvitesBodyInvitesInner> invites) {
+  public void setInvites(List<@Valid AuthRespondInvitesBodyItem> invites) {
     this.invites = invites;
   }
 
@@ -65,10 +65,7 @@ public class AuthRespondInvitesBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

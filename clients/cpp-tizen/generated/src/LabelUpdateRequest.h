@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "LabelUpdateRequest_labels_inner.h"
+#include "LabelUpdateItem.h"
 #include <list>
 #include "Object.h"
 
@@ -49,14 +49,14 @@ public:
 
 	/*! \brief Get Labels that you are applying to the campaign.
 	 */
-	std::list<LabelUpdateRequest_labels_inner> getLabels();
+	std::list<LabelUpdateItem> getLabels();
 
 	/*! \brief Set Labels that you are applying to the campaign.
 	 */
-	void setLabels(std::list <LabelUpdateRequest_labels_inner> labels);
+	void setLabels(std::list <LabelUpdateItem> labels);
 
 private:
-	std::list <LabelUpdateRequest_labels_inner>labels;
+	std::list <LabelUpdateItem>labels;
 	void __init();
 	void __cleanup();
 

@@ -1,13 +1,12 @@
 
 # CatalogsProduct
 
-Catalogs product for all verticals
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`catalogType` | [CatalogsType](CatalogsType.md)
+`catalogType` | string
 `metadata` | [CatalogsCreativeAssetsProductMetadata](CatalogsCreativeAssetsProductMetadata.md)
 `pin` | [Pin](Pin.md)
 

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -28,22 +28,63 @@ func NewIntegrationsAPIService() *IntegrationsAPIService {
 	return &IntegrationsAPIService{}
 }
 
+// IntegrationsGetList - Get integration metadata list
+func (s *IntegrationsAPIService) IntegrationsGetList(ctx context.Context, bookmark string, pageSize int32) (ImplResponse, error) {
+	// TODO - update IntegrationsGetList with the required logic for this service method.
+	// Add api_integrations_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, IntegrationsGetList200Response{}) or use other options such as http.Ok ...
+	// return Response(200, IntegrationsGetList200Response{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("IntegrationsGetList method not implemented")
+}
+
 // IntegrationsCommercePost - Create commerce integration
-func (s *IntegrationsAPIService) IntegrationsCommercePost(ctx context.Context, integrationRequest IntegrationRequest) (ImplResponse, error) {
+func (s *IntegrationsAPIService) IntegrationsCommercePost(ctx context.Context, integrationMetadataCreate IntegrationMetadataCreate) (ImplResponse, error) {
 	// TODO - update IntegrationsCommercePost with the required logic for this service method.
 	// Add api_integrations_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, IntegrationMetadata{}) or use other options such as http.Ok ...
 	// return Response(200, IntegrationMetadata{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, IntegrationMetadata{}) or use other options such as http.Ok ...
+	// return Response(201, IntegrationMetadata{}), nil
 
-	// TODO: Uncomment the next line to return response Response(409, Error{}) or use other options such as http.Ok ...
-	// return Response(409, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("IntegrationsCommercePost method not implemented")
 }
@@ -56,14 +97,23 @@ func (s *IntegrationsAPIService) IntegrationsCommerceGet(ctx context.Context, ex
 	// TODO: Uncomment the next line to return response Response(200, IntegrationMetadata{}) or use other options such as http.Ok ...
 	// return Response(200, IntegrationMetadata{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(409, Error{}) or use other options such as http.Ok ...
-	// return Response(409, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("IntegrationsCommerceGet method not implemented")
 }
@@ -73,64 +123,89 @@ func (s *IntegrationsAPIService) IntegrationsCommerceDel(ctx context.Context, ex
 	// TODO - update IntegrationsCommerceDel with the required logic for this service method.
 	// Add api_integrations_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
+	// TODO: Uncomment the next line to return response Response(200, IntegrationMetadata{}) or use other options such as http.Ok ...
+	// return Response(200, IntegrationMetadata{}), nil
+
 	// TODO: Uncomment the next line to return response Response(204, {}) or use other options such as http.Ok ...
 	// return Response(204, nil),nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("IntegrationsCommerceDel method not implemented")
 }
 
 // IntegrationsCommercePatch - Update commerce integration
-func (s *IntegrationsAPIService) IntegrationsCommercePatch(ctx context.Context, externalBusinessId string, integrationRequestPatch IntegrationRequestPatch) (ImplResponse, error) {
+func (s *IntegrationsAPIService) IntegrationsCommercePatch(ctx context.Context, externalBusinessId string, integrationMetadataUpdate IntegrationMetadataUpdate) (ImplResponse, error) {
 	// TODO - update IntegrationsCommercePatch with the required logic for this service method.
 	// Add api_integrations_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, IntegrationMetadata{}) or use other options such as http.Ok ...
 	// return Response(200, IntegrationMetadata{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(409, Error{}) or use other options such as http.Ok ...
-	// return Response(409, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("IntegrationsCommercePatch method not implemented")
 }
 
 // IntegrationsLogsPost - Receives batched logs from integration applications.
-func (s *IntegrationsAPIService) IntegrationsLogsPost(ctx context.Context, integrationLogsRequest IntegrationLogsRequest) (ImplResponse, error) {
+func (s *IntegrationsAPIService) IntegrationsLogsPost(ctx context.Context, integrationLogsRequestCreate IntegrationLogsRequestCreate) (ImplResponse, error) {
 	// TODO - update IntegrationsLogsPost with the required logic for this service method.
 	// Add api_integrations_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, IntegrationLogsSuccessResponse{}) or use other options such as http.Ok ...
 	// return Response(200, IntegrationLogsSuccessResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, IntegrationsLogsPost400Response{}) or use other options such as http.Ok ...
-	// return Response(400, IntegrationsLogsPost400Response{}), nil
+	// TODO: Uncomment the next line to return response Response(400, IntegrationLogsInvalidLogResponse{}) or use other options such as http.Ok ...
+	// return Response(400, IntegrationLogsInvalidLogResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("IntegrationsLogsPost method not implemented")
-}
-
-// IntegrationsGetList - Get integration metadata list
-func (s *IntegrationsAPIService) IntegrationsGetList(ctx context.Context, bookmark string, pageSize int32) (ImplResponse, error) {
-	// TODO - update IntegrationsGetList with the required logic for this service method.
-	// Add api_integrations_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, IntegrationsGetList200Response{}) or use other options such as http.Ok ...
-	// return Response(200, IntegrationsGetList200Response{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("IntegrationsGetList method not implemented")
 }
 
 // IntegrationsGetById - Get integration metadata
@@ -141,11 +216,23 @@ func (s *IntegrationsAPIService) IntegrationsGetById(ctx context.Context, id str
 	// TODO: Uncomment the next line to return response Response(200, IntegrationRecord{}) or use other options such as http.Ok ...
 	// return Response(200, IntegrationRecord{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("IntegrationsGetById method not implemented")
 }

@@ -1,11 +1,11 @@
 const utils = require('../utils/utils');
-const Label = require('../models/Label');
+const LabelErrorData = require('../models/LabelErrorData');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
-            ...Label.fields(`${keyPrefix}data`, isInput),
+            ...LabelErrorData.fields(`${keyPrefix}data`, isInput),
             {
                 key: `${keyPrefix}error_messages`,
                 label: `[${labelPrefix}error_messages]`,
@@ -17,7 +17,7 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'data': utils.removeIfEmpty(Label.mapping(bundle, `${keyPrefix}data`)),
+            'data': utils.removeIfEmpty(LabelErrorData.mapping(bundle, `${keyPrefix}data`)),
             'error_messages': bundle.inputData?.[`${keyPrefix}error_messages`],
         }
     },

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -64,11 +65,11 @@ func (c *BillingAPIController) Routes() Routes {
 			"/v5/ad_accounts/{ad_account_id}/ads_credit/redeem",
 			c.AdsCreditRedeem,
 		},
-		"BillingProfilesGet": Route{
-			"BillingProfilesGet",
+		"BillingInvoiceDownloadGet": Route{
+			"BillingInvoiceDownloadGet",
 			strings.ToUpper("Get"),
-			"/v5/ad_accounts/{ad_account_id}/billing_profiles",
-			c.BillingProfilesGet,
+			"/v5/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download",
+			c.BillingInvoiceDownloadGet,
 		},
 		"BillingInvoicesGet": Route{
 			"BillingInvoicesGet",
@@ -76,11 +77,11 @@ func (c *BillingAPIController) Routes() Routes {
 			"/v5/ad_accounts/{ad_account_id}/billing_invoices",
 			c.BillingInvoicesGet,
 		},
-		"BillingInvoiceDownloadGet": Route{
-			"BillingInvoiceDownloadGet",
+		"BillingProfilesGet": Route{
+			"BillingProfilesGet",
 			strings.ToUpper("Get"),
-			"/v5/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download",
-			c.BillingInvoiceDownloadGet,
+			"/v5/ad_accounts/{ad_account_id}/billing_profiles",
+			c.BillingProfilesGet,
 		},
 		"SsioAccountsGet": Route{
 			"SsioAccountsGet",
@@ -137,10 +138,10 @@ func (c *BillingAPIController) OrderedRoutes() []Route {
 			c.AdsCreditRedeem,
 		},
 		Route{
-			"BillingProfilesGet",
+			"BillingInvoiceDownloadGet",
 			strings.ToUpper("Get"),
-			"/v5/ad_accounts/{ad_account_id}/billing_profiles",
-			c.BillingProfilesGet,
+			"/v5/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download",
+			c.BillingInvoiceDownloadGet,
 		},
 		Route{
 			"BillingInvoicesGet",
@@ -149,10 +150,10 @@ func (c *BillingAPIController) OrderedRoutes() []Route {
 			c.BillingInvoicesGet,
 		},
 		Route{
-			"BillingInvoiceDownloadGet",
+			"BillingProfilesGet",
 			strings.ToUpper("Get"),
-			"/v5/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download",
-			c.BillingInvoiceDownloadGet,
+			"/v5/ad_accounts/{ad_account_id}/billing_profiles",
+			c.BillingProfilesGet,
 		},
 		Route{
 			"SsioAccountsGet",
@@ -251,22 +252,27 @@ func (c *BillingAPIController) AdsCreditRedeem(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var adsCreditRedeemRequestParam AdsCreditRedeemRequest
+	var adsCreditRedeemCreateParam AdsCreditRedeemCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&adsCreditRedeemRequestParam); err != nil {
+	if err := d.Decode(&adsCreditRedeemCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertAdsCreditRedeemRequestRequired(adsCreditRedeemRequestParam); err != nil {
+	if err := AssertAdsCreditRedeemCreateRequired(adsCreditRedeemCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertAdsCreditRedeemRequestConstraints(adsCreditRedeemRequestParam); err != nil {
+	if err := AssertAdsCreditRedeemCreateConstraints(adsCreditRedeemCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.AdsCreditRedeem(r.Context(), adAccountIdParam, adsCreditRedeemRequestParam)
+	result, err := c.service.AdsCreditRedeem(r.Context(), adAccountIdParam, adsCreditRedeemCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -276,61 +282,20 @@ func (c *BillingAPIController) AdsCreditRedeem(w http.ResponseWriter, r *http.Re
 	_ = EncodeJSONResponse(result.Body, &result.Code, w)
 }
 
-// BillingProfilesGet - Get billing profiles
-func (c *BillingAPIController) BillingProfilesGet(w http.ResponseWriter, r *http.Request) {
+// BillingInvoiceDownloadGet - Get download url for a billing invoice
+func (c *BillingAPIController) BillingInvoiceDownloadGet(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	query, err := parseQuery(r.URL.RawQuery)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
 	adAccountIdParam := params["ad_account_id"]
 	if adAccountIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var isActiveParam bool
-	if query.Has("is_active") {
-		param, err := parseBoolParameter(
-			query.Get("is_active"),
-			WithParse[bool](parseBool),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "is_active", Err: err}, nil)
-			return
-		}
-
-		isActiveParam = param
-	} else {
-		c.errorHandler(w, r, &RequiredError{Field: "is_active"}, nil)
+	billingInvoiceIdParam := params["billing_invoice_id"]
+	if billingInvoiceIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"billing_invoice_id"}, nil)
 		return
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	var pageSizeParam int32
-	if query.Has("page_size") {
-		param, err := parseNumericParameter[int32](
-			query.Get("page_size"),
-			WithParse[int32](parseInt32),
-			WithMinimum[int32](1),
-			WithMaximum[int32](250),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
-			return
-		}
-
-		pageSizeParam = param
-	} else {
-		var param int32 = 25
-		pageSizeParam = param
-	}
-	result, err := c.service.BillingProfilesGet(r.Context(), adAccountIdParam, isActiveParam, bookmarkParam, pageSizeParam)
+	result, err := c.service.BillingInvoiceDownloadGet(r.Context(), adAccountIdParam, billingInvoiceIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -378,32 +343,30 @@ func (c *BillingAPIController) BillingInvoicesGet(w http.ResponseWriter, r *http
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var sortParam string
-	if query.Has("sort") {
-		param := query.Get("sort")
-
-		sortParam = param
-	} else {
-		param := "DUE_DATE"
-		sortParam = param
-	}
-	var orderParam string
+	var orderParam PinterestLibPaginationOrder
 	if query.Has("order") {
-		param := query.Get("order")
+		param := PinterestLibPaginationOrder(query.Get("order"))
 
 		orderParam = param
 	} else {
 	}
-	var statusParam string
+	var sortParam BillingInvoiceSortField
+	if query.Has("sort") {
+		param := BillingInvoiceSortField(query.Get("sort"))
+
+		sortParam = param
+	} else {
+	}
+	var statusParam BillingInvoiceStatus
 	if query.Has("status") {
-		param := query.Get("status")
+		param := BillingInvoiceStatus(query.Get("status"))
 
 		statusParam = param
 	} else {
 	}
-	var documentTypeParam string
+	var documentTypeParam BillingInvoiceDocumentType
 	if query.Has("document_type") {
-		param := query.Get("document_type")
+		param := BillingInvoiceDocumentType(query.Get("document_type"))
 
 		documentTypeParam = param
 	} else {
@@ -422,7 +385,7 @@ func (c *BillingAPIController) BillingInvoicesGet(w http.ResponseWriter, r *http
 		endDueDateParam = param
 	} else {
 	}
-	result, err := c.service.BillingInvoicesGet(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, sortParam, orderParam, statusParam, documentTypeParam, startDueDateParam, endDueDateParam)
+	result, err := c.service.BillingInvoicesGet(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, orderParam, sortParam, statusParam, documentTypeParam, startDueDateParam, endDueDateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -432,20 +395,61 @@ func (c *BillingAPIController) BillingInvoicesGet(w http.ResponseWriter, r *http
 	_ = EncodeJSONResponse(result.Body, &result.Code, w)
 }
 
-// BillingInvoiceDownloadGet - Get download url for a billing invoice
-func (c *BillingAPIController) BillingInvoiceDownloadGet(w http.ResponseWriter, r *http.Request) {
+// BillingProfilesGet - Get billing profiles
+func (c *BillingAPIController) BillingProfilesGet(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
+	query, err := parseQuery(r.URL.RawQuery)
+	if err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	var isActiveParam bool
+	if query.Has("is_active") {
+		param, err := parseBoolParameter(
+			query.Get("is_active"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "is_active", Err: err}, nil)
+			return
+		}
+
+		isActiveParam = param
+	} else {
+		c.errorHandler(w, r, &RequiredError{Field: "is_active"}, nil)
+		return
+	}
 	adAccountIdParam := params["ad_account_id"]
 	if adAccountIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	billingInvoiceIdParam := params["billing_invoice_id"]
-	if billingInvoiceIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"billing_invoice_id"}, nil)
-		return
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
 	}
-	result, err := c.service.BillingInvoiceDownloadGet(r.Context(), adAccountIdParam, billingInvoiceIdParam)
+	var pageSizeParam int32
+	if query.Has("page_size") {
+		param, err := parseNumericParameter[int32](
+			query.Get("page_size"),
+			WithParse[int32](parseInt32),
+			WithMinimum[int32](1),
+			WithMaximum[int32](250),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
+			return
+		}
+
+		pageSizeParam = param
+	} else {
+		var param int32 = 25
+		pageSizeParam = param
+	}
+	result, err := c.service.BillingProfilesGet(r.Context(), isActiveParam, adAccountIdParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -481,22 +485,27 @@ func (c *BillingAPIController) SsioInsertionOrderCreate(w http.ResponseWriter, r
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var ssioCreateInsertionOrderRequestParam SsioCreateInsertionOrderRequest
+	var ssioInsertionOrderCreateParam SsioInsertionOrderCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&ssioCreateInsertionOrderRequestParam); err != nil {
+	if err := d.Decode(&ssioInsertionOrderCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertSsioCreateInsertionOrderRequestRequired(ssioCreateInsertionOrderRequestParam); err != nil {
+	if err := AssertSsioInsertionOrderCreateRequired(ssioInsertionOrderCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertSsioCreateInsertionOrderRequestConstraints(ssioCreateInsertionOrderRequestParam); err != nil {
+	if err := AssertSsioInsertionOrderCreateConstraints(ssioInsertionOrderCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.SsioInsertionOrderCreate(r.Context(), adAccountIdParam, ssioCreateInsertionOrderRequestParam)
+	result, err := c.service.SsioInsertionOrderCreate(r.Context(), adAccountIdParam, ssioInsertionOrderCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -514,22 +523,27 @@ func (c *BillingAPIController) SsioInsertionOrderEdit(w http.ResponseWriter, r *
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var ssioEditInsertionOrderRequestParam SsioEditInsertionOrderRequest
+	var ssioInsertionOrderUpdateParam SsioInsertionOrderUpdate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&ssioEditInsertionOrderRequestParam); err != nil {
+	if err := d.Decode(&ssioInsertionOrderUpdateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertSsioEditInsertionOrderRequestRequired(ssioEditInsertionOrderRequestParam); err != nil {
+	if err := AssertSsioInsertionOrderUpdateRequired(ssioInsertionOrderUpdateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertSsioEditInsertionOrderRequestConstraints(ssioEditInsertionOrderRequestParam); err != nil {
+	if err := AssertSsioInsertionOrderUpdateConstraints(ssioInsertionOrderUpdateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.SsioInsertionOrderEdit(r.Context(), adAccountIdParam, ssioEditInsertionOrderRequestParam)
+	result, err := c.service.SsioInsertionOrderEdit(r.Context(), adAccountIdParam, ssioInsertionOrderUpdateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -623,6 +637,13 @@ func (c *BillingAPIController) SsioOrderLinesGetByAdAccount(w http.ResponseWrite
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
+	var pinOrderIdParam string
+	if query.Has("pin_order_id") {
+		param := query.Get("pin_order_id")
+
+		pinOrderIdParam = param
+	} else {
+	}
 	var bookmarkParam string
 	if query.Has("bookmark") {
 		param := query.Get("bookmark")
@@ -648,14 +669,7 @@ func (c *BillingAPIController) SsioOrderLinesGetByAdAccount(w http.ResponseWrite
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var pinOrderIdParam string
-	if query.Has("pin_order_id") {
-		param := query.Get("pin_order_id")
-
-		pinOrderIdParam = param
-	} else {
-	}
-	result, err := c.service.SsioOrderLinesGetByAdAccount(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, pinOrderIdParam)
+	result, err := c.service.SsioOrderLinesGetByAdAccount(r.Context(), adAccountIdParam, pinOrderIdParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

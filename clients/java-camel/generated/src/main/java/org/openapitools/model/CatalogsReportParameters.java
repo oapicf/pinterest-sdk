@@ -11,16 +11,15 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.model.CatalogsHotelReportParameters;
 import org.openapitools.model.CatalogsHotelReportParametersReport;
 import org.openapitools.model.CatalogsRetailReportParameters;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 
 @JsonIgnoreProperties(
@@ -33,7 +32,7 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = CatalogsRetailReportParameters.class, name = "RETAIL")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public interface CatalogsReportParameters {
-    public CatalogsType getCatalogType();
+    public String getCatalogType();
 }

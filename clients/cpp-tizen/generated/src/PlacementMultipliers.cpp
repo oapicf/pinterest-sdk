@@ -23,7 +23,7 @@ PlacementMultipliers::~PlacementMultipliers()
 void
 PlacementMultipliers::__init()
 {
-	//pLACEMENT = std::string();
+	//pLACEMENT = null;
 }
 
 void
@@ -47,9 +47,12 @@ PlacementMultipliers::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&pLACEMENT, node, "std::string", "");
+		if (isprimitive("PlacementType")) {
+			jsonToValue(&pLACEMENT, node, "PlacementType", "PlacementType");
 		} else {
+			
+			PlacementType* obj = static_cast<PlacementType*> (&pLACEMENT);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -65,11 +68,16 @@ PlacementMultipliers::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getPLACEMENT();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("PlacementType")) {
+		PlacementType obj = getPLACEMENT();
+		node = converttoJson(&obj, "PlacementType", "");
 	}
 	else {
+		
+		PlacementType obj = static_cast<PlacementType> (getPLACEMENT());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *pLACEMENTKey = "PLACEMENT";
@@ -82,14 +90,14 @@ PlacementMultipliers::toJson()
 	return ret;
 }
 
-std::string
+PlacementType
 PlacementMultipliers::getPLACEMENT()
 {
 	return pLACEMENT;
 }
 
 void
-PlacementMultipliers::setPLACEMENT(std::string  pLACEMENT)
+PlacementMultipliers::setPLACEMENT(PlacementType  pLACEMENT)
 {
 	this->pLACEMENT = pLACEMENT;
 }

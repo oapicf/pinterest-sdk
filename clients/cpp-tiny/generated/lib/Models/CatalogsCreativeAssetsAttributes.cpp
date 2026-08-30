@@ -18,6 +18,7 @@ CatalogsCreativeAssetsAttributes::CatalogsCreativeAssetsAttributes()
 	link = std::string();
 	title = std::string();
 	visibility = std::string();
+	ai_disclosures = std::list<CatalogsAiContentDisclosure>();
 	image_link = std::string();
 	video_link = std::string();
 }
@@ -193,6 +194,28 @@ CatalogsCreativeAssetsAttributes::fromJson(std::string jsonObj)
 
     }
 
+    const char *ai_disclosuresKey = "ai_disclosures";
+
+    if(object.has_key(ai_disclosuresKey))
+    {
+        bourne::json value = object[ai_disclosuresKey];
+
+
+        std::list<CatalogsAiContentDisclosure> ai_disclosures_list;
+        CatalogsAiContentDisclosure element;
+        for(auto& var : value.array_range())
+        {
+
+
+            element.fromJson(var.dump());
+
+            ai_disclosures_list.push_back(element);
+        }
+        ai_disclosures = ai_disclosures_list;
+
+
+    }
+
     const char *image_linkKey = "image_link";
 
     if(object.has_key(image_linkKey))
@@ -314,6 +337,21 @@ CatalogsCreativeAssetsAttributes::toJson()
 
 
 
+    std::list<CatalogsAiContentDisclosure> ai_disclosures_list = getAiDisclosures();
+    bourne::json ai_disclosures_arr = bourne::json::array();
+
+    for(auto& var : ai_disclosures_list)
+    {
+        CatalogsAiContentDisclosure obj = var;
+        ai_disclosures_arr.append(obj.toJson());
+    }
+    object["ai_disclosures"] = ai_disclosures_arr;
+
+
+
+
+
+
 
     object["image_link"] = getImageLink();
 
@@ -337,7 +375,7 @@ CatalogsCreativeAssetsAttributes::getAndroidDeepLink()
 }
 
 void
-CatalogsCreativeAssetsAttributes::setAndroidDeepLink(std::string  android_deep_link)
+CatalogsCreativeAssetsAttributes::setAndroidDeepLink(std::string android_deep_link)
 {
 	this->android_deep_link = android_deep_link;
 }
@@ -349,7 +387,7 @@ CatalogsCreativeAssetsAttributes::getCustomLabel0()
 }
 
 void
-CatalogsCreativeAssetsAttributes::setCustomLabel0(std::string  custom_label_0)
+CatalogsCreativeAssetsAttributes::setCustomLabel0(std::string custom_label_0)
 {
 	this->custom_label_0 = custom_label_0;
 }
@@ -361,7 +399,7 @@ CatalogsCreativeAssetsAttributes::getCustomLabel1()
 }
 
 void
-CatalogsCreativeAssetsAttributes::setCustomLabel1(std::string  custom_label_1)
+CatalogsCreativeAssetsAttributes::setCustomLabel1(std::string custom_label_1)
 {
 	this->custom_label_1 = custom_label_1;
 }
@@ -373,7 +411,7 @@ CatalogsCreativeAssetsAttributes::getCustomLabel2()
 }
 
 void
-CatalogsCreativeAssetsAttributes::setCustomLabel2(std::string  custom_label_2)
+CatalogsCreativeAssetsAttributes::setCustomLabel2(std::string custom_label_2)
 {
 	this->custom_label_2 = custom_label_2;
 }
@@ -385,7 +423,7 @@ CatalogsCreativeAssetsAttributes::getCustomLabel3()
 }
 
 void
-CatalogsCreativeAssetsAttributes::setCustomLabel3(std::string  custom_label_3)
+CatalogsCreativeAssetsAttributes::setCustomLabel3(std::string custom_label_3)
 {
 	this->custom_label_3 = custom_label_3;
 }
@@ -397,7 +435,7 @@ CatalogsCreativeAssetsAttributes::getCustomLabel4()
 }
 
 void
-CatalogsCreativeAssetsAttributes::setCustomLabel4(std::string  custom_label_4)
+CatalogsCreativeAssetsAttributes::setCustomLabel4(std::string custom_label_4)
 {
 	this->custom_label_4 = custom_label_4;
 }
@@ -409,7 +447,7 @@ CatalogsCreativeAssetsAttributes::getDescription()
 }
 
 void
-CatalogsCreativeAssetsAttributes::setDescription(std::string  description)
+CatalogsCreativeAssetsAttributes::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -421,7 +459,7 @@ CatalogsCreativeAssetsAttributes::getGoogleProductCategory()
 }
 
 void
-CatalogsCreativeAssetsAttributes::setGoogleProductCategory(std::string  google_product_category)
+CatalogsCreativeAssetsAttributes::setGoogleProductCategory(std::string google_product_category)
 {
 	this->google_product_category = google_product_category;
 }
@@ -433,7 +471,7 @@ CatalogsCreativeAssetsAttributes::getIosDeepLink()
 }
 
 void
-CatalogsCreativeAssetsAttributes::setIosDeepLink(std::string  ios_deep_link)
+CatalogsCreativeAssetsAttributes::setIosDeepLink(std::string ios_deep_link)
 {
 	this->ios_deep_link = ios_deep_link;
 }
@@ -445,7 +483,7 @@ CatalogsCreativeAssetsAttributes::getLink()
 }
 
 void
-CatalogsCreativeAssetsAttributes::setLink(std::string  link)
+CatalogsCreativeAssetsAttributes::setLink(std::string link)
 {
 	this->link = link;
 }
@@ -457,7 +495,7 @@ CatalogsCreativeAssetsAttributes::getTitle()
 }
 
 void
-CatalogsCreativeAssetsAttributes::setTitle(std::string  title)
+CatalogsCreativeAssetsAttributes::setTitle(std::string title)
 {
 	this->title = title;
 }
@@ -469,9 +507,21 @@ CatalogsCreativeAssetsAttributes::getVisibility()
 }
 
 void
-CatalogsCreativeAssetsAttributes::setVisibility(std::string  visibility)
+CatalogsCreativeAssetsAttributes::setVisibility(std::string visibility)
 {
 	this->visibility = visibility;
+}
+
+std::list<CatalogsAiContentDisclosure>
+CatalogsCreativeAssetsAttributes::getAiDisclosures()
+{
+	return ai_disclosures;
+}
+
+void
+CatalogsCreativeAssetsAttributes::setAiDisclosures(std::list<CatalogsAiContentDisclosure> ai_disclosures)
+{
+	this->ai_disclosures = ai_disclosures;
 }
 
 std::string
@@ -481,7 +531,7 @@ CatalogsCreativeAssetsAttributes::getImageLink()
 }
 
 void
-CatalogsCreativeAssetsAttributes::setImageLink(std::string  image_link)
+CatalogsCreativeAssetsAttributes::setImageLink(std::string image_link)
 {
 	this->image_link = image_link;
 }
@@ -493,7 +543,7 @@ CatalogsCreativeAssetsAttributes::getVideoLink()
 }
 
 void
-CatalogsCreativeAssetsAttributes::setVideoLink(std::string  video_link)
+CatalogsCreativeAssetsAttributes::setVideoLink(std::string video_link)
 {
 	this->video_link = video_link;
 }

@@ -21,7 +21,7 @@ public class Media  {
 
   private String mediaId;
 
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "video", required = true, value = "")
 
   @Valid
 
@@ -108,10 +108,7 @@ public class Media  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

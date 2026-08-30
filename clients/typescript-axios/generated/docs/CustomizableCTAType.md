@@ -50,6 +50,8 @@ Select a call to action (CTA) to display below your ad. Available only for ads w
 
 * `FindALocation` (value: `'FIND_A_LOCATION'`)
 
+* `FindRetailers` (value: `'FIND_RETAILERS'`)
+
 * `GetDeal` (value: `'GET_DEAL'`)
 
 * `GetRecipe` (value: `'GET_RECIPE'`)
@@ -61,5 +63,7 @@ Select a call to action (CTA) to display below your ad. Available only for ads w
 * `PlayGame` (value: `'PLAY_GAME'`)
 
 * `TryIt` (value: `'TRY_IT'`)
+
+* `TakeAPeek` (value: `'TAKE_A_PEEK'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -23,7 +23,7 @@ Used by third-party partners to send notifications to Pinterest. These notificat
 //import org.openapitools.client.api.NotificationApi;
 
 NotificationApi apiInstance = new NotificationApi();
-NotificationPostRequest notificationPostRequest = new NotificationPostRequest(); // NotificationPostRequest | notification event.
+NotificationPostRequest notificationPostRequest = new NotificationPostRequest(); // NotificationPostRequest | 
 try {
     NotificationResponse result = apiInstance.notificationPost(notificationPostRequest);
     System.out.println(result);
@@ -38,7 +38,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md)| notification event. |
+ **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md)|  |
 
 ### Return type
 

@@ -25,7 +25,8 @@ export const CreativeType = {
     Quiz: 'QUIZ',
     Collage: 'COLLAGE',
     MaxWidthRegularCollection: 'MAX_WIDTH_REGULAR_COLLECTION',
-    MaxWidthVideoCollection: 'MAX_WIDTH_VIDEO_COLLECTION'
+    MaxWidthVideoCollection: 'MAX_WIDTH_VIDEO_COLLECTION',
+    App: 'APP'
 } as const;
 export type CreativeType = typeof CreativeType[keyof typeof CreativeType];
 

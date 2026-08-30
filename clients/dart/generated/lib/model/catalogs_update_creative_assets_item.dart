@@ -60,10 +60,12 @@ class CatalogsUpdateCreativeAssetsItem {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsUpdateCreativeAssetsItem[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsUpdateCreativeAssetsItem[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'attributes'), 'Required key "CatalogsUpdateCreativeAssetsItem[attributes]" is missing from JSON.');
+        assert(json[r'attributes'] != null, 'Required key "CatalogsUpdateCreativeAssetsItem[attributes]" has a null value in JSON.');
+        assert(json.containsKey(r'creative_assets_id'), 'Required key "CatalogsUpdateCreativeAssetsItem[creative_assets_id]" is missing from JSON.');
+        assert(json[r'creative_assets_id'] != null, 'Required key "CatalogsUpdateCreativeAssetsItem[creative_assets_id]" has a null value in JSON.');
+        assert(json.containsKey(r'operation'), 'Required key "CatalogsUpdateCreativeAssetsItem[operation]" is missing from JSON.');
+        assert(json[r'operation'] != null, 'Required key "CatalogsUpdateCreativeAssetsItem[operation]" has a null value in JSON.');
         return true;
       }());
 
@@ -125,27 +127,28 @@ class CatalogsUpdateCreativeAssetsItem {
 }
 
 
-class CatalogsUpdateCreativeAssetsItemOperationEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsUpdateCreativeAssetsItemOperationEnum._(this.value);
+enum CatalogsUpdateCreativeAssetsItemOperationEnum {
+  UPDATE._(r'UPDATE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsUpdateCreativeAssetsItemOperationEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const UPDATE = CatalogsUpdateCreativeAssetsItemOperationEnum._(r'UPDATE');
-
-  /// List of all possible values in this [enum][CatalogsUpdateCreativeAssetsItemOperationEnum].
-  static const values = <CatalogsUpdateCreativeAssetsItemOperationEnum>[
-    UPDATE,
-  ];
-
+  /// Returns the instance of [CatalogsUpdateCreativeAssetsItemOperationEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsUpdateCreativeAssetsItemOperationEnum? fromJson(dynamic value) => CatalogsUpdateCreativeAssetsItemOperationEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsUpdateCreativeAssetsItemOperationEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsUpdateCreativeAssetsItemOperationEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsUpdateCreativeAssetsItemOperationEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -167,9 +170,10 @@ class CatalogsUpdateCreativeAssetsItemOperationEnumTypeTransformer {
 
   const CatalogsUpdateCreativeAssetsItemOperationEnumTypeTransformer._();
 
-  String encode(CatalogsUpdateCreativeAssetsItemOperationEnum data) => data.value;
+  String encode(CatalogsUpdateCreativeAssetsItemOperationEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsUpdateCreativeAssetsItemOperationEnum.
+  /// Returns the instance of [CatalogsUpdateCreativeAssetsItemOperationEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -178,6 +182,9 @@ class CatalogsUpdateCreativeAssetsItemOperationEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsUpdateCreativeAssetsItemOperationEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsUpdateCreativeAssetsItemOperationEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'UPDATE': return CatalogsUpdateCreativeAssetsItemOperationEnum.UPDATE;
@@ -190,7 +197,7 @@ class CatalogsUpdateCreativeAssetsItemOperationEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsUpdateCreativeAssetsItemOperationEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsUpdateCreativeAssetsItemOperationEnumTypeTransformer? _instance;
 }
 

@@ -8,15 +8,25 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.IntegrationLogClientError
 import org.openapitools.client.models.IntegrationLogClientRequest
+import org.openapitools.client.models.IntegrationLogEventType
+import org.openapitools.client.models.IntegrationLogLevel
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -48,11 +58,11 @@ data class IntegrationLog (
 
     /* Log event type */
     @Json(name = "event_type")
-    val eventType: IntegrationLog.EventType,
+    val eventType: IntegrationLogEventType,
 
     /* Log level type */
     @Json(name = "log_level")
-    val logLevel: IntegrationLog.LogLevel,
+    val logLevel: IntegrationLogLevel,
 
     @Json(name = "advertiser_id")
     val advertiserId: kotlin.String? = null,
@@ -89,27 +99,6 @@ data class IntegrationLog (
 
 ) {
 
-    /**
-     * Log event type
-     *
-     * Values: APP,API
-     */
-    @JsonClass(generateAdapter = false)
-    enum class EventType(val value: kotlin.String) {
-        @Json(name = "APP") APP("APP"),
-        @Json(name = "API") API("API");
-    }
-    /**
-     * Log level type
-     *
-     * Values: INFO,WARN,ERROR
-     */
-    @JsonClass(generateAdapter = false)
-    enum class LogLevel(val value: kotlin.String) {
-        @Json(name = "INFO") INFO("INFO"),
-        @Json(name = "WARN") WARN("WARN"),
-        @Json(name = "ERROR") ERROR("ERROR");
-    }
 
 }
 

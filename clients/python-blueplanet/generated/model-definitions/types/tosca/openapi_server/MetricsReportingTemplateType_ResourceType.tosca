@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server MetricsReportingTemplateType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a MetricsReportingTemplateType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  MetricsReportingTemplateType {
+    title = MetricsReportingTemplateType
+    description = MetricsReportingTemplateType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  MetricsReportingTemplateType {
+    title = MetricsReportingTemplateType
+    description = MetricsReportingTemplateType
+    implements = openapi_server.resourceTypes.MetricsReportingTemplateType
+
+  }
+}

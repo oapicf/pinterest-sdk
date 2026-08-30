@@ -8,14 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+import org.openapitools.client.models.PartnerMetadata
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -26,7 +34,7 @@ import com.squareup.moshi.JsonClass
  * @param webhookUrl Standard HTTPS webhook URL.
  * @param leadFormId Lead form ID.
  * @param partnerAccessToken Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
- * @param partnerMetadata 
+ * @param partnerMetadata Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
  * @param partnerRefreshToken Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
  */
 
@@ -45,8 +53,9 @@ data class LeadSubscriptionPostParamsCreate (
     @Json(name = "partner_access_token")
     val partnerAccessToken: kotlin.String? = null,
 
+    /* Partner metadata. Only for clients that requires special handling. We recommend to avoid this param. */
     @Json(name = "partner_metadata")
-    val partnerMetadata: LeadSubscriptionPostParamsCreateAllOfPartnerMetadata? = null,
+    val partnerMetadata: PartnerMetadata? = null,
 
     /* Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. */
     @Json(name = "partner_refresh_token")

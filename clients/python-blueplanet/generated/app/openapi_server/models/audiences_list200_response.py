@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.audience import Audience  # noqa: F401,E501
+from app.openapi_server.models.ad_accounts_audience import AdAccountsAudience  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,17 +16,17 @@ class AudiencesList200Response(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, bookmark: str=None, items: List[Audience]=None):  # noqa: E501
+    def __init__(self, bookmark: str=None, items: List[AdAccountsAudience]=None):  # noqa: E501
         """AudiencesList200Response - a model defined in Swagger
 
         :param bookmark: The bookmark of this AudiencesList200Response.  # noqa: E501
         :type bookmark: str
         :param items: The items of this AudiencesList200Response.  # noqa: E501
-        :type items: List[Audience]
+        :type items: List[AdAccountsAudience]
         """
         self.swagger_types = {
             'bookmark': str,
-            'items': List[Audience]
+            'items': List[AdAccountsAudience]
         }
 
         self.attribute_map = {
@@ -70,22 +70,22 @@ class AudiencesList200Response(Model):
         self._bookmark = bookmark
 
     @property
-    def items(self) -> List[Audience]:
+    def items(self) -> List[AdAccountsAudience]:
         """Gets the items of this AudiencesList200Response.
 
 
         :return: The items of this AudiencesList200Response.
-        :rtype: List[Audience]
+        :rtype: List[AdAccountsAudience]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[Audience]):
+    def items(self, items: List[AdAccountsAudience]):
         """Sets the items of this AudiencesList200Response.
 
 
         :param items: The items of this AudiencesList200Response.
-        :type items: List[Audience]
+        :type items: List[AdAccountsAudience]
         """
         if items is None:
             raise ValueError("Invalid value for `items`, must not be `None`")  # noqa: E501

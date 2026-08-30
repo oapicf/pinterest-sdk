@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -15,37 +16,44 @@ import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * ConversionTag
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionTag {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String codeSnippet;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ConversionTagConfigs configs;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<EnhancedMatchStatusType> enhancedMatchStatus = JsonNullable.<EnhancedMatchStatusType>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> lastFiredTimeMs = JsonNullable.<BigDecimal>undefined();
 
   private String name;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String version;
 
   private String adAccountId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable EntityStatus status;
 
   public ConversionTag() {
@@ -76,6 +84,7 @@ public class ConversionTag {
     return codeSnippet;
   }
 
+  @JsonProperty("code_snippet")
   public void setCodeSnippet(@Nullable String codeSnippet) {
     this.codeSnippet = codeSnippet;
   }
@@ -96,6 +105,7 @@ public class ConversionTag {
     return configs;
   }
 
+  @JsonProperty("configs")
   public void setConfigs(@Nullable ConversionTagConfigs configs) {
     this.configs = configs;
   }
@@ -110,7 +120,7 @@ public class ConversionTag {
    * @return enhancedMatchStatus
    */
   @Valid 
-  @Schema(name = "enhanced_match_status", accessMode = Schema.AccessMode.READ_ONLY, description = "The enhanced match status of the tag", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "enhanced_match_status", accessMode = Schema.AccessMode.READ_ONLY, example = "VALIDATION_COMPLETE", description = "The enhanced match status of the tag", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("enhanced_match_status")
   public JsonNullable<EnhancedMatchStatusType> getEnhancedMatchStatus() {
     return enhancedMatchStatus;
@@ -136,6 +146,7 @@ public class ConversionTag {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(@Nullable String id) {
     this.id = id;
   }
@@ -170,12 +181,13 @@ public class ConversionTag {
    * @return name
    */
   @NotNull 
-  @Schema(name = "name", example = "ACME Checkout Test Tag", description = "Conversion tag name.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "name", example = "download_picture", description = "Conversion tag name.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
   public String getName() {
     return name;
   }
 
+  @JsonProperty("name")
   public void setName(String name) {
     this.name = name;
   }
@@ -196,6 +208,7 @@ public class ConversionTag {
     return version;
   }
 
+  @JsonProperty("version")
   public void setVersion(@Nullable String version) {
     this.version = version;
   }
@@ -216,6 +229,7 @@ public class ConversionTag {
     return adAccountId;
   }
 
+  @JsonProperty("ad_account_id")
   public void setAdAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
   }
@@ -236,6 +250,7 @@ public class ConversionTag {
     return status;
   }
 
+  @JsonProperty("status")
   public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
@@ -297,11 +312,8 @@ public class ConversionTag {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

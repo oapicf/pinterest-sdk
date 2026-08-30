@@ -13,8 +13,7 @@ import BusinessAssetMembersGet200Response._
 
 case class BusinessAssetMembersGet200Response (
   bookmark: Option[String],
-/* List of members with permissions to the asset. */
-  items: List[UserSingleAssetBinding])
+items: List[UserSingleAssetBinding])
 
 object BusinessAssetMembersGet200Response {
   import DateTimeCodecs._

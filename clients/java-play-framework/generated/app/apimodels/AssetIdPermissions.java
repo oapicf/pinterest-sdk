@@ -1,6 +1,7 @@
 package apimodels;
 
 import apimodels.AssetGroupBinding;
+import apimodels.AssetTypeResponse;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import javax.validation.Valid;
 /**
  * An object containing the permissions a business member has on the asset.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AssetIdPermissions   {
   @JsonProperty("asset_group_info")
@@ -22,18 +23,22 @@ public class AssetIdPermissions   {
   private AssetGroupBinding assetGroupInfo;
 
   @JsonProperty("asset_id")
-  @Pattern(regexp="^\\d+$")
+  @NotNull
+@Pattern(regexp="^\\d+$")
 @Size(min=1,max=20)
 
   private String assetId;
 
   @JsonProperty("asset_type")
-  
-  private String assetType;
+  @NotNull
+@Valid
+
+  private AssetTypeResponse assetType;
 
   @JsonProperty("permissions")
-  
-  private List<String> permissions = null;
+  @NotNull
+
+  private List<String> permissions = new ArrayList<>();
 
   public AssetIdPermissions assetGroupInfo(AssetGroupBinding assetGroupInfo) {
     this.assetGroupInfo = assetGroupInfo;
@@ -41,7 +46,7 @@ public class AssetIdPermissions   {
   }
 
    /**
-   * Get assetGroupInfo
+   * An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
    * @return assetGroupInfo
   **/
   public AssetGroupBinding getAssetGroupInfo() {
@@ -69,20 +74,20 @@ public class AssetIdPermissions   {
     this.assetId = assetId;
   }
 
-  public AssetIdPermissions assetType(String assetType) {
+  public AssetIdPermissions assetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
     return this;
   }
 
    /**
-   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+   * Get assetType
    * @return assetType
   **/
-  public String getAssetType() {
+  public AssetTypeResponse getAssetType() {
     return assetType;
   }
 
-  public void setAssetType(String assetType) {
+  public void setAssetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
   }
 
@@ -151,10 +156,7 @@ public class AssetIdPermissions   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

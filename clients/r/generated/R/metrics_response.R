@@ -7,7 +7,7 @@
 #' @title MetricsResponse
 #' @description MetricsResponse Class
 #' @format An \code{R6Class} generator object
-#' @field data  list(object) [optional]
+#' @field data  list(\link{MetricsResponseDataItems}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -24,7 +24,7 @@ MetricsResponse <- R6::R6Class(
     initialize = function(`data` = NULL, ...) {
       if (!is.null(`data`)) {
         stopifnot(is.vector(`data`), length(`data`) != 0)
-        sapply(`data`, function(x) stopifnot(is.character(x)))
+        sapply(`data`, function(x) stopifnot(R6::is.R6(x)))
         self$`data` <- `data`
       }
     },
@@ -62,9 +62,32 @@ MetricsResponse <- R6::R6Class(
       MetricsResponseObject <- list()
       if (!is.null(self$`data`)) {
         MetricsResponseObject[["data"]] <-
-          self$`data`
+          self$extractSimpleType(self$`data`)
       }
       return(MetricsResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -75,7 +98,7 @@ MetricsResponse <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`data`)) {
-        self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[object]", loadNamespace("openapi"))
+        self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[MetricsResponseDataItems]", loadNamespace("openapi"))
       }
       self
     },
@@ -98,7 +121,7 @@ MetricsResponse <- R6::R6Class(
     #' @return the instance of MetricsResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[object]", loadNamespace("openapi"))
+      self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[MetricsResponseDataItems]", loadNamespace("openapi"))
       self
     },
 

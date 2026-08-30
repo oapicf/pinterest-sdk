@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,6 @@ var _ MappedNullable = &SsioOrderLinesGetByAdAccount200Response{}
 // SsioOrderLinesGetByAdAccount200Response struct for SsioOrderLinesGetByAdAccount200Response
 type SsioOrderLinesGetByAdAccount200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	// SSIO order lines by ad acount id
 	Items []SSIOOrderLine `json:"items"`
 }
 

@@ -6,12 +6,12 @@ Protected Class TargetingTemplateApi
 		  // Create targeting templates
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter targetingTemplateCreate: (body) targeting template creation entity 
+		  // - parameter targetingTemplateCreate: (body)  
 		  //
-		  // Invokes TargetingTemplateApiCallbackHandler.TargetingTemplateCreateCallback(TargetingTemplateGetResponseData) on completion. 
+		  // Invokes TargetingTemplateApiCallbackHandler.TargetingTemplateCreateCallback(TargetingTemplate) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/targeting_templates
-		  // - <p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
+		  // - Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -48,7 +48,7 @@ Protected Class TargetingTemplateApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function TargetingTemplateCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.TargetingTemplateGetResponseData) As Boolean
+		Private Function TargetingTemplateCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.TargetingTemplate) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -56,7 +56,7 @@ Protected Class TargetingTemplateApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.TargetingTemplateGetResponseData
+			  outData = New OpenAPIClient.Models.TargetingTemplate
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -109,7 +109,7 @@ Protected Class TargetingTemplateApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.TargetingTemplateGetResponseData
+		  Dim data As OpenAPIClient.Models.TargetingTemplate
 		  CallbackHandler.TargetingTemplateCreateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -123,7 +123,7 @@ Protected Class TargetingTemplateApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.TargetingTemplateGetResponseData
+		  Dim data As OpenAPIClient.Models.TargetingTemplate
 		  Call TargetingTemplateCreatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.TargetingTemplateCreateCallback(error, data)
@@ -134,21 +134,21 @@ Protected Class TargetingTemplateApi
 
 
 	#tag Method, Flags = &h0
-		Sub TargetingTemplateList(, adAccountId As String, order As OrderEnum_TargetingTemplateList, Optional includeSizing As Xoson.O.OptionalBoolean, Optional searchQuery As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString)
+		Sub TargetingTemplateList(, adAccountId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, order As OpenAPIClient.Models.PinterestLibPaginationOrderOptional, Optional includeSizing As Xoson.O.OptionalBoolean, Optional searchQuery As Xoson.O.OptionalString)
 		  // Operation targeting_template/list
 		  // List targeting templates
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Sample)
-		  // - parameter includeSizing: (query) Include audience sizing in result or not (optional, default to false)
-		  // - parameter searchQuery: (query) Search keyword for targeting templates (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+		  // - parameter order: (query) The order in which to sort the items returned: &quot;ASCENDING&quot; or &quot;DESCENDING&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Nil)
+		  // - parameter includeSizing: (query) Include audience sizing in result or not (optional, default to false)
+		  // - parameter searchQuery: (query) Search query. Can contain pin description keywords or comma-separated pin IDs. (optional, default to Sample)
 		  //
 		  // Invokes TargetingTemplateApiCallbackHandler.TargetingTemplateListCallback(TargetingTemplateList200Response) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/targeting_templates
-		  // - Get a list of the targeting templates in the specified <code>ad_account_id</code>
+		  // - Get a list of the targeting templates in the specified `ad_account_id`
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -163,15 +163,15 @@ Protected Class TargetingTemplateApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  localVarQueryParams = localVarQueryParams + EncodeURLComponent("order") + "=" + EncodeURLComponent(OrderEnum_TargetingTemplateListToString(order))
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
+		  
+		  If order <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("order") + "=" + EncodeURLComponent(Xoson.toJSON(order))
 		  
 		  If includeSizing <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("include_sizing") + "=" + EncodeURLComponent(includeSizing.ToString)
 		  
 		  If searchQuery <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("search_query") + "=" + EncodeURLComponent(searchQuery)
-		  
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
-		  
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
 
 		  
@@ -284,31 +284,18 @@ Protected Class TargetingTemplateApi
 
 
 
-	#tag Method, Flags = &h21
-		Private Function OrderEnum_TargetingTemplateListToString(value As OrderEnum_TargetingTemplateList) As String
-		  Select Case value
-		    
-		    Case OrderEnum_TargetingTemplateList.Ascending
-		      Return "ASCENDING"
-		    Case OrderEnum_TargetingTemplateList.Descending
-		      Return "DESCENDING"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub TargetingTemplateUpdate(, adAccountId As String, targetingTemplateUpdateRequest As OpenAPIClient.Models.TargetingTemplateUpdateRequest)
+		Sub TargetingTemplateUpdate(, adAccountId As String, targetingTemplateUpdateRequestReadOrUpdate As OpenAPIClient.Models.TargetingTemplateUpdateRequestReadOrUpdate)
 		  // Operation targeting_template/update
 		  // Update targeting templates
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter targetingTemplateUpdateRequest: (body) Operation type and targeting template ID 
+		  // - parameter targetingTemplateUpdateRequestReadOrUpdate: (body)  
 		  //
 		  // Invokes TargetingTemplateApiCallbackHandler.TargetingTemplateUpdateCallback() on completion. 
 		  //
 		  // - PATCH /ad_accounts/{ad_account_id}/targeting_templates
-		  // - <p>Update the targeting template given advertiser ID and targeting template ID</p>
+		  // - Update the targeting template given advertiser ID and targeting template ID
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -317,7 +304,7 @@ Protected Class TargetingTemplateApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(targetingTemplateUpdateRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(targetingTemplateUpdateRequestReadOrUpdate), "application/json")
 		  
 		  
 		  
@@ -446,13 +433,6 @@ Protected Class TargetingTemplateApi
 	#tag Property, Flags = &h0
 		UseHTTPS As Boolean = true
 	#tag EndProperty
-
-	#tag Enum, Name = OrderEnum_TargetingTemplateList, Type = Integer, Flags = &h0
-		
-        Ascending
-        Descending
-		
-	#tag EndEnum
 
 
 	#tag ViewBehavior

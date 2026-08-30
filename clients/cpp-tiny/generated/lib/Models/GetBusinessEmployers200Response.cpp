@@ -102,7 +102,7 @@ Get_business_employers_200_response::getBookmark()
 }
 
 void
-Get_business_employers_200_response::setBookmark(std::string  bookmark)
+Get_business_employers_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Get_business_employers_200_response::getItems()
 }
 
 void
-Get_business_employers_200_response::setItems(std::list <UserBusinessRoleBinding> items)
+Get_business_employers_200_response::setItems(std::list<UserBusinessRoleBinding> items)
 {
 	this->items = items;
 }

@@ -4,13 +4,22 @@ const CustomizableCTAType = require('../models/CustomizableCTAType');
 const DisclosureType = require('../models/DisclosureType');
 const EntityStatus = require('../models/EntityStatus');
 const GridClickType = require('../models/GridClickType');
-const QuizPinData = require('../models/QuizPinData');
-const TrackingUrls = require('../models/TrackingUrls');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            {
+                key: `${keyPrefix}id`,
+                label: `The ID of this ad. - [${labelPrefix}id]`,
+                required: true,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}pin_id`,
+                label: `Pin ID. This field may only be updated for draft ads. - [${labelPrefix}pin_id]`,
+                type: 'string',
+            },
             {
                 key: `${keyPrefix}ad_group_id`,
                 label: `ID of the ad group that contains the ad. - [${labelPrefix}ad_group_id]`,
@@ -76,6 +85,11 @@ module.exports = {
                 type: 'string',
             },
             {
+                key: `${keyPrefix}is_carting`,
+                label: `Is the ad a carting/WTB ad? - [${labelPrefix}is_carting]`,
+                type: 'boolean',
+            },
+            {
                 key: `${keyPrefix}is_pin_deleted`,
                 label: `Is original pin deleted? - [${labelPrefix}is_pin_deleted]`,
                 type: 'boolean',
@@ -95,26 +109,23 @@ module.exports = {
                 label: `Name of the ad - 255 chars max. - [${labelPrefix}name]`,
                 type: 'string',
             },
-            ...QuizPinData.fields(`${keyPrefix}quiz_pin_data`, isInput),
+            {
+                key: `${keyPrefix}quiz_pin_data`,
+                label: `Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. - [${labelPrefix}quiz_pin_data]`,
+                dict: true,
+            },
             {
                 key: `${keyPrefix}status`,
                 ...EntityStatus.fields(`${keyPrefix}status`, isInput),
             },
-            ...TrackingUrls.fields(`${keyPrefix}tracking_urls`, isInput),
+            {
+                key: `${keyPrefix}tracking_urls`,
+                label: `[${labelPrefix}tracking_urls]`,
+                dict: true,
+            },
             {
                 key: `${keyPrefix}view_tracking_url`,
                 label: `Tracking URL for ad impressions. - [${labelPrefix}view_tracking_url]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}id`,
-                label: `The ID of this ad. - [${labelPrefix}id]`,
-                required: true,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}pin_id`,
-                label: `Pin ID. This field may only be updated for draft ads. - [${labelPrefix}pin_id]`,
                 type: 'string',
             },
         ]
@@ -122,6 +133,8 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'id': bundle.inputData?.[`${keyPrefix}id`],
+            'pin_id': bundle.inputData?.[`${keyPrefix}pin_id`],
             'ad_group_id': bundle.inputData?.[`${keyPrefix}ad_group_id`],
             'android_deep_link': bundle.inputData?.[`${keyPrefix}android_deep_link`],
             'carousel_android_deep_links': bundle.inputData?.[`${keyPrefix}carousel_android_deep_links`],
@@ -135,16 +148,15 @@ module.exports = {
             'disclosure_url': bundle.inputData?.[`${keyPrefix}disclosure_url`],
             'grid_click_type': bundle.inputData?.[`${keyPrefix}grid_click_type`],
             'ios_deep_link': bundle.inputData?.[`${keyPrefix}ios_deep_link`],
+            'is_carting': bundle.inputData?.[`${keyPrefix}is_carting`],
             'is_pin_deleted': bundle.inputData?.[`${keyPrefix}is_pin_deleted`],
             'is_removable': bundle.inputData?.[`${keyPrefix}is_removable`],
             'lead_form_id': bundle.inputData?.[`${keyPrefix}lead_form_id`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
-            'quiz_pin_data': utils.removeIfEmpty(QuizPinData.mapping(bundle, `${keyPrefix}quiz_pin_data`)),
+            'quiz_pin_data': bundle.inputData?.[`${keyPrefix}quiz_pin_data`],
             'status': bundle.inputData?.[`${keyPrefix}status`],
-            'tracking_urls': utils.removeIfEmpty(TrackingUrls.mapping(bundle, `${keyPrefix}tracking_urls`)),
+            'tracking_urls': bundle.inputData?.[`${keyPrefix}tracking_urls`],
             'view_tracking_url': bundle.inputData?.[`${keyPrefix}view_tracking_url`],
-            'id': bundle.inputData?.[`${keyPrefix}id`],
-            'pin_id': bundle.inputData?.[`${keyPrefix}pin_id`],
         }
     },
 }

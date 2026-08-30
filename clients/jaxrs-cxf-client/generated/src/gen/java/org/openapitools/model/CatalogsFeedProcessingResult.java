@@ -18,13 +18,12 @@ public class CatalogsFeedProcessingResult  {
 
   private Date createdAt;
 
-  @ApiModelProperty(required = true, value = "")
+ /**
+  * ID of the feed processing result.
+  */
+  @ApiModelProperty(example = "864344156814050986", required = true, value = "ID of the feed processing result.")
 
   private String id;
-
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
-
-  private Date updatedAt;
 
   @ApiModelProperty(required = true, value = "")
 
@@ -37,6 +36,10 @@ public class CatalogsFeedProcessingResult  {
   @ApiModelProperty(required = true, value = "")
 
   private CatalogsFeedProcessingStatus status;
+
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+
+  private Date updatedAt;
 
   @ApiModelProperty(required = true, value = "")
 
@@ -54,17 +57,9 @@ public class CatalogsFeedProcessingResult  {
     return createdAt;
   }
 
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public CatalogsFeedProcessingResult createdAt(Date createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
 
  /**
-   * Get id
+   * ID of the feed processing result.
    * @return id
   **/
   @JsonProperty("id")
@@ -78,24 +73,6 @@ public class CatalogsFeedProcessingResult  {
 
   public CatalogsFeedProcessingResult id(String id) {
     this.id = id;
-    return this;
-  }
-
- /**
-   * Get updatedAt
-   * @return updatedAt
-  **/
-  @JsonProperty("updated_at")
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  public CatalogsFeedProcessingResult updatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
     return this;
   }
 
@@ -154,6 +131,16 @@ public class CatalogsFeedProcessingResult  {
   }
 
  /**
+   * Get updatedAt
+   * @return updatedAt
+  **/
+  @JsonProperty("updated_at")
+  public Date getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+ /**
    * Get validationDetails
    * @return validationDetails
   **/
@@ -200,17 +187,17 @@ public class CatalogsFeedProcessingResult  {
     CatalogsFeedProcessingResult catalogsFeedProcessingResult = (CatalogsFeedProcessingResult) o;
     return Objects.equals(this.createdAt, catalogsFeedProcessingResult.createdAt) &&
         Objects.equals(this.id, catalogsFeedProcessingResult.id) &&
-        Objects.equals(this.updatedAt, catalogsFeedProcessingResult.updatedAt) &&
         Objects.equals(this.ingestionDetails, catalogsFeedProcessingResult.ingestionDetails) &&
         Objects.equals(this.productCounts, catalogsFeedProcessingResult.productCounts) &&
         Objects.equals(this.status, catalogsFeedProcessingResult.status) &&
+        Objects.equals(this.updatedAt, catalogsFeedProcessingResult.updatedAt) &&
         Objects.equals(this.validationDetails, catalogsFeedProcessingResult.validationDetails) &&
         Objects.equals(this.videoCounts, catalogsFeedProcessingResult.videoCounts);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, ingestionDetails, productCounts, status, validationDetails, videoCounts);
+    return Objects.hash(createdAt, id, ingestionDetails, productCounts, status, updatedAt, validationDetails, videoCounts);
   }
 
   @Override
@@ -220,10 +207,10 @@ public class CatalogsFeedProcessingResult  {
     
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    ingestionDetails: ").append(toIndentedString(ingestionDetails)).append("\n");
     sb.append("    productCounts: ").append(toIndentedString(productCounts)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    validationDetails: ").append(toIndentedString(validationDetails)).append("\n");
     sb.append("    videoCounts: ").append(toIndentedString(videoCounts)).append("\n");
     sb.append("}");
@@ -235,10 +222,7 @@ public class CatalogsFeedProcessingResult  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -20,7 +20,7 @@ resourceTypes {
     properties {
         catalog_id {
           type =  string
-          description = "Catalog id pertaining to the hotel product group."
+          description = "Catalog ID pertaining to the product group."
           optional = true
         }
         catalog_type {
@@ -46,12 +46,12 @@ resourceTypes {
         }
         id {
           type =  string
-          description = "ID of the hotel product group."
+          description = "ID of the catalog product group."
           optional = true
         }
         name {
           type =  string
-          description = "Name of hotel product group"
+          description = "Name of catalog product group"
           optional = false
         }
         type {

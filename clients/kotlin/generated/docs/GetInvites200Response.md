@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **items** | [**kotlin.collections.List&lt;InviteResponse&gt;**](InviteResponse.md) | List of invite and request data. |  |
+| **items** | [**kotlin.collections.List&lt;InviteResponse&gt;**](InviteResponse.md) |  |  |
 | **bookmark** | **kotlin.String** |  |  [optional] |
 
 

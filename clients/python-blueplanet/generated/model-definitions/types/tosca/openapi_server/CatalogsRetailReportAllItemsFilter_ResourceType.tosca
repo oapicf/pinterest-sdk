@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsRetailReportAllItemsFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsRetailReportAllItemsFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsRetailReportAllItemsFilter {
+    title = CatalogsRetailReportAllItemsFilter
+    description = CatalogsRetailReportAllItemsFilter
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Unique identifier of a catalog. If not given, oldest catalog will be used"
+          optional = false
+        }
+        product_group_id {
+          type =  string
+          description = "Optional product group ID. If omitted, all items are included. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature."
+          optional = false
+        }
+        report_type {
+          type =  string
+          description = ""
+          enum = ["ALL_ITEMS"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsRetailReportAllItemsFilter {
+    title = CatalogsRetailReportAllItemsFilter
+    description = CatalogsRetailReportAllItemsFilter
+    implements = openapi_server.resourceTypes.CatalogsRetailReportAllItemsFilter
+
+  }
+}

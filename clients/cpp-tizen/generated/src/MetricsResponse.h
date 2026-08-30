@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "MetricsResponseDataItems.h"
 #include <list>
 #include "Object.h"
 
@@ -48,14 +49,14 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<std::string> getData();
+	std::list<MetricsResponseDataItems> getData();
 
 	/*! \brief Set 
 	 */
-	void setData(std::list <std::string> data);
+	void setData(std::list <MetricsResponseDataItems> data);
 
 private:
-	std::list <std::string>data;
+	std::list <MetricsResponseDataItems>data;
 	void __init();
 	void __cleanup();
 

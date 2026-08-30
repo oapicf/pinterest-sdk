@@ -6,7 +6,7 @@ goog.provide('API.Client.CatalogsVerticalProductGroup');
 API.Client.CatalogsVerticalProductGroup = function() {}
 
 /**
- * Catalog id pertaining to the creative assets product group.
+ * Catalog ID pertaining to the product group.
  * @type {!string}
  * @export
  */
@@ -51,7 +51,7 @@ API.Client.CatalogsVerticalProductGroup.prototype.feedId;
 API.Client.CatalogsVerticalProductGroup.prototype.filters;
 
 /**
- * ID of the creative assets product group.
+ * ID of the catalog product group.
  * @type {!string}
  * @export
  */
@@ -71,7 +71,7 @@ API.Client.CatalogsVerticalProductGroup.prototype.isFeatured;
 API.Client.CatalogsVerticalProductGroup.prototype.locale;
 
 /**
- * Name of creative assets product group
+ * Name of catalog product group
  * @type {!string}
  * @export
  */

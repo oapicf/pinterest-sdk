@@ -15,21 +15,21 @@ Method | HTTP request | Description
 ```c
 // Get lead form by id
 //
-// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 //
-lead_form_response_t* LeadFormsAPI_leadFormGet(apiClient_t *apiClient, char *ad_account_id, char *lead_form_id);
+lead_form_t* LeadFormsAPI_leadFormGet(apiClient_t *apiClient, char *lead_form_id, char *ad_account_id);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**lead_form_id** | **char \*** | The ID of this lead form | 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**lead_form_id** | **char \*** | Unique identifier of a lead form. | 
 
 ### Return type
 
-[lead_form_response_t](lead_form_response.md) *
+[lead_form_t](lead_form.md) *
 
 
 ### Authorization
@@ -49,20 +49,20 @@ Name | Type | Description  | Notes
 //
 // Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
 //
-lead_form_test_response_t* LeadFormsAPI_leadFormTestCreate(apiClient_t *apiClient, char *ad_account_id, char *lead_form_id, lead_form_test_request_t *lead_form_test_request);
+lead_form_test_t* LeadFormsAPI_leadFormTestCreate(apiClient_t *apiClient, char *ad_account_id, char *lead_form_id, lead_form_test_create_t *lead_form_test_create);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**ad_account_id** | **char \*** | Unique identifier of an ad account. | 
+**ad_account_id** | **char \*** |  | 
 **lead_form_id** | **char \*** | Unique identifier of a lead form. | 
-**lead_form_test_request** | **[lead_form_test_request_t](lead_form_test_request.md) \*** | Subscription to create. | 
+**lead_form_test_create** | **[lead_form_test_create_t](lead_form_test_create.md) \*** |  | 
 
 ### Return type
 
-[lead_form_test_response_t](lead_form_test_response.md) *
+[lead_form_test_t](lead_form_test.md) *
 
 
 ### Authorization
@@ -80,9 +80,9 @@ Name | Type | Description  | Notes
 ```c
 // Create lead forms
 //
-// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 //
-lead_form_array_response_t* LeadFormsAPI_leadFormsCreate(apiClient_t *apiClient, char *ad_account_id, list_t *lead_form_create_request);
+lead_forms_create_200_response_t* LeadFormsAPI_leadFormsCreate(apiClient_t *apiClient, char *ad_account_id, list_t *lead_form_create);
 ```
 
 ### Parameters
@@ -90,11 +90,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**lead_form_create_request** | **[list_t](lead_form_create_request.md) \*** | List of lead forms to create, size limit [1, 30]. | 
+**lead_form_create** | **[list_t](lead_form_create.md) \*** |  | 
 
 ### Return type
 
-[lead_form_array_response_t](lead_form_array_response.md) *
+[lead_forms_create_200_response_t](lead_forms_create_200_response.md) *
 
 
 ### Authorization
@@ -112,9 +112,9 @@ Name | Type | Description  | Notes
 ```c
 // List lead forms
 //
-// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 //
-lead_forms_list_200_response_t* LeadFormsAPI_leadFormsList(apiClient_t *apiClient, char *ad_account_id, int *page_size, pinterest_rest_api_leadFormsList_order_e order, char *bookmark);
+lead_forms_list_200_response_t* LeadFormsAPI_leadFormsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_lib_pagination_order_e order);
 ```
 
 ### Parameters
@@ -122,9 +122,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
-**order** | **pinterest_rest_api_leadFormsList_order_e** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+**order** | **pinterest_lib_pagination_order_e** | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 
@@ -146,9 +146,9 @@ Name | Type | Description  | Notes
 ```c
 // Update lead forms
 //
-// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 //
-lead_form_array_response_t* LeadFormsAPI_leadFormsUpdate(apiClient_t *apiClient, char *ad_account_id, list_t *lead_form_update_request);
+lead_forms_create_200_response_t* LeadFormsAPI_leadFormsUpdate(apiClient_t *apiClient, char *ad_account_id, list_t *lead_form_batch_update);
 ```
 
 ### Parameters
@@ -156,11 +156,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**lead_form_update_request** | **[list_t](lead_form_update_request.md) \*** | List of lead forms to update, size limit [1, 30]. | 
+**lead_form_batch_update** | **[list_t](lead_form_batch_update.md) \*** |  | 
 
 ### Return type
 
-[lead_form_array_response_t](lead_form_array_response.md) *
+[lead_forms_create_200_response_t](lead_forms_create_200_response.md) *
 
 
 ### Authorization

@@ -1,33 +1,35 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
+import org.openapitools.model.AdAccountToAdAccountSharedAudience
+import org.openapitools.model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+import org.openapitools.model.AdAccountToBusinessSharedAudience
+import org.openapitools.model.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
 import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response
 import org.openapitools.model.AudienceAccountType
-import org.openapitools.model.AudiencesList200Response
-import org.openapitools.model.BusinessSharedAudience
-import org.openapitools.model.BusinessSharedAudienceResponse
-import org.openapitools.model.Error
-import org.openapitools.model.SharedAudience
-import org.openapitools.model.SharedAudienceResponse
+import org.openapitools.model.BusinessToAdAccountSharedAudience
+import org.openapitools.model.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+import org.openapitools.model.BusinessToBusinessSharedAudience
+import org.openapitools.model.BusinessToBusinessSharedAudienceUpdateWithRequiredBody
+import org.openapitools.model.Order
+import org.openapitools.model.PinterestLibError
+import org.openapitools.model.SharedAudiencesForBusinessList200Response
 
 class AudienceSharingApi {
     String basePath = "https://api.pinterest.com/v5"
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def adAccountsAudiencesSharedAccountsList ( String adAccountId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark, Closure onSuccess, Closure onFailure)  {
+    def adAccountsAudiencesSharedAccountsList ( String audienceId, AudienceAccountType accountType, String adAccountId, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/audiences/shared/accounts"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
-        // verify required params are set
-        if (adAccountId == null) {
-            throw new RuntimeException("missing required params adAccountId")
-        }
         // verify required params are set
         if (audienceId == null) {
             throw new RuntimeException("missing required params audienceId")
@@ -36,6 +38,10 @@ class AudienceSharingApi {
         if (accountType == null) {
             throw new RuntimeException("missing required params accountType")
         }
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
 
         if (audienceId != null) {
             queryParams.put("audience_id", audienceId)
@@ -43,29 +49,32 @@ class AudienceSharingApi {
         if (accountType != null) {
             queryParams.put("account_type", accountType)
         }
-        if (pageSize != null) {
-            queryParams.put("page_size", pageSize)
-        }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
         }
+        if (pageSize != null) {
+            queryParams.put("page_size", pageSize)
+        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     AdAccountsAudiencesSharedAccountsList200Response.class )
 
     }
 
-    def businessAccountAudiencesSharedAccountsList ( String businessId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark, Closure onSuccess, Closure onFailure)  {
+    def businessAccountAudiencesSharedAccountsList ( String businessId, String audienceId, AudienceAccountType accountType, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/audiences/shared/accounts"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -87,29 +96,32 @@ class AudienceSharingApi {
         if (accountType != null) {
             queryParams.put("account_type", accountType)
         }
-        if (pageSize != null) {
-            queryParams.put("page_size", pageSize)
-        }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
         }
+        if (pageSize != null) {
+            queryParams.put("page_size", pageSize)
+        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     AdAccountsAudiencesSharedAccountsList200Response.class )
 
     }
 
-    def sharedAudiencesForBusinessList ( String businessId, String bookmark, String order, Integer pageSize, Closure onSuccess, Closure onFailure)  {
+    def sharedAudiencesForBusinessList ( String businessId, Order order, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/audiences"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -117,11 +129,11 @@ class AudienceSharingApi {
             throw new RuntimeException("missing required params businessId")
         }
 
-        if (bookmark != null) {
-            queryParams.put("bookmark", bookmark)
-        }
         if (order != null) {
             queryParams.put("order", order)
+        }
+        if (bookmark != null) {
+            queryParams.put("bookmark", bookmark)
         }
         if (pageSize != null) {
             queryParams.put("page_size", pageSize)
@@ -130,19 +142,22 @@ class AudienceSharingApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    AudiencesList200Response.class )
+                    SharedAudiencesForBusinessList200Response.class )
 
     }
 
-    def updateAdAccountToAdAccountSharedAudience ( String adAccountId, SharedAudience sharedAudience, Closure onSuccess, Closure onFailure)  {
+    def updateAdAccountToAdAccountSharedAudience ( String adAccountId, AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/audiences/ad_accounts/shared"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -150,29 +165,32 @@ class AudienceSharingApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (sharedAudience == null) {
-            throw new RuntimeException("missing required params sharedAudience")
+        if (adAccountToAdAccountSharedAudienceUpdateWithRequiredBody == null) {
+            throw new RuntimeException("missing required params adAccountToAdAccountSharedAudienceUpdateWithRequiredBody")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = sharedAudience
+        bodyParams = adAccountToAdAccountSharedAudienceUpdateWithRequiredBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
-                    SharedAudienceResponse.class )
+                    AdAccountToAdAccountSharedAudience.class )
 
     }
 
-    def updateAdAccountToBusinessSharedAudience ( String adAccountId, BusinessSharedAudience businessSharedAudience, Closure onSuccess, Closure onFailure)  {
+    def updateAdAccountToBusinessSharedAudience ( String adAccountId, AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/audiences/businesses/shared"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -180,29 +198,32 @@ class AudienceSharingApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (businessSharedAudience == null) {
-            throw new RuntimeException("missing required params businessSharedAudience")
+        if (adAccountToBusinessSharedAudienceUpdateWithRequiredBody == null) {
+            throw new RuntimeException("missing required params adAccountToBusinessSharedAudienceUpdateWithRequiredBody")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = businessSharedAudience
+        bodyParams = adAccountToBusinessSharedAudienceUpdateWithRequiredBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
-                    BusinessSharedAudienceResponse.class )
+                    AdAccountToBusinessSharedAudience.class )
 
     }
 
-    def updateBusinessToAdAccountSharedAudience ( String businessId, SharedAudience sharedAudience, Closure onSuccess, Closure onFailure)  {
+    def updateBusinessToAdAccountSharedAudience ( String businessId, BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/audiences/ad_accounts/shared"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -210,29 +231,32 @@ class AudienceSharingApi {
             throw new RuntimeException("missing required params businessId")
         }
         // verify required params are set
-        if (sharedAudience == null) {
-            throw new RuntimeException("missing required params sharedAudience")
+        if (businessToAdAccountSharedAudienceUpdateWithRequiredBody == null) {
+            throw new RuntimeException("missing required params businessToAdAccountSharedAudienceUpdateWithRequiredBody")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = sharedAudience
+        bodyParams = businessToAdAccountSharedAudienceUpdateWithRequiredBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
-                    SharedAudienceResponse.class )
+                    BusinessToAdAccountSharedAudience.class )
 
     }
 
-    def updateBusinessToBusinessSharedAudience ( String businessId, BusinessSharedAudience businessSharedAudience, Closure onSuccess, Closure onFailure)  {
+    def updateBusinessToBusinessSharedAudience ( String businessId, BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/audiences/businesses/shared"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -240,19 +264,21 @@ class AudienceSharingApi {
             throw new RuntimeException("missing required params businessId")
         }
         // verify required params are set
-        if (businessSharedAudience == null) {
-            throw new RuntimeException("missing required params businessSharedAudience")
+        if (businessToBusinessSharedAudienceUpdateWithRequiredBody == null) {
+            throw new RuntimeException("missing required params businessToBusinessSharedAudienceUpdateWithRequiredBody")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = businessSharedAudience
+        bodyParams = businessToBusinessSharedAudienceUpdateWithRequiredBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
-                    BusinessSharedAudienceResponse.class )
+                    BusinessToBusinessSharedAudience.class )
 
     }
 

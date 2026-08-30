@@ -23,11 +23,10 @@ from fastapi import (  # noqa: F401
 )
 
 from openapi_server.models.extra_models import TokenModel  # noqa: F401
-from pydantic import Field
-from typing_extensions import Annotated
-from openapi_server.models.error import Error
+from typing import Optional
 from openapi_server.models.notification_post_request import NotificationPostRequest
 from openapi_server.models.notification_response import NotificationResponse
+from openapi_server.models.pinterest_lib_error import PinterestLibError
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -40,16 +39,16 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
 @router.post(
     "/notifications",
     responses={
-        200: {"model": NotificationResponse, "description": "Successfully received notification"},
-        400: {"model": Error, "description": "Invalid request parameter."},
-        "default": {"model": Error, "description": "Unexpected error"},
+        200: {"model": NotificationResponse, "description": "The request has succeeded."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
     },
     tags=["notification"],
     summary="Receive notifications from external partners.",
     response_model_by_alias=True,
 )
 async def notification_post(
-    notification_post_request: Annotated[NotificationPostRequest, Field(description="notification event.")] = Body(None, description="notification event."),
+    notification_post_request: Optional[NotificationPostRequest] = Body(None, description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:read"]
     ),

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,9 +23,9 @@ var _ MappedNullable = &AdvancedAuctionItemsGetRequest{}
 // AdvancedAuctionItemsGetRequest Request object used to get bid options values for a batch of retail catalog items
 type AdvancedAuctionItemsGetRequest struct {
 	// Catalog id pertaining to the retail item
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\d+$"`
 	// A list of retail catalog items to fetch bid options for
-	Items []AdvancedAuctionItemsGetRecord `json:"items"`
+	Items []AdvancedAuctionKey `json:"items"`
 }
 
 type _AdvancedAuctionItemsGetRequest AdvancedAuctionItemsGetRequest
@@ -34,7 +34,7 @@ type _AdvancedAuctionItemsGetRequest AdvancedAuctionItemsGetRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdvancedAuctionItemsGetRequest(catalogId string, items []AdvancedAuctionItemsGetRecord) *AdvancedAuctionItemsGetRequest {
+func NewAdvancedAuctionItemsGetRequest(catalogId string, items []AdvancedAuctionKey) *AdvancedAuctionItemsGetRequest {
 	this := AdvancedAuctionItemsGetRequest{}
 	this.CatalogId = catalogId
 	this.Items = items
@@ -74,9 +74,9 @@ func (o *AdvancedAuctionItemsGetRequest) SetCatalogId(v string) {
 }
 
 // GetItems returns the Items field value
-func (o *AdvancedAuctionItemsGetRequest) GetItems() []AdvancedAuctionItemsGetRecord {
+func (o *AdvancedAuctionItemsGetRequest) GetItems() []AdvancedAuctionKey {
 	if o == nil {
-		var ret []AdvancedAuctionItemsGetRecord
+		var ret []AdvancedAuctionKey
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *AdvancedAuctionItemsGetRequest) GetItems() []AdvancedAuctionItemsGetRec
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *AdvancedAuctionItemsGetRequest) GetItemsOk() ([]AdvancedAuctionItemsGetRecord, bool) {
+func (o *AdvancedAuctionItemsGetRequest) GetItemsOk() ([]AdvancedAuctionKey, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *AdvancedAuctionItemsGetRequest) GetItemsOk() ([]AdvancedAuctionItemsGet
 }
 
 // SetItems sets field value
-func (o *AdvancedAuctionItemsGetRequest) SetItems(v []AdvancedAuctionItemsGetRecord) {
+func (o *AdvancedAuctionItemsGetRequest) SetItems(v []AdvancedAuctionKey) {
 	o.Items = v
 }
 

@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -22,35 +27,157 @@ type CustomerList struct {
 	// Creation time. Unix timestamp in seconds.
 	CreatedTime float32 `json:"created_time,omitempty"`
 
-	// Customer list errors
+	// Customer list errors.
 	Exceptions map[string]interface{} `json:"exceptions,omitempty"`
 
 	// Customer list ID.
-	Id string `json:"id,omitempty"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
+
+	// Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.
+	IsNca bool `json:"is_nca,omitempty"`
 
 	// Customer list name.
-	Name string `json:"name,omitempty"`
+	Name string `json:"name"`
 
-	// Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
+	// Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.
 	NumBatches float32 `json:"num_batches,omitempty"`
 
-	// Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
+	// Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.
 	NumRemovedUserRecords float32 `json:"num_removed_user_records,omitempty"`
 
-	// Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
+	// Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.
 	NumUploadedUserRecords float32 `json:"num_uploaded_user_records,omitempty"`
 
-	// Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-	Status string `json:"status,omitempty"`
+	// Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
+	Status CustomerListStatus `json:"status,omitempty"`
 
-	// Always \"customerlist\".
+	// Always `customerlist`.
 	Type string `json:"type,omitempty"`
 
 	// Last update time. Unix timestamp in seconds.
 	UpdatedTime float32 `json:"updated_time,omitempty"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CustomerList
+func (o *CustomerList) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"name",
+	}
 
-// AssertCustomerListRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"name": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"ad_account_id": {},
+		"created_time": {},
+		"exceptions": {},
+		"id": {},
+		"is_nca": {},
+		"name": {},
+		"num_batches": {},
+		"num_removed_user_records": {},
+		"num_uploaded_user_records": {},
+		"status": {},
+		"type": {},
+		"updated_time": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CustomerList
+
+	if value, exists := allProperties["ad_account_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.AdAccountId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["created_time"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreatedTime); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["exceptions"]; exists {
+		if err = json.Unmarshal(value, &decoded.Exceptions); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["is_nca"]; exists {
+		if err = json.Unmarshal(value, &decoded.IsNca); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["num_batches"]; exists {
+		if err = json.Unmarshal(value, &decoded.NumBatches); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["num_removed_user_records"]; exists {
+		if err = json.Unmarshal(value, &decoded.NumRemovedUserRecords); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["num_uploaded_user_records"]; exists {
+		if err = json.Unmarshal(value, &decoded.NumUploadedUserRecords); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["status"]; exists {
+		if err = json.Unmarshal(value, &decoded.Status); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["type"]; exists {
+		if err = json.Unmarshal(value, &decoded.Type); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["updated_time"]; exists {
+		if err = json.Unmarshal(value, &decoded.UpdatedTime); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCustomerListRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCustomerListRequired(obj CustomerList) error {
 	return nil
 }

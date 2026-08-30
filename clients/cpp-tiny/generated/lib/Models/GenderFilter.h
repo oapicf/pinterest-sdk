@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setGENDER(CatalogsProductGroupMultipleGenderCriteria  gENDER);
+	void setGENDER(CatalogsProductGroupMultipleGenderCriteria gENDER);
 
 
     private:

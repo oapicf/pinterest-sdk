@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,12 +28,11 @@ type ApiCustomerListsCreateRequest struct {
 	ctx context.Context
 	ApiService *CustomerListsAPIService
 	adAccountId string
-	customerListRequest *CustomerListRequest
+	customerListCreate *CustomerListCreate
 }
 
-// Parameters to get Customer lists info
-func (r ApiCustomerListsCreateRequest) CustomerListRequest(customerListRequest CustomerListRequest) ApiCustomerListsCreateRequest {
-	r.customerListRequest = &customerListRequest
+func (r ApiCustomerListsCreateRequest) CustomerListCreate(customerListCreate CustomerListCreate) ApiCustomerListsCreateRequest {
+	r.customerListCreate = &customerListCreate
 	return r
 }
 
@@ -44,18 +43,18 @@ func (r ApiCustomerListsCreateRequest) Execute() (*CustomerList, *http.Response,
 /*
 CustomerListsCreate Create customer lists
 
-<p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p>
-<p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href="https://help.pinterest.com/en/business/article/audience-targeting" target="_blank">Audience targeting</a>
-or the <a href="/docs/api-features/targeting-overview/" target="_blank">Audiences</a> section of the ads management guide.<p/>
-<p><b>Please review our <u><a href="https://help.pinterest.com/en/business/article/audience-targeting#section-13341" target="_blank">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p>
-<p>When you create a customer list, the system scans the list for existing Pinterest accounts;
-the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process
-is complete. The filtered list – containing only the Pinterest accounts that were included in your starting
-list – is what will be used to create the audience.</p>
-<p>To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the <a href="https://developer.pinterest.com/docs/api/v5/audiences-create" target="blank">create audience endpoint</a>.</p>
+Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).
+
+A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
+
+**Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**
+ 
+When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.
+ 
+To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param adAccountId Unique identifier of an ad account.
+ @param adAccountId
  @return ApiCustomerListsCreateRequest
 */
 func (a *CustomerListsAPIService) CustomerListsCreate(ctx context.Context, adAccountId string) ApiCustomerListsCreateRequest {
@@ -90,8 +89,8 @@ func (a *CustomerListsAPIService) CustomerListsCreateExecute(r ApiCustomerListsC
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.customerListRequest == nil {
-		return localVarReturnValue, nil, reportError("customerListRequest is required and must be specified")
+	if r.customerListCreate == nil {
+		return localVarReturnValue, nil, reportError("customerListCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -112,7 +111,7 @@ func (a *CustomerListsAPIService) CustomerListsCreateExecute(r ApiCustomerListsC
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.customerListRequest
+	localVarPostBody = r.customerListCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -135,7 +134,62 @@ func (a *CustomerListsAPIService) CustomerListsCreateExecute(r ApiCustomerListsC
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -175,8 +229,8 @@ CustomerListsGet Get customer list
 Gets a specific customer list given the customer list ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param adAccountId Unique identifier of an ad account.
- @param customerListId Unique identifier of a customer list
+ @param adAccountId
+ @param customerListId Customer list ID.
  @return ApiCustomerListsGetRequest
 */
 func (a *CustomerListsAPIService) CustomerListsGet(ctx context.Context, adAccountId string, customerListId string) ApiCustomerListsGetRequest {
@@ -256,7 +310,62 @@ func (a *CustomerListsAPIService) CustomerListsGetExecute(r ApiCustomerListsGetR
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -283,26 +392,33 @@ type ApiCustomerListsListRequest struct {
 	ctx context.Context
 	ApiService *CustomerListsAPIService
 	adAccountId string
-	pageSize *int32
-	order *string
 	bookmark *string
-}
-
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-func (r ApiCustomerListsListRequest) PageSize(pageSize int32) ApiCustomerListsListRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-func (r ApiCustomerListsListRequest) Order(order string) ApiCustomerListsListRequest {
-	r.order = &order
-	return r
+	pageSize *int32
+	order *PinterestLibPaginationOrder
+	excludeNca *bool
 }
 
 // Cursor used to fetch the next page of items
 func (r ApiCustomerListsListRequest) Bookmark(bookmark string) ApiCustomerListsListRequest {
 	r.bookmark = &bookmark
+	return r
+}
+
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+func (r ApiCustomerListsListRequest) PageSize(pageSize int32) ApiCustomerListsListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
+func (r ApiCustomerListsListRequest) Order(order PinterestLibPaginationOrder) ApiCustomerListsListRequest {
+	r.order = &order
+	return r
+}
+
+// When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).
+func (r ApiCustomerListsListRequest) ExcludeNca(excludeNca bool) ApiCustomerListsListRequest {
+	r.excludeNca = &excludeNca
 	return r
 }
 
@@ -313,14 +429,12 @@ func (r ApiCustomerListsListRequest) Execute() (*CustomerListsList200Response, *
 /*
 CustomerListsList Get customer lists
 
-<p>Get a set of customer lists including id and name based on the filters provided.</p>
-<p>(Customer lists are a type of audience.) For more information, see
-<a href="https://help.pinterest.com/en/business/article/audience-targeting" target="_blank">Audience targeting</a>
- or the <a href="/docs/api-features/targeting-overview/" target="_blank">Audiences</a>
-section of the ads management guide.</p>
+Get a set of customer lists including id and name based on the filters provided.
+
+(Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param adAccountId Unique identifier of an ad account.
+ @param adAccountId
  @return ApiCustomerListsListRequest
 */
 func (a *CustomerListsAPIService) CustomerListsList(ctx context.Context, adAccountId string) ApiCustomerListsListRequest {
@@ -356,18 +470,25 @@ func (a *CustomerListsAPIService) CustomerListsListExecute(r ApiCustomerListsLis
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
 
+	if r.bookmark != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	if r.order != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
-	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+	if r.excludeNca != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude_nca", r.excludeNca, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude_nca", defaultValue, "form", "")
+		r.excludeNca = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -408,7 +529,62 @@ func (a *CustomerListsAPIService) CustomerListsListExecute(r ApiCustomerListsLis
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -436,11 +612,11 @@ type ApiCustomerListsUpdateRequest struct {
 	ApiService *CustomerListsAPIService
 	adAccountId string
 	customerListId string
-	customerListUpdateRequest *CustomerListUpdateRequest
+	customerListUpdateWithRequiredBody *CustomerListUpdateWithRequiredBody
 }
 
-func (r ApiCustomerListsUpdateRequest) CustomerListUpdateRequest(customerListUpdateRequest CustomerListUpdateRequest) ApiCustomerListsUpdateRequest {
-	r.customerListUpdateRequest = &customerListUpdateRequest
+func (r ApiCustomerListsUpdateRequest) CustomerListUpdateWithRequiredBody(customerListUpdateWithRequiredBody CustomerListUpdateWithRequiredBody) ApiCustomerListsUpdateRequest {
+	r.customerListUpdateWithRequiredBody = &customerListUpdateWithRequiredBody
 	return r
 }
 
@@ -451,17 +627,15 @@ func (r ApiCustomerListsUpdateRequest) Execute() (*CustomerList, *http.Response,
 /*
 CustomerListsUpdate Update customer list
 
-<p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p>
-<p>When you add records to an existing customer list, the system scans the additions for existing Pinterest
-accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records
-to add will be deleted when the matching process is complete.</p>
-<p>For more information, see <a href="https://help.pinterest.com/en/business/article/audience-targeting" target="_blank">Audience targeting</a>
-or the <a href="/docs/api-features/targeting-overview/" target="_blank">Audiences</a>
-section of the ads management guide.</p>
+Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)
+
+When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your "CUSTOMER_LIST" audience. Your original list of records to add will be deleted when the matching process is complete.
+
+For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param adAccountId Unique identifier of an ad account.
- @param customerListId Unique identifier of a customer list
+ @param adAccountId
+ @param customerListId Customer list ID.
  @return ApiCustomerListsUpdateRequest
 */
 func (a *CustomerListsAPIService) CustomerListsUpdate(ctx context.Context, adAccountId string, customerListId string) ApiCustomerListsUpdateRequest {
@@ -501,8 +675,8 @@ func (a *CustomerListsAPIService) CustomerListsUpdateExecute(r ApiCustomerListsU
 	if strlen(r.customerListId) > 18 {
 		return localVarReturnValue, nil, reportError("customerListId must have less than 18 elements")
 	}
-	if r.customerListUpdateRequest == nil {
-		return localVarReturnValue, nil, reportError("customerListUpdateRequest is required and must be specified")
+	if r.customerListUpdateWithRequiredBody == nil {
+		return localVarReturnValue, nil, reportError("customerListUpdateWithRequiredBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -523,7 +697,7 @@ func (a *CustomerListsAPIService) CustomerListsUpdateExecute(r ApiCustomerListsU
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.customerListUpdateRequest
+	localVarPostBody = r.customerListUpdateWithRequiredBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -546,7 +720,62 @@ func (a *CustomerListsAPIService) CustomerListsUpdateExecute(r ApiCustomerListsU
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

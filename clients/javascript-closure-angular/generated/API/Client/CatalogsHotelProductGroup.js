@@ -6,7 +6,7 @@ goog.provide('API.Client.CatalogsHotelProductGroup');
 API.Client.CatalogsHotelProductGroup = function() {}
 
 /**
- * Catalog id pertaining to the hotel product group.
+ * Catalog ID pertaining to the product group.
  * @type {!string}
  * @export
  */
@@ -38,14 +38,14 @@ API.Client.CatalogsHotelProductGroup.prototype.description;
 API.Client.CatalogsHotelProductGroup.prototype.filters;
 
 /**
- * ID of the hotel product group.
+ * ID of the catalog product group.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsHotelProductGroup.prototype.id;
 
 /**
- * Name of hotel product group
+ * Name of catalog product group
  * @type {!string}
  * @export
  */

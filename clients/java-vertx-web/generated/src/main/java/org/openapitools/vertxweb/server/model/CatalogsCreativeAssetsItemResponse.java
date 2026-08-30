@@ -9,28 +9,65 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsAttributes;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 import org.openapitools.vertxweb.server.model.Pin;
 
 /**
- * Object describing a hotel record
+ * Object describing a creative assets item record
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreativeAssetsItemResponse   {
   
   private CatalogsCreativeAssetsAttributes attributes;
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private String creativeAssetsId;
+
+
+  public enum ItemResponseKindEnum {
+    CREATIVE_ASSETS_ITEM("creative_assets_item");
+
+    private String value;
+
+    ItemResponseKindEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private ItemResponseKindEnum itemResponseKind;
   private List<Pin> pins;
 
   public CatalogsCreativeAssetsItemResponse () {
 
   }
 
-  public CatalogsCreativeAssetsItemResponse (CatalogsCreativeAssetsAttributes attributes, CatalogsType catalogType, String creativeAssetsId, List<Pin> pins) {
+  public CatalogsCreativeAssetsItemResponse (CatalogsCreativeAssetsAttributes attributes, CatalogTypeEnum catalogType, String creativeAssetsId, ItemResponseKindEnum itemResponseKind, List<Pin> pins) {
     this.attributes = attributes;
     this.catalogType = catalogType;
     this.creativeAssetsId = creativeAssetsId;
+    this.itemResponseKind = itemResponseKind;
     this.pins = pins;
   }
 
@@ -45,10 +82,10 @@ public class CatalogsCreativeAssetsItemResponse   {
 
     
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -59,6 +96,15 @@ public class CatalogsCreativeAssetsItemResponse   {
   }
   public void setCreativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
+  }
+
+    
+  @JsonProperty("item_response_kind")
+  public ItemResponseKindEnum getItemResponseKind() {
+    return itemResponseKind;
+  }
+  public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
   }
 
     
@@ -83,12 +129,13 @@ public class CatalogsCreativeAssetsItemResponse   {
     return Objects.equals(attributes, catalogsCreativeAssetsItemResponse.attributes) &&
         Objects.equals(catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
         Objects.equals(creativeAssetsId, catalogsCreativeAssetsItemResponse.creativeAssetsId) &&
+        Objects.equals(itemResponseKind, catalogsCreativeAssetsItemResponse.itemResponseKind) &&
         Objects.equals(pins, catalogsCreativeAssetsItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, catalogType, creativeAssetsId, pins);
+    return Objects.hash(attributes, catalogType, creativeAssetsId, itemResponseKind, pins);
   }
 
   @Override
@@ -99,6 +146,7 @@ public class CatalogsCreativeAssetsItemResponse   {
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -109,9 +157,6 @@ public class CatalogsCreativeAssetsItemResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

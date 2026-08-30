@@ -13,10 +13,10 @@ static product_group_promotions_list_200_response_t *product_group_promotions_li
     if (!product_group_promotions_list_200_response_local_var) {
         return NULL;
     }
+    memset(product_group_promotions_list_200_response_local_var, 0, sizeof(product_group_promotions_list_200_response_t));
+    product_group_promotions_list_200_response_local_var->_library_owned = 1;
     product_group_promotions_list_200_response_local_var->bookmark = bookmark;
     product_group_promotions_list_200_response_local_var->items = items;
-
-    product_group_promotions_list_200_response_local_var->_library_owned = 1;
     return product_group_promotions_list_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) product_group_promotions_list_200_response_t *produc
     char *bookmark,
     list_t *items
     ) {
-    return product_group_promotions_list_200_response_create_internal (
+    product_group_promotions_list_200_response_t *result = product_group_promotions_list_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void product_group_promotions_list_200_response_free(product_group_promotions_list_200_response_t *product_group_promotions_list_200_response) {
@@ -96,6 +99,8 @@ product_group_promotions_list_200_response_t *product_group_promotions_list_200_
 
     product_group_promotions_list_200_response_t *product_group_promotions_list_200_response_local_var = NULL;
 
+    char *bookmark_local_str = NULL;
+
     // define the local list for product_group_promotions_list_200_response->items
     list_t *itemsList = NULL;
 
@@ -139,13 +144,23 @@ product_group_promotions_list_200_response_t *product_group_promotions_list_200_
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     product_group_promotions_list_200_response_local_var = product_group_promotions_list_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!product_group_promotions_list_200_response_local_var) {
+        goto end;
+    }
+
     return product_group_promotions_list_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {

@@ -15,11 +15,11 @@ Method | HTTP request | Description
 
 # **adAccountsAudiencesSharedAccountsList**
 ```objc
--(NSURLSessionTask*) adAccountsAudiencesSharedAccountsListWithAdAccountId: (NSString*) adAccountId
-    audienceId: (NSString*) audienceId
+-(NSURLSessionTask*) adAccountsAudiencesSharedAccountsListWithAudienceId: (NSString*) audienceId
     accountType: (OAIAudienceAccountType) accountType
-    pageSize: (NSNumber*) pageSize
+    adAccountId: (NSString*) adAccountId
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
         completionHandler: (void (^)(OAIAdAccountsAudiencesSharedAccountsList200Response* output, NSError* error)) handler;
 ```
 
@@ -38,20 +38,20 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSString* audienceId = @"audienceId_example"; // Unique identifier of the audience to use to filter the results.
 OAIAudienceAccountType accountType = [[OAIAudienceAccountType alloc] init]; // Filter accounts by account type.
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIAudienceSharingApi*apiInstance = [[OAIAudienceSharingApi alloc] init];
 
 // List accounts with access to an audience owned by an ad account
-[apiInstance adAccountsAudiencesSharedAccountsListWithAdAccountId:adAccountId
-              audienceId:audienceId
+[apiInstance adAccountsAudiencesSharedAccountsListWithAudienceId:audienceId
               accountType:accountType
-              pageSize:pageSize
+              adAccountId:adAccountId
               bookmark:bookmark
+              pageSize:pageSize
           completionHandler: ^(OAIAdAccountsAudiencesSharedAccountsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -66,11 +66,11 @@ OAIAudienceSharingApi*apiInstance = [[OAIAudienceSharingApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **audienceId** | **NSString***| Unique identifier of the audience to use to filter the results. | 
  **accountType** | [**OAIAudienceAccountType**](.md)| Filter accounts by account type. | 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -92,8 +92,8 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) businessAccountAudiencesSharedAccountsListWithBusinessId: (NSString*) businessId
     audienceId: (NSString*) audienceId
     accountType: (OAIAudienceAccountType) accountType
-    pageSize: (NSNumber*) pageSize
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
         completionHandler: (void (^)(OAIAdAccountsAudiencesSharedAccountsList200Response* output, NSError* error)) handler;
 ```
 
@@ -109,11 +109,11 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
 NSString* audienceId = @"audienceId_example"; // Unique identifier of the audience to use to filter the results.
 OAIAudienceAccountType accountType = [[OAIAudienceAccountType alloc] init]; // Filter accounts by account type.
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIAudienceSharingApi*apiInstance = [[OAIAudienceSharingApi alloc] init];
 
@@ -121,8 +121,8 @@ OAIAudienceSharingApi*apiInstance = [[OAIAudienceSharingApi alloc] init];
 [apiInstance businessAccountAudiencesSharedAccountsListWithBusinessId:businessId
               audienceId:audienceId
               accountType:accountType
-              pageSize:pageSize
               bookmark:bookmark
+              pageSize:pageSize
           completionHandler: ^(OAIAdAccountsAudiencesSharedAccountsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -140,8 +140,8 @@ Name | Type | Description  | Notes
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
  **audienceId** | **NSString***| Unique identifier of the audience to use to filter the results. | 
  **accountType** | [**OAIAudienceAccountType**](.md)| Filter accounts by account type. | 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -161,10 +161,10 @@ Name | Type | Description  | Notes
 # **sharedAudiencesForBusinessList**
 ```objc
 -(NSURLSessionTask*) sharedAudiencesForBusinessListWithBusinessId: (NSString*) businessId
+    order: (OAIOrder) order
     bookmark: (NSString*) bookmark
-    order: (NSString*) order
     pageSize: (NSNumber*) pageSize
-        completionHandler: (void (^)(OAIAudiencesList200Response* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAISharedAudiencesForBusinessList200Response* output, NSError* error)) handler;
 ```
 
 List received audiences for a business
@@ -179,19 +179,19 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+OAIOrder order = [[OAIOrder alloc] init]; // The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSString* order = ASCENDING; // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIAudienceSharingApi*apiInstance = [[OAIAudienceSharingApi alloc] init];
 
 // List received audiences for a business
 [apiInstance sharedAudiencesForBusinessListWithBusinessId:businessId
-              bookmark:bookmark
               order:order
+              bookmark:bookmark
               pageSize:pageSize
-          completionHandler: ^(OAIAudiencesList200Response* output, NSError* error) {
+          completionHandler: ^(OAISharedAudiencesForBusinessList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -206,13 +206,13 @@ OAIAudienceSharingApi*apiInstance = [[OAIAudienceSharingApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
+ **order** | [**OAIOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **order** | **NSString***| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
-[**OAIAudiencesList200Response***](OAIAudiencesList200Response.md)
+[**OAISharedAudiencesForBusinessList200Response***](OAISharedAudiencesForBusinessList200Response.md)
 
 ### Authorization
 
@@ -228,13 +228,13 @@ Name | Type | Description  | Notes
 # **updateAdAccountToAdAccountSharedAudience**
 ```objc
 -(NSURLSessionTask*) updateAdAccountToAdAccountSharedAudienceWithAdAccountId: (NSString*) adAccountId
-    sharedAudience: (OAISharedAudience*) sharedAudience
-        completionHandler: (void (^)(OAISharedAudienceResponse* output, NSError* error)) handler;
+    adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: (OAIAdAccountToAdAccountSharedAudienceUpdateWithRequiredBody*) adAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+        completionHandler: (void (^)(OAIAdAccountToAdAccountSharedAudience* output, NSError* error)) handler;
 ```
 
 Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```objc
@@ -245,14 +245,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAISharedAudience* sharedAudience = [[OAISharedAudience alloc] init]; // 
+OAIAdAccountToAdAccountSharedAudienceUpdateWithRequiredBody* adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = [[OAIAdAccountToAdAccountSharedAudienceUpdateWithRequiredBody alloc] init]; // 
 
 OAIAudienceSharingApi*apiInstance = [[OAIAudienceSharingApi alloc] init];
 
 // Update audience sharing between ad accounts
 [apiInstance updateAdAccountToAdAccountSharedAudienceWithAdAccountId:adAccountId
-              sharedAudience:sharedAudience
-          completionHandler: ^(OAISharedAudienceResponse* output, NSError* error) {
+              adAccountToAdAccountSharedAudienceUpdateWithRequiredBody:adAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+          completionHandler: ^(OAIAdAccountToAdAccountSharedAudience* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -267,11 +267,11 @@ OAIAudienceSharingApi*apiInstance = [[OAIAudienceSharingApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **sharedAudience** | [**OAISharedAudience***](OAISharedAudience.md)|  | 
+ **adAccountToAdAccountSharedAudienceUpdateWithRequiredBody** | [**OAIAdAccountToAdAccountSharedAudienceUpdateWithRequiredBody***](OAIAdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**OAISharedAudienceResponse***](OAISharedAudienceResponse.md)
+[**OAIAdAccountToAdAccountSharedAudience***](OAIAdAccountToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -287,13 +287,13 @@ Name | Type | Description  | Notes
 # **updateAdAccountToBusinessSharedAudience**
 ```objc
 -(NSURLSessionTask*) updateAdAccountToBusinessSharedAudienceWithAdAccountId: (NSString*) adAccountId
-    businessSharedAudience: (OAIBusinessSharedAudience*) businessSharedAudience
-        completionHandler: (void (^)(OAIBusinessSharedAudienceResponse* output, NSError* error)) handler;
+    adAccountToBusinessSharedAudienceUpdateWithRequiredBody: (OAIAdAccountToBusinessSharedAudienceUpdateWithRequiredBody*) adAccountToBusinessSharedAudienceUpdateWithRequiredBody
+        completionHandler: (void (^)(OAIAdAccountToBusinessSharedAudience* output, NSError* error)) handler;
 ```
 
 Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```objc
@@ -304,14 +304,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAIBusinessSharedAudience* businessSharedAudience = [[OAIBusinessSharedAudience alloc] init]; // 
+OAIAdAccountToBusinessSharedAudienceUpdateWithRequiredBody* adAccountToBusinessSharedAudienceUpdateWithRequiredBody = [[OAIAdAccountToBusinessSharedAudienceUpdateWithRequiredBody alloc] init]; // 
 
 OAIAudienceSharingApi*apiInstance = [[OAIAudienceSharingApi alloc] init];
 
 // Update audience sharing from an ad account to businesses
 [apiInstance updateAdAccountToBusinessSharedAudienceWithAdAccountId:adAccountId
-              businessSharedAudience:businessSharedAudience
-          completionHandler: ^(OAIBusinessSharedAudienceResponse* output, NSError* error) {
+              adAccountToBusinessSharedAudienceUpdateWithRequiredBody:adAccountToBusinessSharedAudienceUpdateWithRequiredBody
+          completionHandler: ^(OAIAdAccountToBusinessSharedAudience* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -326,11 +326,11 @@ OAIAudienceSharingApi*apiInstance = [[OAIAudienceSharingApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **businessSharedAudience** | [**OAIBusinessSharedAudience***](OAIBusinessSharedAudience.md)|  | 
+ **adAccountToBusinessSharedAudienceUpdateWithRequiredBody** | [**OAIAdAccountToBusinessSharedAudienceUpdateWithRequiredBody***](OAIAdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**OAIBusinessSharedAudienceResponse***](OAIBusinessSharedAudienceResponse.md)
+[**OAIAdAccountToBusinessSharedAudience***](OAIAdAccountToBusinessSharedAudience.md)
 
 ### Authorization
 
@@ -346,13 +346,13 @@ Name | Type | Description  | Notes
 # **updateBusinessToAdAccountSharedAudience**
 ```objc
 -(NSURLSessionTask*) updateBusinessToAdAccountSharedAudienceWithBusinessId: (NSString*) businessId
-    sharedAudience: (OAISharedAudience*) sharedAudience
-        completionHandler: (void (^)(OAISharedAudienceResponse* output, NSError* error)) handler;
+    businessToAdAccountSharedAudienceUpdateWithRequiredBody: (OAIBusinessToAdAccountSharedAudienceUpdateWithRequiredBody*) businessToAdAccountSharedAudienceUpdateWithRequiredBody
+        completionHandler: (void (^)(OAIBusinessToAdAccountSharedAudience* output, NSError* error)) handler;
 ```
 
 Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```objc
@@ -362,15 +362,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-OAISharedAudience* sharedAudience = [[OAISharedAudience alloc] init]; // 
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+OAIBusinessToAdAccountSharedAudienceUpdateWithRequiredBody* businessToAdAccountSharedAudienceUpdateWithRequiredBody = [[OAIBusinessToAdAccountSharedAudienceUpdateWithRequiredBody alloc] init]; // 
 
 OAIAudienceSharingApi*apiInstance = [[OAIAudienceSharingApi alloc] init];
 
 // Update audience sharing from a business to ad accounts
 [apiInstance updateBusinessToAdAccountSharedAudienceWithBusinessId:businessId
-              sharedAudience:sharedAudience
-          completionHandler: ^(OAISharedAudienceResponse* output, NSError* error) {
+              businessToAdAccountSharedAudienceUpdateWithRequiredBody:businessToAdAccountSharedAudienceUpdateWithRequiredBody
+          completionHandler: ^(OAIBusinessToAdAccountSharedAudience* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -385,11 +385,11 @@ OAIAudienceSharingApi*apiInstance = [[OAIAudienceSharingApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
- **sharedAudience** | [**OAISharedAudience***](OAISharedAudience.md)|  | 
+ **businessToAdAccountSharedAudienceUpdateWithRequiredBody** | [**OAIBusinessToAdAccountSharedAudienceUpdateWithRequiredBody***](OAIBusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**OAISharedAudienceResponse***](OAISharedAudienceResponse.md)
+[**OAIBusinessToAdAccountSharedAudience***](OAIBusinessToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -405,13 +405,13 @@ Name | Type | Description  | Notes
 # **updateBusinessToBusinessSharedAudience**
 ```objc
 -(NSURLSessionTask*) updateBusinessToBusinessSharedAudienceWithBusinessId: (NSString*) businessId
-    businessSharedAudience: (OAIBusinessSharedAudience*) businessSharedAudience
-        completionHandler: (void (^)(OAIBusinessSharedAudienceResponse* output, NSError* error)) handler;
+    businessToBusinessSharedAudienceUpdateWithRequiredBody: (OAIBusinessToBusinessSharedAudienceUpdateWithRequiredBody*) businessToBusinessSharedAudienceUpdateWithRequiredBody
+        completionHandler: (void (^)(OAIBusinessToBusinessSharedAudience* output, NSError* error)) handler;
 ```
 
 Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```objc
@@ -421,15 +421,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-OAIBusinessSharedAudience* businessSharedAudience = [[OAIBusinessSharedAudience alloc] init]; // 
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+OAIBusinessToBusinessSharedAudienceUpdateWithRequiredBody* businessToBusinessSharedAudienceUpdateWithRequiredBody = [[OAIBusinessToBusinessSharedAudienceUpdateWithRequiredBody alloc] init]; // 
 
 OAIAudienceSharingApi*apiInstance = [[OAIAudienceSharingApi alloc] init];
 
 // Update audience sharing between businesses
 [apiInstance updateBusinessToBusinessSharedAudienceWithBusinessId:businessId
-              businessSharedAudience:businessSharedAudience
-          completionHandler: ^(OAIBusinessSharedAudienceResponse* output, NSError* error) {
+              businessToBusinessSharedAudienceUpdateWithRequiredBody:businessToBusinessSharedAudienceUpdateWithRequiredBody
+          completionHandler: ^(OAIBusinessToBusinessSharedAudience* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -444,11 +444,11 @@ OAIAudienceSharingApi*apiInstance = [[OAIAudienceSharingApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
- **businessSharedAudience** | [**OAIBusinessSharedAudience***](OAIBusinessSharedAudience.md)|  | 
+ **businessToBusinessSharedAudienceUpdateWithRequiredBody** | [**OAIBusinessToBusinessSharedAudienceUpdateWithRequiredBody***](OAIBusinessToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**OAIBusinessSharedAudienceResponse***](OAIBusinessSharedAudienceResponse.md)
+[**OAIBusinessToBusinessSharedAudience***](OAIBusinessToBusinessSharedAudience.md)
 
 ### Authorization
 

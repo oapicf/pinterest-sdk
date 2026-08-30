@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsAiContentDisclosure"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsAiContentDisclosure"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsAiContentDisclosureLabel = openapi_server.resourceTypes.CatalogsAiContentDisclosureLabel
+}
+resourceTypes {
+
+  CatalogsAiContentDisclosure {
+    title = CatalogsAiContentDisclosure
+    description = CatalogsAiContentDisclosure
+    derivedFrom = Root
+    properties {
+        disclosure {
+          type = array
+          items.type = CatalogsAiContentDisclosureLabel
+          description = "Disclosure labels that apply to this asset."
+          optional = true
+        }
+        url {
+          type =  string
+          description = "URL of the asset. Must match one of image_link, additional_image_link, or video_link."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsAiContentDisclosure {
+    title = CatalogsAiContentDisclosure
+    description = CatalogsAiContentDisclosure
+    implements = openapi_server.resourceTypes.CatalogsAiContentDisclosure
+
+  }
+}

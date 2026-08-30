@@ -30,6 +30,10 @@ export interface PinMediaWithVideo {
      */
     video_url?: string | null;
     /**
+     * Video url (HLS).  **Note:** This field is limited and not available to all apps.
+     */
+    video_url_hls?: string | null;
+    /**
      * Width (in pixels). Field maybe null after creation due to video processing time.
      */
     width?: number | null;

@@ -8,28 +8,33 @@ module.exports = {
             {
                 key: `${keyPrefix}ad_accounts_ids`,
                 label: `A list of ad account IDs under the asset group - [${labelPrefix}ad_accounts_ids]`,
+                required: true,
                 list: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}asset_group_description`,
                 label: `Asset group description - [${labelPrefix}asset_group_description]`,
+                required: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}asset_group_name`,
                 label: `Asset Group name - [${labelPrefix}asset_group_name]`,
+                required: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}asset_group_types`,
                 label: `Asset group types - [${labelPrefix}asset_group_types]`,
+                required: true,
                 list: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}catalogs_ids`,
                 label: `A list of catalog IDs under asset group - [${labelPrefix}catalogs_ids]`,
+                required: true,
                 list: true,
                 type: 'string',
             },
@@ -37,23 +42,27 @@ module.exports = {
             {
                 key: `${keyPrefix}created_time`,
                 label: `The creation time of the asset group - [${labelPrefix}created_time]`,
+                required: true,
                 type: 'integer',
             },
             {
                 key: `${keyPrefix}id`,
                 label: `Asset Group ID. - [${labelPrefix}id]`,
+                required: true,
                 type: 'string',
             },
             ...BusinessAccessUserSummary.fields(`${keyPrefix}owner`, isInput),
             {
                 key: `${keyPrefix}profiles_ids`,
                 label: `A list of profile IDs under asset group - [${labelPrefix}profiles_ids]`,
+                required: true,
                 list: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}updated_time`,
                 label: `The last update time of the asset group - [${labelPrefix}updated_time]`,
+                required: true,
                 type: 'integer',
             },
         ]

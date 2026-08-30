@@ -7,26 +7,27 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.DeletePartnerAssetAccessBodyAccessesInner;
+import org.openapitools.model.DeletePartnerAssetAccessItem;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * DeletePartnerAssetAccessBody
+ * An object with a list of partner asset accesses to delete.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "DeletePartnerAssetAccessBody", description = "An object with a list of partner asset accesses to delete.")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class DeletePartnerAssetAccessBody {
 
   @Valid
-  private List<@Valid DeletePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+  private List<@Valid DeletePartnerAssetAccessItem> accesses = new ArrayList<>();
 
   public DeletePartnerAssetAccessBody() {
     super();
@@ -35,16 +36,16 @@ public class DeletePartnerAssetAccessBody {
   /**
    * Constructor with only required parameters
    */
-  public DeletePartnerAssetAccessBody(List<@Valid DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public DeletePartnerAssetAccessBody(List<@Valid DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
-  public DeletePartnerAssetAccessBody accesses(List<@Valid DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public DeletePartnerAssetAccessBody accesses(List<@Valid DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
 
-  public DeletePartnerAssetAccessBody addAccessesItem(DeletePartnerAssetAccessBodyAccessesInner accessesItem) {
+  public DeletePartnerAssetAccessBody addAccessesItem(DeletePartnerAssetAccessItem accessesItem) {
     if (this.accesses == null) {
       this.accesses = new ArrayList<>();
     }
@@ -53,17 +54,17 @@ public class DeletePartnerAssetAccessBody {
   }
 
   /**
-   * Get accesses
+   * List of partner asset accesses to delete.
    * @return accesses
    */
   @NotNull @Valid @Size(min = 1, max = 50) 
-  @Schema(name = "accesses", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "accesses", description = "List of partner asset accesses to delete.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("accesses")
-  public List<@Valid DeletePartnerAssetAccessBodyAccessesInner> getAccesses() {
+  public List<@Valid DeletePartnerAssetAccessItem> getAccesses() {
     return accesses;
   }
 
-  public void setAccesses(List<@Valid DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<@Valid DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
@@ -98,10 +99,7 @@ public class DeletePartnerAssetAccessBody {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

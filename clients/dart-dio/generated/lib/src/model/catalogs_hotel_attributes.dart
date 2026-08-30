@@ -5,8 +5,9 @@
 // ignore_for_file: unused_element
 import 'package:openapi/src/model/catalogs_hotel_address.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/catalogs_ai_content_disclosure.dart';
+import 'package:openapi/src/model/catalogs_hotel_main_image.dart';
 import 'package:openapi/src/model/catalogs_updatable_hotel_attributes.dart';
-import 'package:openapi/src/model/catalogs_hotel_attributes_all_of_main_image.dart';
 import 'package:openapi/src/model/catalogs_hotel_guest_ratings.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -16,7 +17,7 @@ part 'catalogs_hotel_attributes.g.dart';
 /// CatalogsHotelAttributes
 ///
 /// Properties:
-/// * [address] 
+/// * [address] - Hotel address
 /// * [basePrice] - Base price of the hotel room per night followed by the ISO currency code
 /// * [brand] - The brand to which this hotel belongs to.
 /// * [category] - The type of property. The category can be any type of internal description desired.
@@ -26,23 +27,29 @@ part 'catalogs_hotel_attributes.g.dart';
 /// * [customLabel3] - Custom grouping of hotels
 /// * [customLabel4] - Custom grouping of hotels
 /// * [description] - Brief description of the hotel.
-/// * [guestRatings] 
+/// * [guestRatings] - If specified, you must provide all properties
 /// * [latitude] - Latitude of the hotel.
 /// * [link] - Link to the product page
 /// * [longitude] - Longitude of the hotel.
 /// * [name] - The hotel's name.
 /// * [neighborhood] - A list of neighborhoods where the hotel is located
 /// * [salePrice] - Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
-/// * [additionalImageLink] - <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
-/// * [mainImage] 
+/// * [additionalImageLink] - <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
+/// * [aiDisclosures] - AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+/// * [mainImage] - The main hotel image
 @BuiltValue()
 abstract class CatalogsHotelAttributes implements CatalogsUpdatableHotelAttributes, Built<CatalogsHotelAttributes, CatalogsHotelAttributesBuilder> {
+  /// The main hotel image
   @BuiltValueField(wireName: r'main_image')
-  CatalogsHotelAttributesAllOfMainImage? get mainImage;
+  CatalogsHotelMainImage? get mainImage;
 
-  /// <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+  /// <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
   @BuiltValueField(wireName: r'additional_image_link')
   BuiltList<String>? get additionalImageLink;
+
+  /// AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+  @BuiltValueField(wireName: r'ai_disclosures')
+  BuiltList<CatalogsAiContentDisclosure>? get aiDisclosures;
 
   CatalogsHotelAttributes._();
 
@@ -127,7 +134,7 @@ class _$CatalogsHotelAttributesSerializer implements PrimitiveSerializer<Catalog
       yield r'main_image';
       yield serializers.serialize(
         object.mainImage,
-        specifiedType: const FullType(CatalogsHotelAttributesAllOfMainImage),
+        specifiedType: const FullType(CatalogsHotelMainImage),
       );
     }
     if (object.additionalImageLink != null) {
@@ -135,6 +142,13 @@ class _$CatalogsHotelAttributesSerializer implements PrimitiveSerializer<Catalog
       yield serializers.serialize(
         object.additionalImageLink,
         specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+      );
+    }
+    if (object.aiDisclosures != null) {
+      yield r'ai_disclosures';
+      yield serializers.serialize(
+        object.aiDisclosures,
+        specifiedType: const FullType(BuiltList, [FullType(CatalogsAiContentDisclosure)]),
       );
     }
     if (object.customLabel2 != null) {
@@ -226,8 +240,9 @@ class _$CatalogsHotelAttributesSerializer implements PrimitiveSerializer<Catalog
         case r'address':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsHotelAddress),
-          ) as CatalogsHotelAddress;
+            specifiedType: const FullType.nullable(CatalogsHotelAddress),
+          ) as CatalogsHotelAddress?;
+          if (valueDes == null) continue;
           result.address.replace(valueDes);
           break;
         case r'sale_price':
@@ -249,8 +264,9 @@ class _$CatalogsHotelAttributesSerializer implements PrimitiveSerializer<Catalog
         case r'guest_ratings':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsHotelGuestRatings),
-          ) as CatalogsHotelGuestRatings;
+            specifiedType: const FullType.nullable(CatalogsHotelGuestRatings),
+          ) as CatalogsHotelGuestRatings?;
+          if (valueDes == null) continue;
           result.guestRatings.replace(valueDes);
           break;
         case r'custom_label_3':
@@ -264,8 +280,9 @@ class _$CatalogsHotelAttributesSerializer implements PrimitiveSerializer<Catalog
         case r'latitude':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.latitude = valueDes;
           break;
         case r'link':
@@ -287,8 +304,9 @@ class _$CatalogsHotelAttributesSerializer implements PrimitiveSerializer<Catalog
         case r'main_image':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsHotelAttributesAllOfMainImage),
-          ) as CatalogsHotelAttributesAllOfMainImage;
+            specifiedType: const FullType.nullable(CatalogsHotelMainImage),
+          ) as CatalogsHotelMainImage?;
+          if (valueDes == null) continue;
           result.mainImage.replace(valueDes);
           break;
         case r'additional_image_link':
@@ -298,6 +316,14 @@ class _$CatalogsHotelAttributesSerializer implements PrimitiveSerializer<Catalog
           ) as BuiltList<String>?;
           if (valueDes == null) continue;
           result.additionalImageLink.replace(valueDes);
+          break;
+        case r'ai_disclosures':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(CatalogsAiContentDisclosure)]),
+          ) as BuiltList<CatalogsAiContentDisclosure>?;
+          if (valueDes == null) continue;
+          result.aiDisclosures.replace(valueDes);
           break;
         case r'custom_label_2':
           final valueDes = serializers.deserialize(

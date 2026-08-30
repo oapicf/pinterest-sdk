@@ -1,0 +1,160 @@
+package org.openapitools.model;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.openapitools.model.TargetingSpecOperations;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+public class AdGroupUpdateRequestAllOf1  {
+  
+ /**
+  * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+  */
+  @ApiModelProperty(value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.")
+  @Valid
+  private BigDecimal bidMultiplier;
+
+ /**
+  * Ad group ID.
+  */
+  @ApiModelProperty(required = true, value = "Ad group ID.")
+  private String id;
+
+ /**
+  * <div>Targeting spec operations define modifications to apply to the targeting spec.</div> <br /> <div><strong>NOTE:</strong> The <code>targeting_spec</code> and <code>targeting_spec_operations</code> cannot be sent at the same time.</div> <br /> <div>The supported operations are:</div> <ul> <li><code>SET</code>: sets the field with the given values. If value is set to <code>null</code>, the field will be removed.</li> <li><code>ADD</code>: adds the given values to the field.</li> <li><code>REMOVE</code>: removes the given values from the field.</li> </ul> <div>Note the following:</div> <ul> <li>Same items are not added and removed at the same time.</li> <li>For a given field, only <code>ADD</code>/<code>REMOVE</code> or <code>SET</code> operations are allowed, not a mix of them.</li> <li>Only one SET operation is allowed for a given field.</li> <li>The <code>AGE_BUCKET</code>, <code>MAXIMUM_AGE</code>, <code>MINIMUM_AGE</code> and <code>SHOPPING_RETARGETING</code> fields only support the <code>SET</code> operation.</li> </ul>
+  */
+  @ApiModelProperty(value = "<div>Targeting spec operations define modifications to apply to the targeting spec.</div> <br /> <div><strong>NOTE:</strong> The <code>targeting_spec</code> and <code>targeting_spec_operations</code> cannot be sent at the same time.</div> <br /> <div>The supported operations are:</div> <ul> <li><code>SET</code>: sets the field with the given values. If value is set to <code>null</code>, the field will be removed.</li> <li><code>ADD</code>: adds the given values to the field.</li> <li><code>REMOVE</code>: removes the given values from the field.</li> </ul> <div>Note the following:</div> <ul> <li>Same items are not added and removed at the same time.</li> <li>For a given field, only <code>ADD</code>/<code>REMOVE</code> or <code>SET</code> operations are allowed, not a mix of them.</li> <li>Only one SET operation is allowed for a given field.</li> <li>The <code>AGE_BUCKET</code>, <code>MAXIMUM_AGE</code>, <code>MINIMUM_AGE</code> and <code>SHOPPING_RETARGETING</code> fields only support the <code>SET</code> operation.</li> </ul>")
+  @Valid
+  private List<@Valid TargetingSpecOperations> targetingSpecOperations = new ArrayList<>();
+ /**
+  * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank&gt;Open beta&lt;/a&gt; Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the &#x60;bid_strategy&#x60; type for your ad group is set to &#x60;AUTOMATIC_BID&#x60;. - Not currently supported for &lt;a href&#x3D;\&quot;/docs/api-features/pinterest-performance-plus-setup/\&quot; target&#x3D;\&quot;blank\&quot;&gt;Pinterest Performance+ campaigns&lt;/a&gt;.
+  * minimum: 0
+  * maximum: 10
+  * @return bidMultiplier
+  */
+  @JsonProperty("bid_multiplier")
+ @DecimalMin("0") @DecimalMax("10")  public BigDecimal getBidMultiplier() {
+    return bidMultiplier;
+  }
+
+  /**
+   * Sets the <code>bidMultiplier</code> property.
+   */
+ public void setBidMultiplier(BigDecimal bidMultiplier) {
+    this.bidMultiplier = bidMultiplier;
+  }
+
+  /**
+   * Sets the <code>bidMultiplier</code> property.
+   */
+  public AdGroupUpdateRequestAllOf1 bidMultiplier(BigDecimal bidMultiplier) {
+    this.bidMultiplier = bidMultiplier;
+    return this;
+  }
+
+ /**
+  * Ad group ID.
+  * @return id
+  */
+  @JsonProperty("id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getId() {
+    return id;
+  }
+
+  /**
+   * Sets the <code>id</code> property.
+   */
+ public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   * Sets the <code>id</code> property.
+   */
+  public AdGroupUpdateRequestAllOf1 id(String id) {
+    this.id = id;
+    return this;
+  }
+
+ /**
+  * &lt;div&gt;Targeting spec operations define modifications to apply to the targeting spec.&lt;/div&gt; &lt;br /&gt; &lt;div&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The &lt;code&gt;targeting_spec&lt;/code&gt; and &lt;code&gt;targeting_spec_operations&lt;/code&gt; cannot be sent at the same time.&lt;/div&gt; &lt;br /&gt; &lt;div&gt;The supported operations are:&lt;/div&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;SET&lt;/code&gt;: sets the field with the given values. If value is set to &lt;code&gt;null&lt;/code&gt;, the field will be removed.&lt;/li&gt; &lt;li&gt;&lt;code&gt;ADD&lt;/code&gt;: adds the given values to the field.&lt;/li&gt; &lt;li&gt;&lt;code&gt;REMOVE&lt;/code&gt;: removes the given values from the field.&lt;/li&gt; &lt;/ul&gt; &lt;div&gt;Note the following:&lt;/div&gt; &lt;ul&gt; &lt;li&gt;Same items are not added and removed at the same time.&lt;/li&gt; &lt;li&gt;For a given field, only &lt;code&gt;ADD&lt;/code&gt;/&lt;code&gt;REMOVE&lt;/code&gt; or &lt;code&gt;SET&lt;/code&gt; operations are allowed, not a mix of them.&lt;/li&gt; &lt;li&gt;Only one SET operation is allowed for a given field.&lt;/li&gt; &lt;li&gt;The &lt;code&gt;AGE_BUCKET&lt;/code&gt;, &lt;code&gt;MAXIMUM_AGE&lt;/code&gt;, &lt;code&gt;MINIMUM_AGE&lt;/code&gt; and &lt;code&gt;SHOPPING_RETARGETING&lt;/code&gt; fields only support the &lt;code&gt;SET&lt;/code&gt; operation.&lt;/li&gt; &lt;/ul&gt;
+  * @return targetingSpecOperations
+  */
+  @JsonProperty("targeting_spec_operations")
+  public List<@Valid TargetingSpecOperations> getTargetingSpecOperations() {
+    return targetingSpecOperations;
+  }
+
+  /**
+   * Sets the <code>targetingSpecOperations</code> property.
+   */
+ public void setTargetingSpecOperations(List<@Valid TargetingSpecOperations> targetingSpecOperations) {
+    this.targetingSpecOperations = targetingSpecOperations;
+  }
+
+  /**
+   * Sets the <code>targetingSpecOperations</code> property.
+   */
+  public AdGroupUpdateRequestAllOf1 targetingSpecOperations(List<@Valid TargetingSpecOperations> targetingSpecOperations) {
+    this.targetingSpecOperations = targetingSpecOperations;
+    return this;
+  }
+
+  /**
+   * Adds a new item to the <code>targetingSpecOperations</code> list.
+   */
+  public AdGroupUpdateRequestAllOf1 addTargetingSpecOperationsItem(TargetingSpecOperations targetingSpecOperationsItem) {
+    this.targetingSpecOperations.add(targetingSpecOperationsItem);
+    return this;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AdGroupUpdateRequestAllOf1 adGroupUpdateRequestAllOf1 = (AdGroupUpdateRequestAllOf1) o;
+    return Objects.equals(this.bidMultiplier, adGroupUpdateRequestAllOf1.bidMultiplier) &&
+        Objects.equals(this.id, adGroupUpdateRequestAllOf1.id) &&
+        Objects.equals(this.targetingSpecOperations, adGroupUpdateRequestAllOf1.targetingSpecOperations);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(bidMultiplier, id, targetingSpecOperations);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class AdGroupUpdateRequestAllOf1 {\n");
+    
+    sb.append("    bidMultiplier: ").append(toIndentedString(bidMultiplier)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    targetingSpecOperations: ").append(toIndentedString(targetingSpecOperations)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private static String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

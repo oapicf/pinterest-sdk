@@ -1,14 +1,14 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.CatalogsFeed;
+import org.openapitools.vertxweb.server.model.CatalogsFeedCreateRequestSchema;
 import org.openapitools.vertxweb.server.model.CatalogsFeedIngestion;
+import org.openapitools.vertxweb.server.model.CatalogsFeedUpdateRequestSchema;
 import org.openapitools.vertxweb.server.model.CatalogsItemValidationIssue;
-import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.FeedProcessingResultsList200Response;
-import org.openapitools.vertxweb.server.model.FeedsCreateRequest;
 import org.openapitools.vertxweb.server.model.FeedsList200Response;
-import org.openapitools.vertxweb.server.model.FeedsUpdateRequest;
 import org.openapitools.vertxweb.server.model.ItemsIssuesList200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -57,16 +57,16 @@ public class CatalogFeedsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String feedId = requestParameters.pathParameter("feed_id") != null ? requestParameters.pathParameter("feed_id").getString() : null;
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
-        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter feedId is {}", feedId);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
-        logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.feedProcessingResultsList(feedId, bookmark, pageSize, adAccountId)
+        api.feedProcessingResultsList(feedId, adAccountId, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -85,13 +85,13 @@ public class CatalogFeedsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         RequestParameter body = requestParameters.body();
-        FeedsCreateRequest feedsCreateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<FeedsCreateRequest>(){}) : null;
+        CatalogsFeedCreateRequestSchema catalogsFeedCreateRequestSchema = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsFeedCreateRequestSchema>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter feedsCreateRequest is {}", feedsCreateRequest);
+        logger.debug("Parameter catalogsFeedCreateRequestSchema is {}", catalogsFeedCreateRequestSchema);
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.feedsCreate(feedsCreateRequest, adAccountId)
+        api.feedsCreate(catalogsFeedCreateRequestSchema, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -181,17 +181,17 @@ public class CatalogFeedsApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
-        String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
-        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
         String catalogId = requestParameters.queryParameter("catalog_id") != null ? requestParameters.queryParameter("catalog_id").getString() : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+        String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
 
-        logger.debug("Parameter bookmark is {}", bookmark);
-        logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter catalogId is {}", catalogId);
         logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter bookmark is {}", bookmark);
+        logger.debug("Parameter pageSize is {}", pageSize);
 
-        api.feedsList(bookmark, pageSize, catalogId, adAccountId)
+        api.feedsList(catalogId, adAccountId, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -211,14 +211,14 @@ public class CatalogFeedsApiHandler {
 
         String feedId = requestParameters.pathParameter("feed_id") != null ? requestParameters.pathParameter("feed_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        FeedsUpdateRequest feedsUpdateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<FeedsUpdateRequest>(){}) : null;
+        CatalogsFeedUpdateRequestSchema catalogsFeedUpdateRequestSchema = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsFeedUpdateRequestSchema>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter feedId is {}", feedId);
-        logger.debug("Parameter feedsUpdateRequest is {}", feedsUpdateRequest);
+        logger.debug("Parameter catalogsFeedUpdateRequestSchema is {}", catalogsFeedUpdateRequestSchema);
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.feedsUpdate(feedId, feedsUpdateRequest, adAccountId)
+        api.feedsUpdate(feedId, catalogsFeedUpdateRequestSchema, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -237,20 +237,20 @@ public class CatalogFeedsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String processingResultId = requestParameters.pathParameter("processing_result_id") != null ? requestParameters.pathParameter("processing_result_id").getString() : null;
-        String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
-        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
         List<Integer> itemNumbers = requestParameters.queryParameter("item_numbers") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("item_numbers").get(), new TypeReference<List<Integer>>(){}) : null;
         CatalogsItemValidationIssue itemValidationIssue = requestParameters.queryParameter("item_validation_issue") != null ? requestParameters.queryParameter("item_validation_issue").getCatalogsItemValidationIssue() : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+        String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
 
         logger.debug("Parameter processingResultId is {}", processingResultId);
-        logger.debug("Parameter bookmark is {}", bookmark);
-        logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter itemNumbers is {}", itemNumbers);
         logger.debug("Parameter itemValidationIssue is {}", itemValidationIssue);
         logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter bookmark is {}", bookmark);
+        logger.debug("Parameter pageSize is {}", pageSize);
 
-        api.itemsIssuesList(processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId)
+        api.itemsIssuesList(processingResultId, itemNumbers, itemValidationIssue, adAccountId, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

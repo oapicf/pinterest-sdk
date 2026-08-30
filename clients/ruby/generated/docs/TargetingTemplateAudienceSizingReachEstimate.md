@@ -14,9 +14,9 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::TargetingTemplateAudienceSizingReachEstimate.new(
-  estimate: 63492000,
-  lower_bound: 47619000,
-  upper_bound: 79365000
+  estimate: null,
+  lower_bound: null,
+  upper_bound: null
 )
 ```
 

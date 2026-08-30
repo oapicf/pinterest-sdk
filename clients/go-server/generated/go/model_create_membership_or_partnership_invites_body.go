@@ -5,20 +5,24 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 // CreateMembershipOrPartnershipInvitesBody - Body to be used on path to send Members or Partners Invite or Request
 type CreateMembershipOrPartnershipInvitesBody struct {
 
-	// The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-	BusinessRole string `json:"business_role"`
+	BusinessRole BusinessRoleForInvite `json:"business_role"`
 
 	InviteType InviteType `json:"invite_type"`
 
@@ -28,19 +32,82 @@ type CreateMembershipOrPartnershipInvitesBody struct {
 	// A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST
 	Partners []string `json:"partners,omitempty"`
 }
-
-// AssertCreateMembershipOrPartnershipInvitesBodyRequired checks if the required fields are not zero-ed
-func AssertCreateMembershipOrPartnershipInvitesBodyRequired(obj CreateMembershipOrPartnershipInvitesBody) error {
-	elements := map[string]interface{}{
-		"business_role": obj.BusinessRole,
-		"invite_type": obj.InviteType,
+// UnmarshalJSON validates required property keys then unmarshals into CreateMembershipOrPartnershipInvitesBody
+func (o *CreateMembershipOrPartnershipInvitesBody) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"business_role",
+		"invite_type",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"business_role": false,
+		"invite_type": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"business_role": {},
+		"invite_type": {},
+		"members": {},
+		"partners": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CreateMembershipOrPartnershipInvitesBody
+
+	if value, exists := allProperties["business_role"]; exists {
+		if err = json.Unmarshal(value, &decoded.BusinessRole); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["invite_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.InviteType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["members"]; exists {
+		if err = json.Unmarshal(value, &decoded.Members); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["partners"]; exists {
+		if err = json.Unmarshal(value, &decoded.Partners); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCreateMembershipOrPartnershipInvitesBodyRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertCreateMembershipOrPartnershipInvitesBodyRequired(obj CreateMembershipOrPartnershipInvitesBody) error {
 	return nil
 }
 

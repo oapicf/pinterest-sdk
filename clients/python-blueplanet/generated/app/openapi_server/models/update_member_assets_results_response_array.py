@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.update_member_assets_results_response_array_items_inner import UpdateMemberAssetsResultsResponseArrayItemsInner  # noqa: F401,E501
+from app.openapi_server.models.update_member_asset_result_item import UpdateMemberAssetResultItem  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,14 +16,14 @@ class UpdateMemberAssetsResultsResponseArray(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, items: List[UpdateMemberAssetsResultsResponseArrayItemsInner]=None):  # noqa: E501
+    def __init__(self, items: List[UpdateMemberAssetResultItem]=None):  # noqa: E501
         """UpdateMemberAssetsResultsResponseArray - a model defined in Swagger
 
         :param items: The items of this UpdateMemberAssetsResultsResponseArray.  # noqa: E501
-        :type items: List[UpdateMemberAssetsResultsResponseArrayItemsInner]
+        :type items: List[UpdateMemberAssetResultItem]
         """
         self.swagger_types = {
-            'items': List[UpdateMemberAssetsResultsResponseArrayItemsInner]
+            'items': List[UpdateMemberAssetResultItem]
         }
 
         self.attribute_map = {
@@ -44,24 +44,24 @@ class UpdateMemberAssetsResultsResponseArray(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def items(self) -> List[UpdateMemberAssetsResultsResponseArrayItemsInner]:
+    def items(self) -> List[UpdateMemberAssetResultItem]:
         """Gets the items of this UpdateMemberAssetsResultsResponseArray.
 
         List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.  # noqa: E501
 
         :return: The items of this UpdateMemberAssetsResultsResponseArray.
-        :rtype: List[UpdateMemberAssetsResultsResponseArrayItemsInner]
+        :rtype: List[UpdateMemberAssetResultItem]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[UpdateMemberAssetsResultsResponseArrayItemsInner]):
+    def items(self, items: List[UpdateMemberAssetResultItem]):
         """Sets the items of this UpdateMemberAssetsResultsResponseArray.
 
         List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.  # noqa: E501
 
         :param items: The items of this UpdateMemberAssetsResultsResponseArray.
-        :type items: List[UpdateMemberAssetsResultsResponseArrayItemsInner]
+        :type items: List[UpdateMemberAssetResultItem]
         """
 
         self._items = items

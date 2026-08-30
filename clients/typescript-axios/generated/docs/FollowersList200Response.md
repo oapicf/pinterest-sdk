@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;UserSummary&gt;**](UserSummary.md) |  | [default to undefined]
+**items** | [**Array&lt;FollowUser&gt;**](FollowUser.md) |  | [default to undefined]
 
 ## Example
 

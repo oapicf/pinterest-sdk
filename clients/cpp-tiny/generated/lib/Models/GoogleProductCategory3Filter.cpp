@@ -65,7 +65,7 @@ GoogleProductCategory3Filter::getGOOGLEPRODUCTCATEGORY3()
 }
 
 void
-GoogleProductCategory3Filter::setGOOGLEPRODUCTCATEGORY3(CatalogsProductGroupMultipleStringListCriteria  gOOGLE_PRODUCT_CATEGORY_3)
+GoogleProductCategory3Filter::setGOOGLEPRODUCTCATEGORY3(CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_3)
 {
 	this->gOOGLE_PRODUCT_CATEGORY_3 = gOOGLE_PRODUCT_CATEGORY_3;
 }

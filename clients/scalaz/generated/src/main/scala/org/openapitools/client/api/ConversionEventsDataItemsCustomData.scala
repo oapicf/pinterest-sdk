@@ -1,0 +1,52 @@
+package org.openapitools.client.api
+
+import argonaut._
+import argonaut.EncodeJson._
+import argonaut.DecodeJson._
+
+import org.http4s.{EntityDecoder, EntityEncoder}
+import org.http4s.argonaut._
+import org.joda.time.DateTime
+
+
+import ConversionEventsDataItemsCustomData._
+
+case class ConversionEventsDataItemsCustomData (
+  /* The brand of the content associated with the event. */
+  contentBrand: Option[String],
+/* The category of the content associated with the event. */
+  contentCategory: Option[String],
+/* List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check [here](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs) (Install the Pinterest tag section). */
+  contentIds: Option[List[String]],
+/* The name of the page or product associated with the event. */
+  contentName: Option[String],
+/* A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check [here](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs) (Install the Pinterest tag section). */
+  contents: Option[List[ConversionEventsDataItemsCustomDataContentsItems]],
+/* The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA. */
+  currency: Option[String],
+/* Only use when instructed. */
+  externalMeasurementId: Option[String],
+/* Only use when instructed. */
+  externalMeasurementVendorId: Option[Integer],
+/* Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided. */
+  np: Option[String],
+/* Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check [here](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs) (Install the Pinterest tag section). */
+  numItems: Option[Long],
+/* Flags for different privacy rights laws to opt out users of sharing personal information. Separate values with commas. See the Help Center article about [limited data processing](https://help.pinterest.com/en/business/article/limited-data-processing) and the developer's guide for [tracking conversion events](/docs/track-conversions/track-conversions-in-the-api/#whether-the-user-has-opted-out-of-web-or-offline-conversion-events) for help with using this parameter. */
+  optOutType: Option[String],
+/* The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest. */
+  orderId: Option[String],
+/* Predicted lifetime value of user associated with the event. Accepted as a string in the request; it will be parsed into a double. */
+  predictedLtv: Option[String],
+/* The search string related to the user conversion event. */
+  searchString: Option[String],
+/* Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value. */
+  value: Option[String])
+
+object ConversionEventsDataItemsCustomData {
+  import DateTimeCodecs._
+
+  implicit val ConversionEventsDataItemsCustomDataCodecJson: CodecJson[ConversionEventsDataItemsCustomData] = CodecJson.derive[ConversionEventsDataItemsCustomData]
+  implicit val ConversionEventsDataItemsCustomDataDecoder: EntityDecoder[ConversionEventsDataItemsCustomData] = jsonOf[ConversionEventsDataItemsCustomData]
+  implicit val ConversionEventsDataItemsCustomDataEncoder: EntityEncoder[ConversionEventsDataItemsCustomData] = jsonEncoderOf[ConversionEventsDataItemsCustomData]
+}

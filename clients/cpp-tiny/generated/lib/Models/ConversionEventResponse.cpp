@@ -10,6 +10,7 @@ ConversionEventResponse::ConversionEventResponse()
 	conversion_event = ConversionTagType();
 	conversion_tag_id = std::string();
 	created_time = int(0);
+	reporting_conversion_event = std::string();
 }
 
 ConversionEventResponse::ConversionEventResponse(std::string jsonString)
@@ -80,6 +81,19 @@ ConversionEventResponse::fromJson(std::string jsonObj)
 
     }
 
+    const char *reporting_conversion_eventKey = "reporting_conversion_event";
+
+    if(object.has_key(reporting_conversion_eventKey))
+    {
+        bourne::json value = object[reporting_conversion_eventKey];
+
+
+
+        jsonToValue(&reporting_conversion_event, value, "std::string");
+
+
+    }
+
 
 }
 
@@ -117,6 +131,13 @@ ConversionEventResponse::toJson()
 
 
 
+
+
+
+    object["reporting_conversion_event"] = getReportingConversionEvent();
+
+
+
     return object;
 
 }
@@ -128,7 +149,7 @@ ConversionEventResponse::getAdAccountId()
 }
 
 void
-ConversionEventResponse::setAdAccountId(std::string  ad_account_id)
+ConversionEventResponse::setAdAccountId(std::string ad_account_id)
 {
 	this->ad_account_id = ad_account_id;
 }
@@ -140,7 +161,7 @@ ConversionEventResponse::getConversionEvent()
 }
 
 void
-ConversionEventResponse::setConversionEvent(ConversionTagType  conversion_event)
+ConversionEventResponse::setConversionEvent(ConversionTagType conversion_event)
 {
 	this->conversion_event = conversion_event;
 }
@@ -152,7 +173,7 @@ ConversionEventResponse::getConversionTagId()
 }
 
 void
-ConversionEventResponse::setConversionTagId(std::string  conversion_tag_id)
+ConversionEventResponse::setConversionTagId(std::string conversion_tag_id)
 {
 	this->conversion_tag_id = conversion_tag_id;
 }
@@ -164,9 +185,21 @@ ConversionEventResponse::getCreatedTime()
 }
 
 void
-ConversionEventResponse::setCreatedTime(int  created_time)
+ConversionEventResponse::setCreatedTime(int created_time)
 {
 	this->created_time = created_time;
+}
+
+std::string
+ConversionEventResponse::getReportingConversionEvent()
+{
+	return reporting_conversion_event;
+}
+
+void
+ConversionEventResponse::setReportingConversionEvent(std::string reporting_conversion_event)
+{
+	this->reporting_conversion_event = reporting_conversion_event;
 }
 
 

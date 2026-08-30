@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **GOOGLE_PRODUCT_CATEGORY_5** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  |  |
+| **GOOGLE_PRODUCT_CATEGORY_5** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |  |
 
 
 

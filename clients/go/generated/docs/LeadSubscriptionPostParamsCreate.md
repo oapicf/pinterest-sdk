@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **LeadFormId** | Pointer to **string** | Lead form ID. | [optional] 
 **WebhookUrl** | **string** | Standard HTTPS webhook URL. | 
 **PartnerAccessToken** | Pointer to **string** | Partner access token. Only for clients that requires authentication. We recommend to avoid this param. | [optional] 
-**PartnerMetadata** | Pointer to [**LeadSubscriptionPostParamsCreateAllOfPartnerMetadata**](LeadSubscriptionPostParamsCreateAllOfPartnerMetadata.md) |  | [optional] 
+**PartnerMetadata** | Pointer to [**PartnerMetadata**](PartnerMetadata.md) | Partner metadata. Only for clients that requires special handling. We recommend to avoid this param. | [optional] 
 **PartnerRefreshToken** | Pointer to **string** | Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. | [optional] 
 
 ## Methods
@@ -101,20 +101,20 @@ HasPartnerAccessToken returns a boolean if a field has been set.
 
 ### GetPartnerMetadata
 
-`func (o *LeadSubscriptionPostParamsCreate) GetPartnerMetadata() LeadSubscriptionPostParamsCreateAllOfPartnerMetadata`
+`func (o *LeadSubscriptionPostParamsCreate) GetPartnerMetadata() PartnerMetadata`
 
 GetPartnerMetadata returns the PartnerMetadata field if non-nil, zero value otherwise.
 
 ### GetPartnerMetadataOk
 
-`func (o *LeadSubscriptionPostParamsCreate) GetPartnerMetadataOk() (*LeadSubscriptionPostParamsCreateAllOfPartnerMetadata, bool)`
+`func (o *LeadSubscriptionPostParamsCreate) GetPartnerMetadataOk() (*PartnerMetadata, bool)`
 
 GetPartnerMetadataOk returns a tuple with the PartnerMetadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPartnerMetadata
 
-`func (o *LeadSubscriptionPostParamsCreate) SetPartnerMetadata(v LeadSubscriptionPostParamsCreateAllOfPartnerMetadata)`
+`func (o *LeadSubscriptionPostParamsCreate) SetPartnerMetadata(v PartnerMetadata)`
 
 SetPartnerMetadata sets PartnerMetadata field to given value.
 

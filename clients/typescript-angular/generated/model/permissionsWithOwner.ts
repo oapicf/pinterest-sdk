@@ -9,6 +9,9 @@
  */
 
 
+/**
+ * Permission levels including the OWNER role.
+ */
 export const PermissionsWithOwner = {
     Admin: 'ADMIN',
     Analyst: 'ANALYST',

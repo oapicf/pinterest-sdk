@@ -61,9 +61,11 @@ typedef struct targeting_spec_t {
     list_t *audience_include; //primitive container
     list_t *gender; //nonprimitive container
     list_t *geo; //primitive container
+    list_t *geo_exclude; //primitive container
     list_t *interest; //primitive container
     list_t *locale; //primitive container
     list_t *location; //primitive container
+    list_t *location_exclude; //primitive container
     char *maximum_age; // string
     char *minimum_age; // string
     list_t *shopping_retargeting; //nonprimitive container
@@ -79,9 +81,11 @@ __attribute__((deprecated)) targeting_spec_t *targeting_spec_create(
     list_t *audience_include,
     list_t *gender,
     list_t *geo,
+    list_t *geo_exclude,
     list_t *interest,
     list_t *locale,
     list_t *location,
+    list_t *location_exclude,
     char *maximum_age,
     char *minimum_age,
     list_t *shopping_retargeting,

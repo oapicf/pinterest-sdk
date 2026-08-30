@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -10,25 +11,26 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.PlacementGroupType;
-import org.openapitools.model.TargetingSpec;
+import org.openapitools.model.TargetingSpecOptimal;
 import org.openapitools.model.TargetingTemplateKeyword;
 import org.openapitools.model.TrackingUrls;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * TargetingTemplateCreate
+ * Resource create operation model.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "TargetingTemplateCreate", description = "Resource create operation model.")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingTemplateCreate {
 
   private Boolean autoTargetingEnabled = true;
@@ -40,7 +42,7 @@ public class TargetingTemplateCreate {
 
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
-  private TargetingSpec targetingAttributes;
+  private TargetingSpecOptimal targetingAttributes;
 
   private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 
@@ -51,7 +53,7 @@ public class TargetingTemplateCreate {
   /**
    * Constructor with only required parameters
    */
-  public TargetingTemplateCreate(String name, TargetingSpec targetingAttributes) {
+  public TargetingTemplateCreate(String name, TargetingSpecOptimal targetingAttributes) {
     this.name = name;
     this.targetingAttributes = targetingAttributes;
   }
@@ -62,11 +64,11 @@ public class TargetingTemplateCreate {
   }
 
   /**
-   * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+   * Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).
    * @return autoTargetingEnabled
    */
   
-  @Schema(name = "auto_targeting_enabled", description = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "auto_targeting_enabled", description = "Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("auto_targeting_enabled")
   public Boolean getAutoTargetingEnabled() {
     return autoTargetingEnabled;
@@ -94,7 +96,7 @@ public class TargetingTemplateCreate {
    * @return keywords
    */
   @Valid 
-  @Schema(name = "keywords", example = "[{value=cats, match_type=EXACT_NEGATIVE}]", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "keywords", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("keywords")
   public List<@Valid TargetingTemplateKeyword> getKeywords() {
     return keywords;
@@ -110,11 +112,11 @@ public class TargetingTemplateCreate {
   }
 
   /**
-   * Name of targeting template.
+   * targeting template name
    * @return name
    */
   @NotNull 
-  @Schema(name = "name", example = "Gaming", description = "Name of targeting template.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "name", description = "targeting template name", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -144,23 +146,23 @@ public class TargetingTemplateCreate {
     this.placementGroup = placementGroup;
   }
 
-  public TargetingTemplateCreate targetingAttributes(TargetingSpec targetingAttributes) {
+  public TargetingTemplateCreate targetingAttributes(TargetingSpecOptimal targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
     return this;
   }
 
   /**
-   * Get targetingAttributes
+   * targeting profile attributes
    * @return targetingAttributes
    */
   @NotNull @Valid 
-  @Schema(name = "targeting_attributes", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "targeting_attributes", description = "targeting profile attributes", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("targeting_attributes")
-  public TargetingSpec getTargetingAttributes() {
+  public TargetingSpecOptimal getTargetingAttributes() {
     return targetingAttributes;
   }
 
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+  public void setTargetingAttributes(TargetingSpecOptimal targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
   }
 
@@ -236,10 +238,7 @@ public class TargetingTemplateCreate {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

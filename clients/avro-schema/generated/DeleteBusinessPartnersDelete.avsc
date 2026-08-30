@@ -1,0 +1,23 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "DeleteBusinessPartnersDelete",
+  "fields": [
+    {
+      "name": "partner_ids",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "A list of partner ids to be deleted"
+    },
+    {
+      "name": "partner_type",
+      "type": ["null", "model.NullablePartnerType"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

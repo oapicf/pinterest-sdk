@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**HOTELID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**HOTELID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 ## Examples
 

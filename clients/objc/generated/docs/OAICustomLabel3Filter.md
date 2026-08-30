@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cUSTOMLABEL3** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](.md) |  | 
+**cUSTOMLABEL3** | [**OAICatalogsProductGroupFilterOperatorTypeCriteria***](OAICatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

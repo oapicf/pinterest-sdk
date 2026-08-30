@@ -1,7 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.AdvertiserDefinedEventsResponse;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.AdvertiserDefinedEventsCreate200Response;
+import org.openapitools.vertxweb.server.model.AdvertiserDefinedEventsCreateRequest;
+import org.openapitools.vertxweb.server.model.AdvertiserDefinedEventsGet200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -15,7 +17,19 @@ import java.util.Map;
 // Implement this class
 
 public class ConversionsApiImpl implements ConversionsApi {
-    public Future<ApiResponse<AdvertiserDefinedEventsResponse>> advertiserDefinedEventsGet(String adAccountId) {
+    public Future<ApiResponse<AdvertiserDefinedEventsCreate200Response>> advertiserDefinedEventsCreate(String adAccountId, AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest) {
+        return Future.failedFuture(new HttpException(501));
+    }
+
+    public Future<ApiResponse<AdvertiserDefinedEventsCreate200Response>> advertiserDefinedEventsDelete(String adAccountId, List<String> eventNames) {
+        return Future.failedFuture(new HttpException(501));
+    }
+
+    public Future<ApiResponse<AdvertiserDefinedEventsGet200Response>> advertiserDefinedEventsGet(String adAccountId) {
+        return Future.failedFuture(new HttpException(501));
+    }
+
+    public Future<ApiResponse<AdvertiserDefinedEventsCreate200Response>> advertiserDefinedEventsUpdate(String adAccountId, AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest) {
         return Future.failedFuture(new HttpException(501));
     }
 

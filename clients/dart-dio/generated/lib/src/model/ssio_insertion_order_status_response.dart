@@ -9,7 +9,7 @@ import 'package:built_value/serializer.dart';
 
 part 'ssio_insertion_order_status_response.g.dart';
 
-/// SSIOInsertionOrderStatusResponse
+/// SSIO insertion order status response for a single pin order id lookup.
 ///
 /// Properties:
 /// * [creationTime] - Salesforce insertion order creation time
@@ -95,15 +95,17 @@ class _$SSIOInsertionOrderStatusResponseSerializer implements PrimitiveSerialize
         case r'pin_order_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.pinOrderId = valueDes;
           break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         default:

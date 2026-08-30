@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ProductAvailability"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ProductAvailability"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ProductAvailability {
+    title = ProductAvailability
+    description = ProductAvailability
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  ProductAvailability {
+    title = ProductAvailability
+    description = ProductAvailability
+    implements = openapi_server.resourceTypes.ProductAvailability
+
+  }
+}

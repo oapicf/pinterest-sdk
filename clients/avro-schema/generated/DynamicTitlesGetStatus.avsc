@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "DynamicTitlesGetStatus",
+  "fields": [
+    {
+      "name": "generated_count",
+      "type": ["null", "int"],
+      "doc": "The count of generated titles.",
+      "default": null
+    },
+    {
+      "name": "is_ready",
+      "type": ["null", "boolean"],
+      "doc": "Whether dynamic titles have been generated and are ready to be reviewed for the ad group.",
+      "default": null
+    },
+    {
+      "name": "reviewed_count",
+      "type": ["null", "int"],
+      "doc": "The count of advertiser reviewed titles.",
+      "default": null
+    }
+  ]
+
+}

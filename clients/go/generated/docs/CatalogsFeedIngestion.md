@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **time.Time** |  | 
-**FeedId** | **string** |  | 
-**Id** | **string** |  | 
-**Status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
+**CreatedAt** | **time.Time** | Timestamp of the feed ingestion. | 
+**FeedId** | **string** | Catalog Feed id pertaining to the feed ingestion. | 
+**Id** | **string** | Unique identifier of a feed ingestion. | 
+**Status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) | Status of the feed ingestion. | 
 
 ## Methods
 

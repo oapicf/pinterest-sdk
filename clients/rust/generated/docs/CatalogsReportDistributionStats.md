@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ineligible_for_organic** | Option<**bool**> | Indicates if issue makes items ineligible for organic distribution | [optional]
 **message** | Option<**String**> | Title message describing the diagnostic issue | [optional]
 **occurrences** | Option<**i32**> | Number of occurrences of the issue | [optional]
-**report_type** | Option<**String**> |  | [optional]
+**report_type** | Option<**ReportType**> |  (enum: DISTRIBUTION_ISSUES) | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

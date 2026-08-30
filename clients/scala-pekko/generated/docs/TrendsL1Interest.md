@@ -1,0 +1,9 @@
+
+
+# TrendsL1Interest
+
+## Enum
+
+
+
+

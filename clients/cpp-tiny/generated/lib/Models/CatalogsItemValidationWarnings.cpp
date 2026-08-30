@@ -6,212 +6,212 @@ using namespace Tiny;
 
 CatalogsItemValidationWarnings::CatalogsItemValidationWarnings()
 {
-	aD_IMAGE_0_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_0_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_0_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_0_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_0_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_0_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_0_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_10_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_10_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_10_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_10_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_10_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_10_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_10_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_11_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_11_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_11_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_11_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_11_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_11_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_11_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_12_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_12_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_12_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_12_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_12_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_12_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_12_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_13_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_13_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_13_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_13_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_13_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_13_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_13_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_14_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_14_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_14_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_14_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_14_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_14_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_14_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_15_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_15_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_15_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_15_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_15_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_15_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_15_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_16_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_16_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_16_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_16_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_16_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_16_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_16_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_17_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_17_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_17_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_17_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_17_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_17_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_17_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_18_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_18_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_18_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_18_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_18_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_18_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_18_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_19_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_19_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_19_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_19_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_19_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_19_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_19_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_1_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_1_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_1_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_1_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_1_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_1_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_1_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_2_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_2_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_2_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_2_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_2_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_2_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_2_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_3_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_3_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_3_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_3_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_3_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_3_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_3_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_4_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_4_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_4_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_4_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_4_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_4_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_4_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_5_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_5_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_5_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_5_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_5_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_5_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_5_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_6_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_6_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_6_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_6_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_6_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_6_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_6_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_7_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_7_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_7_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_7_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_7_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_7_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_7_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_8_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_8_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_8_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_8_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_8_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_8_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_8_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_9_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_9_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_9_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_IMAGE_9_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_IMAGE_9_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_IMAGE_9_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_IMAGE_9_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_LINK_FORMAT_WARNING = CatalogsItemValidationDetails();
-	aD_LINK_SAME_AS_LINK = CatalogsItemValidationDetails();
-	aD_VIDEO_0_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_VIDEO_0_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_VIDEO_0_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_VIDEO_0_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_VIDEO_0_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_VIDEO_0_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_VIDEO_0_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_VIDEO_1_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_VIDEO_1_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_VIDEO_1_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_VIDEO_1_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_VIDEO_1_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_VIDEO_1_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_VIDEO_1_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aD_VIDEO_2_LINK_DUPLICATED = CatalogsItemValidationDetails();
-	aD_VIDEO_2_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_VIDEO_2_LINK_REQUIRED = CatalogsItemValidationDetails();
-	aD_VIDEO_2_LINK_WARNING = CatalogsItemValidationDetails();
-	aD_VIDEO_2_TAG_DUPLICATED = CatalogsItemValidationDetails();
-	aD_VIDEO_2_TAG_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aD_VIDEO_2_TAG_REQUIRED = CatalogsItemValidationDetails();
-	aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	aDDITIONAL_IMAGE_LINK_WARNING = CatalogsItemValidationDetails();
-	aDWORDS_FORMAT_WARNING = CatalogsItemValidationDetails();
-	aDWORDS_SAME_AS_LINK = CatalogsItemValidationDetails();
-	aGE_GROUP_INVALID = CatalogsItemValidationDetails();
-	aNDROID_DEEP_LINK_INVALID = CatalogsItemValidationDetails();
-	aVAILABILITY_DATE_INVALID = CatalogsItemValidationDetails();
-	cOUNTRY_DOES_NOT_MAP_TO_CURRENCY = CatalogsItemValidationDetails();
-	cUSTOM_LABEL_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	dESCRIPTION_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	eXPIRATION_DATE_INVALID = CatalogsItemValidationDetails();
-	gENDER_INVALID = CatalogsItemValidationDetails();
-	gTIN_INVALID = CatalogsItemValidationDetails();
-	iMAGE_LINK_WARNING = CatalogsItemValidationDetails();
-	iOS_DEEP_LINK_INVALID = CatalogsItemValidationDetails();
-	iS_BUNDLE_INVALID = CatalogsItemValidationDetails();
-	iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = CatalogsItemValidationDetails();
-	lINK_FORMAT_WARNING = CatalogsItemValidationDetails();
-	mIN_AD_PRICE_INVALID = CatalogsItemValidationDetails();
-	mPN_INVALID = CatalogsItemValidationDetails();
-	mULTIPACK_INVALID = CatalogsItemValidationDetails();
-	oPTIONAL_CONDITION_INVALID = CatalogsItemValidationDetails();
-	oPTIONAL_CONDITION_MISSING = CatalogsItemValidationDetails();
-	oPTIONAL_PRODUCT_CATEGORY_INVALID = CatalogsItemValidationDetails();
-	oPTIONAL_PRODUCT_CATEGORY_MISSING = CatalogsItemValidationDetails();
-	pRODUCT_CATEGORY_DEPTH_WARNING = CatalogsItemValidationDetails();
-	pRODUCT_TYPE_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	sALE_DATE_INVALID = CatalogsItemValidationDetails();
-	sALES_PRICE_INVALID = CatalogsItemValidationDetails();
-	sALES_PRICE_TOO_HIGH = CatalogsItemValidationDetails();
-	sALES_PRICE_TOO_LOW = CatalogsItemValidationDetails();
-	sHIPPING_HEIGHT_INVALID = CatalogsItemValidationDetails();
-	sHIPPING_INVALID = CatalogsItemValidationDetails();
-	sHIPPING_WEIGHT_INVALID = CatalogsItemValidationDetails();
-	sHIPPING_WIDTH_INVALID = CatalogsItemValidationDetails();
-	sIZE_SYSTEM_INVALID = CatalogsItemValidationDetails();
-	sIZE_TYPE_INVALID = CatalogsItemValidationDetails();
-	tAX_INVALID = CatalogsItemValidationDetails();
-	tITLE_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	tOO_MANY_ADDITIONAL_IMAGE_LINKS = CatalogsItemValidationDetails();
-	uTM_SOURCE_AUTO_CORRECTED = CatalogsItemValidationDetails();
-	vIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED = CatalogsItemValidationDetails();
-	wEIGHT_UNIT_INVALID = CatalogsItemValidationDetails();
+	aD_IMAGE_0_LINK_DUPLICATED = null;
+	aD_IMAGE_0_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_0_LINK_REQUIRED = null;
+	aD_IMAGE_0_LINK_WARNING = null;
+	aD_IMAGE_0_TAG_DUPLICATED = null;
+	aD_IMAGE_0_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_0_TAG_REQUIRED = null;
+	aD_IMAGE_10_LINK_DUPLICATED = null;
+	aD_IMAGE_10_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_10_LINK_REQUIRED = null;
+	aD_IMAGE_10_LINK_WARNING = null;
+	aD_IMAGE_10_TAG_DUPLICATED = null;
+	aD_IMAGE_10_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_10_TAG_REQUIRED = null;
+	aD_IMAGE_11_LINK_DUPLICATED = null;
+	aD_IMAGE_11_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_11_LINK_REQUIRED = null;
+	aD_IMAGE_11_LINK_WARNING = null;
+	aD_IMAGE_11_TAG_DUPLICATED = null;
+	aD_IMAGE_11_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_11_TAG_REQUIRED = null;
+	aD_IMAGE_12_LINK_DUPLICATED = null;
+	aD_IMAGE_12_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_12_LINK_REQUIRED = null;
+	aD_IMAGE_12_LINK_WARNING = null;
+	aD_IMAGE_12_TAG_DUPLICATED = null;
+	aD_IMAGE_12_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_12_TAG_REQUIRED = null;
+	aD_IMAGE_13_LINK_DUPLICATED = null;
+	aD_IMAGE_13_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_13_LINK_REQUIRED = null;
+	aD_IMAGE_13_LINK_WARNING = null;
+	aD_IMAGE_13_TAG_DUPLICATED = null;
+	aD_IMAGE_13_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_13_TAG_REQUIRED = null;
+	aD_IMAGE_14_LINK_DUPLICATED = null;
+	aD_IMAGE_14_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_14_LINK_REQUIRED = null;
+	aD_IMAGE_14_LINK_WARNING = null;
+	aD_IMAGE_14_TAG_DUPLICATED = null;
+	aD_IMAGE_14_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_14_TAG_REQUIRED = null;
+	aD_IMAGE_15_LINK_DUPLICATED = null;
+	aD_IMAGE_15_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_15_LINK_REQUIRED = null;
+	aD_IMAGE_15_LINK_WARNING = null;
+	aD_IMAGE_15_TAG_DUPLICATED = null;
+	aD_IMAGE_15_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_15_TAG_REQUIRED = null;
+	aD_IMAGE_16_LINK_DUPLICATED = null;
+	aD_IMAGE_16_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_16_LINK_REQUIRED = null;
+	aD_IMAGE_16_LINK_WARNING = null;
+	aD_IMAGE_16_TAG_DUPLICATED = null;
+	aD_IMAGE_16_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_16_TAG_REQUIRED = null;
+	aD_IMAGE_17_LINK_DUPLICATED = null;
+	aD_IMAGE_17_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_17_LINK_REQUIRED = null;
+	aD_IMAGE_17_LINK_WARNING = null;
+	aD_IMAGE_17_TAG_DUPLICATED = null;
+	aD_IMAGE_17_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_17_TAG_REQUIRED = null;
+	aD_IMAGE_18_LINK_DUPLICATED = null;
+	aD_IMAGE_18_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_18_LINK_REQUIRED = null;
+	aD_IMAGE_18_LINK_WARNING = null;
+	aD_IMAGE_18_TAG_DUPLICATED = null;
+	aD_IMAGE_18_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_18_TAG_REQUIRED = null;
+	aD_IMAGE_19_LINK_DUPLICATED = null;
+	aD_IMAGE_19_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_19_LINK_REQUIRED = null;
+	aD_IMAGE_19_LINK_WARNING = null;
+	aD_IMAGE_19_TAG_DUPLICATED = null;
+	aD_IMAGE_19_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_19_TAG_REQUIRED = null;
+	aD_IMAGE_1_LINK_DUPLICATED = null;
+	aD_IMAGE_1_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_1_LINK_REQUIRED = null;
+	aD_IMAGE_1_LINK_WARNING = null;
+	aD_IMAGE_1_TAG_DUPLICATED = null;
+	aD_IMAGE_1_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_1_TAG_REQUIRED = null;
+	aD_IMAGE_2_LINK_DUPLICATED = null;
+	aD_IMAGE_2_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_2_LINK_REQUIRED = null;
+	aD_IMAGE_2_LINK_WARNING = null;
+	aD_IMAGE_2_TAG_DUPLICATED = null;
+	aD_IMAGE_2_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_2_TAG_REQUIRED = null;
+	aD_IMAGE_3_LINK_DUPLICATED = null;
+	aD_IMAGE_3_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_3_LINK_REQUIRED = null;
+	aD_IMAGE_3_LINK_WARNING = null;
+	aD_IMAGE_3_TAG_DUPLICATED = null;
+	aD_IMAGE_3_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_3_TAG_REQUIRED = null;
+	aD_IMAGE_4_LINK_DUPLICATED = null;
+	aD_IMAGE_4_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_4_LINK_REQUIRED = null;
+	aD_IMAGE_4_LINK_WARNING = null;
+	aD_IMAGE_4_TAG_DUPLICATED = null;
+	aD_IMAGE_4_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_4_TAG_REQUIRED = null;
+	aD_IMAGE_5_LINK_DUPLICATED = null;
+	aD_IMAGE_5_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_5_LINK_REQUIRED = null;
+	aD_IMAGE_5_LINK_WARNING = null;
+	aD_IMAGE_5_TAG_DUPLICATED = null;
+	aD_IMAGE_5_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_5_TAG_REQUIRED = null;
+	aD_IMAGE_6_LINK_DUPLICATED = null;
+	aD_IMAGE_6_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_6_LINK_REQUIRED = null;
+	aD_IMAGE_6_LINK_WARNING = null;
+	aD_IMAGE_6_TAG_DUPLICATED = null;
+	aD_IMAGE_6_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_6_TAG_REQUIRED = null;
+	aD_IMAGE_7_LINK_DUPLICATED = null;
+	aD_IMAGE_7_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_7_LINK_REQUIRED = null;
+	aD_IMAGE_7_LINK_WARNING = null;
+	aD_IMAGE_7_TAG_DUPLICATED = null;
+	aD_IMAGE_7_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_7_TAG_REQUIRED = null;
+	aD_IMAGE_8_LINK_DUPLICATED = null;
+	aD_IMAGE_8_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_8_LINK_REQUIRED = null;
+	aD_IMAGE_8_LINK_WARNING = null;
+	aD_IMAGE_8_TAG_DUPLICATED = null;
+	aD_IMAGE_8_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_8_TAG_REQUIRED = null;
+	aD_IMAGE_9_LINK_DUPLICATED = null;
+	aD_IMAGE_9_LINK_LENGTH_TOO_LONG = null;
+	aD_IMAGE_9_LINK_REQUIRED = null;
+	aD_IMAGE_9_LINK_WARNING = null;
+	aD_IMAGE_9_TAG_DUPLICATED = null;
+	aD_IMAGE_9_TAG_LENGTH_TOO_LONG = null;
+	aD_IMAGE_9_TAG_REQUIRED = null;
+	aD_LINK_FORMAT_WARNING = null;
+	aD_LINK_SAME_AS_LINK = null;
+	aD_VIDEO_0_LINK_DUPLICATED = null;
+	aD_VIDEO_0_LINK_LENGTH_TOO_LONG = null;
+	aD_VIDEO_0_LINK_REQUIRED = null;
+	aD_VIDEO_0_LINK_WARNING = null;
+	aD_VIDEO_0_TAG_DUPLICATED = null;
+	aD_VIDEO_0_TAG_LENGTH_TOO_LONG = null;
+	aD_VIDEO_0_TAG_REQUIRED = null;
+	aD_VIDEO_1_LINK_DUPLICATED = null;
+	aD_VIDEO_1_LINK_LENGTH_TOO_LONG = null;
+	aD_VIDEO_1_LINK_REQUIRED = null;
+	aD_VIDEO_1_LINK_WARNING = null;
+	aD_VIDEO_1_TAG_DUPLICATED = null;
+	aD_VIDEO_1_TAG_LENGTH_TOO_LONG = null;
+	aD_VIDEO_1_TAG_REQUIRED = null;
+	aD_VIDEO_2_LINK_DUPLICATED = null;
+	aD_VIDEO_2_LINK_LENGTH_TOO_LONG = null;
+	aD_VIDEO_2_LINK_REQUIRED = null;
+	aD_VIDEO_2_LINK_WARNING = null;
+	aD_VIDEO_2_TAG_DUPLICATED = null;
+	aD_VIDEO_2_TAG_LENGTH_TOO_LONG = null;
+	aD_VIDEO_2_TAG_REQUIRED = null;
+	aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = null;
+	aDDITIONAL_IMAGE_LINK_WARNING = null;
+	aDWORDS_FORMAT_WARNING = null;
+	aDWORDS_SAME_AS_LINK = null;
+	aGE_GROUP_INVALID = null;
+	aNDROID_DEEP_LINK_INVALID = null;
+	aVAILABILITY_DATE_INVALID = null;
+	cOUNTRY_DOES_NOT_MAP_TO_CURRENCY = null;
+	cUSTOM_LABEL_LENGTH_TOO_LONG = null;
+	dESCRIPTION_LENGTH_TOO_LONG = null;
+	eXPIRATION_DATE_INVALID = null;
+	gENDER_INVALID = null;
+	gTIN_INVALID = null;
+	iMAGE_LINK_WARNING = null;
+	iOS_DEEP_LINK_INVALID = null;
+	iS_BUNDLE_INVALID = null;
+	iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = null;
+	lINK_FORMAT_WARNING = null;
+	mIN_AD_PRICE_INVALID = null;
+	mPN_INVALID = null;
+	mULTIPACK_INVALID = null;
+	oPTIONAL_CONDITION_INVALID = null;
+	oPTIONAL_CONDITION_MISSING = null;
+	oPTIONAL_PRODUCT_CATEGORY_INVALID = null;
+	oPTIONAL_PRODUCT_CATEGORY_MISSING = null;
+	pRODUCT_CATEGORY_DEPTH_WARNING = null;
+	pRODUCT_TYPE_LENGTH_TOO_LONG = null;
+	sALE_DATE_INVALID = null;
+	sALES_PRICE_INVALID = null;
+	sALES_PRICE_TOO_HIGH = null;
+	sALES_PRICE_TOO_LOW = null;
+	sHIPPING_HEIGHT_INVALID = null;
+	sHIPPING_INVALID = null;
+	sHIPPING_WEIGHT_INVALID = null;
+	sHIPPING_WIDTH_INVALID = null;
+	sIZE_SYSTEM_INVALID = null;
+	sIZE_TYPE_INVALID = null;
+	tAX_INVALID = null;
+	tITLE_LENGTH_TOO_LONG = null;
+	tOO_MANY_ADDITIONAL_IMAGE_LINKS = null;
+	uTM_SOURCE_AUTO_CORRECTED = null;
+	vIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED = null;
+	wEIGHT_UNIT_INVALID = null;
 }
 
 CatalogsItemValidationWarnings::CatalogsItemValidationWarnings(std::string jsonString)
@@ -4575,7 +4575,7 @@ CatalogsItemValidationWarnings::getADIMAGE0LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE0LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_0_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE0LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_0_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_0_LINK_DUPLICATED = aD_IMAGE_0_LINK_DUPLICATED;
 }
@@ -4587,7 +4587,7 @@ CatalogsItemValidationWarnings::getADIMAGE0LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE0LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_0_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE0LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_0_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_0_LINK_LENGTH_TOO_LONG = aD_IMAGE_0_LINK_LENGTH_TOO_LONG;
 }
@@ -4599,7 +4599,7 @@ CatalogsItemValidationWarnings::getADIMAGE0LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE0LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_0_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE0LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_0_LINK_REQUIRED)
 {
 	this->aD_IMAGE_0_LINK_REQUIRED = aD_IMAGE_0_LINK_REQUIRED;
 }
@@ -4611,7 +4611,7 @@ CatalogsItemValidationWarnings::getADIMAGE0LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE0LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_0_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE0LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_0_LINK_WARNING)
 {
 	this->aD_IMAGE_0_LINK_WARNING = aD_IMAGE_0_LINK_WARNING;
 }
@@ -4623,7 +4623,7 @@ CatalogsItemValidationWarnings::getADIMAGE0TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE0TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_0_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE0TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_0_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_0_TAG_DUPLICATED = aD_IMAGE_0_TAG_DUPLICATED;
 }
@@ -4635,7 +4635,7 @@ CatalogsItemValidationWarnings::getADIMAGE0TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE0TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_0_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE0TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_0_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_0_TAG_LENGTH_TOO_LONG = aD_IMAGE_0_TAG_LENGTH_TOO_LONG;
 }
@@ -4647,7 +4647,7 @@ CatalogsItemValidationWarnings::getADIMAGE0TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE0TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_0_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE0TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_0_TAG_REQUIRED)
 {
 	this->aD_IMAGE_0_TAG_REQUIRED = aD_IMAGE_0_TAG_REQUIRED;
 }
@@ -4659,7 +4659,7 @@ CatalogsItemValidationWarnings::getADIMAGE10LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE10LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_10_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE10LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_10_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_10_LINK_DUPLICATED = aD_IMAGE_10_LINK_DUPLICATED;
 }
@@ -4671,7 +4671,7 @@ CatalogsItemValidationWarnings::getADIMAGE10LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE10LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_10_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE10LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_10_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_10_LINK_LENGTH_TOO_LONG = aD_IMAGE_10_LINK_LENGTH_TOO_LONG;
 }
@@ -4683,7 +4683,7 @@ CatalogsItemValidationWarnings::getADIMAGE10LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE10LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_10_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE10LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_10_LINK_REQUIRED)
 {
 	this->aD_IMAGE_10_LINK_REQUIRED = aD_IMAGE_10_LINK_REQUIRED;
 }
@@ -4695,7 +4695,7 @@ CatalogsItemValidationWarnings::getADIMAGE10LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE10LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_10_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE10LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_10_LINK_WARNING)
 {
 	this->aD_IMAGE_10_LINK_WARNING = aD_IMAGE_10_LINK_WARNING;
 }
@@ -4707,7 +4707,7 @@ CatalogsItemValidationWarnings::getADIMAGE10TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE10TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_10_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE10TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_10_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_10_TAG_DUPLICATED = aD_IMAGE_10_TAG_DUPLICATED;
 }
@@ -4719,7 +4719,7 @@ CatalogsItemValidationWarnings::getADIMAGE10TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE10TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_10_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE10TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_10_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_10_TAG_LENGTH_TOO_LONG = aD_IMAGE_10_TAG_LENGTH_TOO_LONG;
 }
@@ -4731,7 +4731,7 @@ CatalogsItemValidationWarnings::getADIMAGE10TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE10TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_10_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE10TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_10_TAG_REQUIRED)
 {
 	this->aD_IMAGE_10_TAG_REQUIRED = aD_IMAGE_10_TAG_REQUIRED;
 }
@@ -4743,7 +4743,7 @@ CatalogsItemValidationWarnings::getADIMAGE11LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE11LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_11_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE11LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_11_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_11_LINK_DUPLICATED = aD_IMAGE_11_LINK_DUPLICATED;
 }
@@ -4755,7 +4755,7 @@ CatalogsItemValidationWarnings::getADIMAGE11LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE11LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_11_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE11LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_11_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_11_LINK_LENGTH_TOO_LONG = aD_IMAGE_11_LINK_LENGTH_TOO_LONG;
 }
@@ -4767,7 +4767,7 @@ CatalogsItemValidationWarnings::getADIMAGE11LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE11LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_11_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE11LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_11_LINK_REQUIRED)
 {
 	this->aD_IMAGE_11_LINK_REQUIRED = aD_IMAGE_11_LINK_REQUIRED;
 }
@@ -4779,7 +4779,7 @@ CatalogsItemValidationWarnings::getADIMAGE11LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE11LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_11_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE11LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_11_LINK_WARNING)
 {
 	this->aD_IMAGE_11_LINK_WARNING = aD_IMAGE_11_LINK_WARNING;
 }
@@ -4791,7 +4791,7 @@ CatalogsItemValidationWarnings::getADIMAGE11TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE11TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_11_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE11TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_11_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_11_TAG_DUPLICATED = aD_IMAGE_11_TAG_DUPLICATED;
 }
@@ -4803,7 +4803,7 @@ CatalogsItemValidationWarnings::getADIMAGE11TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE11TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_11_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE11TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_11_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_11_TAG_LENGTH_TOO_LONG = aD_IMAGE_11_TAG_LENGTH_TOO_LONG;
 }
@@ -4815,7 +4815,7 @@ CatalogsItemValidationWarnings::getADIMAGE11TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE11TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_11_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE11TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_11_TAG_REQUIRED)
 {
 	this->aD_IMAGE_11_TAG_REQUIRED = aD_IMAGE_11_TAG_REQUIRED;
 }
@@ -4827,7 +4827,7 @@ CatalogsItemValidationWarnings::getADIMAGE12LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE12LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_12_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE12LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_12_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_12_LINK_DUPLICATED = aD_IMAGE_12_LINK_DUPLICATED;
 }
@@ -4839,7 +4839,7 @@ CatalogsItemValidationWarnings::getADIMAGE12LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE12LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_12_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE12LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_12_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_12_LINK_LENGTH_TOO_LONG = aD_IMAGE_12_LINK_LENGTH_TOO_LONG;
 }
@@ -4851,7 +4851,7 @@ CatalogsItemValidationWarnings::getADIMAGE12LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE12LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_12_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE12LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_12_LINK_REQUIRED)
 {
 	this->aD_IMAGE_12_LINK_REQUIRED = aD_IMAGE_12_LINK_REQUIRED;
 }
@@ -4863,7 +4863,7 @@ CatalogsItemValidationWarnings::getADIMAGE12LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE12LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_12_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE12LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_12_LINK_WARNING)
 {
 	this->aD_IMAGE_12_LINK_WARNING = aD_IMAGE_12_LINK_WARNING;
 }
@@ -4875,7 +4875,7 @@ CatalogsItemValidationWarnings::getADIMAGE12TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE12TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_12_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE12TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_12_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_12_TAG_DUPLICATED = aD_IMAGE_12_TAG_DUPLICATED;
 }
@@ -4887,7 +4887,7 @@ CatalogsItemValidationWarnings::getADIMAGE12TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE12TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_12_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE12TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_12_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_12_TAG_LENGTH_TOO_LONG = aD_IMAGE_12_TAG_LENGTH_TOO_LONG;
 }
@@ -4899,7 +4899,7 @@ CatalogsItemValidationWarnings::getADIMAGE12TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE12TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_12_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE12TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_12_TAG_REQUIRED)
 {
 	this->aD_IMAGE_12_TAG_REQUIRED = aD_IMAGE_12_TAG_REQUIRED;
 }
@@ -4911,7 +4911,7 @@ CatalogsItemValidationWarnings::getADIMAGE13LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE13LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_13_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE13LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_13_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_13_LINK_DUPLICATED = aD_IMAGE_13_LINK_DUPLICATED;
 }
@@ -4923,7 +4923,7 @@ CatalogsItemValidationWarnings::getADIMAGE13LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE13LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_13_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE13LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_13_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_13_LINK_LENGTH_TOO_LONG = aD_IMAGE_13_LINK_LENGTH_TOO_LONG;
 }
@@ -4935,7 +4935,7 @@ CatalogsItemValidationWarnings::getADIMAGE13LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE13LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_13_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE13LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_13_LINK_REQUIRED)
 {
 	this->aD_IMAGE_13_LINK_REQUIRED = aD_IMAGE_13_LINK_REQUIRED;
 }
@@ -4947,7 +4947,7 @@ CatalogsItemValidationWarnings::getADIMAGE13LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE13LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_13_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE13LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_13_LINK_WARNING)
 {
 	this->aD_IMAGE_13_LINK_WARNING = aD_IMAGE_13_LINK_WARNING;
 }
@@ -4959,7 +4959,7 @@ CatalogsItemValidationWarnings::getADIMAGE13TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE13TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_13_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE13TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_13_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_13_TAG_DUPLICATED = aD_IMAGE_13_TAG_DUPLICATED;
 }
@@ -4971,7 +4971,7 @@ CatalogsItemValidationWarnings::getADIMAGE13TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE13TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_13_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE13TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_13_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_13_TAG_LENGTH_TOO_LONG = aD_IMAGE_13_TAG_LENGTH_TOO_LONG;
 }
@@ -4983,7 +4983,7 @@ CatalogsItemValidationWarnings::getADIMAGE13TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE13TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_13_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE13TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_13_TAG_REQUIRED)
 {
 	this->aD_IMAGE_13_TAG_REQUIRED = aD_IMAGE_13_TAG_REQUIRED;
 }
@@ -4995,7 +4995,7 @@ CatalogsItemValidationWarnings::getADIMAGE14LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE14LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_14_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE14LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_14_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_14_LINK_DUPLICATED = aD_IMAGE_14_LINK_DUPLICATED;
 }
@@ -5007,7 +5007,7 @@ CatalogsItemValidationWarnings::getADIMAGE14LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE14LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_14_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE14LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_14_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_14_LINK_LENGTH_TOO_LONG = aD_IMAGE_14_LINK_LENGTH_TOO_LONG;
 }
@@ -5019,7 +5019,7 @@ CatalogsItemValidationWarnings::getADIMAGE14LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE14LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_14_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE14LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_14_LINK_REQUIRED)
 {
 	this->aD_IMAGE_14_LINK_REQUIRED = aD_IMAGE_14_LINK_REQUIRED;
 }
@@ -5031,7 +5031,7 @@ CatalogsItemValidationWarnings::getADIMAGE14LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE14LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_14_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE14LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_14_LINK_WARNING)
 {
 	this->aD_IMAGE_14_LINK_WARNING = aD_IMAGE_14_LINK_WARNING;
 }
@@ -5043,7 +5043,7 @@ CatalogsItemValidationWarnings::getADIMAGE14TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE14TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_14_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE14TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_14_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_14_TAG_DUPLICATED = aD_IMAGE_14_TAG_DUPLICATED;
 }
@@ -5055,7 +5055,7 @@ CatalogsItemValidationWarnings::getADIMAGE14TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE14TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_14_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE14TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_14_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_14_TAG_LENGTH_TOO_LONG = aD_IMAGE_14_TAG_LENGTH_TOO_LONG;
 }
@@ -5067,7 +5067,7 @@ CatalogsItemValidationWarnings::getADIMAGE14TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE14TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_14_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE14TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_14_TAG_REQUIRED)
 {
 	this->aD_IMAGE_14_TAG_REQUIRED = aD_IMAGE_14_TAG_REQUIRED;
 }
@@ -5079,7 +5079,7 @@ CatalogsItemValidationWarnings::getADIMAGE15LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE15LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_15_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE15LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_15_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_15_LINK_DUPLICATED = aD_IMAGE_15_LINK_DUPLICATED;
 }
@@ -5091,7 +5091,7 @@ CatalogsItemValidationWarnings::getADIMAGE15LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE15LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_15_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE15LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_15_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_15_LINK_LENGTH_TOO_LONG = aD_IMAGE_15_LINK_LENGTH_TOO_LONG;
 }
@@ -5103,7 +5103,7 @@ CatalogsItemValidationWarnings::getADIMAGE15LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE15LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_15_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE15LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_15_LINK_REQUIRED)
 {
 	this->aD_IMAGE_15_LINK_REQUIRED = aD_IMAGE_15_LINK_REQUIRED;
 }
@@ -5115,7 +5115,7 @@ CatalogsItemValidationWarnings::getADIMAGE15LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE15LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_15_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE15LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_15_LINK_WARNING)
 {
 	this->aD_IMAGE_15_LINK_WARNING = aD_IMAGE_15_LINK_WARNING;
 }
@@ -5127,7 +5127,7 @@ CatalogsItemValidationWarnings::getADIMAGE15TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE15TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_15_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE15TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_15_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_15_TAG_DUPLICATED = aD_IMAGE_15_TAG_DUPLICATED;
 }
@@ -5139,7 +5139,7 @@ CatalogsItemValidationWarnings::getADIMAGE15TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE15TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_15_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE15TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_15_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_15_TAG_LENGTH_TOO_LONG = aD_IMAGE_15_TAG_LENGTH_TOO_LONG;
 }
@@ -5151,7 +5151,7 @@ CatalogsItemValidationWarnings::getADIMAGE15TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE15TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_15_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE15TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_15_TAG_REQUIRED)
 {
 	this->aD_IMAGE_15_TAG_REQUIRED = aD_IMAGE_15_TAG_REQUIRED;
 }
@@ -5163,7 +5163,7 @@ CatalogsItemValidationWarnings::getADIMAGE16LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE16LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_16_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE16LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_16_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_16_LINK_DUPLICATED = aD_IMAGE_16_LINK_DUPLICATED;
 }
@@ -5175,7 +5175,7 @@ CatalogsItemValidationWarnings::getADIMAGE16LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE16LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_16_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE16LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_16_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_16_LINK_LENGTH_TOO_LONG = aD_IMAGE_16_LINK_LENGTH_TOO_LONG;
 }
@@ -5187,7 +5187,7 @@ CatalogsItemValidationWarnings::getADIMAGE16LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE16LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_16_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE16LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_16_LINK_REQUIRED)
 {
 	this->aD_IMAGE_16_LINK_REQUIRED = aD_IMAGE_16_LINK_REQUIRED;
 }
@@ -5199,7 +5199,7 @@ CatalogsItemValidationWarnings::getADIMAGE16LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE16LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_16_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE16LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_16_LINK_WARNING)
 {
 	this->aD_IMAGE_16_LINK_WARNING = aD_IMAGE_16_LINK_WARNING;
 }
@@ -5211,7 +5211,7 @@ CatalogsItemValidationWarnings::getADIMAGE16TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE16TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_16_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE16TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_16_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_16_TAG_DUPLICATED = aD_IMAGE_16_TAG_DUPLICATED;
 }
@@ -5223,7 +5223,7 @@ CatalogsItemValidationWarnings::getADIMAGE16TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE16TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_16_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE16TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_16_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_16_TAG_LENGTH_TOO_LONG = aD_IMAGE_16_TAG_LENGTH_TOO_LONG;
 }
@@ -5235,7 +5235,7 @@ CatalogsItemValidationWarnings::getADIMAGE16TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE16TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_16_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE16TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_16_TAG_REQUIRED)
 {
 	this->aD_IMAGE_16_TAG_REQUIRED = aD_IMAGE_16_TAG_REQUIRED;
 }
@@ -5247,7 +5247,7 @@ CatalogsItemValidationWarnings::getADIMAGE17LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE17LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_17_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE17LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_17_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_17_LINK_DUPLICATED = aD_IMAGE_17_LINK_DUPLICATED;
 }
@@ -5259,7 +5259,7 @@ CatalogsItemValidationWarnings::getADIMAGE17LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE17LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_17_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE17LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_17_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_17_LINK_LENGTH_TOO_LONG = aD_IMAGE_17_LINK_LENGTH_TOO_LONG;
 }
@@ -5271,7 +5271,7 @@ CatalogsItemValidationWarnings::getADIMAGE17LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE17LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_17_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE17LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_17_LINK_REQUIRED)
 {
 	this->aD_IMAGE_17_LINK_REQUIRED = aD_IMAGE_17_LINK_REQUIRED;
 }
@@ -5283,7 +5283,7 @@ CatalogsItemValidationWarnings::getADIMAGE17LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE17LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_17_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE17LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_17_LINK_WARNING)
 {
 	this->aD_IMAGE_17_LINK_WARNING = aD_IMAGE_17_LINK_WARNING;
 }
@@ -5295,7 +5295,7 @@ CatalogsItemValidationWarnings::getADIMAGE17TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE17TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_17_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE17TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_17_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_17_TAG_DUPLICATED = aD_IMAGE_17_TAG_DUPLICATED;
 }
@@ -5307,7 +5307,7 @@ CatalogsItemValidationWarnings::getADIMAGE17TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE17TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_17_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE17TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_17_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_17_TAG_LENGTH_TOO_LONG = aD_IMAGE_17_TAG_LENGTH_TOO_LONG;
 }
@@ -5319,7 +5319,7 @@ CatalogsItemValidationWarnings::getADIMAGE17TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE17TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_17_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE17TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_17_TAG_REQUIRED)
 {
 	this->aD_IMAGE_17_TAG_REQUIRED = aD_IMAGE_17_TAG_REQUIRED;
 }
@@ -5331,7 +5331,7 @@ CatalogsItemValidationWarnings::getADIMAGE18LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE18LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_18_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE18LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_18_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_18_LINK_DUPLICATED = aD_IMAGE_18_LINK_DUPLICATED;
 }
@@ -5343,7 +5343,7 @@ CatalogsItemValidationWarnings::getADIMAGE18LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE18LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_18_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE18LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_18_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_18_LINK_LENGTH_TOO_LONG = aD_IMAGE_18_LINK_LENGTH_TOO_LONG;
 }
@@ -5355,7 +5355,7 @@ CatalogsItemValidationWarnings::getADIMAGE18LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE18LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_18_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE18LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_18_LINK_REQUIRED)
 {
 	this->aD_IMAGE_18_LINK_REQUIRED = aD_IMAGE_18_LINK_REQUIRED;
 }
@@ -5367,7 +5367,7 @@ CatalogsItemValidationWarnings::getADIMAGE18LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE18LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_18_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE18LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_18_LINK_WARNING)
 {
 	this->aD_IMAGE_18_LINK_WARNING = aD_IMAGE_18_LINK_WARNING;
 }
@@ -5379,7 +5379,7 @@ CatalogsItemValidationWarnings::getADIMAGE18TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE18TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_18_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE18TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_18_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_18_TAG_DUPLICATED = aD_IMAGE_18_TAG_DUPLICATED;
 }
@@ -5391,7 +5391,7 @@ CatalogsItemValidationWarnings::getADIMAGE18TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE18TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_18_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE18TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_18_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_18_TAG_LENGTH_TOO_LONG = aD_IMAGE_18_TAG_LENGTH_TOO_LONG;
 }
@@ -5403,7 +5403,7 @@ CatalogsItemValidationWarnings::getADIMAGE18TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE18TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_18_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE18TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_18_TAG_REQUIRED)
 {
 	this->aD_IMAGE_18_TAG_REQUIRED = aD_IMAGE_18_TAG_REQUIRED;
 }
@@ -5415,7 +5415,7 @@ CatalogsItemValidationWarnings::getADIMAGE19LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE19LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_19_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE19LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_19_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_19_LINK_DUPLICATED = aD_IMAGE_19_LINK_DUPLICATED;
 }
@@ -5427,7 +5427,7 @@ CatalogsItemValidationWarnings::getADIMAGE19LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE19LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_19_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE19LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_19_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_19_LINK_LENGTH_TOO_LONG = aD_IMAGE_19_LINK_LENGTH_TOO_LONG;
 }
@@ -5439,7 +5439,7 @@ CatalogsItemValidationWarnings::getADIMAGE19LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE19LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_19_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE19LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_19_LINK_REQUIRED)
 {
 	this->aD_IMAGE_19_LINK_REQUIRED = aD_IMAGE_19_LINK_REQUIRED;
 }
@@ -5451,7 +5451,7 @@ CatalogsItemValidationWarnings::getADIMAGE19LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE19LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_19_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE19LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_19_LINK_WARNING)
 {
 	this->aD_IMAGE_19_LINK_WARNING = aD_IMAGE_19_LINK_WARNING;
 }
@@ -5463,7 +5463,7 @@ CatalogsItemValidationWarnings::getADIMAGE19TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE19TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_19_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE19TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_19_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_19_TAG_DUPLICATED = aD_IMAGE_19_TAG_DUPLICATED;
 }
@@ -5475,7 +5475,7 @@ CatalogsItemValidationWarnings::getADIMAGE19TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE19TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_19_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE19TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_19_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_19_TAG_LENGTH_TOO_LONG = aD_IMAGE_19_TAG_LENGTH_TOO_LONG;
 }
@@ -5487,7 +5487,7 @@ CatalogsItemValidationWarnings::getADIMAGE19TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE19TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_19_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE19TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_19_TAG_REQUIRED)
 {
 	this->aD_IMAGE_19_TAG_REQUIRED = aD_IMAGE_19_TAG_REQUIRED;
 }
@@ -5499,7 +5499,7 @@ CatalogsItemValidationWarnings::getADIMAGE1LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE1LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_1_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE1LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_1_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_1_LINK_DUPLICATED = aD_IMAGE_1_LINK_DUPLICATED;
 }
@@ -5511,7 +5511,7 @@ CatalogsItemValidationWarnings::getADIMAGE1LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE1LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_1_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE1LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_1_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_1_LINK_LENGTH_TOO_LONG = aD_IMAGE_1_LINK_LENGTH_TOO_LONG;
 }
@@ -5523,7 +5523,7 @@ CatalogsItemValidationWarnings::getADIMAGE1LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE1LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_1_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE1LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_1_LINK_REQUIRED)
 {
 	this->aD_IMAGE_1_LINK_REQUIRED = aD_IMAGE_1_LINK_REQUIRED;
 }
@@ -5535,7 +5535,7 @@ CatalogsItemValidationWarnings::getADIMAGE1LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE1LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_1_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE1LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_1_LINK_WARNING)
 {
 	this->aD_IMAGE_1_LINK_WARNING = aD_IMAGE_1_LINK_WARNING;
 }
@@ -5547,7 +5547,7 @@ CatalogsItemValidationWarnings::getADIMAGE1TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE1TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_1_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE1TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_1_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_1_TAG_DUPLICATED = aD_IMAGE_1_TAG_DUPLICATED;
 }
@@ -5559,7 +5559,7 @@ CatalogsItemValidationWarnings::getADIMAGE1TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE1TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_1_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE1TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_1_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_1_TAG_LENGTH_TOO_LONG = aD_IMAGE_1_TAG_LENGTH_TOO_LONG;
 }
@@ -5571,7 +5571,7 @@ CatalogsItemValidationWarnings::getADIMAGE1TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE1TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_1_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE1TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_1_TAG_REQUIRED)
 {
 	this->aD_IMAGE_1_TAG_REQUIRED = aD_IMAGE_1_TAG_REQUIRED;
 }
@@ -5583,7 +5583,7 @@ CatalogsItemValidationWarnings::getADIMAGE2LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE2LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_2_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE2LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_2_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_2_LINK_DUPLICATED = aD_IMAGE_2_LINK_DUPLICATED;
 }
@@ -5595,7 +5595,7 @@ CatalogsItemValidationWarnings::getADIMAGE2LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE2LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_2_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE2LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_2_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_2_LINK_LENGTH_TOO_LONG = aD_IMAGE_2_LINK_LENGTH_TOO_LONG;
 }
@@ -5607,7 +5607,7 @@ CatalogsItemValidationWarnings::getADIMAGE2LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE2LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_2_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE2LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_2_LINK_REQUIRED)
 {
 	this->aD_IMAGE_2_LINK_REQUIRED = aD_IMAGE_2_LINK_REQUIRED;
 }
@@ -5619,7 +5619,7 @@ CatalogsItemValidationWarnings::getADIMAGE2LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE2LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_2_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE2LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_2_LINK_WARNING)
 {
 	this->aD_IMAGE_2_LINK_WARNING = aD_IMAGE_2_LINK_WARNING;
 }
@@ -5631,7 +5631,7 @@ CatalogsItemValidationWarnings::getADIMAGE2TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE2TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_2_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE2TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_2_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_2_TAG_DUPLICATED = aD_IMAGE_2_TAG_DUPLICATED;
 }
@@ -5643,7 +5643,7 @@ CatalogsItemValidationWarnings::getADIMAGE2TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE2TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_2_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE2TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_2_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_2_TAG_LENGTH_TOO_LONG = aD_IMAGE_2_TAG_LENGTH_TOO_LONG;
 }
@@ -5655,7 +5655,7 @@ CatalogsItemValidationWarnings::getADIMAGE2TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE2TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_2_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE2TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_2_TAG_REQUIRED)
 {
 	this->aD_IMAGE_2_TAG_REQUIRED = aD_IMAGE_2_TAG_REQUIRED;
 }
@@ -5667,7 +5667,7 @@ CatalogsItemValidationWarnings::getADIMAGE3LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE3LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_3_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE3LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_3_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_3_LINK_DUPLICATED = aD_IMAGE_3_LINK_DUPLICATED;
 }
@@ -5679,7 +5679,7 @@ CatalogsItemValidationWarnings::getADIMAGE3LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE3LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_3_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE3LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_3_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_3_LINK_LENGTH_TOO_LONG = aD_IMAGE_3_LINK_LENGTH_TOO_LONG;
 }
@@ -5691,7 +5691,7 @@ CatalogsItemValidationWarnings::getADIMAGE3LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE3LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_3_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE3LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_3_LINK_REQUIRED)
 {
 	this->aD_IMAGE_3_LINK_REQUIRED = aD_IMAGE_3_LINK_REQUIRED;
 }
@@ -5703,7 +5703,7 @@ CatalogsItemValidationWarnings::getADIMAGE3LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE3LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_3_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE3LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_3_LINK_WARNING)
 {
 	this->aD_IMAGE_3_LINK_WARNING = aD_IMAGE_3_LINK_WARNING;
 }
@@ -5715,7 +5715,7 @@ CatalogsItemValidationWarnings::getADIMAGE3TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE3TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_3_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE3TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_3_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_3_TAG_DUPLICATED = aD_IMAGE_3_TAG_DUPLICATED;
 }
@@ -5727,7 +5727,7 @@ CatalogsItemValidationWarnings::getADIMAGE3TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE3TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_3_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE3TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_3_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_3_TAG_LENGTH_TOO_LONG = aD_IMAGE_3_TAG_LENGTH_TOO_LONG;
 }
@@ -5739,7 +5739,7 @@ CatalogsItemValidationWarnings::getADIMAGE3TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE3TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_3_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE3TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_3_TAG_REQUIRED)
 {
 	this->aD_IMAGE_3_TAG_REQUIRED = aD_IMAGE_3_TAG_REQUIRED;
 }
@@ -5751,7 +5751,7 @@ CatalogsItemValidationWarnings::getADIMAGE4LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE4LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_4_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE4LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_4_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_4_LINK_DUPLICATED = aD_IMAGE_4_LINK_DUPLICATED;
 }
@@ -5763,7 +5763,7 @@ CatalogsItemValidationWarnings::getADIMAGE4LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE4LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_4_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE4LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_4_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_4_LINK_LENGTH_TOO_LONG = aD_IMAGE_4_LINK_LENGTH_TOO_LONG;
 }
@@ -5775,7 +5775,7 @@ CatalogsItemValidationWarnings::getADIMAGE4LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE4LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_4_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE4LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_4_LINK_REQUIRED)
 {
 	this->aD_IMAGE_4_LINK_REQUIRED = aD_IMAGE_4_LINK_REQUIRED;
 }
@@ -5787,7 +5787,7 @@ CatalogsItemValidationWarnings::getADIMAGE4LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE4LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_4_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE4LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_4_LINK_WARNING)
 {
 	this->aD_IMAGE_4_LINK_WARNING = aD_IMAGE_4_LINK_WARNING;
 }
@@ -5799,7 +5799,7 @@ CatalogsItemValidationWarnings::getADIMAGE4TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE4TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_4_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE4TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_4_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_4_TAG_DUPLICATED = aD_IMAGE_4_TAG_DUPLICATED;
 }
@@ -5811,7 +5811,7 @@ CatalogsItemValidationWarnings::getADIMAGE4TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE4TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_4_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE4TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_4_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_4_TAG_LENGTH_TOO_LONG = aD_IMAGE_4_TAG_LENGTH_TOO_LONG;
 }
@@ -5823,7 +5823,7 @@ CatalogsItemValidationWarnings::getADIMAGE4TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE4TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_4_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE4TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_4_TAG_REQUIRED)
 {
 	this->aD_IMAGE_4_TAG_REQUIRED = aD_IMAGE_4_TAG_REQUIRED;
 }
@@ -5835,7 +5835,7 @@ CatalogsItemValidationWarnings::getADIMAGE5LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE5LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_5_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE5LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_5_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_5_LINK_DUPLICATED = aD_IMAGE_5_LINK_DUPLICATED;
 }
@@ -5847,7 +5847,7 @@ CatalogsItemValidationWarnings::getADIMAGE5LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE5LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_5_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE5LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_5_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_5_LINK_LENGTH_TOO_LONG = aD_IMAGE_5_LINK_LENGTH_TOO_LONG;
 }
@@ -5859,7 +5859,7 @@ CatalogsItemValidationWarnings::getADIMAGE5LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE5LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_5_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE5LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_5_LINK_REQUIRED)
 {
 	this->aD_IMAGE_5_LINK_REQUIRED = aD_IMAGE_5_LINK_REQUIRED;
 }
@@ -5871,7 +5871,7 @@ CatalogsItemValidationWarnings::getADIMAGE5LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE5LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_5_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE5LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_5_LINK_WARNING)
 {
 	this->aD_IMAGE_5_LINK_WARNING = aD_IMAGE_5_LINK_WARNING;
 }
@@ -5883,7 +5883,7 @@ CatalogsItemValidationWarnings::getADIMAGE5TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE5TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_5_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE5TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_5_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_5_TAG_DUPLICATED = aD_IMAGE_5_TAG_DUPLICATED;
 }
@@ -5895,7 +5895,7 @@ CatalogsItemValidationWarnings::getADIMAGE5TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE5TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_5_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE5TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_5_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_5_TAG_LENGTH_TOO_LONG = aD_IMAGE_5_TAG_LENGTH_TOO_LONG;
 }
@@ -5907,7 +5907,7 @@ CatalogsItemValidationWarnings::getADIMAGE5TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE5TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_5_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE5TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_5_TAG_REQUIRED)
 {
 	this->aD_IMAGE_5_TAG_REQUIRED = aD_IMAGE_5_TAG_REQUIRED;
 }
@@ -5919,7 +5919,7 @@ CatalogsItemValidationWarnings::getADIMAGE6LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE6LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_6_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE6LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_6_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_6_LINK_DUPLICATED = aD_IMAGE_6_LINK_DUPLICATED;
 }
@@ -5931,7 +5931,7 @@ CatalogsItemValidationWarnings::getADIMAGE6LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE6LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_6_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE6LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_6_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_6_LINK_LENGTH_TOO_LONG = aD_IMAGE_6_LINK_LENGTH_TOO_LONG;
 }
@@ -5943,7 +5943,7 @@ CatalogsItemValidationWarnings::getADIMAGE6LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE6LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_6_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE6LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_6_LINK_REQUIRED)
 {
 	this->aD_IMAGE_6_LINK_REQUIRED = aD_IMAGE_6_LINK_REQUIRED;
 }
@@ -5955,7 +5955,7 @@ CatalogsItemValidationWarnings::getADIMAGE6LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE6LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_6_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE6LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_6_LINK_WARNING)
 {
 	this->aD_IMAGE_6_LINK_WARNING = aD_IMAGE_6_LINK_WARNING;
 }
@@ -5967,7 +5967,7 @@ CatalogsItemValidationWarnings::getADIMAGE6TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE6TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_6_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE6TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_6_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_6_TAG_DUPLICATED = aD_IMAGE_6_TAG_DUPLICATED;
 }
@@ -5979,7 +5979,7 @@ CatalogsItemValidationWarnings::getADIMAGE6TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE6TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_6_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE6TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_6_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_6_TAG_LENGTH_TOO_LONG = aD_IMAGE_6_TAG_LENGTH_TOO_LONG;
 }
@@ -5991,7 +5991,7 @@ CatalogsItemValidationWarnings::getADIMAGE6TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE6TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_6_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE6TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_6_TAG_REQUIRED)
 {
 	this->aD_IMAGE_6_TAG_REQUIRED = aD_IMAGE_6_TAG_REQUIRED;
 }
@@ -6003,7 +6003,7 @@ CatalogsItemValidationWarnings::getADIMAGE7LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE7LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_7_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE7LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_7_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_7_LINK_DUPLICATED = aD_IMAGE_7_LINK_DUPLICATED;
 }
@@ -6015,7 +6015,7 @@ CatalogsItemValidationWarnings::getADIMAGE7LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE7LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_7_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE7LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_7_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_7_LINK_LENGTH_TOO_LONG = aD_IMAGE_7_LINK_LENGTH_TOO_LONG;
 }
@@ -6027,7 +6027,7 @@ CatalogsItemValidationWarnings::getADIMAGE7LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE7LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_7_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE7LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_7_LINK_REQUIRED)
 {
 	this->aD_IMAGE_7_LINK_REQUIRED = aD_IMAGE_7_LINK_REQUIRED;
 }
@@ -6039,7 +6039,7 @@ CatalogsItemValidationWarnings::getADIMAGE7LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE7LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_7_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE7LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_7_LINK_WARNING)
 {
 	this->aD_IMAGE_7_LINK_WARNING = aD_IMAGE_7_LINK_WARNING;
 }
@@ -6051,7 +6051,7 @@ CatalogsItemValidationWarnings::getADIMAGE7TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE7TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_7_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE7TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_7_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_7_TAG_DUPLICATED = aD_IMAGE_7_TAG_DUPLICATED;
 }
@@ -6063,7 +6063,7 @@ CatalogsItemValidationWarnings::getADIMAGE7TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE7TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_7_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE7TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_7_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_7_TAG_LENGTH_TOO_LONG = aD_IMAGE_7_TAG_LENGTH_TOO_LONG;
 }
@@ -6075,7 +6075,7 @@ CatalogsItemValidationWarnings::getADIMAGE7TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE7TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_7_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE7TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_7_TAG_REQUIRED)
 {
 	this->aD_IMAGE_7_TAG_REQUIRED = aD_IMAGE_7_TAG_REQUIRED;
 }
@@ -6087,7 +6087,7 @@ CatalogsItemValidationWarnings::getADIMAGE8LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE8LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_8_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE8LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_8_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_8_LINK_DUPLICATED = aD_IMAGE_8_LINK_DUPLICATED;
 }
@@ -6099,7 +6099,7 @@ CatalogsItemValidationWarnings::getADIMAGE8LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE8LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_8_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE8LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_8_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_8_LINK_LENGTH_TOO_LONG = aD_IMAGE_8_LINK_LENGTH_TOO_LONG;
 }
@@ -6111,7 +6111,7 @@ CatalogsItemValidationWarnings::getADIMAGE8LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE8LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_8_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE8LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_8_LINK_REQUIRED)
 {
 	this->aD_IMAGE_8_LINK_REQUIRED = aD_IMAGE_8_LINK_REQUIRED;
 }
@@ -6123,7 +6123,7 @@ CatalogsItemValidationWarnings::getADIMAGE8LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE8LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_8_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE8LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_8_LINK_WARNING)
 {
 	this->aD_IMAGE_8_LINK_WARNING = aD_IMAGE_8_LINK_WARNING;
 }
@@ -6135,7 +6135,7 @@ CatalogsItemValidationWarnings::getADIMAGE8TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE8TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_8_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE8TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_8_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_8_TAG_DUPLICATED = aD_IMAGE_8_TAG_DUPLICATED;
 }
@@ -6147,7 +6147,7 @@ CatalogsItemValidationWarnings::getADIMAGE8TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE8TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_8_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE8TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_8_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_8_TAG_LENGTH_TOO_LONG = aD_IMAGE_8_TAG_LENGTH_TOO_LONG;
 }
@@ -6159,7 +6159,7 @@ CatalogsItemValidationWarnings::getADIMAGE8TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE8TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_8_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE8TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_8_TAG_REQUIRED)
 {
 	this->aD_IMAGE_8_TAG_REQUIRED = aD_IMAGE_8_TAG_REQUIRED;
 }
@@ -6171,7 +6171,7 @@ CatalogsItemValidationWarnings::getADIMAGE9LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE9LINKDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_9_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE9LINKDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_9_LINK_DUPLICATED)
 {
 	this->aD_IMAGE_9_LINK_DUPLICATED = aD_IMAGE_9_LINK_DUPLICATED;
 }
@@ -6183,7 +6183,7 @@ CatalogsItemValidationWarnings::getADIMAGE9LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE9LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_9_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE9LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_9_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_9_LINK_LENGTH_TOO_LONG = aD_IMAGE_9_LINK_LENGTH_TOO_LONG;
 }
@@ -6195,7 +6195,7 @@ CatalogsItemValidationWarnings::getADIMAGE9LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE9LINKREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_9_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE9LINKREQUIRED(CatalogsItemValidationDetails aD_IMAGE_9_LINK_REQUIRED)
 {
 	this->aD_IMAGE_9_LINK_REQUIRED = aD_IMAGE_9_LINK_REQUIRED;
 }
@@ -6207,7 +6207,7 @@ CatalogsItemValidationWarnings::getADIMAGE9LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE9LINKWARNING(CatalogsItemValidationDetails  aD_IMAGE_9_LINK_WARNING)
+CatalogsItemValidationWarnings::setADIMAGE9LINKWARNING(CatalogsItemValidationDetails aD_IMAGE_9_LINK_WARNING)
 {
 	this->aD_IMAGE_9_LINK_WARNING = aD_IMAGE_9_LINK_WARNING;
 }
@@ -6219,7 +6219,7 @@ CatalogsItemValidationWarnings::getADIMAGE9TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE9TAGDUPLICATED(CatalogsItemValidationDetails  aD_IMAGE_9_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADIMAGE9TAGDUPLICATED(CatalogsItemValidationDetails aD_IMAGE_9_TAG_DUPLICATED)
 {
 	this->aD_IMAGE_9_TAG_DUPLICATED = aD_IMAGE_9_TAG_DUPLICATED;
 }
@@ -6231,7 +6231,7 @@ CatalogsItemValidationWarnings::getADIMAGE9TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE9TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_IMAGE_9_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADIMAGE9TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_IMAGE_9_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_IMAGE_9_TAG_LENGTH_TOO_LONG = aD_IMAGE_9_TAG_LENGTH_TOO_LONG;
 }
@@ -6243,7 +6243,7 @@ CatalogsItemValidationWarnings::getADIMAGE9TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADIMAGE9TAGREQUIRED(CatalogsItemValidationDetails  aD_IMAGE_9_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADIMAGE9TAGREQUIRED(CatalogsItemValidationDetails aD_IMAGE_9_TAG_REQUIRED)
 {
 	this->aD_IMAGE_9_TAG_REQUIRED = aD_IMAGE_9_TAG_REQUIRED;
 }
@@ -6255,7 +6255,7 @@ CatalogsItemValidationWarnings::getADLINKFORMATWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADLINKFORMATWARNING(CatalogsItemValidationDetails  aD_LINK_FORMAT_WARNING)
+CatalogsItemValidationWarnings::setADLINKFORMATWARNING(CatalogsItemValidationDetails aD_LINK_FORMAT_WARNING)
 {
 	this->aD_LINK_FORMAT_WARNING = aD_LINK_FORMAT_WARNING;
 }
@@ -6267,7 +6267,7 @@ CatalogsItemValidationWarnings::getADLINKSAMEASLINK()
 }
 
 void
-CatalogsItemValidationWarnings::setADLINKSAMEASLINK(CatalogsItemValidationDetails  aD_LINK_SAME_AS_LINK)
+CatalogsItemValidationWarnings::setADLINKSAMEASLINK(CatalogsItemValidationDetails aD_LINK_SAME_AS_LINK)
 {
 	this->aD_LINK_SAME_AS_LINK = aD_LINK_SAME_AS_LINK;
 }
@@ -6279,7 +6279,7 @@ CatalogsItemValidationWarnings::getADVIDEO0LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO0LINKDUPLICATED(CatalogsItemValidationDetails  aD_VIDEO_0_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADVIDEO0LINKDUPLICATED(CatalogsItemValidationDetails aD_VIDEO_0_LINK_DUPLICATED)
 {
 	this->aD_VIDEO_0_LINK_DUPLICATED = aD_VIDEO_0_LINK_DUPLICATED;
 }
@@ -6291,7 +6291,7 @@ CatalogsItemValidationWarnings::getADVIDEO0LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO0LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_VIDEO_0_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADVIDEO0LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_VIDEO_0_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_VIDEO_0_LINK_LENGTH_TOO_LONG = aD_VIDEO_0_LINK_LENGTH_TOO_LONG;
 }
@@ -6303,7 +6303,7 @@ CatalogsItemValidationWarnings::getADVIDEO0LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO0LINKREQUIRED(CatalogsItemValidationDetails  aD_VIDEO_0_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADVIDEO0LINKREQUIRED(CatalogsItemValidationDetails aD_VIDEO_0_LINK_REQUIRED)
 {
 	this->aD_VIDEO_0_LINK_REQUIRED = aD_VIDEO_0_LINK_REQUIRED;
 }
@@ -6315,7 +6315,7 @@ CatalogsItemValidationWarnings::getADVIDEO0LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO0LINKWARNING(CatalogsItemValidationDetails  aD_VIDEO_0_LINK_WARNING)
+CatalogsItemValidationWarnings::setADVIDEO0LINKWARNING(CatalogsItemValidationDetails aD_VIDEO_0_LINK_WARNING)
 {
 	this->aD_VIDEO_0_LINK_WARNING = aD_VIDEO_0_LINK_WARNING;
 }
@@ -6327,7 +6327,7 @@ CatalogsItemValidationWarnings::getADVIDEO0TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO0TAGDUPLICATED(CatalogsItemValidationDetails  aD_VIDEO_0_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADVIDEO0TAGDUPLICATED(CatalogsItemValidationDetails aD_VIDEO_0_TAG_DUPLICATED)
 {
 	this->aD_VIDEO_0_TAG_DUPLICATED = aD_VIDEO_0_TAG_DUPLICATED;
 }
@@ -6339,7 +6339,7 @@ CatalogsItemValidationWarnings::getADVIDEO0TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO0TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_VIDEO_0_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADVIDEO0TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_VIDEO_0_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_VIDEO_0_TAG_LENGTH_TOO_LONG = aD_VIDEO_0_TAG_LENGTH_TOO_LONG;
 }
@@ -6351,7 +6351,7 @@ CatalogsItemValidationWarnings::getADVIDEO0TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO0TAGREQUIRED(CatalogsItemValidationDetails  aD_VIDEO_0_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADVIDEO0TAGREQUIRED(CatalogsItemValidationDetails aD_VIDEO_0_TAG_REQUIRED)
 {
 	this->aD_VIDEO_0_TAG_REQUIRED = aD_VIDEO_0_TAG_REQUIRED;
 }
@@ -6363,7 +6363,7 @@ CatalogsItemValidationWarnings::getADVIDEO1LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO1LINKDUPLICATED(CatalogsItemValidationDetails  aD_VIDEO_1_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADVIDEO1LINKDUPLICATED(CatalogsItemValidationDetails aD_VIDEO_1_LINK_DUPLICATED)
 {
 	this->aD_VIDEO_1_LINK_DUPLICATED = aD_VIDEO_1_LINK_DUPLICATED;
 }
@@ -6375,7 +6375,7 @@ CatalogsItemValidationWarnings::getADVIDEO1LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO1LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_VIDEO_1_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADVIDEO1LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_VIDEO_1_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_VIDEO_1_LINK_LENGTH_TOO_LONG = aD_VIDEO_1_LINK_LENGTH_TOO_LONG;
 }
@@ -6387,7 +6387,7 @@ CatalogsItemValidationWarnings::getADVIDEO1LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO1LINKREQUIRED(CatalogsItemValidationDetails  aD_VIDEO_1_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADVIDEO1LINKREQUIRED(CatalogsItemValidationDetails aD_VIDEO_1_LINK_REQUIRED)
 {
 	this->aD_VIDEO_1_LINK_REQUIRED = aD_VIDEO_1_LINK_REQUIRED;
 }
@@ -6399,7 +6399,7 @@ CatalogsItemValidationWarnings::getADVIDEO1LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO1LINKWARNING(CatalogsItemValidationDetails  aD_VIDEO_1_LINK_WARNING)
+CatalogsItemValidationWarnings::setADVIDEO1LINKWARNING(CatalogsItemValidationDetails aD_VIDEO_1_LINK_WARNING)
 {
 	this->aD_VIDEO_1_LINK_WARNING = aD_VIDEO_1_LINK_WARNING;
 }
@@ -6411,7 +6411,7 @@ CatalogsItemValidationWarnings::getADVIDEO1TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO1TAGDUPLICATED(CatalogsItemValidationDetails  aD_VIDEO_1_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADVIDEO1TAGDUPLICATED(CatalogsItemValidationDetails aD_VIDEO_1_TAG_DUPLICATED)
 {
 	this->aD_VIDEO_1_TAG_DUPLICATED = aD_VIDEO_1_TAG_DUPLICATED;
 }
@@ -6423,7 +6423,7 @@ CatalogsItemValidationWarnings::getADVIDEO1TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO1TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_VIDEO_1_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADVIDEO1TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_VIDEO_1_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_VIDEO_1_TAG_LENGTH_TOO_LONG = aD_VIDEO_1_TAG_LENGTH_TOO_LONG;
 }
@@ -6435,7 +6435,7 @@ CatalogsItemValidationWarnings::getADVIDEO1TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO1TAGREQUIRED(CatalogsItemValidationDetails  aD_VIDEO_1_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADVIDEO1TAGREQUIRED(CatalogsItemValidationDetails aD_VIDEO_1_TAG_REQUIRED)
 {
 	this->aD_VIDEO_1_TAG_REQUIRED = aD_VIDEO_1_TAG_REQUIRED;
 }
@@ -6447,7 +6447,7 @@ CatalogsItemValidationWarnings::getADVIDEO2LINKDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO2LINKDUPLICATED(CatalogsItemValidationDetails  aD_VIDEO_2_LINK_DUPLICATED)
+CatalogsItemValidationWarnings::setADVIDEO2LINKDUPLICATED(CatalogsItemValidationDetails aD_VIDEO_2_LINK_DUPLICATED)
 {
 	this->aD_VIDEO_2_LINK_DUPLICATED = aD_VIDEO_2_LINK_DUPLICATED;
 }
@@ -6459,7 +6459,7 @@ CatalogsItemValidationWarnings::getADVIDEO2LINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO2LINKLENGTHTOOLONG(CatalogsItemValidationDetails  aD_VIDEO_2_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADVIDEO2LINKLENGTHTOOLONG(CatalogsItemValidationDetails aD_VIDEO_2_LINK_LENGTH_TOO_LONG)
 {
 	this->aD_VIDEO_2_LINK_LENGTH_TOO_LONG = aD_VIDEO_2_LINK_LENGTH_TOO_LONG;
 }
@@ -6471,7 +6471,7 @@ CatalogsItemValidationWarnings::getADVIDEO2LINKREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO2LINKREQUIRED(CatalogsItemValidationDetails  aD_VIDEO_2_LINK_REQUIRED)
+CatalogsItemValidationWarnings::setADVIDEO2LINKREQUIRED(CatalogsItemValidationDetails aD_VIDEO_2_LINK_REQUIRED)
 {
 	this->aD_VIDEO_2_LINK_REQUIRED = aD_VIDEO_2_LINK_REQUIRED;
 }
@@ -6483,7 +6483,7 @@ CatalogsItemValidationWarnings::getADVIDEO2LINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO2LINKWARNING(CatalogsItemValidationDetails  aD_VIDEO_2_LINK_WARNING)
+CatalogsItemValidationWarnings::setADVIDEO2LINKWARNING(CatalogsItemValidationDetails aD_VIDEO_2_LINK_WARNING)
 {
 	this->aD_VIDEO_2_LINK_WARNING = aD_VIDEO_2_LINK_WARNING;
 }
@@ -6495,7 +6495,7 @@ CatalogsItemValidationWarnings::getADVIDEO2TAGDUPLICATED()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO2TAGDUPLICATED(CatalogsItemValidationDetails  aD_VIDEO_2_TAG_DUPLICATED)
+CatalogsItemValidationWarnings::setADVIDEO2TAGDUPLICATED(CatalogsItemValidationDetails aD_VIDEO_2_TAG_DUPLICATED)
 {
 	this->aD_VIDEO_2_TAG_DUPLICATED = aD_VIDEO_2_TAG_DUPLICATED;
 }
@@ -6507,7 +6507,7 @@ CatalogsItemValidationWarnings::getADVIDEO2TAGLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO2TAGLENGTHTOOLONG(CatalogsItemValidationDetails  aD_VIDEO_2_TAG_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADVIDEO2TAGLENGTHTOOLONG(CatalogsItemValidationDetails aD_VIDEO_2_TAG_LENGTH_TOO_LONG)
 {
 	this->aD_VIDEO_2_TAG_LENGTH_TOO_LONG = aD_VIDEO_2_TAG_LENGTH_TOO_LONG;
 }
@@ -6519,7 +6519,7 @@ CatalogsItemValidationWarnings::getADVIDEO2TAGREQUIRED()
 }
 
 void
-CatalogsItemValidationWarnings::setADVIDEO2TAGREQUIRED(CatalogsItemValidationDetails  aD_VIDEO_2_TAG_REQUIRED)
+CatalogsItemValidationWarnings::setADVIDEO2TAGREQUIRED(CatalogsItemValidationDetails aD_VIDEO_2_TAG_REQUIRED)
 {
 	this->aD_VIDEO_2_TAG_REQUIRED = aD_VIDEO_2_TAG_REQUIRED;
 }
@@ -6531,7 +6531,7 @@ CatalogsItemValidationWarnings::getADDITIONALIMAGELINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setADDITIONALIMAGELINKLENGTHTOOLONG(CatalogsItemValidationDetails  aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setADDITIONALIMAGELINKLENGTHTOOLONG(CatalogsItemValidationDetails aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG)
 {
 	this->aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
 }
@@ -6543,7 +6543,7 @@ CatalogsItemValidationWarnings::getADDITIONALIMAGELINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADDITIONALIMAGELINKWARNING(CatalogsItemValidationDetails  aDDITIONAL_IMAGE_LINK_WARNING)
+CatalogsItemValidationWarnings::setADDITIONALIMAGELINKWARNING(CatalogsItemValidationDetails aDDITIONAL_IMAGE_LINK_WARNING)
 {
 	this->aDDITIONAL_IMAGE_LINK_WARNING = aDDITIONAL_IMAGE_LINK_WARNING;
 }
@@ -6555,7 +6555,7 @@ CatalogsItemValidationWarnings::getADWORDSFORMATWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setADWORDSFORMATWARNING(CatalogsItemValidationDetails  aDWORDS_FORMAT_WARNING)
+CatalogsItemValidationWarnings::setADWORDSFORMATWARNING(CatalogsItemValidationDetails aDWORDS_FORMAT_WARNING)
 {
 	this->aDWORDS_FORMAT_WARNING = aDWORDS_FORMAT_WARNING;
 }
@@ -6567,7 +6567,7 @@ CatalogsItemValidationWarnings::getADWORDSSAMEASLINK()
 }
 
 void
-CatalogsItemValidationWarnings::setADWORDSSAMEASLINK(CatalogsItemValidationDetails  aDWORDS_SAME_AS_LINK)
+CatalogsItemValidationWarnings::setADWORDSSAMEASLINK(CatalogsItemValidationDetails aDWORDS_SAME_AS_LINK)
 {
 	this->aDWORDS_SAME_AS_LINK = aDWORDS_SAME_AS_LINK;
 }
@@ -6579,7 +6579,7 @@ CatalogsItemValidationWarnings::getAGEGROUPINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setAGEGROUPINVALID(CatalogsItemValidationDetails  aGE_GROUP_INVALID)
+CatalogsItemValidationWarnings::setAGEGROUPINVALID(CatalogsItemValidationDetails aGE_GROUP_INVALID)
 {
 	this->aGE_GROUP_INVALID = aGE_GROUP_INVALID;
 }
@@ -6591,7 +6591,7 @@ CatalogsItemValidationWarnings::getANDROIDDEEPLINKINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setANDROIDDEEPLINKINVALID(CatalogsItemValidationDetails  aNDROID_DEEP_LINK_INVALID)
+CatalogsItemValidationWarnings::setANDROIDDEEPLINKINVALID(CatalogsItemValidationDetails aNDROID_DEEP_LINK_INVALID)
 {
 	this->aNDROID_DEEP_LINK_INVALID = aNDROID_DEEP_LINK_INVALID;
 }
@@ -6603,7 +6603,7 @@ CatalogsItemValidationWarnings::getAVAILABILITYDATEINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setAVAILABILITYDATEINVALID(CatalogsItemValidationDetails  aVAILABILITY_DATE_INVALID)
+CatalogsItemValidationWarnings::setAVAILABILITYDATEINVALID(CatalogsItemValidationDetails aVAILABILITY_DATE_INVALID)
 {
 	this->aVAILABILITY_DATE_INVALID = aVAILABILITY_DATE_INVALID;
 }
@@ -6615,7 +6615,7 @@ CatalogsItemValidationWarnings::getCOUNTRYDOESNOTMAPTOCURRENCY()
 }
 
 void
-CatalogsItemValidationWarnings::setCOUNTRYDOESNOTMAPTOCURRENCY(CatalogsItemValidationDetails  cOUNTRY_DOES_NOT_MAP_TO_CURRENCY)
+CatalogsItemValidationWarnings::setCOUNTRYDOESNOTMAPTOCURRENCY(CatalogsItemValidationDetails cOUNTRY_DOES_NOT_MAP_TO_CURRENCY)
 {
 	this->cOUNTRY_DOES_NOT_MAP_TO_CURRENCY = cOUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 }
@@ -6627,7 +6627,7 @@ CatalogsItemValidationWarnings::getCUSTOMLABELLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setCUSTOMLABELLENGTHTOOLONG(CatalogsItemValidationDetails  cUSTOM_LABEL_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setCUSTOMLABELLENGTHTOOLONG(CatalogsItemValidationDetails cUSTOM_LABEL_LENGTH_TOO_LONG)
 {
 	this->cUSTOM_LABEL_LENGTH_TOO_LONG = cUSTOM_LABEL_LENGTH_TOO_LONG;
 }
@@ -6639,7 +6639,7 @@ CatalogsItemValidationWarnings::getDESCRIPTIONLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setDESCRIPTIONLENGTHTOOLONG(CatalogsItemValidationDetails  dESCRIPTION_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setDESCRIPTIONLENGTHTOOLONG(CatalogsItemValidationDetails dESCRIPTION_LENGTH_TOO_LONG)
 {
 	this->dESCRIPTION_LENGTH_TOO_LONG = dESCRIPTION_LENGTH_TOO_LONG;
 }
@@ -6651,7 +6651,7 @@ CatalogsItemValidationWarnings::getEXPIRATIONDATEINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setEXPIRATIONDATEINVALID(CatalogsItemValidationDetails  eXPIRATION_DATE_INVALID)
+CatalogsItemValidationWarnings::setEXPIRATIONDATEINVALID(CatalogsItemValidationDetails eXPIRATION_DATE_INVALID)
 {
 	this->eXPIRATION_DATE_INVALID = eXPIRATION_DATE_INVALID;
 }
@@ -6663,7 +6663,7 @@ CatalogsItemValidationWarnings::getGENDERINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setGENDERINVALID(CatalogsItemValidationDetails  gENDER_INVALID)
+CatalogsItemValidationWarnings::setGENDERINVALID(CatalogsItemValidationDetails gENDER_INVALID)
 {
 	this->gENDER_INVALID = gENDER_INVALID;
 }
@@ -6675,7 +6675,7 @@ CatalogsItemValidationWarnings::getGTININVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setGTININVALID(CatalogsItemValidationDetails  gTIN_INVALID)
+CatalogsItemValidationWarnings::setGTININVALID(CatalogsItemValidationDetails gTIN_INVALID)
 {
 	this->gTIN_INVALID = gTIN_INVALID;
 }
@@ -6687,7 +6687,7 @@ CatalogsItemValidationWarnings::getIMAGELINKWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setIMAGELINKWARNING(CatalogsItemValidationDetails  iMAGE_LINK_WARNING)
+CatalogsItemValidationWarnings::setIMAGELINKWARNING(CatalogsItemValidationDetails iMAGE_LINK_WARNING)
 {
 	this->iMAGE_LINK_WARNING = iMAGE_LINK_WARNING;
 }
@@ -6699,7 +6699,7 @@ CatalogsItemValidationWarnings::getIOSDEEPLINKINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setIOSDEEPLINKINVALID(CatalogsItemValidationDetails  iOS_DEEP_LINK_INVALID)
+CatalogsItemValidationWarnings::setIOSDEEPLINKINVALID(CatalogsItemValidationDetails iOS_DEEP_LINK_INVALID)
 {
 	this->iOS_DEEP_LINK_INVALID = iOS_DEEP_LINK_INVALID;
 }
@@ -6711,7 +6711,7 @@ CatalogsItemValidationWarnings::getISBUNDLEINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setISBUNDLEINVALID(CatalogsItemValidationDetails  iS_BUNDLE_INVALID)
+CatalogsItemValidationWarnings::setISBUNDLEINVALID(CatalogsItemValidationDetails iS_BUNDLE_INVALID)
 {
 	this->iS_BUNDLE_INVALID = iS_BUNDLE_INVALID;
 }
@@ -6723,7 +6723,7 @@ CatalogsItemValidationWarnings::getITEMADDITIONALIMAGEDOWNLOADFAILURE()
 }
 
 void
-CatalogsItemValidationWarnings::setITEMADDITIONALIMAGEDOWNLOADFAILURE(CatalogsItemValidationDetails  iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE)
+CatalogsItemValidationWarnings::setITEMADDITIONALIMAGEDOWNLOADFAILURE(CatalogsItemValidationDetails iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE)
 {
 	this->iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
 }
@@ -6735,7 +6735,7 @@ CatalogsItemValidationWarnings::getLINKFORMATWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setLINKFORMATWARNING(CatalogsItemValidationDetails  lINK_FORMAT_WARNING)
+CatalogsItemValidationWarnings::setLINKFORMATWARNING(CatalogsItemValidationDetails lINK_FORMAT_WARNING)
 {
 	this->lINK_FORMAT_WARNING = lINK_FORMAT_WARNING;
 }
@@ -6747,7 +6747,7 @@ CatalogsItemValidationWarnings::getMINADPRICEINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setMINADPRICEINVALID(CatalogsItemValidationDetails  mIN_AD_PRICE_INVALID)
+CatalogsItemValidationWarnings::setMINADPRICEINVALID(CatalogsItemValidationDetails mIN_AD_PRICE_INVALID)
 {
 	this->mIN_AD_PRICE_INVALID = mIN_AD_PRICE_INVALID;
 }
@@ -6759,7 +6759,7 @@ CatalogsItemValidationWarnings::getMPNINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setMPNINVALID(CatalogsItemValidationDetails  mPN_INVALID)
+CatalogsItemValidationWarnings::setMPNINVALID(CatalogsItemValidationDetails mPN_INVALID)
 {
 	this->mPN_INVALID = mPN_INVALID;
 }
@@ -6771,7 +6771,7 @@ CatalogsItemValidationWarnings::getMULTIPACKINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setMULTIPACKINVALID(CatalogsItemValidationDetails  mULTIPACK_INVALID)
+CatalogsItemValidationWarnings::setMULTIPACKINVALID(CatalogsItemValidationDetails mULTIPACK_INVALID)
 {
 	this->mULTIPACK_INVALID = mULTIPACK_INVALID;
 }
@@ -6783,7 +6783,7 @@ CatalogsItemValidationWarnings::getOPTIONALCONDITIONINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setOPTIONALCONDITIONINVALID(CatalogsItemValidationDetails  oPTIONAL_CONDITION_INVALID)
+CatalogsItemValidationWarnings::setOPTIONALCONDITIONINVALID(CatalogsItemValidationDetails oPTIONAL_CONDITION_INVALID)
 {
 	this->oPTIONAL_CONDITION_INVALID = oPTIONAL_CONDITION_INVALID;
 }
@@ -6795,7 +6795,7 @@ CatalogsItemValidationWarnings::getOPTIONALCONDITIONMISSING()
 }
 
 void
-CatalogsItemValidationWarnings::setOPTIONALCONDITIONMISSING(CatalogsItemValidationDetails  oPTIONAL_CONDITION_MISSING)
+CatalogsItemValidationWarnings::setOPTIONALCONDITIONMISSING(CatalogsItemValidationDetails oPTIONAL_CONDITION_MISSING)
 {
 	this->oPTIONAL_CONDITION_MISSING = oPTIONAL_CONDITION_MISSING;
 }
@@ -6807,7 +6807,7 @@ CatalogsItemValidationWarnings::getOPTIONALPRODUCTCATEGORYINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setOPTIONALPRODUCTCATEGORYINVALID(CatalogsItemValidationDetails  oPTIONAL_PRODUCT_CATEGORY_INVALID)
+CatalogsItemValidationWarnings::setOPTIONALPRODUCTCATEGORYINVALID(CatalogsItemValidationDetails oPTIONAL_PRODUCT_CATEGORY_INVALID)
 {
 	this->oPTIONAL_PRODUCT_CATEGORY_INVALID = oPTIONAL_PRODUCT_CATEGORY_INVALID;
 }
@@ -6819,7 +6819,7 @@ CatalogsItemValidationWarnings::getOPTIONALPRODUCTCATEGORYMISSING()
 }
 
 void
-CatalogsItemValidationWarnings::setOPTIONALPRODUCTCATEGORYMISSING(CatalogsItemValidationDetails  oPTIONAL_PRODUCT_CATEGORY_MISSING)
+CatalogsItemValidationWarnings::setOPTIONALPRODUCTCATEGORYMISSING(CatalogsItemValidationDetails oPTIONAL_PRODUCT_CATEGORY_MISSING)
 {
 	this->oPTIONAL_PRODUCT_CATEGORY_MISSING = oPTIONAL_PRODUCT_CATEGORY_MISSING;
 }
@@ -6831,7 +6831,7 @@ CatalogsItemValidationWarnings::getPRODUCTCATEGORYDEPTHWARNING()
 }
 
 void
-CatalogsItemValidationWarnings::setPRODUCTCATEGORYDEPTHWARNING(CatalogsItemValidationDetails  pRODUCT_CATEGORY_DEPTH_WARNING)
+CatalogsItemValidationWarnings::setPRODUCTCATEGORYDEPTHWARNING(CatalogsItemValidationDetails pRODUCT_CATEGORY_DEPTH_WARNING)
 {
 	this->pRODUCT_CATEGORY_DEPTH_WARNING = pRODUCT_CATEGORY_DEPTH_WARNING;
 }
@@ -6843,7 +6843,7 @@ CatalogsItemValidationWarnings::getPRODUCTTYPELENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setPRODUCTTYPELENGTHTOOLONG(CatalogsItemValidationDetails  pRODUCT_TYPE_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setPRODUCTTYPELENGTHTOOLONG(CatalogsItemValidationDetails pRODUCT_TYPE_LENGTH_TOO_LONG)
 {
 	this->pRODUCT_TYPE_LENGTH_TOO_LONG = pRODUCT_TYPE_LENGTH_TOO_LONG;
 }
@@ -6855,7 +6855,7 @@ CatalogsItemValidationWarnings::getSALEDATEINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setSALEDATEINVALID(CatalogsItemValidationDetails  sALE_DATE_INVALID)
+CatalogsItemValidationWarnings::setSALEDATEINVALID(CatalogsItemValidationDetails sALE_DATE_INVALID)
 {
 	this->sALE_DATE_INVALID = sALE_DATE_INVALID;
 }
@@ -6867,7 +6867,7 @@ CatalogsItemValidationWarnings::getSALESPRICEINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setSALESPRICEINVALID(CatalogsItemValidationDetails  sALES_PRICE_INVALID)
+CatalogsItemValidationWarnings::setSALESPRICEINVALID(CatalogsItemValidationDetails sALES_PRICE_INVALID)
 {
 	this->sALES_PRICE_INVALID = sALES_PRICE_INVALID;
 }
@@ -6879,7 +6879,7 @@ CatalogsItemValidationWarnings::getSALESPRICETOOHIGH()
 }
 
 void
-CatalogsItemValidationWarnings::setSALESPRICETOOHIGH(CatalogsItemValidationDetails  sALES_PRICE_TOO_HIGH)
+CatalogsItemValidationWarnings::setSALESPRICETOOHIGH(CatalogsItemValidationDetails sALES_PRICE_TOO_HIGH)
 {
 	this->sALES_PRICE_TOO_HIGH = sALES_PRICE_TOO_HIGH;
 }
@@ -6891,7 +6891,7 @@ CatalogsItemValidationWarnings::getSALESPRICETOOLOW()
 }
 
 void
-CatalogsItemValidationWarnings::setSALESPRICETOOLOW(CatalogsItemValidationDetails  sALES_PRICE_TOO_LOW)
+CatalogsItemValidationWarnings::setSALESPRICETOOLOW(CatalogsItemValidationDetails sALES_PRICE_TOO_LOW)
 {
 	this->sALES_PRICE_TOO_LOW = sALES_PRICE_TOO_LOW;
 }
@@ -6903,7 +6903,7 @@ CatalogsItemValidationWarnings::getSHIPPINGHEIGHTINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setSHIPPINGHEIGHTINVALID(CatalogsItemValidationDetails  sHIPPING_HEIGHT_INVALID)
+CatalogsItemValidationWarnings::setSHIPPINGHEIGHTINVALID(CatalogsItemValidationDetails sHIPPING_HEIGHT_INVALID)
 {
 	this->sHIPPING_HEIGHT_INVALID = sHIPPING_HEIGHT_INVALID;
 }
@@ -6915,7 +6915,7 @@ CatalogsItemValidationWarnings::getSHIPPINGINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setSHIPPINGINVALID(CatalogsItemValidationDetails  sHIPPING_INVALID)
+CatalogsItemValidationWarnings::setSHIPPINGINVALID(CatalogsItemValidationDetails sHIPPING_INVALID)
 {
 	this->sHIPPING_INVALID = sHIPPING_INVALID;
 }
@@ -6927,7 +6927,7 @@ CatalogsItemValidationWarnings::getSHIPPINGWEIGHTINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setSHIPPINGWEIGHTINVALID(CatalogsItemValidationDetails  sHIPPING_WEIGHT_INVALID)
+CatalogsItemValidationWarnings::setSHIPPINGWEIGHTINVALID(CatalogsItemValidationDetails sHIPPING_WEIGHT_INVALID)
 {
 	this->sHIPPING_WEIGHT_INVALID = sHIPPING_WEIGHT_INVALID;
 }
@@ -6939,7 +6939,7 @@ CatalogsItemValidationWarnings::getSHIPPINGWIDTHINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setSHIPPINGWIDTHINVALID(CatalogsItemValidationDetails  sHIPPING_WIDTH_INVALID)
+CatalogsItemValidationWarnings::setSHIPPINGWIDTHINVALID(CatalogsItemValidationDetails sHIPPING_WIDTH_INVALID)
 {
 	this->sHIPPING_WIDTH_INVALID = sHIPPING_WIDTH_INVALID;
 }
@@ -6951,7 +6951,7 @@ CatalogsItemValidationWarnings::getSIZESYSTEMINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setSIZESYSTEMINVALID(CatalogsItemValidationDetails  sIZE_SYSTEM_INVALID)
+CatalogsItemValidationWarnings::setSIZESYSTEMINVALID(CatalogsItemValidationDetails sIZE_SYSTEM_INVALID)
 {
 	this->sIZE_SYSTEM_INVALID = sIZE_SYSTEM_INVALID;
 }
@@ -6963,7 +6963,7 @@ CatalogsItemValidationWarnings::getSIZETYPEINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setSIZETYPEINVALID(CatalogsItemValidationDetails  sIZE_TYPE_INVALID)
+CatalogsItemValidationWarnings::setSIZETYPEINVALID(CatalogsItemValidationDetails sIZE_TYPE_INVALID)
 {
 	this->sIZE_TYPE_INVALID = sIZE_TYPE_INVALID;
 }
@@ -6975,7 +6975,7 @@ CatalogsItemValidationWarnings::getTAXINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setTAXINVALID(CatalogsItemValidationDetails  tAX_INVALID)
+CatalogsItemValidationWarnings::setTAXINVALID(CatalogsItemValidationDetails tAX_INVALID)
 {
 	this->tAX_INVALID = tAX_INVALID;
 }
@@ -6987,7 +6987,7 @@ CatalogsItemValidationWarnings::getTITLELENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationWarnings::setTITLELENGTHTOOLONG(CatalogsItemValidationDetails  tITLE_LENGTH_TOO_LONG)
+CatalogsItemValidationWarnings::setTITLELENGTHTOOLONG(CatalogsItemValidationDetails tITLE_LENGTH_TOO_LONG)
 {
 	this->tITLE_LENGTH_TOO_LONG = tITLE_LENGTH_TOO_LONG;
 }
@@ -6999,7 +6999,7 @@ CatalogsItemValidationWarnings::getTOOMANYADDITIONALIMAGELINKS()
 }
 
 void
-CatalogsItemValidationWarnings::setTOOMANYADDITIONALIMAGELINKS(CatalogsItemValidationDetails  tOO_MANY_ADDITIONAL_IMAGE_LINKS)
+CatalogsItemValidationWarnings::setTOOMANYADDITIONALIMAGELINKS(CatalogsItemValidationDetails tOO_MANY_ADDITIONAL_IMAGE_LINKS)
 {
 	this->tOO_MANY_ADDITIONAL_IMAGE_LINKS = tOO_MANY_ADDITIONAL_IMAGE_LINKS;
 }
@@ -7011,7 +7011,7 @@ CatalogsItemValidationWarnings::getUTMSOURCEAUTOCORRECTED()
 }
 
 void
-CatalogsItemValidationWarnings::setUTMSOURCEAUTOCORRECTED(CatalogsItemValidationDetails  uTM_SOURCE_AUTO_CORRECTED)
+CatalogsItemValidationWarnings::setUTMSOURCEAUTOCORRECTED(CatalogsItemValidationDetails uTM_SOURCE_AUTO_CORRECTED)
 {
 	this->uTM_SOURCE_AUTO_CORRECTED = uTM_SOURCE_AUTO_CORRECTED;
 }
@@ -7023,7 +7023,7 @@ CatalogsItemValidationWarnings::getVIDEOREQUIREDWHENADVIDEOPROVIDED()
 }
 
 void
-CatalogsItemValidationWarnings::setVIDEOREQUIREDWHENADVIDEOPROVIDED(CatalogsItemValidationDetails  vIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED)
+CatalogsItemValidationWarnings::setVIDEOREQUIREDWHENADVIDEOPROVIDED(CatalogsItemValidationDetails vIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED)
 {
 	this->vIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED = vIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED;
 }
@@ -7035,7 +7035,7 @@ CatalogsItemValidationWarnings::getWEIGHTUNITINVALID()
 }
 
 void
-CatalogsItemValidationWarnings::setWEIGHTUNITINVALID(CatalogsItemValidationDetails  wEIGHT_UNIT_INVALID)
+CatalogsItemValidationWarnings::setWEIGHTUNITINVALID(CatalogsItemValidationDetails wEIGHT_UNIT_INVALID)
 {
 	this->wEIGHT_UNIT_INVALID = wEIGHT_UNIT_INVALID;
 }

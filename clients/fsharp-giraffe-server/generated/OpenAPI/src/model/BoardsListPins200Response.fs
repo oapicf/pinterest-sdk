@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.Pin
+open OpenAPI.Model.PinRead
 open OpenAPI.Model.string option
 
 module BoardsListPins200Response =
@@ -12,6 +12,6 @@ module BoardsListPins200Response =
 
   type boards_list_pins_200_response = {
     Bookmark : string option;
-    Items : Pin[];
+    Items : PinRead[];
   }
   //#endregion

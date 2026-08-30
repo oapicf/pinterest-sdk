@@ -23,21 +23,25 @@ import HelperCodecs._
 
 import org.openapitools.client.api.Account
 import org.openapitools.client.api.AnalyticsMetricsResponse
-import org.openapitools.client.api.BoardsUserFollowsList200Response
+import org.openapitools.client.api.BigDecimal
+import org.openapitools.client.api.BoardsList200Response
 import org.openapitools.client.api.Error
-import org.openapitools.client.api.FollowUserRequest
+import org.openapitools.client.api.FollowUser
+import org.openapitools.client.api.FollowUserCreate
 import org.openapitools.client.api.FollowersList200Response
 import org.openapitools.client.api.LinkedBusiness
 import java.time.LocalDate
+import org.openapitools.client.api.QuerymetrictypesItems
+import org.openapitools.client.api.QueryvideopinmetrictypesItems
 import org.openapitools.client.api.TopPinsAnalyticsResponse
+import org.openapitools.client.api.TopPinsSortBy
 import org.openapitools.client.api.TopVideoPinsAnalyticsResponse
+import org.openapitools.client.api.TopVideoPinsSortBy
 import org.openapitools.client.api.UserAccountFollowedInterests200Response
 import org.openapitools.client.api.UserFollowingFeedType
-import org.openapitools.client.api.UserFollowingGet200Response
-import org.openapitools.client.api.UserSummary
-import org.openapitools.client.api.UserWebsiteSummary
-import org.openapitools.client.api.UserWebsiteVerificationCode
-import org.openapitools.client.api.UserWebsiteVerifyRequest
+import org.openapitools.client.api.UserWebsite
+import org.openapitools.client.api.UserWebsiteCreate
+import org.openapitools.client.api.UserWebsiteVerification
 import org.openapitools.client.api.UserWebsitesGet200Response
 
 object UserAccountApi {
@@ -46,8 +50,8 @@ object UserAccountApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def boardsUserFollowsList(host: String, bookmark: String, pageSize: Integer = 25, explicitFollowing: Boolean = false, adAccountId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], explicitFollowingQuery: QueryParam[Boolean], adAccountIdQuery: QueryParam[String]): Task[BoardsUserFollowsList200Response] = {
-    implicit val returnTypeDecoder: EntityDecoder[BoardsUserFollowsList200Response] = jsonOf[BoardsUserFollowsList200Response]
+  def boardsUserFollowsList(host: String, adAccountId: String, explicitFollowing: Boolean = false, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], explicitFollowingQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BoardsList200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[BoardsList200Response] = jsonOf[BoardsList200Response]
 
     val path = "/user_account/following/boards"
 
@@ -56,19 +60,19 @@ object UserAccountApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("explicitFollowing", Some(explicit_followingQuery.toParamString(explicit_following))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("explicitFollowing", Some(explicit_followingQuery.toParamString(explicit_following))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[BoardsUserFollowsList200Response](req)
+      resp          <- client.expect[BoardsList200Response](req)
 
     } yield resp
   }
 
-  def followUserUpdate(host: String, username: String, followUserRequest: FollowUserRequest): Task[UserSummary] = {
-    implicit val returnTypeDecoder: EntityDecoder[UserSummary] = jsonOf[UserSummary]
+  def followUserUpdate(host: String, username: String, followUserCreate: FollowUserCreate): Task[FollowUser] = {
+    implicit val returnTypeDecoder: EntityDecoder[FollowUser] = jsonOf[FollowUser]
 
     val path = "/user_account/following/{username}".replaceAll("\\{" + "username" + "\\}",escape(username.toString))
 
@@ -82,8 +86,8 @@ object UserAccountApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(followUserRequest)
-      resp          <- client.expect[UserSummary](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(followUserCreate)
+      resp          <- client.expect[FollowUser](req)
 
     } yield resp
   }
@@ -130,7 +134,9 @@ object UserAccountApi {
     } yield resp
   }
 
-  def unverifyWebsiteDelete(host: String, website: String)(implicit websiteQuery: QueryParam[String]): Task[Unit] = {
+  def unverifyWebsiteDelete(host: String, website: String)(implicit websiteQuery: QueryParam[String]): Task[UserWebsite] = {
+    implicit val returnTypeDecoder: EntityDecoder[UserWebsite] = jsonOf[UserWebsite]
+
     val path = "/user_account/websites"
 
     val httpMethod = Method.DELETE
@@ -144,12 +150,12 @@ object UserAccountApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[UserWebsite](req)
 
     } yield resp
   }
 
-  def userAccountAnalytics(host: String, startDate: LocalDate, endDate: LocalDate, fromClaimedContent: String = BOTH, pinFormat: String = ALL, appTypes: String = ALL, `contentType`: String = ALL, source: String = ALL, metricTypes: List[String] = List.empty[String] , splitField: String = NO_SPLIT, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], fromClaimedContentQuery: QueryParam[String], pinFormatQuery: QueryParam[String], appTypesQuery: QueryParam[String], `contentType`Query: QueryParam[String], sourceQuery: QueryParam[String], metricTypesQuery: QueryParam[List[String]], splitFieldQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[Map[String, AnalyticsMetricsResponse]] = {
+  def userAccountAnalytics(host: String, startDate: LocalDate, endDate: LocalDate, fromClaimedContent: String = BOTH, pinFormat: String = ALL, appTypes: String = ALL, `contentType`: String = ALL, source: String = ALL, metricTypes: List[QuerymetrictypesItems] = List.empty[QuerymetrictypesItems] , splitField: String = NO_SPLIT, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], fromClaimedContentQuery: QueryParam[String], pinFormatQuery: QueryParam[String], appTypesQuery: QueryParam[String], `contentType`Query: QueryParam[String], sourceQuery: QueryParam[String], metricTypesQuery: QueryParam[List[QuerymetrictypesItems]], splitFieldQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[Map[String, AnalyticsMetricsResponse]] = {
     implicit val returnTypeDecoder: EntityDecoder[Map[String, AnalyticsMetricsResponse]] = jsonOf[Map[String, AnalyticsMetricsResponse]]
 
     val path = "/user_account/analytics"
@@ -170,7 +176,7 @@ object UserAccountApi {
     } yield resp
   }
 
-  def userAccountAnalyticsTopPins(host: String, startDate: LocalDate, endDate: LocalDate, sortBy: String, fromClaimedContent: String = BOTH, pinFormat: String = ALL, appTypes: String = ALL, `contentType`: String = ALL, source: String = ALL, metricTypes: List[String] = List.empty[String] , numOfPins: Integer = 10, createdInLastNDays: Integer, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], sortByQuery: QueryParam[String], fromClaimedContentQuery: QueryParam[String], pinFormatQuery: QueryParam[String], appTypesQuery: QueryParam[String], `contentType`Query: QueryParam[String], sourceQuery: QueryParam[String], metricTypesQuery: QueryParam[List[String]], numOfPinsQuery: QueryParam[Integer], createdInLastNDaysQuery: QueryParam[Integer], adAccountIdQuery: QueryParam[String]): Task[TopPinsAnalyticsResponse] = {
+  def userAccountAnalyticsTopPins(host: String, startDate: LocalDate, endDate: LocalDate, sortBy: TopPinsSortBy, fromClaimedContent: String = BOTH, pinFormat: String = ALL, appTypes: String = ALL, `contentType`: String = ALL, source: String = ALL, metricTypes: List[QuerymetrictypesItems] = List.empty[QuerymetrictypesItems] , numOfPins: Integer = 10, createdInLastNDays: BigDecimal, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], sortByQuery: QueryParam[TopPinsSortBy], fromClaimedContentQuery: QueryParam[String], pinFormatQuery: QueryParam[String], appTypesQuery: QueryParam[String], `contentType`Query: QueryParam[String], sourceQuery: QueryParam[String], metricTypesQuery: QueryParam[List[QuerymetrictypesItems]], numOfPinsQuery: QueryParam[Integer], createdInLastNDaysQuery: QueryParam[BigDecimal], adAccountIdQuery: QueryParam[String]): Task[TopPinsAnalyticsResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[TopPinsAnalyticsResponse] = jsonOf[TopPinsAnalyticsResponse]
 
     val path = "/user_account/analytics/top_pins"
@@ -191,7 +197,7 @@ object UserAccountApi {
     } yield resp
   }
 
-  def userAccountAnalyticsTopVideoPins(host: String, startDate: LocalDate, endDate: LocalDate, sortBy: String, fromClaimedContent: String = BOTH, pinFormat: String = ALL, appTypes: String = ALL, `contentType`: String = ALL, source: String = ALL, metricTypes: List[String] = List.empty[String] , numOfPins: Integer = 10, createdInLastNDays: Integer, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], sortByQuery: QueryParam[String], fromClaimedContentQuery: QueryParam[String], pinFormatQuery: QueryParam[String], appTypesQuery: QueryParam[String], `contentType`Query: QueryParam[String], sourceQuery: QueryParam[String], metricTypesQuery: QueryParam[List[String]], numOfPinsQuery: QueryParam[Integer], createdInLastNDaysQuery: QueryParam[Integer], adAccountIdQuery: QueryParam[String]): Task[TopVideoPinsAnalyticsResponse] = {
+  def userAccountAnalyticsTopVideoPins(host: String, startDate: LocalDate, endDate: LocalDate, sortBy: TopVideoPinsSortBy, fromClaimedContent: String = BOTH, pinFormat: String = ALL, appTypes: String = ALL, `contentType`: String = ALL, source: String = ALL, metricTypes: List[QueryvideopinmetrictypesItems] = List.empty[QueryvideopinmetrictypesItems] , numOfPins: Integer = 10, createdInLastNDays: BigDecimal, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], sortByQuery: QueryParam[TopVideoPinsSortBy], fromClaimedContentQuery: QueryParam[String], pinFormatQuery: QueryParam[String], appTypesQuery: QueryParam[String], `contentType`Query: QueryParam[String], sourceQuery: QueryParam[String], metricTypesQuery: QueryParam[List[QueryvideopinmetrictypesItems]], numOfPinsQuery: QueryParam[Integer], createdInLastNDaysQuery: QueryParam[BigDecimal], adAccountIdQuery: QueryParam[String]): Task[TopVideoPinsAnalyticsResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[TopVideoPinsAnalyticsResponse] = jsonOf[TopVideoPinsAnalyticsResponse]
 
     val path = "/user_account/analytics/top_video_pins"
@@ -254,8 +260,8 @@ object UserAccountApi {
     } yield resp
   }
 
-  def userFollowingGet(host: String, bookmark: String, pageSize: Integer = 25, feedType: UserFollowingFeedType, explicitFollowing: Boolean = false, adAccountId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], feedTypeQuery: QueryParam[UserFollowingFeedType], explicitFollowingQuery: QueryParam[Boolean], adAccountIdQuery: QueryParam[String]): Task[UserFollowingGet200Response] = {
-    implicit val returnTypeDecoder: EntityDecoder[UserFollowingGet200Response] = jsonOf[UserFollowingGet200Response]
+  def userFollowingGet(host: String, adAccountId: String, explicitFollowing: Boolean = false, feedType: UserFollowingFeedType, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], explicitFollowingQuery: QueryParam[Boolean], feedTypeQuery: QueryParam[UserFollowingFeedType], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[FollowersList200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[FollowersList200Response] = jsonOf[FollowersList200Response]
 
     val path = "/user_account/following"
 
@@ -264,13 +270,13 @@ object UserAccountApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("feedType", Some(feed_typeQuery.toParamString(feed_type))), ("explicitFollowing", Some(explicit_followingQuery.toParamString(explicit_following))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("explicitFollowing", Some(explicit_followingQuery.toParamString(explicit_following))), ("feedType", Some(feed_typeQuery.toParamString(feed_type))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[UserFollowingGet200Response](req)
+      resp          <- client.expect[FollowersList200Response](req)
 
     } yield resp
   }
@@ -296,8 +302,8 @@ object UserAccountApi {
     } yield resp
   }
 
-  def verifyWebsiteUpdate(host: String, userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[UserWebsiteSummary] = {
-    implicit val returnTypeDecoder: EntityDecoder[UserWebsiteSummary] = jsonOf[UserWebsiteSummary]
+  def verifyWebsiteUpdate(host: String, userWebsiteCreate: UserWebsiteCreate, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[UserWebsite] = {
+    implicit val returnTypeDecoder: EntityDecoder[UserWebsite] = jsonOf[UserWebsite]
 
     val path = "/user_account/websites"
 
@@ -311,14 +317,14 @@ object UserAccountApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(userWebsiteVerifyRequest)
-      resp          <- client.expect[UserWebsiteSummary](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(userWebsiteCreate)
+      resp          <- client.expect[UserWebsite](req)
 
     } yield resp
   }
 
-  def websiteVerificationGet(host: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[UserWebsiteVerificationCode] = {
-    implicit val returnTypeDecoder: EntityDecoder[UserWebsiteVerificationCode] = jsonOf[UserWebsiteVerificationCode]
+  def websiteVerificationGet(host: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[UserWebsiteVerification] = {
+    implicit val returnTypeDecoder: EntityDecoder[UserWebsiteVerification] = jsonOf[UserWebsiteVerification]
 
     val path = "/user_account/websites/verification"
 
@@ -333,7 +339,7 @@ object UserAccountApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[UserWebsiteVerificationCode](req)
+      resp          <- client.expect[UserWebsiteVerification](req)
 
     } yield resp
   }
@@ -345,8 +351,8 @@ class HttpServiceUserAccountApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def boardsUserFollowsList(bookmark: String, pageSize: Integer = 25, explicitFollowing: Boolean = false, adAccountId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], explicitFollowingQuery: QueryParam[Boolean], adAccountIdQuery: QueryParam[String]): Task[BoardsUserFollowsList200Response] = {
-    implicit val returnTypeDecoder: EntityDecoder[BoardsUserFollowsList200Response] = jsonOf[BoardsUserFollowsList200Response]
+  def boardsUserFollowsList(adAccountId: String, explicitFollowing: Boolean = false, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], explicitFollowingQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BoardsList200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[BoardsList200Response] = jsonOf[BoardsList200Response]
 
     val path = "/user_account/following/boards"
 
@@ -355,19 +361,19 @@ class HttpServiceUserAccountApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("explicitFollowing", Some(explicit_followingQuery.toParamString(explicit_following))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("explicitFollowing", Some(explicit_followingQuery.toParamString(explicit_following))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[BoardsUserFollowsList200Response](req)
+      resp          <- client.expect[BoardsList200Response](req)
 
     } yield resp
   }
 
-  def followUserUpdate(username: String, followUserRequest: FollowUserRequest): Task[UserSummary] = {
-    implicit val returnTypeDecoder: EntityDecoder[UserSummary] = jsonOf[UserSummary]
+  def followUserUpdate(username: String, followUserCreate: FollowUserCreate): Task[FollowUser] = {
+    implicit val returnTypeDecoder: EntityDecoder[FollowUser] = jsonOf[FollowUser]
 
     val path = "/user_account/following/{username}".replaceAll("\\{" + "username" + "\\}",escape(username.toString))
 
@@ -381,8 +387,8 @@ class HttpServiceUserAccountApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(followUserRequest)
-      resp          <- client.expect[UserSummary](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(followUserCreate)
+      resp          <- client.expect[FollowUser](req)
 
     } yield resp
   }
@@ -429,7 +435,9 @@ class HttpServiceUserAccountApi(service: HttpService) {
     } yield resp
   }
 
-  def unverifyWebsiteDelete(website: String)(implicit websiteQuery: QueryParam[String]): Task[Unit] = {
+  def unverifyWebsiteDelete(website: String)(implicit websiteQuery: QueryParam[String]): Task[UserWebsite] = {
+    implicit val returnTypeDecoder: EntityDecoder[UserWebsite] = jsonOf[UserWebsite]
+
     val path = "/user_account/websites"
 
     val httpMethod = Method.DELETE
@@ -443,12 +451,12 @@ class HttpServiceUserAccountApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[UserWebsite](req)
 
     } yield resp
   }
 
-  def userAccountAnalytics(startDate: LocalDate, endDate: LocalDate, fromClaimedContent: String = BOTH, pinFormat: String = ALL, appTypes: String = ALL, `contentType`: String = ALL, source: String = ALL, metricTypes: List[String] = List.empty[String] , splitField: String = NO_SPLIT, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], fromClaimedContentQuery: QueryParam[String], pinFormatQuery: QueryParam[String], appTypesQuery: QueryParam[String], `contentType`Query: QueryParam[String], sourceQuery: QueryParam[String], metricTypesQuery: QueryParam[List[String]], splitFieldQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[Map[String, AnalyticsMetricsResponse]] = {
+  def userAccountAnalytics(startDate: LocalDate, endDate: LocalDate, fromClaimedContent: String = BOTH, pinFormat: String = ALL, appTypes: String = ALL, `contentType`: String = ALL, source: String = ALL, metricTypes: List[QuerymetrictypesItems] = List.empty[QuerymetrictypesItems] , splitField: String = NO_SPLIT, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], fromClaimedContentQuery: QueryParam[String], pinFormatQuery: QueryParam[String], appTypesQuery: QueryParam[String], `contentType`Query: QueryParam[String], sourceQuery: QueryParam[String], metricTypesQuery: QueryParam[List[QuerymetrictypesItems]], splitFieldQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[Map[String, AnalyticsMetricsResponse]] = {
     implicit val returnTypeDecoder: EntityDecoder[Map[String, AnalyticsMetricsResponse]] = jsonOf[Map[String, AnalyticsMetricsResponse]]
 
     val path = "/user_account/analytics"
@@ -469,7 +477,7 @@ class HttpServiceUserAccountApi(service: HttpService) {
     } yield resp
   }
 
-  def userAccountAnalyticsTopPins(startDate: LocalDate, endDate: LocalDate, sortBy: String, fromClaimedContent: String = BOTH, pinFormat: String = ALL, appTypes: String = ALL, `contentType`: String = ALL, source: String = ALL, metricTypes: List[String] = List.empty[String] , numOfPins: Integer = 10, createdInLastNDays: Integer, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], sortByQuery: QueryParam[String], fromClaimedContentQuery: QueryParam[String], pinFormatQuery: QueryParam[String], appTypesQuery: QueryParam[String], `contentType`Query: QueryParam[String], sourceQuery: QueryParam[String], metricTypesQuery: QueryParam[List[String]], numOfPinsQuery: QueryParam[Integer], createdInLastNDaysQuery: QueryParam[Integer], adAccountIdQuery: QueryParam[String]): Task[TopPinsAnalyticsResponse] = {
+  def userAccountAnalyticsTopPins(startDate: LocalDate, endDate: LocalDate, sortBy: TopPinsSortBy, fromClaimedContent: String = BOTH, pinFormat: String = ALL, appTypes: String = ALL, `contentType`: String = ALL, source: String = ALL, metricTypes: List[QuerymetrictypesItems] = List.empty[QuerymetrictypesItems] , numOfPins: Integer = 10, createdInLastNDays: BigDecimal, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], sortByQuery: QueryParam[TopPinsSortBy], fromClaimedContentQuery: QueryParam[String], pinFormatQuery: QueryParam[String], appTypesQuery: QueryParam[String], `contentType`Query: QueryParam[String], sourceQuery: QueryParam[String], metricTypesQuery: QueryParam[List[QuerymetrictypesItems]], numOfPinsQuery: QueryParam[Integer], createdInLastNDaysQuery: QueryParam[BigDecimal], adAccountIdQuery: QueryParam[String]): Task[TopPinsAnalyticsResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[TopPinsAnalyticsResponse] = jsonOf[TopPinsAnalyticsResponse]
 
     val path = "/user_account/analytics/top_pins"
@@ -490,7 +498,7 @@ class HttpServiceUserAccountApi(service: HttpService) {
     } yield resp
   }
 
-  def userAccountAnalyticsTopVideoPins(startDate: LocalDate, endDate: LocalDate, sortBy: String, fromClaimedContent: String = BOTH, pinFormat: String = ALL, appTypes: String = ALL, `contentType`: String = ALL, source: String = ALL, metricTypes: List[String] = List.empty[String] , numOfPins: Integer = 10, createdInLastNDays: Integer, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], sortByQuery: QueryParam[String], fromClaimedContentQuery: QueryParam[String], pinFormatQuery: QueryParam[String], appTypesQuery: QueryParam[String], `contentType`Query: QueryParam[String], sourceQuery: QueryParam[String], metricTypesQuery: QueryParam[List[String]], numOfPinsQuery: QueryParam[Integer], createdInLastNDaysQuery: QueryParam[Integer], adAccountIdQuery: QueryParam[String]): Task[TopVideoPinsAnalyticsResponse] = {
+  def userAccountAnalyticsTopVideoPins(startDate: LocalDate, endDate: LocalDate, sortBy: TopVideoPinsSortBy, fromClaimedContent: String = BOTH, pinFormat: String = ALL, appTypes: String = ALL, `contentType`: String = ALL, source: String = ALL, metricTypes: List[QueryvideopinmetrictypesItems] = List.empty[QueryvideopinmetrictypesItems] , numOfPins: Integer = 10, createdInLastNDays: BigDecimal, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], sortByQuery: QueryParam[TopVideoPinsSortBy], fromClaimedContentQuery: QueryParam[String], pinFormatQuery: QueryParam[String], appTypesQuery: QueryParam[String], `contentType`Query: QueryParam[String], sourceQuery: QueryParam[String], metricTypesQuery: QueryParam[List[QueryvideopinmetrictypesItems]], numOfPinsQuery: QueryParam[Integer], createdInLastNDaysQuery: QueryParam[BigDecimal], adAccountIdQuery: QueryParam[String]): Task[TopVideoPinsAnalyticsResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[TopVideoPinsAnalyticsResponse] = jsonOf[TopVideoPinsAnalyticsResponse]
 
     val path = "/user_account/analytics/top_video_pins"
@@ -553,8 +561,8 @@ class HttpServiceUserAccountApi(service: HttpService) {
     } yield resp
   }
 
-  def userFollowingGet(bookmark: String, pageSize: Integer = 25, feedType: UserFollowingFeedType, explicitFollowing: Boolean = false, adAccountId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], feedTypeQuery: QueryParam[UserFollowingFeedType], explicitFollowingQuery: QueryParam[Boolean], adAccountIdQuery: QueryParam[String]): Task[UserFollowingGet200Response] = {
-    implicit val returnTypeDecoder: EntityDecoder[UserFollowingGet200Response] = jsonOf[UserFollowingGet200Response]
+  def userFollowingGet(adAccountId: String, explicitFollowing: Boolean = false, feedType: UserFollowingFeedType, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], explicitFollowingQuery: QueryParam[Boolean], feedTypeQuery: QueryParam[UserFollowingFeedType], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[FollowersList200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[FollowersList200Response] = jsonOf[FollowersList200Response]
 
     val path = "/user_account/following"
 
@@ -563,13 +571,13 @@ class HttpServiceUserAccountApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("feedType", Some(feed_typeQuery.toParamString(feed_type))), ("explicitFollowing", Some(explicit_followingQuery.toParamString(explicit_following))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("explicitFollowing", Some(explicit_followingQuery.toParamString(explicit_following))), ("feedType", Some(feed_typeQuery.toParamString(feed_type))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[UserFollowingGet200Response](req)
+      resp          <- client.expect[FollowersList200Response](req)
 
     } yield resp
   }
@@ -595,8 +603,8 @@ class HttpServiceUserAccountApi(service: HttpService) {
     } yield resp
   }
 
-  def verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[UserWebsiteSummary] = {
-    implicit val returnTypeDecoder: EntityDecoder[UserWebsiteSummary] = jsonOf[UserWebsiteSummary]
+  def verifyWebsiteUpdate(userWebsiteCreate: UserWebsiteCreate, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[UserWebsite] = {
+    implicit val returnTypeDecoder: EntityDecoder[UserWebsite] = jsonOf[UserWebsite]
 
     val path = "/user_account/websites"
 
@@ -610,14 +618,14 @@ class HttpServiceUserAccountApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(userWebsiteVerifyRequest)
-      resp          <- client.expect[UserWebsiteSummary](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(userWebsiteCreate)
+      resp          <- client.expect[UserWebsite](req)
 
     } yield resp
   }
 
-  def websiteVerificationGet(adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[UserWebsiteVerificationCode] = {
-    implicit val returnTypeDecoder: EntityDecoder[UserWebsiteVerificationCode] = jsonOf[UserWebsiteVerificationCode]
+  def websiteVerificationGet(adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[UserWebsiteVerification] = {
+    implicit val returnTypeDecoder: EntityDecoder[UserWebsiteVerification] = jsonOf[UserWebsiteVerification]
 
     val path = "/user_account/websites/verification"
 
@@ -632,7 +640,7 @@ class HttpServiceUserAccountApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[UserWebsiteVerificationCode](req)
+      resp          <- client.expect[UserWebsiteVerification](req)
 
     } yield resp
   }

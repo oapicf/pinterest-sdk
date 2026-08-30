@@ -7,7 +7,7 @@ using namespace Tiny;
 BaseInviteDataResponse::BaseInviteDataResponse()
 {
 	id = std::string();
-	invite_data = BaseInviteDataResponse_invite_data();
+	invite_data = InviteDataResponse();
 	is_received_invite = bool(false);
 	user = null;
 }
@@ -49,7 +49,7 @@ BaseInviteDataResponse::fromJson(std::string jsonObj)
 
 
 
-        BaseInviteDataResponse_invite_data* obj = &invite_data;
+        InviteDataResponse* obj = &invite_data;
 		obj->fromJson(value.dump());
 
     }
@@ -129,19 +129,19 @@ BaseInviteDataResponse::getId()
 }
 
 void
-BaseInviteDataResponse::setId(std::string  id)
+BaseInviteDataResponse::setId(std::string id)
 {
 	this->id = id;
 }
 
-BaseInviteDataResponse_invite_data
+InviteDataResponse
 BaseInviteDataResponse::getInviteData()
 {
 	return invite_data;
 }
 
 void
-BaseInviteDataResponse::setInviteData(BaseInviteDataResponse_invite_data  invite_data)
+BaseInviteDataResponse::setInviteData(InviteDataResponse invite_data)
 {
 	this->invite_data = invite_data;
 }
@@ -153,7 +153,7 @@ BaseInviteDataResponse::isIsReceivedInvite()
 }
 
 void
-BaseInviteDataResponse::setIsReceivedInvite(bool  is_received_invite)
+BaseInviteDataResponse::setIsReceivedInvite(bool is_received_invite)
 {
 	this->is_received_invite = is_received_invite;
 }
@@ -165,7 +165,7 @@ BaseInviteDataResponse::getUser()
 }
 
 void
-BaseInviteDataResponse::setUser(BusinessAccessUserSummary  user)
+BaseInviteDataResponse::setUser(BusinessAccessUserSummary user)
 {
 	this->user = user;
 }

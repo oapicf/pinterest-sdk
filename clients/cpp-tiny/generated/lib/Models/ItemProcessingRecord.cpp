@@ -162,7 +162,7 @@ ItemProcessingRecord::getErrors()
 }
 
 void
-ItemProcessingRecord::setErrors(std::list <ItemValidationEvent> errors)
+ItemProcessingRecord::setErrors(std::list<ItemValidationEvent> errors)
 {
 	this->errors = errors;
 }
@@ -174,7 +174,7 @@ ItemProcessingRecord::getItemId()
 }
 
 void
-ItemProcessingRecord::setItemId(std::string  item_id)
+ItemProcessingRecord::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
 }
@@ -186,7 +186,7 @@ ItemProcessingRecord::getStatus()
 }
 
 void
-ItemProcessingRecord::setStatus(ItemProcessingStatus  status)
+ItemProcessingRecord::setStatus(ItemProcessingStatus status)
 {
 	this->status = status;
 }
@@ -198,7 +198,7 @@ ItemProcessingRecord::getWarnings()
 }
 
 void
-ItemProcessingRecord::setWarnings(std::list <ItemValidationEvent> warnings)
+ItemProcessingRecord::setWarnings(std::list<ItemValidationEvent> warnings)
 {
 	this->warnings = warnings;
 }

@@ -1,0 +1,126 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
+
+class AdPreviewSourcePinId {
+  /// Returns a new [AdPreviewSourcePinId] instance.
+  AdPreviewSourcePinId({
+    this.creativeType,
+    required this.pinId,
+  });
+
+  /// Creative type of the ad preview.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  AdPinPreviewCreativeType? creativeType;
+
+  /// Pin ID.
+  String pinId;
+
+  @override
+  bool operator ==(Object other) => identical(this, other) || other is AdPreviewSourcePinId &&
+    other.creativeType == creativeType &&
+    other.pinId == pinId;
+
+  @override
+  int get hashCode =>
+    // ignore: unnecessary_parenthesis
+    (creativeType == null ? 0 : creativeType!.hashCode) +
+    (pinId.hashCode);
+
+  @override
+  String toString() => 'AdPreviewSourcePinId[creativeType=$creativeType, pinId=$pinId]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    if (this.creativeType != null) {
+      json[r'creative_type'] = this.creativeType;
+    } else {
+      json[r'creative_type'] = null;
+    }
+      json[r'pin_id'] = this.pinId;
+    return json;
+  }
+
+  /// Returns a new [AdPreviewSourcePinId] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static AdPreviewSourcePinId? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        assert(json.containsKey(r'pin_id'), 'Required key "AdPreviewSourcePinId[pin_id]" is missing from JSON.');
+        assert(json[r'pin_id'] != null, 'Required key "AdPreviewSourcePinId[pin_id]" has a null value in JSON.');
+        return true;
+      }());
+
+      return AdPreviewSourcePinId(
+        creativeType: AdPinPreviewCreativeType.fromJson(json[r'creative_type']),
+        pinId: mapValueOfType<String>(json, r'pin_id')!,
+      );
+    }
+    return null;
+  }
+
+  static List<AdPreviewSourcePinId> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AdPreviewSourcePinId>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = AdPreviewSourcePinId.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+
+  static Map<String, AdPreviewSourcePinId> mapFromJson(dynamic json) {
+    final map = <String, AdPreviewSourcePinId>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = AdPreviewSourcePinId.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of AdPreviewSourcePinId-objects as value to a dart map
+  static Map<String, List<AdPreviewSourcePinId>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<AdPreviewSourcePinId>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = AdPreviewSourcePinId.listFromJson(entry.value, growable: growable,);
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'pin_id',
+  };
+}
+

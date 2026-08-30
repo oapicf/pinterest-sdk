@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
+import org.openapitools.vertxweb.server.model.CustomerListStatus;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomerList   {
@@ -13,32 +14,12 @@ public class CustomerList   {
   private BigDecimal createdTime;
   private Object exceptions;
   private String id;
+  private Boolean isNca;
   private String name;
   private BigDecimal numBatches;
   private BigDecimal numRemovedUserRecords;
   private BigDecimal numUploadedUserRecords;
-
-
-  public enum StatusEnum {
-    PROCESSING("PROCESSING"),
-    READY("READY"),
-    TOO_SMALL("TOO_SMALL"),
-    UPLOADING("UPLOADING");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private StatusEnum status;
+  private CustomerListStatus status;
   private String type;
   private BigDecimal updatedTime;
 
@@ -46,11 +27,12 @@ public class CustomerList   {
 
   }
 
-  public CustomerList (String adAccountId, BigDecimal createdTime, Object exceptions, String id, String name, BigDecimal numBatches, BigDecimal numRemovedUserRecords, BigDecimal numUploadedUserRecords, StatusEnum status, String type, BigDecimal updatedTime) {
+  public CustomerList (String adAccountId, BigDecimal createdTime, Object exceptions, String id, Boolean isNca, String name, BigDecimal numBatches, BigDecimal numRemovedUserRecords, BigDecimal numUploadedUserRecords, CustomerListStatus status, String type, BigDecimal updatedTime) {
     this.adAccountId = adAccountId;
     this.createdTime = createdTime;
     this.exceptions = exceptions;
     this.id = id;
+    this.isNca = isNca;
     this.name = name;
     this.numBatches = numBatches;
     this.numRemovedUserRecords = numRemovedUserRecords;
@@ -97,6 +79,15 @@ public class CustomerList   {
   }
 
     
+  @JsonProperty("is_nca")
+  public Boolean getIsNca() {
+    return isNca;
+  }
+  public void setIsNca(Boolean isNca) {
+    this.isNca = isNca;
+  }
+
+    
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -134,10 +125,10 @@ public class CustomerList   {
 
     
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  public CustomerListStatus getStatus() {
     return status;
   }
-  public void setStatus(StatusEnum status) {
+  public void setStatus(CustomerListStatus status) {
     this.status = status;
   }
 
@@ -173,6 +164,7 @@ public class CustomerList   {
         Objects.equals(createdTime, customerList.createdTime) &&
         Objects.equals(exceptions, customerList.exceptions) &&
         Objects.equals(id, customerList.id) &&
+        Objects.equals(isNca, customerList.isNca) &&
         Objects.equals(name, customerList.name) &&
         Objects.equals(numBatches, customerList.numBatches) &&
         Objects.equals(numRemovedUserRecords, customerList.numRemovedUserRecords) &&
@@ -184,7 +176,7 @@ public class CustomerList   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, createdTime, exceptions, id, name, numBatches, numRemovedUserRecords, numUploadedUserRecords, status, type, updatedTime);
+    return Objects.hash(adAccountId, createdTime, exceptions, id, isNca, name, numBatches, numRemovedUserRecords, numUploadedUserRecords, status, type, updatedTime);
   }
 
   @Override
@@ -196,6 +188,7 @@ public class CustomerList   {
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isNca: ").append(toIndentedString(isNca)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    numBatches: ").append(toIndentedString(numBatches)).append("\n");
     sb.append("    numRemovedUserRecords: ").append(toIndentedString(numRemovedUserRecords)).append("\n");
@@ -212,9 +205,6 @@ public class CustomerList   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

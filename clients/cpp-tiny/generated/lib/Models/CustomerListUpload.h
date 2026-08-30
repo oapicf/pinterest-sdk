@@ -15,6 +15,7 @@
 #include "ErrorDetail.h"
 #include "RecordCounts.h"
 #include "UserListOperationType.h"
+#include "WorkloadState.h"
 #include <list>
 
 namespace Tiny {
@@ -55,63 +56,63 @@ public:
 
 	/*! \brief Set Advertiser ID.
 	 */
-	void setAdAccountId(std::string  ad_account_id);
+	void setAdAccountId(std::string ad_account_id);
 	/*! \brief Get Customer List Upload creation_time. Epoch (seconds).
 	 */
 	int getCreationTime();
 
 	/*! \brief Set Customer List Upload creation_time. Epoch (seconds).
 	 */
-	void setCreationTime(int  creation_time);
+	void setCreationTime(int creation_time);
 	/*! \brief Get ID of the customer list associated with this upload.
 	 */
 	std::string getCustomerListId();
 
 	/*! \brief Set ID of the customer list associated with this upload.
 	 */
-	void setCustomerListId(std::string  customer_list_id);
+	void setCustomerListId(std::string customer_list_id);
 	/*! \brief Get Error counts by error code
 	 */
 	std::list<ErrorDetail> getErrorCounts();
 
 	/*! \brief Set Error counts by error code
 	 */
-	void setErrorCounts(std::list <ErrorDetail> error_counts);
+	void setErrorCounts(std::list<ErrorDetail> error_counts);
 	/*! \brief Get Customer List Upload ID.
 	 */
 	std::string getId();
 
 	/*! \brief Set Customer List Upload ID.
 	 */
-	void setId(std::string  id);
+	void setId(std::string id);
 	/*! \brief Get 
 	 */
 	UserListOperationType getOperation();
 
 	/*! \brief Set 
 	 */
-	void setOperation(UserListOperationType  operation);
-	/*! \brief Get 
+	void setOperation(UserListOperationType operation);
+	/*! \brief Get Record processing counts
 	 */
 	RecordCounts getRecordCounts();
 
+	/*! \brief Set Record processing counts
+	 */
+	void setRecordCounts(RecordCounts record_counts);
+	/*! \brief Get 
+	 */
+	WorkloadState getState();
+
 	/*! \brief Set 
 	 */
-	void setRecordCounts(RecordCounts  record_counts);
-	/*! \brief Get Workload processing state
-	 */
-	std::string getState();
-
-	/*! \brief Set Workload processing state
-	 */
-	void setState(std::string  state);
+	void setState(WorkloadState state);
 	/*! \brief Get Customer List Upload updated_time. Epoch (seconds).
 	 */
 	int getUpdatedTime();
 
 	/*! \brief Set Customer List Upload updated_time. Epoch (seconds).
 	 */
-	void setUpdatedTime(int  updated_time);
+	void setUpdatedTime(int updated_time);
 
 
     private:
@@ -122,7 +123,7 @@ public:
     std::string id{};
     UserListOperationType operation;
     RecordCounts record_counts;
-    std::string state{};
+    WorkloadState state;
     int updated_time{};
 };
 }

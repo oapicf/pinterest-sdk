@@ -1,14 +1,14 @@
 (ns pinterest-rest-api.specs.auth-respond-invites-body
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs.auth-respond-invites-body-invites-inner :refer :all]
+            [pinterest-rest-api.specs.auth-respond-invites-body-item :refer :all]
             )
   (:import (java.io File)))
 
 
 (def auth-respond-invites-body-data
   {
-   (ds/req :invites) (s/coll-of auth-respond-invites-body-invites-inner-spec)
+   (ds/req :invites) (s/coll-of auth-respond-invites-body-item-spec)
    })
 
 (def auth-respond-invites-body-spec

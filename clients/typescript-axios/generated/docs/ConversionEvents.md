@@ -1,12 +1,14 @@
 # ConversionEvents
 
-A list of events (one or more) encapsulated by a data object.
+Conversion events.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**Array&lt;ConversionEventsDataInner&gt;**](ConversionEventsDataInner.md) |  | [default to undefined]
+**events** | [**Array&lt;ConversionApiResponseEventsItems&gt;**](ConversionApiResponseEventsItems.md) | Specific messages for each event received. The order will match the order in which the events were received in the request. | [readonly] [default to undefined]
+**num_events_processed** | **number** | Number of events that were successfully processed from the events. | [readonly] [default to undefined]
+**num_events_received** | **number** | Total number of events received in the request. | [readonly] [default to undefined]
 
 ## Example
 
@@ -14,7 +16,9 @@ Name | Type | Description | Notes
 import { ConversionEvents } from './api';
 
 const instance: ConversionEvents = {
-    data,
+    events,
+    num_events_processed,
+    num_events_received,
 };
 ```
 

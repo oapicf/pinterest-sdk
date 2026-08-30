@@ -2,69 +2,34 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.BusinessRoleForInvite;
 import org.openapitools.model.InviteType;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Body to be used on path to send Members or Partners Invite or Request
  */
 
 @Schema(name = "CreateMembershipOrPartnershipInvitesBody", description = "Body to be used on path to send Members or Partners Invite or Request")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CreateMembershipOrPartnershipInvitesBody {
 
-  /**
-   * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-   */
-  public enum BusinessRoleEnum {
-    EMPLOYEE("EMPLOYEE"),
-    
-    BIZ_ADMIN("BIZ_ADMIN"),
-    
-    PARTNER("PARTNER");
-
-    private final String value;
-
-    BusinessRoleEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static BusinessRoleEnum fromValue(String value) {
-      for (BusinessRoleEnum b : BusinessRoleEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private BusinessRoleEnum businessRole;
+  private BusinessRoleForInvite businessRole;
 
   private InviteType inviteType;
 
@@ -81,28 +46,28 @@ public class CreateMembershipOrPartnershipInvitesBody {
   /**
    * Constructor with only required parameters
    */
-  public CreateMembershipOrPartnershipInvitesBody(BusinessRoleEnum businessRole, InviteType inviteType) {
+  public CreateMembershipOrPartnershipInvitesBody(BusinessRoleForInvite businessRole, InviteType inviteType) {
     this.businessRole = businessRole;
     this.inviteType = inviteType;
   }
 
-  public CreateMembershipOrPartnershipInvitesBody businessRole(BusinessRoleEnum businessRole) {
+  public CreateMembershipOrPartnershipInvitesBody businessRole(BusinessRoleForInvite businessRole) {
     this.businessRole = businessRole;
     return this;
   }
 
   /**
-   * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
+   * Get businessRole
    * @return businessRole
    */
-  @NotNull 
-  @Schema(name = "business_role", example = "BIZ_ADMIN", description = "The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "business_role", example = "BIZ_ADMIN", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("business_role")
-  public BusinessRoleEnum getBusinessRole() {
+  public BusinessRoleForInvite getBusinessRole() {
     return businessRole;
   }
 
-  public void setBusinessRole(BusinessRoleEnum businessRole) {
+  public void setBusinessRole(BusinessRoleForInvite businessRole) {
     this.businessRole = businessRole;
   }
 
@@ -219,10 +184,7 @@ public class CreateMembershipOrPartnershipInvitesBody {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

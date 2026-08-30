@@ -1,20 +1,23 @@
 const samples = require('../samples/UserAccountApi');
 const Account = require('../models/Account');
 const AnalyticsMetricsResponse = require('../models/AnalyticsMetricsResponse');
-const Error = require('../models/Error');
-const FollowUserRequest = require('../models/FollowUserRequest');
+const FollowUser = require('../models/FollowUser');
+const FollowUserCreate = require('../models/FollowUserCreate');
 const LinkedBusiness = require('../models/LinkedBusiness');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
+const QuerymetrictypesItems = require('../models/QuerymetrictypesItems');
+const QueryvideopinmetrictypesItems = require('../models/QueryvideopinmetrictypesItems');
 const TopPinsAnalyticsResponse = require('../models/TopPinsAnalyticsResponse');
+const TopPinsSortBy = require('../models/TopPinsSortBy');
 const TopVideoPinsAnalyticsResponse = require('../models/TopVideoPinsAnalyticsResponse');
+const TopVideoPinsSortBy = require('../models/TopVideoPinsSortBy');
 const UserFollowingFeedType = require('../models/UserFollowingFeedType');
-const UserSummary = require('../models/UserSummary');
-const UserWebsiteSummary = require('../models/UserWebsiteSummary');
-const UserWebsiteVerificationCode = require('../models/UserWebsiteVerificationCode');
-const UserWebsiteVerifyRequest = require('../models/UserWebsiteVerifyRequest');
-const boards_user_follows_list_200_response = require('../models/boards_user_follows_list_200_response');
+const UserWebsite = require('../models/UserWebsite');
+const UserWebsiteCreate = require('../models/UserWebsiteCreate');
+const UserWebsiteVerification = require('../models/UserWebsiteVerification');
+const boards_list_200_response = require('../models/boards_list_200_response');
 const followers_list_200_response = require('../models/followers_list_200_response');
 const user_account_followed_interests_200_response = require('../models/user_account_followed_interests_200_response');
-const user_following_get_200_response = require('../models/user_following_get_200_response');
 const user_websites_get_200_response = require('../models/user_websites_get_200_response');
 const utils = require('../utils/utils');
 
@@ -30,14 +33,9 @@ module.exports = {
         operation: {
             inputFields: [
                 {
-                    key: 'bookmark',
-                    label: 'Cursor used to fetch the next page of items',
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
                     type: 'string',
-                },
-                {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
                 },
                 {
                     key: 'explicit_following',
@@ -45,13 +43,18 @@ module.exports = {
                     type: 'boolean',
                 },
                 {
-                    key: 'ad_account_id',
-                    label: 'Unique identifier of an ad account.',
+                    key: 'bookmark',
+                    label: 'Cursor used to fetch the next page of items',
                     type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
                 },
             ],
             outputFields: [
-                ...boards_user_follows_list_200_response.fields('', false),
+                ...boards_list_200_response.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -63,10 +66,10 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
+                        'ad_account_id': bundle.inputData?.['ad_account_id'],
+                        'explicit_following': bundle.inputData?.['explicit_following'],
                         'bookmark': bundle.inputData?.['bookmark'],
                         'page_size': bundle.inputData?.['page_size'],
-                        'explicit_following': bundle.inputData?.['explicit_following'],
-                        'ad_account_id': bundle.inputData?.['ad_account_id'],
                     },
                     body: {
                     },
@@ -77,7 +80,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['boards_user_follows_list_200_responseSample']
+            sample: samples['boards_list_200_responseSample']
         }
     },
     followUser/update: {
@@ -85,7 +88,7 @@ module.exports = {
         noun: 'user_account',
         display: {
             label: 'Follow user',
-            description: '&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.',
+            description: '**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.',
             hidden: false,
         },
         operation: {
@@ -96,10 +99,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...FollowUserRequest.fields(),
+                ...FollowUserCreate.fields(),
             ],
             outputFields: [
-                ...UserSummary.fields('', false),
+                ...FollowUser.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -113,7 +116,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...FollowUserRequest.mapping(bundle),
+                        ...FollowUserCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -122,7 +125,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['UserSummarySample']
+            sample: samples['FollowUserSample']samples['FollowUserSample']
         }
     },
     followers/list: {
@@ -142,7 +145,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
@@ -215,7 +218,7 @@ module.exports = {
         noun: 'user_account',
         display: {
             label: 'Unverify website',
-            description: 'Unverifu a website verified by the signed-in user.',
+            description: 'Unverify a website verified by the signed-in user.',
             hidden: false,
         },
         operation: {
@@ -228,6 +231,7 @@ module.exports = {
                 },
             ],
             outputFields: [
+                ...UserWebsite.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -250,7 +254,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: { data: {} }
+            sample: samples['UserWebsiteSample']
         }
     },
     userAccount/analytics: {
@@ -333,7 +337,7 @@ module.exports = {
                 },
                 {
                     key: 'metric_types',
-                    label: 'Metric types to get data for, default is all. ',
+                    label: 'Metric types to get data for, default is all.',
                     type: 'string',
                 }
                 {
@@ -412,19 +416,7 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                {
-                    key: 'sort_by',
-                    label: 'Specify sorting order for metrics',
-                    type: 'string',
-                    required: true,
-                    choices: [
-                        'ENGAGEMENT',
-                        'IMPRESSION',
-                        'OUTBOUND_CLICK',
-                        'PIN_CLICK',
-                        'SAVE',
-                    ],
-                },
+                ....fields(),
                 {
                     key: 'from_claimed_content',
                     label: 'Filter on Pins that match your claimed domain.',
@@ -483,7 +475,7 @@ module.exports = {
                 },
                 {
                     key: 'metric_types',
-                    label: 'Metric types to get data for, default is all. ',
+                    label: 'Metric types to get data for, default is all.',
                     type: 'string',
                 }
                 {
@@ -494,7 +486,7 @@ module.exports = {
                 {
                     key: 'created_in_last_n_days',
                     label: 'Get metrics for pins created in the last \&quot;n\&quot; days.',
-                    type: 'integer',
+                    type: 'number',
                     choices: [
                         '30',
                     ],
@@ -565,23 +557,7 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                {
-                    key: 'sort_by',
-                    label: 'Specify sorting order for video metrics',
-                    type: 'string',
-                    required: true,
-                    choices: [
-                        'IMPRESSION',
-                        'SAVE',
-                        'OUTBOUND_CLICK',
-                        'VIDEO_MRC_VIEW',
-                        'VIDEO_AVG_WATCH_TIME',
-                        'VIDEO_V50_WATCH_TIME',
-                        'QUARTILE_95_PERCENT_VIEW',
-                        'VIDEO_10S_VIEW',
-                        'VIDEO_START',
-                    ],
-                },
+                ....fields(),
                 {
                     key: 'from_claimed_content',
                     label: 'Filter on Pins that match your claimed domain.',
@@ -640,7 +616,7 @@ module.exports = {
                 },
                 {
                     key: 'metric_types',
-                    label: 'Metric types to get video data for, default is all. ',
+                    label: 'Metric types to get video data for, default is all.',
                     type: 'string',
                 }
                 {
@@ -651,7 +627,7 @@ module.exports = {
                 {
                     key: 'created_in_last_n_days',
                     label: 'Get metrics for pins created in the last \&quot;n\&quot; days.',
-                    type: 'integer',
+                    type: 'number',
                     choices: [
                         '30',
                     ],
@@ -723,7 +699,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
@@ -760,7 +736,7 @@ module.exports = {
         noun: 'user_account',
         display: {
             label: 'Get user account',
-            description: 'Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.',
+            description: 'Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.',
             hidden: false,
         },
         operation: {
@@ -809,33 +785,29 @@ module.exports = {
         operation: {
             inputFields: [
                 {
-                    key: 'bookmark',
-                    label: 'Cursor used to fetch the next page of items',
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
                     type: 'string',
-                },
-                {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
-                },
-                {
-                    key: 'feed_type',
-                    label: 'Thrift param specifying what type of followees will be kept. Default to include all followees.',
-                    type: 'UserFollowingFeedType',
                 },
                 {
                     key: 'explicit_following',
                     label: 'Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.',
                     type: 'boolean',
                 },
+                ....fields(),
                 {
-                    key: 'ad_account_id',
-                    label: 'Unique identifier of an ad account.',
+                    key: 'bookmark',
+                    label: 'Cursor used to fetch the next page of items',
                     type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
                 },
             ],
             outputFields: [
-                ...user_following_get_200_response.fields('', false),
+                ...followers_list_200_response.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -847,11 +819,11 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
+                        'ad_account_id': bundle.inputData?.['ad_account_id'],
+                        'explicit_following': bundle.inputData?.['explicit_following'],
+                        'feed_type': bundle.inputData?.['feed_type'],
                         'bookmark': bundle.inputData?.['bookmark'],
                         'page_size': bundle.inputData?.['page_size'],
-                        'feed_type': bundle.inputData?.['feed_type'],
-                        'explicit_following': bundle.inputData?.['explicit_following'],
-                        'ad_account_id': bundle.inputData?.['ad_account_id'],
                     },
                     body: {
                     },
@@ -862,7 +834,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['user_following_get_200_responseSample']
+            sample: samples['followers_list_200_responseSample']
         }
     },
     userWebsites/get: {
@@ -882,7 +854,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
@@ -924,7 +896,7 @@ module.exports = {
         },
         operation: {
             inputFields: [
-                ...UserWebsiteVerifyRequest.fields(),
+                ...UserWebsiteCreate.fields(),
                 {
                     key: 'ad_account_id',
                     label: 'Unique identifier of an ad account.',
@@ -932,7 +904,7 @@ module.exports = {
                 },
             ],
             outputFields: [
-                ...UserWebsiteSummary.fields('', false),
+                ...UserWebsite.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -947,7 +919,7 @@ module.exports = {
                         'ad_account_id': bundle.inputData?.['ad_account_id'],
                     },
                     body: {
-                        ...UserWebsiteVerifyRequest.mapping(bundle),
+                        ...UserWebsiteCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -956,7 +928,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['UserWebsiteSummarySample']
+            sample: samples['UserWebsiteSample']samples['UserWebsiteSample']
         }
     },
     websiteVerification/get: {
@@ -976,7 +948,7 @@ module.exports = {
                 },
             ],
             outputFields: [
-                ...UserWebsiteVerificationCode.fields('', false),
+                ...UserWebsiteVerification.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -999,7 +971,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['UserWebsiteVerificationCodeSample']
+            sample: samples['UserWebsiteVerificationSample']
         }
     },
 }

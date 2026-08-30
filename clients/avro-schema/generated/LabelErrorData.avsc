@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "LabelErrorData",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Label ID.",
+      "default": null
+    },
+    {
+      "name": "label_type",
+      "type": ["null", "model.NullableLabelType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.NullableLabelStatus"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "value",
+      "type": ["null", "string"],
+      "doc": "Label name. 100-character limit.",
+      "default": null
+    }
+  ]
+
+}

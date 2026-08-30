@@ -7,7 +7,7 @@
 #' @title PriceFilter
 #' @description PriceFilter Class
 #' @format An \code{R6Class} generator object
-#' @field PRICE  \link{CatalogsProductGroupPricingCurrencyCriteria}
+#' @field PRICE  \link{PriceFilterPrice}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -61,9 +61,32 @@ PriceFilter <- R6::R6Class(
       PriceFilterObject <- list()
       if (!is.null(self$`PRICE`)) {
         PriceFilterObject[["PRICE"]] <-
-          self$`PRICE`$toSimpleType()
+          self$extractSimpleType(self$`PRICE`)
       }
       return(PriceFilterObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -74,7 +97,7 @@ PriceFilter <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`PRICE`)) {
-        `price_object` <- CatalogsProductGroupPricingCurrencyCriteria$new()
+        `price_object` <- PriceFilterPrice$new()
         `price_object`$fromJSON(jsonlite::toJSON(this_object$`PRICE`, auto_unbox = TRUE, digits = NA))
         self$`PRICE` <- `price_object`
       }
@@ -99,7 +122,7 @@ PriceFilter <- R6::R6Class(
     #' @return the instance of PriceFilter
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`PRICE` <- CatalogsProductGroupPricingCurrencyCriteria$new()$fromJSON(jsonlite::toJSON(this_object$`PRICE`, auto_unbox = TRUE, digits = NA))
+      self$`PRICE` <- PriceFilterPrice$new()$fromJSON(jsonlite::toJSON(this_object$`PRICE`, auto_unbox = TRUE, digits = NA))
       self
     },
 

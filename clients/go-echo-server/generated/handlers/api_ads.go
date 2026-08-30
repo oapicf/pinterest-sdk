@@ -60,3 +60,27 @@ func (c *Container) AdsUpdate(ctx echo.Context) error {
 	})
 }
 
+
+// CampaignAdPreviewCreate - Create ad preview records for one or more ad groups
+func (c *Container) CampaignAdPreviewCreate(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
+// CampaignAdPreviewDelete - Delete ad preview records for one or more ad groups
+func (c *Container) CampaignAdPreviewDelete(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
+// CampaignAdPreviewRead - Fetch ad preview records for one or more ad groups
+func (c *Container) CampaignAdPreviewRead(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+

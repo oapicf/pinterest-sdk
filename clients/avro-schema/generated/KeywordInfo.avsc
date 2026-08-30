@@ -1,0 +1,20 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Related Keyword information of the editorial article",
+  "name": "KeywordInfo",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Keyword Name"
+    },
+    {
+      "name": "pct_growth_mom",
+      "type": ["null", "double"],
+      "doc": "MoM growth as a percentage, if there is no growth rate, this field is not present",
+      "default": null
+    }
+  ]
+
+}

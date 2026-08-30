@@ -1,5 +1,4 @@
 # Org.OpenAPITools.Model.RecordCounts
-Record processing counts
 
 ## Properties
 

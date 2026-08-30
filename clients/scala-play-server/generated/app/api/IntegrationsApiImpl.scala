@@ -1,27 +1,27 @@
 package api
 
 import model.Error
-import model.IntegrationLogsRequest
+import model.IntegrationLogsInvalidLogResponse
+import model.IntegrationLogsRequestCreate
 import model.IntegrationLogsSuccessResponse
 import model.IntegrationMetadata
+import model.IntegrationMetadataCreate
+import model.IntegrationMetadataUpdate
 import model.IntegrationRecord
-import model.IntegrationRequest
-import model.IntegrationRequestPatch
 import model.IntegrationsGetList200Response
-import model.IntegrationsLogsPost400Response
 
 /**
   * Provides a default implementation for [[IntegrationsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class IntegrationsApiImpl extends IntegrationsApi {
   /**
     * @inheritdoc
     */
-  override def integrationsCommerceDel(externalBusinessId: String): Unit = {
+  override def integrationsCommerceDel(externalBusinessId: String): IntegrationMetadata = {
     // TODO: Implement better logic
 
-    
+    IntegrationMetadata(None, None, None, None, None, None, None, None, None, None, None, None, None, None)
   }
 
   /**
@@ -36,7 +36,7 @@ class IntegrationsApiImpl extends IntegrationsApi {
   /**
     * @inheritdoc
     */
-  override def integrationsCommercePatch(externalBusinessId: String, integrationRequestPatch: IntegrationRequestPatch): IntegrationMetadata = {
+  override def integrationsCommercePatch(externalBusinessId: String, integrationMetadataUpdate: IntegrationMetadataUpdate): IntegrationMetadata = {
     // TODO: Implement better logic
 
     IntegrationMetadata(None, None, None, None, None, None, None, None, None, None, None, None, None, None)
@@ -45,7 +45,7 @@ class IntegrationsApiImpl extends IntegrationsApi {
   /**
     * @inheritdoc
     */
-  override def integrationsCommercePost(integrationRequest: IntegrationRequest): IntegrationMetadata = {
+  override def integrationsCommercePost(integrationMetadataCreate: IntegrationMetadataCreate): IntegrationMetadata = {
     // TODO: Implement better logic
 
     IntegrationMetadata(None, None, None, None, None, None, None, None, None, None, None, None, None, None)
@@ -57,7 +57,7 @@ class IntegrationsApiImpl extends IntegrationsApi {
   override def integrationsGetById(id: String): IntegrationRecord = {
     // TODO: Implement better logic
 
-    IntegrationRecord(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
+    IntegrationRecord(None, None, None, None, None, None, None, None, null, None, None, None, None, None, None, None, None)
   }
 
   /**
@@ -72,7 +72,7 @@ class IntegrationsApiImpl extends IntegrationsApi {
   /**
     * @inheritdoc
     */
-  override def integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest): IntegrationLogsSuccessResponse = {
+  override def integrationsLogsPost(integrationLogsRequestCreate: IntegrationLogsRequestCreate): IntegrationLogsSuccessResponse = {
     // TODO: Implement better logic
 
     IntegrationLogsSuccessResponse(None)

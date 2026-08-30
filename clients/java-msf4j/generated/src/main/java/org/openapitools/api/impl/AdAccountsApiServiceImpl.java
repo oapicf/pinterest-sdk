@@ -3,115 +3,145 @@ package org.openapitools.api.impl;
 import org.openapitools.api.*;
 import org.openapitools.model.*;
 
+import org.openapitools.model.Ad;
 import org.openapitools.model.AdAccount;
-import org.openapitools.model.AdAccountAnalyticsResponseInner;
+import org.openapitools.model.AdAccountAnalyticsItems;
 import org.openapitools.model.AdAccountCreate;
+import org.openapitools.model.AdAccountToAdAccountSharedAudience;
+import org.openapitools.model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.AdAccountToBusinessSharedAudience;
+import org.openapitools.model.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.AdAccountsAudience;
+import org.openapitools.model.AdAccountsAudienceCreate;
+import org.openapitools.model.AdAccountsAudienceUpdate;
 import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.model.AdAccountsList200Response;
 import org.openapitools.model.AdAccountsSubscriptionsGetList200Response;
-import org.openapitools.model.AdArrayResponse;
-import org.openapitools.model.AdCreateRequest;
-import org.openapitools.model.AdGroupArrayResponse;
-import org.openapitools.model.AdGroupAudienceSizingRequest;
-import org.openapitools.model.AdGroupAudienceSizingResponse;
-import org.openapitools.model.AdGroupCreateRequest;
-import org.openapitools.model.AdGroupResponse;
-import org.openapitools.model.AdGroupUpdateRequest;
-import org.openapitools.model.AdGroupsAnalyticsResponseInner;
+import org.openapitools.model.AdBatchUpdate;
+import org.openapitools.model.AdBatchWriteResponseModel;
+import org.openapitools.model.AdCreate;
+import org.openapitools.model.AdGroup;
+import org.openapitools.model.AdGroupAudienceSizing;
+import org.openapitools.model.AdGroupAudienceSizingCreate;
+import org.openapitools.model.AdGroupCreateCreate;
+import org.openapitools.model.AdGroupUpdateBatchUpdate;
+import org.openapitools.model.AdGroupsAnalyticsMetrics;
+import org.openapitools.model.AdGroupsCreate200Response;
 import org.openapitools.model.AdGroupsList200Response;
 import org.openapitools.model.AdPinAnalytics;
 import org.openapitools.model.AdPreviewRequest;
 import org.openapitools.model.AdPreviewURLResponse;
-import org.openapitools.model.AdResponse;
-import org.openapitools.model.AdUpdateRequest;
+import org.openapitools.model.AdsAnalytics;
+import org.openapitools.model.AdsAnalyticsAccountTargetingType;
 import org.openapitools.model.AdsAnalyticsAdGroupTargetingType;
 import org.openapitools.model.AdsAnalyticsAdTargetingType;
 import org.openapitools.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest;
 import org.openapitools.model.AdsAnalyticsCreateAsyncResponse;
 import org.openapitools.model.AdsAnalyticsGetAsyncResponse;
-import org.openapitools.model.AdsAnalyticsResponseInner;
-import org.openapitools.model.AdsAnalyticsTargetingType;
-import org.openapitools.model.AdsCreditRedeemRequest;
-import org.openapitools.model.AdsCreditRedeemResponse;
+import org.openapitools.model.AdsCreditRedeem;
+import org.openapitools.model.AdsCreditRedeemCreate;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
 import org.openapitools.model.AdsList200Response;
-import org.openapitools.model.AdvertiserDefinedEventsResponse;
-import org.openapitools.model.Audience;
+import org.openapitools.model.AdvertiserDefinedEventsCreate200Response;
+import org.openapitools.model.AdvertiserDefinedEventsCreateRequest;
+import org.openapitools.model.AdvertiserDefinedEventsGet200Response;
 import org.openapitools.model.AudienceAccountType;
-import org.openapitools.model.AudienceCreateRequest;
-import org.openapitools.model.AudienceDefinitionResponse;
 import org.openapitools.model.AudienceInsightType;
-import org.openapitools.model.AudienceInsightsResponse;
-import org.openapitools.model.AudienceUpdateRequest;
+import org.openapitools.model.AudienceInsights;
+import org.openapitools.model.AudienceInsightsScopeAndTypeGet200Response;
+import org.openapitools.model.AudienceOwnershipType;
 import org.openapitools.model.AudiencesList200Response;
 import org.openapitools.model.BidFloor;
-import org.openapitools.model.BidFloorRequest;
+import org.openapitools.model.BidFloorCreate;
+import java.math.BigDecimal;
+import org.openapitools.model.BillingInvoiceDocumentType;
 import org.openapitools.model.BillingInvoiceDownloadResponse;
+import org.openapitools.model.BillingInvoiceSortField;
+import org.openapitools.model.BillingInvoiceStatus;
 import org.openapitools.model.BillingInvoicesGet200Response;
 import org.openapitools.model.BillingProfilesGet200Response;
-import org.openapitools.model.BulkDownloadRequest;
-import org.openapitools.model.BulkDownloadResponse;
+import org.openapitools.model.BulkDownload;
+import org.openapitools.model.BulkDownloadCreate;
+import org.openapitools.model.BulkJobData;
 import org.openapitools.model.BulkUpsertRequest;
 import org.openapitools.model.BulkUpsertResponse;
-import org.openapitools.model.BulkUpsertStatusResponse;
-import org.openapitools.model.BusinessSharedAudience;
-import org.openapitools.model.BusinessSharedAudienceResponse;
-import org.openapitools.model.CampaignCreateRequest;
-import org.openapitools.model.CampaignCreateResponse;
-import org.openapitools.model.CampaignResponse;
-import org.openapitools.model.CampaignUpdateRequest;
-import org.openapitools.model.CampaignUpdateResponse;
-import org.openapitools.model.CampaignsAnalyticsResponseInner;
+import org.openapitools.model.Campaign;
+import org.openapitools.model.CampaignAdPreview;
+import org.openapitools.model.CampaignAdPreviewCreate;
+import org.openapitools.model.CampaignAdPreviewCreate200ResponseInner;
+import org.openapitools.model.CampaignAdPreviewDelete200ResponseInner;
+import org.openapitools.model.CampaignBatchUpdateItem;
+import org.openapitools.model.CampaignBatchWriteResponseModel;
+import org.openapitools.model.CampaignCreateItem;
+import org.openapitools.model.CampaignDeliveryEstimatesCampaign;
+import org.openapitools.model.CampaignDeliveryEstimatesResponse;
+import org.openapitools.model.CampaignsAnalyticsMetrics;
 import org.openapitools.model.CampaignsList200Response;
-import org.openapitools.model.ConversionApiResponse;
+import org.openapitools.model.ConversionAttributionWindowDays;
+import org.openapitools.model.ConversionDeletionRequest;
+import org.openapitools.model.ConversionDeletionRequestCreate;
+import org.openapitools.model.ConversionDeletionRequestList200Response;
 import org.openapitools.model.ConversionEventResponse;
 import org.openapitools.model.ConversionEvents;
-import org.openapitools.model.ConversionMSOTEvents;
-import org.openapitools.model.ConversionProductReportRequest;
+import org.openapitools.model.ConversionEventsCreate;
+import org.openapitools.model.ConversionMSOTEventsCreate;
+import org.openapitools.model.ConversionProductReport;
+import org.openapitools.model.ConversionProductReportCreate;
 import org.openapitools.model.ConversionReportAttributionType;
+import org.openapitools.model.ConversionReportTimeType;
 import org.openapitools.model.ConversionTag;
 import org.openapitools.model.ConversionTagCreate;
 import org.openapitools.model.ConversionTagsList200Response;
-import org.openapitools.model.CreateMMMReportRequest;
-import org.openapitools.model.CreateMMMReportResponse;
 import org.openapitools.model.CustomerList;
-import org.openapitools.model.CustomerListRequest;
-import org.openapitools.model.CustomerListUpdateRequest;
+import org.openapitools.model.CustomerListCreate;
+import org.openapitools.model.CustomerListUpdateWithRequiredBody;
+import org.openapitools.model.CustomerListUpload;
 import org.openapitools.model.CustomerListUploadCreateRequest;
 import org.openapitools.model.CustomerListUploadCreateResponse;
-import org.openapitools.model.CustomerListUploadResponse;
 import org.openapitools.model.CustomerListsList200Response;
+import org.openapitools.model.CustomerSegment;
+import org.openapitools.model.CustomerSegmentCreate;
+import org.openapitools.model.CustomerSegmentList200Response;
+import org.openapitools.model.CustomerSegmentUpdateRequestUpdateWithRequiredBody;
 import java.util.Date;
 import org.openapitools.model.DetailedError;
-import org.openapitools.model.Error;
+import org.openapitools.model.DynamicTitlesDownloadCSV;
+import org.openapitools.model.DynamicTitlesGetStatus;
+import org.openapitools.model.DynamicTitlesProcessCSV;
+import org.openapitools.model.DynamicTitlesProcessCSVCreate;
+import org.openapitools.model.DynamicTitlesUploadURL;
+import org.openapitools.model.EntityStatus;
 import org.openapitools.model.EventQualityScore;
-import org.openapitools.model.GetMMMReportResponse;
 import org.openapitools.model.Granularity;
 import org.openapitools.model.IngestionSourceOptions;
-import org.openapitools.model.KeywordUpdateBody;
+import org.openapitools.model.Keywords;
+import org.openapitools.model.KeywordsCreate;
 import org.openapitools.model.KeywordsGet200Response;
 import org.openapitools.model.KeywordsMetricsArrayResponse;
-import org.openapitools.model.KeywordsRequest;
-import org.openapitools.model.KeywordsResponse;
+import org.openapitools.model.KeywordsUpdate;
 import org.openapitools.model.LabelCreateRequest;
 import org.openapitools.model.LabelUpdateRequest;
+import org.openapitools.model.LabeledEntities;
+import org.openapitools.model.LabeledEntitiesCreate;
 import org.openapitools.model.LabelsList200Response;
 import org.openapitools.model.LabelsResponse;
-import org.openapitools.model.LeadFormArrayResponse;
-import org.openapitools.model.LeadFormCreateRequest;
-import org.openapitools.model.LeadFormResponse;
-import org.openapitools.model.LeadFormTestRequest;
-import org.openapitools.model.LeadFormTestResponse;
-import org.openapitools.model.LeadFormUpdateRequest;
+import org.openapitools.model.LeadForm;
+import org.openapitools.model.LeadFormBatchUpdate;
+import org.openapitools.model.LeadFormCreate;
+import org.openapitools.model.LeadFormTest;
+import org.openapitools.model.LeadFormTestCreate;
+import org.openapitools.model.LeadFormsCreate200Response;
 import org.openapitools.model.LeadFormsList200Response;
 import org.openapitools.model.LeadSubscription;
 import org.openapitools.model.LeadSubscriptionPostParamsCreate;
-import org.openapitools.model.LeadsExportCreateRequest;
-import org.openapitools.model.LeadsExportCreateResponse;
 import org.openapitools.model.LeadsExportResponseData;
+import org.openapitools.model.LeadsExports;
+import org.openapitools.model.LeadsExportsCreate;
 import java.util.List;
 import org.openapitools.model.LookbackPeriodOptions;
+import org.openapitools.model.MMMReport;
+import org.openapitools.model.MMMReportCreate;
 import java.util.Map;
 import org.openapitools.model.MatchType;
 import org.openapitools.model.MetricsResponse;
@@ -119,33 +149,41 @@ import org.openapitools.model.OrderLine;
 import org.openapitools.model.OrderLinesList200Response;
 import org.openapitools.model.PageVisitConversionTagsGet200Response;
 import org.openapitools.model.PinterestLibError;
-import org.openapitools.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.ProductGroupAnalyticsItems;
 import org.openapitools.model.ProductGroupPromotion;
-import org.openapitools.model.ProductGroupPromotionCreateRequest;
-import org.openapitools.model.ProductGroupPromotionResponse;
-import org.openapitools.model.ProductGroupPromotionUpdateRequest;
+import org.openapitools.model.ProductGroupPromotions;
+import org.openapitools.model.ProductGroupPromotionsCreate;
 import org.openapitools.model.ProductGroupPromotionsList200Response;
-import org.openapitools.model.PromotionCreateRequest;
-import org.openapitools.model.PromotionResponse;
-import org.openapitools.model.PromotionUpdateRequest;
+import org.openapitools.model.ProductGroupPromotionsUpdateWithRequiredBody;
+import org.openapitools.model.Promotion;
+import org.openapitools.model.PromotionBatchUpdate;
+import org.openapitools.model.PromotionCreate;
 import org.openapitools.model.PromotionsList200Response;
 import org.openapitools.model.PromotionsResponse;
+import org.openapitools.model.QueryLabelEntityStatusesItems;
+import org.openapitools.model.QueryLabelTypesItems;
+import org.openapitools.model.ReportingColumnSync;
 import org.openapitools.model.ReportingTimeZone;
-import org.openapitools.model.SSIOAccountResponse;
-import org.openapitools.model.SSIOCreateInsertionOrderRequest;
-import org.openapitools.model.SSIOCreateInsertionOrderResponse;
-import org.openapitools.model.SSIOEditInsertionOrderRequest;
-import org.openapitools.model.SSIOEditInsertionOrderResponse;
+import org.openapitools.model.SSIOAccount;
+import org.openapitools.model.SSIOInsertionOrder;
+import org.openapitools.model.SSIOInsertionOrderCreate;
 import org.openapitools.model.SSIOInsertionOrderStatusResponse;
-import org.openapitools.model.SharedAudience;
-import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SSIOInsertionOrderUpdate;
+import org.openapitools.model.Schedule;
+import org.openapitools.model.ScheduleBatchUpdate;
+import org.openapitools.model.ScheduleCreate;
+import org.openapitools.model.ScheduleStatus;
+import org.openapitools.model.ScheduleType;
+import org.openapitools.model.SchedulesCreate200ResponseInner;
+import org.openapitools.model.SchedulesList200Response;
 import org.openapitools.model.SourcePlatformOptions;
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response;
+import org.openapitools.model.TargetingTemplate;
 import org.openapitools.model.TargetingTemplateCreate;
-import org.openapitools.model.TargetingTemplateGetResponseData;
 import org.openapitools.model.TargetingTemplateList200Response;
-import org.openapitools.model.TargetingTemplateUpdateRequest;
+import org.openapitools.model.TargetingTemplateUpdateRequestReadOrUpdate;
 import org.openapitools.model.TemplateBasedReport;
 import org.openapitools.model.TemplatesList200Response;
 import org.openapitools.model.TermsOfService;
@@ -161,17 +199,17 @@ import org.wso2.msf4j.formparam.FileInfo;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     @Override
-    public Response adAccountAnalytics(String adAccountId
-, Date startDate
+    public Response adAccountAnalytics(Date startDate
 , Date endDate
-, List<String> columns
+, List<ReportingColumnSync> columns
 , Granularity granularity
-, Integer clickWindowDays
-, Integer engagementWindowDays
-, Integer viewWindowDays
+, String adAccountId
+, BigDecimal clickWindowDays
+, BigDecimal engagementWindowDays
+, BigDecimal viewWindowDays
 , String conversionReportTime
 , ReportingTimeZone reportingTimezone
  ) throws NotFoundException {
@@ -182,12 +220,12 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     public Response adAccountTargetingAnalyticsGet(String adAccountId
 , Date startDate
 , Date endDate
-, List<AdsAnalyticsTargetingType> targetingTypes
-, List<String> columns
+, List<AdsAnalyticsAccountTargetingType> targetingTypes
+, List<ReportingColumnSync> columns
 , Granularity granularity
-, Integer clickWindowDays
-, Integer engagementWindowDays
-, Integer viewWindowDays
+, BigDecimal clickWindowDays
+, BigDecimal engagementWindowDays
+, BigDecimal viewWindowDays
 , String conversionReportTime
 , List<ConversionReportAttributionType> attributionTypes
 , ReportingTimeZone reportingTimezone
@@ -196,11 +234,11 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response adAccountsAudiencesSharedAccountsList(String adAccountId
-, String audienceId
+    public Response adAccountsAudiencesSharedAccountsList(String audienceId
 , AudienceAccountType accountType
-, Integer pageSize
+, String adAccountId
 , String bookmark
+, Integer pageSize
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -255,15 +293,15 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response adGroupsAnalytics(String adAccountId
-, Date startDate
+    public Response adGroupsAnalytics(Date startDate
 , Date endDate
 , List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds
-, List<String> columns
+, List<ReportingColumnSync> columns
 , Granularity granularity
-, Integer clickWindowDays
-, Integer engagementWindowDays
-, Integer viewWindowDays
+, String adAccountId
+, BigDecimal clickWindowDays
+, BigDecimal engagementWindowDays
+, BigDecimal viewWindowDays
 , String conversionReportTime
 , Boolean aggregateReportRows
 , ReportingTimeZone reportingTimezone
@@ -273,40 +311,69 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response adGroupsAudienceSizing(String adAccountId
-, AdGroupAudienceSizingRequest adGroupAudienceSizingRequest
+, AdGroupAudienceSizingCreate adGroupAudienceSizingCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response adGroupsBidFloorGet(String adAccountId
-, BidFloorRequest bidFloorRequest
+, BidFloorCreate bidFloorCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response adGroupsCreate(String adAccountId
-, List<@Valid AdGroupCreateRequest> adGroupCreateRequest
+, List<@Valid AdGroupCreateCreate> adGroupCreateCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response adGroupsGet(String adAccountId
+    public Response adGroupsDynamicTitlesDownloadCsv(String adAccountId
 , String adGroupId
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
+    public Response adGroupsDynamicTitlesGetStatus(String adAccountId
+, String adGroupId
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response adGroupsDynamicTitlesGetUploadUrl(String adAccountId
+, String adGroupId
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response adGroupsDynamicTitlesProcessCsv(String adAccountId
+, String adGroupId
+, DynamicTitlesProcessCSVCreate dynamicTitlesProcessCSVCreate
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response adGroupsGet(String adGroupId
+, String adAccountId
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
     public Response adGroupsList(String adAccountId
+, String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
 , List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
 , List<@Pattern(regexp = "^\\d+$")String> adGroupIds
-, List<String> entityStatuses
-, Integer pageSize
-, String order
-, String bookmark
+, List<EntityStatus> entityStatuses
 , Boolean translateInterestsToNames
  ) throws NotFoundException {
         // do some magic!
@@ -318,36 +385,38 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
 , Date startDate
 , Date endDate
 , List<AdsAnalyticsAdGroupTargetingType> targetingTypes
-, List<String> columns
+, List<ReportingColumnSync> columns
 , Granularity granularity
-, Integer clickWindowDays
-, Integer engagementWindowDays
-, Integer viewWindowDays
+, BigDecimal clickWindowDays
+, BigDecimal engagementWindowDays
+, BigDecimal viewWindowDays
 , String conversionReportTime
 , List<ConversionReportAttributionType> attributionTypes
 , ReportingTimeZone reportingTimezone
+, List<String> sortColumns
+, Boolean sortAscending
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response adGroupsUpdate(String adAccountId
-, List<@Valid AdGroupUpdateRequest> adGroupUpdateRequest
+, List<@Valid AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response adPinsAnalytics(String adAccountId
-, String campaignId
+    public Response adPinsAnalytics(String campaignId
 , List<@Pattern(regexp = "^\\d+$")String> pinIds
 , Date startDate
 , Date endDate
-, List<String> columns
+, List<ReportingColumnSync> columns
 , Granularity granularity
-, Integer clickWindowDays
-, Integer engagementWindowDays
-, Integer viewWindowDays
+, String adAccountId
+, BigDecimal clickWindowDays
+, BigDecimal engagementWindowDays
+, BigDecimal viewWindowDays
 , String conversionReportTime
  ) throws NotFoundException {
         // do some magic!
@@ -366,30 +435,32 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
 , Date startDate
 , Date endDate
 , List<AdsAnalyticsAdTargetingType> targetingTypes
-, List<String> columns
+, List<ReportingColumnSync> columns
 , Granularity granularity
-, Integer clickWindowDays
-, Integer engagementWindowDays
-, Integer viewWindowDays
-, String conversionReportTime
+, ConversionAttributionWindowDays clickWindowDays
+, ConversionAttributionWindowDays engagementWindowDays
+, ConversionAttributionWindowDays viewWindowDays
+, ConversionReportTimeType conversionReportTime
 , List<ConversionReportAttributionType> attributionTypes
 , ReportingTimeZone reportingTimezone
+, List<String> sortColumns
+, Boolean sortAscending
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response adsAnalytics(String adAccountId
-, Date startDate
+    public Response adsAnalytics(Date startDate
 , Date endDate
-, List<String> columns
+, List<ReportingColumnSync> columns
 , Granularity granularity
+, String adAccountId
+, List<String> pinIds
 , List<@Pattern(regexp = "^\\d+$")String> adIds
-, Integer clickWindowDays
-, Integer engagementWindowDays
-, Integer viewWindowDays
+, BigDecimal clickWindowDays
+, BigDecimal engagementWindowDays
+, BigDecimal viewWindowDays
 , String conversionReportTime
-, List<@Pattern(regexp = "^\\d+$")String> pinIds
 , List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
 , ReportingTimeZone reportingTimezone
  ) throws NotFoundException {
@@ -398,14 +469,14 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response adsCreate(String adAccountId
-, List<@Valid AdCreateRequest> adCreateRequest
+, List<@Valid AdCreate> adCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response adsCreditRedeem(String adAccountId
-, AdsCreditRedeemRequest adsCreditRedeemRequest
+, AdsCreditRedeemCreate adsCreditRedeemCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -419,28 +490,42 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response adsGet(String adAccountId
-, String adId
+    public Response adsGet(String adId
+, String adAccountId
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response adsList(String adAccountId
+, String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
 , List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
 , List<@Pattern(regexp = "^\\d+$")String> adGroupIds
 , List<@Pattern(regexp = "^\\d+$")String> adIds
-, List<String> entityStatuses
-, Integer pageSize
-, String order
-, String bookmark
+, List<EntityStatus> entityStatuses
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response adsUpdate(String adAccountId
-, List<@Valid AdUpdateRequest> adUpdateRequest
+, List<@Valid AdBatchUpdate> adBatchUpdate
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response advertiserDefinedEventsCreate(String adAccountId
+, AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response advertiserDefinedEventsDelete(String adAccountId
+, List<String> eventNames
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -452,15 +537,22 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
+    public Response advertiserDefinedEventsUpdate(String adAccountId
+, AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
     public Response analyticsCreateConversionProductReport(String adAccountId
-, ConversionProductReportRequest conversionProductReportRequest
+, ConversionProductReportCreate conversionProductReportCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response analyticsCreateMmmReport(String adAccountId
-, CreateMMMReportRequest createMMMReportRequest
+, MMMReportCreate mmMReportCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -518,14 +610,14 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response audiencesCreate(String adAccountId
-, AudienceCreateRequest audienceCreateRequest
+, AdAccountsAudienceCreate adAccountsAudienceCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response audiencesGet(String adAccountId
-, String audienceId
+    public Response audiencesGet(String audienceId
+, String adAccountId
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -533,17 +625,18 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     @Override
     public Response audiencesList(String adAccountId
 , String bookmark
-, String order
 , Integer pageSize
-, String ownershipType
+, PinterestLibPaginationOrder order
+, AudienceOwnershipType ownershipType
+, Boolean excludeNca
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response audiencesUpdate(String adAccountId
-, String audienceId
-, AudienceUpdateRequest audienceUpdateRequest
+    public Response audiencesUpdate(String audienceId
+, String adAccountId
+, AdAccountsAudienceUpdate adAccountsAudienceUpdate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -559,10 +652,10 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     public Response billingInvoicesGet(String adAccountId
 , String bookmark
 , Integer pageSize
-, String sort
-, String order
-, String status
-, String documentType
+, PinterestLibPaginationOrder order
+, BillingInvoiceSortField sort
+, BillingInvoiceStatus status
+, BillingInvoiceDocumentType documentType
 , Date startDueDate
 , Date endDueDate
  ) throws NotFoundException {
@@ -570,8 +663,8 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response billingProfilesGet(String adAccountId
-, Boolean isActive
+    public Response billingProfilesGet(Boolean isActive
+, String adAccountId
 , String bookmark
 , Integer pageSize
  ) throws NotFoundException {
@@ -580,7 +673,7 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response bulkDownloadCreate(String adAccountId
-, BulkDownloadRequest bulkDownloadRequest
+, BulkDownloadCreate bulkDownloadCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -601,16 +694,37 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
+    public Response campaignAdPreviewCreate(String adAccountId
+, List<@Valid CampaignAdPreviewCreate> campaignAdPreviewCreate
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response campaignAdPreviewDelete(List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds
+, String adAccountId
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response campaignAdPreviewRead(List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds
+, String adAccountId
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
     public Response campaignTargetingAnalyticsGet(String adAccountId
 , List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
 , Date startDate
 , Date endDate
 , List<AdsAnalyticsCampaignTargetingType> targetingTypes
-, List<String> columns
+, List<ReportingColumnSync> columns
 , Granularity granularity
-, Integer clickWindowDays
-, Integer engagementWindowDays
-, Integer viewWindowDays
+, BigDecimal clickWindowDays
+, BigDecimal engagementWindowDays
+, BigDecimal viewWindowDays
 , String conversionReportTime
 , List<ConversionReportAttributionType> attributionTypes
 , ReportingTimeZone reportingTimezone
@@ -619,15 +733,15 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response campaignsAnalytics(String adAccountId
-, Date startDate
+    public Response campaignsAnalytics(Date startDate
 , Date endDate
 , List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
-, List<String> columns
+, List<ReportingColumnSync> columns
 , Granularity granularity
-, Integer clickWindowDays
-, Integer engagementWindowDays
-, Integer viewWindowDays
+, String adAccountId
+, BigDecimal clickWindowDays
+, BigDecimal engagementWindowDays
+, BigDecimal viewWindowDays
 , String conversionReportTime
 , Boolean aggregateReportRows
 , ReportingTimeZone reportingTimezone
@@ -637,32 +751,62 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response campaignsCreate(String adAccountId
-, List<@Valid CampaignCreateRequest> campaignCreateRequest
+, List<@Valid CampaignCreateItem> campaignCreateItem
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response campaignsGet(String adAccountId
-, String campaignId
+    public Response campaignsGet(String campaignId
+, String adAccountId
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response campaignsList(String adAccountId
-, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
-, List<String> entityStatuses
-, Integer pageSize
-, String order
 , String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
+, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
+, List<EntityStatus> entityStatuses
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response campaignsUpdate(String adAccountId
-, List<@Valid CampaignUpdateRequest> campaignUpdateRequest
+, List<@Valid CampaignBatchUpdateItem> campaignBatchUpdateItem
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response conversionDeletionRequestCreate(String adAccountId
+, ConversionDeletionRequestCreate conversionDeletionRequestCreate
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response conversionDeletionRequestDelete(String requestId
+, String adAccountId
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response conversionDeletionRequestGet(String requestId
+, String adAccountId
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response conversionDeletionRequestList(String adAccountId
+, String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -731,7 +875,7 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response customerListsCreate(String adAccountId
-, CustomerListRequest customerListRequest
+, CustomerListCreate customerListCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -745,9 +889,10 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response customerListsList(String adAccountId
-, Integer pageSize
-, String order
 , String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
+, Boolean excludeNca
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -755,22 +900,64 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     @Override
     public Response customerListsUpdate(String adAccountId
 , String customerListId
-, CustomerListUpdateRequest customerListUpdateRequest
+, CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response customerSegmentCreate(String adAccountId
+, CustomerSegmentCreate customerSegmentCreate
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response customerSegmentList(String adAccountId
+, String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
+, Boolean includeSizing
+, String searchQuery
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response customerSegmentUpdate(String adAccountId
+, CustomerSegmentUpdateRequestUpdateWithRequiredBody customerSegmentUpdateRequestUpdateWithRequiredBody
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response eventsCreate(String adAccountId
-, ConversionEvents conversionEvents
+, ConversionEventsCreate conversionEventsCreate
 , Boolean test
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
+    public Response getAdGroupsByPromotionIdsList(String adAccountId
+, List<String> promotionIds
+, String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response getCampaignDeliveryEstimates(String adAccountId
+, List<@Valid CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
     public Response keywordsCreate(String adAccountId
-, KeywordsRequest keywordsRequest
+, KeywordsCreate keywordsCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -779,17 +966,25 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     public Response keywordsGet(String adAccountId
 , String campaignId
 , String adGroupId
-, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds
+, List<@Pattern(regexp = "^\\d+$")String> adGroupIds
 , List<MatchType> matchTypes
-, Integer pageSize
 , String bookmark
+, Integer pageSize
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response keywordsUpdate(String adAccountId
-, KeywordUpdateBody keywordUpdateBody
+, KeywordsUpdate keywordsUpdate
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response labelsApply(String adAccountId
+, String labelId
+, LabeledEntitiesCreate labeledEntitiesCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -805,10 +1000,18 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     public Response labelsList(String adAccountId
 , List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
 , List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> labelIds
-, List<String> entityStatuses
-, List<String> labelTypes
-, Integer pageSize
+, List<QueryLabelEntityStatusesItems> entityStatuses
+, List<QueryLabelTypesItems> labelTypes
 , String bookmark
+, Integer pageSize
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response labelsRemove(String adAccountId
+, String labelId
+, LabeledEntitiesCreate labeledEntitiesCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -821,8 +1024,8 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response leadFormGet(String adAccountId
-, String leadFormId
+    public Response leadFormGet(String leadFormId
+, String adAccountId
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -830,37 +1033,37 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     @Override
     public Response leadFormTestCreate(String adAccountId
 , String leadFormId
-, LeadFormTestRequest leadFormTestRequest
+, LeadFormTestCreate leadFormTestCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response leadFormsCreate(String adAccountId
-, List<@Valid LeadFormCreateRequest> leadFormCreateRequest
+, List<@Valid LeadFormCreate> leadFormCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response leadFormsList(String adAccountId
-, Integer pageSize
-, String order
 , String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response leadFormsUpdate(String adAccountId
-, List<@Valid LeadFormUpdateRequest> leadFormUpdateRequest
+, List<@Valid LeadFormBatchUpdate> leadFormBatchUpdate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response leadsExportCreate(String adAccountId
-, LeadsExportCreateRequest leadsExportCreateRequest
+, LeadsExportsCreate leadsExportsCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -874,7 +1077,7 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response msotEventsCreate(String adAccountId
-, ConversionMSOTEvents conversionMSOTEvents
+, ConversionMSOTEventsCreate conversionMSOTEventsCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -886,33 +1089,33 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response orderLinesGet(String adAccountId
-, String orderLineId
+    public Response orderLinesGet(String orderLineId
+, String adAccountId
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response orderLinesList(String adAccountId
-, Integer pageSize
-, String order
 , String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response pageVisitConversionTagsGet(String adAccountId
-, Integer pageSize
-, String order
 , String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response productGroupPromotionsCreate(String adAccountId
-, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest
+, ProductGroupPromotionsCreate productGroupPromotionsCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -926,33 +1129,33 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response productGroupPromotionsList(String adAccountId
-, List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds
-, List<String> entityStatuses
-, String adGroupId
-, Integer pageSize
-, String order
 , String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
+, List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds
+, List<EntityStatus> entityStatuses
+, String adGroupId
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response productGroupPromotionsUpdate(String adAccountId
-, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest
+, ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response productGroupsAnalytics(String adAccountId
-, Date startDate
+    public Response productGroupsAnalytics(Date startDate
 , Date endDate
 , List<@Pattern(regexp = "^\\d+$")String> productGroupIds
-, List<String> columns
+, List<ReportingColumnSync> columns
 , Granularity granularity
-, Integer clickWindowDays
-, Integer engagementWindowDays
-, Integer viewWindowDays
+, String adAccountId
+, BigDecimal clickWindowDays
+, BigDecimal engagementWindowDays
+, BigDecimal viewWindowDays
 , String conversionReportTime
 , ReportingTimeZone reportingTimezone
  ) throws NotFoundException {
@@ -961,43 +1164,69 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response promotionsCreate(String adAccountId
-, List<@Valid PromotionCreateRequest> promotionCreateRequest
+, List<@Valid PromotionCreate> promotionCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response promotionsDelete(String adAccountId
-, String promotionId
+    public Response promotionsDelete(String promotionId
+, String adAccountId
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response promotionsGet(String adAccountId
-, String promotionId
+    public Response promotionsGet(String promotionId
+, String adAccountId
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response promotionsList(String adAccountId
-, Integer pageSize
-, String order
 , String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response promotionsUpdate(String adAccountId
-, List<@Valid PromotionUpdateRequest> promotionUpdateRequest
+, List<@Valid PromotionBatchUpdate> promotionBatchUpdate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response sandboxDelete(String adAccountId
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response schedulesCreate(String adAccountId
+, List<@Valid ScheduleCreate> scheduleCreate
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response schedulesList(String adAccountId
+, List<@Pattern(regexp = "^\\d+$")String> entityIds
+, String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
+, List<ScheduleStatus> scheduleStatuses
+, ScheduleType scheduleType
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response schedulesUpdate(String adAccountId
+, List<@Valid ScheduleBatchUpdate> scheduleBatchUpdate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -1010,14 +1239,14 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response ssioInsertionOrderCreate(String adAccountId
-, SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest
+, SSIOInsertionOrderCreate ssIOInsertionOrderCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response ssioInsertionOrderEdit(String adAccountId
-, SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest
+, SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -1039,9 +1268,9 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response ssioOrderLinesGetByAdAccount(String adAccountId
+, String pinOrderId
 , String bookmark
 , Integer pageSize
-, String pinOrderId
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -1055,27 +1284,27 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response targetingTemplateList(String adAccountId
-, String order
+, String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
 , Boolean includeSizing
 , String searchQuery
-, Integer pageSize
-, String bookmark
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response targetingTemplateUpdate(String adAccountId
-, TargetingTemplateUpdateRequest targetingTemplateUpdateRequest
+, TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response templatesList(String adAccountId
-, Integer pageSize
-, String order
 , String bookmark
+, Integer pageSize
+, PinterestLibPaginationOrder order
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -1090,14 +1319,14 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response updateAdAccountToAdAccountSharedAudience(String adAccountId
-, SharedAudience sharedAudience
+, AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response updateAdAccountToBusinessSharedAudience(String adAccountId
-, BusinessSharedAudience businessSharedAudience
+, AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

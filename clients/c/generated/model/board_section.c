@@ -13,10 +13,10 @@ static board_section_t *board_section_create_internal(
     if (!board_section_local_var) {
         return NULL;
     }
+    memset(board_section_local_var, 0, sizeof(board_section_t));
+    board_section_local_var->_library_owned = 1;
     board_section_local_var->id = id;
     board_section_local_var->name = name;
-
-    board_section_local_var->_library_owned = 1;
     return board_section_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) board_section_t *board_section_create(
     char *id,
     char *name
     ) {
-    return board_section_create_internal (
+    board_section_t *result = board_section_create_internal (
         id,
         name
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void board_section_free(board_section_t *board_section) {
@@ -81,6 +84,10 @@ board_section_t *board_section_parseFromJSON(cJSON *board_sectionJSON){
 
     board_section_t *board_section_local_var = NULL;
 
+    char *id_local_str = NULL;
+
+    char *name_local_str = NULL;
+
     // board_section->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(board_sectionJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -109,13 +116,28 @@ board_section_t *board_section_parseFromJSON(cJSON *board_sectionJSON){
     }
 
 
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     board_section_local_var = board_section_create_internal (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        strdup(name->valuestring)
+        id_local_str,
+        name_local_str
         );
+
+    if (!board_section_local_var) {
+        goto end;
+    }
 
     return board_section_local_var;
 end:
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
     return NULL;
 
 }

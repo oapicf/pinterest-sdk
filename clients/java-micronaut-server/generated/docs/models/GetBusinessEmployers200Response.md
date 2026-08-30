@@ -9,7 +9,7 @@ The class is defined in **[GetBusinessEmployers200Response.java](../../src/main/
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;UserBusinessRoleBinding&gt;`](UserBusinessRoleBinding.md) | List of employers. | 
+**items** | [`List&lt;UserBusinessRoleBinding&gt;`](UserBusinessRoleBinding.md) |  | 
 
 
 

@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ITEM_GROUP_ID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**ITEM_GROUP_ID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 

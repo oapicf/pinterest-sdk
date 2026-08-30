@@ -10,7 +10,7 @@ Protected Class BaseInviteDataResponse
 
 
 	#tag Property, Flags = &h0
-		invite_data As OpenAPIClient.Models.BaseInviteDataResponseInviteData
+		invite_data As OpenAPIClient.Models.InviteDataResponse
 	#tag EndProperty
 
 
@@ -79,7 +79,7 @@ Protected Class BaseInviteDataResponse
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="BaseInviteDataResponseInviteData"
+			Type="InviteDataResponse"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "AdShoppingPreviewCreativeType",
+  "symbols": [
+    "SHOPPING",
+    "COLLECTION",
+    "CAROUSEL",
+    "MAX_WIDTH_COLLECTION"
+  ]
+}

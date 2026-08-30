@@ -3,16 +3,16 @@ package org.openapitools.client.model
 
 
 case class AdvertiserDefinedEvent (
-    /* raw string name of the event, usually logged as raw_event_name in our dataset */
-    _name: Option[String],
-    /* standard type mapped to ADE for optimization */
-    _mappedConversionType: Option[String]
+    /* Standard type mapped to ADE for optimization */
+    _mappedConversionType: Option[ConversionTagTypeOptimal],
+    /* Raw string name of the event, usually logged as raw_event_name in our dataset */
+    _name: Option[String]
 )
 object AdvertiserDefinedEvent {
-    def toStringBody(var_name: Object, var_mappedConversionType: Object) =
+    def toStringBody(var_mappedConversionType: Object, var_name: Object) =
         s"""
         | {
-        | "name":$var_name,"mappedConversionType":$var_mappedConversionType
+        | "mappedConversionType":$var_mappedConversionType,"name":$var_name
         | }
         """.stripMargin
 }

@@ -13,7 +13,7 @@
        'connected_user_id' => binary(),
        'created_time' => integer(),
        'external_business_id' => binary(),
-       'id' => binary(),
+       'id' := binary(),
        'partner_access_token' => binary(),
        'partner_access_token_expiry' => integer(),
        'partner_metadata' => binary(),

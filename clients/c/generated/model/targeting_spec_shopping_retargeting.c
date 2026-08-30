@@ -6,32 +6,47 @@
 
 
 static targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_create_internal(
-    int exclusion_window,
-    int lookback_window,
+    int *exclusion_window,
+    int *lookback_window,
     list_t *tag_types
     ) {
     targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_local_var = malloc(sizeof(targeting_spec_shopping_retargeting_t));
     if (!targeting_spec_shopping_retargeting_local_var) {
         return NULL;
     }
+    memset(targeting_spec_shopping_retargeting_local_var, 0, sizeof(targeting_spec_shopping_retargeting_t));
+    targeting_spec_shopping_retargeting_local_var->_library_owned = 1;
     targeting_spec_shopping_retargeting_local_var->exclusion_window = exclusion_window;
     targeting_spec_shopping_retargeting_local_var->lookback_window = lookback_window;
     targeting_spec_shopping_retargeting_local_var->tag_types = tag_types;
-
-    targeting_spec_shopping_retargeting_local_var->_library_owned = 1;
     return targeting_spec_shopping_retargeting_local_var;
 }
 
 __attribute__((deprecated)) targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_create(
-    int exclusion_window,
-    int lookback_window,
+    int *exclusion_window,
+    int *lookback_window,
     list_t *tag_types
     ) {
-    return targeting_spec_shopping_retargeting_create_internal (
-        exclusion_window,
-        lookback_window,
+    int *exclusion_window_copy = NULL;
+    if (exclusion_window) {
+        exclusion_window_copy = malloc(sizeof(int));
+        if (exclusion_window_copy) *exclusion_window_copy = *exclusion_window;
+    }
+    int *lookback_window_copy = NULL;
+    if (lookback_window) {
+        lookback_window_copy = malloc(sizeof(int));
+        if (lookback_window_copy) *lookback_window_copy = *lookback_window;
+    }
+    targeting_spec_shopping_retargeting_t *result = targeting_spec_shopping_retargeting_create_internal (
+        exclusion_window_copy,
+        lookback_window_copy,
         tag_types
         );
+    if (!result) {
+        free(exclusion_window_copy);
+        free(lookback_window_copy);
+    }
+    return result;
 }
 
 void targeting_spec_shopping_retargeting_free(targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting) {
@@ -43,6 +58,14 @@ void targeting_spec_shopping_retargeting_free(targeting_spec_shopping_retargetin
         return ;
     }
     listEntry_t *listEntry;
+    if (targeting_spec_shopping_retargeting->exclusion_window) {
+        free(targeting_spec_shopping_retargeting->exclusion_window);
+        targeting_spec_shopping_retargeting->exclusion_window = NULL;
+    }
+    if (targeting_spec_shopping_retargeting->lookback_window) {
+        free(targeting_spec_shopping_retargeting->lookback_window);
+        targeting_spec_shopping_retargeting->lookback_window = NULL;
+    }
     if (targeting_spec_shopping_retargeting->tag_types) {
         list_ForEach(listEntry, targeting_spec_shopping_retargeting->tag_types) {
             free(listEntry->data);
@@ -58,7 +81,7 @@ cJSON *targeting_spec_shopping_retargeting_convertToJSON(targeting_spec_shopping
 
     // targeting_spec_shopping_retargeting->exclusion_window
     if(targeting_spec_shopping_retargeting->exclusion_window) {
-    if(cJSON_AddNumberToObject(item, "exclusion_window", targeting_spec_shopping_retargeting->exclusion_window) == NULL) {
+    if(cJSON_AddNumberToObject(item, "exclusion_window", *targeting_spec_shopping_retargeting->exclusion_window) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -66,7 +89,7 @@ cJSON *targeting_spec_shopping_retargeting_convertToJSON(targeting_spec_shopping
 
     // targeting_spec_shopping_retargeting->lookback_window
     if(targeting_spec_shopping_retargeting->lookback_window) {
-    if(cJSON_AddNumberToObject(item, "lookback_window", targeting_spec_shopping_retargeting->lookback_window) == NULL) {
+    if(cJSON_AddNumberToObject(item, "lookback_window", *targeting_spec_shopping_retargeting->lookback_window) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -100,6 +123,12 @@ targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_parse
 
     targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_local_var = NULL;
 
+    // define the local variable for targeting_spec_shopping_retargeting->exclusion_window
+    int *exclusion_window_local_var = NULL;
+
+    // define the local variable for targeting_spec_shopping_retargeting->lookback_window
+    int *lookback_window_local_var = NULL;
+
     // define the local list for targeting_spec_shopping_retargeting->tag_types
     list_t *tag_typesList = NULL;
 
@@ -113,6 +142,12 @@ targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_parse
     {
     goto end; //Numeric
     }
+    exclusion_window_local_var = malloc(sizeof(int));
+    if(!exclusion_window_local_var)
+    {
+        goto end;
+    }
+    *exclusion_window_local_var = exclusion_window->valuedouble;
     }
 
     // targeting_spec_shopping_retargeting->lookback_window
@@ -125,6 +160,12 @@ targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_parse
     {
     goto end; //Numeric
     }
+    lookback_window_local_var = malloc(sizeof(int));
+    if(!lookback_window_local_var)
+    {
+        goto end;
+    }
+    *lookback_window_local_var = lookback_window->valuedouble;
     }
 
     // targeting_spec_shopping_retargeting->tag_types
@@ -156,14 +197,27 @@ targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_parse
     }
 
 
+
     targeting_spec_shopping_retargeting_local_var = targeting_spec_shopping_retargeting_create_internal (
-        exclusion_window ? exclusion_window->valuedouble : 0,
-        lookback_window ? lookback_window->valuedouble : 0,
+        exclusion_window_local_var,
+        lookback_window_local_var,
         tag_types ? tag_typesList : NULL
         );
 
+    if (!targeting_spec_shopping_retargeting_local_var) {
+        goto end;
+    }
+
     return targeting_spec_shopping_retargeting_local_var;
 end:
+    if (exclusion_window_local_var) {
+        free(exclusion_window_local_var);
+        exclusion_window_local_var = NULL;
+    }
+    if (lookback_window_local_var) {
+        free(lookback_window_local_var);
+        lookback_window_local_var = NULL;
+    }
     if (tag_typesList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, tag_typesList) {

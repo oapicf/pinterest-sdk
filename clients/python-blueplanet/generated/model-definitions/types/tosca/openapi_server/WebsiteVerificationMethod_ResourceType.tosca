@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server WebsiteVerificationMethod"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a WebsiteVerificationMethod"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  WebsiteVerificationMethod {
+    title = WebsiteVerificationMethod
+    description = WebsiteVerificationMethod
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  WebsiteVerificationMethod {
+    title = WebsiteVerificationMethod
+    description = WebsiteVerificationMethod
+    implements = openapi_server.resourceTypes.WebsiteVerificationMethod
+
+  }
+}

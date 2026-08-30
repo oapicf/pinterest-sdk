@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.DeletePartnerAssetAccessBodyAccessesInner
+open OpenAPI.Model.DeletePartnerAssetAccessItem
 
 module DeletePartnerAssetAccessBody =
 
@@ -10,6 +10,6 @@ module DeletePartnerAssetAccessBody =
 
 
   type DeletePartnerAssetAccessBody = {
-    Accesses : DeletePartnerAssetAccessBodyAccessesInner[];
+    Accesses : DeletePartnerAssetAccessItem[];
   }
   //#endregion

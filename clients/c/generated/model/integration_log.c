@@ -4,50 +4,16 @@
 #include "integration_log.h"
 
 
-char* integration_log_event_type_ToString(pinterest_rest_api_integration_log_EVENTTYPE_e event_type) {
-    char* event_typeArray[] =  { "NULL", "APP", "API" };
-    return event_typeArray[event_type];
-}
-
-pinterest_rest_api_integration_log_EVENTTYPE_e integration_log_event_type_FromString(char* event_type){
-    int stringToReturn = 0;
-    char *event_typeArray[] =  { "NULL", "APP", "API" };
-    size_t sizeofArray = sizeof(event_typeArray) / sizeof(event_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(event_type, event_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-char* integration_log_log_level_ToString(pinterest_rest_api_integration_log_LOGLEVEL_e log_level) {
-    char* log_levelArray[] =  { "NULL", "INFO", "WARN", "ERROR" };
-    return log_levelArray[log_level];
-}
-
-pinterest_rest_api_integration_log_LOGLEVEL_e integration_log_log_level_FromString(char* log_level){
-    int stringToReturn = 0;
-    char *log_levelArray[] =  { "NULL", "INFO", "WARN", "ERROR" };
-    size_t sizeofArray = sizeof(log_levelArray) / sizeof(log_levelArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(log_level, log_levelArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static integration_log_t *integration_log_create_internal(
     char *advertiser_id,
     char *app_version_number,
-    int client_timestamp,
+    int *client_timestamp,
     integration_log_client_error_t *error,
-    pinterest_rest_api_integration_log_EVENTTYPE_e event_type,
+    integration_log_event_type_t *event_type,
     char *external_business_id,
     char *feed_profile_id,
-    pinterest_rest_api_integration_log_LOGLEVEL_e log_level,
+    integration_log_level_t *log_level,
     char *merchant_id,
     char *message,
     char *platform_version_number,
@@ -58,6 +24,8 @@ static integration_log_t *integration_log_create_internal(
     if (!integration_log_local_var) {
         return NULL;
     }
+    memset(integration_log_local_var, 0, sizeof(integration_log_t));
+    integration_log_local_var->_library_owned = 1;
     integration_log_local_var->advertiser_id = advertiser_id;
     integration_log_local_var->app_version_number = app_version_number;
     integration_log_local_var->client_timestamp = client_timestamp;
@@ -71,30 +39,33 @@ static integration_log_t *integration_log_create_internal(
     integration_log_local_var->platform_version_number = platform_version_number;
     integration_log_local_var->request = request;
     integration_log_local_var->tag_id = tag_id;
-
-    integration_log_local_var->_library_owned = 1;
     return integration_log_local_var;
 }
 
 __attribute__((deprecated)) integration_log_t *integration_log_create(
     char *advertiser_id,
     char *app_version_number,
-    int client_timestamp,
+    int *client_timestamp,
     integration_log_client_error_t *error,
-    pinterest_rest_api_integration_log_EVENTTYPE_e event_type,
+    integration_log_event_type_t *event_type,
     char *external_business_id,
     char *feed_profile_id,
-    pinterest_rest_api_integration_log_LOGLEVEL_e log_level,
+    integration_log_level_t *log_level,
     char *merchant_id,
     char *message,
     char *platform_version_number,
     integration_log_client_request_t *request,
     char *tag_id
     ) {
-    return integration_log_create_internal (
+    int *client_timestamp_copy = NULL;
+    if (client_timestamp) {
+        client_timestamp_copy = malloc(sizeof(int));
+        if (client_timestamp_copy) *client_timestamp_copy = *client_timestamp;
+    }
+    integration_log_t *result = integration_log_create_internal (
         advertiser_id,
         app_version_number,
-        client_timestamp,
+        client_timestamp_copy,
         error,
         event_type,
         external_business_id,
@@ -106,6 +77,10 @@ __attribute__((deprecated)) integration_log_t *integration_log_create(
         request,
         tag_id
         );
+    if (!result) {
+        free(client_timestamp_copy);
+    }
+    return result;
 }
 
 void integration_log_free(integration_log_t *integration_log) {
@@ -125,9 +100,17 @@ void integration_log_free(integration_log_t *integration_log) {
         free(integration_log->app_version_number);
         integration_log->app_version_number = NULL;
     }
+    if (integration_log->client_timestamp) {
+        free(integration_log->client_timestamp);
+        integration_log->client_timestamp = NULL;
+    }
     if (integration_log->error) {
         integration_log_client_error_free(integration_log->error);
         integration_log->error = NULL;
+    }
+    if (integration_log->event_type) {
+        integration_log_event_type_free(integration_log->event_type);
+        integration_log->event_type = NULL;
     }
     if (integration_log->external_business_id) {
         free(integration_log->external_business_id);
@@ -136,6 +119,10 @@ void integration_log_free(integration_log_t *integration_log) {
     if (integration_log->feed_profile_id) {
         free(integration_log->feed_profile_id);
         integration_log->feed_profile_id = NULL;
+    }
+    if (integration_log->log_level) {
+        integration_log_level_free(integration_log->log_level);
+        integration_log->log_level = NULL;
     }
     if (integration_log->merchant_id) {
         free(integration_log->merchant_id);
@@ -183,7 +170,7 @@ cJSON *integration_log_convertToJSON(integration_log_t *integration_log) {
     if (!integration_log->client_timestamp) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "client_timestamp", integration_log->client_timestamp) == NULL) {
+    if(cJSON_AddNumberToObject(item, "client_timestamp", *integration_log->client_timestamp) == NULL) {
     goto fail; //Numeric
     }
 
@@ -202,12 +189,16 @@ cJSON *integration_log_convertToJSON(integration_log_t *integration_log) {
 
 
     // integration_log->event_type
-    if (pinterest_rest_api_integration_log_EVENTTYPE_NULL == integration_log->event_type) {
+    if (!integration_log->event_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "event_type", integration_log_event_type_ToString(integration_log->event_type)) == NULL)
-    {
-    goto fail; //Enum
+    cJSON *event_type_local_JSON = integration_log_event_type_convertToJSON(integration_log->event_type);
+    if(event_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "event_type", event_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
 
 
@@ -228,12 +219,16 @@ cJSON *integration_log_convertToJSON(integration_log_t *integration_log) {
 
 
     // integration_log->log_level
-    if (pinterest_rest_api_integration_log_LOGLEVEL_NULL == integration_log->log_level) {
+    if (!integration_log->log_level) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "log_level", integration_log_log_level_ToString(integration_log->log_level)) == NULL)
-    {
-    goto fail; //Enum
+    cJSON *log_level_local_JSON = integration_log_level_convertToJSON(integration_log->log_level);
+    if(log_level_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "log_level", log_level_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
 
 
@@ -293,11 +288,36 @@ integration_log_t *integration_log_parseFromJSON(cJSON *integration_logJSON){
 
     integration_log_t *integration_log_local_var = NULL;
 
+    char *advertiser_id_local_str = NULL;
+
+    char *app_version_number_local_str = NULL;
+
+    // define the local variable for integration_log->client_timestamp
+    int *client_timestamp_local_var = NULL;
+
     // define the local variable for integration_log->error
     integration_log_client_error_t *error_local_nonprim = NULL;
 
+    // define the local variable for integration_log->event_type
+    integration_log_event_type_t *event_type_local_nonprim = NULL;
+
+    char *external_business_id_local_str = NULL;
+
+    char *feed_profile_id_local_str = NULL;
+
+    // define the local variable for integration_log->log_level
+    integration_log_level_t *log_level_local_nonprim = NULL;
+
+    char *merchant_id_local_str = NULL;
+
+    char *message_local_str = NULL;
+
+    char *platform_version_number_local_str = NULL;
+
     // define the local variable for integration_log->request
     integration_log_client_request_t *request_local_nonprim = NULL;
+
+    char *tag_id_local_str = NULL;
 
     // integration_log->advertiser_id
     cJSON *advertiser_id = cJSON_GetObjectItemCaseSensitive(integration_logJSON, "advertiser_id");
@@ -337,6 +357,12 @@ integration_log_t *integration_log_parseFromJSON(cJSON *integration_logJSON){
     {
     goto end; //Numeric
     }
+    client_timestamp_local_var = malloc(sizeof(int));
+    if(!client_timestamp_local_var)
+    {
+        goto end;
+    }
+    *client_timestamp_local_var = client_timestamp->valuedouble;
 
     // integration_log->error
     cJSON *error = cJSON_GetObjectItemCaseSensitive(integration_logJSON, "error");
@@ -356,13 +382,8 @@ integration_log_t *integration_log_parseFromJSON(cJSON *integration_logJSON){
         goto end;
     }
 
-    pinterest_rest_api_integration_log_EVENTTYPE_e event_typeVariable;
     
-    if(!cJSON_IsString(event_type))
-    {
-    goto end; //Enum
-    }
-    event_typeVariable = integration_log_event_type_FromString(event_type->valuestring);
+    event_type_local_nonprim = integration_log_event_type_parseFromJSON(event_type); //custom
 
     // integration_log->external_business_id
     cJSON *external_business_id = cJSON_GetObjectItemCaseSensitive(integration_logJSON, "external_business_id");
@@ -397,13 +418,8 @@ integration_log_t *integration_log_parseFromJSON(cJSON *integration_logJSON){
         goto end;
     }
 
-    pinterest_rest_api_integration_log_LOGLEVEL_e log_levelVariable;
     
-    if(!cJSON_IsString(log_level))
-    {
-    goto end; //Enum
-    }
-    log_levelVariable = integration_log_log_level_FromString(log_level->valuestring);
+    log_level_local_nonprim = integration_log_level_parseFromJSON(log_level); //custom
 
     // integration_log->merchant_id
     cJSON *merchant_id = cJSON_GetObjectItemCaseSensitive(integration_logJSON, "merchant_id");
@@ -463,31 +479,88 @@ integration_log_t *integration_log_parseFromJSON(cJSON *integration_logJSON){
     }
 
 
+    if (advertiser_id && !cJSON_IsNull(advertiser_id)) advertiser_id_local_str = strdup(advertiser_id->valuestring);
+    if (app_version_number && !cJSON_IsNull(app_version_number)) app_version_number_local_str = strdup(app_version_number->valuestring);
+    if (external_business_id && !cJSON_IsNull(external_business_id)) external_business_id_local_str = strdup(external_business_id->valuestring);
+    if (feed_profile_id && !cJSON_IsNull(feed_profile_id)) feed_profile_id_local_str = strdup(feed_profile_id->valuestring);
+    if (merchant_id && !cJSON_IsNull(merchant_id)) merchant_id_local_str = strdup(merchant_id->valuestring);
+    if (message && !cJSON_IsNull(message)) message_local_str = strdup(message->valuestring);
+    if (platform_version_number && !cJSON_IsNull(platform_version_number)) platform_version_number_local_str = strdup(platform_version_number->valuestring);
+    if (tag_id && !cJSON_IsNull(tag_id)) tag_id_local_str = strdup(tag_id->valuestring);
+
     integration_log_local_var = integration_log_create_internal (
-        advertiser_id && !cJSON_IsNull(advertiser_id) ? strdup(advertiser_id->valuestring) : NULL,
-        app_version_number && !cJSON_IsNull(app_version_number) ? strdup(app_version_number->valuestring) : NULL,
-        client_timestamp->valuedouble,
+        advertiser_id_local_str,
+        app_version_number_local_str,
+        client_timestamp_local_var,
         error ? error_local_nonprim : NULL,
-        event_typeVariable,
-        external_business_id && !cJSON_IsNull(external_business_id) ? strdup(external_business_id->valuestring) : NULL,
-        feed_profile_id && !cJSON_IsNull(feed_profile_id) ? strdup(feed_profile_id->valuestring) : NULL,
-        log_levelVariable,
-        merchant_id && !cJSON_IsNull(merchant_id) ? strdup(merchant_id->valuestring) : NULL,
-        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,
-        platform_version_number && !cJSON_IsNull(platform_version_number) ? strdup(platform_version_number->valuestring) : NULL,
+        event_type_local_nonprim,
+        external_business_id_local_str,
+        feed_profile_id_local_str,
+        log_level_local_nonprim,
+        merchant_id_local_str,
+        message_local_str,
+        platform_version_number_local_str,
         request ? request_local_nonprim : NULL,
-        tag_id && !cJSON_IsNull(tag_id) ? strdup(tag_id->valuestring) : NULL
+        tag_id_local_str
         );
+
+    if (!integration_log_local_var) {
+        goto end;
+    }
 
     return integration_log_local_var;
 end:
+    if (advertiser_id_local_str) {
+        free(advertiser_id_local_str);
+        advertiser_id_local_str = NULL;
+    }
+    if (app_version_number_local_str) {
+        free(app_version_number_local_str);
+        app_version_number_local_str = NULL;
+    }
+    if (client_timestamp_local_var) {
+        free(client_timestamp_local_var);
+        client_timestamp_local_var = NULL;
+    }
     if (error_local_nonprim) {
         integration_log_client_error_free(error_local_nonprim);
         error_local_nonprim = NULL;
     }
+    if (event_type_local_nonprim) {
+        integration_log_event_type_free(event_type_local_nonprim);
+        event_type_local_nonprim = NULL;
+    }
+    if (external_business_id_local_str) {
+        free(external_business_id_local_str);
+        external_business_id_local_str = NULL;
+    }
+    if (feed_profile_id_local_str) {
+        free(feed_profile_id_local_str);
+        feed_profile_id_local_str = NULL;
+    }
+    if (log_level_local_nonprim) {
+        integration_log_level_free(log_level_local_nonprim);
+        log_level_local_nonprim = NULL;
+    }
+    if (merchant_id_local_str) {
+        free(merchant_id_local_str);
+        merchant_id_local_str = NULL;
+    }
+    if (message_local_str) {
+        free(message_local_str);
+        message_local_str = NULL;
+    }
+    if (platform_version_number_local_str) {
+        free(platform_version_number_local_str);
+        platform_version_number_local_str = NULL;
+    }
     if (request_local_nonprim) {
         integration_log_client_request_free(request_local_nonprim);
         request_local_nonprim = NULL;
+    }
+    if (tag_id_local_str) {
+        free(tag_id_local_str);
+        tag_id_local_str = NULL;
     }
     return NULL;
 

@@ -15,11 +15,11 @@ Method | HTTP request | Description
 
 
 # **bulk_download_create**
-> BulkDownloadResponse bulk_download_create(ad_account_id => $ad_account_id, bulk_download_request => $bulk_download_request)
+> BulkDownload bulk_download_create(ad_account_id => $ad_account_id, bulk_download_create => $bulk_download_create)
 
 Get advertiser entities in bulk
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Example
 ```perl
@@ -32,10 +32,10 @@ my $api_instance = WWW::OpenAPIClient::BulkApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $bulk_download_request = WWW::OpenAPIClient::Object::BulkDownloadRequest->new(); # BulkDownloadRequest | Parameters to get ad entities in bulk
+my $bulk_download_create = WWW::OpenAPIClient::Object::BulkDownloadCreate->new(); # BulkDownloadCreate | 
 
 eval {
-    my $result = $api_instance->bulk_download_create(ad_account_id => $ad_account_id, bulk_download_request => $bulk_download_request);
+    my $result = $api_instance->bulk_download_create(ad_account_id => $ad_account_id, bulk_download_create => $bulk_download_create);
     print Dumper($result);
 };
 if ($@) {
@@ -48,11 +48,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **bulk_download_request** | [**BulkDownloadRequest**](BulkDownloadRequest.md)| Parameters to get ad entities in bulk | 
+ **bulk_download_create** | [**BulkDownloadCreate**](BulkDownloadCreate.md)|  | 
 
 ### Return type
 
-[**BulkDownloadResponse**](BulkDownloadResponse.md)
+[**BulkDownload**](BulkDownload.md)
 
 ### Authorization
 
@@ -66,11 +66,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **bulk_request_get**
-> BulkUpsertStatusResponse bulk_request_get(ad_account_id => $ad_account_id, bulk_request_id => $bulk_request_id, include_details => $include_details)
+> BulkJobData bulk_request_get(ad_account_id => $ad_account_id, bulk_request_id => $bulk_request_id, include_details => $include_details)
 
 Download advertiser entities in bulk
 
-Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Example
 ```perl
@@ -85,8 +85,8 @@ my $api_instance = WWW::OpenAPIClient::BulkApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $bulk_request_id = "bulk_request_id_example"; # string | Unique identifier of a bulk upsert request.
-my $include_details = false; # boolean | if set to True then attach the errors/details to all the requests
+my $bulk_request_id = "bulk_request_id_example"; # string | Bulk request ID that is from one of the entities bulk endpoints
+my $include_details = false; # boolean | If set to True then attach the errors/details to all the requests
 
 eval {
     my $result = $api_instance->bulk_request_get(ad_account_id => $ad_account_id, bulk_request_id => $bulk_request_id, include_details => $include_details);
@@ -102,12 +102,12 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **bulk_request_id** | **string**| Unique identifier of a bulk upsert request. | 
- **include_details** | **boolean**| if set to True then attach the errors/details to all the requests | [optional] [default to false]
+ **bulk_request_id** | **string**| Bulk request ID that is from one of the entities bulk endpoints | 
+ **include_details** | **boolean**| If set to True then attach the errors/details to all the requests | [optional] [default to false]
 
 ### Return type
 
-[**BulkUpsertStatusResponse**](BulkUpsertStatusResponse.md)
+[**BulkJobData**](BulkJobData.md)
 
 ### Authorization
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 
 ### Example
 ```perl

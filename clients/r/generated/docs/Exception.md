@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **integer** | Exception error code. | [optional] 
-**message** | **character** | Exception message. | [optional] 
+**code** | **integer** |  | [optional] 
+**message** | **character** |  | 
 
 

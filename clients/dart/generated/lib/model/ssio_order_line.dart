@@ -40,16 +40,16 @@ class SSIOOrderLine {
   /// The SFDC id for the terms
   String? acceptedTermsId;
 
-  /// The UTC timestamp (to the nearest sec) of when terms were accepted
+  /// The UTC timestamp (to the nearest second) when terms were accepted.
   String? acceptedTermsTime;
 
-  /// Ads manager OrderLineId
+  /// Ads manager order line id
   String? adsManagerOrderLineId;
 
   /// Agency link
   String? agencyLink;
 
-  /// Bill To Company name
+  /// Bill-to company name
   String? billToCompanyName;
 
   /// Billing contact email
@@ -61,7 +61,7 @@ class SSIOOrderLine {
   /// Billing contact last name
   String? billingContactLastname;
 
-  /// If Budget order line, the budget amount.
+  /// If budget order line, the budget amount.
   num? budgetAmount;
 
   ///
@@ -75,7 +75,7 @@ class SSIOOrderLine {
   /// End date of the order line.
   DateTime? endDate;
 
-  /// If Ongoing (perpetual) order line, the estimated monthly spend
+  /// If ongoing (perpetual) order line, the estimated monthly spend.
   num? estimatedMonthlySpend;
 
   /// Last modified date.
@@ -84,10 +84,10 @@ class SSIOOrderLine {
   /// Billing media email
   String? mediaContactEmail;
 
-  /// Billing contact first name
+  /// Billing media contact first name
   String? mediaContactFirstname;
 
-  /// Billing contact first name
+  /// Billing media contact last name
   String? mediaContactLastname;
 
   /// The order name
@@ -99,10 +99,10 @@ class SSIOOrderLine {
   /// The Pinterest marketing partner name
   String? pmpName;
 
-  /// The po number
+  /// The PO number
   String? poNumber;
 
-  /// OrderLineId in SFDC
+  /// Order line id in SFDC
   String? salesforceOrderLineId;
 
   /// Start date of the order line.
@@ -288,10 +288,6 @@ class SSIOOrderLine {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "SSIOOrderLine[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "SSIOOrderLine[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

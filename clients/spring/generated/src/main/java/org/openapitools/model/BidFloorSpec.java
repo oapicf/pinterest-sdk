@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -9,40 +10,44 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ActionType;
+import org.openapitools.model.BidFloorObjectiveType;
 import org.openapitools.model.Country;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.Currency;
-import org.openapitools.model.ObjectiveType;
 import org.openapitools.model.OptimizationGoalMetadata;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * BidFloorSpec
+ * Bid floor specification for a given campaign configuration.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "BidFloorSpec", description = "Bid floor specification for a given campaign configuration.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BidFloorSpec {
 
   private ActionType billableEvent;
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<Country> countries = new ArrayList<>();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CreativeType creativeType;
 
   private Currency currency;
 
-  private @Nullable ObjectiveType objectiveType;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable BidFloorObjectiveType objectiveType;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable OptimizationGoalMetadata optimizationGoalMetadata;
 
   public BidFloorSpec() {
@@ -63,16 +68,17 @@ public class BidFloorSpec {
   }
 
   /**
-   * Get billableEvent
+   * Ad group billable event type.
    * @return billableEvent
    */
   @NotNull @Valid 
-  @Schema(name = "billable_event", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "billable_event", description = "Ad group billable event type.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("billable_event")
   public ActionType getBillableEvent() {
     return billableEvent;
   }
 
+  @JsonProperty("billable_event")
   public void setBillableEvent(ActionType billableEvent) {
     this.billableEvent = billableEvent;
   }
@@ -91,16 +97,17 @@ public class BidFloorSpec {
   }
 
   /**
-   * Get countries
+   * List of ISO 3166-1 alpha-2 country codes.
    * @return countries
    */
   @Valid 
-  @Schema(name = "countries", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "countries", description = "List of ISO 3166-1 alpha-2 country codes.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("countries")
   public List<Country> getCountries() {
     return countries;
   }
 
+  @JsonProperty("countries")
   public void setCountries(List<Country> countries) {
     this.countries = countries;
   }
@@ -111,16 +118,17 @@ public class BidFloorSpec {
   }
 
   /**
-   * Get creativeType
+   * Creative type for the bid floor request.
    * @return creativeType
    */
   @Valid 
-  @Schema(name = "creative_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "creative_type", description = "Creative type for the bid floor request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_type")
   public @Nullable CreativeType getCreativeType() {
     return creativeType;
   }
 
+  @JsonProperty("creative_type")
   public void setCreativeType(@Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
   }
@@ -131,37 +139,39 @@ public class BidFloorSpec {
   }
 
   /**
-   * Get currency
+   * Currency for the bid floor value.
    * @return currency
    */
   @NotNull @Valid 
-  @Schema(name = "currency", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "currency", description = "Currency for the bid floor value.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("currency")
   public Currency getCurrency() {
     return currency;
   }
 
+  @JsonProperty("currency")
   public void setCurrency(Currency currency) {
     this.currency = currency;
   }
 
-  public BidFloorSpec objectiveType(@Nullable ObjectiveType objectiveType) {
+  public BidFloorSpec objectiveType(@Nullable BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
     return this;
   }
 
   /**
-   * Get objectiveType
+   * Campaign objective type.
    * @return objectiveType
    */
   @Valid 
-  @Schema(name = "objective_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "objective_type", description = "Campaign objective type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("objective_type")
-  public @Nullable ObjectiveType getObjectiveType() {
+  public @Nullable BidFloorObjectiveType getObjectiveType() {
     return objectiveType;
   }
 
-  public void setObjectiveType(@Nullable ObjectiveType objectiveType) {
+  @JsonProperty("objective_type")
+  public void setObjectiveType(@Nullable BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
   }
 
@@ -171,16 +181,17 @@ public class BidFloorSpec {
   }
 
   /**
-   * Get optimizationGoalMetadata
+   * Optimization goal metadata.
    * @return optimizationGoalMetadata
    */
   @Valid 
-  @Schema(name = "optimization_goal_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "optimization_goal_metadata", description = "Optimization goal metadata.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("optimization_goal_metadata")
   public @Nullable OptimizationGoalMetadata getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
   }
 
+  @JsonProperty("optimization_goal_metadata")
   public void setOptimizationGoalMetadata(@Nullable OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
   }
@@ -225,11 +236,8 @@ public class BidFloorSpec {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

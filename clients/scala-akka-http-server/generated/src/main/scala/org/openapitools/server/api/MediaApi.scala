@@ -48,7 +48,7 @@ class MediaApi(
 
 object MediaApiPatterns {
 
-    val mediaIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
+    val mediaIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
 }
 
 trait MediaApiService {

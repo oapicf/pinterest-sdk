@@ -27,31 +27,40 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class ConversionTagCreate(
 
-    @Schema(example = "ACME Checkout Test Tag", required = true, description = "Conversion tag name.")
+    @Schema(example = "download_picture", required = true, description = "Conversion tag name.")
+    @param:JsonProperty("name")
     @get:JsonProperty("name", required = true) val name: kotlin.String,
 
-    @Schema(example = "null", description = "Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+    @Schema(description = "Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+    @param:JsonProperty("aem_db_enabled")
     @get:JsonProperty("aem_db_enabled") val aemDbEnabled: kotlin.Boolean? = false,
 
-    @Schema(example = "null", description = "Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+    @Schema(description = "Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+    @param:JsonProperty("aem_enabled")
     @get:JsonProperty("aem_enabled") val aemEnabled: kotlin.Boolean? = false,
 
-    @Schema(example = "null", description = "Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+    @Schema(description = "Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+    @param:JsonProperty("aem_external_id_enabled")
     @get:JsonProperty("aem_external_id_enabled") val aemExternalIdEnabled: kotlin.Boolean? = false,
 
-    @Schema(example = "null", description = "Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+    @Schema(description = "Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+    @param:JsonProperty("aem_fnln_enabled")
     @get:JsonProperty("aem_fnln_enabled") val aemFnlnEnabled: kotlin.Boolean? = false,
 
-    @Schema(example = "null", description = "Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+    @Schema(description = "Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+    @param:JsonProperty("aem_ge_enabled")
     @get:JsonProperty("aem_ge_enabled") val aemGeEnabled: kotlin.Boolean? = false,
 
-    @Schema(example = "null", description = "Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+    @Schema(description = "Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+    @param:JsonProperty("aem_loc_enabled")
     @get:JsonProperty("aem_loc_enabled") val aemLocEnabled: kotlin.Boolean? = false,
 
-    @Schema(example = "null", description = "Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+    @Schema(description = "Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")
+    @param:JsonProperty("aem_ph_enabled")
     @get:JsonProperty("aem_ph_enabled") val aemPhEnabled: kotlin.Boolean? = false,
 
     @Schema(example = "0.6", description = "Metadata ingestion frequency.")
+    @param:JsonProperty("md_frequency")
     @get:JsonProperty("md_frequency") val mdFrequency: java.math.BigDecimal? = java.math.BigDecimal("1")
 ) {
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.GetPartnerAssetsResponse;
+import org.openapitools.model.BaseBusinessAssets;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -17,12 +17,9 @@ public class BusinessPartnerAssetAccessGet200Response  {
 
   private String bookmark;
 
- /**
-  * List assets on which you granted access to your partner or assets on which your partner has granted you access.
-  */
-  @ApiModelProperty(required = true, value = "List assets on which you granted access to your partner or assets on which your partner has granted you access.")
+  @ApiModelProperty(required = true, value = "")
 
-  private List<GetPartnerAssetsResponse> items = new ArrayList<>();
+  private List<BaseBusinessAssets> items = new ArrayList<>();
  /**
    * Get bookmark
    * @return bookmark
@@ -42,24 +39,24 @@ public class BusinessPartnerAssetAccessGet200Response  {
   }
 
  /**
-   * List assets on which you granted access to your partner or assets on which your partner has granted you access.
+   * Get items
    * @return items
   **/
   @JsonProperty("items")
-  public List<GetPartnerAssetsResponse> getItems() {
+  public List<BaseBusinessAssets> getItems() {
     return items;
   }
 
-  public void setItems(List<GetPartnerAssetsResponse> items) {
+  public void setItems(List<BaseBusinessAssets> items) {
     this.items = items;
   }
 
-  public BusinessPartnerAssetAccessGet200Response items(List<GetPartnerAssetsResponse> items) {
+  public BusinessPartnerAssetAccessGet200Response items(List<BaseBusinessAssets> items) {
     this.items = items;
     return this;
   }
 
-  public BusinessPartnerAssetAccessGet200Response addItemsItem(GetPartnerAssetsResponse itemsItem) {
+  public BusinessPartnerAssetAccessGet200Response addItemsItem(BaseBusinessAssets itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -98,10 +95,7 @@ public class BusinessPartnerAssetAccessGet200Response  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

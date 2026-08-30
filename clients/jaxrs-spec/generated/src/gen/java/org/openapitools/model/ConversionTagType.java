@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * conversion tag type
  */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public enum ConversionTagType {
   
   PAGE_LOAD("PAGE_LOAD"),
@@ -40,7 +41,33 @@ public enum ConversionTagType {
   
   WEB_SESSION("WEB_SESSION"),
   
-  EXTERNAL_MEASUREMENT("EXTERNAL_MEASUREMENT");
+  EXTERNAL_MEASUREMENT("EXTERNAL_MEASUREMENT"),
+  
+  ADD_PAYMENT_INFO("ADD_PAYMENT_INFO"),
+  
+  ADD_TO_WISHLIST("ADD_TO_WISHLIST"),
+  
+  INITIATE_CHECKOUT("INITIATE_CHECKOUT"),
+  
+  SUBSCRIBE("SUBSCRIBE"),
+  
+  VIEW_CONTENT("VIEW_CONTENT"),
+  
+  ADVERTISER_DEFINED_EVENT("ADVERTISER_DEFINED_EVENT"),
+  
+  APP_OPEN("APP_OPEN"),
+  
+  CONTACT("CONTACT"),
+  
+  SCHEDULE("SCHEDULE"),
+  
+  FIND_LOCATION("FIND_LOCATION"),
+  
+  CUSTOMIZE_PRODUCT("CUSTOMIZE_PRODUCT"),
+  
+  SUBMIT_APPLICATION("SUBMIT_APPLICATION"),
+  
+  START_TRIAL("START_TRIAL");
 
   private String value;
 

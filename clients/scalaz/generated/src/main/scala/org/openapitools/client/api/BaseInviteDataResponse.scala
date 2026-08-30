@@ -14,7 +14,7 @@ import BaseInviteDataResponse._
 case class BaseInviteDataResponse (
   /* Unique identifier of the invite/request. */
   id: Option[String],
-inviteData: Option[BaseInviteDataResponseInviteData],
+inviteData: Option[InviteDataResponse],
 /* Indicates whether the invite/request was received. */
   isReceivedInvite: Option[Boolean],
 /* Metadata for the member/partner that was sent the invite/request. */

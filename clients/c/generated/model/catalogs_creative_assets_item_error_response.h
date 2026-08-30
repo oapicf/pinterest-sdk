@@ -15,23 +15,40 @@
 
 typedef struct catalogs_creative_assets_item_error_response_t catalogs_creative_assets_item_error_response_t;
 
-#include "catalogs_type.h"
 #include "item_validation_event.h"
+
+// Enum CATALOGTYPE for catalogs_creative_assets_item_error_response
+
+typedef enum  { pinterest_rest_api_catalogs_creative_assets_item_error_response_CATALOGTYPE_NULL = 0, pinterest_rest_api_catalogs_creative_assets_item_error_response_CATALOGTYPE_CREATIVE_ASSETS } pinterest_rest_api_catalogs_creative_assets_item_error_response_CATALOGTYPE_e;
+
+char* catalogs_creative_assets_item_error_response_catalog_type_ToString(pinterest_rest_api_catalogs_creative_assets_item_error_response_CATALOGTYPE_e catalog_type);
+
+pinterest_rest_api_catalogs_creative_assets_item_error_response_CATALOGTYPE_e catalogs_creative_assets_item_error_response_catalog_type_FromString(char* catalog_type);
+
+// Enum ITEMRESPONSEKIND for catalogs_creative_assets_item_error_response
+
+typedef enum  { pinterest_rest_api_catalogs_creative_assets_item_error_response_ITEMRESPONSEKIND_NULL = 0, pinterest_rest_api_catalogs_creative_assets_item_error_response_ITEMRESPONSEKIND_creative_assets_item_error } pinterest_rest_api_catalogs_creative_assets_item_error_response_ITEMRESPONSEKIND_e;
+
+char* catalogs_creative_assets_item_error_response_item_response_kind_ToString(pinterest_rest_api_catalogs_creative_assets_item_error_response_ITEMRESPONSEKIND_e item_response_kind);
+
+pinterest_rest_api_catalogs_creative_assets_item_error_response_ITEMRESPONSEKIND_e catalogs_creative_assets_item_error_response_item_response_kind_FromString(char* item_response_kind);
 
 
 
 typedef struct catalogs_creative_assets_item_error_response_t {
-    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
+    pinterest_rest_api_catalogs_creative_assets_item_error_response_CATALOGTYPE_e catalog_type; //enum
     char *creative_assets_id; // string
     list_t *errors; //nonprimitive container
+    pinterest_rest_api_catalogs_creative_assets_item_error_response_ITEMRESPONSEKIND_e item_response_kind; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_item_error_response_t;
 
 __attribute__((deprecated)) catalogs_creative_assets_item_error_response_t *catalogs_creative_assets_item_error_response_create(
-    pinterest_rest_api_catalogs_type__e catalog_type,
+    pinterest_rest_api_catalogs_creative_assets_item_error_response_CATALOGTYPE_e catalog_type,
     char *creative_assets_id,
-    list_t *errors
+    list_t *errors,
+    pinterest_rest_api_catalogs_creative_assets_item_error_response_ITEMRESPONSEKIND_e item_response_kind
 );
 
 void catalogs_creative_assets_item_error_response_free(catalogs_creative_assets_item_error_response_t *catalogs_creative_assets_item_error_response);

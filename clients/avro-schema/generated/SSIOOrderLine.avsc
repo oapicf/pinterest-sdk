@@ -1,7 +1,7 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "",
+  "doc": "A Salesforce SSIO order line.",
   "name": "SSIOOrderLine",
   "fields": [
     {
@@ -13,13 +13,13 @@
     {
       "name": "accepted_terms_time",
       "type": ["null", "string"],
-      "doc": "The UTC timestamp (to the nearest sec) of when terms were accepted",
+      "doc": "The UTC timestamp (to the nearest second) when terms were accepted.",
       "default": null
     },
     {
       "name": "ads_manager_order_line_id",
       "type": ["null", "string"],
-      "doc": "Ads manager OrderLineId",
+      "doc": "Ads manager order line id",
       "default": null
     },
     {
@@ -31,7 +31,7 @@
     {
       "name": "bill_to_company_name",
       "type": ["null", "string"],
-      "doc": "Bill To Company name",
+      "doc": "Bill-to company name",
       "default": null
     },
     {
@@ -55,7 +55,7 @@
     {
       "name": "budget_amount",
       "type": ["null", "double"],
-      "doc": "If Budget order line, the budget amount.",
+      "doc": "If budget order line, the budget amount.",
       "default": null
     },
     {
@@ -73,7 +73,7 @@
     {
       "name": "estimated_monthly_spend",
       "type": ["null", "double"],
-      "doc": "If Ongoing (perpetual) order line, the estimated monthly spend",
+      "doc": "If ongoing (perpetual) order line, the estimated monthly spend.",
       "default": null
     },
     {
@@ -91,13 +91,13 @@
     {
       "name": "media_contact_firstname",
       "type": ["null", "string"],
-      "doc": "Billing contact first name",
+      "doc": "Billing media contact first name",
       "default": null
     },
     {
       "name": "media_contact_lastname",
       "type": ["null", "string"],
-      "doc": "Billing contact first name",
+      "doc": "Billing media contact last name",
       "default": null
     },
     {
@@ -121,13 +121,13 @@
     {
       "name": "po_number",
       "type": ["null", "string"],
-      "doc": "The po number",
+      "doc": "The PO number",
       "default": null
     },
     {
       "name": "salesforce_order_line_id",
       "type": ["null", "string"],
-      "doc": "OrderLineId in SFDC",
+      "doc": "Order line id in SFDC",
       "default": null
     },
     {

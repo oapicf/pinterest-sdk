@@ -1,19 +1,27 @@
 const samples = require('../samples/AdGroupsApi');
-const AdGroupArrayResponse = require('../models/AdGroupArrayResponse');
-const AdGroupAudienceSizingRequest = require('../models/AdGroupAudienceSizingRequest');
-const AdGroupAudienceSizingResponse = require('../models/AdGroupAudienceSizingResponse');
-const AdGroupCreateRequest = require('../models/AdGroupCreateRequest');
-const AdGroupResponse = require('../models/AdGroupResponse');
-const AdGroupUpdateRequest = require('../models/AdGroupUpdateRequest');
-const AdGroupsAnalyticsResponse_inner = require('../models/AdGroupsAnalyticsResponse_inner');
+const AdGroup = require('../models/AdGroup');
+const AdGroupAudienceSizing = require('../models/AdGroupAudienceSizing');
+const AdGroupAudienceSizingCreate = require('../models/AdGroupAudienceSizingCreate');
+const AdGroupCreateCreate = require('../models/AdGroupCreateCreate');
+const AdGroupUpdateBatchUpdate = require('../models/AdGroupUpdateBatchUpdate');
+const AdGroupsAnalyticsMetrics = require('../models/AdGroupsAnalyticsMetrics');
 const AdsAnalyticsAdGroupTargetingType = require('../models/AdsAnalyticsAdGroupTargetingType');
 const BidFloor = require('../models/BidFloor');
-const BidFloorRequest = require('../models/BidFloorRequest');
+const BidFloorCreate = require('../models/BidFloorCreate');
 const ConversionReportAttributionType = require('../models/ConversionReportAttributionType');
-const Error = require('../models/Error');
+const DynamicTitlesDownloadCSV = require('../models/DynamicTitlesDownloadCSV');
+const DynamicTitlesGetStatus = require('../models/DynamicTitlesGetStatus');
+const DynamicTitlesProcessCSV = require('../models/DynamicTitlesProcessCSV');
+const DynamicTitlesProcessCSVCreate = require('../models/DynamicTitlesProcessCSVCreate');
+const DynamicTitlesUploadURL = require('../models/DynamicTitlesUploadURL');
+const EntityStatus = require('../models/EntityStatus');
 const Granularity = require('../models/Granularity');
 const MetricsResponse = require('../models/MetricsResponse');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
+const Pinterest.Lib.PaginationOrder = require('../models/Pinterest.Lib.PaginationOrder');
+const ReportingColumnSync = require('../models/ReportingColumnSync');
 const ReportingTimeZone = require('../models/ReportingTimeZone');
+const ad_groups_create_200_response = require('../models/ad_groups_create_200_response');
 const ad_groups_list_200_response = require('../models/ad_groups_list_200_response');
 const utils = require('../utils/utils');
 
@@ -23,17 +31,11 @@ module.exports = {
         noun: 'ad_groups',
         display: {
             label: 'Get ad group analytics',
-            description: 'Get analytics for the specified ad groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.',
+            description: 'Get analytics for the specified ad groups in the specified &#x60;ad_account_id&#x60;, filtered by the specified options.  - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.',
             hidden: false,
         },
         operation: {
             inputFields: [
-                {
-                    key: 'ad_account_id',
-                    label: 'Unique identifier of an ad account.',
-                    type: 'string',
-                    required: true,
-                },
                 {
                     key: 'start_date',
                     label: 'Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.',
@@ -53,14 +55,20 @@ module.exports = {
                 }
                 {
                     key: 'columns',
-                    label: 'Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned',
+                    label: 'Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.',
                     type: 'string',
                 }
                 ....fields(),
                 {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                    required: true,
+                },
+                {
                     key: 'click_window_days',
                     label: 'Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.',
-                    type: 'integer',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -72,8 +80,8 @@ module.exports = {
                 },
                 {
                     key: 'engagement_window_days',
-                    label: 'Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.',
-                    type: 'integer',
+                    label: 'Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -86,7 +94,7 @@ module.exports = {
                 {
                     key: 'view_window_days',
                     label: 'Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.',
-                    type: 'integer',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -145,7 +153,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AdGroupsAnalyticsResponse_innerSample']
+            sample: samples['AdGroupsAnalyticsMetricsSample']
         }
     },
     adGroups/audienceSizing: {
@@ -153,7 +161,7 @@ module.exports = {
         noun: 'ad_groups',
         display: {
             label: 'Get audience sizing',
-            description: 'Get potential audience size for an ad group with given targeting criteria.  Potential audience size estimates the number of people you may be able to reach per month with your campaign.  It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.',
+            description: 'Get potential audience size for an ad group with given targeting criteria. Potential audience size estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.',
             hidden: false,
         },
         operation: {
@@ -164,10 +172,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...AdGroupAudienceSizingRequest.fields(),
+                ...AdGroupAudienceSizingCreate.fields(),
             ],
             outputFields: [
-                ...AdGroupAudienceSizingResponse.fields('', false),
+                ...AdGroupAudienceSizing.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -181,7 +189,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...AdGroupAudienceSizingRequest.mapping(bundle),
+                        ...AdGroupAudienceSizingCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -190,7 +198,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AdGroupAudienceSizingResponseSample']
+            sample: samples['AdGroupAudienceSizingSample']samples['AdGroupAudienceSizingSample']
         }
     },
     adGroups/create: {
@@ -198,7 +206,7 @@ module.exports = {
         noun: 'ad_groups',
         display: {
             label: 'Create ad groups',
-            description: 'Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/campaign-structure\&quot; target&#x3D;\&quot;_blank\&quot;&gt; click here&lt;/a&gt;. &lt;strong&gt;Notes:&lt;/strong&gt; - &#x60;bid_in_micro_currency&#x60; and &#x60;budget_in_micro_currency&#x60; should be expressed in microcurrency amounts based on the currency field set in the advertiser&#39;s profile.&lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;closed beta&lt;/a&gt; access can set &#x60;start_time&#x60; and &#x60;end_time&#x60; at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: &#x60;TRAFFIC&#x60;, &#x60;AWARENESS&#x60;, &#x60;WEB_CONVERSIONS&#x60;, and &#x60;CATALOG_SALES&#x60;. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule. ',
+            description: 'Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other).  For more information, [click here](https://help.pinterest.com/en/business/article/campaign-structure).  **Notes:** - &#x60;bid_in_micro_currency&#x60; and &#x60;budget_in_micro_currency&#x60; should be expressed in microcurrency amounts based on the currency field set in the advertiser&#39;s profile.  Microcurrency is used to track very small transactions, based on the currency set in the advertiser&#39;s profile. A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser&#39;s profile.  **Equivalency equations**, using dollars as an example currency: - $1 &#x3D; 1,000,000 microdollars - 1 microdollar &#x3D; $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency: - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000  - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with [closed beta](/docs/getting-started/using-beta-and-restricted-features/) access can set &#x60;start_time&#x60; and &#x60;end_time&#x60; at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: &#x60;TRAFFIC&#x60;, &#x60;AWARENESS&#x60;, &#x60;WEB_CONVERSIONS&#x60;, and &#x60;CATALOG_SALES&#x60;. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule.',
             hidden: false,
         },
         operation: {
@@ -210,13 +218,13 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'AdGroupCreateRequest',
-                    label: 'List of ad groups to create, size limit [1, 30].',
+                    key: 'AdGroupCreateCreate',
+                    label: '',
                     type: 'string',
                 }
             ],
             outputFields: [
-                ...AdGroupArrayResponse.fields('', false),
+                ...ad_groups_create_200_response.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -230,7 +238,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...AdGroupCreateRequest.mapping(bundle),
+                        ...AdGroupCreateCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -239,7 +247,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AdGroupArrayResponseSample']
+            sample: samples['ad_groups_create_200_responseSample']
         }
     },
     adGroups/get: {
@@ -253,20 +261,20 @@ module.exports = {
         operation: {
             inputFields: [
                 {
+                    key: 'ad_group_id',
+                    label: 'Ad group ID.',
+                    type: 'string',
+                    required: true,
+                },
+                {
                     key: 'ad_account_id',
                     label: 'Unique identifier of an ad account.',
                     type: 'string',
                     required: true,
                 },
-                {
-                    key: 'ad_group_id',
-                    label: 'Unique identifier of an ad group.',
-                    type: 'string',
-                    required: true,
-                },
             ],
             outputFields: [
-                ...AdGroupResponse.fields('', false),
+                ...AdGroup.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -288,7 +296,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AdGroupResponseSample']
+            sample: samples['AdGroupSample']
         }
     },
     adGroups/list: {
@@ -296,7 +304,7 @@ module.exports = {
         noun: 'ad_groups',
         display: {
             label: 'List ad groups',
-            description: 'List ad groups based on provided campaign IDs or ad group IDs.(campaign_ids or ad_group_ids). &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt;&lt;p/&gt; Provide only campaign_id or ad_group_id. Do not provide both.',
+            description: 'List ad groups based on provided campaign IDs or ad group IDs.(campaign_ids or ad_group_ids). **Note:** Provide only campaign_id or ad_group_id. Do not provide both.',
             hidden: false,
         },
         operation: {
@@ -308,13 +316,24 @@ module.exports = {
                     required: true,
                 },
                 {
+                    key: 'bookmark',
+                    label: 'Cursor used to fetch the next page of items',
+                    type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
+                },
+                ....fields(),
+                {
                     key: 'campaign_ids',
                     label: 'List of Campaign Ids to use to filter the results.',
                     type: 'string',
                 }
                 {
                     key: 'ad_group_ids',
-                    label: 'List of Ad group Ids to use to filter the results.',
+                    label: 'List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.',
                     type: 'string',
                 }
                 {
@@ -322,25 +341,6 @@ module.exports = {
                     label: 'Entity status',
                     type: 'string',
                 }
-                {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
-                },
-                {
-                    key: 'order',
-                    label: 'The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.',
-                    type: 'string',
-                    choices: [
-                        'ASCENDING',
-                        'DESCENDING',
-                    ],
-                },
-                {
-                    key: 'bookmark',
-                    label: 'Cursor used to fetch the next page of items',
-                    type: 'string',
-                },
                 {
                     key: 'translate_interests_to_names',
                     label: 'Return interests as text names (if value is true) rather than topic IDs.',
@@ -360,12 +360,12 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
+                        'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
+                        'order': bundle.inputData?.['order'],
                         'campaign_ids': bundle.inputData?.['campaign_ids'],
                         'ad_group_ids': bundle.inputData?.['ad_group_ids'],
                         'entity_statuses': bundle.inputData?.['entity_statuses'],
-                        'page_size': bundle.inputData?.['page_size'],
-                        'order': bundle.inputData?.['order'],
-                        'bookmark': bundle.inputData?.['bookmark'],
                         'translate_interests_to_names': bundle.inputData?.['translate_interests_to_names'],
                     },
                     body: {
@@ -397,13 +397,13 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'AdGroupUpdateRequest',
-                    label: 'List of ad groups to update, size limit [1, 30].',
+                    key: 'AdGroupUpdateBatchUpdate',
+                    label: '',
                     type: 'string',
                 }
             ],
             outputFields: [
-                ...AdGroupArrayResponse.fields('', false),
+                ...ad_groups_create_200_response.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -417,7 +417,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...AdGroupUpdateRequest.mapping(bundle),
+                        ...AdGroupUpdateBatchUpdate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -426,7 +426,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AdGroupArrayResponseSample']
+            sample: samples['ad_groups_create_200_responseSample']
         }
     },
     adGroupsBidFloor/get: {
@@ -434,7 +434,7 @@ module.exports = {
         noun: 'ad_groups',
         display: {
             label: 'Get bid floors',
-            description: 'List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; For more on bid floors see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-your-bid\&quot;&gt; Set your bid&lt;/a&gt;.',
+            description: 'List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification.  Microcurrency is used to track very small transactions, based on the currency set in the advertiser&#39;s profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser&#39;s profile.  **Equivalency equations**, using dollars as an example currency:  * $1 &#x3D; 1,000,000 microdollars * 1 microdollar &#x3D; $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  * To convert dollars to microdollars, mutiply dollars by 1,000,000 * To convert microdollars to dollars, divide microdollars by 1,000,000  For more on bid floors see [Set your bid](https://help.pinterest.com/en/business/article/set-your-bid).',
             hidden: false,
         },
         operation: {
@@ -445,7 +445,7 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...BidFloorRequest.fields(),
+                ...BidFloorCreate.fields(),
             ],
             outputFields: [
                 ...BidFloor.fields('', false),
@@ -462,7 +462,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...BidFloorRequest.mapping(bundle),
+                        ...BidFloorCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -471,7 +471,205 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['BidFloorSample']
+            sample: samples['BidFloorSample']samples['BidFloorSample']
+        }
+    },
+    adGroupsDynamicTitles/downloadCsv: {
+        key: 'adGroupsDynamicTitles/downloadCsv',
+        noun: 'ad_groups',
+        display: {
+            label: 'Get dynamic titles CSV download URL',
+            description: 'Get a presigned S3 download URL for the dynamic titles review CSV. Returns 400 if titles have not been generated yet.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                    required: true,
+                },
+                {
+                    key: 'ad_group_id',
+                    label: 'Ad group ID.',
+                    type: 'string',
+                    required: true,
+                },
+            ],
+            outputFields: [
+                ...DynamicTitlesDownloadCSV.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/csv'),
+                    method: 'GET',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                    },
+                    body: {
+                    },
+                }
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
+                    response.throwForStatus();
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adGroupsDynamicTitles/downloadCsv', response.json);
+                    return results;
+                })
+            },
+            sample: samples['DynamicTitlesDownloadCSVSample']
+        }
+    },
+    adGroupsDynamicTitles/getStatus: {
+        key: 'adGroupsDynamicTitles/getStatus',
+        noun: 'ad_groups',
+        display: {
+            label: 'Get dynamic titles status',
+            description: 'Get dynamic titles generation status for an ad group, including whether titles are ready for review and counts of generated and reviewed titles.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                    required: true,
+                },
+                {
+                    key: 'ad_group_id',
+                    label: 'Ad group ID.',
+                    type: 'string',
+                    required: true,
+                },
+            ],
+            outputFields: [
+                ...DynamicTitlesGetStatus.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/status'),
+                    method: 'GET',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                    },
+                    body: {
+                    },
+                }
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
+                    response.throwForStatus();
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adGroupsDynamicTitles/getStatus', response.json);
+                    return results;
+                })
+            },
+            sample: samples['DynamicTitlesGetStatusSample']
+        }
+    },
+    adGroupsDynamicTitles/getUploadUrl: {
+        key: 'adGroupsDynamicTitles/getUploadUrl',
+        noun: 'ad_groups',
+        display: {
+            label: 'Get dynamic titles upload URL',
+            description: 'Get a presigned S3 upload URL for the dynamic titles review CSV and a request_id for submission.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                    required: true,
+                },
+                {
+                    key: 'ad_group_id',
+                    label: 'Ad group ID.',
+                    type: 'string',
+                    required: true,
+                },
+            ],
+            outputFields: [
+                ...DynamicTitlesUploadURL.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/uploads'),
+                    method: 'GET',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                    },
+                    body: {
+                    },
+                }
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
+                    response.throwForStatus();
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adGroupsDynamicTitles/getUploadUrl', response.json);
+                    return results;
+                })
+            },
+            sample: samples['DynamicTitlesUploadURLSample']
+        }
+    },
+    adGroupsDynamicTitles/processCsv: {
+        key: 'adGroupsDynamicTitles/processCsv',
+        noun: 'ad_groups',
+        display: {
+            label: 'Process dynamic titles CSV',
+            description: 'Validate and process the uploaded dynamic titles review CSV. Returns validation errors if the CSV is invalid.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                    required: true,
+                },
+                {
+                    key: 'ad_group_id',
+                    label: 'Ad group ID.',
+                    type: 'string',
+                    required: true,
+                },
+                ...DynamicTitlesProcessCSVCreate.fields(),
+            ],
+            outputFields: [
+                ...DynamicTitlesProcessCSV.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles'),
+                    method: 'POST',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                    },
+                    body: {
+                        ...DynamicTitlesProcessCSVCreate.mapping(bundle),
+                    },
+                }
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
+                    response.throwForStatus();
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adGroupsDynamicTitles/processCsv', response.json);
+                    return results;
+                })
+            },
+            sample: samples['DynamicTitlesProcessCSVSample']samples['DynamicTitlesProcessCSVSample']
         }
     },
     adGroupsTargetingAnalytics/get: {
@@ -479,7 +677,7 @@ module.exports = {
         noun: 'ad_groups',
         display: {
             label: 'Get targeting analytics for ad groups',
-            description: 'Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.',
+            description: 'Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;).  - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.',
             hidden: false,
         },
         operation: {
@@ -509,19 +707,19 @@ module.exports = {
                 },
                 {
                     key: 'targeting_types',
-                    label: 'Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;, \&quot;CREATIVE_ENHANCEMENTS\&quot;] are in BETA and not yet available to all users.',
+                    label: 'Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;, \&quot;CREATIVE_ENHANCEMENTS\&quot;] are in BETA and not yet available to all users.',
                     type: 'string',
                 }
                 {
                     key: 'columns',
-                    label: 'Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned',
+                    label: 'Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.',
                     type: 'string',
                 }
                 ....fields(),
                 {
                     key: 'click_window_days',
                     label: 'Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.',
-                    type: 'integer',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -533,8 +731,8 @@ module.exports = {
                 },
                 {
                     key: 'engagement_window_days',
-                    label: 'Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.',
-                    type: 'integer',
+                    label: 'Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -547,7 +745,7 @@ module.exports = {
                 {
                     key: 'view_window_days',
                     label: 'Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.',
-                    type: 'integer',
+                    type: 'number',
                     choices: [
                         '0',
                         '1',
@@ -572,6 +770,16 @@ module.exports = {
                     type: 'string',
                 }
                 ....fields(),
+                {
+                    key: 'sort_columns',
+                    label: 'Sort Columns.',
+                    type: 'string',
+                }
+                {
+                    key: 'sort_ascending',
+                    label: 'Sort ascending.',
+                    type: 'boolean',
+                },
             ],
             outputFields: [
                 ...MetricsResponse.fields('', false),
@@ -598,6 +806,8 @@ module.exports = {
                         'conversion_report_time': bundle.inputData?.['conversion_report_time'],
                         'attribution_types': bundle.inputData?.['attribution_types'],
                         'reporting_timezone': bundle.inputData?.['reporting_timezone'],
+                        'sort_columns': bundle.inputData?.['sort_columns'],
+                        'sort_ascending': bundle.inputData?.['sort_ascending'],
                     },
                     body: {
                     },
@@ -609,6 +819,69 @@ module.exports = {
                 })
             },
             sample: samples['MetricsResponseSample']
+        }
+    },
+    getAdGroupsByPromotionIds/list: {
+        key: 'getAdGroupsByPromotionIds/list',
+        noun: 'ad_groups',
+        display: {
+            label: 'List of ad groups using promotions IDs.',
+            description: '  Get a list of ad groups that are associated with those promotion ids',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                    required: true,
+                },
+                {
+                    key: 'promotion_ids',
+                    label: 'List of Promotion IDs to use to filter the results.',
+                    type: 'string',
+                }
+                {
+                    key: 'bookmark',
+                    label: 'Cursor used to fetch the next page of items',
+                    type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
+                },
+                ....fields(),
+            ],
+            outputFields: [
+                ...ad_groups_list_200_response.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/promotion_applied_entities'),
+                    method: 'GET',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                        'promotion_ids': bundle.inputData?.['promotion_ids'],
+                        'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
+                        'order': bundle.inputData?.['order'],
+                    },
+                    body: {
+                    },
+                }
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
+                    response.throwForStatus();
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'getAdGroupsByPromotionIds/list', response.json);
+                    return results;
+                })
+            },
+            sample: samples['ad_groups_list_200_responseSample']
         }
     },
 }

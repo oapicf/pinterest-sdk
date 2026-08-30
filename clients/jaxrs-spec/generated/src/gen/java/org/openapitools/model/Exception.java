@@ -16,7 +16,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("Exception")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Exception   {
   private Integer code;
   private String message;
@@ -24,8 +24,14 @@ public class Exception   {
   public Exception() {
   }
 
+  @JsonCreator
+  public Exception(
+    @JsonProperty(required = true, value = "message") String message
+  ) {
+    this.message = message;
+  }
+
   /**
-   * Exception error code.
    **/
   public Exception code(Integer code) {
     this.code = code;
@@ -33,7 +39,7 @@ public class Exception   {
   }
 
   
-  @ApiModelProperty(example = "2", value = "Exception error code.")
+  @ApiModelProperty(example = "2", value = "")
   @JsonProperty("code")
   public Integer getCode() {
     return code;
@@ -45,7 +51,6 @@ public class Exception   {
   }
 
   /**
-   * Exception message.
    **/
   public Exception message(String message) {
     this.message = message;
@@ -53,13 +58,13 @@ public class Exception   {
   }
 
   
-  @ApiModelProperty(example = "Advertiser not found.", value = "Exception message.")
-  @JsonProperty("message")
-  public String getMessage() {
+  @ApiModelProperty(example = "Advertiser not found.", required = true, value = "")
+  @JsonProperty(required = true, value = "message")
+  @NotNull public String getMessage() {
     return message;
   }
 
-  @JsonProperty("message")
+  @JsonProperty(required = true, value = "message")
   public void setMessage(String message) {
     this.message = message;
   }
@@ -99,12 +104,8 @@ public class Exception   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

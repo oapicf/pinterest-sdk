@@ -16,7 +16,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## integrationsCommerceDel
 
-> integrationsCommerceDel(externalBusinessId)
+> IntegrationMetadata integrationsCommerceDel(externalBusinessId)
 
 Delete commerce integration
 
@@ -65,7 +65,7 @@ example().catch(console.error);
 
 ### Return type
 
-`void` (Empty response body)
+[**IntegrationMetadata**](IntegrationMetadata.md)
 
 ### Authorization
 
@@ -80,8 +80,14 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Commerce Integration deleted successfully |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -152,17 +158,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **409** | Can\&#39;t access this integration metadata. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## integrationsCommercePatch
 
-> IntegrationMetadata integrationsCommercePatch(externalBusinessId, integrationRequestPatch)
+> IntegrationMetadata integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate)
 
 Update commerce integration
 
@@ -188,8 +197,8 @@ async function example() {
   const body = {
     // string | External business ID for the integration.
     externalBusinessId: externalBusinessId_example,
-    // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
-    integrationRequestPatch: ...,
+    // IntegrationMetadataUpdate
+    integrationMetadataUpdate: ...,
   } satisfies IntegrationsCommercePatchRequest;
 
   try {
@@ -210,7 +219,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **externalBusinessId** | `string` | External business ID for the integration. | [Defaults to `undefined`] |
-| **integrationRequestPatch** | [IntegrationRequestPatch](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata | |
+| **integrationMetadataUpdate** | [IntegrationMetadataUpdate](IntegrationMetadataUpdate.md) |  | |
 
 ### Return type
 
@@ -229,17 +238,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **409** | Can\&#39;t access this integration metadata. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## integrationsCommercePost
 
-> IntegrationMetadata integrationsCommercePost(integrationRequest)
+> IntegrationMetadata integrationsCommercePost(integrationMetadataCreate)
 
 Create commerce integration
 
@@ -263,8 +275,8 @@ async function example() {
   const api = new IntegrationsApi(config);
 
   const body = {
-    // IntegrationRequest | Parameters to get create/update the Integration Metadata
-    integrationRequest: ...,
+    // IntegrationMetadataCreate
+    integrationMetadataCreate: ...,
   } satisfies IntegrationsCommercePostRequest;
 
   try {
@@ -284,7 +296,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integrationRequest** | [IntegrationRequest](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata | |
+| **integrationMetadataCreate** | [IntegrationMetadataCreate](IntegrationMetadataCreate.md) |  | |
 
 ### Return type
 
@@ -303,10 +315,14 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **409** | Can\&#39;t access this integration metadata. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -337,7 +353,7 @@ async function example() {
   const api = new IntegrationsApi(config);
 
   const body = {
-    // string | Integration ID.
+    // string | Integration record ID.
     id: id_example,
   } satisfies IntegrationsGetByIdRequest;
 
@@ -358,7 +374,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | `string` | Integration ID. | [Defaults to `undefined`] |
+| **id** | `string` | Integration record ID. | [Defaults to `undefined`] |
 
 ### Return type
 
@@ -377,9 +393,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -412,7 +432,7 @@ async function example() {
   const body = {
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
   } satisfies IntegrationsGetListRequest;
 
@@ -434,7 +454,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -453,15 +473,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## integrationsLogsPost
 
-> IntegrationLogsSuccessResponse integrationsLogsPost(integrationLogsRequest)
+> IntegrationLogsSuccessResponse integrationsLogsPost(integrationLogsRequestCreate)
 
 Receives batched logs from integration applications.
 
@@ -485,8 +510,8 @@ async function example() {
   const api = new IntegrationsApi(config);
 
   const body = {
-    // IntegrationLogsRequest | Ingest log information from external integration application.
-    integrationLogsRequest: ...,
+    // IntegrationLogsRequestCreate
+    integrationLogsRequestCreate: ...,
   } satisfies IntegrationsLogsPostRequest;
 
   try {
@@ -506,7 +531,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integrationLogsRequest** | [IntegrationLogsRequest](IntegrationLogsRequest.md) | Ingest log information from external integration application. | |
+| **integrationLogsRequestCreate** | [IntegrationLogsRequestCreate](IntegrationLogsRequestCreate.md) |  | |
 
 ### Return type
 
@@ -525,9 +550,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success. |  -  |
-| **400** | Bad request. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The server could not understand the request due to invalid syntax. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

@@ -15,22 +15,15 @@
 
 typedef struct shared_audience_account_t shared_audience_account_t;
 
-
-// Enum ACCOUNTTYPE for shared_audience_account
-
-typedef enum  { pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_NULL = 0, pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_AD_ACCOUNT, pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_BUSINESS_ACCOUNT } pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_e;
-
-char* shared_audience_account_account_type_ToString(pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_e account_type);
-
-pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_e shared_audience_account_account_type_FromString(char* account_type);
+#include "audience_account_type.h"
 
 
 
 typedef struct shared_audience_account_t {
     char *account_id; // string
     char *account_name; // string
-    pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_e account_type; //enum
-    int shared_on_timestamp; //numeric
+    audience_account_type_t *account_type; // custom
+    int *shared_on_timestamp; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } shared_audience_account_t;
@@ -38,8 +31,8 @@ typedef struct shared_audience_account_t {
 __attribute__((deprecated)) shared_audience_account_t *shared_audience_account_create(
     char *account_id,
     char *account_name,
-    pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_e account_type,
-    int shared_on_timestamp
+    audience_account_type_t *account_type,
+    int *shared_on_timestamp
 );
 
 void shared_audience_account_free(shared_audience_account_t *shared_audience_account);

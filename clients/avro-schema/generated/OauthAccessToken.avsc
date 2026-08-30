@@ -1,0 +1,55 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Describes the valid schema for possible OAuth access token requests.",
+  "name": "OauthAccessToken",
+  "fields": [
+    {
+      "name": "access_token",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "expires_in",
+      "type": "int",
+      "doc": ""
+    },
+    {
+      "name": "refresh_token",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "refresh_token_expires_at",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "refresh_token_expires_in",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "response_type",
+      "type": ["null", "model.TokenGrantType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "scope",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "token_type",
+      "type": "string",
+      "doc": "",
+      "default": "bearer"
+    }
+  ]
+
+}

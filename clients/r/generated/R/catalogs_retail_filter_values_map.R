@@ -9,15 +9,15 @@
 #' @format An \code{R6Class} generator object
 #' @field ad_image_tags  list(character) [optional]
 #' @field ad_video_tags  list(character) [optional]
-#' @field availability  list(character) [optional]
+#' @field availability  list(\link{ProductAvailability}) [optional]
 #' @field brand  list(character) [optional]
-#' @field condition  list(character) [optional]
+#' @field condition  list(\link{ProductCondition}) [optional]
 #' @field custom_label_0  list(character) [optional]
 #' @field custom_label_1  list(character) [optional]
 #' @field custom_label_2  list(character) [optional]
 #' @field custom_label_3  list(character) [optional]
 #' @field custom_label_4  list(character) [optional]
-#' @field gender  list(character) [optional]
+#' @field gender  list(\link{Gender}) [optional]
 #' @field google_product_category_0  list(character) [optional]
 #' @field google_product_category_1  list(character) [optional]
 #' @field google_product_category_2  list(character) [optional]
@@ -25,7 +25,7 @@
 #' @field google_product_category_4  list(character) [optional]
 #' @field google_product_category_5  list(character) [optional]
 #' @field google_product_category_6  list(character) [optional]
-#' @field media_type  list(character) [optional]
+#' @field media_type  list(\link{MediaType}) [optional]
 #' @field product_type_0  list(character) [optional]
 #' @field product_type_1  list(character) [optional]
 #' @field product_type_2  list(character) [optional]
@@ -103,7 +103,7 @@ CatalogsRetailFilterValuesMap <- R6::R6Class(
       }
       if (!is.null(`availability`)) {
         stopifnot(is.vector(`availability`), length(`availability`) != 0)
-        sapply(`availability`, function(x) stopifnot(is.character(x)))
+        sapply(`availability`, function(x) stopifnot(R6::is.R6(x)))
         self$`availability` <- `availability`
       }
       if (!is.null(`brand`)) {
@@ -113,7 +113,7 @@ CatalogsRetailFilterValuesMap <- R6::R6Class(
       }
       if (!is.null(`condition`)) {
         stopifnot(is.vector(`condition`), length(`condition`) != 0)
-        sapply(`condition`, function(x) stopifnot(is.character(x)))
+        sapply(`condition`, function(x) stopifnot(R6::is.R6(x)))
         self$`condition` <- `condition`
       }
       if (!is.null(`custom_label_0`)) {
@@ -143,7 +143,7 @@ CatalogsRetailFilterValuesMap <- R6::R6Class(
       }
       if (!is.null(`gender`)) {
         stopifnot(is.vector(`gender`), length(`gender`) != 0)
-        sapply(`gender`, function(x) stopifnot(is.character(x)))
+        sapply(`gender`, function(x) stopifnot(R6::is.R6(x)))
         self$`gender` <- `gender`
       }
       if (!is.null(`google_product_category_0`)) {
@@ -183,7 +183,7 @@ CatalogsRetailFilterValuesMap <- R6::R6Class(
       }
       if (!is.null(`media_type`)) {
         stopifnot(is.vector(`media_type`), length(`media_type`) != 0)
-        sapply(`media_type`, function(x) stopifnot(is.character(x)))
+        sapply(`media_type`, function(x) stopifnot(R6::is.R6(x)))
         self$`media_type` <- `media_type`
       }
       if (!is.null(`product_type_0`)) {
@@ -254,7 +254,7 @@ CatalogsRetailFilterValuesMap <- R6::R6Class(
       }
       if (!is.null(self$`availability`)) {
         CatalogsRetailFilterValuesMapObject[["availability"]] <-
-          self$`availability`
+          self$extractSimpleType(self$`availability`)
       }
       if (!is.null(self$`brand`)) {
         CatalogsRetailFilterValuesMapObject[["brand"]] <-
@@ -262,7 +262,7 @@ CatalogsRetailFilterValuesMap <- R6::R6Class(
       }
       if (!is.null(self$`condition`)) {
         CatalogsRetailFilterValuesMapObject[["condition"]] <-
-          self$`condition`
+          self$extractSimpleType(self$`condition`)
       }
       if (!is.null(self$`custom_label_0`)) {
         CatalogsRetailFilterValuesMapObject[["custom_label_0"]] <-
@@ -286,7 +286,7 @@ CatalogsRetailFilterValuesMap <- R6::R6Class(
       }
       if (!is.null(self$`gender`)) {
         CatalogsRetailFilterValuesMapObject[["gender"]] <-
-          self$`gender`
+          self$extractSimpleType(self$`gender`)
       }
       if (!is.null(self$`google_product_category_0`)) {
         CatalogsRetailFilterValuesMapObject[["google_product_category_0"]] <-
@@ -318,7 +318,7 @@ CatalogsRetailFilterValuesMap <- R6::R6Class(
       }
       if (!is.null(self$`media_type`)) {
         CatalogsRetailFilterValuesMapObject[["media_type"]] <-
-          self$`media_type`
+          self$extractSimpleType(self$`media_type`)
       }
       if (!is.null(self$`product_type_0`)) {
         CatalogsRetailFilterValuesMapObject[["product_type_0"]] <-
@@ -343,6 +343,29 @@ CatalogsRetailFilterValuesMap <- R6::R6Class(
       return(CatalogsRetailFilterValuesMapObject)
     },
 
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
+    },
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsRetailFilterValuesMap
     #'
@@ -357,13 +380,13 @@ CatalogsRetailFilterValuesMap <- R6::R6Class(
         self$`ad_video_tags` <- ApiClient$new()$deserializeObj(this_object$`ad_video_tags`, "array[character]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`availability`)) {
-        self$`availability` <- ApiClient$new()$deserializeObj(this_object$`availability`, "array[character]", loadNamespace("openapi"))
+        self$`availability` <- ApiClient$new()$deserializeObj(this_object$`availability`, "array[ProductAvailability]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`brand`)) {
         self$`brand` <- ApiClient$new()$deserializeObj(this_object$`brand`, "array[character]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`condition`)) {
-        self$`condition` <- ApiClient$new()$deserializeObj(this_object$`condition`, "array[character]", loadNamespace("openapi"))
+        self$`condition` <- ApiClient$new()$deserializeObj(this_object$`condition`, "array[ProductCondition]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`custom_label_0`)) {
         self$`custom_label_0` <- ApiClient$new()$deserializeObj(this_object$`custom_label_0`, "array[character]", loadNamespace("openapi"))
@@ -381,7 +404,7 @@ CatalogsRetailFilterValuesMap <- R6::R6Class(
         self$`custom_label_4` <- ApiClient$new()$deserializeObj(this_object$`custom_label_4`, "array[character]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`gender`)) {
-        self$`gender` <- ApiClient$new()$deserializeObj(this_object$`gender`, "array[character]", loadNamespace("openapi"))
+        self$`gender` <- ApiClient$new()$deserializeObj(this_object$`gender`, "array[Gender]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`google_product_category_0`)) {
         self$`google_product_category_0` <- ApiClient$new()$deserializeObj(this_object$`google_product_category_0`, "array[character]", loadNamespace("openapi"))
@@ -405,7 +428,7 @@ CatalogsRetailFilterValuesMap <- R6::R6Class(
         self$`google_product_category_6` <- ApiClient$new()$deserializeObj(this_object$`google_product_category_6`, "array[character]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`media_type`)) {
-        self$`media_type` <- ApiClient$new()$deserializeObj(this_object$`media_type`, "array[character]", loadNamespace("openapi"))
+        self$`media_type` <- ApiClient$new()$deserializeObj(this_object$`media_type`, "array[MediaType]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`product_type_0`)) {
         self$`product_type_0` <- ApiClient$new()$deserializeObj(this_object$`product_type_0`, "array[character]", loadNamespace("openapi"))
@@ -445,15 +468,15 @@ CatalogsRetailFilterValuesMap <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`ad_image_tags` <- ApiClient$new()$deserializeObj(this_object$`ad_image_tags`, "array[character]", loadNamespace("openapi"))
       self$`ad_video_tags` <- ApiClient$new()$deserializeObj(this_object$`ad_video_tags`, "array[character]", loadNamespace("openapi"))
-      self$`availability` <- ApiClient$new()$deserializeObj(this_object$`availability`, "array[character]", loadNamespace("openapi"))
+      self$`availability` <- ApiClient$new()$deserializeObj(this_object$`availability`, "array[ProductAvailability]", loadNamespace("openapi"))
       self$`brand` <- ApiClient$new()$deserializeObj(this_object$`brand`, "array[character]", loadNamespace("openapi"))
-      self$`condition` <- ApiClient$new()$deserializeObj(this_object$`condition`, "array[character]", loadNamespace("openapi"))
+      self$`condition` <- ApiClient$new()$deserializeObj(this_object$`condition`, "array[ProductCondition]", loadNamespace("openapi"))
       self$`custom_label_0` <- ApiClient$new()$deserializeObj(this_object$`custom_label_0`, "array[character]", loadNamespace("openapi"))
       self$`custom_label_1` <- ApiClient$new()$deserializeObj(this_object$`custom_label_1`, "array[character]", loadNamespace("openapi"))
       self$`custom_label_2` <- ApiClient$new()$deserializeObj(this_object$`custom_label_2`, "array[character]", loadNamespace("openapi"))
       self$`custom_label_3` <- ApiClient$new()$deserializeObj(this_object$`custom_label_3`, "array[character]", loadNamespace("openapi"))
       self$`custom_label_4` <- ApiClient$new()$deserializeObj(this_object$`custom_label_4`, "array[character]", loadNamespace("openapi"))
-      self$`gender` <- ApiClient$new()$deserializeObj(this_object$`gender`, "array[character]", loadNamespace("openapi"))
+      self$`gender` <- ApiClient$new()$deserializeObj(this_object$`gender`, "array[Gender]", loadNamespace("openapi"))
       self$`google_product_category_0` <- ApiClient$new()$deserializeObj(this_object$`google_product_category_0`, "array[character]", loadNamespace("openapi"))
       self$`google_product_category_1` <- ApiClient$new()$deserializeObj(this_object$`google_product_category_1`, "array[character]", loadNamespace("openapi"))
       self$`google_product_category_2` <- ApiClient$new()$deserializeObj(this_object$`google_product_category_2`, "array[character]", loadNamespace("openapi"))
@@ -461,7 +484,7 @@ CatalogsRetailFilterValuesMap <- R6::R6Class(
       self$`google_product_category_4` <- ApiClient$new()$deserializeObj(this_object$`google_product_category_4`, "array[character]", loadNamespace("openapi"))
       self$`google_product_category_5` <- ApiClient$new()$deserializeObj(this_object$`google_product_category_5`, "array[character]", loadNamespace("openapi"))
       self$`google_product_category_6` <- ApiClient$new()$deserializeObj(this_object$`google_product_category_6`, "array[character]", loadNamespace("openapi"))
-      self$`media_type` <- ApiClient$new()$deserializeObj(this_object$`media_type`, "array[character]", loadNamespace("openapi"))
+      self$`media_type` <- ApiClient$new()$deserializeObj(this_object$`media_type`, "array[MediaType]", loadNamespace("openapi"))
       self$`product_type_0` <- ApiClient$new()$deserializeObj(this_object$`product_type_0`, "array[character]", loadNamespace("openapi"))
       self$`product_type_1` <- ApiClient$new()$deserializeObj(this_object$`product_type_1`, "array[character]", loadNamespace("openapi"))
       self$`product_type_2` <- ApiClient$new()$deserializeObj(this_object$`product_type_2`, "array[character]", loadNamespace("openapi"))

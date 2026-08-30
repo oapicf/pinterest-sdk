@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.IntegrationLogClientError;
 import org.openapitools.vertxweb.server.model.IntegrationLogClientRequest;
+import org.openapitools.vertxweb.server.model.IntegrationLogEventType;
+import org.openapitools.vertxweb.server.model.IntegrationLogLevel;
 
 /**
  * Schema for log sent from an integration application.
@@ -18,49 +20,10 @@ public class IntegrationLog   {
   private String appVersionNumber;
   private Integer clientTimestamp;
   private IntegrationLogClientError error;
-
-
-  public enum EventTypeEnum {
-    APP("APP"),
-    API("API");
-
-    private String value;
-
-    EventTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private EventTypeEnum eventType;
+  private IntegrationLogEventType eventType;
   private String externalBusinessId;
   private String feedProfileId;
-
-
-  public enum LogLevelEnum {
-    INFO("INFO"),
-    WARN("WARN"),
-    ERROR("ERROR");
-
-    private String value;
-
-    LogLevelEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private LogLevelEnum logLevel;
+  private IntegrationLogLevel logLevel;
   private String merchantId;
   private String message;
   private String platformVersionNumber;
@@ -71,7 +34,7 @@ public class IntegrationLog   {
 
   }
 
-  public IntegrationLog (String advertiserId, String appVersionNumber, Integer clientTimestamp, IntegrationLogClientError error, EventTypeEnum eventType, String externalBusinessId, String feedProfileId, LogLevelEnum logLevel, String merchantId, String message, String platformVersionNumber, IntegrationLogClientRequest request, String tagId) {
+  public IntegrationLog (String advertiserId, String appVersionNumber, Integer clientTimestamp, IntegrationLogClientError error, IntegrationLogEventType eventType, String externalBusinessId, String feedProfileId, IntegrationLogLevel logLevel, String merchantId, String message, String platformVersionNumber, IntegrationLogClientRequest request, String tagId) {
     this.advertiserId = advertiserId;
     this.appVersionNumber = appVersionNumber;
     this.clientTimestamp = clientTimestamp;
@@ -125,10 +88,10 @@ public class IntegrationLog   {
 
     
   @JsonProperty("event_type")
-  public EventTypeEnum getEventType() {
+  public IntegrationLogEventType getEventType() {
     return eventType;
   }
-  public void setEventType(EventTypeEnum eventType) {
+  public void setEventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
   }
 
@@ -152,10 +115,10 @@ public class IntegrationLog   {
 
     
   @JsonProperty("log_level")
-  public LogLevelEnum getLogLevel() {
+  public IntegrationLogLevel getLogLevel() {
     return logLevel;
   }
-  public void setLogLevel(LogLevelEnum logLevel) {
+  public void setLogLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
   }
 
@@ -261,9 +224,6 @@ public class IntegrationLog   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

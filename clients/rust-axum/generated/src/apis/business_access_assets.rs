@@ -1,7 +1,8 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Host};
+use axum_extra::extract::CookieJar;
 use bytes::Bytes;
+use headers::Host;
 use http::Method;
 use serde::{Deserialize, Serialize};
 
@@ -11,168 +12,340 @@ use crate::{models, types::*};
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum AssetGroupSlashCreateResponse {
-    /// Success
-    Status200_Success
-    (models::CreateAssetGroupResponse)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::AssetGroupInput)
     ,
-    /// Invalid parameters.
-    Status400_InvalidParameters
-    (models::Error)
+    /// Resource create operation completed successfully.
+    Status201_ResourceCreateOperationCompletedSuccessfully
+    (models::AssetGroupInput)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum AssetGroupSlashDeleteResponse {
-    /// Success
-    Status200_Success
-    (models::DeleteAssetGroupResponse)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::AssetGroupDeletion)
     ,
-    /// Invalid parameters.
-    Status400_InvalidParameters
-    (models::Error)
-    ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum AssetGroupSlashUpdateResponse {
-    /// Success
-    Status200_Success
-    (models::UpdateAssetGroupResponse)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::AssetGroupModification)
     ,
-    /// Invalid parameters.
-    Status400_InvalidParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BusinessAssetMembersSlashGetResponse {
-    /// Sucess
-    Status200_Sucess
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::BusinessAssetMembersGet200Response)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BusinessAssetPartnersSlashGetResponse {
-    /// Sucess
-    Status200_Sucess
-    (models::BusinessAssetPartnersGet200Response)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::BusinessAssetMembersGet200Response)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BusinessAssetsSlashGetResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::BusinessAssetsGet200Response)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BusinessMemberAssetsSlashGetResponse {
-    /// Success
-    Status200_Success
-    (models::BusinessMemberAssetsGet200Response)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::BusinessMemberAssetsGetResponse)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BusinessMembersAssetAccessSlashDeleteResponse {
-    /// response
-    Status200_Response
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::DeleteMemberAccessResultsResponseArray)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BusinessMembersAssetAccessSlashUpdateResponse {
-    /// response
-    Status200_Response
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::UpdateMemberAssetsResultsResponseArray)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BusinessPartnerAssetAccessSlashGetResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::BusinessPartnerAssetAccessGet200Response)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum DeletePartnerAssetAccessHandlerImplResponse {
-    /// Success
-    Status200_Success
-    (models::DeletePartnerAssetsResultsResponseArray)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::DeletePartnerAssetAccessResultsResponseArray)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum UpdatePartnerAssetAccessHandlerImplResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::UpdatePartnerAssetsResultsResponseArray)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 
@@ -192,7 +365,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     host: &Host,
     cookies: &CookieJar,
       path_params: &models::AssetGroupSlashCreatePathParams,
-            body: &models::CreateAssetGroupBody,
+            body: &models::AssetGroupInputCreate,
     ) -> Result<AssetGroupSlashCreateResponse, E>;
 
     /// Delete asset groups..
@@ -205,7 +378,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     host: &Host,
     cookies: &CookieJar,
       path_params: &models::AssetGroupSlashDeletePathParams,
-            body: &models::DeleteAssetGroupBody,
+            body: &models::AssetGroupDeletionDelete,
     ) -> Result<AssetGroupSlashDeleteResponse, E>;
 
     /// Update asset groups..
@@ -218,7 +391,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     host: &Host,
     cookies: &CookieJar,
       path_params: &models::AssetGroupSlashUpdatePathParams,
-            body: &models::UpdateAssetGroupBody,
+            body: &models::AssetGroupModificationReadOrUpdate,
     ) -> Result<AssetGroupSlashUpdateResponse, E>;
 
     /// Get members with access to asset.
@@ -283,7 +456,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     host: &Host,
     cookies: &CookieJar,
       path_params: &models::BusinessMembersAssetAccessSlashDeletePathParams,
-            body: &models::BusinessMembersAssetAccessDeleteRequest,
+            body: &models::BusinessMembersAssetAccessDeleteBody,
     ) -> Result<BusinessMembersAssetAccessSlashDeleteResponse, E>;
 
     /// Assign/Update member asset permissions.

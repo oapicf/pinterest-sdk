@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -73,9 +73,9 @@ func (o *ProductGroupPromotionResponseItem) SetData(v ProductGroupPromotion) {
 	o.Data = &v
 }
 
-// GetExceptions returns the Exceptions field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExceptions returns the Exceptions field value if set, zero value otherwise.
 func (o *ProductGroupPromotionResponseItem) GetExceptions() []Exception {
-	if o == nil {
+	if o == nil || IsNil(o.Exceptions) {
 		var ret []Exception
 		return ret
 	}
@@ -84,7 +84,6 @@ func (o *ProductGroupPromotionResponseItem) GetExceptions() []Exception {
 
 // GetExceptionsOk returns a tuple with the Exceptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupPromotionResponseItem) GetExceptionsOk() ([]Exception, bool) {
 	if o == nil || IsNil(o.Exceptions) {
 		return nil, false
@@ -119,7 +118,7 @@ func (o ProductGroupPromotionResponseItem) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
-	if o.Exceptions != nil {
+	if !IsNil(o.Exceptions) {
 		toSerialize["exceptions"] = o.Exceptions
 	}
 	return toSerialize, nil

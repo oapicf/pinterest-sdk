@@ -43,9 +43,6 @@ module.exports = {
                 key: `${keyPrefix}LARGE_PRODUCT_COUNT_DECREASE`,
                 label: `The product count has decreased by more than 99% compared to the last successful ingestion. - [${labelPrefix}LARGE_PRODUCT_COUNT_DECREASE]`,
                 type: 'integer',
-                choices: [
-                    '1',
-                ],
             },
             {
                 key: `${keyPrefix}LINE_LEVEL_INTERNAL_ERROR`,

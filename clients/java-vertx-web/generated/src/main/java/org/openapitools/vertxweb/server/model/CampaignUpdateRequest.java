@@ -7,40 +7,51 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.CampaignBidOptionsUpdate;
 import org.openapitools.vertxweb.server.model.EntityStatus;
+import org.openapitools.vertxweb.server.model.IntendedPromotionType;
 import org.openapitools.vertxweb.server.model.ObjectiveType;
-import org.openapitools.vertxweb.server.model.TrackingUrls;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CampaignUpdateRequest   {
   
-  private String id;
+  private CampaignBidOptionsUpdate bidOptions;
+  private IntendedPromotionType intendedPromotionType;
+  private Boolean isLtvOptimized;
+  private Boolean isPerformancePlus;
+  private Boolean isTopOfSearch;
+  private ObjectiveType objectiveType;
   private String adAccountId;
   private Integer dailySpendCap;
+  private Integer defaultAdGroupBudgetInMicroCurrency;
   private Integer endTime;
+  private String id;
   private Boolean isAutomatedCampaign;
+  private Boolean isCampaignBudgetOptimization;
   private Boolean isFlexibleDailyBudgets;
   private Integer lifetimeSpendCap;
   private String name;
   private String orderLineId;
   private Integer startTime;
   private EntityStatus status;
-  private TrackingUrls trackingUrls;
-  private Integer defaultAdGroupBudgetInMicroCurrency;
-  private Boolean isCampaignBudgetOptimization;
-  private CampaignBidOptionsUpdate bidOptions;
-  private Boolean isPerformancePlus;
-  private ObjectiveType objectiveType;
+  private Object trackingUrls;
 
   public CampaignUpdateRequest () {
 
   }
 
-  public CampaignUpdateRequest (String id, String adAccountId, Integer dailySpendCap, Integer endTime, Boolean isAutomatedCampaign, Boolean isFlexibleDailyBudgets, Integer lifetimeSpendCap, String name, String orderLineId, Integer startTime, EntityStatus status, TrackingUrls trackingUrls, Integer defaultAdGroupBudgetInMicroCurrency, Boolean isCampaignBudgetOptimization, CampaignBidOptionsUpdate bidOptions, Boolean isPerformancePlus, ObjectiveType objectiveType) {
-    this.id = id;
+  public CampaignUpdateRequest (CampaignBidOptionsUpdate bidOptions, IntendedPromotionType intendedPromotionType, Boolean isLtvOptimized, Boolean isPerformancePlus, Boolean isTopOfSearch, ObjectiveType objectiveType, String adAccountId, Integer dailySpendCap, Integer defaultAdGroupBudgetInMicroCurrency, Integer endTime, String id, Boolean isAutomatedCampaign, Boolean isCampaignBudgetOptimization, Boolean isFlexibleDailyBudgets, Integer lifetimeSpendCap, String name, String orderLineId, Integer startTime, EntityStatus status, Object trackingUrls) {
+    this.bidOptions = bidOptions;
+    this.intendedPromotionType = intendedPromotionType;
+    this.isLtvOptimized = isLtvOptimized;
+    this.isPerformancePlus = isPerformancePlus;
+    this.isTopOfSearch = isTopOfSearch;
+    this.objectiveType = objectiveType;
     this.adAccountId = adAccountId;
     this.dailySpendCap = dailySpendCap;
+    this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
     this.endTime = endTime;
+    this.id = id;
     this.isAutomatedCampaign = isAutomatedCampaign;
+    this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
     this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
     this.lifetimeSpendCap = lifetimeSpendCap;
     this.name = name;
@@ -48,20 +59,60 @@ public class CampaignUpdateRequest   {
     this.startTime = startTime;
     this.status = status;
     this.trackingUrls = trackingUrls;
-    this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
-    this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
-    this.bidOptions = bidOptions;
-    this.isPerformancePlus = isPerformancePlus;
-    this.objectiveType = objectiveType;
   }
 
     
-  @JsonProperty("id")
-  public String getId() {
-    return id;
+  @JsonProperty("bid_options")
+  public CampaignBidOptionsUpdate getBidOptions() {
+    return bidOptions;
   }
-  public void setId(String id) {
-    this.id = id;
+  public void setBidOptions(CampaignBidOptionsUpdate bidOptions) {
+    this.bidOptions = bidOptions;
+  }
+
+    
+  @JsonProperty("intended_promotion_type")
+  public IntendedPromotionType getIntendedPromotionType() {
+    return intendedPromotionType;
+  }
+  public void setIntendedPromotionType(IntendedPromotionType intendedPromotionType) {
+    this.intendedPromotionType = intendedPromotionType;
+  }
+
+    
+  @JsonProperty("is_ltv_optimized")
+  public Boolean getIsLtvOptimized() {
+    return isLtvOptimized;
+  }
+  public void setIsLtvOptimized(Boolean isLtvOptimized) {
+    this.isLtvOptimized = isLtvOptimized;
+  }
+
+    
+  @JsonProperty("is_performance_plus")
+  public Boolean getIsPerformancePlus() {
+    return isPerformancePlus;
+  }
+  public void setIsPerformancePlus(Boolean isPerformancePlus) {
+    this.isPerformancePlus = isPerformancePlus;
+  }
+
+    
+  @JsonProperty("is_top_of_search")
+  public Boolean getIsTopOfSearch() {
+    return isTopOfSearch;
+  }
+  public void setIsTopOfSearch(Boolean isTopOfSearch) {
+    this.isTopOfSearch = isTopOfSearch;
+  }
+
+    
+  @JsonProperty("objective_type")
+  public ObjectiveType getObjectiveType() {
+    return objectiveType;
+  }
+  public void setObjectiveType(ObjectiveType objectiveType) {
+    this.objectiveType = objectiveType;
   }
 
     
@@ -83,6 +134,15 @@ public class CampaignUpdateRequest   {
   }
 
     
+  @JsonProperty("default_ad_group_budget_in_micro_currency")
+  public Integer getDefaultAdGroupBudgetInMicroCurrency() {
+    return defaultAdGroupBudgetInMicroCurrency;
+  }
+  public void setDefaultAdGroupBudgetInMicroCurrency(Integer defaultAdGroupBudgetInMicroCurrency) {
+    this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
+  }
+
+    
   @JsonProperty("end_time")
   public Integer getEndTime() {
     return endTime;
@@ -92,12 +152,30 @@ public class CampaignUpdateRequest   {
   }
 
     
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+    
   @JsonProperty("is_automated_campaign")
   public Boolean getIsAutomatedCampaign() {
     return isAutomatedCampaign;
   }
   public void setIsAutomatedCampaign(Boolean isAutomatedCampaign) {
     this.isAutomatedCampaign = isAutomatedCampaign;
+  }
+
+    
+  @JsonProperty("is_campaign_budget_optimization")
+  public Boolean getIsCampaignBudgetOptimization() {
+    return isCampaignBudgetOptimization;
+  }
+  public void setIsCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
+    this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
   }
 
     
@@ -156,56 +234,11 @@ public class CampaignUpdateRequest   {
 
     
   @JsonProperty("tracking_urls")
-  public TrackingUrls getTrackingUrls() {
+  public Object getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
+  public void setTrackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
-  }
-
-    
-  @JsonProperty("default_ad_group_budget_in_micro_currency")
-  public Integer getDefaultAdGroupBudgetInMicroCurrency() {
-    return defaultAdGroupBudgetInMicroCurrency;
-  }
-  public void setDefaultAdGroupBudgetInMicroCurrency(Integer defaultAdGroupBudgetInMicroCurrency) {
-    this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
-  }
-
-    
-  @JsonProperty("is_campaign_budget_optimization")
-  public Boolean getIsCampaignBudgetOptimization() {
-    return isCampaignBudgetOptimization;
-  }
-  public void setIsCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
-    this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
-  }
-
-    
-  @JsonProperty("bid_options")
-  public CampaignBidOptionsUpdate getBidOptions() {
-    return bidOptions;
-  }
-  public void setBidOptions(CampaignBidOptionsUpdate bidOptions) {
-    this.bidOptions = bidOptions;
-  }
-
-    
-  @JsonProperty("is_performance_plus")
-  public Boolean getIsPerformancePlus() {
-    return isPerformancePlus;
-  }
-  public void setIsPerformancePlus(Boolean isPerformancePlus) {
-    this.isPerformancePlus = isPerformancePlus;
-  }
-
-    
-  @JsonProperty("objective_type")
-  public ObjectiveType getObjectiveType() {
-    return objectiveType;
-  }
-  public void setObjectiveType(ObjectiveType objectiveType) {
-    this.objectiveType = objectiveType;
   }
 
 
@@ -218,28 +251,31 @@ public class CampaignUpdateRequest   {
       return false;
     }
     CampaignUpdateRequest campaignUpdateRequest = (CampaignUpdateRequest) o;
-    return Objects.equals(id, campaignUpdateRequest.id) &&
+    return Objects.equals(bidOptions, campaignUpdateRequest.bidOptions) &&
+        Objects.equals(intendedPromotionType, campaignUpdateRequest.intendedPromotionType) &&
+        Objects.equals(isLtvOptimized, campaignUpdateRequest.isLtvOptimized) &&
+        Objects.equals(isPerformancePlus, campaignUpdateRequest.isPerformancePlus) &&
+        Objects.equals(isTopOfSearch, campaignUpdateRequest.isTopOfSearch) &&
+        Objects.equals(objectiveType, campaignUpdateRequest.objectiveType) &&
         Objects.equals(adAccountId, campaignUpdateRequest.adAccountId) &&
         Objects.equals(dailySpendCap, campaignUpdateRequest.dailySpendCap) &&
+        Objects.equals(defaultAdGroupBudgetInMicroCurrency, campaignUpdateRequest.defaultAdGroupBudgetInMicroCurrency) &&
         Objects.equals(endTime, campaignUpdateRequest.endTime) &&
+        Objects.equals(id, campaignUpdateRequest.id) &&
         Objects.equals(isAutomatedCampaign, campaignUpdateRequest.isAutomatedCampaign) &&
+        Objects.equals(isCampaignBudgetOptimization, campaignUpdateRequest.isCampaignBudgetOptimization) &&
         Objects.equals(isFlexibleDailyBudgets, campaignUpdateRequest.isFlexibleDailyBudgets) &&
         Objects.equals(lifetimeSpendCap, campaignUpdateRequest.lifetimeSpendCap) &&
         Objects.equals(name, campaignUpdateRequest.name) &&
         Objects.equals(orderLineId, campaignUpdateRequest.orderLineId) &&
         Objects.equals(startTime, campaignUpdateRequest.startTime) &&
         Objects.equals(status, campaignUpdateRequest.status) &&
-        Objects.equals(trackingUrls, campaignUpdateRequest.trackingUrls) &&
-        Objects.equals(defaultAdGroupBudgetInMicroCurrency, campaignUpdateRequest.defaultAdGroupBudgetInMicroCurrency) &&
-        Objects.equals(isCampaignBudgetOptimization, campaignUpdateRequest.isCampaignBudgetOptimization) &&
-        Objects.equals(bidOptions, campaignUpdateRequest.bidOptions) &&
-        Objects.equals(isPerformancePlus, campaignUpdateRequest.isPerformancePlus) &&
-        Objects.equals(objectiveType, campaignUpdateRequest.objectiveType);
+        Objects.equals(trackingUrls, campaignUpdateRequest.trackingUrls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adAccountId, dailySpendCap, endTime, isAutomatedCampaign, isFlexibleDailyBudgets, lifetimeSpendCap, name, orderLineId, startTime, status, trackingUrls, defaultAdGroupBudgetInMicroCurrency, isCampaignBudgetOptimization, bidOptions, isPerformancePlus, objectiveType);
+    return Objects.hash(bidOptions, intendedPromotionType, isLtvOptimized, isPerformancePlus, isTopOfSearch, objectiveType, adAccountId, dailySpendCap, defaultAdGroupBudgetInMicroCurrency, endTime, id, isAutomatedCampaign, isCampaignBudgetOptimization, isFlexibleDailyBudgets, lifetimeSpendCap, name, orderLineId, startTime, status, trackingUrls);
   }
 
   @Override
@@ -247,11 +283,19 @@ public class CampaignUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignUpdateRequest {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
+    sb.append("    intendedPromotionType: ").append(toIndentedString(intendedPromotionType)).append("\n");
+    sb.append("    isLtvOptimized: ").append(toIndentedString(isLtvOptimized)).append("\n");
+    sb.append("    isPerformancePlus: ").append(toIndentedString(isPerformancePlus)).append("\n");
+    sb.append("    isTopOfSearch: ").append(toIndentedString(isTopOfSearch)).append("\n");
+    sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    dailySpendCap: ").append(toIndentedString(dailySpendCap)).append("\n");
+    sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    isAutomatedCampaign: ").append(toIndentedString(isAutomatedCampaign)).append("\n");
+    sb.append("    isCampaignBudgetOptimization: ").append(toIndentedString(isCampaignBudgetOptimization)).append("\n");
     sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    lifetimeSpendCap: ").append(toIndentedString(lifetimeSpendCap)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -259,11 +303,6 @@ public class CampaignUpdateRequest   {
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
-    sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
-    sb.append("    isCampaignBudgetOptimization: ").append(toIndentedString(isCampaignBudgetOptimization)).append("\n");
-    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
-    sb.append("    isPerformancePlus: ").append(toIndentedString(isPerformancePlus)).append("\n");
-    sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -273,9 +312,6 @@ public class CampaignUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

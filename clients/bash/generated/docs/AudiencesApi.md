@@ -15,10 +15,7 @@ Method | HTTP request | Description
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with
-the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude
-specific 'audience_ids' when you create an ad group. <p/>
-Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+Create a new audience for the ad account.
 
 ### Example
 
@@ -32,11 +29,11 @@ Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **audienceCreateRequest** | [**AudienceCreateRequest**](AudienceCreateRequest.md) | List of ads to create, size limit [1, 30] |
+ **adAccountsAudienceCreate** | [**AdAccountsAudienceCreate**](AdAccountsAudienceCreate.md) |  |
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -59,7 +56,7 @@ Get a specific audience given the audience ID.
 ### Example
 
 ```bash
- audiencesGet ad_account_id=value audience_id=value
+ audiencesGet audience_id=value ad_account_id=value
 ```
 
 ### Parameters
@@ -67,12 +64,12 @@ Get a specific audience given the audience ID.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audienceId** | **string** | Audience ID. | [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **audienceId** | **string** | Unique identifier of an audience | [default to null]
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -95,7 +92,7 @@ Get list of audiences for the ad account.
 ### Example
 
 ```bash
- audiencesList ad_account_id=value  bookmark=value  order=value  page_size=value  ownership_type=value
+ audiencesList ad_account_id=value  bookmark=value  page_size=value  order=value  ownership_type=value  exclude_nca=value
 ```
 
 ### Parameters
@@ -105,11 +102,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID.
-For received audiences, it is sorted by sharing event time.
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md) | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID.
 Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
- **ownershipType** | **string** | Filter audiences by ownership type. | [optional] [default to OWNED]
+ **ownershipType** | [**AudienceOwnershipType**](.md) |  | [optional] [default to null]
+ **excludeNca** | **boolean** | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [optional] [default to false]
 
 ### Return type
 
@@ -131,12 +129,12 @@ Note that higher-value IDs are associated with more-recently added items. | [opt
 
 Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 ### Example
 
 ```bash
- audiencesUpdate ad_account_id=value audience_id=value
+ audiencesUpdate audience_id=value ad_account_id=value
 ```
 
 ### Parameters
@@ -144,13 +142,13 @@ Update (edit or remove) an existing targeting audience.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audienceId** | **string** | Audience ID. | [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **audienceId** | **string** | Unique identifier of an audience | [default to null]
- **audienceUpdateRequest** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md) | The audience to be updated. |
+ **adAccountsAudienceUpdate** | [**AdAccountsAudienceUpdate**](AdAccountsAudienceUpdate.md) |  |
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 

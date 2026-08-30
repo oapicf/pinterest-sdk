@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.CatalogsHotelReportStatsParametersReport
+open OpenAPI.Model.CatalogsRetailReportStatsParametersReport
 
 module CatalogsRetailReportStatsParameters =
 
@@ -14,6 +14,6 @@ module CatalogsRetailReportStatsParameters =
 
   type CatalogsRetailReportStatsParameters = {
     CatalogType : CatalogTypeEnum;
-    Report : CatalogsHotelReportStatsParametersReport;
+    Report : CatalogsRetailReportStatsParametersReport;
   }
   //#endregion

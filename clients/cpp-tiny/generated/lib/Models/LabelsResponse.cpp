@@ -119,7 +119,7 @@ LabelsResponse::getErrors()
 }
 
 void
-LabelsResponse::setErrors(std::list <LabelError> errors)
+LabelsResponse::setErrors(std::list<LabelError> errors)
 {
 	this->errors = errors;
 }
@@ -131,7 +131,7 @@ LabelsResponse::getLabels()
 }
 
 void
-LabelsResponse::setLabels(std::list <Label> labels)
+LabelsResponse::setLabels(std::list<Label> labels)
 {
 	this->labels = labels;
 }

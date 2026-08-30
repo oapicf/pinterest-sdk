@@ -9,15 +9,15 @@ Name | Type
 ------------ | -------------
 `adImageTags` | Array&lt;string&gt;
 `adVideoTags` | Array&lt;string&gt;
-`availability` | Array&lt;string&gt;
+`availability` | [Array&lt;ProductAvailability&gt;](ProductAvailability.md)
 `brand` | Array&lt;string&gt;
-`condition` | Array&lt;string&gt;
+`condition` | [Array&lt;ProductCondition&gt;](ProductCondition.md)
 `customLabel0` | Array&lt;string&gt;
 `customLabel1` | Array&lt;string&gt;
 `customLabel2` | Array&lt;string&gt;
 `customLabel3` | Array&lt;string&gt;
 `customLabel4` | Array&lt;string&gt;
-`gender` | Array&lt;string&gt;
+`gender` | [Array&lt;Gender&gt;](Gender.md)
 `googleProductCategory0` | Array&lt;string&gt;
 `googleProductCategory1` | Array&lt;string&gt;
 `googleProductCategory2` | Array&lt;string&gt;
@@ -25,7 +25,7 @@ Name | Type
 `googleProductCategory4` | Array&lt;string&gt;
 `googleProductCategory5` | Array&lt;string&gt;
 `googleProductCategory6` | Array&lt;string&gt;
-`mediaType` | Array&lt;string&gt;
+`mediaType` | [Array&lt;MediaType&gt;](MediaType.md)
 `productType0` | Array&lt;string&gt;
 `productType1` | Array&lt;string&gt;
 `productType2` | Array&lt;string&gt;

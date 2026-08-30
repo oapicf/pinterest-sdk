@@ -4,6 +4,7 @@ package org.openapitools.server.model
 /**
  * Resource create operation model.
  *
+ * @param aiDisclosures AI disclosure declarations the creator has made about this Pin. for example: ''null''
  * @param altText  for example: ''null''
  * @param boardId The board to which this Pin belongs. for example: ''null''
  * @param boardSectionId The board section to which this Pin belongs. for example: ''null''
@@ -16,6 +17,7 @@ package org.openapitools.server.model
  * @param title  for example: ''null''
 */
 final case class PinCreate (
+  aiDisclosures: Option[AiDisclosures] = None,
   altText: Option[String] = None,
   boardId: Option[String] = None,
   boardSectionId: Option[String] = None,

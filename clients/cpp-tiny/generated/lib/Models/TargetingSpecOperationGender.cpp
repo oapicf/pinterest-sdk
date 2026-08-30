@@ -7,7 +7,7 @@ using namespace Tiny;
 TargetingSpecOperationGender::TargetingSpecOperationGender()
 {
 	field = std::string();
-	operation = std::string();
+	operation = TargetingSpecListOperation();
 	values = std::list<TargetingSpecGender>();
 }
 
@@ -47,8 +47,9 @@ TargetingSpecOperationGender::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&operation, value, "std::string");
 
+        TargetingSpecListOperation* obj = &operation;
+		obj->fromJson(value.dump());
 
     }
 
@@ -93,8 +94,8 @@ TargetingSpecOperationGender::toJson()
 
 
 
-    object["operation"] = getOperation();
 
+	object["operation"] = getOperation().toJson();
 
 
 
@@ -123,19 +124,19 @@ TargetingSpecOperationGender::getField()
 }
 
 void
-TargetingSpecOperationGender::setField(std::string  field)
+TargetingSpecOperationGender::setField(std::string field)
 {
 	this->field = field;
 }
 
-std::string
+TargetingSpecListOperation
 TargetingSpecOperationGender::getOperation()
 {
 	return operation;
 }
 
 void
-TargetingSpecOperationGender::setOperation(std::string  operation)
+TargetingSpecOperationGender::setOperation(TargetingSpecListOperation operation)
 {
 	this->operation = operation;
 }
@@ -147,7 +148,7 @@ TargetingSpecOperationGender::getValues()
 }
 
 void
-TargetingSpecOperationGender::setValues(std::list <TargetingSpecGender> values)
+TargetingSpecOperationGender::setValues(std::list<TargetingSpecGender> values)
 {
 	this->values = values;
 }

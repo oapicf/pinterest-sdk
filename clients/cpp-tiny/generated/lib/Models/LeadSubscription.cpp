@@ -232,7 +232,7 @@ LeadSubscription::getAdAccountId()
 }
 
 void
-LeadSubscription::setAdAccountId(std::string  ad_account_id)
+LeadSubscription::setAdAccountId(std::string ad_account_id)
 {
 	this->ad_account_id = ad_account_id;
 }
@@ -244,7 +244,7 @@ LeadSubscription::getApiVersion()
 }
 
 void
-LeadSubscription::setApiVersion(std::string  api_version)
+LeadSubscription::setApiVersion(std::string api_version)
 {
 	this->api_version = api_version;
 }
@@ -256,7 +256,7 @@ LeadSubscription::getCreatedTime()
 }
 
 void
-LeadSubscription::setCreatedTime(int  created_time)
+LeadSubscription::setCreatedTime(int created_time)
 {
 	this->created_time = created_time;
 }
@@ -268,7 +268,7 @@ LeadSubscription::getCryptographicAlgorithm()
 }
 
 void
-LeadSubscription::setCryptographicAlgorithm(std::string  cryptographic_algorithm)
+LeadSubscription::setCryptographicAlgorithm(std::string cryptographic_algorithm)
 {
 	this->cryptographic_algorithm = cryptographic_algorithm;
 }
@@ -280,7 +280,7 @@ LeadSubscription::getCryptographicKey()
 }
 
 void
-LeadSubscription::setCryptographicKey(std::string  cryptographic_key)
+LeadSubscription::setCryptographicKey(std::string cryptographic_key)
 {
 	this->cryptographic_key = cryptographic_key;
 }
@@ -292,7 +292,7 @@ LeadSubscription::getId()
 }
 
 void
-LeadSubscription::setId(std::string  id)
+LeadSubscription::setId(std::string id)
 {
 	this->id = id;
 }
@@ -304,7 +304,7 @@ LeadSubscription::getLeadFormId()
 }
 
 void
-LeadSubscription::setLeadFormId(std::string  lead_form_id)
+LeadSubscription::setLeadFormId(std::string lead_form_id)
 {
 	this->lead_form_id = lead_form_id;
 }
@@ -316,7 +316,7 @@ LeadSubscription::getUserAccountId()
 }
 
 void
-LeadSubscription::setUserAccountId(std::string  user_account_id)
+LeadSubscription::setUserAccountId(std::string user_account_id)
 {
 	this->user_account_id = user_account_id;
 }
@@ -328,7 +328,7 @@ LeadSubscription::getWebhookUrl()
 }
 
 void
-LeadSubscription::setWebhookUrl(std::string  webhook_url)
+LeadSubscription::setWebhookUrl(std::string webhook_url)
 {
 	this->webhook_url = webhook_url;
 }

@@ -6,7 +6,7 @@
   "fields": [
     {
       "name": "data",
-      "type": ["null", "model.PromotionResponse"],
+      "type": ["null", "model.Promotion"],
       "doc": "",
       "default": null
     },

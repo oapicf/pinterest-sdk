@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.media_type import MediaType  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -15,7 +16,7 @@ class CatalogsCreativeAssetsFilterValuesMap(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, custom_label_0: List[str]=None, custom_label_1: List[str]=None, custom_label_2: List[str]=None, custom_label_3: List[str]=None, custom_label_4: List[str]=None, google_product_category_0: List[str]=None, google_product_category_1: List[str]=None, google_product_category_2: List[str]=None, google_product_category_3: List[str]=None, google_product_category_4: List[str]=None, google_product_category_5: List[str]=None, google_product_category_6: List[str]=None, media_type: List[str]=None):  # noqa: E501
+    def __init__(self, custom_label_0: List[str]=None, custom_label_1: List[str]=None, custom_label_2: List[str]=None, custom_label_3: List[str]=None, custom_label_4: List[str]=None, google_product_category_0: List[str]=None, google_product_category_1: List[str]=None, google_product_category_2: List[str]=None, google_product_category_3: List[str]=None, google_product_category_4: List[str]=None, google_product_category_5: List[str]=None, google_product_category_6: List[str]=None, media_type: List[MediaType]=None):  # noqa: E501
         """CatalogsCreativeAssetsFilterValuesMap - a model defined in Swagger
 
         :param custom_label_0: The custom_label_0 of this CatalogsCreativeAssetsFilterValuesMap.  # noqa: E501
@@ -43,7 +44,7 @@ class CatalogsCreativeAssetsFilterValuesMap(Model):
         :param google_product_category_6: The google_product_category_6 of this CatalogsCreativeAssetsFilterValuesMap.  # noqa: E501
         :type google_product_category_6: List[str]
         :param media_type: The media_type of this CatalogsCreativeAssetsFilterValuesMap.  # noqa: E501
-        :type media_type: List[str]
+        :type media_type: List[MediaType]
         """
         self.swagger_types = {
             'custom_label_0': List[str],
@@ -58,7 +59,7 @@ class CatalogsCreativeAssetsFilterValuesMap(Model):
             'google_product_category_4': List[str],
             'google_product_category_5': List[str],
             'google_product_category_6': List[str],
-            'media_type': List[str]
+            'media_type': List[MediaType]
         }
 
         self.attribute_map = {
@@ -97,7 +98,7 @@ class CatalogsCreativeAssetsFilterValuesMap(Model):
 
         :param dikt: A dict.
         :type: dict
-        :return: The catalogs_creative_assets_filter_values_map of this CatalogsCreativeAssetsFilterValuesMap.  # noqa: E501
+        :return: The CatalogsCreativeAssetsFilterValuesMap of this CatalogsCreativeAssetsFilterValuesMap.  # noqa: E501
         :rtype: CatalogsCreativeAssetsFilterValuesMap
         """
         return util.deserialize_model(dikt, cls)
@@ -355,29 +356,22 @@ class CatalogsCreativeAssetsFilterValuesMap(Model):
         self._google_product_category_6 = google_product_category_6
 
     @property
-    def media_type(self) -> List[str]:
+    def media_type(self) -> List[MediaType]:
         """Gets the media_type of this CatalogsCreativeAssetsFilterValuesMap.
 
 
         :return: The media_type of this CatalogsCreativeAssetsFilterValuesMap.
-        :rtype: List[str]
+        :rtype: List[MediaType]
         """
         return self._media_type
 
     @media_type.setter
-    def media_type(self, media_type: List[str]):
+    def media_type(self, media_type: List[MediaType]):
         """Sets the media_type of this CatalogsCreativeAssetsFilterValuesMap.
 
 
         :param media_type: The media_type of this CatalogsCreativeAssetsFilterValuesMap.
-        :type media_type: List[str]
+        :type media_type: List[MediaType]
         """
-        allowed_values = ["IMAGE", "VIDEO"]  # noqa: E501
-        if not set(media_type).issubset(set(allowed_values)):
-            raise ValueError(
-                "Invalid values for `media_type` [{0}], must be a subset of [{1}]"  # noqa: E501
-                .format(", ".join(map(str, set(media_type) - set(allowed_values))),  # noqa: E501
-                        ", ".join(map(str, allowed_values)))
-            )
 
         self._media_type = media_type

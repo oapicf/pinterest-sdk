@@ -12,7 +12,6 @@ API.Client.SsioInsertionOrdersStatusGetByAdAccount200Response = function() {}
 API.Client.SsioInsertionOrdersStatusGetByAdAccount200Response.prototype.bookmark;
 
 /**
- * Insertion orders status by ad acount id
  * @type {!Array<!API.Client.SSIOInsertionOrderStatus>}
  * @export
  */

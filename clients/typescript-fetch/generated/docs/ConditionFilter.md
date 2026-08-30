@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`cONDITION` | [CatalogsProductGroupMultipleStringCriteria](.md)
+`cONDITION` | [CatalogsProductGroupMultipleStringCriteria](CatalogsProductGroupMultipleStringCriteria.md)
 
 ## Example
 

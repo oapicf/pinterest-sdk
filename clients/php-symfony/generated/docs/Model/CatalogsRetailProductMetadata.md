@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**availability** | [**OpenAPI\Server\Model\NonNullableProductAvailabilityType**](NonNullableProductAvailabilityType.md) |  | 
+**availability** | [**OpenAPI\Server\Model\ProductAvailability**](ProductAvailability.md) |  | 
 **currency** | [**OpenAPI\Server\Model\NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | 
 **itemGroupId** | **string** | The parent ID of the product. | 
 **itemId** | **string** | The user-created unique ID that represents the product. | 

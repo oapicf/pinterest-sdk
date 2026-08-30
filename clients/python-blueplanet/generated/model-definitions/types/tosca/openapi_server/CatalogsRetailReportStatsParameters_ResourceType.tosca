@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  CatalogsHotelReportStatsParametersReport = openapi_server.resourceTypes.CatalogsHotelReportStatsParametersReport
+  CatalogsRetailReportStatsParametersReport = openapi_server.resourceTypes.CatalogsRetailReportStatsParametersReport
 }
 resourceTypes {
 
@@ -23,7 +23,7 @@ resourceTypes {
           optional = true
         }
         report {
-          type = CatalogsHotelReportStatsParametersReport
+          type = CatalogsRetailReportStatsParametersReport
           description = ""
           optional = true
         }

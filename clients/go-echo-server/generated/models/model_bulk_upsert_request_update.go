@@ -9,11 +9,13 @@ type BulkUpsertRequestUpdate struct {
 
 	Campaigns []CampaignUpdateRequest `json:"campaigns,omitempty"`
 
-	CatalogProductGroups []CatalogsProductGroupsUpdateRequest `json:"catalog_product_groups,omitempty"`
+	CatalogProductGroups []BulkUpsertRequestUpdateCatalogProductGroupsItems `json:"catalog_product_groups,omitempty"`
 
-	Keywords []KeywordUpdate `json:"keywords,omitempty"`
+	Keywords []KeywordUpdateGenerated `json:"keywords,omitempty"`
 
 	Labels []LabelBulkUpdateRequest `json:"labels,omitempty"`
 
 	ProductGroups []ProductGroupPromotionUpdateRequest `json:"product_groups,omitempty"`
+
+	Schedules []ScheduleUpdateRequest `json:"schedules,omitempty"`
 }

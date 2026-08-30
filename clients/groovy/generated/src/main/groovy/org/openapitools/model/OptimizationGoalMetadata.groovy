@@ -3,16 +3,16 @@ package org.openapitools.model;
 import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.OptimizationGoalMetadataConversionTagV3GoalMetadata;
-import org.openapitools.model.OptimizationGoalMetadataFrequencyGoalMetadata;
-import org.openapitools.model.OptimizationGoalMetadataScrollupGoalMetadata;
+import org.openapitools.model.ConversionTagV3GoalMetadata;
+import org.openapitools.model.FrequencyGoalMetadata;
+import org.openapitools.model.ScrollupGoalMetadata;
 
 @Canonical
 class OptimizationGoalMetadata {
     
-    OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata
+    ConversionTagV3GoalMetadata conversionTagV3GoalMetadata
     
-    OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata
+    FrequencyGoalMetadata frequencyGoalMetadata
     
-    OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata
+    ScrollupGoalMetadata scrollupGoalMetadata
 }

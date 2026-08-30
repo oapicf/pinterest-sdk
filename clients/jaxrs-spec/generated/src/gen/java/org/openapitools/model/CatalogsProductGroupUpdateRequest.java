@@ -20,10 +20,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object for updating a product group.")
 @JsonTypeName("CatalogsProductGroupUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupUpdateRequest   {
   private String description;
   private CatalogsProductGroupFiltersRequest filters;
+  @Deprecated
   private Boolean isFeatured;
   private String name;
 
@@ -70,12 +71,18 @@ public class CatalogsProductGroupUpdateRequest   {
 
   /**
    * boolean indicator of whether the product group is being featured or not
+   * @deprecated
    **/
+  @Deprecated
   public CatalogsProductGroupUpdateRequest isFeatured(Boolean isFeatured) {
     this.isFeatured = isFeatured;
     return this;
   }
 
+  /**
+   * @deprecated
+   */
+  @Deprecated
   
   @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
   @JsonProperty("is_featured")
@@ -83,6 +90,10 @@ public class CatalogsProductGroupUpdateRequest   {
     return isFeatured;
   }
 
+  /**
+   * @deprecated
+   */
+  @Deprecated
   @JsonProperty("is_featured")
   public void setIsFeatured(Boolean isFeatured) {
     this.isFeatured = isFeatured;
@@ -146,12 +157,8 @@ public class CatalogsProductGroupUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

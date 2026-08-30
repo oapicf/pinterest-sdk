@@ -17,7 +17,7 @@ import java.time.OffsetDateTime;
  * CatalogsFeedIngestion
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedIngestion   {
   @JsonProperty("created_at")
   private OffsetDateTime createdAt;
@@ -37,10 +37,10 @@ public class CatalogsFeedIngestion   {
   }
 
   /**
-   * Get createdAt
+   * Timestamp of the feed ingestion.
    * @return createdAt
    */
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "Timestamp of the feed ingestion.")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -55,10 +55,10 @@ public class CatalogsFeedIngestion   {
   }
 
   /**
-   * Get feedId
+   * Catalog Feed id pertaining to the feed ingestion.
    * @return feedId
    */
-  @ApiModelProperty(example = "56789", required = true, value = "")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the feed ingestion.")
   public String getFeedId() {
     return feedId;
   }
@@ -73,10 +73,10 @@ public class CatalogsFeedIngestion   {
   }
 
   /**
-   * Get id
+   * Unique identifier of a feed ingestion.
    * @return id
    */
-  @ApiModelProperty(example = "01234", required = true, value = "")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Unique identifier of a feed ingestion.")
   public String getId() {
     return id;
   }
@@ -91,10 +91,10 @@ public class CatalogsFeedIngestion   {
   }
 
   /**
-   * Get status
+   * Status of the feed ingestion.
    * @return status
    */
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Status of the feed ingestion.")
   public CatalogsFeedProcessingStatus getStatus() {
     return status;
   }
@@ -142,10 +142,7 @@ public class CatalogsFeedIngestion   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

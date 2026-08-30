@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -19,7 +27,6 @@ import org.openapitools.client.models.BrandFilter
 import org.openapitools.client.models.CatalogsProductGroupFilterOperatorTypeCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleCountriesCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringCriteria
-import org.openapitools.client.models.CatalogsProductGroupPricingCurrencyCriteria
 import org.openapitools.client.models.CountryFilter
 import org.openapitools.client.models.CustomLabel0Filter
 import org.openapitools.client.models.CustomLabel1Filter
@@ -28,6 +35,7 @@ import org.openapitools.client.models.CustomLabel3Filter
 import org.openapitools.client.models.CustomLabel4Filter
 import org.openapitools.client.models.HotelIdFilter
 import org.openapitools.client.models.PriceFilter
+import org.openapitools.client.models.PriceFilterPrice
 import org.openapitools.client.models.TitleKeywordsFilter
 
 import com.squareup.moshi.Json
@@ -52,7 +60,7 @@ import com.squareup.moshi.JsonClass
 data class CatalogsHotelProductGroupFilterKeys (
 
     @Json(name = "PRICE")
-    val PRICE: CatalogsProductGroupPricingCurrencyCriteria,
+    val PRICE: PriceFilterPrice,
 
     @Json(name = "HOTEL_ID")
     val HOTEL_ID: CatalogsProductGroupMultipleStringCriteria,

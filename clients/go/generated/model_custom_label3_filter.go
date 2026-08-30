@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -57,11 +57,11 @@ func (o *CustomLabel3Filter) GetCUSTOMLABEL3() CatalogsProductGroupFilterOperato
 
 // GetCUSTOMLABEL3Ok returns a tuple with the CUSTOMLABEL3 field value
 // and a boolean to check if the value has been set.
-func (o *CustomLabel3Filter) GetCUSTOMLABEL3Ok() (CatalogsProductGroupFilterOperatorTypeCriteria, bool) {
+func (o *CustomLabel3Filter) GetCUSTOMLABEL3Ok() (*CatalogsProductGroupFilterOperatorTypeCriteria, bool) {
 	if o == nil {
-		return CatalogsProductGroupFilterOperatorTypeCriteria{}, false
+		return nil, false
 	}
-	return o.CUSTOMLABEL3, true
+	return &o.CUSTOMLABEL3, true
 }
 
 // SetCUSTOMLABEL3 sets field value

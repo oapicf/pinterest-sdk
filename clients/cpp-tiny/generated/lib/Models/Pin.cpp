@@ -6,22 +6,24 @@ using namespace Tiny;
 
 Pin::Pin()
 {
-	alt_text = std::string();
+	ai_disclosures = null;
 	board_id = std::string();
 	board_owner = null;
 	board_section_id = std::string();
 	created_at = std::string();
 	creative_type = null;
-	description = std::string();
 	dominant_color = std::string();
 	has_been_promoted = bool(false);
 	id = std::string();
 	is_owner = bool(false);
+	is_product = bool(false);
 	is_standard = bool(false);
-	link = std::string();
 	media = null;
 	parent_pin_id = std::string();
 	pin_metrics = null;
+	alt_text = std::string();
+	description = std::string();
+	link = std::string();
 	title = std::string();
 }
 
@@ -40,16 +42,17 @@ Pin::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
-    const char *alt_textKey = "alt_text";
+    const char *ai_disclosuresKey = "ai_disclosures";
 
-    if(object.has_key(alt_textKey))
+    if(object.has_key(ai_disclosuresKey))
     {
-        bourne::json value = object[alt_textKey];
+        bourne::json value = object[ai_disclosuresKey];
 
 
 
-        jsonToValue(&alt_text, value, "std::string");
 
+        AiDisclosures* obj = &ai_disclosures;
+		obj->fromJson(value.dump());
 
     }
 
@@ -120,19 +123,6 @@ Pin::fromJson(std::string jsonObj)
 
     }
 
-    const char *descriptionKey = "description";
-
-    if(object.has_key(descriptionKey))
-    {
-        bourne::json value = object[descriptionKey];
-
-
-
-        jsonToValue(&description, value, "std::string");
-
-
-    }
-
     const char *dominant_colorKey = "dominant_color";
 
     if(object.has_key(dominant_colorKey))
@@ -185,6 +175,19 @@ Pin::fromJson(std::string jsonObj)
 
     }
 
+    const char *is_productKey = "is_product";
+
+    if(object.has_key(is_productKey))
+    {
+        bourne::json value = object[is_productKey];
+
+
+
+        jsonToValue(&is_product, value, "bool");
+
+
+    }
+
     const char *is_standardKey = "is_standard";
 
     if(object.has_key(is_standardKey))
@@ -194,19 +197,6 @@ Pin::fromJson(std::string jsonObj)
 
 
         jsonToValue(&is_standard, value, "bool");
-
-
-    }
-
-    const char *linkKey = "link";
-
-    if(object.has_key(linkKey))
-    {
-        bourne::json value = object[linkKey];
-
-
-
-        jsonToValue(&link, value, "std::string");
 
 
     }
@@ -252,6 +242,45 @@ Pin::fromJson(std::string jsonObj)
 
     }
 
+    const char *alt_textKey = "alt_text";
+
+    if(object.has_key(alt_textKey))
+    {
+        bourne::json value = object[alt_textKey];
+
+
+
+        jsonToValue(&alt_text, value, "std::string");
+
+
+    }
+
+    const char *descriptionKey = "description";
+
+    if(object.has_key(descriptionKey))
+    {
+        bourne::json value = object[descriptionKey];
+
+
+
+        jsonToValue(&description, value, "std::string");
+
+
+    }
+
+    const char *linkKey = "link";
+
+    if(object.has_key(linkKey))
+    {
+        bourne::json value = object[linkKey];
+
+
+
+        jsonToValue(&link, value, "std::string");
+
+
+    }
+
     const char *titleKey = "title";
 
     if(object.has_key(titleKey))
@@ -277,8 +306,8 @@ Pin::toJson()
 
 
 
-    object["alt_text"] = getAltText();
 
+	object["ai_disclosures"] = getAiDisclosures().toJson();
 
 
 
@@ -319,13 +348,6 @@ Pin::toJson()
 
 
 
-    object["description"] = getDescription();
-
-
-
-
-
-
     object["dominant_color"] = getDominantColor();
 
 
@@ -354,14 +376,14 @@ Pin::toJson()
 
 
 
+    object["is_product"] = isIsProduct();
+
+
+
+
+
+
     object["is_standard"] = isIsStandard();
-
-
-
-
-
-
-    object["link"] = getLink();
 
 
 
@@ -389,6 +411,27 @@ Pin::toJson()
 
 
 
+    object["alt_text"] = getAltText();
+
+
+
+
+
+
+    object["description"] = getDescription();
+
+
+
+
+
+
+    object["link"] = getLink();
+
+
+
+
+
+
     object["title"] = getTitle();
 
 
@@ -397,16 +440,16 @@ Pin::toJson()
 
 }
 
-std::string
-Pin::getAltText()
+AiDisclosures
+Pin::getAiDisclosures()
 {
-	return alt_text;
+	return ai_disclosures;
 }
 
 void
-Pin::setAltText(std::string  alt_text)
+Pin::setAiDisclosures(AiDisclosures ai_disclosures)
 {
-	this->alt_text = alt_text;
+	this->ai_disclosures = ai_disclosures;
 }
 
 std::string
@@ -416,7 +459,7 @@ Pin::getBoardId()
 }
 
 void
-Pin::setBoardId(std::string  board_id)
+Pin::setBoardId(std::string board_id)
 {
 	this->board_id = board_id;
 }
@@ -428,7 +471,7 @@ Pin::getBoardOwner()
 }
 
 void
-Pin::setBoardOwner(BoardOwner  board_owner)
+Pin::setBoardOwner(BoardOwner board_owner)
 {
 	this->board_owner = board_owner;
 }
@@ -440,7 +483,7 @@ Pin::getBoardSectionId()
 }
 
 void
-Pin::setBoardSectionId(std::string  board_section_id)
+Pin::setBoardSectionId(std::string board_section_id)
 {
 	this->board_section_id = board_section_id;
 }
@@ -452,7 +495,7 @@ Pin::getCreatedAt()
 }
 
 void
-Pin::setCreatedAt(std::string  created_at)
+Pin::setCreatedAt(std::string created_at)
 {
 	this->created_at = created_at;
 }
@@ -464,21 +507,9 @@ Pin::getCreativeType()
 }
 
 void
-Pin::setCreativeType(CreativeType  creative_type)
+Pin::setCreativeType(CreativeType creative_type)
 {
 	this->creative_type = creative_type;
-}
-
-std::string
-Pin::getDescription()
-{
-	return description;
-}
-
-void
-Pin::setDescription(std::string  description)
-{
-	this->description = description;
 }
 
 std::string
@@ -488,7 +519,7 @@ Pin::getDominantColor()
 }
 
 void
-Pin::setDominantColor(std::string  dominant_color)
+Pin::setDominantColor(std::string dominant_color)
 {
 	this->dominant_color = dominant_color;
 }
@@ -500,7 +531,7 @@ Pin::isHasBeenPromoted()
 }
 
 void
-Pin::setHasBeenPromoted(bool  has_been_promoted)
+Pin::setHasBeenPromoted(bool has_been_promoted)
 {
 	this->has_been_promoted = has_been_promoted;
 }
@@ -512,7 +543,7 @@ Pin::getId()
 }
 
 void
-Pin::setId(std::string  id)
+Pin::setId(std::string id)
 {
 	this->id = id;
 }
@@ -524,9 +555,21 @@ Pin::isIsOwner()
 }
 
 void
-Pin::setIsOwner(bool  is_owner)
+Pin::setIsOwner(bool is_owner)
 {
 	this->is_owner = is_owner;
+}
+
+bool
+Pin::isIsProduct()
+{
+	return is_product;
+}
+
+void
+Pin::setIsProduct(bool is_product)
+{
+	this->is_product = is_product;
 }
 
 bool
@@ -536,21 +579,9 @@ Pin::isIsStandard()
 }
 
 void
-Pin::setIsStandard(bool  is_standard)
+Pin::setIsStandard(bool is_standard)
 {
 	this->is_standard = is_standard;
-}
-
-std::string
-Pin::getLink()
-{
-	return link;
-}
-
-void
-Pin::setLink(std::string  link)
-{
-	this->link = link;
 }
 
 PinMedia
@@ -560,7 +591,7 @@ Pin::getMedia()
 }
 
 void
-Pin::setMedia(PinMedia  media)
+Pin::setMedia(PinMedia media)
 {
 	this->media = media;
 }
@@ -572,7 +603,7 @@ Pin::getParentPinId()
 }
 
 void
-Pin::setParentPinId(std::string  parent_pin_id)
+Pin::setParentPinId(std::string parent_pin_id)
 {
 	this->parent_pin_id = parent_pin_id;
 }
@@ -584,9 +615,45 @@ Pin::getPinMetrics()
 }
 
 void
-Pin::setPinMetrics(Object  pin_metrics)
+Pin::setPinMetrics(Object pin_metrics)
 {
 	this->pin_metrics = pin_metrics;
+}
+
+std::string
+Pin::getAltText()
+{
+	return alt_text;
+}
+
+void
+Pin::setAltText(std::string alt_text)
+{
+	this->alt_text = alt_text;
+}
+
+std::string
+Pin::getDescription()
+{
+	return description;
+}
+
+void
+Pin::setDescription(std::string description)
+{
+	this->description = description;
+}
+
+std::string
+Pin::getLink()
+{
+	return link;
+}
+
+void
+Pin::setLink(std::string link)
+{
+	this->link = link;
 }
 
 std::string
@@ -596,7 +663,7 @@ Pin::getTitle()
 }
 
 void
-Pin::setTitle(std::string  title)
+Pin::setTitle(std::string title)
 {
 	this->title = title;
 }

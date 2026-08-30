@@ -2,9 +2,12 @@ package org.openapitools.server.model
 
 
 /**
+ * @param bidMultiplier <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>. for example: ''null''
+ * @param id Ad group ID. for example: ''null''
+ * @param targetingSpecOperations <div>Targeting spec operations define modifications to apply to the targeting spec.</div> <br /> <div><strong>NOTE:</strong> The <code>targeting_spec</code> and <code>targeting_spec_operations</code> cannot be sent at the same time.</div> <br /> <div>The supported operations are:</div> <ul> <li><code>SET</code>: sets the field with the given values. If value is set to <code>null</code>, the field will be removed.</li> <li><code>ADD</code>: adds the given values to the field.</li> <li><code>REMOVE</code>: removes the given values from the field.</li> </ul> <div>Note the following:</div> <ul> <li>Same items are not added and removed at the same time.</li> <li>For a given field, only <code>ADD</code>/<code>REMOVE</code> or <code>SET</code> operations are allowed, not a mix of them.</li> <li>Only one SET operation is allowed for a given field.</li> <li>The <code>AGE_BUCKET</code>, <code>MAXIMUM_AGE</code>, <code>MINIMUM_AGE</code> and <code>SHOPPING_RETARGETING</code> fields only support the <code>SET</code> operation.</li> </ul> for example: ''null''
  * @param autoTargetingEnabled Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>. for example: ''true''
  * @param bidInMicroCurrency Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH. for example: ''5000000''
- * @param bidStrategyType Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\". for example: ''MAX_BID''
+ * @param bidStrategyType  for example: ''null''
  * @param billableEvent  for example: ''null''
  * @param budgetInMicroCurrency Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups. for example: ''5000000''
  * @param budgetType  for example: ''null''
@@ -18,18 +21,20 @@ package org.openapitools.server.model
  * @param placementGroup <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. for example: ''null''
  * @param promotionApplicationLevel Specify if the promotion is applied at ad group or item level for example: ''ITEM''
  * @param promotionId Promotion ID. To clear this field, set to null. for example: ''7834020347906''
+ * @param promotionIds Promotion IDs list. To clear this field, set to an empty array []. for example: ''["7834020347906","7834020347907"]''
  * @param startTime Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO. for example: ''5686848000''
  * @param status Ad group/entity status. for example: ''null''
  * @param targetingSpec  for example: ''null''
  * @param targetingTemplateIds Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0']. for example: ''null''
- * @param trackingUrls Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>. for example: ''null''
- * @param bidMultiplier <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>. for example: ''1''
- * @param id Ad group ID. for example: ''2680060704746''
+ * @param trackingUrls Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>. for example: ''null''
 */
 final case class AdGroupUpdateRequest (
+  bidMultiplier: Option[Double] = None,
+  id: String,
+  targetingSpecOperations: Option[Seq[TargetingSpecOperations]] = None,
   autoTargetingEnabled: Option[Boolean] = None,
   bidInMicroCurrency: Option[Int] = None,
-  bidStrategyType: Option[String] = None,
+  bidStrategyType: Option[BidStrategyType] = None,
   billableEvent: Option[ActionType] = None,
   budgetInMicroCurrency: Option[Int] = None,
   budgetType: Option[BudgetType] = None,
@@ -38,17 +43,16 @@ final case class AdGroupUpdateRequest (
   isCreativeOptimization: Option[Boolean] = None,
   lifetimeFrequencyCap: Option[Int] = None,
   name: Option[String] = None,
-  optimizationGoalMetadata: Option[OptimizationGoalMetadata] = None,
+  optimizationGoalMetadata: Option[Any] = None,
   pacingDeliveryType: Option[PacingDeliveryType] = None,
   placementGroup: Option[PlacementGroupType] = None,
   promotionApplicationLevel: Option[String] = None,
   promotionId: Option[String] = None,
+  promotionIds: Option[Seq[String]] = None,
   startTime: Option[Int] = None,
   status: Option[EntityStatus] = None,
   targetingSpec: Option[TargetingSpec] = None,
   targetingTemplateIds: Option[Seq[String]] = None,
-  trackingUrls: Option[TrackingUrls] = None,
-  bidMultiplier: Option[Double] = None,
-  id: String
+  trackingUrls: Option[Any] = None
 )
 

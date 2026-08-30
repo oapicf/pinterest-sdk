@@ -12,13 +12,14 @@
 #include "BoardCreate.h"
 #include "BoardPrivacyFilter.h"
 #include "BoardSection.h"
+#include "BoardSectionCreate.h"
+#include "BoardSectionUpdateWithRequiredBody.h"
 #include "BoardWithUpdatePrivacy.h"
 #include "BoardWithUpdatePrivacyUpdate.h"
 #include "Board_sections_list_200_response.h"
 #include "Boards_list_200_response.h"
 #include "Boards_list_pins_200_response.h"
 #include "CreativeType.h"
-#include "Error.h"
 #include "Pinterest.Lib.Error.h"
 
 namespace Tiny {
@@ -32,14 +33,14 @@ class BoardsApi : public Service {
 public:
     BoardsApi() = default;
 
-    virtual ~BoardsApi() = default;
+    virtual ~BoardsApi();
 
     /**
     * Create board section.
     *
     * Create a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
     * \param boardId Unique identifier of a board. *Required*
-    * \param boardSection Create a board section. *Required*
+    * \param boardSectionCreate  *Required*
     * \param adAccountId Unique identifier of an ad account.
     */
     Response<
@@ -50,7 +51,7 @@ public:
             std::string boardId
             , 
             
-            BoardSection boardSection
+            BoardSectionCreate boardSectionCreate
             , 
             
             std::string adAccountId
@@ -65,7 +66,7 @@ public:
     * \param adAccountId Unique identifier of an ad account.
     */
     Response<
-            String
+                BoardSection
         >
     boardSections_delete(
             
@@ -85,7 +86,7 @@ public:
     * \param boardId Unique identifier of a board. *Required*
     * \param adAccountId Unique identifier of an ad account.
     * \param bookmark Cursor used to fetch the next page of items
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
                 Board_sections_list_200_response
@@ -112,7 +113,7 @@ public:
     * \param sectionId Unique identifier of a board section. *Required*
     * \param adAccountId Unique identifier of an ad account.
     * \param bookmark Cursor used to fetch the next page of items
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
                 Boards_list_pins_200_response
@@ -140,7 +141,7 @@ public:
     * Update a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
     * \param boardId Unique identifier of a board. *Required*
     * \param sectionId Unique identifier of a board section. *Required*
-    * \param boardSection Update a board section. *Required*
+    * \param boardSectionUpdateWithRequiredBody  *Required*
     * \param adAccountId Unique identifier of an ad account.
     */
     Response<
@@ -154,7 +155,7 @@ public:
             std::string sectionId
             , 
             
-            BoardSection boardSection
+            BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody
             , 
             
             std::string adAccountId
@@ -186,7 +187,7 @@ public:
     * \param adAccountId Unique identifier of an ad account.
     */
     Response<
-            String
+                Board
         >
     boards_delete(
             
@@ -245,11 +246,11 @@ public:
     *
     * Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
     * \param boardId Unique identifier of a board. *Required*
-    * \param bookmark Cursor used to fetch the next page of items
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     * \param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
     * \param adAccountId Unique identifier of an ad account.
     * \param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+    * \param bookmark Cursor used to fetch the next page of items
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
                 Boards_list_pins_200_response
@@ -257,12 +258,6 @@ public:
     boards_listPins(
             
             std::string boardId
-            , 
-            
-            std::string bookmark
-            , 
-            
-            int pageSize
             , 
             std::list<CreativeType> creativeTypes
             
@@ -272,6 +267,12 @@ public:
             , 
             
             bool pinMetrics
+            , 
+            
+            std::string bookmark
+            , 
+            
+            int pageSize
             
     );
     /**

@@ -21,7 +21,7 @@ Protected Class RelatedTerms
 		#tag Note
 			The id of the advertiser.
 		#tag EndNote
-		related_terms_list() As OpenAPIClient.Models.RelatedTermsRelatedTermsListInner
+		related_terms_list() As OpenAPIClient.Models.RelatedTermsRelatedTermsListItems
 	#tag EndProperty
 
 
@@ -82,7 +82,7 @@ Protected Class RelatedTerms
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="RelatedTermsRelatedTermsListInner"
+			Type="RelatedTermsRelatedTermsListItems"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

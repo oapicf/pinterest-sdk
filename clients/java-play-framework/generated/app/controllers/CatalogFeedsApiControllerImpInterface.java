@@ -1,14 +1,14 @@
 package controllers;
 
 import apimodels.CatalogsFeed;
+import apimodels.CatalogsFeedCreateRequestSchema;
 import apimodels.CatalogsFeedIngestion;
+import apimodels.CatalogsFeedUpdateRequestSchema;
 import apimodels.CatalogsItemValidationIssue;
-import apimodels.Error;
 import apimodels.FeedProcessingResultsList200Response;
-import apimodels.FeedsCreateRequest;
 import apimodels.FeedsList200Response;
-import apimodels.FeedsUpdateRequest;
 import apimodels.ItemsIssuesList200Response;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -35,12 +35,12 @@ public abstract class CatalogFeedsApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result feedProcessingResultsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result feedProcessingResultsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        FeedProcessingResultsList200Response obj = feedProcessingResultsList(request, feedId, bookmark, pageSize, adAccountId);
+        FeedProcessingResultsList200Response obj = feedProcessingResultsList(request, feedId, adAccountId, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -52,14 +52,14 @@ public abstract class CatalogFeedsApiControllerImpInterface {
 
     }
 
-    public abstract FeedProcessingResultsList200Response feedProcessingResultsList(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract FeedProcessingResultsList200Response feedProcessingResultsList(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result feedsCreateHttp(Http.Request request, FeedsCreateRequest feedsCreateRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result feedsCreateHttp(Http.Request request, CatalogsFeedCreateRequestSchema catalogsFeedCreateRequestSchema,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        CatalogsFeed obj = feedsCreate(request, feedsCreateRequest, adAccountId);
+        CatalogsFeed obj = feedsCreate(request, catalogsFeedCreateRequestSchema, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -71,19 +71,26 @@ public abstract class CatalogFeedsApiControllerImpInterface {
 
     }
 
-    public abstract CatalogsFeed feedsCreate(Http.Request request, FeedsCreateRequest feedsCreateRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract CatalogsFeed feedsCreate(Http.Request request, CatalogsFeedCreateRequestSchema catalogsFeedCreateRequestSchema,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
     public Result feedsDeleteHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        feedsDelete(request, feedId, adAccountId);
-        return ok();
+        CatalogsFeed obj = feedsDelete(request, feedId, adAccountId);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
 
     }
 
-    public abstract void feedsDelete(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract CatalogsFeed feedsDelete(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
     public Result feedsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -123,12 +130,12 @@ public abstract class CatalogFeedsApiControllerImpInterface {
 
     public abstract CatalogsFeedIngestion feedsIngest(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result feedsListHttp(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Pattern(regexp="^\\d+$")String catalogId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result feedsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String catalogId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        FeedsList200Response obj = feedsList(request, bookmark, pageSize, catalogId, adAccountId);
+        FeedsList200Response obj = feedsList(request, catalogId, adAccountId, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -140,14 +147,14 @@ public abstract class CatalogFeedsApiControllerImpInterface {
 
     }
 
-    public abstract FeedsList200Response feedsList(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Pattern(regexp="^\\d+$")String catalogId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract FeedsList200Response feedsList(Http.Request request,  @Pattern(regexp="^\\d+$")String catalogId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result feedsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId, FeedsUpdateRequest feedsUpdateRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result feedsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId, CatalogsFeedUpdateRequestSchema catalogsFeedUpdateRequestSchema,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        CatalogsFeed obj = feedsUpdate(request, feedId, feedsUpdateRequest, adAccountId);
+        CatalogsFeed obj = feedsUpdate(request, feedId, catalogsFeedUpdateRequestSchema, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -159,14 +166,14 @@ public abstract class CatalogFeedsApiControllerImpInterface {
 
     }
 
-    public abstract CatalogsFeed feedsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId, FeedsUpdateRequest feedsUpdateRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract CatalogsFeed feedsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId, CatalogsFeedUpdateRequestSchema catalogsFeedUpdateRequestSchema,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result itemsIssuesListHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String processingResultId, String bookmark,  @Min(1) @Max(250)Integer pageSize, List<Integer> itemNumbers, CatalogsItemValidationIssue itemValidationIssue,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result itemsIssuesListHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String processingResultId, List<Integer> itemNumbers, CatalogsItemValidationIssue itemValidationIssue,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        ItemsIssuesList200Response obj = itemsIssuesList(request, processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId);
+        ItemsIssuesList200Response obj = itemsIssuesList(request, processingResultId, itemNumbers, itemValidationIssue, adAccountId, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -178,6 +185,6 @@ public abstract class CatalogFeedsApiControllerImpInterface {
 
     }
 
-    public abstract ItemsIssuesList200Response itemsIssuesList(Http.Request request,  @Pattern(regexp="^\\d+$")String processingResultId, String bookmark,  @Min(1) @Max(250)Integer pageSize, List<Integer> itemNumbers, CatalogsItemValidationIssue itemValidationIssue,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract ItemsIssuesList200Response itemsIssuesList(Http.Request request,  @Pattern(regexp="^\\d+$")String processingResultId, List<Integer> itemNumbers, CatalogsItemValidationIssue itemValidationIssue,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
 }

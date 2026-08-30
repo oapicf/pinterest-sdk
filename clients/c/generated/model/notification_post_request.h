@@ -1,7 +1,7 @@
 /*
  * notification_post_request.h
  *
- * Any valid JSON object
+ * Notification request body. Can be either a batch of notification objects or a single notification object.
  */
 
 #ifndef _notification_post_request_H_
@@ -15,7 +15,7 @@
 
 typedef struct notification_post_request_t notification_post_request_t;
 
-#include "any_type.h"
+#include "object.h"
 
 
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// LabelStatus The new status you want to give the label, either `ACTIVE` (in use) or no longer in use (`ARCHIVED`).
+// LabelStatus Label status values.
 type LabelStatus string
 
 // List of LabelStatus

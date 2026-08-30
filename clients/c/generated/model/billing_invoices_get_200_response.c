@@ -13,10 +13,10 @@ static billing_invoices_get_200_response_t *billing_invoices_get_200_response_cr
     if (!billing_invoices_get_200_response_local_var) {
         return NULL;
     }
+    memset(billing_invoices_get_200_response_local_var, 0, sizeof(billing_invoices_get_200_response_t));
+    billing_invoices_get_200_response_local_var->_library_owned = 1;
     billing_invoices_get_200_response_local_var->bookmark = bookmark;
     billing_invoices_get_200_response_local_var->items = items;
-
-    billing_invoices_get_200_response_local_var->_library_owned = 1;
     return billing_invoices_get_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) billing_invoices_get_200_response_t *billing_invoice
     char *bookmark,
     list_t *items
     ) {
-    return billing_invoices_get_200_response_create_internal (
+    billing_invoices_get_200_response_t *result = billing_invoices_get_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void billing_invoices_get_200_response_free(billing_invoices_get_200_response_t *billing_invoices_get_200_response) {
@@ -45,7 +48,7 @@ void billing_invoices_get_200_response_free(billing_invoices_get_200_response_t 
     }
     if (billing_invoices_get_200_response->items) {
         list_ForEach(listEntry, billing_invoices_get_200_response->items) {
-            billing_invoice_response_free(listEntry->data);
+            billing_invoice_free(listEntry->data);
         }
         list_freeList(billing_invoices_get_200_response->items);
         billing_invoices_get_200_response->items = NULL;
@@ -76,7 +79,7 @@ cJSON *billing_invoices_get_200_response_convertToJSON(billing_invoices_get_200_
     listEntry_t *itemsListEntry;
     if (billing_invoices_get_200_response->items) {
     list_ForEach(itemsListEntry, billing_invoices_get_200_response->items) {
-    cJSON *itemLocal = billing_invoice_response_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = billing_invoice_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -95,6 +98,8 @@ fail:
 billing_invoices_get_200_response_t *billing_invoices_get_200_response_parseFromJSON(cJSON *billing_invoices_get_200_responseJSON){
 
     billing_invoices_get_200_response_t *billing_invoices_get_200_response_local_var = NULL;
+
+    char *bookmark_local_str = NULL;
 
     // define the local list for billing_invoices_get_200_response->items
     list_t *itemsList = NULL;
@@ -133,23 +138,33 @@ billing_invoices_get_200_response_t *billing_invoices_get_200_response_parseFrom
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        billing_invoice_response_t *itemsItem = billing_invoice_response_parseFromJSON(items_local_nonprimitive);
+        billing_invoice_t *itemsItem = billing_invoice_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     billing_invoices_get_200_response_local_var = billing_invoices_get_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!billing_invoices_get_200_response_local_var) {
+        goto end;
+    }
+
     return billing_invoices_get_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            billing_invoice_response_free(listEntry->data);
+            billing_invoice_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

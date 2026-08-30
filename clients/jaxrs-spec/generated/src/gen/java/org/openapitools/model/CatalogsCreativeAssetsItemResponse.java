@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsAttributes;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Pin;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -21,15 +20,110 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
- * Object describing a hotel record
+ * Object describing a creative assets item record
  **/
-@ApiModel(description = "Object describing a hotel record")
+@ApiModel(description = "Object describing a creative assets item record")
 @JsonTypeName("CatalogsCreativeAssetsItemResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsItemResponse   {
   private CatalogsCreativeAssetsAttributes attributes;
-  private CatalogsType catalogType;
+  public enum CatalogTypeEnum {
+
+    CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
+
+
+    private String value;
+
+    CatalogTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    /**
+     * Convert a String into String, as specified in the
+     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
+     */
+    public static CatalogTypeEnum fromString(String s) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            // using Objects.toString() to be safe if value type non-object type
+            // because types like 'int' etc. will be auto-boxed
+            if (java.util.Objects.toString(b.value).equals(s)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private CatalogTypeEnum catalogType;
   private String creativeAssetsId;
+  public enum ItemResponseKindEnum {
+
+    CREATIVE_ASSETS_ITEM(String.valueOf("creative_assets_item"));
+
+
+    private String value;
+
+    ItemResponseKindEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    /**
+     * Convert a String into String, as specified in the
+     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
+     */
+    public static ItemResponseKindEnum fromString(String s) {
+        for (ItemResponseKindEnum b : ItemResponseKindEnum.values()) {
+            // using Objects.toString() to be safe if value type non-object type
+            // because types like 'int' etc. will be auto-boxed
+            if (java.util.Objects.toString(b.value).equals(s)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
+    }
+
+    @JsonCreator
+    public static ItemResponseKindEnum fromValue(String value) {
+        for (ItemResponseKindEnum b : ItemResponseKindEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private ItemResponseKindEnum itemResponseKind;
   private @Valid List<@Valid Pin> pins;
 
   public CatalogsCreativeAssetsItemResponse() {
@@ -37,9 +131,11 @@ public class CatalogsCreativeAssetsItemResponse   {
 
   @JsonCreator
   public CatalogsCreativeAssetsItemResponse(
-    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "item_response_kind") ItemResponseKindEnum itemResponseKind
   ) {
     this.catalogType = catalogType;
+    this.itemResponseKind = itemResponseKind;
   }
 
   /**
@@ -63,7 +159,7 @@ public class CatalogsCreativeAssetsItemResponse   {
 
   /**
    **/
-  public CatalogsCreativeAssetsItemResponse catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsItemResponse catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -71,12 +167,12 @@ public class CatalogsCreativeAssetsItemResponse   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "catalog_type")
-  @NotNull public CatalogsType getCatalogType() {
+  @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
   @JsonProperty(required = true, value = "catalog_type")
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -98,6 +194,26 @@ public class CatalogsCreativeAssetsItemResponse   {
   @JsonProperty("creative_assets_id")
   public void setCreativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
+  }
+
+  /**
+   * Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload.
+   **/
+  public CatalogsCreativeAssetsItemResponse itemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Discriminator literal identifying this leaf inside an `ItemResponse` payload.")
+  @JsonProperty(required = true, value = "item_response_kind")
+  @NotNull public ItemResponseKindEnum getItemResponseKind() {
+    return itemResponseKind;
+  }
+
+  @JsonProperty(required = true, value = "item_response_kind")
+  public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
   }
 
   /**
@@ -149,12 +265,13 @@ public class CatalogsCreativeAssetsItemResponse   {
     return Objects.equals(this.attributes, catalogsCreativeAssetsItemResponse.attributes) &&
         Objects.equals(this.catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
         Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsItemResponse.creativeAssetsId) &&
+        Objects.equals(this.itemResponseKind, catalogsCreativeAssetsItemResponse.itemResponseKind) &&
         Objects.equals(this.pins, catalogsCreativeAssetsItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, catalogType, creativeAssetsId, pins);
+    return Objects.hash(attributes, catalogType, creativeAssetsId, itemResponseKind, pins);
   }
 
   @Override
@@ -165,6 +282,7 @@ public class CatalogsCreativeAssetsItemResponse   {
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -175,12 +293,8 @@ public class CatalogsCreativeAssetsItemResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

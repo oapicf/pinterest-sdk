@@ -3,7 +3,7 @@ package models
 // CatalogsProductGroupProductCountsVertical - Product counts for a CatalogsProductGroup
 type CatalogsProductGroupProductCountsVertical struct {
 
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 
 	InStock float32 `json:"in_stock"`
 
@@ -14,4 +14,8 @@ type CatalogsProductGroupProductCountsVertical struct {
 	Total float32 `json:"total"`
 
 	Videos float32 `json:"videos"`
+
+	AppLinks float32 `json:"app_links"`
+
+	Images float32 `json:"images"`
 }

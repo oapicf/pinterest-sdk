@@ -5,7 +5,7 @@ An object containing a list of all the asset access requests
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssetRequests** | [**List&lt;CreateAssetAccessRequestBodyAssetRequestsInner&gt;**](CreateAssetAccessRequestBodyAssetRequestsInner.md) |  | 
+**AssetRequests** | [**List&lt;CreateAssetAccessRequestItem&gt;**](CreateAssetAccessRequestItem.md) |  | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

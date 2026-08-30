@@ -5,28 +5,36 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type OrderLine struct {
 
 	// Ad account ID.
-	AdAccountId string `json:"ad_account_id,omitempty"`
+	AdAccountId string `json:"ad_account_id"`
 
 	// Order line budget in micro currency.
 	Budget *float32 `json:"budget,omitempty"`
+
+	// Associated List of campaign IDs.
+	CampaignIds []string `json:"campaign_ids"`
 
 	// End time. Unix timestamp.
 	EndTime *float32 `json:"end_time,omitempty"`
 
 	// Order line ID.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
 	// Order line name.
 	Name *string `json:"name,omitempty"`
@@ -44,16 +52,140 @@ type OrderLine struct {
 	StartTime float32 `json:"start_time,omitempty"`
 
 	// Order line status.
-	Status OrderLineStatus `json:"status,omitempty"`
+	Status OrderLineStatus `json:"status"`
 
 	// Always \"orderline\".
-	Type string `json:"type,omitempty"`
+	Type string `json:"type"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into OrderLine
+func (o *OrderLine) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"ad_account_id",
+		"campaign_ids",
+		"id",
+		"status",
+		"type",
+	}
 
-	// Associated List of campaign IDs.
-	CampaignIds []string `json:"campaign_ids"`
+	requiredNullableProperties := map[string]bool{
+		"ad_account_id": false,
+		"campaign_ids": false,
+		"id": false,
+		"status": false,
+		"type": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"ad_account_id": {},
+		"budget": {},
+		"campaign_ids": {},
+		"end_time": {},
+		"id": {},
+		"name": {},
+		"paid_budget": {},
+		"paid_type": {},
+		"purchase_order_id": {},
+		"start_time": {},
+		"status": {},
+		"type": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded OrderLine
+
+	if value, exists := allProperties["ad_account_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.AdAccountId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["budget"]; exists {
+		if err = json.Unmarshal(value, &decoded.Budget); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["campaign_ids"]; exists {
+		if err = json.Unmarshal(value, &decoded.CampaignIds); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["end_time"]; exists {
+		if err = json.Unmarshal(value, &decoded.EndTime); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["paid_budget"]; exists {
+		if err = json.Unmarshal(value, &decoded.PaidBudget); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["paid_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.PaidType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["purchase_order_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.PurchaseOrderId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["start_time"]; exists {
+		if err = json.Unmarshal(value, &decoded.StartTime); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["status"]; exists {
+		if err = json.Unmarshal(value, &decoded.Status); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["type"]; exists {
+		if err = json.Unmarshal(value, &decoded.Type); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
 }
 
-// AssertOrderLineRequired checks if the required fields are not zero-ed
+// AssertOrderLineRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertOrderLineRequired(obj OrderLine) error {
 	elements := map[string]interface{}{
 		"campaign_ids": obj.CampaignIds,

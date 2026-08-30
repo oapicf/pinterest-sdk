@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &CatalogsProductGroupUint32Criteria{}
 // CatalogsProductGroupUint32Criteria struct for CatalogsProductGroupUint32Criteria
 type CatalogsProductGroupUint32Criteria struct {
 	Negated *bool `json:"negated,omitempty"`
-	Operator string `json:"operator"`
+	Operator NumericFilterOperatorType `json:"operator"`
 	Value int32 `json:"value"`
 }
 
@@ -33,10 +33,8 @@ type _CatalogsProductGroupUint32Criteria CatalogsProductGroupUint32Criteria
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsProductGroupUint32Criteria(operator string, value int32) *CatalogsProductGroupUint32Criteria {
+func NewCatalogsProductGroupUint32Criteria(operator NumericFilterOperatorType, value int32) *CatalogsProductGroupUint32Criteria {
 	this := CatalogsProductGroupUint32Criteria{}
-	var negated bool = false
-	this.Negated = &negated
 	this.Operator = operator
 	this.Value = value
 	return &this
@@ -47,8 +45,6 @@ func NewCatalogsProductGroupUint32Criteria(operator string, value int32) *Catalo
 // but it doesn't guarantee that properties required by API are set
 func NewCatalogsProductGroupUint32CriteriaWithDefaults() *CatalogsProductGroupUint32Criteria {
 	this := CatalogsProductGroupUint32Criteria{}
-	var negated bool = false
-	this.Negated = &negated
 	return &this
 }
 
@@ -85,9 +81,9 @@ func (o *CatalogsProductGroupUint32Criteria) SetNegated(v bool) {
 }
 
 // GetOperator returns the Operator field value
-func (o *CatalogsProductGroupUint32Criteria) GetOperator() string {
+func (o *CatalogsProductGroupUint32Criteria) GetOperator() NumericFilterOperatorType {
 	if o == nil {
-		var ret string
+		var ret NumericFilterOperatorType
 		return ret
 	}
 
@@ -96,7 +92,7 @@ func (o *CatalogsProductGroupUint32Criteria) GetOperator() string {
 
 // GetOperatorOk returns a tuple with the Operator field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupUint32Criteria) GetOperatorOk() (*string, bool) {
+func (o *CatalogsProductGroupUint32Criteria) GetOperatorOk() (*NumericFilterOperatorType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -104,7 +100,7 @@ func (o *CatalogsProductGroupUint32Criteria) GetOperatorOk() (*string, bool) {
 }
 
 // SetOperator sets field value
-func (o *CatalogsProductGroupUint32Criteria) SetOperator(v string) {
+func (o *CatalogsProductGroupUint32Criteria) SetOperator(v NumericFilterOperatorType) {
 	o.Operator = v
 }
 

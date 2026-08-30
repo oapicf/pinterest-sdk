@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Negated** | Pointer to **bool** |  | [optional] [default to false]
-**Operator** | **string** |  | 
+**Negated** | Pointer to **bool** |  | [optional] 
+**Operator** | [**NumericFilterOperatorType**](NumericFilterOperatorType.md) |  | 
 **Value** | **int32** |  | 
 
 ## Methods
 
 ### NewCatalogsProductGroupUint32Criteria
 
-`func NewCatalogsProductGroupUint32Criteria(operator string, value int32, ) *CatalogsProductGroupUint32Criteria`
+`func NewCatalogsProductGroupUint32Criteria(operator NumericFilterOperatorType, value int32, ) *CatalogsProductGroupUint32Criteria`
 
 NewCatalogsProductGroupUint32Criteria instantiates a new CatalogsProductGroupUint32Criteria object
 This constructor will assign default values to properties that have it defined,
@@ -54,20 +54,20 @@ HasNegated returns a boolean if a field has been set.
 
 ### GetOperator
 
-`func (o *CatalogsProductGroupUint32Criteria) GetOperator() string`
+`func (o *CatalogsProductGroupUint32Criteria) GetOperator() NumericFilterOperatorType`
 
 GetOperator returns the Operator field if non-nil, zero value otherwise.
 
 ### GetOperatorOk
 
-`func (o *CatalogsProductGroupUint32Criteria) GetOperatorOk() (*string, bool)`
+`func (o *CatalogsProductGroupUint32Criteria) GetOperatorOk() (*NumericFilterOperatorType, bool)`
 
 GetOperatorOk returns a tuple with the Operator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperator
 
-`func (o *CatalogsProductGroupUint32Criteria) SetOperator(v string)`
+`func (o *CatalogsProductGroupUint32Criteria) SetOperator(v NumericFilterOperatorType)`
 
 SetOperator sets Operator field to given value.
 

@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogProductGroupId": @"catalog_product_group_id", @"creativeType": @"creative_type", @"customizableCtaType": @"customizable_cta_type", @"heroImageTitle": @"hero_image_title", @"heroImageUrl": @"hero_image_url", @"heroPinId": @"hero_pin_id", @"imageTag": @"image_tag", @"itemId": @"item_id", @"preferredMediaType": @"preferred_media_type", @"videoTag": @"video_tag" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogProductGroupId": @"catalog_product_group_id", @"creativeType": @"creative_type", @"customizableCtaType": @"customizable_cta_type", @"heroImageTitle": @"hero_image_title", @"heroImageUrl": @"hero_image_url", @"heroPinId": @"hero_pin_id", @"imageTag": @"image_tag", @"itemId": @"item_id", @"preferredMediaType": @"preferred_media_type", @"showPromotion": @"show_promotion", @"videoTag": @"video_tag" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"customizableCtaType", @"heroImageTitle", @"heroImageUrl", @"heroPinId", @"imageTag", @"itemId", @"preferredMediaType", @"videoTag"];
+  NSArray *optionalProperties = @[@"customizableCtaType", @"heroImageTitle", @"heroImageUrl", @"heroPinId", @"imageTag", @"itemId", @"preferredMediaType", @"showPromotion", @"videoTag"];
   return [optionalProperties containsObject:propertyName];
 }
 

@@ -70,7 +70,10 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
   private CatalogsLocale locale;
 
-  @ApiModelProperty(value = "")
+ /**
+  * Name of catalog product group
+  */
+  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
 
   private String name;
  /**
@@ -167,7 +170,7 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
   }
 
  /**
-   * Get name
+   * Name of catalog product group
    * @return name
   **/
   @JsonProperty("name")
@@ -226,10 +229,7 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

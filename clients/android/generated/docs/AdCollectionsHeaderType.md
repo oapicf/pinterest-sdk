@@ -1,0 +1,10 @@
+
+
+# AdCollectionsHeaderType
+
+## Enum
+
+
+
+
+

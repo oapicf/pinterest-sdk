@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.respond_to_invites_response_array_items_inner import RespondToInvitesResponseArrayItemsInner  # noqa: F401,E501
+from app.openapi_server.models.respond_to_invite_result_item import RespondToInviteResultItem  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,14 +16,14 @@ class RespondToInvitesResponseArray(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, items: List[RespondToInvitesResponseArrayItemsInner]=None):  # noqa: E501
+    def __init__(self, items: List[RespondToInviteResultItem]=None):  # noqa: E501
         """RespondToInvitesResponseArray - a model defined in Swagger
 
         :param items: The items of this RespondToInvitesResponseArray.  # noqa: E501
-        :type items: List[RespondToInvitesResponseArrayItemsInner]
+        :type items: List[RespondToInviteResultItem]
         """
         self.swagger_types = {
-            'items': List[RespondToInvitesResponseArrayItemsInner]
+            'items': List[RespondToInviteResultItem]
         }
 
         self.attribute_map = {
@@ -44,24 +44,24 @@ class RespondToInvitesResponseArray(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def items(self) -> List[RespondToInvitesResponseArrayItemsInner]:
+    def items(self) -> List[RespondToInviteResultItem]:
         """Gets the items of this RespondToInvitesResponseArray.
 
         List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.  # noqa: E501
 
         :return: The items of this RespondToInvitesResponseArray.
-        :rtype: List[RespondToInvitesResponseArrayItemsInner]
+        :rtype: List[RespondToInviteResultItem]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[RespondToInvitesResponseArrayItemsInner]):
+    def items(self, items: List[RespondToInviteResultItem]):
         """Sets the items of this RespondToInvitesResponseArray.
 
         List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.  # noqa: E501
 
         :param items: The items of this RespondToInvitesResponseArray.
-        :type items: List[RespondToInvitesResponseArrayItemsInner]
+        :type items: List[RespondToInviteResultItem]
         """
 
         self._items = items

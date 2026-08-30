@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dailyMetrics** | [**List&lt;PinAnalyticsMetricsResponseDailyMetricsInner&gt;**](PinAnalyticsMetricsResponseDailyMetricsInner.md) | Array with the requested daily metric records |  [optional]
+**dailyMetrics** | [**List&lt;PinAnalyticsDailyMetrics&gt;**](PinAnalyticsDailyMetrics.md) | Array with the requested daily metric records |  [optional]
 **lifetimeMetrics** | **Map&lt;String, Integer&gt;** | The lifetime metric name and value. |  [optional]
 **summaryMetrics** | [**Map&lt;String, BigDecimal&gt;**](BigDecimal.md) | The metric name and value over the requested period for each requested metric |  [optional]
 

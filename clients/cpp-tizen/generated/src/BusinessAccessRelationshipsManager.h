@@ -5,22 +5,20 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
-#include "Brand_accounts_create_200_response.h"
-#include "Brand_accounts_create_request.h"
-#include "Brand_accounts_update_request.h"
-#include "DeletePartnersRequest.h"
-#include "DeletePartnersResponse.h"
-#include "DeletedMembersResponse.h"
-#include "Error.h"
+#include "BrandAccount.h"
+#include "BrandAccountCreate.h"
+#include "BrandAccountUpdate.h"
+#include "BusinessMembershipMember.h"
+#include "DeleteBusinessMembershipBody.h"
+#include "DeleteBusinessPartners.h"
+#include "DeleteBusinessPartnersDelete.h"
+#include "Delete_business_membership_200_response.h"
 #include "Get_business_employers_200_response.h"
-#include "Get_business_members_200_response.h"
-#include "Get_business_partners_200_response.h"
 #include "MemberBusinessRole.h"
-#include "MembersToDeleteBody.h"
 #include "PartnerType.h"
-#include "System_user_update_request.h"
-#include "UpdateMemberBusinessRoleBody.h"
-#include "UpdateMemberResultsResponseArray.h"
+#include "Pinterest.Lib.Error.h"
+#include "SystemUserUpdateWithRequiredBody.h"
+#include "UpdateBusinessMembershipsResponse.h"
 #include <list>
 #include "Error.h"
 
@@ -44,59 +42,59 @@ public:
  *
  * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
  * \param businessHierarchyId business hierarchy node id *Required*
- * \param brandAccountsCreateRequest  *Required*
+ * \param brandAccountCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool brandAccountsCreateSync(char * accessToken,
-	std::string businessHierarchyId, std::shared_ptr<Brand_accounts_create_request> brandAccountsCreateRequest, 
-	void(* handler)(Brand_accounts_create_200_response, Error, void* )
+	std::string businessHierarchyId, std::shared_ptr<BrandAccountCreate> brandAccountCreate, 
+	void(* handler)(BrandAccount, Error, void* )
 	, void* userData);
 
 /*! \brief Create a Brand Account. *Asynchronous*
  *
  * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
  * \param businessHierarchyId business hierarchy node id *Required*
- * \param brandAccountsCreateRequest  *Required*
+ * \param brandAccountCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool brandAccountsCreateAsync(char * accessToken,
-	std::string businessHierarchyId, std::shared_ptr<Brand_accounts_create_request> brandAccountsCreateRequest, 
-	void(* handler)(Brand_accounts_create_200_response, Error, void* )
+	std::string businessHierarchyId, std::shared_ptr<BrandAccountCreate> brandAccountCreate, 
+	void(* handler)(BrandAccount, Error, void* )
 	, void* userData);
 
 
 /*! \brief Update a Brand Account. *Synchronous*
  *
  * Update an existing Brand Account
+ * \param brandAccountId  *Required*
  * \param businessHierarchyId business hierarchy node id *Required*
- * \param brandAccountId Unique identifier of a brand account. *Required*
- * \param brandAccountsUpdateRequest  *Required*
+ * \param brandAccountUpdate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool brandAccountsUpdateSync(char * accessToken,
-	std::string businessHierarchyId, std::string brandAccountId, std::shared_ptr<Brand_accounts_update_request> brandAccountsUpdateRequest, 
-	void(* handler)(Brand_accounts_create_200_response, Error, void* )
+	std::string brandAccountId, std::string businessHierarchyId, std::shared_ptr<BrandAccountUpdate> brandAccountUpdate, 
+	void(* handler)(BrandAccount, Error, void* )
 	, void* userData);
 
 /*! \brief Update a Brand Account. *Asynchronous*
  *
  * Update an existing Brand Account
+ * \param brandAccountId  *Required*
  * \param businessHierarchyId business hierarchy node id *Required*
- * \param brandAccountId Unique identifier of a brand account. *Required*
- * \param brandAccountsUpdateRequest  *Required*
+ * \param brandAccountUpdate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool brandAccountsUpdateAsync(char * accessToken,
-	std::string businessHierarchyId, std::string brandAccountId, std::shared_ptr<Brand_accounts_update_request> brandAccountsUpdateRequest, 
-	void(* handler)(Brand_accounts_create_200_response, Error, void* )
+	std::string brandAccountId, std::string businessHierarchyId, std::shared_ptr<BrandAccountUpdate> brandAccountUpdate, 
+	void(* handler)(BrandAccount, Error, void* )
 	, void* userData);
 
 
@@ -104,28 +102,28 @@ bool brandAccountsUpdateAsync(char * accessToken,
  *
  * Terminate memberships between the specified members and your business.
  * \param businessId Business id *Required*
- * \param membersToDeleteBody List of members with role to delete. *Required*
+ * \param deleteBusinessMembershipBody  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool deleteBusinessMembershipSync(char * accessToken,
-	std::string businessId, std::shared_ptr<MembersToDeleteBody> membersToDeleteBody, 
-	void(* handler)(DeletedMembersResponse, Error, void* )
+	std::string businessId, std::shared_ptr<DeleteBusinessMembershipBody> deleteBusinessMembershipBody, 
+	void(* handler)(Delete_business_membership_200_response, Error, void* )
 	, void* userData);
 
 /*! \brief Terminate business memberships. *Asynchronous*
  *
  * Terminate memberships between the specified members and your business.
  * \param businessId Business id *Required*
- * \param membersToDeleteBody List of members with role to delete. *Required*
+ * \param deleteBusinessMembershipBody  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool deleteBusinessMembershipAsync(char * accessToken,
-	std::string businessId, std::shared_ptr<MembersToDeleteBody> membersToDeleteBody, 
-	void(* handler)(DeletedMembersResponse, Error, void* )
+	std::string businessId, std::shared_ptr<DeleteBusinessMembershipBody> deleteBusinessMembershipBody, 
+	void(* handler)(Delete_business_membership_200_response, Error, void* )
 	, void* userData);
 
 
@@ -133,56 +131,58 @@ bool deleteBusinessMembershipAsync(char * accessToken,
  *
  * Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
  * \param businessId Unique identifier of the requesting business. *Required*
- * \param deletePartnersRequest An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete.  *Required*
+ * \param deleteBusinessPartnersDelete  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool deleteBusinessPartnersSync(char * accessToken,
-	std::string businessId, std::shared_ptr<DeletePartnersRequest> deletePartnersRequest, 
-	void(* handler)(DeletePartnersResponse, Error, void* )
+	std::string businessId, std::shared_ptr<DeleteBusinessPartnersDelete> deleteBusinessPartnersDelete, 
+	void(* handler)(DeleteBusinessPartners, Error, void* )
 	, void* userData);
 
 /*! \brief Terminate business partnerships. *Asynchronous*
  *
  * Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
  * \param businessId Unique identifier of the requesting business. *Required*
- * \param deletePartnersRequest An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete.  *Required*
+ * \param deleteBusinessPartnersDelete  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool deleteBusinessPartnersAsync(char * accessToken,
-	std::string businessId, std::shared_ptr<DeletePartnersRequest> deletePartnersRequest, 
-	void(* handler)(DeletePartnersResponse, Error, void* )
+	std::string businessId, std::shared_ptr<DeleteBusinessPartnersDelete> deleteBusinessPartnersDelete, 
+	void(* handler)(DeleteBusinessPartners, Error, void* )
 	, void* userData);
 
 
 /*! \brief List business employers for user. *Synchronous*
  *
  * Get all of the viewing user's business employers.
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param assetsSummary Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
  * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool getBusinessEmployersSync(char * accessToken,
-	int pageSize, std::string bookmark, 
+	bool assetsSummary, std::string bookmark, int pageSize, 
 	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData);
 
 /*! \brief List business employers for user. *Asynchronous*
  *
  * Get all of the viewing user's business employers.
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param assetsSummary Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
  * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool getBusinessEmployersAsync(char * accessToken,
-	int pageSize, std::string bookmark, 
+	bool assetsSummary, std::string bookmark, int pageSize, 
 	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData);
 
@@ -197,14 +197,14 @@ bool getBusinessEmployersAsync(char * accessToken,
  * \param memberIds A list of business members ids separated by comma.
  * \param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool getBusinessMembersSync(char * accessToken,
 	std::string businessId, bool fetchSystemUsers, bool assetsSummary, std::list<MemberBusinessRole> businessRoles, std::string memberIds, int startIndex, std::string bookmark, int pageSize, 
-	void(* handler)(Get_business_members_200_response, Error, void* )
+	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData);
 
 /*! \brief Get business members. *Asynchronous*
@@ -217,14 +217,14 @@ bool getBusinessMembersSync(char * accessToken,
  * \param memberIds A list of business members ids separated by comma.
  * \param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool getBusinessMembersAsync(char * accessToken,
 	std::string businessId, bool fetchSystemUsers, bool assetsSummary, std::list<MemberBusinessRole> businessRoles, std::string memberIds, int startIndex, std::string bookmark, int pageSize, 
-	void(* handler)(Get_business_members_200_response, Error, void* )
+	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData);
 
 
@@ -233,18 +233,19 @@ bool getBusinessMembersAsync(char * accessToken,
  * Get all partners of the specified business.  If the assets_summary=TRUE and: - partner_type=INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type=EXTERNAL, the business assets returned are your partner's business assets the partner has granted you   access to.
  * \param businessId Unique identifier of the requesting business. *Required*
  * \param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
- * \param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+ * \param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
  * \param partnerIds A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
  * \param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param sortAscending Sort ascending.
  * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool getBusinessPartnersSync(char * accessToken,
-	std::string businessId, bool assetsSummary, PartnerType partnerType, std::string partnerIds, int startIndex, int pageSize, std::string bookmark, 
-	void(* handler)(Get_business_partners_200_response, Error, void* )
+	std::string businessId, bool assetsSummary, PartnerType partnerType, std::string partnerIds, int startIndex, bool sortAscending, std::string bookmark, int pageSize, 
+	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData);
 
 /*! \brief Get business partners. *Asynchronous*
@@ -252,18 +253,19 @@ bool getBusinessPartnersSync(char * accessToken,
  * Get all partners of the specified business.  If the assets_summary=TRUE and: - partner_type=INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type=EXTERNAL, the business assets returned are your partner's business assets the partner has granted you   access to.
  * \param businessId Unique identifier of the requesting business. *Required*
  * \param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
- * \param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+ * \param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
  * \param partnerIds A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
  * \param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param sortAscending Sort ascending.
  * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool getBusinessPartnersAsync(char * accessToken,
-	std::string businessId, bool assetsSummary, PartnerType partnerType, std::string partnerIds, int startIndex, int pageSize, std::string bookmark, 
-	void(* handler)(Get_business_partners_200_response, Error, void* )
+	std::string businessId, bool assetsSummary, PartnerType partnerType, std::string partnerIds, int startIndex, bool sortAscending, std::string bookmark, int pageSize, 
+	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData);
 
 
@@ -272,13 +274,13 @@ bool getBusinessPartnersAsync(char * accessToken,
  * Update a system user information such as name.
  * \param businessId Unique identifier of the requesting business. *Required*
  * \param systemUserId Unique identifier of a system user. *Required*
- * \param systemUserUpdateRequest  *Required*
+ * \param systemUserUpdateWithRequiredBody  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool systemUserUpdateSync(char * accessToken,
-	std::string businessId, std::string systemUserId, std::shared_ptr<System_user_update_request> systemUserUpdateRequest, 
+	std::string businessId, std::string systemUserId, std::shared_ptr<SystemUserUpdateWithRequiredBody> systemUserUpdateWithRequiredBody, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
@@ -287,13 +289,13 @@ bool systemUserUpdateSync(char * accessToken,
  * Update a system user information such as name.
  * \param businessId Unique identifier of the requesting business. *Required*
  * \param systemUserId Unique identifier of a system user. *Required*
- * \param systemUserUpdateRequest  *Required*
+ * \param systemUserUpdateWithRequiredBody  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool systemUserUpdateAsync(char * accessToken,
-	std::string businessId, std::string systemUserId, std::shared_ptr<System_user_update_request> systemUserUpdateRequest, 
+	std::string businessId, std::string systemUserId, std::shared_ptr<SystemUserUpdateWithRequiredBody> systemUserUpdateWithRequiredBody, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
@@ -302,28 +304,28 @@ bool systemUserUpdateAsync(char * accessToken,
  *
  * Update a member's business role within the business.
  * \param businessId Business id *Required*
- * \param updateMemberBusinessRoleBody List of objects with the member id and the business_role. *Required*
+ * \param businessMembershipMember  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool updateBusinessMembershipsSync(char * accessToken,
-	std::string businessId, std::list<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody, 
-	void(* handler)(UpdateMemberResultsResponseArray, Error, void* )
+	std::string businessId, std::list<BusinessMembershipMember> businessMembershipMember, 
+	void(* handler)(UpdateBusinessMembershipsResponse, Error, void* )
 	, void* userData);
 
 /*! \brief Update member's business role. *Asynchronous*
  *
  * Update a member's business role within the business.
  * \param businessId Business id *Required*
- * \param updateMemberBusinessRoleBody List of objects with the member id and the business_role. *Required*
+ * \param businessMembershipMember  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool updateBusinessMembershipsAsync(char * accessToken,
-	std::string businessId, std::list<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody, 
-	void(* handler)(UpdateMemberResultsResponseArray, Error, void* )
+	std::string businessId, std::list<BusinessMembershipMember> businessMembershipMember, 
+	void(* handler)(UpdateBusinessMembershipsResponse, Error, void* )
 	, void* userData);
 
 

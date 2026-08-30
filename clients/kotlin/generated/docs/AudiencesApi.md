@@ -12,11 +12,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="audiencesCreate"></a>
 # **audiencesCreate**
-> Audience audiencesCreate(adAccountId, audienceCreateRequest)
+> AdAccountsAudience audiencesCreate(adAccountId, adAccountsAudienceCreate)
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+Create a new audience for the ad account.
 
 ### Example
 ```kotlin
@@ -26,9 +26,9 @@ Create an audience you can use in targeting for specific ad groups. Targeting co
 
 val apiInstance = AudiencesApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val audienceCreateRequest : AudienceCreateRequest =  // AudienceCreateRequest | List of ads to create, size limit [1, 30]
+val adAccountsAudienceCreate : AdAccountsAudienceCreate =  // AdAccountsAudienceCreate | 
 try {
-    val result : Audience = apiInstance.audiencesCreate(adAccountId, audienceCreateRequest)
+    val result : AdAccountsAudience = apiInstance.audiencesCreate(adAccountId, adAccountsAudienceCreate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AudiencesApi#audiencesCreate")
@@ -43,17 +43,23 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **audienceCreateRequest** | [**AudienceCreateRequest**](AudienceCreateRequest.md)| List of ads to create, size limit [1, 30] | |
+| **adAccountsAudienceCreate** | [**AdAccountsAudienceCreate**](AdAccountsAudienceCreate.md)|  | |
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -62,7 +68,7 @@ Configure pinterest_oauth2:
 
 <a id="audiencesGet"></a>
 # **audiencesGet**
-> Audience audiencesGet(adAccountId, audienceId)
+> AdAccountsAudience audiencesGet(audienceId, adAccountId)
 
 Get audience
 
@@ -75,10 +81,10 @@ Get a specific audience given the audience ID.
 //import org.openapitools.client.models.*
 
 val apiInstance = AudiencesApi()
+val audienceId : kotlin.String = audienceId_example // kotlin.String | Audience ID.
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val audienceId : kotlin.String = audienceId_example // kotlin.String | Unique identifier of an audience
 try {
-    val result : Audience = apiInstance.audiencesGet(adAccountId, audienceId)
+    val result : AdAccountsAudience = apiInstance.audiencesGet(audienceId, adAccountId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AudiencesApi#audiencesGet")
@@ -90,22 +96,34 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| **audienceId** | **kotlin.String**| Audience ID. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **audienceId** | **kotlin.String**| Unique identifier of an audience | |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -114,7 +132,7 @@ Configure client_credentials:
 
 <a id="audiencesList"></a>
 # **audiencesList**
-> AudiencesList200Response audiencesList(adAccountId, bookmark, order, pageSize, ownershipType)
+> AudiencesList200Response audiencesList(adAccountId, bookmark, pageSize, order, ownershipType, excludeNca)
 
 List audiences
 
@@ -129,11 +147,12 @@ Get list of audiences for the ad account.
 val apiInstance = AudiencesApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-val ownershipType : kotlin.String = OWNED // kotlin.String | Filter audiences by ownership type.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+val ownershipType : AudienceOwnershipType =  // AudienceOwnershipType | 
+val excludeNca : kotlin.Boolean = true // kotlin.Boolean | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
 try {
-    val result : AudiencesList200Response = apiInstance.audiencesList(adAccountId, bookmark, order, pageSize, ownershipType)
+    val result : AudiencesList200Response = apiInstance.audiencesList(adAccountId, bookmark, pageSize, order, ownershipType, excludeNca)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AudiencesApi#audiencesList")
@@ -147,11 +166,12 @@ try {
 ### Parameters
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| **order** | **kotlin.String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
+| **ownershipType** | [**AudienceOwnershipType**](.md)|  | [optional] [enum: OWNED, RECEIVED] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ownershipType** | **kotlin.String**| Filter audiences by ownership type. | [optional] [default to OwnershipType.OWNED] [enum: OWNED, RECEIVED] |
+| **excludeNca** | **kotlin.Boolean**| When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [optional] [default to false] |
 
 ### Return type
 
@@ -160,10 +180,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -172,11 +204,11 @@ Configure client_credentials:
 
 <a id="audiencesUpdate"></a>
 # **audiencesUpdate**
-> Audience audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest)
+> AdAccountsAudience audiencesUpdate(audienceId, adAccountId, adAccountsAudienceUpdate)
 
 Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 ### Example
 ```kotlin
@@ -185,11 +217,11 @@ Update (edit or remove) an existing targeting audience.
 //import org.openapitools.client.models.*
 
 val apiInstance = AudiencesApi()
+val audienceId : kotlin.String = audienceId_example // kotlin.String | Audience ID.
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val audienceId : kotlin.String = audienceId_example // kotlin.String | Unique identifier of an audience
-val audienceUpdateRequest : AudienceUpdateRequest =  // AudienceUpdateRequest | The audience to be updated.
+val adAccountsAudienceUpdate : AdAccountsAudienceUpdate =  // AdAccountsAudienceUpdate | 
 try {
-    val result : Audience = apiInstance.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest)
+    val result : AdAccountsAudience = apiInstance.audiencesUpdate(audienceId, adAccountId, adAccountsAudienceUpdate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AudiencesApi#audiencesUpdate")
@@ -201,21 +233,27 @@ try {
 ```
 
 ### Parameters
+| **audienceId** | **kotlin.String**| Audience ID. | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
-| **audienceId** | **kotlin.String**| Unique identifier of an audience | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **audienceUpdateRequest** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md)| The audience to be updated. | |
+| **adAccountsAudienceUpdate** | [**AdAccountsAudienceUpdate**](AdAccountsAudienceUpdate.md)|  | |
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

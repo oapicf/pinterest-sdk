@@ -66,12 +66,12 @@ Campaigns_list_200_response::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<CampaignResponse> new_list;
-			CampaignResponse inst;
+			list<Campaign> new_list;
+			Campaign inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("CampaignResponse")) {
-					jsonToValue(&inst, temp_json, "CampaignResponse", "");
+				if (isprimitive("Campaign")) {
+					jsonToValue(&inst, temp_json, "Campaign", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ Campaigns_list_200_response::toJson()
 	}
 	const gchar *bookmarkKey = "bookmark";
 	json_object_set_member(pJsonObject, bookmarkKey, node);
-	if (isprimitive("CampaignResponse")) {
-		list<CampaignResponse> new_list = static_cast<list <CampaignResponse> > (getItems());
-		node = converttoJson(&new_list, "CampaignResponse", "array");
+	if (isprimitive("Campaign")) {
+		list<Campaign> new_list = static_cast<list <Campaign> > (getItems());
+		node = converttoJson(&new_list, "Campaign", "array");
 	} else {
 		node = json_node_alloc();
-		list<CampaignResponse> new_list = static_cast<list <CampaignResponse> > (getItems());
+		list<Campaign> new_list = static_cast<list <Campaign> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<CampaignResponse>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<Campaign>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			CampaignResponse obj = *it;
+			Campaign obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ Campaigns_list_200_response::setBookmark(std::string  bookmark)
 	this->bookmark = bookmark;
 }
 
-std::list<CampaignResponse>
+std::list<Campaign>
 Campaigns_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Campaigns_list_200_response::setItems(std::list <CampaignResponse> items)
+Campaigns_list_200_response::setItems(std::list <Campaign> items)
 {
 	this->items = items;
 }

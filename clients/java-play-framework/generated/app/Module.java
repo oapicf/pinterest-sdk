@@ -25,13 +25,16 @@ public class Module extends AbstractModule {
         bind(CatalogItemsApiControllerImpInterface.class).to(CatalogItemsApiControllerImp.class);
         bind(CatalogProductGroupsApiControllerImpInterface.class).to(CatalogProductGroupsApiControllerImp.class);
         bind(CatalogReportsApiControllerImpInterface.class).to(CatalogReportsApiControllerImp.class);
+        bind(CatalogSupplementalApiControllerImpInterface.class).to(CatalogSupplementalApiControllerImp.class);
         bind(CatalogsApiControllerImpInterface.class).to(CatalogsApiControllerImp.class);
+        bind(ConversionDeletionRequestsApiControllerImpInterface.class).to(ConversionDeletionRequestsApiControllerImp.class);
         bind(ConversionEqsApiControllerImpInterface.class).to(ConversionEqsApiControllerImp.class);
         bind(ConversionEventsApiControllerImpInterface.class).to(ConversionEventsApiControllerImp.class);
         bind(ConversionTagsApiControllerImpInterface.class).to(ConversionTagsApiControllerImp.class);
         bind(ConversionsApiControllerImpInterface.class).to(ConversionsApiControllerImp.class);
         bind(CustomerListUploadsApiControllerImpInterface.class).to(CustomerListUploadsApiControllerImp.class);
         bind(CustomerListsApiControllerImpInterface.class).to(CustomerListsApiControllerImp.class);
+        bind(CustomerSegmentApiControllerImpInterface.class).to(CustomerSegmentApiControllerImp.class);
         bind(IntegrationsApiControllerImpInterface.class).to(IntegrationsApiControllerImp.class);
         bind(KeywordsApiControllerImpInterface.class).to(KeywordsApiControllerImp.class);
         bind(LabelsApiControllerImpInterface.class).to(LabelsApiControllerImp.class);
@@ -44,14 +47,16 @@ public class Module extends AbstractModule {
         bind(OauthApiControllerImpInterface.class).to(OauthApiControllerImp.class);
         bind(OrderLinesApiControllerImpInterface.class).to(OrderLinesApiControllerImp.class);
         bind(PinsApiControllerImpInterface.class).to(PinsApiControllerImp.class);
-        bind(ProductCategoriesApiControllerImpInterface.class).to(ProductCategoriesApiControllerImp.class);
         bind(ProductGroupPromotionsApiControllerImpInterface.class).to(ProductGroupPromotionsApiControllerImp.class);
+        bind(ProductTagsApiControllerImpInterface.class).to(ProductTagsApiControllerImp.class);
         bind(PromotionsApiControllerImpInterface.class).to(PromotionsApiControllerImp.class);
         bind(ResourcesApiControllerImpInterface.class).to(ResourcesApiControllerImp.class);
+        bind(SchedulesApiControllerImpInterface.class).to(SchedulesApiControllerImp.class);
         bind(SearchApiControllerImpInterface.class).to(SearchApiControllerImp.class);
         bind(TargetingTemplateApiControllerImpInterface.class).to(TargetingTemplateApiControllerImp.class);
         bind(TermsApiControllerImpInterface.class).to(TermsApiControllerImp.class);
         bind(TermsOfServiceApiControllerImpInterface.class).to(TermsOfServiceApiControllerImp.class);
+        bind(TrendsApiControllerImpInterface.class).to(TrendsApiControllerImp.class);
         bind(UserAccountApiControllerImpInterface.class).to(UserAccountApiControllerImp.class);
         bind(SecurityAPIUtils.class);
     }

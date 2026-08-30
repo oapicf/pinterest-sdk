@@ -1,13 +1,14 @@
 package controllers;
 
-import apimodels.Error;
-import apimodels.LeadFormArrayResponse;
-import apimodels.LeadFormCreateRequest;
-import apimodels.LeadFormResponse;
-import apimodels.LeadFormTestRequest;
-import apimodels.LeadFormTestResponse;
-import apimodels.LeadFormUpdateRequest;
+import apimodels.LeadForm;
+import apimodels.LeadFormBatchUpdate;
+import apimodels.LeadFormCreate;
+import apimodels.LeadFormTest;
+import apimodels.LeadFormTestCreate;
+import apimodels.LeadFormsCreate200Response;
 import apimodels.LeadFormsList200Response;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
 
 import play.mvc.Http;
 import java.util.List;
@@ -18,36 +19,36 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LeadFormsApiControllerImp extends LeadFormsApiControllerImpInterface {
     @Override
-    public LeadFormResponse leadFormGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String leadFormId) throws Exception {
+    public LeadForm leadFormGet(Http.Request request,  @Pattern(regexp="^\\d+$")String leadFormId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
-        return new LeadFormResponse();
+        return new LeadForm();
     }
 
     @Override
-    public LeadFormTestResponse leadFormTestCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String leadFormId, LeadFormTestRequest leadFormTestRequest) throws Exception {
+    public LeadFormTest leadFormTestCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String leadFormId, LeadFormTestCreate leadFormTestCreate) throws Exception {
         //Do your magic!!!
-        return new LeadFormTestResponse();
+        return new LeadFormTest();
     }
 
     @Override
-    public LeadFormArrayResponse leadFormsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid LeadFormCreateRequest> leadFormCreateRequest) throws Exception {
+    public LeadFormsCreate200Response leadFormsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid LeadFormCreate> leadFormCreate) throws Exception {
         //Do your magic!!!
-        return new LeadFormArrayResponse();
+        return new LeadFormsCreate200Response();
     }
 
     @Override
-    public LeadFormsList200Response leadFormsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception {
+    public LeadFormsList200Response leadFormsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order) throws Exception {
         //Do your magic!!!
         return new LeadFormsList200Response();
     }
 
     @Override
-    public LeadFormArrayResponse leadFormsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid LeadFormUpdateRequest> leadFormUpdateRequest) throws Exception {
+    public LeadFormsCreate200Response leadFormsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid LeadFormBatchUpdate> leadFormBatchUpdate) throws Exception {
         //Do your magic!!!
-        return new LeadFormArrayResponse();
+        return new LeadFormsCreate200Response();
     }
 
 }

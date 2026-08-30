@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,7 +23,7 @@ type PinMediaSourceImagesBase64Item struct {
 
 	ContentType ContentType `json:"content_type"`
 
-	Data string `json:"data" validate:"regexp=^[a-zA-Z0-9+\\/=]+$"`
+	Data string `json:"data" validate:"regexp=^[a-zA-Z0-9+/=]+$"`
 
 	Description string `json:"description,omitempty"`
 
@@ -26,19 +31,88 @@ type PinMediaSourceImagesBase64Item struct {
 
 	Title string `json:"title,omitempty"`
 }
-
-// AssertPinMediaSourceImagesBase64ItemRequired checks if the required fields are not zero-ed
-func AssertPinMediaSourceImagesBase64ItemRequired(obj PinMediaSourceImagesBase64Item) error {
-	elements := map[string]interface{}{
-		"content_type": obj.ContentType,
-		"data": obj.Data,
+// UnmarshalJSON validates required property keys then unmarshals into PinMediaSourceImagesBase64Item
+func (o *PinMediaSourceImagesBase64Item) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"content_type",
+		"data",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"content_type": false,
+		"data": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"content_type": {},
+		"data": {},
+		"description": {},
+		"link": {},
+		"title": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded PinMediaSourceImagesBase64Item
+
+	if value, exists := allProperties["content_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.ContentType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["data"]; exists {
+		if err = json.Unmarshal(value, &decoded.Data); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["description"]; exists {
+		if err = json.Unmarshal(value, &decoded.Description); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["link"]; exists {
+		if err = json.Unmarshal(value, &decoded.Link); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["title"]; exists {
+		if err = json.Unmarshal(value, &decoded.Title); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertPinMediaSourceImagesBase64ItemRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertPinMediaSourceImagesBase64ItemRequired(obj PinMediaSourceImagesBase64Item) error {
 	return nil
 }
 

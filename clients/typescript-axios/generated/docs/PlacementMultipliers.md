@@ -6,7 +6,7 @@ This represents a mapping from placement to a bid price adjustment.  Multiplier 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PLACEMENT** | **string** |  | [optional] [default to undefined]
+**PLACEMENT** | [**PlacementType**](PlacementType.md) | Placement type identifier. | [optional] [default to undefined]
 
 ## Example
 

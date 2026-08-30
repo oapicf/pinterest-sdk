@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TargetingTemplateAudienceSizingReachEstimate = Initialize-PSOpenAPIToolsTargetingTemplateAudienceSizingReachEstimate  -Estimate 63492000 `
- -LowerBound 47619000 `
- -UpperBound 79365000
+$TargetingTemplateAudienceSizingReachEstimate = Initialize-PSOpenAPIToolsTargetingTemplateAudienceSizingReachEstimate  -Estimate null `
+ -LowerBound null `
+ -UpperBound null
 ```
 
 - Convert the resource to JSON

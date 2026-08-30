@@ -11,29 +11,29 @@
 part of openapi.api;
 
 
-class MediaType {
-  /// Instantiate a new enum with the provided [value].
-  const MediaType._(this.value);
+enum MediaType {
+  IMAGE._(r'IMAGE'),
+  VIDEO._(r'VIDEO'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const MediaType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const IMAGE = MediaType._(r'IMAGE');
-  static const VIDEO = MediaType._(r'VIDEO');
-
-  /// List of all possible values in this [enum][MediaType].
-  static const values = <MediaType>[
-    IMAGE,
-    VIDEO,
-  ];
-
+  /// Returns the instance of [MediaType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static MediaType? fromJson(dynamic value) => MediaTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [MediaType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<MediaType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <MediaType>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class MediaTypeTypeTransformer {
 
   const MediaTypeTypeTransformer._();
 
-  String encode(MediaType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(MediaType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a MediaType.
+  /// Returns the instance of [MediaType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class MediaTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   MediaType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is MediaType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'IMAGE': return MediaType.IMAGE;
@@ -79,7 +84,7 @@ class MediaTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [MediaTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static MediaTypeTypeTransformer? _instance;
 }
 

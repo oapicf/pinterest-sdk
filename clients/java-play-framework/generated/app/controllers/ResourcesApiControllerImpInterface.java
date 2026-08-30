@@ -1,10 +1,12 @@
 package controllers;
 
-import apimodels.AdAccountsCountryResponse;
-import apimodels.BookClosedResponse;
-import apimodels.DeliveryMetricsResponse;
-import apimodels.Error;
-import apimodels.SingleInterestTargetingOptionResponse;
+import apimodels.AdAccountCountriesGet200Response;
+import apimodels.BookClosed;
+import apimodels.DeliveryMetricsGet200Response;
+import apimodels.PinterestLibError;
+import apimodels.PublicTargetingType;
+import apimodels.ReportType;
+import apimodels.SingleInterestTargetingOption;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -36,7 +38,7 @@ public abstract class ResourcesApiControllerImpInterface {
             return unauthorized();
         }
 
-        AdAccountsCountryResponse obj = adAccountCountriesGet(request);
+        AdAccountCountriesGet200Response obj = adAccountCountriesGet(request);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -48,14 +50,14 @@ public abstract class ResourcesApiControllerImpInterface {
 
     }
 
-    public abstract AdAccountsCountryResponse adAccountCountriesGet(Http.Request request) throws Exception;
+    public abstract AdAccountCountriesGet200Response adAccountCountriesGet(Http.Request request) throws Exception;
 
-    public Result deliveryMetricsGetHttp(Http.Request request, String reportType) throws Exception {
+    public Result deliveryMetricsGetHttp(Http.Request request, ReportType reportType) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        DeliveryMetricsResponse obj = deliveryMetricsGet(request, reportType);
+        DeliveryMetricsGet200Response obj = deliveryMetricsGet(request, reportType);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -67,14 +69,14 @@ public abstract class ResourcesApiControllerImpInterface {
 
     }
 
-    public abstract DeliveryMetricsResponse deliveryMetricsGet(Http.Request request, String reportType) throws Exception;
+    public abstract DeliveryMetricsGet200Response deliveryMetricsGet(Http.Request request, ReportType reportType) throws Exception;
 
     public Result interestTargetingOptionsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String interestId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        SingleInterestTargetingOptionResponse obj = interestTargetingOptionsGet(request, interestId);
+        SingleInterestTargetingOption obj = interestTargetingOptionsGet(request, interestId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -86,7 +88,7 @@ public abstract class ResourcesApiControllerImpInterface {
 
     }
 
-    public abstract SingleInterestTargetingOptionResponse interestTargetingOptionsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String interestId) throws Exception;
+    public abstract SingleInterestTargetingOption interestTargetingOptionsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String interestId) throws Exception;
 
     public Result leadFormQuestionsGetHttp(Http.Request request) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -100,12 +102,12 @@ public abstract class ResourcesApiControllerImpInterface {
 
     public abstract void leadFormQuestionsGet(Http.Request request) throws Exception;
 
-    public Result metricsReadyStateGetHttp(Http.Request request, @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")String date) throws Exception {
+    public Result metricsReadyStateGetHttp(Http.Request request, @NotNull  @Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")String date) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        BookClosedResponse obj = metricsReadyStateGet(request, date);
+        BookClosed obj = metricsReadyStateGet(request, date);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -117,20 +119,20 @@ public abstract class ResourcesApiControllerImpInterface {
 
     }
 
-    public abstract BookClosedResponse metricsReadyStateGet(Http.Request request, @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")String date) throws Exception;
+    public abstract BookClosed metricsReadyStateGet(Http.Request request, @NotNull  @Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")String date) throws Exception;
 
-    public Result targetingOptionsGetHttp(Http.Request request, String targetingType,  @Pattern(regexp="^\\d+$") @Size(max=18)String clientId, String oauthSignature,  @Pattern(regexp="\\d+")String timestamp,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result targetingOptionsGetHttp(Http.Request request, PublicTargetingType targetingType,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String clientId, String oauthSignature,  @Pattern(regexp="\\d+")String timestamp) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        List<Object> obj = targetingOptionsGet(request, targetingType, clientId, oauthSignature, timestamp, adAccountId);
+        List<Object> obj = targetingOptionsGet(request, targetingType, adAccountId, clientId, oauthSignature, timestamp);
         JsonNode result = mapper.valueToTree(obj);
 
         return ok(result);
 
     }
 
-    public abstract List<Object> targetingOptionsGet(Http.Request request, String targetingType,  @Pattern(regexp="^\\d+$") @Size(max=18)String clientId, String oauthSignature,  @Pattern(regexp="\\d+")String timestamp,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract List<Object> targetingOptionsGet(Http.Request request, PublicTargetingType targetingType,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String clientId, String oauthSignature,  @Pattern(regexp="\\d+")String timestamp) throws Exception;
 
 }

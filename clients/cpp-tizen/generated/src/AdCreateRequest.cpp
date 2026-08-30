@@ -36,15 +36,16 @@ AdCreateRequest::__init()
 	//disclosure_url = std::string();
 	//grid_click_type = new GridClickType();
 	//ios_deep_link = std::string();
+	//is_carting = bool(false);
 	//is_pin_deleted = bool(false);
 	//is_removable = bool(false);
 	//lead_form_id = std::string();
 	//name = std::string();
+	//pin_id = std::string();
 	//quiz_pin_data = null;
 	//status = new EntityStatus();
 	//tracking_urls = null;
 	//view_tracking_url = std::string();
-	//pin_id = std::string();
 }
 
 void
@@ -115,6 +116,11 @@ AdCreateRequest::__cleanup()
 	//delete ios_deep_link;
 	//ios_deep_link = NULL;
 	//}
+	//if(is_carting != NULL) {
+	//
+	//delete is_carting;
+	//is_carting = NULL;
+	//}
 	//if(is_pin_deleted != NULL) {
 	//
 	//delete is_pin_deleted;
@@ -135,6 +141,11 @@ AdCreateRequest::__cleanup()
 	//delete name;
 	//name = NULL;
 	//}
+	//if(pin_id != NULL) {
+	//
+	//delete pin_id;
+	//pin_id = NULL;
+	//}
 	//if(quiz_pin_data != NULL) {
 	//
 	//delete quiz_pin_data;
@@ -154,11 +165,6 @@ AdCreateRequest::__cleanup()
 	//
 	//delete view_tracking_url;
 	//view_tracking_url = NULL;
-	//}
-	//if(pin_id != NULL) {
-	//
-	//delete pin_id;
-	//pin_id = NULL;
 	//}
 	//
 }
@@ -356,6 +362,17 @@ AdCreateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *is_cartingKey = "is_carting";
+	node = json_object_get_member(pJsonObject, is_cartingKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_carting, node, "bool", "");
+		} else {
+			
+		}
+	}
 	const gchar *is_pin_deletedKey = "is_pin_deleted";
 	node = json_object_get_member(pJsonObject, is_pin_deletedKey);
 	if (node !=NULL) {
@@ -400,16 +417,27 @@ AdCreateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *pin_idKey = "pin_id";
+	node = json_object_get_member(pJsonObject, pin_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&pin_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *quiz_pin_dataKey = "quiz_pin_data";
 	node = json_object_get_member(pJsonObject, quiz_pin_dataKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("QuizPinData")) {
-			jsonToValue(&quiz_pin_data, node, "QuizPinData", "QuizPinData");
+		if (isprimitive("std::string")) {
+			jsonToValue(&quiz_pin_data, node, "std::string", "");
 		} else {
 			
-			QuizPinData* obj = static_cast<QuizPinData*> (&quiz_pin_data);
+			std::string* obj = static_cast<std::string*> (&quiz_pin_data);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -433,11 +461,11 @@ AdCreateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("TrackingUrls")) {
-			jsonToValue(&tracking_urls, node, "TrackingUrls", "TrackingUrls");
+		if (isprimitive("std::string")) {
+			jsonToValue(&tracking_urls, node, "std::string", "");
 		} else {
 			
-			TrackingUrls* obj = static_cast<TrackingUrls*> (&tracking_urls);
+			std::string* obj = static_cast<std::string*> (&tracking_urls);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -449,17 +477,6 @@ AdCreateRequest::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&view_tracking_url, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *pin_idKey = "pin_id";
-	node = json_object_get_member(pJsonObject, pin_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&pin_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -632,6 +649,15 @@ AdCreateRequest::toJson()
 	const gchar *ios_deep_linkKey = "ios_deep_link";
 	json_object_set_member(pJsonObject, ios_deep_linkKey, node);
 	if (isprimitive("bool")) {
+		bool obj = getIsCarting();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_cartingKey = "is_carting";
+	json_object_set_member(pJsonObject, is_cartingKey, node);
+	if (isprimitive("bool")) {
 		bool obj = getIsPinDeleted();
 		node = converttoJson(&obj, "bool", "");
 	}
@@ -667,13 +693,22 @@ AdCreateRequest::toJson()
 	}
 	const gchar *nameKey = "name";
 	json_object_set_member(pJsonObject, nameKey, node);
-	if (isprimitive("QuizPinData")) {
-		QuizPinData obj = getQuizPinData();
-		node = converttoJson(&obj, "QuizPinData", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getPinId();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
-		QuizPinData obj = static_cast<QuizPinData> (getQuizPinData());
+	}
+	const gchar *pin_idKey = "pin_id";
+	json_object_set_member(pJsonObject, pin_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getQuizPinData();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+		std::string obj = static_cast<std::string> (getQuizPinData());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -695,13 +730,13 @@ AdCreateRequest::toJson()
 	}
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
-	if (isprimitive("TrackingUrls")) {
-		TrackingUrls obj = getTrackingUrls();
-		node = converttoJson(&obj, "TrackingUrls", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getTrackingUrls();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
-		TrackingUrls obj = static_cast<TrackingUrls> (getTrackingUrls());
+		std::string obj = static_cast<std::string> (getTrackingUrls());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -718,15 +753,6 @@ AdCreateRequest::toJson()
 	}
 	const gchar *view_tracking_urlKey = "view_tracking_url";
 	json_object_set_member(pJsonObject, view_tracking_urlKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getPinId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *pin_idKey = "pin_id";
-	json_object_set_member(pJsonObject, pin_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -892,6 +918,18 @@ AdCreateRequest::setIosDeepLink(std::string  ios_deep_link)
 }
 
 bool
+AdCreateRequest::getIsCarting()
+{
+	return is_carting;
+}
+
+void
+AdCreateRequest::setIsCarting(bool  is_carting)
+{
+	this->is_carting = is_carting;
+}
+
+bool
 AdCreateRequest::getIsPinDeleted()
 {
 	return is_pin_deleted;
@@ -939,14 +977,26 @@ AdCreateRequest::setName(std::string  name)
 	this->name = name;
 }
 
-QuizPinData
+std::string
+AdCreateRequest::getPinId()
+{
+	return pin_id;
+}
+
+void
+AdCreateRequest::setPinId(std::string  pin_id)
+{
+	this->pin_id = pin_id;
+}
+
+std::string
 AdCreateRequest::getQuizPinData()
 {
 	return quiz_pin_data;
 }
 
 void
-AdCreateRequest::setQuizPinData(QuizPinData  quiz_pin_data)
+AdCreateRequest::setQuizPinData(std::string  quiz_pin_data)
 {
 	this->quiz_pin_data = quiz_pin_data;
 }
@@ -963,14 +1013,14 @@ AdCreateRequest::setStatus(EntityStatus  status)
 	this->status = status;
 }
 
-TrackingUrls
+std::string
 AdCreateRequest::getTrackingUrls()
 {
 	return tracking_urls;
 }
 
 void
-AdCreateRequest::setTrackingUrls(TrackingUrls  tracking_urls)
+AdCreateRequest::setTrackingUrls(std::string  tracking_urls)
 {
 	this->tracking_urls = tracking_urls;
 }
@@ -985,18 +1035,6 @@ void
 AdCreateRequest::setViewTrackingUrl(std::string  view_tracking_url)
 {
 	this->view_tracking_url = view_tracking_url;
-}
-
-std::string
-AdCreateRequest::getPinId()
-{
-	return pin_id;
-}
-
-void
-AdCreateRequest::setPinId(std::string  pin_id)
-{
-	this->pin_id = pin_id;
 }
 
 

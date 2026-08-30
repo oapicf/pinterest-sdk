@@ -124,7 +124,7 @@ CatalogsRetailItemsPostFilter::getCatalogId()
 }
 
 void
-CatalogsRetailItemsPostFilter::setCatalogId(std::string  catalog_id)
+CatalogsRetailItemsPostFilter::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -136,7 +136,7 @@ CatalogsRetailItemsPostFilter::getCatalogType()
 }
 
 void
-CatalogsRetailItemsPostFilter::setCatalogType(std::string  catalog_type)
+CatalogsRetailItemsPostFilter::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -148,7 +148,7 @@ CatalogsRetailItemsPostFilter::getItemIds()
 }
 
 void
-CatalogsRetailItemsPostFilter::setItemIds(std::list <std::string> item_ids)
+CatalogsRetailItemsPostFilter::setItemIds(std::list<std::string> item_ids)
 {
 	this->item_ids = item_ids;
 }

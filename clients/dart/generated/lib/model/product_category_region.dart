@@ -11,31 +11,30 @@
 part of openapi.api;
 
 
-class ProductCategoryRegion {
-  /// Instantiate a new enum with the provided [value].
-  const ProductCategoryRegion._(this.value);
+enum ProductCategoryRegion {
+  US._(r'US'),
+  gBPlusIE._(r'GB+IE'),
+  CA._(r'CA'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const ProductCategoryRegion._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const US = ProductCategoryRegion._(r'US');
-  static const gBPlusIE = ProductCategoryRegion._(r'GB+IE');
-  static const CA = ProductCategoryRegion._(r'CA');
-
-  /// List of all possible values in this [enum][ProductCategoryRegion].
-  static const values = <ProductCategoryRegion>[
-    US,
-    gBPlusIE,
-    CA,
-  ];
-
+  /// Returns the instance of [ProductCategoryRegion] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static ProductCategoryRegion? fromJson(dynamic value) => ProductCategoryRegionTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [ProductCategoryRegion]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<ProductCategoryRegion> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ProductCategoryRegion>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class ProductCategoryRegionTypeTransformer {
 
   const ProductCategoryRegionTypeTransformer._();
 
-  String encode(ProductCategoryRegion data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(ProductCategoryRegion data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a ProductCategoryRegion.
+  /// Returns the instance of [ProductCategoryRegion] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class ProductCategoryRegionTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   ProductCategoryRegion? decode(dynamic data, {bool allowNull = true}) {
+    if (data is ProductCategoryRegion) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'US': return ProductCategoryRegion.US;
@@ -82,7 +86,7 @@ class ProductCategoryRegionTypeTransformer {
     return null;
   }
 
-  /// Singleton [ProductCategoryRegionTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static ProductCategoryRegionTypeTransformer? _instance;
 }
 

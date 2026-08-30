@@ -4,10 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Bid floor request and response model.
+ */
+@ApiModel(description="Bid floor request and response model.")
 
 public class BidFloor  {
   
@@ -19,9 +24,9 @@ public class BidFloor  {
   private List<Integer> bidFloors = new ArrayList<>();
 
  /**
-  * Always the string 'bidfloor'
+  * Always the string 'bidfloor'.
   */
-  @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'")
+  @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'.")
 
   private String type = "bidfloor";
  /**
@@ -33,22 +38,9 @@ public class BidFloor  {
     return bidFloors;
   }
 
-  public void setBidFloors(List<Integer> bidFloors) {
-    this.bidFloors = bidFloors;
-  }
-
-  public BidFloor bidFloors(List<Integer> bidFloors) {
-    this.bidFloors = bidFloors;
-    return this;
-  }
-
-  public BidFloor addBidFloorsItem(Integer bidFloorsItem) {
-    this.bidFloors.add(bidFloorsItem);
-    return this;
-  }
 
  /**
-   * Always the string &#39;bidfloor&#39;
+   * Always the string &#39;bidfloor&#39;.
    * @return type
   **/
   @JsonProperty("type")
@@ -56,14 +48,6 @@ public class BidFloor  {
     return type;
   }
 
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public BidFloor type(String type) {
-    this.type = type;
-    return this;
-  }
 
   @Override
   public boolean equals(Object o) {
@@ -99,10 +83,7 @@ public class BidFloor  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

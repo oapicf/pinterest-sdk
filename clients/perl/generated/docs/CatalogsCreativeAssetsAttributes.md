@@ -19,7 +19,8 @@ Name | Type | Description | Notes
 **ios_deep_link** | **string** | IOS deep link to the creative assets page. | [optional] 
 **link** | **string** | Link to the creative assets page. | [optional] 
 **title** | **string** | The name of the creative assets. | [optional] 
-**visibility** | **string** | Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. | [optional] 
+**visibility** | **string** | Visibility of the creative assets. Must be one of the following values (upper or lowercase): &#39;visible&#39;, &#39;hidden&#39;. | [optional] 
+**ai_disclosures** | [**ARRAY[CatalogsAiContentDisclosure]**](CatalogsAiContentDisclosure.md) | AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL. | [optional] 
 **image_link** | **string** | The creative assets image. | [optional] 
 **video_link** | **string** | The creative assets video. | [optional] 
 

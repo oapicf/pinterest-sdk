@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **character** |  | [optional] 
-**items** | [**array[AdResponse]**](AdResponse.md) |  | 
+**items** | [**array[Ad]**](Ad.md) |  | 
 
 

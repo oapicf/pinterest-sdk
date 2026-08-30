@@ -16,7 +16,7 @@ part 'catalogs_creative_assets_product_group_update_request.g.dart';
 /// * [catalogType] 
 /// * [description] 
 /// * [filters] 
-/// * [name] 
+/// * [name] - Name of catalog product group
 @BuiltValue()
 abstract class CatalogsCreativeAssetsProductGroupUpdateRequest implements Built<CatalogsCreativeAssetsProductGroupUpdateRequest, CatalogsCreativeAssetsProductGroupUpdateRequestBuilder> {
   @BuiltValueField(wireName: r'catalog_type')
@@ -29,6 +29,7 @@ abstract class CatalogsCreativeAssetsProductGroupUpdateRequest implements Built<
   @BuiltValueField(wireName: r'filters')
   CatalogsCreativeAssetsProductGroupFilters? get filters;
 
+  /// Name of catalog product group
   @BuiltValueField(wireName: r'name')
   String? get name;
 
@@ -109,8 +110,9 @@ class _$CatalogsCreativeAssetsProductGroupUpdateRequestSerializer implements Pri
         case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum),
-          ) as CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum;
+            specifiedType: const FullType.nullable(CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum),
+          ) as CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum?;
+          if (valueDes == null) continue;
           result.catalogType = valueDes;
           break;
         case r'description':
@@ -124,15 +126,17 @@ class _$CatalogsCreativeAssetsProductGroupUpdateRequestSerializer implements Pri
         case r'filters':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsCreativeAssetsProductGroupFilters),
-          ) as CatalogsCreativeAssetsProductGroupFilters;
+            specifiedType: const FullType.nullable(CatalogsCreativeAssetsProductGroupFilters),
+          ) as CatalogsCreativeAssetsProductGroupFilters?;
+          if (valueDes == null) continue;
           result.filters.replace(valueDes);
           break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         default:

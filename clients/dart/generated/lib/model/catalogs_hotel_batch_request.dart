@@ -84,10 +84,14 @@ class CatalogsHotelBatchRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsHotelBatchRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsHotelBatchRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsHotelBatchRequest[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsHotelBatchRequest[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'country'), 'Required key "CatalogsHotelBatchRequest[country]" is missing from JSON.');
+        assert(json[r'country'] != null, 'Required key "CatalogsHotelBatchRequest[country]" has a null value in JSON.');
+        assert(json.containsKey(r'items'), 'Required key "CatalogsHotelBatchRequest[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "CatalogsHotelBatchRequest[items]" has a null value in JSON.');
+        assert(json.containsKey(r'language'), 'Required key "CatalogsHotelBatchRequest[language]" is missing from JSON.');
+        assert(json[r'language'] != null, 'Required key "CatalogsHotelBatchRequest[language]" has a null value in JSON.');
         return true;
       }());
 
@@ -152,27 +156,28 @@ class CatalogsHotelBatchRequest {
 }
 
 
-class CatalogsHotelBatchRequestCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsHotelBatchRequestCatalogTypeEnum._(this.value);
+enum CatalogsHotelBatchRequestCatalogTypeEnum {
+  HOTEL._(r'HOTEL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsHotelBatchRequestCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const HOTEL = CatalogsHotelBatchRequestCatalogTypeEnum._(r'HOTEL');
-
-  /// List of all possible values in this [enum][CatalogsHotelBatchRequestCatalogTypeEnum].
-  static const values = <CatalogsHotelBatchRequestCatalogTypeEnum>[
-    HOTEL,
-  ];
-
+  /// Returns the instance of [CatalogsHotelBatchRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsHotelBatchRequestCatalogTypeEnum? fromJson(dynamic value) => CatalogsHotelBatchRequestCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsHotelBatchRequestCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsHotelBatchRequestCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsHotelBatchRequestCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -194,9 +199,10 @@ class CatalogsHotelBatchRequestCatalogTypeEnumTypeTransformer {
 
   const CatalogsHotelBatchRequestCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsHotelBatchRequestCatalogTypeEnum data) => data.value;
+  String encode(CatalogsHotelBatchRequestCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsHotelBatchRequestCatalogTypeEnum.
+  /// Returns the instance of [CatalogsHotelBatchRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -205,6 +211,9 @@ class CatalogsHotelBatchRequestCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsHotelBatchRequestCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsHotelBatchRequestCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'HOTEL': return CatalogsHotelBatchRequestCatalogTypeEnum.HOTEL;
@@ -217,7 +226,7 @@ class CatalogsHotelBatchRequestCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsHotelBatchRequestCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsHotelBatchRequestCatalogTypeEnumTypeTransformer? _instance;
 }
 

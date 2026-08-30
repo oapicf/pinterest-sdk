@@ -70,8 +70,10 @@ ItemAttributesRequest::__init()
 	//ad_video_1_tag = std::string();
 	//ad_video_2_link = std::string();
 	//ad_video_2_tag = std::string();
+	//new std::list()std::list> additional_image_link;
 	//adult = bool(false);
 	//age_group = std::string();
+	//new std::list()std::list> ai_disclosures;
 	//android_deep_link = std::string();
 	//availability = std::string();
 	//average_review_rating = double(0);
@@ -94,8 +96,9 @@ ItemAttributesRequest::__init()
 	//free_shipping_limit = std::string();
 	//gender = std::string();
 	//google_product_category = std::string();
-	//gtin = new UpdatableItemAttributes_gtin();
+	//gtin = new UpdatableItemAttributesGtin();
 	//id = std::string();
+	//image_link = new ItemAttributesRequestImageLink();
 	//installment_price = std::string();
 	//ios_deep_link = std::string();
 	//item_group_id = std::string();
@@ -113,6 +116,7 @@ ItemAttributesRequest::__init()
 	//promotion_id = std::string();
 	//sale_price = std::string();
 	//sale_price_effective_date = std::string();
+	//save_pin_disabled = bool(false);
 	//shipping = std::string();
 	//shipping_height = std::string();
 	//shipping_weight = std::string();
@@ -126,9 +130,6 @@ ItemAttributesRequest::__init()
 	//unit_pricing_measure = std::string();
 	//new std::list()std::list> variant_names;
 	//new std::list()std::list> variant_values;
-	//new std::list()std::list> additional_image_link;
-	//image_link = new ItemAttributesRequest_allOf_image_link();
-	//save_pin_disabled = bool(false);
 	//video_link = std::string();
 }
 
@@ -370,6 +371,11 @@ ItemAttributesRequest::__cleanup()
 	//delete ad_video_2_tag;
 	//ad_video_2_tag = NULL;
 	//}
+	//if(additional_image_link != NULL) {
+	//additional_image_link.RemoveAll(true);
+	//delete additional_image_link;
+	//additional_image_link = NULL;
+	//}
 	//if(adult != NULL) {
 	//
 	//delete adult;
@@ -379,6 +385,11 @@ ItemAttributesRequest::__cleanup()
 	//
 	//delete age_group;
 	//age_group = NULL;
+	//}
+	//if(ai_disclosures != NULL) {
+	//ai_disclosures.RemoveAll(true);
+	//delete ai_disclosures;
+	//ai_disclosures = NULL;
 	//}
 	//if(android_deep_link != NULL) {
 	//
@@ -500,6 +511,11 @@ ItemAttributesRequest::__cleanup()
 	//delete id;
 	//id = NULL;
 	//}
+	//if(image_link != NULL) {
+	//
+	//delete image_link;
+	//image_link = NULL;
+	//}
 	//if(installment_price != NULL) {
 	//
 	//delete installment_price;
@@ -585,6 +601,11 @@ ItemAttributesRequest::__cleanup()
 	//delete sale_price_effective_date;
 	//sale_price_effective_date = NULL;
 	//}
+	//if(save_pin_disabled != NULL) {
+	//
+	//delete save_pin_disabled;
+	//save_pin_disabled = NULL;
+	//}
 	//if(shipping != NULL) {
 	//
 	//delete shipping;
@@ -649,21 +670,6 @@ ItemAttributesRequest::__cleanup()
 	//variant_values.RemoveAll(true);
 	//delete variant_values;
 	//variant_values = NULL;
-	//}
-	//if(additional_image_link != NULL) {
-	//additional_image_link.RemoveAll(true);
-	//delete additional_image_link;
-	//additional_image_link = NULL;
-	//}
-	//if(image_link != NULL) {
-	//
-	//delete image_link;
-	//image_link = NULL;
-	//}
-	//if(save_pin_disabled != NULL) {
-	//
-	//delete save_pin_disabled;
-	//save_pin_disabled = NULL;
 	//}
 	//if(video_link != NULL) {
 	//
@@ -1195,6 +1201,28 @@ ItemAttributesRequest::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *additional_image_linkKey = "additional_image_link";
+	node = json_object_get_member(pJsonObject, additional_image_linkKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			additional_image_link = new_list;
+		}
+		
+	}
 	const gchar *adultKey = "adult";
 	node = json_object_get_member(pJsonObject, adultKey);
 	if (node !=NULL) {
@@ -1216,6 +1244,30 @@ ItemAttributesRequest::fromJson(char* jsonStr)
 		} else {
 			
 		}
+	}
+	const gchar *ai_disclosuresKey = "ai_disclosures";
+	node = json_object_get_member(pJsonObject, ai_disclosuresKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<CatalogsAiContentDisclosure> new_list;
+			CatalogsAiContentDisclosure inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("CatalogsAiContentDisclosure")) {
+					jsonToValue(&inst, temp_json, "CatalogsAiContentDisclosure", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			ai_disclosures = new_list;
+		}
+		
 	}
 	const gchar *android_deep_linkKey = "android_deep_link";
 	node = json_object_get_member(pJsonObject, android_deep_linkKey);
@@ -1467,11 +1519,11 @@ ItemAttributesRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("UpdatableItemAttributes_gtin")) {
-			jsonToValue(&gtin, node, "UpdatableItemAttributes_gtin", "UpdatableItemAttributes_gtin");
+		if (isprimitive("UpdatableItemAttributesGtin")) {
+			jsonToValue(&gtin, node, "UpdatableItemAttributesGtin", "UpdatableItemAttributesGtin");
 		} else {
 			
-			UpdatableItemAttributes_gtin* obj = static_cast<UpdatableItemAttributes_gtin*> (&gtin);
+			UpdatableItemAttributesGtin* obj = static_cast<UpdatableItemAttributesGtin*> (&gtin);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -1484,6 +1536,20 @@ ItemAttributesRequest::fromJson(char* jsonStr)
 		if (isprimitive("std::string")) {
 			jsonToValue(&id, node, "std::string", "");
 		} else {
+			
+		}
+	}
+	const gchar *image_linkKey = "image_link";
+	node = json_object_get_member(pJsonObject, image_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ItemAttributesRequestImageLink")) {
+			jsonToValue(&image_link, node, "ItemAttributesRequestImageLink", "ItemAttributesRequestImageLink");
+		} else {
+			
+			ItemAttributesRequestImageLink* obj = static_cast<ItemAttributesRequestImageLink*> (&image_link);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -1674,6 +1740,17 @@ ItemAttributesRequest::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *save_pin_disabledKey = "save_pin_disabled";
+	node = json_object_get_member(pJsonObject, save_pin_disabledKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&save_pin_disabled, node, "bool", "");
+		} else {
+			
+		}
+	}
 	const gchar *shippingKey = "shipping";
 	node = json_object_get_member(pJsonObject, shippingKey);
 	if (node !=NULL) {
@@ -1838,53 +1915,6 @@ ItemAttributesRequest::fromJson(char* jsonStr)
 			variant_values = new_list;
 		}
 		
-	}
-	const gchar *additional_image_linkKey = "additional_image_link";
-	node = json_object_get_member(pJsonObject, additional_image_linkKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<std::string> new_list;
-			std::string inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("std::string")) {
-					jsonToValue(&inst, temp_json, "std::string", "");
-				} else {
-					
-				}
-				new_list.push_back(inst);
-			}
-			additional_image_link = new_list;
-		}
-		
-	}
-	const gchar *image_linkKey = "image_link";
-	node = json_object_get_member(pJsonObject, image_linkKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("ItemAttributesRequest_allOf_image_link")) {
-			jsonToValue(&image_link, node, "ItemAttributesRequest_allOf_image_link", "ItemAttributesRequest_allOf_image_link");
-		} else {
-			
-			ItemAttributesRequest_allOf_image_link* obj = static_cast<ItemAttributesRequest_allOf_image_link*> (&image_link);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *save_pin_disabledKey = "save_pin_disabled";
-	node = json_object_get_member(pJsonObject, save_pin_disabledKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("bool")) {
-			jsonToValue(&save_pin_disabled, node, "bool", "");
-		} else {
-			
-		}
 	}
 	const gchar *video_linkKey = "video_link";
 	node = json_object_get_member(pJsonObject, video_linkKey);
@@ -2332,6 +2362,21 @@ ItemAttributesRequest::toJson()
 	}
 	const gchar *ad_video_2_tagKey = "ad_video_2_tag";
 	json_object_set_member(pJsonObject, ad_video_2_tagKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getAdditionalImageLink());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getAdditionalImageLink());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *additional_image_linkKey = "additional_image_link";
+	json_object_set_member(pJsonObject, additional_image_linkKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getAdult();
 		node = converttoJson(&obj, "bool", "");
@@ -2350,6 +2395,31 @@ ItemAttributesRequest::toJson()
 	}
 	const gchar *age_groupKey = "age_group";
 	json_object_set_member(pJsonObject, age_groupKey, node);
+	if (isprimitive("CatalogsAiContentDisclosure")) {
+		list<CatalogsAiContentDisclosure> new_list = static_cast<list <CatalogsAiContentDisclosure> > (getAiDisclosures());
+		node = converttoJson(&new_list, "CatalogsAiContentDisclosure", "array");
+	} else {
+		node = json_node_alloc();
+		list<CatalogsAiContentDisclosure> new_list = static_cast<list <CatalogsAiContentDisclosure> > (getAiDisclosures());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<CatalogsAiContentDisclosure>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			CatalogsAiContentDisclosure obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *ai_disclosuresKey = "ai_disclosures";
+	json_object_set_member(pJsonObject, ai_disclosuresKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getAndroidDeepLink();
 		node = converttoJson(&obj, "std::string", "");
@@ -2553,13 +2623,13 @@ ItemAttributesRequest::toJson()
 	}
 	const gchar *google_product_categoryKey = "google_product_category";
 	json_object_set_member(pJsonObject, google_product_categoryKey, node);
-	if (isprimitive("UpdatableItemAttributes_gtin")) {
-		UpdatableItemAttributes_gtin obj = getGtin();
-		node = converttoJson(&obj, "UpdatableItemAttributes_gtin", "");
+	if (isprimitive("UpdatableItemAttributesGtin")) {
+		UpdatableItemAttributesGtin obj = getGtin();
+		node = converttoJson(&obj, "UpdatableItemAttributesGtin", "");
 	}
 	else {
 		
-		UpdatableItemAttributes_gtin obj = static_cast<UpdatableItemAttributes_gtin> (getGtin());
+		UpdatableItemAttributesGtin obj = static_cast<UpdatableItemAttributesGtin> (getGtin());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -2576,6 +2646,20 @@ ItemAttributesRequest::toJson()
 	}
 	const gchar *idKey = "id";
 	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("ItemAttributesRequestImageLink")) {
+		ItemAttributesRequestImageLink obj = getImageLink();
+		node = converttoJson(&obj, "ItemAttributesRequestImageLink", "");
+	}
+	else {
+		
+		ItemAttributesRequestImageLink obj = static_cast<ItemAttributesRequestImageLink> (getImageLink());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *image_linkKey = "image_link";
+	json_object_set_member(pJsonObject, image_linkKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getInstallmentPrice();
 		node = converttoJson(&obj, "std::string", "");
@@ -2729,6 +2813,15 @@ ItemAttributesRequest::toJson()
 	}
 	const gchar *sale_price_effective_dateKey = "sale_price_effective_date";
 	json_object_set_member(pJsonObject, sale_price_effective_dateKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getSavePinDisabled();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *save_pin_disabledKey = "save_pin_disabled";
+	json_object_set_member(pJsonObject, save_pin_disabledKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getShipping();
 		node = converttoJson(&obj, "std::string", "");
@@ -2858,44 +2951,6 @@ ItemAttributesRequest::toJson()
 	
 	const gchar *variant_valuesKey = "variant_values";
 	json_object_set_member(pJsonObject, variant_valuesKey, node);
-	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getAdditionalImageLink());
-		node = converttoJson(&new_list, "std::string", "array");
-	} else {
-		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getAdditionalImageLink());
-		JsonArray* json_array = json_array_new();
-		GError *mygerror;
-		
-	}
-
-
-	
-	const gchar *additional_image_linkKey = "additional_image_link";
-	json_object_set_member(pJsonObject, additional_image_linkKey, node);
-	if (isprimitive("ItemAttributesRequest_allOf_image_link")) {
-		ItemAttributesRequest_allOf_image_link obj = getImageLink();
-		node = converttoJson(&obj, "ItemAttributesRequest_allOf_image_link", "");
-	}
-	else {
-		
-		ItemAttributesRequest_allOf_image_link obj = static_cast<ItemAttributesRequest_allOf_image_link> (getImageLink());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *image_linkKey = "image_link";
-	json_object_set_member(pJsonObject, image_linkKey, node);
-	if (isprimitive("bool")) {
-		bool obj = getSavePinDisabled();
-		node = converttoJson(&obj, "bool", "");
-	}
-	else {
-		
-	}
-	const gchar *save_pin_disabledKey = "save_pin_disabled";
-	json_object_set_member(pJsonObject, save_pin_disabledKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getVideoLink();
 		node = converttoJson(&obj, "std::string", "");
@@ -3477,6 +3532,18 @@ ItemAttributesRequest::setAdVideo2Tag(std::string  ad_video_2_tag)
 	this->ad_video_2_tag = ad_video_2_tag;
 }
 
+std::list<std::string>
+ItemAttributesRequest::getAdditionalImageLink()
+{
+	return additional_image_link;
+}
+
+void
+ItemAttributesRequest::setAdditionalImageLink(std::list <std::string> additional_image_link)
+{
+	this->additional_image_link = additional_image_link;
+}
+
 bool
 ItemAttributesRequest::getAdult()
 {
@@ -3499,6 +3566,18 @@ void
 ItemAttributesRequest::setAgeGroup(std::string  age_group)
 {
 	this->age_group = age_group;
+}
+
+std::list<CatalogsAiContentDisclosure>
+ItemAttributesRequest::getAiDisclosures()
+{
+	return ai_disclosures;
+}
+
+void
+ItemAttributesRequest::setAiDisclosures(std::list <CatalogsAiContentDisclosure> ai_disclosures)
+{
+	this->ai_disclosures = ai_disclosures;
 }
 
 std::string
@@ -3765,14 +3844,14 @@ ItemAttributesRequest::setGoogleProductCategory(std::string  google_product_cate
 	this->google_product_category = google_product_category;
 }
 
-UpdatableItemAttributes_gtin
+UpdatableItemAttributesGtin
 ItemAttributesRequest::getGtin()
 {
 	return gtin;
 }
 
 void
-ItemAttributesRequest::setGtin(UpdatableItemAttributes_gtin  gtin)
+ItemAttributesRequest::setGtin(UpdatableItemAttributesGtin  gtin)
 {
 	this->gtin = gtin;
 }
@@ -3787,6 +3866,18 @@ void
 ItemAttributesRequest::setId(std::string  id)
 {
 	this->id = id;
+}
+
+ItemAttributesRequestImageLink
+ItemAttributesRequest::getImageLink()
+{
+	return image_link;
+}
+
+void
+ItemAttributesRequest::setImageLink(ItemAttributesRequestImageLink  image_link)
+{
+	this->image_link = image_link;
 }
 
 std::string
@@ -3993,6 +4084,18 @@ ItemAttributesRequest::setSalePriceEffectiveDate(std::string  sale_price_effecti
 	this->sale_price_effective_date = sale_price_effective_date;
 }
 
+bool
+ItemAttributesRequest::getSavePinDisabled()
+{
+	return save_pin_disabled;
+}
+
+void
+ItemAttributesRequest::setSavePinDisabled(bool  save_pin_disabled)
+{
+	this->save_pin_disabled = save_pin_disabled;
+}
+
 std::string
 ItemAttributesRequest::getShipping()
 {
@@ -4147,42 +4250,6 @@ void
 ItemAttributesRequest::setVariantValues(std::list <std::string> variant_values)
 {
 	this->variant_values = variant_values;
-}
-
-std::list<std::string>
-ItemAttributesRequest::getAdditionalImageLink()
-{
-	return additional_image_link;
-}
-
-void
-ItemAttributesRequest::setAdditionalImageLink(std::list <std::string> additional_image_link)
-{
-	this->additional_image_link = additional_image_link;
-}
-
-ItemAttributesRequest_allOf_image_link
-ItemAttributesRequest::getImageLink()
-{
-	return image_link;
-}
-
-void
-ItemAttributesRequest::setImageLink(ItemAttributesRequest_allOf_image_link  image_link)
-{
-	this->image_link = image_link;
-}
-
-bool
-ItemAttributesRequest::getSavePinDisabled()
-{
-	return save_pin_disabled;
-}
-
-void
-ItemAttributesRequest::setSavePinDisabled(bool  save_pin_disabled)
-{
-	this->save_pin_disabled = save_pin_disabled;
 }
 
 std::string

@@ -14,33 +14,26 @@ class LabelCreateRequest {
   /// Returns a new [LabelCreateRequest] instance.
   LabelCreateRequest({
     this.labels = const [],
-    required this.parentId,
   });
 
   /// Labels that you are applying to the campaign.
-  List<LabelCreateRequestLabelsInner> labels;
-
-  /// Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
-  String parentId;
+  List<LabelCreateItem> labels;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LabelCreateRequest &&
-    _deepEquality.equals(other.labels, labels) &&
-    other.parentId == parentId;
+    _deepEquality.equals(other.labels, labels);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (labels.hashCode) +
-    (parentId.hashCode);
+    (labels.hashCode);
 
   @override
-  String toString() => 'LabelCreateRequest[labels=$labels, parentId=$parentId]';
+  String toString() => 'LabelCreateRequest[labels=$labels]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'labels'] = this.labels;
-      json[r'parent_id'] = this.parentId;
     return json;
   }
 
@@ -55,16 +48,13 @@ class LabelCreateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "LabelCreateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "LabelCreateRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'labels'), 'Required key "LabelCreateRequest[labels]" is missing from JSON.');
+        assert(json[r'labels'] != null, 'Required key "LabelCreateRequest[labels]" has a null value in JSON.');
         return true;
       }());
 
       return LabelCreateRequest(
-        labels: LabelCreateRequestLabelsInner.listFromJson(json[r'labels']),
-        parentId: mapValueOfType<String>(json, r'parent_id')!,
+        labels: LabelCreateItem.listFromJson(json[r'labels']),
       );
     }
     return null;
@@ -113,7 +103,6 @@ class LabelCreateRequest {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'labels',
-    'parent_id',
   };
 }
 

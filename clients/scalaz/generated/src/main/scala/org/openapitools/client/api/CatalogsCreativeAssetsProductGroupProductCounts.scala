@@ -12,7 +12,9 @@ import org.joda.time.DateTime
 import CatalogsCreativeAssetsProductGroupProductCounts._
 
 case class CatalogsCreativeAssetsProductGroupProductCounts (
-  catalogType: CatalogType,
+  appLinks: BigDecimal,
+catalogType: CatalogType,
+images: BigDecimal,
 total: BigDecimal,
 videos: BigDecimal)
 

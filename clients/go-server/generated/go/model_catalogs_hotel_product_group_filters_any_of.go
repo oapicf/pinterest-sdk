@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,8 +23,61 @@ type CatalogsHotelProductGroupFiltersAnyOf struct {
 
 	AnyOf []CatalogsHotelProductGroupFilterKeys `json:"any_of"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsHotelProductGroupFiltersAnyOf
+func (o *CatalogsHotelProductGroupFiltersAnyOf) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"any_of",
+	}
 
-// AssertCatalogsHotelProductGroupFiltersAnyOfRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"any_of": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"any_of": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsHotelProductGroupFiltersAnyOf
+
+	if value, exists := allProperties["any_of"]; exists {
+		if err = json.Unmarshal(value, &decoded.AnyOf); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsHotelProductGroupFiltersAnyOfRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsHotelProductGroupFiltersAnyOfRequired(obj CatalogsHotelProductGroupFiltersAnyOf) error {
 	elements := map[string]interface{}{
 		"any_of": obj.AnyOf,
@@ -30,10 +88,20 @@ func AssertCatalogsHotelProductGroupFiltersAnyOfRequired(obj CatalogsHotelProduc
 		}
 	}
 
+	for _, el := range obj.AnyOf {
+		if err := AssertCatalogsHotelProductGroupFilterKeysRequired(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 // AssertCatalogsHotelProductGroupFiltersAnyOfConstraints checks if the values respects the defined constraints
 func AssertCatalogsHotelProductGroupFiltersAnyOfConstraints(obj CatalogsHotelProductGroupFiltersAnyOf) error {
+	for _, el := range obj.AnyOf {
+		if err := AssertCatalogsHotelProductGroupFilterKeysConstraints(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }

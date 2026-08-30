@@ -81,7 +81,7 @@ CatalogsHotelProductGroupFiltersAnyOf::getAnyOf()
 }
 
 void
-CatalogsHotelProductGroupFiltersAnyOf::setAnyOf(std::list <CatalogsHotelProductGroupFilterKeys> any_of)
+CatalogsHotelProductGroupFiltersAnyOf::setAnyOf(std::list<CatalogsHotelProductGroupFilterKeys> any_of)
 {
 	this->any_of = any_of;
 }

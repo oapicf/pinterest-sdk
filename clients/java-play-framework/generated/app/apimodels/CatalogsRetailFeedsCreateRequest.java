@@ -1,11 +1,10 @@
 package apimodels;
 
+import apimodels.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
 import apimodels.CatalogsFeedCredentials;
 import apimodels.CatalogsFeedProcessingSchedule;
-import apimodels.CatalogsFeedsCreateRequestDefaultLocale;
 import apimodels.CatalogsFormat;
 import apimodels.CatalogsStatus;
-import apimodels.CatalogsType;
 import apimodels.Country;
 import apimodels.NullableCurrency;
 import apimodels.ProductAvailabilityType;
@@ -19,7 +18,7 @@ import javax.validation.Valid;
 /**
  * Request object for creating a retail feed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsRetailFeedsCreateRequest   {
   @JsonProperty("catalog_id")
@@ -27,11 +26,39 @@ public class CatalogsRetailFeedsCreateRequest   {
 
   private String catalogId;
 
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    RETAIL("RETAIL");
+
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
   @NotNull
-@Valid
 
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("credentials")
   @Valid
@@ -58,7 +85,7 @@ public class CatalogsRetailFeedsCreateRequest   {
   @NotNull
 @Valid
 
-  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  private CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale;
 
   @JsonProperty("format")
   @NotNull
@@ -85,7 +112,7 @@ public class CatalogsRetailFeedsCreateRequest   {
   @JsonProperty("status")
   @Valid
 
-  private CatalogsStatus status = "ACTIVE";
+  private CatalogsStatus status;
 
   public CatalogsRetailFeedsCreateRequest catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -93,7 +120,7 @@ public class CatalogsRetailFeedsCreateRequest   {
   }
 
    /**
-   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.
+   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
    * @return catalogId
   **/
   public String getCatalogId() {
@@ -104,7 +131,7 @@ public class CatalogsRetailFeedsCreateRequest   {
     this.catalogId = catalogId;
   }
 
-  public CatalogsRetailFeedsCreateRequest catalogType(CatalogsType catalogType) {
+  public CatalogsRetailFeedsCreateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -113,11 +140,11 @@ public class CatalogsRetailFeedsCreateRequest   {
    * Get catalogType
    * @return catalogType
   **/
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -189,7 +216,7 @@ public class CatalogsRetailFeedsCreateRequest   {
     this.defaultCurrency = defaultCurrency;
   }
 
-  public CatalogsRetailFeedsCreateRequest defaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public CatalogsRetailFeedsCreateRequest defaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
     return this;
   }
@@ -198,11 +225,11 @@ public class CatalogsRetailFeedsCreateRequest   {
    * Get defaultLocale
    * @return defaultLocale
   **/
-  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+  public CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
   }
 
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public void setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
 
@@ -347,10 +374,7 @@ public class CatalogsRetailFeedsCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

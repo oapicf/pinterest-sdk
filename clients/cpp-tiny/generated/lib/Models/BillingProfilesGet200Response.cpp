@@ -102,7 +102,7 @@ Billing_profiles_get_200_response::getBookmark()
 }
 
 void
-Billing_profiles_get_200_response::setBookmark(std::string  bookmark)
+Billing_profiles_get_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Billing_profiles_get_200_response::getItems()
 }
 
 void
-Billing_profiles_get_200_response::setItems(std::list <BillingProfilesResponse> items)
+Billing_profiles_get_200_response::setItems(std::list<BillingProfilesResponse> items)
 {
 	this->items = items;
 }

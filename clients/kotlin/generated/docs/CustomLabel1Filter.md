@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **CUSTOM_LABEL_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
+| **CUSTOM_LABEL_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |  |
 
 
 

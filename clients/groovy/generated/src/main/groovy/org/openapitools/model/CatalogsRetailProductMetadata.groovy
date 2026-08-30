@@ -5,12 +5,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import org.openapitools.model.NonNullableCatalogsCurrency;
-import org.openapitools.model.NonNullableProductAvailabilityType;
+import org.openapitools.model.ProductAvailability;
 
 @Canonical
 class CatalogsRetailProductMetadata {
     
-    NonNullableProductAvailabilityType availability
+    ProductAvailability availability
     
     NonNullableCatalogsCurrency currency
     /* The parent ID of the product. */

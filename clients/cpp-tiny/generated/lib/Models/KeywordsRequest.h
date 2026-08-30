@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set Keyword JSON array. Each array element has 3 fields
 	 */
-	void setKeywords(std::list <KeywordsCommon> keywords);
+	void setKeywords(std::list<KeywordsCommon> keywords);
 	/*! \brief Get Keyword parent entity ID (advertiser, campaign, ad group).
 	 */
 	std::string getParentId();
 
 	/*! \brief Set Keyword parent entity ID (advertiser, campaign, ad group).
 	 */
-	void setParentId(std::string  parent_id);
+	void setParentId(std::string parent_id);
 
 
     private:

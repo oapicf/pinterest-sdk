@@ -141,8 +141,8 @@ class Language extends EnumClass {
   @BuiltValueEnumConst(wireName: r'NL')
   static const Language NL = _$NL;
   /// Language code, which is among the official ISO 639-1 language list.
-  @BuiltValueEnumConst(wireName: r'NO')
-  static const Language NO = _$NO;
+  @BuiltValueEnumConst(wireName: r'false')
+  static const Language false_ = _$false_;
   /// Language code, which is among the official ISO 639-1 language list.
   @BuiltValueEnumConst(wireName: r'PL')
   static const Language PL = _$PL;

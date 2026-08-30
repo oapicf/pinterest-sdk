@@ -3,8 +3,9 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.TopPinsAnalyticsResponseDateAvailability
-open OpenAPI.Model.TopVideoPinsAnalyticsResponsePinsInner
+open OpenAPI.Model.TopVideoPinsAnalyticsResponseDateAvailability
+open OpenAPI.Model.TopVideoPinsAnalyticsResponsePinsItems
+open OpenAPI.Model.TopVideoPinsSortBy
 
 module TopVideoPinsAnalyticsResponse =
 
@@ -13,11 +14,11 @@ module TopVideoPinsAnalyticsResponse =
   [<CLIMutable>]
   type TopVideoPinsAnalyticsResponse = {
     [<JsonProperty(PropertyName = "date_availability")>]
-    DateAvailability : TopPinsAnalyticsResponseDateAvailability;
+    DateAvailability : TopVideoPinsAnalyticsResponseDateAvailability;
     [<JsonProperty(PropertyName = "pins")>]
-    Pins : TopVideoPinsAnalyticsResponsePinsInner[];
+    Pins : TopVideoPinsAnalyticsResponsePinsItems[];
     [<JsonProperty(PropertyName = "sort_by")>]
-    SortBy : string;
+    SortBy : TopVideoPinsSortBy;
   }
 
   //#endregion

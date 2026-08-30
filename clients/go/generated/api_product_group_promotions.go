@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -29,16 +29,15 @@ type ApiProductGroupPromotionsCreateRequest struct {
 	ctx context.Context
 	ApiService *ProductGroupPromotionsAPIService
 	adAccountId string
-	productGroupPromotionCreateRequest *ProductGroupPromotionCreateRequest
+	productGroupPromotionsCreate *ProductGroupPromotionsCreate
 }
 
-// List of Product Group Promotions to create, size limit [1, 30].
-func (r ApiProductGroupPromotionsCreateRequest) ProductGroupPromotionCreateRequest(productGroupPromotionCreateRequest ProductGroupPromotionCreateRequest) ApiProductGroupPromotionsCreateRequest {
-	r.productGroupPromotionCreateRequest = &productGroupPromotionCreateRequest
+func (r ApiProductGroupPromotionsCreateRequest) ProductGroupPromotionsCreate(productGroupPromotionsCreate ProductGroupPromotionsCreate) ApiProductGroupPromotionsCreateRequest {
+	r.productGroupPromotionsCreate = &productGroupPromotionsCreate
 	return r
 }
 
-func (r ApiProductGroupPromotionsCreateRequest) Execute() (*ProductGroupPromotionResponse, *http.Response, error) {
+func (r ApiProductGroupPromotionsCreateRequest) Execute() (*ProductGroupPromotions, *http.Response, error) {
 	return r.ApiService.ProductGroupPromotionsCreateExecute(r)
 }
 
@@ -60,13 +59,13 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsCreate(ctx cont
 }
 
 // Execute executes the request
-//  @return ProductGroupPromotionResponse
-func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsCreateExecute(r ApiProductGroupPromotionsCreateRequest) (*ProductGroupPromotionResponse, *http.Response, error) {
+//  @return ProductGroupPromotions
+func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsCreateExecute(r ApiProductGroupPromotionsCreateRequest) (*ProductGroupPromotions, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ProductGroupPromotionResponse
+		localVarReturnValue  *ProductGroupPromotions
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductGroupPromotionsAPIService.ProductGroupPromotionsCreate")
@@ -83,8 +82,8 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsCreateExecute(r
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.productGroupPromotionCreateRequest == nil {
-		return localVarReturnValue, nil, reportError("productGroupPromotionCreateRequest is required and must be specified")
+	if r.productGroupPromotionsCreate == nil {
+		return localVarReturnValue, nil, reportError("productGroupPromotionsCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -105,7 +104,7 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsCreateExecute(r
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.productGroupPromotionCreateRequest
+	localVarPostBody = r.productGroupPromotionsCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -128,7 +127,62 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsCreateExecute(r
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -249,7 +303,62 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsGetExecute(r Ap
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -276,12 +385,30 @@ type ApiProductGroupPromotionsListRequest struct {
 	ctx context.Context
 	ApiService *ProductGroupPromotionsAPIService
 	adAccountId string
-	productGroupPromotionIds *[]string
-	entityStatuses *[]string
-	adGroupId *string
-	pageSize *int32
-	order *string
 	bookmark *string
+	pageSize *int32
+	order *PinterestLibPaginationOrder
+	productGroupPromotionIds *[]string
+	entityStatuses *[]EntityStatus
+	adGroupId *string
+}
+
+// Cursor used to fetch the next page of items
+func (r ApiProductGroupPromotionsListRequest) Bookmark(bookmark string) ApiProductGroupPromotionsListRequest {
+	r.bookmark = &bookmark
+	return r
+}
+
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+func (r ApiProductGroupPromotionsListRequest) PageSize(pageSize int32) ApiProductGroupPromotionsListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
+func (r ApiProductGroupPromotionsListRequest) Order(order PinterestLibPaginationOrder) ApiProductGroupPromotionsListRequest {
+	r.order = &order
+	return r
 }
 
 // List of Product group promotion Ids.
@@ -291,7 +418,7 @@ func (r ApiProductGroupPromotionsListRequest) ProductGroupPromotionIds(productGr
 }
 
 // Entity status
-func (r ApiProductGroupPromotionsListRequest) EntityStatuses(entityStatuses []string) ApiProductGroupPromotionsListRequest {
+func (r ApiProductGroupPromotionsListRequest) EntityStatuses(entityStatuses []EntityStatus) ApiProductGroupPromotionsListRequest {
 	r.entityStatuses = &entityStatuses
 	return r
 }
@@ -299,24 +426,6 @@ func (r ApiProductGroupPromotionsListRequest) EntityStatuses(entityStatuses []st
 // Ad group Id.
 func (r ApiProductGroupPromotionsListRequest) AdGroupId(adGroupId string) ApiProductGroupPromotionsListRequest {
 	r.adGroupId = &adGroupId
-	return r
-}
-
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-func (r ApiProductGroupPromotionsListRequest) PageSize(pageSize int32) ApiProductGroupPromotionsListRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-func (r ApiProductGroupPromotionsListRequest) Order(order string) ApiProductGroupPromotionsListRequest {
-	r.order = &order
-	return r
-}
-
-// Cursor used to fetch the next page of items
-func (r ApiProductGroupPromotionsListRequest) Bookmark(bookmark string) ApiProductGroupPromotionsListRequest {
-	r.bookmark = &bookmark
 	return r
 }
 
@@ -331,7 +440,7 @@ List existing product group promotions associated with an ad account.
 
 Include either ad_group_id or product_group_promotion_ids in your request.
 
-<b>Note:</b> ad_group_ids and product_group_promotion_ids are mutually exclusive parameters.
+**Note:** ad_group_ids and product_group_promotion_ids are mutually exclusive parameters.
 Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -371,6 +480,19 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsListExecute(r A
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
 
+	if r.bookmark != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	} else {
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
+	}
+	if r.order != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
+	}
 	if r.productGroupPromotionIds != nil {
 		t := *r.productGroupPromotionIds
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
@@ -393,25 +515,12 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsListExecute(r A
 			parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", t, "form", "multi")
 		}
 	} else {
-        var defaultValue []string = []string{"ACTIVE", "PAUSED"}
-        parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", defaultValue, "form", "multi")
-        r.entityStatuses = &defaultValue
+		var defaultValue []EntityStatus = []EntityStatus{"ACTIVE", "PAUSED"}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", defaultValue, "form", "multi")
+		r.entityStatuses = &defaultValue
 	}
 	if r.adGroupId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_id", r.adGroupId, "form", "")
-	}
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
-	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
-	}
-	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
-	}
-	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -452,7 +561,62 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsListExecute(r A
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -479,16 +643,15 @@ type ApiProductGroupPromotionsUpdateRequest struct {
 	ctx context.Context
 	ApiService *ProductGroupPromotionsAPIService
 	adAccountId string
-	productGroupPromotionUpdateRequest *ProductGroupPromotionUpdateRequest
+	productGroupPromotionsUpdateWithRequiredBody *ProductGroupPromotionsUpdateWithRequiredBody
 }
 
-// Parameters to update Product group promotions
-func (r ApiProductGroupPromotionsUpdateRequest) ProductGroupPromotionUpdateRequest(productGroupPromotionUpdateRequest ProductGroupPromotionUpdateRequest) ApiProductGroupPromotionsUpdateRequest {
-	r.productGroupPromotionUpdateRequest = &productGroupPromotionUpdateRequest
+func (r ApiProductGroupPromotionsUpdateRequest) ProductGroupPromotionsUpdateWithRequiredBody(productGroupPromotionsUpdateWithRequiredBody ProductGroupPromotionsUpdateWithRequiredBody) ApiProductGroupPromotionsUpdateRequest {
+	r.productGroupPromotionsUpdateWithRequiredBody = &productGroupPromotionsUpdateWithRequiredBody
 	return r
 }
 
-func (r ApiProductGroupPromotionsUpdateRequest) Execute() (*ProductGroupPromotionResponse, *http.Response, error) {
+func (r ApiProductGroupPromotionsUpdateRequest) Execute() (*ProductGroupPromotions, *http.Response, error) {
 	return r.ApiService.ProductGroupPromotionsUpdateExecute(r)
 }
 
@@ -510,13 +673,13 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsUpdate(ctx cont
 }
 
 // Execute executes the request
-//  @return ProductGroupPromotionResponse
-func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsUpdateExecute(r ApiProductGroupPromotionsUpdateRequest) (*ProductGroupPromotionResponse, *http.Response, error) {
+//  @return ProductGroupPromotions
+func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsUpdateExecute(r ApiProductGroupPromotionsUpdateRequest) (*ProductGroupPromotions, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ProductGroupPromotionResponse
+		localVarReturnValue  *ProductGroupPromotions
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductGroupPromotionsAPIService.ProductGroupPromotionsUpdate")
@@ -533,8 +696,8 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsUpdateExecute(r
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.productGroupPromotionUpdateRequest == nil {
-		return localVarReturnValue, nil, reportError("productGroupPromotionUpdateRequest is required and must be specified")
+	if r.productGroupPromotionsUpdateWithRequiredBody == nil {
+		return localVarReturnValue, nil, reportError("productGroupPromotionsUpdateWithRequiredBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -555,7 +718,7 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsUpdateExecute(r
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.productGroupPromotionUpdateRequest
+	localVarPostBody = r.productGroupPromotionsUpdateWithRequiredBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -578,7 +741,62 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsUpdateExecute(r
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -604,15 +822,15 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsUpdateExecute(r
 type ApiProductGroupsAnalyticsRequest struct {
 	ctx context.Context
 	ApiService *ProductGroupPromotionsAPIService
-	adAccountId string
 	startDate *string
 	endDate *string
 	productGroupIds *[]string
-	columns *[]string
+	columns *[]ReportingColumnSync
 	granularity *Granularity
-	clickWindowDays *int32
-	engagementWindowDays *int32
-	viewWindowDays *int32
+	adAccountId string
+	clickWindowDays *float32
+	engagementWindowDays *float32
+	viewWindowDays *float32
 	conversionReportTime *string
 	reportingTimezone *ReportingTimeZone
 }
@@ -635,32 +853,32 @@ func (r ApiProductGroupsAnalyticsRequest) ProductGroupIds(productGroupIds []stri
 	return r
 }
 
-// Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
-func (r ApiProductGroupsAnalyticsRequest) Columns(columns []string) ApiProductGroupsAnalyticsRequest {
+// Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+func (r ApiProductGroupsAnalyticsRequest) Columns(columns []ReportingColumnSync) ApiProductGroupsAnalyticsRequest {
 	r.columns = &columns
 	return r
 }
 
-// TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+//   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
 func (r ApiProductGroupsAnalyticsRequest) Granularity(granularity Granularity) ApiProductGroupsAnalyticsRequest {
 	r.granularity = &granularity
 	return r
 }
 
 // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
-func (r ApiProductGroupsAnalyticsRequest) ClickWindowDays(clickWindowDays int32) ApiProductGroupsAnalyticsRequest {
+func (r ApiProductGroupsAnalyticsRequest) ClickWindowDays(clickWindowDays float32) ApiProductGroupsAnalyticsRequest {
 	r.clickWindowDays = &clickWindowDays
 	return r
 }
 
-// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
-func (r ApiProductGroupsAnalyticsRequest) EngagementWindowDays(engagementWindowDays int32) ApiProductGroupsAnalyticsRequest {
+// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+func (r ApiProductGroupsAnalyticsRequest) EngagementWindowDays(engagementWindowDays float32) ApiProductGroupsAnalyticsRequest {
 	r.engagementWindowDays = &engagementWindowDays
 	return r
 }
 
 // Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
-func (r ApiProductGroupsAnalyticsRequest) ViewWindowDays(viewWindowDays int32) ApiProductGroupsAnalyticsRequest {
+func (r ApiProductGroupsAnalyticsRequest) ViewWindowDays(viewWindowDays float32) ApiProductGroupsAnalyticsRequest {
 	r.viewWindowDays = &viewWindowDays
 	return r
 }
@@ -677,16 +895,17 @@ func (r ApiProductGroupsAnalyticsRequest) ReportingTimezone(reportingTimezone Re
 	return r
 }
 
-func (r ApiProductGroupsAnalyticsRequest) Execute() ([]ProductGroupAnalyticsResponseInner, *http.Response, error) {
+func (r ApiProductGroupsAnalyticsRequest) Execute() ([]ProductGroupAnalyticsItems, *http.Response, error) {
 	return r.ApiService.ProductGroupsAnalyticsExecute(r)
 }
 
 /*
 ProductGroupsAnalytics Get product group analytics
 
-Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options.
-- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
-  - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
+Get analytics for the specified product groups in the specified `ad_account_id`, filtered by the specified options.
+
+- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
+- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
 - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -702,13 +921,13 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupsAnalytics(ctx context.Co
 }
 
 // Execute executes the request
-//  @return []ProductGroupAnalyticsResponseInner
-func (a *ProductGroupPromotionsAPIService) ProductGroupsAnalyticsExecute(r ApiProductGroupsAnalyticsRequest) ([]ProductGroupAnalyticsResponseInner, *http.Response, error) {
+//  @return []ProductGroupAnalyticsItems
+func (a *ProductGroupPromotionsAPIService) ProductGroupsAnalyticsExecute(r ApiProductGroupsAnalyticsRequest) ([]ProductGroupAnalyticsItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ProductGroupAnalyticsResponseInner
+		localVarReturnValue  []ProductGroupAnalyticsItems
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductGroupPromotionsAPIService.ProductGroupsAnalytics")
@@ -722,9 +941,6 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupsAnalyticsExecute(r ApiPr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.adAccountId) > 18 {
-		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
-	}
 	if r.startDate == nil {
 		return localVarReturnValue, nil, reportError("startDate is required and must be specified")
 	}
@@ -746,6 +962,9 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupsAnalyticsExecute(r ApiPr
 	if r.granularity == nil {
 		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
 	}
+	if strlen(r.adAccountId) > 18 {
+		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
+	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
@@ -765,30 +984,30 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupsAnalyticsExecute(r ApiPr
 	if r.clickWindowDays != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "form", "")
 	} else {
-        var defaultValue int32 = 30
-        parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", defaultValue, "form", "")
-        r.clickWindowDays = &defaultValue
+		var defaultValue float32 = 30
+		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", defaultValue, "form", "")
+		r.clickWindowDays = &defaultValue
 	}
 	if r.engagementWindowDays != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "form", "")
 	} else {
-        var defaultValue int32 = 30
-        parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", defaultValue, "form", "")
-        r.engagementWindowDays = &defaultValue
+		var defaultValue float32 = 30
+		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", defaultValue, "form", "")
+		r.engagementWindowDays = &defaultValue
 	}
 	if r.viewWindowDays != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "form", "")
 	} else {
-        var defaultValue int32 = 1
-        parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", defaultValue, "form", "")
-        r.viewWindowDays = &defaultValue
+		var defaultValue float32 = 1
+		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", defaultValue, "form", "")
+		r.viewWindowDays = &defaultValue
 	}
 	if r.conversionReportTime != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "form", "")
 	} else {
-        var defaultValue string = "TIME_OF_AD_ACTION"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", defaultValue, "form", "")
-        r.conversionReportTime = &defaultValue
+		var defaultValue string = "TIME_OF_AD_ACTION"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", defaultValue, "form", "")
+		r.conversionReportTime = &defaultValue
 	}
 	if r.reportingTimezone != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "reporting_timezone", r.reportingTimezone, "form", "")
@@ -833,7 +1052,7 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupsAnalyticsExecute(r ApiPr
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -843,7 +1062,51 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupsAnalyticsExecute(r ApiPr
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

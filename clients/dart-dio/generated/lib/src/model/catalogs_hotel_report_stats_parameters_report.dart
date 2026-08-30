@@ -15,9 +15,9 @@ part 'catalogs_hotel_report_stats_parameters_report.g.dart';
 /// CatalogsHotelReportStatsParametersReport
 ///
 /// Properties:
-/// * [reportType] 
 /// * [feedId] - ID of the feed entity.
 /// * [processingResultId] - Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
+/// * [reportType] 
 /// * [catalogId] - Unique identifier of a catalog. If not given, oldest catalog will be used
 @BuiltValue()
 abstract class CatalogsHotelReportStatsParametersReport implements Built<CatalogsHotelReportStatsParametersReport, CatalogsHotelReportStatsParametersReportBuilder> {
@@ -129,8 +129,6 @@ class _$CatalogsHotelReportStatsParametersReportSerializer implements PrimitiveS
 
 class CatalogsHotelReportStatsParametersReportReportTypeEnum extends EnumClass {
 
-  @BuiltValueEnumConst(wireName: r'FEED_INGESTION_ISSUES')
-  static const CatalogsHotelReportStatsParametersReportReportTypeEnum FEED_INGESTION_ISSUES = _$catalogsHotelReportStatsParametersReportReportTypeEnum_FEED_INGESTION_ISSUES;
   @BuiltValueEnumConst(wireName: r'DISTRIBUTION_ISSUES')
   static const CatalogsHotelReportStatsParametersReportReportTypeEnum DISTRIBUTION_ISSUES = _$catalogsHotelReportStatsParametersReportReportTypeEnum_DISTRIBUTION_ISSUES;
 

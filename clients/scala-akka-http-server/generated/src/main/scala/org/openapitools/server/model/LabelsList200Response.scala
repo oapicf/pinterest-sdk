@@ -7,6 +7,6 @@ package org.openapitools.server.model
 */
 final case class LabelsList200Response (
   bookmark: Option[String] = None,
-  items: Seq[LabelsResponse]
+  items: Seq[Label]
 )
 

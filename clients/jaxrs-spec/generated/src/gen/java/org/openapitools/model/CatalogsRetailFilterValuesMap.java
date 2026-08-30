@@ -1,11 +1,14 @@
 package org.openapitools.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.Gender;
+import org.openapitools.model.MediaType;
+import org.openapitools.model.ProductAvailability;
+import org.openapitools.model.ProductCondition;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,161 +24,20 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * A map of filter attributes to their available values.
  **/
 @ApiModel(description = "A map of filter attributes to their available values.")
-@JsonTypeName("catalogs_retail_filter_values_map")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@JsonTypeName("CatalogsRetailFilterValuesMap")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailFilterValuesMap   {
   private @Valid List<String> adImageTags = new ArrayList<>();
   private @Valid List<String> adVideoTags = new ArrayList<>();
-  public enum AvailabilityEnum {
-
-    IN_STOCK(String.valueOf("IN_STOCK")), OUT_OF_STOCK(String.valueOf("OUT_OF_STOCK")), PREORDER(String.valueOf("PREORDER")), UNAVAILABLE(String.valueOf("UNAVAILABLE"));
-
-
-    private String value;
-
-    AvailabilityEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static AvailabilityEnum fromString(String s) {
-        for (AvailabilityEnum b : AvailabilityEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static AvailabilityEnum fromValue(String value) {
-        for (AvailabilityEnum b : AvailabilityEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private @Valid List<AvailabilityEnum> availability = new ArrayList<>();
+  private @Valid List<ProductAvailability> availability = new ArrayList<>();
   private @Valid List<String> brand = new ArrayList<>();
-  public enum ConditionEnum {
-
-    NEW(String.valueOf("NEW")), USED(String.valueOf("USED")), REFURBISHED(String.valueOf("REFURBISHED"));
-
-
-    private String value;
-
-    ConditionEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static ConditionEnum fromString(String s) {
-        for (ConditionEnum b : ConditionEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static ConditionEnum fromValue(String value) {
-        for (ConditionEnum b : ConditionEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private @Valid List<ConditionEnum> condition = new ArrayList<>();
+  private @Valid List<ProductCondition> condition = new ArrayList<>();
   private @Valid List<String> customLabel0 = new ArrayList<>();
   private @Valid List<String> customLabel1 = new ArrayList<>();
   private @Valid List<String> customLabel2 = new ArrayList<>();
   private @Valid List<String> customLabel3 = new ArrayList<>();
   private @Valid List<String> customLabel4 = new ArrayList<>();
-  public enum GenderEnum {
-
-    FEMALE(String.valueOf("FEMALE")), MALE(String.valueOf("MALE")), UNISEX(String.valueOf("UNISEX"));
-
-
-    private String value;
-
-    GenderEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static GenderEnum fromString(String s) {
-        for (GenderEnum b : GenderEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static GenderEnum fromValue(String value) {
-        for (GenderEnum b : GenderEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private @Valid List<GenderEnum> gender = new ArrayList<>();
+  private @Valid List<Gender> gender = new ArrayList<>();
   private @Valid List<String> googleProductCategory0 = new ArrayList<>();
   private @Valid List<String> googleProductCategory1 = new ArrayList<>();
   private @Valid List<String> googleProductCategory2 = new ArrayList<>();
@@ -183,54 +45,7 @@ public class CatalogsRetailFilterValuesMap   {
   private @Valid List<String> googleProductCategory4 = new ArrayList<>();
   private @Valid List<String> googleProductCategory5 = new ArrayList<>();
   private @Valid List<String> googleProductCategory6 = new ArrayList<>();
-  public enum MediaTypeEnum {
-
-    IMAGE(String.valueOf("IMAGE")), VIDEO(String.valueOf("VIDEO"));
-
-
-    private String value;
-
-    MediaTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static MediaTypeEnum fromString(String s) {
-        for (MediaTypeEnum b : MediaTypeEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static MediaTypeEnum fromValue(String value) {
-        for (MediaTypeEnum b : MediaTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private @Valid List<MediaTypeEnum> mediaType = new ArrayList<>();
+  private @Valid List<MediaType> mediaType = new ArrayList<>();
   private @Valid List<String> productType0 = new ArrayList<>();
   private @Valid List<String> productType1 = new ArrayList<>();
   private @Valid List<String> productType2 = new ArrayList<>();
@@ -312,7 +127,7 @@ public class CatalogsRetailFilterValuesMap   {
   }
   /**
    **/
-  public CatalogsRetailFilterValuesMap availability(List<AvailabilityEnum> availability) {
+  public CatalogsRetailFilterValuesMap availability(List<ProductAvailability> availability) {
     this.availability = availability;
     return this;
   }
@@ -320,16 +135,16 @@ public class CatalogsRetailFilterValuesMap   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("availability")
-  public List<AvailabilityEnum> getAvailability() {
+  public List<ProductAvailability> getAvailability() {
     return availability;
   }
 
   @JsonProperty("availability")
-  public void setAvailability(List<AvailabilityEnum> availability) {
+  public void setAvailability(List<ProductAvailability> availability) {
     this.availability = availability;
   }
 
-  public CatalogsRetailFilterValuesMap addAvailabilityItem(AvailabilityEnum availabilityItem) {
+  public CatalogsRetailFilterValuesMap addAvailabilityItem(ProductAvailability availabilityItem) {
     if (this.availability == null) {
       this.availability = new ArrayList<>();
     }
@@ -338,7 +153,7 @@ public class CatalogsRetailFilterValuesMap   {
     return this;
   }
 
-  public CatalogsRetailFilterValuesMap removeAvailabilityItem(AvailabilityEnum availabilityItem) {
+  public CatalogsRetailFilterValuesMap removeAvailabilityItem(ProductAvailability availabilityItem) {
     if (availabilityItem != null && this.availability != null) {
       this.availability.remove(availabilityItem);
     }
@@ -382,7 +197,7 @@ public class CatalogsRetailFilterValuesMap   {
   }
   /**
    **/
-  public CatalogsRetailFilterValuesMap condition(List<ConditionEnum> condition) {
+  public CatalogsRetailFilterValuesMap condition(List<ProductCondition> condition) {
     this.condition = condition;
     return this;
   }
@@ -390,16 +205,16 @@ public class CatalogsRetailFilterValuesMap   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("condition")
-  public List<ConditionEnum> getCondition() {
+  public List<ProductCondition> getCondition() {
     return condition;
   }
 
   @JsonProperty("condition")
-  public void setCondition(List<ConditionEnum> condition) {
+  public void setCondition(List<ProductCondition> condition) {
     this.condition = condition;
   }
 
-  public CatalogsRetailFilterValuesMap addConditionItem(ConditionEnum conditionItem) {
+  public CatalogsRetailFilterValuesMap addConditionItem(ProductCondition conditionItem) {
     if (this.condition == null) {
       this.condition = new ArrayList<>();
     }
@@ -408,7 +223,7 @@ public class CatalogsRetailFilterValuesMap   {
     return this;
   }
 
-  public CatalogsRetailFilterValuesMap removeConditionItem(ConditionEnum conditionItem) {
+  public CatalogsRetailFilterValuesMap removeConditionItem(ProductCondition conditionItem) {
     if (conditionItem != null && this.condition != null) {
       this.condition.remove(conditionItem);
     }
@@ -592,7 +407,7 @@ public class CatalogsRetailFilterValuesMap   {
   }
   /**
    **/
-  public CatalogsRetailFilterValuesMap gender(List<GenderEnum> gender) {
+  public CatalogsRetailFilterValuesMap gender(List<Gender> gender) {
     this.gender = gender;
     return this;
   }
@@ -600,16 +415,16 @@ public class CatalogsRetailFilterValuesMap   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("gender")
-  public List<GenderEnum> getGender() {
+  public List<Gender> getGender() {
     return gender;
   }
 
   @JsonProperty("gender")
-  public void setGender(List<GenderEnum> gender) {
+  public void setGender(List<Gender> gender) {
     this.gender = gender;
   }
 
-  public CatalogsRetailFilterValuesMap addGenderItem(GenderEnum genderItem) {
+  public CatalogsRetailFilterValuesMap addGenderItem(Gender genderItem) {
     if (this.gender == null) {
       this.gender = new ArrayList<>();
     }
@@ -618,7 +433,7 @@ public class CatalogsRetailFilterValuesMap   {
     return this;
   }
 
-  public CatalogsRetailFilterValuesMap removeGenderItem(GenderEnum genderItem) {
+  public CatalogsRetailFilterValuesMap removeGenderItem(Gender genderItem) {
     if (genderItem != null && this.gender != null) {
       this.gender.remove(genderItem);
     }
@@ -872,7 +687,7 @@ public class CatalogsRetailFilterValuesMap   {
   }
   /**
    **/
-  public CatalogsRetailFilterValuesMap mediaType(List<MediaTypeEnum> mediaType) {
+  public CatalogsRetailFilterValuesMap mediaType(List<MediaType> mediaType) {
     this.mediaType = mediaType;
     return this;
   }
@@ -880,16 +695,16 @@ public class CatalogsRetailFilterValuesMap   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media_type")
-  public List<MediaTypeEnum> getMediaType() {
+  public List<MediaType> getMediaType() {
     return mediaType;
   }
 
   @JsonProperty("media_type")
-  public void setMediaType(List<MediaTypeEnum> mediaType) {
+  public void setMediaType(List<MediaType> mediaType) {
     this.mediaType = mediaType;
   }
 
-  public CatalogsRetailFilterValuesMap addMediaTypeItem(MediaTypeEnum mediaTypeItem) {
+  public CatalogsRetailFilterValuesMap addMediaTypeItem(MediaType mediaTypeItem) {
     if (this.mediaType == null) {
       this.mediaType = new ArrayList<>();
     }
@@ -898,7 +713,7 @@ public class CatalogsRetailFilterValuesMap   {
     return this;
   }
 
-  public CatalogsRetailFilterValuesMap removeMediaTypeItem(MediaTypeEnum mediaTypeItem) {
+  public CatalogsRetailFilterValuesMap removeMediaTypeItem(MediaType mediaTypeItem) {
     if (mediaTypeItem != null && this.mediaType != null) {
       this.mediaType.remove(mediaTypeItem);
     }
@@ -1159,12 +974,8 @@ public class CatalogsRetailFilterValuesMap   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,11 +27,15 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.Error
 import org.openapitools.client.models.LabelCreateRequest
 import org.openapitools.client.models.LabelUpdateRequest
+import org.openapitools.client.models.LabeledEntities
+import org.openapitools.client.models.LabeledEntitiesCreate
 import org.openapitools.client.models.LabelsList200Response
 import org.openapitools.client.models.LabelsResponse
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.QueryLabelEntityStatusesItems
+import org.openapitools.client.models.QueryLabelTypesItems
 
 import com.squareup.moshi.Json
 
@@ -45,14 +57,94 @@ open class LabelsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
+    }
+
+    /**
+     * POST /ad_accounts/{ad_account_id}/labels/{label_id}/apply
+     * Apply label to entity
+     *   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Apply a label to one or more campaigns.   Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/) in addition to campaigns.   Currently, you can apply **brand** and **custom** labels. Future releases will provide more options.    **Note:** You can only apply one brand label to a campaign. You can apply up to 30 custom labels to a campaign.
+     * @param adAccountId 
+     * @param labelId Label ID.
+     * @param labeledEntitiesCreate 
+     * @return LabeledEntities
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun labelsApply(adAccountId: kotlin.String, labelId: kotlin.String, labeledEntitiesCreate: LabeledEntitiesCreate) : LabeledEntities {
+        val localVarResponse = labelsApplyWithHttpInfo(adAccountId = adAccountId, labelId = labelId, labeledEntitiesCreate = labeledEntitiesCreate)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as LabeledEntities
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /ad_accounts/{ad_account_id}/labels/{label_id}/apply
+     * Apply label to entity
+     *   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Apply a label to one or more campaigns.   Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/) in addition to campaigns.   Currently, you can apply **brand** and **custom** labels. Future releases will provide more options.    **Note:** You can only apply one brand label to a campaign. You can apply up to 30 custom labels to a campaign.
+     * @param adAccountId 
+     * @param labelId Label ID.
+     * @param labeledEntitiesCreate 
+     * @return ApiResponse<LabeledEntities?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun labelsApplyWithHttpInfo(adAccountId: kotlin.String, labelId: kotlin.String, labeledEntitiesCreate: LabeledEntitiesCreate) : ApiResponse<LabeledEntities?> {
+        val localVariableConfig = labelsApplyRequestConfig(adAccountId = adAccountId, labelId = labelId, labeledEntitiesCreate = labeledEntitiesCreate)
+
+        return request<LabeledEntitiesCreate, LabeledEntities>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation labelsApply
+     *
+     * @param adAccountId 
+     * @param labelId Label ID.
+     * @param labeledEntitiesCreate 
+     * @return RequestConfig
+     */
+    fun labelsApplyRequestConfig(adAccountId: kotlin.String, labelId: kotlin.String, labeledEntitiesCreate: LabeledEntitiesCreate) : RequestConfig<LabeledEntitiesCreate> {
+        val localVariableBody = labeledEntitiesCreate
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/ad_accounts/{ad_account_id}/labels/{label_id}/apply".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())).replace("{"+"label_id"+"}", encodeURIComponent(labelId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
     }
 
     /**
      * POST /ad_accounts/{ad_account_id}/labels
      * Create labels
-     * &lt;p&gt; &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    &lt;b&gt;Note:&lt;/b&gt; You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Apply one or more labels to a campaign. Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/). Currently, you can apply brand and custom labels. Future releases will provide more options.  **Note:** You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.
      * @param adAccountId Unique identifier of an ad account.
      * @param labelCreateRequest 
      * @return LabelsResponse
@@ -85,7 +177,7 @@ open class LabelsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * POST /ad_accounts/{ad_account_id}/labels
      * Create labels
-     * &lt;p&gt; &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    &lt;b&gt;Note:&lt;/b&gt; You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Apply one or more labels to a campaign. Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/). Currently, you can apply brand and custom labels. Future releases will provide more options.  **Note:** You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.
      * @param adAccountId Unique identifier of an ad account.
      * @param labelCreateRequest 
      * @return ApiResponse<LabelsResponse?>
@@ -127,50 +219,16 @@ open class LabelsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
-     * enum for parameter entityStatuses
-     */
-     enum class EntityStatusesLabelsList(val value: kotlin.String) {
-         @Json(name = "ACTIVE") ACTIVE("ACTIVE"),
-         @Json(name = "ARCHIVED") ARCHIVED("ARCHIVED");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
-     * enum for parameter labelTypes
-     */
-     enum class LabelTypesLabelsList(val value: kotlin.String) {
-         @Json(name = "BRAND") BRAND("BRAND"),
-         @Json(name = "CUSTOM") CUSTOM("CUSTOM");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /ad_accounts/{ad_account_id}/labels
      * List labels
-     * &lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   See a list of labels for assets that your account owns, and filter the list by different criteria. &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  See a list of labels for assets that your account owns, and filter the list by different criteria. If no filter is provided, it will default to labels associated with the ad account id.
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
      * @param labelIds List of Label Ids to use to filter the results. (optional)
-     * @param entityStatuses Label entity status (optional, default to kotlin.collections.List<EntityStatuses>.arrayListOfLeft_ParenthesisEntityStatusesPeriodACTIVERight_Parenthesis)
-     * @param labelTypes Label type. (optional, default to kotlin.collections.List<LabelTypes>.arrayListOfLeft_ParenthesisLabelTypesPeriodBRANDCommaLabelTypesPeriodCUSTOMRight_Parenthesis)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param entityStatuses Label entity status (optional, default to arrayListOf(QueryLabelEntityStatusesItems.ACTIVE))
+     * @param labelTypes Label type. (optional, default to arrayListOf(QueryLabelTypesItems.BRAND,QueryLabelTypesItems.CUSTOM))
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return LabelsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -180,8 +238,8 @@ open class LabelsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun labelsList(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>? = null, labelIds: kotlin.collections.List<kotlin.String>? = null, entityStatuses: kotlin.collections.List<EntityStatusesLabelsList>? = EntityStatusesLabelsList.arrayListOfLeft_ParenthesisEntityStatusesPeriodACTIVERight_Parenthesis, labelTypes: kotlin.collections.List<LabelTypesLabelsList>? = LabelTypesLabelsList.arrayListOfLeft_ParenthesisLabelTypesPeriodBRANDCommaLabelTypesPeriodCUSTOMRight_Parenthesis, pageSize: kotlin.Int? = 25, bookmark: kotlin.String? = null) : LabelsList200Response {
-        val localVarResponse = labelsListWithHttpInfo(adAccountId = adAccountId, campaignIds = campaignIds, labelIds = labelIds, entityStatuses = entityStatuses, labelTypes = labelTypes, pageSize = pageSize, bookmark = bookmark)
+    fun labelsList(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>? = null, labelIds: kotlin.collections.List<kotlin.String>? = null, entityStatuses: kotlin.collections.List<QueryLabelEntityStatusesItems>? = arrayListOf(QueryLabelEntityStatusesItems.ACTIVE), labelTypes: kotlin.collections.List<QueryLabelTypesItems>? = arrayListOf(QueryLabelTypesItems.BRAND,QueryLabelTypesItems.CUSTOM), bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : LabelsList200Response {
+        val localVarResponse = labelsListWithHttpInfo(adAccountId = adAccountId, campaignIds = campaignIds, labelIds = labelIds, entityStatuses = entityStatuses, labelTypes = labelTypes, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as LabelsList200Response
@@ -201,22 +259,22 @@ open class LabelsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /ad_accounts/{ad_account_id}/labels
      * List labels
-     * &lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   See a list of labels for assets that your account owns, and filter the list by different criteria. &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  See a list of labels for assets that your account owns, and filter the list by different criteria. If no filter is provided, it will default to labels associated with the ad account id.
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
      * @param labelIds List of Label Ids to use to filter the results. (optional)
-     * @param entityStatuses Label entity status (optional, default to kotlin.collections.List<EntityStatuses>.arrayListOfLeft_ParenthesisEntityStatusesPeriodACTIVERight_Parenthesis)
-     * @param labelTypes Label type. (optional, default to kotlin.collections.List<LabelTypes>.arrayListOfLeft_ParenthesisLabelTypesPeriodBRANDCommaLabelTypesPeriodCUSTOMRight_Parenthesis)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param entityStatuses Label entity status (optional, default to arrayListOf(QueryLabelEntityStatusesItems.ACTIVE))
+     * @param labelTypes Label type. (optional, default to arrayListOf(QueryLabelTypesItems.BRAND,QueryLabelTypesItems.CUSTOM))
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<LabelsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun labelsListWithHttpInfo(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>?, labelIds: kotlin.collections.List<kotlin.String>?, entityStatuses: kotlin.collections.List<EntityStatusesLabelsList>?, labelTypes: kotlin.collections.List<LabelTypesLabelsList>?, pageSize: kotlin.Int?, bookmark: kotlin.String?) : ApiResponse<LabelsList200Response?> {
-        val localVariableConfig = labelsListRequestConfig(adAccountId = adAccountId, campaignIds = campaignIds, labelIds = labelIds, entityStatuses = entityStatuses, labelTypes = labelTypes, pageSize = pageSize, bookmark = bookmark)
+    fun labelsListWithHttpInfo(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>?, labelIds: kotlin.collections.List<kotlin.String>?, entityStatuses: kotlin.collections.List<QueryLabelEntityStatusesItems>?, labelTypes: kotlin.collections.List<QueryLabelTypesItems>?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<LabelsList200Response?> {
+        val localVariableConfig = labelsListRequestConfig(adAccountId = adAccountId, campaignIds = campaignIds, labelIds = labelIds, entityStatuses = entityStatuses, labelTypes = labelTypes, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, LabelsList200Response>(
             localVariableConfig
@@ -229,13 +287,13 @@ open class LabelsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
      * @param labelIds List of Label Ids to use to filter the results. (optional)
-     * @param entityStatuses Label entity status (optional, default to kotlin.collections.List<EntityStatuses>.arrayListOfLeft_ParenthesisEntityStatusesPeriodACTIVERight_Parenthesis)
-     * @param labelTypes Label type. (optional, default to kotlin.collections.List<LabelTypes>.arrayListOfLeft_ParenthesisLabelTypesPeriodBRANDCommaLabelTypesPeriodCUSTOMRight_Parenthesis)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param entityStatuses Label entity status (optional, default to arrayListOf(QueryLabelEntityStatusesItems.ACTIVE))
+     * @param labelTypes Label type. (optional, default to arrayListOf(QueryLabelTypesItems.BRAND,QueryLabelTypesItems.CUSTOM))
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun labelsListRequestConfig(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>?, labelIds: kotlin.collections.List<kotlin.String>?, entityStatuses: kotlin.collections.List<EntityStatusesLabelsList>?, labelTypes: kotlin.collections.List<LabelTypesLabelsList>?, pageSize: kotlin.Int?, bookmark: kotlin.String?) : RequestConfig<Unit> {
+    fun labelsListRequestConfig(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>?, labelIds: kotlin.collections.List<kotlin.String>?, entityStatuses: kotlin.collections.List<QueryLabelEntityStatusesItems>?, labelTypes: kotlin.collections.List<QueryLabelTypesItems>?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -251,11 +309,11 @@ open class LabelsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
                 if (labelTypes != null) {
                     put("label_types", toMultiValue(labelTypes.toList(), "multi"))
                 }
-                if (pageSize != null) {
-                    put("page_size", listOf(pageSize.toString()))
-                }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
+                }
+                if (pageSize != null) {
+                    put("page_size", listOf(pageSize.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -272,9 +330,89 @@ open class LabelsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
+     * POST /ad_accounts/{ad_account_id}/labels/{label_id}/remove
+     * Remove label from entities
+     *   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Remove a label from one or more entities.
+     * @param adAccountId 
+     * @param labelId Label ID.
+     * @param labeledEntitiesCreate 
+     * @return LabeledEntities
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun labelsRemove(adAccountId: kotlin.String, labelId: kotlin.String, labeledEntitiesCreate: LabeledEntitiesCreate) : LabeledEntities {
+        val localVarResponse = labelsRemoveWithHttpInfo(adAccountId = adAccountId, labelId = labelId, labeledEntitiesCreate = labeledEntitiesCreate)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as LabeledEntities
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /ad_accounts/{ad_account_id}/labels/{label_id}/remove
+     * Remove label from entities
+     *   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Remove a label from one or more entities.
+     * @param adAccountId 
+     * @param labelId Label ID.
+     * @param labeledEntitiesCreate 
+     * @return ApiResponse<LabeledEntities?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun labelsRemoveWithHttpInfo(adAccountId: kotlin.String, labelId: kotlin.String, labeledEntitiesCreate: LabeledEntitiesCreate) : ApiResponse<LabeledEntities?> {
+        val localVariableConfig = labelsRemoveRequestConfig(adAccountId = adAccountId, labelId = labelId, labeledEntitiesCreate = labeledEntitiesCreate)
+
+        return request<LabeledEntitiesCreate, LabeledEntities>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation labelsRemove
+     *
+     * @param adAccountId 
+     * @param labelId Label ID.
+     * @param labeledEntitiesCreate 
+     * @return RequestConfig
+     */
+    fun labelsRemoveRequestConfig(adAccountId: kotlin.String, labelId: kotlin.String, labeledEntitiesCreate: LabeledEntitiesCreate) : RequestConfig<LabeledEntitiesCreate> {
+        val localVariableBody = labeledEntitiesCreate
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/ad_accounts/{ad_account_id}/labels/{label_id}/remove".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())).replace("{"+"label_id"+"}", encodeURIComponent(labelId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * PATCH /ad_accounts/{ad_account_id}/labels
      * Update labels
-     * &lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Change the properties of one or more labels. &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Change the properties of one or more labels.
      * @param adAccountId Unique identifier of an ad account.
      * @param labelUpdateRequest 
      * @return LabelsResponse
@@ -307,7 +445,7 @@ open class LabelsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * PATCH /ad_accounts/{ad_account_id}/labels
      * Update labels
-     * &lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Change the properties of one or more labels. &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Change the properties of one or more labels.
      * @param adAccountId Unique identifier of an ad account.
      * @param labelUpdateRequest 
      * @return ApiResponse<LabelsResponse?>

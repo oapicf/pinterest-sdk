@@ -66,7 +66,7 @@ using namespace Tiny;
         }
 
         Response<
-            KeywordsResponse
+            Keywords
         >
         KeywordsApi::
         keywords_create(
@@ -74,7 +74,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            KeywordsRequest keywordsRequest
+            KeywordsCreate keywordsCreate
             
         )
         {
@@ -103,11 +103,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | keywordsRequest
+            // Body     | keywordsCreate
 
 
 
-            payload = keywordsRequest.toJson().dump();
+            payload = keywordsCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -118,10 +118,10 @@ using namespace Tiny;
 
 
 
-            KeywordsResponse obj(output_string);
+            Keywords obj(output_string);
 
 
-            Response<KeywordsResponse> response(obj, httpCode);
+            Response<Keywords> response(obj, httpCode);
             return response;
         }
 
@@ -146,10 +146,10 @@ using namespace Tiny;
             
             , 
             
-            int pageSize
+            std::string bookmark
             , 
             
-            std::string bookmark
+            int pageSize
             
         )
         {
@@ -158,7 +158,7 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | campaignId adGroupId adGroupIds matchTypes pageSize bookmark 
+            // Query    | campaignId adGroupId adGroupIds matchTypes bookmark pageSize 
             addQueryParam("campaign_id",campaignId);
             addQueryParam("ad_group_id",adGroupId);
             for (auto &x : adGroupIds){
@@ -167,8 +167,8 @@ using namespace Tiny;
             for (auto &x : matchTypes){
                 addQueryParam("match_types", std::string(x));
             }
-            addQueryParam("page_size",pageSize);
             addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
 
             // Form     | 
 
@@ -205,7 +205,7 @@ using namespace Tiny;
         }
 
         Response<
-            KeywordsResponse
+            Keywords
         >
         KeywordsApi::
         keywords_update(
@@ -213,7 +213,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            KeywordUpdateBody keywordUpdateBody
+            KeywordsUpdate keywordsUpdate
             
         )
         {
@@ -242,11 +242,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | keywordUpdateBody
+            // Body     | keywordsUpdate
 
 
 
-            payload = keywordUpdateBody.toJson().dump();
+            payload = keywordsUpdate.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -257,10 +257,10 @@ using namespace Tiny;
 
 
 
-            KeywordsResponse obj(output_string);
+            Keywords obj(output_string);
 
 
-            Response<KeywordsResponse> response(obj, httpCode);
+            Response<Keywords> response(obj, httpCode);
             return response;
         }
 
@@ -275,13 +275,13 @@ using namespace Tiny;
             
             TrendType trendType
             , 
-            std::list<std::string> interests
+            std::list<TrendsL1Interest> interests
             
             , 
-            std::list<std::string> genders
+            std::list<TrendsGenderFilter> genders
             
             , 
-            std::list<std::string> ages
+            std::list<TrendsAgeBucket> ages
             
             , 
             std::list<std::string> includeKeywords
@@ -294,9 +294,6 @@ using namespace Tiny;
             int limit
             , 
             
-            bool includePrediction
-            , 
-            
             bool includeDemographics
             
         )
@@ -306,7 +303,7 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | interests genders ages includeKeywords normalizeAgainstGroup limit includePrediction includeDemographics 
+            // Query    | interests genders ages includeKeywords normalizeAgainstGroup limit includeDemographics 
             for (auto &x : interests){
                 addQueryParam("interests", std::string(x));
             }
@@ -321,7 +318,6 @@ using namespace Tiny;
             }
             addQueryParam("normalize_against_group",normalizeAgainstGroup);
             addQueryParam("limit",limit);
-            addQueryParam("include_prediction",includePrediction);
             addQueryParam("include_demographics",includeDemographics);
 
             // Form     | 

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **accesses** | [**Array&lt;UpdateMemberAssetAccessBodyAccessesInner&gt;**](UpdateMemberAssetAccessBodyAccessesInner.md) |  |  |
+| **accesses** | [**Array&lt;UpdateMemberAssetAccessItem&gt;**](UpdateMemberAssetAccessItem.md) | List of member asset accesses to assign or update. |  |
 
 ## Example
 

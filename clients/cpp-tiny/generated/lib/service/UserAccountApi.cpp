@@ -5,21 +5,21 @@ using namespace Tiny;
 
 
         Response<
-            Boards_user_follows_list_200_response
+            Boards_list_200_response
         >
         UserAccountApi::
         boardsUserFollows_list(
             
-            std::string bookmark
-            , 
-            
-            int pageSize
+            std::string adAccountId
             , 
             
             bool explicitFollowing
             , 
             
-            std::string adAccountId
+            std::string bookmark
+            , 
+            
+            int pageSize
             
         )
         {
@@ -28,11 +28,11 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | bookmark pageSize explicitFollowing adAccountId 
+            // Query    | adAccountId explicitFollowing bookmark pageSize 
+            addQueryParam("ad_account_id",adAccountId);
+            addQueryParam("explicit_following",explicitFollowing);
             addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
-            addQueryParam("explicit_following",explicitFollowing);
-            addQueryParam("ad_account_id",adAccountId);
 
             // Form     | 
 
@@ -53,15 +53,15 @@ using namespace Tiny;
 
 
 
-            Boards_user_follows_list_200_response obj(output_string);
+            Boards_list_200_response obj(output_string);
 
 
-            Response<Boards_user_follows_list_200_response> response(obj, httpCode);
+            Response<Boards_list_200_response> response(obj, httpCode);
             return response;
         }
 
         Response<
-            UserSummary
+            FollowUser
         >
         UserAccountApi::
         followUser_update(
@@ -69,7 +69,7 @@ using namespace Tiny;
             std::string username
             , 
             
-            FollowUserRequest followUserRequest
+            FollowUserCreate followUserCreate
             
         )
         {
@@ -98,11 +98,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | followUserRequest
+            // Body     | followUserCreate
 
 
 
-            payload = followUserRequest.toJson().dump();
+            payload = followUserCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -113,10 +113,10 @@ using namespace Tiny;
 
 
 
-            UserSummary obj(output_string);
+            FollowUser obj(output_string);
 
 
-            Response<UserSummary> response(obj, httpCode);
+            Response<FollowUser> response(obj, httpCode);
             return response;
         }
 
@@ -229,7 +229,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            UserWebsite
         >
         UserAccountApi::
         unverifyWebsite_delete(
@@ -263,7 +263,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            UserWebsite obj(output_string);
+
+
+            Response<UserWebsite> response(obj, httpCode);
             return response;
         }
 
@@ -293,7 +298,7 @@ using namespace Tiny;
             
             std::string source
             , 
-            std::list<std::string> metricTypes
+            std::list<QuerymetrictypesItems> metricTypes
             
             , 
             
@@ -363,7 +368,7 @@ using namespace Tiny;
             Date endDate
             , 
             
-            std::string sortBy
+            TopPinsSortBy sortBy
             , 
             
             std::string fromClaimedContent
@@ -380,14 +385,14 @@ using namespace Tiny;
             
             std::string source
             , 
-            std::list<std::string> metricTypes
+            std::list<QuerymetrictypesItems> metricTypes
             
             , 
             
             int numOfPins
             , 
             
-            int createdInLastNDays
+            long createdInLastNDays
             , 
             
             std::string adAccountId
@@ -453,7 +458,7 @@ using namespace Tiny;
             Date endDate
             , 
             
-            std::string sortBy
+            TopVideoPinsSortBy sortBy
             , 
             
             std::string fromClaimedContent
@@ -470,14 +475,14 @@ using namespace Tiny;
             
             std::string source
             , 
-            std::list<std::string> metricTypes
+            std::list<QueryvideopinmetrictypesItems> metricTypes
             
             , 
             
             int numOfPins
             , 
             
-            int createdInLastNDays
+            long createdInLastNDays
             , 
             
             std::string adAccountId
@@ -635,24 +640,24 @@ using namespace Tiny;
         }
 
         Response<
-            User_following_get_200_response
+            Followers_list_200_response
         >
         UserAccountApi::
         userFollowing_get(
             
-            std::string bookmark
-            , 
-            
-            int pageSize
-            , 
-            
-            UserFollowingFeedType feedType
+            std::string adAccountId
             , 
             
             bool explicitFollowing
             , 
             
-            std::string adAccountId
+            UserFollowingFeedType feedType
+            , 
+            
+            std::string bookmark
+            , 
+            
+            int pageSize
             
         )
         {
@@ -661,12 +666,12 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | bookmark pageSize feedType explicitFollowing adAccountId 
+            // Query    | adAccountId explicitFollowing feedType bookmark pageSize 
+            addQueryParam("ad_account_id",adAccountId);
+            addQueryParam("explicit_following",explicitFollowing);
+            addQueryParam("feed_type",feedType);
             addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
-            addQueryParam("feed_type",feedType);
-            addQueryParam("explicit_following",explicitFollowing);
-            addQueryParam("ad_account_id",adAccountId);
 
             // Form     | 
 
@@ -687,10 +692,10 @@ using namespace Tiny;
 
 
 
-            User_following_get_200_response obj(output_string);
+            Followers_list_200_response obj(output_string);
 
 
-            Response<User_following_get_200_response> response(obj, httpCode);
+            Response<Followers_list_200_response> response(obj, httpCode);
             return response;
         }
 
@@ -743,12 +748,12 @@ using namespace Tiny;
         }
 
         Response<
-            UserWebsiteSummary
+            UserWebsite
         >
         UserAccountApi::
         verifyWebsite_update(
             
-            UserWebsiteVerifyRequest userWebsiteVerifyRequest
+            UserWebsiteCreate userWebsiteCreate
             , 
             
             std::string adAccountId
@@ -773,11 +778,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | userWebsiteVerifyRequest
+            // Body     | userWebsiteCreate
 
 
 
-            payload = userWebsiteVerifyRequest.toJson().dump();
+            payload = userWebsiteCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -788,15 +793,15 @@ using namespace Tiny;
 
 
 
-            UserWebsiteSummary obj(output_string);
+            UserWebsite obj(output_string);
 
 
-            Response<UserWebsiteSummary> response(obj, httpCode);
+            Response<UserWebsite> response(obj, httpCode);
             return response;
         }
 
         Response<
-            UserWebsiteVerificationCode
+            UserWebsiteVerification
         >
         UserAccountApi::
         websiteVerification_get(
@@ -832,10 +837,10 @@ using namespace Tiny;
 
 
 
-            UserWebsiteVerificationCode obj(output_string);
+            UserWebsiteVerification obj(output_string);
 
 
-            Response<UserWebsiteVerificationCode> response(obj, httpCode);
+            Response<UserWebsiteVerification> response(obj, httpCode);
             return response;
         }
 

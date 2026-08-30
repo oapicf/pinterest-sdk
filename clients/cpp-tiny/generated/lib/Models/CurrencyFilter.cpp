@@ -65,7 +65,7 @@ CurrencyFilter::getCURRENCY()
 }
 
 void
-CurrencyFilter::setCURRENCY(CatalogsProductGroupCurrencyCriteria  cURRENCY)
+CurrencyFilter::setCURRENCY(CatalogsProductGroupCurrencyCriteria cURRENCY)
 {
 	this->cURRENCY = cURRENCY;
 }

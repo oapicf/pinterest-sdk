@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -186,7 +186,7 @@ const (
 	NG Country = "NG"
 	NI Country = "NI"
 	NL Country = "NL"
-	NO Country = "NO"
+	FALSE Country = "false"
 	NP Country = "NP"
 	NR Country = "NR"
 	NU Country = "NU"
@@ -438,7 +438,7 @@ var AllowedCountryEnumValues = []Country{
 	"NG",
 	"NI",
 	"NL",
-	"NO",
+	"false",
 	"NP",
 	"NR",
 	"NU",

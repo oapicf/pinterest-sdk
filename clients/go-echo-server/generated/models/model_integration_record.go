@@ -19,7 +19,8 @@ type IntegrationRecord struct {
 
 	ExternalBusinessId *string `json:"external_business_id,omitempty"`
 
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Integration record ID.
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
 	PartnerAccessToken *string `json:"partner_access_token,omitempty"`
 

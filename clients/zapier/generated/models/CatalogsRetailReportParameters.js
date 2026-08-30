@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const CatalogsHotelReportParameters_report = require('../models/CatalogsHotelReportParameters_report');
+const CatalogsRetailReportParametersReport = require('../models/CatalogsRetailReportParametersReport');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -14,14 +14,14 @@ module.exports = {
                     'RETAIL',
                 ],
             },
-            ...CatalogsHotelReportParameters_report.fields(`${keyPrefix}report`, isInput),
+            ...CatalogsRetailReportParametersReport.fields(`${keyPrefix}report`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
-            'report': utils.removeIfEmpty(CatalogsHotelReportParameters_report.mapping(bundle, `${keyPrefix}report`)),
+            'report': utils.removeIfEmpty(CatalogsRetailReportParametersReport.mapping(bundle, `${keyPrefix}report`)),
         }
     },
 }

@@ -14,21 +14,21 @@ Method | HTTP request | Description
 <a id="audiencesCreate"></a>
 # **audiencesCreate**
 ```java
-Mono<Audience> AudiencesController.audiencesCreate(adAccountIdaudienceCreateRequest)
+Mono<AdAccountsAudience> AudiencesController.audiencesCreate(adAccountIdadAccountsAudienceCreate)
 ```
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+Create a new audience for the ad account.
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **adAccountId** | `String` | Unique identifier of an ad account. |
-**audienceCreateRequest** | [**AudienceCreateRequest**](../../docs/models/AudienceCreateRequest.md) | List of ads to create, size limit [1, 30] |
+**adAccountsAudienceCreate** | [**AdAccountsAudienceCreate**](../../docs/models/AdAccountsAudienceCreate.md) |  |
 
 ### Return type
-[**Audience**](../../docs/models/Audience.md)
+[**AdAccountsAudience**](../../docs/models/AdAccountsAudience.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `ads:write`
@@ -40,7 +40,7 @@ Name | Type | Description  | Notes
 <a id="audiencesGet"></a>
 # **audiencesGet**
 ```java
-Mono<Audience> AudiencesController.audiencesGet(adAccountIdaudienceId)
+Mono<AdAccountsAudience> AudiencesController.audiencesGet(audienceIdadAccountId)
 ```
 
 Get audience
@@ -50,11 +50,11 @@ Get a specific audience given the audience ID.
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+**audienceId** | `String` | Audience ID. |
 **adAccountId** | `String` | Unique identifier of an ad account. |
-**audienceId** | `String` | Unique identifier of an audience |
 
 ### Return type
-[**Audience**](../../docs/models/Audience.md)
+[**AdAccountsAudience**](../../docs/models/AdAccountsAudience.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `ads:read`
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 <a id="audiencesList"></a>
 # **audiencesList**
 ```java
-Mono<AudiencesList200Response> AudiencesController.audiencesList(adAccountIdbookmarkorderpageSizeownershipType)
+Mono<AudiencesList200Response> AudiencesController.audiencesList(adAccountIdbookmarkpageSizeorderownershipTypeexcludeNca)
 ```
 
 List audiences
@@ -79,9 +79,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **adAccountId** | `String` | Unique identifier of an ad account. |
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**order** | `String` | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional parameter] [enum: `ASCENDING`, `DESCENDING`]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
-**ownershipType** | `String` | Filter audiences by ownership type. | [optional parameter] [default to `OWNED`] [enum: `OWNED`, `RECEIVED`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`]
+**order** | [**PinterestLibPaginationOrder**](../../docs/models/.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional parameter] [enum: `ASCENDING`, `DESCENDING`]
+**ownershipType** | [**AudienceOwnershipType**](../../docs/models/.md) |  | [optional parameter] [enum: `OWNED`, `RECEIVED`]
+**excludeNca** | `Boolean` | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [optional parameter] [default to `false`]
 
 ### Return type
 [**AudiencesList200Response**](../../docs/models/AudiencesList200Response.md)
@@ -97,22 +98,22 @@ Name | Type | Description  | Notes
 <a id="audiencesUpdate"></a>
 # **audiencesUpdate**
 ```java
-Mono<Audience> AudiencesController.audiencesUpdate(adAccountIdaudienceIdaudienceUpdateRequest)
+Mono<AdAccountsAudience> AudiencesController.audiencesUpdate(audienceIdadAccountIdadAccountsAudienceUpdate)
 ```
 
 Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+**audienceId** | `String` | Audience ID. |
 **adAccountId** | `String` | Unique identifier of an ad account. |
-**audienceId** | `String` | Unique identifier of an audience |
-**audienceUpdateRequest** | [**AudienceUpdateRequest**](../../docs/models/AudienceUpdateRequest.md) | The audience to be updated. |
+**adAccountsAudienceUpdate** | [**AdAccountsAudienceUpdate**](../../docs/models/AdAccountsAudienceUpdate.md) |  |
 
 ### Return type
-[**Audience**](../../docs/models/Audience.md)
+[**AdAccountsAudience**](../../docs/models/AdAccountsAudience.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `ads:write`

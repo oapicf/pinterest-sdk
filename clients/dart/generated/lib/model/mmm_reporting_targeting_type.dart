@@ -11,35 +11,34 @@
 part of openapi.api;
 
 /// Ad targeting types for MMM report
-class MMMReportingTargetingType {
-  /// Instantiate a new enum with the provided [value].
-  const MMMReportingTargetingType._(this.value);
+enum MMMReportingTargetingType {
+  APPTYPE._(r'APPTYPE'),
+  COUNTRY._(r'COUNTRY'),
+  CREATIVE_TYPE._(r'CREATIVE_TYPE'),
+  GENDER._(r'GENDER'),
+  LOCATION._(r'LOCATION'),
+  PLACEMENT._(r'PLACEMENT'),
+  AUDIENCE_INCLUDE._(r'AUDIENCE_INCLUDE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const MMMReportingTargetingType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const APPTYPE = MMMReportingTargetingType._(r'APPTYPE');
-  static const COUNTRY = MMMReportingTargetingType._(r'COUNTRY');
-  static const CREATIVE_TYPE = MMMReportingTargetingType._(r'CREATIVE_TYPE');
-  static const GENDER = MMMReportingTargetingType._(r'GENDER');
-  static const LOCATION = MMMReportingTargetingType._(r'LOCATION');
-
-  /// List of all possible values in this [enum][MMMReportingTargetingType].
-  static const values = <MMMReportingTargetingType>[
-    APPTYPE,
-    COUNTRY,
-    CREATIVE_TYPE,
-    GENDER,
-    LOCATION,
-  ];
-
+  /// Returns the instance of [MMMReportingTargetingType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static MMMReportingTargetingType? fromJson(dynamic value) => MMMReportingTargetingTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [MMMReportingTargetingType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<MMMReportingTargetingType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <MMMReportingTargetingType>[];
     if (json is List && json.isNotEmpty) {
@@ -61,9 +60,11 @@ class MMMReportingTargetingTypeTypeTransformer {
 
   const MMMReportingTargetingTypeTypeTransformer._();
 
-  String encode(MMMReportingTargetingType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(MMMReportingTargetingType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a MMMReportingTargetingType.
+  /// Returns the instance of [MMMReportingTargetingType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -72,6 +73,9 @@ class MMMReportingTargetingTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   MMMReportingTargetingType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is MMMReportingTargetingType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'APPTYPE': return MMMReportingTargetingType.APPTYPE;
@@ -79,6 +83,8 @@ class MMMReportingTargetingTypeTypeTransformer {
         case r'CREATIVE_TYPE': return MMMReportingTargetingType.CREATIVE_TYPE;
         case r'GENDER': return MMMReportingTargetingType.GENDER;
         case r'LOCATION': return MMMReportingTargetingType.LOCATION;
+        case r'PLACEMENT': return MMMReportingTargetingType.PLACEMENT;
+        case r'AUDIENCE_INCLUDE': return MMMReportingTargetingType.AUDIENCE_INCLUDE;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -88,7 +94,7 @@ class MMMReportingTargetingTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [MMMReportingTargetingTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static MMMReportingTargetingTypeTypeTransformer? _instance;
 }
 

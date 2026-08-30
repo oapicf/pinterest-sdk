@@ -1,0 +1,203 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AccountTemplate",
+  "fields": [
+    {
+      "name": "ad_account_id",
+      "type": ["null", "string"],
+      "doc": "ID of the Ad Account that owns the template",
+      "default": null
+    },
+    {
+      "name": "ad_account_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "IDs of the Ad Accounts that have access to this template",
+      "default": null
+    },
+    {
+      "name": "ade_columns",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "A list of ADE columns",
+      "default": null
+    },
+    {
+      "name": "attribution_type",
+      "type": ["null", "model.AnyType"],
+      "doc": "Attribution type for Brand/Category/SKU reports",
+      "default": null
+    },
+    {
+      "name": "click_window_days",
+      "type": ["null", "double"],
+      "doc": "The length of the sliding window over which click conversions will be attributed",
+      "default": null
+    },
+    {
+      "name": "columns",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ReportingColumn"
+      }],
+      "doc": "A list of columns to be included in the report",
+      "default": null
+    },
+    {
+      "name": "conversion_report_time_type",
+      "type": ["null", "model.ConversionReportTimeType"],
+      "doc": "Conversion report time type",
+      "default": null
+    },
+    {
+      "name": "creation_source",
+      "type": ["null", "model.CreationSource"],
+      "doc": "The surface used to create this template",
+      "default": null
+    },
+    {
+      "name": "custom_column_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "A list of custom column IDs",
+      "default": null
+    },
+    {
+      "name": "display_metadata",
+      "type": ["null", "string"],
+      "doc": "Additional metadata about this reporting template",
+      "default": null
+    },
+    {
+      "name": "engagement_window_days",
+      "type": ["null", "double"],
+      "doc": "The length of the sliding window over which engagement conversions will be attributed",
+      "default": null
+    },
+    {
+      "name": "filters_json",
+      "type": ["null", "string"],
+      "doc": "A JSON representation of any filters to be applied before returning report data. Each filter object should contain all of the following fields:\\ \"field\": The column name\\ \"operator\": The operator. Allowed operators: [\"=\", \"!=\", \"in\", \"not_in\", \"~\", \">\", \"<\", \"contains_substring\"]\\ \"value\": A single value or a list of values",
+      "default": null
+    },
+    {
+      "name": "granularity",
+      "type": ["null", "model.Granularity"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "Template ID"
+    },
+    {
+      "name": "ingestion_sources",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.IngestionSource"
+      }],
+      "doc": "The filter on the conversion ingestion source method for conversion metrics",
+      "default": null
+    },
+    {
+      "name": "is_default",
+      "type": ["null", "boolean"],
+      "doc": "A boolean representing if this is the default view that loads for this template type",
+      "default": null
+    },
+    {
+      "name": "is_deleted",
+      "type": ["null", "boolean"],
+      "doc": "A boolean that indicates if the template has been deleted",
+      "default": null
+    },
+    {
+      "name": "is_owned_by_user",
+      "type": ["null", "boolean"],
+      "doc": "A boolean value that indicates if the user owns the template",
+      "default": null
+    },
+    {
+      "name": "is_scheduled",
+      "type": ["null", "boolean"],
+      "doc": "A boolean value that indicates if this template has been used to create a scheduled report",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Template Name",
+      "default": null
+    },
+    {
+      "name": "report_end_relative_days_in_past",
+      "type": ["null", "double"],
+      "doc": "The number of days prior to the day the report will be delivered at which the report will end",
+      "default": null
+    },
+    {
+      "name": "report_format",
+      "type": ["null", "model.DataOutputFormat"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "report_level",
+      "type": ["null", "model.MetricsReportingLevel"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "report_start_relative_days_in_past",
+      "type": ["null", "double"],
+      "doc": "The number of days prior to the day the report will be delivered at which the report will start",
+      "default": null
+    },
+    {
+      "name": "reporting_time_zone",
+      "type": ["null", "model.ReportingTimeZone"],
+      "doc": "Timezone for reporting data",
+      "default": null
+    },
+    {
+      "name": "sort_by",
+      "type": ["null", "model.AnyType"],
+      "doc": "Unified metric sort configuration",
+      "default": null
+    },
+    {
+      "name": "type",
+      "type": ["null", "string"],
+      "doc": "Type of the template",
+      "default": null
+    },
+    {
+      "name": "updated_time",
+      "type": ["null", "double"],
+      "doc": "Time of last update in seconds since Unix epoch",
+      "default": null
+    },
+    {
+      "name": "user_id",
+      "type": ["null", "string"],
+      "doc": "ID of the user who created the template",
+      "default": null
+    },
+    {
+      "name": "view_window_days",
+      "type": ["null", "double"],
+      "doc": "The length of the sliding window over which view conversions will be attributed",
+      "default": null
+    }
+  ]
+
+}

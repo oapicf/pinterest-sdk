@@ -1,17 +1,7 @@
 package models
 
+// InviteResponse - A user's username or email OR a partner id that caused the error.
 type InviteResponse struct {
-
-	// Unique identifier of the invite/request.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-
-	InviteData BaseInviteDataResponseInviteData `json:"invite_data,omitempty"`
-
-	// Indicates whether the invite/request was received.
-	IsReceivedInvite bool `json:"is_received_invite,omitempty"`
-
-	// Metadata for the member/partner that was sent the invite/request.
-	User BusinessAccessUserSummary `json:"user,omitempty"`
 
 	AssetsSummary *InviteAssetsSummary `json:"assets_summary,omitempty"`
 
@@ -19,11 +9,22 @@ type InviteResponse struct {
 	BusinessRoles []string `json:"business_roles,omitempty"`
 
 	// Metadata for the business that created the invite/request.
-	CreatedByBusiness *map[string]interface{} `json:"created_by_business,omitempty"`
+	CreatedByBusiness BusinessAccessUserSummary `json:"created_by_business,omitempty"`
 
 	// Metadata for the user that created the invite/request.
-	CreatedByUser *map[string]interface{} `json:"created_by_user,omitempty"`
+	CreatedByUser BusinessAccessUserSummary `json:"created_by_user,omitempty"`
 
 	// The time the invite/request was created. Returned in milliseconds.
 	CreatedTime int32 `json:"created_time,omitempty"`
+
+	// Unique identifier of the invite/request.
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
+
+	InviteData InviteDataResponse `json:"invite_data,omitempty"`
+
+	// Indicates whether the invite/request was received.
+	IsReceivedInvite bool `json:"is_received_invite,omitempty"`
+
+	// Metadata for the member/partner that was sent the invite/request.
+	User BusinessAccessUserSummary `json:"user,omitempty"`
 }

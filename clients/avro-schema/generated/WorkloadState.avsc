@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Workload processing state",
+  "name": "WorkloadState",
+  "symbols": [
+    "NOT_STARTED",
+    "RUNNING",
+    "PAUSED",
+    "SUCCEEDED",
+    "FAILED"
+  ]
+}

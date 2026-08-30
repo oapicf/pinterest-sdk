@@ -28,6 +28,6 @@ export interface InviteExceptionResponse {
     /**
      * A list of users\' usernames or emails OR a list of partner ids that caused the error.
      */
-    users_or_partner_ids?: Array<string> | null;
+    users_or_partner_ids?: Array<string>;
 }
 

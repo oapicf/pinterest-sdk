@@ -1,12 +1,12 @@
 #import "OAIBulkApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIBulkDownloadRequest.h"
-#import "OAIBulkDownloadResponse.h"
+#import "OAIBulkDownload.h"
+#import "OAIBulkDownloadCreate.h"
+#import "OAIBulkJobData.h"
 #import "OAIBulkUpsertRequest.h"
 #import "OAIBulkUpsertResponse.h"
-#import "OAIBulkUpsertStatusResponse.h"
-#import "OAIError.h"
+#import "OAIPinterestLibError.h"
 
 
 @interface OAIBulkApi ()
@@ -56,16 +56,16 @@ NSInteger kOAIBulkApiMissingParamErrorCode = 234513;
 
 ///
 /// Get advertiser entities in bulk
-/// Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+/// Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param bulkDownloadRequest Parameters to get ad entities in bulk 
+///  @param bulkDownloadCreate  
 ///
-///  @returns OAIBulkDownloadResponse*
+///  @returns OAIBulkDownload*
 ///
 -(NSURLSessionTask*) bulkDownloadCreateWithAdAccountId: (NSString*) adAccountId
-    bulkDownloadRequest: (OAIBulkDownloadRequest*) bulkDownloadRequest
-    completionHandler: (void (^)(OAIBulkDownloadResponse* output, NSError* error)) handler {
+    bulkDownloadCreate: (OAIBulkDownloadCreate*) bulkDownloadCreate
+    completionHandler: (void (^)(OAIBulkDownload* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -77,11 +77,11 @@ NSInteger kOAIBulkApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'bulkDownloadRequest' is set
-    if (bulkDownloadRequest == nil) {
-        NSParameterAssert(bulkDownloadRequest);
+    // verify the required parameter 'bulkDownloadCreate' is set
+    if (bulkDownloadCreate == nil) {
+        NSParameterAssert(bulkDownloadCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"bulkDownloadRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"bulkDownloadCreate"] };
             NSError* error = [NSError errorWithDomain:kOAIBulkApiErrorDomain code:kOAIBulkApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -116,7 +116,7 @@ NSInteger kOAIBulkApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = bulkDownloadRequest;
+    bodyParam = bulkDownloadCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -129,29 +129,29 @@ NSInteger kOAIBulkApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIBulkDownloadResponse*"
+                              responseType: @"OAIBulkDownload*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIBulkDownloadResponse*)data, error);
+                                    handler((OAIBulkDownload*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Download advertiser entities in bulk
-/// Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+/// Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param bulkRequestId Unique identifier of a bulk upsert request. 
+///  @param bulkRequestId Bulk request ID that is from one of the entities bulk endpoints 
 ///
-///  @param includeDetails if set to True then attach the errors/details to all the requests (optional, default to @(NO))
+///  @param includeDetails If set to True then attach the errors/details to all the requests (optional, default to @(NO))
 ///
-///  @returns OAIBulkUpsertStatusResponse*
+///  @returns OAIBulkJobData*
 ///
 -(NSURLSessionTask*) bulkRequestGetWithAdAccountId: (NSString*) adAccountId
     bulkRequestId: (NSString*) bulkRequestId
     includeDetails: (NSNumber*) includeDetails
-    completionHandler: (void (^)(OAIBulkUpsertStatusResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIBulkJobData* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -220,17 +220,17 @@ NSInteger kOAIBulkApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIBulkUpsertStatusResponse*"
+                              responseType: @"OAIBulkJobData*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIBulkUpsertStatusResponse*)data, error);
+                                    handler((OAIBulkJobData*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Create/update ad entities in bulk
-/// Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+/// Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param bulkUpsertRequest Parameters to get create/update ad entities in bulk 

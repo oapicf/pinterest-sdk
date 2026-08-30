@@ -21,7 +21,7 @@ import org.openapitools.model.Country;
  * Request object for updating a catalog based product group.
  */
 @ApiModel(description = "Request object for updating a catalog based product group.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsVerticalProductGroupUpdateRequest   {
   /**
    * Gets or Sets catalogType
@@ -166,10 +166,10 @@ public class CatalogsVerticalProductGroupUpdateRequest   {
   }
 
    /**
-   * Get name
+   * Name of catalog product group
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
   public String getName() {
     return name;
   }
@@ -221,10 +221,7 @@ public class CatalogsVerticalProductGroupUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

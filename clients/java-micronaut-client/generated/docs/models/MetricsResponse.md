@@ -8,7 +8,7 @@ The class is defined in **[MetricsResponse.java](../../src/main/java/org/openapi
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | `List&lt;Object&gt;` |  |  [optional property]
+**data** | [`List&lt;MetricsResponseDataItems&gt;`](MetricsResponseDataItems.md) |  |  [optional property]
 
 
 

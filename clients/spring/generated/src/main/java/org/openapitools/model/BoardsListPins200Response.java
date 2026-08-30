@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -9,31 +10,31 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.Pin;
+import org.openapitools.model.PinRead;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * BoardsListPins200Response
  */
 
 @JsonTypeName("boards_list_pins_200_response")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BoardsListPins200Response {
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
-  @Valid
-  private List<@Valid Pin> items = new ArrayList<>();
+  private List<@Valid PinRead> items = new ArrayList<>();
 
   public BoardsListPins200Response() {
     super();
@@ -42,7 +43,7 @@ public class BoardsListPins200Response {
   /**
    * Constructor with only required parameters
    */
-  public BoardsListPins200Response(List<@Valid Pin> items) {
+  public BoardsListPins200Response(List<@Valid PinRead> items) {
     this.items = items;
   }
 
@@ -66,12 +67,12 @@ public class BoardsListPins200Response {
     this.bookmark = bookmark;
   }
 
-  public BoardsListPins200Response items(List<@Valid Pin> items) {
+  public BoardsListPins200Response items(List<@Valid PinRead> items) {
     this.items = items;
     return this;
   }
 
-  public BoardsListPins200Response addItemsItem(Pin itemsItem) {
+  public BoardsListPins200Response addItemsItem(PinRead itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -80,17 +81,18 @@ public class BoardsListPins200Response {
   }
 
   /**
-   * Pins
+   * Get items
    * @return items
    */
   @NotNull @Valid 
-  @Schema(name = "items", description = "Pins", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "items", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
-  public List<@Valid Pin> getItems() {
+  public List<@Valid PinRead> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid Pin> items) {
+  @JsonProperty("items")
+  public void setItems(List<@Valid PinRead> items) {
     this.items = items;
   }
 
@@ -137,11 +139,8 @@ public class BoardsListPins200Response {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

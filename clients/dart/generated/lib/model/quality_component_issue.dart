@@ -62,10 +62,12 @@ class QualityComponentIssue {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "QualityComponentIssue[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "QualityComponentIssue[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'id'), 'Required key "QualityComponentIssue[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "QualityComponentIssue[id]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "QualityComponentIssue[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "QualityComponentIssue[name]" has a null value in JSON.');
+        assert(json.containsKey(r'reason'), 'Required key "QualityComponentIssue[reason]" is missing from JSON.');
+        assert(json[r'reason'] != null, 'Required key "QualityComponentIssue[reason]" has a null value in JSON.');
         return true;
       }());
 

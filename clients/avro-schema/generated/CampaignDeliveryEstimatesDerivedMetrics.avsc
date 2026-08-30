@@ -1,0 +1,171 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Derived metrics for an ad campaign.",
+  "name": "CampaignDeliveryEstimatesDerivedMetrics",
+  "fields": [
+    {
+      "name": "cpc",
+      "type": ["null", "float"],
+      "doc": "Estimated cost per click.",
+      "default": null
+    },
+    {
+      "name": "cpc_lower",
+      "type": ["null", "float"],
+      "doc": "Lower estimate of the cost per click.",
+      "default": null
+    },
+    {
+      "name": "cpc_upper",
+      "type": ["null", "float"],
+      "doc": "Upper estimate of the cost per click.",
+      "default": null
+    },
+    {
+      "name": "cpm",
+      "type": ["null", "float"],
+      "doc": "Estimated cost per thousand impressions.",
+      "default": null
+    },
+    {
+      "name": "cpm_lower",
+      "type": ["null", "float"],
+      "doc": "Lower estimate of cost per thousand impressions.",
+      "default": null
+    },
+    {
+      "name": "cpm_upper",
+      "type": ["null", "float"],
+      "doc": "Upper estimate of cost per thousand impressions.",
+      "default": null
+    },
+    {
+      "name": "lifetime_frequency",
+      "type": ["null", "float"],
+      "doc": "Estimated lifetime frequency.",
+      "default": null
+    },
+    {
+      "name": "lifetime_frequency_lower",
+      "type": ["null", "float"],
+      "doc": "Lower estimate of lifetime frequency.",
+      "default": null
+    },
+    {
+      "name": "lifetime_frequency_upper",
+      "type": ["null", "float"],
+      "doc": "Upper estimate of lifetime frequency.",
+      "default": null
+    },
+    {
+      "name": "lifetime_impression",
+      "type": ["null", "float"],
+      "doc": "Estimated lifetime impressions.",
+      "default": null
+    },
+    {
+      "name": "lifetime_impression_lower",
+      "type": ["null", "float"],
+      "doc": "Lower estimate of lifetime impressions.",
+      "default": null
+    },
+    {
+      "name": "lifetime_impression_upper",
+      "type": ["null", "float"],
+      "doc": "Upper estimate of lifetime impressions.",
+      "default": null
+    },
+    {
+      "name": "lifetime_reach",
+      "type": ["null", "float"],
+      "doc": "Estimated lifetime reach.",
+      "default": null
+    },
+    {
+      "name": "lifetime_reach_lower",
+      "type": ["null", "float"],
+      "doc": "Lower estimate of lifetime reach.",
+      "default": null
+    },
+    {
+      "name": "lifetime_reach_upper",
+      "type": ["null", "float"],
+      "doc": "Upper estimate of lifetime reach.",
+      "default": null
+    },
+    {
+      "name": "weekly_click",
+      "type": ["null", "float"],
+      "doc": "Estimated weekly clicks.",
+      "default": null
+    },
+    {
+      "name": "weekly_click_lower",
+      "type": ["null", "float"],
+      "doc": "Lower estimate of weekly clicks.",
+      "default": null
+    },
+    {
+      "name": "weekly_click_upper",
+      "type": ["null", "float"],
+      "doc": "Upper estimate of weekly clicks.",
+      "default": null
+    },
+    {
+      "name": "weekly_frequency",
+      "type": ["null", "float"],
+      "doc": "Estimated weekly frequency.",
+      "default": null
+    },
+    {
+      "name": "weekly_frequency_lower",
+      "type": ["null", "float"],
+      "doc": "Lower estimate of weekly frequency.",
+      "default": null
+    },
+    {
+      "name": "weekly_frequency_upper",
+      "type": ["null", "float"],
+      "doc": "Upper estimate of weekly frequency.",
+      "default": null
+    },
+    {
+      "name": "weekly_impression",
+      "type": ["null", "float"],
+      "doc": "Estimated weekly impressions.",
+      "default": null
+    },
+    {
+      "name": "weekly_impression_lower",
+      "type": ["null", "float"],
+      "doc": "Lower estimate of weekly impressions.",
+      "default": null
+    },
+    {
+      "name": "weekly_impression_upper",
+      "type": ["null", "float"],
+      "doc": "Upper estimate of weekly impressions.",
+      "default": null
+    },
+    {
+      "name": "weekly_reach",
+      "type": ["null", "float"],
+      "doc": "Estimated weekly reach.",
+      "default": null
+    },
+    {
+      "name": "weekly_reach_lower",
+      "type": ["null", "float"],
+      "doc": "Lower estimate of weekly reach.",
+      "default": null
+    },
+    {
+      "name": "weekly_reach_upper",
+      "type": ["null", "float"],
+      "doc": "Upper estimate of weekly reach.",
+      "default": null
+    }
+  ]
+
+}

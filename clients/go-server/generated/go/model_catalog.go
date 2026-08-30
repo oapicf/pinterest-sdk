@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,6 +14,8 @@ package openapi
 
 import (
 	"time"
+	"encoding/json"
+	"fmt"
 )
 
 
@@ -21,34 +23,102 @@ import (
 // Catalog - Catalog entity
 type Catalog struct {
 
+	CatalogType CatalogsType `json:"catalog_type"`
+
 	CreatedAt time.Time `json:"created_at"`
 
 	// ID of the catalog entity.
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
-
-	UpdatedAt time.Time `json:"updated_at"`
-
-	CatalogType CatalogsType `json:"catalog_type"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
 	// A human-friendly name associated to a catalog entity.
-	Name *string `json:"name"`
-}
+	Name string `json:"name"`
 
-// AssertCatalogRequired checks if the required fields are not zero-ed
-func AssertCatalogRequired(obj Catalog) error {
-	elements := map[string]interface{}{
-		"created_at": obj.CreatedAt,
-		"id": obj.Id,
-		"updated_at": obj.UpdatedAt,
-		"catalog_type": obj.CatalogType,
-		"name": obj.Name,
+	UpdatedAt time.Time `json:"updated_at"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into Catalog
+func (o *Catalog) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"catalog_type",
+		"id",
+		"name",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"catalog_type": false,
+		"id": false,
+		"name": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"catalog_type": {},
+		"created_at": {},
+		"id": {},
+		"name": {},
+		"updated_at": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded Catalog
+
+	if value, exists := allProperties["catalog_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["created_at"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreatedAt); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["updated_at"]; exists {
+		if err = json.Unmarshal(value, &decoded.UpdatedAt); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertCatalogRequired(obj Catalog) error {
 	return nil
 }
 

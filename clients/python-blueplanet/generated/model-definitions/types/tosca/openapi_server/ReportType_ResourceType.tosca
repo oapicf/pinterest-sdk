@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ReportType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ReportType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ReportType {
+    title = ReportType
+    description = ReportType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  ReportType {
+    title = ReportType
+    description = ReportType
+    implements = openapi_server.resourceTypes.ReportType
+
+  }
+}

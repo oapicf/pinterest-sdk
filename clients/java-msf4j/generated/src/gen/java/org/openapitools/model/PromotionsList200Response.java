@@ -10,18 +10,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.PromotionResponse;
+import org.openapitools.model.Promotion;
 
 /**
  * PromotionsList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PromotionsList200Response   {
   @JsonProperty("bookmark")
   private String bookmark;
 
   @JsonProperty("items")
-  private List<@Valid PromotionResponse> items = new ArrayList<>();
+  private List<@Valid Promotion> items = new ArrayList<>();
 
   public PromotionsList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -41,12 +41,12 @@ public class PromotionsList200Response   {
     this.bookmark = bookmark;
   }
 
-  public PromotionsList200Response items(List<@Valid PromotionResponse> items) {
+  public PromotionsList200Response items(List<@Valid Promotion> items) {
     this.items = items;
     return this;
   }
 
-  public PromotionsList200Response addItemsItem(PromotionResponse itemsItem) {
+  public PromotionsList200Response addItemsItem(Promotion itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -56,11 +56,11 @@ public class PromotionsList200Response   {
    * @return items
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<@Valid PromotionResponse> getItems() {
+  public List<@Valid Promotion> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid PromotionResponse> items) {
+  public void setItems(List<@Valid Promotion> items) {
     this.items = items;
   }
 
@@ -99,10 +99,7 @@ public class PromotionsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

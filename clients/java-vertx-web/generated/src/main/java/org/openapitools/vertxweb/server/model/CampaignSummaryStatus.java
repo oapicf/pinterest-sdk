@@ -2,14 +2,11 @@ package org.openapitools.vertxweb.server.model;
 
 import java.util.Objects;
 
-/**
- * Summary status for campaign
- **/
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Summary status for campaign
+ * Gets or Sets CampaignSummaryStatus
  */
 public enum CampaignSummaryStatus {
   

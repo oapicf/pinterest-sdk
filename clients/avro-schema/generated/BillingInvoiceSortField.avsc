@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Field by which to sort billing invoices.",
+  "name": "BillingInvoiceSortField",
+  "symbols": [
+    "DUE_DATE",
+    "BILLING_PERIOD",
+    "DOCUMENT_TYPE",
+    "TOTAL_AMOUNT",
+    "INVOICE_NUMBER"
+  ]
+}

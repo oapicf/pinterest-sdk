@@ -1,10 +1,10 @@
 #import "OAIAudienceInsightsApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIAudienceDefinitionResponse.h"
 #import "OAIAudienceInsightType.h"
-#import "OAIAudienceInsightsResponse.h"
-#import "OAIError.h"
+#import "OAIAudienceInsights.h"
+#import "OAIAudienceInsightsScopeAndTypeGet200Response.h"
+#import "OAIPinterestLibError.h"
 
 
 @interface OAIAudienceInsightsApi ()
@@ -54,16 +54,16 @@ NSInteger kOAIAudienceInsightsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get audience insights
-/// Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
+/// Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param audienceInsightType Type of audience insights. 
 ///
-///  @returns OAIAudienceInsightsResponse*
+///  @returns OAIAudienceInsights*
 ///
 -(NSURLSessionTask*) audienceInsightsGetWithAdAccountId: (NSString*) adAccountId
     audienceInsightType: (OAIAudienceInsightType) audienceInsightType
-    completionHandler: (void (^)(OAIAudienceInsightsResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIAudienceInsights* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -129,10 +129,10 @@ NSInteger kOAIAudienceInsightsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIAudienceInsightsResponse*"
+                              responseType: @"OAIAudienceInsights*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIAudienceInsightsResponse*)data, error);
+                                    handler((OAIAudienceInsights*)data, error);
                                 }
                             }];
 }
@@ -142,10 +142,10 @@ NSInteger kOAIAudienceInsightsApiMissingParamErrorCode = 234513;
 /// Get the scope and type of available audiences, which along with a date, is an audience that has recently had an interaction (referred to here as a type) on pins. Interacted pins can belong to at least the most common **partner** or **Pinterest** scopes. This means that user interactions made on advertiser or partner pins will have the **partner** scope. You can also have user interactions performed in general on Pinterest with the **Pinterest** scope. In that case, you can then use the returned type and scope values together on requests to other endpoints to retrieve insight metrics for a desired audience.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @returns OAIAudienceDefinitionResponse*
+///  @returns OAIAudienceInsightsScopeAndTypeGet200Response*
 ///
 -(NSURLSessionTask*) audienceInsightsScopeAndTypeGetWithAdAccountId: (NSString*) adAccountId
-    completionHandler: (void (^)(OAIAudienceDefinitionResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIAudienceInsightsScopeAndTypeGet200Response* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -197,10 +197,10 @@ NSInteger kOAIAudienceInsightsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIAudienceDefinitionResponse*"
+                              responseType: @"OAIAudienceInsightsScopeAndTypeGet200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIAudienceDefinitionResponse*)data, error);
+                                    handler((OAIAudienceInsightsScopeAndTypeGet200Response*)data, error);
                                 }
                             }];
 }

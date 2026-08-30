@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BidOptionsAudienceMultipliers"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BidOptionsAudienceMultipliers"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  BidOptionsAudienceMultipliers {
+    title = BidOptionsAudienceMultipliers
+    description = BidOptionsAudienceMultipliers
+    derivedFrom = Root
+    properties {
+        audience_id {
+          type =  string
+          description = ""
+          optional = true
+        }
+        multiplier {
+          type =  
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BidOptionsAudienceMultipliers {
+    title = BidOptionsAudienceMultipliers
+    description = BidOptionsAudienceMultipliers
+    implements = openapi_server.resourceTypes.BidOptionsAudienceMultipliers
+
+  }
+}

@@ -53,42 +53,42 @@ public:
 
 	/*! \brief Set Interest ID.
 	 */
-	void setId(std::string  id);
+	void setId(std::string id);
 	/*! \brief Get Interest affinity index.
 	 */
 	long getIndex();
 
 	/*! \brief Set Interest affinity index.
 	 */
-	void setIndex(long  index);
+	void setIndex(long index);
 	/*! \brief Get Interest unique key (same as ID).
 	 */
 	std::string getKey();
 
 	/*! \brief Set Interest unique key (same as ID).
 	 */
-	void setKey(std::string  key);
+	void setKey(std::string key);
 	/*! \brief Get Interest name.
 	 */
 	std::string getName();
 
 	/*! \brief Set Interest name.
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 	/*! \brief Get Interest's percent of category's total audience.
 	 */
 	long getRatio();
 
 	/*! \brief Set Interest's percent of category's total audience.
 	 */
-	void setRatio(long  ratio);
+	void setRatio(long ratio);
 	/*! \brief Get Subcategory interest distribution
 	 */
 	std::list<AudienceSubcategory> getSubcategories();
 
 	/*! \brief Set Subcategory interest distribution
 	 */
-	void setSubcategories(std::list <AudienceSubcategory> subcategories);
+	void setSubcategories(std::list<AudienceSubcategory> subcategories);
 
 
     private:

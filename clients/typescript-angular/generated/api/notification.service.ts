@@ -20,6 +20,8 @@ import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 import { NotificationPostRequest } from '../model/notificationPostRequest';
 // @ts-ignore
 import { NotificationResponse } from '../model/notificationResponse';
+// @ts-ignore
+import { PinterestLibError } from '../model/pinterestLibError';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -41,17 +43,17 @@ export class NotificationService extends BaseService {
      * Receive notifications from external partners.
      * Used by third-party partners to send notifications to Pinterest. These notifications could be specific for your use-case or generic notification that are accepted by Pinterests\&#39; systems. This API is gated and you need to request access to this feature.
      * @endpoint post /notifications
-     * @param notificationPostRequest notification event.
+     * @param arrayObject 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public notificationPost(notificationPostRequest: NotificationPostRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<NotificationResponse>;
-    public notificationPost(notificationPostRequest: NotificationPostRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<NotificationResponse>>;
-    public notificationPost(notificationPostRequest: NotificationPostRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<NotificationResponse>>;
-    public notificationPost(notificationPostRequest: NotificationPostRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (notificationPostRequest === null || notificationPostRequest === undefined) {
-            throw new Error('Required parameter notificationPostRequest was null or undefined when calling notificationPost.');
+    public notificationPost(arrayObject: Array | object, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<NotificationResponse>;
+    public notificationPost(arrayObject: Array | object, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<NotificationResponse>>;
+    public notificationPost(arrayObject: Array | object, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<NotificationResponse>>;
+    public notificationPost(arrayObject: Array | object, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (arrayObject === null || arrayObject === undefined) {
+            throw new Error('Required parameter arrayObject was null or undefined when calling notificationPost.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -99,7 +101,7 @@ export class NotificationService extends BaseService {
         return this.httpClient.request<NotificationResponse>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: notificationPostRequest,
+                body: arrayObject,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,

@@ -10,10 +10,11 @@ Name | Type
 `adGroups` | [Array&lt;AdGroupUpdateRequest&gt;](AdGroupUpdateRequest.md)
 `ads` | [Array&lt;AdUpdateRequest&gt;](AdUpdateRequest.md)
 `campaigns` | [Array&lt;CampaignUpdateRequest&gt;](CampaignUpdateRequest.md)
-`catalogProductGroups` | [Array&lt;CatalogsProductGroupsUpdateRequest&gt;](CatalogsProductGroupsUpdateRequest.md)
-`keywords` | [Array&lt;KeywordUpdate&gt;](KeywordUpdate.md)
+`catalogProductGroups` | [Array&lt;BulkUpsertRequestUpdateCatalogProductGroupsItems&gt;](BulkUpsertRequestUpdateCatalogProductGroupsItems.md)
+`keywords` | [Array&lt;KeywordUpdateGenerated&gt;](KeywordUpdateGenerated.md)
 `labels` | [Array&lt;LabelBulkUpdateRequest&gt;](LabelBulkUpdateRequest.md)
 `productGroups` | [Array&lt;ProductGroupPromotionUpdateRequest&gt;](ProductGroupPromotionUpdateRequest.md)
+`schedules` | [Array&lt;ScheduleUpdateRequest&gt;](ScheduleUpdateRequest.md)
 
 ## Example
 
@@ -29,6 +30,7 @@ const example = {
   "keywords": null,
   "labels": null,
   "productGroups": null,
+  "schedules": null,
 } satisfies BulkUpsertRequestUpdate
 
 console.log(example)

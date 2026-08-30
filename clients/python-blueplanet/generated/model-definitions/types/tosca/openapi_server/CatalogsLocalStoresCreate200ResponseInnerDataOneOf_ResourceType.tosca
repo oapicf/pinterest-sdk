@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsLocalStoresCreate200ResponseInnerDataOneOf"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsLocalStoresCreate200ResponseInnerDataOneOf"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  PinterestLibError = openapi_server.resourceTypes.PinterestLibError
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsLocalStoresCreate200ResponseInnerDataOneOf {
+    title = CatalogsLocalStoresCreate200ResponseInnerDataOneOf
+    description = CatalogsLocalStoresCreate200ResponseInnerDataOneOf
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "The ID of the local store."
+          optional = true
+        }
+        exceptions {
+          type = PinterestLibError
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsLocalStoresCreate200ResponseInnerDataOneOf {
+    title = CatalogsLocalStoresCreate200ResponseInnerDataOneOf
+    description = CatalogsLocalStoresCreate200ResponseInnerDataOneOf
+    implements = openapi_server.resourceTypes.CatalogsLocalStoresCreate200ResponseInnerDataOneOf
+
+  }
+}

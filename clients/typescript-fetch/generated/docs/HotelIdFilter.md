@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`hOTELID` | [CatalogsProductGroupMultipleStringCriteria](.md)
+`hOTELID` | [CatalogsProductGroupMultipleStringCriteria](CatalogsProductGroupMultipleStringCriteria.md)
 
 ## Example
 

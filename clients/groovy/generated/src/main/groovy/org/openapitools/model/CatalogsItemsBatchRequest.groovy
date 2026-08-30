@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.model.BatchOperation;
 import org.openapitools.model.CatalogsItemsCreateBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteDiscontinuedBatchRequest;
@@ -201,7 +200,7 @@ class CatalogsItemsBatchRequest {
         
         NL2("NL"),
         
-        NO("NO"),
+        FALSE("false"),
         
         PL("PL"),
         
@@ -255,6 +254,27 @@ class CatalogsItemsBatchRequest {
 
     /* We recommend using the CatalogsLocale values. */
     LanguageEnum language
+
+    enum OperationEnum {
     
-    BatchOperation operation
+        DELETE("DELETE")
+    
+        private final String value
+    
+        OperationEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    
+    OperationEnum operation
 }

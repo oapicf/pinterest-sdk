@@ -1,5 +1,5 @@
 
-# Table `catalogs_creative_assets_filter_values_map`
+# Table `CatalogsCreativeAssetsFilterValuesMap`
 (mapped from: CatalogsCreativeAssetsFilterValuesMap)
 
 ## Properties
@@ -17,7 +17,7 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **googleProductCategory4** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **googleProductCategory5** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **googleProductCategory6** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
-**mediaType** | `One-To-Many` | `----` | `----`  | [**media_type**](#kotlin.Array&lt;MediaType&gt;) |  |  [optional]
+**mediaType** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;MediaType&gt;**](MediaType.md) |  |  [optional]
 
 
 # **Table `CatalogsCreativeAssetsFilterValuesMapCustomLabel0`**
@@ -159,7 +159,7 @@ googleProductCategory6 | googleProductCategory6 | text | | kotlin.String | Forei
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 catalogsCreativeAssetsFilterValuesMap | catalogsCreativeAssetsFilterValuesMap | long | | kotlin.Long | Primary Key | *one*
-mediaType | mediaType | text | | kotlin.String | Foreign Key | *many*
+mediaType | mediaType | long | | kotlin.Long | Foreign Key | *many*
 
 
 

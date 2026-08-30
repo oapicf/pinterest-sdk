@@ -2,6 +2,7 @@ const utils = require('../utils/utils');
 const ErrorDetail = require('../models/ErrorDetail');
 const RecordCounts = require('../models/RecordCounts');
 const UserListOperationType = require('../models/UserListOperationType');
+const WorkloadState = require('../models/WorkloadState');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -43,16 +44,7 @@ module.exports = {
             ...RecordCounts.fields(`${keyPrefix}record_counts`, isInput),
             {
                 key: `${keyPrefix}state`,
-                label: `Workload processing state - [${labelPrefix}state]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'NOT_STARTED',
-                    'RUNNING',
-                    'PAUSED',
-                    'SUCCEEDED',
-                    'FAILED',
-                ],
+                ...WorkloadState.fields(`${keyPrefix}state`, isInput),
             },
             {
                 key: `${keyPrefix}updated_time`,

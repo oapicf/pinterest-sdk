@@ -19,7 +19,7 @@ class ActionType extends EnumClass {
   static const ActionType IMPRESSION = _$IMPRESSION;
   /// Ad group billable event type. For update, only draft ad groups may update billable event.
   @BuiltValueEnumConst(wireName: r'VIDEO_V_50_MRC')
-  static const ActionType vIDEOV50MRC = _$vIDEOV50MRC;
+  static const ActionType VIDEO_V_50_MRC = _$VIDEO_V_50_MRC;
 
   static Serializer<ActionType> get serializer => _$actionTypeSerializer;
 

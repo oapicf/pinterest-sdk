@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,9 +27,10 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.Error
 import org.openapitools.client.models.OrderLine
 import org.openapitools.client.models.OrderLinesList200Response
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
 
 import com.squareup.moshi.Json
 
@@ -43,7 +52,7 @@ open class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
@@ -51,8 +60,8 @@ open class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call
      * GET /ad_accounts/{ad_account_id}/order_lines/{order_line_id}
      * Get order line
      * Get a specific existing order line associated with an ad account.
+     * @param orderLineId Order line ID.
      * @param adAccountId Unique identifier of an ad account.
-     * @param orderLineId Unique identifier of an order line.
      * @return OrderLine
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -62,8 +71,8 @@ open class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun orderLinesGet(adAccountId: kotlin.String, orderLineId: kotlin.String) : OrderLine {
-        val localVarResponse = orderLinesGetWithHttpInfo(adAccountId = adAccountId, orderLineId = orderLineId)
+    fun orderLinesGet(orderLineId: kotlin.String, adAccountId: kotlin.String) : OrderLine {
+        val localVarResponse = orderLinesGetWithHttpInfo(orderLineId = orderLineId, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as OrderLine
@@ -84,16 +93,16 @@ open class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call
      * GET /ad_accounts/{ad_account_id}/order_lines/{order_line_id}
      * Get order line
      * Get a specific existing order line associated with an ad account.
+     * @param orderLineId Order line ID.
      * @param adAccountId Unique identifier of an ad account.
-     * @param orderLineId Unique identifier of an order line.
      * @return ApiResponse<OrderLine?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun orderLinesGetWithHttpInfo(adAccountId: kotlin.String, orderLineId: kotlin.String) : ApiResponse<OrderLine?> {
-        val localVariableConfig = orderLinesGetRequestConfig(adAccountId = adAccountId, orderLineId = orderLineId)
+    fun orderLinesGetWithHttpInfo(orderLineId: kotlin.String, adAccountId: kotlin.String) : ApiResponse<OrderLine?> {
+        val localVariableConfig = orderLinesGetRequestConfig(orderLineId = orderLineId, adAccountId = adAccountId)
 
         return request<Unit, OrderLine>(
             localVariableConfig
@@ -103,11 +112,11 @@ open class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call
     /**
      * To obtain the request config of the operation orderLinesGet
      *
+     * @param orderLineId Order line ID.
      * @param adAccountId Unique identifier of an ad account.
-     * @param orderLineId Unique identifier of an order line.
      * @return RequestConfig
      */
-    fun orderLinesGetRequestConfig(adAccountId: kotlin.String, orderLineId: kotlin.String) : RequestConfig<Unit> {
+    fun orderLinesGetRequestConfig(orderLineId: kotlin.String, adAccountId: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -115,7 +124,7 @@ open class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())).replace("{"+"order_line_id"+"}", encodeURIComponent(orderLineId.toString())),
+            path = "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}".replace("{"+"order_line_id"+"}", encodeURIComponent(orderLineId.toString())).replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -124,30 +133,13 @@ open class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call
     }
 
     /**
-     * enum for parameter order
-     */
-     enum class OrderOrderLinesList(val value: kotlin.String) {
-         @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /ad_accounts/{ad_account_id}/order_lines
-     * Get order lines
+     * Get order lines.
      * List existing order lines associated with an ad account.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @return OrderLinesList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -157,8 +149,8 @@ open class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun orderLinesList(adAccountId: kotlin.String, pageSize: kotlin.Int? = 25, order: OrderOrderLinesList? = null, bookmark: kotlin.String? = null) : OrderLinesList200Response {
-        val localVarResponse = orderLinesListWithHttpInfo(adAccountId = adAccountId, pageSize = pageSize, order = order, bookmark = bookmark)
+    fun orderLinesList(adAccountId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, order: PinterestLibPaginationOrder? = null) : OrderLinesList200Response {
+        val localVarResponse = orderLinesListWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as OrderLinesList200Response
@@ -177,20 +169,20 @@ open class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call
 
     /**
      * GET /ad_accounts/{ad_account_id}/order_lines
-     * Get order lines
+     * Get order lines.
      * List existing order lines associated with an ad account.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @return ApiResponse<OrderLinesList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun orderLinesListWithHttpInfo(adAccountId: kotlin.String, pageSize: kotlin.Int?, order: OrderOrderLinesList?, bookmark: kotlin.String?) : ApiResponse<OrderLinesList200Response?> {
-        val localVariableConfig = orderLinesListRequestConfig(adAccountId = adAccountId, pageSize = pageSize, order = order, bookmark = bookmark)
+    fun orderLinesListWithHttpInfo(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?) : ApiResponse<OrderLinesList200Response?> {
+        val localVariableConfig = orderLinesListRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order)
 
         return request<Unit, OrderLinesList200Response>(
             localVariableConfig
@@ -201,23 +193,23 @@ open class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call
      * To obtain the request config of the operation orderLinesList
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @return RequestConfig
      */
-    fun orderLinesListRequestConfig(adAccountId: kotlin.String, pageSize: kotlin.Int?, order: OrderOrderLinesList?, bookmark: kotlin.String?) : RequestConfig<Unit> {
+    fun orderLinesListRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (bookmark != null) {
+                    put("bookmark", listOf(bookmark.toString()))
+                }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
                 }
                 if (order != null) {
-                    put("order", listOf(order.value))
-                }
-                if (bookmark != null) {
-                    put("bookmark", listOf(bookmark.toString()))
+                    put("order", listOf(order.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

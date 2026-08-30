@@ -3,6 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.prokarma.pkmst.model.AiDisclosures;
 import com.prokarma.pkmst.model.PinMediaSource;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -17,8 +18,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Resource create operation model.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PinCreate   {
+  @JsonProperty("ai_disclosures")
+  private AiDisclosures aiDisclosures;
+
   @JsonProperty("alt_text")
   private String altText;
 
@@ -48,6 +52,24 @@ public class PinCreate   {
 
   @JsonProperty("title")
   private String title;
+
+  public PinCreate aiDisclosures(AiDisclosures aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+    return this;
+  }
+
+  /**
+   * AI disclosure declarations the creator has made about this Pin.
+   * @return aiDisclosures
+   */
+  @ApiModelProperty(value = "AI disclosure declarations the creator has made about this Pin.")
+  public AiDisclosures getAiDisclosures() {
+    return aiDisclosures;
+  }
+
+  public void setAiDisclosures(AiDisclosures aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+  }
 
   public PinCreate altText(String altText) {
     this.altText = altText;
@@ -239,7 +261,8 @@ public class PinCreate   {
       return false;
     }
     PinCreate pinCreate = (PinCreate) o;
-    return Objects.equals(this.altText, pinCreate.altText) &&
+    return Objects.equals(this.aiDisclosures, pinCreate.aiDisclosures) &&
+        Objects.equals(this.altText, pinCreate.altText) &&
         Objects.equals(this.boardId, pinCreate.boardId) &&
         Objects.equals(this.boardSectionId, pinCreate.boardSectionId) &&
         Objects.equals(this.description, pinCreate.description) &&
@@ -253,7 +276,7 @@ public class PinCreate   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(altText, boardId, boardSectionId, description, dominantColor, link, mediaSource, parentPinId, sponsorId, title);
+    return Objects.hash(aiDisclosures, altText, boardId, boardSectionId, description, dominantColor, link, mediaSource, parentPinId, sponsorId, title);
   }
 
   @Override
@@ -261,6 +284,7 @@ public class PinCreate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinCreate {\n");
     
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
@@ -280,10 +304,7 @@ public class PinCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

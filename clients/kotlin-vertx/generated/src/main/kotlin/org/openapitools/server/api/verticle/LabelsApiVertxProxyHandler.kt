@@ -16,11 +16,15 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.LabelCreateRequest
 import org.openapitools.server.api.model.LabelUpdateRequest
+import org.openapitools.server.api.model.LabeledEntities
+import org.openapitools.server.api.model.LabeledEntitiesCreate
 import org.openapitools.server.api.model.LabelsList200Response
 import org.openapitools.server.api.model.LabelsResponse
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.QueryLabelEntityStatusesItems
+import org.openapitools.server.api.model.QueryLabelTypesItems
 
 class LabelsApiVertxProxyHandler(private val vertx: Vertx, private val service: LabelsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -68,6 +72,31 @@ class LabelsApiVertxProxyHandler(private val vertx: Vertx, private val service: 
             val context = OperationRequest(contextSerialized)
             when (action) {
         
+                "labelsApply" -> {
+                    val params = context.params
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
+                    val labelId = ApiHandlerUtils.searchStringInJson(params,"label_id")
+                    if(labelId == null){
+                        throw IllegalArgumentException("labelId is required")
+                    }
+                    val labeledEntitiesCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (labeledEntitiesCreateParam == null) {
+                        throw IllegalArgumentException("labeledEntitiesCreate is required")
+                    }
+                    val labeledEntitiesCreate = Gson().fromJson(labeledEntitiesCreateParam.encode(), LabeledEntitiesCreate::class.java)
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.labelsApply(adAccountId,labelId,labeledEntitiesCreate,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
+                }
+        
                 "labelsCreate" -> {
                     val params = context.params
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
@@ -104,17 +133,42 @@ class LabelsApiVertxProxyHandler(private val vertx: Vertx, private val service: 
                             else Gson().fromJson(labelIdsParam.encode(),
                             , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
                     val entityStatusesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"entity_statuses")
-                    val entityStatuses:kotlin.Array<kotlin.String>? = if(entityStatusesParam == null) arrayListOf(EntityStatuses.ACTIVE)
+                    val entityStatuses:kotlin.Array<QueryLabelEntityStatusesItems>? = if(entityStatusesParam == null) arrayListOf(QueryLabelEntityStatusesItems.ACTIVE)
                             else Gson().fromJson(entityStatusesParam.encode(),
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                            , object : TypeToken<kotlin.collections.List<QueryLabelEntityStatusesItems>>(){}.type)
                     val labelTypesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"label_types")
-                    val labelTypes:kotlin.Array<kotlin.String>? = if(labelTypesParam == null) arrayListOf(LabelTypes.BRAND,LabelTypes.CUSTOM)
+                    val labelTypes:kotlin.Array<QueryLabelTypesItems>? = if(labelTypesParam == null) arrayListOf(QueryLabelTypesItems.BRAND,QueryLabelTypesItems.CUSTOM)
                             else Gson().fromJson(labelTypesParam.encode(),
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
+                            , object : TypeToken<kotlin.collections.List<QueryLabelTypesItems>>(){}.type)
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.labelsList(adAccountId,campaignIds,labelIds,entityStatuses,labelTypes,pageSize,bookmark,context)
+                        val result = service.labelsList(adAccountId,campaignIds,labelIds,entityStatuses,labelTypes,bookmark,pageSize,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
+                }
+        
+                "labelsRemove" -> {
+                    val params = context.params
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
+                    val labelId = ApiHandlerUtils.searchStringInJson(params,"label_id")
+                    if(labelId == null){
+                        throw IllegalArgumentException("labelId is required")
+                    }
+                    val labeledEntitiesCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (labeledEntitiesCreateParam == null) {
+                        throw IllegalArgumentException("labeledEntitiesCreate is required")
+                    }
+                    val labeledEntitiesCreate = Gson().fromJson(labeledEntitiesCreateParam.encode(), LabeledEntitiesCreate::class.java)
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.labelsRemove(adAccountId,labelId,labeledEntitiesCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

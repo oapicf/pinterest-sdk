@@ -18,7 +18,7 @@ class BusinessAccessAssetsApi {
 
   /// Create a new asset group.
   ///
-  /// Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+  /// Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -27,14 +27,14 @@ class BusinessAccessAssetsApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [CreateAssetGroupBody] createAssetGroupBody (required):
-  Future<Response> assetGroupCreateWithHttpInfo(String businessId, CreateAssetGroupBody createAssetGroupBody,) async {
+  /// * [AssetGroupInputCreate] assetGroupInputCreate (required):
+  Future<Response> assetGroupCreateWithHttpInfo(String businessId, AssetGroupInputCreate assetGroupInputCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/asset_groups'
       .replaceAll('{business_id}', businessId);
 
     // ignore: prefer_final_locals
-    Object? postBody = createAssetGroupBody;
+    Object? postBody = assetGroupInputCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -51,21 +51,22 @@ class BusinessAccessAssetsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Create a new asset group.
   ///
-  /// Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+  /// Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
   ///
   /// Parameters:
   ///
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [CreateAssetGroupBody] createAssetGroupBody (required):
-  Future<CreateAssetGroupResponse?> assetGroupCreate(String businessId, CreateAssetGroupBody createAssetGroupBody,) async {
-    final response = await assetGroupCreateWithHttpInfo(businessId, createAssetGroupBody,);
+  /// * [AssetGroupInputCreate] assetGroupInputCreate (required):
+  Future<AssetGroupInput?> assetGroupCreate(String businessId, AssetGroupInputCreate assetGroupInputCreate, { Future<void>? abortTrigger, }) async {
+    final response = await assetGroupCreateWithHttpInfo(businessId, assetGroupInputCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -73,7 +74,7 @@ class BusinessAccessAssetsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreateAssetGroupResponse',) as CreateAssetGroupResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AssetGroupInput',) as AssetGroupInput;
     
     }
     return null;
@@ -90,14 +91,14 @@ class BusinessAccessAssetsApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [DeleteAssetGroupBody] deleteAssetGroupBody (required):
-  Future<Response> assetGroupDeleteWithHttpInfo(String businessId, DeleteAssetGroupBody deleteAssetGroupBody,) async {
+  /// * [AssetGroupDeletionDelete] assetGroupDeletionDelete (required):
+  Future<Response> assetGroupDeleteWithHttpInfo(String businessId, AssetGroupDeletionDelete assetGroupDeletionDelete, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/asset_groups'
       .replaceAll('{business_id}', businessId);
 
     // ignore: prefer_final_locals
-    Object? postBody = deleteAssetGroupBody;
+    Object? postBody = assetGroupDeletionDelete;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -114,6 +115,7 @@ class BusinessAccessAssetsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -126,9 +128,9 @@ class BusinessAccessAssetsApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [DeleteAssetGroupBody] deleteAssetGroupBody (required):
-  Future<DeleteAssetGroupResponse?> assetGroupDelete(String businessId, DeleteAssetGroupBody deleteAssetGroupBody,) async {
-    final response = await assetGroupDeleteWithHttpInfo(businessId, deleteAssetGroupBody,);
+  /// * [AssetGroupDeletionDelete] assetGroupDeletionDelete (required):
+  Future<AssetGroupDeletion?> assetGroupDelete(String businessId, AssetGroupDeletionDelete assetGroupDeletionDelete, { Future<void>? abortTrigger, }) async {
+    final response = await assetGroupDeleteWithHttpInfo(businessId, assetGroupDeletionDelete, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -136,7 +138,7 @@ class BusinessAccessAssetsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeleteAssetGroupResponse',) as DeleteAssetGroupResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AssetGroupDeletion',) as AssetGroupDeletion;
     
     }
     return null;
@@ -153,14 +155,14 @@ class BusinessAccessAssetsApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [UpdateAssetGroupBody] updateAssetGroupBody (required):
-  Future<Response> assetGroupUpdateWithHttpInfo(String businessId, UpdateAssetGroupBody updateAssetGroupBody,) async {
+  /// * [AssetGroupModificationReadOrUpdate] assetGroupModificationReadOrUpdate (required):
+  Future<Response> assetGroupUpdateWithHttpInfo(String businessId, AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/asset_groups'
       .replaceAll('{business_id}', businessId);
 
     // ignore: prefer_final_locals
-    Object? postBody = updateAssetGroupBody;
+    Object? postBody = assetGroupModificationReadOrUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -177,6 +179,7 @@ class BusinessAccessAssetsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -189,9 +192,9 @@ class BusinessAccessAssetsApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [UpdateAssetGroupBody] updateAssetGroupBody (required):
-  Future<UpdateAssetGroupResponse?> assetGroupUpdate(String businessId, UpdateAssetGroupBody updateAssetGroupBody,) async {
-    final response = await assetGroupUpdateWithHttpInfo(businessId, updateAssetGroupBody,);
+  /// * [AssetGroupModificationReadOrUpdate] assetGroupModificationReadOrUpdate (required):
+  Future<AssetGroupModification?> assetGroupUpdate(String businessId, AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate, { Future<void>? abortTrigger, }) async {
+    final response = await assetGroupUpdateWithHttpInfo(businessId, assetGroupModificationReadOrUpdate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -199,7 +202,7 @@ class BusinessAccessAssetsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UpdateAssetGroupResponse',) as UpdateAssetGroupResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AssetGroupModification',) as AssetGroupModification;
     
     }
     return null;
@@ -219,6 +222,9 @@ class BusinessAccessAssetsApi {
   /// * [String] assetId (required):
   ///   Unique identifier of a business asset.
   ///
+  /// * [int] startIndex:
+  ///   An index to start fetching the results from. Only the results starting from this index will be returned.
+  ///
   /// * [bool] fetchSystemUsers:
   ///   Fetches system users if True. Fetches regular user employees if False.
   ///
@@ -226,11 +232,8 @@ class BusinessAccessAssetsApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [int] startIndex:
-  ///   An index to start fetching the results from. Only the results starting from this index will be returned.
-  Future<Response> businessAssetMembersGetWithHttpInfo(String businessId, String assetId, { bool? fetchSystemUsers, String? bookmark, int? pageSize, int? startIndex, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> businessAssetMembersGetWithHttpInfo(String businessId, String assetId, { int? startIndex, bool? fetchSystemUsers, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/assets/{asset_id}/members'
       .replaceAll('{business_id}', businessId)
@@ -243,6 +246,9 @@ class BusinessAccessAssetsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (startIndex != null) {
+      queryParams.addAll(_queryParams('', 'start_index', startIndex));
+    }
     if (fetchSystemUsers != null) {
       queryParams.addAll(_queryParams('', 'fetch_system_users', fetchSystemUsers));
     }
@@ -251,9 +257,6 @@ class BusinessAccessAssetsApi {
     }
     if (pageSize != null) {
       queryParams.addAll(_queryParams('', 'page_size', pageSize));
-    }
-    if (startIndex != null) {
-      queryParams.addAll(_queryParams('', 'start_index', startIndex));
     }
 
     const contentTypes = <String>[];
@@ -267,6 +270,7 @@ class BusinessAccessAssetsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -282,6 +286,9 @@ class BusinessAccessAssetsApi {
   /// * [String] assetId (required):
   ///   Unique identifier of a business asset.
   ///
+  /// * [int] startIndex:
+  ///   An index to start fetching the results from. Only the results starting from this index will be returned.
+  ///
   /// * [bool] fetchSystemUsers:
   ///   Fetches system users if True. Fetches regular user employees if False.
   ///
@@ -289,12 +296,9 @@ class BusinessAccessAssetsApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [int] startIndex:
-  ///   An index to start fetching the results from. Only the results starting from this index will be returned.
-  Future<BusinessAssetMembersGet200Response?> businessAssetMembersGet(String businessId, String assetId, { bool? fetchSystemUsers, String? bookmark, int? pageSize, int? startIndex, }) async {
-    final response = await businessAssetMembersGetWithHttpInfo(businessId, assetId,  fetchSystemUsers: fetchSystemUsers, bookmark: bookmark, pageSize: pageSize, startIndex: startIndex, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<BusinessAssetMembersGet200Response?> businessAssetMembersGet(String businessId, String assetId, { int? startIndex, bool? fetchSystemUsers, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await businessAssetMembersGetWithHttpInfo(businessId, assetId, startIndex: startIndex, fetchSystemUsers: fetchSystemUsers, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -329,8 +333,8 @@ class BusinessAccessAssetsApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<Response> businessAssetPartnersGetWithHttpInfo(String businessId, String assetId, { int? startIndex, String? bookmark, int? pageSize, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> businessAssetPartnersGetWithHttpInfo(String businessId, String assetId, { int? startIndex, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/assets/{asset_id}/partners'
       .replaceAll('{business_id}', businessId)
@@ -364,6 +368,7 @@ class BusinessAccessAssetsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -386,9 +391,9 @@ class BusinessAccessAssetsApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<BusinessAssetPartnersGet200Response?> businessAssetPartnersGet(String businessId, String assetId, { int? startIndex, String? bookmark, int? pageSize, }) async {
-    final response = await businessAssetPartnersGetWithHttpInfo(businessId, assetId,  startIndex: startIndex, bookmark: bookmark, pageSize: pageSize, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<BusinessAssetMembersGet200Response?> businessAssetPartnersGet(String businessId, String assetId, { int? startIndex, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await businessAssetPartnersGetWithHttpInfo(businessId, assetId, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -396,7 +401,7 @@ class BusinessAccessAssetsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BusinessAssetPartnersGet200Response',) as BusinessAssetPartnersGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BusinessAssetMembersGet200Response',) as BusinessAssetMembersGet200Response;
     
     }
     return null;
@@ -432,8 +437,8 @@ class BusinessAccessAssetsApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<Response> businessAssetsGetWithHttpInfo(String businessId, { List<PermissionsWithOwner>? permissions, String? childAssetId, String? assetGroupId, String? assetType, int? startIndex, String? bookmark, int? pageSize, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> businessAssetsGetWithHttpInfo(String businessId, { List<PermissionsWithOwner>? permissions, String? childAssetId, String? assetGroupId, String? assetType, int? startIndex, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/assets'
       .replaceAll('{business_id}', businessId);
@@ -478,6 +483,7 @@ class BusinessAccessAssetsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -509,9 +515,9 @@ class BusinessAccessAssetsApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<BusinessAssetsGet200Response?> businessAssetsGet(String businessId, { List<PermissionsWithOwner>? permissions, String? childAssetId, String? assetGroupId, String? assetType, int? startIndex, String? bookmark, int? pageSize, }) async {
-    final response = await businessAssetsGetWithHttpInfo(businessId,  permissions: permissions, childAssetId: childAssetId, assetGroupId: assetGroupId, assetType: assetType, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<BusinessAssetsGet200Response?> businessAssetsGet(String businessId, { List<PermissionsWithOwner>? permissions, String? childAssetId, String? assetGroupId, String? assetType, int? startIndex, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await businessAssetsGetWithHttpInfo(businessId, permissions: permissions, childAssetId: childAssetId, assetGroupId: assetGroupId, assetType: assetType, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -545,12 +551,30 @@ class BusinessAccessAssetsApi {
   /// * [int] startIndex:
   ///   An index to start fetching the results from. Only the results starting from this index will be returned.
   ///
+  /// * [AssetSortBy] sortBy:
+  ///   The field to sort member assets by
+  ///
+  /// * [bool] sortAscending:
+  ///   Sort assets in ascending order
+  ///
+  /// * [AssetSearchBy] searchBy:
+  ///   The field to search member assets by
+  ///
+  /// * [String] searchValue:
+  ///   The value to search for
+  ///
+  /// * [AssetPermissionType] assetPermissionType:
+  ///   The type of asset permission to filter by
+  ///
+  /// * [List<NonDraftEntityStatus>] adAccountStatuses:
+  ///   A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.
+  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<Response> businessMemberAssetsGetWithHttpInfo(String businessId, String memberId, { String? assetType, int? startIndex, String? bookmark, int? pageSize, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> businessMemberAssetsGetWithHttpInfo(String businessId, String memberId, { String? assetType, int? startIndex, AssetSortBy? sortBy, bool? sortAscending, AssetSearchBy? searchBy, String? searchValue, AssetPermissionType? assetPermissionType, List<NonDraftEntityStatus>? adAccountStatuses, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/members/{member_id}/assets'
       .replaceAll('{business_id}', businessId)
@@ -568,6 +592,24 @@ class BusinessAccessAssetsApi {
     }
     if (startIndex != null) {
       queryParams.addAll(_queryParams('', 'start_index', startIndex));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sort_by', sortBy));
+    }
+    if (sortAscending != null) {
+      queryParams.addAll(_queryParams('', 'sort_ascending', sortAscending));
+    }
+    if (searchBy != null) {
+      queryParams.addAll(_queryParams('', 'search_by', searchBy));
+    }
+    if (searchValue != null) {
+      queryParams.addAll(_queryParams('', 'search_value', searchValue));
+    }
+    if (assetPermissionType != null) {
+      queryParams.addAll(_queryParams('', 'asset_permission_type', assetPermissionType));
+    }
+    if (adAccountStatuses != null) {
+      queryParams.addAll(_queryParams('multi', 'ad_account_statuses', adAccountStatuses));
     }
     if (bookmark != null) {
       queryParams.addAll(_queryParams('', 'bookmark', bookmark));
@@ -587,6 +629,7 @@ class BusinessAccessAssetsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -608,13 +651,31 @@ class BusinessAccessAssetsApi {
   /// * [int] startIndex:
   ///   An index to start fetching the results from. Only the results starting from this index will be returned.
   ///
+  /// * [AssetSortBy] sortBy:
+  ///   The field to sort member assets by
+  ///
+  /// * [bool] sortAscending:
+  ///   Sort assets in ascending order
+  ///
+  /// * [AssetSearchBy] searchBy:
+  ///   The field to search member assets by
+  ///
+  /// * [String] searchValue:
+  ///   The value to search for
+  ///
+  /// * [AssetPermissionType] assetPermissionType:
+  ///   The type of asset permission to filter by
+  ///
+  /// * [List<NonDraftEntityStatus>] adAccountStatuses:
+  ///   A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.
+  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<BusinessMemberAssetsGet200Response?> businessMemberAssetsGet(String businessId, String memberId, { String? assetType, int? startIndex, String? bookmark, int? pageSize, }) async {
-    final response = await businessMemberAssetsGetWithHttpInfo(businessId, memberId,  assetType: assetType, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<BusinessMemberAssetsGetResponse?> businessMemberAssetsGet(String businessId, String memberId, { String? assetType, int? startIndex, AssetSortBy? sortBy, bool? sortAscending, AssetSearchBy? searchBy, String? searchValue, AssetPermissionType? assetPermissionType, List<NonDraftEntityStatus>? adAccountStatuses, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await businessMemberAssetsGetWithHttpInfo(businessId, memberId, assetType: assetType, startIndex: startIndex, sortBy: sortBy, sortAscending: sortAscending, searchBy: searchBy, searchValue: searchValue, assetPermissionType: assetPermissionType, adAccountStatuses: adAccountStatuses, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -622,7 +683,7 @@ class BusinessAccessAssetsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BusinessMemberAssetsGet200Response',) as BusinessMemberAssetsGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BusinessMemberAssetsGetResponse',) as BusinessMemberAssetsGetResponse;
     
     }
     return null;
@@ -639,15 +700,14 @@ class BusinessAccessAssetsApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [BusinessMembersAssetAccessDeleteRequest] businessMembersAssetAccessDeleteRequest (required):
-  ///   List member assset permissions to delete.
-  Future<Response> businessMembersAssetAccessDeleteWithHttpInfo(String businessId, BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest,) async {
+  /// * [BusinessMembersAssetAccessDeleteBody] businessMembersAssetAccessDeleteBody (required):
+  Future<Response> businessMembersAssetAccessDeleteWithHttpInfo(String businessId, BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/members/assets/access'
       .replaceAll('{business_id}', businessId);
 
     // ignore: prefer_final_locals
-    Object? postBody = businessMembersAssetAccessDeleteRequest;
+    Object? postBody = businessMembersAssetAccessDeleteBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -664,6 +724,7 @@ class BusinessAccessAssetsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -676,10 +737,9 @@ class BusinessAccessAssetsApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [BusinessMembersAssetAccessDeleteRequest] businessMembersAssetAccessDeleteRequest (required):
-  ///   List member assset permissions to delete.
-  Future<DeleteMemberAccessResultsResponseArray?> businessMembersAssetAccessDelete(String businessId, BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest,) async {
-    final response = await businessMembersAssetAccessDeleteWithHttpInfo(businessId, businessMembersAssetAccessDeleteRequest,);
+  /// * [BusinessMembersAssetAccessDeleteBody] businessMembersAssetAccessDeleteBody (required):
+  Future<DeleteMemberAccessResultsResponseArray?> businessMembersAssetAccessDelete(String businessId, BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody, { Future<void>? abortTrigger, }) async {
+    final response = await businessMembersAssetAccessDeleteWithHttpInfo(businessId, businessMembersAssetAccessDeleteBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -695,7 +755,7 @@ class BusinessAccessAssetsApi {
 
   /// Assign/Update member asset permissions
   ///
-  /// Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+  /// Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -705,8 +765,7 @@ class BusinessAccessAssetsApi {
   ///   Unique identifier of the requesting business.
   ///
   /// * [UpdateMemberAssetAccessBody] updateMemberAssetAccessBody (required):
-  ///   List of member asset permissions to create or update.
-  Future<Response> businessMembersAssetAccessUpdateWithHttpInfo(String businessId, UpdateMemberAssetAccessBody updateMemberAssetAccessBody,) async {
+  Future<Response> businessMembersAssetAccessUpdateWithHttpInfo(String businessId, UpdateMemberAssetAccessBody updateMemberAssetAccessBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/members/assets/access'
       .replaceAll('{business_id}', businessId);
@@ -729,12 +788,13 @@ class BusinessAccessAssetsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Assign/Update member asset permissions
   ///
-  /// Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+  /// Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
   ///
   /// Parameters:
   ///
@@ -742,9 +802,8 @@ class BusinessAccessAssetsApi {
   ///   Unique identifier of the requesting business.
   ///
   /// * [UpdateMemberAssetAccessBody] updateMemberAssetAccessBody (required):
-  ///   List of member asset permissions to create or update.
-  Future<UpdateMemberAssetsResultsResponseArray?> businessMembersAssetAccessUpdate(String businessId, UpdateMemberAssetAccessBody updateMemberAssetAccessBody,) async {
-    final response = await businessMembersAssetAccessUpdateWithHttpInfo(businessId, updateMemberAssetAccessBody,);
+  Future<UpdateMemberAssetsResultsResponseArray?> businessMembersAssetAccessUpdate(String businessId, UpdateMemberAssetAccessBody updateMemberAssetAccessBody, { Future<void>? abortTrigger, }) async {
+    final response = await businessMembersAssetAccessUpdateWithHttpInfo(businessId, updateMemberAssetAccessBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -772,8 +831,8 @@ class BusinessAccessAssetsApi {
   /// * [String] partnerId (required):
   ///   The partner id to be bound to the Business
   ///
-  /// * [PartnerType] partnerType:
-  ///   Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+  /// * [String] partnerType:
+  ///   Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
   ///
   /// * [String] assetType:
   ///   A resource type to filter the assets by. Only assets of the specified type will be returned.
@@ -781,12 +840,24 @@ class BusinessAccessAssetsApi {
   /// * [int] startIndex:
   ///   An index to start fetching the results from. Only the results starting from this index will be returned.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [AssetSortBy] sortBy:
+  ///   The field to sort member assets by
+  ///
+  /// * [bool] sortAscending:
+  ///   Sort assets in ascending order
+  ///
+  /// * [AssetSearchBy] searchBy:
+  ///   The field to search member assets by
+  ///
+  /// * [String] searchValue:
+  ///   The value to search for
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<Response> businessPartnerAssetAccessGetWithHttpInfo(String businessId, String partnerId, { PartnerType? partnerType, String? assetType, int? startIndex, int? pageSize, String? bookmark, }) async {
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> businessPartnerAssetAccessGetWithHttpInfo(String businessId, String partnerId, { String? partnerType, String? assetType, int? startIndex, AssetSortBy? sortBy, bool? sortAscending, AssetSearchBy? searchBy, String? searchValue, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/partners/{partner_id}/assets'
       .replaceAll('{business_id}', businessId)
@@ -808,11 +879,23 @@ class BusinessAccessAssetsApi {
     if (startIndex != null) {
       queryParams.addAll(_queryParams('', 'start_index', startIndex));
     }
-    if (pageSize != null) {
-      queryParams.addAll(_queryParams('', 'page_size', pageSize));
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sort_by', sortBy));
+    }
+    if (sortAscending != null) {
+      queryParams.addAll(_queryParams('', 'sort_ascending', sortAscending));
+    }
+    if (searchBy != null) {
+      queryParams.addAll(_queryParams('', 'search_by', searchBy));
+    }
+    if (searchValue != null) {
+      queryParams.addAll(_queryParams('', 'search_value', searchValue));
     }
     if (bookmark != null) {
       queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
+    if (pageSize != null) {
+      queryParams.addAll(_queryParams('', 'page_size', pageSize));
     }
 
     const contentTypes = <String>[];
@@ -826,6 +909,7 @@ class BusinessAccessAssetsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -841,8 +925,8 @@ class BusinessAccessAssetsApi {
   /// * [String] partnerId (required):
   ///   The partner id to be bound to the Business
   ///
-  /// * [PartnerType] partnerType:
-  ///   Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+  /// * [String] partnerType:
+  ///   Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
   ///
   /// * [String] assetType:
   ///   A resource type to filter the assets by. Only assets of the specified type will be returned.
@@ -850,13 +934,25 @@ class BusinessAccessAssetsApi {
   /// * [int] startIndex:
   ///   An index to start fetching the results from. Only the results starting from this index will be returned.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [AssetSortBy] sortBy:
+  ///   The field to sort member assets by
+  ///
+  /// * [bool] sortAscending:
+  ///   Sort assets in ascending order
+  ///
+  /// * [AssetSearchBy] searchBy:
+  ///   The field to search member assets by
+  ///
+  /// * [String] searchValue:
+  ///   The value to search for
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<BusinessPartnerAssetAccessGet200Response?> businessPartnerAssetAccessGet(String businessId, String partnerId, { PartnerType? partnerType, String? assetType, int? startIndex, int? pageSize, String? bookmark, }) async {
-    final response = await businessPartnerAssetAccessGetWithHttpInfo(businessId, partnerId,  partnerType: partnerType, assetType: assetType, startIndex: startIndex, pageSize: pageSize, bookmark: bookmark, );
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<BusinessPartnerAssetAccessGet200Response?> businessPartnerAssetAccessGet(String businessId, String partnerId, { String? partnerType, String? assetType, int? startIndex, AssetSortBy? sortBy, bool? sortAscending, AssetSearchBy? searchBy, String? searchValue, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await businessPartnerAssetAccessGetWithHttpInfo(businessId, partnerId, partnerType: partnerType, assetType: assetType, startIndex: startIndex, sortBy: sortBy, sortAscending: sortAscending, searchBy: searchBy, searchValue: searchValue, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -882,7 +978,7 @@ class BusinessAccessAssetsApi {
   ///   Unique identifier of the requesting business.
   ///
   /// * [DeletePartnerAssetAccessBody] deletePartnerAssetAccessBody (required):
-  Future<Response> deletePartnerAssetAccessHandlerImplWithHttpInfo(String businessId, DeletePartnerAssetAccessBody deletePartnerAssetAccessBody,) async {
+  Future<Response> deletePartnerAssetAccessHandlerImplWithHttpInfo(String businessId, DeletePartnerAssetAccessBody deletePartnerAssetAccessBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/partners/assets'
       .replaceAll('{business_id}', businessId);
@@ -905,6 +1001,7 @@ class BusinessAccessAssetsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -918,8 +1015,8 @@ class BusinessAccessAssetsApi {
   ///   Unique identifier of the requesting business.
   ///
   /// * [DeletePartnerAssetAccessBody] deletePartnerAssetAccessBody (required):
-  Future<DeletePartnerAssetsResultsResponseArray?> deletePartnerAssetAccessHandlerImpl(String businessId, DeletePartnerAssetAccessBody deletePartnerAssetAccessBody,) async {
-    final response = await deletePartnerAssetAccessHandlerImplWithHttpInfo(businessId, deletePartnerAssetAccessBody,);
+  Future<DeletePartnerAssetAccessResultsResponseArray?> deletePartnerAssetAccessHandlerImpl(String businessId, DeletePartnerAssetAccessBody deletePartnerAssetAccessBody, { Future<void>? abortTrigger, }) async {
+    final response = await deletePartnerAssetAccessHandlerImplWithHttpInfo(businessId, deletePartnerAssetAccessBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -927,7 +1024,7 @@ class BusinessAccessAssetsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeletePartnerAssetsResultsResponseArray',) as DeletePartnerAssetsResultsResponseArray;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeletePartnerAssetAccessResultsResponseArray',) as DeletePartnerAssetAccessResultsResponseArray;
     
     }
     return null;
@@ -945,8 +1042,7 @@ class BusinessAccessAssetsApi {
   ///   Unique identifier of the requesting business.
   ///
   /// * [UpdatePartnerAssetAccessBody] updatePartnerAssetAccessBody (required):
-  ///   A list of assets and permissions to assign to your partners.
-  Future<Response> updatePartnerAssetAccessHandlerImplWithHttpInfo(String businessId, UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody,) async {
+  Future<Response> updatePartnerAssetAccessHandlerImplWithHttpInfo(String businessId, UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/partners/assets'
       .replaceAll('{business_id}', businessId);
@@ -969,6 +1065,7 @@ class BusinessAccessAssetsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -982,9 +1079,8 @@ class BusinessAccessAssetsApi {
   ///   Unique identifier of the requesting business.
   ///
   /// * [UpdatePartnerAssetAccessBody] updatePartnerAssetAccessBody (required):
-  ///   A list of assets and permissions to assign to your partners.
-  Future<UpdatePartnerAssetsResultsResponseArray?> updatePartnerAssetAccessHandlerImpl(String businessId, UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody,) async {
-    final response = await updatePartnerAssetAccessHandlerImplWithHttpInfo(businessId, updatePartnerAssetAccessBody,);
+  Future<UpdatePartnerAssetsResultsResponseArray?> updatePartnerAssetAccessHandlerImpl(String businessId, UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody, { Future<void>? abortTrigger, }) async {
+    final response = await updatePartnerAssetAccessHandlerImplWithHttpInfo(businessId, updatePartnerAssetAccessBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

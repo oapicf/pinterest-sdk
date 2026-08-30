@@ -9,7 +9,7 @@ import javax.validation.Valid;
 /**
  * CatalogsFeedIngestionErrors
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsFeedIngestionErrors   {
   @JsonProperty("ACCOUNT_FLAGGED")
@@ -40,38 +40,9 @@ public class CatalogsFeedIngestionErrors   {
   
   private Integer IMAGE_MALFORMED_URL;
 
-  /**
-   * The product count has decreased by more than 99% compared to the last successful ingestion.
-   */
-  public enum LARGEPRODUCTCOUNTDECREASEEnum {
-    NUMBER_1(1);
-
-    private final Integer value;
-
-    LARGEPRODUCTCOUNTDECREASEEnum(Integer value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static LARGEPRODUCTCOUNTDECREASEEnum fromValue(Integer value) {
-      for (LARGEPRODUCTCOUNTDECREASEEnum b : LARGEPRODUCTCOUNTDECREASEEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @JsonProperty("LARGE_PRODUCT_COUNT_DECREASE")
   
-  private LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE;
+  private Integer LARGE_PRODUCT_COUNT_DECREASE;
 
   @JsonProperty("LINE_LEVEL_INTERNAL_ERROR")
   
@@ -196,7 +167,7 @@ public class CatalogsFeedIngestionErrors   {
     this.IMAGE_MALFORMED_URL = IMAGE_MALFORMED_URL;
   }
 
-  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(Integer LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
     return this;
   }
@@ -205,11 +176,11 @@ public class CatalogsFeedIngestionErrors   {
    * The product count has decreased by more than 99% compared to the last successful ingestion.
    * @return LARGE_PRODUCT_COUNT_DECREASE
   **/
-  public LARGEPRODUCTCOUNTDECREASEEnum getLARGEPRODUCTCOUNTDECREASE() {
+  public Integer getLARGEPRODUCTCOUNTDECREASE() {
     return LARGE_PRODUCT_COUNT_DECREASE;
   }
 
-  public void setLARGEPRODUCTCOUNTDECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  public void setLARGEPRODUCTCOUNTDECREASE(Integer LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
   }
 
@@ -280,10 +251,7 @@ public class CatalogsFeedIngestionErrors   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

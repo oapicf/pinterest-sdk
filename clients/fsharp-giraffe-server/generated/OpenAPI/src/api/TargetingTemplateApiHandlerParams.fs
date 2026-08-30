@@ -1,10 +1,11 @@
 namespace OpenAPI
 
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PinterestLibPaginationOrder
+open OpenAPI.Model.TargetingTemplate
 open OpenAPI.Model.TargetingTemplateCreate
-open OpenAPI.Model.TargetingTemplateGetResponseData
 open OpenAPI.Model.TargetingTemplateList200Response
-open OpenAPI.Model.TargetingTemplateUpdateRequest
+open OpenAPI.Model.TargetingTemplateUpdateRequestReadOrUpdate
 open System.Collections.Generic
 open System
 
@@ -24,20 +25,45 @@ module TargetingTemplateApiHandlerParams =
 
 
     type TargetingTemplateCreateStatusCode200Response = {
-      content:TargetingTemplateGetResponseData;
+      content:TargetingTemplate;
+      
+    }
+
+    type TargetingTemplateCreateStatusCode201Response = {
+      content:TargetingTemplate;
       
     }
 
     type TargetingTemplateCreateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type TargetingTemplateCreateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TargetingTemplateCreateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TargetingTemplateCreateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TargetingTemplateCreateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type TargetingTemplateCreateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type TargetingTemplateCreateResult = TargetingTemplateCreateStatusCode200 of TargetingTemplateCreateStatusCode200Response|TargetingTemplateCreateStatusCode400 of TargetingTemplateCreateStatusCode400Response|TargetingTemplateCreateDefaultStatusCode of TargetingTemplateCreateDefaultStatusCodeResponse
+    type TargetingTemplateCreateResult = TargetingTemplateCreateStatusCode200 of TargetingTemplateCreateStatusCode200Response|TargetingTemplateCreateStatusCode201 of TargetingTemplateCreateStatusCode201Response|TargetingTemplateCreateStatusCode400 of TargetingTemplateCreateStatusCode400Response|TargetingTemplateCreateStatusCode401 of TargetingTemplateCreateStatusCode401Response|TargetingTemplateCreateStatusCode403 of TargetingTemplateCreateStatusCode403Response|TargetingTemplateCreateStatusCode404 of TargetingTemplateCreateStatusCode404Response|TargetingTemplateCreateStatusCode429 of TargetingTemplateCreateStatusCode429Response|TargetingTemplateCreateDefaultStatusCode of TargetingTemplateCreateDefaultStatusCodeResponse
 
     type TargetingTemplateCreateArgs = {
       pathParams:TargetingTemplateCreatePathParams;
@@ -53,19 +79,19 @@ module TargetingTemplateApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type TargetingTemplateListQueryParams = {
-      order : string option;
+      bookmark : string option;
+
+
+      pageSize : int option;
+
+
+      order : PinterestLibPaginationOrder option;
 
 
       includeSizing : bool option;
 
 
       searchQuery : string option;
-
-
-      pageSize : int option;
-
-
-      bookmark : string option;
 
     }
     //#endregion
@@ -77,15 +103,35 @@ module TargetingTemplateApiHandlerParams =
     }
 
     type TargetingTemplateListStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type TargetingTemplateListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TargetingTemplateListStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TargetingTemplateListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TargetingTemplateListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type TargetingTemplateListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type TargetingTemplateListResult = TargetingTemplateListStatusCode200 of TargetingTemplateListStatusCode200Response|TargetingTemplateListStatusCode400 of TargetingTemplateListStatusCode400Response|TargetingTemplateListDefaultStatusCode of TargetingTemplateListDefaultStatusCodeResponse
+    type TargetingTemplateListResult = TargetingTemplateListStatusCode200 of TargetingTemplateListStatusCode200Response|TargetingTemplateListStatusCode400 of TargetingTemplateListStatusCode400Response|TargetingTemplateListStatusCode401 of TargetingTemplateListStatusCode401Response|TargetingTemplateListStatusCode403 of TargetingTemplateListStatusCode403Response|TargetingTemplateListStatusCode404 of TargetingTemplateListStatusCode404Response|TargetingTemplateListStatusCode429 of TargetingTemplateListStatusCode429Response|TargetingTemplateListDefaultStatusCode of TargetingTemplateListDefaultStatusCodeResponse
 
     type TargetingTemplateListArgs = {
       pathParams:TargetingTemplateListPathParams;
@@ -100,7 +146,7 @@ module TargetingTemplateApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type TargetingTemplateUpdateBodyParams = TargetingTemplateUpdateRequest
+    type TargetingTemplateUpdateBodyParams = TargetingTemplateUpdateRequestReadOrUpdate
     //#endregion
 
 
@@ -110,15 +156,35 @@ module TargetingTemplateApiHandlerParams =
     }
 
     type TargetingTemplateUpdateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type TargetingTemplateUpdateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TargetingTemplateUpdateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TargetingTemplateUpdateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TargetingTemplateUpdateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type TargetingTemplateUpdateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type TargetingTemplateUpdateResult = TargetingTemplateUpdateStatusCode200 of TargetingTemplateUpdateStatusCode200Response|TargetingTemplateUpdateStatusCode400 of TargetingTemplateUpdateStatusCode400Response|TargetingTemplateUpdateDefaultStatusCode of TargetingTemplateUpdateDefaultStatusCodeResponse
+    type TargetingTemplateUpdateResult = TargetingTemplateUpdateStatusCode200 of TargetingTemplateUpdateStatusCode200Response|TargetingTemplateUpdateStatusCode400 of TargetingTemplateUpdateStatusCode400Response|TargetingTemplateUpdateStatusCode401 of TargetingTemplateUpdateStatusCode401Response|TargetingTemplateUpdateStatusCode403 of TargetingTemplateUpdateStatusCode403Response|TargetingTemplateUpdateStatusCode404 of TargetingTemplateUpdateStatusCode404Response|TargetingTemplateUpdateStatusCode429 of TargetingTemplateUpdateStatusCode429Response|TargetingTemplateUpdateDefaultStatusCode of TargetingTemplateUpdateDefaultStatusCodeResponse
 
     type TargetingTemplateUpdateArgs = {
       pathParams:TargetingTemplateUpdatePathParams;

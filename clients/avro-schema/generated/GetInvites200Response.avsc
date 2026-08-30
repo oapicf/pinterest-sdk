@@ -16,7 +16,7 @@
         "type": "array",
         "items": "model.InviteResponse"
       },
-      "doc": "List of invite and request data."
+      "doc": ""
     }
   ]
 

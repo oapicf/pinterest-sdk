@@ -5,6 +5,7 @@
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/invite_type.dart';
+import 'package:openapi/src/model/business_role_for_invite.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,15 +14,14 @@ part 'create_membership_or_partnership_invites_body.g.dart';
 /// Body to be used on path to send Members or Partners Invite or Request
 ///
 /// Properties:
-/// * [businessRole] - The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
+/// * [businessRole] 
 /// * [inviteType] 
 /// * [members] - A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
 /// * [partners] - A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST
 @BuiltValue()
 abstract class CreateMembershipOrPartnershipInvitesBody implements Built<CreateMembershipOrPartnershipInvitesBody, CreateMembershipOrPartnershipInvitesBodyBuilder> {
-  /// The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
   @BuiltValueField(wireName: r'business_role')
-  CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum get businessRole;
+  BusinessRoleForInvite get businessRole;
   // enum businessRoleEnum {  EMPLOYEE,  BIZ_ADMIN,  PARTNER,  };
 
   @BuiltValueField(wireName: r'invite_type')
@@ -62,7 +62,7 @@ class _$CreateMembershipOrPartnershipInvitesBodySerializer implements PrimitiveS
     yield r'business_role';
     yield serializers.serialize(
       object.businessRole,
-      specifiedType: const FullType(CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum),
+      specifiedType: const FullType(BusinessRoleForInvite),
     );
     yield r'invite_type';
     yield serializers.serialize(
@@ -109,8 +109,8 @@ class _$CreateMembershipOrPartnershipInvitesBodySerializer implements PrimitiveS
         case r'business_role':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum),
-          ) as CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum;
+            specifiedType: const FullType(BusinessRoleForInvite),
+          ) as BusinessRoleForInvite;
           result.businessRole = valueDes;
           break;
         case r'invite_type':
@@ -123,15 +123,17 @@ class _$CreateMembershipOrPartnershipInvitesBodySerializer implements PrimitiveS
         case r'members':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.members.replace(valueDes);
           break;
         case r'partners':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.partners.replace(valueDes);
           break;
         default:
@@ -161,25 +163,5 @@ class _$CreateMembershipOrPartnershipInvitesBodySerializer implements PrimitiveS
     );
     return result.build();
   }
-}
-
-class CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum extends EnumClass {
-
-  /// The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-  @BuiltValueEnumConst(wireName: r'EMPLOYEE')
-  static const CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum EMPLOYEE = _$createMembershipOrPartnershipInvitesBodyBusinessRoleEnum_EMPLOYEE;
-  /// The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-  @BuiltValueEnumConst(wireName: r'BIZ_ADMIN')
-  static const CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum BIZ_ADMIN = _$createMembershipOrPartnershipInvitesBodyBusinessRoleEnum_BIZ_ADMIN;
-  /// The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-  @BuiltValueEnumConst(wireName: r'PARTNER')
-  static const CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum PARTNER = _$createMembershipOrPartnershipInvitesBodyBusinessRoleEnum_PARTNER;
-
-  static Serializer<CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum> get serializer => _$createMembershipOrPartnershipInvitesBodyBusinessRoleEnumSerializer;
-
-  const CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum._(String name): super(name);
-
-  static BuiltSet<CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum> get values => _$createMembershipOrPartnershipInvitesBodyBusinessRoleEnumValues;
-  static CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum valueOf(String name) => _$createMembershipOrPartnershipInvitesBodyBusinessRoleEnumValueOf(name);
 }
 

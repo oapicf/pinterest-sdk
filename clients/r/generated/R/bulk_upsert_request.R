@@ -68,13 +68,36 @@ BulkUpsertRequest <- R6::R6Class(
       BulkUpsertRequestObject <- list()
       if (!is.null(self$`create`)) {
         BulkUpsertRequestObject[["create"]] <-
-          self$`create`$toSimpleType()
+          self$extractSimpleType(self$`create`)
       }
       if (!is.null(self$`update`)) {
         BulkUpsertRequestObject[["update"]] <-
-          self$`update`$toSimpleType()
+          self$extractSimpleType(self$`update`)
       }
       return(BulkUpsertRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

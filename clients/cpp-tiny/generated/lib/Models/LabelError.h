@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "Label.h"
+#include "LabelErrorData.h"
 #include <list>
 
 namespace Tiny {
@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	Label getData();
+	LabelErrorData getData();
 
 	/*! \brief Set 
 	 */
-	void setData(Label  data);
+	void setData(LabelErrorData data);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getErrorMessages();
 
 	/*! \brief Set 
 	 */
-	void setErrorMessages(std::list <std::string> error_messages);
+	void setErrorMessages(std::list<std::string> error_messages);
 
 
     private:
-    Label data;
+    LabelErrorData data;
     std::list<std::string> error_messages;
 };
 }

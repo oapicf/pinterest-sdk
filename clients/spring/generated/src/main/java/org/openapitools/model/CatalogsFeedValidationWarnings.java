@@ -2,480 +2,658 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsFeedValidationWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedValidationWarnings {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_0_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_0_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_0_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_0_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_0_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_0_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_10_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_10_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_10_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_10_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_10_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_10_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_10_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_11_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_11_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_11_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_11_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_11_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_11_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_11_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_12_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_12_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_12_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_12_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_12_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_12_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_12_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_13_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_13_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_13_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_13_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_13_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_13_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_13_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_14_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_14_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_14_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_14_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_14_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_14_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_14_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_15_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_15_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_15_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_15_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_15_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_15_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_15_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_16_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_16_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_16_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_16_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_16_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_16_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_16_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_17_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_17_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_17_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_17_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_17_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_17_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_17_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_18_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_18_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_18_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_18_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_18_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_18_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_18_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_19_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_19_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_19_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_19_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_19_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_19_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_19_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_1_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_1_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_1_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_1_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_1_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_1_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_1_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_2_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_2_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_2_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_2_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_2_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_2_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_2_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_3_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_3_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_3_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_3_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_3_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_3_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_3_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_4_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_4_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_4_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_4_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_4_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_4_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_4_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_5_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_5_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_5_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_5_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_5_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_5_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_5_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_6_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_6_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_6_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_6_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_6_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_6_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_6_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_7_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_7_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_7_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_7_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_7_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_7_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_7_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_8_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_8_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_8_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_8_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_8_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_8_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_8_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_9_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_9_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_9_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_9_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_9_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_9_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_9_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_LINK_FORMAT_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_LINK_SAME_AS_LINK;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_0_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_0_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_0_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_0_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_0_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_0_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_0_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_1_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_1_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_1_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_1_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_1_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_1_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_1_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_2_LINK_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_2_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_2_LINK_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_2_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_2_TAG_DUPLICATED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_2_TAG_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_2_TAG_REQUIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADDITIONAL_IMAGE_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADWORDS_FORMAT_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADWORDS_SAME_AS_LINK;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AGE_GROUP_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ANDROID_DEEP_LINK_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AVAILABILITY_DATE_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer CUSTOM_LABEL_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer DESCRIPTION_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer DUPLICATE_HEADERS;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer EXPIRATION_DATE_INVALID;
 
-  /**
-   * Ingestion completed early because there are no changes to your feed since the last successful update.
-   */
-  public enum FETCHSAMESIGNATUREEnum {
-    NUMBER_1(1);
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable Integer FETCH_SAME_SIGNATURE;
 
-    private final Integer value;
-
-    FETCHSAMESIGNATUREEnum(Integer value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public Integer getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FETCHSAMESIGNATUREEnum fromValue(Integer value) {
-      for (FETCHSAMESIGNATUREEnum b : FETCHSAMESIGNATUREEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private @Nullable FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE;
-
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer GENDER_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer GTIN_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_LINK_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer INCONSISTENT_CURRENCY_VALUES;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer INDEXED_PRODUCT_COUNT_LARGE_DELTA;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IOS_DEEP_LINK_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IS_BUNDLE_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer LINK_FORMAT_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer MIN_AD_PRICE_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer MPN_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer MULTIPACK_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer OPTIONAL_CONDITION_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer OPTIONAL_CONDITION_MISSING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer OPTIONAL_PRODUCT_CATEGORY_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer OPTIONAL_PRODUCT_CATEGORY_MISSING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PRODUCT_CATEGORY_DEPTH_WARNING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PRODUCT_TYPE_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SALE_DATE_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SALES_PRICE_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SALES_PRICE_TOO_HIGH;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SALES_PRICE_TOO_LOW;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SHIPPING_HEIGHT_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SHIPPING_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SHIPPING_WEIGHT_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SHIPPING_WIDTH_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SIZE_SYSTEM_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SIZE_TYPE_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer TAX_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer TITLE_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer TOO_MANY_ADDITIONAL_IMAGE_LINKS;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer UPDATED_TIME_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer UTM_SOURCE_AUTO_CORRECTED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer WEIGHT_UNIT_INVALID;
 
   public CatalogsFeedValidationWarnings AD_IMAGE_0_LINK_DUPLICATED(@Nullable Integer AD_IMAGE_0_LINK_DUPLICATED) {
@@ -494,6 +672,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_0_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_0_LINK_DUPLICATED")
   public void setADIMAGE0LINKDUPLICATED(@Nullable Integer AD_IMAGE_0_LINK_DUPLICATED) {
     this.AD_IMAGE_0_LINK_DUPLICATED = AD_IMAGE_0_LINK_DUPLICATED;
   }
@@ -514,6 +693,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_0_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE0LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_0_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_0_LINK_LENGTH_TOO_LONG = AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
   }
@@ -534,6 +714,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_0_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_0_LINK_REQUIRED")
   public void setADIMAGE0LINKREQUIRED(@Nullable Integer AD_IMAGE_0_LINK_REQUIRED) {
     this.AD_IMAGE_0_LINK_REQUIRED = AD_IMAGE_0_LINK_REQUIRED;
   }
@@ -554,6 +735,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_0_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_0_LINK_WARNING")
   public void setADIMAGE0LINKWARNING(@Nullable Integer AD_IMAGE_0_LINK_WARNING) {
     this.AD_IMAGE_0_LINK_WARNING = AD_IMAGE_0_LINK_WARNING;
   }
@@ -574,6 +756,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_0_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_0_TAG_DUPLICATED")
   public void setADIMAGE0TAGDUPLICATED(@Nullable Integer AD_IMAGE_0_TAG_DUPLICATED) {
     this.AD_IMAGE_0_TAG_DUPLICATED = AD_IMAGE_0_TAG_DUPLICATED;
   }
@@ -594,6 +777,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_0_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_0_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE0TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_0_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_0_TAG_LENGTH_TOO_LONG = AD_IMAGE_0_TAG_LENGTH_TOO_LONG;
   }
@@ -614,6 +798,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_0_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_0_TAG_REQUIRED")
   public void setADIMAGE0TAGREQUIRED(@Nullable Integer AD_IMAGE_0_TAG_REQUIRED) {
     this.AD_IMAGE_0_TAG_REQUIRED = AD_IMAGE_0_TAG_REQUIRED;
   }
@@ -634,6 +819,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_10_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_10_LINK_DUPLICATED")
   public void setADIMAGE10LINKDUPLICATED(@Nullable Integer AD_IMAGE_10_LINK_DUPLICATED) {
     this.AD_IMAGE_10_LINK_DUPLICATED = AD_IMAGE_10_LINK_DUPLICATED;
   }
@@ -654,6 +840,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_10_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_10_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE10LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_10_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_10_LINK_LENGTH_TOO_LONG = AD_IMAGE_10_LINK_LENGTH_TOO_LONG;
   }
@@ -674,6 +861,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_10_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_10_LINK_REQUIRED")
   public void setADIMAGE10LINKREQUIRED(@Nullable Integer AD_IMAGE_10_LINK_REQUIRED) {
     this.AD_IMAGE_10_LINK_REQUIRED = AD_IMAGE_10_LINK_REQUIRED;
   }
@@ -694,6 +882,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_10_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_10_LINK_WARNING")
   public void setADIMAGE10LINKWARNING(@Nullable Integer AD_IMAGE_10_LINK_WARNING) {
     this.AD_IMAGE_10_LINK_WARNING = AD_IMAGE_10_LINK_WARNING;
   }
@@ -714,6 +903,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_10_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_10_TAG_DUPLICATED")
   public void setADIMAGE10TAGDUPLICATED(@Nullable Integer AD_IMAGE_10_TAG_DUPLICATED) {
     this.AD_IMAGE_10_TAG_DUPLICATED = AD_IMAGE_10_TAG_DUPLICATED;
   }
@@ -734,6 +924,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_10_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_10_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE10TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_10_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_10_TAG_LENGTH_TOO_LONG = AD_IMAGE_10_TAG_LENGTH_TOO_LONG;
   }
@@ -754,6 +945,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_10_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_10_TAG_REQUIRED")
   public void setADIMAGE10TAGREQUIRED(@Nullable Integer AD_IMAGE_10_TAG_REQUIRED) {
     this.AD_IMAGE_10_TAG_REQUIRED = AD_IMAGE_10_TAG_REQUIRED;
   }
@@ -774,6 +966,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_11_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_11_LINK_DUPLICATED")
   public void setADIMAGE11LINKDUPLICATED(@Nullable Integer AD_IMAGE_11_LINK_DUPLICATED) {
     this.AD_IMAGE_11_LINK_DUPLICATED = AD_IMAGE_11_LINK_DUPLICATED;
   }
@@ -794,6 +987,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_11_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_11_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE11LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_11_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_11_LINK_LENGTH_TOO_LONG = AD_IMAGE_11_LINK_LENGTH_TOO_LONG;
   }
@@ -814,6 +1008,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_11_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_11_LINK_REQUIRED")
   public void setADIMAGE11LINKREQUIRED(@Nullable Integer AD_IMAGE_11_LINK_REQUIRED) {
     this.AD_IMAGE_11_LINK_REQUIRED = AD_IMAGE_11_LINK_REQUIRED;
   }
@@ -834,6 +1029,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_11_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_11_LINK_WARNING")
   public void setADIMAGE11LINKWARNING(@Nullable Integer AD_IMAGE_11_LINK_WARNING) {
     this.AD_IMAGE_11_LINK_WARNING = AD_IMAGE_11_LINK_WARNING;
   }
@@ -854,6 +1050,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_11_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_11_TAG_DUPLICATED")
   public void setADIMAGE11TAGDUPLICATED(@Nullable Integer AD_IMAGE_11_TAG_DUPLICATED) {
     this.AD_IMAGE_11_TAG_DUPLICATED = AD_IMAGE_11_TAG_DUPLICATED;
   }
@@ -874,6 +1071,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_11_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_11_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE11TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_11_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_11_TAG_LENGTH_TOO_LONG = AD_IMAGE_11_TAG_LENGTH_TOO_LONG;
   }
@@ -894,6 +1092,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_11_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_11_TAG_REQUIRED")
   public void setADIMAGE11TAGREQUIRED(@Nullable Integer AD_IMAGE_11_TAG_REQUIRED) {
     this.AD_IMAGE_11_TAG_REQUIRED = AD_IMAGE_11_TAG_REQUIRED;
   }
@@ -914,6 +1113,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_12_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_12_LINK_DUPLICATED")
   public void setADIMAGE12LINKDUPLICATED(@Nullable Integer AD_IMAGE_12_LINK_DUPLICATED) {
     this.AD_IMAGE_12_LINK_DUPLICATED = AD_IMAGE_12_LINK_DUPLICATED;
   }
@@ -934,6 +1134,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_12_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_12_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE12LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_12_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_12_LINK_LENGTH_TOO_LONG = AD_IMAGE_12_LINK_LENGTH_TOO_LONG;
   }
@@ -954,6 +1155,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_12_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_12_LINK_REQUIRED")
   public void setADIMAGE12LINKREQUIRED(@Nullable Integer AD_IMAGE_12_LINK_REQUIRED) {
     this.AD_IMAGE_12_LINK_REQUIRED = AD_IMAGE_12_LINK_REQUIRED;
   }
@@ -974,6 +1176,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_12_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_12_LINK_WARNING")
   public void setADIMAGE12LINKWARNING(@Nullable Integer AD_IMAGE_12_LINK_WARNING) {
     this.AD_IMAGE_12_LINK_WARNING = AD_IMAGE_12_LINK_WARNING;
   }
@@ -994,6 +1197,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_12_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_12_TAG_DUPLICATED")
   public void setADIMAGE12TAGDUPLICATED(@Nullable Integer AD_IMAGE_12_TAG_DUPLICATED) {
     this.AD_IMAGE_12_TAG_DUPLICATED = AD_IMAGE_12_TAG_DUPLICATED;
   }
@@ -1014,6 +1218,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_12_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_12_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE12TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_12_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_12_TAG_LENGTH_TOO_LONG = AD_IMAGE_12_TAG_LENGTH_TOO_LONG;
   }
@@ -1034,6 +1239,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_12_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_12_TAG_REQUIRED")
   public void setADIMAGE12TAGREQUIRED(@Nullable Integer AD_IMAGE_12_TAG_REQUIRED) {
     this.AD_IMAGE_12_TAG_REQUIRED = AD_IMAGE_12_TAG_REQUIRED;
   }
@@ -1054,6 +1260,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_13_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_13_LINK_DUPLICATED")
   public void setADIMAGE13LINKDUPLICATED(@Nullable Integer AD_IMAGE_13_LINK_DUPLICATED) {
     this.AD_IMAGE_13_LINK_DUPLICATED = AD_IMAGE_13_LINK_DUPLICATED;
   }
@@ -1074,6 +1281,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_13_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_13_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE13LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_13_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_13_LINK_LENGTH_TOO_LONG = AD_IMAGE_13_LINK_LENGTH_TOO_LONG;
   }
@@ -1094,6 +1302,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_13_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_13_LINK_REQUIRED")
   public void setADIMAGE13LINKREQUIRED(@Nullable Integer AD_IMAGE_13_LINK_REQUIRED) {
     this.AD_IMAGE_13_LINK_REQUIRED = AD_IMAGE_13_LINK_REQUIRED;
   }
@@ -1114,6 +1323,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_13_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_13_LINK_WARNING")
   public void setADIMAGE13LINKWARNING(@Nullable Integer AD_IMAGE_13_LINK_WARNING) {
     this.AD_IMAGE_13_LINK_WARNING = AD_IMAGE_13_LINK_WARNING;
   }
@@ -1134,6 +1344,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_13_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_13_TAG_DUPLICATED")
   public void setADIMAGE13TAGDUPLICATED(@Nullable Integer AD_IMAGE_13_TAG_DUPLICATED) {
     this.AD_IMAGE_13_TAG_DUPLICATED = AD_IMAGE_13_TAG_DUPLICATED;
   }
@@ -1154,6 +1365,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_13_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_13_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE13TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_13_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_13_TAG_LENGTH_TOO_LONG = AD_IMAGE_13_TAG_LENGTH_TOO_LONG;
   }
@@ -1174,6 +1386,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_13_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_13_TAG_REQUIRED")
   public void setADIMAGE13TAGREQUIRED(@Nullable Integer AD_IMAGE_13_TAG_REQUIRED) {
     this.AD_IMAGE_13_TAG_REQUIRED = AD_IMAGE_13_TAG_REQUIRED;
   }
@@ -1194,6 +1407,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_14_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_14_LINK_DUPLICATED")
   public void setADIMAGE14LINKDUPLICATED(@Nullable Integer AD_IMAGE_14_LINK_DUPLICATED) {
     this.AD_IMAGE_14_LINK_DUPLICATED = AD_IMAGE_14_LINK_DUPLICATED;
   }
@@ -1214,6 +1428,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_14_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_14_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE14LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_14_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_14_LINK_LENGTH_TOO_LONG = AD_IMAGE_14_LINK_LENGTH_TOO_LONG;
   }
@@ -1234,6 +1449,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_14_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_14_LINK_REQUIRED")
   public void setADIMAGE14LINKREQUIRED(@Nullable Integer AD_IMAGE_14_LINK_REQUIRED) {
     this.AD_IMAGE_14_LINK_REQUIRED = AD_IMAGE_14_LINK_REQUIRED;
   }
@@ -1254,6 +1470,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_14_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_14_LINK_WARNING")
   public void setADIMAGE14LINKWARNING(@Nullable Integer AD_IMAGE_14_LINK_WARNING) {
     this.AD_IMAGE_14_LINK_WARNING = AD_IMAGE_14_LINK_WARNING;
   }
@@ -1274,6 +1491,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_14_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_14_TAG_DUPLICATED")
   public void setADIMAGE14TAGDUPLICATED(@Nullable Integer AD_IMAGE_14_TAG_DUPLICATED) {
     this.AD_IMAGE_14_TAG_DUPLICATED = AD_IMAGE_14_TAG_DUPLICATED;
   }
@@ -1294,6 +1512,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_14_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_14_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE14TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_14_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_14_TAG_LENGTH_TOO_LONG = AD_IMAGE_14_TAG_LENGTH_TOO_LONG;
   }
@@ -1314,6 +1533,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_14_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_14_TAG_REQUIRED")
   public void setADIMAGE14TAGREQUIRED(@Nullable Integer AD_IMAGE_14_TAG_REQUIRED) {
     this.AD_IMAGE_14_TAG_REQUIRED = AD_IMAGE_14_TAG_REQUIRED;
   }
@@ -1334,6 +1554,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_15_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_15_LINK_DUPLICATED")
   public void setADIMAGE15LINKDUPLICATED(@Nullable Integer AD_IMAGE_15_LINK_DUPLICATED) {
     this.AD_IMAGE_15_LINK_DUPLICATED = AD_IMAGE_15_LINK_DUPLICATED;
   }
@@ -1354,6 +1575,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_15_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_15_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE15LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_15_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_15_LINK_LENGTH_TOO_LONG = AD_IMAGE_15_LINK_LENGTH_TOO_LONG;
   }
@@ -1374,6 +1596,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_15_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_15_LINK_REQUIRED")
   public void setADIMAGE15LINKREQUIRED(@Nullable Integer AD_IMAGE_15_LINK_REQUIRED) {
     this.AD_IMAGE_15_LINK_REQUIRED = AD_IMAGE_15_LINK_REQUIRED;
   }
@@ -1394,6 +1617,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_15_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_15_LINK_WARNING")
   public void setADIMAGE15LINKWARNING(@Nullable Integer AD_IMAGE_15_LINK_WARNING) {
     this.AD_IMAGE_15_LINK_WARNING = AD_IMAGE_15_LINK_WARNING;
   }
@@ -1414,6 +1638,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_15_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_15_TAG_DUPLICATED")
   public void setADIMAGE15TAGDUPLICATED(@Nullable Integer AD_IMAGE_15_TAG_DUPLICATED) {
     this.AD_IMAGE_15_TAG_DUPLICATED = AD_IMAGE_15_TAG_DUPLICATED;
   }
@@ -1434,6 +1659,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_15_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_15_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE15TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_15_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_15_TAG_LENGTH_TOO_LONG = AD_IMAGE_15_TAG_LENGTH_TOO_LONG;
   }
@@ -1454,6 +1680,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_15_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_15_TAG_REQUIRED")
   public void setADIMAGE15TAGREQUIRED(@Nullable Integer AD_IMAGE_15_TAG_REQUIRED) {
     this.AD_IMAGE_15_TAG_REQUIRED = AD_IMAGE_15_TAG_REQUIRED;
   }
@@ -1474,6 +1701,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_16_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_16_LINK_DUPLICATED")
   public void setADIMAGE16LINKDUPLICATED(@Nullable Integer AD_IMAGE_16_LINK_DUPLICATED) {
     this.AD_IMAGE_16_LINK_DUPLICATED = AD_IMAGE_16_LINK_DUPLICATED;
   }
@@ -1494,6 +1722,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_16_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_16_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE16LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_16_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_16_LINK_LENGTH_TOO_LONG = AD_IMAGE_16_LINK_LENGTH_TOO_LONG;
   }
@@ -1514,6 +1743,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_16_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_16_LINK_REQUIRED")
   public void setADIMAGE16LINKREQUIRED(@Nullable Integer AD_IMAGE_16_LINK_REQUIRED) {
     this.AD_IMAGE_16_LINK_REQUIRED = AD_IMAGE_16_LINK_REQUIRED;
   }
@@ -1534,6 +1764,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_16_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_16_LINK_WARNING")
   public void setADIMAGE16LINKWARNING(@Nullable Integer AD_IMAGE_16_LINK_WARNING) {
     this.AD_IMAGE_16_LINK_WARNING = AD_IMAGE_16_LINK_WARNING;
   }
@@ -1554,6 +1785,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_16_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_16_TAG_DUPLICATED")
   public void setADIMAGE16TAGDUPLICATED(@Nullable Integer AD_IMAGE_16_TAG_DUPLICATED) {
     this.AD_IMAGE_16_TAG_DUPLICATED = AD_IMAGE_16_TAG_DUPLICATED;
   }
@@ -1574,6 +1806,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_16_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_16_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE16TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_16_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_16_TAG_LENGTH_TOO_LONG = AD_IMAGE_16_TAG_LENGTH_TOO_LONG;
   }
@@ -1594,6 +1827,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_16_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_16_TAG_REQUIRED")
   public void setADIMAGE16TAGREQUIRED(@Nullable Integer AD_IMAGE_16_TAG_REQUIRED) {
     this.AD_IMAGE_16_TAG_REQUIRED = AD_IMAGE_16_TAG_REQUIRED;
   }
@@ -1614,6 +1848,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_17_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_17_LINK_DUPLICATED")
   public void setADIMAGE17LINKDUPLICATED(@Nullable Integer AD_IMAGE_17_LINK_DUPLICATED) {
     this.AD_IMAGE_17_LINK_DUPLICATED = AD_IMAGE_17_LINK_DUPLICATED;
   }
@@ -1634,6 +1869,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_17_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_17_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE17LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_17_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_17_LINK_LENGTH_TOO_LONG = AD_IMAGE_17_LINK_LENGTH_TOO_LONG;
   }
@@ -1654,6 +1890,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_17_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_17_LINK_REQUIRED")
   public void setADIMAGE17LINKREQUIRED(@Nullable Integer AD_IMAGE_17_LINK_REQUIRED) {
     this.AD_IMAGE_17_LINK_REQUIRED = AD_IMAGE_17_LINK_REQUIRED;
   }
@@ -1674,6 +1911,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_17_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_17_LINK_WARNING")
   public void setADIMAGE17LINKWARNING(@Nullable Integer AD_IMAGE_17_LINK_WARNING) {
     this.AD_IMAGE_17_LINK_WARNING = AD_IMAGE_17_LINK_WARNING;
   }
@@ -1694,6 +1932,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_17_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_17_TAG_DUPLICATED")
   public void setADIMAGE17TAGDUPLICATED(@Nullable Integer AD_IMAGE_17_TAG_DUPLICATED) {
     this.AD_IMAGE_17_TAG_DUPLICATED = AD_IMAGE_17_TAG_DUPLICATED;
   }
@@ -1714,6 +1953,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_17_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_17_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE17TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_17_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_17_TAG_LENGTH_TOO_LONG = AD_IMAGE_17_TAG_LENGTH_TOO_LONG;
   }
@@ -1734,6 +1974,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_17_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_17_TAG_REQUIRED")
   public void setADIMAGE17TAGREQUIRED(@Nullable Integer AD_IMAGE_17_TAG_REQUIRED) {
     this.AD_IMAGE_17_TAG_REQUIRED = AD_IMAGE_17_TAG_REQUIRED;
   }
@@ -1754,6 +1995,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_18_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_18_LINK_DUPLICATED")
   public void setADIMAGE18LINKDUPLICATED(@Nullable Integer AD_IMAGE_18_LINK_DUPLICATED) {
     this.AD_IMAGE_18_LINK_DUPLICATED = AD_IMAGE_18_LINK_DUPLICATED;
   }
@@ -1774,6 +2016,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_18_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_18_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE18LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_18_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_18_LINK_LENGTH_TOO_LONG = AD_IMAGE_18_LINK_LENGTH_TOO_LONG;
   }
@@ -1794,6 +2037,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_18_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_18_LINK_REQUIRED")
   public void setADIMAGE18LINKREQUIRED(@Nullable Integer AD_IMAGE_18_LINK_REQUIRED) {
     this.AD_IMAGE_18_LINK_REQUIRED = AD_IMAGE_18_LINK_REQUIRED;
   }
@@ -1814,6 +2058,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_18_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_18_LINK_WARNING")
   public void setADIMAGE18LINKWARNING(@Nullable Integer AD_IMAGE_18_LINK_WARNING) {
     this.AD_IMAGE_18_LINK_WARNING = AD_IMAGE_18_LINK_WARNING;
   }
@@ -1834,6 +2079,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_18_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_18_TAG_DUPLICATED")
   public void setADIMAGE18TAGDUPLICATED(@Nullable Integer AD_IMAGE_18_TAG_DUPLICATED) {
     this.AD_IMAGE_18_TAG_DUPLICATED = AD_IMAGE_18_TAG_DUPLICATED;
   }
@@ -1854,6 +2100,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_18_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_18_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE18TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_18_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_18_TAG_LENGTH_TOO_LONG = AD_IMAGE_18_TAG_LENGTH_TOO_LONG;
   }
@@ -1874,6 +2121,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_18_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_18_TAG_REQUIRED")
   public void setADIMAGE18TAGREQUIRED(@Nullable Integer AD_IMAGE_18_TAG_REQUIRED) {
     this.AD_IMAGE_18_TAG_REQUIRED = AD_IMAGE_18_TAG_REQUIRED;
   }
@@ -1894,6 +2142,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_19_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_19_LINK_DUPLICATED")
   public void setADIMAGE19LINKDUPLICATED(@Nullable Integer AD_IMAGE_19_LINK_DUPLICATED) {
     this.AD_IMAGE_19_LINK_DUPLICATED = AD_IMAGE_19_LINK_DUPLICATED;
   }
@@ -1914,6 +2163,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_19_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_19_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE19LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_19_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_19_LINK_LENGTH_TOO_LONG = AD_IMAGE_19_LINK_LENGTH_TOO_LONG;
   }
@@ -1934,6 +2184,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_19_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_19_LINK_REQUIRED")
   public void setADIMAGE19LINKREQUIRED(@Nullable Integer AD_IMAGE_19_LINK_REQUIRED) {
     this.AD_IMAGE_19_LINK_REQUIRED = AD_IMAGE_19_LINK_REQUIRED;
   }
@@ -1954,6 +2205,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_19_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_19_LINK_WARNING")
   public void setADIMAGE19LINKWARNING(@Nullable Integer AD_IMAGE_19_LINK_WARNING) {
     this.AD_IMAGE_19_LINK_WARNING = AD_IMAGE_19_LINK_WARNING;
   }
@@ -1974,6 +2226,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_19_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_19_TAG_DUPLICATED")
   public void setADIMAGE19TAGDUPLICATED(@Nullable Integer AD_IMAGE_19_TAG_DUPLICATED) {
     this.AD_IMAGE_19_TAG_DUPLICATED = AD_IMAGE_19_TAG_DUPLICATED;
   }
@@ -1994,6 +2247,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_19_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_19_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE19TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_19_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_19_TAG_LENGTH_TOO_LONG = AD_IMAGE_19_TAG_LENGTH_TOO_LONG;
   }
@@ -2014,6 +2268,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_19_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_19_TAG_REQUIRED")
   public void setADIMAGE19TAGREQUIRED(@Nullable Integer AD_IMAGE_19_TAG_REQUIRED) {
     this.AD_IMAGE_19_TAG_REQUIRED = AD_IMAGE_19_TAG_REQUIRED;
   }
@@ -2034,6 +2289,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_1_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_1_LINK_DUPLICATED")
   public void setADIMAGE1LINKDUPLICATED(@Nullable Integer AD_IMAGE_1_LINK_DUPLICATED) {
     this.AD_IMAGE_1_LINK_DUPLICATED = AD_IMAGE_1_LINK_DUPLICATED;
   }
@@ -2054,6 +2310,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_1_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_1_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE1LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_1_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_1_LINK_LENGTH_TOO_LONG = AD_IMAGE_1_LINK_LENGTH_TOO_LONG;
   }
@@ -2074,6 +2331,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_1_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_1_LINK_REQUIRED")
   public void setADIMAGE1LINKREQUIRED(@Nullable Integer AD_IMAGE_1_LINK_REQUIRED) {
     this.AD_IMAGE_1_LINK_REQUIRED = AD_IMAGE_1_LINK_REQUIRED;
   }
@@ -2094,6 +2352,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_1_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_1_LINK_WARNING")
   public void setADIMAGE1LINKWARNING(@Nullable Integer AD_IMAGE_1_LINK_WARNING) {
     this.AD_IMAGE_1_LINK_WARNING = AD_IMAGE_1_LINK_WARNING;
   }
@@ -2114,6 +2373,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_1_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_1_TAG_DUPLICATED")
   public void setADIMAGE1TAGDUPLICATED(@Nullable Integer AD_IMAGE_1_TAG_DUPLICATED) {
     this.AD_IMAGE_1_TAG_DUPLICATED = AD_IMAGE_1_TAG_DUPLICATED;
   }
@@ -2134,6 +2394,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_1_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_1_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE1TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_1_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_1_TAG_LENGTH_TOO_LONG = AD_IMAGE_1_TAG_LENGTH_TOO_LONG;
   }
@@ -2154,6 +2415,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_1_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_1_TAG_REQUIRED")
   public void setADIMAGE1TAGREQUIRED(@Nullable Integer AD_IMAGE_1_TAG_REQUIRED) {
     this.AD_IMAGE_1_TAG_REQUIRED = AD_IMAGE_1_TAG_REQUIRED;
   }
@@ -2174,6 +2436,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_2_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_2_LINK_DUPLICATED")
   public void setADIMAGE2LINKDUPLICATED(@Nullable Integer AD_IMAGE_2_LINK_DUPLICATED) {
     this.AD_IMAGE_2_LINK_DUPLICATED = AD_IMAGE_2_LINK_DUPLICATED;
   }
@@ -2194,6 +2457,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_2_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_2_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE2LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_2_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_2_LINK_LENGTH_TOO_LONG = AD_IMAGE_2_LINK_LENGTH_TOO_LONG;
   }
@@ -2214,6 +2478,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_2_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_2_LINK_REQUIRED")
   public void setADIMAGE2LINKREQUIRED(@Nullable Integer AD_IMAGE_2_LINK_REQUIRED) {
     this.AD_IMAGE_2_LINK_REQUIRED = AD_IMAGE_2_LINK_REQUIRED;
   }
@@ -2234,6 +2499,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_2_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_2_LINK_WARNING")
   public void setADIMAGE2LINKWARNING(@Nullable Integer AD_IMAGE_2_LINK_WARNING) {
     this.AD_IMAGE_2_LINK_WARNING = AD_IMAGE_2_LINK_WARNING;
   }
@@ -2254,6 +2520,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_2_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_2_TAG_DUPLICATED")
   public void setADIMAGE2TAGDUPLICATED(@Nullable Integer AD_IMAGE_2_TAG_DUPLICATED) {
     this.AD_IMAGE_2_TAG_DUPLICATED = AD_IMAGE_2_TAG_DUPLICATED;
   }
@@ -2274,6 +2541,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_2_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_2_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE2TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_2_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_2_TAG_LENGTH_TOO_LONG = AD_IMAGE_2_TAG_LENGTH_TOO_LONG;
   }
@@ -2294,6 +2562,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_2_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_2_TAG_REQUIRED")
   public void setADIMAGE2TAGREQUIRED(@Nullable Integer AD_IMAGE_2_TAG_REQUIRED) {
     this.AD_IMAGE_2_TAG_REQUIRED = AD_IMAGE_2_TAG_REQUIRED;
   }
@@ -2314,6 +2583,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_3_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_3_LINK_DUPLICATED")
   public void setADIMAGE3LINKDUPLICATED(@Nullable Integer AD_IMAGE_3_LINK_DUPLICATED) {
     this.AD_IMAGE_3_LINK_DUPLICATED = AD_IMAGE_3_LINK_DUPLICATED;
   }
@@ -2334,6 +2604,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_3_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_3_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE3LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_3_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_3_LINK_LENGTH_TOO_LONG = AD_IMAGE_3_LINK_LENGTH_TOO_LONG;
   }
@@ -2354,6 +2625,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_3_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_3_LINK_REQUIRED")
   public void setADIMAGE3LINKREQUIRED(@Nullable Integer AD_IMAGE_3_LINK_REQUIRED) {
     this.AD_IMAGE_3_LINK_REQUIRED = AD_IMAGE_3_LINK_REQUIRED;
   }
@@ -2374,6 +2646,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_3_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_3_LINK_WARNING")
   public void setADIMAGE3LINKWARNING(@Nullable Integer AD_IMAGE_3_LINK_WARNING) {
     this.AD_IMAGE_3_LINK_WARNING = AD_IMAGE_3_LINK_WARNING;
   }
@@ -2394,6 +2667,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_3_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_3_TAG_DUPLICATED")
   public void setADIMAGE3TAGDUPLICATED(@Nullable Integer AD_IMAGE_3_TAG_DUPLICATED) {
     this.AD_IMAGE_3_TAG_DUPLICATED = AD_IMAGE_3_TAG_DUPLICATED;
   }
@@ -2414,6 +2688,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_3_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_3_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE3TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_3_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_3_TAG_LENGTH_TOO_LONG = AD_IMAGE_3_TAG_LENGTH_TOO_LONG;
   }
@@ -2434,6 +2709,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_3_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_3_TAG_REQUIRED")
   public void setADIMAGE3TAGREQUIRED(@Nullable Integer AD_IMAGE_3_TAG_REQUIRED) {
     this.AD_IMAGE_3_TAG_REQUIRED = AD_IMAGE_3_TAG_REQUIRED;
   }
@@ -2454,6 +2730,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_4_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_4_LINK_DUPLICATED")
   public void setADIMAGE4LINKDUPLICATED(@Nullable Integer AD_IMAGE_4_LINK_DUPLICATED) {
     this.AD_IMAGE_4_LINK_DUPLICATED = AD_IMAGE_4_LINK_DUPLICATED;
   }
@@ -2474,6 +2751,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_4_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_4_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE4LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_4_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_4_LINK_LENGTH_TOO_LONG = AD_IMAGE_4_LINK_LENGTH_TOO_LONG;
   }
@@ -2494,6 +2772,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_4_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_4_LINK_REQUIRED")
   public void setADIMAGE4LINKREQUIRED(@Nullable Integer AD_IMAGE_4_LINK_REQUIRED) {
     this.AD_IMAGE_4_LINK_REQUIRED = AD_IMAGE_4_LINK_REQUIRED;
   }
@@ -2514,6 +2793,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_4_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_4_LINK_WARNING")
   public void setADIMAGE4LINKWARNING(@Nullable Integer AD_IMAGE_4_LINK_WARNING) {
     this.AD_IMAGE_4_LINK_WARNING = AD_IMAGE_4_LINK_WARNING;
   }
@@ -2534,6 +2814,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_4_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_4_TAG_DUPLICATED")
   public void setADIMAGE4TAGDUPLICATED(@Nullable Integer AD_IMAGE_4_TAG_DUPLICATED) {
     this.AD_IMAGE_4_TAG_DUPLICATED = AD_IMAGE_4_TAG_DUPLICATED;
   }
@@ -2554,6 +2835,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_4_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_4_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE4TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_4_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_4_TAG_LENGTH_TOO_LONG = AD_IMAGE_4_TAG_LENGTH_TOO_LONG;
   }
@@ -2574,6 +2856,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_4_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_4_TAG_REQUIRED")
   public void setADIMAGE4TAGREQUIRED(@Nullable Integer AD_IMAGE_4_TAG_REQUIRED) {
     this.AD_IMAGE_4_TAG_REQUIRED = AD_IMAGE_4_TAG_REQUIRED;
   }
@@ -2594,6 +2877,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_5_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_5_LINK_DUPLICATED")
   public void setADIMAGE5LINKDUPLICATED(@Nullable Integer AD_IMAGE_5_LINK_DUPLICATED) {
     this.AD_IMAGE_5_LINK_DUPLICATED = AD_IMAGE_5_LINK_DUPLICATED;
   }
@@ -2614,6 +2898,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_5_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_5_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE5LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_5_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_5_LINK_LENGTH_TOO_LONG = AD_IMAGE_5_LINK_LENGTH_TOO_LONG;
   }
@@ -2634,6 +2919,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_5_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_5_LINK_REQUIRED")
   public void setADIMAGE5LINKREQUIRED(@Nullable Integer AD_IMAGE_5_LINK_REQUIRED) {
     this.AD_IMAGE_5_LINK_REQUIRED = AD_IMAGE_5_LINK_REQUIRED;
   }
@@ -2654,6 +2940,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_5_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_5_LINK_WARNING")
   public void setADIMAGE5LINKWARNING(@Nullable Integer AD_IMAGE_5_LINK_WARNING) {
     this.AD_IMAGE_5_LINK_WARNING = AD_IMAGE_5_LINK_WARNING;
   }
@@ -2674,6 +2961,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_5_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_5_TAG_DUPLICATED")
   public void setADIMAGE5TAGDUPLICATED(@Nullable Integer AD_IMAGE_5_TAG_DUPLICATED) {
     this.AD_IMAGE_5_TAG_DUPLICATED = AD_IMAGE_5_TAG_DUPLICATED;
   }
@@ -2694,6 +2982,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_5_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_5_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE5TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_5_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_5_TAG_LENGTH_TOO_LONG = AD_IMAGE_5_TAG_LENGTH_TOO_LONG;
   }
@@ -2714,6 +3003,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_5_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_5_TAG_REQUIRED")
   public void setADIMAGE5TAGREQUIRED(@Nullable Integer AD_IMAGE_5_TAG_REQUIRED) {
     this.AD_IMAGE_5_TAG_REQUIRED = AD_IMAGE_5_TAG_REQUIRED;
   }
@@ -2734,6 +3024,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_6_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_6_LINK_DUPLICATED")
   public void setADIMAGE6LINKDUPLICATED(@Nullable Integer AD_IMAGE_6_LINK_DUPLICATED) {
     this.AD_IMAGE_6_LINK_DUPLICATED = AD_IMAGE_6_LINK_DUPLICATED;
   }
@@ -2754,6 +3045,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_6_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_6_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE6LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_6_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_6_LINK_LENGTH_TOO_LONG = AD_IMAGE_6_LINK_LENGTH_TOO_LONG;
   }
@@ -2774,6 +3066,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_6_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_6_LINK_REQUIRED")
   public void setADIMAGE6LINKREQUIRED(@Nullable Integer AD_IMAGE_6_LINK_REQUIRED) {
     this.AD_IMAGE_6_LINK_REQUIRED = AD_IMAGE_6_LINK_REQUIRED;
   }
@@ -2794,6 +3087,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_6_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_6_LINK_WARNING")
   public void setADIMAGE6LINKWARNING(@Nullable Integer AD_IMAGE_6_LINK_WARNING) {
     this.AD_IMAGE_6_LINK_WARNING = AD_IMAGE_6_LINK_WARNING;
   }
@@ -2814,6 +3108,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_6_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_6_TAG_DUPLICATED")
   public void setADIMAGE6TAGDUPLICATED(@Nullable Integer AD_IMAGE_6_TAG_DUPLICATED) {
     this.AD_IMAGE_6_TAG_DUPLICATED = AD_IMAGE_6_TAG_DUPLICATED;
   }
@@ -2834,6 +3129,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_6_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_6_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE6TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_6_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_6_TAG_LENGTH_TOO_LONG = AD_IMAGE_6_TAG_LENGTH_TOO_LONG;
   }
@@ -2854,6 +3150,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_6_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_6_TAG_REQUIRED")
   public void setADIMAGE6TAGREQUIRED(@Nullable Integer AD_IMAGE_6_TAG_REQUIRED) {
     this.AD_IMAGE_6_TAG_REQUIRED = AD_IMAGE_6_TAG_REQUIRED;
   }
@@ -2874,6 +3171,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_7_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_7_LINK_DUPLICATED")
   public void setADIMAGE7LINKDUPLICATED(@Nullable Integer AD_IMAGE_7_LINK_DUPLICATED) {
     this.AD_IMAGE_7_LINK_DUPLICATED = AD_IMAGE_7_LINK_DUPLICATED;
   }
@@ -2894,6 +3192,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_7_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_7_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE7LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_7_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_7_LINK_LENGTH_TOO_LONG = AD_IMAGE_7_LINK_LENGTH_TOO_LONG;
   }
@@ -2914,6 +3213,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_7_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_7_LINK_REQUIRED")
   public void setADIMAGE7LINKREQUIRED(@Nullable Integer AD_IMAGE_7_LINK_REQUIRED) {
     this.AD_IMAGE_7_LINK_REQUIRED = AD_IMAGE_7_LINK_REQUIRED;
   }
@@ -2934,6 +3234,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_7_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_7_LINK_WARNING")
   public void setADIMAGE7LINKWARNING(@Nullable Integer AD_IMAGE_7_LINK_WARNING) {
     this.AD_IMAGE_7_LINK_WARNING = AD_IMAGE_7_LINK_WARNING;
   }
@@ -2954,6 +3255,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_7_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_7_TAG_DUPLICATED")
   public void setADIMAGE7TAGDUPLICATED(@Nullable Integer AD_IMAGE_7_TAG_DUPLICATED) {
     this.AD_IMAGE_7_TAG_DUPLICATED = AD_IMAGE_7_TAG_DUPLICATED;
   }
@@ -2974,6 +3276,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_7_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_7_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE7TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_7_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_7_TAG_LENGTH_TOO_LONG = AD_IMAGE_7_TAG_LENGTH_TOO_LONG;
   }
@@ -2994,6 +3297,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_7_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_7_TAG_REQUIRED")
   public void setADIMAGE7TAGREQUIRED(@Nullable Integer AD_IMAGE_7_TAG_REQUIRED) {
     this.AD_IMAGE_7_TAG_REQUIRED = AD_IMAGE_7_TAG_REQUIRED;
   }
@@ -3014,6 +3318,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_8_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_8_LINK_DUPLICATED")
   public void setADIMAGE8LINKDUPLICATED(@Nullable Integer AD_IMAGE_8_LINK_DUPLICATED) {
     this.AD_IMAGE_8_LINK_DUPLICATED = AD_IMAGE_8_LINK_DUPLICATED;
   }
@@ -3034,6 +3339,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_8_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_8_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE8LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_8_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_8_LINK_LENGTH_TOO_LONG = AD_IMAGE_8_LINK_LENGTH_TOO_LONG;
   }
@@ -3054,6 +3360,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_8_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_8_LINK_REQUIRED")
   public void setADIMAGE8LINKREQUIRED(@Nullable Integer AD_IMAGE_8_LINK_REQUIRED) {
     this.AD_IMAGE_8_LINK_REQUIRED = AD_IMAGE_8_LINK_REQUIRED;
   }
@@ -3074,6 +3381,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_8_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_8_LINK_WARNING")
   public void setADIMAGE8LINKWARNING(@Nullable Integer AD_IMAGE_8_LINK_WARNING) {
     this.AD_IMAGE_8_LINK_WARNING = AD_IMAGE_8_LINK_WARNING;
   }
@@ -3094,6 +3402,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_8_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_8_TAG_DUPLICATED")
   public void setADIMAGE8TAGDUPLICATED(@Nullable Integer AD_IMAGE_8_TAG_DUPLICATED) {
     this.AD_IMAGE_8_TAG_DUPLICATED = AD_IMAGE_8_TAG_DUPLICATED;
   }
@@ -3114,6 +3423,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_8_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_8_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE8TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_8_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_8_TAG_LENGTH_TOO_LONG = AD_IMAGE_8_TAG_LENGTH_TOO_LONG;
   }
@@ -3134,6 +3444,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_8_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_8_TAG_REQUIRED")
   public void setADIMAGE8TAGREQUIRED(@Nullable Integer AD_IMAGE_8_TAG_REQUIRED) {
     this.AD_IMAGE_8_TAG_REQUIRED = AD_IMAGE_8_TAG_REQUIRED;
   }
@@ -3154,6 +3465,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_9_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_9_LINK_DUPLICATED")
   public void setADIMAGE9LINKDUPLICATED(@Nullable Integer AD_IMAGE_9_LINK_DUPLICATED) {
     this.AD_IMAGE_9_LINK_DUPLICATED = AD_IMAGE_9_LINK_DUPLICATED;
   }
@@ -3174,6 +3486,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_9_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_9_LINK_LENGTH_TOO_LONG")
   public void setADIMAGE9LINKLENGTHTOOLONG(@Nullable Integer AD_IMAGE_9_LINK_LENGTH_TOO_LONG) {
     this.AD_IMAGE_9_LINK_LENGTH_TOO_LONG = AD_IMAGE_9_LINK_LENGTH_TOO_LONG;
   }
@@ -3194,6 +3507,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_9_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_9_LINK_REQUIRED")
   public void setADIMAGE9LINKREQUIRED(@Nullable Integer AD_IMAGE_9_LINK_REQUIRED) {
     this.AD_IMAGE_9_LINK_REQUIRED = AD_IMAGE_9_LINK_REQUIRED;
   }
@@ -3214,6 +3528,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_9_LINK_WARNING;
   }
 
+  @JsonProperty("AD_IMAGE_9_LINK_WARNING")
   public void setADIMAGE9LINKWARNING(@Nullable Integer AD_IMAGE_9_LINK_WARNING) {
     this.AD_IMAGE_9_LINK_WARNING = AD_IMAGE_9_LINK_WARNING;
   }
@@ -3234,6 +3549,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_9_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_IMAGE_9_TAG_DUPLICATED")
   public void setADIMAGE9TAGDUPLICATED(@Nullable Integer AD_IMAGE_9_TAG_DUPLICATED) {
     this.AD_IMAGE_9_TAG_DUPLICATED = AD_IMAGE_9_TAG_DUPLICATED;
   }
@@ -3254,6 +3570,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_9_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_IMAGE_9_TAG_LENGTH_TOO_LONG")
   public void setADIMAGE9TAGLENGTHTOOLONG(@Nullable Integer AD_IMAGE_9_TAG_LENGTH_TOO_LONG) {
     this.AD_IMAGE_9_TAG_LENGTH_TOO_LONG = AD_IMAGE_9_TAG_LENGTH_TOO_LONG;
   }
@@ -3274,6 +3591,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_IMAGE_9_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_IMAGE_9_TAG_REQUIRED")
   public void setADIMAGE9TAGREQUIRED(@Nullable Integer AD_IMAGE_9_TAG_REQUIRED) {
     this.AD_IMAGE_9_TAG_REQUIRED = AD_IMAGE_9_TAG_REQUIRED;
   }
@@ -3294,6 +3612,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_LINK_FORMAT_WARNING;
   }
 
+  @JsonProperty("AD_LINK_FORMAT_WARNING")
   public void setADLINKFORMATWARNING(@Nullable Integer AD_LINK_FORMAT_WARNING) {
     this.AD_LINK_FORMAT_WARNING = AD_LINK_FORMAT_WARNING;
   }
@@ -3314,6 +3633,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_LINK_SAME_AS_LINK;
   }
 
+  @JsonProperty("AD_LINK_SAME_AS_LINK")
   public void setADLINKSAMEASLINK(@Nullable Integer AD_LINK_SAME_AS_LINK) {
     this.AD_LINK_SAME_AS_LINK = AD_LINK_SAME_AS_LINK;
   }
@@ -3334,6 +3654,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_0_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_VIDEO_0_LINK_DUPLICATED")
   public void setADVIDEO0LINKDUPLICATED(@Nullable Integer AD_VIDEO_0_LINK_DUPLICATED) {
     this.AD_VIDEO_0_LINK_DUPLICATED = AD_VIDEO_0_LINK_DUPLICATED;
   }
@@ -3354,6 +3675,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_0_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_VIDEO_0_LINK_LENGTH_TOO_LONG")
   public void setADVIDEO0LINKLENGTHTOOLONG(@Nullable Integer AD_VIDEO_0_LINK_LENGTH_TOO_LONG) {
     this.AD_VIDEO_0_LINK_LENGTH_TOO_LONG = AD_VIDEO_0_LINK_LENGTH_TOO_LONG;
   }
@@ -3374,6 +3696,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_0_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_VIDEO_0_LINK_REQUIRED")
   public void setADVIDEO0LINKREQUIRED(@Nullable Integer AD_VIDEO_0_LINK_REQUIRED) {
     this.AD_VIDEO_0_LINK_REQUIRED = AD_VIDEO_0_LINK_REQUIRED;
   }
@@ -3394,6 +3717,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_0_LINK_WARNING;
   }
 
+  @JsonProperty("AD_VIDEO_0_LINK_WARNING")
   public void setADVIDEO0LINKWARNING(@Nullable Integer AD_VIDEO_0_LINK_WARNING) {
     this.AD_VIDEO_0_LINK_WARNING = AD_VIDEO_0_LINK_WARNING;
   }
@@ -3414,6 +3738,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_0_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_VIDEO_0_TAG_DUPLICATED")
   public void setADVIDEO0TAGDUPLICATED(@Nullable Integer AD_VIDEO_0_TAG_DUPLICATED) {
     this.AD_VIDEO_0_TAG_DUPLICATED = AD_VIDEO_0_TAG_DUPLICATED;
   }
@@ -3434,6 +3759,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_0_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_VIDEO_0_TAG_LENGTH_TOO_LONG")
   public void setADVIDEO0TAGLENGTHTOOLONG(@Nullable Integer AD_VIDEO_0_TAG_LENGTH_TOO_LONG) {
     this.AD_VIDEO_0_TAG_LENGTH_TOO_LONG = AD_VIDEO_0_TAG_LENGTH_TOO_LONG;
   }
@@ -3454,6 +3780,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_0_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_VIDEO_0_TAG_REQUIRED")
   public void setADVIDEO0TAGREQUIRED(@Nullable Integer AD_VIDEO_0_TAG_REQUIRED) {
     this.AD_VIDEO_0_TAG_REQUIRED = AD_VIDEO_0_TAG_REQUIRED;
   }
@@ -3474,6 +3801,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_1_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_VIDEO_1_LINK_DUPLICATED")
   public void setADVIDEO1LINKDUPLICATED(@Nullable Integer AD_VIDEO_1_LINK_DUPLICATED) {
     this.AD_VIDEO_1_LINK_DUPLICATED = AD_VIDEO_1_LINK_DUPLICATED;
   }
@@ -3494,6 +3822,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_1_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_VIDEO_1_LINK_LENGTH_TOO_LONG")
   public void setADVIDEO1LINKLENGTHTOOLONG(@Nullable Integer AD_VIDEO_1_LINK_LENGTH_TOO_LONG) {
     this.AD_VIDEO_1_LINK_LENGTH_TOO_LONG = AD_VIDEO_1_LINK_LENGTH_TOO_LONG;
   }
@@ -3514,6 +3843,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_1_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_VIDEO_1_LINK_REQUIRED")
   public void setADVIDEO1LINKREQUIRED(@Nullable Integer AD_VIDEO_1_LINK_REQUIRED) {
     this.AD_VIDEO_1_LINK_REQUIRED = AD_VIDEO_1_LINK_REQUIRED;
   }
@@ -3534,6 +3864,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_1_LINK_WARNING;
   }
 
+  @JsonProperty("AD_VIDEO_1_LINK_WARNING")
   public void setADVIDEO1LINKWARNING(@Nullable Integer AD_VIDEO_1_LINK_WARNING) {
     this.AD_VIDEO_1_LINK_WARNING = AD_VIDEO_1_LINK_WARNING;
   }
@@ -3554,6 +3885,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_1_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_VIDEO_1_TAG_DUPLICATED")
   public void setADVIDEO1TAGDUPLICATED(@Nullable Integer AD_VIDEO_1_TAG_DUPLICATED) {
     this.AD_VIDEO_1_TAG_DUPLICATED = AD_VIDEO_1_TAG_DUPLICATED;
   }
@@ -3574,6 +3906,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_1_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_VIDEO_1_TAG_LENGTH_TOO_LONG")
   public void setADVIDEO1TAGLENGTHTOOLONG(@Nullable Integer AD_VIDEO_1_TAG_LENGTH_TOO_LONG) {
     this.AD_VIDEO_1_TAG_LENGTH_TOO_LONG = AD_VIDEO_1_TAG_LENGTH_TOO_LONG;
   }
@@ -3594,6 +3927,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_1_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_VIDEO_1_TAG_REQUIRED")
   public void setADVIDEO1TAGREQUIRED(@Nullable Integer AD_VIDEO_1_TAG_REQUIRED) {
     this.AD_VIDEO_1_TAG_REQUIRED = AD_VIDEO_1_TAG_REQUIRED;
   }
@@ -3614,6 +3948,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_2_LINK_DUPLICATED;
   }
 
+  @JsonProperty("AD_VIDEO_2_LINK_DUPLICATED")
   public void setADVIDEO2LINKDUPLICATED(@Nullable Integer AD_VIDEO_2_LINK_DUPLICATED) {
     this.AD_VIDEO_2_LINK_DUPLICATED = AD_VIDEO_2_LINK_DUPLICATED;
   }
@@ -3634,6 +3969,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_2_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_VIDEO_2_LINK_LENGTH_TOO_LONG")
   public void setADVIDEO2LINKLENGTHTOOLONG(@Nullable Integer AD_VIDEO_2_LINK_LENGTH_TOO_LONG) {
     this.AD_VIDEO_2_LINK_LENGTH_TOO_LONG = AD_VIDEO_2_LINK_LENGTH_TOO_LONG;
   }
@@ -3654,6 +3990,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_2_LINK_REQUIRED;
   }
 
+  @JsonProperty("AD_VIDEO_2_LINK_REQUIRED")
   public void setADVIDEO2LINKREQUIRED(@Nullable Integer AD_VIDEO_2_LINK_REQUIRED) {
     this.AD_VIDEO_2_LINK_REQUIRED = AD_VIDEO_2_LINK_REQUIRED;
   }
@@ -3674,6 +4011,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_2_LINK_WARNING;
   }
 
+  @JsonProperty("AD_VIDEO_2_LINK_WARNING")
   public void setADVIDEO2LINKWARNING(@Nullable Integer AD_VIDEO_2_LINK_WARNING) {
     this.AD_VIDEO_2_LINK_WARNING = AD_VIDEO_2_LINK_WARNING;
   }
@@ -3694,6 +4032,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_2_TAG_DUPLICATED;
   }
 
+  @JsonProperty("AD_VIDEO_2_TAG_DUPLICATED")
   public void setADVIDEO2TAGDUPLICATED(@Nullable Integer AD_VIDEO_2_TAG_DUPLICATED) {
     this.AD_VIDEO_2_TAG_DUPLICATED = AD_VIDEO_2_TAG_DUPLICATED;
   }
@@ -3714,6 +4053,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_2_TAG_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("AD_VIDEO_2_TAG_LENGTH_TOO_LONG")
   public void setADVIDEO2TAGLENGTHTOOLONG(@Nullable Integer AD_VIDEO_2_TAG_LENGTH_TOO_LONG) {
     this.AD_VIDEO_2_TAG_LENGTH_TOO_LONG = AD_VIDEO_2_TAG_LENGTH_TOO_LONG;
   }
@@ -3734,6 +4074,7 @@ public class CatalogsFeedValidationWarnings {
     return AD_VIDEO_2_TAG_REQUIRED;
   }
 
+  @JsonProperty("AD_VIDEO_2_TAG_REQUIRED")
   public void setADVIDEO2TAGREQUIRED(@Nullable Integer AD_VIDEO_2_TAG_REQUIRED) {
     this.AD_VIDEO_2_TAG_REQUIRED = AD_VIDEO_2_TAG_REQUIRED;
   }
@@ -3754,6 +4095,7 @@ public class CatalogsFeedValidationWarnings {
     return ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG")
   public void setADDITIONALIMAGELINKLENGTHTOOLONG(@Nullable Integer ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
     this.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
   }
@@ -3774,6 +4116,7 @@ public class CatalogsFeedValidationWarnings {
     return ADDITIONAL_IMAGE_LINK_WARNING;
   }
 
+  @JsonProperty("ADDITIONAL_IMAGE_LINK_WARNING")
   public void setADDITIONALIMAGELINKWARNING(@Nullable Integer ADDITIONAL_IMAGE_LINK_WARNING) {
     this.ADDITIONAL_IMAGE_LINK_WARNING = ADDITIONAL_IMAGE_LINK_WARNING;
   }
@@ -3794,6 +4137,7 @@ public class CatalogsFeedValidationWarnings {
     return ADWORDS_FORMAT_WARNING;
   }
 
+  @JsonProperty("ADWORDS_FORMAT_WARNING")
   public void setADWORDSFORMATWARNING(@Nullable Integer ADWORDS_FORMAT_WARNING) {
     this.ADWORDS_FORMAT_WARNING = ADWORDS_FORMAT_WARNING;
   }
@@ -3814,6 +4158,7 @@ public class CatalogsFeedValidationWarnings {
     return ADWORDS_SAME_AS_LINK;
   }
 
+  @JsonProperty("ADWORDS_SAME_AS_LINK")
   public void setADWORDSSAMEASLINK(@Nullable Integer ADWORDS_SAME_AS_LINK) {
     this.ADWORDS_SAME_AS_LINK = ADWORDS_SAME_AS_LINK;
   }
@@ -3834,6 +4179,7 @@ public class CatalogsFeedValidationWarnings {
     return AGE_GROUP_INVALID;
   }
 
+  @JsonProperty("AGE_GROUP_INVALID")
   public void setAGEGROUPINVALID(@Nullable Integer AGE_GROUP_INVALID) {
     this.AGE_GROUP_INVALID = AGE_GROUP_INVALID;
   }
@@ -3854,6 +4200,7 @@ public class CatalogsFeedValidationWarnings {
     return ANDROID_DEEP_LINK_INVALID;
   }
 
+  @JsonProperty("ANDROID_DEEP_LINK_INVALID")
   public void setANDROIDDEEPLINKINVALID(@Nullable Integer ANDROID_DEEP_LINK_INVALID) {
     this.ANDROID_DEEP_LINK_INVALID = ANDROID_DEEP_LINK_INVALID;
   }
@@ -3874,6 +4221,7 @@ public class CatalogsFeedValidationWarnings {
     return AVAILABILITY_DATE_INVALID;
   }
 
+  @JsonProperty("AVAILABILITY_DATE_INVALID")
   public void setAVAILABILITYDATEINVALID(@Nullable Integer AVAILABILITY_DATE_INVALID) {
     this.AVAILABILITY_DATE_INVALID = AVAILABILITY_DATE_INVALID;
   }
@@ -3894,6 +4242,7 @@ public class CatalogsFeedValidationWarnings {
     return COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
   }
 
+  @JsonProperty("COUNTRY_DOES_NOT_MAP_TO_CURRENCY")
   public void setCOUNTRYDOESNOTMAPTOCURRENCY(@Nullable Integer COUNTRY_DOES_NOT_MAP_TO_CURRENCY) {
     this.COUNTRY_DOES_NOT_MAP_TO_CURRENCY = COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
   }
@@ -3914,6 +4263,7 @@ public class CatalogsFeedValidationWarnings {
     return CUSTOM_LABEL_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("CUSTOM_LABEL_LENGTH_TOO_LONG")
   public void setCUSTOMLABELLENGTHTOOLONG(@Nullable Integer CUSTOM_LABEL_LENGTH_TOO_LONG) {
     this.CUSTOM_LABEL_LENGTH_TOO_LONG = CUSTOM_LABEL_LENGTH_TOO_LONG;
   }
@@ -3934,6 +4284,7 @@ public class CatalogsFeedValidationWarnings {
     return DESCRIPTION_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("DESCRIPTION_LENGTH_TOO_LONG")
   public void setDESCRIPTIONLENGTHTOOLONG(@Nullable Integer DESCRIPTION_LENGTH_TOO_LONG) {
     this.DESCRIPTION_LENGTH_TOO_LONG = DESCRIPTION_LENGTH_TOO_LONG;
   }
@@ -3954,6 +4305,7 @@ public class CatalogsFeedValidationWarnings {
     return DUPLICATE_HEADERS;
   }
 
+  @JsonProperty("DUPLICATE_HEADERS")
   public void setDUPLICATEHEADERS(@Nullable Integer DUPLICATE_HEADERS) {
     this.DUPLICATE_HEADERS = DUPLICATE_HEADERS;
   }
@@ -3974,11 +4326,12 @@ public class CatalogsFeedValidationWarnings {
     return EXPIRATION_DATE_INVALID;
   }
 
+  @JsonProperty("EXPIRATION_DATE_INVALID")
   public void setEXPIRATIONDATEINVALID(@Nullable Integer EXPIRATION_DATE_INVALID) {
     this.EXPIRATION_DATE_INVALID = EXPIRATION_DATE_INVALID;
   }
 
-  public CatalogsFeedValidationWarnings FETCH_SAME_SIGNATURE(@Nullable FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
+  public CatalogsFeedValidationWarnings FETCH_SAME_SIGNATURE(@Nullable Integer FETCH_SAME_SIGNATURE) {
     this.FETCH_SAME_SIGNATURE = FETCH_SAME_SIGNATURE;
     return this;
   }
@@ -3990,11 +4343,12 @@ public class CatalogsFeedValidationWarnings {
   
   @Schema(name = "FETCH_SAME_SIGNATURE", description = "Ingestion completed early because there are no changes to your feed since the last successful update.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("FETCH_SAME_SIGNATURE")
-  public @Nullable FETCHSAMESIGNATUREEnum getFETCHSAMESIGNATURE() {
+  public @Nullable Integer getFETCHSAMESIGNATURE() {
     return FETCH_SAME_SIGNATURE;
   }
 
-  public void setFETCHSAMESIGNATURE(@Nullable FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
+  @JsonProperty("FETCH_SAME_SIGNATURE")
+  public void setFETCHSAMESIGNATURE(@Nullable Integer FETCH_SAME_SIGNATURE) {
     this.FETCH_SAME_SIGNATURE = FETCH_SAME_SIGNATURE;
   }
 
@@ -4014,6 +4368,7 @@ public class CatalogsFeedValidationWarnings {
     return GENDER_INVALID;
   }
 
+  @JsonProperty("GENDER_INVALID")
   public void setGENDERINVALID(@Nullable Integer GENDER_INVALID) {
     this.GENDER_INVALID = GENDER_INVALID;
   }
@@ -4034,6 +4389,7 @@ public class CatalogsFeedValidationWarnings {
     return GTIN_INVALID;
   }
 
+  @JsonProperty("GTIN_INVALID")
   public void setGTININVALID(@Nullable Integer GTIN_INVALID) {
     this.GTIN_INVALID = GTIN_INVALID;
   }
@@ -4054,6 +4410,7 @@ public class CatalogsFeedValidationWarnings {
     return IMAGE_LINK_WARNING;
   }
 
+  @JsonProperty("IMAGE_LINK_WARNING")
   public void setIMAGELINKWARNING(@Nullable Integer IMAGE_LINK_WARNING) {
     this.IMAGE_LINK_WARNING = IMAGE_LINK_WARNING;
   }
@@ -4074,6 +4431,7 @@ public class CatalogsFeedValidationWarnings {
     return INCONSISTENT_CURRENCY_VALUES;
   }
 
+  @JsonProperty("INCONSISTENT_CURRENCY_VALUES")
   public void setINCONSISTENTCURRENCYVALUES(@Nullable Integer INCONSISTENT_CURRENCY_VALUES) {
     this.INCONSISTENT_CURRENCY_VALUES = INCONSISTENT_CURRENCY_VALUES;
   }
@@ -4094,6 +4452,7 @@ public class CatalogsFeedValidationWarnings {
     return INDEXED_PRODUCT_COUNT_LARGE_DELTA;
   }
 
+  @JsonProperty("INDEXED_PRODUCT_COUNT_LARGE_DELTA")
   public void setINDEXEDPRODUCTCOUNTLARGEDELTA(@Nullable Integer INDEXED_PRODUCT_COUNT_LARGE_DELTA) {
     this.INDEXED_PRODUCT_COUNT_LARGE_DELTA = INDEXED_PRODUCT_COUNT_LARGE_DELTA;
   }
@@ -4114,6 +4473,7 @@ public class CatalogsFeedValidationWarnings {
     return IOS_DEEP_LINK_INVALID;
   }
 
+  @JsonProperty("IOS_DEEP_LINK_INVALID")
   public void setIOSDEEPLINKINVALID(@Nullable Integer IOS_DEEP_LINK_INVALID) {
     this.IOS_DEEP_LINK_INVALID = IOS_DEEP_LINK_INVALID;
   }
@@ -4134,6 +4494,7 @@ public class CatalogsFeedValidationWarnings {
     return IS_BUNDLE_INVALID;
   }
 
+  @JsonProperty("IS_BUNDLE_INVALID")
   public void setISBUNDLEINVALID(@Nullable Integer IS_BUNDLE_INVALID) {
     this.IS_BUNDLE_INVALID = IS_BUNDLE_INVALID;
   }
@@ -4154,6 +4515,7 @@ public class CatalogsFeedValidationWarnings {
     return ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
   }
 
+  @JsonProperty("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE")
   public void setITEMADDITIONALIMAGEDOWNLOADFAILURE(@Nullable Integer ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
   }
@@ -4174,6 +4536,7 @@ public class CatalogsFeedValidationWarnings {
     return LINK_FORMAT_WARNING;
   }
 
+  @JsonProperty("LINK_FORMAT_WARNING")
   public void setLINKFORMATWARNING(@Nullable Integer LINK_FORMAT_WARNING) {
     this.LINK_FORMAT_WARNING = LINK_FORMAT_WARNING;
   }
@@ -4194,6 +4557,7 @@ public class CatalogsFeedValidationWarnings {
     return MIN_AD_PRICE_INVALID;
   }
 
+  @JsonProperty("MIN_AD_PRICE_INVALID")
   public void setMINADPRICEINVALID(@Nullable Integer MIN_AD_PRICE_INVALID) {
     this.MIN_AD_PRICE_INVALID = MIN_AD_PRICE_INVALID;
   }
@@ -4214,6 +4578,7 @@ public class CatalogsFeedValidationWarnings {
     return MPN_INVALID;
   }
 
+  @JsonProperty("MPN_INVALID")
   public void setMPNINVALID(@Nullable Integer MPN_INVALID) {
     this.MPN_INVALID = MPN_INVALID;
   }
@@ -4234,6 +4599,7 @@ public class CatalogsFeedValidationWarnings {
     return MULTIPACK_INVALID;
   }
 
+  @JsonProperty("MULTIPACK_INVALID")
   public void setMULTIPACKINVALID(@Nullable Integer MULTIPACK_INVALID) {
     this.MULTIPACK_INVALID = MULTIPACK_INVALID;
   }
@@ -4254,6 +4620,7 @@ public class CatalogsFeedValidationWarnings {
     return OPTIONAL_CONDITION_INVALID;
   }
 
+  @JsonProperty("OPTIONAL_CONDITION_INVALID")
   public void setOPTIONALCONDITIONINVALID(@Nullable Integer OPTIONAL_CONDITION_INVALID) {
     this.OPTIONAL_CONDITION_INVALID = OPTIONAL_CONDITION_INVALID;
   }
@@ -4274,6 +4641,7 @@ public class CatalogsFeedValidationWarnings {
     return OPTIONAL_CONDITION_MISSING;
   }
 
+  @JsonProperty("OPTIONAL_CONDITION_MISSING")
   public void setOPTIONALCONDITIONMISSING(@Nullable Integer OPTIONAL_CONDITION_MISSING) {
     this.OPTIONAL_CONDITION_MISSING = OPTIONAL_CONDITION_MISSING;
   }
@@ -4294,6 +4662,7 @@ public class CatalogsFeedValidationWarnings {
     return OPTIONAL_PRODUCT_CATEGORY_INVALID;
   }
 
+  @JsonProperty("OPTIONAL_PRODUCT_CATEGORY_INVALID")
   public void setOPTIONALPRODUCTCATEGORYINVALID(@Nullable Integer OPTIONAL_PRODUCT_CATEGORY_INVALID) {
     this.OPTIONAL_PRODUCT_CATEGORY_INVALID = OPTIONAL_PRODUCT_CATEGORY_INVALID;
   }
@@ -4314,6 +4683,7 @@ public class CatalogsFeedValidationWarnings {
     return OPTIONAL_PRODUCT_CATEGORY_MISSING;
   }
 
+  @JsonProperty("OPTIONAL_PRODUCT_CATEGORY_MISSING")
   public void setOPTIONALPRODUCTCATEGORYMISSING(@Nullable Integer OPTIONAL_PRODUCT_CATEGORY_MISSING) {
     this.OPTIONAL_PRODUCT_CATEGORY_MISSING = OPTIONAL_PRODUCT_CATEGORY_MISSING;
   }
@@ -4334,6 +4704,7 @@ public class CatalogsFeedValidationWarnings {
     return PRODUCT_CATEGORY_DEPTH_WARNING;
   }
 
+  @JsonProperty("PRODUCT_CATEGORY_DEPTH_WARNING")
   public void setPRODUCTCATEGORYDEPTHWARNING(@Nullable Integer PRODUCT_CATEGORY_DEPTH_WARNING) {
     this.PRODUCT_CATEGORY_DEPTH_WARNING = PRODUCT_CATEGORY_DEPTH_WARNING;
   }
@@ -4354,6 +4725,7 @@ public class CatalogsFeedValidationWarnings {
     return PRODUCT_TYPE_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("PRODUCT_TYPE_LENGTH_TOO_LONG")
   public void setPRODUCTTYPELENGTHTOOLONG(@Nullable Integer PRODUCT_TYPE_LENGTH_TOO_LONG) {
     this.PRODUCT_TYPE_LENGTH_TOO_LONG = PRODUCT_TYPE_LENGTH_TOO_LONG;
   }
@@ -4374,6 +4746,7 @@ public class CatalogsFeedValidationWarnings {
     return SALE_DATE_INVALID;
   }
 
+  @JsonProperty("SALE_DATE_INVALID")
   public void setSALEDATEINVALID(@Nullable Integer SALE_DATE_INVALID) {
     this.SALE_DATE_INVALID = SALE_DATE_INVALID;
   }
@@ -4394,6 +4767,7 @@ public class CatalogsFeedValidationWarnings {
     return SALES_PRICE_INVALID;
   }
 
+  @JsonProperty("SALES_PRICE_INVALID")
   public void setSALESPRICEINVALID(@Nullable Integer SALES_PRICE_INVALID) {
     this.SALES_PRICE_INVALID = SALES_PRICE_INVALID;
   }
@@ -4414,6 +4788,7 @@ public class CatalogsFeedValidationWarnings {
     return SALES_PRICE_TOO_HIGH;
   }
 
+  @JsonProperty("SALES_PRICE_TOO_HIGH")
   public void setSALESPRICETOOHIGH(@Nullable Integer SALES_PRICE_TOO_HIGH) {
     this.SALES_PRICE_TOO_HIGH = SALES_PRICE_TOO_HIGH;
   }
@@ -4434,6 +4809,7 @@ public class CatalogsFeedValidationWarnings {
     return SALES_PRICE_TOO_LOW;
   }
 
+  @JsonProperty("SALES_PRICE_TOO_LOW")
   public void setSALESPRICETOOLOW(@Nullable Integer SALES_PRICE_TOO_LOW) {
     this.SALES_PRICE_TOO_LOW = SALES_PRICE_TOO_LOW;
   }
@@ -4454,6 +4830,7 @@ public class CatalogsFeedValidationWarnings {
     return SHIPPING_HEIGHT_INVALID;
   }
 
+  @JsonProperty("SHIPPING_HEIGHT_INVALID")
   public void setSHIPPINGHEIGHTINVALID(@Nullable Integer SHIPPING_HEIGHT_INVALID) {
     this.SHIPPING_HEIGHT_INVALID = SHIPPING_HEIGHT_INVALID;
   }
@@ -4474,6 +4851,7 @@ public class CatalogsFeedValidationWarnings {
     return SHIPPING_INVALID;
   }
 
+  @JsonProperty("SHIPPING_INVALID")
   public void setSHIPPINGINVALID(@Nullable Integer SHIPPING_INVALID) {
     this.SHIPPING_INVALID = SHIPPING_INVALID;
   }
@@ -4494,6 +4872,7 @@ public class CatalogsFeedValidationWarnings {
     return SHIPPING_WEIGHT_INVALID;
   }
 
+  @JsonProperty("SHIPPING_WEIGHT_INVALID")
   public void setSHIPPINGWEIGHTINVALID(@Nullable Integer SHIPPING_WEIGHT_INVALID) {
     this.SHIPPING_WEIGHT_INVALID = SHIPPING_WEIGHT_INVALID;
   }
@@ -4514,6 +4893,7 @@ public class CatalogsFeedValidationWarnings {
     return SHIPPING_WIDTH_INVALID;
   }
 
+  @JsonProperty("SHIPPING_WIDTH_INVALID")
   public void setSHIPPINGWIDTHINVALID(@Nullable Integer SHIPPING_WIDTH_INVALID) {
     this.SHIPPING_WIDTH_INVALID = SHIPPING_WIDTH_INVALID;
   }
@@ -4534,6 +4914,7 @@ public class CatalogsFeedValidationWarnings {
     return SIZE_SYSTEM_INVALID;
   }
 
+  @JsonProperty("SIZE_SYSTEM_INVALID")
   public void setSIZESYSTEMINVALID(@Nullable Integer SIZE_SYSTEM_INVALID) {
     this.SIZE_SYSTEM_INVALID = SIZE_SYSTEM_INVALID;
   }
@@ -4554,6 +4935,7 @@ public class CatalogsFeedValidationWarnings {
     return SIZE_TYPE_INVALID;
   }
 
+  @JsonProperty("SIZE_TYPE_INVALID")
   public void setSIZETYPEINVALID(@Nullable Integer SIZE_TYPE_INVALID) {
     this.SIZE_TYPE_INVALID = SIZE_TYPE_INVALID;
   }
@@ -4574,6 +4956,7 @@ public class CatalogsFeedValidationWarnings {
     return TAX_INVALID;
   }
 
+  @JsonProperty("TAX_INVALID")
   public void setTAXINVALID(@Nullable Integer TAX_INVALID) {
     this.TAX_INVALID = TAX_INVALID;
   }
@@ -4594,6 +4977,7 @@ public class CatalogsFeedValidationWarnings {
     return TITLE_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("TITLE_LENGTH_TOO_LONG")
   public void setTITLELENGTHTOOLONG(@Nullable Integer TITLE_LENGTH_TOO_LONG) {
     this.TITLE_LENGTH_TOO_LONG = TITLE_LENGTH_TOO_LONG;
   }
@@ -4614,6 +4998,7 @@ public class CatalogsFeedValidationWarnings {
     return TOO_MANY_ADDITIONAL_IMAGE_LINKS;
   }
 
+  @JsonProperty("TOO_MANY_ADDITIONAL_IMAGE_LINKS")
   public void setTOOMANYADDITIONALIMAGELINKS(@Nullable Integer TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
     this.TOO_MANY_ADDITIONAL_IMAGE_LINKS = TOO_MANY_ADDITIONAL_IMAGE_LINKS;
   }
@@ -4634,6 +5019,7 @@ public class CatalogsFeedValidationWarnings {
     return UPDATED_TIME_INVALID;
   }
 
+  @JsonProperty("UPDATED_TIME_INVALID")
   public void setUPDATEDTIMEINVALID(@Nullable Integer UPDATED_TIME_INVALID) {
     this.UPDATED_TIME_INVALID = UPDATED_TIME_INVALID;
   }
@@ -4654,6 +5040,7 @@ public class CatalogsFeedValidationWarnings {
     return UTM_SOURCE_AUTO_CORRECTED;
   }
 
+  @JsonProperty("UTM_SOURCE_AUTO_CORRECTED")
   public void setUTMSOURCEAUTOCORRECTED(@Nullable Integer UTM_SOURCE_AUTO_CORRECTED) {
     this.UTM_SOURCE_AUTO_CORRECTED = UTM_SOURCE_AUTO_CORRECTED;
   }
@@ -4674,6 +5061,7 @@ public class CatalogsFeedValidationWarnings {
     return VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED;
   }
 
+  @JsonProperty("VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED")
   public void setVIDEOREQUIREDWHENADVIDEOPROVIDED(@Nullable Integer VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED) {
     this.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED = VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED;
   }
@@ -4694,6 +5082,7 @@ public class CatalogsFeedValidationWarnings {
     return WEIGHT_UNIT_INVALID;
   }
 
+  @JsonProperty("WEIGHT_UNIT_INVALID")
   public void setWEIGHTUNITINVALID(@Nullable Integer WEIGHT_UNIT_INVALID) {
     this.WEIGHT_UNIT_INVALID = WEIGHT_UNIT_INVALID;
   }
@@ -5148,11 +5537,8 @@ public class CatalogsFeedValidationWarnings {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

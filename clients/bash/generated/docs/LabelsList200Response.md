@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to null]
-**items** | [**array[LabelsResponse]**](LabelsResponse.md) |  | [default to null]
+**items** | [**array[Label]**](Label.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

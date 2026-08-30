@@ -18,8 +18,8 @@ Method | HTTP request | Description
 # **brandAccountsCreate**
 ```objc
 -(NSURLSessionTask*) brandAccountsCreateWithBusinessHierarchyId: (NSString*) businessHierarchyId
-    brandAccountsCreateRequest: (OAIBrandAccountsCreateRequest*) brandAccountsCreateRequest
-        completionHandler: (void (^)(OAIBrandAccountsCreate200Response* output, NSError* error)) handler;
+    brandAccountCreate: (OAIBrandAccountCreate*) brandAccountCreate
+        completionHandler: (void (^)(OAIBrandAccount* output, NSError* error)) handler;
 ```
 
 Create a Brand Account
@@ -34,15 +34,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessHierarchyId = 7009386637860; // business hierarchy node id
-OAIBrandAccountsCreateRequest* brandAccountsCreateRequest = [[OAIBrandAccountsCreateRequest alloc] init]; // 
+NSString* businessHierarchyId = @"businessHierarchyId_example"; // business hierarchy node id
+OAIBrandAccountCreate* brandAccountCreate = [[OAIBrandAccountCreate alloc] init]; // 
 
 OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationshipsApi alloc] init];
 
 // Create a Brand Account
 [apiInstance brandAccountsCreateWithBusinessHierarchyId:businessHierarchyId
-              brandAccountsCreateRequest:brandAccountsCreateRequest
-          completionHandler: ^(OAIBrandAccountsCreate200Response* output, NSError* error) {
+              brandAccountCreate:brandAccountCreate
+          completionHandler: ^(OAIBrandAccount* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -57,11 +57,11 @@ OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationships
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessHierarchyId** | **NSString***| business hierarchy node id | 
- **brandAccountsCreateRequest** | [**OAIBrandAccountsCreateRequest***](OAIBrandAccountsCreateRequest.md)|  | 
+ **brandAccountCreate** | [**OAIBrandAccountCreate***](OAIBrandAccountCreate.md)|  | 
 
 ### Return type
 
-[**OAIBrandAccountsCreate200Response***](OAIBrandAccountsCreate200Response.md)
+[**OAIBrandAccount***](OAIBrandAccount.md)
 
 ### Authorization
 
@@ -76,10 +76,10 @@ Name | Type | Description  | Notes
 
 # **brandAccountsUpdate**
 ```objc
--(NSURLSessionTask*) brandAccountsUpdateWithBusinessHierarchyId: (NSString*) businessHierarchyId
-    brandAccountId: (NSString*) brandAccountId
-    brandAccountsUpdateRequest: (OAIBrandAccountsUpdateRequest*) brandAccountsUpdateRequest
-        completionHandler: (void (^)(OAIBrandAccountsCreate200Response* output, NSError* error)) handler;
+-(NSURLSessionTask*) brandAccountsUpdateWithBrandAccountId: (NSString*) brandAccountId
+    businessHierarchyId: (NSString*) businessHierarchyId
+    brandAccountUpdate: (OAIBrandAccountUpdate*) brandAccountUpdate
+        completionHandler: (void (^)(OAIBrandAccount* output, NSError* error)) handler;
 ```
 
 Update a Brand Account
@@ -94,17 +94,17 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessHierarchyId = 7009386637860; // business hierarchy node id
-NSString* brandAccountId = 729090764583391194; // Unique identifier of a brand account.
-OAIBrandAccountsUpdateRequest* brandAccountsUpdateRequest = [[OAIBrandAccountsUpdateRequest alloc] init]; // 
+NSString* brandAccountId = @"brandAccountId_example"; // 
+NSString* businessHierarchyId = @"businessHierarchyId_example"; // business hierarchy node id
+OAIBrandAccountUpdate* brandAccountUpdate = [[OAIBrandAccountUpdate alloc] init]; // 
 
 OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationshipsApi alloc] init];
 
 // Update a Brand Account
-[apiInstance brandAccountsUpdateWithBusinessHierarchyId:businessHierarchyId
-              brandAccountId:brandAccountId
-              brandAccountsUpdateRequest:brandAccountsUpdateRequest
-          completionHandler: ^(OAIBrandAccountsCreate200Response* output, NSError* error) {
+[apiInstance brandAccountsUpdateWithBrandAccountId:brandAccountId
+              businessHierarchyId:businessHierarchyId
+              brandAccountUpdate:brandAccountUpdate
+          completionHandler: ^(OAIBrandAccount* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -118,13 +118,13 @@ OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationships
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **brandAccountId** | **NSString***|  | 
  **businessHierarchyId** | **NSString***| business hierarchy node id | 
- **brandAccountId** | **NSString***| Unique identifier of a brand account. | 
- **brandAccountsUpdateRequest** | [**OAIBrandAccountsUpdateRequest***](OAIBrandAccountsUpdateRequest.md)|  | 
+ **brandAccountUpdate** | [**OAIBrandAccountUpdate***](OAIBrandAccountUpdate.md)|  | 
 
 ### Return type
 
-[**OAIBrandAccountsCreate200Response***](OAIBrandAccountsCreate200Response.md)
+[**OAIBrandAccount***](OAIBrandAccount.md)
 
 ### Authorization
 
@@ -140,8 +140,8 @@ Name | Type | Description  | Notes
 # **deleteBusinessMembership**
 ```objc
 -(NSURLSessionTask*) deleteBusinessMembershipWithBusinessId: (NSString*) businessId
-    membersToDeleteBody: (OAIMembersToDeleteBody*) membersToDeleteBody
-        completionHandler: (void (^)(OAIDeletedMembersResponse* output, NSError* error)) handler;
+    deleteBusinessMembershipBody: (OAIDeleteBusinessMembershipBody*) deleteBusinessMembershipBody
+        completionHandler: (void (^)(OAIDeleteBusinessMembership200Response* output, NSError* error)) handler;
 ```
 
 Terminate business memberships
@@ -156,15 +156,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Business id
-OAIMembersToDeleteBody* membersToDeleteBody = [[OAIMembersToDeleteBody alloc] init]; // List of members with role to delete.
+NSString* businessId = @"businessId_example"; // Business id
+OAIDeleteBusinessMembershipBody* deleteBusinessMembershipBody = [[OAIDeleteBusinessMembershipBody alloc] init]; // 
 
 OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationshipsApi alloc] init];
 
 // Terminate business memberships
 [apiInstance deleteBusinessMembershipWithBusinessId:businessId
-              membersToDeleteBody:membersToDeleteBody
-          completionHandler: ^(OAIDeletedMembersResponse* output, NSError* error) {
+              deleteBusinessMembershipBody:deleteBusinessMembershipBody
+          completionHandler: ^(OAIDeleteBusinessMembership200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -179,11 +179,11 @@ OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationships
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Business id | 
- **membersToDeleteBody** | [**OAIMembersToDeleteBody***](OAIMembersToDeleteBody.md)| List of members with role to delete. | 
+ **deleteBusinessMembershipBody** | [**OAIDeleteBusinessMembershipBody***](OAIDeleteBusinessMembershipBody.md)|  | 
 
 ### Return type
 
-[**OAIDeletedMembersResponse***](OAIDeletedMembersResponse.md)
+[**OAIDeleteBusinessMembership200Response***](OAIDeleteBusinessMembership200Response.md)
 
 ### Authorization
 
@@ -199,8 +199,8 @@ Name | Type | Description  | Notes
 # **deleteBusinessPartners**
 ```objc
 -(NSURLSessionTask*) deleteBusinessPartnersWithBusinessId: (NSString*) businessId
-    deletePartnersRequest: (OAIDeletePartnersRequest*) deletePartnersRequest
-        completionHandler: (void (^)(OAIDeletePartnersResponse* output, NSError* error)) handler;
+    deleteBusinessPartnersDelete: (OAIDeleteBusinessPartnersDelete*) deleteBusinessPartnersDelete
+        completionHandler: (void (^)(OAIDeleteBusinessPartners* output, NSError* error)) handler;
 ```
 
 Terminate business partnerships
@@ -215,15 +215,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-OAIDeletePartnersRequest* deletePartnersRequest = [[OAIDeletePartnersRequest alloc] init]; // An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+OAIDeleteBusinessPartnersDelete* deleteBusinessPartnersDelete = [[OAIDeleteBusinessPartnersDelete alloc] init]; // 
 
 OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationshipsApi alloc] init];
 
 // Terminate business partnerships
 [apiInstance deleteBusinessPartnersWithBusinessId:businessId
-              deletePartnersRequest:deletePartnersRequest
-          completionHandler: ^(OAIDeletePartnersResponse* output, NSError* error) {
+              deleteBusinessPartnersDelete:deleteBusinessPartnersDelete
+          completionHandler: ^(OAIDeleteBusinessPartners* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -238,11 +238,11 @@ OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationships
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
- **deletePartnersRequest** | [**OAIDeletePartnersRequest***](OAIDeletePartnersRequest.md)| An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete.  | 
+ **deleteBusinessPartnersDelete** | [**OAIDeleteBusinessPartnersDelete***](OAIDeleteBusinessPartnersDelete.md)|  | 
 
 ### Return type
 
-[**OAIDeletePartnersResponse***](OAIDeletePartnersResponse.md)
+[**OAIDeleteBusinessPartners***](OAIDeleteBusinessPartners.md)
 
 ### Authorization
 
@@ -257,8 +257,9 @@ Name | Type | Description  | Notes
 
 # **getBusinessEmployers**
 ```objc
--(NSURLSessionTask*) getBusinessEmployersWithPageSize: (NSNumber*) pageSize
+-(NSURLSessionTask*) getBusinessEmployersWithAssetsSummary: (NSNumber*) assetsSummary
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
         completionHandler: (void (^)(OAIGetBusinessEmployers200Response* output, NSError* error)) handler;
 ```
 
@@ -274,14 +275,16 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* assetsSummary = @(YES); // Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional) (default to @(YES))
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationshipsApi alloc] init];
 
 // List business employers for user
-[apiInstance getBusinessEmployersWithPageSize:pageSize
+[apiInstance getBusinessEmployersWithAssetsSummary:assetsSummary
               bookmark:bookmark
+              pageSize:pageSize
           completionHandler: ^(OAIGetBusinessEmployers200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -296,8 +299,9 @@ OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationships
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **assetsSummary** | **NSNumber***| Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to @(YES)]
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -324,7 +328,7 @@ Name | Type | Description  | Notes
     startIndex: (NSNumber*) startIndex
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-        completionHandler: (void (^)(OAIGetBusinessMembers200Response* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIGetBusinessEmployers200Response* output, NSError* error)) handler;
 ```
 
 Get business members
@@ -339,14 +343,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
 NSNumber* fetchSystemUsers = @(NO); // Fetches system users if True. Fetches regular user employees if False. (optional) (default to @(NO))
 NSNumber* assetsSummary = @(NO); // Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional) (default to @(NO))
 NSArray<OAIMemberBusinessRole>* businessRoles = @[[[OAIMemberBusinessRole alloc] init]]; // A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
-NSString* memberIds = 00101010101,2222220101; // A list of business members ids separated by comma. (optional)
-NSNumber* startIndex = 0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
+NSString* memberIds = @"memberIds_example"; // A list of business members ids separated by comma. (optional)
+NSNumber* startIndex = @0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationshipsApi alloc] init];
 
@@ -359,7 +363,7 @@ OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationships
               startIndex:startIndex
               bookmark:bookmark
               pageSize:pageSize
-          completionHandler: ^(OAIGetBusinessMembers200Response* output, NSError* error) {
+          completionHandler: ^(OAIGetBusinessEmployers200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -380,11 +384,11 @@ Name | Type | Description  | Notes
  **memberIds** | **NSString***| A list of business members ids separated by comma. | [optional] 
  **startIndex** | **NSNumber***| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to @0]
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
-[**OAIGetBusinessMembers200Response***](OAIGetBusinessMembers200Response.md)
+[**OAIGetBusinessEmployers200Response***](OAIGetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -404,9 +408,10 @@ Name | Type | Description  | Notes
     partnerType: (OAIPartnerType) partnerType
     partnerIds: (NSString*) partnerIds
     startIndex: (NSNumber*) startIndex
-    pageSize: (NSNumber*) pageSize
+    sortAscending: (NSNumber*) sortAscending
     bookmark: (NSString*) bookmark
-        completionHandler: (void (^)(OAIGetBusinessPartners200Response* output, NSError* error)) handler;
+    pageSize: (NSNumber*) pageSize
+        completionHandler: (void (^)(OAIGetBusinessEmployers200Response* output, NSError* error)) handler;
 ```
 
 Get business partners
@@ -421,13 +426,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
 NSNumber* assetsSummary = @(NO); // Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional) (default to @(NO))
-OAIPartnerType partnerType = INTERNAL; // Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
-NSString* partnerIds = 00101010101,2222220101; // A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. (optional)
-NSNumber* startIndex = 0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+OAIPartnerType partnerType = [[OAIPartnerType alloc] init]; // Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
+NSString* partnerIds = @"partnerIds_example"; // A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. (optional)
+NSNumber* startIndex = @0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
+NSNumber* sortAscending = @56; // Sort ascending. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationshipsApi alloc] init];
 
@@ -437,9 +443,10 @@ OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationships
               partnerType:partnerType
               partnerIds:partnerIds
               startIndex:startIndex
-              pageSize:pageSize
+              sortAscending:sortAscending
               bookmark:bookmark
-          completionHandler: ^(OAIGetBusinessPartners200Response* output, NSError* error) {
+              pageSize:pageSize
+          completionHandler: ^(OAIGetBusinessEmployers200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -455,15 +462,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
  **assetsSummary** | **NSNumber***| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to @(NO)]
- **partnerType** | [**OAIPartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
+ **partnerType** | [**OAIPartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
  **partnerIds** | **NSString***| A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional] 
  **startIndex** | **NSNumber***| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to @0]
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **sortAscending** | **NSNumber***| Sort ascending. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
-[**OAIGetBusinessPartners200Response***](OAIGetBusinessPartners200Response.md)
+[**OAIGetBusinessEmployers200Response***](OAIGetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -480,7 +488,7 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) systemUserUpdateWithBusinessId: (NSString*) businessId
     systemUserId: (NSString*) systemUserId
-    systemUserUpdateRequest: (OAISystemUserUpdateRequest*) systemUserUpdateRequest
+    systemUserUpdateWithRequiredBody: (OAISystemUserUpdateWithRequiredBody*) systemUserUpdateWithRequiredBody
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
@@ -496,16 +504,16 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-NSString* systemUserId = 729090764583391194; // Unique identifier of a system user.
-OAISystemUserUpdateRequest* systemUserUpdateRequest = [[OAISystemUserUpdateRequest alloc] init]; // 
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+NSString* systemUserId = @"systemUserId_example"; // Unique identifier of a system user.
+OAISystemUserUpdateWithRequiredBody* systemUserUpdateWithRequiredBody = [[OAISystemUserUpdateWithRequiredBody alloc] init]; // 
 
 OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationshipsApi alloc] init];
 
 // Update a system user information.
 [apiInstance systemUserUpdateWithBusinessId:businessId
               systemUserId:systemUserId
-              systemUserUpdateRequest:systemUserUpdateRequest
+              systemUserUpdateWithRequiredBody:systemUserUpdateWithRequiredBody
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling OAIBusinessAccessRelationshipsApi->systemUserUpdate: %@", error);
@@ -519,7 +527,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
  **systemUserId** | **NSString***| Unique identifier of a system user. | 
- **systemUserUpdateRequest** | [**OAISystemUserUpdateRequest***](OAISystemUserUpdateRequest.md)|  | 
+ **systemUserUpdateWithRequiredBody** | [**OAISystemUserUpdateWithRequiredBody***](OAISystemUserUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
@@ -539,8 +547,8 @@ void (empty response body)
 # **updateBusinessMemberships**
 ```objc
 -(NSURLSessionTask*) updateBusinessMembershipsWithBusinessId: (NSString*) businessId
-    updateMemberBusinessRoleBody: (NSArray<OAIUpdateMemberBusinessRoleBody>*) updateMemberBusinessRoleBody
-        completionHandler: (void (^)(OAIUpdateMemberResultsResponseArray* output, NSError* error)) handler;
+    businessMembershipMember: (NSArray<OAIBusinessMembershipMember>*) businessMembershipMember
+        completionHandler: (void (^)(OAIUpdateBusinessMembershipsResponse* output, NSError* error)) handler;
 ```
 
 Update member's business role
@@ -555,15 +563,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Business id
-NSArray<OAIUpdateMemberBusinessRoleBody>* updateMemberBusinessRoleBody = @[[[OAIUpdateMemberBusinessRoleBody alloc] init]]; // List of objects with the member id and the business_role.
+NSString* businessId = @"businessId_example"; // Business id
+NSArray<OAIBusinessMembershipMember>* businessMembershipMember = @[[[OAIBusinessMembershipMember alloc] init]]; // 
 
 OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationshipsApi alloc] init];
 
 // Update member's business role
 [apiInstance updateBusinessMembershipsWithBusinessId:businessId
-              updateMemberBusinessRoleBody:updateMemberBusinessRoleBody
-          completionHandler: ^(OAIUpdateMemberResultsResponseArray* output, NSError* error) {
+              businessMembershipMember:businessMembershipMember
+          completionHandler: ^(OAIUpdateBusinessMembershipsResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -578,11 +586,11 @@ OAIBusinessAccessRelationshipsApi*apiInstance = [[OAIBusinessAccessRelationships
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Business id | 
- **updateMemberBusinessRoleBody** | [**NSArray&lt;OAIUpdateMemberBusinessRoleBody&gt;***](OAIUpdateMemberBusinessRoleBody.md)| List of objects with the member id and the business_role. | 
+ **businessMembershipMember** | [**NSArray&lt;OAIBusinessMembershipMember&gt;***](OAIBusinessMembershipMember.md)|  | 
 
 ### Return type
 
-[**OAIUpdateMemberResultsResponseArray***](OAIUpdateMemberResultsResponseArray.md)
+[**OAIUpdateBusinessMembershipsResponse***](OAIUpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 

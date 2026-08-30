@@ -14,7 +14,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * An exception object if there is an error performing the action. Will only be provided if there is an error.
  */
 @ApiModel(description = "An exception object if there is an error performing the action. Will only be provided if there is an error.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class InviteExceptionResponse   {
   @JsonProperty("code")
   private Integer code;
@@ -89,7 +89,7 @@ public class InviteExceptionResponse   {
 
   public InviteExceptionResponse addUsersOrPartnerIdsItem(String usersOrPartnerIdsItem) {
     if (this.usersOrPartnerIds == null) {
-      this.usersOrPartnerIds = ;
+      this.usersOrPartnerIds = new ArrayList<>();
     }
     this.usersOrPartnerIds.add(usersOrPartnerIdsItem);
     return this;
@@ -147,10 +147,7 @@ public class InviteExceptionResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

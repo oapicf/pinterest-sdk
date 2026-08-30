@@ -1,7 +1,7 @@
 /*
  * InviteStatus.h
  *
- * The current status of the invite.
+ * The current status of an invite or request.
  */
 
 #ifndef _InviteStatus_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief The current status of the invite.
+/*! \brief The current status of an invite or request.
  *
  *  \ingroup Models
  *

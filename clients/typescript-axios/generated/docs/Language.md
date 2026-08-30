@@ -90,7 +90,7 @@ Language code, which is among the official ISO 639-1 language list.
 
 * `Nl` (value: `'NL'`)
 
-* `No` (value: `'NO'`)
+* `False` (value: `'false'`)
 
 * `Pl` (value: `'PL'`)
 

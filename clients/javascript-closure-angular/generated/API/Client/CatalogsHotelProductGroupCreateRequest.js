@@ -7,7 +7,7 @@ goog.provide('API.Client.CatalogsHotelProductGroupCreateRequest');
 API.Client.CatalogsHotelProductGroupCreateRequest = function() {}
 
 /**
- * Catalog id pertaining to the hotel product group.
+ * Catalog ID pertaining to the product group.
  * @type {!string}
  * @export
  */

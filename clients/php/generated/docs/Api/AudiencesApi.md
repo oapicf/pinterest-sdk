@@ -15,12 +15,12 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `audiencesCreate()`
 
 ```php
-audiencesCreate($ad_account_id, $audience_create_request): \OpenAPI\Client\Model\Audience
+audiencesCreate($ad_account_id, $ad_accounts_audience_create): \OpenAPI\Client\Model\AdAccountsAudience
 ```
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+Create a new audience for the ad account.
 
 ### Example
 
@@ -40,10 +40,10 @@ $apiInstance = new OpenAPI\Client\Api\AudiencesApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$audience_create_request = new \OpenAPI\Client\Model\AudienceCreateRequest(); // \OpenAPI\Client\Model\AudienceCreateRequest | List of ads to create, size limit [1, 30]
+$ad_accounts_audience_create = new \OpenAPI\Client\Model\AdAccountsAudienceCreate(); // \OpenAPI\Client\Model\AdAccountsAudienceCreate
 
 try {
-    $result = $apiInstance->audiencesCreate($ad_account_id, $audience_create_request);
+    $result = $apiInstance->audiencesCreate($ad_account_id, $ad_accounts_audience_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudiencesApi->audiencesCreate: ', $e->getMessage(), PHP_EOL;
@@ -55,11 +55,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **audience_create_request** | [**\OpenAPI\Client\Model\AudienceCreateRequest**](../Model/AudienceCreateRequest.md)| List of ads to create, size limit [1, 30] | |
+| **ad_accounts_audience_create** | [**\OpenAPI\Client\Model\AdAccountsAudienceCreate**](../Model/AdAccountsAudienceCreate.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\Audience**](../Model/Audience.md)
+[**\OpenAPI\Client\Model\AdAccountsAudience**](../Model/AdAccountsAudience.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ try {
 ## `audiencesGet()`
 
 ```php
-audiencesGet($ad_account_id, $audience_id): \OpenAPI\Client\Model\Audience
+audiencesGet($audience_id, $ad_account_id): \OpenAPI\Client\Model\AdAccountsAudience
 ```
 
 Get audience
@@ -104,11 +104,11 @@ $apiInstance = new OpenAPI\Client\Api\AudiencesApi(
     new GuzzleHttp\Client(),
     $config
 );
+$audience_id = 'audience_id_example'; // string | Audience ID.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$audience_id = 'audience_id_example'; // string | Unique identifier of an audience
 
 try {
-    $result = $apiInstance->audiencesGet($ad_account_id, $audience_id);
+    $result = $apiInstance->audiencesGet($audience_id, $ad_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudiencesApi->audiencesGet: ', $e->getMessage(), PHP_EOL;
@@ -119,12 +119,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **audience_id** | **string**| Audience ID. | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **audience_id** | **string**| Unique identifier of an audience | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\Audience**](../Model/Audience.md)
+[**\OpenAPI\Client\Model\AdAccountsAudience**](../Model/AdAccountsAudience.md)
 
 ### Authorization
 
@@ -142,7 +142,7 @@ try {
 ## `audiencesList()`
 
 ```php
-audiencesList($ad_account_id, $bookmark, $order, $page_size, $ownership_type): \OpenAPI\Client\Model\AudiencesList200Response
+audiencesList($ad_account_id, $bookmark, $page_size, $order, $ownership_type, $exclude_nca): \OpenAPI\Client\Model\AudiencesList200Response
 ```
 
 List audiences
@@ -171,12 +171,13 @@ $apiInstance = new OpenAPI\Client\Api\AudiencesApi(
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$order = ASCENDING; // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-$ownership_type = OWNED; // string | Filter audiences by ownership type.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+$order = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\PinterestLibPaginationOrder(); // \OpenAPI\Client\Model\PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+$ownership_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\AudienceOwnershipType(); // \OpenAPI\Client\Model\AudienceOwnershipType
+$exclude_nca = false; // bool | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
 
 try {
-    $result = $apiInstance->audiencesList($ad_account_id, $bookmark, $order, $page_size, $ownership_type);
+    $result = $apiInstance->audiencesList($ad_account_id, $bookmark, $page_size, $order, $ownership_type, $exclude_nca);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudiencesApi->audiencesList: ', $e->getMessage(), PHP_EOL;
@@ -189,9 +190,10 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **ownership_type** | **string**| Filter audiences by ownership type. | [optional] [default to &#39;OWNED&#39;] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | [**\OpenAPI\Client\Model\PinterestLibPaginationOrder**](../Model/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
+| **ownership_type** | [**\OpenAPI\Client\Model\AudienceOwnershipType**](../Model/.md)|  | [optional] |
+| **exclude_nca** | **bool**| When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [optional] [default to false] |
 
 ### Return type
 
@@ -213,12 +215,12 @@ try {
 ## `audiencesUpdate()`
 
 ```php
-audiencesUpdate($ad_account_id, $audience_id, $audience_update_request): \OpenAPI\Client\Model\Audience
+audiencesUpdate($audience_id, $ad_account_id, $ad_accounts_audience_update): \OpenAPI\Client\Model\AdAccountsAudience
 ```
 
 Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 ### Example
 
@@ -237,12 +239,12 @@ $apiInstance = new OpenAPI\Client\Api\AudiencesApi(
     new GuzzleHttp\Client(),
     $config
 );
+$audience_id = 'audience_id_example'; // string | Audience ID.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$audience_id = 'audience_id_example'; // string | Unique identifier of an audience
-$audience_update_request = new \OpenAPI\Client\Model\AudienceUpdateRequest(); // \OpenAPI\Client\Model\AudienceUpdateRequest | The audience to be updated.
+$ad_accounts_audience_update = new \OpenAPI\Client\Model\AdAccountsAudienceUpdate(); // \OpenAPI\Client\Model\AdAccountsAudienceUpdate
 
 try {
-    $result = $apiInstance->audiencesUpdate($ad_account_id, $audience_id, $audience_update_request);
+    $result = $apiInstance->audiencesUpdate($audience_id, $ad_account_id, $ad_accounts_audience_update);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudiencesApi->audiencesUpdate: ', $e->getMessage(), PHP_EOL;
@@ -253,13 +255,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **audience_id** | **string**| Audience ID. | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **audience_id** | **string**| Unique identifier of an audience | |
-| **audience_update_request** | [**\OpenAPI\Client\Model\AudienceUpdateRequest**](../Model/AudienceUpdateRequest.md)| The audience to be updated. | |
+| **ad_accounts_audience_update** | [**\OpenAPI\Client\Model\AdAccountsAudienceUpdate**](../Model/AdAccountsAudienceUpdate.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\Audience**](../Model/Audience.md)
+[**\OpenAPI\Client\Model\AdAccountsAudience**](../Model/AdAccountsAudience.md)
 
 ### Authorization
 

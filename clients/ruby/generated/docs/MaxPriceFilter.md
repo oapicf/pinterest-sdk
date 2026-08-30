@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **max_price** | [**CatalogsProductGroupPricingCriteria**](.md) |  |  |
+| **max_price** | [**CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  |  |
 
 ## Example
 

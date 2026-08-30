@@ -6,15 +6,15 @@ import org.openapitools.model.*;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 
-import org.openapitools.model.Error;
-import org.openapitools.model.IntegrationLogsRequest;
+import org.openapitools.model.IntegrationLogsInvalidLogResponse;
+import org.openapitools.model.IntegrationLogsRequestCreate;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
 import org.openapitools.model.IntegrationMetadata;
+import org.openapitools.model.IntegrationMetadataCreate;
+import org.openapitools.model.IntegrationMetadataUpdate;
 import org.openapitools.model.IntegrationRecord;
-import org.openapitools.model.IntegrationRequest;
-import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
-import org.openapitools.model.IntegrationsLogsPost400Response;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 
@@ -26,13 +26,13 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-31T04:54:28.741368951Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-08-30T09:54:04.171825690Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public interface IntegrationsApiService {
       public Response integrationsCommerceDel(String externalBusinessId, SecurityContext securityContext);
       public Response integrationsCommerceGet(String externalBusinessId, SecurityContext securityContext);
-      public Response integrationsCommercePatch(String externalBusinessId, IntegrationRequestPatch integrationRequestPatch, SecurityContext securityContext);
-      public Response integrationsCommercePost(IntegrationRequest integrationRequest, SecurityContext securityContext);
+      public Response integrationsCommercePatch(String externalBusinessId, IntegrationMetadataUpdate integrationMetadataUpdate, SecurityContext securityContext);
+      public Response integrationsCommercePost(IntegrationMetadataCreate integrationMetadataCreate, SecurityContext securityContext);
       public Response integrationsGetById(String id, SecurityContext securityContext);
       public Response integrationsGetList(String bookmark, Integer pageSize, SecurityContext securityContext);
-      public Response integrationsLogsPost(IntegrationLogsRequest integrationLogsRequest, SecurityContext securityContext);
+      public Response integrationsLogsPost(IntegrationLogsRequestCreate integrationLogsRequestCreate, SecurityContext securityContext);
 }

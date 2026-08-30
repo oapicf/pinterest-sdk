@@ -9,7 +9,6 @@ import org.openapitools.vertxweb.server.model.CatalogsFeedCredentials;
 import org.openapitools.vertxweb.server.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.vertxweb.server.model.CatalogsFormat;
 import org.openapitools.vertxweb.server.model.CatalogsStatus;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 import org.openapitools.vertxweb.server.model.NullableCurrency;
 
 /**
@@ -18,7 +17,25 @@ import org.openapitools.vertxweb.server.model.NullableCurrency;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreativeAssetsFeedsUpdateRequest   {
   
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private CatalogsFeedCredentials credentials;
   private NullableCurrency defaultCurrency;
   private CatalogsFormat format;
@@ -31,7 +48,7 @@ public class CatalogsCreativeAssetsFeedsUpdateRequest   {
 
   }
 
-  public CatalogsCreativeAssetsFeedsUpdateRequest (CatalogsType catalogType, CatalogsFeedCredentials credentials, NullableCurrency defaultCurrency, CatalogsFormat format, String location, String name, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status) {
+  public CatalogsCreativeAssetsFeedsUpdateRequest (CatalogTypeEnum catalogType, CatalogsFeedCredentials credentials, NullableCurrency defaultCurrency, CatalogsFormat format, String location, String name, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status) {
     this.catalogType = catalogType;
     this.credentials = credentials;
     this.defaultCurrency = defaultCurrency;
@@ -44,10 +61,10 @@ public class CatalogsCreativeAssetsFeedsUpdateRequest   {
 
     
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -161,9 +178,6 @@ public class CatalogsCreativeAssetsFeedsUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

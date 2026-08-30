@@ -1,12 +1,12 @@
 #tag Class
 Protected Class BoardsApi
 	#tag Method, Flags = &h0
-		Sub BoardSectionsCreate(, boardId As String, boardSection As OpenAPIClient.Models.BoardSection, Optional adAccountId As Xoson.O.OptionalString)
+		Sub BoardSectionsCreate(, boardId As String, boardSectionCreate As OpenAPIClient.Models.BoardSectionCreate, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation board_sections/create
 		  // Create board section
 		  // - 
 		  // - parameter boardId: (path) Unique identifier of a board. 
-		  // - parameter boardSection: (body) Create a board section. 
+		  // - parameter boardSectionCreate: (body)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes BoardsApiCallbackHandler.BoardSectionsCreateCallback(BoardSection) on completion. 
@@ -22,7 +22,7 @@ Protected Class BoardsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(boardSection), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(boardSectionCreate), "application/json")
 		  Dim localVarQueryParams As String = "?"
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
@@ -141,14 +141,16 @@ Protected Class BoardsApi
 		Sub BoardSectionsDelete(, boardId As String, sectionId As String, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation board_sections/delete
 		  // Delete board section
+		  // - 
 		  // - parameter boardId: (path) Unique identifier of a board. 
 		  // - parameter sectionId: (path) Unique identifier of a board section. 
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
-		  // Invokes BoardsApiCallbackHandler.BoardSectionsDeleteCallback() on completion. 
+		  // Invokes BoardsApiCallbackHandler.BoardSectionsDeleteCallback(BoardSection) on completion. Note that the response is optional. 
 		  //
 		  // - DELETE /boards/{board_id}/sections/{section_id}
 		  // - Delete a board section on a board owned by the "operation user_account" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". - By default, the "operation user_account" is the token user_account.
+		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -176,8 +178,9 @@ Protected Class BoardsApi
 		  localVarPath = localVarPath.ReplaceAllB("{section_id}", localVarPathStringsectionId)
 		  
 		  
-		  AddHandler localVarHTTPSocket.PageReceived, addressof Me.BoardSectionsDelete_handler
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.BoardSectionsDelete_handler
 		  AddHandler localVarHTTPSocket.Error, addressof Me.BoardSectionsDelete_error
+		  
 		  
 		  localVarHTTPSocket.SendRequest("DELETE", Me.BasePath + localVarPath + localVarQueryParams)
 		  if localVarHTTPSocket.LastErrorCode <> 0 then
@@ -188,29 +191,86 @@ Protected Class BoardsApi
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Function BoardSectionsDeletePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BoardSection) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.BoardSection
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub BoardSectionsDelete_error(sender As HTTPSecureSocket, Code As Integer)
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  CallbackHandler.BoardSectionsDeleteCallback(error)
+		  Dim data As OpenAPIClient.Models.BoardSection
+		  CallbackHandler.BoardSectionsDeleteCallback(error, data)
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub BoardSectionsDelete_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
 		  #Pragma Unused URL
-		  #Pragma Unused Headers
-		  #Pragma Unused Content
+		  
 
 		  If sender <> nil Then sender.Close()
 		  
-		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", "")
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
+		  Dim data As OpenAPIClient.Models.BoardSection
+		  Call BoardSectionsDeletePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
-		  
-		  CallbackHandler.BoardSectionsDeleteCallback(error)
+		  CallbackHandler.BoardSectionsDeleteCallback(error, data)
 		End Sub
 	#tag EndMethod
 
@@ -225,7 +285,7 @@ Protected Class BoardsApi
 		  // - parameter boardId: (path) Unique identifier of a board. 
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes BoardsApiCallbackHandler.BoardSectionsListCallback(BoardSectionsList200Response) on completion. 
 		  //
@@ -372,7 +432,7 @@ Protected Class BoardsApi
 		  // - parameter sectionId: (path) Unique identifier of a board section. 
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes BoardsApiCallbackHandler.BoardSectionsListPinsCallback(BoardsListPins200Response) on completion. 
 		  //
@@ -514,13 +574,13 @@ Protected Class BoardsApi
 
 
 	#tag Method, Flags = &h0
-		Sub BoardSectionsUpdate(, boardId As String, sectionId As String, boardSection As OpenAPIClient.Models.BoardSection, Optional adAccountId As Xoson.O.OptionalString)
+		Sub BoardSectionsUpdate(, boardId As String, sectionId As String, boardSectionUpdateWithRequiredBody As OpenAPIClient.Models.BoardSectionUpdateWithRequiredBody, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation board_sections/update
 		  // Update board section
 		  // - 
 		  // - parameter boardId: (path) Unique identifier of a board. 
 		  // - parameter sectionId: (path) Unique identifier of a board section. 
-		  // - parameter boardSection: (body) Update a board section. 
+		  // - parameter boardSectionUpdateWithRequiredBody: (body)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes BoardsApiCallbackHandler.BoardSectionsUpdateCallback(BoardSection) on completion. 
@@ -536,7 +596,7 @@ Protected Class BoardsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(boardSection), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(boardSectionUpdateWithRequiredBody), "application/json")
 		  Dim localVarQueryParams As String = "?"
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
@@ -795,13 +855,15 @@ Protected Class BoardsApi
 		Sub BoardsDelete(, boardId As String, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation boards/delete
 		  // Delete board
+		  // - 
 		  // - parameter boardId: (path)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
-		  // Invokes BoardsApiCallbackHandler.BoardsDeleteCallback() on completion. 
+		  // Invokes BoardsApiCallbackHandler.BoardsDeleteCallback(Board) on completion. Note that the response is optional. 
 		  //
 		  // - DELETE /boards/{board_id}
 		  // - Delete a board owned by the "operation user_account". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". * By default, the "operation user_account" is the token user_account.
+		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -826,8 +888,9 @@ Protected Class BoardsApi
 		  localVarPath = localVarPath.ReplaceAllB("{board_id}", localVarPathStringboardId)
 		  
 		  
-		  AddHandler localVarHTTPSocket.PageReceived, addressof Me.BoardsDelete_handler
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.BoardsDelete_handler
 		  AddHandler localVarHTTPSocket.Error, addressof Me.BoardsDelete_error
+		  
 		  
 		  localVarHTTPSocket.SendRequest("DELETE", Me.BasePath + localVarPath + localVarQueryParams)
 		  if localVarHTTPSocket.LastErrorCode <> 0 then
@@ -838,29 +901,86 @@ Protected Class BoardsApi
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Function BoardsDeletePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.Board) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.Board
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub BoardsDelete_error(sender As HTTPSecureSocket, Code As Integer)
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  CallbackHandler.BoardsDeleteCallback(error)
+		  Dim data As OpenAPIClient.Models.Board
+		  CallbackHandler.BoardsDeleteCallback(error, data)
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub BoardsDelete_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
 		  #Pragma Unused URL
-		  #Pragma Unused Headers
-		  #Pragma Unused Content
+		  
 
 		  If sender <> nil Then sender.Close()
 		  
-		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", "")
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
+		  Dim data As OpenAPIClient.Models.Board
+		  Call BoardsDeletePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
-		  
-		  CallbackHandler.BoardsDeleteCallback(error)
+		  CallbackHandler.BoardsDeleteCallback(error, data)
 		End Sub
 	#tag EndMethod
 
@@ -1153,16 +1273,16 @@ Protected Class BoardsApi
 
 
 	#tag Method, Flags = &h0
-		Sub BoardsListPins(, boardId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, creativeTypes() As CreativeType, Optional adAccountId As Xoson.O.OptionalString, Optional pinMetrics As Xoson.O.OptionalBoolean)
+		Sub BoardsListPins(, boardId As String, creativeTypes() As CreativeType, Optional adAccountId As Xoson.O.OptionalString, Optional pinMetrics As Xoson.O.OptionalBoolean, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation boards/list_pins
 		  // List Pins on board
 		  // - 
 		  // - parameter boardId: (path) Unique identifier of a board. 
-		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter creativeTypes: (query) Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional, default to Nil)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  // - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes BoardsApiCallbackHandler.BoardsListPinsCallback(BoardsListPins200Response) on completion. 
 		  //
@@ -1182,10 +1302,6 @@ Protected Class BoardsApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
-		  
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
-		  
 		  
 		  Dim localVarQueryStringscreativeTypes() As String
 		  For Each localVarItemcreativeTypes As CreativeType in creativeTypes
@@ -1207,6 +1323,10 @@ Protected Class BoardsApi
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 		  If pinMetrics <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("pin_metrics") + "=" + EncodeURLComponent(pinMetrics.ToString)
+		  
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
 		  

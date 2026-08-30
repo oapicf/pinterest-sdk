@@ -44,6 +44,13 @@ public class AdAccountCreate  {
   @ApiModelProperty(value = "Advertiser's owning user ID.")
 
   private String ownerUserId;
+
+ /**
+  * The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
+  */
+  @ApiModelProperty(example = "America/Los_Angeles", value = "The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.")
+
+  private String timeZone;
  /**
    * Get country
    * @return country
@@ -116,6 +123,24 @@ public class AdAccountCreate  {
     return this;
   }
 
+ /**
+   * The time zone of the ad account, in IANA format (e.g., \&quot;America/Los_Angeles\&quot;). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
+   * @return timeZone
+  **/
+  @JsonProperty("time_zone")
+  public String getTimeZone() {
+    return timeZone;
+  }
+
+  public void setTimeZone(String timeZone) {
+    this.timeZone = timeZone;
+  }
+
+  public AdAccountCreate timeZone(String timeZone) {
+    this.timeZone = timeZone;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -128,12 +153,13 @@ public class AdAccountCreate  {
     return Objects.equals(this.country, adAccountCreate.country) &&
         Objects.equals(this.currency, adAccountCreate.currency) &&
         Objects.equals(this.name, adAccountCreate.name) &&
-        Objects.equals(this.ownerUserId, adAccountCreate.ownerUserId);
+        Objects.equals(this.ownerUserId, adAccountCreate.ownerUserId) &&
+        Objects.equals(this.timeZone, adAccountCreate.timeZone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, currency, name, ownerUserId);
+    return Objects.hash(country, currency, name, ownerUserId, timeZone);
   }
 
   @Override
@@ -145,6 +171,7 @@ public class AdAccountCreate  {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ownerUserId: ").append(toIndentedString(ownerUserId)).append("\n");
+    sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -154,10 +181,7 @@ public class AdAccountCreate  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setNegated(bool  negated);
+	void setNegated(bool negated);
 	/*! \brief Get 
 	 */
 	std::list<Country> getValues();
 
 	/*! \brief Set 
 	 */
-	void setValues(std::list <Country> values);
+	void setValues(std::list<Country> values);
 
 
     private:

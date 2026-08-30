@@ -6,7 +6,7 @@ Sections help organize pins within a board.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] [readonly] [default to undefined]
+**id** | **string** |  | [optional] [default to undefined]
 **name** | **string** |  | [default to undefined]
 
 ## Example

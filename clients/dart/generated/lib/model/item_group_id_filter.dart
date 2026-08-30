@@ -47,15 +47,13 @@ class ItemGroupIdFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ItemGroupIdFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ItemGroupIdFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'ITEM_GROUP_ID'), 'Required key "ItemGroupIdFilter[ITEM_GROUP_ID]" is missing from JSON.');
+        assert(json[r'ITEM_GROUP_ID'] != null, 'Required key "ItemGroupIdFilter[ITEM_GROUP_ID]" has a null value in JSON.');
         return true;
       }());
 
       return ItemGroupIdFilter(
-        ITEM_GROUP_ID: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'ITEM_GROUP_ID')!,
+        ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'ITEM_GROUP_ID'])!,
       );
     }
     return null;

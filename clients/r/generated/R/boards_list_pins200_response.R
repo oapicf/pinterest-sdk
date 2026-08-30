@@ -8,7 +8,7 @@
 #' @description BoardsListPins200Response Class
 #' @format An \code{R6Class} generator object
 #' @field bookmark  character [optional]
-#' @field items Pins list(\link{Pin})
+#' @field items  list(\link{PinRead})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,7 +21,7 @@ BoardsListPins200Response <- R6::R6Class(
     #' @description
     #' Initialize a new BoardsListPins200Response class.
     #'
-    #' @param items Pins
+    #' @param items items
     #' @param bookmark bookmark
     #' @param ... Other optional arguments.
     initialize = function(`items`, `bookmark` = NULL, ...) {
@@ -75,9 +75,32 @@ BoardsListPins200Response <- R6::R6Class(
       }
       if (!is.null(self$`items`)) {
         BoardsListPins200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`items`)
       }
       return(BoardsListPins200ResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -91,7 +114,7 @@ BoardsListPins200Response <- R6::R6Class(
         self$`bookmark` <- this_object$`bookmark`
       }
       if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[Pin]", loadNamespace("openapi"))
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[PinRead]", loadNamespace("openapi"))
       }
       self
     },
@@ -115,7 +138,7 @@ BoardsListPins200Response <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`bookmark` <- this_object$`bookmark`
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[Pin]", loadNamespace("openapi"))
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[PinRead]", loadNamespace("openapi"))
       self
     },
 

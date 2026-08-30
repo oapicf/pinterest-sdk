@@ -50,7 +50,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogType": @"catalog_type", @"inStock": @"in_stock", @"outOfStock": @"out_of_stock", @"preorder": @"preorder", @"total": @"total", @"videos": @"videos" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogType": @"catalog_type", @"inStock": @"in_stock", @"outOfStock": @"out_of_stock", @"preorder": @"preorder", @"total": @"total", @"videos": @"videos", @"appLinks": @"app_links", @"images": @"images" }];
 }
 
 /**

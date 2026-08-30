@@ -1,0 +1,23 @@
+
+
+/**
+ * Reporting targeting type for ads
+ */
+export const AdsAnalyticsAdTargetingType = {
+    Keyword: 'KEYWORD',
+    Apptype: 'APPTYPE',
+    Gender: 'GENDER',
+    Location: 'LOCATION',
+    Placement: 'PLACEMENT',
+    Country: 'COUNTRY',
+    TargetedInterest: 'TARGETED_INTEREST',
+    PinnerInterest: 'PINNER_INTEREST',
+    AudienceInclude: 'AUDIENCE_INCLUDE',
+    Geo: 'GEO',
+    AgeBucket: 'AGE_BUCKET',
+    Region: 'REGION',
+    QuizResult: 'QUIZ_RESULT',
+    AgeBucketAndGender: 'AGE_BUCKET_AND_GENDER'
+} as const;
+export type AdsAnalyticsAdTargetingType = typeof AdsAnalyticsAdTargetingType[keyof typeof AdsAnalyticsAdTargetingType];
+

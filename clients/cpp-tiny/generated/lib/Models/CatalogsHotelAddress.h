@@ -51,35 +51,35 @@ public:
 
 	/*! \brief Set Primary street address of hotel.
 	 */
-	void setAddr1(std::string  addr1);
+	void setAddr1(std::string addr1);
 	/*! \brief Get City where the hotel is located.
 	 */
 	std::string getCity();
 
 	/*! \brief Set City where the hotel is located.
 	 */
-	void setCity(std::string  city);
+	void setCity(std::string city);
 	/*! \brief Get Country where the hotel is located.
 	 */
 	std::string getCountry();
 
 	/*! \brief Set Country where the hotel is located.
 	 */
-	void setCountry(std::string  country);
+	void setCountry(std::string country);
 	/*! \brief Get Required for countries with a postal code system. Postal or zip code of the hotel.
 	 */
 	std::string getPostalCode();
 
 	/*! \brief Set Required for countries with a postal code system. Postal or zip code of the hotel.
 	 */
-	void setPostalCode(std::string  postal_code);
+	void setPostalCode(std::string postal_code);
 	/*! \brief Get State, county, province, where the hotel is located.
 	 */
 	std::string getRegion();
 
 	/*! \brief Set State, county, province, where the hotel is located.
 	 */
-	void setRegion(std::string  region);
+	void setRegion(std::string region);
 
 
     private:

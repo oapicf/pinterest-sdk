@@ -55,7 +55,7 @@ export interface CatalogsFeedValidationErrors {
      */
     FETCH_ERROR?: number;
     /**
-     * Your feed wasn\'t ingested because it hasn’t changed in the previous 90 days.
+     * Your feed wasn\'t ingested because it hasn\'t changed in the previous 90 days.
      */
     FETCH_INACTIVE_FEED_ERROR?: number;
     /**

@@ -1,0 +1,67 @@
+/*
+ * catalogs_product_groups_create_many_request_items.h
+ *
+ * 
+ */
+
+#ifndef _catalogs_product_groups_create_many_request_items_H_
+#define _catalogs_product_groups_create_many_request_items_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct catalogs_product_groups_create_many_request_items_t catalogs_product_groups_create_many_request_items_t;
+
+#include "catalogs_creative_assets_product_group_filters.h"
+#include "catalogs_locale.h"
+#include "catalogs_product_group_create_request.h"
+#include "catalogs_vertical_product_group_create_request.h"
+#include "country.h"
+
+// Enum CATALOGTYPE for catalogs_product_groups_create_many_request_items
+
+typedef enum  { pinterest_rest_api_catalogs_product_groups_create_many_request_items_CATALOGTYPE_NULL = 0, pinterest_rest_api_catalogs_product_groups_create_many_request_items_CATALOGTYPE_CREATIVE_ASSETS } pinterest_rest_api_catalogs_product_groups_create_many_request_items_CATALOGTYPE_e;
+
+char* catalogs_product_groups_create_many_request_items_catalog_type_ToString(pinterest_rest_api_catalogs_product_groups_create_many_request_items_CATALOGTYPE_e catalog_type);
+
+pinterest_rest_api_catalogs_product_groups_create_many_request_items_CATALOGTYPE_e catalogs_product_groups_create_many_request_items_catalog_type_FromString(char* catalog_type);
+
+
+
+typedef struct catalogs_product_groups_create_many_request_items_t {
+    char *description; // string
+    char *feed_id; // string
+    struct catalogs_creative_assets_product_group_filters_t *filters; //model
+    int *is_featured; //boolean
+    char *name; // string
+    char *catalog_id; // string
+    pinterest_rest_api_catalogs_product_groups_create_many_request_items_CATALOGTYPE_e catalog_type; //enum
+    pinterest_rest_api_country__e country; //referenced enum
+    pinterest_rest_api_catalogs_locale__e locale; //referenced enum
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} catalogs_product_groups_create_many_request_items_t;
+
+__attribute__((deprecated)) catalogs_product_groups_create_many_request_items_t *catalogs_product_groups_create_many_request_items_create(
+    char *description,
+    char *feed_id,
+    catalogs_creative_assets_product_group_filters_t *filters,
+    int *is_featured,
+    char *name,
+    char *catalog_id,
+    pinterest_rest_api_catalogs_product_groups_create_many_request_items_CATALOGTYPE_e catalog_type,
+    pinterest_rest_api_country__e country,
+    pinterest_rest_api_catalogs_locale__e locale
+);
+
+void catalogs_product_groups_create_many_request_items_free(catalogs_product_groups_create_many_request_items_t *catalogs_product_groups_create_many_request_items);
+
+catalogs_product_groups_create_many_request_items_t *catalogs_product_groups_create_many_request_items_parseFromJSON(cJSON *catalogs_product_groups_create_many_request_itemsJSON);
+
+cJSON *catalogs_product_groups_create_many_request_items_convertToJSON(catalogs_product_groups_create_many_request_items_t *catalogs_product_groups_create_many_request_items);
+
+#endif /* _catalogs_product_groups_create_many_request_items_H_ */
+

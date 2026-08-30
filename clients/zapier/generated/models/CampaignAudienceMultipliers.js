@@ -6,7 +6,7 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}AUDIENCE_ID`,
-                label: `[${labelPrefix}AUDIENCE_ID]`,
+                label: `Audience ID for the multiplier. - [${labelPrefix}AUDIENCE_ID]`,
                 type: 'string',
             },
         ]

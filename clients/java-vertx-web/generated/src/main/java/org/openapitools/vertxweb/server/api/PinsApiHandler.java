@@ -1,15 +1,18 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.CreativeType;
-import org.openapitools.vertxweb.server.model.Error;
 import java.time.LocalDate;
+import org.openapitools.vertxweb.server.model.MultiPinsAnalyticsMetricTypesItem;
 import org.openapitools.vertxweb.server.model.Pin;
 import org.openapitools.vertxweb.server.model.PinAnalyticsMetricsResponse;
 import org.openapitools.vertxweb.server.model.PinCreate;
+import org.openapitools.vertxweb.server.model.PinFilter;
+import org.openapitools.vertxweb.server.model.PinType;
 import org.openapitools.vertxweb.server.model.PinUpdate;
 import org.openapitools.vertxweb.server.model.PinsList200Response;
-import org.openapitools.vertxweb.server.model.PinsSaveRequest;
+import org.openapitools.vertxweb.server.model.PinsSaveRequestCreate;
 import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.QuerypinanalyticsmetrictypesItems;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -60,7 +63,7 @@ public class PinsApiHandler {
         List<String> pinIds = requestParameters.queryParameter("pin_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("pin_ids").get(), new TypeReference<List<String>>(){}) : null;
         LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
         LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
-        List<String> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<String>>(){}) : null;
+        List<MultiPinsAnalyticsMetricTypesItem> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<MultiPinsAnalyticsMetricTypesItem>>(){}) : null;
         String appTypes = requestParameters.queryParameter("app_types") != null ? requestParameters.queryParameter("app_types").getString() : "ALL";
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
@@ -92,7 +95,7 @@ public class PinsApiHandler {
         String pinId = requestParameters.pathParameter("pin_id") != null ? requestParameters.pathParameter("pin_id").getString() : null;
         LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
         LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
-        List<String> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<String>>(){}) : null;
+        List<QuerypinanalyticsmetrictypesItems> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<QuerypinanalyticsmetrictypesItems>>(){}) : null;
         String appTypes = requestParameters.queryParameter("app_types") != null ? requestParameters.queryParameter("app_types").getString() : "ALL";
         String splitField = requestParameters.queryParameter("split_field") != null ? requestParameters.queryParameter("split_field").getString() : "NO_SPLIT";
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
@@ -198,12 +201,15 @@ public class PinsApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
-        String pinFilter = requestParameters.queryParameter("pin_filter") != null ? requestParameters.queryParameter("pin_filter").getString() : null;
+        PinFilter pinFilter = requestParameters.queryParameter("pin_filter") != null ? requestParameters.queryParameter("pin_filter").getPinFilter() : null;
         Boolean pinMetrics = requestParameters.queryParameter("pin_metrics") != null ? requestParameters.queryParameter("pin_metrics").getBoolean() : false;
         Boolean includeProtectedPins = requestParameters.queryParameter("include_protected_pins") != null ? requestParameters.queryParameter("include_protected_pins").getBoolean() : false;
-        String pinType = requestParameters.queryParameter("pin_type") != null ? requestParameters.queryParameter("pin_type").getString() : null;
+        PinType pinType = requestParameters.queryParameter("pin_type") != null ? requestParameters.queryParameter("pin_type").getPinType() : null;
         List<CreativeType> creativeTypes = requestParameters.queryParameter("creative_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("creative_types").get(), new TypeReference<List<CreativeType>>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+        String domain = requestParameters.queryParameter("domain") != null ? requestParameters.queryParameter("domain").getString() : null;
+        List<String> domains = requestParameters.queryParameter("domains") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("domains").get(), new TypeReference<List<String>>(){}) : null;
+        Boolean includeProductTagObj = requestParameters.queryParameter("include_product_tag_obj") != null ? requestParameters.queryParameter("include_product_tag_obj").getBoolean() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
 
@@ -213,10 +219,13 @@ public class PinsApiHandler {
         logger.debug("Parameter pinType is {}", pinType);
         logger.debug("Parameter creativeTypes is {}", creativeTypes);
         logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter domain is {}", domain);
+        logger.debug("Parameter domains is {}", domains);
+        logger.debug("Parameter includeProductTagObj is {}", includeProductTagObj);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
 
-        api.pinsList(pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize)
+        api.pinsList(pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, domain, domains, includeProductTagObj, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -236,14 +245,14 @@ public class PinsApiHandler {
 
         String pinId = requestParameters.pathParameter("pin_id") != null ? requestParameters.pathParameter("pin_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        PinsSaveRequest pinsSaveRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<PinsSaveRequest>(){}) : null;
+        PinsSaveRequestCreate pinsSaveRequestCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<PinsSaveRequestCreate>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter pinId is {}", pinId);
-        logger.debug("Parameter pinsSaveRequest is {}", pinsSaveRequest);
+        logger.debug("Parameter pinsSaveRequestCreate is {}", pinsSaveRequestCreate);
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.pinsSave(pinId, pinsSaveRequest, adAccountId)
+        api.pinsSave(pinId, pinsSaveRequestCreate, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

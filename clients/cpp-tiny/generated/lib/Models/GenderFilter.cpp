@@ -65,7 +65,7 @@ GenderFilter::getGENDER()
 }
 
 void
-GenderFilter::setGENDER(CatalogsProductGroupMultipleGenderCriteria  gENDER)
+GenderFilter::setGENDER(CatalogsProductGroupMultipleGenderCriteria gENDER)
 {
 	this->gENDER = gENDER;
 }

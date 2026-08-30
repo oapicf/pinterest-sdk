@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.AdsCreditDiscountType
 open OpenAPI.Model.decimal option
 open OpenAPI.Model.string option
 
@@ -21,7 +22,7 @@ module AdsCreditDiscountsResponse =
     [<JsonProperty(PropertyName = "discountInMicroCurrency")>]
     DiscountInMicroCurrency : decimal option;
     [<JsonProperty(PropertyName = "discountType")>]
-    DiscountType : string option;
+    DiscountType : AdsCreditDiscountType;
     [<JsonProperty(PropertyName = "remainingDiscountInMicroCurrency")>]
     RemainingDiscountInMicroCurrency : decimal option;
     [<JsonProperty(PropertyName = "title")>]

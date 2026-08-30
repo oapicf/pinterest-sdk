@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server FilterOperatorType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a FilterOperatorType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  FilterOperatorType {
+    title = FilterOperatorType
+    description = FilterOperatorType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  FilterOperatorType {
+    title = FilterOperatorType
+    description = FilterOperatorType
+    implements = openapi_server.resourceTypes.FilterOperatorType
+
+  }
+}

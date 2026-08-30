@@ -4,7 +4,6 @@ import org.openapitools.model.BrandFilter;
 import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleCountriesCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
-import org.openapitools.model.CatalogsProductGroupPricingCurrencyCriteria;
 import org.openapitools.model.CountryFilter;
 import org.openapitools.model.CustomLabel0Filter;
 import org.openapitools.model.CustomLabel1Filter;
@@ -13,6 +12,7 @@ import org.openapitools.model.CustomLabel3Filter;
 import org.openapitools.model.CustomLabel4Filter;
 import org.openapitools.model.HotelIdFilter;
 import org.openapitools.model.PriceFilter;
+import org.openapitools.model.PriceFilterPrice;
 import org.openapitools.model.TitleKeywordsFilter;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -28,7 +28,7 @@ public class CatalogsHotelProductGroupFilterKeys  {
 
   @Valid
 
-  private CatalogsProductGroupPricingCurrencyCriteria PRICE;
+  private PriceFilterPrice PRICE;
 
   @ApiModelProperty(required = true, value = "")
 
@@ -89,15 +89,15 @@ public class CatalogsHotelProductGroupFilterKeys  {
   **/
   @JsonProperty("PRICE")
   @NotNull
-  public CatalogsProductGroupPricingCurrencyCriteria getPRICE() {
+  public PriceFilterPrice getPRICE() {
     return PRICE;
   }
 
-  public void setPRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public void setPRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
   }
 
-  public CatalogsHotelProductGroupFilterKeys PRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public CatalogsHotelProductGroupFilterKeys PRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
     return this;
   }
@@ -323,10 +323,7 @@ public class CatalogsHotelProductGroupFilterKeys  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

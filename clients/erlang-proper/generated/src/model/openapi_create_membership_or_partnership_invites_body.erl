@@ -9,7 +9,7 @@
 -export_type([openapi_create_membership_or_partnership_invites_body/0]).
 
 -type openapi_create_membership_or_partnership_invites_body() ::
-  [ {'business_role', binary() }
+  [ {'business_role', openapi_business_role_for_invite:openapi_business_role_for_invite() }
   | {'invite_type', openapi_invite_type:openapi_invite_type() }
   | {'members', list(binary()) }
   | {'partners', list(binary()) }
@@ -20,7 +20,7 @@ openapi_create_membership_or_partnership_invites_body() ->
     openapi_create_membership_or_partnership_invites_body([]).
 
 openapi_create_membership_or_partnership_invites_body(Fields) ->
-  Default = [ {'business_role', elements([<<"EMPLOYEE">>, <<"BIZ_ADMIN">>, <<"PARTNER">>]) }
+  Default = [ {'business_role', openapi_business_role_for_invite:openapi_business_role_for_invite() }
             , {'invite_type', openapi_invite_type:openapi_invite_type() }
             , {'members', list(binary(), 1, 50) }
             , {'partners', list(binary(), 1, 50) }

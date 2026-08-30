@@ -12,9 +12,12 @@ type TrendingProductCategory struct {
 	// Relative volume percentage
 	PercentRelativeVolume int32 `json:"percent_relative_volume"`
 
+	// Pinterest Product Category Id
+	PinterestProductCategoryId int32 `json:"pinterest_product_category_id"`
+
 	// Product Category Name
 	ProductCategory string `json:"product_category"`
 
 	// Vertical name associated with the product category
-	Verticals []VerticalProductCategory `json:"verticals,omitempty"`
+	Verticals []string `json:"verticals,omitempty"`
 }

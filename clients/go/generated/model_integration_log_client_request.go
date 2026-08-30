@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,7 +24,7 @@ var _ MappedNullable = &IntegrationLogClientRequest{}
 type IntegrationLogClientRequest struct {
 	// HTTP request host from host header.
 	Host string `json:"host"`
-	Method string `json:"method"`
+	Method HttpMethod `json:"method"`
 	// HTTP request path.
 	Path string `json:"path"`
 	// HTTP request headers as key-value pairs.
@@ -40,7 +40,7 @@ type _IntegrationLogClientRequest IntegrationLogClientRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIntegrationLogClientRequest(host string, method string, path string) *IntegrationLogClientRequest {
+func NewIntegrationLogClientRequest(host string, method HttpMethod, path string) *IntegrationLogClientRequest {
 	this := IntegrationLogClientRequest{}
 	this.Host = host
 	this.Method = method
@@ -81,9 +81,9 @@ func (o *IntegrationLogClientRequest) SetHost(v string) {
 }
 
 // GetMethod returns the Method field value
-func (o *IntegrationLogClientRequest) GetMethod() string {
+func (o *IntegrationLogClientRequest) GetMethod() HttpMethod {
 	if o == nil {
-		var ret string
+		var ret HttpMethod
 		return ret
 	}
 
@@ -92,7 +92,7 @@ func (o *IntegrationLogClientRequest) GetMethod() string {
 
 // GetMethodOk returns a tuple with the Method field value
 // and a boolean to check if the value has been set.
-func (o *IntegrationLogClientRequest) GetMethodOk() (*string, bool) {
+func (o *IntegrationLogClientRequest) GetMethodOk() (*HttpMethod, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -100,7 +100,7 @@ func (o *IntegrationLogClientRequest) GetMethodOk() (*string, bool) {
 }
 
 // SetMethod sets field value
-func (o *IntegrationLogClientRequest) SetMethod(v string) {
+func (o *IntegrationLogClientRequest) SetMethod(v HttpMethod) {
 	o.Method = v
 }
 

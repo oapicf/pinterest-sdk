@@ -11,14 +11,11 @@ Method | HTTP request | Description
 
 
 # **audiences_create**
-> Audience audiences_create(ad_account_id, audience_create_request)
+> AdAccountsAudience audiences_create(ad_account_id, ad_accounts_audience_create)
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with
-the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude
-specific `audience_ids` when you create an ad group. <p/>
-Learn about <a href="/docs/work-with-targets-and-audiences/create-audiences/" target="_blank">creating different kinds of audiences</a>.
+Create a new audience for the ad account.
 
 ### Example
 
@@ -26,8 +23,8 @@ Learn about <a href="/docs/work-with-targets-and-audiences/create-audiences/" ta
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.audience import Audience
-from pinterestsdk.models.audience_create_request import AudienceCreateRequest
+from pinterestsdk.models.ad_accounts_audience import AdAccountsAudience
+from pinterestsdk.models.ad_accounts_audience_create import AdAccountsAudienceCreate
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -49,11 +46,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AudiencesApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    audience_create_request = pinterestsdk.AudienceCreateRequest() # AudienceCreateRequest | List of ads to create, size limit [1, 30]
+    ad_accounts_audience_create = pinterestsdk.AdAccountsAudienceCreate() # AdAccountsAudienceCreate | 
 
     try:
         # Create audience
-        api_response = api_instance.audiences_create(ad_account_id, audience_create_request)
+        api_response = api_instance.audiences_create(ad_account_id, ad_accounts_audience_create)
         print("The response of AudiencesApi->audiences_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -68,11 +65,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **audience_create_request** | [**AudienceCreateRequest**](AudienceCreateRequest.md)| List of ads to create, size limit [1, 30] | 
+ **ad_accounts_audience_create** | [**AdAccountsAudienceCreate**](AdAccountsAudienceCreate.md)|  | 
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -87,13 +84,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **audiences_get**
-> Audience audiences_get(ad_account_id, audience_id)
+> AdAccountsAudience audiences_get(audience_id, ad_account_id)
 
 Get audience
 
@@ -106,7 +109,7 @@ Get a specific audience given the audience ID.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.audience import Audience
+from pinterestsdk.models.ad_accounts_audience import AdAccountsAudience
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -129,12 +132,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AudiencesApi(api_client)
+    audience_id = 'audience_id_example' # str | Audience ID.
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    audience_id = 'audience_id_example' # str | Unique identifier of an audience
 
     try:
         # Get audience
-        api_response = api_instance.audiences_get(ad_account_id, audience_id)
+        api_response = api_instance.audiences_get(audience_id, ad_account_id)
         print("The response of AudiencesApi->audiences_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -148,12 +151,12 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audience_id** | **str**| Audience ID. | 
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **audience_id** | **str**| Unique identifier of an audience | 
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -168,14 +171,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**404** | Audience not found. |  -  |
-**0** | Unexpected error. |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **audiences_list**
-> AudiencesList200Response audiences_list(ad_account_id, bookmark=bookmark, order=order, page_size=page_size, ownership_type=ownership_type)
+> AudiencesList200Response audiences_list(ad_account_id, bookmark=bookmark, page_size=page_size, order=order, ownership_type=ownership_type, exclude_nca=exclude_nca)
 
 List audiences
 
@@ -188,7 +195,9 @@ Get list of audiences for the ad account.
 
 ```python
 import pinterestsdk
+from pinterestsdk.models.audience_ownership_type import AudienceOwnershipType
 from pinterestsdk.models.audiences_list200_response import AudiencesList200Response
+from pinterestsdk.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -213,13 +222,14 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     api_instance = pinterestsdk.AudiencesApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
-    order = 'ASCENDING' # str | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-    ownership_type = OWNED # str | Filter audiences by ownership type. (optional) (default to OWNED)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+    order = pinterestsdk.PinterestLibPaginationOrder() # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+    ownership_type = pinterestsdk.AudienceOwnershipType() # AudienceOwnershipType |  (optional)
+    exclude_nca = False # bool | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). (optional) (default to False)
 
     try:
         # List audiences
-        api_response = api_instance.audiences_list(ad_account_id, bookmark=bookmark, order=order, page_size=page_size, ownership_type=ownership_type)
+        api_response = api_instance.audiences_list(ad_account_id, bookmark=bookmark, page_size=page_size, order=order, ownership_type=ownership_type, exclude_nca=exclude_nca)
         print("The response of AudiencesApi->audiences_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -235,9 +245,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
- **order** | **str**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **ownership_type** | **str**| Filter audiences by ownership type. | [optional] [default to OWNED]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **ownership_type** | [**AudienceOwnershipType**](.md)|  | [optional] 
+ **exclude_nca** | **bool**| When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [optional] [default to False]
 
 ### Return type
 
@@ -256,18 +267,22 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid ad account audience parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **audiences_update**
-> Audience audiences_update(ad_account_id, audience_id, audience_update_request)
+> AdAccountsAudience audiences_update(audience_id, ad_account_id, ad_accounts_audience_update)
 
 Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 ### Example
 
@@ -275,8 +290,8 @@ Update (edit or remove) an existing targeting audience.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.audience import Audience
-from pinterestsdk.models.audience_update_request import AudienceUpdateRequest
+from pinterestsdk.models.ad_accounts_audience import AdAccountsAudience
+from pinterestsdk.models.ad_accounts_audience_update import AdAccountsAudienceUpdate
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -297,13 +312,13 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AudiencesApi(api_client)
+    audience_id = 'audience_id_example' # str | Audience ID.
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    audience_id = 'audience_id_example' # str | Unique identifier of an audience
-    audience_update_request = pinterestsdk.AudienceUpdateRequest() # AudienceUpdateRequest | The audience to be updated.
+    ad_accounts_audience_update = pinterestsdk.AdAccountsAudienceUpdate() # AdAccountsAudienceUpdate | 
 
     try:
         # Update audience
-        api_response = api_instance.audiences_update(ad_account_id, audience_id, audience_update_request)
+        api_response = api_instance.audiences_update(audience_id, ad_account_id, ad_accounts_audience_update)
         print("The response of AudiencesApi->audiences_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -317,13 +332,13 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audience_id** | **str**| Audience ID. | 
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **audience_id** | **str**| Unique identifier of an audience | 
- **audience_update_request** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md)| The audience to be updated. | 
+ **ad_accounts_audience_update** | [**AdAccountsAudienceUpdate**](AdAccountsAudienceUpdate.md)|  | 
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -338,8 +353,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

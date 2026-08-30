@@ -8,7 +8,7 @@ The class is defined in **[AvailabilityFilter.java](../../src/main/java/org/open
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AVAILABILITY** | `CatalogsProductGroupMultipleStringCriteria` |  | 
+**AVAILABILITY** | [`CatalogsProductGroupMultipleStringCriteria`](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 
 

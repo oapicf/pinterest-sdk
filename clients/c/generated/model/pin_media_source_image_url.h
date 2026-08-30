@@ -27,7 +27,7 @@ pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_e pin_media_source_imag
 
 
 typedef struct pin_media_source_image_url_t {
-    int is_standard; //boolean
+    int *is_standard; //boolean
     pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_e source_type; //enum
     char *url; // string
 
@@ -35,7 +35,7 @@ typedef struct pin_media_source_image_url_t {
 } pin_media_source_image_url_t;
 
 __attribute__((deprecated)) pin_media_source_image_url_t *pin_media_source_image_url_create(
-    int is_standard,
+    int *is_standard,
     pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_e source_type,
     char *url
 );

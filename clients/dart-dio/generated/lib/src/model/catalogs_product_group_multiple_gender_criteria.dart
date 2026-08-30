@@ -28,8 +28,7 @@ abstract class CatalogsProductGroupMultipleGenderCriteria implements Built<Catal
   factory CatalogsProductGroupMultipleGenderCriteria([void updates(CatalogsProductGroupMultipleGenderCriteriaBuilder b)]) = _$CatalogsProductGroupMultipleGenderCriteria;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CatalogsProductGroupMultipleGenderCriteriaBuilder b) => b
-      ..negated = false;
+  static void _defaults(CatalogsProductGroupMultipleGenderCriteriaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<CatalogsProductGroupMultipleGenderCriteria> get serializer => _$CatalogsProductGroupMultipleGenderCriteriaSerializer();
@@ -85,8 +84,9 @@ class _$CatalogsProductGroupMultipleGenderCriteriaSerializer implements Primitiv
         case r'negated':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.negated = valueDes;
           break;
         case r'values':

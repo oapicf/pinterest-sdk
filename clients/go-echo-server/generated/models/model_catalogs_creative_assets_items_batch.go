@@ -8,9 +8,9 @@ import (
 type CatalogsCreativeAssetsItemsBatch struct {
 
 	// Id of the catalogs items batch
-	BatchId string `json:"batch_id,omitempty"`
+	BatchId string `json:"batch_id,omitempty" validate:"regexp=^\\d+$"`
 
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 
 	// Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 	CompletedTime *time.Time `json:"completed_time,omitempty"`

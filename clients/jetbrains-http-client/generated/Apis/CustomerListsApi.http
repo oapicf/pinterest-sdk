@@ -1,0 +1,39 @@
+## CustomerListsApi
+
+### Create customer lists
+## Create customer lists
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/customer_lists
+Content-Type: application/json
+Accept: application/json
+
+{
+ "is_nca": "<string>",
+ "list_type": "<string>",
+ "name": "<string>",
+ "records": "<string>",
+ "records_v2": "<string>"
+}
+
+
+### Get customer list
+## Get customer list
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/customer_lists/{{customer_list_id}}
+Accept: application/json
+
+### Get customer lists
+## Get customer lists
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/customer_lists?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}&excludeNca={{excludeNca}}
+Accept: application/json
+
+### Update customer list
+## Update customer list
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/customer_lists/{{customer_list_id}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "operation_type": "<string>",
+ "records": "<string>",
+ "records_v2": "<string>"
+}
+

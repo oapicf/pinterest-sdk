@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.AiDisclosures
 open OpenAPI.Model.PinMediaSource
 open OpenAPI.Model.string option
 
@@ -12,6 +13,8 @@ module PinCreate =
 
   [<CLIMutable>]
   type PinCreate = {
+    [<JsonProperty(PropertyName = "ai_disclosures")>]
+    AiDisclosures : AiDisclosures;
     [<JsonProperty(PropertyName = "alt_text")>]
     AltText : string option;
     [<JsonProperty(PropertyName = "board_id")>]

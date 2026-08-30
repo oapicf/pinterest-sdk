@@ -7,14 +7,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **negated** | **Boolean** |  |  [optional]
-**operator** | [**OperatorEnum**](#OperatorEnum) |  | 
+**operator** | [**NumericFilterOperatorType**](NumericFilterOperatorType.md) |  | 
 **value** | **Integer** |  | 
-
-
-## Enum: OperatorEnum
-
-Name | Value
----- | -----
 
 
 

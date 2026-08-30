@@ -14,20 +14,23 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
- * Record processing counts
+ * 
  * @param invalid Number of invalid records processed
  * @param processed Number of records processed
  * @param valid Number of valid records processed
  */
 data class RecordCounts(
 
-    @Schema(example = "50", required = true, description = "Number of invalid records processed")
+    @Schema(required = true, description = "Number of invalid records processed")
+    @param:JsonProperty("invalid")
     @get:JsonProperty("invalid", required = true) val invalid: kotlin.Int,
 
-    @Schema(example = "1000", required = true, description = "Number of records processed")
+    @Schema(required = true, description = "Number of records processed")
+    @param:JsonProperty("processed")
     @get:JsonProperty("processed", required = true) val processed: kotlin.Int,
 
-    @Schema(example = "950", required = true, description = "Number of valid records processed")
+    @Schema(required = true, description = "Number of valid records processed")
+    @param:JsonProperty("valid")
     @get:JsonProperty("valid", required = true) val valid: kotlin.Int
 ) {
 

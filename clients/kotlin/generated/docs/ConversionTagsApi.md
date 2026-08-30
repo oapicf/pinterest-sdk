@@ -53,8 +53,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -77,7 +83,7 @@ Get information about an existing conversion tag.
 
 val apiInstance = ConversionTagsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val conversionTagId : kotlin.String = 2617998078212 // kotlin.String | Id of the conversion tag.
+val conversionTagId : kotlin.String = conversionTagId_example // kotlin.String | Id of the conversion tag.
 try {
     val result : ConversionTag = apiInstance.conversionTagsGet(adAccountId, conversionTagId)
     println(result)
@@ -103,10 +109,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -155,10 +173,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -205,10 +235,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -217,7 +259,7 @@ Configure client_credentials:
 
 <a id="pageVisitConversionTagsGet"></a>
 # **pageVisitConversionTagsGet**
-> PageVisitConversionTagsGet200Response pageVisitConversionTagsGet(adAccountId, pageSize, order, bookmark)
+> PageVisitConversionTagsGet200Response pageVisitConversionTagsGet(adAccountId, bookmark, pageSize, order)
 
 Get page visit conversion tags
 
@@ -231,11 +273,11 @@ Get all page visit conversion tag events for an ad account.
 
 val apiInstance = ConversionTagsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 try {
-    val result : PageVisitConversionTagsGet200Response = apiInstance.pageVisitConversionTagsGet(adAccountId, pageSize, order, bookmark)
+    val result : PageVisitConversionTagsGet200Response = apiInstance.pageVisitConversionTagsGet(adAccountId, bookmark, pageSize, order)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ConversionTagsApi#pageVisitConversionTagsGet")
@@ -248,11 +290,11 @@ try {
 
 ### Parameters
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **order** | **kotlin.String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
 
 ### Return type
 
@@ -261,10 +303,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

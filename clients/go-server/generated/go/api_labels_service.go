@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -30,18 +30,30 @@ func NewLabelsAPIService() *LabelsAPIService {
 }
 
 // LabelsList - List labels
-func (s *LabelsAPIService) LabelsList(ctx context.Context, adAccountId string, campaignIds []string, labelIds []string, entityStatuses []string, labelTypes []string, pageSize int32, bookmark string) (ImplResponse, error) {
+func (s *LabelsAPIService) LabelsList(ctx context.Context, adAccountId string, campaignIds []string, labelIds []string, entityStatuses []QueryLabelEntityStatusesItems, labelTypes []QueryLabelTypesItems, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update LabelsList with the required logic for this service method.
 	// Add api_labels_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, LabelsList200Response{}) or use other options such as http.Ok ...
 	// return Response(200, LabelsList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("LabelsList method not implemented")
 }
@@ -54,8 +66,23 @@ func (s *LabelsAPIService) LabelsCreate(ctx context.Context, adAccountId string,
 	// TODO: Uncomment the next line to return response Response(200, LabelsResponse{}) or use other options such as http.Ok ...
 	// return Response(200, LabelsResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("LabelsCreate method not implemented")
 }
@@ -68,8 +95,87 @@ func (s *LabelsAPIService) LabelsUpdate(ctx context.Context, adAccountId string,
 	// TODO: Uncomment the next line to return response Response(200, LabelsResponse{}) or use other options such as http.Ok ...
 	// return Response(200, LabelsResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("LabelsUpdate method not implemented")
+}
+
+// LabelsApply - Apply label to entity
+func (s *LabelsAPIService) LabelsApply(ctx context.Context, adAccountId string, labelId string, labeledEntitiesCreate LabeledEntitiesCreate) (ImplResponse, error) {
+	// TODO - update LabelsApply with the required logic for this service method.
+	// Add api_labels_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, LabeledEntities{}) or use other options such as http.Ok ...
+	// return Response(200, LabeledEntities{}), nil
+
+	// TODO: Uncomment the next line to return response Response(201, LabeledEntities{}) or use other options such as http.Ok ...
+	// return Response(201, LabeledEntities{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("LabelsApply method not implemented")
+}
+
+// LabelsRemove - Remove label from entities
+func (s *LabelsAPIService) LabelsRemove(ctx context.Context, adAccountId string, labelId string, labeledEntitiesCreate LabeledEntitiesCreate) (ImplResponse, error) {
+	// TODO - update LabelsRemove with the required logic for this service method.
+	// Add api_labels_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, LabeledEntities{}) or use other options such as http.Ok ...
+	// return Response(200, LabeledEntities{}), nil
+
+	// TODO: Uncomment the next line to return response Response(201, LabeledEntities{}) or use other options such as http.Ok ...
+	// return Response(201, LabeledEntities{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("LabelsRemove method not implemented")
 }

@@ -48,11 +48,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Catalog id pertaining to the retail product group.
+	/*! \brief Get Catalog ID pertaining to the product group.
 	 */
 	std::string getCatalogId();
 
-	/*! \brief Set Catalog id pertaining to the retail product group.
+	/*! \brief Set Catalog ID pertaining to the product group.
 	 */
 	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 

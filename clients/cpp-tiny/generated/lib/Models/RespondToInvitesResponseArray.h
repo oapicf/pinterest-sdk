@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "RespondToInvitesResponseArray_items_inner.h"
+#include "RespondToInviteResultItem.h"
 #include <list>
 
 namespace Tiny {
@@ -49,15 +49,15 @@ public:
 
 	/*! \brief Get List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.
 	 */
-	std::list<RespondToInvitesResponseArray_items_inner> getItems();
+	std::list<RespondToInviteResultItem> getItems();
 
 	/*! \brief Set List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.
 	 */
-	void setItems(std::list <RespondToInvitesResponseArray_items_inner> items);
+	void setItems(std::list<RespondToInviteResultItem> items);
 
 
     private:
-    std::list<RespondToInvitesResponseArray_items_inner> items;
+    std::list<RespondToInviteResultItem> items;
 };
 }
 

@@ -1,0 +1,175 @@
+package org.openapitools.model;
+
+import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsLocale;
+import org.openapitools.model.CatalogsProductGroupCreateRequest;
+import org.openapitools.model.CatalogsProductGroupFiltersRequest;
+import org.openapitools.model.CatalogsVerticalProductGroupCreateRequest;
+import org.openapitools.model.Country;
+
+import io.swagger.annotations.ApiModelProperty;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+public class BulkUpsertRequestCreateCatalogProductGroupsItems  {
+  
+  @ApiModelProperty(value = "")
+
+  private String description;
+
+ /**
+  * Catalog Feed id pertaining to the catalog product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
+
+  private String feedId;
+
+  @ApiModelProperty(required = true, value = "")
+
+  private CatalogsProductGroupFiltersRequest filters;
+
+ /**
+  * boolean indicator of whether the product group is being featured or not
+  */
+  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
+
+  private Boolean isFeatured;
+
+  @ApiModelProperty(required = true, value = "")
+
+  private String name;
+ /**
+   * Get description
+   * @return description
+  **/
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public BulkUpsertRequestCreateCatalogProductGroupsItems description(String description) {
+    this.description = description;
+    return this;
+  }
+
+ /**
+   * Catalog Feed id pertaining to the catalog product group.
+   * @return feedId
+  **/
+  @JsonProperty("feed_id")
+  public String getFeedId() {
+    return feedId;
+  }
+
+  public void setFeedId(String feedId) {
+    this.feedId = feedId;
+  }
+
+  public BulkUpsertRequestCreateCatalogProductGroupsItems feedId(String feedId) {
+    this.feedId = feedId;
+    return this;
+  }
+
+ /**
+   * Get filters
+   * @return filters
+  **/
+  @JsonProperty("filters")
+  public CatalogsProductGroupFiltersRequest getFilters() {
+    return filters;
+  }
+
+  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+  }
+
+  public BulkUpsertRequestCreateCatalogProductGroupsItems filters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+    return this;
+  }
+
+ /**
+   * boolean indicator of whether the product group is being featured or not
+   * @return isFeatured
+  **/
+  @JsonProperty("is_featured")
+  public Boolean getIsFeatured() {
+    return isFeatured;
+  }
+
+  public void setIsFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+  }
+
+  public BulkUpsertRequestCreateCatalogProductGroupsItems isFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+    return this;
+  }
+
+ /**
+   * Get name
+   * @return name
+  **/
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public BulkUpsertRequestCreateCatalogProductGroupsItems name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    BulkUpsertRequestCreateCatalogProductGroupsItems bulkUpsertRequestCreateCatalogProductGroupsItems = (BulkUpsertRequestCreateCatalogProductGroupsItems) o;
+    return Objects.equals(this.description, bulkUpsertRequestCreateCatalogProductGroupsItems.description) &&
+        Objects.equals(this.feedId, bulkUpsertRequestCreateCatalogProductGroupsItems.feedId) &&
+        Objects.equals(this.filters, bulkUpsertRequestCreateCatalogProductGroupsItems.filters) &&
+        Objects.equals(this.isFeatured, bulkUpsertRequestCreateCatalogProductGroupsItems.isFeatured) &&
+        Objects.equals(this.name, bulkUpsertRequestCreateCatalogProductGroupsItems.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(description, feedId, filters, isFeatured, name);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class BulkUpsertRequestCreateCatalogProductGroupsItems {\n");
+    
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private static String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

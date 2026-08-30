@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.vertxweb.server.model.ProductCategoriesEngagementType;
-import org.openapitools.vertxweb.server.model.VerticalProductCategory;
 
 /**
  * Trending shopping product category
@@ -19,17 +18,19 @@ public class TrendingProductCategory   {
   private ProductCategoriesEngagementType engagementType;
   private Integer pctChangeMom;
   private Integer percentRelativeVolume;
+  private Integer pinterestProductCategoryId;
   private String productCategory;
-  private List<VerticalProductCategory> verticals = new ArrayList<>();
+  private List<String> verticals = new ArrayList<>();
 
   public TrendingProductCategory () {
 
   }
 
-  public TrendingProductCategory (ProductCategoriesEngagementType engagementType, Integer pctChangeMom, Integer percentRelativeVolume, String productCategory, List<VerticalProductCategory> verticals) {
+  public TrendingProductCategory (ProductCategoriesEngagementType engagementType, Integer pctChangeMom, Integer percentRelativeVolume, Integer pinterestProductCategoryId, String productCategory, List<String> verticals) {
     this.engagementType = engagementType;
     this.pctChangeMom = pctChangeMom;
     this.percentRelativeVolume = percentRelativeVolume;
+    this.pinterestProductCategoryId = pinterestProductCategoryId;
     this.productCategory = productCategory;
     this.verticals = verticals;
   }
@@ -62,6 +63,15 @@ public class TrendingProductCategory   {
   }
 
     
+  @JsonProperty("pinterest_product_category_id")
+  public Integer getPinterestProductCategoryId() {
+    return pinterestProductCategoryId;
+  }
+  public void setPinterestProductCategoryId(Integer pinterestProductCategoryId) {
+    this.pinterestProductCategoryId = pinterestProductCategoryId;
+  }
+
+    
   @JsonProperty("product_category")
   public String getProductCategory() {
     return productCategory;
@@ -72,10 +82,10 @@ public class TrendingProductCategory   {
 
     
   @JsonProperty("verticals")
-  public List<VerticalProductCategory> getVerticals() {
+  public List<String> getVerticals() {
     return verticals;
   }
-  public void setVerticals(List<VerticalProductCategory> verticals) {
+  public void setVerticals(List<String> verticals) {
     this.verticals = verticals;
   }
 
@@ -92,13 +102,14 @@ public class TrendingProductCategory   {
     return Objects.equals(engagementType, trendingProductCategory.engagementType) &&
         Objects.equals(pctChangeMom, trendingProductCategory.pctChangeMom) &&
         Objects.equals(percentRelativeVolume, trendingProductCategory.percentRelativeVolume) &&
+        Objects.equals(pinterestProductCategoryId, trendingProductCategory.pinterestProductCategoryId) &&
         Objects.equals(productCategory, trendingProductCategory.productCategory) &&
         Objects.equals(verticals, trendingProductCategory.verticals);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(engagementType, pctChangeMom, percentRelativeVolume, productCategory, verticals);
+    return Objects.hash(engagementType, pctChangeMom, percentRelativeVolume, pinterestProductCategoryId, productCategory, verticals);
   }
 
   @Override
@@ -109,6 +120,7 @@ public class TrendingProductCategory   {
     sb.append("    engagementType: ").append(toIndentedString(engagementType)).append("\n");
     sb.append("    pctChangeMom: ").append(toIndentedString(pctChangeMom)).append("\n");
     sb.append("    percentRelativeVolume: ").append(toIndentedString(percentRelativeVolume)).append("\n");
+    sb.append("    pinterestProductCategoryId: ").append(toIndentedString(pinterestProductCategoryId)).append("\n");
     sb.append("    productCategory: ").append(toIndentedString(productCategory)).append("\n");
     sb.append("    verticals: ").append(toIndentedString(verticals)).append("\n");
     sb.append("}");
@@ -120,9 +132,6 @@ public class TrendingProductCategory   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

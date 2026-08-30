@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Country ID from ISO 3166-1 alpha-2.
  */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public enum Country {
   
   AD("AD"),
@@ -342,7 +343,7 @@ public enum Country {
   
   NL("NL"),
   
-  NO("NO"),
+  FALSE("false"),
   
   NP("NP"),
   

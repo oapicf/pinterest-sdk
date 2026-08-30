@@ -81,7 +81,7 @@ CatalogsProductGroupFiltersAllOf::getAllOf()
 }
 
 void
-CatalogsProductGroupFiltersAllOf::setAllOf(std::list <CatalogsProductGroupFilterKeys> all_of)
+CatalogsProductGroupFiltersAllOf::setAllOf(std::list<CatalogsProductGroupFilterKeys> all_of)
 {
 	this->all_of = all_of;
 }

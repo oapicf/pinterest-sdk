@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  PinAnalyticsMetricsResponseDailyMetricsInner = openapi_server.resourceTypes.PinAnalyticsMetricsResponseDailyMetricsInner
+  PinAnalyticsDailyMetrics = openapi_server.resourceTypes.PinAnalyticsDailyMetrics
 }
 resourceTypes {
 
@@ -18,7 +18,7 @@ resourceTypes {
     properties {
         daily_metrics {
           type = array
-          items.type = PinAnalyticsMetricsResponseDailyMetricsInner
+          items.type = PinAnalyticsDailyMetrics
           description = "Array with the requested daily metric records"
           optional = false
         }

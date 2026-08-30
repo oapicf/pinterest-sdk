@@ -1,2 +1,2 @@
-testCase,httpStatusCode,adAccountId,labelCreateRequest,adAccountId,campaignIds,labelIds,entityStatuses,labelTypes,pageSize,bookmark,adAccountId,labelUpdateRequest
-Success,200,0,0,0,0,0,0,0,0,0,0,0
+testCase,httpStatusCode,adAccountId,labelId,labeledEntitiesCreate,adAccountId,labelCreateRequest,adAccountId,campaignIds,labelIds,entityStatuses,labelTypes,bookmark,pageSize,adAccountId,labelId,labeledEntitiesCreate,adAccountId,labelUpdateRequest
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

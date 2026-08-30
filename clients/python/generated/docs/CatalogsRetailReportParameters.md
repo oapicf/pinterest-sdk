@@ -7,7 +7,7 @@ Parameters for retail report
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | **str** |  | 
-**report** | [**CatalogsHotelReportParametersReport**](CatalogsHotelReportParametersReport.md) |  | 
+**report** | [**CatalogsRetailReportParametersReport**](CatalogsRetailReportParametersReport.md) |  | 
 
 ## Example
 

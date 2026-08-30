@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accesses** | [**[UpdateMemberAssetAccessBodyAccessesInner]**](UpdateMemberAssetAccessBodyAccessesInner.md) |  | 
+**accesses** | [**[UpdateMemberAssetAccessItem]**](UpdateMemberAssetAccessItem.md) | List of member asset accesses to assign or update. | 
 
 

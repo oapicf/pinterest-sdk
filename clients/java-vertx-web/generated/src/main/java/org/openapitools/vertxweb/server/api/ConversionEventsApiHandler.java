@@ -1,9 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.ConversionApiResponse;
 import org.openapitools.vertxweb.server.model.ConversionEvents;
+import org.openapitools.vertxweb.server.model.ConversionEventsCreate;
 import org.openapitools.vertxweb.server.model.DetailedError;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -46,14 +46,14 @@ public class ConversionEventsApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        ConversionEvents conversionEvents = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ConversionEvents>(){}) : null;
+        ConversionEventsCreate conversionEventsCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ConversionEventsCreate>(){}) : null;
         Boolean test = requestParameters.queryParameter("test") != null ? requestParameters.queryParameter("test").getBoolean() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter conversionEvents is {}", conversionEvents);
+        logger.debug("Parameter conversionEventsCreate is {}", conversionEventsCreate);
         logger.debug("Parameter test is {}", test);
 
-        api.eventsCreate(adAccountId, conversionEvents, test)
+        api.eventsCreate(adAccountId, conversionEventsCreate, test)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

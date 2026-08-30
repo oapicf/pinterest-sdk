@@ -5,13 +5,15 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 import (
+	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -57,6 +59,24 @@ func (c *ConversionsAPIController) Routes() Routes {
 			"/v5/ad_accounts/{ad_account_id}/advertiser_defined_events",
 			c.AdvertiserDefinedEventsGet,
 		},
+		"AdvertiserDefinedEventsCreate": Route{
+			"AdvertiserDefinedEventsCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/advertiser_defined_events",
+			c.AdvertiserDefinedEventsCreate,
+		},
+		"AdvertiserDefinedEventsDelete": Route{
+			"AdvertiserDefinedEventsDelete",
+			strings.ToUpper("Delete"),
+			"/v5/ad_accounts/{ad_account_id}/advertiser_defined_events",
+			c.AdvertiserDefinedEventsDelete,
+		},
+		"AdvertiserDefinedEventsUpdate": Route{
+			"AdvertiserDefinedEventsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/ad_accounts/{ad_account_id}/advertiser_defined_events",
+			c.AdvertiserDefinedEventsUpdate,
+		},
 	}
 }
 
@@ -68,6 +88,24 @@ func (c *ConversionsAPIController) OrderedRoutes() []Route {
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/advertiser_defined_events",
 			c.AdvertiserDefinedEventsGet,
+		},
+		Route{
+			"AdvertiserDefinedEventsCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/advertiser_defined_events",
+			c.AdvertiserDefinedEventsCreate,
+		},
+		Route{
+			"AdvertiserDefinedEventsDelete",
+			strings.ToUpper("Delete"),
+			"/v5/ad_accounts/{ad_account_id}/advertiser_defined_events",
+			c.AdvertiserDefinedEventsDelete,
+		},
+		Route{
+			"AdvertiserDefinedEventsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/ad_accounts/{ad_account_id}/advertiser_defined_events",
+			c.AdvertiserDefinedEventsUpdate,
 		},
 	}
 }
@@ -83,6 +121,109 @@ func (c *ConversionsAPIController) AdvertiserDefinedEventsGet(w http.ResponseWri
 		return
 	}
 	result, err := c.service.AdvertiserDefinedEventsGet(r.Context(), adAccountIdParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// AdvertiserDefinedEventsCreate - Create advertiser defined events
+func (c *ConversionsAPIController) AdvertiserDefinedEventsCreate(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var advertiserDefinedEventsCreateRequestParam AdvertiserDefinedEventsCreateRequest
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&advertiserDefinedEventsCreateRequestParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertAdvertiserDefinedEventsCreateRequestRequired(advertiserDefinedEventsCreateRequestParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertAdvertiserDefinedEventsCreateRequestConstraints(advertiserDefinedEventsCreateRequestParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.AdvertiserDefinedEventsCreate(r.Context(), adAccountIdParam, advertiserDefinedEventsCreateRequestParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// AdvertiserDefinedEventsDelete - Delete advertiser defined events
+func (c *ConversionsAPIController) AdvertiserDefinedEventsDelete(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	query, err := parseQuery(r.URL.RawQuery)
+	if err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var eventNamesParam []string
+	if query.Has("event_names") {
+		eventNamesParam = strings.Split(query.Get("event_names"), ",")
+	}
+	result, err := c.service.AdvertiserDefinedEventsDelete(r.Context(), adAccountIdParam, eventNamesParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// AdvertiserDefinedEventsUpdate - Update advertiser defined events
+func (c *ConversionsAPIController) AdvertiserDefinedEventsUpdate(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var advertiserDefinedEventsCreateRequestParam AdvertiserDefinedEventsCreateRequest
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&advertiserDefinedEventsCreateRequestParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertAdvertiserDefinedEventsCreateRequestRequired(advertiserDefinedEventsCreateRequestParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertAdvertiserDefinedEventsCreateRequestConstraints(advertiserDefinedEventsCreateRequestParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.AdvertiserDefinedEventsUpdate(r.Context(), adAccountIdParam, advertiserDefinedEventsCreateRequestParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

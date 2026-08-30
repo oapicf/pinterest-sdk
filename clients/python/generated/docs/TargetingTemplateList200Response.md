@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[TargetingTemplateGetResponseData]**](TargetingTemplateGetResponseData.md) |  | 
+**items** | [**List[TargetingTemplate]**](TargetingTemplate.md) |  | 
 
 ## Example
 

@@ -28,14 +28,13 @@ class UpdatePartnerAssetsResult {
   ///
   String? assetId;
 
-  /// Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? assetType;
+  AssetTypeResponse? assetType;
 
   /// Unique identifier of a business partner.
   ///
@@ -99,16 +98,12 @@ class UpdatePartnerAssetsResult {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UpdatePartnerAssetsResult[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UpdatePartnerAssetsResult[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return UpdatePartnerAssetsResult(
         assetId: mapValueOfType<String>(json, r'asset_id'),
-        assetType: mapValueOfType<String>(json, r'asset_type'),
+        assetType: AssetTypeResponse.fromJson(json[r'asset_type']),
         partnerId: mapValueOfType<String>(json, r'partner_id'),
         permissions: json[r'permissions'] is Iterable
             ? (json[r'permissions'] as Iterable).cast<String>().toList(growable: false)

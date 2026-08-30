@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setBRAND(CatalogsProductGroupMultipleStringCriteria  bRAND);
+	void setBRAND(CatalogsProductGroupMultipleStringCriteria bRAND);
 
 
     private:

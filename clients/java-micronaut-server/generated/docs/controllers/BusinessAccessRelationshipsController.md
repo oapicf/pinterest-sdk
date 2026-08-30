@@ -19,7 +19,7 @@ Method | HTTP request | Description
 <a id="brandAccountsCreate"></a>
 # **brandAccountsCreate**
 ```java
-Mono<BrandAccountsCreate200Response> BusinessAccessRelationshipsController.brandAccountsCreate(businessHierarchyIdbrandAccountsCreateRequest)
+Mono<BrandAccount> BusinessAccessRelationshipsController.brandAccountsCreate(businessHierarchyIdbrandAccountCreate)
 ```
 
 Create a Brand Account
@@ -30,10 +30,10 @@ Create a Brand Account that will be a child business of a business hierarchy. Re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **businessHierarchyId** | `String` | business hierarchy node id |
-**brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](../../docs/models/BrandAccountsCreateRequest.md) |  |
+**brandAccountCreate** | [**BrandAccountCreate**](../../docs/models/BrandAccountCreate.md) |  |
 
 ### Return type
-[**BrandAccountsCreate200Response**](../../docs/models/BrandAccountsCreate200Response.md)
+[**BrandAccount**](../../docs/models/BrandAccount.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `biz_access:read`, `biz_access:write`
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 <a id="brandAccountsUpdate"></a>
 # **brandAccountsUpdate**
 ```java
-Mono<BrandAccountsCreate200Response> BusinessAccessRelationshipsController.brandAccountsUpdate(businessHierarchyIdbrandAccountIdbrandAccountsUpdateRequest)
+Mono<BrandAccount> BusinessAccessRelationshipsController.brandAccountsUpdate(brandAccountIdbusinessHierarchyIdbrandAccountUpdate)
 ```
 
 Update a Brand Account
@@ -55,12 +55,12 @@ Update an existing Brand Account
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+**brandAccountId** | `String` |  |
 **businessHierarchyId** | `String` | business hierarchy node id |
-**brandAccountId** | `String` | Unique identifier of a brand account. |
-**brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](../../docs/models/BrandAccountsUpdateRequest.md) |  |
+**brandAccountUpdate** | [**BrandAccountUpdate**](../../docs/models/BrandAccountUpdate.md) |  |
 
 ### Return type
-[**BrandAccountsCreate200Response**](../../docs/models/BrandAccountsCreate200Response.md)
+[**BrandAccount**](../../docs/models/BrandAccount.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `biz_access:read`, `biz_access:write`
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 <a id="deleteBusinessMembership"></a>
 # **deleteBusinessMembership**
 ```java
-Mono<DeletedMembersResponse> BusinessAccessRelationshipsController.deleteBusinessMembership(businessIdmembersToDeleteBody)
+Mono<DeleteBusinessMembership200Response> BusinessAccessRelationshipsController.deleteBusinessMembership(businessIddeleteBusinessMembershipBody)
 ```
 
 Terminate business memberships
@@ -83,10 +83,10 @@ Terminate memberships between the specified members and your business.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **businessId** | `String` | Business id |
-**membersToDeleteBody** | [**MembersToDeleteBody**](../../docs/models/MembersToDeleteBody.md) | List of members with role to delete. |
+**deleteBusinessMembershipBody** | [**DeleteBusinessMembershipBody**](../../docs/models/DeleteBusinessMembershipBody.md) |  |
 
 ### Return type
-[**DeletedMembersResponse**](../../docs/models/DeletedMembersResponse.md)
+[**DeleteBusinessMembership200Response**](../../docs/models/DeleteBusinessMembership200Response.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `biz_access:read`, `biz_access:write`
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 <a id="deleteBusinessPartners"></a>
 # **deleteBusinessPartners**
 ```java
-Mono<DeletePartnersResponse> BusinessAccessRelationshipsController.deleteBusinessPartners(businessIddeletePartnersRequest)
+Mono<DeleteBusinessPartners> BusinessAccessRelationshipsController.deleteBusinessPartners(businessIddeleteBusinessPartnersDelete)
 ```
 
 Terminate business partnerships
@@ -109,10 +109,10 @@ Terminate partnerships between the specified partners and your business. Note: Y
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **businessId** | `String` | Unique identifier of the requesting business. |
-**deletePartnersRequest** | [**DeletePartnersRequest**](../../docs/models/DeletePartnersRequest.md) | An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete.  |
+**deleteBusinessPartnersDelete** | [**DeleteBusinessPartnersDelete**](../../docs/models/DeleteBusinessPartnersDelete.md) |  |
 
 ### Return type
-[**DeletePartnersResponse**](../../docs/models/DeletePartnersResponse.md)
+[**DeleteBusinessPartners**](../../docs/models/DeleteBusinessPartners.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `biz_access:write`
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 <a id="getBusinessEmployers"></a>
 # **getBusinessEmployers**
 ```java
-Mono<GetBusinessEmployers200Response> BusinessAccessRelationshipsController.getBusinessEmployers(pageSizebookmark)
+Mono<GetBusinessEmployers200Response> BusinessAccessRelationshipsController.getBusinessEmployers(assetsSummarybookmarkpageSize)
 ```
 
 List business employers for user
@@ -134,8 +134,9 @@ Get all of the viewing user&#39;s business employers.
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**assetsSummary** | `Boolean` | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional parameter] [default to `true`]
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
+**pageSize** | `Integer` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`]
 
 ### Return type
 [**GetBusinessEmployers200Response**](../../docs/models/GetBusinessEmployers200Response.md)
@@ -150,7 +151,7 @@ Name | Type | Description  | Notes
 <a id="getBusinessMembers"></a>
 # **getBusinessMembers**
 ```java
-Mono<GetBusinessMembers200Response> BusinessAccessRelationshipsController.getBusinessMembers(businessIdfetchSystemUsersassetsSummarybusinessRolesmemberIdsstartIndexbookmarkpageSize)
+Mono<GetBusinessEmployers200Response> BusinessAccessRelationshipsController.getBusinessMembers(businessIdfetchSystemUsersassetsSummarybusinessRolesmemberIdsstartIndexbookmarkpageSize)
 ```
 
 Get business members
@@ -167,10 +168,10 @@ Name | Type | Description  | Notes
 **memberIds** | `String` | A list of business members ids separated by comma. | [optional parameter]
 **startIndex** | `Integer` | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional parameter] [default to `0`]
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`]
 
 ### Return type
-[**GetBusinessMembers200Response**](../../docs/models/GetBusinessMembers200Response.md)
+[**GetBusinessEmployers200Response**](../../docs/models/GetBusinessEmployers200Response.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `biz_access:read`
@@ -182,7 +183,7 @@ Name | Type | Description  | Notes
 <a id="getBusinessPartners"></a>
 # **getBusinessPartners**
 ```java
-Mono<GetBusinessPartners200Response> BusinessAccessRelationshipsController.getBusinessPartners(businessIdassetsSummarypartnerTypepartnerIdsstartIndexpageSizebookmark)
+Mono<GetBusinessEmployers200Response> BusinessAccessRelationshipsController.getBusinessPartners(businessIdassetsSummarypartnerTypepartnerIdsstartIndexsortAscendingbookmarkpageSize)
 ```
 
 Get business partners
@@ -194,14 +195,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **businessId** | `String` | Unique identifier of the requesting business. |
 **assetsSummary** | `Boolean` | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional parameter] [default to `false`]
-**partnerType** | [**PartnerType**](../../docs/models/.md) | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional parameter] [enum: `INTERNAL`, `EXTERNAL`]
+**partnerType** | [**PartnerType**](../../docs/models/.md) | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional parameter] [enum: `INTERNAL`, `EXTERNAL`]
 **partnerIds** | `String` | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional parameter]
 **startIndex** | `Integer` | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional parameter] [default to `0`]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**sortAscending** | `Boolean` | Sort ascending. | [optional parameter]
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
+**pageSize** | `Integer` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`]
 
 ### Return type
-[**GetBusinessPartners200Response**](../../docs/models/GetBusinessPartners200Response.md)
+[**GetBusinessEmployers200Response**](../../docs/models/GetBusinessEmployers200Response.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `biz_access:read`
@@ -213,7 +215,7 @@ Name | Type | Description  | Notes
 <a id="systemUserUpdate"></a>
 # **systemUserUpdate**
 ```java
-Mono<Object> BusinessAccessRelationshipsController.systemUserUpdate(businessIdsystemUserIdsystemUserUpdateRequest)
+Mono<Object> BusinessAccessRelationshipsController.systemUserUpdate(businessIdsystemUserIdsystemUserUpdateWithRequiredBody)
 ```
 
 Update a system user information.
@@ -225,7 +227,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **businessId** | `String` | Unique identifier of the requesting business. |
 **systemUserId** | `String` | Unique identifier of a system user. |
-**systemUserUpdateRequest** | [**SystemUserUpdateRequest**](../../docs/models/SystemUserUpdateRequest.md) |  |
+**systemUserUpdateWithRequiredBody** | [**SystemUserUpdateWithRequiredBody**](../../docs/models/SystemUserUpdateWithRequiredBody.md) |  |
 
 
 ### Authorization
@@ -238,7 +240,7 @@ Name | Type | Description  | Notes
 <a id="updateBusinessMemberships"></a>
 # **updateBusinessMemberships**
 ```java
-Mono<UpdateMemberResultsResponseArray> BusinessAccessRelationshipsController.updateBusinessMemberships(businessIdupdateMemberBusinessRoleBody)
+Mono<UpdateBusinessMembershipsResponse> BusinessAccessRelationshipsController.updateBusinessMemberships(businessIdbusinessMembershipMember)
 ```
 
 Update member&#39;s business role
@@ -249,10 +251,10 @@ Update a member&#39;s business role within the business.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **businessId** | `String` | Business id |
-**updateMemberBusinessRoleBody** | [**List&lt;@Valid UpdateMemberBusinessRoleBody&gt;**](../../docs/models/UpdateMemberBusinessRoleBody.md) | List of objects with the member id and the business_role. |
+**businessMembershipMember** | [**List&lt;@Valid BusinessMembershipMember&gt;**](../../docs/models/BusinessMembershipMember.md) |  |
 
 ### Return type
-[**UpdateMemberResultsResponseArray**](../../docs/models/UpdateMemberResultsResponseArray.md)
+[**UpdateBusinessMembershipsResponse**](../../docs/models/UpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `biz_access:write`

@@ -9,7 +9,8 @@ use WWW::OpenAPIClient::Object::TrendingTopic;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **string** | Description of the trending topic | 
-**percent_growth_mom** | **int** | Month-over-month growth percentage | 
+**id** | **string** | Unique identifier for the trending topic | 
+**percent_growth_mom** | **int** | Month-over-month growth percentage | [optional] 
 **pins** | [**ARRAY[TrendingPin]**](TrendingPin.md) | Array of pin images related to this trend (up to 6) | 
 **related_interests** | **ARRAY[string]** | List of related interest categories | 
 **related_searches** | **ARRAY[string]** | List of related search terms | 

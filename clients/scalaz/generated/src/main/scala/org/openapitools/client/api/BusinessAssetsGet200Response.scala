@@ -13,8 +13,7 @@ import BusinessAssetsGet200Response._
 
 case class BusinessAssetsGet200Response (
   bookmark: Option[String],
-/* List of assets the requesting business has access to. */
-  items: List[GetBusinessAssetsResponse])
+items: List[BusinessAssets])
 
 object BusinessAssetsGet200Response {
   import DateTimeCodecs._

@@ -5,13 +5,13 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Reporting columns
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public enum ReportingColumnAsync {
   
   SPEND_IN_MICRO_DOLLAR("SPEND_IN_MICRO_DOLLAR"),
@@ -80,6 +80,8 @@ public enum ReportingColumnAsync {
   REPIN_RATE("REPIN_RATE"),
   
   CTR_2("CTR_2"),
+  
+  CAMPAIGN("CAMPAIGN"),
   
   CAMPAIGN_ID("CAMPAIGN_ID"),
   
@@ -168,6 +170,18 @@ public enum ReportingColumnAsync {
   IMPRESSION_2("IMPRESSION_2"),
   
   OUTBOUND_CLICK_2("OUTBOUND_CLICK_2"),
+  
+  COLLECTION_PIN_ITEM_IMPRESSION_1("COLLECTION_PIN_ITEM_IMPRESSION_1"),
+  
+  COLLECTION_PIN_ITEM_IMPRESSION_2("COLLECTION_PIN_ITEM_IMPRESSION_2"),
+  
+  TOTAL_COLLECTION_PIN_ITEM_IMPRESSION("TOTAL_COLLECTION_PIN_ITEM_IMPRESSION"),
+  
+  COLLECTION_PIN_ITEM_CLICKTHROUGH_1("COLLECTION_PIN_ITEM_CLICKTHROUGH_1"),
+  
+  COLLECTION_PIN_ITEM_CLICKTHROUGH_2("COLLECTION_PIN_ITEM_CLICKTHROUGH_2"),
+  
+  TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH("TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH"),
   
   TOTAL_CLICKTHROUGH("TOTAL_CLICKTHROUGH"),
   
@@ -398,6 +412,8 @@ public enum ReportingColumnAsync {
   CAMPAIGN_DAILY_SPEND_CAP("CAMPAIGN_DAILY_SPEND_CAP"),
   
   CAMPAIGN_BUDGET_OPTIMIZATION("CAMPAIGN_BUDGET_OPTIMIZATION"),
+  
+  IS_CATALOG_CREATIVE_CAMPAIGN("IS_CATALOG_CREATIVE_CAMPAIGN"),
   
   IS_PREMIERE_CAMPAIGN("IS_PREMIERE_CAMPAIGN"),
   
@@ -1247,7 +1263,17 @@ public enum ReportingColumnAsync {
   
   TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE"),
   
-  STANDARD_AD_FEED_ITEM_ID("STANDARD_AD_FEED_ITEM_ID");
+  STANDARD_AD_FEED_ITEM_ID("STANDARD_AD_FEED_ITEM_ID"),
+  
+  SPEND_ORDER_LINE_ID("SPEND_ORDER_LINE_ID"),
+  
+  INAPP_SKAN_APP_INSTALL("INAPP_SKAN_APP_INSTALL"),
+  
+  INAPP_SKAN_ASSISTED_APP_INSTALL("INAPP_SKAN_ASSISTED_APP_INSTALL"),
+  
+  INAPP_SKAN_APP_INSTALL_COST_PER_ACTION("INAPP_SKAN_APP_INSTALL_COST_PER_ACTION"),
+  
+  INAPP_SKAN_APP_INSTALL_CONVERSION_RATE("INAPP_SKAN_APP_INSTALL_CONVERSION_RATE");
 
   private final String value;
 

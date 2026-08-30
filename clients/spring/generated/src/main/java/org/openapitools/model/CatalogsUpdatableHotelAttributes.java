@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -15,54 +16,70 @@ import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsUpdatableHotelAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsUpdatableHotelAttributes {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsHotelAddress address;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> basePrice = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> brand = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> category = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel0 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel1 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel2 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel3 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel4 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsHotelGuestRatings guestRatings;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal latitude;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> link = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> longitude = JsonNullable.<BigDecimal>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> neighborhood = JsonNullable.<List<String>>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> salePrice = JsonNullable.<String>undefined();
 
   public CatalogsUpdatableHotelAttributes address(@Nullable CatalogsHotelAddress address) {
@@ -71,16 +88,17 @@ public class CatalogsUpdatableHotelAttributes {
   }
 
   /**
-   * Get address
+   * Hotel address
    * @return address
    */
   @Valid 
-  @Schema(name = "address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "address", description = "Hotel address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("address")
   public @Nullable CatalogsHotelAddress getAddress() {
     return address;
   }
 
+  @JsonProperty("address")
   public void setAddress(@Nullable CatalogsHotelAddress address) {
     this.address = address;
   }
@@ -271,16 +289,17 @@ public class CatalogsUpdatableHotelAttributes {
   }
 
   /**
-   * Get guestRatings
+   * If specified, you must provide all properties
    * @return guestRatings
    */
   @Valid 
-  @Schema(name = "guest_ratings", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "guest_ratings", description = "If specified, you must provide all properties", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("guest_ratings")
   public @Nullable CatalogsHotelGuestRatings getGuestRatings() {
     return guestRatings;
   }
 
+  @JsonProperty("guest_ratings")
   public void setGuestRatings(@Nullable CatalogsHotelGuestRatings guestRatings) {
     this.guestRatings = guestRatings;
   }
@@ -301,6 +320,7 @@ public class CatalogsUpdatableHotelAttributes {
     return latitude;
   }
 
+  @JsonProperty("latitude")
   public void setLatitude(@Nullable BigDecimal latitude) {
     this.latitude = latitude;
   }
@@ -486,11 +506,8 @@ public class CatalogsUpdatableHotelAttributes {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

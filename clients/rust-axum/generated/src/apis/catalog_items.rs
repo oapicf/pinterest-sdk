@@ -1,7 +1,8 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Host};
+use axum_extra::extract::CookieJar;
 use bytes::Bytes;
+use headers::Host;
 use http::Method;
 use serde::{Deserialize, Serialize};
 
@@ -11,79 +12,99 @@ use crate::{models, types::*};
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum ItemsBatchSlashGetResponse {
-    /// Response containing the requested catalogs items batch
-    Status200_ResponseContainingTheRequestedCatalogsItemsBatch
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::CatalogsItemsBatch)
     ,
-    /// Not authenticated to access catalogs items batch
-    Status401_NotAuthenticatedToAccessCatalogsItemsBatch
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Not authorized to access catalogs items batch
-    Status403_NotAuthorizedToAccessCatalogsItemsBatch
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Catalogs items batch not found
-    Status404_CatalogsItemsBatchNotFound
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Method Not Allowed.
-    Status405_MethodNotAllowed
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum ItemsBatchSlashPostResponse {
-    /// Response containing the requested catalogs items batch
-    Status200_ResponseContainingTheRequestedCatalogsItemsBatch
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::CatalogsItemsBatch)
     ,
-    /// Invalid request parameters.
-    Status400_InvalidRequestParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Not authenticated to post catalogs items
-    Status401_NotAuthenticatedToPostCatalogsItems
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Not authorized to post catalogs items
-    Status403_NotAuthorizedToPostCatalogsItems
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum ItemsSlashPostResponse {
-    /// Response containing the requested catalogs items
-    Status200_ResponseContainingTheRequestedCatalogsItems
-    (models::CatalogsItems)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::ItemsPost200Response)
     ,
-    /// Invalid request
-    Status400_InvalidRequest
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Not authorized to access catalogs items
-    Status401_NotAuthorizedToAccessCatalogsItems
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Not authorized to access catalogs items
-    Status403_NotAuthorizedToAccessCatalogsItems
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 
@@ -116,7 +137,7 @@ pub trait CatalogItems<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::
     host: &Host,
     cookies: &CookieJar,
       query_params: &models::ItemsBatchSlashPostQueryParams,
-            body: &models::ItemsBatchPostRequest,
+            body: &models::CatalogsItemsBatchPostRequest,
     ) -> Result<ItemsBatchSlashPostResponse, E>;
 
     /// Get catalogs items (POST).

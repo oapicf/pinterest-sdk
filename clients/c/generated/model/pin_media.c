@@ -26,26 +26,28 @@ static pin_media_t *pin_media_create_internal(
     image_size_t *images,
     pinterest_rest_api_pin_media_MEDIATYPE_e media_type,
     char *cover_image_url,
-    double duration,
-    int height,
+    double *duration,
+    int *height,
     char *video_url,
-    int width,
+    char *video_url_hls,
+    int *width,
     list_t *items
     ) {
     pin_media_t *pin_media_local_var = malloc(sizeof(pin_media_t));
     if (!pin_media_local_var) {
         return NULL;
     }
+    memset(pin_media_local_var, 0, sizeof(pin_media_t));
+    pin_media_local_var->_library_owned = 1;
     pin_media_local_var->images = images;
     pin_media_local_var->media_type = media_type;
     pin_media_local_var->cover_image_url = cover_image_url;
     pin_media_local_var->duration = duration;
     pin_media_local_var->height = height;
     pin_media_local_var->video_url = video_url;
+    pin_media_local_var->video_url_hls = video_url_hls;
     pin_media_local_var->width = width;
     pin_media_local_var->items = items;
-
-    pin_media_local_var->_library_owned = 1;
     return pin_media_local_var;
 }
 
@@ -53,22 +55,45 @@ __attribute__((deprecated)) pin_media_t *pin_media_create(
     image_size_t *images,
     pinterest_rest_api_pin_media_MEDIATYPE_e media_type,
     char *cover_image_url,
-    double duration,
-    int height,
+    double *duration,
+    int *height,
     char *video_url,
-    int width,
+    char *video_url_hls,
+    int *width,
     list_t *items
     ) {
-    return pin_media_create_internal (
+    double *duration_copy = NULL;
+    if (duration) {
+        duration_copy = malloc(sizeof(double));
+        if (duration_copy) *duration_copy = *duration;
+    }
+    int *height_copy = NULL;
+    if (height) {
+        height_copy = malloc(sizeof(int));
+        if (height_copy) *height_copy = *height;
+    }
+    int *width_copy = NULL;
+    if (width) {
+        width_copy = malloc(sizeof(int));
+        if (width_copy) *width_copy = *width;
+    }
+    pin_media_t *result = pin_media_create_internal (
         images,
         media_type,
         cover_image_url,
-        duration,
-        height,
+        duration_copy,
+        height_copy,
         video_url,
-        width,
+        video_url_hls,
+        width_copy,
         items
         );
+    if (!result) {
+        free(duration_copy);
+        free(height_copy);
+        free(width_copy);
+    }
+    return result;
 }
 
 void pin_media_free(pin_media_t *pin_media) {
@@ -88,9 +113,25 @@ void pin_media_free(pin_media_t *pin_media) {
         free(pin_media->cover_image_url);
         pin_media->cover_image_url = NULL;
     }
+    if (pin_media->duration) {
+        free(pin_media->duration);
+        pin_media->duration = NULL;
+    }
+    if (pin_media->height) {
+        free(pin_media->height);
+        pin_media->height = NULL;
+    }
     if (pin_media->video_url) {
         free(pin_media->video_url);
         pin_media->video_url = NULL;
+    }
+    if (pin_media->video_url_hls) {
+        free(pin_media->video_url_hls);
+        pin_media->video_url_hls = NULL;
+    }
+    if (pin_media->width) {
+        free(pin_media->width);
+        pin_media->width = NULL;
     }
     if (pin_media->items) {
         list_ForEach(listEntry, pin_media->items) {
@@ -138,7 +179,7 @@ cJSON *pin_media_convertToJSON(pin_media_t *pin_media) {
 
     // pin_media->duration
     if(pin_media->duration) {
-    if(cJSON_AddNumberToObject(item, "duration", pin_media->duration) == NULL) {
+    if(cJSON_AddNumberToObject(item, "duration", *pin_media->duration) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -146,7 +187,7 @@ cJSON *pin_media_convertToJSON(pin_media_t *pin_media) {
 
     // pin_media->height
     if(pin_media->height) {
-    if(cJSON_AddNumberToObject(item, "height", pin_media->height) == NULL) {
+    if(cJSON_AddNumberToObject(item, "height", *pin_media->height) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -160,9 +201,17 @@ cJSON *pin_media_convertToJSON(pin_media_t *pin_media) {
     }
 
 
+    // pin_media->video_url_hls
+    if(pin_media->video_url_hls) {
+    if(cJSON_AddStringToObject(item, "video_url_hls", pin_media->video_url_hls) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // pin_media->width
     if(pin_media->width) {
-    if(cJSON_AddNumberToObject(item, "width", pin_media->width) == NULL) {
+    if(cJSON_AddNumberToObject(item, "width", *pin_media->width) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -201,6 +250,21 @@ pin_media_t *pin_media_parseFromJSON(cJSON *pin_mediaJSON){
 
     // define the local variable for pin_media->images
     image_size_t *images_local_nonprim = NULL;
+
+    char *cover_image_url_local_str = NULL;
+
+    // define the local variable for pin_media->duration
+    double *duration_local_var = NULL;
+
+    // define the local variable for pin_media->height
+    int *height_local_var = NULL;
+
+    char *video_url_local_str = NULL;
+
+    char *video_url_hls_local_str = NULL;
+
+    // define the local variable for pin_media->width
+    int *width_local_var = NULL;
 
     // define the local list for pin_media->items
     list_t *itemsList = NULL;
@@ -253,6 +317,12 @@ pin_media_t *pin_media_parseFromJSON(cJSON *pin_mediaJSON){
     {
     goto end; //Numeric
     }
+    duration_local_var = malloc(sizeof(double));
+    if(!duration_local_var)
+    {
+        goto end;
+    }
+    *duration_local_var = duration->valuedouble;
     }
 
     // pin_media->height
@@ -265,6 +335,12 @@ pin_media_t *pin_media_parseFromJSON(cJSON *pin_mediaJSON){
     {
     goto end; //Numeric
     }
+    height_local_var = malloc(sizeof(int));
+    if(!height_local_var)
+    {
+        goto end;
+    }
+    *height_local_var = height->valuedouble;
     }
 
     // pin_media->video_url
@@ -274,6 +350,18 @@ pin_media_t *pin_media_parseFromJSON(cJSON *pin_mediaJSON){
     }
     if (video_url) { 
     if(!cJSON_IsString(video_url) && !cJSON_IsNull(video_url))
+    {
+    goto end; //String
+    }
+    }
+
+    // pin_media->video_url_hls
+    cJSON *video_url_hls = cJSON_GetObjectItemCaseSensitive(pin_mediaJSON, "video_url_hls");
+    if (cJSON_IsNull(video_url_hls)) {
+        video_url_hls = NULL;
+    }
+    if (video_url_hls) { 
+    if(!cJSON_IsString(video_url_hls) && !cJSON_IsNull(video_url_hls))
     {
     goto end; //String
     }
@@ -289,6 +377,12 @@ pin_media_t *pin_media_parseFromJSON(cJSON *pin_mediaJSON){
     {
     goto end; //Numeric
     }
+    width_local_var = malloc(sizeof(int));
+    if(!width_local_var)
+    {
+        goto end;
+    }
+    *width_local_var = width->valuedouble;
     }
 
     // pin_media->items
@@ -316,22 +410,55 @@ pin_media_t *pin_media_parseFromJSON(cJSON *pin_mediaJSON){
     }
 
 
+    if (cover_image_url && !cJSON_IsNull(cover_image_url)) cover_image_url_local_str = strdup(cover_image_url->valuestring);
+    if (video_url && !cJSON_IsNull(video_url)) video_url_local_str = strdup(video_url->valuestring);
+    if (video_url_hls && !cJSON_IsNull(video_url_hls)) video_url_hls_local_str = strdup(video_url_hls->valuestring);
+
     pin_media_local_var = pin_media_create_internal (
         images ? images_local_nonprim : NULL,
         media_typeVariable,
-        cover_image_url && !cJSON_IsNull(cover_image_url) ? strdup(cover_image_url->valuestring) : NULL,
-        duration ? duration->valuedouble : 0,
-        height ? height->valuedouble : 0,
-        video_url && !cJSON_IsNull(video_url) ? strdup(video_url->valuestring) : NULL,
-        width ? width->valuedouble : 0,
+        cover_image_url_local_str,
+        duration_local_var,
+        height_local_var,
+        video_url_local_str,
+        video_url_hls_local_str,
+        width_local_var,
         items ? itemsList : NULL
         );
+
+    if (!pin_media_local_var) {
+        goto end;
+    }
 
     return pin_media_local_var;
 end:
     if (images_local_nonprim) {
         image_size_free(images_local_nonprim);
         images_local_nonprim = NULL;
+    }
+    if (cover_image_url_local_str) {
+        free(cover_image_url_local_str);
+        cover_image_url_local_str = NULL;
+    }
+    if (duration_local_var) {
+        free(duration_local_var);
+        duration_local_var = NULL;
+    }
+    if (height_local_var) {
+        free(height_local_var);
+        height_local_var = NULL;
+    }
+    if (video_url_local_str) {
+        free(video_url_local_str);
+        video_url_local_str = NULL;
+    }
+    if (video_url_hls_local_str) {
+        free(video_url_hls_local_str);
+        video_url_hls_local_str = NULL;
+    }
+    if (width_local_var) {
+        free(width_local_var);
+        width_local_var = NULL;
     }
     if (itemsList) {
         listEntry_t *listEntry = NULL;

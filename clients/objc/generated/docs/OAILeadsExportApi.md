@@ -11,13 +11,13 @@ Method | HTTP request | Description
 # **leadsExportCreate**
 ```objc
 -(NSURLSessionTask*) leadsExportCreateWithAdAccountId: (NSString*) adAccountId
-    leadsExportCreateRequest: (OAILeadsExportCreateRequest*) leadsExportCreateRequest
-        completionHandler: (void (^)(OAILeadsExportCreateResponse* output, NSError* error)) handler;
+    leadsExportsCreate: (OAILeadsExportsCreate*) leadsExportsCreate
+        completionHandler: (void (^)(OAILeadsExports* output, NSError* error)) handler;
 ```
 
 Create a request to export leads collected from a lead ad
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a `leads_export_id` token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```objc
@@ -28,14 +28,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAILeadsExportCreateRequest* leadsExportCreateRequest = [[OAILeadsExportCreateRequest alloc] init]; // 
+OAILeadsExportsCreate* leadsExportsCreate = [[OAILeadsExportsCreate alloc] init]; // 
 
 OAILeadsExportApi*apiInstance = [[OAILeadsExportApi alloc] init];
 
 // Create a request to export leads collected from a lead ad
 [apiInstance leadsExportCreateWithAdAccountId:adAccountId
-              leadsExportCreateRequest:leadsExportCreateRequest
-          completionHandler: ^(OAILeadsExportCreateResponse* output, NSError* error) {
+              leadsExportsCreate:leadsExportsCreate
+          completionHandler: ^(OAILeadsExports* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -50,11 +50,11 @@ OAILeadsExportApi*apiInstance = [[OAILeadsExportApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **leadsExportCreateRequest** | [**OAILeadsExportCreateRequest***](OAILeadsExportCreateRequest.md)|  | 
+ **leadsExportsCreate** | [**OAILeadsExportsCreate***](OAILeadsExportsCreate.md)|  | 
 
 ### Return type
 
-[**OAILeadsExportCreateResponse***](OAILeadsExportCreateResponse.md)
+[**OAILeadsExports***](OAILeadsExports.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 Get the lead export from the lead export create call
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```objc
@@ -87,7 +87,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* leadsExportId = 123755885175; // lead_export_id token returned from the create a lead export endpoint
+NSString* leadsExportId = @"leadsExportId_example"; // lead_export_id token returned from the create a lead export endpoint
 
 OAILeadsExportApi*apiInstance = [[OAILeadsExportApi alloc] init];
 

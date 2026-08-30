@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setBookmark(std::string  bookmark);
-	/*! \brief Get Board sections
+	void setBookmark(std::string bookmark);
+	/*! \brief Get 
 	 */
 	std::list<BoardSection> getItems();
 
-	/*! \brief Set Board sections
+	/*! \brief Set 
 	 */
-	void setItems(std::list <BoardSection> items);
+	void setItems(std::list<BoardSection> items);
 
 
     private:

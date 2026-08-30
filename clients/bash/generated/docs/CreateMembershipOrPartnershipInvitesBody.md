@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**businessUnderscorerole** | **string** |  | [default to null]
+**businessUnderscorerole** | [**BusinessRoleForInvite**](BusinessRoleForInvite.md) |  | [default to null]
 **inviteUnderscoretype** | [**InviteType**](InviteType.md) |  | [default to null]
 **members** | **array[string]** |  | [optional] [default to null]
 **partners** | **array[string]** |  | [optional] [default to null]

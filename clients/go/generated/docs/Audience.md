@@ -5,15 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdAccountId** | Pointer to **string** | Ad account ID. | [optional] 
-**AudienceType** | Pointer to **string** | &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR | [optional] 
+**AudienceType** | Pointer to [**PinnerListType**](PinnerListType.md) | [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR | [optional] 
 **CreatedByCompanyName** | Pointer to **NullableString** | The company that created this audience. | [optional] 
 **CreatedTimestamp** | Pointer to **NullableInt32** | Creation time. Unix timestamp in seconds. | [optional] 
 **Description** | Pointer to **NullableString** | Audience description. | [optional] 
 **Id** | Pointer to **string** | Audience ID. | [optional] 
+**IsNca** | Pointer to **bool** | Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only. | [optional] 
 **Name** | Pointer to **string** | Audience name. | [optional] 
 **Rule** | Pointer to [**AudienceRule**](AudienceRule.md) |  | [optional] 
 **Size** | Pointer to **NullableInt32** | Audience size. | [optional] 
-**Status** | Pointer to **string** | Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it. | [optional] 
+**Status** | Pointer to [**AudienceStatus**](AudienceStatus.md) | Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it. | [optional] 
 **Type** | Pointer to **string** | Always \&quot;audience\&quot;. | [optional] 
 **UpdatedTimestamp** | Pointer to **NullableInt32** | Last update time. Unix timestamp in seconds. | [optional] 
 
@@ -63,20 +64,20 @@ HasAdAccountId returns a boolean if a field has been set.
 
 ### GetAudienceType
 
-`func (o *Audience) GetAudienceType() string`
+`func (o *Audience) GetAudienceType() PinnerListType`
 
 GetAudienceType returns the AudienceType field if non-nil, zero value otherwise.
 
 ### GetAudienceTypeOk
 
-`func (o *Audience) GetAudienceTypeOk() (*string, bool)`
+`func (o *Audience) GetAudienceTypeOk() (*PinnerListType, bool)`
 
 GetAudienceTypeOk returns a tuple with the AudienceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAudienceType
 
-`func (o *Audience) SetAudienceType(v string)`
+`func (o *Audience) SetAudienceType(v PinnerListType)`
 
 SetAudienceType sets AudienceType field to given value.
 
@@ -216,6 +217,31 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### GetIsNca
+
+`func (o *Audience) GetIsNca() bool`
+
+GetIsNca returns the IsNca field if non-nil, zero value otherwise.
+
+### GetIsNcaOk
+
+`func (o *Audience) GetIsNcaOk() (*bool, bool)`
+
+GetIsNcaOk returns a tuple with the IsNca field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsNca
+
+`func (o *Audience) SetIsNca(v bool)`
+
+SetIsNca sets IsNca field to given value.
+
+### HasIsNca
+
+`func (o *Audience) HasIsNca() bool`
+
+HasIsNca returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *Audience) GetName() string`
@@ -303,20 +329,20 @@ HasSize returns a boolean if a field has been set.
 UnsetSize ensures that no value is present for Size, not even an explicit nil
 ### GetStatus
 
-`func (o *Audience) GetStatus() string`
+`func (o *Audience) GetStatus() AudienceStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *Audience) GetStatusOk() (*string, bool)`
+`func (o *Audience) GetStatusOk() (*AudienceStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *Audience) SetStatus(v string)`
+`func (o *Audience) SetStatus(v AudienceStatus)`
 
 SetStatus sets Status field to given value.
 

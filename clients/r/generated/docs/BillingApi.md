@@ -18,11 +18,11 @@ Method | HTTP request | Description
 
 
 # **AdsCreditRedeem**
-> AdsCreditRedeemResponse AdsCreditRedeem(ad_account_id, ads_credit_redeem_request)
+> AdsCreditRedeem AdsCreditRedeem(ad_account_id, ads_credit_redeem_create)
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```R
@@ -32,14 +32,14 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_ads_credit_redeem_request <- AdsCreditRedeemRequest$new("offerCodeHash_example", "validateOnly_example") # AdsCreditRedeemRequest | Redeem ad credits request.
+var_ads_credit_redeem_create <- AdsCreditRedeemCreate$new("offerCodeHash_example", "validateOnly_example") # AdsCreditRedeemCreate | 
 
 api_instance <- BillingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$AdsCreditRedeem(var_ad_account_id, var_ads_credit_redeem_requestdata_file = "result.txt")
-result <- api_instance$AdsCreditRedeem(var_ad_account_id, var_ads_credit_redeem_request)
+# result <- api_instance$AdsCreditRedeem(var_ad_account_id, var_ads_credit_redeem_createdata_file = "result.txt")
+result <- api_instance$AdsCreditRedeem(var_ad_account_id, var_ads_credit_redeem_create)
 dput(result)
 ```
 
@@ -48,11 +48,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **ads_credit_redeem_request** | [**AdsCreditRedeemRequest**](AdsCreditRedeemRequest.md)| Redeem ad credits request. | 
+ **ads_credit_redeem_create** | [**AdsCreditRedeemCreate**](AdsCreditRedeemCreate.md)|  | 
 
 ### Return type
 
-[**AdsCreditRedeemResponse**](AdsCreditRedeemResponse.md)
+[**AdsCreditRedeem**](AdsCreditRedeem.md)
 
 ### Authorization
 
@@ -66,16 +66,21 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully redeemed ad credits. |  -  |
-| **400** | Error thrown when unable to redeem offer code. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **AdsCreditsDiscountsGet**
 > AdsCreditsDiscountsGet200Response AdsCreditsDiscountsGet(ad_account_id, bookmark = var.bookmark, page_size = 25)
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```R
@@ -86,7 +91,7 @@ library(openapi)
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BillingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -103,7 +108,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -121,8 +126,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BillingInvoiceDownloadGet**
 > BillingInvoiceDownloadResponse BillingInvoiceDownloadGet(ad_account_id, billing_invoice_id)
@@ -173,12 +183,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully fetched Billing invoice information for a given ad account |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BillingInvoicesGet**
-> BillingInvoicesGet200Response BillingInvoicesGet(ad_account_id, bookmark = var.bookmark, page_size = 25, sort = "DUE_DATE", order = var.order, status = var.status, document_type = var.document_type, start_due_date = var.start_due_date, end_due_date = var.end_due_date)
+> BillingInvoicesGet200Response BillingInvoicesGet(ad_account_id, bookmark = var.bookmark, page_size = 25, order = var.order, sort = var.sort, status = var.status, document_type = var.document_type, start_due_date = var.start_due_date, end_due_date = var.end_due_date)
 
 Get billing invoices
 
@@ -193,20 +207,20 @@ library(openapi)
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
-var_sort <- "DUE_DATE" # character | Field of which to sort billing invoices (Optional)
-var_order <- "ASCENDING" # character | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (Optional)
-var_status <- "OPEN" # character | Status of billing invoices to filter by (Optional)
-var_document_type <- "INVOICE" # character | Document type of billing invoices to filter by (Optional)
-var_start_due_date <- "Sun Jan 01 00:00:00 UTC 2023" # character | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (Optional)
-var_end_due_date <- "Mon Jan 01 00:00:00 UTC 2024" # character | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
+var_order <- Pinterest.Lib.PaginationOrder$new() # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (Optional)
+var_sort <- BillingInvoiceSortField$new() # BillingInvoiceSortField | Field of which to sort billing invoices (Optional)
+var_status <- BillingInvoiceStatus$new() # BillingInvoiceStatus | Status of billing invoices to filter by (Optional)
+var_document_type <- BillingInvoiceDocumentType$new() # BillingInvoiceDocumentType | Document type of billing invoices to filter by (Optional)
+var_start_due_date <- "start_due_date_example" # character | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (Optional)
+var_end_due_date <- "end_due_date_example" # character | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (Optional)
 
 api_instance <- BillingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BillingInvoicesGet(var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, sort = var_sort, order = var_order, status = var_status, document_type = var_document_type, start_due_date = var_start_due_date, end_due_date = var_end_due_datedata_file = "result.txt")
-result <- api_instance$BillingInvoicesGet(var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, sort = var_sort, order = var_order, status = var_status, document_type = var_document_type, start_due_date = var_start_due_date, end_due_date = var_end_due_date)
+# result <- api_instance$BillingInvoicesGet(var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, order = var_order, sort = var_sort, status = var_status, document_type = var_document_type, start_due_date = var_start_due_date, end_due_date = var_end_due_datedata_file = "result.txt")
+result <- api_instance$BillingInvoicesGet(var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, order = var_order, sort = var_sort, status = var_status, document_type = var_document_type, start_due_date = var_start_due_date, end_due_date = var_end_due_date)
 dput(result)
 ```
 
@@ -216,11 +230,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **sort** | Enum [DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER] | Field of which to sort billing invoices | [optional] [default to &quot;DUE_DATE&quot;]
- **order** | Enum [ASCENDING, DESCENDING] | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **status** | Enum [OPEN, CLOSED] | Status of billing invoices to filter by | [optional] 
- **document_type** | Enum [INVOICE, CREDIT_MEMO] | Document type of billing invoices to filter by | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **sort** | [**BillingInvoiceSortField**](.md)| Field of which to sort billing invoices | [optional] 
+ **status** | [**BillingInvoiceStatus**](.md)| Status of billing invoices to filter by | [optional] 
+ **document_type** | [**BillingInvoiceDocumentType**](.md)| Document type of billing invoices to filter by | [optional] 
  **start_due_date** | **character**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
  **end_due_date** | **character**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
 
@@ -240,16 +254,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BillingProfilesGet**
-> BillingProfilesGet200Response BillingProfilesGet(ad_account_id, is_active, bookmark = var.bookmark, page_size = 25)
+> BillingProfilesGet200Response BillingProfilesGet(is_active, ad_account_id, bookmark = var.bookmark, page_size = 25)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```R
@@ -258,17 +276,17 @@ library(openapi)
 # Get billing profiles
 #
 # prepare function argument(s)
-var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
 var_is_active <- "is_active_example" # character | Return active billing profiles, if false return all billing profiles.
+var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BillingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BillingProfilesGet(var_ad_account_id, var_is_active, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
-result <- api_instance$BillingProfilesGet(var_ad_account_id, var_is_active, bookmark = var_bookmark, page_size = var_page_size)
+# result <- api_instance$BillingProfilesGet(var_is_active, var_ad_account_id, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$BillingProfilesGet(var_is_active, var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -276,10 +294,10 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **character**| Unique identifier of an ad account. | 
  **is_active** | **character**| Return active billing profiles, if false return all billing profiles. | 
+ **ad_account_id** | **character**| Unique identifier of an ad account. | 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -297,15 +315,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **SsioAccountsGet**
-> SSIOAccountResponse SsioAccountsGet(ad_account_id)
+> SSIOAccount SsioAccountsGet(ad_account_id)
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```R
@@ -333,7 +356,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SSIOAccountResponse**](SSIOAccountResponse.md)
+[**SSIOAccount**](SSIOAccount.md)
 
 ### Authorization
 
@@ -347,16 +370,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **SsioInsertionOrderCreate**
-> SSIOCreateInsertionOrderResponse SsioInsertionOrderCreate(ad_account_id, ssio_create_insertion_order_request)
+> SSIOInsertionOrder SsioInsertionOrderCreate(ad_account_id, ssio_insertion_order_create)
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```R
@@ -366,14 +393,14 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_ssio_create_insertion_order_request <- SSIOCreateInsertionOrderRequest$new("billing_contact_email_example", "billing_contact_firstname_example", "billing_contact_lastname_example", "media_contact_email_example", "media_contact_firstname_example", "media_contact_lastname_example", "po_number_example", "start_date_example", "accepted_terms_id_example", "billto_billing_address_id_example", "billto_business_address_id_example", "billto_company_id_example", Currency$new(), "BUDGET", "order_name_example", "pmp_id_example", "agency_link_example", 123, "end_date_example", "user_email_example", 123, 123) # SSIOCreateInsertionOrderRequest | Order line to create.
+var_ssio_insertion_order_create <- SSIOInsertionOrderCreate$new("accepted_terms_id_example", "billing_contact_email_example", "billing_contact_firstname_example", "billing_contact_lastname_example", "billto_billing_address_id_example", "billto_business_address_id_example", "billto_company_id_example", Currency$new(), "media_contact_email_example", "media_contact_firstname_example", "media_contact_lastname_example", SSIOOrderLineType$new(), "order_name_example", "pmp_id_example", "po_number_example", "start_date_example", 123, "agency_link_example", 123, "end_date_example", 123, "user_email_example") # SSIOInsertionOrderCreate | 
 
 api_instance <- BillingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$SsioInsertionOrderCreate(var_ad_account_id, var_ssio_create_insertion_order_requestdata_file = "result.txt")
-result <- api_instance$SsioInsertionOrderCreate(var_ad_account_id, var_ssio_create_insertion_order_request)
+# result <- api_instance$SsioInsertionOrderCreate(var_ad_account_id, var_ssio_insertion_order_createdata_file = "result.txt")
+result <- api_instance$SsioInsertionOrderCreate(var_ad_account_id, var_ssio_insertion_order_create)
 dput(result)
 ```
 
@@ -382,11 +409,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **ssio_create_insertion_order_request** | [**SSIOCreateInsertionOrderRequest**](SSIOCreateInsertionOrderRequest.md)| Order line to create. | 
+ **ssio_insertion_order_create** | [**SSIOInsertionOrderCreate**](SSIOInsertionOrderCreate.md)|  | 
 
 ### Return type
 
-[**SSIOCreateInsertionOrderResponse**](SSIOCreateInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -400,16 +427,21 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **SsioInsertionOrderEdit**
-> SSIOEditInsertionOrderResponse SsioInsertionOrderEdit(ad_account_id, ssio_edit_insertion_order_request)
+> SSIOInsertionOrder SsioInsertionOrderEdit(ad_account_id, ssio_insertion_order_update)
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```R
@@ -419,14 +451,14 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_ssio_edit_insertion_order_request <- SSIOEditInsertionOrderRequest$new("agency_link_example", "billing_contact_email_example", "billing_contact_firstname_example", "billing_contact_lastname_example", 123, "end_date_example", "media_contact_email_example", "media_contact_firstname_example", "media_contact_lastname_example", "po_number_example", "start_date_example", "user_email_example", "ads_manager_order_line_id_example", "oracle_line_id_example", "salesforce_order_id_example", "salesforce_order_line_id_example") # SSIOEditInsertionOrderRequest | Order line to create.
+var_ssio_insertion_order_update <- SSIOInsertionOrderUpdate$new("ads_manager_order_line_id_example", "agency_link_example", "billing_contact_email_example", "billing_contact_firstname_example", "billing_contact_lastname_example", 123, "end_date_example", "media_contact_email_example", "media_contact_firstname_example", "media_contact_lastname_example", "oracle_line_id_example", "po_number_example", "salesforce_order_id_example", "salesforce_order_line_id_example", "start_date_example", "user_email_example") # SSIOInsertionOrderUpdate | 
 
 api_instance <- BillingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$SsioInsertionOrderEdit(var_ad_account_id, var_ssio_edit_insertion_order_requestdata_file = "result.txt")
-result <- api_instance$SsioInsertionOrderEdit(var_ad_account_id, var_ssio_edit_insertion_order_request)
+# result <- api_instance$SsioInsertionOrderEdit(var_ad_account_id, var_ssio_insertion_order_updatedata_file = "result.txt")
+result <- api_instance$SsioInsertionOrderEdit(var_ad_account_id, var_ssio_insertion_order_update)
 dput(result)
 ```
 
@@ -435,11 +467,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **ssio_edit_insertion_order_request** | [**SSIOEditInsertionOrderRequest**](SSIOEditInsertionOrderRequest.md)| Order line to create. | 
+ **ssio_insertion_order_update** | [**SSIOInsertionOrderUpdate**](SSIOInsertionOrderUpdate.md)|  | 
 
 ### Return type
 
-[**SSIOEditInsertionOrderResponse**](SSIOEditInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -453,16 +485,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **SsioInsertionOrdersStatusGetByAdAccount**
 > SsioInsertionOrdersStatusGetByAdAccount200Response SsioInsertionOrdersStatusGetByAdAccount(ad_account_id, bookmark = var.bookmark, page_size = 25)
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```R
@@ -473,7 +509,7 @@ library(openapi)
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BillingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -490,7 +526,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -508,16 +544,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **SsioInsertionOrdersStatusGetByPinOrderId**
 > SSIOInsertionOrderStatusResponse SsioInsertionOrdersStatusGetByPinOrderId(ad_account_id, pin_order_id)
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```R
@@ -527,7 +567,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_pin_order_id <- "0Q01N0000015hekSVDFDC" # character | The pin order id associated with the ssio insertion order
+var_pin_order_id <- "pin_order_id_example" # character | The pin order id associated with the ssio insertion order
 
 api_instance <- BillingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -561,16 +601,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **SsioOrderLinesGetByAdAccount**
-> SsioOrderLinesGetByAdAccount200Response SsioOrderLinesGetByAdAccount(ad_account_id, bookmark = var.bookmark, page_size = 25, pin_order_id = var.pin_order_id)
+> SsioOrderLinesGetByAdAccount200Response SsioOrderLinesGetByAdAccount(ad_account_id, pin_order_id = var.pin_order_id, bookmark = var.bookmark, page_size = 25)
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```R
@@ -580,16 +624,16 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
+var_pin_order_id <- "pin_order_id_example" # character | The pin order id associated with the SSIO insertion order (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
-var_pin_order_id <- "0Q01N0000015hekSVDFDC" # character | The pin order id associated with the ssio insertino order (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BillingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$SsioOrderLinesGetByAdAccount(var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, pin_order_id = var_pin_order_iddata_file = "result.txt")
-result <- api_instance$SsioOrderLinesGetByAdAccount(var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, pin_order_id = var_pin_order_id)
+# result <- api_instance$SsioOrderLinesGetByAdAccount(var_ad_account_id, pin_order_id = var_pin_order_id, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$SsioOrderLinesGetByAdAccount(var_ad_account_id, pin_order_id = var_pin_order_id, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -598,9 +642,9 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
+ **pin_order_id** | **character**| The pin order id associated with the SSIO insertion order | [optional] 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **pin_order_id** | **character**| The pin order id associated with the ssio insertino order | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -618,7 +662,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

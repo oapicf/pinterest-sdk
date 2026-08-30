@@ -1,6 +1,6 @@
 # openapi::AssetGroupType
 
-Asset group type
+Asset group type.
 
 ## Properties
 Name | Type | Description | Notes

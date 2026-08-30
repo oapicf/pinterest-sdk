@@ -1,7 +1,8 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Host};
+use axum_extra::extract::CookieJar;
 use bytes::Bytes;
+use headers::Host;
 use http::Method;
 use serde::{Deserialize, Serialize};
 
@@ -11,75 +12,103 @@ use crate::{models, types::*};
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum CatalogsSlashAvailableFilterValuesResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::CatalogsAvailableFilterValues)
     ,
-    /// Invalid parameters.
-    Status400_InvalidParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unauthorized access.
-    Status401_UnauthorizedAccess
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Forbidden. Account not authorized to access available filter values.
-    Status403_Forbidden
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Data feed not found.
-    Status404_DataFeedNotFound
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
     ,
-    /// Can't access this feature without an existing catalog.
-    Status409_Can
-    (models::Error)
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum CatalogsSlashCreateResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::Catalog)
     ,
-    /// Invalid parameters.
-    Status400_InvalidParameters
-    (models::Error)
+    /// Resource create operation completed successfully.
+    Status201_ResourceCreateOperationCompletedSuccessfully
+    (models::Catalog)
     ,
-    /// Unauthorized access.
-    Status401_UnauthorizedAccess
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum CatalogsSlashListResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::CatalogsList200Response)
     ,
-    /// Invalid parameters.
-    Status400_InvalidParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unauthorized access.
-    Status401_UnauthorizedAccess
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 
@@ -111,7 +140,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     host: &Host,
     cookies: &CookieJar,
       query_params: &models::CatalogsSlashCreateQueryParams,
-            body: &models::CatalogsCreateRequest,
+            body: &models::CatalogCreate,
     ) -> Result<CatalogsSlashCreateResponse, E>;
 
     /// List catalogs.

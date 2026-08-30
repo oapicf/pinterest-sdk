@@ -23,7 +23,7 @@ pinterest_rest_api_pin_media_source_images_url_SOURCETYPE_e pin_media_source_ima
 }
 
 static pin_media_source_images_url_t *pin_media_source_images_url_create_internal(
-    int index,
+    int *index,
     list_t *items,
     pinterest_rest_api_pin_media_source_images_url_SOURCETYPE_e source_type
     ) {
@@ -31,24 +31,33 @@ static pin_media_source_images_url_t *pin_media_source_images_url_create_interna
     if (!pin_media_source_images_url_local_var) {
         return NULL;
     }
+    memset(pin_media_source_images_url_local_var, 0, sizeof(pin_media_source_images_url_t));
+    pin_media_source_images_url_local_var->_library_owned = 1;
     pin_media_source_images_url_local_var->index = index;
     pin_media_source_images_url_local_var->items = items;
     pin_media_source_images_url_local_var->source_type = source_type;
-
-    pin_media_source_images_url_local_var->_library_owned = 1;
     return pin_media_source_images_url_local_var;
 }
 
 __attribute__((deprecated)) pin_media_source_images_url_t *pin_media_source_images_url_create(
-    int index,
+    int *index,
     list_t *items,
     pinterest_rest_api_pin_media_source_images_url_SOURCETYPE_e source_type
     ) {
-    return pin_media_source_images_url_create_internal (
-        index,
+    int *index_copy = NULL;
+    if (index) {
+        index_copy = malloc(sizeof(int));
+        if (index_copy) *index_copy = *index;
+    }
+    pin_media_source_images_url_t *result = pin_media_source_images_url_create_internal (
+        index_copy,
         items,
         source_type
         );
+    if (!result) {
+        free(index_copy);
+    }
+    return result;
 }
 
 void pin_media_source_images_url_free(pin_media_source_images_url_t *pin_media_source_images_url) {
@@ -60,6 +69,10 @@ void pin_media_source_images_url_free(pin_media_source_images_url_t *pin_media_s
         return ;
     }
     listEntry_t *listEntry;
+    if (pin_media_source_images_url->index) {
+        free(pin_media_source_images_url->index);
+        pin_media_source_images_url->index = NULL;
+    }
     if (pin_media_source_images_url->items) {
         list_ForEach(listEntry, pin_media_source_images_url->items) {
             pin_media_source_images_url_item_free(listEntry->data);
@@ -75,7 +88,7 @@ cJSON *pin_media_source_images_url_convertToJSON(pin_media_source_images_url_t *
 
     // pin_media_source_images_url->index
     if(pin_media_source_images_url->index) {
-    if(cJSON_AddNumberToObject(item, "index", pin_media_source_images_url->index) == NULL) {
+    if(cJSON_AddNumberToObject(item, "index", *pin_media_source_images_url->index) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -123,6 +136,9 @@ pin_media_source_images_url_t *pin_media_source_images_url_parseFromJSON(cJSON *
 
     pin_media_source_images_url_t *pin_media_source_images_url_local_var = NULL;
 
+    // define the local variable for pin_media_source_images_url->index
+    int *index_local_var = NULL;
+
     // define the local list for pin_media_source_images_url->items
     list_t *itemsList = NULL;
 
@@ -136,6 +152,12 @@ pin_media_source_images_url_t *pin_media_source_images_url_parseFromJSON(cJSON *
     {
     goto end; //Numeric
     }
+    index_local_var = malloc(sizeof(int));
+    if(!index_local_var)
+    {
+        goto end;
+    }
+    *index_local_var = index->valuedouble;
     }
 
     // pin_media_source_images_url->items
@@ -183,14 +205,23 @@ pin_media_source_images_url_t *pin_media_source_images_url_parseFromJSON(cJSON *
     source_typeVariable = pin_media_source_images_url_source_type_FromString(source_type->valuestring);
 
 
+
     pin_media_source_images_url_local_var = pin_media_source_images_url_create_internal (
-        index ? index->valuedouble : 0,
+        index_local_var,
         itemsList,
         source_typeVariable
         );
 
+    if (!pin_media_source_images_url_local_var) {
+        goto end;
+    }
+
     return pin_media_source_images_url_local_var;
 end:
+    if (index_local_var) {
+        free(index_local_var);
+        index_local_var = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {

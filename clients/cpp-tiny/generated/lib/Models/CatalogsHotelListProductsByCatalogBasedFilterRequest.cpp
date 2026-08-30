@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsHotelListProductsByCatalogBasedFilterRequest::CatalogsHotelListProductsByCatalogBasedFilterRequest()
 {
-	catalog_id = std::string();
+	catalog_id = null;
 	catalog_type = std::string();
 	filters = CatalogsHotelProductGroupFilters();
 }
@@ -107,7 +107,7 @@ CatalogsHotelListProductsByCatalogBasedFilterRequest::getCatalogId()
 }
 
 void
-CatalogsHotelListProductsByCatalogBasedFilterRequest::setCatalogId(std::string  catalog_id)
+CatalogsHotelListProductsByCatalogBasedFilterRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -119,7 +119,7 @@ CatalogsHotelListProductsByCatalogBasedFilterRequest::getCatalogType()
 }
 
 void
-CatalogsHotelListProductsByCatalogBasedFilterRequest::setCatalogType(std::string  catalog_type)
+CatalogsHotelListProductsByCatalogBasedFilterRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -131,7 +131,7 @@ CatalogsHotelListProductsByCatalogBasedFilterRequest::getFilters()
 }
 
 void
-CatalogsHotelListProductsByCatalogBasedFilterRequest::setFilters(CatalogsHotelProductGroupFilters  filters)
+CatalogsHotelListProductsByCatalogBasedFilterRequest::setFilters(CatalogsHotelProductGroupFilters filters)
 {
 	this->filters = filters;
 }

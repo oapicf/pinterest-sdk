@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **CUSTOM_NUMBER_0** | [**CatalogsProductGroupUint32Criteria**](.md) |  |  |
+| **CUSTOM_NUMBER_0** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  |  |
 
 
 

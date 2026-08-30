@@ -2,8 +2,8 @@ package apimodels;
 
 import apimodels.CampaignBidOptionsUpdate;
 import apimodels.EntityStatus;
+import apimodels.IntendedPromotionType;
 import apimodels.ObjectiveType;
-import apimodels.TrackingUrls;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -14,14 +14,35 @@ import javax.validation.Valid;
 /**
  * CampaignUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CampaignUpdateRequest   {
-  @JsonProperty("id")
-  @NotNull
-@Pattern(regexp="^\\d+$")
+  @JsonProperty("bid_options")
+  @Valid
 
-  private String id;
+  private CampaignBidOptionsUpdate bidOptions;
+
+  @JsonProperty("intended_promotion_type")
+  @Valid
+
+  private IntendedPromotionType intendedPromotionType;
+
+  @JsonProperty("is_ltv_optimized")
+  
+  private Boolean isLtvOptimized;
+
+  @JsonProperty("is_performance_plus")
+  
+  private Boolean isPerformancePlus;
+
+  @JsonProperty("is_top_of_search")
+  
+  private Boolean isTopOfSearch;
+
+  @JsonProperty("objective_type")
+  @Valid
+
+  private ObjectiveType objectiveType;
 
   @JsonProperty("ad_account_id")
   @NotNull
@@ -33,13 +54,27 @@ public class CampaignUpdateRequest   {
   
   private Integer dailySpendCap;
 
+  @JsonProperty("default_ad_group_budget_in_micro_currency")
+  
+  private Integer defaultAdGroupBudgetInMicroCurrency;
+
   @JsonProperty("end_time")
   
   private Integer endTime;
 
+  @JsonProperty("id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
+
+  private String id;
+
   @JsonProperty("is_automated_campaign")
   
   private Boolean isAutomatedCampaign;
+
+  @JsonProperty("is_campaign_budget_optimization")
+  
+  private Boolean isCampaignBudgetOptimization;
 
   @JsonProperty("is_flexible_daily_budgets")
   
@@ -68,47 +103,109 @@ public class CampaignUpdateRequest   {
   private EntityStatus status;
 
   @JsonProperty("tracking_urls")
-  @Valid
-
-  private TrackingUrls trackingUrls;
-
-  @JsonProperty("default_ad_group_budget_in_micro_currency")
   
-  private Integer defaultAdGroupBudgetInMicroCurrency;
+  private Object trackingUrls;
 
-  @JsonProperty("is_campaign_budget_optimization")
-  
-  private Boolean isCampaignBudgetOptimization;
-
-  @JsonProperty("bid_options")
-  @Valid
-
-  private CampaignBidOptionsUpdate bidOptions;
-
-  @JsonProperty("is_performance_plus")
-  
-  private Boolean isPerformancePlus;
-
-  @JsonProperty("objective_type")
-  @Valid
-
-  private ObjectiveType objectiveType;
-
-  public CampaignUpdateRequest id(String id) {
-    this.id = id;
+  public CampaignUpdateRequest bidOptions(CampaignBidOptionsUpdate bidOptions) {
+    this.bidOptions = bidOptions;
     return this;
   }
 
    /**
-   * Campaign ID.
-   * @return id
+   * Get bidOptions
+   * @return bidOptions
   **/
-  public String getId() {
-    return id;
+  public CampaignBidOptionsUpdate getBidOptions() {
+    return bidOptions;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setBidOptions(CampaignBidOptionsUpdate bidOptions) {
+    this.bidOptions = bidOptions;
+  }
+
+  public CampaignUpdateRequest intendedPromotionType(IntendedPromotionType intendedPromotionType) {
+    this.intendedPromotionType = intendedPromotionType;
+    return this;
+  }
+
+   /**
+   * Get intendedPromotionType
+   * @return intendedPromotionType
+  **/
+  public IntendedPromotionType getIntendedPromotionType() {
+    return intendedPromotionType;
+  }
+
+  public void setIntendedPromotionType(IntendedPromotionType intendedPromotionType) {
+    this.intendedPromotionType = intendedPromotionType;
+  }
+
+  public CampaignUpdateRequest isLtvOptimized(Boolean isLtvOptimized) {
+    this.isLtvOptimized = isLtvOptimized;
+    return this;
+  }
+
+   /**
+   * Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.
+   * @return isLtvOptimized
+  **/
+  public Boolean getIsLtvOptimized() {
+    return isLtvOptimized;
+  }
+
+  public void setIsLtvOptimized(Boolean isLtvOptimized) {
+    this.isLtvOptimized = isLtvOptimized;
+  }
+
+  public CampaignUpdateRequest isPerformancePlus(Boolean isPerformancePlus) {
+    this.isPerformancePlus = isPerformancePlus;
+    return this;
+  }
+
+   /**
+   * Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>. This field is immutable, except only for campaigns in draft status which may update this field.
+   * @return isPerformancePlus
+  **/
+  public Boolean getIsPerformancePlus() {
+    return isPerformancePlus;
+  }
+
+  public void setIsPerformancePlus(Boolean isPerformancePlus) {
+    this.isPerformancePlus = isPerformancePlus;
+  }
+
+  public CampaignUpdateRequest isTopOfSearch(Boolean isTopOfSearch) {
+    this.isTopOfSearch = isTopOfSearch;
+    return this;
+  }
+
+   /**
+   * Enable Top Of Search for your campaign. This field is immutable, except only for campaigns in draft status which may update this field.
+   * @return isTopOfSearch
+  **/
+  public Boolean getIsTopOfSearch() {
+    return isTopOfSearch;
+  }
+
+  public void setIsTopOfSearch(Boolean isTopOfSearch) {
+    this.isTopOfSearch = isTopOfSearch;
+  }
+
+  public CampaignUpdateRequest objectiveType(ObjectiveType objectiveType) {
+    this.objectiveType = objectiveType;
+    return this;
+  }
+
+   /**
+   * Get objectiveType
+   * @return objectiveType
+  **/
+  public ObjectiveType getObjectiveType() {
+    return objectiveType;
+  }
+
+  public void setObjectiveType(ObjectiveType objectiveType) {
+    this.objectiveType = objectiveType;
   }
 
   public CampaignUpdateRequest adAccountId(String adAccountId) {
@@ -145,6 +242,23 @@ public class CampaignUpdateRequest   {
     this.dailySpendCap = dailySpendCap;
   }
 
+  public CampaignUpdateRequest defaultAdGroupBudgetInMicroCurrency(Integer defaultAdGroupBudgetInMicroCurrency) {
+    this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
+    return this;
+  }
+
+   /**
+   * When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
+   * @return defaultAdGroupBudgetInMicroCurrency
+  **/
+  public Integer getDefaultAdGroupBudgetInMicroCurrency() {
+    return defaultAdGroupBudgetInMicroCurrency;
+  }
+
+  public void setDefaultAdGroupBudgetInMicroCurrency(Integer defaultAdGroupBudgetInMicroCurrency) {
+    this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
+  }
+
   public CampaignUpdateRequest endTime(Integer endTime) {
     this.endTime = endTime;
     return this;
@@ -162,13 +276,30 @@ public class CampaignUpdateRequest   {
     this.endTime = endTime;
   }
 
+  public CampaignUpdateRequest id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Campaign ID.
+   * @return id
+  **/
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
   public CampaignUpdateRequest isAutomatedCampaign(Boolean isAutomatedCampaign) {
     this.isAutomatedCampaign = isAutomatedCampaign;
     return this;
   }
 
    /**
-   * Specifies whether the campaign was created in the automated campaign flow
+   * Note: This field is immutable unless the campaign is in draft status. Specifies whether the campaign was created in the automated campaign flow. When using Automated Campaigns, a daily spend cap must be set, and Pinterest Performance+ may not be used. The following objective types are supported: - CONSIDERATION - WEB\\_CONVERSION - SALES - CATALOG\\_SALES
    * @return isAutomatedCampaign
   **/
   public Boolean getIsAutomatedCampaign() {
@@ -179,13 +310,30 @@ public class CampaignUpdateRequest   {
     this.isAutomatedCampaign = isAutomatedCampaign;
   }
 
+  public CampaignUpdateRequest isCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
+    this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
+    return this;
+  }
+
+   /**
+   * Note: This field is immutable unless the campaign is in draft status. Determines if a campaign automatically generates ad-group level budgets given a campaign budget to maximize campaign outcome. When using campaign budgets with a lifetime spend cap, the end time must be provided.
+   * @return isCampaignBudgetOptimization
+  **/
+  public Boolean getIsCampaignBudgetOptimization() {
+    return isCampaignBudgetOptimization;
+  }
+
+  public void setIsCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
+    this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
+  }
+
   public CampaignUpdateRequest isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
     this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
     return this;
   }
 
    /**
-   * Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".
+   * Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\". Flexible daily budgets are only supported for campaign budget optimization with a daily spend cap, and not a lifetime spend cap.
    * @return isFlexibleDailyBudgets
   **/
   public Boolean getIsFlexibleDailyBudgets() {
@@ -281,7 +429,7 @@ public class CampaignUpdateRequest   {
     this.status = status;
   }
 
-  public CampaignUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
+  public CampaignUpdateRequest trackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -290,97 +438,12 @@ public class CampaignUpdateRequest   {
    * Get trackingUrls
    * @return trackingUrls
   **/
-  public TrackingUrls getTrackingUrls() {
+  public Object getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
+  public void setTrackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
-  }
-
-  public CampaignUpdateRequest defaultAdGroupBudgetInMicroCurrency(Integer defaultAdGroupBudgetInMicroCurrency) {
-    this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
-    return this;
-  }
-
-   /**
-   * When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
-   * @return defaultAdGroupBudgetInMicroCurrency
-  **/
-  public Integer getDefaultAdGroupBudgetInMicroCurrency() {
-    return defaultAdGroupBudgetInMicroCurrency;
-  }
-
-  public void setDefaultAdGroupBudgetInMicroCurrency(Integer defaultAdGroupBudgetInMicroCurrency) {
-    this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
-  }
-
-  public CampaignUpdateRequest isCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
-    this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
-    return this;
-  }
-
-   /**
-   * Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
-   * @return isCampaignBudgetOptimization
-  **/
-  public Boolean getIsCampaignBudgetOptimization() {
-    return isCampaignBudgetOptimization;
-  }
-
-  public void setIsCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
-    this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
-  }
-
-  public CampaignUpdateRequest bidOptions(CampaignBidOptionsUpdate bidOptions) {
-    this.bidOptions = bidOptions;
-    return this;
-  }
-
-   /**
-   * Get bidOptions
-   * @return bidOptions
-  **/
-  public CampaignBidOptionsUpdate getBidOptions() {
-    return bidOptions;
-  }
-
-  public void setBidOptions(CampaignBidOptionsUpdate bidOptions) {
-    this.bidOptions = bidOptions;
-  }
-
-  public CampaignUpdateRequest isPerformancePlus(Boolean isPerformancePlus) {
-    this.isPerformancePlus = isPerformancePlus;
-    return this;
-  }
-
-   /**
-   * Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>. This field is immutable, except only for campaigns in draft status which may update this field.
-   * @return isPerformancePlus
-  **/
-  public Boolean getIsPerformancePlus() {
-    return isPerformancePlus;
-  }
-
-  public void setIsPerformancePlus(Boolean isPerformancePlus) {
-    this.isPerformancePlus = isPerformancePlus;
-  }
-
-  public CampaignUpdateRequest objectiveType(ObjectiveType objectiveType) {
-    this.objectiveType = objectiveType;
-    return this;
-  }
-
-   /**
-   * Get objectiveType
-   * @return objectiveType
-  **/
-  public ObjectiveType getObjectiveType() {
-    return objectiveType;
-  }
-
-  public void setObjectiveType(ObjectiveType objectiveType) {
-    this.objectiveType = objectiveType;
   }
 
 
@@ -393,28 +456,31 @@ public class CampaignUpdateRequest   {
       return false;
     }
     CampaignUpdateRequest campaignUpdateRequest = (CampaignUpdateRequest) o;
-    return Objects.equals(id, campaignUpdateRequest.id) &&
+    return Objects.equals(bidOptions, campaignUpdateRequest.bidOptions) &&
+        Objects.equals(intendedPromotionType, campaignUpdateRequest.intendedPromotionType) &&
+        Objects.equals(isLtvOptimized, campaignUpdateRequest.isLtvOptimized) &&
+        Objects.equals(isPerformancePlus, campaignUpdateRequest.isPerformancePlus) &&
+        Objects.equals(isTopOfSearch, campaignUpdateRequest.isTopOfSearch) &&
+        Objects.equals(objectiveType, campaignUpdateRequest.objectiveType) &&
         Objects.equals(adAccountId, campaignUpdateRequest.adAccountId) &&
         Objects.equals(dailySpendCap, campaignUpdateRequest.dailySpendCap) &&
+        Objects.equals(defaultAdGroupBudgetInMicroCurrency, campaignUpdateRequest.defaultAdGroupBudgetInMicroCurrency) &&
         Objects.equals(endTime, campaignUpdateRequest.endTime) &&
+        Objects.equals(id, campaignUpdateRequest.id) &&
         Objects.equals(isAutomatedCampaign, campaignUpdateRequest.isAutomatedCampaign) &&
+        Objects.equals(isCampaignBudgetOptimization, campaignUpdateRequest.isCampaignBudgetOptimization) &&
         Objects.equals(isFlexibleDailyBudgets, campaignUpdateRequest.isFlexibleDailyBudgets) &&
         Objects.equals(lifetimeSpendCap, campaignUpdateRequest.lifetimeSpendCap) &&
         Objects.equals(name, campaignUpdateRequest.name) &&
         Objects.equals(orderLineId, campaignUpdateRequest.orderLineId) &&
         Objects.equals(startTime, campaignUpdateRequest.startTime) &&
         Objects.equals(status, campaignUpdateRequest.status) &&
-        Objects.equals(trackingUrls, campaignUpdateRequest.trackingUrls) &&
-        Objects.equals(defaultAdGroupBudgetInMicroCurrency, campaignUpdateRequest.defaultAdGroupBudgetInMicroCurrency) &&
-        Objects.equals(isCampaignBudgetOptimization, campaignUpdateRequest.isCampaignBudgetOptimization) &&
-        Objects.equals(bidOptions, campaignUpdateRequest.bidOptions) &&
-        Objects.equals(isPerformancePlus, campaignUpdateRequest.isPerformancePlus) &&
-        Objects.equals(objectiveType, campaignUpdateRequest.objectiveType);
+        Objects.equals(trackingUrls, campaignUpdateRequest.trackingUrls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adAccountId, dailySpendCap, endTime, isAutomatedCampaign, isFlexibleDailyBudgets, lifetimeSpendCap, name, orderLineId, startTime, status, trackingUrls, defaultAdGroupBudgetInMicroCurrency, isCampaignBudgetOptimization, bidOptions, isPerformancePlus, objectiveType);
+    return Objects.hash(bidOptions, intendedPromotionType, isLtvOptimized, isPerformancePlus, isTopOfSearch, objectiveType, adAccountId, dailySpendCap, defaultAdGroupBudgetInMicroCurrency, endTime, id, isAutomatedCampaign, isCampaignBudgetOptimization, isFlexibleDailyBudgets, lifetimeSpendCap, name, orderLineId, startTime, status, trackingUrls);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -423,11 +489,19 @@ public class CampaignUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignUpdateRequest {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
+    sb.append("    intendedPromotionType: ").append(toIndentedString(intendedPromotionType)).append("\n");
+    sb.append("    isLtvOptimized: ").append(toIndentedString(isLtvOptimized)).append("\n");
+    sb.append("    isPerformancePlus: ").append(toIndentedString(isPerformancePlus)).append("\n");
+    sb.append("    isTopOfSearch: ").append(toIndentedString(isTopOfSearch)).append("\n");
+    sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    dailySpendCap: ").append(toIndentedString(dailySpendCap)).append("\n");
+    sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    isAutomatedCampaign: ").append(toIndentedString(isAutomatedCampaign)).append("\n");
+    sb.append("    isCampaignBudgetOptimization: ").append(toIndentedString(isCampaignBudgetOptimization)).append("\n");
     sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    lifetimeSpendCap: ").append(toIndentedString(lifetimeSpendCap)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -435,11 +509,6 @@ public class CampaignUpdateRequest   {
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
-    sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
-    sb.append("    isCampaignBudgetOptimization: ").append(toIndentedString(isCampaignBudgetOptimization)).append("\n");
-    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
-    sb.append("    isPerformancePlus: ").append(toIndentedString(isPerformancePlus)).append("\n");
-    sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -449,10 +518,7 @@ public class CampaignUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

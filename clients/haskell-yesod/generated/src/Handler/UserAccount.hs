@@ -14,7 +14,7 @@ getUserAccountFollowingBoardsR = notImplemented
 
 -- | Follow user
 --
--- &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+-- **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 -- operationId: followUser/update
 postUserAccountFollowingByTextR :: Text -- ^ A valid username
                                 -> Handler Value
@@ -36,7 +36,7 @@ getUserAccountBusinessesR = notImplemented
 
 -- | Unverify website
 --
--- Unverifu a website verified by the signed-in user.
+-- Unverify a website verified by the signed-in user.
 -- operationId: unverifyWebsite/delete
 deleteUserAccountWebsitesR :: Handler Value
 deleteUserAccountWebsitesR = notImplemented
@@ -72,7 +72,7 @@ getUsersByTextInterestsFollowR username = notImplemented
 
 -- | Get user account
 --
--- Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+-- Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.
 -- operationId: userAccount/get
 getUserAccountR :: Handler Value
 getUserAccountR = notImplemented

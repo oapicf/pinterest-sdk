@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,6 +20,7 @@ var _ MappedNullable = &CatalogsUpdatableHotelAttributes{}
 
 // CatalogsUpdatableHotelAttributes struct for CatalogsUpdatableHotelAttributes
 type CatalogsUpdatableHotelAttributes struct {
+	// Hotel address
 	Address *CatalogsHotelAddress `json:"address,omitempty"`
 	// Base price of the hotel room per night followed by the ISO currency code
 	BasePrice NullableString `json:"base_price,omitempty"`
@@ -39,6 +40,7 @@ type CatalogsUpdatableHotelAttributes struct {
 	CustomLabel4 NullableString `json:"custom_label_4,omitempty"`
 	// Brief description of the hotel.
 	Description NullableString `json:"description,omitempty"`
+	// If specified, you must provide all properties
 	GuestRatings *CatalogsHotelGuestRatings `json:"guest_ratings,omitempty"`
 	// Latitude of the hotel.
 	Latitude *float32 `json:"latitude,omitempty"`

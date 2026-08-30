@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
+**CatalogId** | **String** | Catalog ID pertaining to the product group. | 
 **CatalogType** | **String** |  | 
 **Country** | [**Country**](Country.md) |  | 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 

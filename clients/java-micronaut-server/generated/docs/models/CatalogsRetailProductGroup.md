@@ -8,7 +8,7 @@ The class is defined in **[CatalogsRetailProductGroup.java](../../src/main/java/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | `String` | Catalog id pertaining to the retail product group. | 
+**catalogId** | `String` | Catalog ID pertaining to the product group. | 
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **country** | `String` |  |  [optional property]
 **createdAt** | `Integer` | Unix timestamp in seconds of when catalog product group was created. |  [optional property]

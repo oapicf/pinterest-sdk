@@ -1,10 +1,12 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.AdAccountsCountryResponse;
-import org.openapitools.vertxweb.server.model.BookClosedResponse;
-import org.openapitools.vertxweb.server.model.DeliveryMetricsResponse;
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.SingleInterestTargetingOptionResponse;
+import org.openapitools.vertxweb.server.model.AdAccountCountriesGet200Response;
+import org.openapitools.vertxweb.server.model.BookClosed;
+import org.openapitools.vertxweb.server.model.DeliveryMetricsGet200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PublicTargetingType;
+import org.openapitools.vertxweb.server.model.ReportType;
+import org.openapitools.vertxweb.server.model.SingleInterestTargetingOption;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -15,10 +17,10 @@ import java.util.List;
 import java.util.Map;
 
 public interface ResourcesApi  {
-    Future<ApiResponse<AdAccountsCountryResponse>> adAccountCountriesGet();
-    Future<ApiResponse<DeliveryMetricsResponse>> deliveryMetricsGet(String reportType);
-    Future<ApiResponse<SingleInterestTargetingOptionResponse>> interestTargetingOptionsGet(String interestId);
+    Future<ApiResponse<AdAccountCountriesGet200Response>> adAccountCountriesGet();
+    Future<ApiResponse<DeliveryMetricsGet200Response>> deliveryMetricsGet(ReportType reportType);
+    Future<ApiResponse<SingleInterestTargetingOption>> interestTargetingOptionsGet(String interestId);
     Future<ApiResponse<Void>> leadFormQuestionsGet();
-    Future<ApiResponse<BookClosedResponse>> metricsReadyStateGet(String date);
-    Future<ApiResponse<List<Object>>> targetingOptionsGet(String targetingType, String clientId, String oauthSignature, String timestamp, String adAccountId);
+    Future<ApiResponse<BookClosed>> metricsReadyStateGet(String date);
+    Future<ApiResponse<List<Object>>> targetingOptionsGet(PublicTargetingType targetingType, String adAccountId, String clientId, String oauthSignature, String timestamp);
 }

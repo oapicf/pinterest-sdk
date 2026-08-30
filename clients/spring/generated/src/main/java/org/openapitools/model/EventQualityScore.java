@@ -13,20 +13,20 @@ import org.openapitools.model.SourcePlatformOptions;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Schema for GET Conversion EQS response.
  */
 
 @Schema(name = "EventQualityScore", description = "Schema for GET Conversion EQS response.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class EventQualityScore {
 
   private IngestionSourceOptions ingestionSource;
@@ -70,6 +70,7 @@ public class EventQualityScore {
     return ingestionSource;
   }
 
+  @JsonProperty("ingestion_source")
   public void setIngestionSource(IngestionSourceOptions ingestionSource) {
     this.ingestionSource = ingestionSource;
   }
@@ -90,6 +91,7 @@ public class EventQualityScore {
     return lookbackPeriod;
   }
 
+  @JsonProperty("lookback_period")
   public void setLookbackPeriod(LookbackPeriodOptions lookbackPeriod) {
     this.lookbackPeriod = lookbackPeriod;
   }
@@ -110,6 +112,7 @@ public class EventQualityScore {
     return overallStatus;
   }
 
+  @JsonProperty("overall_status")
   public void setOverallStatus(OverallStatusOptions overallStatus) {
     this.overallStatus = overallStatus;
   }
@@ -130,6 +133,7 @@ public class EventQualityScore {
     return qualityComponents;
   }
 
+  @JsonProperty("quality_components")
   public void setQualityComponents(QualityComponents qualityComponents) {
     this.qualityComponents = qualityComponents;
   }
@@ -150,6 +154,7 @@ public class EventQualityScore {
     return sourcePlatform;
   }
 
+  @JsonProperty("source_platform")
   public void setSourcePlatform(SourcePlatformOptions sourcePlatform) {
     this.sourcePlatform = sourcePlatform;
   }
@@ -192,11 +197,8 @@ public class EventQualityScore {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

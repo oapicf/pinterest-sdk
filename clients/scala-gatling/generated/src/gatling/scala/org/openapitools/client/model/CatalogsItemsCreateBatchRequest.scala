@@ -8,7 +8,7 @@ case class CatalogsItemsCreateBatchRequest (
     _items: List[ItemCreateBatchRecord],
     /* We recommend using the CatalogsLocale values. */
     _language: String,
-    _operation: BatchOperation
+    _operation: String
 )
 object CatalogsItemsCreateBatchRequest {
     def toStringBody(var_country: Object, var_items: Object, var_language: Object, var_operation: Object) =

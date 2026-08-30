@@ -3,40 +3,41 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MINPRICE** | [**CatalogsProductGroupPricingCriteria**](.md) |  | 
-**MAXPRICE** | [**CatalogsProductGroupPricingCriteria**](.md) |  | 
-**CURRENCY** | [**CatalogsProductGroupCurrencyCriteria**](.md) |  | 
-**ITEMID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**AVAILABILITY** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CONDITION** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOMLABEL0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
-**CUSTOMLABEL1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
-**CUSTOMLABEL2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
-**CUSTOMLABEL3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
-**CUSTOMLABEL4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
-**ITEMGROUPID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](.md) |  | 
-**MEDIATYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  | 
-**PRODUCTTYPE4** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
-**PRODUCTTYPE3** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
-**PRODUCTTYPE2** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
-**PRODUCTTYPE1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
-**PRODUCTTYPE0** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
-**GOOGLEPRODUCTCATEGORY6** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
-**GOOGLEPRODUCTCATEGORY5** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
-**GOOGLEPRODUCTCATEGORY4** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
-**GOOGLEPRODUCTCATEGORY3** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
-**GOOGLEPRODUCTCATEGORY2** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
-**GOOGLEPRODUCTCATEGORY1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
-**GOOGLEPRODUCTCATEGORY0** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
-**PRODUCTGROUP** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOMNUMBER0** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
-**CUSTOMNUMBER1** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
-**CUSTOMNUMBER2** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
-**CUSTOMNUMBER3** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
-**CUSTOMNUMBER4** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
-**TITLEKEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**MINPRICE** | [**CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  | 
+**MAXPRICE** | [**CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  | 
+**CURRENCY** | [**CatalogsProductGroupCurrencyCriteria**](CatalogsProductGroupCurrencyCriteria.md) |  | 
+**ITEMID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**AVAILABILITY** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**CONDITION** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**CUSTOMLABEL0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**CUSTOMLABEL1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**CUSTOMLABEL2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**CUSTOMLABEL3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**CUSTOMLABEL4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**ITEMGROUPID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](CatalogsProductGroupMultipleGenderCriteria.md) |  | 
+**MEDIATYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](CatalogsProductGroupMultipleMediaTypesCriteria.md) |  | 
+**PRODUCTTYPE4** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**PRODUCTTYPE3** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**PRODUCTTYPE2** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**PRODUCTTYPE1** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**PRODUCTTYPE0** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**GOOGLEPRODUCTCATEGORY6** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**GOOGLEPRODUCTCATEGORY5** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**GOOGLEPRODUCTCATEGORY4** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**GOOGLEPRODUCTCATEGORY3** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**GOOGLEPRODUCTCATEGORY2** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**GOOGLEPRODUCTCATEGORY1** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**GOOGLEPRODUCTCATEGORY0** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**CUSTOMNUMBER0** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
+**CUSTOMNUMBER1** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
+**CUSTOMNUMBER2** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
+**CUSTOMNUMBER3** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
+**CUSTOMNUMBER4** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
+**TITLEKEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**PINTERESTPRODUCTCATEGORIES** | [**CatalogsProductGroupMultiplePinterestProductCategoryCriteria**](CatalogsProductGroupMultiplePinterestProductCategoryCriteria.md) |  | 
+**PRODUCTGROUP** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 ## Examples
 
@@ -69,13 +70,14 @@ $CatalogsProductGroupFilterKeys = Initialize-PSOpenAPIToolsCatalogsProductGroupF
  -GOOGLEPRODUCTCATEGORY2 null `
  -GOOGLEPRODUCTCATEGORY1 null `
  -GOOGLEPRODUCTCATEGORY0 null `
- -PRODUCTGROUP null `
  -CUSTOMNUMBER0 null `
  -CUSTOMNUMBER1 null `
  -CUSTOMNUMBER2 null `
  -CUSTOMNUMBER3 null `
  -CUSTOMNUMBER4 null `
- -TITLEKEYWORDS null
+ -TITLEKEYWORDS null `
+ -PINTERESTPRODUCTCATEGORIES null `
+ -PRODUCTGROUP null
 ```
 
 - Convert the resource to JSON

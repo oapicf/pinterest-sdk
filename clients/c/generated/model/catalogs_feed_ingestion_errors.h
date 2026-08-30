@@ -16,40 +16,32 @@
 typedef struct catalogs_feed_ingestion_errors_t catalogs_feed_ingestion_errors_t;
 
 
-// Enum LARGEPRODUCTCOUNTDECREASE for catalogs_feed_ingestion_errors
-
-typedef enum  { pinterest_rest_api_catalogs_feed_ingestion_errors_LARGEPRODUCTCOUNTDECREASE_NULL = 0, pinterest_rest_api_catalogs_feed_ingestion_errors_LARGEPRODUCTCOUNTDECREASE__1 } pinterest_rest_api_catalogs_feed_ingestion_errors_LARGEPRODUCTCOUNTDECREASE_e;
-
-char* catalogs_feed_ingestion_errors_large_product_count_decrease_ToString(pinterest_rest_api_catalogs_feed_ingestion_errors_LARGEPRODUCTCOUNTDECREASE_e large_product_count_decrease);
-
-pinterest_rest_api_catalogs_feed_ingestion_errors_LARGEPRODUCTCOUNTDECREASE_e catalogs_feed_ingestion_errors_large_product_count_decrease_FromString(char* large_product_count_decrease);
-
 
 
 typedef struct catalogs_feed_ingestion_errors_t {
-    int account_flagged; //numeric
-    int fetch_google_sheet_not_shared; //numeric
-    int image_file_not_accessible; //numeric
-    int image_file_not_found; //numeric
-    int image_invalid_file; //numeric
-    int image_level_internal_error; //numeric
-    int image_malformed_url; //numeric
-    int large_product_count_decrease; //numeric
-    int line_level_internal_error; //numeric
+    int *account_flagged; //numeric
+    int *fetch_google_sheet_not_shared; //numeric
+    int *image_file_not_accessible; //numeric
+    int *image_file_not_found; //numeric
+    int *image_invalid_file; //numeric
+    int *image_level_internal_error; //numeric
+    int *image_malformed_url; //numeric
+    int *large_product_count_decrease; //numeric
+    int *line_level_internal_error; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_ingestion_errors_t;
 
 __attribute__((deprecated)) catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors_create(
-    int account_flagged,
-    int fetch_google_sheet_not_shared,
-    int image_file_not_accessible,
-    int image_file_not_found,
-    int image_invalid_file,
-    int image_level_internal_error,
-    int image_malformed_url,
-    int large_product_count_decrease,
-    int line_level_internal_error
+    int *account_flagged,
+    int *fetch_google_sheet_not_shared,
+    int *image_file_not_accessible,
+    int *image_file_not_found,
+    int *image_invalid_file,
+    int *image_level_internal_error,
+    int *image_malformed_url,
+    int *large_product_count_decrease,
+    int *line_level_internal_error
 );
 
 void catalogs_feed_ingestion_errors_free(catalogs_feed_ingestion_errors_t *catalogs_feed_ingestion_errors);

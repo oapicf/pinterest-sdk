@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,14 +27,15 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.LeadFormArrayResponse
-import org.openapitools.client.models.LeadFormCreateRequest
-import org.openapitools.client.models.LeadFormResponse
-import org.openapitools.client.models.LeadFormTestRequest
-import org.openapitools.client.models.LeadFormTestResponse
-import org.openapitools.client.models.LeadFormUpdateRequest
+import org.openapitools.client.models.LeadForm
+import org.openapitools.client.models.LeadFormBatchUpdate
+import org.openapitools.client.models.LeadFormCreate
+import org.openapitools.client.models.LeadFormTest
+import org.openapitools.client.models.LeadFormTestCreate
+import org.openapitools.client.models.LeadFormsCreate200Response
 import org.openapitools.client.models.LeadFormsList200Response
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
 
 import com.squareup.moshi.Json
 
@@ -48,17 +57,17 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * GET /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}
      * Get lead form by id
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
+     * @param leadFormId The ID of this lead form
      * @param adAccountId Unique identifier of an ad account.
-     * @param leadFormId Unique identifier of a lead form.
-     * @return LeadFormResponse
+     * @return LeadForm
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -67,11 +76,11 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun leadFormGet(adAccountId: kotlin.String, leadFormId: kotlin.String) : LeadFormResponse {
-        val localVarResponse = leadFormGetWithHttpInfo(adAccountId = adAccountId, leadFormId = leadFormId)
+    fun leadFormGet(leadFormId: kotlin.String, adAccountId: kotlin.String) : LeadForm {
+        val localVarResponse = leadFormGetWithHttpInfo(leadFormId = leadFormId, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as LeadFormResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as LeadForm
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -88,19 +97,19 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}
      * Get lead form by id
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
+     * @param leadFormId The ID of this lead form
      * @param adAccountId Unique identifier of an ad account.
-     * @param leadFormId Unique identifier of a lead form.
-     * @return ApiResponse<LeadFormResponse?>
+     * @return ApiResponse<LeadForm?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun leadFormGetWithHttpInfo(adAccountId: kotlin.String, leadFormId: kotlin.String) : ApiResponse<LeadFormResponse?> {
-        val localVariableConfig = leadFormGetRequestConfig(adAccountId = adAccountId, leadFormId = leadFormId)
+    fun leadFormGetWithHttpInfo(leadFormId: kotlin.String, adAccountId: kotlin.String) : ApiResponse<LeadForm?> {
+        val localVariableConfig = leadFormGetRequestConfig(leadFormId = leadFormId, adAccountId = adAccountId)
 
-        return request<Unit, LeadFormResponse>(
+        return request<Unit, LeadForm>(
             localVariableConfig
         )
     }
@@ -108,11 +117,11 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * To obtain the request config of the operation leadFormGet
      *
+     * @param leadFormId The ID of this lead form
      * @param adAccountId Unique identifier of an ad account.
-     * @param leadFormId Unique identifier of a lead form.
      * @return RequestConfig
      */
-    fun leadFormGetRequestConfig(adAccountId: kotlin.String, leadFormId: kotlin.String) : RequestConfig<Unit> {
+    fun leadFormGetRequestConfig(leadFormId: kotlin.String, adAccountId: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -120,7 +129,7 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())).replace("{"+"lead_form_id"+"}", encodeURIComponent(leadFormId.toString())),
+            path = "/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}".replace("{"+"lead_form_id"+"}", encodeURIComponent(leadFormId.toString())).replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -132,10 +141,10 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * POST /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test
      * Create lead form test data
      * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
-     * @param adAccountId Unique identifier of an ad account.
+     * @param adAccountId 
      * @param leadFormId Unique identifier of a lead form.
-     * @param leadFormTestRequest Subscription to create.
-     * @return LeadFormTestResponse
+     * @param leadFormTestCreate 
+     * @return LeadFormTest
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -144,11 +153,11 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun leadFormTestCreate(adAccountId: kotlin.String, leadFormId: kotlin.String, leadFormTestRequest: LeadFormTestRequest) : LeadFormTestResponse {
-        val localVarResponse = leadFormTestCreateWithHttpInfo(adAccountId = adAccountId, leadFormId = leadFormId, leadFormTestRequest = leadFormTestRequest)
+    fun leadFormTestCreate(adAccountId: kotlin.String, leadFormId: kotlin.String, leadFormTestCreate: LeadFormTestCreate) : LeadFormTest {
+        val localVarResponse = leadFormTestCreateWithHttpInfo(adAccountId = adAccountId, leadFormId = leadFormId, leadFormTestCreate = leadFormTestCreate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as LeadFormTestResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as LeadFormTest
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -166,19 +175,19 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * POST /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test
      * Create lead form test data
      * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
-     * @param adAccountId Unique identifier of an ad account.
+     * @param adAccountId 
      * @param leadFormId Unique identifier of a lead form.
-     * @param leadFormTestRequest Subscription to create.
-     * @return ApiResponse<LeadFormTestResponse?>
+     * @param leadFormTestCreate 
+     * @return ApiResponse<LeadFormTest?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun leadFormTestCreateWithHttpInfo(adAccountId: kotlin.String, leadFormId: kotlin.String, leadFormTestRequest: LeadFormTestRequest) : ApiResponse<LeadFormTestResponse?> {
-        val localVariableConfig = leadFormTestCreateRequestConfig(adAccountId = adAccountId, leadFormId = leadFormId, leadFormTestRequest = leadFormTestRequest)
+    fun leadFormTestCreateWithHttpInfo(adAccountId: kotlin.String, leadFormId: kotlin.String, leadFormTestCreate: LeadFormTestCreate) : ApiResponse<LeadFormTest?> {
+        val localVariableConfig = leadFormTestCreateRequestConfig(adAccountId = adAccountId, leadFormId = leadFormId, leadFormTestCreate = leadFormTestCreate)
 
-        return request<LeadFormTestRequest, LeadFormTestResponse>(
+        return request<LeadFormTestCreate, LeadFormTest>(
             localVariableConfig
         )
     }
@@ -186,13 +195,13 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * To obtain the request config of the operation leadFormTestCreate
      *
-     * @param adAccountId Unique identifier of an ad account.
+     * @param adAccountId 
      * @param leadFormId Unique identifier of a lead form.
-     * @param leadFormTestRequest Subscription to create.
+     * @param leadFormTestCreate 
      * @return RequestConfig
      */
-    fun leadFormTestCreateRequestConfig(adAccountId: kotlin.String, leadFormId: kotlin.String, leadFormTestRequest: LeadFormTestRequest) : RequestConfig<LeadFormTestRequest> {
-        val localVariableBody = leadFormTestRequest
+    fun leadFormTestCreateRequestConfig(adAccountId: kotlin.String, leadFormId: kotlin.String, leadFormTestCreate: LeadFormTestCreate) : RequestConfig<LeadFormTestCreate> {
+        val localVariableBody = leadFormTestCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -211,10 +220,10 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * POST /ad_accounts/{ad_account_id}/lead_forms
      * Create lead forms
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form&#39;s description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      * @param adAccountId Unique identifier of an ad account.
-     * @param leadFormCreateRequest List of lead forms to create, size limit [1, 30].
-     * @return LeadFormArrayResponse
+     * @param leadFormCreate 
+     * @return LeadFormsCreate200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -223,11 +232,11 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun leadFormsCreate(adAccountId: kotlin.String, leadFormCreateRequest: kotlin.collections.List<LeadFormCreateRequest>) : LeadFormArrayResponse {
-        val localVarResponse = leadFormsCreateWithHttpInfo(adAccountId = adAccountId, leadFormCreateRequest = leadFormCreateRequest)
+    fun leadFormsCreate(adAccountId: kotlin.String, leadFormCreate: kotlin.collections.List<LeadFormCreate>) : LeadFormsCreate200Response {
+        val localVarResponse = leadFormsCreateWithHttpInfo(adAccountId = adAccountId, leadFormCreate = leadFormCreate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as LeadFormArrayResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as LeadFormsCreate200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -244,19 +253,19 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * POST /ad_accounts/{ad_account_id}/lead_forms
      * Create lead forms
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form&#39;s description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      * @param adAccountId Unique identifier of an ad account.
-     * @param leadFormCreateRequest List of lead forms to create, size limit [1, 30].
-     * @return ApiResponse<LeadFormArrayResponse?>
+     * @param leadFormCreate 
+     * @return ApiResponse<LeadFormsCreate200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun leadFormsCreateWithHttpInfo(adAccountId: kotlin.String, leadFormCreateRequest: kotlin.collections.List<LeadFormCreateRequest>) : ApiResponse<LeadFormArrayResponse?> {
-        val localVariableConfig = leadFormsCreateRequestConfig(adAccountId = adAccountId, leadFormCreateRequest = leadFormCreateRequest)
+    fun leadFormsCreateWithHttpInfo(adAccountId: kotlin.String, leadFormCreate: kotlin.collections.List<LeadFormCreate>) : ApiResponse<LeadFormsCreate200Response?> {
+        val localVariableConfig = leadFormsCreateRequestConfig(adAccountId = adAccountId, leadFormCreate = leadFormCreate)
 
-        return request<kotlin.collections.List<LeadFormCreateRequest>, LeadFormArrayResponse>(
+        return request<kotlin.collections.List<LeadFormCreate>, LeadFormsCreate200Response>(
             localVariableConfig
         )
     }
@@ -265,11 +274,11 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * To obtain the request config of the operation leadFormsCreate
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param leadFormCreateRequest List of lead forms to create, size limit [1, 30].
+     * @param leadFormCreate 
      * @return RequestConfig
      */
-    fun leadFormsCreateRequestConfig(adAccountId: kotlin.String, leadFormCreateRequest: kotlin.collections.List<LeadFormCreateRequest>) : RequestConfig<kotlin.collections.List<LeadFormCreateRequest>> {
-        val localVariableBody = leadFormCreateRequest
+    fun leadFormsCreateRequestConfig(adAccountId: kotlin.String, leadFormCreate: kotlin.collections.List<LeadFormCreate>) : RequestConfig<kotlin.collections.List<LeadFormCreate>> {
+        val localVariableBody = leadFormCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -286,30 +295,13 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * enum for parameter order
-     */
-     enum class OrderLeadFormsList(val value: kotlin.String) {
-         @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /ad_accounts/{ad_account_id}/lead_forms
      * List lead forms
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  List lead forms associated with an ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @return LeadFormsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -319,8 +311,8 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun leadFormsList(adAccountId: kotlin.String, pageSize: kotlin.Int? = 25, order: OrderLeadFormsList? = null, bookmark: kotlin.String? = null) : LeadFormsList200Response {
-        val localVarResponse = leadFormsListWithHttpInfo(adAccountId = adAccountId, pageSize = pageSize, order = order, bookmark = bookmark)
+    fun leadFormsList(adAccountId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, order: PinterestLibPaginationOrder? = null) : LeadFormsList200Response {
+        val localVarResponse = leadFormsListWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as LeadFormsList200Response
@@ -340,19 +332,19 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /ad_accounts/{ad_account_id}/lead_forms
      * List lead forms
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  List lead forms associated with an ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @return ApiResponse<LeadFormsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun leadFormsListWithHttpInfo(adAccountId: kotlin.String, pageSize: kotlin.Int?, order: OrderLeadFormsList?, bookmark: kotlin.String?) : ApiResponse<LeadFormsList200Response?> {
-        val localVariableConfig = leadFormsListRequestConfig(adAccountId = adAccountId, pageSize = pageSize, order = order, bookmark = bookmark)
+    fun leadFormsListWithHttpInfo(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?) : ApiResponse<LeadFormsList200Response?> {
+        val localVariableConfig = leadFormsListRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order)
 
         return request<Unit, LeadFormsList200Response>(
             localVariableConfig
@@ -363,23 +355,23 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * To obtain the request config of the operation leadFormsList
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @return RequestConfig
      */
-    fun leadFormsListRequestConfig(adAccountId: kotlin.String, pageSize: kotlin.Int?, order: OrderLeadFormsList?, bookmark: kotlin.String?) : RequestConfig<Unit> {
+    fun leadFormsListRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (bookmark != null) {
+                    put("bookmark", listOf(bookmark.toString()))
+                }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
                 }
                 if (order != null) {
-                    put("order", listOf(order.value))
-                }
-                if (bookmark != null) {
-                    put("bookmark", listOf(bookmark.toString()))
+                    put("order", listOf(order.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -398,10 +390,10 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * PATCH /ad_accounts/{ad_account_id}/lead_forms
      * Update lead forms
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      * @param adAccountId Unique identifier of an ad account.
-     * @param leadFormUpdateRequest List of lead forms to update, size limit [1, 30].
-     * @return LeadFormArrayResponse
+     * @param leadFormBatchUpdate 
+     * @return LeadFormsCreate200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -410,11 +402,11 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun leadFormsUpdate(adAccountId: kotlin.String, leadFormUpdateRequest: kotlin.collections.List<LeadFormUpdateRequest>) : LeadFormArrayResponse {
-        val localVarResponse = leadFormsUpdateWithHttpInfo(adAccountId = adAccountId, leadFormUpdateRequest = leadFormUpdateRequest)
+    fun leadFormsUpdate(adAccountId: kotlin.String, leadFormBatchUpdate: kotlin.collections.List<LeadFormBatchUpdate>) : LeadFormsCreate200Response {
+        val localVarResponse = leadFormsUpdateWithHttpInfo(adAccountId = adAccountId, leadFormBatchUpdate = leadFormBatchUpdate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as LeadFormArrayResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as LeadFormsCreate200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -431,19 +423,19 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * PATCH /ad_accounts/{ad_account_id}/lead_forms
      * Update lead forms
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      * @param adAccountId Unique identifier of an ad account.
-     * @param leadFormUpdateRequest List of lead forms to update, size limit [1, 30].
-     * @return ApiResponse<LeadFormArrayResponse?>
+     * @param leadFormBatchUpdate 
+     * @return ApiResponse<LeadFormsCreate200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun leadFormsUpdateWithHttpInfo(adAccountId: kotlin.String, leadFormUpdateRequest: kotlin.collections.List<LeadFormUpdateRequest>) : ApiResponse<LeadFormArrayResponse?> {
-        val localVariableConfig = leadFormsUpdateRequestConfig(adAccountId = adAccountId, leadFormUpdateRequest = leadFormUpdateRequest)
+    fun leadFormsUpdateWithHttpInfo(adAccountId: kotlin.String, leadFormBatchUpdate: kotlin.collections.List<LeadFormBatchUpdate>) : ApiResponse<LeadFormsCreate200Response?> {
+        val localVariableConfig = leadFormsUpdateRequestConfig(adAccountId = adAccountId, leadFormBatchUpdate = leadFormBatchUpdate)
 
-        return request<kotlin.collections.List<LeadFormUpdateRequest>, LeadFormArrayResponse>(
+        return request<kotlin.collections.List<LeadFormBatchUpdate>, LeadFormsCreate200Response>(
             localVariableConfig
         )
     }
@@ -452,11 +444,11 @@ open class LeadFormsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * To obtain the request config of the operation leadFormsUpdate
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param leadFormUpdateRequest List of lead forms to update, size limit [1, 30].
+     * @param leadFormBatchUpdate 
      * @return RequestConfig
      */
-    fun leadFormsUpdateRequestConfig(adAccountId: kotlin.String, leadFormUpdateRequest: kotlin.collections.List<LeadFormUpdateRequest>) : RequestConfig<kotlin.collections.List<LeadFormUpdateRequest>> {
-        val localVariableBody = leadFormUpdateRequest
+    fun leadFormsUpdateRequestConfig(adAccountId: kotlin.String, leadFormBatchUpdate: kotlin.collections.List<LeadFormBatchUpdate>) : RequestConfig<kotlin.collections.List<LeadFormBatchUpdate>> {
+        val localVariableBody = leadFormBatchUpdate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"

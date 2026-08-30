@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ConversionProductReport",
+  "fields": [
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "Message returned from the create report request",
+      "default": null
+    },
+    {
+      "name": "report_status",
+      "type": ["null", "model.BulkReportingJobStatus"],
+      "doc": "Async report status",
+      "default": null
+    },
+    {
+      "name": "size",
+      "type": ["null", "double"],
+      "doc": "Size of the report in bytes",
+      "default": null
+    },
+    {
+      "name": "token",
+      "type": ["null", "string"],
+      "doc": "Token returned from the create report request",
+      "default": null
+    },
+    {
+      "name": "url",
+      "type": ["null", "string"],
+      "doc": "URL of the report",
+      "default": null
+    }
+  ]
+
+}

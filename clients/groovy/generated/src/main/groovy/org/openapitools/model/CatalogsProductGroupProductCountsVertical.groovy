@@ -7,12 +7,32 @@ import java.math.BigDecimal;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupProductCounts;
 import org.openapitools.model.CatalogsHotelProductGroupProductCounts;
 import org.openapitools.model.CatalogsRetailProductGroupProductCounts;
-import org.openapitools.model.CatalogsType;
 
 @Canonical
 class CatalogsProductGroupProductCountsVertical {
+
+    enum CatalogTypeEnum {
     
-    CatalogsType catalogType
+        CREATIVE_ASSETS("CREATIVE_ASSETS")
+    
+        private final String value
+    
+        CatalogTypeEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    
+    CatalogTypeEnum catalogType
     
     BigDecimal inStock
     
@@ -23,4 +43,8 @@ class CatalogsProductGroupProductCountsVertical {
     BigDecimal total
     
     BigDecimal videos
+    
+    BigDecimal appLinks
+    
+    BigDecimal images
 }

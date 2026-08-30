@@ -5,6 +5,12 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.ItemAttributesRequest
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
+import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -25,15 +31,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsCreateRetailItem(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("attributes")
     @get:JsonProperty("attributes", required = true) val attributes: ItemAttributesRequest,
 
     @Schema(example = "DS0294-M", required = true, description = "The catalog item id in the merchant namespace")
+    @param:JsonProperty("item_id")
     @get:JsonProperty("item_id", required = true) val itemId: kotlin.String,
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("operation", required = true) val operation: CatalogsCreateRetailItem.Operation
-) {
+    @Schema(required = true, description = "")
+    @param:JsonProperty("operation")
+    @get:JsonProperty("operation", required = true) override val operation: CatalogsCreateRetailItem.Operation = kotlin.String.CREATE
+) : CatalogsRetailBatchRequestItemsItems {
 
     /**
     * 
@@ -48,7 +57,7 @@ data class CatalogsCreateRetailItem(
             @JsonCreator
             fun forValue(value: kotlin.String): Operation {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsCreateRetailItem'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Operation'")
             }
         }
     }

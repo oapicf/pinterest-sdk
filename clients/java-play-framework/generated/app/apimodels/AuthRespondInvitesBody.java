@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.AuthRespondInvitesBodyInvitesInner;
+import apimodels.AuthRespondInvitesBodyItem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import javax.validation.Valid;
 /**
  * An object with a list of all the invites the user would like to respond to and the action to take.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AuthRespondInvitesBody   {
   @JsonProperty("invites")
@@ -21,14 +21,14 @@ public class AuthRespondInvitesBody   {
 @Size(min=1,max=100)
 @Valid
 
-  private List<@Valid AuthRespondInvitesBodyInvitesInner> invites = new ArrayList<>();
+  private List<@Valid AuthRespondInvitesBodyItem> invites = new ArrayList<>();
 
-  public AuthRespondInvitesBody invites(List<@Valid AuthRespondInvitesBodyInvitesInner> invites) {
+  public AuthRespondInvitesBody invites(List<@Valid AuthRespondInvitesBodyItem> invites) {
     this.invites = invites;
     return this;
   }
 
-  public AuthRespondInvitesBody addInvitesItem(AuthRespondInvitesBodyInvitesInner invitesItem) {
+  public AuthRespondInvitesBody addInvitesItem(AuthRespondInvitesBodyItem invitesItem) {
     if (this.invites == null) {
       this.invites = new ArrayList<>();
     }
@@ -40,11 +40,11 @@ public class AuthRespondInvitesBody   {
    * Get invites
    * @return invites
   **/
-  public List<@Valid AuthRespondInvitesBodyInvitesInner> getInvites() {
+  public List<@Valid AuthRespondInvitesBodyItem> getInvites() {
     return invites;
   }
 
-  public void setInvites(List<@Valid AuthRespondInvitesBodyInvitesInner> invites) {
+  public void setInvites(List<@Valid AuthRespondInvitesBodyItem> invites) {
     this.invites = invites;
   }
 
@@ -82,10 +82,7 @@ public class AuthRespondInvitesBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

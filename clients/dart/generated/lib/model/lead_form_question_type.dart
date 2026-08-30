@@ -11,53 +11,41 @@
 part of openapi.api;
 
 /// Lead form question type
-class LeadFormQuestionType {
-  /// Instantiate a new enum with the provided [value].
-  const LeadFormQuestionType._(this.value);
+enum LeadFormQuestionType {
+  CUSTOM._(r'CUSTOM'),
+  FULL_NAME._(r'FULL_NAME'),
+  FIRST_NAME._(r'FIRST_NAME'),
+  LAST_NAME._(r'LAST_NAME'),
+  EMAIL._(r'EMAIL'),
+  PHONE_NUMBER._(r'PHONE_NUMBER'),
+  ZIP_CODE._(r'ZIP_CODE'),
+  GENDER._(r'GENDER'),
+  CITY._(r'CITY'),
+  COUNTRY._(r'COUNTRY'),
+  STATE_PROVINCE._(r'STATE_PROVINCE'),
+  ADDRESS._(r'ADDRESS'),
+  DATE_OF_BIRTH._(r'DATE_OF_BIRTH'),
+  AGE._(r'AGE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const LeadFormQuestionType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CUSTOM = LeadFormQuestionType._(r'CUSTOM');
-  static const FULL_NAME = LeadFormQuestionType._(r'FULL_NAME');
-  static const FIRST_NAME = LeadFormQuestionType._(r'FIRST_NAME');
-  static const LAST_NAME = LeadFormQuestionType._(r'LAST_NAME');
-  static const EMAIL = LeadFormQuestionType._(r'EMAIL');
-  static const PHONE_NUMBER = LeadFormQuestionType._(r'PHONE_NUMBER');
-  static const ZIP_CODE = LeadFormQuestionType._(r'ZIP_CODE');
-  static const GENDER = LeadFormQuestionType._(r'GENDER');
-  static const CITY = LeadFormQuestionType._(r'CITY');
-  static const COUNTRY = LeadFormQuestionType._(r'COUNTRY');
-  static const STATE_PROVINCE = LeadFormQuestionType._(r'STATE_PROVINCE');
-  static const ADDRESS = LeadFormQuestionType._(r'ADDRESS');
-  static const DATE_OF_BIRTH = LeadFormQuestionType._(r'DATE_OF_BIRTH');
-  static const AGE = LeadFormQuestionType._(r'AGE');
-
-  /// List of all possible values in this [enum][LeadFormQuestionType].
-  static const values = <LeadFormQuestionType>[
-    CUSTOM,
-    FULL_NAME,
-    FIRST_NAME,
-    LAST_NAME,
-    EMAIL,
-    PHONE_NUMBER,
-    ZIP_CODE,
-    GENDER,
-    CITY,
-    COUNTRY,
-    STATE_PROVINCE,
-    ADDRESS,
-    DATE_OF_BIRTH,
-    AGE,
-  ];
-
+  /// Returns the instance of [LeadFormQuestionType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static LeadFormQuestionType? fromJson(dynamic value) => LeadFormQuestionTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [LeadFormQuestionType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<LeadFormQuestionType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <LeadFormQuestionType>[];
     if (json is List && json.isNotEmpty) {
@@ -79,9 +67,11 @@ class LeadFormQuestionTypeTypeTransformer {
 
   const LeadFormQuestionTypeTypeTransformer._();
 
-  String encode(LeadFormQuestionType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(LeadFormQuestionType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a LeadFormQuestionType.
+  /// Returns the instance of [LeadFormQuestionType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -90,6 +80,9 @@ class LeadFormQuestionTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   LeadFormQuestionType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is LeadFormQuestionType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CUSTOM': return LeadFormQuestionType.CUSTOM;
@@ -115,7 +108,7 @@ class LeadFormQuestionTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [LeadFormQuestionTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static LeadFormQuestionTypeTypeTransformer? _instance;
 }
 

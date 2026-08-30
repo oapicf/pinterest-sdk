@@ -66,12 +66,12 @@ Targeting_template_list_200_response::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<TargetingTemplateGetResponseData> new_list;
-			TargetingTemplateGetResponseData inst;
+			list<TargetingTemplate> new_list;
+			TargetingTemplate inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("TargetingTemplateGetResponseData")) {
-					jsonToValue(&inst, temp_json, "TargetingTemplateGetResponseData", "");
+				if (isprimitive("TargetingTemplate")) {
+					jsonToValue(&inst, temp_json, "TargetingTemplate", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ Targeting_template_list_200_response::toJson()
 	}
 	const gchar *bookmarkKey = "bookmark";
 	json_object_set_member(pJsonObject, bookmarkKey, node);
-	if (isprimitive("TargetingTemplateGetResponseData")) {
-		list<TargetingTemplateGetResponseData> new_list = static_cast<list <TargetingTemplateGetResponseData> > (getItems());
-		node = converttoJson(&new_list, "TargetingTemplateGetResponseData", "array");
+	if (isprimitive("TargetingTemplate")) {
+		list<TargetingTemplate> new_list = static_cast<list <TargetingTemplate> > (getItems());
+		node = converttoJson(&new_list, "TargetingTemplate", "array");
 	} else {
 		node = json_node_alloc();
-		list<TargetingTemplateGetResponseData> new_list = static_cast<list <TargetingTemplateGetResponseData> > (getItems());
+		list<TargetingTemplate> new_list = static_cast<list <TargetingTemplate> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<TargetingTemplateGetResponseData>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<TargetingTemplate>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			TargetingTemplateGetResponseData obj = *it;
+			TargetingTemplate obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ Targeting_template_list_200_response::setBookmark(std::string  bookmark)
 	this->bookmark = bookmark;
 }
 
-std::list<TargetingTemplateGetResponseData>
+std::list<TargetingTemplate>
 Targeting_template_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Targeting_template_list_200_response::setItems(std::list <TargetingTemplateGetResponseData> items)
+Targeting_template_list_200_response::setItems(std::list <TargetingTemplate> items)
 {
 	this->items = items;
 }

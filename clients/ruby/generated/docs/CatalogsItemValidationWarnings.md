@@ -4,212 +4,212 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ad_image_0_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_0_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_0_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_0_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_0_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_0_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_0_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_10_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_10_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_10_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_10_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_10_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_10_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_10_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_11_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_11_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_11_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_11_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_11_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_11_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_11_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_12_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_12_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_12_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_12_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_12_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_12_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_12_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_13_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_13_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_13_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_13_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_13_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_13_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_13_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_14_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_14_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_14_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_14_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_14_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_14_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_14_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_15_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_15_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_15_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_15_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_15_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_15_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_15_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_16_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_16_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_16_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_16_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_16_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_16_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_16_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_17_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_17_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_17_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_17_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_17_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_17_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_17_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_18_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_18_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_18_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_18_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_18_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_18_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_18_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_19_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_19_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_19_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_19_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_19_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_19_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_19_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_1_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_1_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_1_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_1_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_1_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_1_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_1_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_2_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_2_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_2_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_2_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_2_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_2_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_2_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_3_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_3_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_3_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_3_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_3_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_3_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_3_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_4_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_4_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_4_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_4_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_4_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_4_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_4_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_5_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_5_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_5_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_5_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_5_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_5_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_5_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_6_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_6_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_6_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_6_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_6_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_6_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_6_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_7_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_7_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_7_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_7_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_7_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_7_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_7_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_8_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_8_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_8_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_8_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_8_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_8_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_8_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_9_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_9_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_9_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_9_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_9_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_9_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_image_9_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_link_format_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_link_same_as_link** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_0_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_0_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_0_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_0_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_0_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_0_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_0_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_1_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_1_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_1_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_1_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_1_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_1_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_1_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_2_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_2_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_2_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_2_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_2_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_2_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ad_video_2_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **additional_image_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **additional_image_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **adwords_format_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **adwords_same_as_link** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **age_group_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **android_deep_link_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **availability_date_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **country_does_not_map_to_currency** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **custom_label_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **description_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **expiration_date_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **gender_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **gtin_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **image_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **ios_deep_link_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **is_bundle_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **item_additional_image_download_failure** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **link_format_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **min_ad_price_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **mpn_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **multipack_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **optional_condition_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **optional_condition_missing** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **optional_product_category_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **optional_product_category_missing** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **product_category_depth_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **product_type_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **sale_date_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **sales_price_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **sales_price_too_high** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **sales_price_too_low** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **shipping_height_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **shipping_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **shipping_weight_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **shipping_width_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **size_system_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **size_type_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **tax_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **title_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **too_many_additional_image_links** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **utm_source_auto_corrected** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **video_required_when_ad_video_provided** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
-| **weight_unit_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] |
+| **ad_image_0_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_0_link is duplicated with another ad image link. | [optional] |
+| **ad_image_0_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 0 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_0_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 0 is required because an image tag was provided. | [optional] |
+| **ad_image_0_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 0 format is unsupported. | [optional] |
+| **ad_image_0_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_0_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_0_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 0 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_0_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 0 is required because an image link was provided. | [optional] |
+| **ad_image_10_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_10_link is duplicated with another ad image link. | [optional] |
+| **ad_image_10_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 10 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_10_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 10 is required because an image tag was provided. | [optional] |
+| **ad_image_10_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 10 format is unsupported. | [optional] |
+| **ad_image_10_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_10_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_10_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 10 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_10_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 10 is required because an image link was provided. | [optional] |
+| **ad_image_11_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_11_link is duplicated with another ad image link. | [optional] |
+| **ad_image_11_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 11 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_11_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 11 is required because an image tag was provided. | [optional] |
+| **ad_image_11_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 11 format is unsupported. | [optional] |
+| **ad_image_11_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_11_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_11_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 11 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_11_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 11 is required because an image link was provided. | [optional] |
+| **ad_image_12_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_12_link is duplicated with another ad image link. | [optional] |
+| **ad_image_12_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 12 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_12_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 12 is required because an image tag was provided. | [optional] |
+| **ad_image_12_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 12 format is unsupported. | [optional] |
+| **ad_image_12_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_12_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_12_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 12 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_12_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 12 is required because an image link was provided. | [optional] |
+| **ad_image_13_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_13_link is duplicated with another ad image link. | [optional] |
+| **ad_image_13_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 13 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_13_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 13 is required because an image tag was provided. | [optional] |
+| **ad_image_13_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 13 format is unsupported. | [optional] |
+| **ad_image_13_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_13_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_13_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 13 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_13_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 13 is required because an image link was provided. | [optional] |
+| **ad_image_14_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_14_link is duplicated with another ad image link. | [optional] |
+| **ad_image_14_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 14 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_14_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 14 is required because an image tag was provided. | [optional] |
+| **ad_image_14_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 14 format is unsupported. | [optional] |
+| **ad_image_14_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_14_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_14_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 14 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_14_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 14 is required because an image link was provided. | [optional] |
+| **ad_image_15_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_15_link is duplicated with another ad image link. | [optional] |
+| **ad_image_15_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 15 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_15_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 15 is required because an image tag was provided. | [optional] |
+| **ad_image_15_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 15 format is unsupported. | [optional] |
+| **ad_image_15_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_15_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_15_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 15 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_15_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 15 is required because an image link was provided. | [optional] |
+| **ad_image_16_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_16_link is duplicated with another ad image link. | [optional] |
+| **ad_image_16_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 16 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_16_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 16 is required because an image tag was provided. | [optional] |
+| **ad_image_16_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 16 format is unsupported. | [optional] |
+| **ad_image_16_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_16_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_16_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 16 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_16_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 16 is required because an image link was provided. | [optional] |
+| **ad_image_17_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_17_link is duplicated with another ad image link. | [optional] |
+| **ad_image_17_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 17 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_17_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 17 is required because an image tag was provided. | [optional] |
+| **ad_image_17_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 17 format is unsupported. | [optional] |
+| **ad_image_17_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_17_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_17_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 17 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_17_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 17 is required because an image link was provided. | [optional] |
+| **ad_image_18_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_18_link is duplicated with another ad image link. | [optional] |
+| **ad_image_18_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 18 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_18_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 18 is required because an image tag was provided. | [optional] |
+| **ad_image_18_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 18 format is unsupported. | [optional] |
+| **ad_image_18_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_18_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_18_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 18 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_18_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 18 is required because an image link was provided. | [optional] |
+| **ad_image_19_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_19_link is duplicated with another ad image link. | [optional] |
+| **ad_image_19_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 19 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_19_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 19 is required because an image tag was provided. | [optional] |
+| **ad_image_19_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 19 format is unsupported. | [optional] |
+| **ad_image_19_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_19_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_19_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 19 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_19_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 19 is required because an image link was provided. | [optional] |
+| **ad_image_1_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_1_link is duplicated with another ad image link. | [optional] |
+| **ad_image_1_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 1 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_1_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 1 is required because an image tag was provided. | [optional] |
+| **ad_image_1_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 1 format is unsupported. | [optional] |
+| **ad_image_1_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_1_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_1_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 1 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_1_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 1 is required because an image link was provided. | [optional] |
+| **ad_image_2_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_2_link is duplicated with another ad image link. | [optional] |
+| **ad_image_2_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 2 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_2_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 2 is required because an image tag was provided. | [optional] |
+| **ad_image_2_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 2 format is unsupported. | [optional] |
+| **ad_image_2_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_2_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_2_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 2 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_2_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 2 is required because an image link was provided. | [optional] |
+| **ad_image_3_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_3_link is duplicated with another ad image link. | [optional] |
+| **ad_image_3_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 3 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_3_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 3 is required because an image tag was provided. | [optional] |
+| **ad_image_3_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 3 format is unsupported. | [optional] |
+| **ad_image_3_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_3_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_3_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 3 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_3_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 3 is required because an image link was provided. | [optional] |
+| **ad_image_4_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_4_link is duplicated with another ad image link. | [optional] |
+| **ad_image_4_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 4 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_4_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 4 is required because an image tag was provided. | [optional] |
+| **ad_image_4_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 4 format is unsupported. | [optional] |
+| **ad_image_4_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_4_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_4_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 4 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_4_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 4 is required because an image link was provided. | [optional] |
+| **ad_image_5_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_5_link is duplicated with another ad image link. | [optional] |
+| **ad_image_5_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 5 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_5_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 5 is required because an image tag was provided. | [optional] |
+| **ad_image_5_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 5 format is unsupported. | [optional] |
+| **ad_image_5_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_5_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_5_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 5 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_5_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 5 is required because an image link was provided. | [optional] |
+| **ad_image_6_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_6_link is duplicated with another ad image link. | [optional] |
+| **ad_image_6_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 6 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_6_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 6 is required because an image tag was provided. | [optional] |
+| **ad_image_6_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 6 format is unsupported. | [optional] |
+| **ad_image_6_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_6_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_6_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 6 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_6_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 6 is required because an image link was provided. | [optional] |
+| **ad_image_7_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_7_link is duplicated with another ad image link. | [optional] |
+| **ad_image_7_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 7 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_7_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 7 is required because an image tag was provided. | [optional] |
+| **ad_image_7_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 7 format is unsupported. | [optional] |
+| **ad_image_7_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_7_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_7_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 7 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_7_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 7 is required because an image link was provided. | [optional] |
+| **ad_image_8_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_8_link is duplicated with another ad image link. | [optional] |
+| **ad_image_8_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 8 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_8_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 8 is required because an image tag was provided. | [optional] |
+| **ad_image_8_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 8 format is unsupported. | [optional] |
+| **ad_image_8_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_8_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_8_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 8 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_8_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 8 is required because an image link was provided. | [optional] |
+| **ad_image_9_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_9_link is duplicated with another ad image link. | [optional] |
+| **ad_image_9_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 9 length is too long. The maximum length is 2047 characters. | [optional] |
+| **ad_image_9_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 9 is required because an image tag was provided. | [optional] |
+| **ad_image_9_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image link 9 format is unsupported. | [optional] |
+| **ad_image_9_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_image_9_tag is duplicated with another ad image tag. | [optional] |
+| **ad_image_9_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 9 length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_image_9_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Ad image tag 9 is required because an image link was provided. | [optional] |
+| **ad_link_format_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an ad link that is formatted incorrectly. | [optional] |
+| **ad_link_same_as_link** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an ad link URL that is duplicate of the link URL. | [optional] |
+| **ad_video_0_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_0_link is duplicated with another ad video link. | [optional] |
+| **ad_video_0_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_0_link length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_video_0_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_0_link is required for this item because ad_video_0_tag was provided. | [optional] |
+| **ad_video_0_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_0_link is formatted incorrectly and will not be published with your items. | [optional] |
+| **ad_video_0_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_0_tag is duplicated with another ad video tag. | [optional] |
+| **ad_video_0_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_0_tag length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_video_0_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_0_tag is required because ad_video_0_link was provided. | [optional] |
+| **ad_video_1_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_1_link is duplicated with another ad video link. | [optional] |
+| **ad_video_1_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_1_link length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_video_1_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_1_link is required for this item because ad_video_1_tag was provided. | [optional] |
+| **ad_video_1_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_1_link is formatted incorrectly and will not be published with your items. | [optional] |
+| **ad_video_1_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_1_tag is duplicated with another ad video tag. | [optional] |
+| **ad_video_1_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_1_tag length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_video_1_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_1_tag is required because ad_video_1_link was provided. | [optional] |
+| **ad_video_2_link_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_2_link is duplicated with another ad video link. | [optional] |
+| **ad_video_2_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_2_link length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_video_2_link_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_2_link is required for this item because ad_video_2_tag was provided. | [optional] |
+| **ad_video_2_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_2_link is formatted incorrectly and will not be published with your items. | [optional] |
+| **ad_video_2_tag_duplicated** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_2_tag is duplicated with another ad video tag. | [optional] |
+| **ad_video_2_tag_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_2_tag length is too long. The maximum length is 511 characters. | [optional] |
+| **ad_video_2_tag_required** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | ad_video_2_tag is required because ad_video_2_link was provided. | [optional] |
+| **additional_image_link_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an additional_image_link URL that contains too many characters, so the item will not be published. | [optional] |
+| **additional_image_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has additional_image_link URLs that are formatted incorrectly and will not be published with your items. | [optional] |
+| **adwords_format_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an adwords_redirect link that is formatted incorrectly. | [optional] |
+| **adwords_same_as_link** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an adwords_redirect URL that is duplicate of the link URL. | [optional] |
+| **age_group_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an age group value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences. | [optional] |
+| **android_deep_link_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item includes an invalid android_deep_link. | [optional] |
+| **availability_date_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an availability_date value that is formatted incorrectly, this item will be published without an availability date. | [optional] |
+| **country_does_not_map_to_currency** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item includes a currency that doesn&#39;t match the usual currency for the location where the product is sold or shipped. | [optional] |
+| **custom_label_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has a custom_label value that is too long, this item will be published without that custom label. | [optional] |
+| **description_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | The description for this item was truncated because it contains too many characters. | [optional] |
+| **expiration_date_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an expiration_date value that is formatted incorrectly, this item will be published without an expiration date. | [optional] |
+| **gender_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has a gender value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences. | [optional] |
+| **gtin_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has a GTIN value that is formatted incorrectly. | [optional] |
+| **image_link_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an image_link URL that is formatted incorrectly and will not be published. | [optional] |
+| **ios_deep_link_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item includes an invalid ios_deep_link value. | [optional] |
+| **is_bundle_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an is_bundle value that is formatted incorrectly, this item will be published without being bundled with other products. | [optional] |
+| **item_additional_image_download_failure** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item includes additional_image_links that can&#39;t be found. | [optional] |
+| **link_format_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an invalid product link which contains invalid UTM tracking paramaters. | [optional] |
+| **min_ad_price_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item includes a min_ad_price value that is formatted incorrectly. | [optional] |
+| **mpn_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has a MPN value that is formatted incorrectly. | [optional] |
+| **multipack_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an invalid multipack value. | [optional] |
+| **optional_condition_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item includes a condition value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences. | [optional] |
+| **optional_condition_missing** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item is missing condition value, which may limit visibility in recommendations, search results and shopping experiences. | [optional] |
+| **optional_product_category_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item includes a google_product_category value that is not formatted correctly according to the GPC taxonomy. | [optional] |
+| **optional_product_category_missing** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item is missing google_product_category. | [optional] |
+| **product_category_depth_warning** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item only has 1 or 2 levels of google_product_category value, which may limit visibility in recommendations, search results and shopping experiences. | [optional] |
+| **product_type_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has a product_type value that is too long, this item will be published without that product type. | [optional] |
+| **sale_date_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has a sale_price_effective_date value that is formatted incorrectly, this item will be published without a sale date. | [optional] |
+| **sales_price_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an incorrectly formatted sales price. | [optional] |
+| **sales_price_too_high** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has a sale price value that is higher than the original price of the item. | [optional] |
+| **sales_price_too_low** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has a sale price value that is discounted very low compared to the price. | [optional] |
+| **shipping_height_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an incorrectly formatted shipping_height value. The value must first contain a numeric value then a valid dimension unit type. | [optional] |
+| **shipping_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has a shipping value that is formatted incorrectly. | [optional] |
+| **shipping_weight_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an invalid shipping_weight value. | [optional] |
+| **shipping_width_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has an incorrectly formatted shipping_width value. The value must first contain a numeric value then a valid dimension unit type. | [optional] |
+| **size_system_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Some items have size system values which are not one of the supported size systems. | [optional] |
+| **size_type_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has a size type value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences. | [optional] |
+| **tax_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has a tax value that is formatted incorrectly. | [optional] |
+| **title_length_too_long** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | The title for the item was truncated because it contains too many characters. | [optional] |
+| **too_many_additional_image_links** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has a additional_image_link value that exceed the limit for additional images, this item will be published without some of your images. | [optional] |
+| **utm_source_auto_corrected** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item includes an utm_source value that is formatted incorrectly and has been automatically corrected. | [optional] |
+| **video_required_when_ad_video_provided** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | A video is required in the item when ad_video fields are provided. | [optional] |
+| **weight_unit_invalid** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) | Item has a weight_unit value that is formatted incorrectly, this item will be published without a weight unit. | [optional] |
 
 ## Example
 

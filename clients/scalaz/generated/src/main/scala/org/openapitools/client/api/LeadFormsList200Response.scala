@@ -13,7 +13,7 @@ import LeadFormsList200Response._
 
 case class LeadFormsList200Response (
   bookmark: Option[String],
-items: List[LeadFormResponse])
+items: List[LeadForm])
 
 object LeadFormsList200Response {
   import DateTimeCodecs._

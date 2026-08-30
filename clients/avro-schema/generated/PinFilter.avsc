@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "PinFilter",
+  "symbols": [
+    "exclude_native",
+    "exclude_repins",
+    "has_been_promoted"
+  ]
+}

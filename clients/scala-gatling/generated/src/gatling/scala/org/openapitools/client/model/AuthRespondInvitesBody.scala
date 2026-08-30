@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class AuthRespondInvitesBody (
-    _invites: List[AuthRespondInvitesBodyInvitesInner]
+    _invites: List[AuthRespondInvitesBodyItem]
 )
 object AuthRespondInvitesBody {
     def toStringBody(var_invites: Object) =

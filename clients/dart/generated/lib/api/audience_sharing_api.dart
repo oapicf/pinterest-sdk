@@ -24,21 +24,21 @@ class AudienceSharingApi {
   ///
   /// Parameters:
   ///
-  /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
-  ///
   /// * [String] audienceId (required):
   ///   Unique identifier of the audience to use to filter the results.
   ///
   /// * [AudienceAccountType] accountType (required):
   ///   Filter accounts by account type.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<Response> adAccountsAudiencesSharedAccountsListWithHttpInfo(String adAccountId, String audienceId, AudienceAccountType accountType, { int? pageSize, String? bookmark, }) async {
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> adAccountsAudiencesSharedAccountsListWithHttpInfo(String audienceId, AudienceAccountType accountType, String adAccountId, { String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/audiences/shared/accounts'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -52,11 +52,11 @@ class AudienceSharingApi {
 
       queryParams.addAll(_queryParams('', 'audience_id', audienceId));
       queryParams.addAll(_queryParams('', 'account_type', accountType));
-    if (pageSize != null) {
-      queryParams.addAll(_queryParams('', 'page_size', pageSize));
-    }
     if (bookmark != null) {
       queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
+    if (pageSize != null) {
+      queryParams.addAll(_queryParams('', 'page_size', pageSize));
     }
 
     const contentTypes = <String>[];
@@ -70,6 +70,7 @@ class AudienceSharingApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -79,22 +80,22 @@ class AudienceSharingApi {
   ///
   /// Parameters:
   ///
-  /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
-  ///
   /// * [String] audienceId (required):
   ///   Unique identifier of the audience to use to filter the results.
   ///
   /// * [AudienceAccountType] accountType (required):
   ///   Filter accounts by account type.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<AdAccountsAudiencesSharedAccountsList200Response?> adAccountsAudiencesSharedAccountsList(String adAccountId, String audienceId, AudienceAccountType accountType, { int? pageSize, String? bookmark, }) async {
-    final response = await adAccountsAudiencesSharedAccountsListWithHttpInfo(adAccountId, audienceId, accountType,  pageSize: pageSize, bookmark: bookmark, );
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<AdAccountsAudiencesSharedAccountsList200Response?> adAccountsAudiencesSharedAccountsList(String audienceId, AudienceAccountType accountType, String adAccountId, { String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await adAccountsAudiencesSharedAccountsListWithHttpInfo(audienceId, accountType, adAccountId, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -125,12 +126,12 @@ class AudienceSharingApi {
   /// * [AudienceAccountType] accountType (required):
   ///   Filter accounts by account type.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<Response> businessAccountAudiencesSharedAccountsListWithHttpInfo(String businessId, String audienceId, AudienceAccountType accountType, { int? pageSize, String? bookmark, }) async {
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> businessAccountAudiencesSharedAccountsListWithHttpInfo(String businessId, String audienceId, AudienceAccountType accountType, { String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/audiences/shared/accounts'
       .replaceAll('{business_id}', businessId);
@@ -144,11 +145,11 @@ class AudienceSharingApi {
 
       queryParams.addAll(_queryParams('', 'audience_id', audienceId));
       queryParams.addAll(_queryParams('', 'account_type', accountType));
-    if (pageSize != null) {
-      queryParams.addAll(_queryParams('', 'page_size', pageSize));
-    }
     if (bookmark != null) {
       queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
+    if (pageSize != null) {
+      queryParams.addAll(_queryParams('', 'page_size', pageSize));
     }
 
     const contentTypes = <String>[];
@@ -162,6 +163,7 @@ class AudienceSharingApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -180,13 +182,13 @@ class AudienceSharingApi {
   /// * [AudienceAccountType] accountType (required):
   ///   Filter accounts by account type.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<AdAccountsAudiencesSharedAccountsList200Response?> businessAccountAudiencesSharedAccountsList(String businessId, String audienceId, AudienceAccountType accountType, { int? pageSize, String? bookmark, }) async {
-    final response = await businessAccountAudiencesSharedAccountsListWithHttpInfo(businessId, audienceId, accountType,  pageSize: pageSize, bookmark: bookmark, );
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<AdAccountsAudiencesSharedAccountsList200Response?> businessAccountAudiencesSharedAccountsList(String businessId, String audienceId, AudienceAccountType accountType, { String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await businessAccountAudiencesSharedAccountsListWithHttpInfo(businessId, audienceId, accountType, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -211,15 +213,15 @@ class AudienceSharingApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
+  /// * [Order] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
   ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<Response> sharedAudiencesForBusinessListWithHttpInfo(String businessId, { String? bookmark, String? order, int? pageSize, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> sharedAudiencesForBusinessListWithHttpInfo(String businessId, { Order? order, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/audiences'
       .replaceAll('{business_id}', businessId);
@@ -231,11 +233,11 @@ class AudienceSharingApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (bookmark != null) {
-      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
-    }
     if (order != null) {
       queryParams.addAll(_queryParams('', 'order', order));
+    }
+    if (bookmark != null) {
+      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
     }
     if (pageSize != null) {
       queryParams.addAll(_queryParams('', 'page_size', pageSize));
@@ -252,6 +254,7 @@ class AudienceSharingApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -264,16 +267,16 @@ class AudienceSharingApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
+  /// * [Order] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
   ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<AudiencesList200Response?> sharedAudiencesForBusinessList(String businessId, { String? bookmark, String? order, int? pageSize, }) async {
-    final response = await sharedAudiencesForBusinessListWithHttpInfo(businessId,  bookmark: bookmark, order: order, pageSize: pageSize, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<SharedAudiencesForBusinessList200Response?> sharedAudiencesForBusinessList(String businessId, { Order? order, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await sharedAudiencesForBusinessListWithHttpInfo(businessId, order: order, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -281,7 +284,7 @@ class AudienceSharingApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AudiencesList200Response',) as AudiencesList200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SharedAudiencesForBusinessList200Response',) as SharedAudiencesForBusinessList200Response;
     
     }
     return null;
@@ -289,7 +292,7 @@ class AudienceSharingApi {
 
   /// Update audience sharing between ad accounts
   ///
-  /// From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+  /// From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -298,14 +301,14 @@ class AudienceSharingApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [SharedAudience] sharedAudience (required):
-  Future<Response> updateAdAccountToAdAccountSharedAudienceWithHttpInfo(String adAccountId, SharedAudience sharedAudience,) async {
+  /// * [AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody] adAccountToAdAccountSharedAudienceUpdateWithRequiredBody (required):
+  Future<Response> updateAdAccountToAdAccountSharedAudienceWithHttpInfo(String adAccountId, AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = sharedAudience;
+    Object? postBody = adAccountToAdAccountSharedAudienceUpdateWithRequiredBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -322,21 +325,22 @@ class AudienceSharingApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Update audience sharing between ad accounts
   ///
-  /// From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+  /// From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [SharedAudience] sharedAudience (required):
-  Future<SharedAudienceResponse?> updateAdAccountToAdAccountSharedAudience(String adAccountId, SharedAudience sharedAudience,) async {
-    final response = await updateAdAccountToAdAccountSharedAudienceWithHttpInfo(adAccountId, sharedAudience,);
+  /// * [AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody] adAccountToAdAccountSharedAudienceUpdateWithRequiredBody (required):
+  Future<AdAccountToAdAccountSharedAudience?> updateAdAccountToAdAccountSharedAudience(String adAccountId, AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody, { Future<void>? abortTrigger, }) async {
+    final response = await updateAdAccountToAdAccountSharedAudienceWithHttpInfo(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -344,7 +348,7 @@ class AudienceSharingApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SharedAudienceResponse',) as SharedAudienceResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdAccountToAdAccountSharedAudience',) as AdAccountToAdAccountSharedAudience;
     
     }
     return null;
@@ -352,7 +356,7 @@ class AudienceSharingApi {
 
   /// Update audience sharing from an ad account to businesses
   ///
-  /// From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+  /// From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -361,14 +365,14 @@ class AudienceSharingApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [BusinessSharedAudience] businessSharedAudience (required):
-  Future<Response> updateAdAccountToBusinessSharedAudienceWithHttpInfo(String adAccountId, BusinessSharedAudience businessSharedAudience,) async {
+  /// * [AdAccountToBusinessSharedAudienceUpdateWithRequiredBody] adAccountToBusinessSharedAudienceUpdateWithRequiredBody (required):
+  Future<Response> updateAdAccountToBusinessSharedAudienceWithHttpInfo(String adAccountId, AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/audiences/businesses/shared'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = businessSharedAudience;
+    Object? postBody = adAccountToBusinessSharedAudienceUpdateWithRequiredBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -385,21 +389,22 @@ class AudienceSharingApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Update audience sharing from an ad account to businesses
   ///
-  /// From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+  /// From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [BusinessSharedAudience] businessSharedAudience (required):
-  Future<BusinessSharedAudienceResponse?> updateAdAccountToBusinessSharedAudience(String adAccountId, BusinessSharedAudience businessSharedAudience,) async {
-    final response = await updateAdAccountToBusinessSharedAudienceWithHttpInfo(adAccountId, businessSharedAudience,);
+  /// * [AdAccountToBusinessSharedAudienceUpdateWithRequiredBody] adAccountToBusinessSharedAudienceUpdateWithRequiredBody (required):
+  Future<AdAccountToBusinessSharedAudience?> updateAdAccountToBusinessSharedAudience(String adAccountId, AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody, { Future<void>? abortTrigger, }) async {
+    final response = await updateAdAccountToBusinessSharedAudienceWithHttpInfo(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -407,7 +412,7 @@ class AudienceSharingApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BusinessSharedAudienceResponse',) as BusinessSharedAudienceResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdAccountToBusinessSharedAudience',) as AdAccountToBusinessSharedAudience;
     
     }
     return null;
@@ -415,7 +420,7 @@ class AudienceSharingApi {
 
   /// Update audience sharing from a business to ad accounts
   ///
-  /// From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+  /// From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -424,14 +429,14 @@ class AudienceSharingApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [SharedAudience] sharedAudience (required):
-  Future<Response> updateBusinessToAdAccountSharedAudienceWithHttpInfo(String businessId, SharedAudience sharedAudience,) async {
+  /// * [BusinessToAdAccountSharedAudienceUpdateWithRequiredBody] businessToAdAccountSharedAudienceUpdateWithRequiredBody (required):
+  Future<Response> updateBusinessToAdAccountSharedAudienceWithHttpInfo(String businessId, BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/audiences/ad_accounts/shared'
       .replaceAll('{business_id}', businessId);
 
     // ignore: prefer_final_locals
-    Object? postBody = sharedAudience;
+    Object? postBody = businessToAdAccountSharedAudienceUpdateWithRequiredBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -448,21 +453,22 @@ class AudienceSharingApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Update audience sharing from a business to ad accounts
   ///
-  /// From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+  /// From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   ///
   /// Parameters:
   ///
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [SharedAudience] sharedAudience (required):
-  Future<SharedAudienceResponse?> updateBusinessToAdAccountSharedAudience(String businessId, SharedAudience sharedAudience,) async {
-    final response = await updateBusinessToAdAccountSharedAudienceWithHttpInfo(businessId, sharedAudience,);
+  /// * [BusinessToAdAccountSharedAudienceUpdateWithRequiredBody] businessToAdAccountSharedAudienceUpdateWithRequiredBody (required):
+  Future<BusinessToAdAccountSharedAudience?> updateBusinessToAdAccountSharedAudience(String businessId, BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody, { Future<void>? abortTrigger, }) async {
+    final response = await updateBusinessToAdAccountSharedAudienceWithHttpInfo(businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -470,7 +476,7 @@ class AudienceSharingApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SharedAudienceResponse',) as SharedAudienceResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BusinessToAdAccountSharedAudience',) as BusinessToAdAccountSharedAudience;
     
     }
     return null;
@@ -478,7 +484,7 @@ class AudienceSharingApi {
 
   /// Update audience sharing between businesses
   ///
-  /// From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+  /// From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -487,14 +493,14 @@ class AudienceSharingApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [BusinessSharedAudience] businessSharedAudience (required):
-  Future<Response> updateBusinessToBusinessSharedAudienceWithHttpInfo(String businessId, BusinessSharedAudience businessSharedAudience,) async {
+  /// * [BusinessToBusinessSharedAudienceUpdateWithRequiredBody] businessToBusinessSharedAudienceUpdateWithRequiredBody (required):
+  Future<Response> updateBusinessToBusinessSharedAudienceWithHttpInfo(String businessId, BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/audiences/businesses/shared'
       .replaceAll('{business_id}', businessId);
 
     // ignore: prefer_final_locals
-    Object? postBody = businessSharedAudience;
+    Object? postBody = businessToBusinessSharedAudienceUpdateWithRequiredBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -511,21 +517,22 @@ class AudienceSharingApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Update audience sharing between businesses
   ///
-  /// From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+  /// From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   ///
   /// Parameters:
   ///
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [BusinessSharedAudience] businessSharedAudience (required):
-  Future<BusinessSharedAudienceResponse?> updateBusinessToBusinessSharedAudience(String businessId, BusinessSharedAudience businessSharedAudience,) async {
-    final response = await updateBusinessToBusinessSharedAudienceWithHttpInfo(businessId, businessSharedAudience,);
+  /// * [BusinessToBusinessSharedAudienceUpdateWithRequiredBody] businessToBusinessSharedAudienceUpdateWithRequiredBody (required):
+  Future<BusinessToBusinessSharedAudience?> updateBusinessToBusinessSharedAudience(String businessId, BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody, { Future<void>? abortTrigger, }) async {
+    final response = await updateBusinessToBusinessSharedAudienceWithHttpInfo(businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -533,7 +540,7 @@ class AudienceSharingApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BusinessSharedAudienceResponse',) as BusinessSharedAudienceResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BusinessToBusinessSharedAudience',) as BusinessToBusinessSharedAudience;
     
     }
     return null;

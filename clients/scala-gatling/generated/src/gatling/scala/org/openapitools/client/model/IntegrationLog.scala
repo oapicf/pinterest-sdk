@@ -10,11 +10,11 @@ case class IntegrationLog (
     _clientTimestamp: Integer,
     _error: Option[IntegrationLogClientError],
     /* Log event type */
-    _eventType: String,
+    _eventType: IntegrationLogEventType,
     _externalBusinessId: Option[String],
     _feedProfileId: Option[String],
     /* Log level type */
-    _logLevel: String,
+    _logLevel: IntegrationLogLevel,
     _merchantId: Option[String],
     /* Explanation of the event that occured. */
     _message: Option[String],

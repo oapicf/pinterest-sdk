@@ -106,7 +106,7 @@ CarouselSlot::getDescription()
 }
 
 void
-CarouselSlot::setDescription(std::string  description)
+CarouselSlot::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -118,7 +118,7 @@ CarouselSlot::getLink()
 }
 
 void
-CarouselSlot::setLink(std::string  link)
+CarouselSlot::setLink(std::string link)
 {
 	this->link = link;
 }
@@ -130,7 +130,7 @@ CarouselSlot::getTitle()
 }
 
 void
-CarouselSlot::setTitle(std::string  title)
+CarouselSlot::setTitle(std::string title)
 {
 	this->title = title;
 }

@@ -44,7 +44,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="adAccountsAudiencesSharedAccountsList"></a>
 # **adAccountsAudiencesSharedAccountsList**
 ```java
-Mono<AdAccountsAudiencesSharedAccountsList200Response> AudienceSharingApi.adAccountsAudiencesSharedAccountsList(adAccountIdaudienceIdaccountTypepageSizebookmark)
+Mono<AdAccountsAudiencesSharedAccountsList200Response> AudienceSharingApi.adAccountsAudiencesSharedAccountsList(audienceIdaccountTypeadAccountIdbookmarkpageSize)
 ```
 
 List accounts with access to an audience owned by an ad account
@@ -54,11 +54,11 @@ List all ad accounts and/or businesses that have access to a specific audience. 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | `String`| Unique identifier of an ad account. | |
 | **audienceId** | `String`| Unique identifier of the audience to use to filter the results. | |
-| **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [default to `AD_ACCOUNT`] [enum: `AD_ACCOUNT`, `BUSINESS_ACCOUNT`] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [enum: `AD_ACCOUNT`, `BUSINESS_ACCOUNT`] |
+| **adAccountId** | `String`| Unique identifier of an ad account. | |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
@@ -75,7 +75,7 @@ List all ad accounts and/or businesses that have access to a specific audience. 
 <a id="businessAccountAudiencesSharedAccountsList"></a>
 # **businessAccountAudiencesSharedAccountsList**
 ```java
-Mono<AdAccountsAudiencesSharedAccountsList200Response> AudienceSharingApi.businessAccountAudiencesSharedAccountsList(businessIdaudienceIdaccountTypepageSizebookmark)
+Mono<AdAccountsAudiencesSharedAccountsList200Response> AudienceSharingApi.businessAccountAudiencesSharedAccountsList(businessIdaudienceIdaccountTypebookmarkpageSize)
 ```
 
 List accounts with access to an audience owned by a business
@@ -87,9 +87,9 @@ List all ad accounts and/or businesses that have access to a specific audience. 
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `String`| Unique identifier of the requesting business. | |
 | **audienceId** | `String`| Unique identifier of the audience to use to filter the results. | |
-| **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [default to `AD_ACCOUNT`] [enum: `AD_ACCOUNT`, `BUSINESS_ACCOUNT`] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [enum: `AD_ACCOUNT`, `BUSINESS_ACCOUNT`] |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
@@ -105,7 +105,7 @@ List all ad accounts and/or businesses that have access to a specific audience. 
 <a id="sharedAudiencesForBusinessList"></a>
 # **sharedAudiencesForBusinessList**
 ```java
-Mono<AudiencesList200Response> AudienceSharingApi.sharedAudiencesForBusinessList(businessIdbookmarkorderpageSize)
+Mono<SharedAudiencesForBusinessList200Response> AudienceSharingApi.sharedAudiencesForBusinessList(businessIdorderbookmarkpageSize)
 ```
 
 List received audiences for a business
@@ -116,13 +116,13 @@ Get a list of received audiences for the given business.
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `String`| Unique identifier of the requesting business. | |
+| **order** | [**Order**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional parameter] [enum: `ASCENDING`, `DESCENDING`] |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **order** | `String`| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional parameter] [enum: `ASCENDING`, `DESCENDING`] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
-[**AudiencesList200Response**](AudiencesList200Response.md)
+[**SharedAudiencesForBusinessList200Response**](SharedAudiencesForBusinessList200Response.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `biz_access:read`
@@ -134,22 +134,22 @@ Get a list of received audiences for the given business.
 <a id="updateAdAccountToAdAccountSharedAudience"></a>
 # **updateAdAccountToAdAccountSharedAudience**
 ```java
-Mono<SharedAudienceResponse> AudienceSharingApi.updateAdAccountToAdAccountSharedAudience(adAccountIdsharedAudience)
+Mono<AdAccountToAdAccountSharedAudience> AudienceSharingApi.updateAdAccountToAdAccountSharedAudience(adAccountIdadAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
 ```
 
 Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **sharedAudience** | [**SharedAudience**](SharedAudience.md)|  | |
+| **adAccountToAdAccountSharedAudienceUpdateWithRequiredBody** | [**AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 
 ### Return type
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**AdAccountToAdAccountSharedAudience**](AdAccountToAdAccountSharedAudience.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:write`
@@ -161,22 +161,22 @@ From an ad account, share a specific audience with another ad account, or revoke
 <a id="updateAdAccountToBusinessSharedAudience"></a>
 # **updateAdAccountToBusinessSharedAudience**
 ```java
-Mono<BusinessSharedAudienceResponse> AudienceSharingApi.updateAdAccountToBusinessSharedAudience(adAccountIdbusinessSharedAudience)
+Mono<AdAccountToBusinessSharedAudience> AudienceSharingApi.updateAdAccountToBusinessSharedAudience(adAccountIdadAccountToBusinessSharedAudienceUpdateWithRequiredBody)
 ```
 
 Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **businessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  | |
+| **adAccountToBusinessSharedAudienceUpdateWithRequiredBody** | [**AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 
 ### Return type
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**AdAccountToBusinessSharedAudience**](AdAccountToBusinessSharedAudience.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:write`
@@ -188,22 +188,22 @@ From an ad account, share a specific audience with a business account, or revoke
 <a id="updateBusinessToAdAccountSharedAudience"></a>
 # **updateBusinessToAdAccountSharedAudience**
 ```java
-Mono<SharedAudienceResponse> AudienceSharingApi.updateBusinessToAdAccountSharedAudience(businessIdsharedAudience)
+Mono<BusinessToAdAccountSharedAudience> AudienceSharingApi.updateBusinessToAdAccountSharedAudience(businessIdbusinessToAdAccountSharedAudienceUpdateWithRequiredBody)
 ```
 
 Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `String`| Unique identifier of the requesting business. | |
-| **sharedAudience** | [**SharedAudience**](SharedAudience.md)|  | |
+| **businessToAdAccountSharedAudienceUpdateWithRequiredBody** | [**BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 
 ### Return type
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**BusinessToAdAccountSharedAudience**](BusinessToAdAccountSharedAudience.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `biz_access:write`
@@ -215,22 +215,22 @@ From a business, share a specific audience with other ad account(s), or revoke a
 <a id="updateBusinessToBusinessSharedAudience"></a>
 # **updateBusinessToBusinessSharedAudience**
 ```java
-Mono<BusinessSharedAudienceResponse> AudienceSharingApi.updateBusinessToBusinessSharedAudience(businessIdbusinessSharedAudience)
+Mono<BusinessToBusinessSharedAudience> AudienceSharingApi.updateBusinessToBusinessSharedAudience(businessIdbusinessToBusinessSharedAudienceUpdateWithRequiredBody)
 ```
 
 Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `String`| Unique identifier of the requesting business. | |
-| **businessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  | |
+| **businessToBusinessSharedAudienceUpdateWithRequiredBody** | [**BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 
 ### Return type
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**BusinessToBusinessSharedAudience**](BusinessToBusinessSharedAudience.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `biz_access:write`

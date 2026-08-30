@@ -6,29 +6,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.OptimizationGoalMetadataConversionTagV3GoalMetadata;
-import org.openapitools.model.OptimizationGoalMetadataFrequencyGoalMetadata;
-import org.openapitools.model.OptimizationGoalMetadataScrollupGoalMetadata;
+import org.openapitools.model.ConversionTagV3GoalMetadata;
+import org.openapitools.model.FrequencyGoalMetadata;
+import org.openapitools.model.ScrollupGoalMetadata;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class OptimizationGoalMetadata   {
   
-  private OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
-  private OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata;
-  private OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata;
+  private ConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
+  private FrequencyGoalMetadata frequencyGoalMetadata;
+  private ScrollupGoalMetadata scrollupGoalMetadata;
 
   /**
    **/
   
   @ApiModelProperty(value = "")
   @JsonProperty("conversion_tag_v3_goal_metadata")
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata getConversionTagV3GoalMetadata() {
+  public ConversionTagV3GoalMetadata getConversionTagV3GoalMetadata() {
     return conversionTagV3GoalMetadata;
   }
-  public void setConversionTagV3GoalMetadata(OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
+  public void setConversionTagV3GoalMetadata(ConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
     this.conversionTagV3GoalMetadata = conversionTagV3GoalMetadata;
   }
 
@@ -37,10 +37,10 @@ public class OptimizationGoalMetadata   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("frequency_goal_metadata")
-  public OptimizationGoalMetadataFrequencyGoalMetadata getFrequencyGoalMetadata() {
+  public FrequencyGoalMetadata getFrequencyGoalMetadata() {
     return frequencyGoalMetadata;
   }
-  public void setFrequencyGoalMetadata(OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata) {
+  public void setFrequencyGoalMetadata(FrequencyGoalMetadata frequencyGoalMetadata) {
     this.frequencyGoalMetadata = frequencyGoalMetadata;
   }
 
@@ -49,10 +49,10 @@ public class OptimizationGoalMetadata   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("scrollup_goal_metadata")
-  public OptimizationGoalMetadataScrollupGoalMetadata getScrollupGoalMetadata() {
+  public ScrollupGoalMetadata getScrollupGoalMetadata() {
     return scrollupGoalMetadata;
   }
-  public void setScrollupGoalMetadata(OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata) {
+  public void setScrollupGoalMetadata(ScrollupGoalMetadata scrollupGoalMetadata) {
     this.scrollupGoalMetadata = scrollupGoalMetadata;
   }
 
@@ -93,10 +93,7 @@ public class OptimizationGoalMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

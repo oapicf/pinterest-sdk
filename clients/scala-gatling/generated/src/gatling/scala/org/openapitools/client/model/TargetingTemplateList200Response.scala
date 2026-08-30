@@ -4,7 +4,7 @@ package org.openapitools.client.model
 
 case class TargetingTemplateList200Response (
     _bookmark: Option[String],
-    _items: List[TargetingTemplateGetResponseData]
+    _items: List[TargetingTemplate]
 )
 object TargetingTemplateList200Response {
     def toStringBody(var_bookmark: Object, var_items: Object) =

@@ -7,7 +7,7 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.non_nullable_catalogs_currency import NonNullableCatalogsCurrency  # noqa: F401,E501
-from app.openapi_server.models.non_nullable_product_availability_type import NonNullableProductAvailabilityType  # noqa: F401,E501
+from app.openapi_server.models.product_availability import ProductAvailability  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -17,11 +17,11 @@ class CatalogsRetailProductMetadata(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, availability: NonNullableProductAvailabilityType=None, currency: NonNullableCatalogsCurrency=None, item_group_id: str=None, item_id: str=None, price: float=None, sale_price: float=None):  # noqa: E501
+    def __init__(self, availability: ProductAvailability=None, currency: NonNullableCatalogsCurrency=None, item_group_id: str=None, item_id: str=None, price: float=None, sale_price: float=None):  # noqa: E501
         """CatalogsRetailProductMetadata - a model defined in Swagger
 
         :param availability: The availability of this CatalogsRetailProductMetadata.  # noqa: E501
-        :type availability: NonNullableProductAvailabilityType
+        :type availability: ProductAvailability
         :param currency: The currency of this CatalogsRetailProductMetadata.  # noqa: E501
         :type currency: NonNullableCatalogsCurrency
         :param item_group_id: The item_group_id of this CatalogsRetailProductMetadata.  # noqa: E501
@@ -34,7 +34,7 @@ class CatalogsRetailProductMetadata(Model):
         :type sale_price: float
         """
         self.swagger_types = {
-            'availability': NonNullableProductAvailabilityType,
+            'availability': ProductAvailability,
             'currency': NonNullableCatalogsCurrency,
             'item_group_id': str,
             'item_id': str,
@@ -70,22 +70,22 @@ class CatalogsRetailProductMetadata(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def availability(self) -> NonNullableProductAvailabilityType:
+    def availability(self) -> ProductAvailability:
         """Gets the availability of this CatalogsRetailProductMetadata.
 
 
         :return: The availability of this CatalogsRetailProductMetadata.
-        :rtype: NonNullableProductAvailabilityType
+        :rtype: ProductAvailability
         """
         return self._availability
 
     @availability.setter
-    def availability(self, availability: NonNullableProductAvailabilityType):
+    def availability(self, availability: ProductAvailability):
         """Sets the availability of this CatalogsRetailProductMetadata.
 
 
         :param availability: The availability of this CatalogsRetailProductMetadata.
-        :type availability: NonNullableProductAvailabilityType
+        :type availability: ProductAvailability
         """
         if availability is None:
             raise ValueError("Invalid value for `availability`, must not be `None`")  # noqa: E501

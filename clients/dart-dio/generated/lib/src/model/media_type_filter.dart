@@ -74,7 +74,7 @@ class _$MediaTypeFilterSerializer implements PrimitiveSerializer<MediaTypeFilter
             value,
             specifiedType: const FullType(CatalogsProductGroupMultipleMediaTypesCriteria),
           ) as CatalogsProductGroupMultipleMediaTypesCriteria;
-          result.MEDIA_TYPE = valueDes;
+          result.MEDIA_TYPE.replace(valueDes);
           break;
         default:
           unhandled.add(key);

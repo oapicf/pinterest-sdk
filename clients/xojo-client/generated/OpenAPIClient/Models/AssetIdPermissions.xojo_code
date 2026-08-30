@@ -2,6 +2,9 @@
 Protected Class AssetIdPermissions
 
 	#tag Property, Flags = &h0
+		#tag Note
+			An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
+		#tag EndNote
 		asset_group_info As OpenAPIClient.Models.AssetGroupBinding
 	#tag EndProperty
 
@@ -10,15 +13,12 @@ Protected Class AssetIdPermissions
 		#tag Note
 			Unique identifier of a business asset.
 		#tag EndNote
-		asset_id As Xoson.O.OptionalString
+		asset_id As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
-		#tag EndNote
-		asset_type As Xoson.O.OptionalString
+		asset_type As String
 	#tag EndProperty
 
 
@@ -87,7 +87,7 @@ Protected Class AssetIdPermissions
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="AssetTypeResponse"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

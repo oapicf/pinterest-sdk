@@ -1,0 +1,36 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingSpecOperationMinimumAge",
+  "fields": [
+    {
+      "name": "field",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationMinimumAge_field",
+        "symbols": [
+          "MINIMUM_AGE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationMinimumAge_operation",
+        "symbols": [
+          "SET"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "doc": ""
+    }
+  ]
+
+}

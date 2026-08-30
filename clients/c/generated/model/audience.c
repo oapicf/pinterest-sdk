@@ -7,67 +7,98 @@
 
 static audience_t *audience_create_internal(
     char *ad_account_id,
-    char *audience_type,
+    pinner_list_type_t *audience_type,
     char *created_by_company_name,
-    int created_timestamp,
+    int *created_timestamp,
     char *description,
     char *id,
+    int *is_nca,
     char *name,
     audience_rule_t *rule,
-    int size,
-    char *status,
+    int *size,
+    audience_status_t *status,
     char *type,
-    int updated_timestamp
+    int *updated_timestamp
     ) {
     audience_t *audience_local_var = malloc(sizeof(audience_t));
     if (!audience_local_var) {
         return NULL;
     }
+    memset(audience_local_var, 0, sizeof(audience_t));
+    audience_local_var->_library_owned = 1;
     audience_local_var->ad_account_id = ad_account_id;
     audience_local_var->audience_type = audience_type;
     audience_local_var->created_by_company_name = created_by_company_name;
     audience_local_var->created_timestamp = created_timestamp;
     audience_local_var->description = description;
     audience_local_var->id = id;
+    audience_local_var->is_nca = is_nca;
     audience_local_var->name = name;
     audience_local_var->rule = rule;
     audience_local_var->size = size;
     audience_local_var->status = status;
     audience_local_var->type = type;
     audience_local_var->updated_timestamp = updated_timestamp;
-
-    audience_local_var->_library_owned = 1;
     return audience_local_var;
 }
 
 __attribute__((deprecated)) audience_t *audience_create(
     char *ad_account_id,
-    char *audience_type,
+    pinner_list_type_t *audience_type,
     char *created_by_company_name,
-    int created_timestamp,
+    int *created_timestamp,
     char *description,
     char *id,
+    int *is_nca,
     char *name,
     audience_rule_t *rule,
-    int size,
-    char *status,
+    int *size,
+    audience_status_t *status,
     char *type,
-    int updated_timestamp
+    int *updated_timestamp
     ) {
-    return audience_create_internal (
+    int *created_timestamp_copy = NULL;
+    if (created_timestamp) {
+        created_timestamp_copy = malloc(sizeof(int));
+        if (created_timestamp_copy) *created_timestamp_copy = *created_timestamp;
+    }
+    int *is_nca_copy = NULL;
+    if (is_nca) {
+        is_nca_copy = malloc(sizeof(int));
+        if (is_nca_copy) *is_nca_copy = *is_nca;
+    }
+    int *size_copy = NULL;
+    if (size) {
+        size_copy = malloc(sizeof(int));
+        if (size_copy) *size_copy = *size;
+    }
+    int *updated_timestamp_copy = NULL;
+    if (updated_timestamp) {
+        updated_timestamp_copy = malloc(sizeof(int));
+        if (updated_timestamp_copy) *updated_timestamp_copy = *updated_timestamp;
+    }
+    audience_t *result = audience_create_internal (
         ad_account_id,
         audience_type,
         created_by_company_name,
-        created_timestamp,
+        created_timestamp_copy,
         description,
         id,
+        is_nca_copy,
         name,
         rule,
-        size,
+        size_copy,
         status,
         type,
-        updated_timestamp
+        updated_timestamp_copy
         );
+    if (!result) {
+        free(created_timestamp_copy);
+        free(is_nca_copy);
+        free(size_copy);
+        free(updated_timestamp_copy);
+    }
+    return result;
 }
 
 void audience_free(audience_t *audience) {
@@ -84,12 +115,16 @@ void audience_free(audience_t *audience) {
         audience->ad_account_id = NULL;
     }
     if (audience->audience_type) {
-        free(audience->audience_type);
+        pinner_list_type_free(audience->audience_type);
         audience->audience_type = NULL;
     }
     if (audience->created_by_company_name) {
         free(audience->created_by_company_name);
         audience->created_by_company_name = NULL;
+    }
+    if (audience->created_timestamp) {
+        free(audience->created_timestamp);
+        audience->created_timestamp = NULL;
     }
     if (audience->description) {
         free(audience->description);
@@ -99,6 +134,10 @@ void audience_free(audience_t *audience) {
         free(audience->id);
         audience->id = NULL;
     }
+    if (audience->is_nca) {
+        free(audience->is_nca);
+        audience->is_nca = NULL;
+    }
     if (audience->name) {
         free(audience->name);
         audience->name = NULL;
@@ -107,13 +146,21 @@ void audience_free(audience_t *audience) {
         audience_rule_free(audience->rule);
         audience->rule = NULL;
     }
+    if (audience->size) {
+        free(audience->size);
+        audience->size = NULL;
+    }
     if (audience->status) {
-        free(audience->status);
+        audience_status_free(audience->status);
         audience->status = NULL;
     }
     if (audience->type) {
         free(audience->type);
         audience->type = NULL;
+    }
+    if (audience->updated_timestamp) {
+        free(audience->updated_timestamp);
+        audience->updated_timestamp = NULL;
     }
     free(audience);
 }
@@ -131,8 +178,13 @@ cJSON *audience_convertToJSON(audience_t *audience) {
 
     // audience->audience_type
     if(audience->audience_type) {
-    if(cJSON_AddStringToObject(item, "audience_type", audience->audience_type) == NULL) {
-    goto fail; //String
+    cJSON *audience_type_local_JSON = pinner_list_type_convertToJSON(audience->audience_type);
+    if(audience_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "audience_type", audience_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
@@ -147,7 +199,7 @@ cJSON *audience_convertToJSON(audience_t *audience) {
 
     // audience->created_timestamp
     if(audience->created_timestamp) {
-    if(cJSON_AddNumberToObject(item, "created_timestamp", audience->created_timestamp) == NULL) {
+    if(cJSON_AddNumberToObject(item, "created_timestamp", *audience->created_timestamp) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -165,6 +217,14 @@ cJSON *audience_convertToJSON(audience_t *audience) {
     if(audience->id) {
     if(cJSON_AddStringToObject(item, "id", audience->id) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // audience->is_nca
+    if(audience->is_nca) {
+    if(cJSON_AddBoolToObject(item, "is_nca", *audience->is_nca) == NULL) {
+    goto fail; //Bool
     }
     }
 
@@ -192,7 +252,7 @@ cJSON *audience_convertToJSON(audience_t *audience) {
 
     // audience->size
     if(audience->size) {
-    if(cJSON_AddNumberToObject(item, "size", audience->size) == NULL) {
+    if(cJSON_AddNumberToObject(item, "size", *audience->size) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -200,8 +260,13 @@ cJSON *audience_convertToJSON(audience_t *audience) {
 
     // audience->status
     if(audience->status) {
-    if(cJSON_AddStringToObject(item, "status", audience->status) == NULL) {
-    goto fail; //String
+    cJSON *status_local_JSON = audience_status_convertToJSON(audience->status);
+    if(status_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "status", status_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
@@ -216,7 +281,7 @@ cJSON *audience_convertToJSON(audience_t *audience) {
 
     // audience->updated_timestamp
     if(audience->updated_timestamp) {
-    if(cJSON_AddNumberToObject(item, "updated_timestamp", audience->updated_timestamp) == NULL) {
+    if(cJSON_AddNumberToObject(item, "updated_timestamp", *audience->updated_timestamp) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -233,8 +298,38 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
 
     audience_t *audience_local_var = NULL;
 
+    char *ad_account_id_local_str = NULL;
+
+    // define the local variable for audience->audience_type
+    pinner_list_type_t *audience_type_local_nonprim = NULL;
+
+    char *created_by_company_name_local_str = NULL;
+
+    // define the local variable for audience->created_timestamp
+    int *created_timestamp_local_var = NULL;
+
+    char *description_local_str = NULL;
+
+    char *id_local_str = NULL;
+
+    // define the local variable for audience->is_nca
+    int *is_nca_local_var = NULL;
+
+    char *name_local_str = NULL;
+
     // define the local variable for audience->rule
     audience_rule_t *rule_local_nonprim = NULL;
+
+    // define the local variable for audience->size
+    int *size_local_var = NULL;
+
+    // define the local variable for audience->status
+    audience_status_t *status_local_nonprim = NULL;
+
+    char *type_local_str = NULL;
+
+    // define the local variable for audience->updated_timestamp
+    int *updated_timestamp_local_var = NULL;
 
     // audience->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(audienceJSON, "ad_account_id");
@@ -254,10 +349,7 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
         audience_type = NULL;
     }
     if (audience_type) { 
-    if(!cJSON_IsString(audience_type) && !cJSON_IsNull(audience_type))
-    {
-    goto end; //String
-    }
+    audience_type_local_nonprim = pinner_list_type_parseFromJSON(audience_type); //custom
     }
 
     // audience->created_by_company_name
@@ -282,6 +374,12 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
     {
     goto end; //Numeric
     }
+    created_timestamp_local_var = malloc(sizeof(int));
+    if(!created_timestamp_local_var)
+    {
+        goto end;
+    }
+    *created_timestamp_local_var = created_timestamp->valuedouble;
     }
 
     // audience->description
@@ -306,6 +404,24 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
     {
     goto end; //String
     }
+    }
+
+    // audience->is_nca
+    cJSON *is_nca = cJSON_GetObjectItemCaseSensitive(audienceJSON, "is_nca");
+    if (cJSON_IsNull(is_nca)) {
+        is_nca = NULL;
+    }
+    if (is_nca) { 
+    if(!cJSON_IsBool(is_nca))
+    {
+    goto end; //Bool
+    }
+    is_nca_local_var = malloc(sizeof(int));
+    if(!is_nca_local_var)
+    {
+        goto end;
+    }
+    *is_nca_local_var = is_nca->valueint;
     }
 
     // audience->name
@@ -339,6 +455,12 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
     {
     goto end; //Numeric
     }
+    size_local_var = malloc(sizeof(int));
+    if(!size_local_var)
+    {
+        goto end;
+    }
+    *size_local_var = size->valuedouble;
     }
 
     // audience->status
@@ -347,10 +469,7 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
         status = NULL;
     }
     if (status) { 
-    if(!cJSON_IsString(status) && !cJSON_IsNull(status))
-    {
-    goto end; //String
-    }
+    status_local_nonprim = audience_status_parseFromJSON(status); //custom
     }
 
     // audience->type
@@ -375,29 +494,95 @@ audience_t *audience_parseFromJSON(cJSON *audienceJSON){
     {
     goto end; //Numeric
     }
+    updated_timestamp_local_var = malloc(sizeof(int));
+    if(!updated_timestamp_local_var)
+    {
+        goto end;
+    }
+    *updated_timestamp_local_var = updated_timestamp->valuedouble;
     }
 
 
+    if (ad_account_id && !cJSON_IsNull(ad_account_id)) ad_account_id_local_str = strdup(ad_account_id->valuestring);
+    if (created_by_company_name && !cJSON_IsNull(created_by_company_name)) created_by_company_name_local_str = strdup(created_by_company_name->valuestring);
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (type && !cJSON_IsNull(type)) type_local_str = strdup(type->valuestring);
+
     audience_local_var = audience_create_internal (
-        ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
-        audience_type && !cJSON_IsNull(audience_type) ? strdup(audience_type->valuestring) : NULL,
-        created_by_company_name && !cJSON_IsNull(created_by_company_name) ? strdup(created_by_company_name->valuestring) : NULL,
-        created_timestamp ? created_timestamp->valuedouble : 0,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
+        ad_account_id_local_str,
+        audience_type ? audience_type_local_nonprim : NULL,
+        created_by_company_name_local_str,
+        created_timestamp_local_var,
+        description_local_str,
+        id_local_str,
+        is_nca_local_var,
+        name_local_str,
         rule ? rule_local_nonprim : NULL,
-        size ? size->valuedouble : 0,
-        status && !cJSON_IsNull(status) ? strdup(status->valuestring) : NULL,
-        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
-        updated_timestamp ? updated_timestamp->valuedouble : 0
+        size_local_var,
+        status ? status_local_nonprim : NULL,
+        type_local_str,
+        updated_timestamp_local_var
         );
+
+    if (!audience_local_var) {
+        goto end;
+    }
 
     return audience_local_var;
 end:
+    if (ad_account_id_local_str) {
+        free(ad_account_id_local_str);
+        ad_account_id_local_str = NULL;
+    }
+    if (audience_type_local_nonprim) {
+        pinner_list_type_free(audience_type_local_nonprim);
+        audience_type_local_nonprim = NULL;
+    }
+    if (created_by_company_name_local_str) {
+        free(created_by_company_name_local_str);
+        created_by_company_name_local_str = NULL;
+    }
+    if (created_timestamp_local_var) {
+        free(created_timestamp_local_var);
+        created_timestamp_local_var = NULL;
+    }
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (is_nca_local_var) {
+        free(is_nca_local_var);
+        is_nca_local_var = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
     if (rule_local_nonprim) {
         audience_rule_free(rule_local_nonprim);
         rule_local_nonprim = NULL;
+    }
+    if (size_local_var) {
+        free(size_local_var);
+        size_local_var = NULL;
+    }
+    if (status_local_nonprim) {
+        audience_status_free(status_local_nonprim);
+        status_local_nonprim = NULL;
+    }
+    if (type_local_str) {
+        free(type_local_str);
+        type_local_str = NULL;
+    }
+    if (updated_timestamp_local_var) {
+        free(updated_timestamp_local_var);
+        updated_timestamp_local_var = NULL;
     }
     return NULL;
 

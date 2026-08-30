@@ -5,6 +5,11 @@
   "name": "AdvancedAuctionItem",
   "fields": [
     {
+      "name": "bid_options",
+      "type": "model.AdvancedAuctionBidOptions",
+      "doc": ""
+    },
+    {
       "name": "country",
       "type": "model.Country",
       "doc": ""
@@ -17,11 +22,6 @@
     {
       "name": "language",
       "type": "model.Language",
-      "doc": ""
-    },
-    {
-      "name": "bid_options",
-      "type": "model.AdvancedAuctionBidOptions",
       "doc": ""
     }
   ]

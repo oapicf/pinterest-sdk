@@ -13,8 +13,7 @@ import BoardsListPins200Response._
 
 case class BoardsListPins200Response (
   bookmark: Option[String],
-/* Pins */
-  items: List[Pin])
+items: List[PinRead])
 
 object BoardsListPins200Response {
   import DateTimeCodecs._

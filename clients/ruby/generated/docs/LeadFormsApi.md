@@ -13,11 +13,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## lead_form_get
 
-> <LeadFormResponse> lead_form_get(ad_account_id, lead_form_id)
+> <LeadForm> lead_form_get(lead_form_id, ad_account_id)
 
 Get lead form by id
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Examples
 
@@ -31,12 +31,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::LeadFormsApi.new
+lead_form_id = 'lead_form_id_example' # String | The ID of this lead form
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-lead_form_id = '1234567890123' # String | Unique identifier of a lead form.
 
 begin
   # Get lead form by id
-  result = api_instance.lead_form_get(ad_account_id, lead_form_id)
+  result = api_instance.lead_form_get(lead_form_id, ad_account_id)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling LeadFormsApi->lead_form_get: #{e}"
@@ -47,15 +47,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<LeadFormResponse>, Integer, Hash)> lead_form_get_with_http_info(ad_account_id, lead_form_id)
+> <Array(<LeadForm>, Integer, Hash)> lead_form_get_with_http_info(lead_form_id, ad_account_id)
 
 ```ruby
 begin
   # Get lead form by id
-  data, status_code, headers = api_instance.lead_form_get_with_http_info(ad_account_id, lead_form_id)
+  data, status_code, headers = api_instance.lead_form_get_with_http_info(lead_form_id, ad_account_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <LeadFormResponse>
+  p data # => <LeadForm>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling LeadFormsApi->lead_form_get_with_http_info: #{e}"
 end
@@ -65,12 +65,12 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **lead_form_id** | **String** | The ID of this lead form |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **lead_form_id** | **String** | Unique identifier of a lead form. |  |
 
 ### Return type
 
-[**LeadFormResponse**](LeadFormResponse.md)
+[**LeadForm**](LeadForm.md)
 
 ### Authorization
 
@@ -84,7 +84,7 @@ end
 
 ## lead_form_test_create
 
-> <LeadFormTestResponse> lead_form_test_create(ad_account_id, lead_form_id, lead_form_test_request)
+> <LeadFormTest> lead_form_test_create(ad_account_id, lead_form_id, lead_form_test_create)
 
 Create lead form test data
 
@@ -102,13 +102,13 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::LeadFormsApi.new
-ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-lead_form_id = '1234567890123' # String | Unique identifier of a lead form.
-lead_form_test_request = PinterestSdkClient::LeadFormTestRequest.new({answers: ["John", "Doe", "abc@email.com", "987654321"]}) # LeadFormTestRequest | Subscription to create.
+ad_account_id = 'ad_account_id_example' # String | 
+lead_form_id = 'lead_form_id_example' # String | Unique identifier of a lead form.
+lead_form_test_create = PinterestSdkClient::LeadFormTestCreate.new({answers: ["John", "Doe", "abc@email.com", "987654321"]}) # LeadFormTestCreate | 
 
 begin
   # Create lead form test data
-  result = api_instance.lead_form_test_create(ad_account_id, lead_form_id, lead_form_test_request)
+  result = api_instance.lead_form_test_create(ad_account_id, lead_form_id, lead_form_test_create)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling LeadFormsApi->lead_form_test_create: #{e}"
@@ -119,15 +119,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<LeadFormTestResponse>, Integer, Hash)> lead_form_test_create_with_http_info(ad_account_id, lead_form_id, lead_form_test_request)
+> <Array(<LeadFormTest>, Integer, Hash)> lead_form_test_create_with_http_info(ad_account_id, lead_form_id, lead_form_test_create)
 
 ```ruby
 begin
   # Create lead form test data
-  data, status_code, headers = api_instance.lead_form_test_create_with_http_info(ad_account_id, lead_form_id, lead_form_test_request)
+  data, status_code, headers = api_instance.lead_form_test_create_with_http_info(ad_account_id, lead_form_id, lead_form_test_create)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <LeadFormTestResponse>
+  p data # => <LeadFormTest>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling LeadFormsApi->lead_form_test_create_with_http_info: #{e}"
 end
@@ -137,13 +137,13 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
+| **ad_account_id** | **String** |  |  |
 | **lead_form_id** | **String** | Unique identifier of a lead form. |  |
-| **lead_form_test_request** | [**LeadFormTestRequest**](LeadFormTestRequest.md) | Subscription to create. |  |
+| **lead_form_test_create** | [**LeadFormTestCreate**](LeadFormTestCreate.md) |  |  |
 
 ### Return type
 
-[**LeadFormTestResponse**](LeadFormTestResponse.md)
+[**LeadFormTest**](LeadFormTest.md)
 
 ### Authorization
 
@@ -157,11 +157,11 @@ end
 
 ## lead_forms_create
 
-> <LeadFormArrayResponse> lead_forms_create(ad_account_id, lead_form_create_request)
+> <LeadFormsCreate200Response> lead_forms_create(ad_account_id, lead_form_create)
 
 Create lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Examples
 
@@ -176,11 +176,11 @@ end
 
 api_instance = PinterestSdkClient::LeadFormsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-lead_form_create_request = [PinterestSdkClient::LeadFormCreateRequest.new] # Array<LeadFormCreateRequest> | List of lead forms to create, size limit [1, 30].
+lead_form_create = [PinterestSdkClient::LeadFormCreate.new({completion_message: 'Thank you for submitting. We will contact you soon.', has_accepted_terms: false, name: 'Lead Form 3/14/2023', privacy_policy_link: 'https://www.advertisername.com/privacy-policy', questions: [{"question_type": "CUSTOM", "custom_question_field_type": "CHECKBOX", "custom_question_label": "What is your favorite animal?", "custom_question_options": ["Dog", "Cat", "Bird", "Turtle"]}]})] # Array<LeadFormCreate> | 
 
 begin
   # Create lead forms
-  result = api_instance.lead_forms_create(ad_account_id, lead_form_create_request)
+  result = api_instance.lead_forms_create(ad_account_id, lead_form_create)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling LeadFormsApi->lead_forms_create: #{e}"
@@ -191,15 +191,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<LeadFormArrayResponse>, Integer, Hash)> lead_forms_create_with_http_info(ad_account_id, lead_form_create_request)
+> <Array(<LeadFormsCreate200Response>, Integer, Hash)> lead_forms_create_with_http_info(ad_account_id, lead_form_create)
 
 ```ruby
 begin
   # Create lead forms
-  data, status_code, headers = api_instance.lead_forms_create_with_http_info(ad_account_id, lead_form_create_request)
+  data, status_code, headers = api_instance.lead_forms_create_with_http_info(ad_account_id, lead_form_create)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <LeadFormArrayResponse>
+  p data # => <LeadFormsCreate200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling LeadFormsApi->lead_forms_create_with_http_info: #{e}"
 end
@@ -210,11 +210,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **lead_form_create_request** | [**Array&lt;LeadFormCreateRequest&gt;**](LeadFormCreateRequest.md) | List of lead forms to create, size limit [1, 30]. |  |
+| **lead_form_create** | [**Array&lt;LeadFormCreate&gt;**](LeadFormCreate.md) |  |  |
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 
@@ -232,7 +232,7 @@ end
 
 List lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Examples
 
@@ -248,9 +248,9 @@ end
 api_instance = PinterestSdkClient::LeadFormsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  order: 'ASCENDING', # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  bookmark: 'bookmark_example' # String | Cursor used to fetch the next page of items
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56, # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  order: PinterestSdkClient::PinterestLibPaginationOrder::ASCENDING # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 }
 
 begin
@@ -285,9 +285,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
-| **order** | **String** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
+| **order** | [**PinterestLibPaginationOrder**](.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 
 ### Return type
 
@@ -305,11 +305,11 @@ end
 
 ## lead_forms_update
 
-> <LeadFormArrayResponse> lead_forms_update(ad_account_id, lead_form_update_request)
+> <LeadFormsCreate200Response> lead_forms_update(ad_account_id, lead_form_batch_update)
 
 Update lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Examples
 
@@ -324,11 +324,11 @@ end
 
 api_instance = PinterestSdkClient::LeadFormsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-lead_form_update_request = [PinterestSdkClient::LeadFormUpdateRequest.new({id: '7765300871171'})] # Array<LeadFormUpdateRequest> | List of lead forms to update, size limit [1, 30].
+lead_form_batch_update = [PinterestSdkClient::LeadFormBatchUpdate.new({id: 'id_example'})] # Array<LeadFormBatchUpdate> | 
 
 begin
   # Update lead forms
-  result = api_instance.lead_forms_update(ad_account_id, lead_form_update_request)
+  result = api_instance.lead_forms_update(ad_account_id, lead_form_batch_update)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling LeadFormsApi->lead_forms_update: #{e}"
@@ -339,15 +339,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<LeadFormArrayResponse>, Integer, Hash)> lead_forms_update_with_http_info(ad_account_id, lead_form_update_request)
+> <Array(<LeadFormsCreate200Response>, Integer, Hash)> lead_forms_update_with_http_info(ad_account_id, lead_form_batch_update)
 
 ```ruby
 begin
   # Update lead forms
-  data, status_code, headers = api_instance.lead_forms_update_with_http_info(ad_account_id, lead_form_update_request)
+  data, status_code, headers = api_instance.lead_forms_update_with_http_info(ad_account_id, lead_form_batch_update)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <LeadFormArrayResponse>
+  p data # => <LeadFormsCreate200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling LeadFormsApi->lead_forms_update_with_http_info: #{e}"
 end
@@ -358,11 +358,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **lead_form_update_request** | [**Array&lt;LeadFormUpdateRequest&gt;**](LeadFormUpdateRequest.md) | List of lead forms to update, size limit [1, 30]. |  |
+| **lead_form_batch_update** | [**Array&lt;LeadFormBatchUpdate&gt;**](LeadFormBatchUpdate.md) |  |  |
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 

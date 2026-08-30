@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.model.HttpMethod;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,38 +23,7 @@ public class IntegrationLogClientRequest   {
   
   private String host;
 
-
-public enum MethodEnum {
-
-    @JsonProperty("GET") GET(String.valueOf("GET")), @JsonProperty("HEAD") HEAD(String.valueOf("HEAD")), @JsonProperty("POST") POST(String.valueOf("POST")), @JsonProperty("PUT") PUT(String.valueOf("PUT")), @JsonProperty("DELETE") DELETE(String.valueOf("DELETE")), @JsonProperty("CONNECT") CONNECT(String.valueOf("CONNECT")), @JsonProperty("OPTIONS") OPTIONS(String.valueOf("OPTIONS")), @JsonProperty("TRACE") TRACE(String.valueOf("TRACE")), @JsonProperty("PATCH") PATCH(String.valueOf("PATCH"));
-
-
-    private String value;
-
-    MethodEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static MethodEnum fromValue(String value) {
-        for (MethodEnum b : MethodEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private MethodEnum method;
+  private HttpMethod method;
 
   private String path;
 
@@ -85,7 +55,7 @@ public enum MethodEnum {
 
   /**
    **/
-  public IntegrationLogClientRequest method(MethodEnum method) {
+  public IntegrationLogClientRequest method(HttpMethod method) {
     this.method = method;
     return this;
   }
@@ -94,10 +64,10 @@ public enum MethodEnum {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("method")
   @NotNull
-  public MethodEnum getMethod() {
+  public HttpMethod getMethod() {
     return method;
   }
-  public void setMethod(MethodEnum method) {
+  public void setMethod(HttpMethod method) {
     this.method = method;
   }
 
@@ -237,10 +207,7 @@ public enum MethodEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

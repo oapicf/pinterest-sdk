@@ -9,15 +9,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.UpdateInvitesResultsResponseArrayItemsInner;
+import org.openapitools.model.InviteActionResultItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UpdateInvitesResultsResponseArray   {
   
-  private List<@Valid UpdateInvitesResultsResponseArrayItemsInner> items = new ArrayList<>();
+  private List<@Valid InviteActionResultItem> items = new ArrayList<>();
 
   /**
    * List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
@@ -26,10 +26,10 @@ public class UpdateInvitesResultsResponseArray   {
   @ApiModelProperty(value = "List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.")
   @JsonProperty("items")
   @Valid
-  public List<@Valid UpdateInvitesResultsResponseArrayItemsInner> getItems() {
+  public List<@Valid InviteActionResultItem> getItems() {
     return items;
   }
-  public void setItems(List<@Valid UpdateInvitesResultsResponseArrayItemsInner> items) {
+  public void setItems(List<@Valid InviteActionResultItem> items) {
     this.items = items;
   }
 
@@ -66,10 +66,7 @@ public class UpdateInvitesResultsResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

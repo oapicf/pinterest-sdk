@@ -8,10 +8,10 @@ The class is defined in **[CatalogsFeedIngestion.java](../../src/main/java/org/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | `OffsetDateTime` |  | 
-**feedId** | `String` |  | 
-**id** | `String` |  | 
-**status** | `CatalogsFeedProcessingStatus` |  | 
+**createdAt** | `OffsetDateTime` | Timestamp of the feed ingestion. | 
+**feedId** | `String` | Catalog Feed id pertaining to the feed ingestion. | 
+**id** | `String` | Unique identifier of a feed ingestion. | 
+**status** | `CatalogsFeedProcessingStatus` | Status of the feed ingestion. | 
 
 
 

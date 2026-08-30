@@ -7,10 +7,22 @@ goog.provide('API.Client.CatalogsCreativeAssetsProductGroupProductCounts');
 API.Client.CatalogsCreativeAssetsProductGroupProductCounts = function() {}
 
 /**
+ * @type {!number}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsProductGroupProductCounts.prototype.appLinks;
+
+/**
  * @type {!string}
  * @export
  */
 API.Client.CatalogsCreativeAssetsProductGroupProductCounts.prototype.catalogType;
+
+/**
+ * @type {!number}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsProductGroupProductCounts.prototype.images;
 
 /**
  * @type {!number}

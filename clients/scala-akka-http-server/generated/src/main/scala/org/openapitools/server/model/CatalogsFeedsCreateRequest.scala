@@ -22,7 +22,7 @@ final case class CatalogsFeedsCreateRequest (
   defaultAvailability: Option[ProductAvailabilityType] = None,
   defaultCountry: Option[Country] = None,
   defaultCurrency: Option[NullableCurrency] = None,
-  defaultLocale: Option[CatalogsFeedsCreateRequestDefaultLocale] = None,
+  defaultLocale: Option[CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale] = None,
   format: CatalogsFormat,
   location: String,
   name: String,

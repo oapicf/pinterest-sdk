@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -21,8 +20,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * A map of filter attributes to their available values.
  **/
 @ApiModel(description = "A map of filter attributes to their available values.")
-@JsonTypeName("catalogs_hotel_filter_values_map")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@JsonTypeName("CatalogsHotelFilterValuesMap")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelFilterValuesMap   {
   private @Valid List<String> brand = new ArrayList<>();
   private @Valid List<String> customLabel0 = new ArrayList<>();
@@ -287,12 +286,8 @@ public class CatalogsHotelFilterValuesMap   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

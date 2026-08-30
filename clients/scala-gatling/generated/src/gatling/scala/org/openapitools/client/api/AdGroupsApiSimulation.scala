@@ -60,10 +60,15 @@ class AdGroupsApiSimulation extends Simulation {
     val adGroupsAudienceSizingPerSecond = config.getDouble("performance.operationsPerSecond.adGroupsAudienceSizing") * rateMultiplier * instanceMultiplier
     val adGroupsBidFloorGetPerSecond = config.getDouble("performance.operationsPerSecond.adGroupsBidFloorGet") * rateMultiplier * instanceMultiplier
     val adGroupsCreatePerSecond = config.getDouble("performance.operationsPerSecond.adGroupsCreate") * rateMultiplier * instanceMultiplier
+    val adGroupsDynamicTitlesDownloadCsvPerSecond = config.getDouble("performance.operationsPerSecond.adGroupsDynamicTitlesDownloadCsv") * rateMultiplier * instanceMultiplier
+    val adGroupsDynamicTitlesGetStatusPerSecond = config.getDouble("performance.operationsPerSecond.adGroupsDynamicTitlesGetStatus") * rateMultiplier * instanceMultiplier
+    val adGroupsDynamicTitlesGetUploadUrlPerSecond = config.getDouble("performance.operationsPerSecond.adGroupsDynamicTitlesGetUploadUrl") * rateMultiplier * instanceMultiplier
+    val adGroupsDynamicTitlesProcessCsvPerSecond = config.getDouble("performance.operationsPerSecond.adGroupsDynamicTitlesProcessCsv") * rateMultiplier * instanceMultiplier
     val adGroupsGetPerSecond = config.getDouble("performance.operationsPerSecond.adGroupsGet") * rateMultiplier * instanceMultiplier
     val adGroupsListPerSecond = config.getDouble("performance.operationsPerSecond.adGroupsList") * rateMultiplier * instanceMultiplier
     val adGroupsTargetingAnalyticsGetPerSecond = config.getDouble("performance.operationsPerSecond.adGroupsTargetingAnalyticsGet") * rateMultiplier * instanceMultiplier
     val adGroupsUpdatePerSecond = config.getDouble("performance.operationsPerSecond.adGroupsUpdate") * rateMultiplier * instanceMultiplier
+    val getAdGroupsByPromotionIdsListPerSecond = config.getDouble("performance.operationsPerSecond.getAdGroupsByPromotionIdsList") * rateMultiplier * instanceMultiplier
 
     val scenarioBuilders: mutable.MutableList[PopulationBuilder] = new mutable.MutableList[PopulationBuilder]()
 
@@ -73,12 +78,18 @@ class AdGroupsApiSimulation extends Simulation {
     val ad_groups/audience_sizingPATHFeeder = csv(userDataDirectory + File.separator + "adGroupsAudienceSizing-pathParams.csv").random
     val ad_groups_bid_floor/getPATHFeeder = csv(userDataDirectory + File.separator + "adGroupsBidFloorGet-pathParams.csv").random
     val ad_groups/createPATHFeeder = csv(userDataDirectory + File.separator + "adGroupsCreate-pathParams.csv").random
+    val ad_groups_dynamic_titles/download_csvPATHFeeder = csv(userDataDirectory + File.separator + "adGroupsDynamicTitlesDownloadCsv-pathParams.csv").random
+    val ad_groups_dynamic_titles/get_statusPATHFeeder = csv(userDataDirectory + File.separator + "adGroupsDynamicTitlesGetStatus-pathParams.csv").random
+    val ad_groups_dynamic_titles/get_upload_urlPATHFeeder = csv(userDataDirectory + File.separator + "adGroupsDynamicTitlesGetUploadUrl-pathParams.csv").random
+    val ad_groups_dynamic_titles/process_csvPATHFeeder = csv(userDataDirectory + File.separator + "adGroupsDynamicTitlesProcessCsv-pathParams.csv").random
     val ad_groups/getPATHFeeder = csv(userDataDirectory + File.separator + "adGroupsGet-pathParams.csv").random
     val ad_groups/listQUERYFeeder = csv(userDataDirectory + File.separator + "adGroupsList-queryParams.csv").random
     val ad_groups/listPATHFeeder = csv(userDataDirectory + File.separator + "adGroupsList-pathParams.csv").random
     val ad_groups_targeting_analytics/getQUERYFeeder = csv(userDataDirectory + File.separator + "adGroupsTargetingAnalyticsGet-queryParams.csv").random
     val ad_groups_targeting_analytics/getPATHFeeder = csv(userDataDirectory + File.separator + "adGroupsTargetingAnalyticsGet-pathParams.csv").random
     val ad_groups/updatePATHFeeder = csv(userDataDirectory + File.separator + "adGroupsUpdate-pathParams.csv").random
+    val get_ad_groups_by_promotion_ids/listQUERYFeeder = csv(userDataDirectory + File.separator + "getAdGroupsByPromotionIdsList-queryParams.csv").random
+    val get_ad_groups_by_promotion_ids/listPATHFeeder = csv(userDataDirectory + File.separator + "getAdGroupsByPromotionIdsList-pathParams.csv").random
 
     // Setup all scenarios
 
@@ -88,17 +99,17 @@ class AdGroupsApiSimulation extends Simulation {
         .feed(ad_groups/analyticsPATHFeeder)
         .exec(http("adGroupsAnalytics")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/ad_groups/analytics")
-        .queryParam("view_window_days","${view_window_days}")
-        .queryParam("reporting_timezone","${reporting_timezone}")
-        .queryParam("granularity","${granularity}")
-        .queryParam("engagement_window_days","${engagement_window_days}")
-        .queryParam("conversion_report_time","${conversion_report_time}")
-        .queryParam("aggregate_report_rows","${aggregate_report_rows}")
-        .queryParam("start_date","${start_date}")
-        .queryParam("end_date","${end_date}")
-        .queryParam("columns","${columns}")
         .queryParam("ad_group_ids","${ad_group_ids}")
         .queryParam("click_window_days","${click_window_days}")
+        .queryParam("conversion_report_time","${conversion_report_time}")
+        .queryParam("columns","${columns}")
+        .queryParam("view_window_days","${view_window_days}")
+        .queryParam("granularity","${granularity}")
+        .queryParam("start_date","${start_date}")
+        .queryParam("end_date","${end_date}")
+        .queryParam("aggregate_report_rows","${aggregate_report_rows}")
+        .queryParam("engagement_window_days","${engagement_window_days}")
+        .queryParam("reporting_timezone","${reporting_timezone}")
 )
 
     // Run scnadGroupsAnalytics with warm up and reach a constant rate for entire duration
@@ -151,6 +162,62 @@ class AdGroupsApiSimulation extends Simulation {
     )
 
     
+    val scnadGroupsDynamicTitlesDownloadCsv = scenario("adGroupsDynamicTitlesDownloadCsvSimulation")
+        .feed(ad_groups_dynamic_titles/download_csvPATHFeeder)
+        .exec(http("adGroupsDynamicTitlesDownloadCsv")
+        .httpRequest("GET","/ad_accounts/${ad_account_id}/ad_groups/${ad_group_id}/dynamic_titles/csv")
+)
+
+    // Run scnadGroupsDynamicTitlesDownloadCsv with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnadGroupsDynamicTitlesDownloadCsv.inject(
+        rampUsersPerSec(1) to(adGroupsDynamicTitlesDownloadCsvPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(adGroupsDynamicTitlesDownloadCsvPerSecond) during(durationSeconds),
+        rampUsersPerSec(adGroupsDynamicTitlesDownloadCsvPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnadGroupsDynamicTitlesGetStatus = scenario("adGroupsDynamicTitlesGetStatusSimulation")
+        .feed(ad_groups_dynamic_titles/get_statusPATHFeeder)
+        .exec(http("adGroupsDynamicTitlesGetStatus")
+        .httpRequest("GET","/ad_accounts/${ad_account_id}/ad_groups/${ad_group_id}/dynamic_titles/status")
+)
+
+    // Run scnadGroupsDynamicTitlesGetStatus with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnadGroupsDynamicTitlesGetStatus.inject(
+        rampUsersPerSec(1) to(adGroupsDynamicTitlesGetStatusPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(adGroupsDynamicTitlesGetStatusPerSecond) during(durationSeconds),
+        rampUsersPerSec(adGroupsDynamicTitlesGetStatusPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnadGroupsDynamicTitlesGetUploadUrl = scenario("adGroupsDynamicTitlesGetUploadUrlSimulation")
+        .feed(ad_groups_dynamic_titles/get_upload_urlPATHFeeder)
+        .exec(http("adGroupsDynamicTitlesGetUploadUrl")
+        .httpRequest("GET","/ad_accounts/${ad_account_id}/ad_groups/${ad_group_id}/dynamic_titles/uploads")
+)
+
+    // Run scnadGroupsDynamicTitlesGetUploadUrl with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnadGroupsDynamicTitlesGetUploadUrl.inject(
+        rampUsersPerSec(1) to(adGroupsDynamicTitlesGetUploadUrlPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(adGroupsDynamicTitlesGetUploadUrlPerSecond) during(durationSeconds),
+        rampUsersPerSec(adGroupsDynamicTitlesGetUploadUrlPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnadGroupsDynamicTitlesProcessCsv = scenario("adGroupsDynamicTitlesProcessCsvSimulation")
+        .feed(ad_groups_dynamic_titles/process_csvPATHFeeder)
+        .exec(http("adGroupsDynamicTitlesProcessCsv")
+        .httpRequest("POST","/ad_accounts/${ad_account_id}/ad_groups/${ad_group_id}/dynamic_titles")
+)
+
+    // Run scnadGroupsDynamicTitlesProcessCsv with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnadGroupsDynamicTitlesProcessCsv.inject(
+        rampUsersPerSec(1) to(adGroupsDynamicTitlesProcessCsvPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(adGroupsDynamicTitlesProcessCsvPerSecond) during(durationSeconds),
+        rampUsersPerSec(adGroupsDynamicTitlesProcessCsvPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
     val scnadGroupsGet = scenario("adGroupsGetSimulation")
         .feed(ad_groups/getPATHFeeder)
         .exec(http("adGroupsGet")
@@ -170,13 +237,13 @@ class AdGroupsApiSimulation extends Simulation {
         .feed(ad_groups/listPATHFeeder)
         .exec(http("adGroupsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/ad_groups")
-        .queryParam("translate_interests_to_names","${translate_interests_to_names}")
-        .queryParam("entity_statuses","${entity_statuses}")
         .queryParam("campaign_ids","${campaign_ids}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("ad_group_ids","${ad_group_ids}")
+        .queryParam("translate_interests_to_names","${translate_interests_to_names}")
         .queryParam("page_size","${page_size}")
         .queryParam("order","${order}")
+        .queryParam("entity_statuses","${entity_statuses}")
+        .queryParam("ad_group_ids","${ad_group_ids}")
 )
 
     // Run scnadGroupsList with warm up and reach a constant rate for entire duration
@@ -192,18 +259,20 @@ class AdGroupsApiSimulation extends Simulation {
         .feed(ad_groups_targeting_analytics/getPATHFeeder)
         .exec(http("adGroupsTargetingAnalyticsGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/ad_groups/targeting_analytics")
-        .queryParam("view_window_days","${view_window_days}")
-        .queryParam("reporting_timezone","${reporting_timezone}")
-        .queryParam("targeting_types","${targeting_types}")
-        .queryParam("granularity","${granularity}")
-        .queryParam("attribution_types","${attribution_types}")
-        .queryParam("engagement_window_days","${engagement_window_days}")
-        .queryParam("conversion_report_time","${conversion_report_time}")
-        .queryParam("start_date","${start_date}")
-        .queryParam("end_date","${end_date}")
-        .queryParam("columns","${columns}")
-        .queryParam("ad_group_ids","${ad_group_ids}")
         .queryParam("click_window_days","${click_window_days}")
+        .queryParam("conversion_report_time","${conversion_report_time}")
+        .queryParam("view_window_days","${view_window_days}")
+        .queryParam("end_date","${end_date}")
+        .queryParam("targeting_types","${targeting_types}")
+        .queryParam("sort_ascending","${sort_ascending}")
+        .queryParam("ad_group_ids","${ad_group_ids}")
+        .queryParam("attribution_types","${attribution_types}")
+        .queryParam("columns","${columns}")
+        .queryParam("granularity","${granularity}")
+        .queryParam("start_date","${start_date}")
+        .queryParam("engagement_window_days","${engagement_window_days}")
+        .queryParam("sort_columns","${sort_columns}")
+        .queryParam("reporting_timezone","${reporting_timezone}")
 )
 
     // Run scnadGroupsTargetingAnalyticsGet with warm up and reach a constant rate for entire duration
@@ -225,6 +294,25 @@ class AdGroupsApiSimulation extends Simulation {
         rampUsersPerSec(1) to(adGroupsUpdatePerSecond) during(rampUpSeconds),
         constantUsersPerSec(adGroupsUpdatePerSecond) during(durationSeconds),
         rampUsersPerSec(adGroupsUpdatePerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scngetAdGroupsByPromotionIdsList = scenario("getAdGroupsByPromotionIdsListSimulation")
+        .feed(get_ad_groups_by_promotion_ids/listQUERYFeeder)
+        .feed(get_ad_groups_by_promotion_ids/listPATHFeeder)
+        .exec(http("getAdGroupsByPromotionIdsList")
+        .httpRequest("GET","/ad_accounts/${ad_account_id}/promotion_applied_entities")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("promotion_ids","${promotion_ids}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("order","${order}")
+)
+
+    // Run scngetAdGroupsByPromotionIdsList with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scngetAdGroupsByPromotionIdsList.inject(
+        rampUsersPerSec(1) to(getAdGroupsByPromotionIdsListPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(getAdGroupsByPromotionIdsListPerSecond) during(durationSeconds),
+        rampUsersPerSec(getAdGroupsByPromotionIdsListPerSecond) to(1) during(rampDownSeconds)
     )
 
     setUp(

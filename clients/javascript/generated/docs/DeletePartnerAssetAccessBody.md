@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accesses** | [**[DeletePartnerAssetAccessBodyAccessesInner]**](DeletePartnerAssetAccessBodyAccessesInner.md) |  | 
+**accesses** | [**[DeletePartnerAssetAccessItem]**](DeletePartnerAssetAccessItem.md) | List of partner asset accesses to delete. | 
 
 

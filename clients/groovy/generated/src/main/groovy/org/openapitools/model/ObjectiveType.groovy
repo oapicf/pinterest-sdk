@@ -13,7 +13,13 @@ enum ObjectiveType {
     
     CATALOG_SALES("CATALOG_SALES"),
     
-    VIDEO_COMPLETION("VIDEO_COMPLETION")
+    VIDEO_COMPLETION("VIDEO_COMPLETION"),
+    
+    SALES("SALES"),
+    
+    APP_INSTALL("APP_INSTALL"),
+    
+    CTV_CONSIDERATION("CTV_CONSIDERATION")
 
     private final String value
 

@@ -17,9 +17,9 @@ Method | HTTP request | Description
 
 <a id="Invoke-BrandAccountsCreate"></a>
 # **Invoke-BrandAccountsCreate**
-> BrandAccountsCreate200Response Invoke-BrandAccountsCreate<br>
+> BrandAccount Invoke-BrandAccountsCreate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessHierarchyId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BrandAccountsCreateRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BrandAccountCreate] <PSCustomObject><br>
 
 Create a Brand Account
 
@@ -32,13 +32,13 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessHierarchyId = "7009386637860" # String | business hierarchy node id
-$ImageBase64 = Initialize-ImageBase64 -ContentType "image/jpeg" -VarData "MyVarData"
-$BrandAccountsCreateRequest = Initialize-BrandAccountsCreateRequest -Name "Canada Stores" -Username "canada_stores" -Country "AD" -About "Stores in Canada" -Website "https://www.example.com" -ProfileImage $ImageBase64 # BrandAccountsCreateRequest | 
+$BusinessHierarchyId = "MyBusinessHierarchyId" # String | business hierarchy node id
+$BrandAccountProfileImage = Initialize-BrandAccountProfileImage -ContentType "image/jpeg" -VarData "MyVarData"
+$BrandAccountCreate = Initialize-BrandAccountCreate -About "MyAbout" -Country "AD" -Name "MyName" -ProfileImage $BrandAccountProfileImage -Username "MyUsername" -Website "MyWebsite" # BrandAccountCreate | 
 
 # Create a Brand Account
 try {
-    $Result = Invoke-BrandAccountsCreate -BusinessHierarchyId $BusinessHierarchyId -BrandAccountsCreateRequest $BrandAccountsCreateRequest
+    $Result = Invoke-BrandAccountsCreate -BusinessHierarchyId $BusinessHierarchyId -BrandAccountCreate $BrandAccountCreate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BrandAccountsCreate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -50,11 +50,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessHierarchyId** | **String**| business hierarchy node id | 
- **BrandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md)|  | 
+ **BrandAccountCreate** | [**BrandAccountCreate**](BrandAccountCreate.md)|  | 
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md) (PSCustomObject)
+[**BrandAccount**](BrandAccount.md) (PSCustomObject)
 
 ### Authorization
 
@@ -69,10 +69,10 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-BrandAccountsUpdate"></a>
 # **Invoke-BrandAccountsUpdate**
-> BrandAccountsCreate200Response Invoke-BrandAccountsUpdate<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessHierarchyId] <String><br>
+> BrandAccount Invoke-BrandAccountsUpdate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BrandAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BrandAccountsUpdateRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessHierarchyId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BrandAccountUpdate] <PSCustomObject><br>
 
 Update a Brand Account
 
@@ -85,14 +85,14 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessHierarchyId = "7009386637860" # String | business hierarchy node id
-$BrandAccountId = "729090764583391194" # String | Unique identifier of a brand account.
-$ImageBase64 = Initialize-ImageBase64 -ContentType "image/jpeg" -VarData "MyVarData"
-$BrandAccountsUpdateRequest = Initialize-BrandAccountsUpdateRequest -Name "Canada Stores" -Username "canada_stores" -Country "AD" -About "Stores in Canada" -Website "https://www.example.com" -ProfileImage $ImageBase64 # BrandAccountsUpdateRequest | 
+$BrandAccountId = "MyBrandAccountId" # String | 
+$BusinessHierarchyId = "MyBusinessHierarchyId" # String | business hierarchy node id
+$BrandAccountProfileImageUpdate = Initialize-BrandAccountProfileImageUpdate -ContentType "image/jpeg" -VarData "MyVarData"
+$BrandAccountUpdate = Initialize-BrandAccountUpdate -About "MyAbout" -Country "AD" -Name "MyName" -ProfileImage $BrandAccountProfileImageUpdate -Username "MyUsername" -Website "MyWebsite" # BrandAccountUpdate | 
 
 # Update a Brand Account
 try {
-    $Result = Invoke-BrandAccountsUpdate -BusinessHierarchyId $BusinessHierarchyId -BrandAccountId $BrandAccountId -BrandAccountsUpdateRequest $BrandAccountsUpdateRequest
+    $Result = Invoke-BrandAccountsUpdate -BrandAccountId $BrandAccountId -BusinessHierarchyId $BusinessHierarchyId -BrandAccountUpdate $BrandAccountUpdate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BrandAccountsUpdate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -103,13 +103,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **BrandAccountId** | **String**|  | 
  **BusinessHierarchyId** | **String**| business hierarchy node id | 
- **BrandAccountId** | **String**| Unique identifier of a brand account. | 
- **BrandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md)|  | 
+ **BrandAccountUpdate** | [**BrandAccountUpdate**](BrandAccountUpdate.md)|  | 
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md) (PSCustomObject)
+[**BrandAccount**](BrandAccount.md) (PSCustomObject)
 
 ### Authorization
 
@@ -124,9 +124,9 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-DeleteBusinessMembership"></a>
 # **Invoke-DeleteBusinessMembership**
-> DeletedMembersResponse Invoke-DeleteBusinessMembership<br>
+> DeleteBusinessMembership200Response Invoke-DeleteBusinessMembership<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MembersToDeleteBody] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-DeleteBusinessMembershipBody] <PSCustomObject><br>
 
 Terminate business memberships
 
@@ -139,13 +139,13 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Business id
-$MembersToDeleteBodyMembersInner = Initialize-MembersToDeleteBodyMembersInner -BusinessRole "EMPLOYEE" -MemberId "140943737684417"
-$MembersToDeleteBody = Initialize-MembersToDeleteBody -Members $MembersToDeleteBodyMembersInner # MembersToDeleteBody | List of members with role to delete.
+$BusinessId = "MyBusinessId" # String | Business id
+$DeleteBusinessMembershipMember = Initialize-DeleteBusinessMembershipMember -BusinessRole "EMPLOYEE" -MemberId "140943737684417"
+$DeleteBusinessMembershipBody = Initialize-DeleteBusinessMembershipBody -Members $DeleteBusinessMembershipMember # DeleteBusinessMembershipBody | 
 
 # Terminate business memberships
 try {
-    $Result = Invoke-DeleteBusinessMembership -BusinessId $BusinessId -MembersToDeleteBody $MembersToDeleteBody
+    $Result = Invoke-DeleteBusinessMembership -BusinessId $BusinessId -DeleteBusinessMembershipBody $DeleteBusinessMembershipBody
 } catch {
     Write-Host ("Exception occurred when calling Invoke-DeleteBusinessMembership: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -157,11 +157,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Business id | 
- **MembersToDeleteBody** | [**MembersToDeleteBody**](MembersToDeleteBody.md)| List of members with role to delete. | 
+ **DeleteBusinessMembershipBody** | [**DeleteBusinessMembershipBody**](DeleteBusinessMembershipBody.md)|  | 
 
 ### Return type
 
-[**DeletedMembersResponse**](DeletedMembersResponse.md) (PSCustomObject)
+[**DeleteBusinessMembership200Response**](DeleteBusinessMembership200Response.md) (PSCustomObject)
 
 ### Authorization
 
@@ -176,9 +176,9 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-DeleteBusinessPartners"></a>
 # **Invoke-DeleteBusinessPartners**
-> DeletePartnersResponse Invoke-DeleteBusinessPartners<br>
+> DeleteBusinessPartners Invoke-DeleteBusinessPartners<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-DeletePartnersRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-DeleteBusinessPartnersDelete] <PSCustomObject><br>
 
 Terminate business partnerships
 
@@ -191,13 +191,12 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-"MyPartnerType"
-$DeletePartnersRequest = Initialize-DeletePartnersRequest -PartnerIds "1234567890123" -PartnerType $String # DeletePartnersRequest | An object containing a ""partner_ids"" property composed of a list of partner IDs and a ""partners_type"" property specifying the type of partners to delete. 
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$DeleteBusinessPartnersDelete = Initialize-DeleteBusinessPartnersDelete -PartnerIds "MyPartnerIds" -PartnerType "INTERNAL" # DeleteBusinessPartnersDelete | 
 
 # Terminate business partnerships
 try {
-    $Result = Invoke-DeleteBusinessPartners -BusinessId $BusinessId -DeletePartnersRequest $DeletePartnersRequest
+    $Result = Invoke-DeleteBusinessPartners -BusinessId $BusinessId -DeleteBusinessPartnersDelete $DeleteBusinessPartnersDelete
 } catch {
     Write-Host ("Exception occurred when calling Invoke-DeleteBusinessPartners: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -209,11 +208,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
- **DeletePartnersRequest** | [**DeletePartnersRequest**](DeletePartnersRequest.md)| An object containing a &quot;&quot;partner_ids&quot;&quot; property composed of a list of partner IDs and a &quot;&quot;partners_type&quot;&quot; property specifying the type of partners to delete.  | 
+ **DeleteBusinessPartnersDelete** | [**DeleteBusinessPartnersDelete**](DeleteBusinessPartnersDelete.md)|  | 
 
 ### Return type
 
-[**DeletePartnersResponse**](DeletePartnersResponse.md) (PSCustomObject)
+[**DeleteBusinessPartners**](DeleteBusinessPartners.md) (PSCustomObject)
 
 ### Authorization
 
@@ -229,8 +228,9 @@ Name | Type | Description  | Notes
 <a id="Get-BusinessEmployers"></a>
 # **Get-BusinessEmployers**
 > GetBusinessEmployers200Response Get-BusinessEmployers<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetsSummary] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 
 List business employers for user
 
@@ -243,12 +243,13 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$AssetsSummary = $true # Boolean | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional) (default to $true)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List business employers for user
 try {
-    $Result = Get-BusinessEmployers -PageSize $PageSize -Bookmark $Bookmark
+    $Result = Get-BusinessEmployers -AssetsSummary $AssetsSummary -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Get-BusinessEmployers: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -259,8 +260,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **AssetsSummary** | **Boolean**| Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to $true]
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -279,7 +281,7 @@ Name | Type | Description  | Notes
 
 <a id="Get-BusinessMembers"></a>
 # **Get-BusinessMembers**
-> GetBusinessMembers200Response Get-BusinessMembers<br>
+> GetBusinessEmployers200Response Get-BusinessMembers<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FetchSystemUsers] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetsSummary] <System.Nullable[Boolean]><br>
@@ -300,14 +302,14 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
 $FetchSystemUsers = $true # Boolean | Fetches system users if True. Fetches regular user employees if False. (optional) (default to $false)
 $AssetsSummary = $true # Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional) (default to $false)
 $BusinessRoles = "EMPLOYEE" # MemberBusinessRole[] | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
-$MemberIds = "00101010101,2222220101" # String | A list of business members ids separated by comma. (optional)
-$StartIndex = 0 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+$MemberIds = "MyMemberIds" # String | A list of business members ids separated by comma. (optional)
+$StartIndex = 56 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # Get business members
 try {
@@ -329,11 +331,11 @@ Name | Type | Description  | Notes
  **MemberIds** | **String**| A list of business members ids separated by comma. | [optional] 
  **StartIndex** | **Int32**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**GetBusinessMembers200Response**](GetBusinessMembers200Response.md) (PSCustomObject)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md) (PSCustomObject)
 
 ### Authorization
 
@@ -348,14 +350,15 @@ Name | Type | Description  | Notes
 
 <a id="Get-BusinessPartners"></a>
 # **Get-BusinessPartners**
-> GetBusinessPartners200Response Get-BusinessPartners<br>
+> GetBusinessEmployers200Response Get-BusinessPartners<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetsSummary] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PartnerType] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PartnerIds] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartIndex] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortAscending] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 
 Get business partners
 
@@ -368,17 +371,18 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
 $AssetsSummary = $true # Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional) (default to $false)
-$PartnerType = "INTERNAL" # PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
-$PartnerIds = "00101010101,2222220101" # String | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. (optional)
-$StartIndex = 0 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PartnerType = "INTERNAL" # PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
+$PartnerIds = "MyPartnerIds" # String | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. (optional)
+$StartIndex = 56 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+$SortAscending = $true # Boolean | Sort ascending. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # Get business partners
 try {
-    $Result = Get-BusinessPartners -BusinessId $BusinessId -AssetsSummary $AssetsSummary -PartnerType $PartnerType -PartnerIds $PartnerIds -StartIndex $StartIndex -PageSize $PageSize -Bookmark $Bookmark
+    $Result = Get-BusinessPartners -BusinessId $BusinessId -AssetsSummary $AssetsSummary -PartnerType $PartnerType -PartnerIds $PartnerIds -StartIndex $StartIndex -SortAscending $SortAscending -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Get-BusinessPartners: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -391,15 +395,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
  **AssetsSummary** | **Boolean**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to $false]
- **PartnerType** | [**PartnerType**](PartnerType.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
+ **PartnerType** | [**PartnerType**](PartnerType.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
  **PartnerIds** | **String**| A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional] 
  **StartIndex** | **Int32**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **SortAscending** | **Boolean**| Sort ascending. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**GetBusinessPartners200Response**](GetBusinessPartners200Response.md) (PSCustomObject)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md) (PSCustomObject)
 
 ### Authorization
 
@@ -417,7 +422,7 @@ Name | Type | Description  | Notes
 > void Invoke-SystemUserUpdate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SystemUserId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SystemUserUpdateRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SystemUserUpdateWithRequiredBody] <PSCustomObject><br>
 
 Update a system user information.
 
@@ -430,13 +435,13 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$SystemUserId = "729090764583391194" # String | Unique identifier of a system user.
-$SystemUserUpdateRequest = Initialize-SystemUserUpdateRequest -Name "Billing API" # SystemUserUpdateRequest | 
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$SystemUserId = "MySystemUserId" # String | Unique identifier of a system user.
+$SystemUserUpdateWithRequiredBody = Initialize-SystemUserUpdateWithRequiredBody -Name "MyName" # SystemUserUpdateWithRequiredBody | 
 
 # Update a system user information.
 try {
-    $Result = Invoke-SystemUserUpdate -BusinessId $BusinessId -SystemUserId $SystemUserId -SystemUserUpdateRequest $SystemUserUpdateRequest
+    $Result = Invoke-SystemUserUpdate -BusinessId $BusinessId -SystemUserId $SystemUserId -SystemUserUpdateWithRequiredBody $SystemUserUpdateWithRequiredBody
 } catch {
     Write-Host ("Exception occurred when calling Invoke-SystemUserUpdate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -449,7 +454,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
  **SystemUserId** | **String**| Unique identifier of a system user. | 
- **SystemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md)|  | 
+ **SystemUserUpdateWithRequiredBody** | [**SystemUserUpdateWithRequiredBody**](SystemUserUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
@@ -468,9 +473,9 @@ void (empty response body)
 
 <a id="Update-BusinessMemberships"></a>
 # **Update-BusinessMemberships**
-> UpdateMemberResultsResponseArray Update-BusinessMemberships<br>
+> UpdateBusinessMembershipsResponse Update-BusinessMemberships<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateMemberBusinessRoleBody] <PSCustomObject[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessMembershipMember] <PSCustomObject[]><br>
 
 Update member's business role
 
@@ -483,12 +488,12 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Business id
-$UpdateMemberBusinessRoleBody = Initialize-UpdateMemberBusinessRoleBody -BusinessRole "EMPLOYEE" -MemberId "140943737684417" # UpdateMemberBusinessRoleBody[] | List of objects with the member id and the business_role.
+$BusinessId = "MyBusinessId" # String | Business id
+$BusinessMembershipMember = Initialize-BusinessMembershipMember -BusinessRole "EMPLOYEE" -MemberId "140943737684417" # BusinessMembershipMember[] | 
 
 # Update member's business role
 try {
-    $Result = Update-BusinessMemberships -BusinessId $BusinessId -UpdateMemberBusinessRoleBody $UpdateMemberBusinessRoleBody
+    $Result = Update-BusinessMemberships -BusinessId $BusinessId -BusinessMembershipMember $BusinessMembershipMember
 } catch {
     Write-Host ("Exception occurred when calling Update-BusinessMemberships: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -500,11 +505,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Business id | 
- **UpdateMemberBusinessRoleBody** | [**UpdateMemberBusinessRoleBody[]**](UpdateMemberBusinessRoleBody.md)| List of objects with the member id and the business_role. | 
+ **BusinessMembershipMember** | [**BusinessMembershipMember[]**](BusinessMembershipMember.md)|  | 
 
 ### Return type
 
-[**UpdateMemberResultsResponseArray**](UpdateMemberResultsResponseArray.md) (PSCustomObject)
+[**UpdateBusinessMembershipsResponse**](UpdateBusinessMembershipsResponse.md) (PSCustomObject)
 
 ### Authorization
 

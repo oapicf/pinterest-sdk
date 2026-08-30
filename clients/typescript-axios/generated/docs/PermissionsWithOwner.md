@@ -1,5 +1,6 @@
 # PermissionsWithOwner
 
+Permission levels including the OWNER role.
 
 ## Enum
 

@@ -7,8 +7,9 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  TopPinsAnalyticsResponseDateAvailability = openapi_server.resourceTypes.TopPinsAnalyticsResponseDateAvailability
-  TopVideoPinsAnalyticsResponsePinsInner = openapi_server.resourceTypes.TopVideoPinsAnalyticsResponsePinsInner
+  TopVideoPinsAnalyticsResponseDateAvailability = openapi_server.resourceTypes.TopVideoPinsAnalyticsResponseDateAvailability
+  TopVideoPinsAnalyticsResponsePinsItems = openapi_server.resourceTypes.TopVideoPinsAnalyticsResponsePinsItems
+  TopVideoPinsSortBy = openapi_server.resourceTypes.TopVideoPinsSortBy
 }
 resourceTypes {
 
@@ -18,20 +19,19 @@ resourceTypes {
     derivedFrom = Root
     properties {
         date_availability {
-          type = TopPinsAnalyticsResponseDateAvailability
+          type = TopVideoPinsAnalyticsResponseDateAvailability
           description = ""
           optional = false
         }
         pins {
           type = array
-          items.type = TopVideoPinsAnalyticsResponsePinsInner
+          items.type = TopVideoPinsAnalyticsResponsePinsItems
           description = ""
           optional = false
         }
         sort_by {
-          type =  string
+          type = TopVideoPinsSortBy
           description = ""
-          enum = ["SAVE", "IMPRESSION", "OUTBOUND_CLICK", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START"]
           optional = false
         }
     }

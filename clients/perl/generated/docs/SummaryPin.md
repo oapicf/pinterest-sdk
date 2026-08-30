@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **alt_text** | **string** |  | [optional] 
 **description** | **string** |  | [optional] 
-**id** | **string** |  | [optional] 
+**id** | **string** |  | 
 **link** | **string** |  | [optional] 
 **media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **title** | **string** |  | [optional] 

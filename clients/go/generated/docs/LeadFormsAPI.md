@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## LeadFormGet
 
-> LeadFormResponse LeadFormGet(ctx, adAccountId, leadFormId).Execute()
+> LeadForm LeadFormGet(ctx, leadFormId, adAccountId).Execute()
 
 Get lead form by id
 
@@ -33,17 +33,17 @@ import (
 )
 
 func main() {
+	leadFormId := "leadFormId_example" // string | The ID of this lead form
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	leadFormId := "1234567890123" // string | Unique identifier of a lead form.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LeadFormsAPI.LeadFormGet(context.Background(), adAccountId, leadFormId).Execute()
+	resp, r, err := apiClient.LeadFormsAPI.LeadFormGet(context.Background(), leadFormId, adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LeadFormsAPI.LeadFormGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `LeadFormGet`: LeadFormResponse
+	// response from `LeadFormGet`: LeadForm
 	fmt.Fprintf(os.Stdout, "Response from `LeadFormsAPI.LeadFormGet`: %v\n", resp)
 }
 ```
@@ -54,8 +54,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**leadFormId** | **string** | The ID of this lead form | 
 **adAccountId** | **string** | Unique identifier of an ad account. | 
-**leadFormId** | **string** | Unique identifier of a lead form. | 
 
 ### Other Parameters
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LeadFormResponse**](LeadFormResponse.md)
+[**LeadForm**](LeadForm.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## LeadFormTestCreate
 
-> LeadFormTestResponse LeadFormTestCreate(ctx, adAccountId, leadFormId).LeadFormTestRequest(leadFormTestRequest).Execute()
+> LeadFormTest LeadFormTestCreate(ctx, adAccountId, leadFormId).LeadFormTestCreate(leadFormTestCreate).Execute()
 
 Create lead form test data
 
@@ -106,18 +106,18 @@ import (
 )
 
 func main() {
-	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	leadFormId := "1234567890123" // string | Unique identifier of a lead form.
-	leadFormTestRequest := *openapiclient.NewLeadFormTestRequest([]string{"Answers_example"}) // LeadFormTestRequest | Subscription to create.
+	adAccountId := "adAccountId_example" // string | 
+	leadFormId := "leadFormId_example" // string | Unique identifier of a lead form.
+	leadFormTestCreate := *openapiclient.NewLeadFormTestCreate([]string{"Answers_example"}) // LeadFormTestCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LeadFormsAPI.LeadFormTestCreate(context.Background(), adAccountId, leadFormId).LeadFormTestRequest(leadFormTestRequest).Execute()
+	resp, r, err := apiClient.LeadFormsAPI.LeadFormTestCreate(context.Background(), adAccountId, leadFormId).LeadFormTestCreate(leadFormTestCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LeadFormsAPI.LeadFormTestCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `LeadFormTestCreate`: LeadFormTestResponse
+	// response from `LeadFormTestCreate`: LeadFormTest
 	fmt.Fprintf(os.Stdout, "Response from `LeadFormsAPI.LeadFormTestCreate`: %v\n", resp)
 }
 ```
@@ -128,7 +128,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**adAccountId** | **string** | Unique identifier of an ad account. | 
+**adAccountId** | **string** |  | 
 **leadFormId** | **string** | Unique identifier of a lead form. | 
 
 ### Other Parameters
@@ -140,11 +140,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **leadFormTestRequest** | [**LeadFormTestRequest**](LeadFormTestRequest.md) | Subscription to create. | 
+ **leadFormTestCreate** | [**LeadFormTestCreate**](LeadFormTestCreate.md) |  | 
 
 ### Return type
 
-[**LeadFormTestResponse**](LeadFormTestResponse.md)
+[**LeadFormTest**](LeadFormTest.md)
 
 ### Authorization
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## LeadFormsCreate
 
-> LeadFormArrayResponse LeadFormsCreate(ctx, adAccountId).LeadFormCreateRequest(leadFormCreateRequest).Execute()
+> LeadFormsCreate200Response LeadFormsCreate(ctx, adAccountId).LeadFormCreate(leadFormCreate).Execute()
 
 Create lead forms
 
@@ -182,16 +182,16 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	leadFormCreateRequest := []openapiclient.LeadFormCreateRequest{*openapiclient.NewLeadFormCreateRequest()} // []LeadFormCreateRequest | List of lead forms to create, size limit [1, 30].
+	leadFormCreate := []openapiclient.LeadFormCreate{*openapiclient.NewLeadFormCreate("Thank you for submitting. We will contact you soon.", false, "Lead Form 3/14/2023", "https://www.advertisername.com/privacy-policy", []openapiclient.LeadFormQuestion{*openapiclient.NewLeadFormQuestion()})} // []LeadFormCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LeadFormsAPI.LeadFormsCreate(context.Background(), adAccountId).LeadFormCreateRequest(leadFormCreateRequest).Execute()
+	resp, r, err := apiClient.LeadFormsAPI.LeadFormsCreate(context.Background(), adAccountId).LeadFormCreate(leadFormCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LeadFormsAPI.LeadFormsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `LeadFormsCreate`: LeadFormArrayResponse
+	// response from `LeadFormsCreate`: LeadFormsCreate200Response
 	fmt.Fprintf(os.Stdout, "Response from `LeadFormsAPI.LeadFormsCreate`: %v\n", resp)
 }
 ```
@@ -212,11 +212,11 @@ Other parameters are passed through a pointer to a apiLeadFormsCreateRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **leadFormCreateRequest** | [**[]LeadFormCreateRequest**](LeadFormCreateRequest.md) | List of lead forms to create, size limit [1, 30]. | 
+ **leadFormCreate** | [**[]LeadFormCreate**](LeadFormCreate.md) |  | 
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 ## LeadFormsList
 
-> LeadFormsList200Response LeadFormsList(ctx, adAccountId).PageSize(pageSize).Order(order).Bookmark(bookmark).Execute()
+> LeadFormsList200Response LeadFormsList(ctx, adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).Execute()
 
 List lead forms
 
@@ -254,13 +254,13 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-	order := "ASCENDING" // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+	order := openapiclient.Pinterest.Lib.PaginationOrder("ASCENDING") // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LeadFormsAPI.LeadFormsList(context.Background(), adAccountId).PageSize(pageSize).Order(order).Bookmark(bookmark).Execute()
+	resp, r, err := apiClient.LeadFormsAPI.LeadFormsList(context.Background(), adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LeadFormsAPI.LeadFormsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -286,9 +286,9 @@ Other parameters are passed through a pointer to a apiLeadFormsListRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | 
 
 ### Return type
 
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
 
 ## LeadFormsUpdate
 
-> LeadFormArrayResponse LeadFormsUpdate(ctx, adAccountId).LeadFormUpdateRequest(leadFormUpdateRequest).Execute()
+> LeadFormsCreate200Response LeadFormsUpdate(ctx, adAccountId).LeadFormBatchUpdate(leadFormBatchUpdate).Execute()
 
 Update lead forms
 
@@ -330,16 +330,16 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	leadFormUpdateRequest := []openapiclient.LeadFormUpdateRequest{*openapiclient.NewLeadFormUpdateRequest("7765300871171")} // []LeadFormUpdateRequest | List of lead forms to update, size limit [1, 30].
+	leadFormBatchUpdate := []openapiclient.LeadFormBatchUpdate{*openapiclient.NewLeadFormBatchUpdate("Id_example")} // []LeadFormBatchUpdate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LeadFormsAPI.LeadFormsUpdate(context.Background(), adAccountId).LeadFormUpdateRequest(leadFormUpdateRequest).Execute()
+	resp, r, err := apiClient.LeadFormsAPI.LeadFormsUpdate(context.Background(), adAccountId).LeadFormBatchUpdate(leadFormBatchUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LeadFormsAPI.LeadFormsUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `LeadFormsUpdate`: LeadFormArrayResponse
+	// response from `LeadFormsUpdate`: LeadFormsCreate200Response
 	fmt.Fprintf(os.Stdout, "Response from `LeadFormsAPI.LeadFormsUpdate`: %v\n", resp)
 }
 ```
@@ -360,11 +360,11 @@ Other parameters are passed through a pointer to a apiLeadFormsUpdateRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **leadFormUpdateRequest** | [**[]LeadFormUpdateRequest**](LeadFormUpdateRequest.md) | List of lead forms to update, size limit [1, 30]. | 
+ **leadFormBatchUpdate** | [**[]LeadFormBatchUpdate**](LeadFormBatchUpdate.md) |  | 
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 

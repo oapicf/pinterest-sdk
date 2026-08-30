@@ -16,7 +16,7 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* [Closed beta](/docs/getting-started/using-beta-and-restricted-features/) Specify the timezone to be applied for the reporting.
+* Specify the timezone to be applied for the reporting.
 * Values: PINTEREST_TIME_ZONE,AD_ACCOUNT_TIME_ZONE
 */
 enum class ReportingTimeZone(@get:JsonValue val value: kotlin.String) {

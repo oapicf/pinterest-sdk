@@ -124,7 +124,7 @@ CatalogsHotelItemsPostFilter::getCatalogId()
 }
 
 void
-CatalogsHotelItemsPostFilter::setCatalogId(std::string  catalog_id)
+CatalogsHotelItemsPostFilter::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -136,7 +136,7 @@ CatalogsHotelItemsPostFilter::getCatalogType()
 }
 
 void
-CatalogsHotelItemsPostFilter::setCatalogType(std::string  catalog_type)
+CatalogsHotelItemsPostFilter::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -148,7 +148,7 @@ CatalogsHotelItemsPostFilter::getHotelIds()
 }
 
 void
-CatalogsHotelItemsPostFilter::setHotelIds(std::list <std::string> hotel_ids)
+CatalogsHotelItemsPostFilter::setHotelIds(std::list<std::string> hotel_ids)
 {
 	this->hotel_ids = hotel_ids;
 }

@@ -76,8 +76,9 @@ class _$UpdatePartnerAssetsResultsResponseArraySerializer implements PrimitiveSe
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(UpdatePartnerAssetsResult)]),
-          ) as BuiltList<UpdatePartnerAssetsResult>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(UpdatePartnerAssetsResult)]),
+          ) as BuiltList<UpdatePartnerAssetsResult>?;
+          if (valueDes == null) continue;
           result.items.replace(valueDes);
           break;
         default:

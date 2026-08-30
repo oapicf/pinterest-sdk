@@ -86,13 +86,36 @@ AdsAnalyticsCreateAsyncResponse <- R6::R6Class(
       }
       if (!is.null(self$`report_status`)) {
         AdsAnalyticsCreateAsyncResponseObject[["report_status"]] <-
-          self$`report_status`$toSimpleType()
+          self$extractSimpleType(self$`report_status`)
       }
       if (!is.null(self$`token`)) {
         AdsAnalyticsCreateAsyncResponseObject[["token"]] <-
           self$`token`
       }
       return(AdsAnalyticsCreateAsyncResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

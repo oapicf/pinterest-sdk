@@ -1,0 +1,31 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "EntityLabel",
+  "fields": [
+    {
+      "name": "entity_id",
+      "type": "string",
+      "doc": "Entity ID to apply label to."
+    },
+    {
+      "name": "entity_type",
+      "type": ["null", "model.LabelParentType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "label_id",
+      "type": "string",
+      "doc": "Label ID."
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.EntityLabelStatus"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

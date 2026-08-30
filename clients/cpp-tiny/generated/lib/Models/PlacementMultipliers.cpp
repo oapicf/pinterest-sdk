@@ -6,7 +6,7 @@ using namespace Tiny;
 
 PlacementMultipliers::PlacementMultipliers()
 {
-	pLACEMENT = std::string();
+	pLACEMENT = null;
 }
 
 PlacementMultipliers::PlacementMultipliers(std::string jsonString)
@@ -32,8 +32,9 @@ PlacementMultipliers::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&pLACEMENT, value, "std::string");
 
+        PlacementType* obj = &pLACEMENT;
+		obj->fromJson(value.dump());
 
     }
 
@@ -49,22 +50,22 @@ PlacementMultipliers::toJson()
 
 
 
-    object["pLACEMENT"] = getPLACEMENT();
 
+	object["pLACEMENT"] = getPLACEMENT().toJson();
 
 
     return object;
 
 }
 
-std::string
+PlacementType
 PlacementMultipliers::getPLACEMENT()
 {
 	return pLACEMENT;
 }
 
 void
-PlacementMultipliers::setPLACEMENT(std::string  pLACEMENT)
+PlacementMultipliers::setPLACEMENT(PlacementType pLACEMENT)
 {
 	this->pLACEMENT = pLACEMENT;
 }

@@ -11,59 +11,44 @@
 part of openapi.api;
 
 /// Permission role for business access.
-class BusinessAccessRole {
-  /// Instantiate a new enum with the provided [value].
-  const BusinessAccessRole._(this.value);
+enum BusinessAccessRole {
+  OWNER._(r'OWNER'),
+  ADMIN._(r'ADMIN'),
+  ANALYST._(r'ANALYST'),
+  SOS_READER._(r'SOS_READER'),
+  FINANCE_MANAGER._(r'FINANCE_MANAGER'),
+  FINANCE_VIEW._(r'FINANCE_VIEW'),
+  FINANCE_EDIT._(r'FINANCE_EDIT'),
+  AUDIENCE_MANAGER._(r'AUDIENCE_MANAGER'),
+  CAMPAIGN_MANAGER._(r'CAMPAIGN_MANAGER'),
+  CATALOGS_MANAGER._(r'CATALOGS_MANAGER'),
+  RESTRICTED_OWNER._(r'RESTRICTED_OWNER'),
+  PROFILE_MANAGER._(r'PROFILE_MANAGER'),
+  PROFILE_PUBLISHER._(r'PROFILE_PUBLISHER'),
+  RESOURCE_PINNER_LIST_OWNER._(r'RESOURCE_PINNER_LIST_OWNER'),
+  RESOURCE_PINNER_LIST_READER._(r'RESOURCE_PINNER_LIST_READER'),
+  BIZ_PINNER_LIST_SHARER._(r'BIZ_PINNER_LIST_SHARER'),
+  RESOURCE_CONVERSION_TAGS_READER._(r'RESOURCE_CONVERSION_TAGS_READER'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const BusinessAccessRole._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const OWNER = BusinessAccessRole._(r'OWNER');
-  static const ADMIN = BusinessAccessRole._(r'ADMIN');
-  static const ANALYST = BusinessAccessRole._(r'ANALYST');
-  static const SOS_READER = BusinessAccessRole._(r'SOS_READER');
-  static const FINANCE_MANAGER = BusinessAccessRole._(r'FINANCE_MANAGER');
-  static const FINANCE_VIEW = BusinessAccessRole._(r'FINANCE_VIEW');
-  static const FINANCE_EDIT = BusinessAccessRole._(r'FINANCE_EDIT');
-  static const AUDIENCE_MANAGER = BusinessAccessRole._(r'AUDIENCE_MANAGER');
-  static const CAMPAIGN_MANAGER = BusinessAccessRole._(r'CAMPAIGN_MANAGER');
-  static const CATALOGS_MANAGER = BusinessAccessRole._(r'CATALOGS_MANAGER');
-  static const RESTRICTED_OWNER = BusinessAccessRole._(r'RESTRICTED_OWNER');
-  static const PROFILE_MANAGER = BusinessAccessRole._(r'PROFILE_MANAGER');
-  static const PROFILE_PUBLISHER = BusinessAccessRole._(r'PROFILE_PUBLISHER');
-  static const RESOURCE_PINNER_LIST_OWNER = BusinessAccessRole._(r'RESOURCE_PINNER_LIST_OWNER');
-  static const RESOURCE_PINNER_LIST_READER = BusinessAccessRole._(r'RESOURCE_PINNER_LIST_READER');
-  static const BIZ_PINNER_LIST_SHARER = BusinessAccessRole._(r'BIZ_PINNER_LIST_SHARER');
-  static const RESOURCE_CONVERSION_TAGS_READER = BusinessAccessRole._(r'RESOURCE_CONVERSION_TAGS_READER');
-
-  /// List of all possible values in this [enum][BusinessAccessRole].
-  static const values = <BusinessAccessRole>[
-    OWNER,
-    ADMIN,
-    ANALYST,
-    SOS_READER,
-    FINANCE_MANAGER,
-    FINANCE_VIEW,
-    FINANCE_EDIT,
-    AUDIENCE_MANAGER,
-    CAMPAIGN_MANAGER,
-    CATALOGS_MANAGER,
-    RESTRICTED_OWNER,
-    PROFILE_MANAGER,
-    PROFILE_PUBLISHER,
-    RESOURCE_PINNER_LIST_OWNER,
-    RESOURCE_PINNER_LIST_READER,
-    BIZ_PINNER_LIST_SHARER,
-    RESOURCE_CONVERSION_TAGS_READER,
-  ];
-
+  /// Returns the instance of [BusinessAccessRole] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static BusinessAccessRole? fromJson(dynamic value) => BusinessAccessRoleTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [BusinessAccessRole]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<BusinessAccessRole> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <BusinessAccessRole>[];
     if (json is List && json.isNotEmpty) {
@@ -85,9 +70,11 @@ class BusinessAccessRoleTypeTransformer {
 
   const BusinessAccessRoleTypeTransformer._();
 
-  String encode(BusinessAccessRole data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(BusinessAccessRole data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a BusinessAccessRole.
+  /// Returns the instance of [BusinessAccessRole] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -96,6 +83,9 @@ class BusinessAccessRoleTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   BusinessAccessRole? decode(dynamic data, {bool allowNull = true}) {
+    if (data is BusinessAccessRole) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'OWNER': return BusinessAccessRole.OWNER;
@@ -124,7 +114,7 @@ class BusinessAccessRoleTypeTransformer {
     return null;
   }
 
-  /// Singleton [BusinessAccessRoleTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static BusinessAccessRoleTypeTransformer? _instance;
 }
 

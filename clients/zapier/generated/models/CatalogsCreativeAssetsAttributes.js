@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const CatalogsAiContentDisclosure = require('../models/CatalogsAiContentDisclosure');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -61,8 +62,13 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}visibility`,
-                label: `Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. - [${labelPrefix}visibility]`,
+                label: `Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'. - [${labelPrefix}visibility]`,
                 type: 'string',
+            },
+            {
+                key: `${keyPrefix}ai_disclosures`,
+                label: `[${labelPrefix}ai_disclosures]`,
+                children: CatalogsAiContentDisclosure.fields(`${keyPrefix}ai_disclosures${!isInput ? '[]' : ''}`, isInput, true), 
             },
             {
                 key: `${keyPrefix}image_link`,
@@ -91,6 +97,7 @@ module.exports = {
             'link': bundle.inputData?.[`${keyPrefix}link`],
             'title': bundle.inputData?.[`${keyPrefix}title`],
             'visibility': bundle.inputData?.[`${keyPrefix}visibility`],
+            'ai_disclosures': utils.childMapping(bundle.inputData?.[`${keyPrefix}ai_disclosures`], `${keyPrefix}ai_disclosures`, CatalogsAiContentDisclosure),
             'image_link': bundle.inputData?.[`${keyPrefix}image_link`],
             'video_link': bundle.inputData?.[`${keyPrefix}video_link`],
         }

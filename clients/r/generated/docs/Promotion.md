@@ -1,0 +1,21 @@
+# openapi::Promotion
+
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**ad_account_id** | **character** | The Ad Account ID that this promotion belongs to. | [readonly] [Pattern: ^\\d+$] 
+**discount_status** | [**DiscountStatus**](DiscountStatus.md) |  | [optional] [Enum: ] 
+**end_time** | **integer** | Promotion end time. Unix timestamp in seconds. Independent of campaign end time. | [optional] 
+**external_id** | **character** | Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest. | [optional] [Max. length: 64] 
+**id** | **character** | Promotion ID | [Pattern: ^\\d+$] [Max. length: 18] 
+**platform_type** | **character** | The source integration platform used when creating the promotion. Currently supported values are &#39;DEFAULT&#39; and &#39;SHOPIFY&#39;. | [optional] 
+**promotion_code** | **character** | Code that can be used to redeem a promotion. | [optional] 
+**promotion_custom_id** | **character** | An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one. | [optional] [Max. length: 50] 
+**promotion_title** | **character** | Internal name for the promotion. | 
+**promotion_type** | [**PromotionType**](PromotionType.md) |  | [Enum: ] 
+**start_time** | **integer** | Promotion start time. Unix timestamp in seconds. Independent of campaign start time. | [optional] 
+**status** | [**EntityStatus**](EntityStatus.md) |  | [optional] [readonly] [Enum: ] 
+**template_values** | [**array[PromotionTemplateValue]**](PromotionTemplateValue.md) | List of values to be inserted in the promotion type-specific template. | [optional] [Max. items: 2] [Min. items: 0] 
+
+

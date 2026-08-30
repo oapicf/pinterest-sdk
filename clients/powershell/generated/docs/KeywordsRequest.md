@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $KeywordsRequest = Initialize-PSOpenAPIToolsKeywordsRequest  -Keywords null `
- -ParentId 383791336903426391
+ -ParentId null
 ```
 
 - Convert the resource to JSON

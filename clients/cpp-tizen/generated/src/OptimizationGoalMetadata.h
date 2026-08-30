@@ -9,9 +9,9 @@
 
 
 #include <string>
-#include "OptimizationGoalMetadata_conversion_tag_v3_goal_metadata.h"
-#include "OptimizationGoalMetadata_frequency_goal_metadata.h"
-#include "OptimizationGoalMetadata_scrollup_goal_metadata.h"
+#include "ConversionTagV3GoalMetadata.h"
+#include "FrequencyGoalMetadata.h"
+#include "ScrollupGoalMetadata.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -50,30 +50,30 @@ public:
 
 	/*! \brief Get 
 	 */
-	OptimizationGoalMetadata_conversion_tag_v3_goal_metadata getConversionTagV3GoalMetadata();
+	ConversionTagV3GoalMetadata getConversionTagV3GoalMetadata();
 
 	/*! \brief Set 
 	 */
-	void setConversionTagV3GoalMetadata(OptimizationGoalMetadata_conversion_tag_v3_goal_metadata  conversion_tag_v3_goal_metadata);
+	void setConversionTagV3GoalMetadata(ConversionTagV3GoalMetadata  conversion_tag_v3_goal_metadata);
 	/*! \brief Get 
 	 */
-	OptimizationGoalMetadata_frequency_goal_metadata getFrequencyGoalMetadata();
+	FrequencyGoalMetadata getFrequencyGoalMetadata();
 
 	/*! \brief Set 
 	 */
-	void setFrequencyGoalMetadata(OptimizationGoalMetadata_frequency_goal_metadata  frequency_goal_metadata);
+	void setFrequencyGoalMetadata(FrequencyGoalMetadata  frequency_goal_metadata);
 	/*! \brief Get 
 	 */
-	OptimizationGoalMetadata_scrollup_goal_metadata getScrollupGoalMetadata();
+	ScrollupGoalMetadata getScrollupGoalMetadata();
 
 	/*! \brief Set 
 	 */
-	void setScrollupGoalMetadata(OptimizationGoalMetadata_scrollup_goal_metadata  scrollup_goal_metadata);
+	void setScrollupGoalMetadata(ScrollupGoalMetadata  scrollup_goal_metadata);
 
 private:
-	OptimizationGoalMetadata_conversion_tag_v3_goal_metadata conversion_tag_v3_goal_metadata;
-	OptimizationGoalMetadata_frequency_goal_metadata frequency_goal_metadata;
-	OptimizationGoalMetadata_scrollup_goal_metadata scrollup_goal_metadata;
+	ConversionTagV3GoalMetadata conversion_tag_v3_goal_metadata;
+	FrequencyGoalMetadata frequency_goal_metadata;
+	ScrollupGoalMetadata scrollup_goal_metadata;
 	void __init();
 	void __cleanup();
 

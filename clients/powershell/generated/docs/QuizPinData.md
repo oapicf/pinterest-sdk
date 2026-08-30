@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **Questions** | [**QuizPinQuestion[]**](QuizPinQuestion.md) |  | [optional] 
 **Results** | [**QuizPinResult[]**](QuizPinResult.md) |  | [optional] 
 **TieBreakerCustomResult** | [**QuizPinResult**](QuizPinResult.md) |  | [optional] 
-**TieBreakerType** | **String** | Quiz ad tie breaker type, default is RANDOM | [optional] 
+**TieBreakerType** | [**TieBreakerType**](TieBreakerType.md) |  | [optional] 
 
 ## Examples
 

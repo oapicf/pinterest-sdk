@@ -7,19 +7,22 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open BillingApiHandlerParams
 open BillingApiServiceInterface
 open BillingApiServiceImplementation
-open OpenAPI.Model.AdsCreditRedeemRequest
-open OpenAPI.Model.AdsCreditRedeemResponse
+open OpenAPI.Model.AdsCreditRedeem
+open OpenAPI.Model.AdsCreditRedeemCreate
 open OpenAPI.Model.AdsCreditsDiscountsGet200Response
+open OpenAPI.Model.BillingInvoiceDocumentType
 open OpenAPI.Model.BillingInvoiceDownloadResponse
+open OpenAPI.Model.BillingInvoiceSortField
+open OpenAPI.Model.BillingInvoiceStatus
 open OpenAPI.Model.BillingInvoicesGet200Response
 open OpenAPI.Model.BillingProfilesGet200Response
-open OpenAPI.Model.Error
-open OpenAPI.Model.SSIOAccountResponse
-open OpenAPI.Model.SSIOCreateInsertionOrderRequest
-open OpenAPI.Model.SSIOCreateInsertionOrderResponse
-open OpenAPI.Model.SSIOEditInsertionOrderRequest
-open OpenAPI.Model.SSIOEditInsertionOrderResponse
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PinterestLibPaginationOrder
+open OpenAPI.Model.SSIOAccount
+open OpenAPI.Model.SSIOInsertionOrder
+open OpenAPI.Model.SSIOInsertionOrderCreate
 open OpenAPI.Model.SSIOInsertionOrderStatusResponse
+open OpenAPI.Model.SSIOInsertionOrderUpdate
 open OpenAPI.Model.SsioInsertionOrdersStatusGetByAdAccount200Response
 open OpenAPI.Model.SsioOrderLinesGetByAdAccount200Response
 
@@ -44,8 +47,18 @@ module BillingApiHandler =
           return! (match result with
                       | AdsCreditRedeemStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AdsCreditRedeemStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
                       | AdsCreditRedeemStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AdsCreditRedeemStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AdsCreditRedeemStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AdsCreditRedeemStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AdsCreditRedeemStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdsCreditRedeemDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -66,6 +79,16 @@ module BillingApiHandler =
           return! (match result with
                       | AdsCreditsDiscountsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AdsCreditsDiscountsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AdsCreditsDiscountsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AdsCreditsDiscountsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AdsCreditsDiscountsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AdsCreditsDiscountsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdsCreditsDiscountsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -87,6 +110,14 @@ module BillingApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | BillingInvoiceDownloadGetStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | BillingInvoiceDownloadGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BillingInvoiceDownloadGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BillingInvoiceDownloadGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BillingInvoiceDownloadGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BillingInvoiceDownloadGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -109,6 +140,14 @@ module BillingApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | BillingInvoicesGetStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | BillingInvoicesGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BillingInvoicesGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BillingInvoicesGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BillingInvoicesGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BillingInvoicesGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -129,6 +168,16 @@ module BillingApiHandler =
           return! (match result with
                       | BillingProfilesGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BillingProfilesGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BillingProfilesGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BillingProfilesGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BillingProfilesGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BillingProfilesGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BillingProfilesGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -150,6 +199,14 @@ module BillingApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | SsioAccountsGetStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | SsioAccountsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | SsioAccountsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | SsioAccountsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | SsioAccountsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | SsioAccountsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -171,8 +228,18 @@ module BillingApiHandler =
           return! (match result with
                       | SsioInsertionOrderCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | SsioInsertionOrderCreateStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
                       | SsioInsertionOrderCreateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | SsioInsertionOrderCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | SsioInsertionOrderCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | SsioInsertionOrderCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | SsioInsertionOrderCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | SsioInsertionOrderCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -196,6 +263,14 @@ module BillingApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | SsioInsertionOrderEditStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | SsioInsertionOrderEditStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | SsioInsertionOrderEditStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | SsioInsertionOrderEditStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | SsioInsertionOrderEditStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | SsioInsertionOrderEditDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -218,6 +293,14 @@ module BillingApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | SsioInsertionOrdersStatusGetByAdAccountStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | SsioInsertionOrdersStatusGetByAdAccountStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | SsioInsertionOrdersStatusGetByAdAccountStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | SsioInsertionOrdersStatusGetByAdAccountStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | SsioInsertionOrdersStatusGetByAdAccountStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | SsioInsertionOrdersStatusGetByAdAccountDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -239,6 +322,14 @@ module BillingApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | SsioInsertionOrdersStatusGetByPinOrderIdStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | SsioInsertionOrdersStatusGetByPinOrderIdStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | SsioInsertionOrdersStatusGetByPinOrderIdStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | SsioInsertionOrdersStatusGetByPinOrderIdStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | SsioInsertionOrdersStatusGetByPinOrderIdStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | SsioInsertionOrdersStatusGetByPinOrderIdDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -261,6 +352,14 @@ module BillingApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | SsioOrderLinesGetByAdAccountStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | SsioOrderLinesGetByAdAccountStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | SsioOrderLinesGetByAdAccountStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | SsioOrderLinesGetByAdAccountStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | SsioOrderLinesGetByAdAccountStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | SsioOrderLinesGetByAdAccountDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

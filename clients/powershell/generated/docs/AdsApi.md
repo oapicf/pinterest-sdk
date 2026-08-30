@@ -11,6 +11,9 @@ Method | HTTP request | Description
 [**Invoke-AdsGet**](AdsApi.md#Invoke-AdsGet) | **GET** /ad_accounts/{ad_account_id}/ads/{ad_id} | Get ad
 [**Invoke-AdsList**](AdsApi.md#Invoke-AdsList) | **GET** /ad_accounts/{ad_account_id}/ads | List ads
 [**Invoke-AdsUpdate**](AdsApi.md#Invoke-AdsUpdate) | **PATCH** /ad_accounts/{ad_account_id}/ads | Update ads
+[**Invoke-CampaignAdPreviewCreate**](AdsApi.md#Invoke-CampaignAdPreviewCreate) | **POST** /ad_accounts/{ad_account_id}/campaign_ad_preview | Create ad preview records for one or more ad groups
+[**Invoke-CampaignAdPreviewDelete**](AdsApi.md#Invoke-CampaignAdPreviewDelete) | **DELETE** /ad_accounts/{ad_account_id}/campaign_ad_preview | Delete ad preview records for one or more ad groups
+[**Invoke-CampaignAdPreviewRead**](AdsApi.md#Invoke-CampaignAdPreviewRead) | **GET** /ad_accounts/{ad_account_id}/campaign_ad_preview | Fetch ad preview records for one or more ad groups
 
 
 <a id="Invoke-AdPreviewsCreate"></a>
@@ -21,7 +24,7 @@ Method | HTTP request | Description
 
 Create ad preview with pin or image
 
-Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=""https://help.pinterest.com/en/business/article/promoted-pins-overview"" target=""_blank"">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.  Creating ad preview from catalog product group is currently in BETA and is not available to all users.
+Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad.  If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See [Ads Overview](https://help.pinterest.com/en/business/article/promoted-pins-overview).)  You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
 
 ### Example
 ```powershell
@@ -31,7 +34,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$AdPreviewRequest = Initialize-AdPreviewRequest -ImageUrl "https://somewebsite.com/someimage.jpg" -Title "My Preview Image" -PinId "7389479023" -CatalogProductGroupId "123456789" -CreativeType "SHOPPING" -CustomizableCtaType "GET_OFFER" -HeroImageTitle "My Preview Image" -HeroImageUrl "https://somewebsite.com/someimage.jpg" -HeroPinId "987654321" -ImageTag "Christmas Sale" -ItemId "111111111" -PreferredMediaType "VIDEO" -VideoTag "Black Friday Sale" # AdPreviewRequest | Create ad preview with pin or image.
+$AdPreviewRequest = Initialize-AdPreviewRequest -ImageUrl "https://somewebsite.com/someimage.jpg" -PromotionId "7834020404549" -Title "My Preview Image" -CreativeType "SHOPPING" -PinId "7389479023" -CatalogProductGroupId "123456789" -CustomizableCtaType "GET_OFFER" -HeroImageTitle "My Preview Image" -HeroImageUrl "https://somewebsite.com/someimage.jpg" -HeroPinId "987654321" -ImageTag "Christmas Sale" -ItemId "111111111" -PreferredMediaType "VIDEO" -ShowPromotion $false -VideoTag "Black Friday Sale" # AdPreviewRequest | 
 
 # Create ad preview with pin or image
 try {
@@ -47,7 +50,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **AdPreviewRequest** | [**AdPreviewRequest**](AdPreviewRequest.md)| Create ad preview with pin or image. | 
+ **AdPreviewRequest** | [**AdPreviewRequest**](AdPreviewRequest.md)|  | 
 
 ### Return type
 
@@ -72,18 +75,20 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartDate] <System.DateTime><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EndDate] <System.DateTime><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-TargetingTypes] <PSCustomObject[]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Columns] <String[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Columns] <PSCustomObject[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Granularity] <PSCustomObject><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ClickWindowDays] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EngagementWindowDays] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ViewWindowDays] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ConversionReportTime] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ClickWindowDays] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EngagementWindowDays] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ViewWindowDays] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ConversionReportTime] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AttributionTypes] <PSCustomObject[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ReportingTimezone] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortColumns] <String[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortAscending] <System.Nullable[Boolean]><br>
 
 Get targeting analytics for ads
 
-Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. ""age_bucket"") for applicable values (e.g. ""45-49""). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=""https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts"">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. ""age_bucket"") for applicable values (e.g. ""45-49"").  * The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 ```powershell
@@ -99,19 +104,21 @@ $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $AdIds = "MyAdIds" # String[] | List of Ad Ids to use to filter the results.
 $StartDate = (Get-Date) # System.DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 $EndDate = (Get-Date) # System.DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-$TargetingTypes = "KEYWORD" # AdsAnalyticsAdTargetingType[] | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [""AGE_BUCKET_AND_GENDER""] is in BETA and not yet available to all users.
-$Columns = "SPEND_IN_MICRO_DOLLAR" # String[] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-$Granularity = "TOTAL" # Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-$ClickWindowDays = "0" # Int32 | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
-$EngagementWindowDays = "0" # Int32 | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to 30)
-$ViewWindowDays = "0" # Int32 | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to 1)
-$ConversionReportTime = "TIME_OF_AD_ACTION" # String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to "TIME_OF_AD_ACTION")
+$TargetingTypes = "KEYWORD" # AdsAnalyticsAdTargetingType[] | Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [""AGE_BUCKET_AND_GENDER""] is in BETA and not yet available to all users.
+$Columns = "SPEND_IN_MICRO_DOLLAR" # ReportingColumnSync[] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+$Granularity = "TOTAL" # Granularity |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+$ClickWindowDays = "0" # ConversionAttributionWindowDays | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
+$EngagementWindowDays = "0" # ConversionAttributionWindowDays | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.  **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional)
+$ViewWindowDays = "0" # ConversionAttributionWindowDays | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional)
+$ConversionReportTime = "TIME_OF_AD_ACTION" # ConversionReportTimeType | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional)
 $AttributionTypes = "INDIVIDUAL" # ConversionReportAttributionType[] | List of types of attribution for the conversion report (optional)
 $ReportingTimezone = "PINTEREST_TIME_ZONE" # ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
+$SortColumns = "MySortColumns" # String[] | Sort Columns. (optional)
+$SortAscending = $true # Boolean | Sort ascending. (optional)
 
 # Get targeting analytics for ads
 try {
-    $Result = Invoke-AdTargetingAnalyticsGet -AdAccountId $AdAccountId -AdIds $AdIds -StartDate $StartDate -EndDate $EndDate -TargetingTypes $TargetingTypes -Columns $Columns -Granularity $Granularity -ClickWindowDays $ClickWindowDays -EngagementWindowDays $EngagementWindowDays -ViewWindowDays $ViewWindowDays -ConversionReportTime $ConversionReportTime -AttributionTypes $AttributionTypes -ReportingTimezone $ReportingTimezone
+    $Result = Invoke-AdTargetingAnalyticsGet -AdAccountId $AdAccountId -AdIds $AdIds -StartDate $StartDate -EndDate $EndDate -TargetingTypes $TargetingTypes -Columns $Columns -Granularity $Granularity -ClickWindowDays $ClickWindowDays -EngagementWindowDays $EngagementWindowDays -ViewWindowDays $ViewWindowDays -ConversionReportTime $ConversionReportTime -AttributionTypes $AttributionTypes -ReportingTimezone $ReportingTimezone -SortColumns $SortColumns -SortAscending $SortAscending
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AdTargetingAnalyticsGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -126,15 +133,17 @@ Name | Type | Description  | Notes
  **AdIds** | [**String[]**](String.md)| List of Ad Ids to use to filter the results. | 
  **StartDate** | **System.DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **EndDate** | **System.DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **TargetingTypes** | [**AdsAnalyticsAdTargetingType[]**](AdsAnalyticsAdTargetingType.md)| Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [&quot;&quot;AGE_BUCKET_AND_GENDER&quot;&quot;] is in BETA and not yet available to all users. | 
- **Columns** | [**String[]**](String.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
- **Granularity** | [**Granularity**](Granularity.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
- **ClickWindowDays** | **Int32**| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
- **EngagementWindowDays** | **Int32**| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to 30]
- **ViewWindowDays** | **Int32**| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to 1]
- **ConversionReportTime** | **String**| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to &quot;TIME_OF_AD_ACTION&quot;]
+ **TargetingTypes** | [**AdsAnalyticsAdTargetingType[]**](AdsAnalyticsAdTargetingType.md)| Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [&quot;&quot;AGE_BUCKET_AND_GENDER&quot;&quot;] is in BETA and not yet available to all users. | 
+ **Columns** | [**ReportingColumnSync[]**](ReportingColumnSync.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | 
+ **Granularity** | [**Granularity**](Granularity.md)|   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | 
+ **ClickWindowDays** | [**ConversionAttributionWindowDays**](ConversionAttributionWindowDays.md)| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] 
+ **EngagementWindowDays** | [**ConversionAttributionWindowDays**](ConversionAttributionWindowDays.md)| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.  **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional] 
+ **ViewWindowDays** | [**ConversionAttributionWindowDays**](ConversionAttributionWindowDays.md)| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] 
+ **ConversionReportTime** | [**ConversionReportTimeType**](ConversionReportTimeType.md)| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] 
  **AttributionTypes** | [**ConversionReportAttributionType[]**](ConversionReportAttributionType.md)| List of types of attribution for the conversion report | [optional] 
  **ReportingTimezone** | [**ReportingTimeZone**](ReportingTimeZone.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] 
+ **SortColumns** | [**String[]**](String.md)| Sort Columns. | [optional] 
+ **SortAscending** | **Boolean**| Sort ascending. | [optional] 
 
 ### Return type
 
@@ -153,24 +162,24 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-AdsAnalytics"></a>
 # **Invoke-AdsAnalytics**
-> AdsAnalyticsResponseInner[] Invoke-AdsAnalytics<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> AdsAnalytics[] Invoke-AdsAnalytics<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartDate] <System.DateTime><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EndDate] <System.DateTime><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Columns] <String[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Columns] <PSCustomObject[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Granularity] <PSCustomObject><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdIds] <String[]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ClickWindowDays] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EngagementWindowDays] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ViewWindowDays] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ConversionReportTime] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PinIds] <String[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdIds] <String[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ClickWindowDays] <System.Nullable[Decimal]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EngagementWindowDays] <System.Nullable[Decimal]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ViewWindowDays] <System.Nullable[Decimal]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ConversionReportTime] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CampaignIds] <String[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ReportingTimezone] <PSCustomObject><br>
 
 Get ad analytics
 
-Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=""https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts"">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+    Get analytics for the specified ads in the specified `ad_account_id`, filtered by the specified options.     - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.     - The request must contain either ad_ids or both campaign_ids and pin_ids.     - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.     - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 ```powershell
@@ -182,23 +191,23 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 # Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $StartDate = (Get-Date) # System.DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 $EndDate = (Get-Date) # System.DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-$Columns = "SPEND_IN_MICRO_DOLLAR" # String[] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-$Granularity = "TOTAL" # Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-$AdIds = "MyAdIds" # String[] | List of Ad Ids to use to filter the results. (optional)
-$ClickWindowDays = "0" # Int32 | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
-$EngagementWindowDays = "0" # Int32 | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to 30)
-$ViewWindowDays = "0" # Int32 | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to 1)
-$ConversionReportTime = "TIME_OF_AD_ACTION" # String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to "TIME_OF_AD_ACTION")
+$Columns = "SPEND_IN_MICRO_DOLLAR" # ReportingColumnSync[] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+$Granularity = "TOTAL" # Granularity |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $PinIds = "MyPinIds" # String[] | List of Pin IDs. (optional)
+$AdIds = "MyAdIds" # String[] | List of Ad Ids to use to filter the results. (optional)
+$ClickWindowDays = "0" # Decimal | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
+$EngagementWindowDays = "0" # Decimal | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional) (default to 30)
+$ViewWindowDays = "0" # Decimal | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to 1)
+$ConversionReportTime = "TIME_OF_AD_ACTION" # String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to "TIME_OF_AD_ACTION")
 $CampaignIds = "MyCampaignIds" # String[] | List of Campaign Ids to use to filter the results. (optional)
 $ReportingTimezone = "PINTEREST_TIME_ZONE" # ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 # Get ad analytics
 try {
-    $Result = Invoke-AdsAnalytics -AdAccountId $AdAccountId -StartDate $StartDate -EndDate $EndDate -Columns $Columns -Granularity $Granularity -AdIds $AdIds -ClickWindowDays $ClickWindowDays -EngagementWindowDays $EngagementWindowDays -ViewWindowDays $ViewWindowDays -ConversionReportTime $ConversionReportTime -PinIds $PinIds -CampaignIds $CampaignIds -ReportingTimezone $ReportingTimezone
+    $Result = Invoke-AdsAnalytics -StartDate $StartDate -EndDate $EndDate -Columns $Columns -Granularity $Granularity -AdAccountId $AdAccountId -PinIds $PinIds -AdIds $AdIds -ClickWindowDays $ClickWindowDays -EngagementWindowDays $EngagementWindowDays -ViewWindowDays $ViewWindowDays -ConversionReportTime $ConversionReportTime -CampaignIds $CampaignIds -ReportingTimezone $ReportingTimezone
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AdsAnalytics: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -209,23 +218,23 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **StartDate** | **System.DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **EndDate** | **System.DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **Columns** | [**String[]**](String.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
- **Granularity** | [**Granularity**](Granularity.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
- **AdIds** | [**String[]**](String.md)| List of Ad Ids to use to filter the results. | [optional] 
- **ClickWindowDays** | **Int32**| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
- **EngagementWindowDays** | **Int32**| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to 30]
- **ViewWindowDays** | **Int32**| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to 1]
- **ConversionReportTime** | **String**| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to &quot;TIME_OF_AD_ACTION&quot;]
+ **Columns** | [**ReportingColumnSync[]**](ReportingColumnSync.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | 
+ **Granularity** | [**Granularity**](Granularity.md)|   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | 
+ **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **PinIds** | [**String[]**](String.md)| List of Pin IDs. | [optional] 
+ **AdIds** | [**String[]**](String.md)| List of Ad Ids to use to filter the results. | [optional] 
+ **ClickWindowDays** | **Decimal**| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
+ **EngagementWindowDays** | **Decimal**| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional] [default to 30]
+ **ViewWindowDays** | **Decimal**| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to 1]
+ **ConversionReportTime** | **String**| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to &quot;TIME_OF_AD_ACTION&quot;]
  **CampaignIds** | [**String[]**](String.md)| List of Campaign Ids to use to filter the results. | [optional] 
  **ReportingTimezone** | [**ReportingTimeZone**](ReportingTimeZone.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] 
 
 ### Return type
 
-[**AdsAnalyticsResponseInner[]**](AdsAnalyticsResponseInner.md) (PSCustomObject)
+[**AdsAnalytics[]**](AdsAnalytics.md) (PSCustomObject)
 
 ### Authorization
 
@@ -240,13 +249,13 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-AdsCreate"></a>
 # **Invoke-AdsCreate**
-> AdArrayResponse Invoke-AdsCreate<br>
+> AdBatchWriteResponseModel Invoke-AdsCreate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdCreateRequest] <PSCustomObject[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdCreate] <PSCustomObject[]><br>
 
 Create ads
 
-Create multiple new ads. Request must contain `ad_group_id`, `creative_type`, and the source Pin `pin_id`.
+Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
 
 ### Example
 ```powershell
@@ -263,11 +272,11 @@ $QuizPinResult = Initialize-QuizPinResult -AndroidDeepLink "MyAndroidDeepLink" -
 $QuizPinData = Initialize-QuizPinData -Questions $QuizPinQuestion -Results $QuizPinResult -TieBreakerCustomResult $QuizPinResult -TieBreakerType "RANDOM"
 
 $TrackingUrls = Initialize-TrackingUrls -AudienceVerification "MyAudienceVerification" -BuyableButton "MyBuyableButton" -Click "MyClick" -Engagement "MyEngagement" -Impression "MyImpression"
-$AdCreateRequest = Initialize-AdCreateRequest -AdGroupId "2680059592705" -AndroidDeepLink "MyAndroidDeepLink" -CarouselAndroidDeepLinks "MyCarouselAndroidDeepLinks" -CarouselDestinationUrls "MyCarouselDestinationUrls" -CarouselIosDeepLinks "MyCarouselIosDeepLinks" -ClickTrackingUrl "MyClickTrackingUrl" -CreativeType "REGULAR" -CustomizableCtaType "GET_OFFER" -DestinationUrl "MyDestinationUrl" -DisclosureType "NO_DISCLOSURE" -DisclosureUrl "MyDisclosureUrl" -GridClickType "CLOSEUP" -IosDeepLink "MyIosDeepLink" -IsPinDeleted $false -IsRemovable $false -LeadFormId "MyLeadFormId" -Name "MyName" -QuizPinData $QuizPinData -Status "ACTIVE" -TrackingUrls $TrackingUrls -ViewTrackingUrl "MyViewTrackingUrl" -PinId "394205773611545468" # AdCreateRequest[] | List of ads to create, size limit [1, 30].
+$AdCreate = Initialize-AdCreate -AdGroupId "MyAdGroupId" -AndroidDeepLink "MyAndroidDeepLink" -CarouselAndroidDeepLinks "MyCarouselAndroidDeepLinks" -CarouselDestinationUrls "MyCarouselDestinationUrls" -CarouselIosDeepLinks "MyCarouselIosDeepLinks" -ClickTrackingUrl "MyClickTrackingUrl" -CollectionItemsDestinationUrlTemplate "MyCollectionItemsDestinationUrlTemplate" -CollectionsHeaderType "SHOP_THIS_COLLECTION" -CreativeType "REGULAR" -CustomizableCtaType "GET_OFFER" -DestinationUrl "MyDestinationUrl" -DisclosureType "NO_DISCLOSURE" -DisclosureUrl "MyDisclosureUrl" -GridClickType "CLOSEUP" -IosDeepLink "MyIosDeepLink" -IsCarting $false -IsCollageAcceptedTerms $false -IsCollageSingleDestination $false -IsPinDeleted $false -IsRemovable $false -LeadFormId "MyLeadFormId" -Name "MyName" -PinId "MyPinId" -QuizPinData $QuizPinData -Status "ACTIVE" -TrackingUrls $TrackingUrls -ViewTrackingUrl "MyViewTrackingUrl" # AdCreate[] | 
 
 # Create ads
 try {
-    $Result = Invoke-AdsCreate -AdAccountId $AdAccountId -AdCreateRequest $AdCreateRequest
+    $Result = Invoke-AdsCreate -AdAccountId $AdAccountId -AdCreate $AdCreate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AdsCreate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -279,11 +288,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **AdCreateRequest** | [**AdCreateRequest[]**](AdCreateRequest.md)| List of ads to create, size limit [1, 30]. | 
+ **AdCreate** | [**AdCreate[]**](AdCreate.md)|  | 
 
 ### Return type
 
-[**AdArrayResponse**](AdArrayResponse.md) (PSCustomObject)
+[**AdBatchWriteResponseModel**](AdBatchWriteResponseModel.md) (PSCustomObject)
 
 ### Authorization
 
@@ -298,13 +307,13 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-AdsGet"></a>
 # **Invoke-AdsGet**
-> AdResponse Invoke-AdsGet<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> Ad Invoke-AdsGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Get ad
 
-Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=""https://www.pinterest.com/_/_/policy/advertising-guidelines/"" target=""_blank"">Pinterest advertising standards</a>.
+Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the [Pinterest advertising standards](https://www.pinterest.com/_/_/policy/advertising-guidelines/).
 
 ### Example
 ```powershell
@@ -316,12 +325,12 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 # Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+$AdId = "MyAdId" # String | The ID of this ad.
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$AdId = "MyAdId" # String | Unique identifier of an ad.
 
 # Get ad
 try {
-    $Result = Invoke-AdsGet -AdAccountId $AdAccountId -AdId $AdId
+    $Result = Invoke-AdsGet -AdId $AdId -AdAccountId $AdAccountId
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AdsGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -332,12 +341,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **AdId** | **String**| The ID of this ad. | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **AdId** | **String**| Unique identifier of an ad. | 
 
 ### Return type
 
-[**AdResponse**](AdResponse.md) (PSCustomObject)
+[**Ad**](Ad.md) (PSCustomObject)
 
 ### Authorization
 
@@ -354,17 +363,17 @@ Name | Type | Description  | Notes
 # **Invoke-AdsList**
 > AdsList200Response Invoke-AdsList<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CampaignIds] <String[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdGroupIds] <String[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdIds] <String[]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EntityStatuses] <String[]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EntityStatuses] <PSCustomObject[]><br>
 
 List ads
 
-List ads that meet the filters provided:   - Listed campaign ids or ad group ids or ad ids   - Listed entity statuses <p/> If no filter is provided, all ads in the ad account are returned. <p/> <strong>Note:</strong><p/> Provide only campaign_id or ad_group_id or ad_id. Do not provide more than one type. <p/> Review status is provided for each ad; if review_status is REJECTED, the rejected_reasons field will contain additional information. For more, see <a href=""https://policy.pinterest.com/en/advertising-guidelines"">Pinterest advertising standards</a>.
+List ads that meet the filters provided:     - Listed campaign ids or ad group ids or ad ids     - Listed entity statuses  If no filter is provided, all ads in the ad account are returned.  **Note:** Provide only `campaign_id` or `ad_group_id` or `ad_id`. Do not provide more than one type.  Review status is provided for each ad; if `review_status` is `REJECTED`, the `rejected_reasons` field will contain additional information.  For more, see [Pinterest advertising standards](https://policy.pinterest.com/en/advertising-guidelines).
 
 ### Example
 ```powershell
@@ -377,17 +386,17 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$CampaignIds = "MyCampaignIds" # String[] | List of Campaign Ids to use to filter the results. (optional)
-$AdGroupIds = "MyAdGroupIds" # String[] | List of Ad group Ids to use to filter the results. (optional)
-$AdIds = "MyAdIds" # String[] | List of Ad Ids to use to filter the results. (optional)
-$EntityStatuses = "ACTIVE" # String[] | Entity status (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-$Order = "ASCENDING" # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+$Order = "ASCENDING" # PinterestLibPaginationOrder | The order in which to sort the items returned: ""ASCENDING"" or ""DESCENDING"" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+$CampaignIds = "MyCampaignIds" # String[] | List of Campaign Ids to use to filter the results. (optional)
+$AdGroupIds = "MyAdGroupIds" # String[] | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
+$AdIds = "MyAdIds" # String[] | List of Ad Ids to use to filter the results. (optional)
+$EntityStatuses = "ACTIVE" # EntityStatus[] | Entity status (optional)
 
 # List ads
 try {
-    $Result = Invoke-AdsList -AdAccountId $AdAccountId -CampaignIds $CampaignIds -AdGroupIds $AdGroupIds -AdIds $AdIds -EntityStatuses $EntityStatuses -PageSize $PageSize -Order $Order -Bookmark $Bookmark
+    $Result = Invoke-AdsList -AdAccountId $AdAccountId -Bookmark $Bookmark -PageSize $PageSize -Order $Order -CampaignIds $CampaignIds -AdGroupIds $AdGroupIds -AdIds $AdIds -EntityStatuses $EntityStatuses
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AdsList: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -399,13 +408,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **CampaignIds** | [**String[]**](String.md)| List of Campaign Ids to use to filter the results. | [optional] 
- **AdGroupIds** | [**String[]**](String.md)| List of Ad group Ids to use to filter the results. | [optional] 
- **AdIds** | [**String[]**](String.md)| List of Ad Ids to use to filter the results. | [optional] 
- **EntityStatuses** | [**String[]**](String.md)| Entity status | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **Order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **Order** | [**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md)| The order in which to sort the items returned: &quot;&quot;ASCENDING&quot;&quot; or &quot;&quot;DESCENDING&quot;&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **CampaignIds** | [**String[]**](String.md)| List of Campaign Ids to use to filter the results. | [optional] 
+ **AdGroupIds** | [**String[]**](String.md)| List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. | [optional] 
+ **AdIds** | [**String[]**](String.md)| List of Ad Ids to use to filter the results. | [optional] 
+ **EntityStatuses** | [**EntityStatus[]**](EntityStatus.md)| Entity status | [optional] 
 
 ### Return type
 
@@ -424,9 +433,9 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-AdsUpdate"></a>
 # **Invoke-AdsUpdate**
-> AdArrayResponse Invoke-AdsUpdate<br>
+> AdBatchWriteResponseModel Invoke-AdsUpdate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdUpdateRequest] <PSCustomObject[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdBatchUpdate] <PSCustomObject[]><br>
 
 Update ads
 
@@ -447,11 +456,11 @@ $QuizPinResult = Initialize-QuizPinResult -AndroidDeepLink "MyAndroidDeepLink" -
 $QuizPinData = Initialize-QuizPinData -Questions $QuizPinQuestion -Results $QuizPinResult -TieBreakerCustomResult $QuizPinResult -TieBreakerType "RANDOM"
 
 $TrackingUrls = Initialize-TrackingUrls -AudienceVerification "MyAudienceVerification" -BuyableButton "MyBuyableButton" -Click "MyClick" -Engagement "MyEngagement" -Impression "MyImpression"
-$AdUpdateRequest = Initialize-AdUpdateRequest -AdGroupId "2680059592705" -AndroidDeepLink "MyAndroidDeepLink" -CarouselAndroidDeepLinks "MyCarouselAndroidDeepLinks" -CarouselDestinationUrls "MyCarouselDestinationUrls" -CarouselIosDeepLinks "MyCarouselIosDeepLinks" -ClickTrackingUrl "MyClickTrackingUrl" -CreativeType "REGULAR" -CustomizableCtaType "GET_OFFER" -DestinationUrl "MyDestinationUrl" -DisclosureType "NO_DISCLOSURE" -DisclosureUrl "MyDisclosureUrl" -GridClickType "CLOSEUP" -IosDeepLink "MyIosDeepLink" -IsPinDeleted $false -IsRemovable $false -LeadFormId "MyLeadFormId" -Name "MyName" -QuizPinData $QuizPinData -Status "ACTIVE" -TrackingUrls $TrackingUrls -ViewTrackingUrl "MyViewTrackingUrl" -Id "687195134316" -PinId "394205773611545468" # AdUpdateRequest[] | List of ads to update, size limit [1, 30]
+$AdBatchUpdate = Initialize-AdBatchUpdate -AdGroupId "MyAdGroupId" -AndroidDeepLink "MyAndroidDeepLink" -CarouselAndroidDeepLinks "MyCarouselAndroidDeepLinks" -CarouselDestinationUrls "MyCarouselDestinationUrls" -CarouselIosDeepLinks "MyCarouselIosDeepLinks" -ClickTrackingUrl "MyClickTrackingUrl" -CollectionItemsDestinationUrlTemplate "MyCollectionItemsDestinationUrlTemplate" -CollectionsHeaderType "SHOP_THIS_COLLECTION" -CreativeType "REGULAR" -CustomizableCtaType "GET_OFFER" -DestinationUrl "MyDestinationUrl" -DisclosureType "NO_DISCLOSURE" -DisclosureUrl "MyDisclosureUrl" -GridClickType "CLOSEUP" -Id "MyId" -IosDeepLink "MyIosDeepLink" -IsCarting $false -IsCollageAcceptedTerms $false -IsCollageSingleDestination $false -IsPinDeleted $false -IsRemovable $false -LeadFormId "MyLeadFormId" -Name "MyName" -PinId "MyPinId" -QuizPinData $QuizPinData -Status "ACTIVE" -TrackingUrls $TrackingUrls -ViewTrackingUrl "MyViewTrackingUrl" # AdBatchUpdate[] | 
 
 # Update ads
 try {
-    $Result = Invoke-AdsUpdate -AdAccountId $AdAccountId -AdUpdateRequest $AdUpdateRequest
+    $Result = Invoke-AdsUpdate -AdAccountId $AdAccountId -AdBatchUpdate $AdBatchUpdate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AdsUpdate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -463,11 +472,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **AdUpdateRequest** | [**AdUpdateRequest[]**](AdUpdateRequest.md)| List of ads to update, size limit [1, 30] | 
+ **AdBatchUpdate** | [**AdBatchUpdate[]**](AdBatchUpdate.md)|  | 
 
 ### Return type
 
-[**AdArrayResponse**](AdArrayResponse.md) (PSCustomObject)
+[**AdBatchWriteResponseModel**](AdBatchWriteResponseModel.md) (PSCustomObject)
 
 ### Authorization
 
@@ -476,6 +485,159 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Invoke-CampaignAdPreviewCreate"></a>
+# **Invoke-CampaignAdPreviewCreate**
+> CampaignAdPreviewCreate200ResponseInner[] Invoke-CampaignAdPreviewCreate<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CampaignAdPreviewCreate] <PSCustomObject[]><br>
+
+Create ad preview records for one or more ad groups
+
+Create ad preview records for one or more ad groups that can be shared. Each ad group is processed independently; individual failures do not block other previews.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
+$CampaignAdPreviewCreate = Initialize-CampaignAdPreviewCreate -AdGroupId "1234567890" # CampaignAdPreviewCreate[] | 
+
+# Create ad preview records for one or more ad groups
+try {
+    $Result = Invoke-CampaignAdPreviewCreate -AdAccountId $AdAccountId -CampaignAdPreviewCreate $CampaignAdPreviewCreate
+} catch {
+    Write-Host ("Exception occurred when calling Invoke-CampaignAdPreviewCreate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **AdAccountId** | **String**| Unique identifier of an ad account. | 
+ **CampaignAdPreviewCreate** | [**CampaignAdPreviewCreate[]**](CampaignAdPreviewCreate.md)|  | 
+
+### Return type
+
+[**CampaignAdPreviewCreate200ResponseInner[]**](CampaignAdPreviewCreate200ResponseInner.md) (PSCustomObject)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Invoke-CampaignAdPreviewDelete"></a>
+# **Invoke-CampaignAdPreviewDelete**
+> CampaignAdPreviewDelete200ResponseInner[] Invoke-CampaignAdPreviewDelete<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdGroupIds] <String[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+
+Delete ad preview records for one or more ad groups
+
+Delete ad preview records for one or more ad groups. All ad groups are validated before deleting any records.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+$AdGroupIds = "MyAdGroupIds" # String[] | List of Ad group Ids to use to filter the results.
+$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
+
+# Delete ad preview records for one or more ad groups
+try {
+    $Result = Invoke-CampaignAdPreviewDelete -AdGroupIds $AdGroupIds -AdAccountId $AdAccountId
+} catch {
+    Write-Host ("Exception occurred when calling Invoke-CampaignAdPreviewDelete: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **AdGroupIds** | [**String[]**](String.md)| List of Ad group Ids to use to filter the results. | 
+ **AdAccountId** | **String**| Unique identifier of an ad account. | 
+
+### Return type
+
+[**CampaignAdPreviewDelete200ResponseInner[]**](CampaignAdPreviewDelete200ResponseInner.md) (PSCustomObject)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Invoke-CampaignAdPreviewRead"></a>
+# **Invoke-CampaignAdPreviewRead**
+> CampaignAdPreview[] Invoke-CampaignAdPreviewRead<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdGroupIds] <String[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+
+Fetch ad preview records for one or more ad groups
+
+Fetch ad preview records for one or more ad groups. Returns all active previews associated with the provided ad group IDs.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+# Configure OAuth2 access token for authorization: pinterest_oauth2
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+$AdGroupIds = "MyAdGroupIds" # String[] | List of Ad group Ids to use to filter the results.
+$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
+
+# Fetch ad preview records for one or more ad groups
+try {
+    $Result = Invoke-CampaignAdPreviewRead -AdGroupIds $AdGroupIds -AdAccountId $AdAccountId
+} catch {
+    Write-Host ("Exception occurred when calling Invoke-CampaignAdPreviewRead: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **AdGroupIds** | [**String[]**](String.md)| List of Ad group Ids to use to filter the results. | 
+ **AdAccountId** | **String**| Unique identifier of an ad account. | 
+
+### Return type
+
+[**CampaignAdPreview[]**](CampaignAdPreview.md) (PSCustomObject)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

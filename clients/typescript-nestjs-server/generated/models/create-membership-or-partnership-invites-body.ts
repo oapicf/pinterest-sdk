@@ -1,0 +1,23 @@
+import { BusinessRoleForInvite } from './business-role-for-invite';
+import { InviteType } from './invite-type';
+
+
+/**
+ * Body to be used on path to send Members or Partners Invite or Request
+ */
+export interface CreateMembershipOrPartnershipInvitesBody { 
+  business_role: BusinessRoleForInvite;
+  invite_type: InviteType;
+  /**
+   * A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
+   */
+  members?: Array<string>;
+  /**
+   * A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST
+   */
+  partners?: Array<string>;
+}
+export namespace CreateMembershipOrPartnershipInvitesBody {
+}
+
+

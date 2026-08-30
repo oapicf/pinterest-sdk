@@ -1,2 +1,2 @@
-testCase,httpStatusCode,adAccountId,countryCode,keywords,adAccountId,keywordsRequest,adAccountId,campaignId,adGroupId,adGroupIds,matchTypes,pageSize,bookmark,adAccountId,keywordUpdateBody,region,trendType,interests,genders,ages,includeKeywords,normalizeAgainstGroup,limit,includePrediction,includeDemographics
-Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+testCase,httpStatusCode,adAccountId,countryCode,keywords,adAccountId,keywordsCreate,adAccountId,campaignId,adGroupId,adGroupIds,matchTypes,bookmark,pageSize,adAccountId,keywordsUpdate,region,trendType,interests,genders,ages,includeKeywords,normalizeAgainstGroup,limit,includeDemographics
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

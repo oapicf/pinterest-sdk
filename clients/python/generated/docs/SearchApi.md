@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 Get the top 10 Pins by a given search term.
 
@@ -46,7 +46,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.SearchApi(api_client)
     term = 'term_example' # str | Search term to look up pins.
-    country_code = 'US' # str | Two letter country code (ISO 3166-1 alpha-2)
+    country_code = 'country_code_example' # str | Two letter country code (ISO 3166-1 alpha-2)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
     locale = 'locale_example' # str | Search locale. (optional)
     limit = 10 # int | Max search result size (optional) (default to 10)
@@ -90,21 +90,25 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid pins |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_user_boards_get**
-> SearchUserBoardsGet200Response search_user_boards_get(ad_account_id=ad_account_id, bookmark=bookmark, page_size=page_size, query=query)
+> BoardsList200Response search_user_boards_get(ad_account_id=ad_account_id, query=query, bookmark=bookmark, page_size=page_size)
 
 Search user's boards
 
 Search for boards for the "operation user_account". This includes boards of all board types.
 - By default, the "operation user_account" is the token user_account.
 
-If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 
@@ -113,7 +117,7 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.search_user_boards_get200_response import SearchUserBoardsGet200Response
+from pinterestsdk.models.boards_list200_response import BoardsList200Response
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -137,13 +141,13 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.SearchApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account. (optional)
-    bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
     query = 'query_example' # str | Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
+    bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # Search user's boards
-        api_response = api_instance.search_user_boards_get(ad_account_id=ad_account_id, bookmark=bookmark, page_size=page_size, query=query)
+        api_response = api_instance.search_user_boards_get(ad_account_id=ad_account_id, query=query, bookmark=bookmark, page_size=page_size)
         print("The response of SearchApi->search_user_boards_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -158,13 +162,13 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | [optional] 
- **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **query** | **str**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] 
+ **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**SearchUserBoardsGet200Response**](SearchUserBoardsGet200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -179,20 +183,25 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | response |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_user_pins_list**
-> SearchUserPinsList200Response search_user_pins_list(query, ad_account_id=ad_account_id, bookmark=bookmark)
+> PinsList200Response search_user_pins_list(query, ad_account_id=ad_account_id, bookmark=bookmark)
 
 Search user's Pins
 
 Search for pins for the "operation user_account".
 - By default, the "operation user_account" is the token user_account.
 
-If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 
@@ -200,7 +209,7 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.search_user_pins_list200_response import SearchUserPinsList200Response
+from pinterestsdk.models.pins_list200_response import PinsList200Response
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -221,7 +230,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.SearchApi(api_client)
-    query = 'Plants' # str | Search query. Can contain pin description keywords or comma-separated pin IDs.
+    query = 'query_example' # str | Search query. Can contain pin description keywords or comma-separated pin IDs.
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account. (optional)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
 
@@ -247,7 +256,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
+[**PinsList200Response**](PinsList200Response.md)
 
 ### Authorization
 
@@ -262,9 +271,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**404** | User not found |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

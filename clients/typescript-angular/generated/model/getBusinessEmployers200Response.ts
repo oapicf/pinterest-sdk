@@ -12,9 +12,6 @@ import { UserBusinessRoleBinding } from './userBusinessRoleBinding';
 
 export interface GetBusinessEmployers200Response { 
     bookmark?: string | null;
-    /**
-     * List of employers.
-     */
     items: Array<UserBusinessRoleBinding>;
 }
 

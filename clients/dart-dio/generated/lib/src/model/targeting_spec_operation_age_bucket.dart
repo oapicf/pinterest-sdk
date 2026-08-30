@@ -27,7 +27,7 @@ abstract class TargetingSpecOperationAgeBucket implements Built<TargetingSpecOpe
   // enum operationEnum {  SET,  };
 
   @BuiltValueField(wireName: r'values')
-  BuiltList<TargetingSpecAgeBucket>? get values;
+  BuiltList<TargetingSpecAgeBucket> get values;
 
   TargetingSpecOperationAgeBucket._();
 
@@ -63,9 +63,9 @@ class _$TargetingSpecOperationAgeBucketSerializer implements PrimitiveSerializer
       specifiedType: const FullType(TargetingSpecOperationAgeBucketOperationEnum),
     );
     yield r'values';
-    yield object.values == null ? null : serializers.serialize(
+    yield serializers.serialize(
       object.values,
-      specifiedType: const FullType.nullable(BuiltList, [FullType(TargetingSpecAgeBucket)]),
+      specifiedType: const FullType(BuiltList, [FullType(TargetingSpecAgeBucket)]),
     );
   }
 
@@ -107,9 +107,8 @@ class _$TargetingSpecOperationAgeBucketSerializer implements PrimitiveSerializer
         case r'values':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(TargetingSpecAgeBucket)]),
-          ) as BuiltList<TargetingSpecAgeBucket>?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(BuiltList, [FullType(TargetingSpecAgeBucket)]),
+          ) as BuiltList<TargetingSpecAgeBucket>;
           result.values.replace(valueDes);
           break;
         default:

@@ -15,7 +15,7 @@
 | **iosDeepLink** | **kotlin.String** | IOS deep link to the creative assets page. |  [optional] |
 | **link** | **kotlin.String** | Link to the creative assets page. |  [optional] |
 | **title** | **kotlin.String** | The name of the creative assets. |  [optional] |
-| **visibility** | **kotlin.String** | Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. |  [optional] |
+| **visibility** | **kotlin.String** | Visibility of the creative assets. Must be one of the following values (upper or lowercase): &#39;visible&#39;, &#39;hidden&#39;. |  [optional] |
 
 
 

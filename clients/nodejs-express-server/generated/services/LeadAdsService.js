@@ -7,7 +7,7 @@ const Service = require('./Service');
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * subscriptionUnderscoreid String Unique identifier of a subscription.
-* no response value expected for this operation
+* returns LeadSubscription
 * */
 const ad_accounts_subscriptions/del_by_id = ({ adUnderscoreaccountUnderscoreid, subscriptionUnderscoreid }) => new Promise(
   async (resolve, reject) => {

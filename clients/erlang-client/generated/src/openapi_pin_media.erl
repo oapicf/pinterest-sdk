@@ -11,6 +11,7 @@
        'duration' => integer(),
        'height' => integer(),
        'video_url' => binary(),
+       'video_url_hls' => binary(),
        'width' => integer(),
        'items' => list()
      }.
@@ -21,6 +22,7 @@ encode(#{ 'images' := Images,
           'duration' := Duration,
           'height' := Height,
           'video_url' := VideoUrl,
+          'video_url_hls' := VideoUrlHls,
           'width' := Width,
           'items' := Items
         }) ->
@@ -30,6 +32,7 @@ encode(#{ 'images' := Images,
        'duration' => Duration,
        'height' => Height,
        'video_url' => VideoUrl,
+       'video_url_hls' => VideoUrlHls,
        'width' => Width,
        'items' => Items
      }.

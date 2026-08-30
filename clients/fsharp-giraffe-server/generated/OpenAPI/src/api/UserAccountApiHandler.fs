@@ -9,21 +9,24 @@ open UserAccountApiServiceInterface
 open UserAccountApiServiceImplementation
 open OpenAPI.Model.Account
 open OpenAPI.Model.AnalyticsMetricsResponse
-open OpenAPI.Model.BoardsUserFollowsList200Response
-open OpenAPI.Model.Error
-open OpenAPI.Model.FollowUserRequest
+open OpenAPI.Model.BoardsList200Response
+open OpenAPI.Model.FollowUser
+open OpenAPI.Model.FollowUserCreate
 open OpenAPI.Model.FollowersList200Response
 open System.Collections.Generic
 open OpenAPI.Model.LinkedBusiness
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.QuerymetrictypesItems
+open OpenAPI.Model.QueryvideopinmetrictypesItems
 open OpenAPI.Model.TopPinsAnalyticsResponse
+open OpenAPI.Model.TopPinsSortBy
 open OpenAPI.Model.TopVideoPinsAnalyticsResponse
+open OpenAPI.Model.TopVideoPinsSortBy
 open OpenAPI.Model.UserAccountFollowedInterests200Response
 open OpenAPI.Model.UserFollowingFeedType
-open OpenAPI.Model.UserFollowingGet200Response
-open OpenAPI.Model.UserSummary
-open OpenAPI.Model.UserWebsiteSummary
-open OpenAPI.Model.UserWebsiteVerificationCode
-open OpenAPI.Model.UserWebsiteVerifyRequest
+open OpenAPI.Model.UserWebsite
+open OpenAPI.Model.UserWebsiteCreate
+open OpenAPI.Model.UserWebsiteVerification
 open OpenAPI.Model.UserWebsitesGet200Response
 
 module UserAccountApiHandler =
@@ -48,6 +51,14 @@ module UserAccountApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | BoardsUserFollowsListStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | BoardsUserFollowsListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BoardsUserFollowsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BoardsUserFollowsListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BoardsUserFollowsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BoardsUserFollowsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -69,8 +80,18 @@ module UserAccountApiHandler =
           return! (match result with
                       | FollowUserUpdateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | FollowUserUpdateStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
+                      | FollowUserUpdateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | FollowUserUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | FollowUserUpdateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | FollowUserUpdateStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | FollowUserUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | FollowUserUpdateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -93,6 +114,14 @@ module UserAccountApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | FollowersListStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | FollowersListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | FollowersListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | FollowersListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | FollowersListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | FollowersListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -111,6 +140,16 @@ module UserAccountApiHandler =
           return! (match result with
                       | LinkedBusinessAccountsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | LinkedBusinessAccountsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | LinkedBusinessAccountsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | LinkedBusinessAccountsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | LinkedBusinessAccountsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | LinkedBusinessAccountsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | LinkedBusinessAccountsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -129,10 +168,20 @@ module UserAccountApiHandler =
           let serviceArgs = {  queryParams=queryParams;    } : UnverifyWebsiteDeleteArgs
           let result = UserAccountApiService.UnverifyWebsiteDelete ctx serviceArgs
           return! (match result with
+                      | UnverifyWebsiteDeleteStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
                       | UnverifyWebsiteDeleteStatusCode204 resolved ->
                             setStatusCode 204 >=> text resolved.content
+                      | UnverifyWebsiteDeleteStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | UnverifyWebsiteDeleteStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | UnverifyWebsiteDeleteStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | UnverifyWebsiteDeleteStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | UnverifyWebsiteDeleteStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | UnverifyWebsiteDeleteDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -155,8 +204,14 @@ module UserAccountApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | UserAccountAnalyticsStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | UserAccountAnalyticsStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | UserAccountAnalyticsStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
+                      | UserAccountAnalyticsStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | UserAccountAnalyticsStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | UserAccountAnalyticsDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -177,8 +232,16 @@ module UserAccountApiHandler =
           return! (match result with
                       | UserAccountAnalyticsTopPinsStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | UserAccountAnalyticsTopPinsStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | UserAccountAnalyticsTopPinsStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | UserAccountAnalyticsTopPinsStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
+                      | UserAccountAnalyticsTopPinsStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | UserAccountAnalyticsTopPinsStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | UserAccountAnalyticsTopPinsDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -199,8 +262,16 @@ module UserAccountApiHandler =
           return! (match result with
                       | UserAccountAnalyticsTopVideoPinsStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | UserAccountAnalyticsTopVideoPinsStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | UserAccountAnalyticsTopVideoPinsStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | UserAccountAnalyticsTopVideoPinsStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
+                      | UserAccountAnalyticsTopVideoPinsStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | UserAccountAnalyticsTopVideoPinsStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | UserAccountAnalyticsTopVideoPinsDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -247,8 +318,16 @@ module UserAccountApiHandler =
           return! (match result with
                       | UserAccountGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | UserAccountGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | UserAccountGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | UserAccountGetStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
+                      | UserAccountGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | UserAccountGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | UserAccountGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -269,6 +348,16 @@ module UserAccountApiHandler =
           return! (match result with
                       | UserFollowingGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | UserFollowingGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | UserFollowingGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | UserFollowingGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | UserFollowingGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | UserFollowingGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | UserFollowingGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -289,8 +378,16 @@ module UserAccountApiHandler =
           return! (match result with
                       | UserWebsitesGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | UserWebsitesGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | UserWebsitesGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | UserWebsitesGetStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
+                      | UserWebsitesGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | UserWebsitesGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | UserWebsitesGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -313,6 +410,18 @@ module UserAccountApiHandler =
           return! (match result with
                       | VerifyWebsiteUpdateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | VerifyWebsiteUpdateStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
+                      | VerifyWebsiteUpdateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | VerifyWebsiteUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | VerifyWebsiteUpdateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | VerifyWebsiteUpdateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | VerifyWebsiteUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | VerifyWebsiteUpdateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -333,8 +442,16 @@ module UserAccountApiHandler =
           return! (match result with
                       | WebsiteVerificationGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | WebsiteVerificationGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | WebsiteVerificationGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | WebsiteVerificationGetStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
+                      | WebsiteVerificationGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | WebsiteVerificationGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | WebsiteVerificationGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

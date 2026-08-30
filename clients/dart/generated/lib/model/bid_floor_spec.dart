@@ -21,10 +21,13 @@ class BidFloorSpec {
     this.optimizationGoalMetadata,
   });
 
+  /// Ad group billable event type.
   ActionType billableEvent;
 
+  /// List of ISO 3166-1 alpha-2 country codes.
   List<Country> countries;
 
+  /// Creative type for the bid floor request.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -33,16 +36,19 @@ class BidFloorSpec {
   ///
   CreativeType? creativeType;
 
+  /// Currency for the bid floor value.
   Currency currency;
 
+  /// Campaign objective type.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  ObjectiveType? objectiveType;
+  BidFloorObjectiveType? objectiveType;
 
+  /// Optimization goal metadata.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -107,10 +113,10 @@ class BidFloorSpec {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BidFloorSpec[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BidFloorSpec[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'billable_event'), 'Required key "BidFloorSpec[billable_event]" is missing from JSON.');
+        assert(json[r'billable_event'] != null, 'Required key "BidFloorSpec[billable_event]" has a null value in JSON.');
+        assert(json.containsKey(r'currency'), 'Required key "BidFloorSpec[currency]" is missing from JSON.');
+        assert(json[r'currency'] != null, 'Required key "BidFloorSpec[currency]" has a null value in JSON.');
         return true;
       }());
 
@@ -119,7 +125,7 @@ class BidFloorSpec {
         countries: Country.listFromJson(json[r'countries']),
         creativeType: CreativeType.fromJson(json[r'creative_type']),
         currency: Currency.fromJson(json[r'currency'])!,
-        objectiveType: ObjectiveType.fromJson(json[r'objective_type']),
+        objectiveType: BidFloorObjectiveType.fromJson(json[r'objective_type']),
         optimizationGoalMetadata: OptimizationGoalMetadata.fromJson(json[r'optimization_goal_metadata']),
       );
     }

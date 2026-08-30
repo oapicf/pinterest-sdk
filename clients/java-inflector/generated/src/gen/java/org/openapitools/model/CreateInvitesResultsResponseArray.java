@@ -8,21 +8,21 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CreateInvitesResultsResponseArrayItemsInner;
+import org.openapitools.model.InviteActionResultItem;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CreateInvitesResultsResponseArray   {
   @JsonProperty("items")
-  private List<CreateInvitesResultsResponseArrayItemsInner> items = null;
+  private List<InviteActionResultItem> items = null;
 
   /**
    * List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
    **/
-  public CreateInvitesResultsResponseArray items(List<CreateInvitesResultsResponseArrayItemsInner> items) {
+  public CreateInvitesResultsResponseArray items(List<InviteActionResultItem> items) {
     this.items = items;
     return this;
   }
@@ -30,10 +30,10 @@ public class CreateInvitesResultsResponseArray   {
   
   @ApiModelProperty(value = "List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.")
   @JsonProperty("items")
-  public List<CreateInvitesResultsResponseArrayItemsInner> getItems() {
+  public List<InviteActionResultItem> getItems() {
     return items;
   }
-  public void setItems(List<CreateInvitesResultsResponseArrayItemsInner> items) {
+  public void setItems(List<InviteActionResultItem> items) {
     this.items = items;
   }
 
@@ -70,10 +70,7 @@ public class CreateInvitesResultsResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

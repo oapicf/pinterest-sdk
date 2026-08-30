@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,7 +14,7 @@ package openapi
 
 
 
-// TrackingUrls - Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+// TrackingUrls -   Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for   each event type. Tracking URLs set at the ad group or ad level can override   those set at the campaign level. For more information, see [Third-party and dynamic tracking](https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking).
 type TrackingUrls struct {
 
 	AudienceVerification []string `json:"audience_verification,omitempty"`
@@ -28,7 +28,8 @@ type TrackingUrls struct {
 	Impression []string `json:"impression,omitempty"`
 }
 
-// AssertTrackingUrlsRequired checks if the required fields are not zero-ed
+// AssertTrackingUrlsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertTrackingUrlsRequired(obj TrackingUrls) error {
 	return nil
 }

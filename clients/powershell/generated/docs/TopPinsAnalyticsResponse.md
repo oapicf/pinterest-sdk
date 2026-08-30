@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DateAvailability** | [**TopPinsAnalyticsResponseDateAvailability**](TopPinsAnalyticsResponseDateAvailability.md) |  | [optional] 
-**Pins** | [**TopPinsAnalyticsResponsePinsInner[]**](TopPinsAnalyticsResponsePinsInner.md) |  | [optional] 
-**SortBy** | **String** |  | [optional] 
+**Pins** | [**TopPinsAnalyticsResponsePinsItems[]**](TopPinsAnalyticsResponsePinsItems.md) |  | [optional] 
+**SortBy** | [**TopPinsSortBy**](TopPinsSortBy.md) |  | [optional] 
 
 ## Examples
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ```powershell
 $TopPinsAnalyticsResponse = Initialize-PSOpenAPIToolsTopPinsAnalyticsResponse  -DateAvailability null `
  -Pins null `
- -SortBy IMPRESSION
+ -SortBy null
 ```
 
 - Convert the resource to JSON

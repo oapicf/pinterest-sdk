@@ -1,10 +1,10 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
+import org.openapitools.model.CustomerListUpload
 import org.openapitools.model.CustomerListUploadCreateRequest
 import org.openapitools.model.CustomerListUploadCreateResponse
-import org.openapitools.model.CustomerListUploadResponse
-import org.openapitools.model.Error
+import org.openapitools.model.PinterestLibError
 
 class CustomerListUploadsApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -18,6 +18,7 @@ class CustomerListUploadsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -39,7 +40,9 @@ class CustomerListUploadsApi {
         bodyParams = customerListUploadCreateRequest
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     CustomerListUploadCreateResponse.class )
 
@@ -52,6 +55,7 @@ class CustomerListUploadsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -71,9 +75,11 @@ class CustomerListUploadsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    CustomerListUploadResponse.class )
+                    CustomerListUpload.class )
 
     }
 
@@ -84,6 +90,7 @@ class CustomerListUploadsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -103,9 +110,11 @@ class CustomerListUploadsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    CustomerListUploadResponse.class )
+                    CustomerListUpload.class )
 
     }
 

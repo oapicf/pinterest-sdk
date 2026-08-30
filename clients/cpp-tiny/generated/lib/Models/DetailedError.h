@@ -52,21 +52,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCode(int  code);
+	void setCode(int code);
 	/*! \brief Get 
 	 */
 	Object getDetails();
 
 	/*! \brief Set 
 	 */
-	void setDetails(Object  details);
+	void setDetails(Object details);
 	/*! \brief Get 
 	 */
 	std::string getMessage();
 
 	/*! \brief Set 
 	 */
-	void setMessage(std::string  message);
+	void setMessage(std::string message);
 
 
     private:

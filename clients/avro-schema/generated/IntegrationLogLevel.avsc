@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Log level type for integration applications.",
+  "name": "IntegrationLogLevel",
+  "symbols": [
+    "INFO",
+    "WARN",
+    "ERROR"
+  ]
+}

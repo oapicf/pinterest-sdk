@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -27,7 +27,7 @@ type CatalogsItemsDeleteDiscontinuedBatchRequest struct {
 	Items []ItemDeleteDiscontinuedBatchRecord `json:"items"`
 	// We recommend using the CatalogsLocale values.
 	Language string `json:"language"`
-	Operation BatchOperation `json:"operation"`
+	Operation string `json:"operation"`
 }
 
 type _CatalogsItemsDeleteDiscontinuedBatchRequest CatalogsItemsDeleteDiscontinuedBatchRequest
@@ -36,7 +36,7 @@ type _CatalogsItemsDeleteDiscontinuedBatchRequest CatalogsItemsDeleteDiscontinue
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsItemsDeleteDiscontinuedBatchRequest(country Country, items []ItemDeleteDiscontinuedBatchRecord, language string, operation BatchOperation) *CatalogsItemsDeleteDiscontinuedBatchRequest {
+func NewCatalogsItemsDeleteDiscontinuedBatchRequest(country Country, items []ItemDeleteDiscontinuedBatchRecord, language string, operation string) *CatalogsItemsDeleteDiscontinuedBatchRequest {
 	this := CatalogsItemsDeleteDiscontinuedBatchRequest{}
 	this.Country = country
 	this.Items = items
@@ -126,9 +126,9 @@ func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetLanguage(v string) {
 }
 
 // GetOperation returns the Operation field value
-func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetOperation() BatchOperation {
+func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetOperation() string {
 	if o == nil {
-		var ret BatchOperation
+		var ret string
 		return ret
 	}
 
@@ -137,7 +137,7 @@ func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetOperation() BatchOperat
 
 // GetOperationOk returns a tuple with the Operation field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetOperationOk() (*BatchOperation, bool) {
+func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetOperationOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -145,7 +145,7 @@ func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetOperationOk() (*BatchOp
 }
 
 // SetOperation sets field value
-func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetOperation(v BatchOperation) {
+func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetOperation(v string) {
 	o.Operation = v
 }
 

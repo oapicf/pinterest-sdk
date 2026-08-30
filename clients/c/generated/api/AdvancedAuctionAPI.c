@@ -11,7 +11,7 @@
 
 // Get item bid options (POST)
 //
-// Get the bid options for a batch of retail catalog items.  The catalog must be owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: `Owner`, `Admin`.  This endpoint is not available to all users.
+// Get the bid options for a batch of retail catalog items.  The catalog must be owned by the \"operation user_account\". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: `Owner`, `Admin`.  This endpoint is not available to all users.
 //
 advanced_auction_items_t*
 AdvancedAuctionAPI_advancedAuctionItemsGetPost(apiClient_t *apiClient, advanced_auction_items_get_request_t *advanced_auction_items_get_request, char *ad_account_id)
@@ -70,27 +70,35 @@ AdvancedAuctionAPI_advancedAuctionItemsGetPost(apiClient_t *apiClient, advanced_
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Response containing the bid option values for the requested retail catalog items. Items that don&#39;t exist or do not have bid options set won&#39;t be present in the response.");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid request parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Not authenticated to get item bid options");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Not authorized to get item bid options");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 500) {
-    //    printf("%s\n","Internal error");
+    //    printf("%s\n","The server encountered an unexpected condition that prevented it from fulfilling the request.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     advanced_auction_items_t *elementToReturn = NULL;
@@ -141,7 +149,7 @@ end:
 
 // Operate on item level bid options
 //
-// This endpoint supports multiple operations on a set of one or more bid options (bid price and bid adjustments for targeting categories) for retail catalog items. These advanced auction settings are applied in campaigns using objective_type `CATALOG_SALES` and ad groups using bid_strategy_type `MAX_BID`.  The catalog must be owned by the \"operation user_account\". <a href=\"/docs/api-features/modify-items-in-batch/\" target=\"_blank\">See detailed documentation here.</a> By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: `Owner`, `Admin`.  This endpoint is not available to all users.
+// This endpoint supports multiple operations on a set of one or more bid options (bid price and bid adjustments for targeting categories) for retail catalog items. These advanced auction settings are applied in campaigns using objective_type `CATALOG_SALES` and ad groups using bid_strategy_type `MAX_BID`.  The catalog must be owned by the \"operation user_account\". [See detailed documentation here.](/docs/api-features/modify-items-in-batch/) By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: `Owner`, `Admin`.  This endpoint is not available to all users.
 //
 advanced_auction_processed_items_t*
 AdvancedAuctionAPI_advancedAuctionItemsSubmitPost(apiClient_t *apiClient, advanced_auction_items_submit_request_t *advanced_auction_items_submit_request, char *ad_account_id)
@@ -200,31 +208,39 @@ AdvancedAuctionAPI_advancedAuctionItemsSubmitPost(apiClient_t *apiClient, advanc
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Response containing the results of the item bid options operations");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 206) {
-    //    printf("%s\n","Response containing the results of the item bid options operations (where some/all operation results have errors)");
+    //    printf("%s\n","Successful");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid request parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Not authenticated to post item bid options");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Not authorized to post item bid options");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 500) {
-    //    printf("%s\n","Internal error");
+    //    printf("%s\n","The server encountered an unexpected condition that prevented it from fulfilling the request.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     advanced_auction_processed_items_t *elementToReturn = NULL;

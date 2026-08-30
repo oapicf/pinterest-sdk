@@ -1,8 +1,10 @@
 package org.openapitools.api;
 
-import org.openapitools.model.ConversionAccessTokenResponse;
-import org.openapitools.model.Error;
-import org.openapitools.model.OauthAccessTokenResponse;
+import org.openapitools.model.ConversionAccessToken;
+import org.openapitools.model.OauthAccessToken;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.TokenGrantType;
+import org.openapitools.model.TokenTypeHint;
 
 import java.util.List;
 import java.util.Map;
@@ -38,14 +40,19 @@ public interface OauthApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Generate OAuth access token for conversion API", tags={ "oauth" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = ConversionAccessTokenResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public ConversionAccessTokenResponse oauthConversionToken();
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionAccessToken.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public ConversionAccessToken oauthConversionToken();
 
     /**
      * Generate OAuth access token
      *
-     * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for &lt;a href&#x3D;&#39;/docs/getting-started/set-up-authentication-and-authorization/&#39; target&#x3D;&#39;blank&#39;&gt;requesting and refreshing tokens&lt;/a&gt;.  &lt;strong&gt;Note:&lt;/strong&gt; If your app was created &lt;strong&gt;before September 25, 2025&lt;/strong&gt;, make sure to set the &lt;code&gt;continuous_refresh&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use &lt;a href&#x3D;&#39;/docs/developer-tools/token-debugger/&#39; target&#x3D;&#39;blank&#39;&gt;Token Debugger&lt;/a&gt; to validate and inspect your access token.
+     * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the &#x60;continuous_refresh&#x60; parameter to &#x60;true&#x60; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
      *
      */
     @POST
@@ -54,9 +61,15 @@ public interface OauthApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Generate OAuth access token", tags={ "oauth" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = OauthAccessTokenResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public OauthAccessTokenResponse oauthToken(@Multipart(value = "grant_type")  String grantType);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = OauthAccessToken.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = OauthAccessToken.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public OauthAccessToken oauthToken(@Multipart(value = "grant_type")  TokenGrantType grantType, @Multipart(value = "code", required = false)  String code, @Multipart(value = "continuous_refresh", required = false)  String continuousRefresh, @Multipart(value = "redirect_uri", required = false)  String redirectUri, @Multipart(value = "refresh_token", required = false)  String refreshToken, @Multipart(value = "scope", required = false)  String scope);
 
     /**
      * Revoke a token
@@ -70,9 +83,9 @@ public interface OauthApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Revoke a token", tags={ "oauth" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful token revocation. No content is returned."),
-        @ApiResponse(code = 401, message = "Client authentication error.", response = Error.class),
-        @ApiResponse(code = 403, message = "Client is not allowed to revoke token.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public void tokenRevoke(@Multipart(value = "token")  String token, @Multipart(value = "token_type_hint", required = false)  String tokenTypeHint);
+        @ApiResponse(code = 200, message = "The request has succeeded."),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public void tokenRevoke(@Multipart(value = "token")  String token, @Multipart(value = "token_type_hint", required = false)  TokenTypeHint tokenTypeHint);
 }

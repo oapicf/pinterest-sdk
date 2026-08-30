@@ -18,7 +18,7 @@ import java.util.List;
  * KeywordsRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class KeywordsRequest   {
   @JsonProperty("keywords")
   
@@ -62,7 +62,7 @@ public class KeywordsRequest   {
    * Keyword parent entity ID (advertiser, campaign, ad group).
    * @return parentId
    */
-  @ApiModelProperty(example = "383791336903426391", required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
+  @ApiModelProperty(required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
   public String getParentId() {
     return parentId;
   }
@@ -106,10 +106,7 @@ public class KeywordsRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

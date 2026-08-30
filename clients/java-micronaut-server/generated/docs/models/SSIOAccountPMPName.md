@@ -2,6 +2,8 @@
 
 # SSIOAccountPMPName
 
+Pinterest marketing partner name.
+
 The class is defined in **[SSIOAccountPMPName.java](../../src/main/java/org/openapitools/model/SSIOAccountPMPName.java)**
 
 ## Properties

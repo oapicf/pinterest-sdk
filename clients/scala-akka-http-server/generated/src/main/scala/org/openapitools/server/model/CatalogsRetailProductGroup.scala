@@ -4,7 +4,7 @@ package org.openapitools.server.model
 /**
  * = retail_product_group =
  *
- * @param catalogId Catalog id pertaining to the retail product group. for example: ''null''
+ * @param catalogId Catalog ID pertaining to the product group. for example: ''2680059592705''
  * @param catalogType  for example: ''null''
  * @param country  for example: ''null''
  * @param createdAt Unix timestamp in seconds of when catalog product group was created. for example: ''1621350033000''

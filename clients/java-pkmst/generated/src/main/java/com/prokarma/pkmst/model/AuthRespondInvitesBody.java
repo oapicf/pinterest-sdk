@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.AuthRespondInvitesBodyInvitesInner;
+import com.prokarma.pkmst.model.AuthRespondInvitesBodyItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -19,18 +19,18 @@ import java.util.List;
  */
 @ApiModel(description = "An object with a list of all the invites the user would like to respond to and the action to take.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AuthRespondInvitesBody   {
   @JsonProperty("invites")
   
-  private List<AuthRespondInvitesBodyInvitesInner> invites = new ArrayList<>();
+  private List<AuthRespondInvitesBodyItem> invites = new ArrayList<>();
 
-  public AuthRespondInvitesBody invites(List<AuthRespondInvitesBodyInvitesInner> invites) {
+  public AuthRespondInvitesBody invites(List<AuthRespondInvitesBodyItem> invites) {
     this.invites = invites;
     return this;
   }
 
-  public AuthRespondInvitesBody addInvitesItem(AuthRespondInvitesBodyInvitesInner invitesItem) {
+  public AuthRespondInvitesBody addInvitesItem(AuthRespondInvitesBodyItem invitesItem) {
     if (this.invites == null) {
       this.invites = new ArrayList<>();
     }
@@ -43,11 +43,11 @@ public class AuthRespondInvitesBody   {
    * @return invites
    */
   @ApiModelProperty(required = true, value = "")
-  public List<AuthRespondInvitesBodyInvitesInner> getInvites() {
+  public List<AuthRespondInvitesBodyItem> getInvites() {
     return invites;
   }
 
-  public void setInvites(List<AuthRespondInvitesBodyInvitesInner> invites) {
+  public void setInvites(List<AuthRespondInvitesBodyItem> invites) {
     this.invites = invites;
   }
 
@@ -84,10 +84,7 @@ public class AuthRespondInvitesBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

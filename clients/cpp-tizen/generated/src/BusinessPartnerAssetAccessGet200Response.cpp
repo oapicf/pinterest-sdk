@@ -66,12 +66,12 @@ Business_partner_asset_access_get_200_response::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<GetPartnerAssetsResponse> new_list;
-			GetPartnerAssetsResponse inst;
+			list<BaseBusinessAssets> new_list;
+			BaseBusinessAssets inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("GetPartnerAssetsResponse")) {
-					jsonToValue(&inst, temp_json, "GetPartnerAssetsResponse", "");
+				if (isprimitive("BaseBusinessAssets")) {
+					jsonToValue(&inst, temp_json, "BaseBusinessAssets", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ Business_partner_asset_access_get_200_response::toJson()
 	}
 	const gchar *bookmarkKey = "bookmark";
 	json_object_set_member(pJsonObject, bookmarkKey, node);
-	if (isprimitive("GetPartnerAssetsResponse")) {
-		list<GetPartnerAssetsResponse> new_list = static_cast<list <GetPartnerAssetsResponse> > (getItems());
-		node = converttoJson(&new_list, "GetPartnerAssetsResponse", "array");
+	if (isprimitive("BaseBusinessAssets")) {
+		list<BaseBusinessAssets> new_list = static_cast<list <BaseBusinessAssets> > (getItems());
+		node = converttoJson(&new_list, "BaseBusinessAssets", "array");
 	} else {
 		node = json_node_alloc();
-		list<GetPartnerAssetsResponse> new_list = static_cast<list <GetPartnerAssetsResponse> > (getItems());
+		list<BaseBusinessAssets> new_list = static_cast<list <BaseBusinessAssets> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<GetPartnerAssetsResponse>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<BaseBusinessAssets>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			GetPartnerAssetsResponse obj = *it;
+			BaseBusinessAssets obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ Business_partner_asset_access_get_200_response::setBookmark(std::string  bookmar
 	this->bookmark = bookmark;
 }
 
-std::list<GetPartnerAssetsResponse>
+std::list<BaseBusinessAssets>
 Business_partner_asset_access_get_200_response::getItems()
 {
 	return items;
 }
 
 void
-Business_partner_asset_access_get_200_response::setItems(std::list <GetPartnerAssetsResponse> items)
+Business_partner_asset_access_get_200_response::setItems(std::list <BaseBusinessAssets> items)
 {
 	this->items = items;
 }

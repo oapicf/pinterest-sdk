@@ -17,6 +17,9 @@ export interface CatalogsCreativeAssetsProductGroupUpdateRequest {
     catalog_type?: CatalogsCreativeAssetsProductGroupUpdateRequest.CatalogTypeEnum;
     description?: string | null;
     filters?: CatalogsCreativeAssetsProductGroupFilters;
+    /**
+     * Name of catalog product group
+     */
     name?: string;
 }
 export namespace CatalogsCreativeAssetsProductGroupUpdateRequest {

@@ -13,21 +13,21 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- * JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.example.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;Learn more about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience\&quot; target&#x3D;\&quot;_blank\&quot;&gt;engagement audiences&lt;/a&gt;.
+ * JSON object defining targeted audience users. Example rule formats per audience type:  CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}  ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; } (Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10. The targeted audience should be this % size across Pinterest.)  VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}} (Retention days should be 1-540. Retention applies to specific customers.)  ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.example.com\&quot;], \&quot;engager_type\&quot;: 1} Learn more about [engagement audiences](/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience).
  **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-@ApiModel(description = "JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.example.com\"], \"engager_type\": 1}<br>Learn more about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience\" target=\"_blank\">engagement audiences</a>.")
+@ApiModel(description = "JSON object defining targeted audience users. Example rule formats per audience type:  CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}  ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" } (Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10. The targeted audience should be this % size across Pinterest.)  VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}} (Retention days should be 1-540. Retention applies to specific customers.)  ENGAGEMENT: {\"engagement_domain\": [\"www.example.com\"], \"engager_type\": 1} Learn more about [engagement audiences](/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience).")
 public class AudienceRule   {
   
   private String adAccountId;
 
-  private List<@Pattern(regexp = "^\\d+$")String> adId = new ArrayList<>();
+  private List<String> adId = new ArrayList<>();
 
-  private List<@Pattern(regexp = "^\\d+$")String> campaignId = new ArrayList<>();
+  private List<String> campaignId = new ArrayList<>();
 
   private String country;
 
@@ -51,13 +51,13 @@ public class AudienceRule   {
 
   private Integer percentage;
 
-  private List<@Pattern(regexp = "^\\d+$")String> pinId = new ArrayList<>();
+  private List<String> pinId = new ArrayList<>();
 
   private Boolean prefill;
 
   private Integer retentionDays;
 
-  private List<@Pattern(regexp = "^\\d+$")String> seedId = new ArrayList<>();
+  private List<String> seedId = new ArrayList<>();
 
   private List<String> url = new ArrayList<>();
 
@@ -85,7 +85,7 @@ public class AudienceRule   {
   /**
    * Ad ID for engagement audience filter.
    **/
-  public AudienceRule adId(List<@Pattern(regexp = "^\\d+$")String> adId) {
+  public AudienceRule adId(List<String> adId) {
     this.adId = adId;
     return this;
   }
@@ -93,10 +93,10 @@ public class AudienceRule   {
   
   @ApiModelProperty(example = "[\"687201361754\"]", value = "Ad ID for engagement audience filter.")
   @JsonProperty("ad_id")
-  public List<@Pattern(regexp = "^\\d+$")String> getAdId() {
+  public List<String> getAdId() {
     return adId;
   }
-  public void setAdId(List<@Pattern(regexp = "^\\d+$")String> adId) {
+  public void setAdId(List<String> adId) {
     this.adId = adId;
   }
 
@@ -112,7 +112,7 @@ public class AudienceRule   {
   /**
    * Campaign ID for engagement audience filter.
    **/
-  public AudienceRule campaignId(List<@Pattern(regexp = "^\\d+$")String> campaignId) {
+  public AudienceRule campaignId(List<String> campaignId) {
     this.campaignId = campaignId;
     return this;
   }
@@ -120,10 +120,10 @@ public class AudienceRule   {
   
   @ApiModelProperty(example = "[\"626744528398\"]", value = "Campaign ID for engagement audience filter.")
   @JsonProperty("campaign_id")
-  public List<@Pattern(regexp = "^\\d+$")String> getCampaignId() {
+  public List<String> getCampaignId() {
     return campaignId;
   }
-  public void setCampaignId(List<@Pattern(regexp = "^\\d+$")String> campaignId) {
+  public void setCampaignId(List<String> campaignId) {
     this.campaignId = campaignId;
   }
 
@@ -202,7 +202,7 @@ public class AudienceRule   {
 
 
   /**
-   * Engagement type enum. Optional for ENGAGEMENT &#x60;audience_type&#x60;. Supported values are &#x60;click&#x60;, &#x60;save&#x60;, &#x60;closeup&#x60;, &#x60;comment&#x60; and &#x60;like&#x60;. All engagements are included if this field is not set. 
+   * Engagement type enum. Optional for ENGAGEMENT &#x60;audience_type&#x60;. Supported values are &#x60;click&#x60;, &#x60;save&#x60;, &#x60;closeup&#x60;, &#x60;comment&#x60; and &#x60;like&#x60;. All engagements are included if this field is not set.
    **/
   public AudienceRule engagementType(String engagementType) {
     this.engagementType = engagementType;
@@ -210,7 +210,7 @@ public class AudienceRule   {
   }
 
   
-  @ApiModelProperty(example = "click", value = "Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set. ")
+  @ApiModelProperty(example = "click", value = "Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set.")
   @JsonProperty("engagement_type")
   public String getEngagementType() {
     return engagementType;
@@ -363,7 +363,7 @@ public class AudienceRule   {
   /**
    * IDs of engaged organic pins. Optional for ENGAGEMENT &#x60;audience_type&#x60;. For example, \&quot;pin_id:\&quot;: [\&quot;34567\&quot;]
    **/
-  public AudienceRule pinId(List<@Pattern(regexp = "^\\d+$")String> pinId) {
+  public AudienceRule pinId(List<String> pinId) {
     this.pinId = pinId;
     return this;
   }
@@ -371,10 +371,10 @@ public class AudienceRule   {
   
   @ApiModelProperty(example = "[\"34567\"]", value = "IDs of engaged organic pins. Optional for ENGAGEMENT `audience_type`. For example, \"pin_id:\": [\"34567\"]")
   @JsonProperty("pin_id")
-  public List<@Pattern(regexp = "^\\d+$")String> getPinId() {
+  public List<String> getPinId() {
     return pinId;
   }
-  public void setPinId(List<@Pattern(regexp = "^\\d+$")String> pinId) {
+  public void setPinId(List<String> pinId) {
     this.pinId = pinId;
   }
 
@@ -426,20 +426,20 @@ public class AudienceRule   {
 
 
   /**
-   * Audience ID(s). For ACTALIKE &#x60;audience_type&#x60;. 
+   * Audience ID(s). For ACTALIKE &#x60;audience_type&#x60;.
    **/
-  public AudienceRule seedId(List<@Pattern(regexp = "^\\d+$")String> seedId) {
+  public AudienceRule seedId(List<String> seedId) {
     this.seedId = seedId;
     return this;
   }
 
   
-  @ApiModelProperty(example = "[\"2542620639259\",\"2542620639261\"]", value = "Audience ID(s). For ACTALIKE `audience_type`. ")
+  @ApiModelProperty(example = "[\"2542620639259\",\"2542620639261\"]", value = "Audience ID(s). For ACTALIKE `audience_type`.")
   @JsonProperty("seed_id")
-  public List<@Pattern(regexp = "^\\d+$")String> getSeedId() {
+  public List<String> getSeedId() {
     return seedId;
   }
-  public void setSeedId(List<@Pattern(regexp = "^\\d+$")String> seedId) {
+  public void setSeedId(List<String> seedId) {
     this.seedId = seedId;
   }
 
@@ -453,7 +453,7 @@ public class AudienceRule   {
 
 
   /**
-   * Optional for ENGAGEMENT or VISITOR &#x60;audience_type&#x60;. For ENGAGEMENT, it is the engaged pin&#39;s URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ &#x3D;, !&#x3D;, contains, not_contains].&lt;br&gt;Example 1:  \&quot;url\&quot;: \&quot;http://www.myonlinestore123.com/view_item/shoe\&quot;&lt;br&gt;Example 2: \&quot;url\&quot;: {\&quot;contains\&quot;: \&quot;/view_item/shoe\&quot;}
+   * Optional for ENGAGEMENT or VISITOR &#x60;audience_type&#x60;. For ENGAGEMENT, it is the engaged pin&#39;s URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ &#x3D;, !&#x3D;, contains, not_contains]. Example 1:  \&quot;url\&quot;: \&quot;http://www.myonlinestore123.com/view_item/shoe\&quot; Example 2: \&quot;url\&quot;: {\&quot;contains\&quot;: \&quot;/view_item/shoe\&quot;}
    **/
   public AudienceRule url(List<String> url) {
     this.url = url;
@@ -461,7 +461,7 @@ public class AudienceRule   {
   }
 
   
-  @ApiModelProperty(value = "Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains].<br>Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\"<br>Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}")
+  @ApiModelProperty(value = "Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains]. Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\" Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}")
   @JsonProperty("url")
   public List<String> getUrl() {
     return url;
@@ -569,10 +569,7 @@ public class AudienceRule   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

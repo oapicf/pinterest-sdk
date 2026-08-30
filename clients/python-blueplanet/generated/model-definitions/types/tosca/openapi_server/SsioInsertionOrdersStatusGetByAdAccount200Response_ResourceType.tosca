@@ -24,7 +24,7 @@ resourceTypes {
         items {
           type = array
           items.type = SSIOInsertionOrderStatus
-          description = "Insertion orders status by ad acount id"
+          description = ""
           optional = true
         }
     }

@@ -23,6 +23,7 @@ class UserBusinessRoleBinding {
     this.user,
   });
 
+  /// Ad accounts and profiles the business member/partner has access to.
   BusinessMemberAssetsSummary? assetsSummary;
 
   /// The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
@@ -46,7 +47,7 @@ class UserBusinessRoleBinding {
   ///
   String? id;
 
-  /// This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
+  /// This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -136,10 +137,6 @@ class UserBusinessRoleBinding {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UserBusinessRoleBinding[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UserBusinessRoleBinding[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

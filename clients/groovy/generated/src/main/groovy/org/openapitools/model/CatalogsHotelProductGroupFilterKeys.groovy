@@ -7,7 +7,6 @@ import org.openapitools.model.BrandFilter;
 import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleCountriesCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
-import org.openapitools.model.CatalogsProductGroupPricingCurrencyCriteria;
 import org.openapitools.model.CountryFilter;
 import org.openapitools.model.CustomLabel0Filter;
 import org.openapitools.model.CustomLabel1Filter;
@@ -16,12 +15,13 @@ import org.openapitools.model.CustomLabel3Filter;
 import org.openapitools.model.CustomLabel4Filter;
 import org.openapitools.model.HotelIdFilter;
 import org.openapitools.model.PriceFilter;
+import org.openapitools.model.PriceFilterPrice;
 import org.openapitools.model.TitleKeywordsFilter;
 
 @Canonical
 class CatalogsHotelProductGroupFilterKeys {
     
-    CatalogsProductGroupPricingCurrencyCriteria PRICE
+    PriceFilterPrice PRICE
     
     CatalogsProductGroupMultipleStringCriteria HOTEL_ID
     

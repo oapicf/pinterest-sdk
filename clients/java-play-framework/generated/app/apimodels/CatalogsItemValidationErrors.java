@@ -10,7 +10,7 @@ import javax.validation.Valid;
 /**
  * CatalogsItemValidationErrors
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsItemValidationErrors   {
   @JsonProperty("ADULT_INVALID")
@@ -134,7 +134,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get ADULT_INVALID
+   * Item has an invalid adult value.
    * @return ADULT_INVALID
   **/
   public CatalogsItemValidationDetails getADULTINVALID() {
@@ -151,7 +151,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get ADWORDS_FORMAT_INVALID
+   * Adword link contains too many characters.
    * @return ADWORDS_FORMAT_INVALID
   **/
   public CatalogsItemValidationDetails getADWORDSFORMATINVALID() {
@@ -168,7 +168,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get AVAILABILITY_INVALID
+   * Item is missing availability value in its product metadata, this item will not be published.
    * @return AVAILABILITY_INVALID
   **/
   public CatalogsItemValidationDetails getAVAILABILITYINVALID() {
@@ -185,7 +185,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get BLOCKLISTED_IMAGE_SIGNATURE
+   * Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.
    * @return BLOCKLISTED_IMAGE_SIGNATURE
   **/
   public CatalogsItemValidationDetails getBLOCKLISTEDIMAGESIGNATURE() {
@@ -202,7 +202,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get DESCRIPTION_MISSING
+   * Item is missing description in its product metadata, this item will not be published.
    * @return DESCRIPTION_MISSING
   **/
   public CatalogsItemValidationDetails getDESCRIPTIONMISSING() {
@@ -219,7 +219,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get DUPLICATE_PRODUCTS
+   * This product is duplicated. The duplicate entry will not be published.
    * @return DUPLICATE_PRODUCTS
   **/
   public CatalogsItemValidationDetails getDUPLICATEPRODUCTS() {
@@ -236,7 +236,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get IMAGE_LINK_INVALID
+   * Image link is invalid.
    * @return IMAGE_LINK_INVALID
   **/
   public CatalogsItemValidationDetails getIMAGELINKINVALID() {
@@ -253,7 +253,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get IMAGE_LINK_LENGTH_TOO_LONG
+   * Item has image_link URL that contains too many characters, so the item will not be published.
    * @return IMAGE_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getIMAGELINKLENGTHTOOLONG() {
@@ -270,7 +270,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get IMAGE_LINK_MISSING
+   * Item is missing an image link URL in its product metadata, this item will not be published.
    * @return IMAGE_LINK_MISSING
   **/
   public CatalogsItemValidationDetails getIMAGELINKMISSING() {
@@ -287,7 +287,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get INVALID_DOMAIN
+   * Product link value doesn't match the verified domain associated with this account.
    * @return INVALID_DOMAIN
   **/
   public CatalogsItemValidationDetails getINVALIDDOMAIN() {
@@ -304,7 +304,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
+   * Main image can't be found.
    * @return ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
   **/
   public CatalogsItemValidationDetails getITEMMAINIMAGEDOWNLOADFAILURE() {
@@ -321,7 +321,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get ITEMID_MISSING
+   * Item is missing item id in its product metadata, this item will not be published.
    * @return ITEMID_MISSING
   **/
   public CatalogsItemValidationDetails getITEMIDMISSING() {
@@ -338,7 +338,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get LINK_FORMAT_INVALID
+   * Link is invalid.
    * @return LINK_FORMAT_INVALID
   **/
   public CatalogsItemValidationDetails getLINKFORMATINVALID() {
@@ -355,7 +355,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get LINK_LENGTH_TOO_LONG
+   * Product link contains too many characters, this item will not be published.
    * @return LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getLINKLENGTHTOOLONG() {
@@ -372,7 +372,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get LIST_PRICE_INVALID
+   * Item has a list price formatting error, this item will not be published.
    * @return LIST_PRICE_INVALID
   **/
   public CatalogsItemValidationDetails getLISTPRICEINVALID() {
@@ -389,7 +389,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED
+   * Item exceed the maximum number of items per item group, this item will not be published.
    * @return MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED
   **/
   public CatalogsItemValidationDetails getMAXITEMSPERITEMGROUPEXCEEDED() {
@@ -406,7 +406,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get PARSE_LINE_ERROR
+   * Item contains formating errors.
    * @return PARSE_LINE_ERROR
   **/
   public CatalogsItemValidationDetails getPARSELINEERROR() {
@@ -423,7 +423,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get PINJOIN_CONTENT_UNSAFE
+   * Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.
    * @return PINJOIN_CONTENT_UNSAFE
   **/
   public CatalogsItemValidationDetails getPINJOINCONTENTUNSAFE() {
@@ -440,7 +440,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get PRICE_CANNOT_BE_DETERMINED
+   * Item price cannot be determined because the price, list price, and sale price are all different.
    * @return PRICE_CANNOT_BE_DETERMINED
   **/
   public CatalogsItemValidationDetails getPRICECANNOTBEDETERMINED() {
@@ -457,7 +457,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get PRICE_MISSING
+   * Product is missing a price, this item will not be published.
    * @return PRICE_MISSING
   **/
   public CatalogsItemValidationDetails getPRICEMISSING() {
@@ -474,7 +474,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get PRODUCT_LINK_MISSING
+   * Item is missing a link URL in its product metadata, this item will not be published.
    * @return PRODUCT_LINK_MISSING
   **/
   public CatalogsItemValidationDetails getPRODUCTLINKMISSING() {
@@ -491,7 +491,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get PRODUCT_PRICE_INVALID
+   * Item has a price formatting error in its product metadata, this item will not be published.
    * @return PRODUCT_PRICE_INVALID
   **/
   public CatalogsItemValidationDetails getPRODUCTPRICEINVALID() {
@@ -508,7 +508,7 @@ public class CatalogsItemValidationErrors   {
   }
 
    /**
-   * Get TITLE_MISSING
+   * Item is missing title in its product metadata, this item will not be published.
    * @return TITLE_MISSING
   **/
   public CatalogsItemValidationDetails getTITLEMISSING() {
@@ -597,10 +597,7 @@ public class CatalogsItemValidationErrors   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

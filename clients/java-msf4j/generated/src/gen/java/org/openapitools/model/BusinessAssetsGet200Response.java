@@ -10,18 +10,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.GetBusinessAssetsResponse;
+import org.openapitools.model.BusinessAssets;
 
 /**
  * BusinessAssetsGet200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessAssetsGet200Response   {
   @JsonProperty("bookmark")
   private String bookmark;
 
   @JsonProperty("items")
-  private List<@Valid GetBusinessAssetsResponse> items = new ArrayList<>();
+  private List<@Valid BusinessAssets> items = new ArrayList<>();
 
   public BusinessAssetsGet200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -41,26 +41,26 @@ public class BusinessAssetsGet200Response   {
     this.bookmark = bookmark;
   }
 
-  public BusinessAssetsGet200Response items(List<@Valid GetBusinessAssetsResponse> items) {
+  public BusinessAssetsGet200Response items(List<@Valid BusinessAssets> items) {
     this.items = items;
     return this;
   }
 
-  public BusinessAssetsGet200Response addItemsItem(GetBusinessAssetsResponse itemsItem) {
+  public BusinessAssetsGet200Response addItemsItem(BusinessAssets itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
 
    /**
-   * List of assets the requesting business has access to.
+   * Get items
    * @return items
   **/
-  @ApiModelProperty(required = true, value = "List of assets the requesting business has access to.")
-  public List<@Valid GetBusinessAssetsResponse> getItems() {
+  @ApiModelProperty(required = true, value = "")
+  public List<@Valid BusinessAssets> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid GetBusinessAssetsResponse> items) {
+  public void setItems(List<@Valid BusinessAssets> items) {
     this.items = items;
   }
 
@@ -99,10 +99,7 @@ public class BusinessAssetsGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

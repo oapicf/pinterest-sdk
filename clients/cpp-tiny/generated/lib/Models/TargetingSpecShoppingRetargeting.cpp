@@ -124,7 +124,7 @@ TargetingSpecShoppingRetargeting::getExclusionWindow()
 }
 
 void
-TargetingSpecShoppingRetargeting::setExclusionWindow(int  exclusion_window)
+TargetingSpecShoppingRetargeting::setExclusionWindow(int exclusion_window)
 {
 	this->exclusion_window = exclusion_window;
 }
@@ -136,7 +136,7 @@ TargetingSpecShoppingRetargeting::getLookbackWindow()
 }
 
 void
-TargetingSpecShoppingRetargeting::setLookbackWindow(int  lookback_window)
+TargetingSpecShoppingRetargeting::setLookbackWindow(int lookback_window)
 {
 	this->lookback_window = lookback_window;
 }
@@ -148,7 +148,7 @@ TargetingSpecShoppingRetargeting::getTagTypes()
 }
 
 void
-TargetingSpecShoppingRetargeting::setTagTypes(std::list <int> tag_types)
+TargetingSpecShoppingRetargeting::setTagTypes(std::list<int> tag_types)
 {
 	this->tag_types = tag_types;
 }

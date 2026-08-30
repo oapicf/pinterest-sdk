@@ -17,7 +17,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
 * Advertiser's ISO two character country code.
-* Values: US,GB,CA,IE,AU,NZ,FR,SE,IL,DE,AT,IT,ES,NL,BE,PT,CH,HK,JP,KR,SG,NO,DK,FI,CY,LU,MT,PL,RO,HU,CZ,GR,SK,BR,MX,AR,CL,CO
+* Values: US,GB,CA,IE,AU,NZ,FR,SE,IL,DE,AT,IT,ES,NL,BE,PT,CH,HK,JP,KR,SG,`false`,DK,FI,CY,LU,MT,PL,RO,HU,CZ,GR,SK,BR,MX,AR,CL,CO
 */
 enum class TargetingAdvertiserCountry(@get:JsonValue val value: kotlin.String) {
 
@@ -42,7 +42,7 @@ enum class TargetingAdvertiserCountry(@get:JsonValue val value: kotlin.String) {
     JP("JP"),
     KR("KR"),
     SG("SG"),
-    NO("NO"),
+    `false`("false"),
     DK("DK"),
     FI("FI"),
     CY("CY"),

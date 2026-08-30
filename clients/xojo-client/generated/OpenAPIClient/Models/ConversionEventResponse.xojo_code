@@ -30,6 +30,14 @@ Protected Class ConversionEventResponse
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		#tag Note
+			For advertiser-defined events, the reporting event label shown in optimization UIs.
+		#tag EndNote
+		reporting_conversion_event As Xoson.O.OptionalString
+	#tag EndProperty
+
+
 
 
 
@@ -96,6 +104,14 @@ Protected Class ConversionEventResponse
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="reporting_conversion_event"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

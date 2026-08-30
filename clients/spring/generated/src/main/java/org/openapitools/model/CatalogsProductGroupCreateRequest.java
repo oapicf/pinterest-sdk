@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -9,34 +10,35 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsProductGroupFiltersRequest;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Request object for creating a product group.
  */
 
 @Schema(name = "CatalogsProductGroupCreateRequest", description = "Request object for creating a product group.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsInner {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class CatalogsProductGroupCreateRequest implements BulkUpsertRequestCreateCatalogProductGroupsItems, CatalogsProductGroupsCreateManyRequestItems, CatalogsProductGroupsCreateRequestSchema {
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private String feedId;
 
   private CatalogsProductGroupFiltersRequest filters;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   @Deprecated
-  private Boolean isFeatured = false;
+  private @Nullable Boolean isFeatured;
 
   private String name;
 
@@ -89,6 +91,7 @@ public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsI
     return feedId;
   }
 
+  @JsonProperty("feed_id")
   public void setFeedId(String feedId) {
     this.feedId = feedId;
   }
@@ -109,11 +112,12 @@ public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsI
     return filters;
   }
 
+  @JsonProperty("filters")
   public void setFilters(CatalogsProductGroupFiltersRequest filters) {
     this.filters = filters;
   }
 
-  public CatalogsProductGroupCreateRequest isFeatured(Boolean isFeatured) {
+  public CatalogsProductGroupCreateRequest isFeatured(@Nullable Boolean isFeatured) {
     this.isFeatured = isFeatured;
     return this;
   }
@@ -125,9 +129,9 @@ public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsI
    */
   
   @Schema(name = "is_featured", description = "boolean indicator of whether the product group is being featured or not", deprecated = true, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("is_featured")
   @Deprecated
-  public Boolean getIsFeatured() {
+  @JsonProperty("is_featured")
+  public @Nullable Boolean getIsFeatured() {
     return isFeatured;
   }
 
@@ -135,7 +139,8 @@ public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsI
    * @deprecated
    */
   @Deprecated
-  public void setIsFeatured(Boolean isFeatured) {
+  @JsonProperty("is_featured")
+  public void setIsFeatured(@Nullable Boolean isFeatured) {
     this.isFeatured = isFeatured;
   }
 
@@ -155,6 +160,7 @@ public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsI
     return name;
   }
 
+  @JsonProperty("name")
   public void setName(String name) {
     this.name = name;
   }
@@ -208,11 +214,8 @@ public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsI
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

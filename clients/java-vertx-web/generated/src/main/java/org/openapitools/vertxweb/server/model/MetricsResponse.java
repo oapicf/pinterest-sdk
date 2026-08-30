@@ -6,26 +6,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.vertxweb.server.model.MetricsResponseDataItems;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MetricsResponse   {
   
-  private List<Object> data = new ArrayList<>();
+  private List<MetricsResponseDataItems> data = new ArrayList<>();
 
   public MetricsResponse () {
 
   }
 
-  public MetricsResponse (List<Object> data) {
+  public MetricsResponse (List<MetricsResponseDataItems> data) {
     this.data = data;
   }
 
     
   @JsonProperty("data")
-  public List<Object> getData() {
+  public List<MetricsResponseDataItems> getData() {
     return data;
   }
-  public void setData(List<Object> data) {
+  public void setData(List<MetricsResponseDataItems> data) {
     this.data = data;
   }
 
@@ -62,9 +63,6 @@ public class MetricsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

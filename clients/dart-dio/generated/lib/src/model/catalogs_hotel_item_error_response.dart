@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:openapi/src/model/item_validation_event.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -17,11 +16,12 @@ part 'catalogs_hotel_item_error_response.g.dart';
 /// * [catalogType] 
 /// * [errors] - Array with the errors for the item id requested
 /// * [hotelId] - The catalog hotel id in the merchant namespace
+/// * [itemResponseKind] - Discriminator literal identifying this leaf inside an `ItemResponse` payload.
 @BuiltValue()
 abstract class CatalogsHotelItemErrorResponse implements Built<CatalogsHotelItemErrorResponse, CatalogsHotelItemErrorResponseBuilder> {
   @BuiltValueField(wireName: r'catalog_type')
-  CatalogsType get catalogType;
-  // enum catalogTypeEnum {  RETAIL,  HOTEL,  CREATIVE_ASSETS,  };
+  CatalogsHotelItemErrorResponseCatalogTypeEnum get catalogType;
+  // enum catalogTypeEnum {  HOTEL,  };
 
   /// Array with the errors for the item id requested
   @BuiltValueField(wireName: r'errors')
@@ -30,6 +30,11 @@ abstract class CatalogsHotelItemErrorResponse implements Built<CatalogsHotelItem
   /// The catalog hotel id in the merchant namespace
   @BuiltValueField(wireName: r'hotel_id')
   String? get hotelId;
+
+  /// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+  @BuiltValueField(wireName: r'item_response_kind')
+  CatalogsHotelItemErrorResponseItemResponseKindEnum get itemResponseKind;
+  // enum itemResponseKindEnum {  hotel_item_error,  };
 
   CatalogsHotelItemErrorResponse._();
 
@@ -57,7 +62,7 @@ class _$CatalogsHotelItemErrorResponseSerializer implements PrimitiveSerializer<
     yield r'catalog_type';
     yield serializers.serialize(
       object.catalogType,
-      specifiedType: const FullType(CatalogsType),
+      specifiedType: const FullType(CatalogsHotelItemErrorResponseCatalogTypeEnum),
     );
     yield r'errors';
     yield serializers.serialize(
@@ -71,6 +76,11 @@ class _$CatalogsHotelItemErrorResponseSerializer implements PrimitiveSerializer<
         specifiedType: const FullType(String),
       );
     }
+    yield r'item_response_kind';
+    yield serializers.serialize(
+      object.itemResponseKind,
+      specifiedType: const FullType(CatalogsHotelItemErrorResponseItemResponseKindEnum),
+    );
   }
 
   @override
@@ -97,8 +107,8 @@ class _$CatalogsHotelItemErrorResponseSerializer implements PrimitiveSerializer<
         case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsType),
-          ) as CatalogsType;
+            specifiedType: const FullType(CatalogsHotelItemErrorResponseCatalogTypeEnum),
+          ) as CatalogsHotelItemErrorResponseCatalogTypeEnum;
           result.catalogType = valueDes;
           break;
         case r'errors':
@@ -111,9 +121,17 @@ class _$CatalogsHotelItemErrorResponseSerializer implements PrimitiveSerializer<
         case r'hotel_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.hotelId = valueDes;
+          break;
+        case r'item_response_kind':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(CatalogsHotelItemErrorResponseItemResponseKindEnum),
+          ) as CatalogsHotelItemErrorResponseItemResponseKindEnum;
+          result.itemResponseKind = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -142,5 +160,32 @@ class _$CatalogsHotelItemErrorResponseSerializer implements PrimitiveSerializer<
     );
     return result.build();
   }
+}
+
+class CatalogsHotelItemErrorResponseCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'HOTEL')
+  static const CatalogsHotelItemErrorResponseCatalogTypeEnum HOTEL = _$catalogsHotelItemErrorResponseCatalogTypeEnum_HOTEL;
+
+  static Serializer<CatalogsHotelItemErrorResponseCatalogTypeEnum> get serializer => _$catalogsHotelItemErrorResponseCatalogTypeEnumSerializer;
+
+  const CatalogsHotelItemErrorResponseCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsHotelItemErrorResponseCatalogTypeEnum> get values => _$catalogsHotelItemErrorResponseCatalogTypeEnumValues;
+  static CatalogsHotelItemErrorResponseCatalogTypeEnum valueOf(String name) => _$catalogsHotelItemErrorResponseCatalogTypeEnumValueOf(name);
+}
+
+class CatalogsHotelItemErrorResponseItemResponseKindEnum extends EnumClass {
+
+  /// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+  @BuiltValueEnumConst(wireName: r'hotel_item_error')
+  static const CatalogsHotelItemErrorResponseItemResponseKindEnum hotelItemError = _$catalogsHotelItemErrorResponseItemResponseKindEnum_hotelItemError;
+
+  static Serializer<CatalogsHotelItemErrorResponseItemResponseKindEnum> get serializer => _$catalogsHotelItemErrorResponseItemResponseKindEnumSerializer;
+
+  const CatalogsHotelItemErrorResponseItemResponseKindEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsHotelItemErrorResponseItemResponseKindEnum> get values => _$catalogsHotelItemErrorResponseItemResponseKindEnumValues;
+  static CatalogsHotelItemErrorResponseItemResponseKindEnum valueOf(String name) => _$catalogsHotelItemErrorResponseItemResponseKindEnumValueOf(name);
 }
 

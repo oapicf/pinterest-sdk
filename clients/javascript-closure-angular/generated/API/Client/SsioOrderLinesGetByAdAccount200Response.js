@@ -12,7 +12,6 @@ API.Client.SsioOrderLinesGetByAdAccount200Response = function() {}
 API.Client.SsioOrderLinesGetByAdAccount200Response.prototype.bookmark;
 
 /**
- * SSIO order lines by ad acount id
  * @type {!Array<!API.Client.SSIOOrderLine>}
  * @export
  */

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.GetPartnerAssetsResponse;
+import org.openapitools.model.BaseBusinessAssets;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -23,7 +23,7 @@ public class BusinessPartnerAssetAccessGet200Response   {
   
   private String bookmark;
 
-  private List<@Valid GetPartnerAssetsResponse> items = new ArrayList<>();
+  private List<@Valid BaseBusinessAssets> items = new ArrayList<>();
 
   /**
    **/
@@ -44,25 +44,24 @@ public class BusinessPartnerAssetAccessGet200Response   {
 
 
   /**
-   * List assets on which you granted access to your partner or assets on which your partner has granted you access.
    **/
-  public BusinessPartnerAssetAccessGet200Response items(List<@Valid GetPartnerAssetsResponse> items) {
+  public BusinessPartnerAssetAccessGet200Response items(List<@Valid BaseBusinessAssets> items) {
     this.items = items;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "List assets on which you granted access to your partner or assets on which your partner has granted you access.")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   @NotNull
-  public List<@Valid GetPartnerAssetsResponse> getItems() {
+  public List<@Valid BaseBusinessAssets> getItems() {
     return items;
   }
-  public void setItems(List<@Valid GetPartnerAssetsResponse> items) {
+  public void setItems(List<@Valid BaseBusinessAssets> items) {
     this.items = items;
   }
 
-  public BusinessPartnerAssetAccessGet200Response addItemsItem(GetPartnerAssetsResponse itemsItem) {
+  public BusinessPartnerAssetAccessGet200Response addItemsItem(BaseBusinessAssets itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -106,10 +105,7 @@ public class BusinessPartnerAssetAccessGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

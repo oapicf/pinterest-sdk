@@ -49,12 +49,12 @@ AuthRespondInvitesBody::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<AuthRespondInvitesBody_invites_inner> new_list;
-			AuthRespondInvitesBody_invites_inner inst;
+			list<AuthRespondInvitesBodyItem> new_list;
+			AuthRespondInvitesBodyItem inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("AuthRespondInvitesBody_invites_inner")) {
-					jsonToValue(&inst, temp_json, "AuthRespondInvitesBody_invites_inner", "");
+				if (isprimitive("AuthRespondInvitesBodyItem")) {
+					jsonToValue(&inst, temp_json, "AuthRespondInvitesBodyItem", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -78,18 +78,18 @@ AuthRespondInvitesBody::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("AuthRespondInvitesBody_invites_inner")) {
-		list<AuthRespondInvitesBody_invites_inner> new_list = static_cast<list <AuthRespondInvitesBody_invites_inner> > (getInvites());
-		node = converttoJson(&new_list, "AuthRespondInvitesBody_invites_inner", "array");
+	if (isprimitive("AuthRespondInvitesBodyItem")) {
+		list<AuthRespondInvitesBodyItem> new_list = static_cast<list <AuthRespondInvitesBodyItem> > (getInvites());
+		node = converttoJson(&new_list, "AuthRespondInvitesBodyItem", "array");
 	} else {
 		node = json_node_alloc();
-		list<AuthRespondInvitesBody_invites_inner> new_list = static_cast<list <AuthRespondInvitesBody_invites_inner> > (getInvites());
+		list<AuthRespondInvitesBodyItem> new_list = static_cast<list <AuthRespondInvitesBodyItem> > (getInvites());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<AuthRespondInvitesBody_invites_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<AuthRespondInvitesBodyItem>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			AuthRespondInvitesBody_invites_inner obj = *it;
+			AuthRespondInvitesBodyItem obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -111,14 +111,14 @@ AuthRespondInvitesBody::toJson()
 	return ret;
 }
 
-std::list<AuthRespondInvitesBody_invites_inner>
+std::list<AuthRespondInvitesBodyItem>
 AuthRespondInvitesBody::getInvites()
 {
 	return invites;
 }
 
 void
-AuthRespondInvitesBody::setInvites(std::list <AuthRespondInvitesBody_invites_inner> invites)
+AuthRespondInvitesBody::setInvites(std::list <AuthRespondInvitesBodyItem> invites)
 {
 	this->invites = invites;
 }

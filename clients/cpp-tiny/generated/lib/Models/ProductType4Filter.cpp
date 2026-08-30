@@ -65,7 +65,7 @@ ProductType4Filter::getPRODUCTTYPE4()
 }
 
 void
-ProductType4Filter::setPRODUCTTYPE4(CatalogsProductGroupMultipleStringListCriteria  pRODUCT_TYPE_4)
+ProductType4Filter::setPRODUCTTYPE4(CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_4)
 {
 	this->pRODUCT_TYPE_4 = pRODUCT_TYPE_4;
 }

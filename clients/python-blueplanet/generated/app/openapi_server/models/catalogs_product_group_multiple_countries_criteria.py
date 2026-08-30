@@ -16,7 +16,7 @@ class CatalogsProductGroupMultipleCountriesCriteria(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, negated: bool=False, values: List[Country]=None):  # noqa: E501
+    def __init__(self, negated: bool=None, values: List[Country]=None):  # noqa: E501
         """CatalogsProductGroupMultipleCountriesCriteria - a model defined in Swagger
 
         :param negated: The negated of this CatalogsProductGroupMultipleCountriesCriteria.  # noqa: E501

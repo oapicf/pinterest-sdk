@@ -5,9 +5,9 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**name** | name | text NOT NULL |  | **kotlin.String** | Name of targeting template. | 
-**targetingAttributes** | targeting_attributes | long NOT NULL |  | [**TargetingSpec**](TargetingSpec.md) |  |  [foreignkey]
-**autoTargetingEnabled** | auto_targeting_enabled | boolean |  | **kotlin.Boolean** | Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;. |  [optional]
+**name** | name | text NOT NULL |  | **kotlin.String** | targeting template name | 
+**targetingAttributes** | targeting_attributes | long NOT NULL |  | [**TargetingSpecOptimal**](TargetingSpecOptimal.md) | targeting profile attributes |  [foreignkey]
+**autoTargetingEnabled** | auto_targeting_enabled | boolean |  | **kotlin.Boolean** | Enable auto-targeting for ad group. Also known as [\&quot;expanded targeting\&quot;](https://help.pinterest.com/en/business/article/expanded-targeting). |  [optional]
 **keywords** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;TargetingTemplateKeyword&gt;**](TargetingTemplateKeyword.md) |  |  [optional]
 **placementGroup** | placement_group | long |  | [**PlacementGroupType**](PlacementGroupType.md) |  |  [optional] [foreignkey]
 **trackingUrls** | tracking_urls | long |  | [**TrackingUrls**](TrackingUrls.md) |  |  [optional] [foreignkey]

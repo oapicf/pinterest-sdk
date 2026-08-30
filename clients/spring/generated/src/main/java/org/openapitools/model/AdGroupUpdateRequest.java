@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -11,95 +12,80 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ActionType;
+import org.openapitools.model.BidStrategyType;
 import org.openapitools.model.BudgetType;
 import org.openapitools.model.EntityStatus;
-import org.openapitools.model.OptimizationGoalMetadata;
 import org.openapitools.model.PacingDeliveryType;
 import org.openapitools.model.PlacementGroupType;
 import org.openapitools.model.TargetingSpec;
-import org.openapitools.model.TrackingUrls;
+import org.openapitools.model.TargetingSpecOperations;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * AdGroupUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdGroupUpdateRequest {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable BigDecimal bidMultiplier;
+
+  private String id;
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<@Valid TargetingSpecOperations> targetingSpecOperations = new ArrayList<>();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> autoTargetingEnabled = JsonNullable.<Boolean>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> bidInMicroCurrency = JsonNullable.<Integer>undefined();
 
-  /**
-   * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
-   */
-  public enum BidStrategyTypeEnum {
-    AUTOMATIC_BID("AUTOMATIC_BID"),
-    
-    MAX_BID("MAX_BID"),
-    
-    TARGET_AVG("TARGET_AVG");
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<BidStrategyType> bidStrategyType = JsonNullable.<BidStrategyType>undefined();
 
-    private final String value;
-
-    BidStrategyTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static BidStrategyTypeEnum fromValue(String value) {
-      for (BidStrategyTypeEnum b : BidStrategyTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  private JsonNullable<BidStrategyTypeEnum> bidStrategyType = JsonNullable.<BidStrategyTypeEnum>undefined();
-
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ActionType billableEvent;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> budgetInMicroCurrency = JsonNullable.<Integer>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BudgetType budgetType;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String campaignId;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> endTime = JsonNullable.<Integer>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> isCreativeOptimization = JsonNullable.<Boolean>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer lifetimeFrequencyCap;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
-  private JsonNullable<OptimizationGoalMetadata> optimizationGoalMetadata = JsonNullable.<OptimizationGoalMetadata>undefined();
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<Object> optimizationGoalMetadata = JsonNullable.<Object>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable PacingDeliveryType pacingDeliveryType;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable PlacementGroupType placementGroup;
 
   /**
@@ -139,24 +125,29 @@ public class AdGroupUpdateRequest {
     }
   }
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<PromotionApplicationLevelEnum> promotionApplicationLevel = JsonNullable.<PromotionApplicationLevelEnum>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> promotionId = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<String> promotionIds = new ArrayList<>();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> startTime = JsonNullable.<Integer>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable EntityStatus status;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable TargetingSpec targetingSpec;
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> targetingTemplateIds = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
 
-  private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
-
-  private @Nullable BigDecimal bidMultiplier;
-
-  private String id;
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<Object> trackingUrls = JsonNullable.<Object>undefined();
 
   public AdGroupUpdateRequest() {
     super();
@@ -167,6 +158,79 @@ public class AdGroupUpdateRequest {
    */
   public AdGroupUpdateRequest(String id) {
     this.id = id;
+  }
+
+  public AdGroupUpdateRequest bidMultiplier(@Nullable BigDecimal bidMultiplier) {
+    this.bidMultiplier = bidMultiplier;
+    return this;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+   * minimum: 0
+   * maximum: 10
+   * @return bidMultiplier
+   */
+  @Valid @DecimalMin(value = "0") @DecimalMax(value = "10") 
+  @Schema(name = "bid_multiplier", description = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("bid_multiplier")
+  public @Nullable BigDecimal getBidMultiplier() {
+    return bidMultiplier;
+  }
+
+  @JsonProperty("bid_multiplier")
+  public void setBidMultiplier(@Nullable BigDecimal bidMultiplier) {
+    this.bidMultiplier = bidMultiplier;
+  }
+
+  public AdGroupUpdateRequest id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Ad group ID.
+   * @return id
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", description = "Ad group ID.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  @JsonProperty("id")
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public AdGroupUpdateRequest targetingSpecOperations(List<@Valid TargetingSpecOperations> targetingSpecOperations) {
+    this.targetingSpecOperations = targetingSpecOperations;
+    return this;
+  }
+
+  public AdGroupUpdateRequest addTargetingSpecOperationsItem(TargetingSpecOperations targetingSpecOperationsItem) {
+    if (this.targetingSpecOperations == null) {
+      this.targetingSpecOperations = new ArrayList<>();
+    }
+    this.targetingSpecOperations.add(targetingSpecOperationsItem);
+    return this;
+  }
+
+  /**
+   * <div>Targeting spec operations define modifications to apply to the targeting spec.</div> <br /> <div><strong>NOTE:</strong> The <code>targeting_spec</code> and <code>targeting_spec_operations</code> cannot be sent at the same time.</div> <br /> <div>The supported operations are:</div> <ul> <li><code>SET</code>: sets the field with the given values. If value is set to <code>null</code>, the field will be removed.</li> <li><code>ADD</code>: adds the given values to the field.</li> <li><code>REMOVE</code>: removes the given values from the field.</li> </ul> <div>Note the following:</div> <ul> <li>Same items are not added and removed at the same time.</li> <li>For a given field, only <code>ADD</code>/<code>REMOVE</code> or <code>SET</code> operations are allowed, not a mix of them.</li> <li>Only one SET operation is allowed for a given field.</li> <li>The <code>AGE_BUCKET</code>, <code>MAXIMUM_AGE</code>, <code>MINIMUM_AGE</code> and <code>SHOPPING_RETARGETING</code> fields only support the <code>SET</code> operation.</li> </ul>
+   * @return targetingSpecOperations
+   */
+  @Valid 
+  @Schema(name = "targeting_spec_operations", description = "<div>Targeting spec operations define modifications to apply to the targeting spec.</div> <br /> <div><strong>NOTE:</strong> The <code>targeting_spec</code> and <code>targeting_spec_operations</code> cannot be sent at the same time.</div> <br /> <div>The supported operations are:</div> <ul> <li><code>SET</code>: sets the field with the given values. If value is set to <code>null</code>, the field will be removed.</li> <li><code>ADD</code>: adds the given values to the field.</li> <li><code>REMOVE</code>: removes the given values from the field.</li> </ul> <div>Note the following:</div> <ul> <li>Same items are not added and removed at the same time.</li> <li>For a given field, only <code>ADD</code>/<code>REMOVE</code> or <code>SET</code> operations are allowed, not a mix of them.</li> <li>Only one SET operation is allowed for a given field.</li> <li>The <code>AGE_BUCKET</code>, <code>MAXIMUM_AGE</code>, <code>MINIMUM_AGE</code> and <code>SHOPPING_RETARGETING</code> fields only support the <code>SET</code> operation.</li> </ul>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("targeting_spec_operations")
+  public List<@Valid TargetingSpecOperations> getTargetingSpecOperations() {
+    return targetingSpecOperations;
+  }
+
+  @JsonProperty("targeting_spec_operations")
+  public void setTargetingSpecOperations(List<@Valid TargetingSpecOperations> targetingSpecOperations) {
+    this.targetingSpecOperations = targetingSpecOperations;
   }
 
   public AdGroupUpdateRequest autoTargetingEnabled(Boolean autoTargetingEnabled) {
@@ -209,23 +273,23 @@ public class AdGroupUpdateRequest {
     this.bidInMicroCurrency = bidInMicroCurrency;
   }
 
-  public AdGroupUpdateRequest bidStrategyType(BidStrategyTypeEnum bidStrategyType) {
+  public AdGroupUpdateRequest bidStrategyType(BidStrategyType bidStrategyType) {
     this.bidStrategyType = JsonNullable.of(bidStrategyType);
     return this;
   }
 
   /**
-   * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
+   * Get bidStrategyType
    * @return bidStrategyType
    */
-  
-  @Schema(name = "bid_strategy_type", example = "MAX_BID", description = "Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Valid 
+  @Schema(name = "bid_strategy_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bid_strategy_type")
-  public JsonNullable<BidStrategyTypeEnum> getBidStrategyType() {
+  public JsonNullable<BidStrategyType> getBidStrategyType() {
     return bidStrategyType;
   }
 
-  public void setBidStrategyType(JsonNullable<BidStrategyTypeEnum> bidStrategyType) {
+  public void setBidStrategyType(JsonNullable<BidStrategyType> bidStrategyType) {
     this.bidStrategyType = bidStrategyType;
   }
 
@@ -245,6 +309,7 @@ public class AdGroupUpdateRequest {
     return billableEvent;
   }
 
+  @JsonProperty("billable_event")
   public void setBillableEvent(@Nullable ActionType billableEvent) {
     this.billableEvent = billableEvent;
   }
@@ -285,6 +350,7 @@ public class AdGroupUpdateRequest {
     return budgetType;
   }
 
+  @JsonProperty("budget_type")
   public void setBudgetType(@Nullable BudgetType budgetType) {
     this.budgetType = budgetType;
   }
@@ -305,6 +371,7 @@ public class AdGroupUpdateRequest {
     return campaignId;
   }
 
+  @JsonProperty("campaign_id")
   public void setCampaignId(@Nullable String campaignId) {
     this.campaignId = campaignId;
   }
@@ -365,6 +432,7 @@ public class AdGroupUpdateRequest {
     return lifetimeFrequencyCap;
   }
 
+  @JsonProperty("lifetime_frequency_cap")
   public void setLifetimeFrequencyCap(@Nullable Integer lifetimeFrequencyCap) {
     this.lifetimeFrequencyCap = lifetimeFrequencyCap;
   }
@@ -385,11 +453,12 @@ public class AdGroupUpdateRequest {
     return name;
   }
 
+  @JsonProperty("name")
   public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public AdGroupUpdateRequest optimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
+  public AdGroupUpdateRequest optimizationGoalMetadata(Object optimizationGoalMetadata) {
     this.optimizationGoalMetadata = JsonNullable.of(optimizationGoalMetadata);
     return this;
   }
@@ -398,14 +467,14 @@ public class AdGroupUpdateRequest {
    * Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
    * @return optimizationGoalMetadata
    */
-  @Valid 
+  
   @Schema(name = "optimization_goal_metadata", description = "Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("optimization_goal_metadata")
-  public JsonNullable<OptimizationGoalMetadata> getOptimizationGoalMetadata() {
+  public JsonNullable<Object> getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
   }
 
-  public void setOptimizationGoalMetadata(JsonNullable<OptimizationGoalMetadata> optimizationGoalMetadata) {
+  public void setOptimizationGoalMetadata(JsonNullable<Object> optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
   }
 
@@ -425,6 +494,7 @@ public class AdGroupUpdateRequest {
     return pacingDeliveryType;
   }
 
+  @JsonProperty("pacing_delivery_type")
   public void setPacingDeliveryType(@Nullable PacingDeliveryType pacingDeliveryType) {
     this.pacingDeliveryType = pacingDeliveryType;
   }
@@ -445,6 +515,7 @@ public class AdGroupUpdateRequest {
     return placementGroup;
   }
 
+  @JsonProperty("placement_group")
   public void setPlacementGroup(@Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
   }
@@ -489,6 +560,35 @@ public class AdGroupUpdateRequest {
     this.promotionId = promotionId;
   }
 
+  public AdGroupUpdateRequest promotionIds(List<String> promotionIds) {
+    this.promotionIds = promotionIds;
+    return this;
+  }
+
+  public AdGroupUpdateRequest addPromotionIdsItem(String promotionIdsItem) {
+    if (this.promotionIds == null) {
+      this.promotionIds = new ArrayList<>();
+    }
+    this.promotionIds.add(promotionIdsItem);
+    return this;
+  }
+
+  /**
+   * Promotion IDs list. To clear this field, set to an empty array [].
+   * @return promotionIds
+   */
+  
+  @Schema(name = "promotion_ids", example = "[\"7834020347906\",\"7834020347907\"]", description = "Promotion IDs list. To clear this field, set to an empty array [].", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("promotion_ids")
+  public List<String> getPromotionIds() {
+    return promotionIds;
+  }
+
+  @JsonProperty("promotion_ids")
+  public void setPromotionIds(List<String> promotionIds) {
+    this.promotionIds = promotionIds;
+  }
+
   public AdGroupUpdateRequest startTime(Integer startTime) {
     this.startTime = JsonNullable.of(startTime);
     return this;
@@ -525,6 +625,7 @@ public class AdGroupUpdateRequest {
     return status;
   }
 
+  @JsonProperty("status")
   public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
@@ -545,6 +646,7 @@ public class AdGroupUpdateRequest {
     return targetingSpec;
   }
 
+  @JsonProperty("targeting_spec")
   public void setTargetingSpec(@Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
   }
@@ -577,66 +679,24 @@ public class AdGroupUpdateRequest {
     this.targetingTemplateIds = targetingTemplateIds;
   }
 
-  public AdGroupUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
+  public AdGroupUpdateRequest trackingUrls(Object trackingUrls) {
     this.trackingUrls = JsonNullable.of(trackingUrls);
     return this;
   }
 
   /**
-   * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+   * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
    * @return trackingUrls
    */
-  @Valid 
-  @Schema(name = "tracking_urls", description = "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  
+  @Schema(name = "tracking_urls", description = "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tracking_urls")
-  public JsonNullable<TrackingUrls> getTrackingUrls() {
+  public JsonNullable<Object> getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(JsonNullable<TrackingUrls> trackingUrls) {
+  public void setTrackingUrls(JsonNullable<Object> trackingUrls) {
     this.trackingUrls = trackingUrls;
-  }
-
-  public AdGroupUpdateRequest bidMultiplier(@Nullable BigDecimal bidMultiplier) {
-    this.bidMultiplier = bidMultiplier;
-    return this;
-  }
-
-  /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
-   * minimum: 0
-   * maximum: 10
-   * @return bidMultiplier
-   */
-  @Valid @DecimalMin(value = "0") @DecimalMax(value = "10") 
-  @Schema(name = "bid_multiplier", example = "1", description = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("bid_multiplier")
-  public @Nullable BigDecimal getBidMultiplier() {
-    return bidMultiplier;
-  }
-
-  public void setBidMultiplier(@Nullable BigDecimal bidMultiplier) {
-    this.bidMultiplier = bidMultiplier;
-  }
-
-  public AdGroupUpdateRequest id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Ad group ID.
-   * @return id
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "2680060704746", description = "Ad group ID.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
   }
 
   @Override
@@ -648,7 +708,10 @@ public class AdGroupUpdateRequest {
       return false;
     }
     AdGroupUpdateRequest adGroupUpdateRequest = (AdGroupUpdateRequest) o;
-    return equalsNullable(this.autoTargetingEnabled, adGroupUpdateRequest.autoTargetingEnabled) &&
+    return Objects.equals(this.bidMultiplier, adGroupUpdateRequest.bidMultiplier) &&
+        Objects.equals(this.id, adGroupUpdateRequest.id) &&
+        Objects.equals(this.targetingSpecOperations, adGroupUpdateRequest.targetingSpecOperations) &&
+        equalsNullable(this.autoTargetingEnabled, adGroupUpdateRequest.autoTargetingEnabled) &&
         equalsNullable(this.bidInMicroCurrency, adGroupUpdateRequest.bidInMicroCurrency) &&
         equalsNullable(this.bidStrategyType, adGroupUpdateRequest.bidStrategyType) &&
         Objects.equals(this.billableEvent, adGroupUpdateRequest.billableEvent) &&
@@ -664,13 +727,12 @@ public class AdGroupUpdateRequest {
         Objects.equals(this.placementGroup, adGroupUpdateRequest.placementGroup) &&
         equalsNullable(this.promotionApplicationLevel, adGroupUpdateRequest.promotionApplicationLevel) &&
         equalsNullable(this.promotionId, adGroupUpdateRequest.promotionId) &&
+        Objects.equals(this.promotionIds, adGroupUpdateRequest.promotionIds) &&
         equalsNullable(this.startTime, adGroupUpdateRequest.startTime) &&
         Objects.equals(this.status, adGroupUpdateRequest.status) &&
         Objects.equals(this.targetingSpec, adGroupUpdateRequest.targetingSpec) &&
         equalsNullable(this.targetingTemplateIds, adGroupUpdateRequest.targetingTemplateIds) &&
-        equalsNullable(this.trackingUrls, adGroupUpdateRequest.trackingUrls) &&
-        Objects.equals(this.bidMultiplier, adGroupUpdateRequest.bidMultiplier) &&
-        Objects.equals(this.id, adGroupUpdateRequest.id);
+        equalsNullable(this.trackingUrls, adGroupUpdateRequest.trackingUrls);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -679,7 +741,7 @@ public class AdGroupUpdateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(autoTargetingEnabled), hashCodeNullable(bidInMicroCurrency), hashCodeNullable(bidStrategyType), billableEvent, hashCodeNullable(budgetInMicroCurrency), budgetType, campaignId, hashCodeNullable(endTime), hashCodeNullable(isCreativeOptimization), lifetimeFrequencyCap, name, hashCodeNullable(optimizationGoalMetadata), pacingDeliveryType, placementGroup, hashCodeNullable(promotionApplicationLevel), hashCodeNullable(promotionId), hashCodeNullable(startTime), status, targetingSpec, hashCodeNullable(targetingTemplateIds), hashCodeNullable(trackingUrls), bidMultiplier, id);
+    return Objects.hash(bidMultiplier, id, targetingSpecOperations, hashCodeNullable(autoTargetingEnabled), hashCodeNullable(bidInMicroCurrency), hashCodeNullable(bidStrategyType), billableEvent, hashCodeNullable(budgetInMicroCurrency), budgetType, campaignId, hashCodeNullable(endTime), hashCodeNullable(isCreativeOptimization), lifetimeFrequencyCap, name, hashCodeNullable(optimizationGoalMetadata), pacingDeliveryType, placementGroup, hashCodeNullable(promotionApplicationLevel), hashCodeNullable(promotionId), promotionIds, hashCodeNullable(startTime), status, targetingSpec, hashCodeNullable(targetingTemplateIds), hashCodeNullable(trackingUrls));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -693,6 +755,9 @@ public class AdGroupUpdateRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdGroupUpdateRequest {\n");
+    sb.append("    bidMultiplier: ").append(toIndentedString(bidMultiplier)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    targetingSpecOperations: ").append(toIndentedString(targetingSpecOperations)).append("\n");
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
     sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    bidStrategyType: ").append(toIndentedString(bidStrategyType)).append("\n");
@@ -709,13 +774,12 @@ public class AdGroupUpdateRequest {
     sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    promotionApplicationLevel: ").append(toIndentedString(promotionApplicationLevel)).append("\n");
     sb.append("    promotionId: ").append(toIndentedString(promotionId)).append("\n");
+    sb.append("    promotionIds: ").append(toIndentedString(promotionIds)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
     sb.append("    targetingTemplateIds: ").append(toIndentedString(targetingTemplateIds)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
-    sb.append("    bidMultiplier: ").append(toIndentedString(bidMultiplier)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -724,11 +788,8 @@ public class AdGroupUpdateRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

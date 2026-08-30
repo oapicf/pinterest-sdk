@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,15 +22,15 @@ var _ MappedNullable = &CatalogsRetailFilterValuesMap{}
 type CatalogsRetailFilterValuesMap struct {
 	AdImageTags []string `json:"ad_image_tags,omitempty"`
 	AdVideoTags []string `json:"ad_video_tags,omitempty"`
-	Availability []string `json:"availability,omitempty"`
+	Availability []ProductAvailability `json:"availability,omitempty"`
 	Brand []string `json:"brand,omitempty"`
-	Condition []string `json:"condition,omitempty"`
+	Condition []ProductCondition `json:"condition,omitempty"`
 	CustomLabel0 []string `json:"custom_label_0,omitempty"`
 	CustomLabel1 []string `json:"custom_label_1,omitempty"`
 	CustomLabel2 []string `json:"custom_label_2,omitempty"`
 	CustomLabel3 []string `json:"custom_label_3,omitempty"`
 	CustomLabel4 []string `json:"custom_label_4,omitempty"`
-	Gender []string `json:"gender,omitempty"`
+	Gender []Gender `json:"gender,omitempty"`
 	GoogleProductCategory0 []string `json:"google_product_category_0,omitempty"`
 	GoogleProductCategory1 []string `json:"google_product_category_1,omitempty"`
 	GoogleProductCategory2 []string `json:"google_product_category_2,omitempty"`
@@ -38,7 +38,7 @@ type CatalogsRetailFilterValuesMap struct {
 	GoogleProductCategory4 []string `json:"google_product_category_4,omitempty"`
 	GoogleProductCategory5 []string `json:"google_product_category_5,omitempty"`
 	GoogleProductCategory6 []string `json:"google_product_category_6,omitempty"`
-	MediaType []string `json:"media_type,omitempty"`
+	MediaType []MediaType `json:"media_type,omitempty"`
 	ProductType0 []string `json:"product_type_0,omitempty"`
 	ProductType1 []string `json:"product_type_1,omitempty"`
 	ProductType2 []string `json:"product_type_2,omitempty"`
@@ -128,9 +128,9 @@ func (o *CatalogsRetailFilterValuesMap) SetAdVideoTags(v []string) {
 }
 
 // GetAvailability returns the Availability field value if set, zero value otherwise.
-func (o *CatalogsRetailFilterValuesMap) GetAvailability() []string {
+func (o *CatalogsRetailFilterValuesMap) GetAvailability() []ProductAvailability {
 	if o == nil || IsNil(o.Availability) {
-		var ret []string
+		var ret []ProductAvailability
 		return ret
 	}
 	return o.Availability
@@ -138,7 +138,7 @@ func (o *CatalogsRetailFilterValuesMap) GetAvailability() []string {
 
 // GetAvailabilityOk returns a tuple with the Availability field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailFilterValuesMap) GetAvailabilityOk() ([]string, bool) {
+func (o *CatalogsRetailFilterValuesMap) GetAvailabilityOk() ([]ProductAvailability, bool) {
 	if o == nil || IsNil(o.Availability) {
 		return nil, false
 	}
@@ -154,8 +154,8 @@ func (o *CatalogsRetailFilterValuesMap) HasAvailability() bool {
 	return false
 }
 
-// SetAvailability gets a reference to the given []string and assigns it to the Availability field.
-func (o *CatalogsRetailFilterValuesMap) SetAvailability(v []string) {
+// SetAvailability gets a reference to the given []ProductAvailability and assigns it to the Availability field.
+func (o *CatalogsRetailFilterValuesMap) SetAvailability(v []ProductAvailability) {
 	o.Availability = v
 }
 
@@ -192,9 +192,9 @@ func (o *CatalogsRetailFilterValuesMap) SetBrand(v []string) {
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *CatalogsRetailFilterValuesMap) GetCondition() []string {
+func (o *CatalogsRetailFilterValuesMap) GetCondition() []ProductCondition {
 	if o == nil || IsNil(o.Condition) {
-		var ret []string
+		var ret []ProductCondition
 		return ret
 	}
 	return o.Condition
@@ -202,7 +202,7 @@ func (o *CatalogsRetailFilterValuesMap) GetCondition() []string {
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailFilterValuesMap) GetConditionOk() ([]string, bool) {
+func (o *CatalogsRetailFilterValuesMap) GetConditionOk() ([]ProductCondition, bool) {
 	if o == nil || IsNil(o.Condition) {
 		return nil, false
 	}
@@ -218,8 +218,8 @@ func (o *CatalogsRetailFilterValuesMap) HasCondition() bool {
 	return false
 }
 
-// SetCondition gets a reference to the given []string and assigns it to the Condition field.
-func (o *CatalogsRetailFilterValuesMap) SetCondition(v []string) {
+// SetCondition gets a reference to the given []ProductCondition and assigns it to the Condition field.
+func (o *CatalogsRetailFilterValuesMap) SetCondition(v []ProductCondition) {
 	o.Condition = v
 }
 
@@ -384,9 +384,9 @@ func (o *CatalogsRetailFilterValuesMap) SetCustomLabel4(v []string) {
 }
 
 // GetGender returns the Gender field value if set, zero value otherwise.
-func (o *CatalogsRetailFilterValuesMap) GetGender() []string {
+func (o *CatalogsRetailFilterValuesMap) GetGender() []Gender {
 	if o == nil || IsNil(o.Gender) {
-		var ret []string
+		var ret []Gender
 		return ret
 	}
 	return o.Gender
@@ -394,7 +394,7 @@ func (o *CatalogsRetailFilterValuesMap) GetGender() []string {
 
 // GetGenderOk returns a tuple with the Gender field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailFilterValuesMap) GetGenderOk() ([]string, bool) {
+func (o *CatalogsRetailFilterValuesMap) GetGenderOk() ([]Gender, bool) {
 	if o == nil || IsNil(o.Gender) {
 		return nil, false
 	}
@@ -410,8 +410,8 @@ func (o *CatalogsRetailFilterValuesMap) HasGender() bool {
 	return false
 }
 
-// SetGender gets a reference to the given []string and assigns it to the Gender field.
-func (o *CatalogsRetailFilterValuesMap) SetGender(v []string) {
+// SetGender gets a reference to the given []Gender and assigns it to the Gender field.
+func (o *CatalogsRetailFilterValuesMap) SetGender(v []Gender) {
 	o.Gender = v
 }
 
@@ -640,9 +640,9 @@ func (o *CatalogsRetailFilterValuesMap) SetGoogleProductCategory6(v []string) {
 }
 
 // GetMediaType returns the MediaType field value if set, zero value otherwise.
-func (o *CatalogsRetailFilterValuesMap) GetMediaType() []string {
+func (o *CatalogsRetailFilterValuesMap) GetMediaType() []MediaType {
 	if o == nil || IsNil(o.MediaType) {
-		var ret []string
+		var ret []MediaType
 		return ret
 	}
 	return o.MediaType
@@ -650,7 +650,7 @@ func (o *CatalogsRetailFilterValuesMap) GetMediaType() []string {
 
 // GetMediaTypeOk returns a tuple with the MediaType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailFilterValuesMap) GetMediaTypeOk() ([]string, bool) {
+func (o *CatalogsRetailFilterValuesMap) GetMediaTypeOk() ([]MediaType, bool) {
 	if o == nil || IsNil(o.MediaType) {
 		return nil, false
 	}
@@ -666,8 +666,8 @@ func (o *CatalogsRetailFilterValuesMap) HasMediaType() bool {
 	return false
 }
 
-// SetMediaType gets a reference to the given []string and assigns it to the MediaType field.
-func (o *CatalogsRetailFilterValuesMap) SetMediaType(v []string) {
+// SetMediaType gets a reference to the given []MediaType and assigns it to the MediaType field.
+func (o *CatalogsRetailFilterValuesMap) SetMediaType(v []MediaType) {
 	o.MediaType = v
 }
 

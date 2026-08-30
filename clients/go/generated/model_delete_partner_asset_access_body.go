@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,9 +20,10 @@ import (
 // checks if the DeletePartnerAssetAccessBody type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DeletePartnerAssetAccessBody{}
 
-// DeletePartnerAssetAccessBody struct for DeletePartnerAssetAccessBody
+// DeletePartnerAssetAccessBody An object with a list of partner asset accesses to delete.
 type DeletePartnerAssetAccessBody struct {
-	Accesses []DeletePartnerAssetAccessBodyAccessesInner `json:"accesses"`
+	// List of partner asset accesses to delete.
+	Accesses []DeletePartnerAssetAccessItem `json:"accesses"`
 }
 
 type _DeletePartnerAssetAccessBody DeletePartnerAssetAccessBody
@@ -31,7 +32,7 @@ type _DeletePartnerAssetAccessBody DeletePartnerAssetAccessBody
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeletePartnerAssetAccessBody(accesses []DeletePartnerAssetAccessBodyAccessesInner) *DeletePartnerAssetAccessBody {
+func NewDeletePartnerAssetAccessBody(accesses []DeletePartnerAssetAccessItem) *DeletePartnerAssetAccessBody {
 	this := DeletePartnerAssetAccessBody{}
 	this.Accesses = accesses
 	return &this
@@ -46,9 +47,9 @@ func NewDeletePartnerAssetAccessBodyWithDefaults() *DeletePartnerAssetAccessBody
 }
 
 // GetAccesses returns the Accesses field value
-func (o *DeletePartnerAssetAccessBody) GetAccesses() []DeletePartnerAssetAccessBodyAccessesInner {
+func (o *DeletePartnerAssetAccessBody) GetAccesses() []DeletePartnerAssetAccessItem {
 	if o == nil {
-		var ret []DeletePartnerAssetAccessBodyAccessesInner
+		var ret []DeletePartnerAssetAccessItem
 		return ret
 	}
 
@@ -57,7 +58,7 @@ func (o *DeletePartnerAssetAccessBody) GetAccesses() []DeletePartnerAssetAccessB
 
 // GetAccessesOk returns a tuple with the Accesses field value
 // and a boolean to check if the value has been set.
-func (o *DeletePartnerAssetAccessBody) GetAccessesOk() ([]DeletePartnerAssetAccessBodyAccessesInner, bool) {
+func (o *DeletePartnerAssetAccessBody) GetAccessesOk() ([]DeletePartnerAssetAccessItem, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +66,7 @@ func (o *DeletePartnerAssetAccessBody) GetAccessesOk() ([]DeletePartnerAssetAcce
 }
 
 // SetAccesses sets field value
-func (o *DeletePartnerAssetAccessBody) SetAccesses(v []DeletePartnerAssetAccessBodyAccessesInner) {
+func (o *DeletePartnerAssetAccessBody) SetAccesses(v []DeletePartnerAssetAccessItem) {
 	o.Accesses = v
 }
 

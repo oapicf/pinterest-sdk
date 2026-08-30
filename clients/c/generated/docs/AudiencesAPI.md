@@ -14,9 +14,9 @@ Method | HTTP request | Description
 ```c
 // Create audience
 //
-// Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+// Create a new audience for the ad account.
 //
-audience_t* AudiencesAPI_audiencesCreate(apiClient_t *apiClient, char *ad_account_id, audience_create_request_t *audience_create_request);
+ad_accounts_audience_t* AudiencesAPI_audiencesCreate(apiClient_t *apiClient, char *ad_account_id, ad_accounts_audience_create_t *ad_accounts_audience_create);
 ```
 
 ### Parameters
@@ -24,11 +24,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**audience_create_request** | **[audience_create_request_t](audience_create_request.md) \*** | List of ads to create, size limit [1, 30] | 
+**ad_accounts_audience_create** | **[ad_accounts_audience_create_t](ad_accounts_audience_create.md) \*** |  | 
 
 ### Return type
 
-[audience_t](audience.md) *
+[ad_accounts_audience_t](ad_accounts_audience.md) *
 
 
 ### Authorization
@@ -48,19 +48,19 @@ Name | Type | Description  | Notes
 //
 // Get a specific audience given the audience ID.
 //
-audience_t* AudiencesAPI_audiencesGet(apiClient_t *apiClient, char *ad_account_id, char *audience_id);
+ad_accounts_audience_t* AudiencesAPI_audiencesGet(apiClient_t *apiClient, char *audience_id, char *ad_account_id);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**audience_id** | **char \*** | Audience ID. | 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**audience_id** | **char \*** | Unique identifier of an audience | 
 
 ### Return type
 
-[audience_t](audience.md) *
+[ad_accounts_audience_t](ad_accounts_audience.md) *
 
 
 ### Authorization
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 //
 // Get list of audiences for the ad account.
 //
-audiences_list_200_response_t* AudiencesAPI_audiencesList(apiClient_t *apiClient, char *ad_account_id, char *bookmark, pinterest_rest_api_audiencesList_order_e order, int *page_size, pinterest_rest_api_audiencesList_ownership_type_e ownership_type);
+audiences_list_200_response_t* AudiencesAPI_audiencesList(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_lib_pagination_order_e order, audience_ownership_type_e ownership_type, int *exclude_nca);
 ```
 
 ### Parameters
@@ -89,9 +89,10 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**order** | **pinterest_rest_api_audiencesList_order_e** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
-**ownership_type** | **pinterest_rest_api_audiencesList_ownership_type_e** | Filter audiences by ownership type. | [optional] [default to &#39;OWNED&#39;]
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+**order** | **pinterest_lib_pagination_order_e** | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+**ownership_type** | **audience_ownership_type_e** |  | [optional] 
+**exclude_nca** | **int \*** | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [optional] [default to false]
 
 ### Return type
 
@@ -113,22 +114,22 @@ Name | Type | Description  | Notes
 ```c
 // Update audience
 //
-// Update (edit or remove) an existing targeting audience.
+// Update an existing audience for the ad account.
 //
-audience_t* AudiencesAPI_audiencesUpdate(apiClient_t *apiClient, char *ad_account_id, char *audience_id, audience_update_request_t *audience_update_request);
+ad_accounts_audience_t* AudiencesAPI_audiencesUpdate(apiClient_t *apiClient, char *audience_id, char *ad_account_id, ad_accounts_audience_update_t *ad_accounts_audience_update);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**audience_id** | **char \*** | Audience ID. | 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**audience_id** | **char \*** | Unique identifier of an audience | 
-**audience_update_request** | **[audience_update_request_t](audience_update_request.md) \*** | The audience to be updated. | 
+**ad_accounts_audience_update** | **[ad_accounts_audience_update_t](ad_accounts_audience_update.md) \*** |  | 
 
 ### Return type
 
-[audience_t](audience.md) *
+[ad_accounts_audience_t](ad_accounts_audience.md) *
 
 
 ### Authorization

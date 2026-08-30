@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | [**STRING_32**](STRING_32.md) | Catalog id pertaining to the retail product group. | [default to null]
+**catalog_id** | [**STRING_32**](STRING_32.md) | Catalog ID pertaining to the product group. | [default to null]
 **catalog_type** | [**STRING_32**](STRING_32.md) | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | [default to null]
 **country** | [**COUNTRY**](Country.md) |  | [optional] [default to null]
 **description** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]

@@ -149,7 +149,7 @@ ImageMetadata::getDescription()
 }
 
 void
-ImageMetadata::setDescription(std::string  description)
+ImageMetadata::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -161,7 +161,7 @@ ImageMetadata::getImages()
 }
 
 void
-ImageMetadata::setImages(ImageSize  images)
+ImageMetadata::setImages(ImageSize images)
 {
 	this->images = images;
 }
@@ -173,7 +173,7 @@ ImageMetadata::getItemType()
 }
 
 void
-ImageMetadata::setItemType(std::string  item_type)
+ImageMetadata::setItemType(std::string item_type)
 {
 	this->item_type = item_type;
 }
@@ -185,7 +185,7 @@ ImageMetadata::getLink()
 }
 
 void
-ImageMetadata::setLink(std::string  link)
+ImageMetadata::setLink(std::string link)
 {
 	this->link = link;
 }
@@ -197,7 +197,7 @@ ImageMetadata::getTitle()
 }
 
 void
-ImageMetadata::setTitle(std::string  title)
+ImageMetadata::setTitle(std::string title)
 {
 	this->title = title;
 }

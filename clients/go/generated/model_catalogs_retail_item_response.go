@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,9 +23,11 @@ var _ MappedNullable = &CatalogsRetailItemResponse{}
 // CatalogsRetailItemResponse Object describing a retail item record
 type CatalogsRetailItemResponse struct {
 	Attributes *ItemAttributes `json:"attributes,omitempty"`
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 	// The catalog retail item id in the merchant namespace
 	ItemId *string `json:"item_id,omitempty"`
+	// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	ItemResponseKind string `json:"item_response_kind"`
 	// The pins mapped to the item
 	Pins []Pin `json:"pins,omitempty"`
 }
@@ -36,9 +38,10 @@ type _CatalogsRetailItemResponse CatalogsRetailItemResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailItemResponse(catalogType CatalogsType) *CatalogsRetailItemResponse {
+func NewCatalogsRetailItemResponse(catalogType string, itemResponseKind string) *CatalogsRetailItemResponse {
 	this := CatalogsRetailItemResponse{}
 	this.CatalogType = catalogType
+	this.ItemResponseKind = itemResponseKind
 	return &this
 }
 
@@ -83,9 +86,9 @@ func (o *CatalogsRetailItemResponse) SetAttributes(v ItemAttributes) {
 }
 
 // GetCatalogType returns the CatalogType field value
-func (o *CatalogsRetailItemResponse) GetCatalogType() CatalogsType {
+func (o *CatalogsRetailItemResponse) GetCatalogType() string {
 	if o == nil {
-		var ret CatalogsType
+		var ret string
 		return ret
 	}
 
@@ -94,7 +97,7 @@ func (o *CatalogsRetailItemResponse) GetCatalogType() CatalogsType {
 
 // GetCatalogTypeOk returns a tuple with the CatalogType field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailItemResponse) GetCatalogTypeOk() (*CatalogsType, bool) {
+func (o *CatalogsRetailItemResponse) GetCatalogTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -102,7 +105,7 @@ func (o *CatalogsRetailItemResponse) GetCatalogTypeOk() (*CatalogsType, bool) {
 }
 
 // SetCatalogType sets field value
-func (o *CatalogsRetailItemResponse) SetCatalogType(v CatalogsType) {
+func (o *CatalogsRetailItemResponse) SetCatalogType(v string) {
 	o.CatalogType = v
 }
 
@@ -136,6 +139,30 @@ func (o *CatalogsRetailItemResponse) HasItemId() bool {
 // SetItemId gets a reference to the given string and assigns it to the ItemId field.
 func (o *CatalogsRetailItemResponse) SetItemId(v string) {
 	o.ItemId = &v
+}
+
+// GetItemResponseKind returns the ItemResponseKind field value
+func (o *CatalogsRetailItemResponse) GetItemResponseKind() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ItemResponseKind
+}
+
+// GetItemResponseKindOk returns a tuple with the ItemResponseKind field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailItemResponse) GetItemResponseKindOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ItemResponseKind, true
+}
+
+// SetItemResponseKind sets field value
+func (o *CatalogsRetailItemResponse) SetItemResponseKind(v string) {
+	o.ItemResponseKind = v
 }
 
 // GetPins returns the Pins field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -188,6 +215,7 @@ func (o CatalogsRetailItemResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ItemId) {
 		toSerialize["item_id"] = o.ItemId
 	}
+	toSerialize["item_response_kind"] = o.ItemResponseKind
 	if o.Pins != nil {
 		toSerialize["pins"] = o.Pins
 	}
@@ -200,6 +228,7 @@ func (o *CatalogsRetailItemResponse) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"catalog_type",
+		"item_response_kind",
 	}
 
 	allProperties := make(map[string]interface{})

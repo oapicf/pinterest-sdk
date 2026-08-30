@@ -5,6 +5,7 @@ Resource create or update operation model.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ai_disclosures** | [**AiDisclosuresUpdate**](AiDisclosuresUpdate.md) | AI disclosure declarations the creator has made about this Pin. | [optional] 
 **alt_text** | **character** |  | [optional] [Max. length: 500] 
 **board_id** | **character** | The board to which this Pin belongs. | [optional] [Pattern: ^\\d+$] 
 **board_section_id** | **character** | The board section to which this Pin belongs. | [optional] [Pattern: ^\\d+$] 

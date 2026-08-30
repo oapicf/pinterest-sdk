@@ -76,7 +76,7 @@ using namespace Tiny;
         }
 
         Response<
-            CustomerListUploadResponse
+            CustomerListUpload
         >
         CustomerListUploadsApi::
         customerListUploads_get(
@@ -141,15 +141,15 @@ using namespace Tiny;
 
 
 
-            CustomerListUploadResponse obj(output_string);
+            CustomerListUpload obj(output_string);
 
 
-            Response<CustomerListUploadResponse> response(obj, httpCode);
+            Response<CustomerListUpload> response(obj, httpCode);
             return response;
         }
 
         Response<
-            CustomerListUploadResponse
+            CustomerListUpload
         >
         CustomerListUploadsApi::
         customerListUploads_run(
@@ -214,10 +214,10 @@ using namespace Tiny;
 
 
 
-            CustomerListUploadResponse obj(output_string);
+            CustomerListUpload obj(output_string);
 
 
-            Response<CustomerListUploadResponse> response(obj, httpCode);
+            Response<CustomerListUpload> response(obj, httpCode);
             return response;
         }
 

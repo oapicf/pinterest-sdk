@@ -18,7 +18,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsFeedIngestion")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedIngestion   {
   private Date createdAt;
   private String feedId;
@@ -42,6 +42,7 @@ public class CatalogsFeedIngestion   {
   }
 
   /**
+   * Timestamp of the feed ingestion.
    **/
   public CatalogsFeedIngestion createdAt(Date createdAt) {
     this.createdAt = createdAt;
@@ -49,7 +50,7 @@ public class CatalogsFeedIngestion   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "Timestamp of the feed ingestion.")
   @JsonProperty(required = true, value = "created_at")
   @NotNull public Date getCreatedAt() {
     return createdAt;
@@ -61,6 +62,7 @@ public class CatalogsFeedIngestion   {
   }
 
   /**
+   * Catalog Feed id pertaining to the feed ingestion.
    **/
   public CatalogsFeedIngestion feedId(String feedId) {
     this.feedId = feedId;
@@ -68,9 +70,9 @@ public class CatalogsFeedIngestion   {
   }
 
   
-  @ApiModelProperty(example = "56789", required = true, value = "")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the feed ingestion.")
   @JsonProperty(required = true, value = "feed_id")
-  @NotNull public String getFeedId() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getFeedId() {
     return feedId;
   }
 
@@ -80,6 +82,7 @@ public class CatalogsFeedIngestion   {
   }
 
   /**
+   * Unique identifier of a feed ingestion.
    **/
   public CatalogsFeedIngestion id(String id) {
     this.id = id;
@@ -87,9 +90,9 @@ public class CatalogsFeedIngestion   {
   }
 
   
-  @ApiModelProperty(example = "01234", required = true, value = "")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Unique identifier of a feed ingestion.")
   @JsonProperty(required = true, value = "id")
-  @NotNull public String getId() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
@@ -99,6 +102,7 @@ public class CatalogsFeedIngestion   {
   }
 
   /**
+   * Status of the feed ingestion.
    **/
   public CatalogsFeedIngestion status(CatalogsFeedProcessingStatus status) {
     this.status = status;
@@ -106,7 +110,7 @@ public class CatalogsFeedIngestion   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Status of the feed ingestion.")
   @JsonProperty(required = true, value = "status")
   @NotNull public CatalogsFeedProcessingStatus getStatus() {
     return status;
@@ -156,12 +160,8 @@ public class CatalogsFeedIngestion   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

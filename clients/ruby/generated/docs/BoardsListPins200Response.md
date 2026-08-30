@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** |  | [optional] |
-| **items** | [**Array&lt;Pin&gt;**](Pin.md) | Pins |  |
+| **items** | [**Array&lt;PinRead&gt;**](PinRead.md) |  |  |
 
 ## Example
 

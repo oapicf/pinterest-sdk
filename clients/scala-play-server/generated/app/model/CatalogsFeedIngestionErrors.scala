@@ -14,7 +14,7 @@ import play.api.libs.json._
   * @param LARGE_PRODUCT_COUNT_DECREASE The product count has decreased by more than 99% compared to the last successful ingestion.
   * @param LINE_LEVEL_INTERNAL_ERROR We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class CatalogsFeedIngestionErrors(
   ACCOUNT_FLAGGED: Option[Int],
   FETCH_GOOGLE_SHEET_NOT_SHARED: Option[Int],
@@ -23,19 +23,11 @@ case class CatalogsFeedIngestionErrors(
   IMAGE_INVALID_FILE: Option[Int],
   IMAGE_LEVEL_INTERNAL_ERROR: Option[Int],
   IMAGE_MALFORMED_URL: Option[Int],
-  LARGE_PRODUCT_COUNT_DECREASE: Option[CatalogsFeedIngestionErrors.LARGEPRODUCTCOUNTDECREASE.Value],
+  LARGE_PRODUCT_COUNT_DECREASE: Option[Int],
   LINE_LEVEL_INTERNAL_ERROR: Option[Int]
 )
 
 object CatalogsFeedIngestionErrors {
   implicit lazy val catalogsFeedIngestionErrorsJsonFormat: Format[CatalogsFeedIngestionErrors] = Json.format[CatalogsFeedIngestionErrors]
-
-  // noinspection TypeAnnotation
-  object LARGEPRODUCTCOUNTDECREASE extends Enumeration {
-    val _1 = Value("1")
-
-    type LARGEPRODUCTCOUNTDECREASE = Value
-    implicit lazy val LARGEPRODUCTCOUNTDECREASEJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
 }
 

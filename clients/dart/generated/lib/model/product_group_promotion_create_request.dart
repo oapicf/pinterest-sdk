@@ -54,10 +54,10 @@ class ProductGroupPromotionCreateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProductGroupPromotionCreateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProductGroupPromotionCreateRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'ad_group_id'), 'Required key "ProductGroupPromotionCreateRequest[ad_group_id]" is missing from JSON.');
+        assert(json[r'ad_group_id'] != null, 'Required key "ProductGroupPromotionCreateRequest[ad_group_id]" has a null value in JSON.');
+        assert(json.containsKey(r'product_group_promotion'), 'Required key "ProductGroupPromotionCreateRequest[product_group_promotion]" is missing from JSON.');
+        assert(json[r'product_group_promotion'] != null, 'Required key "ProductGroupPromotionCreateRequest[product_group_promotion]" has a null value in JSON.');
         return true;
       }());
 

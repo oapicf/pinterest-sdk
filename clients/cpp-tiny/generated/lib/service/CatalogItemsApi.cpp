@@ -65,7 +65,7 @@ using namespace Tiny;
         CatalogItemsApi::
         itemsBatch_post(
             
-            Items_batch_post_request itemsBatchPostRequest
+            CatalogsItemsBatchPostRequest catalogsItemsBatchPostRequest
             , 
             
             std::string adAccountId
@@ -90,11 +90,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | itemsBatchPostRequest
+            // Body     | catalogsItemsBatchPostRequest
 
 
 
-            payload = itemsBatchPostRequest.toJson().dump();
+            payload = catalogsItemsBatchPostRequest.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -113,7 +113,7 @@ using namespace Tiny;
         }
 
         Response<
-            CatalogsItems
+            Items_post_200_response
         >
         CatalogItemsApi::
         items_post(
@@ -158,10 +158,10 @@ using namespace Tiny;
 
 
 
-            CatalogsItems obj(output_string);
+            Items_post_200_response obj(output_string);
 
 
-            Response<CatalogsItems> response(obj, httpCode);
+            Response<Items_post_200_response> response(obj, httpCode);
             return response;
         }
 

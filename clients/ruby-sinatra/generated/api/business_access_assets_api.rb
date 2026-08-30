@@ -5,9 +5,9 @@ MyApp.add_route('POST', '/v5/businesses/{business_id}/asset_groups', {
   "resourcePath" => "/BusinessAccessAssets",
   "summary" => "Create a new asset group.",
   "nickname" => "asset_group/create",
-  "responseClass" => "CreateAssetGroupResponse",
+  "responseClass" => "AssetGroupInput",
   "endpoint" => "/businesses/{business_id}/asset_groups",
-  "notes" => "Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.",
+  "notes" => "Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.",
   "parameters" => [
     {
       "name" => "business_id",
@@ -18,7 +18,7 @@ MyApp.add_route('POST', '/v5/businesses/{business_id}/asset_groups', {
     {
       "name" => "body",
       "description" => "",
-      "dataType" => "CreateAssetGroupBody",
+      "dataType" => "AssetGroupInputCreate",
       "paramType" => "body",
     }
     ]}) do
@@ -33,7 +33,7 @@ MyApp.add_route('DELETE', '/v5/businesses/{business_id}/asset_groups', {
   "resourcePath" => "/BusinessAccessAssets",
   "summary" => "Delete asset groups.",
   "nickname" => "asset_group/delete",
-  "responseClass" => "DeleteAssetGroupResponse",
+  "responseClass" => "AssetGroupDeletion",
   "endpoint" => "/businesses/{business_id}/asset_groups",
   "notes" => "Delete a batch of asset groups.",
   "parameters" => [
@@ -46,7 +46,7 @@ MyApp.add_route('DELETE', '/v5/businesses/{business_id}/asset_groups', {
     {
       "name" => "body",
       "description" => "",
-      "dataType" => "DeleteAssetGroupBody",
+      "dataType" => "AssetGroupDeletionDelete",
       "paramType" => "body",
     }
     ]}) do
@@ -61,7 +61,7 @@ MyApp.add_route('PATCH', '/v5/businesses/{business_id}/asset_groups', {
   "resourcePath" => "/BusinessAccessAssets",
   "summary" => "Update asset groups.",
   "nickname" => "asset_group/update",
-  "responseClass" => "UpdateAssetGroupResponse",
+  "responseClass" => "AssetGroupModification",
   "endpoint" => "/businesses/{business_id}/asset_groups",
   "notes" => "Update a batch of asset groups with the specified parameters.",
   "parameters" => [
@@ -74,7 +74,7 @@ MyApp.add_route('PATCH', '/v5/businesses/{business_id}/asset_groups', {
     {
       "name" => "body",
       "description" => "",
-      "dataType" => "UpdateAssetGroupBody",
+      "dataType" => "AssetGroupModificationReadOrUpdate",
       "paramType" => "body",
     }
     ]}) do
@@ -94,6 +94,14 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/assets/{asset_id}/members',
   "notes" => "Get all the members the requesting business has granted access to on the given asset.",
   "parameters" => [
     {
+      "name" => "start_index",
+      "description" => "An index to start fetching the results from. Only the results starting from this index will be returned.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "defaultValue" => "0",
+      "paramType" => "query",
+    },
+    {
       "name" => "fetch_system_users",
       "description" => "Fetches system users if True. Fetches regular user employees if False.",
       "dataType" => "Boolean",
@@ -110,18 +118,10 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/assets/{asset_id}/members',
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
-      "paramType" => "query",
-    },
-    {
-      "name" => "start_index",
-      "description" => "An index to start fetching the results from. Only the results starting from this index will be returned.",
-      "dataType" => "Integer",
-      "allowableValues" => "",
-      "defaultValue" => "0",
       "paramType" => "query",
     },
     {
@@ -148,7 +148,7 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/assets/{asset_id}/partners'
   "resourcePath" => "/BusinessAccessAssets",
   "summary" => "Get partners with access to asset",
   "nickname" => "business_asset_partners/get",
-  "responseClass" => "business_asset_partners_get_200_response",
+  "responseClass" => "business_asset_members_get_200_response",
   "endpoint" => "/businesses/{business_id}/assets/{asset_id}/partners",
   "notes" => "Get all the partners the requesting business has granted access to on the given asset. Note: If the asset has been shared with you, an empty array will be returned. This is because an asset shared with you cannot be shared with a different partner.",
   "parameters" => [
@@ -169,7 +169,7 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/assets/{asset_id}/partners'
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -249,7 +249,7 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/assets', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -273,7 +273,7 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/members/{member_id}/assets'
   "resourcePath" => "/BusinessAccessAssets",
   "summary" => "Get assets assigned to a member",
   "nickname" => "business_member_assets/get",
-  "responseClass" => "business_member_assets_get_200_response",
+  "responseClass" => "BusinessMemberAssetsGetResponse",
   "endpoint" => "/businesses/{business_id}/members/{member_id}/assets",
   "notes" => "Get assets on which you assigned asset permissions to the given member. Can be used to: - get all assets, regardless of asset type or - get assets of one asset type by using the asset_type query. The return response will include the permissions the member has to that asset and the asset type.",
   "parameters" => [
@@ -281,7 +281,7 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/members/{member_id}/assets'
       "name" => "asset_type",
       "description" => "A resource type to filter the assets by. Only assets of the specified type will be returned.",
       "dataType" => "String",
-      "allowableValues" => "[AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER]",
+      "allowableValues" => "[AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER, CONVERSION_TAG]",
       "defaultValue" => "'AD_ACCOUNT'",
       "paramType" => "query",
     },
@@ -294,6 +294,49 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/members/{member_id}/assets'
       "paramType" => "query",
     },
     {
+      "name" => "sort_by",
+      "description" => "The field to sort member assets by",
+      "dataType" => "AssetSortBy",
+      "allowableValues" => "[NAME, ID, PERMISSIONS]",
+      "paramType" => "query",
+    },
+    {
+      "name" => "sort_ascending",
+      "description" => "Sort assets in ascending order",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "defaultValue" => "true",
+      "paramType" => "query",
+    },
+    {
+      "name" => "search_by",
+      "description" => "The field to search member assets by",
+      "dataType" => "AssetSearchBy",
+      "allowableValues" => "[NAME, ID, NAME_OR_ID, OWNER_NAME, NAME_OR_OWNER]",
+      "paramType" => "query",
+    },
+    {
+      "name" => "search_value",
+      "description" => "The value to search for",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "asset_permission_type",
+      "description" => "The type of asset permission to filter by",
+      "dataType" => "AssetPermissionType",
+      "allowableValues" => "[AGGREGATED_PERMISSION, DIRECT_PERMISSION]",
+      "paramType" => "query",
+    },
+    {
+      "name" => "ad_account_statuses",
+      "description" => "A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.",
+      "dataType" => "Array<NonDraftEntityStatus>",
+      "collectionFormat" => "multi",
+      "paramType" => "query",
+    },
+    {
       "name" => "bookmark",
       "description" => "Cursor used to fetch the next page of items",
       "dataType" => "String",
@@ -302,7 +345,7 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/members/{member_id}/assets'
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -344,8 +387,8 @@ MyApp.add_route('DELETE', '/v5/businesses/{business_id}/members/assets/access', 
     },
     {
       "name" => "body",
-      "description" => "List member assset permissions to delete.",
-      "dataType" => "BusinessMembersAssetAccessDeleteRequest",
+      "description" => "",
+      "dataType" => "BusinessMembersAssetAccessDeleteBody",
       "paramType" => "body",
     }
     ]}) do
@@ -362,7 +405,7 @@ MyApp.add_route('PATCH', '/v5/businesses/{business_id}/members/assets/access', {
   "nickname" => "business_members_asset_access/update",
   "responseClass" => "UpdateMemberAssetsResultsResponseArray",
   "endpoint" => "/businesses/{business_id}/members/assets/access",
-  "notes" => "Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. ",
+  "notes" => "Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.",
   "parameters" => [
     {
       "name" => "business_id",
@@ -372,7 +415,7 @@ MyApp.add_route('PATCH', '/v5/businesses/{business_id}/members/assets/access', {
     },
     {
       "name" => "body",
-      "description" => "List of member asset permissions to create or update.",
+      "description" => "",
       "dataType" => "UpdateMemberAssetAccessBody",
       "paramType" => "body",
     }
@@ -394,16 +437,17 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/partners/{partner_id}/asset
   "parameters" => [
     {
       "name" => "partner_type",
-      "description" => "Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.",
-      "dataType" => "PartnerType",
+      "description" => "Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.",
+      "dataType" => "String",
       "allowableValues" => "[INTERNAL, EXTERNAL]",
+      "defaultValue" => "'INTERNAL'",
       "paramType" => "query",
     },
     {
       "name" => "asset_type",
       "description" => "A resource type to filter the assets by. Only assets of the specified type will be returned.",
       "dataType" => "String",
-      "allowableValues" => "[AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER]",
+      "allowableValues" => "[AD_ACCOUNT, PROFILE, ASSET_GROUP, PINNER_LIST, CONVERSION_TAG, CATALOG, CONSUMER, CONVERSION_SEGMENT]",
       "defaultValue" => "'AD_ACCOUNT'",
       "paramType" => "query",
     },
@@ -416,11 +460,32 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/partners/{partner_id}/asset
       "paramType" => "query",
     },
     {
-      "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
-      "dataType" => "Integer",
+      "name" => "sort_by",
+      "description" => "The field to sort member assets by",
+      "dataType" => "AssetSortBy",
+      "allowableValues" => "[NAME, ID, PERMISSIONS]",
+      "paramType" => "query",
+    },
+    {
+      "name" => "sort_ascending",
+      "description" => "Sort assets in ascending order",
+      "dataType" => "Boolean",
       "allowableValues" => "",
-      "defaultValue" => "25",
+      "defaultValue" => "true",
+      "paramType" => "query",
+    },
+    {
+      "name" => "search_by",
+      "description" => "The field to search member assets by",
+      "dataType" => "AssetSearchBy",
+      "allowableValues" => "[NAME, ID, NAME_OR_ID, OWNER_NAME, NAME_OR_OWNER]",
+      "paramType" => "query",
+    },
+    {
+      "name" => "search_value",
+      "description" => "The value to search for",
+      "dataType" => "String",
+      "allowableValues" => "",
       "paramType" => "query",
     },
     {
@@ -428,6 +493,14 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/partners/{partner_id}/asset
       "description" => "Cursor used to fetch the next page of items",
       "dataType" => "String",
       "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "page_size",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "defaultValue" => "25",
       "paramType" => "query",
     },
     {
@@ -454,7 +527,7 @@ MyApp.add_route('DELETE', '/v5/businesses/{business_id}/partners/assets', {
   "resourcePath" => "/BusinessAccessAssets",
   "summary" => "Delete partner access to asset",
   "nickname" => "delete_partner_asset_access_handler_impl",
-  "responseClass" => "DeletePartnerAssetsResultsResponseArray",
+  "responseClass" => "DeletePartnerAssetAccessResultsResponseArray",
   "endpoint" => "/businesses/{business_id}/partners/assets",
   "notes" => "Terminate multiple partners' access to an asset. If - partner_type=INTERNAL: You will terminate a partner's asset access to your business assets. - partner_type=EXTERNAL: You will terminate your own access to your partner's business assets.",
   "parameters" => [
@@ -494,7 +567,7 @@ MyApp.add_route('PATCH', '/v5/businesses/{business_id}/partners/assets', {
     },
     {
       "name" => "body",
-      "description" => "A list of assets and permissions to assign to your partners.",
+      "description" => "",
       "dataType" => "UpdatePartnerAssetAccessBody",
       "paramType" => "body",
     }

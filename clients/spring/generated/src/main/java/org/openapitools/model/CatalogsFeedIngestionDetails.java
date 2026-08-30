@@ -10,19 +10,19 @@ import org.openapitools.model.CatalogsFeedIngestionWarnings;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsFeedIngestionDetails
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedIngestionDetails {
 
   private CatalogsFeedIngestionErrors errors;
@@ -60,6 +60,7 @@ public class CatalogsFeedIngestionDetails {
     return errors;
   }
 
+  @JsonProperty("errors")
   public void setErrors(CatalogsFeedIngestionErrors errors) {
     this.errors = errors;
   }
@@ -80,6 +81,7 @@ public class CatalogsFeedIngestionDetails {
     return info;
   }
 
+  @JsonProperty("info")
   public void setInfo(CatalogsFeedIngestionInfo info) {
     this.info = info;
   }
@@ -100,6 +102,7 @@ public class CatalogsFeedIngestionDetails {
     return warnings;
   }
 
+  @JsonProperty("warnings")
   public void setWarnings(CatalogsFeedIngestionWarnings warnings) {
     this.warnings = warnings;
   }
@@ -138,11 +141,8 @@ public class CatalogsFeedIngestionDetails {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

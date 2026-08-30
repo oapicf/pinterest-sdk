@@ -35,6 +35,7 @@ CatalogsCreativeAssetsAttributes::__init()
 	//link = std::string();
 	//title = std::string();
 	//visibility = std::string();
+	//new std::list()std::list> ai_disclosures;
 	//image_link = std::string();
 	//video_link = std::string();
 }
@@ -101,6 +102,11 @@ CatalogsCreativeAssetsAttributes::__cleanup()
 	//
 	//delete visibility;
 	//visibility = NULL;
+	//}
+	//if(ai_disclosures != NULL) {
+	//ai_disclosures.RemoveAll(true);
+	//delete ai_disclosures;
+	//ai_disclosures = NULL;
 	//}
 	//if(image_link != NULL) {
 	//
@@ -252,6 +258,30 @@ CatalogsCreativeAssetsAttributes::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *ai_disclosuresKey = "ai_disclosures";
+	node = json_object_get_member(pJsonObject, ai_disclosuresKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<CatalogsAiContentDisclosure> new_list;
+			CatalogsAiContentDisclosure inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("CatalogsAiContentDisclosure")) {
+					jsonToValue(&inst, temp_json, "CatalogsAiContentDisclosure", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			ai_disclosures = new_list;
+		}
+		
+	}
 	const gchar *image_linkKey = "image_link";
 	node = json_object_get_member(pJsonObject, image_linkKey);
 	if (node !=NULL) {
@@ -394,6 +424,31 @@ CatalogsCreativeAssetsAttributes::toJson()
 	}
 	const gchar *visibilityKey = "visibility";
 	json_object_set_member(pJsonObject, visibilityKey, node);
+	if (isprimitive("CatalogsAiContentDisclosure")) {
+		list<CatalogsAiContentDisclosure> new_list = static_cast<list <CatalogsAiContentDisclosure> > (getAiDisclosures());
+		node = converttoJson(&new_list, "CatalogsAiContentDisclosure", "array");
+	} else {
+		node = json_node_alloc();
+		list<CatalogsAiContentDisclosure> new_list = static_cast<list <CatalogsAiContentDisclosure> > (getAiDisclosures());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<CatalogsAiContentDisclosure>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			CatalogsAiContentDisclosure obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *ai_disclosuresKey = "ai_disclosures";
+	json_object_set_member(pJsonObject, ai_disclosuresKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getImageLink();
 		node = converttoJson(&obj, "std::string", "");
@@ -562,6 +617,18 @@ void
 CatalogsCreativeAssetsAttributes::setVisibility(std::string  visibility)
 {
 	this->visibility = visibility;
+}
+
+std::list<CatalogsAiContentDisclosure>
+CatalogsCreativeAssetsAttributes::getAiDisclosures()
+{
+	return ai_disclosures;
+}
+
+void
+CatalogsCreativeAssetsAttributes::setAiDisclosures(std::list <CatalogsAiContentDisclosure> ai_disclosures)
+{
+	this->ai_disclosures = ai_disclosures;
 }
 
 std::string

@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -29,18 +34,80 @@ type ConversionHealthSelectionItem struct {
 	// Overall status for this selection item
 	Status *interface{} `json:"status"`
 }
-
-// AssertConversionHealthSelectionItemRequired checks if the required fields are not zero-ed
-func AssertConversionHealthSelectionItemRequired(obj ConversionHealthSelectionItem) error {
-	elements := map[string]interface{}{
-		"status": obj.Status,
+// UnmarshalJSON validates required property keys then unmarshals into ConversionHealthSelectionItem
+func (o *ConversionHealthSelectionItem) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"status",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"status": true,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"conversionType": {},
+		"criteria": {},
+		"ingestionSource": {},
+		"status": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded ConversionHealthSelectionItem
+
+	if value, exists := allProperties["conversionType"]; exists {
+		if err = json.Unmarshal(value, &decoded.ConversionType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["criteria"]; exists {
+		if err = json.Unmarshal(value, &decoded.Criteria); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["ingestionSource"]; exists {
+		if err = json.Unmarshal(value, &decoded.IngestionSource); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["status"]; exists {
+		if err = json.Unmarshal(value, &decoded.Status); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertConversionHealthSelectionItemRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertConversionHealthSelectionItemRequired(obj ConversionHealthSelectionItem) error {
 	return nil
 }
 

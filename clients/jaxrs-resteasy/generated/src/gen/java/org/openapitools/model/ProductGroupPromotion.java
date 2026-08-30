@@ -8,108 +8,37 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CollectionsHeaderType;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
+import org.openapitools.model.PreferredMediaType;
+import org.openapitools.model.ProductGroupPromotionCustomizableCTAType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ProductGroupPromotion   {
   
   private String adGroupId;
   private Integer bidInMicroCurrency;
   private String catalogProductGroupId;
   private String catalogProductGroupName;
-
-  /**
-   * Collections ad header type
-   */
-  public enum CollectionsHeaderTypeEnum {
-    SHOP_THIS_COLLECTION("SHOP_THIS_COLLECTION"),
-
-        EXPLORE_THIS_COLLECTION("EXPLORE_THIS_COLLECTION"),
-
-        NO_HEADER("NO_HEADER"),
-
-        ON_SALE("ON_SALE"),
-
-        GET_DEAL("GET_DEAL");
-    private String value;
-
-    CollectionsHeaderTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private CollectionsHeaderTypeEnum collectionsHeaderType;
+  private CollectionsHeaderType collectionsHeaderType;
   private String collectionsHeroDestinationUrl;
   private String collectionsHeroPinId;
   private CreativeType creativeType;
-
-  /**
-   * Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-   */
-  public enum CustomizableCtaTypeEnum {
-    SHOP_NOW("SHOP_NOW"),
-
-        BOOK_NOW("BOOK_NOW"),
-
-        ON_SALE("ON_SALE"),
-
-        GET_DEAL("GET_DEAL"),
-
-        BUY_ONLINE_PICKUP_IN_STORE("BUY_ONLINE_PICKUP_IN_STORE");
-    private String value;
-
-    CustomizableCtaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private CustomizableCtaTypeEnum customizableCtaType;
+  private ProductGroupPromotionCustomizableCTAType customizableCtaType;
   private String definition;
   private GridClickType gridClickType;
   private String id;
   private Boolean included;
   private Boolean isGenerateBackground;
+  private Boolean isImageAutoResizing;
   private Boolean isMdl;
   private String parentId;
-
-  /**
-   * Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
-   */
-  public enum PreferredMediaTypeEnum {
-    VIDEO("VIDEO"),
-
-        IMAGE("IMAGE");
-    private String value;
-
-    PreferredMediaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private PreferredMediaTypeEnum preferredMediaType;
+  private PreferredMediaType preferredMediaType;
   private String relativeDefinition;
   private String selectedImageTag;
   private String selectedVideoTag;
@@ -145,10 +74,10 @@ public class ProductGroupPromotion   {
   }
 
   /**
-   * ID of the catalogs product group that this product group promotion references
+   * ID of the catalogs product group that this product group promotion references (required for create operations)
    **/
   
-  @ApiModelProperty(example = "1231235", value = "ID of the catalogs product group that this product group promotion references")
+  @ApiModelProperty(example = "1231235", value = "ID of the catalogs product group that this product group promotion references (required for create operations)")
   @JsonProperty("catalog_product_group_id")
  @Pattern(regexp="^\\d+$")  public String getCatalogProductGroupId() {
     return catalogProductGroupId;
@@ -171,15 +100,15 @@ public class ProductGroupPromotion   {
   }
 
   /**
-   * Collections ad header type
    **/
   
-  @ApiModelProperty(example = "SHOP_THIS_COLLECTION", value = "Collections ad header type")
+  @ApiModelProperty(value = "")
   @JsonProperty("collections_header_type")
-  public CollectionsHeaderTypeEnum getCollectionsHeaderType() {
+  @Valid
+  public CollectionsHeaderType getCollectionsHeaderType() {
     return collectionsHeaderType;
   }
-  public void setCollectionsHeaderType(CollectionsHeaderTypeEnum collectionsHeaderType) {
+  public void setCollectionsHeaderType(CollectionsHeaderType collectionsHeaderType) {
     this.collectionsHeaderType = collectionsHeaderType;
   }
 
@@ -223,15 +152,15 @@ public class ProductGroupPromotion   {
   }
 
   /**
-   * Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
    **/
   
-  @ApiModelProperty(example = "SHOP_NOW", value = "Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE")
+  @ApiModelProperty(value = "")
   @JsonProperty("customizable_cta_type")
-  public CustomizableCtaTypeEnum getCustomizableCtaType() {
+  @Valid
+  public ProductGroupPromotionCustomizableCTAType getCustomizableCtaType() {
     return customizableCtaType;
   }
-  public void setCustomizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
+  public void setCustomizableCtaType(ProductGroupPromotionCustomizableCTAType customizableCtaType) {
     this.customizableCtaType = customizableCtaType;
   }
 
@@ -262,10 +191,10 @@ public class ProductGroupPromotion   {
   }
 
   /**
-   * ID of the product group promotion.
+   * ID of the product group promotion (required for update operations).
    **/
   
-  @ApiModelProperty(example = "2680059592705", value = "ID of the product group promotion.")
+  @ApiModelProperty(example = "2680059592705", value = "ID of the product group promotion (required for update operations).")
   @JsonProperty("id")
  @Pattern(regexp="^\\d+$")  public String getId() {
     return id;
@@ -301,6 +230,19 @@ public class ProductGroupPromotion   {
   }
 
   /**
+   * Set to &#x60;TRUE&#x60; to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.
+   **/
+  
+  @ApiModelProperty(example = "true", value = "Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.")
+  @JsonProperty("is_image_auto_resizing")
+  public Boolean getIsImageAutoResizing() {
+    return isImageAutoResizing;
+  }
+  public void setIsImageAutoResizing(Boolean isImageAutoResizing) {
+    this.isImageAutoResizing = isImageAutoResizing;
+  }
+
+  /**
    * If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
    **/
   
@@ -327,15 +269,15 @@ public class ProductGroupPromotion   {
   }
 
   /**
-   * Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
    **/
   
-  @ApiModelProperty(example = "VIDEO", value = "Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.")
+  @ApiModelProperty(value = "")
   @JsonProperty("preferred_media_type")
-  public PreferredMediaTypeEnum getPreferredMediaType() {
+  @Valid
+  public PreferredMediaType getPreferredMediaType() {
     return preferredMediaType;
   }
-  public void setPreferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+  public void setPreferredMediaType(PreferredMediaType preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
   }
 
@@ -454,6 +396,7 @@ public class ProductGroupPromotion   {
         Objects.equals(this.id, productGroupPromotion.id) &&
         Objects.equals(this.included, productGroupPromotion.included) &&
         Objects.equals(this.isGenerateBackground, productGroupPromotion.isGenerateBackground) &&
+        Objects.equals(this.isImageAutoResizing, productGroupPromotion.isImageAutoResizing) &&
         Objects.equals(this.isMdl, productGroupPromotion.isMdl) &&
         Objects.equals(this.parentId, productGroupPromotion.parentId) &&
         Objects.equals(this.preferredMediaType, productGroupPromotion.preferredMediaType) &&
@@ -468,7 +411,7 @@ public class ProductGroupPromotion   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroupId, bidInMicroCurrency, catalogProductGroupId, catalogProductGroupName, collectionsHeaderType, collectionsHeroDestinationUrl, collectionsHeroPinId, creativeType, customizableCtaType, definition, gridClickType, id, included, isGenerateBackground, isMdl, parentId, preferredMediaType, relativeDefinition, selectedImageTag, selectedVideoTag, slideshowCollectionsDescription, slideshowCollectionsTitle, status, trackingUrl);
+    return Objects.hash(adGroupId, bidInMicroCurrency, catalogProductGroupId, catalogProductGroupName, collectionsHeaderType, collectionsHeroDestinationUrl, collectionsHeroPinId, creativeType, customizableCtaType, definition, gridClickType, id, included, isGenerateBackground, isImageAutoResizing, isMdl, parentId, preferredMediaType, relativeDefinition, selectedImageTag, selectedVideoTag, slideshowCollectionsDescription, slideshowCollectionsTitle, status, trackingUrl);
   }
 
   @Override
@@ -490,6 +433,7 @@ public class ProductGroupPromotion   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    included: ").append(toIndentedString(included)).append("\n");
     sb.append("    isGenerateBackground: ").append(toIndentedString(isGenerateBackground)).append("\n");
+    sb.append("    isImageAutoResizing: ").append(toIndentedString(isImageAutoResizing)).append("\n");
     sb.append("    isMdl: ").append(toIndentedString(isMdl)).append("\n");
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    preferredMediaType: ").append(toIndentedString(preferredMediaType)).append("\n");
@@ -509,10 +453,7 @@ public class ProductGroupPromotion   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

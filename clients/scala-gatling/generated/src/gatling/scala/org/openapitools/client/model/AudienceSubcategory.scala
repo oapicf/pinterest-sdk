@@ -3,15 +3,10 @@ package org.openapitools.client.model
 
 
 case class AudienceSubcategory (
-    /* Subinterest ID. */
     _id: Option[String],
-    /* Subinterest affinity index. */
     _index: Option[Number],
-    /* Interest unique key (same as ID). */
     _key: Option[String],
-    /* Subinterest name. */
     _name: Option[String],
-    /* Subinterest's percent of category's total audience. */
     _ratio: Option[Number]
 )
 object AudienceSubcategory {

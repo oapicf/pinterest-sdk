@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## LeadsExportCreate
 
-> LeadsExportCreateResponse LeadsExportCreate(ctx, adAccountId).LeadsExportCreateRequest(leadsExportCreateRequest).Execute()
+> LeadsExports LeadsExportCreate(ctx, adAccountId).LeadsExportsCreate(leadsExportsCreate).Execute()
 
 Create a request to export leads collected from a lead ad
 
@@ -31,16 +31,16 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	leadsExportCreateRequest := *openapiclient.NewLeadsExportCreateRequest("687201361754", "2020-12-20", "2020-12-20") // LeadsExportCreateRequest | 
+	leadsExportsCreate := *openapiclient.NewLeadsExportsCreate("687201361754", "2020-12-20", "2020-12-20") // LeadsExportsCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LeadsExportAPI.LeadsExportCreate(context.Background(), adAccountId).LeadsExportCreateRequest(leadsExportCreateRequest).Execute()
+	resp, r, err := apiClient.LeadsExportAPI.LeadsExportCreate(context.Background(), adAccountId).LeadsExportsCreate(leadsExportsCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LeadsExportAPI.LeadsExportCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `LeadsExportCreate`: LeadsExportCreateResponse
+	// response from `LeadsExportCreate`: LeadsExports
 	fmt.Fprintf(os.Stdout, "Response from `LeadsExportAPI.LeadsExportCreate`: %v\n", resp)
 }
 ```
@@ -61,11 +61,11 @@ Other parameters are passed through a pointer to a apiLeadsExportCreateRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **leadsExportCreateRequest** | [**LeadsExportCreateRequest**](LeadsExportCreateRequest.md) |  | 
+ **leadsExportsCreate** | [**LeadsExportsCreate**](LeadsExportsCreate.md) |  | 
 
 ### Return type
 
-[**LeadsExportCreateResponse**](LeadsExportCreateResponse.md)
+[**LeadsExports**](LeadsExports.md)
 
 ### Authorization
 
@@ -103,7 +103,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	leadsExportId := "123755885175" // string | lead_export_id token returned from the create a lead export endpoint
+	leadsExportId := "leadsExportId_example" // string | lead_export_id token returned from the create a lead export endpoint
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

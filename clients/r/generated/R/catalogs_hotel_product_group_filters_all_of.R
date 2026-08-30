@@ -62,9 +62,32 @@ CatalogsHotelProductGroupFiltersAllOf <- R6::R6Class(
       CatalogsHotelProductGroupFiltersAllOfObject <- list()
       if (!is.null(self$`all_of`)) {
         CatalogsHotelProductGroupFiltersAllOfObject[["all_of"]] <-
-          lapply(self$`all_of`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`all_of`)
       }
       return(CatalogsHotelProductGroupFiltersAllOfObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

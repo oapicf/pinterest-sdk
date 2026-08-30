@@ -55,13 +55,16 @@ import Handler.CatalogFeeds
 import Handler.CatalogItems
 import Handler.CatalogProductGroups
 import Handler.CatalogReports
+import Handler.CatalogSupplemental
 import Handler.Catalogs
+import Handler.ConversionDeletionRequests
 import Handler.ConversionEqs
 import Handler.ConversionEvents
 import Handler.ConversionTags
 import Handler.Conversions
 import Handler.CustomerListUploads
 import Handler.CustomerLists
+import Handler.CustomerSegment
 import Handler.Integrations
 import Handler.Keywords
 import Handler.Labels
@@ -74,14 +77,16 @@ import Handler.Notification
 import Handler.Oauth
 import Handler.OrderLines
 import Handler.Pins
-import Handler.ProductCategories
 import Handler.ProductGroupPromotions
+import Handler.ProductTags
 import Handler.Promotions
 import Handler.Resources
+import Handler.Schedules
 import Handler.Search
 import Handler.TargetingTemplate
 import Handler.Terms
 import Handler.TermsOfService
+import Handler.Trends
 import Handler.UserAccount
 
 -- This line actually creates our YesodDispatch instance. It is the second half

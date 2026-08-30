@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **description** | **String** |  | [optional] 
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [optional] 
 **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
-**name** | **String** |  | [optional] 
+**name** | **String** | Name of catalog product group | [optional] 
 
 
 

@@ -1,0 +1,13 @@
+# Org.OpenAPITools.Model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+Resource create or update operation model with required body fields (no OptionalProperties).
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AudienceId** | **string** | Unique identifier of an audience | 
+**OperationType** | **OperationType** |  | 
+**RecipientAccountIds** | **List&lt;string&gt;** | Ad account IDs to share with or revoke from (request) / that received the audience (response). | 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
+

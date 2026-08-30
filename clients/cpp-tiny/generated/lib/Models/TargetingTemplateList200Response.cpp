@@ -7,7 +7,7 @@ using namespace Tiny;
 Targeting_template_list_200_response::Targeting_template_list_200_response()
 {
 	bookmark = std::string();
-	items = std::list<TargetingTemplateGetResponseData>();
+	items = std::list<TargetingTemplate>();
 }
 
 Targeting_template_list_200_response::Targeting_template_list_200_response(std::string jsonString)
@@ -45,8 +45,8 @@ Targeting_template_list_200_response::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<TargetingTemplateGetResponseData> items_list;
-        TargetingTemplateGetResponseData element;
+        std::list<TargetingTemplate> items_list;
+        TargetingTemplate element;
         for(auto& var : value.array_range())
         {
 
@@ -78,12 +78,12 @@ Targeting_template_list_200_response::toJson()
 
 
 
-    std::list<TargetingTemplateGetResponseData> items_list = getItems();
+    std::list<TargetingTemplate> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        TargetingTemplateGetResponseData obj = var;
+        TargetingTemplate obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -102,19 +102,19 @@ Targeting_template_list_200_response::getBookmark()
 }
 
 void
-Targeting_template_list_200_response::setBookmark(std::string  bookmark)
+Targeting_template_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
 
-std::list<TargetingTemplateGetResponseData>
+std::list<TargetingTemplate>
 Targeting_template_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Targeting_template_list_200_response::setItems(std::list <TargetingTemplateGetResponseData> items)
+Targeting_template_list_200_response::setItems(std::list<TargetingTemplate> items)
 {
 	this->items = items;
 }

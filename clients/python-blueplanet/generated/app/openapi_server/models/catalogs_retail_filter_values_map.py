@@ -6,6 +6,10 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.gender import Gender  # noqa: F401,E501
+from app.openapi_server.models.media_type import MediaType  # noqa: F401,E501
+from app.openapi_server.models.product_availability import ProductAvailability  # noqa: F401,E501
+from app.openapi_server.models.product_condition import ProductCondition  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -15,7 +19,7 @@ class CatalogsRetailFilterValuesMap(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, ad_image_tags: List[str]=None, ad_video_tags: List[str]=None, availability: List[str]=None, brand: List[str]=None, condition: List[str]=None, custom_label_0: List[str]=None, custom_label_1: List[str]=None, custom_label_2: List[str]=None, custom_label_3: List[str]=None, custom_label_4: List[str]=None, gender: List[str]=None, google_product_category_0: List[str]=None, google_product_category_1: List[str]=None, google_product_category_2: List[str]=None, google_product_category_3: List[str]=None, google_product_category_4: List[str]=None, google_product_category_5: List[str]=None, google_product_category_6: List[str]=None, media_type: List[str]=None, product_type_0: List[str]=None, product_type_1: List[str]=None, product_type_2: List[str]=None, product_type_3: List[str]=None, product_type_4: List[str]=None):  # noqa: E501
+    def __init__(self, ad_image_tags: List[str]=None, ad_video_tags: List[str]=None, availability: List[ProductAvailability]=None, brand: List[str]=None, condition: List[ProductCondition]=None, custom_label_0: List[str]=None, custom_label_1: List[str]=None, custom_label_2: List[str]=None, custom_label_3: List[str]=None, custom_label_4: List[str]=None, gender: List[Gender]=None, google_product_category_0: List[str]=None, google_product_category_1: List[str]=None, google_product_category_2: List[str]=None, google_product_category_3: List[str]=None, google_product_category_4: List[str]=None, google_product_category_5: List[str]=None, google_product_category_6: List[str]=None, media_type: List[MediaType]=None, product_type_0: List[str]=None, product_type_1: List[str]=None, product_type_2: List[str]=None, product_type_3: List[str]=None, product_type_4: List[str]=None):  # noqa: E501
         """CatalogsRetailFilterValuesMap - a model defined in Swagger
 
         :param ad_image_tags: The ad_image_tags of this CatalogsRetailFilterValuesMap.  # noqa: E501
@@ -23,11 +27,11 @@ class CatalogsRetailFilterValuesMap(Model):
         :param ad_video_tags: The ad_video_tags of this CatalogsRetailFilterValuesMap.  # noqa: E501
         :type ad_video_tags: List[str]
         :param availability: The availability of this CatalogsRetailFilterValuesMap.  # noqa: E501
-        :type availability: List[str]
+        :type availability: List[ProductAvailability]
         :param brand: The brand of this CatalogsRetailFilterValuesMap.  # noqa: E501
         :type brand: List[str]
         :param condition: The condition of this CatalogsRetailFilterValuesMap.  # noqa: E501
-        :type condition: List[str]
+        :type condition: List[ProductCondition]
         :param custom_label_0: The custom_label_0 of this CatalogsRetailFilterValuesMap.  # noqa: E501
         :type custom_label_0: List[str]
         :param custom_label_1: The custom_label_1 of this CatalogsRetailFilterValuesMap.  # noqa: E501
@@ -39,7 +43,7 @@ class CatalogsRetailFilterValuesMap(Model):
         :param custom_label_4: The custom_label_4 of this CatalogsRetailFilterValuesMap.  # noqa: E501
         :type custom_label_4: List[str]
         :param gender: The gender of this CatalogsRetailFilterValuesMap.  # noqa: E501
-        :type gender: List[str]
+        :type gender: List[Gender]
         :param google_product_category_0: The google_product_category_0 of this CatalogsRetailFilterValuesMap.  # noqa: E501
         :type google_product_category_0: List[str]
         :param google_product_category_1: The google_product_category_1 of this CatalogsRetailFilterValuesMap.  # noqa: E501
@@ -55,7 +59,7 @@ class CatalogsRetailFilterValuesMap(Model):
         :param google_product_category_6: The google_product_category_6 of this CatalogsRetailFilterValuesMap.  # noqa: E501
         :type google_product_category_6: List[str]
         :param media_type: The media_type of this CatalogsRetailFilterValuesMap.  # noqa: E501
-        :type media_type: List[str]
+        :type media_type: List[MediaType]
         :param product_type_0: The product_type_0 of this CatalogsRetailFilterValuesMap.  # noqa: E501
         :type product_type_0: List[str]
         :param product_type_1: The product_type_1 of this CatalogsRetailFilterValuesMap.  # noqa: E501
@@ -70,15 +74,15 @@ class CatalogsRetailFilterValuesMap(Model):
         self.swagger_types = {
             'ad_image_tags': List[str],
             'ad_video_tags': List[str],
-            'availability': List[str],
+            'availability': List[ProductAvailability],
             'brand': List[str],
-            'condition': List[str],
+            'condition': List[ProductCondition],
             'custom_label_0': List[str],
             'custom_label_1': List[str],
             'custom_label_2': List[str],
             'custom_label_3': List[str],
             'custom_label_4': List[str],
-            'gender': List[str],
+            'gender': List[Gender],
             'google_product_category_0': List[str],
             'google_product_category_1': List[str],
             'google_product_category_2': List[str],
@@ -86,7 +90,7 @@ class CatalogsRetailFilterValuesMap(Model):
             'google_product_category_4': List[str],
             'google_product_category_5': List[str],
             'google_product_category_6': List[str],
-            'media_type': List[str],
+            'media_type': List[MediaType],
             'product_type_0': List[str],
             'product_type_1': List[str],
             'product_type_2': List[str],
@@ -152,7 +156,7 @@ class CatalogsRetailFilterValuesMap(Model):
 
         :param dikt: A dict.
         :type: dict
-        :return: The catalogs_retail_filter_values_map of this CatalogsRetailFilterValuesMap.  # noqa: E501
+        :return: The CatalogsRetailFilterValuesMap of this CatalogsRetailFilterValuesMap.  # noqa: E501
         :rtype: CatalogsRetailFilterValuesMap
         """
         return util.deserialize_model(dikt, cls)
@@ -200,30 +204,23 @@ class CatalogsRetailFilterValuesMap(Model):
         self._ad_video_tags = ad_video_tags
 
     @property
-    def availability(self) -> List[str]:
+    def availability(self) -> List[ProductAvailability]:
         """Gets the availability of this CatalogsRetailFilterValuesMap.
 
 
         :return: The availability of this CatalogsRetailFilterValuesMap.
-        :rtype: List[str]
+        :rtype: List[ProductAvailability]
         """
         return self._availability
 
     @availability.setter
-    def availability(self, availability: List[str]):
+    def availability(self, availability: List[ProductAvailability]):
         """Sets the availability of this CatalogsRetailFilterValuesMap.
 
 
         :param availability: The availability of this CatalogsRetailFilterValuesMap.
-        :type availability: List[str]
+        :type availability: List[ProductAvailability]
         """
-        allowed_values = ["IN_STOCK", "OUT_OF_STOCK", "PREORDER", "UNAVAILABLE"]  # noqa: E501
-        if not set(availability).issubset(set(allowed_values)):
-            raise ValueError(
-                "Invalid values for `availability` [{0}], must be a subset of [{1}]"  # noqa: E501
-                .format(", ".join(map(str, set(availability) - set(allowed_values))),  # noqa: E501
-                        ", ".join(map(str, allowed_values)))
-            )
 
         self._availability = availability
 
@@ -249,30 +246,23 @@ class CatalogsRetailFilterValuesMap(Model):
         self._brand = brand
 
     @property
-    def condition(self) -> List[str]:
+    def condition(self) -> List[ProductCondition]:
         """Gets the condition of this CatalogsRetailFilterValuesMap.
 
 
         :return: The condition of this CatalogsRetailFilterValuesMap.
-        :rtype: List[str]
+        :rtype: List[ProductCondition]
         """
         return self._condition
 
     @condition.setter
-    def condition(self, condition: List[str]):
+    def condition(self, condition: List[ProductCondition]):
         """Sets the condition of this CatalogsRetailFilterValuesMap.
 
 
         :param condition: The condition of this CatalogsRetailFilterValuesMap.
-        :type condition: List[str]
+        :type condition: List[ProductCondition]
         """
-        allowed_values = ["NEW", "USED", "REFURBISHED"]  # noqa: E501
-        if not set(condition).issubset(set(allowed_values)):
-            raise ValueError(
-                "Invalid values for `condition` [{0}], must be a subset of [{1}]"  # noqa: E501
-                .format(", ".join(map(str, set(condition) - set(allowed_values))),  # noqa: E501
-                        ", ".join(map(str, allowed_values)))
-            )
 
         self._condition = condition
 
@@ -382,30 +372,23 @@ class CatalogsRetailFilterValuesMap(Model):
         self._custom_label_4 = custom_label_4
 
     @property
-    def gender(self) -> List[str]:
+    def gender(self) -> List[Gender]:
         """Gets the gender of this CatalogsRetailFilterValuesMap.
 
 
         :return: The gender of this CatalogsRetailFilterValuesMap.
-        :rtype: List[str]
+        :rtype: List[Gender]
         """
         return self._gender
 
     @gender.setter
-    def gender(self, gender: List[str]):
+    def gender(self, gender: List[Gender]):
         """Sets the gender of this CatalogsRetailFilterValuesMap.
 
 
         :param gender: The gender of this CatalogsRetailFilterValuesMap.
-        :type gender: List[str]
+        :type gender: List[Gender]
         """
-        allowed_values = ["FEMALE", "MALE", "UNISEX"]  # noqa: E501
-        if not set(gender).issubset(set(allowed_values)):
-            raise ValueError(
-                "Invalid values for `gender` [{0}], must be a subset of [{1}]"  # noqa: E501
-                .format(", ".join(map(str, set(gender) - set(allowed_values))),  # noqa: E501
-                        ", ".join(map(str, allowed_values)))
-            )
 
         self._gender = gender
 
@@ -557,30 +540,23 @@ class CatalogsRetailFilterValuesMap(Model):
         self._google_product_category_6 = google_product_category_6
 
     @property
-    def media_type(self) -> List[str]:
+    def media_type(self) -> List[MediaType]:
         """Gets the media_type of this CatalogsRetailFilterValuesMap.
 
 
         :return: The media_type of this CatalogsRetailFilterValuesMap.
-        :rtype: List[str]
+        :rtype: List[MediaType]
         """
         return self._media_type
 
     @media_type.setter
-    def media_type(self, media_type: List[str]):
+    def media_type(self, media_type: List[MediaType]):
         """Sets the media_type of this CatalogsRetailFilterValuesMap.
 
 
         :param media_type: The media_type of this CatalogsRetailFilterValuesMap.
-        :type media_type: List[str]
+        :type media_type: List[MediaType]
         """
-        allowed_values = ["IMAGE", "VIDEO"]  # noqa: E501
-        if not set(media_type).issubset(set(allowed_values)):
-            raise ValueError(
-                "Invalid values for `media_type` [{0}], must be a subset of [{1}]"  # noqa: E501
-                .format(", ".join(map(str, set(media_type) - set(allowed_values))),  # noqa: E501
-                        ", ".join(map(str, allowed_values)))
-            )
 
         self._media_type = media_type
 

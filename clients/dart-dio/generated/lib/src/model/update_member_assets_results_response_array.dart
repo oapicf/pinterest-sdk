@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/update_member_asset_result_item.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/update_member_assets_results_response_array_items_inner.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -18,7 +18,7 @@ part 'update_member_assets_results_response_array.g.dart';
 abstract class UpdateMemberAssetsResultsResponseArray implements Built<UpdateMemberAssetsResultsResponseArray, UpdateMemberAssetsResultsResponseArrayBuilder> {
   /// List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.
   @BuiltValueField(wireName: r'items')
-  BuiltList<UpdateMemberAssetsResultsResponseArrayItemsInner>? get items;
+  BuiltList<UpdateMemberAssetResultItem>? get items;
 
   UpdateMemberAssetsResultsResponseArray._();
 
@@ -47,7 +47,7 @@ class _$UpdateMemberAssetsResultsResponseArraySerializer implements PrimitiveSer
       yield r'items';
       yield serializers.serialize(
         object.items,
-        specifiedType: const FullType(BuiltList, [FullType(UpdateMemberAssetsResultsResponseArrayItemsInner)]),
+        specifiedType: const FullType(BuiltList, [FullType(UpdateMemberAssetResultItem)]),
       );
     }
   }
@@ -76,8 +76,9 @@ class _$UpdateMemberAssetsResultsResponseArraySerializer implements PrimitiveSer
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(UpdateMemberAssetsResultsResponseArrayItemsInner)]),
-          ) as BuiltList<UpdateMemberAssetsResultsResponseArrayItemsInner>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(UpdateMemberAssetResultItem)]),
+          ) as BuiltList<UpdateMemberAssetResultItem>?;
+          if (valueDes == null) continue;
           result.items.replace(valueDes);
           break;
         default:

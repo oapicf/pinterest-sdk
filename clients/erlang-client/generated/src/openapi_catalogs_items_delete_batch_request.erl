@@ -8,7 +8,7 @@
     #{ 'country' := openapi_country:openapi_country(),
        'items' := list(),
        'language' := binary(),
-       'operation' := openapi_batch_operation:openapi_batch_operation()
+       'operation' := binary()
      }.
 
 encode(#{ 'country' := Country,

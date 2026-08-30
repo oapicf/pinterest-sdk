@@ -1,13 +1,13 @@
 #tag Interface
 Protected Interface AudienceInsightsApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub AudienceInsightsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AudienceInsightsResponse)
+		Sub AudienceInsightsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AudienceInsights)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AudienceInsightsScopeAndTypeGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AudienceDefinitionResponse)
+		Sub AudienceInsightsScopeAndTypeGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AudienceInsightsScopeAndTypeGet200Response)
 		  
 		End Sub
 	#tag EndMethod

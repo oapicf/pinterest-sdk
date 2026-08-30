@@ -13,6 +13,7 @@ AdAccount::AdAccount()
 	name = std::string();
 	owner = null;
 	permissions = std::list<BusinessAccessRole>();
+	time_zone = std::string();
 	updated_time = int(0);
 }
 
@@ -134,6 +135,19 @@ AdAccount::fromJson(std::string jsonObj)
 
     }
 
+    const char *time_zoneKey = "time_zone";
+
+    if(object.has_key(time_zoneKey))
+    {
+        bourne::json value = object[time_zoneKey];
+
+
+
+        jsonToValue(&time_zone, value, "std::string");
+
+
+    }
+
     const char *updated_timeKey = "updated_time";
 
     if(object.has_key(updated_timeKey))
@@ -216,6 +230,13 @@ AdAccount::toJson()
 
 
 
+    object["time_zone"] = getTimeZone();
+
+
+
+
+
+
     object["updated_time"] = getUpdatedTime();
 
 
@@ -231,7 +252,7 @@ AdAccount::getCountry()
 }
 
 void
-AdAccount::setCountry(Country  country)
+AdAccount::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -243,7 +264,7 @@ AdAccount::getCreatedTime()
 }
 
 void
-AdAccount::setCreatedTime(int  created_time)
+AdAccount::setCreatedTime(int created_time)
 {
 	this->created_time = created_time;
 }
@@ -255,7 +276,7 @@ AdAccount::getCurrency()
 }
 
 void
-AdAccount::setCurrency(Currency  currency)
+AdAccount::setCurrency(Currency currency)
 {
 	this->currency = currency;
 }
@@ -267,7 +288,7 @@ AdAccount::getId()
 }
 
 void
-AdAccount::setId(std::string  id)
+AdAccount::setId(std::string id)
 {
 	this->id = id;
 }
@@ -279,7 +300,7 @@ AdAccount::getName()
 }
 
 void
-AdAccount::setName(std::string  name)
+AdAccount::setName(std::string name)
 {
 	this->name = name;
 }
@@ -291,7 +312,7 @@ AdAccount::getOwner()
 }
 
 void
-AdAccount::setOwner(AdAccountOwner  owner)
+AdAccount::setOwner(AdAccountOwner owner)
 {
 	this->owner = owner;
 }
@@ -303,9 +324,21 @@ AdAccount::getPermissions()
 }
 
 void
-AdAccount::setPermissions(std::list <BusinessAccessRole> permissions)
+AdAccount::setPermissions(std::list<BusinessAccessRole> permissions)
 {
 	this->permissions = permissions;
+}
+
+std::string
+AdAccount::getTimeZone()
+{
+	return time_zone;
+}
+
+void
+AdAccount::setTimeZone(std::string time_zone)
+{
+	this->time_zone = time_zone;
 }
 
 int
@@ -315,7 +348,7 @@ AdAccount::getUpdatedTime()
 }
 
 void
-AdAccount::setUpdatedTime(int  updated_time)
+AdAccount::setUpdatedTime(int updated_time)
 {
 	this->updated_time = updated_time;
 }

@@ -74,12 +74,20 @@ public:
 	/*! \brief Set Creation date in epoch format.
 	 */
 	void setCreatedTime(int  created_time);
+	/*! \brief Get For advertiser-defined events, the reporting event label shown in optimization UIs.
+	 */
+	std::string getReportingConversionEvent();
+
+	/*! \brief Set For advertiser-defined events, the reporting event label shown in optimization UIs.
+	 */
+	void setReportingConversionEvent(std::string  reporting_conversion_event);
 
 private:
 	std::string ad_account_id;
 	ConversionTagType conversion_event;
 	std::string conversion_tag_id;
 	int created_time;
+	std::string reporting_conversion_event;
 	void __init();
 	void __cleanup();
 

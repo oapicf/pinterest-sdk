@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AdsCreditDiscountType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -18,60 +19,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AdsCreditDiscountsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdsCreditDiscountsResponse   {
   private Boolean active;
   private String advertiserId;
   private String discountCurrency;
   private BigDecimal discountInMicroCurrency;
-  public enum DiscountTypeEnum {
-
-    COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLIED(String.valueOf("COUPON_APPLIED")), CREDIT_APPLIED(String.valueOf("CREDIT_APPLIED")), MARKETING_OFFER_CREDIT(String.valueOf("MARKETING_OFFER_CREDIT")), MARKETING_OFFER_CREDIT_APPLIED(String.valueOf("MARKETING_OFFER_CREDIT_APPLIED")), GOODWILL_CREDIT(String.valueOf("GOODWILL_CREDIT")), GOODWILL_CREDIT_APPLIED(String.valueOf("GOODWILL_CREDIT_APPLIED")), INTERNAL_CREDIT(String.valueOf("INTERNAL_CREDIT")), INTERNAL_CREDIT_APPLIED(String.valueOf("INTERNAL_CREDIT_APPLIED")), PREPAID_CREDIT(String.valueOf("PREPAID_CREDIT")), PREPAID_CREDIT_APPLIED(String.valueOf("PREPAID_CREDIT_APPLIED")), SALES_INCENTIVE_CREDIT(String.valueOf("SALES_INCENTIVE_CREDIT")), SALES_INCENTIVE_CREDIT_APPLIED(String.valueOf("SALES_INCENTIVE_CREDIT_APPLIED")), CREDIT_EXPIRED(String.valueOf("CREDIT_EXPIRED")), FUTURE_CREDIT(String.valueOf("FUTURE_CREDIT")), REFERRAL_CREDIT(String.valueOf("REFERRAL_CREDIT")), INVOICE_SALES_INCENTIVE_CREDIT(String.valueOf("INVOICE_SALES_INCENTIVE_CREDIT")), INVOICE_SALES_INCENTIVE_CREDIT_APPLIED(String.valueOf("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED")), PREPAID_CREDIT_REFUND(String.valueOf("PREPAID_CREDIT_REFUND"));
-
-
-    private String value;
-
-    DiscountTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static DiscountTypeEnum fromString(String s) {
-        for (DiscountTypeEnum b : DiscountTypeEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        return null;
-    }
-
-    @JsonCreator
-    public static DiscountTypeEnum fromValue(String value) {
-        for (DiscountTypeEnum b : DiscountTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        return null;
-    }
-}
-
-  private DiscountTypeEnum discountType;
+  private AdsCreditDiscountType discountType;
   private BigDecimal remainingDiscountInMicroCurrency;
   private String title;
 
@@ -139,7 +93,7 @@ public class AdsCreditDiscountsResponse   {
   }
 
   /**
-   * The discount applied in the offer’s currency value.
+   * The discount applied in the offer&#39;s currency value.
    **/
   public AdsCreditDiscountsResponse discountInMicroCurrency(BigDecimal discountInMicroCurrency) {
     this.discountInMicroCurrency = discountInMicroCurrency;
@@ -147,7 +101,7 @@ public class AdsCreditDiscountsResponse   {
   }
 
   
-  @ApiModelProperty(example = "125000000", value = "The discount applied in the offer’s currency value.")
+  @ApiModelProperty(example = "125000000", value = "The discount applied in the offer's currency value.")
   @JsonProperty("discountInMicroCurrency")
   @Valid public BigDecimal getDiscountInMicroCurrency() {
     return discountInMicroCurrency;
@@ -161,7 +115,7 @@ public class AdsCreditDiscountsResponse   {
   /**
    * The type of discount of this credit
    **/
-  public AdsCreditDiscountsResponse discountType(DiscountTypeEnum discountType) {
+  public AdsCreditDiscountsResponse discountType(AdsCreditDiscountType discountType) {
     this.discountType = discountType;
     return this;
   }
@@ -169,12 +123,12 @@ public class AdsCreditDiscountsResponse   {
   
   @ApiModelProperty(value = "The type of discount of this credit")
   @JsonProperty("discountType")
-  public DiscountTypeEnum getDiscountType() {
+  public AdsCreditDiscountType getDiscountType() {
     return discountType;
   }
 
   @JsonProperty("discountType")
-  public void setDiscountType(DiscountTypeEnum discountType) {
+  public void setDiscountType(AdsCreditDiscountType discountType) {
     this.discountType = discountType;
   }
 
@@ -263,12 +217,8 @@ public class AdsCreditDiscountsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

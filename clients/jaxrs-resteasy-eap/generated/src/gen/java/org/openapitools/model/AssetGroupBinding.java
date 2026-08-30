@@ -9,33 +9,33 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BusinessAccessUserSummary;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AssetGroupBinding   {
   
-  private List<@Pattern(regexp = "^\\d+$")String> adAccountsIds;
+  private List<@Pattern(regexp = "^\\d+$")String> adAccountsIds = new ArrayList<>();
   private String assetGroupDescription;
   private String assetGroupName;
   private List<String> assetGroupTypes = new ArrayList<>();
-  private List<@Pattern(regexp = "^\\d+$")String> catalogsIds;
+  private List<@Pattern(regexp = "^\\d+$")String> catalogsIds = new ArrayList<>();
   private BusinessAccessUserSummary createdBy;
   private Integer createdTime;
   private String id;
   private BusinessAccessUserSummary owner;
-  private List<@Pattern(regexp = "^\\d+$")String> profilesIds;
+  private List<@Pattern(regexp = "^\\d+$")String> profilesIds = new ArrayList<>();
   private Integer updatedTime;
 
   /**
    * A list of ad account IDs under the asset group
    **/
   
-  @ApiModelProperty(example = "[\"549755885175\"]", value = "A list of ad account IDs under the asset group")
+  @ApiModelProperty(example = "[\"549755885175\"]", required = true, value = "A list of ad account IDs under the asset group")
   @JsonProperty("ad_accounts_ids")
+  @NotNull
   public List<@Pattern(regexp = "^\\d+$")String> getAdAccountsIds() {
     return adAccountsIds;
   }
@@ -47,8 +47,9 @@ public class AssetGroupBinding   {
    * Asset group description
    **/
   
-  @ApiModelProperty(example = "Asset group that has ad accounts used in Canada", value = "Asset group description")
+  @ApiModelProperty(example = "Asset group that has ad accounts used in Canada", required = true, value = "Asset group description")
   @JsonProperty("asset_group_description")
+  @NotNull
   public String getAssetGroupDescription() {
     return assetGroupDescription;
   }
@@ -60,8 +61,9 @@ public class AssetGroupBinding   {
    * Asset Group name
    **/
   
-  @ApiModelProperty(example = "Canada Ad Accounts", value = "Asset Group name")
+  @ApiModelProperty(example = "Canada Ad Accounts", required = true, value = "Asset Group name")
   @JsonProperty("asset_group_name")
+  @NotNull
   public String getAssetGroupName() {
     return assetGroupName;
   }
@@ -73,8 +75,9 @@ public class AssetGroupBinding   {
    * Asset group types
    **/
   
-  @ApiModelProperty(example = "[\"LOCATION_OR_LANGUAGE\"]", value = "Asset group types")
+  @ApiModelProperty(example = "[\"LOCATION_OR_LANGUAGE\"]", required = true, value = "Asset group types")
   @JsonProperty("asset_group_types")
+  @NotNull
   public List<String> getAssetGroupTypes() {
     return assetGroupTypes;
   }
@@ -86,8 +89,9 @@ public class AssetGroupBinding   {
    * A list of catalog IDs under asset group
    **/
   
-  @ApiModelProperty(example = "[\"4836859046874\"]", value = "A list of catalog IDs under asset group")
+  @ApiModelProperty(example = "[\"4836859046874\"]", required = true, value = "A list of catalog IDs under asset group")
   @JsonProperty("catalogs_ids")
+  @NotNull
   public List<@Pattern(regexp = "^\\d+$")String> getCatalogsIds() {
     return catalogsIds;
   }
@@ -99,8 +103,9 @@ public class AssetGroupBinding   {
    * The data of the user that created the asset group.
    **/
   
-  @ApiModelProperty(value = "The data of the user that created the asset group.")
+  @ApiModelProperty(required = true, value = "The data of the user that created the asset group.")
   @JsonProperty("created_by")
+  @NotNull
   public BusinessAccessUserSummary getCreatedBy() {
     return createdBy;
   }
@@ -112,8 +117,9 @@ public class AssetGroupBinding   {
    * The creation time of the asset group
    **/
   
-  @ApiModelProperty(example = "1646767577816", value = "The creation time of the asset group")
+  @ApiModelProperty(example = "1646767577816", required = true, value = "The creation time of the asset group")
   @JsonProperty("created_time")
+  @NotNull
   public Integer getCreatedTime() {
     return createdTime;
   }
@@ -125,8 +131,9 @@ public class AssetGroupBinding   {
    * Asset Group ID.
    **/
   
-  @ApiModelProperty(example = "666791336903426391", value = "Asset Group ID.")
+  @ApiModelProperty(example = "666791336903426391", required = true, value = "Asset Group ID.")
   @JsonProperty("id")
+  @NotNull
  @Pattern(regexp="^\\d+$")  public String getId() {
     return id;
   }
@@ -138,8 +145,9 @@ public class AssetGroupBinding   {
    * The data of the business that owns the asset group.
    **/
   
-  @ApiModelProperty(value = "The data of the business that owns the asset group.")
+  @ApiModelProperty(required = true, value = "The data of the business that owns the asset group.")
   @JsonProperty("owner")
+  @NotNull
   public BusinessAccessUserSummary getOwner() {
     return owner;
   }
@@ -151,8 +159,9 @@ public class AssetGroupBinding   {
    * A list of profile IDs under asset group
    **/
   
-  @ApiModelProperty(example = "[\"630433785246278264\"]", value = "A list of profile IDs under asset group")
+  @ApiModelProperty(example = "[\"630433785246278264\"]", required = true, value = "A list of profile IDs under asset group")
   @JsonProperty("profiles_ids")
+  @NotNull
   public List<@Pattern(regexp = "^\\d+$")String> getProfilesIds() {
     return profilesIds;
   }
@@ -164,8 +173,9 @@ public class AssetGroupBinding   {
    * The last update time of the asset group
    **/
   
-  @ApiModelProperty(example = "1646767577816", value = "The last update time of the asset group")
+  @ApiModelProperty(example = "1646767577816", required = true, value = "The last update time of the asset group")
   @JsonProperty("updated_time")
+  @NotNull
   public Integer getUpdatedTime() {
     return updatedTime;
   }
@@ -226,10 +236,7 @@ public class AssetGroupBinding   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

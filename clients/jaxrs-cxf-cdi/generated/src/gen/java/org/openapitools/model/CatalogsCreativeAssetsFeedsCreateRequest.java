@@ -5,12 +5,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
-import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Country;
 import org.openapitools.model.NullableCurrency;
 import javax.validation.constraints.*;
@@ -29,7 +28,38 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
   
   private String catalogId;
 
-  private CatalogsType catalogType;
+
+public enum CatalogTypeEnum {
+
+    @JsonProperty("CREATIVE_ASSETS") CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
+
+
+    private String value;
+
+    CatalogTypeEnum(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private CatalogTypeEnum catalogType;
 
   private CatalogsFeedCredentials credentials;
 
@@ -37,7 +67,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
 
   private NullableCurrency defaultCurrency;
 
-  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  private CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale;
 
   private CatalogsFormat format;
 
@@ -47,10 +77,10 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
 
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
-  private CatalogsStatus status = "ACTIVE";
+  private CatalogsStatus status;
 
   /**
-   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
    **/
   public CatalogsCreativeAssetsFeedsCreateRequest catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -58,7 +88,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
   }
 
   
-  @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.")
+  @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.")
   @JsonProperty("catalog_id")
  @Pattern(regexp="^\\d+$")  public String getCatalogId() {
     return catalogId;
@@ -70,7 +100,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
 
   /**
    **/
-  public CatalogsCreativeAssetsFeedsCreateRequest catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsFeedsCreateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -79,10 +109,10 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
   @NotNull
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -144,7 +174,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
 
   /**
    **/
-  public CatalogsCreativeAssetsFeedsCreateRequest defaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public CatalogsCreativeAssetsFeedsCreateRequest defaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
     return this;
   }
@@ -153,10 +183,10 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("default_locale")
   @NotNull
-  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+  public CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
   }
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public void setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
 
@@ -309,10 +339,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

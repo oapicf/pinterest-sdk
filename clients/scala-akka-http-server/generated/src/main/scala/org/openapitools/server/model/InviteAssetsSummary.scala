@@ -8,7 +8,7 @@ package org.openapitools.server.model
  * @param profiles List of profile IDs and respective permission levels that will be assigned. for example: ''null''
 */
 final case class InviteAssetsSummary (
-  adAccounts: Option[Seq[InviteAssetsSummaryAdAccountsInner]] = None,
-  profiles: Option[Seq[InviteAssetsSummaryProfilesInner]] = None
+  adAccounts: Option[Seq[InviteAssetsSummaryItem]] = None,
+  profiles: Option[Seq[InviteAssetsSummaryItem]] = None
 )
 

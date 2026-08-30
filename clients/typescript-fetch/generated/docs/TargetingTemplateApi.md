@@ -6,17 +6,17 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |------------- | ------------- | -------------|
 | [**targetingTemplateCreate**](TargetingTemplateApi.md#targetingtemplatecreate) | **POST** /ad_accounts/{ad_account_id}/targeting_templates | Create targeting templates |
 | [**targetingTemplateList**](TargetingTemplateApi.md#targetingtemplatelist) | **GET** /ad_accounts/{ad_account_id}/targeting_templates | List targeting templates |
-| [**targetingTemplateUpdate**](TargetingTemplateApi.md#targetingtemplateupdateoperation) | **PATCH** /ad_accounts/{ad_account_id}/targeting_templates | Update targeting templates |
+| [**targetingTemplateUpdate**](TargetingTemplateApi.md#targetingtemplateupdate) | **PATCH** /ad_accounts/{ad_account_id}/targeting_templates | Update targeting templates |
 
 
 
 ## targetingTemplateCreate
 
-> TargetingTemplateGetResponseData targetingTemplateCreate(adAccountId, targetingTemplateCreate)
+> TargetingTemplate targetingTemplateCreate(adAccountId, targetingTemplateCreate)
 
 Create targeting templates
 
-&lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
+Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 
 ### Example
 
@@ -38,7 +38,7 @@ async function example() {
   const body = {
     // string | Unique identifier of an ad account.
     adAccountId: adAccountId_example,
-    // TargetingTemplateCreate | targeting template creation entity
+    // TargetingTemplateCreate
     targetingTemplateCreate: ...,
   } satisfies TargetingTemplateCreateRequest;
 
@@ -60,11 +60,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **targetingTemplateCreate** | [TargetingTemplateCreate](TargetingTemplateCreate.md) | targeting template creation entity | |
+| **targetingTemplateCreate** | [TargetingTemplateCreate](TargetingTemplateCreate.md) |  | |
 
 ### Return type
 
-[**TargetingTemplateGetResponseData**](TargetingTemplateGetResponseData.md)
+[**TargetingTemplate**](TargetingTemplate.md)
 
 ### Authorization
 
@@ -79,20 +79,25 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account id. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## targetingTemplateList
 
-> TargetingTemplateList200Response targetingTemplateList(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark)
+> TargetingTemplateList200Response targetingTemplateList(adAccountId, bookmark, pageSize, order, includeSizing, searchQuery)
 
 List targeting templates
 
-Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
+Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;
 
 ### Example
 
@@ -116,16 +121,16 @@ async function example() {
   const body = {
     // string | Unique identifier of an ad account.
     adAccountId: adAccountId_example,
-    // 'ASCENDING' | 'DESCENDING' | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-    order: ASCENDING,
-    // boolean | Include audience sizing in result or not (optional)
-    includeSizing: true,
-    // string | Search keyword for targeting templates (optional)
-    searchQuery: gaming,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
-    pageSize: 56,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+    pageSize: 56,
+    // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+    order: ...,
+    // boolean | Include audience sizing in result or not (optional)
+    includeSizing: true,
+    // string | Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
+    searchQuery: searchQuery_example,
   } satisfies TargetingTemplateListRequest;
 
   try {
@@ -146,11 +151,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **order** | `ASCENDING`, `DESCENDING` | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [Optional] [Defaults to `undefined`] [Enum: ASCENDING, DESCENDING] |
-| **includeSizing** | `boolean` | Include audience sizing in result or not | [Optional] [Defaults to `false`] |
-| **searchQuery** | `string` | Search keyword for targeting templates | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
+| **order** | `PinterestLibPaginationOrder` | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [Optional] [Defaults to `undefined`] [Enum: ASCENDING, DESCENDING] |
+| **includeSizing** | `boolean` | Include audience sizing in result or not | [Optional] [Defaults to `false`] |
+| **searchQuery** | `string` | Search query. Can contain pin description keywords or comma-separated pin IDs. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 
@@ -169,20 +174,24 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account id. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## targetingTemplateUpdate
 
-> targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest)
+> targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequestReadOrUpdate)
 
 Update targeting templates
 
-&lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
+Update the targeting template given advertiser ID and targeting template ID
 
 ### Example
 
@@ -191,7 +200,7 @@ import {
   Configuration,
   TargetingTemplateApi,
 } from '';
-import type { TargetingTemplateUpdateOperationRequest } from '';
+import type { TargetingTemplateUpdateRequest } from '';
 
 async function example() {
   console.log("🚀 Testing  SDK...");
@@ -204,9 +213,9 @@ async function example() {
   const body = {
     // string | Unique identifier of an ad account.
     adAccountId: adAccountId_example,
-    // TargetingTemplateUpdateRequest | Operation type and targeting template ID
-    targetingTemplateUpdateRequest: ...,
-  } satisfies TargetingTemplateUpdateOperationRequest;
+    // TargetingTemplateUpdateRequestReadOrUpdate
+    targetingTemplateUpdateRequestReadOrUpdate: ...,
+  } satisfies TargetingTemplateUpdateRequest;
 
   try {
     const data = await api.targetingTemplateUpdate(body);
@@ -226,7 +235,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **targetingTemplateUpdateRequest** | [TargetingTemplateUpdateRequest](TargetingTemplateUpdateRequest.md) | Operation type and targeting template ID | |
+| **targetingTemplateUpdateRequestReadOrUpdate** | [TargetingTemplateUpdateRequestReadOrUpdate](TargetingTemplateUpdateRequestReadOrUpdate.md) |  | |
 
 ### Return type
 
@@ -245,9 +254,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account id. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

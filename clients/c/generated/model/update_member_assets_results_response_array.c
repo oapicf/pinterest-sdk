@@ -12,18 +12,21 @@ static update_member_assets_results_response_array_t *update_member_assets_resul
     if (!update_member_assets_results_response_array_local_var) {
         return NULL;
     }
-    update_member_assets_results_response_array_local_var->items = items;
-
+    memset(update_member_assets_results_response_array_local_var, 0, sizeof(update_member_assets_results_response_array_t));
     update_member_assets_results_response_array_local_var->_library_owned = 1;
+    update_member_assets_results_response_array_local_var->items = items;
     return update_member_assets_results_response_array_local_var;
 }
 
 __attribute__((deprecated)) update_member_assets_results_response_array_t *update_member_assets_results_response_array_create(
     list_t *items
     ) {
-    return update_member_assets_results_response_array_create_internal (
+    update_member_assets_results_response_array_t *result = update_member_assets_results_response_array_create_internal (
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void update_member_assets_results_response_array_free(update_member_assets_results_response_array_t *update_member_assets_results_response_array) {
@@ -37,7 +40,7 @@ void update_member_assets_results_response_array_free(update_member_assets_resul
     listEntry_t *listEntry;
     if (update_member_assets_results_response_array->items) {
         list_ForEach(listEntry, update_member_assets_results_response_array->items) {
-            update_member_assets_results_response_array_items_inner_free(listEntry->data);
+            update_member_asset_result_item_free(listEntry->data);
         }
         list_freeList(update_member_assets_results_response_array->items);
         update_member_assets_results_response_array->items = NULL;
@@ -58,7 +61,7 @@ cJSON *update_member_assets_results_response_array_convertToJSON(update_member_a
     listEntry_t *itemsListEntry;
     if (update_member_assets_results_response_array->items) {
     list_ForEach(itemsListEntry, update_member_assets_results_response_array->items) {
-    cJSON *itemLocal = update_member_assets_results_response_array_items_inner_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = update_member_asset_result_item_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -100,23 +103,28 @@ update_member_assets_results_response_array_t *update_member_assets_results_resp
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        update_member_assets_results_response_array_items_inner_t *itemsItem = update_member_assets_results_response_array_items_inner_parseFromJSON(items_local_nonprimitive);
+        update_member_asset_result_item_t *itemsItem = update_member_asset_result_item_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
     }
 
 
+
     update_member_assets_results_response_array_local_var = update_member_assets_results_response_array_create_internal (
         items ? itemsList : NULL
         );
+
+    if (!update_member_assets_results_response_array_local_var) {
+        goto end;
+    }
 
     return update_member_assets_results_response_array_local_var;
 end:
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            update_member_assets_results_response_array_items_inner_free(listEntry->data);
+            update_member_asset_result_item_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

@@ -4,8 +4,8 @@ package models
 type InviteAssetsSummary struct {
 
 	// List of ad account IDs and respective permission levels that will be assigned.
-	AdAccounts []InviteAssetsSummaryAdAccountsInner `json:"ad_accounts,omitempty"`
+	AdAccounts []InviteAssetsSummaryItem `json:"ad_accounts,omitempty"`
 
 	// List of profile IDs and respective permission levels that will be assigned.
-	Profiles []InviteAssetsSummaryProfilesInner `json:"profiles,omitempty"`
+	Profiles []InviteAssetsSummaryItem `json:"profiles,omitempty"`
 }

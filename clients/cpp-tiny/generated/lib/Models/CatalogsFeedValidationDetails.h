@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setErrors(CatalogsFeedValidationErrors  errors);
+	void setErrors(CatalogsFeedValidationErrors errors);
 	/*! \brief Get 
 	 */
 	CatalogsFeedValidationWarnings getWarnings();
 
 	/*! \brief Set 
 	 */
-	void setWarnings(CatalogsFeedValidationWarnings  warnings);
+	void setWarnings(CatalogsFeedValidationWarnings warnings);
 
 
     private:

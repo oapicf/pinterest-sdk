@@ -11,31 +11,30 @@
 part of openapi.api;
 
 /// Entity status
-class NonDraftEntityStatus {
-  /// Instantiate a new enum with the provided [value].
-  const NonDraftEntityStatus._(this.value);
+enum NonDraftEntityStatus {
+  ACTIVE._(r'ACTIVE'),
+  PAUSED._(r'PAUSED'),
+  ARCHIVED._(r'ARCHIVED'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const NonDraftEntityStatus._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const ACTIVE = NonDraftEntityStatus._(r'ACTIVE');
-  static const PAUSED = NonDraftEntityStatus._(r'PAUSED');
-  static const ARCHIVED = NonDraftEntityStatus._(r'ARCHIVED');
-
-  /// List of all possible values in this [enum][NonDraftEntityStatus].
-  static const values = <NonDraftEntityStatus>[
-    ACTIVE,
-    PAUSED,
-    ARCHIVED,
-  ];
-
+  /// Returns the instance of [NonDraftEntityStatus] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static NonDraftEntityStatus? fromJson(dynamic value) => NonDraftEntityStatusTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [NonDraftEntityStatus]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<NonDraftEntityStatus> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <NonDraftEntityStatus>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class NonDraftEntityStatusTypeTransformer {
 
   const NonDraftEntityStatusTypeTransformer._();
 
-  String encode(NonDraftEntityStatus data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(NonDraftEntityStatus data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a NonDraftEntityStatus.
+  /// Returns the instance of [NonDraftEntityStatus] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class NonDraftEntityStatusTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   NonDraftEntityStatus? decode(dynamic data, {bool allowNull = true}) {
+    if (data is NonDraftEntityStatus) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'ACTIVE': return NonDraftEntityStatus.ACTIVE;
@@ -82,7 +86,7 @@ class NonDraftEntityStatusTypeTransformer {
     return null;
   }
 
-  /// Singleton [NonDraftEntityStatusTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static NonDraftEntityStatusTypeTransformer? _instance;
 }
 

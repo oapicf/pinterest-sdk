@@ -15,11 +15,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CampaignAudienceMultipliers extends HashMap<String, Double> {
   
-  @ApiModelProperty(value = "")
+ /**
+  * Audience ID for the multiplier.
+  */
+  @ApiModelProperty(value = "Audience ID for the multiplier.")
 
   private String AUDIENCE_ID;
  /**
-   * Get AUDIENCE_ID
+   * Audience ID for the multiplier.
    * @return AUDIENCE_ID
   **/
   @JsonProperty("AUDIENCE_ID")
@@ -69,10 +72,7 @@ public class CampaignAudienceMultipliers extends HashMap<String, Double> {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

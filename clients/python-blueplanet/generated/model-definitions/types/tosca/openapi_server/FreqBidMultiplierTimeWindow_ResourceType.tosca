@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server FreqBidMultiplierTimeWindow"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a FreqBidMultiplierTimeWindow"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  FreqBidMultiplierTimeWindow {
+    title = FreqBidMultiplierTimeWindow
+    description = FreqBidMultiplierTimeWindow
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  FreqBidMultiplierTimeWindow {
+    title = FreqBidMultiplierTimeWindow
+    description = FreqBidMultiplierTimeWindow
+    implements = openapi_server.resourceTypes.FreqBidMultiplierTimeWindow
+
+  }
+}

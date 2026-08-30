@@ -24,6 +24,10 @@ export interface ConversionEventResponse {
      * Creation date in epoch format.
      */
     created_time?: number;
+    /**
+     * For advertiser-defined events, the reporting event label shown in optimization UIs.
+     */
+    reporting_conversion_event?: string;
 }
 export namespace ConversionEventResponse {
 }

@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.GetPartnerAssetsResponse;
+import apimodels.BaseBusinessAssets;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 /**
  * BusinessPartnerAssetAccessGet200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class BusinessPartnerAssetAccessGet200Response   {
   @JsonProperty("bookmark")
@@ -26,7 +26,7 @@ public class BusinessPartnerAssetAccessGet200Response   {
   @NotNull
 @Valid
 
-  private List<@Valid GetPartnerAssetsResponse> items = new ArrayList<>();
+  private List<@Valid BaseBusinessAssets> items = new ArrayList<>();
 
   public BusinessPartnerAssetAccessGet200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -45,12 +45,12 @@ public class BusinessPartnerAssetAccessGet200Response   {
     this.bookmark = bookmark;
   }
 
-  public BusinessPartnerAssetAccessGet200Response items(List<@Valid GetPartnerAssetsResponse> items) {
+  public BusinessPartnerAssetAccessGet200Response items(List<@Valid BaseBusinessAssets> items) {
     this.items = items;
     return this;
   }
 
-  public BusinessPartnerAssetAccessGet200Response addItemsItem(GetPartnerAssetsResponse itemsItem) {
+  public BusinessPartnerAssetAccessGet200Response addItemsItem(BaseBusinessAssets itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -59,14 +59,14 @@ public class BusinessPartnerAssetAccessGet200Response   {
   }
 
    /**
-   * List assets on which you granted access to your partner or assets on which your partner has granted you access.
+   * Get items
    * @return items
   **/
-  public List<@Valid GetPartnerAssetsResponse> getItems() {
+  public List<@Valid BaseBusinessAssets> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid GetPartnerAssetsResponse> items) {
+  public void setItems(List<@Valid BaseBusinessAssets> items) {
     this.items = items;
   }
 
@@ -106,10 +106,7 @@ public class BusinessPartnerAssetAccessGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

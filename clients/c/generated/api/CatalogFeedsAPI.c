@@ -54,10 +54,10 @@ end:
 
 // List feed processing results
 //
-// Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+// Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 //
 feed_processing_results_list_200_response_t*
-CatalogFeedsAPI_feedProcessingResultsList(apiClient_t *apiClient, char *feed_id, char *bookmark, int *page_size, char *ad_account_id)
+CatalogFeedsAPI_feedProcessingResultsList(apiClient_t *apiClient, char *feed_id, char *ad_account_id, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -90,6 +90,18 @@ CatalogFeedsAPI_feedProcessingResultsList(apiClient_t *apiClient, char *feed_id,
 
 
     // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+
+    // query parameters
     char *keyQuery_bookmark = NULL;
     char * valueQuery_bookmark = NULL;
     keyValuePair_t *keyPairQuery_bookmark = 0;
@@ -113,18 +125,6 @@ CatalogFeedsAPI_feedProcessingResultsList(apiClient_t *apiClient, char *feed_id,
         keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
         list_addElement(localVarQueryParameters,keyPairQuery_page_size);
     }
-
-    // query parameters
-    char *keyQuery_ad_account_id = NULL;
-    char * valueQuery_ad_account_id = NULL;
-    keyValuePair_t *keyPairQuery_ad_account_id = 0;
-    if (ad_account_id)
-    {
-        keyQuery_ad_account_id = strdup("ad_account_id");
-        valueQuery_ad_account_id = strdup((ad_account_id));
-        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
-        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
-    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -139,23 +139,31 @@ CatalogFeedsAPI_feedProcessingResultsList(apiClient_t *apiClient, char *feed_id,
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized access.");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Feed not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     feed_processing_results_list_200_response_t *elementToReturn = NULL;
@@ -181,6 +189,18 @@ CatalogFeedsAPI_feedProcessingResultsList(apiClient_t *apiClient, char *feed_id,
     
     free(localVarPath);
     free(localVarToReplace_feed_id);
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
     if(keyQuery_bookmark){
         free(keyQuery_bookmark);
         keyQuery_bookmark = NULL;
@@ -205,18 +225,6 @@ CatalogFeedsAPI_feedProcessingResultsList(apiClient_t *apiClient, char *feed_id,
         keyValuePair_free(keyPairQuery_page_size);
         keyPairQuery_page_size = NULL;
     }
-    if(keyQuery_ad_account_id){
-        free(keyQuery_ad_account_id);
-        keyQuery_ad_account_id = NULL;
-    }
-    if(valueQuery_ad_account_id){
-        free(valueQuery_ad_account_id);
-        valueQuery_ad_account_id = NULL;
-    }
-    if(keyPairQuery_ad_account_id){
-        keyValuePair_free(keyPairQuery_ad_account_id);
-        keyPairQuery_ad_account_id = NULL;
-    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -226,10 +234,10 @@ end:
 
 // Create feed
 //
-// Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+// Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 //
 catalogs_feed_t*
-CatalogFeedsAPI_feedsCreate(apiClient_t *apiClient, feeds_create_request_t *feeds_create_request, char *ad_account_id)
+CatalogFeedsAPI_feedsCreate(apiClient_t *apiClient, catalogs_feed_create_request_schema_t *catalogs_feed_create_request_schema, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -262,12 +270,12 @@ CatalogFeedsAPI_feedsCreate(apiClient_t *apiClient, feeds_create_request_t *feed
     }
 
     // Body Param
-    cJSON *localVarSingleItemJSON_feeds_create_request = NULL;
-    if (feeds_create_request != NULL)
+    cJSON *localVarSingleItemJSON_catalogs_feed_create_request_schema = NULL;
+    if (catalogs_feed_create_request_schema != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_feeds_create_request = feeds_create_request_convertToJSON(feeds_create_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_feeds_create_request);
+        localVarSingleItemJSON_catalogs_feed_create_request_schema = catalogs_feed_create_request_schema_convertToJSON(catalogs_feed_create_request_schema);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_feed_create_request_schema);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -284,36 +292,36 @@ CatalogFeedsAPI_feedsCreate(apiClient_t *apiClient, feeds_create_request_t *feed
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 201) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","Resource create operation completed successfully.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid feed parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized access.");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Business account required.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","User website required.");
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 422) {
-    //    printf("%s\n","Unique feed name is required.");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 501) {
-    //    printf("%s\n","Not implemented (absent \&quot;default_country\&quot; or \&quot;default_locale\&quot;).");
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_feed_t *elementToReturn = NULL;
@@ -338,9 +346,9 @@ CatalogFeedsAPI_feedsCreate(apiClient_t *apiClient, feeds_create_request_t *feed
     list_freeList(localVarHeaderType);
     list_freeList(localVarContentType);
     free(localVarPath);
-    if (localVarSingleItemJSON_feeds_create_request) {
-        cJSON_Delete(localVarSingleItemJSON_feeds_create_request);
-        localVarSingleItemJSON_feeds_create_request = NULL;
+    if (localVarSingleItemJSON_catalogs_feed_create_request_schema) {
+        cJSON_Delete(localVarSingleItemJSON_catalogs_feed_create_request_schema);
+        localVarSingleItemJSON_catalogs_feed_create_request_schema = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_ad_account_id){
@@ -364,9 +372,9 @@ end:
 
 // Delete feed
 //
-// Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+// Delete a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
 //
-void
+catalogs_feed_t*
 CatalogFeedsAPI_feedsDelete(apiClient_t *apiClient, char *feed_id, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -423,31 +431,49 @@ CatalogFeedsAPI_feedsDelete(apiClient_t *apiClient, char *feed_id, char *ad_acco
                     "DELETE");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 204) {
-    //    printf("%s\n","Feed deleted successfully.");
+    //    printf("%s\n","Resource deleted successfully.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid feed parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden. Account not approved for feed mutations yet.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Data feed not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Conflict. Can&#39;t delete a feed with active promotions.");
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
-    //No return type
-end:
+    //nonprimitive not container
+    catalogs_feed_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogFeedsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_feed_parseFromJSON(CatalogFeedsAPIlocalVarJSON);
+        cJSON_Delete(CatalogFeedsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -472,20 +498,16 @@ end:
         keyValuePair_free(keyPairQuery_ad_account_id);
         keyPairQuery_ad_account_id = NULL;
     }
-    if(keyQuery_ad_account_id){
-        free(keyQuery_ad_account_id);
-        keyQuery_ad_account_id = NULL;
-    }
-    if(keyPairQuery_ad_account_id){
-        keyValuePair_free(keyPairQuery_ad_account_id);
-        keyPairQuery_ad_account_id = NULL;
-    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
 // Get feed
 //
-// Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+// Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
 //
 catalogs_feed_t*
 CatalogFeedsAPI_feedsGet(apiClient_t *apiClient, char *feed_id, char *ad_account_id)
@@ -545,23 +567,31 @@ CatalogFeedsAPI_feedsGet(apiClient_t *apiClient, char *feed_id, char *ad_account
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid feed parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized access.");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Data feed not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_feed_t *elementToReturn = NULL;
@@ -608,7 +638,7 @@ end:
 
 // Ingest feed items
 //
-// Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+// Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 //
 catalogs_feed_ingestion_t*
 CatalogFeedsAPI_feedsIngest(apiClient_t *apiClient, char *feed_id, char *ad_account_id)
@@ -668,23 +698,31 @@ CatalogFeedsAPI_feedsIngest(apiClient_t *apiClient, char *feed_id, char *ad_acco
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","The ingestion process was successfully started.");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid feed parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden. Account not approved for feed mutations yet.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Data feed not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_feed_ingestion_t *elementToReturn = NULL;
@@ -731,10 +769,10 @@ end:
 
 // List feeds
 //
-// Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+// Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
 //
 feeds_list_200_response_t*
-CatalogFeedsAPI_feedsList(apiClient_t *apiClient, char *bookmark, int *page_size, char *catalog_id, char *ad_account_id)
+CatalogFeedsAPI_feedsList(apiClient_t *apiClient, char *catalog_id, char *ad_account_id, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -753,6 +791,30 @@ CatalogFeedsAPI_feedsList(apiClient_t *apiClient, char *bookmark, int *page_size
 
 
 
+
+    // query parameters
+    char *keyQuery_catalog_id = NULL;
+    char * valueQuery_catalog_id = NULL;
+    keyValuePair_t *keyPairQuery_catalog_id = 0;
+    if (catalog_id)
+    {
+        keyQuery_catalog_id = strdup("catalog_id");
+        valueQuery_catalog_id = strdup((catalog_id));
+        keyPairQuery_catalog_id = keyValuePair_create(keyQuery_catalog_id, valueQuery_catalog_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_catalog_id);
+    }
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
 
     // query parameters
     char *keyQuery_bookmark = NULL;
@@ -778,30 +840,6 @@ CatalogFeedsAPI_feedsList(apiClient_t *apiClient, char *bookmark, int *page_size
         keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
         list_addElement(localVarQueryParameters,keyPairQuery_page_size);
     }
-
-    // query parameters
-    char *keyQuery_catalog_id = NULL;
-    char * valueQuery_catalog_id = NULL;
-    keyValuePair_t *keyPairQuery_catalog_id = 0;
-    if (catalog_id)
-    {
-        keyQuery_catalog_id = strdup("catalog_id");
-        valueQuery_catalog_id = strdup((catalog_id));
-        keyPairQuery_catalog_id = keyValuePair_create(keyQuery_catalog_id, valueQuery_catalog_id);
-        list_addElement(localVarQueryParameters,keyPairQuery_catalog_id);
-    }
-
-    // query parameters
-    char *keyQuery_ad_account_id = NULL;
-    char * valueQuery_ad_account_id = NULL;
-    keyValuePair_t *keyPairQuery_ad_account_id = 0;
-    if (ad_account_id)
-    {
-        keyQuery_ad_account_id = strdup("ad_account_id");
-        valueQuery_ad_account_id = strdup((ad_account_id));
-        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
-        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
-    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -816,19 +854,31 @@ CatalogFeedsAPI_feedsList(apiClient_t *apiClient, char *bookmark, int *page_size
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized access.");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     feeds_list_200_response_t *elementToReturn = NULL;
@@ -853,30 +903,6 @@ CatalogFeedsAPI_feedsList(apiClient_t *apiClient, char *bookmark, int *page_size
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
-    if(keyQuery_bookmark){
-        free(keyQuery_bookmark);
-        keyQuery_bookmark = NULL;
-    }
-    if(valueQuery_bookmark){
-        free(valueQuery_bookmark);
-        valueQuery_bookmark = NULL;
-    }
-    if(keyPairQuery_bookmark){
-        keyValuePair_free(keyPairQuery_bookmark);
-        keyPairQuery_bookmark = NULL;
-    }
-    if(keyQuery_page_size){
-        free(keyQuery_page_size);
-        keyQuery_page_size = NULL;
-    }
-    if(valueQuery_page_size){
-        free(valueQuery_page_size);
-        valueQuery_page_size = NULL;
-    }
-    if(keyPairQuery_page_size){
-        keyValuePair_free(keyPairQuery_page_size);
-        keyPairQuery_page_size = NULL;
-    }
     if(keyQuery_catalog_id){
         free(keyQuery_catalog_id);
         keyQuery_catalog_id = NULL;
@@ -901,6 +927,30 @@ CatalogFeedsAPI_feedsList(apiClient_t *apiClient, char *bookmark, int *page_size
         keyValuePair_free(keyPairQuery_ad_account_id);
         keyPairQuery_ad_account_id = NULL;
     }
+    if(keyQuery_bookmark){
+        free(keyQuery_bookmark);
+        keyQuery_bookmark = NULL;
+    }
+    if(valueQuery_bookmark){
+        free(valueQuery_bookmark);
+        valueQuery_bookmark = NULL;
+    }
+    if(keyPairQuery_bookmark){
+        keyValuePair_free(keyPairQuery_bookmark);
+        keyPairQuery_bookmark = NULL;
+    }
+    if(keyQuery_page_size){
+        free(keyQuery_page_size);
+        keyQuery_page_size = NULL;
+    }
+    if(valueQuery_page_size){
+        free(valueQuery_page_size);
+        valueQuery_page_size = NULL;
+    }
+    if(keyPairQuery_page_size){
+        keyValuePair_free(keyPairQuery_page_size);
+        keyPairQuery_page_size = NULL;
+    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -910,10 +960,10 @@ end:
 
 // Update feed
 //
-// Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+// Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 //
 catalogs_feed_t*
-CatalogFeedsAPI_feedsUpdate(apiClient_t *apiClient, char *feed_id, feeds_update_request_t *feeds_update_request, char *ad_account_id)
+CatalogFeedsAPI_feedsUpdate(apiClient_t *apiClient, char *feed_id, catalogs_feed_update_request_schema_t *catalogs_feed_update_request_schema, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -958,12 +1008,12 @@ CatalogFeedsAPI_feedsUpdate(apiClient_t *apiClient, char *feed_id, feeds_update_
     }
 
     // Body Param
-    cJSON *localVarSingleItemJSON_feeds_update_request = NULL;
-    if (feeds_update_request != NULL)
+    cJSON *localVarSingleItemJSON_catalogs_feed_update_request_schema = NULL;
+    if (catalogs_feed_update_request_schema != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_feeds_update_request = feeds_update_request_convertToJSON(feeds_update_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_feeds_update_request);
+        localVarSingleItemJSON_catalogs_feed_update_request_schema = catalogs_feed_update_request_schema_convertToJSON(catalogs_feed_update_request_schema);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_feed_update_request_schema);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -981,23 +1031,31 @@ CatalogFeedsAPI_feedsUpdate(apiClient_t *apiClient, char *feed_id, feeds_update_
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid feed parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden. Account not approved for feed mutations yet.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Data feed not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_feed_t *elementToReturn = NULL;
@@ -1023,9 +1081,9 @@ CatalogFeedsAPI_feedsUpdate(apiClient_t *apiClient, char *feed_id, feeds_update_
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_feed_id);
-    if (localVarSingleItemJSON_feeds_update_request) {
-        cJSON_Delete(localVarSingleItemJSON_feeds_update_request);
-        localVarSingleItemJSON_feeds_update_request = NULL;
+    if (localVarSingleItemJSON_catalogs_feed_update_request_schema) {
+        cJSON_Delete(localVarSingleItemJSON_catalogs_feed_update_request_schema);
+        localVarSingleItemJSON_catalogs_feed_update_request_schema = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_ad_account_id){
@@ -1049,10 +1107,10 @@ end:
 
 // List item issues
 //
-// List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+// List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to [Build catalogs report](/docs/api/v5/#operation/reports/create) and [Get catalogs report](/docs/api/v5/#operation/reports/get) endpoints. Moreover, they support multiple types of catalogs.  [Learn more](/docs/api-features/shopping-overview/)
 //
 items_issues_list_200_response_t*
-CatalogFeedsAPI_itemsIssuesList(apiClient_t *apiClient, char *processing_result_id, char *bookmark, int *page_size, list_t *item_numbers, catalogs_item_validation_issue_e item_validation_issue, char *ad_account_id)
+CatalogFeedsAPI_itemsIssuesList(apiClient_t *apiClient, char *processing_result_id, list_t *item_numbers, catalogs_item_validation_issue_e item_validation_issue, char *ad_account_id, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1085,31 +1143,6 @@ CatalogFeedsAPI_itemsIssuesList(apiClient_t *apiClient, char *processing_result_
 
 
     // query parameters
-    char *keyQuery_bookmark = NULL;
-    char * valueQuery_bookmark = NULL;
-    keyValuePair_t *keyPairQuery_bookmark = 0;
-    if (bookmark)
-    {
-        keyQuery_bookmark = strdup("bookmark");
-        valueQuery_bookmark = strdup((bookmark));
-        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
-        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
-    }
-
-    // query parameters
-    char *keyQuery_page_size = NULL;
-    char * valueQuery_page_size = NULL;
-    keyValuePair_t *keyPairQuery_page_size = 0;
-    if (page_size)
-    {
-        keyQuery_page_size = strdup("page_size");
-        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
-        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
-        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
-    }
-
-    // query parameters
     if (item_numbers)
     {
         list_addElement(localVarQueryParameters,item_numbers);
@@ -1139,6 +1172,31 @@ CatalogFeedsAPI_itemsIssuesList(apiClient_t *apiClient, char *processing_result_
         keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
         list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
     }
+
+    // query parameters
+    char *keyQuery_bookmark = NULL;
+    char * valueQuery_bookmark = NULL;
+    keyValuePair_t *keyPairQuery_bookmark = 0;
+    if (bookmark)
+    {
+        keyQuery_bookmark = strdup("bookmark");
+        valueQuery_bookmark = strdup((bookmark));
+        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
+        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
+    }
+
+    // query parameters
+    char *keyQuery_page_size = NULL;
+    char * valueQuery_page_size = NULL;
+    keyValuePair_t *keyPairQuery_page_size = 0;
+    if (page_size)
+    {
+        keyQuery_page_size = strdup("page_size");
+        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
+        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
+        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -1153,23 +1211,31 @@ CatalogFeedsAPI_itemsIssuesList(apiClient_t *apiClient, char *processing_result_
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized access.");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Processing Result not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 501) {
-    //    printf("%s\n","Not implemented.");
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     items_issues_list_200_response_t *elementToReturn = NULL;
@@ -1195,6 +1261,26 @@ CatalogFeedsAPI_itemsIssuesList(apiClient_t *apiClient, char *processing_result_
     
     free(localVarPath);
     free(localVarToReplace_processing_result_id);
+    if(keyQuery_item_validation_issue){
+        free(keyQuery_item_validation_issue);
+        keyQuery_item_validation_issue = NULL;
+    }
+    if(keyPairQuery_item_validation_issue){
+        keyValuePair_free(keyPairQuery_item_validation_issue);
+        keyPairQuery_item_validation_issue = NULL;
+    }
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
     if(keyQuery_bookmark){
         free(keyQuery_bookmark);
         keyQuery_bookmark = NULL;
@@ -1218,26 +1304,6 @@ CatalogFeedsAPI_itemsIssuesList(apiClient_t *apiClient, char *processing_result_
     if(keyPairQuery_page_size){
         keyValuePair_free(keyPairQuery_page_size);
         keyPairQuery_page_size = NULL;
-    }
-    if(keyQuery_item_validation_issue){
-        free(keyQuery_item_validation_issue);
-        keyQuery_item_validation_issue = NULL;
-    }
-    if(keyPairQuery_item_validation_issue){
-        keyValuePair_free(keyPairQuery_item_validation_issue);
-        keyPairQuery_item_validation_issue = NULL;
-    }
-    if(keyQuery_ad_account_id){
-        free(keyQuery_ad_account_id);
-        keyQuery_ad_account_id = NULL;
-    }
-    if(valueQuery_ad_account_id){
-        free(valueQuery_ad_account_id);
-        valueQuery_ad_account_id = NULL;
-    }
-    if(keyPairQuery_ad_account_id){
-        keyValuePair_free(keyPairQuery_ad_account_id);
-        keyPairQuery_ad_account_id = NULL;
     }
     return elementToReturn;
 end:

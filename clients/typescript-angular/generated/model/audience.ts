@@ -7,6 +7,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { AudienceStatus } from './audienceStatus';
+import { PinnerListType } from './pinnerListType';
 import { AudienceRule } from './audienceRule';
 
 
@@ -16,9 +18,9 @@ export interface Audience {
      */
     ad_account_id?: string;
     /**
-     * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+     * [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
      */
-    audience_type?: string;
+    audience_type?: PinnerListType;
     /**
      * The company that created this audience.
      */
@@ -36,6 +38,10 @@ export interface Audience {
      */
     id?: string;
     /**
+     * Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+     */
+    is_nca?: boolean;
+    /**
      * Audience name.
      */
     name?: string;
@@ -47,7 +53,7 @@ export interface Audience {
     /**
      * Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
      */
-    status?: string;
+    status?: AudienceStatus;
     /**
      * Always \"audience\".
      */
@@ -57,4 +63,7 @@ export interface Audience {
      */
     updated_timestamp?: number | null;
 }
+export namespace Audience {
+}
+
 

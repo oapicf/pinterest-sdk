@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AdvancedAuctionItem
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -23,10 +26,16 @@ data class AdvancedAuctionItems(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", description = "Response object of item bid options")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("catalog_id")
     @get:JsonProperty("catalog_id") val catalogId: kotlin.String? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "Array with item bid options")
+    @Schema(description = "Array with item bid options")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("items")
     @get:JsonProperty("items") val items: kotlin.collections.List<AdvancedAuctionItem>? = null
 ) {
 

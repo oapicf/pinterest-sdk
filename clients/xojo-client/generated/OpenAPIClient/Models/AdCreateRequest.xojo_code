@@ -95,6 +95,14 @@ Protected Class AdCreateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Is the ad a carting/WTB ad?
+		#tag EndNote
+		is_carting As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Is original pin deleted?
 		#tag EndNote
 		is_pin_deleted As Xoson.O.OptionalBoolean
@@ -127,9 +135,17 @@ Protected Class AdCreateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Pin ID.
+		#tag EndNote
+		pin_id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
 		#tag EndNote
-		quiz_pin_data As OpenAPIClient.Models.QuizPinData
+		quiz_pin_data As Object
 	#tag EndProperty
 
 
@@ -139,7 +155,7 @@ Protected Class AdCreateRequest
 
 
 	#tag Property, Flags = &h0
-		tracking_urls As OpenAPIClient.Models.TrackingUrls
+		tracking_urls As Object
 	#tag EndProperty
 
 
@@ -148,14 +164,6 @@ Protected Class AdCreateRequest
 			Tracking URL for ad impressions.
 		#tag EndNote
 		view_tracking_url As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Pin ID.
-		#tag EndNote
-		pin_id As String
 	#tag EndProperty
 
 
@@ -300,6 +308,14 @@ Protected Class AdCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="is_carting"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="is_pin_deleted"
 			Visible=false
 			Group="Behavior"
@@ -332,11 +348,19 @@ Protected Class AdCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="pin_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="quiz_pin_data"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="QuizPinData"
+			Type="Object"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -352,19 +376,11 @@ Protected Class AdCreateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="TrackingUrls"
+			Type="Object"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="view_tracking_url"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="pin_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

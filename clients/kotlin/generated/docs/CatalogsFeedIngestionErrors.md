@@ -11,15 +11,8 @@
 | **IMAGE_INVALID_FILE** | **kotlin.Int** | Image files are unreadable. Please upload new files to continue. |  [optional] |
 | **IMAGE_LEVEL_INTERNAL_ERROR** | **kotlin.Int** | We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours. |  [optional] |
 | **IMAGE_MALFORMED_URL** | **kotlin.Int** | Image files are unreadable. Please check your link and upload new files to continue. |  [optional] |
-| **LARGE_PRODUCT_COUNT_DECREASE** | [**inline**](#LARGEPRODUCTCOUNTDECREASE) | The product count has decreased by more than 99% compared to the last successful ingestion. |  [optional] |
+| **LARGE_PRODUCT_COUNT_DECREASE** | **kotlin.Int** | The product count has decreased by more than 99% compared to the last successful ingestion. |  [optional] |
 | **LINE_LEVEL_INTERNAL_ERROR** | **kotlin.Int** | We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours. |  [optional] |
-
-
-<a id="LARGEPRODUCTCOUNTDECREASE"></a>
-## Enum: LARGE_PRODUCT_COUNT_DECREASE
-| Name | Value |
-| ---- | ----- |
-| LARGE_PRODUCT_COUNT_DECREASE | 1 |
 
 
 

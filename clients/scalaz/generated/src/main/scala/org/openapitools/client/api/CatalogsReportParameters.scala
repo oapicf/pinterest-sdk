@@ -12,11 +12,30 @@ import org.joda.time.DateTime
 import CatalogsReportParameters._
 
 case class CatalogsReportParameters (
-  catalogType: CatalogsType,
+  catalogType: CatalogType,
 report: CatalogsHotelReportParametersReport)
 
 object CatalogsReportParameters {
   import DateTimeCodecs._
+  sealed trait CatalogType
+  case object HOTEL extends CatalogType
+
+  object CatalogType {
+    def toCatalogType(s: String): Option[CatalogType] = s match {
+      case "HOTEL" => Some(HOTEL)
+      case _ => None
+    }
+
+    def fromCatalogType(x: CatalogType): String = x match {
+      case HOTEL => "HOTEL"
+    }
+  }
+
+  implicit val CatalogTypeEnumEncoder: EncodeJson[CatalogType] =
+    EncodeJson[CatalogType](is => StringEncodeJson(CatalogType.fromCatalogType(is)))
+
+  implicit val CatalogTypeEnumDecoder: DecodeJson[CatalogType] =
+    DecodeJson.optionDecoder[CatalogType](n => n.string.flatMap(jStr => CatalogType.toCatalogType(jStr)), "CatalogType failed to de-serialize")
 
   implicit val CatalogsReportParametersCodecJson: CodecJson[CatalogsReportParameters] = CodecJson.derive[CatalogsReportParameters]
   implicit val CatalogsReportParametersDecoder: EntityDecoder[CatalogsReportParameters] = jsonOf[CatalogsReportParameters]

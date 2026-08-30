@@ -16,13 +16,13 @@ static audience_demographics_t *audience_demographics_create_internal(
     if (!audience_demographics_local_var) {
         return NULL;
     }
+    memset(audience_demographics_local_var, 0, sizeof(audience_demographics_t));
+    audience_demographics_local_var->_library_owned = 1;
     audience_demographics_local_var->ages = ages;
     audience_demographics_local_var->countries = countries;
     audience_demographics_local_var->devices = devices;
     audience_demographics_local_var->genders = genders;
     audience_demographics_local_var->metros = metros;
-
-    audience_demographics_local_var->_library_owned = 1;
     return audience_demographics_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) audience_demographics_t *audience_demographics_creat
     list_t *genders,
     list_t *metros
     ) {
-    return audience_demographics_create_internal (
+    audience_demographics_t *result = audience_demographics_create_internal (
         ages,
         countries,
         devices,
         genders,
         metros
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void audience_demographics_free(audience_demographics_t *audience_demographics) {
@@ -339,6 +342,7 @@ audience_demographics_t *audience_demographics_parseFromJSON(cJSON *audience_dem
     }
 
 
+
     audience_demographics_local_var = audience_demographics_create_internal (
         ages ? agesList : NULL,
         countries ? countriesList : NULL,
@@ -346,6 +350,10 @@ audience_demographics_t *audience_demographics_parseFromJSON(cJSON *audience_dem
         genders ? gendersList : NULL,
         metros ? metrosList : NULL
         );
+
+    if (!audience_demographics_local_var) {
+        goto end;
+    }
 
     return audience_demographics_local_var;
 end:

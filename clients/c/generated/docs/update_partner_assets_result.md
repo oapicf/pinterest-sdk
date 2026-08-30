@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **asset_id** | **char \*** | Unique identifier of a business asset. | [optional] 
-**asset_type** | **char \*** | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional] 
+**asset_type** | **asset_type_response_t \*** |  | [optional] 
 **partner_id** | **char \*** | Unique identifier of a business partner. | [optional] 
 **permissions** | **list_t \*** | Permission levels member or partner has on an asset. | [optional] 
 

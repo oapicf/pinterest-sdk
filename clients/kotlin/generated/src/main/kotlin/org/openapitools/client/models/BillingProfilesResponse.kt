@@ -8,13 +8,25 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.BillingProfileCardType
+import org.openapitools.client.models.BillingProfilePaymentMethodBrand
+import org.openapitools.client.models.BillingProfileStatus
+import org.openapitools.client.models.BillingType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -39,11 +51,11 @@ data class BillingProfilesResponse (
 
     /* Billing type of the advertiser */
     @Json(name = "billing_type")
-    val billingType: BillingProfilesResponse.BillingType? = null,
+    val billingType: BillingType? = null,
 
     /* Type of the card. */
     @Json(name = "card_type")
-    val cardType: BillingProfilesResponse.CardType? = null,
+    val cardType: BillingProfileCardType? = null,
 
     /* Billing ID. */
     @Json(name = "id")
@@ -51,73 +63,14 @@ data class BillingProfilesResponse (
 
     /* Brand of the payment method. */
     @Json(name = "payment_method_brand")
-    val paymentMethodBrand: BillingProfilesResponse.PaymentMethodBrand? = null,
+    val paymentMethodBrand: BillingProfilePaymentMethodBrand? = null,
 
     /* Status of the billing. */
     @Json(name = "status")
-    val status: BillingProfilesResponse.Status? = null
+    val status: BillingProfileStatus? = null
 
 ) {
 
-    /**
-     * Billing type of the advertiser
-     *
-     * Values: CREDIT_CARD,INVOICE,INTERNAL,RECURRING,PREPAID
-     */
-    @JsonClass(generateAdapter = false)
-    enum class BillingType(val value: kotlin.String) {
-        @Json(name = "CREDIT_CARD") CREDIT_CARD("CREDIT_CARD"),
-        @Json(name = "INVOICE") INVOICE("INVOICE"),
-        @Json(name = "INTERNAL") INTERNAL("INTERNAL"),
-        @Json(name = "RECURRING") RECURRING("RECURRING"),
-        @Json(name = "PREPAID") PREPAID("PREPAID");
-    }
-    /**
-     * Type of the card.
-     *
-     * Values: UNKNOWN,VISA,MASTERCARD,AMERICAN_EXPRESS,DISCOVER,ELO
-     */
-    @JsonClass(generateAdapter = false)
-    enum class CardType(val value: kotlin.String) {
-        @Json(name = "UNKNOWN") UNKNOWN("UNKNOWN"),
-        @Json(name = "VISA") VISA("VISA"),
-        @Json(name = "MASTERCARD") MASTERCARD("MASTERCARD"),
-        @Json(name = "AMERICAN_EXPRESS") AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
-        @Json(name = "DISCOVER") DISCOVER("DISCOVER"),
-        @Json(name = "ELO") ELO("ELO");
-    }
-    /**
-     * Brand of the payment method.
-     *
-     * Values: UNKNOWN,VISA,MASTERCARD,AMERICAN_EXPRESS,DISCOVER,SOFORT,DINERS_CLUB,ELO,CARTE_BANCAIRE
-     */
-    @JsonClass(generateAdapter = false)
-    enum class PaymentMethodBrand(val value: kotlin.String) {
-        @Json(name = "UNKNOWN") UNKNOWN("UNKNOWN"),
-        @Json(name = "VISA") VISA("VISA"),
-        @Json(name = "MASTERCARD") MASTERCARD("MASTERCARD"),
-        @Json(name = "AMERICAN_EXPRESS") AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
-        @Json(name = "DISCOVER") DISCOVER("DISCOVER"),
-        @Json(name = "SOFORT") SOFORT("SOFORT"),
-        @Json(name = "DINERS_CLUB") DINERS_CLUB("DINERS_CLUB"),
-        @Json(name = "ELO") ELO("ELO"),
-        @Json(name = "CARTE_BANCAIRE") CARTE_BANCAIRE("CARTE_BANCAIRE");
-    }
-    /**
-     * Status of the billing.
-     *
-     * Values: UNSPECIFIED,VALID,INVALID,PENDING,DELETED,SECONDARY,PENDING_SECONDARY
-     */
-    @JsonClass(generateAdapter = false)
-    enum class Status(val value: kotlin.String) {
-        @Json(name = "UNSPECIFIED") UNSPECIFIED("UNSPECIFIED"),
-        @Json(name = "VALID") VALID("VALID"),
-        @Json(name = "INVALID") INVALID("INVALID"),
-        @Json(name = "PENDING") PENDING("PENDING"),
-        @Json(name = "DELETED") DELETED("DELETED"),
-        @Json(name = "SECONDARY") SECONDARY("SECONDARY"),
-        @Json(name = "PENDING_SECONDARY") PENDING_SECONDARY("PENDING_SECONDARY");
-    }
 
 }
 

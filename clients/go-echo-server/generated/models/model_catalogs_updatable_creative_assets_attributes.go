@@ -35,6 +35,6 @@ type CatalogsUpdatableCreativeAssetsAttributes struct {
 	// The name of the creative assets.
 	Title string `json:"title,omitempty"`
 
-	// Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+	// Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
 	Visibility *string `json:"visibility,omitempty"`
 }

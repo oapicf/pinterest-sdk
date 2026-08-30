@@ -1,7 +1,7 @@
 /*
  * Pin.h
  *
- * Pin model containing properties related to a Pinterest Pin.
+ * 
  */
 
 #ifndef _Pin_H_
@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "AiDisclosures.h"
 #include "BoardOwner.h"
 #include "CreativeType.h"
 #include "PinMedia.h"
@@ -23,7 +24,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Pin model containing properties related to a Pinterest Pin.
+/*! \brief 
  *
  *  \ingroup Models
  *
@@ -48,13 +49,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get AI disclosure declarations the creator has made about this Pin.
 	 */
-	std::string getAltText();
+	AiDisclosures getAiDisclosures();
 
-	/*! \brief Set 
+	/*! \brief Set AI disclosure declarations the creator has made about this Pin.
 	 */
-	void setAltText(std::string  alt_text);
+	void setAiDisclosures(AiDisclosures  ai_disclosures);
 	/*! \brief Get The board to which this Pin belongs.
 	 */
 	std::string getBoardId();
@@ -90,13 +91,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setCreativeType(CreativeType  creative_type);
-	/*! \brief Get 
-	 */
-	std::string getDescription();
-
-	/*! \brief Set 
-	 */
-	void setDescription(std::string  description);
 	/*! \brief Get Dominant pin color. Hex number, e.g. `#6E7874`.
 	 */
 	std::string getDominantColor();
@@ -125,6 +119,13 @@ public:
 	/*! \brief Set Whether the \"operation user_account\" is the Pin owner.
 	 */
 	void setIsOwner(bool  is_owner);
+	/*! \brief Get Whether the Pin is a product Pin.
+	 */
+	bool getIsProduct();
+
+	/*! \brief Set Whether the Pin is a product Pin.
+	 */
+	void setIsProduct(bool  is_product);
 	/*! \brief Get Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
 	 */
 	bool getIsStandard();
@@ -132,13 +133,6 @@ public:
 	/*! \brief Set Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
 	 */
 	void setIsStandard(bool  is_standard);
-	/*! \brief Get 
-	 */
-	std::string getLink();
-
-	/*! \brief Set 
-	 */
-	void setLink(std::string  link);
 	/*! \brief Get 
 	 */
 	PinMedia getMedia();
@@ -162,6 +156,27 @@ public:
 	void setPinMetrics(std::string  pin_metrics);
 	/*! \brief Get 
 	 */
+	std::string getAltText();
+
+	/*! \brief Set 
+	 */
+	void setAltText(std::string  alt_text);
+	/*! \brief Get 
+	 */
+	std::string getDescription();
+
+	/*! \brief Set 
+	 */
+	void setDescription(std::string  description);
+	/*! \brief Get 
+	 */
+	std::string getLink();
+
+	/*! \brief Set 
+	 */
+	void setLink(std::string  link);
+	/*! \brief Get 
+	 */
 	std::string getTitle();
 
 	/*! \brief Set 
@@ -169,22 +184,24 @@ public:
 	void setTitle(std::string  title);
 
 private:
-	std::string alt_text;
+	AiDisclosures ai_disclosures;
 	std::string board_id;
 	BoardOwner board_owner;
 	std::string board_section_id;
 	std::string created_at;
 	CreativeType creative_type;
-	std::string description;
 	std::string dominant_color;
 	bool has_been_promoted;
 	std::string id;
 	bool is_owner;
+	bool is_product;
 	bool is_standard;
-	std::string link;
 	PinMedia media;
 	std::string parent_pin_id;
 	std::string pin_metrics;
+	std::string alt_text;
+	std::string description;
+	std::string link;
 	std::string title;
 	void __init();
 	void __cleanup();

@@ -25,14 +25,14 @@ typedef struct integration_metadata_t {
     char *connected_merchant_id; // string
     char *connected_tag_id; // string
     char *connected_user_id; // string
-    double created_timestamp; //numeric
+    double *created_timestamp; //numeric
     char *external_business_id; // string
     char *id; // string
-    double partner_access_token_expiry; //numeric
+    double *partner_access_token_expiry; //numeric
     char *partner_metadata; // string
-    double partner_refresh_token_expiry; //numeric
+    double *partner_refresh_token_expiry; //numeric
     char *scopes; // string
-    double updated_timestamp; //numeric
+    double *updated_timestamp; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } integration_metadata_t;
@@ -44,14 +44,14 @@ __attribute__((deprecated)) integration_metadata_t *integration_metadata_create(
     char *connected_merchant_id,
     char *connected_tag_id,
     char *connected_user_id,
-    double created_timestamp,
+    double *created_timestamp,
     char *external_business_id,
     char *id,
-    double partner_access_token_expiry,
+    double *partner_access_token_expiry,
     char *partner_metadata,
-    double partner_refresh_token_expiry,
+    double *partner_refresh_token_expiry,
     char *scopes,
-    double updated_timestamp
+    double *updated_timestamp
 );
 
 void integration_metadata_free(integration_metadata_t *integration_metadata);

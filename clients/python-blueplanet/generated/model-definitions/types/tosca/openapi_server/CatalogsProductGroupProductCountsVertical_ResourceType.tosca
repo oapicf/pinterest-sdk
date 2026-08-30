@@ -10,7 +10,6 @@ imports {
   CatalogsCreativeAssetsProductGroupProductCounts = openapi_server.resourceTypes.CatalogsCreativeAssetsProductGroupProductCounts
   CatalogsHotelProductGroupProductCounts = openapi_server.resourceTypes.CatalogsHotelProductGroupProductCounts
   CatalogsRetailProductGroupProductCounts = openapi_server.resourceTypes.CatalogsRetailProductGroupProductCounts
-  CatalogsType = openapi_server.resourceTypes.CatalogsType
 }
 resourceTypes {
 
@@ -20,8 +19,9 @@ resourceTypes {
     derivedFrom = Root
     properties {
         catalog_type {
-          type = CatalogsType
+          type =  string
           description = ""
+          enum = ["CREATIVE_ASSETS"]
           optional = true
         }
         in_stock {
@@ -45,6 +45,16 @@ resourceTypes {
           optional = true
         }
         videos {
+          type =  
+          description = ""
+          optional = true
+        }
+        app_links {
+          type =  
+          description = ""
+          optional = true
+        }
+        images {
           type =  
           description = ""
           optional = true

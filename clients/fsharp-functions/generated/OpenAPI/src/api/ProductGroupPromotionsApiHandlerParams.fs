@@ -1,13 +1,16 @@
 namespace OpenAPI
 
-open OpenAPI.Model.Error
+open OpenAPI.Model.EntityStatus
 open OpenAPI.Model.Granularity
-open OpenAPI.Model.ProductGroupAnalyticsResponseInner
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PinterestLibPaginationOrder
+open OpenAPI.Model.ProductGroupAnalyticsItems
 open OpenAPI.Model.ProductGroupPromotion
-open OpenAPI.Model.ProductGroupPromotionCreateRequest
-open OpenAPI.Model.ProductGroupPromotionResponse
-open OpenAPI.Model.ProductGroupPromotionUpdateRequest
+open OpenAPI.Model.ProductGroupPromotions
+open OpenAPI.Model.ProductGroupPromotionsCreate
 open OpenAPI.Model.ProductGroupPromotionsList200Response
+open OpenAPI.Model.ProductGroupPromotionsUpdateWithRequiredBody
+open OpenAPI.Model.ReportingColumnSync
 open OpenAPI.Model.ReportingTimeZone
 open System.Collections.Generic
 open System
@@ -23,20 +26,50 @@ module ProductGroupPromotionsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type ProductGroupPromotionsCreateBodyParams = ProductGroupPromotionCreateRequest
+    type ProductGroupPromotionsCreateBodyParams = ProductGroupPromotionsCreate
     //#endregion
 
 
     type ProductGroupPromotionsCreateStatusCode200Response = {
-      content:ProductGroupPromotionResponse;
+      content:ProductGroupPromotions;
+      
+    }
+
+    type ProductGroupPromotionsCreateStatusCode201Response = {
+      content:ProductGroupPromotions;
+      
+    }
+
+    type ProductGroupPromotionsCreateStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsCreateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsCreateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsCreateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsCreateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type ProductGroupPromotionsCreateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type ProductGroupPromotionsCreateResult = ProductGroupPromotionsCreateStatusCode200 of ProductGroupPromotionsCreateStatusCode200Response|ProductGroupPromotionsCreateDefaultStatusCode of ProductGroupPromotionsCreateDefaultStatusCodeResponse
+    type ProductGroupPromotionsCreateResult = ProductGroupPromotionsCreateStatusCode200 of ProductGroupPromotionsCreateStatusCode200Response|ProductGroupPromotionsCreateStatusCode201 of ProductGroupPromotionsCreateStatusCode201Response|ProductGroupPromotionsCreateStatusCode400 of ProductGroupPromotionsCreateStatusCode400Response|ProductGroupPromotionsCreateStatusCode401 of ProductGroupPromotionsCreateStatusCode401Response|ProductGroupPromotionsCreateStatusCode403 of ProductGroupPromotionsCreateStatusCode403Response|ProductGroupPromotionsCreateStatusCode404 of ProductGroupPromotionsCreateStatusCode404Response|ProductGroupPromotionsCreateStatusCode429 of ProductGroupPromotionsCreateStatusCode429Response|ProductGroupPromotionsCreateDefaultStatusCode of ProductGroupPromotionsCreateDefaultStatusCodeResponse
 
     type ProductGroupPromotionsCreateArgs = {
       pathParams:ProductGroupPromotionsCreatePathParams;
@@ -57,11 +90,36 @@ module ProductGroupPromotionsApiHandlerParams =
       
     }
 
-    type ProductGroupPromotionsGetDefaultStatusCodeResponse = {
-      content:Error;
+    type ProductGroupPromotionsGetStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type ProductGroupPromotionsGetResult = ProductGroupPromotionsGetStatusCode200 of ProductGroupPromotionsGetStatusCode200Response|ProductGroupPromotionsGetDefaultStatusCode of ProductGroupPromotionsGetDefaultStatusCodeResponse
+
+    type ProductGroupPromotionsGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsGetStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsGetDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type ProductGroupPromotionsGetResult = ProductGroupPromotionsGetStatusCode200 of ProductGroupPromotionsGetStatusCode200Response|ProductGroupPromotionsGetStatusCode400 of ProductGroupPromotionsGetStatusCode400Response|ProductGroupPromotionsGetStatusCode401 of ProductGroupPromotionsGetStatusCode401Response|ProductGroupPromotionsGetStatusCode403 of ProductGroupPromotionsGetStatusCode403Response|ProductGroupPromotionsGetStatusCode404 of ProductGroupPromotionsGetStatusCode404Response|ProductGroupPromotionsGetStatusCode429 of ProductGroupPromotionsGetStatusCode429Response|ProductGroupPromotionsGetDefaultStatusCode of ProductGroupPromotionsGetDefaultStatusCodeResponse
 
     type ProductGroupPromotionsGetArgs = {
       pathParams:ProductGroupPromotionsGetPathParams;
@@ -76,22 +134,22 @@ module ProductGroupPromotionsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type ProductGroupPromotionsListQueryParams = {
-      productGroupPromotionIds : string[] option;
-
-
-      entityStatuses : string[] option;
-
-
-      adGroupId : string option;
+      bookmark : string option;
 
 
       pageSize : int option;
 
 
-      order : string option;
+      order : PinterestLibPaginationOrder option;
 
 
-      bookmark : string option;
+      productGroupPromotionIds : string[] option;
+
+
+      entityStatuses : EntityStatus[] option;
+
+
+      adGroupId : string option;
 
     }
     //#endregion
@@ -102,11 +160,36 @@ module ProductGroupPromotionsApiHandlerParams =
       
     }
 
-    type ProductGroupPromotionsListDefaultStatusCodeResponse = {
-      content:Error;
+    type ProductGroupPromotionsListStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type ProductGroupPromotionsListResult = ProductGroupPromotionsListStatusCode200 of ProductGroupPromotionsListStatusCode200Response|ProductGroupPromotionsListDefaultStatusCode of ProductGroupPromotionsListDefaultStatusCodeResponse
+
+    type ProductGroupPromotionsListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsListStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsListStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsListDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type ProductGroupPromotionsListResult = ProductGroupPromotionsListStatusCode200 of ProductGroupPromotionsListStatusCode200Response|ProductGroupPromotionsListStatusCode400 of ProductGroupPromotionsListStatusCode400Response|ProductGroupPromotionsListStatusCode401 of ProductGroupPromotionsListStatusCode401Response|ProductGroupPromotionsListStatusCode403 of ProductGroupPromotionsListStatusCode403Response|ProductGroupPromotionsListStatusCode404 of ProductGroupPromotionsListStatusCode404Response|ProductGroupPromotionsListStatusCode429 of ProductGroupPromotionsListStatusCode429Response|ProductGroupPromotionsListDefaultStatusCode of ProductGroupPromotionsListDefaultStatusCodeResponse
 
     type ProductGroupPromotionsListArgs = {
       pathParams:ProductGroupPromotionsListPathParams;
@@ -121,20 +204,45 @@ module ProductGroupPromotionsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type ProductGroupPromotionsUpdateBodyParams = ProductGroupPromotionUpdateRequest
+    type ProductGroupPromotionsUpdateBodyParams = ProductGroupPromotionsUpdateWithRequiredBody
     //#endregion
 
 
     type ProductGroupPromotionsUpdateStatusCode200Response = {
-      content:ProductGroupPromotionResponse;
+      content:ProductGroupPromotions;
+      
+    }
+
+    type ProductGroupPromotionsUpdateStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsUpdateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsUpdateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsUpdateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupPromotionsUpdateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type ProductGroupPromotionsUpdateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type ProductGroupPromotionsUpdateResult = ProductGroupPromotionsUpdateStatusCode200 of ProductGroupPromotionsUpdateStatusCode200Response|ProductGroupPromotionsUpdateDefaultStatusCode of ProductGroupPromotionsUpdateDefaultStatusCodeResponse
+    type ProductGroupPromotionsUpdateResult = ProductGroupPromotionsUpdateStatusCode200 of ProductGroupPromotionsUpdateStatusCode200Response|ProductGroupPromotionsUpdateStatusCode400 of ProductGroupPromotionsUpdateStatusCode400Response|ProductGroupPromotionsUpdateStatusCode401 of ProductGroupPromotionsUpdateStatusCode401Response|ProductGroupPromotionsUpdateStatusCode403 of ProductGroupPromotionsUpdateStatusCode403Response|ProductGroupPromotionsUpdateStatusCode404 of ProductGroupPromotionsUpdateStatusCode404Response|ProductGroupPromotionsUpdateStatusCode429 of ProductGroupPromotionsUpdateStatusCode429Response|ProductGroupPromotionsUpdateDefaultStatusCode of ProductGroupPromotionsUpdateDefaultStatusCodeResponse
 
     type ProductGroupPromotionsUpdateArgs = {
       pathParams:ProductGroupPromotionsUpdatePathParams;
@@ -159,19 +267,19 @@ module ProductGroupPromotionsApiHandlerParams =
       productGroupIds : string[] ;
 
 
-      columns : string[] ;
+      columns : ReportingColumnSync[] ;
 
 
       granularity : Granularity ;
 
 
-      clickWindowDays : int option;
+      clickWindowDays : decimal option;
 
 
-      engagementWindowDays : int option;
+      engagementWindowDays : decimal option;
 
 
-      viewWindowDays : int option;
+      viewWindowDays : decimal option;
 
 
       conversionReportTime : string option;
@@ -184,20 +292,40 @@ module ProductGroupPromotionsApiHandlerParams =
 
 
     type ProductGroupsAnalyticsStatusCode200Response = {
-      content:ProductGroupAnalyticsResponseInner[];
+      content:ProductGroupAnalyticsItems[];
       
     }
 
     type ProductGroupsAnalyticsStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupsAnalyticsStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupsAnalyticsStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupsAnalyticsStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ProductGroupsAnalyticsStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type ProductGroupsAnalyticsDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type ProductGroupsAnalyticsResult = ProductGroupsAnalyticsStatusCode200 of ProductGroupsAnalyticsStatusCode200Response|ProductGroupsAnalyticsStatusCode400 of ProductGroupsAnalyticsStatusCode400Response|ProductGroupsAnalyticsDefaultStatusCode of ProductGroupsAnalyticsDefaultStatusCodeResponse
+    type ProductGroupsAnalyticsResult = ProductGroupsAnalyticsStatusCode200 of ProductGroupsAnalyticsStatusCode200Response|ProductGroupsAnalyticsStatusCode400 of ProductGroupsAnalyticsStatusCode400Response|ProductGroupsAnalyticsStatusCode401 of ProductGroupsAnalyticsStatusCode401Response|ProductGroupsAnalyticsStatusCode403 of ProductGroupsAnalyticsStatusCode403Response|ProductGroupsAnalyticsStatusCode404 of ProductGroupsAnalyticsStatusCode404Response|ProductGroupsAnalyticsStatusCode429 of ProductGroupsAnalyticsStatusCode429Response|ProductGroupsAnalyticsDefaultStatusCode of ProductGroupsAnalyticsDefaultStatusCodeResponse
 
     type ProductGroupsAnalyticsArgs = {
       pathParams:ProductGroupsAnalyticsPathParams;

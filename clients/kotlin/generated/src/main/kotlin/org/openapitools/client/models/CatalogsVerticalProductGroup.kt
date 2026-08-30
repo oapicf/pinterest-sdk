@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -28,18 +36,18 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param catalogId Catalog id pertaining to the creative assets product group.
+ * @param catalogId Catalog ID pertaining to the product group.
  * @param catalogType 
  * @param feedId id of the catalogs feed belonging to this catalog product group
  * @param filters 
- * @param id ID of the creative assets product group.
+ * @param id ID of the catalog product group.
  * @param type 
  * @param country 
  * @param createdAt Unix timestamp in seconds of when catalog product group was created.
  * @param description 
  * @param isFeatured boolean indicator of whether the product group is being featured or not
  * @param locale 
- * @param name Name of creative assets product group
+ * @param name Name of catalog product group
  * @param status 
  * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
  */
@@ -47,7 +55,7 @@ import com.squareup.moshi.JsonClass
 
 interface CatalogsVerticalProductGroup {
 
-    /* Catalog id pertaining to the creative assets product group. */
+    /* Catalog ID pertaining to the product group. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String
     @Json(name = "catalog_type")
@@ -57,7 +65,7 @@ interface CatalogsVerticalProductGroup {
     val feedId: kotlin.String?
     @Json(name = "filters")
     val filters: CatalogsCreativeAssetsProductGroupFilters
-    /* ID of the creative assets product group. */
+    /* ID of the catalog product group. */
     @Json(name = "id")
     val id: kotlin.String
     @Json(name = "type")
@@ -74,7 +82,7 @@ interface CatalogsVerticalProductGroup {
     val isFeatured: kotlin.Boolean?
     @Json(name = "locale")
     val locale: kotlin.String?
-    /* Name of creative assets product group */
+    /* Name of catalog product group */
     @Json(name = "name")
     val name: kotlin.String?
     @Json(name = "status")

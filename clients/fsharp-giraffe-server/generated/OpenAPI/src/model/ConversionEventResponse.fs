@@ -14,5 +14,6 @@ module ConversionEventResponse =
     ConversionEvent : ConversionTagType;
     ConversionTagId : string;
     CreatedTime : int;
+    ReportingConversionEvent : string;
   }
   //#endregion

@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -23,19 +26,34 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CatalogsHotelAddress(
 
-    @Schema(example = "null", description = "Primary street address of hotel.")
+    @Schema(description = "Primary street address of hotel.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("addr1")
     @get:JsonProperty("addr1") val addr1: kotlin.String? = null,
 
-    @Schema(example = "null", description = "City where the hotel is located.")
+    @Schema(description = "City where the hotel is located.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("city")
     @get:JsonProperty("city") val city: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Country where the hotel is located.")
+    @Schema(description = "Country where the hotel is located.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("country")
     @get:JsonProperty("country") val country: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Required for countries with a postal code system. Postal or zip code of the hotel.")
+    @Schema(description = "Required for countries with a postal code system. Postal or zip code of the hotel.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("postal_code")
     @get:JsonProperty("postal_code") val postalCode: kotlin.String? = null,
 
-    @Schema(example = "null", description = "State, county, province, where the hotel is located.")
+    @Schema(description = "State, county, province, where the hotel is located.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("region")
     @get:JsonProperty("region") val region: kotlin.String? = null
 ) {
 

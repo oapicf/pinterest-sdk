@@ -106,7 +106,7 @@ CatalogsFeedVideoCounts::getIngestedVideos()
 }
 
 void
-CatalogsFeedVideoCounts::setIngestedVideos(int  ingested_videos)
+CatalogsFeedVideoCounts::setIngestedVideos(int ingested_videos)
 {
 	this->ingested_videos = ingested_videos;
 }
@@ -118,7 +118,7 @@ CatalogsFeedVideoCounts::getNotIngestedVideos()
 }
 
 void
-CatalogsFeedVideoCounts::setNotIngestedVideos(int  not_ingested_videos)
+CatalogsFeedVideoCounts::setNotIngestedVideos(int not_ingested_videos)
 {
 	this->not_ingested_videos = not_ingested_videos;
 }
@@ -130,7 +130,7 @@ CatalogsFeedVideoCounts::getTotalVideos()
 }
 
 void
-CatalogsFeedVideoCounts::setTotalVideos(int  total_videos)
+CatalogsFeedVideoCounts::setTotalVideos(int total_videos)
 {
 	this->total_videos = total_videos;
 }

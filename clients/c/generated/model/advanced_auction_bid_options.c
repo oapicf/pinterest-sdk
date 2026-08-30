@@ -7,31 +7,40 @@
 
 static advanced_auction_bid_options_t *advanced_auction_bid_options_create_internal(
     app_type_multipliers_t *app_type_multipliers,
-    long bid_in_micro_currency,
+    long *bid_in_micro_currency,
     placement_multipliers_t *placement_multipliers
     ) {
     advanced_auction_bid_options_t *advanced_auction_bid_options_local_var = malloc(sizeof(advanced_auction_bid_options_t));
     if (!advanced_auction_bid_options_local_var) {
         return NULL;
     }
+    memset(advanced_auction_bid_options_local_var, 0, sizeof(advanced_auction_bid_options_t));
+    advanced_auction_bid_options_local_var->_library_owned = 1;
     advanced_auction_bid_options_local_var->app_type_multipliers = app_type_multipliers;
     advanced_auction_bid_options_local_var->bid_in_micro_currency = bid_in_micro_currency;
     advanced_auction_bid_options_local_var->placement_multipliers = placement_multipliers;
-
-    advanced_auction_bid_options_local_var->_library_owned = 1;
     return advanced_auction_bid_options_local_var;
 }
 
 __attribute__((deprecated)) advanced_auction_bid_options_t *advanced_auction_bid_options_create(
     app_type_multipliers_t *app_type_multipliers,
-    long bid_in_micro_currency,
+    long *bid_in_micro_currency,
     placement_multipliers_t *placement_multipliers
     ) {
-    return advanced_auction_bid_options_create_internal (
+    long *bid_in_micro_currency_copy = NULL;
+    if (bid_in_micro_currency) {
+        bid_in_micro_currency_copy = malloc(sizeof(long));
+        if (bid_in_micro_currency_copy) *bid_in_micro_currency_copy = *bid_in_micro_currency;
+    }
+    advanced_auction_bid_options_t *result = advanced_auction_bid_options_create_internal (
         app_type_multipliers,
-        bid_in_micro_currency,
+        bid_in_micro_currency_copy,
         placement_multipliers
         );
+    if (!result) {
+        free(bid_in_micro_currency_copy);
+    }
+    return result;
 }
 
 void advanced_auction_bid_options_free(advanced_auction_bid_options_t *advanced_auction_bid_options) {
@@ -46,6 +55,10 @@ void advanced_auction_bid_options_free(advanced_auction_bid_options_t *advanced_
     if (advanced_auction_bid_options->app_type_multipliers) {
         app_type_multipliers_free(advanced_auction_bid_options->app_type_multipliers);
         advanced_auction_bid_options->app_type_multipliers = NULL;
+    }
+    if (advanced_auction_bid_options->bid_in_micro_currency) {
+        free(advanced_auction_bid_options->bid_in_micro_currency);
+        advanced_auction_bid_options->bid_in_micro_currency = NULL;
     }
     if (advanced_auction_bid_options->placement_multipliers) {
         placement_multipliers_free(advanced_auction_bid_options->placement_multipliers);
@@ -72,7 +85,7 @@ cJSON *advanced_auction_bid_options_convertToJSON(advanced_auction_bid_options_t
 
     // advanced_auction_bid_options->bid_in_micro_currency
     if(advanced_auction_bid_options->bid_in_micro_currency) {
-    if(cJSON_AddNumberToObject(item, "bid_in_micro_currency", advanced_auction_bid_options->bid_in_micro_currency) == NULL) {
+    if(cJSON_AddNumberToObject(item, "bid_in_micro_currency", *advanced_auction_bid_options->bid_in_micro_currency) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -105,6 +118,9 @@ advanced_auction_bid_options_t *advanced_auction_bid_options_parseFromJSON(cJSON
     // define the local variable for advanced_auction_bid_options->app_type_multipliers
     app_type_multipliers_t *app_type_multipliers_local_nonprim = NULL;
 
+    // define the local variable for advanced_auction_bid_options->bid_in_micro_currency
+    long *bid_in_micro_currency_local_var = NULL;
+
     // define the local variable for advanced_auction_bid_options->placement_multipliers
     placement_multipliers_t *placement_multipliers_local_nonprim = NULL;
 
@@ -127,6 +143,12 @@ advanced_auction_bid_options_t *advanced_auction_bid_options_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    bid_in_micro_currency_local_var = malloc(sizeof(long));
+    if(!bid_in_micro_currency_local_var)
+    {
+        goto end;
+    }
+    *bid_in_micro_currency_local_var = bid_in_micro_currency->valuedouble;
     }
 
     // advanced_auction_bid_options->placement_multipliers
@@ -139,17 +161,26 @@ advanced_auction_bid_options_t *advanced_auction_bid_options_parseFromJSON(cJSON
     }
 
 
+
     advanced_auction_bid_options_local_var = advanced_auction_bid_options_create_internal (
         app_type_multipliers ? app_type_multipliers_local_nonprim : NULL,
-        bid_in_micro_currency ? bid_in_micro_currency->valuedouble : 0,
+        bid_in_micro_currency_local_var,
         placement_multipliers ? placement_multipliers_local_nonprim : NULL
         );
+
+    if (!advanced_auction_bid_options_local_var) {
+        goto end;
+    }
 
     return advanced_auction_bid_options_local_var;
 end:
     if (app_type_multipliers_local_nonprim) {
         app_type_multipliers_free(app_type_multipliers_local_nonprim);
         app_type_multipliers_local_nonprim = NULL;
+    }
+    if (bid_in_micro_currency_local_var) {
+        free(bid_in_micro_currency_local_var);
+        bid_in_micro_currency_local_var = NULL;
     }
     if (placement_multipliers_local_nonprim) {
         placement_multipliers_free(placement_multipliers_local_nonprim);

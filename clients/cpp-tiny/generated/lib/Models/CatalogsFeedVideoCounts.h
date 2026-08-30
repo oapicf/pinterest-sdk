@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set The number of videos successfully ingested from the feed file.
 	 */
-	void setIngestedVideos(int  ingested_videos);
+	void setIngestedVideos(int ingested_videos);
 	/*! \brief Get The number of videos that were not ingested from the feed file.
 	 */
 	int getNotIngestedVideos();
 
 	/*! \brief Set The number of videos that were not ingested from the feed file.
 	 */
-	void setNotIngestedVideos(int  not_ingested_videos);
+	void setNotIngestedVideos(int not_ingested_videos);
 	/*! \brief Get The number of videos in the feed file.
 	 */
 	int getTotalVideos();
 
 	/*! \brief Set The number of videos in the feed file.
 	 */
-	void setTotalVideos(int  total_videos);
+	void setTotalVideos(int total_videos);
 
 
     private:

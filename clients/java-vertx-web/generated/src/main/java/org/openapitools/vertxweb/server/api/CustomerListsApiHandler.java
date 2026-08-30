@@ -1,10 +1,11 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.CustomerList;
-import org.openapitools.vertxweb.server.model.CustomerListRequest;
-import org.openapitools.vertxweb.server.model.CustomerListUpdateRequest;
+import org.openapitools.vertxweb.server.model.CustomerListCreate;
+import org.openapitools.vertxweb.server.model.CustomerListUpdateWithRequiredBody;
 import org.openapitools.vertxweb.server.model.CustomerListsList200Response;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PinterestLibPaginationOrder;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -50,12 +51,12 @@ public class CustomerListsApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        CustomerListRequest customerListRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CustomerListRequest>(){}) : null;
+        CustomerListCreate customerListCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CustomerListCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter customerListRequest is {}", customerListRequest);
+        logger.debug("Parameter customerListCreate is {}", customerListCreate);
 
-        api.customerListsCreate(adAccountId, customerListRequest)
+        api.customerListsCreate(adAccountId, customerListCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -98,16 +99,18 @@ public class CustomerListsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
-        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
-        String order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getString() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
+        PinterestLibPaginationOrder order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getPinterestLibPaginationOrder() : null;
+        Boolean excludeNca = requestParameters.queryParameter("exclude_nca") != null ? requestParameters.queryParameter("exclude_nca").getBoolean() : false;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter order is {}", order);
-        logger.debug("Parameter bookmark is {}", bookmark);
+        logger.debug("Parameter excludeNca is {}", excludeNca);
 
-        api.customerListsList(adAccountId, pageSize, order, bookmark)
+        api.customerListsList(adAccountId, bookmark, pageSize, order, excludeNca)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -128,13 +131,13 @@ public class CustomerListsApiHandler {
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         String customerListId = requestParameters.pathParameter("customer_list_id") != null ? requestParameters.pathParameter("customer_list_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        CustomerListUpdateRequest customerListUpdateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CustomerListUpdateRequest>(){}) : null;
+        CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CustomerListUpdateWithRequiredBody>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter customerListId is {}", customerListId);
-        logger.debug("Parameter customerListUpdateRequest is {}", customerListUpdateRequest);
+        logger.debug("Parameter customerListUpdateWithRequiredBody is {}", customerListUpdateWithRequiredBody);
 
-        api.customerListsUpdate(adAccountId, customerListId, customerListUpdateRequest)
+        api.customerListsUpdate(adAccountId, customerListId, customerListUpdateWithRequiredBody)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

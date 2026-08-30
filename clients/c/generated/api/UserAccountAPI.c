@@ -363,19 +363,19 @@ end:
 }
 */
 
-// Functions for enum SORTBY for UserAccountAPI_userAccountAnalyticsTopPins
+// Functions for enum  for UserAccountAPI_userAccountAnalyticsTopPins
 
-static char* userAccountAnalyticsTopPins_SORTBY_ToString(pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e SORTBY){
-    char *SORTBYArray[] =  { "NULL", "ENGAGEMENT", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE" };
-    return SORTBYArray[SORTBY];
+static char* userAccountAnalyticsTopPins__ToString(pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e ){
+    char *Array[] =  { "NULL", "ENGAGEMENT", "SAVE", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK" };
+    return Array[];
 }
 
-static pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e userAccountAnalyticsTopPins_SORTBY_FromString(char* SORTBY){
+static pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e userAccountAnalyticsTopPins__FromString(char* ){
     int stringToReturn = 0;
-    char *SORTBYArray[] =  { "NULL", "ENGAGEMENT", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE" };
-    size_t sizeofArray = sizeof(SORTBYArray) / sizeof(SORTBYArray[0]);
+    char *Array[] =  { "NULL", "ENGAGEMENT", "SAVE", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK" };
+    size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
     while(stringToReturn < sizeofArray) {
-        if(strcmp(SORTBY, SORTBYArray[stringToReturn]) == 0) {
+        if(strcmp(, Array[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -384,32 +384,23 @@ static pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e userAccountAnaly
 }
 
 /*
-// Function userAccountAnalyticsTopPins_SORTBY_convertToJSON is not currently used,
+// Function userAccountAnalyticsTopPins__convertToJSON is not currently used,
 // since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
 //
-static cJSON *userAccountAnalyticsTopPins_SORTBY_convertToJSON(pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e SORTBY) {
+static cJSON *userAccountAnalyticsTopPins__convertToJSON(pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e ) {
     cJSON *item = cJSON_CreateObject();
-    if(cJSON_AddStringToObject(item, "sort_by", userAccountAnalyticsTopPins_SORTBY_ToString(SORTBY)) == NULL) {
-        goto fail;
-    }
     return item;
     fail:
     cJSON_Delete(item);
     return NULL;
 }
 
-// Function userAccountAnalyticsTopPins_SORTBY_parseFromJSON is not currently used,
+// Function userAccountAnalyticsTopPins__parseFromJSON is not currently used,
 // since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
 //
-static pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e userAccountAnalyticsTopPins_SORTBY_parseFromJSON(cJSON* SORTBYJSON) {
-    pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e SORTBYVariable = 0;
-    cJSON *SORTBYVar = cJSON_GetObjectItemCaseSensitive(SORTBYJSON, "sort_by");
-    if(!cJSON_IsString(SORTBYVar) || (SORTBYVar->valuestring == NULL))
-    {
-        goto end;
-    }
-    SORTBYVariable = userAccountAnalyticsTopPins_SORTBY_FromString(SORTBYVar->valuestring);
-    return SORTBYVariable;
+static pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e userAccountAnalyticsTopPins__parseFromJSON(cJSON* JSON) {
+    pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e Variable = 0;
+    return Variable;
 end:
     return 0;
 }
@@ -761,19 +752,19 @@ end:
 }
 */
 
-// Functions for enum SORTBY for UserAccountAPI_userAccountAnalyticsTopVideoPins
+// Functions for enum  for UserAccountAPI_userAccountAnalyticsTopVideoPins
 
-static char* userAccountAnalyticsTopVideoPins_SORTBY_ToString(pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e SORTBY){
-    char *SORTBYArray[] =  { "NULL", "IMPRESSION", "SAVE", "OUTBOUND_CLICK", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START" };
-    return SORTBYArray[SORTBY];
+static char* userAccountAnalyticsTopVideoPins__ToString(pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e ){
+    char *Array[] =  { "NULL", "SAVE", "IMPRESSION", "OUTBOUND_CLICK", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START" };
+    return Array[];
 }
 
-static pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e userAccountAnalyticsTopVideoPins_SORTBY_FromString(char* SORTBY){
+static pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e userAccountAnalyticsTopVideoPins__FromString(char* ){
     int stringToReturn = 0;
-    char *SORTBYArray[] =  { "NULL", "IMPRESSION", "SAVE", "OUTBOUND_CLICK", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START" };
-    size_t sizeofArray = sizeof(SORTBYArray) / sizeof(SORTBYArray[0]);
+    char *Array[] =  { "NULL", "SAVE", "IMPRESSION", "OUTBOUND_CLICK", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START" };
+    size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
     while(stringToReturn < sizeofArray) {
-        if(strcmp(SORTBY, SORTBYArray[stringToReturn]) == 0) {
+        if(strcmp(, Array[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -782,32 +773,23 @@ static pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e userAccount
 }
 
 /*
-// Function userAccountAnalyticsTopVideoPins_SORTBY_convertToJSON is not currently used,
+// Function userAccountAnalyticsTopVideoPins__convertToJSON is not currently used,
 // since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
 //
-static cJSON *userAccountAnalyticsTopVideoPins_SORTBY_convertToJSON(pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e SORTBY) {
+static cJSON *userAccountAnalyticsTopVideoPins__convertToJSON(pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e ) {
     cJSON *item = cJSON_CreateObject();
-    if(cJSON_AddStringToObject(item, "sort_by", userAccountAnalyticsTopVideoPins_SORTBY_ToString(SORTBY)) == NULL) {
-        goto fail;
-    }
     return item;
     fail:
     cJSON_Delete(item);
     return NULL;
 }
 
-// Function userAccountAnalyticsTopVideoPins_SORTBY_parseFromJSON is not currently used,
+// Function userAccountAnalyticsTopVideoPins__parseFromJSON is not currently used,
 // since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
 //
-static pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e userAccountAnalyticsTopVideoPins_SORTBY_parseFromJSON(cJSON* SORTBYJSON) {
-    pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e SORTBYVariable = 0;
-    cJSON *SORTBYVar = cJSON_GetObjectItemCaseSensitive(SORTBYJSON, "sort_by");
-    if(!cJSON_IsString(SORTBYVar) || (SORTBYVar->valuestring == NULL))
-    {
-        goto end;
-    }
-    SORTBYVariable = userAccountAnalyticsTopVideoPins_SORTBY_FromString(SORTBYVar->valuestring);
-    return SORTBYVariable;
+static pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e userAccountAnalyticsTopVideoPins__parseFromJSON(cJSON* JSON) {
+    pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e Variable = 0;
+    return Variable;
 end:
     return 0;
 }
@@ -1185,9 +1167,6 @@ static pinterest_rest_api_userFollowingGet_feed_type_e userFollowingGet__FromStr
 //
 static cJSON *userFollowingGet__convertToJSON(pinterest_rest_api_userFollowingGet_feed_type_e ) {
     cJSON *item = cJSON_CreateObject();
-    if(cJSON_AddStringToObject(item, "feed_type", userFollowingGet__ToString()) == NULL) {
-        goto fail;
-    }
     return item;
     fail:
     cJSON_Delete(item);
@@ -1199,12 +1178,6 @@ static cJSON *userFollowingGet__convertToJSON(pinterest_rest_api_userFollowingGe
 //
 static pinterest_rest_api_userFollowingGet_feed_type_e userFollowingGet__parseFromJSON(cJSON* JSON) {
     pinterest_rest_api_userFollowingGet_feed_type_e Variable = 0;
-    cJSON *Var = cJSON_GetObjectItemCaseSensitive(JSON, "feed_type");
-    if(!cJSON_IsString(Var) || (Var->valuestring == NULL))
-    {
-        goto end;
-    }
-    Variable = userFollowingGet__FromString(Var->valuestring);
     return Variable;
 end:
     return 0;
@@ -1216,8 +1189,8 @@ end:
 //
 // Get a list of the boards a user follows. The request returns a board summary object array.
 //
-boards_user_follows_list_200_response_t*
-UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *bookmark, int *page_size, int *explicit_following, char *ad_account_id)
+boards_list_200_response_t*
+UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *ad_account_id, int *explicit_following, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1236,6 +1209,31 @@ UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *bookmark, int
 
 
 
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+
+    // query parameters
+    char *keyQuery_explicit_following = NULL;
+    char * valueQuery_explicit_following = NULL;
+    keyValuePair_t *keyPairQuery_explicit_following = 0;
+    if (explicit_following)
+    {
+        keyQuery_explicit_following = strdup("explicit_following");
+        valueQuery_explicit_following = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_explicit_following, MAX_NUMBER_LENGTH, "%d", *explicit_following);
+        keyPairQuery_explicit_following = keyValuePair_create(keyQuery_explicit_following, valueQuery_explicit_following);
+        list_addElement(localVarQueryParameters,keyPairQuery_explicit_following);
+    }
 
     // query parameters
     char *keyQuery_bookmark = NULL;
@@ -1261,31 +1259,6 @@ UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *bookmark, int
         keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
         list_addElement(localVarQueryParameters,keyPairQuery_page_size);
     }
-
-    // query parameters
-    char *keyQuery_explicit_following = NULL;
-    char * valueQuery_explicit_following = NULL;
-    keyValuePair_t *keyPairQuery_explicit_following = 0;
-    if (explicit_following)
-    {
-        keyQuery_explicit_following = strdup("explicit_following");
-        valueQuery_explicit_following = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_explicit_following, MAX_NUMBER_LENGTH, "%d", *explicit_following);
-        keyPairQuery_explicit_following = keyValuePair_create(keyQuery_explicit_following, valueQuery_explicit_following);
-        list_addElement(localVarQueryParameters,keyPairQuery_explicit_following);
-    }
-
-    // query parameters
-    char *keyQuery_ad_account_id = NULL;
-    char * valueQuery_ad_account_id = NULL;
-    keyValuePair_t *keyPairQuery_ad_account_id = 0;
-    if (ad_account_id)
-    {
-        keyQuery_ad_account_id = strdup("ad_account_id");
-        valueQuery_ad_account_id = strdup((ad_account_id));
-        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
-        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
-    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -1300,21 +1273,37 @@ UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *bookmark, int
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid user id");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    boards_user_follows_list_200_response_t *elementToReturn = NULL;
+    boards_list_200_response_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = boards_user_follows_list_200_response_parseFromJSON(UserAccountAPIlocalVarJSON);
+        elementToReturn = boards_list_200_response_parseFromJSON(UserAccountAPIlocalVarJSON);
         cJSON_Delete(UserAccountAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -1333,6 +1322,30 @@ UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *bookmark, int
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
+    if(keyQuery_explicit_following){
+        free(keyQuery_explicit_following);
+        keyQuery_explicit_following = NULL;
+    }
+    if(valueQuery_explicit_following){
+        free(valueQuery_explicit_following);
+        valueQuery_explicit_following = NULL;
+    }
+    if(keyPairQuery_explicit_following){
+        keyValuePair_free(keyPairQuery_explicit_following);
+        keyPairQuery_explicit_following = NULL;
+    }
     if(keyQuery_bookmark){
         free(keyQuery_bookmark);
         keyQuery_bookmark = NULL;
@@ -1357,30 +1370,6 @@ UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *bookmark, int
         keyValuePair_free(keyPairQuery_page_size);
         keyPairQuery_page_size = NULL;
     }
-    if(keyQuery_explicit_following){
-        free(keyQuery_explicit_following);
-        keyQuery_explicit_following = NULL;
-    }
-    if(valueQuery_explicit_following){
-        free(valueQuery_explicit_following);
-        valueQuery_explicit_following = NULL;
-    }
-    if(keyPairQuery_explicit_following){
-        keyValuePair_free(keyPairQuery_explicit_following);
-        keyPairQuery_explicit_following = NULL;
-    }
-    if(keyQuery_ad_account_id){
-        free(keyQuery_ad_account_id);
-        keyQuery_ad_account_id = NULL;
-    }
-    if(valueQuery_ad_account_id){
-        free(valueQuery_ad_account_id);
-        valueQuery_ad_account_id = NULL;
-    }
-    if(keyPairQuery_ad_account_id){
-        keyValuePair_free(keyPairQuery_ad_account_id);
-        keyPairQuery_ad_account_id = NULL;
-    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -1390,10 +1379,10 @@ end:
 
 // Follow user
 //
-// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+// **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 //
-user_summary_t*
-UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_user_request_t *follow_user_request)
+follow_user_t*
+UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_user_create_t *follow_user_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -1426,12 +1415,12 @@ UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_u
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_follow_user_request = NULL;
-    if (follow_user_request != NULL)
+    cJSON *localVarSingleItemJSON_follow_user_create = NULL;
+    if (follow_user_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_follow_user_request = follow_user_request_convertToJSON(follow_user_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_follow_user_request);
+        localVarSingleItemJSON_follow_user_create = follow_user_create_convertToJSON(follow_user_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_follow_user_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -1449,21 +1438,41 @@ UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_u
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","User not found");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    user_summary_t *elementToReturn = NULL;
+    follow_user_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = user_summary_parseFromJSON(UserAccountAPIlocalVarJSON);
+        elementToReturn = follow_user_parseFromJSON(UserAccountAPIlocalVarJSON);
         cJSON_Delete(UserAccountAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -1483,9 +1492,9 @@ UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_u
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_username);
-    if (localVarSingleItemJSON_follow_user_request) {
-        cJSON_Delete(localVarSingleItemJSON_follow_user_request);
-        localVarSingleItemJSON_follow_user_request = NULL;
+    if (localVarSingleItemJSON_follow_user_create) {
+        cJSON_Delete(localVarSingleItemJSON_follow_user_create);
+        localVarSingleItemJSON_follow_user_create = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -1558,15 +1567,31 @@ UserAccountAPI_followersList(apiClient_t *apiClient, char *bookmark, int *page_s
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid user id");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     followers_list_200_response_t *elementToReturn = NULL;
@@ -1660,11 +1685,31 @@ UserAccountAPI_linkedBusinessAccountsGet(apiClient_t *apiClient)
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     list_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
@@ -1708,9 +1753,9 @@ end:
 
 // Unverify website
 //
-// Unverifu a website verified by the signed-in user.
+// Unverify a website verified by the signed-in user.
 //
-void
+user_website_t*
 UserAccountAPI_unverifyWebsiteDelete(apiClient_t *apiClient, char *website)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -1755,19 +1800,49 @@ UserAccountAPI_unverifyWebsiteDelete(apiClient_t *apiClient, char *website)
                     "DELETE");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 204) {
-    //    printf("%s\n","Successfully unverified website");
+    //    printf("%s\n","Resource deleted successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Website not in user list.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
-    //No return type
-end:
+    //nonprimitive not container
+    user_website_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = user_website_parseFromJSON(UserAccountAPIlocalVarJSON);
+        cJSON_Delete(UserAccountAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -1791,14 +1866,10 @@ end:
         keyValuePair_free(keyPairQuery_website);
         keyPairQuery_website = NULL;
     }
-    if(keyQuery_website){
-        free(keyQuery_website);
-        keyQuery_website = NULL;
-    }
-    if(keyPairQuery_website){
-        keyValuePair_free(keyPairQuery_website);
-        keyPairQuery_website = NULL;
-    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
@@ -1960,19 +2031,31 @@ UserAccountAPI_userAccountAnalytics(apiClient_t *apiClient, char start_date, cha
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid user accounts analytics parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Not authorized to access the user account analytics.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     list_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
@@ -2095,7 +2178,7 @@ end:
 // Gets analytics data about a user's top pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
 //
 top_pins_analytics_response_t*
-UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_date, char end_date, pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e sort_by, pinterest_rest_api_userAccountAnalyticsTopPins_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalyticsTopPins_pin_format_e pin_format, pinterest_rest_api_userAccountAnalyticsTopPins_app_types_e app_types, pinterest_rest_api_userAccountAnalyticsTopPins_content_type_e content_type, pinterest_rest_api_userAccountAnalyticsTopPins_source_e source, list_t *metric_types, int *num_of_pins, int *created_in_last_n_days, char *ad_account_id)
+UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_date, char end_date, top_pins_sort_by_e sort_by, pinterest_rest_api_userAccountAnalyticsTopPins_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalyticsTopPins_pin_format_e pin_format, pinterest_rest_api_userAccountAnalyticsTopPins_app_types_e app_types, pinterest_rest_api_userAccountAnalyticsTopPins_content_type_e content_type, pinterest_rest_api_userAccountAnalyticsTopPins_source_e source, list_t *metric_types, int *num_of_pins, double created_in_last_n_days, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -2141,14 +2224,14 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
 
     // query parameters
     char *keyQuery_sort_by = NULL;
-    pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e valueQuery_sort_by ;
+    top_pins_sort_by_e valueQuery_sort_by ;
     keyValuePair_t *keyPairQuery_sort_by = 0;
     if (sort_by)
     {
         keyQuery_sort_by = strdup("sort_by");
         valueQuery_sort_by = (sort_by);
-        keyPairQuery_sort_by = keyValuePair_create(keyQuery_sort_by, strdup(userAccountAnalyticsTopPins_SORTBY_ToString(
-        valueQuery_sort_by)));
+        keyPairQuery_sort_by = keyValuePair_create(keyQuery_sort_by, strdup(userAccountAnalyticsTopPins__ToString(
+        &valueQuery_sort_by)));
         list_addElement(localVarQueryParameters,keyPairQuery_sort_by);
     }
 
@@ -2238,15 +2321,14 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
 
     // query parameters
     char *keyQuery_created_in_last_n_days = NULL;
-    char * valueQuery_created_in_last_n_days = NULL;
+    double valueQuery_created_in_last_n_days ;
     keyValuePair_t *keyPairQuery_created_in_last_n_days = 0;
     if (created_in_last_n_days)
     {
         keyQuery_created_in_last_n_days = strdup("created_in_last_n_days");
-        valueQuery_created_in_last_n_days = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_created_in_last_n_days, MAX_NUMBER_LENGTH, "%d", *created_in_last_n_days);
+        valueQuery_created_in_last_n_days = (created_in_last_n_days);
         keyPairQuery_created_in_last_n_days = keyValuePair_create(keyQuery_created_in_last_n_days, strdup(userAccountAnalyticsTopPins_CREATEDINLASTNDAYS_ToString(
-        valueQuery_created_in_last_n_days)));
+        &valueQuery_created_in_last_n_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_created_in_last_n_days);
     }
 
@@ -2275,15 +2357,31 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Not authorized to access the user account analytics.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     top_pins_analytics_response_t *elementToReturn = NULL;
@@ -2388,10 +2486,6 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
         free(keyQuery_created_in_last_n_days);
         keyQuery_created_in_last_n_days = NULL;
     }
-    if(valueQuery_created_in_last_n_days){
-        free(valueQuery_created_in_last_n_days);
-        valueQuery_created_in_last_n_days = NULL;
-    }
     if(keyPairQuery_created_in_last_n_days){
         keyValuePair_free(keyPairQuery_created_in_last_n_days);
         keyPairQuery_created_in_last_n_days = NULL;
@@ -2420,7 +2514,7 @@ end:
 // Gets analytics data about a user's top video pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
 //
 top_video_pins_analytics_response_t*
-UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char start_date, char end_date, pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e sort_by, pinterest_rest_api_userAccountAnalyticsTopVideoPins_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalyticsTopVideoPins_pin_format_e pin_format, pinterest_rest_api_userAccountAnalyticsTopVideoPins_app_types_e app_types, pinterest_rest_api_userAccountAnalyticsTopVideoPins_content_type_e content_type, pinterest_rest_api_userAccountAnalyticsTopVideoPins_source_e source, list_t *metric_types, int *num_of_pins, int *created_in_last_n_days, char *ad_account_id)
+UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char start_date, char end_date, top_video_pins_sort_by_e sort_by, pinterest_rest_api_userAccountAnalyticsTopVideoPins_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalyticsTopVideoPins_pin_format_e pin_format, pinterest_rest_api_userAccountAnalyticsTopVideoPins_app_types_e app_types, pinterest_rest_api_userAccountAnalyticsTopVideoPins_content_type_e content_type, pinterest_rest_api_userAccountAnalyticsTopVideoPins_source_e source, list_t *metric_types, int *num_of_pins, double created_in_last_n_days, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -2466,14 +2560,14 @@ UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char sta
 
     // query parameters
     char *keyQuery_sort_by = NULL;
-    pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e valueQuery_sort_by ;
+    top_video_pins_sort_by_e valueQuery_sort_by ;
     keyValuePair_t *keyPairQuery_sort_by = 0;
     if (sort_by)
     {
         keyQuery_sort_by = strdup("sort_by");
         valueQuery_sort_by = (sort_by);
-        keyPairQuery_sort_by = keyValuePair_create(keyQuery_sort_by, strdup(userAccountAnalyticsTopVideoPins_SORTBY_ToString(
-        valueQuery_sort_by)));
+        keyPairQuery_sort_by = keyValuePair_create(keyQuery_sort_by, strdup(userAccountAnalyticsTopVideoPins__ToString(
+        &valueQuery_sort_by)));
         list_addElement(localVarQueryParameters,keyPairQuery_sort_by);
     }
 
@@ -2563,15 +2657,14 @@ UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char sta
 
     // query parameters
     char *keyQuery_created_in_last_n_days = NULL;
-    char * valueQuery_created_in_last_n_days = NULL;
+    double valueQuery_created_in_last_n_days ;
     keyValuePair_t *keyPairQuery_created_in_last_n_days = 0;
     if (created_in_last_n_days)
     {
         keyQuery_created_in_last_n_days = strdup("created_in_last_n_days");
-        valueQuery_created_in_last_n_days = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_created_in_last_n_days, MAX_NUMBER_LENGTH, "%d", *created_in_last_n_days);
+        valueQuery_created_in_last_n_days = (created_in_last_n_days);
         keyPairQuery_created_in_last_n_days = keyValuePair_create(keyQuery_created_in_last_n_days, strdup(userAccountAnalyticsTopVideoPins_CREATEDINLASTNDAYS_ToString(
-        valueQuery_created_in_last_n_days)));
+        &valueQuery_created_in_last_n_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_created_in_last_n_days);
     }
 
@@ -2600,15 +2693,31 @@ UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char sta
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Not authorized to access the user account analytics.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     top_video_pins_analytics_response_t *elementToReturn = NULL;
@@ -2713,10 +2822,6 @@ UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char sta
         free(keyQuery_created_in_last_n_days);
         keyQuery_created_in_last_n_days = NULL;
     }
-    if(valueQuery_created_in_last_n_days){
-        free(valueQuery_created_in_last_n_days);
-        valueQuery_created_in_last_n_days = NULL;
-    }
     if(keyPairQuery_created_in_last_n_days){
         keyValuePair_free(keyPairQuery_created_in_last_n_days);
         keyPairQuery_created_in_last_n_days = NULL;
@@ -2815,19 +2920,19 @@ UserAccountAPI_userAccountFollowedInterests(apiClient_t *apiClient, char *userna
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid parameters");
+    //    printf("%s\n","The server could not understand the request due to invalid syntax.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Authorization failed");
+    //    printf("%s\n","Access is unauthorized.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","User not found");
+    //    printf("%s\n","The server cannot find the requested resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
@@ -2890,7 +2995,7 @@ end:
 
 // Get user account
 //
-// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 //
 account_t*
 UserAccountAPI_userAccountGet(apiClient_t *apiClient, char *ad_account_id)
@@ -2938,15 +3043,31 @@ UserAccountAPI_userAccountGet(apiClient_t *apiClient, char *ad_account_id)
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","response");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Not authorized to access the user account.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     account_t *elementToReturn = NULL;
@@ -2994,8 +3115,8 @@ end:
 //
 // Get a list of who a certain user follows.
 //
-user_following_get_200_response_t*
-UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *bookmark, int *page_size, pinterest_rest_api_userFollowingGet_feed_type_e feed_type, int *explicit_following, char *ad_account_id)
+followers_list_200_response_t*
+UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *ad_account_id, int *explicit_following, user_following_feed_type_e feed_type, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -3014,6 +3135,44 @@ UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *bookmark, int *pag
 
 
 
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+
+    // query parameters
+    char *keyQuery_explicit_following = NULL;
+    char * valueQuery_explicit_following = NULL;
+    keyValuePair_t *keyPairQuery_explicit_following = 0;
+    if (explicit_following)
+    {
+        keyQuery_explicit_following = strdup("explicit_following");
+        valueQuery_explicit_following = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_explicit_following, MAX_NUMBER_LENGTH, "%d", *explicit_following);
+        keyPairQuery_explicit_following = keyValuePair_create(keyQuery_explicit_following, valueQuery_explicit_following);
+        list_addElement(localVarQueryParameters,keyPairQuery_explicit_following);
+    }
+
+    // query parameters
+    char *keyQuery_feed_type = NULL;
+    user_following_feed_type_e valueQuery_feed_type ;
+    keyValuePair_t *keyPairQuery_feed_type = 0;
+    if (feed_type)
+    {
+        keyQuery_feed_type = strdup("feed_type");
+        valueQuery_feed_type = (feed_type);
+        keyPairQuery_feed_type = keyValuePair_create(keyQuery_feed_type, strdup(userFollowingGet__ToString(
+        &valueQuery_feed_type)));
+        list_addElement(localVarQueryParameters,keyPairQuery_feed_type);
+    }
 
     // query parameters
     char *keyQuery_bookmark = NULL;
@@ -3039,44 +3198,6 @@ UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *bookmark, int *pag
         keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
         list_addElement(localVarQueryParameters,keyPairQuery_page_size);
     }
-
-    // query parameters
-    char *keyQuery_feed_type = NULL;
-    pinterest_rest_api_userFollowingGet_feed_type_e valueQuery_feed_type ;
-    keyValuePair_t *keyPairQuery_feed_type = 0;
-    if (feed_type)
-    {
-        keyQuery_feed_type = strdup("feed_type");
-        valueQuery_feed_type = (feed_type);
-        keyPairQuery_feed_type = keyValuePair_create(keyQuery_feed_type, strdup(userFollowingGet__ToString(
-        valueQuery_feed_type)));
-        list_addElement(localVarQueryParameters,keyPairQuery_feed_type);
-    }
-
-    // query parameters
-    char *keyQuery_explicit_following = NULL;
-    char * valueQuery_explicit_following = NULL;
-    keyValuePair_t *keyPairQuery_explicit_following = 0;
-    if (explicit_following)
-    {
-        keyQuery_explicit_following = strdup("explicit_following");
-        valueQuery_explicit_following = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_explicit_following, MAX_NUMBER_LENGTH, "%d", *explicit_following);
-        keyPairQuery_explicit_following = keyValuePair_create(keyQuery_explicit_following, valueQuery_explicit_following);
-        list_addElement(localVarQueryParameters,keyPairQuery_explicit_following);
-    }
-
-    // query parameters
-    char *keyQuery_ad_account_id = NULL;
-    char * valueQuery_ad_account_id = NULL;
-    keyValuePair_t *keyPairQuery_ad_account_id = 0;
-    if (ad_account_id)
-    {
-        keyQuery_ad_account_id = strdup("ad_account_id");
-        valueQuery_ad_account_id = strdup((ad_account_id));
-        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
-        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
-    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -3091,17 +3212,37 @@ UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *bookmark, int *pag
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","response");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    user_following_get_200_response_t *elementToReturn = NULL;
+    followers_list_200_response_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = user_following_get_200_response_parseFromJSON(UserAccountAPIlocalVarJSON);
+        elementToReturn = followers_list_200_response_parseFromJSON(UserAccountAPIlocalVarJSON);
         cJSON_Delete(UserAccountAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -3120,6 +3261,38 @@ UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *bookmark, int *pag
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
+    if(keyQuery_explicit_following){
+        free(keyQuery_explicit_following);
+        keyQuery_explicit_following = NULL;
+    }
+    if(valueQuery_explicit_following){
+        free(valueQuery_explicit_following);
+        valueQuery_explicit_following = NULL;
+    }
+    if(keyPairQuery_explicit_following){
+        keyValuePair_free(keyPairQuery_explicit_following);
+        keyPairQuery_explicit_following = NULL;
+    }
+    if(keyQuery_feed_type){
+        free(keyQuery_feed_type);
+        keyQuery_feed_type = NULL;
+    }
+    if(keyPairQuery_feed_type){
+        keyValuePair_free(keyPairQuery_feed_type);
+        keyPairQuery_feed_type = NULL;
+    }
     if(keyQuery_bookmark){
         free(keyQuery_bookmark);
         keyQuery_bookmark = NULL;
@@ -3143,38 +3316,6 @@ UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *bookmark, int *pag
     if(keyPairQuery_page_size){
         keyValuePair_free(keyPairQuery_page_size);
         keyPairQuery_page_size = NULL;
-    }
-    if(keyQuery_feed_type){
-        free(keyQuery_feed_type);
-        keyQuery_feed_type = NULL;
-    }
-    if(keyPairQuery_feed_type){
-        keyValuePair_free(keyPairQuery_feed_type);
-        keyPairQuery_feed_type = NULL;
-    }
-    if(keyQuery_explicit_following){
-        free(keyQuery_explicit_following);
-        keyQuery_explicit_following = NULL;
-    }
-    if(valueQuery_explicit_following){
-        free(valueQuery_explicit_following);
-        valueQuery_explicit_following = NULL;
-    }
-    if(keyPairQuery_explicit_following){
-        keyValuePair_free(keyPairQuery_explicit_following);
-        keyPairQuery_explicit_following = NULL;
-    }
-    if(keyQuery_ad_account_id){
-        free(keyQuery_ad_account_id);
-        keyQuery_ad_account_id = NULL;
-    }
-    if(valueQuery_ad_account_id){
-        free(valueQuery_ad_account_id);
-        valueQuery_ad_account_id = NULL;
-    }
-    if(keyPairQuery_ad_account_id){
-        keyValuePair_free(keyPairQuery_ad_account_id);
-        keyPairQuery_ad_account_id = NULL;
     }
     return elementToReturn;
 end:
@@ -3246,15 +3387,31 @@ UserAccountAPI_userWebsitesGet(apiClient_t *apiClient, char *bookmark, int *page
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Not authorized to access the user website list.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     user_websites_get_200_response_t *elementToReturn = NULL;
@@ -3314,8 +3471,8 @@ end:
 //
 // Verify a website as a signed-in user.
 //
-user_website_summary_t*
-UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_request_t *user_website_verify_request, char *ad_account_id)
+user_website_t*
+UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_create_t *user_website_create, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -3348,12 +3505,12 @@ UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_r
     }
 
     // Body Param
-    cJSON *localVarSingleItemJSON_user_website_verify_request = NULL;
-    if (user_website_verify_request != NULL)
+    cJSON *localVarSingleItemJSON_user_website_create = NULL;
+    if (user_website_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_user_website_verify_request = user_website_verify_request_convertToJSON(user_website_verify_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_user_website_verify_request);
+        localVarSingleItemJSON_user_website_create = user_website_create_convertToJSON(user_website_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_user_website_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -3371,17 +3528,41 @@ UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_r
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    user_website_summary_t *elementToReturn = NULL;
+    user_website_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = user_website_summary_parseFromJSON(UserAccountAPIlocalVarJSON);
+        elementToReturn = user_website_parseFromJSON(UserAccountAPIlocalVarJSON);
         cJSON_Delete(UserAccountAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -3400,9 +3581,9 @@ UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_r
     list_freeList(localVarHeaderType);
     list_freeList(localVarContentType);
     free(localVarPath);
-    if (localVarSingleItemJSON_user_website_verify_request) {
-        cJSON_Delete(localVarSingleItemJSON_user_website_verify_request);
-        localVarSingleItemJSON_user_website_verify_request = NULL;
+    if (localVarSingleItemJSON_user_website_create) {
+        cJSON_Delete(localVarSingleItemJSON_user_website_create);
+        localVarSingleItemJSON_user_website_create = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_ad_account_id){
@@ -3428,7 +3609,7 @@ end:
 //
 // Get verification code for user to install on the website to claim it.
 //
-user_website_verification_code_t*
+user_website_verification_t*
 UserAccountAPI_websiteVerificationGet(apiClient_t *apiClient, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -3474,21 +3655,37 @@ UserAccountAPI_websiteVerificationGet(apiClient_t *apiClient, char *ad_account_i
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Not authorized to access the user verification code for website claiming.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    user_website_verification_code_t *elementToReturn = NULL;
+    user_website_verification_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *UserAccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = user_website_verification_code_parseFromJSON(UserAccountAPIlocalVarJSON);
+        elementToReturn = user_website_verification_parseFromJSON(UserAccountAPIlocalVarJSON);
         cJSON_Delete(UserAccountAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;

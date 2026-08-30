@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -104,262 +107,520 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CatalogsFeedIngestionWarnings(
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR") val AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR") val AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE") val AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND") val AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_400")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_400") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_400: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_403")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_403") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_403: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_404")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_404") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_404: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_405")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_405") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_405: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_410")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_410") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_410: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_429")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_429") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_429: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_500")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_500") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_500: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_502")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_502") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_502: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_503")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_503") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_503: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_504")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_504") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_504: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_507")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_507") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_507: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_508")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_508") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_508: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_520")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_520") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_520: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_521")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_521") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_521: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_522")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_522") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_522: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_525")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_525") val AD_IMAGE_DOWNLOAD_HTTP_STATUS_525: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @Schema(description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR") val AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @Schema(description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_ERROR")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_ERROR") val AD_IMAGE_DOWNLOAD_INTERNAL_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @Schema(description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD") val AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL") val AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @Schema(description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED") val AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @Schema(description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED") val AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_INVALID_FILE")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_INVALID_FILE") val AD_IMAGE_DOWNLOAD_INVALID_FILE: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_SITE_ERROR")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_SITE_ERROR") val AD_IMAGE_DOWNLOAD_SITE_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_SITE_TIMEOUT")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_SITE_TIMEOUT") val AD_IMAGE_DOWNLOAD_SITE_TIMEOUT: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_SSL_ERROR")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_SSL_ERROR") val AD_IMAGE_DOWNLOAD_SSL_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR")
     @get:JsonProperty("AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR") val AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_PROCESSING_EMPTY_FILE")
     @get:JsonProperty("AD_IMAGE_PROCESSING_EMPTY_FILE") val AD_IMAGE_PROCESSING_EMPTY_FILE: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad images must have a height larger than 75 pixels")
+    @Schema(description = "Ad images must have a height larger than 75 pixels")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL")
     @get:JsonProperty("AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL") val AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad images must have a maximum area (width x height) of less than 89478485 pixels")
+    @Schema(description = "Ad images must have a maximum area (width x height) of less than 89478485 pixels")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_PROCESSING_TOO_MANY_PIXELS")
     @get:JsonProperty("AD_IMAGE_PROCESSING_TOO_MANY_PIXELS") val AD_IMAGE_PROCESSING_TOO_MANY_PIXELS: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Some ad images could not be processed due to a file type mismatch.")
+    @Schema(description = "Some ad images could not be processed due to a file type mismatch.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_PROCESSING_TYPE_MISMATCH")
     @get:JsonProperty("AD_IMAGE_PROCESSING_TYPE_MISMATCH") val AD_IMAGE_PROCESSING_TYPE_MISMATCH: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad images must have a width larger than 75 pixels")
+    @Schema(description = "Ad images must have a width larger than 75 pixels")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL")
     @get:JsonProperty("AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL") val AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR") val AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR") val AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE") val AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND") val AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_400")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_400") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_400: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_403")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_403") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_403: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_404")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_404") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_404: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_405")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_405") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_405: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_410")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_410") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_410: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_429")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_429") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_429: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_500")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_500") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_500: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_502")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_502") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_502: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_503")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_503") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_503: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_504")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_504") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_504: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_507")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_507") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_507: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_508")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_508") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_508: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_520")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_520") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_520: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_521")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_521") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_521: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_522")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_522") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_522: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_525")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_525") val AD_VIDEO_DOWNLOAD_HTTP_STATUS_525: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @Schema(description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR") val AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @Schema(description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_ERROR")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_ERROR") val AD_VIDEO_DOWNLOAD_INTERNAL_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @Schema(description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD") val AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL") val AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @Schema(description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED") val AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @Schema(description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED") val AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_INVALID_FILE")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_INVALID_FILE") val AD_VIDEO_DOWNLOAD_INVALID_FILE: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_SITE_ERROR")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_SITE_ERROR") val AD_VIDEO_DOWNLOAD_SITE_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_SITE_TIMEOUT")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_SITE_TIMEOUT") val AD_VIDEO_DOWNLOAD_SITE_TIMEOUT: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_SSL_ERROR")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_SSL_ERROR") val AD_VIDEO_DOWNLOAD_SSL_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR")
     @get:JsonProperty("AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR") val AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad videos length is too short. Please ensure that all ad videos are at least 4 seconds long.")
+    @Schema(description = "Ad videos length is too short. Please ensure that all ad videos are at least 4 seconds long.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_LENGTH_TOO_SHORT")
     @get:JsonProperty("AD_VIDEO_LENGTH_TOO_SHORT") val AD_VIDEO_LENGTH_TOO_SHORT: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Ad video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_PROCESSING_EMPTY_FILE")
     @get:JsonProperty("AD_VIDEO_PROCESSING_EMPTY_FILE") val AD_VIDEO_PROCESSING_EMPTY_FILE: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad videos must have a height larger than 75 pixels")
+    @Schema(description = "Ad videos must have a height larger than 75 pixels")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL")
     @get:JsonProperty("AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL") val AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad videos must have a maximum area (width x height) of less than 89478485 pixels")
+    @Schema(description = "Ad videos must have a maximum area (width x height) of less than 89478485 pixels")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_PROCESSING_TOO_MANY_PIXELS")
     @get:JsonProperty("AD_VIDEO_PROCESSING_TOO_MANY_PIXELS") val AD_VIDEO_PROCESSING_TOO_MANY_PIXELS: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Some ad videos could not be processed due to a file type mismatch.")
+    @Schema(description = "Some ad videos could not be processed due to a file type mismatch.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_PROCESSING_TYPE_MISMATCH")
     @get:JsonProperty("AD_VIDEO_PROCESSING_TYPE_MISMATCH") val AD_VIDEO_PROCESSING_TYPE_MISMATCH: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Ad videos must have a width larger than 75 pixels")
+    @Schema(description = "Ad videos must have a width larger than 75 pixels")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL")
     @get:JsonProperty("AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL") val AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Additional image files are unreadable. Please upload new files to continue.")
+    @Schema(description = "Additional image files are unreadable. Please upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE")
     @get:JsonProperty("ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE") val ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Additional image files are unreadable. Please upload new files to continue.")
+    @Schema(description = "Additional image files are unreadable. Please upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("ADDITIONAL_IMAGE_FILE_NOT_FOUND")
     @get:JsonProperty("ADDITIONAL_IMAGE_FILE_NOT_FOUND") val ADDITIONAL_IMAGE_FILE_NOT_FOUND: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Additional image files are unreadable. Please upload new files to continue.")
+    @Schema(description = "Additional image files are unreadable. Please upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("ADDITIONAL_IMAGE_INVALID_FILE")
     @get:JsonProperty("ADDITIONAL_IMAGE_INVALID_FILE") val ADDITIONAL_IMAGE_INVALID_FILE: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @Schema(description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR")
     @get:JsonProperty("ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR") val ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Additional image files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Additional image files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("ADDITIONAL_IMAGE_MALFORMED_URL")
     @get:JsonProperty("ADDITIONAL_IMAGE_MALFORMED_URL") val ADDITIONAL_IMAGE_MALFORMED_URL: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Update your Google Sheets sharing settings from 'Editor' to 'Viewer'.")
+    @Schema(description = "Update your Google Sheets sharing settings from 'Editor' to 'Viewer'.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT")
     @get:JsonProperty("FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT") val FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Price is not a supported column. Use base_price and sale_price instead.")
+    @Schema(description = "Price is not a supported column. Use base_price and sale_price instead.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("HOTEL_PRICE_HEADER_IS_PRESENT")
     @get:JsonProperty("HOTEL_PRICE_HEADER_IS_PRESENT") val HOTEL_PRICE_HEADER_IS_PRESENT: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Video length is too short. Please ensure that the main video is at least 4 seconds long.")
+    @Schema(description = "Video length is too short. Please ensure that the main video is at least 4 seconds long.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("VIDEO_DOWNLOAD_VIDEO_TOO_SHORT")
     @get:JsonProperty("VIDEO_DOWNLOAD_VIDEO_TOO_SHORT") val VIDEO_DOWNLOAD_VIDEO_TOO_SHORT: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Video files are unreadable. Please upload new files to continue.")
+    @Schema(description = "Video files are unreadable. Please upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("VIDEO_FILE_NOT_ACCESSIBLE")
     @get:JsonProperty("VIDEO_FILE_NOT_ACCESSIBLE") val VIDEO_FILE_NOT_ACCESSIBLE: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Video files are unreadable. Please upload new files to continue.")
+    @Schema(description = "Video files are unreadable. Please upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("VIDEO_FILE_NOT_FOUND")
     @get:JsonProperty("VIDEO_FILE_NOT_FOUND") val VIDEO_FILE_NOT_FOUND: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Video files are unreadable. Please upload new files to continue.")
+    @Schema(description = "Video files are unreadable. Please upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("VIDEO_INVALID_FILE")
     @get:JsonProperty("VIDEO_INVALID_FILE") val VIDEO_INVALID_FILE: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "We experienced a technical difficulty and were unable to download some additional videos. The next download attempt will happen in 24 hours.")
+    @Schema(description = "We experienced a technical difficulty and were unable to download some additional videos. The next download attempt will happen in 24 hours.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("VIDEO_LEVEL_INTERNAL_ERROR")
     @get:JsonProperty("VIDEO_LEVEL_INTERNAL_ERROR") val VIDEO_LEVEL_INTERNAL_ERROR: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Video files are unreadable. Please check your link and upload new files to continue.")
+    @Schema(description = "Video files are unreadable. Please check your link and upload new files to continue.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("VIDEO_MALFORMED_URL")
     @get:JsonProperty("VIDEO_MALFORMED_URL") val VIDEO_MALFORMED_URL: kotlin.Int? = null
 ) {
 

@@ -7,10 +7,7 @@ Protected Class BusinessAssetsGet200Response
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			List of assets the requesting business has access to.
-		#tag EndNote
-		items() As OpenAPIClient.Models.GetBusinessAssetsResponse
+		items() As OpenAPIClient.Models.BusinessAssets
 	#tag EndProperty
 
 
@@ -63,7 +60,7 @@ Protected Class BusinessAssetsGet200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="GetBusinessAssetsResponse"
+			Type="BusinessAssets"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

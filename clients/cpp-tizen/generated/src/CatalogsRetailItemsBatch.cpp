@@ -23,8 +23,8 @@ CatalogsRetailItemsBatch::~CatalogsRetailItemsBatch()
 void
 CatalogsRetailItemsBatch::__init()
 {
-	//batch_id = std::string();
-	//catalog_type = new CatalogsType();
+	//batch_id = null;
+	//catalog_type = std::string();
 	//completed_time = null;
 	//created_time = null;
 	//new std::list()std::list> items;
@@ -88,12 +88,9 @@ CatalogsRetailItemsBatch::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsType")) {
-			jsonToValue(&catalog_type, node, "CatalogsType", "CatalogsType");
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_type, node, "std::string", "");
 		} else {
-			
-			CatalogsType* obj = static_cast<CatalogsType*> (&catalog_type);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -178,16 +175,11 @@ CatalogsRetailItemsBatch::toJson()
 	}
 	const gchar *batch_idKey = "batch_id";
 	json_object_set_member(pJsonObject, batch_idKey, node);
-	if (isprimitive("CatalogsType")) {
-		CatalogsType obj = getCatalogType();
-		node = converttoJson(&obj, "CatalogsType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogType();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		CatalogsType obj = static_cast<CatalogsType> (getCatalogType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *catalog_typeKey = "catalog_type";
@@ -269,14 +261,14 @@ CatalogsRetailItemsBatch::setBatchId(std::string  batch_id)
 	this->batch_id = batch_id;
 }
 
-CatalogsType
+std::string
 CatalogsRetailItemsBatch::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsRetailItemsBatch::setCatalogType(CatalogsType  catalog_type)
+CatalogsRetailItemsBatch::setCatalogType(std::string  catalog_type)
 {
 	this->catalog_type = catalog_type;
 }

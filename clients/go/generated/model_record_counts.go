@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ import (
 // checks if the RecordCounts type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RecordCounts{}
 
-// RecordCounts Record processing counts
+// RecordCounts struct for RecordCounts
 type RecordCounts struct {
 	// Number of invalid records processed
 	Invalid int32 `json:"invalid"`

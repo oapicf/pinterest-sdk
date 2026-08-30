@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -29,35 +29,97 @@ func NewBusinessAccessRelationshipsAPIService() *BusinessAccessRelationshipsAPIS
 	return &BusinessAccessRelationshipsAPIService{}
 }
 
+// BrandAccountsCreate - Create a Brand Account
+func (s *BusinessAccessRelationshipsAPIService) BrandAccountsCreate(ctx context.Context, businessHierarchyId string, brandAccountCreate BrandAccountCreate) (ImplResponse, error) {
+	// TODO - update BrandAccountsCreate with the required logic for this service method.
+	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, BrandAccount{}) or use other options such as http.Ok ...
+	// return Response(200, BrandAccount{}), nil
+
+	// TODO: Uncomment the next line to return response Response(201, BrandAccount{}) or use other options such as http.Ok ...
+	// return Response(201, BrandAccount{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("BrandAccountsCreate method not implemented")
+}
+
+// BrandAccountsUpdate - Update a Brand Account
+func (s *BusinessAccessRelationshipsAPIService) BrandAccountsUpdate(ctx context.Context, brandAccountId string, businessHierarchyId string, brandAccountUpdate BrandAccountUpdate) (ImplResponse, error) {
+	// TODO - update BrandAccountsUpdate with the required logic for this service method.
+	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, BrandAccount{}) or use other options such as http.Ok ...
+	// return Response(200, BrandAccount{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(409, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(409, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("BrandAccountsUpdate method not implemented")
+}
+
 // GetBusinessEmployers - List business employers for user
-func (s *BusinessAccessRelationshipsAPIService) GetBusinessEmployers(ctx context.Context, pageSize int32, bookmark string) (ImplResponse, error) {
+func (s *BusinessAccessRelationshipsAPIService) GetBusinessEmployers(ctx context.Context, assetsSummary bool, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update GetBusinessEmployers with the required logic for this service method.
 	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, GetBusinessEmployers200Response{}) or use other options such as http.Ok ...
 	// return Response(200, GetBusinessEmployers200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("GetBusinessEmployers method not implemented")
-}
-
-// SystemUserUpdate - Update a system user information.
-func (s *BusinessAccessRelationshipsAPIService) SystemUserUpdate(ctx context.Context, businessId string, systemUserId string, systemUserUpdateRequest SystemUserUpdateRequest) (ImplResponse, error) {
-	// TODO - update SystemUserUpdate with the required logic for this service method.
-	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, {}) or use other options such as http.Ok ...
-	// return Response(200, nil),nil
-
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("SystemUserUpdate method not implemented")
 }
 
 // GetBusinessMembers - Get business members
@@ -65,119 +127,144 @@ func (s *BusinessAccessRelationshipsAPIService) GetBusinessMembers(ctx context.C
 	// TODO - update GetBusinessMembers with the required logic for this service method.
 	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, GetBusinessMembers200Response{}) or use other options such as http.Ok ...
-	// return Response(200, GetBusinessMembers200Response{}), nil
+	// TODO: Uncomment the next line to return response Response(200, GetBusinessEmployers200Response{}) or use other options such as http.Ok ...
+	// return Response(200, GetBusinessEmployers200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("GetBusinessMembers method not implemented")
 }
 
 // DeleteBusinessMembership - Terminate business memberships
-func (s *BusinessAccessRelationshipsAPIService) DeleteBusinessMembership(ctx context.Context, businessId string, membersToDeleteBody MembersToDeleteBody) (ImplResponse, error) {
+func (s *BusinessAccessRelationshipsAPIService) DeleteBusinessMembership(ctx context.Context, businessId string, deleteBusinessMembershipBody DeleteBusinessMembershipBody) (ImplResponse, error) {
 	// TODO - update DeleteBusinessMembership with the required logic for this service method.
 	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, DeletedMembersResponse{}) or use other options such as http.Ok ...
-	// return Response(200, DeletedMembersResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, DeleteBusinessMembership200Response{}) or use other options such as http.Ok ...
+	// return Response(200, DeleteBusinessMembership200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("DeleteBusinessMembership method not implemented")
 }
 
 // UpdateBusinessMemberships - Update member&#39;s business role
-func (s *BusinessAccessRelationshipsAPIService) UpdateBusinessMemberships(ctx context.Context, businessId string, updateMemberBusinessRoleBody []UpdateMemberBusinessRoleBody) (ImplResponse, error) {
+func (s *BusinessAccessRelationshipsAPIService) UpdateBusinessMemberships(ctx context.Context, businessId string, businessMembershipMember []BusinessMembershipMember) (ImplResponse, error) {
 	// TODO - update UpdateBusinessMemberships with the required logic for this service method.
 	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, UpdateMemberResultsResponseArray{}) or use other options such as http.Ok ...
-	// return Response(200, UpdateMemberResultsResponseArray{}), nil
+	// TODO: Uncomment the next line to return response Response(200, UpdateBusinessMembershipsResponse{}) or use other options such as http.Ok ...
+	// return Response(200, UpdateBusinessMembershipsResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("UpdateBusinessMemberships method not implemented")
 }
 
 // GetBusinessPartners - Get business partners
-func (s *BusinessAccessRelationshipsAPIService) GetBusinessPartners(ctx context.Context, businessId string, assetsSummary bool, partnerType PartnerType, partnerIds string, startIndex int32, pageSize int32, bookmark string) (ImplResponse, error) {
+func (s *BusinessAccessRelationshipsAPIService) GetBusinessPartners(ctx context.Context, businessId string, assetsSummary bool, partnerType PartnerType, partnerIds string, startIndex int32, sortAscending bool, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update GetBusinessPartners with the required logic for this service method.
 	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, GetBusinessPartners200Response{}) or use other options such as http.Ok ...
-	// return Response(200, GetBusinessPartners200Response{}), nil
+	// TODO: Uncomment the next line to return response Response(200, GetBusinessEmployers200Response{}) or use other options such as http.Ok ...
+	// return Response(200, GetBusinessEmployers200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("GetBusinessPartners method not implemented")
 }
 
 // DeleteBusinessPartners - Terminate business partnerships
-func (s *BusinessAccessRelationshipsAPIService) DeleteBusinessPartners(ctx context.Context, businessId string, deletePartnersRequest DeletePartnersRequest) (ImplResponse, error) {
+func (s *BusinessAccessRelationshipsAPIService) DeleteBusinessPartners(ctx context.Context, businessId string, deleteBusinessPartnersDelete DeleteBusinessPartnersDelete) (ImplResponse, error) {
 	// TODO - update DeleteBusinessPartners with the required logic for this service method.
 	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, DeletePartnersResponse{}) or use other options such as http.Ok ...
-	// return Response(200, DeletePartnersResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, DeleteBusinessPartners{}) or use other options such as http.Ok ...
+	// return Response(200, DeleteBusinessPartners{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("DeleteBusinessPartners method not implemented")
 }
 
-// BrandAccountsCreate - Create a Brand Account
-func (s *BusinessAccessRelationshipsAPIService) BrandAccountsCreate(ctx context.Context, businessHierarchyId string, brandAccountsCreateRequest BrandAccountsCreateRequest) (ImplResponse, error) {
-	// TODO - update BrandAccountsCreate with the required logic for this service method.
+// SystemUserUpdate - Update a system user information.
+func (s *BusinessAccessRelationshipsAPIService) SystemUserUpdate(ctx context.Context, businessId string, systemUserId string, systemUserUpdateWithRequiredBody SystemUserUpdateWithRequiredBody) (ImplResponse, error) {
+	// TODO - update SystemUserUpdate with the required logic for this service method.
 	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, BrandAccountsCreate200Response{}) or use other options such as http.Ok ...
-	// return Response(200, BrandAccountsCreate200Response{}), nil
+	// TODO: Uncomment the next line to return response Response(200, {}) or use other options such as http.Ok ...
+	// return Response(200, nil),nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
 
-	return Response(http.StatusNotImplemented, nil), errors.New("BrandAccountsCreate method not implemented")
-}
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
 
-// BrandAccountsUpdate - Update a Brand Account
-func (s *BusinessAccessRelationshipsAPIService) BrandAccountsUpdate(ctx context.Context, businessHierarchyId string, brandAccountId string, brandAccountsUpdateRequest BrandAccountsUpdateRequest) (ImplResponse, error) {
-	// TODO - update BrandAccountsUpdate with the required logic for this service method.
-	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(200, BrandAccountsCreate200Response{}) or use other options such as http.Ok ...
-	// return Response(200, BrandAccountsCreate200Response{}), nil
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(401, Error{}) or use other options such as http.Ok ...
-	// return Response(401, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
-	// return Response(403, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(409, Error{}) or use other options such as http.Ok ...
-	// return Response(409, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(429, Error{}) or use other options such as http.Ok ...
-	// return Response(429, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("BrandAccountsUpdate method not implemented")
+	return Response(http.StatusNotImplemented, nil), errors.New("SystemUserUpdate method not implemented")
 }

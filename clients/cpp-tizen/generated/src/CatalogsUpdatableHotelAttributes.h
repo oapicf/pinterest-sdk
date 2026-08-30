@@ -48,11 +48,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get Hotel address
 	 */
 	CatalogsHotelAddress getAddress();
 
-	/*! \brief Set 
+	/*! \brief Set Hotel address
 	 */
 	void setAddress(CatalogsHotelAddress  address);
 	/*! \brief Get Base price of the hotel room per night followed by the ISO currency code
@@ -118,11 +118,11 @@ public:
 	/*! \brief Set Brief description of the hotel.
 	 */
 	void setDescription(std::string  description);
-	/*! \brief Get 
+	/*! \brief Get If specified, you must provide all properties
 	 */
 	CatalogsHotelGuestRatings getGuestRatings();
 
-	/*! \brief Set 
+	/*! \brief Set If specified, you must provide all properties
 	 */
 	void setGuestRatings(CatalogsHotelGuestRatings  guest_ratings);
 	/*! \brief Get Latitude of the hotel.

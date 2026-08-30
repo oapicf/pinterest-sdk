@@ -12,12 +12,12 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `msotEventsCreate()`
 
 ```php
-msotEventsCreate($ad_account_id, $conversion_msot_events)
+msotEventsCreate($ad_account_id, $conversion_msot_events_create)
 ```
 
 Send Measurement Source Of Truth (MSOT) attributed conversion events
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong> <br> <p>Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their <code>ad_account_id</code>. The request body should be a JSON object.</p> - These events will NOT be used in Reporting.
+**This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their `ad_account_id`. The request body should be a JSON object.  - These events will not be used in Reporting.
 
 ### Example
 
@@ -37,10 +37,10 @@ $apiInstance = new OpenAPI\Client\Api\MsotEventsApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$conversion_msot_events = new \OpenAPI\Client\Model\ConversionMSOTEvents(); // \OpenAPI\Client\Model\ConversionMSOTEvents | Attributed MSOT conversion events
+$conversion_msot_events_create = new \OpenAPI\Client\Model\ConversionMSOTEventsCreate(); // \OpenAPI\Client\Model\ConversionMSOTEventsCreate
 
 try {
-    $apiInstance->msotEventsCreate($ad_account_id, $conversion_msot_events);
+    $apiInstance->msotEventsCreate($ad_account_id, $conversion_msot_events_create);
 } catch (Exception $e) {
     echo 'Exception when calling MsotEventsApi->msotEventsCreate: ', $e->getMessage(), PHP_EOL;
 }
@@ -51,7 +51,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **conversion_msot_events** | [**\OpenAPI\Client\Model\ConversionMSOTEvents**](../Model/ConversionMSOTEvents.md)| Attributed MSOT conversion events | |
+| **conversion_msot_events_create** | [**\OpenAPI\Client\Model\ConversionMSOTEventsCreate**](../Model/ConversionMSOTEventsCreate.md)|  | |
 
 ### Return type
 

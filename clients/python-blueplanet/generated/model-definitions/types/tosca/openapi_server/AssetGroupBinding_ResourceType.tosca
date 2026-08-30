@@ -21,60 +21,60 @@ resourceTypes {
           type = array
           items.type =  string
           description = "A list of ad account IDs under the asset group"
-          optional = false
+          optional = true
         }
         asset_group_description {
           type =  string
           description = "Asset group description"
-          optional = false
+          optional = true
         }
         asset_group_name {
           type =  string
           description = "Asset Group name"
-          optional = false
+          optional = true
         }
         asset_group_types {
           type = array
           items.type =  string
           description = "Asset group types"
-          optional = false
+          optional = true
         }
         catalogs_ids {
           type = array
           items.type =  string
           description = "A list of catalog IDs under asset group"
-          optional = false
+          optional = true
         }
         created_by {
           type = BusinessAccessUserSummary
           description = "The data of the user that created the asset group."
-          optional = false
+          optional = true
         }
         created_time {
           type =  integer
           description = "The creation time of the asset group"
-          optional = false
+          optional = true
         }
         id {
           type =  string
           description = "Asset Group ID."
-          optional = false
+          optional = true
         }
         owner {
           type = BusinessAccessUserSummary
           description = "The data of the business that owns the asset group."
-          optional = false
+          optional = true
         }
         profiles_ids {
           type = array
           items.type =  string
           description = "A list of profile IDs under asset group"
-          optional = false
+          optional = true
         }
         updated_time {
           type =  integer
           description = "The last update time of the asset group"
-          optional = false
+          optional = true
         }
     }
   }

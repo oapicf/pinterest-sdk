@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.UpdateMemberAssetAccessBodyAccessesInner
+open OpenAPI.Model.UpdateMemberAssetAccessItem
 
 module UpdateMemberAssetAccessBody =
 
@@ -12,7 +12,7 @@ module UpdateMemberAssetAccessBody =
   [<CLIMutable>]
   type UpdateMemberAssetAccessBody = {
     [<JsonProperty(PropertyName = "accesses")>]
-    Accesses : UpdateMemberAssetAccessBodyAccessesInner[];
+    Accesses : UpdateMemberAssetAccessItem[];
   }
 
   //#endregion

@@ -10,5 +10,5 @@
   binary().
 
 openapi_mmm_reporting_targeting_type() ->
-  elements([<<"APPTYPE">>, <<"COUNTRY">>, <<"CREATIVE_TYPE">>, <<"GENDER">>, <<"LOCATION">>]).
+  elements([<<"APPTYPE">>, <<"COUNTRY">>, <<"CREATIVE_TYPE">>, <<"GENDER">>, <<"LOCATION">>, <<"PLACEMENT">>, <<"AUDIENCE_INCLUDE">>]).
 

@@ -27,14 +27,14 @@ class BusinessAccessRelationshipsApi {
   /// * [String] businessHierarchyId (required):
   ///   business hierarchy node id
   ///
-  /// * [BrandAccountsCreateRequest] brandAccountsCreateRequest (required):
-  Future<Response> brandAccountsCreateWithHttpInfo(String businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest,) async {
+  /// * [BrandAccountCreate] brandAccountCreate (required):
+  Future<Response> brandAccountsCreateWithHttpInfo(String businessHierarchyId, BrandAccountCreate brandAccountCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts'
       .replaceAll('{business_hierarchy_id}', businessHierarchyId);
 
     // ignore: prefer_final_locals
-    Object? postBody = brandAccountsCreateRequest;
+    Object? postBody = brandAccountCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -51,6 +51,7 @@ class BusinessAccessRelationshipsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -63,9 +64,9 @@ class BusinessAccessRelationshipsApi {
   /// * [String] businessHierarchyId (required):
   ///   business hierarchy node id
   ///
-  /// * [BrandAccountsCreateRequest] brandAccountsCreateRequest (required):
-  Future<BrandAccountsCreate200Response?> brandAccountsCreate(String businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest,) async {
-    final response = await brandAccountsCreateWithHttpInfo(businessHierarchyId, brandAccountsCreateRequest,);
+  /// * [BrandAccountCreate] brandAccountCreate (required):
+  Future<BrandAccount?> brandAccountsCreate(String businessHierarchyId, BrandAccountCreate brandAccountCreate, { Future<void>? abortTrigger, }) async {
+    final response = await brandAccountsCreateWithHttpInfo(businessHierarchyId, brandAccountCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -73,7 +74,7 @@ class BusinessAccessRelationshipsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BrandAccountsCreate200Response',) as BrandAccountsCreate200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BrandAccount',) as BrandAccount;
     
     }
     return null;
@@ -87,21 +88,20 @@ class BusinessAccessRelationshipsApi {
   ///
   /// Parameters:
   ///
+  /// * [String] brandAccountId (required):
+  ///
   /// * [String] businessHierarchyId (required):
   ///   business hierarchy node id
   ///
-  /// * [String] brandAccountId (required):
-  ///   Unique identifier of a brand account.
-  ///
-  /// * [BrandAccountsUpdateRequest] brandAccountsUpdateRequest (required):
-  Future<Response> brandAccountsUpdateWithHttpInfo(String businessHierarchyId, String brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest,) async {
+  /// * [BrandAccountUpdate] brandAccountUpdate (required):
+  Future<Response> brandAccountsUpdateWithHttpInfo(String brandAccountId, String businessHierarchyId, BrandAccountUpdate brandAccountUpdate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}'
-      .replaceAll('{business_hierarchy_id}', businessHierarchyId)
-      .replaceAll('{brand_account_id}', brandAccountId);
+      .replaceAll('{brand_account_id}', brandAccountId)
+      .replaceAll('{business_hierarchy_id}', businessHierarchyId);
 
     // ignore: prefer_final_locals
-    Object? postBody = brandAccountsUpdateRequest;
+    Object? postBody = brandAccountUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -118,6 +118,7 @@ class BusinessAccessRelationshipsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -127,15 +128,14 @@ class BusinessAccessRelationshipsApi {
   ///
   /// Parameters:
   ///
+  /// * [String] brandAccountId (required):
+  ///
   /// * [String] businessHierarchyId (required):
   ///   business hierarchy node id
   ///
-  /// * [String] brandAccountId (required):
-  ///   Unique identifier of a brand account.
-  ///
-  /// * [BrandAccountsUpdateRequest] brandAccountsUpdateRequest (required):
-  Future<BrandAccountsCreate200Response?> brandAccountsUpdate(String businessHierarchyId, String brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest,) async {
-    final response = await brandAccountsUpdateWithHttpInfo(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest,);
+  /// * [BrandAccountUpdate] brandAccountUpdate (required):
+  Future<BrandAccount?> brandAccountsUpdate(String brandAccountId, String businessHierarchyId, BrandAccountUpdate brandAccountUpdate, { Future<void>? abortTrigger, }) async {
+    final response = await brandAccountsUpdateWithHttpInfo(brandAccountId, businessHierarchyId, brandAccountUpdate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -143,7 +143,7 @@ class BusinessAccessRelationshipsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BrandAccountsCreate200Response',) as BrandAccountsCreate200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BrandAccount',) as BrandAccount;
     
     }
     return null;
@@ -160,15 +160,14 @@ class BusinessAccessRelationshipsApi {
   /// * [String] businessId (required):
   ///   Business id
   ///
-  /// * [MembersToDeleteBody] membersToDeleteBody (required):
-  ///   List of members with role to delete.
-  Future<Response> deleteBusinessMembershipWithHttpInfo(String businessId, MembersToDeleteBody membersToDeleteBody,) async {
+  /// * [DeleteBusinessMembershipBody] deleteBusinessMembershipBody (required):
+  Future<Response> deleteBusinessMembershipWithHttpInfo(String businessId, DeleteBusinessMembershipBody deleteBusinessMembershipBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/members'
       .replaceAll('{business_id}', businessId);
 
     // ignore: prefer_final_locals
-    Object? postBody = membersToDeleteBody;
+    Object? postBody = deleteBusinessMembershipBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -185,6 +184,7 @@ class BusinessAccessRelationshipsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -197,10 +197,9 @@ class BusinessAccessRelationshipsApi {
   /// * [String] businessId (required):
   ///   Business id
   ///
-  /// * [MembersToDeleteBody] membersToDeleteBody (required):
-  ///   List of members with role to delete.
-  Future<DeletedMembersResponse?> deleteBusinessMembership(String businessId, MembersToDeleteBody membersToDeleteBody,) async {
-    final response = await deleteBusinessMembershipWithHttpInfo(businessId, membersToDeleteBody,);
+  /// * [DeleteBusinessMembershipBody] deleteBusinessMembershipBody (required):
+  Future<DeleteBusinessMembership200Response?> deleteBusinessMembership(String businessId, DeleteBusinessMembershipBody deleteBusinessMembershipBody, { Future<void>? abortTrigger, }) async {
+    final response = await deleteBusinessMembershipWithHttpInfo(businessId, deleteBusinessMembershipBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -208,7 +207,7 @@ class BusinessAccessRelationshipsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeletedMembersResponse',) as DeletedMembersResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeleteBusinessMembership200Response',) as DeleteBusinessMembership200Response;
     
     }
     return null;
@@ -225,15 +224,14 @@ class BusinessAccessRelationshipsApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [DeletePartnersRequest] deletePartnersRequest (required):
-  ///   An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
-  Future<Response> deleteBusinessPartnersWithHttpInfo(String businessId, DeletePartnersRequest deletePartnersRequest,) async {
+  /// * [DeleteBusinessPartnersDelete] deleteBusinessPartnersDelete (required):
+  Future<Response> deleteBusinessPartnersWithHttpInfo(String businessId, DeleteBusinessPartnersDelete deleteBusinessPartnersDelete, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/partners'
       .replaceAll('{business_id}', businessId);
 
     // ignore: prefer_final_locals
-    Object? postBody = deletePartnersRequest;
+    Object? postBody = deleteBusinessPartnersDelete;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -250,6 +248,7 @@ class BusinessAccessRelationshipsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -262,10 +261,9 @@ class BusinessAccessRelationshipsApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [DeletePartnersRequest] deletePartnersRequest (required):
-  ///   An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
-  Future<DeletePartnersResponse?> deleteBusinessPartners(String businessId, DeletePartnersRequest deletePartnersRequest,) async {
-    final response = await deleteBusinessPartnersWithHttpInfo(businessId, deletePartnersRequest,);
+  /// * [DeleteBusinessPartnersDelete] deleteBusinessPartnersDelete (required):
+  Future<DeleteBusinessPartners?> deleteBusinessPartners(String businessId, DeleteBusinessPartnersDelete deleteBusinessPartnersDelete, { Future<void>? abortTrigger, }) async {
+    final response = await deleteBusinessPartnersWithHttpInfo(businessId, deleteBusinessPartnersDelete, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -273,7 +271,7 @@ class BusinessAccessRelationshipsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeletePartnersResponse',) as DeletePartnersResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeleteBusinessPartners',) as DeleteBusinessPartners;
     
     }
     return null;
@@ -287,12 +285,15 @@ class BusinessAccessRelationshipsApi {
   ///
   /// Parameters:
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [bool] assetsSummary:
+  ///   Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<Response> getBusinessEmployersWithHttpInfo({ int? pageSize, String? bookmark, }) async {
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> getBusinessEmployersWithHttpInfo({ bool? assetsSummary, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/employers';
 
@@ -303,11 +304,14 @@ class BusinessAccessRelationshipsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (pageSize != null) {
-      queryParams.addAll(_queryParams('', 'page_size', pageSize));
+    if (assetsSummary != null) {
+      queryParams.addAll(_queryParams('', 'assets_summary', assetsSummary));
     }
     if (bookmark != null) {
       queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
+    if (pageSize != null) {
+      queryParams.addAll(_queryParams('', 'page_size', pageSize));
     }
 
     const contentTypes = <String>[];
@@ -321,6 +325,7 @@ class BusinessAccessRelationshipsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -330,13 +335,16 @@ class BusinessAccessRelationshipsApi {
   ///
   /// Parameters:
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [bool] assetsSummary:
+  ///   Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<GetBusinessEmployers200Response?> getBusinessEmployers({ int? pageSize, String? bookmark, }) async {
-    final response = await getBusinessEmployersWithHttpInfo( pageSize: pageSize, bookmark: bookmark, );
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<GetBusinessEmployers200Response?> getBusinessEmployers({ bool? assetsSummary, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await getBusinessEmployersWithHttpInfo(assetsSummary: assetsSummary, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -380,8 +388,8 @@ class BusinessAccessRelationshipsApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<Response> getBusinessMembersWithHttpInfo(String businessId, { bool? fetchSystemUsers, bool? assetsSummary, List<MemberBusinessRole>? businessRoles, String? memberIds, int? startIndex, String? bookmark, int? pageSize, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> getBusinessMembersWithHttpInfo(String businessId, { bool? fetchSystemUsers, bool? assetsSummary, List<MemberBusinessRole>? businessRoles, String? memberIds, int? startIndex, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/members'
       .replaceAll('{business_id}', businessId);
@@ -426,6 +434,7 @@ class BusinessAccessRelationshipsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -457,9 +466,9 @@ class BusinessAccessRelationshipsApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<GetBusinessMembers200Response?> getBusinessMembers(String businessId, { bool? fetchSystemUsers, bool? assetsSummary, List<MemberBusinessRole>? businessRoles, String? memberIds, int? startIndex, String? bookmark, int? pageSize, }) async {
-    final response = await getBusinessMembersWithHttpInfo(businessId,  fetchSystemUsers: fetchSystemUsers, assetsSummary: assetsSummary, businessRoles: businessRoles, memberIds: memberIds, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<GetBusinessEmployers200Response?> getBusinessMembers(String businessId, { bool? fetchSystemUsers, bool? assetsSummary, List<MemberBusinessRole>? businessRoles, String? memberIds, int? startIndex, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await getBusinessMembersWithHttpInfo(businessId, fetchSystemUsers: fetchSystemUsers, assetsSummary: assetsSummary, businessRoles: businessRoles, memberIds: memberIds, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -467,7 +476,7 @@ class BusinessAccessRelationshipsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetBusinessMembers200Response',) as GetBusinessMembers200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetBusinessEmployers200Response',) as GetBusinessEmployers200Response;
     
     }
     return null;
@@ -488,7 +497,7 @@ class BusinessAccessRelationshipsApi {
   ///   Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
   ///
   /// * [PartnerType] partnerType:
-  ///   Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+  ///   Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
   ///
   /// * [String] partnerIds:
   ///   A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
@@ -496,12 +505,15 @@ class BusinessAccessRelationshipsApi {
   /// * [int] startIndex:
   ///   An index to start fetching the results from. Only the results starting from this index will be returned.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [bool] sortAscending:
+  ///   Sort ascending.
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<Response> getBusinessPartnersWithHttpInfo(String businessId, { bool? assetsSummary, PartnerType? partnerType, String? partnerIds, int? startIndex, int? pageSize, String? bookmark, }) async {
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> getBusinessPartnersWithHttpInfo(String businessId, { bool? assetsSummary, PartnerType? partnerType, String? partnerIds, int? startIndex, bool? sortAscending, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/partners'
       .replaceAll('{business_id}', businessId);
@@ -525,11 +537,14 @@ class BusinessAccessRelationshipsApi {
     if (startIndex != null) {
       queryParams.addAll(_queryParams('', 'start_index', startIndex));
     }
-    if (pageSize != null) {
-      queryParams.addAll(_queryParams('', 'page_size', pageSize));
+    if (sortAscending != null) {
+      queryParams.addAll(_queryParams('', 'sort_ascending', sortAscending));
     }
     if (bookmark != null) {
       queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
+    if (pageSize != null) {
+      queryParams.addAll(_queryParams('', 'page_size', pageSize));
     }
 
     const contentTypes = <String>[];
@@ -543,6 +558,7 @@ class BusinessAccessRelationshipsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -559,7 +575,7 @@ class BusinessAccessRelationshipsApi {
   ///   Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
   ///
   /// * [PartnerType] partnerType:
-  ///   Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+  ///   Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
   ///
   /// * [String] partnerIds:
   ///   A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
@@ -567,13 +583,16 @@ class BusinessAccessRelationshipsApi {
   /// * [int] startIndex:
   ///   An index to start fetching the results from. Only the results starting from this index will be returned.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [bool] sortAscending:
+  ///   Sort ascending.
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<GetBusinessPartners200Response?> getBusinessPartners(String businessId, { bool? assetsSummary, PartnerType? partnerType, String? partnerIds, int? startIndex, int? pageSize, String? bookmark, }) async {
-    final response = await getBusinessPartnersWithHttpInfo(businessId,  assetsSummary: assetsSummary, partnerType: partnerType, partnerIds: partnerIds, startIndex: startIndex, pageSize: pageSize, bookmark: bookmark, );
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<GetBusinessEmployers200Response?> getBusinessPartners(String businessId, { bool? assetsSummary, PartnerType? partnerType, String? partnerIds, int? startIndex, bool? sortAscending, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await getBusinessPartnersWithHttpInfo(businessId, assetsSummary: assetsSummary, partnerType: partnerType, partnerIds: partnerIds, startIndex: startIndex, sortAscending: sortAscending, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -581,7 +600,7 @@ class BusinessAccessRelationshipsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetBusinessPartners200Response',) as GetBusinessPartners200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetBusinessEmployers200Response',) as GetBusinessEmployers200Response;
     
     }
     return null;
@@ -601,15 +620,15 @@ class BusinessAccessRelationshipsApi {
   /// * [String] systemUserId (required):
   ///   Unique identifier of a system user.
   ///
-  /// * [SystemUserUpdateRequest] systemUserUpdateRequest (required):
-  Future<Response> systemUserUpdateWithHttpInfo(String businessId, String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest,) async {
+  /// * [SystemUserUpdateWithRequiredBody] systemUserUpdateWithRequiredBody (required):
+  Future<Response> systemUserUpdateWithHttpInfo(String businessId, String systemUserId, SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/system_users/{system_user_id}'
       .replaceAll('{business_id}', businessId)
       .replaceAll('{system_user_id}', systemUserId);
 
     // ignore: prefer_final_locals
-    Object? postBody = systemUserUpdateRequest;
+    Object? postBody = systemUserUpdateWithRequiredBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -626,6 +645,7 @@ class BusinessAccessRelationshipsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -641,9 +661,9 @@ class BusinessAccessRelationshipsApi {
   /// * [String] systemUserId (required):
   ///   Unique identifier of a system user.
   ///
-  /// * [SystemUserUpdateRequest] systemUserUpdateRequest (required):
-  Future<void> systemUserUpdate(String businessId, String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest,) async {
-    final response = await systemUserUpdateWithHttpInfo(businessId, systemUserId, systemUserUpdateRequest,);
+  /// * [SystemUserUpdateWithRequiredBody] systemUserUpdateWithRequiredBody (required):
+  Future<void> systemUserUpdate(String businessId, String systemUserId, SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody, { Future<void>? abortTrigger, }) async {
+    final response = await systemUserUpdateWithHttpInfo(businessId, systemUserId, systemUserUpdateWithRequiredBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -660,15 +680,14 @@ class BusinessAccessRelationshipsApi {
   /// * [String] businessId (required):
   ///   Business id
   ///
-  /// * [List<UpdateMemberBusinessRoleBody>] updateMemberBusinessRoleBody (required):
-  ///   List of objects with the member id and the business_role.
-  Future<Response> updateBusinessMembershipsWithHttpInfo(String businessId, List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody,) async {
+  /// * [List<BusinessMembershipMember>] businessMembershipMember (required):
+  Future<Response> updateBusinessMembershipsWithHttpInfo(String businessId, List<BusinessMembershipMember> businessMembershipMember, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/members'
       .replaceAll('{business_id}', businessId);
 
     // ignore: prefer_final_locals
-    Object? postBody = updateMemberBusinessRoleBody;
+    Object? postBody = businessMembershipMember;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -685,6 +704,7 @@ class BusinessAccessRelationshipsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -697,10 +717,9 @@ class BusinessAccessRelationshipsApi {
   /// * [String] businessId (required):
   ///   Business id
   ///
-  /// * [List<UpdateMemberBusinessRoleBody>] updateMemberBusinessRoleBody (required):
-  ///   List of objects with the member id and the business_role.
-  Future<UpdateMemberResultsResponseArray?> updateBusinessMemberships(String businessId, List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody,) async {
-    final response = await updateBusinessMembershipsWithHttpInfo(businessId, updateMemberBusinessRoleBody,);
+  /// * [List<BusinessMembershipMember>] businessMembershipMember (required):
+  Future<UpdateBusinessMembershipsResponse?> updateBusinessMemberships(String businessId, List<BusinessMembershipMember> businessMembershipMember, { Future<void>? abortTrigger, }) async {
+    final response = await updateBusinessMembershipsWithHttpInfo(businessId, businessMembershipMember, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -708,7 +727,7 @@ class BusinessAccessRelationshipsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UpdateMemberResultsResponseArray',) as UpdateMemberResultsResponseArray;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UpdateBusinessMembershipsResponse',) as UpdateBusinessMembershipsResponse;
     
     }
     return null;

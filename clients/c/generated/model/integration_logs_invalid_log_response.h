@@ -15,7 +15,7 @@
 
 typedef struct integration_logs_invalid_log_response_t integration_logs_invalid_log_response_t;
 
-#include "integration_logs_invalid_log_response_rejected_logs_inner.h"
+#include "integration_logs_invalid_log_response_rejected_logs_items.h"
 
 
 

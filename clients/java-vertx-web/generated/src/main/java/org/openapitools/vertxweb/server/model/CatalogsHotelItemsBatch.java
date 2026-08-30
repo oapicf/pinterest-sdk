@@ -10,17 +10,34 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.BatchOperationStatus;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 import org.openapitools.vertxweb.server.model.HotelProcessingRecord;
 
 /**
- * Object describing the catalogs hotel items batch
+ * Object describing the catalogs hotel items batch. If specified, you must provide all properties.
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsHotelItemsBatch   {
   
   private String batchId;
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    HOTEL("HOTEL");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private OffsetDateTime completedTime;
   private OffsetDateTime createdTime;
   private List<HotelProcessingRecord> items = new ArrayList<>();
@@ -30,7 +47,7 @@ public class CatalogsHotelItemsBatch   {
 
   }
 
-  public CatalogsHotelItemsBatch (String batchId, CatalogsType catalogType, OffsetDateTime completedTime, OffsetDateTime createdTime, List<HotelProcessingRecord> items, BatchOperationStatus status) {
+  public CatalogsHotelItemsBatch (String batchId, CatalogTypeEnum catalogType, OffsetDateTime completedTime, OffsetDateTime createdTime, List<HotelProcessingRecord> items, BatchOperationStatus status) {
     this.batchId = batchId;
     this.catalogType = catalogType;
     this.completedTime = completedTime;
@@ -50,10 +67,10 @@ public class CatalogsHotelItemsBatch   {
 
     
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -136,9 +153,6 @@ public class CatalogsHotelItemsBatch   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

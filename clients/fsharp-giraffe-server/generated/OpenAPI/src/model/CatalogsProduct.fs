@@ -6,16 +6,18 @@ open OpenAPI.Model.CatalogsCreativeAssetsProduct
 open OpenAPI.Model.CatalogsCreativeAssetsProductMetadata
 open OpenAPI.Model.CatalogsHotelProduct
 open OpenAPI.Model.CatalogsRetailProduct
-open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.Pin
 
 module CatalogsProduct =
 
   //#region CatalogsProduct
 
+  //#region enums
+  type CatalogTypeEnum = CREATIVEASSETSEnum of string  
+  //#endregion
 
   type CatalogsProduct = {
-    CatalogType : CatalogsType;
+    CatalogType : CatalogTypeEnum;
     Metadata : CatalogsCreativeAssetsProductMetadata;
     Pin : Pin;
   }

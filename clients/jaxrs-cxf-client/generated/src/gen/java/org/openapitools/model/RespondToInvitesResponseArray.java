@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.RespondToInvitesResponseArrayItemsInner;
+import org.openapitools.model.RespondToInviteResultItem;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -17,26 +17,26 @@ public class RespondToInvitesResponseArray  {
   */
   @ApiModelProperty(value = "List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.")
 
-  private List<RespondToInvitesResponseArrayItemsInner> items = new ArrayList<>();
+  private List<RespondToInviteResultItem> items = new ArrayList<>();
  /**
    * List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.
    * @return items
   **/
   @JsonProperty("items")
-  public List<RespondToInvitesResponseArrayItemsInner> getItems() {
+  public List<RespondToInviteResultItem> getItems() {
     return items;
   }
 
-  public void setItems(List<RespondToInvitesResponseArrayItemsInner> items) {
+  public void setItems(List<RespondToInviteResultItem> items) {
     this.items = items;
   }
 
-  public RespondToInvitesResponseArray items(List<RespondToInvitesResponseArrayItemsInner> items) {
+  public RespondToInvitesResponseArray items(List<RespondToInviteResultItem> items) {
     this.items = items;
     return this;
   }
 
-  public RespondToInvitesResponseArray addItemsItem(RespondToInvitesResponseArrayItemsInner itemsItem) {
+  public RespondToInvitesResponseArray addItemsItem(RespondToInviteResultItem itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -73,10 +73,7 @@ public class RespondToInvitesResponseArray  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

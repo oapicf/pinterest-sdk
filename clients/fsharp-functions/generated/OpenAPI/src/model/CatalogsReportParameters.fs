@@ -6,7 +6,6 @@ open Newtonsoft.Json
 open OpenAPI.Model.CatalogsHotelReportParameters
 open OpenAPI.Model.CatalogsHotelReportParametersReport
 open OpenAPI.Model.CatalogsRetailReportParameters
-open OpenAPI.Model.CatalogsType
 
 module CatalogsReportParameters =
 
@@ -15,7 +14,7 @@ module CatalogsReportParameters =
   [<CLIMutable>]
   type CatalogsReportParameters = {
     [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : CatalogsType;
+    CatalogType : string;
     [<JsonProperty(PropertyName = "report")>]
     Report : CatalogsHotelReportParametersReport;
   }

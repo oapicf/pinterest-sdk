@@ -16,6 +16,7 @@ const GoogleProductCategory3Filter = require('../models/GoogleProductCategory3Fi
 const GoogleProductCategory4Filter = require('../models/GoogleProductCategory4Filter');
 const GoogleProductCategory5Filter = require('../models/GoogleProductCategory5Filter');
 const GoogleProductCategory6Filter = require('../models/GoogleProductCategory6Filter');
+const LinkFilter = require('../models/LinkFilter');
 const MediaTypeFilter = require('../models/MediaTypeFilter');
 const TitleKeywordsFilter = require('../models/TitleKeywordsFilter');
 
@@ -23,26 +24,43 @@ module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            ...CatalogsProductGroupMultipleStringCriteria.fields(`${keyPrefix}CREATIVE_ASSETS_ID`, isInput),
+            ...CatalogsProductGroupFilterOperatorTypeCriteria.fields(`${keyPrefix}CUSTOM_LABEL_0`, isInput),
+            ...CatalogsProductGroupFilterOperatorTypeCriteria.fields(`${keyPrefix}CUSTOM_LABEL_1`, isInput),
+            ...CatalogsProductGroupFilterOperatorTypeCriteria.fields(`${keyPrefix}CUSTOM_LABEL_2`, isInput),
+            ...CatalogsProductGroupFilterOperatorTypeCriteria.fields(`${keyPrefix}CUSTOM_LABEL_3`, isInput),
+            ...CatalogsProductGroupFilterOperatorTypeCriteria.fields(`${keyPrefix}CUSTOM_LABEL_4`, isInput),
+            ...CatalogsProductGroupMultipleStringListCriteria.fields(`${keyPrefix}GOOGLE_PRODUCT_CATEGORY_6`, isInput),
+            ...CatalogsProductGroupMultipleStringListCriteria.fields(`${keyPrefix}GOOGLE_PRODUCT_CATEGORY_5`, isInput),
+            ...CatalogsProductGroupMultipleStringListCriteria.fields(`${keyPrefix}GOOGLE_PRODUCT_CATEGORY_4`, isInput),
+            ...CatalogsProductGroupMultipleStringListCriteria.fields(`${keyPrefix}GOOGLE_PRODUCT_CATEGORY_3`, isInput),
+            ...CatalogsProductGroupMultipleStringListCriteria.fields(`${keyPrefix}GOOGLE_PRODUCT_CATEGORY_2`, isInput),
+            ...CatalogsProductGroupMultipleStringListCriteria.fields(`${keyPrefix}GOOGLE_PRODUCT_CATEGORY_1`, isInput),
+            ...CatalogsProductGroupMultipleStringListCriteria.fields(`${keyPrefix}GOOGLE_PRODUCT_CATEGORY_0`, isInput),
+            ...CatalogsProductGroupMultipleMediaTypesCriteria.fields(`${keyPrefix}MEDIA_TYPE`, isInput),
+            ...CatalogsProductGroupMultipleStringCriteria.fields(`${keyPrefix}TITLE_KEYWORDS`, isInput),
+            ...CatalogsProductGroupFilterOperatorTypeCriteria.fields(`${keyPrefix}LINK`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'CREATIVE_ASSETS_ID': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CREATIVE_ASSETS_ID`)),
-            'CUSTOM_LABEL_0': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_0`)),
-            'CUSTOM_LABEL_1': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_1`)),
-            'CUSTOM_LABEL_2': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_2`)),
-            'CUSTOM_LABEL_3': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_3`)),
-            'CUSTOM_LABEL_4': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_4`)),
-            'GOOGLE_PRODUCT_CATEGORY_6': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_6`)),
-            'GOOGLE_PRODUCT_CATEGORY_5': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_5`)),
-            'GOOGLE_PRODUCT_CATEGORY_4': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_4`)),
-            'GOOGLE_PRODUCT_CATEGORY_3': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_3`)),
-            'GOOGLE_PRODUCT_CATEGORY_2': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_2`)),
-            'GOOGLE_PRODUCT_CATEGORY_1': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_1`)),
-            'GOOGLE_PRODUCT_CATEGORY_0': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_0`)),
-            'MEDIA_TYPE': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}MEDIA_TYPE`)),
-            'TITLE_KEYWORDS': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}TITLE_KEYWORDS`)),
+            'CREATIVE_ASSETS_ID': utils.removeIfEmpty(CatalogsProductGroupMultipleStringCriteria.mapping(bundle, `${keyPrefix}CREATIVE_ASSETS_ID`)),
+            'CUSTOM_LABEL_0': utils.removeIfEmpty(CatalogsProductGroupFilterOperatorTypeCriteria.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_0`)),
+            'CUSTOM_LABEL_1': utils.removeIfEmpty(CatalogsProductGroupFilterOperatorTypeCriteria.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_1`)),
+            'CUSTOM_LABEL_2': utils.removeIfEmpty(CatalogsProductGroupFilterOperatorTypeCriteria.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_2`)),
+            'CUSTOM_LABEL_3': utils.removeIfEmpty(CatalogsProductGroupFilterOperatorTypeCriteria.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_3`)),
+            'CUSTOM_LABEL_4': utils.removeIfEmpty(CatalogsProductGroupFilterOperatorTypeCriteria.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_4`)),
+            'GOOGLE_PRODUCT_CATEGORY_6': utils.removeIfEmpty(CatalogsProductGroupMultipleStringListCriteria.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_6`)),
+            'GOOGLE_PRODUCT_CATEGORY_5': utils.removeIfEmpty(CatalogsProductGroupMultipleStringListCriteria.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_5`)),
+            'GOOGLE_PRODUCT_CATEGORY_4': utils.removeIfEmpty(CatalogsProductGroupMultipleStringListCriteria.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_4`)),
+            'GOOGLE_PRODUCT_CATEGORY_3': utils.removeIfEmpty(CatalogsProductGroupMultipleStringListCriteria.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_3`)),
+            'GOOGLE_PRODUCT_CATEGORY_2': utils.removeIfEmpty(CatalogsProductGroupMultipleStringListCriteria.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_2`)),
+            'GOOGLE_PRODUCT_CATEGORY_1': utils.removeIfEmpty(CatalogsProductGroupMultipleStringListCriteria.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_1`)),
+            'GOOGLE_PRODUCT_CATEGORY_0': utils.removeIfEmpty(CatalogsProductGroupMultipleStringListCriteria.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_0`)),
+            'MEDIA_TYPE': utils.removeIfEmpty(CatalogsProductGroupMultipleMediaTypesCriteria.mapping(bundle, `${keyPrefix}MEDIA_TYPE`)),
+            'TITLE_KEYWORDS': utils.removeIfEmpty(CatalogsProductGroupMultipleStringCriteria.mapping(bundle, `${keyPrefix}TITLE_KEYWORDS`)),
+            'LINK': utils.removeIfEmpty(CatalogsProductGroupFilterOperatorTypeCriteria.mapping(bundle, `${keyPrefix}LINK`)),
         }
     },
 }

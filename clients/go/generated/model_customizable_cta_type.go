@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -44,12 +44,14 @@ const (
 	DOWNLOAD CustomizableCTAType = "DOWNLOAD"
 	EXPLORE_MORE CustomizableCTAType = "EXPLORE_MORE"
 	FIND_A_LOCATION CustomizableCTAType = "FIND_A_LOCATION"
+	FIND_RETAILERS CustomizableCTAType = "FIND_RETAILERS"
 	GET_DEAL CustomizableCTAType = "GET_DEAL"
 	GET_RECIPE CustomizableCTAType = "GET_RECIPE"
 	GET_SHOWTIMES CustomizableCTAType = "GET_SHOWTIMES"
 	ON_SALE CustomizableCTAType = "ON_SALE"
 	PLAY_GAME CustomizableCTAType = "PLAY_GAME"
 	TRY_IT CustomizableCTAType = "TRY_IT"
+	TAKE_A_PEEK CustomizableCTAType = "TAKE_A_PEEK"
 )
 
 // All allowed values of CustomizableCTAType enum
@@ -77,12 +79,14 @@ var AllowedCustomizableCTATypeEnumValues = []CustomizableCTAType{
 	"DOWNLOAD",
 	"EXPLORE_MORE",
 	"FIND_A_LOCATION",
+	"FIND_RETAILERS",
 	"GET_DEAL",
 	"GET_RECIPE",
 	"GET_SHOWTIMES",
 	"ON_SALE",
 	"PLAY_GAME",
 	"TRY_IT",
+	"TAKE_A_PEEK",
 }
 
 func (v *CustomizableCTAType) UnmarshalJSON(src []byte) error {

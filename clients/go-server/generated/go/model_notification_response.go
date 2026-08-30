@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,17 +16,18 @@ package openapi
 
 type NotificationResponse struct {
 
-	// Returns true if the notification accepted.
-	Success bool `json:"success,omitempty"`
+	// error message when success is false
+	ErrorMsg string `json:"error_msg,omitempty"`
 
 	// Received time. Unix timestamp in seconds.
 	ReceivedAt int32 `json:"received_at,omitempty"`
 
-	// error message when success is false
-	ErrorMsg string `json:"error_msg,omitempty"`
+	// Returns true if the notification accepted.
+	Success bool `json:"success,omitempty"`
 }
 
-// AssertNotificationResponseRequired checks if the required fields are not zero-ed
+// AssertNotificationResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertNotificationResponseRequired(obj NotificationResponse) error {
 	return nil
 }

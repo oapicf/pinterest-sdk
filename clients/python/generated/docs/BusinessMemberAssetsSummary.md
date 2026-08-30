@@ -6,8 +6,8 @@ Ad accounts and profiles the business member/partner has access to.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ad_accounts** | [**List[BusinessMemberAssetsSummaryAdAccountsInner]**](BusinessMemberAssetsSummaryAdAccountsInner.md) | List of ad account IDs and respective permission levels. | [optional] 
-**profiles** | [**List[BusinessMemberAssetsSummaryProfilesInner]**](BusinessMemberAssetsSummaryProfilesInner.md) | List of profile IDs and respective permission levels. | [optional] 
+**ad_accounts** | [**List[AssetIdWithPermissions]**](AssetIdWithPermissions.md) | List of ad account IDs and respective permission levels. | [optional] 
+**profiles** | [**List[AssetIdWithPermissions]**](AssetIdWithPermissions.md) | List of profile IDs and respective permission levels. | [optional] 
 
 ## Example
 

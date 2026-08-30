@@ -11,29 +11,29 @@
 part of openapi.api;
 
 /// Filter operator for sync reporting
-class AdsAnalyticsFilterOperator {
-  /// Instantiate a new enum with the provided [value].
-  const AdsAnalyticsFilterOperator._(this.value);
+enum AdsAnalyticsFilterOperator {
+  LESS_THAN._(r'LESS_THAN'),
+  GREATER_THAN._(r'GREATER_THAN'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const AdsAnalyticsFilterOperator._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const LESS_THAN = AdsAnalyticsFilterOperator._(r'LESS_THAN');
-  static const GREATER_THAN = AdsAnalyticsFilterOperator._(r'GREATER_THAN');
-
-  /// List of all possible values in this [enum][AdsAnalyticsFilterOperator].
-  static const values = <AdsAnalyticsFilterOperator>[
-    LESS_THAN,
-    GREATER_THAN,
-  ];
-
+  /// Returns the instance of [AdsAnalyticsFilterOperator] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static AdsAnalyticsFilterOperator? fromJson(dynamic value) => AdsAnalyticsFilterOperatorTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [AdsAnalyticsFilterOperator]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<AdsAnalyticsFilterOperator> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <AdsAnalyticsFilterOperator>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class AdsAnalyticsFilterOperatorTypeTransformer {
 
   const AdsAnalyticsFilterOperatorTypeTransformer._();
 
-  String encode(AdsAnalyticsFilterOperator data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(AdsAnalyticsFilterOperator data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a AdsAnalyticsFilterOperator.
+  /// Returns the instance of [AdsAnalyticsFilterOperator] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class AdsAnalyticsFilterOperatorTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   AdsAnalyticsFilterOperator? decode(dynamic data, {bool allowNull = true}) {
+    if (data is AdsAnalyticsFilterOperator) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'LESS_THAN': return AdsAnalyticsFilterOperator.LESS_THAN;
@@ -79,7 +84,7 @@ class AdsAnalyticsFilterOperatorTypeTransformer {
     return null;
   }
 
-  /// Singleton [AdsAnalyticsFilterOperatorTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static AdsAnalyticsFilterOperatorTypeTransformer? _instance;
 }
 

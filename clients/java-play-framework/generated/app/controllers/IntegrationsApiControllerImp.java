@@ -1,14 +1,14 @@
 package controllers;
 
-import apimodels.Error;
-import apimodels.IntegrationLogsRequest;
+import apimodels.IntegrationLogsInvalidLogResponse;
+import apimodels.IntegrationLogsRequestCreate;
 import apimodels.IntegrationLogsSuccessResponse;
 import apimodels.IntegrationMetadata;
+import apimodels.IntegrationMetadataCreate;
+import apimodels.IntegrationMetadataUpdate;
 import apimodels.IntegrationRecord;
-import apimodels.IntegrationRequest;
-import apimodels.IntegrationRequestPatch;
 import apimodels.IntegrationsGetList200Response;
-import apimodels.IntegrationsLogsPost400Response;
+import apimodels.PinterestLibError;
 
 import play.mvc.Http;
 import java.util.List;
@@ -19,11 +19,12 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationsApiControllerImp extends IntegrationsApiControllerImpInterface {
     @Override
-    public void integrationsCommerceDel(Http.Request request, String externalBusinessId) throws Exception {
+    public IntegrationMetadata integrationsCommerceDel(Http.Request request, String externalBusinessId) throws Exception {
         //Do your magic!!!
+        return new IntegrationMetadata();
     }
 
     @Override
@@ -33,19 +34,19 @@ public class IntegrationsApiControllerImp extends IntegrationsApiControllerImpIn
     }
 
     @Override
-    public IntegrationMetadata integrationsCommercePatch(Http.Request request, String externalBusinessId, IntegrationRequestPatch integrationRequestPatch) throws Exception {
+    public IntegrationMetadata integrationsCommercePatch(Http.Request request, String externalBusinessId, IntegrationMetadataUpdate integrationMetadataUpdate) throws Exception {
         //Do your magic!!!
         return new IntegrationMetadata();
     }
 
     @Override
-    public IntegrationMetadata integrationsCommercePost(Http.Request request, IntegrationRequest integrationRequest) throws Exception {
+    public IntegrationMetadata integrationsCommercePost(Http.Request request, IntegrationMetadataCreate integrationMetadataCreate) throws Exception {
         //Do your magic!!!
         return new IntegrationMetadata();
     }
 
     @Override
-    public IntegrationRecord integrationsGetById(Http.Request request, String id) throws Exception {
+    public IntegrationRecord integrationsGetById(Http.Request request,  @Pattern(regexp="^\\d+$")String id) throws Exception {
         //Do your magic!!!
         return new IntegrationRecord();
     }
@@ -57,7 +58,7 @@ public class IntegrationsApiControllerImp extends IntegrationsApiControllerImpIn
     }
 
     @Override
-    public IntegrationLogsSuccessResponse integrationsLogsPost(Http.Request request, IntegrationLogsRequest integrationLogsRequest) throws Exception {
+    public IntegrationLogsSuccessResponse integrationsLogsPost(Http.Request request, IntegrationLogsRequestCreate integrationLogsRequestCreate) throws Exception {
         //Do your magic!!!
         return new IntegrationLogsSuccessResponse();
     }

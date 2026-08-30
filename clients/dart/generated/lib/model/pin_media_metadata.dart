@@ -15,13 +15,14 @@ class PinMediaMetadata {
   PinMediaMetadata({
     this.description,
     this.images,
-    this.itemType,
+    required this.itemType,
     this.link,
     this.title,
     this.coverImageUrl,
     this.duration,
     this.height,
     this.videoUrl,
+    this.videoUrlHls,
     this.width,
   });
 
@@ -35,13 +36,8 @@ class PinMediaMetadata {
   ///
   ImageSize? images;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? itemType;
+  /// Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
+  PinMediaMetadataItemTypeEnum itemType;
 
   String? link;
 
@@ -64,6 +60,9 @@ class PinMediaMetadata {
   /// Video url (720p).  **Note:** This field is limited and not available to all apps.
   String? videoUrl;
 
+  /// Video url (HLS).  **Note:** This field is limited and not available to all apps.
+  String? videoUrlHls;
+
   /// Width (in pixels). Field maybe null after creation due to video processing time.
   int? width;
 
@@ -78,6 +77,7 @@ class PinMediaMetadata {
     other.duration == duration &&
     other.height == height &&
     other.videoUrl == videoUrl &&
+    other.videoUrlHls == videoUrlHls &&
     other.width == width;
 
   @override
@@ -85,17 +85,18 @@ class PinMediaMetadata {
     // ignore: unnecessary_parenthesis
     (description == null ? 0 : description!.hashCode) +
     (images == null ? 0 : images!.hashCode) +
-    (itemType == null ? 0 : itemType!.hashCode) +
+    (itemType.hashCode) +
     (link == null ? 0 : link!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (coverImageUrl == null ? 0 : coverImageUrl!.hashCode) +
     (duration == null ? 0 : duration!.hashCode) +
     (height == null ? 0 : height!.hashCode) +
     (videoUrl == null ? 0 : videoUrl!.hashCode) +
+    (videoUrlHls == null ? 0 : videoUrlHls!.hashCode) +
     (width == null ? 0 : width!.hashCode);
 
   @override
-  String toString() => 'PinMediaMetadata[description=$description, images=$images, itemType=$itemType, link=$link, title=$title, coverImageUrl=$coverImageUrl, duration=$duration, height=$height, videoUrl=$videoUrl, width=$width]';
+  String toString() => 'PinMediaMetadata[description=$description, images=$images, itemType=$itemType, link=$link, title=$title, coverImageUrl=$coverImageUrl, duration=$duration, height=$height, videoUrl=$videoUrl, videoUrlHls=$videoUrlHls, width=$width]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -109,11 +110,7 @@ class PinMediaMetadata {
     } else {
       json[r'images'] = null;
     }
-    if (this.itemType != null) {
       json[r'item_type'] = this.itemType;
-    } else {
-      json[r'item_type'] = null;
-    }
     if (this.link != null) {
       json[r'link'] = this.link;
     } else {
@@ -144,6 +141,11 @@ class PinMediaMetadata {
     } else {
       json[r'video_url'] = null;
     }
+    if (this.videoUrlHls != null) {
+      json[r'video_url_hls'] = this.videoUrlHls;
+    } else {
+      json[r'video_url_hls'] = null;
+    }
     if (this.width != null) {
       json[r'width'] = this.width;
     } else {
@@ -163,17 +165,15 @@ class PinMediaMetadata {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PinMediaMetadata[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PinMediaMetadata[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'item_type'), 'Required key "PinMediaMetadata[item_type]" is missing from JSON.');
+        assert(json[r'item_type'] != null, 'Required key "PinMediaMetadata[item_type]" has a null value in JSON.');
         return true;
       }());
 
       return PinMediaMetadata(
         description: mapValueOfType<String>(json, r'description'),
         images: ImageSize.fromJson(json[r'images']),
-        itemType: mapValueOfType<String>(json, r'item_type'),
+        itemType: PinMediaMetadataItemTypeEnum.fromJson(json[r'item_type'])!,
         link: mapValueOfType<String>(json, r'link'),
         title: mapValueOfType<String>(json, r'title'),
         coverImageUrl: mapValueOfType<String>(json, r'cover_image_url'),
@@ -182,6 +182,7 @@ class PinMediaMetadata {
             : num.parse('${json[r'duration']}'),
         height: mapValueOfType<int>(json, r'height'),
         videoUrl: mapValueOfType<String>(json, r'video_url'),
+        videoUrlHls: mapValueOfType<String>(json, r'video_url_hls'),
         width: mapValueOfType<int>(json, r'width'),
       );
     }
@@ -230,6 +231,83 @@ class PinMediaMetadata {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'item_type',
   };
 }
+
+/// Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
+enum PinMediaMetadataItemTypeEnum {
+  video._(r'video'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const PinMediaMetadataItemTypeEnum._(this._value);
+
+  /// The underlying value of this enum member.
+  final String _value;
+
+  @override
+  String toString() => _value;
+
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
+
+  /// Returns the instance of [PinMediaMetadataItemTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
+  static PinMediaMetadataItemTypeEnum? fromJson(dynamic value) => PinMediaMetadataItemTypeEnumTypeTransformer().decode(value);
+
+  /// Returns a [List] containing instances of [PinMediaMetadataItemTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
+  static List<PinMediaMetadataItemTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PinMediaMetadataItemTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = PinMediaMetadataItemTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [PinMediaMetadataItemTypeEnum] to String,
+/// and [decode] dynamic data back to [PinMediaMetadataItemTypeEnum].
+class PinMediaMetadataItemTypeEnumTypeTransformer {
+  factory PinMediaMetadataItemTypeEnumTypeTransformer() => _instance ??= const PinMediaMetadataItemTypeEnumTypeTransformer._();
+
+  const PinMediaMetadataItemTypeEnumTypeTransformer._();
+
+  String encode(PinMediaMetadataItemTypeEnum data) => data._value;
+
+  /// Returns the instance of [PinMediaMetadataItemTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  PinMediaMetadataItemTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is PinMediaMetadataItemTypeEnum) {
+      return data;
+    }
+    if (data != null) {
+      switch (data) {
+        case r'video': return PinMediaMetadataItemTypeEnum.video;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// The singleton instance of this transformer.
+  static PinMediaMetadataItemTypeEnumTypeTransformer? _instance;
+}
+
 

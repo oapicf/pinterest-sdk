@@ -16,14 +16,7 @@
     },
     {
       "name": "account_type",
-      "type": {
-        "type": "enum",
-        "name": "SharedAudienceAccount_accountUnderscoretype",
-        "symbols": [
-          "AD_ACCOUNT",
-          "BUSINESS_ACCOUNT"
-        ]
-      },
+      "type": "model.AudienceAccountType",
       "doc": "account type"
     },
     {

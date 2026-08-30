@@ -2,11 +2,17 @@
 Protected Class CustomerListUploadCreateResponse
 
 	#tag Property, Flags = &h0
+		#tag Note
+			The Customer List Upload created.
+		#tag EndNote
 		customer_list_upload As OpenAPIClient.Models.CustomerListUpload
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Pre-signed upload URLs corresponding to each part of the upload.
+		#tag EndNote
 		s3_multipart_upload_data As OpenAPIClient.Models.S3MultipartUploadData
 	#tag EndProperty
 

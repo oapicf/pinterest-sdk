@@ -1,25 +1,25 @@
 #tag Interface
 Protected Interface BusinessAccessRelationshipsApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub BrandAccountsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BrandAccountsCreate200Response)
+		Sub BrandAccountsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BrandAccount)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub BrandAccountsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BrandAccountsCreate200Response)
+		Sub BrandAccountsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BrandAccount)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub DeleteBusinessMembershipCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.DeletedMembersResponse)
+		Sub DeleteBusinessMembershipCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.DeleteBusinessMembership200Response)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub DeleteBusinessPartnersCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.DeletePartnersResponse)
+		Sub DeleteBusinessPartnersCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.DeleteBusinessPartners)
 		  
 		End Sub
 	#tag EndMethod
@@ -31,13 +31,13 @@ Protected Interface BusinessAccessRelationshipsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub GetBusinessMembersCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.GetBusinessMembers200Response)
+		Sub GetBusinessMembersCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.GetBusinessEmployers200Response)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub GetBusinessPartnersCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.GetBusinessPartners200Response)
+		Sub GetBusinessPartnersCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.GetBusinessEmployers200Response)
 		  
 		End Sub
 	#tag EndMethod
@@ -49,7 +49,7 @@ Protected Interface BusinessAccessRelationshipsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub UpdateBusinessMembershipsCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.UpdateMemberResultsResponseArray)
+		Sub UpdateBusinessMembershipsCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.UpdateBusinessMembershipsResponse)
 		  
 		End Sub
 	#tag EndMethod

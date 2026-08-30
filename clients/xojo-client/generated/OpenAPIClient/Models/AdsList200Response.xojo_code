@@ -7,7 +7,7 @@ Protected Class AdsList200Response
 
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.AdResponse
+		items() As OpenAPIClient.Models.Ad
 	#tag EndProperty
 
 
@@ -60,7 +60,7 @@ Protected Class AdsList200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AdResponse"
+			Type="Ad"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

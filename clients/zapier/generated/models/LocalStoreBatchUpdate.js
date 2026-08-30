@@ -1,0 +1,81 @@
+const utils = require('../utils/utils');
+const Country = require('../models/Country');
+
+module.exports = {
+    fields: (prefix = '', isInput = true, isArrayChild = false) => {
+        const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
+        return [
+            {
+                key: `${keyPrefix}address_primary`,
+                label: `Primary address line of the store. - [${labelPrefix}address_primary]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}address_secondary`,
+                label: `Secondary address line of the store. - [${labelPrefix}address_secondary]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}city`,
+                label: `City where the store is located. - [${labelPrefix}city]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}country`,
+                ...Country.fields(`${keyPrefix}country`, isInput),
+            },
+            {
+                key: `${keyPrefix}id`,
+                label: `The ID of the local store. - [${labelPrefix}id]`,
+                required: true,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}latitude`,
+                label: `Geographic latitude coordinate of the store. - [${labelPrefix}latitude]`,
+                type: 'number',
+            },
+            {
+                key: `${keyPrefix}longitude`,
+                label: `Geographic longitude coordinate of the store. - [${labelPrefix}longitude]`,
+                type: 'number',
+            },
+            {
+                key: `${keyPrefix}name`,
+                label: `The name of the local store. - [${labelPrefix}name]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}postal_code`,
+                label: `Postal or ZIP code of the store. - [${labelPrefix}postal_code]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}region`,
+                label: `State or region code where the store is located. - [${labelPrefix}region]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}store_code`,
+                label: `Merchant provided code for the local store. Unique within the merchant's catalog. - [${labelPrefix}store_code]`,
+                type: 'string',
+            },
+        ]
+    },
+    mapping: (bundle, prefix = '') => {
+        const {keyPrefix} = utils.buildKeyAndLabel(prefix)
+        return {
+            'address_primary': bundle.inputData?.[`${keyPrefix}address_primary`],
+            'address_secondary': bundle.inputData?.[`${keyPrefix}address_secondary`],
+            'city': bundle.inputData?.[`${keyPrefix}city`],
+            'country': bundle.inputData?.[`${keyPrefix}country`],
+            'id': bundle.inputData?.[`${keyPrefix}id`],
+            'latitude': bundle.inputData?.[`${keyPrefix}latitude`],
+            'longitude': bundle.inputData?.[`${keyPrefix}longitude`],
+            'name': bundle.inputData?.[`${keyPrefix}name`],
+            'postal_code': bundle.inputData?.[`${keyPrefix}postal_code`],
+            'region': bundle.inputData?.[`${keyPrefix}region`],
+            'store_code': bundle.inputData?.[`${keyPrefix}store_code`],
+        }
+    },
+}

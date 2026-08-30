@@ -47,15 +47,13 @@ class MaxPriceFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MaxPriceFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MaxPriceFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'MAX_PRICE'), 'Required key "MaxPriceFilter[MAX_PRICE]" is missing from JSON.');
+        assert(json[r'MAX_PRICE'] != null, 'Required key "MaxPriceFilter[MAX_PRICE]" has a null value in JSON.');
         return true;
       }());
 
       return MaxPriceFilter(
-        MAX_PRICE: mapValueOfType<CatalogsProductGroupPricingCriteria>(json, r'MAX_PRICE')!,
+        MAX_PRICE: CatalogsProductGroupPricingCriteria.fromJson(json[r'MAX_PRICE'])!,
       );
     }
     return null;

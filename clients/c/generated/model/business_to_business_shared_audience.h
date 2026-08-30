@@ -1,0 +1,51 @@
+/*
+ * business_to_business_shared_audience.h
+ *
+ * 
+ */
+
+#ifndef _business_to_business_shared_audience_H_
+#define _business_to_business_shared_audience_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct business_to_business_shared_audience_t business_to_business_shared_audience_t;
+
+#include "role.h"
+
+// Enum  for business_to_business_shared_audience
+
+typedef enum  { pinterest_rest_api_business_to_business_shared_audience__NULL = 0, pinterest_rest_api_business_to_business_shared_audience__UNKNOWN, pinterest_rest_api_business_to_business_shared_audience__OWNER, pinterest_rest_api_business_to_business_shared_audience__ADMIN, pinterest_rest_api_business_to_business_shared_audience__ANALYST, pinterest_rest_api_business_to_business_shared_audience__SOS_READER, pinterest_rest_api_business_to_business_shared_audience__FINANCE_MANAGER, pinterest_rest_api_business_to_business_shared_audience__FINANCE_EDIT, pinterest_rest_api_business_to_business_shared_audience__FINANCE_VIEW, pinterest_rest_api_business_to_business_shared_audience__AUDIENCE_MANAGER, pinterest_rest_api_business_to_business_shared_audience__CAMPAIGN_MANAGER, pinterest_rest_api_business_to_business_shared_audience__CATALOGS_MANAGER, pinterest_rest_api_business_to_business_shared_audience__CATALOGS_VIEWER, pinterest_rest_api_business_to_business_shared_audience__RESTRICTED_OWNER, pinterest_rest_api_business_to_business_shared_audience__PROFILE_MANAGER, pinterest_rest_api_business_to_business_shared_audience__PROFILE_PUBLISHER, pinterest_rest_api_business_to_business_shared_audience__RESOURCE_PINNER_LIST_OWNER, pinterest_rest_api_business_to_business_shared_audience__RESOURCE_PINNER_LIST_READER, pinterest_rest_api_business_to_business_shared_audience__BIZ_PINNER_LIST_SHARER, pinterest_rest_api_business_to_business_shared_audience__RESOURCE_CONVERSION_TAGS_READER } pinterest_rest_api_business_to_business_shared_audience__e;
+
+char* business_to_business_shared_audience_permissions_ToString(pinterest_rest_api_business_to_business_shared_audience__e permissions);
+
+pinterest_rest_api_business_to_business_shared_audience__e business_to_business_shared_audience_permissions_FromString(char* permissions);
+
+
+
+typedef struct business_to_business_shared_audience_t {
+    char *audience_id; // string
+    list_t *permissions; //nonprimitive container
+    list_t *recipient_business_ids; //primitive container
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} business_to_business_shared_audience_t;
+
+__attribute__((deprecated)) business_to_business_shared_audience_t *business_to_business_shared_audience_create(
+    char *audience_id,
+    list_t *permissions,
+    list_t *recipient_business_ids
+);
+
+void business_to_business_shared_audience_free(business_to_business_shared_audience_t *business_to_business_shared_audience);
+
+business_to_business_shared_audience_t *business_to_business_shared_audience_parseFromJSON(cJSON *business_to_business_shared_audienceJSON);
+
+cJSON *business_to_business_shared_audience_convertToJSON(business_to_business_shared_audience_t *business_to_business_shared_audience);
+
+#endif /* _business_to_business_shared_audience_H_ */
+

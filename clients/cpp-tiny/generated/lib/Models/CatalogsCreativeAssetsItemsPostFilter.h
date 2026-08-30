@@ -52,21 +52,21 @@ public:
 
 	/*! \brief Set Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	 */
-	void setCatalogId(std::string  catalog_id);
+	void setCatalogId(std::string catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getCreativeAssetsIds();
 
 	/*! \brief Set 
 	 */
-	void setCreativeAssetsIds(std::list <std::string> creative_assets_ids);
+	void setCreativeAssetsIds(std::list<std::string> creative_assets_ids);
 
 
     private:

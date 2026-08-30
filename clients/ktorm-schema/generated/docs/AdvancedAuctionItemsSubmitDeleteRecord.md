@@ -8,7 +8,9 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **country** | country | long NOT NULL |  | [**Country**](Country.md) |  |  [foreignkey]
 **itemId** | item_id | text NOT NULL |  | **kotlin.String** | The catalog retail item id in the merchant namespace | 
 **language** | language | long NOT NULL |  | [**Language**](Language.md) |  |  [foreignkey]
+**operation** | operation | text NOT NULL |  | [**operation**](#Operation) |  | 
 **errors** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdvancedAuctionOperationError&gt;**](AdvancedAuctionOperationError.md) | Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. |  [optional]
+
 
 
 

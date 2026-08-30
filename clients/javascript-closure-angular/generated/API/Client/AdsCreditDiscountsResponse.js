@@ -27,7 +27,7 @@ API.Client.AdsCreditDiscountsResponse.prototype.advertiserId;
 API.Client.AdsCreditDiscountsResponse.prototype.discountCurrency;
 
 /**
- * The discount applied in the offer’s currency value.
+ * The discount applied in the offer's currency value.
  * @type {!number}
  * @export
  */
@@ -35,7 +35,7 @@ API.Client.AdsCreditDiscountsResponse.prototype.discountInMicroCurrency;
 
 /**
  * The type of discount of this credit
- * @type {!string}
+ * @type {!API.Client.AdsCreditDiscountType}
  * @export
  */
 API.Client.AdsCreditDiscountsResponse.prototype.discountType;
@@ -54,27 +54,3 @@ API.Client.AdsCreditDiscountsResponse.prototype.remainingDiscountInMicroCurrency
  */
 API.Client.AdsCreditDiscountsResponse.prototype.title;
 
-/** @enum {string} */
-API.Client.AdsCreditDiscountsResponse.DiscountTypeEnum = { 
-  COUPON: 'COUPON',
-  CREDIT: 'CREDIT',
-  COUPON_APPLIED: 'COUPON_APPLIED',
-  CREDIT_APPLIED: 'CREDIT_APPLIED',
-  MARKETING_OFFER_CREDIT: 'MARKETING_OFFER_CREDIT',
-  MARKETING_OFFER_CREDIT_APPLIED: 'MARKETING_OFFER_CREDIT_APPLIED',
-  GOODWILL_CREDIT: 'GOODWILL_CREDIT',
-  GOODWILL_CREDIT_APPLIED: 'GOODWILL_CREDIT_APPLIED',
-  INTERNAL_CREDIT: 'INTERNAL_CREDIT',
-  INTERNAL_CREDIT_APPLIED: 'INTERNAL_CREDIT_APPLIED',
-  PREPAID_CREDIT: 'PREPAID_CREDIT',
-  PREPAID_CREDIT_APPLIED: 'PREPAID_CREDIT_APPLIED',
-  SALES_INCENTIVE_CREDIT: 'SALES_INCENTIVE_CREDIT',
-  SALES_INCENTIVE_CREDIT_APPLIED: 'SALES_INCENTIVE_CREDIT_APPLIED',
-  CREDIT_EXPIRED: 'CREDIT_EXPIRED',
-  FUTURE_CREDIT: 'FUTURE_CREDIT',
-  REFERRAL_CREDIT: 'REFERRAL_CREDIT',
-  INVOICE_SALES_INCENTIVE_CREDIT: 'INVOICE_SALES_INCENTIVE_CREDIT',
-  INVOICE_SALES_INCENTIVE_CREDIT_APPLIED: 'INVOICE_SALES_INCENTIVE_CREDIT_APPLIED',
-  PREPAID_CREDIT_REFUND: 'PREPAID_CREDIT_REFUND',
-  : '',
-}

@@ -1,7 +1,7 @@
 /*
  * PromotionType.h
  *
- * Determines the displayed promotion text along with what parameters (if any) are needed to complete the template. This list is not finalized, and will be updated as new types are supported.
+ * Determines the displayed promotion text along with what parameters (if any) are needed to complete the template.
  */
 
 #ifndef _PromotionType_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Determines the displayed promotion text along with what parameters (if any) are needed to complete the template. This list is not finalized, and will be updated as new types are supported.
+/*! \brief Determines the displayed promotion text along with what parameters (if any) are needed to complete the template.
  *
  *  \ingroup Models
  *

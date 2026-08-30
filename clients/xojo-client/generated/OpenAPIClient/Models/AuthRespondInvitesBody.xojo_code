@@ -2,7 +2,7 @@
 Protected Class AuthRespondInvitesBody
 
 	#tag Property, Flags = &h0
-		invites() As OpenAPIClient.Models.AuthRespondInvitesBodyInvitesInner
+		invites() As OpenAPIClient.Models.AuthRespondInvitesBodyItem
 	#tag EndProperty
 
 
@@ -47,7 +47,7 @@ Protected Class AuthRespondInvitesBody
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AuthRespondInvitesBodyInvitesInner"
+			Type="AuthRespondInvitesBodyItem"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

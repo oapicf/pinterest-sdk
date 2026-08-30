@@ -11,40 +11,40 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class NotificationResponse  {
   
  /**
-  * Returns true if the notification accepted.
-  */
-  @ApiModelProperty(example = "false", value = "Returns true if the notification accepted.")
-
-  private Boolean success;
-
- /**
-  * Received time. Unix timestamp in seconds.
-  */
-  @ApiModelProperty(example = "1677003860", value = "Received time. Unix timestamp in seconds.")
-
-  private Integer receivedAt;
-
- /**
   * error message when success is false
   */
   @ApiModelProperty(value = "error message when success is false")
 
   private String errorMsg;
+
  /**
-   * Returns true if the notification accepted.
-   * @return success
+  * Received time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(value = "Received time. Unix timestamp in seconds.")
+
+  private Integer receivedAt;
+
+ /**
+  * Returns true if the notification accepted.
+  */
+  @ApiModelProperty(value = "Returns true if the notification accepted.")
+
+  private Boolean success;
+ /**
+   * error message when success is false
+   * @return errorMsg
   **/
-  @JsonProperty("success")
-  public Boolean getSuccess() {
-    return success;
+  @JsonProperty("error_msg")
+  public String getErrorMsg() {
+    return errorMsg;
   }
 
-  public void setSuccess(Boolean success) {
-    this.success = success;
+  public void setErrorMsg(String errorMsg) {
+    this.errorMsg = errorMsg;
   }
 
-  public NotificationResponse success(Boolean success) {
-    this.success = success;
+  public NotificationResponse errorMsg(String errorMsg) {
+    this.errorMsg = errorMsg;
     return this;
   }
 
@@ -67,20 +67,20 @@ public class NotificationResponse  {
   }
 
  /**
-   * error message when success is false
-   * @return errorMsg
+   * Returns true if the notification accepted.
+   * @return success
   **/
-  @JsonProperty("error_msg")
-  public String getErrorMsg() {
-    return errorMsg;
+  @JsonProperty("success")
+  public Boolean getSuccess() {
+    return success;
   }
 
-  public void setErrorMsg(String errorMsg) {
-    this.errorMsg = errorMsg;
+  public void setSuccess(Boolean success) {
+    this.success = success;
   }
 
-  public NotificationResponse errorMsg(String errorMsg) {
-    this.errorMsg = errorMsg;
+  public NotificationResponse success(Boolean success) {
+    this.success = success;
     return this;
   }
 
@@ -93,14 +93,14 @@ public class NotificationResponse  {
       return false;
     }
     NotificationResponse notificationResponse = (NotificationResponse) o;
-    return Objects.equals(this.success, notificationResponse.success) &&
+    return Objects.equals(this.errorMsg, notificationResponse.errorMsg) &&
         Objects.equals(this.receivedAt, notificationResponse.receivedAt) &&
-        Objects.equals(this.errorMsg, notificationResponse.errorMsg);
+        Objects.equals(this.success, notificationResponse.success);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, receivedAt, errorMsg);
+    return Objects.hash(errorMsg, receivedAt, success);
   }
 
   @Override
@@ -108,9 +108,9 @@ public class NotificationResponse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotificationResponse {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
-    sb.append("    receivedAt: ").append(toIndentedString(receivedAt)).append("\n");
     sb.append("    errorMsg: ").append(toIndentedString(errorMsg)).append("\n");
+    sb.append("    receivedAt: ").append(toIndentedString(receivedAt)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -120,10 +120,7 @@ public class NotificationResponse  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

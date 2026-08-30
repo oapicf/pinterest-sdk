@@ -47,7 +47,7 @@
 | Nb | NB |
 | Ne | NE |
 | Nl | NL |
-| No | NO |
+| False | false |
 | Pl | PL |
 | Pt | PT |
 | Ro | RO |

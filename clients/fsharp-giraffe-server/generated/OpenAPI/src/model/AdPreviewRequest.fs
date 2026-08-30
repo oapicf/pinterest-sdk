@@ -2,35 +2,33 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.AdPreviewCreateFromImage
-open OpenAPI.Model.AdPreviewCreateFromPin
 open OpenAPI.Model.AdPreviewShopping
+open OpenAPI.Model.AdPreviewSourceImage
+open OpenAPI.Model.AdPreviewSourcePinId
+open OpenAPI.Model.AdShoppingPreviewCreativeType
+open OpenAPI.Model.BasePreferredMediaType
 open OpenAPI.Model.CustomizableCTAType
 
 module AdPreviewRequest =
 
   //#region AdPreviewRequest
 
-  //#region enums
-  type CreativeTypeEnum = SHOPPINGEnum of string  |  CAROUSELEnum of string  |  COLLECTIONEnum of string  |  REGULAREnum of string  
-  //#endregion
-  //#region enums
-  type PreferredMediaTypeEnum = VIDEOEnum of string  |  IMAGEEnum of string  
-  //#endregion
 
   type AdPreviewRequest = {
     ImageUrl : string;
+    PromotionId : string;
     Title : string;
+    CreativeType : AdShoppingPreviewCreativeType;
     PinId : string;
     CatalogProductGroupId : string;
-    CreativeType : CreativeTypeEnum;
     CustomizableCtaType : CustomizableCTAType;
     HeroImageTitle : string;
     HeroImageUrl : string;
     HeroPinId : string;
     ImageTag : string;
     ItemId : string;
-    PreferredMediaType : PreferredMediaTypeEnum;
+    PreferredMediaType : BasePreferredMediaType;
+    ShowPromotion : bool;
     VideoTag : string;
   }
   //#endregion

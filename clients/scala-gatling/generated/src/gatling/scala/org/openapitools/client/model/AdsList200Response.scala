@@ -4,7 +4,7 @@ package org.openapitools.client.model
 
 case class AdsList200Response (
     _bookmark: Option[String],
-    _items: List[AdResponse]
+    _items: List[Ad]
 )
 object AdsList200Response {
     def toStringBody(var_bookmark: Object, var_items: Object) =

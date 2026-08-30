@@ -14,7 +14,7 @@ API.Client.IntegrationLogClientRequest = function() {}
 API.Client.IntegrationLogClientRequest.prototype.host;
 
 /**
- * @type {!string}
+ * @type {!API.Client.HttpMethod}
  * @export
  */
 API.Client.IntegrationLogClientRequest.prototype.method;
@@ -46,15 +46,3 @@ API.Client.IntegrationLogClientRequest.prototype.responseHeaders;
  */
 API.Client.IntegrationLogClientRequest.prototype.responseStatusCode;
 
-/** @enum {string} */
-API.Client.IntegrationLogClientRequest.MethodEnum = { 
-  GET: 'GET',
-  HEAD: 'HEAD',
-  POST: 'POST',
-  PUT: 'PUT',
-  DELETE: 'DELETE',
-  CONNECT: 'CONNECT',
-  OPTIONS: 'OPTIONS',
-  TRACE: 'TRACE',
-  PATCH: 'PATCH',
-}

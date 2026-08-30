@@ -6,7 +6,7 @@ Request object for creating a hotel product group.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **string** | Catalog id pertaining to the hotel product group. | [default to undefined]
+**catalog_id** | **string** | Catalog ID pertaining to the product group. | [default to undefined]
 **catalog_type** | **string** |  | [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
 **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | [default to undefined]

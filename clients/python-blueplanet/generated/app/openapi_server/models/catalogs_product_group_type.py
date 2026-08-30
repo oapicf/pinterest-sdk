@@ -27,6 +27,7 @@ class CatalogsProductGroupType(Model):
     NEW_ARRIVALS = 'NEW_ARRIVALS'
     SHOPIFY_COLLECTIONS = 'SHOPIFY_COLLECTIONS'
     I2PC = 'I2PC'
+    CATALOG_EXPANSION = 'CATALOG_EXPANSION'
 
     def __init__(self):  # noqa: E501
         """CatalogsProductGroupType - a model defined in Swagger

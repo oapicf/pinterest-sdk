@@ -22,9 +22,9 @@ CatalogsProductGroupMultipleStringCriteria <- R6::R6Class(
     #' Initialize a new CatalogsProductGroupMultipleStringCriteria class.
     #'
     #' @param values values
-    #' @param negated negated. Default to FALSE.
+    #' @param negated negated
     #' @param ... Other optional arguments.
-    initialize = function(`values`, `negated` = FALSE, ...) {
+    initialize = function(`values`, `negated` = NULL, ...) {
       if (!missing(`values`)) {
         stopifnot(is.vector(`values`), length(`values`) != 0)
         sapply(`values`, function(x) stopifnot(is.character(x)))

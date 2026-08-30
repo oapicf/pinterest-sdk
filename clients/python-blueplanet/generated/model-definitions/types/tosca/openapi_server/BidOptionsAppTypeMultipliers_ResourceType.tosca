@@ -1,0 +1,60 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BidOptionsAppTypeMultipliers"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BidOptionsAppTypeMultipliers"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BidOptionsAppTypeMultipliers {
+    title = BidOptionsAppTypeMultipliers
+    description = BidOptionsAppTypeMultipliers
+    derivedFrom = Root
+    properties {
+        android_mobile {
+          type =  
+          description = ""
+          optional = false
+        }
+        android_tablet {
+          type =  
+          description = ""
+          optional = false
+        }
+        ipad {
+          type =  
+          description = ""
+          optional = false
+        }
+        iphone {
+          type =  
+          description = ""
+          optional = false
+        }
+        web {
+          type =  
+          description = ""
+          optional = false
+        }
+        web_mobile {
+          type =  
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BidOptionsAppTypeMultipliers {
+    title = BidOptionsAppTypeMultipliers
+    description = BidOptionsAppTypeMultipliers
+    implements = openapi_server.resourceTypes.BidOptionsAppTypeMultipliers
+
+  }
+}

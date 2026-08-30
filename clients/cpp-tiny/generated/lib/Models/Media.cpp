@@ -108,7 +108,7 @@ Media::getMediaId()
 }
 
 void
-Media::setMediaId(std::string  media_id)
+Media::setMediaId(std::string media_id)
 {
 	this->media_id = media_id;
 }
@@ -120,7 +120,7 @@ Media::getMediaType()
 }
 
 void
-Media::setMediaType(MediaUploadType  media_type)
+Media::setMediaType(MediaUploadType media_type)
 {
 	this->media_type = media_type;
 }
@@ -132,7 +132,7 @@ Media::getStatus()
 }
 
 void
-Media::setStatus(MediaUploadStatus  status)
+Media::setStatus(MediaUploadStatus status)
 {
 	this->status = status;
 }

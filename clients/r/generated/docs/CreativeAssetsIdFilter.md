@@ -4,6 +4,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CREATIVE_ASSETS_ID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CREATIVE_ASSETS_ID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 

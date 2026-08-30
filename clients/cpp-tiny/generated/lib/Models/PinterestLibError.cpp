@@ -85,7 +85,7 @@ Pinterest.Lib.Error::getCode()
 }
 
 void
-Pinterest.Lib.Error::setCode(int  code)
+Pinterest.Lib.Error::setCode(int code)
 {
 	this->code = code;
 }
@@ -97,7 +97,7 @@ Pinterest.Lib.Error::getMessage()
 }
 
 void
-Pinterest.Lib.Error::setMessage(std::string  message)
+Pinterest.Lib.Error::setMessage(std::string message)
 {
 	this->message = message;
 }

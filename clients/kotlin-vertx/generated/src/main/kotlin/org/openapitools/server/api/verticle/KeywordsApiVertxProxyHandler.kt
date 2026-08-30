@@ -16,15 +16,18 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.KeywordUpdateBody
+import org.openapitools.server.api.model.Keywords
+import org.openapitools.server.api.model.KeywordsCreate
 import org.openapitools.server.api.model.KeywordsGet200Response
 import org.openapitools.server.api.model.KeywordsMetricsArrayResponse
-import org.openapitools.server.api.model.KeywordsRequest
-import org.openapitools.server.api.model.KeywordsResponse
+import org.openapitools.server.api.model.KeywordsUpdate
 import org.openapitools.server.api.model.MatchType
+import org.openapitools.server.api.model.PinterestLibError
 import org.openapitools.server.api.model.TrendType
 import org.openapitools.server.api.model.TrendingKeywordsResponse
+import org.openapitools.server.api.model.TrendsAgeBucket
+import org.openapitools.server.api.model.TrendsGenderFilter
+import org.openapitools.server.api.model.TrendsL1Interest
 import org.openapitools.server.api.model.TrendsSupportedRegion
 
 class KeywordsApiVertxProxyHandler(private val vertx: Vertx, private val service: KeywordsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
@@ -105,13 +108,13 @@ class KeywordsApiVertxProxyHandler(private val vertx: Vertx, private val service
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val keywordsRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (keywordsRequestParam == null) {
-                        throw IllegalArgumentException("keywordsRequest is required")
+                    val keywordsCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (keywordsCreateParam == null) {
+                        throw IllegalArgumentException("keywordsCreate is required")
                     }
-                    val keywordsRequest = Gson().fromJson(keywordsRequestParam.encode(), KeywordsRequest::class.java)
+                    val keywordsCreate = Gson().fromJson(keywordsCreateParam.encode(), KeywordsCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.keywordsCreate(adAccountId,keywordsRequest,context)
+                        val result = service.keywordsCreate(adAccountId,keywordsCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -136,10 +139,10 @@ class KeywordsApiVertxProxyHandler(private val vertx: Vertx, private val service
                     val matchTypes:kotlin.Array<MatchType>? = if(matchTypesParam == null) null
                             else Gson().fromJson(matchTypesParam.encode(),
                             , object : TypeToken<kotlin.collections.List<MatchType>>(){}.type)
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.keywordsGet(adAccountId,campaignId,adGroupId,adGroupIds,matchTypes,pageSize,bookmark,context)
+                        val result = service.keywordsGet(adAccountId,campaignId,adGroupId,adGroupIds,matchTypes,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -154,13 +157,13 @@ class KeywordsApiVertxProxyHandler(private val vertx: Vertx, private val service
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val keywordUpdateBodyParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (keywordUpdateBodyParam == null) {
-                        throw IllegalArgumentException("keywordUpdateBody is required")
+                    val keywordsUpdateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (keywordsUpdateParam == null) {
+                        throw IllegalArgumentException("keywordsUpdate is required")
                     }
-                    val keywordUpdateBody = Gson().fromJson(keywordUpdateBodyParam.encode(), KeywordUpdateBody::class.java)
+                    val keywordsUpdate = Gson().fromJson(keywordsUpdateParam.encode(), KeywordsUpdate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.keywordsUpdate(adAccountId,keywordUpdateBody,context)
+                        val result = service.keywordsUpdate(adAccountId,keywordsUpdate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -182,27 +185,26 @@ class KeywordsApiVertxProxyHandler(private val vertx: Vertx, private val service
                     }
                     val trendType = Gson().fromJson(trendTypeParam.encode(), TrendType::class.java)
                     val interestsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"interests")
-                    val interests:kotlin.Array<kotlin.String>? = if(interestsParam == null) null
+                    val interests:kotlin.Array<TrendsL1Interest>? = if(interestsParam == null) null
                             else Gson().fromJson(interestsParam.encode(),
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                            , object : TypeToken<kotlin.collections.List<TrendsL1Interest>>(){}.type)
                     val gendersParam = ApiHandlerUtils.searchJsonArrayInJson(params,"genders")
-                    val genders:kotlin.Array<kotlin.String>? = if(gendersParam == null) null
+                    val genders:kotlin.Array<TrendsGenderFilter>? = if(gendersParam == null) null
                             else Gson().fromJson(gendersParam.encode(),
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                            , object : TypeToken<kotlin.collections.List<TrendsGenderFilter>>(){}.type)
                     val agesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"ages")
-                    val ages:kotlin.Array<kotlin.String>? = if(agesParam == null) null
+                    val ages:kotlin.Array<TrendsAgeBucket>? = if(agesParam == null) null
                             else Gson().fromJson(agesParam.encode(),
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                            , object : TypeToken<kotlin.collections.List<TrendsAgeBucket>>(){}.type)
                     val includeKeywordsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"include_keywords")
                     val includeKeywords:kotlin.Array<kotlin.String>? = if(includeKeywordsParam == null) null
                             else Gson().fromJson(includeKeywordsParam.encode(),
                             , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
                     val normalizeAgainstGroup = ApiHandlerUtils.searchStringInJson(params,"normalize_against_group")?.toBoolean()
                     val limit = ApiHandlerUtils.searchIntegerInJson(params,"limit")
-                    val includePrediction = ApiHandlerUtils.searchStringInJson(params,"include_prediction")?.toBoolean()
                     val includeDemographics = ApiHandlerUtils.searchStringInJson(params,"include_demographics")?.toBoolean()
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.trendingKeywordsList(region,trendType,interests,genders,ages,includeKeywords,normalizeAgainstGroup,limit,includePrediction,includeDemographics,context)
+                        val result = service.trendingKeywordsList(region,trendType,interests,genders,ages,includeKeywords,normalizeAgainstGroup,limit,includeDemographics,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -30,125 +30,387 @@ func NewAdGroupsAPIService() *AdGroupsAPIService {
 }
 
 // AdGroupsList - List ad groups
-func (s *AdGroupsAPIService) AdGroupsList(ctx context.Context, adAccountId string, campaignIds []string, adGroupIds []string, entityStatuses []string, pageSize int32, order string, bookmark string, translateInterestsToNames bool) (ImplResponse, error) {
+func (s *AdGroupsAPIService) AdGroupsList(ctx context.Context, adAccountId string, bookmark string, pageSize int32, order PinterestLibPaginationOrder, campaignIds []string, adGroupIds []string, entityStatuses []EntityStatus, translateInterestsToNames bool) (ImplResponse, error) {
 	// TODO - update AdGroupsList with the required logic for this service method.
 	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, AdGroupsList200Response{}) or use other options such as http.Ok ...
 	// return Response(200, AdGroupsList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AdGroupsList method not implemented")
 }
 
 // AdGroupsCreate - Create ad groups
-func (s *AdGroupsAPIService) AdGroupsCreate(ctx context.Context, adAccountId string, adGroupCreateRequest []AdGroupCreateRequest) (ImplResponse, error) {
+func (s *AdGroupsAPIService) AdGroupsCreate(ctx context.Context, adAccountId string, adGroupCreateCreate []AdGroupCreateCreate) (ImplResponse, error) {
 	// TODO - update AdGroupsCreate with the required logic for this service method.
 	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, AdGroupArrayResponse{}) or use other options such as http.Ok ...
-	// return Response(200, AdGroupArrayResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, AdGroupsCreate200Response{}) or use other options such as http.Ok ...
+	// return Response(200, AdGroupsCreate200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AdGroupsCreate method not implemented")
 }
 
 // AdGroupsUpdate - Update ad groups
-func (s *AdGroupsAPIService) AdGroupsUpdate(ctx context.Context, adAccountId string, adGroupUpdateRequest []AdGroupUpdateRequest) (ImplResponse, error) {
+func (s *AdGroupsAPIService) AdGroupsUpdate(ctx context.Context, adAccountId string, adGroupUpdateBatchUpdate []AdGroupUpdateBatchUpdate) (ImplResponse, error) {
 	// TODO - update AdGroupsUpdate with the required logic for this service method.
 	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, AdGroupArrayResponse{}) or use other options such as http.Ok ...
-	// return Response(200, AdGroupArrayResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, AdGroupsCreate200Response{}) or use other options such as http.Ok ...
+	// return Response(200, AdGroupsCreate200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AdGroupsUpdate method not implemented")
 }
 
 // AdGroupsAnalytics - Get ad group analytics
-func (s *AdGroupsAPIService) AdGroupsAnalytics(ctx context.Context, adAccountId string, startDate string, endDate string, adGroupIds []string, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, aggregateReportRows bool, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
+func (s *AdGroupsAPIService) AdGroupsAnalytics(ctx context.Context, startDate string, endDate string, adGroupIds []string, columns []ReportingColumnSync, granularity Granularity, adAccountId string, clickWindowDays float32, engagementWindowDays float32, viewWindowDays float32, conversionReportTime string, aggregateReportRows bool, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
 	// TODO - update AdGroupsAnalytics with the required logic for this service method.
 	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, []AdGroupsAnalyticsResponseInner{}) or use other options such as http.Ok ...
-	// return Response(200, []AdGroupsAnalyticsResponseInner{}), nil
+	// TODO: Uncomment the next line to return response Response(200, []AdGroupsAnalyticsMetrics{}) or use other options such as http.Ok ...
+	// return Response(200, []AdGroupsAnalyticsMetrics{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AdGroupsAnalytics method not implemented")
 }
 
+// AdGroupsAudienceSizing - Get audience sizing
+func (s *AdGroupsAPIService) AdGroupsAudienceSizing(ctx context.Context, adAccountId string, adGroupAudienceSizingCreate AdGroupAudienceSizingCreate) (ImplResponse, error) {
+	// TODO - update AdGroupsAudienceSizing with the required logic for this service method.
+	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, AdGroupAudienceSizing{}) or use other options such as http.Ok ...
+	// return Response(200, AdGroupAudienceSizing{}), nil
+
+	// TODO: Uncomment the next line to return response Response(201, AdGroupAudienceSizing{}) or use other options such as http.Ok ...
+	// return Response(201, AdGroupAudienceSizing{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("AdGroupsAudienceSizing method not implemented")
+}
+
 // AdGroupsTargetingAnalyticsGet - Get targeting analytics for ad groups
-func (s *AdGroupsAPIService) AdGroupsTargetingAnalyticsGet(ctx context.Context, adAccountId string, adGroupIds []string, startDate string, endDate string, targetingTypes []AdsAnalyticsAdGroupTargetingType, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, attributionTypes []ConversionReportAttributionType, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
+func (s *AdGroupsAPIService) AdGroupsTargetingAnalyticsGet(ctx context.Context, adAccountId string, adGroupIds []string, startDate string, endDate string, targetingTypes []AdsAnalyticsAdGroupTargetingType, columns []ReportingColumnSync, granularity Granularity, clickWindowDays float32, engagementWindowDays float32, viewWindowDays float32, conversionReportTime string, attributionTypes []ConversionReportAttributionType, reportingTimezone ReportingTimeZone, sortColumns []string, sortAscending bool) (ImplResponse, error) {
 	// TODO - update AdGroupsTargetingAnalyticsGet with the required logic for this service method.
 	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, MetricsResponse{}) or use other options such as http.Ok ...
 	// return Response(200, MetricsResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AdGroupsTargetingAnalyticsGet method not implemented")
 }
 
-// AdGroupsAudienceSizing - Get audience sizing
-func (s *AdGroupsAPIService) AdGroupsAudienceSizing(ctx context.Context, adAccountId string, adGroupAudienceSizingRequest AdGroupAudienceSizingRequest) (ImplResponse, error) {
-	// TODO - update AdGroupsAudienceSizing with the required logic for this service method.
-	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, AdGroupAudienceSizingResponse{}) or use other options such as http.Ok ...
-	// return Response(200, AdGroupAudienceSizingResponse{}), nil
-
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
-	// return Response(403, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("AdGroupsAudienceSizing method not implemented")
-}
-
 // AdGroupsGet - Get ad group
-func (s *AdGroupsAPIService) AdGroupsGet(ctx context.Context, adAccountId string, adGroupId string) (ImplResponse, error) {
+func (s *AdGroupsAPIService) AdGroupsGet(ctx context.Context, adGroupId string, adAccountId string) (ImplResponse, error) {
 	// TODO - update AdGroupsGet with the required logic for this service method.
 	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, AdGroupResponse{}) or use other options such as http.Ok ...
-	// return Response(200, AdGroupResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, AdGroup{}) or use other options such as http.Ok ...
+	// return Response(200, AdGroup{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AdGroupsGet method not implemented")
 }
 
+// AdGroupsDynamicTitlesProcessCsv - Process dynamic titles CSV
+func (s *AdGroupsAPIService) AdGroupsDynamicTitlesProcessCsv(ctx context.Context, adAccountId string, adGroupId string, dynamicTitlesProcessCsvCreate DynamicTitlesProcessCsvCreate) (ImplResponse, error) {
+	// TODO - update AdGroupsDynamicTitlesProcessCsv with the required logic for this service method.
+	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, DynamicTitlesProcessCsv{}) or use other options such as http.Ok ...
+	// return Response(200, DynamicTitlesProcessCsv{}), nil
+
+	// TODO: Uncomment the next line to return response Response(201, DynamicTitlesProcessCsv{}) or use other options such as http.Ok ...
+	// return Response(201, DynamicTitlesProcessCsv{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("AdGroupsDynamicTitlesProcessCsv method not implemented")
+}
+
+// AdGroupsDynamicTitlesDownloadCsv - Get dynamic titles CSV download URL
+func (s *AdGroupsAPIService) AdGroupsDynamicTitlesDownloadCsv(ctx context.Context, adAccountId string, adGroupId string) (ImplResponse, error) {
+	// TODO - update AdGroupsDynamicTitlesDownloadCsv with the required logic for this service method.
+	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, DynamicTitlesDownloadCsv{}) or use other options such as http.Ok ...
+	// return Response(200, DynamicTitlesDownloadCsv{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("AdGroupsDynamicTitlesDownloadCsv method not implemented")
+}
+
+// AdGroupsDynamicTitlesGetStatus - Get dynamic titles status
+func (s *AdGroupsAPIService) AdGroupsDynamicTitlesGetStatus(ctx context.Context, adAccountId string, adGroupId string) (ImplResponse, error) {
+	// TODO - update AdGroupsDynamicTitlesGetStatus with the required logic for this service method.
+	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, DynamicTitlesGetStatus{}) or use other options such as http.Ok ...
+	// return Response(200, DynamicTitlesGetStatus{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("AdGroupsDynamicTitlesGetStatus method not implemented")
+}
+
+// AdGroupsDynamicTitlesGetUploadUrl - Get dynamic titles upload URL
+func (s *AdGroupsAPIService) AdGroupsDynamicTitlesGetUploadUrl(ctx context.Context, adAccountId string, adGroupId string) (ImplResponse, error) {
+	// TODO - update AdGroupsDynamicTitlesGetUploadUrl with the required logic for this service method.
+	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, DynamicTitlesUploadUrl{}) or use other options such as http.Ok ...
+	// return Response(200, DynamicTitlesUploadUrl{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("AdGroupsDynamicTitlesGetUploadUrl method not implemented")
+}
+
 // AdGroupsBidFloorGet - Get bid floors
-func (s *AdGroupsAPIService) AdGroupsBidFloorGet(ctx context.Context, adAccountId string, bidFloorRequest BidFloorRequest) (ImplResponse, error) {
+func (s *AdGroupsAPIService) AdGroupsBidFloorGet(ctx context.Context, adAccountId string, bidFloorCreate BidFloorCreate) (ImplResponse, error) {
 	// TODO - update AdGroupsBidFloorGet with the required logic for this service method.
 	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, BidFloor{}) or use other options such as http.Ok ...
 	// return Response(200, BidFloor{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, BidFloor{}) or use other options such as http.Ok ...
+	// return Response(201, BidFloor{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AdGroupsBidFloorGet method not implemented")
+}
+
+// GetAdGroupsByPromotionIdsList - List of ad groups using promotions IDs.
+func (s *AdGroupsAPIService) GetAdGroupsByPromotionIdsList(ctx context.Context, adAccountId string, promotionIds []string, bookmark string, pageSize int32, order PinterestLibPaginationOrder) (ImplResponse, error) {
+	// TODO - update GetAdGroupsByPromotionIdsList with the required logic for this service method.
+	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, AdGroupsList200Response{}) or use other options such as http.Ok ...
+	// return Response(200, AdGroupsList200Response{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("GetAdGroupsByPromotionIdsList method not implemented")
 }

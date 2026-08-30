@@ -883,9 +883,6 @@ module.exports = {
                 key: `${keyPrefix}FETCH_SAME_SIGNATURE`,
                 label: `Ingestion completed early because there are no changes to your feed since the last successful update. - [${labelPrefix}FETCH_SAME_SIGNATURE]`,
                 type: 'integer',
-                choices: [
-                    '1',
-                ],
             },
             {
                 key: `${keyPrefix}GENDER_INVALID`,

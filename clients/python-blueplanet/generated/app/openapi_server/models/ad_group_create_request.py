@@ -7,13 +7,12 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.action_type import ActionType  # noqa: F401,E501
+from app.openapi_server.models.bid_strategy_type import BidStrategyType  # noqa: F401,E501
 from app.openapi_server.models.budget_type import BudgetType  # noqa: F401,E501
 from app.openapi_server.models.entity_status import EntityStatus  # noqa: F401,E501
-from app.openapi_server.models.optimization_goal_metadata import OptimizationGoalMetadata  # noqa: F401,E501
 from app.openapi_server.models.pacing_delivery_type import PacingDeliveryType  # noqa: F401,E501
 from app.openapi_server.models.placement_group_type import PlacementGroupType  # noqa: F401,E501
 from app.openapi_server.models.targeting_spec import TargetingSpec  # noqa: F401,E501
-from app.openapi_server.models.tracking_urls import TrackingUrls  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -24,21 +23,25 @@ class AdGroupCreateRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, auto_targeting_enabled: bool=None, bid_in_micro_currency: int=None, bid_strategy_type: str=None, billable_event: ActionType=None, budget_in_micro_currency: int=None, budget_type: BudgetType='DAILY', campaign_id: str=None, end_time: int=None, is_creative_optimization: bool=None, lifetime_frequency_cap: int=None, name: str=None, optimization_goal_metadata: OptimizationGoalMetadata=None, pacing_delivery_type: PacingDeliveryType='STANDARD', placement_group: PlacementGroupType=None, promotion_application_level: str=None, promotion_id: str='0', start_time: int=None, status: EntityStatus=None, targeting_spec: TargetingSpec=None, targeting_template_ids: List[str]=None, tracking_urls: TrackingUrls=None, bid_multiplier: float=None):  # noqa: E501
+    def __init__(self, auto_targeting_enabled: bool=None, bid_multiplier: float=None, budget_type: BudgetType=None, pacing_delivery_type: PacingDeliveryType=None, bid_in_micro_currency: int=None, bid_strategy_type: BidStrategyType=None, billable_event: ActionType=None, budget_in_micro_currency: int=None, campaign_id: str=None, end_time: int=None, is_creative_optimization: bool=None, lifetime_frequency_cap: int=None, name: str=None, optimization_goal_metadata: object=None, placement_group: PlacementGroupType=None, promotion_application_level: str=None, promotion_id: str='0', promotion_ids: List[str]=None, start_time: int=None, status: EntityStatus=None, targeting_spec: TargetingSpec=None, targeting_template_ids: List[str]=None, tracking_urls: object=None):  # noqa: E501
         """AdGroupCreateRequest - a model defined in Swagger
 
         :param auto_targeting_enabled: The auto_targeting_enabled of this AdGroupCreateRequest.  # noqa: E501
         :type auto_targeting_enabled: bool
+        :param bid_multiplier: The bid_multiplier of this AdGroupCreateRequest.  # noqa: E501
+        :type bid_multiplier: float
+        :param budget_type: The budget_type of this AdGroupCreateRequest.  # noqa: E501
+        :type budget_type: BudgetType
+        :param pacing_delivery_type: The pacing_delivery_type of this AdGroupCreateRequest.  # noqa: E501
+        :type pacing_delivery_type: PacingDeliveryType
         :param bid_in_micro_currency: The bid_in_micro_currency of this AdGroupCreateRequest.  # noqa: E501
         :type bid_in_micro_currency: int
         :param bid_strategy_type: The bid_strategy_type of this AdGroupCreateRequest.  # noqa: E501
-        :type bid_strategy_type: str
+        :type bid_strategy_type: BidStrategyType
         :param billable_event: The billable_event of this AdGroupCreateRequest.  # noqa: E501
         :type billable_event: ActionType
         :param budget_in_micro_currency: The budget_in_micro_currency of this AdGroupCreateRequest.  # noqa: E501
         :type budget_in_micro_currency: int
-        :param budget_type: The budget_type of this AdGroupCreateRequest.  # noqa: E501
-        :type budget_type: BudgetType
         :param campaign_id: The campaign_id of this AdGroupCreateRequest.  # noqa: E501
         :type campaign_id: str
         :param end_time: The end_time of this AdGroupCreateRequest.  # noqa: E501
@@ -50,15 +53,15 @@ class AdGroupCreateRequest(Model):
         :param name: The name of this AdGroupCreateRequest.  # noqa: E501
         :type name: str
         :param optimization_goal_metadata: The optimization_goal_metadata of this AdGroupCreateRequest.  # noqa: E501
-        :type optimization_goal_metadata: OptimizationGoalMetadata
-        :param pacing_delivery_type: The pacing_delivery_type of this AdGroupCreateRequest.  # noqa: E501
-        :type pacing_delivery_type: PacingDeliveryType
+        :type optimization_goal_metadata: object
         :param placement_group: The placement_group of this AdGroupCreateRequest.  # noqa: E501
         :type placement_group: PlacementGroupType
         :param promotion_application_level: The promotion_application_level of this AdGroupCreateRequest.  # noqa: E501
         :type promotion_application_level: str
         :param promotion_id: The promotion_id of this AdGroupCreateRequest.  # noqa: E501
         :type promotion_id: str
+        :param promotion_ids: The promotion_ids of this AdGroupCreateRequest.  # noqa: E501
+        :type promotion_ids: List[str]
         :param start_time: The start_time of this AdGroupCreateRequest.  # noqa: E501
         :type start_time: int
         :param status: The status of this AdGroupCreateRequest.  # noqa: E501
@@ -68,82 +71,83 @@ class AdGroupCreateRequest(Model):
         :param targeting_template_ids: The targeting_template_ids of this AdGroupCreateRequest.  # noqa: E501
         :type targeting_template_ids: List[str]
         :param tracking_urls: The tracking_urls of this AdGroupCreateRequest.  # noqa: E501
-        :type tracking_urls: TrackingUrls
-        :param bid_multiplier: The bid_multiplier of this AdGroupCreateRequest.  # noqa: E501
-        :type bid_multiplier: float
+        :type tracking_urls: object
         """
         self.swagger_types = {
             'auto_targeting_enabled': bool,
+            'bid_multiplier': float,
+            'budget_type': BudgetType,
+            'pacing_delivery_type': PacingDeliveryType,
             'bid_in_micro_currency': int,
-            'bid_strategy_type': str,
+            'bid_strategy_type': BidStrategyType,
             'billable_event': ActionType,
             'budget_in_micro_currency': int,
-            'budget_type': BudgetType,
             'campaign_id': str,
             'end_time': int,
             'is_creative_optimization': bool,
             'lifetime_frequency_cap': int,
             'name': str,
-            'optimization_goal_metadata': OptimizationGoalMetadata,
-            'pacing_delivery_type': PacingDeliveryType,
+            'optimization_goal_metadata': object,
             'placement_group': PlacementGroupType,
             'promotion_application_level': str,
             'promotion_id': str,
+            'promotion_ids': List[str],
             'start_time': int,
             'status': EntityStatus,
             'targeting_spec': TargetingSpec,
             'targeting_template_ids': List[str],
-            'tracking_urls': TrackingUrls,
-            'bid_multiplier': float
+            'tracking_urls': object
         }
 
         self.attribute_map = {
             'auto_targeting_enabled': 'auto_targeting_enabled',
+            'bid_multiplier': 'bid_multiplier',
+            'budget_type': 'budget_type',
+            'pacing_delivery_type': 'pacing_delivery_type',
             'bid_in_micro_currency': 'bid_in_micro_currency',
             'bid_strategy_type': 'bid_strategy_type',
             'billable_event': 'billable_event',
             'budget_in_micro_currency': 'budget_in_micro_currency',
-            'budget_type': 'budget_type',
             'campaign_id': 'campaign_id',
             'end_time': 'end_time',
             'is_creative_optimization': 'is_creative_optimization',
             'lifetime_frequency_cap': 'lifetime_frequency_cap',
             'name': 'name',
             'optimization_goal_metadata': 'optimization_goal_metadata',
-            'pacing_delivery_type': 'pacing_delivery_type',
             'placement_group': 'placement_group',
             'promotion_application_level': 'promotion_application_level',
             'promotion_id': 'promotion_id',
+            'promotion_ids': 'promotion_ids',
             'start_time': 'start_time',
             'status': 'status',
             'targeting_spec': 'targeting_spec',
             'targeting_template_ids': 'targeting_template_ids',
-            'tracking_urls': 'tracking_urls',
-            'bid_multiplier': 'bid_multiplier'
+            'tracking_urls': 'tracking_urls'
         }
 
         self._auto_targeting_enabled = auto_targeting_enabled
+        self._bid_multiplier = bid_multiplier
+        self._budget_type = budget_type
+        self._pacing_delivery_type = pacing_delivery_type
         self._bid_in_micro_currency = bid_in_micro_currency
         self._bid_strategy_type = bid_strategy_type
         self._billable_event = billable_event
         self._budget_in_micro_currency = budget_in_micro_currency
-        self._budget_type = budget_type
         self._campaign_id = campaign_id
         self._end_time = end_time
         self._is_creative_optimization = is_creative_optimization
         self._lifetime_frequency_cap = lifetime_frequency_cap
         self._name = name
         self._optimization_goal_metadata = optimization_goal_metadata
-        self._pacing_delivery_type = pacing_delivery_type
         self._placement_group = placement_group
         self._promotion_application_level = promotion_application_level
         self._promotion_id = promotion_id
+        self._promotion_ids = promotion_ids
         self._start_time = start_time
         self._status = status
         self._targeting_spec = targeting_spec
         self._targeting_template_ids = targeting_template_ids
         self._tracking_urls = tracking_urls
-        self._bid_multiplier = bid_multiplier
 
     @classmethod
     def from_dict(cls, dikt) -> 'AdGroupCreateRequest':
@@ -180,6 +184,75 @@ class AdGroupCreateRequest(Model):
         self._auto_targeting_enabled = auto_targeting_enabled
 
     @property
+    def bid_multiplier(self) -> float:
+        """Gets the bid_multiplier of this AdGroupCreateRequest.
+
+        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.  # noqa: E501
+
+        :return: The bid_multiplier of this AdGroupCreateRequest.
+        :rtype: float
+        """
+        return self._bid_multiplier
+
+    @bid_multiplier.setter
+    def bid_multiplier(self, bid_multiplier: float):
+        """Sets the bid_multiplier of this AdGroupCreateRequest.
+
+        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.  # noqa: E501
+
+        :param bid_multiplier: The bid_multiplier of this AdGroupCreateRequest.
+        :type bid_multiplier: float
+        """
+        if bid_multiplier is not None and bid_multiplier > 10:  # noqa: E501
+            raise ValueError("Invalid value for `bid_multiplier`, must be a value less than or equal to `10`")  # noqa: E501
+        if bid_multiplier is not None and bid_multiplier < 0:  # noqa: E501
+            raise ValueError("Invalid value for `bid_multiplier`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._bid_multiplier = bid_multiplier
+
+    @property
+    def budget_type(self) -> BudgetType:
+        """Gets the budget_type of this AdGroupCreateRequest.
+
+
+        :return: The budget_type of this AdGroupCreateRequest.
+        :rtype: BudgetType
+        """
+        return self._budget_type
+
+    @budget_type.setter
+    def budget_type(self, budget_type: BudgetType):
+        """Sets the budget_type of this AdGroupCreateRequest.
+
+
+        :param budget_type: The budget_type of this AdGroupCreateRequest.
+        :type budget_type: BudgetType
+        """
+
+        self._budget_type = budget_type
+
+    @property
+    def pacing_delivery_type(self) -> PacingDeliveryType:
+        """Gets the pacing_delivery_type of this AdGroupCreateRequest.
+
+
+        :return: The pacing_delivery_type of this AdGroupCreateRequest.
+        :rtype: PacingDeliveryType
+        """
+        return self._pacing_delivery_type
+
+    @pacing_delivery_type.setter
+    def pacing_delivery_type(self, pacing_delivery_type: PacingDeliveryType):
+        """Sets the pacing_delivery_type of this AdGroupCreateRequest.
+
+
+        :param pacing_delivery_type: The pacing_delivery_type of this AdGroupCreateRequest.
+        :type pacing_delivery_type: PacingDeliveryType
+        """
+
+        self._pacing_delivery_type = pacing_delivery_type
+
+    @property
     def bid_in_micro_currency(self) -> int:
         """Gets the bid_in_micro_currency of this AdGroupCreateRequest.
 
@@ -203,31 +276,23 @@ class AdGroupCreateRequest(Model):
         self._bid_in_micro_currency = bid_in_micro_currency
 
     @property
-    def bid_strategy_type(self) -> str:
+    def bid_strategy_type(self) -> BidStrategyType:
         """Gets the bid_strategy_type of this AdGroupCreateRequest.
 
-        Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".  # noqa: E501
 
         :return: The bid_strategy_type of this AdGroupCreateRequest.
-        :rtype: str
+        :rtype: BidStrategyType
         """
         return self._bid_strategy_type
 
     @bid_strategy_type.setter
-    def bid_strategy_type(self, bid_strategy_type: str):
+    def bid_strategy_type(self, bid_strategy_type: BidStrategyType):
         """Sets the bid_strategy_type of this AdGroupCreateRequest.
 
-        Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".  # noqa: E501
 
         :param bid_strategy_type: The bid_strategy_type of this AdGroupCreateRequest.
-        :type bid_strategy_type: str
+        :type bid_strategy_type: BidStrategyType
         """
-        allowed_values = ["AUTOMATIC_BID", "MAX_BID", "TARGET_AVG", ""]  # noqa: E501
-        if bid_strategy_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `bid_strategy_type` ({0}), must be one of {1}"
-                .format(bid_strategy_type, allowed_values)
-            )
 
         self._bid_strategy_type = bid_strategy_type
 
@@ -276,27 +341,6 @@ class AdGroupCreateRequest(Model):
         """
 
         self._budget_in_micro_currency = budget_in_micro_currency
-
-    @property
-    def budget_type(self) -> BudgetType:
-        """Gets the budget_type of this AdGroupCreateRequest.
-
-
-        :return: The budget_type of this AdGroupCreateRequest.
-        :rtype: BudgetType
-        """
-        return self._budget_type
-
-    @budget_type.setter
-    def budget_type(self, budget_type: BudgetType):
-        """Sets the budget_type of this AdGroupCreateRequest.
-
-
-        :param budget_type: The budget_type of this AdGroupCreateRequest.
-        :type budget_type: BudgetType
-        """
-
-        self._budget_type = budget_type
 
     @property
     def campaign_id(self) -> str:
@@ -420,48 +464,27 @@ class AdGroupCreateRequest(Model):
         self._name = name
 
     @property
-    def optimization_goal_metadata(self) -> OptimizationGoalMetadata:
+    def optimization_goal_metadata(self) -> object:
         """Gets the optimization_goal_metadata of this AdGroupCreateRequest.
 
         Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.  # noqa: E501
 
         :return: The optimization_goal_metadata of this AdGroupCreateRequest.
-        :rtype: OptimizationGoalMetadata
+        :rtype: object
         """
         return self._optimization_goal_metadata
 
     @optimization_goal_metadata.setter
-    def optimization_goal_metadata(self, optimization_goal_metadata: OptimizationGoalMetadata):
+    def optimization_goal_metadata(self, optimization_goal_metadata: object):
         """Sets the optimization_goal_metadata of this AdGroupCreateRequest.
 
         Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.  # noqa: E501
 
         :param optimization_goal_metadata: The optimization_goal_metadata of this AdGroupCreateRequest.
-        :type optimization_goal_metadata: OptimizationGoalMetadata
+        :type optimization_goal_metadata: object
         """
 
         self._optimization_goal_metadata = optimization_goal_metadata
-
-    @property
-    def pacing_delivery_type(self) -> PacingDeliveryType:
-        """Gets the pacing_delivery_type of this AdGroupCreateRequest.
-
-
-        :return: The pacing_delivery_type of this AdGroupCreateRequest.
-        :rtype: PacingDeliveryType
-        """
-        return self._pacing_delivery_type
-
-    @pacing_delivery_type.setter
-    def pacing_delivery_type(self, pacing_delivery_type: PacingDeliveryType):
-        """Sets the pacing_delivery_type of this AdGroupCreateRequest.
-
-
-        :param pacing_delivery_type: The pacing_delivery_type of this AdGroupCreateRequest.
-        :type pacing_delivery_type: PacingDeliveryType
-        """
-
-        self._pacing_delivery_type = pacing_delivery_type
 
     @property
     def placement_group(self) -> PlacementGroupType:
@@ -539,6 +562,29 @@ class AdGroupCreateRequest(Model):
             raise ValueError("Invalid value for `promotion_id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
         self._promotion_id = promotion_id
+
+    @property
+    def promotion_ids(self) -> List[str]:
+        """Gets the promotion_ids of this AdGroupCreateRequest.
+
+        Promotion IDs list. To clear this field, set to an empty array [].  # noqa: E501
+
+        :return: The promotion_ids of this AdGroupCreateRequest.
+        :rtype: List[str]
+        """
+        return self._promotion_ids
+
+    @promotion_ids.setter
+    def promotion_ids(self, promotion_ids: List[str]):
+        """Sets the promotion_ids of this AdGroupCreateRequest.
+
+        Promotion IDs list. To clear this field, set to an empty array [].  # noqa: E501
+
+        :param promotion_ids: The promotion_ids of this AdGroupCreateRequest.
+        :type promotion_ids: List[str]
+        """
+
+        self._promotion_ids = promotion_ids
 
     @property
     def start_time(self) -> int:
@@ -633,51 +679,24 @@ class AdGroupCreateRequest(Model):
         self._targeting_template_ids = targeting_template_ids
 
     @property
-    def tracking_urls(self) -> TrackingUrls:
+    def tracking_urls(self) -> object:
         """Gets the tracking_urls of this AdGroupCreateRequest.
 
-        Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.  # noqa: E501
+        Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.  # noqa: E501
 
         :return: The tracking_urls of this AdGroupCreateRequest.
-        :rtype: TrackingUrls
+        :rtype: object
         """
         return self._tracking_urls
 
     @tracking_urls.setter
-    def tracking_urls(self, tracking_urls: TrackingUrls):
+    def tracking_urls(self, tracking_urls: object):
         """Sets the tracking_urls of this AdGroupCreateRequest.
 
-        Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.  # noqa: E501
+        Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.  # noqa: E501
 
         :param tracking_urls: The tracking_urls of this AdGroupCreateRequest.
-        :type tracking_urls: TrackingUrls
+        :type tracking_urls: object
         """
 
         self._tracking_urls = tracking_urls
-
-    @property
-    def bid_multiplier(self) -> float:
-        """Gets the bid_multiplier of this AdGroupCreateRequest.
-
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.  # noqa: E501
-
-        :return: The bid_multiplier of this AdGroupCreateRequest.
-        :rtype: float
-        """
-        return self._bid_multiplier
-
-    @bid_multiplier.setter
-    def bid_multiplier(self, bid_multiplier: float):
-        """Sets the bid_multiplier of this AdGroupCreateRequest.
-
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.  # noqa: E501
-
-        :param bid_multiplier: The bid_multiplier of this AdGroupCreateRequest.
-        :type bid_multiplier: float
-        """
-        if bid_multiplier is not None and bid_multiplier > 10:  # noqa: E501
-            raise ValueError("Invalid value for `bid_multiplier`, must be a value less than or equal to `10`")  # noqa: E501
-        if bid_multiplier is not None and bid_multiplier < 0:  # noqa: E501
-            raise ValueError("Invalid value for `bid_multiplier`, must be a value greater than or equal to `0`")  # noqa: E501
-
-        self._bid_multiplier = bid_multiplier

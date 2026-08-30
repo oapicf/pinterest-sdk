@@ -11,7 +11,7 @@
 #' @field default_availability  \link{ProductAvailabilityType} [optional]
 #' @field default_country  \link{Country} [optional]
 #' @field default_currency  \link{NullableCurrency} [optional]
-#' @field default_locale  \link{CatalogsFeedsCreateRequestDefaultLocale} [optional]
+#' @field default_locale  \link{CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale} [optional]
 #' @field format  \link{CatalogsFormat}
 #' @field location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. character
 #' @field name A human-friendly name associated to a given feed. character
@@ -46,9 +46,9 @@ CatalogsFeedsCreateRequest <- R6::R6Class(
     #' @param default_currency default_currency
     #' @param default_locale default_locale
     #' @param preferred_processing_schedule preferred_processing_schedule
-    #' @param status status. Default to "ACTIVE".
+    #' @param status status
     #' @param ... Other optional arguments.
-    initialize = function(`format`, `location`, `name`, `credentials` = NULL, `default_availability` = NULL, `default_country` = NULL, `default_currency` = NULL, `default_locale` = NULL, `preferred_processing_schedule` = NULL, `status` = "ACTIVE", ...) {
+    initialize = function(`format`, `location`, `name`, `credentials` = NULL, `default_availability` = NULL, `default_country` = NULL, `default_currency` = NULL, `default_locale` = NULL, `preferred_processing_schedule` = NULL, `status` = NULL, ...) {
       if (!missing(`format`)) {
         if (!(`format` %in% c())) {
           stop(paste("Error! \"", `format`, "\" cannot be assigned to `format`. Must be .", sep = ""))
@@ -143,27 +143,27 @@ CatalogsFeedsCreateRequest <- R6::R6Class(
       CatalogsFeedsCreateRequestObject <- list()
       if (!is.null(self$`credentials`)) {
         CatalogsFeedsCreateRequestObject[["credentials"]] <-
-          self$`credentials`$toSimpleType()
+          self$extractSimpleType(self$`credentials`)
       }
       if (!is.null(self$`default_availability`)) {
         CatalogsFeedsCreateRequestObject[["default_availability"]] <-
-          self$`default_availability`$toSimpleType()
+          self$extractSimpleType(self$`default_availability`)
       }
       if (!is.null(self$`default_country`)) {
         CatalogsFeedsCreateRequestObject[["default_country"]] <-
-          self$`default_country`$toSimpleType()
+          self$extractSimpleType(self$`default_country`)
       }
       if (!is.null(self$`default_currency`)) {
         CatalogsFeedsCreateRequestObject[["default_currency"]] <-
-          self$`default_currency`$toSimpleType()
+          self$extractSimpleType(self$`default_currency`)
       }
       if (!is.null(self$`default_locale`)) {
         CatalogsFeedsCreateRequestObject[["default_locale"]] <-
-          self$`default_locale`$toSimpleType()
+          self$extractSimpleType(self$`default_locale`)
       }
       if (!is.null(self$`format`)) {
         CatalogsFeedsCreateRequestObject[["format"]] <-
-          self$`format`$toSimpleType()
+          self$extractSimpleType(self$`format`)
       }
       if (!is.null(self$`location`)) {
         CatalogsFeedsCreateRequestObject[["location"]] <-
@@ -175,13 +175,36 @@ CatalogsFeedsCreateRequest <- R6::R6Class(
       }
       if (!is.null(self$`preferred_processing_schedule`)) {
         CatalogsFeedsCreateRequestObject[["preferred_processing_schedule"]] <-
-          self$`preferred_processing_schedule`$toSimpleType()
+          self$extractSimpleType(self$`preferred_processing_schedule`)
       }
       if (!is.null(self$`status`)) {
         CatalogsFeedsCreateRequestObject[["status"]] <-
-          self$`status`$toSimpleType()
+          self$extractSimpleType(self$`status`)
       }
       return(CatalogsFeedsCreateRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -212,7 +235,7 @@ CatalogsFeedsCreateRequest <- R6::R6Class(
         self$`default_currency` <- `default_currency_object`
       }
       if (!is.null(this_object$`default_locale`)) {
-        `default_locale_object` <- CatalogsFeedsCreateRequestDefaultLocale$new()
+        `default_locale_object` <- CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale$new()
         `default_locale_object`$fromJSON(jsonlite::toJSON(this_object$`default_locale`, auto_unbox = TRUE, digits = NA))
         self$`default_locale` <- `default_locale_object`
       }
@@ -262,7 +285,7 @@ CatalogsFeedsCreateRequest <- R6::R6Class(
       self$`default_availability` <- ProductAvailabilityType$new()$fromJSON(jsonlite::toJSON(this_object$`default_availability`, auto_unbox = TRUE, digits = NA))
       self$`default_country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`default_country`, auto_unbox = TRUE, digits = NA))
       self$`default_currency` <- NullableCurrency$new()$fromJSON(jsonlite::toJSON(this_object$`default_currency`, auto_unbox = TRUE, digits = NA))
-      self$`default_locale` <- CatalogsFeedsCreateRequestDefaultLocale$new()$fromJSON(jsonlite::toJSON(this_object$`default_locale`, auto_unbox = TRUE, digits = NA))
+      self$`default_locale` <- CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale$new()$fromJSON(jsonlite::toJSON(this_object$`default_locale`, auto_unbox = TRUE, digits = NA))
       self$`format` <- CatalogsFormat$new()$fromJSON(jsonlite::toJSON(this_object$`format`, auto_unbox = TRUE, digits = NA))
       self$`location` <- this_object$`location`
       self$`name` <- this_object$`name`

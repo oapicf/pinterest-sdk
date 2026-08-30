@@ -1,5 +1,4 @@
 # Org.OpenAPITools.Model.CampaignSummaryStatus
-Summary status for campaign
 
 ## Properties
 

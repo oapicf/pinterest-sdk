@@ -19,7 +19,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsHotelProductGroup")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelProductGroup   {
   private String catalogId;
   public enum CatalogTypeEnum {
@@ -97,7 +97,7 @@ public class CatalogsHotelProductGroup   {
   }
 
   /**
-   * Catalog id pertaining to the hotel product group.
+   * Catalog ID pertaining to the product group.
    **/
   public CatalogsHotelProductGroup catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -105,7 +105,7 @@ public class CatalogsHotelProductGroup   {
   }
 
   
-  @ApiModelProperty(required = true, value = "Catalog id pertaining to the hotel product group.")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog ID pertaining to the product group.")
   @JsonProperty(required = true, value = "catalog_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
     return catalogId;
@@ -194,7 +194,7 @@ public class CatalogsHotelProductGroup   {
   }
 
   /**
-   * ID of the hotel product group.
+   * ID of the catalog product group.
    **/
   public CatalogsHotelProductGroup id(String id) {
     this.id = id;
@@ -202,7 +202,7 @@ public class CatalogsHotelProductGroup   {
   }
 
   
-  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the hotel product group.")
+  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the catalog product group.")
   @JsonProperty(required = true, value = "id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
@@ -214,7 +214,7 @@ public class CatalogsHotelProductGroup   {
   }
 
   /**
-   * Name of hotel product group
+   * Name of catalog product group
    **/
   public CatalogsHotelProductGroup name(String name) {
     this.name = name;
@@ -222,7 +222,7 @@ public class CatalogsHotelProductGroup   {
   }
 
   
-  @ApiModelProperty(example = "Most Popular", value = "Name of hotel product group")
+  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -321,12 +321,8 @@ public class CatalogsHotelProductGroup   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

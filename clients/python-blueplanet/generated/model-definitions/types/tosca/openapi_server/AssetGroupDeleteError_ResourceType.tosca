@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AssetGroupDeleteError"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AssetGroupDeleteError"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AssetGroupDeleteError {
+    title = AssetGroupDeleteError
+    description = AssetGroupDeleteError
+    derivedFrom = Root
+    properties {
+        asset_group_id {
+          type =  string
+          description = "Asset group id of the exception."
+          optional = false
+        }
+        code {
+          type =  integer
+          description = "Error code associated with the error deleting asset group."
+          optional = false
+        }
+        message {
+          type =  string
+          description = "Error message associated with the error deleting asset group."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AssetGroupDeleteError {
+    title = AssetGroupDeleteError
+    description = AssetGroupDeleteError
+    implements = openapi_server.resourceTypes.AssetGroupDeleteError
+
+  }
+}

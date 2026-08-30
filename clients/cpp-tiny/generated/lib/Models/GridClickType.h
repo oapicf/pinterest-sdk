@@ -2,7 +2,7 @@
 /*
  * GridClickType.h
  *
- * Where a user is taken after clicking on an ad in grid. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt;  This parameter is read-only and is set to DIRECT_TO_DESTINATION by default for direct links supported ads.  grid_click_type values provided will be ignored.
+ * Where a user is taken after clicking on an ad in grid.  **Note:**  This parameter is read-only and is set to &#x60;DIRECT_TO_DESTINATION&#x60; by default for direct links supported ads. &#x60;grid_click_type&#x60; values provided will be ignored.
  */
 
 #ifndef TINY_CPP_CLIENT_GridClickType_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief Where a user is taken after clicking on an ad in grid. </p><strong>Note:</strong>  This parameter is read-only and is set to DIRECT_TO_DESTINATION by default for direct links supported ads.  grid_click_type values provided will be ignored.
+/*! \brief Where a user is taken after clicking on an ad in grid.  **Note:**  This parameter is read-only and is set to `DIRECT_TO_DESTINATION` by default for direct links supported ads. `grid_click_type` values provided will be ignored.
  *
  *  \ingroup Models
  *

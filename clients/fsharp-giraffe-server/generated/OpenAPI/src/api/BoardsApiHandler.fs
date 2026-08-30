@@ -11,13 +11,14 @@ open OpenAPI.Model.Board
 open OpenAPI.Model.BoardCreate
 open OpenAPI.Model.BoardPrivacyFilter
 open OpenAPI.Model.BoardSection
+open OpenAPI.Model.BoardSectionCreate
+open OpenAPI.Model.BoardSectionUpdateWithRequiredBody
 open OpenAPI.Model.BoardSectionsList200Response
 open OpenAPI.Model.BoardWithUpdatePrivacy
 open OpenAPI.Model.BoardWithUpdatePrivacyUpdate
 open OpenAPI.Model.BoardsList200Response
 open OpenAPI.Model.BoardsListPins200Response
 open OpenAPI.Model.CreativeType
-open OpenAPI.Model.Error
 open OpenAPI.Model.PinterestLibError
 
 module BoardsApiHandler =
@@ -40,16 +41,20 @@ module BoardsApiHandler =
           let serviceArgs = {  queryParams=queryParams;  pathParams=pathParams; bodyParams=bodyParams } : BoardSectionsCreateArgs
           let result = BoardsApiService.BoardSectionsCreate ctx serviceArgs
           return! (match result with
+                      | BoardSectionsCreateStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
                       | BoardSectionsCreateStatusCode201 resolved ->
                             setStatusCode 201 >=> json resolved.content
                       | BoardSectionsCreateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | BoardSectionsCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | BoardSectionsCreateStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
-                      | BoardSectionsCreateStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
-                      | BoardSectionsCreateStatusCode500 resolved ->
-                            setStatusCode 500 >=> json resolved.content
+                      | BoardSectionsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BoardSectionsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BoardSectionsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -68,14 +73,20 @@ module BoardsApiHandler =
           let serviceArgs = {  queryParams=queryParams;  pathParams=pathParams;  } : BoardSectionsDeleteArgs
           let result = BoardsApiService.BoardSectionsDelete ctx serviceArgs
           return! (match result with
+                      | BoardSectionsDeleteStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
                       | BoardSectionsDeleteStatusCode204 resolved ->
                             setStatusCode 204 >=> text resolved.content
+                      | BoardSectionsDeleteStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BoardSectionsDeleteStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | BoardSectionsDeleteStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
                       | BoardSectionsDeleteStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
-                      | BoardSectionsDeleteStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | BoardSectionsDeleteStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BoardSectionsDeleteDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -96,6 +107,16 @@ module BoardsApiHandler =
           return! (match result with
                       | BoardSectionsListStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BoardSectionsListStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BoardSectionsListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BoardSectionsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BoardSectionsListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BoardSectionsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BoardSectionsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -116,12 +137,16 @@ module BoardsApiHandler =
           return! (match result with
                       | BoardSectionsListPinsStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BoardSectionsListPinsStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BoardSectionsListPinsStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | BoardSectionsListPinsStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
                       | BoardSectionsListPinsStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
-                      | BoardSectionsListPinsStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | BoardSectionsListPinsStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BoardSectionsListPinsDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -146,10 +171,14 @@ module BoardsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | BoardSectionsUpdateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | BoardSectionsUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | BoardSectionsUpdateStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
-                      | BoardSectionsUpdateStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | BoardSectionsUpdateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BoardSectionsUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BoardSectionsUpdateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -202,6 +231,8 @@ module BoardsApiHandler =
           let serviceArgs = {  queryParams=queryParams;  pathParams=pathParams;  } : BoardsDeleteArgs
           let result = BoardsApiService.BoardsDelete ctx serviceArgs
           return! (match result with
+                      | BoardsDeleteStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
                       | BoardsDeleteStatusCode204 resolved ->
                             setStatusCode 204 >=> text resolved.content
                       | BoardsDeleteStatusCode400 resolved ->
@@ -294,8 +325,16 @@ module BoardsApiHandler =
           return! (match result with
                       | BoardsListPinsStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BoardsListPinsStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BoardsListPinsStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BoardsListPinsStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | BoardsListPinsStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | BoardsListPinsStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BoardsListPinsDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

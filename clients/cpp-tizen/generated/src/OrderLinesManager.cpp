@@ -89,6 +89,31 @@ static bool orderLinesGetProcessor(MemoryStruct_s p_chunk, long code, char* erro
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -109,7 +134,7 @@ static bool orderLinesGetProcessor(MemoryStruct_s p_chunk, long code, char* erro
 }
 
 static bool orderLinesGetHelper(char * accessToken,
-	std::string adAccountId, std::string orderLineId, 
+	std::string orderLineId, std::string adAccountId, 
 	void(* handler)(OrderLine, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -133,18 +158,18 @@ static bool orderLinesGetHelper(char * accessToken,
 	string url("/ad_accounts/{ad_account_id}/order_lines/{order_line_id}");
 	int pos;
 
-	string s_adAccountId("{");
-	s_adAccountId.append("ad_account_id");
-	s_adAccountId.append("}");
-	pos = url.find(s_adAccountId);
-	url.erase(pos, s_adAccountId.length());
-	url.insert(pos, stringify(&adAccountId, "std::string"));
 	string s_orderLineId("{");
 	s_orderLineId.append("order_line_id");
 	s_orderLineId.append("}");
 	pos = url.find(s_orderLineId);
 	url.erase(pos, s_orderLineId.length());
 	url.insert(pos, stringify(&orderLineId, "std::string"));
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -192,22 +217,22 @@ static bool orderLinesGetHelper(char * accessToken,
 
 
 bool OrderLinesManager::orderLinesGetAsync(char * accessToken,
-	std::string adAccountId, std::string orderLineId, 
+	std::string orderLineId, std::string adAccountId, 
 	void(* handler)(OrderLine, Error, void* )
 	, void* userData)
 {
 	return orderLinesGetHelper(accessToken,
-	adAccountId, orderLineId, 
+	orderLineId, adAccountId, 
 	handler, userData, true);
 }
 
 bool OrderLinesManager::orderLinesGetSync(char * accessToken,
-	std::string adAccountId, std::string orderLineId, 
+	std::string orderLineId, std::string adAccountId, 
 	void(* handler)(OrderLine, Error, void* )
 	, void* userData)
 {
 	return orderLinesGetHelper(accessToken,
-	adAccountId, orderLineId, 
+	orderLineId, adAccountId, 
 	handler, userData, false);
 }
 
@@ -252,6 +277,31 @@ static bool orderLinesListProcessor(MemoryStruct_s p_chunk, long code, char* err
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -272,7 +322,7 @@ static bool orderLinesListProcessor(MemoryStruct_s p_chunk, long code, char* err
 }
 
 static bool orderLinesListHelper(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, 
 	void(* handler)(Order_lines_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -290,6 +340,13 @@ static bool orderLinesListHelper(char * accessToken,
 	string itemAtq;
 	
 
+	itemAtq = stringify(&bookmark, "std::string");
+	queryParams.insert(pair<string, string>("bookmark", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("bookmark");
+	}
+
+
 	itemAtq = stringify(&pageSize, "int");
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
@@ -297,17 +354,10 @@ static bool orderLinesListHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&order, "std::string");
+	itemAtq = stringify(&order, "Pinterest.Lib.PaginationOrder");
 	queryParams.insert(pair<string, string>("order", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("order");
-	}
-
-
-	itemAtq = stringify(&bookmark, "std::string");
-	queryParams.insert(pair<string, string>("bookmark", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("bookmark");
 	}
 
 	string mBody = "";
@@ -370,22 +420,22 @@ static bool orderLinesListHelper(char * accessToken,
 
 
 bool OrderLinesManager::orderLinesListAsync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, 
 	void(* handler)(Order_lines_list_200_response, Error, void* )
 	, void* userData)
 {
 	return orderLinesListHelper(accessToken,
-	adAccountId, pageSize, order, bookmark, 
+	adAccountId, bookmark, pageSize, order, 
 	handler, userData, true);
 }
 
 bool OrderLinesManager::orderLinesListSync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, 
 	void(* handler)(Order_lines_list_200_response, Error, void* )
 	, void* userData)
 {
 	return orderLinesListHelper(accessToken,
-	adAccountId, pageSize, order, bookmark, 
+	adAccountId, bookmark, pageSize, order, 
 	handler, userData, false);
 }
 

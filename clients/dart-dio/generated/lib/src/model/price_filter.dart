@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/catalogs_product_group_pricing_currency_criteria.dart';
+import 'package:openapi/src/model/price_filter_price.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -16,7 +16,7 @@ part 'price_filter.g.dart';
 @BuiltValue()
 abstract class PriceFilter implements Built<PriceFilter, PriceFilterBuilder> {
   @BuiltValueField(wireName: r'PRICE')
-  CatalogsProductGroupPricingCurrencyCriteria get PRICE;
+  PriceFilterPrice get PRICE;
 
   PriceFilter._();
 
@@ -44,7 +44,7 @@ class _$PriceFilterSerializer implements PrimitiveSerializer<PriceFilter> {
     yield r'PRICE';
     yield serializers.serialize(
       object.PRICE,
-      specifiedType: const FullType(CatalogsProductGroupPricingCurrencyCriteria),
+      specifiedType: const FullType(PriceFilterPrice),
     );
   }
 
@@ -72,8 +72,8 @@ class _$PriceFilterSerializer implements PrimitiveSerializer<PriceFilter> {
         case r'PRICE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsProductGroupPricingCurrencyCriteria),
-          ) as CatalogsProductGroupPricingCurrencyCriteria;
+            specifiedType: const FullType(PriceFilterPrice),
+          ) as PriceFilterPrice;
           result.PRICE.replace(valueDes);
           break;
         default:

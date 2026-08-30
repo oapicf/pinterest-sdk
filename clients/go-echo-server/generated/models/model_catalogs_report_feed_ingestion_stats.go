@@ -3,7 +3,7 @@ package models
 type CatalogsReportFeedIngestionStats struct {
 
 	// ID of the catalog entity.
-	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// The event code that a diagnostics aggregated number references
 	Code int32 `json:"code,omitempty"`

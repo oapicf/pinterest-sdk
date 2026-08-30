@@ -22,10 +22,12 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class PageVisitConversionTagsGet200Response(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("items")
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<ConversionEventResponse>,
 
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @param:JsonProperty("bookmark")
     @get:JsonProperty("bookmark") val bookmark: kotlin.String? = null
 ) {
 

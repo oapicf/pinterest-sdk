@@ -5,35 +5,36 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EndDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD | 
-**Granularity** | **Granularity** | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
+**Granularity** | **Granularity** |   TOTAL - metrics are aggregated over the specified date range.   DAY - metrics are broken down daily.   HOUR - metrics are broken down hourly.   WEEKLY - metrics are broken down weekly.   MONTHLY - metrics are broken down monthly. | 
 **StartDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD | 
-**Columns** | [**List&lt;ReportingColumnAsync&gt;**](ReportingColumnAsync.md) | Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports. | 
-**Level** | **MetricsReportingLevel** | Level of the report | 
-**AttributionTypes** | [**List&lt;ConversionReportAttributionType&gt;**](ConversionReportAttributionType.md) | List of types of attribution for the conversion report | [optional] 
-**ClickWindowDays** | **ConversionAttributionWindowDays** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to ConversionAttributionWindowDays.NUMBER_30]
-**ConversionReportTime** | **ConversionReportTimeType** | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to "TIME_OF_AD_ACTION"]
-**EngagementWindowDays** | **ConversionAttributionWindowDays** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to ConversionAttributionWindowDays.NUMBER_30]
-**ViewWindowDays** | **ConversionAttributionWindowDays** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to ConversionAttributionWindowDays.NUMBER_1]
-**CampaignIds** | **List&lt;string&gt;** | List of campaign ids | [optional] 
-**CampaignStatuses** | [**List&lt;CampaignSummaryStatus&gt;**](CampaignSummaryStatus.md) | List of status values for filtering | [optional] 
-**CampaignObjectiveTypes** | [**List&lt;ObjectiveType&gt;**](ObjectiveType.md) | List of values for filtering. [\&quot;WEB_SESSIONS\&quot;] in BETA. | [optional] 
-**CampaignBrandLabel** | **string** | Campaign brand label for filtering. | [optional] 
 **AdGroupIds** | **List&lt;string&gt;** | List of ad group ids | [optional] 
 **AdGroupStatuses** | [**List&lt;AdGroupSummaryStatus&gt;**](AdGroupSummaryStatus.md) | List of values for filtering | [optional] 
-**AdIds** | **List&lt;string&gt;** | List of ad ids [This parameter is no supported for Product Item Level Reports] | [optional] 
-**AdStatuses** | [**List&lt;PinPromotionSummaryStatus&gt;**](PinPromotionSummaryStatus.md) | List of values for filtering [This parameter is not supported for Product Item Level Reports] | [optional] 
+**AdIds** | **List&lt;string&gt;** | List of ad ids. This parameter is not supported for Product Item level reports. | [optional] 
+**AdStatuses** | [**List&lt;PinPromotionSummaryStatus&gt;**](PinPromotionSummaryStatus.md) | List of values for filtering. This parameter is not supported for Product Item level reports. | [optional] 
+**AttributionTypes** | [**List&lt;ConversionReportAttributionType&gt;**](ConversionReportAttributionType.md) | List of attribution types for the conversion report. | [optional] 
+**CampaignBrandLabel** | **string** | Campaign brand label for filtering. | [optional] 
+**CampaignCustomLabel** | **string** | Campaign custom label for filtering. | [optional] 
+**CampaignIds** | **List&lt;string&gt;** | List of campaign ids | [optional] 
+**CampaignObjectiveTypes** | [**List&lt;CampaignObjectiveType&gt;**](CampaignObjectiveType.md) | List of values for filtering. [\&quot;WEB_SESSIONS\&quot;] is in BETA. | [optional] 
+**CampaignStatuses** | [**List&lt;CampaignSummaryStatus&gt;**](CampaignSummaryStatus.md) | List of status values for filtering | [optional] 
+**ClickWindowDays** | **ConversionAttributionWindowDays** | Number of days to use as the conversion attribution window for a pin click action. | [optional] 
+**Columns** | [**List&lt;ReportingColumnAsync&gt;**](ReportingColumnAsync.md) | Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports. | [optional] 
+**CombineTargetingTypes** | **bool** | Determines if the targeting types included in the request should be consolidated into a single breakdown. | [optional] [default to false]
+**ConversionReportTime** | **ConversionReportTimeType** | Date dimension for conversion metrics. | [optional] 
+**CustomConversionEventMetrics** | [**List&lt;CustomConversionEventMetrics&gt;**](CustomConversionEventMetrics.md) | List of advertiser-defined custom conversion event metrics to include in the report | [optional] 
+**EndHour** | **int** | Which hour of the end date to stop the report (inclusive). Only allowed for hourly reports. | [optional] 
+**EngagementWindowDays** | **ConversionAttributionWindowDays** | Number of days to use as the conversion attribution window for an engagement action. | [optional] 
+**Level** | **MetricsReportingLevel** | Level of the report | [optional] 
+**MetricsFilters** | [**List&lt;AdsAnalyticsMetricsFilter&gt;**](AdsAnalyticsMetricsFilter.md) | List of metrics filters | [optional] 
+**PrimarySort** | **PrimarySort** |  | [optional] 
 **ProductGroupIds** | **List&lt;string&gt;** | List of product group ids | [optional] 
 **ProductGroupStatuses** | [**List&lt;ProductGroupSummaryStatus&gt;**](ProductGroupSummaryStatus.md) | List of values for filtering | [optional] 
 **ProductItemIds** | **List&lt;string&gt;** | List of product item ids | [optional] 
-**TargetingTypes** | **List&lt;AdsAnalyticsCreateAsyncRequest.TargetingTypesEnum&gt;** | List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AUDIENCE_MULTIPLIER\&quot;] is only available in CAMPAIGN_TARGETING level. [\&quot;MEDIA_TYPE\&quot;] is only available in PRODUCT_ITEM_TARGETING level. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | [optional] 
-**MetricsFilters** | [**List&lt;AdsAnalyticsMetricsFilter&gt;**](AdsAnalyticsMetricsFilter.md) | List of metrics filters | [optional] 
-**CombineTargetingTypes** | **bool** | Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&amp;US. This feature is currently in BETA and is not available to all users. | [optional] [default to false]
-**CustomConversionEventMetrics** | [**List&lt;AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics&gt;**](AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics.md) | List of advertiser-defined custom conversion event metrics to include in the report | [optional] 
-**EndHour** | **int** | Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports. | [optional] 
-**PrimarySort** | **string** | Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. | [optional] 
-**ReportFormat** | **DataOutputFormat** | Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. | [optional] [default to "JSON"]
-**ReportingTimezone** | **ReportingTimeZone** | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] 
-**StartHour** | **int** | Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. | [optional] 
+**ReportFormat** | **DataOutputFormat** |  | [optional] 
+**ReportingTimezone** | **ReportingTimeZone** | Specify the timezone to be applied for the reporting. | [optional] 
+**StartHour** | **int** | Which hour of the start date to begin the report. Only allowed for hourly reports. | [optional] 
+**TargetingTypes** | [**List&lt;AdAdsAnalyticsAsyncTargetingTypes&gt;**](AdAdsAnalyticsAsyncTargetingTypes.md) | List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. | [optional] 
+**ViewWindowDays** | **ConversionAttributionWindowDays** | Number of days to use as the conversion attribution window for a view action. | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

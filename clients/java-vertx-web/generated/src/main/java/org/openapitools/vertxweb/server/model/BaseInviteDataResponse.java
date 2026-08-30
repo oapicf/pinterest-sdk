@@ -3,14 +3,17 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.openapitools.vertxweb.server.model.BaseInviteDataResponseInviteData;
 import org.openapitools.vertxweb.server.model.BusinessAccessUserSummary;
+import org.openapitools.vertxweb.server.model.InviteDataResponse;
 
+/**
+ * Common invite/request data returned by the business access endpoints.
+ **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BaseInviteDataResponse   {
   
   private String id;
-  private BaseInviteDataResponseInviteData inviteData;
+  private InviteDataResponse inviteData;
   private Boolean isReceivedInvite;
   private BusinessAccessUserSummary user;
 
@@ -18,7 +21,7 @@ public class BaseInviteDataResponse   {
 
   }
 
-  public BaseInviteDataResponse (String id, BaseInviteDataResponseInviteData inviteData, Boolean isReceivedInvite, BusinessAccessUserSummary user) {
+  public BaseInviteDataResponse (String id, InviteDataResponse inviteData, Boolean isReceivedInvite, BusinessAccessUserSummary user) {
     this.id = id;
     this.inviteData = inviteData;
     this.isReceivedInvite = isReceivedInvite;
@@ -36,10 +39,10 @@ public class BaseInviteDataResponse   {
 
     
   @JsonProperty("invite_data")
-  public BaseInviteDataResponseInviteData getInviteData() {
+  public InviteDataResponse getInviteData() {
     return inviteData;
   }
-  public void setInviteData(BaseInviteDataResponseInviteData inviteData) {
+  public void setInviteData(InviteDataResponse inviteData) {
     this.inviteData = inviteData;
   }
 
@@ -100,9 +103,6 @@ public class BaseInviteDataResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

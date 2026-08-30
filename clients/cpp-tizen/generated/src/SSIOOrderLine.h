@@ -1,7 +1,7 @@
 /*
  * SSIOOrderLine.h
  *
- * 
+ * A Salesforce SSIO order line.
  */
 
 #ifndef _SSIOOrderLine_H_
@@ -22,7 +22,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief A Salesforce SSIO order line.
  *
  *  \ingroup Models
  *
@@ -54,18 +54,18 @@ public:
 	/*! \brief Set The SFDC id for the terms
 	 */
 	void setAcceptedTermsId(std::string  accepted_terms_id);
-	/*! \brief Get The UTC timestamp (to the nearest sec) of when terms were accepted
+	/*! \brief Get The UTC timestamp (to the nearest second) when terms were accepted.
 	 */
 	std::string getAcceptedTermsTime();
 
-	/*! \brief Set The UTC timestamp (to the nearest sec) of when terms were accepted
+	/*! \brief Set The UTC timestamp (to the nearest second) when terms were accepted.
 	 */
 	void setAcceptedTermsTime(std::string  accepted_terms_time);
-	/*! \brief Get Ads manager OrderLineId
+	/*! \brief Get Ads manager order line id
 	 */
 	std::string getAdsManagerOrderLineId();
 
-	/*! \brief Set Ads manager OrderLineId
+	/*! \brief Set Ads manager order line id
 	 */
 	void setAdsManagerOrderLineId(std::string  ads_manager_order_line_id);
 	/*! \brief Get Agency link
@@ -75,11 +75,11 @@ public:
 	/*! \brief Set Agency link
 	 */
 	void setAgencyLink(std::string  agency_link);
-	/*! \brief Get Bill To Company name
+	/*! \brief Get Bill-to company name
 	 */
 	std::string getBillToCompanyName();
 
-	/*! \brief Set Bill To Company name
+	/*! \brief Set Bill-to company name
 	 */
 	void setBillToCompanyName(std::string  bill_to_company_name);
 	/*! \brief Get Billing contact email
@@ -103,11 +103,11 @@ public:
 	/*! \brief Set Billing contact last name
 	 */
 	void setBillingContactLastname(std::string  billing_contact_lastname);
-	/*! \brief Get If Budget order line, the budget amount.
+	/*! \brief Get If budget order line, the budget amount.
 	 */
 	long long getBudgetAmount();
 
-	/*! \brief Set If Budget order line, the budget amount.
+	/*! \brief Set If budget order line, the budget amount.
 	 */
 	void setBudgetAmount(long long  budget_amount);
 	/*! \brief Get 
@@ -124,11 +124,11 @@ public:
 	/*! \brief Set End date of the order line.
 	 */
 	void setEndDate(Date  end_date);
-	/*! \brief Get If Ongoing (perpetual) order line, the estimated monthly spend
+	/*! \brief Get If ongoing (perpetual) order line, the estimated monthly spend.
 	 */
 	long long getEstimatedMonthlySpend();
 
-	/*! \brief Set If Ongoing (perpetual) order line, the estimated monthly spend
+	/*! \brief Set If ongoing (perpetual) order line, the estimated monthly spend.
 	 */
 	void setEstimatedMonthlySpend(long long  estimated_monthly_spend);
 	/*! \brief Get Last modified date.
@@ -145,18 +145,18 @@ public:
 	/*! \brief Set Billing media email
 	 */
 	void setMediaContactEmail(std::string  media_contact_email);
-	/*! \brief Get Billing contact first name
+	/*! \brief Get Billing media contact first name
 	 */
 	std::string getMediaContactFirstname();
 
-	/*! \brief Set Billing contact first name
+	/*! \brief Set Billing media contact first name
 	 */
 	void setMediaContactFirstname(std::string  media_contact_firstname);
-	/*! \brief Get Billing contact first name
+	/*! \brief Get Billing media contact last name
 	 */
 	std::string getMediaContactLastname();
 
-	/*! \brief Set Billing contact first name
+	/*! \brief Set Billing media contact last name
 	 */
 	void setMediaContactLastname(std::string  media_contact_lastname);
 	/*! \brief Get The order name
@@ -180,18 +180,18 @@ public:
 	/*! \brief Set The Pinterest marketing partner name
 	 */
 	void setPmpName(std::string  pmp_name);
-	/*! \brief Get The po number
+	/*! \brief Get The PO number
 	 */
 	std::string getPoNumber();
 
-	/*! \brief Set The po number
+	/*! \brief Set The PO number
 	 */
 	void setPoNumber(std::string  po_number);
-	/*! \brief Get OrderLineId in SFDC
+	/*! \brief Get Order line id in SFDC
 	 */
 	std::string getSalesforceOrderLineId();
 
-	/*! \brief Set OrderLineId in SFDC
+	/*! \brief Set Order line id in SFDC
 	 */
 	void setSalesforceOrderLineId(std::string  salesforce_order_line_id);
 	/*! \brief Get Start date of the order line.

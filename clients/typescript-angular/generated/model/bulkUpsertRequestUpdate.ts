@@ -7,10 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { ScheduleUpdateRequest } from './scheduleUpdateRequest';
+import { BulkUpsertRequestUpdateCatalogProductGroupsItems } from './bulkUpsertRequestUpdateCatalogProductGroupsItems';
 import { CampaignUpdateRequest } from './campaignUpdateRequest';
 import { AdGroupUpdateRequest } from './adGroupUpdateRequest';
-import { KeywordUpdate } from './keywordUpdate';
-import { CatalogsProductGroupsUpdateRequest } from './catalogsProductGroupsUpdateRequest';
+import { KeywordUpdateGenerated } from './keywordUpdateGenerated';
 import { LabelBulkUpdateRequest } from './labelBulkUpdateRequest';
 import { ProductGroupPromotionUpdateRequest } from './productGroupPromotionUpdateRequest';
 import { AdUpdateRequest } from './adUpdateRequest';
@@ -23,9 +24,10 @@ export interface BulkUpsertRequestUpdate {
     ad_groups?: Array<AdGroupUpdateRequest>;
     ads?: Array<AdUpdateRequest>;
     campaigns?: Array<CampaignUpdateRequest>;
-    catalog_product_groups?: Array<CatalogsProductGroupsUpdateRequest>;
-    keywords?: Array<KeywordUpdate>;
+    catalog_product_groups?: Array<BulkUpsertRequestUpdateCatalogProductGroupsItems>;
+    keywords?: Array<KeywordUpdateGenerated>;
     labels?: Array<LabelBulkUpdateRequest>;
     product_groups?: Array<ProductGroupPromotionUpdateRequest>;
+    schedules?: Array<ScheduleUpdateRequest>;
 }
 

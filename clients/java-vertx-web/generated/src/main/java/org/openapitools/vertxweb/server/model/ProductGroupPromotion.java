@@ -5,9 +5,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.vertxweb.server.model.CollectionsHeaderType;
 import org.openapitools.vertxweb.server.model.CreativeType;
 import org.openapitools.vertxweb.server.model.EntityStatus;
 import org.openapitools.vertxweb.server.model.GridClickType;
+import org.openapitools.vertxweb.server.model.PreferredMediaType;
+import org.openapitools.vertxweb.server.model.ProductGroupPromotionCustomizableCTAType;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProductGroupPromotion   {
@@ -16,82 +19,20 @@ public class ProductGroupPromotion   {
   private Integer bidInMicroCurrency;
   private String catalogProductGroupId;
   private String catalogProductGroupName;
-
-
-  public enum CollectionsHeaderTypeEnum {
-    SHOP_THIS_COLLECTION("SHOP_THIS_COLLECTION"),
-    EXPLORE_THIS_COLLECTION("EXPLORE_THIS_COLLECTION"),
-    NO_HEADER("NO_HEADER"),
-    ON_SALE("ON_SALE"),
-    GET_DEAL("GET_DEAL");
-
-    private String value;
-
-    CollectionsHeaderTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private CollectionsHeaderTypeEnum collectionsHeaderType;
+  private CollectionsHeaderType collectionsHeaderType;
   private String collectionsHeroDestinationUrl;
   private String collectionsHeroPinId;
   private CreativeType creativeType;
-
-
-  public enum CustomizableCtaTypeEnum {
-    SHOP_NOW("SHOP_NOW"),
-    BOOK_NOW("BOOK_NOW"),
-    ON_SALE("ON_SALE"),
-    GET_DEAL("GET_DEAL"),
-    BUY_ONLINE_PICKUP_IN_STORE("BUY_ONLINE_PICKUP_IN_STORE");
-
-    private String value;
-
-    CustomizableCtaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private CustomizableCtaTypeEnum customizableCtaType;
+  private ProductGroupPromotionCustomizableCTAType customizableCtaType;
   private String definition;
   private GridClickType gridClickType;
   private String id;
   private Boolean included;
   private Boolean isGenerateBackground;
+  private Boolean isImageAutoResizing;
   private Boolean isMdl;
   private String parentId;
-
-
-  public enum PreferredMediaTypeEnum {
-    VIDEO("VIDEO"),
-    IMAGE("IMAGE");
-
-    private String value;
-
-    PreferredMediaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private PreferredMediaTypeEnum preferredMediaType;
+  private PreferredMediaType preferredMediaType;
   private String relativeDefinition;
   private String selectedImageTag;
   private String selectedVideoTag;
@@ -104,7 +45,7 @@ public class ProductGroupPromotion   {
 
   }
 
-  public ProductGroupPromotion (String adGroupId, Integer bidInMicroCurrency, String catalogProductGroupId, String catalogProductGroupName, CollectionsHeaderTypeEnum collectionsHeaderType, String collectionsHeroDestinationUrl, String collectionsHeroPinId, CreativeType creativeType, CustomizableCtaTypeEnum customizableCtaType, String definition, GridClickType gridClickType, String id, Boolean included, Boolean isGenerateBackground, Boolean isMdl, String parentId, PreferredMediaTypeEnum preferredMediaType, String relativeDefinition, String selectedImageTag, String selectedVideoTag, String slideshowCollectionsDescription, String slideshowCollectionsTitle, EntityStatus status, String trackingUrl) {
+  public ProductGroupPromotion (String adGroupId, Integer bidInMicroCurrency, String catalogProductGroupId, String catalogProductGroupName, CollectionsHeaderType collectionsHeaderType, String collectionsHeroDestinationUrl, String collectionsHeroPinId, CreativeType creativeType, ProductGroupPromotionCustomizableCTAType customizableCtaType, String definition, GridClickType gridClickType, String id, Boolean included, Boolean isGenerateBackground, Boolean isImageAutoResizing, Boolean isMdl, String parentId, PreferredMediaType preferredMediaType, String relativeDefinition, String selectedImageTag, String selectedVideoTag, String slideshowCollectionsDescription, String slideshowCollectionsTitle, EntityStatus status, String trackingUrl) {
     this.adGroupId = adGroupId;
     this.bidInMicroCurrency = bidInMicroCurrency;
     this.catalogProductGroupId = catalogProductGroupId;
@@ -119,6 +60,7 @@ public class ProductGroupPromotion   {
     this.id = id;
     this.included = included;
     this.isGenerateBackground = isGenerateBackground;
+    this.isImageAutoResizing = isImageAutoResizing;
     this.isMdl = isMdl;
     this.parentId = parentId;
     this.preferredMediaType = preferredMediaType;
@@ -169,10 +111,10 @@ public class ProductGroupPromotion   {
 
     
   @JsonProperty("collections_header_type")
-  public CollectionsHeaderTypeEnum getCollectionsHeaderType() {
+  public CollectionsHeaderType getCollectionsHeaderType() {
     return collectionsHeaderType;
   }
-  public void setCollectionsHeaderType(CollectionsHeaderTypeEnum collectionsHeaderType) {
+  public void setCollectionsHeaderType(CollectionsHeaderType collectionsHeaderType) {
     this.collectionsHeaderType = collectionsHeaderType;
   }
 
@@ -205,10 +147,10 @@ public class ProductGroupPromotion   {
 
     
   @JsonProperty("customizable_cta_type")
-  public CustomizableCtaTypeEnum getCustomizableCtaType() {
+  public ProductGroupPromotionCustomizableCTAType getCustomizableCtaType() {
     return customizableCtaType;
   }
-  public void setCustomizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
+  public void setCustomizableCtaType(ProductGroupPromotionCustomizableCTAType customizableCtaType) {
     this.customizableCtaType = customizableCtaType;
   }
 
@@ -258,6 +200,15 @@ public class ProductGroupPromotion   {
   }
 
     
+  @JsonProperty("is_image_auto_resizing")
+  public Boolean getIsImageAutoResizing() {
+    return isImageAutoResizing;
+  }
+  public void setIsImageAutoResizing(Boolean isImageAutoResizing) {
+    this.isImageAutoResizing = isImageAutoResizing;
+  }
+
+    
   @JsonProperty("is_mdl")
   public Boolean getIsMdl() {
     return isMdl;
@@ -277,10 +228,10 @@ public class ProductGroupPromotion   {
 
     
   @JsonProperty("preferred_media_type")
-  public PreferredMediaTypeEnum getPreferredMediaType() {
+  public PreferredMediaType getPreferredMediaType() {
     return preferredMediaType;
   }
-  public void setPreferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+  public void setPreferredMediaType(PreferredMediaType preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
   }
 
@@ -371,6 +322,7 @@ public class ProductGroupPromotion   {
         Objects.equals(id, productGroupPromotion.id) &&
         Objects.equals(included, productGroupPromotion.included) &&
         Objects.equals(isGenerateBackground, productGroupPromotion.isGenerateBackground) &&
+        Objects.equals(isImageAutoResizing, productGroupPromotion.isImageAutoResizing) &&
         Objects.equals(isMdl, productGroupPromotion.isMdl) &&
         Objects.equals(parentId, productGroupPromotion.parentId) &&
         Objects.equals(preferredMediaType, productGroupPromotion.preferredMediaType) &&
@@ -385,7 +337,7 @@ public class ProductGroupPromotion   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroupId, bidInMicroCurrency, catalogProductGroupId, catalogProductGroupName, collectionsHeaderType, collectionsHeroDestinationUrl, collectionsHeroPinId, creativeType, customizableCtaType, definition, gridClickType, id, included, isGenerateBackground, isMdl, parentId, preferredMediaType, relativeDefinition, selectedImageTag, selectedVideoTag, slideshowCollectionsDescription, slideshowCollectionsTitle, status, trackingUrl);
+    return Objects.hash(adGroupId, bidInMicroCurrency, catalogProductGroupId, catalogProductGroupName, collectionsHeaderType, collectionsHeroDestinationUrl, collectionsHeroPinId, creativeType, customizableCtaType, definition, gridClickType, id, included, isGenerateBackground, isImageAutoResizing, isMdl, parentId, preferredMediaType, relativeDefinition, selectedImageTag, selectedVideoTag, slideshowCollectionsDescription, slideshowCollectionsTitle, status, trackingUrl);
   }
 
   @Override
@@ -407,6 +359,7 @@ public class ProductGroupPromotion   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    included: ").append(toIndentedString(included)).append("\n");
     sb.append("    isGenerateBackground: ").append(toIndentedString(isGenerateBackground)).append("\n");
+    sb.append("    isImageAutoResizing: ").append(toIndentedString(isImageAutoResizing)).append("\n");
     sb.append("    isMdl: ").append(toIndentedString(isMdl)).append("\n");
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    preferredMediaType: ").append(toIndentedString(preferredMediaType)).append("\n");
@@ -426,9 +379,6 @@ public class ProductGroupPromotion   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

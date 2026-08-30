@@ -5,7 +5,7 @@ const Service = require('./Service');
 * Get integration metadata
 * Get integration metadata by ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 *
-* id String Integration ID.
+* id String Integration record ID.
 * returns IntegrationRecord
 * */
 const integrations/get_by_id = ({ id }) => new Promise(
@@ -27,7 +27,7 @@ const integrations/get_by_id = ({ id }) => new Promise(
 * Get integration metadata list. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 *
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns integrations_get_list_200_response
 * */
 const integrations/get_list = ({ bookmark, pageUnderscoresize }) => new Promise(
@@ -50,7 +50,7 @@ const integrations/get_list = ({ bookmark, pageUnderscoresize }) => new Promise(
 * Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 *
 * externalUnderscorebusinessUnderscoreid String External business ID for the integration.
-* no response value expected for this operation
+* returns IntegrationMetadata
 * */
 const integrations_commerce/del = ({ externalUnderscorebusinessUnderscoreid }) => new Promise(
   async (resolve, reject) => {
@@ -92,15 +92,15 @@ const integrations_commerce/get = ({ externalUnderscorebusinessUnderscoreid }) =
 * Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 *
 * externalUnderscorebusinessUnderscoreid String External business ID for the integration.
-* integrationRequestPatch IntegrationRequestPatch Parameters to get create/update the Integration Metadata
+* integrationMetadataUpdate IntegrationMetadataUpdate 
 * returns IntegrationMetadata
 * */
-const integrations_commerce/patch = ({ externalUnderscorebusinessUnderscoreid, integrationRequestPatch }) => new Promise(
+const integrations_commerce/patch = ({ externalUnderscorebusinessUnderscoreid, integrationMetadataUpdate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         externalUnderscorebusinessUnderscoreid,
-        integrationRequestPatch,
+        integrationMetadataUpdate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -114,14 +114,14 @@ const integrations_commerce/patch = ({ externalUnderscorebusinessUnderscoreid, i
 * Create commerce integration
 * Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 *
-* integrationRequest IntegrationRequest Parameters to get create/update the Integration Metadata
+* integrationMetadataCreate IntegrationMetadataCreate 
 * returns IntegrationMetadata
 * */
-const integrations_commerce/post = ({ integrationRequest }) => new Promise(
+const integrations_commerce/post = ({ integrationMetadataCreate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
-        integrationRequest,
+        integrationMetadataCreate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -135,14 +135,14 @@ const integrations_commerce/post = ({ integrationRequest }) => new Promise(
 * Receives batched logs from integration applications.
 * This endpoint receives batched logs from integration applications on partner platforms. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 *
-* integrationLogsRequest IntegrationLogsRequest Ingest log information from external integration application.
+* integrationLogsRequestCreate IntegrationLogsRequestCreate 
 * returns IntegrationLogsSuccessResponse
 * */
-const integrations_logs/post = ({ integrationLogsRequest }) => new Promise(
+const integrations_logs/post = ({ integrationLogsRequestCreate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
-        integrationLogsRequest,
+        integrationLogsRequestCreate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(

@@ -1,0 +1,13 @@
+# CatalogsProductGroupUpdateManyRequestItemsOneOfItems0
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+| **description** | **String** |  | [optional] [default to null] |
+| **filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | [optional] [default to null] |
+| **is\_featured** | **Boolean** | boolean indicator of whether the product group is being featured or not | [optional] [default to null] |
+| **name** | **String** |  | [optional] [default to null] |
+| **id** | **String** | ID of the product group. | [default to null] |
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

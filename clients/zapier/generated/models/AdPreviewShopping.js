@@ -1,4 +1,6 @@
 const utils = require('../utils/utils');
+const AdShoppingPreviewCreativeType = require('../models/AdShoppingPreviewCreativeType');
+const BasePreferredMediaType = require('../models/BasePreferredMediaType');
 const CustomizableCTAType = require('../models/CustomizableCTAType');
 
 module.exports = {
@@ -13,15 +15,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}creative_type`,
-                label: `Ad format of the shopping ad preview. - [${labelPrefix}creative_type]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'SHOPPING',
-                    'CAROUSEL',
-                    'COLLECTION',
-                    'REGULAR',
-                ],
+                ...AdShoppingPreviewCreativeType.fields(`${keyPrefix}creative_type`, isInput),
             },
             {
                 key: `${keyPrefix}customizable_cta_type`,
@@ -54,12 +48,12 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}preferred_media_type`,
-                label: `Preferred media type. - [${labelPrefix}preferred_media_type]`,
-                type: 'string',
-                choices: [
-                    'VIDEO',
-                    'IMAGE',
-                ],
+                ...BasePreferredMediaType.fields(`${keyPrefix}preferred_media_type`, isInput),
+            },
+            {
+                key: `${keyPrefix}show_promotion`,
+                label: `Include promotion data in preview when available on catalog item. Defaults to false. - [${labelPrefix}show_promotion]`,
+                type: 'boolean',
             },
             {
                 key: `${keyPrefix}video_tag`,
@@ -80,6 +74,7 @@ module.exports = {
             'image_tag': bundle.inputData?.[`${keyPrefix}image_tag`],
             'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'preferred_media_type': bundle.inputData?.[`${keyPrefix}preferred_media_type`],
+            'show_promotion': bundle.inputData?.[`${keyPrefix}show_promotion`],
             'video_tag': bundle.inputData?.[`${keyPrefix}video_tag`],
         }
     },

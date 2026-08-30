@@ -14,11 +14,11 @@ static business_access_user_summary_t *business_access_user_summary_create_inter
     if (!business_access_user_summary_local_var) {
         return NULL;
     }
+    memset(business_access_user_summary_local_var, 0, sizeof(business_access_user_summary_t));
+    business_access_user_summary_local_var->_library_owned = 1;
     business_access_user_summary_local_var->email = email;
     business_access_user_summary_local_var->id = id;
     business_access_user_summary_local_var->username = username;
-
-    business_access_user_summary_local_var->_library_owned = 1;
     return business_access_user_summary_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) business_access_user_summary_t *business_access_user
     char *id,
     char *username
     ) {
-    return business_access_user_summary_create_internal (
+    business_access_user_summary_t *result = business_access_user_summary_create_internal (
         email,
         id,
         username
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void business_access_user_summary_free(business_access_user_summary_t *business_access_user_summary) {
@@ -96,6 +99,12 @@ business_access_user_summary_t *business_access_user_summary_parseFromJSON(cJSON
 
     business_access_user_summary_t *business_access_user_summary_local_var = NULL;
 
+    char *email_local_str = NULL;
+
+    char *id_local_str = NULL;
+
+    char *username_local_str = NULL;
+
     // business_access_user_summary->email
     cJSON *email = cJSON_GetObjectItemCaseSensitive(business_access_user_summaryJSON, "email");
     if (cJSON_IsNull(email)) {
@@ -133,14 +142,34 @@ business_access_user_summary_t *business_access_user_summary_parseFromJSON(cJSON
     }
 
 
+    if (email && !cJSON_IsNull(email)) email_local_str = strdup(email->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (username && !cJSON_IsNull(username)) username_local_str = strdup(username->valuestring);
+
     business_access_user_summary_local_var = business_access_user_summary_create_internal (
-        email && !cJSON_IsNull(email) ? strdup(email->valuestring) : NULL,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        username && !cJSON_IsNull(username) ? strdup(username->valuestring) : NULL
+        email_local_str,
+        id_local_str,
+        username_local_str
         );
+
+    if (!business_access_user_summary_local_var) {
+        goto end;
+    }
 
     return business_access_user_summary_local_var;
 end:
+    if (email_local_str) {
+        free(email_local_str);
+        email_local_str = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (username_local_str) {
+        free(username_local_str);
+        username_local_str = NULL;
+    }
     return NULL;
 
 }

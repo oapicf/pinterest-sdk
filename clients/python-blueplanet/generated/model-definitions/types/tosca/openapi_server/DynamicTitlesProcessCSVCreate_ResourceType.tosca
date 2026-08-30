@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DynamicTitlesProcessCSVCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DynamicTitlesProcessCSVCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  DynamicTitlesProcessCSVCreate {
+    title = DynamicTitlesProcessCSVCreate
+    description = DynamicTitlesProcessCSVCreate
+    derivedFrom = Root
+    properties {
+        request_id {
+          type =  string
+          description = "The request_id returned from the GET uploads endpoint."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DynamicTitlesProcessCSVCreate {
+    title = DynamicTitlesProcessCSVCreate
+    description = DynamicTitlesProcessCSVCreate
+    implements = openapi_server.resourceTypes.DynamicTitlesProcessCSVCreate
+
+  }
+}

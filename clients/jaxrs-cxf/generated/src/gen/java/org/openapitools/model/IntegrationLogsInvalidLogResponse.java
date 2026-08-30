@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.IntegrationLogsInvalidLogResponseRejectedLogsInner;
+import org.openapitools.model.IntegrationLogsInvalidLogResponseRejectedLogsItems;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -23,26 +23,26 @@ public class IntegrationLogsInvalidLogResponse  {
 
   @Valid
 
-  private List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = new ArrayList<>();
+  private List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs = new ArrayList<>();
  /**
    * Get rejectedLogs
    * @return rejectedLogs
   **/
   @JsonProperty("rejected_logs")
-  public List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> getRejectedLogs() {
+  public List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> getRejectedLogs() {
     return rejectedLogs;
   }
 
-  public void setRejectedLogs(List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
+  public void setRejectedLogs(List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs) {
     this.rejectedLogs = rejectedLogs;
   }
 
-  public IntegrationLogsInvalidLogResponse rejectedLogs(List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
+  public IntegrationLogsInvalidLogResponse rejectedLogs(List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs) {
     this.rejectedLogs = rejectedLogs;
     return this;
   }
 
-  public IntegrationLogsInvalidLogResponse addRejectedLogsItem(IntegrationLogsInvalidLogResponseRejectedLogsInner rejectedLogsItem) {
+  public IntegrationLogsInvalidLogResponse addRejectedLogsItem(IntegrationLogsInvalidLogResponseRejectedLogsItems rejectedLogsItem) {
     this.rejectedLogs.add(rejectedLogsItem);
     return this;
   }
@@ -79,10 +79,7 @@ public class IntegrationLogsInvalidLogResponse  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

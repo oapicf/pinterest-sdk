@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | **string** | Catalog id pertaining to the hotel product group. | 
+**catalogId** | **string** | Catalog ID pertaining to the product group. | 
 **catalogType** | **string** |  | 
 **filters** | [**OpenAPI\Server\Model\CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
 

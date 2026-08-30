@@ -235,7 +235,7 @@ ConversionTagResponse::getCodeSnippet()
 }
 
 void
-ConversionTagResponse::setCodeSnippet(std::string  code_snippet)
+ConversionTagResponse::setCodeSnippet(std::string code_snippet)
 {
 	this->code_snippet = code_snippet;
 }
@@ -247,7 +247,7 @@ ConversionTagResponse::getConfigs()
 }
 
 void
-ConversionTagResponse::setConfigs(ConversionTagConfigs  configs)
+ConversionTagResponse::setConfigs(ConversionTagConfigs configs)
 {
 	this->configs = configs;
 }
@@ -259,7 +259,7 @@ ConversionTagResponse::getEnhancedMatchStatus()
 }
 
 void
-ConversionTagResponse::setEnhancedMatchStatus(EnhancedMatchStatusType  enhanced_match_status)
+ConversionTagResponse::setEnhancedMatchStatus(EnhancedMatchStatusType enhanced_match_status)
 {
 	this->enhanced_match_status = enhanced_match_status;
 }
@@ -271,7 +271,7 @@ ConversionTagResponse::getId()
 }
 
 void
-ConversionTagResponse::setId(std::string  id)
+ConversionTagResponse::setId(std::string id)
 {
 	this->id = id;
 }
@@ -283,7 +283,7 @@ ConversionTagResponse::getLastFiredTimeMs()
 }
 
 void
-ConversionTagResponse::setLastFiredTimeMs(long  last_fired_time_ms)
+ConversionTagResponse::setLastFiredTimeMs(long last_fired_time_ms)
 {
 	this->last_fired_time_ms = last_fired_time_ms;
 }
@@ -295,7 +295,7 @@ ConversionTagResponse::getName()
 }
 
 void
-ConversionTagResponse::setName(std::string  name)
+ConversionTagResponse::setName(std::string name)
 {
 	this->name = name;
 }
@@ -307,7 +307,7 @@ ConversionTagResponse::getVersion()
 }
 
 void
-ConversionTagResponse::setVersion(std::string  version)
+ConversionTagResponse::setVersion(std::string version)
 {
 	this->version = version;
 }
@@ -319,7 +319,7 @@ ConversionTagResponse::getAdAccountId()
 }
 
 void
-ConversionTagResponse::setAdAccountId(std::string  ad_account_id)
+ConversionTagResponse::setAdAccountId(std::string ad_account_id)
 {
 	this->ad_account_id = ad_account_id;
 }
@@ -331,7 +331,7 @@ ConversionTagResponse::getStatus()
 }
 
 void
-ConversionTagResponse::setStatus(EntityStatus  status)
+ConversionTagResponse::setStatus(EntityStatus status)
 {
 	this->status = status;
 }

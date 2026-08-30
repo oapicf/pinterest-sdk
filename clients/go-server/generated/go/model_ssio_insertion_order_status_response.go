@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,6 +14,7 @@ package openapi
 
 
 
+// SsioInsertionOrderStatusResponse - SSIO insertion order status response for a single pin order id lookup.
 type SsioInsertionOrderStatusResponse struct {
 
 	// Salesforce insertion order creation time
@@ -26,7 +27,8 @@ type SsioInsertionOrderStatusResponse struct {
 	Status string `json:"status,omitempty"`
 }
 
-// AssertSsioInsertionOrderStatusResponseRequired checks if the required fields are not zero-ed
+// AssertSsioInsertionOrderStatusResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertSsioInsertionOrderStatusResponseRequired(obj SsioInsertionOrderStatusResponse) error {
 	return nil
 }

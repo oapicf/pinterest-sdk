@@ -1,0 +1,40 @@
+
+
+/**
+ * A single row in a multi-field customer list (v2 format).
+ */
+export interface CustomerListRecordRow { 
+  /**
+   * Email address (plain or hashed with SHA1, SHA256, or MD5).
+   */
+  email?: string;
+  /**
+   * External ID identifier (not hashed).
+   */
+  external_id?: string;
+  /**
+   * Hashed phone number (hashed with SHA1, SHA256, or MD5).
+   */
+  hashed_phone_number?: string;
+  /**
+   * Hashed pinner ID (hashed with SHA1, SHA256, or MD5).
+   */
+  hashed_pinner_id?: string;
+  /**
+   * IP address (not hashed).
+   */
+  ip_address?: string;
+  /**
+   * LiveRamp envelope identifier (Base64-encoded, not hashed).
+   */
+  liveramp_envelope?: string;
+  /**
+   * Mobile advertising ID (plain or hashed with SHA1, SHA256, or MD5).
+   */
+  maid?: string;
+  /**
+   * User agent string (not hashed).
+   */
+  user_agent?: string;
+}
+

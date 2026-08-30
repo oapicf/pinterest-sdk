@@ -6,8 +6,8 @@ using namespace Tiny;
 
 CatalogsHotelItemsBatch::CatalogsHotelItemsBatch()
 {
-	batch_id = std::string();
-	catalog_type = CatalogsType();
+	batch_id = null;
+	catalog_type = std::string();
 	completed_time = std::string();
 	created_time = std::string();
 	items = std::list<HotelProcessingRecord>();
@@ -50,9 +50,8 @@ CatalogsHotelItemsBatch::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -137,8 +136,8 @@ CatalogsHotelItemsBatch::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -188,19 +187,19 @@ CatalogsHotelItemsBatch::getBatchId()
 }
 
 void
-CatalogsHotelItemsBatch::setBatchId(std::string  batch_id)
+CatalogsHotelItemsBatch::setBatchId(std::string batch_id)
 {
 	this->batch_id = batch_id;
 }
 
-CatalogsType
+std::string
 CatalogsHotelItemsBatch::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsHotelItemsBatch::setCatalogType(CatalogsType  catalog_type)
+CatalogsHotelItemsBatch::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -212,7 +211,7 @@ CatalogsHotelItemsBatch::getCompletedTime()
 }
 
 void
-CatalogsHotelItemsBatch::setCompletedTime(std::string  completed_time)
+CatalogsHotelItemsBatch::setCompletedTime(std::string completed_time)
 {
 	this->completed_time = completed_time;
 }
@@ -224,7 +223,7 @@ CatalogsHotelItemsBatch::getCreatedTime()
 }
 
 void
-CatalogsHotelItemsBatch::setCreatedTime(std::string  created_time)
+CatalogsHotelItemsBatch::setCreatedTime(std::string created_time)
 {
 	this->created_time = created_time;
 }
@@ -236,7 +235,7 @@ CatalogsHotelItemsBatch::getItems()
 }
 
 void
-CatalogsHotelItemsBatch::setItems(std::list <HotelProcessingRecord> items)
+CatalogsHotelItemsBatch::setItems(std::list<HotelProcessingRecord> items)
 {
 	this->items = items;
 }
@@ -248,7 +247,7 @@ CatalogsHotelItemsBatch::getStatus()
 }
 
 void
-CatalogsHotelItemsBatch::setStatus(BatchOperationStatus  status)
+CatalogsHotelItemsBatch::setStatus(BatchOperationStatus status)
 {
 	this->status = status;
 }

@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **character** |  | [optional] 
-**items** | [**array[Audience]**](Audience.md) |  | 
+**items** | [**array[AdAccountsAudience]**](AdAccountsAudience.md) |  | 
 
 

@@ -15,7 +15,7 @@
 
 typedef struct create_invites_results_response_array_t create_invites_results_response_array_t;
 
-#include "create_invites_results_response_array_items_inner.h"
+#include "invite_action_result_item.h"
 
 
 

@@ -137,8 +137,9 @@ class _$LeadFormQuestionSerializer implements PrimitiveSerializer<LeadFormQuesti
         case r'question_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(LeadFormQuestionType),
-          ) as LeadFormQuestionType;
+            specifiedType: const FullType.nullable(LeadFormQuestionType),
+          ) as LeadFormQuestionType?;
+          if (valueDes == null) continue;
           result.questionType = valueDes;
           break;
         default:

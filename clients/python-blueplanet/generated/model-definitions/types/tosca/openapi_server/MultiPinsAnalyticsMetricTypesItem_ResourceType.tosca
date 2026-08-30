@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server MultiPinsAnalyticsMetricTypesItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a MultiPinsAnalyticsMetricTypesItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  MultiPinsAnalyticsMetricTypesItem {
+    title = MultiPinsAnalyticsMetricTypesItem
+    description = MultiPinsAnalyticsMetricTypesItem
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  MultiPinsAnalyticsMetricTypesItem {
+    title = MultiPinsAnalyticsMetricTypesItem
+    description = MultiPinsAnalyticsMetricTypesItem
+    implements = openapi_server.resourceTypes.MultiPinsAnalyticsMetricTypesItem
+
+  }
+}

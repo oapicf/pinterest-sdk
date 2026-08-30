@@ -11,7 +11,7 @@ The class is defined in **[CatalogsRetailReportStatsParameters.java](../../src/m
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
-**report** | [`CatalogsHotelReportStatsParametersReport`](CatalogsHotelReportStatsParametersReport.md) |  | 
+**report** | [`CatalogsRetailReportStatsParametersReport`](CatalogsRetailReportStatsParametersReport.md) |  | 
 
 ## CatalogTypeEnum
 

@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** |  | [optional] |
-| **items** | [**Array&lt;AdResponse&gt;**](AdResponse.md) |  |  |
+| **items** | [**Array&lt;Ad&gt;**](Ad.md) |  |  |
 
 ## Example
 

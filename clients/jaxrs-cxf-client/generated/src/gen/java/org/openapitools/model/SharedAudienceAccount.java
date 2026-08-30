@@ -1,5 +1,6 @@
 package org.openapitools.model;
 
+import org.openapitools.model.AudienceAccountType;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -22,42 +23,12 @@ public class SharedAudienceAccount  {
 
   private String accountName;
 
-public enum AccountTypeEnum {
-
-AD_ACCOUNT(String.valueOf("AD_ACCOUNT")), BUSINESS_ACCOUNT(String.valueOf("BUSINESS_ACCOUNT"));
-
-
-    private String value;
-
-    AccountTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static AccountTypeEnum fromValue(String value) {
-        for (AccountTypeEnum b : AccountTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
   * account type
   */
   @ApiModelProperty(required = true, value = "account type")
 
-  private AccountTypeEnum accountType;
+  private AudienceAccountType accountType;
 
  /**
   * Epoch timestamp in seconds for the shared audience event
@@ -106,18 +77,15 @@ AD_ACCOUNT(String.valueOf("AD_ACCOUNT")), BUSINESS_ACCOUNT(String.valueOf("BUSIN
    * @return accountType
   **/
   @JsonProperty("account_type")
-  public String getAccountType() {
-    if (accountType == null) {
-      return null;
-    }
-    return accountType.value();
+  public AudienceAccountType getAccountType() {
+    return accountType;
   }
 
-  public void setAccountType(AccountTypeEnum accountType) {
+  public void setAccountType(AudienceAccountType accountType) {
     this.accountType = accountType;
   }
 
-  public SharedAudienceAccount accountType(AccountTypeEnum accountType) {
+  public SharedAudienceAccount accountType(AudienceAccountType accountType) {
     this.accountType = accountType;
     return this;
   }
@@ -178,10 +146,7 @@ AD_ACCOUNT(String.valueOf("AD_ACCOUNT")), BUSINESS_ACCOUNT(String.valueOf("BUSIN
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -6,6 +6,7 @@ goog.provide('API.Client.UserBusinessRoleBinding');
 API.Client.UserBusinessRoleBinding = function() {}
 
 /**
+ * Ad accounts and profiles the business member/partner has access to.
  * @type {!API.Client.BusinessMemberAssetsSummary}
  * @export
  */
@@ -47,7 +48,7 @@ API.Client.UserBusinessRoleBinding.prototype.createdTime;
 API.Client.UserBusinessRoleBinding.prototype.id;
 
 /**
- * This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
+ * This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
  * @type {!boolean}
  * @export
  */

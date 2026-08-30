@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -11,38 +12,47 @@ import org.openapitools.model.SSIOAccountAddress;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * SSIOAccountItem
+ * Salesforce account item with billing and terms information.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "SSIOAccountItem", description = "Salesforce account item with billing and terms information.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SSIOAccountItem {
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid SSIOAccountAddress> addresses = new ArrayList<>();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String ioTerms;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String ioTermsId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String ioType;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String rowTerms;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String rowTermsId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String usTerms;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String usTermsId;
 
   public SSIOAccountItem addresses(List<@Valid SSIOAccountAddress> addresses) {
@@ -69,6 +79,7 @@ public class SSIOAccountItem {
     return addresses;
   }
 
+  @JsonProperty("addresses")
   public void setAddresses(List<@Valid SSIOAccountAddress> addresses) {
     this.addresses = addresses;
   }
@@ -89,6 +100,7 @@ public class SSIOAccountItem {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(@Nullable String id) {
     this.id = id;
   }
@@ -109,6 +121,7 @@ public class SSIOAccountItem {
     return ioTerms;
   }
 
+  @JsonProperty("io_terms")
   public void setIoTerms(@Nullable String ioTerms) {
     this.ioTerms = ioTerms;
   }
@@ -129,6 +142,7 @@ public class SSIOAccountItem {
     return ioTermsId;
   }
 
+  @JsonProperty("io_terms_id")
   public void setIoTermsId(@Nullable String ioTermsId) {
     this.ioTermsId = ioTermsId;
   }
@@ -149,6 +163,7 @@ public class SSIOAccountItem {
     return ioType;
   }
 
+  @JsonProperty("io_type")
   public void setIoType(@Nullable String ioType) {
     this.ioType = ioType;
   }
@@ -163,12 +178,13 @@ public class SSIOAccountItem {
    * @return rowTerms
    */
   
-  @Schema(name = "row_terms", example = "The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", description = "Salesforce text for Rest of the World Terms and Conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "row_terms", example = "  The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", description = "Salesforce text for Rest of the World Terms and Conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("row_terms")
   public @Nullable String getRowTerms() {
     return rowTerms;
   }
 
+  @JsonProperty("row_terms")
   public void setRowTerms(@Nullable String rowTerms) {
     this.rowTerms = rowTerms;
   }
@@ -189,6 +205,7 @@ public class SSIOAccountItem {
     return rowTermsId;
   }
 
+  @JsonProperty("row_terms_id")
   public void setRowTermsId(@Nullable String rowTermsId) {
     this.rowTermsId = rowTermsId;
   }
@@ -209,6 +226,7 @@ public class SSIOAccountItem {
     return usTerms;
   }
 
+  @JsonProperty("us_terms")
   public void setUsTerms(@Nullable String usTerms) {
     this.usTerms = usTerms;
   }
@@ -229,6 +247,7 @@ public class SSIOAccountItem {
     return usTermsId;
   }
 
+  @JsonProperty("us_terms_id")
   public void setUsTermsId(@Nullable String usTermsId) {
     this.usTermsId = usTermsId;
   }
@@ -279,11 +298,8 @@ public class SSIOAccountItem {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

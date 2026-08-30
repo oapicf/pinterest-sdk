@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **catalog_type** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [optional] 
-**name** | **str** |  | [optional] 
+**name** | **str** | Name of catalog product group | [optional] 
 
 ## Example
 

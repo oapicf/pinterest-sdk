@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.CatalogsRetailBatchRequestItemsInner;
+import org.openapitools.vertxweb.server.model.CatalogsRetailBatchRequestItemsItems;
 import org.openapitools.vertxweb.server.model.Country;
 
 /**
@@ -37,7 +37,7 @@ public class CatalogsRetailBatchRequest   {
 
   private CatalogTypeEnum catalogType;
   private Country country;
-  private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
+  private List<CatalogsRetailBatchRequestItemsItems> items = new ArrayList<>();
 
 
   public enum LanguageEnum {
@@ -130,7 +130,7 @@ public class CatalogsRetailBatchRequest   {
     NB("NB"),
     NE("NE"),
     NL2("NL"),
-    NO("NO"),
+    FALSE("false"),
     PL("PL"),
     PT("PT"),
     RO("RO"),
@@ -168,7 +168,7 @@ public class CatalogsRetailBatchRequest   {
 
   }
 
-  public CatalogsRetailBatchRequest (String catalogId, CatalogTypeEnum catalogType, Country country, List<CatalogsRetailBatchRequestItemsInner> items, LanguageEnum language) {
+  public CatalogsRetailBatchRequest (String catalogId, CatalogTypeEnum catalogType, Country country, List<CatalogsRetailBatchRequestItemsItems> items, LanguageEnum language) {
     this.catalogId = catalogId;
     this.catalogType = catalogType;
     this.country = country;
@@ -205,10 +205,10 @@ public class CatalogsRetailBatchRequest   {
 
     
   @JsonProperty("items")
-  public List<CatalogsRetailBatchRequestItemsInner> getItems() {
+  public List<CatalogsRetailBatchRequestItemsItems> getItems() {
     return items;
   }
-  public void setItems(List<CatalogsRetailBatchRequestItemsInner> items) {
+  public void setItems(List<CatalogsRetailBatchRequestItemsItems> items) {
     this.items = items;
   }
 
@@ -262,9 +262,6 @@ public class CatalogsRetailBatchRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

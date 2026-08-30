@@ -7,7 +7,7 @@
 #' @title CatalogsHotelAttributes
 #' @description CatalogsHotelAttributes Class
 #' @format An \code{R6Class} generator object
-#' @field address  \link{CatalogsHotelAddress} [optional]
+#' @field address Hotel address \link{CatalogsHotelAddress} [optional]
 #' @field base_price Base price of the hotel room per night followed by the ISO currency code character [optional]
 #' @field brand The brand to which this hotel belongs to. character [optional]
 #' @field category The type of property. The category can be any type of internal description desired. character [optional]
@@ -17,15 +17,16 @@
 #' @field custom_label_3 Custom grouping of hotels character [optional]
 #' @field custom_label_4 Custom grouping of hotels character [optional]
 #' @field description Brief description of the hotel. character [optional]
-#' @field guest_ratings  \link{CatalogsHotelGuestRatings} [optional]
+#' @field guest_ratings If specified, you must provide all properties \link{CatalogsHotelGuestRatings} [optional]
 #' @field latitude Latitude of the hotel. numeric [optional]
 #' @field link Link to the product page character [optional]
 #' @field longitude Longitude of the hotel. numeric [optional]
 #' @field name The hotel's name. character [optional]
 #' @field neighborhood A list of neighborhoods where the hotel is located list(character) [optional]
 #' @field sale_price Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. character [optional]
-#' @field additional_image_link <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p> list(character) [optional]
-#' @field main_image  \link{CatalogsHotelAttributesAllOfMainImage} [optional]
+#' @field additional_image_link <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://. list(character) [optional]
+#' @field ai_disclosures AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL. list(\link{CatalogsAiContentDisclosure}) [optional]
+#' @field main_image The main hotel image \link{CatalogsHotelMainImage} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -50,12 +51,13 @@ CatalogsHotelAttributes <- R6::R6Class(
     `neighborhood` = NULL,
     `sale_price` = NULL,
     `additional_image_link` = NULL,
+    `ai_disclosures` = NULL,
     `main_image` = NULL,
 
     #' @description
     #' Initialize a new CatalogsHotelAttributes class.
     #'
-    #' @param address address
+    #' @param address Hotel address
     #' @param base_price Base price of the hotel room per night followed by the ISO currency code
     #' @param brand The brand to which this hotel belongs to.
     #' @param category The type of property. The category can be any type of internal description desired.
@@ -65,17 +67,18 @@ CatalogsHotelAttributes <- R6::R6Class(
     #' @param custom_label_3 Custom grouping of hotels
     #' @param custom_label_4 Custom grouping of hotels
     #' @param description Brief description of the hotel.
-    #' @param guest_ratings guest_ratings
+    #' @param guest_ratings If specified, you must provide all properties
     #' @param latitude Latitude of the hotel.
     #' @param link Link to the product page
     #' @param longitude Longitude of the hotel.
     #' @param name The hotel's name.
     #' @param neighborhood A list of neighborhoods where the hotel is located
     #' @param sale_price Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
-    #' @param additional_image_link <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
-    #' @param main_image main_image
+    #' @param additional_image_link <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
+    #' @param ai_disclosures AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+    #' @param main_image The main hotel image
     #' @param ... Other optional arguments.
-    initialize = function(`address` = NULL, `base_price` = NULL, `brand` = NULL, `category` = NULL, `custom_label_0` = NULL, `custom_label_1` = NULL, `custom_label_2` = NULL, `custom_label_3` = NULL, `custom_label_4` = NULL, `description` = NULL, `guest_ratings` = NULL, `latitude` = NULL, `link` = NULL, `longitude` = NULL, `name` = NULL, `neighborhood` = NULL, `sale_price` = NULL, `additional_image_link` = NULL, `main_image` = NULL, ...) {
+    initialize = function(`address` = NULL, `base_price` = NULL, `brand` = NULL, `category` = NULL, `custom_label_0` = NULL, `custom_label_1` = NULL, `custom_label_2` = NULL, `custom_label_3` = NULL, `custom_label_4` = NULL, `description` = NULL, `guest_ratings` = NULL, `latitude` = NULL, `link` = NULL, `longitude` = NULL, `name` = NULL, `neighborhood` = NULL, `sale_price` = NULL, `additional_image_link` = NULL, `ai_disclosures` = NULL, `main_image` = NULL, ...) {
       if (!is.null(`address`)) {
         stopifnot(R6::is.R6(`address`))
         self$`address` <- `address`
@@ -172,6 +175,11 @@ CatalogsHotelAttributes <- R6::R6Class(
         sapply(`additional_image_link`, function(x) stopifnot(is.character(x)))
         self$`additional_image_link` <- `additional_image_link`
       }
+      if (!is.null(`ai_disclosures`)) {
+        stopifnot(is.vector(`ai_disclosures`), length(`ai_disclosures`) != 0)
+        sapply(`ai_disclosures`, function(x) stopifnot(R6::is.R6(x)))
+        self$`ai_disclosures` <- `ai_disclosures`
+      }
       if (!is.null(`main_image`)) {
         stopifnot(R6::is.R6(`main_image`))
         self$`main_image` <- `main_image`
@@ -211,7 +219,7 @@ CatalogsHotelAttributes <- R6::R6Class(
       CatalogsHotelAttributesObject <- list()
       if (!is.null(self$`address`)) {
         CatalogsHotelAttributesObject[["address"]] <-
-          self$`address`$toSimpleType()
+          self$extractSimpleType(self$`address`)
       }
       if (!is.null(self$`base_price`)) {
         CatalogsHotelAttributesObject[["base_price"]] <-
@@ -251,7 +259,7 @@ CatalogsHotelAttributes <- R6::R6Class(
       }
       if (!is.null(self$`guest_ratings`)) {
         CatalogsHotelAttributesObject[["guest_ratings"]] <-
-          self$`guest_ratings`$toSimpleType()
+          self$extractSimpleType(self$`guest_ratings`)
       }
       if (!is.null(self$`latitude`)) {
         CatalogsHotelAttributesObject[["latitude"]] <-
@@ -281,11 +289,38 @@ CatalogsHotelAttributes <- R6::R6Class(
         CatalogsHotelAttributesObject[["additional_image_link"]] <-
           self$`additional_image_link`
       }
+      if (!is.null(self$`ai_disclosures`)) {
+        CatalogsHotelAttributesObject[["ai_disclosures"]] <-
+          self$extractSimpleType(self$`ai_disclosures`)
+      }
       if (!is.null(self$`main_image`)) {
         CatalogsHotelAttributesObject[["main_image"]] <-
-          self$`main_image`$toSimpleType()
+          self$extractSimpleType(self$`main_image`)
       }
       return(CatalogsHotelAttributesObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -353,8 +388,11 @@ CatalogsHotelAttributes <- R6::R6Class(
       if (!is.null(this_object$`additional_image_link`)) {
         self$`additional_image_link` <- ApiClient$new()$deserializeObj(this_object$`additional_image_link`, "array[character]", loadNamespace("openapi"))
       }
+      if (!is.null(this_object$`ai_disclosures`)) {
+        self$`ai_disclosures` <- ApiClient$new()$deserializeObj(this_object$`ai_disclosures`, "array[CatalogsAiContentDisclosure]", loadNamespace("openapi"))
+      }
       if (!is.null(this_object$`main_image`)) {
-        `main_image_object` <- CatalogsHotelAttributesAllOfMainImage$new()
+        `main_image_object` <- CatalogsHotelMainImage$new()
         `main_image_object`$fromJSON(jsonlite::toJSON(this_object$`main_image`, auto_unbox = TRUE, digits = NA))
         self$`main_image` <- `main_image_object`
       }
@@ -397,7 +435,8 @@ CatalogsHotelAttributes <- R6::R6Class(
       self$`neighborhood` <- ApiClient$new()$deserializeObj(this_object$`neighborhood`, "array[character]", loadNamespace("openapi"))
       self$`sale_price` <- this_object$`sale_price`
       self$`additional_image_link` <- ApiClient$new()$deserializeObj(this_object$`additional_image_link`, "array[character]", loadNamespace("openapi"))
-      self$`main_image` <- CatalogsHotelAttributesAllOfMainImage$new()$fromJSON(jsonlite::toJSON(this_object$`main_image`, auto_unbox = TRUE, digits = NA))
+      self$`ai_disclosures` <- ApiClient$new()$deserializeObj(this_object$`ai_disclosures`, "array[CatalogsAiContentDisclosure]", loadNamespace("openapi"))
+      self$`main_image` <- CatalogsHotelMainImage$new()$fromJSON(jsonlite::toJSON(this_object$`main_image`, auto_unbox = TRUE, digits = NA))
       self
     },
 

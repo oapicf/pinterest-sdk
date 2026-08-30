@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;UpdateMemberAssetsResultsResponseArrayItemsInner&gt;](UpdateMemberAssetsResultsResponseArrayItemsInner.md)
+`items` | [Array&lt;UpdateMemberAssetResultItem&gt;](UpdateMemberAssetResultItem.md)
 
 ## Example
 

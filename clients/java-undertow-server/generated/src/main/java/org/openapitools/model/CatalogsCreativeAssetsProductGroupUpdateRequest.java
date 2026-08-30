@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -26,7 +26,7 @@ import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
  */
 
 @ApiModel(description = "Request object for updating a creative assets product group.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsProductGroupUpdateRequest   {
   
 
@@ -104,6 +104,7 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest   {
   }
 
   /**
+   * Name of catalog product group
    */
   public CatalogsCreativeAssetsProductGroupUpdateRequest name(String name) {
     this.name = name;
@@ -111,7 +112,7 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -159,10 +160,7 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

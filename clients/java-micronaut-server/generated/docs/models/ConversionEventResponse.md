@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **conversionEvent** | `ConversionTagType` |  |  [optional property]
 **conversionTagId** | `String` | Id of the tag. |  [optional property]
 **createdTime** | `Integer` | Creation date in epoch format. |  [optional property]
+**reportingConversionEvent** | `String` | For advertiser-defined events, the reporting event label shown in optimization UIs. |  [optional property]
+
 
 
 

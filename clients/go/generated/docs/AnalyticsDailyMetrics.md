@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DataStatus** | Pointer to [**DataStatus**](DataStatus.md) |  | [optional] 
 **Date** | Pointer to **string** | Metrics date (UTC): YYYY-MM-DD. | [optional] 
-**Metrics** | Pointer to **map[string]float32** | The metric name and daily value for each requested metric | [optional] 
+**Metrics** | Pointer to **map[string]float32** |  | [optional] 
 
 ## Methods
 

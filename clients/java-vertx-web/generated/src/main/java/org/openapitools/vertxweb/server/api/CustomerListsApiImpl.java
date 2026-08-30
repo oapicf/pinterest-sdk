@@ -1,10 +1,11 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.CustomerList;
-import org.openapitools.vertxweb.server.model.CustomerListRequest;
-import org.openapitools.vertxweb.server.model.CustomerListUpdateRequest;
+import org.openapitools.vertxweb.server.model.CustomerListCreate;
+import org.openapitools.vertxweb.server.model.CustomerListUpdateWithRequiredBody;
 import org.openapitools.vertxweb.server.model.CustomerListsList200Response;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PinterestLibPaginationOrder;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -18,7 +19,7 @@ import java.util.Map;
 // Implement this class
 
 public class CustomerListsApiImpl implements CustomerListsApi {
-    public Future<ApiResponse<CustomerList>> customerListsCreate(String adAccountId, CustomerListRequest customerListRequest) {
+    public Future<ApiResponse<CustomerList>> customerListsCreate(String adAccountId, CustomerListCreate customerListCreate) {
         return Future.failedFuture(new HttpException(501));
     }
 
@@ -26,11 +27,11 @@ public class CustomerListsApiImpl implements CustomerListsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<CustomerListsList200Response>> customerListsList(String adAccountId, Integer pageSize, String order, String bookmark) {
+    public Future<ApiResponse<CustomerListsList200Response>> customerListsList(String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order, Boolean excludeNca) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<CustomerList>> customerListsUpdate(String adAccountId, String customerListId, CustomerListUpdateRequest customerListUpdateRequest) {
+    public Future<ApiResponse<CustomerList>> customerListsUpdate(String adAccountId, String customerListId, CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody) {
         return Future.failedFuture(new HttpException(501));
     }
 

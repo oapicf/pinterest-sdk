@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CustomerListUpdateWithRequiredBody"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CustomerListUpdateWithRequiredBody"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CustomerListRecordRow = openapi_server.resourceTypes.CustomerListRecordRow
+  UserListOperationType = openapi_server.resourceTypes.UserListOperationType
+}
+resourceTypes {
+
+  CustomerListUpdateWithRequiredBody {
+    title = CustomerListUpdateWithRequiredBody
+    description = CustomerListUpdateWithRequiredBody
+    derivedFrom = Root
+    properties {
+        operation_type {
+          type = UserListOperationType
+          description = "Customer list update operation type (add or remove). Only valid in update request body."
+          optional = true
+        }
+        records {
+          type =  string
+          description = "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5."
+          optional = false
+        }
+        records_v2 {
+          type = array
+          items.type = CustomerListRecordRow
+          description = "Multi-field record format. Array of objects with optional email, maid, ip_address, user_agent, external_id, hashed_pinner_id, hashed_phone_number, and liveramp_envelope per row. Provide exactly one of records or records_v2."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CustomerListUpdateWithRequiredBody {
+    title = CustomerListUpdateWithRequiredBody
+    description = CustomerListUpdateWithRequiredBody
+    implements = openapi_server.resourceTypes.CustomerListUpdateWithRequiredBody
+
+  }
+}

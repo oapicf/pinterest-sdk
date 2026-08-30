@@ -5,30 +5,30 @@
 #include "Helpers.h"
 
 
-#include "TrendingKeyword_demographics.h"
+#include "TrendingKeywordDemographics.h"
 
 using namespace std;
 using namespace Tizen::ArtikCloud;
 
-TrendingKeyword_demographics::TrendingKeyword_demographics()
+TrendingKeywordDemographics::TrendingKeywordDemographics()
 {
 	//__init();
 }
 
-TrendingKeyword_demographics::~TrendingKeyword_demographics()
+TrendingKeywordDemographics::~TrendingKeywordDemographics()
 {
 	//__cleanup();
 }
 
 void
-TrendingKeyword_demographics::__init()
+TrendingKeywordDemographics::__init()
 {
-	//age_distribution = new TrendingKeyword_demographics_age_distribution();
-	//gender_distribution = new TrendingKeyword_demographics_gender_distribution();
+	//age_distribution = new TrendsAgeDistribution();
+	//gender_distribution = new TrendsGenderDistribution();
 }
 
 void
-TrendingKeyword_demographics::__cleanup()
+TrendingKeywordDemographics::__cleanup()
 {
 	//if(age_distribution != NULL) {
 	//
@@ -44,7 +44,7 @@ TrendingKeyword_demographics::__cleanup()
 }
 
 void
-TrendingKeyword_demographics::fromJson(char* jsonStr)
+TrendingKeywordDemographics::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
@@ -53,11 +53,11 @@ TrendingKeyword_demographics::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("TrendingKeyword_demographics_age_distribution")) {
-			jsonToValue(&age_distribution, node, "TrendingKeyword_demographics_age_distribution", "TrendingKeyword_demographics_age_distribution");
+		if (isprimitive("TrendsAgeDistribution")) {
+			jsonToValue(&age_distribution, node, "TrendsAgeDistribution", "TrendsAgeDistribution");
 		} else {
 			
-			TrendingKeyword_demographics_age_distribution* obj = static_cast<TrendingKeyword_demographics_age_distribution*> (&age_distribution);
+			TrendsAgeDistribution* obj = static_cast<TrendsAgeDistribution*> (&age_distribution);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -67,34 +67,34 @@ TrendingKeyword_demographics::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("TrendingKeyword_demographics_gender_distribution")) {
-			jsonToValue(&gender_distribution, node, "TrendingKeyword_demographics_gender_distribution", "TrendingKeyword_demographics_gender_distribution");
+		if (isprimitive("TrendsGenderDistribution")) {
+			jsonToValue(&gender_distribution, node, "TrendsGenderDistribution", "TrendsGenderDistribution");
 		} else {
 			
-			TrendingKeyword_demographics_gender_distribution* obj = static_cast<TrendingKeyword_demographics_gender_distribution*> (&gender_distribution);
+			TrendsGenderDistribution* obj = static_cast<TrendsGenderDistribution*> (&gender_distribution);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
 }
 
-TrendingKeyword_demographics::TrendingKeyword_demographics(char* json)
+TrendingKeywordDemographics::TrendingKeywordDemographics(char* json)
 {
 	this->fromJson(json);
 }
 
 char*
-TrendingKeyword_demographics::toJson()
+TrendingKeywordDemographics::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("TrendingKeyword_demographics_age_distribution")) {
-		TrendingKeyword_demographics_age_distribution obj = getAgeDistribution();
-		node = converttoJson(&obj, "TrendingKeyword_demographics_age_distribution", "");
+	if (isprimitive("TrendsAgeDistribution")) {
+		TrendsAgeDistribution obj = getAgeDistribution();
+		node = converttoJson(&obj, "TrendsAgeDistribution", "");
 	}
 	else {
 		
-		TrendingKeyword_demographics_age_distribution obj = static_cast<TrendingKeyword_demographics_age_distribution> (getAgeDistribution());
+		TrendsAgeDistribution obj = static_cast<TrendsAgeDistribution> (getAgeDistribution());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -102,13 +102,13 @@ TrendingKeyword_demographics::toJson()
 	}
 	const gchar *age_distributionKey = "age_distribution";
 	json_object_set_member(pJsonObject, age_distributionKey, node);
-	if (isprimitive("TrendingKeyword_demographics_gender_distribution")) {
-		TrendingKeyword_demographics_gender_distribution obj = getGenderDistribution();
-		node = converttoJson(&obj, "TrendingKeyword_demographics_gender_distribution", "");
+	if (isprimitive("TrendsGenderDistribution")) {
+		TrendsGenderDistribution obj = getGenderDistribution();
+		node = converttoJson(&obj, "TrendsGenderDistribution", "");
 	}
 	else {
 		
-		TrendingKeyword_demographics_gender_distribution obj = static_cast<TrendingKeyword_demographics_gender_distribution> (getGenderDistribution());
+		TrendsGenderDistribution obj = static_cast<TrendsGenderDistribution> (getGenderDistribution());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -124,26 +124,26 @@ TrendingKeyword_demographics::toJson()
 	return ret;
 }
 
-TrendingKeyword_demographics_age_distribution
-TrendingKeyword_demographics::getAgeDistribution()
+TrendsAgeDistribution
+TrendingKeywordDemographics::getAgeDistribution()
 {
 	return age_distribution;
 }
 
 void
-TrendingKeyword_demographics::setAgeDistribution(TrendingKeyword_demographics_age_distribution  age_distribution)
+TrendingKeywordDemographics::setAgeDistribution(TrendsAgeDistribution  age_distribution)
 {
 	this->age_distribution = age_distribution;
 }
 
-TrendingKeyword_demographics_gender_distribution
-TrendingKeyword_demographics::getGenderDistribution()
+TrendsGenderDistribution
+TrendingKeywordDemographics::getGenderDistribution()
 {
 	return gender_distribution;
 }
 
 void
-TrendingKeyword_demographics::setGenderDistribution(TrendingKeyword_demographics_gender_distribution  gender_distribution)
+TrendingKeywordDemographics::setGenderDistribution(TrendsGenderDistribution  gender_distribution)
 {
 	this->gender_distribution = gender_distribution;
 }

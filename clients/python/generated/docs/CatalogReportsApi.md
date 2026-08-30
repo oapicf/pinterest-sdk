@@ -17,10 +17,9 @@ Build catalogs report
 Async request to create a report of the catalog owned by the "operation user_account". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed.
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-Note: Access to the All Items report type is restricted to a specific group of users.
-If you require access, please reach out to your partner manager.
+Note: The All Items report is limited to 25 million items per catalog.
 
 ### Example
 
@@ -50,7 +49,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.CatalogReportsApi(api_client)
-    catalogs_report_parameters = pinterestsdk.CatalogsReportParameters() # CatalogsReportParameters | Request object to asynchronously create a report.
+    catalogs_report_parameters = pinterestsdk.CatalogsReportParameters() # CatalogsReportParameters | 
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account. (optional)
 
     try:
@@ -69,7 +68,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogs_report_parameters** | [**CatalogsReportParameters**](CatalogsReportParameters.md)| Request object to asynchronously create a report. | 
+ **catalogs_report_parameters** | [**CatalogsReportParameters**](CatalogsReportParameters.md)|  | 
  **ad_account_id** | **str**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -89,10 +88,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response containing the report token |  -  |
-**404** | Entity (e.g., catalog, feed or processing_result) not found |  -  |
-**409** | Can&#39;t access this feature without an existing catalog. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -101,10 +104,10 @@ Name | Type | Description  | Notes
 
 Get catalogs report
 
-This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report.
+This returns a URL to a report given a token returned from [Build catalogs report](/docs/api/v5/#operation/reports/create). You can use the URL to download the report.
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Example
 
@@ -133,7 +136,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.CatalogReportsApi(api_client)
-    token = 'token_example' # str | Token returned from async build report call
+    token = 'token_example' # str | Token returned from the post request creation call
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account. (optional)
 
     try:
@@ -152,7 +155,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **str**| Token returned from async build report call | 
+ **token** | **str**| Token returned from the post request creation call | 
  **ad_account_id** | **str**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -172,22 +175,25 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response that contains a link to download the report |  -  |
-**400** | The token you provided is not valid or has expired. |  -  |
-**409** | Can&#39;t access this feature without an existing catalog. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reports_stats**
-> ReportsStats200Response reports_stats(parameters, ad_account_id=ad_account_id, page_size=page_size, bookmark=bookmark)
+> ReportsStats200Response reports_stats(parameters, ad_account_id=ad_account_id, bookmark=bookmark, page_size=page_size)
 
 List report stats
 
 List aggregated numbers of issues for a catalog owned by the "operation user_account".
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Example
 
@@ -196,7 +202,6 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 ```python
 import pinterestsdk
 from pinterestsdk.models.reports_stats200_response import ReportsStats200Response
-from pinterestsdk.models.reports_stats_parameters_parameter import ReportsStatsParametersParameter
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -217,14 +222,14 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.CatalogReportsApi(api_client)
-    parameters = pinterestsdk.ReportsStatsParametersParameter() # ReportsStatsParametersParameter | Contains the parameters for report identification.
+    parameters = {'key': pinterestsdk.CatalogsReportStatsParameters()} # CatalogsReportStatsParameters | Contains the parameters for report identification.
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account. (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # List report stats
-        api_response = api_instance.reports_stats(parameters, ad_account_id=ad_account_id, page_size=page_size, bookmark=bookmark)
+        api_response = api_instance.reports_stats(parameters, ad_account_id=ad_account_id, bookmark=bookmark, page_size=page_size)
         print("The response of CatalogReportsApi->reports_stats:\n")
         pprint(api_response)
     except Exception as e:
@@ -238,10 +243,10 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameters** | [**ReportsStatsParametersParameter**](.md)| Contains the parameters for report identification. | 
+ **parameters** | [**CatalogsReportStatsParameters**](.md)| Contains the parameters for report identification. | 
  **ad_account_id** | **str**| Unique identifier of an ad account. | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -260,9 +265,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response containing the diagnostics aggregated counters |  -  |
-**401** | Not authorized to access catalogs |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

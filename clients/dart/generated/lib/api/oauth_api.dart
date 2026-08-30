@@ -21,7 +21,7 @@ class OauthApi {
   /// Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> oauthConversionTokenWithHttpInfo() async {
+  Future<Response> oauthConversionTokenWithHttpInfo({ Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/oauth/conversion_token';
 
@@ -43,14 +43,15 @@ class OauthApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Generate OAuth access token for conversion API
   ///
   /// Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
-  Future<ConversionAccessTokenResponse?> oauthConversionToken() async {
-    final response = await oauthConversionTokenWithHttpInfo();
+  Future<ConversionAccessToken?> oauthConversionToken({ Future<void>? abortTrigger, }) async {
+    final response = await oauthConversionTokenWithHttpInfo(abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -58,7 +59,7 @@ class OauthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ConversionAccessTokenResponse',) as ConversionAccessTokenResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ConversionAccessToken',) as ConversionAccessToken;
     
     }
     return null;
@@ -66,14 +67,25 @@ class OauthApi {
 
   /// Generate OAuth access token
   ///
-  /// Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
+  /// Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] grantType (required):
-  Future<Response> oauthTokenWithHttpInfo(String grantType,) async {
+  /// * [TokenGrantType] grantType (required):
+  ///
+  /// * [String] code:
+  ///
+  /// * [String] continuousRefresh:
+  ///     If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token.
+  ///
+  /// * [String] redirectUri:
+  ///
+  /// * [String] refreshToken:
+  ///
+  /// * [String] scope:
+  Future<Response> oauthTokenWithHttpInfo(TokenGrantType grantType, { String? code, String? continuousRefresh, String? redirectUri, String? refreshToken, String? scope, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/oauth/token';
 
@@ -86,8 +98,23 @@ class OauthApi {
 
     const contentTypes = <String>['application/x-www-form-urlencoded'];
 
+    if (code != null) {
+      formParams[r'code'] = parameterToString(code);
+    }
+    if (continuousRefresh != null) {
+      formParams[r'continuous_refresh'] = parameterToString(continuousRefresh);
+    }
     if (grantType != null) {
       formParams[r'grant_type'] = parameterToString(grantType);
+    }
+    if (redirectUri != null) {
+      formParams[r'redirect_uri'] = parameterToString(redirectUri);
+    }
+    if (refreshToken != null) {
+      formParams[r'refresh_token'] = parameterToString(refreshToken);
+    }
+    if (scope != null) {
+      formParams[r'scope'] = parameterToString(scope);
     }
 
     return apiClient.invokeAPI(
@@ -98,18 +125,30 @@ class OauthApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Generate OAuth access token
   ///
-  /// Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
+  /// Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
   ///
   /// Parameters:
   ///
-  /// * [String] grantType (required):
-  Future<OauthAccessTokenResponse?> oauthToken(String grantType,) async {
-    final response = await oauthTokenWithHttpInfo(grantType,);
+  /// * [TokenGrantType] grantType (required):
+  ///
+  /// * [String] code:
+  ///
+  /// * [String] continuousRefresh:
+  ///     If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token.
+  ///
+  /// * [String] redirectUri:
+  ///
+  /// * [String] refreshToken:
+  ///
+  /// * [String] scope:
+  Future<OauthAccessToken?> oauthToken(TokenGrantType grantType, { String? code, String? continuousRefresh, String? redirectUri, String? refreshToken, String? scope, Future<void>? abortTrigger, }) async {
+    final response = await oauthTokenWithHttpInfo(grantType, code: code, continuousRefresh: continuousRefresh, redirectUri: redirectUri, refreshToken: refreshToken, scope: scope, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -117,7 +156,7 @@ class OauthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OauthAccessTokenResponse',) as OauthAccessTokenResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OauthAccessToken',) as OauthAccessToken;
     
     }
     return null;
@@ -134,9 +173,9 @@ class OauthApi {
   /// * [String] token (required):
   ///   The token to revoke.
   ///
-  /// * [String] tokenTypeHint:
+  /// * [TokenTypeHint] tokenTypeHint:
   ///   The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.
-  Future<Response> tokenRevokeWithHttpInfo(String token, { String? tokenTypeHint, }) async {
+  Future<Response> tokenRevokeWithHttpInfo(String token, { TokenTypeHint? tokenTypeHint, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/oauth/token/revoke';
 
@@ -164,6 +203,7 @@ class OauthApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -176,10 +216,10 @@ class OauthApi {
   /// * [String] token (required):
   ///   The token to revoke.
   ///
-  /// * [String] tokenTypeHint:
+  /// * [TokenTypeHint] tokenTypeHint:
   ///   The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.
-  Future<void> tokenRevoke(String token, { String? tokenTypeHint, }) async {
-    final response = await tokenRevokeWithHttpInfo(token,  tokenTypeHint: tokenTypeHint, );
+  Future<void> tokenRevoke(String token, { TokenTypeHint? tokenTypeHint, Future<void>? abortTrigger, }) async {
+    final response = await tokenRevokeWithHttpInfo(token, tokenTypeHint: tokenTypeHint, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

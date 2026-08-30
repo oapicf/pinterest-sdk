@@ -8,20 +8,23 @@
 #include "Helpers.h"
 #include <list>
 
-#include "AdsCreditRedeemRequest.h"
-#include "AdsCreditRedeemResponse.h"
+#include "AdsCreditRedeem.h"
+#include "AdsCreditRedeemCreate.h"
 #include "Ads_credits_discounts_get_200_response.h"
+#include "BillingInvoiceDocumentType.h"
 #include "BillingInvoiceDownloadResponse.h"
+#include "BillingInvoiceSortField.h"
+#include "BillingInvoiceStatus.h"
 #include "Billing_invoices_get_200_response.h"
 #include "Billing_profiles_get_200_response.h"
 #include "Date.h"
-#include "Error.h"
-#include "SSIOAccountResponse.h"
-#include "SSIOCreateInsertionOrderRequest.h"
-#include "SSIOCreateInsertionOrderResponse.h"
-#include "SSIOEditInsertionOrderRequest.h"
-#include "SSIOEditInsertionOrderResponse.h"
+#include "Pinterest.Lib.Error.h"
+#include "Pinterest.Lib.PaginationOrder.h"
+#include "SSIOAccount.h"
+#include "SSIOInsertionOrder.h"
+#include "SSIOInsertionOrderCreate.h"
 #include "SSIOInsertionOrderStatusResponse.h"
+#include "SSIOInsertionOrderUpdate.h"
 #include "Ssio_insertion_orders_status_get_by_ad_account_200_response.h"
 #include "Ssio_order_lines_get_by_ad_account_200_response.h"
 
@@ -36,33 +39,33 @@ class BillingApi : public Service {
 public:
     BillingApi() = default;
 
-    virtual ~BillingApi() = default;
+    virtual ~BillingApi();
 
     /**
     * Redeem ad credits.
     *
-    * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+    * Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param adsCreditRedeemRequest Redeem ad credits request. *Required*
+    * \param adsCreditRedeemCreate  *Required*
     */
     Response<
-                AdsCreditRedeemResponse
+                AdsCreditRedeem
         >
     adsCredit_redeem(
             
             std::string adAccountId
             , 
             
-            AdsCreditRedeemRequest adsCreditRedeemRequest
+            AdsCreditRedeemCreate adsCreditRedeemCreate
             
     );
     /**
     * Get ads credit discounts.
     *
-    * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+    * Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
     * \param adAccountId Unique identifier of an ad account. *Required*
     * \param bookmark Cursor used to fetch the next page of items
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
                 Ads_credits_discounts_get_200_response
@@ -102,9 +105,9 @@ public:
     * Get billing invoices in the advertiser account.
     * \param adAccountId Unique identifier of an ad account. *Required*
     * \param bookmark Cursor used to fetch the next page of items
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+    * \param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
     * \param sort Field of which to sort billing invoices
-    * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
     * \param status Status of billing invoices to filter by
     * \param documentType Document type of billing invoices to filter by
     * \param startDueDate Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
@@ -124,16 +127,16 @@ public:
             int pageSize
             , 
             
-            std::string sort
+            Pinterest.Lib.PaginationOrder order
             , 
             
-            std::string order
+            BillingInvoiceSortField sort
             , 
             
-            std::string status
+            BillingInvoiceStatus status
             , 
             
-            std::string documentType
+            BillingInvoiceDocumentType documentType
             , 
             
             Date startDueDate
@@ -145,21 +148,21 @@ public:
     /**
     * Get billing profiles.
     *
-    * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
-    * \param adAccountId Unique identifier of an ad account. *Required*
+    * Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
     * \param isActive Return active billing profiles, if false return all billing profiles. *Required*
+    * \param adAccountId Unique identifier of an ad account. *Required*
     * \param bookmark Cursor used to fetch the next page of items
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
                 Billing_profiles_get_200_response
         >
     billingProfiles_get(
             
-            std::string adAccountId
+            bool isActive
             , 
             
-            bool isActive
+            std::string adAccountId
             , 
             
             std::string bookmark
@@ -171,11 +174,11 @@ public:
     /**
     * Get Salesforce account details including bill-to information..
     *
-    * Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+    *   Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
     * \param adAccountId Unique identifier of an ad account. *Required*
     */
     Response<
-                SSIOAccountResponse
+                SSIOAccount
         >
     ssioAccounts_get(
             
@@ -185,46 +188,46 @@ public:
     /**
     * Create insertion order through SSIO..
     *
-    * Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+    *   Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param sSIOCreateInsertionOrderRequest Order line to create. *Required*
+    * \param sSIOInsertionOrderCreate  *Required*
     */
     Response<
-                SSIOCreateInsertionOrderResponse
+                SSIOInsertionOrder
         >
     ssioInsertionOrder_create(
             
             std::string adAccountId
             , 
             
-            SSIOCreateInsertionOrderRequest sSIOCreateInsertionOrderRequest
+            SSIOInsertionOrderCreate sSIOInsertionOrderCreate
             
     );
     /**
     * Edit insertion order through SSIO..
     *
-    * Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+    *   Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param sSIOEditInsertionOrderRequest Order line to create. *Required*
+    * \param sSIOInsertionOrderUpdate  *Required*
     */
     Response<
-                SSIOEditInsertionOrderResponse
+                SSIOInsertionOrder
         >
     ssioInsertionOrder_edit(
             
             std::string adAccountId
             , 
             
-            SSIOEditInsertionOrderRequest sSIOEditInsertionOrderRequest
+            SSIOInsertionOrderUpdate sSIOInsertionOrderUpdate
             
     );
     /**
     * Get insertion order status by ad account id..
     *
-    * Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+    *   Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
     * \param adAccountId Unique identifier of an ad account. *Required*
     * \param bookmark Cursor used to fetch the next page of items
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
                 Ssio_insertion_orders_status_get_by_ad_account_200_response
@@ -243,7 +246,7 @@ public:
     /**
     * Get insertion order status by pin order id..
     *
-    * Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+    *   Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
     * \param adAccountId Unique identifier of an ad account. *Required*
     * \param pinOrderId The pin order id associated with the ssio insertion order *Required*
     */
@@ -261,11 +264,11 @@ public:
     /**
     * Get Salesforce order lines by ad account id..
     *
-    * Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+    *   Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
     * \param adAccountId Unique identifier of an ad account. *Required*
+    * \param pinOrderId The pin order id associated with the SSIO insertion order
     * \param bookmark Cursor used to fetch the next page of items
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    * \param pinOrderId The pin order id associated with the ssio insertino order
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
                 Ssio_order_lines_get_by_ad_account_200_response
@@ -275,13 +278,13 @@ public:
             std::string adAccountId
             , 
             
+            std::string pinOrderId
+            , 
+            
             std::string bookmark
             , 
             
             int pageSize
-            , 
-            
-            std::string pinOrderId
             
     );
 }; 

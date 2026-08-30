@@ -5,20 +5,20 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**dateAvailability** | date_availability | long |  | [**TopPinsAnalyticsResponseDateAvailability**](TopPinsAnalyticsResponseDateAvailability.md) |  |  [optional] [foreignkey]
-**pins** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;TopVideoPinsAnalyticsResponsePinsInner&gt;**](TopVideoPinsAnalyticsResponsePinsInner.md) |  |  [optional]
-**sortBy** | sort_by | text |  | [**sort_by**](#SortBy) |  |  [optional]
+**dateAvailability** | date_availability | long |  | [**TopVideoPinsAnalyticsResponseDateAvailability**](TopVideoPinsAnalyticsResponseDateAvailability.md) |  |  [optional] [foreignkey]
+**pins** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;TopVideoPinsAnalyticsResponsePinsItems&gt;**](TopVideoPinsAnalyticsResponsePinsItems.md) |  |  [optional]
+**sortBy** | sort_by | long |  | [**TopVideoPinsSortBy**](TopVideoPinsSortBy.md) |  |  [optional] [foreignkey]
 
 
 
-# **Table `TopVideoPinsAnalyticsResponseTopVideoPinsAnalyticsResponsePinsInner`**
-(mapped from: TopVideoPinsAnalyticsResponseTopVideoPinsAnalyticsResponsePinsInner)
+# **Table `TopVideoPinsAnalyticsResponseTopVideoPinsAnalyticsResponsePinsItems`**
+(mapped from: TopVideoPinsAnalyticsResponseTopVideoPinsAnalyticsResponsePinsItems)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 topVideoPinsAnalyticsResponse | topVideoPinsAnalyticsResponse | long | | kotlin.Long | Primary Key | *one*
-topVideoPinsAnalyticsResponsePinsInner | topVideoPinsAnalyticsResponsePinsInner | long | | kotlin.Long | Foreign Key | *many*
+topVideoPinsAnalyticsResponsePinsItems | topVideoPinsAnalyticsResponsePinsItems | long | | kotlin.Long | Foreign Key | *many*
 
 
 

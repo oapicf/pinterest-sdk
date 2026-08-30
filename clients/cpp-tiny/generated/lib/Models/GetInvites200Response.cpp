@@ -102,7 +102,7 @@ Get_invites_200_response::getBookmark()
 }
 
 void
-Get_invites_200_response::setBookmark(std::string  bookmark)
+Get_invites_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Get_invites_200_response::getItems()
 }
 
 void
-Get_invites_200_response::setItems(std::list <InviteResponse> items)
+Get_invites_200_response::setItems(std::list<InviteResponse> items)
 {
 	this->items = items;
 }

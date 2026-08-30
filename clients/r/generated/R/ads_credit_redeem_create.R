@@ -1,0 +1,220 @@
+#' Create a new AdsCreditRedeemCreate
+#'
+#' @description
+#' Resource create operation model.
+#'
+#' @docType class
+#' @title AdsCreditRedeemCreate
+#' @description AdsCreditRedeemCreate Class
+#' @format An \code{R6Class} generator object
+#' @field offerCodeHash Takes in a SHA256 hash of the offerCode. character
+#' @field validateOnly If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account character
+#' @importFrom R6 R6Class
+#' @importFrom jsonlite fromJSON toJSON
+#' @export
+AdsCreditRedeemCreate <- R6::R6Class(
+  "AdsCreditRedeemCreate",
+  public = list(
+    `offerCodeHash` = NULL,
+    `validateOnly` = NULL,
+
+    #' @description
+    #' Initialize a new AdsCreditRedeemCreate class.
+    #'
+    #' @param offerCodeHash Takes in a SHA256 hash of the offerCode.
+    #' @param validateOnly If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account
+    #' @param ... Other optional arguments.
+    initialize = function(`offerCodeHash`, `validateOnly`, ...) {
+      if (!missing(`offerCodeHash`)) {
+        if (!(is.character(`offerCodeHash`) && length(`offerCodeHash`) == 1)) {
+          stop(paste("Error! Invalid data for `offerCodeHash`. Must be a string:", `offerCodeHash`))
+        }
+        self$`offerCodeHash` <- `offerCodeHash`
+      }
+      if (!missing(`validateOnly`)) {
+        if (!(is.logical(`validateOnly`) && length(`validateOnly`) == 1)) {
+          stop(paste("Error! Invalid data for `validateOnly`. Must be a boolean:", `validateOnly`))
+        }
+        self$`validateOnly` <- `validateOnly`
+      }
+    },
+
+    #' @description
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
+    toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AdsCreditRedeemCreate as a base R list.
+    #' @examples
+    #' # convert array of AdsCreditRedeemCreate (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AdsCreditRedeemCreate to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
+      AdsCreditRedeemCreateObject <- list()
+      if (!is.null(self$`offerCodeHash`)) {
+        AdsCreditRedeemCreateObject[["offerCodeHash"]] <-
+          self$`offerCodeHash`
+      }
+      if (!is.null(self$`validateOnly`)) {
+        AdsCreditRedeemCreateObject[["validateOnly"]] <-
+          self$`validateOnly`
+      }
+      return(AdsCreditRedeemCreateObject)
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of AdsCreditRedeemCreate
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of AdsCreditRedeemCreate
+    fromJSON = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`offerCodeHash`)) {
+        self$`offerCodeHash` <- this_object$`offerCodeHash`
+      }
+      if (!is.null(this_object$`validateOnly`)) {
+        self$`validateOnly` <- this_object$`validateOnly`
+      }
+      self
+    },
+
+    #' @description
+    #' To JSON String
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
+    #' @return AdsCreditRedeemCreate in JSON format
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of AdsCreditRedeemCreate
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of AdsCreditRedeemCreate
+    fromJSONString = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      self$`offerCodeHash` <- this_object$`offerCodeHash`
+      self$`validateOnly` <- this_object$`validateOnly`
+      self
+    },
+
+    #' @description
+    #' Validate JSON input with respect to AdsCreditRedeemCreate and throw an exception if invalid
+    #'
+    #' @param input the JSON input
+    validateJSON = function(input) {
+      input_json <- jsonlite::fromJSON(input)
+      # check the required field `offerCodeHash`
+      if (!is.null(input_json$`offerCodeHash`)) {
+        if (!(is.character(input_json$`offerCodeHash`) && length(input_json$`offerCodeHash`) == 1)) {
+          stop(paste("Error! Invalid data for `offerCodeHash`. Must be a string:", input_json$`offerCodeHash`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AdsCreditRedeemCreate: the required field `offerCodeHash` is missing."))
+      }
+      # check the required field `validateOnly`
+      if (!is.null(input_json$`validateOnly`)) {
+        if (!(is.logical(input_json$`validateOnly`) && length(input_json$`validateOnly`) == 1)) {
+          stop(paste("Error! Invalid data for `validateOnly`. Must be a boolean:", input_json$`validateOnly`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AdsCreditRedeemCreate: the required field `validateOnly` is missing."))
+      }
+    },
+
+    #' @description
+    #' To string (JSON format)
+    #'
+    #' @return String representation of AdsCreditRedeemCreate
+    toString = function() {
+      self$toJSONString()
+    },
+
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    isValid = function() {
+      # check if the required `offerCodeHash` is null
+      if (is.null(self$`offerCodeHash`)) {
+        return(FALSE)
+      }
+
+      if (!str_detect(self$`offerCodeHash`, "^[a-z0-9]*$")) {
+        return(FALSE)
+      }
+
+      # check if the required `validateOnly` is null
+      if (is.null(self$`validateOnly`)) {
+        return(FALSE)
+      }
+
+      TRUE
+    },
+
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `offerCodeHash` is null
+      if (is.null(self$`offerCodeHash`)) {
+        invalid_fields["offerCodeHash"] <- "Non-nullable required field `offerCodeHash` cannot be null."
+      }
+
+      if (!str_detect(self$`offerCodeHash`, "^[a-z0-9]*$")) {
+        invalid_fields["offerCodeHash"] <- "Invalid value for `offerCodeHash`, must conform to the pattern ^[a-z0-9]*$."
+      }
+
+      # check if the required `validateOnly` is null
+      if (is.null(self$`validateOnly`)) {
+        invalid_fields["validateOnly"] <- "Non-nullable required field `validateOnly` cannot be null."
+      }
+
+      invalid_fields
+    },
+
+    #' @description
+    #' Print the object
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
+)
+## Uncomment below to unlock the class to allow modifications of the method or field
+# AdsCreditRedeemCreate$unlock()
+#
+## Below is an example to define the print function
+# AdsCreditRedeemCreate$set("public", "print", function(...) {
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
+# })
+## Uncomment below to lock the class to prevent modifications to the method or field
+# AdsCreditRedeemCreate$lock()
+

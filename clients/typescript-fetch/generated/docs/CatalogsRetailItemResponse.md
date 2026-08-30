@@ -8,8 +8,9 @@ Object describing a retail item record
 Name | Type
 ------------ | -------------
 `attributes` | [ItemAttributes](ItemAttributes.md)
-`catalogType` | [CatalogsType](CatalogsType.md)
+`catalogType` | string
 `itemId` | string
+`itemResponseKind` | string
 `pins` | [Array&lt;Pin&gt;](Pin.md)
 
 ## Example
@@ -22,6 +23,7 @@ const example = {
   "attributes": null,
   "catalogType": null,
   "itemId": DS0294-M,
+  "itemResponseKind": null,
   "pins": null,
 } satisfies CatalogsRetailItemResponse
 

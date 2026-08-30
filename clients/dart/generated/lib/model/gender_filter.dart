@@ -47,15 +47,13 @@ class GenderFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "GenderFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "GenderFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'GENDER'), 'Required key "GenderFilter[GENDER]" is missing from JSON.');
+        assert(json[r'GENDER'] != null, 'Required key "GenderFilter[GENDER]" has a null value in JSON.');
         return true;
       }());
 
       return GenderFilter(
-        GENDER: mapValueOfType<CatalogsProductGroupMultipleGenderCriteria>(json, r'GENDER')!,
+        GENDER: CatalogsProductGroupMultipleGenderCriteria.fromJson(json[r'GENDER'])!,
       );
     }
     return null;

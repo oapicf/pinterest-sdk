@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,16 +28,15 @@ type ApiAdsCreditRedeemRequest struct {
 	ctx context.Context
 	ApiService *BillingAPIService
 	adAccountId string
-	adsCreditRedeemRequest *AdsCreditRedeemRequest
+	adsCreditRedeemCreate *AdsCreditRedeemCreate
 }
 
-// Redeem ad credits request.
-func (r ApiAdsCreditRedeemRequest) AdsCreditRedeemRequest(adsCreditRedeemRequest AdsCreditRedeemRequest) ApiAdsCreditRedeemRequest {
-	r.adsCreditRedeemRequest = &adsCreditRedeemRequest
+func (r ApiAdsCreditRedeemRequest) AdsCreditRedeemCreate(adsCreditRedeemCreate AdsCreditRedeemCreate) ApiAdsCreditRedeemRequest {
+	r.adsCreditRedeemCreate = &adsCreditRedeemCreate
 	return r
 }
 
-func (r ApiAdsCreditRedeemRequest) Execute() (*AdsCreditRedeemResponse, *http.Response, error) {
+func (r ApiAdsCreditRedeemRequest) Execute() (*AdsCreditRedeem, *http.Response, error) {
 	return r.ApiService.AdsCreditRedeemExecute(r)
 }
 
@@ -46,7 +45,7 @@ AdsCreditRedeem Redeem ad credits
 
 Redeem ads credit on behalf of the ad account id and apply it towards billing.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+**This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -61,13 +60,13 @@ func (a *BillingAPIService) AdsCreditRedeem(ctx context.Context, adAccountId str
 }
 
 // Execute executes the request
-//  @return AdsCreditRedeemResponse
-func (a *BillingAPIService) AdsCreditRedeemExecute(r ApiAdsCreditRedeemRequest) (*AdsCreditRedeemResponse, *http.Response, error) {
+//  @return AdsCreditRedeem
+func (a *BillingAPIService) AdsCreditRedeemExecute(r ApiAdsCreditRedeemRequest) (*AdsCreditRedeem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AdsCreditRedeemResponse
+		localVarReturnValue  *AdsCreditRedeem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.AdsCreditRedeem")
@@ -84,8 +83,8 @@ func (a *BillingAPIService) AdsCreditRedeemExecute(r ApiAdsCreditRedeemRequest) 
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.adsCreditRedeemRequest == nil {
-		return localVarReturnValue, nil, reportError("adsCreditRedeemRequest is required and must be specified")
+	if r.adsCreditRedeemCreate == nil {
+		return localVarReturnValue, nil, reportError("adsCreditRedeemCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -106,7 +105,7 @@ func (a *BillingAPIService) AdsCreditRedeemExecute(r ApiAdsCreditRedeemRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.adsCreditRedeemRequest
+	localVarPostBody = r.adsCreditRedeemCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -130,7 +129,7 @@ func (a *BillingAPIService) AdsCreditRedeemExecute(r ApiAdsCreditRedeemRequest) 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -140,7 +139,51 @@ func (a *BillingAPIService) AdsCreditRedeemExecute(r ApiAdsCreditRedeemRequest) 
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -177,7 +220,7 @@ func (r ApiAdsCreditsDiscountsGetRequest) Bookmark(bookmark string) ApiAdsCredit
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiAdsCreditsDiscountsGetRequest) PageSize(pageSize int32) ApiAdsCreditsDiscountsGetRequest {
 	r.pageSize = &pageSize
 	return r
@@ -192,7 +235,7 @@ AdsCreditsDiscountsGet Get ads credit discounts
 
 Returns the list of discounts applied to the account.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+**This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -237,9 +280,9 @@ func (a *BillingAPIService) AdsCreditsDiscountsGetExecute(r ApiAdsCreditsDiscoun
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -280,7 +323,62 @@ func (a *BillingAPIService) AdsCreditsDiscountsGetExecute(r ApiAdsCreditsDiscoun
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -402,7 +500,7 @@ func (a *BillingAPIService) BillingInvoiceDownloadGetExecute(r ApiBillingInvoice
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -412,7 +510,51 @@ func (a *BillingAPIService) BillingInvoiceDownloadGetExecute(r ApiBillingInvoice
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -441,10 +583,10 @@ type ApiBillingInvoicesGetRequest struct {
 	adAccountId string
 	bookmark *string
 	pageSize *int32
-	sort *string
-	order *string
-	status *string
-	documentType *string
+	order *PinterestLibPaginationOrder
+	sort *BillingInvoiceSortField
+	status *BillingInvoiceStatus
+	documentType *BillingInvoiceDocumentType
 	startDueDate *string
 	endDueDate *string
 }
@@ -455,32 +597,32 @@ func (r ApiBillingInvoicesGetRequest) Bookmark(bookmark string) ApiBillingInvoic
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiBillingInvoicesGetRequest) PageSize(pageSize int32) ApiBillingInvoicesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
-// Field of which to sort billing invoices
-func (r ApiBillingInvoicesGetRequest) Sort(sort string) ApiBillingInvoicesGetRequest {
-	r.sort = &sort
-	return r
-}
-
-// The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-func (r ApiBillingInvoicesGetRequest) Order(order string) ApiBillingInvoicesGetRequest {
+// The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
+func (r ApiBillingInvoicesGetRequest) Order(order PinterestLibPaginationOrder) ApiBillingInvoicesGetRequest {
 	r.order = &order
 	return r
 }
 
+// Field of which to sort billing invoices
+func (r ApiBillingInvoicesGetRequest) Sort(sort BillingInvoiceSortField) ApiBillingInvoicesGetRequest {
+	r.sort = &sort
+	return r
+}
+
 // Status of billing invoices to filter by
-func (r ApiBillingInvoicesGetRequest) Status(status string) ApiBillingInvoicesGetRequest {
+func (r ApiBillingInvoicesGetRequest) Status(status BillingInvoiceStatus) ApiBillingInvoicesGetRequest {
 	r.status = &status
 	return r
 }
 
 // Document type of billing invoices to filter by
-func (r ApiBillingInvoicesGetRequest) DocumentType(documentType string) ApiBillingInvoicesGetRequest {
+func (r ApiBillingInvoicesGetRequest) DocumentType(documentType BillingInvoiceDocumentType) ApiBillingInvoicesGetRequest {
 	r.documentType = &documentType
 	return r
 }
@@ -549,19 +691,19 @@ func (a *BillingAPIService) BillingInvoicesGetExecute(r ApiBillingInvoicesGetReq
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
+	}
+	if r.order != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	if r.sort != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
 	} else {
-        var defaultValue string = "DUE_DATE"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "")
-        r.sort = &defaultValue
-	}
-	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
+		var defaultValue BillingInvoiceSortField = "DUE_DATE"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "")
+		r.sort = &defaultValue
 	}
 	if r.status != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
@@ -615,7 +757,7 @@ func (a *BillingAPIService) BillingInvoicesGetExecute(r ApiBillingInvoicesGetReq
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -625,7 +767,51 @@ func (a *BillingAPIService) BillingInvoicesGetExecute(r ApiBillingInvoicesGetReq
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -651,8 +837,8 @@ func (a *BillingAPIService) BillingInvoicesGetExecute(r ApiBillingInvoicesGetReq
 type ApiBillingProfilesGetRequest struct {
 	ctx context.Context
 	ApiService *BillingAPIService
-	adAccountId string
 	isActive *bool
+	adAccountId string
 	bookmark *string
 	pageSize *int32
 }
@@ -669,7 +855,7 @@ func (r ApiBillingProfilesGetRequest) Bookmark(bookmark string) ApiBillingProfil
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiBillingProfilesGetRequest) PageSize(pageSize int32) ApiBillingProfilesGetRequest {
 	r.pageSize = &pageSize
 	return r
@@ -684,7 +870,7 @@ BillingProfilesGet Get billing profiles
 
 Get billing profiles in the advertiser account.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+**This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -719,11 +905,11 @@ func (a *BillingAPIService) BillingProfilesGetExecute(r ApiBillingProfilesGetReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.adAccountId) > 18 {
-		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
-	}
 	if r.isActive == nil {
 		return localVarReturnValue, nil, reportError("isActive is required and must be specified")
+	}
+	if strlen(r.adAccountId) > 18 {
+		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "is_active", r.isActive, "form", "")
@@ -733,9 +919,9 @@ func (a *BillingAPIService) BillingProfilesGetExecute(r ApiBillingProfilesGetReq
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -776,7 +962,62 @@ func (a *BillingAPIService) BillingProfilesGetExecute(r ApiBillingProfilesGetReq
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -805,15 +1046,15 @@ type ApiSsioAccountsGetRequest struct {
 	adAccountId string
 }
 
-func (r ApiSsioAccountsGetRequest) Execute() (*SSIOAccountResponse, *http.Response, error) {
+func (r ApiSsioAccountsGetRequest) Execute() (*SSIOAccount, *http.Response, error) {
 	return r.ApiService.SsioAccountsGetExecute(r)
 }
 
 /*
 SsioAccountsGet Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>.
-- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.
+  - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -828,13 +1069,13 @@ func (a *BillingAPIService) SsioAccountsGet(ctx context.Context, adAccountId str
 }
 
 // Execute executes the request
-//  @return SSIOAccountResponse
-func (a *BillingAPIService) SsioAccountsGetExecute(r ApiSsioAccountsGetRequest) (*SSIOAccountResponse, *http.Response, error) {
+//  @return SSIOAccount
+func (a *BillingAPIService) SsioAccountsGetExecute(r ApiSsioAccountsGetRequest) (*SSIOAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SSIOAccountResponse
+		localVarReturnValue  *SSIOAccount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.SsioAccountsGet")
@@ -892,7 +1133,7 @@ func (a *BillingAPIService) SsioAccountsGetExecute(r ApiSsioAccountsGetRequest) 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -902,7 +1143,51 @@ func (a *BillingAPIService) SsioAccountsGetExecute(r ApiSsioAccountsGetRequest) 
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -929,24 +1214,23 @@ type ApiSsioInsertionOrderCreateRequest struct {
 	ctx context.Context
 	ApiService *BillingAPIService
 	adAccountId string
-	sSIOCreateInsertionOrderRequest *SSIOCreateInsertionOrderRequest
+	sSIOInsertionOrderCreate *SSIOInsertionOrderCreate
 }
 
-// Order line to create.
-func (r ApiSsioInsertionOrderCreateRequest) SSIOCreateInsertionOrderRequest(sSIOCreateInsertionOrderRequest SSIOCreateInsertionOrderRequest) ApiSsioInsertionOrderCreateRequest {
-	r.sSIOCreateInsertionOrderRequest = &sSIOCreateInsertionOrderRequest
+func (r ApiSsioInsertionOrderCreateRequest) SSIOInsertionOrderCreate(sSIOInsertionOrderCreate SSIOInsertionOrderCreate) ApiSsioInsertionOrderCreateRequest {
+	r.sSIOInsertionOrderCreate = &sSIOInsertionOrderCreate
 	return r
 }
 
-func (r ApiSsioInsertionOrderCreateRequest) Execute() (*SSIOCreateInsertionOrderResponse, *http.Response, error) {
+func (r ApiSsioInsertionOrderCreateRequest) Execute() (*SSIOInsertionOrder, *http.Response, error) {
 	return r.ApiService.SsioInsertionOrderCreateExecute(r)
 }
 
 /*
 SsioInsertionOrderCreate Create insertion order through SSIO.
 
-Create insertion order through SSIO for <code>ad_account_id</code>.
-- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Finance, Campaign.
+  Create insertion order through SSIO for `ad_account_id`.
+  - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -961,13 +1245,13 @@ func (a *BillingAPIService) SsioInsertionOrderCreate(ctx context.Context, adAcco
 }
 
 // Execute executes the request
-//  @return SSIOCreateInsertionOrderResponse
-func (a *BillingAPIService) SsioInsertionOrderCreateExecute(r ApiSsioInsertionOrderCreateRequest) (*SSIOCreateInsertionOrderResponse, *http.Response, error) {
+//  @return SSIOInsertionOrder
+func (a *BillingAPIService) SsioInsertionOrderCreateExecute(r ApiSsioInsertionOrderCreateRequest) (*SSIOInsertionOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SSIOCreateInsertionOrderResponse
+		localVarReturnValue  *SSIOInsertionOrder
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.SsioInsertionOrderCreate")
@@ -984,8 +1268,8 @@ func (a *BillingAPIService) SsioInsertionOrderCreateExecute(r ApiSsioInsertionOr
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.sSIOCreateInsertionOrderRequest == nil {
-		return localVarReturnValue, nil, reportError("sSIOCreateInsertionOrderRequest is required and must be specified")
+	if r.sSIOInsertionOrderCreate == nil {
+		return localVarReturnValue, nil, reportError("sSIOInsertionOrderCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1006,7 +1290,7 @@ func (a *BillingAPIService) SsioInsertionOrderCreateExecute(r ApiSsioInsertionOr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sSIOCreateInsertionOrderRequest
+	localVarPostBody = r.sSIOInsertionOrderCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1030,7 +1314,7 @@ func (a *BillingAPIService) SsioInsertionOrderCreateExecute(r ApiSsioInsertionOr
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1040,7 +1324,51 @@ func (a *BillingAPIService) SsioInsertionOrderCreateExecute(r ApiSsioInsertionOr
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1067,24 +1395,23 @@ type ApiSsioInsertionOrderEditRequest struct {
 	ctx context.Context
 	ApiService *BillingAPIService
 	adAccountId string
-	sSIOEditInsertionOrderRequest *SSIOEditInsertionOrderRequest
+	sSIOInsertionOrderUpdate *SSIOInsertionOrderUpdate
 }
 
-// Order line to create.
-func (r ApiSsioInsertionOrderEditRequest) SSIOEditInsertionOrderRequest(sSIOEditInsertionOrderRequest SSIOEditInsertionOrderRequest) ApiSsioInsertionOrderEditRequest {
-	r.sSIOEditInsertionOrderRequest = &sSIOEditInsertionOrderRequest
+func (r ApiSsioInsertionOrderEditRequest) SSIOInsertionOrderUpdate(sSIOInsertionOrderUpdate SSIOInsertionOrderUpdate) ApiSsioInsertionOrderEditRequest {
+	r.sSIOInsertionOrderUpdate = &sSIOInsertionOrderUpdate
 	return r
 }
 
-func (r ApiSsioInsertionOrderEditRequest) Execute() (*SSIOEditInsertionOrderResponse, *http.Response, error) {
+func (r ApiSsioInsertionOrderEditRequest) Execute() (*SSIOInsertionOrder, *http.Response, error) {
 	return r.ApiService.SsioInsertionOrderEditExecute(r)
 }
 
 /*
 SsioInsertionOrderEdit Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for <code>ad_account_id</code>.
-- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for `ad_account_id`.
+  - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -1099,13 +1426,13 @@ func (a *BillingAPIService) SsioInsertionOrderEdit(ctx context.Context, adAccoun
 }
 
 // Execute executes the request
-//  @return SSIOEditInsertionOrderResponse
-func (a *BillingAPIService) SsioInsertionOrderEditExecute(r ApiSsioInsertionOrderEditRequest) (*SSIOEditInsertionOrderResponse, *http.Response, error) {
+//  @return SSIOInsertionOrder
+func (a *BillingAPIService) SsioInsertionOrderEditExecute(r ApiSsioInsertionOrderEditRequest) (*SSIOInsertionOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SSIOEditInsertionOrderResponse
+		localVarReturnValue  *SSIOInsertionOrder
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.SsioInsertionOrderEdit")
@@ -1122,8 +1449,8 @@ func (a *BillingAPIService) SsioInsertionOrderEditExecute(r ApiSsioInsertionOrde
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.sSIOEditInsertionOrderRequest == nil {
-		return localVarReturnValue, nil, reportError("sSIOEditInsertionOrderRequest is required and must be specified")
+	if r.sSIOInsertionOrderUpdate == nil {
+		return localVarReturnValue, nil, reportError("sSIOInsertionOrderUpdate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1144,7 +1471,7 @@ func (a *BillingAPIService) SsioInsertionOrderEditExecute(r ApiSsioInsertionOrde
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sSIOEditInsertionOrderRequest
+	localVarPostBody = r.sSIOInsertionOrderUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1168,7 +1495,7 @@ func (a *BillingAPIService) SsioInsertionOrderEditExecute(r ApiSsioInsertionOrde
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1178,7 +1505,51 @@ func (a *BillingAPIService) SsioInsertionOrderEditExecute(r ApiSsioInsertionOrde
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1215,7 +1586,7 @@ func (r ApiSsioInsertionOrdersStatusGetByAdAccountRequest) Bookmark(bookmark str
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiSsioInsertionOrdersStatusGetByAdAccountRequest) PageSize(pageSize int32) ApiSsioInsertionOrdersStatusGetByAdAccountRequest {
 	r.pageSize = &pageSize
 	return r
@@ -1228,8 +1599,8 @@ func (r ApiSsioInsertionOrdersStatusGetByAdAccountRequest) Execute() (*SsioInser
 /*
 SsioInsertionOrdersStatusGetByAdAccount Get insertion order status by ad account id.
 
-Get insertion order status for account id <code>ad_account_id</code>.
-- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `ad_account_id`.
+  - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -1274,9 +1645,9 @@ func (a *BillingAPIService) SsioInsertionOrdersStatusGetByAdAccountExecute(r Api
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1318,7 +1689,7 @@ func (a *BillingAPIService) SsioInsertionOrdersStatusGetByAdAccountExecute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1328,7 +1699,51 @@ func (a *BillingAPIService) SsioInsertionOrdersStatusGetByAdAccountExecute(r Api
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1365,8 +1780,8 @@ func (r ApiSsioInsertionOrdersStatusGetByPinOrderIdRequest) Execute() (*SSIOInse
 /*
 SsioInsertionOrdersStatusGetByPinOrderId Get insertion order status by pin order id.
 
-Get insertion order status for pin order id <code>pin_order_id</code>.
-- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `pin_order_id`.
+  - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -1448,7 +1863,7 @@ func (a *BillingAPIService) SsioInsertionOrdersStatusGetByPinOrderIdExecute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1458,7 +1873,51 @@ func (a *BillingAPIService) SsioInsertionOrdersStatusGetByPinOrderIdExecute(r Ap
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1485,9 +1944,15 @@ type ApiSsioOrderLinesGetByAdAccountRequest struct {
 	ctx context.Context
 	ApiService *BillingAPIService
 	adAccountId string
+	pinOrderId *string
 	bookmark *string
 	pageSize *int32
-	pinOrderId *string
+}
+
+// The pin order id associated with the SSIO insertion order
+func (r ApiSsioOrderLinesGetByAdAccountRequest) PinOrderId(pinOrderId string) ApiSsioOrderLinesGetByAdAccountRequest {
+	r.pinOrderId = &pinOrderId
+	return r
 }
 
 // Cursor used to fetch the next page of items
@@ -1496,15 +1961,9 @@ func (r ApiSsioOrderLinesGetByAdAccountRequest) Bookmark(bookmark string) ApiSsi
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiSsioOrderLinesGetByAdAccountRequest) PageSize(pageSize int32) ApiSsioOrderLinesGetByAdAccountRequest {
 	r.pageSize = &pageSize
-	return r
-}
-
-// The pin order id associated with the ssio insertino order
-func (r ApiSsioOrderLinesGetByAdAccountRequest) PinOrderId(pinOrderId string) ApiSsioOrderLinesGetByAdAccountRequest {
-	r.pinOrderId = &pinOrderId
 	return r
 }
 
@@ -1515,8 +1974,8 @@ func (r ApiSsioOrderLinesGetByAdAccountRequest) Execute() (*SsioOrderLinesGetByA
 /*
 SsioOrderLinesGetByAdAccount Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id <code>ad_account_id</code>.
-- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id `ad_account_id`.
+  - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -1555,18 +2014,18 @@ func (a *BillingAPIService) SsioOrderLinesGetByAdAccountExecute(r ApiSsioOrderLi
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
 
+	if r.pinOrderId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_order_id", r.pinOrderId, "form", "")
+	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
-	}
-	if r.pinOrderId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_order_id", r.pinOrderId, "form", "")
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1608,7 +2067,7 @@ func (a *BillingAPIService) SsioOrderLinesGetByAdAccountExecute(r ApiSsioOrderLi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1618,7 +2077,51 @@ func (a *BillingAPIService) SsioOrderLinesGetByAdAccountExecute(r ApiSsioOrderLi
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

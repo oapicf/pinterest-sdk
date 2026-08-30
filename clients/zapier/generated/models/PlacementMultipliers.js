@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const PlacementType = require('../models/PlacementType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -6,13 +7,7 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}PLACEMENT`,
-                label: `[${labelPrefix}PLACEMENT]`,
-                type: 'string',
-                choices: [
-                    'SEARCH',
-                    'BROWSE',
-                    'RELATED_PINS',
-                ],
+                ...PlacementType.fields(`${keyPrefix}PLACEMENT`, isInput),
             },
         ]
     },

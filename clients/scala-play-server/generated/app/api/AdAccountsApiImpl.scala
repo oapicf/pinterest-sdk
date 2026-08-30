@@ -1,22 +1,25 @@
 package api
 
 import model.AdAccount
-import model.AdAccountAnalyticsResponseInner
+import model.AdAccountAnalyticsItems
 import model.AdAccountCreate
 import model.AdAccountsList200Response
+import model.AdsAnalyticsAccountTargetingType
 import model.AdsAnalyticsCreateAsyncRequest
 import model.AdsAnalyticsCreateAsyncResponse
 import model.AdsAnalyticsGetAsyncResponse
-import model.AdsAnalyticsTargetingType
-import model.ConversionProductReportRequest
+import model.BigDecimal
+import model.ConversionProductReport
+import model.ConversionProductReportCreate
 import model.ConversionReportAttributionType
-import model.CreateMMMReportRequest
-import model.CreateMMMReportResponse
 import model.Error
-import model.GetMMMReportResponse
 import model.Granularity
 import java.time.LocalDate
+import model.MMMReport
+import model.MMMReportCreate
 import model.MetricsResponse
+import model.PaginationOrder
+import model.ReportingColumnSync
 import model.ReportingTimeZone
 import model.TemplateBasedReport
 import model.TemplatesList200Response
@@ -24,21 +27,21 @@ import model.TemplatesList200Response
 /**
   * Provides a default implementation for [[AdAccountsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class AdAccountsApiImpl extends AdAccountsApi {
   /**
     * @inheritdoc
     */
-  override def adAccountAnalytics(adAccountId: String, startDate: LocalDate, endDate: LocalDate, columns: List[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], reportingTimezone: Option[ReportingTimeZone]): List[AdAccountAnalyticsResponseInner] = {
+  override def adAccountAnalytics(startDate: LocalDate, endDate: LocalDate, columns: List[ReportingColumnSync], granularity: Granularity, adAccountId: String, clickWindowDays: Option[BigDecimal], engagementWindowDays: Option[BigDecimal], viewWindowDays: Option[BigDecimal], conversionReportTime: Option[String], reportingTimezone: Option[ReportingTimeZone]): List[AdAccountAnalyticsItems] = {
     // TODO: Implement better logic
 
-    List.empty[AdAccountAnalyticsResponseInner]
+    List.empty[AdAccountAnalyticsItems]
   }
 
   /**
     * @inheritdoc
     */
-  override def adAccountTargetingAnalyticsGet(adAccountId: String, startDate: LocalDate, endDate: LocalDate, targetingTypes: List[AdsAnalyticsTargetingType], columns: List[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[List[ConversionReportAttributionType]], reportingTimezone: Option[ReportingTimeZone]): MetricsResponse = {
+  override def adAccountTargetingAnalyticsGet(adAccountId: String, startDate: LocalDate, endDate: LocalDate, targetingTypes: List[AdsAnalyticsAccountTargetingType], columns: List[ReportingColumnSync], granularity: Granularity, clickWindowDays: Option[BigDecimal], engagementWindowDays: Option[BigDecimal], viewWindowDays: Option[BigDecimal], conversionReportTime: Option[String], attributionTypes: Option[List[ConversionReportAttributionType]], reportingTimezone: Option[ReportingTimeZone]): MetricsResponse = {
     // TODO: Implement better logic
 
     MetricsResponse(None)
@@ -50,7 +53,7 @@ class AdAccountsApiImpl extends AdAccountsApi {
   override def adAccountsCreate(adAccountCreate: AdAccountCreate): AdAccount = {
     // TODO: Implement better logic
 
-    AdAccount(None, None, None, "", None, None, None, None)
+    AdAccount(None, None, None, "", None, None, None, None, None)
   }
 
   /**
@@ -59,7 +62,7 @@ class AdAccountsApiImpl extends AdAccountsApi {
   override def adAccountsGet(adAccountId: String): AdAccount = {
     // TODO: Implement better logic
 
-    AdAccount(None, None, None, "", None, None, None, None)
+    AdAccount(None, None, None, "", None, None, None, None, None)
   }
 
   /**
@@ -74,19 +77,19 @@ class AdAccountsApiImpl extends AdAccountsApi {
   /**
     * @inheritdoc
     */
-  override def analyticsCreateConversionProductReport(adAccountId: String, conversionProductReportRequest: ConversionProductReportRequest): AdsAnalyticsCreateAsyncResponse = {
+  override def analyticsCreateConversionProductReport(adAccountId: String, conversionProductReportCreate: ConversionProductReportCreate): ConversionProductReport = {
     // TODO: Implement better logic
 
-    AdsAnalyticsCreateAsyncResponse(None, None, None)
+    ConversionProductReport(None, None, None, None, None)
   }
 
   /**
     * @inheritdoc
     */
-  override def analyticsCreateMmmReport(adAccountId: String, createMMMReportRequest: CreateMMMReportRequest): CreateMMMReportResponse = {
+  override def analyticsCreateMmmReport(adAccountId: String, mMMReportCreate: MMMReportCreate): MMMReport = {
     // TODO: Implement better logic
 
-    CreateMMMReportResponse(None, None)
+    MMMReport(None, None, None, None, None, None)
   }
 
   /**
@@ -110,19 +113,19 @@ class AdAccountsApiImpl extends AdAccountsApi {
   /**
     * @inheritdoc
     */
-  override def analyticsGetConversionProductReport(adAccountId: String, token: String): AdsAnalyticsGetAsyncResponse = {
+  override def analyticsGetConversionProductReport(adAccountId: String, token: String): ConversionProductReport = {
     // TODO: Implement better logic
 
-    AdsAnalyticsGetAsyncResponse(None, None, None)
+    ConversionProductReport(None, None, None, None, None)
   }
 
   /**
     * @inheritdoc
     */
-  override def analyticsGetMmmReport(adAccountId: String, token: String): GetMMMReportResponse = {
+  override def analyticsGetMmmReport(adAccountId: String, token: String): MMMReport = {
     // TODO: Implement better logic
 
-    GetMMMReportResponse(None, None, None, None)
+    MMMReport(None, None, None, None, None, None)
   }
 
   /**
@@ -146,9 +149,9 @@ class AdAccountsApiImpl extends AdAccountsApi {
   /**
     * @inheritdoc
     */
-  override def templatesList(adAccountId: String, pageSize: Option[Int], order: Option[String], bookmark: Option[String]): TemplatesList200Response = {
+  override def templatesList(adAccountId: String, bookmark: Option[String], pageSize: Option[Int], order: Option[PaginationOrder]): TemplatesList200Response = {
     // TODO: Implement better logic
 
-    TemplatesList200Response(None, List.empty[TemplateResponse])
+    TemplatesList200Response(None, List.empty[AccountTemplate])
   }
 }

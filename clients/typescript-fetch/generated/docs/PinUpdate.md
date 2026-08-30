@@ -7,6 +7,7 @@ Resource create or update operation model.
 
 Name | Type
 ------------ | -------------
+`aiDisclosures` | [AiDisclosuresUpdate](AiDisclosuresUpdate.md)
 `altText` | string
 `boardId` | string
 `boardSectionId` | string
@@ -22,6 +23,7 @@ import type { PinUpdate } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "aiDisclosures": null,
   "altText": null,
   "boardId": null,
   "boardSectionId": null,

@@ -50,7 +50,6 @@
       "phpunit"
     ],
     "test-apis": "phpunit --testsuite Apis",
-    "test-models": "phpunit --testsuite Models",
     "phpcs": "phpcs",
     "phplint": "phplint ./ --exclude=vendor"
   },

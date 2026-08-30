@@ -125,7 +125,7 @@ export namespace CatalogsHotelBatchRequest {
         Nb: 'NB',
         Ne: 'NE',
         Nl2: 'NL',
-        No: 'NO',
+        False: 'false',
         Pl: 'PL',
         Pt: 'PT',
         Ro: 'RO',

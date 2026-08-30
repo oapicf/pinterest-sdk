@@ -8,22 +8,22 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CreateInvitesResultsResponseArrayItemsInner;
+import org.openapitools.model.InviteActionResultItem;
 
 /**
  * CreateInvitesResultsResponseArray
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CreateInvitesResultsResponseArray   {
   @JsonProperty("items")
-  private List<@Valid CreateInvitesResultsResponseArrayItemsInner> items = null;
+  private List<@Valid InviteActionResultItem> items = null;
 
-  public CreateInvitesResultsResponseArray items(List<@Valid CreateInvitesResultsResponseArrayItemsInner> items) {
+  public CreateInvitesResultsResponseArray items(List<@Valid InviteActionResultItem> items) {
     this.items = items;
     return this;
   }
 
-  public CreateInvitesResultsResponseArray addItemsItem(CreateInvitesResultsResponseArrayItemsInner itemsItem) {
+  public CreateInvitesResultsResponseArray addItemsItem(InviteActionResultItem itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -36,11 +36,11 @@ public class CreateInvitesResultsResponseArray   {
    * @return items
   **/
   @ApiModelProperty(value = "List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.")
-  public List<@Valid CreateInvitesResultsResponseArrayItemsInner> getItems() {
+  public List<@Valid InviteActionResultItem> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid CreateInvitesResultsResponseArrayItemsInner> items) {
+  public void setItems(List<@Valid InviteActionResultItem> items) {
     this.items = items;
   }
 
@@ -77,10 +77,7 @@ public class CreateInvitesResultsResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

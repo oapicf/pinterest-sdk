@@ -6,15 +6,15 @@
 import 'package:openapi/src/model/catalogs_feed_credentials.dart';
 import 'package:openapi/src/model/catalogs_feed_processing_schedule.dart';
 import 'package:openapi/src/model/nullable_currency.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/catalogs_retail_feeds_create_request.dart';
 import 'package:openapi/src/model/country.dart';
 import 'package:openapi/src/model/product_availability_type.dart';
 import 'package:openapi/src/model/catalogs_status.dart';
 import 'package:openapi/src/model/catalogs_format.dart';
 import 'package:openapi/src/model/catalogs_creative_assets_feeds_create_request.dart';
+import 'package:openapi/src/model/catalogs_creative_assets_feeds_create_request_default_locale.dart';
 import 'package:openapi/src/model/catalogs_hotel_feeds_create_request.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
-import 'package:openapi/src/model/catalogs_feeds_create_request_default_locale.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -24,7 +24,7 @@ part 'catalogs_vertical_feeds_create_request.g.dart';
 /// Request object for creating a feed.
 ///
 /// Properties:
-/// * [catalogId] - Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+/// * [catalogId] - Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
 /// * [catalogType] 
 /// * [credentials] 
 /// * [defaultAvailability] 
@@ -156,5 +156,18 @@ class _$CatalogsVerticalFeedsCreateRequestSerializer implements PrimitiveSeriali
     result.oneOf = OneOfDynamic(typeIndex: oneOfTypes.indexOf(oneOfType), types: oneOfTypes, value: oneOfResult);
     return result.build();
   }
+}
+
+class CatalogsVerticalFeedsCreateRequestCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')
+  static const CatalogsVerticalFeedsCreateRequestCatalogTypeEnum CREATIVE_ASSETS = _$catalogsVerticalFeedsCreateRequestCatalogTypeEnum_CREATIVE_ASSETS;
+
+  static Serializer<CatalogsVerticalFeedsCreateRequestCatalogTypeEnum> get serializer => _$catalogsVerticalFeedsCreateRequestCatalogTypeEnumSerializer;
+
+  const CatalogsVerticalFeedsCreateRequestCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsVerticalFeedsCreateRequestCatalogTypeEnum> get values => _$catalogsVerticalFeedsCreateRequestCatalogTypeEnumValues;
+  static CatalogsVerticalFeedsCreateRequestCatalogTypeEnum valueOf(String name) => _$catalogsVerticalFeedsCreateRequestCatalogTypeEnumValueOf(name);
 }
 

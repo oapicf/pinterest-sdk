@@ -5,9 +5,9 @@ import org.openapitools.model.*;
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
 
-import org.openapitools.model.Error;
 import org.openapitools.model.NotificationPostRequest;
 import org.openapitools.model.NotificationResponse;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 import java.util.Map;
@@ -25,7 +25,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the notifications API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public interface NotificationsApi  {
 
     @POST
@@ -41,10 +41,10 @@ public interface NotificationsApi  {
         })
     }, tags={ "notification", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Successfully received notification", response = NotificationResponse.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = NotificationResponse.class),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid request parameter.", response = Error.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
         
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response notificationPost(@ApiParam(value = "notification event." ,required=true) @NotNull @Valid NotificationPostRequest notificationPostRequest,@Context SecurityContext securityContext);
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response notificationPost(@ApiParam(value = "" ,required=true) @NotNull @Valid NotificationPostRequest notificationPostRequest,@Context SecurityContext securityContext);
 }

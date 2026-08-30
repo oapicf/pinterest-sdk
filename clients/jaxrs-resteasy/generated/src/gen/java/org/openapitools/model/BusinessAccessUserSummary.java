@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Metadata of the member/partner that has access to the asset.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Metadata of the member/partner that has access to the asset.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessAccessUserSummary   {
   
   private String email;
@@ -35,7 +35,7 @@ public class BusinessAccessUserSummary   {
    * Unique identifier of the business member/partner.
    **/
   
-  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the business member/partner.")
+  @ApiModelProperty(example = "549755885175", value = "Unique identifier of the business member/partner.")
   @JsonProperty("id")
  @Size(min=1,max=20)  public String getId() {
     return id;
@@ -94,10 +94,7 @@ public class BusinessAccessUserSummary   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

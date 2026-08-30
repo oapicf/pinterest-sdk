@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,7 +18,7 @@ import (
 // checks if the CatalogsHotelGuestRatings type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CatalogsHotelGuestRatings{}
 
-// CatalogsHotelGuestRatings If specified, you must provide all properties
+// CatalogsHotelGuestRatings struct for CatalogsHotelGuestRatings
 type CatalogsHotelGuestRatings struct {
 	// Max value for the hotel rating score.
 	MaxScore NullableFloat32 `json:"max_score,omitempty"`

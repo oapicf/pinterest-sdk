@@ -4,38 +4,79 @@
 #include "catalogs_retail_item_response.h"
 
 
+char* catalogs_retail_item_response_catalog_type_ToString(pinterest_rest_api_catalogs_retail_item_response_CATALOGTYPE_e catalog_type) {
+    char* catalog_typeArray[] =  { "NULL", "RETAIL" };
+    return catalog_typeArray[catalog_type];
+}
+
+pinterest_rest_api_catalogs_retail_item_response_CATALOGTYPE_e catalogs_retail_item_response_catalog_type_FromString(char* catalog_type){
+    int stringToReturn = 0;
+    char *catalog_typeArray[] =  { "NULL", "RETAIL" };
+    size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
+char* catalogs_retail_item_response_item_response_kind_ToString(pinterest_rest_api_catalogs_retail_item_response_ITEMRESPONSEKIND_e item_response_kind) {
+    char* item_response_kindArray[] =  { "NULL", "retail_item" };
+    return item_response_kindArray[item_response_kind];
+}
+
+pinterest_rest_api_catalogs_retail_item_response_ITEMRESPONSEKIND_e catalogs_retail_item_response_item_response_kind_FromString(char* item_response_kind){
+    int stringToReturn = 0;
+    char *item_response_kindArray[] =  { "NULL", "retail_item" };
+    size_t sizeofArray = sizeof(item_response_kindArray) / sizeof(item_response_kindArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(item_response_kind, item_response_kindArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 static catalogs_retail_item_response_t *catalogs_retail_item_response_create_internal(
     item_attributes_t *attributes,
-    pinterest_rest_api_catalogs_type__e catalog_type,
+    pinterest_rest_api_catalogs_retail_item_response_CATALOGTYPE_e catalog_type,
     char *item_id,
+    pinterest_rest_api_catalogs_retail_item_response_ITEMRESPONSEKIND_e item_response_kind,
     list_t *pins
     ) {
     catalogs_retail_item_response_t *catalogs_retail_item_response_local_var = malloc(sizeof(catalogs_retail_item_response_t));
     if (!catalogs_retail_item_response_local_var) {
         return NULL;
     }
+    memset(catalogs_retail_item_response_local_var, 0, sizeof(catalogs_retail_item_response_t));
+    catalogs_retail_item_response_local_var->_library_owned = 1;
     catalogs_retail_item_response_local_var->attributes = attributes;
     catalogs_retail_item_response_local_var->catalog_type = catalog_type;
     catalogs_retail_item_response_local_var->item_id = item_id;
+    catalogs_retail_item_response_local_var->item_response_kind = item_response_kind;
     catalogs_retail_item_response_local_var->pins = pins;
-
-    catalogs_retail_item_response_local_var->_library_owned = 1;
     return catalogs_retail_item_response_local_var;
 }
 
 __attribute__((deprecated)) catalogs_retail_item_response_t *catalogs_retail_item_response_create(
     item_attributes_t *attributes,
-    pinterest_rest_api_catalogs_type__e catalog_type,
+    pinterest_rest_api_catalogs_retail_item_response_CATALOGTYPE_e catalog_type,
     char *item_id,
+    pinterest_rest_api_catalogs_retail_item_response_ITEMRESPONSEKIND_e item_response_kind,
     list_t *pins
     ) {
-    return catalogs_retail_item_response_create_internal (
+    catalogs_retail_item_response_t *result = catalogs_retail_item_response_create_internal (
         attributes,
         catalog_type,
         item_id,
+        item_response_kind,
         pins
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_retail_item_response_free(catalogs_retail_item_response_t *catalogs_retail_item_response) {
@@ -82,16 +123,12 @@ cJSON *catalogs_retail_item_response_convertToJSON(catalogs_retail_item_response
 
 
     // catalogs_retail_item_response->catalog_type
-    if (pinterest_rest_api_catalogs_type__NULL == catalogs_retail_item_response->catalog_type) {
+    if (pinterest_rest_api_catalogs_retail_item_response_CATALOGTYPE_NULL == catalogs_retail_item_response->catalog_type) {
         goto fail;
     }
-    cJSON *catalog_type_local_JSON = catalogs_type_convertToJSON(catalogs_retail_item_response->catalog_type);
-    if(catalog_type_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "catalog_type", catalog_type_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "catalog_type", catalogs_retail_item_response_catalog_type_ToString(catalogs_retail_item_response->catalog_type)) == NULL)
+    {
+    goto fail; //Enum
     }
 
 
@@ -100,6 +137,16 @@ cJSON *catalogs_retail_item_response_convertToJSON(catalogs_retail_item_response
     if(cJSON_AddStringToObject(item, "item_id", catalogs_retail_item_response->item_id) == NULL) {
     goto fail; //String
     }
+    }
+
+
+    // catalogs_retail_item_response->item_response_kind
+    if (pinterest_rest_api_catalogs_retail_item_response_ITEMRESPONSEKIND_NULL == catalogs_retail_item_response->item_response_kind) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "item_response_kind", catalogs_retail_item_response_item_response_kind_ToString(catalogs_retail_item_response->item_response_kind)) == NULL)
+    {
+    goto fail; //Enum
     }
 
 
@@ -137,8 +184,7 @@ catalogs_retail_item_response_t *catalogs_retail_item_response_parseFromJSON(cJS
     // define the local variable for catalogs_retail_item_response->attributes
     item_attributes_t *attributes_local_nonprim = NULL;
 
-    // define the local variable for catalogs_retail_item_response->catalog_type
-    pinterest_rest_api_catalogs_type__e catalog_type_local_nonprim = 0;
+    char *item_id_local_str = NULL;
 
     // define the local list for catalogs_retail_item_response->pins
     list_t *pinsList = NULL;
@@ -161,8 +207,13 @@ catalogs_retail_item_response_t *catalogs_retail_item_response_parseFromJSON(cJS
         goto end;
     }
 
+    pinterest_rest_api_catalogs_retail_item_response_CATALOGTYPE_e catalog_typeVariable;
     
-    catalog_type_local_nonprim = catalogs_type_parseFromJSON(catalog_type); //custom
+    if(!cJSON_IsString(catalog_type))
+    {
+    goto end; //Enum
+    }
+    catalog_typeVariable = catalogs_retail_item_response_catalog_type_FromString(catalog_type->valuestring);
 
     // catalogs_retail_item_response->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(catalogs_retail_item_responseJSON, "item_id");
@@ -175,6 +226,23 @@ catalogs_retail_item_response_t *catalogs_retail_item_response_parseFromJSON(cJS
     goto end; //String
     }
     }
+
+    // catalogs_retail_item_response->item_response_kind
+    cJSON *item_response_kind = cJSON_GetObjectItemCaseSensitive(catalogs_retail_item_responseJSON, "item_response_kind");
+    if (cJSON_IsNull(item_response_kind)) {
+        item_response_kind = NULL;
+    }
+    if (!item_response_kind) {
+        goto end;
+    }
+
+    pinterest_rest_api_catalogs_retail_item_response_ITEMRESPONSEKIND_e item_response_kindVariable;
+    
+    if(!cJSON_IsString(item_response_kind))
+    {
+    goto end; //Enum
+    }
+    item_response_kindVariable = catalogs_retail_item_response_item_response_kind_FromString(item_response_kind->valuestring);
 
     // catalogs_retail_item_response->pins
     cJSON *pins = cJSON_GetObjectItemCaseSensitive(catalogs_retail_item_responseJSON, "pins");
@@ -201,12 +269,19 @@ catalogs_retail_item_response_t *catalogs_retail_item_response_parseFromJSON(cJS
     }
 
 
+    if (item_id && !cJSON_IsNull(item_id)) item_id_local_str = strdup(item_id->valuestring);
+
     catalogs_retail_item_response_local_var = catalogs_retail_item_response_create_internal (
         attributes ? attributes_local_nonprim : NULL,
-        catalog_type_local_nonprim,
-        item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
+        catalog_typeVariable,
+        item_id_local_str,
+        item_response_kindVariable,
         pins ? pinsList : NULL
         );
+
+    if (!catalogs_retail_item_response_local_var) {
+        goto end;
+    }
 
     return catalogs_retail_item_response_local_var;
 end:
@@ -214,8 +289,9 @@ end:
         item_attributes_free(attributes_local_nonprim);
         attributes_local_nonprim = NULL;
     }
-    if (catalog_type_local_nonprim) {
-        catalog_type_local_nonprim = 0;
+    if (item_id_local_str) {
+        free(item_id_local_str);
+        item_id_local_str = NULL;
     }
     if (pinsList) {
         listEntry_t *listEntry = NULL;

@@ -13,6 +13,7 @@
 #include "bourne/json.hpp"
 #include "Helpers.h"
 #include "TargetingSpecGender.h"
+#include "TargetingSpecListOperation.h"
 #include <list>
 
 namespace Tiny {
@@ -53,26 +54,26 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setField(std::string  field);
+	void setField(std::string field);
 	/*! \brief Get 
 	 */
-	std::string getOperation();
+	TargetingSpecListOperation getOperation();
 
 	/*! \brief Set 
 	 */
-	void setOperation(std::string  operation);
+	void setOperation(TargetingSpecListOperation operation);
 	/*! \brief Get 
 	 */
 	std::list<TargetingSpecGender> getValues();
 
 	/*! \brief Set 
 	 */
-	void setValues(std::list <TargetingSpecGender> values);
+	void setValues(std::list<TargetingSpecGender> values);
 
 
     private:
     std::string field{};
-    std::string operation{};
+    TargetingSpecListOperation operation;
     std::list<TargetingSpecGender> values;
 };
 }

@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import CatalogsRetailProductGroupCreateRequest._
 
 case class CatalogsRetailProductGroupCreateRequest (
-  /* Catalog id pertaining to the retail product group. */
+  /* Catalog ID pertaining to the product group. */
   catalogId: String,
 /* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
   catalogType: CatalogType,

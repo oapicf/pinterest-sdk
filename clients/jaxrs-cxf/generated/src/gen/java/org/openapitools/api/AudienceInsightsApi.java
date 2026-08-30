@@ -1,9 +1,9 @@
 package org.openapitools.api;
 
-import org.openapitools.model.AudienceDefinitionResponse;
 import org.openapitools.model.AudienceInsightType;
-import org.openapitools.model.AudienceInsightsResponse;
-import org.openapitools.model.Error;
+import org.openapitools.model.AudienceInsights;
+import org.openapitools.model.AudienceInsightsScopeAndTypeGet200Response;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 import java.util.Map;
@@ -24,24 +24,29 @@ import javax.validation.Valid;
  * <p>Pinterest's REST API
  *
  */
-@Path("/ad_accounts/{ad_account_id}")
+@Path("")
 @Api(value = "/", description = "")
 public interface AudienceInsightsApi  {
 
     /**
      * Get audience insights
      *
-     * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
+     * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
      *
      */
     @GET
-    @Path("/audience_insights")
+    @Path("/ad_accounts/{ad_account_id}/audience_insights")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get audience insights", tags={ "audience_insights" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AudienceInsightsResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public AudienceInsightsResponse audienceInsightsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("audience_insight_type") @NotNull @DefaultValue("YOUR_TOTAL_AUDIENCE")AudienceInsightType audienceInsightType);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AudienceInsights.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public AudienceInsights audienceInsightsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("audience_insight_type") @NotNull AudienceInsightType audienceInsightType);
 
     /**
      * Get audience insights scope and type
@@ -50,11 +55,16 @@ public interface AudienceInsightsApi  {
      *
      */
     @GET
-    @Path("/insights/audiences")
+    @Path("/ad_accounts/{ad_account_id}/insights/audiences")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get audience insights scope and type", tags={ "audience_insights" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AudienceDefinitionResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public AudienceDefinitionResponse audienceInsightsScopeAndTypeGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AudienceInsightsScopeAndTypeGet200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public AudienceInsightsScopeAndTypeGet200Response audienceInsightsScopeAndTypeGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId);
 }

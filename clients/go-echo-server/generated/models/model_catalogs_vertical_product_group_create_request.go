@@ -3,7 +3,7 @@ package models
 // CatalogsVerticalProductGroupCreateRequest - Request object for creating a catalog based product group.
 type CatalogsVerticalProductGroupCreateRequest struct {
 
-	// Catalog id pertaining to the creative assets product group.
+	// Catalog ID pertaining to the product group.
 	CatalogId string `json:"catalog_id"`
 
 	CatalogType string `json:"catalog_type"`

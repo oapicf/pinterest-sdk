@@ -16,19 +16,22 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.AdsCreditRedeemRequest
-import org.openapitools.server.api.model.AdsCreditRedeemResponse
+import org.openapitools.server.api.model.AdsCreditRedeem
+import org.openapitools.server.api.model.AdsCreditRedeemCreate
 import org.openapitools.server.api.model.AdsCreditsDiscountsGet200Response
+import org.openapitools.server.api.model.BillingInvoiceDocumentType
 import org.openapitools.server.api.model.BillingInvoiceDownloadResponse
+import org.openapitools.server.api.model.BillingInvoiceSortField
+import org.openapitools.server.api.model.BillingInvoiceStatus
 import org.openapitools.server.api.model.BillingInvoicesGet200Response
 import org.openapitools.server.api.model.BillingProfilesGet200Response
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.SSIOAccountResponse
-import org.openapitools.server.api.model.SSIOCreateInsertionOrderRequest
-import org.openapitools.server.api.model.SSIOCreateInsertionOrderResponse
-import org.openapitools.server.api.model.SSIOEditInsertionOrderRequest
-import org.openapitools.server.api.model.SSIOEditInsertionOrderResponse
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
+import org.openapitools.server.api.model.SSIOAccount
+import org.openapitools.server.api.model.SSIOInsertionOrder
+import org.openapitools.server.api.model.SSIOInsertionOrderCreate
 import org.openapitools.server.api.model.SSIOInsertionOrderStatusResponse
+import org.openapitools.server.api.model.SSIOInsertionOrderUpdate
 import org.openapitools.server.api.model.SsioInsertionOrdersStatusGetByAdAccount200Response
 import org.openapitools.server.api.model.SsioOrderLinesGetByAdAccount200Response
 
@@ -84,13 +87,13 @@ class BillingApiVertxProxyHandler(private val vertx: Vertx, private val service:
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val adsCreditRedeemRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (adsCreditRedeemRequestParam == null) {
-                        throw IllegalArgumentException("adsCreditRedeemRequest is required")
+                    val adsCreditRedeemCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (adsCreditRedeemCreateParam == null) {
+                        throw IllegalArgumentException("adsCreditRedeemCreate is required")
                     }
-                    val adsCreditRedeemRequest = Gson().fromJson(adsCreditRedeemRequestParam.encode(), AdsCreditRedeemRequest::class.java)
+                    val adsCreditRedeemCreate = Gson().fromJson(adsCreditRedeemCreateParam.encode(), AdsCreditRedeemCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.adsCreditRedeem(adAccountId,adsCreditRedeemRequest,context)
+                        val result = service.adsCreditRedeem(adAccountId,adsCreditRedeemCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -145,14 +148,18 @@ class BillingApiVertxProxyHandler(private val vertx: Vertx, private val service:
                     }
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val sort = ApiHandlerUtils.searchStringInJson(params,"sort")
-                    val order = ApiHandlerUtils.searchStringInJson(params,"order")
-                    val status = ApiHandlerUtils.searchStringInJson(params,"status")
-                    val documentType = ApiHandlerUtils.searchStringInJson(params,"document_type")
+                    val orderParam = ApiHandlerUtils.searchJsonObjectInJson(params,"order")
+                    val order = if(orderParam ==null) null else Gson().fromJson(orderParam.encode(), PinterestLibPaginationOrder::class.java)
+                    val sortParam = ApiHandlerUtils.searchJsonObjectInJson(params,"sort")
+                    val sort = if(sortParam ==null) null else Gson().fromJson(sortParam.encode(), BillingInvoiceSortField::class.java)
+                    val statusParam = ApiHandlerUtils.searchJsonObjectInJson(params,"status")
+                    val status = if(statusParam ==null) null else Gson().fromJson(statusParam.encode(), BillingInvoiceStatus::class.java)
+                    val documentTypeParam = ApiHandlerUtils.searchJsonObjectInJson(params,"document_type")
+                    val documentType = if(documentTypeParam ==null) null else Gson().fromJson(documentTypeParam.encode(), BillingInvoiceDocumentType::class.java)
                     val startDueDate = java.time.LocalDate.parse(ApiHandlerUtils.searchStringInJson(params,"start_due_date"))
                     val endDueDate = java.time.LocalDate.parse(ApiHandlerUtils.searchStringInJson(params,"end_due_date"))
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.billingInvoicesGet(adAccountId,bookmark,pageSize,sort,order,status,documentType,startDueDate,endDueDate,context)
+                        val result = service.billingInvoicesGet(adAccountId,bookmark,pageSize,order,sort,status,documentType,startDueDate,endDueDate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -163,18 +170,18 @@ class BillingApiVertxProxyHandler(private val vertx: Vertx, private val service:
         
                 "billingProfilesGet" -> {
                     val params = context.params
-                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
-                    if(adAccountId == null){
-                        throw IllegalArgumentException("adAccountId is required")
-                    }
                     val isActive = ApiHandlerUtils.searchStringInJson(params,"is_active")?.toBoolean()
                     if(isActive == null){
                         throw IllegalArgumentException("isActive is required")
                     }
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.billingProfilesGet(adAccountId,isActive,bookmark,pageSize,context)
+                        val result = service.billingProfilesGet(isActive,adAccountId,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -205,13 +212,13 @@ class BillingApiVertxProxyHandler(private val vertx: Vertx, private val service:
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val ssIOCreateInsertionOrderRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (ssIOCreateInsertionOrderRequestParam == null) {
-                        throw IllegalArgumentException("ssIOCreateInsertionOrderRequest is required")
+                    val ssIOInsertionOrderCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (ssIOInsertionOrderCreateParam == null) {
+                        throw IllegalArgumentException("ssIOInsertionOrderCreate is required")
                     }
-                    val ssIOCreateInsertionOrderRequest = Gson().fromJson(ssIOCreateInsertionOrderRequestParam.encode(), SSIOCreateInsertionOrderRequest::class.java)
+                    val ssIOInsertionOrderCreate = Gson().fromJson(ssIOInsertionOrderCreateParam.encode(), SSIOInsertionOrderCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.ssioInsertionOrderCreate(adAccountId,ssIOCreateInsertionOrderRequest,context)
+                        val result = service.ssioInsertionOrderCreate(adAccountId,ssIOInsertionOrderCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -226,13 +233,13 @@ class BillingApiVertxProxyHandler(private val vertx: Vertx, private val service:
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val ssIOEditInsertionOrderRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (ssIOEditInsertionOrderRequestParam == null) {
-                        throw IllegalArgumentException("ssIOEditInsertionOrderRequest is required")
+                    val ssIOInsertionOrderUpdateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (ssIOInsertionOrderUpdateParam == null) {
+                        throw IllegalArgumentException("ssIOInsertionOrderUpdate is required")
                     }
-                    val ssIOEditInsertionOrderRequest = Gson().fromJson(ssIOEditInsertionOrderRequestParam.encode(), SSIOEditInsertionOrderRequest::class.java)
+                    val ssIOInsertionOrderUpdate = Gson().fromJson(ssIOInsertionOrderUpdateParam.encode(), SSIOInsertionOrderUpdate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.ssioInsertionOrderEdit(adAccountId,ssIOEditInsertionOrderRequest,context)
+                        val result = service.ssioInsertionOrderEdit(adAccountId,ssIOInsertionOrderUpdate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -285,11 +292,11 @@ class BillingApiVertxProxyHandler(private val vertx: Vertx, private val service:
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
+                    val pinOrderId = ApiHandlerUtils.searchStringInJson(params,"pin_order_id")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val pinOrderId = ApiHandlerUtils.searchStringInJson(params,"pin_order_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.ssioOrderLinesGetByAdAccount(adAccountId,bookmark,pageSize,pinOrderId,context)
+                        val result = service.ssioOrderLinesGetByAdAccount(adAccountId,pinOrderId,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

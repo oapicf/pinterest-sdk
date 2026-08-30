@@ -38,19 +38,21 @@ public class PinMediaWithVideo   {
 
   private MediaTypeEnum mediaType;
   private String videoUrl;
+  private String videoUrlHls;
   private Integer width;
 
   public PinMediaWithVideo () {
 
   }
 
-  public PinMediaWithVideo (String coverImageUrl, BigDecimal duration, Integer height, ImageSize images, MediaTypeEnum mediaType, String videoUrl, Integer width) {
+  public PinMediaWithVideo (String coverImageUrl, BigDecimal duration, Integer height, ImageSize images, MediaTypeEnum mediaType, String videoUrl, String videoUrlHls, Integer width) {
     this.coverImageUrl = coverImageUrl;
     this.duration = duration;
     this.height = height;
     this.images = images;
     this.mediaType = mediaType;
     this.videoUrl = videoUrl;
+    this.videoUrlHls = videoUrlHls;
     this.width = width;
   }
 
@@ -109,6 +111,15 @@ public class PinMediaWithVideo   {
   }
 
     
+  @JsonProperty("video_url_hls")
+  public String getVideoUrlHls() {
+    return videoUrlHls;
+  }
+  public void setVideoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+  }
+
+    
   @JsonProperty("width")
   public Integer getWidth() {
     return width;
@@ -133,12 +144,13 @@ public class PinMediaWithVideo   {
         Objects.equals(images, pinMediaWithVideo.images) &&
         Objects.equals(mediaType, pinMediaWithVideo.mediaType) &&
         Objects.equals(videoUrl, pinMediaWithVideo.videoUrl) &&
+        Objects.equals(videoUrlHls, pinMediaWithVideo.videoUrlHls) &&
         Objects.equals(width, pinMediaWithVideo.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(coverImageUrl, duration, height, images, mediaType, videoUrl, width);
+    return Objects.hash(coverImageUrl, duration, height, images, mediaType, videoUrl, videoUrlHls, width);
   }
 
   @Override
@@ -152,6 +164,7 @@ public class PinMediaWithVideo   {
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    videoUrlHls: ").append(toIndentedString(videoUrlHls)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -162,9 +175,6 @@ public class PinMediaWithVideo   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

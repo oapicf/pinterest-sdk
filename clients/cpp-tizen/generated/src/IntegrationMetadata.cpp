@@ -31,7 +31,7 @@ IntegrationMetadata::__init()
 	//connected_user_id = std::string();
 	//created_timestamp = double(0);
 	//external_business_id = std::string();
-	//id = std::string();
+	//id = null;
 	//partner_access_token_expiry = double(0);
 	//partner_metadata = std::string();
 	//partner_refresh_token_expiry = double(0);

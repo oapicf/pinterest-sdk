@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -27,7 +27,7 @@ type CatalogsItemsDeleteBatchRequest struct {
 	Items []ItemDeleteBatchRecord `json:"items"`
 	// We recommend using the CatalogsLocale values.
 	Language string `json:"language"`
-	Operation BatchOperation `json:"operation"`
+	Operation string `json:"operation"`
 }
 
 type _CatalogsItemsDeleteBatchRequest CatalogsItemsDeleteBatchRequest
@@ -36,7 +36,7 @@ type _CatalogsItemsDeleteBatchRequest CatalogsItemsDeleteBatchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsItemsDeleteBatchRequest(country Country, items []ItemDeleteBatchRecord, language string, operation BatchOperation) *CatalogsItemsDeleteBatchRequest {
+func NewCatalogsItemsDeleteBatchRequest(country Country, items []ItemDeleteBatchRecord, language string, operation string) *CatalogsItemsDeleteBatchRequest {
 	this := CatalogsItemsDeleteBatchRequest{}
 	this.Country = country
 	this.Items = items
@@ -126,9 +126,9 @@ func (o *CatalogsItemsDeleteBatchRequest) SetLanguage(v string) {
 }
 
 // GetOperation returns the Operation field value
-func (o *CatalogsItemsDeleteBatchRequest) GetOperation() BatchOperation {
+func (o *CatalogsItemsDeleteBatchRequest) GetOperation() string {
 	if o == nil {
-		var ret BatchOperation
+		var ret string
 		return ret
 	}
 
@@ -137,7 +137,7 @@ func (o *CatalogsItemsDeleteBatchRequest) GetOperation() BatchOperation {
 
 // GetOperationOk returns a tuple with the Operation field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsItemsDeleteBatchRequest) GetOperationOk() (*BatchOperation, bool) {
+func (o *CatalogsItemsDeleteBatchRequest) GetOperationOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -145,7 +145,7 @@ func (o *CatalogsItemsDeleteBatchRequest) GetOperationOk() (*BatchOperation, boo
 }
 
 // SetOperation sets field value
-func (o *CatalogsItemsDeleteBatchRequest) SetOperation(v BatchOperation) {
+func (o *CatalogsItemsDeleteBatchRequest) SetOperation(v string) {
 	o.Operation = v
 }
 

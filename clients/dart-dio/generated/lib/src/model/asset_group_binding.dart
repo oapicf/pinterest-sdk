@@ -28,7 +28,7 @@ part 'asset_group_binding.g.dart';
 abstract class AssetGroupBinding implements Built<AssetGroupBinding, AssetGroupBindingBuilder> {
   /// A list of ad account IDs under the asset group
   @BuiltValueField(wireName: r'ad_accounts_ids')
-  BuiltList<String>? get adAccountsIds;
+  BuiltList<String> get adAccountsIds;
 
   /// Asset group description
   @BuiltValueField(wireName: r'asset_group_description')
@@ -40,15 +40,15 @@ abstract class AssetGroupBinding implements Built<AssetGroupBinding, AssetGroupB
 
   /// Asset group types
   @BuiltValueField(wireName: r'asset_group_types')
-  BuiltList<String>? get assetGroupTypes;
+  BuiltList<String> get assetGroupTypes;
 
   /// A list of catalog IDs under asset group
   @BuiltValueField(wireName: r'catalogs_ids')
-  BuiltList<String>? get catalogsIds;
+  BuiltList<String> get catalogsIds;
 
   /// The data of the user that created the asset group.
   @BuiltValueField(wireName: r'created_by')
-  BusinessAccessUserSummary? get createdBy;
+  BusinessAccessUserSummary get createdBy;
 
   /// The creation time of the asset group
   @BuiltValueField(wireName: r'created_time')
@@ -56,15 +56,15 @@ abstract class AssetGroupBinding implements Built<AssetGroupBinding, AssetGroupB
 
   /// Asset Group ID.
   @BuiltValueField(wireName: r'id')
-  String? get id;
+  String get id;
 
   /// The data of the business that owns the asset group.
   @BuiltValueField(wireName: r'owner')
-  BusinessAccessUserSummary? get owner;
+  BusinessAccessUserSummary get owner;
 
   /// A list of profile IDs under asset group
   @BuiltValueField(wireName: r'profiles_ids')
-  BuiltList<String>? get profilesIds;
+  BuiltList<String> get profilesIds;
 
   /// The last update time of the asset group
   @BuiltValueField(wireName: r'updated_time')
@@ -93,83 +93,61 @@ class _$AssetGroupBindingSerializer implements PrimitiveSerializer<AssetGroupBin
     AssetGroupBinding object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.adAccountsIds != null) {
-      yield r'ad_accounts_ids';
-      yield serializers.serialize(
-        object.adAccountsIds,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
-      );
-    }
-    if (object.assetGroupDescription != null) {
-      yield r'asset_group_description';
-      yield serializers.serialize(
-        object.assetGroupDescription,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.assetGroupName != null) {
-      yield r'asset_group_name';
-      yield serializers.serialize(
-        object.assetGroupName,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.assetGroupTypes != null) {
-      yield r'asset_group_types';
-      yield serializers.serialize(
-        object.assetGroupTypes,
-        specifiedType: const FullType(BuiltList, [FullType(String)]),
-      );
-    }
-    if (object.catalogsIds != null) {
-      yield r'catalogs_ids';
-      yield serializers.serialize(
-        object.catalogsIds,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
-      );
-    }
-    if (object.createdBy != null) {
-      yield r'created_by';
-      yield serializers.serialize(
-        object.createdBy,
-        specifiedType: const FullType.nullable(BusinessAccessUserSummary),
-      );
-    }
-    if (object.createdTime != null) {
-      yield r'created_time';
-      yield serializers.serialize(
-        object.createdTime,
-        specifiedType: const FullType.nullable(int),
-      );
-    }
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.owner != null) {
-      yield r'owner';
-      yield serializers.serialize(
-        object.owner,
-        specifiedType: const FullType.nullable(BusinessAccessUserSummary),
-      );
-    }
-    if (object.profilesIds != null) {
-      yield r'profiles_ids';
-      yield serializers.serialize(
-        object.profilesIds,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
-      );
-    }
-    if (object.updatedTime != null) {
-      yield r'updated_time';
-      yield serializers.serialize(
-        object.updatedTime,
-        specifiedType: const FullType.nullable(int),
-      );
-    }
+    yield r'ad_accounts_ids';
+    yield serializers.serialize(
+      object.adAccountsIds,
+      specifiedType: const FullType(BuiltList, [FullType(String)]),
+    );
+    yield r'asset_group_description';
+    yield object.assetGroupDescription == null ? null : serializers.serialize(
+      object.assetGroupDescription,
+      specifiedType: const FullType.nullable(String),
+    );
+    yield r'asset_group_name';
+    yield object.assetGroupName == null ? null : serializers.serialize(
+      object.assetGroupName,
+      specifiedType: const FullType.nullable(String),
+    );
+    yield r'asset_group_types';
+    yield serializers.serialize(
+      object.assetGroupTypes,
+      specifiedType: const FullType(BuiltList, [FullType(String)]),
+    );
+    yield r'catalogs_ids';
+    yield serializers.serialize(
+      object.catalogsIds,
+      specifiedType: const FullType(BuiltList, [FullType(String)]),
+    );
+    yield r'created_by';
+    yield serializers.serialize(
+      object.createdBy,
+      specifiedType: const FullType(BusinessAccessUserSummary),
+    );
+    yield r'created_time';
+    yield object.createdTime == null ? null : serializers.serialize(
+      object.createdTime,
+      specifiedType: const FullType.nullable(int),
+    );
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
+    yield r'owner';
+    yield serializers.serialize(
+      object.owner,
+      specifiedType: const FullType(BusinessAccessUserSummary),
+    );
+    yield r'profiles_ids';
+    yield serializers.serialize(
+      object.profilesIds,
+      specifiedType: const FullType(BuiltList, [FullType(String)]),
+    );
+    yield r'updated_time';
+    yield object.updatedTime == null ? null : serializers.serialize(
+      object.updatedTime,
+      specifiedType: const FullType.nullable(int),
+    );
   }
 
   @override
@@ -196,9 +174,8 @@ class _$AssetGroupBindingSerializer implements PrimitiveSerializer<AssetGroupBin
         case r'ad_accounts_ids':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
           result.adAccountsIds.replace(valueDes);
           break;
         case r'asset_group_description':
@@ -227,17 +204,15 @@ class _$AssetGroupBindingSerializer implements PrimitiveSerializer<AssetGroupBin
         case r'catalogs_ids':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
           result.catalogsIds.replace(valueDes);
           break;
         case r'created_by':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BusinessAccessUserSummary),
-          ) as BusinessAccessUserSummary?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(BusinessAccessUserSummary),
+          ) as BusinessAccessUserSummary;
           result.createdBy.replace(valueDes);
           break;
         case r'created_time':
@@ -258,17 +233,15 @@ class _$AssetGroupBindingSerializer implements PrimitiveSerializer<AssetGroupBin
         case r'owner':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BusinessAccessUserSummary),
-          ) as BusinessAccessUserSummary?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(BusinessAccessUserSummary),
+          ) as BusinessAccessUserSummary;
           result.owner.replace(valueDes);
           break;
         case r'profiles_ids':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
           result.profilesIds.replace(valueDes);
           break;
         case r'updated_time':

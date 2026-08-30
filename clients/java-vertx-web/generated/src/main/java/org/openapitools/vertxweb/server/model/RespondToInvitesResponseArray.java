@@ -6,27 +6,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.RespondToInvitesResponseArrayItemsInner;
+import org.openapitools.vertxweb.server.model.RespondToInviteResultItem;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class RespondToInvitesResponseArray   {
   
-  private List<RespondToInvitesResponseArrayItemsInner> items = new ArrayList<>();
+  private List<RespondToInviteResultItem> items = new ArrayList<>();
 
   public RespondToInvitesResponseArray () {
 
   }
 
-  public RespondToInvitesResponseArray (List<RespondToInvitesResponseArrayItemsInner> items) {
+  public RespondToInvitesResponseArray (List<RespondToInviteResultItem> items) {
     this.items = items;
   }
 
     
   @JsonProperty("items")
-  public List<RespondToInvitesResponseArrayItemsInner> getItems() {
+  public List<RespondToInviteResultItem> getItems() {
     return items;
   }
-  public void setItems(List<RespondToInvitesResponseArrayItemsInner> items) {
+  public void setItems(List<RespondToInviteResultItem> items) {
     this.items = items;
   }
 
@@ -63,9 +63,6 @@ public class RespondToInvitesResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

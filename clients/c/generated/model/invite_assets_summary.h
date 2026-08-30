@@ -15,8 +15,7 @@
 
 typedef struct invite_assets_summary_t invite_assets_summary_t;
 
-#include "invite_assets_summary_ad_accounts_inner.h"
-#include "invite_assets_summary_profiles_inner.h"
+#include "invite_assets_summary_item.h"
 
 
 

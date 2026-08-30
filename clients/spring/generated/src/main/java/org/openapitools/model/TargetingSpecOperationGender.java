@@ -9,23 +9,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.TargetingSpecGender;
+import org.openapitools.model.TargetingSpecListOperation;
 import org.springframework.lang.Nullable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * TargetingSpecOperationGender
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class TargetingSpecOperationGender {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class TargetingSpecOperationGender implements TargetingSpecOperations {
 
   /**
    * Gets or Sets field
@@ -62,47 +66,9 @@ public class TargetingSpecOperationGender {
 
   private FieldEnum field;
 
-  /**
-   * Gets or Sets operation
-   */
-  public enum OperationEnum {
-    SET("SET"),
-    
-    ADD("ADD"),
-    
-    REMOVE("REMOVE");
+  private TargetingSpecListOperation operation;
 
-    private final String value;
-
-    OperationEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OperationEnum fromValue(String value) {
-      for (OperationEnum b : OperationEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private OperationEnum operation;
-
-  @Valid
-  private JsonNullable<List<TargetingSpecGender>> values = JsonNullable.<List<TargetingSpecGender>>undefined();
+  private List<TargetingSpecGender> values = new ArrayList<>();
 
   public TargetingSpecOperationGender() {
     super();
@@ -111,10 +77,10 @@ public class TargetingSpecOperationGender {
   /**
    * Constructor with only required parameters
    */
-  public TargetingSpecOperationGender(FieldEnum field, OperationEnum operation, List<TargetingSpecGender> values) {
+  public TargetingSpecOperationGender(FieldEnum field, TargetingSpecListOperation operation, List<TargetingSpecGender> values) {
     this.field = field;
     this.operation = operation;
-    this.values = JsonNullable.of(values);
+    this.values = values;
   }
 
   public TargetingSpecOperationGender field(FieldEnum field) {
@@ -133,11 +99,12 @@ public class TargetingSpecOperationGender {
     return field;
   }
 
+  @JsonProperty("field")
   public void setField(FieldEnum field) {
     this.field = field;
   }
 
-  public TargetingSpecOperationGender operation(OperationEnum operation) {
+  public TargetingSpecOperationGender operation(TargetingSpecListOperation operation) {
     this.operation = operation;
     return this;
   }
@@ -146,27 +113,28 @@ public class TargetingSpecOperationGender {
    * Get operation
    * @return operation
    */
-  @NotNull 
+  @NotNull @Valid 
   @Schema(name = "operation", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("operation")
-  public OperationEnum getOperation() {
+  public TargetingSpecListOperation getOperation() {
     return operation;
   }
 
-  public void setOperation(OperationEnum operation) {
+  @JsonProperty("operation")
+  public void setOperation(TargetingSpecListOperation operation) {
     this.operation = operation;
   }
 
   public TargetingSpecOperationGender values(List<TargetingSpecGender> values) {
-    this.values = JsonNullable.of(values);
+    this.values = values;
     return this;
   }
 
   public TargetingSpecOperationGender addValuesItem(TargetingSpecGender valuesItem) {
-    if (this.values == null || !this.values.isPresent()) {
-      this.values = JsonNullable.of(new ArrayList<>());
+    if (this.values == null) {
+      this.values = new ArrayList<>();
     }
-    this.values.get().add(valuesItem);
+    this.values.add(valuesItem);
     return this;
   }
 
@@ -177,11 +145,12 @@ public class TargetingSpecOperationGender {
   @NotNull @Valid 
   @Schema(name = "values", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("values")
-  public JsonNullable<List<TargetingSpecGender>> getValues() {
+  public List<TargetingSpecGender> getValues() {
     return values;
   }
 
-  public void setValues(JsonNullable<List<TargetingSpecGender>> values) {
+  @JsonProperty("values")
+  public void setValues(List<TargetingSpecGender> values) {
     this.values = values;
   }
 
@@ -219,11 +188,8 @@ public class TargetingSpecOperationGender {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

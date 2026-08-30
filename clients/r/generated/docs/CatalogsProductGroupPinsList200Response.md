@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **character** |  | [optional] 
-**items** | [**array[CatalogsProduct]**](CatalogsProduct.md) | Pins | 
+**items** | [**array[CatalogsProduct]**](CatalogsProduct.md) |  | 
 
 

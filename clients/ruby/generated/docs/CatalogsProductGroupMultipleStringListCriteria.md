@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **negated** | **Boolean** |  | [optional][default to false] |
-| **values** | **Array&lt;Array&lt;String&gt;&gt;** |  |  |
+| **negated** | **Boolean** |  | [optional] |
+| **values** | **Array&lt;Array&gt;** |  |  |
 
 ## Example
 

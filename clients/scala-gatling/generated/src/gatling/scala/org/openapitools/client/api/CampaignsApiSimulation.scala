@@ -63,6 +63,7 @@ class CampaignsApiSimulation extends Simulation {
     val campaignsGetPerSecond = config.getDouble("performance.operationsPerSecond.campaignsGet") * rateMultiplier * instanceMultiplier
     val campaignsListPerSecond = config.getDouble("performance.operationsPerSecond.campaignsList") * rateMultiplier * instanceMultiplier
     val campaignsUpdatePerSecond = config.getDouble("performance.operationsPerSecond.campaignsUpdate") * rateMultiplier * instanceMultiplier
+    val getCampaignDeliveryEstimatesPerSecond = config.getDouble("performance.operationsPerSecond.getCampaignDeliveryEstimates") * rateMultiplier * instanceMultiplier
 
     val scenarioBuilders: mutable.MutableList[PopulationBuilder] = new mutable.MutableList[PopulationBuilder]()
 
@@ -78,6 +79,7 @@ class CampaignsApiSimulation extends Simulation {
     val campaigns/listQUERYFeeder = csv(userDataDirectory + File.separator + "campaignsList-queryParams.csv").random
     val campaigns/listPATHFeeder = csv(userDataDirectory + File.separator + "campaignsList-pathParams.csv").random
     val campaigns/updatePATHFeeder = csv(userDataDirectory + File.separator + "campaignsUpdate-pathParams.csv").random
+    val get_campaign_delivery_estimatesPATHFeeder = csv(userDataDirectory + File.separator + "getCampaignDeliveryEstimates-pathParams.csv").random
 
     // Setup all scenarios
 
@@ -87,16 +89,16 @@ class CampaignsApiSimulation extends Simulation {
         .feed(ad_pins/analyticsPATHFeeder)
         .exec(http("adPinsAnalytics")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/pins/analytics")
-        .queryParam("view_window_days","${view_window_days}")
-        .queryParam("granularity","${granularity}")
-        .queryParam("campaign_id","${campaign_id}")
-        .queryParam("engagement_window_days","${engagement_window_days}")
+        .queryParam("click_window_days","${click_window_days}")
         .queryParam("conversion_report_time","${conversion_report_time}")
+        .queryParam("pin_ids","${pin_ids}")
+        .queryParam("columns","${columns}")
+        .queryParam("view_window_days","${view_window_days}")
+        .queryParam("campaign_id","${campaign_id}")
+        .queryParam("granularity","${granularity}")
         .queryParam("start_date","${start_date}")
         .queryParam("end_date","${end_date}")
-        .queryParam("columns","${columns}")
-        .queryParam("click_window_days","${click_window_days}")
-        .queryParam("pin_ids","${pin_ids}")
+        .queryParam("engagement_window_days","${engagement_window_days}")
 )
 
     // Run scnadPinsAnalytics with warm up and reach a constant rate for entire duration
@@ -112,18 +114,18 @@ class CampaignsApiSimulation extends Simulation {
         .feed(campaign_targeting_analytics/getPATHFeeder)
         .exec(http("campaignTargetingAnalyticsGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/campaigns/targeting_analytics")
-        .queryParam("view_window_days","${view_window_days}")
-        .queryParam("reporting_timezone","${reporting_timezone}")
-        .queryParam("granularity","${granularity}")
-        .queryParam("attribution_types","${attribution_types}")
-        .queryParam("engagement_window_days","${engagement_window_days}")
+        .queryParam("click_window_days","${click_window_days}")
         .queryParam("conversion_report_time","${conversion_report_time}")
+        .queryParam("attribution_types","${attribution_types}")
+        .queryParam("columns","${columns}")
+        .queryParam("view_window_days","${view_window_days}")
         .queryParam("campaign_ids","${campaign_ids}")
+        .queryParam("granularity","${granularity}")
         .queryParam("start_date","${start_date}")
         .queryParam("end_date","${end_date}")
-        .queryParam("columns","${columns}")
+        .queryParam("engagement_window_days","${engagement_window_days}")
         .queryParam("targeting_types","${targeting_types}")
-        .queryParam("click_window_days","${click_window_days}")
+        .queryParam("reporting_timezone","${reporting_timezone}")
 )
 
     // Run scncampaignTargetingAnalyticsGet with warm up and reach a constant rate for entire duration
@@ -139,17 +141,17 @@ class CampaignsApiSimulation extends Simulation {
         .feed(campaigns/analyticsPATHFeeder)
         .exec(http("campaignsAnalytics")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/campaigns/analytics")
-        .queryParam("view_window_days","${view_window_days}")
-        .queryParam("reporting_timezone","${reporting_timezone}")
-        .queryParam("granularity","${granularity}")
-        .queryParam("engagement_window_days","${engagement_window_days}")
+        .queryParam("click_window_days","${click_window_days}")
         .queryParam("conversion_report_time","${conversion_report_time}")
-        .queryParam("aggregate_report_rows","${aggregate_report_rows}")
+        .queryParam("columns","${columns}")
+        .queryParam("view_window_days","${view_window_days}")
+        .queryParam("campaign_ids","${campaign_ids}")
+        .queryParam("granularity","${granularity}")
         .queryParam("start_date","${start_date}")
         .queryParam("end_date","${end_date}")
-        .queryParam("campaign_ids","${campaign_ids}")
-        .queryParam("columns","${columns}")
-        .queryParam("click_window_days","${click_window_days}")
+        .queryParam("aggregate_report_rows","${aggregate_report_rows}")
+        .queryParam("engagement_window_days","${engagement_window_days}")
+        .queryParam("reporting_timezone","${reporting_timezone}")
 )
 
     // Run scncampaignsAnalytics with warm up and reach a constant rate for entire duration
@@ -193,11 +195,11 @@ class CampaignsApiSimulation extends Simulation {
         .feed(campaigns/listPATHFeeder)
         .exec(http("campaignsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/campaigns")
-        .queryParam("entity_statuses","${entity_statuses}")
         .queryParam("campaign_ids","${campaign_ids}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
         .queryParam("order","${order}")
+        .queryParam("entity_statuses","${entity_statuses}")
 )
 
     // Run scncampaignsList with warm up and reach a constant rate for entire duration
@@ -219,6 +221,20 @@ class CampaignsApiSimulation extends Simulation {
         rampUsersPerSec(1) to(campaignsUpdatePerSecond) during(rampUpSeconds),
         constantUsersPerSec(campaignsUpdatePerSecond) during(durationSeconds),
         rampUsersPerSec(campaignsUpdatePerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scngetCampaignDeliveryEstimates = scenario("getCampaignDeliveryEstimatesSimulation")
+        .feed(get_campaign_delivery_estimatesPATHFeeder)
+        .exec(http("getCampaignDeliveryEstimates")
+        .httpRequest("POST","/ad_accounts/${ad_account_id}/campaigns/delivery_estimates")
+)
+
+    // Run scngetCampaignDeliveryEstimates with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scngetCampaignDeliveryEstimates.inject(
+        rampUsersPerSec(1) to(getCampaignDeliveryEstimatesPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(getCampaignDeliveryEstimatesPerSecond) during(durationSeconds),
+        rampUsersPerSec(getCampaignDeliveryEstimatesPerSecond) to(1) during(rampDownSeconds)
     )
 
     setUp(

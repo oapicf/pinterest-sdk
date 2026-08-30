@@ -2,32 +2,35 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.AssetTypeResponse;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * An object containing the permissions a business partner has on the asset.
  */
 
 @Schema(name = "UpdatePartnerAssetsResult", description = "An object containing the permissions a business partner has on the asset.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UpdatePartnerAssetsResult {
 
   private String assetId;
 
-  private String assetType;
+  private AssetTypeResponse assetType;
 
   private String partnerId;
 
@@ -54,23 +57,23 @@ public class UpdatePartnerAssetsResult {
     this.assetId = assetId;
   }
 
-  public UpdatePartnerAssetsResult assetType(String assetType) {
+  public UpdatePartnerAssetsResult assetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
     return this;
   }
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+   * Get assetType
    * @return assetType
    */
-  
-  @Schema(name = "asset_type", example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Valid 
+  @Schema(name = "asset_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_type")
-  public String getAssetType() {
+  public AssetTypeResponse getAssetType() {
     return assetType;
   }
 
-  public void setAssetType(String assetType) {
+  public void setAssetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
   }
 
@@ -159,10 +162,7 @@ public class UpdatePartnerAssetsResult {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

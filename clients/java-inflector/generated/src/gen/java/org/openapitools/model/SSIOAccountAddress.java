@@ -8,9 +8,12 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
+/**
+ * Salesforce address information.
+ **/
 
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "Salesforce address information.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SSIOAccountAddress   {
   @JsonProperty("address_id")
   private String addressId;
@@ -135,10 +138,7 @@ public class SSIOAccountAddress   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -8,13 +8,13 @@
 -define(BASE_URL, <<"/v5">>).
 
 %% @doc Create audience
-%% Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
--spec audiences/create(ctx:ctx(), binary(), openapi_audience_create_request:openapi_audience_create_request()) -> {ok, openapi_audience:openapi_audience(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-audiences/create(Ctx, AdAccountId, OpenapiAudienceCreateRequest) ->
-    audiences/create(Ctx, AdAccountId, OpenapiAudienceCreateRequest, #{}).
+%% Create a new audience for the ad account.
+-spec audiences/create(ctx:ctx(), binary(), openapi_ad_accounts_audience_create:openapi_ad_accounts_audience_create()) -> {ok, openapi_ad_accounts_audience:openapi_ad_accounts_audience(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+audiences/create(Ctx, AdAccountId, OpenapiAdAccountsAudienceCreate) ->
+    audiences/create(Ctx, AdAccountId, OpenapiAdAccountsAudienceCreate, #{}).
 
--spec audiences/create(ctx:ctx(), binary(), openapi_audience_create_request:openapi_audience_create_request(), maps:map()) -> {ok, openapi_audience:openapi_audience(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-audiences/create(Ctx, AdAccountId, OpenapiAudienceCreateRequest, Optional) ->
+-spec audiences/create(ctx:ctx(), binary(), openapi_ad_accounts_audience_create:openapi_ad_accounts_audience_create(), maps:map()) -> {ok, openapi_ad_accounts_audience:openapi_ad_accounts_audience(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+audiences/create(Ctx, AdAccountId, OpenapiAdAccountsAudienceCreate, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -22,7 +22,7 @@ audiences/create(Ctx, AdAccountId, OpenapiAudienceCreateRequest, Optional) ->
     Path = [?BASE_URL, "/ad_accounts/", AdAccountId, "/audiences"],
     QS = [],
     Headers = [],
-    Body1 = OpenapiAudienceCreateRequest,
+    Body1 = OpenapiAdAccountsAudienceCreate,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
@@ -30,12 +30,12 @@ audiences/create(Ctx, AdAccountId, OpenapiAudienceCreateRequest, Optional) ->
 
 %% @doc Get audience
 %% Get a specific audience given the audience ID.
--spec audiences/get(ctx:ctx(), binary(), binary()) -> {ok, openapi_audience:openapi_audience(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-audiences/get(Ctx, AdAccountId, AudienceId) ->
-    audiences/get(Ctx, AdAccountId, AudienceId, #{}).
+-spec audiences/get(ctx:ctx(), binary(), binary()) -> {ok, openapi_ad_accounts_audience:openapi_ad_accounts_audience(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+audiences/get(Ctx, AudienceId, AdAccountId) ->
+    audiences/get(Ctx, AudienceId, AdAccountId, #{}).
 
--spec audiences/get(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_audience:openapi_audience(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-audiences/get(Ctx, AdAccountId, AudienceId, Optional) ->
+-spec audiences/get(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_ad_accounts_audience:openapi_ad_accounts_audience(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+audiences/get(Ctx, AudienceId, AdAccountId, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -62,7 +62,7 @@ audiences/list(Ctx, AdAccountId, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/ad_accounts/", AdAccountId, "/audiences"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['bookmark', 'order', 'page_size', 'ownership_type'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['bookmark', 'page_size', 'order', 'ownership_type', 'exclude_nca'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),
@@ -71,13 +71,13 @@ audiences/list(Ctx, AdAccountId, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Update audience
-%% Update (edit or remove) an existing targeting audience.
--spec audiences/update(ctx:ctx(), binary(), binary(), openapi_audience_update_request:openapi_audience_update_request()) -> {ok, openapi_audience:openapi_audience(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-audiences/update(Ctx, AdAccountId, AudienceId, OpenapiAudienceUpdateRequest) ->
-    audiences/update(Ctx, AdAccountId, AudienceId, OpenapiAudienceUpdateRequest, #{}).
+%% Update an existing audience for the ad account.
+-spec audiences/update(ctx:ctx(), binary(), binary(), openapi_ad_accounts_audience_update:openapi_ad_accounts_audience_update()) -> {ok, openapi_ad_accounts_audience:openapi_ad_accounts_audience(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+audiences/update(Ctx, AudienceId, AdAccountId, OpenapiAdAccountsAudienceUpdate) ->
+    audiences/update(Ctx, AudienceId, AdAccountId, OpenapiAdAccountsAudienceUpdate, #{}).
 
--spec audiences/update(ctx:ctx(), binary(), binary(), openapi_audience_update_request:openapi_audience_update_request(), maps:map()) -> {ok, openapi_audience:openapi_audience(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-audiences/update(Ctx, AdAccountId, AudienceId, OpenapiAudienceUpdateRequest, Optional) ->
+-spec audiences/update(ctx:ctx(), binary(), binary(), openapi_ad_accounts_audience_update:openapi_ad_accounts_audience_update(), maps:map()) -> {ok, openapi_ad_accounts_audience:openapi_ad_accounts_audience(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+audiences/update(Ctx, AudienceId, AdAccountId, OpenapiAdAccountsAudienceUpdate, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -85,7 +85,7 @@ audiences/update(Ctx, AdAccountId, AudienceId, OpenapiAudienceUpdateRequest, Opt
     Path = [?BASE_URL, "/ad_accounts/", AdAccountId, "/audiences/", AudienceId, ""],
     QS = [],
     Headers = [],
-    Body1 = OpenapiAudienceUpdateRequest,
+    Body1 = OpenapiAdAccountsAudienceUpdate,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 

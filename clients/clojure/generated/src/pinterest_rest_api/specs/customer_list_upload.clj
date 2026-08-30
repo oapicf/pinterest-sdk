@@ -4,6 +4,7 @@
             [pinterest-rest-api.specs.error-detail :refer :all]
             [pinterest-rest-api.specs.user-list-operation-type :refer :all]
             [pinterest-rest-api.specs.record-counts :refer :all]
+            [pinterest-rest-api.specs.workload-state :refer :all]
             )
   (:import (java.io File)))
 
@@ -17,7 +18,7 @@
    (ds/req :id) string?
    (ds/req :operation) user-list-operation-type-spec
    (ds/opt :record_counts) record-counts-spec
-   (ds/req :state) string?
+   (ds/req :state) workload-state-spec
    (ds/req :updated_time) int?
    })
 

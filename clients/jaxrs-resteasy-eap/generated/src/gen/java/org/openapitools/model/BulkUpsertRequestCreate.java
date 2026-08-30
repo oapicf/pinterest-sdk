@@ -11,25 +11,27 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.AdCreateRequest;
 import org.openapitools.model.AdGroupCreateRequest;
+import org.openapitools.model.BulkUpsertRequestCreateCatalogProductGroupsItems;
 import org.openapitools.model.CampaignCreateRequest;
 import org.openapitools.model.KeywordsRequest;
-import org.openapitools.model.LabelCreateRequest;
-import org.openapitools.model.MultipleProductGroupsInner;
+import org.openapitools.model.LabelBulkCreateRequest;
 import org.openapitools.model.ProductGroupPromotionCreateRequest;
+import org.openapitools.model.ScheduleCreateRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request for creation of entities in bulk.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Request for creation of entities in bulk.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BulkUpsertRequestCreate   {
   
   private List<@Valid AdGroupCreateRequest> adGroups = new ArrayList<>();
   private List<@Valid AdCreateRequest> ads = new ArrayList<>();
   private List<@Valid CampaignCreateRequest> campaigns = new ArrayList<>();
-  private List<MultipleProductGroupsInner> catalogProductGroups = new ArrayList<>();
+  private List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
   private List<@Valid KeywordsRequest> keywords = new ArrayList<>();
-  private List<@Valid LabelCreateRequest> labels = new ArrayList<>();
+  private List<@Valid LabelBulkCreateRequest> labels = new ArrayList<>();
   private List<@Valid ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
+  private List<@Valid ScheduleCreateRequest> schedules = new ArrayList<>();
 
   /**
    **/
@@ -72,10 +74,10 @@ public class BulkUpsertRequestCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("catalog_product_groups")
-  public List<MultipleProductGroupsInner> getCatalogProductGroups() {
+  public List<BulkUpsertRequestCreateCatalogProductGroupsItems> getCatalogProductGroups() {
     return catalogProductGroups;
   }
-  public void setCatalogProductGroups(List<MultipleProductGroupsInner> catalogProductGroups) {
+  public void setCatalogProductGroups(List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
   }
 
@@ -96,10 +98,10 @@ public class BulkUpsertRequestCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("labels")
-  public List<@Valid LabelCreateRequest> getLabels() {
+  public List<@Valid LabelBulkCreateRequest> getLabels() {
     return labels;
   }
-  public void setLabels(List<@Valid LabelCreateRequest> labels) {
+  public void setLabels(List<@Valid LabelBulkCreateRequest> labels) {
     this.labels = labels;
   }
 
@@ -113,6 +115,18 @@ public class BulkUpsertRequestCreate   {
   }
   public void setProductGroups(List<@Valid ProductGroupPromotionCreateRequest> productGroups) {
     this.productGroups = productGroups;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("schedules")
+  public List<@Valid ScheduleCreateRequest> getSchedules() {
+    return schedules;
+  }
+  public void setSchedules(List<@Valid ScheduleCreateRequest> schedules) {
+    this.schedules = schedules;
   }
 
 
@@ -131,12 +145,13 @@ public class BulkUpsertRequestCreate   {
         Objects.equals(this.catalogProductGroups, bulkUpsertRequestCreate.catalogProductGroups) &&
         Objects.equals(this.keywords, bulkUpsertRequestCreate.keywords) &&
         Objects.equals(this.labels, bulkUpsertRequestCreate.labels) &&
-        Objects.equals(this.productGroups, bulkUpsertRequestCreate.productGroups);
+        Objects.equals(this.productGroups, bulkUpsertRequestCreate.productGroups) &&
+        Objects.equals(this.schedules, bulkUpsertRequestCreate.schedules);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroups, ads, campaigns, catalogProductGroups, keywords, labels, productGroups);
+    return Objects.hash(adGroups, ads, campaigns, catalogProductGroups, keywords, labels, productGroups, schedules);
   }
 
   @Override
@@ -151,6 +166,7 @@ public class BulkUpsertRequestCreate   {
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    productGroups: ").append(toIndentedString(productGroups)).append("\n");
+    sb.append("    schedules: ").append(toIndentedString(schedules)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -160,10 +176,7 @@ public class BulkUpsertRequestCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

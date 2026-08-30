@@ -102,7 +102,7 @@ Media_list_200_response::getBookmark()
 }
 
 void
-Media_list_200_response::setBookmark(std::string  bookmark)
+Media_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Media_list_200_response::getItems()
 }
 
 void
-Media_list_200_response::setItems(std::list <Media> items)
+Media_list_200_response::setItems(std::list<Media> items)
 {
 	this->items = items;
 }

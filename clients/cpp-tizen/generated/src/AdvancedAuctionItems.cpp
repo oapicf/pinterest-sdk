@@ -23,7 +23,7 @@ AdvancedAuctionItems::~AdvancedAuctionItems()
 void
 AdvancedAuctionItems::__init()
 {
-	//catalog_id = std::string();
+	//catalog_id = null;
 	//new std::list()std::list> items;
 }
 

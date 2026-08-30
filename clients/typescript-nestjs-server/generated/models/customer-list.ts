@@ -1,0 +1,57 @@
+import { CustomerListStatus } from './customer-list-status';
+
+
+export interface CustomerList { 
+  /**
+   * Associated ad account ID.
+   */
+  readonly ad_account_id?: string;
+  /**
+   * Creation time. Unix timestamp in seconds.
+   */
+  readonly created_time?: number;
+  /**
+   * Customer list errors.
+   */
+  readonly exceptions?: object;
+  /**
+   * Customer list ID.
+   */
+  readonly id: string;
+  /**
+   * Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.
+   */
+  is_nca?: boolean;
+  /**
+   * Customer list name.
+   */
+  name: string;
+  /**
+   * Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.
+   */
+  readonly num_batches?: number;
+  /**
+   * Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.
+   */
+  readonly num_removed_user_records?: number;
+  /**
+   * Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.
+   */
+  readonly num_uploaded_user_records?: number;
+  /**
+   * Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
+   */
+  readonly status?: CustomerListStatus;
+  /**
+   * Always `customerlist`.
+   */
+  readonly type?: string;
+  /**
+   * Last update time. Unix timestamp in seconds.
+   */
+  readonly updated_time?: number;
+}
+export namespace CustomerList {
+}
+
+

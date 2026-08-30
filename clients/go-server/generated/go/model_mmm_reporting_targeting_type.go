@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -27,6 +27,8 @@ const (
 	CREATIVE_TYPE MmmReportingTargetingType = "CREATIVE_TYPE"
 	GENDER MmmReportingTargetingType = "GENDER"
 	LOCATION MmmReportingTargetingType = "LOCATION"
+	PLACEMENT MmmReportingTargetingType = "PLACEMENT"
+	AUDIENCE_INCLUDE MmmReportingTargetingType = "AUDIENCE_INCLUDE"
 )
 
 // AllowedMmmReportingTargetingTypeEnumValues is all the allowed values of MmmReportingTargetingType enum
@@ -36,6 +38,8 @@ var AllowedMmmReportingTargetingTypeEnumValues = []MmmReportingTargetingType{
 	"CREATIVE_TYPE",
 	"GENDER",
 	"LOCATION",
+	"PLACEMENT",
+	"AUDIENCE_INCLUDE",
 }
 
 // validMmmReportingTargetingTypeEnumValue provides a map of MmmReportingTargetingTypes for fast verification of use input
@@ -45,6 +49,8 @@ var validMmmReportingTargetingTypeEnumValues = map[MmmReportingTargetingType]str
 	"CREATIVE_TYPE": {},
 	"GENDER": {},
 	"LOCATION": {},
+	"PLACEMENT": {},
+	"AUDIENCE_INCLUDE": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
@@ -65,8 +71,8 @@ func NewMmmReportingTargetingTypeFromValue(v string) (MmmReportingTargetingType,
 }
 
 
-
-// AssertMmmReportingTargetingTypeRequired checks if the required fields are not zero-ed
+// AssertMmmReportingTargetingTypeRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertMmmReportingTargetingTypeRequired(obj MmmReportingTargetingType) error {
 	return nil
 }

@@ -183,7 +183,7 @@ class Country(Model):
     NG = 'NG'
     NI = 'NI'
     NL = 'NL'
-    NO = 'NO'
+    FALSE = 'false'
     NP = 'NP'
     NR = 'NR'
     NU = 'NU'

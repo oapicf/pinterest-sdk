@@ -24,7 +24,7 @@ class LeadAdsApi : public Service {
 public:
     LeadAdsApi() = default;
 
-    virtual ~LeadAdsApi() = default;
+    virtual ~LeadAdsApi();
 
     /**
     * Delete lead ads subscription.
@@ -34,7 +34,7 @@ public:
     * \param subscriptionId Unique identifier of a subscription. *Required*
     */
     Response<
-            String
+                LeadSubscription
         >
     adAccountsSubscriptions_delById(
             

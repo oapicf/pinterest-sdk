@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[UpdateInvitesResultsResponseArrayItemsInner]**](UpdateInvitesResultsResponseArrayItemsInner.md) | List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned. | [optional] 
+**items** | [**[InviteActionResultItem]**](InviteActionResultItem.md) | List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned. | [optional] 
 
 

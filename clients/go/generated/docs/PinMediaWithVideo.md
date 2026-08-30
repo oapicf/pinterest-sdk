@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Images** | Pointer to [**ImageSize**](ImageSize.md) |  | [optional] 
 **MediaType** | **string** |  | 
 **VideoUrl** | Pointer to **NullableString** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**VideoUrlHls** | Pointer to **NullableString** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] 
 **Width** | Pointer to **NullableInt32** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 ## Methods
@@ -206,6 +207,41 @@ HasVideoUrl returns a boolean if a field has been set.
 `func (o *PinMediaWithVideo) UnsetVideoUrl()`
 
 UnsetVideoUrl ensures that no value is present for VideoUrl, not even an explicit nil
+### GetVideoUrlHls
+
+`func (o *PinMediaWithVideo) GetVideoUrlHls() string`
+
+GetVideoUrlHls returns the VideoUrlHls field if non-nil, zero value otherwise.
+
+### GetVideoUrlHlsOk
+
+`func (o *PinMediaWithVideo) GetVideoUrlHlsOk() (*string, bool)`
+
+GetVideoUrlHlsOk returns a tuple with the VideoUrlHls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVideoUrlHls
+
+`func (o *PinMediaWithVideo) SetVideoUrlHls(v string)`
+
+SetVideoUrlHls sets VideoUrlHls field to given value.
+
+### HasVideoUrlHls
+
+`func (o *PinMediaWithVideo) HasVideoUrlHls() bool`
+
+HasVideoUrlHls returns a boolean if a field has been set.
+
+### SetVideoUrlHlsNil
+
+`func (o *PinMediaWithVideo) SetVideoUrlHlsNil(b bool)`
+
+ SetVideoUrlHlsNil sets the value for VideoUrlHls to be an explicit nil
+
+### UnsetVideoUrlHls
+`func (o *PinMediaWithVideo) UnsetVideoUrlHls()`
+
+UnsetVideoUrlHls ensures that no value is present for VideoUrlHls, not even an explicit nil
 ### GetWidth
 
 `func (o *PinMediaWithVideo) GetWidth() int32`

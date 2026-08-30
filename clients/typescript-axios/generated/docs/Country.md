@@ -334,7 +334,7 @@ Country ID from ISO 3166-1 alpha-2.
 
 * `Nl` (value: `'NL'`)
 
-* `No` (value: `'NO'`)
+* `False` (value: `'false'`)
 
 * `Np` (value: `'NP'`)
 

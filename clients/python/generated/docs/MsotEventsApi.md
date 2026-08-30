@@ -8,14 +8,17 @@ Method | HTTP request | Description
 
 
 # **msot_events_create**
-> msot_events_create(ad_account_id, conversion_msot_events)
+> msot_events_create(ad_account_id, conversion_msot_events_create)
 
 Send Measurement Source Of Truth (MSOT) attributed conversion events
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
-<br>
-<p>Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their <code>ad_account_id</code>. The request body should be a JSON object.</p>
-- These events will NOT be used in Reporting.
+**This feature is currently in beta and not available to all apps.**
+If you are interested in joining the beta, reach out to your Pinterest account manager.
+
+Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest
+based on their `ad_account_id`. The request body should be a JSON object.
+
+- These events will not be used in Reporting.
 
 ### Example
 
@@ -23,7 +26,7 @@ Send Measurement Source Of Truth (MSOT) attributed conversion events
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.conversion_msot_events import ConversionMSOTEvents
+from pinterestsdk.models.conversion_msot_events_create import ConversionMSOTEventsCreate
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -45,11 +48,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.MsotEventsApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    conversion_msot_events = pinterestsdk.ConversionMSOTEvents() # ConversionMSOTEvents | Attributed MSOT conversion events
+    conversion_msot_events_create = pinterestsdk.ConversionMSOTEventsCreate() # ConversionMSOTEventsCreate | 
 
     try:
         # Send Measurement Source Of Truth (MSOT) attributed conversion events
-        api_instance.msot_events_create(ad_account_id, conversion_msot_events)
+        api_instance.msot_events_create(ad_account_id, conversion_msot_events_create)
     except Exception as e:
         print("Exception when calling MsotEventsApi->msot_events_create: %s\n" % e)
 ```
@@ -62,7 +65,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **conversion_msot_events** | [**ConversionMSOTEvents**](ConversionMSOTEvents.md)| Attributed MSOT conversion events | 
+ **conversion_msot_events_create** | [**ConversionMSOTEventsCreate**](ConversionMSOTEventsCreate.md)|  | 
 
 ### Return type
 
@@ -81,12 +84,14 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | The request was invalid |  -  |
-**401** | Not authorized to send MSOT conversion events |  -  |
-**403** | Unauthorized access |  -  |
-**429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window. |  -  |
-**0** | Unexpected errors |  -  |
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

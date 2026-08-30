@@ -1,0 +1,15 @@
+
+
+/**
+ * Type of information in the page referenced by `disclosure_url`, provided either by the Food and Drug Administration (FDA) or the manufacturer.
+ */
+export const DisclosureType = {
+    NoDisclosure: 'NO_DISCLOSURE',
+    PrescribingInformation: 'PRESCRIBING_INFORMATION',
+    PrescribingInformationBoxWarning: 'PRESCRIBING_INFORMATION_BOX_WARNING',
+    ImportantSafetyInfo: 'IMPORTANT_SAFETY_INFO',
+    MedGuide: 'MED_GUIDE',
+    PatientInformation: 'PATIENT_INFORMATION'
+} as const;
+export type DisclosureType = typeof DisclosureType[keyof typeof DisclosureType];
+

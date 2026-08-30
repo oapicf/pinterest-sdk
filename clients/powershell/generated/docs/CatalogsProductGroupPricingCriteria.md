@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Inclusion** | **Boolean** |  | [optional] [default to $true]
-**Negated** | **Boolean** |  | [optional] [default to $false]
+**Negated** | **Boolean** |  | [optional] 
 **Values** | **Decimal** |  | 
 
 ## Examples

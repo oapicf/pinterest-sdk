@@ -13,26 +13,24 @@ import org.openapitools.model.CatalogsProductGroupFiltersAnyOf;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Object holding a group of filters for a catalog product group
  */
 
 @Schema(name = "CatalogsProductGroupFilters", description = "Object holding a group of filters for a catalog product group")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupFilters {
 
-  @Valid
   private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
-  @Valid
   private List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
 
   public CatalogsProductGroupFilters() {
@@ -71,6 +69,7 @@ public class CatalogsProductGroupFilters {
     return anyOf;
   }
 
+  @JsonProperty("any_of")
   public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
@@ -99,6 +98,7 @@ public class CatalogsProductGroupFilters {
     return allOf;
   }
 
+  @JsonProperty("all_of")
   public void setAllOf(List<CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
@@ -135,11 +135,8 @@ public class CatalogsProductGroupFilters {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

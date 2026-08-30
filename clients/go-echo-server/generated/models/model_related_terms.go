@@ -9,5 +9,5 @@ type RelatedTerms struct {
 	RelatedTermCount int32 `json:"related_term_count,omitempty"`
 
 	// The id of the advertiser.
-	RelatedTermsList []RelatedTermsRelatedTermsListInner `json:"related_terms_list,omitempty"`
+	RelatedTermsList []RelatedTermsRelatedTermsListItems `json:"related_terms_list,omitempty"`
 }

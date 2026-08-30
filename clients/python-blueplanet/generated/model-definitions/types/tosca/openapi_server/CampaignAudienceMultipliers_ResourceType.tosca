@@ -18,7 +18,7 @@ resourceTypes {
     properties {
         audience_id {
           type =  string
-          description = ""
+          description = "Audience ID for the multiplier."
           optional = false
         }
     }

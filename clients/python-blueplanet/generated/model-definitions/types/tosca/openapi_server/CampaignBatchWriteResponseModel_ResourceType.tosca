@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignBatchWriteResponseModel"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignBatchWriteResponseModel"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CampaignBatchItem = openapi_server.resourceTypes.CampaignBatchItem
+}
+resourceTypes {
+
+  CampaignBatchWriteResponseModel {
+    title = CampaignBatchWriteResponseModel
+    description = CampaignBatchWriteResponseModel
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = CampaignBatchItem
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignBatchWriteResponseModel {
+    title = CampaignBatchWriteResponseModel
+    description = CampaignBatchWriteResponseModel
+    implements = openapi_server.resourceTypes.CampaignBatchWriteResponseModel
+
+  }
+}

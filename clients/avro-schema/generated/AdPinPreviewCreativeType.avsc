@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "AdPinPreviewCreativeType",
+  "symbols": [
+    "SHOPPING",
+    "COLLECTION",
+    "MAX_VIDEO",
+    "MAX_WIDTH_VIDEO_COLLECTION",
+    "MAX_WIDTH_REGULAR_COLLECTION"
+  ]
+}

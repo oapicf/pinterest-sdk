@@ -22,7 +22,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## boards_user_follows_list
 
-> <BoardsUserFollowsList200Response> boards_user_follows_list(opts)
+> <BoardsList200Response> boards_user_follows_list(opts)
 
 List following boards
 
@@ -44,10 +44,10 @@ end
 
 api_instance = PinterestSdkClient::UserAccountApi.new
 opts = {
-  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
   explicit_following: true, # Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
-  ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -63,7 +63,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BoardsUserFollowsList200Response>, Integer, Hash)> boards_user_follows_list_with_http_info(opts)
+> <Array(<BoardsList200Response>, Integer, Hash)> boards_user_follows_list_with_http_info(opts)
 
 ```ruby
 begin
@@ -71,7 +71,7 @@ begin
   data, status_code, headers = api_instance.boards_user_follows_list_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <BoardsUserFollowsList200Response>
+  p data # => <BoardsList200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling UserAccountApi->boards_user_follows_list_with_http_info: #{e}"
 end
@@ -81,14 +81,14 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
-| **explicit_following** | **Boolean** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional][default to false] |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
+| **explicit_following** | **Boolean** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional][default to false] |
+| **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
-[**BoardsUserFollowsList200Response**](BoardsUserFollowsList200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -102,11 +102,11 @@ end
 
 ## follow_user_update
 
-> <UserSummary> follow_user_update(username, follow_user_request)
+> <FollowUser> follow_user_update(username, follow_user_create)
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 
 ### Examples
 
@@ -120,12 +120,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::UserAccountApi.new
-username = 'username' # String | A valid username
-follow_user_request = PinterestSdkClient::FollowUserRequest.new # FollowUserRequest | Follow a user.
+username = 'username_example' # String | A valid username
+follow_user_create = PinterestSdkClient::FollowUserCreate.new # FollowUserCreate | 
 
 begin
   # Follow user
-  result = api_instance.follow_user_update(username, follow_user_request)
+  result = api_instance.follow_user_update(username, follow_user_create)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling UserAccountApi->follow_user_update: #{e}"
@@ -136,15 +136,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UserSummary>, Integer, Hash)> follow_user_update_with_http_info(username, follow_user_request)
+> <Array(<FollowUser>, Integer, Hash)> follow_user_update_with_http_info(username, follow_user_create)
 
 ```ruby
 begin
   # Follow user
-  data, status_code, headers = api_instance.follow_user_update_with_http_info(username, follow_user_request)
+  data, status_code, headers = api_instance.follow_user_update_with_http_info(username, follow_user_create)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <UserSummary>
+  p data # => <FollowUser>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling UserAccountApi->follow_user_update_with_http_info: #{e}"
 end
@@ -155,11 +155,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **username** | **String** | A valid username |  |
-| **follow_user_request** | [**FollowUserRequest**](FollowUserRequest.md) | Follow a user. |  |
+| **follow_user_create** | [**FollowUserCreate**](FollowUserCreate.md) |  |  |
 
 ### Return type
 
-[**UserSummary**](UserSummary.md)
+[**FollowUser**](FollowUser.md)
 
 ### Authorization
 
@@ -196,7 +196,7 @@ end
 api_instance = PinterestSdkClient::UserAccountApi.new
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -231,7 +231,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -318,11 +318,11 @@ This endpoint does not need any parameter.
 
 ## unverify_website_delete
 
-> unverify_website_delete(website)
+> <UserWebsite> unverify_website_delete(website)
 
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 ### Examples
 
@@ -336,11 +336,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::UserAccountApi.new
-website = 'mysite.test' # String | Website with path or domain only
+website = 'website_example' # String | Website with path or domain only
 
 begin
   # Unverify website
-  api_instance.unverify_website_delete(website)
+  result = api_instance.unverify_website_delete(website)
+  p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling UserAccountApi->unverify_website_delete: #{e}"
 end
@@ -348,9 +349,9 @@ end
 
 #### Using the unverify_website_delete_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> unverify_website_delete_with_http_info(website)
+> <Array(<UserWebsite>, Integer, Hash)> unverify_website_delete_with_http_info(website)
 
 ```ruby
 begin
@@ -358,7 +359,7 @@ begin
   data, status_code, headers = api_instance.unverify_website_delete_with_http_info(website)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <UserWebsite>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling UserAccountApi->unverify_website_delete_with_http_info: #{e}"
 end
@@ -372,7 +373,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -412,7 +413,7 @@ opts = {
   app_types: 'ALL', # String | Apps or devices to get data for, default is all.
   content_type: 'ALL', # String | Filter to paid or organic data. Default is all.
   source: 'ALL', # String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-  metric_types: ['ENGAGEMENT'], # Array<String> | Metric types to get data for, default is all. 
+  metric_types: [PinterestSdkClient::QuerymetrictypesItems::ENGAGEMENT], # Array<QuerymetrictypesItems> | Metric types to get data for, default is all.
   split_field: 'NO_SPLIT', # String | How to split the data into groups. Not including this param means data won't be split.
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
@@ -455,7 +456,7 @@ end
 | **app_types** | **String** | Apps or devices to get data for, default is all. | [optional][default to &#39;ALL&#39;] |
 | **content_type** | **String** | Filter to paid or organic data. Default is all. | [optional][default to &#39;ALL&#39;] |
 | **source** | **String** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional][default to &#39;ALL&#39;] |
-| **metric_types** | [**Array&lt;String&gt;**](String.md) | Metric types to get data for, default is all.  | [optional] |
+| **metric_types** | [**Array&lt;QuerymetrictypesItems&gt;**](QuerymetrictypesItems.md) | Metric types to get data for, default is all. | [optional] |
 | **split_field** | **String** | How to split the data into groups. Not including this param means data won&#39;t be split. | [optional][default to &#39;NO_SPLIT&#39;] |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
@@ -498,16 +499,16 @@ end
 api_instance = PinterestSdkClient::UserAccountApi.new
 start_date = Date.parse('2013-10-20') # Date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 end_date = Date.parse('2013-10-20') # Date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-sort_by = 'ENGAGEMENT' # String | Specify sorting order for metrics
+sort_by = PinterestSdkClient::TopPinsSortBy::ENGAGEMENT # TopPinsSortBy | Specify sorting order for metrics
 opts = {
   from_claimed_content: 'OTHER', # String | Filter on Pins that match your claimed domain.
   pin_format: 'ALL', # String | Pin formats to get data for, default is all.
   app_types: 'ALL', # String | Apps or devices to get data for, default is all.
   content_type: 'ALL', # String | Filter to paid or organic data. Default is all.
   source: 'ALL', # String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-  metric_types: ['ENGAGEMENT'], # Array<String> | Metric types to get data for, default is all. 
-  num_of_pins: 25, # Integer | Number of pins to include, default is 10. Max is 50.
-  created_in_last_n_days: 30, # Integer | Get metrics for pins created in the last \"n\" days.
+  metric_types: [PinterestSdkClient::QuerymetrictypesItems::ENGAGEMENT], # Array<QuerymetrictypesItems> | Metric types to get data for, default is all.
+  num_of_pins: 56, # Integer | Number of pins to include, default is 10. Max is 50.
+  created_in_last_n_days: 30, # Float | Get metrics for pins created in the last \"n\" days.
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
 
@@ -544,15 +545,15 @@ end
 | ---- | ---- | ----------- | ----- |
 | **start_date** | **Date** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |  |
 | **end_date** | **Date** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |  |
-| **sort_by** | **String** | Specify sorting order for metrics |  |
+| **sort_by** | [**TopPinsSortBy**](.md) | Specify sorting order for metrics |  |
 | **from_claimed_content** | **String** | Filter on Pins that match your claimed domain. | [optional][default to &#39;BOTH&#39;] |
 | **pin_format** | **String** | Pin formats to get data for, default is all. | [optional][default to &#39;ALL&#39;] |
 | **app_types** | **String** | Apps or devices to get data for, default is all. | [optional][default to &#39;ALL&#39;] |
 | **content_type** | **String** | Filter to paid or organic data. Default is all. | [optional][default to &#39;ALL&#39;] |
 | **source** | **String** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional][default to &#39;ALL&#39;] |
-| **metric_types** | [**Array&lt;String&gt;**](String.md) | Metric types to get data for, default is all.  | [optional] |
+| **metric_types** | [**Array&lt;QuerymetrictypesItems&gt;**](QuerymetrictypesItems.md) | Metric types to get data for, default is all. | [optional] |
 | **num_of_pins** | **Integer** | Number of pins to include, default is 10. Max is 50. | [optional][default to 10] |
-| **created_in_last_n_days** | **Integer** | Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] |
+| **created_in_last_n_days** | **Float** | Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -594,16 +595,16 @@ end
 api_instance = PinterestSdkClient::UserAccountApi.new
 start_date = Date.parse('2013-10-20') # Date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 end_date = Date.parse('2013-10-20') # Date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-sort_by = 'IMPRESSION' # String | Specify sorting order for video metrics
+sort_by = PinterestSdkClient::TopVideoPinsSortBy::SAVE # TopVideoPinsSortBy | Specify sorting order for video metrics
 opts = {
   from_claimed_content: 'OTHER', # String | Filter on Pins that match your claimed domain.
   pin_format: 'ALL', # String | Pin formats to get data for, default is all.
   app_types: 'ALL', # String | Apps or devices to get data for, default is all.
   content_type: 'ALL', # String | Filter to paid or organic data. Default is all.
   source: 'ALL', # String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-  metric_types: ['IMPRESSION'], # Array<String> | Metric types to get video data for, default is all. 
-  num_of_pins: 25, # Integer | Number of pins to include, default is 10. Max is 50.
-  created_in_last_n_days: 30, # Integer | Get metrics for pins created in the last \"n\" days.
+  metric_types: [PinterestSdkClient::QueryvideopinmetrictypesItems::IMPRESSION], # Array<QueryvideopinmetrictypesItems> | Metric types to get video data for, default is all.
+  num_of_pins: 56, # Integer | Number of pins to include, default is 10. Max is 50.
+  created_in_last_n_days: 30, # Float | Get metrics for pins created in the last \"n\" days.
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
 
@@ -640,15 +641,15 @@ end
 | ---- | ---- | ----------- | ----- |
 | **start_date** | **Date** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |  |
 | **end_date** | **Date** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |  |
-| **sort_by** | **String** | Specify sorting order for video metrics |  |
+| **sort_by** | [**TopVideoPinsSortBy**](.md) | Specify sorting order for video metrics |  |
 | **from_claimed_content** | **String** | Filter on Pins that match your claimed domain. | [optional][default to &#39;BOTH&#39;] |
 | **pin_format** | **String** | Pin formats to get data for, default is all. | [optional][default to &#39;ALL&#39;] |
 | **app_types** | **String** | Apps or devices to get data for, default is all. | [optional][default to &#39;ALL&#39;] |
 | **content_type** | **String** | Filter to paid or organic data. Default is all. | [optional][default to &#39;ALL&#39;] |
 | **source** | **String** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional][default to &#39;ALL&#39;] |
-| **metric_types** | [**Array&lt;String&gt;**](String.md) | Metric types to get video data for, default is all.  | [optional] |
+| **metric_types** | [**Array&lt;QueryvideopinmetrictypesItems&gt;**](QueryvideopinmetrictypesItems.md) | Metric types to get video data for, default is all. | [optional] |
 | **num_of_pins** | **Integer** | Number of pins to include, default is 10. Max is 50. | [optional][default to 10] |
-| **created_in_last_n_days** | **Integer** | Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] |
+| **created_in_last_n_days** | **Float** | Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -688,10 +689,10 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::UserAccountApi.new
-username = 'username' # String | A valid username
+username = 'username_example' # String | A valid username
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -727,7 +728,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **username** | **String** | A valid username |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -749,7 +750,7 @@ end
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 
 ### Examples
 
@@ -819,7 +820,7 @@ end
 
 ## user_following_get
 
-> <UserFollowingGet200Response> user_following_get(opts)
+> <FollowersList200Response> user_following_get(opts)
 
 List following
 
@@ -841,11 +842,11 @@ end
 
 api_instance = PinterestSdkClient::UserAccountApi.new
 opts = {
-  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  feed_type: 'feed_type_example', # UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
+  ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
   explicit_following: true, # Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
-  ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
+  feed_type: PinterestSdkClient::UserFollowingFeedType::ALL, # UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -861,7 +862,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UserFollowingGet200Response>, Integer, Hash)> user_following_get_with_http_info(opts)
+> <Array(<FollowersList200Response>, Integer, Hash)> user_following_get_with_http_info(opts)
 
 ```ruby
 begin
@@ -869,7 +870,7 @@ begin
   data, status_code, headers = api_instance.user_following_get_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <UserFollowingGet200Response>
+  p data # => <FollowersList200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling UserAccountApi->user_following_get_with_http_info: #{e}"
 end
@@ -879,15 +880,15 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
-| **feed_type** | **UserFollowingFeedType** | Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional][default to &#39;ALL&#39;] |
-| **explicit_following** | **Boolean** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional][default to false] |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
+| **explicit_following** | **Boolean** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional][default to false] |
+| **feed_type** | [**UserFollowingFeedType**](.md) | Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional][default to &#39;ALL&#39;] |
+| **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
-[**UserFollowingGet200Response**](UserFollowingGet200Response.md)
+[**FollowersList200Response**](FollowersList200Response.md)
 
 ### Authorization
 
@@ -921,7 +922,7 @@ end
 api_instance = PinterestSdkClient::UserAccountApi.new
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -956,7 +957,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -974,7 +975,7 @@ end
 
 ## verify_website_update
 
-> <UserWebsiteSummary> verify_website_update(user_website_verify_request, opts)
+> <UserWebsite> verify_website_update(user_website_create, opts)
 
 Verify website
 
@@ -992,14 +993,14 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::UserAccountApi.new
-user_website_verify_request = PinterestSdkClient::UserWebsiteVerifyRequest.new # UserWebsiteVerifyRequest | Verify a website.
+user_website_create = PinterestSdkClient::UserWebsiteCreate.new # UserWebsiteCreate | 
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
 
 begin
   # Verify website
-  result = api_instance.verify_website_update(user_website_verify_request, opts)
+  result = api_instance.verify_website_update(user_website_create, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling UserAccountApi->verify_website_update: #{e}"
@@ -1010,15 +1011,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UserWebsiteSummary>, Integer, Hash)> verify_website_update_with_http_info(user_website_verify_request, opts)
+> <Array(<UserWebsite>, Integer, Hash)> verify_website_update_with_http_info(user_website_create, opts)
 
 ```ruby
 begin
   # Verify website
-  data, status_code, headers = api_instance.verify_website_update_with_http_info(user_website_verify_request, opts)
+  data, status_code, headers = api_instance.verify_website_update_with_http_info(user_website_create, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <UserWebsiteSummary>
+  p data # => <UserWebsite>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling UserAccountApi->verify_website_update_with_http_info: #{e}"
 end
@@ -1028,12 +1029,12 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **user_website_verify_request** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md) | Verify a website. |  |
+| **user_website_create** | [**UserWebsiteCreate**](UserWebsiteCreate.md) |  |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
-[**UserWebsiteSummary**](UserWebsiteSummary.md)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -1047,7 +1048,7 @@ end
 
 ## website_verification_get
 
-> <UserWebsiteVerificationCode> website_verification_get(opts)
+> <UserWebsiteVerification> website_verification_get(opts)
 
 Get user verification code for website claiming
 
@@ -1085,7 +1086,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UserWebsiteVerificationCode>, Integer, Hash)> website_verification_get_with_http_info(opts)
+> <Array(<UserWebsiteVerification>, Integer, Hash)> website_verification_get_with_http_info(opts)
 
 ```ruby
 begin
@@ -1093,7 +1094,7 @@ begin
   data, status_code, headers = api_instance.website_verification_get_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <UserWebsiteVerificationCode>
+  p data # => <UserWebsiteVerification>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling UserAccountApi->website_verification_get_with_http_info: #{e}"
 end
@@ -1107,7 +1108,7 @@ end
 
 ### Return type
 
-[**UserWebsiteVerificationCode**](UserWebsiteVerificationCode.md)
+[**UserWebsiteVerification**](UserWebsiteVerification.md)
 
 ### Authorization
 

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -20,16 +20,16 @@ type AdsCreditDiscountsResponse struct {
 	Active bool `json:"active,omitempty"`
 
 	// Advertiser ID the offer was applied to.
-	AdvertiserId string `json:"advertiser_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AdvertiserId string `json:"advertiser_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Currency value for the discount.
 	DiscountCurrency *string `json:"discountCurrency,omitempty"`
 
-	// The discount applied in the offer’s currency value.
+	// The discount applied in the offer's currency value.
 	DiscountInMicroCurrency *float32 `json:"discountInMicroCurrency,omitempty"`
 
 	// The type of discount of this credit
-	DiscountType *string `json:"discountType,omitempty"`
+	DiscountType *AdsCreditDiscountType `json:"discountType,omitempty"`
 
 	// The credits left to spend.
 	RemainingDiscountInMicroCurrency *float32 `json:"remainingDiscountInMicroCurrency,omitempty"`
@@ -38,7 +38,8 @@ type AdsCreditDiscountsResponse struct {
 	Title *string `json:"title,omitempty"`
 }
 
-// AssertAdsCreditDiscountsResponseRequired checks if the required fields are not zero-ed
+// AssertAdsCreditDiscountsResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAdsCreditDiscountsResponseRequired(obj AdsCreditDiscountsResponse) error {
 	return nil
 }

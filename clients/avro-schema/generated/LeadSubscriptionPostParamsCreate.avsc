@@ -23,8 +23,8 @@
     },
     {
       "name": "partner_metadata",
-      "type": ["null", "model.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata"],
-      "doc": "",
+      "type": ["null", "model.PartnerMetadata"],
+      "doc": "Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.",
       "default": null
     },
     {

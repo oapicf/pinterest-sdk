@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `AdvertiserDefinedEvent`
 --
-SELECT `name`, `mapped_conversion_type` FROM `AdvertiserDefinedEvent` WHERE 1;
+SELECT `mapped_conversion_type`, `name` FROM `AdvertiserDefinedEvent` WHERE 1;
 
 --
 -- INSERT template for table `AdvertiserDefinedEvent`
 --
-INSERT INTO `AdvertiserDefinedEvent`(`name`, `mapped_conversion_type`) VALUES (?, ?);
+INSERT INTO `AdvertiserDefinedEvent`(`mapped_conversion_type`, `name`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `AdvertiserDefinedEvent`
 --
-UPDATE `AdvertiserDefinedEvent` SET `name` = ?, `mapped_conversion_type` = ? WHERE 1;
+UPDATE `AdvertiserDefinedEvent` SET `mapped_conversion_type` = ?, `name` = ? WHERE 1;
 
 --
 -- DELETE template for table `AdvertiserDefinedEvent`

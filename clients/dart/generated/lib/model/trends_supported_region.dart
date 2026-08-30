@@ -11,61 +11,45 @@
 part of openapi.api;
 
 
-class TrendsSupportedRegion {
-  /// Instantiate a new enum with the provided [value].
-  const TrendsSupportedRegion._(this.value);
+enum TrendsSupportedRegion {
+  US._(r'US'),
+  CA._(r'CA'),
+  DE._(r'DE'),
+  FR._(r'FR'),
+  ES._(r'ES'),
+  IT._(r'IT'),
+  dEPlusATPlusCH._(r'DE+AT+CH'),
+  gBPlusIE._(r'GB+IE'),
+  iTPlusESPlusPTPlusGRPlusMT._(r'IT+ES+PT+GR+MT'),
+  pLPlusROPlusHUPlusSKPlusCZ._(r'PL+RO+HU+SK+CZ'),
+  sEPlusDKPlusFIPlusNO._(r'SE+DK+FI+NO'),
+  nLPlusBEPlusLU._(r'NL+BE+LU'),
+  AR._(r'AR'),
+  BR._(r'BR'),
+  CO._(r'CO'),
+  MX._(r'MX'),
+  mXPlusARPlusCOPlusCL._(r'MX+AR+CO+CL'),
+  aUPlusNZ._(r'AU+NZ'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const TrendsSupportedRegion._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const US = TrendsSupportedRegion._(r'US');
-  static const CA = TrendsSupportedRegion._(r'CA');
-  static const DE = TrendsSupportedRegion._(r'DE');
-  static const FR = TrendsSupportedRegion._(r'FR');
-  static const ES = TrendsSupportedRegion._(r'ES');
-  static const IT = TrendsSupportedRegion._(r'IT');
-  static const dEPlusATPlusCH = TrendsSupportedRegion._(r'DE+AT+CH');
-  static const gBPlusIE = TrendsSupportedRegion._(r'GB+IE');
-  static const iTPlusESPlusPTPlusGRPlusMT = TrendsSupportedRegion._(r'IT+ES+PT+GR+MT');
-  static const pLPlusROPlusHUPlusSKPlusCZ = TrendsSupportedRegion._(r'PL+RO+HU+SK+CZ');
-  static const sEPlusDKPlusFIPlusNO = TrendsSupportedRegion._(r'SE+DK+FI+NO');
-  static const nLPlusBEPlusLU = TrendsSupportedRegion._(r'NL+BE+LU');
-  static const AR = TrendsSupportedRegion._(r'AR');
-  static const BR = TrendsSupportedRegion._(r'BR');
-  static const CO = TrendsSupportedRegion._(r'CO');
-  static const MX = TrendsSupportedRegion._(r'MX');
-  static const mXPlusARPlusCOPlusCL = TrendsSupportedRegion._(r'MX+AR+CO+CL');
-  static const aUPlusNZ = TrendsSupportedRegion._(r'AU+NZ');
-
-  /// List of all possible values in this [enum][TrendsSupportedRegion].
-  static const values = <TrendsSupportedRegion>[
-    US,
-    CA,
-    DE,
-    FR,
-    ES,
-    IT,
-    dEPlusATPlusCH,
-    gBPlusIE,
-    iTPlusESPlusPTPlusGRPlusMT,
-    pLPlusROPlusHUPlusSKPlusCZ,
-    sEPlusDKPlusFIPlusNO,
-    nLPlusBEPlusLU,
-    AR,
-    BR,
-    CO,
-    MX,
-    mXPlusARPlusCOPlusCL,
-    aUPlusNZ,
-  ];
-
+  /// Returns the instance of [TrendsSupportedRegion] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static TrendsSupportedRegion? fromJson(dynamic value) => TrendsSupportedRegionTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [TrendsSupportedRegion]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<TrendsSupportedRegion> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <TrendsSupportedRegion>[];
     if (json is List && json.isNotEmpty) {
@@ -87,9 +71,11 @@ class TrendsSupportedRegionTypeTransformer {
 
   const TrendsSupportedRegionTypeTransformer._();
 
-  String encode(TrendsSupportedRegion data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(TrendsSupportedRegion data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a TrendsSupportedRegion.
+  /// Returns the instance of [TrendsSupportedRegion] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -98,6 +84,9 @@ class TrendsSupportedRegionTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   TrendsSupportedRegion? decode(dynamic data, {bool allowNull = true}) {
+    if (data is TrendsSupportedRegion) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'US': return TrendsSupportedRegion.US;
@@ -127,7 +116,7 @@ class TrendsSupportedRegionTypeTransformer {
     return null;
   }
 
-  /// Singleton [TrendsSupportedRegionTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static TrendsSupportedRegionTypeTransformer? _instance;
 }
 

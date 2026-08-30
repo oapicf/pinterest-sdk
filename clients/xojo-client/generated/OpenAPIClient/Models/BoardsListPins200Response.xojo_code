@@ -7,10 +7,7 @@ Protected Class BoardsListPins200Response
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Pins
-		#tag EndNote
-		items() As OpenAPIClient.Models.Pin
+		items() As OpenAPIClient.Models.PinRead
 	#tag EndProperty
 
 
@@ -63,7 +60,7 @@ Protected Class BoardsListPins200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Pin"
+			Type="PinRead"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

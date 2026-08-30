@@ -16,7 +16,7 @@
         "type": "array",
         "items": "model.SSIOInsertionOrderStatus"
       },
-      "doc": "Insertion orders status by ad acount id"
+      "doc": ""
     }
   ]
 

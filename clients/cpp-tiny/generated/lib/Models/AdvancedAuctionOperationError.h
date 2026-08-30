@@ -51,14 +51,14 @@ public:
 
 	/*! \brief Set The error code for the item bid option operation validation error
 	 */
-	void setCode(int  code);
+	void setCode(int code);
 	/*! \brief Get Message describing the item bid option operation validation error
 	 */
 	std::string getMessage();
 
 	/*! \brief Set Message describing the item bid option operation validation error
 	 */
-	void setMessage(std::string  message);
+	void setMessage(std::string message);
 
 
     private:

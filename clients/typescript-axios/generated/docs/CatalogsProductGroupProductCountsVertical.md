@@ -6,12 +6,14 @@ Product counts for a CatalogsProductGroup
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [default to undefined]
+**catalog_type** | **string** |  | [default to undefined]
 **in_stock** | **number** |  | [default to undefined]
 **out_of_stock** | **number** |  | [default to undefined]
 **preorder** | **number** |  | [default to undefined]
 **total** | **number** |  | [default to undefined]
 **videos** | **number** |  | [default to undefined]
+**app_links** | **number** |  | [default to undefined]
+**images** | **number** |  | [default to undefined]
 
 ## Example
 
@@ -25,6 +27,8 @@ const instance: CatalogsProductGroupProductCountsVertical = {
     preorder,
     total,
     videos,
+    app_links,
+    images,
 };
 ```
 

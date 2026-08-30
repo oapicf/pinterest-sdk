@@ -23,7 +23,7 @@ Protected Class CatalogsRetailBatchRequest
 		#tag Note
 			Array with catalogs item operations
 		#tag EndNote
-		items() As OpenAPIClient.Models.CatalogsRetailBatchRequestItemsInner
+		items() As OpenAPIClient.Models.CatalogsRetailBatchRequestItemsItems
 	#tag EndProperty
 
 
@@ -132,7 +132,7 @@ Protected Class CatalogsRetailBatchRequest
         Nb
         Ne
         Nl2
-        No
+        Escapedfalse
         Pl
         Pt
         Ro
@@ -347,8 +347,8 @@ Protected Class CatalogsRetailBatchRequest
 		      Return "NE"
 		    Case LanguageEnum.Nl2
 		      Return "NL"
-		    Case LanguageEnum.No
-		      Return "NO"
+		    Case LanguageEnum.Escapedfalse
+		      Return "false"
 		    Case LanguageEnum.Pl
 		      Return "PL"
 		    Case LanguageEnum.Pt
@@ -444,7 +444,7 @@ Protected Class CatalogsRetailBatchRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsRetailBatchRequestItemsInner"
+			Type="CatalogsRetailBatchRequestItemsItems"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

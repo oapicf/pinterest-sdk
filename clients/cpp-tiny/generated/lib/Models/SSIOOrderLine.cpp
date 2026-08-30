@@ -508,7 +508,7 @@ SSIOOrderLine::getAcceptedTermsId()
 }
 
 void
-SSIOOrderLine::setAcceptedTermsId(std::string  accepted_terms_id)
+SSIOOrderLine::setAcceptedTermsId(std::string accepted_terms_id)
 {
 	this->accepted_terms_id = accepted_terms_id;
 }
@@ -520,7 +520,7 @@ SSIOOrderLine::getAcceptedTermsTime()
 }
 
 void
-SSIOOrderLine::setAcceptedTermsTime(std::string  accepted_terms_time)
+SSIOOrderLine::setAcceptedTermsTime(std::string accepted_terms_time)
 {
 	this->accepted_terms_time = accepted_terms_time;
 }
@@ -532,7 +532,7 @@ SSIOOrderLine::getAdsManagerOrderLineId()
 }
 
 void
-SSIOOrderLine::setAdsManagerOrderLineId(std::string  ads_manager_order_line_id)
+SSIOOrderLine::setAdsManagerOrderLineId(std::string ads_manager_order_line_id)
 {
 	this->ads_manager_order_line_id = ads_manager_order_line_id;
 }
@@ -544,7 +544,7 @@ SSIOOrderLine::getAgencyLink()
 }
 
 void
-SSIOOrderLine::setAgencyLink(std::string  agency_link)
+SSIOOrderLine::setAgencyLink(std::string agency_link)
 {
 	this->agency_link = agency_link;
 }
@@ -556,7 +556,7 @@ SSIOOrderLine::getBillToCompanyName()
 }
 
 void
-SSIOOrderLine::setBillToCompanyName(std::string  bill_to_company_name)
+SSIOOrderLine::setBillToCompanyName(std::string bill_to_company_name)
 {
 	this->bill_to_company_name = bill_to_company_name;
 }
@@ -568,7 +568,7 @@ SSIOOrderLine::getBillingContactEmail()
 }
 
 void
-SSIOOrderLine::setBillingContactEmail(std::string  billing_contact_email)
+SSIOOrderLine::setBillingContactEmail(std::string billing_contact_email)
 {
 	this->billing_contact_email = billing_contact_email;
 }
@@ -580,7 +580,7 @@ SSIOOrderLine::getBillingContactFirstname()
 }
 
 void
-SSIOOrderLine::setBillingContactFirstname(std::string  billing_contact_firstname)
+SSIOOrderLine::setBillingContactFirstname(std::string billing_contact_firstname)
 {
 	this->billing_contact_firstname = billing_contact_firstname;
 }
@@ -592,7 +592,7 @@ SSIOOrderLine::getBillingContactLastname()
 }
 
 void
-SSIOOrderLine::setBillingContactLastname(std::string  billing_contact_lastname)
+SSIOOrderLine::setBillingContactLastname(std::string billing_contact_lastname)
 {
 	this->billing_contact_lastname = billing_contact_lastname;
 }
@@ -604,7 +604,7 @@ SSIOOrderLine::getBudgetAmount()
 }
 
 void
-SSIOOrderLine::setBudgetAmount(long  budget_amount)
+SSIOOrderLine::setBudgetAmount(long budget_amount)
 {
 	this->budget_amount = budget_amount;
 }
@@ -616,7 +616,7 @@ SSIOOrderLine::getCurrencyInfo()
 }
 
 void
-SSIOOrderLine::setCurrencyInfo(Currency  currency_info)
+SSIOOrderLine::setCurrencyInfo(Currency currency_info)
 {
 	this->currency_info = currency_info;
 }
@@ -628,7 +628,7 @@ SSIOOrderLine::getEndDate()
 }
 
 void
-SSIOOrderLine::setEndDate(Date  end_date)
+SSIOOrderLine::setEndDate(Date end_date)
 {
 	this->end_date = end_date;
 }
@@ -640,7 +640,7 @@ SSIOOrderLine::getEstimatedMonthlySpend()
 }
 
 void
-SSIOOrderLine::setEstimatedMonthlySpend(long  estimated_monthly_spend)
+SSIOOrderLine::setEstimatedMonthlySpend(long estimated_monthly_spend)
 {
 	this->estimated_monthly_spend = estimated_monthly_spend;
 }
@@ -652,7 +652,7 @@ SSIOOrderLine::getLastModifiedDateTime()
 }
 
 void
-SSIOOrderLine::setLastModifiedDateTime(std::string  last_modified_date_time)
+SSIOOrderLine::setLastModifiedDateTime(std::string last_modified_date_time)
 {
 	this->last_modified_date_time = last_modified_date_time;
 }
@@ -664,7 +664,7 @@ SSIOOrderLine::getMediaContactEmail()
 }
 
 void
-SSIOOrderLine::setMediaContactEmail(std::string  media_contact_email)
+SSIOOrderLine::setMediaContactEmail(std::string media_contact_email)
 {
 	this->media_contact_email = media_contact_email;
 }
@@ -676,7 +676,7 @@ SSIOOrderLine::getMediaContactFirstname()
 }
 
 void
-SSIOOrderLine::setMediaContactFirstname(std::string  media_contact_firstname)
+SSIOOrderLine::setMediaContactFirstname(std::string media_contact_firstname)
 {
 	this->media_contact_firstname = media_contact_firstname;
 }
@@ -688,7 +688,7 @@ SSIOOrderLine::getMediaContactLastname()
 }
 
 void
-SSIOOrderLine::setMediaContactLastname(std::string  media_contact_lastname)
+SSIOOrderLine::setMediaContactLastname(std::string media_contact_lastname)
 {
 	this->media_contact_lastname = media_contact_lastname;
 }
@@ -700,7 +700,7 @@ SSIOOrderLine::getOrderName()
 }
 
 void
-SSIOOrderLine::setOrderName(std::string  order_name)
+SSIOOrderLine::setOrderName(std::string order_name)
 {
 	this->order_name = order_name;
 }
@@ -712,7 +712,7 @@ SSIOOrderLine::getPinOrderId()
 }
 
 void
-SSIOOrderLine::setPinOrderId(std::string  pin_order_id)
+SSIOOrderLine::setPinOrderId(std::string pin_order_id)
 {
 	this->pin_order_id = pin_order_id;
 }
@@ -724,7 +724,7 @@ SSIOOrderLine::getPmpName()
 }
 
 void
-SSIOOrderLine::setPmpName(std::string  pmp_name)
+SSIOOrderLine::setPmpName(std::string pmp_name)
 {
 	this->pmp_name = pmp_name;
 }
@@ -736,7 +736,7 @@ SSIOOrderLine::getPoNumber()
 }
 
 void
-SSIOOrderLine::setPoNumber(std::string  po_number)
+SSIOOrderLine::setPoNumber(std::string po_number)
 {
 	this->po_number = po_number;
 }
@@ -748,7 +748,7 @@ SSIOOrderLine::getSalesforceOrderLineId()
 }
 
 void
-SSIOOrderLine::setSalesforceOrderLineId(std::string  salesforce_order_line_id)
+SSIOOrderLine::setSalesforceOrderLineId(std::string salesforce_order_line_id)
 {
 	this->salesforce_order_line_id = salesforce_order_line_id;
 }
@@ -760,7 +760,7 @@ SSIOOrderLine::getStartDate()
 }
 
 void
-SSIOOrderLine::setStartDate(Date  start_date)
+SSIOOrderLine::setStartDate(Date start_date)
 {
 	this->start_date = start_date;
 }

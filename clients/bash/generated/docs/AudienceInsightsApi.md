@@ -13,10 +13,9 @@ Method | HTTP request | Description
 
 Get audience insights
 
-Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the
-ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's
-total audience.<p/>
-<a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
+Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.
+
+[Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 
 ### Example
 
@@ -34,7 +33,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AudienceInsightsResponse**](AudienceInsightsResponse.md)
+[**AudienceInsights**](AudienceInsights.md)
 
 ### Authorization
 
@@ -69,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AudienceDefinitionResponse**](AudienceDefinitionResponse.md)
+[**AudienceInsightsScopeAndTypeGet200Response**](AudienceInsightsScopeAndTypeGet200Response.md)
 
 ### Authorization
 

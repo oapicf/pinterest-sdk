@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | Option<**i32**> | Exception error code. | [optional]
-**message** | Option<**String**> | Exception message. | [optional]
+**code** | Option<**i32**> |  | [optional]
+**message** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

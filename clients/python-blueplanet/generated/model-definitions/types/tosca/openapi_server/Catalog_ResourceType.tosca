@@ -17,6 +17,11 @@ resourceTypes {
     description = Catalog
     derivedFrom = Root
     properties {
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
         created_at {
           type =  string
           description = ""
@@ -27,19 +32,14 @@ resourceTypes {
           description = "ID of the catalog entity."
           optional = true
         }
-        updated_at {
-          type =  string
-          description = ""
-          optional = true
-        }
-        catalog_type {
-          type = CatalogsType
-          description = ""
-          optional = true
-        }
         name {
           type =  string
           description = "A human-friendly name associated to a catalog entity."
+          optional = true
+        }
+        updated_at {
+          type =  string
+          description = ""
           optional = true
         }
     }

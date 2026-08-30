@@ -7,48 +7,17 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { CatalogsProductGroupPricingCriteria } from './catalogsProductGroupPricingCriteria';
-import { GoogleProductCategory3Filter } from './googleProductCategory3Filter';
-import { MaxPriceFilter } from './maxPriceFilter';
-import { BrandFilter } from './brandFilter';
-import { CatalogsProductGroupCurrencyCriteria } from './catalogsProductGroupCurrencyCriteria';
-import { ProductType3Filter } from './productType3Filter';
-import { CustomLabel3Filter } from './customLabel3Filter';
-import { CustomNumber2Filter } from './customNumber2Filter';
-import { MinPriceFilter } from './minPriceFilter';
-import { CustomLabel0Filter } from './customLabel0Filter';
-import { CustomNumber1Filter } from './customNumber1Filter';
-import { CustomLabel2Filter } from './customLabel2Filter';
-import { CustomNumber4Filter } from './customNumber4Filter';
-import { MediaTypeFilter } from './mediaTypeFilter';
-import { GoogleProductCategory1Filter } from './googleProductCategory1Filter';
-import { GoogleProductCategory6Filter } from './googleProductCategory6Filter';
-import { CatalogsProductGroupFilterOperatorTypeCriteria } from './catalogsProductGroupFilterOperatorTypeCriteria';
-import { CurrencyFilter } from './currencyFilter';
-import { CustomLabel4Filter } from './customLabel4Filter';
-import { GoogleProductCategory4Filter } from './googleProductCategory4Filter';
-import { CatalogsProductGroupUint32Criteria } from './catalogsProductGroupUint32Criteria';
-import { ProductType2Filter } from './productType2Filter';
-import { ProductGroupReferenceFilter } from './productGroupReferenceFilter';
-import { ProductType0Filter } from './productType0Filter';
-import { AvailabilityFilter } from './availabilityFilter';
-import { ItemGroupIdFilter } from './itemGroupIdFilter';
-import { GenderFilter } from './genderFilter';
 import { CatalogsProductGroupMultipleGenderCriteria } from './catalogsProductGroupMultipleGenderCriteria';
 import { CatalogsProductGroupMultipleStringListCriteria } from './catalogsProductGroupMultipleStringListCriteria';
-import { CustomLabel1Filter } from './customLabel1Filter';
-import { ProductType4Filter } from './productType4Filter';
+import { CatalogsProductGroupPricingCriteria } from './catalogsProductGroupPricingCriteria';
+import { CatalogsProductGroupMultiplePinterestProductCategoryCriteria } from './catalogsProductGroupMultiplePinterestProductCategoryCriteria';
+import { CatalogsBaseFilterKeys } from './catalogsBaseFilterKeys';
+import { CatalogsProductGroupUint32Criteria } from './catalogsProductGroupUint32Criteria';
 import { CatalogsProductGroupMultipleStringCriteria } from './catalogsProductGroupMultipleStringCriteria';
-import { GoogleProductCategory0Filter } from './googleProductCategory0Filter';
-import { GoogleProductCategory2Filter } from './googleProductCategory2Filter';
-import { GoogleProductCategory5Filter } from './googleProductCategory5Filter';
-import { CustomNumber3Filter } from './customNumber3Filter';
+import { ProductGroupReferenceFilter } from './productGroupReferenceFilter';
+import { CatalogsProductGroupCurrencyCriteria } from './catalogsProductGroupCurrencyCriteria';
 import { CatalogsProductGroupMultipleMediaTypesCriteria } from './catalogsProductGroupMultipleMediaTypesCriteria';
-import { CustomNumber0Filter } from './customNumber0Filter';
-import { ItemIdFilter } from './itemIdFilter';
-import { TitleKeywordsFilter } from './titleKeywordsFilter';
-import { ConditionFilter } from './conditionFilter';
-import { ProductType1Filter } from './productType1Filter';
+import { CatalogsProductGroupFilterOperatorTypeCriteria } from './catalogsProductGroupFilterOperatorTypeCriteria';
 
 
 export interface CatalogsProductGroupFilterKeys { 
@@ -79,12 +48,13 @@ export interface CatalogsProductGroupFilterKeys {
     GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria;
     GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria;
     GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria;
-    PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria;
     CUSTOM_NUMBER_0: CatalogsProductGroupUint32Criteria;
     CUSTOM_NUMBER_1: CatalogsProductGroupUint32Criteria;
     CUSTOM_NUMBER_2: CatalogsProductGroupUint32Criteria;
     CUSTOM_NUMBER_3: CatalogsProductGroupUint32Criteria;
     CUSTOM_NUMBER_4: CatalogsProductGroupUint32Criteria;
     TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria;
+    PINTEREST_PRODUCT_CATEGORIES: CatalogsProductGroupMultiplePinterestProductCategoryCriteria;
+    PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria;
 }
 

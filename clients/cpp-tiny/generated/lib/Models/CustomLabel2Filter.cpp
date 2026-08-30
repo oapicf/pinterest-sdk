@@ -65,7 +65,7 @@ CustomLabel2Filter::getCUSTOMLABEL2()
 }
 
 void
-CustomLabel2Filter::setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_2)
+CustomLabel2Filter::setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_2)
 {
 	this->cUSTOM_LABEL_2 = cUSTOM_LABEL_2;
 }

@@ -2,72 +2,37 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AdShoppingPreviewCreativeType;
+import org.openapitools.model.BasePreferredMediaType;
 import org.openapitools.model.CustomizableCTAType;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * AdPreviewShopping
+ * Ad preview from a catalog product group (shopping).
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "AdPreviewShopping", description = "Ad preview from a catalog product group (shopping).")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdPreviewShopping implements AdPreviewRequest {
 
   private String catalogProductGroupId;
 
-  /**
-   * Ad format of the shopping ad preview.
-   */
-  public enum CreativeTypeEnum {
-    SHOPPING("SHOPPING"),
-    
-    CAROUSEL("CAROUSEL"),
-    
-    COLLECTION("COLLECTION"),
-    
-    REGULAR("REGULAR");
-
-    private final String value;
-
-    CreativeTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CreativeTypeEnum fromValue(String value) {
-      for (CreativeTypeEnum b : CreativeTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private CreativeTypeEnum creativeType;
+  private AdShoppingPreviewCreativeType creativeType;
 
   private JsonNullable<CustomizableCTAType> customizableCtaType = JsonNullable.<CustomizableCTAType>undefined();
 
@@ -81,42 +46,9 @@ public class AdPreviewShopping implements AdPreviewRequest {
 
   private String itemId;
 
-  /**
-   * Preferred media type.
-   */
-  public enum PreferredMediaTypeEnum {
-    VIDEO("VIDEO"),
-    
-    IMAGE("IMAGE");
+  private BasePreferredMediaType preferredMediaType;
 
-    private final String value;
-
-    PreferredMediaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PreferredMediaTypeEnum fromValue(String value) {
-      for (PreferredMediaTypeEnum b : PreferredMediaTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private PreferredMediaTypeEnum preferredMediaType;
+  private Boolean showPromotion;
 
   private String videoTag;
 
@@ -127,7 +59,7 @@ public class AdPreviewShopping implements AdPreviewRequest {
   /**
    * Constructor with only required parameters
    */
-  public AdPreviewShopping(String catalogProductGroupId, CreativeTypeEnum creativeType) {
+  public AdPreviewShopping(String catalogProductGroupId, AdShoppingPreviewCreativeType creativeType) {
     this.catalogProductGroupId = catalogProductGroupId;
     this.creativeType = creativeType;
   }
@@ -152,7 +84,7 @@ public class AdPreviewShopping implements AdPreviewRequest {
     this.catalogProductGroupId = catalogProductGroupId;
   }
 
-  public AdPreviewShopping creativeType(CreativeTypeEnum creativeType) {
+  public AdPreviewShopping creativeType(AdShoppingPreviewCreativeType creativeType) {
     this.creativeType = creativeType;
     return this;
   }
@@ -161,14 +93,14 @@ public class AdPreviewShopping implements AdPreviewRequest {
    * Ad format of the shopping ad preview.
    * @return creativeType
    */
-  @NotNull 
+  @NotNull @Valid 
   @Schema(name = "creative_type", example = "SHOPPING", description = "Ad format of the shopping ad preview.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("creative_type")
-  public CreativeTypeEnum getCreativeType() {
+  public AdShoppingPreviewCreativeType getCreativeType() {
     return creativeType;
   }
 
-  public void setCreativeType(CreativeTypeEnum creativeType) {
+  public void setCreativeType(AdShoppingPreviewCreativeType creativeType) {
     this.creativeType = creativeType;
   }
 
@@ -292,7 +224,7 @@ public class AdPreviewShopping implements AdPreviewRequest {
     this.itemId = itemId;
   }
 
-  public AdPreviewShopping preferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+  public AdPreviewShopping preferredMediaType(BasePreferredMediaType preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
     return this;
   }
@@ -301,15 +233,35 @@ public class AdPreviewShopping implements AdPreviewRequest {
    * Preferred media type.
    * @return preferredMediaType
    */
-  
+  @Valid 
   @Schema(name = "preferred_media_type", example = "IMAGE", description = "Preferred media type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("preferred_media_type")
-  public PreferredMediaTypeEnum getPreferredMediaType() {
+  public BasePreferredMediaType getPreferredMediaType() {
     return preferredMediaType;
   }
 
-  public void setPreferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+  public void setPreferredMediaType(BasePreferredMediaType preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
+  }
+
+  public AdPreviewShopping showPromotion(Boolean showPromotion) {
+    this.showPromotion = showPromotion;
+    return this;
+  }
+
+  /**
+   * Include promotion data in preview when available on catalog item. Defaults to false.
+   * @return showPromotion
+   */
+  
+  @Schema(name = "show_promotion", description = "Include promotion data in preview when available on catalog item. Defaults to false.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("show_promotion")
+  public Boolean getShowPromotion() {
+    return showPromotion;
+  }
+
+  public void setShowPromotion(Boolean showPromotion) {
+    this.showPromotion = showPromotion;
   }
 
   public AdPreviewShopping videoTag(String videoTag) {
@@ -350,6 +302,7 @@ public class AdPreviewShopping implements AdPreviewRequest {
         Objects.equals(this.imageTag, adPreviewShopping.imageTag) &&
         Objects.equals(this.itemId, adPreviewShopping.itemId) &&
         Objects.equals(this.preferredMediaType, adPreviewShopping.preferredMediaType) &&
+        Objects.equals(this.showPromotion, adPreviewShopping.showPromotion) &&
         Objects.equals(this.videoTag, adPreviewShopping.videoTag);
   }
 
@@ -359,7 +312,7 @@ public class AdPreviewShopping implements AdPreviewRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogProductGroupId, creativeType, hashCodeNullable(customizableCtaType), heroImageTitle, heroImageUrl, heroPinId, imageTag, itemId, preferredMediaType, videoTag);
+    return Objects.hash(catalogProductGroupId, creativeType, hashCodeNullable(customizableCtaType), heroImageTitle, heroImageUrl, heroPinId, imageTag, itemId, preferredMediaType, showPromotion, videoTag);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -382,6 +335,7 @@ public class AdPreviewShopping implements AdPreviewRequest {
     sb.append("    imageTag: ").append(toIndentedString(imageTag)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    preferredMediaType: ").append(toIndentedString(preferredMediaType)).append("\n");
+    sb.append("    showPromotion: ").append(toIndentedString(showPromotion)).append("\n");
     sb.append("    videoTag: ").append(toIndentedString(videoTag)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -392,10 +346,7 @@ public class AdPreviewShopping implements AdPreviewRequest {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

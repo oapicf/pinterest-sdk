@@ -1,0 +1,10 @@
+
+
+# AdAdsAnalyticsAsyncTargetingTypes
+
+## Enum
+
+
+
+
+

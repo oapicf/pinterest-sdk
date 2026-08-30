@@ -82,17 +82,40 @@ FeaturedTrend <- R6::R6Class(
       FeaturedTrendObject <- list()
       if (!is.null(self$`interest`)) {
         FeaturedTrendObject[["interest"]] <-
-          self$`interest`$toSimpleType()
+          self$extractSimpleType(self$`interest`)
       }
       if (!is.null(self$`market`)) {
         FeaturedTrendObject[["market"]] <-
-          self$`market`$toSimpleType()
+          self$extractSimpleType(self$`market`)
       }
       if (!is.null(self$`trends`)) {
         FeaturedTrendObject[["trends"]] <-
-          lapply(self$`trends`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`trends`)
       }
       return(FeaturedTrendObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

@@ -1,0 +1,9 @@
+
+
+# PartnerType
+
+## Enum
+
+
+
+

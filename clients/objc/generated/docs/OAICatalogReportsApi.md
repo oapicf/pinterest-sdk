@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Build catalogs report
 
-Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the All Items report type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: The All Items report is limited to 25 million items per catalog.
 
 ### Example
 ```objc
@@ -28,7 +28,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-OAICatalogsReportParameters* catalogsReportParameters = [[OAICatalogsReportParameters alloc] init]; // Request object to asynchronously create a report.
+OAICatalogsReportParameters* catalogsReportParameters = [[OAICatalogsReportParameters alloc] init]; // 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAICatalogReportsApi*apiInstance = [[OAICatalogReportsApi alloc] init];
@@ -50,7 +50,7 @@ OAICatalogReportsApi*apiInstance = [[OAICatalogReportsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogsReportParameters** | [**OAICatalogsReportParameters***](OAICatalogsReportParameters.md)| Request object to asynchronously create a report. | 
+ **catalogsReportParameters** | [**OAICatalogsReportParameters***](OAICatalogsReportParameters.md)|  | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 Get catalogs report
 
-This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+This returns a URL to a report given a token returned from [Build catalogs report](/docs/api/v5/#operation/reports/create). You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Example
 ```objc
@@ -87,7 +87,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* token = @"token_example"; // Token returned from async build report call
+NSString* token = @"token_example"; // Token returned from the post request creation call
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAICatalogReportsApi*apiInstance = [[OAICatalogReportsApi alloc] init];
@@ -109,7 +109,7 @@ OAICatalogReportsApi*apiInstance = [[OAICatalogReportsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **NSString***| Token returned from async build report call | 
+ **token** | **NSString***| Token returned from the post request creation call | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -129,16 +129,16 @@ Name | Type | Description  | Notes
 
 # **reportsStats**
 ```objc
--(NSURLSessionTask*) reportsStatsWithParameters: (OAIReportsStatsParametersParameter) parameters
+-(NSURLSessionTask*) reportsStatsWithParameters: (OAICatalogsReportStatsParameters) parameters
     adAccountId: (NSString*) adAccountId
-    pageSize: (NSNumber*) pageSize
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
         completionHandler: (void (^)(OAIReportsStats200Response* output, NSError* error)) handler;
 ```
 
 List report stats
 
-List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Example
 ```objc
@@ -148,18 +148,18 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-OAIReportsStatsParametersParameter parameters = [[OAIReportsStatsParametersParameter alloc] init]; // Contains the parameters for report identification.
+OAICatalogsReportStatsParameters parameters = @{@"key" : [[OAICatalogsReportStatsParameters alloc] init]}; // Contains the parameters for report identification.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAICatalogReportsApi*apiInstance = [[OAICatalogReportsApi alloc] init];
 
 // List report stats
 [apiInstance reportsStatsWithParameters:parameters
               adAccountId:adAccountId
-              pageSize:pageSize
               bookmark:bookmark
+              pageSize:pageSize
           completionHandler: ^(OAIReportsStats200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -174,10 +174,10 @@ OAICatalogReportsApi*apiInstance = [[OAICatalogReportsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameters** | [**OAIReportsStatsParametersParameter**](.md)| Contains the parameters for report identification. | 
+ **parameters** | [**OAICatalogsReportStatsParameters**](.md)| Contains the parameters for report identification. | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 

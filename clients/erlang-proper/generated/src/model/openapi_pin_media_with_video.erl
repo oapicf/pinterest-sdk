@@ -15,6 +15,7 @@
   | {'images', openapi_image_size:openapi_image_size() }
   | {'media_type', binary() }
   | {'video_url', binary() }
+  | {'video_url_hls', binary() }
   | {'width', integer() }
   ].
 
@@ -29,6 +30,7 @@ openapi_pin_media_with_video(Fields) ->
             , {'images', openapi_image_size:openapi_image_size() }
             , {'media_type', elements([<<"video">>]) }
             , {'video_url', binary() }
+            , {'video_url_hls', binary() }
             , {'width', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

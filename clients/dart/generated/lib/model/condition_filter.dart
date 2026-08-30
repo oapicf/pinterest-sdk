@@ -47,15 +47,13 @@ class ConditionFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ConditionFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ConditionFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'CONDITION'), 'Required key "ConditionFilter[CONDITION]" is missing from JSON.');
+        assert(json[r'CONDITION'] != null, 'Required key "ConditionFilter[CONDITION]" has a null value in JSON.');
         return true;
       }());
 
       return ConditionFilter(
-        CONDITION: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'CONDITION')!,
+        CONDITION: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'CONDITION'])!,
       );
     }
     return null;

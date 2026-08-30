@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -18,7 +26,6 @@ package org.openapitools.client.models
 import org.openapitools.client.models.CatalogsHotelReportParameters
 import org.openapitools.client.models.CatalogsHotelReportParametersReport
 import org.openapitools.client.models.CatalogsRetailReportParameters
-import org.openapitools.client.models.CatalogsType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -34,9 +41,18 @@ import com.squareup.moshi.JsonClass
 interface CatalogsReportParameters {
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType
+    val catalogType: CatalogsReportParameters.CatalogType
     @Json(name = "report")
     val report: CatalogsHotelReportParametersReport
+    /**
+     * 
+     *
+     * Values: HOTEL
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "HOTEL") HOTEL("HOTEL");
+    }
 
 }
 

@@ -3,10 +3,10 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/catalogs_hotel_product.dart';
 import 'package:openapi/src/model/catalogs_creative_assets_product_metadata.dart';
 import 'package:openapi/src/model/pin.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:openapi/src/model/catalogs_creative_assets_product.dart';
 import 'package:openapi/src/model/catalogs_retail_product.dart';
 import 'package:built_value/built_value.dart';
@@ -15,7 +15,7 @@ import 'package:one_of/one_of.dart';
 
 part 'catalogs_product.g.dart';
 
-/// Catalogs product for all verticals
+/// CatalogsProduct
 ///
 /// Properties:
 /// * [catalogType] 
@@ -141,5 +141,18 @@ class _$CatalogsProductSerializer implements PrimitiveSerializer<CatalogsProduct
     result.oneOf = OneOfDynamic(typeIndex: oneOfTypes.indexOf(oneOfType), types: oneOfTypes, value: oneOfResult);
     return result.build();
   }
+}
+
+class CatalogsProductCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')
+  static const CatalogsProductCatalogTypeEnum CREATIVE_ASSETS = _$catalogsProductCatalogTypeEnum_CREATIVE_ASSETS;
+
+  static Serializer<CatalogsProductCatalogTypeEnum> get serializer => _$catalogsProductCatalogTypeEnumSerializer;
+
+  const CatalogsProductCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsProductCatalogTypeEnum> get values => _$catalogsProductCatalogTypeEnumValues;
+  static CatalogsProductCatalogTypeEnum valueOf(String name) => _$catalogsProductCatalogTypeEnumValueOf(name);
 }
 

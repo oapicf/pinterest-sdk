@@ -81,7 +81,7 @@ CatalogsCreativeAssetsProductGroupFiltersAllOf::getAllOf()
 }
 
 void
-CatalogsCreativeAssetsProductGroupFiltersAllOf::setAllOf(std::list <CatalogsCreativeAssetsProductGroupFilterKeys> all_of)
+CatalogsCreativeAssetsProductGroupFiltersAllOf::setAllOf(std::list<CatalogsCreativeAssetsProductGroupFilterKeys> all_of)
 {
 	this->all_of = all_of;
 }

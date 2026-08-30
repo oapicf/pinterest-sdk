@@ -75,59 +75,21 @@ Protected Class AdPreviewShopping
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Include promotion data in preview when available on catalog item. Defaults to false.
+		#tag EndNote
+		show_promotion As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Multi video template tag, image_tag and video_tag are mutual exclusive.
 		#tag EndNote
 		video_tag As Xoson.O.OptionalString
 	#tag EndProperty
 
 
-    #tag Enum, Name = Creative_typeEnum, Type = Integer, Flags = &h0
-        
-        Shopping
-        Carousel
-        Collection
-        Regular
-        
-    #tag EndEnum
 
-    #tag Enum, Name = Preferred_media_typeEnum, Type = Integer, Flags = &h0
-        
-        Video
-        Image
-        
-    #tag EndEnum
-
-
-	#tag Method, Flags = &h0
-		Shared Function Creative_typeEnumToString(value As Creative_typeEnum) As String
-		  Select Case value
-		    
-		    Case Creative_typeEnum.Shopping
-		      Return "SHOPPING"
-		    Case Creative_typeEnum.Carousel
-		      Return "CAROUSEL"
-		    Case Creative_typeEnum.Collection
-		      Return "COLLECTION"
-		    Case Creative_typeEnum.Regular
-		      Return "REGULAR"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function Preferred_media_typeEnumToString(value As Preferred_media_typeEnum) As String
-		  Select Case value
-		    
-		    Case Preferred_media_typeEnum.Video
-		      Return "VIDEO"
-		    Case Preferred_media_typeEnum.Image
-		      Return "IMAGE"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -169,6 +131,14 @@ Protected Class AdPreviewShopping
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="creative_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AdShoppingPreviewCreativeType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -217,6 +187,22 @@ Protected Class AdPreviewShopping
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="preferred_media_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="BasePreferredMediaType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="show_promotion"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

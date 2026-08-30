@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,13 +23,13 @@ var _ MappedNullable = &Catalog{}
 
 // Catalog Catalog entity
 type Catalog struct {
+	CatalogType CatalogsType `json:"catalog_type"`
 	CreatedAt time.Time `json:"created_at"`
 	// ID of the catalog entity.
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
-	UpdatedAt time.Time `json:"updated_at"`
-	CatalogType CatalogsType `json:"catalog_type"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 	// A human-friendly name associated to a catalog entity.
-	Name NullableString `json:"name"`
+	Name string `json:"name"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 type _Catalog Catalog
@@ -38,13 +38,13 @@ type _Catalog Catalog
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalog(createdAt time.Time, id string, updatedAt time.Time, catalogType CatalogsType, name NullableString) *Catalog {
+func NewCatalog(catalogType CatalogsType, createdAt time.Time, id string, name string, updatedAt time.Time) *Catalog {
 	this := Catalog{}
+	this.CatalogType = catalogType
 	this.CreatedAt = createdAt
 	this.Id = id
-	this.UpdatedAt = updatedAt
-	this.CatalogType = catalogType
 	this.Name = name
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -54,6 +54,30 @@ func NewCatalog(createdAt time.Time, id string, updatedAt time.Time, catalogType
 func NewCatalogWithDefaults() *Catalog {
 	this := Catalog{}
 	return &this
+}
+
+// GetCatalogType returns the CatalogType field value
+func (o *Catalog) GetCatalogType() CatalogsType {
+	if o == nil {
+		var ret CatalogsType
+		return ret
+	}
+
+	return o.CatalogType
+}
+
+// GetCatalogTypeOk returns a tuple with the CatalogType field value
+// and a boolean to check if the value has been set.
+func (o *Catalog) GetCatalogTypeOk() (*CatalogsType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CatalogType, true
+}
+
+// SetCatalogType sets field value
+func (o *Catalog) SetCatalogType(v CatalogsType) {
+	o.CatalogType = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -104,6 +128,30 @@ func (o *Catalog) SetId(v string) {
 	o.Id = v
 }
 
+// GetName returns the Name field value
+func (o *Catalog) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *Catalog) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *Catalog) SetName(v string) {
+	o.Name = v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value
 func (o *Catalog) GetUpdatedAt() time.Time {
 	if o == nil {
@@ -128,56 +176,6 @@ func (o *Catalog) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = v
 }
 
-// GetCatalogType returns the CatalogType field value
-func (o *Catalog) GetCatalogType() CatalogsType {
-	if o == nil {
-		var ret CatalogsType
-		return ret
-	}
-
-	return o.CatalogType
-}
-
-// GetCatalogTypeOk returns a tuple with the CatalogType field value
-// and a boolean to check if the value has been set.
-func (o *Catalog) GetCatalogTypeOk() (*CatalogsType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CatalogType, true
-}
-
-// SetCatalogType sets field value
-func (o *Catalog) SetCatalogType(v CatalogsType) {
-	o.CatalogType = v
-}
-
-// GetName returns the Name field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *Catalog) GetName() string {
-	if o == nil || o.Name.Get() == nil {
-		var ret string
-		return ret
-	}
-
-	return *o.Name.Get()
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Catalog) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Name.Get(), o.Name.IsSet()
-}
-
-// SetName sets field value
-func (o *Catalog) SetName(v string) {
-	o.Name.Set(&v)
-}
-
 func (o Catalog) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -188,11 +186,11 @@ func (o Catalog) MarshalJSON() ([]byte, error) {
 
 func (o Catalog) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["catalog_type"] = o.CatalogType
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
 	toSerialize["updated_at"] = o.UpdatedAt
-	toSerialize["catalog_type"] = o.CatalogType
-	toSerialize["name"] = o.Name.Get()
 	return toSerialize, nil
 }
 
@@ -201,11 +199,11 @@ func (o *Catalog) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"catalog_type",
 		"created_at",
 		"id",
-		"updated_at",
-		"catalog_type",
 		"name",
+		"updated_at",
 	}
 
 	allProperties := make(map[string]interface{})

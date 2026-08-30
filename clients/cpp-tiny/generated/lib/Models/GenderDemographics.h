@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set Percentage of female users
 	 */
-	void setFemale(long  female);
+	void setFemale(long female);
 	/*! \brief Get Percentage of male users
 	 */
 	long getMale();
 
 	/*! \brief Set Percentage of male users
 	 */
-	void setMale(long  male);
+	void setMale(long male);
 	/*! \brief Get Percentage of users with unspecified gender
 	 */
 	long getUnspecified();
 
 	/*! \brief Set Percentage of users with unspecified gender
 	 */
-	void setUnspecified(long  unspecified);
+	void setUnspecified(long unspecified);
 
 
     private:

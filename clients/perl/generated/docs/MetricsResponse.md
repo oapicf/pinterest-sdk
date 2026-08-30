@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::MetricsResponse;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **ARRAY[object]** |  | [optional] 
+**data** | [**ARRAY[MetricsResponseDataItems]**](MetricsResponseDataItems.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

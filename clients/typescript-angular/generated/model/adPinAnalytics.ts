@@ -10,9 +10,6 @@
 
 
 export interface AdPinAnalytics { 
-  [key: string]: any | any;
-
-
     /**
      * Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
      */

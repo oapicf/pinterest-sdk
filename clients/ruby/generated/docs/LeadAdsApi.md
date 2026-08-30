@@ -12,7 +12,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## ad_accounts_subscriptions_del_by_id
 
-> ad_accounts_subscriptions_del_by_id(ad_account_id, subscription_id)
+> <LeadSubscription> ad_accounts_subscriptions_del_by_id(ad_account_id, subscription_id)
 
 Delete lead ads subscription
 
@@ -35,7 +35,8 @@ subscription_id = 'subscription_id_example' # String | Unique identifier of a su
 
 begin
   # Delete lead ads subscription
-  api_instance.ad_accounts_subscriptions_del_by_id(ad_account_id, subscription_id)
+  result = api_instance.ad_accounts_subscriptions_del_by_id(ad_account_id, subscription_id)
+  p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling LeadAdsApi->ad_accounts_subscriptions_del_by_id: #{e}"
 end
@@ -43,9 +44,9 @@ end
 
 #### Using the ad_accounts_subscriptions_del_by_id_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> ad_accounts_subscriptions_del_by_id_with_http_info(ad_account_id, subscription_id)
+> <Array(<LeadSubscription>, Integer, Hash)> ad_accounts_subscriptions_del_by_id_with_http_info(ad_account_id, subscription_id)
 
 ```ruby
 begin
@@ -53,7 +54,7 @@ begin
   data, status_code, headers = api_instance.ad_accounts_subscriptions_del_by_id_with_http_info(ad_account_id, subscription_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <LeadSubscription>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling LeadAdsApi->ad_accounts_subscriptions_del_by_id_with_http_info: #{e}"
 end
@@ -68,7 +69,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 

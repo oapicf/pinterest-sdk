@@ -1,8 +1,8 @@
 const utils = require('../utils/utils');
 const CatalogsCreativeAssetsAvailableFilterValues = require('../models/CatalogsCreativeAssetsAvailableFilterValues');
+const CatalogsCreativeAssetsFilterValuesMap = require('../models/CatalogsCreativeAssetsFilterValuesMap');
 const CatalogsHotelAvailableFilterValues = require('../models/CatalogsHotelAvailableFilterValues');
 const CatalogsRetailAvailableFilterValues = require('../models/CatalogsRetailAvailableFilterValues');
-const catalogs_creative_assets_filter_values_map = require('../models/catalogs_creative_assets_filter_values_map');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -17,14 +17,14 @@ module.exports = {
                     'CREATIVE_ASSETS',
                 ],
             },
-            ...catalogs_creative_assets_filter_values_map.fields(`${keyPrefix}filter_values`, isInput),
+            ...CatalogsCreativeAssetsFilterValuesMap.fields(`${keyPrefix}filter_values`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
-            'filter_values': utils.removeIfEmpty(catalogs_creative_assets_filter_values_map.mapping(bundle, `${keyPrefix}filter_values`)),
+            'filter_values': utils.removeIfEmpty(CatalogsCreativeAssetsFilterValuesMap.mapping(bundle, `${keyPrefix}filter_values`)),
         }
     },
 }

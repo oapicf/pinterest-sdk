@@ -12,7 +12,10 @@ Protected Class ImageMetadata
 
 
 	#tag Property, Flags = &h0
-		item_type As Xoson.O.OptionalString
+		#tag Note
+			Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
+		#tag EndNote
+		item_type As String
 	#tag EndProperty
 
 
@@ -26,7 +29,24 @@ Protected Class ImageMetadata
 	#tag EndProperty
 
 
+    #tag Enum, Name = Item_typeEnum, Type = Integer, Flags = &h0
+        
+        Image
+        
+    #tag EndEnum
 
+
+	#tag Method, Flags = &h0
+		Shared Function Item_typeEnumToString(value As Item_typeEnum) As String
+		  Select Case value
+		    
+		    Case Item_typeEnum.Image
+		      Return "image"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -76,14 +96,6 @@ Protected Class ImageMetadata
 			Group="Behavior"
 			InitialValue=""
 			Type="ImageSize"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="item_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

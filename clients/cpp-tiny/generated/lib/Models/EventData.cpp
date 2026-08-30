@@ -276,7 +276,7 @@ EventData::getCurrency()
 }
 
 void
-EventData::setCurrency(Currency  currency)
+EventData::setCurrency(Currency currency)
 {
 	this->currency = currency;
 }
@@ -288,7 +288,7 @@ EventData::getLeadType()
 }
 
 void
-EventData::setLeadType(std::string  lead_type)
+EventData::setLeadType(std::string lead_type)
 {
 	this->lead_type = lead_type;
 }
@@ -300,7 +300,7 @@ EventData::getLineItems()
 }
 
 void
-EventData::setLineItems(LineItem  line_items)
+EventData::setLineItems(LineItem line_items)
 {
 	this->line_items = line_items;
 }
@@ -312,7 +312,7 @@ EventData::getOrderId()
 }
 
 void
-EventData::setOrderId(std::string  order_id)
+EventData::setOrderId(std::string order_id)
 {
 	this->order_id = order_id;
 }
@@ -324,7 +324,7 @@ EventData::getOrderQuantity()
 }
 
 void
-EventData::setOrderQuantity(int  order_quantity)
+EventData::setOrderQuantity(int order_quantity)
 {
 	this->order_quantity = order_quantity;
 }
@@ -336,7 +336,7 @@ EventData::getPageName()
 }
 
 void
-EventData::setPageName(std::string  page_name)
+EventData::setPageName(std::string page_name)
 {
 	this->page_name = page_name;
 }
@@ -348,7 +348,7 @@ EventData::getPromoCode()
 }
 
 void
-EventData::setPromoCode(std::string  promo_code)
+EventData::setPromoCode(std::string promo_code)
 {
 	this->promo_code = promo_code;
 }
@@ -360,7 +360,7 @@ EventData::getProperty()
 }
 
 void
-EventData::setProperty(std::string  property)
+EventData::setProperty(std::string property)
 {
 	this->property = property;
 }
@@ -372,7 +372,7 @@ EventData::getSearchQuery()
 }
 
 void
-EventData::setSearchQuery(std::string  search_query)
+EventData::setSearchQuery(std::string search_query)
 {
 	this->search_query = search_query;
 }
@@ -384,7 +384,7 @@ EventData::getValue()
 }
 
 void
-EventData::setValue(std::string  value)
+EventData::setValue(std::string value)
 {
 	this->value = value;
 }
@@ -396,7 +396,7 @@ EventData::getVideoTitle()
 }
 
 void
-EventData::setVideoTitle(std::string  video_title)
+EventData::setVideoTitle(std::string video_title)
 {
 	this->video_title = video_title;
 }

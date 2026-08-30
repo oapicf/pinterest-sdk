@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.LabelCreateRequestLabelsInner;
+import org.openapitools.model.LabelCreateItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -20,27 +20,24 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("LabelCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LabelCreateRequest   {
-  private @Valid List<@Valid LabelCreateRequestLabelsInner> labels = new ArrayList<>();
-  private String parentId;
+  private @Valid List<@Valid LabelCreateItem> labels = new ArrayList<>();
 
   public LabelCreateRequest() {
   }
 
   @JsonCreator
   public LabelCreateRequest(
-    @JsonProperty(required = true, value = "labels") List<@Valid LabelCreateRequestLabelsInner> labels,
-    @JsonProperty(required = true, value = "parent_id") String parentId
+    @JsonProperty(required = true, value = "labels") List<@Valid LabelCreateItem> labels
   ) {
     this.labels = labels;
-    this.parentId = parentId;
   }
 
   /**
    * Labels that you are applying to the campaign.
    **/
-  public LabelCreateRequest labels(List<@Valid LabelCreateRequestLabelsInner> labels) {
+  public LabelCreateRequest labels(List<@Valid LabelCreateItem> labels) {
     this.labels = labels;
     return this;
   }
@@ -48,16 +45,16 @@ public class LabelCreateRequest   {
   
   @ApiModelProperty(required = true, value = "Labels that you are applying to the campaign.")
   @JsonProperty(required = true, value = "labels")
-  @NotNull @Valid public List<@Valid LabelCreateRequestLabelsInner> getLabels() {
+  @NotNull @Valid public List<@Valid LabelCreateItem> getLabels() {
     return labels;
   }
 
   @JsonProperty(required = true, value = "labels")
-  public void setLabels(List<@Valid LabelCreateRequestLabelsInner> labels) {
+  public void setLabels(List<@Valid LabelCreateItem> labels) {
     this.labels = labels;
   }
 
-  public LabelCreateRequest addLabelsItem(LabelCreateRequestLabelsInner labelsItem) {
+  public LabelCreateRequest addLabelsItem(LabelCreateItem labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -66,33 +63,13 @@ public class LabelCreateRequest   {
     return this;
   }
 
-  public LabelCreateRequest removeLabelsItem(LabelCreateRequestLabelsInner labelsItem) {
+  public LabelCreateRequest removeLabelsItem(LabelCreateItem labelsItem) {
     if (labelsItem != null && this.labels != null) {
       this.labels.remove(labelsItem);
     }
 
     return this;
   }
-  /**
-   * Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
-   **/
-  public LabelCreateRequest parentId(String parentId) {
-    this.parentId = parentId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "626753052072", required = true, value = "Unique identifier of the asset you are labelling. Currently, you can only label campaigns.")
-  @JsonProperty(required = true, value = "parent_id")
-  @NotNull  @Pattern(regexp="^[C]?\\d+$")public String getParentId() {
-    return parentId;
-  }
-
-  @JsonProperty(required = true, value = "parent_id")
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -103,13 +80,12 @@ public class LabelCreateRequest   {
       return false;
     }
     LabelCreateRequest labelCreateRequest = (LabelCreateRequest) o;
-    return Objects.equals(this.labels, labelCreateRequest.labels) &&
-        Objects.equals(this.parentId, labelCreateRequest.parentId);
+    return Objects.equals(this.labels, labelCreateRequest.labels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(labels, parentId);
+    return Objects.hash(labels);
   }
 
   @Override
@@ -118,7 +94,6 @@ public class LabelCreateRequest   {
     sb.append("class LabelCreateRequest {\n");
     
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -128,12 +103,8 @@ public class LabelCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

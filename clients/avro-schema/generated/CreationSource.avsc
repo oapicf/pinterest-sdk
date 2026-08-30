@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The source of conversion events ingestion",
+  "name": "CreationSource",
+  "symbols": [
+    "ADS_API",
+    "ADS_MANAGER_REPORTING_PAGE",
+    "ADS_MANAGER_REPORT_BUILDER"
+  ]
+}

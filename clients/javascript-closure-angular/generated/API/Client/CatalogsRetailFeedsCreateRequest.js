@@ -7,14 +7,14 @@ goog.provide('API.Client.CatalogsRetailFeedsCreateRequest');
 API.Client.CatalogsRetailFeedsCreateRequest = function() {}
 
 /**
- * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.
+ * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsRetailFeedsCreateRequest.prototype.catalogId;
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsRetailFeedsCreateRequest.prototype.catalogType;
@@ -44,7 +44,7 @@ API.Client.CatalogsRetailFeedsCreateRequest.prototype.defaultCountry;
 API.Client.CatalogsRetailFeedsCreateRequest.prototype.defaultCurrency;
 
 /**
- * @type {!API.Client.CatalogsFeedsCreateRequest_default_locale}
+ * @type {!API.Client.CatalogsCreativeAssetsFeedsCreateRequest_default_locale}
  * @export
  */
 API.Client.CatalogsRetailFeedsCreateRequest.prototype.defaultLocale;
@@ -81,3 +81,7 @@ API.Client.CatalogsRetailFeedsCreateRequest.prototype.preferredProcessingSchedul
  */
 API.Client.CatalogsRetailFeedsCreateRequest.prototype.status;
 
+/** @enum {string} */
+API.Client.CatalogsRetailFeedsCreateRequest.CatalogTypeEnum = { 
+  RETAIL: 'RETAIL',
+}

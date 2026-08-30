@@ -24,7 +24,7 @@ resourceTypes {
         items {
           type = array
           items.type = CatalogsProduct
-          description = "Pins"
+          description = ""
           optional = true
         }
     }

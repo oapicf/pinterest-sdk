@@ -23,7 +23,7 @@ CatalogsVerticalsListProductsByCatalogBasedFilterRequest::~CatalogsVerticalsList
 void
 CatalogsVerticalsListProductsByCatalogBasedFilterRequest::__init()
 {
-	//catalog_id = std::string();
+	//catalog_id = null;
 	//catalog_type = std::string();
 	//country = new Country();
 	//filters = new CatalogsCreativeAssetsProductGroupFilters();

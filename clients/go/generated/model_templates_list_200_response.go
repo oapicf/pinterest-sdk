@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &TemplatesList200Response{}
 // TemplatesList200Response struct for TemplatesList200Response
 type TemplatesList200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	Items []TemplateResponse `json:"items"`
+	Items []AccountTemplate `json:"items"`
 }
 
 type _TemplatesList200Response TemplatesList200Response
@@ -32,7 +32,7 @@ type _TemplatesList200Response TemplatesList200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTemplatesList200Response(items []TemplateResponse) *TemplatesList200Response {
+func NewTemplatesList200Response(items []AccountTemplate) *TemplatesList200Response {
 	this := TemplatesList200Response{}
 	this.Items = items
 	return &this
@@ -89,9 +89,9 @@ func (o *TemplatesList200Response) UnsetBookmark() {
 }
 
 // GetItems returns the Items field value
-func (o *TemplatesList200Response) GetItems() []TemplateResponse {
+func (o *TemplatesList200Response) GetItems() []AccountTemplate {
 	if o == nil {
-		var ret []TemplateResponse
+		var ret []AccountTemplate
 		return ret
 	}
 
@@ -100,7 +100,7 @@ func (o *TemplatesList200Response) GetItems() []TemplateResponse {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *TemplatesList200Response) GetItemsOk() ([]TemplateResponse, bool) {
+func (o *TemplatesList200Response) GetItemsOk() ([]AccountTemplate, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *TemplatesList200Response) GetItemsOk() ([]TemplateResponse, bool) {
 }
 
 // SetItems sets field value
-func (o *TemplatesList200Response) SetItems(v []TemplateResponse) {
+func (o *TemplatesList200Response) SetItems(v []AccountTemplate) {
 	o.Items = v
 }
 

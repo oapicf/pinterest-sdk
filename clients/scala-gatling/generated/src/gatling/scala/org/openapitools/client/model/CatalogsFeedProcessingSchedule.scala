@@ -6,7 +6,7 @@ case class CatalogsFeedProcessingSchedule (
     /* A time in format HH:MM with leading 0 (zero) */
     _time: String,
     /* The timezone considered for the processing schedule time. */
-    _timezone: String
+    _timezone: CatalogsFeedProcessingScheduleTimezone
 )
 object CatalogsFeedProcessingSchedule {
     def toStringBody(var_time: Object, var_timezone: Object) =

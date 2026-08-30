@@ -59,7 +59,7 @@ class _$UpdatableItemAttributesGtinSerializer implements PrimitiveSerializer<Upd
   }) {
     final result = UpdatableItemAttributesGtinBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType.nullable(String), FullType(int), ]);
+    final targetType = const FullType(OneOf, [FullType.nullable(String), FullType.nullable(int), ]);
     oneOfDataSrc = serialized;
     result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
     return result.build();

@@ -83,7 +83,7 @@ AdvancedAuctionKey <- R6::R6Class(
       AdvancedAuctionKeyObject <- list()
       if (!is.null(self$`country`)) {
         AdvancedAuctionKeyObject[["country"]] <-
-          self$`country`$toSimpleType()
+          self$extractSimpleType(self$`country`)
       }
       if (!is.null(self$`item_id`)) {
         AdvancedAuctionKeyObject[["item_id"]] <-
@@ -91,9 +91,32 @@ AdvancedAuctionKey <- R6::R6Class(
       }
       if (!is.null(self$`language`)) {
         AdvancedAuctionKeyObject[["language"]] <-
-          self$`language`$toSimpleType()
+          self$extractSimpleType(self$`language`)
       }
       return(AdvancedAuctionKeyObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

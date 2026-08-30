@@ -6,7 +6,6 @@
   self = [super init];
   if (self) {
     // initialize property's default value, if any
-    self.isFeatured = @(NO);
     
   }
   return self;

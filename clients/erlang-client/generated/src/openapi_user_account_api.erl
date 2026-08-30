@@ -19,18 +19,18 @@
 
 %% @doc List following boards
 %% Get a list of the boards a user follows. The request returns a board summary object array.
--spec boards_user_follows/list(ctx:ctx()) -> {ok, openapi_boards_user_follows_list_200_response:openapi_boards_user_follows_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec boards_user_follows/list(ctx:ctx()) -> {ok, openapi_boards_list_200_response:openapi_boards_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 boards_user_follows/list(Ctx) ->
     boards_user_follows/list(Ctx, #{}).
 
--spec boards_user_follows/list(ctx:ctx(), maps:map()) -> {ok, openapi_boards_user_follows_list_200_response:openapi_boards_user_follows_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec boards_user_follows/list(ctx:ctx(), maps:map()) -> {ok, openapi_boards_list_200_response:openapi_boards_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 boards_user_follows/list(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
     Method = get,
     Path = [?BASE_URL, "/user_account/following/boards"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['bookmark', 'page_size', 'explicit_following', 'ad_account_id'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['ad_account_id', 'explicit_following', 'bookmark', 'page_size'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),
@@ -39,13 +39,13 @@ boards_user_follows/list(Ctx, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Follow user
-%% <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
--spec follow_user/update(ctx:ctx(), binary(), openapi_follow_user_request:openapi_follow_user_request()) -> {ok, openapi_user_summary:openapi_user_summary(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-follow_user/update(Ctx, Username, OpenapiFollowUserRequest) ->
-    follow_user/update(Ctx, Username, OpenapiFollowUserRequest, #{}).
+%% **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
+-spec follow_user/update(ctx:ctx(), binary(), openapi_follow_user_create:openapi_follow_user_create()) -> {ok, openapi_follow_user:openapi_follow_user(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+follow_user/update(Ctx, Username, OpenapiFollowUserCreate) ->
+    follow_user/update(Ctx, Username, OpenapiFollowUserCreate, #{}).
 
--spec follow_user/update(ctx:ctx(), binary(), openapi_follow_user_request:openapi_follow_user_request(), maps:map()) -> {ok, openapi_user_summary:openapi_user_summary(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-follow_user/update(Ctx, Username, OpenapiFollowUserRequest, Optional) ->
+-spec follow_user/update(ctx:ctx(), binary(), openapi_follow_user_create:openapi_follow_user_create(), maps:map()) -> {ok, openapi_follow_user:openapi_follow_user(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+follow_user/update(Ctx, Username, OpenapiFollowUserCreate, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -53,7 +53,7 @@ follow_user/update(Ctx, Username, OpenapiFollowUserRequest, Optional) ->
     Path = [?BASE_URL, "/user_account/following/", Username, ""],
     QS = [],
     Headers = [],
-    Body1 = OpenapiFollowUserRequest,
+    Body1 = OpenapiFollowUserCreate,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
@@ -102,12 +102,12 @@ linked_business_accounts/get(Ctx, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Unverify website
-%% Unverifu a website verified by the signed-in user.
--spec unverify_website/delete(ctx:ctx(), binary()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+%% Unverify a website verified by the signed-in user.
+-spec unverify_website/delete(ctx:ctx(), binary()) -> {ok, openapi_user_website:openapi_user_website(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 unverify_website/delete(Ctx, Website) ->
     unverify_website/delete(Ctx, Website, #{}).
 
--spec unverify_website/delete(ctx:ctx(), binary(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec unverify_website/delete(ctx:ctx(), binary(), maps:map()) -> {ok, openapi_user_website:openapi_user_website(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 unverify_website/delete(Ctx, Website, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -145,11 +145,11 @@ user_account/analytics(Ctx, StartDate, EndDate, Optional) ->
 
 %% @doc Get user account top pins analytics
 %% Gets analytics data about a user's top pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
--spec user_account/analytics/top_pins(ctx:ctx(), calendar:date(), calendar:date(), binary()) -> {ok, openapi_top_pins_analytics_response:openapi_top_pins_analytics_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec user_account/analytics/top_pins(ctx:ctx(), calendar:date(), calendar:date(), openapi_top_pins_sort_by) -> {ok, openapi_top_pins_analytics_response:openapi_top_pins_analytics_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 user_account/analytics/top_pins(Ctx, StartDate, EndDate, SortBy) ->
     user_account/analytics/top_pins(Ctx, StartDate, EndDate, SortBy, #{}).
 
--spec user_account/analytics/top_pins(ctx:ctx(), calendar:date(), calendar:date(), binary(), maps:map()) -> {ok, openapi_top_pins_analytics_response:openapi_top_pins_analytics_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec user_account/analytics/top_pins(ctx:ctx(), calendar:date(), calendar:date(), openapi_top_pins_sort_by, maps:map()) -> {ok, openapi_top_pins_analytics_response:openapi_top_pins_analytics_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 user_account/analytics/top_pins(Ctx, StartDate, EndDate, SortBy, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -166,11 +166,11 @@ user_account/analytics/top_pins(Ctx, StartDate, EndDate, SortBy, Optional) ->
 
 %% @doc Get user account top video pins analytics
 %% Gets analytics data about a user's top video pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
--spec user_account/analytics/top_video_pins(ctx:ctx(), calendar:date(), calendar:date(), binary()) -> {ok, openapi_top_video_pins_analytics_response:openapi_top_video_pins_analytics_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec user_account/analytics/top_video_pins(ctx:ctx(), calendar:date(), calendar:date(), openapi_top_video_pins_sort_by) -> {ok, openapi_top_video_pins_analytics_response:openapi_top_video_pins_analytics_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 user_account/analytics/top_video_pins(Ctx, StartDate, EndDate, SortBy) ->
     user_account/analytics/top_video_pins(Ctx, StartDate, EndDate, SortBy, #{}).
 
--spec user_account/analytics/top_video_pins(ctx:ctx(), calendar:date(), calendar:date(), binary(), maps:map()) -> {ok, openapi_top_video_pins_analytics_response:openapi_top_video_pins_analytics_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec user_account/analytics/top_video_pins(ctx:ctx(), calendar:date(), calendar:date(), openapi_top_video_pins_sort_by, maps:map()) -> {ok, openapi_top_video_pins_analytics_response:openapi_top_video_pins_analytics_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 user_account/analytics/top_video_pins(Ctx, StartDate, EndDate, SortBy, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -207,7 +207,7 @@ user_account/followed_interests(Ctx, Username, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Get user account
-%% Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+%% Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 -spec user_account/get(ctx:ctx()) -> {ok, openapi_account:openapi_account(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 user_account/get(Ctx) ->
     user_account/get(Ctx, #{}).
@@ -229,18 +229,18 @@ user_account/get(Ctx, Optional) ->
 
 %% @doc List following
 %% Get a list of who a certain user follows.
--spec user_following/get(ctx:ctx()) -> {ok, openapi_user_following_get_200_response:openapi_user_following_get_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec user_following/get(ctx:ctx()) -> {ok, openapi_followers_list_200_response:openapi_followers_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 user_following/get(Ctx) ->
     user_following/get(Ctx, #{}).
 
--spec user_following/get(ctx:ctx(), maps:map()) -> {ok, openapi_user_following_get_200_response:openapi_user_following_get_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec user_following/get(ctx:ctx(), maps:map()) -> {ok, openapi_followers_list_200_response:openapi_followers_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 user_following/get(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
     Method = get,
     Path = [?BASE_URL, "/user_account/following"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['bookmark', 'page_size', 'feed_type', 'explicit_following', 'ad_account_id'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['ad_account_id', 'explicit_following', 'feed_type', 'bookmark', 'page_size'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),
@@ -271,12 +271,12 @@ user_websites/get(Ctx, Optional) ->
 
 %% @doc Verify website
 %% Verify a website as a signed-in user.
--spec verify_website/update(ctx:ctx(), openapi_user_website_verify_request:openapi_user_website_verify_request()) -> {ok, openapi_user_website_summary:openapi_user_website_summary(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-verify_website/update(Ctx, OpenapiUserWebsiteVerifyRequest) ->
-    verify_website/update(Ctx, OpenapiUserWebsiteVerifyRequest, #{}).
+-spec verify_website/update(ctx:ctx(), openapi_user_website_create:openapi_user_website_create()) -> {ok, openapi_user_website:openapi_user_website(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+verify_website/update(Ctx, OpenapiUserWebsiteCreate) ->
+    verify_website/update(Ctx, OpenapiUserWebsiteCreate, #{}).
 
--spec verify_website/update(ctx:ctx(), openapi_user_website_verify_request:openapi_user_website_verify_request(), maps:map()) -> {ok, openapi_user_website_summary:openapi_user_website_summary(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-verify_website/update(Ctx, OpenapiUserWebsiteVerifyRequest, Optional) ->
+-spec verify_website/update(ctx:ctx(), openapi_user_website_create:openapi_user_website_create(), maps:map()) -> {ok, openapi_user_website:openapi_user_website(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+verify_website/update(Ctx, OpenapiUserWebsiteCreate, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -284,7 +284,7 @@ verify_website/update(Ctx, OpenapiUserWebsiteVerifyRequest, Optional) ->
     Path = [?BASE_URL, "/user_account/websites"],
     QS = lists:flatten([])++openapi_utils:optional_params(['ad_account_id'], _OptionalParams),
     Headers = [],
-    Body1 = OpenapiUserWebsiteVerifyRequest,
+    Body1 = OpenapiUserWebsiteCreate,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
@@ -292,11 +292,11 @@ verify_website/update(Ctx, OpenapiUserWebsiteVerifyRequest, Optional) ->
 
 %% @doc Get user verification code for website claiming
 %% Get verification code for user to install on the website to claim it.
--spec website_verification/get(ctx:ctx()) -> {ok, openapi_user_website_verification_code:openapi_user_website_verification_code(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec website_verification/get(ctx:ctx()) -> {ok, openapi_user_website_verification:openapi_user_website_verification(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 website_verification/get(Ctx) ->
     website_verification/get(Ctx, #{}).
 
--spec website_verification/get(ctx:ctx(), maps:map()) -> {ok, openapi_user_website_verification_code:openapi_user_website_verification_code(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec website_verification/get(ctx:ctx(), maps:map()) -> {ok, openapi_user_website_verification:openapi_user_website_verification(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 website_verification/get(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),

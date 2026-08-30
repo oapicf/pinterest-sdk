@@ -51,14 +51,14 @@ public:
 
 	/*! \brief Set Part number for upload.
 	 */
-	void setPartNumber(int  part_number);
+	void setPartNumber(int part_number);
 	/*! \brief Get Pre-signed URL.
 	 */
 	std::string getPresignedUrl();
 
 	/*! \brief Set Pre-signed URL.
 	 */
-	void setPresignedUrl(std::string  presigned_url);
+	void setPresignedUrl(std::string presigned_url);
 
 
     private:

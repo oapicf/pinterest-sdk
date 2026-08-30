@@ -9,12 +9,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.openapitools.vertxweb.server.model.PinAnalyticsMetricsResponseDailyMetricsInner;
+import org.openapitools.vertxweb.server.model.PinAnalyticsDailyMetrics;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinAnalyticsMetricsResponse   {
   
-  private List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>();
+  private List<PinAnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
   private Map<String, Integer> lifetimeMetrics = new HashMap<>();
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 
@@ -22,7 +22,7 @@ public class PinAnalyticsMetricsResponse   {
 
   }
 
-  public PinAnalyticsMetricsResponse (List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics, Map<String, Integer> lifetimeMetrics, Map<String, BigDecimal> summaryMetrics) {
+  public PinAnalyticsMetricsResponse (List<PinAnalyticsDailyMetrics> dailyMetrics, Map<String, Integer> lifetimeMetrics, Map<String, BigDecimal> summaryMetrics) {
     this.dailyMetrics = dailyMetrics;
     this.lifetimeMetrics = lifetimeMetrics;
     this.summaryMetrics = summaryMetrics;
@@ -30,10 +30,10 @@ public class PinAnalyticsMetricsResponse   {
 
     
   @JsonProperty("daily_metrics")
-  public List<PinAnalyticsMetricsResponseDailyMetricsInner> getDailyMetrics() {
+  public List<PinAnalyticsDailyMetrics> getDailyMetrics() {
     return dailyMetrics;
   }
-  public void setDailyMetrics(List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
+  public void setDailyMetrics(List<PinAnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
   }
 
@@ -92,9 +92,6 @@ public class PinAnalyticsMetricsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

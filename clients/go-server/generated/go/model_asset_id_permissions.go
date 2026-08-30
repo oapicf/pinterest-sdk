@@ -5,32 +5,121 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 // AssetIdPermissions - An object containing the permissions a business member has on the asset.
 type AssetIdPermissions struct {
 
+	// An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
 	AssetGroupInfo AssetGroupBinding `json:"asset_group_info,omitempty"`
 
 	// Unique identifier of a business asset.
-	AssetId string `json:"asset_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AssetId string `json:"asset_id" validate:"regexp=^\\d+$"`
 
-	// Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
-	AssetType string `json:"asset_type,omitempty"`
+	AssetType AssetTypeResponse `json:"asset_type"`
 
 	// Permission levels member or partner has on an asset.
-	Permissions []string `json:"permissions,omitempty"`
+	Permissions []string `json:"permissions"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into AssetIdPermissions
+func (o *AssetIdPermissions) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"asset_id",
+		"asset_type",
+		"permissions",
+	}
+
+	requiredNullableProperties := map[string]bool{
+		"asset_id": false,
+		"asset_type": false,
+		"permissions": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"asset_group_info": {},
+		"asset_id": {},
+		"asset_type": {},
+		"permissions": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded AssetIdPermissions
+
+	if value, exists := allProperties["asset_group_info"]; exists {
+		if err = json.Unmarshal(value, &decoded.AssetGroupInfo); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["asset_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.AssetId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["asset_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.AssetType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["permissions"]; exists {
+		if err = json.Unmarshal(value, &decoded.Permissions); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
 }
 
-// AssertAssetIdPermissionsRequired checks if the required fields are not zero-ed
+// AssertAssetIdPermissionsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAssetIdPermissionsRequired(obj AssetIdPermissions) error {
+	elements := map[string]interface{}{
+		"permissions": obj.Permissions,
+	}
+	for name, el := range elements {
+		if isZero := IsZeroValue(el); isZero {
+			return &RequiredError{Field: name}
+		}
+	}
+
 	if err := AssertAssetGroupBindingRequired(obj.AssetGroupInfo); err != nil {
 		return err
 	}

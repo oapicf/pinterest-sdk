@@ -3,24 +3,13 @@ package model
 import play.api.libs.json._
 
 /**
-  * Any valid JSON object
-  * @param additionalProperties Any additional properties this model may have.
+  * Notification request body. Can be either a batch of notification objects or a single notification object.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class NotificationPostRequest(
-  additionalProperties: Map[String, OasAnyTypeNotMapped]
 )
 
 object NotificationPostRequest {
-  implicit lazy val notificationPostRequestJsonFormat: Format[NotificationPostRequest] = {
-    
-    val innerFormat = Format.of[Map[String, OasAnyTypeNotMapped]]
-    
-    Format(
-      innerFormat.map(inner => NotificationPostRequest(inner)),
-      notificationPostRequest => innerFormat.writes(notificationPostRequest.additionalProperties
-    )
-    
-  }
+  implicit lazy val notificationPostRequestJsonFormat: Format[NotificationPostRequest] = Json.format[NotificationPostRequest]
 }
 

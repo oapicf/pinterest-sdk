@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Intended result of the campaign. You can only update objectives for draft campaigns. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter.",
+  "name": "BidFloorObjectiveType",
+  "symbols": [
+    "AWARENESS",
+    "CONSIDERATION",
+    "WEB_CONVERSION",
+    "CATALOG_SALES",
+    "VIDEO_COMPLETION",
+    "SALES"
+  ]
+}

@@ -10,36 +10,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.FilterOperatorType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupFilterOperatorTypeCriteria   {
   
-
-  /**
-   * Gets or Sets filterOperatorType
-   */
-  public enum FilterOperatorTypeEnum {
-    IS("IS"),
-
-        CONTAINS("CONTAINS");
-    private String value;
-
-    FilterOperatorTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private FilterOperatorTypeEnum filterOperatorType = FilterOperatorTypeEnum.IS;
-  private Boolean negated = false;
+  private FilterOperatorType filterOperatorType;
+  private Boolean negated;
   private List<String> values = new ArrayList<>();
 
   /**
@@ -47,10 +27,10 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("filter_operator_type")
-  public FilterOperatorTypeEnum getFilterOperatorType() {
+  public FilterOperatorType getFilterOperatorType() {
     return filterOperatorType;
   }
-  public void setFilterOperatorType(FilterOperatorTypeEnum filterOperatorType) {
+  public void setFilterOperatorType(FilterOperatorType filterOperatorType) {
     this.filterOperatorType = filterOperatorType;
   }
 
@@ -116,10 +96,7 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

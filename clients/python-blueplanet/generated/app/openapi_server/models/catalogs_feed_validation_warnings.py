@@ -5137,12 +5137,6 @@ class CatalogsFeedValidationWarnings(Model):
         :param fetch_same_signature: The fetch_same_signature of this CatalogsFeedValidationWarnings.
         :type fetch_same_signature: int
         """
-        allowed_values = ["1"]  # noqa: E501
-        if fetch_same_signature not in allowed_values:
-            raise ValueError(
-                "Invalid value for `fetch_same_signature` ({0}), must be one of {1}"
-                .format(fetch_same_signature, allowed_values)
-            )
 
         self._fetch_same_signature = fetch_same_signature
 

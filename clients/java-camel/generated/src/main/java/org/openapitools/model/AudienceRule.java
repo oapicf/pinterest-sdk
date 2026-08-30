@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -11,29 +12,29 @@ import org.openapitools.model.EventData;
 import org.openapitools.model.ObjectiveType;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.example.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;Learn more about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience\&quot; target&#x3D;\&quot;_blank\&quot;&gt;engagement audiences&lt;/a&gt;.
+ * JSON object defining targeted audience users. Example rule formats per audience type:  CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}  ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; } (Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10. The targeted audience should be this % size across Pinterest.)  VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}} (Retention days should be 1-540. Retention applies to specific customers.)  ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.example.com\&quot;], \&quot;engager_type\&quot;: 1} Learn more about [engagement audiences](/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience).
  */
 
-@Schema(name = "AudienceRule", description = "JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.example.com\"], \"engager_type\": 1}<br>Learn more about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience\" target=\"_blank\">engagement audiences</a>.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "AudienceRule", description = "JSON object defining targeted audience users. Example rule formats per audience type:  CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}  ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" } (Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10. The targeted audience should be this % size across Pinterest.)  VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}} (Retention days should be 1-540. Retention applies to specific customers.)  ENGAGEMENT: {\"engagement_domain\": [\"www.example.com\"], \"engager_type\": 1} Learn more about [engagement audiences](/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience).")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AudienceRule {
 
   private String adAccountId;
 
   @Valid
-  private List<@Pattern(regexp = "^\\d+$")String> adId = new ArrayList<>();
+  private List<String> adId = new ArrayList<>();
 
   @Valid
-  private List<@Pattern(regexp = "^\\d+$")String> campaignId = new ArrayList<>();
+  private List<String> campaignId = new ArrayList<>();
 
   private String country;
 
@@ -60,14 +61,14 @@ public class AudienceRule {
   private Integer percentage;
 
   @Valid
-  private List<@Pattern(regexp = "^\\d+$")String> pinId = new ArrayList<>();
+  private List<String> pinId = new ArrayList<>();
 
   private Boolean prefill;
 
   private Integer retentionDays;
 
   @Valid
-  private List<@Pattern(regexp = "^\\d+$")String> seedId = new ArrayList<>();
+  private List<String> seedId = new ArrayList<>();
 
   @Valid
   private List<String> url = new ArrayList<>();
@@ -94,7 +95,7 @@ public class AudienceRule {
     this.adAccountId = adAccountId;
   }
 
-  public AudienceRule adId(List<@Pattern(regexp = "^\\d+$")String> adId) {
+  public AudienceRule adId(List<String> adId) {
     this.adId = adId;
     return this;
   }
@@ -114,15 +115,15 @@ public class AudienceRule {
   
   @Schema(name = "ad_id", example = "[\"687201361754\"]", description = "Ad ID for engagement audience filter.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_id")
-  public List<@Pattern(regexp = "^\\d+$")String> getAdId() {
+  public List<String> getAdId() {
     return adId;
   }
 
-  public void setAdId(List<@Pattern(regexp = "^\\d+$")String> adId) {
+  public void setAdId(List<String> adId) {
     this.adId = adId;
   }
 
-  public AudienceRule campaignId(List<@Pattern(regexp = "^\\d+$")String> campaignId) {
+  public AudienceRule campaignId(List<String> campaignId) {
     this.campaignId = campaignId;
     return this;
   }
@@ -142,11 +143,11 @@ public class AudienceRule {
   
   @Schema(name = "campaign_id", example = "[\"626744528398\"]", description = "Campaign ID for engagement audience filter.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_id")
-  public List<@Pattern(regexp = "^\\d+$")String> getCampaignId() {
+  public List<String> getCampaignId() {
     return campaignId;
   }
 
-  public void setCampaignId(List<@Pattern(regexp = "^\\d+$")String> campaignId) {
+  public void setCampaignId(List<String> campaignId) {
     this.campaignId = campaignId;
   }
 
@@ -224,11 +225,11 @@ public class AudienceRule {
   }
 
   /**
-   * Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set. 
+   * Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set.
    * @return engagementType
    */
   
-  @Schema(name = "engagement_type", example = "click", description = "Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set. ", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "engagement_type", example = "click", description = "Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("engagement_type")
   public String getEngagementType() {
     return engagementType;
@@ -386,7 +387,7 @@ public class AudienceRule {
     this.percentage = percentage;
   }
 
-  public AudienceRule pinId(List<@Pattern(regexp = "^\\d+$")String> pinId) {
+  public AudienceRule pinId(List<String> pinId) {
     this.pinId = pinId;
     return this;
   }
@@ -406,11 +407,11 @@ public class AudienceRule {
   
   @Schema(name = "pin_id", example = "[\"34567\"]", description = "IDs of engaged organic pins. Optional for ENGAGEMENT `audience_type`. For example, \"pin_id:\": [\"34567\"]", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pin_id")
-  public List<@Pattern(regexp = "^\\d+$")String> getPinId() {
+  public List<String> getPinId() {
     return pinId;
   }
 
-  public void setPinId(List<@Pattern(regexp = "^\\d+$")String> pinId) {
+  public void setPinId(List<String> pinId) {
     this.pinId = pinId;
   }
 
@@ -454,7 +455,7 @@ public class AudienceRule {
     this.retentionDays = retentionDays;
   }
 
-  public AudienceRule seedId(List<@Pattern(regexp = "^\\d+$")String> seedId) {
+  public AudienceRule seedId(List<String> seedId) {
     this.seedId = seedId;
     return this;
   }
@@ -468,17 +469,17 @@ public class AudienceRule {
   }
 
   /**
-   * Audience ID(s). For ACTALIKE `audience_type`. 
+   * Audience ID(s). For ACTALIKE `audience_type`.
    * @return seedId
    */
   
-  @Schema(name = "seed_id", example = "[\"2542620639259\",\"2542620639261\"]", description = "Audience ID(s). For ACTALIKE `audience_type`. ", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "seed_id", example = "[\"2542620639259\",\"2542620639261\"]", description = "Audience ID(s). For ACTALIKE `audience_type`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("seed_id")
-  public List<@Pattern(regexp = "^\\d+$")String> getSeedId() {
+  public List<String> getSeedId() {
     return seedId;
   }
 
-  public void setSeedId(List<@Pattern(regexp = "^\\d+$")String> seedId) {
+  public void setSeedId(List<String> seedId) {
     this.seedId = seedId;
   }
 
@@ -496,11 +497,11 @@ public class AudienceRule {
   }
 
   /**
-   * Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains].<br>Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\"<br>Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}
+   * Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains]. Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\" Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}
    * @return url
    */
   
-  @Schema(name = "url", description = "Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains].<br>Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\"<br>Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "url", description = "Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains]. Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\" Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("url")
   public List<String> getUrl() {
     return url;
@@ -599,10 +600,7 @@ public class AudienceRule {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

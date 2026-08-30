@@ -5,6 +5,10 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.TargetingSpecGender
+import org.openapitools.model.TargetingSpecListOperation
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -24,16 +28,20 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class TargetingSpecOperationGender(
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("field", required = true) val `field`: TargetingSpecOperationGender.`Field`,
-
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("operation", required = true) val operation: TargetingSpecOperationGender.Operation,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("field")
+    @get:JsonProperty("field", required = true) override val `field`: TargetingSpecOperationGender.`Field` = kotlin.String.GENDER,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("values", required = true) val propertyValues: kotlin.collections.List<TargetingSpecGender>?
-) {
+    @Schema(required = true, description = "")
+    @param:JsonProperty("operation")
+    @get:JsonProperty("operation", required = true) val operation: TargetingSpecListOperation,
+
+    @field:Valid
+    @Schema(required = true, description = "")
+    @param:JsonProperty("values")
+    @get:JsonProperty("values", required = true) val propertyValues: kotlin.collections.List<TargetingSpecGender>
+) : TargetingSpecOperations {
 
     /**
     * 
@@ -48,27 +56,7 @@ data class TargetingSpecOperationGender(
             @JsonCreator
             fun forValue(value: kotlin.String): `Field` {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingSpecOperationGender'")
-            }
-        }
-    }
-
-    /**
-    * 
-    * Values: SET,ADD,REMOVE
-    */
-    enum class Operation(@get:JsonValue val value: kotlin.String) {
-
-        SET("SET"),
-        ADD("ADD"),
-        REMOVE("REMOVE");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): Operation {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingSpecOperationGender'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum '&#x60;Field&#x60;'")
             }
         }
     }

@@ -1,16 +1,17 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.AuthRespondInvitesBody;
-import org.openapitools.vertxweb.server.model.CancelInvitesBody;
+import org.openapitools.vertxweb.server.model.CancelInvitesRequest;
+import org.openapitools.vertxweb.server.model.CancelInvitesResponse;
 import org.openapitools.vertxweb.server.model.CreateAssetAccessRequestBody;
 import org.openapitools.vertxweb.server.model.CreateAssetAccessRequestResponse;
 import org.openapitools.vertxweb.server.model.CreateAssetInvitesRequest;
 import org.openapitools.vertxweb.server.model.CreateInvitesResultsResponseArray;
 import org.openapitools.vertxweb.server.model.CreateMembershipOrPartnershipInvitesBody;
-import org.openapitools.vertxweb.server.model.DeleteInvitesResultsResponseArray;
-import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.GetInvites200Response;
+import org.openapitools.vertxweb.server.model.InviteFilterStatus;
 import org.openapitools.vertxweb.server.model.InviteType;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 import org.openapitools.vertxweb.server.model.RespondToInvitesResponseArray;
 import org.openapitools.vertxweb.server.model.UpdateInvitesResultsResponseArray;
 
@@ -85,12 +86,12 @@ public class BusinessAccessInviteApiHandler {
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        CancelInvitesBody cancelInvitesBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CancelInvitesBody>(){}) : null;
+        CancelInvitesRequest cancelInvitesRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CancelInvitesRequest>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter cancelInvitesBody is {}", cancelInvitesBody);
+        logger.debug("Parameter cancelInvitesRequest is {}", cancelInvitesRequest);
 
-        api.cancelInvitesOrRequests(businessId, cancelInvitesBody)
+        api.cancelInvitesOrRequests(businessId, cancelInvitesRequest)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -160,7 +161,7 @@ public class BusinessAccessInviteApiHandler {
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
         Boolean isMember = requestParameters.queryParameter("is_member") != null ? requestParameters.queryParameter("is_member").getBoolean() : true;
-        List<String> inviteStatus = requestParameters.queryParameter("invite_status") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("invite_status").get(), new TypeReference<List<String>>(){}) : null;
+        List<InviteFilterStatus> inviteStatus = requestParameters.queryParameter("invite_status") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("invite_status").get(), new TypeReference<List<InviteFilterStatus>>(){}) : null;
         InviteType inviteType = requestParameters.queryParameter("invite_type") != null ? requestParameters.queryParameter("invite_type").getInviteType() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;

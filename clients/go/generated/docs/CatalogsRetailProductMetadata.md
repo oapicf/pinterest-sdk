@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Availability** | [**NonNullableProductAvailabilityType**](NonNullableProductAvailabilityType.md) |  | 
+**Availability** | [**ProductAvailability**](ProductAvailability.md) |  | 
 **Currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | 
 **ItemGroupId** | **NullableString** | The parent ID of the product. | 
 **ItemId** | **string** | The user-created unique ID that represents the product. | 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsRetailProductMetadata
 
-`func NewCatalogsRetailProductMetadata(availability NonNullableProductAvailabilityType, currency NonNullableCatalogsCurrency, itemGroupId NullableString, itemId string, price float32, salePrice NullableFloat32, ) *CatalogsRetailProductMetadata`
+`func NewCatalogsRetailProductMetadata(availability ProductAvailability, currency NonNullableCatalogsCurrency, itemGroupId NullableString, itemId string, price float32, salePrice NullableFloat32, ) *CatalogsRetailProductMetadata`
 
 NewCatalogsRetailProductMetadata instantiates a new CatalogsRetailProductMetadata object
 This constructor will assign default values to properties that have it defined,
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAvailability
 
-`func (o *CatalogsRetailProductMetadata) GetAvailability() NonNullableProductAvailabilityType`
+`func (o *CatalogsRetailProductMetadata) GetAvailability() ProductAvailability`
 
 GetAvailability returns the Availability field if non-nil, zero value otherwise.
 
 ### GetAvailabilityOk
 
-`func (o *CatalogsRetailProductMetadata) GetAvailabilityOk() (*NonNullableProductAvailabilityType, bool)`
+`func (o *CatalogsRetailProductMetadata) GetAvailabilityOk() (*ProductAvailability, bool)`
 
 GetAvailabilityOk returns a tuple with the Availability field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAvailability
 
-`func (o *CatalogsRetailProductMetadata) SetAvailability(v NonNullableProductAvailabilityType)`
+`func (o *CatalogsRetailProductMetadata) SetAvailability(v ProductAvailability)`
 
 SetAvailability sets Availability field to given value.
 

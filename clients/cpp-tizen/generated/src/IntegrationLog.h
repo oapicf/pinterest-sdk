@@ -11,6 +11,8 @@
 #include <string>
 #include "IntegrationLogClientError.h"
 #include "IntegrationLogClientRequest.h"
+#include "IntegrationLogEventType.h"
+#include "IntegrationLogLevel.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -77,11 +79,11 @@ public:
 	void setError(IntegrationLogClientError  error);
 	/*! \brief Get Log event type
 	 */
-	std::string getEventType();
+	IntegrationLogEventType getEventType();
 
 	/*! \brief Set Log event type
 	 */
-	void setEventType(std::string  event_type);
+	void setEventType(IntegrationLogEventType  event_type);
 	/*! \brief Get 
 	 */
 	std::string getExternalBusinessId();
@@ -98,11 +100,11 @@ public:
 	void setFeedProfileId(std::string  feed_profile_id);
 	/*! \brief Get Log level type
 	 */
-	std::string getLogLevel();
+	IntegrationLogLevel getLogLevel();
 
 	/*! \brief Set Log level type
 	 */
-	void setLogLevel(std::string  log_level);
+	void setLogLevel(IntegrationLogLevel  log_level);
 	/*! \brief Get 
 	 */
 	std::string getMerchantId();
@@ -144,10 +146,10 @@ private:
 	std::string app_version_number;
 	int client_timestamp;
 	IntegrationLogClientError error;
-	std::string event_type;
+	IntegrationLogEventType event_type;
 	std::string external_business_id;
 	std::string feed_profile_id;
-	std::string log_level;
+	IntegrationLogLevel log_level;
 	std::string merchant_id;
 	std::string message;
 	std::string platform_version_number;

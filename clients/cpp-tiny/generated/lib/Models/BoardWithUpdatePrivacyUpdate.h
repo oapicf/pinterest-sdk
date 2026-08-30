@@ -52,21 +52,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setDescription(std::string  description);
-	/*! \brief Get      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+	void setDescription(std::string description);
+	/*! \brief Get     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
 	 */
 	std::string getName();
 
-	/*! \brief Set      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+	/*! \brief Set     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 	/*! \brief Get 
 	 */
 	BoardUpdatePrivacy getPrivacy();
 
 	/*! \brief Set 
 	 */
-	void setPrivacy(BoardUpdatePrivacy  privacy);
+	void setPrivacy(BoardUpdatePrivacy privacy);
 
 
     private:

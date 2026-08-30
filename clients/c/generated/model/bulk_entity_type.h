@@ -1,7 +1,7 @@
 /*
  * bulk_entity_type.h
  *
- * Refers ads entity type. Schedule enum is only applicable to beta users
+ * Refers ads entity type.
  */
 
 #ifndef _bulk_entity_type_H_
@@ -18,7 +18,7 @@ typedef struct bulk_entity_type_t bulk_entity_type_t;
 
 // Enum  for bulk_entity_type
 
-typedef enum { pinterest_rest_api_bulk_entity_type__NULL = 0, pinterest_rest_api_bulk_entity_type__CAMPAIGN, pinterest_rest_api_bulk_entity_type__AD_GROUP, pinterest_rest_api_bulk_entity_type__PRODUCT_GROUP, pinterest_rest_api_bulk_entity_type__AD, pinterest_rest_api_bulk_entity_type__KEYWORD, pinterest_rest_api_bulk_entity_type__LABEL, pinterest_rest_api_bulk_entity_type__SCHEDULE } pinterest_rest_api_bulk_entity_type__e;
+typedef enum { pinterest_rest_api_bulk_entity_type__NULL = 0, pinterest_rest_api_bulk_entity_type__CAMPAIGN, pinterest_rest_api_bulk_entity_type__AD_GROUP, pinterest_rest_api_bulk_entity_type__PRODUCT_GROUP, pinterest_rest_api_bulk_entity_type__AD, pinterest_rest_api_bulk_entity_type__KEYWORD, pinterest_rest_api_bulk_entity_type__LABEL, pinterest_rest_api_bulk_entity_type__SCHEDULE, pinterest_rest_api_bulk_entity_type__ENTITY_HISTORY } pinterest_rest_api_bulk_entity_type__e;
 
 char* bulk_entity_type_bulk_entity_type_ToString(pinterest_rest_api_bulk_entity_type__e bulk_entity_type);
 

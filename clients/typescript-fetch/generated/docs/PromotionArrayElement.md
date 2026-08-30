@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`data` | [PromotionResponse](PromotionResponse.md)
+`data` | [Promotion](Promotion.md)
 `exception` | [Exception](Exception.md)
 
 ## Example

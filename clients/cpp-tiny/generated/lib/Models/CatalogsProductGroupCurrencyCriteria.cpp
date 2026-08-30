@@ -86,7 +86,7 @@ CatalogsProductGroupCurrencyCriteria::isNegated()
 }
 
 void
-CatalogsProductGroupCurrencyCriteria::setNegated(bool  negated)
+CatalogsProductGroupCurrencyCriteria::setNegated(bool negated)
 {
 	this->negated = negated;
 }
@@ -98,7 +98,7 @@ CatalogsProductGroupCurrencyCriteria::getValues()
 }
 
 void
-CatalogsProductGroupCurrencyCriteria::setValues(NonNullableCatalogsCurrency  values)
+CatalogsProductGroupCurrencyCriteria::setValues(NonNullableCatalogsCurrency values)
 {
 	this->values = values;
 }

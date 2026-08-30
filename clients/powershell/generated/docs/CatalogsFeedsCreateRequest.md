@@ -7,12 +7,12 @@ Name | Type | Description | Notes
 **DefaultAvailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
 **DefaultCountry** | [**Country**](Country.md) |  | [optional] 
 **DefaultCurrency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] 
-**DefaultLocale** | [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequestDefaultLocale.md) |  | [optional] 
+**DefaultLocale** | [**CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale**](CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.md) |  | [optional] 
 **Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
 **Location** | **String** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
 **Name** | **String** | A human-friendly name associated to a given feed. | 
 **PreferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
-**Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to "ACTIVE"]
+**Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
 
 ## Examples
 

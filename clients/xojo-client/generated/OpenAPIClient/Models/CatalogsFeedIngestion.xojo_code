@@ -2,21 +2,33 @@
 Protected Class CatalogsFeedIngestion
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Timestamp of the feed ingestion.
+		#tag EndNote
 		created_at As Date
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Catalog Feed id pertaining to the feed ingestion.
+		#tag EndNote
 		feed_id As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Unique identifier of a feed ingestion.
+		#tag EndNote
 		id As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Status of the feed ingestion.
+		#tag EndNote
 		status As String
 	#tag EndProperty
 

@@ -3,12 +3,12 @@ package org.openapitools.client.model
 
 
 case class CatalogsHotelFeedsCreateRequest (
-    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. */
+    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
     _catalogId: Option[String],
-    _catalogType: CatalogsType,
+    _catalogType: String,
     _credentials: Option[CatalogsFeedCredentials],
     _defaultCurrency: Option[NullableCurrency],
-    _defaultLocale: CatalogsFeedsCreateRequestDefaultLocale,
+    _defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale,
     _format: CatalogsFormat,
     /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
     _location: String,

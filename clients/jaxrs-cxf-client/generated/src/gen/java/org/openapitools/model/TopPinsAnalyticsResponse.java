@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.TopPinsAnalyticsResponseDateAvailability;
-import org.openapitools.model.TopPinsAnalyticsResponsePinsInner;
+import org.openapitools.model.TopPinsAnalyticsResponsePinsItems;
+import org.openapitools.model.TopPinsSortBy;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -19,41 +20,11 @@ public class TopPinsAnalyticsResponse  {
 
   @ApiModelProperty(value = "")
 
-  private List<TopPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
+  private List<TopPinsAnalyticsResponsePinsItems> pins = new ArrayList<>();
 
-public enum SortByEnum {
+  @ApiModelProperty(value = "")
 
-ENGAGEMENT(String.valueOf("ENGAGEMENT")), SAVE(String.valueOf("SAVE")), IMPRESSION(String.valueOf("IMPRESSION")), OUTBOUND_CLICK(String.valueOf("OUTBOUND_CLICK")), PIN_CLICK(String.valueOf("PIN_CLICK"));
-
-
-    private String value;
-
-    SortByEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static SortByEnum fromValue(String value) {
-        for (SortByEnum b : SortByEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  @ApiModelProperty(example = "IMPRESSION", value = "")
-
-  private SortByEnum sortBy;
+  private TopPinsSortBy sortBy;
  /**
    * Get dateAvailability
    * @return dateAvailability
@@ -77,20 +48,20 @@ ENGAGEMENT(String.valueOf("ENGAGEMENT")), SAVE(String.valueOf("SAVE")), IMPRESSI
    * @return pins
   **/
   @JsonProperty("pins")
-  public List<TopPinsAnalyticsResponsePinsInner> getPins() {
+  public List<TopPinsAnalyticsResponsePinsItems> getPins() {
     return pins;
   }
 
-  public void setPins(List<TopPinsAnalyticsResponsePinsInner> pins) {
+  public void setPins(List<TopPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
   }
 
-  public TopPinsAnalyticsResponse pins(List<TopPinsAnalyticsResponsePinsInner> pins) {
+  public TopPinsAnalyticsResponse pins(List<TopPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
     return this;
   }
 
-  public TopPinsAnalyticsResponse addPinsItem(TopPinsAnalyticsResponsePinsInner pinsItem) {
+  public TopPinsAnalyticsResponse addPinsItem(TopPinsAnalyticsResponsePinsItems pinsItem) {
     this.pins.add(pinsItem);
     return this;
   }
@@ -100,18 +71,15 @@ ENGAGEMENT(String.valueOf("ENGAGEMENT")), SAVE(String.valueOf("SAVE")), IMPRESSI
    * @return sortBy
   **/
   @JsonProperty("sort_by")
-  public String getSortBy() {
-    if (sortBy == null) {
-      return null;
-    }
-    return sortBy.value();
+  public TopPinsSortBy getSortBy() {
+    return sortBy;
   }
 
-  public void setSortBy(SortByEnum sortBy) {
+  public void setSortBy(TopPinsSortBy sortBy) {
     this.sortBy = sortBy;
   }
 
-  public TopPinsAnalyticsResponse sortBy(SortByEnum sortBy) {
+  public TopPinsAnalyticsResponse sortBy(TopPinsSortBy sortBy) {
     this.sortBy = sortBy;
     return this;
   }
@@ -152,10 +120,7 @@ ENGAGEMENT(String.valueOf("ENGAGEMENT")), SAVE(String.valueOf("SAVE")), IMPRESSI
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

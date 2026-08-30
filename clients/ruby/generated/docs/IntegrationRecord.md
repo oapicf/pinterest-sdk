@@ -5,14 +5,14 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **additional_id_1** | **String** |  | [optional] |
-| **connected_advertiser_id** | **String** |  | [optional][readonly] |
+| **connected_advertiser_id** | **String** |  | [optional] |
 | **connected_lba_id** | **String** |  | [optional] |
 | **connected_merchant_id** | **String** |  | [optional] |
 | **connected_tag_id** | **String** |  | [optional] |
-| **connected_user_id** | **String** |  | [optional][readonly] |
+| **connected_user_id** | **String** |  | [optional] |
 | **created_time** | **Integer** |  | [optional] |
 | **external_business_id** | **String** |  | [optional] |
-| **id** | **String** |  | [optional] |
+| **id** | **String** | Integration record ID. | [readonly] |
 | **partner_access_token** | **String** |  | [optional] |
 | **partner_access_token_expiry** | **Integer** |  | [optional] |
 | **partner_metadata** | **String** |  | [optional] |

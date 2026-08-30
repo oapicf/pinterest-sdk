@@ -17,13 +17,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}id`,
-                label: `[${labelPrefix}id]`,
-                required: true,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}updated_at`,
-                label: `[${labelPrefix}updated_at]`,
+                label: `ID of the feed processing result. - [${labelPrefix}id]`,
                 required: true,
                 type: 'string',
             },
@@ -32,6 +26,12 @@ module.exports = {
             {
                 key: `${keyPrefix}status`,
                 ...CatalogsFeedProcessingStatus.fields(`${keyPrefix}status`, isInput),
+            },
+            {
+                key: `${keyPrefix}updated_at`,
+                label: `[${labelPrefix}updated_at]`,
+                required: true,
+                type: 'string',
             },
             ...CatalogsFeedValidationDetails.fields(`${keyPrefix}validation_details`, isInput),
             ...CatalogsFeedVideoCounts.fields(`${keyPrefix}video_counts`, isInput),
@@ -42,10 +42,10 @@ module.exports = {
         return {
             'created_at': bundle.inputData?.[`${keyPrefix}created_at`],
             'id': bundle.inputData?.[`${keyPrefix}id`],
-            'updated_at': bundle.inputData?.[`${keyPrefix}updated_at`],
             'ingestion_details': utils.removeIfEmpty(CatalogsFeedIngestionDetails.mapping(bundle, `${keyPrefix}ingestion_details`)),
             'product_counts': utils.removeIfEmpty(CatalogsFeedProductCounts.mapping(bundle, `${keyPrefix}product_counts`)),
             'status': bundle.inputData?.[`${keyPrefix}status`],
+            'updated_at': bundle.inputData?.[`${keyPrefix}updated_at`],
             'validation_details': utils.removeIfEmpty(CatalogsFeedValidationDetails.mapping(bundle, `${keyPrefix}validation_details`)),
             'video_counts': utils.removeIfEmpty(CatalogsFeedVideoCounts.mapping(bundle, `${keyPrefix}video_counts`)),
         }

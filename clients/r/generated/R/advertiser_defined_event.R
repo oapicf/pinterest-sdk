@@ -1,44 +1,42 @@
 #' Create a new AdvertiserDefinedEvent
 #'
 #' @description
-#' AdvertiserDefinedEvent Class
+#' Advertiser defined event
 #'
 #' @docType class
 #' @title AdvertiserDefinedEvent
 #' @description AdvertiserDefinedEvent Class
 #' @format An \code{R6Class} generator object
-#' @field name raw string name of the event, usually logged as raw_event_name in our dataset character [optional]
-#' @field mapped_conversion_type standard type mapped to ADE for optimization character [optional]
+#' @field mapped_conversion_type Standard type mapped to ADE for optimization \link{ConversionTagTypeOptimal} [optional]
+#' @field name Raw string name of the event, usually logged as raw_event_name in our dataset character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AdvertiserDefinedEvent <- R6::R6Class(
   "AdvertiserDefinedEvent",
   public = list(
-    `name` = NULL,
     `mapped_conversion_type` = NULL,
+    `name` = NULL,
 
     #' @description
     #' Initialize a new AdvertiserDefinedEvent class.
     #'
-    #' @param name raw string name of the event, usually logged as raw_event_name in our dataset
-    #' @param mapped_conversion_type standard type mapped to ADE for optimization
+    #' @param mapped_conversion_type Standard type mapped to ADE for optimization
+    #' @param name Raw string name of the event, usually logged as raw_event_name in our dataset
     #' @param ... Other optional arguments.
-    initialize = function(`name` = NULL, `mapped_conversion_type` = NULL, ...) {
+    initialize = function(`mapped_conversion_type` = NULL, `name` = NULL, ...) {
+      if (!is.null(`mapped_conversion_type`)) {
+        if (!(`mapped_conversion_type` %in% c())) {
+          stop(paste("Error! \"", `mapped_conversion_type`, "\" cannot be assigned to `mapped_conversion_type`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`mapped_conversion_type`))
+        self$`mapped_conversion_type` <- `mapped_conversion_type`
+      }
       if (!is.null(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
         }
         self$`name` <- `name`
-      }
-      if (!is.null(`mapped_conversion_type`)) {
-        if (!(`mapped_conversion_type` %in% c("PAGE_LOAD", "UNKNOWN", "INITIALIZED", "PAGE_VISIT", "SIGNUP", "CHECKOUT", "CUSTOM", "VIEW_CATEGORY", "SEARCH", "ADD_TO_CART", "WATCH_VIDEO", "LEAD", "APP_INSTALL", "WEB_SESSION", "EXTERNAL_MEASUREMENT", "ADD_PAYMENT_INFO", "ADD_TO_WISHLIST", "INITIATE_CHECKOUT", "SUBSCRIBE", "VIEW_CONTENT", "ADVERTISER_DEFINED_EVENT", "APP_OPEN", "CONTACT", "SCHEDULE", "FIND_LOCATION", "CUSTOMIZE_PRODUCT", "SUBMIT_APPLICATION", "START_TRIAL"))) {
-          stop(paste("Error! \"", `mapped_conversion_type`, "\" cannot be assigned to `mapped_conversion_type`. Must be \"PAGE_LOAD\", \"UNKNOWN\", \"INITIALIZED\", \"PAGE_VISIT\", \"SIGNUP\", \"CHECKOUT\", \"CUSTOM\", \"VIEW_CATEGORY\", \"SEARCH\", \"ADD_TO_CART\", \"WATCH_VIDEO\", \"LEAD\", \"APP_INSTALL\", \"WEB_SESSION\", \"EXTERNAL_MEASUREMENT\", \"ADD_PAYMENT_INFO\", \"ADD_TO_WISHLIST\", \"INITIATE_CHECKOUT\", \"SUBSCRIBE\", \"VIEW_CONTENT\", \"ADVERTISER_DEFINED_EVENT\", \"APP_OPEN\", \"CONTACT\", \"SCHEDULE\", \"FIND_LOCATION\", \"CUSTOMIZE_PRODUCT\", \"SUBMIT_APPLICATION\", \"START_TRIAL\".", sep = ""))
-        }
-        if (!(is.character(`mapped_conversion_type`) && length(`mapped_conversion_type`) == 1)) {
-          stop(paste("Error! Invalid data for `mapped_conversion_type`. Must be a string:", `mapped_conversion_type`))
-        }
-        self$`mapped_conversion_type` <- `mapped_conversion_type`
       }
     },
 
@@ -73,15 +71,38 @@ AdvertiserDefinedEvent <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AdvertiserDefinedEventObject <- list()
+      if (!is.null(self$`mapped_conversion_type`)) {
+        AdvertiserDefinedEventObject[["mapped_conversion_type"]] <-
+          self$extractSimpleType(self$`mapped_conversion_type`)
+      }
       if (!is.null(self$`name`)) {
         AdvertiserDefinedEventObject[["name"]] <-
           self$`name`
       }
-      if (!is.null(self$`mapped_conversion_type`)) {
-        AdvertiserDefinedEventObject[["mapped_conversion_type"]] <-
-          self$`mapped_conversion_type`
-      }
       return(AdvertiserDefinedEventObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -91,14 +112,13 @@ AdvertiserDefinedEvent <- R6::R6Class(
     #' @return the instance of AdvertiserDefinedEvent
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`mapped_conversion_type`)) {
+        `mapped_conversion_type_object` <- ConversionTagTypeOptimal$new()
+        `mapped_conversion_type_object`$fromJSON(jsonlite::toJSON(this_object$`mapped_conversion_type`, auto_unbox = TRUE, digits = NA))
+        self$`mapped_conversion_type` <- `mapped_conversion_type_object`
+      }
       if (!is.null(this_object$`name`)) {
         self$`name` <- this_object$`name`
-      }
-      if (!is.null(this_object$`mapped_conversion_type`)) {
-        if (!is.null(this_object$`mapped_conversion_type`) && !(this_object$`mapped_conversion_type` %in% c("PAGE_LOAD", "UNKNOWN", "INITIALIZED", "PAGE_VISIT", "SIGNUP", "CHECKOUT", "CUSTOM", "VIEW_CATEGORY", "SEARCH", "ADD_TO_CART", "WATCH_VIDEO", "LEAD", "APP_INSTALL", "WEB_SESSION", "EXTERNAL_MEASUREMENT", "ADD_PAYMENT_INFO", "ADD_TO_WISHLIST", "INITIATE_CHECKOUT", "SUBSCRIBE", "VIEW_CONTENT", "ADVERTISER_DEFINED_EVENT", "APP_OPEN", "CONTACT", "SCHEDULE", "FIND_LOCATION", "CUSTOMIZE_PRODUCT", "SUBMIT_APPLICATION", "START_TRIAL"))) {
-          stop(paste("Error! \"", this_object$`mapped_conversion_type`, "\" cannot be assigned to `mapped_conversion_type`. Must be \"PAGE_LOAD\", \"UNKNOWN\", \"INITIALIZED\", \"PAGE_VISIT\", \"SIGNUP\", \"CHECKOUT\", \"CUSTOM\", \"VIEW_CATEGORY\", \"SEARCH\", \"ADD_TO_CART\", \"WATCH_VIDEO\", \"LEAD\", \"APP_INSTALL\", \"WEB_SESSION\", \"EXTERNAL_MEASUREMENT\", \"ADD_PAYMENT_INFO\", \"ADD_TO_WISHLIST\", \"INITIATE_CHECKOUT\", \"SUBSCRIBE\", \"VIEW_CONTENT\", \"ADVERTISER_DEFINED_EVENT\", \"APP_OPEN\", \"CONTACT\", \"SCHEDULE\", \"FIND_LOCATION\", \"CUSTOMIZE_PRODUCT\", \"SUBMIT_APPLICATION\", \"START_TRIAL\".", sep = ""))
-        }
-        self$`mapped_conversion_type` <- this_object$`mapped_conversion_type`
       }
       self
     },
@@ -121,11 +141,8 @@ AdvertiserDefinedEvent <- R6::R6Class(
     #' @return the instance of AdvertiserDefinedEvent
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`mapped_conversion_type` <- ConversionTagTypeOptimal$new()$fromJSON(jsonlite::toJSON(this_object$`mapped_conversion_type`, auto_unbox = TRUE, digits = NA))
       self$`name` <- this_object$`name`
-      if (!is.null(this_object$`mapped_conversion_type`) && !(this_object$`mapped_conversion_type` %in% c("PAGE_LOAD", "UNKNOWN", "INITIALIZED", "PAGE_VISIT", "SIGNUP", "CHECKOUT", "CUSTOM", "VIEW_CATEGORY", "SEARCH", "ADD_TO_CART", "WATCH_VIDEO", "LEAD", "APP_INSTALL", "WEB_SESSION", "EXTERNAL_MEASUREMENT", "ADD_PAYMENT_INFO", "ADD_TO_WISHLIST", "INITIATE_CHECKOUT", "SUBSCRIBE", "VIEW_CONTENT", "ADVERTISER_DEFINED_EVENT", "APP_OPEN", "CONTACT", "SCHEDULE", "FIND_LOCATION", "CUSTOMIZE_PRODUCT", "SUBMIT_APPLICATION", "START_TRIAL"))) {
-        stop(paste("Error! \"", this_object$`mapped_conversion_type`, "\" cannot be assigned to `mapped_conversion_type`. Must be \"PAGE_LOAD\", \"UNKNOWN\", \"INITIALIZED\", \"PAGE_VISIT\", \"SIGNUP\", \"CHECKOUT\", \"CUSTOM\", \"VIEW_CATEGORY\", \"SEARCH\", \"ADD_TO_CART\", \"WATCH_VIDEO\", \"LEAD\", \"APP_INSTALL\", \"WEB_SESSION\", \"EXTERNAL_MEASUREMENT\", \"ADD_PAYMENT_INFO\", \"ADD_TO_WISHLIST\", \"INITIATE_CHECKOUT\", \"SUBSCRIBE\", \"VIEW_CONTENT\", \"ADVERTISER_DEFINED_EVENT\", \"APP_OPEN\", \"CONTACT\", \"SCHEDULE\", \"FIND_LOCATION\", \"CUSTOMIZE_PRODUCT\", \"SUBMIT_APPLICATION\", \"START_TRIAL\".", sep = ""))
-      }
-      self$`mapped_conversion_type` <- this_object$`mapped_conversion_type`
       self
     },
 

@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **character** |  | [optional] 
-**items** | [**array[PromotionResponse]**](PromotionResponse.md) |  | 
+**items** | [**array[Promotion]**](Promotion.md) |  | 
 
 

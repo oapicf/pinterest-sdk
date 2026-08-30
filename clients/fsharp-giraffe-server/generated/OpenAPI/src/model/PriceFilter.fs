@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.CatalogsProductGroupPricingCurrencyCriteria
+open OpenAPI.Model.PriceFilterPrice
 
 module PriceFilter =
 
@@ -10,6 +10,6 @@ module PriceFilter =
 
 
   type PriceFilter = {
-    PRICE : CatalogsProductGroupPricingCurrencyCriteria;
+    PRICE : PriceFilterPrice;
   }
   //#endregion

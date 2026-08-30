@@ -9,10 +9,11 @@ Name | Type | Description | Notes
 **ad_groups** | [**List[AdGroupUpdateRequest]**](AdGroupUpdateRequest.md) |  | [optional] 
 **ads** | [**List[AdUpdateRequest]**](AdUpdateRequest.md) |  | [optional] 
 **campaigns** | [**List[CampaignUpdateRequest]**](CampaignUpdateRequest.md) |  | [optional] 
-**catalog_product_groups** | [**List[CatalogsProductGroupsUpdateRequest]**](CatalogsProductGroupsUpdateRequest.md) |  | [optional] 
-**keywords** | [**List[KeywordUpdate]**](KeywordUpdate.md) |  | [optional] 
+**catalog_product_groups** | [**List[BulkUpsertRequestUpdateCatalogProductGroupsItems]**](BulkUpsertRequestUpdateCatalogProductGroupsItems.md) |  | [optional] 
+**keywords** | [**List[KeywordUpdateGenerated]**](KeywordUpdateGenerated.md) |  | [optional] 
 **labels** | [**List[LabelBulkUpdateRequest]**](LabelBulkUpdateRequest.md) |  | [optional] 
 **product_groups** | [**List[ProductGroupPromotionUpdateRequest]**](ProductGroupPromotionUpdateRequest.md) |  | [optional] 
+**schedules** | [**List[ScheduleUpdateRequest]**](ScheduleUpdateRequest.md) |  | [optional] 
 
 ## Example
 

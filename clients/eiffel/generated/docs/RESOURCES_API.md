@@ -13,7 +13,7 @@ Feature | HTTP request | Description
 
 
 # **ad_account_countries_get**
-> ad_account_countries_get : detachable AD_ACCOUNTS_COUNTRY_RESPONSE
+> ad_account_countries_get : detachable AD_ACCOUNT_COUNTRIES_GET_200_RESPONSE
 
 
 Get ad accounts countries
@@ -26,7 +26,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**AD_ACCOUNTS_COUNTRY_RESPONSE**](AdAccountsCountryResponse.md)
+[**AD_ACCOUNT_COUNTRIES_GET_200_RESPONSE**](ad_account_countries_get_200_response.md)
 
 ### Authorization
 
@@ -40,23 +40,23 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delivery_metrics_get**
-> delivery_metrics_get (report_type:  detachable STRING_32 ): detachable DELIVERY_METRICS_RESPONSE
+> delivery_metrics_get (report_type:  detachable REPORT_TYPE ): detachable DELIVERY_METRICS_GET_200_RESPONSE
 
 
 Get available metrics' definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See [Organic Analytics](/docs/api-features/analytics-overview/) and [Ads Analytics](/docs/api-features/ads-reporting/) for more information.
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **report_type** | **STRING_32**| Report type. | [optional] [default to null]
+ **report_type** | [**REPORT_TYPE**](.md)| Report type. | [optional] [default to null]
 
 ### Return type
 
-[**DELIVERY_METRICS_RESPONSE**](DeliveryMetricsResponse.md)
+[**DELIVERY_METRICS_GET_200_RESPONSE**](delivery_metrics_get_200_response.md)
 
 ### Authorization
 
@@ -70,12 +70,12 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **interest_targeting_options_get**
-> interest_targeting_options_get (interest_id: STRING_32 ): detachable SINGLE_INTEREST_TARGETING_OPTION_RESPONSE
+> interest_targeting_options_get (interest_id: STRING_32 ): detachable SINGLE_INTEREST_TARGETING_OPTION
 
 
 Get interest details
 
-<p>Get details of a specific interest given interest ID.</p> <p>Click <a href=\"https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875\" target=\"_blank\">here</a> for a spreadsheet listing interests and their IDs.</p>
+Get details of a specific interest given interest ID.  Click [here](https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875) for a spreadsheet listing interests and their IDs.
 
 
 ### Parameters
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SINGLE_INTEREST_TARGETING_OPTION_RESPONSE**](SingleInterestTargetingOptionResponse.md)
+[**SINGLE_INTEREST_TARGETING_OPTION**](SingleInterestTargetingOption.md)
 
 ### Authorization
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 
 ### Parameters
@@ -127,7 +127,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **metrics_ready_state_get**
-> metrics_ready_state_get (date: STRING_32 ): detachable BOOK_CLOSED_RESPONSE
+> metrics_ready_state_get (date: STRING_32 ): detachable BOOK_CLOSED
 
 
 Get metrics ready state
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BOOK_CLOSED_RESPONSE**](BookClosedResponse.md)
+[**BOOK_CLOSED**](BookClosed.md)
 
 ### Authorization
 
@@ -157,23 +157,23 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **targeting_options_get**
-> targeting_options_get (targeting_type: STRING_32 ; client_id:  detachable STRING_32 ; oauth_signature:  detachable STRING_32 ; timestamp:  detachable STRING_32 ; ad_account_id:  detachable STRING_32 ): detachable LIST [ANY]
+> targeting_options_get (targeting_type: PUBLIC_TARGETING_TYPE ; ad_account_id:  detachable STRING_32 ; client_id:  detachable STRING_32 ; oauth_signature:  detachable STRING_32 ; timestamp:  detachable STRING_32 ): detachable LIST [ANY]
 
 
 Get targeting options
 
-<p>You can use targeting values in ads placement to define your intended audience. </p> <p>Targeting metrics are organized around targeting specifications.</p> <p>For more information on ads targeting, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.</p> <p><b>Sample return:</b></p> <pre class=\"literal-block\"> [{&quot;36313&quot;: &quot;Australia: Moreton Bay - North&quot;, &quot;124735&quot;: &quot;Canada: North Battleford&quot;, &quot;36109&quot;: &quot;Australia: Murray&quot;, &quot;36108&quot;: &quot;Australia: Mid North Coast&quot;, &quot;36101&quot;: &quot;Australia: Capital Region&quot;, &quot;811&quot;: &quot;U.S.: Reno&quot;, &quot;36103&quot;: &quot;Australia: Central West&quot;, &quot;36102&quot;: &quot;Australia: Central Coast&quot;, &quot;36105&quot;: &quot;Australia: Far West and Orana&quot;, &quot;36104&quot;: &quot;Australia: Coffs Harbour - Grafton&quot;, &quot;36107&quot;: &quot;Australia: Illawarra&quot;, &quot;36106&quot;: &quot;Australia: Hunter Valley Exc Newcastle&quot;, &quot;554017&quot;: &quot;New Zealand: Wanganui&quot;, &quot;554016&quot;: &quot;New Zealand: Marlborough&quot;, &quot;554015&quot;: &quot;New Zealand: Gisborne&quot;, &quot;554014&quot;: &quot;New Zealand: Tararua&quot;, &quot;554013&quot;: &quot;New Zealand: Invercargill&quot;, &quot;GR&quot;: &quot;Greece&quot;, &quot;554011&quot;: &quot;New Zealand: Whangarei&quot;, &quot;554010&quot;: &quot;New Zealand: Far North&quot;, &quot;717&quot;: &quot;U.S.: Quincy-Hannibal-Keokuk&quot;, &quot;716&quot;: &quot;U.S.: Baton Rouge&quot;,...}] </pre>
+    You can use targeting values in ads placement to define your intended audience.      Targeting metrics are organized around targeting specifications.      For more information on ads targeting, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting).      **Sample return:**      ```     [{\"36313\": \"Australia: Moreton Bay - North\", \"124735\": \"Canada: North Battleford\", \"36109\": \"Australia: Murray\", \"36108\": \"Australia: Mid North Coast\", \"36101\": \"Australia: Capital Region\", \"811\": \"U.S.: Reno\", \"36103\": \"Australia: Central West\", \"36102\": \"Australia: Central Coast\", \"36105\": \"Australia: Far West and Orana\", \"36104\": \"Australia: Coffs Harbour - Grafton\", \"36107\": \"Australia: Illawarra\", \"36106\": \"Australia: Hunter Valley Exc Newcastle\", \"554017\": \"New Zealand: Wanganui\", \"554016\": \"New Zealand: Marlborough\", \"554015\": \"New Zealand: Gisborne\", \"554014\": \"New Zealand: Tararua\", \"554013\": \"New Zealand: Invercargill\", \"GR\": \"Greece\", \"554011\": \"New Zealand: Whangarei\", \"554010\": \"New Zealand: Far North\", \"717\": \"U.S.: Quincy-Hannibal-Keokuk\", \"716\": \"U.S.: Baton Rouge\",...}]     ```
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **targeting_type** | **STRING_32**| Public targeting type. | [default to null]
- **client_id** | **STRING_32**| Client ID. | [optional] [default to null]
- **oauth_signature** | **STRING_32**| Oauth signature | [optional] [default to null]
- **timestamp** | **STRING_32**| Timestamp | [optional] [default to null]
+ **targeting_type** | [**PUBLIC_TARGETING_TYPE**](.md)| Public targeting type | [default to null]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
+ **client_id** | **STRING_32**| Client ID | [optional] [default to null]
+ **oauth_signature** | **STRING_32**| Oauth signature | [optional] [default to null]
+ **timestamp** | **STRING_32**| Timestamp. | [optional] [default to null]
 
 ### Return type
 

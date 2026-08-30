@@ -35,7 +35,7 @@ class ConversionEqsApi {
   ///
   /// * [IngestionSourceOptions] ingestionSource:
   ///   Ingestion source of event.
-  Future<Response> conversionEqsListWithHttpInfo(LookbackPeriodOptions lookbackPeriod, String adAccountId, { SourcePlatformOptions? sourcePlatform, IngestionSourceOptions? ingestionSource, }) async {
+  Future<Response> conversionEqsListWithHttpInfo(LookbackPeriodOptions lookbackPeriod, String adAccountId, { SourcePlatformOptions? sourcePlatform, IngestionSourceOptions? ingestionSource, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/conversion_eqs'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -66,6 +66,7 @@ class ConversionEqsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -86,8 +87,8 @@ class ConversionEqsApi {
   ///
   /// * [IngestionSourceOptions] ingestionSource:
   ///   Ingestion source of event.
-  Future<List<EventQualityScore>?> conversionEqsList(LookbackPeriodOptions lookbackPeriod, String adAccountId, { SourcePlatformOptions? sourcePlatform, IngestionSourceOptions? ingestionSource, }) async {
-    final response = await conversionEqsListWithHttpInfo(lookbackPeriod, adAccountId,  sourcePlatform: sourcePlatform, ingestionSource: ingestionSource, );
+  Future<List<EventQualityScore>?> conversionEqsList(LookbackPeriodOptions lookbackPeriod, String adAccountId, { SourcePlatformOptions? sourcePlatform, IngestionSourceOptions? ingestionSource, Future<void>? abortTrigger, }) async {
+    final response = await conversionEqsListWithHttpInfo(lookbackPeriod, adAccountId, sourcePlatform: sourcePlatform, ingestionSource: ingestionSource, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

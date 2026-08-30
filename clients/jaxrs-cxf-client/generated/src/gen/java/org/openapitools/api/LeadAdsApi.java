@@ -37,6 +37,7 @@ public interface LeadAdsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Delete lead ads subscription", tags={  })
     @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LeadSubscription.class),
         @ApiResponse(code = 204, message = "Resource deleted successfully."),
         @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
         @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
@@ -44,7 +45,7 @@ public interface LeadAdsApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public void adAccountsSubscriptionsDelById(@PathParam("ad_account_id") String adAccountId, @PathParam("subscription_id") String subscriptionId);
+    public LeadSubscription adAccountsSubscriptionsDelById(@PathParam("ad_account_id") String adAccountId, @PathParam("subscription_id") String subscriptionId);
 
     /**
      * Get lead ads subscription by ID

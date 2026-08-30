@@ -1,5 +1,5 @@
 package models
-
+// PermissionsWithOwner : Permission levels including the OWNER role.
 type PermissionsWithOwner string
 
 // List of PermissionsWithOwner

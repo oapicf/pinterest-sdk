@@ -12,11 +12,11 @@ part 'google_product_category0_filter.g.dart';
 /// GoogleProductCategory0Filter
 ///
 /// Properties:
-/// * [gOOGLEPRODUCTCATEGORY0] 
+/// * [GOOGLE_PRODUCT_CATEGORY_0] 
 @BuiltValue()
 abstract class GoogleProductCategory0Filter implements Built<GoogleProductCategory0Filter, GoogleProductCategory0FilterBuilder> {
   @BuiltValueField(wireName: r'GOOGLE_PRODUCT_CATEGORY_0')
-  CatalogsProductGroupMultipleStringListCriteria get gOOGLEPRODUCTCATEGORY0;
+  CatalogsProductGroupMultipleStringListCriteria get GOOGLE_PRODUCT_CATEGORY_0;
 
   GoogleProductCategory0Filter._();
 
@@ -43,7 +43,7 @@ class _$GoogleProductCategory0FilterSerializer implements PrimitiveSerializer<Go
   }) sync* {
     yield r'GOOGLE_PRODUCT_CATEGORY_0';
     yield serializers.serialize(
-      object.gOOGLEPRODUCTCATEGORY0,
+      object.GOOGLE_PRODUCT_CATEGORY_0,
       specifiedType: const FullType(CatalogsProductGroupMultipleStringListCriteria),
     );
   }
@@ -74,7 +74,7 @@ class _$GoogleProductCategory0FilterSerializer implements PrimitiveSerializer<Go
             value,
             specifiedType: const FullType(CatalogsProductGroupMultipleStringListCriteria),
           ) as CatalogsProductGroupMultipleStringListCriteria;
-          result.gOOGLEPRODUCTCATEGORY0 = valueDes;
+          result.GOOGLE_PRODUCT_CATEGORY_0.replace(valueDes);
           break;
         default:
           unhandled.add(key);

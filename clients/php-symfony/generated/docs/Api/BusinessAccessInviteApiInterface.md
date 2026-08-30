@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **cancelInvitesOrRequests**
-> OpenAPI\Server\Model\DeleteInvitesResultsResponseArray cancelInvitesOrRequests($businessId, $cancelInvitesBody)
+> OpenAPI\Server\Model\CancelInvitesResponse cancelInvitesOrRequests($businessId, $cancelInvitesRequest)
 
 Cancel invites/requests
 
@@ -118,7 +118,7 @@ class BusinessAccessInviteApi implements BusinessAccessInviteApiInterface
     /**
      * Implementation of BusinessAccessInviteApiInterface#cancelInvitesOrRequests
      */
-    public function cancelInvitesOrRequests(string $businessId, CancelInvitesBody $cancelInvitesBody, int &$responseCode, array &$responseHeaders): array|object|null
+    public function cancelInvitesOrRequests(string $businessId, CancelInvitesRequest $cancelInvitesRequest, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -132,11 +132,11 @@ class BusinessAccessInviteApi implements BusinessAccessInviteApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
- **cancelInvitesBody** | [**OpenAPI\Server\Model\CancelInvitesBody**](../Model/CancelInvitesBody.md)| A list with invite ids |
+ **cancelInvitesRequest** | [**OpenAPI\Server\Model\CancelInvitesRequest**](../Model/CancelInvitesRequest.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\DeleteInvitesResultsResponseArray**](../Model/DeleteInvitesResultsResponseArray.md)
+[**OpenAPI\Server\Model\CancelInvitesResponse**](../Model/CancelInvitesResponse.md)
 
 ### Authorization
 
@@ -195,7 +195,7 @@ class BusinessAccessInviteApi implements BusinessAccessInviteApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
- **createAssetInvitesRequest** | [**OpenAPI\Server\Model\CreateAssetInvitesRequest**](../Model/CreateAssetInvitesRequest.md)| A list of invites/requests together with the asset permissions to be assigned to the invite/request. |
+ **createAssetInvitesRequest** | [**OpenAPI\Server\Model\CreateAssetInvitesRequest**](../Model/CreateAssetInvitesRequest.md)|  |
 
 ### Return type
 
@@ -258,7 +258,7 @@ class BusinessAccessInviteApi implements BusinessAccessInviteApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
- **createMembershipOrPartnershipInvitesBody** | [**OpenAPI\Server\Model\CreateMembershipOrPartnershipInvitesBody**](../Model/CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role |
+ **createMembershipOrPartnershipInvitesBody** | [**OpenAPI\Server\Model\CreateMembershipOrPartnershipInvitesBody**](../Model/CreateMembershipOrPartnershipInvitesBody.md)|  |
 
 ### Return type
 
@@ -322,10 +322,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
  **isMember** | **bool**| A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional] [default to true]
- **inviteStatus** | [**string**](../Model/string.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional]
- **inviteType** | [**OpenAPI\Server\Model\InviteType**](../Model/.md)| Invite type to filter invites by. Only invites of the specified type will be returned. | [optional]
+ **inviteStatus** | [**OpenAPI\Server\Model\InviteFilterStatus**](../Model/OpenAPI\Server\Model\InviteFilterStatus.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional]
+ **inviteType** | [**InviteType**](../Model/.md)| Invite type to filter invites by. Only invites of the specified type will be returned. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

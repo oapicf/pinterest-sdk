@@ -2,8 +2,11 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -23,13 +26,18 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CatalogsReport(
 
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("report_status")
     @get:JsonProperty("report_status") val reportStatus: CatalogsReport.ReportStatus? = null,
 
-    @Schema(example = "null", description = "Size of the report in bytes")
+    @Schema(description = "Size of the report in bytes")
+    @param:JsonProperty("size")
     @get:JsonProperty("size") val propertySize: java.math.BigDecimal? = null,
 
-    @Schema(example = "null", description = "URL to download the report")
+    @Schema(description = "URL to download the report")
+    @param:JsonProperty("url")
     @get:JsonProperty("url") val url: kotlin.String? = null
 ) {
 
@@ -47,7 +55,7 @@ data class CatalogsReport(
             @JsonCreator
             fun forValue(value: kotlin.String): ReportStatus {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsReport'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ReportStatus'")
             }
         }
     }

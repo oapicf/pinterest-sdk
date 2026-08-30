@@ -11,29 +11,29 @@
 part of openapi.api;
 
 
-class PinterestLibPaginationOrder {
-  /// Instantiate a new enum with the provided [value].
-  const PinterestLibPaginationOrder._(this.value);
+enum PinterestLibPaginationOrder {
+  ASCENDING._(r'ASCENDING'),
+  DESCENDING._(r'DESCENDING'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const PinterestLibPaginationOrder._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const ASCENDING = PinterestLibPaginationOrder._(r'ASCENDING');
-  static const DESCENDING = PinterestLibPaginationOrder._(r'DESCENDING');
-
-  /// List of all possible values in this [enum][PinterestLibPaginationOrder].
-  static const values = <PinterestLibPaginationOrder>[
-    ASCENDING,
-    DESCENDING,
-  ];
-
+  /// Returns the instance of [PinterestLibPaginationOrder] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static PinterestLibPaginationOrder? fromJson(dynamic value) => PinterestLibPaginationOrderTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [PinterestLibPaginationOrder]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<PinterestLibPaginationOrder> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PinterestLibPaginationOrder>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class PinterestLibPaginationOrderTypeTransformer {
 
   const PinterestLibPaginationOrderTypeTransformer._();
 
-  String encode(PinterestLibPaginationOrder data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(PinterestLibPaginationOrder data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a PinterestLibPaginationOrder.
+  /// Returns the instance of [PinterestLibPaginationOrder] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class PinterestLibPaginationOrderTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   PinterestLibPaginationOrder? decode(dynamic data, {bool allowNull = true}) {
+    if (data is PinterestLibPaginationOrder) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'ASCENDING': return PinterestLibPaginationOrder.ASCENDING;
@@ -79,7 +84,7 @@ class PinterestLibPaginationOrderTypeTransformer {
     return null;
   }
 
-  /// Singleton [PinterestLibPaginationOrderTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static PinterestLibPaginationOrderTypeTransformer? _instance;
 }
 

@@ -20,7 +20,7 @@ typedef struct google_product_category6_filter_t google_product_category6_filter
 
 
 typedef struct google_product_category6_filter_t {
-    catalogs_product_group_multiple_string_list_criteria_t *google_product_category_6; //object
+    struct catalogs_product_group_multiple_string_list_criteria_t *google_product_category_6; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } google_product_category6_filter_t;

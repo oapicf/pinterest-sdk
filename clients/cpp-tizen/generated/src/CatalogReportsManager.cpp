@@ -99,6 +99,26 @@ static bool reportsCreateProcessor(MemoryStruct_s p_chunk, long code, char* erro
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -259,6 +279,21 @@ static bool reportsGetProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -447,6 +482,26 @@ static bool reportsStatsProcessor(MemoryStruct_s p_chunk, long code, char* error
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -467,7 +522,7 @@ static bool reportsStatsProcessor(MemoryStruct_s p_chunk, long code, char* error
 }
 
 static bool reportsStatsHelper(char * accessToken,
-	Reports_stats_parameters_parameter parameters, std::string adAccountId, int pageSize, std::string bookmark, 
+	CatalogsReportStatsParameters parameters, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Reports_stats_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -492,11 +547,8 @@ static bool reportsStatsHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
+	itemAtq = stringify(&parameters, "CatalogsReportStatsParameters");
+	queryParams.insert(pair<string, string>("parameters", itemAtq));
 
 
 	itemAtq = stringify(&bookmark, "std::string");
@@ -506,8 +558,11 @@ static bool reportsStatsHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&parameters, "Reports_stats_parameters_parameter");
-	queryParams.insert(pair<string, string>("parameters", itemAtq));
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
+	}
 
 	string mBody = "";
 	JsonNode* node;
@@ -563,22 +618,22 @@ static bool reportsStatsHelper(char * accessToken,
 
 
 bool CatalogReportsManager::reportsStatsAsync(char * accessToken,
-	Reports_stats_parameters_parameter parameters, std::string adAccountId, int pageSize, std::string bookmark, 
+	CatalogsReportStatsParameters parameters, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Reports_stats_200_response, Error, void* )
 	, void* userData)
 {
 	return reportsStatsHelper(accessToken,
-	parameters, adAccountId, pageSize, bookmark, 
+	parameters, adAccountId, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool CatalogReportsManager::reportsStatsSync(char * accessToken,
-	Reports_stats_parameters_parameter parameters, std::string adAccountId, int pageSize, std::string bookmark, 
+	CatalogsReportStatsParameters parameters, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Reports_stats_200_response, Error, void* )
 	, void* userData)
 {
 	return reportsStatsHelper(accessToken,
-	parameters, adAccountId, pageSize, bookmark, 
+	parameters, adAccountId, bookmark, pageSize, 
 	handler, userData, false);
 }
 

@@ -14,8 +14,6 @@
 #include "DisclosureType.h"
 #include "EntityStatus.h"
 #include "GridClickType.h"
-#include "QuizPinData.h"
-#include "TrackingUrls.h"
 #include <list>
 #include "Object.h"
 
@@ -144,6 +142,13 @@ public:
 	/*! \brief Set Deep link URL for iOS devices.
 	 */
 	void setIosDeepLink(std::string  ios_deep_link);
+	/*! \brief Get Is the ad a carting/WTB ad?
+	 */
+	bool getIsCarting();
+
+	/*! \brief Set Is the ad a carting/WTB ad?
+	 */
+	void setIsCarting(bool  is_carting);
 	/*! \brief Get Is original pin deleted?
 	 */
 	bool getIsPinDeleted();
@@ -172,13 +177,20 @@ public:
 	/*! \brief Set Name of the ad - 255 chars max.
 	 */
 	void setName(std::string  name);
+	/*! \brief Get Pin ID.
+	 */
+	std::string getPinId();
+
+	/*! \brief Set Pin ID.
+	 */
+	void setPinId(std::string  pin_id);
 	/*! \brief Get Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
 	 */
-	QuizPinData getQuizPinData();
+	std::string getQuizPinData();
 
 	/*! \brief Set Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
 	 */
-	void setQuizPinData(QuizPinData  quiz_pin_data);
+	void setQuizPinData(std::string  quiz_pin_data);
 	/*! \brief Get 
 	 */
 	EntityStatus getStatus();
@@ -188,11 +200,11 @@ public:
 	void setStatus(EntityStatus  status);
 	/*! \brief Get 
 	 */
-	TrackingUrls getTrackingUrls();
+	std::string getTrackingUrls();
 
 	/*! \brief Set 
 	 */
-	void setTrackingUrls(TrackingUrls  tracking_urls);
+	void setTrackingUrls(std::string  tracking_urls);
 	/*! \brief Get Tracking URL for ad impressions.
 	 */
 	std::string getViewTrackingUrl();
@@ -200,13 +212,6 @@ public:
 	/*! \brief Set Tracking URL for ad impressions.
 	 */
 	void setViewTrackingUrl(std::string  view_tracking_url);
-	/*! \brief Get Pin ID.
-	 */
-	std::string getPinId();
-
-	/*! \brief Set Pin ID.
-	 */
-	void setPinId(std::string  pin_id);
 
 private:
 	std::string ad_group_id;
@@ -222,15 +227,16 @@ private:
 	std::string disclosure_url;
 	GridClickType grid_click_type;
 	std::string ios_deep_link;
+	bool is_carting;
 	bool is_pin_deleted;
 	bool is_removable;
 	std::string lead_form_id;
 	std::string name;
-	QuizPinData quiz_pin_data;
-	EntityStatus status;
-	TrackingUrls tracking_urls;
-	std::string view_tracking_url;
 	std::string pin_id;
+	std::string quiz_pin_data;
+	EntityStatus status;
+	std::string tracking_urls;
+	std::string view_tracking_url;
 	void __init();
 	void __cleanup();
 

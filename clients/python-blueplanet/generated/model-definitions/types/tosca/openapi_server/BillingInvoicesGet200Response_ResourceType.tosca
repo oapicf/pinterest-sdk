@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  BillingInvoiceResponse = openapi_server.resourceTypes.BillingInvoiceResponse
+  BillingInvoice = openapi_server.resourceTypes.BillingInvoice
 }
 resourceTypes {
 
@@ -23,7 +23,7 @@ resourceTypes {
         }
         items {
           type = array
-          items.type = BillingInvoiceResponse
+          items.type = BillingInvoice
           description = ""
           optional = true
         }

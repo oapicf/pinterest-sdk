@@ -4,10 +4,10 @@
 
 // ignore_for_file: unused_element
 import 'package:openapi/src/model/currency.dart';
-import 'package:openapi/src/model/objective_type.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/country.dart';
 import 'package:openapi/src/model/optimization_goal_metadata.dart';
+import 'package:openapi/src/model/bid_floor_objective_type.dart';
 import 'package:openapi/src/model/creative_type.dart';
 import 'package:openapi/src/model/action_type.dart';
 import 'package:built_value/built_value.dart';
@@ -15,36 +15,42 @@ import 'package:built_value/serializer.dart';
 
 part 'bid_floor_spec.g.dart';
 
-/// BidFloorSpec
+/// Bid floor specification for a given campaign configuration.
 ///
 /// Properties:
-/// * [billableEvent] 
-/// * [countries] 
-/// * [creativeType] 
-/// * [currency] 
-/// * [objectiveType] 
-/// * [optimizationGoalMetadata] 
+/// * [billableEvent] - Ad group billable event type.
+/// * [countries] - List of ISO 3166-1 alpha-2 country codes.
+/// * [creativeType] - Creative type for the bid floor request.
+/// * [currency] - Currency for the bid floor value.
+/// * [objectiveType] - Campaign objective type.
+/// * [optimizationGoalMetadata] - Optimization goal metadata.
 @BuiltValue()
 abstract class BidFloorSpec implements Built<BidFloorSpec, BidFloorSpecBuilder> {
+  /// Ad group billable event type.
   @BuiltValueField(wireName: r'billable_event')
   ActionType get billableEvent;
   // enum billableEventEnum {  CLICKTHROUGH,  IMPRESSION,  VIDEO_V_50_MRC,  };
 
+  /// List of ISO 3166-1 alpha-2 country codes.
   @BuiltValueField(wireName: r'countries')
   BuiltList<Country>? get countries;
 
+  /// Creative type for the bid floor request.
   @BuiltValueField(wireName: r'creative_type')
   CreativeType? get creativeType;
-  // enum creativeTypeEnum {  REGULAR,  VIDEO,  SHOPPING,  CAROUSEL,  MAX_VIDEO,  SHOP_THE_PIN,  COLLECTION,  IDEA,  SHOWCASE,  QUIZ,  COLLAGE,  MAX_WIDTH_REGULAR_COLLECTION,  MAX_WIDTH_VIDEO_COLLECTION,  };
+  // enum creativeTypeEnum {  REGULAR,  VIDEO,  SHOPPING,  CAROUSEL,  MAX_VIDEO,  SHOP_THE_PIN,  COLLECTION,  IDEA,  SHOWCASE,  QUIZ,  COLLAGE,  MAX_WIDTH_REGULAR_COLLECTION,  MAX_WIDTH_VIDEO_COLLECTION,  APP,  };
 
+  /// Currency for the bid floor value.
   @BuiltValueField(wireName: r'currency')
   Currency get currency;
   // enum currencyEnum {  UNK,  USD,  GBP,  CAD,  EUR,  AUD,  NZD,  SEK,  ILS,  CHF,  HKD,  JPY,  SGD,  KRW,  NOK,  DKK,  PLN,  RON,  HUF,  CZK,  BRL,  MXN,  ARS,  CLP,  COP,  INR,  TRY,  };
 
+  /// Campaign objective type.
   @BuiltValueField(wireName: r'objective_type')
-  ObjectiveType? get objectiveType;
-  // enum objectiveTypeEnum {  AWARENESS,  CONSIDERATION,  WEB_CONVERSION,  CATALOG_SALES,  VIDEO_COMPLETION,  };
+  BidFloorObjectiveType? get objectiveType;
+  // enum objectiveTypeEnum {  AWARENESS,  CONSIDERATION,  WEB_CONVERSION,  CATALOG_SALES,  VIDEO_COMPLETION,  SALES,  };
 
+  /// Optimization goal metadata.
   @BuiltValueField(wireName: r'optimization_goal_metadata')
   OptimizationGoalMetadata? get optimizationGoalMetadata;
 
@@ -99,7 +105,7 @@ class _$BidFloorSpecSerializer implements PrimitiveSerializer<BidFloorSpec> {
       yield r'objective_type';
       yield serializers.serialize(
         object.objectiveType,
-        specifiedType: const FullType(ObjectiveType),
+        specifiedType: const FullType(BidFloorObjectiveType),
       );
     }
     if (object.optimizationGoalMetadata != null) {
@@ -142,15 +148,17 @@ class _$BidFloorSpecSerializer implements PrimitiveSerializer<BidFloorSpec> {
         case r'countries':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(Country)]),
-          ) as BuiltList<Country>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(Country)]),
+          ) as BuiltList<Country>?;
+          if (valueDes == null) continue;
           result.countries.replace(valueDes);
           break;
         case r'creative_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CreativeType),
-          ) as CreativeType;
+            specifiedType: const FullType.nullable(CreativeType),
+          ) as CreativeType?;
+          if (valueDes == null) continue;
           result.creativeType = valueDes;
           break;
         case r'currency':
@@ -163,15 +171,17 @@ class _$BidFloorSpecSerializer implements PrimitiveSerializer<BidFloorSpec> {
         case r'objective_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ObjectiveType),
-          ) as ObjectiveType;
+            specifiedType: const FullType.nullable(BidFloorObjectiveType),
+          ) as BidFloorObjectiveType?;
+          if (valueDes == null) continue;
           result.objectiveType = valueDes;
           break;
         case r'optimization_goal_metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OptimizationGoalMetadata),
-          ) as OptimizationGoalMetadata;
+            specifiedType: const FullType.nullable(OptimizationGoalMetadata),
+          ) as OptimizationGoalMetadata?;
+          if (valueDes == null) continue;
           result.optimizationGoalMetadata.replace(valueDes);
           break;
         default:

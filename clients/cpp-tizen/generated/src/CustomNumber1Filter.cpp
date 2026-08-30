@@ -48,7 +48,7 @@ CustomNumber1Filter::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupUint32Criteria")) {
-			jsonToValue(&cUSTOM_NUMBER_1, node, "CatalogsProductGroupUint32Criteria", "");
+			jsonToValue(&cUSTOM_NUMBER_1, node, "CatalogsProductGroupUint32Criteria", "CatalogsProductGroupUint32Criteria");
 		} else {
 			
 			CatalogsProductGroupUint32Criteria* obj = static_cast<CatalogsProductGroupUint32Criteria*> (&cUSTOM_NUMBER_1);

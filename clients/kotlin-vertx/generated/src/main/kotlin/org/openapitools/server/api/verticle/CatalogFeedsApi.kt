@@ -1,14 +1,14 @@
 package org.openapitools.server.api.verticle
 
 import org.openapitools.server.api.model.CatalogsFeed
+import org.openapitools.server.api.model.CatalogsFeedCreateRequestSchema
 import org.openapitools.server.api.model.CatalogsFeedIngestion
+import org.openapitools.server.api.model.CatalogsFeedUpdateRequestSchema
 import org.openapitools.server.api.model.CatalogsItemValidationIssue
-import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.FeedProcessingResultsList200Response
-import org.openapitools.server.api.model.FeedsCreateRequest
 import org.openapitools.server.api.model.FeedsList200Response
-import org.openapitools.server.api.model.FeedsUpdateRequest
 import org.openapitools.server.api.model.ItemsIssuesList200Response
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -27,13 +27,13 @@ interface CatalogFeedsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* feedProcessingResultsList
      * List feed processing results */
-    suspend fun feedProcessingResultsList(feedId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,adAccountId:kotlin.String?,context:OperationRequest):Response<FeedProcessingResultsList200Response>
+    suspend fun feedProcessingResultsList(feedId:kotlin.String?,adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<FeedProcessingResultsList200Response>
     /* feedsCreate
      * Create feed */
-    suspend fun feedsCreate(feedsCreateRequest:FeedsCreateRequest?,adAccountId:kotlin.String?,context:OperationRequest):Response<CatalogsFeed>
+    suspend fun feedsCreate(catalogsFeedCreateRequestSchema:CatalogsFeedCreateRequestSchema?,adAccountId:kotlin.String?,context:OperationRequest):Response<CatalogsFeed>
     /* feedsDelete
      * Delete feed */
-    suspend fun feedsDelete(feedId:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<Void>
+    suspend fun feedsDelete(feedId:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<CatalogsFeed>
     /* feedsGet
      * Get feed */
     suspend fun feedsGet(feedId:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<CatalogsFeed>
@@ -42,13 +42,13 @@ interface CatalogFeedsApi  {
     suspend fun feedsIngest(feedId:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<CatalogsFeedIngestion>
     /* feedsList
      * List feeds */
-    suspend fun feedsList(bookmark:kotlin.String?,pageSize:kotlin.Int?,catalogId:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<FeedsList200Response>
+    suspend fun feedsList(catalogId:kotlin.String?,adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<FeedsList200Response>
     /* feedsUpdate
      * Update feed */
-    suspend fun feedsUpdate(feedId:kotlin.String?,feedsUpdateRequest:FeedsUpdateRequest?,adAccountId:kotlin.String?,context:OperationRequest):Response<CatalogsFeed>
+    suspend fun feedsUpdate(feedId:kotlin.String?,catalogsFeedUpdateRequestSchema:CatalogsFeedUpdateRequestSchema?,adAccountId:kotlin.String?,context:OperationRequest):Response<CatalogsFeed>
     /* itemsIssuesList
      * List item issues */
-    suspend fun itemsIssuesList(processingResultId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,itemNumbers:kotlin.Array<kotlin.Int>?,itemValidationIssue:CatalogsItemValidationIssue?,adAccountId:kotlin.String?,context:OperationRequest):Response<ItemsIssuesList200Response>
+    suspend fun itemsIssuesList(processingResultId:kotlin.String?,itemNumbers:kotlin.Array<kotlin.Int>?,itemValidationIssue:CatalogsItemValidationIssue?,adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<ItemsIssuesList200Response>
     companion object {
         const val address = "CatalogFeedsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

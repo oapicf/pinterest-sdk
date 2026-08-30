@@ -2,7 +2,7 @@
 Protected Class CustomLabel0Filter
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_0 As CatalogsProductGroupFilterOperatorTypeCriteria
+		CUSTOM_LABEL_0 As OpenAPIClient.Models.CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 

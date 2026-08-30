@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **description** | **char \*** |  | [optional] 
 **filters** | [**catalogs_product_group_filters_request_t**](catalogs_product_group_filters_request.md) \* |  | [optional] 
 **locale** | **catalogs_locale_t \*** |  | [optional] 
-**name** | **char \*** |  | [optional] 
+**name** | **char \*** | Name of catalog product group | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "PriceFilterPrice",
+  "fields": [
+    {
+      "name": "currency",
+      "type": "model.NonNullableCatalogsCurrency",
+      "doc": ""
+    },
+    {
+      "name": "negated",
+      "type": ["null", "boolean"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "operator",
+      "type": "model.NumericFilterOperatorType",
+      "doc": ""
+    },
+    {
+      "name": "value",
+      "type": "double",
+      "doc": ""
+    }
+  ]
+
+}

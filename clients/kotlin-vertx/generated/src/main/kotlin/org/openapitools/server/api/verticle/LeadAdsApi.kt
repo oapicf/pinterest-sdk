@@ -22,7 +22,7 @@ interface LeadAdsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* adAccountsSubscriptionsDelById
      * Delete lead ads subscription */
-    suspend fun adAccountsSubscriptionsDelById(adAccountId:kotlin.String?,subscriptionId:kotlin.String?,context:OperationRequest):Response<Void>
+    suspend fun adAccountsSubscriptionsDelById(adAccountId:kotlin.String?,subscriptionId:kotlin.String?,context:OperationRequest):Response<LeadSubscription>
     /* adAccountsSubscriptionsGetById
      * Get lead ads subscription by ID */
     suspend fun adAccountsSubscriptionsGetById(adAccountId:kotlin.String?,subscriptionId:kotlin.String?,context:OperationRequest):Response<LeadSubscription>

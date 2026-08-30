@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.model.NumericFilterOperatorType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -14,43 +15,13 @@ public class CatalogsProductGroupUint32Criteria  {
   
   @ApiModelProperty(value = "")
 
-  private Boolean negated = false;
-
-public enum OperatorEnum {
-
-GREATER_THAN(String.valueOf("GREATER_THAN")), GREATER_THAN_OR_EQUALS(String.valueOf("GREATER_THAN_OR_EQUALS")), LESS_THAN(String.valueOf("LESS_THAN")), LESS_THAN_OR_EQUALS(String.valueOf("LESS_THAN_OR_EQUALS"));
-
-
-    private String value;
-
-    OperatorEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OperatorEnum fromValue(String value) {
-        for (OperatorEnum b : OperatorEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
+  private Boolean negated;
 
   @ApiModelProperty(required = true, value = "")
 
-  private OperatorEnum operator;
+  @Valid
+
+  private NumericFilterOperatorType operator;
 
   @ApiModelProperty(required = true, value = "")
 
@@ -79,18 +50,15 @@ GREATER_THAN(String.valueOf("GREATER_THAN")), GREATER_THAN_OR_EQUALS(String.valu
   **/
   @JsonProperty("operator")
   @NotNull
-  public String getOperator() {
-    if (operator == null) {
-      return null;
-    }
-    return operator.value();
+  public NumericFilterOperatorType getOperator() {
+    return operator;
   }
 
-  public void setOperator(OperatorEnum operator) {
+  public void setOperator(NumericFilterOperatorType operator) {
     this.operator = operator;
   }
 
-  public CatalogsProductGroupUint32Criteria operator(OperatorEnum operator) {
+  public CatalogsProductGroupUint32Criteria operator(NumericFilterOperatorType operator) {
     this.operator = operator;
     return this;
   }
@@ -152,10 +120,7 @@ GREATER_THAN(String.valueOf("GREATER_THAN")), GREATER_THAN_OR_EQUALS(String.valu
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

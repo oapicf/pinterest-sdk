@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](.md) |  | [default to undefined]
+**GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](CatalogsProductGroupMultipleGenderCriteria.md) |  | [default to undefined]
 
 ## Example
 

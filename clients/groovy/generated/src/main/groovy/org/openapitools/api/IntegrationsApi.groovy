@@ -1,15 +1,15 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.Error
-import org.openapitools.model.IntegrationLogsRequest
+import org.openapitools.model.IntegrationLogsInvalidLogResponse
+import org.openapitools.model.IntegrationLogsRequestCreate
 import org.openapitools.model.IntegrationLogsSuccessResponse
 import org.openapitools.model.IntegrationMetadata
+import org.openapitools.model.IntegrationMetadataCreate
+import org.openapitools.model.IntegrationMetadataUpdate
 import org.openapitools.model.IntegrationRecord
-import org.openapitools.model.IntegrationRequest
-import org.openapitools.model.IntegrationRequestPatch
 import org.openapitools.model.IntegrationsGetList200Response
-import org.openapitools.model.IntegrationsLogsPost400Response
+import org.openapitools.model.PinterestLibError
 
 class IntegrationsApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -23,6 +23,7 @@ class IntegrationsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -34,9 +35,11 @@ class IntegrationsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
-                    null )
+                    IntegrationMetadata.class )
 
     }
 
@@ -47,6 +50,7 @@ class IntegrationsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -58,19 +62,22 @@ class IntegrationsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     IntegrationMetadata.class )
 
     }
 
-    def integrationsCommercePatch ( String externalBusinessId, IntegrationRequestPatch integrationRequestPatch, Closure onSuccess, Closure onFailure)  {
+    def integrationsCommercePatch ( String externalBusinessId, IntegrationMetadataUpdate integrationMetadataUpdate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/integrations/commerce/${external_business_id}"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -78,43 +85,48 @@ class IntegrationsApi {
             throw new RuntimeException("missing required params externalBusinessId")
         }
         // verify required params are set
-        if (integrationRequestPatch == null) {
-            throw new RuntimeException("missing required params integrationRequestPatch")
+        if (integrationMetadataUpdate == null) {
+            throw new RuntimeException("missing required params integrationMetadataUpdate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = integrationRequestPatch
+        bodyParams = integrationMetadataUpdate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
                     IntegrationMetadata.class )
 
     }
 
-    def integrationsCommercePost ( IntegrationRequest integrationRequest, Closure onSuccess, Closure onFailure)  {
+    def integrationsCommercePost ( IntegrationMetadataCreate integrationMetadataCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/integrations/commerce"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
-        if (integrationRequest == null) {
-            throw new RuntimeException("missing required params integrationRequest")
+        if (integrationMetadataCreate == null) {
+            throw new RuntimeException("missing required params integrationMetadataCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = integrationRequest
+        bodyParams = integrationMetadataCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     IntegrationMetadata.class )
 
@@ -127,6 +139,7 @@ class IntegrationsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -138,7 +151,9 @@ class IntegrationsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     IntegrationRecord.class )
 
@@ -151,6 +166,7 @@ class IntegrationsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
 
@@ -164,33 +180,38 @@ class IntegrationsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     IntegrationsGetList200Response.class )
 
     }
 
-    def integrationsLogsPost ( IntegrationLogsRequest integrationLogsRequest, Closure onSuccess, Closure onFailure)  {
+    def integrationsLogsPost ( IntegrationLogsRequestCreate integrationLogsRequestCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/integrations/logs"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
-        if (integrationLogsRequest == null) {
-            throw new RuntimeException("missing required params integrationLogsRequest")
+        if (integrationLogsRequestCreate == null) {
+            throw new RuntimeException("missing required params integrationLogsRequestCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = integrationLogsRequest
+        bodyParams = integrationLogsRequestCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     IntegrationLogsSuccessResponse.class )
 

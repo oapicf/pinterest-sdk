@@ -13,17 +13,21 @@ module PinMediaMetadata =
 
   //#region PinMediaMetadata
 
+  //#region enums
+  type ItemTypeEnum = VideoEnum of string  
+  //#endregion
 
   type PinMediaMetadata = {
     Description : string option;
     Images : ImageSize;
-    ItemType : string;
+    ItemType : ItemTypeEnum;
     Link : string option;
     Title : string option;
     CoverImageUrl : string;
     Duration : decimal option;
     Height : int option;
     VideoUrl : string option;
+    VideoUrlHls : string option;
     Width : int option;
   }
   //#endregion

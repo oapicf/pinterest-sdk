@@ -13,7 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsItemValidationDetails  {
   
-  @ApiModelProperty(required = true, value = "")
+ /**
+  * Attribute that has a validation issue.
+  */
+  @ApiModelProperty(required = true, value = "Attribute that has a validation issue.")
 
   @Valid
 
@@ -26,7 +29,7 @@ public class CatalogsItemValidationDetails  {
 
   private String providedValue;
  /**
-   * Get attributeName
+   * Attribute that has a validation issue.
    * @return attributeName
   **/
   @JsonProperty("attribute_name")
@@ -97,10 +100,7 @@ public class CatalogsItemValidationDetails  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

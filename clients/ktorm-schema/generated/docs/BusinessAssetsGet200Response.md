@@ -5,18 +5,18 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;GetBusinessAssetsResponse&gt;**](GetBusinessAssetsResponse.md) | List of assets the requesting business has access to. | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;BusinessAssets&gt;**](BusinessAssets.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 
-# **Table `BusinessAssetsGet200ResponseGetBusinessAssetsResponse`**
-(mapped from: BusinessAssetsGet200ResponseGetBusinessAssetsResponse)
+# **Table `BusinessAssetsGet200ResponseBusinessAssets`**
+(mapped from: BusinessAssetsGet200ResponseBusinessAssets)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 businessAssetsGet200Response | businessAssetsGet200Response | long | | kotlin.Long | Primary Key | *one*
-getBusinessAssetsResponse | getBusinessAssetsResponse | long | | kotlin.Long | Foreign Key | *many*
+businessAssets | businessAssets | long | | kotlin.Long | Foreign Key | *many*
 
 
 

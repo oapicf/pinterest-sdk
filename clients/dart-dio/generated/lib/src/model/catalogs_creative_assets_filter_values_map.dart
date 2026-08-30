@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/media_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -64,8 +65,7 @@ abstract class CatalogsCreativeAssetsFilterValuesMap implements Built<CatalogsCr
   BuiltList<String>? get googleProductCategory6;
 
   @BuiltValueField(wireName: r'media_type')
-  BuiltList<CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum>? get mediaType;
-  // enum mediaTypeEnum {  IMAGE,  VIDEO,  };
+  BuiltList<MediaType>? get mediaType;
 
   CatalogsCreativeAssetsFilterValuesMap._();
 
@@ -178,7 +178,7 @@ class _$CatalogsCreativeAssetsFilterValuesMapSerializer implements PrimitiveSeri
       yield r'media_type';
       yield serializers.serialize(
         object.mediaType,
-        specifiedType: const FullType(BuiltList, [FullType(CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum)]),
+        specifiedType: const FullType(BuiltList, [FullType(MediaType)]),
       );
     }
   }
@@ -207,92 +207,105 @@ class _$CatalogsCreativeAssetsFilterValuesMapSerializer implements PrimitiveSeri
         case r'custom_label_0':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.customLabel0.replace(valueDes);
           break;
         case r'custom_label_1':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.customLabel1.replace(valueDes);
           break;
         case r'custom_label_2':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.customLabel2.replace(valueDes);
           break;
         case r'custom_label_3':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.customLabel3.replace(valueDes);
           break;
         case r'custom_label_4':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.customLabel4.replace(valueDes);
           break;
         case r'google_product_category_0':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.googleProductCategory0.replace(valueDes);
           break;
         case r'google_product_category_1':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.googleProductCategory1.replace(valueDes);
           break;
         case r'google_product_category_2':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.googleProductCategory2.replace(valueDes);
           break;
         case r'google_product_category_3':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.googleProductCategory3.replace(valueDes);
           break;
         case r'google_product_category_4':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.googleProductCategory4.replace(valueDes);
           break;
         case r'google_product_category_5':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.googleProductCategory5.replace(valueDes);
           break;
         case r'google_product_category_6':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.googleProductCategory6.replace(valueDes);
           break;
         case r'media_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum)]),
-          ) as BuiltList<CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(MediaType)]),
+          ) as BuiltList<MediaType>?;
+          if (valueDes == null) continue;
           result.mediaType.replace(valueDes);
           break;
         default:
@@ -322,20 +335,5 @@ class _$CatalogsCreativeAssetsFilterValuesMapSerializer implements PrimitiveSeri
     );
     return result.build();
   }
-}
-
-class CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'IMAGE')
-  static const CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum IMAGE = _$catalogsCreativeAssetsFilterValuesMapMediaTypeEnum_IMAGE;
-  @BuiltValueEnumConst(wireName: r'VIDEO')
-  static const CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum VIDEO = _$catalogsCreativeAssetsFilterValuesMapMediaTypeEnum_VIDEO;
-
-  static Serializer<CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum> get serializer => _$catalogsCreativeAssetsFilterValuesMapMediaTypeEnumSerializer;
-
-  const CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum._(String name): super(name);
-
-  static BuiltSet<CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum> get values => _$catalogsCreativeAssetsFilterValuesMapMediaTypeEnumValues;
-  static CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum valueOf(String name) => _$catalogsCreativeAssetsFilterValuesMapMediaTypeEnumValueOf(name);
 }
 

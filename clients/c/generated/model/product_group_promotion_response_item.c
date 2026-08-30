@@ -13,10 +13,10 @@ static product_group_promotion_response_item_t *product_group_promotion_response
     if (!product_group_promotion_response_item_local_var) {
         return NULL;
     }
+    memset(product_group_promotion_response_item_local_var, 0, sizeof(product_group_promotion_response_item_t));
+    product_group_promotion_response_item_local_var->_library_owned = 1;
     product_group_promotion_response_item_local_var->data = data;
     product_group_promotion_response_item_local_var->exceptions = exceptions;
-
-    product_group_promotion_response_item_local_var->_library_owned = 1;
     return product_group_promotion_response_item_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) product_group_promotion_response_item_t *product_gro
     product_group_promotion_t *data,
     list_t *exceptions
     ) {
-    return product_group_promotion_response_item_create_internal (
+    product_group_promotion_response_item_t *result = product_group_promotion_response_item_create_internal (
         data,
         exceptions
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void product_group_promotion_response_item_free(product_group_promotion_response_item_t *product_group_promotion_response_item) {
@@ -140,10 +143,15 @@ product_group_promotion_response_item_t *product_group_promotion_response_item_p
     }
 
 
+
     product_group_promotion_response_item_local_var = product_group_promotion_response_item_create_internal (
         data ? data_local_nonprim : NULL,
         exceptions ? exceptionsList : NULL
         );
+
+    if (!product_group_promotion_response_item_local_var) {
+        goto end;
+    }
 
     return product_group_promotion_response_item_local_var;
 end:

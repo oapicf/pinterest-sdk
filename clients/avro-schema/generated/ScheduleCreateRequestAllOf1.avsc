@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ScheduleCreateRequestAllOf1",
+  "fields": [
+    {
+      "name": "entity_id",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "entity_type",
+      "type": "string",
+      "doc": "Entity type"
+    }
+  ]
+
+}

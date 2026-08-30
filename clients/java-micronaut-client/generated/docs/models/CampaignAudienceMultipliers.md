@@ -10,7 +10,7 @@ The class is defined in **[CampaignAudienceMultipliers.java](../../src/main/java
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AUDIENCE_ID** | `String` |  |  [optional property]
+**AUDIENCE_ID** | `String` | Audience ID for the multiplier. |  [optional property]
 
 
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,6 @@ var _ MappedNullable = &CatalogsProductGroupPinsList200Response{}
 // CatalogsProductGroupPinsList200Response struct for CatalogsProductGroupPinsList200Response
 type CatalogsProductGroupPinsList200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	// Pins
 	Items []CatalogsProduct `json:"items"`
 }
 

@@ -1,0 +1,250 @@
+#' Create a new BusinessMembershipMember
+#'
+#' @description
+#' A business member identified by `member_id` with their `business_role` in the business.
+#'
+#' @docType class
+#' @title BusinessMembershipMember
+#' @description BusinessMembershipMember Class
+#' @format An \code{R6Class} generator object
+#' @field business_role  \link{BusinessRoleForMembers}
+#' @field member_id Unique identifier of the member. character
+#' @importFrom R6 R6Class
+#' @importFrom jsonlite fromJSON toJSON
+#' @export
+BusinessMembershipMember <- R6::R6Class(
+  "BusinessMembershipMember",
+  public = list(
+    `business_role` = NULL,
+    `member_id` = NULL,
+
+    #' @description
+    #' Initialize a new BusinessMembershipMember class.
+    #'
+    #' @param business_role business_role
+    #' @param member_id Unique identifier of the member.
+    #' @param ... Other optional arguments.
+    initialize = function(`business_role`, `member_id`, ...) {
+      if (!missing(`business_role`)) {
+        if (!(`business_role` %in% c())) {
+          stop(paste("Error! \"", `business_role`, "\" cannot be assigned to `business_role`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`business_role`))
+        self$`business_role` <- `business_role`
+      }
+      if (!missing(`member_id`)) {
+        if (!(is.character(`member_id`) && length(`member_id`) == 1)) {
+          stop(paste("Error! Invalid data for `member_id`. Must be a string:", `member_id`))
+        }
+        self$`member_id` <- `member_id`
+      }
+    },
+
+    #' @description
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
+    toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return BusinessMembershipMember as a base R list.
+    #' @examples
+    #' # convert array of BusinessMembershipMember (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert BusinessMembershipMember to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
+      BusinessMembershipMemberObject <- list()
+      if (!is.null(self$`business_role`)) {
+        BusinessMembershipMemberObject[["business_role"]] <-
+          self$extractSimpleType(self$`business_role`)
+      }
+      if (!is.null(self$`member_id`)) {
+        BusinessMembershipMemberObject[["member_id"]] <-
+          self$`member_id`
+      }
+      return(BusinessMembershipMemberObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of BusinessMembershipMember
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of BusinessMembershipMember
+    fromJSON = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`business_role`)) {
+        `business_role_object` <- BusinessRoleForMembers$new()
+        `business_role_object`$fromJSON(jsonlite::toJSON(this_object$`business_role`, auto_unbox = TRUE, digits = NA))
+        self$`business_role` <- `business_role_object`
+      }
+      if (!is.null(this_object$`member_id`)) {
+        self$`member_id` <- this_object$`member_id`
+      }
+      self
+    },
+
+    #' @description
+    #' To JSON String
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
+    #' @return BusinessMembershipMember in JSON format
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of BusinessMembershipMember
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of BusinessMembershipMember
+    fromJSONString = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      self$`business_role` <- BusinessRoleForMembers$new()$fromJSON(jsonlite::toJSON(this_object$`business_role`, auto_unbox = TRUE, digits = NA))
+      self$`member_id` <- this_object$`member_id`
+      self
+    },
+
+    #' @description
+    #' Validate JSON input with respect to BusinessMembershipMember and throw an exception if invalid
+    #'
+    #' @param input the JSON input
+    validateJSON = function(input) {
+      input_json <- jsonlite::fromJSON(input)
+      # check the required field `business_role`
+      if (!is.null(input_json$`business_role`)) {
+        stopifnot(R6::is.R6(input_json$`business_role`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for BusinessMembershipMember: the required field `business_role` is missing."))
+      }
+      # check the required field `member_id`
+      if (!is.null(input_json$`member_id`)) {
+        if (!(is.character(input_json$`member_id`) && length(input_json$`member_id`) == 1)) {
+          stop(paste("Error! Invalid data for `member_id`. Must be a string:", input_json$`member_id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for BusinessMembershipMember: the required field `member_id` is missing."))
+      }
+    },
+
+    #' @description
+    #' To string (JSON format)
+    #'
+    #' @return String representation of BusinessMembershipMember
+    toString = function() {
+      self$toJSONString()
+    },
+
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    isValid = function() {
+      # check if the required `business_role` is null
+      if (is.null(self$`business_role`)) {
+        return(FALSE)
+      }
+
+      # check if the required `member_id` is null
+      if (is.null(self$`member_id`)) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`member_id`) > 25) {
+        return(FALSE)
+      }
+      if (!str_detect(self$`member_id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
+      TRUE
+    },
+
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `business_role` is null
+      if (is.null(self$`business_role`)) {
+        invalid_fields["business_role"] <- "Non-nullable required field `business_role` cannot be null."
+      }
+
+      # check if the required `member_id` is null
+      if (is.null(self$`member_id`)) {
+        invalid_fields["member_id"] <- "Non-nullable required field `member_id` cannot be null."
+      }
+
+      if (nchar(self$`member_id`) > 25) {
+        invalid_fields["member_id"] <- "Invalid length for `member_id`, must be smaller than or equal to 25."
+      }
+      if (!str_detect(self$`member_id`, "^\\d+$")) {
+        invalid_fields["member_id"] <- "Invalid value for `member_id`, must conform to the pattern ^\\d+$."
+      }
+
+      invalid_fields
+    },
+
+    #' @description
+    #' Print the object
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
+)
+## Uncomment below to unlock the class to allow modifications of the method or field
+# BusinessMembershipMember$unlock()
+#
+## Below is an example to define the print function
+# BusinessMembershipMember$set("public", "print", function(...) {
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
+# })
+## Uncomment below to lock the class to prevent modifications to the method or field
+# BusinessMembershipMember$lock()
+

@@ -16,13 +16,13 @@ static catalogs_hotel_address_t *catalogs_hotel_address_create_internal(
     if (!catalogs_hotel_address_local_var) {
         return NULL;
     }
+    memset(catalogs_hotel_address_local_var, 0, sizeof(catalogs_hotel_address_t));
+    catalogs_hotel_address_local_var->_library_owned = 1;
     catalogs_hotel_address_local_var->addr1 = addr1;
     catalogs_hotel_address_local_var->city = city;
     catalogs_hotel_address_local_var->country = country;
     catalogs_hotel_address_local_var->postal_code = postal_code;
     catalogs_hotel_address_local_var->region = region;
-
-    catalogs_hotel_address_local_var->_library_owned = 1;
     return catalogs_hotel_address_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) catalogs_hotel_address_t *catalogs_hotel_address_cre
     char *postal_code,
     char *region
     ) {
-    return catalogs_hotel_address_create_internal (
+    catalogs_hotel_address_t *result = catalogs_hotel_address_create_internal (
         addr1,
         city,
         country,
         postal_code,
         region
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_hotel_address_free(catalogs_hotel_address_t *catalogs_hotel_address) {
@@ -128,6 +131,16 @@ catalogs_hotel_address_t *catalogs_hotel_address_parseFromJSON(cJSON *catalogs_h
 
     catalogs_hotel_address_t *catalogs_hotel_address_local_var = NULL;
 
+    char *addr1_local_str = NULL;
+
+    char *city_local_str = NULL;
+
+    char *country_local_str = NULL;
+
+    char *postal_code_local_str = NULL;
+
+    char *region_local_str = NULL;
+
     // catalogs_hotel_address->addr1
     cJSON *addr1 = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_addressJSON, "addr1");
     if (cJSON_IsNull(addr1)) {
@@ -189,16 +202,46 @@ catalogs_hotel_address_t *catalogs_hotel_address_parseFromJSON(cJSON *catalogs_h
     }
 
 
+    if (addr1 && !cJSON_IsNull(addr1)) addr1_local_str = strdup(addr1->valuestring);
+    if (city && !cJSON_IsNull(city)) city_local_str = strdup(city->valuestring);
+    if (country && !cJSON_IsNull(country)) country_local_str = strdup(country->valuestring);
+    if (postal_code && !cJSON_IsNull(postal_code)) postal_code_local_str = strdup(postal_code->valuestring);
+    if (region && !cJSON_IsNull(region)) region_local_str = strdup(region->valuestring);
+
     catalogs_hotel_address_local_var = catalogs_hotel_address_create_internal (
-        addr1 && !cJSON_IsNull(addr1) ? strdup(addr1->valuestring) : NULL,
-        city && !cJSON_IsNull(city) ? strdup(city->valuestring) : NULL,
-        country && !cJSON_IsNull(country) ? strdup(country->valuestring) : NULL,
-        postal_code && !cJSON_IsNull(postal_code) ? strdup(postal_code->valuestring) : NULL,
-        region && !cJSON_IsNull(region) ? strdup(region->valuestring) : NULL
+        addr1_local_str,
+        city_local_str,
+        country_local_str,
+        postal_code_local_str,
+        region_local_str
         );
+
+    if (!catalogs_hotel_address_local_var) {
+        goto end;
+    }
 
     return catalogs_hotel_address_local_var;
 end:
+    if (addr1_local_str) {
+        free(addr1_local_str);
+        addr1_local_str = NULL;
+    }
+    if (city_local_str) {
+        free(city_local_str);
+        city_local_str = NULL;
+    }
+    if (country_local_str) {
+        free(country_local_str);
+        country_local_str = NULL;
+    }
+    if (postal_code_local_str) {
+        free(postal_code_local_str);
+        postal_code_local_str = NULL;
+    }
+    if (region_local_str) {
+        free(region_local_str);
+        region_local_str = NULL;
+    }
     return NULL;
 
 }

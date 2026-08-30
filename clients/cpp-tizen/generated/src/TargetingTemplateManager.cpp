@@ -51,14 +51,14 @@ static gpointer __TargetingTemplateManagerthreadFunc(gpointer data)
 static bool targetingTemplateCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(TargetingTemplateGetResponseData, Error, void* )
-	= reinterpret_cast<void(*)(TargetingTemplateGetResponseData, Error, void* )> (voidHandler);
+	void(* handler)(TargetingTemplate, Error, void* )
+	= reinterpret_cast<void(*)(TargetingTemplate, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	TargetingTemplateGetResponseData out;
+	TargetingTemplate out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,43 @@ static bool targetingTemplateCreateProcessor(MemoryStruct_s p_chunk, long code, 
 
 
 
-		if (isprimitive("TargetingTemplateGetResponseData")) {
+		if (isprimitive("TargetingTemplate")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "TargetingTemplateGetResponseData", "TargetingTemplateGetResponseData");
+			jsonToValue(&out, pJson, "TargetingTemplate", "TargetingTemplate");
 			json_node_free(pJson);
 
-			if ("TargetingTemplateGetResponseData" == "std::string") {
+			if ("TargetingTemplate" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -115,7 +140,7 @@ static bool targetingTemplateCreateProcessor(MemoryStruct_s p_chunk, long code, 
 
 static bool targetingTemplateCreateHelper(char * accessToken,
 	std::string adAccountId, std::shared_ptr<TargetingTemplateCreate> targetingTemplateCreate, 
-	void(* handler)(TargetingTemplateGetResponseData, Error, void* )
+	void(* handler)(TargetingTemplate, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -205,7 +230,7 @@ static bool targetingTemplateCreateHelper(char * accessToken,
 
 bool TargetingTemplateManager::targetingTemplateCreateAsync(char * accessToken,
 	std::string adAccountId, std::shared_ptr<TargetingTemplateCreate> targetingTemplateCreate, 
-	void(* handler)(TargetingTemplateGetResponseData, Error, void* )
+	void(* handler)(TargetingTemplate, Error, void* )
 	, void* userData)
 {
 	return targetingTemplateCreateHelper(accessToken,
@@ -215,7 +240,7 @@ bool TargetingTemplateManager::targetingTemplateCreateAsync(char * accessToken,
 
 bool TargetingTemplateManager::targetingTemplateCreateSync(char * accessToken,
 	std::string adAccountId, std::shared_ptr<TargetingTemplateCreate> targetingTemplateCreate, 
-	void(* handler)(TargetingTemplateGetResponseData, Error, void* )
+	void(* handler)(TargetingTemplate, Error, void* )
 	, void* userData)
 {
 	return targetingTemplateCreateHelper(accessToken,
@@ -269,6 +294,26 @@ static bool targetingTemplateListProcessor(MemoryStruct_s p_chunk, long code, ch
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -289,7 +334,7 @@ static bool targetingTemplateListProcessor(MemoryStruct_s p_chunk, long code, ch
 }
 
 static bool targetingTemplateListHelper(char * accessToken,
-	std::string adAccountId, std::string order, bool includeSizing, std::string searchQuery, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, bool includeSizing, std::string searchQuery, 
 	void(* handler)(Targeting_template_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -307,7 +352,21 @@ static bool targetingTemplateListHelper(char * accessToken,
 	string itemAtq;
 	
 
-	itemAtq = stringify(&order, "std::string");
+	itemAtq = stringify(&bookmark, "std::string");
+	queryParams.insert(pair<string, string>("bookmark", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
+	}
+
+
+	itemAtq = stringify(&order, "Pinterest.Lib.PaginationOrder");
 	queryParams.insert(pair<string, string>("order", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("order");
@@ -325,20 +384,6 @@ static bool targetingTemplateListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("search_query", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("search_query");
-	}
-
-
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&bookmark, "std::string");
-	queryParams.insert(pair<string, string>("bookmark", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("bookmark");
 	}
 
 	string mBody = "";
@@ -401,22 +446,22 @@ static bool targetingTemplateListHelper(char * accessToken,
 
 
 bool TargetingTemplateManager::targetingTemplateListAsync(char * accessToken,
-	std::string adAccountId, std::string order, bool includeSizing, std::string searchQuery, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, bool includeSizing, std::string searchQuery, 
 	void(* handler)(Targeting_template_list_200_response, Error, void* )
 	, void* userData)
 {
 	return targetingTemplateListHelper(accessToken,
-	adAccountId, order, includeSizing, searchQuery, pageSize, bookmark, 
+	adAccountId, bookmark, pageSize, order, includeSizing, searchQuery, 
 	handler, userData, true);
 }
 
 bool TargetingTemplateManager::targetingTemplateListSync(char * accessToken,
-	std::string adAccountId, std::string order, bool includeSizing, std::string searchQuery, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, bool includeSizing, std::string searchQuery, 
 	void(* handler)(Targeting_template_list_200_response, Error, void* )
 	, void* userData)
 {
 	return targetingTemplateListHelper(accessToken,
-	adAccountId, order, includeSizing, searchQuery, pageSize, bookmark, 
+	adAccountId, bookmark, pageSize, order, includeSizing, searchQuery, 
 	handler, userData, false);
 }
 
@@ -454,7 +499,7 @@ static bool targetingTemplateUpdateProcessor(MemoryStruct_s p_chunk, long code, 
 }
 
 static bool targetingTemplateUpdateHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<TargetingTemplateUpdateRequest> targetingTemplateUpdateRequest, 
+	std::string adAccountId, std::shared_ptr<TargetingTemplateUpdateRequestReadOrUpdate> targetingTemplateUpdateRequestReadOrUpdate, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -475,11 +520,11 @@ static bool targetingTemplateUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("TargetingTemplateUpdateRequest")) {
-		node = converttoJson(&targetingTemplateUpdateRequest, "TargetingTemplateUpdateRequest", "");
+	if (isprimitive("TargetingTemplateUpdateRequestReadOrUpdate")) {
+		node = converttoJson(&targetingTemplateUpdateRequestReadOrUpdate, "TargetingTemplateUpdateRequestReadOrUpdate", "");
 	}
 	
-	char *jsonStr =  targetingTemplateUpdateRequest.toJson();
+	char *jsonStr =  targetingTemplateUpdateRequestReadOrUpdate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -544,22 +589,22 @@ static bool targetingTemplateUpdateHelper(char * accessToken,
 
 
 bool TargetingTemplateManager::targetingTemplateUpdateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<TargetingTemplateUpdateRequest> targetingTemplateUpdateRequest, 
+	std::string adAccountId, std::shared_ptr<TargetingTemplateUpdateRequestReadOrUpdate> targetingTemplateUpdateRequestReadOrUpdate, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return targetingTemplateUpdateHelper(accessToken,
-	adAccountId, targetingTemplateUpdateRequest, 
+	adAccountId, targetingTemplateUpdateRequestReadOrUpdate, 
 	handler, userData, true);
 }
 
 bool TargetingTemplateManager::targetingTemplateUpdateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<TargetingTemplateUpdateRequest> targetingTemplateUpdateRequest, 
+	std::string adAccountId, std::shared_ptr<TargetingTemplateUpdateRequestReadOrUpdate> targetingTemplateUpdateRequestReadOrUpdate, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return targetingTemplateUpdateHelper(accessToken,
-	adAccountId, targetingTemplateUpdateRequest, 
+	adAccountId, targetingTemplateUpdateRequestReadOrUpdate, 
 	handler, userData, false);
 }
 

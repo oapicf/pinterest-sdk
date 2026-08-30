@@ -29,9 +29,6 @@ Permissions <- R6::R6Class(
           stop("Use one of the valid values: ",
             paste0(enumvec, collapse = ", "))
         }
-        warning("Initializing Permissions with DUMMY_ENUM. Use one of the valid values: ",
-          paste0(enumvec, collapse = ", "),
-          ". If you did not manually initialize Permissions, this may already be overwritten by an enum loaded from a JSON config.")
       }
       private$value <- val
     },
@@ -92,7 +89,7 @@ Permissions <- R6::R6Class(
 
 # add to utils.R
 .parse_Permissions <- function(vals) {
-  res <- gsub("^\\[|\\]$", "", "[ADMIN, ANALYST, FINANCE_MANAGER, FINANCE_EDIT, FINANCE_VIEW, AUDIENCE_MANAGER, CAMPAIGN_MANAGER, CATALOGS_MANAGER, CATALOGS_VIEWER, PROFILE_PUBLISHER, CONSUMER_USER]")
+  res <- gsub("^\\[|\\]$", "", "[ADMIN, ANALYST, FINANCE_MANAGER, FINANCE_EDIT, FINANCE_VIEW, AUDIENCE_MANAGER, CAMPAIGN_MANAGER, CATALOGS_MANAGER, CATALOGS_VIEWER, PROFILE_PUBLISHER, CONSUMER_USER, BIZ_PINNER_LIST_SHARER]")
   unlist(strsplit(res, ", "))
 }
 

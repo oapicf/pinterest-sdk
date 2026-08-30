@@ -28,7 +28,7 @@ pinterest_rest_api_catalogs_delete_retail_item_OPERATION_e catalogs_delete_retai
 
 typedef struct catalogs_delete_retail_item_t {
     char *item_id; // string
-    long last_updated_time; //numeric
+    long *last_updated_time; //numeric
     pinterest_rest_api_catalogs_delete_retail_item_OPERATION_e operation; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -36,7 +36,7 @@ typedef struct catalogs_delete_retail_item_t {
 
 __attribute__((deprecated)) catalogs_delete_retail_item_t *catalogs_delete_retail_item_create(
     char *item_id,
-    long last_updated_time,
+    long *last_updated_time,
     pinterest_rest_api_catalogs_delete_retail_item_OPERATION_e operation
 );
 

@@ -4,7 +4,6 @@ package org.openapitools.client.model
 
 case class SsioOrderLinesGetByAdAccount200Response (
     _bookmark: Option[String],
-    /* SSIO order lines by ad acount id */
     _items: List[SSIOOrderLine]
 )
 object SsioOrderLinesGetByAdAccount200Response {

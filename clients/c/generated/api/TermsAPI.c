@@ -11,7 +11,7 @@
 
 // List related terms
 //
-// Get a list of terms logically related to each input term. <p/> Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
+// Get a list of terms logically related to each input term.  Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
 //
 related_terms_t*
 TermsAPI_termsRelatedList(apiClient_t *apiClient, list_t *terms)
@@ -53,15 +53,31 @@ TermsAPI_termsRelatedList(apiClient_t *apiClient, list_t *terms)
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid terms related parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     related_terms_t *elementToReturn = NULL;
@@ -95,7 +111,7 @@ end:
 
 // List suggested terms
 //
-// Get popular search terms that begin with your input term. <p/> Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
+// Get popular search terms that begin with your input term.  Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
 //
 list_t*
 TermsAPI_termsSuggestedList(apiClient_t *apiClient, char *term, int *limit)
@@ -156,15 +172,31 @@ TermsAPI_termsSuggestedList(apiClient_t *apiClient, char *term, int *limit)
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid terms suggested parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //primitive return type not simple
     list_t *elementToReturn = NULL;

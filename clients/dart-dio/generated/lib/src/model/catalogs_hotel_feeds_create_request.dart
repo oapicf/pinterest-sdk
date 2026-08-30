@@ -6,10 +6,10 @@
 import 'package:openapi/src/model/catalogs_feed_credentials.dart';
 import 'package:openapi/src/model/catalogs_feed_processing_schedule.dart';
 import 'package:openapi/src/model/nullable_currency.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/catalogs_status.dart';
 import 'package:openapi/src/model/catalogs_format.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
-import 'package:openapi/src/model/catalogs_feeds_create_request_default_locale.dart';
+import 'package:openapi/src/model/catalogs_creative_assets_feeds_create_request_default_locale.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -18,7 +18,7 @@ part 'catalogs_hotel_feeds_create_request.g.dart';
 /// Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
 ///
 /// Properties:
-/// * [catalogId] - Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+/// * [catalogId] - Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
 /// * [catalogType] 
 /// * [credentials] 
 /// * [defaultCurrency] 
@@ -30,13 +30,13 @@ part 'catalogs_hotel_feeds_create_request.g.dart';
 /// * [status] 
 @BuiltValue()
 abstract class CatalogsHotelFeedsCreateRequest implements Built<CatalogsHotelFeedsCreateRequest, CatalogsHotelFeedsCreateRequestBuilder> {
-  /// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+  /// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
   @BuiltValueField(wireName: r'catalog_id')
   String? get catalogId;
 
   @BuiltValueField(wireName: r'catalog_type')
-  CatalogsType get catalogType;
-  // enum catalogTypeEnum {  RETAIL,  HOTEL,  CREATIVE_ASSETS,  };
+  CatalogsHotelFeedsCreateRequestCatalogTypeEnum get catalogType;
+  // enum catalogTypeEnum {  HOTEL,  };
 
   @BuiltValueField(wireName: r'credentials')
   CatalogsFeedCredentials? get credentials;
@@ -46,11 +46,11 @@ abstract class CatalogsHotelFeedsCreateRequest implements Built<CatalogsHotelFee
   // enum defaultCurrencyEnum {  AED,  AFN,  ALL,  AMD,  ANG,  AOA,  ARS,  AUD,  AWG,  AZN,  BAM,  BBD,  BDT,  BGN,  BHD,  BIF,  BMD,  BND,  BOB,  BRL,  BSD,  BTN,  BWP,  BYN,  BYR,  BZD,  CAD,  CDF,  CHF,  CLP,  CNY,  COP,  CRC,  CUC,  CUP,  CVE,  CZK,  DJF,  DKK,  DOP,  DZD,  EGP,  ERN,  ETB,  EUR,  FJD,  FKP,  GBP,  GEL,  GGP,  GHS,  GIP,  GMD,  GNF,  GTQ,  GYD,  HKD,  HNL,  HRK,  HTG,  HUF,  IDR,  ILS,  IMP,  INR,  IQD,  IRR,  ISK,  JEP,  JMD,  JOD,  JPY,  KES,  KGS,  KHR,  KMF,  KPW,  KRW,  KWD,  KYD,  KZT,  LAK,  LBP,  LKR,  LRD,  LSL,  LYD,  MAD,  MDL,  MGA,  MKD,  MMK,  MNT,  MOP,  MRO,  MUR,  MVR,  MWK,  MXN,  MYR,  MZN,  NAD,  NGN,  NIO,  NOK,  NPR,  NZD,  OMR,  PAB,  PEN,  PGK,  PHP,  PKR,  PLN,  PYG,  QAR,  RON,  RSD,  RUB,  RWF,  SAR,  SBD,  SCR,  SDG,  SEK,  SGD,  SHP,  SLL,  SOS,  SPL,  SRD,  STD,  SVC,  SYP,  SZL,  THB,  TJS,  TMT,  TND,  TOP,  TRY,  TTD,  TVD,  TWD,  TZS,  UAH,  UGX,  USD,  UYU,  UZS,  VEF,  VND,  VUV,  WST,  XAF,  XCD,  XDR,  XOF,  XPF,  YER,  ZAR,  ZMW,  ZWD,  ,  };
 
   @BuiltValueField(wireName: r'default_locale')
-  CatalogsFeedsCreateRequestDefaultLocale get defaultLocale;
+  CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale get defaultLocale;
 
   @BuiltValueField(wireName: r'format')
   CatalogsFormat get format;
-  // enum formatEnum {  TSV,  CSV,  XML,  };
+  // enum formatEnum {  TSV,  CSV,  XML,  INTEGRATION,  };
 
   /// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
   @BuiltValueField(wireName: r'location')
@@ -73,7 +73,7 @@ abstract class CatalogsHotelFeedsCreateRequest implements Built<CatalogsHotelFee
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CatalogsHotelFeedsCreateRequestBuilder b) => b
-      ..status = 'ACTIVE';
+      ..status = CatalogsStatus.ACTIVE;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<CatalogsHotelFeedsCreateRequest> get serializer => _$CatalogsHotelFeedsCreateRequestSerializer();
@@ -101,7 +101,7 @@ class _$CatalogsHotelFeedsCreateRequestSerializer implements PrimitiveSerializer
     yield r'catalog_type';
     yield serializers.serialize(
       object.catalogType,
-      specifiedType: const FullType(CatalogsType),
+      specifiedType: const FullType(CatalogsHotelFeedsCreateRequestCatalogTypeEnum),
     );
     if (object.credentials != null) {
       yield r'credentials';
@@ -120,7 +120,7 @@ class _$CatalogsHotelFeedsCreateRequestSerializer implements PrimitiveSerializer
     yield r'default_locale';
     yield serializers.serialize(
       object.defaultLocale,
-      specifiedType: const FullType(CatalogsFeedsCreateRequestDefaultLocale),
+      specifiedType: const FullType(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale),
     );
     yield r'format';
     yield serializers.serialize(
@@ -177,15 +177,16 @@ class _$CatalogsHotelFeedsCreateRequestSerializer implements PrimitiveSerializer
         case r'catalog_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.catalogId = valueDes;
           break;
         case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsType),
-          ) as CatalogsType;
+            specifiedType: const FullType(CatalogsHotelFeedsCreateRequestCatalogTypeEnum),
+          ) as CatalogsHotelFeedsCreateRequestCatalogTypeEnum;
           result.catalogType = valueDes;
           break;
         case r'credentials':
@@ -207,8 +208,8 @@ class _$CatalogsHotelFeedsCreateRequestSerializer implements PrimitiveSerializer
         case r'default_locale':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsFeedsCreateRequestDefaultLocale),
-          ) as CatalogsFeedsCreateRequestDefaultLocale;
+            specifiedType: const FullType(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale),
+          ) as CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
           result.defaultLocale.replace(valueDes);
           break;
         case r'format':
@@ -243,8 +244,9 @@ class _$CatalogsHotelFeedsCreateRequestSerializer implements PrimitiveSerializer
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsStatus),
-          ) as CatalogsStatus;
+            specifiedType: const FullType.nullable(CatalogsStatus),
+          ) as CatalogsStatus?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         default:
@@ -274,5 +276,18 @@ class _$CatalogsHotelFeedsCreateRequestSerializer implements PrimitiveSerializer
     );
     return result.build();
   }
+}
+
+class CatalogsHotelFeedsCreateRequestCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'HOTEL')
+  static const CatalogsHotelFeedsCreateRequestCatalogTypeEnum HOTEL = _$catalogsHotelFeedsCreateRequestCatalogTypeEnum_HOTEL;
+
+  static Serializer<CatalogsHotelFeedsCreateRequestCatalogTypeEnum> get serializer => _$catalogsHotelFeedsCreateRequestCatalogTypeEnumSerializer;
+
+  const CatalogsHotelFeedsCreateRequestCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsHotelFeedsCreateRequestCatalogTypeEnum> get values => _$catalogsHotelFeedsCreateRequestCatalogTypeEnumValues;
+  static CatalogsHotelFeedsCreateRequestCatalogTypeEnum valueOf(String name) => _$catalogsHotelFeedsCreateRequestCatalogTypeEnumValueOf(name);
 }
 

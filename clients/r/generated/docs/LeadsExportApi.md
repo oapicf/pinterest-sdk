@@ -9,11 +9,11 @@ Method | HTTP request | Description
 
 
 # **LeadsExportCreate**
-> LeadsExportCreateResponse LeadsExportCreate(ad_account_id, leads_export_create_request)
+> LeadsExports LeadsExportCreate(ad_account_id, leads_exports_create)
 
 Create a request to export leads collected from a lead ad
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a `leads_export_id` token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```R
@@ -23,14 +23,14 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_leads_export_create_request <- LeadsExportCreateRequest$new("ad_id_example", "end_date_example", "start_date_example") # LeadsExportCreateRequest | 
+var_leads_exports_create <- LeadsExportsCreate$new("ad_id_example", "end_date_example", "start_date_example") # LeadsExportsCreate | 
 
 api_instance <- LeadsExportApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$LeadsExportCreate(var_ad_account_id, var_leads_export_create_requestdata_file = "result.txt")
-result <- api_instance$LeadsExportCreate(var_ad_account_id, var_leads_export_create_request)
+# result <- api_instance$LeadsExportCreate(var_ad_account_id, var_leads_exports_createdata_file = "result.txt")
+result <- api_instance$LeadsExportCreate(var_ad_account_id, var_leads_exports_create)
 dput(result)
 ```
 
@@ -39,11 +39,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **leads_export_create_request** | [**LeadsExportCreateRequest**](LeadsExportCreateRequest.md)|  | 
+ **leads_exports_create** | [**LeadsExportsCreate**](LeadsExportsCreate.md)|  | 
 
 ### Return type
 
-[**LeadsExportCreateResponse**](LeadsExportCreateResponse.md)
+[**LeadsExports**](LeadsExports.md)
 
 ### Authorization
 
@@ -57,16 +57,21 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **LeadsExportGet**
 > LeadsExportResponseData LeadsExportGet(ad_account_id, leads_export_id)
 
 Get the lead export from the lead export create call
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```R
@@ -76,7 +81,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_leads_export_id <- "123755885175" # character | lead_export_id token returned from the create a lead export endpoint
+var_leads_export_id <- "leads_export_id_example" # character | lead_export_id token returned from the create a lead export endpoint
 
 api_instance <- LeadsExportApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -110,8 +115,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account parameter. |  -  |
-| **404** | Invalid leads export id parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

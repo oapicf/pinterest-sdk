@@ -49,7 +49,7 @@ The class is defined in **[TargetingAdvertiserCountry.java](../../src/main/java/
 
 * `SG` (value: `"SG"`)
 
-* `NO` (value: `"NO"`)
+* `FALSE` (value: `"false"`)
 
 * `DK` (value: `"DK"`)
 

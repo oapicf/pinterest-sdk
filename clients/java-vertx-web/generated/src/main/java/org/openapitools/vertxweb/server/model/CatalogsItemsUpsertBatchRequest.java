@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.BatchOperation;
 import org.openapitools.vertxweb.server.model.Country;
 import org.openapitools.vertxweb.server.model.ItemUpsertBatchRecord;
 
@@ -111,7 +110,7 @@ public class CatalogsItemsUpsertBatchRequest   {
     NB("NB"),
     NE("NE"),
     NL2("NL"),
-    NO("NO"),
+    FALSE("false"),
     PL("PL"),
     PT("PT"),
     RO("RO"),
@@ -144,13 +143,31 @@ public class CatalogsItemsUpsertBatchRequest   {
   }
 
   private LanguageEnum language;
-  private BatchOperation operation;
+
+
+  public enum OperationEnum {
+    UPSERT("UPSERT");
+
+    private String value;
+
+    OperationEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private OperationEnum operation;
 
   public CatalogsItemsUpsertBatchRequest () {
 
   }
 
-  public CatalogsItemsUpsertBatchRequest (Country country, List<ItemUpsertBatchRecord> items, LanguageEnum language, BatchOperation operation) {
+  public CatalogsItemsUpsertBatchRequest (Country country, List<ItemUpsertBatchRecord> items, LanguageEnum language, OperationEnum operation) {
     this.country = country;
     this.items = items;
     this.language = language;
@@ -186,10 +203,10 @@ public class CatalogsItemsUpsertBatchRequest   {
 
     
   @JsonProperty("operation")
-  public BatchOperation getOperation() {
+  public OperationEnum getOperation() {
     return operation;
   }
-  public void setOperation(BatchOperation operation) {
+  public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
 
@@ -232,9 +249,6 @@ public class CatalogsItemsUpsertBatchRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

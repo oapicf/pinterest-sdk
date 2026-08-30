@@ -1,0 +1,12 @@
+# OAIBidOptionsPlacementMultipliers
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**browse** | **NSNumber*** |  | [optional] 
+**relatedPins** | **NSNumber*** |  | [optional] 
+**search** | **NSNumber*** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

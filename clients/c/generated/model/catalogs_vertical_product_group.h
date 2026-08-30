@@ -36,17 +36,17 @@ typedef struct catalogs_vertical_product_group_t {
     char *catalog_id; // string
     pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_e catalog_type; //enum
     char *country; // string
-    int created_at; //numeric
+    int *created_at; //numeric
     char *description; // string
     char *feed_id; // string
     struct catalogs_creative_assets_product_group_filters_t *filters; //model
     char *id; // string
-    int is_featured; //boolean
+    int *is_featured; //boolean
     char *locale; // string
     char *name; // string
     pinterest_rest_api_catalogs_product_group_status__e status; //referenced enum
     pinterest_rest_api_catalogs_hotel_product_group_type__e type; //referenced enum
-    int updated_at; //numeric
+    int *updated_at; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_vertical_product_group_t;
@@ -55,17 +55,17 @@ __attribute__((deprecated)) catalogs_vertical_product_group_t *catalogs_vertical
     char *catalog_id,
     pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_e catalog_type,
     char *country,
-    int created_at,
+    int *created_at,
     char *description,
     char *feed_id,
     catalogs_creative_assets_product_group_filters_t *filters,
     char *id,
-    int is_featured,
+    int *is_featured,
     char *locale,
     char *name,
     pinterest_rest_api_catalogs_product_group_status__e status,
     pinterest_rest_api_catalogs_hotel_product_group_type__e type,
-    int updated_at
+    int *updated_at
 );
 
 void catalogs_vertical_product_group_free(catalogs_vertical_product_group_t *catalogs_vertical_product_group);

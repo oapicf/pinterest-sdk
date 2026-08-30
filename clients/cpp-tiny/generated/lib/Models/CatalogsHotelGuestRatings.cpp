@@ -127,7 +127,7 @@ CatalogsHotelGuestRatings::getMaxScore()
 }
 
 void
-CatalogsHotelGuestRatings::setMaxScore(long  max_score)
+CatalogsHotelGuestRatings::setMaxScore(long max_score)
 {
 	this->max_score = max_score;
 }
@@ -139,7 +139,7 @@ CatalogsHotelGuestRatings::getNumberOfReviewers()
 }
 
 void
-CatalogsHotelGuestRatings::setNumberOfReviewers(int  number_of_reviewers)
+CatalogsHotelGuestRatings::setNumberOfReviewers(int number_of_reviewers)
 {
 	this->number_of_reviewers = number_of_reviewers;
 }
@@ -151,7 +151,7 @@ CatalogsHotelGuestRatings::getRatingSystem()
 }
 
 void
-CatalogsHotelGuestRatings::setRatingSystem(std::string  rating_system)
+CatalogsHotelGuestRatings::setRatingSystem(std::string rating_system)
 {
 	this->rating_system = rating_system;
 }
@@ -163,7 +163,7 @@ CatalogsHotelGuestRatings::getScore()
 }
 
 void
-CatalogsHotelGuestRatings::setScore(long  score)
+CatalogsHotelGuestRatings::setScore(long score)
 {
 	this->score = score;
 }

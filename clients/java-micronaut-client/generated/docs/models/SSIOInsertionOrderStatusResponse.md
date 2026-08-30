@@ -2,6 +2,8 @@
 
 # SSIOInsertionOrderStatusResponse
 
+SSIO insertion order status response for a single pin order id lookup.
+
 The class is defined in **[SSIOInsertionOrderStatusResponse.java](../../src/main/java/org/openapitools/model/SSIOInsertionOrderStatusResponse.java)**
 
 ## Properties

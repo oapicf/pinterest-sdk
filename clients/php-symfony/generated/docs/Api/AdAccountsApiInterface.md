@@ -32,11 +32,11 @@ services:
 ```
 
 ## **adAccountAnalytics**
-> OpenAPI\Server\Model\AdAccountAnalyticsResponseInner adAccountAnalytics($adAccountId, $startDate, $endDate, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime, $reportingTimezone)
+> OpenAPI\Server\Model\AdAccountAnalyticsItems adAccountAnalytics($startDate, $endDate, $columns, $granularity, $adAccountId, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime, $reportingTimezone)
 
 Get ad account analytics
 
-Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
+Get analytics for the specified `ad_account_id`, filtered by the specified options.    - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.    - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.    - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
 
 ### Example Implementation
 ```php
@@ -71,7 +71,7 @@ class AdAccountsApi implements AdAccountsApiInterface
     /**
      * Implementation of AdAccountsApiInterface#adAccountAnalytics
      */
-    public function adAccountAnalytics(string $adAccountId, \DateTime $startDate, \DateTime $endDate, array $columns, Granularity $granularity, int $clickWindowDays, int $engagementWindowDays, int $viewWindowDays, string $conversionReportTime, ?ReportingTimeZone $reportingTimezone, int &$responseCode, array &$responseHeaders): array|object|null
+    public function adAccountAnalytics(\DateTime $startDate, \DateTime $endDate, array $columns, Granularity $granularity, string $adAccountId, float $clickWindowDays, float $engagementWindowDays, float $viewWindowDays, string $conversionReportTime, ?ReportingTimeZone $reportingTimezone, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -84,20 +84,20 @@ class AdAccountsApi implements AdAccountsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **string**| Unique identifier of an ad account. |
  **startDate** | **\DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
  **endDate** | **\DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
- **columns** | [**string**](../Model/string.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned |
- **granularity** | [**OpenAPI\Server\Model\Granularity**](../Model/.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly |
- **clickWindowDays** | **int**| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
- **engagementWindowDays** | **int**| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to 30]
- **viewWindowDays** | **int**| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to 1]
+ **columns** | [**OpenAPI\Server\Model\ReportingColumnSync**](../Model/OpenAPI\Server\Model\ReportingColumnSync.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. |
+ **granularity** | [**Granularity**](../Model/.md)| TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly |
+ **adAccountId** | **string**| Unique identifier of an ad account. |
+ **clickWindowDays** | **float**| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
+ **engagementWindowDays** | **float**| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional] [default to 30]
+ **viewWindowDays** | **float**| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to 1]
  **conversionReportTime** | **string**| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to &#39;TIME_OF_AD_ACTION&#39;]
- **reportingTimezone** | [**OpenAPI\Server\Model\ReportingTimeZone**](../Model/.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional]
+ **reportingTimezone** | [**ReportingTimeZone**](../Model/.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional]
 
 ### Return type
 
-[**OpenAPI\Server\Model\AdAccountAnalyticsResponseInner**](../Model/AdAccountAnalyticsResponseInner.md)
+[**OpenAPI\Server\Model\AdAccountAnalyticsItems**](../Model/AdAccountAnalyticsItems.md)
 
 ### Authorization
 
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 Get targeting analytics for an ad account
 
-Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/>  * The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example Implementation
 ```php
@@ -150,7 +150,7 @@ class AdAccountsApi implements AdAccountsApiInterface
     /**
      * Implementation of AdAccountsApiInterface#adAccountTargetingAnalyticsGet
      */
-    public function adAccountTargetingAnalyticsGet(string $adAccountId, \DateTime $startDate, \DateTime $endDate, array $targetingTypes, array $columns, Granularity $granularity, int $clickWindowDays, int $engagementWindowDays, int $viewWindowDays, string $conversionReportTime, ?array $attributionTypes, ?ReportingTimeZone $reportingTimezone, int &$responseCode, array &$responseHeaders): array|object|null
+    public function adAccountTargetingAnalyticsGet(string $adAccountId, \DateTime $startDate, \DateTime $endDate, array $targetingTypes, array $columns, Granularity $granularity, float $clickWindowDays, float $engagementWindowDays, float $viewWindowDays, string $conversionReportTime, ?array $attributionTypes, ?ReportingTimeZone $reportingTimezone, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -166,15 +166,15 @@ Name | Type | Description  | Notes
  **adAccountId** | **string**| Unique identifier of an ad account. |
  **startDate** | **\DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
  **endDate** | **\DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
- **targetingTypes** | [**OpenAPI\Server\Model\AdsAnalyticsTargetingType**](../Model/OpenAPI\Server\Model\AdsAnalyticsTargetingType.md)| Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. |
- **columns** | [**string**](../Model/string.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned |
- **granularity** | [**OpenAPI\Server\Model\Granularity**](../Model/.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly |
- **clickWindowDays** | **int**| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
- **engagementWindowDays** | **int**| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to 30]
- **viewWindowDays** | **int**| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to 1]
+ **targetingTypes** | [**OpenAPI\Server\Model\AdsAnalyticsAccountTargetingType**](../Model/OpenAPI\Server\Model\AdsAnalyticsAccountTargetingType.md)| Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. |
+ **columns** | [**OpenAPI\Server\Model\ReportingColumnSync**](../Model/OpenAPI\Server\Model\ReportingColumnSync.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. |
+ **granularity** | [**Granularity**](../Model/.md)| TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly |
+ **clickWindowDays** | **float**| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
+ **engagementWindowDays** | **float**| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional] [default to 30]
+ **viewWindowDays** | **float**| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to 1]
  **conversionReportTime** | **string**| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to &#39;TIME_OF_AD_ACTION&#39;]
  **attributionTypes** | [**OpenAPI\Server\Model\ConversionReportAttributionType**](../Model/OpenAPI\Server\Model\ConversionReportAttributionType.md)| List of types of attribution for the conversion report | [optional]
- **reportingTimezone** | [**OpenAPI\Server\Model\ReportingTimeZone**](../Model/.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional]
+ **reportingTimezone** | [**ReportingTimeZone**](../Model/.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional]
 
 ### Return type
 
@@ -396,11 +396,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **analyticsCreateConversionProductReport**
-> OpenAPI\Server\Model\AdsAnalyticsCreateAsyncResponse analyticsCreateConversionProductReport($adAccountId, $conversionProductReportRequest)
+> OpenAPI\Server\Model\ConversionProductReport analyticsCreateConversionProductReport($adAccountId, $conversionProductReportCreate)
 
 Create a request for a brand, category, SKU report
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
+[Restricted](/docs/getting-started/using-beta-and-restricted-features/)   This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
 
 ### Example Implementation
 ```php
@@ -427,7 +427,7 @@ class AdAccountsApi implements AdAccountsApiInterface
     /**
      * Implementation of AdAccountsApiInterface#analyticsCreateConversionProductReport
      */
-    public function analyticsCreateConversionProductReport(string $adAccountId, ConversionProductReportRequest $conversionProductReportRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function analyticsCreateConversionProductReport(string $adAccountId, ConversionProductReportCreate $conversionProductReportCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -441,11 +441,11 @@ class AdAccountsApi implements AdAccountsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **conversionProductReportRequest** | [**OpenAPI\Server\Model\ConversionProductReportRequest**](../Model/ConversionProductReportRequest.md)|  |
+ **conversionProductReportCreate** | [**OpenAPI\Server\Model\ConversionProductReportCreate**](../Model/ConversionProductReportCreate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\AdsAnalyticsCreateAsyncResponse**](../Model/AdsAnalyticsCreateAsyncResponse.md)
+[**OpenAPI\Server\Model\ConversionProductReport**](../Model/ConversionProductReport.md)
 
 ### Authorization
 
@@ -459,11 +459,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **analyticsCreateMmmReport**
-> OpenAPI\Server\Model\CreateMMMReportResponse analyticsCreateMmmReport($adAccountId, $createMMMReportRequest)
+> OpenAPI\Server\Model\MMMReport analyticsCreateMmmReport($adAccountId, $mMMReportCreate)
 
 Create a request for a Marketing Mix Modeling (MMM) report
 
-This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it's in beta release.
+This creates an asynchronous mmm report based on the given request.     It returns a token that you can use to download the report when it is     ready. NOTE: An additional limit of 5 queries per minute per advertiser     applies to this endpoint while it's in beta release.     For the ADVERTISER_PAID_SPEND_IN_DOLLAR,     ADVERTISER_PAID_ECPC_IN_DOLLAR, and ADVERTISER_PAID_ECPM_IN_DOLLAR     columns: if you receive bonus media, this value still includes that spend, and it will     need to be removed manually with support from your Pinterest account team for a     fully netted value. Over time, we'll also subtract bonus media and other incentives as     data becomes available. Production and other non-media fees are excluded.
 
 ### Example Implementation
 ```php
@@ -490,7 +490,7 @@ class AdAccountsApi implements AdAccountsApiInterface
     /**
      * Implementation of AdAccountsApiInterface#analyticsCreateMmmReport
      */
-    public function analyticsCreateMmmReport(string $adAccountId, CreateMMMReportRequest $createMMMReportRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function analyticsCreateMmmReport(string $adAccountId, MMMReportCreate $mMMReportCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -503,12 +503,12 @@ class AdAccountsApi implements AdAccountsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **string**| Unique identifier of an ad account. |
- **createMMMReportRequest** | [**OpenAPI\Server\Model\CreateMMMReportRequest**](../Model/CreateMMMReportRequest.md)|  |
+ **adAccountId** | **string**|  |
+ **mMMReportCreate** | [**OpenAPI\Server\Model\MMMReportCreate**](../Model/MMMReportCreate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\CreateMMMReportResponse**](../Model/CreateMMMReportResponse.md)
+[**OpenAPI\Server\Model\MMMReport**](../Model/MMMReport.md)
 
 ### Authorization
 
@@ -526,7 +526,7 @@ Name | Type | Description  | Notes
 
 Create async request for an account analytics report
 
-This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
+This returns a token that you can use to download the report when it is ready.   Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters.   - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days.   - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.   - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days.   - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
 
 ### Example Implementation
 ```php
@@ -633,7 +633,7 @@ Name | Type | Description  | Notes
  **templateId** | **string**| Unique identifier of a template. |
  **startDate** | **\DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today. | [optional]
  **endDate** | **\DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date. | [optional]
- **granularity** | [**OpenAPI\Server\Model\Granularity**](../Model/.md)| TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly | [optional]
+ **granularity** | [**Granularity**](../Model/.md)| TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | [optional]
 
 ### Return type
 
@@ -651,11 +651,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **analyticsGetConversionProductReport**
-> OpenAPI\Server\Model\AdsAnalyticsGetAsyncResponse analyticsGetConversionProductReport($adAccountId, $token)
+> OpenAPI\Server\Model\ConversionProductReport analyticsGetConversionProductReport($adAccountId, $token)
 
 Get advertiser brand, category, SKU report
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
+[Restricted](/docs/getting-started/using-beta-and-restricted-features/)   Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
 
 ### Example Implementation
 ```php
@@ -700,7 +700,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OpenAPI\Server\Model\AdsAnalyticsGetAsyncResponse**](../Model/AdsAnalyticsGetAsyncResponse.md)
+[**OpenAPI\Server\Model\ConversionProductReport**](../Model/ConversionProductReport.md)
 
 ### Authorization
 
@@ -714,11 +714,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **analyticsGetMmmReport**
-> OpenAPI\Server\Model\GetMMMReportResponse analyticsGetMmmReport($adAccountId, $token)
+> OpenAPI\Server\Model\MMMReport analyticsGetMmmReport($adAccountId, $token)
 
 Get advertiser Marketing Mix Modeling (MMM) report.
 
-Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the create mmm report endpoint.
+Get an mmm report for an ad account. This returns a URL to an     mmm metrics report given a token returned from the create mmm report endpoint.
 
 ### Example Implementation
 ```php
@@ -758,12 +758,12 @@ class AdAccountsApi implements AdAccountsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **string**| Unique identifier of an ad account. |
+ **adAccountId** | **string**|  |
  **token** | **string**| Token returned from the post request creation call |
 
 ### Return type
 
-[**OpenAPI\Server\Model\GetMMMReportResponse**](../Model/GetMMMReportResponse.md)
+[**OpenAPI\Server\Model\MMMReport**](../Model/MMMReport.md)
 
 ### Authorization
 
@@ -781,7 +781,7 @@ Name | Type | Description  | Notes
 
 Get the account analytics report created by the async call
 
-This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+This returns a URL to an analytics report given a token returned from the post request report creation call.   You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour.   - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
 
 ### Example Implementation
 ```php
@@ -902,7 +902,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **templatesList**
-> OpenAPI\Server\Model\TemplatesList200Response templatesList($adAccountId, $pageSize, $order, $bookmark)
+> OpenAPI\Server\Model\TemplatesList200Response templatesList($adAccountId, $bookmark, $pageSize, $order)
 
 List templates
 
@@ -933,7 +933,7 @@ class AdAccountsApi implements AdAccountsApiInterface
     /**
      * Implementation of AdAccountsApiInterface#templatesList
      */
-    public function templatesList(string $adAccountId, int $pageSize, ?string $order, ?string $bookmark, int &$responseCode, array &$responseHeaders): array|object|null
+    public function templatesList(string $adAccountId, ?string $bookmark, int $pageSize, ?PinterestLibPaginationOrder $order, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -947,9 +947,9 @@ class AdAccountsApi implements AdAccountsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](../Model/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]
 
 ### Return type
 

@@ -13,7 +13,7 @@
  * Sections help organize pins within a board.
  */
 export interface BoardSection { 
-    readonly id?: string;
+    id?: string;
     name: string;
 }
 

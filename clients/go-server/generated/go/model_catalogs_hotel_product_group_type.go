@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ import (
 )
 
 
-// CatalogsHotelProductGroupType : <p>Catalog hotel product group type</p> <p>MERCHANT_CREATED: Product groups created by merchants. <br>ALL_LISTINGS: Includes every hotel item in your catalog.
+// CatalogsHotelProductGroupType : Catalog hotel product group type
 type CatalogsHotelProductGroupType string
 
 // List of CatalogsHotelProductGroupType
@@ -56,8 +56,8 @@ func NewCatalogsHotelProductGroupTypeFromValue(v string) (CatalogsHotelProductGr
 }
 
 
-
-// AssertCatalogsHotelProductGroupTypeRequired checks if the required fields are not zero-ed
+// AssertCatalogsHotelProductGroupTypeRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsHotelProductGroupTypeRequired(obj CatalogsHotelProductGroupType) error {
 	return nil
 }

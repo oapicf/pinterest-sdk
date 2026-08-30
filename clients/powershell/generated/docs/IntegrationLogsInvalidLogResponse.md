@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RejectedLogs** | [**IntegrationLogsInvalidLogResponseRejectedLogsInner[]**](IntegrationLogsInvalidLogResponseRejectedLogsInner.md) |  | [optional] 
+**RejectedLogs** | [**IntegrationLogsInvalidLogResponseRejectedLogsItems[]**](IntegrationLogsInvalidLogResponseRejectedLogsItems.md) |  | [optional] 
 
 ## Examples
 

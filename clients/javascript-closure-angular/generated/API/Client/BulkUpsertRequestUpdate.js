@@ -25,13 +25,13 @@ API.Client.BulkUpsertRequestUpdate.prototype.ads;
 API.Client.BulkUpsertRequestUpdate.prototype.campaigns;
 
 /**
- * @type {!Array<!API.Client.catalogs_product_groups_update_request>}
+ * @type {!Array<!API.Client.BulkUpsertRequestUpdateCatalogProductGroupsItems>}
  * @export
  */
 API.Client.BulkUpsertRequestUpdate.prototype.catalogProductGroups;
 
 /**
- * @type {!Array<!API.Client.KeywordUpdate>}
+ * @type {!Array<!API.Client.KeywordUpdateGenerated>}
  * @export
  */
 API.Client.BulkUpsertRequestUpdate.prototype.keywords;
@@ -47,4 +47,10 @@ API.Client.BulkUpsertRequestUpdate.prototype.labels;
  * @export
  */
 API.Client.BulkUpsertRequestUpdate.prototype.productGroups;
+
+/**
+ * @type {!Array<!API.Client.ScheduleUpdateRequest>}
+ * @export
+ */
+API.Client.BulkUpsertRequestUpdate.prototype.schedules;
 

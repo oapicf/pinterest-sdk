@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { PlacementType } from './placementType';
 
 
 /**
@@ -16,15 +17,12 @@ export interface PlacementMultipliers {
   [key: string]: number | any;
 
 
-    PLACEMENT?: PlacementMultipliers.PLACEMENTEnum;
+    /**
+     * Placement type identifier.
+     */
+    PLACEMENT?: PlacementType;
 }
 export namespace PlacementMultipliers {
-    export const PLACEMENTEnum = {
-        Search: 'SEARCH',
-        Browse: 'BROWSE',
-        RelatedPins: 'RELATED_PINS'
-    } as const;
-    export type PLACEMENTEnum = typeof PLACEMENTEnum[keyof typeof PLACEMENTEnum];
 }
 
 

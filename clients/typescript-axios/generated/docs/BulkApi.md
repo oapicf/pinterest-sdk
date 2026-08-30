@@ -9,9 +9,9 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |[**bulkUpsertCreate**](#bulkupsertcreate) | **POST** /ad_accounts/{ad_account_id}/bulk/upsert | Create/update ad entities in bulk|
 
 # **bulkDownloadCreate**
-> BulkDownloadResponse bulkDownloadCreate(bulkDownloadRequest)
+> BulkDownload bulkDownloadCreate(bulkDownloadCreate)
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Example
 
@@ -19,18 +19,18 @@ Create an asynchronous report that may include information on campaigns, ad grou
 import {
     BulkApi,
     Configuration,
-    BulkDownloadRequest
+    BulkDownloadCreate
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new BulkApi(configuration);
 
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let bulkDownloadRequest: BulkDownloadRequest; //Parameters to get ad entities in bulk
+let bulkDownloadCreate: BulkDownloadCreate; //
 
 const { status, data } = await apiInstance.bulkDownloadCreate(
     adAccountId,
-    bulkDownloadRequest
+    bulkDownloadCreate
 );
 ```
 
@@ -38,13 +38,13 @@ const { status, data } = await apiInstance.bulkDownloadCreate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **bulkDownloadRequest** | **BulkDownloadRequest**| Parameters to get ad entities in bulk | |
+| **bulkDownloadCreate** | **BulkDownloadCreate**|  | |
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 
 
 ### Return type
 
-**BulkDownloadResponse**
+**BulkDownload**
 
 ### Authorization
 
@@ -59,15 +59,21 @@ const { status, data } = await apiInstance.bulkDownloadCreate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**201** | Resource create operation completed successfully. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **bulkRequestGet**
-> BulkUpsertStatusResponse bulkRequestGet()
+> BulkJobData bulkRequestGet()
 
-Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Example
 
@@ -81,8 +87,8 @@ const configuration = new Configuration();
 const apiInstance = new BulkApi(configuration);
 
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let bulkRequestId: string; //Unique identifier of a bulk upsert request. (default to undefined)
-let includeDetails: boolean; //if set to True then attach the errors/details to all the requests (optional) (default to false)
+let bulkRequestId: string; //Bulk request ID that is from one of the entities bulk endpoints (default to undefined)
+let includeDetails: boolean; //If set to True then attach the errors/details to all the requests (optional) (default to false)
 
 const { status, data } = await apiInstance.bulkRequestGet(
     adAccountId,
@@ -96,13 +102,13 @@ const { status, data } = await apiInstance.bulkRequestGet(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
-| **bulkRequestId** | [**string**] | Unique identifier of a bulk upsert request. | defaults to undefined|
-| **includeDetails** | [**boolean**] | if set to True then attach the errors/details to all the requests | (optional) defaults to false|
+| **bulkRequestId** | [**string**] | Bulk request ID that is from one of the entities bulk endpoints | defaults to undefined|
+| **includeDetails** | [**boolean**] | If set to True then attach the errors/details to all the requests | (optional) defaults to false|
 
 
 ### Return type
 
-**BulkUpsertStatusResponse**
+**BulkJobData**
 
 ### Authorization
 
@@ -117,15 +123,20 @@ const { status, data } = await apiInstance.bulkRequestGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **bulkUpsertCreate**
 > BulkUpsertResponse bulkUpsertCreate(bulkUpsertRequest)
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 
 ### Example
 
@@ -173,7 +184,7 @@ const { status, data } = await apiInstance.bulkUpsertCreate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
+|**200** | The request has succeeded. |  -  |
 |**0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

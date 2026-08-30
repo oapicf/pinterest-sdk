@@ -55,12 +55,12 @@ InviteAssetsSummary::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<InviteAssetsSummary_ad_accounts_inner> new_list;
-			InviteAssetsSummary_ad_accounts_inner inst;
+			list<InviteAssetsSummaryItem> new_list;
+			InviteAssetsSummaryItem inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("InviteAssetsSummary_ad_accounts_inner")) {
-					jsonToValue(&inst, temp_json, "InviteAssetsSummary_ad_accounts_inner", "");
+				if (isprimitive("InviteAssetsSummaryItem")) {
+					jsonToValue(&inst, temp_json, "InviteAssetsSummaryItem", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -79,12 +79,12 @@ InviteAssetsSummary::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<InviteAssetsSummary_profiles_inner> new_list;
-			InviteAssetsSummary_profiles_inner inst;
+			list<InviteAssetsSummaryItem> new_list;
+			InviteAssetsSummaryItem inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("InviteAssetsSummary_profiles_inner")) {
-					jsonToValue(&inst, temp_json, "InviteAssetsSummary_profiles_inner", "");
+				if (isprimitive("InviteAssetsSummaryItem")) {
+					jsonToValue(&inst, temp_json, "InviteAssetsSummaryItem", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -108,18 +108,18 @@ InviteAssetsSummary::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("InviteAssetsSummary_ad_accounts_inner")) {
-		list<InviteAssetsSummary_ad_accounts_inner> new_list = static_cast<list <InviteAssetsSummary_ad_accounts_inner> > (getAdAccounts());
-		node = converttoJson(&new_list, "InviteAssetsSummary_ad_accounts_inner", "array");
+	if (isprimitive("InviteAssetsSummaryItem")) {
+		list<InviteAssetsSummaryItem> new_list = static_cast<list <InviteAssetsSummaryItem> > (getAdAccounts());
+		node = converttoJson(&new_list, "InviteAssetsSummaryItem", "array");
 	} else {
 		node = json_node_alloc();
-		list<InviteAssetsSummary_ad_accounts_inner> new_list = static_cast<list <InviteAssetsSummary_ad_accounts_inner> > (getAdAccounts());
+		list<InviteAssetsSummaryItem> new_list = static_cast<list <InviteAssetsSummaryItem> > (getAdAccounts());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<InviteAssetsSummary_ad_accounts_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<InviteAssetsSummaryItem>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			InviteAssetsSummary_ad_accounts_inner obj = *it;
+			InviteAssetsSummaryItem obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -133,18 +133,18 @@ InviteAssetsSummary::toJson()
 	
 	const gchar *ad_accountsKey = "ad_accounts";
 	json_object_set_member(pJsonObject, ad_accountsKey, node);
-	if (isprimitive("InviteAssetsSummary_profiles_inner")) {
-		list<InviteAssetsSummary_profiles_inner> new_list = static_cast<list <InviteAssetsSummary_profiles_inner> > (getProfiles());
-		node = converttoJson(&new_list, "InviteAssetsSummary_profiles_inner", "array");
+	if (isprimitive("InviteAssetsSummaryItem")) {
+		list<InviteAssetsSummaryItem> new_list = static_cast<list <InviteAssetsSummaryItem> > (getProfiles());
+		node = converttoJson(&new_list, "InviteAssetsSummaryItem", "array");
 	} else {
 		node = json_node_alloc();
-		list<InviteAssetsSummary_profiles_inner> new_list = static_cast<list <InviteAssetsSummary_profiles_inner> > (getProfiles());
+		list<InviteAssetsSummaryItem> new_list = static_cast<list <InviteAssetsSummaryItem> > (getProfiles());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<InviteAssetsSummary_profiles_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<InviteAssetsSummaryItem>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			InviteAssetsSummary_profiles_inner obj = *it;
+			InviteAssetsSummaryItem obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -166,26 +166,26 @@ InviteAssetsSummary::toJson()
 	return ret;
 }
 
-std::list<InviteAssetsSummary_ad_accounts_inner>
+std::list<InviteAssetsSummaryItem>
 InviteAssetsSummary::getAdAccounts()
 {
 	return ad_accounts;
 }
 
 void
-InviteAssetsSummary::setAdAccounts(std::list <InviteAssetsSummary_ad_accounts_inner> ad_accounts)
+InviteAssetsSummary::setAdAccounts(std::list <InviteAssetsSummaryItem> ad_accounts)
 {
 	this->ad_accounts = ad_accounts;
 }
 
-std::list<InviteAssetsSummary_profiles_inner>
+std::list<InviteAssetsSummaryItem>
 InviteAssetsSummary::getProfiles()
 {
 	return profiles;
 }
 
 void
-InviteAssetsSummary::setProfiles(std::list <InviteAssetsSummary_profiles_inner> profiles)
+InviteAssetsSummary::setProfiles(std::list <InviteAssetsSummaryItem> profiles)
 {
 	this->profiles = profiles;
 }

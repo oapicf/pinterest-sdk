@@ -26,7 +26,8 @@ GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria,
 GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria,
 GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
 MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria,
-TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria)
+TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria,
+LINK: CatalogsProductGroupFilterOperatorTypeCriteria)
 
 object CatalogsCreativeAssetsProductGroupFilterKeys {
   import DateTimeCodecs._

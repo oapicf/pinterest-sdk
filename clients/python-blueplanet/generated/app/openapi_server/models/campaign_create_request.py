@@ -8,8 +8,8 @@ from typing import List, Dict  # noqa: F401
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.campaign_bid_options_create import CampaignBidOptionsCreate  # noqa: F401,E501
 from app.openapi_server.models.entity_status import EntityStatus  # noqa: F401,E501
+from app.openapi_server.models.intended_promotion_type import IntendedPromotionType  # noqa: F401,E501
 from app.openapi_server.models.objective_type import ObjectiveType  # noqa: F401,E501
-from app.openapi_server.models.tracking_urls import TrackingUrls  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -20,19 +20,37 @@ class CampaignCreateRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, ad_account_id: str=None, daily_spend_cap: int=None, end_time: int=None, is_automated_campaign: bool=False, is_flexible_daily_budgets: bool=False, lifetime_spend_cap: int=None, name: str=None, order_line_id: str=None, start_time: int=None, status: EntityStatus='ACTIVE', tracking_urls: TrackingUrls=None, default_ad_group_budget_in_micro_currency: int=None, is_campaign_budget_optimization: bool=None, bid_options: CampaignBidOptionsCreate=None, is_performance_plus: bool=False, objective_type: ObjectiveType=None):  # noqa: E501
+    def __init__(self, bid_options: CampaignBidOptionsCreate=None, intended_promotion_type: IntendedPromotionType=None, is_automated_campaign: bool=None, is_campaign_budget_optimization: bool=None, is_flexible_daily_budgets: bool=None, is_ltv_optimized: bool=None, is_performance_plus: bool=False, is_top_of_search: bool=False, objective_type: ObjectiveType=None, status: EntityStatus=None, ad_account_id: str=None, daily_spend_cap: int=None, default_ad_group_budget_in_micro_currency: int=None, end_time: int=None, lifetime_spend_cap: int=None, name: str=None, order_line_id: str=None, start_time: int=None, tracking_urls: object=None):  # noqa: E501
         """CampaignCreateRequest - a model defined in Swagger
 
+        :param bid_options: The bid_options of this CampaignCreateRequest.  # noqa: E501
+        :type bid_options: CampaignBidOptionsCreate
+        :param intended_promotion_type: The intended_promotion_type of this CampaignCreateRequest.  # noqa: E501
+        :type intended_promotion_type: IntendedPromotionType
+        :param is_automated_campaign: The is_automated_campaign of this CampaignCreateRequest.  # noqa: E501
+        :type is_automated_campaign: bool
+        :param is_campaign_budget_optimization: The is_campaign_budget_optimization of this CampaignCreateRequest.  # noqa: E501
+        :type is_campaign_budget_optimization: bool
+        :param is_flexible_daily_budgets: The is_flexible_daily_budgets of this CampaignCreateRequest.  # noqa: E501
+        :type is_flexible_daily_budgets: bool
+        :param is_ltv_optimized: The is_ltv_optimized of this CampaignCreateRequest.  # noqa: E501
+        :type is_ltv_optimized: bool
+        :param is_performance_plus: The is_performance_plus of this CampaignCreateRequest.  # noqa: E501
+        :type is_performance_plus: bool
+        :param is_top_of_search: The is_top_of_search of this CampaignCreateRequest.  # noqa: E501
+        :type is_top_of_search: bool
+        :param objective_type: The objective_type of this CampaignCreateRequest.  # noqa: E501
+        :type objective_type: ObjectiveType
+        :param status: The status of this CampaignCreateRequest.  # noqa: E501
+        :type status: EntityStatus
         :param ad_account_id: The ad_account_id of this CampaignCreateRequest.  # noqa: E501
         :type ad_account_id: str
         :param daily_spend_cap: The daily_spend_cap of this CampaignCreateRequest.  # noqa: E501
         :type daily_spend_cap: int
+        :param default_ad_group_budget_in_micro_currency: The default_ad_group_budget_in_micro_currency of this CampaignCreateRequest.  # noqa: E501
+        :type default_ad_group_budget_in_micro_currency: int
         :param end_time: The end_time of this CampaignCreateRequest.  # noqa: E501
         :type end_time: int
-        :param is_automated_campaign: The is_automated_campaign of this CampaignCreateRequest.  # noqa: E501
-        :type is_automated_campaign: bool
-        :param is_flexible_daily_budgets: The is_flexible_daily_budgets of this CampaignCreateRequest.  # noqa: E501
-        :type is_flexible_daily_budgets: bool
         :param lifetime_spend_cap: The lifetime_spend_cap of this CampaignCreateRequest.  # noqa: E501
         :type lifetime_spend_cap: int
         :param name: The name of this CampaignCreateRequest.  # noqa: E501
@@ -41,75 +59,72 @@ class CampaignCreateRequest(Model):
         :type order_line_id: str
         :param start_time: The start_time of this CampaignCreateRequest.  # noqa: E501
         :type start_time: int
-        :param status: The status of this CampaignCreateRequest.  # noqa: E501
-        :type status: EntityStatus
         :param tracking_urls: The tracking_urls of this CampaignCreateRequest.  # noqa: E501
-        :type tracking_urls: TrackingUrls
-        :param default_ad_group_budget_in_micro_currency: The default_ad_group_budget_in_micro_currency of this CampaignCreateRequest.  # noqa: E501
-        :type default_ad_group_budget_in_micro_currency: int
-        :param is_campaign_budget_optimization: The is_campaign_budget_optimization of this CampaignCreateRequest.  # noqa: E501
-        :type is_campaign_budget_optimization: bool
-        :param bid_options: The bid_options of this CampaignCreateRequest.  # noqa: E501
-        :type bid_options: CampaignBidOptionsCreate
-        :param is_performance_plus: The is_performance_plus of this CampaignCreateRequest.  # noqa: E501
-        :type is_performance_plus: bool
-        :param objective_type: The objective_type of this CampaignCreateRequest.  # noqa: E501
-        :type objective_type: ObjectiveType
+        :type tracking_urls: object
         """
         self.swagger_types = {
+            'bid_options': CampaignBidOptionsCreate,
+            'intended_promotion_type': IntendedPromotionType,
+            'is_automated_campaign': bool,
+            'is_campaign_budget_optimization': bool,
+            'is_flexible_daily_budgets': bool,
+            'is_ltv_optimized': bool,
+            'is_performance_plus': bool,
+            'is_top_of_search': bool,
+            'objective_type': ObjectiveType,
+            'status': EntityStatus,
             'ad_account_id': str,
             'daily_spend_cap': int,
+            'default_ad_group_budget_in_micro_currency': int,
             'end_time': int,
-            'is_automated_campaign': bool,
-            'is_flexible_daily_budgets': bool,
             'lifetime_spend_cap': int,
             'name': str,
             'order_line_id': str,
             'start_time': int,
-            'status': EntityStatus,
-            'tracking_urls': TrackingUrls,
-            'default_ad_group_budget_in_micro_currency': int,
-            'is_campaign_budget_optimization': bool,
-            'bid_options': CampaignBidOptionsCreate,
-            'is_performance_plus': bool,
-            'objective_type': ObjectiveType
+            'tracking_urls': object
         }
 
         self.attribute_map = {
+            'bid_options': 'bid_options',
+            'intended_promotion_type': 'intended_promotion_type',
+            'is_automated_campaign': 'is_automated_campaign',
+            'is_campaign_budget_optimization': 'is_campaign_budget_optimization',
+            'is_flexible_daily_budgets': 'is_flexible_daily_budgets',
+            'is_ltv_optimized': 'is_ltv_optimized',
+            'is_performance_plus': 'is_performance_plus',
+            'is_top_of_search': 'is_top_of_search',
+            'objective_type': 'objective_type',
+            'status': 'status',
             'ad_account_id': 'ad_account_id',
             'daily_spend_cap': 'daily_spend_cap',
+            'default_ad_group_budget_in_micro_currency': 'default_ad_group_budget_in_micro_currency',
             'end_time': 'end_time',
-            'is_automated_campaign': 'is_automated_campaign',
-            'is_flexible_daily_budgets': 'is_flexible_daily_budgets',
             'lifetime_spend_cap': 'lifetime_spend_cap',
             'name': 'name',
             'order_line_id': 'order_line_id',
             'start_time': 'start_time',
-            'status': 'status',
-            'tracking_urls': 'tracking_urls',
-            'default_ad_group_budget_in_micro_currency': 'default_ad_group_budget_in_micro_currency',
-            'is_campaign_budget_optimization': 'is_campaign_budget_optimization',
-            'bid_options': 'bid_options',
-            'is_performance_plus': 'is_performance_plus',
-            'objective_type': 'objective_type'
+            'tracking_urls': 'tracking_urls'
         }
 
+        self._bid_options = bid_options
+        self._intended_promotion_type = intended_promotion_type
+        self._is_automated_campaign = is_automated_campaign
+        self._is_campaign_budget_optimization = is_campaign_budget_optimization
+        self._is_flexible_daily_budgets = is_flexible_daily_budgets
+        self._is_ltv_optimized = is_ltv_optimized
+        self._is_performance_plus = is_performance_plus
+        self._is_top_of_search = is_top_of_search
+        self._objective_type = objective_type
+        self._status = status
         self._ad_account_id = ad_account_id
         self._daily_spend_cap = daily_spend_cap
+        self._default_ad_group_budget_in_micro_currency = default_ad_group_budget_in_micro_currency
         self._end_time = end_time
-        self._is_automated_campaign = is_automated_campaign
-        self._is_flexible_daily_budgets = is_flexible_daily_budgets
         self._lifetime_spend_cap = lifetime_spend_cap
         self._name = name
         self._order_line_id = order_line_id
         self._start_time = start_time
-        self._status = status
         self._tracking_urls = tracking_urls
-        self._default_ad_group_budget_in_micro_currency = default_ad_group_budget_in_micro_currency
-        self._is_campaign_budget_optimization = is_campaign_budget_optimization
-        self._bid_options = bid_options
-        self._is_performance_plus = is_performance_plus
-        self._objective_type = objective_type
 
     @classmethod
     def from_dict(cls, dikt) -> 'CampaignCreateRequest':
@@ -121,6 +136,230 @@ class CampaignCreateRequest(Model):
         :rtype: CampaignCreateRequest
         """
         return util.deserialize_model(dikt, cls)
+
+    @property
+    def bid_options(self) -> CampaignBidOptionsCreate:
+        """Gets the bid_options of this CampaignCreateRequest.
+
+
+        :return: The bid_options of this CampaignCreateRequest.
+        :rtype: CampaignBidOptionsCreate
+        """
+        return self._bid_options
+
+    @bid_options.setter
+    def bid_options(self, bid_options: CampaignBidOptionsCreate):
+        """Sets the bid_options of this CampaignCreateRequest.
+
+
+        :param bid_options: The bid_options of this CampaignCreateRequest.
+        :type bid_options: CampaignBidOptionsCreate
+        """
+
+        self._bid_options = bid_options
+
+    @property
+    def intended_promotion_type(self) -> IntendedPromotionType:
+        """Gets the intended_promotion_type of this CampaignCreateRequest.
+
+
+        :return: The intended_promotion_type of this CampaignCreateRequest.
+        :rtype: IntendedPromotionType
+        """
+        return self._intended_promotion_type
+
+    @intended_promotion_type.setter
+    def intended_promotion_type(self, intended_promotion_type: IntendedPromotionType):
+        """Sets the intended_promotion_type of this CampaignCreateRequest.
+
+
+        :param intended_promotion_type: The intended_promotion_type of this CampaignCreateRequest.
+        :type intended_promotion_type: IntendedPromotionType
+        """
+
+        self._intended_promotion_type = intended_promotion_type
+
+    @property
+    def is_automated_campaign(self) -> bool:
+        """Gets the is_automated_campaign of this CampaignCreateRequest.
+
+        Note: This field is immutable unless the campaign is in draft status. Specifies whether the campaign was created in the automated campaign flow. When using Automated Campaigns, a daily spend cap must be set, and Pinterest Performance+ may not be used. The following objective types are supported: - CONSIDERATION - WEB\\_CONVERSION - SALES - CATALOG\\_SALES  # noqa: E501
+
+        :return: The is_automated_campaign of this CampaignCreateRequest.
+        :rtype: bool
+        """
+        return self._is_automated_campaign
+
+    @is_automated_campaign.setter
+    def is_automated_campaign(self, is_automated_campaign: bool):
+        """Sets the is_automated_campaign of this CampaignCreateRequest.
+
+        Note: This field is immutable unless the campaign is in draft status. Specifies whether the campaign was created in the automated campaign flow. When using Automated Campaigns, a daily spend cap must be set, and Pinterest Performance+ may not be used. The following objective types are supported: - CONSIDERATION - WEB\\_CONVERSION - SALES - CATALOG\\_SALES  # noqa: E501
+
+        :param is_automated_campaign: The is_automated_campaign of this CampaignCreateRequest.
+        :type is_automated_campaign: bool
+        """
+
+        self._is_automated_campaign = is_automated_campaign
+
+    @property
+    def is_campaign_budget_optimization(self) -> bool:
+        """Gets the is_campaign_budget_optimization of this CampaignCreateRequest.
+
+        Note: This field is immutable unless the campaign is in draft status. Determines if a campaign automatically generates ad-group level budgets given a campaign budget to maximize campaign outcome. When using campaign budgets with a lifetime spend cap, the end time must be provided.  # noqa: E501
+
+        :return: The is_campaign_budget_optimization of this CampaignCreateRequest.
+        :rtype: bool
+        """
+        return self._is_campaign_budget_optimization
+
+    @is_campaign_budget_optimization.setter
+    def is_campaign_budget_optimization(self, is_campaign_budget_optimization: bool):
+        """Sets the is_campaign_budget_optimization of this CampaignCreateRequest.
+
+        Note: This field is immutable unless the campaign is in draft status. Determines if a campaign automatically generates ad-group level budgets given a campaign budget to maximize campaign outcome. When using campaign budgets with a lifetime spend cap, the end time must be provided.  # noqa: E501
+
+        :param is_campaign_budget_optimization: The is_campaign_budget_optimization of this CampaignCreateRequest.
+        :type is_campaign_budget_optimization: bool
+        """
+
+        self._is_campaign_budget_optimization = is_campaign_budget_optimization
+
+    @property
+    def is_flexible_daily_budgets(self) -> bool:
+        """Gets the is_flexible_daily_budgets of this CampaignCreateRequest.
+
+        Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\". Flexible daily budgets are only supported for campaign budget optimization with a daily spend cap, and not a lifetime spend cap.  # noqa: E501
+
+        :return: The is_flexible_daily_budgets of this CampaignCreateRequest.
+        :rtype: bool
+        """
+        return self._is_flexible_daily_budgets
+
+    @is_flexible_daily_budgets.setter
+    def is_flexible_daily_budgets(self, is_flexible_daily_budgets: bool):
+        """Sets the is_flexible_daily_budgets of this CampaignCreateRequest.
+
+        Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\". Flexible daily budgets are only supported for campaign budget optimization with a daily spend cap, and not a lifetime spend cap.  # noqa: E501
+
+        :param is_flexible_daily_budgets: The is_flexible_daily_budgets of this CampaignCreateRequest.
+        :type is_flexible_daily_budgets: bool
+        """
+
+        self._is_flexible_daily_budgets = is_flexible_daily_budgets
+
+    @property
+    def is_ltv_optimized(self) -> bool:
+        """Gets the is_ltv_optimized of this CampaignCreateRequest.
+
+        Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.  # noqa: E501
+
+        :return: The is_ltv_optimized of this CampaignCreateRequest.
+        :rtype: bool
+        """
+        return self._is_ltv_optimized
+
+    @is_ltv_optimized.setter
+    def is_ltv_optimized(self, is_ltv_optimized: bool):
+        """Sets the is_ltv_optimized of this CampaignCreateRequest.
+
+        Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.  # noqa: E501
+
+        :param is_ltv_optimized: The is_ltv_optimized of this CampaignCreateRequest.
+        :type is_ltv_optimized: bool
+        """
+
+        self._is_ltv_optimized = is_ltv_optimized
+
+    @property
+    def is_performance_plus(self) -> bool:
+        """Gets the is_performance_plus of this CampaignCreateRequest.
+
+        Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>.  # noqa: E501
+
+        :return: The is_performance_plus of this CampaignCreateRequest.
+        :rtype: bool
+        """
+        return self._is_performance_plus
+
+    @is_performance_plus.setter
+    def is_performance_plus(self, is_performance_plus: bool):
+        """Sets the is_performance_plus of this CampaignCreateRequest.
+
+        Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>.  # noqa: E501
+
+        :param is_performance_plus: The is_performance_plus of this CampaignCreateRequest.
+        :type is_performance_plus: bool
+        """
+
+        self._is_performance_plus = is_performance_plus
+
+    @property
+    def is_top_of_search(self) -> bool:
+        """Gets the is_top_of_search of this CampaignCreateRequest.
+
+        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a>  Have your ads and content appear at the top of search result lists in Pinterest.  You can only use this feature with the following objectives: `CONSIDERATION` `WEB_CONVERSION` `CATALOG_SALES`  You cannot use this feature with Pinterest Performance+ or Premiere Spotlight enabled.  You cannot change your `true` or `false` selection of this campaign if you <a href=\"https://developer.pinterest.com/docs/api/v5/campaigns-update\" target=\"blank\">update it</a>.  # noqa: E501
+
+        :return: The is_top_of_search of this CampaignCreateRequest.
+        :rtype: bool
+        """
+        return self._is_top_of_search
+
+    @is_top_of_search.setter
+    def is_top_of_search(self, is_top_of_search: bool):
+        """Sets the is_top_of_search of this CampaignCreateRequest.
+
+        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a>  Have your ads and content appear at the top of search result lists in Pinterest.  You can only use this feature with the following objectives: `CONSIDERATION` `WEB_CONVERSION` `CATALOG_SALES`  You cannot use this feature with Pinterest Performance+ or Premiere Spotlight enabled.  You cannot change your `true` or `false` selection of this campaign if you <a href=\"https://developer.pinterest.com/docs/api/v5/campaigns-update\" target=\"blank\">update it</a>.  # noqa: E501
+
+        :param is_top_of_search: The is_top_of_search of this CampaignCreateRequest.
+        :type is_top_of_search: bool
+        """
+
+        self._is_top_of_search = is_top_of_search
+
+    @property
+    def objective_type(self) -> ObjectiveType:
+        """Gets the objective_type of this CampaignCreateRequest.
+
+
+        :return: The objective_type of this CampaignCreateRequest.
+        :rtype: ObjectiveType
+        """
+        return self._objective_type
+
+    @objective_type.setter
+    def objective_type(self, objective_type: ObjectiveType):
+        """Sets the objective_type of this CampaignCreateRequest.
+
+
+        :param objective_type: The objective_type of this CampaignCreateRequest.
+        :type objective_type: ObjectiveType
+        """
+        if objective_type is None:
+            raise ValueError("Invalid value for `objective_type`, must not be `None`")  # noqa: E501
+
+        self._objective_type = objective_type
+
+    @property
+    def status(self) -> EntityStatus:
+        """Gets the status of this CampaignCreateRequest.
+
+
+        :return: The status of this CampaignCreateRequest.
+        :rtype: EntityStatus
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status: EntityStatus):
+        """Sets the status of this CampaignCreateRequest.
+
+
+        :param status: The status of this CampaignCreateRequest.
+        :type status: EntityStatus
+        """
+
+        self._status = status
 
     @property
     def ad_account_id(self) -> str:
@@ -173,6 +412,29 @@ class CampaignCreateRequest(Model):
         self._daily_spend_cap = daily_spend_cap
 
     @property
+    def default_ad_group_budget_in_micro_currency(self) -> int:
+        """Gets the default_ad_group_budget_in_micro_currency of this CampaignCreateRequest.
+
+        When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.  # noqa: E501
+
+        :return: The default_ad_group_budget_in_micro_currency of this CampaignCreateRequest.
+        :rtype: int
+        """
+        return self._default_ad_group_budget_in_micro_currency
+
+    @default_ad_group_budget_in_micro_currency.setter
+    def default_ad_group_budget_in_micro_currency(self, default_ad_group_budget_in_micro_currency: int):
+        """Sets the default_ad_group_budget_in_micro_currency of this CampaignCreateRequest.
+
+        When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.  # noqa: E501
+
+        :param default_ad_group_budget_in_micro_currency: The default_ad_group_budget_in_micro_currency of this CampaignCreateRequest.
+        :type default_ad_group_budget_in_micro_currency: int
+        """
+
+        self._default_ad_group_budget_in_micro_currency = default_ad_group_budget_in_micro_currency
+
+    @property
     def end_time(self) -> int:
         """Gets the end_time of this CampaignCreateRequest.
 
@@ -194,52 +456,6 @@ class CampaignCreateRequest(Model):
         """
 
         self._end_time = end_time
-
-    @property
-    def is_automated_campaign(self) -> bool:
-        """Gets the is_automated_campaign of this CampaignCreateRequest.
-
-        Specifies whether the campaign was created in the automated campaign flow  # noqa: E501
-
-        :return: The is_automated_campaign of this CampaignCreateRequest.
-        :rtype: bool
-        """
-        return self._is_automated_campaign
-
-    @is_automated_campaign.setter
-    def is_automated_campaign(self, is_automated_campaign: bool):
-        """Sets the is_automated_campaign of this CampaignCreateRequest.
-
-        Specifies whether the campaign was created in the automated campaign flow  # noqa: E501
-
-        :param is_automated_campaign: The is_automated_campaign of this CampaignCreateRequest.
-        :type is_automated_campaign: bool
-        """
-
-        self._is_automated_campaign = is_automated_campaign
-
-    @property
-    def is_flexible_daily_budgets(self) -> bool:
-        """Gets the is_flexible_daily_budgets of this CampaignCreateRequest.
-
-        Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".  # noqa: E501
-
-        :return: The is_flexible_daily_budgets of this CampaignCreateRequest.
-        :rtype: bool
-        """
-        return self._is_flexible_daily_budgets
-
-    @is_flexible_daily_budgets.setter
-    def is_flexible_daily_budgets(self, is_flexible_daily_budgets: bool):
-        """Sets the is_flexible_daily_budgets of this CampaignCreateRequest.
-
-        Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".  # noqa: E501
-
-        :param is_flexible_daily_budgets: The is_flexible_daily_budgets of this CampaignCreateRequest.
-        :type is_flexible_daily_budgets: bool
-        """
-
-        self._is_flexible_daily_budgets = is_flexible_daily_budgets
 
     @property
     def lifetime_spend_cap(self) -> int:
@@ -338,156 +554,22 @@ class CampaignCreateRequest(Model):
         self._start_time = start_time
 
     @property
-    def status(self) -> EntityStatus:
-        """Gets the status of this CampaignCreateRequest.
-
-
-        :return: The status of this CampaignCreateRequest.
-        :rtype: EntityStatus
-        """
-        return self._status
-
-    @status.setter
-    def status(self, status: EntityStatus):
-        """Sets the status of this CampaignCreateRequest.
-
-
-        :param status: The status of this CampaignCreateRequest.
-        :type status: EntityStatus
-        """
-
-        self._status = status
-
-    @property
-    def tracking_urls(self) -> TrackingUrls:
+    def tracking_urls(self) -> object:
         """Gets the tracking_urls of this CampaignCreateRequest.
 
 
         :return: The tracking_urls of this CampaignCreateRequest.
-        :rtype: TrackingUrls
+        :rtype: object
         """
         return self._tracking_urls
 
     @tracking_urls.setter
-    def tracking_urls(self, tracking_urls: TrackingUrls):
+    def tracking_urls(self, tracking_urls: object):
         """Sets the tracking_urls of this CampaignCreateRequest.
 
 
         :param tracking_urls: The tracking_urls of this CampaignCreateRequest.
-        :type tracking_urls: TrackingUrls
+        :type tracking_urls: object
         """
 
         self._tracking_urls = tracking_urls
-
-    @property
-    def default_ad_group_budget_in_micro_currency(self) -> int:
-        """Gets the default_ad_group_budget_in_micro_currency of this CampaignCreateRequest.
-
-        When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.  # noqa: E501
-
-        :return: The default_ad_group_budget_in_micro_currency of this CampaignCreateRequest.
-        :rtype: int
-        """
-        return self._default_ad_group_budget_in_micro_currency
-
-    @default_ad_group_budget_in_micro_currency.setter
-    def default_ad_group_budget_in_micro_currency(self, default_ad_group_budget_in_micro_currency: int):
-        """Sets the default_ad_group_budget_in_micro_currency of this CampaignCreateRequest.
-
-        When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.  # noqa: E501
-
-        :param default_ad_group_budget_in_micro_currency: The default_ad_group_budget_in_micro_currency of this CampaignCreateRequest.
-        :type default_ad_group_budget_in_micro_currency: int
-        """
-
-        self._default_ad_group_budget_in_micro_currency = default_ad_group_budget_in_micro_currency
-
-    @property
-    def is_campaign_budget_optimization(self) -> bool:
-        """Gets the is_campaign_budget_optimization of this CampaignCreateRequest.
-
-        Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.  # noqa: E501
-
-        :return: The is_campaign_budget_optimization of this CampaignCreateRequest.
-        :rtype: bool
-        """
-        return self._is_campaign_budget_optimization
-
-    @is_campaign_budget_optimization.setter
-    def is_campaign_budget_optimization(self, is_campaign_budget_optimization: bool):
-        """Sets the is_campaign_budget_optimization of this CampaignCreateRequest.
-
-        Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.  # noqa: E501
-
-        :param is_campaign_budget_optimization: The is_campaign_budget_optimization of this CampaignCreateRequest.
-        :type is_campaign_budget_optimization: bool
-        """
-
-        self._is_campaign_budget_optimization = is_campaign_budget_optimization
-
-    @property
-    def bid_options(self) -> CampaignBidOptionsCreate:
-        """Gets the bid_options of this CampaignCreateRequest.
-
-
-        :return: The bid_options of this CampaignCreateRequest.
-        :rtype: CampaignBidOptionsCreate
-        """
-        return self._bid_options
-
-    @bid_options.setter
-    def bid_options(self, bid_options: CampaignBidOptionsCreate):
-        """Sets the bid_options of this CampaignCreateRequest.
-
-
-        :param bid_options: The bid_options of this CampaignCreateRequest.
-        :type bid_options: CampaignBidOptionsCreate
-        """
-
-        self._bid_options = bid_options
-
-    @property
-    def is_performance_plus(self) -> bool:
-        """Gets the is_performance_plus of this CampaignCreateRequest.
-
-        Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>.  # noqa: E501
-
-        :return: The is_performance_plus of this CampaignCreateRequest.
-        :rtype: bool
-        """
-        return self._is_performance_plus
-
-    @is_performance_plus.setter
-    def is_performance_plus(self, is_performance_plus: bool):
-        """Sets the is_performance_plus of this CampaignCreateRequest.
-
-        Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>.  # noqa: E501
-
-        :param is_performance_plus: The is_performance_plus of this CampaignCreateRequest.
-        :type is_performance_plus: bool
-        """
-
-        self._is_performance_plus = is_performance_plus
-
-    @property
-    def objective_type(self) -> ObjectiveType:
-        """Gets the objective_type of this CampaignCreateRequest.
-
-
-        :return: The objective_type of this CampaignCreateRequest.
-        :rtype: ObjectiveType
-        """
-        return self._objective_type
-
-    @objective_type.setter
-    def objective_type(self, objective_type: ObjectiveType):
-        """Sets the objective_type of this CampaignCreateRequest.
-
-
-        :param objective_type: The objective_type of this CampaignCreateRequest.
-        :type objective_type: ObjectiveType
-        """
-        if objective_type is None:
-            raise ValueError("Invalid value for `objective_type`, must not be `None`")  # noqa: E501
-
-        self._objective_type = objective_type

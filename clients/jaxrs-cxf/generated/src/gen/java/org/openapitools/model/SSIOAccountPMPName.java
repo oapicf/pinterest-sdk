@@ -3,10 +3,15 @@ package org.openapitools.model;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Pinterest marketing partner name.
+ */
+@ApiModel(description="Pinterest marketing partner name.")
 
 public class SSIOAccountPMPName  {
   
@@ -93,10 +98,7 @@ public class SSIOAccountPMPName  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

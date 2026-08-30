@@ -6,7 +6,7 @@ using namespace Tiny;
 
 PinAnalyticsMetricsResponse::PinAnalyticsMetricsResponse()
 {
-	daily_metrics = std::list<PinAnalyticsMetricsResponse_daily_metrics_inner>();
+	daily_metrics = std::list<PinAnalyticsDailyMetrics>();
 	lifetime_metrics = null<int>();
 	summary_metrics = null<long>();
 }
@@ -33,8 +33,8 @@ PinAnalyticsMetricsResponse::fromJson(std::string jsonObj)
         bourne::json value = object[daily_metricsKey];
 
 
-        std::list<PinAnalyticsMetricsResponse_daily_metrics_inner> daily_metrics_list;
-        PinAnalyticsMetricsResponse_daily_metrics_inner element;
+        std::list<PinAnalyticsDailyMetrics> daily_metrics_list;
+        PinAnalyticsDailyMetrics element;
         for(auto& var : value.array_range())
         {
 
@@ -77,12 +77,12 @@ PinAnalyticsMetricsResponse::toJson()
 
 
 
-    std::list<PinAnalyticsMetricsResponse_daily_metrics_inner> daily_metrics_list = getDailyMetrics();
+    std::list<PinAnalyticsDailyMetrics> daily_metrics_list = getDailyMetrics();
     bourne::json daily_metrics_arr = bourne::json::array();
 
     for(auto& var : daily_metrics_list)
     {
-        PinAnalyticsMetricsResponse_daily_metrics_inner obj = var;
+        PinAnalyticsDailyMetrics obj = var;
         daily_metrics_arr.append(obj.toJson());
     }
     object["daily_metrics"] = daily_metrics_arr;
@@ -100,38 +100,38 @@ PinAnalyticsMetricsResponse::toJson()
 
 }
 
-std::list<PinAnalyticsMetricsResponse_daily_metrics_inner>
+std::list<PinAnalyticsDailyMetrics>
 PinAnalyticsMetricsResponse::getDailyMetrics()
 {
 	return daily_metrics;
 }
 
 void
-PinAnalyticsMetricsResponse::setDailyMetrics(std::list <PinAnalyticsMetricsResponse_daily_metrics_inner> daily_metrics)
+PinAnalyticsMetricsResponse::setDailyMetrics(std::list<PinAnalyticsDailyMetrics> daily_metrics)
 {
 	this->daily_metrics = daily_metrics;
 }
 
-Map<string, string>
+std::map<std::string, int>
 PinAnalyticsMetricsResponse::getLifetimeMetrics()
 {
 	return lifetime_metrics;
 }
 
 void
-PinAnalyticsMetricsResponse::setLifetimeMetrics(Map <string, string> lifetime_metrics)
+PinAnalyticsMetricsResponse::setLifetimeMetrics(std::map<std::string, int> lifetime_metrics)
 {
 	this->lifetime_metrics = lifetime_metrics;
 }
 
-Map<string, string>
+std::map<std::string, long>
 PinAnalyticsMetricsResponse::getSummaryMetrics()
 {
 	return summary_metrics;
 }
 
 void
-PinAnalyticsMetricsResponse::setSummaryMetrics(Map <string, string> summary_metrics)
+PinAnalyticsMetricsResponse::setSummaryMetrics(std::map<std::string, long> summary_metrics)
 {
 	this->summary_metrics = summary_metrics;
 }

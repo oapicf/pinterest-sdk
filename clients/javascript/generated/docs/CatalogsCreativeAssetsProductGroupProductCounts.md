@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**appLinks** | **Number** |  | 
 **catalogType** | **String** |  | 
+**images** | **Number** |  | 
 **total** | **Number** |  | 
 **videos** | **Number** |  | 
 

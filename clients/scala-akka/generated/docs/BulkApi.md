@@ -15,11 +15,11 @@ Method | HTTP request | Description
 
 ## bulkDownloadCreate
 
-> bulkDownloadCreate(bulkDownloadCreateRequest): ApiRequest[BulkDownloadResponse]
+> bulkDownloadCreate(bulkDownloadCreateRequest): ApiRequest[BulkDownload]
 
 Get advertiser entities in bulk
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Example
 
@@ -45,9 +45,9 @@ object Example extends App {
     val apiInstance = BulkApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val bulkDownloadRequest: BulkDownloadRequest =  // BulkDownloadRequest | Parameters to get ad entities in bulk
+    val bulkDownloadCreate: BulkDownloadCreate =  // BulkDownloadCreate | 
     
-    val request = apiInstance.bulkDownloadCreate(adAccountId, bulkDownloadRequest)
+    val request = apiInstance.bulkDownloadCreate(adAccountId, bulkDownloadCreate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -76,11 +76,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **bulkDownloadRequest** | [**BulkDownloadRequest**](BulkDownloadRequest.md)| Parameters to get ad entities in bulk |
+ **bulkDownloadCreate** | [**BulkDownloadCreate**](BulkDownloadCreate.md)|  |
 
 ### Return type
 
-ApiRequest[[**BulkDownloadResponse**](BulkDownloadResponse.md)]
+ApiRequest[[**BulkDownload**](BulkDownload.md)]
 
 
 ### Authorization
@@ -95,17 +95,23 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## bulkRequestGet
 
-> bulkRequestGet(bulkRequestGetRequest): ApiRequest[BulkUpsertStatusResponse]
+> bulkRequestGet(bulkRequestGetRequest): ApiRequest[BulkJobData]
 
 Download advertiser entities in bulk
 
-Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by &#x60;request_id&#x60;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Example
 
@@ -130,9 +136,9 @@ object Example extends App {
     val apiInstance = BulkApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val bulkRequestId: String = bulkRequestId_example // String | Unique identifier of a bulk upsert request.
+    val bulkRequestId: String = bulkRequestId_example // String | Bulk request ID that is from one of the entities bulk endpoints
 
-    val includeDetails: Boolean = true // Boolean | if set to True then attach the errors/details to all the requests
+    val includeDetails: Boolean = true // Boolean | If set to True then attach the errors/details to all the requests
     
     val request = apiInstance.bulkRequestGet(adAccountId, bulkRequestId, includeDetails)
     val response = apiInvoker.execute(request)
@@ -163,12 +169,12 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **bulkRequestId** | **String**| Unique identifier of a bulk upsert request. |
- **includeDetails** | **Boolean**| if set to True then attach the errors/details to all the requests | [optional]
+ **bulkRequestId** | **String**| Bulk request ID that is from one of the entities bulk endpoints |
+ **includeDetails** | **Boolean**| If set to True then attach the errors/details to all the requests | [optional]
 
 ### Return type
 
-ApiRequest[[**BulkUpsertStatusResponse**](BulkUpsertStatusResponse.md)]
+ApiRequest[[**BulkJobData**](BulkJobData.md)]
 
 
 ### Authorization
@@ -183,8 +189,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## bulkUpsertCreate
@@ -193,7 +204,7 @@ No authorization required
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
 
 ### Example
 
@@ -269,6 +280,6 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | The request has succeeded. |  -  |
 | **0** | Unexpected error |  -  |
 

@@ -21,10 +21,10 @@ typedef struct audience_category_t audience_category_t;
 
 typedef struct audience_category_t {
     char *id; // string
-    double index; //numeric
+    double *index; //numeric
     char *key; // string
     char *name; // string
-    double ratio; //numeric
+    double *ratio; //numeric
     list_t *subcategories; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -32,10 +32,10 @@ typedef struct audience_category_t {
 
 __attribute__((deprecated)) audience_category_t *audience_category_create(
     char *id,
-    double index,
+    double *index,
     char *key,
     char *name,
-    double ratio,
+    double *ratio,
     list_t *subcategories
 );
 

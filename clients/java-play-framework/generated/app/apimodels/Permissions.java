@@ -6,7 +6,7 @@ import javax.validation.*;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Gets or Sets Permissions
+ * Permission levels available on a business asset.
  */
 public enum Permissions {
   
@@ -30,7 +30,9 @@ public enum Permissions {
   
   PROFILE_PUBLISHER("PROFILE_PUBLISHER"),
   
-  CONSUMER_USER("CONSUMER_USER");
+  CONSUMER_USER("CONSUMER_USER"),
+  
+  BIZ_PINNER_LIST_SHARER("BIZ_PINNER_LIST_SHARER");
 
   private final String value;
 

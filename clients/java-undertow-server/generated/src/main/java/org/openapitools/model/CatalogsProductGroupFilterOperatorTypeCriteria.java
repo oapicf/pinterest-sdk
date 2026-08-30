@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -19,40 +19,22 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.FilterOperatorType;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupFilterOperatorTypeCriteria   {
   
-
-
-  public enum FilterOperatorTypeEnum {
-    IS("IS"),
-    CONTAINS("CONTAINS");
-
-    private String value;
-
-    FilterOperatorTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private FilterOperatorTypeEnum filterOperatorType = FilterOperatorTypeEnum.IS;
-  private Boolean negated = false;
+  private FilterOperatorType filterOperatorType;
+  private Boolean negated;
   private List<String> values = new ArrayList<>();
 
   /**
    */
-  public CatalogsProductGroupFilterOperatorTypeCriteria filterOperatorType(FilterOperatorTypeEnum filterOperatorType) {
+  public CatalogsProductGroupFilterOperatorTypeCriteria filterOperatorType(FilterOperatorType filterOperatorType) {
     this.filterOperatorType = filterOperatorType;
     return this;
   }
@@ -60,10 +42,10 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("filter_operator_type")
-  public FilterOperatorTypeEnum getFilterOperatorType() {
+  public FilterOperatorType getFilterOperatorType() {
     return filterOperatorType;
   }
-  public void setFilterOperatorType(FilterOperatorTypeEnum filterOperatorType) {
+  public void setFilterOperatorType(FilterOperatorType filterOperatorType) {
     this.filterOperatorType = filterOperatorType;
   }
 
@@ -138,10 +120,7 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

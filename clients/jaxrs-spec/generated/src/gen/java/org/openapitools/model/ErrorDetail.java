@@ -16,7 +16,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("ErrorDetail")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ErrorDetail   {
   private Integer count;
   private Integer errorCode;
@@ -45,7 +45,7 @@ public class ErrorDetail   {
   }
 
   
-  @ApiModelProperty(example = "20", required = true, value = "Number of records with this error")
+  @ApiModelProperty(required = true, value = "Number of records with this error")
   @JsonProperty(required = true, value = "count")
   @NotNull public Integer getCount() {
     return count;
@@ -65,7 +65,7 @@ public class ErrorDetail   {
   }
 
   
-  @ApiModelProperty(example = "42", required = true, value = "Numeric error code")
+  @ApiModelProperty(required = true, value = "Numeric error code")
   @JsonProperty(required = true, value = "error_code")
   @NotNull public Integer getErrorCode() {
     return errorCode;
@@ -85,7 +85,7 @@ public class ErrorDetail   {
   }
 
   
-  @ApiModelProperty(example = "Invalid email", required = true, value = "Error message description")
+  @ApiModelProperty(required = true, value = "Error message description")
   @JsonProperty(required = true, value = "message")
   @NotNull public String getMessage() {
     return message;
@@ -133,12 +133,8 @@ public class ErrorDetail   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

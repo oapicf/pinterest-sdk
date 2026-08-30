@@ -15,7 +15,11 @@ public enum MMMReportingTargetingType {
   
   GENDER("GENDER"),
   
-  LOCATION("LOCATION");
+  LOCATION("LOCATION"),
+  
+  PLACEMENT("PLACEMENT"),
+  
+  AUDIENCE_INCLUDE("AUDIENCE_INCLUDE");
 
   private String value;
 

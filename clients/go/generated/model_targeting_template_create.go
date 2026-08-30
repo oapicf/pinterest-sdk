@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,15 +20,16 @@ import (
 // checks if the TargetingTemplateCreate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TargetingTemplateCreate{}
 
-// TargetingTemplateCreate struct for TargetingTemplateCreate
+// TargetingTemplateCreate Resource create operation model.
 type TargetingTemplateCreate struct {
-	// Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+	// Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).
 	AutoTargetingEnabled *bool `json:"auto_targeting_enabled,omitempty"`
 	Keywords []TargetingTemplateKeyword `json:"keywords,omitempty"`
-	// Name of targeting template.
+	// targeting template name
 	Name string `json:"name"`
 	PlacementGroup *PlacementGroupType `json:"placement_group,omitempty"`
-	TargetingAttributes TargetingSpec `json:"targeting_attributes"`
+	// targeting profile attributes
+	TargetingAttributes TargetingSpecOptimal `json:"targeting_attributes"`
 	TrackingUrls NullableTrackingUrls `json:"tracking_urls,omitempty"`
 }
 
@@ -38,7 +39,7 @@ type _TargetingTemplateCreate TargetingTemplateCreate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTargetingTemplateCreate(name string, targetingAttributes TargetingSpec) *TargetingTemplateCreate {
+func NewTargetingTemplateCreate(name string, targetingAttributes TargetingSpecOptimal) *TargetingTemplateCreate {
 	this := TargetingTemplateCreate{}
 	var autoTargetingEnabled bool = true
 	this.AutoTargetingEnabled = &autoTargetingEnabled
@@ -182,9 +183,9 @@ func (o *TargetingTemplateCreate) SetPlacementGroup(v PlacementGroupType) {
 }
 
 // GetTargetingAttributes returns the TargetingAttributes field value
-func (o *TargetingTemplateCreate) GetTargetingAttributes() TargetingSpec {
+func (o *TargetingTemplateCreate) GetTargetingAttributes() TargetingSpecOptimal {
 	if o == nil {
-		var ret TargetingSpec
+		var ret TargetingSpecOptimal
 		return ret
 	}
 
@@ -193,7 +194,7 @@ func (o *TargetingTemplateCreate) GetTargetingAttributes() TargetingSpec {
 
 // GetTargetingAttributesOk returns a tuple with the TargetingAttributes field value
 // and a boolean to check if the value has been set.
-func (o *TargetingTemplateCreate) GetTargetingAttributesOk() (*TargetingSpec, bool) {
+func (o *TargetingTemplateCreate) GetTargetingAttributesOk() (*TargetingSpecOptimal, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -201,7 +202,7 @@ func (o *TargetingTemplateCreate) GetTargetingAttributesOk() (*TargetingSpec, bo
 }
 
 // SetTargetingAttributes sets field value
-func (o *TargetingTemplateCreate) SetTargetingAttributes(v TargetingSpec) {
+func (o *TargetingTemplateCreate) SetTargetingAttributes(v TargetingSpecOptimal) {
 	o.TargetingAttributes = v
 }
 

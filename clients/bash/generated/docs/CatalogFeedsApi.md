@@ -22,14 +22,14 @@ List feed processing results
 Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future.
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
 ```bash
- feedProcessingResultsList feed_id=value  bookmark=value  page_size=value  ad_account_id=value
+ feedProcessingResultsList feed_id=value  ad_account_id=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -37,10 +37,11 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feedId** | **string** | Unique identifier of a feed | [default to null]
- **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **feedId** | **string** | Unique identifier of a feed. | [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
+ **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -69,9 +70,9 @@ Please, be aware that \"default_country\"
 and \"default_locale\" are not required in the spec for forward compatibility
 but for now the API will not accept requests without those fields.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
 
 Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
 If you require access, please reach out to your partner manager.
@@ -87,7 +88,7 @@ If you require access, please reach out to your partner manager.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feedsCreateRequest** | [**FeedsCreateRequest**](FeedsCreateRequest.md) | Request object used to created a feed. |
+ **catalogsFeedCreateRequestSchema** | [**CatalogsFeedCreateRequestSchema**](CatalogsFeedCreateRequestSchema.md) |  |
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -110,12 +111,12 @@ Name | Type | Description  | Notes
 
 Delete feed
 
-Delete a feed owned by the \"operating user_account\".
+Delete a feed owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
 
 ### Example
 
@@ -128,12 +129,12 @@ For Retail partners, refer to <a href='https://help.pinterest.com/en/business/ar
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feedId** | **string** | Unique identifier of a feed | [default to null]
+ **feedId** | **string** | Unique identifier of a feed. | [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
 
-(empty response body)
+[**CatalogsFeed**](CatalogsFeed.md)
 
 ### Authorization
 
@@ -154,9 +155,9 @@ Get feed
 Get a single feed owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
 
 ### Example
 
@@ -169,7 +170,7 @@ For Retail partners, refer to <a href='https://help.pinterest.com/en/business/ar
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feedId** | **string** | Unique identifier of a feed | [default to null]
+ **feedId** | **string** | Unique identifier of a feed. | [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -194,9 +195,9 @@ Ingest feed items
 
 Ingest items for a given feed owned by the \"operation user_account\".
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
@@ -211,7 +212,7 @@ Note: This endpoint is restricted to a specific group of users. If you require a
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feedId** | **string** | Unique identifier of a feed | [default to null]
+ **feedId** | **string** | Unique identifier of a feed. | [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -237,14 +238,14 @@ List feeds
 Fetch feeds owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
 
 ### Example
 
 ```bash
- feedsList  bookmark=value  page_size=value  catalog_id=value  ad_account_id=value
+ feedsList  catalog_id=value  ad_account_id=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -252,10 +253,11 @@ For Retail partners, refer to <a href='https://help.pinterest.com/en/business/ar
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
  **catalogId** | **string** | Filter entities for a given catalog_id. If not given, all catalogs are considered. | [optional] [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
+ **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -280,9 +282,9 @@ Update feed
 Update a feed owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
 
 Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
 If you require access, please reach out to your partner manager.
@@ -298,8 +300,8 @@ If you require access, please reach out to your partner manager.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feedId** | **string** | Unique identifier of a feed | [default to null]
- **feedsUpdateRequest** | [**FeedsUpdateRequest**](FeedsUpdateRequest.md) | Request object used to update a feed. |
+ **feedId** | **string** | Unique identifier of a feed. | [default to null]
+ **catalogsFeedUpdateRequestSchema** | [**CatalogsFeedUpdateRequestSchema**](CatalogsFeedUpdateRequestSchema.md) |  |
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -325,16 +327,16 @@ List item issues
 List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future.
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.
+Note: To get a list of all affected items instead of sampled issues, please refer to [Build catalogs report](/docs/api/v5/#operation/reports/create) and [Get catalogs report](/docs/api/v5/#operation/reports/get) endpoints. Moreover, they support multiple types of catalogs.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
 ```bash
- itemsIssuesList processing_result_id=value  bookmark=value  page_size=value  Specify as:  item_numbers=value1 item_numbers=value2 item_numbers=...  item_validation_issue=value  ad_account_id=value
+ itemsIssuesList processing_result_id=value  Specify as:  item_numbers=value1 item_numbers=value2 item_numbers=...  item_validation_issue=value  ad_account_id=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -343,11 +345,12 @@ Note: To get a list of all affected items instead of sampled issues, please refe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **processingResultId** | **string** | Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). | [default to null]
- **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
  **itemNumbers** | [**array[integer]**](integer.md) | Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. | [optional] [default to null]
  **itemValidationIssue** | [**CatalogsItemValidationIssue**](.md) | Filter item validation issues that have a given type of item validation issue. | [optional] [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
+ **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

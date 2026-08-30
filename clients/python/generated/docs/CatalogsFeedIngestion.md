@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **datetime** |  | 
-**feed_id** | **str** |  | 
-**id** | **str** |  | 
-**status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
+**created_at** | **datetime** | Timestamp of the feed ingestion. | 
+**feed_id** | **str** | Catalog Feed id pertaining to the feed ingestion. | 
+**id** | **str** | Unique identifier of a feed ingestion. | 
+**status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) | Status of the feed ingestion. | 
 
 ## Example
 

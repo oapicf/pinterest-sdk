@@ -1,0 +1,54 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "EntityHistory",
+  "fields": [
+    {
+      "name": "change_timestamp",
+      "type": ["null", "int"],
+      "doc": "A Unix timestamp representing the time of the change in seconds",
+      "default": null
+    },
+    {
+      "name": "data_changes",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.EntityDataChangeHistory"
+      }],
+      "doc": "Properties associated with a particular change to an entity's data",
+      "default": null
+    },
+    {
+      "name": "entity_id",
+      "type": ["null", "string"],
+      "doc": "The id of the entity that was changed",
+      "default": null
+    },
+    {
+      "name": "entity_name",
+      "type": ["null", "string"],
+      "doc": "The name of the entity that was changed",
+      "default": null
+    },
+    {
+      "name": "ldap",
+      "type": ["null", "string"],
+      "doc": "The LDAP of the user who initiated the change; only pertinent for changes initiated by internal users",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "type": ["null", "model.ChangeHistoryOperationType"],
+      "doc": "The type of operation that caused the change",
+      "default": null
+    },
+    {
+      "name": "user_id",
+      "type": ["null", "string"],
+      "doc": "The id of the user who initiated the change",
+      "default": null
+    }
+  ]
+
+}

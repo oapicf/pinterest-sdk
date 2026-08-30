@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemValidationEvent;
 
 
@@ -19,10 +18,39 @@ import org.openapitools.model.ItemValidationEvent;
  **/
 
 @ApiModel(description = "Object describing a retail item error")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailItemErrorResponse   {
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    RETAIL("RETAIL");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String text) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("errors")
   private List<ItemValidationEvent> errors = new ArrayList<>();
@@ -31,8 +59,40 @@ public class CatalogsRetailItemErrorResponse   {
   private String itemId;
 
   /**
+   * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+   */
+  public enum ItemResponseKindEnum {
+    RETAIL_ITEM_ERROR("retail_item_error");
+
+    private String value;
+
+    ItemResponseKindEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ItemResponseKindEnum fromValue(String text) {
+      for (ItemResponseKindEnum b : ItemResponseKindEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
+  @JsonProperty("item_response_kind")
+  private ItemResponseKindEnum itemResponseKind;
+
+  /**
    **/
-  public CatalogsRetailItemErrorResponse catalogType(CatalogsType catalogType) {
+  public CatalogsRetailItemErrorResponse catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -40,10 +100,10 @@ public class CatalogsRetailItemErrorResponse   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -83,6 +143,24 @@ public class CatalogsRetailItemErrorResponse   {
     this.itemId = itemId;
   }
 
+  /**
+   * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+   **/
+  public CatalogsRetailItemErrorResponse itemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Discriminator literal identifying this leaf inside an `ItemResponse` payload.")
+  @JsonProperty("item_response_kind")
+  public ItemResponseKindEnum getItemResponseKind() {
+    return itemResponseKind;
+  }
+  public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -95,12 +173,13 @@ public class CatalogsRetailItemErrorResponse   {
     CatalogsRetailItemErrorResponse catalogsRetailItemErrorResponse = (CatalogsRetailItemErrorResponse) o;
     return Objects.equals(catalogType, catalogsRetailItemErrorResponse.catalogType) &&
         Objects.equals(errors, catalogsRetailItemErrorResponse.errors) &&
-        Objects.equals(itemId, catalogsRetailItemErrorResponse.itemId);
+        Objects.equals(itemId, catalogsRetailItemErrorResponse.itemId) &&
+        Objects.equals(itemResponseKind, catalogsRetailItemErrorResponse.itemResponseKind);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, errors, itemId);
+    return Objects.hash(catalogType, errors, itemId, itemResponseKind);
   }
 
   @Override
@@ -111,6 +190,7 @@ public class CatalogsRetailItemErrorResponse   {
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -120,10 +200,7 @@ public class CatalogsRetailItemErrorResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -2,36 +2,35 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.Exception;
 import org.openapitools.model.ProductGroupPromotion;
-import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * ProductGroupPromotionResponseItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ProductGroupPromotionResponseItem {
 
   private ProductGroupPromotion data;
 
   @Valid
-  private JsonNullable<List<@Valid Exception>> exceptions = JsonNullable.<List<@Valid Exception>>undefined();
+  private List<@Valid Exception> exceptions = new ArrayList<>();
 
   public ProductGroupPromotionResponseItem data(ProductGroupPromotion data) {
     this.data = data;
@@ -54,15 +53,15 @@ public class ProductGroupPromotionResponseItem {
   }
 
   public ProductGroupPromotionResponseItem exceptions(List<@Valid Exception> exceptions) {
-    this.exceptions = JsonNullable.of(exceptions);
+    this.exceptions = exceptions;
     return this;
   }
 
   public ProductGroupPromotionResponseItem addExceptionsItem(Exception exceptionsItem) {
-    if (this.exceptions == null || !this.exceptions.isPresent()) {
-      this.exceptions = JsonNullable.of(new ArrayList<>());
+    if (this.exceptions == null) {
+      this.exceptions = new ArrayList<>();
     }
-    this.exceptions.get().add(exceptionsItem);
+    this.exceptions.add(exceptionsItem);
     return this;
   }
 
@@ -73,11 +72,11 @@ public class ProductGroupPromotionResponseItem {
   @Valid 
   @Schema(name = "exceptions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("exceptions")
-  public JsonNullable<List<@Valid Exception>> getExceptions() {
+  public List<@Valid Exception> getExceptions() {
     return exceptions;
   }
 
-  public void setExceptions(JsonNullable<List<@Valid Exception>> exceptions) {
+  public void setExceptions(List<@Valid Exception> exceptions) {
     this.exceptions = exceptions;
   }
 
@@ -91,23 +90,12 @@ public class ProductGroupPromotionResponseItem {
     }
     ProductGroupPromotionResponseItem productGroupPromotionResponseItem = (ProductGroupPromotionResponseItem) o;
     return Objects.equals(this.data, productGroupPromotionResponseItem.data) &&
-        equalsNullable(this.exceptions, productGroupPromotionResponseItem.exceptions);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+        Objects.equals(this.exceptions, productGroupPromotionResponseItem.exceptions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, hashCodeNullable(exceptions));
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(data, exceptions);
   }
 
   @Override
@@ -125,10 +113,7 @@ public class ProductGroupPromotionResponseItem {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

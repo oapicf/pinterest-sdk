@@ -16,8 +16,9 @@ class CustomerList {
     this.adAccountId,
     this.createdTime,
     this.exceptions,
-    this.id,
-    this.name,
+    required this.id,
+    this.isNca,
+    required this.name,
     this.numBatches,
     this.numRemovedUserRecords,
     this.numUploadedUserRecords,
@@ -44,7 +45,7 @@ class CustomerList {
   ///
   num? createdTime;
 
-  /// Customer list errors
+  /// Customer list errors.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -54,24 +55,21 @@ class CustomerList {
   Object? exceptions;
 
   /// Customer list ID.
+  String id;
+
+  /// Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? id;
+  bool? isNca;
 
   /// Customer list name.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? name;
+  String name;
 
-  /// Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
+  /// Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -80,7 +78,7 @@ class CustomerList {
   ///
   num? numBatches;
 
-  /// Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
+  /// Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -89,7 +87,7 @@ class CustomerList {
   ///
   num? numRemovedUserRecords;
 
-  /// Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
+  /// Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -98,10 +96,16 @@ class CustomerList {
   ///
   num? numUploadedUserRecords;
 
-  /// Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-  CustomerListStatusEnum? status;
+  /// Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  CustomerListStatus? status;
 
-  /// Always \"customerlist\".
+  /// Always `customerlist`.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -125,6 +129,7 @@ class CustomerList {
     other.createdTime == createdTime &&
     other.exceptions == exceptions &&
     other.id == id &&
+    other.isNca == isNca &&
     other.name == name &&
     other.numBatches == numBatches &&
     other.numRemovedUserRecords == numRemovedUserRecords &&
@@ -139,8 +144,9 @@ class CustomerList {
     (adAccountId == null ? 0 : adAccountId!.hashCode) +
     (createdTime == null ? 0 : createdTime!.hashCode) +
     (exceptions == null ? 0 : exceptions!.hashCode) +
-    (id == null ? 0 : id!.hashCode) +
-    (name == null ? 0 : name!.hashCode) +
+    (id.hashCode) +
+    (isNca == null ? 0 : isNca!.hashCode) +
+    (name.hashCode) +
     (numBatches == null ? 0 : numBatches!.hashCode) +
     (numRemovedUserRecords == null ? 0 : numRemovedUserRecords!.hashCode) +
     (numUploadedUserRecords == null ? 0 : numUploadedUserRecords!.hashCode) +
@@ -149,7 +155,7 @@ class CustomerList {
     (updatedTime == null ? 0 : updatedTime!.hashCode);
 
   @override
-  String toString() => 'CustomerList[adAccountId=$adAccountId, createdTime=$createdTime, exceptions=$exceptions, id=$id, name=$name, numBatches=$numBatches, numRemovedUserRecords=$numRemovedUserRecords, numUploadedUserRecords=$numUploadedUserRecords, status=$status, type=$type, updatedTime=$updatedTime]';
+  String toString() => 'CustomerList[adAccountId=$adAccountId, createdTime=$createdTime, exceptions=$exceptions, id=$id, isNca=$isNca, name=$name, numBatches=$numBatches, numRemovedUserRecords=$numRemovedUserRecords, numUploadedUserRecords=$numUploadedUserRecords, status=$status, type=$type, updatedTime=$updatedTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -168,16 +174,13 @@ class CustomerList {
     } else {
       json[r'exceptions'] = null;
     }
-    if (this.id != null) {
       json[r'id'] = this.id;
+    if (this.isNca != null) {
+      json[r'is_nca'] = this.isNca;
     } else {
-      json[r'id'] = null;
+      json[r'is_nca'] = null;
     }
-    if (this.name != null) {
       json[r'name'] = this.name;
-    } else {
-      json[r'name'] = null;
-    }
     if (this.numBatches != null) {
       json[r'num_batches'] = this.numBatches;
     } else {
@@ -222,10 +225,10 @@ class CustomerList {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CustomerList[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CustomerList[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'id'), 'Required key "CustomerList[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "CustomerList[id]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "CustomerList[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "CustomerList[name]" has a null value in JSON.');
         return true;
       }());
 
@@ -233,12 +236,13 @@ class CustomerList {
         adAccountId: mapValueOfType<String>(json, r'ad_account_id'),
         createdTime: num.parse('${json[r'created_time']}'),
         exceptions: mapValueOfType<Object>(json, r'exceptions'),
-        id: mapValueOfType<String>(json, r'id'),
-        name: mapValueOfType<String>(json, r'name'),
+        id: mapValueOfType<String>(json, r'id')!,
+        isNca: mapValueOfType<bool>(json, r'is_nca'),
+        name: mapValueOfType<String>(json, r'name')!,
         numBatches: num.parse('${json[r'num_batches']}'),
         numRemovedUserRecords: num.parse('${json[r'num_removed_user_records']}'),
         numUploadedUserRecords: num.parse('${json[r'num_uploaded_user_records']}'),
-        status: CustomerListStatusEnum.fromJson(json[r'status']),
+        status: CustomerListStatus.fromJson(json[r'status']),
         type: mapValueOfType<String>(json, r'type'),
         updatedTime: num.parse('${json[r'updated_time']}'),
       );
@@ -288,86 +292,8 @@ class CustomerList {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'name',
   };
 }
-
-/// Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-class CustomerListStatusEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CustomerListStatusEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const PROCESSING = CustomerListStatusEnum._(r'PROCESSING');
-  static const READY = CustomerListStatusEnum._(r'READY');
-  static const TOO_SMALL = CustomerListStatusEnum._(r'TOO_SMALL');
-  static const UPLOADING = CustomerListStatusEnum._(r'UPLOADING');
-
-  /// List of all possible values in this [enum][CustomerListStatusEnum].
-  static const values = <CustomerListStatusEnum>[
-    PROCESSING,
-    READY,
-    TOO_SMALL,
-    UPLOADING,
-  ];
-
-  static CustomerListStatusEnum? fromJson(dynamic value) => CustomerListStatusEnumTypeTransformer().decode(value);
-
-  static List<CustomerListStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CustomerListStatusEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = CustomerListStatusEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [CustomerListStatusEnum] to String,
-/// and [decode] dynamic data back to [CustomerListStatusEnum].
-class CustomerListStatusEnumTypeTransformer {
-  factory CustomerListStatusEnumTypeTransformer() => _instance ??= const CustomerListStatusEnumTypeTransformer._();
-
-  const CustomerListStatusEnumTypeTransformer._();
-
-  String encode(CustomerListStatusEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a CustomerListStatusEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  CustomerListStatusEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'PROCESSING': return CustomerListStatusEnum.PROCESSING;
-        case r'READY': return CustomerListStatusEnum.READY;
-        case r'TOO_SMALL': return CustomerListStatusEnum.TOO_SMALL;
-        case r'UPLOADING': return CustomerListStatusEnum.UPLOADING;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [CustomerListStatusEnumTypeTransformer] instance.
-  static CustomerListStatusEnumTypeTransformer? _instance;
-}
-
 

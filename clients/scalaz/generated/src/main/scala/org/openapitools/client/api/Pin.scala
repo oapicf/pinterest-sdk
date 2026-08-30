@@ -13,7 +13,8 @@ import java.time.OffsetDateTime
 import Pin._
 
 case class Pin (
-  altText: Option[String],
+  /* AI disclosure declarations the creator has made about this Pin. */
+  aiDisclosures: Option[AiDisclosures],
 /* The board to which this Pin belongs. */
   boardId: Option[String],
 boardOwner: Option[BoardOwner],
@@ -21,7 +22,6 @@ boardOwner: Option[BoardOwner],
   boardSectionId: Option[String],
 createdAt: Option[OffsetDateTime],
 creativeType: Option[CreativeType],
-description: Option[String],
 /* Dominant pin color. Hex number, e.g. `#6E7874`. */
   dominantColor: Option[String],
 /* Whether the Pin has been promoted or not. */
@@ -29,14 +29,18 @@ description: Option[String],
 id: String,
 /* Whether the \"operation user_account\" is the Pin owner. */
   isOwner: Option[Boolean],
+/* Whether the Pin is a product Pin. */
+  isProduct: Option[Boolean],
 /* Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information. */
   isStandard: Option[Boolean],
-link: Option[String],
 media: Option[PinMedia],
 /* The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest). */
   parentPinId: Option[String],
 /* Pin metrics with associated time intervals if any. */
   pinMetrics: Option[Any],
+altText: Option[String],
+description: Option[String],
+link: Option[String],
 title: Option[String])
 
 object Pin {

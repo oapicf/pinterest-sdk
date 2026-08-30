@@ -20,6 +20,7 @@ import org.openapitools.model.GoogleProductCategory3Filter;
 import org.openapitools.model.GoogleProductCategory4Filter;
 import org.openapitools.model.GoogleProductCategory5Filter;
 import org.openapitools.model.GoogleProductCategory6Filter;
+import org.openapitools.model.LinkFilter;
 import org.openapitools.model.MediaTypeFilter;
 import org.openapitools.model.TitleKeywordsFilter;
 
@@ -55,4 +56,6 @@ class CatalogsCreativeAssetsProductGroupFilterKeys {
     CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE
     
     CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS
+    
+    CatalogsProductGroupFilterOperatorTypeCriteria LINK
 }

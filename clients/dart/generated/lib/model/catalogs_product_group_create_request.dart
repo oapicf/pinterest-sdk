@@ -16,7 +16,7 @@ class CatalogsProductGroupCreateRequest {
     this.description,
     required this.feedId,
     required this.filters,
-    this.isFeatured = false,
+    this.isFeatured,
     required this.name,
   });
 
@@ -28,7 +28,13 @@ class CatalogsProductGroupCreateRequest {
   CatalogsProductGroupFiltersRequest filters;
 
   /// boolean indicator of whether the product group is being featured or not
-  bool isFeatured;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isFeatured;
 
   String name;
 
@@ -46,7 +52,7 @@ class CatalogsProductGroupCreateRequest {
     (description == null ? 0 : description!.hashCode) +
     (feedId.hashCode) +
     (filters.hashCode) +
-    (isFeatured.hashCode) +
+    (isFeatured == null ? 0 : isFeatured!.hashCode) +
     (name.hashCode);
 
   @override
@@ -61,7 +67,11 @@ class CatalogsProductGroupCreateRequest {
     }
       json[r'feed_id'] = this.feedId;
       json[r'filters'] = this.filters;
+    if (this.isFeatured != null) {
       json[r'is_featured'] = this.isFeatured;
+    } else {
+      json[r'is_featured'] = null;
+    }
       json[r'name'] = this.name;
     return json;
   }
@@ -77,10 +87,12 @@ class CatalogsProductGroupCreateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsProductGroupCreateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsProductGroupCreateRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'feed_id'), 'Required key "CatalogsProductGroupCreateRequest[feed_id]" is missing from JSON.');
+        assert(json[r'feed_id'] != null, 'Required key "CatalogsProductGroupCreateRequest[feed_id]" has a null value in JSON.');
+        assert(json.containsKey(r'filters'), 'Required key "CatalogsProductGroupCreateRequest[filters]" is missing from JSON.');
+        assert(json[r'filters'] != null, 'Required key "CatalogsProductGroupCreateRequest[filters]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "CatalogsProductGroupCreateRequest[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "CatalogsProductGroupCreateRequest[name]" has a null value in JSON.');
         return true;
       }());
 
@@ -88,7 +100,7 @@ class CatalogsProductGroupCreateRequest {
         description: mapValueOfType<String>(json, r'description'),
         feedId: mapValueOfType<String>(json, r'feed_id')!,
         filters: CatalogsProductGroupFiltersRequest.fromJson(json[r'filters'])!,
-        isFeatured: mapValueOfType<bool>(json, r'is_featured') ?? false,
+        isFeatured: mapValueOfType<bool>(json, r'is_featured'),
         name: mapValueOfType<String>(json, r'name')!,
       );
     }

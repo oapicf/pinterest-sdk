@@ -3,7 +3,7 @@ Protected Class TargetingTemplateCreate
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Enable auto-targeting for ad group. Also known as <a href="https://help.pinterest.com/en/business/article/expanded-targeting" target="_blank">"expanded targeting"</a>.
+			Enable auto-targeting for ad group. Also known as ["expanded targeting"](https://help.pinterest.com/en/business/article/expanded-targeting).
 		#tag EndNote
 		auto_targeting_enabled As Xoson.O.OptionalBoolean
 	#tag EndProperty
@@ -16,7 +16,7 @@ Protected Class TargetingTemplateCreate
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Name of targeting template.
+			targeting template name
 		#tag EndNote
 		name As String
 	#tag EndProperty
@@ -28,7 +28,10 @@ Protected Class TargetingTemplateCreate
 
 
 	#tag Property, Flags = &h0
-		targeting_attributes As OpenAPIClient.Models.TargetingSpec
+		#tag Note
+			targeting profile attributes
+		#tag EndNote
+		targeting_attributes As OpenAPIClient.Models.TargetingSpecOptimal
 	#tag EndProperty
 
 
@@ -110,7 +113,7 @@ Protected Class TargetingTemplateCreate
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="TargetingSpec"
+			Type="TargetingSpecOptimal"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

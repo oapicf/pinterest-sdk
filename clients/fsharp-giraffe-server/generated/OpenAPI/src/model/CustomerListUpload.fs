@@ -5,14 +5,12 @@ open System.Collections.Generic
 open OpenAPI.Model.ErrorDetail
 open OpenAPI.Model.RecordCounts
 open OpenAPI.Model.UserListOperationType
+open OpenAPI.Model.WorkloadState
 
 module CustomerListUpload =
 
   //#region CustomerListUpload
 
-  //#region enums
-  type StateEnum = NOTSTARTEDEnum of string  |  RUNNINGEnum of string  |  PAUSEDEnum of string  |  SUCCEEDEDEnum of string  |  FAILEDEnum of string  
-  //#endregion
 
   type CustomerListUpload = {
     AdAccountId : string;
@@ -22,7 +20,7 @@ module CustomerListUpload =
     Id : string;
     Operation : UserListOperationType;
     RecordCounts : RecordCounts;
-    State : StateEnum;
+    State : WorkloadState;
     UpdatedTime : int;
   }
   //#endregion

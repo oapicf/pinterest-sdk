@@ -26,11 +26,11 @@ typedef struct asset_group_binding_t {
     list_t *asset_group_types; //primitive container
     list_t *catalogs_ids; //primitive container
     struct business_access_user_summary_t *created_by; //model
-    int created_time; //numeric
+    int *created_time; //numeric
     char *id; // string
     struct business_access_user_summary_t *owner; //model
     list_t *profiles_ids; //primitive container
-    int updated_time; //numeric
+    int *updated_time; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } asset_group_binding_t;
@@ -42,11 +42,11 @@ __attribute__((deprecated)) asset_group_binding_t *asset_group_binding_create(
     list_t *asset_group_types,
     list_t *catalogs_ids,
     business_access_user_summary_t *created_by,
-    int created_time,
+    int *created_time,
     char *id,
     business_access_user_summary_t *owner,
     list_t *profiles_ids,
-    int updated_time
+    int *updated_time
 );
 
 void asset_group_binding_free(asset_group_binding_t *asset_group_binding);

@@ -7,7 +7,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |[**notificationPost**](#notificationpost) | **POST** /notifications | Receive notifications from external partners.|
 
 # **notificationPost**
-> NotificationResponse notificationPost(notificationPostRequest)
+> NotificationResponse notificationPost(arrayObject)
 
 Used by third-party partners to send notifications to Pinterest. These notifications could be specific for your use-case or generic notification that are accepted by Pinterests\' systems. This API is gated and you need to request access to this feature.
 
@@ -17,16 +17,16 @@ Used by third-party partners to send notifications to Pinterest. These notificat
 import {
     NotificationApi,
     Configuration,
-    NotificationPostRequest
+    Array | object
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new NotificationApi(configuration);
 
-let notificationPostRequest: NotificationPostRequest; //notification event.
+let arrayObject: Array | object; //
 
 const { status, data } = await apiInstance.notificationPost(
-    notificationPostRequest
+    arrayObject
 );
 ```
 
@@ -34,7 +34,7 @@ const { status, data } = await apiInstance.notificationPost(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **notificationPostRequest** | **NotificationPostRequest**| notification event. | |
+| **arrayObject** | **Array | object**|  | |
 
 
 ### Return type
@@ -54,9 +54,9 @@ const { status, data } = await apiInstance.notificationPost(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Successfully received notification |  -  |
-|**400** | Invalid request parameter. |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

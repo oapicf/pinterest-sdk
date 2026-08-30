@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## MsotEventsCreate
 
-> MsotEventsCreate(ctx, adAccountId).ConversionMSOTEvents(conversionMSOTEvents).Execute()
+> MsotEventsCreate(ctx, adAccountId).ConversionMSOTEventsCreate(conversionMSOTEventsCreate).Execute()
 
 Send Measurement Source Of Truth (MSOT) attributed conversion events
 
@@ -30,11 +30,11 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	conversionMSOTEvents := *openapiclient.NewConversionMSOTEvents("2680060704746", "click", "eventId0001", "add_to_cart", int64(1451431341)) // ConversionMSOTEvents | Attributed MSOT conversion events
+	conversionMSOTEventsCreate := *openapiclient.NewConversionMSOTEventsCreate("2680060704746", "eventId0001", openapiclient.MsotEventName("add_to_cart"), int64(1451431341)) // ConversionMSOTEventsCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.MsotEventsAPI.MsotEventsCreate(context.Background(), adAccountId).ConversionMSOTEvents(conversionMSOTEvents).Execute()
+	r, err := apiClient.MsotEventsAPI.MsotEventsCreate(context.Background(), adAccountId).ConversionMSOTEventsCreate(conversionMSOTEventsCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MsotEventsAPI.MsotEventsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -58,7 +58,7 @@ Other parameters are passed through a pointer to a apiMsotEventsCreateRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **conversionMSOTEvents** | [**ConversionMSOTEvents**](ConversionMSOTEvents.md) | Attributed MSOT conversion events | 
+ **conversionMSOTEventsCreate** | [**ConversionMSOTEventsCreate**](ConversionMSOTEventsCreate.md) |  | 
 
 ### Return type
 

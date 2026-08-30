@@ -11,7 +11,7 @@ Protected Class SSIOOrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The UTC timestamp (to the nearest sec) of when terms were accepted
+			The UTC timestamp (to the nearest second) when terms were accepted.
 		#tag EndNote
 		accepted_terms_time As Xoson.O.OptionalString
 	#tag EndProperty
@@ -19,7 +19,7 @@ Protected Class SSIOOrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Ads manager OrderLineId
+			Ads manager order line id
 		#tag EndNote
 		ads_manager_order_line_id As Xoson.O.OptionalString
 	#tag EndProperty
@@ -35,7 +35,7 @@ Protected Class SSIOOrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Bill To Company name
+			Bill-to company name
 		#tag EndNote
 		bill_to_company_name As Xoson.O.OptionalString
 	#tag EndProperty
@@ -67,7 +67,7 @@ Protected Class SSIOOrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			If Budget order line, the budget amount.
+			If budget order line, the budget amount.
 		#tag EndNote
 		budget_amount As Xoson.O.OptionalDouble
 	#tag EndProperty
@@ -88,7 +88,7 @@ Protected Class SSIOOrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			If Ongoing (perpetual) order line, the estimated monthly spend
+			If ongoing (perpetual) order line, the estimated monthly spend.
 		#tag EndNote
 		estimated_monthly_spend As Xoson.O.OptionalDouble
 	#tag EndProperty
@@ -112,7 +112,7 @@ Protected Class SSIOOrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Billing contact first name
+			Billing media contact first name
 		#tag EndNote
 		media_contact_firstname As Xoson.O.OptionalString
 	#tag EndProperty
@@ -120,7 +120,7 @@ Protected Class SSIOOrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Billing contact first name
+			Billing media contact last name
 		#tag EndNote
 		media_contact_lastname As Xoson.O.OptionalString
 	#tag EndProperty
@@ -152,7 +152,7 @@ Protected Class SSIOOrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The po number
+			The PO number
 		#tag EndNote
 		po_number As Xoson.O.OptionalString
 	#tag EndProperty
@@ -160,7 +160,7 @@ Protected Class SSIOOrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			OrderLineId in SFDC
+			Order line id in SFDC
 		#tag EndNote
 		salesforce_order_line_id As Xoson.O.OptionalString
 	#tag EndProperty

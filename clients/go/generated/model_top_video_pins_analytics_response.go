@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,9 +20,9 @@ var _ MappedNullable = &TopVideoPinsAnalyticsResponse{}
 
 // TopVideoPinsAnalyticsResponse struct for TopVideoPinsAnalyticsResponse
 type TopVideoPinsAnalyticsResponse struct {
-	DateAvailability *TopPinsAnalyticsResponseDateAvailability `json:"date_availability,omitempty"`
-	Pins []TopVideoPinsAnalyticsResponsePinsInner `json:"pins,omitempty"`
-	SortBy *string `json:"sort_by,omitempty"`
+	DateAvailability *TopVideoPinsAnalyticsResponseDateAvailability `json:"date_availability,omitempty"`
+	Pins []TopVideoPinsAnalyticsResponsePinsItems `json:"pins,omitempty"`
+	SortBy *TopVideoPinsSortBy `json:"sort_by,omitempty"`
 }
 
 // NewTopVideoPinsAnalyticsResponse instantiates a new TopVideoPinsAnalyticsResponse object
@@ -43,9 +43,9 @@ func NewTopVideoPinsAnalyticsResponseWithDefaults() *TopVideoPinsAnalyticsRespon
 }
 
 // GetDateAvailability returns the DateAvailability field value if set, zero value otherwise.
-func (o *TopVideoPinsAnalyticsResponse) GetDateAvailability() TopPinsAnalyticsResponseDateAvailability {
+func (o *TopVideoPinsAnalyticsResponse) GetDateAvailability() TopVideoPinsAnalyticsResponseDateAvailability {
 	if o == nil || IsNil(o.DateAvailability) {
-		var ret TopPinsAnalyticsResponseDateAvailability
+		var ret TopVideoPinsAnalyticsResponseDateAvailability
 		return ret
 	}
 	return *o.DateAvailability
@@ -53,7 +53,7 @@ func (o *TopVideoPinsAnalyticsResponse) GetDateAvailability() TopPinsAnalyticsRe
 
 // GetDateAvailabilityOk returns a tuple with the DateAvailability field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TopVideoPinsAnalyticsResponse) GetDateAvailabilityOk() (*TopPinsAnalyticsResponseDateAvailability, bool) {
+func (o *TopVideoPinsAnalyticsResponse) GetDateAvailabilityOk() (*TopVideoPinsAnalyticsResponseDateAvailability, bool) {
 	if o == nil || IsNil(o.DateAvailability) {
 		return nil, false
 	}
@@ -69,15 +69,15 @@ func (o *TopVideoPinsAnalyticsResponse) HasDateAvailability() bool {
 	return false
 }
 
-// SetDateAvailability gets a reference to the given TopPinsAnalyticsResponseDateAvailability and assigns it to the DateAvailability field.
-func (o *TopVideoPinsAnalyticsResponse) SetDateAvailability(v TopPinsAnalyticsResponseDateAvailability) {
+// SetDateAvailability gets a reference to the given TopVideoPinsAnalyticsResponseDateAvailability and assigns it to the DateAvailability field.
+func (o *TopVideoPinsAnalyticsResponse) SetDateAvailability(v TopVideoPinsAnalyticsResponseDateAvailability) {
 	o.DateAvailability = &v
 }
 
 // GetPins returns the Pins field value if set, zero value otherwise.
-func (o *TopVideoPinsAnalyticsResponse) GetPins() []TopVideoPinsAnalyticsResponsePinsInner {
+func (o *TopVideoPinsAnalyticsResponse) GetPins() []TopVideoPinsAnalyticsResponsePinsItems {
 	if o == nil || IsNil(o.Pins) {
-		var ret []TopVideoPinsAnalyticsResponsePinsInner
+		var ret []TopVideoPinsAnalyticsResponsePinsItems
 		return ret
 	}
 	return o.Pins
@@ -85,7 +85,7 @@ func (o *TopVideoPinsAnalyticsResponse) GetPins() []TopVideoPinsAnalyticsRespons
 
 // GetPinsOk returns a tuple with the Pins field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TopVideoPinsAnalyticsResponse) GetPinsOk() ([]TopVideoPinsAnalyticsResponsePinsInner, bool) {
+func (o *TopVideoPinsAnalyticsResponse) GetPinsOk() ([]TopVideoPinsAnalyticsResponsePinsItems, bool) {
 	if o == nil || IsNil(o.Pins) {
 		return nil, false
 	}
@@ -101,15 +101,15 @@ func (o *TopVideoPinsAnalyticsResponse) HasPins() bool {
 	return false
 }
 
-// SetPins gets a reference to the given []TopVideoPinsAnalyticsResponsePinsInner and assigns it to the Pins field.
-func (o *TopVideoPinsAnalyticsResponse) SetPins(v []TopVideoPinsAnalyticsResponsePinsInner) {
+// SetPins gets a reference to the given []TopVideoPinsAnalyticsResponsePinsItems and assigns it to the Pins field.
+func (o *TopVideoPinsAnalyticsResponse) SetPins(v []TopVideoPinsAnalyticsResponsePinsItems) {
 	o.Pins = v
 }
 
 // GetSortBy returns the SortBy field value if set, zero value otherwise.
-func (o *TopVideoPinsAnalyticsResponse) GetSortBy() string {
+func (o *TopVideoPinsAnalyticsResponse) GetSortBy() TopVideoPinsSortBy {
 	if o == nil || IsNil(o.SortBy) {
-		var ret string
+		var ret TopVideoPinsSortBy
 		return ret
 	}
 	return *o.SortBy
@@ -117,7 +117,7 @@ func (o *TopVideoPinsAnalyticsResponse) GetSortBy() string {
 
 // GetSortByOk returns a tuple with the SortBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TopVideoPinsAnalyticsResponse) GetSortByOk() (*string, bool) {
+func (o *TopVideoPinsAnalyticsResponse) GetSortByOk() (*TopVideoPinsSortBy, bool) {
 	if o == nil || IsNil(o.SortBy) {
 		return nil, false
 	}
@@ -133,8 +133,8 @@ func (o *TopVideoPinsAnalyticsResponse) HasSortBy() bool {
 	return false
 }
 
-// SetSortBy gets a reference to the given string and assigns it to the SortBy field.
-func (o *TopVideoPinsAnalyticsResponse) SetSortBy(v string) {
+// SetSortBy gets a reference to the given TopVideoPinsSortBy and assigns it to the SortBy field.
+func (o *TopVideoPinsAnalyticsResponse) SetSortBy(v TopVideoPinsSortBy) {
 	o.SortBy = &v
 }
 

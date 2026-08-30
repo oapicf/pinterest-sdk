@@ -2,7 +2,7 @@
 /*
  * ReportingTimeZone.h
  *
- * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/) Specify the timezone to be applied for the reporting.
+ * Specify the timezone to be applied for the reporting.
  */
 
 #ifndef TINY_CPP_CLIENT_ReportingTimeZone_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief [Closed beta](/docs/getting-started/using-beta-and-restricted-features/) Specify the timezone to be applied for the reporting.
+/*! \brief Specify the timezone to be applied for the reporting.
  *
  *  \ingroup Models
  *

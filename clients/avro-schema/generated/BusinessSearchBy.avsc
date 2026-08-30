@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The names of fields that business accounts are searched by",
+  "name": "BusinessSearchBy",
+  "symbols": [
+    "FULL_NAME",
+    "USERNAME",
+    "BUSINESS_ID",
+    "EMAIL"
+  ]
+}

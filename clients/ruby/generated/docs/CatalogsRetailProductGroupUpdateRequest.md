@@ -9,7 +9,7 @@
 | **description** | **String** |  | [optional] |
 | **filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | [optional] |
 | **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] |
-| **name** | **String** |  | [optional] |
+| **name** | **String** | Name of catalog product group | [optional] |
 
 ## Example
 
@@ -22,7 +22,7 @@ instance = PinterestSdkClient::CatalogsRetailProductGroupUpdateRequest.new(
   description: null,
   filters: null,
   locale: null,
-  name: null
+  name: Most Popular
 )
 ```
 

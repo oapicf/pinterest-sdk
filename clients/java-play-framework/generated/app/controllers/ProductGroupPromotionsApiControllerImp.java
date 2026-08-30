@@ -1,14 +1,18 @@
 package controllers;
 
-import apimodels.Error;
+import java.math.BigDecimal;
+import apimodels.EntityStatus;
 import apimodels.Granularity;
 import java.time.LocalDate;
-import apimodels.ProductGroupAnalyticsResponseInner;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.ProductGroupAnalyticsItems;
 import apimodels.ProductGroupPromotion;
-import apimodels.ProductGroupPromotionCreateRequest;
-import apimodels.ProductGroupPromotionResponse;
-import apimodels.ProductGroupPromotionUpdateRequest;
+import apimodels.ProductGroupPromotions;
+import apimodels.ProductGroupPromotionsCreate;
 import apimodels.ProductGroupPromotionsList200Response;
+import apimodels.ProductGroupPromotionsUpdateWithRequiredBody;
+import apimodels.ReportingColumnSync;
 import apimodels.ReportingTimeZone;
 
 import play.mvc.Http;
@@ -20,12 +24,12 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ProductGroupPromotionsApiControllerImp extends ProductGroupPromotionsApiControllerImpInterface {
     @Override
-    public ProductGroupPromotionResponse productGroupPromotionsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest) throws Exception {
+    public ProductGroupPromotions productGroupPromotionsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ProductGroupPromotionsCreate productGroupPromotionsCreate) throws Exception {
         //Do your magic!!!
-        return new ProductGroupPromotionResponse();
+        return new ProductGroupPromotions();
     }
 
     @Override
@@ -35,21 +39,21 @@ public class ProductGroupPromotionsApiControllerImp extends ProductGroupPromotio
     }
 
     @Override
-    public ProductGroupPromotionsList200Response productGroupPromotionsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds, List<String> entityStatuses,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception {
+    public ProductGroupPromotionsList200Response productGroupPromotionsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order,  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds, List<EntityStatus> entityStatuses,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId) throws Exception {
         //Do your magic!!!
         return new ProductGroupPromotionsList200Response();
     }
 
     @Override
-    public ProductGroupPromotionResponse productGroupPromotionsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest) throws Exception {
+    public ProductGroupPromotions productGroupPromotionsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody) throws Exception {
         //Do your magic!!!
-        return new ProductGroupPromotionResponse();
+        return new ProductGroupPromotions();
     }
 
     @Override
-    public List<ProductGroupAnalyticsResponseInner> productGroupsAnalytics(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> productGroupIds, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) throws Exception {
+    public List<ProductGroupAnalyticsItems> productGroupsAnalytics(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> productGroupIds, @NotNull List<ReportingColumnSync> columns, @NotNull Granularity granularity,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) throws Exception {
         //Do your magic!!!
-        return new ArrayList<ProductGroupAnalyticsResponseInner>();
+        return new ArrayList<ProductGroupAnalyticsItems>();
     }
 
 }

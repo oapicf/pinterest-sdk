@@ -9,19 +9,10 @@ The class is defined in **[TopPinsAnalyticsResponse.java](../../src/main/java/or
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **dateAvailability** | [`TopPinsAnalyticsResponseDateAvailability`](TopPinsAnalyticsResponseDateAvailability.md) |  |  [optional property]
-**pins** | [`List&lt;TopPinsAnalyticsResponsePinsInner&gt;`](TopPinsAnalyticsResponsePinsInner.md) |  |  [optional property]
-**sortBy** | [**SortByEnum**](#SortByEnum) |  |  [optional property]
+**pins** | [`List&lt;TopPinsAnalyticsResponsePinsItems&gt;`](TopPinsAnalyticsResponsePinsItems.md) |  |  [optional property]
+**sortBy** | `TopPinsSortBy` |  |  [optional property]
 
 
 
-## SortByEnum
-
-Name | Value
----- | -----
-ENGAGEMENT | `"ENGAGEMENT"`
-SAVE | `"SAVE"`
-IMPRESSION | `"IMPRESSION"`
-OUTBOUND_CLICK | `"OUTBOUND_CLICK"`
-PIN_CLICK | `"PIN_CLICK"`
 
 

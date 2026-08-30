@@ -232,7 +232,7 @@ CatalogsFeedIngestionErrors::getACCOUNTFLAGGED()
 }
 
 void
-CatalogsFeedIngestionErrors::setACCOUNTFLAGGED(int  aCCOUNT_FLAGGED)
+CatalogsFeedIngestionErrors::setACCOUNTFLAGGED(int aCCOUNT_FLAGGED)
 {
 	this->aCCOUNT_FLAGGED = aCCOUNT_FLAGGED;
 }
@@ -244,7 +244,7 @@ CatalogsFeedIngestionErrors::getFETCHGOOGLESHEETNOTSHARED()
 }
 
 void
-CatalogsFeedIngestionErrors::setFETCHGOOGLESHEETNOTSHARED(int  fETCH_GOOGLE_SHEET_NOT_SHARED)
+CatalogsFeedIngestionErrors::setFETCHGOOGLESHEETNOTSHARED(int fETCH_GOOGLE_SHEET_NOT_SHARED)
 {
 	this->fETCH_GOOGLE_SHEET_NOT_SHARED = fETCH_GOOGLE_SHEET_NOT_SHARED;
 }
@@ -256,7 +256,7 @@ CatalogsFeedIngestionErrors::getIMAGEFILENOTACCESSIBLE()
 }
 
 void
-CatalogsFeedIngestionErrors::setIMAGEFILENOTACCESSIBLE(int  iMAGE_FILE_NOT_ACCESSIBLE)
+CatalogsFeedIngestionErrors::setIMAGEFILENOTACCESSIBLE(int iMAGE_FILE_NOT_ACCESSIBLE)
 {
 	this->iMAGE_FILE_NOT_ACCESSIBLE = iMAGE_FILE_NOT_ACCESSIBLE;
 }
@@ -268,7 +268,7 @@ CatalogsFeedIngestionErrors::getIMAGEFILENOTFOUND()
 }
 
 void
-CatalogsFeedIngestionErrors::setIMAGEFILENOTFOUND(int  iMAGE_FILE_NOT_FOUND)
+CatalogsFeedIngestionErrors::setIMAGEFILENOTFOUND(int iMAGE_FILE_NOT_FOUND)
 {
 	this->iMAGE_FILE_NOT_FOUND = iMAGE_FILE_NOT_FOUND;
 }
@@ -280,7 +280,7 @@ CatalogsFeedIngestionErrors::getIMAGEINVALIDFILE()
 }
 
 void
-CatalogsFeedIngestionErrors::setIMAGEINVALIDFILE(int  iMAGE_INVALID_FILE)
+CatalogsFeedIngestionErrors::setIMAGEINVALIDFILE(int iMAGE_INVALID_FILE)
 {
 	this->iMAGE_INVALID_FILE = iMAGE_INVALID_FILE;
 }
@@ -292,7 +292,7 @@ CatalogsFeedIngestionErrors::getIMAGELEVELINTERNALERROR()
 }
 
 void
-CatalogsFeedIngestionErrors::setIMAGELEVELINTERNALERROR(int  iMAGE_LEVEL_INTERNAL_ERROR)
+CatalogsFeedIngestionErrors::setIMAGELEVELINTERNALERROR(int iMAGE_LEVEL_INTERNAL_ERROR)
 {
 	this->iMAGE_LEVEL_INTERNAL_ERROR = iMAGE_LEVEL_INTERNAL_ERROR;
 }
@@ -304,7 +304,7 @@ CatalogsFeedIngestionErrors::getIMAGEMALFORMEDURL()
 }
 
 void
-CatalogsFeedIngestionErrors::setIMAGEMALFORMEDURL(int  iMAGE_MALFORMED_URL)
+CatalogsFeedIngestionErrors::setIMAGEMALFORMEDURL(int iMAGE_MALFORMED_URL)
 {
 	this->iMAGE_MALFORMED_URL = iMAGE_MALFORMED_URL;
 }
@@ -316,7 +316,7 @@ CatalogsFeedIngestionErrors::getLARGEPRODUCTCOUNTDECREASE()
 }
 
 void
-CatalogsFeedIngestionErrors::setLARGEPRODUCTCOUNTDECREASE(int  lARGE_PRODUCT_COUNT_DECREASE)
+CatalogsFeedIngestionErrors::setLARGEPRODUCTCOUNTDECREASE(int lARGE_PRODUCT_COUNT_DECREASE)
 {
 	this->lARGE_PRODUCT_COUNT_DECREASE = lARGE_PRODUCT_COUNT_DECREASE;
 }
@@ -328,7 +328,7 @@ CatalogsFeedIngestionErrors::getLINELEVELINTERNALERROR()
 }
 
 void
-CatalogsFeedIngestionErrors::setLINELEVELINTERNALERROR(int  lINE_LEVEL_INTERNAL_ERROR)
+CatalogsFeedIngestionErrors::setLINELEVELINTERNALERROR(int lINE_LEVEL_INTERNAL_ERROR)
 {
 	this->lINE_LEVEL_INTERNAL_ERROR = lINE_LEVEL_INTERNAL_ERROR;
 }

@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BillableEvent** | [**ActionType**](ActionType.md) |  | 
-**Countries** | Pointer to [**[]Country**](Country.md) |  | [optional] 
-**CreativeType** | Pointer to [**CreativeType**](CreativeType.md) |  | [optional] 
-**Currency** | [**Currency**](Currency.md) |  | 
-**ObjectiveType** | Pointer to [**ObjectiveType**](ObjectiveType.md) |  | [optional] 
-**OptimizationGoalMetadata** | Pointer to [**OptimizationGoalMetadata**](OptimizationGoalMetadata.md) |  | [optional] 
+**BillableEvent** | [**ActionType**](ActionType.md) | Ad group billable event type. | 
+**Countries** | Pointer to [**[]Country**](Country.md) | List of ISO 3166-1 alpha-2 country codes. | [optional] 
+**CreativeType** | Pointer to [**CreativeType**](CreativeType.md) | Creative type for the bid floor request. | [optional] 
+**Currency** | [**Currency**](Currency.md) | Currency for the bid floor value. | 
+**ObjectiveType** | Pointer to [**BidFloorObjectiveType**](BidFloorObjectiveType.md) | Campaign objective type. | [optional] 
+**OptimizationGoalMetadata** | Pointer to [**OptimizationGoalMetadata**](OptimizationGoalMetadata.md) | Optimization goal metadata. | [optional] 
 
 ## Methods
 
@@ -122,20 +122,20 @@ SetCurrency sets Currency field to given value.
 
 ### GetObjectiveType
 
-`func (o *BidFloorSpec) GetObjectiveType() ObjectiveType`
+`func (o *BidFloorSpec) GetObjectiveType() BidFloorObjectiveType`
 
 GetObjectiveType returns the ObjectiveType field if non-nil, zero value otherwise.
 
 ### GetObjectiveTypeOk
 
-`func (o *BidFloorSpec) GetObjectiveTypeOk() (*ObjectiveType, bool)`
+`func (o *BidFloorSpec) GetObjectiveTypeOk() (*BidFloorObjectiveType, bool)`
 
 GetObjectiveTypeOk returns a tuple with the ObjectiveType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetObjectiveType
 
-`func (o *BidFloorSpec) SetObjectiveType(v ObjectiveType)`
+`func (o *BidFloorSpec) SetObjectiveType(v BidFloorObjectiveType)`
 
 SetObjectiveType sets ObjectiveType field to given value.
 

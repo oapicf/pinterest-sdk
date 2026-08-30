@@ -52,21 +52,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setAttributes(ItemAttributesRequest  attributes);
+	void setAttributes(ItemAttributesRequest attributes);
 	/*! \brief Get The catalog item id in the merchant namespace
 	 */
 	std::string getItemId();
 
 	/*! \brief Set The catalog item id in the merchant namespace
 	 */
-	void setItemId(std::string  item_id);
+	void setItemId(std::string item_id);
 	/*! \brief Get 
 	 */
 	std::string getOperation();
 
 	/*! \brief Set 
 	 */
-	void setOperation(std::string  operation);
+	void setOperation(std::string operation);
 
 
     private:

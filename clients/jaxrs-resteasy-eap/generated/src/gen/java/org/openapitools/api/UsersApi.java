@@ -5,7 +5,7 @@ import org.openapitools.model.*;
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.UserAccountFollowedInterests200Response;
 
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the users API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public interface UsersApi  {
 
     @GET
@@ -40,14 +40,14 @@ public interface UsersApi  {
         })
     }, tags={ "user_account", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = UserAccountFollowedInterests200Response.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = UserAccountFollowedInterests200Response.class),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid parameters", response = Error.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The server could not understand the request due to invalid syntax.", response = PinterestLibError.class),
         
-        @io.swagger.annotations.ApiResponse(code = 401, message = "Authorization failed", response = Error.class),
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Access is unauthorized.", response = PinterestLibError.class),
         
-        @io.swagger.annotations.ApiResponse(code = 404, message = "User not found", response = Error.class),
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The server cannot find the requested resource.", response = PinterestLibError.class),
         
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = PinterestLibError.class) })
     public Response userAccountFollowedInterests( @Pattern(regexp="(?!^\\d+$)^.+$") @PathParam("username") String username, @QueryParam("bookmark") String bookmark, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize,@Context SecurityContext securityContext);
 }

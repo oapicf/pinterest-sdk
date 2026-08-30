@@ -1,11 +1,12 @@
 # DeletePartnerAssetAccessBody
 
+An object with a list of partner asset accesses to delete.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accesses** | [**List[DeletePartnerAssetAccessBodyAccessesInner]**](DeletePartnerAssetAccessBodyAccessesInner.md) |  | 
+**accesses** | [**List[DeletePartnerAssetAccessItem]**](DeletePartnerAssetAccessItem.md) | List of partner asset accesses to delete. | 
 
 ## Example
 

@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `bookmark` | string
-`items` | [Array&lt;UserSummary&gt;](UserSummary.md)
+`items` | [Array&lt;FollowUser&gt;](FollowUser.md)
 
 ## Example
 

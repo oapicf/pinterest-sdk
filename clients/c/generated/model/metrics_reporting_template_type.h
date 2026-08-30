@@ -1,0 +1,32 @@
+/*
+ * metrics_reporting_template_type.h
+ *
+ * Reporting template type
+ */
+
+#ifndef _metrics_reporting_template_type_H_
+#define _metrics_reporting_template_type_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct metrics_reporting_template_type_t metrics_reporting_template_type_t;
+
+
+// Enum  for metrics_reporting_template_type
+
+typedef enum { pinterest_rest_api_metrics_reporting_template_type__NULL = 0, pinterest_rest_api_metrics_reporting_template_type__UNSPECIFIED, pinterest_rest_api_metrics_reporting_template_type__BULK, pinterest_rest_api_metrics_reporting_template_type__OVERVIEW, pinterest_rest_api_metrics_reporting_template_type__TABLE, pinterest_rest_api_metrics_reporting_template_type__MMM, pinterest_rest_api_metrics_reporting_template_type__BRAND_CATEGORY } pinterest_rest_api_metrics_reporting_template_type__e;
+
+char* metrics_reporting_template_type_metrics_reporting_template_type_ToString(pinterest_rest_api_metrics_reporting_template_type__e metrics_reporting_template_type);
+
+pinterest_rest_api_metrics_reporting_template_type__e metrics_reporting_template_type_metrics_reporting_template_type_FromString(char* metrics_reporting_template_type);
+
+cJSON *metrics_reporting_template_type_convertToJSON(pinterest_rest_api_metrics_reporting_template_type__e metrics_reporting_template_type);
+
+pinterest_rest_api_metrics_reporting_template_type__e metrics_reporting_template_type_parseFromJSON(cJSON *metrics_reporting_template_typeJSON);
+
+#endif /* _metrics_reporting_template_type_H_ */
+

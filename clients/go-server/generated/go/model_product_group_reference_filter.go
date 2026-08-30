@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,8 +23,61 @@ type ProductGroupReferenceFilter struct {
 
 	PRODUCT_GROUP CatalogsProductGroupMultipleStringCriteria `json:"PRODUCT_GROUP"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into ProductGroupReferenceFilter
+func (o *ProductGroupReferenceFilter) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"PRODUCT_GROUP",
+	}
 
-// AssertProductGroupReferenceFilterRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"PRODUCT_GROUP": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"PRODUCT_GROUP": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded ProductGroupReferenceFilter
+
+	if value, exists := allProperties["PRODUCT_GROUP"]; exists {
+		if err = json.Unmarshal(value, &decoded.PRODUCT_GROUP); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertProductGroupReferenceFilterRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertProductGroupReferenceFilterRequired(obj ProductGroupReferenceFilter) error {
 	elements := map[string]interface{}{
 		"PRODUCT_GROUP": obj.PRODUCT_GROUP,
@@ -30,10 +88,16 @@ func AssertProductGroupReferenceFilterRequired(obj ProductGroupReferenceFilter) 
 		}
 	}
 
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaRequired(obj.PRODUCT_GROUP); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertProductGroupReferenceFilterConstraints checks if the values respects the defined constraints
 func AssertProductGroupReferenceFilterConstraints(obj ProductGroupReferenceFilter) error {
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaConstraints(obj.PRODUCT_GROUP); err != nil {
+		return err
+	}
 	return nil
 }

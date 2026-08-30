@@ -2,7 +2,7 @@ package org.openapitools.server.model
 
 
 /**
- *  This field contains multiple options to a quiz question.
+ * This field contains multiple options to a quiz question.
  *
  * @param id  for example: ''null''
  * @param text  for example: ''null''

@@ -1,0 +1,20 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Exception details for a batch operation item.",
+  "name": "PinterestLibBatchItemException",
+  "fields": [
+    {
+      "name": "code",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "message",
+      "type": "string",
+      "doc": ""
+    }
+  ]
+
+}

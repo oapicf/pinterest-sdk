@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CreateInvitesResultsResponseArray::CreateInvitesResultsResponseArray()
 {
-	items = std::list<CreateInvitesResultsResponseArray_items_inner>();
+	items = std::list<InviteActionResultItem>();
 }
 
 CreateInvitesResultsResponseArray::CreateInvitesResultsResponseArray(std::string jsonString)
@@ -31,8 +31,8 @@ CreateInvitesResultsResponseArray::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<CreateInvitesResultsResponseArray_items_inner> items_list;
-        CreateInvitesResultsResponseArray_items_inner element;
+        std::list<InviteActionResultItem> items_list;
+        InviteActionResultItem element;
         for(auto& var : value.array_range())
         {
 
@@ -57,12 +57,12 @@ CreateInvitesResultsResponseArray::toJson()
 
 
 
-    std::list<CreateInvitesResultsResponseArray_items_inner> items_list = getItems();
+    std::list<InviteActionResultItem> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        CreateInvitesResultsResponseArray_items_inner obj = var;
+        InviteActionResultItem obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -74,14 +74,14 @@ CreateInvitesResultsResponseArray::toJson()
 
 }
 
-std::list<CreateInvitesResultsResponseArray_items_inner>
+std::list<InviteActionResultItem>
 CreateInvitesResultsResponseArray::getItems()
 {
 	return items;
 }
 
 void
-CreateInvitesResultsResponseArray::setItems(std::list <CreateInvitesResultsResponseArray_items_inner> items)
+CreateInvitesResultsResponseArray::setItems(std::list<InviteActionResultItem> items)
 {
 	this->items = items;
 }

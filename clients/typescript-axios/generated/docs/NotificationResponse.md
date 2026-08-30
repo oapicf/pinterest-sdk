@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **boolean** | Returns true if the notification accepted. | [optional] [default to undefined]
-**received_at** | **number** | Received time. Unix timestamp in seconds. | [optional] [default to undefined]
 **error_msg** | **string** | error message when success is false | [optional] [default to undefined]
+**received_at** | **number** | Received time. Unix timestamp in seconds. | [optional] [default to undefined]
+**success** | **boolean** | Returns true if the notification accepted. | [optional] [default to undefined]
 
 ## Example
 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 import { NotificationResponse } from './api';
 
 const instance: NotificationResponse = {
-    success,
-    received_at,
     error_msg,
+    received_at,
+    success,
 };
 ```
 

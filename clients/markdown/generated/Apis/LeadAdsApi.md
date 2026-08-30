@@ -12,7 +12,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a name="adAccountsSubscriptions/delById"></a>
 # **adAccountsSubscriptions/delById**
-> adAccountsSubscriptions/delById(ad\_account\_id, subscription\_id)
+> LeadSubscription adAccountsSubscriptions/delById(ad\_account\_id, subscription\_id)
 
 Delete lead ads subscription
 
@@ -27,7 +27,7 @@ Delete lead ads subscription
 
 ### Return type
 
-null (empty response body)
+[**LeadSubscription**](../Models/LeadSubscription.md)
 
 ### Authorization
 

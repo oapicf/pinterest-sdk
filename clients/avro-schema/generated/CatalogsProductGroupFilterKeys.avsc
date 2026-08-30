@@ -140,11 +140,6 @@
       "doc": ""
     },
     {
-      "name": "PRODUCT_GROUP",
-      "type": "model.CatalogsProductGroupMultipleStringCriteria",
-      "doc": ""
-    },
-    {
       "name": "CUSTOM_NUMBER_0",
       "type": "model.CatalogsProductGroupUint32Criteria",
       "doc": ""
@@ -171,6 +166,16 @@
     },
     {
       "name": "TITLE_KEYWORDS",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "PINTEREST_PRODUCT_CATEGORIES",
+      "type": "model.CatalogsProductGroupMultiplePinterestProductCategoryCriteria",
+      "doc": ""
+    },
+    {
+      "name": "PRODUCT_GROUP",
       "type": "model.CatalogsProductGroupMultipleStringCriteria",
       "doc": ""
     }

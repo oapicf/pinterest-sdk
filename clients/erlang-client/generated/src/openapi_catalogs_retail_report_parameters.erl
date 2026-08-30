@@ -6,7 +6,7 @@
 
 -type openapi_catalogs_retail_report_parameters() ::
     #{ 'catalog_type' := binary(),
-       'report' := openapi_catalogs_hotel_report_parameters_report:openapi_catalogs_hotel_report_parameters_report()
+       'report' := openapi_catalogs_retail_report_parameters_report:openapi_catalogs_retail_report_parameters_report()
      }.
 
 encode(#{ 'catalog_type' := CatalogType,

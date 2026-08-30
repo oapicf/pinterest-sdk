@@ -7,7 +7,7 @@
     {
       "name": "AUDIENCE_ID",
       "type": ["null", "string"],
-      "doc": "",
+      "doc": "Audience ID for the multiplier.",
       "default": null
     }
   ]

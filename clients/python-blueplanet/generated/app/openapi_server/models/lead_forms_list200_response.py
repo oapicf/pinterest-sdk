@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.lead_form_response import LeadFormResponse  # noqa: F401,E501
+from app.openapi_server.models.lead_form import LeadForm  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,17 +16,17 @@ class LeadFormsList200Response(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, bookmark: str=None, items: List[LeadFormResponse]=None):  # noqa: E501
+    def __init__(self, bookmark: str=None, items: List[LeadForm]=None):  # noqa: E501
         """LeadFormsList200Response - a model defined in Swagger
 
         :param bookmark: The bookmark of this LeadFormsList200Response.  # noqa: E501
         :type bookmark: str
         :param items: The items of this LeadFormsList200Response.  # noqa: E501
-        :type items: List[LeadFormResponse]
+        :type items: List[LeadForm]
         """
         self.swagger_types = {
             'bookmark': str,
-            'items': List[LeadFormResponse]
+            'items': List[LeadForm]
         }
 
         self.attribute_map = {
@@ -70,22 +70,22 @@ class LeadFormsList200Response(Model):
         self._bookmark = bookmark
 
     @property
-    def items(self) -> List[LeadFormResponse]:
+    def items(self) -> List[LeadForm]:
         """Gets the items of this LeadFormsList200Response.
 
 
         :return: The items of this LeadFormsList200Response.
-        :rtype: List[LeadFormResponse]
+        :rtype: List[LeadForm]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[LeadFormResponse]):
+    def items(self, items: List[LeadForm]):
         """Sets the items of this LeadFormsList200Response.
 
 
         :param items: The items of this LeadFormsList200Response.
-        :type items: List[LeadFormResponse]
+        :type items: List[LeadForm]
         """
         if items is None:
             raise ValueError("Invalid value for `items`, must not be `None`")  # noqa: E501

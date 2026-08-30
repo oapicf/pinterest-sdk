@@ -3,37 +3,45 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.UpdatePartnerAssetAccessBodyAccessesInner;
+import org.openapitools.model.UpdatePartnerAssetAccessItem;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * An object with a list of partner asset accesses to assign or update.
+ */
+@ApiModel(description="An object with a list of partner asset accesses to assign or update.")
 
 public class UpdatePartnerAssetAccessBody  {
   
-  @ApiModelProperty(required = true, value = "")
-
-  private List<UpdatePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
  /**
-   * Get accesses
+  * List of partner asset accesses to assign or update.
+  */
+  @ApiModelProperty(required = true, value = "List of partner asset accesses to assign or update.")
+
+  private List<UpdatePartnerAssetAccessItem> accesses = new ArrayList<>();
+ /**
+   * List of partner asset accesses to assign or update.
    * @return accesses
   **/
   @JsonProperty("accesses")
-  public List<UpdatePartnerAssetAccessBodyAccessesInner> getAccesses() {
+  public List<UpdatePartnerAssetAccessItem> getAccesses() {
     return accesses;
   }
 
-  public void setAccesses(List<UpdatePartnerAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<UpdatePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
-  public UpdatePartnerAssetAccessBody accesses(List<UpdatePartnerAssetAccessBodyAccessesInner> accesses) {
+  public UpdatePartnerAssetAccessBody accesses(List<UpdatePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
 
-  public UpdatePartnerAssetAccessBody addAccessesItem(UpdatePartnerAssetAccessBodyAccessesInner accessesItem) {
+  public UpdatePartnerAssetAccessBody addAccessesItem(UpdatePartnerAssetAccessItem accessesItem) {
     this.accesses.add(accessesItem);
     return this;
   }
@@ -70,10 +78,7 @@ public class UpdatePartnerAssetAccessBody  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -70,13 +70,36 @@ AnalyticsMetricsResponse <- R6::R6Class(
       AnalyticsMetricsResponseObject <- list()
       if (!is.null(self$`daily_metrics`)) {
         AnalyticsMetricsResponseObject[["daily_metrics"]] <-
-          lapply(self$`daily_metrics`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`daily_metrics`)
       }
       if (!is.null(self$`summary_metrics`)) {
         AnalyticsMetricsResponseObject[["summary_metrics"]] <-
           self$`summary_metrics`
       }
       return(AnalyticsMetricsResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

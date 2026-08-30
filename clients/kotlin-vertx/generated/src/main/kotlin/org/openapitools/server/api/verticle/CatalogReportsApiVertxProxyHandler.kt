@@ -19,9 +19,9 @@ import com.google.gson.Gson
 import org.openapitools.server.api.model.CatalogsCreateReportResponse
 import org.openapitools.server.api.model.CatalogsReport
 import org.openapitools.server.api.model.CatalogsReportParameters
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.CatalogsReportStatsParameters
+import org.openapitools.server.api.model.PinterestLibError
 import org.openapitools.server.api.model.ReportsStats200Response
-import org.openapitools.server.api.model.ReportsStatsParametersParameter
 
 class CatalogReportsApiVertxProxyHandler(private val vertx: Vertx, private val service: CatalogReportsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -110,12 +110,12 @@ class CatalogReportsApiVertxProxyHandler(private val vertx: Vertx, private val s
                     if (parametersParam == null) {
                         throw IllegalArgumentException("parameters is required")
                     }
-                    val parameters = Gson().fromJson(parametersParam.encode(), ReportsStatsParametersParameter::class.java)
+                    val parameters = Gson().fromJson(parametersParam.encode(), CatalogsReportStatsParameters::class.java)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.reportsStats(parameters,adAccountId,pageSize,bookmark,context)
+                        val result = service.reportsStats(parameters,adAccountId,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

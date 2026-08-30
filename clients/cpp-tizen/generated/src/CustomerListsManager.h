@@ -6,10 +6,11 @@
 #include <list>
 #include <glib.h>
 #include "CustomerList.h"
-#include "CustomerListRequest.h"
-#include "CustomerListUpdateRequest.h"
+#include "CustomerListCreate.h"
+#include "CustomerListUpdateWithRequiredBody.h"
 #include "Customer_lists_list_200_response.h"
-#include "Error.h"
+#include "Pinterest.Lib.Error.h"
+#include "Pinterest.Lib.PaginationOrder.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -30,29 +31,29 @@ public:
 
 /*! \brief Create customer lists. *Synchronous*
  *
- * <p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the <a href=\"https://developer.pinterest.com/docs/api/v5/audiences-create\" target=\"blank\">create audience endpoint</a>.</p>
- * \param adAccountId Unique identifier of an ad account. *Required*
- * \param customerListRequest Parameters to get Customer lists info *Required*
+ * Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
+ * \param adAccountId  *Required*
+ * \param customerListCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool customerListsCreateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<CustomerListRequest> customerListRequest, 
+	std::string adAccountId, std::shared_ptr<CustomerListCreate> customerListCreate, 
 	void(* handler)(CustomerList, Error, void* )
 	, void* userData);
 
 /*! \brief Create customer lists. *Asynchronous*
  *
- * <p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the <a href=\"https://developer.pinterest.com/docs/api/v5/audiences-create\" target=\"blank\">create audience endpoint</a>.</p>
- * \param adAccountId Unique identifier of an ad account. *Required*
- * \param customerListRequest Parameters to get Customer lists info *Required*
+ * Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
+ * \param adAccountId  *Required*
+ * \param customerListCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool customerListsCreateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<CustomerListRequest> customerListRequest, 
+	std::string adAccountId, std::shared_ptr<CustomerListCreate> customerListCreate, 
 	void(* handler)(CustomerList, Error, void* )
 	, void* userData);
 
@@ -60,8 +61,8 @@ bool customerListsCreateAsync(char * accessToken,
 /*! \brief Get customer list. *Synchronous*
  *
  * Gets a specific customer list given the customer list ID.
- * \param adAccountId Unique identifier of an ad account. *Required*
- * \param customerListId Unique identifier of a customer list *Required*
+ * \param adAccountId  *Required*
+ * \param customerListId Customer list ID. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -74,8 +75,8 @@ bool customerListsGetSync(char * accessToken,
 /*! \brief Get customer list. *Asynchronous*
  *
  * Gets a specific customer list given the customer list ID.
- * \param adAccountId Unique identifier of an ad account. *Required*
- * \param customerListId Unique identifier of a customer list *Required*
+ * \param adAccountId  *Required*
+ * \param customerListId Customer list ID. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -88,64 +89,66 @@ bool customerListsGetAsync(char * accessToken,
 
 /*! \brief Get customer lists. *Synchronous*
  *
- * <p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
- * \param adAccountId Unique identifier of an ad account. *Required*
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
- * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+ * Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
+ * \param adAccountId  *Required*
  * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+ * \param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+ * \param excludeNca When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool customerListsListSync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, bool excludeNca, 
 	void(* handler)(Customer_lists_list_200_response, Error, void* )
 	, void* userData);
 
 /*! \brief Get customer lists. *Asynchronous*
  *
- * <p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
- * \param adAccountId Unique identifier of an ad account. *Required*
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
- * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+ * Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
+ * \param adAccountId  *Required*
  * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+ * \param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+ * \param excludeNca When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool customerListsListAsync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, bool excludeNca, 
 	void(* handler)(Customer_lists_list_200_response, Error, void* )
 	, void* userData);
 
 
 /*! \brief Update customer list. *Synchronous*
  *
- * <p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
- * \param adAccountId Unique identifier of an ad account. *Required*
- * \param customerListId Unique identifier of a customer list *Required*
- * \param customerListUpdateRequest  *Required*
+ * Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \"CUSTOMER_LIST\" audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
+ * \param adAccountId  *Required*
+ * \param customerListId Customer list ID. *Required*
+ * \param customerListUpdateWithRequiredBody  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool customerListsUpdateSync(char * accessToken,
-	std::string adAccountId, std::string customerListId, std::shared_ptr<CustomerListUpdateRequest> customerListUpdateRequest, 
+	std::string adAccountId, std::string customerListId, std::shared_ptr<CustomerListUpdateWithRequiredBody> customerListUpdateWithRequiredBody, 
 	void(* handler)(CustomerList, Error, void* )
 	, void* userData);
 
 /*! \brief Update customer list. *Asynchronous*
  *
- * <p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
- * \param adAccountId Unique identifier of an ad account. *Required*
- * \param customerListId Unique identifier of a customer list *Required*
- * \param customerListUpdateRequest  *Required*
+ * Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \"CUSTOMER_LIST\" audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
+ * \param adAccountId  *Required*
+ * \param customerListId Customer list ID. *Required*
+ * \param customerListUpdateWithRequiredBody  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool customerListsUpdateAsync(char * accessToken,
-	std::string adAccountId, std::string customerListId, std::shared_ptr<CustomerListUpdateRequest> customerListUpdateRequest, 
+	std::string adAccountId, std::string customerListId, std::shared_ptr<CustomerListUpdateWithRequiredBody> customerListUpdateWithRequiredBody, 
 	void(* handler)(CustomerList, Error, void* )
 	, void* userData);
 

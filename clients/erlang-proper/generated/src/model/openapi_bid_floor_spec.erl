@@ -13,7 +13,7 @@
   | {'countries', list(openapi_country:openapi_country()) }
   | {'creative_type', openapi_creative_type:openapi_creative_type() }
   | {'currency', openapi_currency:openapi_currency() }
-  | {'objective_type', openapi_objective_type:openapi_objective_type() }
+  | {'objective_type', openapi_bid_floor_objective_type:openapi_bid_floor_objective_type() }
   | {'optimization_goal_metadata', openapi_optimization_goal_metadata:openapi_optimization_goal_metadata() }
   ].
 
@@ -26,7 +26,7 @@ openapi_bid_floor_spec(Fields) ->
             , {'countries', list(openapi_country:openapi_country()) }
             , {'creative_type', openapi_creative_type:openapi_creative_type() }
             , {'currency', openapi_currency:openapi_currency() }
-            , {'objective_type', openapi_objective_type:openapi_objective_type() }
+            , {'objective_type', openapi_bid_floor_objective_type:openapi_bid_floor_objective_type() }
             , {'optimization_goal_metadata', openapi_optimization_goal_metadata:openapi_optimization_goal_metadata() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

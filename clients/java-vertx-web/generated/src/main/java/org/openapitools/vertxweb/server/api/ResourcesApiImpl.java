@@ -1,10 +1,12 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.AdAccountsCountryResponse;
-import org.openapitools.vertxweb.server.model.BookClosedResponse;
-import org.openapitools.vertxweb.server.model.DeliveryMetricsResponse;
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.SingleInterestTargetingOptionResponse;
+import org.openapitools.vertxweb.server.model.AdAccountCountriesGet200Response;
+import org.openapitools.vertxweb.server.model.BookClosed;
+import org.openapitools.vertxweb.server.model.DeliveryMetricsGet200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PublicTargetingType;
+import org.openapitools.vertxweb.server.model.ReportType;
+import org.openapitools.vertxweb.server.model.SingleInterestTargetingOption;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -18,15 +20,15 @@ import java.util.Map;
 // Implement this class
 
 public class ResourcesApiImpl implements ResourcesApi {
-    public Future<ApiResponse<AdAccountsCountryResponse>> adAccountCountriesGet() {
+    public Future<ApiResponse<AdAccountCountriesGet200Response>> adAccountCountriesGet() {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<DeliveryMetricsResponse>> deliveryMetricsGet(String reportType) {
+    public Future<ApiResponse<DeliveryMetricsGet200Response>> deliveryMetricsGet(ReportType reportType) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<SingleInterestTargetingOptionResponse>> interestTargetingOptionsGet(String interestId) {
+    public Future<ApiResponse<SingleInterestTargetingOption>> interestTargetingOptionsGet(String interestId) {
         return Future.failedFuture(new HttpException(501));
     }
 
@@ -34,11 +36,11 @@ public class ResourcesApiImpl implements ResourcesApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<BookClosedResponse>> metricsReadyStateGet(String date) {
+    public Future<ApiResponse<BookClosed>> metricsReadyStateGet(String date) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<List<Object>>> targetingOptionsGet(String targetingType, String clientId, String oauthSignature, String timestamp, String adAccountId) {
+    public Future<ApiResponse<List<Object>>> targetingOptionsGet(PublicTargetingType targetingType, String adAccountId, String clientId, String oauthSignature, String timestamp) {
         return Future.failedFuture(new HttpException(501));
     }
 

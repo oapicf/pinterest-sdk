@@ -9,7 +9,7 @@ The class is defined in **[BillingInvoicesGet200Response.java](../../src/main/ja
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;BillingInvoiceResponse&gt;`](BillingInvoiceResponse.md) |  | 
+**items** | [`List&lt;BillingInvoice&gt;`](BillingInvoice.md) |  | 
 
 
 

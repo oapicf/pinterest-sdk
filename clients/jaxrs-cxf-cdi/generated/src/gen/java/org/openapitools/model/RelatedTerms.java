@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.RelatedTermsRelatedTermsListInner;
+import org.openapitools.model.RelatedTermsRelatedTermsListItems;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -23,7 +23,7 @@ public class RelatedTerms   {
 
   private Integer relatedTermCount;
 
-  private List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>();
+  private List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList = new ArrayList<>();
 
   /**
    * First input term. For example, if you pass \&quot;?terms&#x3D;clothes,workout\&quot;, then id will be \&quot;clothes\&quot;
@@ -66,7 +66,7 @@ public class RelatedTerms   {
   /**
    * The id of the advertiser.
    **/
-  public RelatedTerms relatedTermsList(List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList) {
+  public RelatedTerms relatedTermsList(List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList) {
     this.relatedTermsList = relatedTermsList;
     return this;
   }
@@ -74,14 +74,14 @@ public class RelatedTerms   {
   
   @ApiModelProperty(value = "The id of the advertiser.")
   @JsonProperty("related_terms_list")
-  public List<@Valid RelatedTermsRelatedTermsListInner> getRelatedTermsList() {
+  public List<@Valid RelatedTermsRelatedTermsListItems> getRelatedTermsList() {
     return relatedTermsList;
   }
-  public void setRelatedTermsList(List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList) {
+  public void setRelatedTermsList(List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList) {
     this.relatedTermsList = relatedTermsList;
   }
 
-  public RelatedTerms addRelatedTermsListItem(RelatedTermsRelatedTermsListInner relatedTermsListItem) {
+  public RelatedTerms addRelatedTermsListItem(RelatedTermsRelatedTermsListItems relatedTermsListItem) {
     if (this.relatedTermsList == null) {
       this.relatedTermsList = new ArrayList<>();
     }
@@ -127,10 +127,7 @@ public class RelatedTerms   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

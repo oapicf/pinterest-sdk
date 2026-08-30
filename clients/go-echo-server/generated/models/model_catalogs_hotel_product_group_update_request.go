@@ -9,5 +9,6 @@ type CatalogsHotelProductGroupUpdateRequest struct {
 
 	Filters CatalogsHotelProductGroupFilters `json:"filters,omitempty"`
 
+	// Name of catalog product group
 	Name string `json:"name,omitempty"`
 }

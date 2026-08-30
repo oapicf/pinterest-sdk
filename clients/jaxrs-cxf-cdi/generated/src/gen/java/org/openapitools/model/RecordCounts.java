@@ -7,15 +7,12 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
-/**
- * Record processing counts
- **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-@ApiModel(description = "Record processing counts")
+
 public class RecordCounts   {
   
   private Integer invalid;
@@ -33,7 +30,7 @@ public class RecordCounts   {
   }
 
   
-  @ApiModelProperty(example = "50", required = true, value = "Number of invalid records processed")
+  @ApiModelProperty(required = true, value = "Number of invalid records processed")
   @JsonProperty("invalid")
   @NotNull
   public Integer getInvalid() {
@@ -53,7 +50,7 @@ public class RecordCounts   {
   }
 
   
-  @ApiModelProperty(example = "1000", required = true, value = "Number of records processed")
+  @ApiModelProperty(required = true, value = "Number of records processed")
   @JsonProperty("processed")
   @NotNull
   public Integer getProcessed() {
@@ -73,7 +70,7 @@ public class RecordCounts   {
   }
 
   
-  @ApiModelProperty(example = "950", required = true, value = "Number of valid records processed")
+  @ApiModelProperty(required = true, value = "Number of valid records processed")
   @JsonProperty("valid")
   @NotNull
   public Integer getValid() {
@@ -121,10 +118,7 @@ public class RecordCounts   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

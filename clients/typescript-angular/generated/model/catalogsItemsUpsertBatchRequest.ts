@@ -9,7 +9,6 @@
  */
 import { ItemUpsertBatchRecord } from './itemUpsertBatchRecord';
 import { Country } from './country';
-import { BatchOperation } from './batchOperation';
 
 
 /**
@@ -25,7 +24,7 @@ export interface CatalogsItemsUpsertBatchRequest {
      * We recommend using the CatalogsLocale values.
      */
     language: CatalogsItemsUpsertBatchRequest.LanguageEnum;
-    operation: BatchOperation;
+    operation: CatalogsItemsUpsertBatchRequest.OperationEnum;
 }
 export namespace CatalogsItemsUpsertBatchRequest {
     export const LanguageEnum = {
@@ -118,7 +117,7 @@ export namespace CatalogsItemsUpsertBatchRequest {
         Nb: 'NB',
         Ne: 'NE',
         Nl2: 'NL',
-        No: 'NO',
+        False: 'false',
         Pl: 'PL',
         Pt: 'PT',
         Ro: 'RO',
@@ -138,6 +137,10 @@ export namespace CatalogsItemsUpsertBatchRequest {
         Zh: 'ZH'
     } as const;
     export type LanguageEnum = typeof LanguageEnum[keyof typeof LanguageEnum];
+    export const OperationEnum = {
+        Upsert: 'UPSERT'
+    } as const;
+    export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }
 
 

@@ -11,10 +11,10 @@ Name | Type
 `appVersionNumber` | string
 `clientTimestamp` | number
 `error` | [IntegrationLogClientError](IntegrationLogClientError.md)
-`eventType` | string
+`eventType` | [IntegrationLogEventType](IntegrationLogEventType.md)
 `externalBusinessId` | string
 `feedProfileId` | string
-`logLevel` | string
+`logLevel` | [IntegrationLogLevel](IntegrationLogLevel.md)
 `merchantId` | string
 `message` | string
 `platformVersionNumber` | string

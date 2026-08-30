@@ -128,6 +128,7 @@ class CatalogsUpdatableHotelAttributes(Model):
     def address(self) -> CatalogsHotelAddress:
         """Gets the address of this CatalogsUpdatableHotelAttributes.
 
+        Hotel address  # noqa: E501
 
         :return: The address of this CatalogsUpdatableHotelAttributes.
         :rtype: CatalogsHotelAddress
@@ -138,6 +139,7 @@ class CatalogsUpdatableHotelAttributes(Model):
     def address(self, address: CatalogsHotelAddress):
         """Sets the address of this CatalogsUpdatableHotelAttributes.
 
+        Hotel address  # noqa: E501
 
         :param address: The address of this CatalogsUpdatableHotelAttributes.
         :type address: CatalogsHotelAddress
@@ -356,6 +358,7 @@ class CatalogsUpdatableHotelAttributes(Model):
     def guest_ratings(self) -> CatalogsHotelGuestRatings:
         """Gets the guest_ratings of this CatalogsUpdatableHotelAttributes.
 
+        If specified, you must provide all properties  # noqa: E501
 
         :return: The guest_ratings of this CatalogsUpdatableHotelAttributes.
         :rtype: CatalogsHotelGuestRatings
@@ -366,6 +369,7 @@ class CatalogsUpdatableHotelAttributes(Model):
     def guest_ratings(self, guest_ratings: CatalogsHotelGuestRatings):
         """Sets the guest_ratings of this CatalogsUpdatableHotelAttributes.
 
+        If specified, you must provide all properties  # noqa: E501
 
         :param guest_ratings: The guest_ratings of this CatalogsUpdatableHotelAttributes.
         :type guest_ratings: CatalogsHotelGuestRatings

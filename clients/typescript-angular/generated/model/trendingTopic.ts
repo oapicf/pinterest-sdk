@@ -19,9 +19,13 @@ export interface TrendingTopic {
      */
     description: string;
     /**
+     * Unique identifier for the trending topic
+     */
+    id: string;
+    /**
      * Month-over-month growth percentage
      */
-    percent_growth_mom: number;
+    percent_growth_mom?: number;
     /**
      * Array of pin images related to this trend (up to 6)
      */

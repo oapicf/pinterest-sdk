@@ -24,6 +24,7 @@ void
 TrendingTopic::__init()
 {
 	//description = std::string();
+	//id = std::string();
 	//percent_growth_mom = int(0);
 	//new std::list()std::list> pins;
 	//new std::list()std::list> related_interests;
@@ -39,6 +40,11 @@ TrendingTopic::__cleanup()
 	//
 	//delete description;
 	//description = NULL;
+	//}
+	//if(id != NULL) {
+	//
+	//delete id;
+	//id = NULL;
 	//}
 	//if(percent_growth_mom != NULL) {
 	//
@@ -85,6 +91,17 @@ TrendingTopic::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&description, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
 		} else {
 			
 		}
@@ -212,6 +229,15 @@ TrendingTopic::toJson()
 	}
 	const gchar *descriptionKey = "description";
 	json_object_set_member(pJsonObject, descriptionKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
 	if (isprimitive("int")) {
 		int obj = getPercentGrowthMom();
 		node = converttoJson(&obj, "int", "");
@@ -322,6 +348,18 @@ void
 TrendingTopic::setDescription(std::string  description)
 {
 	this->description = description;
+}
+
+std::string
+TrendingTopic::getId()
+{
+	return id;
+}
+
+void
+TrendingTopic::setId(std::string  id)
+{
+	this->id = id;
 }
 
 int

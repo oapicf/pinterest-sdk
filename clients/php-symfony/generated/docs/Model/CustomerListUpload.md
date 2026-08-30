@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **errorCounts** | [**OpenAPI\Server\Model\ErrorDetail**](ErrorDetail.md) | Error counts by error code | [optional] 
 **id** | **string** | Customer List Upload ID. | 
 **operation** | [**OpenAPI\Server\Model\UserListOperationType**](UserListOperationType.md) |  | 
-**recordCounts** | [**OpenAPI\Server\Model\RecordCounts**](RecordCounts.md) |  | [optional] 
-**state** | **string** | Workload processing state | 
+**recordCounts** | [**OpenAPI\Server\Model\RecordCounts**](RecordCounts.md) | Record processing counts | [optional] 
+**state** | [**OpenAPI\Server\Model\WorkloadState**](WorkloadState.md) |  | 
 **updatedTime** | **int** | Customer List Upload updated_time. Epoch (seconds). | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

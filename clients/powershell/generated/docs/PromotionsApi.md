@@ -15,7 +15,7 @@ Method | HTTP request | Description
 # **Invoke-PromotionsCreate**
 > PromotionsResponse Invoke-PromotionsCreate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PromotionCreateRequest] <PSCustomObject[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PromotionCreate] <PSCustomObject[]><br>
 
 Create promotions
 
@@ -30,11 +30,11 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $PromotionTemplateValue = Initialize-PromotionTemplateValue -Amount 100 -CurrencyCode "UNK" -CustomText "My promotion" -Percent 10
-$PromotionCreateRequest = Initialize-PromotionCreateRequest -DiscountStatus "OTHER" -EndTime 1678003860 -ExternalId "abc" -PlatformType "DEFAULT" -PromotionCode "blackfriday10" -PromotionCustomId "freeshipping_2025" -PromotionTitle "Black Friday 10% off" -PromotionType "VARIABLE" -StartTime 1677003860 -TemplateValues $PromotionTemplateValue # PromotionCreateRequest[] | List of promotions to create, size limit [1, 30].
+$PromotionCreate = Initialize-PromotionCreate -DiscountStatus "OTHER" -EndTime 0 -ExternalId "MyExternalId" -PlatformType "MyPlatformType" -PromotionCode "MyPromotionCode" -PromotionCustomId "MyPromotionCustomId" -PromotionTitle "MyPromotionTitle" -PromotionType "VARIABLE" -StartTime 0 -TemplateValues $PromotionTemplateValue # PromotionCreate[] | 
 
 # Create promotions
 try {
-    $Result = Invoke-PromotionsCreate -AdAccountId $AdAccountId -PromotionCreateRequest $PromotionCreateRequest
+    $Result = Invoke-PromotionsCreate -AdAccountId $AdAccountId -PromotionCreate $PromotionCreate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-PromotionsCreate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -46,7 +46,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **PromotionCreateRequest** | [**PromotionCreateRequest[]**](PromotionCreateRequest.md)| List of promotions to create, size limit [1, 30]. | 
+ **PromotionCreate** | [**PromotionCreate[]**](PromotionCreate.md)|  | 
 
 ### Return type
 
@@ -65,9 +65,9 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-PromotionsDelete"></a>
 # **Invoke-PromotionsDelete**
-> void Invoke-PromotionsDelete<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> Promotion Invoke-PromotionsDelete<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PromotionId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Delete promotion by id
 
@@ -80,12 +80,12 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+$PromotionId = "MyPromotionId" # String | Promotion ID
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$PromotionId = "MyPromotionId" # String | Unique identifier of a promotion
 
 # Delete promotion by id
 try {
-    $Result = Invoke-PromotionsDelete -AdAccountId $AdAccountId -PromotionId $PromotionId
+    $Result = Invoke-PromotionsDelete -PromotionId $PromotionId -AdAccountId $AdAccountId
 } catch {
     Write-Host ("Exception occurred when calling Invoke-PromotionsDelete: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -96,12 +96,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **PromotionId** | **String**| Promotion ID | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **PromotionId** | **String**| Unique identifier of a promotion | 
 
 ### Return type
 
-void (empty response body)
+[**Promotion**](Promotion.md) (PSCustomObject)
 
 ### Authorization
 
@@ -116,9 +116,9 @@ void (empty response body)
 
 <a id="Invoke-PromotionsGet"></a>
 # **Invoke-PromotionsGet**
-> PromotionResponse Invoke-PromotionsGet<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
+> Promotion Invoke-PromotionsGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PromotionId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Get promotion by id
 
@@ -131,12 +131,12 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+$PromotionId = "MyPromotionId" # String | Promotion ID
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$PromotionId = "MyPromotionId" # String | Unique identifier of a promotion
 
 # Get promotion by id
 try {
-    $Result = Invoke-PromotionsGet -AdAccountId $AdAccountId -PromotionId $PromotionId
+    $Result = Invoke-PromotionsGet -PromotionId $PromotionId -AdAccountId $AdAccountId
 } catch {
     Write-Host ("Exception occurred when calling Invoke-PromotionsGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -147,12 +147,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **PromotionId** | **String**| Promotion ID | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **PromotionId** | **String**| Unique identifier of a promotion | 
 
 ### Return type
 
-[**PromotionResponse**](PromotionResponse.md) (PSCustomObject)
+[**Promotion**](Promotion.md) (PSCustomObject)
 
 ### Authorization
 
@@ -169,9 +169,9 @@ Name | Type | Description  | Notes
 # **Invoke-PromotionsList**
 > PromotionsList200Response Invoke-PromotionsList<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <PSCustomObject><br>
 
 Get promotions
 
@@ -185,13 +185,13 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-$Order = "ASCENDING" # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+$Order = "ASCENDING" # PinterestLibPaginationOrder | The order in which to sort the items returned: ""ASCENDING"" or ""DESCENDING"" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 # Get promotions
 try {
-    $Result = Invoke-PromotionsList -AdAccountId $AdAccountId -PageSize $PageSize -Order $Order -Bookmark $Bookmark
+    $Result = Invoke-PromotionsList -AdAccountId $AdAccountId -Bookmark $Bookmark -PageSize $PageSize -Order $Order
 } catch {
     Write-Host ("Exception occurred when calling Invoke-PromotionsList: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -203,9 +203,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **Order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **Order** | [**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md)| The order in which to sort the items returned: &quot;&quot;ASCENDING&quot;&quot; or &quot;&quot;DESCENDING&quot;&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 # **Invoke-PromotionsUpdate**
 > PromotionsResponse Invoke-PromotionsUpdate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PromotionUpdateRequest] <PSCustomObject[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PromotionBatchUpdate] <PSCustomObject[]><br>
 
 Update promotions
 
@@ -241,11 +241,11 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $PromotionTemplateValue = Initialize-PromotionTemplateValue -Amount 100 -CurrencyCode "UNK" -CustomText "My promotion" -Percent 10
-$PromotionUpdateRequest = Initialize-PromotionUpdateRequest -DiscountStatus "OTHER" -EndTime 1678003860 -ExternalId "abc" -PlatformType "DEFAULT" -PromotionCode "blackfriday10" -PromotionCustomId "freeshipping_2025" -PromotionTitle "Black Friday 10% off" -PromotionType "VARIABLE" -StartTime 1677003860 -TemplateValues $PromotionTemplateValue -Id "7834020347906" -Status "ACTIVE" # PromotionUpdateRequest[] | List of promotions to create, size limit [1, 30].
+$PromotionBatchUpdate = Initialize-PromotionBatchUpdate -DiscountStatus "OTHER" -EndTime 0 -ExternalId "MyExternalId" -Id "MyId" -PlatformType "MyPlatformType" -PromotionCode "MyPromotionCode" -PromotionCustomId "MyPromotionCustomId" -PromotionTitle "MyPromotionTitle" -PromotionType "VARIABLE" -StartTime 0 -TemplateValues $PromotionTemplateValue # PromotionBatchUpdate[] | 
 
 # Update promotions
 try {
-    $Result = Invoke-PromotionsUpdate -AdAccountId $AdAccountId -PromotionUpdateRequest $PromotionUpdateRequest
+    $Result = Invoke-PromotionsUpdate -AdAccountId $AdAccountId -PromotionBatchUpdate $PromotionBatchUpdate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-PromotionsUpdate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -257,7 +257,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **PromotionUpdateRequest** | [**PromotionUpdateRequest[]**](PromotionUpdateRequest.md)| List of promotions to create, size limit [1, 30]. | 
+ **PromotionBatchUpdate** | [**PromotionBatchUpdate[]**](PromotionBatchUpdate.md)|  | 
 
 ### Return type
 

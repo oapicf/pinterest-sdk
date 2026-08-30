@@ -5,13 +5,13 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public enum CustomizableCTAType {
   
   GET_OFFER("GET_OFFER"),
@@ -69,6 +69,8 @@ public enum CustomizableCTAType {
   
   FIND_A_LOCATION("FIND_A_LOCATION"),
   
+  FIND_RETAILERS("FIND_RETAILERS"),
+  
   GET_DEAL("GET_DEAL"),
   
   GET_RECIPE("GET_RECIPE"),
@@ -79,7 +81,9 @@ public enum CustomizableCTAType {
   
   PLAY_GAME("PLAY_GAME"),
   
-  TRY_IT("TRY_IT");
+  TRY_IT("TRY_IT"),
+  
+  TAKE_A_PEEK("TAKE_A_PEEK");
 
   private final String value;
 

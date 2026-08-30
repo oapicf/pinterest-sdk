@@ -71,10 +71,10 @@ class CatalogsDeleteRetailItem {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsDeleteRetailItem[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsDeleteRetailItem[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'item_id'), 'Required key "CatalogsDeleteRetailItem[item_id]" is missing from JSON.');
+        assert(json[r'item_id'] != null, 'Required key "CatalogsDeleteRetailItem[item_id]" has a null value in JSON.');
+        assert(json.containsKey(r'operation'), 'Required key "CatalogsDeleteRetailItem[operation]" is missing from JSON.');
+        assert(json[r'operation'] != null, 'Required key "CatalogsDeleteRetailItem[operation]" has a null value in JSON.');
         return true;
       }());
 
@@ -135,27 +135,28 @@ class CatalogsDeleteRetailItem {
 }
 
 
-class CatalogsDeleteRetailItemOperationEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsDeleteRetailItemOperationEnum._(this.value);
+enum CatalogsDeleteRetailItemOperationEnum {
+  DELETE._(r'DELETE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsDeleteRetailItemOperationEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const DELETE = CatalogsDeleteRetailItemOperationEnum._(r'DELETE');
-
-  /// List of all possible values in this [enum][CatalogsDeleteRetailItemOperationEnum].
-  static const values = <CatalogsDeleteRetailItemOperationEnum>[
-    DELETE,
-  ];
-
+  /// Returns the instance of [CatalogsDeleteRetailItemOperationEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsDeleteRetailItemOperationEnum? fromJson(dynamic value) => CatalogsDeleteRetailItemOperationEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsDeleteRetailItemOperationEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsDeleteRetailItemOperationEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsDeleteRetailItemOperationEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -177,9 +178,10 @@ class CatalogsDeleteRetailItemOperationEnumTypeTransformer {
 
   const CatalogsDeleteRetailItemOperationEnumTypeTransformer._();
 
-  String encode(CatalogsDeleteRetailItemOperationEnum data) => data.value;
+  String encode(CatalogsDeleteRetailItemOperationEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsDeleteRetailItemOperationEnum.
+  /// Returns the instance of [CatalogsDeleteRetailItemOperationEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -188,6 +190,9 @@ class CatalogsDeleteRetailItemOperationEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsDeleteRetailItemOperationEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsDeleteRetailItemOperationEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'DELETE': return CatalogsDeleteRetailItemOperationEnum.DELETE;
@@ -200,7 +205,7 @@ class CatalogsDeleteRetailItemOperationEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsDeleteRetailItemOperationEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsDeleteRetailItemOperationEnumTypeTransformer? _instance;
 }
 

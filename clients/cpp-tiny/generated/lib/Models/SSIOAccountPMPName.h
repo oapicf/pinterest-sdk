@@ -2,7 +2,7 @@
 /*
  * SSIOAccountPMPName.h
  *
- * 
+ * Pinterest marketing partner name.
  */
 
 #ifndef TINY_CPP_CLIENT_SSIOAccountPMPName_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief 
+/*! \brief Pinterest marketing partner name.
  *
  *  \ingroup Models
  *
@@ -51,14 +51,14 @@ public:
 
 	/*! \brief Set Salesforce id for PMP
 	 */
-	void setId(std::string  id);
+	void setId(std::string id);
 	/*! \brief Get Display name
 	 */
 	std::string getName();
 
 	/*! \brief Set Display name
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 
 
     private:

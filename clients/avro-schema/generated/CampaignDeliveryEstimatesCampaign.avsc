@@ -1,0 +1,50 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Campaign configuration for delivery estimates.",
+  "name": "CampaignDeliveryEstimatesCampaign",
+  "fields": [
+    {
+      "name": "ad_groups",
+      "type": {
+        "type": "array",
+        "items": "model.AdGroupDeliveryEstimates"
+      },
+      "doc": ""
+    },
+    {
+      "name": "budget_duration_type",
+      "type": "model.BudgetDurationType",
+      "doc": "Duration type of the budget"
+    },
+    {
+      "name": "daily_spend_cap",
+      "type": ["null", "int"],
+      "doc": "Campaign daily spend cap. When the budget_duration_type is FIXED_DAILY or FLEXIBLE_DAILY, this field is required.",
+      "default": null
+    },
+    {
+      "name": "end_date",
+      "type": ["null", "string"],
+      "doc": "End date of the date range for an ad campaign, pattern YYYY-MM-DD. Required when budget_duration_type is LIFETIME.",
+      "default": null
+    },
+    {
+      "name": "lifetime_spend_cap",
+      "type": ["null", "int"],
+      "doc": "Campaign total spending cap. When the budget_duration_type is LIFETIME, this field is required. The end date field is also required for lifetime spending.",
+      "default": null
+    },
+    {
+      "name": "objective_type",
+      "type": "model.DeliveryEstimateObjectiveType",
+      "doc": ""
+    },
+    {
+      "name": "start_date",
+      "type": "string",
+      "doc": "Start date of the date range for an ad campaign, pattern YYYY-MM-DD."
+    }
+  ]
+
+}

@@ -10,19 +10,19 @@ static quiz_pin_result_t *quiz_pin_result_create_internal(
     char *destination_url,
     char *ios_deep_link,
     char *organic_pin_id,
-    double result_id
+    double *result_id
     ) {
     quiz_pin_result_t *quiz_pin_result_local_var = malloc(sizeof(quiz_pin_result_t));
     if (!quiz_pin_result_local_var) {
         return NULL;
     }
+    memset(quiz_pin_result_local_var, 0, sizeof(quiz_pin_result_t));
+    quiz_pin_result_local_var->_library_owned = 1;
     quiz_pin_result_local_var->android_deep_link = android_deep_link;
     quiz_pin_result_local_var->destination_url = destination_url;
     quiz_pin_result_local_var->ios_deep_link = ios_deep_link;
     quiz_pin_result_local_var->organic_pin_id = organic_pin_id;
     quiz_pin_result_local_var->result_id = result_id;
-
-    quiz_pin_result_local_var->_library_owned = 1;
     return quiz_pin_result_local_var;
 }
 
@@ -31,15 +31,24 @@ __attribute__((deprecated)) quiz_pin_result_t *quiz_pin_result_create(
     char *destination_url,
     char *ios_deep_link,
     char *organic_pin_id,
-    double result_id
+    double *result_id
     ) {
-    return quiz_pin_result_create_internal (
+    double *result_id_copy = NULL;
+    if (result_id) {
+        result_id_copy = malloc(sizeof(double));
+        if (result_id_copy) *result_id_copy = *result_id;
+    }
+    quiz_pin_result_t *result = quiz_pin_result_create_internal (
         android_deep_link,
         destination_url,
         ios_deep_link,
         organic_pin_id,
-        result_id
+        result_id_copy
         );
+    if (!result) {
+        free(result_id_copy);
+    }
+    return result;
 }
 
 void quiz_pin_result_free(quiz_pin_result_t *quiz_pin_result) {
@@ -66,6 +75,10 @@ void quiz_pin_result_free(quiz_pin_result_t *quiz_pin_result) {
     if (quiz_pin_result->organic_pin_id) {
         free(quiz_pin_result->organic_pin_id);
         quiz_pin_result->organic_pin_id = NULL;
+    }
+    if (quiz_pin_result->result_id) {
+        free(quiz_pin_result->result_id);
+        quiz_pin_result->result_id = NULL;
     }
     free(quiz_pin_result);
 }
@@ -107,7 +120,7 @@ cJSON *quiz_pin_result_convertToJSON(quiz_pin_result_t *quiz_pin_result) {
 
     // quiz_pin_result->result_id
     if(quiz_pin_result->result_id) {
-    if(cJSON_AddNumberToObject(item, "result_id", quiz_pin_result->result_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "result_id", *quiz_pin_result->result_id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -123,6 +136,17 @@ fail:
 quiz_pin_result_t *quiz_pin_result_parseFromJSON(cJSON *quiz_pin_resultJSON){
 
     quiz_pin_result_t *quiz_pin_result_local_var = NULL;
+
+    char *android_deep_link_local_str = NULL;
+
+    char *destination_url_local_str = NULL;
+
+    char *ios_deep_link_local_str = NULL;
+
+    char *organic_pin_id_local_str = NULL;
+
+    // define the local variable for quiz_pin_result->result_id
+    double *result_id_local_var = NULL;
 
     // quiz_pin_result->android_deep_link
     cJSON *android_deep_link = cJSON_GetObjectItemCaseSensitive(quiz_pin_resultJSON, "android_deep_link");
@@ -182,19 +206,54 @@ quiz_pin_result_t *quiz_pin_result_parseFromJSON(cJSON *quiz_pin_resultJSON){
     {
     goto end; //Numeric
     }
+    result_id_local_var = malloc(sizeof(double));
+    if(!result_id_local_var)
+    {
+        goto end;
+    }
+    *result_id_local_var = result_id->valuedouble;
     }
 
 
+    if (android_deep_link && !cJSON_IsNull(android_deep_link)) android_deep_link_local_str = strdup(android_deep_link->valuestring);
+    if (destination_url && !cJSON_IsNull(destination_url)) destination_url_local_str = strdup(destination_url->valuestring);
+    if (ios_deep_link && !cJSON_IsNull(ios_deep_link)) ios_deep_link_local_str = strdup(ios_deep_link->valuestring);
+    if (organic_pin_id && !cJSON_IsNull(organic_pin_id)) organic_pin_id_local_str = strdup(organic_pin_id->valuestring);
+
     quiz_pin_result_local_var = quiz_pin_result_create_internal (
-        android_deep_link && !cJSON_IsNull(android_deep_link) ? strdup(android_deep_link->valuestring) : NULL,
-        destination_url && !cJSON_IsNull(destination_url) ? strdup(destination_url->valuestring) : NULL,
-        ios_deep_link && !cJSON_IsNull(ios_deep_link) ? strdup(ios_deep_link->valuestring) : NULL,
-        organic_pin_id && !cJSON_IsNull(organic_pin_id) ? strdup(organic_pin_id->valuestring) : NULL,
-        result_id ? result_id->valuedouble : 0
+        android_deep_link_local_str,
+        destination_url_local_str,
+        ios_deep_link_local_str,
+        organic_pin_id_local_str,
+        result_id_local_var
         );
+
+    if (!quiz_pin_result_local_var) {
+        goto end;
+    }
 
     return quiz_pin_result_local_var;
 end:
+    if (android_deep_link_local_str) {
+        free(android_deep_link_local_str);
+        android_deep_link_local_str = NULL;
+    }
+    if (destination_url_local_str) {
+        free(destination_url_local_str);
+        destination_url_local_str = NULL;
+    }
+    if (ios_deep_link_local_str) {
+        free(ios_deep_link_local_str);
+        ios_deep_link_local_str = NULL;
+    }
+    if (organic_pin_id_local_str) {
+        free(organic_pin_id_local_str);
+        organic_pin_id_local_str = NULL;
+    }
+    if (result_id_local_var) {
+        free(result_id_local_var);
+        result_id_local_var = NULL;
+    }
     return NULL;
 
 }

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## EventsCreate
 
-> ConversionApiResponse EventsCreate(ctx, adAccountId).ConversionEvents(conversionEvents).Test(test).Execute()
+> ConversionEvents EventsCreate(ctx, adAccountId).ConversionEventsCreate(conversionEventsCreate).Test(test).Execute()
 
 Send conversions
 
@@ -30,17 +30,17 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	conversionEvents := *openapiclient.NewConversionEvents([]openapiclient.ConversionEventsDataInner{*openapiclient.NewConversionEventsDataInner("app_ios", "eventId0001", "checkout", int64(1451431341), *openapiclient.NewConversionEventsUserData())}) // ConversionEvents | Conversion events.
+	conversionEventsCreate := *openapiclient.NewConversionEventsCreate([]openapiclient.ConversionEventsDataItems{*openapiclient.NewConversionEventsDataItems("ActionSource_example", "EventId_example", "EventName_example", int64(123), *openapiclient.NewConversionEventsUserDataProperties())}) // ConversionEventsCreate | 
 	test := true // bool | Include query param ?test=true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConversionEventsAPI.EventsCreate(context.Background(), adAccountId).ConversionEvents(conversionEvents).Test(test).Execute()
+	resp, r, err := apiClient.ConversionEventsAPI.EventsCreate(context.Background(), adAccountId).ConversionEventsCreate(conversionEventsCreate).Test(test).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConversionEventsAPI.EventsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `EventsCreate`: ConversionApiResponse
+	// response from `EventsCreate`: ConversionEvents
 	fmt.Fprintf(os.Stdout, "Response from `ConversionEventsAPI.EventsCreate`: %v\n", resp)
 }
 ```
@@ -61,12 +61,12 @@ Other parameters are passed through a pointer to a apiEventsCreateRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **conversionEvents** | [**ConversionEvents**](ConversionEvents.md) | Conversion events. | 
+ **conversionEventsCreate** | [**ConversionEventsCreate**](ConversionEventsCreate.md) |  | 
  **test** | **bool** | Include query param ?test&#x3D;true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request. | 
 
 ### Return type
 
-[**ConversionApiResponse**](ConversionApiResponse.md)
+[**ConversionEvents**](ConversionEvents.md)
 
 ### Authorization
 

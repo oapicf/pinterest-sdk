@@ -6,21 +6,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**appTypeMultipliers** | [**AppTypeMultipliers**](AppTypeMultipliers.md) |  |  [optional]
-**audienceMultipliers** | [**CampaignAudienceMultipliers**](CampaignAudienceMultipliers.md) |  |  [optional]
-**placementMultipliers** | [**PlacementMultipliers**](PlacementMultipliers.md) |  |  [optional]
-**updateMask** | [**List&lt;UpdateMaskEnum&gt;**](#List&lt;UpdateMaskEnum&gt;) | List of fields to update, only the fields in the list will be updated. | 
-
-
-## Enum: List&lt;UpdateMaskEnum&gt;
-
-Name | Value
----- | -----
-AUDIENCE | &quot;AUDIENCE&quot;
-APP_TYPE | &quot;APP_TYPE&quot;
-PLACEMENT | &quot;PLACEMENT&quot;
-GENDER | &quot;GENDER&quot;
-AGE_BUCKET | &quot;AGE_BUCKET&quot;
+**ageBucketMultipliers** | [**AgeBucketMultipliers**](AgeBucketMultipliers.md) | Age bucket multipliers for bid adjustments. |  [optional]
+**appTypeMultipliers** | [**AppTypeMultipliers**](AppTypeMultipliers.md) | App type multipliers for bid adjustments. |  [optional]
+**audienceMultipliers** | [**CampaignAudienceMultipliers**](CampaignAudienceMultipliers.md) | Audience multipliers for bid adjustments. |  [optional]
+**freqBidMultiplierTimeWindow** | [**FreqBidMultiplierTimeWindow**](FreqBidMultiplierTimeWindow.md) | The time window for frequency bid multipliers. |  [optional]
+**frequencyMultipliers** | [**FrequencyMultipliers**](FrequencyMultipliers.md) | Frequency multipliers for bid adjustments. |  [optional]
+**genderMultipliers** | [**GenderMultipliers**](GenderMultipliers.md) | Gender multipliers for bid adjustments. |  [optional]
+**placementMultipliers** | [**PlacementMultipliers**](PlacementMultipliers.md) | Placement multipliers for bid adjustments. |  [optional]
+**updateMask** | [**List&lt;CampaignBidOptionsUpdateMaskItems&gt;**](CampaignBidOptionsUpdateMaskItems.md) | List of fields to update. Only the fields in the list will be updated. | 
 
 
 

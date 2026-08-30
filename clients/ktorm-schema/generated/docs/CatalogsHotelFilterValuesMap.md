@@ -1,5 +1,5 @@
 
-# Table `catalogs_hotel_filter_values_map`
+# Table `CatalogsHotelFilterValuesMap`
 (mapped from: CatalogsHotelFilterValuesMap)
 
 ## Properties

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;TemplateResponse&gt;**](TemplateResponse.md) |  | [default to undefined]
+**items** | [**Array&lt;AccountTemplate&gt;**](AccountTemplate.md) |  | [default to undefined]
 
 ## Example
 

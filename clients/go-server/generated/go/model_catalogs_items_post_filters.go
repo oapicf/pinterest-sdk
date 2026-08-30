@@ -5,21 +5,26 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type CatalogsItemsPostFilters struct {
 
-	CatalogType CatalogsType `json:"catalog_type"`
-
 	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	CatalogId string `json:"catalog_id,omitempty"`
+
+	CatalogType string `json:"catalog_type"`
 
 	ItemIds []string `json:"item_ids"`
 
@@ -27,11 +32,93 @@ type CatalogsItemsPostFilters struct {
 
 	CreativeAssetsIds []string `json:"creative_assets_ids"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsItemsPostFilters
+func (o *CatalogsItemsPostFilters) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"catalog_type",
+		"item_ids",
+		"hotel_ids",
+		"creative_assets_ids",
+	}
 
-// AssertCatalogsItemsPostFiltersRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"catalog_type": false,
+		"item_ids": false,
+		"hotel_ids": false,
+		"creative_assets_ids": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"catalog_id": {},
+		"catalog_type": {},
+		"item_ids": {},
+		"hotel_ids": {},
+		"creative_assets_ids": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsItemsPostFilters
+
+	if value, exists := allProperties["catalog_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["catalog_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["item_ids"]; exists {
+		if err = json.Unmarshal(value, &decoded.ItemIds); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["hotel_ids"]; exists {
+		if err = json.Unmarshal(value, &decoded.HotelIds); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["creative_assets_ids"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreativeAssetsIds); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsItemsPostFiltersRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsItemsPostFiltersRequired(obj CatalogsItemsPostFilters) error {
 	elements := map[string]interface{}{
-		"catalog_type": obj.CatalogType,
 		"item_ids": obj.ItemIds,
 		"hotel_ids": obj.HotelIds,
 		"creative_assets_ids": obj.CreativeAssetsIds,

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,15 +27,15 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.IntegrationLogsRequest
+import org.openapitools.client.models.IntegrationLogsInvalidLogResponse
+import org.openapitools.client.models.IntegrationLogsRequestCreate
 import org.openapitools.client.models.IntegrationLogsSuccessResponse
 import org.openapitools.client.models.IntegrationMetadata
+import org.openapitools.client.models.IntegrationMetadataCreate
+import org.openapitools.client.models.IntegrationMetadataUpdate
 import org.openapitools.client.models.IntegrationRecord
-import org.openapitools.client.models.IntegrationRequest
-import org.openapitools.client.models.IntegrationRequestPatch
 import org.openapitools.client.models.IntegrationsGetList200Response
-import org.openapitools.client.models.IntegrationsLogsPost400Response
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -49,7 +57,7 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
@@ -58,19 +66,20 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * Delete commerce integration
      * Delete commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param externalBusinessId External business ID for the integration.
-     * @return void
+     * @return IntegrationMetadata
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun integrationsCommerceDel(externalBusinessId: kotlin.String) : Unit {
+    fun integrationsCommerceDel(externalBusinessId: kotlin.String) : IntegrationMetadata {
         val localVarResponse = integrationsCommerceDelWithHttpInfo(externalBusinessId = externalBusinessId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as IntegrationMetadata
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -89,15 +98,16 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * Delete commerce integration
      * Delete commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param externalBusinessId External business ID for the integration.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<IntegrationMetadata?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun integrationsCommerceDelWithHttpInfo(externalBusinessId: kotlin.String) : ApiResponse<Unit?> {
+    fun integrationsCommerceDelWithHttpInfo(externalBusinessId: kotlin.String) : ApiResponse<IntegrationMetadata?> {
         val localVariableConfig = integrationsCommerceDelRequestConfig(externalBusinessId = externalBusinessId)
 
-        return request<Unit, Unit>(
+        return request<Unit, IntegrationMetadata>(
             localVariableConfig
         )
     }
@@ -202,7 +212,7 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * Update commerce integration
      * Update commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param externalBusinessId External business ID for the integration.
-     * @param integrationRequestPatch Parameters to get create/update the Integration Metadata
+     * @param integrationMetadataUpdate 
      * @return IntegrationMetadata
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -212,8 +222,8 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun integrationsCommercePatch(externalBusinessId: kotlin.String, integrationRequestPatch: IntegrationRequestPatch) : IntegrationMetadata {
-        val localVarResponse = integrationsCommercePatchWithHttpInfo(externalBusinessId = externalBusinessId, integrationRequestPatch = integrationRequestPatch)
+    fun integrationsCommercePatch(externalBusinessId: kotlin.String, integrationMetadataUpdate: IntegrationMetadataUpdate) : IntegrationMetadata {
+        val localVarResponse = integrationsCommercePatchWithHttpInfo(externalBusinessId = externalBusinessId, integrationMetadataUpdate = integrationMetadataUpdate)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as IntegrationMetadata
@@ -235,17 +245,17 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * Update commerce integration
      * Update commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param externalBusinessId External business ID for the integration.
-     * @param integrationRequestPatch Parameters to get create/update the Integration Metadata
+     * @param integrationMetadataUpdate 
      * @return ApiResponse<IntegrationMetadata?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun integrationsCommercePatchWithHttpInfo(externalBusinessId: kotlin.String, integrationRequestPatch: IntegrationRequestPatch) : ApiResponse<IntegrationMetadata?> {
-        val localVariableConfig = integrationsCommercePatchRequestConfig(externalBusinessId = externalBusinessId, integrationRequestPatch = integrationRequestPatch)
+    fun integrationsCommercePatchWithHttpInfo(externalBusinessId: kotlin.String, integrationMetadataUpdate: IntegrationMetadataUpdate) : ApiResponse<IntegrationMetadata?> {
+        val localVariableConfig = integrationsCommercePatchRequestConfig(externalBusinessId = externalBusinessId, integrationMetadataUpdate = integrationMetadataUpdate)
 
-        return request<IntegrationRequestPatch, IntegrationMetadata>(
+        return request<IntegrationMetadataUpdate, IntegrationMetadata>(
             localVariableConfig
         )
     }
@@ -254,11 +264,11 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * To obtain the request config of the operation integrationsCommercePatch
      *
      * @param externalBusinessId External business ID for the integration.
-     * @param integrationRequestPatch Parameters to get create/update the Integration Metadata
+     * @param integrationMetadataUpdate 
      * @return RequestConfig
      */
-    fun integrationsCommercePatchRequestConfig(externalBusinessId: kotlin.String, integrationRequestPatch: IntegrationRequestPatch) : RequestConfig<IntegrationRequestPatch> {
-        val localVariableBody = integrationRequestPatch
+    fun integrationsCommercePatchRequestConfig(externalBusinessId: kotlin.String, integrationMetadataUpdate: IntegrationMetadataUpdate) : RequestConfig<IntegrationMetadataUpdate> {
+        val localVariableBody = integrationMetadataUpdate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -278,7 +288,7 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * POST /integrations/commerce
      * Create commerce integration
      * Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
-     * @param integrationRequest Parameters to get create/update the Integration Metadata
+     * @param integrationMetadataCreate 
      * @return IntegrationMetadata
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -288,8 +298,8 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun integrationsCommercePost(integrationRequest: IntegrationRequest) : IntegrationMetadata {
-        val localVarResponse = integrationsCommercePostWithHttpInfo(integrationRequest = integrationRequest)
+    fun integrationsCommercePost(integrationMetadataCreate: IntegrationMetadataCreate) : IntegrationMetadata {
+        val localVarResponse = integrationsCommercePostWithHttpInfo(integrationMetadataCreate = integrationMetadataCreate)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as IntegrationMetadata
@@ -310,17 +320,17 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * POST /integrations/commerce
      * Create commerce integration
      * Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
-     * @param integrationRequest Parameters to get create/update the Integration Metadata
+     * @param integrationMetadataCreate 
      * @return ApiResponse<IntegrationMetadata?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun integrationsCommercePostWithHttpInfo(integrationRequest: IntegrationRequest) : ApiResponse<IntegrationMetadata?> {
-        val localVariableConfig = integrationsCommercePostRequestConfig(integrationRequest = integrationRequest)
+    fun integrationsCommercePostWithHttpInfo(integrationMetadataCreate: IntegrationMetadataCreate) : ApiResponse<IntegrationMetadata?> {
+        val localVariableConfig = integrationsCommercePostRequestConfig(integrationMetadataCreate = integrationMetadataCreate)
 
-        return request<IntegrationRequest, IntegrationMetadata>(
+        return request<IntegrationMetadataCreate, IntegrationMetadata>(
             localVariableConfig
         )
     }
@@ -328,11 +338,11 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * To obtain the request config of the operation integrationsCommercePost
      *
-     * @param integrationRequest Parameters to get create/update the Integration Metadata
+     * @param integrationMetadataCreate 
      * @return RequestConfig
      */
-    fun integrationsCommercePostRequestConfig(integrationRequest: IntegrationRequest) : RequestConfig<IntegrationRequest> {
-        val localVariableBody = integrationRequest
+    fun integrationsCommercePostRequestConfig(integrationMetadataCreate: IntegrationMetadataCreate) : RequestConfig<IntegrationMetadataCreate> {
+        val localVariableBody = integrationMetadataCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -352,7 +362,7 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * GET /integrations/{id}
      * Get integration metadata
      * Get integration metadata by ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
-     * @param id Integration ID.
+     * @param id Integration record ID.
      * @return IntegrationRecord
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -384,7 +394,7 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * GET /integrations/{id}
      * Get integration metadata
      * Get integration metadata by ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
-     * @param id Integration ID.
+     * @param id Integration record ID.
      * @return ApiResponse<IntegrationRecord?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -402,7 +412,7 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * To obtain the request config of the operation integrationsGetById
      *
-     * @param id Integration ID.
+     * @param id Integration record ID.
      * @return RequestConfig
      */
     fun integrationsGetByIdRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
@@ -426,7 +436,7 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * Get integration metadata list
      * Get integration metadata list. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return IntegrationsGetList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -459,7 +469,7 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * Get integration metadata list
      * Get integration metadata list. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<IntegrationsGetList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -478,7 +488,7 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * To obtain the request config of the operation integrationsGetList
      *
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun integrationsGetListRequestConfig(bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -509,7 +519,7 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * POST /integrations/logs
      * Receives batched logs from integration applications.
      * This endpoint receives batched logs from integration applications on partner platforms. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
-     * @param integrationLogsRequest Ingest log information from external integration application.
+     * @param integrationLogsRequestCreate 
      * @return IntegrationLogsSuccessResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -519,8 +529,8 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest) : IntegrationLogsSuccessResponse {
-        val localVarResponse = integrationsLogsPostWithHttpInfo(integrationLogsRequest = integrationLogsRequest)
+    fun integrationsLogsPost(integrationLogsRequestCreate: IntegrationLogsRequestCreate) : IntegrationLogsSuccessResponse {
+        val localVarResponse = integrationsLogsPostWithHttpInfo(integrationLogsRequestCreate = integrationLogsRequestCreate)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as IntegrationLogsSuccessResponse
@@ -541,17 +551,17 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * POST /integrations/logs
      * Receives batched logs from integration applications.
      * This endpoint receives batched logs from integration applications on partner platforms. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
-     * @param integrationLogsRequest Ingest log information from external integration application.
+     * @param integrationLogsRequestCreate 
      * @return ApiResponse<IntegrationLogsSuccessResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun integrationsLogsPostWithHttpInfo(integrationLogsRequest: IntegrationLogsRequest) : ApiResponse<IntegrationLogsSuccessResponse?> {
-        val localVariableConfig = integrationsLogsPostRequestConfig(integrationLogsRequest = integrationLogsRequest)
+    fun integrationsLogsPostWithHttpInfo(integrationLogsRequestCreate: IntegrationLogsRequestCreate) : ApiResponse<IntegrationLogsSuccessResponse?> {
+        val localVariableConfig = integrationsLogsPostRequestConfig(integrationLogsRequestCreate = integrationLogsRequestCreate)
 
-        return request<IntegrationLogsRequest, IntegrationLogsSuccessResponse>(
+        return request<IntegrationLogsRequestCreate, IntegrationLogsSuccessResponse>(
             localVariableConfig
         )
     }
@@ -559,11 +569,11 @@ open class IntegrationsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * To obtain the request config of the operation integrationsLogsPost
      *
-     * @param integrationLogsRequest Ingest log information from external integration application.
+     * @param integrationLogsRequestCreate 
      * @return RequestConfig
      */
-    fun integrationsLogsPostRequestConfig(integrationLogsRequest: IntegrationLogsRequest) : RequestConfig<IntegrationLogsRequest> {
-        val localVariableBody = integrationLogsRequest
+    fun integrationsLogsPostRequestConfig(integrationLogsRequestCreate: IntegrationLogsRequestCreate) : RequestConfig<IntegrationLogsRequestCreate> {
+        val localVariableBody = integrationLogsRequestCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"

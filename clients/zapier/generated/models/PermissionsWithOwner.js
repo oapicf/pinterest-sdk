@@ -3,7 +3,7 @@ const utils = require('../utils/utils');
 module.exports = {
         fields: (key) => (
             {
-                label: `[${key.replaceAll('__', '.')}]`,
+                label: `Permission levels including the OWNER role. - [${key.replaceAll('__', '.')}]`,
                 choices: [
                     'ADMIN',
                     'ANALYST',

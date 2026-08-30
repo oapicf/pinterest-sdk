@@ -16,7 +16,7 @@ Method | HTTP request | Description
 # **integrationsCommerceDel**
 ```objc
 -(NSURLSessionTask*) integrationsCommerceDelWithExternalBusinessId: (NSString*) externalBusinessId
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(OAIIntegrationMetadata* output, NSError* error)) handler;
 ```
 
 Delete commerce integration
@@ -37,7 +37,10 @@ OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 
 // Delete commerce integration
 [apiInstance integrationsCommerceDelWithExternalBusinessId:externalBusinessId
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(OAIIntegrationMetadata* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling OAIIntegrationsApi->integrationsCommerceDel: %@", error);
                         }
@@ -52,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**OAIIntegrationMetadata***](OAIIntegrationMetadata.md)
 
 ### Authorization
 
@@ -123,7 +126,7 @@ Name | Type | Description  | Notes
 # **integrationsCommercePatch**
 ```objc
 -(NSURLSessionTask*) integrationsCommercePatchWithExternalBusinessId: (NSString*) externalBusinessId
-    integrationRequestPatch: (OAIIntegrationRequestPatch*) integrationRequestPatch
+    integrationMetadataUpdate: (OAIIntegrationMetadataUpdate*) integrationMetadataUpdate
         completionHandler: (void (^)(OAIIntegrationMetadata* output, NSError* error)) handler;
 ```
 
@@ -140,13 +143,13 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* externalBusinessId = @"externalBusinessId_example"; // External business ID for the integration.
-OAIIntegrationRequestPatch* integrationRequestPatch = [[OAIIntegrationRequestPatch alloc] init]; // Parameters to get create/update the Integration Metadata
+OAIIntegrationMetadataUpdate* integrationMetadataUpdate = [[OAIIntegrationMetadataUpdate alloc] init]; // 
 
 OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 
 // Update commerce integration
 [apiInstance integrationsCommercePatchWithExternalBusinessId:externalBusinessId
-              integrationRequestPatch:integrationRequestPatch
+              integrationMetadataUpdate:integrationMetadataUpdate
           completionHandler: ^(OAIIntegrationMetadata* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -162,7 +165,7 @@ OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalBusinessId** | **NSString***| External business ID for the integration. | 
- **integrationRequestPatch** | [**OAIIntegrationRequestPatch***](OAIIntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | 
+ **integrationMetadataUpdate** | [**OAIIntegrationMetadataUpdate***](OAIIntegrationMetadataUpdate.md)|  | 
 
 ### Return type
 
@@ -181,7 +184,7 @@ Name | Type | Description  | Notes
 
 # **integrationsCommercePost**
 ```objc
--(NSURLSessionTask*) integrationsCommercePostWithIntegrationRequest: (OAIIntegrationRequest*) integrationRequest
+-(NSURLSessionTask*) integrationsCommercePostWithIntegrationMetadataCreate: (OAIIntegrationMetadataCreate*) integrationMetadataCreate
         completionHandler: (void (^)(OAIIntegrationMetadata* output, NSError* error)) handler;
 ```
 
@@ -197,12 +200,12 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-OAIIntegrationRequest* integrationRequest = [[OAIIntegrationRequest alloc] init]; // Parameters to get create/update the Integration Metadata
+OAIIntegrationMetadataCreate* integrationMetadataCreate = [[OAIIntegrationMetadataCreate alloc] init]; // 
 
 OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 
 // Create commerce integration
-[apiInstance integrationsCommercePostWithIntegrationRequest:integrationRequest
+[apiInstance integrationsCommercePostWithIntegrationMetadataCreate:integrationMetadataCreate
           completionHandler: ^(OAIIntegrationMetadata* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -217,7 +220,7 @@ OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationRequest** | [**OAIIntegrationRequest***](OAIIntegrationRequest.md)| Parameters to get create/update the Integration Metadata | 
+ **integrationMetadataCreate** | [**OAIIntegrationMetadataCreate***](OAIIntegrationMetadataCreate.md)|  | 
 
 ### Return type
 
@@ -252,7 +255,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* _id = @"_id_example"; // Integration ID.
+NSString* _id = @"_id_example"; // Integration record ID.
 
 OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 
@@ -272,7 +275,7 @@ OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **_id** | **NSString***| Integration ID. | 
+ **_id** | **NSString***| Integration record ID. | 
 
 ### Return type
 
@@ -309,7 +312,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 
@@ -331,7 +334,7 @@ OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -350,7 +353,7 @@ Name | Type | Description  | Notes
 
 # **integrationsLogsPost**
 ```objc
--(NSURLSessionTask*) integrationsLogsPostWithIntegrationLogsRequest: (OAIIntegrationLogsRequest*) integrationLogsRequest
+-(NSURLSessionTask*) integrationsLogsPostWithIntegrationLogsRequestCreate: (OAIIntegrationLogsRequestCreate*) integrationLogsRequestCreate
         completionHandler: (void (^)(OAIIntegrationLogsSuccessResponse* output, NSError* error)) handler;
 ```
 
@@ -366,12 +369,12 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-OAIIntegrationLogsRequest* integrationLogsRequest = [[OAIIntegrationLogsRequest alloc] init]; // Ingest log information from external integration application.
+OAIIntegrationLogsRequestCreate* integrationLogsRequestCreate = [[OAIIntegrationLogsRequestCreate alloc] init]; // 
 
 OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 
 // Receives batched logs from integration applications.
-[apiInstance integrationsLogsPostWithIntegrationLogsRequest:integrationLogsRequest
+[apiInstance integrationsLogsPostWithIntegrationLogsRequestCreate:integrationLogsRequestCreate
           completionHandler: ^(OAIIntegrationLogsSuccessResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -386,7 +389,7 @@ OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationLogsRequest** | [**OAIIntegrationLogsRequest***](OAIIntegrationLogsRequest.md)| Ingest log information from external integration application. | 
+ **integrationLogsRequestCreate** | [**OAIIntegrationLogsRequestCreate***](OAIIntegrationLogsRequestCreate.md)|  | 
 
 ### Return type
 

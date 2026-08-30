@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "HttpMethod.h"
 #include <map>
 #include "Object.h"
 
@@ -55,11 +56,11 @@ public:
 	void setHost(std::string  host);
 	/*! \brief Get 
 	 */
-	std::string getMethod();
+	HttpMethod getMethod();
 
 	/*! \brief Set 
 	 */
-	void setMethod(std::string  method);
+	void setMethod(HttpMethod  method);
 	/*! \brief Get HTTP request path.
 	 */
 	std::string getPath();
@@ -91,7 +92,7 @@ public:
 
 private:
 	std::string host;
-	std::string method;
+	HttpMethod method;
 	std::string path;
 	std::map <std::string, std::string>request_headers;
 	std::map <std::string, std::string>response_headers;

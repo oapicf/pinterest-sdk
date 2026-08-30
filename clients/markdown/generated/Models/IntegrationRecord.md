@@ -11,7 +11,7 @@
 | **connected\_user\_id** | **String** |  | [optional] [default to null] |
 | **created\_time** | **Integer** |  | [optional] [default to null] |
 | **external\_business\_id** | **String** |  | [optional] [default to null] |
-| **id** | **String** |  | [optional] [default to null] |
+| **id** | **String** | Integration record ID. | [default to null] |
 | **partner\_access\_token** | **String** |  | [optional] [default to null] |
 | **partner\_access\_token\_expiry** | **Integer** |  | [optional] [default to null] |
 | **partner\_metadata** | **String** |  | [optional] [default to null] |

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[BoardSection]**](BoardSection.md) | Board sections | 
+**items** | [**List[BoardSection]**](BoardSection.md) |  | 
 
 ## Example
 

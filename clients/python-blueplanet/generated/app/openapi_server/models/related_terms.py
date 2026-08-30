@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.related_terms_related_terms_list_inner import RelatedTermsRelatedTermsListInner  # noqa: F401,E501
+from app.openapi_server.models.related_terms_related_terms_list_items import RelatedTermsRelatedTermsListItems  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,7 +16,7 @@ class RelatedTerms(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, id: str=None, related_term_count: int=None, related_terms_list: List[RelatedTermsRelatedTermsListInner]=None):  # noqa: E501
+    def __init__(self, id: str=None, related_term_count: int=None, related_terms_list: List[RelatedTermsRelatedTermsListItems]=None):  # noqa: E501
         """RelatedTerms - a model defined in Swagger
 
         :param id: The id of this RelatedTerms.  # noqa: E501
@@ -24,12 +24,12 @@ class RelatedTerms(Model):
         :param related_term_count: The related_term_count of this RelatedTerms.  # noqa: E501
         :type related_term_count: int
         :param related_terms_list: The related_terms_list of this RelatedTerms.  # noqa: E501
-        :type related_terms_list: List[RelatedTermsRelatedTermsListInner]
+        :type related_terms_list: List[RelatedTermsRelatedTermsListItems]
         """
         self.swagger_types = {
             'id': str,
             'related_term_count': int,
-            'related_terms_list': List[RelatedTermsRelatedTermsListInner]
+            'related_terms_list': List[RelatedTermsRelatedTermsListItems]
         }
 
         self.attribute_map = {
@@ -100,24 +100,24 @@ class RelatedTerms(Model):
         self._related_term_count = related_term_count
 
     @property
-    def related_terms_list(self) -> List[RelatedTermsRelatedTermsListInner]:
+    def related_terms_list(self) -> List[RelatedTermsRelatedTermsListItems]:
         """Gets the related_terms_list of this RelatedTerms.
 
         The id of the advertiser.  # noqa: E501
 
         :return: The related_terms_list of this RelatedTerms.
-        :rtype: List[RelatedTermsRelatedTermsListInner]
+        :rtype: List[RelatedTermsRelatedTermsListItems]
         """
         return self._related_terms_list
 
     @related_terms_list.setter
-    def related_terms_list(self, related_terms_list: List[RelatedTermsRelatedTermsListInner]):
+    def related_terms_list(self, related_terms_list: List[RelatedTermsRelatedTermsListItems]):
         """Sets the related_terms_list of this RelatedTerms.
 
         The id of the advertiser.  # noqa: E501
 
         :param related_terms_list: The related_terms_list of this RelatedTerms.
-        :type related_terms_list: List[RelatedTermsRelatedTermsListInner]
+        :type related_terms_list: List[RelatedTermsRelatedTermsListItems]
         """
 
         self._related_terms_list = related_terms_list

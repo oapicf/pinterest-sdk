@@ -107,7 +107,7 @@ CatalogsUpsertCreativeAssetsItem::getAttributes()
 }
 
 void
-CatalogsUpsertCreativeAssetsItem::setAttributes(CatalogsCreativeAssetsAttributes  attributes)
+CatalogsUpsertCreativeAssetsItem::setAttributes(CatalogsCreativeAssetsAttributes attributes)
 {
 	this->attributes = attributes;
 }
@@ -119,7 +119,7 @@ CatalogsUpsertCreativeAssetsItem::getCreativeAssetsId()
 }
 
 void
-CatalogsUpsertCreativeAssetsItem::setCreativeAssetsId(std::string  creative_assets_id)
+CatalogsUpsertCreativeAssetsItem::setCreativeAssetsId(std::string creative_assets_id)
 {
 	this->creative_assets_id = creative_assets_id;
 }
@@ -131,7 +131,7 @@ CatalogsUpsertCreativeAssetsItem::getOperation()
 }
 
 void
-CatalogsUpsertCreativeAssetsItem::setOperation(std::string  operation)
+CatalogsUpsertCreativeAssetsItem::setOperation(std::string operation)
 {
 	this->operation = operation;
 }

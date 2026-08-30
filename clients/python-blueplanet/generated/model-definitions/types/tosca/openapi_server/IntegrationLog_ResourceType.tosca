@@ -9,6 +9,8 @@ imports {
   Root = tosca.resourceTypes.Root
   IntegrationLogClientError = openapi_server.resourceTypes.IntegrationLogClientError
   IntegrationLogClientRequest = openapi_server.resourceTypes.IntegrationLogClientRequest
+  IntegrationLogEventType = openapi_server.resourceTypes.IntegrationLogEventType
+  IntegrationLogLevel = openapi_server.resourceTypes.IntegrationLogLevel
 }
 resourceTypes {
 
@@ -38,9 +40,8 @@ resourceTypes {
           optional = false
         }
         event_type {
-          type =  string
+          type = IntegrationLogEventType
           description = "Log event type"
-          enum = ["APP", "API"]
           optional = true
         }
         external_business_id {
@@ -54,9 +55,8 @@ resourceTypes {
           optional = false
         }
         log_level {
-          type =  string
+          type = IntegrationLogLevel
           description = "Log level type"
-          enum = ["INFO", "WARN", "ERROR"]
           optional = true
         }
         merchant_id {

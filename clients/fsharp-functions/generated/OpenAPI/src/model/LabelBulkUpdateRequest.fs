@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.LabelStatusBulkUpdate
 
 module LabelBulkUpdateRequest =
 
@@ -12,10 +13,10 @@ module LabelBulkUpdateRequest =
   type LabelBulkUpdateRequest = {
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
+    [<JsonProperty(PropertyName = "parent_id")>]
+    ParentId : string;
     [<JsonProperty(PropertyName = "status")>]
-    Status : string;
-    [<JsonProperty(PropertyName = "value")>]
-    Value : string;
+    Status : LabelStatusBulkUpdate;
   }
 
   //#endregion

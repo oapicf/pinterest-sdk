@@ -5,23 +5,91 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type CustomerListUploadCreateResponse struct {
 
+	// The Customer List Upload created.
 	CustomerListUpload CustomerListUpload `json:"customer_list_upload"`
 
+	// Pre-signed upload URLs corresponding to each part of the upload.
 	S3MultipartUploadData S3MultipartUploadData `json:"s3_multipart_upload_data"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CustomerListUploadCreateResponse
+func (o *CustomerListUploadCreateResponse) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"customer_list_upload",
+		"s3_multipart_upload_data",
+	}
 
-// AssertCustomerListUploadCreateResponseRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"customer_list_upload": false,
+		"s3_multipart_upload_data": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"customer_list_upload": {},
+		"s3_multipart_upload_data": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CustomerListUploadCreateResponse
+
+	if value, exists := allProperties["customer_list_upload"]; exists {
+		if err = json.Unmarshal(value, &decoded.CustomerListUpload); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["s3_multipart_upload_data"]; exists {
+		if err = json.Unmarshal(value, &decoded.S3MultipartUploadData); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCustomerListUploadCreateResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCustomerListUploadCreateResponseRequired(obj CustomerListUploadCreateResponse) error {
 	elements := map[string]interface{}{
 		"customer_list_upload": obj.CustomerListUpload,

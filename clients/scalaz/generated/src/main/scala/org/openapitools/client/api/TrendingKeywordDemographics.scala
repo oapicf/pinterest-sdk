@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import TrendingKeywordDemographics._
 
 case class TrendingKeywordDemographics (
-  ageDistribution: Option[TrendingKeywordDemographicsAgeDistribution],
-genderDistribution: Option[TrendingKeywordDemographicsGenderDistribution])
+  ageDistribution: Option[TrendsAgeDistribution],
+genderDistribution: Option[TrendsGenderDistribution])
 
 object TrendingKeywordDemographics {
   import DateTimeCodecs._

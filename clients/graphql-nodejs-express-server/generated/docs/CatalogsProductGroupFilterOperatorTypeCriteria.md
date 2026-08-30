@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filterOperatorType** | **String!** |  | [optional] [default to IS]
-**negated** | **Boolean!** |  | [optional] [default to false]
+**filterOperatorType** | [***FilterOperatorType**](FilterOperatorType.md) |  | [optional] [default to null]
+**negated** | **Boolean!** |  | [optional] [default to null]
 **values** | **String!** |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

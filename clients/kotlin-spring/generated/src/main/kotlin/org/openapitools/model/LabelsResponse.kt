@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.Label
 import org.openapitools.model.LabelError
 import javax.validation.constraints.DecimalMax
@@ -23,11 +26,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class LabelsResponse(
 
     @field:Valid
-    @Schema(example = "null", description = "Labels that were not successfully applied.")
+    @Schema(description = "Labels that were not successfully applied.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("errors")
     @get:JsonProperty("errors") val errors: kotlin.collections.List<LabelError>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("labels")
     @get:JsonProperty("labels") val labels: kotlin.collections.List<Label>? = null
 ) {
 

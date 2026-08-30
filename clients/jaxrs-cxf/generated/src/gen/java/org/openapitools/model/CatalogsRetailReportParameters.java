@@ -2,7 +2,7 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.openapitools.model.CatalogsHotelReportParametersReport;
+import org.openapitools.model.CatalogsRetailReportParametersReport;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -58,7 +58,7 @@ RETAIL(String.valueOf("RETAIL"));
 
   @Valid
 
-  private CatalogsHotelReportParametersReport report;
+  private CatalogsRetailReportParametersReport report;
  /**
    * Get catalogType
    * @return catalogType
@@ -87,15 +87,15 @@ RETAIL(String.valueOf("RETAIL"));
   **/
   @JsonProperty("report")
   @NotNull
-  public CatalogsHotelReportParametersReport getReport() {
+  public CatalogsRetailReportParametersReport getReport() {
     return report;
   }
 
-  public void setReport(CatalogsHotelReportParametersReport report) {
+  public void setReport(CatalogsRetailReportParametersReport report) {
     this.report = report;
   }
 
-  public CatalogsRetailReportParameters report(CatalogsHotelReportParametersReport report) {
+  public CatalogsRetailReportParameters report(CatalogsRetailReportParametersReport report) {
     this.report = report;
     return this;
   }
@@ -134,10 +134,7 @@ RETAIL(String.valueOf("RETAIL"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

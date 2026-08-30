@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.CreateAssetAccessRequestBodyAssetRequestsInner
+open OpenAPI.Model.CreateAssetAccessRequestItem
 
 module CreateAssetAccessRequestBody =
 
@@ -10,6 +10,6 @@ module CreateAssetAccessRequestBody =
 
 
   type CreateAssetAccessRequestBody = {
-    AssetRequests : CreateAssetAccessRequestBodyAssetRequestsInner[];
+    AssetRequests : CreateAssetAccessRequestItem[];
   }
   //#endregion

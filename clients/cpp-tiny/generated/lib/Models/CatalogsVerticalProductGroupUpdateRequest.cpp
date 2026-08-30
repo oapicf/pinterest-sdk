@@ -172,7 +172,7 @@ CatalogsVerticalProductGroupUpdateRequest::getCatalogType()
 }
 
 void
-CatalogsVerticalProductGroupUpdateRequest::setCatalogType(std::string  catalog_type)
+CatalogsVerticalProductGroupUpdateRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -184,7 +184,7 @@ CatalogsVerticalProductGroupUpdateRequest::getCountry()
 }
 
 void
-CatalogsVerticalProductGroupUpdateRequest::setCountry(Country  country)
+CatalogsVerticalProductGroupUpdateRequest::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -196,7 +196,7 @@ CatalogsVerticalProductGroupUpdateRequest::getDescription()
 }
 
 void
-CatalogsVerticalProductGroupUpdateRequest::setDescription(std::string  description)
+CatalogsVerticalProductGroupUpdateRequest::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -208,7 +208,7 @@ CatalogsVerticalProductGroupUpdateRequest::getFilters()
 }
 
 void
-CatalogsVerticalProductGroupUpdateRequest::setFilters(CatalogsCreativeAssetsProductGroupFilters  filters)
+CatalogsVerticalProductGroupUpdateRequest::setFilters(CatalogsCreativeAssetsProductGroupFilters filters)
 {
 	this->filters = filters;
 }
@@ -220,7 +220,7 @@ CatalogsVerticalProductGroupUpdateRequest::getLocale()
 }
 
 void
-CatalogsVerticalProductGroupUpdateRequest::setLocale(CatalogsLocale  locale)
+CatalogsVerticalProductGroupUpdateRequest::setLocale(CatalogsLocale locale)
 {
 	this->locale = locale;
 }
@@ -232,7 +232,7 @@ CatalogsVerticalProductGroupUpdateRequest::getName()
 }
 
 void
-CatalogsVerticalProductGroupUpdateRequest::setName(std::string  name)
+CatalogsVerticalProductGroupUpdateRequest::setName(std::string name)
 {
 	this->name = name;
 }

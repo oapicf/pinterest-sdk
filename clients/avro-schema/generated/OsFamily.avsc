@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Operating system family.",
+  "name": "OsFamily",
+  "symbols": [
+    "ios",
+    "android",
+    "macos",
+    "windows",
+    "linux",
+    "bsd",
+    "other"
+  ]
+}

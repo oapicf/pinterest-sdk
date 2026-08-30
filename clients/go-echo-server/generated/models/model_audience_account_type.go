@@ -1,5 +1,5 @@
 package models
-
+// AudienceAccountType : Account type filter for audience sharing.
 type AudienceAccountType string
 
 // List of AudienceAccountType

@@ -13,11 +13,11 @@ Method | HTTP request | Description
 
 ## customerListsCreate
 
-> CustomerList customerListsCreate(adAccountId, customerListRequest)
+> CustomerList customerListsCreate(adAccountId, customerListCreate)
 
 Create customer lists
 
-&lt;p&gt;Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).&lt;/p&gt; &lt;p&gt;A customer list is one of the four types of Pinterest audiences: for more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;p/&gt; &lt;p&gt;&lt;b&gt;Please review our &lt;u&gt;&lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting#section-13341\&quot; target&#x3D;\&quot;_blank\&quot;&gt;requirements&lt;/a&gt;&lt;/u&gt; for what type of information is allowed when uploading a customer list.&lt;/b&gt;&lt;/p&gt; &lt;p&gt;When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.&lt;/p&gt; &lt;p&gt;To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the &lt;a href&#x3D;\&quot;https://developer.pinterest.com/docs/api/v5/audiences-create\&quot; target&#x3D;\&quot;blank\&quot;&gt;create audience endpoint&lt;/a&gt;.&lt;/p&gt;
+Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
 
 ### Example
 
@@ -26,10 +26,10 @@ Create customer lists
 //import org.openapitools.client.api.CustomerListsApi;
 
 CustomerListsApi apiInstance = new CustomerListsApi();
-String adAccountId = null; // String | Unique identifier of an ad account.
-CustomerListRequest customerListRequest = new CustomerListRequest(); // CustomerListRequest | Parameters to get Customer lists info
+String adAccountId = null; // String | 
+CustomerListCreate customerListCreate = new CustomerListCreate(); // CustomerListCreate | 
 try {
-    CustomerList result = apiInstance.customerListsCreate(adAccountId, customerListRequest);
+    CustomerList result = apiInstance.customerListsCreate(adAccountId, customerListCreate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CustomerListsApi#customerListsCreate");
@@ -42,8 +42,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **customerListRequest** | [**CustomerListRequest**](CustomerListRequest.md)| Parameters to get Customer lists info |
+ **adAccountId** | **String**|  | [default to null]
+ **customerListCreate** | [**CustomerListCreate**](CustomerListCreate.md)|  |
 
 ### Return type
 
@@ -74,8 +74,8 @@ Gets a specific customer list given the customer list ID.
 //import org.openapitools.client.api.CustomerListsApi;
 
 CustomerListsApi apiInstance = new CustomerListsApi();
-String adAccountId = null; // String | Unique identifier of an ad account.
-String customerListId = null; // String | Unique identifier of a customer list
+String adAccountId = null; // String | 
+String customerListId = null; // String | Customer list ID.
 try {
     CustomerList result = apiInstance.customerListsGet(adAccountId, customerListId);
     System.out.println(result);
@@ -90,8 +90,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **customerListId** | **String**| Unique identifier of a customer list | [default to null]
+ **adAccountId** | **String**|  | [default to null]
+ **customerListId** | **String**| Customer list ID. | [default to null]
 
 ### Return type
 
@@ -109,11 +109,11 @@ Name | Type | Description  | Notes
 
 ## customerListsList
 
-> CustomerListsList200Response customerListsList(adAccountId, pageSize, order, bookmark)
+> CustomerListsList200Response customerListsList(adAccountId, bookmark, pageSize, order, excludeNca)
 
 Get customer lists
 
-&lt;p&gt;Get a set of customer lists including id and name based on the filters provided.&lt;/p&gt; &lt;p&gt;(Customer lists are a type of audience.) For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;  or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
+Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 
 ### Example
 
@@ -122,12 +122,13 @@ Get customer lists
 //import org.openapitools.client.api.CustomerListsApi;
 
 CustomerListsApi apiInstance = new CustomerListsApi();
-String adAccountId = null; // String | Unique identifier of an ad account.
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-String order = ASCENDING; // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+String adAccountId = null; // String | 
 String bookmark = null; // String | Cursor used to fetch the next page of items
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+PinterestLibPaginationOrder order = null; // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+Boolean excludeNca = false; // Boolean | When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).
 try {
-    CustomerListsList200Response result = apiInstance.customerListsList(adAccountId, pageSize, order, bookmark);
+    CustomerListsList200Response result = apiInstance.customerListsList(adAccountId, bookmark, pageSize, order, excludeNca);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CustomerListsApi#customerListsList");
@@ -140,10 +141,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING]
+ **adAccountId** | **String**|  | [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING]
+ **excludeNca** | **Boolean**| When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all). | [optional] [default to false]
 
 ### Return type
 
@@ -161,11 +163,11 @@ Name | Type | Description  | Notes
 
 ## customerListsUpdate
 
-> CustomerList customerListsUpdate(adAccountId, customerListId, customerListUpdateRequest)
+> CustomerList customerListsUpdate(adAccountId, customerListId, customerListUpdateWithRequiredBody)
 
 Update customer list
 
-&lt;p&gt;Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)&lt;/p&gt; &lt;p&gt;When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
+Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \&quot;CUSTOMER_LIST\&quot; audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 
 ### Example
 
@@ -174,11 +176,11 @@ Update customer list
 //import org.openapitools.client.api.CustomerListsApi;
 
 CustomerListsApi apiInstance = new CustomerListsApi();
-String adAccountId = null; // String | Unique identifier of an ad account.
-String customerListId = null; // String | Unique identifier of a customer list
-CustomerListUpdateRequest customerListUpdateRequest = new CustomerListUpdateRequest(); // CustomerListUpdateRequest | 
+String adAccountId = null; // String | 
+String customerListId = null; // String | Customer list ID.
+CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody = new CustomerListUpdateWithRequiredBody(); // CustomerListUpdateWithRequiredBody | 
 try {
-    CustomerList result = apiInstance.customerListsUpdate(adAccountId, customerListId, customerListUpdateRequest);
+    CustomerList result = apiInstance.customerListsUpdate(adAccountId, customerListId, customerListUpdateWithRequiredBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CustomerListsApi#customerListsUpdate");
@@ -191,9 +193,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **customerListId** | **String**| Unique identifier of a customer list | [default to null]
- **customerListUpdateRequest** | [**CustomerListUpdateRequest**](CustomerListUpdateRequest.md)|  |
+ **adAccountId** | **String**|  | [default to null]
+ **customerListId** | **String**| Customer list ID. | [default to null]
+ **customerListUpdateWithRequiredBody** | [**CustomerListUpdateWithRequiredBody**](CustomerListUpdateWithRequiredBody.md)|  |
 
 ### Return type
 

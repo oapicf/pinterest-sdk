@@ -6,12 +6,12 @@ using namespace Tiny;
 
 BidFloorSpec::BidFloorSpec()
 {
-	billable_event = ActionType();
+	billable_event = null;
 	countries = std::list<Country>();
-	creative_type = CreativeType();
-	currency = Currency();
-	objective_type = ObjectiveType();
-	optimization_goal_metadata = OptimizationGoalMetadata();
+	creative_type = null;
+	currency = null;
+	objective_type = null;
+	optimization_goal_metadata = null;
 }
 
 BidFloorSpec::BidFloorSpec(std::string jsonString)
@@ -102,7 +102,7 @@ BidFloorSpec::fromJson(std::string jsonObj)
 
 
 
-        ObjectiveType* obj = &objective_type;
+        BidFloorObjectiveType* obj = &objective_type;
 		obj->fromJson(value.dump());
 
     }
@@ -191,7 +191,7 @@ BidFloorSpec::getBillableEvent()
 }
 
 void
-BidFloorSpec::setBillableEvent(ActionType  billable_event)
+BidFloorSpec::setBillableEvent(ActionType billable_event)
 {
 	this->billable_event = billable_event;
 }
@@ -203,7 +203,7 @@ BidFloorSpec::getCountries()
 }
 
 void
-BidFloorSpec::setCountries(std::list <Country> countries)
+BidFloorSpec::setCountries(std::list<Country> countries)
 {
 	this->countries = countries;
 }
@@ -215,7 +215,7 @@ BidFloorSpec::getCreativeType()
 }
 
 void
-BidFloorSpec::setCreativeType(CreativeType  creative_type)
+BidFloorSpec::setCreativeType(CreativeType creative_type)
 {
 	this->creative_type = creative_type;
 }
@@ -227,19 +227,19 @@ BidFloorSpec::getCurrency()
 }
 
 void
-BidFloorSpec::setCurrency(Currency  currency)
+BidFloorSpec::setCurrency(Currency currency)
 {
 	this->currency = currency;
 }
 
-ObjectiveType
+BidFloorObjectiveType
 BidFloorSpec::getObjectiveType()
 {
 	return objective_type;
 }
 
 void
-BidFloorSpec::setObjectiveType(ObjectiveType  objective_type)
+BidFloorSpec::setObjectiveType(BidFloorObjectiveType objective_type)
 {
 	this->objective_type = objective_type;
 }
@@ -251,7 +251,7 @@ BidFloorSpec::getOptimizationGoalMetadata()
 }
 
 void
-BidFloorSpec::setOptimizationGoalMetadata(OptimizationGoalMetadata  optimization_goal_metadata)
+BidFloorSpec::setOptimizationGoalMetadata(OptimizationGoalMetadata optimization_goal_metadata)
 {
 	this->optimization_goal_metadata = optimization_goal_metadata;
 }

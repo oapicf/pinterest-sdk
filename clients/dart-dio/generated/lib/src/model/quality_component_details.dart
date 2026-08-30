@@ -105,15 +105,17 @@ class _$QualityComponentDetailsSerializer implements PrimitiveSerializer<Quality
         case r'issues':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(QualityComponentIssue)]),
-          ) as BuiltList<QualityComponentIssue>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(QualityComponentIssue)]),
+          ) as BuiltList<QualityComponentIssue>?;
+          if (valueDes == null) continue;
           result.issues.replace(valueDes);
           break;
         case r'overlap':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.overlap = valueDes;
           break;
         default:

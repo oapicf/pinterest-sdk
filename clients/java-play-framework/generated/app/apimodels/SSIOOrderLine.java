@@ -11,9 +11,9 @@ import java.util.Objects;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 /**
- * SSIOOrderLine
+ * A Salesforce SSIO order line.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class SSIOOrderLine   {
   @JsonProperty("accepted_terms_id")
@@ -21,7 +21,7 @@ public class SSIOOrderLine   {
   private String acceptedTermsId;
 
   @JsonProperty("accepted_terms_time")
-  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")
+  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$")
 
   private String acceptedTermsTime;
 
@@ -70,7 +70,7 @@ public class SSIOOrderLine   {
   private BigDecimal estimatedMonthlySpend;
 
   @JsonProperty("last_modified_date_time")
-  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")
+  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$")
 
   private String lastModifiedDateTime;
 
@@ -134,7 +134,7 @@ public class SSIOOrderLine   {
   }
 
    /**
-   * The UTC timestamp (to the nearest sec) of when terms were accepted
+   * The UTC timestamp (to the nearest second) when terms were accepted.
    * @return acceptedTermsTime
   **/
   public String getAcceptedTermsTime() {
@@ -151,7 +151,7 @@ public class SSIOOrderLine   {
   }
 
    /**
-   * Ads manager OrderLineId
+   * Ads manager order line id
    * @return adsManagerOrderLineId
   **/
   public String getAdsManagerOrderLineId() {
@@ -185,7 +185,7 @@ public class SSIOOrderLine   {
   }
 
    /**
-   * Bill To Company name
+   * Bill-to company name
    * @return billToCompanyName
   **/
   public String getBillToCompanyName() {
@@ -253,7 +253,7 @@ public class SSIOOrderLine   {
   }
 
    /**
-   * If Budget order line, the budget amount.
+   * If budget order line, the budget amount.
    * @return budgetAmount
   **/
   public BigDecimal getBudgetAmount() {
@@ -304,7 +304,7 @@ public class SSIOOrderLine   {
   }
 
    /**
-   * If Ongoing (perpetual) order line, the estimated monthly spend
+   * If ongoing (perpetual) order line, the estimated monthly spend.
    * @return estimatedMonthlySpend
   **/
   public BigDecimal getEstimatedMonthlySpend() {
@@ -355,7 +355,7 @@ public class SSIOOrderLine   {
   }
 
    /**
-   * Billing contact first name
+   * Billing media contact first name
    * @return mediaContactFirstname
   **/
   public String getMediaContactFirstname() {
@@ -372,7 +372,7 @@ public class SSIOOrderLine   {
   }
 
    /**
-   * Billing contact first name
+   * Billing media contact last name
    * @return mediaContactLastname
   **/
   public String getMediaContactLastname() {
@@ -440,7 +440,7 @@ public class SSIOOrderLine   {
   }
 
    /**
-   * The po number
+   * The PO number
    * @return poNumber
   **/
   public String getPoNumber() {
@@ -457,7 +457,7 @@ public class SSIOOrderLine   {
   }
 
    /**
-   * OrderLineId in SFDC
+   * Order line id in SFDC
    * @return salesforceOrderLineId
   **/
   public String getSalesforceOrderLineId() {
@@ -561,10 +561,7 @@ public class SSIOOrderLine   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

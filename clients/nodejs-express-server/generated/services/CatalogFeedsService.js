@@ -3,22 +3,22 @@ const Service = require('./Service');
 
 /**
 * List feed processing results
-* Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+* Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 *
-* feedUnderscoreid String Unique identifier of a feed
-* bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* feedUnderscoreid String Unique identifier of a feed.
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
+* bookmark String Cursor used to fetch the next page of items (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns feed_processing_results_list_200_response
 * */
-const feed_processing_results/list = ({ feedUnderscoreid, bookmark, pageUnderscoresize, adUnderscoreaccountUnderscoreid }) => new Promise(
+const feed_processing_results/list = ({ feedUnderscoreid, adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         feedUnderscoreid,
+        adUnderscoreaccountUnderscoreid,
         bookmark,
         pageUnderscoresize,
-        adUnderscoreaccountUnderscoreid,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -30,17 +30,17 @@ const feed_processing_results/list = ({ feedUnderscoreid, bookmark, pageUndersco
 );
 /**
 * Create feed
-* Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+* Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 *
-* feedsCreateRequest FeedsCreateRequest Request object used to created a feed.
+* catalogsFeedCreateRequestSchema CatalogsFeedCreateRequestSchema 
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns CatalogsFeed
 * */
-const feeds/create = ({ feedsCreateRequest, adUnderscoreaccountUnderscoreid }) => new Promise(
+const feeds/create = ({ catalogsFeedCreateRequestSchema, adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
-        feedsCreateRequest,
+        catalogsFeedCreateRequestSchema,
         adUnderscoreaccountUnderscoreid,
       }));
     } catch (e) {
@@ -53,11 +53,11 @@ const feeds/create = ({ feedsCreateRequest, adUnderscoreaccountUnderscoreid }) =
 );
 /**
 * Delete feed
-* Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+* Delete a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
 *
-* feedUnderscoreid String Unique identifier of a feed
+* feedUnderscoreid String Unique identifier of a feed.
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
-* no response value expected for this operation
+* returns CatalogsFeed
 * */
 const feeds/delete = ({ feedUnderscoreid, adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
@@ -76,9 +76,9 @@ const feeds/delete = ({ feedUnderscoreid, adUnderscoreaccountUnderscoreid }) => 
 );
 /**
 * Get feed
-* Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+* Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
 *
-* feedUnderscoreid String Unique identifier of a feed
+* feedUnderscoreid String Unique identifier of a feed.
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns CatalogsFeed
 * */
@@ -99,9 +99,9 @@ const feeds/get = ({ feedUnderscoreid, adUnderscoreaccountUnderscoreid }) => new
 );
 /**
 * Ingest feed items
-* Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+* Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 *
-* feedUnderscoreid String Unique identifier of a feed
+* feedUnderscoreid String Unique identifier of a feed.
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns CatalogsFeedIngestion
 * */
@@ -122,22 +122,22 @@ const feeds/ingest = ({ feedUnderscoreid, adUnderscoreaccountUnderscoreid }) => 
 );
 /**
 * List feeds
-* Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+* Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
 *
-* bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * catalogUnderscoreid String Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
+* bookmark String Cursor used to fetch the next page of items (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns feeds_list_200_response
 * */
-const feeds/list = ({ bookmark, pageUnderscoresize, catalogUnderscoreid, adUnderscoreaccountUnderscoreid }) => new Promise(
+const feeds/list = ({ catalogUnderscoreid, adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
-        bookmark,
-        pageUnderscoresize,
         catalogUnderscoreid,
         adUnderscoreaccountUnderscoreid,
+        bookmark,
+        pageUnderscoresize,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -149,19 +149,19 @@ const feeds/list = ({ bookmark, pageUnderscoresize, catalogUnderscoreid, adUnder
 );
 /**
 * Update feed
-* Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+* Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 *
-* feedUnderscoreid String Unique identifier of a feed
-* feedsUpdateRequest FeedsUpdateRequest Request object used to update a feed.
+* feedUnderscoreid String Unique identifier of a feed.
+* catalogsFeedUpdateRequestSchema CatalogsFeedUpdateRequestSchema 
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns CatalogsFeed
 * */
-const feeds/update = ({ feedUnderscoreid, feedsUpdateRequest, adUnderscoreaccountUnderscoreid }) => new Promise(
+const feeds/update = ({ feedUnderscoreid, catalogsFeedUpdateRequestSchema, adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         feedUnderscoreid,
-        feedsUpdateRequest,
+        catalogsFeedUpdateRequestSchema,
         adUnderscoreaccountUnderscoreid,
       }));
     } catch (e) {
@@ -174,26 +174,26 @@ const feeds/update = ({ feedUnderscoreid, feedsUpdateRequest, adUnderscoreaccoun
 );
 /**
 * List item issues
-* List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+* List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to [Build catalogs report](/docs/api/v5/#operation/reports/create) and [Get catalogs report](/docs/api/v5/#operation/reports/get) endpoints. Moreover, they support multiple types of catalogs.  [Learn more](/docs/api-features/shopping-overview/)
 *
 * processingUnderscoreresultUnderscoreid String Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
-* bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * itemUnderscorenumbers List Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. (optional)
 * itemUnderscorevalidationUnderscoreissue CatalogsItemValidationIssue Filter item validation issues that have a given type of item validation issue. (optional)
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
+* bookmark String Cursor used to fetch the next page of items (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns items_issues_list_200_response
 * */
-const items_issues/list = ({ processingUnderscoreresultUnderscoreid, bookmark, pageUnderscoresize, itemUnderscorenumbers, itemUnderscorevalidationUnderscoreissue, adUnderscoreaccountUnderscoreid }) => new Promise(
+const items_issues/list = ({ processingUnderscoreresultUnderscoreid, itemUnderscorenumbers, itemUnderscorevalidationUnderscoreissue, adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         processingUnderscoreresultUnderscoreid,
-        bookmark,
-        pageUnderscoresize,
         itemUnderscorenumbers,
         itemUnderscorevalidationUnderscoreissue,
         adUnderscoreaccountUnderscoreid,
+        bookmark,
+        pageUnderscoresize,
       }));
     } catch (e) {
       reject(Service.rejectResponse(

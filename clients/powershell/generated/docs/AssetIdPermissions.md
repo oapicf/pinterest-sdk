@@ -3,10 +3,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssetGroupInfo** | [**AssetGroupBinding**](AssetGroupBinding.md) |  | [optional] 
-**AssetId** | **String** | Unique identifier of a business asset. | [optional] 
-**AssetType** | **String** | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional] 
-**Permissions** | **String[]** | Permission levels member or partner has on an asset. | [optional] 
+**AssetGroupInfo** | [**AssetGroupBinding**](AssetGroupBinding.md) | An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals &#39;ASSET_GROUP&#39;. | [optional] 
+**AssetId** | **String** | Unique identifier of a business asset. | 
+**AssetType** | [**AssetTypeResponse**](AssetTypeResponse.md) |  | 
+**Permissions** | **String[]** | Permission levels member or partner has on an asset. | 
 
 ## Examples
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ```powershell
 $AssetIdPermissions = Initialize-PSOpenAPIToolsAssetIdPermissions  -AssetGroupInfo null `
  -AssetId 549755885175 `
- -AssetType AD_ACCOUNT `
+ -AssetType null `
  -Permissions [&quot;FINANCE_MANAGER&quot;,&quot;CATALOGS_MANAGER&quot;,&quot;AUDIENCE_MANAGER&quot;]
 ```
 

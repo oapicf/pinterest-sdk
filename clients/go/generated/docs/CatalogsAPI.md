@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## CatalogsCreate
 
-> Catalog CatalogsCreate(ctx).CatalogsCreateRequest(catalogsCreateRequest).AdAccountId(adAccountId).Execute()
+> Catalog CatalogsCreate(ctx).CatalogCreate(catalogCreate).AdAccountId(adAccountId).Execute()
 
 Create catalog
 
@@ -105,12 +105,12 @@ import (
 )
 
 func main() {
-	catalogsCreateRequest := *openapiclient.NewCatalogsCreateRequest(openapiclient.CatalogsType("RETAIL"), "Name_example") // CatalogsCreateRequest | Request object used to created a feed.
+	catalogCreate := *openapiclient.NewCatalogCreate(openapiclient.CatalogsType("RETAIL"), "Name_example") // CatalogCreate | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CatalogsAPI.CatalogsCreate(context.Background()).CatalogsCreateRequest(catalogsCreateRequest).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.CatalogsAPI.CatalogsCreate(context.Background()).CatalogCreate(catalogCreate).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CatalogsAPI.CatalogsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,7 +131,7 @@ Other parameters are passed through a pointer to a apiCatalogsCreateRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogsCreateRequest** | [**CatalogsCreateRequest**](CatalogsCreateRequest.md) | Request object used to created a feed. | 
+ **catalogCreate** | [**CatalogCreate**](CatalogCreate.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## CatalogsList
 
-> CatalogsList200Response CatalogsList(ctx).Bookmark(bookmark).PageSize(pageSize).AdAccountId(adAccountId).Execute()
+> CatalogsList200Response CatalogsList(ctx).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List catalogs
 
@@ -173,13 +173,13 @@ import (
 )
 
 func main() {
-	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
+	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CatalogsAPI.CatalogsList(context.Background()).Bookmark(bookmark).PageSize(pageSize).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.CatalogsAPI.CatalogsList(context.Background()).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CatalogsAPI.CatalogsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -200,9 +200,9 @@ Other parameters are passed through a pointer to a apiCatalogsListRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **adAccountId** | **string** | Unique identifier of an ad account. | 
+ **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 

@@ -51,17 +51,17 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = AudienceSharingApi("https://api.pinterest.com/v5")
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
-
     val audienceId: String = audienceId_example // String | Unique identifier of the audience to use to filter the results.
 
     val accountType: AudienceAccountType =  // AudienceAccountType | Filter accounts by account type.
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, pageSize, bookmark)
+    val request = apiInstance.adAccountsAudiencesSharedAccountsList(audienceId, accountType, adAccountId, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -89,11 +89,11 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. |
  **audienceId** | **String**| Unique identifier of the audience to use to filter the results. |
  **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [enum: AD_ACCOUNT, BUSINESS_ACCOUNT]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **adAccountId** | **String**| Unique identifier of an ad account. |
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -112,10 +112,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account audiences shared accounts parameters. |  -  |
-| **404** | Shared accounts not found. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## businessAccountAudiencesSharedAccountsList
@@ -148,17 +151,17 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = AudienceSharingApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
     val audienceId: String = audienceId_example // String | Unique identifier of the audience to use to filter the results.
 
     val accountType: AudienceAccountType =  // AudienceAccountType | Filter accounts by account type.
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, pageSize, bookmark)
+    val request = apiInstance.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -189,8 +192,8 @@ Name | Type | Description  | Notes
  **businessId** | **String**| Unique identifier of the requesting business. |
  **audienceId** | **String**| Unique identifier of the audience to use to filter the results. |
  **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [enum: AD_ACCOUNT, BUSINESS_ACCOUNT]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -209,15 +212,18 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid business audiences shared accounts parameters. |  -  |
-| **404** | Shared accounts not found. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## sharedAudiencesForBusinessList
 
-> sharedAudiencesForBusinessList(sharedAudiencesForBusinessListRequest): ApiRequest[AudiencesList200Response]
+> sharedAudiencesForBusinessList(sharedAudiencesForBusinessListRequest): ApiRequest[SharedAudiencesForBusinessList200Response]
 
 List received audiences for a business
 
@@ -227,6 +233,7 @@ Get a list of received audiences for the given business.
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -244,15 +251,15 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = AudienceSharingApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
+
+    val order: Order =  // Order | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val order: String = ASCENDING // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.sharedAudiencesForBusinessList(businessId, bookmark, order, pageSize)
+    val request = apiInstance.sharedAudiencesForBusinessList(businessId, order, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -281,13 +288,13 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
+ **order** | [**Order**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
-ApiRequest[[**AudiencesList200Response**](AudiencesList200Response.md)]
+ApiRequest[[**SharedAudiencesForBusinessList200Response**](SharedAudiencesForBusinessList200Response.md)]
 
 
 ### Authorization
@@ -302,18 +309,22 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## updateAdAccountToAdAccountSharedAudience
 
-> updateAdAccountToAdAccountSharedAudience(updateAdAccountToAdAccountSharedAudienceRequest): ApiRequest[SharedAudienceResponse]
+> updateAdAccountToAdAccountSharedAudience(updateAdAccountToAdAccountSharedAudienceRequest): ApiRequest[AdAccountToAdAccountSharedAudience]
 
 Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -339,9 +350,9 @@ object Example extends App {
     val apiInstance = AudienceSharingApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val sharedAudience: SharedAudience =  // SharedAudience | 
+    val adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody =  // AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody | 
     
-    val request = apiInstance.updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience)
+    val request = apiInstance.updateAdAccountToAdAccountSharedAudience(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -370,11 +381,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **sharedAudience** | [**SharedAudience**](SharedAudience.md)|  |
+ **adAccountToAdAccountSharedAudienceUpdateWithRequiredBody** | [**AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
-ApiRequest[[**SharedAudienceResponse**](SharedAudienceResponse.md)]
+ApiRequest[[**AdAccountToAdAccountSharedAudience**](AdAccountToAdAccountSharedAudience.md)]
 
 
 ### Authorization
@@ -389,18 +400,22 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account id. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## updateAdAccountToBusinessSharedAudience
 
-> updateAdAccountToBusinessSharedAudience(updateAdAccountToBusinessSharedAudienceRequest): ApiRequest[BusinessSharedAudienceResponse]
+> updateAdAccountToBusinessSharedAudience(updateAdAccountToBusinessSharedAudienceRequest): ApiRequest[AdAccountToBusinessSharedAudience]
 
 Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -426,9 +441,9 @@ object Example extends App {
     val apiInstance = AudienceSharingApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val businessSharedAudience: BusinessSharedAudience =  // BusinessSharedAudience | 
+    val adAccountToBusinessSharedAudienceUpdateWithRequiredBody: AdAccountToBusinessSharedAudienceUpdateWithRequiredBody =  // AdAccountToBusinessSharedAudienceUpdateWithRequiredBody | 
     
-    val request = apiInstance.updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience)
+    val request = apiInstance.updateAdAccountToBusinessSharedAudience(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -457,11 +472,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **businessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  |
+ **adAccountToBusinessSharedAudienceUpdateWithRequiredBody** | [**AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
-ApiRequest[[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)]
+ApiRequest[[**AdAccountToBusinessSharedAudience**](AdAccountToBusinessSharedAudience.md)]
 
 
 ### Authorization
@@ -476,18 +491,22 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account id. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## updateBusinessToAdAccountSharedAudience
 
-> updateBusinessToAdAccountSharedAudience(updateBusinessToAdAccountSharedAudienceRequest): ApiRequest[SharedAudienceResponse]
+> updateBusinessToAdAccountSharedAudience(updateBusinessToAdAccountSharedAudienceRequest): ApiRequest[BusinessToAdAccountSharedAudience]
 
 Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -511,11 +530,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = AudienceSharingApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val sharedAudience: SharedAudience =  // SharedAudience | 
+    val businessToAdAccountSharedAudienceUpdateWithRequiredBody: BusinessToAdAccountSharedAudienceUpdateWithRequiredBody =  // BusinessToAdAccountSharedAudienceUpdateWithRequiredBody | 
     
-    val request = apiInstance.updateBusinessToAdAccountSharedAudience(businessId, sharedAudience)
+    val request = apiInstance.updateBusinessToAdAccountSharedAudience(businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -544,11 +563,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
- **sharedAudience** | [**SharedAudience**](SharedAudience.md)|  |
+ **businessToAdAccountSharedAudienceUpdateWithRequiredBody** | [**BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
-ApiRequest[[**SharedAudienceResponse**](SharedAudienceResponse.md)]
+ApiRequest[[**BusinessToAdAccountSharedAudience**](BusinessToAdAccountSharedAudience.md)]
 
 
 ### Authorization
@@ -563,18 +582,22 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## updateBusinessToBusinessSharedAudience
 
-> updateBusinessToBusinessSharedAudience(updateBusinessToBusinessSharedAudienceRequest): ApiRequest[BusinessSharedAudienceResponse]
+> updateBusinessToBusinessSharedAudience(updateBusinessToBusinessSharedAudienceRequest): ApiRequest[BusinessToBusinessSharedAudience]
 
 Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -598,11 +621,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = AudienceSharingApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val businessSharedAudience: BusinessSharedAudience =  // BusinessSharedAudience | 
+    val businessToBusinessSharedAudienceUpdateWithRequiredBody: BusinessToBusinessSharedAudienceUpdateWithRequiredBody =  // BusinessToBusinessSharedAudienceUpdateWithRequiredBody | 
     
-    val request = apiInstance.updateBusinessToBusinessSharedAudience(businessId, businessSharedAudience)
+    val request = apiInstance.updateBusinessToBusinessSharedAudience(businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -631,11 +654,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
- **businessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  |
+ **businessToBusinessSharedAudienceUpdateWithRequiredBody** | [**BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
-ApiRequest[[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)]
+ApiRequest[[**BusinessToBusinessSharedAudience**](BusinessToBusinessSharedAudience.md)]
 
 
 ### Authorization
@@ -650,7 +673,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

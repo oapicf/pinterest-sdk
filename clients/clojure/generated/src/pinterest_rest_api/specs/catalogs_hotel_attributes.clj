@@ -3,7 +3,8 @@
             [spec-tools.data-spec :as ds]
             [pinterest-rest-api.specs.catalogs-hotel-address :refer :all]
             [pinterest-rest-api.specs.catalogs-hotel-guest-ratings :refer :all]
-            [pinterest-rest-api.specs.catalogs-hotel-attributes-all-of-main-image :refer :all]
+            [pinterest-rest-api.specs.catalogs-ai-content-disclosure :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-main-image :refer :all]
             )
   (:import (java.io File)))
 
@@ -28,7 +29,8 @@
    (ds/opt :neighborhood) (s/coll-of string?)
    (ds/opt :sale_price) string?
    (ds/opt :additional_image_link) (s/coll-of string?)
-   (ds/opt :main_image) catalogs-hotel-attributes-all-of-main-image-spec
+   (ds/opt :ai_disclosures) (s/coll-of catalogs-ai-content-disclosure-spec)
+   (ds/opt :main_image) catalogs-hotel-main-image-spec
    })
 
 (def catalogs-hotel-attributes-spec

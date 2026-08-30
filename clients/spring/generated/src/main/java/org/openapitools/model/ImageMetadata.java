@@ -2,39 +2,93 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ImageSize;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * ImageMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class ImageMetadata {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class ImageMetadata implements PinMediaMetadata {
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ImageSize images;
 
-  private @Nullable String itemType;
+  /**
+   * Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
+   */
+  public enum ItemTypeEnum {
+    IMAGE("image");
 
+    private final String value;
+
+    ItemTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ItemTypeEnum fromValue(String value) {
+      for (ItemTypeEnum b : ItemTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private ItemTypeEnum itemType;
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> link = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> title = JsonNullable.<String>undefined();
+
+  public ImageMetadata() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public ImageMetadata(ItemTypeEnum itemType) {
+    this.itemType = itemType;
+  }
 
   public ImageMetadata description(String description) {
     this.description = JsonNullable.of(description);
@@ -72,27 +126,29 @@ public class ImageMetadata {
     return images;
   }
 
+  @JsonProperty("images")
   public void setImages(@Nullable ImageSize images) {
     this.images = images;
   }
 
-  public ImageMetadata itemType(@Nullable String itemType) {
+  public ImageMetadata itemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
     return this;
   }
 
   /**
-   * Get itemType
+   * Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
    * @return itemType
    */
-  
-  @Schema(name = "item_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "item_type", description = "Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("item_type")
-  public @Nullable String getItemType() {
+  public ItemTypeEnum getItemType() {
     return itemType;
   }
 
-  public void setItemType(@Nullable String itemType) {
+  @JsonProperty("item_type")
+  public void setItemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
   }
 
@@ -185,11 +241,8 @@ public class ImageMetadata {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

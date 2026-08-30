@@ -5,7 +5,7 @@ Protected Class PinAnalyticsMetricsResponse
 		#tag Note
 			Array with the requested daily metric records
 		#tag EndNote
-		daily_metrics() As OpenAPIClient.Models.PinAnalyticsMetricsResponseDailyMetricsInner
+		daily_metrics() As OpenAPIClient.Models.PinAnalyticsDailyMetrics
 	#tag EndProperty
 
 
@@ -66,7 +66,7 @@ Protected Class PinAnalyticsMetricsResponse
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="PinAnalyticsMetricsResponseDailyMetricsInner"
+			Type="PinAnalyticsDailyMetrics"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

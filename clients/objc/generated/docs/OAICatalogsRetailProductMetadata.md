@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**availability** | [**OAINonNullableProductAvailabilityType***](OAINonNullableProductAvailabilityType.md) |  | 
+**availability** | [**OAIProductAvailability***](OAIProductAvailability.md) |  | 
 **currency** | [**OAINonNullableCatalogsCurrency***](OAINonNullableCatalogsCurrency.md) |  | 
 **itemGroupId** | **NSString*** | The parent ID of the product. | 
 **itemId** | **NSString*** | The user-created unique ID that represents the product. | 

@@ -19,7 +19,6 @@ typedef struct catalogs_hotel_product_group_filter_keys_t catalogs_hotel_product
 #include "catalogs_product_group_filter_operator_type_criteria.h"
 #include "catalogs_product_group_multiple_countries_criteria.h"
 #include "catalogs_product_group_multiple_string_criteria.h"
-#include "catalogs_product_group_pricing_currency_criteria.h"
 #include "country_filter.h"
 #include "custom_label0_filter.h"
 #include "custom_label1_filter.h"
@@ -28,27 +27,28 @@ typedef struct catalogs_hotel_product_group_filter_keys_t catalogs_hotel_product
 #include "custom_label4_filter.h"
 #include "hotel_id_filter.h"
 #include "price_filter.h"
+#include "price_filter_price.h"
 #include "title_keywords_filter.h"
 
 
 
 typedef struct catalogs_hotel_product_group_filter_keys_t {
-    struct catalogs_product_group_pricing_currency_criteria_t *price; //model
-    catalogs_product_group_multiple_string_criteria_t *hotel_id; //object
-    catalogs_product_group_multiple_string_criteria_t *brand; //object
-    catalogs_product_group_filter_operator_type_criteria_t *custom_label_0; //object
-    catalogs_product_group_filter_operator_type_criteria_t *custom_label_1; //object
-    catalogs_product_group_filter_operator_type_criteria_t *custom_label_2; //object
-    catalogs_product_group_filter_operator_type_criteria_t *custom_label_3; //object
-    catalogs_product_group_filter_operator_type_criteria_t *custom_label_4; //object
-    catalogs_product_group_multiple_countries_criteria_t *country; //object
-    catalogs_product_group_multiple_string_criteria_t *title_keywords; //object
+    struct price_filter_price_t *price; //model
+    struct catalogs_product_group_multiple_string_criteria_t *hotel_id; //model
+    struct catalogs_product_group_multiple_string_criteria_t *brand; //model
+    struct catalogs_product_group_filter_operator_type_criteria_t *custom_label_0; //model
+    struct catalogs_product_group_filter_operator_type_criteria_t *custom_label_1; //model
+    struct catalogs_product_group_filter_operator_type_criteria_t *custom_label_2; //model
+    struct catalogs_product_group_filter_operator_type_criteria_t *custom_label_3; //model
+    struct catalogs_product_group_filter_operator_type_criteria_t *custom_label_4; //model
+    struct catalogs_product_group_multiple_countries_criteria_t *country; //model
+    struct catalogs_product_group_multiple_string_criteria_t *title_keywords; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_product_group_filter_keys_t;
 
 __attribute__((deprecated)) catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_keys_create(
-    catalogs_product_group_pricing_currency_criteria_t *price,
+    price_filter_price_t *price,
     catalogs_product_group_multiple_string_criteria_t *hotel_id,
     catalogs_product_group_multiple_string_criteria_t *brand,
     catalogs_product_group_filter_operator_type_criteria_t *custom_label_0,

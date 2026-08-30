@@ -41,7 +41,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="adAccountsSubscriptionsDelById"></a>
 # **adAccountsSubscriptionsDelById**
 ```java
-Mono<Void> LeadAdsApi.adAccountsSubscriptionsDelById(adAccountIdsubscriptionId)
+Mono<LeadSubscription> LeadAdsApi.adAccountsSubscriptionsDelById(adAccountIdsubscriptionId)
 ```
 
 Delete lead ads subscription
@@ -55,7 +55,8 @@ Delete an existing lead ads webhook subscription by ID.   - Only requests for th
 | **subscriptionId** | `String`| Unique identifier of a subscription. | |
 
 
-
+### Return type
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:write`

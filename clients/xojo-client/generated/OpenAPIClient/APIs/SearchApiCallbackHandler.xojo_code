@@ -7,13 +7,13 @@ Protected Interface SearchApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SearchUserBoardsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SearchUserBoardsGet200Response)
+		Sub SearchUserBoardsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BoardsList200Response)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SearchUserPinsListCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SearchUserPinsList200Response)
+		Sub SearchUserPinsListCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.PinsList200Response)
 		  
 		End Sub
 	#tag EndMethod

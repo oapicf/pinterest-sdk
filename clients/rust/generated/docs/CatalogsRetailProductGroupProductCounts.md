@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | **String** |  | 
+**catalog_type** | **CatalogType** |  (enum: RETAIL) | 
 **in_stock** | **f64** |  | 
 **out_of_stock** | **f64** |  | 
 **preorder** | **f64** |  | 

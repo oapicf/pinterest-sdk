@@ -1,5 +1,6 @@
 package models
 
+// SsioAccountItem - Salesforce account item with billing and terms information.
 type SsioAccountItem struct {
 
 	// Address information that is associated with this account.

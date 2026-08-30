@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AUDIENCEID** | **String** |  | [optional] 
+**AUDIENCEID** | **String** | Audience ID for the multiplier. | [optional] 
 
 ## Examples
 

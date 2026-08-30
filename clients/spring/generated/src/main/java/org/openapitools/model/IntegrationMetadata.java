@@ -2,54 +2,69 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Integration metadata
  */
 
 @Schema(name = "IntegrationMetadata", description = "Integration metadata")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationMetadata {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String additionalId1;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String connectedAdvertiserId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String connectedLbaId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String connectedMerchantId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String connectedTagId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String connectedUserId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal createdTimestamp;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String externalBusinessId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal partnerAccessTokenExpiry;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String partnerMetadata;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal partnerRefreshTokenExpiry;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String scopes;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal updatedTimestamp;
 
   public IntegrationMetadata additionalId1(@Nullable String additionalId1) {
@@ -68,6 +83,7 @@ public class IntegrationMetadata {
     return additionalId1;
   }
 
+  @JsonProperty("additional_id_1")
   public void setAdditionalId1(@Nullable String additionalId1) {
     this.additionalId1 = additionalId1;
   }
@@ -82,12 +98,13 @@ public class IntegrationMetadata {
    * @return connectedAdvertiserId
    */
   
-  @Schema(name = "connected_advertiser_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "connected_advertiser_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_advertiser_id")
   public @Nullable String getConnectedAdvertiserId() {
     return connectedAdvertiserId;
   }
 
+  @JsonProperty("connected_advertiser_id")
   public void setConnectedAdvertiserId(@Nullable String connectedAdvertiserId) {
     this.connectedAdvertiserId = connectedAdvertiserId;
   }
@@ -108,6 +125,7 @@ public class IntegrationMetadata {
     return connectedLbaId;
   }
 
+  @JsonProperty("connected_lba_id")
   public void setConnectedLbaId(@Nullable String connectedLbaId) {
     this.connectedLbaId = connectedLbaId;
   }
@@ -128,6 +146,7 @@ public class IntegrationMetadata {
     return connectedMerchantId;
   }
 
+  @JsonProperty("connected_merchant_id")
   public void setConnectedMerchantId(@Nullable String connectedMerchantId) {
     this.connectedMerchantId = connectedMerchantId;
   }
@@ -148,6 +167,7 @@ public class IntegrationMetadata {
     return connectedTagId;
   }
 
+  @JsonProperty("connected_tag_id")
   public void setConnectedTagId(@Nullable String connectedTagId) {
     this.connectedTagId = connectedTagId;
   }
@@ -168,6 +188,7 @@ public class IntegrationMetadata {
     return connectedUserId;
   }
 
+  @JsonProperty("connected_user_id")
   public void setConnectedUserId(@Nullable String connectedUserId) {
     this.connectedUserId = connectedUserId;
   }
@@ -182,12 +203,13 @@ public class IntegrationMetadata {
    * @return createdTimestamp
    */
   @Valid 
-  @Schema(name = "created_timestamp", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "created_timestamp", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_timestamp")
   public @Nullable BigDecimal getCreatedTimestamp() {
     return createdTimestamp;
   }
 
+  @JsonProperty("created_timestamp")
   public void setCreatedTimestamp(@Nullable BigDecimal createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
   }
@@ -198,16 +220,17 @@ public class IntegrationMetadata {
   }
 
   /**
-   * Get externalBusinessId
+   * External business ID for the integration.
    * @return externalBusinessId
    */
   
-  @Schema(name = "external_business_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "external_business_id", description = "External business ID for the integration.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("external_business_id")
   public @Nullable String getExternalBusinessId() {
     return externalBusinessId;
   }
 
+  @JsonProperty("external_business_id")
   public void setExternalBusinessId(@Nullable String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
   }
@@ -222,12 +245,13 @@ public class IntegrationMetadata {
    * @return id
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
   public @Nullable String getId() {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(@Nullable String id) {
     this.id = id;
   }
@@ -248,6 +272,7 @@ public class IntegrationMetadata {
     return partnerAccessTokenExpiry;
   }
 
+  @JsonProperty("partner_access_token_expiry")
   public void setPartnerAccessTokenExpiry(@Nullable BigDecimal partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
   }
@@ -268,6 +293,7 @@ public class IntegrationMetadata {
     return partnerMetadata;
   }
 
+  @JsonProperty("partner_metadata")
   public void setPartnerMetadata(@Nullable String partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
@@ -288,6 +314,7 @@ public class IntegrationMetadata {
     return partnerRefreshTokenExpiry;
   }
 
+  @JsonProperty("partner_refresh_token_expiry")
   public void setPartnerRefreshTokenExpiry(@Nullable BigDecimal partnerRefreshTokenExpiry) {
     this.partnerRefreshTokenExpiry = partnerRefreshTokenExpiry;
   }
@@ -308,6 +335,7 @@ public class IntegrationMetadata {
     return scopes;
   }
 
+  @JsonProperty("scopes")
   public void setScopes(@Nullable String scopes) {
     this.scopes = scopes;
   }
@@ -322,12 +350,13 @@ public class IntegrationMetadata {
    * @return updatedTimestamp
    */
   @Valid 
-  @Schema(name = "updated_timestamp", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "updated_timestamp", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_timestamp")
   public @Nullable BigDecimal getUpdatedTimestamp() {
     return updatedTimestamp;
   }
 
+  @JsonProperty("updated_timestamp")
   public void setUpdatedTimestamp(@Nullable BigDecimal updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
   }
@@ -388,11 +417,8 @@ public class IntegrationMetadata {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

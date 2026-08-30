@@ -12,6 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include "BusinessRoleForInvite.h"
 #include "InviteType.h"
 #include <list>
 
@@ -47,38 +48,38 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
+	/*! \brief Get 
 	 */
-	std::string getBusinessRole();
+	BusinessRoleForInvite getBusinessRole();
 
-	/*! \brief Set The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
+	/*! \brief Set 
 	 */
-	void setBusinessRole(std::string  business_role);
+	void setBusinessRole(BusinessRoleForInvite business_role);
 	/*! \brief Get 
 	 */
 	InviteType getInviteType();
 
 	/*! \brief Set 
 	 */
-	void setInviteType(InviteType  invite_type);
+	void setInviteType(InviteType invite_type);
 	/*! \brief Get A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
 	 */
 	std::list<std::string> getMembers();
 
 	/*! \brief Set A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
 	 */
-	void setMembers(std::list <std::string> members);
+	void setMembers(std::list<std::string> members);
 	/*! \brief Get A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST
 	 */
 	std::list<std::string> getPartners();
 
 	/*! \brief Set A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST
 	 */
-	void setPartners(std::list <std::string> partners);
+	void setPartners(std::list<std::string> partners);
 
 
     private:
-    std::string business_role{};
+    BusinessRoleForInvite business_role;
     InviteType invite_type;
     std::list<std::string> members;
     std::list<std::string> partners;

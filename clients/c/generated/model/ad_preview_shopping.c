@@ -4,57 +4,26 @@
 #include "ad_preview_shopping.h"
 
 
-char* ad_preview_shopping_creative_type_ToString(pinterest_rest_api_ad_preview_shopping_CREATIVETYPE_e creative_type) {
-    char* creative_typeArray[] =  { "NULL", "SHOPPING", "CAROUSEL", "COLLECTION", "REGULAR" };
-    return creative_typeArray[creative_type];
-}
-
-pinterest_rest_api_ad_preview_shopping_CREATIVETYPE_e ad_preview_shopping_creative_type_FromString(char* creative_type){
-    int stringToReturn = 0;
-    char *creative_typeArray[] =  { "NULL", "SHOPPING", "CAROUSEL", "COLLECTION", "REGULAR" };
-    size_t sizeofArray = sizeof(creative_typeArray) / sizeof(creative_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(creative_type, creative_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-char* ad_preview_shopping_preferred_media_type_ToString(pinterest_rest_api_ad_preview_shopping_PREFERREDMEDIATYPE_e preferred_media_type) {
-    char* preferred_media_typeArray[] =  { "NULL", "VIDEO", "IMAGE" };
-    return preferred_media_typeArray[preferred_media_type];
-}
-
-pinterest_rest_api_ad_preview_shopping_PREFERREDMEDIATYPE_e ad_preview_shopping_preferred_media_type_FromString(char* preferred_media_type){
-    int stringToReturn = 0;
-    char *preferred_media_typeArray[] =  { "NULL", "VIDEO", "IMAGE" };
-    size_t sizeofArray = sizeof(preferred_media_typeArray) / sizeof(preferred_media_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(preferred_media_type, preferred_media_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static ad_preview_shopping_t *ad_preview_shopping_create_internal(
     char *catalog_product_group_id,
-    pinterest_rest_api_ad_preview_shopping_CREATIVETYPE_e creative_type,
+    ad_shopping_preview_creative_type_t *creative_type,
     customizable_cta_type_t *customizable_cta_type,
     char *hero_image_title,
     char *hero_image_url,
     char *hero_pin_id,
     char *image_tag,
     char *item_id,
-    pinterest_rest_api_ad_preview_shopping_PREFERREDMEDIATYPE_e preferred_media_type,
+    base_preferred_media_type_t *preferred_media_type,
+    int *show_promotion,
     char *video_tag
     ) {
     ad_preview_shopping_t *ad_preview_shopping_local_var = malloc(sizeof(ad_preview_shopping_t));
     if (!ad_preview_shopping_local_var) {
         return NULL;
     }
+    memset(ad_preview_shopping_local_var, 0, sizeof(ad_preview_shopping_t));
+    ad_preview_shopping_local_var->_library_owned = 1;
     ad_preview_shopping_local_var->catalog_product_group_id = catalog_product_group_id;
     ad_preview_shopping_local_var->creative_type = creative_type;
     ad_preview_shopping_local_var->customizable_cta_type = customizable_cta_type;
@@ -64,25 +33,30 @@ static ad_preview_shopping_t *ad_preview_shopping_create_internal(
     ad_preview_shopping_local_var->image_tag = image_tag;
     ad_preview_shopping_local_var->item_id = item_id;
     ad_preview_shopping_local_var->preferred_media_type = preferred_media_type;
+    ad_preview_shopping_local_var->show_promotion = show_promotion;
     ad_preview_shopping_local_var->video_tag = video_tag;
-
-    ad_preview_shopping_local_var->_library_owned = 1;
     return ad_preview_shopping_local_var;
 }
 
 __attribute__((deprecated)) ad_preview_shopping_t *ad_preview_shopping_create(
     char *catalog_product_group_id,
-    pinterest_rest_api_ad_preview_shopping_CREATIVETYPE_e creative_type,
+    ad_shopping_preview_creative_type_t *creative_type,
     customizable_cta_type_t *customizable_cta_type,
     char *hero_image_title,
     char *hero_image_url,
     char *hero_pin_id,
     char *image_tag,
     char *item_id,
-    pinterest_rest_api_ad_preview_shopping_PREFERREDMEDIATYPE_e preferred_media_type,
+    base_preferred_media_type_t *preferred_media_type,
+    int *show_promotion,
     char *video_tag
     ) {
-    return ad_preview_shopping_create_internal (
+    int *show_promotion_copy = NULL;
+    if (show_promotion) {
+        show_promotion_copy = malloc(sizeof(int));
+        if (show_promotion_copy) *show_promotion_copy = *show_promotion;
+    }
+    ad_preview_shopping_t *result = ad_preview_shopping_create_internal (
         catalog_product_group_id,
         creative_type,
         customizable_cta_type,
@@ -92,8 +66,13 @@ __attribute__((deprecated)) ad_preview_shopping_t *ad_preview_shopping_create(
         image_tag,
         item_id,
         preferred_media_type,
+        show_promotion_copy,
         video_tag
         );
+    if (!result) {
+        free(show_promotion_copy);
+    }
+    return result;
 }
 
 void ad_preview_shopping_free(ad_preview_shopping_t *ad_preview_shopping) {
@@ -108,6 +87,10 @@ void ad_preview_shopping_free(ad_preview_shopping_t *ad_preview_shopping) {
     if (ad_preview_shopping->catalog_product_group_id) {
         free(ad_preview_shopping->catalog_product_group_id);
         ad_preview_shopping->catalog_product_group_id = NULL;
+    }
+    if (ad_preview_shopping->creative_type) {
+        ad_shopping_preview_creative_type_free(ad_preview_shopping->creative_type);
+        ad_preview_shopping->creative_type = NULL;
     }
     if (ad_preview_shopping->customizable_cta_type) {
         customizable_cta_type_free(ad_preview_shopping->customizable_cta_type);
@@ -133,6 +116,14 @@ void ad_preview_shopping_free(ad_preview_shopping_t *ad_preview_shopping) {
         free(ad_preview_shopping->item_id);
         ad_preview_shopping->item_id = NULL;
     }
+    if (ad_preview_shopping->preferred_media_type) {
+        base_preferred_media_type_free(ad_preview_shopping->preferred_media_type);
+        ad_preview_shopping->preferred_media_type = NULL;
+    }
+    if (ad_preview_shopping->show_promotion) {
+        free(ad_preview_shopping->show_promotion);
+        ad_preview_shopping->show_promotion = NULL;
+    }
     if (ad_preview_shopping->video_tag) {
         free(ad_preview_shopping->video_tag);
         ad_preview_shopping->video_tag = NULL;
@@ -153,12 +144,16 @@ cJSON *ad_preview_shopping_convertToJSON(ad_preview_shopping_t *ad_preview_shopp
 
 
     // ad_preview_shopping->creative_type
-    if (pinterest_rest_api_ad_preview_shopping_CREATIVETYPE_NULL == ad_preview_shopping->creative_type) {
+    if (!ad_preview_shopping->creative_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "creative_type", ad_preview_shopping_creative_type_ToString(ad_preview_shopping->creative_type)) == NULL)
-    {
-    goto fail; //Enum
+    cJSON *creative_type_local_JSON = ad_shopping_preview_creative_type_convertToJSON(ad_preview_shopping->creative_type);
+    if(creative_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "creative_type", creative_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
 
 
@@ -216,10 +211,22 @@ cJSON *ad_preview_shopping_convertToJSON(ad_preview_shopping_t *ad_preview_shopp
 
 
     // ad_preview_shopping->preferred_media_type
-    if(ad_preview_shopping->preferred_media_type != pinterest_rest_api_ad_preview_shopping_PREFERREDMEDIATYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "preferred_media_type", ad_preview_shopping_preferred_media_type_ToString(ad_preview_shopping->preferred_media_type)) == NULL)
-    {
-    goto fail; //Enum
+    if(ad_preview_shopping->preferred_media_type) {
+    cJSON *preferred_media_type_local_JSON = base_preferred_media_type_convertToJSON(ad_preview_shopping->preferred_media_type);
+    if(preferred_media_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "preferred_media_type", preferred_media_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
+    }
+
+
+    // ad_preview_shopping->show_promotion
+    if(ad_preview_shopping->show_promotion) {
+    if(cJSON_AddBoolToObject(item, "show_promotion", *ad_preview_shopping->show_promotion) == NULL) {
+    goto fail; //Bool
     }
     }
 
@@ -243,8 +250,31 @@ ad_preview_shopping_t *ad_preview_shopping_parseFromJSON(cJSON *ad_preview_shopp
 
     ad_preview_shopping_t *ad_preview_shopping_local_var = NULL;
 
+    char *catalog_product_group_id_local_str = NULL;
+
+    // define the local variable for ad_preview_shopping->creative_type
+    ad_shopping_preview_creative_type_t *creative_type_local_nonprim = NULL;
+
     // define the local variable for ad_preview_shopping->customizable_cta_type
     customizable_cta_type_t *customizable_cta_type_local_nonprim = NULL;
+
+    char *hero_image_title_local_str = NULL;
+
+    char *hero_image_url_local_str = NULL;
+
+    char *hero_pin_id_local_str = NULL;
+
+    char *image_tag_local_str = NULL;
+
+    char *item_id_local_str = NULL;
+
+    // define the local variable for ad_preview_shopping->preferred_media_type
+    base_preferred_media_type_t *preferred_media_type_local_nonprim = NULL;
+
+    // define the local variable for ad_preview_shopping->show_promotion
+    int *show_promotion_local_var = NULL;
+
+    char *video_tag_local_str = NULL;
 
     // ad_preview_shopping->catalog_product_group_id
     cJSON *catalog_product_group_id = cJSON_GetObjectItemCaseSensitive(ad_preview_shoppingJSON, "catalog_product_group_id");
@@ -270,13 +300,8 @@ ad_preview_shopping_t *ad_preview_shopping_parseFromJSON(cJSON *ad_preview_shopp
         goto end;
     }
 
-    pinterest_rest_api_ad_preview_shopping_CREATIVETYPE_e creative_typeVariable;
     
-    if(!cJSON_IsString(creative_type))
-    {
-    goto end; //Enum
-    }
-    creative_typeVariable = ad_preview_shopping_creative_type_FromString(creative_type->valuestring);
+    creative_type_local_nonprim = ad_shopping_preview_creative_type_parseFromJSON(creative_type); //custom
 
     // ad_preview_shopping->customizable_cta_type
     cJSON *customizable_cta_type = cJSON_GetObjectItemCaseSensitive(ad_preview_shoppingJSON, "customizable_cta_type");
@@ -352,13 +377,26 @@ ad_preview_shopping_t *ad_preview_shopping_parseFromJSON(cJSON *ad_preview_shopp
     if (cJSON_IsNull(preferred_media_type)) {
         preferred_media_type = NULL;
     }
-    pinterest_rest_api_ad_preview_shopping_PREFERREDMEDIATYPE_e preferred_media_typeVariable;
     if (preferred_media_type) { 
-    if(!cJSON_IsString(preferred_media_type))
-    {
-    goto end; //Enum
+    preferred_media_type_local_nonprim = base_preferred_media_type_parseFromJSON(preferred_media_type); //custom
     }
-    preferred_media_typeVariable = ad_preview_shopping_preferred_media_type_FromString(preferred_media_type->valuestring);
+
+    // ad_preview_shopping->show_promotion
+    cJSON *show_promotion = cJSON_GetObjectItemCaseSensitive(ad_preview_shoppingJSON, "show_promotion");
+    if (cJSON_IsNull(show_promotion)) {
+        show_promotion = NULL;
+    }
+    if (show_promotion) { 
+    if(!cJSON_IsBool(show_promotion))
+    {
+    goto end; //Bool
+    }
+    show_promotion_local_var = malloc(sizeof(int));
+    if(!show_promotion_local_var)
+    {
+        goto end;
+    }
+    *show_promotion_local_var = show_promotion->valueint;
     }
 
     // ad_preview_shopping->video_tag
@@ -374,24 +412,77 @@ ad_preview_shopping_t *ad_preview_shopping_parseFromJSON(cJSON *ad_preview_shopp
     }
 
 
+    if (catalog_product_group_id && !cJSON_IsNull(catalog_product_group_id)) catalog_product_group_id_local_str = strdup(catalog_product_group_id->valuestring);
+    if (hero_image_title && !cJSON_IsNull(hero_image_title)) hero_image_title_local_str = strdup(hero_image_title->valuestring);
+    if (hero_image_url && !cJSON_IsNull(hero_image_url)) hero_image_url_local_str = strdup(hero_image_url->valuestring);
+    if (hero_pin_id && !cJSON_IsNull(hero_pin_id)) hero_pin_id_local_str = strdup(hero_pin_id->valuestring);
+    if (image_tag && !cJSON_IsNull(image_tag)) image_tag_local_str = strdup(image_tag->valuestring);
+    if (item_id && !cJSON_IsNull(item_id)) item_id_local_str = strdup(item_id->valuestring);
+    if (video_tag && !cJSON_IsNull(video_tag)) video_tag_local_str = strdup(video_tag->valuestring);
+
     ad_preview_shopping_local_var = ad_preview_shopping_create_internal (
-        strdup(catalog_product_group_id->valuestring),
-        creative_typeVariable,
+        catalog_product_group_id_local_str,
+        creative_type_local_nonprim,
         customizable_cta_type ? customizable_cta_type_local_nonprim : NULL,
-        hero_image_title && !cJSON_IsNull(hero_image_title) ? strdup(hero_image_title->valuestring) : NULL,
-        hero_image_url && !cJSON_IsNull(hero_image_url) ? strdup(hero_image_url->valuestring) : NULL,
-        hero_pin_id && !cJSON_IsNull(hero_pin_id) ? strdup(hero_pin_id->valuestring) : NULL,
-        image_tag && !cJSON_IsNull(image_tag) ? strdup(image_tag->valuestring) : NULL,
-        item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
-        preferred_media_type ? preferred_media_typeVariable : pinterest_rest_api_ad_preview_shopping_PREFERREDMEDIATYPE_NULL,
-        video_tag && !cJSON_IsNull(video_tag) ? strdup(video_tag->valuestring) : NULL
+        hero_image_title_local_str,
+        hero_image_url_local_str,
+        hero_pin_id_local_str,
+        image_tag_local_str,
+        item_id_local_str,
+        preferred_media_type ? preferred_media_type_local_nonprim : NULL,
+        show_promotion_local_var,
+        video_tag_local_str
         );
+
+    if (!ad_preview_shopping_local_var) {
+        goto end;
+    }
 
     return ad_preview_shopping_local_var;
 end:
+    if (catalog_product_group_id_local_str) {
+        free(catalog_product_group_id_local_str);
+        catalog_product_group_id_local_str = NULL;
+    }
+    if (creative_type_local_nonprim) {
+        ad_shopping_preview_creative_type_free(creative_type_local_nonprim);
+        creative_type_local_nonprim = NULL;
+    }
     if (customizable_cta_type_local_nonprim) {
         customizable_cta_type_free(customizable_cta_type_local_nonprim);
         customizable_cta_type_local_nonprim = NULL;
+    }
+    if (hero_image_title_local_str) {
+        free(hero_image_title_local_str);
+        hero_image_title_local_str = NULL;
+    }
+    if (hero_image_url_local_str) {
+        free(hero_image_url_local_str);
+        hero_image_url_local_str = NULL;
+    }
+    if (hero_pin_id_local_str) {
+        free(hero_pin_id_local_str);
+        hero_pin_id_local_str = NULL;
+    }
+    if (image_tag_local_str) {
+        free(image_tag_local_str);
+        image_tag_local_str = NULL;
+    }
+    if (item_id_local_str) {
+        free(item_id_local_str);
+        item_id_local_str = NULL;
+    }
+    if (preferred_media_type_local_nonprim) {
+        base_preferred_media_type_free(preferred_media_type_local_nonprim);
+        preferred_media_type_local_nonprim = NULL;
+    }
+    if (show_promotion_local_var) {
+        free(show_promotion_local_var);
+        show_promotion_local_var = NULL;
+    }
+    if (video_tag_local_str) {
+        free(video_tag_local_str);
+        video_tag_local_str = NULL;
     }
     return NULL;
 

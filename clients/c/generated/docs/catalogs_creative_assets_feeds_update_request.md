@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | **catalogs_type_t \*** |  | 
+**catalog_type** | **pinterest_rest_api_catalogs_creative_assets_feeds_update_request_CATALOGTYPE_e** |  | 
 **credentials** | [**catalogs_feed_credentials_t**](catalogs_feed_credentials.md) \* |  | [optional] 
 **default_currency** | **nullable_currency_t \*** |  | [optional] 
 **format** | **catalogs_format_t \*** |  | [optional] 

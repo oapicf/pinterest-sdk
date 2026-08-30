@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **advertiserUnderscoreid** | **string** |  | [optional] [default to null]
 **discountCurrency** | **string** |  | [optional] [default to null]
 **discountInMicroCurrency** | **integer** |  | [optional] [default to null]
-**discountType** | **string** |  | [optional] [default to null]
+**discountType** | [**AdsCreditDiscountType**](AdsCreditDiscountType.md) |  | [optional] [default to null]
 **remainingDiscountInMicroCurrency** | **integer** |  | [optional] [default to null]
 **title** | **string** |  | [optional] [default to null]
 

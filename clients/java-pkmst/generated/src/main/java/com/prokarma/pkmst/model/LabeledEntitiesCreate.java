@@ -1,0 +1,89 @@
+package com.prokarma.pkmst.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+/**
+ * Response class to be returned by Api
+ * @author pkmst
+ *
+ */
+/**
+ * Resource create operation model.
+ */
+@ApiModel(description = "Resource create operation model.")
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class LabeledEntitiesCreate   {
+  @JsonProperty("entity_ids")
+  
+  private List<String> entityIds = new ArrayList<>();
+
+  public LabeledEntitiesCreate entityIds(List<String> entityIds) {
+    this.entityIds = entityIds;
+    return this;
+  }
+
+  public LabeledEntitiesCreate addEntityIdsItem(String entityIdsItem) {
+    if (this.entityIds == null) {
+      this.entityIds = new ArrayList<>();
+    }
+    this.entityIds.add(entityIdsItem);
+    return this;
+  }
+
+  /**
+   * Entity IDs to apply label to.
+   * @return entityIds
+   */
+  @ApiModelProperty(required = true, value = "Entity IDs to apply label to.")
+  public List<String> getEntityIds() {
+    return entityIds;
+  }
+
+  public void setEntityIds(List<String> entityIds) {
+    this.entityIds = entityIds;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    LabeledEntitiesCreate labeledEntitiesCreate = (LabeledEntitiesCreate) o;
+    return Objects.equals(this.entityIds, labeledEntitiesCreate.entityIds);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(entityIds);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class LabeledEntitiesCreate {\n");
+    
+    sb.append("    entityIds: ").append(toIndentedString(entityIds)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

@@ -11,11 +11,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## bulk_download_create
 
-> <BulkDownloadResponse> bulk_download_create(ad_account_id, bulk_download_request)
+> <BulkDownload> bulk_download_create(ad_account_id, bulk_download_create)
 
 Get advertiser entities in bulk
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Examples
 
@@ -30,11 +30,11 @@ end
 
 api_instance = PinterestSdkClient::BulkApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-bulk_download_request = PinterestSdkClient::BulkDownloadRequest.new # BulkDownloadRequest | Parameters to get ad entities in bulk
+bulk_download_create = PinterestSdkClient::BulkDownloadCreate.new # BulkDownloadCreate | 
 
 begin
   # Get advertiser entities in bulk
-  result = api_instance.bulk_download_create(ad_account_id, bulk_download_request)
+  result = api_instance.bulk_download_create(ad_account_id, bulk_download_create)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BulkApi->bulk_download_create: #{e}"
@@ -45,15 +45,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BulkDownloadResponse>, Integer, Hash)> bulk_download_create_with_http_info(ad_account_id, bulk_download_request)
+> <Array(<BulkDownload>, Integer, Hash)> bulk_download_create_with_http_info(ad_account_id, bulk_download_create)
 
 ```ruby
 begin
   # Get advertiser entities in bulk
-  data, status_code, headers = api_instance.bulk_download_create_with_http_info(ad_account_id, bulk_download_request)
+  data, status_code, headers = api_instance.bulk_download_create_with_http_info(ad_account_id, bulk_download_create)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <BulkDownloadResponse>
+  p data # => <BulkDownload>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BulkApi->bulk_download_create_with_http_info: #{e}"
 end
@@ -64,11 +64,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **bulk_download_request** | [**BulkDownloadRequest**](BulkDownloadRequest.md) | Parameters to get ad entities in bulk |  |
+| **bulk_download_create** | [**BulkDownloadCreate**](BulkDownloadCreate.md) |  |  |
 
 ### Return type
 
-[**BulkDownloadResponse**](BulkDownloadResponse.md)
+[**BulkDownload**](BulkDownload.md)
 
 ### Authorization
 
@@ -82,11 +82,11 @@ end
 
 ## bulk_request_get
 
-> <BulkUpsertStatusResponse> bulk_request_get(ad_account_id, bulk_request_id, opts)
+> <BulkJobData> bulk_request_get(ad_account_id, bulk_request_id, opts)
 
 Download advertiser entities in bulk
 
-Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Examples
 
@@ -104,9 +104,9 @@ end
 
 api_instance = PinterestSdkClient::BulkApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-bulk_request_id = 'bulk_request_id_example' # String | Unique identifier of a bulk upsert request.
+bulk_request_id = 'bulk_request_id_example' # String | Bulk request ID that is from one of the entities bulk endpoints
 opts = {
-  include_details: true # Boolean | if set to True then attach the errors/details to all the requests
+  include_details: true # Boolean | If set to True then attach the errors/details to all the requests
 }
 
 begin
@@ -122,7 +122,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BulkUpsertStatusResponse>, Integer, Hash)> bulk_request_get_with_http_info(ad_account_id, bulk_request_id, opts)
+> <Array(<BulkJobData>, Integer, Hash)> bulk_request_get_with_http_info(ad_account_id, bulk_request_id, opts)
 
 ```ruby
 begin
@@ -130,7 +130,7 @@ begin
   data, status_code, headers = api_instance.bulk_request_get_with_http_info(ad_account_id, bulk_request_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <BulkUpsertStatusResponse>
+  p data # => <BulkJobData>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BulkApi->bulk_request_get_with_http_info: #{e}"
 end
@@ -141,12 +141,12 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **bulk_request_id** | **String** | Unique identifier of a bulk upsert request. |  |
-| **include_details** | **Boolean** | if set to True then attach the errors/details to all the requests | [optional][default to false] |
+| **bulk_request_id** | **String** | Bulk request ID that is from one of the entities bulk endpoints |  |
+| **include_details** | **Boolean** | If set to True then attach the errors/details to all the requests | [optional][default to false] |
 
 ### Return type
 
-[**BulkUpsertStatusResponse**](BulkUpsertStatusResponse.md)
+[**BulkJobData**](BulkJobData.md)
 
 ### Authorization
 
@@ -164,7 +164,7 @@ end
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 
 ### Examples
 

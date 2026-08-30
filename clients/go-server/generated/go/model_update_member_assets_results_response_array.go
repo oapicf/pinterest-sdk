@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,13 +17,14 @@ package openapi
 type UpdateMemberAssetsResultsResponseArray struct {
 
 	// List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.
-	Items []UpdateMemberAssetsResultsResponseArrayItemsInner `json:"items,omitempty"`
+	Items []UpdateMemberAssetResultItem `json:"items,omitempty"`
 }
 
-// AssertUpdateMemberAssetsResultsResponseArrayRequired checks if the required fields are not zero-ed
+// AssertUpdateMemberAssetsResultsResponseArrayRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertUpdateMemberAssetsResultsResponseArrayRequired(obj UpdateMemberAssetsResultsResponseArray) error {
 	for _, el := range obj.Items {
-		if err := AssertUpdateMemberAssetsResultsResponseArrayItemsInnerRequired(el); err != nil {
+		if err := AssertUpdateMemberAssetResultItemRequired(el); err != nil {
 			return err
 		}
 	}
@@ -33,7 +34,7 @@ func AssertUpdateMemberAssetsResultsResponseArrayRequired(obj UpdateMemberAssets
 // AssertUpdateMemberAssetsResultsResponseArrayConstraints checks if the values respects the defined constraints
 func AssertUpdateMemberAssetsResultsResponseArrayConstraints(obj UpdateMemberAssetsResultsResponseArray) error {
 	for _, el := range obj.Items {
-		if err := AssertUpdateMemberAssetsResultsResponseArrayItemsInnerConstraints(el); err != nil {
+		if err := AssertUpdateMemberAssetResultItemConstraints(el); err != nil {
 			return err
 		}
 	}

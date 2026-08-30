@@ -99,8 +99,9 @@ class _$CatalogsReportSerializer implements PrimitiveSerializer<CatalogsReport> 
         case r'report_status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsReportReportStatusEnum),
-          ) as CatalogsReportReportStatusEnum;
+            specifiedType: const FullType.nullable(CatalogsReportReportStatusEnum),
+          ) as CatalogsReportReportStatusEnum?;
+          if (valueDes == null) continue;
           result.reportStatus = valueDes;
           break;
         case r'size':

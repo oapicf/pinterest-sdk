@@ -15,7 +15,7 @@ require 'pinterest_sdk'
 
 instance = PinterestSdkClient::Media.new(
   media_id: 12345,
-  media_type: null,
+  media_type: video,
   status: null
 )
 ```

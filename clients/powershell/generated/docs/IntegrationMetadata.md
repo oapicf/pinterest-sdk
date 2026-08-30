@@ -4,19 +4,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdditionalId1** | **String** |  | [optional] 
-**ConnectedAdvertiserId** | **String** |  | [optional] [readonly] 
+**ConnectedAdvertiserId** | **String** |  | [optional] 
 **ConnectedLbaId** | **String** |  | [optional] 
 **ConnectedMerchantId** | **String** |  | [optional] 
 **ConnectedTagId** | **String** |  | [optional] 
 **ConnectedUserId** | **String** |  | [optional] [readonly] 
-**CreatedTimestamp** | **Decimal** |  | [optional] 
-**ExternalBusinessId** | **String** |  | [optional] 
-**Id** | **String** |  | [optional] 
+**CreatedTimestamp** | **Decimal** |  | [optional] [readonly] 
+**ExternalBusinessId** | **String** | External business ID for the integration. | [optional] 
+**Id** | **String** |  | [optional] [readonly] 
 **PartnerAccessTokenExpiry** | **Decimal** |  | [optional] 
 **PartnerMetadata** | **String** |  | [optional] 
 **PartnerRefreshTokenExpiry** | **Decimal** |  | [optional] 
 **Scopes** | **String** |  | [optional] 
-**UpdatedTimestamp** | **Decimal** |  | [optional] 
+**UpdatedTimestamp** | **Decimal** |  | [optional] [readonly] 
 
 ## Examples
 

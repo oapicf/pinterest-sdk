@@ -49,16 +49,16 @@ class MMMReportingColumn extends EnumClass {
   static const MMMReportingColumn AD_GROUP_NAME = _$AD_GROUP_NAME;
   /// Marketing Mix Modeling (MMM) Reporting Columns
   @BuiltValueEnumConst(wireName: r'CLICKTHROUGH_1')
-  static const MMMReportingColumn cLICKTHROUGH1 = _$cLICKTHROUGH1;
+  static const MMMReportingColumn CLICKTHROUGH_1 = _$CLICKTHROUGH_1;
   /// Marketing Mix Modeling (MMM) Reporting Columns
   @BuiltValueEnumConst(wireName: r'IMPRESSION_1')
-  static const MMMReportingColumn iMPRESSION1 = _$iMPRESSION1;
+  static const MMMReportingColumn IMPRESSION_1 = _$IMPRESSION_1;
   /// Marketing Mix Modeling (MMM) Reporting Columns
   @BuiltValueEnumConst(wireName: r'CLICKTHROUGH_2')
-  static const MMMReportingColumn cLICKTHROUGH2 = _$cLICKTHROUGH2;
+  static const MMMReportingColumn CLICKTHROUGH_2 = _$CLICKTHROUGH_2;
   /// Marketing Mix Modeling (MMM) Reporting Columns
   @BuiltValueEnumConst(wireName: r'IMPRESSION_2')
-  static const MMMReportingColumn iMPRESSION2 = _$iMPRESSION2;
+  static const MMMReportingColumn IMPRESSION_2 = _$IMPRESSION_2;
   /// Marketing Mix Modeling (MMM) Reporting Columns
   @BuiltValueEnumConst(wireName: r'TOTAL_CLICKTHROUGH')
   static const MMMReportingColumn TOTAL_CLICKTHROUGH = _$TOTAL_CLICKTHROUGH;
@@ -71,6 +71,24 @@ class MMMReportingColumn extends EnumClass {
   /// Marketing Mix Modeling (MMM) Reporting Columns
   @BuiltValueEnumConst(wireName: r'SPEND_ORDER_LINE_PAID_TYPE')
   static const MMMReportingColumn SPEND_ORDER_LINE_PAID_TYPE = _$SPEND_ORDER_LINE_PAID_TYPE;
+  /// Marketing Mix Modeling (MMM) Reporting Columns
+  @BuiltValueEnumConst(wireName: r'CAMPAIGN_OBJECTIVE_TYPE')
+  static const MMMReportingColumn CAMPAIGN_OBJECTIVE_TYPE = _$CAMPAIGN_OBJECTIVE_TYPE;
+  /// Marketing Mix Modeling (MMM) Reporting Columns
+  @BuiltValueEnumConst(wireName: r'PINNER_LIST_NAME')
+  static const MMMReportingColumn PINNER_LIST_NAME = _$PINNER_LIST_NAME;
+  /// Marketing Mix Modeling (MMM) Reporting Columns
+  @BuiltValueEnumConst(wireName: r'ADS_CREDIT_SPEND_IN_DOLLAR')
+  static const MMMReportingColumn ADS_CREDIT_SPEND_IN_DOLLAR = _$ADS_CREDIT_SPEND_IN_DOLLAR;
+  /// Marketing Mix Modeling (MMM) Reporting Columns
+  @BuiltValueEnumConst(wireName: r'ADVERTISER_PAID_SPEND_IN_DOLLAR')
+  static const MMMReportingColumn ADVERTISER_PAID_SPEND_IN_DOLLAR = _$ADVERTISER_PAID_SPEND_IN_DOLLAR;
+  /// Marketing Mix Modeling (MMM) Reporting Columns
+  @BuiltValueEnumConst(wireName: r'ADVERTISER_PAID_ECPC_IN_DOLLAR')
+  static const MMMReportingColumn ADVERTISER_PAID_ECPC_IN_DOLLAR = _$ADVERTISER_PAID_ECPC_IN_DOLLAR;
+  /// Marketing Mix Modeling (MMM) Reporting Columns
+  @BuiltValueEnumConst(wireName: r'ADVERTISER_PAID_ECPM_IN_DOLLAR')
+  static const MMMReportingColumn ADVERTISER_PAID_ECPM_IN_DOLLAR = _$ADVERTISER_PAID_ECPM_IN_DOLLAR;
 
   static Serializer<MMMReportingColumn> get serializer => _$mMMReportingColumnSerializer;
 

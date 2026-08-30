@@ -3,11 +3,12 @@ package org.openapitools.vertxweb.server.api;
 import org.openapitools.vertxweb.server.model.CatalogsListProductsByFilterRequest;
 import org.openapitools.vertxweb.server.model.CatalogsProductGroupPinsList200Response;
 import org.openapitools.vertxweb.server.model.CatalogsProductGroupProductCountsVertical;
+import org.openapitools.vertxweb.server.model.CatalogsProductGroupsCreateManyRequestItems;
+import org.openapitools.vertxweb.server.model.CatalogsProductGroupsCreateRequestSchema;
 import org.openapitools.vertxweb.server.model.CatalogsProductGroupsList200Response;
-import org.openapitools.vertxweb.server.model.CatalogsProductGroupsUpdateRequest;
+import org.openapitools.vertxweb.server.model.CatalogsProductGroupsUpdateRequestSchema;
 import org.openapitools.vertxweb.server.model.CatalogsVerticalProductGroup;
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.MultipleProductGroupsInner;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -58,18 +59,18 @@ public class CatalogProductGroupsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String productGroupId = requestParameters.pathParameter("product_group_id") != null ? requestParameters.pathParameter("product_group_id").getString() : null;
-        String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
-        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
         Boolean pinMetrics = requestParameters.queryParameter("pin_metrics") != null ? requestParameters.queryParameter("pin_metrics").getBoolean() : false;
+        String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
 
         logger.debug("Parameter productGroupId is {}", productGroupId);
-        logger.debug("Parameter bookmark is {}", bookmark);
-        logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter pinMetrics is {}", pinMetrics);
+        logger.debug("Parameter bookmark is {}", bookmark);
+        logger.debug("Parameter pageSize is {}", pageSize);
 
-        api.catalogsProductGroupPinsList(productGroupId, bookmark, pageSize, adAccountId, pinMetrics)
+        api.catalogsProductGroupPinsList(productGroupId, adAccountId, pinMetrics, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -88,13 +89,13 @@ public class CatalogProductGroupsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         RequestParameter body = requestParameters.body();
-        MultipleProductGroupsInner multipleProductGroupsInner = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<MultipleProductGroupsInner>(){}) : null;
+        CatalogsProductGroupsCreateRequestSchema catalogsProductGroupsCreateRequestSchema = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsProductGroupsCreateRequestSchema>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter multipleProductGroupsInner is {}", multipleProductGroupsInner);
+        logger.debug("Parameter catalogsProductGroupsCreateRequestSchema is {}", catalogsProductGroupsCreateRequestSchema);
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.catalogsProductGroupsCreate(multipleProductGroupsInner, adAccountId)
+        api.catalogsProductGroupsCreate(catalogsProductGroupsCreateRequestSchema, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -113,13 +114,13 @@ public class CatalogProductGroupsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         RequestParameter body = requestParameters.body();
-        List<MultipleProductGroupsInner> multipleProductGroupsInner = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<MultipleProductGroupsInner>>(){}) : null;
+        List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<CatalogsProductGroupsCreateManyRequestItems>>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter multipleProductGroupsInner is {}", multipleProductGroupsInner);
+        logger.debug("Parameter catalogsProductGroupsCreateManyRequestItems is {}", catalogsProductGroupsCreateManyRequestItems);
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.catalogsProductGroupsCreateMany(multipleProductGroupsInner, adAccountId)
+        api.catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -212,18 +213,18 @@ public class CatalogProductGroupsApiHandler {
         List<Integer> id = requestParameters.queryParameter("id") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("id").get(), new TypeReference<List<Integer>>(){}) : null;
         String feedId = requestParameters.queryParameter("feed_id") != null ? requestParameters.queryParameter("feed_id").getString() : null;
         String catalogId = requestParameters.queryParameter("catalog_id") != null ? requestParameters.queryParameter("catalog_id").getString() : null;
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
-        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter id is {}", id);
         logger.debug("Parameter feedId is {}", feedId);
         logger.debug("Parameter catalogId is {}", catalogId);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
-        logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.catalogsProductGroupsList(id, feedId, catalogId, bookmark, pageSize, adAccountId)
+        api.catalogsProductGroupsList(id, feedId, catalogId, adAccountId, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -267,14 +268,14 @@ public class CatalogProductGroupsApiHandler {
 
         String productGroupId = requestParameters.pathParameter("product_group_id") != null ? requestParameters.pathParameter("product_group_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsProductGroupsUpdateRequest>(){}) : null;
+        CatalogsProductGroupsUpdateRequestSchema catalogsProductGroupsUpdateRequestSchema = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsProductGroupsUpdateRequestSchema>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter productGroupId is {}", productGroupId);
-        logger.debug("Parameter catalogsProductGroupsUpdateRequest is {}", catalogsProductGroupsUpdateRequest);
+        logger.debug("Parameter catalogsProductGroupsUpdateRequestSchema is {}", catalogsProductGroupsUpdateRequestSchema);
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.catalogsProductGroupsUpdate(productGroupId, catalogsProductGroupsUpdateRequest, adAccountId)
+        api.catalogsProductGroupsUpdate(productGroupId, catalogsProductGroupsUpdateRequestSchema, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Time** | **string** | A time in format HH:MM with leading 0 (zero) | 
-**Timezone** | **NullableString** | The timezone considered for the processing schedule time. | 
+**Timezone** | [**NullableCatalogsFeedProcessingScheduleTimezone**](CatalogsFeedProcessingScheduleTimezone.md) | The timezone considered for the processing schedule time. | 
 
 ## Methods
 
 ### NewCatalogsFeedProcessingSchedule
 
-`func NewCatalogsFeedProcessingSchedule(time string, timezone NullableString, ) *CatalogsFeedProcessingSchedule`
+`func NewCatalogsFeedProcessingSchedule(time string, timezone NullableCatalogsFeedProcessingScheduleTimezone, ) *CatalogsFeedProcessingSchedule`
 
 NewCatalogsFeedProcessingSchedule instantiates a new CatalogsFeedProcessingSchedule object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetTime sets Time field to given value.
 
 ### GetTimezone
 
-`func (o *CatalogsFeedProcessingSchedule) GetTimezone() string`
+`func (o *CatalogsFeedProcessingSchedule) GetTimezone() CatalogsFeedProcessingScheduleTimezone`
 
 GetTimezone returns the Timezone field if non-nil, zero value otherwise.
 
 ### GetTimezoneOk
 
-`func (o *CatalogsFeedProcessingSchedule) GetTimezoneOk() (*string, bool)`
+`func (o *CatalogsFeedProcessingSchedule) GetTimezoneOk() (*CatalogsFeedProcessingScheduleTimezone, bool)`
 
 GetTimezoneOk returns a tuple with the Timezone field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimezone
 
-`func (o *CatalogsFeedProcessingSchedule) SetTimezone(v string)`
+`func (o *CatalogsFeedProcessingSchedule) SetTimezone(v CatalogsFeedProcessingScheduleTimezone)`
 
 SetTimezone sets Timezone field to given value.
 

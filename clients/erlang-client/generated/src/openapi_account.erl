@@ -6,7 +6,7 @@
 
 -type openapi_account() ::
     #{ 'about' => binary(),
-       'account_type' => binary(),
+       'account_type' => openapi_user_account_type:openapi_user_account_type(),
        'board_count' => integer(),
        'business_name' => binary(),
        'follower_count' => integer(),

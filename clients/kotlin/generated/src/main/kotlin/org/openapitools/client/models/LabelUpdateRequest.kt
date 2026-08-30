@@ -8,14 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.LabelUpdateRequestLabelsInner
+import org.openapitools.client.models.LabelUpdateItem
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -31,7 +39,7 @@ data class LabelUpdateRequest (
 
     /* Labels that you are applying to the campaign. */
     @Json(name = "labels")
-    val labels: kotlin.collections.List<LabelUpdateRequestLabelsInner>
+    val labels: kotlin.collections.List<LabelUpdateItem>
 
 ) {
 

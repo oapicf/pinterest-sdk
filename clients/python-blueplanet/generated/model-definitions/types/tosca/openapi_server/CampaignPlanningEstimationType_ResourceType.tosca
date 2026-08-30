@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignPlanningEstimationType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignPlanningEstimationType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CampaignPlanningEstimationType {
+    title = CampaignPlanningEstimationType
+    description = CampaignPlanningEstimationType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignPlanningEstimationType {
+    title = CampaignPlanningEstimationType
+    description = CampaignPlanningEstimationType
+    implements = openapi_server.resourceTypes.CampaignPlanningEstimationType
+
+  }
+}

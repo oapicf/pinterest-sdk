@@ -8,7 +8,7 @@
 #' @description AdvancedAuctionItemsGetRequest Class
 #' @format An \code{R6Class} generator object
 #' @field catalog_id Catalog id pertaining to the retail item character
-#' @field items A list of retail catalog items to fetch bid options for list(\link{AdvancedAuctionItemsGetRecord})
+#' @field items A list of retail catalog items to fetch bid options for list(\link{AdvancedAuctionKey})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -75,9 +75,32 @@ AdvancedAuctionItemsGetRequest <- R6::R6Class(
       }
       if (!is.null(self$`items`)) {
         AdvancedAuctionItemsGetRequestObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`items`)
       }
       return(AdvancedAuctionItemsGetRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -91,7 +114,7 @@ AdvancedAuctionItemsGetRequest <- R6::R6Class(
         self$`catalog_id` <- this_object$`catalog_id`
       }
       if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[AdvancedAuctionItemsGetRecord]", loadNamespace("openapi"))
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[AdvancedAuctionKey]", loadNamespace("openapi"))
       }
       self
     },
@@ -115,7 +138,7 @@ AdvancedAuctionItemsGetRequest <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`catalog_id` <- this_object$`catalog_id`
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[AdvancedAuctionItemsGetRecord]", loadNamespace("openapi"))
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[AdvancedAuctionKey]", loadNamespace("openapi"))
       self
     },
 

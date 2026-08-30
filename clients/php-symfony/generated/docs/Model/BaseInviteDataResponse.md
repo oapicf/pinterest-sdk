@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Unique identifier of the invite/request. | [optional] 
-**inviteData** | [**OpenAPI\Server\Model\BaseInviteDataResponseInviteData**](BaseInviteDataResponseInviteData.md) |  | [optional] 
+**inviteData** | [**OpenAPI\Server\Model\InviteDataResponse**](InviteDataResponse.md) |  | [optional] 
 **isReceivedInvite** | **bool** | Indicates whether the invite/request was received. | [optional] 
 **user** | [**OpenAPI\Server\Model\BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | Metadata for the member/partner that was sent the invite/request. | [optional] 
 

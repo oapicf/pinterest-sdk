@@ -25,7 +25,7 @@ $ConversionTagCreate = Initialize-PSOpenAPIToolsConversionTagCreate  -AemDbEnabl
  -AemLocEnabled null `
  -AemPhEnabled null `
  -MdFrequency 0.6 `
- -Name ACME Checkout Test Tag
+ -Name download_picture
 ```
 
 - Convert the resource to JSON

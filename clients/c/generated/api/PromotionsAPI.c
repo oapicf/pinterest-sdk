@@ -8,19 +8,19 @@
 #define MAX_BUFFER_LENGTH 4096
 #define MAX_NUMBER_LENGTH_LONG 21
 
-// Functions for enum ORDER for PromotionsAPI_promotionsList
+// Functions for enum  for PromotionsAPI_promotionsList
 
-static char* promotionsList_ORDER_ToString(pinterest_rest_api_promotionsList_order_e ORDER){
-    char *ORDERArray[] =  { "NULL", "ASCENDING", "DESCENDING" };
-    return ORDERArray[ORDER];
+static char* promotionsList__ToString(pinterest_rest_api_promotionsList_order_e ){
+    char *Array[] =  { "NULL", "ASCENDING", "DESCENDING" };
+    return Array[];
 }
 
-static pinterest_rest_api_promotionsList_order_e promotionsList_ORDER_FromString(char* ORDER){
+static pinterest_rest_api_promotionsList_order_e promotionsList__FromString(char* ){
     int stringToReturn = 0;
-    char *ORDERArray[] =  { "NULL", "ASCENDING", "DESCENDING" };
-    size_t sizeofArray = sizeof(ORDERArray) / sizeof(ORDERArray[0]);
+    char *Array[] =  { "NULL", "ASCENDING", "DESCENDING" };
+    size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
     while(stringToReturn < sizeofArray) {
-        if(strcmp(ORDER, ORDERArray[stringToReturn]) == 0) {
+        if(strcmp(, Array[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -29,32 +29,23 @@ static pinterest_rest_api_promotionsList_order_e promotionsList_ORDER_FromString
 }
 
 /*
-// Function promotionsList_ORDER_convertToJSON is not currently used,
+// Function promotionsList__convertToJSON is not currently used,
 // since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
 //
-static cJSON *promotionsList_ORDER_convertToJSON(pinterest_rest_api_promotionsList_order_e ORDER) {
+static cJSON *promotionsList__convertToJSON(pinterest_rest_api_promotionsList_order_e ) {
     cJSON *item = cJSON_CreateObject();
-    if(cJSON_AddStringToObject(item, "order", promotionsList_ORDER_ToString(ORDER)) == NULL) {
-        goto fail;
-    }
     return item;
     fail:
     cJSON_Delete(item);
     return NULL;
 }
 
-// Function promotionsList_ORDER_parseFromJSON is not currently used,
+// Function promotionsList__parseFromJSON is not currently used,
 // since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
 //
-static pinterest_rest_api_promotionsList_order_e promotionsList_ORDER_parseFromJSON(cJSON* ORDERJSON) {
-    pinterest_rest_api_promotionsList_order_e ORDERVariable = 0;
-    cJSON *ORDERVar = cJSON_GetObjectItemCaseSensitive(ORDERJSON, "order");
-    if(!cJSON_IsString(ORDERVar) || (ORDERVar->valuestring == NULL))
-    {
-        goto end;
-    }
-    ORDERVariable = promotionsList_ORDER_FromString(ORDERVar->valuestring);
-    return ORDERVariable;
+static pinterest_rest_api_promotionsList_order_e promotionsList__parseFromJSON(cJSON* JSON) {
+    pinterest_rest_api_promotionsList_order_e Variable = 0;
+    return Variable;
 end:
     return 0;
 }
@@ -66,7 +57,7 @@ end:
 // Create multiple new promotions.
 //
 promotions_response_t*
-PromotionsAPI_promotionsCreate(apiClient_t *apiClient, char *ad_account_id, list_t *promotion_create_request)
+PromotionsAPI_promotionsCreate(apiClient_t *apiClient, char *ad_account_id, list_t *promotion_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -100,14 +91,14 @@ PromotionsAPI_promotionsCreate(apiClient_t *apiClient, char *ad_account_id, list
 
     // Body Param
     //notstring
-    cJSON *localVar_promotion_create_request = NULL;
-    cJSON *localVarItemJSON_promotion_create_request = NULL;
-    cJSON *localVarSingleItemJSON_promotion_create_request = NULL;
-    if (promotion_create_request != NULL)
+    cJSON *localVar_promotion_create = NULL;
+    cJSON *localVarItemJSON_promotion_create = NULL;
+    cJSON *localVarSingleItemJSON_promotion_create = NULL;
+    if (promotion_create != NULL)
     {
-        localVarItemJSON_promotion_create_request = cJSON_CreateObject();
-        localVarSingleItemJSON_promotion_create_request = cJSON_AddArrayToObject(localVarItemJSON_promotion_create_request, "promotion_create_request");
-        if (localVarSingleItemJSON_promotion_create_request == NULL)
+        localVarItemJSON_promotion_create = cJSON_CreateObject();
+        localVarSingleItemJSON_promotion_create = cJSON_AddArrayToObject(localVarItemJSON_promotion_create, "promotion_create");
+        if (localVarSingleItemJSON_promotion_create == NULL)
         {
             // nonprimitive container
 
@@ -115,16 +106,16 @@ PromotionsAPI_promotionsCreate(apiClient_t *apiClient, char *ad_account_id, list
         }
     }
 
-    listEntry_t *promotion_create_requestBodyListEntry;
-    list_ForEach(promotion_create_requestBodyListEntry, promotion_create_request)
+    listEntry_t *promotion_createBodyListEntry;
+    list_ForEach(promotion_createBodyListEntry, promotion_create)
     {
-        localVar_promotion_create_request = promotion_create_request_convertToJSON(promotion_create_requestBodyListEntry->data);
-        if(localVar_promotion_create_request == NULL)
+        localVar_promotion_create = promotion_create_convertToJSON(promotion_createBodyListEntry->data);
+        if(localVar_promotion_create == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_promotion_create_request, localVar_promotion_create_request);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_promotion_create_request);
+        cJSON_AddItemToArray(localVarSingleItemJSON_promotion_create, localVar_promotion_create);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_promotion_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -142,15 +133,31 @@ PromotionsAPI_promotionsCreate(apiClient_t *apiClient, char *ad_account_id, list
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid create promotions request parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     promotions_response_t *elementToReturn = NULL;
@@ -176,17 +183,17 @@ PromotionsAPI_promotionsCreate(apiClient_t *apiClient, char *ad_account_id, list
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarItemJSON_promotion_create_request) {
-        cJSON_Delete(localVarItemJSON_promotion_create_request);
-        localVarItemJSON_promotion_create_request = NULL;
+    if (localVarItemJSON_promotion_create) {
+        cJSON_Delete(localVarItemJSON_promotion_create);
+        localVarItemJSON_promotion_create = NULL;
     }
-    if (localVarSingleItemJSON_promotion_create_request) {
-        cJSON_Delete(localVarSingleItemJSON_promotion_create_request);
-        localVarSingleItemJSON_promotion_create_request = NULL;
+    if (localVarSingleItemJSON_promotion_create) {
+        cJSON_Delete(localVarSingleItemJSON_promotion_create);
+        localVarSingleItemJSON_promotion_create = NULL;
     }
-    if (localVar_promotion_create_request) {
-        cJSON_Delete(localVar_promotion_create_request);
-        localVar_promotion_create_request = NULL;
+    if (localVar_promotion_create) {
+        cJSON_Delete(localVar_promotion_create);
+        localVar_promotion_create = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -200,8 +207,8 @@ end:
 //
 // Delete a promotion within Pinterest.
 //
-void
-PromotionsAPI_promotionsDelete(apiClient_t *apiClient, char *ad_account_id, char *promotion_id)
+promotion_t*
+PromotionsAPI_promotionsDelete(apiClient_t *apiClient, char *promotion_id, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -217,24 +224,14 @@ PromotionsAPI_promotionsDelete(apiClient_t *apiClient, char *ad_account_id, char
     // create the path
     char *localVarPath = strdup("/ad_accounts/{ad_account_id}/promotions/{promotion_id}");
 
-    if(!ad_account_id)
-        goto end;
     if(!promotion_id)
         goto end;
-
-
-    // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(promotion_id)+3 + sizeof("{ ad_account_id }") - 1;
-    if(ad_account_id == NULL) {
+    if(!ad_account_id)
         goto end;
-    }
-    char* localVarToReplace_ad_account_id = malloc(sizeOfPathParams_ad_account_id);
-    sprintf(localVarToReplace_ad_account_id, "{%s}", "ad_account_id");
 
-    localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_promotion_id = strlen(ad_account_id)+3 + strlen(promotion_id)+3 + sizeof("{ promotion_id }") - 1;
+    long sizeOfPathParams_promotion_id = strlen(promotion_id)+3 + strlen(ad_account_id)+3 + sizeof("{ promotion_id }") - 1;
     if(promotion_id == NULL) {
         goto end;
     }
@@ -242,6 +239,16 @@ PromotionsAPI_promotionsDelete(apiClient_t *apiClient, char *ad_account_id, char
     sprintf(localVarToReplace_promotion_id, "{%s}", "promotion_id");
 
     localVarPath = strReplace(localVarPath, localVarToReplace_promotion_id, promotion_id);
+
+    // Path Params
+    long sizeOfPathParams_ad_account_id = strlen(promotion_id)+3 + strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
+    if(ad_account_id == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_ad_account_id = malloc(sizeOfPathParams_ad_account_id);
+    sprintf(localVarToReplace_ad_account_id, "{%s}", "ad_account_id");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
 
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -257,108 +264,42 @@ PromotionsAPI_promotionsDelete(apiClient_t *apiClient, char *ad_account_id, char
                     "DELETE");
 
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 204) {
-    //    printf("%s\n","Promotion deleted successfully");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
-    //}
-    //No return type
-end:
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    
-    
-    
-    list_freeList(localVarHeaderType);
-    
-    free(localVarPath);
-    free(localVarToReplace_ad_account_id);
-    free(localVarToReplace_promotion_id);
-
-}
-
-// Get promotion by id
-//
-// Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
-//
-promotion_response_t*
-PromotionsAPI_promotionsGet(apiClient_t *apiClient, char *ad_account_id, char *promotion_id)
-{
-    list_t    *localVarQueryParameters = NULL;
-    list_t    *localVarHeaderParameters = NULL;
-    list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
-    char      *localVarBodyParameters = NULL;
-    size_t     localVarBodyLength = 0;
-
-    // clear the error code from the previous api call
-    apiClient->response_code = 0;
-
-    // create the path
-    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/promotions/{promotion_id}");
-
-    if(!ad_account_id)
-        goto end;
-    if(!promotion_id)
-        goto end;
-
-
-    // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(promotion_id)+3 + sizeof("{ ad_account_id }") - 1;
-    if(ad_account_id == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_ad_account_id = malloc(sizeOfPathParams_ad_account_id);
-    sprintf(localVarToReplace_ad_account_id, "{%s}", "ad_account_id");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
-
-    // Path Params
-    long sizeOfPathParams_promotion_id = strlen(ad_account_id)+3 + strlen(promotion_id)+3 + sizeof("{ promotion_id }") - 1;
-    if(promotion_id == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_promotion_id = malloc(sizeOfPathParams_promotion_id);
-    sprintf(localVarToReplace_promotion_id, "{%s}", "promotion_id");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_promotion_id, promotion_id);
-
-
-    list_addElement(localVarHeaderType,"application/json"); //produces
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    localVarBodyLength,
-                    "GET");
-
-    // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 204) {
+    //    printf("%s\n","Resource deleted successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","The promotion ID for the given ad account ID was not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    promotion_response_t *elementToReturn = NULL;
+    promotion_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *PromotionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = promotion_response_parseFromJSON(PromotionsAPIlocalVarJSON);
+        elementToReturn = promotion_parseFromJSON(PromotionsAPIlocalVarJSON);
         cJSON_Delete(PromotionsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -377,8 +318,128 @@ PromotionsAPI_promotionsGet(apiClient_t *apiClient, char *ad_account_id, char *p
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
-    free(localVarToReplace_ad_account_id);
     free(localVarToReplace_promotion_id);
+    free(localVarToReplace_ad_account_id);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Get promotion by id
+//
+// Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
+//
+promotion_t*
+PromotionsAPI_promotionsGet(apiClient_t *apiClient, char *promotion_id, char *ad_account_id)
+{
+    list_t    *localVarQueryParameters = NULL;
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
+
+    // create the path
+    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/promotions/{promotion_id}");
+
+    if(!promotion_id)
+        goto end;
+    if(!ad_account_id)
+        goto end;
+
+
+    // Path Params
+    long sizeOfPathParams_promotion_id = strlen(promotion_id)+3 + strlen(ad_account_id)+3 + sizeof("{ promotion_id }") - 1;
+    if(promotion_id == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_promotion_id = malloc(sizeOfPathParams_promotion_id);
+    sprintf(localVarToReplace_promotion_id, "{%s}", "promotion_id");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_promotion_id, promotion_id);
+
+    // Path Params
+    long sizeOfPathParams_ad_account_id = strlen(promotion_id)+3 + strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
+    if(ad_account_id == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_ad_account_id = malloc(sizeOfPathParams_ad_account_id);
+    sprintf(localVarToReplace_ad_account_id, "{%s}", "ad_account_id");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
+
+
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    localVarBodyLength,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 0) {
+    //    printf("%s\n","An unexpected error response.");
+    //}
+    //nonprimitive not container
+    promotion_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *PromotionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = promotion_parseFromJSON(PromotionsAPIlocalVarJSON);
+        cJSON_Delete(PromotionsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    
+    
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_promotion_id);
+    free(localVarToReplace_ad_account_id);
     return elementToReturn;
 end:
     free(localVarPath);
@@ -391,7 +452,7 @@ end:
 // Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
 //
 promotions_list_200_response_t*
-PromotionsAPI_promotionsList(apiClient_t *apiClient, char *ad_account_id, int *page_size, pinterest_rest_api_promotionsList_order_e order, char *bookmark)
+PromotionsAPI_promotionsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_lib_pagination_order_e order)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -424,6 +485,18 @@ PromotionsAPI_promotionsList(apiClient_t *apiClient, char *ad_account_id, int *p
 
 
     // query parameters
+    char *keyQuery_bookmark = NULL;
+    char * valueQuery_bookmark = NULL;
+    keyValuePair_t *keyPairQuery_bookmark = 0;
+    if (bookmark)
+    {
+        keyQuery_bookmark = strdup("bookmark");
+        valueQuery_bookmark = strdup((bookmark));
+        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
+        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
+    }
+
+    // query parameters
     char *keyQuery_page_size = NULL;
     char * valueQuery_page_size = NULL;
     keyValuePair_t *keyPairQuery_page_size = 0;
@@ -438,27 +511,15 @@ PromotionsAPI_promotionsList(apiClient_t *apiClient, char *ad_account_id, int *p
 
     // query parameters
     char *keyQuery_order = NULL;
-    pinterest_rest_api_promotionsList_order_e valueQuery_order ;
+    pinterest_lib_pagination_order_e valueQuery_order ;
     keyValuePair_t *keyPairQuery_order = 0;
     if (order)
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(promotionsList_ORDER_ToString(
-        valueQuery_order)));
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(promotionsList__ToString(
+        &valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
-    }
-
-    // query parameters
-    char *keyQuery_bookmark = NULL;
-    char * valueQuery_bookmark = NULL;
-    keyValuePair_t *keyPairQuery_bookmark = 0;
-    if (bookmark)
-    {
-        keyQuery_bookmark = strdup("bookmark");
-        valueQuery_bookmark = strdup((bookmark));
-        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
-        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
@@ -474,15 +535,31 @@ PromotionsAPI_promotionsList(apiClient_t *apiClient, char *ad_account_id, int *p
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid ad account promotions parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     promotions_list_200_response_t *elementToReturn = NULL;
@@ -508,6 +585,18 @@ PromotionsAPI_promotionsList(apiClient_t *apiClient, char *ad_account_id, int *p
     
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
+    if(keyQuery_bookmark){
+        free(keyQuery_bookmark);
+        keyQuery_bookmark = NULL;
+    }
+    if(valueQuery_bookmark){
+        free(valueQuery_bookmark);
+        valueQuery_bookmark = NULL;
+    }
+    if(keyPairQuery_bookmark){
+        keyValuePair_free(keyPairQuery_bookmark);
+        keyPairQuery_bookmark = NULL;
+    }
     if(keyQuery_page_size){
         free(keyQuery_page_size);
         keyQuery_page_size = NULL;
@@ -528,18 +617,6 @@ PromotionsAPI_promotionsList(apiClient_t *apiClient, char *ad_account_id, int *p
         keyValuePair_free(keyPairQuery_order);
         keyPairQuery_order = NULL;
     }
-    if(keyQuery_bookmark){
-        free(keyQuery_bookmark);
-        keyQuery_bookmark = NULL;
-    }
-    if(valueQuery_bookmark){
-        free(valueQuery_bookmark);
-        valueQuery_bookmark = NULL;
-    }
-    if(keyPairQuery_bookmark){
-        keyValuePair_free(keyPairQuery_bookmark);
-        keyPairQuery_bookmark = NULL;
-    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -552,7 +629,7 @@ end:
 // Update multiple promotions.
 //
 promotions_response_t*
-PromotionsAPI_promotionsUpdate(apiClient_t *apiClient, char *ad_account_id, list_t *promotion_update_request)
+PromotionsAPI_promotionsUpdate(apiClient_t *apiClient, char *ad_account_id, list_t *promotion_batch_update)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -586,14 +663,14 @@ PromotionsAPI_promotionsUpdate(apiClient_t *apiClient, char *ad_account_id, list
 
     // Body Param
     //notstring
-    cJSON *localVar_promotion_update_request = NULL;
-    cJSON *localVarItemJSON_promotion_update_request = NULL;
-    cJSON *localVarSingleItemJSON_promotion_update_request = NULL;
-    if (promotion_update_request != NULL)
+    cJSON *localVar_promotion_batch_update = NULL;
+    cJSON *localVarItemJSON_promotion_batch_update = NULL;
+    cJSON *localVarSingleItemJSON_promotion_batch_update = NULL;
+    if (promotion_batch_update != NULL)
     {
-        localVarItemJSON_promotion_update_request = cJSON_CreateObject();
-        localVarSingleItemJSON_promotion_update_request = cJSON_AddArrayToObject(localVarItemJSON_promotion_update_request, "promotion_update_request");
-        if (localVarSingleItemJSON_promotion_update_request == NULL)
+        localVarItemJSON_promotion_batch_update = cJSON_CreateObject();
+        localVarSingleItemJSON_promotion_batch_update = cJSON_AddArrayToObject(localVarItemJSON_promotion_batch_update, "promotion_batch_update");
+        if (localVarSingleItemJSON_promotion_batch_update == NULL)
         {
             // nonprimitive container
 
@@ -601,16 +678,16 @@ PromotionsAPI_promotionsUpdate(apiClient_t *apiClient, char *ad_account_id, list
         }
     }
 
-    listEntry_t *promotion_update_requestBodyListEntry;
-    list_ForEach(promotion_update_requestBodyListEntry, promotion_update_request)
+    listEntry_t *promotion_batch_updateBodyListEntry;
+    list_ForEach(promotion_batch_updateBodyListEntry, promotion_batch_update)
     {
-        localVar_promotion_update_request = promotion_update_request_convertToJSON(promotion_update_requestBodyListEntry->data);
-        if(localVar_promotion_update_request == NULL)
+        localVar_promotion_batch_update = promotion_batch_update_convertToJSON(promotion_batch_updateBodyListEntry->data);
+        if(localVar_promotion_batch_update == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_promotion_update_request, localVar_promotion_update_request);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_promotion_update_request);
+        cJSON_AddItemToArray(localVarSingleItemJSON_promotion_batch_update, localVar_promotion_batch_update);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_promotion_batch_update);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -628,15 +705,31 @@ PromotionsAPI_promotionsUpdate(apiClient_t *apiClient, char *ad_account_id, list
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid create promotions request parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     promotions_response_t *elementToReturn = NULL;
@@ -662,17 +755,17 @@ PromotionsAPI_promotionsUpdate(apiClient_t *apiClient, char *ad_account_id, list
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarItemJSON_promotion_update_request) {
-        cJSON_Delete(localVarItemJSON_promotion_update_request);
-        localVarItemJSON_promotion_update_request = NULL;
+    if (localVarItemJSON_promotion_batch_update) {
+        cJSON_Delete(localVarItemJSON_promotion_batch_update);
+        localVarItemJSON_promotion_batch_update = NULL;
     }
-    if (localVarSingleItemJSON_promotion_update_request) {
-        cJSON_Delete(localVarSingleItemJSON_promotion_update_request);
-        localVarSingleItemJSON_promotion_update_request = NULL;
+    if (localVarSingleItemJSON_promotion_batch_update) {
+        cJSON_Delete(localVarSingleItemJSON_promotion_batch_update);
+        localVarSingleItemJSON_promotion_batch_update = NULL;
     }
-    if (localVar_promotion_update_request) {
-        cJSON_Delete(localVar_promotion_update_request);
-        localVar_promotion_update_request = NULL;
+    if (localVar_promotion_batch_update) {
+        cJSON_Delete(localVar_promotion_batch_update);
+        localVar_promotion_batch_update = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;

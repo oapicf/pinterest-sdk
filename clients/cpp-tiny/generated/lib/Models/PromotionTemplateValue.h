@@ -52,28 +52,28 @@ public:
 
 	/*! \brief Set Numeric value.
 	 */
-	void setAmount(long  amount);
+	void setAmount(long amount);
 	/*! \brief Get 
 	 */
 	Currency getCurrencyCode();
 
 	/*! \brief Set 
 	 */
-	void setCurrencyCode(Currency  currency_code);
+	void setCurrencyCode(Currency currency_code);
 	/*! \brief Get Custom text.
 	 */
 	std::string getCustomText();
 
 	/*! \brief Set Custom text.
 	 */
-	void setCustomText(std::string  custom_text);
+	void setCustomText(std::string custom_text);
 	/*! \brief Get Percent value.
 	 */
 	long getPercent();
 
 	/*! \brief Set Percent value.
 	 */
-	void setPercent(long  percent);
+	void setPercent(long percent);
 
 
     private:

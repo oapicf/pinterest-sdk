@@ -20,7 +20,7 @@ typedef struct catalogs_report_stats_t catalogs_report_stats_t;
 
 // Enum REPORTTYPE for catalogs_report_stats
 
-typedef enum  { pinterest_rest_api_catalogs_report_stats_REPORTTYPE_NULL = 0, pinterest_rest_api_catalogs_report_stats_REPORTTYPE_FEED_INGESTION_ISSUES, pinterest_rest_api_catalogs_report_stats_REPORTTYPE_DISTRIBUTION_ISSUES } pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e;
+typedef enum  { pinterest_rest_api_catalogs_report_stats_REPORTTYPE_NULL = 0, pinterest_rest_api_catalogs_report_stats_REPORTTYPE_DISTRIBUTION_ISSUES } pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e;
 
 char* catalogs_report_stats_report_type_ToString(pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e report_type);
 
@@ -37,29 +37,29 @@ pinterest_rest_api_catalogs_report_stats_SEVERITY_e catalogs_report_stats_severi
 
 
 typedef struct catalogs_report_stats_t {
-    pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e report_type; //enum
     char *catalog_id; // string
-    int code; //numeric
+    int *code; //numeric
     char *code_label; // string
     char *message; // string
-    int occurrences; //numeric
+    int *occurrences; //numeric
+    pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e report_type; //enum
     pinterest_rest_api_catalogs_report_stats_SEVERITY_e severity; //enum
-    int ineligible_for_ads; //boolean
-    int ineligible_for_organic; //boolean
+    int *ineligible_for_ads; //boolean
+    int *ineligible_for_organic; //boolean
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_report_stats_t;
 
 __attribute__((deprecated)) catalogs_report_stats_t *catalogs_report_stats_create(
-    pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e report_type,
     char *catalog_id,
-    int code,
+    int *code,
     char *code_label,
     char *message,
-    int occurrences,
+    int *occurrences,
+    pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e report_type,
     pinterest_rest_api_catalogs_report_stats_SEVERITY_e severity,
-    int ineligible_for_ads,
-    int ineligible_for_organic
+    int *ineligible_for_ads,
+    int *ineligible_for_organic
 );
 
 void catalogs_report_stats_free(catalogs_report_stats_t *catalogs_report_stats);

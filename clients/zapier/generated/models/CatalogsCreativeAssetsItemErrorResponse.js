@@ -1,5 +1,4 @@
 const utils = require('../utils/utils');
-const CatalogsType = require('../models/CatalogsType');
 const ItemValidationEvent = require('../models/ItemValidationEvent');
 
 module.exports = {
@@ -8,7 +7,12 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}catalog_type`,
-                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
+                label: `[${labelPrefix}catalog_type]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'CREATIVE_ASSETS',
+                ],
             },
             {
                 key: `${keyPrefix}creative_assets_id`,
@@ -20,6 +24,15 @@ module.exports = {
                 label: `[${labelPrefix}errors]`,
                 children: ItemValidationEvent.fields(`${keyPrefix}errors${!isInput ? '[]' : ''}`, isInput, true), 
             },
+            {
+                key: `${keyPrefix}item_response_kind`,
+                label: `Discriminator literal identifying this leaf inside an `ItemResponse` payload. - [${labelPrefix}item_response_kind]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'creative_assets_item_error',
+                ],
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -28,6 +41,7 @@ module.exports = {
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'creative_assets_id': bundle.inputData?.[`${keyPrefix}creative_assets_id`],
             'errors': utils.childMapping(bundle.inputData?.[`${keyPrefix}errors`], `${keyPrefix}errors`, ItemValidationEvent),
+            'item_response_kind': bundle.inputData?.[`${keyPrefix}item_response_kind`],
         }
     },
 }

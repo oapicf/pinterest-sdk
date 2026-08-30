@@ -15,7 +15,8 @@ Name | Type | Description | Notes
 **IosDeepLink** | Pointer to **NullableString** | IOS deep link to the creative assets page. | [optional] 
 **Link** | Pointer to **string** | Link to the creative assets page. | [optional] 
 **Title** | Pointer to **string** | The name of the creative assets. | [optional] 
-**Visibility** | Pointer to **NullableString** | Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. | [optional] 
+**Visibility** | Pointer to **NullableString** | Visibility of the creative assets. Must be one of the following values (upper or lowercase): &#39;visible&#39;, &#39;hidden&#39;. | [optional] 
+**AiDisclosures** | Pointer to [**[]CatalogsAiContentDisclosure**](CatalogsAiContentDisclosure.md) | AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL. | [optional] 
 **ImageLink** | Pointer to **string** | The creative assets image. | [optional] 
 **VideoLink** | Pointer to **string** | The creative assets video. | [optional] 
 
@@ -428,6 +429,31 @@ HasVisibility returns a boolean if a field has been set.
 `func (o *CatalogsCreativeAssetsAttributes) UnsetVisibility()`
 
 UnsetVisibility ensures that no value is present for Visibility, not even an explicit nil
+### GetAiDisclosures
+
+`func (o *CatalogsCreativeAssetsAttributes) GetAiDisclosures() []CatalogsAiContentDisclosure`
+
+GetAiDisclosures returns the AiDisclosures field if non-nil, zero value otherwise.
+
+### GetAiDisclosuresOk
+
+`func (o *CatalogsCreativeAssetsAttributes) GetAiDisclosuresOk() (*[]CatalogsAiContentDisclosure, bool)`
+
+GetAiDisclosuresOk returns a tuple with the AiDisclosures field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiDisclosures
+
+`func (o *CatalogsCreativeAssetsAttributes) SetAiDisclosures(v []CatalogsAiContentDisclosure)`
+
+SetAiDisclosures sets AiDisclosures field to given value.
+
+### HasAiDisclosures
+
+`func (o *CatalogsCreativeAssetsAttributes) HasAiDisclosures() bool`
+
+HasAiDisclosures returns a boolean if a field has been set.
+
 ### GetImageLink
 
 `func (o *CatalogsCreativeAssetsAttributes) GetImageLink() string`

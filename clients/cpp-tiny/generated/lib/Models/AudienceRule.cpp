@@ -591,7 +591,7 @@ AudienceRule::getAdAccountId()
 }
 
 void
-AudienceRule::setAdAccountId(std::string  ad_account_id)
+AudienceRule::setAdAccountId(std::string ad_account_id)
 {
 	this->ad_account_id = ad_account_id;
 }
@@ -603,7 +603,7 @@ AudienceRule::getAdId()
 }
 
 void
-AudienceRule::setAdId(std::list <std::string> ad_id)
+AudienceRule::setAdId(std::list<std::string> ad_id)
 {
 	this->ad_id = ad_id;
 }
@@ -615,7 +615,7 @@ AudienceRule::getCampaignId()
 }
 
 void
-AudienceRule::setCampaignId(std::list <std::string> campaign_id)
+AudienceRule::setCampaignId(std::list<std::string> campaign_id)
 {
 	this->campaign_id = campaign_id;
 }
@@ -627,7 +627,7 @@ AudienceRule::getCountry()
 }
 
 void
-AudienceRule::setCountry(std::string  country)
+AudienceRule::setCountry(std::string country)
 {
 	this->country = country;
 }
@@ -639,7 +639,7 @@ AudienceRule::getCustomerListId()
 }
 
 void
-AudienceRule::setCustomerListId(std::string  customer_list_id)
+AudienceRule::setCustomerListId(std::string customer_list_id)
 {
 	this->customer_list_id = customer_list_id;
 }
@@ -651,7 +651,7 @@ AudienceRule::getEngagementDomain()
 }
 
 void
-AudienceRule::setEngagementDomain(std::list <std::string> engagement_domain)
+AudienceRule::setEngagementDomain(std::list<std::string> engagement_domain)
 {
 	this->engagement_domain = engagement_domain;
 }
@@ -663,7 +663,7 @@ AudienceRule::getEngagementType()
 }
 
 void
-AudienceRule::setEngagementType(std::string  engagement_type)
+AudienceRule::setEngagementType(std::string engagement_type)
 {
 	this->engagement_type = engagement_type;
 }
@@ -675,7 +675,7 @@ AudienceRule::getEngagerType()
 }
 
 void
-AudienceRule::setEngagerType(int  engager_type)
+AudienceRule::setEngagerType(int engager_type)
 {
 	this->engager_type = engager_type;
 }
@@ -687,7 +687,7 @@ AudienceRule::getEvent()
 }
 
 void
-AudienceRule::setEvent(std::string  event)
+AudienceRule::setEvent(std::string event)
 {
 	this->event = event;
 }
@@ -699,7 +699,7 @@ AudienceRule::getEventData()
 }
 
 void
-AudienceRule::setEventData(EventData  event_data)
+AudienceRule::setEventData(EventData event_data)
 {
 	this->event_data = event_data;
 }
@@ -711,7 +711,7 @@ AudienceRule::getEventSource()
 }
 
 void
-AudienceRule::setEventSource(Object  event_source)
+AudienceRule::setEventSource(Object event_source)
 {
 	this->event_source = event_source;
 }
@@ -723,7 +723,7 @@ AudienceRule::getIngestionSource()
 }
 
 void
-AudienceRule::setIngestionSource(Object  ingestion_source)
+AudienceRule::setIngestionSource(Object ingestion_source)
 {
 	this->ingestion_source = ingestion_source;
 }
@@ -735,7 +735,7 @@ AudienceRule::getObjectiveType()
 }
 
 void
-AudienceRule::setObjectiveType(std::list <ObjectiveType> objective_type)
+AudienceRule::setObjectiveType(std::list<ObjectiveType> objective_type)
 {
 	this->objective_type = objective_type;
 }
@@ -747,7 +747,7 @@ AudienceRule::getPercentage()
 }
 
 void
-AudienceRule::setPercentage(int  percentage)
+AudienceRule::setPercentage(int percentage)
 {
 	this->percentage = percentage;
 }
@@ -759,7 +759,7 @@ AudienceRule::getPinId()
 }
 
 void
-AudienceRule::setPinId(std::list <std::string> pin_id)
+AudienceRule::setPinId(std::list<std::string> pin_id)
 {
 	this->pin_id = pin_id;
 }
@@ -771,7 +771,7 @@ AudienceRule::isPrefill()
 }
 
 void
-AudienceRule::setPrefill(bool  prefill)
+AudienceRule::setPrefill(bool prefill)
 {
 	this->prefill = prefill;
 }
@@ -783,7 +783,7 @@ AudienceRule::getRetentionDays()
 }
 
 void
-AudienceRule::setRetentionDays(int  retention_days)
+AudienceRule::setRetentionDays(int retention_days)
 {
 	this->retention_days = retention_days;
 }
@@ -795,7 +795,7 @@ AudienceRule::getSeedId()
 }
 
 void
-AudienceRule::setSeedId(std::list <std::string> seed_id)
+AudienceRule::setSeedId(std::list<std::string> seed_id)
 {
 	this->seed_id = seed_id;
 }
@@ -807,7 +807,7 @@ AudienceRule::getUrl()
 }
 
 void
-AudienceRule::setUrl(std::list <std::string> url)
+AudienceRule::setUrl(std::list<std::string> url)
 {
 	this->url = url;
 }
@@ -819,7 +819,7 @@ AudienceRule::getVisitorSourceId()
 }
 
 void
-AudienceRule::setVisitorSourceId(std::string  visitor_source_id)
+AudienceRule::setVisitorSourceId(std::string visitor_source_id)
 {
 	this->visitor_source_id = visitor_source_id;
 }

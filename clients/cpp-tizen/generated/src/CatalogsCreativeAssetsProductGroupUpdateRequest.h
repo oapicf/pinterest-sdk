@@ -67,11 +67,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
-	/*! \brief Get 
+	/*! \brief Get Name of catalog product group
 	 */
 	std::string getName();
 
-	/*! \brief Set 
+	/*! \brief Set Name of catalog product group
 	 */
 	void setName(std::string  name);
 

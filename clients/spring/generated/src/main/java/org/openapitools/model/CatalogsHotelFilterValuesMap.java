@@ -2,48 +2,47 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * A map of filter attributes to their available values.
  */
 
-@Schema(name = "catalogs_hotel_filter_values_map", description = "A map of filter attributes to their available values.")
-@JsonTypeName("catalogs_hotel_filter_values_map")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "CatalogsHotelFilterValuesMap", description = "A map of filter attributes to their available values.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelFilterValuesMap {
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> brand = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel0 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel1 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel2 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel3 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel4 = new ArrayList<>();
 
   public CatalogsHotelFilterValuesMap brand(List<String> brand) {
@@ -70,6 +69,7 @@ public class CatalogsHotelFilterValuesMap {
     return brand;
   }
 
+  @JsonProperty("brand")
   public void setBrand(List<String> brand) {
     this.brand = brand;
   }
@@ -98,6 +98,7 @@ public class CatalogsHotelFilterValuesMap {
     return customLabel0;
   }
 
+  @JsonProperty("custom_label_0")
   public void setCustomLabel0(List<String> customLabel0) {
     this.customLabel0 = customLabel0;
   }
@@ -126,6 +127,7 @@ public class CatalogsHotelFilterValuesMap {
     return customLabel1;
   }
 
+  @JsonProperty("custom_label_1")
   public void setCustomLabel1(List<String> customLabel1) {
     this.customLabel1 = customLabel1;
   }
@@ -154,6 +156,7 @@ public class CatalogsHotelFilterValuesMap {
     return customLabel2;
   }
 
+  @JsonProperty("custom_label_2")
   public void setCustomLabel2(List<String> customLabel2) {
     this.customLabel2 = customLabel2;
   }
@@ -182,6 +185,7 @@ public class CatalogsHotelFilterValuesMap {
     return customLabel3;
   }
 
+  @JsonProperty("custom_label_3")
   public void setCustomLabel3(List<String> customLabel3) {
     this.customLabel3 = customLabel3;
   }
@@ -210,6 +214,7 @@ public class CatalogsHotelFilterValuesMap {
     return customLabel4;
   }
 
+  @JsonProperty("custom_label_4")
   public void setCustomLabel4(List<String> customLabel4) {
     this.customLabel4 = customLabel4;
   }
@@ -254,11 +259,8 @@ public class CatalogsHotelFilterValuesMap {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

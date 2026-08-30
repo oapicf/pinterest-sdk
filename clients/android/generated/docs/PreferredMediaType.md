@@ -1,0 +1,10 @@
+
+
+# PreferredMediaType
+
+## Enum
+
+
+
+
+

@@ -17,11 +17,13 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
+import { CustomerListUpload } from '../model/customerListUpload';
+// @ts-ignore
 import { CustomerListUploadCreateRequest } from '../model/customerListUploadCreateRequest';
 // @ts-ignore
 import { CustomerListUploadCreateResponse } from '../model/customerListUploadCreateResponse';
 // @ts-ignore
-import { CustomerListUploadResponse } from '../model/customerListUploadResponse';
+import { PinterestLibError } from '../model/pinterestLibError';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -41,11 +43,11 @@ export class CustomerListUploadsService extends BaseService {
 
     /**
      * Create customer list upload
-     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt;  &lt;p&gt;Create a customer list upload request for multipart S3 upload.&lt;/p&gt; &lt;p&gt;Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Please review the &lt;u&gt;&lt;a href&#x3D;\&quot;/docs/api/v5/customer_lists-update/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;update customer list endpoint&lt;/a&gt;&lt;/u&gt; documentation for additional information.&lt;/b&gt;&lt;/p&gt;
+     * Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
      * @endpoint post /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUploadCreateRequest Parameters to create a customer list upload request
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUploadCreateRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
@@ -119,18 +121,18 @@ export class CustomerListUploadsService extends BaseService {
 
     /**
      * Get customer list upload
-     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Get the metadata for a given upload by its ID.&lt;/p&gt;
+     * Get the metadata for a given upload by its ID.
      * @endpoint get /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUploadId Unique identifier of a customer list upload
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUploadId Customer List Upload ID.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public customerListUploadsGet(adAccountId: string, customerListId: string, customerListUploadId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CustomerListUploadResponse>;
-    public customerListUploadsGet(adAccountId: string, customerListId: string, customerListUploadId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CustomerListUploadResponse>>;
-    public customerListUploadsGet(adAccountId: string, customerListId: string, customerListUploadId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CustomerListUploadResponse>>;
+    public customerListUploadsGet(adAccountId: string, customerListId: string, customerListUploadId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CustomerListUpload>;
+    public customerListUploadsGet(adAccountId: string, customerListId: string, customerListUploadId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CustomerListUpload>>;
+    public customerListUploadsGet(adAccountId: string, customerListId: string, customerListUploadId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CustomerListUpload>>;
     public customerListUploadsGet(adAccountId: string, customerListId: string, customerListUploadId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling customerListUploadsGet.');
@@ -172,7 +174,7 @@ export class CustomerListUploadsService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/customer_lists/${this.configuration.encodeParam({name: "customerListId", value: customerListId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/uploads/${this.configuration.encodeParam({name: "customerListUploadId", value: customerListUploadId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<CustomerListUploadResponse>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<CustomerListUpload>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -187,18 +189,18 @@ export class CustomerListUploadsService extends BaseService {
 
     /**
      * Run customer list upload
-     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Begin processing a customer list upload.&lt;/p&gt;
+     * Begin processing a customer list upload.
      * @endpoint post /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUploadId Unique identifier of a customer list upload
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUploadId Customer List Upload ID.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public customerListUploadsRun(adAccountId: string, customerListId: string, customerListUploadId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CustomerListUploadResponse>;
-    public customerListUploadsRun(adAccountId: string, customerListId: string, customerListUploadId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CustomerListUploadResponse>>;
-    public customerListUploadsRun(adAccountId: string, customerListId: string, customerListUploadId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CustomerListUploadResponse>>;
+    public customerListUploadsRun(adAccountId: string, customerListId: string, customerListUploadId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CustomerListUpload>;
+    public customerListUploadsRun(adAccountId: string, customerListId: string, customerListUploadId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CustomerListUpload>>;
+    public customerListUploadsRun(adAccountId: string, customerListId: string, customerListUploadId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CustomerListUpload>>;
     public customerListUploadsRun(adAccountId: string, customerListId: string, customerListUploadId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling customerListUploadsRun.');
@@ -240,7 +242,7 @@ export class CustomerListUploadsService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/customer_lists/${this.configuration.encodeParam({name: "customerListId", value: customerListId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/uploads/${this.configuration.encodeParam({name: "customerListUploadId", value: customerListUploadId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/run`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<CustomerListUploadResponse>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<CustomerListUpload>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,

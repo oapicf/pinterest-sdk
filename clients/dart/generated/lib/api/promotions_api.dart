@@ -27,15 +27,14 @@ class PromotionsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [List<PromotionCreateRequest>] promotionCreateRequest (required):
-  ///   List of promotions to create, size limit [1, 30].
-  Future<Response> promotionsCreateWithHttpInfo(String adAccountId, List<PromotionCreateRequest> promotionCreateRequest,) async {
+  /// * [List<PromotionCreate>] promotionCreate (required):
+  Future<Response> promotionsCreateWithHttpInfo(String adAccountId, List<PromotionCreate> promotionCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/promotions'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = promotionCreateRequest;
+    Object? postBody = promotionCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -52,6 +51,7 @@ class PromotionsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -64,10 +64,9 @@ class PromotionsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [List<PromotionCreateRequest>] promotionCreateRequest (required):
-  ///   List of promotions to create, size limit [1, 30].
-  Future<PromotionsResponse?> promotionsCreate(String adAccountId, List<PromotionCreateRequest> promotionCreateRequest,) async {
-    final response = await promotionsCreateWithHttpInfo(adAccountId, promotionCreateRequest,);
+  /// * [List<PromotionCreate>] promotionCreate (required):
+  Future<PromotionsResponse?> promotionsCreate(String adAccountId, List<PromotionCreate> promotionCreate, { Future<void>? abortTrigger, }) async {
+    final response = await promotionsCreateWithHttpInfo(adAccountId, promotionCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -89,16 +88,16 @@ class PromotionsApi {
   ///
   /// Parameters:
   ///
+  /// * [String] promotionId (required):
+  ///   Promotion ID
+  ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  ///
-  /// * [String] promotionId (required):
-  ///   Unique identifier of a promotion
-  Future<Response> promotionsDeleteWithHttpInfo(String adAccountId, String promotionId,) async {
+  Future<Response> promotionsDeleteWithHttpInfo(String promotionId, String adAccountId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/promotions/{promotion_id}'
-      .replaceAll('{ad_account_id}', adAccountId)
-      .replaceAll('{promotion_id}', promotionId);
+      .replaceAll('{promotion_id}', promotionId)
+      .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -118,6 +117,7 @@ class PromotionsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -127,16 +127,24 @@ class PromotionsApi {
   ///
   /// Parameters:
   ///
+  /// * [String] promotionId (required):
+  ///   Promotion ID
+  ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  ///
-  /// * [String] promotionId (required):
-  ///   Unique identifier of a promotion
-  Future<void> promotionsDelete(String adAccountId, String promotionId,) async {
-    final response = await promotionsDeleteWithHttpInfo(adAccountId, promotionId,);
+  Future<Promotion?> promotionsDelete(String promotionId, String adAccountId, { Future<void>? abortTrigger, }) async {
+    final response = await promotionsDeleteWithHttpInfo(promotionId, adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Promotion',) as Promotion;
+    
+    }
+    return null;
   }
 
   /// Get promotion by id
@@ -147,16 +155,16 @@ class PromotionsApi {
   ///
   /// Parameters:
   ///
+  /// * [String] promotionId (required):
+  ///   Promotion ID
+  ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  ///
-  /// * [String] promotionId (required):
-  ///   Unique identifier of a promotion
-  Future<Response> promotionsGetWithHttpInfo(String adAccountId, String promotionId,) async {
+  Future<Response> promotionsGetWithHttpInfo(String promotionId, String adAccountId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/promotions/{promotion_id}'
-      .replaceAll('{ad_account_id}', adAccountId)
-      .replaceAll('{promotion_id}', promotionId);
+      .replaceAll('{promotion_id}', promotionId)
+      .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -176,6 +184,7 @@ class PromotionsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -185,13 +194,13 @@ class PromotionsApi {
   ///
   /// Parameters:
   ///
+  /// * [String] promotionId (required):
+  ///   Promotion ID
+  ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  ///
-  /// * [String] promotionId (required):
-  ///   Unique identifier of a promotion
-  Future<PromotionResponse?> promotionsGet(String adAccountId, String promotionId,) async {
-    final response = await promotionsGetWithHttpInfo(adAccountId, promotionId,);
+  Future<Promotion?> promotionsGet(String promotionId, String adAccountId, { Future<void>? abortTrigger, }) async {
+    final response = await promotionsGetWithHttpInfo(promotionId, adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -199,7 +208,7 @@ class PromotionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PromotionResponse',) as PromotionResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Promotion',) as Promotion;
     
     }
     return null;
@@ -216,15 +225,15 @@ class PromotionsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<Response> promotionsListWithHttpInfo(String adAccountId, { int? pageSize, String? order, String? bookmark, }) async {
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  Future<Response> promotionsListWithHttpInfo(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/promotions'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -236,14 +245,14 @@ class PromotionsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (bookmark != null) {
+      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
     if (pageSize != null) {
       queryParams.addAll(_queryParams('', 'page_size', pageSize));
     }
     if (order != null) {
       queryParams.addAll(_queryParams('', 'order', order));
-    }
-    if (bookmark != null) {
-      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
     }
 
     const contentTypes = <String>[];
@@ -257,6 +266,7 @@ class PromotionsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -269,16 +279,16 @@ class PromotionsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<PromotionsList200Response?> promotionsList(String adAccountId, { int? pageSize, String? order, String? bookmark, }) async {
-    final response = await promotionsListWithHttpInfo(adAccountId,  pageSize: pageSize, order: order, bookmark: bookmark, );
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  Future<PromotionsList200Response?> promotionsList(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, Future<void>? abortTrigger, }) async {
+    final response = await promotionsListWithHttpInfo(adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -303,15 +313,14 @@ class PromotionsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [List<PromotionUpdateRequest>] promotionUpdateRequest (required):
-  ///   List of promotions to create, size limit [1, 30].
-  Future<Response> promotionsUpdateWithHttpInfo(String adAccountId, List<PromotionUpdateRequest> promotionUpdateRequest,) async {
+  /// * [List<PromotionBatchUpdate>] promotionBatchUpdate (required):
+  Future<Response> promotionsUpdateWithHttpInfo(String adAccountId, List<PromotionBatchUpdate> promotionBatchUpdate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/promotions'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = promotionUpdateRequest;
+    Object? postBody = promotionBatchUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -328,6 +337,7 @@ class PromotionsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -340,10 +350,9 @@ class PromotionsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [List<PromotionUpdateRequest>] promotionUpdateRequest (required):
-  ///   List of promotions to create, size limit [1, 30].
-  Future<PromotionsResponse?> promotionsUpdate(String adAccountId, List<PromotionUpdateRequest> promotionUpdateRequest,) async {
-    final response = await promotionsUpdateWithHttpInfo(adAccountId, promotionUpdateRequest,);
+  /// * [List<PromotionBatchUpdate>] promotionBatchUpdate (required):
+  Future<PromotionsResponse?> promotionsUpdate(String adAccountId, List<PromotionBatchUpdate> promotionBatchUpdate, { Future<void>? abortTrigger, }) async {
+    final response = await promotionsUpdateWithHttpInfo(adAccountId, promotionBatchUpdate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

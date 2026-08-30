@@ -1,8 +1,7 @@
 package apimodels;
 
-import apimodels.TrendingKeywordDemographicsAgeDistribution;
-import apimodels.TrendingKeywordDemographicsGenderDistribution;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+import apimodels.TrendsAgeDistribution;
+import apimodels.TrendsGenderDistribution;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -11,22 +10,22 @@ import java.util.Objects;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 /**
- * A mapping of demographic dimensions (e.g. \&quot;gender\&quot;, \&quot;age\&quot;) to their category distributions. &lt;br /&gt; For each dimension: &lt;br /&gt;   - Key: The category (e.g., \&quot;female\&quot;, \&quot;18-24\&quot;). &lt;br /&gt;   - Value: The proportion of search volume (e.g., 0.12 for 12%). &lt;br /&gt;     Values less than 0.05 are set to 0.04 for privacy. &lt;br /&gt;     The sum for all categories in a dimension will approximately equal 1. &lt;br /&gt;     Only applicable when &#x60;include_demographics&#x60; query parameter is set to &#x60;true&#x60;.
+ * A mapping of demographic dimensions (e.g. \&quot;gender\&quot;, \&quot;age\&quot;) to their category distributions. For each dimension: Key: The category (e.g., \&quot;female\&quot;, \&quot;18-24\&quot;). Value: The proportion of search volume (e.g., 0.12 for 12%). Values less than 0.05 are set to 0.04 for privacy. The sum for all categories in a dimension will approximately equal 1. Only applicable when &#x60;include_demographics&#x60; query parameter is set to &#x60;true&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class TrendingKeywordDemographics   {
   @JsonProperty("age_distribution")
   @Valid
 
-  private TrendingKeywordDemographicsAgeDistribution ageDistribution;
+  private TrendsAgeDistribution ageDistribution;
 
   @JsonProperty("gender_distribution")
   @Valid
 
-  private TrendingKeywordDemographicsGenderDistribution genderDistribution;
+  private TrendsGenderDistribution genderDistribution;
 
-  public TrendingKeywordDemographics ageDistribution(TrendingKeywordDemographicsAgeDistribution ageDistribution) {
+  public TrendingKeywordDemographics ageDistribution(TrendsAgeDistribution ageDistribution) {
     this.ageDistribution = ageDistribution;
     return this;
   }
@@ -35,15 +34,15 @@ public class TrendingKeywordDemographics   {
    * Get ageDistribution
    * @return ageDistribution
   **/
-  public TrendingKeywordDemographicsAgeDistribution getAgeDistribution() {
+  public TrendsAgeDistribution getAgeDistribution() {
     return ageDistribution;
   }
 
-  public void setAgeDistribution(TrendingKeywordDemographicsAgeDistribution ageDistribution) {
+  public void setAgeDistribution(TrendsAgeDistribution ageDistribution) {
     this.ageDistribution = ageDistribution;
   }
 
-  public TrendingKeywordDemographics genderDistribution(TrendingKeywordDemographicsGenderDistribution genderDistribution) {
+  public TrendingKeywordDemographics genderDistribution(TrendsGenderDistribution genderDistribution) {
     this.genderDistribution = genderDistribution;
     return this;
   }
@@ -52,11 +51,11 @@ public class TrendingKeywordDemographics   {
    * Get genderDistribution
    * @return genderDistribution
   **/
-  public TrendingKeywordDemographicsGenderDistribution getGenderDistribution() {
+  public TrendsGenderDistribution getGenderDistribution() {
     return genderDistribution;
   }
 
-  public void setGenderDistribution(TrendingKeywordDemographicsGenderDistribution genderDistribution) {
+  public void setGenderDistribution(TrendsGenderDistribution genderDistribution) {
     this.genderDistribution = genderDistribution;
   }
 
@@ -96,10 +95,7 @@ public class TrendingKeywordDemographics   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

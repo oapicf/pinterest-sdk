@@ -7,7 +7,7 @@ using namespace Tiny;
 IntegrationLogClientRequest::IntegrationLogClientRequest()
 {
 	host = std::string();
-	method = std::string();
+	method = HttpMethod();
 	path = std::string();
 	request_headers = null<std::string>();
 	response_headers = null<std::string>();
@@ -50,8 +50,9 @@ IntegrationLogClientRequest::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&method, value, "std::string");
 
+        HttpMethod* obj = &method;
+		obj->fromJson(value.dump());
 
     }
 
@@ -118,8 +119,8 @@ IntegrationLogClientRequest::toJson()
 
 
 
-    object["method"] = getMethod();
 
+	object["method"] = getMethod().toJson();
 
 
 
@@ -153,19 +154,19 @@ IntegrationLogClientRequest::getHost()
 }
 
 void
-IntegrationLogClientRequest::setHost(std::string  host)
+IntegrationLogClientRequest::setHost(std::string host)
 {
 	this->host = host;
 }
 
-std::string
+HttpMethod
 IntegrationLogClientRequest::getMethod()
 {
 	return method;
 }
 
 void
-IntegrationLogClientRequest::setMethod(std::string  method)
+IntegrationLogClientRequest::setMethod(HttpMethod method)
 {
 	this->method = method;
 }
@@ -177,31 +178,31 @@ IntegrationLogClientRequest::getPath()
 }
 
 void
-IntegrationLogClientRequest::setPath(std::string  path)
+IntegrationLogClientRequest::setPath(std::string path)
 {
 	this->path = path;
 }
 
-Map<string, string>
+std::map<std::string, std::string>
 IntegrationLogClientRequest::getRequestHeaders()
 {
 	return request_headers;
 }
 
 void
-IntegrationLogClientRequest::setRequestHeaders(Map <string, string> request_headers)
+IntegrationLogClientRequest::setRequestHeaders(std::map<std::string, std::string> request_headers)
 {
 	this->request_headers = request_headers;
 }
 
-Map<string, string>
+std::map<std::string, std::string>
 IntegrationLogClientRequest::getResponseHeaders()
 {
 	return response_headers;
 }
 
 void
-IntegrationLogClientRequest::setResponseHeaders(Map <string, string> response_headers)
+IntegrationLogClientRequest::setResponseHeaders(std::map<std::string, std::string> response_headers)
 {
 	this->response_headers = response_headers;
 }
@@ -213,7 +214,7 @@ IntegrationLogClientRequest::getResponseStatusCode()
 }
 
 void
-IntegrationLogClientRequest::setResponseStatusCode(int  response_status_code)
+IntegrationLogClientRequest::setResponseStatusCode(int response_status_code)
 {
 	this->response_status_code = response_status_code;
 }

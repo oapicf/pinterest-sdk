@@ -21,13 +21,16 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class ErrorDetail(
 
-    @Schema(example = "20", required = true, description = "Number of records with this error")
+    @Schema(required = true, description = "Number of records with this error")
+    @param:JsonProperty("count")
     @get:JsonProperty("count", required = true) val count: kotlin.Int,
 
-    @Schema(example = "42", required = true, description = "Numeric error code")
+    @Schema(required = true, description = "Numeric error code")
+    @param:JsonProperty("error_code")
     @get:JsonProperty("error_code", required = true) val errorCode: kotlin.Int,
 
-    @Schema(example = "Invalid email", required = true, description = "Error message description")
+    @Schema(required = true, description = "Error message description")
+    @param:JsonProperty("message")
     @get:JsonProperty("message", required = true) val message: kotlin.String
 ) {
 

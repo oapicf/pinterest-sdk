@@ -1,4 +1,4 @@
-# TargetingTemplateAudienceSizing_reach_estimate
+# TargetingTemplateAudienceSizingReachEstimate
 
 ## Properties
 Name | Type | Description | Notes

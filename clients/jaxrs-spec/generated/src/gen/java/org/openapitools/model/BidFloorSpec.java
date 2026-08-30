@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ActionType;
+import org.openapitools.model.BidFloorObjectiveType;
 import org.openapitools.model.Country;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.Currency;
-import org.openapitools.model.ObjectiveType;
 import org.openapitools.model.OptimizationGoalMetadata;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -22,16 +22,18 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-
-
+/**
+ * Bid floor specification for a given campaign configuration.
+ **/
+@ApiModel(description = "Bid floor specification for a given campaign configuration.")
 @JsonTypeName("BidFloorSpec")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BidFloorSpec   {
   private ActionType billableEvent;
   private @Valid List<Country> countries = new ArrayList<>();
   private CreativeType creativeType;
   private Currency currency;
-  private ObjectiveType objectiveType;
+  private BidFloorObjectiveType objectiveType;
   private OptimizationGoalMetadata optimizationGoalMetadata;
 
   public BidFloorSpec() {
@@ -47,6 +49,7 @@ public class BidFloorSpec   {
   }
 
   /**
+   * Ad group billable event type.
    **/
   public BidFloorSpec billableEvent(ActionType billableEvent) {
     this.billableEvent = billableEvent;
@@ -54,7 +57,7 @@ public class BidFloorSpec   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Ad group billable event type.")
   @JsonProperty(required = true, value = "billable_event")
   @NotNull public ActionType getBillableEvent() {
     return billableEvent;
@@ -66,6 +69,7 @@ public class BidFloorSpec   {
   }
 
   /**
+   * List of ISO 3166-1 alpha-2 country codes.
    **/
   public BidFloorSpec countries(List<Country> countries) {
     this.countries = countries;
@@ -73,7 +77,7 @@ public class BidFloorSpec   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of ISO 3166-1 alpha-2 country codes.")
   @JsonProperty("countries")
   public List<Country> getCountries() {
     return countries;
@@ -101,6 +105,7 @@ public class BidFloorSpec   {
     return this;
   }
   /**
+   * Creative type for the bid floor request.
    **/
   public BidFloorSpec creativeType(CreativeType creativeType) {
     this.creativeType = creativeType;
@@ -108,7 +113,7 @@ public class BidFloorSpec   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Creative type for the bid floor request.")
   @JsonProperty("creative_type")
   public CreativeType getCreativeType() {
     return creativeType;
@@ -120,6 +125,7 @@ public class BidFloorSpec   {
   }
 
   /**
+   * Currency for the bid floor value.
    **/
   public BidFloorSpec currency(Currency currency) {
     this.currency = currency;
@@ -127,7 +133,7 @@ public class BidFloorSpec   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Currency for the bid floor value.")
   @JsonProperty(required = true, value = "currency")
   @NotNull public Currency getCurrency() {
     return currency;
@@ -139,25 +145,27 @@ public class BidFloorSpec   {
   }
 
   /**
+   * Campaign objective type.
    **/
-  public BidFloorSpec objectiveType(ObjectiveType objectiveType) {
+  public BidFloorSpec objectiveType(BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Campaign objective type.")
   @JsonProperty("objective_type")
-  public ObjectiveType getObjectiveType() {
+  public BidFloorObjectiveType getObjectiveType() {
     return objectiveType;
   }
 
   @JsonProperty("objective_type")
-  public void setObjectiveType(ObjectiveType objectiveType) {
+  public void setObjectiveType(BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
   }
 
   /**
+   * Optimization goal metadata.
    **/
   public BidFloorSpec optimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
@@ -165,7 +173,7 @@ public class BidFloorSpec   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Optimization goal metadata.")
   @JsonProperty("optimization_goal_metadata")
   @Valid public OptimizationGoalMetadata getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
@@ -219,12 +227,8 @@ public class BidFloorSpec   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

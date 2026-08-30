@@ -1,6 +1,7 @@
 
 # PinMediaMetadata
 
+Per-item entry inside `PinMedia.items` for mixed image/video pins. Discriminated by `item_type`.
 
 ## Properties
 
@@ -15,6 +16,7 @@ Name | Type
 `duration` | number
 `height` | number
 `videoUrl` | string
+`videoUrlHls` | string
 `width` | number
 
 ## Example
@@ -33,6 +35,7 @@ const example = {
   "duration": null,
   "height": null,
   "videoUrl": null,
+  "videoUrlHls": null,
   "width": null,
 } satisfies PinMediaMetadata
 

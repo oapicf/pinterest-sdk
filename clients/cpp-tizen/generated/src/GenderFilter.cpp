@@ -48,7 +48,7 @@ GenderFilter::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleGenderCriteria")) {
-			jsonToValue(&gENDER, node, "CatalogsProductGroupMultipleGenderCriteria", "");
+			jsonToValue(&gENDER, node, "CatalogsProductGroupMultipleGenderCriteria", "CatalogsProductGroupMultipleGenderCriteria");
 		} else {
 			
 			CatalogsProductGroupMultipleGenderCriteria* obj = static_cast<CatalogsProductGroupMultipleGenderCriteria*> (&gENDER);

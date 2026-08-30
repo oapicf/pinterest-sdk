@@ -8,7 +8,7 @@ import 'package:built_value/serializer.dart';
 
 part 'catalogs_hotel_guest_ratings.g.dart';
 
-/// If specified, you must provide all properties
+/// CatalogsHotelGuestRatings
 ///
 /// Properties:
 /// * [maxScore] - Max value for the hotel rating score.

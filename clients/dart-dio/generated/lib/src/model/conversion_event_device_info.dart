@@ -4,6 +4,9 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/form_factor.dart';
+import 'package:openapi/src/model/network_type.dart';
+import 'package:openapi/src/model/os_family.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -64,7 +67,7 @@ abstract class ConversionEventDeviceInfo implements Built<ConversionEventDeviceI
 
   /// Device form factor
   @BuiltValueField(wireName: r'form_factor')
-  ConversionEventDeviceInfoFormFactorEnum? get formFactor;
+  FormFactor? get formFactor;
   // enum formFactorEnum {  desktop,  laptop,  cellphone,  tablet,  smartwatch,  tv,  vr,  console,  other,  };
 
   /// Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release
@@ -85,12 +88,12 @@ abstract class ConversionEventDeviceInfo implements Built<ConversionEventDeviceI
 
   /// Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
   @BuiltValueField(wireName: r'network_type')
-  ConversionEventDeviceInfoNetworkTypeEnum? get networkType;
+  NetworkType? get networkType;
   // enum networkTypeEnum {  wifi,  cellular_2g,  cellular_3g,  cellular_4g,  cellular_5g,  cellular_6g,  ethernet,  unknown,  };
 
   /// OS Family
   @BuiltValueField(wireName: r'os_family')
-  ConversionEventDeviceInfoOsFamilyEnum? get osFamily;
+  OsFamily? get osFamily;
   // enum osFamilyEnum {  ios,  android,  macos,  windows,  linux,  bsd,  other,  };
 
   /// Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch
@@ -206,7 +209,7 @@ class _$ConversionEventDeviceInfoSerializer implements PrimitiveSerializer<Conve
       yield r'form_factor';
       yield serializers.serialize(
         object.formFactor,
-        specifiedType: const FullType(ConversionEventDeviceInfoFormFactorEnum),
+        specifiedType: const FullType(FormFactor),
       );
     }
     if (object.kernelVersion != null) {
@@ -241,14 +244,14 @@ class _$ConversionEventDeviceInfoSerializer implements PrimitiveSerializer<Conve
       yield r'network_type';
       yield serializers.serialize(
         object.networkType,
-        specifiedType: const FullType(ConversionEventDeviceInfoNetworkTypeEnum),
+        specifiedType: const FullType(NetworkType),
       );
     }
     if (object.osFamily != null) {
       yield r'os_family';
       yield serializers.serialize(
         object.osFamily,
-        specifiedType: const FullType(ConversionEventDeviceInfoOsFamilyEnum),
+        specifiedType: const FullType(OsFamily),
       );
     }
     if (object.osName != null) {
@@ -354,169 +357,193 @@ class _$ConversionEventDeviceInfoSerializer implements PrimitiveSerializer<Conve
         case r'battery_level':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.batteryLevel = valueDes;
           break;
         case r'brand':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.brand = valueDes;
           break;
         case r'carrier':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.carrier = valueDes;
           break;
         case r'cpu_cores':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.cpuCores = valueDes;
           break;
         case r'external_storage_free_space':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.externalStorageFreeSpace = valueDes;
           break;
         case r'external_storage_size':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.externalStorageSize = valueDes;
           break;
         case r'form_factor':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ConversionEventDeviceInfoFormFactorEnum),
-          ) as ConversionEventDeviceInfoFormFactorEnum;
+            specifiedType: const FullType.nullable(FormFactor),
+          ) as FormFactor?;
+          if (valueDes == null) continue;
           result.formFactor = valueDes;
           break;
         case r'kernel_version':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.kernelVersion = valueDes;
           break;
         case r'languages':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.languages.replace(valueDes);
           break;
         case r'locale':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.locale = valueDes;
           break;
         case r'model':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.model = valueDes;
           break;
         case r'network_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ConversionEventDeviceInfoNetworkTypeEnum),
-          ) as ConversionEventDeviceInfoNetworkTypeEnum;
+            specifiedType: const FullType.nullable(NetworkType),
+          ) as NetworkType?;
+          if (valueDes == null) continue;
           result.networkType = valueDes;
           break;
         case r'os_family':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ConversionEventDeviceInfoOsFamilyEnum),
-          ) as ConversionEventDeviceInfoOsFamilyEnum;
+            specifiedType: const FullType.nullable(OsFamily),
+          ) as OsFamily?;
+          if (valueDes == null) continue;
           result.osFamily = valueDes;
           break;
         case r'os_name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.osName = valueDes;
           break;
         case r'os_release_name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.osReleaseName = valueDes;
           break;
         case r'os_version':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.osVersion = valueDes;
           break;
         case r'screen_density':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.screenDensity = valueDes;
           break;
         case r'screen_height':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.screenHeight = valueDes;
           break;
         case r'screen_width':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.screenWidth = valueDes;
           break;
         case r'storage_free_space':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.storageFreeSpace = valueDes;
           break;
         case r'storage_size':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.storageSize = valueDes;
           break;
         case r'timezone':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.timezone = valueDes;
           break;
         case r'timezone_abbr':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.timezoneAbbr = valueDes;
           break;
         case r'type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.type = valueDes;
           break;
         default:
@@ -546,110 +573,5 @@ class _$ConversionEventDeviceInfoSerializer implements PrimitiveSerializer<Conve
     );
     return result.build();
   }
-}
-
-class ConversionEventDeviceInfoFormFactorEnum extends EnumClass {
-
-  /// Device form factor
-  @BuiltValueEnumConst(wireName: r'desktop')
-  static const ConversionEventDeviceInfoFormFactorEnum desktop = _$conversionEventDeviceInfoFormFactorEnum_desktop;
-  /// Device form factor
-  @BuiltValueEnumConst(wireName: r'laptop')
-  static const ConversionEventDeviceInfoFormFactorEnum laptop = _$conversionEventDeviceInfoFormFactorEnum_laptop;
-  /// Device form factor
-  @BuiltValueEnumConst(wireName: r'cellphone')
-  static const ConversionEventDeviceInfoFormFactorEnum cellphone = _$conversionEventDeviceInfoFormFactorEnum_cellphone;
-  /// Device form factor
-  @BuiltValueEnumConst(wireName: r'tablet')
-  static const ConversionEventDeviceInfoFormFactorEnum tablet = _$conversionEventDeviceInfoFormFactorEnum_tablet;
-  /// Device form factor
-  @BuiltValueEnumConst(wireName: r'smartwatch')
-  static const ConversionEventDeviceInfoFormFactorEnum smartwatch = _$conversionEventDeviceInfoFormFactorEnum_smartwatch;
-  /// Device form factor
-  @BuiltValueEnumConst(wireName: r'tv')
-  static const ConversionEventDeviceInfoFormFactorEnum tv = _$conversionEventDeviceInfoFormFactorEnum_tv;
-  /// Device form factor
-  @BuiltValueEnumConst(wireName: r'vr')
-  static const ConversionEventDeviceInfoFormFactorEnum vr = _$conversionEventDeviceInfoFormFactorEnum_vr;
-  /// Device form factor
-  @BuiltValueEnumConst(wireName: r'console')
-  static const ConversionEventDeviceInfoFormFactorEnum console = _$conversionEventDeviceInfoFormFactorEnum_console;
-  /// Device form factor
-  @BuiltValueEnumConst(wireName: r'other')
-  static const ConversionEventDeviceInfoFormFactorEnum other = _$conversionEventDeviceInfoFormFactorEnum_other;
-
-  static Serializer<ConversionEventDeviceInfoFormFactorEnum> get serializer => _$conversionEventDeviceInfoFormFactorEnumSerializer;
-
-  const ConversionEventDeviceInfoFormFactorEnum._(String name): super(name);
-
-  static BuiltSet<ConversionEventDeviceInfoFormFactorEnum> get values => _$conversionEventDeviceInfoFormFactorEnumValues;
-  static ConversionEventDeviceInfoFormFactorEnum valueOf(String name) => _$conversionEventDeviceInfoFormFactorEnumValueOf(name);
-}
-
-class ConversionEventDeviceInfoNetworkTypeEnum extends EnumClass {
-
-  /// Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-  @BuiltValueEnumConst(wireName: r'wifi')
-  static const ConversionEventDeviceInfoNetworkTypeEnum wifi = _$conversionEventDeviceInfoNetworkTypeEnum_wifi;
-  /// Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-  @BuiltValueEnumConst(wireName: r'cellular_2g')
-  static const ConversionEventDeviceInfoNetworkTypeEnum cellular2g = _$conversionEventDeviceInfoNetworkTypeEnum_cellular2g;
-  /// Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-  @BuiltValueEnumConst(wireName: r'cellular_3g')
-  static const ConversionEventDeviceInfoNetworkTypeEnum cellular3g = _$conversionEventDeviceInfoNetworkTypeEnum_cellular3g;
-  /// Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-  @BuiltValueEnumConst(wireName: r'cellular_4g')
-  static const ConversionEventDeviceInfoNetworkTypeEnum cellular4g = _$conversionEventDeviceInfoNetworkTypeEnum_cellular4g;
-  /// Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-  @BuiltValueEnumConst(wireName: r'cellular_5g')
-  static const ConversionEventDeviceInfoNetworkTypeEnum cellular5g = _$conversionEventDeviceInfoNetworkTypeEnum_cellular5g;
-  /// Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-  @BuiltValueEnumConst(wireName: r'cellular_6g')
-  static const ConversionEventDeviceInfoNetworkTypeEnum cellular6g = _$conversionEventDeviceInfoNetworkTypeEnum_cellular6g;
-  /// Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-  @BuiltValueEnumConst(wireName: r'ethernet')
-  static const ConversionEventDeviceInfoNetworkTypeEnum ethernet = _$conversionEventDeviceInfoNetworkTypeEnum_ethernet;
-  /// Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-  @BuiltValueEnumConst(wireName: r'unknown')
-  static const ConversionEventDeviceInfoNetworkTypeEnum unknown = _$conversionEventDeviceInfoNetworkTypeEnum_unknown;
-
-  static Serializer<ConversionEventDeviceInfoNetworkTypeEnum> get serializer => _$conversionEventDeviceInfoNetworkTypeEnumSerializer;
-
-  const ConversionEventDeviceInfoNetworkTypeEnum._(String name): super(name);
-
-  static BuiltSet<ConversionEventDeviceInfoNetworkTypeEnum> get values => _$conversionEventDeviceInfoNetworkTypeEnumValues;
-  static ConversionEventDeviceInfoNetworkTypeEnum valueOf(String name) => _$conversionEventDeviceInfoNetworkTypeEnumValueOf(name);
-}
-
-class ConversionEventDeviceInfoOsFamilyEnum extends EnumClass {
-
-  /// OS Family
-  @BuiltValueEnumConst(wireName: r'ios')
-  static const ConversionEventDeviceInfoOsFamilyEnum ios = _$conversionEventDeviceInfoOsFamilyEnum_ios;
-  /// OS Family
-  @BuiltValueEnumConst(wireName: r'android')
-  static const ConversionEventDeviceInfoOsFamilyEnum android = _$conversionEventDeviceInfoOsFamilyEnum_android;
-  /// OS Family
-  @BuiltValueEnumConst(wireName: r'macos')
-  static const ConversionEventDeviceInfoOsFamilyEnum macos = _$conversionEventDeviceInfoOsFamilyEnum_macos;
-  /// OS Family
-  @BuiltValueEnumConst(wireName: r'windows')
-  static const ConversionEventDeviceInfoOsFamilyEnum windows = _$conversionEventDeviceInfoOsFamilyEnum_windows;
-  /// OS Family
-  @BuiltValueEnumConst(wireName: r'linux')
-  static const ConversionEventDeviceInfoOsFamilyEnum linux = _$conversionEventDeviceInfoOsFamilyEnum_linux;
-  /// OS Family
-  @BuiltValueEnumConst(wireName: r'bsd')
-  static const ConversionEventDeviceInfoOsFamilyEnum bsd = _$conversionEventDeviceInfoOsFamilyEnum_bsd;
-  /// OS Family
-  @BuiltValueEnumConst(wireName: r'other')
-  static const ConversionEventDeviceInfoOsFamilyEnum other = _$conversionEventDeviceInfoOsFamilyEnum_other;
-
-  static Serializer<ConversionEventDeviceInfoOsFamilyEnum> get serializer => _$conversionEventDeviceInfoOsFamilyEnumSerializer;
-
-  const ConversionEventDeviceInfoOsFamilyEnum._(String name): super(name);
-
-  static BuiltSet<ConversionEventDeviceInfoOsFamilyEnum> get values => _$conversionEventDeviceInfoOsFamilyEnumValues;
-  static ConversionEventDeviceInfoOsFamilyEnum valueOf(String name) => _$conversionEventDeviceInfoOsFamilyEnumValueOf(name);
 }
 

@@ -8,7 +8,7 @@
       "name": "labels",
       "type": {
         "type": "array",
-        "items": "model.LabelUpdateRequestLabelsInner"
+        "items": "model.LabelUpdateItem"
       },
       "doc": "Labels that you are applying to the campaign."
     }

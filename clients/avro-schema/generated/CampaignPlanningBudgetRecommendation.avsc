@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Budget recommendation response containing recommended budget, estimated days, and point estimations.",
+  "name": "CampaignPlanningBudgetRecommendation",
+  "fields": [
+    {
+      "name": "budget_recommendation",
+      "type": ["null", "int"],
+      "doc": "The recommended budget amount.",
+      "default": null
+    },
+    {
+      "name": "experiment_campaign_budget_recommendation",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CampaignPlanningExperimentBudgetRecommendation"
+      }],
+      "doc": "List of experimental budget recommendations.",
+      "default": null
+    },
+    {
+      "name": "lifetime_days_recommendation",
+      "type": ["null", "int"],
+      "doc": "Recommended number of days for the campaign lifetime.",
+      "default": null
+    },
+    {
+      "name": "point_estimations",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CampaignPlanningBudgetRecommendationPoint"
+      }],
+      "doc": "List of point estimations for different budget scenarios.",
+      "default": null
+    }
+  ]
+
+}

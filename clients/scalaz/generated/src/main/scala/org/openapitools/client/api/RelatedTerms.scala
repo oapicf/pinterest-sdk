@@ -17,7 +17,7 @@ case class RelatedTerms (
 /* Total number of related terms returned */
   relatedTermCount: Option[Integer],
 /* The id of the advertiser. */
-  relatedTermsList: Option[List[RelatedTermsRelatedTermsListInner]])
+  relatedTermsList: Option[List[RelatedTermsRelatedTermsListItems]])
 
 object RelatedTerms {
   import DateTimeCodecs._

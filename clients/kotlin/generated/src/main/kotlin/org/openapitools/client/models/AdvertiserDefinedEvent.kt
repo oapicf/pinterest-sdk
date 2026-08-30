@@ -8,73 +8,46 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.ConversionTagTypeOptimal
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * 
+ * Advertiser defined event
  *
- * @param name raw string name of the event, usually logged as raw_event_name in our dataset
- * @param mappedConversionType standard type mapped to ADE for optimization
+ * @param mappedConversionType Standard type mapped to ADE for optimization
+ * @param name Raw string name of the event, usually logged as raw_event_name in our dataset
  */
 
 
 data class AdvertiserDefinedEvent (
 
-    /* raw string name of the event, usually logged as raw_event_name in our dataset */
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
-    /* standard type mapped to ADE for optimization */
+    /* Standard type mapped to ADE for optimization */
     @Json(name = "mapped_conversion_type")
-    val mappedConversionType: AdvertiserDefinedEvent.MappedConversionType? = null
+    val mappedConversionType: ConversionTagTypeOptimal? = null,
+
+    /* Raw string name of the event, usually logged as raw_event_name in our dataset */
+    @Json(name = "name")
+    val name: kotlin.String? = null
 
 ) {
 
-    /**
-     * standard type mapped to ADE for optimization
-     *
-     * Values: PAGE_LOAD,UNKNOWN,INITIALIZED,PAGE_VISIT,SIGNUP,CHECKOUT,CUSTOM,VIEW_CATEGORY,SEARCH,ADD_TO_CART,WATCH_VIDEO,LEAD,APP_INSTALL,WEB_SESSION,EXTERNAL_MEASUREMENT,ADD_PAYMENT_INFO,ADD_TO_WISHLIST,INITIATE_CHECKOUT,SUBSCRIBE,VIEW_CONTENT,ADVERTISER_DEFINED_EVENT,APP_OPEN,CONTACT,SCHEDULE,FIND_LOCATION,CUSTOMIZE_PRODUCT,SUBMIT_APPLICATION,START_TRIAL
-     */
-    @JsonClass(generateAdapter = false)
-    enum class MappedConversionType(val value: kotlin.String) {
-        @Json(name = "PAGE_LOAD") PAGE_LOAD("PAGE_LOAD"),
-        @Json(name = "UNKNOWN") UNKNOWN("UNKNOWN"),
-        @Json(name = "INITIALIZED") INITIALIZED("INITIALIZED"),
-        @Json(name = "PAGE_VISIT") PAGE_VISIT("PAGE_VISIT"),
-        @Json(name = "SIGNUP") SIGNUP("SIGNUP"),
-        @Json(name = "CHECKOUT") CHECKOUT("CHECKOUT"),
-        @Json(name = "CUSTOM") CUSTOM("CUSTOM"),
-        @Json(name = "VIEW_CATEGORY") VIEW_CATEGORY("VIEW_CATEGORY"),
-        @Json(name = "SEARCH") SEARCH("SEARCH"),
-        @Json(name = "ADD_TO_CART") ADD_TO_CART("ADD_TO_CART"),
-        @Json(name = "WATCH_VIDEO") WATCH_VIDEO("WATCH_VIDEO"),
-        @Json(name = "LEAD") LEAD("LEAD"),
-        @Json(name = "APP_INSTALL") APP_INSTALL("APP_INSTALL"),
-        @Json(name = "WEB_SESSION") WEB_SESSION("WEB_SESSION"),
-        @Json(name = "EXTERNAL_MEASUREMENT") EXTERNAL_MEASUREMENT("EXTERNAL_MEASUREMENT"),
-        @Json(name = "ADD_PAYMENT_INFO") ADD_PAYMENT_INFO("ADD_PAYMENT_INFO"),
-        @Json(name = "ADD_TO_WISHLIST") ADD_TO_WISHLIST("ADD_TO_WISHLIST"),
-        @Json(name = "INITIATE_CHECKOUT") INITIATE_CHECKOUT("INITIATE_CHECKOUT"),
-        @Json(name = "SUBSCRIBE") SUBSCRIBE("SUBSCRIBE"),
-        @Json(name = "VIEW_CONTENT") VIEW_CONTENT("VIEW_CONTENT"),
-        @Json(name = "ADVERTISER_DEFINED_EVENT") ADVERTISER_DEFINED_EVENT("ADVERTISER_DEFINED_EVENT"),
-        @Json(name = "APP_OPEN") APP_OPEN("APP_OPEN"),
-        @Json(name = "CONTACT") CONTACT("CONTACT"),
-        @Json(name = "SCHEDULE") SCHEDULE("SCHEDULE"),
-        @Json(name = "FIND_LOCATION") FIND_LOCATION("FIND_LOCATION"),
-        @Json(name = "CUSTOMIZE_PRODUCT") CUSTOMIZE_PRODUCT("CUSTOMIZE_PRODUCT"),
-        @Json(name = "SUBMIT_APPLICATION") SUBMIT_APPLICATION("SUBMIT_APPLICATION"),
-        @Json(name = "START_TRIAL") START_TRIAL("START_TRIAL");
-    }
 
 }
 

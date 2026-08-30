@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open OpenAPI.Model.AssetGroupBinding
+open OpenAPI.Model.AssetTypeResponse
 
 module AssetIdPermissions =
 
@@ -12,7 +13,7 @@ module AssetIdPermissions =
   type AssetIdPermissions = {
     AssetGroupInfo : AssetGroupBinding;
     AssetId : string;
-    AssetType : string;
+    AssetType : AssetTypeResponse;
     Permissions : string[];
   }
   //#endregion

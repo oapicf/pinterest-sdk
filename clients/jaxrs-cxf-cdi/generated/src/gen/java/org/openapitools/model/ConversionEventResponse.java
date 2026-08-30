@@ -24,6 +24,8 @@ public class ConversionEventResponse   {
 
   private Integer createdTime;
 
+  private String reportingConversionEvent;
+
   /**
    * Id of the ad account.
    **/
@@ -99,6 +101,25 @@ public class ConversionEventResponse   {
   }
 
 
+  /**
+   * For advertiser-defined events, the reporting event label shown in optimization UIs.
+   **/
+  public ConversionEventResponse reportingConversionEvent(String reportingConversionEvent) {
+    this.reportingConversionEvent = reportingConversionEvent;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "GET_QUOTE", value = "For advertiser-defined events, the reporting event label shown in optimization UIs.")
+  @JsonProperty("reporting_conversion_event")
+  public String getReportingConversionEvent() {
+    return reportingConversionEvent;
+  }
+  public void setReportingConversionEvent(String reportingConversionEvent) {
+    this.reportingConversionEvent = reportingConversionEvent;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -112,12 +133,13 @@ public class ConversionEventResponse   {
     return Objects.equals(this.adAccountId, conversionEventResponse.adAccountId) &&
         Objects.equals(this.conversionEvent, conversionEventResponse.conversionEvent) &&
         Objects.equals(this.conversionTagId, conversionEventResponse.conversionTagId) &&
-        Objects.equals(this.createdTime, conversionEventResponse.createdTime);
+        Objects.equals(this.createdTime, conversionEventResponse.createdTime) &&
+        Objects.equals(this.reportingConversionEvent, conversionEventResponse.reportingConversionEvent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime);
+    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime, reportingConversionEvent);
   }
 
   @Override
@@ -129,6 +151,7 @@ public class ConversionEventResponse   {
     sb.append("    conversionEvent: ").append(toIndentedString(conversionEvent)).append("\n");
     sb.append("    conversionTagId: ").append(toIndentedString(conversionTagId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    reportingConversionEvent: ").append(toIndentedString(reportingConversionEvent)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,10 +161,7 @@ public class ConversionEventResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

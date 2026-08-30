@@ -53,6 +53,7 @@ class CustomerListUploadCreateResponse(Model):
     def customer_list_upload(self) -> CustomerListUpload:
         """Gets the customer_list_upload of this CustomerListUploadCreateResponse.
 
+        The Customer List Upload created.  # noqa: E501
 
         :return: The customer_list_upload of this CustomerListUploadCreateResponse.
         :rtype: CustomerListUpload
@@ -63,6 +64,7 @@ class CustomerListUploadCreateResponse(Model):
     def customer_list_upload(self, customer_list_upload: CustomerListUpload):
         """Sets the customer_list_upload of this CustomerListUploadCreateResponse.
 
+        The Customer List Upload created.  # noqa: E501
 
         :param customer_list_upload: The customer_list_upload of this CustomerListUploadCreateResponse.
         :type customer_list_upload: CustomerListUpload
@@ -76,6 +78,7 @@ class CustomerListUploadCreateResponse(Model):
     def s3_multipart_upload_data(self) -> S3MultipartUploadData:
         """Gets the s3_multipart_upload_data of this CustomerListUploadCreateResponse.
 
+        Pre-signed upload URLs corresponding to each part of the upload.  # noqa: E501
 
         :return: The s3_multipart_upload_data of this CustomerListUploadCreateResponse.
         :rtype: S3MultipartUploadData
@@ -86,6 +89,7 @@ class CustomerListUploadCreateResponse(Model):
     def s3_multipart_upload_data(self, s3_multipart_upload_data: S3MultipartUploadData):
         """Sets the s3_multipart_upload_data of this CustomerListUploadCreateResponse.
 
+        Pre-signed upload URLs corresponding to each part of the upload.  # noqa: E501
 
         :param s3_multipart_upload_data: The s3_multipart_upload_data of this CustomerListUploadCreateResponse.
         :type s3_multipart_upload_data: S3MultipartUploadData

@@ -57,6 +57,7 @@ public class CatalogsUpdatableHotelAttributes   {
   private String salePrice;
 
   /**
+   * Hotel address
    **/
   public CatalogsUpdatableHotelAttributes address(CatalogsHotelAddress address) {
     this.address = address;
@@ -64,7 +65,7 @@ public class CatalogsUpdatableHotelAttributes   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Hotel address")
   @JsonProperty("address")
   public CatalogsHotelAddress getAddress() {
     return address;
@@ -246,6 +247,7 @@ public class CatalogsUpdatableHotelAttributes   {
 
 
   /**
+   * If specified, you must provide all properties
    **/
   public CatalogsUpdatableHotelAttributes guestRatings(CatalogsHotelGuestRatings guestRatings) {
     this.guestRatings = guestRatings;
@@ -253,7 +255,7 @@ public class CatalogsUpdatableHotelAttributes   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "If specified, you must provide all properties")
   @JsonProperty("guest_ratings")
   public CatalogsHotelGuestRatings getGuestRatings() {
     return guestRatings;
@@ -450,10 +452,7 @@ public class CatalogsUpdatableHotelAttributes   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

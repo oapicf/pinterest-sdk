@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setMAXPRICE(CatalogsProductGroupPricingCriteria  mAX_PRICE);
+	void setMAXPRICE(CatalogsProductGroupPricingCriteria mAX_PRICE);
 
 
     private:

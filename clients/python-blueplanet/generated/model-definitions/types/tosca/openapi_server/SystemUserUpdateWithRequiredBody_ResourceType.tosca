@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SystemUserUpdateWithRequiredBody"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SystemUserUpdateWithRequiredBody"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  SystemUserUpdateWithRequiredBody {
+    title = SystemUserUpdateWithRequiredBody
+    description = SystemUserUpdateWithRequiredBody
+    derivedFrom = Root
+    properties {
+        name {
+          type =  string
+          description = "New system user name"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SystemUserUpdateWithRequiredBody {
+    title = SystemUserUpdateWithRequiredBody
+    description = SystemUserUpdateWithRequiredBody
+    implements = openapi_server.resourceTypes.SystemUserUpdateWithRequiredBody
+
+  }
+}

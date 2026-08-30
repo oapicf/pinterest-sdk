@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "MetricsResponseDataItems",
+  "fields": [
+    {
+      "name": "metrics",
+      "type": "model.object",
+      "doc": "Metrics object containing the requested metric columns and their values. The keys are metric names (e.g., AD_GROUP_ID, DATE, SPEND_IN_DOLLAR) and values are the metric values (strings or numbers)."
+    },
+    {
+      "name": "targeting_type",
+      "type": "string",
+      "doc": "The targeting type for this data item (e.g., KEYWORD, APPTYPE, GENDER)"
+    },
+    {
+      "name": "targeting_value",
+      "type": "string",
+      "doc": "The targeting value for this data item (e.g., 'christmas decor ideas', 'iphone', 'female')"
+    }
+  ]
+
+}

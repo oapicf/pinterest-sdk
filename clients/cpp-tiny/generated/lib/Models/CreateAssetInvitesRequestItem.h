@@ -49,31 +49,31 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+	/*! \brief Get An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.
 	 */
-	Map<std::string, std::string> getAssetIdToPermissions();
+	std::map<std::string, std::list> getAssetIdToPermissions();
 
-	/*! \brief Set An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+	/*! \brief Set An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.
 	 */
-	void setAssetIdToPermissions(Map <std::string, std::string> asset_id_to_permissions);
+	void setAssetIdToPermissions(std::map<std::string, std::list> asset_id_to_permissions);
 	/*! \brief Get Unique identifier of an invite.
 	 */
 	std::string getInviteId();
 
 	/*! \brief Set Unique identifier of an invite.
 	 */
-	void setInviteId(std::string  invite_id);
+	void setInviteId(std::string invite_id);
 	/*! \brief Get 
 	 */
 	InviteType getInviteType();
 
 	/*! \brief Set 
 	 */
-	void setInviteType(InviteType  invite_type);
+	void setInviteType(InviteType invite_type);
 
 
     private:
-    Map<std::string, std::string> asset_id_to_permissions;
+    std::map<std::string, std::list> asset_id_to_permissions;
     std::string invite_id{};
     InviteType invite_type;
 };

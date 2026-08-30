@@ -1,14 +1,18 @@
 package controllers;
 
-import apimodels.Error;
+import java.math.BigDecimal;
+import apimodels.EntityStatus;
 import apimodels.Granularity;
 import java.time.LocalDate;
-import apimodels.ProductGroupAnalyticsResponseInner;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.ProductGroupAnalyticsItems;
 import apimodels.ProductGroupPromotion;
-import apimodels.ProductGroupPromotionCreateRequest;
-import apimodels.ProductGroupPromotionResponse;
-import apimodels.ProductGroupPromotionUpdateRequest;
+import apimodels.ProductGroupPromotions;
+import apimodels.ProductGroupPromotionsCreate;
 import apimodels.ProductGroupPromotionsList200Response;
+import apimodels.ProductGroupPromotionsUpdateWithRequiredBody;
+import apimodels.ReportingColumnSync;
 import apimodels.ReportingTimeZone;
 
 import com.google.inject.Inject;
@@ -36,12 +40,12 @@ public abstract class ProductGroupPromotionsApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result productGroupPromotionsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest) throws Exception {
+    public Result productGroupPromotionsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ProductGroupPromotionsCreate productGroupPromotionsCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        ProductGroupPromotionResponse obj = productGroupPromotionsCreate(request, adAccountId, productGroupPromotionCreateRequest);
+        ProductGroupPromotions obj = productGroupPromotionsCreate(request, adAccountId, productGroupPromotionsCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -53,7 +57,7 @@ public abstract class ProductGroupPromotionsApiControllerImpInterface {
 
     }
 
-    public abstract ProductGroupPromotionResponse productGroupPromotionsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest) throws Exception;
+    public abstract ProductGroupPromotions productGroupPromotionsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ProductGroupPromotionsCreate productGroupPromotionsCreate) throws Exception;
 
     public Result productGroupPromotionsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String productGroupPromotionId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -74,12 +78,12 @@ public abstract class ProductGroupPromotionsApiControllerImpInterface {
 
     public abstract ProductGroupPromotion productGroupPromotionsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String productGroupPromotionId) throws Exception;
 
-    public Result productGroupPromotionsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds, List<String> entityStatuses,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception {
+    public Result productGroupPromotionsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order,  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds, List<EntityStatus> entityStatuses,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        ProductGroupPromotionsList200Response obj = productGroupPromotionsList(request, adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark);
+        ProductGroupPromotionsList200Response obj = productGroupPromotionsList(request, adAccountId, bookmark, pageSize, order, productGroupPromotionIds, entityStatuses, adGroupId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -91,14 +95,14 @@ public abstract class ProductGroupPromotionsApiControllerImpInterface {
 
     }
 
-    public abstract ProductGroupPromotionsList200Response productGroupPromotionsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds, List<String> entityStatuses,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception;
+    public abstract ProductGroupPromotionsList200Response productGroupPromotionsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order,  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds, List<EntityStatus> entityStatuses,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId) throws Exception;
 
-    public Result productGroupPromotionsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest) throws Exception {
+    public Result productGroupPromotionsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        ProductGroupPromotionResponse obj = productGroupPromotionsUpdate(request, adAccountId, productGroupPromotionUpdateRequest);
+        ProductGroupPromotions obj = productGroupPromotionsUpdate(request, adAccountId, productGroupPromotionsUpdateWithRequiredBody);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -110,17 +114,17 @@ public abstract class ProductGroupPromotionsApiControllerImpInterface {
 
     }
 
-    public abstract ProductGroupPromotionResponse productGroupPromotionsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest) throws Exception;
+    public abstract ProductGroupPromotions productGroupPromotionsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody) throws Exception;
 
-    public Result productGroupsAnalyticsHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> productGroupIds, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) throws Exception {
+    public Result productGroupsAnalyticsHttp(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> productGroupIds, @NotNull List<ReportingColumnSync> columns, @NotNull Granularity granularity,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        List<ProductGroupAnalyticsResponseInner> obj = productGroupsAnalytics(request, adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone);
+        List<ProductGroupAnalyticsItems> obj = productGroupsAnalytics(request, startDate, endDate, productGroupIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
-            for (ProductGroupAnalyticsResponseInner curItem : obj) {
+            for (ProductGroupAnalyticsItems curItem : obj) {
                 OpenAPIUtils.validate(curItem);
             }
         }
@@ -131,6 +135,6 @@ public abstract class ProductGroupPromotionsApiControllerImpInterface {
 
     }
 
-    public abstract List<ProductGroupAnalyticsResponseInner> productGroupsAnalytics(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> productGroupIds, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) throws Exception;
+    public abstract List<ProductGroupAnalyticsItems> productGroupsAnalytics(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> productGroupIds, @NotNull List<ReportingColumnSync> columns, @NotNull Granularity granularity,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) throws Exception;
 
 }

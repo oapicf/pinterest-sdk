@@ -7,8 +7,6 @@ open OpenAPI.Model.CustomizableCTAType
 open OpenAPI.Model.DisclosureType
 open OpenAPI.Model.EntityStatus
 open OpenAPI.Model.GridClickType
-open OpenAPI.Model.QuizPinData
-open OpenAPI.Model.TrackingUrls
 open OpenAPI.Model.string option
 
 module AdUpdateRequest =
@@ -17,6 +15,8 @@ module AdUpdateRequest =
 
 
   type AdUpdateRequest = {
+    Id : string;
+    PinId : string option;
     AdGroupId : string;
     AndroidDeepLink : string option;
     CarouselAndroidDeepLinks : string[];
@@ -30,15 +30,14 @@ module AdUpdateRequest =
     DisclosureUrl : string option;
     GridClickType : GridClickType;
     IosDeepLink : string option;
+    IsCarting : bool;
     IsPinDeleted : bool;
     IsRemovable : bool;
     LeadFormId : string option;
     Name : string option;
-    QuizPinData : QuizPinData;
+    QuizPinData : obj;
     Status : EntityStatus;
-    TrackingUrls : TrackingUrls;
+    TrackingUrls : obj;
     ViewTrackingUrl : string option;
-    Id : string;
-    PinId : string option;
   }
   //#endregion

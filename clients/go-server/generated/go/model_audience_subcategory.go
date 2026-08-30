@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,23 +16,19 @@ package openapi
 
 type AudienceSubcategory struct {
 
-	// Subinterest ID.
 	Id string `json:"id,omitempty"`
 
-	// Subinterest affinity index.
 	Index float32 `json:"index,omitempty"`
 
-	// Interest unique key (same as ID).
 	Key string `json:"key,omitempty"`
 
-	// Subinterest name.
 	Name string `json:"name,omitempty"`
 
-	// Subinterest's percent of category's total audience.
 	Ratio float32 `json:"ratio,omitempty"`
 }
 
-// AssertAudienceSubcategoryRequired checks if the required fields are not zero-ed
+// AssertAudienceSubcategoryRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAudienceSubcategoryRequired(obj AudienceSubcategory) error {
 	return nil
 }

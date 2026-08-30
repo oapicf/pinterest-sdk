@@ -1,12 +1,12 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.Catalog;
+import org.openapitools.vertxweb.server.model.CatalogCreate;
 import org.openapitools.vertxweb.server.model.CatalogsAvailableFilterValues;
-import org.openapitools.vertxweb.server.model.CatalogsCreateRequest;
 import org.openapitools.vertxweb.server.model.CatalogsList200Response;
 import org.openapitools.vertxweb.server.model.CatalogsLocale;
 import org.openapitools.vertxweb.server.model.Country;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -18,6 +18,6 @@ import java.util.Map;
 
 public interface CatalogsApi  {
     Future<ApiResponse<CatalogsAvailableFilterValues>> catalogsAvailableFilterValues(String catalogId, String feedId, Country country, CatalogsLocale language, String adAccountId);
-    Future<ApiResponse<Catalog>> catalogsCreate(CatalogsCreateRequest catalogsCreateRequest, String adAccountId);
-    Future<ApiResponse<CatalogsList200Response>> catalogsList(String bookmark, Integer pageSize, String adAccountId);
+    Future<ApiResponse<Catalog>> catalogsCreate(CatalogCreate catalogCreate, String adAccountId);
+    Future<ApiResponse<CatalogsList200Response>> catalogsList(String adAccountId, String bookmark, Integer pageSize);
 }

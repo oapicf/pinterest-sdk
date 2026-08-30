@@ -7,7 +7,7 @@ goog.provide('API.Client.CatalogsRetailFeedsUpdateRequest');
 API.Client.CatalogsRetailFeedsUpdateRequest = function() {}
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsRetailFeedsUpdateRequest.prototype.catalogType;
@@ -62,3 +62,7 @@ API.Client.CatalogsRetailFeedsUpdateRequest.prototype.preferredProcessingSchedul
  */
 API.Client.CatalogsRetailFeedsUpdateRequest.prototype.status;
 
+/** @enum {string} */
+API.Client.CatalogsRetailFeedsUpdateRequest.CatalogTypeEnum = { 
+  RETAIL: 'RETAIL',
+}

@@ -51,14 +51,14 @@ static gpointer __ProductGroupPromotionsManagerthreadFunc(gpointer data)
 static bool productGroupPromotionsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(ProductGroupPromotionResponse, Error, void* )
-	= reinterpret_cast<void(*)(ProductGroupPromotionResponse, Error, void* )> (voidHandler);
+	void(* handler)(ProductGroupPromotions, Error, void* )
+	= reinterpret_cast<void(*)(ProductGroupPromotions, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	ProductGroupPromotionResponse out;
+	ProductGroupPromotions out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,48 @@ static bool productGroupPromotionsCreateProcessor(MemoryStruct_s p_chunk, long c
 
 
 
-		if (isprimitive("ProductGroupPromotionResponse")) {
+		if (isprimitive("ProductGroupPromotions")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "ProductGroupPromotionResponse", "ProductGroupPromotionResponse");
+			jsonToValue(&out, pJson, "ProductGroupPromotions", "ProductGroupPromotions");
 			json_node_free(pJson);
 
-			if ("ProductGroupPromotionResponse" == "std::string") {
+			if ("ProductGroupPromotions" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -109,8 +139,8 @@ static bool productGroupPromotionsCreateProcessor(MemoryStruct_s p_chunk, long c
 }
 
 static bool productGroupPromotionsCreateHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<ProductGroupPromotionCreateRequest> productGroupPromotionCreateRequest, 
-	void(* handler)(ProductGroupPromotionResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<ProductGroupPromotionsCreate> productGroupPromotionsCreate, 
+	void(* handler)(ProductGroupPromotions, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -130,11 +160,11 @@ static bool productGroupPromotionsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("ProductGroupPromotionCreateRequest")) {
-		node = converttoJson(&productGroupPromotionCreateRequest, "ProductGroupPromotionCreateRequest", "");
+	if (isprimitive("ProductGroupPromotionsCreate")) {
+		node = converttoJson(&productGroupPromotionsCreate, "ProductGroupPromotionsCreate", "");
 	}
 	
-	char *jsonStr =  productGroupPromotionCreateRequest.toJson();
+	char *jsonStr =  productGroupPromotionsCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -199,22 +229,22 @@ static bool productGroupPromotionsCreateHelper(char * accessToken,
 
 
 bool ProductGroupPromotionsManager::productGroupPromotionsCreateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<ProductGroupPromotionCreateRequest> productGroupPromotionCreateRequest, 
-	void(* handler)(ProductGroupPromotionResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<ProductGroupPromotionsCreate> productGroupPromotionsCreate, 
+	void(* handler)(ProductGroupPromotions, Error, void* )
 	, void* userData)
 {
 	return productGroupPromotionsCreateHelper(accessToken,
-	adAccountId, productGroupPromotionCreateRequest, 
+	adAccountId, productGroupPromotionsCreate, 
 	handler, userData, true);
 }
 
 bool ProductGroupPromotionsManager::productGroupPromotionsCreateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<ProductGroupPromotionCreateRequest> productGroupPromotionCreateRequest, 
-	void(* handler)(ProductGroupPromotionResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<ProductGroupPromotionsCreate> productGroupPromotionsCreate, 
+	void(* handler)(ProductGroupPromotions, Error, void* )
 	, void* userData)
 {
 	return productGroupPromotionsCreateHelper(accessToken,
-	adAccountId, productGroupPromotionCreateRequest, 
+	adAccountId, productGroupPromotionsCreate, 
 	handler, userData, false);
 }
 
@@ -248,6 +278,31 @@ static bool productGroupPromotionsGetProcessor(MemoryStruct_s p_chunk, long code
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -422,6 +477,31 @@ static bool productGroupPromotionsListProcessor(MemoryStruct_s p_chunk, long cod
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -442,7 +522,7 @@ static bool productGroupPromotionsListProcessor(MemoryStruct_s p_chunk, long cod
 }
 
 static bool productGroupPromotionsListHelper(char * accessToken,
-	std::string adAccountId, std::list<std::string> productGroupPromotionIds, std::list<std::string> entityStatuses, std::string adGroupId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, std::list<std::string> productGroupPromotionIds, std::list<EntityStatus> entityStatuses, std::string adGroupId, 
 	void(* handler)(Product_group_promotions_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -459,6 +539,27 @@ static bool productGroupPromotionsListHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&bookmark, "std::string");
+	queryParams.insert(pair<string, string>("bookmark", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
+	}
+
+
+	itemAtq = stringify(&order, "Pinterest.Lib.PaginationOrder");
+	queryParams.insert(pair<string, string>("order", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("order");
+	}
+
 	for (std::list
 	<std::string>::iterator queryIter = productGroupPromotionIds.begin(); queryIter != productGroupPromotionIds.end(); ++queryIter) {
 		string itemAt = stringify(&(*queryIter), "std::string");
@@ -469,8 +570,8 @@ static bool productGroupPromotionsListHelper(char * accessToken,
 	}
 	
 	for (std::list
-	<std::string>::iterator queryIter = entityStatuses.begin(); queryIter != entityStatuses.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<EntityStatus>::iterator queryIter = entityStatuses.begin(); queryIter != entityStatuses.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "EntityStatus");
 		if( itemAt.empty()){
 			continue;
 		}
@@ -482,27 +583,6 @@ static bool productGroupPromotionsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("ad_group_id", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("ad_group_id");
-	}
-
-
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&order, "std::string");
-	queryParams.insert(pair<string, string>("order", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("order");
-	}
-
-
-	itemAtq = stringify(&bookmark, "std::string");
-	queryParams.insert(pair<string, string>("bookmark", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("bookmark");
 	}
 
 	string mBody = "";
@@ -565,36 +645,36 @@ static bool productGroupPromotionsListHelper(char * accessToken,
 
 
 bool ProductGroupPromotionsManager::productGroupPromotionsListAsync(char * accessToken,
-	std::string adAccountId, std::list<std::string> productGroupPromotionIds, std::list<std::string> entityStatuses, std::string adGroupId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, std::list<std::string> productGroupPromotionIds, std::list<EntityStatus> entityStatuses, std::string adGroupId, 
 	void(* handler)(Product_group_promotions_list_200_response, Error, void* )
 	, void* userData)
 {
 	return productGroupPromotionsListHelper(accessToken,
-	adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark, 
+	adAccountId, bookmark, pageSize, order, productGroupPromotionIds, entityStatuses, adGroupId, 
 	handler, userData, true);
 }
 
 bool ProductGroupPromotionsManager::productGroupPromotionsListSync(char * accessToken,
-	std::string adAccountId, std::list<std::string> productGroupPromotionIds, std::list<std::string> entityStatuses, std::string adGroupId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, std::list<std::string> productGroupPromotionIds, std::list<EntityStatus> entityStatuses, std::string adGroupId, 
 	void(* handler)(Product_group_promotions_list_200_response, Error, void* )
 	, void* userData)
 {
 	return productGroupPromotionsListHelper(accessToken,
-	adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark, 
+	adAccountId, bookmark, pageSize, order, productGroupPromotionIds, entityStatuses, adGroupId, 
 	handler, userData, false);
 }
 
 static bool productGroupPromotionsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(ProductGroupPromotionResponse, Error, void* )
-	= reinterpret_cast<void(*)(ProductGroupPromotionResponse, Error, void* )> (voidHandler);
+	void(* handler)(ProductGroupPromotions, Error, void* )
+	= reinterpret_cast<void(*)(ProductGroupPromotions, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	ProductGroupPromotionResponse out;
+	ProductGroupPromotions out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -602,18 +682,43 @@ static bool productGroupPromotionsUpdateProcessor(MemoryStruct_s p_chunk, long c
 
 
 
-		if (isprimitive("ProductGroupPromotionResponse")) {
+		if (isprimitive("ProductGroupPromotions")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "ProductGroupPromotionResponse", "ProductGroupPromotionResponse");
+			jsonToValue(&out, pJson, "ProductGroupPromotions", "ProductGroupPromotions");
 			json_node_free(pJson);
 
-			if ("ProductGroupPromotionResponse" == "std::string") {
+			if ("ProductGroupPromotions" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -645,8 +750,8 @@ static bool productGroupPromotionsUpdateProcessor(MemoryStruct_s p_chunk, long c
 }
 
 static bool productGroupPromotionsUpdateHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<ProductGroupPromotionUpdateRequest> productGroupPromotionUpdateRequest, 
-	void(* handler)(ProductGroupPromotionResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<ProductGroupPromotionsUpdateWithRequiredBody> productGroupPromotionsUpdateWithRequiredBody, 
+	void(* handler)(ProductGroupPromotions, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -666,11 +771,11 @@ static bool productGroupPromotionsUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("ProductGroupPromotionUpdateRequest")) {
-		node = converttoJson(&productGroupPromotionUpdateRequest, "ProductGroupPromotionUpdateRequest", "");
+	if (isprimitive("ProductGroupPromotionsUpdateWithRequiredBody")) {
+		node = converttoJson(&productGroupPromotionsUpdateWithRequiredBody, "ProductGroupPromotionsUpdateWithRequiredBody", "");
 	}
 	
-	char *jsonStr =  productGroupPromotionUpdateRequest.toJson();
+	char *jsonStr =  productGroupPromotionsUpdateWithRequiredBody.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -735,35 +840,35 @@ static bool productGroupPromotionsUpdateHelper(char * accessToken,
 
 
 bool ProductGroupPromotionsManager::productGroupPromotionsUpdateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<ProductGroupPromotionUpdateRequest> productGroupPromotionUpdateRequest, 
-	void(* handler)(ProductGroupPromotionResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<ProductGroupPromotionsUpdateWithRequiredBody> productGroupPromotionsUpdateWithRequiredBody, 
+	void(* handler)(ProductGroupPromotions, Error, void* )
 	, void* userData)
 {
 	return productGroupPromotionsUpdateHelper(accessToken,
-	adAccountId, productGroupPromotionUpdateRequest, 
+	adAccountId, productGroupPromotionsUpdateWithRequiredBody, 
 	handler, userData, true);
 }
 
 bool ProductGroupPromotionsManager::productGroupPromotionsUpdateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<ProductGroupPromotionUpdateRequest> productGroupPromotionUpdateRequest, 
-	void(* handler)(ProductGroupPromotionResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<ProductGroupPromotionsUpdateWithRequiredBody> productGroupPromotionsUpdateWithRequiredBody, 
+	void(* handler)(ProductGroupPromotions, Error, void* )
 	, void* userData)
 {
 	return productGroupPromotionsUpdateHelper(accessToken,
-	adAccountId, productGroupPromotionUpdateRequest, 
+	adAccountId, productGroupPromotionsUpdateWithRequiredBody, 
 	handler, userData, false);
 }
 
 static bool productGroupsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::list<ProductGroupAnalyticsResponse_inner>, Error, void* )
-	= reinterpret_cast<void(*)(std::list<ProductGroupAnalyticsResponse_inner>, Error, void* )> (voidHandler);
+	void(* handler)(std::list<ProductGroupAnalyticsItems>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<ProductGroupAnalyticsItems>, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
-	std::list<ProductGroupAnalyticsResponse_inner> out;
+	std::list<ProductGroupAnalyticsItems> out;
 	
 
 	if (code >= 200 && code < 300) {
@@ -777,7 +882,7 @@ static bool productGroupsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, c
 		for(guint i = 0; i < length; i++){
 			JsonNode* myJson = json_array_get_element (jsonarray, i);
 			char * singlenodestr = json_to_string(myJson, false);
-			ProductGroupAnalyticsResponse_inner singlemodel;
+			ProductGroupAnalyticsItems singlemodel;
 			singlemodel.fromJson(singlenodestr);
 			out.push_front(singlemodel);
 			g_free(static_cast<gpointer>(singlenodestr));
@@ -802,8 +907,8 @@ static bool productGroupsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, c
 }
 
 static bool productGroupsAnalyticsHelper(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ReportingTimeZone reportingTimezone, 
-	void(* handler)(std::list<ProductGroupAnalyticsResponse_inner>, Error, void* )
+	Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<ReportingColumnSync> columns, Granularity granularity, std::string adAccountId, long long clickWindowDays, long long engagementWindowDays, long long viewWindowDays, std::string conversionReportTime, ReportingTimeZone reportingTimezone, 
+	void(* handler)(std::list<ProductGroupAnalyticsItems>, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -834,8 +939,8 @@ static bool productGroupsAnalyticsHelper(char * accessToken,
 	}
 	
 	for (std::list
-	<std::string>::iterator queryIter = columns.begin(); queryIter != columns.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<ReportingColumnSync>::iterator queryIter = columns.begin(); queryIter != columns.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "ReportingColumnSync");
 		queryParams.insert(pair<string, string>("columns", itemAt));
 	}
 	
@@ -844,21 +949,21 @@ static bool productGroupsAnalyticsHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("granularity", itemAtq));
 
 
-	itemAtq = stringify(&clickWindowDays, "int");
+	itemAtq = stringify(&clickWindowDays, "long long");
 	queryParams.insert(pair<string, string>("click_window_days", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("click_window_days");
 	}
 
 
-	itemAtq = stringify(&engagementWindowDays, "int");
+	itemAtq = stringify(&engagementWindowDays, "long long");
 	queryParams.insert(pair<string, string>("engagement_window_days", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("engagement_window_days");
 	}
 
 
-	itemAtq = stringify(&viewWindowDays, "int");
+	itemAtq = stringify(&viewWindowDays, "long long");
 	queryParams.insert(pair<string, string>("view_window_days", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("view_window_days");
@@ -938,22 +1043,22 @@ static bool productGroupsAnalyticsHelper(char * accessToken,
 
 
 bool ProductGroupPromotionsManager::productGroupsAnalyticsAsync(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ReportingTimeZone reportingTimezone, 
-	void(* handler)(std::list<ProductGroupAnalyticsResponse_inner>, Error, void* )
+	Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<ReportingColumnSync> columns, Granularity granularity, std::string adAccountId, long long clickWindowDays, long long engagementWindowDays, long long viewWindowDays, std::string conversionReportTime, ReportingTimeZone reportingTimezone, 
+	void(* handler)(std::list<ProductGroupAnalyticsItems>, Error, void* )
 	, void* userData)
 {
 	return productGroupsAnalyticsHelper(accessToken,
-	adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone, 
+	startDate, endDate, productGroupIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone, 
 	handler, userData, true);
 }
 
 bool ProductGroupPromotionsManager::productGroupsAnalyticsSync(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ReportingTimeZone reportingTimezone, 
-	void(* handler)(std::list<ProductGroupAnalyticsResponse_inner>, Error, void* )
+	Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<ReportingColumnSync> columns, Granularity granularity, std::string adAccountId, long long clickWindowDays, long long engagementWindowDays, long long viewWindowDays, std::string conversionReportTime, ReportingTimeZone reportingTimezone, 
+	void(* handler)(std::list<ProductGroupAnalyticsItems>, Error, void* )
 	, void* userData)
 {
 	return productGroupsAnalyticsHelper(accessToken,
-	adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone, 
+	startDate, endDate, productGroupIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone, 
 	handler, userData, false);
 }
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.Audience;
+import org.openapitools.model.AdAccountsAudience;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -19,7 +19,7 @@ public class AudiencesList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  private List<Audience> items = new ArrayList<>();
+  private List<AdAccountsAudience> items = new ArrayList<>();
  /**
    * Get bookmark
    * @return bookmark
@@ -43,20 +43,20 @@ public class AudiencesList200Response  {
    * @return items
   **/
   @JsonProperty("items")
-  public List<Audience> getItems() {
+  public List<AdAccountsAudience> getItems() {
     return items;
   }
 
-  public void setItems(List<Audience> items) {
+  public void setItems(List<AdAccountsAudience> items) {
     this.items = items;
   }
 
-  public AudiencesList200Response items(List<Audience> items) {
+  public AudiencesList200Response items(List<AdAccountsAudience> items) {
     this.items = items;
     return this;
   }
 
-  public AudiencesList200Response addItemsItem(Audience itemsItem) {
+  public AudiencesList200Response addItemsItem(AdAccountsAudience itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -95,10 +95,7 @@ public class AudiencesList200Response  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

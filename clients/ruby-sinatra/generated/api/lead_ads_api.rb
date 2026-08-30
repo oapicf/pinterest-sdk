@@ -5,7 +5,7 @@ MyApp.add_route('DELETE', '/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{
   "resourcePath" => "/LeadAds",
   "summary" => "Delete lead ads subscription",
   "nickname" => "ad_accounts_subscriptions/del_by_id",
-  "responseClass" => "void",
+  "responseClass" => "LeadSubscription",
   "endpoint" => "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}",
   "notes" => "Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'",
   "parameters" => [

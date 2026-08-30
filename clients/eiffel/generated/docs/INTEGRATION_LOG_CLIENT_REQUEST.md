@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **host** | [**STRING_32**](STRING_32.md) | HTTP request host from host header. | [default to null]
-**method** | [**STRING_32**](STRING_32.md) |  | [default to null]
+**method** | [**HTTP_METHOD**](HttpMethod.md) |  | [default to null]
 **path** | [**STRING_32**](STRING_32.md) | HTTP request path. | [default to null]
 **request_headers** | [**STRING_TABLE [STRING_32]**](STRING_32.md) | HTTP request headers as key-value pairs. | [optional] [default to null]
 **response_headers** | [**STRING_TABLE [STRING_32]**](STRING_32.md) | HTTP response headers as key-value pairs. | [optional] [default to null]

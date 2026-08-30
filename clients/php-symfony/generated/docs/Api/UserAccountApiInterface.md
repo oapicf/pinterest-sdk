@@ -32,7 +32,7 @@ services:
 ```
 
 ## **boardsUserFollowsList**
-> OpenAPI\Server\Model\BoardsUserFollowsList200Response boardsUserFollowsList($bookmark, $pageSize, $explicitFollowing, $adAccountId)
+> OpenAPI\Server\Model\BoardsList200Response boardsUserFollowsList($adAccountId, $explicitFollowing, $bookmark, $pageSize)
 
 List following boards
 
@@ -71,7 +71,7 @@ class UserAccountApi implements UserAccountApiInterface
     /**
      * Implementation of UserAccountApiInterface#boardsUserFollowsList
      */
-    public function boardsUserFollowsList(?string $bookmark, int $pageSize, bool $explicitFollowing, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function boardsUserFollowsList(?string $adAccountId, bool $explicitFollowing, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -84,14 +84,14 @@ class UserAccountApi implements UserAccountApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **explicitFollowing** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
+ **explicitFollowing** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
+ **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**OpenAPI\Server\Model\BoardsUserFollowsList200Response**](../Model/BoardsUserFollowsList200Response.md)
+[**OpenAPI\Server\Model\BoardsList200Response**](../Model/BoardsList200Response.md)
 
 ### Authorization
 
@@ -105,11 +105,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **followUserUpdate**
-> OpenAPI\Server\Model\UserSummary followUserUpdate($username, $followUserRequest)
+> OpenAPI\Server\Model\FollowUser followUserUpdate($username, $followUserCreate)
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 
 ### Example Implementation
 ```php
@@ -136,7 +136,7 @@ class UserAccountApi implements UserAccountApiInterface
     /**
      * Implementation of UserAccountApiInterface#followUserUpdate
      */
-    public function followUserUpdate(string $username, FollowUserRequest $followUserRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function followUserUpdate(string $username, FollowUserCreate $followUserCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -150,11 +150,11 @@ class UserAccountApi implements UserAccountApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **string**| A valid username |
- **followUserRequest** | [**OpenAPI\Server\Model\FollowUserRequest**](../Model/FollowUserRequest.md)| Follow a user. |
+ **followUserCreate** | [**OpenAPI\Server\Model\FollowUserCreate**](../Model/FollowUserCreate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\UserSummary**](../Model/UserSummary.md)
+[**OpenAPI\Server\Model\FollowUser**](../Model/FollowUser.md)
 
 ### Authorization
 
@@ -221,7 +221,7 @@ class UserAccountApi implements UserAccountApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -306,11 +306,11 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **unverifyWebsiteDelete**
-> unverifyWebsiteDelete($website)
+> OpenAPI\Server\Model\UserWebsite unverifyWebsiteDelete($website)
 
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 ### Example Implementation
 ```php
@@ -337,7 +337,7 @@ class UserAccountApi implements UserAccountApiInterface
     /**
      * Implementation of UserAccountApiInterface#unverifyWebsiteDelete
      */
-    public function unverifyWebsiteDelete(string $website, int &$responseCode, array &$responseHeaders): void
+    public function unverifyWebsiteDelete(string $website, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**OpenAPI\Server\Model\UserWebsite**](../Model/UserWebsite.md)
 
 ### Authorization
 
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
  **appTypes** | **string**| Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
  **contentType** | **string**| Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;]
  **source** | **string**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;]
- **metricTypes** | [**string**](../Model/string.md)| Metric types to get data for, default is all. | [optional]
+ **metricTypes** | [**OpenAPI\Server\Model\QuerymetrictypesItems**](../Model/OpenAPI\Server\Model\QuerymetrictypesItems.md)| Metric types to get data for, default is all. | [optional]
  **splitField** | **string**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to &#39;NO_SPLIT&#39;]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
@@ -478,7 +478,7 @@ class UserAccountApi implements UserAccountApiInterface
     /**
      * Implementation of UserAccountApiInterface#userAccountAnalyticsTopPins
      */
-    public function userAccountAnalyticsTopPins(\DateTime $startDate, \DateTime $endDate, string $sortBy, string $fromClaimedContent, string $pinFormat, string $appTypes, string $contentType, string $source, ?array $metricTypes, int $numOfPins, ?int $createdInLastNDays, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function userAccountAnalyticsTopPins(\DateTime $startDate, \DateTime $endDate, TopPinsSortBy $sortBy, string $fromClaimedContent, string $pinFormat, string $appTypes, string $contentType, string $source, ?array $metricTypes, int $numOfPins, ?float $createdInLastNDays, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -493,15 +493,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **\DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
  **endDate** | **\DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
- **sortBy** | **string**| Specify sorting order for metrics |
+ **sortBy** | [**TopPinsSortBy**](../Model/.md)| Specify sorting order for metrics |
  **fromClaimedContent** | **string**| Filter on Pins that match your claimed domain. | [optional] [default to &#39;BOTH&#39;]
  **pinFormat** | **string**| Pin formats to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
  **appTypes** | **string**| Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
  **contentType** | **string**| Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;]
  **source** | **string**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;]
- **metricTypes** | [**string**](../Model/string.md)| Metric types to get data for, default is all. | [optional]
+ **metricTypes** | [**OpenAPI\Server\Model\QuerymetrictypesItems**](../Model/OpenAPI\Server\Model\QuerymetrictypesItems.md)| Metric types to get data for, default is all. | [optional]
  **numOfPins** | **int**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
- **createdInLastNDays** | **int**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional]
+ **createdInLastNDays** | **float**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -559,7 +559,7 @@ class UserAccountApi implements UserAccountApiInterface
     /**
      * Implementation of UserAccountApiInterface#userAccountAnalyticsTopVideoPins
      */
-    public function userAccountAnalyticsTopVideoPins(\DateTime $startDate, \DateTime $endDate, string $sortBy, string $fromClaimedContent, string $pinFormat, string $appTypes, string $contentType, string $source, ?array $metricTypes, int $numOfPins, ?int $createdInLastNDays, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function userAccountAnalyticsTopVideoPins(\DateTime $startDate, \DateTime $endDate, TopVideoPinsSortBy $sortBy, string $fromClaimedContent, string $pinFormat, string $appTypes, string $contentType, string $source, ?array $metricTypes, int $numOfPins, ?float $createdInLastNDays, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -574,15 +574,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **\DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
  **endDate** | **\DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
- **sortBy** | **string**| Specify sorting order for video metrics |
+ **sortBy** | [**TopVideoPinsSortBy**](../Model/.md)| Specify sorting order for video metrics |
  **fromClaimedContent** | **string**| Filter on Pins that match your claimed domain. | [optional] [default to &#39;BOTH&#39;]
  **pinFormat** | **string**| Pin formats to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
  **appTypes** | **string**| Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
  **contentType** | **string**| Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;]
  **source** | **string**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;]
- **metricTypes** | [**string**](../Model/string.md)| Metric types to get video data for, default is all. | [optional]
+ **metricTypes** | [**OpenAPI\Server\Model\QueryvideopinmetrictypesItems**](../Model/OpenAPI\Server\Model\QueryvideopinmetrictypesItems.md)| Metric types to get video data for, default is all. | [optional]
  **numOfPins** | **int**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
- **createdInLastNDays** | **int**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional]
+ **createdInLastNDays** | **float**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -655,7 +655,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **string**| A valid username |
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -677,7 +677,7 @@ Name | Type | Description  | Notes
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 
 ### Example Implementation
 ```php
@@ -743,7 +743,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **userFollowingGet**
-> OpenAPI\Server\Model\UserFollowingGet200Response userFollowingGet($bookmark, $pageSize, $feedType, $explicitFollowing, $adAccountId)
+> OpenAPI\Server\Model\FollowersList200Response userFollowingGet($adAccountId, $explicitFollowing, $feedType, $bookmark, $pageSize)
 
 List following
 
@@ -782,7 +782,7 @@ class UserAccountApi implements UserAccountApiInterface
     /**
      * Implementation of UserAccountApiInterface#userFollowingGet
      */
-    public function userFollowingGet(?string $bookmark, int $pageSize, ?UserFollowingFeedType $feedType, bool $explicitFollowing, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function userFollowingGet(?string $adAccountId, bool $explicitFollowing, ?UserFollowingFeedType $feedType, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -795,15 +795,15 @@ class UserAccountApi implements UserAccountApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **feedType** | **OpenAPI\Server\Model\UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional]
- **explicitFollowing** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
+ **explicitFollowing** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
+ **feedType** | [**UserFollowingFeedType**](../Model/.md)| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional]
+ **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**OpenAPI\Server\Model\UserFollowingGet200Response**](../Model/UserFollowingGet200Response.md)
+[**OpenAPI\Server\Model\FollowersList200Response**](../Model/FollowersList200Response.md)
 
 ### Authorization
 
@@ -862,7 +862,7 @@ class UserAccountApi implements UserAccountApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -880,7 +880,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **verifyWebsiteUpdate**
-> OpenAPI\Server\Model\UserWebsiteSummary verifyWebsiteUpdate($userWebsiteVerifyRequest, $adAccountId)
+> OpenAPI\Server\Model\UserWebsite verifyWebsiteUpdate($userWebsiteCreate, $adAccountId)
 
 Verify website
 
@@ -911,7 +911,7 @@ class UserAccountApi implements UserAccountApiInterface
     /**
      * Implementation of UserAccountApiInterface#verifyWebsiteUpdate
      */
-    public function verifyWebsiteUpdate(UserWebsiteVerifyRequest $userWebsiteVerifyRequest, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function verifyWebsiteUpdate(UserWebsiteCreate $userWebsiteCreate, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -924,12 +924,12 @@ class UserAccountApi implements UserAccountApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userWebsiteVerifyRequest** | [**OpenAPI\Server\Model\UserWebsiteVerifyRequest**](../Model/UserWebsiteVerifyRequest.md)| Verify a website. |
+ **userWebsiteCreate** | [**OpenAPI\Server\Model\UserWebsiteCreate**](../Model/UserWebsiteCreate.md)|  |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
 
-[**OpenAPI\Server\Model\UserWebsiteSummary**](../Model/UserWebsiteSummary.md)
+[**OpenAPI\Server\Model\UserWebsite**](../Model/UserWebsite.md)
 
 ### Authorization
 
@@ -943,7 +943,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **websiteVerificationGet**
-> OpenAPI\Server\Model\UserWebsiteVerificationCode websiteVerificationGet($adAccountId)
+> OpenAPI\Server\Model\UserWebsiteVerification websiteVerificationGet($adAccountId)
 
 Get user verification code for website claiming
 
@@ -999,7 +999,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OpenAPI\Server\Model\UserWebsiteVerificationCode**](../Model/UserWebsiteVerificationCode.md)
+[**OpenAPI\Server\Model\UserWebsiteVerification**](../Model/UserWebsiteVerification.md)
 
 ### Authorization
 

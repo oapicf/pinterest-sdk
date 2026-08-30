@@ -11,29 +11,29 @@
 part of openapi.api;
 
 /// Conversion report time type
-class ConversionReportTimeType {
-  /// Instantiate a new enum with the provided [value].
-  const ConversionReportTimeType._(this.value);
+enum ConversionReportTimeType {
+  TIME_OF_AD_ACTION._(r'TIME_OF_AD_ACTION'),
+  TIME_OF_CONVERSION._(r'TIME_OF_CONVERSION'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const ConversionReportTimeType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const TIME_OF_AD_ACTION = ConversionReportTimeType._(r'TIME_OF_AD_ACTION');
-  static const TIME_OF_CONVERSION = ConversionReportTimeType._(r'TIME_OF_CONVERSION');
-
-  /// List of all possible values in this [enum][ConversionReportTimeType].
-  static const values = <ConversionReportTimeType>[
-    TIME_OF_AD_ACTION,
-    TIME_OF_CONVERSION,
-  ];
-
+  /// Returns the instance of [ConversionReportTimeType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static ConversionReportTimeType? fromJson(dynamic value) => ConversionReportTimeTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [ConversionReportTimeType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<ConversionReportTimeType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ConversionReportTimeType>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class ConversionReportTimeTypeTypeTransformer {
 
   const ConversionReportTimeTypeTypeTransformer._();
 
-  String encode(ConversionReportTimeType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(ConversionReportTimeType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a ConversionReportTimeType.
+  /// Returns the instance of [ConversionReportTimeType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class ConversionReportTimeTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   ConversionReportTimeType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is ConversionReportTimeType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'TIME_OF_AD_ACTION': return ConversionReportTimeType.TIME_OF_AD_ACTION;
@@ -79,7 +84,7 @@ class ConversionReportTimeTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [ConversionReportTimeTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static ConversionReportTimeTypeTypeTransformer? _instance;
 }
 

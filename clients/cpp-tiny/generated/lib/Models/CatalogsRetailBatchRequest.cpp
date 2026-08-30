@@ -6,10 +6,10 @@ using namespace Tiny;
 
 CatalogsRetailBatchRequest::CatalogsRetailBatchRequest()
 {
-	catalog_id = std::string();
+	catalog_id = null;
 	catalog_type = std::string();
 	country = Country();
-	items = std::list<CatalogsRetailBatchRequest_items_inner>();
+	items = std::list<CatalogsRetailBatchRequestItemsItems>();
 	language = std::string();
 }
 
@@ -75,8 +75,8 @@ CatalogsRetailBatchRequest::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<CatalogsRetailBatchRequest_items_inner> items_list;
-        CatalogsRetailBatchRequest_items_inner element;
+        std::list<CatalogsRetailBatchRequestItemsItems> items_list;
+        CatalogsRetailBatchRequestItemsItems element;
         for(auto& var : value.array_range())
         {
 
@@ -135,12 +135,12 @@ CatalogsRetailBatchRequest::toJson()
 
 
 
-    std::list<CatalogsRetailBatchRequest_items_inner> items_list = getItems();
+    std::list<CatalogsRetailBatchRequestItemsItems> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        CatalogsRetailBatchRequest_items_inner obj = var;
+        CatalogsRetailBatchRequestItemsItems obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -166,7 +166,7 @@ CatalogsRetailBatchRequest::getCatalogId()
 }
 
 void
-CatalogsRetailBatchRequest::setCatalogId(std::string  catalog_id)
+CatalogsRetailBatchRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -178,7 +178,7 @@ CatalogsRetailBatchRequest::getCatalogType()
 }
 
 void
-CatalogsRetailBatchRequest::setCatalogType(std::string  catalog_type)
+CatalogsRetailBatchRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -190,19 +190,19 @@ CatalogsRetailBatchRequest::getCountry()
 }
 
 void
-CatalogsRetailBatchRequest::setCountry(Country  country)
+CatalogsRetailBatchRequest::setCountry(Country country)
 {
 	this->country = country;
 }
 
-std::list<CatalogsRetailBatchRequest_items_inner>
+std::list<CatalogsRetailBatchRequestItemsItems>
 CatalogsRetailBatchRequest::getItems()
 {
 	return items;
 }
 
 void
-CatalogsRetailBatchRequest::setItems(std::list <CatalogsRetailBatchRequest_items_inner> items)
+CatalogsRetailBatchRequest::setItems(std::list<CatalogsRetailBatchRequestItemsItems> items)
 {
 	this->items = items;
 }
@@ -214,7 +214,7 @@ CatalogsRetailBatchRequest::getLanguage()
 }
 
 void
-CatalogsRetailBatchRequest::setLanguage(std::string  language)
+CatalogsRetailBatchRequest::setLanguage(std::string language)
 {
 	this->language = language;
 }

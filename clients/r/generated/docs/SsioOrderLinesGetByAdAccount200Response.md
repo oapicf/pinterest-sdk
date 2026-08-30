@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **character** |  | [optional] 
-**items** | [**array[SSIOOrderLine]**](SSIOOrderLine.md) | SSIO order lines by ad acount id | 
+**items** | [**array[SSIOOrderLine]**](SSIOOrderLine.md) |  | 
 
 

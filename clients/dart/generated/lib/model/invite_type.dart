@@ -10,32 +10,31 @@
 
 part of openapi.api;
 
-/// The type of invite. <br>'MEMBER_INVITE' is to invite a member to access your business assets. <br>'PARTNER INVITE' is to invite a partner to access your business assets. <br>'PARTNER_REQUEST' is to request access a partner's business assets.
-class InviteType {
-  /// Instantiate a new enum with the provided [value].
-  const InviteType._(this.value);
+/// The type of invite. MEMBER_INVITE invites a member to access your business assets. PARTNER_INVITE invites a partner to access your business assets. PARTNER_REQUEST requests access to a partner's business assets.
+enum InviteType {
+  MEMBER_INVITE._(r'MEMBER_INVITE'),
+  PARTNER_INVITE._(r'PARTNER_INVITE'),
+  PARTNER_REQUEST._(r'PARTNER_REQUEST'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const InviteType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const MEMBER_INVITE = InviteType._(r'MEMBER_INVITE');
-  static const PARTNER_INVITE = InviteType._(r'PARTNER_INVITE');
-  static const PARTNER_REQUEST = InviteType._(r'PARTNER_REQUEST');
-
-  /// List of all possible values in this [enum][InviteType].
-  static const values = <InviteType>[
-    MEMBER_INVITE,
-    PARTNER_INVITE,
-    PARTNER_REQUEST,
-  ];
-
+  /// Returns the instance of [InviteType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static InviteType? fromJson(dynamic value) => InviteTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [InviteType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<InviteType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <InviteType>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class InviteTypeTypeTransformer {
 
   const InviteTypeTypeTransformer._();
 
-  String encode(InviteType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(InviteType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a InviteType.
+  /// Returns the instance of [InviteType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class InviteTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   InviteType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is InviteType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'MEMBER_INVITE': return InviteType.MEMBER_INVITE;
@@ -82,7 +86,7 @@ class InviteTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [InviteTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static InviteTypeTypeTransformer? _instance;
 }
 

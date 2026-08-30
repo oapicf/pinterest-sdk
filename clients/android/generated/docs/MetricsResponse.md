@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **List&lt;Object&gt;** |  |  [optional]
+**data** | [**List&lt;MetricsResponseDataItems&gt;**](MetricsResponseDataItems.md) |  |  [optional]
 
 
 

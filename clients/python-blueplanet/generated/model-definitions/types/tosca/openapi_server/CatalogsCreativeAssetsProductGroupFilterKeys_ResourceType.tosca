@@ -24,6 +24,7 @@ imports {
   GoogleProductCategory4Filter = openapi_server.resourceTypes.GoogleProductCategory4Filter
   GoogleProductCategory5Filter = openapi_server.resourceTypes.GoogleProductCategory5Filter
   GoogleProductCategory6Filter = openapi_server.resourceTypes.GoogleProductCategory6Filter
+  LinkFilter = openapi_server.resourceTypes.LinkFilter
   MediaTypeFilter = openapi_server.resourceTypes.MediaTypeFilter
   TitleKeywordsFilter = openapi_server.resourceTypes.TitleKeywordsFilter
 }
@@ -106,6 +107,11 @@ resourceTypes {
         }
         title_keywords {
           type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+        link {
+          type = CatalogsProductGroupFilterOperatorTypeCriteria
           description = ""
           optional = true
         }

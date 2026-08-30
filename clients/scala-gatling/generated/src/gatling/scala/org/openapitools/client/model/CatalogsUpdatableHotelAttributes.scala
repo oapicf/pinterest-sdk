@@ -3,6 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsUpdatableHotelAttributes (
+    /* Hotel address */
     _address: Option[CatalogsHotelAddress],
     /* Base price of the hotel room per night followed by the ISO currency code */
     _basePrice: Option[String],
@@ -22,6 +23,7 @@ case class CatalogsUpdatableHotelAttributes (
     _customLabel4: Option[String],
     /* Brief description of the hotel. */
     _description: Option[String],
+    /* If specified, you must provide all properties */
     _guestRatings: Option[CatalogsHotelGuestRatings],
     /* Latitude of the hotel. */
     _latitude: Option[Number],

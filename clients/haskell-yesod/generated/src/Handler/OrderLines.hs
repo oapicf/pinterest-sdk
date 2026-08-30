@@ -9,12 +9,12 @@ import           Import
 --
 -- Get a specific existing order line associated with an ad account.
 -- operationId: orderLines/get
-getAdAccountsByTextOrderLinesByTextR :: Text -- ^ Unique identifier of an ad account.
-                                     -> Text -- ^ Unique identifier of an order line.
+getAdAccountsByTextOrderLinesByTextR :: Text -- ^ Order line ID.
+                                     -> Text -- ^ Unique identifier of an ad account.
                                      -> Handler Value
-getAdAccountsByTextOrderLinesByTextR adAccountId orderLineId = notImplemented
+getAdAccountsByTextOrderLinesByTextR orderLineId adAccountId = notImplemented
 
--- | Get order lines
+-- | Get order lines.
 --
 -- List existing order lines associated with an ad account.
 -- operationId: orderLines/list

@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "LabelCreateRequest_labels_inner.h"
+#include "LabelCreateItem.h"
 #include <list>
 #include "Object.h"
 
@@ -49,22 +49,14 @@ public:
 
 	/*! \brief Get Labels that you are applying to the campaign.
 	 */
-	std::list<LabelCreateRequest_labels_inner> getLabels();
+	std::list<LabelCreateItem> getLabels();
 
 	/*! \brief Set Labels that you are applying to the campaign.
 	 */
-	void setLabels(std::list <LabelCreateRequest_labels_inner> labels);
-	/*! \brief Get Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
-	 */
-	std::string getParentId();
-
-	/*! \brief Set Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
-	 */
-	void setParentId(std::string  parent_id);
+	void setLabels(std::list <LabelCreateItem> labels);
 
 private:
-	std::list <LabelCreateRequest_labels_inner>labels;
-	std::string parent_id;
+	std::list <LabelCreateItem>labels;
 	void __init();
 	void __cleanup();
 

@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCURRENCY(CatalogsProductGroupCurrencyCriteria  cURRENCY);
+	void setCURRENCY(CatalogsProductGroupCurrencyCriteria cURRENCY);
 
 
     private:

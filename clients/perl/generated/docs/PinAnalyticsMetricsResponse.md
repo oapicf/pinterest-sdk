@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::PinAnalyticsMetricsResponse;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**daily_metrics** | [**ARRAY[PinAnalyticsMetricsResponseDailyMetricsInner]**](PinAnalyticsMetricsResponseDailyMetricsInner.md) | Array with the requested daily metric records | [optional] 
+**daily_metrics** | [**ARRAY[PinAnalyticsDailyMetrics]**](PinAnalyticsDailyMetrics.md) | Array with the requested daily metric records | [optional] 
 **lifetime_metrics** | **HASH[string,int]** | The lifetime metric name and value. | [optional] 
 **summary_metrics** | **HASH[string,double]** | The metric name and value over the requested period for each requested metric | [optional] 
 

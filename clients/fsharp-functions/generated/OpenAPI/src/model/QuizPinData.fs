@@ -5,6 +5,7 @@ open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.QuizPinQuestion
 open OpenAPI.Model.QuizPinResult
+open OpenAPI.Model.TieBreakerType
 
 module QuizPinData =
 
@@ -19,7 +20,7 @@ module QuizPinData =
     [<JsonProperty(PropertyName = "tie_breaker_custom_result")>]
     TieBreakerCustomResult : QuizPinResult;
     [<JsonProperty(PropertyName = "tie_breaker_type")>]
-    TieBreakerType : string;
+    TieBreakerType : TieBreakerType;
   }
 
   //#endregion

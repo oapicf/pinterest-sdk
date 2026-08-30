@@ -23,14 +23,16 @@ from fastapi import (  # noqa: F401
 )
 
 from openapi_server.models.extra_models import TokenModel  # noqa: F401
-from pydantic import Field, StrictStr, field_validator
+from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
-from openapi_server.models.audience import Audience
-from openapi_server.models.audience_create_request import AudienceCreateRequest
-from openapi_server.models.audience_update_request import AudienceUpdateRequest
+from openapi_server.models.ad_accounts_audience import AdAccountsAudience
+from openapi_server.models.ad_accounts_audience_create import AdAccountsAudienceCreate
+from openapi_server.models.ad_accounts_audience_update import AdAccountsAudienceUpdate
+from openapi_server.models.audience_ownership_type import AudienceOwnershipType
 from openapi_server.models.audiences_list200_response import AudiencesList200Response
-from openapi_server.models.error import Error
+from openapi_server.models.pinterest_lib_error import PinterestLibError
+from openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -43,9 +45,13 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
 @router.get(
     "/ad_accounts/{ad_account_id}/audiences",
     responses={
-        200: {"model": AudiencesList200Response, "description": "Success"},
-        400: {"model": Error, "description": "Invalid ad account audience parameters."},
-        "default": {"model": Error, "description": "Unexpected error"},
+        200: {"model": AudiencesList200Response, "description": "The request has succeeded."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
     },
     tags=["audiences"],
     summary="List audiences",
@@ -54,9 +60,10 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
 async def audiences_list(
     ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
     bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    order: Annotated[Optional[StrictStr], Field(description="The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.")] = Query(None, description="The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.", alias="order"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.")] = Query(25, description="Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.", alias="page_size", ge=1, le=250),
-    ownership_type: Annotated[Optional[StrictStr], Field(description="Filter audiences by ownership type.")] = Query(OWNED, description="Filter audiences by ownership type.", alias="ownership_type"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    order: Annotated[Optional[PinterestLibPaginationOrder], Field(description="The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.")] = Query(None, description="The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.", alias="order"),
+    ownership_type: Optional[AudienceOwnershipType] = Query(None, description="", alias="ownership_type"),
+    exclude_nca: Annotated[Optional[StrictBool], Field(description="When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).")] = Query(False, description="When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).", alias="exclude_nca"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
@@ -67,14 +74,20 @@ async def audiences_list(
     """Get list of audiences for the ad account."""
     if not BaseAudiencesApi.subclasses:
         raise HTTPException(status_code=500, detail="Not implemented")
-    return await BaseAudiencesApi.subclasses[0]().audiences_list(ad_account_id, bookmark, order, page_size, ownership_type)
+    return await BaseAudiencesApi.subclasses[0]().audiences_list(ad_account_id, bookmark, page_size, order, ownership_type, exclude_nca)
 
 
 @router.post(
     "/ad_accounts/{ad_account_id}/audiences",
     responses={
-        200: {"model": Audience, "description": "Success"},
-        "default": {"model": Error, "description": "Unexpected error"},
+        200: {"model": AdAccountsAudience, "description": "The request has succeeded."},
+        201: {"model": AdAccountsAudience, "description": "Resource create operation completed successfully."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
     },
     tags=["audiences"],
     summary="Create audience",
@@ -82,63 +95,72 @@ async def audiences_list(
 )
 async def audiences_create(
     ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    audience_create_request: Annotated[AudienceCreateRequest, Field(description="List of ads to create, size limit [1, 30]")] = Body(None, description="List of ads to create, size limit [1, 30]"),
+    ad_accounts_audience_create: AdAccountsAudienceCreate = Body(None, description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write"]
     ),
-) -> Audience:
-    """Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;."""
+) -> AdAccountsAudience:
+    """Create a new audience for the ad account."""
     if not BaseAudiencesApi.subclasses:
         raise HTTPException(status_code=500, detail="Not implemented")
-    return await BaseAudiencesApi.subclasses[0]().audiences_create(ad_account_id, audience_create_request)
+    return await BaseAudiencesApi.subclasses[0]().audiences_create(ad_account_id, ad_accounts_audience_create)
 
 
 @router.get(
     "/ad_accounts/{ad_account_id}/audiences/{audience_id}",
     responses={
-        200: {"model": Audience, "description": "Success"},
-        404: {"model": Error, "description": "Audience not found."},
-        "default": {"model": Error, "description": "Unexpected error."},
+        200: {"model": AdAccountsAudience, "description": "The request has succeeded."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
     },
     tags=["audiences"],
     summary="Get audience",
     response_model_by_alias=True,
 )
 async def audiences_get(
+    audience_id: Annotated[str, Field(strict=True, description="Audience ID.")] = Path(..., description="Audience ID.", regex=r"^\d+$"),
     ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    audience_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an audience")] = Path(..., description="Unique identifier of an audience", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
     token_client_credentials: TokenModel = Security(
         get_token_client_credentials, scopes=["ads:read"]
     ),
-) -> Audience:
+) -> AdAccountsAudience:
     """Get a specific audience given the audience ID."""
     if not BaseAudiencesApi.subclasses:
         raise HTTPException(status_code=500, detail="Not implemented")
-    return await BaseAudiencesApi.subclasses[0]().audiences_get(ad_account_id, audience_id)
+    return await BaseAudiencesApi.subclasses[0]().audiences_get(audience_id, ad_account_id)
 
 
 @router.patch(
     "/ad_accounts/{ad_account_id}/audiences/{audience_id}",
     responses={
-        200: {"model": Audience, "description": "Success"},
-        "default": {"model": Error, "description": "Unexpected error"},
+        200: {"model": AdAccountsAudience, "description": "The request has succeeded."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
     },
     tags=["audiences"],
     summary="Update audience",
     response_model_by_alias=True,
 )
 async def audiences_update(
+    audience_id: Annotated[str, Field(strict=True, description="Audience ID.")] = Path(..., description="Audience ID.", regex=r"^\d+$"),
     ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    audience_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an audience")] = Path(..., description="Unique identifier of an audience", regex=r"^\d+$", max_length=18),
-    audience_update_request: Annotated[AudienceUpdateRequest, Field(description="The audience to be updated.")] = Body(None, description="The audience to be updated."),
+    ad_accounts_audience_update: AdAccountsAudienceUpdate = Body(None, description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write"]
     ),
-) -> Audience:
-    """Update (edit or remove) an existing targeting audience."""
+) -> AdAccountsAudience:
+    """Update an existing audience for the ad account."""
     if not BaseAudiencesApi.subclasses:
         raise HTTPException(status_code=500, detail="Not implemented")
-    return await BaseAudiencesApi.subclasses[0]().audiences_update(ad_account_id, audience_id, audience_update_request)
+    return await BaseAudiencesApi.subclasses[0]().audiences_update(audience_id, ad_account_id, ad_accounts_audience_update)

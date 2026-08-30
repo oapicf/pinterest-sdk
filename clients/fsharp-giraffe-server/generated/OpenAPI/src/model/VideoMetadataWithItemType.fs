@@ -10,13 +10,17 @@ module VideoMetadataWithItemType =
 
   //#region VideoMetadataWithItemType
 
+  //#region enums
+  type ItemTypeEnum = VideoEnum of string  
+  //#endregion
 
   type VideoMetadataWithItemType = {
     CoverImageUrl : string;
     Duration : decimal option;
     Height : int option;
-    ItemType : string;
+    ItemType : ItemTypeEnum;
     VideoUrl : string option;
+    VideoUrlHls : string option;
     Width : int option;
   }
   //#endregion

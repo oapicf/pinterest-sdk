@@ -9,18 +9,18 @@ import 'package:built_value/serializer.dart';
 
 part 'bid_floor.g.dart';
 
-/// BidFloor
+/// Bid floor request and response model.
 ///
 /// Properties:
 /// * [bidFloors] - A list of bid floors in micro currency. For example, [100000, 200000]
-/// * [type] - Always the string 'bidfloor'
+/// * [type] - Always the string 'bidfloor'.
 @BuiltValue()
 abstract class BidFloor implements Built<BidFloor, BidFloorBuilder> {
   /// A list of bid floors in micro currency. For example, [100000, 200000]
   @BuiltValueField(wireName: r'bid_floors')
   BuiltList<int>? get bidFloors;
 
-  /// Always the string 'bidfloor'
+  /// Always the string 'bidfloor'.
   @BuiltValueField(wireName: r'type')
   String? get type;
 
@@ -88,15 +88,17 @@ class _$BidFloorSerializer implements PrimitiveSerializer<BidFloor> {
         case r'bid_floors':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(int)]),
-          ) as BuiltList<int>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(int)]),
+          ) as BuiltList<int>?;
+          if (valueDes == null) continue;
           result.bidFloors.replace(valueDes);
           break;
         case r'type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.type = valueDes;
           break;
         default:

@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class MediaTypeFilter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("MEDIA_TYPE")
     @get:JsonProperty("MEDIA_TYPE", required = true) val MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria
 ) {
 

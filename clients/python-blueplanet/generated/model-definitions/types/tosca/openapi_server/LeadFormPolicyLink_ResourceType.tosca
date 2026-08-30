@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LeadFormPolicyLink"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LeadFormPolicyLink"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  LeadFormPolicyLink {
+    title = LeadFormPolicyLink
+    description = LeadFormPolicyLink
+    derivedFrom = Root
+    properties {
+        label {
+          type =  string
+          description = "Policy label for an additional policy link."
+          optional = false
+        }
+        link {
+          type =  string
+          description = "Policy link for an additional policy link."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LeadFormPolicyLink {
+    title = LeadFormPolicyLink
+    description = LeadFormPolicyLink
+    implements = openapi_server.resourceTypes.LeadFormPolicyLink
+
+  }
+}

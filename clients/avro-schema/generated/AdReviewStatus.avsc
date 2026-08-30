@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Ad review status",
+  "name": "AdReviewStatus",
+  "symbols": [
+    "OTHER",
+    "PENDING",
+    "REJECTED",
+    "APPROVED"
+  ]
+}

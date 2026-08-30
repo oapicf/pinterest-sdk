@@ -80,7 +80,10 @@ public enum CatalogTypeEnum {
   @Valid
   private CatalogsLocale locale;
 
-  @ApiModelProperty(value = "")
+ /**
+  * Name of catalog product group
+  */
+  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
   private String name;
  /**
   * Get catalogType
@@ -203,7 +206,7 @@ public enum CatalogTypeEnum {
   }
 
  /**
-  * Get name
+  * Name of catalog product group
   * @return name
   */
   @JsonProperty("name")
@@ -269,10 +272,7 @@ public enum CatalogTypeEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

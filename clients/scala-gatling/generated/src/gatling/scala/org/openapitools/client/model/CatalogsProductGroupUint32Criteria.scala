@@ -4,7 +4,7 @@ package org.openapitools.client.model
 
 case class CatalogsProductGroupUint32Criteria (
     _negated: Option[Boolean],
-    _operator: String,
+    _operator: NumericFilterOperatorType,
     _value: Integer
 )
 object CatalogsProductGroupUint32Criteria {

@@ -8,6 +8,8 @@ authors     = ["F. Bar (foo@bar.baz)"]
 imports {
   Root = tosca.resourceTypes.Root
   AudienceRule = openapi_server.resourceTypes.AudienceRule
+  AudienceStatus = openapi_server.resourceTypes.AudienceStatus
+  PinnerListType = openapi_server.resourceTypes.PinnerListType
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -23,8 +25,8 @@ resourceTypes {
           optional = false
         }
         audience_type {
-          type =  string
-          description = "&lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR"
+          type = PinnerListType
+          description = "[Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR"
           optional = false
         }
         created_by_company_name {
@@ -47,6 +49,11 @@ resourceTypes {
           description = "Audience ID."
           optional = false
         }
+        is_nca {
+          type =  boolean
+          description = "Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only."
+          optional = false
+        }
         name {
           type =  string
           description = "Audience name."
@@ -63,7 +70,7 @@ resourceTypes {
           optional = false
         }
         status {
-          type =  string
+          type = AudienceStatus
           description = "Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it."
           optional = false
         }

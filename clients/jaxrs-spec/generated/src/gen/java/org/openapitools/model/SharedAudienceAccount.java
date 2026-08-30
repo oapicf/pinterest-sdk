@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.AudienceAccountType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -16,58 +17,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("SharedAudienceAccount")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SharedAudienceAccount   {
   private String accountId;
   private String accountName;
-  public enum AccountTypeEnum {
-
-    AD_ACCOUNT(String.valueOf("AD_ACCOUNT")), BUSINESS_ACCOUNT(String.valueOf("BUSINESS_ACCOUNT"));
-
-
-    private String value;
-
-    AccountTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static AccountTypeEnum fromString(String s) {
-        for (AccountTypeEnum b : AccountTypeEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static AccountTypeEnum fromValue(String value) {
-        for (AccountTypeEnum b : AccountTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private AccountTypeEnum accountType;
+  private AudienceAccountType accountType;
   private Integer sharedOnTimestamp;
 
   public SharedAudienceAccount() {
@@ -77,7 +31,7 @@ public class SharedAudienceAccount   {
   public SharedAudienceAccount(
     @JsonProperty(required = true, value = "account_id") String accountId,
     @JsonProperty(required = true, value = "account_name") String accountName,
-    @JsonProperty(required = true, value = "account_type") AccountTypeEnum accountType,
+    @JsonProperty(required = true, value = "account_type") AudienceAccountType accountType,
     @JsonProperty(required = true, value = "shared_on_timestamp") Integer sharedOnTimestamp
   ) {
     this.accountId = accountId;
@@ -129,7 +83,7 @@ public class SharedAudienceAccount   {
   /**
    * account type
    **/
-  public SharedAudienceAccount accountType(AccountTypeEnum accountType) {
+  public SharedAudienceAccount accountType(AudienceAccountType accountType) {
     this.accountType = accountType;
     return this;
   }
@@ -137,12 +91,12 @@ public class SharedAudienceAccount   {
   
   @ApiModelProperty(required = true, value = "account type")
   @JsonProperty(required = true, value = "account_type")
-  @NotNull public AccountTypeEnum getAccountType() {
+  @NotNull public AudienceAccountType getAccountType() {
     return accountType;
   }
 
   @JsonProperty(required = true, value = "account_type")
-  public void setAccountType(AccountTypeEnum accountType) {
+  public void setAccountType(AudienceAccountType accountType) {
     this.accountType = accountType;
   }
 
@@ -205,12 +159,8 @@ public class SharedAudienceAccount   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

@@ -53,7 +53,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setPromotions(std::list <PromotionArrayElement> promotions);
+	void setPromotions(std::list<PromotionArrayElement> promotions);
 
 
     private:

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## BulkDownloadCreate
 
-> BulkDownloadResponse BulkDownloadCreate(ctx, adAccountId).BulkDownloadRequest(bulkDownloadRequest).Execute()
+> BulkDownload BulkDownloadCreate(ctx, adAccountId).BulkDownloadCreate(bulkDownloadCreate).Execute()
 
 Get advertiser entities in bulk
 
@@ -32,16 +32,16 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	bulkDownloadRequest := *openapiclient.NewBulkDownloadRequest() // BulkDownloadRequest | Parameters to get ad entities in bulk
+	bulkDownloadCreate := *openapiclient.NewBulkDownloadCreate() // BulkDownloadCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BulkAPI.BulkDownloadCreate(context.Background(), adAccountId).BulkDownloadRequest(bulkDownloadRequest).Execute()
+	resp, r, err := apiClient.BulkAPI.BulkDownloadCreate(context.Background(), adAccountId).BulkDownloadCreate(bulkDownloadCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BulkAPI.BulkDownloadCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `BulkDownloadCreate`: BulkDownloadResponse
+	// response from `BulkDownloadCreate`: BulkDownload
 	fmt.Fprintf(os.Stdout, "Response from `BulkAPI.BulkDownloadCreate`: %v\n", resp)
 }
 ```
@@ -62,11 +62,11 @@ Other parameters are passed through a pointer to a apiBulkDownloadCreateRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **bulkDownloadRequest** | [**BulkDownloadRequest**](BulkDownloadRequest.md) | Parameters to get ad entities in bulk | 
+ **bulkDownloadCreate** | [**BulkDownloadCreate**](BulkDownloadCreate.md) |  | 
 
 ### Return type
 
-[**BulkDownloadResponse**](BulkDownloadResponse.md)
+[**BulkDownload**](BulkDownload.md)
 
 ### Authorization
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## BulkRequestGet
 
-> BulkUpsertStatusResponse BulkRequestGet(ctx, adAccountId, bulkRequestId).IncludeDetails(includeDetails).Execute()
+> BulkJobData BulkRequestGet(ctx, adAccountId, bulkRequestId).IncludeDetails(includeDetails).Execute()
 
 Download advertiser entities in bulk
 
@@ -104,8 +104,8 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	bulkRequestId := "bulkRequestId_example" // string | Unique identifier of a bulk upsert request.
-	includeDetails := true // bool | if set to True then attach the errors/details to all the requests (optional) (default to false)
+	bulkRequestId := "bulkRequestId_example" // string | Bulk request ID that is from one of the entities bulk endpoints
+	includeDetails := true // bool | If set to True then attach the errors/details to all the requests (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -114,7 +114,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `BulkAPI.BulkRequestGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `BulkRequestGet`: BulkUpsertStatusResponse
+	// response from `BulkRequestGet`: BulkJobData
 	fmt.Fprintf(os.Stdout, "Response from `BulkAPI.BulkRequestGet`: %v\n", resp)
 }
 ```
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **adAccountId** | **string** | Unique identifier of an ad account. | 
-**bulkRequestId** | **string** | Unique identifier of a bulk upsert request. | 
+**bulkRequestId** | **string** | Bulk request ID that is from one of the entities bulk endpoints | 
 
 ### Other Parameters
 
@@ -137,11 +137,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **includeDetails** | **bool** | if set to True then attach the errors/details to all the requests | [default to false]
+ **includeDetails** | **bool** | If set to True then attach the errors/details to all the requests | [default to false]
 
 ### Return type
 
-[**BulkUpsertStatusResponse**](BulkUpsertStatusResponse.md)
+[**BulkJobData**](BulkJobData.md)
 
 ### Authorization
 

@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  | [optional] 
-**items** | [**[TemplateResponse]**](TemplateResponse.md) |  | 
+**items** | [**[AccountTemplate]**](AccountTemplate.md) |  | 
 
 

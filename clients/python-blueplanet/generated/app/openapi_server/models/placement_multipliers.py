@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.placement_type import PlacementType  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -15,14 +16,14 @@ class PlacementMultipliers(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, placement: str=None):  # noqa: E501
+    def __init__(self, placement: PlacementType=None):  # noqa: E501
         """PlacementMultipliers - a model defined in Swagger
 
         :param placement: The placement of this PlacementMultipliers.  # noqa: E501
-        :type placement: str
+        :type placement: PlacementType
         """
         self.swagger_types = {
-            'placement': str
+            'placement': PlacementType
         }
 
         self.attribute_map = {
@@ -43,28 +44,24 @@ class PlacementMultipliers(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def placement(self) -> str:
+    def placement(self) -> PlacementType:
         """Gets the placement of this PlacementMultipliers.
 
+        Placement type identifier.  # noqa: E501
 
         :return: The placement of this PlacementMultipliers.
-        :rtype: str
+        :rtype: PlacementType
         """
         return self._placement
 
     @placement.setter
-    def placement(self, placement: str):
+    def placement(self, placement: PlacementType):
         """Sets the placement of this PlacementMultipliers.
 
+        Placement type identifier.  # noqa: E501
 
         :param placement: The placement of this PlacementMultipliers.
-        :type placement: str
+        :type placement: PlacementType
         """
-        allowed_values = ["SEARCH", "BROWSE", "RELATED_PINS"]  # noqa: E501
-        if placement not in allowed_values:
-            raise ValueError(
-                "Invalid value for `placement` ({0}), must be one of {1}"
-                .format(placement, allowed_values)
-            )
 
         self._placement = placement

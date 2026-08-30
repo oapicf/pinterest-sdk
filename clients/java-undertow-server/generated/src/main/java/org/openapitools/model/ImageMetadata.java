@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -13,6 +13,7 @@ package org.openapitools.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -22,12 +23,30 @@ import org.openapitools.model.ImageSize;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ImageMetadata   {
   
   private String description;
   private ImageSize images;
-  private String itemType;
+
+
+  public enum ItemTypeEnum {
+    IMAGE("image");
+
+    private String value;
+
+    ItemTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private ItemTypeEnum itemType;
   private String link;
   private String title;
 
@@ -66,19 +85,20 @@ public class ImageMetadata   {
   }
 
   /**
+   * Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
    */
-  public ImageMetadata itemType(String itemType) {
+  public ImageMetadata itemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.")
   @JsonProperty("item_type")
-  public String getItemType() {
+  public ItemTypeEnum getItemType() {
     return itemType;
   }
-  public void setItemType(String itemType) {
+  public void setItemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
   }
 
@@ -157,10 +177,7 @@ public class ImageMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

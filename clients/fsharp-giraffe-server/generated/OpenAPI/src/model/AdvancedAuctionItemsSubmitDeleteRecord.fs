@@ -10,11 +10,15 @@ module AdvancedAuctionItemsSubmitDeleteRecord =
 
   //#region AdvancedAuctionItemsSubmitDeleteRecord
 
+  //#region enums
+  type OperationEnum = DELETEEnum of string  
+  //#endregion
 
   type AdvancedAuctionItemsSubmitDeleteRecord = {
     Country : Country;
+    Errors : AdvancedAuctionOperationError[];
     ItemId : string;
     Language : Language;
-    Errors : AdvancedAuctionOperationError[];
+    Operation : OperationEnum;
   }
   //#endregion

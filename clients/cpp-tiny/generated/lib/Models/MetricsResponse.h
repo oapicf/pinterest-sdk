@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "Object.h"
+#include "MetricsResponseDataItems.h"
 #include <list>
 
 namespace Tiny {
@@ -49,15 +49,15 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<Object> getData();
+	std::list<MetricsResponseDataItems> getData();
 
 	/*! \brief Set 
 	 */
-	void setData(std::list <Object> data);
+	void setData(std::list<MetricsResponseDataItems> data);
 
 
     private:
-    std::list<Object> data;
+    std::list<MetricsResponseDataItems> data;
 };
 }
 

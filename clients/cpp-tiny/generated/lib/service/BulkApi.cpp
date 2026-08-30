@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            BulkDownloadResponse
+            BulkDownload
         >
         BulkApi::
         bulkDownload_create(
@@ -13,7 +13,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            BulkDownloadRequest bulkDownloadRequest
+            BulkDownloadCreate bulkDownloadCreate
             
         )
         {
@@ -42,11 +42,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | bulkDownloadRequest
+            // Body     | bulkDownloadCreate
 
 
 
-            payload = bulkDownloadRequest.toJson().dump();
+            payload = bulkDownloadCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -57,15 +57,15 @@ using namespace Tiny;
 
 
 
-            BulkDownloadResponse obj(output_string);
+            BulkDownload obj(output_string);
 
 
-            Response<BulkDownloadResponse> response(obj, httpCode);
+            Response<BulkDownload> response(obj, httpCode);
             return response;
         }
 
         Response<
-            BulkUpsertStatusResponse
+            BulkJobData
         >
         BulkApi::
         bulkRequest_get(
@@ -123,10 +123,10 @@ using namespace Tiny;
 
 
 
-            BulkUpsertStatusResponse obj(output_string);
+            BulkJobData obj(output_string);
 
 
-            Response<BulkUpsertStatusResponse> response(obj, httpCode);
+            Response<BulkJobData> response(obj, httpCode);
             return response;
         }
 

@@ -13,5 +13,6 @@ public enum BulkEntityType {
   AD,
   KEYWORD,
   LABEL,
-  SCHEDULE;
+  SCHEDULE,
+  ENTITY_HISTORY;
 }

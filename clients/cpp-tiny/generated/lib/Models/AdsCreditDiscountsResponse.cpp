@@ -10,7 +10,7 @@ AdsCreditDiscountsResponse::AdsCreditDiscountsResponse()
 	advertiser_id = std::string();
 	discountCurrency = std::string();
 	discountInMicroCurrency = float(0);
-	discountType = std::string();
+	discountType = null;
 	remainingDiscountInMicroCurrency = float(0);
 	title = std::string();
 }
@@ -90,8 +90,9 @@ AdsCreditDiscountsResponse::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&discountType, value, "std::string");
 
+        AdsCreditDiscountType* obj = &discountType;
+		obj->fromJson(value.dump());
 
     }
 
@@ -161,8 +162,8 @@ AdsCreditDiscountsResponse::toJson()
 
 
 
-    object["discountType"] = getDiscountType();
 
+	object["discountType"] = getDiscountType().toJson();
 
 
 
@@ -190,7 +191,7 @@ AdsCreditDiscountsResponse::isActive()
 }
 
 void
-AdsCreditDiscountsResponse::setActive(bool  active)
+AdsCreditDiscountsResponse::setActive(bool active)
 {
 	this->active = active;
 }
@@ -202,7 +203,7 @@ AdsCreditDiscountsResponse::getAdvertiserId()
 }
 
 void
-AdsCreditDiscountsResponse::setAdvertiserId(std::string  advertiser_id)
+AdsCreditDiscountsResponse::setAdvertiserId(std::string advertiser_id)
 {
 	this->advertiser_id = advertiser_id;
 }
@@ -214,7 +215,7 @@ AdsCreditDiscountsResponse::getDiscountCurrency()
 }
 
 void
-AdsCreditDiscountsResponse::setDiscountCurrency(std::string  discountCurrency)
+AdsCreditDiscountsResponse::setDiscountCurrency(std::string discountCurrency)
 {
 	this->discountCurrency = discountCurrency;
 }
@@ -226,19 +227,19 @@ AdsCreditDiscountsResponse::getDiscountInMicroCurrency()
 }
 
 void
-AdsCreditDiscountsResponse::setDiscountInMicroCurrency(long  discountInMicroCurrency)
+AdsCreditDiscountsResponse::setDiscountInMicroCurrency(long discountInMicroCurrency)
 {
 	this->discountInMicroCurrency = discountInMicroCurrency;
 }
 
-std::string
+AdsCreditDiscountType
 AdsCreditDiscountsResponse::getDiscountType()
 {
 	return discountType;
 }
 
 void
-AdsCreditDiscountsResponse::setDiscountType(std::string  discountType)
+AdsCreditDiscountsResponse::setDiscountType(AdsCreditDiscountType discountType)
 {
 	this->discountType = discountType;
 }
@@ -250,7 +251,7 @@ AdsCreditDiscountsResponse::getRemainingDiscountInMicroCurrency()
 }
 
 void
-AdsCreditDiscountsResponse::setRemainingDiscountInMicroCurrency(long  remainingDiscountInMicroCurrency)
+AdsCreditDiscountsResponse::setRemainingDiscountInMicroCurrency(long remainingDiscountInMicroCurrency)
 {
 	this->remainingDiscountInMicroCurrency = remainingDiscountInMicroCurrency;
 }
@@ -262,7 +263,7 @@ AdsCreditDiscountsResponse::getTitle()
 }
 
 void
-AdsCreditDiscountsResponse::setTitle(std::string  title)
+AdsCreditDiscountsResponse::setTitle(std::string title)
 {
 	this->title = title;
 }

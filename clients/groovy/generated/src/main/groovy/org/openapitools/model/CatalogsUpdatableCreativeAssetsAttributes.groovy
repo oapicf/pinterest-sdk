@@ -29,6 +29,6 @@ class CatalogsUpdatableCreativeAssetsAttributes {
     String link
     /* The name of the creative assets. */
     String title
-    /* Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. */
+    /* Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'. */
     String visibility
 }

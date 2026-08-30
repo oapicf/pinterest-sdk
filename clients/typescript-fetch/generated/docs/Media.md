@@ -18,7 +18,7 @@ import type { Media } from ''
 // TODO: Update the object below with actual values
 const example = {
   "mediaId": 12345,
-  "mediaType": null,
+  "mediaType": video,
   "status": null,
 } satisfies Media
 

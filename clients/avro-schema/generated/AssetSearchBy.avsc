@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The field to search member assets by",
+  "name": "AssetSearchBy",
+  "symbols": [
+    "NAME",
+    "ID",
+    "NAME_OR_ID",
+    "OWNER_NAME",
+    "NAME_OR_OWNER"
+  ]
+}

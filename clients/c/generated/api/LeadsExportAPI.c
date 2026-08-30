@@ -11,10 +11,10 @@
 
 // Create a request to export leads collected from a lead ad
 //
-// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+// **This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a `leads_export_id` token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 //
-leads_export_create_response_t*
-LeadsExportAPI_leadsExportCreate(apiClient_t *apiClient, char *ad_account_id, leads_export_create_request_t *leads_export_create_request)
+leads_exports_t*
+LeadsExportAPI_leadsExportCreate(apiClient_t *apiClient, char *ad_account_id, leads_exports_create_t *leads_exports_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -47,12 +47,12 @@ LeadsExportAPI_leadsExportCreate(apiClient_t *apiClient, char *ad_account_id, le
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_leads_export_create_request = NULL;
-    if (leads_export_create_request != NULL)
+    cJSON *localVarSingleItemJSON_leads_exports_create = NULL;
+    if (leads_exports_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_leads_export_create_request = leads_export_create_request_convertToJSON(leads_export_create_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_leads_export_create_request);
+        localVarSingleItemJSON_leads_exports_create = leads_exports_create_convertToJSON(leads_exports_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_leads_exports_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -70,21 +70,41 @@ LeadsExportAPI_leadsExportCreate(apiClient_t *apiClient, char *ad_account_id, le
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid ad account parameter.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    leads_export_create_response_t *elementToReturn = NULL;
+    leads_exports_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *LeadsExportAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = leads_export_create_response_parseFromJSON(LeadsExportAPIlocalVarJSON);
+        elementToReturn = leads_exports_parseFromJSON(LeadsExportAPIlocalVarJSON);
         cJSON_Delete(LeadsExportAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -104,9 +124,9 @@ LeadsExportAPI_leadsExportCreate(apiClient_t *apiClient, char *ad_account_id, le
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarSingleItemJSON_leads_export_create_request) {
-        cJSON_Delete(localVarSingleItemJSON_leads_export_create_request);
-        localVarSingleItemJSON_leads_export_create_request = NULL;
+    if (localVarSingleItemJSON_leads_exports_create) {
+        cJSON_Delete(localVarSingleItemJSON_leads_exports_create);
+        localVarSingleItemJSON_leads_exports_create = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -118,7 +138,7 @@ end:
 
 // Get the lead export from the lead export create call
 //
-// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+// **This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 //
 leads_export_response_data_t*
 LeadsExportAPI_leadsExportGet(apiClient_t *apiClient, char *ad_account_id, char *leads_export_id)
@@ -178,19 +198,31 @@ LeadsExportAPI_leadsExportGet(apiClient_t *apiClient, char *ad_account_id, char 
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid ad account parameter.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Invalid leads export id parameter.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     leads_export_response_data_t *elementToReturn = NULL;

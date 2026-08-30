@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            TargetingTemplateGetResponseData
+            TargetingTemplate
         >
         TargetingTemplateApi::
         targetingTemplate_create(
@@ -57,10 +57,10 @@ using namespace Tiny;
 
 
 
-            TargetingTemplateGetResponseData obj(output_string);
+            TargetingTemplate obj(output_string);
 
 
-            Response<TargetingTemplateGetResponseData> response(obj, httpCode);
+            Response<TargetingTemplate> response(obj, httpCode);
             return response;
         }
 
@@ -73,19 +73,19 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            std::string order
+            std::string bookmark
+            , 
+            
+            int pageSize
+            , 
+            
+            Pinterest.Lib.PaginationOrder order
             , 
             
             bool includeSizing
             , 
             
             std::string searchQuery
-            , 
-            
-            int pageSize
-            , 
-            
-            std::string bookmark
             
         )
         {
@@ -94,12 +94,12 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | order includeSizing searchQuery pageSize bookmark 
+            // Query    | bookmark pageSize order includeSizing searchQuery 
+            addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
             addQueryParam("order",order);
             addQueryParam("include_sizing",includeSizing);
             addQueryParam("search_query",searchQuery);
-            addQueryParam("page_size",pageSize);
-            addQueryParam("bookmark",bookmark);
 
             // Form     | 
 
@@ -144,7 +144,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            TargetingTemplateUpdateRequest targetingTemplateUpdateRequest
+            TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate
             
         )
         {
@@ -173,11 +173,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | targetingTemplateUpdateRequest
+            // Body     | targetingTemplateUpdateRequestReadOrUpdate
 
 
 
-            payload = targetingTemplateUpdateRequest.toJson().dump();
+            payload = targetingTemplateUpdateRequestReadOrUpdate.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 

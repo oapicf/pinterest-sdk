@@ -2,7 +2,7 @@
 Protected Class LabelError
 
 	#tag Property, Flags = &h0
-		data As OpenAPIClient.Models.Label
+		data As OpenAPIClient.Models.LabelErrorData
 	#tag EndProperty
 
 
@@ -52,7 +52,7 @@ Protected Class LabelError
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Label"
+			Type="LabelErrorData"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

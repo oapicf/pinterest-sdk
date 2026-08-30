@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.BatchOperation;
 import org.openapitools.model.CatalogsItemsCreateBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteDiscontinuedBatchRequest;
@@ -141,7 +140,7 @@ public enum LanguageEnum {
     @JsonProperty("NB") NB(String.valueOf("NB")),
     @JsonProperty("NE") NE(String.valueOf("NE")),
     @JsonProperty("NL") NL2(String.valueOf("NL")),
-    @JsonProperty("NO") NO(String.valueOf("NO")),
+    @JsonProperty("false") FALSE(String.valueOf("false")),
     @JsonProperty("PL") PL(String.valueOf("PL")),
     @JsonProperty("PT") PT(String.valueOf("PT")),
     @JsonProperty("RO") RO(String.valueOf("RO")),
@@ -191,9 +190,37 @@ public enum LanguageEnum {
   @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
   private LanguageEnum language;
 
+public enum OperationEnum {
+
+    @JsonProperty("DELETE") DELETE(String.valueOf("DELETE"));
+
+    private String value;
+
+    OperationEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static OperationEnum fromValue(String value) {
+        for (OperationEnum b : OperationEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
   @ApiModelProperty(required = true, value = "")
-  @Valid
-  private BatchOperation operation;
+  private OperationEnum operation;
  /**
   * Get country
   * @return country
@@ -283,21 +310,21 @@ public enum LanguageEnum {
   */
   @JsonProperty("operation")
   @NotNull
-  public BatchOperation getOperation() {
-    return operation;
+  public String getOperation() {
+    return operation == null ? null : operation.value();
   }
 
   /**
    * Sets the <code>operation</code> property.
    */
- public void setOperation(BatchOperation operation) {
+ public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
 
   /**
    * Sets the <code>operation</code> property.
    */
-  public CatalogsItemsBatchRequest operation(BatchOperation operation) {
+  public CatalogsItemsBatchRequest operation(OperationEnum operation) {
     this.operation = operation;
     return this;
   }
@@ -341,10 +368,7 @@ public enum LanguageEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

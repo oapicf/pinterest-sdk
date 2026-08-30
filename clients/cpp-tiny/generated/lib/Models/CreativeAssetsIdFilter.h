@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCREATIVEASSETSID(CatalogsProductGroupMultipleStringCriteria  cREATIVE_ASSETS_ID);
+	void setCREATIVEASSETSID(CatalogsProductGroupMultipleStringCriteria cREATIVE_ASSETS_ID);
 
 
     private:

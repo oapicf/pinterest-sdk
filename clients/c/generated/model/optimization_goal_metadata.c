@@ -6,32 +6,35 @@
 
 
 static optimization_goal_metadata_t *optimization_goal_metadata_create_internal(
-    optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *conversion_tag_v3_goal_metadata,
-    optimization_goal_metadata_frequency_goal_metadata_t *frequency_goal_metadata,
-    optimization_goal_metadata_scrollup_goal_metadata_t *scrollup_goal_metadata
+    conversion_tag_v3_goal_metadata_t *conversion_tag_v3_goal_metadata,
+    frequency_goal_metadata_t *frequency_goal_metadata,
+    scrollup_goal_metadata_t *scrollup_goal_metadata
     ) {
     optimization_goal_metadata_t *optimization_goal_metadata_local_var = malloc(sizeof(optimization_goal_metadata_t));
     if (!optimization_goal_metadata_local_var) {
         return NULL;
     }
+    memset(optimization_goal_metadata_local_var, 0, sizeof(optimization_goal_metadata_t));
+    optimization_goal_metadata_local_var->_library_owned = 1;
     optimization_goal_metadata_local_var->conversion_tag_v3_goal_metadata = conversion_tag_v3_goal_metadata;
     optimization_goal_metadata_local_var->frequency_goal_metadata = frequency_goal_metadata;
     optimization_goal_metadata_local_var->scrollup_goal_metadata = scrollup_goal_metadata;
-
-    optimization_goal_metadata_local_var->_library_owned = 1;
     return optimization_goal_metadata_local_var;
 }
 
 __attribute__((deprecated)) optimization_goal_metadata_t *optimization_goal_metadata_create(
-    optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *conversion_tag_v3_goal_metadata,
-    optimization_goal_metadata_frequency_goal_metadata_t *frequency_goal_metadata,
-    optimization_goal_metadata_scrollup_goal_metadata_t *scrollup_goal_metadata
+    conversion_tag_v3_goal_metadata_t *conversion_tag_v3_goal_metadata,
+    frequency_goal_metadata_t *frequency_goal_metadata,
+    scrollup_goal_metadata_t *scrollup_goal_metadata
     ) {
-    return optimization_goal_metadata_create_internal (
+    optimization_goal_metadata_t *result = optimization_goal_metadata_create_internal (
         conversion_tag_v3_goal_metadata,
         frequency_goal_metadata,
         scrollup_goal_metadata
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void optimization_goal_metadata_free(optimization_goal_metadata_t *optimization_goal_metadata) {
@@ -44,15 +47,15 @@ void optimization_goal_metadata_free(optimization_goal_metadata_t *optimization_
     }
     listEntry_t *listEntry;
     if (optimization_goal_metadata->conversion_tag_v3_goal_metadata) {
-        optimization_goal_metadata_conversion_tag_v3_goal_metadata_free(optimization_goal_metadata->conversion_tag_v3_goal_metadata);
+        conversion_tag_v3_goal_metadata_free(optimization_goal_metadata->conversion_tag_v3_goal_metadata);
         optimization_goal_metadata->conversion_tag_v3_goal_metadata = NULL;
     }
     if (optimization_goal_metadata->frequency_goal_metadata) {
-        optimization_goal_metadata_frequency_goal_metadata_free(optimization_goal_metadata->frequency_goal_metadata);
+        frequency_goal_metadata_free(optimization_goal_metadata->frequency_goal_metadata);
         optimization_goal_metadata->frequency_goal_metadata = NULL;
     }
     if (optimization_goal_metadata->scrollup_goal_metadata) {
-        optimization_goal_metadata_scrollup_goal_metadata_free(optimization_goal_metadata->scrollup_goal_metadata);
+        scrollup_goal_metadata_free(optimization_goal_metadata->scrollup_goal_metadata);
         optimization_goal_metadata->scrollup_goal_metadata = NULL;
     }
     free(optimization_goal_metadata);
@@ -63,7 +66,7 @@ cJSON *optimization_goal_metadata_convertToJSON(optimization_goal_metadata_t *op
 
     // optimization_goal_metadata->conversion_tag_v3_goal_metadata
     if(optimization_goal_metadata->conversion_tag_v3_goal_metadata) {
-    cJSON *conversion_tag_v3_goal_metadata_local_JSON = optimization_goal_metadata_conversion_tag_v3_goal_metadata_convertToJSON(optimization_goal_metadata->conversion_tag_v3_goal_metadata);
+    cJSON *conversion_tag_v3_goal_metadata_local_JSON = conversion_tag_v3_goal_metadata_convertToJSON(optimization_goal_metadata->conversion_tag_v3_goal_metadata);
     if(conversion_tag_v3_goal_metadata_local_JSON == NULL) {
     goto fail; //model
     }
@@ -76,7 +79,7 @@ cJSON *optimization_goal_metadata_convertToJSON(optimization_goal_metadata_t *op
 
     // optimization_goal_metadata->frequency_goal_metadata
     if(optimization_goal_metadata->frequency_goal_metadata) {
-    cJSON *frequency_goal_metadata_local_JSON = optimization_goal_metadata_frequency_goal_metadata_convertToJSON(optimization_goal_metadata->frequency_goal_metadata);
+    cJSON *frequency_goal_metadata_local_JSON = frequency_goal_metadata_convertToJSON(optimization_goal_metadata->frequency_goal_metadata);
     if(frequency_goal_metadata_local_JSON == NULL) {
     goto fail; //model
     }
@@ -89,7 +92,7 @@ cJSON *optimization_goal_metadata_convertToJSON(optimization_goal_metadata_t *op
 
     // optimization_goal_metadata->scrollup_goal_metadata
     if(optimization_goal_metadata->scrollup_goal_metadata) {
-    cJSON *scrollup_goal_metadata_local_JSON = optimization_goal_metadata_scrollup_goal_metadata_convertToJSON(optimization_goal_metadata->scrollup_goal_metadata);
+    cJSON *scrollup_goal_metadata_local_JSON = scrollup_goal_metadata_convertToJSON(optimization_goal_metadata->scrollup_goal_metadata);
     if(scrollup_goal_metadata_local_JSON == NULL) {
     goto fail; //model
     }
@@ -112,13 +115,13 @@ optimization_goal_metadata_t *optimization_goal_metadata_parseFromJSON(cJSON *op
     optimization_goal_metadata_t *optimization_goal_metadata_local_var = NULL;
 
     // define the local variable for optimization_goal_metadata->conversion_tag_v3_goal_metadata
-    optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *conversion_tag_v3_goal_metadata_local_nonprim = NULL;
+    conversion_tag_v3_goal_metadata_t *conversion_tag_v3_goal_metadata_local_nonprim = NULL;
 
     // define the local variable for optimization_goal_metadata->frequency_goal_metadata
-    optimization_goal_metadata_frequency_goal_metadata_t *frequency_goal_metadata_local_nonprim = NULL;
+    frequency_goal_metadata_t *frequency_goal_metadata_local_nonprim = NULL;
 
     // define the local variable for optimization_goal_metadata->scrollup_goal_metadata
-    optimization_goal_metadata_scrollup_goal_metadata_t *scrollup_goal_metadata_local_nonprim = NULL;
+    scrollup_goal_metadata_t *scrollup_goal_metadata_local_nonprim = NULL;
 
     // optimization_goal_metadata->conversion_tag_v3_goal_metadata
     cJSON *conversion_tag_v3_goal_metadata = cJSON_GetObjectItemCaseSensitive(optimization_goal_metadataJSON, "conversion_tag_v3_goal_metadata");
@@ -126,7 +129,7 @@ optimization_goal_metadata_t *optimization_goal_metadata_parseFromJSON(cJSON *op
         conversion_tag_v3_goal_metadata = NULL;
     }
     if (conversion_tag_v3_goal_metadata) { 
-    conversion_tag_v3_goal_metadata_local_nonprim = optimization_goal_metadata_conversion_tag_v3_goal_metadata_parseFromJSON(conversion_tag_v3_goal_metadata); //nonprimitive
+    conversion_tag_v3_goal_metadata_local_nonprim = conversion_tag_v3_goal_metadata_parseFromJSON(conversion_tag_v3_goal_metadata); //nonprimitive
     }
 
     // optimization_goal_metadata->frequency_goal_metadata
@@ -135,7 +138,7 @@ optimization_goal_metadata_t *optimization_goal_metadata_parseFromJSON(cJSON *op
         frequency_goal_metadata = NULL;
     }
     if (frequency_goal_metadata) { 
-    frequency_goal_metadata_local_nonprim = optimization_goal_metadata_frequency_goal_metadata_parseFromJSON(frequency_goal_metadata); //nonprimitive
+    frequency_goal_metadata_local_nonprim = frequency_goal_metadata_parseFromJSON(frequency_goal_metadata); //nonprimitive
     }
 
     // optimization_goal_metadata->scrollup_goal_metadata
@@ -144,8 +147,9 @@ optimization_goal_metadata_t *optimization_goal_metadata_parseFromJSON(cJSON *op
         scrollup_goal_metadata = NULL;
     }
     if (scrollup_goal_metadata) { 
-    scrollup_goal_metadata_local_nonprim = optimization_goal_metadata_scrollup_goal_metadata_parseFromJSON(scrollup_goal_metadata); //nonprimitive
+    scrollup_goal_metadata_local_nonprim = scrollup_goal_metadata_parseFromJSON(scrollup_goal_metadata); //nonprimitive
     }
+
 
 
     optimization_goal_metadata_local_var = optimization_goal_metadata_create_internal (
@@ -154,18 +158,22 @@ optimization_goal_metadata_t *optimization_goal_metadata_parseFromJSON(cJSON *op
         scrollup_goal_metadata ? scrollup_goal_metadata_local_nonprim : NULL
         );
 
+    if (!optimization_goal_metadata_local_var) {
+        goto end;
+    }
+
     return optimization_goal_metadata_local_var;
 end:
     if (conversion_tag_v3_goal_metadata_local_nonprim) {
-        optimization_goal_metadata_conversion_tag_v3_goal_metadata_free(conversion_tag_v3_goal_metadata_local_nonprim);
+        conversion_tag_v3_goal_metadata_free(conversion_tag_v3_goal_metadata_local_nonprim);
         conversion_tag_v3_goal_metadata_local_nonprim = NULL;
     }
     if (frequency_goal_metadata_local_nonprim) {
-        optimization_goal_metadata_frequency_goal_metadata_free(frequency_goal_metadata_local_nonprim);
+        frequency_goal_metadata_free(frequency_goal_metadata_local_nonprim);
         frequency_goal_metadata_local_nonprim = NULL;
     }
     if (scrollup_goal_metadata_local_nonprim) {
-        optimization_goal_metadata_scrollup_goal_metadata_free(scrollup_goal_metadata_local_nonprim);
+        scrollup_goal_metadata_free(scrollup_goal_metadata_local_nonprim);
         scrollup_goal_metadata_local_nonprim = NULL;
     }
     return NULL;

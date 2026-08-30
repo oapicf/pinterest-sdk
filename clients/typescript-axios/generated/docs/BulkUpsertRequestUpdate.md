@@ -9,10 +9,11 @@ Name | Type | Description | Notes
 **ad_groups** | [**Array&lt;AdGroupUpdateRequest&gt;**](AdGroupUpdateRequest.md) |  | [optional] [default to undefined]
 **ads** | [**Array&lt;AdUpdateRequest&gt;**](AdUpdateRequest.md) |  | [optional] [default to undefined]
 **campaigns** | [**Array&lt;CampaignUpdateRequest&gt;**](CampaignUpdateRequest.md) |  | [optional] [default to undefined]
-**catalog_product_groups** | [**Array&lt;CatalogsProductGroupsUpdateRequest&gt;**](CatalogsProductGroupsUpdateRequest.md) |  | [optional] [default to undefined]
-**keywords** | [**Array&lt;KeywordUpdate&gt;**](KeywordUpdate.md) |  | [optional] [default to undefined]
+**catalog_product_groups** | [**Array&lt;BulkUpsertRequestUpdateCatalogProductGroupsItems&gt;**](BulkUpsertRequestUpdateCatalogProductGroupsItems.md) |  | [optional] [default to undefined]
+**keywords** | [**Array&lt;KeywordUpdateGenerated&gt;**](KeywordUpdateGenerated.md) |  | [optional] [default to undefined]
 **labels** | [**Array&lt;LabelBulkUpdateRequest&gt;**](LabelBulkUpdateRequest.md) |  | [optional] [default to undefined]
 **product_groups** | [**Array&lt;ProductGroupPromotionUpdateRequest&gt;**](ProductGroupPromotionUpdateRequest.md) |  | [optional] [default to undefined]
+**schedules** | [**Array&lt;ScheduleUpdateRequest&gt;**](ScheduleUpdateRequest.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -27,6 +28,7 @@ const instance: BulkUpsertRequestUpdate = {
     keywords,
     labels,
     product_groups,
+    schedules,
 };
 ```
 

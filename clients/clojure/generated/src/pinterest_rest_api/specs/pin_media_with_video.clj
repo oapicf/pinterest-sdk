@@ -14,6 +14,7 @@
    (ds/opt :images) image-size-spec
    (ds/req :media_type) string?
    (ds/opt :video_url) string?
+   (ds/opt :video_url_hls) string?
    (ds/opt :width) int?
    })
 

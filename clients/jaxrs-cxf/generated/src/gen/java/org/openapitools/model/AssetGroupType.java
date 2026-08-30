@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Asset group type
+ * Asset group type.
  */
 public enum AssetGroupType {
   

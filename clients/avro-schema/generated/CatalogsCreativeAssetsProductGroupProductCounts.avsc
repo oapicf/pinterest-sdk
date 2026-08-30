@@ -5,6 +5,11 @@
   "name": "CatalogsCreativeAssetsProductGroupProductCounts",
   "fields": [
     {
+      "name": "app_links",
+      "type": "double",
+      "doc": ""
+    },
+    {
       "name": "catalog_type",
       "type": {
         "type": "enum",
@@ -13,6 +18,11 @@
           "CREATIVE_ASSETS"
         ]
       },
+      "doc": ""
+    },
+    {
+      "name": "images",
+      "type": "double",
       "doc": ""
     },
     {

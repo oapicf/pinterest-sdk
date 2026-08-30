@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.AdvancedAuctionItemsGetRecord
+open OpenAPI.Model.AdvancedAuctionKey
 
 module AdvancedAuctionItemsGetRequest =
 
@@ -14,7 +14,7 @@ module AdvancedAuctionItemsGetRequest =
     [<JsonProperty(PropertyName = "catalog_id")>]
     CatalogId : string;
     [<JsonProperty(PropertyName = "items")>]
-    Items : AdvancedAuctionItemsGetRecord[];
+    Items : AdvancedAuctionKey[];
   }
 
   //#endregion

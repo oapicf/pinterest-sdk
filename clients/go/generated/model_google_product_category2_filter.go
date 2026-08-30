@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -57,11 +57,11 @@ func (o *GoogleProductCategory2Filter) GetGOOGLEPRODUCTCATEGORY2() CatalogsProdu
 
 // GetGOOGLEPRODUCTCATEGORY2Ok returns a tuple with the GOOGLEPRODUCTCATEGORY2 field value
 // and a boolean to check if the value has been set.
-func (o *GoogleProductCategory2Filter) GetGOOGLEPRODUCTCATEGORY2Ok() (CatalogsProductGroupMultipleStringListCriteria, bool) {
+func (o *GoogleProductCategory2Filter) GetGOOGLEPRODUCTCATEGORY2Ok() (*CatalogsProductGroupMultipleStringListCriteria, bool) {
 	if o == nil {
-		return CatalogsProductGroupMultipleStringListCriteria{}, false
+		return nil, false
 	}
-	return o.GOOGLEPRODUCTCATEGORY2, true
+	return &o.GOOGLEPRODUCTCATEGORY2, true
 }
 
 // SetGOOGLEPRODUCTCATEGORY2 sets field value

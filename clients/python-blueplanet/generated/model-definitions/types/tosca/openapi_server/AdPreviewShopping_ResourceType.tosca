@@ -7,6 +7,8 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  AdShoppingPreviewCreativeType = openapi_server.resourceTypes.AdShoppingPreviewCreativeType
+  BasePreferredMediaType = openapi_server.resourceTypes.BasePreferredMediaType
   CustomizableCTAType = openapi_server.resourceTypes.CustomizableCTAType
   import re = openapi_server.resourceTypes.import re
 }
@@ -23,9 +25,8 @@ resourceTypes {
           optional = true
         }
         creative_type {
-          type =  string
+          type = AdShoppingPreviewCreativeType
           description = "Ad format of the shopping ad preview."
-          enum = ["SHOPPING", "CAROUSEL", "COLLECTION", "REGULAR"]
           optional = true
         }
         customizable_cta_type {
@@ -59,9 +60,13 @@ resourceTypes {
           optional = false
         }
         preferred_media_type {
-          type =  string
+          type = BasePreferredMediaType
           description = "Preferred media type."
-          enum = ["VIDEO", "IMAGE"]
+          optional = false
+        }
+        show_promotion {
+          type =  boolean
+          description = "Include promotion data in preview when available on catalog item. Defaults to false."
           optional = false
         }
         video_tag {

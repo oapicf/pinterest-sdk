@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BrandAccountProfileImageUpdate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BrandAccountProfileImageUpdate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  BrandAccountProfileImageUpdate {
+    title = BrandAccountProfileImageUpdate
+    description = BrandAccountProfileImageUpdate
+    derivedFrom = Root
+    properties {
+        content_type {
+          type =  string
+          description = ""
+          enum = ["image/jpeg", "image/png"]
+          optional = false
+        }
+        data {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BrandAccountProfileImageUpdate {
+    title = BrandAccountProfileImageUpdate
+    description = BrandAccountProfileImageUpdate
+    implements = openapi_server.resourceTypes.BrandAccountProfileImageUpdate
+
+  }
+}

@@ -5,19 +5,23 @@ open System.Collections.Generic
 open OpenAPI.Model.CatalogsCreativeAssetsProductGroupProductCounts
 open OpenAPI.Model.CatalogsHotelProductGroupProductCounts
 open OpenAPI.Model.CatalogsRetailProductGroupProductCounts
-open OpenAPI.Model.CatalogsType
 
 module CatalogsProductGroupProductCountsVertical =
 
   //#region CatalogsProductGroupProductCountsVertical
 
+  //#region enums
+  type CatalogTypeEnum = CREATIVEASSETSEnum of string  
+  //#endregion
 
   type CatalogsProductGroupProductCountsVertical = {
-    CatalogType : CatalogsType;
+    CatalogType : CatalogTypeEnum;
     InStock : decimal;
     OutOfStock : decimal;
     Preorder : decimal;
     Total : decimal;
     Videos : decimal;
+    AppLinks : decimal;
+    Images : decimal;
   }
   //#endregion

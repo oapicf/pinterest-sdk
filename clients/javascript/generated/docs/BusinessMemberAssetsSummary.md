@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**adAccounts** | [**[BusinessMemberAssetsSummaryAdAccountsInner]**](BusinessMemberAssetsSummaryAdAccountsInner.md) | List of ad account IDs and respective permission levels. | [optional] 
-**profiles** | [**[BusinessMemberAssetsSummaryProfilesInner]**](BusinessMemberAssetsSummaryProfilesInner.md) | List of profile IDs and respective permission levels. | [optional] 
+**adAccounts** | [**[AssetIdWithPermissions]**](AssetIdWithPermissions.md) | List of ad account IDs and respective permission levels. | [optional] 
+**profiles** | [**[AssetIdWithPermissions]**](AssetIdWithPermissions.md) | List of profile IDs and respective permission levels. | [optional] 
 
 

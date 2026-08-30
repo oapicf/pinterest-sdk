@@ -15,4 +15,7 @@ module AdsApiServiceInterface =
       abstract member AdsGet : unit -> AdsGetResult
       abstract member AdsList : unit -> AdsListResult
       abstract member AdsUpdate : AdsUpdateBodyParams -> AdsUpdateResult
+      abstract member CampaignAdPreviewCreate : CampaignAdPreviewCreateBodyParams -> CampaignAdPreviewCreateResult
+      abstract member CampaignAdPreviewDelete : unit -> CampaignAdPreviewDeleteResult
+      abstract member CampaignAdPreviewRead : unit -> CampaignAdPreviewReadResult
     //#endregion

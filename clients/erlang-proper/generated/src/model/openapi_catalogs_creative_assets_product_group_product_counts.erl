@@ -9,7 +9,9 @@
 -export_type([openapi_catalogs_creative_assets_product_group_product_counts/0]).
 
 -type openapi_catalogs_creative_assets_product_group_product_counts() ::
-  [ {'catalog_type', binary() }
+  [ {'app_links', integer() }
+  | {'catalog_type', binary() }
+  | {'images', integer() }
   | {'total', integer() }
   | {'videos', integer() }
   ].
@@ -19,7 +21,9 @@ openapi_catalogs_creative_assets_product_group_product_counts() ->
     openapi_catalogs_creative_assets_product_group_product_counts([]).
 
 openapi_catalogs_creative_assets_product_group_product_counts(Fields) ->
-  Default = [ {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
+  Default = [ {'app_links', integer() }
+            , {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
+            , {'images', integer() }
             , {'total', integer() }
             , {'videos', integer() }
             ],

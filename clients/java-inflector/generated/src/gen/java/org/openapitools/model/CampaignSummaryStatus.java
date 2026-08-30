@@ -1,18 +1,14 @@
 package org.openapitools.model;
 
 import java.util.Objects;
-import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 
 
-/**
- * Summary status for campaign
- **/
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Summary status for campaign
+ * Gets or Sets CampaignSummaryStatus
  */
 public enum CampaignSummaryStatus {
   

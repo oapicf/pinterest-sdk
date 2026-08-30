@@ -81,7 +81,7 @@ KeywordsMetricsArrayResponse::getData()
 }
 
 void
-KeywordsMetricsArrayResponse::setData(std::list <KeywordMetricsResponse> data)
+KeywordsMetricsArrayResponse::setData(std::list<KeywordMetricsResponse> data)
 {
 	this->data = data;
 }

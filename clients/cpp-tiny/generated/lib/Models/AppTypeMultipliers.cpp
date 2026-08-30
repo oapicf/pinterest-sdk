@@ -6,7 +6,7 @@ using namespace Tiny;
 
 AppTypeMultipliers::AppTypeMultipliers()
 {
-	aPP_TYPE = std::string();
+	aPP_TYPE = null;
 }
 
 AppTypeMultipliers::AppTypeMultipliers(std::string jsonString)
@@ -32,8 +32,9 @@ AppTypeMultipliers::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&aPP_TYPE, value, "std::string");
 
+        TargetingSpecAppType* obj = &aPP_TYPE;
+		obj->fromJson(value.dump());
 
     }
 
@@ -49,22 +50,22 @@ AppTypeMultipliers::toJson()
 
 
 
-    object["aPP_TYPE"] = getAPPTYPE();
 
+	object["aPP_TYPE"] = getAPPTYPE().toJson();
 
 
     return object;
 
 }
 
-std::string
+TargetingSpecAppType
 AppTypeMultipliers::getAPPTYPE()
 {
 	return aPP_TYPE;
 }
 
 void
-AppTypeMultipliers::setAPPTYPE(std::string  aPP_TYPE)
+AppTypeMultipliers::setAPPTYPE(TargetingSpecAppType aPP_TYPE)
 {
 	this->aPP_TYPE = aPP_TYPE;
 }

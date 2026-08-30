@@ -20,33 +20,34 @@ class CatalogsProductGroupFilterKeys {
     required this.AVAILABILITY,
     required this.BRAND,
     required this.CONDITION,
-    required this.cUSTOMLABEL0,
-    required this.cUSTOMLABEL1,
-    required this.cUSTOMLABEL2,
-    required this.cUSTOMLABEL3,
-    required this.cUSTOMLABEL4,
+    required this.CUSTOM_LABEL_0,
+    required this.CUSTOM_LABEL_1,
+    required this.CUSTOM_LABEL_2,
+    required this.CUSTOM_LABEL_3,
+    required this.CUSTOM_LABEL_4,
     required this.ITEM_GROUP_ID,
     required this.GENDER,
     required this.MEDIA_TYPE,
-    required this.pRODUCTTYPE4,
-    required this.pRODUCTTYPE3,
-    required this.pRODUCTTYPE2,
-    required this.pRODUCTTYPE1,
-    required this.pRODUCTTYPE0,
-    required this.gOOGLEPRODUCTCATEGORY6,
-    required this.gOOGLEPRODUCTCATEGORY5,
-    required this.gOOGLEPRODUCTCATEGORY4,
-    required this.gOOGLEPRODUCTCATEGORY3,
-    required this.gOOGLEPRODUCTCATEGORY2,
-    required this.gOOGLEPRODUCTCATEGORY1,
-    required this.gOOGLEPRODUCTCATEGORY0,
-    required this.PRODUCT_GROUP,
-    required this.cUSTOMNUMBER0,
-    required this.cUSTOMNUMBER1,
-    required this.cUSTOMNUMBER2,
-    required this.cUSTOMNUMBER3,
-    required this.cUSTOMNUMBER4,
+    required this.PRODUCT_TYPE_4,
+    required this.PRODUCT_TYPE_3,
+    required this.PRODUCT_TYPE_2,
+    required this.PRODUCT_TYPE_1,
+    required this.PRODUCT_TYPE_0,
+    required this.GOOGLE_PRODUCT_CATEGORY_6,
+    required this.GOOGLE_PRODUCT_CATEGORY_5,
+    required this.GOOGLE_PRODUCT_CATEGORY_4,
+    required this.GOOGLE_PRODUCT_CATEGORY_3,
+    required this.GOOGLE_PRODUCT_CATEGORY_2,
+    required this.GOOGLE_PRODUCT_CATEGORY_1,
+    required this.GOOGLE_PRODUCT_CATEGORY_0,
+    required this.CUSTOM_NUMBER_0,
+    required this.CUSTOM_NUMBER_1,
+    required this.CUSTOM_NUMBER_2,
+    required this.CUSTOM_NUMBER_3,
+    required this.CUSTOM_NUMBER_4,
     required this.TITLE_KEYWORDS,
+    required this.PINTEREST_PRODUCT_CATEGORIES,
+    required this.PRODUCT_GROUP,
   });
 
   CatalogsProductGroupPricingCriteria MIN_PRICE;
@@ -63,15 +64,15 @@ class CatalogsProductGroupFilterKeys {
 
   CatalogsProductGroupMultipleStringCriteria CONDITION;
 
-  CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL0;
+  CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0;
 
-  CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL1;
+  CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1;
 
-  CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL2;
+  CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2;
 
-  CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL3;
+  CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3;
 
-  CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL4;
+  CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4;
 
   CatalogsProductGroupMultipleStringCriteria ITEM_GROUP_ID;
 
@@ -79,43 +80,45 @@ class CatalogsProductGroupFilterKeys {
 
   CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE;
 
-  CatalogsProductGroupMultipleStringListCriteria pRODUCTTYPE4;
+  CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_4;
 
-  CatalogsProductGroupMultipleStringListCriteria pRODUCTTYPE3;
+  CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_3;
 
-  CatalogsProductGroupMultipleStringListCriteria pRODUCTTYPE2;
+  CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_2;
 
-  CatalogsProductGroupMultipleStringListCriteria pRODUCTTYPE1;
+  CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_1;
 
-  CatalogsProductGroupMultipleStringListCriteria pRODUCTTYPE0;
+  CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_0;
 
-  CatalogsProductGroupMultipleStringListCriteria gOOGLEPRODUCTCATEGORY6;
+  CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_6;
 
-  CatalogsProductGroupMultipleStringListCriteria gOOGLEPRODUCTCATEGORY5;
+  CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_5;
 
-  CatalogsProductGroupMultipleStringListCriteria gOOGLEPRODUCTCATEGORY4;
+  CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_4;
 
-  CatalogsProductGroupMultipleStringListCriteria gOOGLEPRODUCTCATEGORY3;
+  CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_3;
 
-  CatalogsProductGroupMultipleStringListCriteria gOOGLEPRODUCTCATEGORY2;
+  CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_2;
 
-  CatalogsProductGroupMultipleStringListCriteria gOOGLEPRODUCTCATEGORY1;
+  CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_1;
 
-  CatalogsProductGroupMultipleStringListCriteria gOOGLEPRODUCTCATEGORY0;
+  CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0;
 
-  CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP;
+  CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_0;
 
-  CatalogsProductGroupUint32Criteria cUSTOMNUMBER0;
+  CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_1;
 
-  CatalogsProductGroupUint32Criteria cUSTOMNUMBER1;
+  CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_2;
 
-  CatalogsProductGroupUint32Criteria cUSTOMNUMBER2;
+  CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_3;
 
-  CatalogsProductGroupUint32Criteria cUSTOMNUMBER3;
-
-  CatalogsProductGroupUint32Criteria cUSTOMNUMBER4;
+  CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_4;
 
   CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS;
+
+  CatalogsProductGroupMultiplePinterestProductCategoryCriteria PINTEREST_PRODUCT_CATEGORIES;
+
+  CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CatalogsProductGroupFilterKeys &&
@@ -126,33 +129,34 @@ class CatalogsProductGroupFilterKeys {
     other.AVAILABILITY == AVAILABILITY &&
     other.BRAND == BRAND &&
     other.CONDITION == CONDITION &&
-    other.cUSTOMLABEL0 == cUSTOMLABEL0 &&
-    other.cUSTOMLABEL1 == cUSTOMLABEL1 &&
-    other.cUSTOMLABEL2 == cUSTOMLABEL2 &&
-    other.cUSTOMLABEL3 == cUSTOMLABEL3 &&
-    other.cUSTOMLABEL4 == cUSTOMLABEL4 &&
+    other.CUSTOM_LABEL_0 == CUSTOM_LABEL_0 &&
+    other.CUSTOM_LABEL_1 == CUSTOM_LABEL_1 &&
+    other.CUSTOM_LABEL_2 == CUSTOM_LABEL_2 &&
+    other.CUSTOM_LABEL_3 == CUSTOM_LABEL_3 &&
+    other.CUSTOM_LABEL_4 == CUSTOM_LABEL_4 &&
     other.ITEM_GROUP_ID == ITEM_GROUP_ID &&
     other.GENDER == GENDER &&
     other.MEDIA_TYPE == MEDIA_TYPE &&
-    other.pRODUCTTYPE4 == pRODUCTTYPE4 &&
-    other.pRODUCTTYPE3 == pRODUCTTYPE3 &&
-    other.pRODUCTTYPE2 == pRODUCTTYPE2 &&
-    other.pRODUCTTYPE1 == pRODUCTTYPE1 &&
-    other.pRODUCTTYPE0 == pRODUCTTYPE0 &&
-    other.gOOGLEPRODUCTCATEGORY6 == gOOGLEPRODUCTCATEGORY6 &&
-    other.gOOGLEPRODUCTCATEGORY5 == gOOGLEPRODUCTCATEGORY5 &&
-    other.gOOGLEPRODUCTCATEGORY4 == gOOGLEPRODUCTCATEGORY4 &&
-    other.gOOGLEPRODUCTCATEGORY3 == gOOGLEPRODUCTCATEGORY3 &&
-    other.gOOGLEPRODUCTCATEGORY2 == gOOGLEPRODUCTCATEGORY2 &&
-    other.gOOGLEPRODUCTCATEGORY1 == gOOGLEPRODUCTCATEGORY1 &&
-    other.gOOGLEPRODUCTCATEGORY0 == gOOGLEPRODUCTCATEGORY0 &&
-    other.PRODUCT_GROUP == PRODUCT_GROUP &&
-    other.cUSTOMNUMBER0 == cUSTOMNUMBER0 &&
-    other.cUSTOMNUMBER1 == cUSTOMNUMBER1 &&
-    other.cUSTOMNUMBER2 == cUSTOMNUMBER2 &&
-    other.cUSTOMNUMBER3 == cUSTOMNUMBER3 &&
-    other.cUSTOMNUMBER4 == cUSTOMNUMBER4 &&
-    other.TITLE_KEYWORDS == TITLE_KEYWORDS;
+    other.PRODUCT_TYPE_4 == PRODUCT_TYPE_4 &&
+    other.PRODUCT_TYPE_3 == PRODUCT_TYPE_3 &&
+    other.PRODUCT_TYPE_2 == PRODUCT_TYPE_2 &&
+    other.PRODUCT_TYPE_1 == PRODUCT_TYPE_1 &&
+    other.PRODUCT_TYPE_0 == PRODUCT_TYPE_0 &&
+    other.GOOGLE_PRODUCT_CATEGORY_6 == GOOGLE_PRODUCT_CATEGORY_6 &&
+    other.GOOGLE_PRODUCT_CATEGORY_5 == GOOGLE_PRODUCT_CATEGORY_5 &&
+    other.GOOGLE_PRODUCT_CATEGORY_4 == GOOGLE_PRODUCT_CATEGORY_4 &&
+    other.GOOGLE_PRODUCT_CATEGORY_3 == GOOGLE_PRODUCT_CATEGORY_3 &&
+    other.GOOGLE_PRODUCT_CATEGORY_2 == GOOGLE_PRODUCT_CATEGORY_2 &&
+    other.GOOGLE_PRODUCT_CATEGORY_1 == GOOGLE_PRODUCT_CATEGORY_1 &&
+    other.GOOGLE_PRODUCT_CATEGORY_0 == GOOGLE_PRODUCT_CATEGORY_0 &&
+    other.CUSTOM_NUMBER_0 == CUSTOM_NUMBER_0 &&
+    other.CUSTOM_NUMBER_1 == CUSTOM_NUMBER_1 &&
+    other.CUSTOM_NUMBER_2 == CUSTOM_NUMBER_2 &&
+    other.CUSTOM_NUMBER_3 == CUSTOM_NUMBER_3 &&
+    other.CUSTOM_NUMBER_4 == CUSTOM_NUMBER_4 &&
+    other.TITLE_KEYWORDS == TITLE_KEYWORDS &&
+    other.PINTEREST_PRODUCT_CATEGORIES == PINTEREST_PRODUCT_CATEGORIES &&
+    other.PRODUCT_GROUP == PRODUCT_GROUP;
 
   @override
   int get hashCode =>
@@ -164,36 +168,37 @@ class CatalogsProductGroupFilterKeys {
     (AVAILABILITY.hashCode) +
     (BRAND.hashCode) +
     (CONDITION.hashCode) +
-    (cUSTOMLABEL0.hashCode) +
-    (cUSTOMLABEL1.hashCode) +
-    (cUSTOMLABEL2.hashCode) +
-    (cUSTOMLABEL3.hashCode) +
-    (cUSTOMLABEL4.hashCode) +
+    (CUSTOM_LABEL_0.hashCode) +
+    (CUSTOM_LABEL_1.hashCode) +
+    (CUSTOM_LABEL_2.hashCode) +
+    (CUSTOM_LABEL_3.hashCode) +
+    (CUSTOM_LABEL_4.hashCode) +
     (ITEM_GROUP_ID.hashCode) +
     (GENDER.hashCode) +
     (MEDIA_TYPE.hashCode) +
-    (pRODUCTTYPE4.hashCode) +
-    (pRODUCTTYPE3.hashCode) +
-    (pRODUCTTYPE2.hashCode) +
-    (pRODUCTTYPE1.hashCode) +
-    (pRODUCTTYPE0.hashCode) +
-    (gOOGLEPRODUCTCATEGORY6.hashCode) +
-    (gOOGLEPRODUCTCATEGORY5.hashCode) +
-    (gOOGLEPRODUCTCATEGORY4.hashCode) +
-    (gOOGLEPRODUCTCATEGORY3.hashCode) +
-    (gOOGLEPRODUCTCATEGORY2.hashCode) +
-    (gOOGLEPRODUCTCATEGORY1.hashCode) +
-    (gOOGLEPRODUCTCATEGORY0.hashCode) +
-    (PRODUCT_GROUP.hashCode) +
-    (cUSTOMNUMBER0.hashCode) +
-    (cUSTOMNUMBER1.hashCode) +
-    (cUSTOMNUMBER2.hashCode) +
-    (cUSTOMNUMBER3.hashCode) +
-    (cUSTOMNUMBER4.hashCode) +
-    (TITLE_KEYWORDS.hashCode);
+    (PRODUCT_TYPE_4.hashCode) +
+    (PRODUCT_TYPE_3.hashCode) +
+    (PRODUCT_TYPE_2.hashCode) +
+    (PRODUCT_TYPE_1.hashCode) +
+    (PRODUCT_TYPE_0.hashCode) +
+    (GOOGLE_PRODUCT_CATEGORY_6.hashCode) +
+    (GOOGLE_PRODUCT_CATEGORY_5.hashCode) +
+    (GOOGLE_PRODUCT_CATEGORY_4.hashCode) +
+    (GOOGLE_PRODUCT_CATEGORY_3.hashCode) +
+    (GOOGLE_PRODUCT_CATEGORY_2.hashCode) +
+    (GOOGLE_PRODUCT_CATEGORY_1.hashCode) +
+    (GOOGLE_PRODUCT_CATEGORY_0.hashCode) +
+    (CUSTOM_NUMBER_0.hashCode) +
+    (CUSTOM_NUMBER_1.hashCode) +
+    (CUSTOM_NUMBER_2.hashCode) +
+    (CUSTOM_NUMBER_3.hashCode) +
+    (CUSTOM_NUMBER_4.hashCode) +
+    (TITLE_KEYWORDS.hashCode) +
+    (PINTEREST_PRODUCT_CATEGORIES.hashCode) +
+    (PRODUCT_GROUP.hashCode);
 
   @override
-  String toString() => 'CatalogsProductGroupFilterKeys[MIN_PRICE=$MIN_PRICE, MAX_PRICE=$MAX_PRICE, CURRENCY=$CURRENCY, ITEM_ID=$ITEM_ID, AVAILABILITY=$AVAILABILITY, BRAND=$BRAND, CONDITION=$CONDITION, cUSTOMLABEL0=$cUSTOMLABEL0, cUSTOMLABEL1=$cUSTOMLABEL1, cUSTOMLABEL2=$cUSTOMLABEL2, cUSTOMLABEL3=$cUSTOMLABEL3, cUSTOMLABEL4=$cUSTOMLABEL4, ITEM_GROUP_ID=$ITEM_GROUP_ID, GENDER=$GENDER, MEDIA_TYPE=$MEDIA_TYPE, pRODUCTTYPE4=$pRODUCTTYPE4, pRODUCTTYPE3=$pRODUCTTYPE3, pRODUCTTYPE2=$pRODUCTTYPE2, pRODUCTTYPE1=$pRODUCTTYPE1, pRODUCTTYPE0=$pRODUCTTYPE0, gOOGLEPRODUCTCATEGORY6=$gOOGLEPRODUCTCATEGORY6, gOOGLEPRODUCTCATEGORY5=$gOOGLEPRODUCTCATEGORY5, gOOGLEPRODUCTCATEGORY4=$gOOGLEPRODUCTCATEGORY4, gOOGLEPRODUCTCATEGORY3=$gOOGLEPRODUCTCATEGORY3, gOOGLEPRODUCTCATEGORY2=$gOOGLEPRODUCTCATEGORY2, gOOGLEPRODUCTCATEGORY1=$gOOGLEPRODUCTCATEGORY1, gOOGLEPRODUCTCATEGORY0=$gOOGLEPRODUCTCATEGORY0, PRODUCT_GROUP=$PRODUCT_GROUP, cUSTOMNUMBER0=$cUSTOMNUMBER0, cUSTOMNUMBER1=$cUSTOMNUMBER1, cUSTOMNUMBER2=$cUSTOMNUMBER2, cUSTOMNUMBER3=$cUSTOMNUMBER3, cUSTOMNUMBER4=$cUSTOMNUMBER4, TITLE_KEYWORDS=$TITLE_KEYWORDS]';
+  String toString() => 'CatalogsProductGroupFilterKeys[MIN_PRICE=$MIN_PRICE, MAX_PRICE=$MAX_PRICE, CURRENCY=$CURRENCY, ITEM_ID=$ITEM_ID, AVAILABILITY=$AVAILABILITY, BRAND=$BRAND, CONDITION=$CONDITION, CUSTOM_LABEL_0=$CUSTOM_LABEL_0, CUSTOM_LABEL_1=$CUSTOM_LABEL_1, CUSTOM_LABEL_2=$CUSTOM_LABEL_2, CUSTOM_LABEL_3=$CUSTOM_LABEL_3, CUSTOM_LABEL_4=$CUSTOM_LABEL_4, ITEM_GROUP_ID=$ITEM_GROUP_ID, GENDER=$GENDER, MEDIA_TYPE=$MEDIA_TYPE, PRODUCT_TYPE_4=$PRODUCT_TYPE_4, PRODUCT_TYPE_3=$PRODUCT_TYPE_3, PRODUCT_TYPE_2=$PRODUCT_TYPE_2, PRODUCT_TYPE_1=$PRODUCT_TYPE_1, PRODUCT_TYPE_0=$PRODUCT_TYPE_0, GOOGLE_PRODUCT_CATEGORY_6=$GOOGLE_PRODUCT_CATEGORY_6, GOOGLE_PRODUCT_CATEGORY_5=$GOOGLE_PRODUCT_CATEGORY_5, GOOGLE_PRODUCT_CATEGORY_4=$GOOGLE_PRODUCT_CATEGORY_4, GOOGLE_PRODUCT_CATEGORY_3=$GOOGLE_PRODUCT_CATEGORY_3, GOOGLE_PRODUCT_CATEGORY_2=$GOOGLE_PRODUCT_CATEGORY_2, GOOGLE_PRODUCT_CATEGORY_1=$GOOGLE_PRODUCT_CATEGORY_1, GOOGLE_PRODUCT_CATEGORY_0=$GOOGLE_PRODUCT_CATEGORY_0, CUSTOM_NUMBER_0=$CUSTOM_NUMBER_0, CUSTOM_NUMBER_1=$CUSTOM_NUMBER_1, CUSTOM_NUMBER_2=$CUSTOM_NUMBER_2, CUSTOM_NUMBER_3=$CUSTOM_NUMBER_3, CUSTOM_NUMBER_4=$CUSTOM_NUMBER_4, TITLE_KEYWORDS=$TITLE_KEYWORDS, PINTEREST_PRODUCT_CATEGORIES=$PINTEREST_PRODUCT_CATEGORIES, PRODUCT_GROUP=$PRODUCT_GROUP]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -204,33 +209,34 @@ class CatalogsProductGroupFilterKeys {
       json[r'AVAILABILITY'] = this.AVAILABILITY;
       json[r'BRAND'] = this.BRAND;
       json[r'CONDITION'] = this.CONDITION;
-      json[r'CUSTOM_LABEL_0'] = this.cUSTOMLABEL0;
-      json[r'CUSTOM_LABEL_1'] = this.cUSTOMLABEL1;
-      json[r'CUSTOM_LABEL_2'] = this.cUSTOMLABEL2;
-      json[r'CUSTOM_LABEL_3'] = this.cUSTOMLABEL3;
-      json[r'CUSTOM_LABEL_4'] = this.cUSTOMLABEL4;
+      json[r'CUSTOM_LABEL_0'] = this.CUSTOM_LABEL_0;
+      json[r'CUSTOM_LABEL_1'] = this.CUSTOM_LABEL_1;
+      json[r'CUSTOM_LABEL_2'] = this.CUSTOM_LABEL_2;
+      json[r'CUSTOM_LABEL_3'] = this.CUSTOM_LABEL_3;
+      json[r'CUSTOM_LABEL_4'] = this.CUSTOM_LABEL_4;
       json[r'ITEM_GROUP_ID'] = this.ITEM_GROUP_ID;
       json[r'GENDER'] = this.GENDER;
       json[r'MEDIA_TYPE'] = this.MEDIA_TYPE;
-      json[r'PRODUCT_TYPE_4'] = this.pRODUCTTYPE4;
-      json[r'PRODUCT_TYPE_3'] = this.pRODUCTTYPE3;
-      json[r'PRODUCT_TYPE_2'] = this.pRODUCTTYPE2;
-      json[r'PRODUCT_TYPE_1'] = this.pRODUCTTYPE1;
-      json[r'PRODUCT_TYPE_0'] = this.pRODUCTTYPE0;
-      json[r'GOOGLE_PRODUCT_CATEGORY_6'] = this.gOOGLEPRODUCTCATEGORY6;
-      json[r'GOOGLE_PRODUCT_CATEGORY_5'] = this.gOOGLEPRODUCTCATEGORY5;
-      json[r'GOOGLE_PRODUCT_CATEGORY_4'] = this.gOOGLEPRODUCTCATEGORY4;
-      json[r'GOOGLE_PRODUCT_CATEGORY_3'] = this.gOOGLEPRODUCTCATEGORY3;
-      json[r'GOOGLE_PRODUCT_CATEGORY_2'] = this.gOOGLEPRODUCTCATEGORY2;
-      json[r'GOOGLE_PRODUCT_CATEGORY_1'] = this.gOOGLEPRODUCTCATEGORY1;
-      json[r'GOOGLE_PRODUCT_CATEGORY_0'] = this.gOOGLEPRODUCTCATEGORY0;
-      json[r'PRODUCT_GROUP'] = this.PRODUCT_GROUP;
-      json[r'CUSTOM_NUMBER_0'] = this.cUSTOMNUMBER0;
-      json[r'CUSTOM_NUMBER_1'] = this.cUSTOMNUMBER1;
-      json[r'CUSTOM_NUMBER_2'] = this.cUSTOMNUMBER2;
-      json[r'CUSTOM_NUMBER_3'] = this.cUSTOMNUMBER3;
-      json[r'CUSTOM_NUMBER_4'] = this.cUSTOMNUMBER4;
+      json[r'PRODUCT_TYPE_4'] = this.PRODUCT_TYPE_4;
+      json[r'PRODUCT_TYPE_3'] = this.PRODUCT_TYPE_3;
+      json[r'PRODUCT_TYPE_2'] = this.PRODUCT_TYPE_2;
+      json[r'PRODUCT_TYPE_1'] = this.PRODUCT_TYPE_1;
+      json[r'PRODUCT_TYPE_0'] = this.PRODUCT_TYPE_0;
+      json[r'GOOGLE_PRODUCT_CATEGORY_6'] = this.GOOGLE_PRODUCT_CATEGORY_6;
+      json[r'GOOGLE_PRODUCT_CATEGORY_5'] = this.GOOGLE_PRODUCT_CATEGORY_5;
+      json[r'GOOGLE_PRODUCT_CATEGORY_4'] = this.GOOGLE_PRODUCT_CATEGORY_4;
+      json[r'GOOGLE_PRODUCT_CATEGORY_3'] = this.GOOGLE_PRODUCT_CATEGORY_3;
+      json[r'GOOGLE_PRODUCT_CATEGORY_2'] = this.GOOGLE_PRODUCT_CATEGORY_2;
+      json[r'GOOGLE_PRODUCT_CATEGORY_1'] = this.GOOGLE_PRODUCT_CATEGORY_1;
+      json[r'GOOGLE_PRODUCT_CATEGORY_0'] = this.GOOGLE_PRODUCT_CATEGORY_0;
+      json[r'CUSTOM_NUMBER_0'] = this.CUSTOM_NUMBER_0;
+      json[r'CUSTOM_NUMBER_1'] = this.CUSTOM_NUMBER_1;
+      json[r'CUSTOM_NUMBER_2'] = this.CUSTOM_NUMBER_2;
+      json[r'CUSTOM_NUMBER_3'] = this.CUSTOM_NUMBER_3;
+      json[r'CUSTOM_NUMBER_4'] = this.CUSTOM_NUMBER_4;
       json[r'TITLE_KEYWORDS'] = this.TITLE_KEYWORDS;
+      json[r'PINTEREST_PRODUCT_CATEGORIES'] = this.PINTEREST_PRODUCT_CATEGORIES;
+      json[r'PRODUCT_GROUP'] = this.PRODUCT_GROUP;
     return json;
   }
 
@@ -245,48 +251,115 @@ class CatalogsProductGroupFilterKeys {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsProductGroupFilterKeys[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsProductGroupFilterKeys[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'MIN_PRICE'), 'Required key "CatalogsProductGroupFilterKeys[MIN_PRICE]" is missing from JSON.');
+        assert(json[r'MIN_PRICE'] != null, 'Required key "CatalogsProductGroupFilterKeys[MIN_PRICE]" has a null value in JSON.');
+        assert(json.containsKey(r'MAX_PRICE'), 'Required key "CatalogsProductGroupFilterKeys[MAX_PRICE]" is missing from JSON.');
+        assert(json[r'MAX_PRICE'] != null, 'Required key "CatalogsProductGroupFilterKeys[MAX_PRICE]" has a null value in JSON.');
+        assert(json.containsKey(r'CURRENCY'), 'Required key "CatalogsProductGroupFilterKeys[CURRENCY]" is missing from JSON.');
+        assert(json[r'CURRENCY'] != null, 'Required key "CatalogsProductGroupFilterKeys[CURRENCY]" has a null value in JSON.');
+        assert(json.containsKey(r'ITEM_ID'), 'Required key "CatalogsProductGroupFilterKeys[ITEM_ID]" is missing from JSON.');
+        assert(json[r'ITEM_ID'] != null, 'Required key "CatalogsProductGroupFilterKeys[ITEM_ID]" has a null value in JSON.');
+        assert(json.containsKey(r'AVAILABILITY'), 'Required key "CatalogsProductGroupFilterKeys[AVAILABILITY]" is missing from JSON.');
+        assert(json[r'AVAILABILITY'] != null, 'Required key "CatalogsProductGroupFilterKeys[AVAILABILITY]" has a null value in JSON.');
+        assert(json.containsKey(r'BRAND'), 'Required key "CatalogsProductGroupFilterKeys[BRAND]" is missing from JSON.');
+        assert(json[r'BRAND'] != null, 'Required key "CatalogsProductGroupFilterKeys[BRAND]" has a null value in JSON.');
+        assert(json.containsKey(r'CONDITION'), 'Required key "CatalogsProductGroupFilterKeys[CONDITION]" is missing from JSON.');
+        assert(json[r'CONDITION'] != null, 'Required key "CatalogsProductGroupFilterKeys[CONDITION]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_LABEL_0'), 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_LABEL_0]" is missing from JSON.');
+        assert(json[r'CUSTOM_LABEL_0'] != null, 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_LABEL_0]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_LABEL_1'), 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_LABEL_1]" is missing from JSON.');
+        assert(json[r'CUSTOM_LABEL_1'] != null, 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_LABEL_1]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_LABEL_2'), 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_LABEL_2]" is missing from JSON.');
+        assert(json[r'CUSTOM_LABEL_2'] != null, 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_LABEL_2]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_LABEL_3'), 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_LABEL_3]" is missing from JSON.');
+        assert(json[r'CUSTOM_LABEL_3'] != null, 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_LABEL_3]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_LABEL_4'), 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_LABEL_4]" is missing from JSON.');
+        assert(json[r'CUSTOM_LABEL_4'] != null, 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_LABEL_4]" has a null value in JSON.');
+        assert(json.containsKey(r'ITEM_GROUP_ID'), 'Required key "CatalogsProductGroupFilterKeys[ITEM_GROUP_ID]" is missing from JSON.');
+        assert(json[r'ITEM_GROUP_ID'] != null, 'Required key "CatalogsProductGroupFilterKeys[ITEM_GROUP_ID]" has a null value in JSON.');
+        assert(json.containsKey(r'GENDER'), 'Required key "CatalogsProductGroupFilterKeys[GENDER]" is missing from JSON.');
+        assert(json[r'GENDER'] != null, 'Required key "CatalogsProductGroupFilterKeys[GENDER]" has a null value in JSON.');
+        assert(json.containsKey(r'MEDIA_TYPE'), 'Required key "CatalogsProductGroupFilterKeys[MEDIA_TYPE]" is missing from JSON.');
+        assert(json[r'MEDIA_TYPE'] != null, 'Required key "CatalogsProductGroupFilterKeys[MEDIA_TYPE]" has a null value in JSON.');
+        assert(json.containsKey(r'PRODUCT_TYPE_4'), 'Required key "CatalogsProductGroupFilterKeys[PRODUCT_TYPE_4]" is missing from JSON.');
+        assert(json[r'PRODUCT_TYPE_4'] != null, 'Required key "CatalogsProductGroupFilterKeys[PRODUCT_TYPE_4]" has a null value in JSON.');
+        assert(json.containsKey(r'PRODUCT_TYPE_3'), 'Required key "CatalogsProductGroupFilterKeys[PRODUCT_TYPE_3]" is missing from JSON.');
+        assert(json[r'PRODUCT_TYPE_3'] != null, 'Required key "CatalogsProductGroupFilterKeys[PRODUCT_TYPE_3]" has a null value in JSON.');
+        assert(json.containsKey(r'PRODUCT_TYPE_2'), 'Required key "CatalogsProductGroupFilterKeys[PRODUCT_TYPE_2]" is missing from JSON.');
+        assert(json[r'PRODUCT_TYPE_2'] != null, 'Required key "CatalogsProductGroupFilterKeys[PRODUCT_TYPE_2]" has a null value in JSON.');
+        assert(json.containsKey(r'PRODUCT_TYPE_1'), 'Required key "CatalogsProductGroupFilterKeys[PRODUCT_TYPE_1]" is missing from JSON.');
+        assert(json[r'PRODUCT_TYPE_1'] != null, 'Required key "CatalogsProductGroupFilterKeys[PRODUCT_TYPE_1]" has a null value in JSON.');
+        assert(json.containsKey(r'PRODUCT_TYPE_0'), 'Required key "CatalogsProductGroupFilterKeys[PRODUCT_TYPE_0]" is missing from JSON.');
+        assert(json[r'PRODUCT_TYPE_0'] != null, 'Required key "CatalogsProductGroupFilterKeys[PRODUCT_TYPE_0]" has a null value in JSON.');
+        assert(json.containsKey(r'GOOGLE_PRODUCT_CATEGORY_6'), 'Required key "CatalogsProductGroupFilterKeys[GOOGLE_PRODUCT_CATEGORY_6]" is missing from JSON.');
+        assert(json[r'GOOGLE_PRODUCT_CATEGORY_6'] != null, 'Required key "CatalogsProductGroupFilterKeys[GOOGLE_PRODUCT_CATEGORY_6]" has a null value in JSON.');
+        assert(json.containsKey(r'GOOGLE_PRODUCT_CATEGORY_5'), 'Required key "CatalogsProductGroupFilterKeys[GOOGLE_PRODUCT_CATEGORY_5]" is missing from JSON.');
+        assert(json[r'GOOGLE_PRODUCT_CATEGORY_5'] != null, 'Required key "CatalogsProductGroupFilterKeys[GOOGLE_PRODUCT_CATEGORY_5]" has a null value in JSON.');
+        assert(json.containsKey(r'GOOGLE_PRODUCT_CATEGORY_4'), 'Required key "CatalogsProductGroupFilterKeys[GOOGLE_PRODUCT_CATEGORY_4]" is missing from JSON.');
+        assert(json[r'GOOGLE_PRODUCT_CATEGORY_4'] != null, 'Required key "CatalogsProductGroupFilterKeys[GOOGLE_PRODUCT_CATEGORY_4]" has a null value in JSON.');
+        assert(json.containsKey(r'GOOGLE_PRODUCT_CATEGORY_3'), 'Required key "CatalogsProductGroupFilterKeys[GOOGLE_PRODUCT_CATEGORY_3]" is missing from JSON.');
+        assert(json[r'GOOGLE_PRODUCT_CATEGORY_3'] != null, 'Required key "CatalogsProductGroupFilterKeys[GOOGLE_PRODUCT_CATEGORY_3]" has a null value in JSON.');
+        assert(json.containsKey(r'GOOGLE_PRODUCT_CATEGORY_2'), 'Required key "CatalogsProductGroupFilterKeys[GOOGLE_PRODUCT_CATEGORY_2]" is missing from JSON.');
+        assert(json[r'GOOGLE_PRODUCT_CATEGORY_2'] != null, 'Required key "CatalogsProductGroupFilterKeys[GOOGLE_PRODUCT_CATEGORY_2]" has a null value in JSON.');
+        assert(json.containsKey(r'GOOGLE_PRODUCT_CATEGORY_1'), 'Required key "CatalogsProductGroupFilterKeys[GOOGLE_PRODUCT_CATEGORY_1]" is missing from JSON.');
+        assert(json[r'GOOGLE_PRODUCT_CATEGORY_1'] != null, 'Required key "CatalogsProductGroupFilterKeys[GOOGLE_PRODUCT_CATEGORY_1]" has a null value in JSON.');
+        assert(json.containsKey(r'GOOGLE_PRODUCT_CATEGORY_0'), 'Required key "CatalogsProductGroupFilterKeys[GOOGLE_PRODUCT_CATEGORY_0]" is missing from JSON.');
+        assert(json[r'GOOGLE_PRODUCT_CATEGORY_0'] != null, 'Required key "CatalogsProductGroupFilterKeys[GOOGLE_PRODUCT_CATEGORY_0]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_NUMBER_0'), 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_NUMBER_0]" is missing from JSON.');
+        assert(json[r'CUSTOM_NUMBER_0'] != null, 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_NUMBER_0]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_NUMBER_1'), 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_NUMBER_1]" is missing from JSON.');
+        assert(json[r'CUSTOM_NUMBER_1'] != null, 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_NUMBER_1]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_NUMBER_2'), 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_NUMBER_2]" is missing from JSON.');
+        assert(json[r'CUSTOM_NUMBER_2'] != null, 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_NUMBER_2]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_NUMBER_3'), 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_NUMBER_3]" is missing from JSON.');
+        assert(json[r'CUSTOM_NUMBER_3'] != null, 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_NUMBER_3]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_NUMBER_4'), 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_NUMBER_4]" is missing from JSON.');
+        assert(json[r'CUSTOM_NUMBER_4'] != null, 'Required key "CatalogsProductGroupFilterKeys[CUSTOM_NUMBER_4]" has a null value in JSON.');
+        assert(json.containsKey(r'TITLE_KEYWORDS'), 'Required key "CatalogsProductGroupFilterKeys[TITLE_KEYWORDS]" is missing from JSON.');
+        assert(json[r'TITLE_KEYWORDS'] != null, 'Required key "CatalogsProductGroupFilterKeys[TITLE_KEYWORDS]" has a null value in JSON.');
+        assert(json.containsKey(r'PINTEREST_PRODUCT_CATEGORIES'), 'Required key "CatalogsProductGroupFilterKeys[PINTEREST_PRODUCT_CATEGORIES]" is missing from JSON.');
+        assert(json[r'PINTEREST_PRODUCT_CATEGORIES'] != null, 'Required key "CatalogsProductGroupFilterKeys[PINTEREST_PRODUCT_CATEGORIES]" has a null value in JSON.');
+        assert(json.containsKey(r'PRODUCT_GROUP'), 'Required key "CatalogsProductGroupFilterKeys[PRODUCT_GROUP]" is missing from JSON.');
+        assert(json[r'PRODUCT_GROUP'] != null, 'Required key "CatalogsProductGroupFilterKeys[PRODUCT_GROUP]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsProductGroupFilterKeys(
-        MIN_PRICE: mapValueOfType<CatalogsProductGroupPricingCriteria>(json, r'MIN_PRICE')!,
-        MAX_PRICE: mapValueOfType<CatalogsProductGroupPricingCriteria>(json, r'MAX_PRICE')!,
-        CURRENCY: mapValueOfType<CatalogsProductGroupCurrencyCriteria>(json, r'CURRENCY')!,
-        ITEM_ID: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'ITEM_ID')!,
-        AVAILABILITY: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'AVAILABILITY')!,
-        BRAND: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'BRAND')!,
-        CONDITION: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'CONDITION')!,
-        cUSTOMLABEL0: mapValueOfType<CatalogsProductGroupFilterOperatorTypeCriteria>(json, r'CUSTOM_LABEL_0')!,
-        cUSTOMLABEL1: mapValueOfType<CatalogsProductGroupFilterOperatorTypeCriteria>(json, r'CUSTOM_LABEL_1')!,
-        cUSTOMLABEL2: mapValueOfType<CatalogsProductGroupFilterOperatorTypeCriteria>(json, r'CUSTOM_LABEL_2')!,
-        cUSTOMLABEL3: mapValueOfType<CatalogsProductGroupFilterOperatorTypeCriteria>(json, r'CUSTOM_LABEL_3')!,
-        cUSTOMLABEL4: mapValueOfType<CatalogsProductGroupFilterOperatorTypeCriteria>(json, r'CUSTOM_LABEL_4')!,
-        ITEM_GROUP_ID: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'ITEM_GROUP_ID')!,
-        GENDER: mapValueOfType<CatalogsProductGroupMultipleGenderCriteria>(json, r'GENDER')!,
-        MEDIA_TYPE: mapValueOfType<CatalogsProductGroupMultipleMediaTypesCriteria>(json, r'MEDIA_TYPE')!,
-        pRODUCTTYPE4: mapValueOfType<CatalogsProductGroupMultipleStringListCriteria>(json, r'PRODUCT_TYPE_4')!,
-        pRODUCTTYPE3: mapValueOfType<CatalogsProductGroupMultipleStringListCriteria>(json, r'PRODUCT_TYPE_3')!,
-        pRODUCTTYPE2: mapValueOfType<CatalogsProductGroupMultipleStringListCriteria>(json, r'PRODUCT_TYPE_2')!,
-        pRODUCTTYPE1: mapValueOfType<CatalogsProductGroupMultipleStringListCriteria>(json, r'PRODUCT_TYPE_1')!,
-        pRODUCTTYPE0: mapValueOfType<CatalogsProductGroupMultipleStringListCriteria>(json, r'PRODUCT_TYPE_0')!,
-        gOOGLEPRODUCTCATEGORY6: mapValueOfType<CatalogsProductGroupMultipleStringListCriteria>(json, r'GOOGLE_PRODUCT_CATEGORY_6')!,
-        gOOGLEPRODUCTCATEGORY5: mapValueOfType<CatalogsProductGroupMultipleStringListCriteria>(json, r'GOOGLE_PRODUCT_CATEGORY_5')!,
-        gOOGLEPRODUCTCATEGORY4: mapValueOfType<CatalogsProductGroupMultipleStringListCriteria>(json, r'GOOGLE_PRODUCT_CATEGORY_4')!,
-        gOOGLEPRODUCTCATEGORY3: mapValueOfType<CatalogsProductGroupMultipleStringListCriteria>(json, r'GOOGLE_PRODUCT_CATEGORY_3')!,
-        gOOGLEPRODUCTCATEGORY2: mapValueOfType<CatalogsProductGroupMultipleStringListCriteria>(json, r'GOOGLE_PRODUCT_CATEGORY_2')!,
-        gOOGLEPRODUCTCATEGORY1: mapValueOfType<CatalogsProductGroupMultipleStringListCriteria>(json, r'GOOGLE_PRODUCT_CATEGORY_1')!,
-        gOOGLEPRODUCTCATEGORY0: mapValueOfType<CatalogsProductGroupMultipleStringListCriteria>(json, r'GOOGLE_PRODUCT_CATEGORY_0')!,
-        PRODUCT_GROUP: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'PRODUCT_GROUP')!,
-        cUSTOMNUMBER0: mapValueOfType<CatalogsProductGroupUint32Criteria>(json, r'CUSTOM_NUMBER_0')!,
-        cUSTOMNUMBER1: mapValueOfType<CatalogsProductGroupUint32Criteria>(json, r'CUSTOM_NUMBER_1')!,
-        cUSTOMNUMBER2: mapValueOfType<CatalogsProductGroupUint32Criteria>(json, r'CUSTOM_NUMBER_2')!,
-        cUSTOMNUMBER3: mapValueOfType<CatalogsProductGroupUint32Criteria>(json, r'CUSTOM_NUMBER_3')!,
-        cUSTOMNUMBER4: mapValueOfType<CatalogsProductGroupUint32Criteria>(json, r'CUSTOM_NUMBER_4')!,
-        TITLE_KEYWORDS: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'TITLE_KEYWORDS')!,
+        MIN_PRICE: CatalogsProductGroupPricingCriteria.fromJson(json[r'MIN_PRICE'])!,
+        MAX_PRICE: CatalogsProductGroupPricingCriteria.fromJson(json[r'MAX_PRICE'])!,
+        CURRENCY: CatalogsProductGroupCurrencyCriteria.fromJson(json[r'CURRENCY'])!,
+        ITEM_ID: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'ITEM_ID'])!,
+        AVAILABILITY: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'AVAILABILITY'])!,
+        BRAND: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'BRAND'])!,
+        CONDITION: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'CONDITION'])!,
+        CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria.fromJson(json[r'CUSTOM_LABEL_0'])!,
+        CUSTOM_LABEL_1: CatalogsProductGroupFilterOperatorTypeCriteria.fromJson(json[r'CUSTOM_LABEL_1'])!,
+        CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria.fromJson(json[r'CUSTOM_LABEL_2'])!,
+        CUSTOM_LABEL_3: CatalogsProductGroupFilterOperatorTypeCriteria.fromJson(json[r'CUSTOM_LABEL_3'])!,
+        CUSTOM_LABEL_4: CatalogsProductGroupFilterOperatorTypeCriteria.fromJson(json[r'CUSTOM_LABEL_4'])!,
+        ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'ITEM_GROUP_ID'])!,
+        GENDER: CatalogsProductGroupMultipleGenderCriteria.fromJson(json[r'GENDER'])!,
+        MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria.fromJson(json[r'MEDIA_TYPE'])!,
+        PRODUCT_TYPE_4: CatalogsProductGroupMultipleStringListCriteria.fromJson(json[r'PRODUCT_TYPE_4'])!,
+        PRODUCT_TYPE_3: CatalogsProductGroupMultipleStringListCriteria.fromJson(json[r'PRODUCT_TYPE_3'])!,
+        PRODUCT_TYPE_2: CatalogsProductGroupMultipleStringListCriteria.fromJson(json[r'PRODUCT_TYPE_2'])!,
+        PRODUCT_TYPE_1: CatalogsProductGroupMultipleStringListCriteria.fromJson(json[r'PRODUCT_TYPE_1'])!,
+        PRODUCT_TYPE_0: CatalogsProductGroupMultipleStringListCriteria.fromJson(json[r'PRODUCT_TYPE_0'])!,
+        GOOGLE_PRODUCT_CATEGORY_6: CatalogsProductGroupMultipleStringListCriteria.fromJson(json[r'GOOGLE_PRODUCT_CATEGORY_6'])!,
+        GOOGLE_PRODUCT_CATEGORY_5: CatalogsProductGroupMultipleStringListCriteria.fromJson(json[r'GOOGLE_PRODUCT_CATEGORY_5'])!,
+        GOOGLE_PRODUCT_CATEGORY_4: CatalogsProductGroupMultipleStringListCriteria.fromJson(json[r'GOOGLE_PRODUCT_CATEGORY_4'])!,
+        GOOGLE_PRODUCT_CATEGORY_3: CatalogsProductGroupMultipleStringListCriteria.fromJson(json[r'GOOGLE_PRODUCT_CATEGORY_3'])!,
+        GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria.fromJson(json[r'GOOGLE_PRODUCT_CATEGORY_2'])!,
+        GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria.fromJson(json[r'GOOGLE_PRODUCT_CATEGORY_1'])!,
+        GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria.fromJson(json[r'GOOGLE_PRODUCT_CATEGORY_0'])!,
+        CUSTOM_NUMBER_0: CatalogsProductGroupUint32Criteria.fromJson(json[r'CUSTOM_NUMBER_0'])!,
+        CUSTOM_NUMBER_1: CatalogsProductGroupUint32Criteria.fromJson(json[r'CUSTOM_NUMBER_1'])!,
+        CUSTOM_NUMBER_2: CatalogsProductGroupUint32Criteria.fromJson(json[r'CUSTOM_NUMBER_2'])!,
+        CUSTOM_NUMBER_3: CatalogsProductGroupUint32Criteria.fromJson(json[r'CUSTOM_NUMBER_3'])!,
+        CUSTOM_NUMBER_4: CatalogsProductGroupUint32Criteria.fromJson(json[r'CUSTOM_NUMBER_4'])!,
+        TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'TITLE_KEYWORDS'])!,
+        PINTEREST_PRODUCT_CATEGORIES: CatalogsProductGroupMultiplePinterestProductCategoryCriteria.fromJson(json[r'PINTEREST_PRODUCT_CATEGORIES'])!,
+        PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'PRODUCT_GROUP'])!,
       );
     }
     return null;
@@ -361,13 +434,14 @@ class CatalogsProductGroupFilterKeys {
     'GOOGLE_PRODUCT_CATEGORY_2',
     'GOOGLE_PRODUCT_CATEGORY_1',
     'GOOGLE_PRODUCT_CATEGORY_0',
-    'PRODUCT_GROUP',
     'CUSTOM_NUMBER_0',
     'CUSTOM_NUMBER_1',
     'CUSTOM_NUMBER_2',
     'CUSTOM_NUMBER_3',
     'CUSTOM_NUMBER_4',
     'TITLE_KEYWORDS',
+    'PINTEREST_PRODUCT_CATEGORIES',
+    'PRODUCT_GROUP',
   };
 }
 

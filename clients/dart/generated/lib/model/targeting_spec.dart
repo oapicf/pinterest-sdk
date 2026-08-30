@@ -19,9 +19,11 @@ class TargetingSpec {
     this.AUDIENCE_INCLUDE = const [],
     this.GENDER = const [],
     this.GEO = const [],
+    this.GEO_EXCLUDE = const [],
     this.INTEREST = const [],
     this.LOCALE = const [],
     this.LOCATION = const [],
+    this.LOCATION_EXCLUDE = const [],
     this.MAXIMUM_AGE,
     this.MINIMUM_AGE,
     this.SHOPPING_RETARGETING = const [],
@@ -43,8 +45,11 @@ class TargetingSpec {
   /// Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
   List<TargetingSpecGender>? GENDER;
 
-  /// Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).
+  /// Region codes or postal codes to include for targeting.<br /><br /> Region codes represent broader geographical areas. Example: <code>US-CA</code> is the region code for California in the United States.<br /><br /> Postal codes represent more granular, specific areas. Example: <code>94103</code> is a postal code for a specifc area in San Francisco, California, U.S.A.<br /><br /> For each ad group, use only one of these methods, depending on which fits your targeting needs. Do not use both. For example, either specify a broader region code like <code>US-CA</code> or a more granular postal code within that regon, such as <code>94103</code>.<br /><br /> You can specify multiple region codes or postal codes in an array, depending on which method you choose.<br /><br /> Precede a region code array with the <code>region_codes</code> key and a postal code value with the <code>postal_codes</code> key. Examples:<br /><br /> <code>\"geo\": {</code><br /> <code>\"region_codes\": [\"US-CA\"]</code><br /> <code>}</code><br /><br /> <code>\"geo\": {</code><br /> <code>\"postal_codes\": [\"94103\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code>. <br /><br /> If you do not specifiy a <code>GEO</code> code, only <code>LOCATION</code> values will be targeted (See <code>LOCATION</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>.
   List<String>? GEO;
+
+  /// Region codes or postal codes to exclude from the targeting inclusion area.<br /><br /> See <code>GEO</code> parameter in this targeting spec for rules, syntax, and other information.<br />
+  List<String> GEO_EXCLUDE;
 
   /// Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.
   List<String> INTEREST;
@@ -52,8 +57,11 @@ class TargetingSpec {
   /// 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
   List<String>? LOCALE;
 
-  /// 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+  /// Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to include for targeting.<br /><br /> Precede country code values with the <code>country_codes</code> key and metro code values with <code>metro_codes</code> key. Example:<br /><br /> <code>\"location\": {</code><br /> <code>\"country_codes\": [\"US\", \"CA\"],</code><br /> <code>\"metro_codes\": [\"501\", \"602\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code> code. <br /><br /> If you do not specify a <code>LOCATION</code> code, only <code>GEO</code> values will be targeted (See <code>GEO</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>.
   List<String>? LOCATION;
+
+  /// Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to exclude from targeting.<br /><br /> See <code>LOCATION</code> parameter in this targeting spec for rules, syntax, and other information.
+  List<String> LOCATION_EXCLUDE;
 
   /// Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
   ///
@@ -76,7 +84,6 @@ class TargetingSpec {
   /// Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
   List<TargetingSpecShoppingRetargeting>? SHOPPING_RETARGETING;
 
-  /// 
   List<TargetingSpecTARGETING_STRATEGYEnum>? TARGETING_STRATEGY;
 
   @override
@@ -87,9 +94,11 @@ class TargetingSpec {
     _deepEquality.equals(other.AUDIENCE_INCLUDE, AUDIENCE_INCLUDE) &&
     _deepEquality.equals(other.GENDER, GENDER) &&
     _deepEquality.equals(other.GEO, GEO) &&
+    _deepEquality.equals(other.GEO_EXCLUDE, GEO_EXCLUDE) &&
     _deepEquality.equals(other.INTEREST, INTEREST) &&
     _deepEquality.equals(other.LOCALE, LOCALE) &&
     _deepEquality.equals(other.LOCATION, LOCATION) &&
+    _deepEquality.equals(other.LOCATION_EXCLUDE, LOCATION_EXCLUDE) &&
     other.MAXIMUM_AGE == MAXIMUM_AGE &&
     other.MINIMUM_AGE == MINIMUM_AGE &&
     _deepEquality.equals(other.SHOPPING_RETARGETING, SHOPPING_RETARGETING) &&
@@ -104,16 +113,18 @@ class TargetingSpec {
     (AUDIENCE_INCLUDE == null ? 0 : AUDIENCE_INCLUDE!.hashCode) +
     (GENDER == null ? 0 : GENDER!.hashCode) +
     (GEO == null ? 0 : GEO!.hashCode) +
+    (GEO_EXCLUDE.hashCode) +
     (INTEREST.hashCode) +
     (LOCALE == null ? 0 : LOCALE!.hashCode) +
     (LOCATION == null ? 0 : LOCATION!.hashCode) +
+    (LOCATION_EXCLUDE.hashCode) +
     (MAXIMUM_AGE == null ? 0 : MAXIMUM_AGE!.hashCode) +
     (MINIMUM_AGE == null ? 0 : MINIMUM_AGE!.hashCode) +
     (SHOPPING_RETARGETING == null ? 0 : SHOPPING_RETARGETING!.hashCode) +
     (TARGETING_STRATEGY == null ? 0 : TARGETING_STRATEGY!.hashCode);
 
   @override
-  String toString() => 'TargetingSpec[AGE_BUCKET=$AGE_BUCKET, APPTYPE=$APPTYPE, AUDIENCE_EXCLUDE=$AUDIENCE_EXCLUDE, AUDIENCE_INCLUDE=$AUDIENCE_INCLUDE, GENDER=$GENDER, GEO=$GEO, INTEREST=$INTEREST, LOCALE=$LOCALE, LOCATION=$LOCATION, MAXIMUM_AGE=$MAXIMUM_AGE, MINIMUM_AGE=$MINIMUM_AGE, SHOPPING_RETARGETING=$SHOPPING_RETARGETING, TARGETING_STRATEGY=$TARGETING_STRATEGY]';
+  String toString() => 'TargetingSpec[AGE_BUCKET=$AGE_BUCKET, APPTYPE=$APPTYPE, AUDIENCE_EXCLUDE=$AUDIENCE_EXCLUDE, AUDIENCE_INCLUDE=$AUDIENCE_INCLUDE, GENDER=$GENDER, GEO=$GEO, GEO_EXCLUDE=$GEO_EXCLUDE, INTEREST=$INTEREST, LOCALE=$LOCALE, LOCATION=$LOCATION, LOCATION_EXCLUDE=$LOCATION_EXCLUDE, MAXIMUM_AGE=$MAXIMUM_AGE, MINIMUM_AGE=$MINIMUM_AGE, SHOPPING_RETARGETING=$SHOPPING_RETARGETING, TARGETING_STRATEGY=$TARGETING_STRATEGY]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -147,6 +158,7 @@ class TargetingSpec {
     } else {
       json[r'GEO'] = null;
     }
+      json[r'GEO_EXCLUDE'] = this.GEO_EXCLUDE;
       json[r'INTEREST'] = this.INTEREST;
     if (this.LOCALE != null) {
       json[r'LOCALE'] = this.LOCALE;
@@ -158,6 +170,7 @@ class TargetingSpec {
     } else {
       json[r'LOCATION'] = null;
     }
+      json[r'LOCATION_EXCLUDE'] = this.LOCATION_EXCLUDE;
     if (this.MAXIMUM_AGE != null) {
       json[r'MAXIMUM_AGE'] = this.MAXIMUM_AGE;
     } else {
@@ -192,10 +205,6 @@ class TargetingSpec {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "TargetingSpec[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "TargetingSpec[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -212,6 +221,9 @@ class TargetingSpec {
         GEO: json[r'GEO'] is Iterable
             ? (json[r'GEO'] as Iterable).cast<String>().toList(growable: false)
             : const [],
+        GEO_EXCLUDE: json[r'GEO_EXCLUDE'] is Iterable
+            ? (json[r'GEO_EXCLUDE'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         INTEREST: json[r'INTEREST'] is Iterable
             ? (json[r'INTEREST'] as Iterable).cast<String>().toList(growable: false)
             : const [],
@@ -220,6 +232,9 @@ class TargetingSpec {
             : const [],
         LOCATION: json[r'LOCATION'] is Iterable
             ? (json[r'LOCATION'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        LOCATION_EXCLUDE: json[r'LOCATION_EXCLUDE'] is Iterable
+            ? (json[r'LOCATION_EXCLUDE'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         MAXIMUM_AGE: mapValueOfType<String>(json, r'MAXIMUM_AGE'),
         MINIMUM_AGE: mapValueOfType<String>(json, r'MINIMUM_AGE'),
@@ -276,31 +291,30 @@ class TargetingSpec {
 }
 
 
-class TargetingSpecTARGETING_STRATEGYEnum {
-  /// Instantiate a new enum with the provided [value].
-  const TargetingSpecTARGETING_STRATEGYEnum._(this.value);
+enum TargetingSpecTARGETING_STRATEGYEnum {
+  CHOOSE_YOUR_OWN._(r'CHOOSE_YOUR_OWN'),
+  FIND_NEW_CUSTOMERS._(r'FIND_NEW_CUSTOMERS'),
+  RECONNECT_WITH_USERS._(r'RECONNECT_WITH_USERS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const TargetingSpecTARGETING_STRATEGYEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CHOOSE_YOUR_OWN = TargetingSpecTARGETING_STRATEGYEnum._(r'CHOOSE_YOUR_OWN');
-  static const FIND_NEW_CUSTOMERS = TargetingSpecTARGETING_STRATEGYEnum._(r'FIND_NEW_CUSTOMERS');
-  static const RECONNECT_WITH_USERS = TargetingSpecTARGETING_STRATEGYEnum._(r'RECONNECT_WITH_USERS');
-
-  /// List of all possible values in this [enum][TargetingSpecTARGETING_STRATEGYEnum].
-  static const values = <TargetingSpecTARGETING_STRATEGYEnum>[
-    CHOOSE_YOUR_OWN,
-    FIND_NEW_CUSTOMERS,
-    RECONNECT_WITH_USERS,
-  ];
-
+  /// Returns the instance of [TargetingSpecTARGETING_STRATEGYEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static TargetingSpecTARGETING_STRATEGYEnum? fromJson(dynamic value) => TargetingSpecTARGETING_STRATEGYEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [TargetingSpecTARGETING_STRATEGYEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<TargetingSpecTARGETING_STRATEGYEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <TargetingSpecTARGETING_STRATEGYEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -322,9 +336,10 @@ class TargetingSpecTARGETING_STRATEGYEnumTypeTransformer {
 
   const TargetingSpecTARGETING_STRATEGYEnumTypeTransformer._();
 
-  String encode(TargetingSpecTARGETING_STRATEGYEnum data) => data.value;
+  String encode(TargetingSpecTARGETING_STRATEGYEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a TargetingSpecTARGETING_STRATEGYEnum.
+  /// Returns the instance of [TargetingSpecTARGETING_STRATEGYEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -333,6 +348,9 @@ class TargetingSpecTARGETING_STRATEGYEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   TargetingSpecTARGETING_STRATEGYEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is TargetingSpecTARGETING_STRATEGYEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CHOOSE_YOUR_OWN': return TargetingSpecTARGETING_STRATEGYEnum.CHOOSE_YOUR_OWN;
@@ -347,7 +365,7 @@ class TargetingSpecTARGETING_STRATEGYEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [TargetingSpecTARGETING_STRATEGYEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static TargetingSpecTARGETING_STRATEGYEnumTypeTransformer? _instance;
 }
 

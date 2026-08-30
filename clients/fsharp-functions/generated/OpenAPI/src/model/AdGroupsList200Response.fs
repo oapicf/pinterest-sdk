@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.AdGroupResponse
+open OpenAPI.Model.AdGroup
 open OpenAPI.Model.string option
 
 module AdGroupsList200Response =
@@ -15,7 +15,7 @@ module AdGroupsList200Response =
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
     [<JsonProperty(PropertyName = "items")>]
-    Items : AdGroupResponse[];
+    Items : AdGroup[];
   }
 
   //#endregion

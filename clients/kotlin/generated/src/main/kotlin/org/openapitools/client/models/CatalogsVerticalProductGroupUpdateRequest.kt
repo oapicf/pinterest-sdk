@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -33,7 +41,7 @@ import com.squareup.moshi.JsonClass
  * @param description 
  * @param filters 
  * @param locale 
- * @param name 
+ * @param name Name of catalog product group
  */
 
 
@@ -49,6 +57,7 @@ interface CatalogsVerticalProductGroupUpdateRequest {
     val filters: CatalogsCreativeAssetsProductGroupFilters?
     @Json(name = "locale")
     val locale: CatalogsLocale?
+    /* Name of catalog product group */
     @Json(name = "name")
     val name: kotlin.String?
     /**

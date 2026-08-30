@@ -7,8 +7,7 @@ goog.provide('API.Client.CreateMembershipOrPartnershipInvitesBody');
 API.Client.CreateMembershipOrPartnershipInvitesBody = function() {}
 
 /**
- * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
- * @type {!string}
+ * @type {!API.Client.BusinessRoleForInvite}
  * @export
  */
 API.Client.CreateMembershipOrPartnershipInvitesBody.prototype.businessRole;
@@ -33,9 +32,3 @@ API.Client.CreateMembershipOrPartnershipInvitesBody.prototype.members;
  */
 API.Client.CreateMembershipOrPartnershipInvitesBody.prototype.partners;
 
-/** @enum {string} */
-API.Client.CreateMembershipOrPartnershipInvitesBody.BusinessRoleEnum = { 
-  EMPLOYEE: 'EMPLOYEE',
-  BIZ_ADMIN: 'BIZ_ADMIN',
-  PARTNER: 'PARTNER',
-}

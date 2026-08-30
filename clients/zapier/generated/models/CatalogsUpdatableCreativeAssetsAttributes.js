@@ -61,7 +61,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}visibility`,
-                label: `Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. - [${labelPrefix}visibility]`,
+                label: `Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'. - [${labelPrefix}visibility]`,
                 type: 'string',
             },
         ]

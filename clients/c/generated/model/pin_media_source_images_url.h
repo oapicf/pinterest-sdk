@@ -28,7 +28,7 @@ pinterest_rest_api_pin_media_source_images_url_SOURCETYPE_e pin_media_source_ima
 
 
 typedef struct pin_media_source_images_url_t {
-    int index; //numeric
+    int *index; //numeric
     list_t *items; //nonprimitive container
     pinterest_rest_api_pin_media_source_images_url_SOURCETYPE_e source_type; //enum
 
@@ -36,7 +36,7 @@ typedef struct pin_media_source_images_url_t {
 } pin_media_source_images_url_t;
 
 __attribute__((deprecated)) pin_media_source_images_url_t *pin_media_source_images_url_create(
-    int index,
+    int *index,
     list_t *items,
     pinterest_rest_api_pin_media_source_images_url_SOURCETYPE_e source_type
 );

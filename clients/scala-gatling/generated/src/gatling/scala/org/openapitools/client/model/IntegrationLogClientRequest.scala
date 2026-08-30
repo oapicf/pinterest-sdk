@@ -5,7 +5,7 @@ package org.openapitools.client.model
 case class IntegrationLogClientRequest (
     /* HTTP request host from host header. */
     _host: String,
-    _method: String,
+    _method: HttpMethod,
     /* HTTP request path. */
     _path: String,
     /* HTTP request headers as key-value pairs. */

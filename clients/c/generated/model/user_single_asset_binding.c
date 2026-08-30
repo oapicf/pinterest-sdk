@@ -13,10 +13,10 @@ static user_single_asset_binding_t *user_single_asset_binding_create_internal(
     if (!user_single_asset_binding_local_var) {
         return NULL;
     }
+    memset(user_single_asset_binding_local_var, 0, sizeof(user_single_asset_binding_t));
+    user_single_asset_binding_local_var->_library_owned = 1;
     user_single_asset_binding_local_var->permissions = permissions;
     user_single_asset_binding_local_var->user = user;
-
-    user_single_asset_binding_local_var->_library_owned = 1;
     return user_single_asset_binding_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) user_single_asset_binding_t *user_single_asset_bindi
     list_t *permissions,
     business_access_user_summary_t *user
     ) {
-    return user_single_asset_binding_create_internal (
+    user_single_asset_binding_t *result = user_single_asset_binding_create_internal (
         permissions,
         user
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void user_single_asset_binding_free(user_single_asset_binding_t *user_single_asset_binding) {
@@ -135,10 +138,15 @@ user_single_asset_binding_t *user_single_asset_binding_parseFromJSON(cJSON *user
     }
 
 
+
     user_single_asset_binding_local_var = user_single_asset_binding_create_internal (
         permissions ? permissionsList : NULL,
         user ? user_local_nonprim : NULL
         );
+
+    if (!user_single_asset_binding_local_var) {
+        goto end;
+    }
 
     return user_single_asset_binding_local_var;
 end:

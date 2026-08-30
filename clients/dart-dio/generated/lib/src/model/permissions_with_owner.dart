@@ -11,26 +11,37 @@ part 'permissions_with_owner.g.dart';
 
 class PermissionsWithOwner extends EnumClass {
 
+  /// Permission levels including the OWNER role.
   @BuiltValueEnumConst(wireName: r'ADMIN')
   static const PermissionsWithOwner ADMIN = _$ADMIN;
+  /// Permission levels including the OWNER role.
   @BuiltValueEnumConst(wireName: r'ANALYST')
   static const PermissionsWithOwner ANALYST = _$ANALYST;
+  /// Permission levels including the OWNER role.
   @BuiltValueEnumConst(wireName: r'FINANCE_MANAGER')
   static const PermissionsWithOwner FINANCE_MANAGER = _$FINANCE_MANAGER;
+  /// Permission levels including the OWNER role.
   @BuiltValueEnumConst(wireName: r'FINANCE_EDIT')
   static const PermissionsWithOwner FINANCE_EDIT = _$FINANCE_EDIT;
+  /// Permission levels including the OWNER role.
   @BuiltValueEnumConst(wireName: r'FINANCE_VIEW')
   static const PermissionsWithOwner FINANCE_VIEW = _$FINANCE_VIEW;
+  /// Permission levels including the OWNER role.
   @BuiltValueEnumConst(wireName: r'AUDIENCE_MANAGER')
   static const PermissionsWithOwner AUDIENCE_MANAGER = _$AUDIENCE_MANAGER;
+  /// Permission levels including the OWNER role.
   @BuiltValueEnumConst(wireName: r'CAMPAIGN_MANAGER')
   static const PermissionsWithOwner CAMPAIGN_MANAGER = _$CAMPAIGN_MANAGER;
+  /// Permission levels including the OWNER role.
   @BuiltValueEnumConst(wireName: r'CATALOGS_MANAGER')
   static const PermissionsWithOwner CATALOGS_MANAGER = _$CATALOGS_MANAGER;
+  /// Permission levels including the OWNER role.
   @BuiltValueEnumConst(wireName: r'CATALOGS_VIEWER')
   static const PermissionsWithOwner CATALOGS_VIEWER = _$CATALOGS_VIEWER;
+  /// Permission levels including the OWNER role.
   @BuiltValueEnumConst(wireName: r'PROFILE_PUBLISHER')
   static const PermissionsWithOwner PROFILE_PUBLISHER = _$PROFILE_PUBLISHER;
+  /// Permission levels including the OWNER role.
   @BuiltValueEnumConst(wireName: r'OWNER')
   static const PermissionsWithOwner OWNER = _$OWNER;
 

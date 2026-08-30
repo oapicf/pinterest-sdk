@@ -12,6 +12,6 @@ import org.openapitools.model.InviteResponse;
 class GetInvites200Response {
     
     String bookmark
-    /* List of invite and request data. */
+    
     List<InviteResponse> items = new ArrayList<>()
 }

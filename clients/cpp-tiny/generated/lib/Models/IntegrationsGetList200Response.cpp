@@ -102,7 +102,7 @@ Integrations_get_list_200_response::getBookmark()
 }
 
 void
-Integrations_get_list_200_response::setBookmark(std::string  bookmark)
+Integrations_get_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Integrations_get_list_200_response::getItems()
 }
 
 void
-Integrations_get_list_200_response::setItems(std::list <IntegrationRecord> items)
+Integrations_get_list_200_response::setItems(std::list<IntegrationRecord> items)
 {
 	this->items = items;
 }

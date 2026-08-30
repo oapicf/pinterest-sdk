@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **NSString*** |  | [optional] 
-**items** | [**NSArray&lt;OAIUserWebsiteSummary&gt;***](OAIUserWebsiteSummary.md) |  | 
+**items** | [**NSArray&lt;OAIUserWebsite&gt;***](OAIUserWebsite.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

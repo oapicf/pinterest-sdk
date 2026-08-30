@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Operation** | [**AdvancedAuctionOperation**](AdvancedAuctionOperation.md) |  | 
+**BidOptions** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | 
 **Country** | [**Country**](Country.md) |  | 
+**Errors** | Pointer to [**[]AdvancedAuctionOperationError**](AdvancedAuctionOperationError.md) | Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. | [optional] 
 **ItemId** | **string** | The catalog retail item id in the merchant namespace | 
 **Language** | [**Language**](Language.md) |  | 
-**BidOptions** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | 
-**Errors** | Pointer to [**[]AdvancedAuctionOperationError**](AdvancedAuctionOperationError.md) | Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. | [optional] 
+**Operation** | **string** |  | 
 **UpdateMask** | [**[]UpdateMaskBidOptionField**](UpdateMaskBidOptionField.md) | The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the &#x60;bid_options&#x60; object in the body will be set to &#x60;null&#x60;. If an item bid option record is being created, fields not specified in the update mask will be initialized to &#x60;null&#x60;. | 
 
 ## Methods
 
 ### NewAdvancedAuctionItemsSubmitRecord
 
-`func NewAdvancedAuctionItemsSubmitRecord(operation AdvancedAuctionOperation, country Country, itemId string, language Language, bidOptions AdvancedAuctionBidOptions, updateMask []UpdateMaskBidOptionField, ) *AdvancedAuctionItemsSubmitRecord`
+`func NewAdvancedAuctionItemsSubmitRecord(bidOptions AdvancedAuctionBidOptions, country Country, itemId string, language Language, operation string, updateMask []UpdateMaskBidOptionField, ) *AdvancedAuctionItemsSubmitRecord`
 
 NewAdvancedAuctionItemsSubmitRecord instantiates a new AdvancedAuctionItemsSubmitRecord object
 This constructor will assign default values to properties that have it defined,
@@ -31,24 +31,24 @@ NewAdvancedAuctionItemsSubmitRecordWithDefaults instantiates a new AdvancedAucti
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetOperation
+### GetBidOptions
 
-`func (o *AdvancedAuctionItemsSubmitRecord) GetOperation() AdvancedAuctionOperation`
+`func (o *AdvancedAuctionItemsSubmitRecord) GetBidOptions() AdvancedAuctionBidOptions`
 
-GetOperation returns the Operation field if non-nil, zero value otherwise.
+GetBidOptions returns the BidOptions field if non-nil, zero value otherwise.
 
-### GetOperationOk
+### GetBidOptionsOk
 
-`func (o *AdvancedAuctionItemsSubmitRecord) GetOperationOk() (*AdvancedAuctionOperation, bool)`
+`func (o *AdvancedAuctionItemsSubmitRecord) GetBidOptionsOk() (*AdvancedAuctionBidOptions, bool)`
 
-GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
+GetBidOptionsOk returns a tuple with the BidOptions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOperation
+### SetBidOptions
 
-`func (o *AdvancedAuctionItemsSubmitRecord) SetOperation(v AdvancedAuctionOperation)`
+`func (o *AdvancedAuctionItemsSubmitRecord) SetBidOptions(v AdvancedAuctionBidOptions)`
 
-SetOperation sets Operation field to given value.
+SetBidOptions sets BidOptions field to given value.
 
 
 ### GetCountry
@@ -70,6 +70,31 @@ and a boolean to check if the value has been set.
 
 SetCountry sets Country field to given value.
 
+
+### GetErrors
+
+`func (o *AdvancedAuctionItemsSubmitRecord) GetErrors() []AdvancedAuctionOperationError`
+
+GetErrors returns the Errors field if non-nil, zero value otherwise.
+
+### GetErrorsOk
+
+`func (o *AdvancedAuctionItemsSubmitRecord) GetErrorsOk() (*[]AdvancedAuctionOperationError, bool)`
+
+GetErrorsOk returns a tuple with the Errors field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErrors
+
+`func (o *AdvancedAuctionItemsSubmitRecord) SetErrors(v []AdvancedAuctionOperationError)`
+
+SetErrors sets Errors field to given value.
+
+### HasErrors
+
+`func (o *AdvancedAuctionItemsSubmitRecord) HasErrors() bool`
+
+HasErrors returns a boolean if a field has been set.
 
 ### GetItemId
 
@@ -111,50 +136,25 @@ and a boolean to check if the value has been set.
 SetLanguage sets Language field to given value.
 
 
-### GetBidOptions
+### GetOperation
 
-`func (o *AdvancedAuctionItemsSubmitRecord) GetBidOptions() AdvancedAuctionBidOptions`
+`func (o *AdvancedAuctionItemsSubmitRecord) GetOperation() string`
 
-GetBidOptions returns the BidOptions field if non-nil, zero value otherwise.
+GetOperation returns the Operation field if non-nil, zero value otherwise.
 
-### GetBidOptionsOk
+### GetOperationOk
 
-`func (o *AdvancedAuctionItemsSubmitRecord) GetBidOptionsOk() (*AdvancedAuctionBidOptions, bool)`
+`func (o *AdvancedAuctionItemsSubmitRecord) GetOperationOk() (*string, bool)`
 
-GetBidOptionsOk returns a tuple with the BidOptions field if it's non-nil, zero value otherwise
+GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBidOptions
+### SetOperation
 
-`func (o *AdvancedAuctionItemsSubmitRecord) SetBidOptions(v AdvancedAuctionBidOptions)`
+`func (o *AdvancedAuctionItemsSubmitRecord) SetOperation(v string)`
 
-SetBidOptions sets BidOptions field to given value.
+SetOperation sets Operation field to given value.
 
-
-### GetErrors
-
-`func (o *AdvancedAuctionItemsSubmitRecord) GetErrors() []AdvancedAuctionOperationError`
-
-GetErrors returns the Errors field if non-nil, zero value otherwise.
-
-### GetErrorsOk
-
-`func (o *AdvancedAuctionItemsSubmitRecord) GetErrorsOk() (*[]AdvancedAuctionOperationError, bool)`
-
-GetErrorsOk returns a tuple with the Errors field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetErrors
-
-`func (o *AdvancedAuctionItemsSubmitRecord) SetErrors(v []AdvancedAuctionOperationError)`
-
-SetErrors sets Errors field to given value.
-
-### HasErrors
-
-`func (o *AdvancedAuctionItemsSubmitRecord) HasErrors() bool`
-
-HasErrors returns a boolean if a field has been set.
 
 ### GetUpdateMask
 

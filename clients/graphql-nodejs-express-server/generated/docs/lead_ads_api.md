@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="AdAccountsSubscriptionsDelById"></a>
 # **AdAccountsSubscriptionsDelById**
-> AdAccountsSubscriptionsDelById(adAccountId, subscriptionId)
+> LeadSubscription AdAccountsSubscriptionsDelById(adAccountId, subscriptionId)
 
 Delete lead ads subscription
 

@@ -92,10 +92,16 @@ class CatalogsRetailProductGroupProductCounts {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsRetailProductGroupProductCounts[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsRetailProductGroupProductCounts[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsRetailProductGroupProductCounts[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsRetailProductGroupProductCounts[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'in_stock'), 'Required key "CatalogsRetailProductGroupProductCounts[in_stock]" is missing from JSON.');
+        assert(json[r'in_stock'] != null, 'Required key "CatalogsRetailProductGroupProductCounts[in_stock]" has a null value in JSON.');
+        assert(json.containsKey(r'out_of_stock'), 'Required key "CatalogsRetailProductGroupProductCounts[out_of_stock]" is missing from JSON.');
+        assert(json[r'out_of_stock'] != null, 'Required key "CatalogsRetailProductGroupProductCounts[out_of_stock]" has a null value in JSON.');
+        assert(json.containsKey(r'preorder'), 'Required key "CatalogsRetailProductGroupProductCounts[preorder]" is missing from JSON.');
+        assert(json[r'preorder'] != null, 'Required key "CatalogsRetailProductGroupProductCounts[preorder]" has a null value in JSON.');
+        assert(json.containsKey(r'total'), 'Required key "CatalogsRetailProductGroupProductCounts[total]" is missing from JSON.');
+        assert(json[r'total'] != null, 'Required key "CatalogsRetailProductGroupProductCounts[total]" has a null value in JSON.');
         return true;
       }());
 
@@ -162,27 +168,28 @@ class CatalogsRetailProductGroupProductCounts {
 }
 
 
-class CatalogsRetailProductGroupProductCountsCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsRetailProductGroupProductCountsCatalogTypeEnum._(this.value);
+enum CatalogsRetailProductGroupProductCountsCatalogTypeEnum {
+  RETAIL._(r'RETAIL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsRetailProductGroupProductCountsCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const RETAIL = CatalogsRetailProductGroupProductCountsCatalogTypeEnum._(r'RETAIL');
-
-  /// List of all possible values in this [enum][CatalogsRetailProductGroupProductCountsCatalogTypeEnum].
-  static const values = <CatalogsRetailProductGroupProductCountsCatalogTypeEnum>[
-    RETAIL,
-  ];
-
+  /// Returns the instance of [CatalogsRetailProductGroupProductCountsCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsRetailProductGroupProductCountsCatalogTypeEnum? fromJson(dynamic value) => CatalogsRetailProductGroupProductCountsCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsRetailProductGroupProductCountsCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsRetailProductGroupProductCountsCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsRetailProductGroupProductCountsCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -204,9 +211,10 @@ class CatalogsRetailProductGroupProductCountsCatalogTypeEnumTypeTransformer {
 
   const CatalogsRetailProductGroupProductCountsCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsRetailProductGroupProductCountsCatalogTypeEnum data) => data.value;
+  String encode(CatalogsRetailProductGroupProductCountsCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsRetailProductGroupProductCountsCatalogTypeEnum.
+  /// Returns the instance of [CatalogsRetailProductGroupProductCountsCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -215,6 +223,9 @@ class CatalogsRetailProductGroupProductCountsCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsRetailProductGroupProductCountsCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsRetailProductGroupProductCountsCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'RETAIL': return CatalogsRetailProductGroupProductCountsCatalogTypeEnum.RETAIL;
@@ -227,7 +238,7 @@ class CatalogsRetailProductGroupProductCountsCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsRetailProductGroupProductCountsCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsRetailProductGroupProductCountsCatalogTypeEnumTypeTransformer? _instance;
 }
 

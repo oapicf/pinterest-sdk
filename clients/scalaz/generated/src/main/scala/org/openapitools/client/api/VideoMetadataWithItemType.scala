@@ -17,14 +17,36 @@ case class VideoMetadataWithItemType (
   duration: Option[BigDecimal],
 /* Height (in pixels). Field maybe null after creation due to video processing time. */
   height: Option[Integer],
-itemType: Option[String],
+/* Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload. */
+  itemType: ItemType,
 /* Video url (720p).  **Note:** This field is limited and not available to all apps. */
   videoUrl: Option[String],
+/* Video url (HLS).  **Note:** This field is limited and not available to all apps. */
+  videoUrlHls: Option[String],
 /* Width (in pixels). Field maybe null after creation due to video processing time. */
   width: Option[Integer])
 
 object VideoMetadataWithItemType {
   import DateTimeCodecs._
+  sealed trait ItemType
+  case object Video extends ItemType
+
+  object ItemType {
+    def toItemType(s: String): Option[ItemType] = s match {
+      case "Video" => Some(Video)
+      case _ => None
+    }
+
+    def fromItemType(x: ItemType): String = x match {
+      case Video => "Video"
+    }
+  }
+
+  implicit val ItemTypeEnumEncoder: EncodeJson[ItemType] =
+    EncodeJson[ItemType](is => StringEncodeJson(ItemType.fromItemType(is)))
+
+  implicit val ItemTypeEnumDecoder: DecodeJson[ItemType] =
+    DecodeJson.optionDecoder[ItemType](n => n.string.flatMap(jStr => ItemType.toItemType(jStr)), "ItemType failed to de-serialize")
 
   implicit val VideoMetadataWithItemTypeCodecJson: CodecJson[VideoMetadataWithItemType] = CodecJson.derive[VideoMetadataWithItemType]
   implicit val VideoMetadataWithItemTypeDecoder: EntityDecoder[VideoMetadataWithItemType] = jsonOf[VideoMetadataWithItemType]

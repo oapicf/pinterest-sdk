@@ -99,7 +99,7 @@ AnalyticsDailyMetrics::getDataStatus()
 }
 
 void
-AnalyticsDailyMetrics::setDataStatus(DataStatus  data_status)
+AnalyticsDailyMetrics::setDataStatus(DataStatus data_status)
 {
 	this->data_status = data_status;
 }
@@ -111,19 +111,19 @@ AnalyticsDailyMetrics::getDate()
 }
 
 void
-AnalyticsDailyMetrics::setDate(std::string  date)
+AnalyticsDailyMetrics::setDate(std::string date)
 {
 	this->date = date;
 }
 
-Map<string, string>
+std::map<std::string, long>
 AnalyticsDailyMetrics::getMetrics()
 {
 	return metrics;
 }
 
 void
-AnalyticsDailyMetrics::setMetrics(Map <string, string> metrics)
+AnalyticsDailyMetrics::setMetrics(std::map<std::string, long> metrics)
 {
 	this->metrics = metrics;
 }

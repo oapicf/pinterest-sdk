@@ -15,36 +15,29 @@
 
 typedef struct ads_credit_discounts_response_t ads_credit_discounts_response_t;
 
-
-// Enum DISCOUNTTYPE for ads_credit_discounts_response
-
-typedef enum  { pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_NULL = 0, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_COUPON, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_CREDIT, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_COUPON_APPLIED, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_CREDIT_APPLIED, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_MARKETING_OFFER_CREDIT, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_MARKETING_OFFER_CREDIT_APPLIED, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_GOODWILL_CREDIT, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_GOODWILL_CREDIT_APPLIED, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_INTERNAL_CREDIT, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_INTERNAL_CREDIT_APPLIED, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_PREPAID_CREDIT, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_PREPAID_CREDIT_APPLIED, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_SALES_INCENTIVE_CREDIT, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_SALES_INCENTIVE_CREDIT_APPLIED, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_CREDIT_EXPIRED, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_FUTURE_CREDIT, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_REFERRAL_CREDIT, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_INVOICE_SALES_INCENTIVE_CREDIT, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_INVOICE_SALES_INCENTIVE_CREDIT_APPLIED, pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_PREPAID_CREDIT_REFUND } pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e;
-
-char* ads_credit_discounts_response_discount_type_ToString(pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_type);
-
-pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e ads_credit_discounts_response_discount_type_FromString(char* discount_type);
+#include "ads_credit_discount_type.h"
 
 
 
 typedef struct ads_credit_discounts_response_t {
-    int active; //boolean
+    int *active; //boolean
     char *advertiser_id; // string
     char *discount_currency; // string
-    double discount_in_micro_currency; //numeric
-    pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_type; //enum
-    double remaining_discount_in_micro_currency; //numeric
+    double *discount_in_micro_currency; //numeric
+    ads_credit_discount_type_t *discount_type; // custom
+    double *remaining_discount_in_micro_currency; //numeric
     char *title; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ads_credit_discounts_response_t;
 
 __attribute__((deprecated)) ads_credit_discounts_response_t *ads_credit_discounts_response_create(
-    int active,
+    int *active,
     char *advertiser_id,
     char *discount_currency,
-    double discount_in_micro_currency,
-    pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_type,
-    double remaining_discount_in_micro_currency,
+    double *discount_in_micro_currency,
+    ads_credit_discount_type_t *discount_type,
+    double *remaining_discount_in_micro_currency,
     char *title
 );
 

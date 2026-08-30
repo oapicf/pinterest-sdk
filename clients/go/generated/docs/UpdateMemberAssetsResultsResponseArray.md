@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | Pointer to [**[]UpdateMemberAssetsResultsResponseArrayItemsInner**](UpdateMemberAssetsResultsResponseArrayItemsInner.md) | List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned. | [optional] 
+**Items** | Pointer to [**[]UpdateMemberAssetResultItem**](UpdateMemberAssetResultItem.md) | List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned. | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetItems
 
-`func (o *UpdateMemberAssetsResultsResponseArray) GetItems() []UpdateMemberAssetsResultsResponseArrayItemsInner`
+`func (o *UpdateMemberAssetsResultsResponseArray) GetItems() []UpdateMemberAssetResultItem`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *UpdateMemberAssetsResultsResponseArray) GetItemsOk() (*[]UpdateMemberAssetsResultsResponseArrayItemsInner, bool)`
+`func (o *UpdateMemberAssetsResultsResponseArray) GetItemsOk() (*[]UpdateMemberAssetResultItem, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *UpdateMemberAssetsResultsResponseArray) SetItems(v []UpdateMemberAssetsResultsResponseArrayItemsInner)`
+`func (o *UpdateMemberAssetsResultsResponseArray) SetItems(v []UpdateMemberAssetResultItem)`
 
 SetItems sets Items field to given value.
 

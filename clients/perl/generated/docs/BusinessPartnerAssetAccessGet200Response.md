@@ -9,7 +9,7 @@ use WWW::OpenAPIClient::Object::BusinessPartnerAssetAccessGet200Response;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] 
-**items** | [**ARRAY[GetPartnerAssetsResponse]**](GetPartnerAssetsResponse.md) | List assets on which you granted access to your partner or assets on which your partner has granted you access. | 
+**items** | [**ARRAY[BaseBusinessAssets]**](BaseBusinessAssets.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

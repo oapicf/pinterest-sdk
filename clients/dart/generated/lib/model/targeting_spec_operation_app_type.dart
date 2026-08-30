@@ -20,9 +20,9 @@ class TargetingSpecOperationAppType {
 
   TargetingSpecOperationAppTypeFieldEnum field;
 
-  TargetingSpecOperationAppTypeOperationEnum operation;
+  TargetingSpecListOperation operation;
 
-  List<TargetingSpecAppType>? values;
+  List<TargetingSpecAppType> values;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TargetingSpecOperationAppType &&
@@ -35,7 +35,7 @@ class TargetingSpecOperationAppType {
     // ignore: unnecessary_parenthesis
     (field.hashCode) +
     (operation.hashCode) +
-    (values == null ? 0 : values!.hashCode);
+    (values.hashCode);
 
   @override
   String toString() => 'TargetingSpecOperationAppType[field=$field, operation=$operation, values=$values]';
@@ -44,11 +44,7 @@ class TargetingSpecOperationAppType {
     final json = <String, dynamic>{};
       json[r'field'] = this.field;
       json[r'operation'] = this.operation;
-    if (this.values != null) {
       json[r'values'] = this.values;
-    } else {
-      json[r'values'] = null;
-    }
     return json;
   }
 
@@ -63,16 +59,18 @@ class TargetingSpecOperationAppType {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "TargetingSpecOperationAppType[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "TargetingSpecOperationAppType[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'field'), 'Required key "TargetingSpecOperationAppType[field]" is missing from JSON.');
+        assert(json[r'field'] != null, 'Required key "TargetingSpecOperationAppType[field]" has a null value in JSON.');
+        assert(json.containsKey(r'operation'), 'Required key "TargetingSpecOperationAppType[operation]" is missing from JSON.');
+        assert(json[r'operation'] != null, 'Required key "TargetingSpecOperationAppType[operation]" has a null value in JSON.');
+        assert(json.containsKey(r'values'), 'Required key "TargetingSpecOperationAppType[values]" is missing from JSON.');
+        assert(json[r'values'] != null, 'Required key "TargetingSpecOperationAppType[values]" has a null value in JSON.');
         return true;
       }());
 
       return TargetingSpecOperationAppType(
         field: TargetingSpecOperationAppTypeFieldEnum.fromJson(json[r'field'])!,
-        operation: TargetingSpecOperationAppTypeOperationEnum.fromJson(json[r'operation'])!,
+        operation: TargetingSpecListOperation.fromJson(json[r'operation'])!,
         values: TargetingSpecAppType.listFromJson(json[r'values']),
       );
     }
@@ -128,27 +126,28 @@ class TargetingSpecOperationAppType {
 }
 
 
-class TargetingSpecOperationAppTypeFieldEnum {
-  /// Instantiate a new enum with the provided [value].
-  const TargetingSpecOperationAppTypeFieldEnum._(this.value);
+enum TargetingSpecOperationAppTypeFieldEnum {
+  APPTYPE._(r'APPTYPE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const TargetingSpecOperationAppTypeFieldEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const APPTYPE = TargetingSpecOperationAppTypeFieldEnum._(r'APPTYPE');
-
-  /// List of all possible values in this [enum][TargetingSpecOperationAppTypeFieldEnum].
-  static const values = <TargetingSpecOperationAppTypeFieldEnum>[
-    APPTYPE,
-  ];
-
+  /// Returns the instance of [TargetingSpecOperationAppTypeFieldEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static TargetingSpecOperationAppTypeFieldEnum? fromJson(dynamic value) => TargetingSpecOperationAppTypeFieldEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [TargetingSpecOperationAppTypeFieldEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<TargetingSpecOperationAppTypeFieldEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <TargetingSpecOperationAppTypeFieldEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -170,9 +169,10 @@ class TargetingSpecOperationAppTypeFieldEnumTypeTransformer {
 
   const TargetingSpecOperationAppTypeFieldEnumTypeTransformer._();
 
-  String encode(TargetingSpecOperationAppTypeFieldEnum data) => data.value;
+  String encode(TargetingSpecOperationAppTypeFieldEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a TargetingSpecOperationAppTypeFieldEnum.
+  /// Returns the instance of [TargetingSpecOperationAppTypeFieldEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -181,6 +181,9 @@ class TargetingSpecOperationAppTypeFieldEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   TargetingSpecOperationAppTypeFieldEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is TargetingSpecOperationAppTypeFieldEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'APPTYPE': return TargetingSpecOperationAppTypeFieldEnum.APPTYPE;
@@ -193,85 +196,8 @@ class TargetingSpecOperationAppTypeFieldEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [TargetingSpecOperationAppTypeFieldEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static TargetingSpecOperationAppTypeFieldEnumTypeTransformer? _instance;
-}
-
-
-
-class TargetingSpecOperationAppTypeOperationEnum {
-  /// Instantiate a new enum with the provided [value].
-  const TargetingSpecOperationAppTypeOperationEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const SET = TargetingSpecOperationAppTypeOperationEnum._(r'SET');
-  static const ADD = TargetingSpecOperationAppTypeOperationEnum._(r'ADD');
-  static const REMOVE = TargetingSpecOperationAppTypeOperationEnum._(r'REMOVE');
-
-  /// List of all possible values in this [enum][TargetingSpecOperationAppTypeOperationEnum].
-  static const values = <TargetingSpecOperationAppTypeOperationEnum>[
-    SET,
-    ADD,
-    REMOVE,
-  ];
-
-  static TargetingSpecOperationAppTypeOperationEnum? fromJson(dynamic value) => TargetingSpecOperationAppTypeOperationEnumTypeTransformer().decode(value);
-
-  static List<TargetingSpecOperationAppTypeOperationEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <TargetingSpecOperationAppTypeOperationEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = TargetingSpecOperationAppTypeOperationEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [TargetingSpecOperationAppTypeOperationEnum] to String,
-/// and [decode] dynamic data back to [TargetingSpecOperationAppTypeOperationEnum].
-class TargetingSpecOperationAppTypeOperationEnumTypeTransformer {
-  factory TargetingSpecOperationAppTypeOperationEnumTypeTransformer() => _instance ??= const TargetingSpecOperationAppTypeOperationEnumTypeTransformer._();
-
-  const TargetingSpecOperationAppTypeOperationEnumTypeTransformer._();
-
-  String encode(TargetingSpecOperationAppTypeOperationEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a TargetingSpecOperationAppTypeOperationEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  TargetingSpecOperationAppTypeOperationEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'SET': return TargetingSpecOperationAppTypeOperationEnum.SET;
-        case r'ADD': return TargetingSpecOperationAppTypeOperationEnum.ADD;
-        case r'REMOVE': return TargetingSpecOperationAppTypeOperationEnum.REMOVE;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [TargetingSpecOperationAppTypeOperationEnumTypeTransformer] instance.
-  static TargetingSpecOperationAppTypeOperationEnumTypeTransformer? _instance;
 }
 
 

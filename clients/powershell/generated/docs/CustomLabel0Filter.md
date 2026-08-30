@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CUSTOMLABEL0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**CUSTOMLABEL0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
 
 ## Examples
 

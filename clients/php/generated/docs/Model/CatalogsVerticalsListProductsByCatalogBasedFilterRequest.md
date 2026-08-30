@@ -1,10 +1,10 @@
-# # CatalogsVerticalsListProductsByCatalogBasedFilterRequest
+# CatalogsVerticalsListProductsByCatalogBasedFilterRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **string** | Catalog id pertaining to the creative assets product group. |
+**catalog_id** | **string** | Catalog ID pertaining to the product group. |
 **catalog_type** | **string** |  |
 **country** | [**\OpenAPI\Client\Model\Country**](Country.md) |  |
 **filters** | [**\OpenAPI\Client\Model\CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  |

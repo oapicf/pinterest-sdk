@@ -12,7 +12,7 @@ import org.openapitools.model.Country;
 
 @Canonical
 class CatalogsVerticalsListProductsByCatalogBasedFilterRequest {
-    /* Catalog id pertaining to the creative assets product group. */
+    /* Catalog ID pertaining to the product group. */
     String catalogId
 
     enum CatalogTypeEnum {

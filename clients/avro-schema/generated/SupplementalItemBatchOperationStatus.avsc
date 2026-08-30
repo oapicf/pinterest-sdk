@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The status of the batch operation",
+  "name": "SupplementalItemBatchOperationStatus",
+  "symbols": [
+    "PROCESSING",
+    "COMPLETED",
+    "FAILED"
+  ]
+}

@@ -10,5 +10,5 @@
   binary().
 
 openapi_label_type() ->
-  elements([<<"BRAND">>, <<"CUSTOM">>, <<"">>]).
+  elements([<<"BRAND">>, <<"CUSTOM">>]).
 

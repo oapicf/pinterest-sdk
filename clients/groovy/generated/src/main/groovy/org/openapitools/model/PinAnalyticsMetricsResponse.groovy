@@ -7,12 +7,12 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import org.openapitools.model.PinAnalyticsMetricsResponseDailyMetricsInner;
+import org.openapitools.model.PinAnalyticsDailyMetrics;
 
 @Canonical
 class PinAnalyticsMetricsResponse {
     /* Array with the requested daily metric records */
-    List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>()
+    List<PinAnalyticsDailyMetrics> dailyMetrics = new ArrayList<>()
     /* The lifetime metric name and value. */
     Map<String, Integer> lifetimeMetrics = new HashMap<>()
     /* The metric name and value over the requested period for each requested metric */

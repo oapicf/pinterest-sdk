@@ -102,7 +102,7 @@ CatalogsProductGroupMultipleGenderCriteria::isNegated()
 }
 
 void
-CatalogsProductGroupMultipleGenderCriteria::setNegated(bool  negated)
+CatalogsProductGroupMultipleGenderCriteria::setNegated(bool negated)
 {
 	this->negated = negated;
 }
@@ -114,7 +114,7 @@ CatalogsProductGroupMultipleGenderCriteria::getValues()
 }
 
 void
-CatalogsProductGroupMultipleGenderCriteria::setValues(std::list <Gender> values)
+CatalogsProductGroupMultipleGenderCriteria::setValues(std::list<Gender> values)
 {
 	this->values = values;
 }

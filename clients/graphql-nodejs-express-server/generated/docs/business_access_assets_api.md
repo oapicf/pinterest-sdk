@@ -20,35 +20,35 @@ Method | HTTP request | Description
 
 <a name="AssetGroupCreate"></a>
 # **AssetGroupCreate**
-> CreateAssetGroupResponse AssetGroupCreate(businessId, createAssetGroupBody)
+> AssetGroupInput AssetGroupCreate(businessId, assetGroupInputCreate)
 
 Create a new asset group.
 
-Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 <a name="AssetGroupDelete"></a>
 # **AssetGroupDelete**
-> DeleteAssetGroupResponse AssetGroupDelete(businessId, deleteAssetGroupBody)
+> AssetGroupDeletion AssetGroupDelete(businessId, assetGroupDeletionDelete)
 
 Delete asset groups.
 
 Delete a batch of asset groups.
 <a name="AssetGroupUpdate"></a>
 # **AssetGroupUpdate**
-> UpdateAssetGroupResponse AssetGroupUpdate(businessId, updateAssetGroupBody)
+> AssetGroupModification AssetGroupUpdate(businessId, assetGroupModificationReadOrUpdate)
 
 Update asset groups.
 
 Update a batch of asset groups with the specified parameters.
 <a name="BusinessAssetMembersGet"></a>
 # **BusinessAssetMembersGet**
-> BusinessAssetMembersGet200Response BusinessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex)
+> BusinessAssetMembersGet200Response BusinessAssetMembersGet(businessId, assetId, startIndex, fetchSystemUsers, bookmark, pageSize)
 
 Get members with access to asset
 
 Get all the members the requesting business has granted access to on the given asset.
 <a name="BusinessAssetPartnersGet"></a>
 # **BusinessAssetPartnersGet**
-> BusinessAssetPartnersGet200Response BusinessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize)
+> BusinessAssetMembersGet200Response BusinessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize)
 
 Get partners with access to asset
 
@@ -62,14 +62,14 @@ List business assets
 Get all the assets the requesting business has access to. This includes assets the business owns and assets the business has access to through partnerships.
 <a name="BusinessMemberAssetsGet"></a>
 # **BusinessMemberAssetsGet**
-> BusinessMemberAssetsGet200Response BusinessMemberAssetsGet(businessId, memberId, assetType, startIndex, bookmark, pageSize)
+> BusinessMemberAssetsGetResponse BusinessMemberAssetsGet(businessId, memberId, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, assetPermissionType, adAccountStatuses, bookmark, pageSize)
 
 Get assets assigned to a member
 
 Get assets on which you assigned asset permissions to the given member. Can be used to: - get all assets, regardless of asset type or - get assets of one asset type by using the asset_type query. The return response will include the permissions the member has to that asset and the asset type.
 <a name="BusinessMembersAssetAccessDelete"></a>
 # **BusinessMembersAssetAccessDelete**
-> DeleteMemberAccessResultsResponseArray BusinessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest)
+> DeleteMemberAccessResultsResponseArray BusinessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteBody)
 
 Delete member access to asset
 
@@ -80,17 +80,17 @@ Terminate multiple members&#39; access to an asset.
 
 Assign/Update member asset permissions
 
-Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 <a name="BusinessPartnerAssetAccessGet"></a>
 # **BusinessPartnerAssetAccessGet**
-> BusinessPartnerAssetAccessGet200Response BusinessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark)
+> BusinessPartnerAssetAccessGet200Response BusinessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, bookmark, pageSize)
 
 Get assets assigned to a partner or assets assigned by a partner
 
 Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type&#x3D;INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type&#x3D;EXTERNAL, you will retrieve the partner&#39;s business assets that the partner has granted you access to.
 <a name="DeletePartnerAssetAccessHandlerImpl"></a>
 # **DeletePartnerAssetAccessHandlerImpl**
-> DeletePartnerAssetsResultsResponseArray DeletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody)
+> DeletePartnerAssetAccessResultsResponseArray DeletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody)
 
 Delete partner access to asset
 

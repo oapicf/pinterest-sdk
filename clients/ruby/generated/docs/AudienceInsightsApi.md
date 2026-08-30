@@ -10,11 +10,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## audience_insights_get
 
-> <AudienceInsightsResponse> audience_insights_get(ad_account_id, audience_insight_type)
+> <AudienceInsights> audience_insights_get(ad_account_id, audience_insight_type)
 
 Get audience insights
 
-Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
+Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 
 ### Examples
 
@@ -47,7 +47,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AudienceInsightsResponse>, Integer, Hash)> audience_insights_get_with_http_info(ad_account_id, audience_insight_type)
+> <Array(<AudienceInsights>, Integer, Hash)> audience_insights_get_with_http_info(ad_account_id, audience_insight_type)
 
 ```ruby
 begin
@@ -55,7 +55,7 @@ begin
   data, status_code, headers = api_instance.audience_insights_get_with_http_info(ad_account_id, audience_insight_type)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <AudienceInsightsResponse>
+  p data # => <AudienceInsights>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudienceInsightsApi->audience_insights_get_with_http_info: #{e}"
 end
@@ -66,11 +66,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **audience_insight_type** | [**AudienceInsightType**](.md) | Type of audience insights. | [default to &#39;YOUR_TOTAL_AUDIENCE&#39;] |
+| **audience_insight_type** | [**AudienceInsightType**](.md) | Type of audience insights. |  |
 
 ### Return type
 
-[**AudienceInsightsResponse**](AudienceInsightsResponse.md)
+[**AudienceInsights**](AudienceInsights.md)
 
 ### Authorization
 
@@ -84,7 +84,7 @@ end
 
 ## audience_insights_scope_and_type_get
 
-> <AudienceDefinitionResponse> audience_insights_scope_and_type_get(ad_account_id)
+> <AudienceInsightsScopeAndTypeGet200Response> audience_insights_scope_and_type_get(ad_account_id)
 
 Get audience insights scope and type
 
@@ -120,7 +120,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AudienceDefinitionResponse>, Integer, Hash)> audience_insights_scope_and_type_get_with_http_info(ad_account_id)
+> <Array(<AudienceInsightsScopeAndTypeGet200Response>, Integer, Hash)> audience_insights_scope_and_type_get_with_http_info(ad_account_id)
 
 ```ruby
 begin
@@ -128,7 +128,7 @@ begin
   data, status_code, headers = api_instance.audience_insights_scope_and_type_get_with_http_info(ad_account_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <AudienceDefinitionResponse>
+  p data # => <AudienceInsightsScopeAndTypeGet200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudienceInsightsApi->audience_insights_scope_and_type_get_with_http_info: #{e}"
 end
@@ -142,7 +142,7 @@ end
 
 ### Return type
 
-[**AudienceDefinitionResponse**](AudienceDefinitionResponse.md)
+[**AudienceInsightsScopeAndTypeGet200Response**](AudienceInsightsScopeAndTypeGet200Response.md)
 
 ### Authorization
 

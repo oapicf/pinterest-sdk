@@ -10,11 +10,12 @@ CustomerList::CustomerList()
 	created_time = float(0);
 	exceptions = null;
 	id = std::string();
+	is_nca = bool(false);
 	name = std::string();
 	num_batches = float(0);
 	num_removed_user_records = float(0);
 	num_uploaded_user_records = float(0);
-	status = std::string();
+	status = null;
 	type = std::string();
 	updated_time = float(0);
 }
@@ -87,6 +88,19 @@ CustomerList::fromJson(std::string jsonObj)
 
     }
 
+    const char *is_ncaKey = "is_nca";
+
+    if(object.has_key(is_ncaKey))
+    {
+        bourne::json value = object[is_ncaKey];
+
+
+
+        jsonToValue(&is_nca, value, "bool");
+
+
+    }
+
     const char *nameKey = "name";
 
     if(object.has_key(nameKey))
@@ -147,8 +161,9 @@ CustomerList::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&status, value, "std::string");
 
+        CustomerListStatus* obj = &status;
+		obj->fromJson(value.dump());
 
     }
 
@@ -218,6 +233,13 @@ CustomerList::toJson()
 
 
 
+    object["is_nca"] = isIsNca();
+
+
+
+
+
+
     object["name"] = getName();
 
 
@@ -246,8 +268,8 @@ CustomerList::toJson()
 
 
 
-    object["status"] = getStatus();
 
+	object["status"] = getStatus().toJson();
 
 
 
@@ -275,7 +297,7 @@ CustomerList::getAdAccountId()
 }
 
 void
-CustomerList::setAdAccountId(std::string  ad_account_id)
+CustomerList::setAdAccountId(std::string ad_account_id)
 {
 	this->ad_account_id = ad_account_id;
 }
@@ -287,7 +309,7 @@ CustomerList::getCreatedTime()
 }
 
 void
-CustomerList::setCreatedTime(long  created_time)
+CustomerList::setCreatedTime(long created_time)
 {
 	this->created_time = created_time;
 }
@@ -299,7 +321,7 @@ CustomerList::getExceptions()
 }
 
 void
-CustomerList::setExceptions(Object  exceptions)
+CustomerList::setExceptions(Object exceptions)
 {
 	this->exceptions = exceptions;
 }
@@ -311,9 +333,21 @@ CustomerList::getId()
 }
 
 void
-CustomerList::setId(std::string  id)
+CustomerList::setId(std::string id)
 {
 	this->id = id;
+}
+
+bool
+CustomerList::isIsNca()
+{
+	return is_nca;
+}
+
+void
+CustomerList::setIsNca(bool is_nca)
+{
+	this->is_nca = is_nca;
 }
 
 std::string
@@ -323,7 +357,7 @@ CustomerList::getName()
 }
 
 void
-CustomerList::setName(std::string  name)
+CustomerList::setName(std::string name)
 {
 	this->name = name;
 }
@@ -335,7 +369,7 @@ CustomerList::getNumBatches()
 }
 
 void
-CustomerList::setNumBatches(long  num_batches)
+CustomerList::setNumBatches(long num_batches)
 {
 	this->num_batches = num_batches;
 }
@@ -347,7 +381,7 @@ CustomerList::getNumRemovedUserRecords()
 }
 
 void
-CustomerList::setNumRemovedUserRecords(long  num_removed_user_records)
+CustomerList::setNumRemovedUserRecords(long num_removed_user_records)
 {
 	this->num_removed_user_records = num_removed_user_records;
 }
@@ -359,19 +393,19 @@ CustomerList::getNumUploadedUserRecords()
 }
 
 void
-CustomerList::setNumUploadedUserRecords(long  num_uploaded_user_records)
+CustomerList::setNumUploadedUserRecords(long num_uploaded_user_records)
 {
 	this->num_uploaded_user_records = num_uploaded_user_records;
 }
 
-std::string
+CustomerListStatus
 CustomerList::getStatus()
 {
 	return status;
 }
 
 void
-CustomerList::setStatus(std::string  status)
+CustomerList::setStatus(CustomerListStatus status)
 {
 	this->status = status;
 }
@@ -383,7 +417,7 @@ CustomerList::getType()
 }
 
 void
-CustomerList::setType(std::string  type)
+CustomerList::setType(std::string type)
 {
 	this->type = type;
 }
@@ -395,7 +429,7 @@ CustomerList::getUpdatedTime()
 }
 
 void
-CustomerList::setUpdatedTime(long  updated_time)
+CustomerList::setUpdatedTime(long updated_time)
 {
 	this->updated_time = updated_time;
 }

@@ -2,24 +2,25 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.model.CatalogsItemValidationDetails;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsItemValidationWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsItemValidationWarnings {
 
   private CatalogsItemValidationDetails AD_IMAGE_0_LINK_DUPLICATED;
@@ -440,11 +441,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_0_LINK_DUPLICATED
+   * ad_image_0_link is duplicated with another ad image link.
    * @return AD_IMAGE_0_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_0_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_0_LINK_DUPLICATED", description = "ad_image_0_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_0_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE0LINKDUPLICATED() {
     return AD_IMAGE_0_LINK_DUPLICATED;
@@ -460,11 +461,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_0_LINK_LENGTH_TOO_LONG
+   * Ad image link 0 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_0_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_0_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_0_LINK_LENGTH_TOO_LONG", description = "Ad image link 0 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_0_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE0LINKLENGTHTOOLONG() {
     return AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
@@ -480,11 +481,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_0_LINK_REQUIRED
+   * Ad image link 0 is required because an image tag was provided.
    * @return AD_IMAGE_0_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_0_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_0_LINK_REQUIRED", description = "Ad image link 0 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_0_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE0LINKREQUIRED() {
     return AD_IMAGE_0_LINK_REQUIRED;
@@ -500,11 +501,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_0_LINK_WARNING
+   * Ad image link 0 format is unsupported.
    * @return AD_IMAGE_0_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_0_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_0_LINK_WARNING", description = "Ad image link 0 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_0_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE0LINKWARNING() {
     return AD_IMAGE_0_LINK_WARNING;
@@ -520,11 +521,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_0_TAG_DUPLICATED
+   * ad_image_0_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_0_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_0_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_0_TAG_DUPLICATED", description = "ad_image_0_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_0_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE0TAGDUPLICATED() {
     return AD_IMAGE_0_TAG_DUPLICATED;
@@ -540,11 +541,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_0_TAG_LENGTH_TOO_LONG
+   * Ad image tag 0 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_0_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_0_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_0_TAG_LENGTH_TOO_LONG", description = "Ad image tag 0 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_0_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE0TAGLENGTHTOOLONG() {
     return AD_IMAGE_0_TAG_LENGTH_TOO_LONG;
@@ -560,11 +561,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_0_TAG_REQUIRED
+   * Ad image tag 0 is required because an image link was provided.
    * @return AD_IMAGE_0_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_0_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_0_TAG_REQUIRED", description = "Ad image tag 0 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_0_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE0TAGREQUIRED() {
     return AD_IMAGE_0_TAG_REQUIRED;
@@ -580,11 +581,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_10_LINK_DUPLICATED
+   * ad_image_10_link is duplicated with another ad image link.
    * @return AD_IMAGE_10_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_10_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_10_LINK_DUPLICATED", description = "ad_image_10_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_10_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE10LINKDUPLICATED() {
     return AD_IMAGE_10_LINK_DUPLICATED;
@@ -600,11 +601,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_10_LINK_LENGTH_TOO_LONG
+   * Ad image link 10 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_10_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_10_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_10_LINK_LENGTH_TOO_LONG", description = "Ad image link 10 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_10_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE10LINKLENGTHTOOLONG() {
     return AD_IMAGE_10_LINK_LENGTH_TOO_LONG;
@@ -620,11 +621,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_10_LINK_REQUIRED
+   * Ad image link 10 is required because an image tag was provided.
    * @return AD_IMAGE_10_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_10_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_10_LINK_REQUIRED", description = "Ad image link 10 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_10_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE10LINKREQUIRED() {
     return AD_IMAGE_10_LINK_REQUIRED;
@@ -640,11 +641,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_10_LINK_WARNING
+   * Ad image link 10 format is unsupported.
    * @return AD_IMAGE_10_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_10_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_10_LINK_WARNING", description = "Ad image link 10 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_10_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE10LINKWARNING() {
     return AD_IMAGE_10_LINK_WARNING;
@@ -660,11 +661,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_10_TAG_DUPLICATED
+   * ad_image_10_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_10_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_10_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_10_TAG_DUPLICATED", description = "ad_image_10_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_10_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE10TAGDUPLICATED() {
     return AD_IMAGE_10_TAG_DUPLICATED;
@@ -680,11 +681,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_10_TAG_LENGTH_TOO_LONG
+   * Ad image tag 10 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_10_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_10_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_10_TAG_LENGTH_TOO_LONG", description = "Ad image tag 10 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_10_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE10TAGLENGTHTOOLONG() {
     return AD_IMAGE_10_TAG_LENGTH_TOO_LONG;
@@ -700,11 +701,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_10_TAG_REQUIRED
+   * Ad image tag 10 is required because an image link was provided.
    * @return AD_IMAGE_10_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_10_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_10_TAG_REQUIRED", description = "Ad image tag 10 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_10_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE10TAGREQUIRED() {
     return AD_IMAGE_10_TAG_REQUIRED;
@@ -720,11 +721,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_11_LINK_DUPLICATED
+   * ad_image_11_link is duplicated with another ad image link.
    * @return AD_IMAGE_11_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_11_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_11_LINK_DUPLICATED", description = "ad_image_11_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_11_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE11LINKDUPLICATED() {
     return AD_IMAGE_11_LINK_DUPLICATED;
@@ -740,11 +741,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_11_LINK_LENGTH_TOO_LONG
+   * Ad image link 11 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_11_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_11_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_11_LINK_LENGTH_TOO_LONG", description = "Ad image link 11 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_11_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE11LINKLENGTHTOOLONG() {
     return AD_IMAGE_11_LINK_LENGTH_TOO_LONG;
@@ -760,11 +761,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_11_LINK_REQUIRED
+   * Ad image link 11 is required because an image tag was provided.
    * @return AD_IMAGE_11_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_11_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_11_LINK_REQUIRED", description = "Ad image link 11 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_11_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE11LINKREQUIRED() {
     return AD_IMAGE_11_LINK_REQUIRED;
@@ -780,11 +781,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_11_LINK_WARNING
+   * Ad image link 11 format is unsupported.
    * @return AD_IMAGE_11_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_11_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_11_LINK_WARNING", description = "Ad image link 11 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_11_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE11LINKWARNING() {
     return AD_IMAGE_11_LINK_WARNING;
@@ -800,11 +801,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_11_TAG_DUPLICATED
+   * ad_image_11_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_11_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_11_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_11_TAG_DUPLICATED", description = "ad_image_11_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_11_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE11TAGDUPLICATED() {
     return AD_IMAGE_11_TAG_DUPLICATED;
@@ -820,11 +821,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_11_TAG_LENGTH_TOO_LONG
+   * Ad image tag 11 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_11_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_11_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_11_TAG_LENGTH_TOO_LONG", description = "Ad image tag 11 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_11_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE11TAGLENGTHTOOLONG() {
     return AD_IMAGE_11_TAG_LENGTH_TOO_LONG;
@@ -840,11 +841,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_11_TAG_REQUIRED
+   * Ad image tag 11 is required because an image link was provided.
    * @return AD_IMAGE_11_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_11_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_11_TAG_REQUIRED", description = "Ad image tag 11 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_11_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE11TAGREQUIRED() {
     return AD_IMAGE_11_TAG_REQUIRED;
@@ -860,11 +861,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_12_LINK_DUPLICATED
+   * ad_image_12_link is duplicated with another ad image link.
    * @return AD_IMAGE_12_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_12_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_12_LINK_DUPLICATED", description = "ad_image_12_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_12_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE12LINKDUPLICATED() {
     return AD_IMAGE_12_LINK_DUPLICATED;
@@ -880,11 +881,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_12_LINK_LENGTH_TOO_LONG
+   * Ad image link 12 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_12_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_12_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_12_LINK_LENGTH_TOO_LONG", description = "Ad image link 12 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_12_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE12LINKLENGTHTOOLONG() {
     return AD_IMAGE_12_LINK_LENGTH_TOO_LONG;
@@ -900,11 +901,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_12_LINK_REQUIRED
+   * Ad image link 12 is required because an image tag was provided.
    * @return AD_IMAGE_12_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_12_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_12_LINK_REQUIRED", description = "Ad image link 12 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_12_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE12LINKREQUIRED() {
     return AD_IMAGE_12_LINK_REQUIRED;
@@ -920,11 +921,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_12_LINK_WARNING
+   * Ad image link 12 format is unsupported.
    * @return AD_IMAGE_12_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_12_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_12_LINK_WARNING", description = "Ad image link 12 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_12_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE12LINKWARNING() {
     return AD_IMAGE_12_LINK_WARNING;
@@ -940,11 +941,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_12_TAG_DUPLICATED
+   * ad_image_12_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_12_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_12_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_12_TAG_DUPLICATED", description = "ad_image_12_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_12_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE12TAGDUPLICATED() {
     return AD_IMAGE_12_TAG_DUPLICATED;
@@ -960,11 +961,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_12_TAG_LENGTH_TOO_LONG
+   * Ad image tag 12 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_12_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_12_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_12_TAG_LENGTH_TOO_LONG", description = "Ad image tag 12 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_12_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE12TAGLENGTHTOOLONG() {
     return AD_IMAGE_12_TAG_LENGTH_TOO_LONG;
@@ -980,11 +981,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_12_TAG_REQUIRED
+   * Ad image tag 12 is required because an image link was provided.
    * @return AD_IMAGE_12_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_12_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_12_TAG_REQUIRED", description = "Ad image tag 12 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_12_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE12TAGREQUIRED() {
     return AD_IMAGE_12_TAG_REQUIRED;
@@ -1000,11 +1001,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_13_LINK_DUPLICATED
+   * ad_image_13_link is duplicated with another ad image link.
    * @return AD_IMAGE_13_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_13_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_13_LINK_DUPLICATED", description = "ad_image_13_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_13_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE13LINKDUPLICATED() {
     return AD_IMAGE_13_LINK_DUPLICATED;
@@ -1020,11 +1021,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_13_LINK_LENGTH_TOO_LONG
+   * Ad image link 13 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_13_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_13_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_13_LINK_LENGTH_TOO_LONG", description = "Ad image link 13 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_13_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE13LINKLENGTHTOOLONG() {
     return AD_IMAGE_13_LINK_LENGTH_TOO_LONG;
@@ -1040,11 +1041,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_13_LINK_REQUIRED
+   * Ad image link 13 is required because an image tag was provided.
    * @return AD_IMAGE_13_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_13_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_13_LINK_REQUIRED", description = "Ad image link 13 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_13_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE13LINKREQUIRED() {
     return AD_IMAGE_13_LINK_REQUIRED;
@@ -1060,11 +1061,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_13_LINK_WARNING
+   * Ad image link 13 format is unsupported.
    * @return AD_IMAGE_13_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_13_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_13_LINK_WARNING", description = "Ad image link 13 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_13_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE13LINKWARNING() {
     return AD_IMAGE_13_LINK_WARNING;
@@ -1080,11 +1081,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_13_TAG_DUPLICATED
+   * ad_image_13_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_13_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_13_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_13_TAG_DUPLICATED", description = "ad_image_13_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_13_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE13TAGDUPLICATED() {
     return AD_IMAGE_13_TAG_DUPLICATED;
@@ -1100,11 +1101,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_13_TAG_LENGTH_TOO_LONG
+   * Ad image tag 13 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_13_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_13_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_13_TAG_LENGTH_TOO_LONG", description = "Ad image tag 13 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_13_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE13TAGLENGTHTOOLONG() {
     return AD_IMAGE_13_TAG_LENGTH_TOO_LONG;
@@ -1120,11 +1121,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_13_TAG_REQUIRED
+   * Ad image tag 13 is required because an image link was provided.
    * @return AD_IMAGE_13_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_13_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_13_TAG_REQUIRED", description = "Ad image tag 13 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_13_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE13TAGREQUIRED() {
     return AD_IMAGE_13_TAG_REQUIRED;
@@ -1140,11 +1141,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_14_LINK_DUPLICATED
+   * ad_image_14_link is duplicated with another ad image link.
    * @return AD_IMAGE_14_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_14_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_14_LINK_DUPLICATED", description = "ad_image_14_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_14_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE14LINKDUPLICATED() {
     return AD_IMAGE_14_LINK_DUPLICATED;
@@ -1160,11 +1161,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_14_LINK_LENGTH_TOO_LONG
+   * Ad image link 14 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_14_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_14_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_14_LINK_LENGTH_TOO_LONG", description = "Ad image link 14 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_14_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE14LINKLENGTHTOOLONG() {
     return AD_IMAGE_14_LINK_LENGTH_TOO_LONG;
@@ -1180,11 +1181,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_14_LINK_REQUIRED
+   * Ad image link 14 is required because an image tag was provided.
    * @return AD_IMAGE_14_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_14_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_14_LINK_REQUIRED", description = "Ad image link 14 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_14_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE14LINKREQUIRED() {
     return AD_IMAGE_14_LINK_REQUIRED;
@@ -1200,11 +1201,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_14_LINK_WARNING
+   * Ad image link 14 format is unsupported.
    * @return AD_IMAGE_14_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_14_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_14_LINK_WARNING", description = "Ad image link 14 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_14_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE14LINKWARNING() {
     return AD_IMAGE_14_LINK_WARNING;
@@ -1220,11 +1221,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_14_TAG_DUPLICATED
+   * ad_image_14_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_14_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_14_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_14_TAG_DUPLICATED", description = "ad_image_14_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_14_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE14TAGDUPLICATED() {
     return AD_IMAGE_14_TAG_DUPLICATED;
@@ -1240,11 +1241,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_14_TAG_LENGTH_TOO_LONG
+   * Ad image tag 14 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_14_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_14_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_14_TAG_LENGTH_TOO_LONG", description = "Ad image tag 14 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_14_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE14TAGLENGTHTOOLONG() {
     return AD_IMAGE_14_TAG_LENGTH_TOO_LONG;
@@ -1260,11 +1261,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_14_TAG_REQUIRED
+   * Ad image tag 14 is required because an image link was provided.
    * @return AD_IMAGE_14_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_14_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_14_TAG_REQUIRED", description = "Ad image tag 14 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_14_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE14TAGREQUIRED() {
     return AD_IMAGE_14_TAG_REQUIRED;
@@ -1280,11 +1281,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_15_LINK_DUPLICATED
+   * ad_image_15_link is duplicated with another ad image link.
    * @return AD_IMAGE_15_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_15_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_15_LINK_DUPLICATED", description = "ad_image_15_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_15_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE15LINKDUPLICATED() {
     return AD_IMAGE_15_LINK_DUPLICATED;
@@ -1300,11 +1301,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_15_LINK_LENGTH_TOO_LONG
+   * Ad image link 15 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_15_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_15_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_15_LINK_LENGTH_TOO_LONG", description = "Ad image link 15 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_15_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE15LINKLENGTHTOOLONG() {
     return AD_IMAGE_15_LINK_LENGTH_TOO_LONG;
@@ -1320,11 +1321,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_15_LINK_REQUIRED
+   * Ad image link 15 is required because an image tag was provided.
    * @return AD_IMAGE_15_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_15_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_15_LINK_REQUIRED", description = "Ad image link 15 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_15_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE15LINKREQUIRED() {
     return AD_IMAGE_15_LINK_REQUIRED;
@@ -1340,11 +1341,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_15_LINK_WARNING
+   * Ad image link 15 format is unsupported.
    * @return AD_IMAGE_15_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_15_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_15_LINK_WARNING", description = "Ad image link 15 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_15_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE15LINKWARNING() {
     return AD_IMAGE_15_LINK_WARNING;
@@ -1360,11 +1361,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_15_TAG_DUPLICATED
+   * ad_image_15_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_15_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_15_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_15_TAG_DUPLICATED", description = "ad_image_15_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_15_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE15TAGDUPLICATED() {
     return AD_IMAGE_15_TAG_DUPLICATED;
@@ -1380,11 +1381,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_15_TAG_LENGTH_TOO_LONG
+   * Ad image tag 15 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_15_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_15_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_15_TAG_LENGTH_TOO_LONG", description = "Ad image tag 15 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_15_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE15TAGLENGTHTOOLONG() {
     return AD_IMAGE_15_TAG_LENGTH_TOO_LONG;
@@ -1400,11 +1401,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_15_TAG_REQUIRED
+   * Ad image tag 15 is required because an image link was provided.
    * @return AD_IMAGE_15_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_15_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_15_TAG_REQUIRED", description = "Ad image tag 15 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_15_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE15TAGREQUIRED() {
     return AD_IMAGE_15_TAG_REQUIRED;
@@ -1420,11 +1421,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_16_LINK_DUPLICATED
+   * ad_image_16_link is duplicated with another ad image link.
    * @return AD_IMAGE_16_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_16_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_16_LINK_DUPLICATED", description = "ad_image_16_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_16_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE16LINKDUPLICATED() {
     return AD_IMAGE_16_LINK_DUPLICATED;
@@ -1440,11 +1441,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_16_LINK_LENGTH_TOO_LONG
+   * Ad image link 16 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_16_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_16_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_16_LINK_LENGTH_TOO_LONG", description = "Ad image link 16 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_16_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE16LINKLENGTHTOOLONG() {
     return AD_IMAGE_16_LINK_LENGTH_TOO_LONG;
@@ -1460,11 +1461,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_16_LINK_REQUIRED
+   * Ad image link 16 is required because an image tag was provided.
    * @return AD_IMAGE_16_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_16_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_16_LINK_REQUIRED", description = "Ad image link 16 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_16_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE16LINKREQUIRED() {
     return AD_IMAGE_16_LINK_REQUIRED;
@@ -1480,11 +1481,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_16_LINK_WARNING
+   * Ad image link 16 format is unsupported.
    * @return AD_IMAGE_16_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_16_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_16_LINK_WARNING", description = "Ad image link 16 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_16_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE16LINKWARNING() {
     return AD_IMAGE_16_LINK_WARNING;
@@ -1500,11 +1501,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_16_TAG_DUPLICATED
+   * ad_image_16_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_16_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_16_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_16_TAG_DUPLICATED", description = "ad_image_16_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_16_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE16TAGDUPLICATED() {
     return AD_IMAGE_16_TAG_DUPLICATED;
@@ -1520,11 +1521,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_16_TAG_LENGTH_TOO_LONG
+   * Ad image tag 16 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_16_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_16_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_16_TAG_LENGTH_TOO_LONG", description = "Ad image tag 16 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_16_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE16TAGLENGTHTOOLONG() {
     return AD_IMAGE_16_TAG_LENGTH_TOO_LONG;
@@ -1540,11 +1541,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_16_TAG_REQUIRED
+   * Ad image tag 16 is required because an image link was provided.
    * @return AD_IMAGE_16_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_16_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_16_TAG_REQUIRED", description = "Ad image tag 16 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_16_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE16TAGREQUIRED() {
     return AD_IMAGE_16_TAG_REQUIRED;
@@ -1560,11 +1561,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_17_LINK_DUPLICATED
+   * ad_image_17_link is duplicated with another ad image link.
    * @return AD_IMAGE_17_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_17_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_17_LINK_DUPLICATED", description = "ad_image_17_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_17_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE17LINKDUPLICATED() {
     return AD_IMAGE_17_LINK_DUPLICATED;
@@ -1580,11 +1581,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_17_LINK_LENGTH_TOO_LONG
+   * Ad image link 17 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_17_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_17_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_17_LINK_LENGTH_TOO_LONG", description = "Ad image link 17 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_17_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE17LINKLENGTHTOOLONG() {
     return AD_IMAGE_17_LINK_LENGTH_TOO_LONG;
@@ -1600,11 +1601,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_17_LINK_REQUIRED
+   * Ad image link 17 is required because an image tag was provided.
    * @return AD_IMAGE_17_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_17_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_17_LINK_REQUIRED", description = "Ad image link 17 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_17_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE17LINKREQUIRED() {
     return AD_IMAGE_17_LINK_REQUIRED;
@@ -1620,11 +1621,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_17_LINK_WARNING
+   * Ad image link 17 format is unsupported.
    * @return AD_IMAGE_17_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_17_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_17_LINK_WARNING", description = "Ad image link 17 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_17_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE17LINKWARNING() {
     return AD_IMAGE_17_LINK_WARNING;
@@ -1640,11 +1641,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_17_TAG_DUPLICATED
+   * ad_image_17_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_17_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_17_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_17_TAG_DUPLICATED", description = "ad_image_17_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_17_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE17TAGDUPLICATED() {
     return AD_IMAGE_17_TAG_DUPLICATED;
@@ -1660,11 +1661,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_17_TAG_LENGTH_TOO_LONG
+   * Ad image tag 17 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_17_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_17_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_17_TAG_LENGTH_TOO_LONG", description = "Ad image tag 17 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_17_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE17TAGLENGTHTOOLONG() {
     return AD_IMAGE_17_TAG_LENGTH_TOO_LONG;
@@ -1680,11 +1681,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_17_TAG_REQUIRED
+   * Ad image tag 17 is required because an image link was provided.
    * @return AD_IMAGE_17_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_17_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_17_TAG_REQUIRED", description = "Ad image tag 17 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_17_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE17TAGREQUIRED() {
     return AD_IMAGE_17_TAG_REQUIRED;
@@ -1700,11 +1701,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_18_LINK_DUPLICATED
+   * ad_image_18_link is duplicated with another ad image link.
    * @return AD_IMAGE_18_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_18_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_18_LINK_DUPLICATED", description = "ad_image_18_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_18_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE18LINKDUPLICATED() {
     return AD_IMAGE_18_LINK_DUPLICATED;
@@ -1720,11 +1721,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_18_LINK_LENGTH_TOO_LONG
+   * Ad image link 18 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_18_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_18_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_18_LINK_LENGTH_TOO_LONG", description = "Ad image link 18 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_18_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE18LINKLENGTHTOOLONG() {
     return AD_IMAGE_18_LINK_LENGTH_TOO_LONG;
@@ -1740,11 +1741,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_18_LINK_REQUIRED
+   * Ad image link 18 is required because an image tag was provided.
    * @return AD_IMAGE_18_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_18_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_18_LINK_REQUIRED", description = "Ad image link 18 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_18_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE18LINKREQUIRED() {
     return AD_IMAGE_18_LINK_REQUIRED;
@@ -1760,11 +1761,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_18_LINK_WARNING
+   * Ad image link 18 format is unsupported.
    * @return AD_IMAGE_18_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_18_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_18_LINK_WARNING", description = "Ad image link 18 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_18_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE18LINKWARNING() {
     return AD_IMAGE_18_LINK_WARNING;
@@ -1780,11 +1781,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_18_TAG_DUPLICATED
+   * ad_image_18_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_18_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_18_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_18_TAG_DUPLICATED", description = "ad_image_18_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_18_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE18TAGDUPLICATED() {
     return AD_IMAGE_18_TAG_DUPLICATED;
@@ -1800,11 +1801,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_18_TAG_LENGTH_TOO_LONG
+   * Ad image tag 18 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_18_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_18_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_18_TAG_LENGTH_TOO_LONG", description = "Ad image tag 18 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_18_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE18TAGLENGTHTOOLONG() {
     return AD_IMAGE_18_TAG_LENGTH_TOO_LONG;
@@ -1820,11 +1821,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_18_TAG_REQUIRED
+   * Ad image tag 18 is required because an image link was provided.
    * @return AD_IMAGE_18_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_18_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_18_TAG_REQUIRED", description = "Ad image tag 18 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_18_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE18TAGREQUIRED() {
     return AD_IMAGE_18_TAG_REQUIRED;
@@ -1840,11 +1841,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_19_LINK_DUPLICATED
+   * ad_image_19_link is duplicated with another ad image link.
    * @return AD_IMAGE_19_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_19_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_19_LINK_DUPLICATED", description = "ad_image_19_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_19_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE19LINKDUPLICATED() {
     return AD_IMAGE_19_LINK_DUPLICATED;
@@ -1860,11 +1861,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_19_LINK_LENGTH_TOO_LONG
+   * Ad image link 19 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_19_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_19_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_19_LINK_LENGTH_TOO_LONG", description = "Ad image link 19 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_19_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE19LINKLENGTHTOOLONG() {
     return AD_IMAGE_19_LINK_LENGTH_TOO_LONG;
@@ -1880,11 +1881,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_19_LINK_REQUIRED
+   * Ad image link 19 is required because an image tag was provided.
    * @return AD_IMAGE_19_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_19_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_19_LINK_REQUIRED", description = "Ad image link 19 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_19_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE19LINKREQUIRED() {
     return AD_IMAGE_19_LINK_REQUIRED;
@@ -1900,11 +1901,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_19_LINK_WARNING
+   * Ad image link 19 format is unsupported.
    * @return AD_IMAGE_19_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_19_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_19_LINK_WARNING", description = "Ad image link 19 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_19_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE19LINKWARNING() {
     return AD_IMAGE_19_LINK_WARNING;
@@ -1920,11 +1921,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_19_TAG_DUPLICATED
+   * ad_image_19_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_19_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_19_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_19_TAG_DUPLICATED", description = "ad_image_19_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_19_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE19TAGDUPLICATED() {
     return AD_IMAGE_19_TAG_DUPLICATED;
@@ -1940,11 +1941,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_19_TAG_LENGTH_TOO_LONG
+   * Ad image tag 19 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_19_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_19_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_19_TAG_LENGTH_TOO_LONG", description = "Ad image tag 19 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_19_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE19TAGLENGTHTOOLONG() {
     return AD_IMAGE_19_TAG_LENGTH_TOO_LONG;
@@ -1960,11 +1961,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_19_TAG_REQUIRED
+   * Ad image tag 19 is required because an image link was provided.
    * @return AD_IMAGE_19_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_19_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_19_TAG_REQUIRED", description = "Ad image tag 19 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_19_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE19TAGREQUIRED() {
     return AD_IMAGE_19_TAG_REQUIRED;
@@ -1980,11 +1981,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_1_LINK_DUPLICATED
+   * ad_image_1_link is duplicated with another ad image link.
    * @return AD_IMAGE_1_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_1_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_1_LINK_DUPLICATED", description = "ad_image_1_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_1_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE1LINKDUPLICATED() {
     return AD_IMAGE_1_LINK_DUPLICATED;
@@ -2000,11 +2001,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_1_LINK_LENGTH_TOO_LONG
+   * Ad image link 1 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_1_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_1_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_1_LINK_LENGTH_TOO_LONG", description = "Ad image link 1 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_1_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE1LINKLENGTHTOOLONG() {
     return AD_IMAGE_1_LINK_LENGTH_TOO_LONG;
@@ -2020,11 +2021,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_1_LINK_REQUIRED
+   * Ad image link 1 is required because an image tag was provided.
    * @return AD_IMAGE_1_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_1_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_1_LINK_REQUIRED", description = "Ad image link 1 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_1_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE1LINKREQUIRED() {
     return AD_IMAGE_1_LINK_REQUIRED;
@@ -2040,11 +2041,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_1_LINK_WARNING
+   * Ad image link 1 format is unsupported.
    * @return AD_IMAGE_1_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_1_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_1_LINK_WARNING", description = "Ad image link 1 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_1_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE1LINKWARNING() {
     return AD_IMAGE_1_LINK_WARNING;
@@ -2060,11 +2061,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_1_TAG_DUPLICATED
+   * ad_image_1_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_1_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_1_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_1_TAG_DUPLICATED", description = "ad_image_1_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_1_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE1TAGDUPLICATED() {
     return AD_IMAGE_1_TAG_DUPLICATED;
@@ -2080,11 +2081,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_1_TAG_LENGTH_TOO_LONG
+   * Ad image tag 1 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_1_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_1_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_1_TAG_LENGTH_TOO_LONG", description = "Ad image tag 1 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_1_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE1TAGLENGTHTOOLONG() {
     return AD_IMAGE_1_TAG_LENGTH_TOO_LONG;
@@ -2100,11 +2101,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_1_TAG_REQUIRED
+   * Ad image tag 1 is required because an image link was provided.
    * @return AD_IMAGE_1_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_1_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_1_TAG_REQUIRED", description = "Ad image tag 1 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_1_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE1TAGREQUIRED() {
     return AD_IMAGE_1_TAG_REQUIRED;
@@ -2120,11 +2121,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_2_LINK_DUPLICATED
+   * ad_image_2_link is duplicated with another ad image link.
    * @return AD_IMAGE_2_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_2_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_2_LINK_DUPLICATED", description = "ad_image_2_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_2_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE2LINKDUPLICATED() {
     return AD_IMAGE_2_LINK_DUPLICATED;
@@ -2140,11 +2141,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_2_LINK_LENGTH_TOO_LONG
+   * Ad image link 2 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_2_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_2_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_2_LINK_LENGTH_TOO_LONG", description = "Ad image link 2 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_2_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE2LINKLENGTHTOOLONG() {
     return AD_IMAGE_2_LINK_LENGTH_TOO_LONG;
@@ -2160,11 +2161,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_2_LINK_REQUIRED
+   * Ad image link 2 is required because an image tag was provided.
    * @return AD_IMAGE_2_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_2_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_2_LINK_REQUIRED", description = "Ad image link 2 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_2_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE2LINKREQUIRED() {
     return AD_IMAGE_2_LINK_REQUIRED;
@@ -2180,11 +2181,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_2_LINK_WARNING
+   * Ad image link 2 format is unsupported.
    * @return AD_IMAGE_2_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_2_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_2_LINK_WARNING", description = "Ad image link 2 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_2_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE2LINKWARNING() {
     return AD_IMAGE_2_LINK_WARNING;
@@ -2200,11 +2201,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_2_TAG_DUPLICATED
+   * ad_image_2_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_2_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_2_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_2_TAG_DUPLICATED", description = "ad_image_2_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_2_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE2TAGDUPLICATED() {
     return AD_IMAGE_2_TAG_DUPLICATED;
@@ -2220,11 +2221,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_2_TAG_LENGTH_TOO_LONG
+   * Ad image tag 2 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_2_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_2_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_2_TAG_LENGTH_TOO_LONG", description = "Ad image tag 2 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_2_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE2TAGLENGTHTOOLONG() {
     return AD_IMAGE_2_TAG_LENGTH_TOO_LONG;
@@ -2240,11 +2241,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_2_TAG_REQUIRED
+   * Ad image tag 2 is required because an image link was provided.
    * @return AD_IMAGE_2_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_2_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_2_TAG_REQUIRED", description = "Ad image tag 2 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_2_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE2TAGREQUIRED() {
     return AD_IMAGE_2_TAG_REQUIRED;
@@ -2260,11 +2261,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_3_LINK_DUPLICATED
+   * ad_image_3_link is duplicated with another ad image link.
    * @return AD_IMAGE_3_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_3_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_3_LINK_DUPLICATED", description = "ad_image_3_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_3_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE3LINKDUPLICATED() {
     return AD_IMAGE_3_LINK_DUPLICATED;
@@ -2280,11 +2281,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_3_LINK_LENGTH_TOO_LONG
+   * Ad image link 3 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_3_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_3_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_3_LINK_LENGTH_TOO_LONG", description = "Ad image link 3 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_3_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE3LINKLENGTHTOOLONG() {
     return AD_IMAGE_3_LINK_LENGTH_TOO_LONG;
@@ -2300,11 +2301,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_3_LINK_REQUIRED
+   * Ad image link 3 is required because an image tag was provided.
    * @return AD_IMAGE_3_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_3_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_3_LINK_REQUIRED", description = "Ad image link 3 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_3_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE3LINKREQUIRED() {
     return AD_IMAGE_3_LINK_REQUIRED;
@@ -2320,11 +2321,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_3_LINK_WARNING
+   * Ad image link 3 format is unsupported.
    * @return AD_IMAGE_3_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_3_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_3_LINK_WARNING", description = "Ad image link 3 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_3_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE3LINKWARNING() {
     return AD_IMAGE_3_LINK_WARNING;
@@ -2340,11 +2341,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_3_TAG_DUPLICATED
+   * ad_image_3_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_3_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_3_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_3_TAG_DUPLICATED", description = "ad_image_3_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_3_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE3TAGDUPLICATED() {
     return AD_IMAGE_3_TAG_DUPLICATED;
@@ -2360,11 +2361,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_3_TAG_LENGTH_TOO_LONG
+   * Ad image tag 3 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_3_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_3_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_3_TAG_LENGTH_TOO_LONG", description = "Ad image tag 3 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_3_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE3TAGLENGTHTOOLONG() {
     return AD_IMAGE_3_TAG_LENGTH_TOO_LONG;
@@ -2380,11 +2381,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_3_TAG_REQUIRED
+   * Ad image tag 3 is required because an image link was provided.
    * @return AD_IMAGE_3_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_3_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_3_TAG_REQUIRED", description = "Ad image tag 3 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_3_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE3TAGREQUIRED() {
     return AD_IMAGE_3_TAG_REQUIRED;
@@ -2400,11 +2401,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_4_LINK_DUPLICATED
+   * ad_image_4_link is duplicated with another ad image link.
    * @return AD_IMAGE_4_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_4_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_4_LINK_DUPLICATED", description = "ad_image_4_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_4_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE4LINKDUPLICATED() {
     return AD_IMAGE_4_LINK_DUPLICATED;
@@ -2420,11 +2421,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_4_LINK_LENGTH_TOO_LONG
+   * Ad image link 4 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_4_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_4_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_4_LINK_LENGTH_TOO_LONG", description = "Ad image link 4 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_4_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE4LINKLENGTHTOOLONG() {
     return AD_IMAGE_4_LINK_LENGTH_TOO_LONG;
@@ -2440,11 +2441,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_4_LINK_REQUIRED
+   * Ad image link 4 is required because an image tag was provided.
    * @return AD_IMAGE_4_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_4_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_4_LINK_REQUIRED", description = "Ad image link 4 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_4_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE4LINKREQUIRED() {
     return AD_IMAGE_4_LINK_REQUIRED;
@@ -2460,11 +2461,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_4_LINK_WARNING
+   * Ad image link 4 format is unsupported.
    * @return AD_IMAGE_4_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_4_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_4_LINK_WARNING", description = "Ad image link 4 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_4_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE4LINKWARNING() {
     return AD_IMAGE_4_LINK_WARNING;
@@ -2480,11 +2481,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_4_TAG_DUPLICATED
+   * ad_image_4_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_4_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_4_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_4_TAG_DUPLICATED", description = "ad_image_4_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_4_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE4TAGDUPLICATED() {
     return AD_IMAGE_4_TAG_DUPLICATED;
@@ -2500,11 +2501,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_4_TAG_LENGTH_TOO_LONG
+   * Ad image tag 4 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_4_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_4_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_4_TAG_LENGTH_TOO_LONG", description = "Ad image tag 4 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_4_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE4TAGLENGTHTOOLONG() {
     return AD_IMAGE_4_TAG_LENGTH_TOO_LONG;
@@ -2520,11 +2521,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_4_TAG_REQUIRED
+   * Ad image tag 4 is required because an image link was provided.
    * @return AD_IMAGE_4_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_4_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_4_TAG_REQUIRED", description = "Ad image tag 4 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_4_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE4TAGREQUIRED() {
     return AD_IMAGE_4_TAG_REQUIRED;
@@ -2540,11 +2541,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_5_LINK_DUPLICATED
+   * ad_image_5_link is duplicated with another ad image link.
    * @return AD_IMAGE_5_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_5_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_5_LINK_DUPLICATED", description = "ad_image_5_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_5_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE5LINKDUPLICATED() {
     return AD_IMAGE_5_LINK_DUPLICATED;
@@ -2560,11 +2561,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_5_LINK_LENGTH_TOO_LONG
+   * Ad image link 5 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_5_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_5_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_5_LINK_LENGTH_TOO_LONG", description = "Ad image link 5 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_5_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE5LINKLENGTHTOOLONG() {
     return AD_IMAGE_5_LINK_LENGTH_TOO_LONG;
@@ -2580,11 +2581,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_5_LINK_REQUIRED
+   * Ad image link 5 is required because an image tag was provided.
    * @return AD_IMAGE_5_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_5_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_5_LINK_REQUIRED", description = "Ad image link 5 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_5_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE5LINKREQUIRED() {
     return AD_IMAGE_5_LINK_REQUIRED;
@@ -2600,11 +2601,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_5_LINK_WARNING
+   * Ad image link 5 format is unsupported.
    * @return AD_IMAGE_5_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_5_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_5_LINK_WARNING", description = "Ad image link 5 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_5_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE5LINKWARNING() {
     return AD_IMAGE_5_LINK_WARNING;
@@ -2620,11 +2621,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_5_TAG_DUPLICATED
+   * ad_image_5_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_5_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_5_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_5_TAG_DUPLICATED", description = "ad_image_5_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_5_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE5TAGDUPLICATED() {
     return AD_IMAGE_5_TAG_DUPLICATED;
@@ -2640,11 +2641,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_5_TAG_LENGTH_TOO_LONG
+   * Ad image tag 5 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_5_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_5_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_5_TAG_LENGTH_TOO_LONG", description = "Ad image tag 5 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_5_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE5TAGLENGTHTOOLONG() {
     return AD_IMAGE_5_TAG_LENGTH_TOO_LONG;
@@ -2660,11 +2661,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_5_TAG_REQUIRED
+   * Ad image tag 5 is required because an image link was provided.
    * @return AD_IMAGE_5_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_5_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_5_TAG_REQUIRED", description = "Ad image tag 5 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_5_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE5TAGREQUIRED() {
     return AD_IMAGE_5_TAG_REQUIRED;
@@ -2680,11 +2681,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_6_LINK_DUPLICATED
+   * ad_image_6_link is duplicated with another ad image link.
    * @return AD_IMAGE_6_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_6_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_6_LINK_DUPLICATED", description = "ad_image_6_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_6_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE6LINKDUPLICATED() {
     return AD_IMAGE_6_LINK_DUPLICATED;
@@ -2700,11 +2701,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_6_LINK_LENGTH_TOO_LONG
+   * Ad image link 6 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_6_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_6_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_6_LINK_LENGTH_TOO_LONG", description = "Ad image link 6 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_6_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE6LINKLENGTHTOOLONG() {
     return AD_IMAGE_6_LINK_LENGTH_TOO_LONG;
@@ -2720,11 +2721,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_6_LINK_REQUIRED
+   * Ad image link 6 is required because an image tag was provided.
    * @return AD_IMAGE_6_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_6_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_6_LINK_REQUIRED", description = "Ad image link 6 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_6_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE6LINKREQUIRED() {
     return AD_IMAGE_6_LINK_REQUIRED;
@@ -2740,11 +2741,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_6_LINK_WARNING
+   * Ad image link 6 format is unsupported.
    * @return AD_IMAGE_6_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_6_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_6_LINK_WARNING", description = "Ad image link 6 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_6_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE6LINKWARNING() {
     return AD_IMAGE_6_LINK_WARNING;
@@ -2760,11 +2761,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_6_TAG_DUPLICATED
+   * ad_image_6_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_6_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_6_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_6_TAG_DUPLICATED", description = "ad_image_6_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_6_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE6TAGDUPLICATED() {
     return AD_IMAGE_6_TAG_DUPLICATED;
@@ -2780,11 +2781,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_6_TAG_LENGTH_TOO_LONG
+   * Ad image tag 6 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_6_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_6_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_6_TAG_LENGTH_TOO_LONG", description = "Ad image tag 6 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_6_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE6TAGLENGTHTOOLONG() {
     return AD_IMAGE_6_TAG_LENGTH_TOO_LONG;
@@ -2800,11 +2801,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_6_TAG_REQUIRED
+   * Ad image tag 6 is required because an image link was provided.
    * @return AD_IMAGE_6_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_6_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_6_TAG_REQUIRED", description = "Ad image tag 6 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_6_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE6TAGREQUIRED() {
     return AD_IMAGE_6_TAG_REQUIRED;
@@ -2820,11 +2821,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_7_LINK_DUPLICATED
+   * ad_image_7_link is duplicated with another ad image link.
    * @return AD_IMAGE_7_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_7_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_7_LINK_DUPLICATED", description = "ad_image_7_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_7_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE7LINKDUPLICATED() {
     return AD_IMAGE_7_LINK_DUPLICATED;
@@ -2840,11 +2841,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_7_LINK_LENGTH_TOO_LONG
+   * Ad image link 7 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_7_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_7_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_7_LINK_LENGTH_TOO_LONG", description = "Ad image link 7 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_7_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE7LINKLENGTHTOOLONG() {
     return AD_IMAGE_7_LINK_LENGTH_TOO_LONG;
@@ -2860,11 +2861,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_7_LINK_REQUIRED
+   * Ad image link 7 is required because an image tag was provided.
    * @return AD_IMAGE_7_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_7_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_7_LINK_REQUIRED", description = "Ad image link 7 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_7_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE7LINKREQUIRED() {
     return AD_IMAGE_7_LINK_REQUIRED;
@@ -2880,11 +2881,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_7_LINK_WARNING
+   * Ad image link 7 format is unsupported.
    * @return AD_IMAGE_7_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_7_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_7_LINK_WARNING", description = "Ad image link 7 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_7_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE7LINKWARNING() {
     return AD_IMAGE_7_LINK_WARNING;
@@ -2900,11 +2901,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_7_TAG_DUPLICATED
+   * ad_image_7_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_7_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_7_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_7_TAG_DUPLICATED", description = "ad_image_7_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_7_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE7TAGDUPLICATED() {
     return AD_IMAGE_7_TAG_DUPLICATED;
@@ -2920,11 +2921,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_7_TAG_LENGTH_TOO_LONG
+   * Ad image tag 7 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_7_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_7_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_7_TAG_LENGTH_TOO_LONG", description = "Ad image tag 7 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_7_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE7TAGLENGTHTOOLONG() {
     return AD_IMAGE_7_TAG_LENGTH_TOO_LONG;
@@ -2940,11 +2941,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_7_TAG_REQUIRED
+   * Ad image tag 7 is required because an image link was provided.
    * @return AD_IMAGE_7_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_7_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_7_TAG_REQUIRED", description = "Ad image tag 7 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_7_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE7TAGREQUIRED() {
     return AD_IMAGE_7_TAG_REQUIRED;
@@ -2960,11 +2961,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_8_LINK_DUPLICATED
+   * ad_image_8_link is duplicated with another ad image link.
    * @return AD_IMAGE_8_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_8_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_8_LINK_DUPLICATED", description = "ad_image_8_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_8_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE8LINKDUPLICATED() {
     return AD_IMAGE_8_LINK_DUPLICATED;
@@ -2980,11 +2981,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_8_LINK_LENGTH_TOO_LONG
+   * Ad image link 8 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_8_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_8_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_8_LINK_LENGTH_TOO_LONG", description = "Ad image link 8 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_8_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE8LINKLENGTHTOOLONG() {
     return AD_IMAGE_8_LINK_LENGTH_TOO_LONG;
@@ -3000,11 +3001,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_8_LINK_REQUIRED
+   * Ad image link 8 is required because an image tag was provided.
    * @return AD_IMAGE_8_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_8_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_8_LINK_REQUIRED", description = "Ad image link 8 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_8_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE8LINKREQUIRED() {
     return AD_IMAGE_8_LINK_REQUIRED;
@@ -3020,11 +3021,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_8_LINK_WARNING
+   * Ad image link 8 format is unsupported.
    * @return AD_IMAGE_8_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_8_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_8_LINK_WARNING", description = "Ad image link 8 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_8_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE8LINKWARNING() {
     return AD_IMAGE_8_LINK_WARNING;
@@ -3040,11 +3041,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_8_TAG_DUPLICATED
+   * ad_image_8_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_8_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_8_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_8_TAG_DUPLICATED", description = "ad_image_8_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_8_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE8TAGDUPLICATED() {
     return AD_IMAGE_8_TAG_DUPLICATED;
@@ -3060,11 +3061,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_8_TAG_LENGTH_TOO_LONG
+   * Ad image tag 8 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_8_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_8_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_8_TAG_LENGTH_TOO_LONG", description = "Ad image tag 8 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_8_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE8TAGLENGTHTOOLONG() {
     return AD_IMAGE_8_TAG_LENGTH_TOO_LONG;
@@ -3080,11 +3081,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_8_TAG_REQUIRED
+   * Ad image tag 8 is required because an image link was provided.
    * @return AD_IMAGE_8_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_8_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_8_TAG_REQUIRED", description = "Ad image tag 8 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_8_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE8TAGREQUIRED() {
     return AD_IMAGE_8_TAG_REQUIRED;
@@ -3100,11 +3101,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_9_LINK_DUPLICATED
+   * ad_image_9_link is duplicated with another ad image link.
    * @return AD_IMAGE_9_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_9_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_9_LINK_DUPLICATED", description = "ad_image_9_link is duplicated with another ad image link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_9_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE9LINKDUPLICATED() {
     return AD_IMAGE_9_LINK_DUPLICATED;
@@ -3120,11 +3121,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_9_LINK_LENGTH_TOO_LONG
+   * Ad image link 9 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_9_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_9_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_9_LINK_LENGTH_TOO_LONG", description = "Ad image link 9 length is too long. The maximum length is 2047 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_9_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE9LINKLENGTHTOOLONG() {
     return AD_IMAGE_9_LINK_LENGTH_TOO_LONG;
@@ -3140,11 +3141,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_9_LINK_REQUIRED
+   * Ad image link 9 is required because an image tag was provided.
    * @return AD_IMAGE_9_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_9_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_9_LINK_REQUIRED", description = "Ad image link 9 is required because an image tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_9_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE9LINKREQUIRED() {
     return AD_IMAGE_9_LINK_REQUIRED;
@@ -3160,11 +3161,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_9_LINK_WARNING
+   * Ad image link 9 format is unsupported.
    * @return AD_IMAGE_9_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_9_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_9_LINK_WARNING", description = "Ad image link 9 format is unsupported.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_9_LINK_WARNING")
   public CatalogsItemValidationDetails getADIMAGE9LINKWARNING() {
     return AD_IMAGE_9_LINK_WARNING;
@@ -3180,11 +3181,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_9_TAG_DUPLICATED
+   * ad_image_9_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_9_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_9_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_9_TAG_DUPLICATED", description = "ad_image_9_tag is duplicated with another ad image tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_9_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADIMAGE9TAGDUPLICATED() {
     return AD_IMAGE_9_TAG_DUPLICATED;
@@ -3200,11 +3201,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_9_TAG_LENGTH_TOO_LONG
+   * Ad image tag 9 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_9_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_9_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_9_TAG_LENGTH_TOO_LONG", description = "Ad image tag 9 length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_9_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADIMAGE9TAGLENGTHTOOLONG() {
     return AD_IMAGE_9_TAG_LENGTH_TOO_LONG;
@@ -3220,11 +3221,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_IMAGE_9_TAG_REQUIRED
+   * Ad image tag 9 is required because an image link was provided.
    * @return AD_IMAGE_9_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_IMAGE_9_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_IMAGE_9_TAG_REQUIRED", description = "Ad image tag 9 is required because an image link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_IMAGE_9_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADIMAGE9TAGREQUIRED() {
     return AD_IMAGE_9_TAG_REQUIRED;
@@ -3240,11 +3241,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_LINK_FORMAT_WARNING
+   * Item has an ad link that is formatted incorrectly.
    * @return AD_LINK_FORMAT_WARNING
    */
   @Valid 
-  @Schema(name = "AD_LINK_FORMAT_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_LINK_FORMAT_WARNING", description = "Item has an ad link that is formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_LINK_FORMAT_WARNING")
   public CatalogsItemValidationDetails getADLINKFORMATWARNING() {
     return AD_LINK_FORMAT_WARNING;
@@ -3260,11 +3261,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_LINK_SAME_AS_LINK
+   * Item has an ad link URL that is duplicate of the link URL.
    * @return AD_LINK_SAME_AS_LINK
    */
   @Valid 
-  @Schema(name = "AD_LINK_SAME_AS_LINK", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_LINK_SAME_AS_LINK", description = "Item has an ad link URL that is duplicate of the link URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_LINK_SAME_AS_LINK")
   public CatalogsItemValidationDetails getADLINKSAMEASLINK() {
     return AD_LINK_SAME_AS_LINK;
@@ -3280,11 +3281,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_0_LINK_DUPLICATED
+   * ad_video_0_link is duplicated with another ad video link.
    * @return AD_VIDEO_0_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_0_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_0_LINK_DUPLICATED", description = "ad_video_0_link is duplicated with another ad video link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_0_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADVIDEO0LINKDUPLICATED() {
     return AD_VIDEO_0_LINK_DUPLICATED;
@@ -3300,11 +3301,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_0_LINK_LENGTH_TOO_LONG
+   * ad_video_0_link length is too long. The maximum length is 511 characters.
    * @return AD_VIDEO_0_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_0_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_0_LINK_LENGTH_TOO_LONG", description = "ad_video_0_link length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_0_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADVIDEO0LINKLENGTHTOOLONG() {
     return AD_VIDEO_0_LINK_LENGTH_TOO_LONG;
@@ -3320,11 +3321,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_0_LINK_REQUIRED
+   * ad_video_0_link is required for this item because ad_video_0_tag was provided.
    * @return AD_VIDEO_0_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_0_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_0_LINK_REQUIRED", description = "ad_video_0_link is required for this item because ad_video_0_tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_0_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADVIDEO0LINKREQUIRED() {
     return AD_VIDEO_0_LINK_REQUIRED;
@@ -3340,11 +3341,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_0_LINK_WARNING
+   * ad_video_0_link is formatted incorrectly and will not be published with your items.
    * @return AD_VIDEO_0_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_0_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_0_LINK_WARNING", description = "ad_video_0_link is formatted incorrectly and will not be published with your items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_0_LINK_WARNING")
   public CatalogsItemValidationDetails getADVIDEO0LINKWARNING() {
     return AD_VIDEO_0_LINK_WARNING;
@@ -3360,11 +3361,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_0_TAG_DUPLICATED
+   * ad_video_0_tag is duplicated with another ad video tag.
    * @return AD_VIDEO_0_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_0_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_0_TAG_DUPLICATED", description = "ad_video_0_tag is duplicated with another ad video tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_0_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADVIDEO0TAGDUPLICATED() {
     return AD_VIDEO_0_TAG_DUPLICATED;
@@ -3380,11 +3381,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_0_TAG_LENGTH_TOO_LONG
+   * ad_video_0_tag length is too long. The maximum length is 511 characters.
    * @return AD_VIDEO_0_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_0_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_0_TAG_LENGTH_TOO_LONG", description = "ad_video_0_tag length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_0_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADVIDEO0TAGLENGTHTOOLONG() {
     return AD_VIDEO_0_TAG_LENGTH_TOO_LONG;
@@ -3400,11 +3401,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_0_TAG_REQUIRED
+   * ad_video_0_tag is required because ad_video_0_link was provided.
    * @return AD_VIDEO_0_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_0_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_0_TAG_REQUIRED", description = "ad_video_0_tag is required because ad_video_0_link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_0_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADVIDEO0TAGREQUIRED() {
     return AD_VIDEO_0_TAG_REQUIRED;
@@ -3420,11 +3421,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_1_LINK_DUPLICATED
+   * ad_video_1_link is duplicated with another ad video link.
    * @return AD_VIDEO_1_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_1_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_1_LINK_DUPLICATED", description = "ad_video_1_link is duplicated with another ad video link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_1_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADVIDEO1LINKDUPLICATED() {
     return AD_VIDEO_1_LINK_DUPLICATED;
@@ -3440,11 +3441,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_1_LINK_LENGTH_TOO_LONG
+   * ad_video_1_link length is too long. The maximum length is 511 characters.
    * @return AD_VIDEO_1_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_1_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_1_LINK_LENGTH_TOO_LONG", description = "ad_video_1_link length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_1_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADVIDEO1LINKLENGTHTOOLONG() {
     return AD_VIDEO_1_LINK_LENGTH_TOO_LONG;
@@ -3460,11 +3461,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_1_LINK_REQUIRED
+   * ad_video_1_link is required for this item because ad_video_1_tag was provided.
    * @return AD_VIDEO_1_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_1_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_1_LINK_REQUIRED", description = "ad_video_1_link is required for this item because ad_video_1_tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_1_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADVIDEO1LINKREQUIRED() {
     return AD_VIDEO_1_LINK_REQUIRED;
@@ -3480,11 +3481,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_1_LINK_WARNING
+   * ad_video_1_link is formatted incorrectly and will not be published with your items.
    * @return AD_VIDEO_1_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_1_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_1_LINK_WARNING", description = "ad_video_1_link is formatted incorrectly and will not be published with your items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_1_LINK_WARNING")
   public CatalogsItemValidationDetails getADVIDEO1LINKWARNING() {
     return AD_VIDEO_1_LINK_WARNING;
@@ -3500,11 +3501,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_1_TAG_DUPLICATED
+   * ad_video_1_tag is duplicated with another ad video tag.
    * @return AD_VIDEO_1_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_1_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_1_TAG_DUPLICATED", description = "ad_video_1_tag is duplicated with another ad video tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_1_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADVIDEO1TAGDUPLICATED() {
     return AD_VIDEO_1_TAG_DUPLICATED;
@@ -3520,11 +3521,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_1_TAG_LENGTH_TOO_LONG
+   * ad_video_1_tag length is too long. The maximum length is 511 characters.
    * @return AD_VIDEO_1_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_1_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_1_TAG_LENGTH_TOO_LONG", description = "ad_video_1_tag length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_1_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADVIDEO1TAGLENGTHTOOLONG() {
     return AD_VIDEO_1_TAG_LENGTH_TOO_LONG;
@@ -3540,11 +3541,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_1_TAG_REQUIRED
+   * ad_video_1_tag is required because ad_video_1_link was provided.
    * @return AD_VIDEO_1_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_1_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_1_TAG_REQUIRED", description = "ad_video_1_tag is required because ad_video_1_link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_1_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADVIDEO1TAGREQUIRED() {
     return AD_VIDEO_1_TAG_REQUIRED;
@@ -3560,11 +3561,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_2_LINK_DUPLICATED
+   * ad_video_2_link is duplicated with another ad video link.
    * @return AD_VIDEO_2_LINK_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_2_LINK_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_2_LINK_DUPLICATED", description = "ad_video_2_link is duplicated with another ad video link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_2_LINK_DUPLICATED")
   public CatalogsItemValidationDetails getADVIDEO2LINKDUPLICATED() {
     return AD_VIDEO_2_LINK_DUPLICATED;
@@ -3580,11 +3581,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_2_LINK_LENGTH_TOO_LONG
+   * ad_video_2_link length is too long. The maximum length is 511 characters.
    * @return AD_VIDEO_2_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_2_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_2_LINK_LENGTH_TOO_LONG", description = "ad_video_2_link length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_2_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADVIDEO2LINKLENGTHTOOLONG() {
     return AD_VIDEO_2_LINK_LENGTH_TOO_LONG;
@@ -3600,11 +3601,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_2_LINK_REQUIRED
+   * ad_video_2_link is required for this item because ad_video_2_tag was provided.
    * @return AD_VIDEO_2_LINK_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_2_LINK_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_2_LINK_REQUIRED", description = "ad_video_2_link is required for this item because ad_video_2_tag was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_2_LINK_REQUIRED")
   public CatalogsItemValidationDetails getADVIDEO2LINKREQUIRED() {
     return AD_VIDEO_2_LINK_REQUIRED;
@@ -3620,11 +3621,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_2_LINK_WARNING
+   * ad_video_2_link is formatted incorrectly and will not be published with your items.
    * @return AD_VIDEO_2_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_2_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_2_LINK_WARNING", description = "ad_video_2_link is formatted incorrectly and will not be published with your items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_2_LINK_WARNING")
   public CatalogsItemValidationDetails getADVIDEO2LINKWARNING() {
     return AD_VIDEO_2_LINK_WARNING;
@@ -3640,11 +3641,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_2_TAG_DUPLICATED
+   * ad_video_2_tag is duplicated with another ad video tag.
    * @return AD_VIDEO_2_TAG_DUPLICATED
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_2_TAG_DUPLICATED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_2_TAG_DUPLICATED", description = "ad_video_2_tag is duplicated with another ad video tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_2_TAG_DUPLICATED")
   public CatalogsItemValidationDetails getADVIDEO2TAGDUPLICATED() {
     return AD_VIDEO_2_TAG_DUPLICATED;
@@ -3660,11 +3661,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_2_TAG_LENGTH_TOO_LONG
+   * ad_video_2_tag length is too long. The maximum length is 511 characters.
    * @return AD_VIDEO_2_TAG_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_2_TAG_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_2_TAG_LENGTH_TOO_LONG", description = "ad_video_2_tag length is too long. The maximum length is 511 characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_2_TAG_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADVIDEO2TAGLENGTHTOOLONG() {
     return AD_VIDEO_2_TAG_LENGTH_TOO_LONG;
@@ -3680,11 +3681,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AD_VIDEO_2_TAG_REQUIRED
+   * ad_video_2_tag is required because ad_video_2_link was provided.
    * @return AD_VIDEO_2_TAG_REQUIRED
    */
   @Valid 
-  @Schema(name = "AD_VIDEO_2_TAG_REQUIRED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AD_VIDEO_2_TAG_REQUIRED", description = "ad_video_2_tag is required because ad_video_2_link was provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_VIDEO_2_TAG_REQUIRED")
   public CatalogsItemValidationDetails getADVIDEO2TAGREQUIRED() {
     return AD_VIDEO_2_TAG_REQUIRED;
@@ -3700,11 +3701,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
+   * Item has an additional_image_link URL that contains too many characters, so the item will not be published.
    * @return ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG", description = "Item has an additional_image_link URL that contains too many characters, so the item will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getADDITIONALIMAGELINKLENGTHTOOLONG() {
     return ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
@@ -3720,11 +3721,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get ADDITIONAL_IMAGE_LINK_WARNING
+   * Item has additional_image_link URLs that are formatted incorrectly and will not be published with your items.
    * @return ADDITIONAL_IMAGE_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "ADDITIONAL_IMAGE_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ADDITIONAL_IMAGE_LINK_WARNING", description = "Item has additional_image_link URLs that are formatted incorrectly and will not be published with your items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_LINK_WARNING")
   public CatalogsItemValidationDetails getADDITIONALIMAGELINKWARNING() {
     return ADDITIONAL_IMAGE_LINK_WARNING;
@@ -3740,11 +3741,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get ADWORDS_FORMAT_WARNING
+   * Item has an adwords_redirect link that is formatted incorrectly.
    * @return ADWORDS_FORMAT_WARNING
    */
   @Valid 
-  @Schema(name = "ADWORDS_FORMAT_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ADWORDS_FORMAT_WARNING", description = "Item has an adwords_redirect link that is formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADWORDS_FORMAT_WARNING")
   public CatalogsItemValidationDetails getADWORDSFORMATWARNING() {
     return ADWORDS_FORMAT_WARNING;
@@ -3760,11 +3761,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get ADWORDS_SAME_AS_LINK
+   * Item has an adwords_redirect URL that is duplicate of the link URL.
    * @return ADWORDS_SAME_AS_LINK
    */
   @Valid 
-  @Schema(name = "ADWORDS_SAME_AS_LINK", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ADWORDS_SAME_AS_LINK", description = "Item has an adwords_redirect URL that is duplicate of the link URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADWORDS_SAME_AS_LINK")
   public CatalogsItemValidationDetails getADWORDSSAMEASLINK() {
     return ADWORDS_SAME_AS_LINK;
@@ -3780,11 +3781,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AGE_GROUP_INVALID
+   * Item has an age group value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return AGE_GROUP_INVALID
    */
   @Valid 
-  @Schema(name = "AGE_GROUP_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AGE_GROUP_INVALID", description = "Item has an age group value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AGE_GROUP_INVALID")
   public CatalogsItemValidationDetails getAGEGROUPINVALID() {
     return AGE_GROUP_INVALID;
@@ -3800,11 +3801,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get ANDROID_DEEP_LINK_INVALID
+   * Item includes an invalid android_deep_link.
    * @return ANDROID_DEEP_LINK_INVALID
    */
   @Valid 
-  @Schema(name = "ANDROID_DEEP_LINK_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ANDROID_DEEP_LINK_INVALID", description = "Item includes an invalid android_deep_link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ANDROID_DEEP_LINK_INVALID")
   public CatalogsItemValidationDetails getANDROIDDEEPLINKINVALID() {
     return ANDROID_DEEP_LINK_INVALID;
@@ -3820,11 +3821,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get AVAILABILITY_DATE_INVALID
+   * Item has an availability_date value that is formatted incorrectly, this item will be published without an availability date.
    * @return AVAILABILITY_DATE_INVALID
    */
   @Valid 
-  @Schema(name = "AVAILABILITY_DATE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AVAILABILITY_DATE_INVALID", description = "Item has an availability_date value that is formatted incorrectly, this item will be published without an availability date.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AVAILABILITY_DATE_INVALID")
   public CatalogsItemValidationDetails getAVAILABILITYDATEINVALID() {
     return AVAILABILITY_DATE_INVALID;
@@ -3840,11 +3841,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get COUNTRY_DOES_NOT_MAP_TO_CURRENCY
+   * Item includes a currency that doesn't match the usual currency for the location where the product is sold or shipped.
    * @return COUNTRY_DOES_NOT_MAP_TO_CURRENCY
    */
   @Valid 
-  @Schema(name = "COUNTRY_DOES_NOT_MAP_TO_CURRENCY", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "COUNTRY_DOES_NOT_MAP_TO_CURRENCY", description = "Item includes a currency that doesn't match the usual currency for the location where the product is sold or shipped.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("COUNTRY_DOES_NOT_MAP_TO_CURRENCY")
   public CatalogsItemValidationDetails getCOUNTRYDOESNOTMAPTOCURRENCY() {
     return COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
@@ -3860,11 +3861,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get CUSTOM_LABEL_LENGTH_TOO_LONG
+   * Item has a custom_label value that is too long, this item will be published without that custom label.
    * @return CUSTOM_LABEL_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "CUSTOM_LABEL_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "CUSTOM_LABEL_LENGTH_TOO_LONG", description = "Item has a custom_label value that is too long, this item will be published without that custom label.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("CUSTOM_LABEL_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getCUSTOMLABELLENGTHTOOLONG() {
     return CUSTOM_LABEL_LENGTH_TOO_LONG;
@@ -3880,11 +3881,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get DESCRIPTION_LENGTH_TOO_LONG
+   * The description for this item was truncated because it contains too many characters.
    * @return DESCRIPTION_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "DESCRIPTION_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "DESCRIPTION_LENGTH_TOO_LONG", description = "The description for this item was truncated because it contains too many characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DESCRIPTION_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getDESCRIPTIONLENGTHTOOLONG() {
     return DESCRIPTION_LENGTH_TOO_LONG;
@@ -3900,11 +3901,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get EXPIRATION_DATE_INVALID
+   * Item has an expiration_date value that is formatted incorrectly, this item will be published without an expiration date.
    * @return EXPIRATION_DATE_INVALID
    */
   @Valid 
-  @Schema(name = "EXPIRATION_DATE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "EXPIRATION_DATE_INVALID", description = "Item has an expiration_date value that is formatted incorrectly, this item will be published without an expiration date.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("EXPIRATION_DATE_INVALID")
   public CatalogsItemValidationDetails getEXPIRATIONDATEINVALID() {
     return EXPIRATION_DATE_INVALID;
@@ -3920,11 +3921,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get GENDER_INVALID
+   * Item has a gender value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return GENDER_INVALID
    */
   @Valid 
-  @Schema(name = "GENDER_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "GENDER_INVALID", description = "Item has a gender value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("GENDER_INVALID")
   public CatalogsItemValidationDetails getGENDERINVALID() {
     return GENDER_INVALID;
@@ -3940,11 +3941,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get GTIN_INVALID
+   * Item has a GTIN value that is formatted incorrectly.
    * @return GTIN_INVALID
    */
   @Valid 
-  @Schema(name = "GTIN_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "GTIN_INVALID", description = "Item has a GTIN value that is formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("GTIN_INVALID")
   public CatalogsItemValidationDetails getGTININVALID() {
     return GTIN_INVALID;
@@ -3960,11 +3961,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get IMAGE_LINK_WARNING
+   * Item has an image_link URL that is formatted incorrectly and will not be published.
    * @return IMAGE_LINK_WARNING
    */
   @Valid 
-  @Schema(name = "IMAGE_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "IMAGE_LINK_WARNING", description = "Item has an image_link URL that is formatted incorrectly and will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_WARNING")
   public CatalogsItemValidationDetails getIMAGELINKWARNING() {
     return IMAGE_LINK_WARNING;
@@ -3980,11 +3981,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get IOS_DEEP_LINK_INVALID
+   * Item includes an invalid ios_deep_link value.
    * @return IOS_DEEP_LINK_INVALID
    */
   @Valid 
-  @Schema(name = "IOS_DEEP_LINK_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "IOS_DEEP_LINK_INVALID", description = "Item includes an invalid ios_deep_link value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IOS_DEEP_LINK_INVALID")
   public CatalogsItemValidationDetails getIOSDEEPLINKINVALID() {
     return IOS_DEEP_LINK_INVALID;
@@ -4000,11 +4001,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get IS_BUNDLE_INVALID
+   * Item has an is_bundle value that is formatted incorrectly, this item will be published without being bundled with other products.
    * @return IS_BUNDLE_INVALID
    */
   @Valid 
-  @Schema(name = "IS_BUNDLE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "IS_BUNDLE_INVALID", description = "Item has an is_bundle value that is formatted incorrectly, this item will be published without being bundled with other products.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IS_BUNDLE_INVALID")
   public CatalogsItemValidationDetails getISBUNDLEINVALID() {
     return IS_BUNDLE_INVALID;
@@ -4020,11 +4021,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
+   * Item includes additional_image_links that can't be found.
    * @return ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
    */
   @Valid 
-  @Schema(name = "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE", description = "Item includes additional_image_links that can't be found.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE")
   public CatalogsItemValidationDetails getITEMADDITIONALIMAGEDOWNLOADFAILURE() {
     return ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
@@ -4040,11 +4041,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get LINK_FORMAT_WARNING
+   * Item has an invalid product link which contains invalid UTM tracking paramaters.
    * @return LINK_FORMAT_WARNING
    */
   @Valid 
-  @Schema(name = "LINK_FORMAT_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "LINK_FORMAT_WARNING", description = "Item has an invalid product link which contains invalid UTM tracking paramaters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINK_FORMAT_WARNING")
   public CatalogsItemValidationDetails getLINKFORMATWARNING() {
     return LINK_FORMAT_WARNING;
@@ -4060,11 +4061,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get MIN_AD_PRICE_INVALID
+   * Item includes a min_ad_price value that is formatted incorrectly.
    * @return MIN_AD_PRICE_INVALID
    */
   @Valid 
-  @Schema(name = "MIN_AD_PRICE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "MIN_AD_PRICE_INVALID", description = "Item includes a min_ad_price value that is formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MIN_AD_PRICE_INVALID")
   public CatalogsItemValidationDetails getMINADPRICEINVALID() {
     return MIN_AD_PRICE_INVALID;
@@ -4080,11 +4081,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get MPN_INVALID
+   * Item has a MPN value that is formatted incorrectly.
    * @return MPN_INVALID
    */
   @Valid 
-  @Schema(name = "MPN_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "MPN_INVALID", description = "Item has a MPN value that is formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MPN_INVALID")
   public CatalogsItemValidationDetails getMPNINVALID() {
     return MPN_INVALID;
@@ -4100,11 +4101,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get MULTIPACK_INVALID
+   * Item has an invalid multipack value.
    * @return MULTIPACK_INVALID
    */
   @Valid 
-  @Schema(name = "MULTIPACK_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "MULTIPACK_INVALID", description = "Item has an invalid multipack value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MULTIPACK_INVALID")
   public CatalogsItemValidationDetails getMULTIPACKINVALID() {
     return MULTIPACK_INVALID;
@@ -4120,11 +4121,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get OPTIONAL_CONDITION_INVALID
+   * Item includes a condition value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return OPTIONAL_CONDITION_INVALID
    */
   @Valid 
-  @Schema(name = "OPTIONAL_CONDITION_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "OPTIONAL_CONDITION_INVALID", description = "Item includes a condition value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_CONDITION_INVALID")
   public CatalogsItemValidationDetails getOPTIONALCONDITIONINVALID() {
     return OPTIONAL_CONDITION_INVALID;
@@ -4140,11 +4141,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get OPTIONAL_CONDITION_MISSING
+   * Item is missing condition value, which may limit visibility in recommendations, search results and shopping experiences.
    * @return OPTIONAL_CONDITION_MISSING
    */
   @Valid 
-  @Schema(name = "OPTIONAL_CONDITION_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "OPTIONAL_CONDITION_MISSING", description = "Item is missing condition value, which may limit visibility in recommendations, search results and shopping experiences.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_CONDITION_MISSING")
   public CatalogsItemValidationDetails getOPTIONALCONDITIONMISSING() {
     return OPTIONAL_CONDITION_MISSING;
@@ -4160,11 +4161,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get OPTIONAL_PRODUCT_CATEGORY_INVALID
+   * Item includes a google_product_category value that is not formatted correctly according to the GPC taxonomy.
    * @return OPTIONAL_PRODUCT_CATEGORY_INVALID
    */
   @Valid 
-  @Schema(name = "OPTIONAL_PRODUCT_CATEGORY_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "OPTIONAL_PRODUCT_CATEGORY_INVALID", description = "Item includes a google_product_category value that is not formatted correctly according to the GPC taxonomy.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_PRODUCT_CATEGORY_INVALID")
   public CatalogsItemValidationDetails getOPTIONALPRODUCTCATEGORYINVALID() {
     return OPTIONAL_PRODUCT_CATEGORY_INVALID;
@@ -4180,11 +4181,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get OPTIONAL_PRODUCT_CATEGORY_MISSING
+   * Item is missing google_product_category.
    * @return OPTIONAL_PRODUCT_CATEGORY_MISSING
    */
   @Valid 
-  @Schema(name = "OPTIONAL_PRODUCT_CATEGORY_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "OPTIONAL_PRODUCT_CATEGORY_MISSING", description = "Item is missing google_product_category.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_PRODUCT_CATEGORY_MISSING")
   public CatalogsItemValidationDetails getOPTIONALPRODUCTCATEGORYMISSING() {
     return OPTIONAL_PRODUCT_CATEGORY_MISSING;
@@ -4200,11 +4201,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get PRODUCT_CATEGORY_DEPTH_WARNING
+   * Item only has 1 or 2 levels of google_product_category value, which may limit visibility in recommendations, search results and shopping experiences.
    * @return PRODUCT_CATEGORY_DEPTH_WARNING
    */
   @Valid 
-  @Schema(name = "PRODUCT_CATEGORY_DEPTH_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "PRODUCT_CATEGORY_DEPTH_WARNING", description = "Item only has 1 or 2 levels of google_product_category value, which may limit visibility in recommendations, search results and shopping experiences.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_CATEGORY_DEPTH_WARNING")
   public CatalogsItemValidationDetails getPRODUCTCATEGORYDEPTHWARNING() {
     return PRODUCT_CATEGORY_DEPTH_WARNING;
@@ -4220,11 +4221,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get PRODUCT_TYPE_LENGTH_TOO_LONG
+   * Item has a product_type value that is too long, this item will be published without that product type.
    * @return PRODUCT_TYPE_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "PRODUCT_TYPE_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "PRODUCT_TYPE_LENGTH_TOO_LONG", description = "Item has a product_type value that is too long, this item will be published without that product type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_TYPE_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getPRODUCTTYPELENGTHTOOLONG() {
     return PRODUCT_TYPE_LENGTH_TOO_LONG;
@@ -4240,11 +4241,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get SALE_DATE_INVALID
+   * Item has a sale_price_effective_date value that is formatted incorrectly, this item will be published without a sale date.
    * @return SALE_DATE_INVALID
    */
   @Valid 
-  @Schema(name = "SALE_DATE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "SALE_DATE_INVALID", description = "Item has a sale_price_effective_date value that is formatted incorrectly, this item will be published without a sale date.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALE_DATE_INVALID")
   public CatalogsItemValidationDetails getSALEDATEINVALID() {
     return SALE_DATE_INVALID;
@@ -4260,11 +4261,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get SALES_PRICE_INVALID
+   * Item has an incorrectly formatted sales price.
    * @return SALES_PRICE_INVALID
    */
   @Valid 
-  @Schema(name = "SALES_PRICE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "SALES_PRICE_INVALID", description = "Item has an incorrectly formatted sales price.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALES_PRICE_INVALID")
   public CatalogsItemValidationDetails getSALESPRICEINVALID() {
     return SALES_PRICE_INVALID;
@@ -4280,11 +4281,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get SALES_PRICE_TOO_HIGH
+   * Item has a sale price value that is higher than the original price of the item.
    * @return SALES_PRICE_TOO_HIGH
    */
   @Valid 
-  @Schema(name = "SALES_PRICE_TOO_HIGH", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "SALES_PRICE_TOO_HIGH", description = "Item has a sale price value that is higher than the original price of the item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALES_PRICE_TOO_HIGH")
   public CatalogsItemValidationDetails getSALESPRICETOOHIGH() {
     return SALES_PRICE_TOO_HIGH;
@@ -4300,11 +4301,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get SALES_PRICE_TOO_LOW
+   * Item has a sale price value that is discounted very low compared to the price.
    * @return SALES_PRICE_TOO_LOW
    */
   @Valid 
-  @Schema(name = "SALES_PRICE_TOO_LOW", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "SALES_PRICE_TOO_LOW", description = "Item has a sale price value that is discounted very low compared to the price.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALES_PRICE_TOO_LOW")
   public CatalogsItemValidationDetails getSALESPRICETOOLOW() {
     return SALES_PRICE_TOO_LOW;
@@ -4320,11 +4321,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get SHIPPING_HEIGHT_INVALID
+   * Item has an incorrectly formatted shipping_height value. The value must first contain a numeric value then a valid dimension unit type.
    * @return SHIPPING_HEIGHT_INVALID
    */
   @Valid 
-  @Schema(name = "SHIPPING_HEIGHT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "SHIPPING_HEIGHT_INVALID", description = "Item has an incorrectly formatted shipping_height value. The value must first contain a numeric value then a valid dimension unit type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_HEIGHT_INVALID")
   public CatalogsItemValidationDetails getSHIPPINGHEIGHTINVALID() {
     return SHIPPING_HEIGHT_INVALID;
@@ -4340,11 +4341,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get SHIPPING_INVALID
+   * Item has a shipping value that is formatted incorrectly.
    * @return SHIPPING_INVALID
    */
   @Valid 
-  @Schema(name = "SHIPPING_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "SHIPPING_INVALID", description = "Item has a shipping value that is formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_INVALID")
   public CatalogsItemValidationDetails getSHIPPINGINVALID() {
     return SHIPPING_INVALID;
@@ -4360,11 +4361,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get SHIPPING_WEIGHT_INVALID
+   * Item has an invalid shipping_weight value.
    * @return SHIPPING_WEIGHT_INVALID
    */
   @Valid 
-  @Schema(name = "SHIPPING_WEIGHT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "SHIPPING_WEIGHT_INVALID", description = "Item has an invalid shipping_weight value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_WEIGHT_INVALID")
   public CatalogsItemValidationDetails getSHIPPINGWEIGHTINVALID() {
     return SHIPPING_WEIGHT_INVALID;
@@ -4380,11 +4381,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get SHIPPING_WIDTH_INVALID
+   * Item has an incorrectly formatted shipping_width value. The value must first contain a numeric value then a valid dimension unit type.
    * @return SHIPPING_WIDTH_INVALID
    */
   @Valid 
-  @Schema(name = "SHIPPING_WIDTH_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "SHIPPING_WIDTH_INVALID", description = "Item has an incorrectly formatted shipping_width value. The value must first contain a numeric value then a valid dimension unit type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_WIDTH_INVALID")
   public CatalogsItemValidationDetails getSHIPPINGWIDTHINVALID() {
     return SHIPPING_WIDTH_INVALID;
@@ -4400,11 +4401,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get SIZE_SYSTEM_INVALID
+   * Some items have size system values which are not one of the supported size systems.
    * @return SIZE_SYSTEM_INVALID
    */
   @Valid 
-  @Schema(name = "SIZE_SYSTEM_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "SIZE_SYSTEM_INVALID", description = "Some items have size system values which are not one of the supported size systems.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SIZE_SYSTEM_INVALID")
   public CatalogsItemValidationDetails getSIZESYSTEMINVALID() {
     return SIZE_SYSTEM_INVALID;
@@ -4420,11 +4421,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get SIZE_TYPE_INVALID
+   * Item has a size type value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return SIZE_TYPE_INVALID
    */
   @Valid 
-  @Schema(name = "SIZE_TYPE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "SIZE_TYPE_INVALID", description = "Item has a size type value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SIZE_TYPE_INVALID")
   public CatalogsItemValidationDetails getSIZETYPEINVALID() {
     return SIZE_TYPE_INVALID;
@@ -4440,11 +4441,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get TAX_INVALID
+   * Item has a tax value that is formatted incorrectly.
    * @return TAX_INVALID
    */
   @Valid 
-  @Schema(name = "TAX_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "TAX_INVALID", description = "Item has a tax value that is formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TAX_INVALID")
   public CatalogsItemValidationDetails getTAXINVALID() {
     return TAX_INVALID;
@@ -4460,11 +4461,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get TITLE_LENGTH_TOO_LONG
+   * The title for the item was truncated because it contains too many characters.
    * @return TITLE_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "TITLE_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "TITLE_LENGTH_TOO_LONG", description = "The title for the item was truncated because it contains too many characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TITLE_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getTITLELENGTHTOOLONG() {
     return TITLE_LENGTH_TOO_LONG;
@@ -4480,11 +4481,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get TOO_MANY_ADDITIONAL_IMAGE_LINKS
+   * Item has a additional_image_link value that exceed the limit for additional images, this item will be published without some of your images.
    * @return TOO_MANY_ADDITIONAL_IMAGE_LINKS
    */
   @Valid 
-  @Schema(name = "TOO_MANY_ADDITIONAL_IMAGE_LINKS", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "TOO_MANY_ADDITIONAL_IMAGE_LINKS", description = "Item has a additional_image_link value that exceed the limit for additional images, this item will be published without some of your images.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TOO_MANY_ADDITIONAL_IMAGE_LINKS")
   public CatalogsItemValidationDetails getTOOMANYADDITIONALIMAGELINKS() {
     return TOO_MANY_ADDITIONAL_IMAGE_LINKS;
@@ -4500,11 +4501,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get UTM_SOURCE_AUTO_CORRECTED
+   * Item includes an utm_source value that is formatted incorrectly and has been automatically corrected.
    * @return UTM_SOURCE_AUTO_CORRECTED
    */
   @Valid 
-  @Schema(name = "UTM_SOURCE_AUTO_CORRECTED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "UTM_SOURCE_AUTO_CORRECTED", description = "Item includes an utm_source value that is formatted incorrectly and has been automatically corrected.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("UTM_SOURCE_AUTO_CORRECTED")
   public CatalogsItemValidationDetails getUTMSOURCEAUTOCORRECTED() {
     return UTM_SOURCE_AUTO_CORRECTED;
@@ -4520,11 +4521,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED
+   * A video is required in the item when ad_video fields are provided.
    * @return VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED
    */
   @Valid 
-  @Schema(name = "VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED", description = "A video is required in the item when ad_video fields are provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED")
   public CatalogsItemValidationDetails getVIDEOREQUIREDWHENADVIDEOPROVIDED() {
     return VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED;
@@ -4540,11 +4541,11 @@ public class CatalogsItemValidationWarnings {
   }
 
   /**
-   * Get WEIGHT_UNIT_INVALID
+   * Item has a weight_unit value that is formatted incorrectly, this item will be published without a weight unit.
    * @return WEIGHT_UNIT_INVALID
    */
   @Valid 
-  @Schema(name = "WEIGHT_UNIT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "WEIGHT_UNIT_INVALID", description = "Item has a weight_unit value that is formatted incorrectly, this item will be published without a weight unit.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("WEIGHT_UNIT_INVALID")
   public CatalogsItemValidationDetails getWEIGHTUNITINVALID() {
     return WEIGHT_UNIT_INVALID;
@@ -4995,10 +4996,7 @@ public class CatalogsItemValidationWarnings {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

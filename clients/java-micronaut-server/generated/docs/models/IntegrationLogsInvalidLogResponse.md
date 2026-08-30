@@ -10,7 +10,7 @@ The class is defined in **[IntegrationLogsInvalidLogResponse.java](../../src/mai
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**rejectedLogs** | [`List&lt;IntegrationLogsInvalidLogResponseRejectedLogsInner&gt;`](IntegrationLogsInvalidLogResponseRejectedLogsInner.md) |  |  [optional property]
+**rejectedLogs** | [`List&lt;IntegrationLogsInvalidLogResponseRejectedLogsItems&gt;`](IntegrationLogsInvalidLogResponseRejectedLogsItems.md) |  |  [optional property]
 
 
 

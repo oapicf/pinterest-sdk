@@ -7,6 +7,7 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.targeting_spec_gender import TargetingSpecGender  # noqa: F401,E501
+from app.openapi_server.models.targeting_spec_list_operation import TargetingSpecListOperation  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,19 +17,19 @@ class TargetingSpecOperationGender(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, _field: str=None, operation: str=None, values: List[TargetingSpecGender]=None):  # noqa: E501
+    def __init__(self, _field: str=None, operation: TargetingSpecListOperation=None, values: List[TargetingSpecGender]=None):  # noqa: E501
         """TargetingSpecOperationGender - a model defined in Swagger
 
         :param _field: The _field of this TargetingSpecOperationGender.  # noqa: E501
         :type _field: str
         :param operation: The operation of this TargetingSpecOperationGender.  # noqa: E501
-        :type operation: str
+        :type operation: TargetingSpecListOperation
         :param values: The values of this TargetingSpecOperationGender.  # noqa: E501
         :type values: List[TargetingSpecGender]
         """
         self.swagger_types = {
             '_field': str,
-            'operation': str,
+            'operation': TargetingSpecListOperation,
             'values': List[TargetingSpecGender]
         }
 
@@ -81,29 +82,25 @@ class TargetingSpecOperationGender(Model):
         self.__field = _field
 
     @property
-    def operation(self) -> str:
+    def operation(self) -> TargetingSpecListOperation:
         """Gets the operation of this TargetingSpecOperationGender.
 
 
         :return: The operation of this TargetingSpecOperationGender.
-        :rtype: str
+        :rtype: TargetingSpecListOperation
         """
         return self._operation
 
     @operation.setter
-    def operation(self, operation: str):
+    def operation(self, operation: TargetingSpecListOperation):
         """Sets the operation of this TargetingSpecOperationGender.
 
 
         :param operation: The operation of this TargetingSpecOperationGender.
-        :type operation: str
+        :type operation: TargetingSpecListOperation
         """
-        allowed_values = ["SET", "ADD", "REMOVE"]  # noqa: E501
-        if operation not in allowed_values:
-            raise ValueError(
-                "Invalid value for `operation` ({0}), must be one of {1}"
-                .format(operation, allowed_values)
-            )
+        if operation is None:
+            raise ValueError("Invalid value for `operation`, must not be `None`")  # noqa: E501
 
         self._operation = operation
 

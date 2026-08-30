@@ -17,13 +17,13 @@ resourceTypes {
     properties {
         code {
           type =  integer
-          description = "Exception error code."
+          description = ""
           optional = false
         }
         message {
           type =  string
-          description = "Exception message."
-          optional = false
+          description = ""
+          optional = true
         }
     }
   }

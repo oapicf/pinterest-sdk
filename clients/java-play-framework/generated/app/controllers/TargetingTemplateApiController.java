@@ -1,10 +1,11 @@
 package controllers;
 
-import apimodels.Error;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.TargetingTemplate;
 import apimodels.TargetingTemplateCreate;
-import apimodels.TargetingTemplateGetResponseData;
 import apimodels.TargetingTemplateList200Response;
-import apimodels.TargetingTemplateUpdateRequest;
+import apimodels.TargetingTemplateUpdateRequestReadOrUpdate;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -28,7 +29,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingTemplateApiController extends Controller {
     private final TargetingTemplateApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -58,8 +59,22 @@ public class TargetingTemplateApiController extends Controller {
 
     @ApiAction
     public Result targetingTemplateList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
         String valueorder = request.getQueryString("order");
-        String order;
+        PinterestLibPaginationOrder order;
         if (valueorder != null) {
             order = valueorder;
         } else {
@@ -79,36 +94,22 @@ public class TargetingTemplateApiController extends Controller {
         } else {
             searchQuery = null;
         }
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
-        } else {
-            pageSize = 25;
-        }
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
-        } else {
-            bookmark = null;
-        }
-        return imp.targetingTemplateListHttp(request, adAccountId, order, includeSizing, searchQuery, pageSize, bookmark);
+        return imp.targetingTemplateListHttp(request, adAccountId, bookmark, pageSize, order, includeSizing, searchQuery);
     }
 
     @ApiAction
     public Result targetingTemplateUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodetargetingTemplateUpdateRequest = request.body().asJson();
-        TargetingTemplateUpdateRequest targetingTemplateUpdateRequest;
-        if (nodetargetingTemplateUpdateRequest != null) {
-            targetingTemplateUpdateRequest = mapper.readValue(nodetargetingTemplateUpdateRequest.toString(), TargetingTemplateUpdateRequest.class);
+        JsonNode nodetargetingTemplateUpdateRequestReadOrUpdate = request.body().asJson();
+        TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate;
+        if (nodetargetingTemplateUpdateRequestReadOrUpdate != null) {
+            targetingTemplateUpdateRequestReadOrUpdate = mapper.readValue(nodetargetingTemplateUpdateRequestReadOrUpdate.toString(), TargetingTemplateUpdateRequestReadOrUpdate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(targetingTemplateUpdateRequest);
+                OpenAPIUtils.validate(targetingTemplateUpdateRequestReadOrUpdate);
             }
         } else {
-            throw new IllegalArgumentException("'TargetingTemplateUpdateRequest' parameter is required");
+            throw new IllegalArgumentException("'TargetingTemplateUpdateRequestReadOrUpdate' parameter is required");
         }
-        return imp.targetingTemplateUpdateHttp(request, adAccountId, targetingTemplateUpdateRequest);
+        return imp.targetingTemplateUpdateHttp(request, adAccountId, targetingTemplateUpdateRequestReadOrUpdate);
     }
 
 }

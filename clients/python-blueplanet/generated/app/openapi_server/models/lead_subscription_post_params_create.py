@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.lead_subscription_post_params_create_all_of_partner_metadata import LeadSubscriptionPostParamsCreateAllOfPartnerMetadata  # noqa: F401,E501
+from app.openapi_server.models.partner_metadata import PartnerMetadata  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -17,7 +17,7 @@ class LeadSubscriptionPostParamsCreate(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, lead_form_id: str=None, webhook_url: str=None, partner_access_token: str=None, partner_metadata: LeadSubscriptionPostParamsCreateAllOfPartnerMetadata=None, partner_refresh_token: str=None):  # noqa: E501
+    def __init__(self, lead_form_id: str=None, webhook_url: str=None, partner_access_token: str=None, partner_metadata: PartnerMetadata=None, partner_refresh_token: str=None):  # noqa: E501
         """LeadSubscriptionPostParamsCreate - a model defined in Swagger
 
         :param lead_form_id: The lead_form_id of this LeadSubscriptionPostParamsCreate.  # noqa: E501
@@ -27,7 +27,7 @@ class LeadSubscriptionPostParamsCreate(Model):
         :param partner_access_token: The partner_access_token of this LeadSubscriptionPostParamsCreate.  # noqa: E501
         :type partner_access_token: str
         :param partner_metadata: The partner_metadata of this LeadSubscriptionPostParamsCreate.  # noqa: E501
-        :type partner_metadata: LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+        :type partner_metadata: PartnerMetadata
         :param partner_refresh_token: The partner_refresh_token of this LeadSubscriptionPostParamsCreate.  # noqa: E501
         :type partner_refresh_token: str
         """
@@ -35,7 +35,7 @@ class LeadSubscriptionPostParamsCreate(Model):
             'lead_form_id': str,
             'webhook_url': str,
             'partner_access_token': str,
-            'partner_metadata': LeadSubscriptionPostParamsCreateAllOfPartnerMetadata,
+            'partner_metadata': PartnerMetadata,
             'partner_refresh_token': str
         }
 
@@ -138,22 +138,24 @@ class LeadSubscriptionPostParamsCreate(Model):
         self._partner_access_token = partner_access_token
 
     @property
-    def partner_metadata(self) -> LeadSubscriptionPostParamsCreateAllOfPartnerMetadata:
+    def partner_metadata(self) -> PartnerMetadata:
         """Gets the partner_metadata of this LeadSubscriptionPostParamsCreate.
 
+        Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.  # noqa: E501
 
         :return: The partner_metadata of this LeadSubscriptionPostParamsCreate.
-        :rtype: LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+        :rtype: PartnerMetadata
         """
         return self._partner_metadata
 
     @partner_metadata.setter
-    def partner_metadata(self, partner_metadata: LeadSubscriptionPostParamsCreateAllOfPartnerMetadata):
+    def partner_metadata(self, partner_metadata: PartnerMetadata):
         """Sets the partner_metadata of this LeadSubscriptionPostParamsCreate.
 
+        Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.  # noqa: E501
 
         :param partner_metadata: The partner_metadata of this LeadSubscriptionPostParamsCreate.
-        :type partner_metadata: LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+        :type partner_metadata: PartnerMetadata
         """
 
         self._partner_metadata = partner_metadata

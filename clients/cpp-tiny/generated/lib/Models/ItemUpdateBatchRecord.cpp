@@ -124,7 +124,7 @@ ItemUpdateBatchRecord::getAttributes()
 }
 
 void
-ItemUpdateBatchRecord::setAttributes(UpdatableItemAttributes  attributes)
+ItemUpdateBatchRecord::setAttributes(UpdatableItemAttributes attributes)
 {
 	this->attributes = attributes;
 }
@@ -136,7 +136,7 @@ ItemUpdateBatchRecord::getItemId()
 }
 
 void
-ItemUpdateBatchRecord::setItemId(std::string  item_id)
+ItemUpdateBatchRecord::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
 }
@@ -148,7 +148,7 @@ ItemUpdateBatchRecord::getUpdateMask()
 }
 
 void
-ItemUpdateBatchRecord::setUpdateMask(std::list <UpdateMaskFieldType> update_mask)
+ItemUpdateBatchRecord::setUpdateMask(std::list<UpdateMaskFieldType> update_mask)
 {
 	this->update_mask = update_mask;
 }

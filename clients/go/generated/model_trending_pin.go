@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,12 +22,16 @@ var _ MappedNullable = &TrendingPin{}
 
 // TrendingPin Pin image data for trending topics
 type TrendingPin struct {
+	// Dominant color of the pin image in hex format
+	Color string `json:"color"`
 	// Height of the pin image in pixels
 	Height int32 `json:"height"`
 	// Unique identifier for the pin
 	Id string `json:"id"`
 	// URL of the pin image
 	Src string `json:"src"`
+	// The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.
+	VerticalOffset *float64 `json:"vertical_offset,omitempty"`
 	// Width of the pin image in pixels
 	Width int32 `json:"width"`
 }
@@ -38,8 +42,9 @@ type _TrendingPin TrendingPin
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTrendingPin(height int32, id string, src string, width int32) *TrendingPin {
+func NewTrendingPin(color string, height int32, id string, src string, width int32) *TrendingPin {
 	this := TrendingPin{}
+	this.Color = color
 	this.Height = height
 	this.Id = id
 	this.Src = src
@@ -53,6 +58,30 @@ func NewTrendingPin(height int32, id string, src string, width int32) *TrendingP
 func NewTrendingPinWithDefaults() *TrendingPin {
 	this := TrendingPin{}
 	return &this
+}
+
+// GetColor returns the Color field value
+func (o *TrendingPin) GetColor() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Color
+}
+
+// GetColorOk returns a tuple with the Color field value
+// and a boolean to check if the value has been set.
+func (o *TrendingPin) GetColorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Color, true
+}
+
+// SetColor sets field value
+func (o *TrendingPin) SetColor(v string) {
+	o.Color = v
 }
 
 // GetHeight returns the Height field value
@@ -127,6 +156,38 @@ func (o *TrendingPin) SetSrc(v string) {
 	o.Src = v
 }
 
+// GetVerticalOffset returns the VerticalOffset field value if set, zero value otherwise.
+func (o *TrendingPin) GetVerticalOffset() float64 {
+	if o == nil || IsNil(o.VerticalOffset) {
+		var ret float64
+		return ret
+	}
+	return *o.VerticalOffset
+}
+
+// GetVerticalOffsetOk returns a tuple with the VerticalOffset field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TrendingPin) GetVerticalOffsetOk() (*float64, bool) {
+	if o == nil || IsNil(o.VerticalOffset) {
+		return nil, false
+	}
+	return o.VerticalOffset, true
+}
+
+// HasVerticalOffset returns a boolean if a field has been set.
+func (o *TrendingPin) HasVerticalOffset() bool {
+	if o != nil && !IsNil(o.VerticalOffset) {
+		return true
+	}
+
+	return false
+}
+
+// SetVerticalOffset gets a reference to the given float64 and assigns it to the VerticalOffset field.
+func (o *TrendingPin) SetVerticalOffset(v float64) {
+	o.VerticalOffset = &v
+}
+
 // GetWidth returns the Width field value
 func (o *TrendingPin) GetWidth() int32 {
 	if o == nil {
@@ -161,9 +222,13 @@ func (o TrendingPin) MarshalJSON() ([]byte, error) {
 
 func (o TrendingPin) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["color"] = o.Color
 	toSerialize["height"] = o.Height
 	toSerialize["id"] = o.Id
 	toSerialize["src"] = o.Src
+	if !IsNil(o.VerticalOffset) {
+		toSerialize["vertical_offset"] = o.VerticalOffset
+	}
 	toSerialize["width"] = o.Width
 	return toSerialize, nil
 }
@@ -173,6 +238,7 @@ func (o *TrendingPin) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"color",
 		"height",
 		"id",
 		"src",

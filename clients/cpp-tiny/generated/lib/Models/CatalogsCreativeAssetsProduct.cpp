@@ -108,7 +108,7 @@ CatalogsCreativeAssetsProduct::getCatalogType()
 }
 
 void
-CatalogsCreativeAssetsProduct::setCatalogType(std::string  catalog_type)
+CatalogsCreativeAssetsProduct::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -120,7 +120,7 @@ CatalogsCreativeAssetsProduct::getMetadata()
 }
 
 void
-CatalogsCreativeAssetsProduct::setMetadata(CatalogsCreativeAssetsProductMetadata  metadata)
+CatalogsCreativeAssetsProduct::setMetadata(CatalogsCreativeAssetsProductMetadata metadata)
 {
 	this->metadata = metadata;
 }
@@ -132,7 +132,7 @@ CatalogsCreativeAssetsProduct::getPin()
 }
 
 void
-CatalogsCreativeAssetsProduct::setPin(Pin  pin)
+CatalogsCreativeAssetsProduct::setPin(Pin pin)
 {
 	this->pin = pin;
 }

@@ -6,7 +6,7 @@
 
 -type openapi_base_invite_data_response() ::
     #{ 'id' => binary(),
-       'invite_data' => openapi_base_invite_data_response_invite_data:openapi_base_invite_data_response_invite_data(),
+       'invite_data' => openapi_invite_data_response:openapi_invite_data_response(),
        'is_received_invite' => boolean(),
        'user' => openapi_business_access_user_summary:openapi_business_access_user_summary()
      }.

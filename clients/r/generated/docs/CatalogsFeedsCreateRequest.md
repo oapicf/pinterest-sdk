@@ -9,11 +9,11 @@ Name | Type | Description | Notes
 **default_availability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] [Enum: ] 
 **default_country** | [**Country**](Country.md) |  | [optional] [Enum: ] 
 **default_currency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] [Enum: ] 
-**default_locale** | [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequest_default_locale.md) |  | [optional] 
+**default_locale** | [**CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale**](CatalogsCreativeAssetsFeedsCreateRequest_default_locale.md) |  | [optional] 
 **format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [Enum: ] 
 **location** | **character** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | [Pattern: ^(http|https|ftp|sftp):/] 
 **name** | **character** | A human-friendly name associated to a given feed. | 
 **preferred_processing_schedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
-**status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to &quot;ACTIVE&quot;] [Enum: ] 
+**status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [Enum: ] 
 
 

@@ -1,24 +1,26 @@
 #import "OAIBusinessAccessAssetsApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
+#import "OAIAssetGroupDeletion.h"
+#import "OAIAssetGroupDeletionDelete.h"
+#import "OAIAssetGroupInput.h"
+#import "OAIAssetGroupInputCreate.h"
+#import "OAIAssetGroupModification.h"
+#import "OAIAssetGroupModificationReadOrUpdate.h"
+#import "OAIAssetPermissionType.h"
+#import "OAIAssetSearchBy.h"
+#import "OAIAssetSortBy.h"
 #import "OAIBusinessAssetMembersGet200Response.h"
-#import "OAIBusinessAssetPartnersGet200Response.h"
 #import "OAIBusinessAssetsGet200Response.h"
-#import "OAIBusinessMemberAssetsGet200Response.h"
-#import "OAIBusinessMembersAssetAccessDeleteRequest.h"
+#import "OAIBusinessMemberAssetsGetResponse.h"
+#import "OAIBusinessMembersAssetAccessDeleteBody.h"
 #import "OAIBusinessPartnerAssetAccessGet200Response.h"
-#import "OAICreateAssetGroupBody.h"
-#import "OAICreateAssetGroupResponse.h"
-#import "OAIDeleteAssetGroupBody.h"
-#import "OAIDeleteAssetGroupResponse.h"
 #import "OAIDeleteMemberAccessResultsResponseArray.h"
 #import "OAIDeletePartnerAssetAccessBody.h"
-#import "OAIDeletePartnerAssetsResultsResponseArray.h"
-#import "OAIError.h"
-#import "OAIPartnerType.h"
+#import "OAIDeletePartnerAssetAccessResultsResponseArray.h"
+#import "OAINonDraftEntityStatus.h"
 #import "OAIPermissionsWithOwner.h"
-#import "OAIUpdateAssetGroupBody.h"
-#import "OAIUpdateAssetGroupResponse.h"
+#import "OAIPinterestLibError.h"
 #import "OAIUpdateMemberAssetAccessBody.h"
 #import "OAIUpdateMemberAssetsResultsResponseArray.h"
 #import "OAIUpdatePartnerAssetAccessBody.h"
@@ -72,16 +74,16 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
 
 ///
 /// Create a new asset group.
-/// Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+/// Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 ///  @param businessId Unique identifier of the requesting business. 
 ///
-///  @param createAssetGroupBody  
+///  @param assetGroupInputCreate  
 ///
-///  @returns OAICreateAssetGroupResponse*
+///  @returns OAIAssetGroupInput*
 ///
 -(NSURLSessionTask*) assetGroupCreateWithBusinessId: (NSString*) businessId
-    createAssetGroupBody: (OAICreateAssetGroupBody*) createAssetGroupBody
-    completionHandler: (void (^)(OAICreateAssetGroupResponse* output, NSError* error)) handler {
+    assetGroupInputCreate: (OAIAssetGroupInputCreate*) assetGroupInputCreate
+    completionHandler: (void (^)(OAIAssetGroupInput* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -93,11 +95,11 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'createAssetGroupBody' is set
-    if (createAssetGroupBody == nil) {
-        NSParameterAssert(createAssetGroupBody);
+    // verify the required parameter 'assetGroupInputCreate' is set
+    if (assetGroupInputCreate == nil) {
+        NSParameterAssert(assetGroupInputCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"createAssetGroupBody"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"assetGroupInputCreate"] };
             NSError* error = [NSError errorWithDomain:kOAIBusinessAccessAssetsApiErrorDomain code:kOAIBusinessAccessAssetsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -132,7 +134,7 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = createAssetGroupBody;
+    bodyParam = assetGroupInputCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -145,10 +147,10 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAICreateAssetGroupResponse*"
+                              responseType: @"OAIAssetGroupInput*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAICreateAssetGroupResponse*)data, error);
+                                    handler((OAIAssetGroupInput*)data, error);
                                 }
                             }];
 }
@@ -158,13 +160,13 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
 /// Delete a batch of asset groups.
 ///  @param businessId Unique identifier of the requesting business. 
 ///
-///  @param deleteAssetGroupBody  
+///  @param assetGroupDeletionDelete  
 ///
-///  @returns OAIDeleteAssetGroupResponse*
+///  @returns OAIAssetGroupDeletion*
 ///
 -(NSURLSessionTask*) assetGroupDeleteWithBusinessId: (NSString*) businessId
-    deleteAssetGroupBody: (OAIDeleteAssetGroupBody*) deleteAssetGroupBody
-    completionHandler: (void (^)(OAIDeleteAssetGroupResponse* output, NSError* error)) handler {
+    assetGroupDeletionDelete: (OAIAssetGroupDeletionDelete*) assetGroupDeletionDelete
+    completionHandler: (void (^)(OAIAssetGroupDeletion* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -176,11 +178,11 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'deleteAssetGroupBody' is set
-    if (deleteAssetGroupBody == nil) {
-        NSParameterAssert(deleteAssetGroupBody);
+    // verify the required parameter 'assetGroupDeletionDelete' is set
+    if (assetGroupDeletionDelete == nil) {
+        NSParameterAssert(assetGroupDeletionDelete);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"deleteAssetGroupBody"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"assetGroupDeletionDelete"] };
             NSError* error = [NSError errorWithDomain:kOAIBusinessAccessAssetsApiErrorDomain code:kOAIBusinessAccessAssetsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -215,7 +217,7 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = deleteAssetGroupBody;
+    bodyParam = assetGroupDeletionDelete;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"DELETE"
@@ -228,10 +230,10 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIDeleteAssetGroupResponse*"
+                              responseType: @"OAIAssetGroupDeletion*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIDeleteAssetGroupResponse*)data, error);
+                                    handler((OAIAssetGroupDeletion*)data, error);
                                 }
                             }];
 }
@@ -241,13 +243,13 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
 /// Update a batch of asset groups with the specified parameters.
 ///  @param businessId Unique identifier of the requesting business. 
 ///
-///  @param updateAssetGroupBody  
+///  @param assetGroupModificationReadOrUpdate  
 ///
-///  @returns OAIUpdateAssetGroupResponse*
+///  @returns OAIAssetGroupModification*
 ///
 -(NSURLSessionTask*) assetGroupUpdateWithBusinessId: (NSString*) businessId
-    updateAssetGroupBody: (OAIUpdateAssetGroupBody*) updateAssetGroupBody
-    completionHandler: (void (^)(OAIUpdateAssetGroupResponse* output, NSError* error)) handler {
+    assetGroupModificationReadOrUpdate: (OAIAssetGroupModificationReadOrUpdate*) assetGroupModificationReadOrUpdate
+    completionHandler: (void (^)(OAIAssetGroupModification* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -259,11 +261,11 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'updateAssetGroupBody' is set
-    if (updateAssetGroupBody == nil) {
-        NSParameterAssert(updateAssetGroupBody);
+    // verify the required parameter 'assetGroupModificationReadOrUpdate' is set
+    if (assetGroupModificationReadOrUpdate == nil) {
+        NSParameterAssert(assetGroupModificationReadOrUpdate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"updateAssetGroupBody"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"assetGroupModificationReadOrUpdate"] };
             NSError* error = [NSError errorWithDomain:kOAIBusinessAccessAssetsApiErrorDomain code:kOAIBusinessAccessAssetsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -298,7 +300,7 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = updateAssetGroupBody;
+    bodyParam = assetGroupModificationReadOrUpdate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"
@@ -311,10 +313,10 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIUpdateAssetGroupResponse*"
+                              responseType: @"OAIAssetGroupModification*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIUpdateAssetGroupResponse*)data, error);
+                                    handler((OAIAssetGroupModification*)data, error);
                                 }
                             }];
 }
@@ -326,22 +328,22 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
 ///
 ///  @param assetId Unique identifier of a business asset. 
 ///
+///  @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to @0)
+///
 ///  @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False. (optional, default to @(NO))
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
-///
-///  @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to @0)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIBusinessAssetMembersGet200Response*
 ///
 -(NSURLSessionTask*) businessAssetMembersGetWithBusinessId: (NSString*) businessId
     assetId: (NSString*) assetId
+    startIndex: (NSNumber*) startIndex
     fetchSystemUsers: (NSNumber*) fetchSystemUsers
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    startIndex: (NSNumber*) startIndex
     completionHandler: (void (^)(OAIBusinessAssetMembersGet200Response* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
@@ -376,6 +378,9 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (startIndex != nil) {
+        queryParams[@"start_index"] = startIndex;
+    }
     if (fetchSystemUsers != nil) {
         queryParams[@"fetch_system_users"] = [fetchSystemUsers isEqual:@(YES)] ? @"true" : @"false";
     }
@@ -384,9 +389,6 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
     }
     if (pageSize != nil) {
         queryParams[@"page_size"] = pageSize;
-    }
-    if (startIndex != nil) {
-        queryParams[@"start_index"] = startIndex;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -439,16 +441,16 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
-///  @returns OAIBusinessAssetPartnersGet200Response*
+///  @returns OAIBusinessAssetMembersGet200Response*
 ///
 -(NSURLSessionTask*) businessAssetPartnersGetWithBusinessId: (NSString*) businessId
     assetId: (NSString*) assetId
     startIndex: (NSNumber*) startIndex
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    completionHandler: (void (^)(OAIBusinessAssetPartnersGet200Response* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIBusinessAssetMembersGet200Response* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -523,10 +525,10 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIBusinessAssetPartnersGet200Response*"
+                              responseType: @"OAIBusinessAssetMembersGet200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIBusinessAssetPartnersGet200Response*)data, error);
+                                    handler((OAIBusinessAssetMembersGet200Response*)data, error);
                                 }
                             }];
 }
@@ -548,7 +550,7 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIBusinessAssetsGet200Response*
 ///
@@ -652,19 +654,37 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
 ///
 ///  @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to @0)
 ///
+///  @param sortBy The field to sort member assets by (optional)
+///
+///  @param sortAscending Sort assets in ascending order (optional, default to @(YES))
+///
+///  @param searchBy The field to search member assets by (optional)
+///
+///  @param searchValue The value to search for (optional)
+///
+///  @param assetPermissionType The type of asset permission to filter by (optional)
+///
+///  @param adAccountStatuses A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. (optional)
+///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
-///  @returns OAIBusinessMemberAssetsGet200Response*
+///  @returns OAIBusinessMemberAssetsGetResponse*
 ///
 -(NSURLSessionTask*) businessMemberAssetsGetWithBusinessId: (NSString*) businessId
     memberId: (NSString*) memberId
     assetType: (NSString*) assetType
     startIndex: (NSNumber*) startIndex
+    sortBy: (OAIAssetSortBy) sortBy
+    sortAscending: (NSNumber*) sortAscending
+    searchBy: (OAIAssetSearchBy) searchBy
+    searchValue: (NSString*) searchValue
+    assetPermissionType: (OAIAssetPermissionType) assetPermissionType
+    adAccountStatuses: (NSArray<OAINonDraftEntityStatus>*) adAccountStatuses
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    completionHandler: (void (^)(OAIBusinessMemberAssetsGet200Response* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIBusinessMemberAssetsGetResponse* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -704,6 +724,24 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
     if (startIndex != nil) {
         queryParams[@"start_index"] = startIndex;
     }
+    if (sortBy != nil) {
+        queryParams[@"sort_by"] = sortBy;
+    }
+    if (sortAscending != nil) {
+        queryParams[@"sort_ascending"] = [sortAscending isEqual:@(YES)] ? @"true" : @"false";
+    }
+    if (searchBy != nil) {
+        queryParams[@"search_by"] = searchBy;
+    }
+    if (searchValue != nil) {
+        queryParams[@"search_value"] = searchValue;
+    }
+    if (assetPermissionType != nil) {
+        queryParams[@"asset_permission_type"] = assetPermissionType;
+    }
+    if (adAccountStatuses != nil) {
+        queryParams[@"ad_account_statuses"] = [[OAIQueryParamCollection alloc] initWithValuesAndFormat: adAccountStatuses format: @"multi"];
+    }
     if (bookmark != nil) {
         queryParams[@"bookmark"] = bookmark;
     }
@@ -742,10 +780,10 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIBusinessMemberAssetsGet200Response*"
+                              responseType: @"OAIBusinessMemberAssetsGetResponse*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIBusinessMemberAssetsGet200Response*)data, error);
+                                    handler((OAIBusinessMemberAssetsGetResponse*)data, error);
                                 }
                             }];
 }
@@ -755,12 +793,12 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
 /// Terminate multiple members' access to an asset.
 ///  @param businessId Unique identifier of the requesting business. 
 ///
-///  @param businessMembersAssetAccessDeleteRequest List member assset permissions to delete. 
+///  @param businessMembersAssetAccessDeleteBody  
 ///
 ///  @returns OAIDeleteMemberAccessResultsResponseArray*
 ///
 -(NSURLSessionTask*) businessMembersAssetAccessDeleteWithBusinessId: (NSString*) businessId
-    businessMembersAssetAccessDeleteRequest: (OAIBusinessMembersAssetAccessDeleteRequest*) businessMembersAssetAccessDeleteRequest
+    businessMembersAssetAccessDeleteBody: (OAIBusinessMembersAssetAccessDeleteBody*) businessMembersAssetAccessDeleteBody
     completionHandler: (void (^)(OAIDeleteMemberAccessResultsResponseArray* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
@@ -773,11 +811,11 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'businessMembersAssetAccessDeleteRequest' is set
-    if (businessMembersAssetAccessDeleteRequest == nil) {
-        NSParameterAssert(businessMembersAssetAccessDeleteRequest);
+    // verify the required parameter 'businessMembersAssetAccessDeleteBody' is set
+    if (businessMembersAssetAccessDeleteBody == nil) {
+        NSParameterAssert(businessMembersAssetAccessDeleteBody);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"businessMembersAssetAccessDeleteRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"businessMembersAssetAccessDeleteBody"] };
             NSError* error = [NSError errorWithDomain:kOAIBusinessAccessAssetsApiErrorDomain code:kOAIBusinessAccessAssetsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -812,7 +850,7 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = businessMembersAssetAccessDeleteRequest;
+    bodyParam = businessMembersAssetAccessDeleteBody;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"DELETE"
@@ -835,10 +873,10 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
 
 ///
 /// Assign/Update member asset permissions
-/// Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+/// Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 ///  @param businessId Unique identifier of the requesting business. 
 ///
-///  @param updateMemberAssetAccessBody List of member asset permissions to create or update. 
+///  @param updateMemberAssetAccessBody  
 ///
 ///  @returns OAIUpdateMemberAssetsResultsResponseArray*
 ///
@@ -923,25 +961,37 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
 ///
 ///  @param partnerId The partner id to be bound to the Business 
 ///
-///  @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
+///  @param partnerType Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional, default to @"INTERNAL")
 ///
 ///  @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to @"AD_ACCOUNT")
 ///
 ///  @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to @0)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param sortBy The field to sort member assets by (optional)
+///
+///  @param sortAscending Sort assets in ascending order (optional, default to @(YES))
+///
+///  @param searchBy The field to search member assets by (optional)
+///
+///  @param searchValue The value to search for (optional)
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
+///
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIBusinessPartnerAssetAccessGet200Response*
 ///
 -(NSURLSessionTask*) businessPartnerAssetAccessGetWithBusinessId: (NSString*) businessId
     partnerId: (NSString*) partnerId
-    partnerType: (OAIPartnerType*) partnerType
+    partnerType: (NSString*) partnerType
     assetType: (NSString*) assetType
     startIndex: (NSNumber*) startIndex
-    pageSize: (NSNumber*) pageSize
+    sortBy: (OAIAssetSortBy) sortBy
+    sortAscending: (NSNumber*) sortAscending
+    searchBy: (OAIAssetSearchBy) searchBy
+    searchValue: (NSString*) searchValue
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
     completionHandler: (void (^)(OAIBusinessPartnerAssetAccessGet200Response* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
@@ -985,11 +1035,23 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
     if (startIndex != nil) {
         queryParams[@"start_index"] = startIndex;
     }
-    if (pageSize != nil) {
-        queryParams[@"page_size"] = pageSize;
+    if (sortBy != nil) {
+        queryParams[@"sort_by"] = sortBy;
+    }
+    if (sortAscending != nil) {
+        queryParams[@"sort_ascending"] = [sortAscending isEqual:@(YES)] ? @"true" : @"false";
+    }
+    if (searchBy != nil) {
+        queryParams[@"search_by"] = searchBy;
+    }
+    if (searchValue != nil) {
+        queryParams[@"search_value"] = searchValue;
     }
     if (bookmark != nil) {
         queryParams[@"bookmark"] = bookmark;
+    }
+    if (pageSize != nil) {
+        queryParams[@"page_size"] = pageSize;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -1038,11 +1100,11 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
 ///
 ///  @param deletePartnerAssetAccessBody  
 ///
-///  @returns OAIDeletePartnerAssetsResultsResponseArray*
+///  @returns OAIDeletePartnerAssetAccessResultsResponseArray*
 ///
 -(NSURLSessionTask*) deletePartnerAssetAccessHandlerImplWithBusinessId: (NSString*) businessId
     deletePartnerAssetAccessBody: (OAIDeletePartnerAssetAccessBody*) deletePartnerAssetAccessBody
-    completionHandler: (void (^)(OAIDeletePartnerAssetsResultsResponseArray* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIDeletePartnerAssetAccessResultsResponseArray* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -1106,10 +1168,10 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIDeletePartnerAssetsResultsResponseArray*"
+                              responseType: @"OAIDeletePartnerAssetAccessResultsResponseArray*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIDeletePartnerAssetsResultsResponseArray*)data, error);
+                                    handler((OAIDeletePartnerAssetAccessResultsResponseArray*)data, error);
                                 }
                             }];
 }
@@ -1119,7 +1181,7 @@ NSInteger kOAIBusinessAccessAssetsApiMissingParamErrorCode = 234513;
 /// Grant multiple partners access to assets and/or update multiple partner's exisiting permissions to an asset. If your partner already had permissions on the asset, they will be overriden with the new permissions you assign to them. To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview  Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 ///  @param businessId Unique identifier of the requesting business. 
 ///
-///  @param updatePartnerAssetAccessBody A list of assets and permissions to assign to your partners. 
+///  @param updatePartnerAssetAccessBody  
 ///
 ///  @returns OAIUpdatePartnerAssetsResultsResponseArray*
 ///

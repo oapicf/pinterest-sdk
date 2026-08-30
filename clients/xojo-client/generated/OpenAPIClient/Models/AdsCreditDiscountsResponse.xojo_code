@@ -27,7 +27,7 @@ Protected Class AdsCreditDiscountsResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The discount applied in the offer’s currency value.
+			The discount applied in the offer's currency value.
 		#tag EndNote
 		discountInMicroCurrency As Xoson.O.OptionalDouble
 	#tag EndProperty
@@ -57,81 +57,7 @@ Protected Class AdsCreditDiscountsResponse
 	#tag EndProperty
 
 
-    #tag Enum, Name = DiscountTypeEnum, Type = Integer, Flags = &h0
-        
-        Coupon
-        Credit
-        CouponApplied
-        CreditApplied
-        MarketingOfferCredit
-        MarketingOfferCreditApplied
-        GoodwillCredit
-        GoodwillCreditApplied
-        InternalCredit
-        InternalCreditApplied
-        PrepaidCredit
-        PrepaidCreditApplied
-        SalesIncentiveCredit
-        SalesIncentiveCreditApplied
-        CreditExpired
-        FutureCredit
-        ReferralCredit
-        InvoiceSalesIncentiveCredit
-        InvoiceSalesIncentiveCreditApplied
-        PrepaidCreditRefund
-        
-    #tag EndEnum
 
-
-	#tag Method, Flags = &h0
-		Shared Function DiscountTypeEnumToString(value As DiscountTypeEnum) As String
-		  Select Case value
-		    
-		    Case DiscountTypeEnum.Coupon
-		      Return "COUPON"
-		    Case DiscountTypeEnum.Credit
-		      Return "CREDIT"
-		    Case DiscountTypeEnum.CouponApplied
-		      Return "COUPON_APPLIED"
-		    Case DiscountTypeEnum.CreditApplied
-		      Return "CREDIT_APPLIED"
-		    Case DiscountTypeEnum.MarketingOfferCredit
-		      Return "MARKETING_OFFER_CREDIT"
-		    Case DiscountTypeEnum.MarketingOfferCreditApplied
-		      Return "MARKETING_OFFER_CREDIT_APPLIED"
-		    Case DiscountTypeEnum.GoodwillCredit
-		      Return "GOODWILL_CREDIT"
-		    Case DiscountTypeEnum.GoodwillCreditApplied
-		      Return "GOODWILL_CREDIT_APPLIED"
-		    Case DiscountTypeEnum.InternalCredit
-		      Return "INTERNAL_CREDIT"
-		    Case DiscountTypeEnum.InternalCreditApplied
-		      Return "INTERNAL_CREDIT_APPLIED"
-		    Case DiscountTypeEnum.PrepaidCredit
-		      Return "PREPAID_CREDIT"
-		    Case DiscountTypeEnum.PrepaidCreditApplied
-		      Return "PREPAID_CREDIT_APPLIED"
-		    Case DiscountTypeEnum.SalesIncentiveCredit
-		      Return "SALES_INCENTIVE_CREDIT"
-		    Case DiscountTypeEnum.SalesIncentiveCreditApplied
-		      Return "SALES_INCENTIVE_CREDIT_APPLIED"
-		    Case DiscountTypeEnum.CreditExpired
-		      Return "CREDIT_EXPIRED"
-		    Case DiscountTypeEnum.FutureCredit
-		      Return "FUTURE_CREDIT"
-		    Case DiscountTypeEnum.ReferralCredit
-		      Return "REFERRAL_CREDIT"
-		    Case DiscountTypeEnum.InvoiceSalesIncentiveCredit
-		      Return "INVOICE_SALES_INCENTIVE_CREDIT"
-		    Case DiscountTypeEnum.InvoiceSalesIncentiveCreditApplied
-		      Return "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"
-		    Case DiscountTypeEnum.PrepaidCreditRefund
-		      Return "PREPAID_CREDIT_REFUND"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -197,6 +123,14 @@ Protected Class AdsCreditDiscountsResponse
 			Group="Behavior"
 			InitialValue=""
 			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="discountType"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AdsCreditDiscountType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

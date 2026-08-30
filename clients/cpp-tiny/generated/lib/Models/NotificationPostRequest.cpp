@@ -1,25 +1,25 @@
 
 
-#include "Notification_post_request.h"
+#include "NotificationPostRequest.h"
 
 using namespace Tiny;
 
-Notification_post_request::Notification_post_request()
+NotificationPostRequest::NotificationPostRequest()
 {
 }
 
-Notification_post_request::Notification_post_request(std::string jsonString)
+NotificationPostRequest::NotificationPostRequest(std::string jsonString)
 {
 	this->fromJson(jsonString);
 }
 
-Notification_post_request::~Notification_post_request()
+NotificationPostRequest::~NotificationPostRequest()
 {
 
 }
 
 void
-Notification_post_request::fromJson(std::string jsonObj)
+NotificationPostRequest::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
@@ -27,7 +27,7 @@ Notification_post_request::fromJson(std::string jsonObj)
 }
 
 bourne::json
-Notification_post_request::toJson()
+NotificationPostRequest::toJson()
 {
     bourne::json object = bourne::json::object();
 

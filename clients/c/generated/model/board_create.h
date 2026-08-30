@@ -21,7 +21,7 @@ typedef struct board_create_t board_create_t;
 
 typedef struct board_create_t {
     char *description; // string
-    int is_ads_only; //boolean
+    int *is_ads_only; //boolean
     char *name; // string
     board_privacy_t *privacy; // custom
 
@@ -30,7 +30,7 @@ typedef struct board_create_t {
 
 __attribute__((deprecated)) board_create_t *board_create_create(
     char *description,
-    int is_ads_only,
+    int *is_ads_only,
     char *name,
     board_privacy_t *privacy
 );

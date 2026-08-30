@@ -20,6 +20,7 @@ class BulkUpsertRequestUpdate {
     this.keywords = const [],
     this.labels = const [],
     this.productGroups = const [],
+    this.schedules = const [],
   });
 
   List<AdGroupUpdateRequest> adGroups;
@@ -28,13 +29,15 @@ class BulkUpsertRequestUpdate {
 
   List<CampaignUpdateRequest> campaigns;
 
-  List<CatalogsProductGroupsUpdateRequest> catalogProductGroups;
+  List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups;
 
-  List<KeywordUpdate> keywords;
+  List<KeywordUpdateGenerated> keywords;
 
   List<LabelBulkUpdateRequest> labels;
 
   List<ProductGroupPromotionUpdateRequest> productGroups;
+
+  List<ScheduleUpdateRequest> schedules;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BulkUpsertRequestUpdate &&
@@ -44,7 +47,8 @@ class BulkUpsertRequestUpdate {
     _deepEquality.equals(other.catalogProductGroups, catalogProductGroups) &&
     _deepEquality.equals(other.keywords, keywords) &&
     _deepEquality.equals(other.labels, labels) &&
-    _deepEquality.equals(other.productGroups, productGroups);
+    _deepEquality.equals(other.productGroups, productGroups) &&
+    _deepEquality.equals(other.schedules, schedules);
 
   @override
   int get hashCode =>
@@ -55,10 +59,11 @@ class BulkUpsertRequestUpdate {
     (catalogProductGroups.hashCode) +
     (keywords.hashCode) +
     (labels.hashCode) +
-    (productGroups.hashCode);
+    (productGroups.hashCode) +
+    (schedules.hashCode);
 
   @override
-  String toString() => 'BulkUpsertRequestUpdate[adGroups=$adGroups, ads=$ads, campaigns=$campaigns, catalogProductGroups=$catalogProductGroups, keywords=$keywords, labels=$labels, productGroups=$productGroups]';
+  String toString() => 'BulkUpsertRequestUpdate[adGroups=$adGroups, ads=$ads, campaigns=$campaigns, catalogProductGroups=$catalogProductGroups, keywords=$keywords, labels=$labels, productGroups=$productGroups, schedules=$schedules]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -69,6 +74,7 @@ class BulkUpsertRequestUpdate {
       json[r'keywords'] = this.keywords;
       json[r'labels'] = this.labels;
       json[r'product_groups'] = this.productGroups;
+      json[r'schedules'] = this.schedules;
     return json;
   }
 
@@ -83,10 +89,6 @@ class BulkUpsertRequestUpdate {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BulkUpsertRequestUpdate[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BulkUpsertRequestUpdate[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -94,10 +96,11 @@ class BulkUpsertRequestUpdate {
         adGroups: AdGroupUpdateRequest.listFromJson(json[r'ad_groups']),
         ads: AdUpdateRequest.listFromJson(json[r'ads']),
         campaigns: CampaignUpdateRequest.listFromJson(json[r'campaigns']),
-        catalogProductGroups: CatalogsProductGroupsUpdateRequest.listFromJson(json[r'catalog_product_groups']),
-        keywords: KeywordUpdate.listFromJson(json[r'keywords']),
+        catalogProductGroups: BulkUpsertRequestUpdateCatalogProductGroupsItems.listFromJson(json[r'catalog_product_groups']),
+        keywords: KeywordUpdateGenerated.listFromJson(json[r'keywords']),
         labels: LabelBulkUpdateRequest.listFromJson(json[r'labels']),
         productGroups: ProductGroupPromotionUpdateRequest.listFromJson(json[r'product_groups']),
+        schedules: ScheduleUpdateRequest.listFromJson(json[r'schedules']),
       );
     }
     return null;

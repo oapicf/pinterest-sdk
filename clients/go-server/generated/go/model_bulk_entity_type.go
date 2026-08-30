@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ import (
 )
 
 
-// BulkEntityType : Refers ads entity type. Schedule enum is only applicable to beta users
+// BulkEntityType : Refers ads entity type.
 type BulkEntityType string
 
 // List of BulkEntityType
@@ -29,6 +29,7 @@ const (
 	KEYWORD BulkEntityType = "KEYWORD"
 	LABEL BulkEntityType = "LABEL"
 	SCHEDULE BulkEntityType = "SCHEDULE"
+	ENTITY_HISTORY BulkEntityType = "ENTITY_HISTORY"
 )
 
 // AllowedBulkEntityTypeEnumValues is all the allowed values of BulkEntityType enum
@@ -40,6 +41,7 @@ var AllowedBulkEntityTypeEnumValues = []BulkEntityType{
 	"KEYWORD",
 	"LABEL",
 	"SCHEDULE",
+	"ENTITY_HISTORY",
 }
 
 // validBulkEntityTypeEnumValue provides a map of BulkEntityTypes for fast verification of use input
@@ -51,6 +53,7 @@ var validBulkEntityTypeEnumValues = map[BulkEntityType]struct{}{
 	"KEYWORD": {},
 	"LABEL": {},
 	"SCHEDULE": {},
+	"ENTITY_HISTORY": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
@@ -71,8 +74,8 @@ func NewBulkEntityTypeFromValue(v string) (BulkEntityType, error) {
 }
 
 
-
-// AssertBulkEntityTypeRequired checks if the required fields are not zero-ed
+// AssertBulkEntityTypeRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertBulkEntityTypeRequired(obj BulkEntityType) error {
 	return nil
 }

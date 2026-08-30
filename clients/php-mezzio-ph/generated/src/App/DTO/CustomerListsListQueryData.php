@@ -1,0 +1,51 @@
+<?php
+declare(strict_types=1);
+
+namespace App\DTO;
+
+use Articus\DataTransfer\Annotation as DTA;
+
+/**
+ * Query parameters for customerListsList
+ */
+class CustomerListsListQueryData
+{
+    /**
+     * When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).
+     * @DTA\Data(field="exclude_nca", nullable=true)
+     * @DTA\Strategy(name="QueryStringScalar", options={"type":"bool"})
+     * @DTA\Validator(name="QueryStringScalar", options={"type":"bool"})
+     * @var bool|null
+     */
+    public $exclude_nca;
+
+    /**
+     * Cursor used to fetch the next page of items
+     * @DTA\Data(field="bookmark", nullable=true)
+     * @DTA\Strategy(name="QueryStringScalar", options={"type":"string"})
+     * @DTA\Validator(name="QueryStringScalar", options={"type":"string"})
+     * @var string|null
+     */
+    public $bookmark;
+
+    /**
+     * Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     * @DTA\Data(field="page_size", nullable=true)
+     * @DTA\Strategy(name="QueryStringScalar", options={"type":"int"})
+     * @DTA\Validator(name="QueryStringScalar", options={"type":"int"})
+     * @DTA\Validator(name="GreaterThan", options={"min":1, "inclusive":true})
+     * @DTA\Validator(name="LessThan", options={"max":250, "inclusive":true})
+     * @var int|null
+     */
+    public $page_size;
+
+    /**
+     * The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
+     * @DTA\Data(field="order", nullable=true)
+     * @DTA\Strategy(name="QueryStringScalar", options={"type":"string"})
+     * @DTA\Validator(name="QueryStringScalar", options={"type":"string"})
+     * @var string|null
+     */
+    public $order;
+
+}

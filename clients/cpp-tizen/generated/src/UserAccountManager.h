@@ -7,21 +7,24 @@
 #include <glib.h>
 #include "Account.h"
 #include "AnalyticsMetricsResponse.h"
-#include "Boards_user_follows_list_200_response.h"
+#include "Boards_list_200_response.h"
 #include "Date.h"
-#include "Error.h"
-#include "FollowUserRequest.h"
+#include "FollowUser.h"
+#include "FollowUserCreate.h"
 #include "Followers_list_200_response.h"
 #include "LinkedBusiness.h"
+#include "Pinterest.Lib.Error.h"
+#include "QuerymetrictypesItems.h"
+#include "QueryvideopinmetrictypesItems.h"
 #include "TopPinsAnalyticsResponse.h"
+#include "TopPinsSortBy.h"
 #include "TopVideoPinsAnalyticsResponse.h"
+#include "TopVideoPinsSortBy.h"
 #include "UserFollowingFeedType.h"
-#include "UserSummary.h"
-#include "UserWebsiteSummary.h"
-#include "UserWebsiteVerificationCode.h"
-#include "UserWebsiteVerifyRequest.h"
+#include "UserWebsite.h"
+#include "UserWebsiteCreate.h"
+#include "UserWebsiteVerification.h"
 #include "User_account_followed_interests_200_response.h"
-#include "User_following_get_200_response.h"
 #include "User_websites_get_200_response.h"
 #include <list>
 #include <map>
@@ -46,62 +49,62 @@ public:
 /*! \brief List following boards. *Synchronous*
  *
  * Get a list of the boards a user follows. The request returns a board summary object array.
- * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
- * \param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
  * \param adAccountId Unique identifier of an ad account.
+ * \param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
+ * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool boardsUserFollowsListSync(char * accessToken,
-	std::string bookmark, int pageSize, bool explicitFollowing, std::string adAccountId, 
-	void(* handler)(Boards_user_follows_list_200_response, Error, void* )
+	std::string adAccountId, bool explicitFollowing, std::string bookmark, int pageSize, 
+	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData);
 
 /*! \brief List following boards. *Asynchronous*
  *
  * Get a list of the boards a user follows. The request returns a board summary object array.
- * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
- * \param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
  * \param adAccountId Unique identifier of an ad account.
+ * \param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
+ * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool boardsUserFollowsListAsync(char * accessToken,
-	std::string bookmark, int pageSize, bool explicitFollowing, std::string adAccountId, 
-	void(* handler)(Boards_user_follows_list_200_response, Error, void* )
+	std::string adAccountId, bool explicitFollowing, std::string bookmark, int pageSize, 
+	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData);
 
 
 /*! \brief Follow user. *Synchronous*
  *
- * <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+ * **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
  * \param username A valid username *Required*
- * \param followUserRequest Follow a user. *Required*
+ * \param followUserCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool followUserUpdateSync(char * accessToken,
-	std::string username, std::shared_ptr<FollowUserRequest> followUserRequest, 
-	void(* handler)(UserSummary, Error, void* )
+	std::string username, std::shared_ptr<FollowUserCreate> followUserCreate, 
+	void(* handler)(FollowUser, Error, void* )
 	, void* userData);
 
 /*! \brief Follow user. *Asynchronous*
  *
- * <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+ * **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
  * \param username A valid username *Required*
- * \param followUserRequest Follow a user. *Required*
+ * \param followUserCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool followUserUpdateAsync(char * accessToken,
-	std::string username, std::shared_ptr<FollowUserRequest> followUserRequest, 
-	void(* handler)(UserSummary, Error, void* )
+	std::string username, std::shared_ptr<FollowUserCreate> followUserCreate, 
+	void(* handler)(FollowUser, Error, void* )
 	, void* userData);
 
 
@@ -109,7 +112,7 @@ bool followUserUpdateAsync(char * accessToken,
  *
  * Get a list of your followers.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -123,7 +126,7 @@ bool followersListSync(char * accessToken,
  *
  * Get a list of your followers.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -161,7 +164,7 @@ bool linkedBusinessAccountsGetAsync(char * accessToken,
 
 /*! \brief Unverify website. *Synchronous*
  *
- * Unverifu a website verified by the signed-in user.
+ * Unverify a website verified by the signed-in user.
  * \param website Website with path or domain only *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -169,12 +172,12 @@ bool linkedBusinessAccountsGetAsync(char * accessToken,
  */
 bool unverifyWebsiteDeleteSync(char * accessToken,
 	std::string website, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(UserWebsite, Error, void* )
+	, void* userData);
 
 /*! \brief Unverify website. *Asynchronous*
  *
- * Unverifu a website verified by the signed-in user.
+ * Unverify a website verified by the signed-in user.
  * \param website Website with path or domain only *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -182,8 +185,8 @@ bool unverifyWebsiteDeleteSync(char * accessToken,
  */
 bool unverifyWebsiteDeleteAsync(char * accessToken,
 	std::string website, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(UserWebsite, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get user account analytics. *Synchronous*
@@ -196,7 +199,7 @@ bool unverifyWebsiteDeleteAsync(char * accessToken,
  * \param appTypes Apps or devices to get data for, default is all.
  * \param contentType Filter to paid or organic data. Default is all.
  * \param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
- * \param metricTypes Metric types to get data for, default is all. 
+ * \param metricTypes Metric types to get data for, default is all.
  * \param splitField How to split the data into groups. Not including this param means data won't be split.
  * \param adAccountId Unique identifier of an ad account.
  * \param handler The callback function to be invoked on completion. *Required*
@@ -204,7 +207,7 @@ bool unverifyWebsiteDeleteAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool userAccountAnalyticsSync(char * accessToken,
-	Date startDate, Date endDate, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, std::string splitField, std::string adAccountId, 
+	Date startDate, Date endDate, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QuerymetrictypesItems> metricTypes, std::string splitField, std::string adAccountId, 
 	void(* handler)(std::map<std::string,std::string>, Error, void* )
 	, void* userData);
 
@@ -218,7 +221,7 @@ bool userAccountAnalyticsSync(char * accessToken,
  * \param appTypes Apps or devices to get data for, default is all.
  * \param contentType Filter to paid or organic data. Default is all.
  * \param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
- * \param metricTypes Metric types to get data for, default is all. 
+ * \param metricTypes Metric types to get data for, default is all.
  * \param splitField How to split the data into groups. Not including this param means data won't be split.
  * \param adAccountId Unique identifier of an ad account.
  * \param handler The callback function to be invoked on completion. *Required*
@@ -226,7 +229,7 @@ bool userAccountAnalyticsSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool userAccountAnalyticsAsync(char * accessToken,
-	Date startDate, Date endDate, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, std::string splitField, std::string adAccountId, 
+	Date startDate, Date endDate, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QuerymetrictypesItems> metricTypes, std::string splitField, std::string adAccountId, 
 	void(* handler)(std::map<std::string,std::string>, Error, void* )
 	, void* userData);
 
@@ -242,7 +245,7 @@ bool userAccountAnalyticsAsync(char * accessToken,
  * \param appTypes Apps or devices to get data for, default is all.
  * \param contentType Filter to paid or organic data. Default is all.
  * \param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
- * \param metricTypes Metric types to get data for, default is all. 
+ * \param metricTypes Metric types to get data for, default is all.
  * \param numOfPins Number of pins to include, default is 10. Max is 50.
  * \param createdInLastNDays Get metrics for pins created in the last \"n\" days.
  * \param adAccountId Unique identifier of an ad account.
@@ -251,7 +254,7 @@ bool userAccountAnalyticsAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool userAccountAnalyticsTopPinsSync(char * accessToken,
-	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	Date startDate, Date endDate, TopPinsSortBy sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QuerymetrictypesItems> metricTypes, int numOfPins, long long createdInLastNDays, std::string adAccountId, 
 	void(* handler)(TopPinsAnalyticsResponse, Error, void* )
 	, void* userData);
 
@@ -266,7 +269,7 @@ bool userAccountAnalyticsTopPinsSync(char * accessToken,
  * \param appTypes Apps or devices to get data for, default is all.
  * \param contentType Filter to paid or organic data. Default is all.
  * \param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
- * \param metricTypes Metric types to get data for, default is all. 
+ * \param metricTypes Metric types to get data for, default is all.
  * \param numOfPins Number of pins to include, default is 10. Max is 50.
  * \param createdInLastNDays Get metrics for pins created in the last \"n\" days.
  * \param adAccountId Unique identifier of an ad account.
@@ -275,7 +278,7 @@ bool userAccountAnalyticsTopPinsSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool userAccountAnalyticsTopPinsAsync(char * accessToken,
-	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	Date startDate, Date endDate, TopPinsSortBy sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QuerymetrictypesItems> metricTypes, int numOfPins, long long createdInLastNDays, std::string adAccountId, 
 	void(* handler)(TopPinsAnalyticsResponse, Error, void* )
 	, void* userData);
 
@@ -291,7 +294,7 @@ bool userAccountAnalyticsTopPinsAsync(char * accessToken,
  * \param appTypes Apps or devices to get data for, default is all.
  * \param contentType Filter to paid or organic data. Default is all.
  * \param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
- * \param metricTypes Metric types to get video data for, default is all. 
+ * \param metricTypes Metric types to get video data for, default is all.
  * \param numOfPins Number of pins to include, default is 10. Max is 50.
  * \param createdInLastNDays Get metrics for pins created in the last \"n\" days.
  * \param adAccountId Unique identifier of an ad account.
@@ -300,7 +303,7 @@ bool userAccountAnalyticsTopPinsAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool userAccountAnalyticsTopVideoPinsSync(char * accessToken,
-	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	Date startDate, Date endDate, TopVideoPinsSortBy sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QueryvideopinmetrictypesItems> metricTypes, int numOfPins, long long createdInLastNDays, std::string adAccountId, 
 	void(* handler)(TopVideoPinsAnalyticsResponse, Error, void* )
 	, void* userData);
 
@@ -315,7 +318,7 @@ bool userAccountAnalyticsTopVideoPinsSync(char * accessToken,
  * \param appTypes Apps or devices to get data for, default is all.
  * \param contentType Filter to paid or organic data. Default is all.
  * \param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
- * \param metricTypes Metric types to get video data for, default is all. 
+ * \param metricTypes Metric types to get video data for, default is all.
  * \param numOfPins Number of pins to include, default is 10. Max is 50.
  * \param createdInLastNDays Get metrics for pins created in the last \"n\" days.
  * \param adAccountId Unique identifier of an ad account.
@@ -324,7 +327,7 @@ bool userAccountAnalyticsTopVideoPinsSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool userAccountAnalyticsTopVideoPinsAsync(char * accessToken,
-	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	Date startDate, Date endDate, TopVideoPinsSortBy sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QueryvideopinmetrictypesItems> metricTypes, int numOfPins, long long createdInLastNDays, std::string adAccountId, 
 	void(* handler)(TopVideoPinsAnalyticsResponse, Error, void* )
 	, void* userData);
 
@@ -334,7 +337,7 @@ bool userAccountAnalyticsTopVideoPinsAsync(char * accessToken,
  * Get a list of a user's following interests in one place.
  * \param username A valid username *Required*
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -349,7 +352,7 @@ bool userAccountFollowedInterestsSync(char * accessToken,
  * Get a list of a user's following interests in one place.
  * \param username A valid username *Required*
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -362,7 +365,7 @@ bool userAccountFollowedInterestsAsync(char * accessToken,
 
 /*! \brief Get user account. *Synchronous*
  *
- * Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+ * Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
  * \param adAccountId Unique identifier of an ad account.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -375,7 +378,7 @@ bool userAccountGetSync(char * accessToken,
 
 /*! \brief Get user account. *Asynchronous*
  *
- * Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+ * Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
  * \param adAccountId Unique identifier of an ad account.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -390,35 +393,35 @@ bool userAccountGetAsync(char * accessToken,
 /*! \brief List following. *Synchronous*
  *
  * Get a list of who a certain user follows.
- * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
- * \param feedType Thrift param specifying what type of followees will be kept. Default to include all followees.
- * \param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
  * \param adAccountId Unique identifier of an ad account.
+ * \param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
+ * \param feedType Thrift param specifying what type of followees will be kept. Default to include all followees.
+ * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool userFollowingGetSync(char * accessToken,
-	std::string bookmark, int pageSize, UserFollowingFeedType feedType, bool explicitFollowing, std::string adAccountId, 
-	void(* handler)(User_following_get_200_response, Error, void* )
+	std::string adAccountId, bool explicitFollowing, UserFollowingFeedType feedType, std::string bookmark, int pageSize, 
+	void(* handler)(Followers_list_200_response, Error, void* )
 	, void* userData);
 
 /*! \brief List following. *Asynchronous*
  *
  * Get a list of who a certain user follows.
- * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
- * \param feedType Thrift param specifying what type of followees will be kept. Default to include all followees.
- * \param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
  * \param adAccountId Unique identifier of an ad account.
+ * \param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
+ * \param feedType Thrift param specifying what type of followees will be kept. Default to include all followees.
+ * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool userFollowingGetAsync(char * accessToken,
-	std::string bookmark, int pageSize, UserFollowingFeedType feedType, bool explicitFollowing, std::string adAccountId, 
-	void(* handler)(User_following_get_200_response, Error, void* )
+	std::string adAccountId, bool explicitFollowing, UserFollowingFeedType feedType, std::string bookmark, int pageSize, 
+	void(* handler)(Followers_list_200_response, Error, void* )
 	, void* userData);
 
 
@@ -426,7 +429,7 @@ bool userFollowingGetAsync(char * accessToken,
  *
  * Get user websites, claimed or not
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -440,7 +443,7 @@ bool userWebsitesGetSync(char * accessToken,
  *
  * Get user websites, claimed or not
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -454,29 +457,29 @@ bool userWebsitesGetAsync(char * accessToken,
 /*! \brief Verify website. *Synchronous*
  *
  * Verify a website as a signed-in user.
- * \param userWebsiteVerifyRequest Verify a website. *Required*
+ * \param userWebsiteCreate  *Required*
  * \param adAccountId Unique identifier of an ad account.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool verifyWebsiteUpdateSync(char * accessToken,
-	std::shared_ptr<UserWebsiteVerifyRequest> userWebsiteVerifyRequest, std::string adAccountId, 
-	void(* handler)(UserWebsiteSummary, Error, void* )
+	std::shared_ptr<UserWebsiteCreate> userWebsiteCreate, std::string adAccountId, 
+	void(* handler)(UserWebsite, Error, void* )
 	, void* userData);
 
 /*! \brief Verify website. *Asynchronous*
  *
  * Verify a website as a signed-in user.
- * \param userWebsiteVerifyRequest Verify a website. *Required*
+ * \param userWebsiteCreate  *Required*
  * \param adAccountId Unique identifier of an ad account.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool verifyWebsiteUpdateAsync(char * accessToken,
-	std::shared_ptr<UserWebsiteVerifyRequest> userWebsiteVerifyRequest, std::string adAccountId, 
-	void(* handler)(UserWebsiteSummary, Error, void* )
+	std::shared_ptr<UserWebsiteCreate> userWebsiteCreate, std::string adAccountId, 
+	void(* handler)(UserWebsite, Error, void* )
 	, void* userData);
 
 
@@ -490,7 +493,7 @@ bool verifyWebsiteUpdateAsync(char * accessToken,
  */
 bool websiteVerificationGetSync(char * accessToken,
 	std::string adAccountId, 
-	void(* handler)(UserWebsiteVerificationCode, Error, void* )
+	void(* handler)(UserWebsiteVerification, Error, void* )
 	, void* userData);
 
 /*! \brief Get user verification code for website claiming. *Asynchronous*
@@ -503,7 +506,7 @@ bool websiteVerificationGetSync(char * accessToken,
  */
 bool websiteVerificationGetAsync(char * accessToken,
 	std::string adAccountId, 
-	void(* handler)(UserWebsiteVerificationCode, Error, void* )
+	void(* handler)(UserWebsiteVerification, Error, void* )
 	, void* userData);
 
 

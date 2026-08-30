@@ -5,18 +5,18 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;TargetingTemplateGetResponseData&gt;**](TargetingTemplateGetResponseData.md) |  | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;TargetingTemplate&gt;**](TargetingTemplate.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 
-# **Table `TargetingTemplateList200ResponseTargetingTemplateGetResponseData`**
-(mapped from: TargetingTemplateList200ResponseTargetingTemplateGetResponseData)
+# **Table `TargetingTemplateList200ResponseTargetingTemplate`**
+(mapped from: TargetingTemplateList200ResponseTargetingTemplate)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 targetingTemplateList200Response | targetingTemplateList200Response | long | | kotlin.Long | Primary Key | *one*
-targetingTemplateGetResponseData | targetingTemplateGetResponseData | long | | kotlin.Long | Foreign Key | *many*
+targetingTemplate | targetingTemplate | long | | kotlin.Long | Foreign Key | *many*
 
 
 

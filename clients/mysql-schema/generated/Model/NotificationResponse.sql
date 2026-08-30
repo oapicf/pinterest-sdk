@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `NotificationResponse`
 --
-SELECT `success`, `received_at`, `error_msg` FROM `NotificationResponse` WHERE 1;
+SELECT `error_msg`, `received_at`, `success` FROM `NotificationResponse` WHERE 1;
 
 --
 -- INSERT template for table `NotificationResponse`
 --
-INSERT INTO `NotificationResponse`(`success`, `received_at`, `error_msg`) VALUES (?, ?, ?);
+INSERT INTO `NotificationResponse`(`error_msg`, `received_at`, `success`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `NotificationResponse`
 --
-UPDATE `NotificationResponse` SET `success` = ?, `received_at` = ?, `error_msg` = ? WHERE 1;
+UPDATE `NotificationResponse` SET `error_msg` = ?, `received_at` = ?, `success` = ? WHERE 1;
 
 --
 -- DELETE template for table `NotificationResponse`

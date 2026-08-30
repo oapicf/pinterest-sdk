@@ -1,9 +1,9 @@
 package controllers;
 
-import apimodels.Error;
-import apimodels.LeadsExportCreateRequest;
-import apimodels.LeadsExportCreateResponse;
 import apimodels.LeadsExportResponseData;
+import apimodels.LeadsExports;
+import apimodels.LeadsExportsCreate;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -27,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LeadsExportApiController extends Controller {
     private final LeadsExportApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -42,17 +42,17 @@ public class LeadsExportApiController extends Controller {
 
     @ApiAction
     public Result leadsExportCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeleadsExportCreateRequest = request.body().asJson();
-        LeadsExportCreateRequest leadsExportCreateRequest;
-        if (nodeleadsExportCreateRequest != null) {
-            leadsExportCreateRequest = mapper.readValue(nodeleadsExportCreateRequest.toString(), LeadsExportCreateRequest.class);
+        JsonNode nodeleadsExportsCreate = request.body().asJson();
+        LeadsExportsCreate leadsExportsCreate;
+        if (nodeleadsExportsCreate != null) {
+            leadsExportsCreate = mapper.readValue(nodeleadsExportsCreate.toString(), LeadsExportsCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(leadsExportCreateRequest);
+                OpenAPIUtils.validate(leadsExportsCreate);
             }
         } else {
-            throw new IllegalArgumentException("'LeadsExportCreateRequest' parameter is required");
+            throw new IllegalArgumentException("'LeadsExportsCreate' parameter is required");
         }
-        return imp.leadsExportCreateHttp(request, adAccountId, leadsExportCreateRequest);
+        return imp.leadsExportCreateHttp(request, adAccountId, leadsExportsCreate);
     }
 
     @ApiAction

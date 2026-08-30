@@ -1,19 +1,22 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.AdsCreditRedeemRequest;
-import org.openapitools.vertxweb.server.model.AdsCreditRedeemResponse;
+import org.openapitools.vertxweb.server.model.AdsCreditRedeem;
+import org.openapitools.vertxweb.server.model.AdsCreditRedeemCreate;
 import org.openapitools.vertxweb.server.model.AdsCreditsDiscountsGet200Response;
+import org.openapitools.vertxweb.server.model.BillingInvoiceDocumentType;
 import org.openapitools.vertxweb.server.model.BillingInvoiceDownloadResponse;
+import org.openapitools.vertxweb.server.model.BillingInvoiceSortField;
+import org.openapitools.vertxweb.server.model.BillingInvoiceStatus;
 import org.openapitools.vertxweb.server.model.BillingInvoicesGet200Response;
 import org.openapitools.vertxweb.server.model.BillingProfilesGet200Response;
-import org.openapitools.vertxweb.server.model.Error;
 import java.time.LocalDate;
-import org.openapitools.vertxweb.server.model.SSIOAccountResponse;
-import org.openapitools.vertxweb.server.model.SSIOCreateInsertionOrderRequest;
-import org.openapitools.vertxweb.server.model.SSIOCreateInsertionOrderResponse;
-import org.openapitools.vertxweb.server.model.SSIOEditInsertionOrderRequest;
-import org.openapitools.vertxweb.server.model.SSIOEditInsertionOrderResponse;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PinterestLibPaginationOrder;
+import org.openapitools.vertxweb.server.model.SSIOAccount;
+import org.openapitools.vertxweb.server.model.SSIOInsertionOrder;
+import org.openapitools.vertxweb.server.model.SSIOInsertionOrderCreate;
 import org.openapitools.vertxweb.server.model.SSIOInsertionOrderStatusResponse;
+import org.openapitools.vertxweb.server.model.SSIOInsertionOrderUpdate;
 import org.openapitools.vertxweb.server.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.vertxweb.server.model.SsioOrderLinesGetByAdAccount200Response;
 
@@ -29,7 +32,7 @@ import java.util.Map;
 // Implement this class
 
 public class BillingApiImpl implements BillingApi {
-    public Future<ApiResponse<AdsCreditRedeemResponse>> adsCreditRedeem(String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest) {
+    public Future<ApiResponse<AdsCreditRedeem>> adsCreditRedeem(String adAccountId, AdsCreditRedeemCreate adsCreditRedeemCreate) {
         return Future.failedFuture(new HttpException(501));
     }
 
@@ -41,23 +44,23 @@ public class BillingApiImpl implements BillingApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<BillingInvoicesGet200Response>> billingInvoicesGet(String adAccountId, String bookmark, Integer pageSize, String sort, String order, String status, String documentType, LocalDate startDueDate, LocalDate endDueDate) {
+    public Future<ApiResponse<BillingInvoicesGet200Response>> billingInvoicesGet(String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order, BillingInvoiceSortField sort, BillingInvoiceStatus status, BillingInvoiceDocumentType documentType, LocalDate startDueDate, LocalDate endDueDate) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<BillingProfilesGet200Response>> billingProfilesGet(String adAccountId, Boolean isActive, String bookmark, Integer pageSize) {
+    public Future<ApiResponse<BillingProfilesGet200Response>> billingProfilesGet(Boolean isActive, String adAccountId, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<SSIOAccountResponse>> ssioAccountsGet(String adAccountId) {
+    public Future<ApiResponse<SSIOAccount>> ssioAccountsGet(String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<SSIOCreateInsertionOrderResponse>> ssioInsertionOrderCreate(String adAccountId, SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest) {
+    public Future<ApiResponse<SSIOInsertionOrder>> ssioInsertionOrderCreate(String adAccountId, SSIOInsertionOrderCreate ssIOInsertionOrderCreate) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<SSIOEditInsertionOrderResponse>> ssioInsertionOrderEdit(String adAccountId, SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest) {
+    public Future<ApiResponse<SSIOInsertionOrder>> ssioInsertionOrderEdit(String adAccountId, SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate) {
         return Future.failedFuture(new HttpException(501));
     }
 
@@ -69,7 +72,7 @@ public class BillingApiImpl implements BillingApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<SsioOrderLinesGetByAdAccount200Response>> ssioOrderLinesGetByAdAccount(String adAccountId, String bookmark, Integer pageSize, String pinOrderId) {
+    public Future<ApiResponse<SsioOrderLinesGetByAdAccount200Response>> ssioOrderLinesGetByAdAccount(String adAccountId, String pinOrderId, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 

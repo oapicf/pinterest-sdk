@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -23,7 +23,8 @@ type ItemCreateBatchRecord struct {
 	ItemId string `json:"item_id,omitempty"`
 }
 
-// AssertItemCreateBatchRecordRequired checks if the required fields are not zero-ed
+// AssertItemCreateBatchRecordRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertItemCreateBatchRecordRequired(obj ItemCreateBatchRecord) error {
 	if err := AssertItemAttributesRequestRequired(obj.Attributes); err != nil {
 		return err

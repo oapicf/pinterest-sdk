@@ -49,8 +49,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -97,8 +103,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -147,8 +159,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

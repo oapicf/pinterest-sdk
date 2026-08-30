@@ -8,15 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.BatchOperationStatus
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.CreativeAssetsProcessingRecord
 
 import com.squareup.moshi.Json
@@ -37,7 +44,7 @@ import com.squareup.moshi.JsonClass
 data class CatalogsCreativeAssetsItemsBatch (
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
+    val catalogType: CatalogsCreativeAssetsItemsBatch.CatalogType,
 
     /* Id of the catalogs items batch */
     @Json(name = "batch_id")
@@ -60,6 +67,15 @@ data class CatalogsCreativeAssetsItemsBatch (
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: CREATIVE_ASSETS
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "CREATIVE_ASSETS") CREATIVE_ASSETS("CREATIVE_ASSETS");
+    }
 
 }
 

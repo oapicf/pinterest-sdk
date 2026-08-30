@@ -11,31 +11,30 @@
 part of openapi.api;
 
 /// The status of the operation performed by the batch
-class BatchOperationStatus {
-  /// Instantiate a new enum with the provided [value].
-  const BatchOperationStatus._(this.value);
+enum BatchOperationStatus {
+  PROCESSING._(r'PROCESSING'),
+  COMPLETED._(r'COMPLETED'),
+  FAILED._(r'FAILED'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const BatchOperationStatus._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const PROCESSING = BatchOperationStatus._(r'PROCESSING');
-  static const COMPLETED = BatchOperationStatus._(r'COMPLETED');
-  static const FAILED = BatchOperationStatus._(r'FAILED');
-
-  /// List of all possible values in this [enum][BatchOperationStatus].
-  static const values = <BatchOperationStatus>[
-    PROCESSING,
-    COMPLETED,
-    FAILED,
-  ];
-
+  /// Returns the instance of [BatchOperationStatus] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static BatchOperationStatus? fromJson(dynamic value) => BatchOperationStatusTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [BatchOperationStatus]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<BatchOperationStatus> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <BatchOperationStatus>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class BatchOperationStatusTypeTransformer {
 
   const BatchOperationStatusTypeTransformer._();
 
-  String encode(BatchOperationStatus data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(BatchOperationStatus data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a BatchOperationStatus.
+  /// Returns the instance of [BatchOperationStatus] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class BatchOperationStatusTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   BatchOperationStatus? decode(dynamic data, {bool allowNull = true}) {
+    if (data is BatchOperationStatus) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'PROCESSING': return BatchOperationStatus.PROCESSING;
@@ -82,7 +86,7 @@ class BatchOperationStatusTypeTransformer {
     return null;
   }
 
-  /// Singleton [BatchOperationStatusTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static BatchOperationStatusTypeTransformer? _instance;
 }
 

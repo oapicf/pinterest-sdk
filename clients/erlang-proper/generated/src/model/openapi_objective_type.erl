@@ -10,5 +10,5 @@
   binary().
 
 openapi_objective_type() ->
-  elements([<<"AWARENESS">>, <<"CONSIDERATION">>, <<"WEB_CONVERSION">>, <<"CATALOG_SALES">>, <<"VIDEO_COMPLETION">>]).
+  elements([<<"AWARENESS">>, <<"CONSIDERATION">>, <<"WEB_CONVERSION">>, <<"CATALOG_SALES">>, <<"VIDEO_COMPLETION">>, <<"SALES">>, <<"APP_INSTALL">>, <<"CTV_CONSIDERATION">>]).
 

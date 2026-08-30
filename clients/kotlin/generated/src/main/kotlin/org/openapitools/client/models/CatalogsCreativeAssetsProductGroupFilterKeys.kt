@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -32,6 +40,7 @@ import org.openapitools.client.models.GoogleProductCategory3Filter
 import org.openapitools.client.models.GoogleProductCategory4Filter
 import org.openapitools.client.models.GoogleProductCategory5Filter
 import org.openapitools.client.models.GoogleProductCategory6Filter
+import org.openapitools.client.models.LinkFilter
 import org.openapitools.client.models.MediaTypeFilter
 import org.openapitools.client.models.TitleKeywordsFilter
 
@@ -56,6 +65,7 @@ import com.squareup.moshi.JsonClass
  * @param GOOGLE_PRODUCT_CATEGORY_0 
  * @param MEDIA_TYPE 
  * @param TITLE_KEYWORDS 
+ * @param LINK 
  */
 
 
@@ -104,7 +114,10 @@ data class CatalogsCreativeAssetsProductGroupFilterKeys (
     val MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria,
 
     @Json(name = "TITLE_KEYWORDS")
-    val TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
+    val TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria,
+
+    @Json(name = "LINK")
+    val LINK: CatalogsProductGroupFilterOperatorTypeCriteria
 
 ) {
 

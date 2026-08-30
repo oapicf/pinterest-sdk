@@ -5,6 +5,11 @@
   "name": "Catalog",
   "fields": [
     {
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
+      "doc": ""
+    },
+    {
       "name": "created_at",
       "type": "string",
       "doc": ""
@@ -15,19 +20,14 @@
       "doc": "ID of the catalog entity."
     },
     {
-      "name": "updated_at",
-      "type": "string",
-      "doc": ""
-    },
-    {
-      "name": "catalog_type",
-      "type": "model.CatalogsType",
-      "doc": ""
-    },
-    {
       "name": "name",
       "type": "string",
       "doc": "A human-friendly name associated to a catalog entity."
+    },
+    {
+      "name": "updated_at",
+      "type": "string",
+      "doc": ""
     }
   ]
 

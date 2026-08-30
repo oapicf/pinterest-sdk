@@ -6,11 +6,11 @@
 
 -type openapi_billing_profiles_response() ::
     #{ 'advertiser_id' => binary(),
-       'billing_type' => binary(),
-       'card_type' => binary(),
+       'billing_type' => openapi_billing_type:openapi_billing_type(),
+       'card_type' => openapi_billing_profile_card_type:openapi_billing_profile_card_type(),
        'id' => binary(),
-       'payment_method_brand' => binary(),
-       'status' => binary()
+       'payment_method_brand' => openapi_billing_profile_payment_method_brand:openapi_billing_profile_payment_method_brand(),
+       'status' => openapi_billing_profile_status:openapi_billing_profile_status()
      }.
 
 encode(#{ 'advertiser_id' := AdvertiserId,

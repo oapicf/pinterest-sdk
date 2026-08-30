@@ -1,5 +1,6 @@
 package models
 
+// SsioAccountAddress - Salesforce address information.
 type SsioAccountAddress struct {
 
 	// Salesforce id for address

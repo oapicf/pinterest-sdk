@@ -1,44 +1,31 @@
 
 
-#include "CatalogsHotelReportStatsParameters_report.h"
+#include "CatalogsHotelReportStatsParametersReport.h"
 
 using namespace Tiny;
 
-CatalogsHotelReportStatsParameters_report::CatalogsHotelReportStatsParameters_report()
+CatalogsHotelReportStatsParametersReport::CatalogsHotelReportStatsParametersReport()
 {
-	report_type = std::string();
 	feed_id = std::string();
 	processing_result_id = std::string();
+	report_type = std::string();
 	catalog_id = std::string();
 }
 
-CatalogsHotelReportStatsParameters_report::CatalogsHotelReportStatsParameters_report(std::string jsonString)
+CatalogsHotelReportStatsParametersReport::CatalogsHotelReportStatsParametersReport(std::string jsonString)
 {
 	this->fromJson(jsonString);
 }
 
-CatalogsHotelReportStatsParameters_report::~CatalogsHotelReportStatsParameters_report()
+CatalogsHotelReportStatsParametersReport::~CatalogsHotelReportStatsParametersReport()
 {
 
 }
 
 void
-CatalogsHotelReportStatsParameters_report::fromJson(std::string jsonObj)
+CatalogsHotelReportStatsParametersReport::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
-
-    const char *report_typeKey = "report_type";
-
-    if(object.has_key(report_typeKey))
-    {
-        bourne::json value = object[report_typeKey];
-
-
-
-        jsonToValue(&report_type, value, "std::string");
-
-
-    }
 
     const char *feed_idKey = "feed_id";
 
@@ -66,6 +53,19 @@ CatalogsHotelReportStatsParameters_report::fromJson(std::string jsonObj)
 
     }
 
+    const char *report_typeKey = "report_type";
+
+    if(object.has_key(report_typeKey))
+    {
+        bourne::json value = object[report_typeKey];
+
+
+
+        jsonToValue(&report_type, value, "std::string");
+
+
+    }
+
     const char *catalog_idKey = "catalog_id";
 
     if(object.has_key(catalog_idKey))
@@ -83,16 +83,9 @@ CatalogsHotelReportStatsParameters_report::fromJson(std::string jsonObj)
 }
 
 bourne::json
-CatalogsHotelReportStatsParameters_report::toJson()
+CatalogsHotelReportStatsParametersReport::toJson()
 {
     bourne::json object = bourne::json::object();
-
-
-
-
-
-    object["report_type"] = getReportType();
-
 
 
 
@@ -112,6 +105,13 @@ CatalogsHotelReportStatsParameters_report::toJson()
 
 
 
+    object["report_type"] = getReportType();
+
+
+
+
+
+
     object["catalog_id"] = getCatalogId();
 
 
@@ -121,49 +121,49 @@ CatalogsHotelReportStatsParameters_report::toJson()
 }
 
 std::string
-CatalogsHotelReportStatsParameters_report::getReportType()
-{
-	return report_type;
-}
-
-void
-CatalogsHotelReportStatsParameters_report::setReportType(std::string  report_type)
-{
-	this->report_type = report_type;
-}
-
-std::string
-CatalogsHotelReportStatsParameters_report::getFeedId()
+CatalogsHotelReportStatsParametersReport::getFeedId()
 {
 	return feed_id;
 }
 
 void
-CatalogsHotelReportStatsParameters_report::setFeedId(std::string  feed_id)
+CatalogsHotelReportStatsParametersReport::setFeedId(std::string feed_id)
 {
 	this->feed_id = feed_id;
 }
 
 std::string
-CatalogsHotelReportStatsParameters_report::getProcessingResultId()
+CatalogsHotelReportStatsParametersReport::getProcessingResultId()
 {
 	return processing_result_id;
 }
 
 void
-CatalogsHotelReportStatsParameters_report::setProcessingResultId(std::string  processing_result_id)
+CatalogsHotelReportStatsParametersReport::setProcessingResultId(std::string processing_result_id)
 {
 	this->processing_result_id = processing_result_id;
 }
 
 std::string
-CatalogsHotelReportStatsParameters_report::getCatalogId()
+CatalogsHotelReportStatsParametersReport::getReportType()
+{
+	return report_type;
+}
+
+void
+CatalogsHotelReportStatsParametersReport::setReportType(std::string report_type)
+{
+	this->report_type = report_type;
+}
+
+std::string
+CatalogsHotelReportStatsParametersReport::getCatalogId()
 {
 	return catalog_id;
 }
 
 void
-CatalogsHotelReportStatsParameters_report::setCatalogId(std::string  catalog_id)
+CatalogsHotelReportStatsParametersReport::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }

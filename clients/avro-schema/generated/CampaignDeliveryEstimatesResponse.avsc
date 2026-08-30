@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Delivery estimates response for a campaign.",
+  "name": "CampaignDeliveryEstimatesResponse",
+  "fields": [
+    {
+      "name": "curves",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CampaignPlanningCurveEstimate"
+      }],
+      "doc": "Estimated curves. Each curve will pertain to a single estimation type.",
+      "default": null
+    },
+    {
+      "name": "derived_metrics",
+      "type": ["null", "model.CampaignDeliveryEstimatesDerivedMetrics"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "max_potential_spend",
+      "type": ["null", "int"],
+      "doc": "Maximum potential spend estimate.",
+      "default": null
+    }
+  ]
+
+}

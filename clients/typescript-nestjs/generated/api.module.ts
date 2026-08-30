@@ -20,13 +20,16 @@ import { CatalogFeedsService } from './api/catalogFeeds.service';
 import { CatalogItemsService } from './api/catalogItems.service';
 import { CatalogProductGroupsService } from './api/catalogProductGroups.service';
 import { CatalogReportsService } from './api/catalogReports.service';
+import { CatalogSupplementalService } from './api/catalogSupplemental.service';
 import { CatalogsService } from './api/catalogs.service';
+import { ConversionDeletionRequestsService } from './api/conversionDeletionRequests.service';
 import { ConversionEqsService } from './api/conversionEqs.service';
 import { ConversionEventsService } from './api/conversionEvents.service';
 import { ConversionTagsService } from './api/conversionTags.service';
 import { ConversionsService } from './api/conversions.service';
 import { CustomerListUploadsService } from './api/customerListUploads.service';
 import { CustomerListsService } from './api/customerLists.service';
+import { CustomerSegmentService } from './api/customerSegment.service';
 import { IntegrationsService } from './api/integrations.service';
 import { KeywordsService } from './api/keywords.service';
 import { LabelsService } from './api/labels.service';
@@ -39,14 +42,16 @@ import { NotificationService } from './api/notification.service';
 import { OauthService } from './api/oauth.service';
 import { OrderLinesService } from './api/orderLines.service';
 import { PinsService } from './api/pins.service';
-import { ProductCategoriesService } from './api/productCategories.service';
 import { ProductGroupPromotionsService } from './api/productGroupPromotions.service';
+import { ProductTagsService } from './api/productTags.service';
 import { PromotionsService } from './api/promotions.service';
 import { ResourcesService } from './api/resources.service';
+import { SchedulesService } from './api/schedules.service';
 import { SearchService } from './api/search.service';
 import { TargetingTemplateService } from './api/targetingTemplate.service';
 import { TermsService } from './api/terms.service';
 import { TermsOfServiceService } from './api/termsOfService.service';
+import { TrendsService } from './api/trends.service';
 import { UserAccountService } from './api/userAccount.service';
 
 @Global()
@@ -71,13 +76,16 @@ import { UserAccountService } from './api/userAccount.service';
     CatalogItemsService,
     CatalogProductGroupsService,
     CatalogReportsService,
+    CatalogSupplementalService,
     CatalogsService,
+    ConversionDeletionRequestsService,
     ConversionEqsService,
     ConversionEventsService,
     ConversionTagsService,
     ConversionsService,
     CustomerListUploadsService,
     CustomerListsService,
+    CustomerSegmentService,
     IntegrationsService,
     KeywordsService,
     LabelsService,
@@ -90,14 +98,16 @@ import { UserAccountService } from './api/userAccount.service';
     OauthService,
     OrderLinesService,
     PinsService,
-    ProductCategoriesService,
     ProductGroupPromotionsService,
+    ProductTagsService,
     PromotionsService,
     ResourcesService,
+    SchedulesService,
     SearchService,
     TargetingTemplateService,
     TermsService,
     TermsOfServiceService,
+    TrendsService,
     UserAccountService
   ],
   providers: [
@@ -119,13 +129,16 @@ import { UserAccountService } from './api/userAccount.service';
     CatalogItemsService,
     CatalogProductGroupsService,
     CatalogReportsService,
+    CatalogSupplementalService,
     CatalogsService,
+    ConversionDeletionRequestsService,
     ConversionEqsService,
     ConversionEventsService,
     ConversionTagsService,
     ConversionsService,
     CustomerListUploadsService,
     CustomerListsService,
+    CustomerSegmentService,
     IntegrationsService,
     KeywordsService,
     LabelsService,
@@ -138,14 +151,16 @@ import { UserAccountService } from './api/userAccount.service';
     OauthService,
     OrderLinesService,
     PinsService,
-    ProductCategoriesService,
     ProductGroupPromotionsService,
+    ProductTagsService,
     PromotionsService,
     ResourcesService,
+    SchedulesService,
     SearchService,
     TargetingTemplateService,
     TermsService,
     TermsOfServiceService,
+    TrendsService,
     UserAccountService
   ]
 })

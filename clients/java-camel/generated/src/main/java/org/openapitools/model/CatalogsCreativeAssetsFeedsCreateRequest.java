@@ -2,17 +2,17 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
-import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Country;
 import org.openapitools.model.NullableCurrency;
 import java.util.NoSuchElementException;
@@ -21,25 +21,58 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Request object for creating a feed.
  */
 
 @Schema(name = "CatalogsCreativeAssetsFeedsCreateRequest", description = "Request object for creating a feed.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsFeedsCreateRequest implements CatalogsVerticalFeedsCreateRequest {
 
   private String catalogId;
 
-  private CatalogsType catalogType;
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
 
   private JsonNullable<CatalogsFeedCredentials> credentials = JsonNullable.<CatalogsFeedCredentials>undefined();
 
@@ -47,7 +80,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest implements CatalogsVertica
 
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
 
-  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  private CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale;
 
   private CatalogsFormat format;
 
@@ -57,7 +90,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest implements CatalogsVertica
 
   private JsonNullable<CatalogsFeedProcessingSchedule> preferredProcessingSchedule = JsonNullable.<CatalogsFeedProcessingSchedule>undefined();
 
-  private CatalogsStatus status = "ACTIVE";
+  private CatalogsStatus status;
 
   public CatalogsCreativeAssetsFeedsCreateRequest() {
     super();
@@ -66,7 +99,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest implements CatalogsVertica
   /**
    * Constructor with only required parameters
    */
-  public CatalogsCreativeAssetsFeedsCreateRequest(CatalogsType catalogType, Country defaultCountry, CatalogsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFormat format, String location, String name) {
+  public CatalogsCreativeAssetsFeedsCreateRequest(CatalogTypeEnum catalogType, Country defaultCountry, CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFormat format, String location, String name) {
     this.catalogType = catalogType;
     this.defaultCountry = defaultCountry;
     this.defaultLocale = defaultLocale;
@@ -81,11 +114,11 @@ public class CatalogsCreativeAssetsFeedsCreateRequest implements CatalogsVertica
   }
 
   /**
-   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
    * @return catalogId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "catalog_id", description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_id")
   public String getCatalogId() {
     return catalogId;
@@ -95,7 +128,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest implements CatalogsVertica
     this.catalogId = catalogId;
   }
 
-  public CatalogsCreativeAssetsFeedsCreateRequest catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsFeedsCreateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -104,14 +137,14 @@ public class CatalogsCreativeAssetsFeedsCreateRequest implements CatalogsVertica
    * Get catalogType
    * @return catalogType
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -175,7 +208,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest implements CatalogsVertica
     this.defaultCurrency = defaultCurrency;
   }
 
-  public CatalogsCreativeAssetsFeedsCreateRequest defaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public CatalogsCreativeAssetsFeedsCreateRequest defaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
     return this;
   }
@@ -187,11 +220,11 @@ public class CatalogsCreativeAssetsFeedsCreateRequest implements CatalogsVertica
   @NotNull @Valid 
   @Schema(name = "default_locale", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("default_locale")
-  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+  public CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
   }
 
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public void setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
 
@@ -357,10 +390,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest implements CatalogsVertica
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

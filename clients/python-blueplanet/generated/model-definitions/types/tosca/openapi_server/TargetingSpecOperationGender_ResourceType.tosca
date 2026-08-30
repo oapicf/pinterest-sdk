@@ -8,6 +8,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 imports {
   Root = tosca.resourceTypes.Root
   TargetingSpecGender = openapi_server.resourceTypes.TargetingSpecGender
+  TargetingSpecListOperation = openapi_server.resourceTypes.TargetingSpecListOperation
 }
 resourceTypes {
 
@@ -23,9 +24,8 @@ resourceTypes {
           optional = true
         }
         operation {
-          type =  string
+          type = TargetingSpecListOperation
           description = ""
-          enum = ["SET", "ADD", "REMOVE"]
           optional = true
         }
         values {

@@ -137,11 +137,11 @@ class BusinessAccessInviteApiSimulation extends Simulation {
         .feed(get/invitesPATHFeeder)
         .exec(http("getInvites")
         .httpRequest("GET","/businesses/${business_id}/invites")
-        .queryParam("is_member","${is_member}")
+        .queryParam("invite_type","${invite_type}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
-        .queryParam("invite_type","${invite_type}")
         .queryParam("invite_status","${invite_status}")
+        .queryParam("is_member","${is_member}")
 )
 
     // Run scngetInvites with warm up and reach a constant rate for entire duration

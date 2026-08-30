@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class GoogleProductCategory2Filter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_2")
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_2", required = true) val GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria
 ) {
 

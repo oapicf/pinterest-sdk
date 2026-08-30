@@ -2,7 +2,7 @@
 Protected Class GenderFilter
 
 	#tag Property, Flags = &h0
-		GENDER As CatalogsProductGroupMultipleGenderCriteria
+		GENDER As OpenAPIClient.Models.CatalogsProductGroupMultipleGenderCriteria
 	#tag EndProperty
 
 

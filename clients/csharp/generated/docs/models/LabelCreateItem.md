@@ -1,0 +1,11 @@
+# Org.OpenAPITools.Model.LabelCreateItem
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**LabelType** | **LabelType** |  | 
+**Value** | **string** | Label name. 100-character limit. | 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
+

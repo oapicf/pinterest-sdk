@@ -12,7 +12,7 @@
 </ul>
 <ul class="parameter">
   <li class="param-required-false">catalogUnderscoreproductUnderscoregroupUnderscoreid : String
-    <br/>ID of the catalogs product group that this product group promotion references
+    <br/>ID of the catalogs product group that this product group promotion references (required for create operations)
   </li>
 </ul>
 <ul class="parameter">
@@ -21,17 +21,8 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">collectionsUnderscoreheaderUnderscoretype : String
-    <br/>Collections ad header type
-      <dl class="param-enum">
-        <dt>Enum:
-            <dd>SHOP_THIS_COLLECTION</dd>
-            <dd>EXPLORE_THIS_COLLECTION</dd>
-            <dd>NO_HEADER</dd>
-            <dd>ON_SALE</dd>
-            <dd>GET_DEAL</dd>
-        </dt>
-      </dl>
+  <li class="param-required-false">collectionsUnderscoreheaderUnderscoretype : CollectionsHeaderType
+    <br/>
   </li>
 </ul>
 <ul class="parameter">
@@ -50,17 +41,8 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">customizableUnderscorectaUnderscoretype : String
-    <br/>Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-      <dl class="param-enum">
-        <dt>Enum:
-            <dd>SHOP_NOW</dd>
-            <dd>BOOK_NOW</dd>
-            <dd>ON_SALE</dd>
-            <dd>GET_DEAL</dd>
-            <dd>BUY_ONLINE_PICKUP_IN_STORE</dd>
-        </dt>
-      </dl>
+  <li class="param-required-false">customizableUnderscorectaUnderscoretype : ProductGroupPromotionCustomizableCTAType
+    <br/>
   </li>
 </ul>
 <ul class="parameter">
@@ -75,7 +57,7 @@
 </ul>
 <ul class="parameter">
   <li class="param-required-false">id : String
-    <br/>ID of the product group promotion.
+    <br/>ID of the product group promotion (required for update operations).
   </li>
 </ul>
 <ul class="parameter">
@@ -89,6 +71,11 @@
   </li>
 </ul>
 <ul class="parameter">
+  <li class="param-required-false">isUnderscoreimageUnderscoreautoUnderscoreresizing : Boolean
+    <br/>Set to &#x60;TRUE&#x60; to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-false">isUnderscoremdl : Boolean
     <br/>If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
   </li>
@@ -99,14 +86,8 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">preferredUnderscoremediaUnderscoretype : String
-    <br/>Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
-      <dl class="param-enum">
-        <dt>Enum:
-            <dd>VIDEO</dd>
-            <dd>IMAGE</dd>
-        </dt>
-      </dl>
+  <li class="param-required-false">preferredUnderscoremediaUnderscoretype : PreferredMediaType
+    <br/>
   </li>
 </ul>
 <ul class="parameter">

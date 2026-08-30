@@ -43,13 +43,16 @@ Description on how to create Apis is given inside individual api guides:
 * [CatalogItemsApi](docs/apis/CatalogItemsApi.md)
 * [CatalogProductGroupsApi](docs/apis/CatalogProductGroupsApi.md)
 * [CatalogReportsApi](docs/apis/CatalogReportsApi.md)
+* [CatalogSupplementalApi](docs/apis/CatalogSupplementalApi.md)
 * [CatalogsApi](docs/apis/CatalogsApi.md)
+* [ConversionDeletionRequestsApi](docs/apis/ConversionDeletionRequestsApi.md)
 * [ConversionEqsApi](docs/apis/ConversionEqsApi.md)
 * [ConversionEventsApi](docs/apis/ConversionEventsApi.md)
 * [ConversionTagsApi](docs/apis/ConversionTagsApi.md)
 * [ConversionsApi](docs/apis/ConversionsApi.md)
 * [CustomerListUploadsApi](docs/apis/CustomerListUploadsApi.md)
 * [CustomerListsApi](docs/apis/CustomerListsApi.md)
+* [CustomerSegmentApi](docs/apis/CustomerSegmentApi.md)
 * [IntegrationsApi](docs/apis/IntegrationsApi.md)
 * [KeywordsApi](docs/apis/KeywordsApi.md)
 * [LabelsApi](docs/apis/LabelsApi.md)
@@ -62,14 +65,16 @@ Description on how to create Apis is given inside individual api guides:
 * [OauthApi](docs/apis/OauthApi.md)
 * [OrderLinesApi](docs/apis/OrderLinesApi.md)
 * [PinsApi](docs/apis/PinsApi.md)
-* [ProductCategoriesApi](docs/apis/ProductCategoriesApi.md)
 * [ProductGroupPromotionsApi](docs/apis/ProductGroupPromotionsApi.md)
+* [ProductTagsApi](docs/apis/ProductTagsApi.md)
 * [PromotionsApi](docs/apis/PromotionsApi.md)
 * [ResourcesApi](docs/apis/ResourcesApi.md)
+* [SchedulesApi](docs/apis/SchedulesApi.md)
 * [SearchApi](docs/apis/SearchApi.md)
 * [TargetingTemplateApi](docs/apis/TargetingTemplateApi.md)
 * [TermsApi](docs/apis/TermsApi.md)
 * [TermsOfServiceApi](docs/apis/TermsOfServiceApi.md)
+* [TrendsApi](docs/apis/TrendsApi.md)
 * [UserAccountApi](docs/apis/UserAccountApi.md)
 
 
@@ -79,6 +84,11 @@ Details on auth methods can be found in the [auth.md](doc/auth.md).
 
 ## Author
 
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
 blah+oapicf@cliffano.com
 blah+oapicf@cliffano.com
 blah+oapicf@cliffano.com

@@ -2,22 +2,26 @@ package controllers;
 
 import apimodels.Account;
 import apimodels.AnalyticsMetricsResponse;
-import apimodels.BoardsUserFollowsList200Response;
-import apimodels.Error;
-import apimodels.FollowUserRequest;
+import java.math.BigDecimal;
+import apimodels.BoardsList200Response;
+import apimodels.FollowUser;
+import apimodels.FollowUserCreate;
 import apimodels.FollowersList200Response;
 import apimodels.LinkedBusiness;
 import java.time.LocalDate;
 import java.util.Map;
+import apimodels.PinterestLibError;
+import apimodels.QuerymetrictypesItems;
+import apimodels.QueryvideopinmetrictypesItems;
 import apimodels.TopPinsAnalyticsResponse;
+import apimodels.TopPinsSortBy;
 import apimodels.TopVideoPinsAnalyticsResponse;
+import apimodels.TopVideoPinsSortBy;
 import apimodels.UserAccountFollowedInterests200Response;
 import apimodels.UserFollowingFeedType;
-import apimodels.UserFollowingGet200Response;
-import apimodels.UserSummary;
-import apimodels.UserWebsiteSummary;
-import apimodels.UserWebsiteVerificationCode;
-import apimodels.UserWebsiteVerifyRequest;
+import apimodels.UserWebsite;
+import apimodels.UserWebsiteCreate;
+import apimodels.UserWebsiteVerification;
 import apimodels.UserWebsitesGet200Response;
 
 import com.typesafe.config.Config;
@@ -42,7 +46,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UserAccountApiController extends Controller {
     private final UserAccountApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -57,6 +61,20 @@ public class UserAccountApiController extends Controller {
 
     @ApiAction
     public Result boardsUserFollowsList(Http.Request request) throws Exception {
+        String valueadAccountId = request.getQueryString("ad_account_id");
+        String adAccountId;
+        if (valueadAccountId != null) {
+            adAccountId = valueadAccountId;
+        } else {
+            adAccountId = null;
+        }
+        String valueexplicitFollowing = request.getQueryString("explicit_following");
+        Boolean explicitFollowing;
+        if (valueexplicitFollowing != null) {
+            explicitFollowing = Boolean.valueOf(valueexplicitFollowing);
+        } else {
+            explicitFollowing = false;
+        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -71,36 +89,22 @@ public class UserAccountApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        String valueexplicitFollowing = request.getQueryString("explicit_following");
-        Boolean explicitFollowing;
-        if (valueexplicitFollowing != null) {
-            explicitFollowing = Boolean.valueOf(valueexplicitFollowing);
-        } else {
-            explicitFollowing = false;
-        }
-        String valueadAccountId = request.getQueryString("ad_account_id");
-        String adAccountId;
-        if (valueadAccountId != null) {
-            adAccountId = valueadAccountId;
-        } else {
-            adAccountId = null;
-        }
-        return imp.boardsUserFollowsListHttp(request, bookmark, pageSize, explicitFollowing, adAccountId);
+        return imp.boardsUserFollowsListHttp(request, adAccountId, explicitFollowing, bookmark, pageSize);
     }
 
     @ApiAction
     public Result followUserUpdate(Http.Request request,  @Pattern(regexp="(?!^\\d+$)^.+$")String username) throws Exception {
-        JsonNode nodefollowUserRequest = request.body().asJson();
-        FollowUserRequest followUserRequest;
-        if (nodefollowUserRequest != null) {
-            followUserRequest = mapper.readValue(nodefollowUserRequest.toString(), FollowUserRequest.class);
+        JsonNode nodefollowUserCreate = request.body().asJson();
+        FollowUserCreate followUserCreate;
+        if (nodefollowUserCreate != null) {
+            followUserCreate = mapper.readValue(nodefollowUserCreate.toString(), FollowUserCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(followUserRequest);
+                OpenAPIUtils.validate(followUserCreate);
             }
         } else {
-            throw new IllegalArgumentException("'FollowUserRequest' parameter is required");
+            throw new IllegalArgumentException("'FollowUserCreate' parameter is required");
         }
-        return imp.followUserUpdateHttp(request, username, followUserRequest);
+        return imp.followUserUpdateHttp(request, username, followUserCreate);
     }
 
     @ApiAction
@@ -192,7 +196,7 @@ public class UserAccountApiController extends Controller {
         }
         String[] metricTypesArray = request.queryString().get("metric_types");
         List<String> metricTypesList = OpenAPIUtils.parametersToList("csv", metricTypesArray);
-        List<String> metricTypes = new ArrayList<>();
+        List<QuerymetrictypesItems> metricTypes = new ArrayList<>();
         for (String curParam : metricTypesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -233,7 +237,7 @@ public class UserAccountApiController extends Controller {
             throw new IllegalArgumentException("'end_date' parameter is required");
         }
         String valuesortBy = request.getQueryString("sort_by");
-        String sortBy;
+        TopPinsSortBy sortBy;
         if (valuesortBy != null) {
             sortBy = valuesortBy;
         } else {
@@ -276,7 +280,7 @@ public class UserAccountApiController extends Controller {
         }
         String[] metricTypesArray = request.queryString().get("metric_types");
         List<String> metricTypesList = OpenAPIUtils.parametersToList("csv", metricTypesArray);
-        List<String> metricTypes = new ArrayList<>();
+        List<QuerymetrictypesItems> metricTypes = new ArrayList<>();
         for (String curParam : metricTypesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -291,9 +295,9 @@ public class UserAccountApiController extends Controller {
             numOfPins = 10;
         }
         String valuecreatedInLastNDays = request.getQueryString("created_in_last_n_days");
-        Integer createdInLastNDays;
+        BigDecimal createdInLastNDays;
         if (valuecreatedInLastNDays != null) {
-            createdInLastNDays = Integer.parseInt(valuecreatedInLastNDays);
+            createdInLastNDays = new BigDecimal(valuecreatedInLastNDays);
         } else {
             createdInLastNDays = null;
         }
@@ -324,7 +328,7 @@ public class UserAccountApiController extends Controller {
             throw new IllegalArgumentException("'end_date' parameter is required");
         }
         String valuesortBy = request.getQueryString("sort_by");
-        String sortBy;
+        TopVideoPinsSortBy sortBy;
         if (valuesortBy != null) {
             sortBy = valuesortBy;
         } else {
@@ -367,7 +371,7 @@ public class UserAccountApiController extends Controller {
         }
         String[] metricTypesArray = request.queryString().get("metric_types");
         List<String> metricTypesList = OpenAPIUtils.parametersToList("csv", metricTypesArray);
-        List<String> metricTypes = new ArrayList<>();
+        List<QueryvideopinmetrictypesItems> metricTypes = new ArrayList<>();
         for (String curParam : metricTypesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -382,9 +386,9 @@ public class UserAccountApiController extends Controller {
             numOfPins = 10;
         }
         String valuecreatedInLastNDays = request.getQueryString("created_in_last_n_days");
-        Integer createdInLastNDays;
+        BigDecimal createdInLastNDays;
         if (valuecreatedInLastNDays != null) {
-            createdInLastNDays = Integer.parseInt(valuecreatedInLastNDays);
+            createdInLastNDays = new BigDecimal(valuecreatedInLastNDays);
         } else {
             createdInLastNDays = null;
         }
@@ -431,6 +435,27 @@ public class UserAccountApiController extends Controller {
 
     @ApiAction
     public Result userFollowingGet(Http.Request request) throws Exception {
+        String valueadAccountId = request.getQueryString("ad_account_id");
+        String adAccountId;
+        if (valueadAccountId != null) {
+            adAccountId = valueadAccountId;
+        } else {
+            adAccountId = null;
+        }
+        String valueexplicitFollowing = request.getQueryString("explicit_following");
+        Boolean explicitFollowing;
+        if (valueexplicitFollowing != null) {
+            explicitFollowing = Boolean.valueOf(valueexplicitFollowing);
+        } else {
+            explicitFollowing = false;
+        }
+        String valuefeedType = request.getQueryString("feed_type");
+        UserFollowingFeedType feedType;
+        if (valuefeedType != null) {
+            feedType = valuefeedType;
+        } else {
+            feedType = ALL;
+        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -445,28 +470,7 @@ public class UserAccountApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        String valuefeedType = request.getQueryString("feed_type");
-        UserFollowingFeedType feedType;
-        if (valuefeedType != null) {
-            feedType = valuefeedType;
-        } else {
-            feedType = "ALL";
-        }
-        String valueexplicitFollowing = request.getQueryString("explicit_following");
-        Boolean explicitFollowing;
-        if (valueexplicitFollowing != null) {
-            explicitFollowing = Boolean.valueOf(valueexplicitFollowing);
-        } else {
-            explicitFollowing = false;
-        }
-        String valueadAccountId = request.getQueryString("ad_account_id");
-        String adAccountId;
-        if (valueadAccountId != null) {
-            adAccountId = valueadAccountId;
-        } else {
-            adAccountId = null;
-        }
-        return imp.userFollowingGetHttp(request, bookmark, pageSize, feedType, explicitFollowing, adAccountId);
+        return imp.userFollowingGetHttp(request, adAccountId, explicitFollowing, feedType, bookmark, pageSize);
     }
 
     @ApiAction
@@ -490,15 +494,15 @@ public class UserAccountApiController extends Controller {
 
     @ApiAction
     public Result verifyWebsiteUpdate(Http.Request request) throws Exception {
-        JsonNode nodeuserWebsiteVerifyRequest = request.body().asJson();
-        UserWebsiteVerifyRequest userWebsiteVerifyRequest;
-        if (nodeuserWebsiteVerifyRequest != null) {
-            userWebsiteVerifyRequest = mapper.readValue(nodeuserWebsiteVerifyRequest.toString(), UserWebsiteVerifyRequest.class);
+        JsonNode nodeuserWebsiteCreate = request.body().asJson();
+        UserWebsiteCreate userWebsiteCreate;
+        if (nodeuserWebsiteCreate != null) {
+            userWebsiteCreate = mapper.readValue(nodeuserWebsiteCreate.toString(), UserWebsiteCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(userWebsiteVerifyRequest);
+                OpenAPIUtils.validate(userWebsiteCreate);
             }
         } else {
-            throw new IllegalArgumentException("'UserWebsiteVerifyRequest' parameter is required");
+            throw new IllegalArgumentException("'UserWebsiteCreate' parameter is required");
         }
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
@@ -507,7 +511,7 @@ public class UserAccountApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.verifyWebsiteUpdateHttp(request, userWebsiteVerifyRequest, adAccountId);
+        return imp.verifyWebsiteUpdateHttp(request, userWebsiteCreate, adAccountId);
     }
 
     @ApiAction

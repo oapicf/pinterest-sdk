@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -23,7 +23,8 @@ type AnalyticsMetricsResponse struct {
 	SummaryMetrics map[string]float32 `json:"summary_metrics,omitempty"`
 }
 
-// AssertAnalyticsMetricsResponseRequired checks if the required fields are not zero-ed
+// AssertAnalyticsMetricsResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAnalyticsMetricsResponseRequired(obj AnalyticsMetricsResponse) error {
 	for _, el := range obj.DailyMetrics {
 		if err := AssertAnalyticsDailyMetricsRequired(el); err != nil {

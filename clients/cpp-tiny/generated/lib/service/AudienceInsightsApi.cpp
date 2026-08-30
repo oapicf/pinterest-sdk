@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            AudienceDefinitionResponse
+            Audience_insights_scope_and_type_get_200_response
         >
         AudienceInsightsApi::
         audienceInsightsScopeAndType_get(
@@ -48,15 +48,15 @@ using namespace Tiny;
 
 
 
-            AudienceDefinitionResponse obj(output_string);
+            Audience_insights_scope_and_type_get_200_response obj(output_string);
 
 
-            Response<AudienceDefinitionResponse> response(obj, httpCode);
+            Response<Audience_insights_scope_and_type_get_200_response> response(obj, httpCode);
             return response;
         }
 
         Response<
-            AudienceInsightsResponse
+            AudienceInsights
         >
         AudienceInsightsApi::
         audienceInsights_get(
@@ -103,10 +103,10 @@ using namespace Tiny;
 
 
 
-            AudienceInsightsResponse obj(output_string);
+            AudienceInsights obj(output_string);
 
 
-            Response<AudienceInsightsResponse> response(obj, httpCode);
+            Response<AudienceInsights> response(obj, httpCode);
             return response;
         }
 

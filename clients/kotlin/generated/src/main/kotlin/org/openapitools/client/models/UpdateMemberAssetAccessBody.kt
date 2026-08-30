@@ -8,29 +8,38 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.UpdateMemberAssetAccessBodyAccessesInner
+import org.openapitools.client.models.UpdateMemberAssetAccessItem
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * An object with a list of all the new accesses.
+ * An object with a list of all the new member asset accesses.
  *
- * @param accesses 
+ * @param accesses List of member asset accesses to assign or update.
  */
 
 
 data class UpdateMemberAssetAccessBody (
 
+    /* List of member asset accesses to assign or update. */
     @Json(name = "accesses")
-    val accesses: kotlin.collections.List<UpdateMemberAssetAccessBodyAccessesInner>
+    val accesses: kotlin.collections.List<UpdateMemberAssetAccessItem>
 
 ) {
 

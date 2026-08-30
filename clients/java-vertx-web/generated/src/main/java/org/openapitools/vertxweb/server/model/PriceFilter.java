@@ -3,27 +3,27 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.openapitools.vertxweb.server.model.CatalogsProductGroupPricingCurrencyCriteria;
+import org.openapitools.vertxweb.server.model.PriceFilterPrice;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PriceFilter   {
   
-  private CatalogsProductGroupPricingCurrencyCriteria PRICE;
+  private PriceFilterPrice PRICE;
 
   public PriceFilter () {
 
   }
 
-  public PriceFilter (CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public PriceFilter (PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
   }
 
     
   @JsonProperty("PRICE")
-  public CatalogsProductGroupPricingCurrencyCriteria getPRICE() {
+  public PriceFilterPrice getPRICE() {
     return PRICE;
   }
-  public void setPRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public void setPRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
   }
 
@@ -60,9 +60,6 @@ public class PriceFilter   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

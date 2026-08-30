@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
 | **id** | **kotlin.String** |  |  [readonly] |
-| **name** | **kotlin.String** |      Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;. |  |
+| **name** | **kotlin.String** |     Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;. |  |
 | **boardPinsModifiedAt** | [**java.time.OffsetDateTime**](java.time.OffsetDateTime.md) | Date and time of last board pins modified. |  [optional] [readonly] |
 | **collaboratorCount** | **kotlin.Int** | Count of collaborators on the board. |  [optional] [readonly] |
 | **createdAt** | [**java.time.OffsetDateTime**](java.time.OffsetDateTime.md) | Date and time of board creation. |  [optional] [readonly] |

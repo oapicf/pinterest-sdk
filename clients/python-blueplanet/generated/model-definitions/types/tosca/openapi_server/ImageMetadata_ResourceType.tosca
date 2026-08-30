@@ -28,8 +28,9 @@ resourceTypes {
         }
         item_type {
           type =  string
-          description = ""
-          optional = false
+          description = "Discriminator literal identifying this as image metadata inside a &#x60;PinMediaMetadata&#x60; payload."
+          enum = ["image"]
+          optional = true
         }
         link {
           type =  string

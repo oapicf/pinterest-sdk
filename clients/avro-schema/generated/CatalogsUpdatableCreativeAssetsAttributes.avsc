@@ -73,7 +73,7 @@
     {
       "name": "visibility",
       "type": ["null", "string"],
-      "doc": "Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.",
+      "doc": "Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.",
       "default": null
     }
   ]

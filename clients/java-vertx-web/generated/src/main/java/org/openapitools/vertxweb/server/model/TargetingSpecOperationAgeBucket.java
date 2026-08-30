@@ -50,7 +50,7 @@ public class TargetingSpecOperationAgeBucket   {
   }
 
   private OperationEnum operation;
-  private List<TargetingSpecAgeBucket> values;
+  private List<TargetingSpecAgeBucket> values = new ArrayList<>();
 
   public TargetingSpecOperationAgeBucket () {
 
@@ -126,9 +126,6 @@ public class TargetingSpecOperationAgeBucket   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

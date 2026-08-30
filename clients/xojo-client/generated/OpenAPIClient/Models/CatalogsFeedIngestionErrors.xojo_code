@@ -73,12 +73,6 @@ Protected Class CatalogsFeedIngestionErrors
 	#tag EndProperty
 
 
-    #tag Enum, Name = LARGE_PRODUCT_COUNT_DECREASEEnum, Type = Integer, Flags = &h0
-        
-        Escaped1 = "1"
-        
-    #tag EndEnum
-
 
 
 
@@ -165,6 +159,14 @@ Protected Class CatalogsFeedIngestionErrors
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="IMAGE_MALFORMED_URL"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LARGE_PRODUCT_COUNT_DECREASE"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

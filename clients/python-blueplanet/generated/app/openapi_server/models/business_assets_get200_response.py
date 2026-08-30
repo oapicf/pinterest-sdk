@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.get_business_assets_response import GetBusinessAssetsResponse  # noqa: F401,E501
+from app.openapi_server.models.business_assets import BusinessAssets  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,17 +16,17 @@ class BusinessAssetsGet200Response(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, bookmark: str=None, items: List[GetBusinessAssetsResponse]=None):  # noqa: E501
+    def __init__(self, bookmark: str=None, items: List[BusinessAssets]=None):  # noqa: E501
         """BusinessAssetsGet200Response - a model defined in Swagger
 
         :param bookmark: The bookmark of this BusinessAssetsGet200Response.  # noqa: E501
         :type bookmark: str
         :param items: The items of this BusinessAssetsGet200Response.  # noqa: E501
-        :type items: List[GetBusinessAssetsResponse]
+        :type items: List[BusinessAssets]
         """
         self.swagger_types = {
             'bookmark': str,
-            'items': List[GetBusinessAssetsResponse]
+            'items': List[BusinessAssets]
         }
 
         self.attribute_map = {
@@ -70,24 +70,22 @@ class BusinessAssetsGet200Response(Model):
         self._bookmark = bookmark
 
     @property
-    def items(self) -> List[GetBusinessAssetsResponse]:
+    def items(self) -> List[BusinessAssets]:
         """Gets the items of this BusinessAssetsGet200Response.
 
-        List of assets the requesting business has access to.  # noqa: E501
 
         :return: The items of this BusinessAssetsGet200Response.
-        :rtype: List[GetBusinessAssetsResponse]
+        :rtype: List[BusinessAssets]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[GetBusinessAssetsResponse]):
+    def items(self, items: List[BusinessAssets]):
         """Sets the items of this BusinessAssetsGet200Response.
 
-        List of assets the requesting business has access to.  # noqa: E501
 
         :param items: The items of this BusinessAssetsGet200Response.
-        :type items: List[GetBusinessAssetsResponse]
+        :type items: List[BusinessAssets]
         """
         if items is None:
             raise ValueError("Invalid value for `items`, must not be `None`")  # noqa: E501

@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.vertxweb.server.model.AiDisclosures;
 import org.openapitools.vertxweb.server.model.PinMediaSource;
 
 /**
@@ -12,6 +13,7 @@ import org.openapitools.vertxweb.server.model.PinMediaSource;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinCreate   {
   
+  private AiDisclosures aiDisclosures;
   private String altText;
   private String boardId;
   private String boardSectionId;
@@ -27,7 +29,8 @@ public class PinCreate   {
 
   }
 
-  public PinCreate (String altText, String boardId, String boardSectionId, String description, String dominantColor, String link, PinMediaSource mediaSource, String parentPinId, String sponsorId, String title) {
+  public PinCreate (AiDisclosures aiDisclosures, String altText, String boardId, String boardSectionId, String description, String dominantColor, String link, PinMediaSource mediaSource, String parentPinId, String sponsorId, String title) {
+    this.aiDisclosures = aiDisclosures;
     this.altText = altText;
     this.boardId = boardId;
     this.boardSectionId = boardSectionId;
@@ -38,6 +41,15 @@ public class PinCreate   {
     this.parentPinId = parentPinId;
     this.sponsorId = sponsorId;
     this.title = title;
+  }
+
+    
+  @JsonProperty("ai_disclosures")
+  public AiDisclosures getAiDisclosures() {
+    return aiDisclosures;
+  }
+  public void setAiDisclosures(AiDisclosures aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
   }
 
     
@@ -140,7 +152,8 @@ public class PinCreate   {
       return false;
     }
     PinCreate pinCreate = (PinCreate) o;
-    return Objects.equals(altText, pinCreate.altText) &&
+    return Objects.equals(aiDisclosures, pinCreate.aiDisclosures) &&
+        Objects.equals(altText, pinCreate.altText) &&
         Objects.equals(boardId, pinCreate.boardId) &&
         Objects.equals(boardSectionId, pinCreate.boardSectionId) &&
         Objects.equals(description, pinCreate.description) &&
@@ -154,7 +167,7 @@ public class PinCreate   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(altText, boardId, boardSectionId, description, dominantColor, link, mediaSource, parentPinId, sponsorId, title);
+    return Objects.hash(aiDisclosures, altText, boardId, boardSectionId, description, dominantColor, link, mediaSource, parentPinId, sponsorId, title);
   }
 
   @Override
@@ -162,6 +175,7 @@ public class PinCreate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinCreate {\n");
     
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
@@ -181,9 +195,6 @@ public class PinCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -2,7 +2,7 @@
 Protected Class CreativeAssetsIdFilter
 
 	#tag Property, Flags = &h0
-		CREATIVE_ASSETS_ID As CatalogsProductGroupMultipleStringCriteria
+		CREATIVE_ASSETS_ID As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 

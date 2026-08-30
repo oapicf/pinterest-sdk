@@ -6,10 +6,10 @@ import org.openapitools.api.factories.BusinessAccessApiServiceFactory;
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
 
-import org.openapitools.model.BrandAccountsCreate200Response;
-import org.openapitools.model.BrandAccountsCreateRequest;
-import org.openapitools.model.BrandAccountsUpdateRequest;
-import org.openapitools.model.Error;
+import org.openapitools.model.BrandAccount;
+import org.openapitools.model.BrandAccountCreate;
+import org.openapitools.model.BrandAccountUpdate;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.Map;
 import java.util.List;
@@ -32,7 +32,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the business_access API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-31T04:54:42.155723473Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessAccessApi  {
    private final BusinessAccessApiService delegate;
 
@@ -61,43 +61,48 @@ public class BusinessAccessApi  {
     
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Create a Brand Account", notes = "Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.", response = BrandAccountsCreate200Response.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Create a Brand Account", notes = "Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.", response = BrandAccount.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "biz_access:read", description = "See business access data"),
             @io.swagger.annotations.AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data")
         })
     }, tags={ "business_access_relationships", })
     @io.swagger.annotations.ApiResponses(value = {
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = BrandAccountsCreate200Response.class),
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = BrandAccount.class),
+        @io.swagger.annotations.ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = BrandAccount.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response brandAccountsCreate(@ApiParam(value = "business hierarchy node id", required = true) @PathParam("business_hierarchy_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessHierarchyId,@ApiParam(value = "", required = true) @NotNull @Valid  BrandAccountsCreateRequest brandAccountsCreateRequest,@Context SecurityContext securityContext)
+    public Response brandAccountsCreate(@ApiParam(value = "business hierarchy node id", required = true) @PathParam("business_hierarchy_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessHierarchyId,@ApiParam(value = "", required = true) @NotNull @Valid  BrandAccountCreate brandAccountCreate,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest, securityContext);
+        return delegate.brandAccountsCreate(businessHierarchyId, brandAccountCreate, securityContext);
     }
     @javax.ws.rs.PATCH
     @Path("/{brand_account_id}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Update a Brand Account", notes = "Update an existing Brand Account", response = BrandAccountsCreate200Response.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Update a Brand Account", notes = "Update an existing Brand Account", response = BrandAccount.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "biz_access:read", description = "See business access data"),
             @io.swagger.annotations.AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data")
         })
     }, tags={ "business_access_relationships", })
     @io.swagger.annotations.ApiResponses(value = {
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = BrandAccountsCreate200Response.class),
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
-        @io.swagger.annotations.ApiResponse(code = 401, message = "Not authenticated to update Brand Account", response = Error.class),
-        @io.swagger.annotations.ApiResponse(code = 403, message = "Not authorized to update Brand Account", response = Error.class),
-        @io.swagger.annotations.ApiResponse(code = 404, message = "Brand account not found", response = Error.class),
-        @io.swagger.annotations.ApiResponse(code = 409, message = "This account is not a brand account.", response = Error.class),
-        @io.swagger.annotations.ApiResponse(code = 429, message = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.", response = Error.class),
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = BrandAccount.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 409, message = "The request could not be processed because of a conflict in the current state of the resource.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response brandAccountsUpdate(@ApiParam(value = "business hierarchy node id", required = true) @PathParam("business_hierarchy_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessHierarchyId,@ApiParam(value = "Unique identifier of a brand account.", required = true) @PathParam("brand_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String brandAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  BrandAccountsUpdateRequest brandAccountsUpdateRequest,@Context SecurityContext securityContext)
+    public Response brandAccountsUpdate(@ApiParam(value = "", required = true) @PathParam("brand_account_id") @NotNull  String brandAccountId,@ApiParam(value = "business hierarchy node id", required = true) @PathParam("business_hierarchy_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessHierarchyId,@ApiParam(value = "", required = true) @NotNull @Valid  BrandAccountUpdate brandAccountUpdate,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest, securityContext);
+        return delegate.brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate, securityContext);
     }
 }

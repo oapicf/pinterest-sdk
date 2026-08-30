@@ -13,13 +13,13 @@ Name | Type
 `cpuCores` | number
 `externalStorageFreeSpace` | number
 `externalStorageSize` | number
-`formFactor` | string
+`formFactor` | [FormFactor](FormFactor.md)
 `kernelVersion` | string
 `languages` | Array&lt;string&gt;
 `locale` | string
 `model` | string
-`networkType` | string
-`osFamily` | string
+`networkType` | [NetworkType](NetworkType.md)
+`osFamily` | [OsFamily](OsFamily.md)
 `osName` | string
 `osReleaseName` | string
 `osVersion` | string
@@ -49,7 +49,7 @@ const example = {
   "kernelVersion": 6.15,
   "languages": ["en","de","lt"],
   "locale": en-us,
-  "model": 16 Pro, Galaxy S25 Ultra,
+  "model": null,
   "networkType": wifi,
   "osFamily": ios,
   "osName": 10,

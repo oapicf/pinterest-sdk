@@ -47,15 +47,13 @@ class CreativeAssetsIdFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CreativeAssetsIdFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CreativeAssetsIdFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'CREATIVE_ASSETS_ID'), 'Required key "CreativeAssetsIdFilter[CREATIVE_ASSETS_ID]" is missing from JSON.');
+        assert(json[r'CREATIVE_ASSETS_ID'] != null, 'Required key "CreativeAssetsIdFilter[CREATIVE_ASSETS_ID]" has a null value in JSON.');
         return true;
       }());
 
       return CreativeAssetsIdFilter(
-        CREATIVE_ASSETS_ID: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'CREATIVE_ASSETS_ID')!,
+        CREATIVE_ASSETS_ID: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'CREATIVE_ASSETS_ID'])!,
       );
     }
     return null;

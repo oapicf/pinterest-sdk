@@ -11,10 +11,10 @@ import 'package:one_of/one_of.dart';
 
 part 'notification_post_request.g.dart';
 
-/// Any valid JSON object
+/// Notification request body. Can be either a batch of notification objects or a single notification object.
 @BuiltValue()
 abstract class NotificationPostRequest implements Built<NotificationPostRequest, NotificationPostRequestBuilder> {
-  /// One Of [BuiltList<BuiltMap<String, JsonObject>>], [JsonObject]
+  /// One Of [BuiltList<JsonObject>], [JsonObject]
   OneOf get oneOf;
 
   NotificationPostRequest._();
@@ -60,7 +60,7 @@ class _$NotificationPostRequestSerializer implements PrimitiveSerializer<Notific
   }) {
     final result = NotificationPostRequestBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]), FullType(JsonObject), ]);
+    final targetType = const FullType(OneOf, [FullType(BuiltList, [FullType(JsonObject)]), FullType(JsonObject), ]);
     oneOfDataSrc = serialized;
     result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
     return result.build();

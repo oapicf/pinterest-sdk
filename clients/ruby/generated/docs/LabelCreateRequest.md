@@ -4,8 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **labels** | [**Array&lt;LabelCreateRequestLabelsInner&gt;**](LabelCreateRequestLabelsInner.md) | Labels that you are applying to the campaign. |  |
-| **parent_id** | **String** | Unique identifier of the asset you are labelling. Currently, you can only label campaigns. |  |
+| **labels** | [**Array&lt;LabelCreateItem&gt;**](LabelCreateItem.md) | Labels that you are applying to the campaign. |  |
 
 ## Example
 
@@ -13,8 +12,7 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::LabelCreateRequest.new(
-  labels: null,
-  parent_id: 626753052072
+  labels: null
 )
 ```
 

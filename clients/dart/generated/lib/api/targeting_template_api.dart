@@ -18,7 +18,7 @@ class TargetingTemplateApi {
 
   /// Create targeting templates
   ///
-  /// <p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
+  /// Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -28,8 +28,7 @@ class TargetingTemplateApi {
   ///   Unique identifier of an ad account.
   ///
   /// * [TargetingTemplateCreate] targetingTemplateCreate (required):
-  ///   targeting template creation entity
-  Future<Response> targetingTemplateCreateWithHttpInfo(String adAccountId, TargetingTemplateCreate targetingTemplateCreate,) async {
+  Future<Response> targetingTemplateCreateWithHttpInfo(String adAccountId, TargetingTemplateCreate targetingTemplateCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/targeting_templates'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -52,12 +51,13 @@ class TargetingTemplateApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Create targeting templates
   ///
-  /// <p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
+  /// Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
   ///
   /// Parameters:
   ///
@@ -65,9 +65,8 @@ class TargetingTemplateApi {
   ///   Unique identifier of an ad account.
   ///
   /// * [TargetingTemplateCreate] targetingTemplateCreate (required):
-  ///   targeting template creation entity
-  Future<TargetingTemplateGetResponseData?> targetingTemplateCreate(String adAccountId, TargetingTemplateCreate targetingTemplateCreate,) async {
-    final response = await targetingTemplateCreateWithHttpInfo(adAccountId, targetingTemplateCreate,);
+  Future<TargetingTemplate?> targetingTemplateCreate(String adAccountId, TargetingTemplateCreate targetingTemplateCreate, { Future<void>? abortTrigger, }) async {
+    final response = await targetingTemplateCreateWithHttpInfo(adAccountId, targetingTemplateCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -75,7 +74,7 @@ class TargetingTemplateApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TargetingTemplateGetResponseData',) as TargetingTemplateGetResponseData;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TargetingTemplate',) as TargetingTemplate;
     
     }
     return null;
@@ -83,7 +82,7 @@ class TargetingTemplateApi {
 
   /// List targeting templates
   ///
-  /// Get a list of the targeting templates in the specified <code>ad_account_id</code>
+  /// Get a list of the targeting templates in the specified `ad_account_id`
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -92,21 +91,21 @@ class TargetingTemplateApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+  /// * [String] bookmark:
+  ///   Cursor used to fetch the next page of items
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
   ///
   /// * [bool] includeSizing:
   ///   Include audience sizing in result or not
   ///
   /// * [String] searchQuery:
-  ///   Search keyword for targeting templates
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] bookmark:
-  ///   Cursor used to fetch the next page of items
-  Future<Response> targetingTemplateListWithHttpInfo(String adAccountId, { String? order, bool? includeSizing, String? searchQuery, int? pageSize, String? bookmark, }) async {
+  ///   Search query. Can contain pin description keywords or comma-separated pin IDs.
+  Future<Response> targetingTemplateListWithHttpInfo(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, bool? includeSizing, String? searchQuery, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/targeting_templates'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -118,6 +117,12 @@ class TargetingTemplateApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (bookmark != null) {
+      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
+    if (pageSize != null) {
+      queryParams.addAll(_queryParams('', 'page_size', pageSize));
+    }
     if (order != null) {
       queryParams.addAll(_queryParams('', 'order', order));
     }
@@ -126,12 +131,6 @@ class TargetingTemplateApi {
     }
     if (searchQuery != null) {
       queryParams.addAll(_queryParams('', 'search_query', searchQuery));
-    }
-    if (pageSize != null) {
-      queryParams.addAll(_queryParams('', 'page_size', pageSize));
-    }
-    if (bookmark != null) {
-      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
     }
 
     const contentTypes = <String>[];
@@ -145,34 +144,35 @@ class TargetingTemplateApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// List targeting templates
   ///
-  /// Get a list of the targeting templates in the specified <code>ad_account_id</code>
+  /// Get a list of the targeting templates in the specified `ad_account_id`
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+  /// * [String] bookmark:
+  ///   Cursor used to fetch the next page of items
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
   ///
   /// * [bool] includeSizing:
   ///   Include audience sizing in result or not
   ///
   /// * [String] searchQuery:
-  ///   Search keyword for targeting templates
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] bookmark:
-  ///   Cursor used to fetch the next page of items
-  Future<TargetingTemplateList200Response?> targetingTemplateList(String adAccountId, { String? order, bool? includeSizing, String? searchQuery, int? pageSize, String? bookmark, }) async {
-    final response = await targetingTemplateListWithHttpInfo(adAccountId,  order: order, includeSizing: includeSizing, searchQuery: searchQuery, pageSize: pageSize, bookmark: bookmark, );
+  ///   Search query. Can contain pin description keywords or comma-separated pin IDs.
+  Future<TargetingTemplateList200Response?> targetingTemplateList(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, bool? includeSizing, String? searchQuery, Future<void>? abortTrigger, }) async {
+    final response = await targetingTemplateListWithHttpInfo(adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, includeSizing: includeSizing, searchQuery: searchQuery, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -188,7 +188,7 @@ class TargetingTemplateApi {
 
   /// Update targeting templates
   ///
-  /// <p>Update the targeting template given advertiser ID and targeting template ID</p>
+  /// Update the targeting template given advertiser ID and targeting template ID
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -197,15 +197,14 @@ class TargetingTemplateApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [TargetingTemplateUpdateRequest] targetingTemplateUpdateRequest (required):
-  ///   Operation type and targeting template ID
-  Future<Response> targetingTemplateUpdateWithHttpInfo(String adAccountId, TargetingTemplateUpdateRequest targetingTemplateUpdateRequest,) async {
+  /// * [TargetingTemplateUpdateRequestReadOrUpdate] targetingTemplateUpdateRequestReadOrUpdate (required):
+  Future<Response> targetingTemplateUpdateWithHttpInfo(String adAccountId, TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/targeting_templates'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = targetingTemplateUpdateRequest;
+    Object? postBody = targetingTemplateUpdateRequestReadOrUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -222,22 +221,22 @@ class TargetingTemplateApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Update targeting templates
   ///
-  /// <p>Update the targeting template given advertiser ID and targeting template ID</p>
+  /// Update the targeting template given advertiser ID and targeting template ID
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [TargetingTemplateUpdateRequest] targetingTemplateUpdateRequest (required):
-  ///   Operation type and targeting template ID
-  Future<void> targetingTemplateUpdate(String adAccountId, TargetingTemplateUpdateRequest targetingTemplateUpdateRequest,) async {
-    final response = await targetingTemplateUpdateWithHttpInfo(adAccountId, targetingTemplateUpdateRequest,);
+  /// * [TargetingTemplateUpdateRequestReadOrUpdate] targetingTemplateUpdateRequestReadOrUpdate (required):
+  Future<void> targetingTemplateUpdate(String adAccountId, TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate, { Future<void>? abortTrigger, }) async {
+    final response = await targetingTemplateUpdateWithHttpInfo(adAccountId, targetingTemplateUpdateRequestReadOrUpdate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

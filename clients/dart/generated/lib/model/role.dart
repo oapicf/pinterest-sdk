@@ -11,63 +11,46 @@
 part of openapi.api;
 
 /// An internal role type used on business access, EMPLOYEE, ADMIN.
-class Role {
-  /// Instantiate a new enum with the provided [value].
-  const Role._(this.value);
+enum Role {
+  UNKNOWN._(r'UNKNOWN'),
+  OWNER._(r'OWNER'),
+  ADMIN._(r'ADMIN'),
+  ANALYST._(r'ANALYST'),
+  SOS_READER._(r'SOS_READER'),
+  FINANCE_MANAGER._(r'FINANCE_MANAGER'),
+  FINANCE_EDIT._(r'FINANCE_EDIT'),
+  FINANCE_VIEW._(r'FINANCE_VIEW'),
+  AUDIENCE_MANAGER._(r'AUDIENCE_MANAGER'),
+  CAMPAIGN_MANAGER._(r'CAMPAIGN_MANAGER'),
+  CATALOGS_MANAGER._(r'CATALOGS_MANAGER'),
+  CATALOGS_VIEWER._(r'CATALOGS_VIEWER'),
+  RESTRICTED_OWNER._(r'RESTRICTED_OWNER'),
+  PROFILE_MANAGER._(r'PROFILE_MANAGER'),
+  PROFILE_PUBLISHER._(r'PROFILE_PUBLISHER'),
+  RESOURCE_PINNER_LIST_OWNER._(r'RESOURCE_PINNER_LIST_OWNER'),
+  RESOURCE_PINNER_LIST_READER._(r'RESOURCE_PINNER_LIST_READER'),
+  BIZ_PINNER_LIST_SHARER._(r'BIZ_PINNER_LIST_SHARER'),
+  RESOURCE_CONVERSION_TAGS_READER._(r'RESOURCE_CONVERSION_TAGS_READER'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const Role._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const UNKNOWN = Role._(r'UNKNOWN');
-  static const OWNER = Role._(r'OWNER');
-  static const ADMIN = Role._(r'ADMIN');
-  static const ANALYST = Role._(r'ANALYST');
-  static const SOS_READER = Role._(r'SOS_READER');
-  static const FINANCE_MANAGER = Role._(r'FINANCE_MANAGER');
-  static const FINANCE_EDIT = Role._(r'FINANCE_EDIT');
-  static const FINANCE_VIEW = Role._(r'FINANCE_VIEW');
-  static const AUDIENCE_MANAGER = Role._(r'AUDIENCE_MANAGER');
-  static const CAMPAIGN_MANAGER = Role._(r'CAMPAIGN_MANAGER');
-  static const CATALOGS_MANAGER = Role._(r'CATALOGS_MANAGER');
-  static const CATALOGS_VIEWER = Role._(r'CATALOGS_VIEWER');
-  static const RESTRICTED_OWNER = Role._(r'RESTRICTED_OWNER');
-  static const PROFILE_MANAGER = Role._(r'PROFILE_MANAGER');
-  static const PROFILE_PUBLISHER = Role._(r'PROFILE_PUBLISHER');
-  static const RESOURCE_PINNER_LIST_OWNER = Role._(r'RESOURCE_PINNER_LIST_OWNER');
-  static const RESOURCE_PINNER_LIST_READER = Role._(r'RESOURCE_PINNER_LIST_READER');
-  static const BIZ_PINNER_LIST_SHARER = Role._(r'BIZ_PINNER_LIST_SHARER');
-  static const RESOURCE_CONVERSION_TAGS_READER = Role._(r'RESOURCE_CONVERSION_TAGS_READER');
-
-  /// List of all possible values in this [enum][Role].
-  static const values = <Role>[
-    UNKNOWN,
-    OWNER,
-    ADMIN,
-    ANALYST,
-    SOS_READER,
-    FINANCE_MANAGER,
-    FINANCE_EDIT,
-    FINANCE_VIEW,
-    AUDIENCE_MANAGER,
-    CAMPAIGN_MANAGER,
-    CATALOGS_MANAGER,
-    CATALOGS_VIEWER,
-    RESTRICTED_OWNER,
-    PROFILE_MANAGER,
-    PROFILE_PUBLISHER,
-    RESOURCE_PINNER_LIST_OWNER,
-    RESOURCE_PINNER_LIST_READER,
-    BIZ_PINNER_LIST_SHARER,
-    RESOURCE_CONVERSION_TAGS_READER,
-  ];
-
+  /// Returns the instance of [Role] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static Role? fromJson(dynamic value) => RoleTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [Role]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<Role> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Role>[];
     if (json is List && json.isNotEmpty) {
@@ -89,9 +72,11 @@ class RoleTypeTransformer {
 
   const RoleTypeTransformer._();
 
-  String encode(Role data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(Role data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a Role.
+  /// Returns the instance of [Role] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -100,6 +85,9 @@ class RoleTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   Role? decode(dynamic data, {bool allowNull = true}) {
+    if (data is Role) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'UNKNOWN': return Role.UNKNOWN;
@@ -130,7 +118,7 @@ class RoleTypeTransformer {
     return null;
   }
 
-  /// Singleton [RoleTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static RoleTypeTransformer? _instance;
 }
 

@@ -49,7 +49,7 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessInviteApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
     val createAssetAccessRequestBody: CreateAssetAccessRequestBody =  // CreateAssetAccessRequestBody | 
     
@@ -101,13 +101,19 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## cancelInvitesOrRequests
 
-> cancelInvitesOrRequests(cancelInvitesOrRequestsRequest): ApiRequest[DeleteInvitesResultsResponseArray]
+> cancelInvitesOrRequests(cancelInvitesOrRequestsRequest): ApiRequest[CancelInvitesResponse]
 
 Cancel invites/requests
 
@@ -135,11 +141,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessInviteApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val cancelInvitesBody: CancelInvitesBody =  // CancelInvitesBody | A list with invite ids
+    val cancelInvitesRequest: CancelInvitesRequest =  // CancelInvitesRequest | 
     
-    val request = apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesBody)
+    val request = apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesRequest)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -168,11 +174,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
- **cancelInvitesBody** | [**CancelInvitesBody**](CancelInvitesBody.md)| A list with invite ids |
+ **cancelInvitesRequest** | [**CancelInvitesRequest**](CancelInvitesRequest.md)|  |
 
 ### Return type
 
-ApiRequest[[**DeleteInvitesResultsResponseArray**](DeleteInvitesResultsResponseArray.md)]
+ApiRequest[[**CancelInvitesResponse**](CancelInvitesResponse.md)]
 
 
 ### Authorization
@@ -187,8 +193,8 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## createAssetInvites
@@ -221,9 +227,9 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessInviteApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val createAssetInvitesRequest: CreateAssetInvitesRequest =  // CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+    val createAssetInvitesRequest: CreateAssetInvitesRequest =  // CreateAssetInvitesRequest | 
     
     val request = apiInstance.createAssetInvites(businessId, createAssetInvitesRequest)
     val response = apiInvoker.execute(request)
@@ -254,7 +260,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
- **createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md)| A list of invites/requests together with the asset permissions to be assigned to the invite/request.  |
+ **createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md)|  |
 
 ### Return type
 
@@ -273,8 +279,14 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## createMembershipOrPartnershipInvites
@@ -307,9 +319,9 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessInviteApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody =  // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
+    val createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody =  // CreateMembershipOrPartnershipInvitesBody | 
     
     val request = apiInstance.createMembershipOrPartnershipInvites(businessId, createMembershipOrPartnershipInvitesBody)
     val response = apiInvoker.execute(request)
@@ -340,7 +352,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
- **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role |
+ **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)|  |
 
 ### Return type
 
@@ -359,8 +371,14 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## getInvites
@@ -375,6 +393,7 @@ Get the membership/partnership invites and/or requests for the authorized user.
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import 
@@ -393,17 +412,17 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessInviteApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
     val isMember: Boolean = true // Boolean | A boolean field to indicate whether the invite is to create a partnership or a membership.
 
-    val inviteStatus: Seq[String] =  // Seq[String] | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
+    val inviteStatus: Seq[InviteFilterStatus] =  // Seq[InviteFilterStatus] | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
 
     val inviteType: InviteType =  // InviteType | Invite type to filter invites by. Only invites of the specified type will be returned.
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
     val request = apiInstance.getInvites(businessId, isMember, inviteStatus, inviteType, bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -435,10 +454,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
  **isMember** | **Boolean**| A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional]
- **inviteStatus** | [**Seq[String]**](String.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] [enum: PENDING, EXPIRED]
+ **inviteStatus** | [**Seq[InviteFilterStatus]**](InviteFilterStatus.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional]
  **inviteType** | [**InviteType**](.md)| Invite type to filter invites by. Only invites of the specified type will be returned. | [optional] [enum: MEMBER_INVITE, PARTNER_INVITE, PARTNER_REQUEST]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -457,8 +476,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## respondBusinessAccessInvites
@@ -540,6 +564,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

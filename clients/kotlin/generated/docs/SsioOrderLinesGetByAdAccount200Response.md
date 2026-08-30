@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **items** | [**kotlin.collections.List&lt;SSIOOrderLine&gt;**](SSIOOrderLine.md) | SSIO order lines by ad acount id |  |
+| **items** | [**kotlin.collections.List&lt;SSIOOrderLine&gt;**](SSIOOrderLine.md) |  |  |
 | **bookmark** | **kotlin.String** |  |  [optional] |
 
 

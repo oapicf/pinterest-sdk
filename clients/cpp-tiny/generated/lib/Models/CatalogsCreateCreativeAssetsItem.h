@@ -52,21 +52,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setAttributes(CatalogsCreativeAssetsAttributes  attributes);
+	void setAttributes(CatalogsCreativeAssetsAttributes attributes);
 	/*! \brief Get The catalog creative assets id in the merchant namespace
 	 */
 	std::string getCreativeAssetsId();
 
 	/*! \brief Set The catalog creative assets id in the merchant namespace
 	 */
-	void setCreativeAssetsId(std::string  creative_assets_id);
+	void setCreativeAssetsId(std::string creative_assets_id);
 	/*! \brief Get 
 	 */
 	std::string getOperation();
 
 	/*! \brief Set 
 	 */
-	void setOperation(std::string  operation);
+	void setOperation(std::string operation);
 
 
     private:

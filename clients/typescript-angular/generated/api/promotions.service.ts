@@ -17,11 +17,15 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { PromotionCreateRequest } from '../model/promotionCreateRequest';
+import { PinterestLibError } from '../model/pinterestLibError';
 // @ts-ignore
-import { PromotionResponse } from '../model/promotionResponse';
+import { PinterestLibPaginationOrder } from '../model/pinterestLibPaginationOrder';
 // @ts-ignore
-import { PromotionUpdateRequest } from '../model/promotionUpdateRequest';
+import { Promotion } from '../model/promotion';
+// @ts-ignore
+import { PromotionBatchUpdate } from '../model/promotionBatchUpdate';
+// @ts-ignore
+import { PromotionCreate } from '../model/promotionCreate';
 // @ts-ignore
 import { PromotionsList200Response } from '../model/promotionsList200Response';
 // @ts-ignore
@@ -48,20 +52,20 @@ export class PromotionsService extends BaseService {
      * Create multiple new promotions.
      * @endpoint post /ad_accounts/{ad_account_id}/promotions
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionCreateRequest List of promotions to create, size limit [1, 30].
+     * @param promotionCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public promotionsCreate(adAccountId: string, promotionCreateRequest: Array<PromotionCreateRequest>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<PromotionsResponse>;
-    public promotionsCreate(adAccountId: string, promotionCreateRequest: Array<PromotionCreateRequest>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PromotionsResponse>>;
-    public promotionsCreate(adAccountId: string, promotionCreateRequest: Array<PromotionCreateRequest>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PromotionsResponse>>;
-    public promotionsCreate(adAccountId: string, promotionCreateRequest: Array<PromotionCreateRequest>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public promotionsCreate(adAccountId: string, promotionCreate: Array<PromotionCreate>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<PromotionsResponse>;
+    public promotionsCreate(adAccountId: string, promotionCreate: Array<PromotionCreate>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PromotionsResponse>>;
+    public promotionsCreate(adAccountId: string, promotionCreate: Array<PromotionCreate>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PromotionsResponse>>;
+    public promotionsCreate(adAccountId: string, promotionCreate: Array<PromotionCreate>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling promotionsCreate.');
         }
-        if (promotionCreateRequest === null || promotionCreateRequest === undefined) {
-            throw new Error('Required parameter promotionCreateRequest was null or undefined when calling promotionsCreate.');
+        if (promotionCreate === null || promotionCreate === undefined) {
+            throw new Error('Required parameter promotionCreate was null or undefined when calling promotionsCreate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -106,7 +110,7 @@ export class PromotionsService extends BaseService {
         return this.httpClient.request<PromotionsResponse>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: promotionCreateRequest,
+                body: promotionCreate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -121,21 +125,21 @@ export class PromotionsService extends BaseService {
      * Delete promotion by id
      * Delete a promotion within Pinterest.
      * @endpoint delete /ad_accounts/{ad_account_id}/promotions/{promotion_id}
+     * @param promotionId Promotion ID
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionId Unique identifier of a promotion
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public promotionsDelete(adAccountId: string, promotionId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public promotionsDelete(adAccountId: string, promotionId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public promotionsDelete(adAccountId: string, promotionId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public promotionsDelete(adAccountId: string, promotionId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (adAccountId === null || adAccountId === undefined) {
-            throw new Error('Required parameter adAccountId was null or undefined when calling promotionsDelete.');
-        }
+    public promotionsDelete(promotionId: string, adAccountId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Promotion>;
+    public promotionsDelete(promotionId: string, adAccountId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Promotion>>;
+    public promotionsDelete(promotionId: string, adAccountId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Promotion>>;
+    public promotionsDelete(promotionId: string, adAccountId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (promotionId === null || promotionId === undefined) {
             throw new Error('Required parameter promotionId was null or undefined when calling promotionsDelete.');
+        }
+        if (adAccountId === null || adAccountId === undefined) {
+            throw new Error('Required parameter adAccountId was null or undefined when calling promotionsDelete.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -168,7 +172,7 @@ export class PromotionsService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/promotions/${this.configuration.encodeParam({name: "promotionId", value: promotionId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('delete', `${basePath}${localVarPath}`,
+        return this.httpClient.request<Promotion>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -185,21 +189,21 @@ export class PromotionsService extends BaseService {
      * Get promotion by id
      * Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
      * @endpoint get /ad_accounts/{ad_account_id}/promotions/{promotion_id}
+     * @param promotionId Promotion ID
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionId Unique identifier of a promotion
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public promotionsGet(adAccountId: string, promotionId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<PromotionResponse>;
-    public promotionsGet(adAccountId: string, promotionId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PromotionResponse>>;
-    public promotionsGet(adAccountId: string, promotionId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PromotionResponse>>;
-    public promotionsGet(adAccountId: string, promotionId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (adAccountId === null || adAccountId === undefined) {
-            throw new Error('Required parameter adAccountId was null or undefined when calling promotionsGet.');
-        }
+    public promotionsGet(promotionId: string, adAccountId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Promotion>;
+    public promotionsGet(promotionId: string, adAccountId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Promotion>>;
+    public promotionsGet(promotionId: string, adAccountId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Promotion>>;
+    public promotionsGet(promotionId: string, adAccountId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (promotionId === null || promotionId === undefined) {
             throw new Error('Required parameter promotionId was null or undefined when calling promotionsGet.');
+        }
+        if (adAccountId === null || adAccountId === undefined) {
+            throw new Error('Required parameter adAccountId was null or undefined when calling promotionsGet.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -232,7 +236,7 @@ export class PromotionsService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/promotions/${this.configuration.encodeParam({name: "promotionId", value: promotionId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<PromotionResponse>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<Promotion>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -250,22 +254,31 @@ export class PromotionsService extends BaseService {
      * Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
      * @endpoint get /ad_accounts/{ad_account_id}/promotions
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
      * @param bookmark Cursor used to fetch the next page of items
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public promotionsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<PromotionsList200Response>;
-    public promotionsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PromotionsList200Response>>;
-    public promotionsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PromotionsList200Response>>;
-    public promotionsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public promotionsList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<PromotionsList200Response>;
+    public promotionsList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PromotionsList200Response>>;
+    public promotionsList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PromotionsList200Response>>;
+    public promotionsList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling promotionsList.');
         }
 
         let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
@@ -280,15 +293,6 @@ export class PromotionsService extends BaseService {
             localVarQueryParameters,
             'order',
             <any>order,
-            QueryParamStyle.Form,
-            true,
-        );
-
-
-        localVarQueryParameters = this.addToHttpParams(
-            localVarQueryParameters,
-            'bookmark',
-            <any>bookmark,
             QueryParamStyle.Form,
             true,
         );
@@ -343,20 +347,20 @@ export class PromotionsService extends BaseService {
      * Update multiple promotions.
      * @endpoint patch /ad_accounts/{ad_account_id}/promotions
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionUpdateRequest List of promotions to create, size limit [1, 30].
+     * @param promotionBatchUpdate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public promotionsUpdate(adAccountId: string, promotionUpdateRequest: Array<PromotionUpdateRequest>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<PromotionsResponse>;
-    public promotionsUpdate(adAccountId: string, promotionUpdateRequest: Array<PromotionUpdateRequest>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PromotionsResponse>>;
-    public promotionsUpdate(adAccountId: string, promotionUpdateRequest: Array<PromotionUpdateRequest>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PromotionsResponse>>;
-    public promotionsUpdate(adAccountId: string, promotionUpdateRequest: Array<PromotionUpdateRequest>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public promotionsUpdate(adAccountId: string, promotionBatchUpdate: Array<PromotionBatchUpdate>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<PromotionsResponse>;
+    public promotionsUpdate(adAccountId: string, promotionBatchUpdate: Array<PromotionBatchUpdate>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PromotionsResponse>>;
+    public promotionsUpdate(adAccountId: string, promotionBatchUpdate: Array<PromotionBatchUpdate>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PromotionsResponse>>;
+    public promotionsUpdate(adAccountId: string, promotionBatchUpdate: Array<PromotionBatchUpdate>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling promotionsUpdate.');
         }
-        if (promotionUpdateRequest === null || promotionUpdateRequest === undefined) {
-            throw new Error('Required parameter promotionUpdateRequest was null or undefined when calling promotionsUpdate.');
+        if (promotionBatchUpdate === null || promotionBatchUpdate === undefined) {
+            throw new Error('Required parameter promotionBatchUpdate was null or undefined when calling promotionsUpdate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -401,7 +405,7 @@ export class PromotionsService extends BaseService {
         return this.httpClient.request<PromotionsResponse>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: promotionUpdateRequest,
+                body: promotionBatchUpdate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,

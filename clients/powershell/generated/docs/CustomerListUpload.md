@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **ErrorCounts** | [**ErrorDetail[]**](ErrorDetail.md) | Error counts by error code | [optional] 
 **Id** | **String** | Customer List Upload ID. | 
 **Operation** | [**UserListOperationType**](UserListOperationType.md) |  | 
-**RecordCounts** | [**RecordCounts**](RecordCounts.md) |  | [optional] 
-**State** | **String** | Workload processing state | 
+**RecordCounts** | [**RecordCounts**](RecordCounts.md) | Record processing counts | [optional] 
+**State** | [**WorkloadState**](WorkloadState.md) |  | 
 **UpdatedTime** | **Int32** | Customer List Upload updated_time. Epoch (seconds). | 
 
 ## Examples

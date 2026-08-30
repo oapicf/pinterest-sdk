@@ -13,8 +13,8 @@ API.Client.Audience = function() {}
 API.Client.Audience.prototype.adAccountId;
 
 /**
- * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
- * @type {!string}
+ * [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+ * @type {!API.Client.PinnerListType}
  * @export
  */
 API.Client.Audience.prototype.audienceType;
@@ -48,6 +48,13 @@ API.Client.Audience.prototype.description;
 API.Client.Audience.prototype.id;
 
 /**
+ * Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+ * @type {!boolean}
+ * @export
+ */
+API.Client.Audience.prototype.isNca;
+
+/**
  * Audience name.
  * @type {!string}
  * @export
@@ -69,7 +76,7 @@ API.Client.Audience.prototype.size;
 
 /**
  * Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
- * @type {!string}
+ * @type {!API.Client.AudienceStatus}
  * @export
  */
 API.Client.Audience.prototype.status;

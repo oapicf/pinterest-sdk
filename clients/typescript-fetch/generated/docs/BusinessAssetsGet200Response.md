@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `bookmark` | string
-`items` | [Array&lt;GetBusinessAssetsResponse&gt;](GetBusinessAssetsResponse.md)
+`items` | [Array&lt;BusinessAssets&gt;](BusinessAssets.md)
 
 ## Example
 

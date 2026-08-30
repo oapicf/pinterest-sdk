@@ -11,22 +11,21 @@ import org.openapitools.model.KeywordsCommon;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * KeywordsRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class KeywordsRequest {
 
-  @Valid
   private List<@Valid KeywordsCommon> keywords = new ArrayList<>();
 
   private String parentId;
@@ -67,6 +66,7 @@ public class KeywordsRequest {
     return keywords;
   }
 
+  @JsonProperty("keywords")
   public void setKeywords(List<@Valid KeywordsCommon> keywords) {
     this.keywords = keywords;
   }
@@ -81,12 +81,13 @@ public class KeywordsRequest {
    * @return parentId
    */
   @NotNull @Pattern(regexp = "^((AG)|C)?\\d+$") 
-  @Schema(name = "parent_id", example = "383791336903426391", description = "Keyword parent entity ID (advertiser, campaign, ad group).", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "parent_id", description = "Keyword parent entity ID (advertiser, campaign, ad group).", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("parent_id")
   public String getParentId() {
     return parentId;
   }
 
+  @JsonProperty("parent_id")
   public void setParentId(String parentId) {
     this.parentId = parentId;
   }
@@ -123,11 +124,8 @@ public class KeywordsRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

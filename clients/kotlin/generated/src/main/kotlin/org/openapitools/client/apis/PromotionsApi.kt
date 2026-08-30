@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,10 +27,11 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.PromotionCreateRequest
-import org.openapitools.client.models.PromotionResponse
-import org.openapitools.client.models.PromotionUpdateRequest
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
+import org.openapitools.client.models.Promotion
+import org.openapitools.client.models.PromotionBatchUpdate
+import org.openapitools.client.models.PromotionCreate
 import org.openapitools.client.models.PromotionsList200Response
 import org.openapitools.client.models.PromotionsResponse
 
@@ -46,7 +55,7 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
@@ -55,7 +64,7 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      * Create promotions
      * Create multiple new promotions.
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionCreateRequest List of promotions to create, size limit [1, 30].
+     * @param promotionCreate 
      * @return PromotionsResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -65,8 +74,8 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun promotionsCreate(adAccountId: kotlin.String, promotionCreateRequest: kotlin.collections.List<PromotionCreateRequest>) : PromotionsResponse {
-        val localVarResponse = promotionsCreateWithHttpInfo(adAccountId = adAccountId, promotionCreateRequest = promotionCreateRequest)
+    fun promotionsCreate(adAccountId: kotlin.String, promotionCreate: kotlin.collections.List<PromotionCreate>) : PromotionsResponse {
+        val localVarResponse = promotionsCreateWithHttpInfo(adAccountId = adAccountId, promotionCreate = promotionCreate)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as PromotionsResponse
@@ -88,17 +97,17 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      * Create promotions
      * Create multiple new promotions.
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionCreateRequest List of promotions to create, size limit [1, 30].
+     * @param promotionCreate 
      * @return ApiResponse<PromotionsResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun promotionsCreateWithHttpInfo(adAccountId: kotlin.String, promotionCreateRequest: kotlin.collections.List<PromotionCreateRequest>) : ApiResponse<PromotionsResponse?> {
-        val localVariableConfig = promotionsCreateRequestConfig(adAccountId = adAccountId, promotionCreateRequest = promotionCreateRequest)
+    fun promotionsCreateWithHttpInfo(adAccountId: kotlin.String, promotionCreate: kotlin.collections.List<PromotionCreate>) : ApiResponse<PromotionsResponse?> {
+        val localVariableConfig = promotionsCreateRequestConfig(adAccountId = adAccountId, promotionCreate = promotionCreate)
 
-        return request<kotlin.collections.List<PromotionCreateRequest>, PromotionsResponse>(
+        return request<kotlin.collections.List<PromotionCreate>, PromotionsResponse>(
             localVariableConfig
         )
     }
@@ -107,11 +116,11 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      * To obtain the request config of the operation promotionsCreate
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionCreateRequest List of promotions to create, size limit [1, 30].
+     * @param promotionCreate 
      * @return RequestConfig
      */
-    fun promotionsCreateRequestConfig(adAccountId: kotlin.String, promotionCreateRequest: kotlin.collections.List<PromotionCreateRequest>) : RequestConfig<kotlin.collections.List<PromotionCreateRequest>> {
-        val localVariableBody = promotionCreateRequest
+    fun promotionsCreateRequestConfig(adAccountId: kotlin.String, promotionCreate: kotlin.collections.List<PromotionCreate>) : RequestConfig<kotlin.collections.List<PromotionCreate>> {
+        val localVariableBody = promotionCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -131,21 +140,22 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      * DELETE /ad_accounts/{ad_account_id}/promotions/{promotion_id}
      * Delete promotion by id
      * Delete a promotion within Pinterest.
+     * @param promotionId Promotion ID
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionId Unique identifier of a promotion
-     * @return void
+     * @return Promotion
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun promotionsDelete(adAccountId: kotlin.String, promotionId: kotlin.String) : Unit {
-        val localVarResponse = promotionsDeleteWithHttpInfo(adAccountId = adAccountId, promotionId = promotionId)
+    fun promotionsDelete(promotionId: kotlin.String, adAccountId: kotlin.String) : Promotion {
+        val localVarResponse = promotionsDeleteWithHttpInfo(promotionId = promotionId, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as Promotion
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -163,17 +173,18 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      * DELETE /ad_accounts/{ad_account_id}/promotions/{promotion_id}
      * Delete promotion by id
      * Delete a promotion within Pinterest.
+     * @param promotionId Promotion ID
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionId Unique identifier of a promotion
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<Promotion?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun promotionsDeleteWithHttpInfo(adAccountId: kotlin.String, promotionId: kotlin.String) : ApiResponse<Unit?> {
-        val localVariableConfig = promotionsDeleteRequestConfig(adAccountId = adAccountId, promotionId = promotionId)
+    fun promotionsDeleteWithHttpInfo(promotionId: kotlin.String, adAccountId: kotlin.String) : ApiResponse<Promotion?> {
+        val localVariableConfig = promotionsDeleteRequestConfig(promotionId = promotionId, adAccountId = adAccountId)
 
-        return request<Unit, Unit>(
+        return request<Unit, Promotion>(
             localVariableConfig
         )
     }
@@ -181,11 +192,11 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
     /**
      * To obtain the request config of the operation promotionsDelete
      *
+     * @param promotionId Promotion ID
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionId Unique identifier of a promotion
      * @return RequestConfig
      */
-    fun promotionsDeleteRequestConfig(adAccountId: kotlin.String, promotionId: kotlin.String) : RequestConfig<Unit> {
+    fun promotionsDeleteRequestConfig(promotionId: kotlin.String, adAccountId: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -193,7 +204,7 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
 
         return RequestConfig(
             method = RequestMethod.DELETE,
-            path = "/ad_accounts/{ad_account_id}/promotions/{promotion_id}".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())).replace("{"+"promotion_id"+"}", encodeURIComponent(promotionId.toString())),
+            path = "/ad_accounts/{ad_account_id}/promotions/{promotion_id}".replace("{"+"promotion_id"+"}", encodeURIComponent(promotionId.toString())).replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -205,9 +216,9 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      * GET /ad_accounts/{ad_account_id}/promotions/{promotion_id}
      * Get promotion by id
      * Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
+     * @param promotionId Promotion ID
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionId Unique identifier of a promotion
-     * @return PromotionResponse
+     * @return Promotion
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -216,11 +227,11 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun promotionsGet(adAccountId: kotlin.String, promotionId: kotlin.String) : PromotionResponse {
-        val localVarResponse = promotionsGetWithHttpInfo(adAccountId = adAccountId, promotionId = promotionId)
+    fun promotionsGet(promotionId: kotlin.String, adAccountId: kotlin.String) : Promotion {
+        val localVarResponse = promotionsGetWithHttpInfo(promotionId = promotionId, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as PromotionResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as Promotion
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -238,18 +249,18 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      * GET /ad_accounts/{ad_account_id}/promotions/{promotion_id}
      * Get promotion by id
      * Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
+     * @param promotionId Promotion ID
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionId Unique identifier of a promotion
-     * @return ApiResponse<PromotionResponse?>
+     * @return ApiResponse<Promotion?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun promotionsGetWithHttpInfo(adAccountId: kotlin.String, promotionId: kotlin.String) : ApiResponse<PromotionResponse?> {
-        val localVariableConfig = promotionsGetRequestConfig(adAccountId = adAccountId, promotionId = promotionId)
+    fun promotionsGetWithHttpInfo(promotionId: kotlin.String, adAccountId: kotlin.String) : ApiResponse<Promotion?> {
+        val localVariableConfig = promotionsGetRequestConfig(promotionId = promotionId, adAccountId = adAccountId)
 
-        return request<Unit, PromotionResponse>(
+        return request<Unit, Promotion>(
             localVariableConfig
         )
     }
@@ -257,11 +268,11 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
     /**
      * To obtain the request config of the operation promotionsGet
      *
+     * @param promotionId Promotion ID
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionId Unique identifier of a promotion
      * @return RequestConfig
      */
-    fun promotionsGetRequestConfig(adAccountId: kotlin.String, promotionId: kotlin.String) : RequestConfig<Unit> {
+    fun promotionsGetRequestConfig(promotionId: kotlin.String, adAccountId: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -269,7 +280,7 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/ad_accounts/{ad_account_id}/promotions/{promotion_id}".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())).replace("{"+"promotion_id"+"}", encodeURIComponent(promotionId.toString())),
+            path = "/ad_accounts/{ad_account_id}/promotions/{promotion_id}".replace("{"+"promotion_id"+"}", encodeURIComponent(promotionId.toString())).replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -278,30 +289,13 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
     }
 
     /**
-     * enum for parameter order
-     */
-     enum class OrderPromotionsList(val value: kotlin.String) {
-         @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /ad_accounts/{ad_account_id}/promotions
      * Get promotions
      * Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @return PromotionsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -311,8 +305,8 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun promotionsList(adAccountId: kotlin.String, pageSize: kotlin.Int? = 25, order: OrderPromotionsList? = null, bookmark: kotlin.String? = null) : PromotionsList200Response {
-        val localVarResponse = promotionsListWithHttpInfo(adAccountId = adAccountId, pageSize = pageSize, order = order, bookmark = bookmark)
+    fun promotionsList(adAccountId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, order: PinterestLibPaginationOrder? = null) : PromotionsList200Response {
+        val localVarResponse = promotionsListWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as PromotionsList200Response
@@ -334,17 +328,17 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      * Get promotions
      * Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @return ApiResponse<PromotionsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun promotionsListWithHttpInfo(adAccountId: kotlin.String, pageSize: kotlin.Int?, order: OrderPromotionsList?, bookmark: kotlin.String?) : ApiResponse<PromotionsList200Response?> {
-        val localVariableConfig = promotionsListRequestConfig(adAccountId = adAccountId, pageSize = pageSize, order = order, bookmark = bookmark)
+    fun promotionsListWithHttpInfo(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?) : ApiResponse<PromotionsList200Response?> {
+        val localVariableConfig = promotionsListRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order)
 
         return request<Unit, PromotionsList200Response>(
             localVariableConfig
@@ -355,23 +349,23 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      * To obtain the request config of the operation promotionsList
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @return RequestConfig
      */
-    fun promotionsListRequestConfig(adAccountId: kotlin.String, pageSize: kotlin.Int?, order: OrderPromotionsList?, bookmark: kotlin.String?) : RequestConfig<Unit> {
+    fun promotionsListRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (bookmark != null) {
+                    put("bookmark", listOf(bookmark.toString()))
+                }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
                 }
                 if (order != null) {
-                    put("order", listOf(order.value))
-                }
-                if (bookmark != null) {
-                    put("bookmark", listOf(bookmark.toString()))
+                    put("order", listOf(order.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -392,7 +386,7 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      * Update promotions
      * Update multiple promotions.
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionUpdateRequest List of promotions to create, size limit [1, 30].
+     * @param promotionBatchUpdate 
      * @return PromotionsResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -402,8 +396,8 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun promotionsUpdate(adAccountId: kotlin.String, promotionUpdateRequest: kotlin.collections.List<PromotionUpdateRequest>) : PromotionsResponse {
-        val localVarResponse = promotionsUpdateWithHttpInfo(adAccountId = adAccountId, promotionUpdateRequest = promotionUpdateRequest)
+    fun promotionsUpdate(adAccountId: kotlin.String, promotionBatchUpdate: kotlin.collections.List<PromotionBatchUpdate>) : PromotionsResponse {
+        val localVarResponse = promotionsUpdateWithHttpInfo(adAccountId = adAccountId, promotionBatchUpdate = promotionBatchUpdate)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as PromotionsResponse
@@ -425,17 +419,17 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      * Update promotions
      * Update multiple promotions.
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionUpdateRequest List of promotions to create, size limit [1, 30].
+     * @param promotionBatchUpdate 
      * @return ApiResponse<PromotionsResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun promotionsUpdateWithHttpInfo(adAccountId: kotlin.String, promotionUpdateRequest: kotlin.collections.List<PromotionUpdateRequest>) : ApiResponse<PromotionsResponse?> {
-        val localVariableConfig = promotionsUpdateRequestConfig(adAccountId = adAccountId, promotionUpdateRequest = promotionUpdateRequest)
+    fun promotionsUpdateWithHttpInfo(adAccountId: kotlin.String, promotionBatchUpdate: kotlin.collections.List<PromotionBatchUpdate>) : ApiResponse<PromotionsResponse?> {
+        val localVariableConfig = promotionsUpdateRequestConfig(adAccountId = adAccountId, promotionBatchUpdate = promotionBatchUpdate)
 
-        return request<kotlin.collections.List<PromotionUpdateRequest>, PromotionsResponse>(
+        return request<kotlin.collections.List<PromotionBatchUpdate>, PromotionsResponse>(
             localVariableConfig
         )
     }
@@ -444,11 +438,11 @@ open class PromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call
      * To obtain the request config of the operation promotionsUpdate
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param promotionUpdateRequest List of promotions to create, size limit [1, 30].
+     * @param promotionBatchUpdate 
      * @return RequestConfig
      */
-    fun promotionsUpdateRequestConfig(adAccountId: kotlin.String, promotionUpdateRequest: kotlin.collections.List<PromotionUpdateRequest>) : RequestConfig<kotlin.collections.List<PromotionUpdateRequest>> {
-        val localVariableBody = promotionUpdateRequest
+    fun promotionsUpdateRequestConfig(adAccountId: kotlin.String, promotionBatchUpdate: kotlin.collections.List<PromotionBatchUpdate>) : RequestConfig<kotlin.collections.List<PromotionBatchUpdate>> {
+        val localVariableBody = promotionBatchUpdate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"

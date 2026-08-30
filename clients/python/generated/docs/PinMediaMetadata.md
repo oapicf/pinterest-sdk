@@ -1,5 +1,6 @@
 # PinMediaMetadata
 
+Per-item entry inside `PinMedia.items` for mixed image/video pins. Discriminated by `item_type`.
 
 ## Properties
 
@@ -7,13 +8,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **str** |  | [optional] 
 **images** | [**ImageSize**](ImageSize.md) |  | [optional] 
-**item_type** | **str** |  | [optional] 
+**item_type** | **str** | Discriminator literal identifying this as video metadata inside a &#x60;PinMediaMetadata&#x60; payload. | 
 **link** | **str** |  | [optional] 
 **title** | **str** |  | [optional] 
 **cover_image_url** | **str** |  | [optional] 
 **duration** | **float** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
 **height** | **int** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 **video_url** | **str** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**video_url_hls** | **str** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] 
 **width** | **int** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 ## Example

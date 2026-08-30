@@ -1,6 +1,7 @@
 goog.provide('API.Client.BaseInviteDataResponse');
 
 /**
+ * Common invite/request data returned by the business access endpoints.
  * @record
  */
 API.Client.BaseInviteDataResponse = function() {}
@@ -13,7 +14,7 @@ API.Client.BaseInviteDataResponse = function() {}
 API.Client.BaseInviteDataResponse.prototype.id;
 
 /**
- * @type {!API.Client.BaseInviteDataResponse_invite_data}
+ * @type {!API.Client.InviteDataResponse}
  * @export
  */
 API.Client.BaseInviteDataResponse.prototype.inviteData;

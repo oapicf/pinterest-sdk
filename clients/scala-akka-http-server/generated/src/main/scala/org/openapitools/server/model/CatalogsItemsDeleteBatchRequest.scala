@@ -13,6 +13,6 @@ final case class CatalogsItemsDeleteBatchRequest (
   country: Country,
   items: Seq[ItemDeleteBatchRecord],
   language: String,
-  operation: BatchOperation
+  operation: String
 )
 

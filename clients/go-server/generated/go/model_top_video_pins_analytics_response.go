@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,20 +16,21 @@ package openapi
 
 type TopVideoPinsAnalyticsResponse struct {
 
-	DateAvailability TopPinsAnalyticsResponseDateAvailability `json:"date_availability,omitempty"`
+	DateAvailability TopVideoPinsAnalyticsResponseDateAvailability `json:"date_availability,omitempty"`
 
-	Pins []TopVideoPinsAnalyticsResponsePinsInner `json:"pins,omitempty"`
+	Pins []TopVideoPinsAnalyticsResponsePinsItems `json:"pins,omitempty"`
 
-	SortBy string `json:"sort_by,omitempty"`
+	SortBy TopVideoPinsSortBy `json:"sort_by,omitempty"`
 }
 
-// AssertTopVideoPinsAnalyticsResponseRequired checks if the required fields are not zero-ed
+// AssertTopVideoPinsAnalyticsResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertTopVideoPinsAnalyticsResponseRequired(obj TopVideoPinsAnalyticsResponse) error {
-	if err := AssertTopPinsAnalyticsResponseDateAvailabilityRequired(obj.DateAvailability); err != nil {
+	if err := AssertTopVideoPinsAnalyticsResponseDateAvailabilityRequired(obj.DateAvailability); err != nil {
 		return err
 	}
 	for _, el := range obj.Pins {
-		if err := AssertTopVideoPinsAnalyticsResponsePinsInnerRequired(el); err != nil {
+		if err := AssertTopVideoPinsAnalyticsResponsePinsItemsRequired(el); err != nil {
 			return err
 		}
 	}
@@ -38,11 +39,11 @@ func AssertTopVideoPinsAnalyticsResponseRequired(obj TopVideoPinsAnalyticsRespon
 
 // AssertTopVideoPinsAnalyticsResponseConstraints checks if the values respects the defined constraints
 func AssertTopVideoPinsAnalyticsResponseConstraints(obj TopVideoPinsAnalyticsResponse) error {
-	if err := AssertTopPinsAnalyticsResponseDateAvailabilityConstraints(obj.DateAvailability); err != nil {
+	if err := AssertTopVideoPinsAnalyticsResponseDateAvailabilityConstraints(obj.DateAvailability); err != nil {
 		return err
 	}
 	for _, el := range obj.Pins {
-		if err := AssertTopVideoPinsAnalyticsResponsePinsInnerConstraints(el); err != nil {
+		if err := AssertTopVideoPinsAnalyticsResponsePinsItemsConstraints(el); err != nil {
 			return err
 		}
 	}

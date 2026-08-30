@@ -15,11 +15,11 @@ Method | HTTP request | Description
 
 ## targetingTemplateCreate
 
-> targetingTemplateCreate(targetingTemplateCreateRequest): ApiRequest[TargetingTemplateGetResponseData]
+> targetingTemplateCreate(targetingTemplateCreateRequest): ApiRequest[TargetingTemplate]
 
 Create targeting templates
 
-&lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
+Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 
 ### Example
 
@@ -45,7 +45,7 @@ object Example extends App {
     val apiInstance = TargetingTemplateApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val targetingTemplateCreate: TargetingTemplateCreate =  // TargetingTemplateCreate | targeting template creation entity
+    val targetingTemplateCreate: TargetingTemplateCreate =  // TargetingTemplateCreate | 
     
     val request = apiInstance.targetingTemplateCreate(adAccountId, targetingTemplateCreate)
     val response = apiInvoker.execute(request)
@@ -76,11 +76,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **targetingTemplateCreate** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md)| targeting template creation entity |
+ **targetingTemplateCreate** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md)|  |
 
 ### Return type
 
-ApiRequest[[**TargetingTemplateGetResponseData**](TargetingTemplateGetResponseData.md)]
+ApiRequest[[**TargetingTemplate**](TargetingTemplate.md)]
 
 
 ### Authorization
@@ -95,9 +95,14 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account id. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## targetingTemplateList
@@ -106,12 +111,13 @@ No authorization required
 
 List targeting templates
 
-Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
+Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;
 
 ### Example
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -131,17 +137,17 @@ object Example extends App {
     val apiInstance = TargetingTemplateApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val order: String = ASCENDING // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+    val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+
+    val order: PaginationOrder =  // PaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 
     val includeSizing: Boolean = true // Boolean | Include audience sizing in result or not
 
-    val searchQuery: String = gaming // String | Search keyword for targeting templates
-
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-
-    val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+    val searchQuery: String = searchQuery_example // String | Search query. Can contain pin description keywords or comma-separated pin IDs.
     
-    val request = apiInstance.targetingTemplateList(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark)
+    val request = apiInstance.targetingTemplateList(adAccountId, bookmark, pageSize, order, includeSizing, searchQuery)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -170,11 +176,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
- **includeSizing** | **Boolean**| Include audience sizing in result or not | [optional]
- **searchQuery** | **String**| Search keyword for targeting templates | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
+ **order** | [**PaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
+ **includeSizing** | **Boolean**| Include audience sizing in result or not | [optional]
+ **searchQuery** | **String**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional]
 
 ### Return type
 
@@ -193,9 +199,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account id. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## targetingTemplateUpdate
@@ -204,7 +214,7 @@ No authorization required
 
 Update targeting templates
 
-&lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
+Update the targeting template given advertiser ID and targeting template ID
 
 ### Example
 
@@ -229,9 +239,9 @@ object Example extends App {
     val apiInstance = TargetingTemplateApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest =  // TargetingTemplateUpdateRequest | Operation type and targeting template ID
+    val targetingTemplateUpdateRequestReadOrUpdate: TargetingTemplateUpdateRequestReadOrUpdate =  // TargetingTemplateUpdateRequestReadOrUpdate | 
     
-    val request = apiInstance.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest)
+    val request = apiInstance.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequestReadOrUpdate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -259,7 +269,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **targetingTemplateUpdateRequest** | [**TargetingTemplateUpdateRequest**](TargetingTemplateUpdateRequest.md)| Operation type and targeting template ID |
+ **targetingTemplateUpdateRequestReadOrUpdate** | [**TargetingTemplateUpdateRequestReadOrUpdate**](TargetingTemplateUpdateRequestReadOrUpdate.md)|  |
 
 ### Return type
 
@@ -278,7 +288,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account id. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

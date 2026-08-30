@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Negated** | Pointer to **bool** |  | [optional] [default to false]
+**Negated** | Pointer to **bool** |  | [optional] 
 **Values** | [**[]Gender**](Gender.md) |  | 
 
 ## Methods

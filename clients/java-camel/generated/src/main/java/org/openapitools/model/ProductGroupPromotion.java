@@ -2,82 +2,45 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CollectionsHeaderType;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
+import org.openapitools.model.PreferredMediaType;
+import org.openapitools.model.ProductGroupPromotionCustomizableCTAType;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * ProductGroupPromotion
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ProductGroupPromotion {
 
   private String adGroupId;
 
-  private JsonNullable<Integer> bidInMicroCurrency = JsonNullable.<Integer>undefined();
+  private Integer bidInMicroCurrency;
 
-  private JsonNullable<@Pattern(regexp = "^\\d+$") String> catalogProductGroupId = JsonNullable.<String>undefined();
+  private String catalogProductGroupId;
 
-  private JsonNullable<String> catalogProductGroupName = JsonNullable.<String>undefined();
+  private String catalogProductGroupName;
 
-  /**
-   * Collections ad header type
-   */
-  public enum CollectionsHeaderTypeEnum {
-    SHOP_THIS_COLLECTION("SHOP_THIS_COLLECTION"),
-    
-    EXPLORE_THIS_COLLECTION("EXPLORE_THIS_COLLECTION"),
-    
-    NO_HEADER("NO_HEADER"),
-    
-    ON_SALE("ON_SALE"),
-    
-    GET_DEAL("GET_DEAL");
-
-    private final String value;
-
-    CollectionsHeaderTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CollectionsHeaderTypeEnum fromValue(String value) {
-      for (CollectionsHeaderTypeEnum b : CollectionsHeaderTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  private JsonNullable<CollectionsHeaderTypeEnum> collectionsHeaderType = JsonNullable.<CollectionsHeaderTypeEnum>undefined();
+  private JsonNullable<CollectionsHeaderType> collectionsHeaderType = JsonNullable.<CollectionsHeaderType>undefined();
 
   private JsonNullable<String> collectionsHeroDestinationUrl = JsonNullable.<String>undefined();
 
@@ -85,101 +48,27 @@ public class ProductGroupPromotion {
 
   private CreativeType creativeType;
 
-  /**
-   * Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-   */
-  public enum CustomizableCtaTypeEnum {
-    SHOP_NOW("SHOP_NOW"),
-    
-    BOOK_NOW("BOOK_NOW"),
-    
-    ON_SALE("ON_SALE"),
-    
-    GET_DEAL("GET_DEAL"),
-    
-    BUY_ONLINE_PICKUP_IN_STORE("BUY_ONLINE_PICKUP_IN_STORE");
+  private ProductGroupPromotionCustomizableCTAType customizableCtaType;
 
-    private final String value;
-
-    CustomizableCtaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CustomizableCtaTypeEnum fromValue(String value) {
-      for (CustomizableCtaTypeEnum b : CustomizableCtaTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  private JsonNullable<CustomizableCtaTypeEnum> customizableCtaType = JsonNullable.<CustomizableCtaTypeEnum>undefined();
-
-  private JsonNullable<String> definition = JsonNullable.<String>undefined();
+  private String definition;
 
   private JsonNullable<GridClickType> gridClickType = JsonNullable.<GridClickType>undefined();
 
   private String id;
 
-  private JsonNullable<Boolean> included = JsonNullable.<Boolean>undefined();
+  private Boolean included;
 
   private JsonNullable<Boolean> isGenerateBackground = JsonNullable.<Boolean>undefined();
 
-  private JsonNullable<Boolean> isMdl = JsonNullable.<Boolean>undefined();
+  private JsonNullable<Boolean> isImageAutoResizing = JsonNullable.<Boolean>undefined();
 
-  private JsonNullable<@Pattern(regexp = "^\\d+$") String> parentId = JsonNullable.<String>undefined();
+  private Boolean isMdl;
 
-  /**
-   * Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
-   */
-  public enum PreferredMediaTypeEnum {
-    VIDEO("VIDEO"),
-    
-    IMAGE("IMAGE");
+  private String parentId;
 
-    private final String value;
+  private JsonNullable<PreferredMediaType> preferredMediaType = JsonNullable.<PreferredMediaType>undefined();
 
-    PreferredMediaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PreferredMediaTypeEnum fromValue(String value) {
-      for (PreferredMediaTypeEnum b : PreferredMediaTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  private JsonNullable<PreferredMediaTypeEnum> preferredMediaType = JsonNullable.<PreferredMediaTypeEnum>undefined();
-
-  private JsonNullable<String> relativeDefinition = JsonNullable.<String>undefined();
+  private String relativeDefinition;
 
   private JsonNullable<String> selectedImageTag = JsonNullable.<String>undefined();
 
@@ -191,7 +80,7 @@ public class ProductGroupPromotion {
 
   private EntityStatus status;
 
-  private JsonNullable<String> trackingUrl = JsonNullable.<String>undefined();
+  private String trackingUrl;
 
   public ProductGroupPromotion adGroupId(String adGroupId) {
     this.adGroupId = adGroupId;
@@ -214,7 +103,7 @@ public class ProductGroupPromotion {
   }
 
   public ProductGroupPromotion bidInMicroCurrency(Integer bidInMicroCurrency) {
-    this.bidInMicroCurrency = JsonNullable.of(bidInMicroCurrency);
+    this.bidInMicroCurrency = bidInMicroCurrency;
     return this;
   }
 
@@ -225,36 +114,36 @@ public class ProductGroupPromotion {
   
   @Schema(name = "bid_in_micro_currency", example = "14000000", description = "The bid in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bid_in_micro_currency")
-  public JsonNullable<Integer> getBidInMicroCurrency() {
+  public Integer getBidInMicroCurrency() {
     return bidInMicroCurrency;
   }
 
-  public void setBidInMicroCurrency(JsonNullable<Integer> bidInMicroCurrency) {
+  public void setBidInMicroCurrency(Integer bidInMicroCurrency) {
     this.bidInMicroCurrency = bidInMicroCurrency;
   }
 
   public ProductGroupPromotion catalogProductGroupId(String catalogProductGroupId) {
-    this.catalogProductGroupId = JsonNullable.of(catalogProductGroupId);
+    this.catalogProductGroupId = catalogProductGroupId;
     return this;
   }
 
   /**
-   * ID of the catalogs product group that this product group promotion references
+   * ID of the catalogs product group that this product group promotion references (required for create operations)
    * @return catalogProductGroupId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_product_group_id", example = "1231235", description = "ID of the catalogs product group that this product group promotion references", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "catalog_product_group_id", example = "1231235", description = "ID of the catalogs product group that this product group promotion references (required for create operations)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_product_group_id")
-  public JsonNullable<@Pattern(regexp = "^\\d+$") String> getCatalogProductGroupId() {
+  public String getCatalogProductGroupId() {
     return catalogProductGroupId;
   }
 
-  public void setCatalogProductGroupId(JsonNullable<String> catalogProductGroupId) {
+  public void setCatalogProductGroupId(String catalogProductGroupId) {
     this.catalogProductGroupId = catalogProductGroupId;
   }
 
   public ProductGroupPromotion catalogProductGroupName(String catalogProductGroupName) {
-    this.catalogProductGroupName = JsonNullable.of(catalogProductGroupName);
+    this.catalogProductGroupName = catalogProductGroupName;
     return this;
   }
 
@@ -265,31 +154,31 @@ public class ProductGroupPromotion {
   
   @Schema(name = "catalog_product_group_name", example = "catalogProductGroupName", description = "Catalogs product group name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_product_group_name")
-  public JsonNullable<String> getCatalogProductGroupName() {
+  public String getCatalogProductGroupName() {
     return catalogProductGroupName;
   }
 
-  public void setCatalogProductGroupName(JsonNullable<String> catalogProductGroupName) {
+  public void setCatalogProductGroupName(String catalogProductGroupName) {
     this.catalogProductGroupName = catalogProductGroupName;
   }
 
-  public ProductGroupPromotion collectionsHeaderType(CollectionsHeaderTypeEnum collectionsHeaderType) {
+  public ProductGroupPromotion collectionsHeaderType(CollectionsHeaderType collectionsHeaderType) {
     this.collectionsHeaderType = JsonNullable.of(collectionsHeaderType);
     return this;
   }
 
   /**
-   * Collections ad header type
+   * Get collectionsHeaderType
    * @return collectionsHeaderType
    */
-  
-  @Schema(name = "collections_header_type", example = "SHOP_THIS_COLLECTION", description = "Collections ad header type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Valid 
+  @Schema(name = "collections_header_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("collections_header_type")
-  public JsonNullable<CollectionsHeaderTypeEnum> getCollectionsHeaderType() {
+  public JsonNullable<CollectionsHeaderType> getCollectionsHeaderType() {
     return collectionsHeaderType;
   }
 
-  public void setCollectionsHeaderType(JsonNullable<CollectionsHeaderTypeEnum> collectionsHeaderType) {
+  public void setCollectionsHeaderType(JsonNullable<CollectionsHeaderType> collectionsHeaderType) {
     this.collectionsHeaderType = collectionsHeaderType;
   }
 
@@ -353,28 +242,28 @@ public class ProductGroupPromotion {
     this.creativeType = creativeType;
   }
 
-  public ProductGroupPromotion customizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
-    this.customizableCtaType = JsonNullable.of(customizableCtaType);
+  public ProductGroupPromotion customizableCtaType(ProductGroupPromotionCustomizableCTAType customizableCtaType) {
+    this.customizableCtaType = customizableCtaType;
     return this;
   }
 
   /**
-   * Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
+   * Get customizableCtaType
    * @return customizableCtaType
    */
-  
-  @Schema(name = "customizable_cta_type", example = "SHOP_NOW", description = "Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Valid 
+  @Schema(name = "customizable_cta_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("customizable_cta_type")
-  public JsonNullable<CustomizableCtaTypeEnum> getCustomizableCtaType() {
+  public ProductGroupPromotionCustomizableCTAType getCustomizableCtaType() {
     return customizableCtaType;
   }
 
-  public void setCustomizableCtaType(JsonNullable<CustomizableCtaTypeEnum> customizableCtaType) {
+  public void setCustomizableCtaType(ProductGroupPromotionCustomizableCTAType customizableCtaType) {
     this.customizableCtaType = customizableCtaType;
   }
 
   public ProductGroupPromotion definition(String definition) {
-    this.definition = JsonNullable.of(definition);
+    this.definition = definition;
     return this;
   }
 
@@ -385,11 +274,11 @@ public class ProductGroupPromotion {
   
   @Schema(name = "definition", example = "*_/product_type_0='kitchen'/product_type_1='beverage appliances'", description = "The full product group definition path", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("definition")
-  public JsonNullable<String> getDefinition() {
+  public String getDefinition() {
     return definition;
   }
 
-  public void setDefinition(JsonNullable<String> definition) {
+  public void setDefinition(String definition) {
     this.definition = definition;
   }
 
@@ -419,11 +308,11 @@ public class ProductGroupPromotion {
   }
 
   /**
-   * ID of the product group promotion.
+   * ID of the product group promotion (required for update operations).
    * @return id
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "2680059592705", description = "ID of the product group promotion.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "id", example = "2680059592705", description = "ID of the product group promotion (required for update operations).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -434,7 +323,7 @@ public class ProductGroupPromotion {
   }
 
   public ProductGroupPromotion included(Boolean included) {
-    this.included = JsonNullable.of(included);
+    this.included = included;
     return this;
   }
 
@@ -445,11 +334,11 @@ public class ProductGroupPromotion {
   
   @Schema(name = "included", example = "true", description = "True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("included")
-  public JsonNullable<Boolean> getIncluded() {
+  public Boolean getIncluded() {
     return included;
   }
 
-  public void setIncluded(JsonNullable<Boolean> included) {
+  public void setIncluded(Boolean included) {
     this.included = included;
   }
 
@@ -473,8 +362,28 @@ public class ProductGroupPromotion {
     this.isGenerateBackground = isGenerateBackground;
   }
 
+  public ProductGroupPromotion isImageAutoResizing(Boolean isImageAutoResizing) {
+    this.isImageAutoResizing = JsonNullable.of(isImageAutoResizing);
+    return this;
+  }
+
+  /**
+   * Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.
+   * @return isImageAutoResizing
+   */
+  
+  @Schema(name = "is_image_auto_resizing", example = "true", description = "Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("is_image_auto_resizing")
+  public JsonNullable<Boolean> getIsImageAutoResizing() {
+    return isImageAutoResizing;
+  }
+
+  public void setIsImageAutoResizing(JsonNullable<Boolean> isImageAutoResizing) {
+    this.isImageAutoResizing = isImageAutoResizing;
+  }
+
   public ProductGroupPromotion isMdl(Boolean isMdl) {
-    this.isMdl = JsonNullable.of(isMdl);
+    this.isMdl = isMdl;
     return this;
   }
 
@@ -485,16 +394,16 @@ public class ProductGroupPromotion {
   
   @Schema(name = "is_mdl", example = "true", description = "If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_mdl")
-  public JsonNullable<Boolean> getIsMdl() {
+  public Boolean getIsMdl() {
     return isMdl;
   }
 
-  public void setIsMdl(JsonNullable<Boolean> isMdl) {
+  public void setIsMdl(Boolean isMdl) {
     this.isMdl = isMdl;
   }
 
   public ProductGroupPromotion parentId(String parentId) {
-    this.parentId = JsonNullable.of(parentId);
+    this.parentId = parentId;
     return this;
   }
 
@@ -505,36 +414,36 @@ public class ProductGroupPromotion {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "parent_id", example = "1231234", description = "The parent Product Group ID of this Product Group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("parent_id")
-  public JsonNullable<@Pattern(regexp = "^\\d+$") String> getParentId() {
+  public String getParentId() {
     return parentId;
   }
 
-  public void setParentId(JsonNullable<String> parentId) {
+  public void setParentId(String parentId) {
     this.parentId = parentId;
   }
 
-  public ProductGroupPromotion preferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+  public ProductGroupPromotion preferredMediaType(PreferredMediaType preferredMediaType) {
     this.preferredMediaType = JsonNullable.of(preferredMediaType);
     return this;
   }
 
   /**
-   * Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
+   * Get preferredMediaType
    * @return preferredMediaType
    */
-  
-  @Schema(name = "preferred_media_type", example = "VIDEO", description = "Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Valid 
+  @Schema(name = "preferred_media_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("preferred_media_type")
-  public JsonNullable<PreferredMediaTypeEnum> getPreferredMediaType() {
+  public JsonNullable<PreferredMediaType> getPreferredMediaType() {
     return preferredMediaType;
   }
 
-  public void setPreferredMediaType(JsonNullable<PreferredMediaTypeEnum> preferredMediaType) {
+  public void setPreferredMediaType(JsonNullable<PreferredMediaType> preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
   }
 
   public ProductGroupPromotion relativeDefinition(String relativeDefinition) {
-    this.relativeDefinition = JsonNullable.of(relativeDefinition);
+    this.relativeDefinition = relativeDefinition;
     return this;
   }
 
@@ -545,11 +454,11 @@ public class ProductGroupPromotion {
   
   @Schema(name = "relative_definition", example = "product_type_1='beverage appliances'", description = "The definition of the product group, relative to its parent - an attribute name/value pair", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("relative_definition")
-  public JsonNullable<String> getRelativeDefinition() {
+  public String getRelativeDefinition() {
     return relativeDefinition;
   }
 
-  public void setRelativeDefinition(JsonNullable<String> relativeDefinition) {
+  public void setRelativeDefinition(String relativeDefinition) {
     this.relativeDefinition = relativeDefinition;
   }
 
@@ -654,7 +563,7 @@ public class ProductGroupPromotion {
   }
 
   public ProductGroupPromotion trackingUrl(String trackingUrl) {
-    this.trackingUrl = JsonNullable.of(trackingUrl);
+    this.trackingUrl = trackingUrl;
     return this;
   }
 
@@ -665,11 +574,11 @@ public class ProductGroupPromotion {
   
   @Schema(name = "tracking_url", example = "https://www.pinterest.com", description = "Tracking template for proudct group promotions. 4000 limit", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tracking_url")
-  public JsonNullable<String> getTrackingUrl() {
+  public String getTrackingUrl() {
     return trackingUrl;
   }
 
-  public void setTrackingUrl(JsonNullable<String> trackingUrl) {
+  public void setTrackingUrl(String trackingUrl) {
     this.trackingUrl = trackingUrl;
   }
 
@@ -683,29 +592,30 @@ public class ProductGroupPromotion {
     }
     ProductGroupPromotion productGroupPromotion = (ProductGroupPromotion) o;
     return Objects.equals(this.adGroupId, productGroupPromotion.adGroupId) &&
-        equalsNullable(this.bidInMicroCurrency, productGroupPromotion.bidInMicroCurrency) &&
-        equalsNullable(this.catalogProductGroupId, productGroupPromotion.catalogProductGroupId) &&
-        equalsNullable(this.catalogProductGroupName, productGroupPromotion.catalogProductGroupName) &&
+        Objects.equals(this.bidInMicroCurrency, productGroupPromotion.bidInMicroCurrency) &&
+        Objects.equals(this.catalogProductGroupId, productGroupPromotion.catalogProductGroupId) &&
+        Objects.equals(this.catalogProductGroupName, productGroupPromotion.catalogProductGroupName) &&
         equalsNullable(this.collectionsHeaderType, productGroupPromotion.collectionsHeaderType) &&
         equalsNullable(this.collectionsHeroDestinationUrl, productGroupPromotion.collectionsHeroDestinationUrl) &&
         equalsNullable(this.collectionsHeroPinId, productGroupPromotion.collectionsHeroPinId) &&
         Objects.equals(this.creativeType, productGroupPromotion.creativeType) &&
-        equalsNullable(this.customizableCtaType, productGroupPromotion.customizableCtaType) &&
-        equalsNullable(this.definition, productGroupPromotion.definition) &&
+        Objects.equals(this.customizableCtaType, productGroupPromotion.customizableCtaType) &&
+        Objects.equals(this.definition, productGroupPromotion.definition) &&
         equalsNullable(this.gridClickType, productGroupPromotion.gridClickType) &&
         Objects.equals(this.id, productGroupPromotion.id) &&
-        equalsNullable(this.included, productGroupPromotion.included) &&
+        Objects.equals(this.included, productGroupPromotion.included) &&
         equalsNullable(this.isGenerateBackground, productGroupPromotion.isGenerateBackground) &&
-        equalsNullable(this.isMdl, productGroupPromotion.isMdl) &&
-        equalsNullable(this.parentId, productGroupPromotion.parentId) &&
+        equalsNullable(this.isImageAutoResizing, productGroupPromotion.isImageAutoResizing) &&
+        Objects.equals(this.isMdl, productGroupPromotion.isMdl) &&
+        Objects.equals(this.parentId, productGroupPromotion.parentId) &&
         equalsNullable(this.preferredMediaType, productGroupPromotion.preferredMediaType) &&
-        equalsNullable(this.relativeDefinition, productGroupPromotion.relativeDefinition) &&
+        Objects.equals(this.relativeDefinition, productGroupPromotion.relativeDefinition) &&
         equalsNullable(this.selectedImageTag, productGroupPromotion.selectedImageTag) &&
         equalsNullable(this.selectedVideoTag, productGroupPromotion.selectedVideoTag) &&
         equalsNullable(this.slideshowCollectionsDescription, productGroupPromotion.slideshowCollectionsDescription) &&
         equalsNullable(this.slideshowCollectionsTitle, productGroupPromotion.slideshowCollectionsTitle) &&
         Objects.equals(this.status, productGroupPromotion.status) &&
-        equalsNullable(this.trackingUrl, productGroupPromotion.trackingUrl);
+        Objects.equals(this.trackingUrl, productGroupPromotion.trackingUrl);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -714,7 +624,7 @@ public class ProductGroupPromotion {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroupId, hashCodeNullable(bidInMicroCurrency), hashCodeNullable(catalogProductGroupId), hashCodeNullable(catalogProductGroupName), hashCodeNullable(collectionsHeaderType), hashCodeNullable(collectionsHeroDestinationUrl), hashCodeNullable(collectionsHeroPinId), creativeType, hashCodeNullable(customizableCtaType), hashCodeNullable(definition), hashCodeNullable(gridClickType), id, hashCodeNullable(included), hashCodeNullable(isGenerateBackground), hashCodeNullable(isMdl), hashCodeNullable(parentId), hashCodeNullable(preferredMediaType), hashCodeNullable(relativeDefinition), hashCodeNullable(selectedImageTag), hashCodeNullable(selectedVideoTag), hashCodeNullable(slideshowCollectionsDescription), hashCodeNullable(slideshowCollectionsTitle), status, hashCodeNullable(trackingUrl));
+    return Objects.hash(adGroupId, bidInMicroCurrency, catalogProductGroupId, catalogProductGroupName, hashCodeNullable(collectionsHeaderType), hashCodeNullable(collectionsHeroDestinationUrl), hashCodeNullable(collectionsHeroPinId), creativeType, customizableCtaType, definition, hashCodeNullable(gridClickType), id, included, hashCodeNullable(isGenerateBackground), hashCodeNullable(isImageAutoResizing), isMdl, parentId, hashCodeNullable(preferredMediaType), relativeDefinition, hashCodeNullable(selectedImageTag), hashCodeNullable(selectedVideoTag), hashCodeNullable(slideshowCollectionsDescription), hashCodeNullable(slideshowCollectionsTitle), status, trackingUrl);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -742,6 +652,7 @@ public class ProductGroupPromotion {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    included: ").append(toIndentedString(included)).append("\n");
     sb.append("    isGenerateBackground: ").append(toIndentedString(isGenerateBackground)).append("\n");
+    sb.append("    isImageAutoResizing: ").append(toIndentedString(isImageAutoResizing)).append("\n");
     sb.append("    isMdl: ").append(toIndentedString(isMdl)).append("\n");
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    preferredMediaType: ").append(toIndentedString(preferredMediaType)).append("\n");
@@ -761,10 +672,7 @@ public class ProductGroupPromotion {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

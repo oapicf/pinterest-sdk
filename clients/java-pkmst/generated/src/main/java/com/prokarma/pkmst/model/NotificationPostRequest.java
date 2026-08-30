@@ -1,23 +1,20 @@
 package com.prokarma.pkmst.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 /**
  * Response class to be returned by Api
  * @author pkmst
  *
  */
 /**
- * Any valid JSON object
+ * Notification request body. Can be either a batch of notification objects or a single notification object.
  */
-@ApiModel(description = "Any valid JSON object")
+@ApiModel(description = "Notification request body. Can be either a batch of notification objects or a single notification object.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class NotificationPostRequest extends HashMap<String, Object>  {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class NotificationPostRequest   {
 
   @Override
   public boolean equals(Object o) {
@@ -32,14 +29,14 @@ public class NotificationPostRequest extends HashMap<String, Object>  {
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash();
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotificationPostRequest {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("}");
     return sb.toString();
   }
@@ -49,10 +46,7 @@ public class NotificationPostRequest extends HashMap<String, Object>  {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

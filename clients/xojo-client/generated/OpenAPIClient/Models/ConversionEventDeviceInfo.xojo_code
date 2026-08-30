@@ -193,121 +193,7 @@ Protected Class ConversionEventDeviceInfo
 	#tag EndProperty
 
 
-    #tag Enum, Name = Form_factorEnum, Type = Integer, Flags = &h0
-        
-        Desktop
-        Laptop
-        Cellphone
-        Tablet
-        Smartwatch
-        Tv
-        Vr
-        Console
-        Other
-        
-    #tag EndEnum
 
-    #tag Enum, Name = Network_typeEnum, Type = Integer, Flags = &h0
-        
-        Wifi
-        Cellular2g
-        Cellular3g
-        Cellular4g
-        Cellular5g
-        Cellular6g
-        Ethernet
-        Unknown
-        
-    #tag EndEnum
-
-    #tag Enum, Name = Os_familyEnum, Type = Integer, Flags = &h0
-        
-        Ios
-        Android
-        Macos
-        Windows
-        Linux
-        Bsd
-        Other
-        
-    #tag EndEnum
-
-
-	#tag Method, Flags = &h0
-		Shared Function Form_factorEnumToString(value As Form_factorEnum) As String
-		  Select Case value
-		    
-		    Case Form_factorEnum.Desktop
-		      Return "desktop"
-		    Case Form_factorEnum.Laptop
-		      Return "laptop"
-		    Case Form_factorEnum.Cellphone
-		      Return "cellphone"
-		    Case Form_factorEnum.Tablet
-		      Return "tablet"
-		    Case Form_factorEnum.Smartwatch
-		      Return "smartwatch"
-		    Case Form_factorEnum.Tv
-		      Return "tv"
-		    Case Form_factorEnum.Vr
-		      Return "vr"
-		    Case Form_factorEnum.Console
-		      Return "console"
-		    Case Form_factorEnum.Other
-		      Return "other"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function Network_typeEnumToString(value As Network_typeEnum) As String
-		  Select Case value
-		    
-		    Case Network_typeEnum.Wifi
-		      Return "wifi"
-		    Case Network_typeEnum.Cellular2g
-		      Return "cellular_2g"
-		    Case Network_typeEnum.Cellular3g
-		      Return "cellular_3g"
-		    Case Network_typeEnum.Cellular4g
-		      Return "cellular_4g"
-		    Case Network_typeEnum.Cellular5g
-		      Return "cellular_5g"
-		    Case Network_typeEnum.Cellular6g
-		      Return "cellular_6g"
-		    Case Network_typeEnum.Ethernet
-		      Return "ethernet"
-		    Case Network_typeEnum.Unknown
-		      Return "unknown"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function Os_familyEnumToString(value As Os_familyEnum) As String
-		  Select Case value
-		    
-		    Case Os_familyEnum.Ios
-		      Return "ios"
-		    Case Os_familyEnum.Android
-		      Return "android"
-		    Case Os_familyEnum.Macos
-		      Return "macos"
-		    Case Os_familyEnum.Windows
-		      Return "windows"
-		    Case Os_familyEnum.Linux
-		      Return "linux"
-		    Case Os_familyEnum.Bsd
-		      Return "bsd"
-		    Case Os_familyEnum.Other
-		      Return "other"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -392,6 +278,14 @@ Protected Class ConversionEventDeviceInfo
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="form_factor"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="FormFactor"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="kernel_version"
 			Visible=false
 			Group="Behavior"
@@ -421,6 +315,22 @@ Protected Class ConversionEventDeviceInfo
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="network_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="NetworkType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="os_family"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="OsFamily"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

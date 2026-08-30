@@ -10,10 +10,11 @@ import org.openapitools.vertxweb.server.model.CatalogsReportFeedIngestionFilter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsHotelReportStatsParametersReport   {
   
+  private String feedId;
+  private String processingResultId;
 
 
   public enum ReportTypeEnum {
-    FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
     DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
 
     private String value;
@@ -30,28 +31,17 @@ public class CatalogsHotelReportStatsParametersReport   {
   }
 
   private ReportTypeEnum reportType;
-  private String feedId;
-  private String processingResultId;
   private String catalogId;
 
   public CatalogsHotelReportStatsParametersReport () {
 
   }
 
-  public CatalogsHotelReportStatsParametersReport (ReportTypeEnum reportType, String feedId, String processingResultId, String catalogId) {
-    this.reportType = reportType;
+  public CatalogsHotelReportStatsParametersReport (String feedId, String processingResultId, ReportTypeEnum reportType, String catalogId) {
     this.feedId = feedId;
     this.processingResultId = processingResultId;
-    this.catalogId = catalogId;
-  }
-
-    
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
     this.reportType = reportType;
+    this.catalogId = catalogId;
   }
 
     
@@ -73,6 +63,15 @@ public class CatalogsHotelReportStatsParametersReport   {
   }
 
     
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+    
   @JsonProperty("catalog_id")
   public String getCatalogId() {
     return catalogId;
@@ -91,15 +90,15 @@ public class CatalogsHotelReportStatsParametersReport   {
       return false;
     }
     CatalogsHotelReportStatsParametersReport catalogsHotelReportStatsParametersReport = (CatalogsHotelReportStatsParametersReport) o;
-    return Objects.equals(reportType, catalogsHotelReportStatsParametersReport.reportType) &&
-        Objects.equals(feedId, catalogsHotelReportStatsParametersReport.feedId) &&
+    return Objects.equals(feedId, catalogsHotelReportStatsParametersReport.feedId) &&
         Objects.equals(processingResultId, catalogsHotelReportStatsParametersReport.processingResultId) &&
+        Objects.equals(reportType, catalogsHotelReportStatsParametersReport.reportType) &&
         Objects.equals(catalogId, catalogsHotelReportStatsParametersReport.catalogId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, feedId, processingResultId, catalogId);
+    return Objects.hash(feedId, processingResultId, reportType, catalogId);
   }
 
   @Override
@@ -107,9 +106,9 @@ public class CatalogsHotelReportStatsParametersReport   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelReportStatsParametersReport {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    processingResultId: ").append(toIndentedString(processingResultId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -120,9 +119,6 @@ public class CatalogsHotelReportStatsParametersReport   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

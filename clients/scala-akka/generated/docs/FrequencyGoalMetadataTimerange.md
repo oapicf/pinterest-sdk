@@ -1,0 +1,9 @@
+
+
+# FrequencyGoalMetadataTimerange
+
+## Enum
+
+
+
+

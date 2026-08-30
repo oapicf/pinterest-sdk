@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -12,63 +13,67 @@ import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * ConversionEventsUserDataProperties
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionEventsUserDataProperties {
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> clickId = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String clientIpAddress;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String clientUserAgent;
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> country = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> ct = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> db = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> em = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> externalId = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> fn = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> ge = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> hashedMaids = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> ln = new ArrayList<>();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> partnerId = JsonNullable.<String>undefined();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> ph = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> st = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> zp = new ArrayList<>();
 
   public ConversionEventsUserDataProperties clickId(String clickId) {
@@ -107,6 +112,7 @@ public class ConversionEventsUserDataProperties {
     return clientIpAddress;
   }
 
+  @JsonProperty("client_ip_address")
   public void setClientIpAddress(@Nullable String clientIpAddress) {
     this.clientIpAddress = clientIpAddress;
   }
@@ -127,6 +133,7 @@ public class ConversionEventsUserDataProperties {
     return clientUserAgent;
   }
 
+  @JsonProperty("client_user_agent")
   public void setClientUserAgent(@Nullable String clientUserAgent) {
     this.clientUserAgent = clientUserAgent;
   }
@@ -155,6 +162,7 @@ public class ConversionEventsUserDataProperties {
     return country;
   }
 
+  @JsonProperty("country")
   public void setCountry(List<String> country) {
     this.country = country;
   }
@@ -183,6 +191,7 @@ public class ConversionEventsUserDataProperties {
     return ct;
   }
 
+  @JsonProperty("ct")
   public void setCt(List<String> ct) {
     this.ct = ct;
   }
@@ -211,6 +220,7 @@ public class ConversionEventsUserDataProperties {
     return db;
   }
 
+  @JsonProperty("db")
   public void setDb(List<String> db) {
     this.db = db;
   }
@@ -239,6 +249,7 @@ public class ConversionEventsUserDataProperties {
     return em;
   }
 
+  @JsonProperty("em")
   public void setEm(List<String> em) {
     this.em = em;
   }
@@ -267,6 +278,7 @@ public class ConversionEventsUserDataProperties {
     return externalId;
   }
 
+  @JsonProperty("external_id")
   public void setExternalId(List<String> externalId) {
     this.externalId = externalId;
   }
@@ -289,12 +301,13 @@ public class ConversionEventsUserDataProperties {
    * @return fn
    */
   
-  @Schema(name = "fn", example = "[\"ec1e6a072231703f1bc41429052fff8c00a7e0c6aaec2e7107241ca8f3ceb6b2\"]", description = "Sha256 hashes of user's first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "fn", description = "Sha256 hashes of user's first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("fn")
   public List<String> getFn() {
     return fn;
   }
 
+  @JsonProperty("fn")
   public void setFn(List<String> fn) {
     this.fn = fn;
   }
@@ -323,6 +336,7 @@ public class ConversionEventsUserDataProperties {
     return ge;
   }
 
+  @JsonProperty("ge")
   public void setGe(List<String> ge) {
     this.ge = ge;
   }
@@ -351,6 +365,7 @@ public class ConversionEventsUserDataProperties {
     return hashedMaids;
   }
 
+  @JsonProperty("hashed_maids")
   public void setHashedMaids(List<String> hashedMaids) {
     this.hashedMaids = hashedMaids;
   }
@@ -379,6 +394,7 @@ public class ConversionEventsUserDataProperties {
     return ln;
   }
 
+  @JsonProperty("ln")
   public void setLn(List<String> ln) {
     this.ln = ln;
   }
@@ -427,6 +443,7 @@ public class ConversionEventsUserDataProperties {
     return ph;
   }
 
+  @JsonProperty("ph")
   public void setPh(List<String> ph) {
     this.ph = ph;
   }
@@ -455,6 +472,7 @@ public class ConversionEventsUserDataProperties {
     return st;
   }
 
+  @JsonProperty("st")
   public void setSt(List<String> st) {
     this.st = st;
   }
@@ -483,6 +501,7 @@ public class ConversionEventsUserDataProperties {
     return zp;
   }
 
+  @JsonProperty("zp")
   public void setZp(List<String> zp) {
     this.zp = zp;
   }
@@ -558,11 +577,8 @@ public class ConversionEventsUserDataProperties {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

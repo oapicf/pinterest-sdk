@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -19,7 +19,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemValidationEvent;
 
 
@@ -29,16 +28,53 @@ import org.openapitools.model.ItemValidationEvent;
  */
 
 @ApiModel(description = "Object describing a creative assets item error")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsItemErrorResponse   {
   
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private String creativeAssetsId;
   private List<ItemValidationEvent> errors = new ArrayList<>();
 
+
+  public enum ItemResponseKindEnum {
+    CREATIVE_ASSETS_ITEM_ERROR("creative_assets_item_error");
+
+    private String value;
+
+    ItemResponseKindEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private ItemResponseKindEnum itemResponseKind;
+
   /**
    */
-  public CatalogsCreativeAssetsItemErrorResponse catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsItemErrorResponse catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -46,10 +82,10 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -89,6 +125,24 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
     this.errors = errors;
   }
 
+  /**
+   * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+   */
+  public CatalogsCreativeAssetsItemErrorResponse itemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Discriminator literal identifying this leaf inside an `ItemResponse` payload.")
+  @JsonProperty("item_response_kind")
+  public ItemResponseKindEnum getItemResponseKind() {
+    return itemResponseKind;
+  }
+  public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -101,12 +155,13 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
     CatalogsCreativeAssetsItemErrorResponse catalogsCreativeAssetsItemErrorResponse = (CatalogsCreativeAssetsItemErrorResponse) o;
     return Objects.equals(catalogType, catalogsCreativeAssetsItemErrorResponse.catalogType) &&
         Objects.equals(creativeAssetsId, catalogsCreativeAssetsItemErrorResponse.creativeAssetsId) &&
-        Objects.equals(errors, catalogsCreativeAssetsItemErrorResponse.errors);
+        Objects.equals(errors, catalogsCreativeAssetsItemErrorResponse.errors) &&
+        Objects.equals(itemResponseKind, catalogsCreativeAssetsItemErrorResponse.itemResponseKind);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsId, errors);
+    return Objects.hash(catalogType, creativeAssetsId, errors, itemResponseKind);
   }
 
   @Override
@@ -117,6 +172,7 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -126,10 +182,7 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

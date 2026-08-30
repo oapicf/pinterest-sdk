@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -42,7 +42,7 @@ type CatalogsFeedValidationErrors struct {
 	FEED_TOO_SMALL *int32 `json:"FEED_TOO_SMALL,omitempty"`
 	// Pinterest couldn't download your feed.
 	FETCH_ERROR *int32 `json:"FETCH_ERROR,omitempty"`
-	// Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+	// Your feed wasn't ingested because it hasn't changed in the previous 90 days.
 	FETCH_INACTIVE_FEED_ERROR *int32 `json:"FETCH_INACTIVE_FEED_ERROR,omitempty"`
 	// Some image links are formatted incorrectly.
 	IMAGE_LINK_INVALID *int32 `json:"IMAGE_LINK_INVALID,omitempty"`

@@ -3,13 +3,13 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 
 /**
- * Asset group type
+ * Asset group type.
  **/
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Asset group type
+ * Asset group type.
  */
 public enum AssetGroupType {
   

@@ -22,8 +22,8 @@ import scalaz.concurrent.Task
 import HelperCodecs._
 
 import org.openapitools.client.api.Catalog
+import org.openapitools.client.api.CatalogCreate
 import org.openapitools.client.api.CatalogsAvailableFilterValues
-import org.openapitools.client.api.CatalogsCreateRequest
 import org.openapitools.client.api.CatalogsList200Response
 import org.openapitools.client.api.CatalogsLocale
 import org.openapitools.client.api.Country
@@ -56,7 +56,7 @@ object CatalogsApi {
     } yield resp
   }
 
-  def catalogsCreate(host: String, catalogsCreateRequest: CatalogsCreateRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Catalog] = {
+  def catalogsCreate(host: String, catalogCreate: CatalogCreate, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Catalog] = {
     implicit val returnTypeDecoder: EntityDecoder[Catalog] = jsonOf[Catalog]
 
     val path = "/catalogs"
@@ -71,13 +71,13 @@ object CatalogsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsCreateRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogCreate)
       resp          <- client.expect[Catalog](req)
 
     } yield resp
   }
 
-  def catalogsList(host: String, bookmark: String, pageSize: Integer = 25, adAccountId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], adAccountIdQuery: QueryParam[String]): Task[CatalogsList200Response] = {
+  def catalogsList(host: String, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[CatalogsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsList200Response] = jsonOf[CatalogsList200Response]
 
     val path = "/catalogs"
@@ -87,7 +87,7 @@ object CatalogsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -126,7 +126,7 @@ class HttpServiceCatalogsApi(service: HttpService) {
     } yield resp
   }
 
-  def catalogsCreate(catalogsCreateRequest: CatalogsCreateRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Catalog] = {
+  def catalogsCreate(catalogCreate: CatalogCreate, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Catalog] = {
     implicit val returnTypeDecoder: EntityDecoder[Catalog] = jsonOf[Catalog]
 
     val path = "/catalogs"
@@ -141,13 +141,13 @@ class HttpServiceCatalogsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsCreateRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogCreate)
       resp          <- client.expect[Catalog](req)
 
     } yield resp
   }
 
-  def catalogsList(bookmark: String, pageSize: Integer = 25, adAccountId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], adAccountIdQuery: QueryParam[String]): Task[CatalogsList200Response] = {
+  def catalogsList(adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[CatalogsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsList200Response] = jsonOf[CatalogsList200Response]
 
     val path = "/catalogs"
@@ -157,7 +157,7 @@ class HttpServiceCatalogsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

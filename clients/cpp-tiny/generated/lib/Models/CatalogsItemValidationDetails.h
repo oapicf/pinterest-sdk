@@ -46,20 +46,20 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get 
+	/*! \brief Get Attribute that has a validation issue.
 	 */
 	NullableCatalogsItemFieldType getAttributeName();
 
-	/*! \brief Set 
+	/*! \brief Set Attribute that has a validation issue.
 	 */
-	void setAttributeName(NullableCatalogsItemFieldType  attribute_name);
+	void setAttributeName(NullableCatalogsItemFieldType attribute_name);
 	/*! \brief Get Provided value that caused the validation issue.
 	 */
 	std::string getProvidedValue();
 
 	/*! \brief Set Provided value that caused the validation issue.
 	 */
-	void setProvidedValue(std::string  provided_value);
+	void setProvidedValue(std::string provided_value);
 
 
     private:

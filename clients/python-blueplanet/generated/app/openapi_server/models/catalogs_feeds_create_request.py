@@ -6,9 +6,9 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.catalogs_creative_assets_feeds_create_request_default_locale import CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale  # noqa: F401,E501
 from app.openapi_server.models.catalogs_feed_credentials import CatalogsFeedCredentials  # noqa: F401,E501
 from app.openapi_server.models.catalogs_feed_processing_schedule import CatalogsFeedProcessingSchedule  # noqa: F401,E501
-from app.openapi_server.models.catalogs_feeds_create_request_default_locale import CatalogsFeedsCreateRequestDefaultLocale  # noqa: F401,E501
 from app.openapi_server.models.catalogs_format import CatalogsFormat  # noqa: F401,E501
 from app.openapi_server.models.catalogs_status import CatalogsStatus  # noqa: F401,E501
 from app.openapi_server.models.country import Country  # noqa: F401,E501
@@ -24,7 +24,7 @@ class CatalogsFeedsCreateRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, credentials: CatalogsFeedCredentials=None, default_availability: ProductAvailabilityType=None, default_country: Country=None, default_currency: NullableCurrency=None, default_locale: CatalogsFeedsCreateRequestDefaultLocale=None, format: CatalogsFormat=None, location: str=None, name: str=None, preferred_processing_schedule: CatalogsFeedProcessingSchedule=None, status: CatalogsStatus='ACTIVE'):  # noqa: E501
+    def __init__(self, credentials: CatalogsFeedCredentials=None, default_availability: ProductAvailabilityType=None, default_country: Country=None, default_currency: NullableCurrency=None, default_locale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale=None, format: CatalogsFormat=None, location: str=None, name: str=None, preferred_processing_schedule: CatalogsFeedProcessingSchedule=None, status: CatalogsStatus=None):  # noqa: E501
         """CatalogsFeedsCreateRequest - a model defined in Swagger
 
         :param credentials: The credentials of this CatalogsFeedsCreateRequest.  # noqa: E501
@@ -36,7 +36,7 @@ class CatalogsFeedsCreateRequest(Model):
         :param default_currency: The default_currency of this CatalogsFeedsCreateRequest.  # noqa: E501
         :type default_currency: NullableCurrency
         :param default_locale: The default_locale of this CatalogsFeedsCreateRequest.  # noqa: E501
-        :type default_locale: CatalogsFeedsCreateRequestDefaultLocale
+        :type default_locale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
         :param format: The format of this CatalogsFeedsCreateRequest.  # noqa: E501
         :type format: CatalogsFormat
         :param location: The location of this CatalogsFeedsCreateRequest.  # noqa: E501
@@ -53,7 +53,7 @@ class CatalogsFeedsCreateRequest(Model):
             'default_availability': ProductAvailabilityType,
             'default_country': Country,
             'default_currency': NullableCurrency,
-            'default_locale': CatalogsFeedsCreateRequestDefaultLocale,
+            'default_locale': CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale,
             'format': CatalogsFormat,
             'location': str,
             'name': str,
@@ -181,22 +181,22 @@ class CatalogsFeedsCreateRequest(Model):
         self._default_currency = default_currency
 
     @property
-    def default_locale(self) -> CatalogsFeedsCreateRequestDefaultLocale:
+    def default_locale(self) -> CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale:
         """Gets the default_locale of this CatalogsFeedsCreateRequest.
 
 
         :return: The default_locale of this CatalogsFeedsCreateRequest.
-        :rtype: CatalogsFeedsCreateRequestDefaultLocale
+        :rtype: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
         """
         return self._default_locale
 
     @default_locale.setter
-    def default_locale(self, default_locale: CatalogsFeedsCreateRequestDefaultLocale):
+    def default_locale(self, default_locale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale):
         """Sets the default_locale of this CatalogsFeedsCreateRequest.
 
 
         :param default_locale: The default_locale of this CatalogsFeedsCreateRequest.
-        :type default_locale: CatalogsFeedsCreateRequestDefaultLocale
+        :type default_locale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
         """
 
         self._default_locale = default_locale

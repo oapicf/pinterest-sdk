@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -9,30 +10,30 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CampaignResponse;
+import org.openapitools.model.Campaign;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CampaignsList200Response
  */
 
 @JsonTypeName("campaigns_list_200_response")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CampaignsList200Response {
 
   private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
   @Valid
-  private List<@Valid CampaignResponse> items = new ArrayList<>();
+  private List<@Valid Campaign> items = new ArrayList<>();
 
   public CampaignsList200Response() {
     super();
@@ -41,7 +42,7 @@ public class CampaignsList200Response {
   /**
    * Constructor with only required parameters
    */
-  public CampaignsList200Response(List<@Valid CampaignResponse> items) {
+  public CampaignsList200Response(List<@Valid Campaign> items) {
     this.items = items;
   }
 
@@ -65,12 +66,12 @@ public class CampaignsList200Response {
     this.bookmark = bookmark;
   }
 
-  public CampaignsList200Response items(List<@Valid CampaignResponse> items) {
+  public CampaignsList200Response items(List<@Valid Campaign> items) {
     this.items = items;
     return this;
   }
 
-  public CampaignsList200Response addItemsItem(CampaignResponse itemsItem) {
+  public CampaignsList200Response addItemsItem(Campaign itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -85,11 +86,11 @@ public class CampaignsList200Response {
   @NotNull @Valid 
   @Schema(name = "items", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
-  public List<@Valid CampaignResponse> getItems() {
+  public List<@Valid Campaign> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid CampaignResponse> items) {
+  public void setItems(List<@Valid Campaign> items) {
     this.items = items;
   }
 
@@ -137,10 +138,7 @@ public class CampaignsList200Response {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

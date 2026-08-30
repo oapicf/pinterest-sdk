@@ -12,8 +12,9 @@
   [ {'engagement_type', openapi_product_categories_engagement_type:openapi_product_categories_engagement_type() }
   | {'pct_change_mom', integer() }
   | {'percent_relative_volume', integer() }
+  | {'pinterest_product_category_id', integer() }
   | {'product_category', binary() }
-  | {'verticals', list(openapi_vertical_product_category:openapi_vertical_product_category()) }
+  | {'verticals', list(binary()) }
   ].
 
 
@@ -24,8 +25,9 @@ openapi_trending_product_category(Fields) ->
   Default = [ {'engagement_type', openapi_product_categories_engagement_type:openapi_product_categories_engagement_type() }
             , {'pct_change_mom', integer() }
             , {'percent_relative_volume', integer() }
+            , {'pinterest_product_category_id', integer() }
             , {'product_category', binary() }
-            , {'verticals', list(openapi_vertical_product_category:openapi_vertical_product_category()) }
+            , {'verticals', list(binary()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

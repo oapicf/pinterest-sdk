@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
+import org.openapitools.model.CustomerListStatus;
 
 /**
  * CustomerList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CustomerList   {
   @JsonProperty("ad_account_id")
   private String adAccountId;
@@ -25,6 +26,9 @@ public class CustomerList   {
   @JsonProperty("id")
   private String id;
 
+  @JsonProperty("is_nca")
+  private Boolean isNca;
+
   @JsonProperty("name")
   private String name;
 
@@ -37,54 +41,14 @@ public class CustomerList   {
   @JsonProperty("num_uploaded_user_records")
   private BigDecimal numUploadedUserRecords;
 
-  /**
-   * Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-   */
-  public enum StatusEnum {
-    PROCESSING("PROCESSING"),
-    
-    READY("READY"),
-    
-    TOO_SMALL("TOO_SMALL"),
-    
-    UPLOADING("UPLOADING");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
   @JsonProperty("status")
-  private StatusEnum status;
+  private CustomerListStatus status;
 
   @JsonProperty("type")
   private String type;
 
   @JsonProperty("updated_time")
   private BigDecimal updatedTime;
-
-  public CustomerList adAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-    return this;
-  }
 
    /**
    * Associated ad account ID.
@@ -93,15 +57,6 @@ public class CustomerList   {
   @ApiModelProperty(example = "549756359984", value = "Associated ad account ID.")
   public String getAdAccountId() {
     return adAccountId;
-  }
-
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-  }
-
-  public CustomerList createdTime(BigDecimal createdTime) {
-    this.createdTime = createdTime;
-    return this;
   }
 
    /**
@@ -113,44 +68,40 @@ public class CustomerList   {
     return createdTime;
   }
 
-  public void setCreatedTime(BigDecimal createdTime) {
-    this.createdTime = createdTime;
-  }
-
-  public CustomerList exceptions(Object exceptions) {
-    this.exceptions = exceptions;
-    return this;
-  }
-
    /**
-   * Customer list errors
+   * Customer list errors.
    * @return exceptions
   **/
-  @ApiModelProperty(value = "Customer list errors")
+  @ApiModelProperty(value = "Customer list errors.")
   public Object getExceptions() {
     return exceptions;
-  }
-
-  public void setExceptions(Object exceptions) {
-    this.exceptions = exceptions;
-  }
-
-  public CustomerList id(String id) {
-    this.id = id;
-    return this;
   }
 
    /**
    * Customer list ID.
    * @return id
   **/
-  @ApiModelProperty(example = "643", value = "Customer list ID.")
+  @ApiModelProperty(example = "643", required = true, value = "Customer list ID.")
   public String getId() {
     return id;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public CustomerList isNca(Boolean isNca) {
+    this.isNca = isNca;
+    return this;
+  }
+
+   /**
+   * Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.
+   * @return isNca
+  **/
+  @ApiModelProperty(value = "Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.")
+  public Boolean getIsNca() {
+    return isNca;
+  }
+
+  public void setIsNca(Boolean isNca) {
+    this.isNca = isNca;
   }
 
   public CustomerList name(String name) {
@@ -162,7 +113,7 @@ public class CustomerList   {
    * Customer list name.
    * @return name
   **/
-  @ApiModelProperty(example = "The Glengarry Glen Ross leads", value = "Customer list name.")
+  @ApiModelProperty(example = "The Glengarry Glen Ross leads", required = true, value = "Customer list name.")
   public String getName() {
     return name;
   }
@@ -171,99 +122,49 @@ public class CustomerList   {
     this.name = name;
   }
 
-  public CustomerList numBatches(BigDecimal numBatches) {
-    this.numBatches = numBatches;
-    return this;
-  }
-
    /**
-   * Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
+   * Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.
    * @return numBatches
   **/
-  @ApiModelProperty(example = "2", value = "Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.")
+  @ApiModelProperty(example = "2", value = "Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.")
   public BigDecimal getNumBatches() {
     return numBatches;
   }
 
-  public void setNumBatches(BigDecimal numBatches) {
-    this.numBatches = numBatches;
-  }
-
-  public CustomerList numRemovedUserRecords(BigDecimal numRemovedUserRecords) {
-    this.numRemovedUserRecords = numRemovedUserRecords;
-    return this;
-  }
-
    /**
-   * Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
+   * Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.
    * @return numRemovedUserRecords
   **/
-  @ApiModelProperty(example = "0", value = "Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.")
+  @ApiModelProperty(example = "0", value = "Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.")
   public BigDecimal getNumRemovedUserRecords() {
     return numRemovedUserRecords;
   }
 
-  public void setNumRemovedUserRecords(BigDecimal numRemovedUserRecords) {
-    this.numRemovedUserRecords = numRemovedUserRecords;
-  }
-
-  public CustomerList numUploadedUserRecords(BigDecimal numUploadedUserRecords) {
-    this.numUploadedUserRecords = numUploadedUserRecords;
-    return this;
-  }
-
    /**
-   * Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
+   * Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.
    * @return numUploadedUserRecords
   **/
-  @ApiModelProperty(example = "11", value = "Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.")
+  @ApiModelProperty(example = "11", value = "Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.")
   public BigDecimal getNumUploadedUserRecords() {
     return numUploadedUserRecords;
   }
 
-  public void setNumUploadedUserRecords(BigDecimal numUploadedUserRecords) {
-    this.numUploadedUserRecords = numUploadedUserRecords;
-  }
-
-  public CustomerList status(StatusEnum status) {
-    this.status = status;
-    return this;
-  }
-
    /**
-   * Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
+   * Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
    * @return status
   **/
-  @ApiModelProperty(example = "PROCESSING", value = "Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.")
-  public StatusEnum getStatus() {
+  @ApiModelProperty(example = "PROCESSING", value = "Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.")
+  public CustomerListStatus getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-  public CustomerList type(String type) {
-    this.type = type;
-    return this;
-  }
-
    /**
-   * Always \"customerlist\".
+   * Always `customerlist`.
    * @return type
   **/
-  @ApiModelProperty(example = "customerlist", value = "Always \"customerlist\".")
+  @ApiModelProperty(example = "customerlist", value = "Always `customerlist`.")
   public String getType() {
     return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public CustomerList updatedTime(BigDecimal updatedTime) {
-    this.updatedTime = updatedTime;
-    return this;
   }
 
    /**
@@ -273,10 +174,6 @@ public class CustomerList   {
   @ApiModelProperty(example = "1461269616", value = "Last update time. Unix timestamp in seconds.")
   public BigDecimal getUpdatedTime() {
     return updatedTime;
-  }
-
-  public void setUpdatedTime(BigDecimal updatedTime) {
-    this.updatedTime = updatedTime;
   }
 
 
@@ -293,6 +190,7 @@ public class CustomerList   {
         Objects.equals(this.createdTime, customerList.createdTime) &&
         Objects.equals(this.exceptions, customerList.exceptions) &&
         Objects.equals(this.id, customerList.id) &&
+        Objects.equals(this.isNca, customerList.isNca) &&
         Objects.equals(this.name, customerList.name) &&
         Objects.equals(this.numBatches, customerList.numBatches) &&
         Objects.equals(this.numRemovedUserRecords, customerList.numRemovedUserRecords) &&
@@ -304,7 +202,7 @@ public class CustomerList   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, createdTime, exceptions, id, name, numBatches, numRemovedUserRecords, numUploadedUserRecords, status, type, updatedTime);
+    return Objects.hash(adAccountId, createdTime, exceptions, id, isNca, name, numBatches, numRemovedUserRecords, numUploadedUserRecords, status, type, updatedTime);
   }
 
   @Override
@@ -316,6 +214,7 @@ public class CustomerList   {
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isNca: ").append(toIndentedString(isNca)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    numBatches: ").append(toIndentedString(numBatches)).append("\n");
     sb.append("    numRemovedUserRecords: ").append(toIndentedString(numRemovedUserRecords)).append("\n");
@@ -332,10 +231,7 @@ public class CustomerList   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

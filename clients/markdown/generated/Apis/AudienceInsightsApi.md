@@ -10,11 +10,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a name="audienceInsights/get"></a>
 # **audienceInsights/get**
-> AudienceInsightsResponse audienceInsights/get(ad\_account\_id, audience\_insight\_type)
+> AudienceInsights audienceInsights/get(ad\_account\_id, audience\_insight\_type)
 
 Get audience insights
 
-    Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
+    Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 
 ### Parameters
 
@@ -25,7 +25,7 @@ Get audience insights
 
 ### Return type
 
-[**AudienceInsightsResponse**](../Models/AudienceInsightsResponse.md)
+[**AudienceInsights**](../Models/AudienceInsights.md)
 
 ### Authorization
 
@@ -38,7 +38,7 @@ Get audience insights
 
 <a name="audienceInsightsScopeAndType/get"></a>
 # **audienceInsightsScopeAndType/get**
-> AudienceDefinitionResponse audienceInsightsScopeAndType/get(ad\_account\_id)
+> audience_insights_scope_and_type_get_200_response audienceInsightsScopeAndType/get(ad\_account\_id)
 
 Get audience insights scope and type
 
@@ -52,7 +52,7 @@ Get audience insights scope and type
 
 ### Return type
 
-[**AudienceDefinitionResponse**](../Models/AudienceDefinitionResponse.md)
+[**audience_insights_scope_and_type_get_200_response**](../Models/audience_insights_scope_and_type_get_200_response.md)
 
 ### Authorization
 

@@ -86,7 +86,7 @@ AdPinAnalytics::getDATE()
 }
 
 void
-AdPinAnalytics::setDATE(Date  dATE)
+AdPinAnalytics::setDATE(Date dATE)
 {
 	this->dATE = dATE;
 }
@@ -98,7 +98,7 @@ AdPinAnalytics::getPINID()
 }
 
 void
-AdPinAnalytics::setPINID(std::string  pIN_ID)
+AdPinAnalytics::setPINID(std::string pIN_ID)
 {
 	this->pIN_ID = pIN_ID;
 }

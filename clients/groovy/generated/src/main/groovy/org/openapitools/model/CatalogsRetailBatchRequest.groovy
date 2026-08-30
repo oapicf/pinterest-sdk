@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.model.CatalogsRetailBatchRequestItemsInner;
+import org.openapitools.model.CatalogsRetailBatchRequestItemsItems;
 import org.openapitools.model.Country;
 
 @Canonical
@@ -38,7 +38,7 @@ class CatalogsRetailBatchRequest {
     
     Country country
     /* Array with catalogs item operations */
-    List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>()
+    List<CatalogsRetailBatchRequestItemsItems> items = new ArrayList<>()
 
     enum LanguageEnum {
     
@@ -220,7 +220,7 @@ class CatalogsRetailBatchRequest {
         
         NL2("NL"),
         
-        NO("NO"),
+        FALSE("false"),
         
         PL("PL"),
         

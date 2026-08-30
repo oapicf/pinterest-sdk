@@ -14,7 +14,7 @@ require 'pinterest_sdk'
 
 instance = PinterestSdkClient::KeywordsRequest.new(
   keywords: null,
-  parent_id: 383791336903426391
+  parent_id: null
 )
 ```
 

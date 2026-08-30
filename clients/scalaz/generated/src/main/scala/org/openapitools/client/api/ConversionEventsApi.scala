@@ -21,8 +21,8 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
-import org.openapitools.client.api.ConversionApiResponse
 import org.openapitools.client.api.ConversionEvents
+import org.openapitools.client.api.ConversionEventsCreate
 import org.openapitools.client.api.DetailedError
 import org.openapitools.client.api.Error
 
@@ -32,8 +32,8 @@ object ConversionEventsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def eventsCreate(host: String, adAccountId: String, conversionEvents: ConversionEvents, test: Boolean)(implicit testQuery: QueryParam[Boolean]): Task[ConversionApiResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[ConversionApiResponse] = jsonOf[ConversionApiResponse]
+  def eventsCreate(host: String, adAccountId: String, conversionEventsCreate: ConversionEventsCreate, test: Boolean)(implicit testQuery: QueryParam[Boolean]): Task[ConversionEvents] = {
+    implicit val returnTypeDecoder: EntityDecoder[ConversionEvents] = jsonOf[ConversionEvents]
 
     val path = "/ad_accounts/{ad_account_id}/events".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -47,8 +47,8 @@ object ConversionEventsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(conversionEvents)
-      resp          <- client.expect[ConversionApiResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(conversionEventsCreate)
+      resp          <- client.expect[ConversionEvents](req)
 
     } yield resp
   }
@@ -60,8 +60,8 @@ class HttpServiceConversionEventsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def eventsCreate(adAccountId: String, conversionEvents: ConversionEvents, test: Boolean)(implicit testQuery: QueryParam[Boolean]): Task[ConversionApiResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[ConversionApiResponse] = jsonOf[ConversionApiResponse]
+  def eventsCreate(adAccountId: String, conversionEventsCreate: ConversionEventsCreate, test: Boolean)(implicit testQuery: QueryParam[Boolean]): Task[ConversionEvents] = {
+    implicit val returnTypeDecoder: EntityDecoder[ConversionEvents] = jsonOf[ConversionEvents]
 
     val path = "/ad_accounts/{ad_account_id}/events".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -75,8 +75,8 @@ class HttpServiceConversionEventsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(conversionEvents)
-      resp          <- client.expect[ConversionApiResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(conversionEventsCreate)
+      resp          <- client.expect[ConversionEvents](req)
 
     } yield resp
   }

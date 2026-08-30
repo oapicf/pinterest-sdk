@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionEventsCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionEventsCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ConversionEventsDataItems = openapi_server.resourceTypes.ConversionEventsDataItems
+}
+resourceTypes {
+
+  ConversionEventsCreate {
+    title = ConversionEventsCreate
+    description = ConversionEventsCreate
+    derivedFrom = Root
+    properties {
+        data {
+          type = array
+          items.type = ConversionEventsDataItems
+          description = "A list of events (one or more) encapsulated by a data object."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionEventsCreate {
+    title = ConversionEventsCreate
+    description = ConversionEventsCreate
+    implements = openapi_server.resourceTypes.ConversionEventsCreate
+
+  }
+}

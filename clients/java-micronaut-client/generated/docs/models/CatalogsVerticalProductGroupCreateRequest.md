@@ -10,7 +10,7 @@ The class is defined in **[CatalogsVerticalProductGroupCreateRequest.java](../..
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | `String` | Catalog id pertaining to the creative assets product group. | 
+**catalogId** | `String` | Catalog ID pertaining to the product group. | 
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **country** | `Country` |  |  [optional property]
 **description** | `String` |  |  [optional property]

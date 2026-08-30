@@ -8,7 +8,7 @@ The class is defined in **[CatalogsCreativeAssetsProductGroupFiltersAnyOf.java](
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**anyOf** | `List&lt;CatalogsCreativeAssetsProductGroupFilterKeys&gt;` |  | 
+**anyOf** | [`List&lt;CatalogsCreativeAssetsProductGroupFilterKeys&gt;`](CatalogsCreativeAssetsProductGroupFilterKeys.md) |  | 
 
 
 

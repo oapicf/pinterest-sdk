@@ -7,31 +7,40 @@
 
 static item_validation_event_t *item_validation_event_create_internal(
     char *attribute,
-    int code,
+    int *code,
     char *message
     ) {
     item_validation_event_t *item_validation_event_local_var = malloc(sizeof(item_validation_event_t));
     if (!item_validation_event_local_var) {
         return NULL;
     }
+    memset(item_validation_event_local_var, 0, sizeof(item_validation_event_t));
+    item_validation_event_local_var->_library_owned = 1;
     item_validation_event_local_var->attribute = attribute;
     item_validation_event_local_var->code = code;
     item_validation_event_local_var->message = message;
-
-    item_validation_event_local_var->_library_owned = 1;
     return item_validation_event_local_var;
 }
 
 __attribute__((deprecated)) item_validation_event_t *item_validation_event_create(
     char *attribute,
-    int code,
+    int *code,
     char *message
     ) {
-    return item_validation_event_create_internal (
+    int *code_copy = NULL;
+    if (code) {
+        code_copy = malloc(sizeof(int));
+        if (code_copy) *code_copy = *code;
+    }
+    item_validation_event_t *result = item_validation_event_create_internal (
         attribute,
-        code,
+        code_copy,
         message
         );
+    if (!result) {
+        free(code_copy);
+    }
+    return result;
 }
 
 void item_validation_event_free(item_validation_event_t *item_validation_event) {
@@ -46,6 +55,10 @@ void item_validation_event_free(item_validation_event_t *item_validation_event) 
     if (item_validation_event->attribute) {
         free(item_validation_event->attribute);
         item_validation_event->attribute = NULL;
+    }
+    if (item_validation_event->code) {
+        free(item_validation_event->code);
+        item_validation_event->code = NULL;
     }
     if (item_validation_event->message) {
         free(item_validation_event->message);
@@ -67,7 +80,7 @@ cJSON *item_validation_event_convertToJSON(item_validation_event_t *item_validat
 
     // item_validation_event->code
     if(item_validation_event->code) {
-    if(cJSON_AddNumberToObject(item, "code", item_validation_event->code) == NULL) {
+    if(cJSON_AddNumberToObject(item, "code", *item_validation_event->code) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -92,6 +105,13 @@ item_validation_event_t *item_validation_event_parseFromJSON(cJSON *item_validat
 
     item_validation_event_t *item_validation_event_local_var = NULL;
 
+    char *attribute_local_str = NULL;
+
+    // define the local variable for item_validation_event->code
+    int *code_local_var = NULL;
+
+    char *message_local_str = NULL;
+
     // item_validation_event->attribute
     cJSON *attribute = cJSON_GetObjectItemCaseSensitive(item_validation_eventJSON, "attribute");
     if (cJSON_IsNull(attribute)) {
@@ -114,6 +134,12 @@ item_validation_event_t *item_validation_event_parseFromJSON(cJSON *item_validat
     {
     goto end; //Numeric
     }
+    code_local_var = malloc(sizeof(int));
+    if(!code_local_var)
+    {
+        goto end;
+    }
+    *code_local_var = code->valuedouble;
     }
 
     // item_validation_event->message
@@ -129,14 +155,33 @@ item_validation_event_t *item_validation_event_parseFromJSON(cJSON *item_validat
     }
 
 
+    if (attribute && !cJSON_IsNull(attribute)) attribute_local_str = strdup(attribute->valuestring);
+    if (message && !cJSON_IsNull(message)) message_local_str = strdup(message->valuestring);
+
     item_validation_event_local_var = item_validation_event_create_internal (
-        attribute && !cJSON_IsNull(attribute) ? strdup(attribute->valuestring) : NULL,
-        code ? code->valuedouble : 0,
-        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL
+        attribute_local_str,
+        code_local_var,
+        message_local_str
         );
+
+    if (!item_validation_event_local_var) {
+        goto end;
+    }
 
     return item_validation_event_local_var;
 end:
+    if (attribute_local_str) {
+        free(attribute_local_str);
+        attribute_local_str = NULL;
+    }
+    if (code_local_var) {
+        free(code_local_var);
+        code_local_var = NULL;
+    }
+    if (message_local_str) {
+        free(message_local_str);
+        message_local_str = NULL;
+    }
     return NULL;
 
 }

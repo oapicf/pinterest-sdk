@@ -132,7 +132,7 @@ object CatalogsHotelBatchRequest {
   case object NB extends Language
   case object NE extends Language
   case object NL extends Language
-  case object NO extends Language
+  case object `False` extends Language
   case object PL extends Language
   case object PT extends Language
   case object RO extends Language
@@ -242,7 +242,7 @@ object CatalogsHotelBatchRequest {
       case "NB" => Some(NB)
       case "NE" => Some(NE)
       case "NL" => Some(NL)
-      case "NO" => Some(NO)
+      case "`False`" => Some(`False`)
       case "PL" => Some(PL)
       case "PT" => Some(PT)
       case "RO" => Some(RO)
@@ -353,7 +353,7 @@ object CatalogsHotelBatchRequest {
       case NB => "NB"
       case NE => "NE"
       case NL => "NL"
-      case NO => "NO"
+      case `False` => "`False`"
       case PL => "PL"
       case PT => "PT"
       case RO => "RO"

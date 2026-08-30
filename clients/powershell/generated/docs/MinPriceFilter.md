@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MINPRICE** | [**CatalogsProductGroupPricingCriteria**](.md) |  | 
+**MINPRICE** | [**CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  | 
 
 ## Examples
 

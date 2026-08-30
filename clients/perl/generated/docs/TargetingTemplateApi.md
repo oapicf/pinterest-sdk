@@ -15,11 +15,11 @@ Method | HTTP request | Description
 
 
 # **targeting_template_create**
-> TargetingTemplateGetResponseData targeting_template_create(ad_account_id => $ad_account_id, targeting_template_create => $targeting_template_create)
+> TargetingTemplate targeting_template_create(ad_account_id => $ad_account_id, targeting_template_create => $targeting_template_create)
 
 Create targeting templates
 
-<p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
+Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 
 ### Example
 ```perl
@@ -32,7 +32,7 @@ my $api_instance = WWW::OpenAPIClient::TargetingTemplateApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $targeting_template_create = WWW::OpenAPIClient::Object::TargetingTemplateCreate->new(); # TargetingTemplateCreate | targeting template creation entity
+my $targeting_template_create = WWW::OpenAPIClient::Object::TargetingTemplateCreate->new(); # TargetingTemplateCreate | 
 
 eval {
     my $result = $api_instance->targeting_template_create(ad_account_id => $ad_account_id, targeting_template_create => $targeting_template_create);
@@ -48,11 +48,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **targeting_template_create** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md)| targeting template creation entity | 
+ **targeting_template_create** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md)|  | 
 
 ### Return type
 
-[**TargetingTemplateGetResponseData**](TargetingTemplateGetResponseData.md)
+[**TargetingTemplate**](TargetingTemplate.md)
 
 ### Authorization
 
@@ -66,11 +66,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **targeting_template_list**
-> TargetingTemplateList200Response targeting_template_list(ad_account_id => $ad_account_id, order => $order, include_sizing => $include_sizing, search_query => $search_query, page_size => $page_size, bookmark => $bookmark)
+> TargetingTemplateList200Response targeting_template_list(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, order => $order, include_sizing => $include_sizing, search_query => $search_query)
 
 List targeting templates
 
-Get a list of the targeting templates in the specified <code>ad_account_id</code>
+Get a list of the targeting templates in the specified `ad_account_id`
 
 ### Example
 ```perl
@@ -85,14 +85,14 @@ my $api_instance = WWW::OpenAPIClient::TargetingTemplateApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $order = ASCENDING; # string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-my $include_sizing = false; # boolean | Include audience sizing in result or not
-my $search_query = gaming; # string | Search keyword for targeting templates
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+my $order = new WWW::OpenAPIClient.PinterestLibPaginationOrder(); # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+my $include_sizing = false; # boolean | Include audience sizing in result or not
+my $search_query = "search_query_example"; # string | Search query. Can contain pin description keywords or comma-separated pin IDs.
 
 eval {
-    my $result = $api_instance->targeting_template_list(ad_account_id => $ad_account_id, order => $order, include_sizing => $include_sizing, search_query => $search_query, page_size => $page_size, bookmark => $bookmark);
+    my $result = $api_instance->targeting_template_list(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, order => $order, include_sizing => $include_sizing, search_query => $search_query);
     print Dumper($result);
 };
 if ($@) {
@@ -105,11 +105,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **include_sizing** | **boolean**| Include audience sizing in result or not | [optional] [default to false]
- **search_query** | **string**| Search keyword for targeting templates | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **include_sizing** | **boolean**| Include audience sizing in result or not | [optional] [default to false]
+ **search_query** | **string**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] 
 
 ### Return type
 
@@ -127,11 +127,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **targeting_template_update**
-> targeting_template_update(ad_account_id => $ad_account_id, targeting_template_update_request => $targeting_template_update_request)
+> targeting_template_update(ad_account_id => $ad_account_id, targeting_template_update_request_read_or_update => $targeting_template_update_request_read_or_update)
 
 Update targeting templates
 
-<p>Update the targeting template given advertiser ID and targeting template ID</p>
+Update the targeting template given advertiser ID and targeting template ID
 
 ### Example
 ```perl
@@ -144,10 +144,10 @@ my $api_instance = WWW::OpenAPIClient::TargetingTemplateApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $targeting_template_update_request = WWW::OpenAPIClient::Object::TargetingTemplateUpdateRequest->new(); # TargetingTemplateUpdateRequest | Operation type and targeting template ID
+my $targeting_template_update_request_read_or_update = WWW::OpenAPIClient::Object::TargetingTemplateUpdateRequestReadOrUpdate->new(); # TargetingTemplateUpdateRequestReadOrUpdate | 
 
 eval {
-    $api_instance->targeting_template_update(ad_account_id => $ad_account_id, targeting_template_update_request => $targeting_template_update_request);
+    $api_instance->targeting_template_update(ad_account_id => $ad_account_id, targeting_template_update_request_read_or_update => $targeting_template_update_request_read_or_update);
 };
 if ($@) {
     warn "Exception when calling TargetingTemplateApi->targeting_template_update: $@\n";
@@ -159,7 +159,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **targeting_template_update_request** | [**TargetingTemplateUpdateRequest**](TargetingTemplateUpdateRequest.md)| Operation type and targeting template ID | 
+ **targeting_template_update_request_read_or_update** | [**TargetingTemplateUpdateRequestReadOrUpdate**](TargetingTemplateUpdateRequestReadOrUpdate.md)|  | 
 
 ### Return type
 

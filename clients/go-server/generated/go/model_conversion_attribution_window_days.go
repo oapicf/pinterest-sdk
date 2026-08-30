@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,7 +18,7 @@ import (
 
 
 
-type ConversionAttributionWindowDays int32
+type ConversionAttributionWindowDays float32
 
 // List of ConversionAttributionWindowDays
 const (
@@ -58,7 +58,7 @@ func (v ConversionAttributionWindowDays) IsValid() bool {
 
 // NewConversionAttributionWindowDaysFromValue returns a pointer to a valid ConversionAttributionWindowDays
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
-func NewConversionAttributionWindowDaysFromValue(v int32) (ConversionAttributionWindowDays, error) {
+func NewConversionAttributionWindowDaysFromValue(v float32) (ConversionAttributionWindowDays, error) {
 	ev := ConversionAttributionWindowDays(v)
 	if ev.IsValid() {
 		return ev, nil
@@ -68,8 +68,8 @@ func NewConversionAttributionWindowDaysFromValue(v int32) (ConversionAttribution
 }
 
 
-
-// AssertConversionAttributionWindowDaysRequired checks if the required fields are not zero-ed
+// AssertConversionAttributionWindowDaysRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertConversionAttributionWindowDaysRequired(obj ConversionAttributionWindowDays) error {
 	return nil
 }

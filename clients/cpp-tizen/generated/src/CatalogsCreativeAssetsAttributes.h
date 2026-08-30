@@ -9,6 +9,8 @@
 
 
 #include <string>
+#include "CatalogsAiContentDisclosure.h"
+#include <list>
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -122,13 +124,20 @@ public:
 	/*! \brief Set The name of the creative assets.
 	 */
 	void setTitle(std::string  title);
-	/*! \brief Get Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+	/*! \brief Get Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
 	 */
 	std::string getVisibility();
 
-	/*! \brief Set Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+	/*! \brief Set Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
 	 */
 	void setVisibility(std::string  visibility);
+	/*! \brief Get AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
+	 */
+	std::list<CatalogsAiContentDisclosure> getAiDisclosures();
+
+	/*! \brief Set AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
+	 */
+	void setAiDisclosures(std::list <CatalogsAiContentDisclosure> ai_disclosures);
 	/*! \brief Get The creative assets image.
 	 */
 	std::string getImageLink();
@@ -157,6 +166,7 @@ private:
 	std::string link;
 	std::string title;
 	std::string visibility;
+	std::list <CatalogsAiContentDisclosure>ai_disclosures;
 	std::string image_link;
 	std::string video_link;
 	void __init();

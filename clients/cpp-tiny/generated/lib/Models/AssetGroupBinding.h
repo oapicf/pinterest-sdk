@@ -53,77 +53,77 @@ public:
 
 	/*! \brief Set A list of ad account IDs under the asset group
 	 */
-	void setAdAccountsIds(std::list <std::string> ad_accounts_ids);
+	void setAdAccountsIds(std::list<std::string> ad_accounts_ids);
 	/*! \brief Get Asset group description
 	 */
 	std::string getAssetGroupDescription();
 
 	/*! \brief Set Asset group description
 	 */
-	void setAssetGroupDescription(std::string  asset_group_description);
+	void setAssetGroupDescription(std::string asset_group_description);
 	/*! \brief Get Asset Group name
 	 */
 	std::string getAssetGroupName();
 
 	/*! \brief Set Asset Group name
 	 */
-	void setAssetGroupName(std::string  asset_group_name);
+	void setAssetGroupName(std::string asset_group_name);
 	/*! \brief Get Asset group types
 	 */
 	std::list<std::string> getAssetGroupTypes();
 
 	/*! \brief Set Asset group types
 	 */
-	void setAssetGroupTypes(std::list <std::string> asset_group_types);
+	void setAssetGroupTypes(std::list<std::string> asset_group_types);
 	/*! \brief Get A list of catalog IDs under asset group
 	 */
 	std::list<std::string> getCatalogsIds();
 
 	/*! \brief Set A list of catalog IDs under asset group
 	 */
-	void setCatalogsIds(std::list <std::string> catalogs_ids);
+	void setCatalogsIds(std::list<std::string> catalogs_ids);
 	/*! \brief Get The data of the user that created the asset group.
 	 */
 	BusinessAccessUserSummary getCreatedBy();
 
 	/*! \brief Set The data of the user that created the asset group.
 	 */
-	void setCreatedBy(BusinessAccessUserSummary  created_by);
+	void setCreatedBy(BusinessAccessUserSummary created_by);
 	/*! \brief Get The creation time of the asset group
 	 */
 	int getCreatedTime();
 
 	/*! \brief Set The creation time of the asset group
 	 */
-	void setCreatedTime(int  created_time);
+	void setCreatedTime(int created_time);
 	/*! \brief Get Asset Group ID.
 	 */
 	std::string getId();
 
 	/*! \brief Set Asset Group ID.
 	 */
-	void setId(std::string  id);
+	void setId(std::string id);
 	/*! \brief Get The data of the business that owns the asset group.
 	 */
 	BusinessAccessUserSummary getOwner();
 
 	/*! \brief Set The data of the business that owns the asset group.
 	 */
-	void setOwner(BusinessAccessUserSummary  owner);
+	void setOwner(BusinessAccessUserSummary owner);
 	/*! \brief Get A list of profile IDs under asset group
 	 */
 	std::list<std::string> getProfilesIds();
 
 	/*! \brief Set A list of profile IDs under asset group
 	 */
-	void setProfilesIds(std::list <std::string> profiles_ids);
+	void setProfilesIds(std::list<std::string> profiles_ids);
 	/*! \brief Get The last update time of the asset group
 	 */
 	int getUpdatedTime();
 
 	/*! \brief Set The last update time of the asset group
 	 */
-	void setUpdatedTime(int  updated_time);
+	void setUpdatedTime(int updated_time);
 
 
     private:

@@ -1,7 +1,7 @@
 /*
  * catalogs_product_group_filters_request.h
  *
- * Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
+ * Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
  */
 
 #ifndef _catalogs_product_group_filters_request_H_
@@ -15,9 +15,9 @@
 
 typedef struct catalogs_product_group_filters_request_t catalogs_product_group_filters_request_t;
 
-#include "all_of.h"
-#include "any_of.h"
 #include "catalogs_product_group_filter_keys.h"
+#include "catalogs_product_group_filters_request_any_of_items0.h"
+#include "catalogs_product_group_filters_request_any_of_items1.h"
 
 
 

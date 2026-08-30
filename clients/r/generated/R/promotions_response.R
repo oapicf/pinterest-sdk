@@ -62,9 +62,32 @@ PromotionsResponse <- R6::R6Class(
       PromotionsResponseObject <- list()
       if (!is.null(self$`promotions`)) {
         PromotionsResponseObject[["promotions"]] <-
-          lapply(self$`promotions`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`promotions`)
       }
       return(PromotionsResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

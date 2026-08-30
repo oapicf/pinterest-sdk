@@ -1,14 +1,14 @@
 package api
 
+import model.BoardsList200Response
 import model.Error
+import model.PinsList200Response
 import model.SearchPartnerPins200Response
-import model.SearchUserBoardsGet200Response
-import model.SearchUserPinsList200Response
 
 /**
   * Provides a default implementation for [[SearchApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class SearchApiImpl extends SearchApi {
   /**
     * @inheritdoc
@@ -22,18 +22,18 @@ class SearchApiImpl extends SearchApi {
   /**
     * @inheritdoc
     */
-  override def searchUserBoardsGet(adAccountId: Option[String], bookmark: Option[String], pageSize: Option[Int], query: Option[String]): SearchUserBoardsGet200Response = {
+  override def searchUserBoardsGet(adAccountId: Option[String], query: Option[String], bookmark: Option[String], pageSize: Option[Int]): BoardsList200Response = {
     // TODO: Implement better logic
 
-    SearchUserBoardsGet200Response(None, List.empty[Board])
+    BoardsList200Response(None, List.empty[Board])
   }
 
   /**
     * @inheritdoc
     */
-  override def searchUserPinsList(query: String, adAccountId: Option[String], bookmark: Option[String]): SearchUserPinsList200Response = {
+  override def searchUserPinsList(query: String, adAccountId: Option[String], bookmark: Option[String]): PinsList200Response = {
     // TODO: Implement better logic
 
-    SearchUserPinsList200Response(None, List.empty[Pin])
+    PinsList200Response(None, List.empty[Pin])
   }
 }

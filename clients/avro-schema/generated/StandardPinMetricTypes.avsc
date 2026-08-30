@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Standard Pin metric types",
+  "name": "StandardPinMetricTypes",
+  "symbols": [
+    "IMPRESSION",
+    "OUTBOUND_CLICK",
+    "PIN_CLICK",
+    "SAVE",
+    "SAVE_RATE",
+    "TOTAL_COMMENTS",
+    "TOTAL_REACTIONS",
+    "USER_FOLLOW",
+    "PROFILE_VISIT"
+  ]
+}

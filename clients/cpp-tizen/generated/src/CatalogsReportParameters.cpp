@@ -23,8 +23,8 @@ CatalogsReportParameters::~CatalogsReportParameters()
 void
 CatalogsReportParameters::__init()
 {
-	//catalog_type = new CatalogsType();
-	//report = new CatalogsHotelReportParameters_report();
+	//catalog_type = std::string();
+	//report = new CatalogsHotelReportParametersReport();
 }
 
 void
@@ -53,12 +53,9 @@ CatalogsReportParameters::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsType")) {
-			jsonToValue(&catalog_type, node, "CatalogsType", "CatalogsType");
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_type, node, "std::string", "");
 		} else {
-			
-			CatalogsType* obj = static_cast<CatalogsType*> (&catalog_type);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -67,11 +64,11 @@ CatalogsReportParameters::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsHotelReportParameters_report")) {
-			jsonToValue(&report, node, "CatalogsHotelReportParameters_report", "CatalogsHotelReportParameters_report");
+		if (isprimitive("CatalogsHotelReportParametersReport")) {
+			jsonToValue(&report, node, "CatalogsHotelReportParametersReport", "CatalogsHotelReportParametersReport");
 		} else {
 			
-			CatalogsHotelReportParameters_report* obj = static_cast<CatalogsHotelReportParameters_report*> (&report);
+			CatalogsHotelReportParametersReport* obj = static_cast<CatalogsHotelReportParametersReport*> (&report);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -88,27 +85,22 @@ CatalogsReportParameters::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("CatalogsType")) {
-		CatalogsType obj = getCatalogType();
-		node = converttoJson(&obj, "CatalogsType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogType();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		CatalogsType obj = static_cast<CatalogsType> (getCatalogType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *catalog_typeKey = "catalog_type";
 	json_object_set_member(pJsonObject, catalog_typeKey, node);
-	if (isprimitive("CatalogsHotelReportParameters_report")) {
-		CatalogsHotelReportParameters_report obj = getReport();
-		node = converttoJson(&obj, "CatalogsHotelReportParameters_report", "");
+	if (isprimitive("CatalogsHotelReportParametersReport")) {
+		CatalogsHotelReportParametersReport obj = getReport();
+		node = converttoJson(&obj, "CatalogsHotelReportParametersReport", "");
 	}
 	else {
 		
-		CatalogsHotelReportParameters_report obj = static_cast<CatalogsHotelReportParameters_report> (getReport());
+		CatalogsHotelReportParametersReport obj = static_cast<CatalogsHotelReportParametersReport> (getReport());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -124,26 +116,26 @@ CatalogsReportParameters::toJson()
 	return ret;
 }
 
-CatalogsType
+std::string
 CatalogsReportParameters::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsReportParameters::setCatalogType(CatalogsType  catalog_type)
+CatalogsReportParameters::setCatalogType(std::string  catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
 
-CatalogsHotelReportParameters_report
+CatalogsHotelReportParametersReport
 CatalogsReportParameters::getReport()
 {
 	return report;
 }
 
 void
-CatalogsReportParameters::setReport(CatalogsHotelReportParameters_report  report)
+CatalogsReportParameters::setReport(CatalogsHotelReportParametersReport  report)
 {
 	this->report = report;
 }

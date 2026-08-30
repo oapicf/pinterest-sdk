@@ -7,6 +7,6 @@ package org.openapitools.server.model
 */
 final case class LeadFormsList200Response (
   bookmark: Option[String] = None,
-  items: Seq[LeadFormResponse]
+  items: Seq[LeadForm]
 )
 

@@ -8,14 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.AdvancedAuctionItemsGetRecord
+import org.openapitools.client.models.AdvancedAuctionKey
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -36,7 +44,7 @@ data class AdvancedAuctionItemsGetRequest (
 
     /* A list of retail catalog items to fetch bid options for */
     @Json(name = "items")
-    val items: kotlin.collections.List<AdvancedAuctionItemsGetRecord>
+    val items: kotlin.collections.List<AdvancedAuctionKey>
 
 ) {
 

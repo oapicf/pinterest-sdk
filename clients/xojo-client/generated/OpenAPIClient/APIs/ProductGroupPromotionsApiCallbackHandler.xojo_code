@@ -1,7 +1,7 @@
 #tag Interface
 Protected Interface ProductGroupPromotionsApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub ProductGroupPromotionsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ProductGroupPromotionResponse)
+		Sub ProductGroupPromotionsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ProductGroupPromotions)
 		  
 		End Sub
 	#tag EndMethod
@@ -19,13 +19,13 @@ Protected Interface ProductGroupPromotionsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ProductGroupPromotionsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ProductGroupPromotionResponse)
+		Sub ProductGroupPromotionsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ProductGroupPromotions)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ProductGroupsAnalyticsCallback(status As OpenAPIClient.OpenAPIClientException, data() As ProductGroupAnalyticsResponseInner)
+		Sub ProductGroupsAnalyticsCallback(status As OpenAPIClient.OpenAPIClientException, data() As OpenAPIClient.Models.ProductGroupAnalyticsItems)
 		  
 		End Sub
 	#tag EndMethod

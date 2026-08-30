@@ -17,6 +17,6 @@ Name | Type | Description | Notes
 **google_product_category_4** | **array[character]** |  | [optional] 
 **google_product_category_5** | **array[character]** |  | [optional] 
 **google_product_category_6** | **array[character]** |  | [optional] 
-**media_type** | **array[character]** |  | [optional] [Enum: ] 
+**media_type** | [**array[MediaType]**](MediaType.md) |  | [optional] 
 
 

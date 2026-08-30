@@ -1,0 +1,60 @@
+## CatalogSupplementalApi
+
+### Get local inventory items (POST)
+## Get local inventory items (POST)
+POST https://api.pinterest.com/v5/catalogs/{{catalog_id}}/local_inventory_items/query?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "item_filters": "<string>"
+}
+
+
+### Operate on local inventory item batch
+## Operate on local inventory item batch
+POST https://api.pinterest.com/v5/catalogs/{{catalog_id}}/local_inventory_items/batch?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "operations": "<string>"
+}
+
+
+### Create local stores
+## Create local stores
+POST https://api.pinterest.com/v5/catalogs/{{catalog_id}}/local_stores?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Delete local stores
+## Delete local stores
+DELETE https://api.pinterest.com/v5/catalogs/{{catalog_id}}/local_stores?ids={{ids}}&adAccountId={{adAccountId}}
+Accept: application/json
+
+### List local stores
+## List local stores
+GET https://api.pinterest.com/v5/catalogs/{{catalog_id}}/local_stores?ids={{ids}}&adAccountId={{adAccountId}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Update local stores
+## Update local stores
+PATCH https://api.pinterest.com/v5/catalogs/{{catalog_id}}/local_stores?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Get supplemental items batch status
+## Get supplemental items batch status
+GET https://api.pinterest.com/v5/catalogs/{{catalog_id}}/supplemental_items/batch/{{batch_id}}?adAccountId={{adAccountId}}
+Accept: application/json

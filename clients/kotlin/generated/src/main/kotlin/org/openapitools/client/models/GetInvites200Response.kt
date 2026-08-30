@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -23,16 +31,15 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param items List of invite and request data.
+ * @param items 
  * @param bookmark 
  */
 
 
 data class GetInvites200Response (
 
-    /* List of invite and request data. */
     @Json(name = "items")
-    val items: kotlin.collections.List<InviteResponse>,
+    val items: kotlin.collections.List<InviteResponse?>,
 
     @Json(name = "bookmark")
     val bookmark: kotlin.String? = null

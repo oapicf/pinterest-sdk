@@ -1,9 +1,9 @@
 package controllers;
 
-import apimodels.Error;
+import apimodels.BoardsList200Response;
+import apimodels.PinsList200Response;
+import apimodels.PinterestLibError;
 import apimodels.SearchPartnerPins200Response;
-import apimodels.SearchUserBoardsGet200Response;
-import apimodels.SearchUserPinsList200Response;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -49,12 +49,12 @@ public abstract class SearchApiControllerImpInterface {
 
     public abstract SearchPartnerPins200Response searchPartnerPins(Http.Request request, @NotNull String term, @NotNull String countryCode, String bookmark, String locale,  @Min(1) @Max(50)Integer limit) throws Exception;
 
-    public Result searchUserBoardsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String query) throws Exception {
+    public Result searchUserBoardsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String query, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        SearchUserBoardsGet200Response obj = searchUserBoardsGet(request, adAccountId, bookmark, pageSize, query);
+        BoardsList200Response obj = searchUserBoardsGet(request, adAccountId, query, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -66,14 +66,14 @@ public abstract class SearchApiControllerImpInterface {
 
     }
 
-    public abstract SearchUserBoardsGet200Response searchUserBoardsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String query) throws Exception;
+    public abstract BoardsList200Response searchUserBoardsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String query, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
     public Result searchUserPinsListHttp(Http.Request request, @NotNull String query,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        SearchUserPinsList200Response obj = searchUserPinsList(request, query, adAccountId, bookmark);
+        PinsList200Response obj = searchUserPinsList(request, query, adAccountId, bookmark);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -85,6 +85,6 @@ public abstract class SearchApiControllerImpInterface {
 
     }
 
-    public abstract SearchUserPinsList200Response searchUserPinsList(Http.Request request, @NotNull String query,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark) throws Exception;
+    public abstract PinsList200Response searchUserPinsList(Http.Request request, @NotNull String query,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark) throws Exception;
 
 }

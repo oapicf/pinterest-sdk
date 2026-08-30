@@ -11,13 +11,13 @@ import org.openapitools.model.Currency;
 class SSIOOrderLine {
     /* The SFDC id for the terms */
     String acceptedTermsId
-    /* The UTC timestamp (to the nearest sec) of when terms were accepted */
+    /* The UTC timestamp (to the nearest second) when terms were accepted. */
     String acceptedTermsTime
-    /* Ads manager OrderLineId */
+    /* Ads manager order line id */
     String adsManagerOrderLineId
     /* Agency link */
     String agencyLink
-    /* Bill To Company name */
+    /* Bill-to company name */
     String billToCompanyName
     /* Billing contact email */
     String billingContactEmail
@@ -25,21 +25,21 @@ class SSIOOrderLine {
     String billingContactFirstname
     /* Billing contact last name */
     String billingContactLastname
-    /* If Budget order line, the budget amount. */
+    /* If budget order line, the budget amount. */
     BigDecimal budgetAmount
     
     Currency currencyInfo
     /* End date of the order line. */
     Date endDate
-    /* If Ongoing (perpetual) order line, the estimated monthly spend */
+    /* If ongoing (perpetual) order line, the estimated monthly spend. */
     BigDecimal estimatedMonthlySpend
     /* Last modified date. */
     String lastModifiedDateTime
     /* Billing media email */
     String mediaContactEmail
-    /* Billing contact first name */
+    /* Billing media contact first name */
     String mediaContactFirstname
-    /* Billing contact first name */
+    /* Billing media contact last name */
     String mediaContactLastname
     /* The order name */
     String orderName
@@ -47,9 +47,9 @@ class SSIOOrderLine {
     String pinOrderId
     /* The Pinterest marketing partner name */
     String pmpName
-    /* The po number */
+    /* The PO number */
     String poNumber
-    /* OrderLineId in SFDC */
+    /* Order line id in SFDC */
     String salesforceOrderLineId
     /* Start date of the order line. */
     Date startDate

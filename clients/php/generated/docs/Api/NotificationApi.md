@@ -1,6 +1,6 @@
 # OpenAPI\Client\NotificationApi
 
-
+Send notifications.
 
 All URIs are relative to https://api.pinterest.com/v5, except if the operation defines another base path.
 
@@ -39,7 +39,7 @@ $apiInstance = new OpenAPI\Client\Api\NotificationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$notification_post_request = new \OpenAPI\Client\Model\NotificationPostRequest(); // \OpenAPI\Client\Model\NotificationPostRequest | notification event.
+$notification_post_request = new \OpenAPI\Client\Model\NotificationPostRequest(); // \OpenAPI\Client\Model\NotificationPostRequest
 
 try {
     $result = $apiInstance->notificationPost($notification_post_request);
@@ -53,7 +53,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **notification_post_request** | [**\OpenAPI\Client\Model\NotificationPostRequest**](../Model/NotificationPostRequest.md)| notification event. | |
+| **notification_post_request** | [**\OpenAPI\Client\Model\NotificationPostRequest**](../Model/NotificationPostRequest.md)|  | |
 
 ### Return type
 

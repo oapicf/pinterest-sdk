@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,17 +18,17 @@ import (
 // checks if the SSIOOrderLine type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SSIOOrderLine{}
 
-// SSIOOrderLine struct for SSIOOrderLine
+// SSIOOrderLine A Salesforce SSIO order line.
 type SSIOOrderLine struct {
 	// The SFDC id for the terms
 	AcceptedTermsId NullableString `json:"accepted_terms_id,omitempty"`
-	// The UTC timestamp (to the nearest sec) of when terms were accepted
-	AcceptedTermsTime NullableString `json:"accepted_terms_time,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})T(\\\\d{2}):(\\\\d{2}):(\\\\d{2}).(\\\\d{3})Z$"`
-	// Ads manager OrderLineId
+	// The UTC timestamp (to the nearest second) when terms were accepted.
+	AcceptedTermsTime NullableString `json:"accepted_terms_time,omitempty" validate:"regexp=^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$"`
+	// Ads manager order line id
 	AdsManagerOrderLineId NullableString `json:"ads_manager_order_line_id,omitempty"`
 	// Agency link
 	AgencyLink NullableString `json:"agency_link,omitempty"`
-	// Bill To Company name
+	// Bill-to company name
 	BillToCompanyName NullableString `json:"bill_to_company_name,omitempty"`
 	// Billing contact email
 	BillingContactEmail NullableString `json:"billing_contact_email,omitempty"`
@@ -36,20 +36,20 @@ type SSIOOrderLine struct {
 	BillingContactFirstname NullableString `json:"billing_contact_firstname,omitempty"`
 	// Billing contact last name
 	BillingContactLastname NullableString `json:"billing_contact_lastname,omitempty"`
-	// If Budget order line, the budget amount.
+	// If budget order line, the budget amount.
 	BudgetAmount NullableFloat32 `json:"budget_amount,omitempty"`
 	CurrencyInfo *Currency `json:"currency_info,omitempty"`
 	// End date of the order line.
 	EndDate NullableString `json:"end_date,omitempty"`
-	// If Ongoing (perpetual) order line, the estimated monthly spend
+	// If ongoing (perpetual) order line, the estimated monthly spend.
 	EstimatedMonthlySpend NullableFloat32 `json:"estimated_monthly_spend,omitempty"`
 	// Last modified date.
-	LastModifiedDateTime NullableString `json:"last_modified_date_time,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})T(\\\\d{2}):(\\\\d{2}):(\\\\d{2}).(\\\\d{3})Z$"`
+	LastModifiedDateTime NullableString `json:"last_modified_date_time,omitempty" validate:"regexp=^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$"`
 	// Billing media email
 	MediaContactEmail NullableString `json:"media_contact_email,omitempty"`
-	// Billing contact first name
+	// Billing media contact first name
 	MediaContactFirstname NullableString `json:"media_contact_firstname,omitempty"`
-	// Billing contact first name
+	// Billing media contact last name
 	MediaContactLastname NullableString `json:"media_contact_lastname,omitempty"`
 	// The order name
 	OrderName NullableString `json:"order_name,omitempty"`
@@ -57,9 +57,9 @@ type SSIOOrderLine struct {
 	PinOrderId NullableString `json:"pin_order_id,omitempty"`
 	// The Pinterest marketing partner name
 	PmpName NullableString `json:"pmp_name,omitempty"`
-	// The po number
+	// The PO number
 	PoNumber NullableString `json:"po_number,omitempty"`
-	// OrderLineId in SFDC
+	// Order line id in SFDC
 	SalesforceOrderLineId NullableString `json:"salesforce_order_line_id,omitempty"`
 	// Start date of the order line.
 	StartDate NullableString `json:"start_date,omitempty"`

@@ -1,0 +1,26 @@
+# IntegrationLogsInvalidLogResponseRejectedLogsItems
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**field** | **string** | The field name containing an invalid value. | [default to undefined]
+**log_index** | **number** | Index of the log in the batch. | [optional] [default to undefined]
+**reason** | **string** | The reason the value is invalid. | [default to undefined]
+**value** | **string** | The value that is invalid. | [default to undefined]
+
+## Example
+
+```typescript
+import { IntegrationLogsInvalidLogResponseRejectedLogsItems } from './api';
+
+const instance: IntegrationLogsInvalidLogResponseRejectedLogsItems = {
+    field,
+    log_index,
+    reason,
+    value,
+};
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

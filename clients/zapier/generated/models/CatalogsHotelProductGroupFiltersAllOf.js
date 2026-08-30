@@ -8,7 +8,7 @@ module.exports = {
             {
                 key: `${keyPrefix}all_of`,
                 label: `[${labelPrefix}all_of]`,
-                children: .fields(`${keyPrefix}all_of${!isInput ? '[]' : ''}`, isInput, true), 
+                children: CatalogsHotelProductGroupFilterKeys.fields(`${keyPrefix}all_of${!isInput ? '[]' : ''}`, isInput, true), 
             },
         ]
     },

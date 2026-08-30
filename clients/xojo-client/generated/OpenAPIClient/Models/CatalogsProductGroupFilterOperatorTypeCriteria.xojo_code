@@ -16,27 +16,7 @@ Protected Class CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
-    #tag Enum, Name = Filter_operator_typeEnum, Type = Integer, Flags = &h0
-        
-        Escapedis
-        Contains
-        
-    #tag EndEnum
 
-
-	#tag Method, Flags = &h0
-		Shared Function Filter_operator_typeEnumToString(value As Filter_operator_typeEnum) As String
-		  Select Case value
-		    
-		    Case Filter_operator_typeEnum.Escapedis
-		      Return "IS"
-		    Case Filter_operator_typeEnum.Contains
-		      Return "CONTAINS"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -70,6 +50,14 @@ Protected Class CatalogsProductGroupFilterOperatorTypeCriteria
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="filter_operator_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="FilterOperatorType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

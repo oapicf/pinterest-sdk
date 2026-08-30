@@ -2,19 +2,21 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.model.TargetingSpecAppType;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -25,71 +27,30 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
  */
 
 @Schema(name = "AppTypeMultipliers", description = "This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AppTypeMultipliers {
 
-  /**
-   * Gets or Sets APP_TYPE
-   */
-  public enum APPTYPEEnum {
-    ANDROID_MOBILE("android_mobile"),
-    
-    ANDROID_TABLET("android_tablet"),
-    
-    IPAD("ipad"),
-    
-    IPHONE("iphone"),
-    
-    WEB("web"),
-    
-    WEB_MOBILE("web_mobile");
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable TargetingSpecAppType APP_TYPE;
 
-    private final String value;
-
-    APPTYPEEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static APPTYPEEnum fromValue(String value) {
-      for (APPTYPEEnum b : APPTYPEEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private @Nullable APPTYPEEnum APP_TYPE;
-
-  public AppTypeMultipliers APP_TYPE(@Nullable APPTYPEEnum APP_TYPE) {
+  public AppTypeMultipliers APP_TYPE(@Nullable TargetingSpecAppType APP_TYPE) {
     this.APP_TYPE = APP_TYPE;
     return this;
   }
 
   /**
-   * Get APP_TYPE
+   * App type identifier.
    * @return APP_TYPE
    */
-  
-  @Schema(name = "APP_TYPE", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Valid 
+  @Schema(name = "APP_TYPE", description = "App type identifier.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("APP_TYPE")
-  public @Nullable APPTYPEEnum getAPPTYPE() {
+  public @Nullable TargetingSpecAppType getAPPTYPE() {
     return APP_TYPE;
   }
 
-  public void setAPPTYPE(@Nullable APPTYPEEnum APP_TYPE) {
+  @JsonProperty("APP_TYPE")
+  public void setAPPTYPE(@Nullable TargetingSpecAppType APP_TYPE) {
     this.APP_TYPE = APP_TYPE;
   }
     /**
@@ -164,10 +125,7 @@ public class AppTypeMultipliers {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

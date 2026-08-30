@@ -12,7 +12,7 @@ API.Client.LeadFormsList200Response = function() {}
 API.Client.LeadFormsList200Response.prototype.bookmark;
 
 /**
- * @type {!Array<!API.Client.LeadFormResponse>}
+ * @type {!Array<!API.Client.LeadForm>}
  * @export
  */
 API.Client.LeadFormsList200Response.prototype.items;

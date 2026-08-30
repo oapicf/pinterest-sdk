@@ -12,7 +12,7 @@ import org.openapitools.vertxweb.server.model.NonNullableCatalogsCurrency;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupCurrencyCriteria   {
   
-  private Boolean negated = false;
+  private Boolean negated;
   private NonNullableCatalogsCurrency values;
 
   public CatalogsProductGroupCurrencyCriteria () {
@@ -77,9 +77,6 @@ public class CatalogsProductGroupCurrencyCriteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

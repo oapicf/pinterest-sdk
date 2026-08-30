@@ -24,7 +24,7 @@ resourceTypes {
         items {
           type = array
           items.type = UserBusinessRoleBinding
-          description = "List of employers."
+          description = ""
           optional = true
         }
     }

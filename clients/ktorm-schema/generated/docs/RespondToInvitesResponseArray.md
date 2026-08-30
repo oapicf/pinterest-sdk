@@ -5,17 +5,17 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;RespondToInvitesResponseArrayItemsInner&gt;**](RespondToInvitesResponseArrayItemsInner.md) | List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned. |  [optional]
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;RespondToInviteResultItem&gt;**](RespondToInviteResultItem.md) | List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned. |  [optional]
 
 
-# **Table `RespondToInvitesResponseArrayRespondToInvitesResponseArrayItemsInner`**
-(mapped from: RespondToInvitesResponseArrayRespondToInvitesResponseArrayItemsInner)
+# **Table `RespondToInvitesResponseArrayRespondToInviteResultItem`**
+(mapped from: RespondToInvitesResponseArrayRespondToInviteResultItem)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 respondToInvitesResponseArray | respondToInvitesResponseArray | long | | kotlin.Long | Primary Key | *one*
-respondToInvitesResponseArrayItemsInner | respondToInvitesResponseArrayItemsInner | long | | kotlin.Long | Foreign Key | *many*
+respondToInviteResultItem | respondToInviteResultItem | long | | kotlin.Long | Foreign Key | *many*
 
 
 

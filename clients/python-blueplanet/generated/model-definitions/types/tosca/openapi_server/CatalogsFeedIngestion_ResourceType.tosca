@@ -8,6 +8,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 imports {
   Root = tosca.resourceTypes.Root
   CatalogsFeedProcessingStatus = openapi_server.resourceTypes.CatalogsFeedProcessingStatus
+  import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
 
@@ -18,22 +19,22 @@ resourceTypes {
     properties {
         created_at {
           type =  string
-          description = ""
+          description = "Timestamp of the feed ingestion."
           optional = true
         }
         feed_id {
           type =  string
-          description = ""
+          description = "Catalog Feed id pertaining to the feed ingestion."
           optional = true
         }
         id {
           type =  string
-          description = ""
+          description = "Unique identifier of a feed ingestion."
           optional = true
         }
         status {
           type = CatalogsFeedProcessingStatus
-          description = ""
+          description = "Status of the feed ingestion."
           optional = true
         }
     }

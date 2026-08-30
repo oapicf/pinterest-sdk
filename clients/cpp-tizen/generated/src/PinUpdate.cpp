@@ -23,6 +23,7 @@ PinUpdate::~PinUpdate()
 void
 PinUpdate::__init()
 {
+	//ai_disclosures = null;
 	//alt_text = std::string();
 	//board_id = std::string();
 	//board_section_id = std::string();
@@ -35,6 +36,11 @@ PinUpdate::__init()
 void
 PinUpdate::__cleanup()
 {
+	//if(ai_disclosures != NULL) {
+	//
+	//delete ai_disclosures;
+	//ai_disclosures = NULL;
+	//}
 	//if(alt_text != NULL) {
 	//
 	//delete alt_text;
@@ -78,6 +84,20 @@ PinUpdate::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *ai_disclosuresKey = "ai_disclosures";
+	node = json_object_get_member(pJsonObject, ai_disclosuresKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("AiDisclosuresUpdate")) {
+			jsonToValue(&ai_disclosures, node, "AiDisclosuresUpdate", "AiDisclosuresUpdate");
+		} else {
+			
+			AiDisclosuresUpdate* obj = static_cast<AiDisclosuresUpdate*> (&ai_disclosures);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *alt_textKey = "alt_text";
 	node = json_object_get_member(pJsonObject, alt_textKey);
 	if (node !=NULL) {
@@ -180,6 +200,20 @@ PinUpdate::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("AiDisclosuresUpdate")) {
+		AiDisclosuresUpdate obj = getAiDisclosures();
+		node = converttoJson(&obj, "AiDisclosuresUpdate", "");
+	}
+	else {
+		
+		AiDisclosuresUpdate obj = static_cast<AiDisclosuresUpdate> (getAiDisclosures());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *ai_disclosuresKey = "ai_disclosures";
+	json_object_set_member(pJsonObject, ai_disclosuresKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getAltText();
 		node = converttoJson(&obj, "std::string", "");
@@ -265,6 +299,18 @@ PinUpdate::toJson()
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+AiDisclosuresUpdate
+PinUpdate::getAiDisclosures()
+{
+	return ai_disclosures;
+}
+
+void
+PinUpdate::setAiDisclosures(AiDisclosuresUpdate  ai_disclosures)
+{
+	this->ai_disclosures = ai_disclosures;
 }
 
 std::string

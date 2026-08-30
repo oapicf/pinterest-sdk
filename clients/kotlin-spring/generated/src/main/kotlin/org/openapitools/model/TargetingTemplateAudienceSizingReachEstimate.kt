@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -21,13 +24,22 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class TargetingTemplateAudienceSizingReachEstimate(
 
-    @Schema(example = "63492000", description = "")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("estimate")
     @get:JsonProperty("estimate") val estimate: kotlin.Long? = null,
 
-    @Schema(example = "47619000", description = "")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("lower_bound")
     @get:JsonProperty("lower_bound") val lowerBound: kotlin.Long? = null,
 
-    @Schema(example = "79365000", description = "")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("upper_bound")
     @get:JsonProperty("upper_bound") val upperBound: kotlin.Long? = null
 ) {
 

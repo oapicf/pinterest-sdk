@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**negated** | **bool** |  | [optional] [default to False]
+**negated** | **bool** |  | [optional] 
 **values** | [**List[Gender]**](Gender.md) |  | 
 
 ## Example

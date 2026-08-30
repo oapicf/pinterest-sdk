@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TotalCountByEntityStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TotalCountByEntityStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  TotalCountByEntityStatus {
+    title = TotalCountByEntityStatus
+    description = TotalCountByEntityStatus
+    derivedFrom = Root
+    properties {
+        active {
+          type =  integer
+          description = "Count of ACTIVE assets"
+          optional = false
+        }
+        archived {
+          type =  integer
+          description = "Count of ARCHIVED assets"
+          optional = false
+        }
+        paused {
+          type =  integer
+          description = "Count of PAUSED assets"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TotalCountByEntityStatus {
+    title = TotalCountByEntityStatus
+    description = TotalCountByEntityStatus
+    implements = openapi_server.resourceTypes.TotalCountByEntityStatus
+
+  }
+}

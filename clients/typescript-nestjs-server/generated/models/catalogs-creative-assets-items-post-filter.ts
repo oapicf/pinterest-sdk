@@ -1,0 +1,18 @@
+
+
+export interface CatalogsCreativeAssetsItemsPostFilter { 
+  /**
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+   */
+  catalog_id?: string;
+  catalog_type: CatalogsCreativeAssetsItemsPostFilter.CatalogTypeEnum;
+  creative_assets_ids: Array<string>;
+}
+export namespace CatalogsCreativeAssetsItemsPostFilter {
+  export const CatalogTypeEnum = {
+    CreativeAssets: 'CREATIVE_ASSETS'
+  } as const;
+  export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
+}
+
+

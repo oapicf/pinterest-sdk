@@ -3,10 +3,10 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/catalogs_retail_product_group_product_counts.dart';
 import 'package:openapi/src/model/catalogs_hotel_product_group_product_counts.dart';
 import 'package:openapi/src/model/catalogs_creative_assets_product_group_product_counts.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -22,6 +22,8 @@ part 'catalogs_product_group_product_counts_vertical.g.dart';
 /// * [preorder] 
 /// * [total] 
 /// * [videos] 
+/// * [appLinks] 
+/// * [images] 
 @BuiltValue()
 abstract class CatalogsProductGroupProductCountsVertical implements Built<CatalogsProductGroupProductCountsVertical, CatalogsProductGroupProductCountsVerticalBuilder> {
   /// One Of [CatalogsCreativeAssetsProductGroupProductCounts], [CatalogsHotelProductGroupProductCounts], [CatalogsRetailProductGroupProductCounts]
@@ -142,5 +144,18 @@ class _$CatalogsProductGroupProductCountsVerticalSerializer implements Primitive
     result.oneOf = OneOfDynamic(typeIndex: oneOfTypes.indexOf(oneOfType), types: oneOfTypes, value: oneOfResult);
     return result.build();
   }
+}
+
+class CatalogsProductGroupProductCountsVerticalCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')
+  static const CatalogsProductGroupProductCountsVerticalCatalogTypeEnum CREATIVE_ASSETS = _$catalogsProductGroupProductCountsVerticalCatalogTypeEnum_CREATIVE_ASSETS;
+
+  static Serializer<CatalogsProductGroupProductCountsVerticalCatalogTypeEnum> get serializer => _$catalogsProductGroupProductCountsVerticalCatalogTypeEnumSerializer;
+
+  const CatalogsProductGroupProductCountsVerticalCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsProductGroupProductCountsVerticalCatalogTypeEnum> get values => _$catalogsProductGroupProductCountsVerticalCatalogTypeEnumValues;
+  static CatalogsProductGroupProductCountsVerticalCatalogTypeEnum valueOf(String name) => _$catalogsProductGroupProductCountsVerticalCatalogTypeEnumValueOf(name);
 }
 

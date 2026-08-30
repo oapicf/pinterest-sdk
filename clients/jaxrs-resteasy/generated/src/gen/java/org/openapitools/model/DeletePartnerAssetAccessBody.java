@@ -9,27 +9,28 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.DeletePartnerAssetAccessBodyAccessesInner;
+import org.openapitools.model.DeletePartnerAssetAccessItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="An object with a list of partner asset accesses to delete.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class DeletePartnerAssetAccessBody   {
   
-  private List<@Valid DeletePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+  private List<@Valid DeletePartnerAssetAccessItem> accesses = new ArrayList<>();
 
   /**
+   * List of partner asset accesses to delete.
    **/
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "List of partner asset accesses to delete.")
   @JsonProperty("accesses")
   @NotNull
  @Size(min=1,max=50)  @Valid
-  public List<@Valid DeletePartnerAssetAccessBodyAccessesInner> getAccesses() {
+  public List<@Valid DeletePartnerAssetAccessItem> getAccesses() {
     return accesses;
   }
-  public void setAccesses(List<@Valid DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<@Valid DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
@@ -66,10 +67,7 @@ public class DeletePartnerAssetAccessBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

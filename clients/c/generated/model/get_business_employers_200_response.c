@@ -13,10 +13,10 @@ static get_business_employers_200_response_t *get_business_employers_200_respons
     if (!get_business_employers_200_response_local_var) {
         return NULL;
     }
+    memset(get_business_employers_200_response_local_var, 0, sizeof(get_business_employers_200_response_t));
+    get_business_employers_200_response_local_var->_library_owned = 1;
     get_business_employers_200_response_local_var->bookmark = bookmark;
     get_business_employers_200_response_local_var->items = items;
-
-    get_business_employers_200_response_local_var->_library_owned = 1;
     return get_business_employers_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) get_business_employers_200_response_t *get_business_
     char *bookmark,
     list_t *items
     ) {
-    return get_business_employers_200_response_create_internal (
+    get_business_employers_200_response_t *result = get_business_employers_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void get_business_employers_200_response_free(get_business_employers_200_response_t *get_business_employers_200_response) {
@@ -96,6 +99,8 @@ get_business_employers_200_response_t *get_business_employers_200_response_parse
 
     get_business_employers_200_response_t *get_business_employers_200_response_local_var = NULL;
 
+    char *bookmark_local_str = NULL;
+
     // define the local list for get_business_employers_200_response->items
     list_t *itemsList = NULL;
 
@@ -139,13 +144,23 @@ get_business_employers_200_response_t *get_business_employers_200_response_parse
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     get_business_employers_200_response_local_var = get_business_employers_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!get_business_employers_200_response_local_var) {
+        goto end;
+    }
+
     return get_business_employers_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {

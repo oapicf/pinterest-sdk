@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CreateAssetAccessRequestBodyAssetRequestsInner;
+import org.openapitools.model.CreateAssetAccessRequestItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -23,27 +23,27 @@ public class CreateAssetAccessRequestBody  {
 
   @Valid
 
-  private List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests = new ArrayList<>();
+  private List<@Valid CreateAssetAccessRequestItem> assetRequests = new ArrayList<>();
  /**
    * Get assetRequests
    * @return assetRequests
   **/
   @JsonProperty("asset_requests")
   @NotNull
- @Size(min=1,max=100)  public List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> getAssetRequests() {
+ @Size(min=1,max=100)  public List<@Valid CreateAssetAccessRequestItem> getAssetRequests() {
     return assetRequests;
   }
 
-  public void setAssetRequests(List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
+  public void setAssetRequests(List<@Valid CreateAssetAccessRequestItem> assetRequests) {
     this.assetRequests = assetRequests;
   }
 
-  public CreateAssetAccessRequestBody assetRequests(List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
+  public CreateAssetAccessRequestBody assetRequests(List<@Valid CreateAssetAccessRequestItem> assetRequests) {
     this.assetRequests = assetRequests;
     return this;
   }
 
-  public CreateAssetAccessRequestBody addAssetRequestsItem(CreateAssetAccessRequestBodyAssetRequestsInner assetRequestsItem) {
+  public CreateAssetAccessRequestBody addAssetRequestsItem(CreateAssetAccessRequestItem assetRequestsItem) {
     this.assetRequests.add(assetRequestsItem);
     return this;
   }
@@ -80,10 +80,7 @@ public class CreateAssetAccessRequestBody  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

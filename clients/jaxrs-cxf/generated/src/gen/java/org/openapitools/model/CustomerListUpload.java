@@ -9,6 +9,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ErrorDetail;
 import org.openapitools.model.RecordCounts;
 import org.openapitools.model.UserListOperationType;
+import org.openapitools.model.WorkloadState;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -62,50 +63,20 @@ public class CustomerListUpload  {
 
   private UserListOperationType operation;
 
-  @ApiModelProperty(value = "")
+ /**
+  * Record processing counts
+  */
+  @ApiModelProperty(value = "Record processing counts")
 
   @Valid
 
   private RecordCounts recordCounts;
 
-public enum StateEnum {
+  @ApiModelProperty(example = "RUNNING", required = true, value = "")
 
-NOT_STARTED(String.valueOf("NOT_STARTED")), RUNNING(String.valueOf("RUNNING")), PAUSED(String.valueOf("PAUSED")), SUCCEEDED(String.valueOf("SUCCEEDED")), FAILED(String.valueOf("FAILED"));
+  @Valid
 
-
-    private String value;
-
-    StateEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StateEnum fromValue(String value) {
-        for (StateEnum b : StateEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
- /**
-  * Workload processing state
-  */
-  @ApiModelProperty(example = "RUNNING", required = true, value = "Workload processing state")
-
-  private StateEnum state;
+  private WorkloadState state;
 
  /**
   * Customer List Upload updated_time. Epoch (seconds).
@@ -199,7 +170,7 @@ NOT_STARTED(String.valueOf("NOT_STARTED")), RUNNING(String.valueOf("RUNNING")), 
   **/
   @JsonProperty("id")
   @NotNull
- @Pattern(regexp="^\\d+$")  public String getId() {
+ @Pattern(regexp="^\\d+$") @Size(max=18)  public String getId() {
     return id;
   }
 
@@ -232,7 +203,7 @@ NOT_STARTED(String.valueOf("NOT_STARTED")), RUNNING(String.valueOf("RUNNING")), 
   }
 
  /**
-   * Get recordCounts
+   * Record processing counts
    * @return recordCounts
   **/
   @JsonProperty("record_counts")
@@ -250,23 +221,20 @@ NOT_STARTED(String.valueOf("NOT_STARTED")), RUNNING(String.valueOf("RUNNING")), 
   }
 
  /**
-   * Workload processing state
+   * Get state
    * @return state
   **/
   @JsonProperty("state")
   @NotNull
-  public String getState() {
-    if (state == null) {
-      return null;
-    }
-    return state.value();
+  public WorkloadState getState() {
+    return state;
   }
 
-  public void setState(StateEnum state) {
+  public void setState(WorkloadState state) {
     this.state = state;
   }
 
-  public CustomerListUpload state(StateEnum state) {
+  public CustomerListUpload state(WorkloadState state) {
     this.state = state;
     return this;
   }
@@ -338,10 +306,7 @@ NOT_STARTED(String.valueOf("NOT_STARTED")), RUNNING(String.valueOf("RUNNING")), 
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

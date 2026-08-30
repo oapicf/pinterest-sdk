@@ -86,7 +86,7 @@ LeadsExportResponseData::getDownloadUrl()
 }
 
 void
-LeadsExportResponseData::setDownloadUrl(std::string  download_url)
+LeadsExportResponseData::setDownloadUrl(std::string download_url)
 {
 	this->download_url = download_url;
 }
@@ -98,7 +98,7 @@ LeadsExportResponseData::getExportStatus()
 }
 
 void
-LeadsExportResponseData::setExportStatus(LeadsExportStatus  export_status)
+LeadsExportResponseData::setExportStatus(LeadsExportStatus export_status)
 {
 	this->export_status = export_status;
 }

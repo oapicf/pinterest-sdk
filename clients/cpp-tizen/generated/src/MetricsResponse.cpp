@@ -49,12 +49,12 @@ MetricsResponse::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<std::string> new_list;
-			std::string inst;
+			list<MetricsResponseDataItems> new_list;
+			MetricsResponseDataItems inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("std::string")) {
-					jsonToValue(&inst, temp_json, "std::string", "");
+				if (isprimitive("MetricsResponseDataItems")) {
+					jsonToValue(&inst, temp_json, "MetricsResponseDataItems", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -78,18 +78,18 @@ MetricsResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getData());
-		node = converttoJson(&new_list, "std::string", "array");
+	if (isprimitive("MetricsResponseDataItems")) {
+		list<MetricsResponseDataItems> new_list = static_cast<list <MetricsResponseDataItems> > (getData());
+		node = converttoJson(&new_list, "MetricsResponseDataItems", "array");
 	} else {
 		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getData());
+		list<MetricsResponseDataItems> new_list = static_cast<list <MetricsResponseDataItems> > (getData());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<std::string>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<MetricsResponseDataItems>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			std::string obj = *it;
+			MetricsResponseDataItems obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -111,14 +111,14 @@ MetricsResponse::toJson()
 	return ret;
 }
 
-std::list<std::string>
+std::list<MetricsResponseDataItems>
 MetricsResponse::getData()
 {
 	return data;
 }
 
 void
-MetricsResponse::setData(std::list <std::string> data)
+MetricsResponse::setData(std::list <MetricsResponseDataItems> data)
 {
 	this->data = data;
 }

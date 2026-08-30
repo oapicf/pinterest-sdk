@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -75,8 +75,14 @@ func main() {
 	CatalogReportsAPIService := openapi.NewCatalogReportsAPIService()
 	CatalogReportsAPIController := openapi.NewCatalogReportsAPIController(CatalogReportsAPIService)
 
+	CatalogSupplementalAPIService := openapi.NewCatalogSupplementalAPIService()
+	CatalogSupplementalAPIController := openapi.NewCatalogSupplementalAPIController(CatalogSupplementalAPIService)
+
 	CatalogsAPIService := openapi.NewCatalogsAPIService()
 	CatalogsAPIController := openapi.NewCatalogsAPIController(CatalogsAPIService)
+
+	ConversionDeletionRequestsAPIService := openapi.NewConversionDeletionRequestsAPIService()
+	ConversionDeletionRequestsAPIController := openapi.NewConversionDeletionRequestsAPIController(ConversionDeletionRequestsAPIService)
 
 	ConversionEqsAPIService := openapi.NewConversionEqsAPIService()
 	ConversionEqsAPIController := openapi.NewConversionEqsAPIController(ConversionEqsAPIService)
@@ -95,6 +101,9 @@ func main() {
 
 	CustomerListsAPIService := openapi.NewCustomerListsAPIService()
 	CustomerListsAPIController := openapi.NewCustomerListsAPIController(CustomerListsAPIService)
+
+	CustomerSegmentAPIService := openapi.NewCustomerSegmentAPIService()
+	CustomerSegmentAPIController := openapi.NewCustomerSegmentAPIController(CustomerSegmentAPIService)
 
 	IntegrationsAPIService := openapi.NewIntegrationsAPIService()
 	IntegrationsAPIController := openapi.NewIntegrationsAPIController(IntegrationsAPIService)
@@ -132,17 +141,20 @@ func main() {
 	PinsAPIService := openapi.NewPinsAPIService()
 	PinsAPIController := openapi.NewPinsAPIController(PinsAPIService)
 
-	ProductCategoriesAPIService := openapi.NewProductCategoriesAPIService()
-	ProductCategoriesAPIController := openapi.NewProductCategoriesAPIController(ProductCategoriesAPIService)
-
 	ProductGroupPromotionsAPIService := openapi.NewProductGroupPromotionsAPIService()
 	ProductGroupPromotionsAPIController := openapi.NewProductGroupPromotionsAPIController(ProductGroupPromotionsAPIService)
+
+	ProductTagsAPIService := openapi.NewProductTagsAPIService()
+	ProductTagsAPIController := openapi.NewProductTagsAPIController(ProductTagsAPIService)
 
 	PromotionsAPIService := openapi.NewPromotionsAPIService()
 	PromotionsAPIController := openapi.NewPromotionsAPIController(PromotionsAPIService)
 
 	ResourcesAPIService := openapi.NewResourcesAPIService()
 	ResourcesAPIController := openapi.NewResourcesAPIController(ResourcesAPIService)
+
+	SchedulesAPIService := openapi.NewSchedulesAPIService()
+	SchedulesAPIController := openapi.NewSchedulesAPIController(SchedulesAPIService)
 
 	SearchAPIService := openapi.NewSearchAPIService()
 	SearchAPIController := openapi.NewSearchAPIController(SearchAPIService)
@@ -156,10 +168,13 @@ func main() {
 	TermsOfServiceAPIService := openapi.NewTermsOfServiceAPIService()
 	TermsOfServiceAPIController := openapi.NewTermsOfServiceAPIController(TermsOfServiceAPIService)
 
+	TrendsAPIService := openapi.NewTrendsAPIService()
+	TrendsAPIController := openapi.NewTrendsAPIController(TrendsAPIService)
+
 	UserAccountAPIService := openapi.NewUserAccountAPIService()
 	UserAccountAPIController := openapi.NewUserAccountAPIController(UserAccountAPIService)
 
-	router := openapi.NewRouter(AdAccountsAPIController, AdGroupsAPIController, AdsAPIController, AdvancedAuctionAPIController, AudienceInsightsAPIController, AudienceSharingAPIController, AudiencesAPIController, BillingAPIController, BoardsAPIController, BulkAPIController, BusinessAccessAssetsAPIController, BusinessAccessInviteAPIController, BusinessAccessRelationshipsAPIController, CampaignsAPIController, CatalogFeedsAPIController, CatalogItemsAPIController, CatalogProductGroupsAPIController, CatalogReportsAPIController, CatalogsAPIController, ConversionEqsAPIController, ConversionEventsAPIController, ConversionTagsAPIController, ConversionsAPIController, CustomerListUploadsAPIController, CustomerListsAPIController, IntegrationsAPIController, KeywordsAPIController, LabelsAPIController, LeadAdsAPIController, LeadFormsAPIController, LeadsExportAPIController, MediaAPIController, MsotEventsAPIController, NotificationAPIController, OauthAPIController, OrderLinesAPIController, PinsAPIController, ProductCategoriesAPIController, ProductGroupPromotionsAPIController, PromotionsAPIController, ResourcesAPIController, SearchAPIController, TargetingTemplateAPIController, TermsAPIController, TermsOfServiceAPIController, UserAccountAPIController)
+	router := openapi.NewRouter(AdAccountsAPIController, AdGroupsAPIController, AdsAPIController, AdvancedAuctionAPIController, AudienceInsightsAPIController, AudienceSharingAPIController, AudiencesAPIController, BillingAPIController, BoardsAPIController, BulkAPIController, BusinessAccessAssetsAPIController, BusinessAccessInviteAPIController, BusinessAccessRelationshipsAPIController, CampaignsAPIController, CatalogFeedsAPIController, CatalogItemsAPIController, CatalogProductGroupsAPIController, CatalogReportsAPIController, CatalogSupplementalAPIController, CatalogsAPIController, ConversionDeletionRequestsAPIController, ConversionEqsAPIController, ConversionEventsAPIController, ConversionTagsAPIController, ConversionsAPIController, CustomerListUploadsAPIController, CustomerListsAPIController, CustomerSegmentAPIController, IntegrationsAPIController, KeywordsAPIController, LabelsAPIController, LeadAdsAPIController, LeadFormsAPIController, LeadsExportAPIController, MediaAPIController, MsotEventsAPIController, NotificationAPIController, OauthAPIController, OrderLinesAPIController, PinsAPIController, ProductGroupPromotionsAPIController, ProductTagsAPIController, PromotionsAPIController, ResourcesAPIController, SchedulesAPIController, SearchAPIController, TargetingTemplateAPIController, TermsAPIController, TermsOfServiceAPIController, TrendsAPIController, UserAccountAPIController)
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

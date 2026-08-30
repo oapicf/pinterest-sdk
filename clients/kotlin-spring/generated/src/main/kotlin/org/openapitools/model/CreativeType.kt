@@ -17,7 +17,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
 * Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
-* Values: REGULAR,VIDEO,SHOPPING,CAROUSEL,MAX_VIDEO,SHOP_THE_PIN,COLLECTION,IDEA,SHOWCASE,QUIZ,COLLAGE,MAX_WIDTH_REGULAR_COLLECTION,MAX_WIDTH_VIDEO_COLLECTION
+* Values: REGULAR,VIDEO,SHOPPING,CAROUSEL,MAX_VIDEO,SHOP_THE_PIN,COLLECTION,IDEA,SHOWCASE,QUIZ,COLLAGE,MAX_WIDTH_REGULAR_COLLECTION,MAX_WIDTH_VIDEO_COLLECTION,APP
 */
 enum class CreativeType(@get:JsonValue val value: kotlin.String) {
 
@@ -33,7 +33,8 @@ enum class CreativeType(@get:JsonValue val value: kotlin.String) {
     QUIZ("QUIZ"),
     COLLAGE("COLLAGE"),
     MAX_WIDTH_REGULAR_COLLECTION("MAX_WIDTH_REGULAR_COLLECTION"),
-    MAX_WIDTH_VIDEO_COLLECTION("MAX_WIDTH_VIDEO_COLLECTION");
+    MAX_WIDTH_VIDEO_COLLECTION("MAX_WIDTH_VIDEO_COLLECTION"),
+    APP("APP");
 
     companion object {
         @JvmStatic

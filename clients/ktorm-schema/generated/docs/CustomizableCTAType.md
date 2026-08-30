@@ -50,6 +50,8 @@
 
     * `FIND_A_LOCATION` (value: `"FIND_A_LOCATION"`)
 
+    * `FIND_RETAILERS` (value: `"FIND_RETAILERS"`)
+
     * `GET_DEAL` (value: `"GET_DEAL"`)
 
     * `GET_RECIPE` (value: `"GET_RECIPE"`)
@@ -61,6 +63,8 @@
     * `PLAY_GAME` (value: `"PLAY_GAME"`)
 
     * `TRY_IT` (value: `"TRY_IT"`)
+
+    * `TAKE_A_PEEK` (value: `"TAKE_A_PEEK"`)
 
 
 

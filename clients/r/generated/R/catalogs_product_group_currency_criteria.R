@@ -22,9 +22,9 @@ CatalogsProductGroupCurrencyCriteria <- R6::R6Class(
     #' Initialize a new CatalogsProductGroupCurrencyCriteria class.
     #'
     #' @param values values
-    #' @param negated negated. Default to FALSE.
+    #' @param negated negated
     #' @param ... Other optional arguments.
-    initialize = function(`values`, `negated` = FALSE, ...) {
+    initialize = function(`values`, `negated` = NULL, ...) {
       if (!missing(`values`)) {
         if (!(`values` %in% c())) {
           stop(paste("Error! \"", `values`, "\" cannot be assigned to `values`. Must be .", sep = ""))
@@ -77,9 +77,32 @@ CatalogsProductGroupCurrencyCriteria <- R6::R6Class(
       }
       if (!is.null(self$`values`)) {
         CatalogsProductGroupCurrencyCriteriaObject[["values"]] <-
-          self$`values`$toSimpleType()
+          self$extractSimpleType(self$`values`)
       }
       return(CatalogsProductGroupCurrencyCriteriaObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

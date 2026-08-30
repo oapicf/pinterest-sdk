@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "TemplateResponse.h"
+#include "AccountTemplate.h"
 #include <list>
 #include "Object.h"
 
@@ -56,15 +56,15 @@ public:
 	void setBookmark(std::string  bookmark);
 	/*! \brief Get 
 	 */
-	std::list<TemplateResponse> getItems();
+	std::list<AccountTemplate> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <TemplateResponse> items);
+	void setItems(std::list <AccountTemplate> items);
 
 private:
 	std::string bookmark;
-	std::list <TemplateResponse>items;
+	std::list <AccountTemplate>items;
 	void __init();
 	void __cleanup();
 

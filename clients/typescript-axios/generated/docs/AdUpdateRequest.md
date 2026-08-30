@@ -5,6 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **string** | The ID of this ad. | [default to undefined]
+**pin_id** | **string** | Pin ID. This field may only be updated for draft ads. | [optional] [default to undefined]
 **ad_group_id** | **string** | ID of the ad group that contains the ad. | [optional] [default to undefined]
 **android_deep_link** | **string** | Deep link URL for Android devices. | [optional] [default to undefined]
 **carousel_android_deep_links** | **Array&lt;string&gt;** | Comma-separated deep links for the carousel pin on Android. | [optional] [default to undefined]
@@ -18,16 +20,15 @@ Name | Type | Description | Notes
 **disclosure_url** | **string** | URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. | [optional] [default to undefined]
 **grid_click_type** | [**GridClickType**](GridClickType.md) |  | [optional] [default to undefined]
 **ios_deep_link** | **string** | Deep link URL for iOS devices. | [optional] [default to undefined]
+**is_carting** | **boolean** | Is the ad a carting/WTB ad? | [optional] [default to undefined]
 **is_pin_deleted** | **boolean** | Is original pin deleted? | [optional] [default to undefined]
 **is_removable** | **boolean** | Is pin repinnable? | [optional] [default to undefined]
 **lead_form_id** | **string** | Lead form ID for lead ad generation. | [optional] [default to undefined]
 **name** | **string** | Name of the ad - 255 chars max. | [optional] [default to undefined]
-**quiz_pin_data** | [**QuizPinData**](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] [default to undefined]
+**quiz_pin_data** | **object** | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] [default to undefined]
 **status** | [**EntityStatus**](EntityStatus.md) |  | [optional] [default to undefined]
-**tracking_urls** | [**TrackingUrls**](TrackingUrls.md) |  | [optional] [default to undefined]
+**tracking_urls** | **object** |  | [optional] [default to undefined]
 **view_tracking_url** | **string** | Tracking URL for ad impressions. | [optional] [default to undefined]
-**id** | **string** | The ID of this ad. | [default to undefined]
-**pin_id** | **string** | Pin ID. This field may only be updated for draft ads. | [optional] [default to undefined]
 
 ## Example
 
@@ -35,6 +36,8 @@ Name | Type | Description | Notes
 import { AdUpdateRequest } from './api';
 
 const instance: AdUpdateRequest = {
+    id,
+    pin_id,
     ad_group_id,
     android_deep_link,
     carousel_android_deep_links,
@@ -48,6 +51,7 @@ const instance: AdUpdateRequest = {
     disclosure_url,
     grid_click_type,
     ios_deep_link,
+    is_carting,
     is_pin_deleted,
     is_removable,
     lead_form_id,
@@ -56,8 +60,6 @@ const instance: AdUpdateRequest = {
     status,
     tracking_urls,
     view_tracking_url,
-    id,
-    pin_id,
 };
 ```
 

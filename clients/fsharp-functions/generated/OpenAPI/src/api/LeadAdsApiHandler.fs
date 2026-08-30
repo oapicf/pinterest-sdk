@@ -25,6 +25,10 @@ module LeadAdsApiHandlers =
 
       let result = LeadAdsApiService.AdAccountsSubscriptionsDelById ()
       match result with
+      | AdAccountsSubscriptionsDelByIdStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
       | AdAccountsSubscriptionsDelByIdStatusCode204 resolved ->
           let content = resolved.content
           let responseContentType = "text/plain"

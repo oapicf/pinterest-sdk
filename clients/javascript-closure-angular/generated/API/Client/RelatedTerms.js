@@ -21,7 +21,7 @@ API.Client.RelatedTerms.prototype.relatedTermCount;
 
 /**
  * The id of the advertiser.
- * @type {!Array<!API.Client.RelatedTerms_related_terms_list_inner>}
+ * @type {!Array<!API.Client.RelatedTermsRelatedTermsListItems>}
  * @export
  */
 API.Client.RelatedTerms.prototype.relatedTermsList;

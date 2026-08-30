@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdBatchWriteResponseModel",
+  "fields": [
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.AdBatchItem"
+      },
+      "doc": ""
+    }
+  ]
+
+}

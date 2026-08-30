@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssetGroupInfo** | Pointer to [**AssetGroupBinding**](AssetGroupBinding.md) |  | [optional] 
-**AssetId** | Pointer to **string** | Unique identifier of a business asset. | [optional] 
-**AssetType** | Pointer to **string** | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional] 
-**Permissions** | Pointer to **[]string** | Permission levels member or partner has on an asset. | [optional] 
+**AssetGroupInfo** | Pointer to [**AssetGroupBinding**](AssetGroupBinding.md) | An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals &#39;ASSET_GROUP&#39;. | [optional] 
+**AssetId** | **string** | Unique identifier of a business asset. | 
+**AssetType** | [**AssetTypeResponse**](AssetTypeResponse.md) |  | 
+**Permissions** | **[]string** | Permission levels member or partner has on an asset. | 
 
 ## Methods
 
 ### NewAssetIdPermissions
 
-`func NewAssetIdPermissions() *AssetIdPermissions`
+`func NewAssetIdPermissions(assetId string, assetType AssetTypeResponse, permissions []string, ) *AssetIdPermissions`
 
 NewAssetIdPermissions instantiates a new AssetIdPermissions object
 This constructor will assign default values to properties that have it defined,
@@ -72,36 +72,26 @@ and a boolean to check if the value has been set.
 
 SetAssetId sets AssetId field to given value.
 
-### HasAssetId
-
-`func (o *AssetIdPermissions) HasAssetId() bool`
-
-HasAssetId returns a boolean if a field has been set.
 
 ### GetAssetType
 
-`func (o *AssetIdPermissions) GetAssetType() string`
+`func (o *AssetIdPermissions) GetAssetType() AssetTypeResponse`
 
 GetAssetType returns the AssetType field if non-nil, zero value otherwise.
 
 ### GetAssetTypeOk
 
-`func (o *AssetIdPermissions) GetAssetTypeOk() (*string, bool)`
+`func (o *AssetIdPermissions) GetAssetTypeOk() (*AssetTypeResponse, bool)`
 
 GetAssetTypeOk returns a tuple with the AssetType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssetType
 
-`func (o *AssetIdPermissions) SetAssetType(v string)`
+`func (o *AssetIdPermissions) SetAssetType(v AssetTypeResponse)`
 
 SetAssetType sets AssetType field to given value.
 
-### HasAssetType
-
-`func (o *AssetIdPermissions) HasAssetType() bool`
-
-HasAssetType returns a boolean if a field has been set.
 
 ### GetPermissions
 
@@ -122,11 +112,6 @@ and a boolean to check if the value has been set.
 
 SetPermissions sets Permissions field to given value.
 
-### HasPermissions
-
-`func (o *AssetIdPermissions) HasPermissions() bool`
-
-HasPermissions returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

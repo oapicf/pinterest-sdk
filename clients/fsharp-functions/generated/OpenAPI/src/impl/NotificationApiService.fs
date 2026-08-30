@@ -1,7 +1,7 @@
 namespace OpenAPI
-open OpenAPI.Model.Error
 open OpenAPI.Model.NotificationPostRequest
 open OpenAPI.Model.NotificationResponse
+open OpenAPI.Model.PinterestLibError
 open NotificationApiHandlerParams
 open NotificationApiServiceInterface
 open System.Collections.Generic
@@ -15,13 +15,13 @@ module NotificationApiServiceImplementation =
 
         member this.NotificationPost (parameters:NotificationPostBodyParams) =
           if true then
-            let content = "Successfully received notification" :> obj :?> NotificationResponse // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> NotificationResponse // this cast is obviously wrong, and is only intended to allow generated project to compile   
             NotificationPostStatusCode200 { content = content }
           else if true then
-            let content = "Invalid request parameter." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             NotificationPostStatusCode400 { content = content }
           else
-            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             NotificationPostDefaultStatusCode { content = content }
 
       //#endregion

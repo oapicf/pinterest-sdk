@@ -4,8 +4,8 @@ import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
-import org.openapitools.model.LabelStatus
-import org.openapitools.model.LabelType
+import org.openapitools.model.NullableLabelStatus
+import org.openapitools.model.NullableLabelType
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -21,52 +21,31 @@ import io.swagger.v3.oas.annotations.media.Schema
  * 
  * @param id Label ID.
  * @param labelType 
- * @param parentId Label parent entity ID.
- * @param parentType Label parent entity type.
+ * @param &#x60;value&#x60; Label name. 100-character limit.
  * @param status 
- * @param &#x60;value&#x60; Label name.
  */
 data class Label(
 
-    @Schema(example = "1106385754497", description = "Label ID.")
-    @get:JsonProperty("id") val id: kotlin.String? = null,
+    @get:Pattern(regexp="^\\d+$")
+    @Schema(example = "1106385754497", required = true, description = "Label ID.")
+    @param:JsonProperty("id")
+    @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("label_type") val labelType: LabelType? = null,
-
-    @Schema(example = "626753052072", description = "Label parent entity ID.")
-    @get:JsonProperty("parent_id") val parentId: kotlin.String? = null,
-
-    @Schema(example = "CAMPAIGN", description = "Label parent entity type.")
-    @get:JsonProperty("parent_type") val parentType: Label.ParentType? = null,
-
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("status") val status: LabelStatus? = null,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("label_type")
+    @get:JsonProperty("label_type", required = true) val labelType: NullableLabelType?,
 
     @get:Size(max=100)
-    @Schema(example = "null", description = "Label name.")
-    @get:JsonProperty("value") val `value`: kotlin.String? = null
+    @Schema(required = true, description = "Label name. 100-character limit.")
+    @param:JsonProperty("value")
+    @get:JsonProperty("value", required = true) val `value`: kotlin.String,
+
+    @field:Valid
+    @Schema(description = "")
+    @param:JsonProperty("status")
+    @get:JsonProperty("status") val status: NullableLabelStatus? = null
 ) {
-
-    /**
-    * Label parent entity type.
-    * Values: CAMPAIGN
-    */
-    enum class ParentType(@get:JsonValue val value: kotlin.String) {
-
-        CAMPAIGN("CAMPAIGN");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): ParentType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Label'")
-            }
-        }
-    }
 
 }
 

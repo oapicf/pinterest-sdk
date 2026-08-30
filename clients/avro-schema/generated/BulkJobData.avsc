@@ -1,0 +1,26 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Bulk request result data.",
+  "name": "BulkJobData",
+  "fields": [
+    {
+      "name": "result_url",
+      "type": ["null", "string"],
+      "doc": "Presigned s3 file url for the bulk request result.",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": "model.BulkRequestStatus",
+      "doc": ""
+    },
+    {
+      "name": "workload_id",
+      "type": ["null", "int"],
+      "doc": "Bulk Workload Id.",
+      "default": null
+    }
+  ]
+
+}

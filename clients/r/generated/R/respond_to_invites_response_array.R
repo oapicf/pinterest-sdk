@@ -7,7 +7,7 @@
 #' @title RespondToInvitesResponseArray
 #' @description RespondToInvitesResponseArray Class
 #' @format An \code{R6Class} generator object
-#' @field items List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned. list(\link{RespondToInvitesResponseArrayItemsInner}) [optional]
+#' @field items List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned. list(\link{RespondToInviteResultItem}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -62,9 +62,32 @@ RespondToInvitesResponseArray <- R6::R6Class(
       RespondToInvitesResponseArrayObject <- list()
       if (!is.null(self$`items`)) {
         RespondToInvitesResponseArrayObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`items`)
       }
       return(RespondToInvitesResponseArrayObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -75,7 +98,7 @@ RespondToInvitesResponseArray <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[RespondToInvitesResponseArrayItemsInner]", loadNamespace("openapi"))
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[RespondToInviteResultItem]", loadNamespace("openapi"))
       }
       self
     },
@@ -98,7 +121,7 @@ RespondToInvitesResponseArray <- R6::R6Class(
     #' @return the instance of RespondToInvitesResponseArray
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[RespondToInvitesResponseArrayItemsInner]", loadNamespace("openapi"))
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[RespondToInviteResultItem]", loadNamespace("openapi"))
       self
     },
 

@@ -3,7 +3,7 @@ package org.openapitools.model;
 
 
 /**
- * Gets or Sets AudienceAccountType
+ * Account type filter for audience sharing.
  */
 public enum AudienceAccountType {
   

@@ -7,15 +7,16 @@
 Name | Type
 ------------ | -------------
 `adAccountId` | string
-`audienceType` | string
+`audienceType` | [PinnerListType](PinnerListType.md)
 `createdByCompanyName` | string
 `createdTimestamp` | number
 `description` | string
 `id` | string
+`isNca` | boolean
 `name` | string
 `rule` | [AudienceRule](AudienceRule.md)
 `size` | number
-`status` | string
+`status` | [AudienceStatus](AudienceStatus.md)
 `type` | string
 `updatedTimestamp` | number
 
@@ -32,6 +33,7 @@ const example = {
   "createdTimestamp": 1451431341,
   "description": People who love making quilts.,
   "id": 1234,
+  "isNca": null,
   "name": ACME Tools,
   "rule": null,
   "size": 1000,

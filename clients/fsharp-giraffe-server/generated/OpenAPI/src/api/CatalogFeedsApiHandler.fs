@@ -8,14 +8,14 @@ open CatalogFeedsApiHandlerParams
 open CatalogFeedsApiServiceInterface
 open CatalogFeedsApiServiceImplementation
 open OpenAPI.Model.CatalogsFeed
+open OpenAPI.Model.CatalogsFeedCreateRequestSchema
 open OpenAPI.Model.CatalogsFeedIngestion
+open OpenAPI.Model.CatalogsFeedUpdateRequestSchema
 open OpenAPI.Model.CatalogsItemValidationIssue
-open OpenAPI.Model.Error
 open OpenAPI.Model.FeedProcessingResultsList200Response
-open OpenAPI.Model.FeedsCreateRequest
 open OpenAPI.Model.FeedsList200Response
-open OpenAPI.Model.FeedsUpdateRequest
 open OpenAPI.Model.ItemsIssuesList200Response
+open OpenAPI.Model.PinterestLibError
 
 module CatalogFeedsApiHandler =
 
@@ -41,8 +41,12 @@ module CatalogFeedsApiHandler =
                             setStatusCode 400 >=> json resolved.content
                       | FeedProcessingResultsListStatusCode401 resolved ->
                             setStatusCode 401 >=> json resolved.content
+                      | FeedProcessingResultsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | FeedProcessingResultsListStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | FeedProcessingResultsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | FeedProcessingResultsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -63,6 +67,8 @@ module CatalogFeedsApiHandler =
           let serviceArgs = {  queryParams=queryParams;   bodyParams=bodyParams } : FeedsCreateArgs
           let result = CatalogFeedsApiService.FeedsCreate ctx serviceArgs
           return! (match result with
+                      | FeedsCreateStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
                       | FeedsCreateStatusCode201 resolved ->
                             setStatusCode 201 >=> json resolved.content
                       | FeedsCreateStatusCode400 resolved ->
@@ -71,12 +77,10 @@ module CatalogFeedsApiHandler =
                             setStatusCode 401 >=> json resolved.content
                       | FeedsCreateStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
-                      | FeedsCreateStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
-                      | FeedsCreateStatusCode422 resolved ->
-                            setStatusCode 422 >=> json resolved.content
-                      | FeedsCreateStatusCode501 resolved ->
-                            setStatusCode 501 >=> json resolved.content
+                      | FeedsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | FeedsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | FeedsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -95,16 +99,20 @@ module CatalogFeedsApiHandler =
           let serviceArgs = {  queryParams=queryParams;  pathParams=pathParams;  } : FeedsDeleteArgs
           let result = CatalogFeedsApiService.FeedsDelete ctx serviceArgs
           return! (match result with
+                      | FeedsDeleteStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
                       | FeedsDeleteStatusCode204 resolved ->
                             setStatusCode 204 >=> text resolved.content
                       | FeedsDeleteStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | FeedsDeleteStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | FeedsDeleteStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
                       | FeedsDeleteStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
-                      | FeedsDeleteStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | FeedsDeleteStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | FeedsDeleteDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -129,8 +137,12 @@ module CatalogFeedsApiHandler =
                             setStatusCode 400 >=> json resolved.content
                       | FeedsGetStatusCode401 resolved ->
                             setStatusCode 401 >=> json resolved.content
+                      | FeedsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | FeedsGetStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | FeedsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | FeedsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -153,10 +165,14 @@ module CatalogFeedsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | FeedsIngestStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | FeedsIngestStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | FeedsIngestStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
                       | FeedsIngestStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | FeedsIngestStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | FeedsIngestDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -181,6 +197,12 @@ module CatalogFeedsApiHandler =
                             setStatusCode 400 >=> json resolved.content
                       | FeedsListStatusCode401 resolved ->
                             setStatusCode 401 >=> json resolved.content
+                      | FeedsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | FeedsListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | FeedsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | FeedsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -205,10 +227,14 @@ module CatalogFeedsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | FeedsUpdateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | FeedsUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | FeedsUpdateStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
                       | FeedsUpdateStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | FeedsUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | FeedsUpdateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -229,12 +255,16 @@ module CatalogFeedsApiHandler =
           return! (match result with
                       | ItemsIssuesListStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | ItemsIssuesListStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
                       | ItemsIssuesListStatusCode401 resolved ->
                             setStatusCode 401 >=> json resolved.content
+                      | ItemsIssuesListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | ItemsIssuesListStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
-                      | ItemsIssuesListStatusCode501 resolved ->
-                            setStatusCode 501 >=> json resolved.content
+                      | ItemsIssuesListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | ItemsIssuesListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

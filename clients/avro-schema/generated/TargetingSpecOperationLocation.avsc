@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingSpecOperationLocation",
+  "fields": [
+    {
+      "name": "field",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationLocation_field",
+        "symbols": [
+          "LOCATION"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": "model.TargetingSpecListOperation",
+      "doc": ""
+    },
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": ""
+    }
+  ]
+
+}

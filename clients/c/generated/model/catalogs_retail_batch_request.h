@@ -15,7 +15,7 @@
 
 typedef struct catalogs_retail_batch_request_t catalogs_retail_batch_request_t;
 
-#include "catalogs_retail_batch_request_items_inner.h"
+#include "catalogs_retail_batch_request_items_items.h"
 #include "country.h"
 
 // Enum CATALOGTYPE for catalogs_retail_batch_request

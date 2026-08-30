@@ -53,7 +53,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <ConversionTag> items);
+	void setItems(std::list<ConversionTag> items);
 
 
     private:

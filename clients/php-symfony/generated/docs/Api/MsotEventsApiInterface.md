@@ -19,11 +19,11 @@ services:
 ```
 
 ## **msotEventsCreate**
-> msotEventsCreate($adAccountId, $conversionMSOTEvents)
+> msotEventsCreate($adAccountId, $conversionMSOTEventsCreate)
 
 Send Measurement Source Of Truth (MSOT) attributed conversion events
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong> <br> <p>Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their <code>ad_account_id</code>. The request body should be a JSON object.</p> - These events will NOT be used in Reporting.
+**This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their `ad_account_id`. The request body should be a JSON object.  - These events will not be used in Reporting.
 
 ### Example Implementation
 ```php
@@ -50,7 +50,7 @@ class MsotEventsApi implements MsotEventsApiInterface
     /**
      * Implementation of MsotEventsApiInterface#msotEventsCreate
      */
-    public function msotEventsCreate(string $adAccountId, ConversionMSOTEvents $conversionMSOTEvents, int &$responseCode, array &$responseHeaders): void
+    public function msotEventsCreate(string $adAccountId, ConversionMSOTEventsCreate $conversionMSOTEventsCreate, int &$responseCode, array &$responseHeaders): void
     {
         // Implement the operation ...
     }
@@ -64,7 +64,7 @@ class MsotEventsApi implements MsotEventsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **conversionMSOTEvents** | [**OpenAPI\Server\Model\ConversionMSOTEvents**](../Model/ConversionMSOTEvents.md)| Attributed MSOT conversion events |
+ **conversionMSOTEventsCreate** | [**OpenAPI\Server\Model\ConversionMSOTEventsCreate**](../Model/ConversionMSOTEventsCreate.md)|  |
 
 ### Return type
 

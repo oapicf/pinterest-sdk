@@ -1,0 +1,352 @@
+# LeadForm
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AdAccountId** | Pointer to **string** | The Ad Account ID that this lead form belongs to. | [optional] [readonly] 
+**CompletionMessage** | **NullableString** | A message for people who complete the form to let them know what happens next. | 
+**CreatedTime** | Pointer to **int32** | Lead form creation time. Unix timestamp in seconds. | [optional] [readonly] 
+**DisclosureLanguage** | Pointer to **NullableString** | Additional disclosure language to be included in the lead form. | [optional] 
+**HasAcceptedTerms** | **bool** | Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s [Lead Ad Terms](https://policy.pinterest.com/en/lead-ad-terms). As a reminder, all advertising on Pinterest is subject to the [Pinterest Advertising Services Agreement](https://business.pinterest.com/en/pinterest-advertising-services-agreement/) or an equivalent agreement as set forth on an IO | 
+**Id** | **string** | The ID of this lead form | 
+**Name** | **NullableString** | Internal name of the lead form. | 
+**PolicyLinks** | Pointer to [**[]LeadFormPolicyLink**](LeadFormPolicyLink.md) | List of additional policy links to be displayed on the lead form. | [optional] 
+**PrivacyPolicyLink** | **NullableString** | A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language. | 
+**Questions** | [**[]LeadFormQuestion**](LeadFormQuestion.md) | List of questions to be displayed on the lead form. | 
+**Status** | Pointer to [**LeadFormStatus**](LeadFormStatus.md) |  | [optional] 
+**UpdatedTime** | Pointer to **int32** | Last update time. Unix timestamp in seconds. | [optional] [readonly] 
+
+## Methods
+
+### NewLeadForm
+
+`func NewLeadForm(completionMessage NullableString, hasAcceptedTerms bool, id string, name NullableString, privacyPolicyLink NullableString, questions []LeadFormQuestion, ) *LeadForm`
+
+NewLeadForm instantiates a new LeadForm object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewLeadFormWithDefaults
+
+`func NewLeadFormWithDefaults() *LeadForm`
+
+NewLeadFormWithDefaults instantiates a new LeadForm object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetAdAccountId
+
+`func (o *LeadForm) GetAdAccountId() string`
+
+GetAdAccountId returns the AdAccountId field if non-nil, zero value otherwise.
+
+### GetAdAccountIdOk
+
+`func (o *LeadForm) GetAdAccountIdOk() (*string, bool)`
+
+GetAdAccountIdOk returns a tuple with the AdAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdAccountId
+
+`func (o *LeadForm) SetAdAccountId(v string)`
+
+SetAdAccountId sets AdAccountId field to given value.
+
+### HasAdAccountId
+
+`func (o *LeadForm) HasAdAccountId() bool`
+
+HasAdAccountId returns a boolean if a field has been set.
+
+### GetCompletionMessage
+
+`func (o *LeadForm) GetCompletionMessage() string`
+
+GetCompletionMessage returns the CompletionMessage field if non-nil, zero value otherwise.
+
+### GetCompletionMessageOk
+
+`func (o *LeadForm) GetCompletionMessageOk() (*string, bool)`
+
+GetCompletionMessageOk returns a tuple with the CompletionMessage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompletionMessage
+
+`func (o *LeadForm) SetCompletionMessage(v string)`
+
+SetCompletionMessage sets CompletionMessage field to given value.
+
+
+### SetCompletionMessageNil
+
+`func (o *LeadForm) SetCompletionMessageNil(b bool)`
+
+ SetCompletionMessageNil sets the value for CompletionMessage to be an explicit nil
+
+### UnsetCompletionMessage
+`func (o *LeadForm) UnsetCompletionMessage()`
+
+UnsetCompletionMessage ensures that no value is present for CompletionMessage, not even an explicit nil
+### GetCreatedTime
+
+`func (o *LeadForm) GetCreatedTime() int32`
+
+GetCreatedTime returns the CreatedTime field if non-nil, zero value otherwise.
+
+### GetCreatedTimeOk
+
+`func (o *LeadForm) GetCreatedTimeOk() (*int32, bool)`
+
+GetCreatedTimeOk returns a tuple with the CreatedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedTime
+
+`func (o *LeadForm) SetCreatedTime(v int32)`
+
+SetCreatedTime sets CreatedTime field to given value.
+
+### HasCreatedTime
+
+`func (o *LeadForm) HasCreatedTime() bool`
+
+HasCreatedTime returns a boolean if a field has been set.
+
+### GetDisclosureLanguage
+
+`func (o *LeadForm) GetDisclosureLanguage() string`
+
+GetDisclosureLanguage returns the DisclosureLanguage field if non-nil, zero value otherwise.
+
+### GetDisclosureLanguageOk
+
+`func (o *LeadForm) GetDisclosureLanguageOk() (*string, bool)`
+
+GetDisclosureLanguageOk returns a tuple with the DisclosureLanguage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisclosureLanguage
+
+`func (o *LeadForm) SetDisclosureLanguage(v string)`
+
+SetDisclosureLanguage sets DisclosureLanguage field to given value.
+
+### HasDisclosureLanguage
+
+`func (o *LeadForm) HasDisclosureLanguage() bool`
+
+HasDisclosureLanguage returns a boolean if a field has been set.
+
+### SetDisclosureLanguageNil
+
+`func (o *LeadForm) SetDisclosureLanguageNil(b bool)`
+
+ SetDisclosureLanguageNil sets the value for DisclosureLanguage to be an explicit nil
+
+### UnsetDisclosureLanguage
+`func (o *LeadForm) UnsetDisclosureLanguage()`
+
+UnsetDisclosureLanguage ensures that no value is present for DisclosureLanguage, not even an explicit nil
+### GetHasAcceptedTerms
+
+`func (o *LeadForm) GetHasAcceptedTerms() bool`
+
+GetHasAcceptedTerms returns the HasAcceptedTerms field if non-nil, zero value otherwise.
+
+### GetHasAcceptedTermsOk
+
+`func (o *LeadForm) GetHasAcceptedTermsOk() (*bool, bool)`
+
+GetHasAcceptedTermsOk returns a tuple with the HasAcceptedTerms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasAcceptedTerms
+
+`func (o *LeadForm) SetHasAcceptedTerms(v bool)`
+
+SetHasAcceptedTerms sets HasAcceptedTerms field to given value.
+
+
+### GetId
+
+`func (o *LeadForm) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *LeadForm) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *LeadForm) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetName
+
+`func (o *LeadForm) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *LeadForm) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *LeadForm) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### SetNameNil
+
+`func (o *LeadForm) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *LeadForm) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
+### GetPolicyLinks
+
+`func (o *LeadForm) GetPolicyLinks() []LeadFormPolicyLink`
+
+GetPolicyLinks returns the PolicyLinks field if non-nil, zero value otherwise.
+
+### GetPolicyLinksOk
+
+`func (o *LeadForm) GetPolicyLinksOk() (*[]LeadFormPolicyLink, bool)`
+
+GetPolicyLinksOk returns a tuple with the PolicyLinks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPolicyLinks
+
+`func (o *LeadForm) SetPolicyLinks(v []LeadFormPolicyLink)`
+
+SetPolicyLinks sets PolicyLinks field to given value.
+
+### HasPolicyLinks
+
+`func (o *LeadForm) HasPolicyLinks() bool`
+
+HasPolicyLinks returns a boolean if a field has been set.
+
+### GetPrivacyPolicyLink
+
+`func (o *LeadForm) GetPrivacyPolicyLink() string`
+
+GetPrivacyPolicyLink returns the PrivacyPolicyLink field if non-nil, zero value otherwise.
+
+### GetPrivacyPolicyLinkOk
+
+`func (o *LeadForm) GetPrivacyPolicyLinkOk() (*string, bool)`
+
+GetPrivacyPolicyLinkOk returns a tuple with the PrivacyPolicyLink field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivacyPolicyLink
+
+`func (o *LeadForm) SetPrivacyPolicyLink(v string)`
+
+SetPrivacyPolicyLink sets PrivacyPolicyLink field to given value.
+
+
+### SetPrivacyPolicyLinkNil
+
+`func (o *LeadForm) SetPrivacyPolicyLinkNil(b bool)`
+
+ SetPrivacyPolicyLinkNil sets the value for PrivacyPolicyLink to be an explicit nil
+
+### UnsetPrivacyPolicyLink
+`func (o *LeadForm) UnsetPrivacyPolicyLink()`
+
+UnsetPrivacyPolicyLink ensures that no value is present for PrivacyPolicyLink, not even an explicit nil
+### GetQuestions
+
+`func (o *LeadForm) GetQuestions() []LeadFormQuestion`
+
+GetQuestions returns the Questions field if non-nil, zero value otherwise.
+
+### GetQuestionsOk
+
+`func (o *LeadForm) GetQuestionsOk() (*[]LeadFormQuestion, bool)`
+
+GetQuestionsOk returns a tuple with the Questions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQuestions
+
+`func (o *LeadForm) SetQuestions(v []LeadFormQuestion)`
+
+SetQuestions sets Questions field to given value.
+
+
+### GetStatus
+
+`func (o *LeadForm) GetStatus() LeadFormStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *LeadForm) GetStatusOk() (*LeadFormStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *LeadForm) SetStatus(v LeadFormStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *LeadForm) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
+
+### GetUpdatedTime
+
+`func (o *LeadForm) GetUpdatedTime() int32`
+
+GetUpdatedTime returns the UpdatedTime field if non-nil, zero value otherwise.
+
+### GetUpdatedTimeOk
+
+`func (o *LeadForm) GetUpdatedTimeOk() (*int32, bool)`
+
+GetUpdatedTimeOk returns a tuple with the UpdatedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedTime
+
+`func (o *LeadForm) SetUpdatedTime(v int32)`
+
+SetUpdatedTime sets UpdatedTime field to given value.
+
+### HasUpdatedTime
+
+`func (o *LeadForm) HasUpdatedTime() bool`
+
+HasUpdatedTime returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

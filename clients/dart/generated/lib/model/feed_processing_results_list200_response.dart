@@ -57,10 +57,8 @@ class FeedProcessingResultsList200Response {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "FeedProcessingResultsList200Response[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "FeedProcessingResultsList200Response[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'items'), 'Required key "FeedProcessingResultsList200Response[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "FeedProcessingResultsList200Response[items]" has a null value in JSON.');
         return true;
       }());
 

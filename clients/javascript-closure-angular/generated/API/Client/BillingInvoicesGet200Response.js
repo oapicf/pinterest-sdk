@@ -12,7 +12,7 @@ API.Client.BillingInvoicesGet200Response = function() {}
 API.Client.BillingInvoicesGet200Response.prototype.bookmark;
 
 /**
- * @type {!Array<!API.Client.BillingInvoiceResponse>}
+ * @type {!Array<!API.Client.BillingInvoice>}
  * @export
  */
 API.Client.BillingInvoicesGet200Response.prototype.items;

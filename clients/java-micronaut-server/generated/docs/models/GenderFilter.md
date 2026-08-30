@@ -8,7 +8,7 @@ The class is defined in **[GenderFilter.java](../../src/main/java/org/openapitoo
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GENDER** | `CatalogsProductGroupMultipleGenderCriteria` |  | 
+**GENDER** | [`CatalogsProductGroupMultipleGenderCriteria`](CatalogsProductGroupMultipleGenderCriteria.md) |  | 
 
 
 

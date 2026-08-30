@@ -106,7 +106,7 @@ CatalogsReport::getReportStatus()
 }
 
 void
-CatalogsReport::setReportStatus(std::string  report_status)
+CatalogsReport::setReportStatus(std::string report_status)
 {
 	this->report_status = report_status;
 }
@@ -118,7 +118,7 @@ CatalogsReport::getSize()
 }
 
 void
-CatalogsReport::setSize(long  size)
+CatalogsReport::setSize(long size)
 {
 	this->size = size;
 }
@@ -130,7 +130,7 @@ CatalogsReport::getUrl()
 }
 
 void
-CatalogsReport::setUrl(std::string  url)
+CatalogsReport::setUrl(std::string url)
 {
 	this->url = url;
 }

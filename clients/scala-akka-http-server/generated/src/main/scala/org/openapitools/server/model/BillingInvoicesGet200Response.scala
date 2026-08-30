@@ -7,6 +7,6 @@ package org.openapitools.server.model
 */
 final case class BillingInvoicesGet200Response (
   bookmark: Option[String] = None,
-  items: Seq[BillingInvoiceResponse]
+  items: Seq[BillingInvoice]
 )
 

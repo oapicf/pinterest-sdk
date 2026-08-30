@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,21 +18,22 @@ package openapi
 type BusinessMemberAssetsSummary struct {
 
 	// List of ad account IDs and respective permission levels.
-	AdAccounts []BusinessMemberAssetsSummaryAdAccountsInner `json:"ad_accounts,omitempty"`
+	AdAccounts []AssetIdWithPermissions `json:"ad_accounts,omitempty"`
 
 	// List of profile IDs and respective permission levels.
-	Profiles []BusinessMemberAssetsSummaryProfilesInner `json:"profiles,omitempty"`
+	Profiles []AssetIdWithPermissions `json:"profiles,omitempty"`
 }
 
-// AssertBusinessMemberAssetsSummaryRequired checks if the required fields are not zero-ed
+// AssertBusinessMemberAssetsSummaryRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertBusinessMemberAssetsSummaryRequired(obj BusinessMemberAssetsSummary) error {
 	for _, el := range obj.AdAccounts {
-		if err := AssertBusinessMemberAssetsSummaryAdAccountsInnerRequired(el); err != nil {
+		if err := AssertAssetIdWithPermissionsRequired(el); err != nil {
 			return err
 		}
 	}
 	for _, el := range obj.Profiles {
-		if err := AssertBusinessMemberAssetsSummaryProfilesInnerRequired(el); err != nil {
+		if err := AssertAssetIdWithPermissionsRequired(el); err != nil {
 			return err
 		}
 	}
@@ -42,12 +43,12 @@ func AssertBusinessMemberAssetsSummaryRequired(obj BusinessMemberAssetsSummary) 
 // AssertBusinessMemberAssetsSummaryConstraints checks if the values respects the defined constraints
 func AssertBusinessMemberAssetsSummaryConstraints(obj BusinessMemberAssetsSummary) error {
 	for _, el := range obj.AdAccounts {
-		if err := AssertBusinessMemberAssetsSummaryAdAccountsInnerConstraints(el); err != nil {
+		if err := AssertAssetIdWithPermissionsConstraints(el); err != nil {
 			return err
 		}
 	}
 	for _, el := range obj.Profiles {
-		if err := AssertBusinessMemberAssetsSummaryProfilesInnerConstraints(el); err != nil {
+		if err := AssertAssetIdWithPermissionsConstraints(el); err != nil {
 			return err
 		}
 	}

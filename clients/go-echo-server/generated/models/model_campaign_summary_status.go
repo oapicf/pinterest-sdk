@@ -1,5 +1,5 @@
 package models
-// CampaignSummaryStatus : Summary status for campaign
+
 type CampaignSummaryStatus string
 
 // List of CampaignSummaryStatus

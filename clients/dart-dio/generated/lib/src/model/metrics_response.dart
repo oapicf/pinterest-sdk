@@ -4,7 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
+import 'package:openapi/src/model/metrics_response_data_items.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,7 +17,7 @@ part 'metrics_response.g.dart';
 @BuiltValue()
 abstract class MetricsResponse implements Built<MetricsResponse, MetricsResponseBuilder> {
   @BuiltValueField(wireName: r'data')
-  BuiltList<JsonObject>? get data;
+  BuiltList<MetricsResponseDataItems>? get data;
 
   MetricsResponse._();
 
@@ -46,7 +46,7 @@ class _$MetricsResponseSerializer implements PrimitiveSerializer<MetricsResponse
       yield r'data';
       yield serializers.serialize(
         object.data,
-        specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+        specifiedType: const FullType(BuiltList, [FullType(MetricsResponseDataItems)]),
       );
     }
   }
@@ -75,8 +75,9 @@ class _$MetricsResponseSerializer implements PrimitiveSerializer<MetricsResponse
         case r'data':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(MetricsResponseDataItems)]),
+          ) as BuiltList<MetricsResponseDataItems>?;
+          if (valueDes == null) continue;
           result.data.replace(valueDes);
           break;
         default:

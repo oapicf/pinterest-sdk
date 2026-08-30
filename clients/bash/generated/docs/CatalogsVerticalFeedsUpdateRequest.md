@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogUnderscoretype** | [**CatalogsType**](CatalogsType.md) |  | [default to null]
+**catalogUnderscoretype** | **string** |  | [default to null]
 **credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] [default to null]
 **defaultUnderscoreavailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] [default to null]
 **defaultUnderscorecurrency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] [default to null]

@@ -19,17 +19,17 @@ typedef struct targeting_template_audience_sizing_reach_estimate_t targeting_tem
 
 
 typedef struct targeting_template_audience_sizing_reach_estimate_t {
-    long estimate; //numeric
-    long lower_bound; //numeric
-    long upper_bound; //numeric
+    long *estimate; //numeric
+    long *lower_bound; //numeric
+    long *upper_bound; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } targeting_template_audience_sizing_reach_estimate_t;
 
 __attribute__((deprecated)) targeting_template_audience_sizing_reach_estimate_t *targeting_template_audience_sizing_reach_estimate_create(
-    long estimate,
-    long lower_bound,
-    long upper_bound
+    long *estimate,
+    long *lower_bound,
+    long *upper_bound
 );
 
 void targeting_template_audience_sizing_reach_estimate_free(targeting_template_audience_sizing_reach_estimate_t *targeting_template_audience_sizing_reach_estimate);

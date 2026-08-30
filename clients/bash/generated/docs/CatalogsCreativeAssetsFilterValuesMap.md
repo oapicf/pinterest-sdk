@@ -1,4 +1,4 @@
-# catalogs_creative_assets_filter_values_map
+# CatalogsCreativeAssetsFilterValuesMap
 
 ## Properties
 Name | Type | Description | Notes
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **googleUnderscoreproductUnderscorecategoryUnderscore4** | **array[string]** |  | [optional] [default to null]
 **googleUnderscoreproductUnderscorecategoryUnderscore5** | **array[string]** |  | [optional] [default to null]
 **googleUnderscoreproductUnderscorecategoryUnderscore6** | **array[string]** |  | [optional] [default to null]
-**mediaUnderscoretype** | **array[string]** |  | [optional] [default to null]
+**mediaUnderscoretype** | [**array[MediaType]**](MediaType.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -17,7 +17,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="brandAccountsCreate"></a>
 # **brandAccountsCreate**
-> BrandAccountsCreate200Response brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest)
+> BrandAccount brandAccountsCreate(businessHierarchyId, brandAccountCreate)
 
 Create a Brand Account
 
@@ -43,10 +43,10 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi(defaultClient);
-    String businessHierarchyId = "7009386637860"; // String | business hierarchy node id
-    BrandAccountsCreateRequest brandAccountsCreateRequest = new BrandAccountsCreateRequest(); // BrandAccountsCreateRequest | 
+    String businessHierarchyId = "businessHierarchyId_example"; // String | business hierarchy node id
+    BrandAccountCreate brandAccountCreate = new BrandAccountCreate(); // BrandAccountCreate | 
     try {
-      BrandAccountsCreate200Response result = apiInstance.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest);
+      BrandAccount result = apiInstance.brandAccountsCreate(businessHierarchyId, brandAccountCreate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BusinessAccessRelationshipsApi#brandAccountsCreate");
@@ -64,11 +64,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessHierarchyId** | **String**| business hierarchy node id | |
-| **brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md)|  | |
+| **brandAccountCreate** | [**BrandAccountCreate**](BrandAccountCreate.md)|  | |
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -82,13 +82,18 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="brandAccountsUpdate"></a>
 # **brandAccountsUpdate**
-> BrandAccountsCreate200Response brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest)
+> BrandAccount brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate)
 
 Update a Brand Account
 
@@ -114,11 +119,11 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi(defaultClient);
-    String businessHierarchyId = "7009386637860"; // String | business hierarchy node id
-    String brandAccountId = "729090764583391194"; // String | Unique identifier of a brand account.
-    BrandAccountsUpdateRequest brandAccountsUpdateRequest = new BrandAccountsUpdateRequest(); // BrandAccountsUpdateRequest | 
+    String brandAccountId = "brandAccountId_example"; // String | 
+    String businessHierarchyId = "businessHierarchyId_example"; // String | business hierarchy node id
+    BrandAccountUpdate brandAccountUpdate = new BrandAccountUpdate(); // BrandAccountUpdate | 
     try {
-      BrandAccountsCreate200Response result = apiInstance.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest);
+      BrandAccount result = apiInstance.brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BusinessAccessRelationshipsApi#brandAccountsUpdate");
@@ -135,13 +140,13 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **brandAccountId** | **String**|  | |
 | **businessHierarchyId** | **String**| business hierarchy node id | |
-| **brandAccountId** | **String**| Unique identifier of a brand account. | |
-| **brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md)|  | |
+| **brandAccountUpdate** | [**BrandAccountUpdate**](BrandAccountUpdate.md)|  | |
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -155,18 +160,18 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **401** | Not authenticated to update Brand Account |  -  |
-| **403** | Not authorized to update Brand Account |  -  |
-| **404** | Brand account not found |  -  |
-| **409** | This account is not a brand account. |  -  |
-| **429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **409** | The request could not be processed because of a conflict in the current state of the resource. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="deleteBusinessMembership"></a>
 # **deleteBusinessMembership**
-> DeletedMembersResponse deleteBusinessMembership(businessId, membersToDeleteBody)
+> DeleteBusinessMembership200Response deleteBusinessMembership(businessId, deleteBusinessMembershipBody)
 
 Terminate business memberships
 
@@ -192,10 +197,10 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi(defaultClient);
-    String businessId = "729090764583391194"; // String | Business id
-    MembersToDeleteBody membersToDeleteBody = new MembersToDeleteBody(); // MembersToDeleteBody | List of members with role to delete.
+    String businessId = "businessId_example"; // String | Business id
+    DeleteBusinessMembershipBody deleteBusinessMembershipBody = new DeleteBusinessMembershipBody(); // DeleteBusinessMembershipBody | 
     try {
-      DeletedMembersResponse result = apiInstance.deleteBusinessMembership(businessId, membersToDeleteBody);
+      DeleteBusinessMembership200Response result = apiInstance.deleteBusinessMembership(businessId, deleteBusinessMembershipBody);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BusinessAccessRelationshipsApi#deleteBusinessMembership");
@@ -213,11 +218,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | **String**| Business id | |
-| **membersToDeleteBody** | [**MembersToDeleteBody**](MembersToDeleteBody.md)| List of members with role to delete. | |
+| **deleteBusinessMembershipBody** | [**DeleteBusinessMembershipBody**](DeleteBusinessMembershipBody.md)|  | |
 
 ### Return type
 
-[**DeletedMembersResponse**](DeletedMembersResponse.md)
+[**DeleteBusinessMembership200Response**](DeleteBusinessMembership200Response.md)
 
 ### Authorization
 
@@ -231,12 +236,12 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="deleteBusinessPartners"></a>
 # **deleteBusinessPartners**
-> DeletePartnersResponse deleteBusinessPartners(businessId, deletePartnersRequest)
+> DeleteBusinessPartners deleteBusinessPartners(businessId, deleteBusinessPartnersDelete)
 
 Terminate business partnerships
 
@@ -262,10 +267,10 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi(defaultClient);
-    String businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-    DeletePartnersRequest deletePartnersRequest = new DeletePartnersRequest(); // DeletePartnersRequest | An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
+    String businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+    DeleteBusinessPartnersDelete deleteBusinessPartnersDelete = new DeleteBusinessPartnersDelete(); // DeleteBusinessPartnersDelete | 
     try {
-      DeletePartnersResponse result = apiInstance.deleteBusinessPartners(businessId, deletePartnersRequest);
+      DeleteBusinessPartners result = apiInstance.deleteBusinessPartners(businessId, deleteBusinessPartnersDelete);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BusinessAccessRelationshipsApi#deleteBusinessPartners");
@@ -283,11 +288,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | **String**| Unique identifier of the requesting business. | |
-| **deletePartnersRequest** | [**DeletePartnersRequest**](DeletePartnersRequest.md)| An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete.  | |
+| **deleteBusinessPartnersDelete** | [**DeleteBusinessPartnersDelete**](DeleteBusinessPartnersDelete.md)|  | |
 
 ### Return type
 
-[**DeletePartnersResponse**](DeletePartnersResponse.md)
+[**DeleteBusinessPartners**](DeleteBusinessPartners.md)
 
 ### Authorization
 
@@ -301,13 +306,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | A supplied partner id doesn&#39;t exist |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="getBusinessEmployers"></a>
 # **getBusinessEmployers**
-> GetBusinessEmployers200Response getBusinessEmployers(pageSize, bookmark)
+> GetBusinessEmployers200Response getBusinessEmployers(assetsSummary, bookmark, pageSize)
 
 List business employers for user
 
@@ -333,10 +338,11 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi(defaultClient);
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    Boolean assetsSummary = true; // Boolean | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
-      GetBusinessEmployers200Response result = apiInstance.getBusinessEmployers(pageSize, bookmark);
+      GetBusinessEmployers200Response result = apiInstance.getBusinessEmployers(assetsSummary, bookmark, pageSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BusinessAccessRelationshipsApi#getBusinessEmployers");
@@ -353,8 +359,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **assetsSummary** | **Boolean**| Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to true] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -372,12 +379,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="getBusinessMembers"></a>
 # **getBusinessMembers**
-> GetBusinessMembers200Response getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
+> GetBusinessEmployers200Response getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
 
 Get business members
 
@@ -403,16 +415,16 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi(defaultClient);
-    String businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
+    String businessId = "businessId_example"; // String | Unique identifier of the requesting business.
     Boolean fetchSystemUsers = false; // Boolean | Fetches system users if True. Fetches regular user employees if False.
     Boolean assetsSummary = false; // Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
     List<MemberBusinessRole> businessRoles = Arrays.asList(); // List<MemberBusinessRole> | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
-    String memberIds = "00101010101,2222220101"; // String | A list of business members ids separated by comma.
+    String memberIds = "memberIds_example"; // String | A list of business members ids separated by comma.
     Integer startIndex = 0; // Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
-      GetBusinessMembers200Response result = apiInstance.getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize);
+      GetBusinessEmployers200Response result = apiInstance.getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BusinessAccessRelationshipsApi#getBusinessMembers");
@@ -436,11 +448,11 @@ public class Example {
 | **memberIds** | **String**| A list of business members ids separated by comma. | [optional] |
 | **startIndex** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**GetBusinessMembers200Response**](GetBusinessMembers200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -454,12 +466,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="getBusinessPartners"></a>
 # **getBusinessPartners**
-> GetBusinessPartners200Response getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark)
+> GetBusinessEmployers200Response getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, sortAscending, bookmark, pageSize)
 
 Get business partners
 
@@ -485,15 +502,16 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi(defaultClient);
-    String businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
+    String businessId = "businessId_example"; // String | Unique identifier of the requesting business.
     Boolean assetsSummary = false; // Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
-    PartnerType partnerType = PartnerType.fromValue("INTERNAL"); // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
-    String partnerIds = "00101010101,2222220101"; // String | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
+    PartnerType partnerType = PartnerType.fromValue("INTERNAL"); // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+    String partnerIds = "partnerIds_example"; // String | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
     Integer startIndex = 0; // Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    Boolean sortAscending = true; // Boolean | Sort ascending.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
-      GetBusinessPartners200Response result = apiInstance.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark);
+      GetBusinessEmployers200Response result = apiInstance.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, sortAscending, bookmark, pageSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BusinessAccessRelationshipsApi#getBusinessPartners");
@@ -512,15 +530,16 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | **String**| Unique identifier of the requesting business. | |
 | **assetsSummary** | **Boolean**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false] |
-| **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [enum: INTERNAL, EXTERNAL] |
+| **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [enum: INTERNAL, EXTERNAL] |
 | **partnerIds** | **String**| A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional] |
 | **startIndex** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **sortAscending** | **Boolean**| Sort ascending. | [optional] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**GetBusinessPartners200Response**](GetBusinessPartners200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -534,12 +553,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="systemUserUpdate"></a>
 # **systemUserUpdate**
-> systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest)
+> systemUserUpdate(businessId, systemUserId, systemUserUpdateWithRequiredBody)
 
 Update a system user information.
 
@@ -565,11 +589,11 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi(defaultClient);
-    String businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-    String systemUserId = "729090764583391194"; // String | Unique identifier of a system user.
-    SystemUserUpdateRequest systemUserUpdateRequest = new SystemUserUpdateRequest(); // SystemUserUpdateRequest | 
+    String businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+    String systemUserId = "systemUserId_example"; // String | Unique identifier of a system user.
+    SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody = new SystemUserUpdateWithRequiredBody(); // SystemUserUpdateWithRequiredBody | 
     try {
-      apiInstance.systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest);
+      apiInstance.systemUserUpdate(businessId, systemUserId, systemUserUpdateWithRequiredBody);
     } catch (ApiException e) {
       System.err.println("Exception when calling BusinessAccessRelationshipsApi#systemUserUpdate");
       System.err.println("Status code: " + e.getCode());
@@ -587,7 +611,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | **String**| Unique identifier of the requesting business. | |
 | **systemUserId** | **String**| Unique identifier of a system user. | |
-| **systemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md)|  | |
+| **systemUserUpdateWithRequiredBody** | [**SystemUserUpdateWithRequiredBody**](SystemUserUpdateWithRequiredBody.md)|  | |
 
 ### Return type
 
@@ -605,13 +629,17 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | System user updated successfully. |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="updateBusinessMemberships"></a>
 # **updateBusinessMemberships**
-> UpdateMemberResultsResponseArray updateBusinessMemberships(businessId, updateMemberBusinessRoleBody)
+> UpdateBusinessMembershipsResponse updateBusinessMemberships(businessId, businessMembershipMember)
 
 Update member&#39;s business role
 
@@ -637,10 +665,10 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     BusinessAccessRelationshipsApi apiInstance = new BusinessAccessRelationshipsApi(defaultClient);
-    String businessId = "729090764583391194"; // String | Business id
-    List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody = Arrays.asList(); // List<UpdateMemberBusinessRoleBody> | List of objects with the member id and the business_role.
+    String businessId = "businessId_example"; // String | Business id
+    List<BusinessMembershipMember> businessMembershipMember = Arrays.asList(); // List<BusinessMembershipMember> | 
     try {
-      UpdateMemberResultsResponseArray result = apiInstance.updateBusinessMemberships(businessId, updateMemberBusinessRoleBody);
+      UpdateBusinessMembershipsResponse result = apiInstance.updateBusinessMemberships(businessId, businessMembershipMember);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BusinessAccessRelationshipsApi#updateBusinessMemberships");
@@ -658,11 +686,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | **String**| Business id | |
-| **updateMemberBusinessRoleBody** | [**List&lt;UpdateMemberBusinessRoleBody&gt;**](UpdateMemberBusinessRoleBody.md)| List of objects with the member id and the business_role. | |
+| **businessMembershipMember** | [**List&lt;BusinessMembershipMember&gt;**](BusinessMembershipMember.md)|  | |
 
 ### Return type
 
-[**UpdateMemberResultsResponseArray**](UpdateMemberResultsResponseArray.md)
+[**UpdateBusinessMembershipsResponse**](UpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 
@@ -676,6 +704,11 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

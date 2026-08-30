@@ -2,7 +2,7 @@
 /*
  * DeletePartnerAssetAccessBody.h
  *
- * 
+ * An object with a list of partner asset accesses to delete.
  */
 
 #ifndef TINY_CPP_CLIENT_DeletePartnerAssetAccessBody_H_
@@ -12,13 +12,13 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "DeletePartnerAssetAccessBody_accesses_inner.h"
+#include "DeletePartnerAssetAccessItem.h"
 #include <list>
 
 namespace Tiny {
 
 
-/*! \brief 
+/*! \brief An object with a list of partner asset accesses to delete.
  *
  *  \ingroup Models
  *
@@ -47,17 +47,17 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get 
+	/*! \brief Get List of partner asset accesses to delete.
 	 */
-	std::list<DeletePartnerAssetAccessBody_accesses_inner> getAccesses();
+	std::list<DeletePartnerAssetAccessItem> getAccesses();
 
-	/*! \brief Set 
+	/*! \brief Set List of partner asset accesses to delete.
 	 */
-	void setAccesses(std::list <DeletePartnerAssetAccessBody_accesses_inner> accesses);
+	void setAccesses(std::list<DeletePartnerAssetAccessItem> accesses);
 
 
     private:
-    std::list<DeletePartnerAssetAccessBody_accesses_inner> accesses;
+    std::list<DeletePartnerAssetAccessItem> accesses;
 };
 }
 

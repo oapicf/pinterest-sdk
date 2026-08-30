@@ -14,11 +14,11 @@ static ssio_insertion_order_status_t *ssio_insertion_order_status_create_interna
     if (!ssio_insertion_order_status_local_var) {
         return NULL;
     }
+    memset(ssio_insertion_order_status_local_var, 0, sizeof(ssio_insertion_order_status_t));
+    ssio_insertion_order_status_local_var->_library_owned = 1;
     ssio_insertion_order_status_local_var->creation_time = creation_time;
     ssio_insertion_order_status_local_var->pin_order_id = pin_order_id;
     ssio_insertion_order_status_local_var->status = status;
-
-    ssio_insertion_order_status_local_var->_library_owned = 1;
     return ssio_insertion_order_status_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) ssio_insertion_order_status_t *ssio_insertion_order_
     char *pin_order_id,
     char *status
     ) {
-    return ssio_insertion_order_status_create_internal (
+    ssio_insertion_order_status_t *result = ssio_insertion_order_status_create_internal (
         creation_time,
         pin_order_id,
         status
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ssio_insertion_order_status_free(ssio_insertion_order_status_t *ssio_insertion_order_status) {
@@ -96,6 +99,12 @@ ssio_insertion_order_status_t *ssio_insertion_order_status_parseFromJSON(cJSON *
 
     ssio_insertion_order_status_t *ssio_insertion_order_status_local_var = NULL;
 
+    char *creation_time_local_str = NULL;
+
+    char *pin_order_id_local_str = NULL;
+
+    char *status_local_str = NULL;
+
     // ssio_insertion_order_status->creation_time
     cJSON *creation_time = cJSON_GetObjectItemCaseSensitive(ssio_insertion_order_statusJSON, "creation_time");
     if (cJSON_IsNull(creation_time)) {
@@ -133,14 +142,34 @@ ssio_insertion_order_status_t *ssio_insertion_order_status_parseFromJSON(cJSON *
     }
 
 
+    if (creation_time && !cJSON_IsNull(creation_time)) creation_time_local_str = strdup(creation_time->valuestring);
+    if (pin_order_id && !cJSON_IsNull(pin_order_id)) pin_order_id_local_str = strdup(pin_order_id->valuestring);
+    if (status && !cJSON_IsNull(status)) status_local_str = strdup(status->valuestring);
+
     ssio_insertion_order_status_local_var = ssio_insertion_order_status_create_internal (
-        creation_time && !cJSON_IsNull(creation_time) ? strdup(creation_time->valuestring) : NULL,
-        pin_order_id && !cJSON_IsNull(pin_order_id) ? strdup(pin_order_id->valuestring) : NULL,
-        status && !cJSON_IsNull(status) ? strdup(status->valuestring) : NULL
+        creation_time_local_str,
+        pin_order_id_local_str,
+        status_local_str
         );
+
+    if (!ssio_insertion_order_status_local_var) {
+        goto end;
+    }
 
     return ssio_insertion_order_status_local_var;
 end:
+    if (creation_time_local_str) {
+        free(creation_time_local_str);
+        creation_time_local_str = NULL;
+    }
+    if (pin_order_id_local_str) {
+        free(pin_order_id_local_str);
+        pin_order_id_local_str = NULL;
+    }
+    if (status_local_str) {
+        free(status_local_str);
+        status_local_str = NULL;
+    }
     return NULL;
 
 }

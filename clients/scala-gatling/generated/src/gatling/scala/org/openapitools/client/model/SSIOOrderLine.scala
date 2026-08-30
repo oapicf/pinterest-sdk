@@ -6,13 +6,13 @@ import java.time.LocalDate
 case class SSIOOrderLine (
     /* The SFDC id for the terms */
     _acceptedTermsId: Option[String],
-    /* The UTC timestamp (to the nearest sec) of when terms were accepted */
+    /* The UTC timestamp (to the nearest second) when terms were accepted. */
     _acceptedTermsTime: Option[String],
-    /* Ads manager OrderLineId */
+    /* Ads manager order line id */
     _adsManagerOrderLineId: Option[String],
     /* Agency link */
     _agencyLink: Option[String],
-    /* Bill To Company name */
+    /* Bill-to company name */
     _billToCompanyName: Option[String],
     /* Billing contact email */
     _billingContactEmail: Option[String],
@@ -20,20 +20,20 @@ case class SSIOOrderLine (
     _billingContactFirstname: Option[String],
     /* Billing contact last name */
     _billingContactLastname: Option[String],
-    /* If Budget order line, the budget amount. */
+    /* If budget order line, the budget amount. */
     _budgetAmount: Option[Number],
     _currencyInfo: Option[Currency],
     /* End date of the order line. */
     _endDate: Option[LocalDate],
-    /* If Ongoing (perpetual) order line, the estimated monthly spend */
+    /* If ongoing (perpetual) order line, the estimated monthly spend. */
     _estimatedMonthlySpend: Option[Number],
     /* Last modified date. */
     _lastModifiedDateTime: Option[String],
     /* Billing media email */
     _mediaContactEmail: Option[String],
-    /* Billing contact first name */
+    /* Billing media contact first name */
     _mediaContactFirstname: Option[String],
-    /* Billing contact first name */
+    /* Billing media contact last name */
     _mediaContactLastname: Option[String],
     /* The order name */
     _orderName: Option[String],
@@ -41,9 +41,9 @@ case class SSIOOrderLine (
     _pinOrderId: Option[String],
     /* The Pinterest marketing partner name */
     _pmpName: Option[String],
-    /* The po number */
+    /* The PO number */
     _poNumber: Option[String],
-    /* OrderLineId in SFDC */
+    /* Order line id in SFDC */
     _salesforceOrderLineId: Option[String],
     /* Start date of the order line. */
     _startDate: Option[LocalDate]

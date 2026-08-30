@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -32,7 +32,7 @@ type CatalogsCreativeAssetsFilterValuesMap struct {
 	GoogleProductCategory4 []string `json:"google_product_category_4,omitempty"`
 	GoogleProductCategory5 []string `json:"google_product_category_5,omitempty"`
 	GoogleProductCategory6 []string `json:"google_product_category_6,omitempty"`
-	MediaType []string `json:"media_type,omitempty"`
+	MediaType []MediaType `json:"media_type,omitempty"`
 }
 
 // NewCatalogsCreativeAssetsFilterValuesMap instantiates a new CatalogsCreativeAssetsFilterValuesMap object
@@ -437,9 +437,9 @@ func (o *CatalogsCreativeAssetsFilterValuesMap) SetGoogleProductCategory6(v []st
 }
 
 // GetMediaType returns the MediaType field value if set, zero value otherwise.
-func (o *CatalogsCreativeAssetsFilterValuesMap) GetMediaType() []string {
+func (o *CatalogsCreativeAssetsFilterValuesMap) GetMediaType() []MediaType {
 	if o == nil || IsNil(o.MediaType) {
-		var ret []string
+		var ret []MediaType
 		return ret
 	}
 	return o.MediaType
@@ -447,7 +447,7 @@ func (o *CatalogsCreativeAssetsFilterValuesMap) GetMediaType() []string {
 
 // GetMediaTypeOk returns a tuple with the MediaType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsFilterValuesMap) GetMediaTypeOk() ([]string, bool) {
+func (o *CatalogsCreativeAssetsFilterValuesMap) GetMediaTypeOk() ([]MediaType, bool) {
 	if o == nil || IsNil(o.MediaType) {
 		return nil, false
 	}
@@ -463,8 +463,8 @@ func (o *CatalogsCreativeAssetsFilterValuesMap) HasMediaType() bool {
 	return false
 }
 
-// SetMediaType gets a reference to the given []string and assigns it to the MediaType field.
-func (o *CatalogsCreativeAssetsFilterValuesMap) SetMediaType(v []string) {
+// SetMediaType gets a reference to the given []MediaType and assigns it to the MediaType field.
+func (o *CatalogsCreativeAssetsFilterValuesMap) SetMediaType(v []MediaType) {
 	o.MediaType = v
 }
 

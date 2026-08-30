@@ -11,31 +11,30 @@
 part of openapi.api;
 
 /// Budget type. If DAILY, an ad group's daily spend will not exceed the budget parameter value. If LIFETIME, the end_time parameter is **REQUIRED**, and the ad group spend is spread evenly between the ad group `start_time` and `end_time` range. A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. For CBO campaigns, only \"CBO_ADGROUP\" is allowed. For WEB_SESSIONS campaigns, only \"LIFETIME\" is allowed. For update, only draft ad groups may update budget type.
-class BudgetType {
-  /// Instantiate a new enum with the provided [value].
-  const BudgetType._(this.value);
+enum BudgetType {
+  DAILY._(r'DAILY'),
+  LIFETIME._(r'LIFETIME'),
+  CBO_ADGROUP._(r'CBO_ADGROUP'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const BudgetType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const DAILY = BudgetType._(r'DAILY');
-  static const LIFETIME = BudgetType._(r'LIFETIME');
-  static const CBO_ADGROUP = BudgetType._(r'CBO_ADGROUP');
-
-  /// List of all possible values in this [enum][BudgetType].
-  static const values = <BudgetType>[
-    DAILY,
-    LIFETIME,
-    CBO_ADGROUP,
-  ];
-
+  /// Returns the instance of [BudgetType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static BudgetType? fromJson(dynamic value) => BudgetTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [BudgetType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<BudgetType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <BudgetType>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class BudgetTypeTypeTransformer {
 
   const BudgetTypeTypeTransformer._();
 
-  String encode(BudgetType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(BudgetType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a BudgetType.
+  /// Returns the instance of [BudgetType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class BudgetTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   BudgetType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is BudgetType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'DAILY': return BudgetType.DAILY;
@@ -82,7 +86,7 @@ class BudgetTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [BudgetTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static BudgetTypeTypeTransformer? _instance;
 }
 

@@ -9,6 +9,7 @@ from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.error_detail import ErrorDetail  # noqa: F401,E501
 from app.openapi_server.models.record_counts import RecordCounts  # noqa: F401,E501
 from app.openapi_server.models.user_list_operation_type import UserListOperationType  # noqa: F401,E501
+from app.openapi_server.models.workload_state import WorkloadState  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -19,7 +20,7 @@ class CustomerListUpload(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, ad_account_id: str=None, creation_time: int=None, customer_list_id: str=None, error_counts: List[ErrorDetail]=None, id: str=None, operation: UserListOperationType=None, record_counts: RecordCounts=None, state: str=None, updated_time: int=None):  # noqa: E501
+    def __init__(self, ad_account_id: str=None, creation_time: int=None, customer_list_id: str=None, error_counts: List[ErrorDetail]=None, id: str=None, operation: UserListOperationType=None, record_counts: RecordCounts=None, state: WorkloadState=None, updated_time: int=None):  # noqa: E501
         """CustomerListUpload - a model defined in Swagger
 
         :param ad_account_id: The ad_account_id of this CustomerListUpload.  # noqa: E501
@@ -37,7 +38,7 @@ class CustomerListUpload(Model):
         :param record_counts: The record_counts of this CustomerListUpload.  # noqa: E501
         :type record_counts: RecordCounts
         :param state: The state of this CustomerListUpload.  # noqa: E501
-        :type state: str
+        :type state: WorkloadState
         :param updated_time: The updated_time of this CustomerListUpload.  # noqa: E501
         :type updated_time: int
         """
@@ -49,7 +50,7 @@ class CustomerListUpload(Model):
             'id': str,
             'operation': UserListOperationType,
             'record_counts': RecordCounts,
-            'state': str,
+            'state': WorkloadState,
             'updated_time': int
         }
 
@@ -210,6 +211,8 @@ class CustomerListUpload(Model):
         """
         if id is None:
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if id is not None and len(id) > 18:
+            raise ValueError("Invalid value for `id`, length must be less than or equal to `18`")  # noqa: E501
         if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
             raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
@@ -242,6 +245,7 @@ class CustomerListUpload(Model):
     def record_counts(self) -> RecordCounts:
         """Gets the record_counts of this CustomerListUpload.
 
+        Record processing counts  # noqa: E501
 
         :return: The record_counts of this CustomerListUpload.
         :rtype: RecordCounts
@@ -252,6 +256,7 @@ class CustomerListUpload(Model):
     def record_counts(self, record_counts: RecordCounts):
         """Sets the record_counts of this CustomerListUpload.
 
+        Record processing counts  # noqa: E501
 
         :param record_counts: The record_counts of this CustomerListUpload.
         :type record_counts: RecordCounts
@@ -260,31 +265,25 @@ class CustomerListUpload(Model):
         self._record_counts = record_counts
 
     @property
-    def state(self) -> str:
+    def state(self) -> WorkloadState:
         """Gets the state of this CustomerListUpload.
 
-        Workload processing state  # noqa: E501
 
         :return: The state of this CustomerListUpload.
-        :rtype: str
+        :rtype: WorkloadState
         """
         return self._state
 
     @state.setter
-    def state(self, state: str):
+    def state(self, state: WorkloadState):
         """Sets the state of this CustomerListUpload.
 
-        Workload processing state  # noqa: E501
 
         :param state: The state of this CustomerListUpload.
-        :type state: str
+        :type state: WorkloadState
         """
-        allowed_values = ["NOT_STARTED", "RUNNING", "PAUSED", "SUCCEEDED", "FAILED"]  # noqa: E501
-        if state not in allowed_values:
-            raise ValueError(
-                "Invalid value for `state` ({0}), must be one of {1}"
-                .format(state, allowed_values)
-            )
+        if state is None:
+            raise ValueError("Invalid value for `state`, must not be `None`")  # noqa: E501
 
         self._state = state
 

@@ -1,6 +1,12 @@
 #tag Interface
 Protected Interface LabelsApiCallbackHandler
 	#tag Method, Flags = &h0
+		Sub LabelsApplyCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LabeledEntities)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub LabelsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LabelsResponse)
 		  
 		End Sub
@@ -8,6 +14,12 @@ Protected Interface LabelsApiCallbackHandler
 
 	#tag Method, Flags = &h0
 		Sub LabelsListCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LabelsList200Response)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub LabelsRemoveCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LabeledEntities)
 		  
 		End Sub
 	#tag EndMethod

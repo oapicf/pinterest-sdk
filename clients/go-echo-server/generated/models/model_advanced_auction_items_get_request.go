@@ -4,8 +4,8 @@ package models
 type AdvancedAuctionItemsGetRequest struct {
 
 	// Catalog id pertaining to the retail item
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\d+$"`
 
 	// A list of retail catalog items to fetch bid options for
-	Items []AdvancedAuctionItemsGetRecord `json:"items"`
+	Items []AdvancedAuctionKey `json:"items"`
 }

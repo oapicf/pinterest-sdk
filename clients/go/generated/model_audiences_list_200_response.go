@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &AudiencesList200Response{}
 // AudiencesList200Response struct for AudiencesList200Response
 type AudiencesList200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	Items []Audience `json:"items"`
+	Items []AdAccountsAudience `json:"items"`
 }
 
 type _AudiencesList200Response AudiencesList200Response
@@ -32,7 +32,7 @@ type _AudiencesList200Response AudiencesList200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAudiencesList200Response(items []Audience) *AudiencesList200Response {
+func NewAudiencesList200Response(items []AdAccountsAudience) *AudiencesList200Response {
 	this := AudiencesList200Response{}
 	this.Items = items
 	return &this
@@ -89,9 +89,9 @@ func (o *AudiencesList200Response) UnsetBookmark() {
 }
 
 // GetItems returns the Items field value
-func (o *AudiencesList200Response) GetItems() []Audience {
+func (o *AudiencesList200Response) GetItems() []AdAccountsAudience {
 	if o == nil {
-		var ret []Audience
+		var ret []AdAccountsAudience
 		return ret
 	}
 
@@ -100,7 +100,7 @@ func (o *AudiencesList200Response) GetItems() []Audience {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *AudiencesList200Response) GetItemsOk() ([]Audience, bool) {
+func (o *AudiencesList200Response) GetItemsOk() ([]AdAccountsAudience, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *AudiencesList200Response) GetItemsOk() ([]Audience, bool) {
 }
 
 // SetItems sets field value
-func (o *AudiencesList200Response) SetItems(v []Audience) {
+func (o *AudiencesList200Response) SetItems(v []AdAccountsAudience) {
 	o.Items = v
 }
 

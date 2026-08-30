@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Build catalogs report
 
-Async request to create a report of the catalog owned by the ""operation user_account"". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the ""operation user_account"" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the ""operation user_account"". In order to do this, the token user_account must have one of the following <a href=""https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts"">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the All Items report type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Async request to create a report of the catalog owned by the ""operation user_account"". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the ""operation user_account"" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the ""operation user_account"". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: The All Items report is limited to 25 million items per catalog.
 
 ### Example
 ```powershell
@@ -26,8 +26,8 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$CatalogsHotelReportParametersReport = Initialize-CatalogsHotelReportParametersReport -ReportType "FEED_INGESTION_ISSUES" -FeedId "MyFeedId" -ProcessingResultId "MyProcessingResultId" -CatalogId "MyCatalogId"
-$CatalogsReportParameters = Initialize-CatalogsReportParameters -CatalogType "RETAIL" -Report $CatalogsHotelReportParametersReport # CatalogsReportParameters | Request object to asynchronously create a report.
+$CatalogsHotelReportParametersReport = Initialize-CatalogsHotelReportParametersReport -FeedId "MyFeedId" -ProcessingResultId "MyProcessingResultId" -ReportType "DISTRIBUTION_ISSUES" -CatalogId "MyCatalogId"
+$CatalogsReportParameters = Initialize-CatalogsReportParameters -CatalogType "HOTEL" -Report $CatalogsHotelReportParametersReport # CatalogsReportParameters | 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Build catalogs report
@@ -43,7 +43,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **CatalogsReportParameters** | [**CatalogsReportParameters**](CatalogsReportParameters.md)| Request object to asynchronously create a report. | 
+ **CatalogsReportParameters** | [**CatalogsReportParameters**](CatalogsReportParameters.md)|  | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 Get catalogs report
 
-This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the ""operation user_account"" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the ""operation user_account"". In order to do this, the token user_account must have one of the following <a href=""https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts"">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+This returns a URL to a report given a token returned from [Build catalogs report](/docs/api/v5/#operation/reports/create). You can use the URL to download the report. - By default, the ""operation user_account"" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the ""operation user_account"". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Example
 ```powershell
@@ -78,7 +78,7 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$Token = "MyToken" # String | Token returned from async build report call
+$Token = "MyToken" # String | Token returned from the post request creation call
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Get catalogs report
@@ -94,7 +94,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Token** | **String**| Token returned from async build report call | 
+ **Token** | **String**| Token returned from the post request creation call | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -115,14 +115,14 @@ Name | Type | Description  | Notes
 <a id="Invoke-ReportsStats"></a>
 # **Invoke-ReportsStats**
 > ReportsStats200Response Invoke-ReportsStats<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Parameters] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Parameters] <System.Collections.Hashtable><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 
 List report stats
 
-List aggregated numbers of issues for a catalog owned by the ""operation user_account"". - By default, the ""operation user_account"" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the ""operation user_account"". In order to do this, the token user_account must have one of the following <a href=""https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts"">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+List aggregated numbers of issues for a catalog owned by the ""operation user_account"". - By default, the ""operation user_account"" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the ""operation user_account"". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Example
 ```powershell
@@ -131,15 +131,14 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$CatalogsHotelReportStatsParametersReport = Initialize-CatalogsHotelReportStatsParametersReport -ReportType "FEED_INGESTION_ISSUES" -FeedId "MyFeedId" -ProcessingResultId "MyProcessingResultId" -CatalogId "MyCatalogId"
-$ReportsStatsParametersParameter = Initialize-ReportsStatsParametersParameter -CatalogType "RETAIL" -Report $CatalogsHotelReportStatsParametersReport # ReportsStatsParametersParameter | Contains the parameters for report identification.
+@{ key_example = ... } # CatalogsReportStatsParameters | Contains the parameters for report identification.
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List report stats
 try {
-    $Result = Invoke-ReportsStats -Parameters $Parameters -AdAccountId $AdAccountId -PageSize $PageSize -Bookmark $Bookmark
+    $Result = Invoke-ReportsStats -Parameters $Parameters -AdAccountId $AdAccountId -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Invoke-ReportsStats: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -150,10 +149,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Parameters** | [**ReportsStatsParametersParameter**](ReportsStatsParametersParameter.md)| Contains the parameters for report identification. | 
+ **Parameters** | [**CatalogsReportStatsParameters**](CatalogsReportStatsParameters.md)| Contains the parameters for report identification. | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

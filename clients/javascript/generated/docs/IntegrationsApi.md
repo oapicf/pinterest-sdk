@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## integrationsCommerceDel
 
-> integrationsCommerceDel(externalBusinessId)
+> IntegrationMetadata integrationsCommerceDel(externalBusinessId)
 
 Delete commerce integration
 
@@ -37,7 +37,7 @@ apiInstance.integrationsCommerceDel(externalBusinessId, (error, data, response) 
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**IntegrationMetadata**](IntegrationMetadata.md)
 
 ### Authorization
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 ## integrationsCommercePatch
 
-> IntegrationMetadata integrationsCommercePatch(externalBusinessId, integrationRequestPatch)
+> IntegrationMetadata integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate)
 
 Update commerce integration
 
@@ -131,8 +131,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.IntegrationsApi();
 let externalBusinessId = "externalBusinessId_example"; // String | External business ID for the integration.
-let integrationRequestPatch = new PinterestSdk.IntegrationRequestPatch(); // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
-apiInstance.integrationsCommercePatch(externalBusinessId, integrationRequestPatch, (error, data, response) => {
+let integrationMetadataUpdate = new PinterestSdk.IntegrationMetadataUpdate(); // IntegrationMetadataUpdate | 
+apiInstance.integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -147,7 +147,7 @@ apiInstance.integrationsCommercePatch(externalBusinessId, integrationRequestPatc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalBusinessId** | **String**| External business ID for the integration. | 
- **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | 
+ **integrationMetadataUpdate** | [**IntegrationMetadataUpdate**](IntegrationMetadataUpdate.md)|  | 
 
 ### Return type
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ## integrationsCommercePost
 
-> IntegrationMetadata integrationsCommercePost(integrationRequest)
+> IntegrationMetadata integrationsCommercePost(integrationMetadataCreate)
 
 Create commerce integration
 
@@ -181,8 +181,8 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.IntegrationsApi();
-let integrationRequest = new PinterestSdk.IntegrationRequest(); // IntegrationRequest | Parameters to get create/update the Integration Metadata
-apiInstance.integrationsCommercePost(integrationRequest, (error, data, response) => {
+let integrationMetadataCreate = new PinterestSdk.IntegrationMetadataCreate(); // IntegrationMetadataCreate | 
+apiInstance.integrationsCommercePost(integrationMetadataCreate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -196,7 +196,7 @@ apiInstance.integrationsCommercePost(integrationRequest, (error, data, response)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | 
+ **integrationMetadataCreate** | [**IntegrationMetadataCreate**](IntegrationMetadataCreate.md)|  | 
 
 ### Return type
 
@@ -230,7 +230,7 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.IntegrationsApi();
-let id = "id_example"; // String | Integration ID.
+let id = "id_example"; // String | Integration record ID.
 apiInstance.integrationsGetById(id, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -245,7 +245,7 @@ apiInstance.integrationsGetById(id, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Integration ID. | 
+ **id** | **String**| Integration record ID. | 
 
 ### Return type
 
@@ -281,7 +281,7 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.IntegrationsApi();
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.integrationsGetList(opts, (error, data, response) => {
   if (error) {
@@ -298,7 +298,7 @@ apiInstance.integrationsGetList(opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
 
 ## integrationsLogsPost
 
-> IntegrationLogsSuccessResponse integrationsLogsPost(integrationLogsRequest)
+> IntegrationLogsSuccessResponse integrationsLogsPost(integrationLogsRequestCreate)
 
 Receives batched logs from integration applications.
 
@@ -332,8 +332,8 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.IntegrationsApi();
-let integrationLogsRequest = new PinterestSdk.IntegrationLogsRequest(); // IntegrationLogsRequest | Ingest log information from external integration application.
-apiInstance.integrationsLogsPost(integrationLogsRequest, (error, data, response) => {
+let integrationLogsRequestCreate = new PinterestSdk.IntegrationLogsRequestCreate(); // IntegrationLogsRequestCreate | 
+apiInstance.integrationsLogsPost(integrationLogsRequestCreate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -347,7 +347,7 @@ apiInstance.integrationsLogsPost(integrationLogsRequest, (error, data, response)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationLogsRequest** | [**IntegrationLogsRequest**](IntegrationLogsRequest.md)| Ingest log information from external integration application. | 
+ **integrationLogsRequestCreate** | [**IntegrationLogsRequestCreate**](IntegrationLogsRequestCreate.md)|  | 
 
 ### Return type
 

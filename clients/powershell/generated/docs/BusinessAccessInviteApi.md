@@ -29,9 +29,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$CreateAssetAccessRequestBodyAssetRequestsInner = Initialize-CreateAssetAccessRequestBodyAssetRequestsInner -AssetIdToPermissions @{ key_example = "ADMIN" } -PartnerId "809944451643622187"
-$CreateAssetAccessRequestBody = Initialize-CreateAssetAccessRequestBody -AssetRequests $CreateAssetAccessRequestBodyAssetRequestsInner # CreateAssetAccessRequestBody | 
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$CreateAssetAccessRequestItem = Initialize-CreateAssetAccessRequestItem -AssetIdToPermissions @{ key_example = "ADMIN" } -PartnerId "MyPartnerId"
+$CreateAssetAccessRequestBody = Initialize-CreateAssetAccessRequestBody -AssetRequests $CreateAssetAccessRequestItem # CreateAssetAccessRequestBody | 
 
 # Create a request to access an existing partner's assets.
 try {
@@ -66,9 +66,9 @@ Name | Type | Description  | Notes
 
 <a id="Stop-InvitesOrRequests"></a>
 # **Stop-InvitesOrRequests**
-> DeleteInvitesResultsResponseArray Stop-InvitesOrRequests<br>
+> CancelInvitesResponse Stop-InvitesOrRequests<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CancelInvitesBody] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CancelInvitesRequest] <PSCustomObject><br>
 
 Cancel invites/requests
 
@@ -81,12 +81,12 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$CancelInvitesBody = Initialize-CancelInvitesBody -InviteIds "MyInviteIds" # CancelInvitesBody | A list with invite ids
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$CancelInvitesRequest = Initialize-CancelInvitesRequest -InviteIds "MyInviteIds" # CancelInvitesRequest | 
 
 # Cancel invites/requests
 try {
-    $Result = Stop-InvitesOrRequests -BusinessId $BusinessId -CancelInvitesBody $CancelInvitesBody
+    $Result = Stop-InvitesOrRequests -BusinessId $BusinessId -CancelInvitesRequest $CancelInvitesRequest
 } catch {
     Write-Host ("Exception occurred when calling Stop-InvitesOrRequests: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -98,11 +98,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
- **CancelInvitesBody** | [**CancelInvitesBody**](CancelInvitesBody.md)| A list with invite ids | 
+ **CancelInvitesRequest** | [**CancelInvitesRequest**](CancelInvitesRequest.md)|  | 
 
 ### Return type
 
-[**DeleteInvitesResultsResponseArray**](DeleteInvitesResultsResponseArray.md) (PSCustomObject)
+[**CancelInvitesResponse**](CancelInvitesResponse.md) (PSCustomObject)
 
 ### Authorization
 
@@ -132,9 +132,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
 $CreateAssetInvitesRequestItem = Initialize-CreateAssetInvitesRequestItem -AssetIdToPermissions @{ key_example = "ADMIN" } -InviteId "1234567890123" -InviteType "MEMBER_INVITE"
-$CreateAssetInvitesRequest = Initialize-CreateAssetInvitesRequest -Invites $CreateAssetInvitesRequestItem # CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+$CreateAssetInvitesRequest = Initialize-CreateAssetInvitesRequest -Invites $CreateAssetInvitesRequestItem # CreateAssetInvitesRequest | 
 
 # Update invite/request with an asset permission
 try {
@@ -150,7 +150,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
- **CreateAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md)| A list of invites/requests together with the asset permissions to be assigned to the invite/request.  | 
+ **CreateAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md)|  | 
 
 ### Return type
 
@@ -184,8 +184,8 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$CreateMembershipOrPartnershipInvitesBody = Initialize-CreateMembershipOrPartnershipInvitesBody -BusinessRole "EMPLOYEE" -InviteType "MEMBER_INVITE" -Members "MyMembers" -Partners "MyPartners" # CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$CreateMembershipOrPartnershipInvitesBody = Initialize-CreateMembershipOrPartnershipInvitesBody -BusinessRole "EMPLOYEE" -InviteType "MEMBER_INVITE" -Members "MyMembers" -Partners "MyPartners" # CreateMembershipOrPartnershipInvitesBody | 
 
 # Create invites or requests
 try {
@@ -201,7 +201,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
- **CreateMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | 
+ **CreateMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)|  | 
 
 ### Return type
 
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 > GetInvites200Response Get-Invites<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IsMember] <System.Nullable[Boolean]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-InviteStatus] <String[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-InviteStatus] <PSCustomObject[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-InviteType] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
@@ -239,12 +239,12 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
 $IsMember = $true # Boolean | A boolean field to indicate whether the invite is to create a partnership or a membership. (optional) (default to $true)
-$InviteStatus = "PENDING" # String[] | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. (optional)
+$InviteStatus = "PENDING" # InviteFilterStatus[] | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. (optional)
 $InviteType = "MEMBER_INVITE" # InviteType | Invite type to filter invites by. Only invites of the specified type will be returned. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # Get invites/requests
 try {
@@ -261,10 +261,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
  **IsMember** | **Boolean**| A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional] [default to $true]
- **InviteStatus** | [**String[]**](String.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] 
+ **InviteStatus** | [**InviteFilterStatus[]**](InviteFilterStatus.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] 
  **InviteType** | [**InviteType**](InviteType.md)| Invite type to filter invites by. Only invites of the specified type will be returned. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -297,10 +297,10 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$AuthRespondInvitesBodyInvitesInnerAction = Initialize-AuthRespondInvitesBodyInvitesInnerAction -AcceptInvite $false -AssetIdToPermissions @{ key_example = "ADMIN" }
-$AuthRespondInvitesBodyInvitesInner = Initialize-AuthRespondInvitesBodyInvitesInner -Action $AuthRespondInvitesBodyInvitesInnerAction -InviteId "MyInviteId"
+$AuthRespondInviteAction = Initialize-AuthRespondInviteAction -AcceptInvite $false -AssetIdToPermissions @{ key_example = "ADMIN" }
+$AuthRespondInvitesBodyItem = Initialize-AuthRespondInvitesBodyItem -Action $AuthRespondInviteAction -InviteId "MyInviteId"
 
-$AuthRespondInvitesBody = Initialize-AuthRespondInvitesBody -Invites $AuthRespondInvitesBodyInvitesInner # AuthRespondInvitesBody | 
+$AuthRespondInvitesBody = Initialize-AuthRespondInvitesBody -Invites $AuthRespondInvitesBodyItem # AuthRespondInvitesBody | 
 
 # Accept or decline an invite/request
 try {

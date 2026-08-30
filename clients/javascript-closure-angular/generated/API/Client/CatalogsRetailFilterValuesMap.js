@@ -1,4 +1,4 @@
-goog.provide('API.Client.catalogs_retail_filter_values_map');
+goog.provide('API.Client.CatalogsRetailFilterValuesMap');
 
 /**
  * A map of filter attributes to their available values.
@@ -19,7 +19,7 @@ API.Client.CatalogsRetailFilterValuesMap.prototype.adImageTags;
 API.Client.CatalogsRetailFilterValuesMap.prototype.adVideoTags;
 
 /**
- * @type {!Array<!string>}
+ * @type {!Array<!API.Client.ProductAvailability>}
  * @export
  */
 API.Client.CatalogsRetailFilterValuesMap.prototype.availability;
@@ -31,7 +31,7 @@ API.Client.CatalogsRetailFilterValuesMap.prototype.availability;
 API.Client.CatalogsRetailFilterValuesMap.prototype.brand;
 
 /**
- * @type {!Array<!string>}
+ * @type {!Array<!API.Client.ProductCondition>}
  * @export
  */
 API.Client.CatalogsRetailFilterValuesMap.prototype.condition;
@@ -67,7 +67,7 @@ API.Client.CatalogsRetailFilterValuesMap.prototype.customLabel3;
 API.Client.CatalogsRetailFilterValuesMap.prototype.customLabel4;
 
 /**
- * @type {!Array<!string>}
+ * @type {!Array<!API.Client.Gender>}
  * @export
  */
 API.Client.CatalogsRetailFilterValuesMap.prototype.gender;
@@ -115,7 +115,7 @@ API.Client.CatalogsRetailFilterValuesMap.prototype.googleProductCategory5;
 API.Client.CatalogsRetailFilterValuesMap.prototype.googleProductCategory6;
 
 /**
- * @type {!Array<!string>}
+ * @type {!Array<!API.Client.MediaType>}
  * @export
  */
 API.Client.CatalogsRetailFilterValuesMap.prototype.mediaType;
@@ -150,27 +150,3 @@ API.Client.CatalogsRetailFilterValuesMap.prototype.productType3;
  */
 API.Client.CatalogsRetailFilterValuesMap.prototype.productType4;
 
-/** @enum {string} */
-API.Client.CatalogsRetailFilterValuesMap.Array&lt;!AvailabilityEnum&gt; = { 
-  IN_STOCK: 'IN_STOCK',
-  OUT_OF_STOCK: 'OUT_OF_STOCK',
-  PREORDER: 'PREORDER',
-  UNAVAILABLE: 'UNAVAILABLE',
-}
-/** @enum {string} */
-API.Client.CatalogsRetailFilterValuesMap.Array&lt;!ConditionEnum&gt; = { 
-  NEW: 'NEW',
-  USED: 'USED',
-  REFURBISHED: 'REFURBISHED',
-}
-/** @enum {string} */
-API.Client.CatalogsRetailFilterValuesMap.Array&lt;!GenderEnum&gt; = { 
-  FEMALE: 'FEMALE',
-  MALE: 'MALE',
-  UNISEX: 'UNISEX',
-}
-/** @enum {string} */
-API.Client.CatalogsRetailFilterValuesMap.Array&lt;!MediaTypeEnum&gt; = { 
-  IMAGE: 'IMAGE',
-  VIDEO: 'VIDEO',
-}

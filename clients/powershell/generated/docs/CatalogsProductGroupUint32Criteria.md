@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Negated** | **Boolean** |  | [optional] [default to $false]
-**Operator** | **String** |  | 
+**Negated** | **Boolean** |  | [optional] 
+**Operator** | [**NumericFilterOperatorType**](NumericFilterOperatorType.md) |  | 
 **Value** | **Int32** |  | 
 
 ## Examples

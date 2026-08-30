@@ -1,0 +1,44 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LabeledEntities"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LabeledEntities"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  EntityLabel = openapi_server.resourceTypes.EntityLabel
+  EntityLabelError = openapi_server.resourceTypes.EntityLabelError
+}
+resourceTypes {
+
+  LabeledEntities {
+    title = LabeledEntities
+    description = LabeledEntities
+    derivedFrom = Root
+    properties {
+        entities_labels {
+          type = array
+          items.type = EntityLabel
+          description = ""
+          optional = false
+        }
+        errors {
+          type = array
+          items.type = EntityLabelError
+          description = "Labels that were not successfully applied."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LabeledEntities {
+    title = LabeledEntities
+    description = LabeledEntities
+    implements = openapi_server.resourceTypes.LabeledEntities
+
+  }
+}

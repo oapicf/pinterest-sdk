@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | **NSString*** | Catalog id pertaining to the hotel product group. | 
+**catalogId** | **NSString*** | Catalog ID pertaining to the product group. | 
 **catalogType** | **NSString*** |  | 
 **filters** | [**OAICatalogsHotelProductGroupFilters***](OAICatalogsHotelProductGroupFilters.md) |  | 
 

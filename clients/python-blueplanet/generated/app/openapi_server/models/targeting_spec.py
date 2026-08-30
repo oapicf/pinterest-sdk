@@ -20,7 +20,7 @@ class TargetingSpec(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, age_bucket: List[TargetingSpecAgeBucket]=None, apptype: List[TargetingSpecAppType]=None, audience_exclude: List[str]=None, audience_include: List[str]=None, gender: List[TargetingSpecGender]=None, geo: List[str]=None, interest: List[str]=None, locale: List[str]=None, location: List[str]=None, maximum_age: str=None, minimum_age: str=None, shopping_retargeting: List[TargetingSpecShoppingRetargeting]=None, targeting_strategy: List[str]=None):  # noqa: E501
+    def __init__(self, age_bucket: List[TargetingSpecAgeBucket]=None, apptype: List[TargetingSpecAppType]=None, audience_exclude: List[str]=None, audience_include: List[str]=None, gender: List[TargetingSpecGender]=None, geo: List[str]=None, geo_exclude: List[str]=None, interest: List[str]=None, locale: List[str]=None, location: List[str]=None, location_exclude: List[str]=None, maximum_age: str=None, minimum_age: str=None, shopping_retargeting: List[TargetingSpecShoppingRetargeting]=None, targeting_strategy: List[str]=None):  # noqa: E501
         """TargetingSpec - a model defined in Swagger
 
         :param age_bucket: The age_bucket of this TargetingSpec.  # noqa: E501
@@ -35,12 +35,16 @@ class TargetingSpec(Model):
         :type gender: List[TargetingSpecGender]
         :param geo: The geo of this TargetingSpec.  # noqa: E501
         :type geo: List[str]
+        :param geo_exclude: The geo_exclude of this TargetingSpec.  # noqa: E501
+        :type geo_exclude: List[str]
         :param interest: The interest of this TargetingSpec.  # noqa: E501
         :type interest: List[str]
         :param locale: The locale of this TargetingSpec.  # noqa: E501
         :type locale: List[str]
         :param location: The location of this TargetingSpec.  # noqa: E501
         :type location: List[str]
+        :param location_exclude: The location_exclude of this TargetingSpec.  # noqa: E501
+        :type location_exclude: List[str]
         :param maximum_age: The maximum_age of this TargetingSpec.  # noqa: E501
         :type maximum_age: str
         :param minimum_age: The minimum_age of this TargetingSpec.  # noqa: E501
@@ -57,9 +61,11 @@ class TargetingSpec(Model):
             'audience_include': List[str],
             'gender': List[TargetingSpecGender],
             'geo': List[str],
+            'geo_exclude': List[str],
             'interest': List[str],
             'locale': List[str],
             'location': List[str],
+            'location_exclude': List[str],
             'maximum_age': str,
             'minimum_age': str,
             'shopping_retargeting': List[TargetingSpecShoppingRetargeting],
@@ -73,9 +79,11 @@ class TargetingSpec(Model):
             'audience_include': 'AUDIENCE_INCLUDE',
             'gender': 'GENDER',
             'geo': 'GEO',
+            'geo_exclude': 'GEO_EXCLUDE',
             'interest': 'INTEREST',
             'locale': 'LOCALE',
             'location': 'LOCATION',
+            'location_exclude': 'LOCATION_EXCLUDE',
             'maximum_age': 'MAXIMUM_AGE',
             'minimum_age': 'MINIMUM_AGE',
             'shopping_retargeting': 'SHOPPING_RETARGETING',
@@ -88,9 +96,11 @@ class TargetingSpec(Model):
         self._audience_include = audience_include
         self._gender = gender
         self._geo = geo
+        self._geo_exclude = geo_exclude
         self._interest = interest
         self._locale = locale
         self._location = location
+        self._location_exclude = location_exclude
         self._maximum_age = maximum_age
         self._minimum_age = minimum_age
         self._shopping_retargeting = shopping_retargeting
@@ -226,7 +236,7 @@ class TargetingSpec(Model):
     def geo(self) -> List[str]:
         """Gets the geo of this TargetingSpec.
 
-        Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).  # noqa: E501
+        Region codes or postal codes to include for targeting.<br /><br /> Region codes represent broader geographical areas. Example: <code>US-CA</code> is the region code for California in the United States.<br /><br /> Postal codes represent more granular, specific areas. Example: <code>94103</code> is a postal code for a specifc area in San Francisco, California, U.S.A.<br /><br /> For each ad group, use only one of these methods, depending on which fits your targeting needs. Do not use both. For example, either specify a broader region code like <code>US-CA</code> or a more granular postal code within that regon, such as <code>94103</code>.<br /><br /> You can specify multiple region codes or postal codes in an array, depending on which method you choose.<br /><br /> Precede a region code array with the <code>region_codes</code> key and a postal code value with the <code>postal_codes</code> key. Examples:<br /><br /> <code>\"geo\": {</code><br /> <code>\"region_codes\": [\"US-CA\"]</code><br /> <code>}</code><br /><br /> <code>\"geo\": {</code><br /> <code>\"postal_codes\": [\"94103\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code>. <br /><br /> If you do not specifiy a <code>GEO</code> code, only <code>LOCATION</code> values will be targeted (See <code>LOCATION</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>.  # noqa: E501
 
         :return: The geo of this TargetingSpec.
         :rtype: List[str]
@@ -237,13 +247,36 @@ class TargetingSpec(Model):
     def geo(self, geo: List[str]):
         """Sets the geo of this TargetingSpec.
 
-        Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).  # noqa: E501
+        Region codes or postal codes to include for targeting.<br /><br /> Region codes represent broader geographical areas. Example: <code>US-CA</code> is the region code for California in the United States.<br /><br /> Postal codes represent more granular, specific areas. Example: <code>94103</code> is a postal code for a specifc area in San Francisco, California, U.S.A.<br /><br /> For each ad group, use only one of these methods, depending on which fits your targeting needs. Do not use both. For example, either specify a broader region code like <code>US-CA</code> or a more granular postal code within that regon, such as <code>94103</code>.<br /><br /> You can specify multiple region codes or postal codes in an array, depending on which method you choose.<br /><br /> Precede a region code array with the <code>region_codes</code> key and a postal code value with the <code>postal_codes</code> key. Examples:<br /><br /> <code>\"geo\": {</code><br /> <code>\"region_codes\": [\"US-CA\"]</code><br /> <code>}</code><br /><br /> <code>\"geo\": {</code><br /> <code>\"postal_codes\": [\"94103\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code>. <br /><br /> If you do not specifiy a <code>GEO</code> code, only <code>LOCATION</code> values will be targeted (See <code>LOCATION</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>.  # noqa: E501
 
         :param geo: The geo of this TargetingSpec.
         :type geo: List[str]
         """
 
         self._geo = geo
+
+    @property
+    def geo_exclude(self) -> List[str]:
+        """Gets the geo_exclude of this TargetingSpec.
+
+        Region codes or postal codes to exclude from the targeting inclusion area.<br /><br /> See <code>GEO</code> parameter in this targeting spec for rules, syntax, and other information.<br />  # noqa: E501
+
+        :return: The geo_exclude of this TargetingSpec.
+        :rtype: List[str]
+        """
+        return self._geo_exclude
+
+    @geo_exclude.setter
+    def geo_exclude(self, geo_exclude: List[str]):
+        """Sets the geo_exclude of this TargetingSpec.
+
+        Region codes or postal codes to exclude from the targeting inclusion area.<br /><br /> See <code>GEO</code> parameter in this targeting spec for rules, syntax, and other information.<br />  # noqa: E501
+
+        :param geo_exclude: The geo_exclude of this TargetingSpec.
+        :type geo_exclude: List[str]
+        """
+
+        self._geo_exclude = geo_exclude
 
     @property
     def interest(self) -> List[str]:
@@ -295,7 +328,7 @@ class TargetingSpec(Model):
     def location(self) -> List[str]:
         """Gets the location of this TargetingSpec.
 
-        22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).  # noqa: E501
+        Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to include for targeting.<br /><br /> Precede country code values with the <code>country_codes</code> key and metro code values with <code>metro_codes</code> key. Example:<br /><br /> <code>\"location\": {</code><br /> <code>\"country_codes\": [\"US\", \"CA\"],</code><br /> <code>\"metro_codes\": [\"501\", \"602\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code> code. <br /><br /> If you do not specify a <code>LOCATION</code> code, only <code>GEO</code> values will be targeted (See <code>GEO</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>.  # noqa: E501
 
         :return: The location of this TargetingSpec.
         :rtype: List[str]
@@ -306,13 +339,36 @@ class TargetingSpec(Model):
     def location(self, location: List[str]):
         """Sets the location of this TargetingSpec.
 
-        22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).  # noqa: E501
+        Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to include for targeting.<br /><br /> Precede country code values with the <code>country_codes</code> key and metro code values with <code>metro_codes</code> key. Example:<br /><br /> <code>\"location\": {</code><br /> <code>\"country_codes\": [\"US\", \"CA\"],</code><br /> <code>\"metro_codes\": [\"501\", \"602\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code> code. <br /><br /> If you do not specify a <code>LOCATION</code> code, only <code>GEO</code> values will be targeted (See <code>GEO</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>.  # noqa: E501
 
         :param location: The location of this TargetingSpec.
         :type location: List[str]
         """
 
         self._location = location
+
+    @property
+    def location_exclude(self) -> List[str]:
+        """Gets the location_exclude of this TargetingSpec.
+
+        Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to exclude from targeting.<br /><br /> See <code>LOCATION</code> parameter in this targeting spec for rules, syntax, and other information.  # noqa: E501
+
+        :return: The location_exclude of this TargetingSpec.
+        :rtype: List[str]
+        """
+        return self._location_exclude
+
+    @location_exclude.setter
+    def location_exclude(self, location_exclude: List[str]):
+        """Sets the location_exclude of this TargetingSpec.
+
+        Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to exclude from targeting.<br /><br /> See <code>LOCATION</code> parameter in this targeting spec for rules, syntax, and other information.  # noqa: E501
+
+        :param location_exclude: The location_exclude of this TargetingSpec.
+        :type location_exclude: List[str]
+        """
+
+        self._location_exclude = location_exclude
 
     @property
     def maximum_age(self) -> str:
@@ -391,7 +447,6 @@ class TargetingSpec(Model):
     def targeting_strategy(self) -> List[str]:
         """Gets the targeting_strategy of this TargetingSpec.
 
-          # noqa: E501
 
         :return: The targeting_strategy of this TargetingSpec.
         :rtype: List[str]
@@ -402,7 +457,6 @@ class TargetingSpec(Model):
     def targeting_strategy(self, targeting_strategy: List[str]):
         """Sets the targeting_strategy of this TargetingSpec.
 
-          # noqa: E501
 
         :param targeting_strategy: The targeting_strategy of this TargetingSpec.
         :type targeting_strategy: List[str]

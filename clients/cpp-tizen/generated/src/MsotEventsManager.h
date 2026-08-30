@@ -5,8 +5,8 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
-#include "ConversionMSOTEvents.h"
-#include "Error.h"
+#include "ConversionMSOTEventsCreate.h"
+#include "Pinterest.Lib.Error.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -27,29 +27,29 @@ public:
 
 /*! \brief Send Measurement Source Of Truth (MSOT) attributed conversion events. *Synchronous*
  *
- * <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong> <br> <p>Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their <code>ad_account_id</code>. The request body should be a JSON object.</p> - These events will NOT be used in Reporting.
+ * **This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their `ad_account_id`. The request body should be a JSON object.  - These events will not be used in Reporting.
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param conversionMSOTEvents Attributed MSOT conversion events *Required*
+ * \param conversionMSOTEventsCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool msotEventsCreateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<ConversionMSOTEvents> conversionMSOTEvents, 
+	std::string adAccountId, std::shared_ptr<ConversionMSOTEventsCreate> conversionMSOTEventsCreate, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
 /*! \brief Send Measurement Source Of Truth (MSOT) attributed conversion events. *Asynchronous*
  *
- * <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong> <br> <p>Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their <code>ad_account_id</code>. The request body should be a JSON object.</p> - These events will NOT be used in Reporting.
+ * **This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their `ad_account_id`. The request body should be a JSON object.  - These events will not be used in Reporting.
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param conversionMSOTEvents Attributed MSOT conversion events *Required*
+ * \param conversionMSOTEventsCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool msotEventsCreateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<ConversionMSOTEvents> conversionMSOTEvents, 
+	std::string adAccountId, std::shared_ptr<ConversionMSOTEventsCreate> conversionMSOTEventsCreate, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 

@@ -3,7 +3,6 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.Exception;
 import org.openapitools.model.ProductGroupPromotion;
 
@@ -20,7 +19,7 @@ public class ProductGroupPromotionResponseItem  {
 
   @ApiModelProperty(value = "")
 
-  private List<Exception> exceptions;
+  private List<Exception> exceptions = new ArrayList<>();
  /**
    * Get data
    * @return data
@@ -96,10 +95,7 @@ public class ProductGroupPromotionResponseItem  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

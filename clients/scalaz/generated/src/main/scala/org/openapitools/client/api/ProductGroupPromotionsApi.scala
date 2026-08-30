@@ -21,15 +21,19 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
+import org.openapitools.client.api.BigDecimal
+import org.openapitools.client.api.EntityStatus
 import org.openapitools.client.api.Error
 import org.openapitools.client.api.Granularity
 import java.time.LocalDate
-import org.openapitools.client.api.ProductGroupAnalyticsResponseInner
+import org.openapitools.client.api.PaginationOrder
+import org.openapitools.client.api.ProductGroupAnalyticsItems
 import org.openapitools.client.api.ProductGroupPromotion
-import org.openapitools.client.api.ProductGroupPromotionCreateRequest
-import org.openapitools.client.api.ProductGroupPromotionResponse
-import org.openapitools.client.api.ProductGroupPromotionUpdateRequest
+import org.openapitools.client.api.ProductGroupPromotions
+import org.openapitools.client.api.ProductGroupPromotionsCreate
 import org.openapitools.client.api.ProductGroupPromotionsList200Response
+import org.openapitools.client.api.ProductGroupPromotionsUpdateWithRequiredBody
+import org.openapitools.client.api.ReportingColumnSync
 import org.openapitools.client.api.ReportingTimeZone
 
 object ProductGroupPromotionsApi {
@@ -38,8 +42,8 @@ object ProductGroupPromotionsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def productGroupPromotionsCreate(host: String, adAccountId: String, productGroupPromotionCreateRequest: ProductGroupPromotionCreateRequest): Task[ProductGroupPromotionResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[ProductGroupPromotionResponse] = jsonOf[ProductGroupPromotionResponse]
+  def productGroupPromotionsCreate(host: String, adAccountId: String, productGroupPromotionsCreate: ProductGroupPromotionsCreate): Task[ProductGroupPromotions] = {
+    implicit val returnTypeDecoder: EntityDecoder[ProductGroupPromotions] = jsonOf[ProductGroupPromotions]
 
     val path = "/ad_accounts/{ad_account_id}/product_group_promotions".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -53,8 +57,8 @@ object ProductGroupPromotionsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(productGroupPromotionCreateRequest)
-      resp          <- client.expect[ProductGroupPromotionResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(productGroupPromotionsCreate)
+      resp          <- client.expect[ProductGroupPromotions](req)
 
     } yield resp
   }
@@ -80,7 +84,7 @@ object ProductGroupPromotionsApi {
     } yield resp
   }
 
-  def productGroupPromotionsList(host: String, adAccountId: String, productGroupPromotionIds: List[String] = List.empty[String] , entityStatuses: List[String] = ["ACTIVE","PAUSED"], adGroupId: String, pageSize: Integer = 25, order: String, bookmark: String)(implicit productGroupPromotionIdsQuery: QueryParam[List[String]], entityStatusesQuery: QueryParam[List[String]], adGroupIdQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[String], bookmarkQuery: QueryParam[String]): Task[ProductGroupPromotionsList200Response] = {
+  def productGroupPromotionsList(host: String, adAccountId: String, bookmark: String, pageSize: Integer = 25, order: PaginationOrder, productGroupPromotionIds: List[String] = List.empty[String] , entityStatuses: List[EntityStatus] = ["ACTIVE","PAUSED"], adGroupId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[PaginationOrder], productGroupPromotionIdsQuery: QueryParam[List[String]], entityStatusesQuery: QueryParam[List[EntityStatus]], adGroupIdQuery: QueryParam[String]): Task[ProductGroupPromotionsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[ProductGroupPromotionsList200Response] = jsonOf[ProductGroupPromotionsList200Response]
 
     val path = "/ad_accounts/{ad_account_id}/product_group_promotions".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -90,7 +94,7 @@ object ProductGroupPromotionsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("productGroupPromotionIds", Some(product_group_promotion_idsQuery.toParamString(product_group_promotion_ids))), ("entityStatuses", Some(entity_statusesQuery.toParamString(entity_statuses))), ("adGroupId", Some(ad_group_idQuery.toParamString(ad_group_id))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("productGroupPromotionIds", Some(product_group_promotion_idsQuery.toParamString(product_group_promotion_ids))), ("entityStatuses", Some(entity_statusesQuery.toParamString(entity_statuses))), ("adGroupId", Some(ad_group_idQuery.toParamString(ad_group_id))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -101,8 +105,8 @@ object ProductGroupPromotionsApi {
     } yield resp
   }
 
-  def productGroupPromotionsUpdate(host: String, adAccountId: String, productGroupPromotionUpdateRequest: ProductGroupPromotionUpdateRequest): Task[ProductGroupPromotionResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[ProductGroupPromotionResponse] = jsonOf[ProductGroupPromotionResponse]
+  def productGroupPromotionsUpdate(host: String, adAccountId: String, productGroupPromotionsUpdateWithRequiredBody: ProductGroupPromotionsUpdateWithRequiredBody): Task[ProductGroupPromotions] = {
+    implicit val returnTypeDecoder: EntityDecoder[ProductGroupPromotions] = jsonOf[ProductGroupPromotions]
 
     val path = "/ad_accounts/{ad_account_id}/product_group_promotions".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -116,14 +120,14 @@ object ProductGroupPromotionsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(productGroupPromotionUpdateRequest)
-      resp          <- client.expect[ProductGroupPromotionResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(productGroupPromotionsUpdateWithRequiredBody)
+      resp          <- client.expect[ProductGroupPromotions](req)
 
     } yield resp
   }
 
-  def productGroupsAnalytics(host: String, adAccountId: String, startDate: LocalDate, endDate: LocalDate, productGroupIds: List[String] = List.empty[String] , columns: List[String] = List.empty[String] , granularity: Granularity, clickWindowDays: Integer = 30, engagementWindowDays: Integer = 30, viewWindowDays: Integer = 1, conversionReportTime: String = TIME_OF_AD_ACTION, reportingTimezone: ReportingTimeZone)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], productGroupIdsQuery: QueryParam[List[String]], columnsQuery: QueryParam[List[String]], granularityQuery: QueryParam[Granularity], clickWindowDaysQuery: QueryParam[Integer], engagementWindowDaysQuery: QueryParam[Integer], viewWindowDaysQuery: QueryParam[Integer], conversionReportTimeQuery: QueryParam[String], reportingTimezoneQuery: QueryParam[ReportingTimeZone]): Task[List[ProductGroupAnalyticsResponseInner]] = {
-    implicit val returnTypeDecoder: EntityDecoder[List[ProductGroupAnalyticsResponseInner]] = jsonOf[List[ProductGroupAnalyticsResponseInner]]
+  def productGroupsAnalytics(host: String, startDate: LocalDate, endDate: LocalDate, productGroupIds: List[String] = List.empty[String] , columns: List[ReportingColumnSync] = List.empty[ReportingColumnSync] , granularity: Granularity, adAccountId: String, clickWindowDays: BigDecimal = 30, engagementWindowDays: BigDecimal = 30, viewWindowDays: BigDecimal = 1, conversionReportTime: String = TIME_OF_AD_ACTION, reportingTimezone: ReportingTimeZone)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], productGroupIdsQuery: QueryParam[List[String]], columnsQuery: QueryParam[List[ReportingColumnSync]], granularityQuery: QueryParam[Granularity], clickWindowDaysQuery: QueryParam[BigDecimal], engagementWindowDaysQuery: QueryParam[BigDecimal], viewWindowDaysQuery: QueryParam[BigDecimal], conversionReportTimeQuery: QueryParam[String], reportingTimezoneQuery: QueryParam[ReportingTimeZone]): Task[List[ProductGroupAnalyticsItems]] = {
+    implicit val returnTypeDecoder: EntityDecoder[List[ProductGroupAnalyticsItems]] = jsonOf[List[ProductGroupAnalyticsItems]]
 
     val path = "/ad_accounts/{ad_account_id}/product_groups/analytics".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -138,7 +142,7 @@ object ProductGroupPromotionsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[List[ProductGroupAnalyticsResponseInner]](req)
+      resp          <- client.expect[List[ProductGroupAnalyticsItems]](req)
 
     } yield resp
   }
@@ -150,8 +154,8 @@ class HttpServiceProductGroupPromotionsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def productGroupPromotionsCreate(adAccountId: String, productGroupPromotionCreateRequest: ProductGroupPromotionCreateRequest): Task[ProductGroupPromotionResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[ProductGroupPromotionResponse] = jsonOf[ProductGroupPromotionResponse]
+  def productGroupPromotionsCreate(adAccountId: String, productGroupPromotionsCreate: ProductGroupPromotionsCreate): Task[ProductGroupPromotions] = {
+    implicit val returnTypeDecoder: EntityDecoder[ProductGroupPromotions] = jsonOf[ProductGroupPromotions]
 
     val path = "/ad_accounts/{ad_account_id}/product_group_promotions".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -165,8 +169,8 @@ class HttpServiceProductGroupPromotionsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(productGroupPromotionCreateRequest)
-      resp          <- client.expect[ProductGroupPromotionResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(productGroupPromotionsCreate)
+      resp          <- client.expect[ProductGroupPromotions](req)
 
     } yield resp
   }
@@ -192,7 +196,7 @@ class HttpServiceProductGroupPromotionsApi(service: HttpService) {
     } yield resp
   }
 
-  def productGroupPromotionsList(adAccountId: String, productGroupPromotionIds: List[String] = List.empty[String] , entityStatuses: List[String] = ["ACTIVE","PAUSED"], adGroupId: String, pageSize: Integer = 25, order: String, bookmark: String)(implicit productGroupPromotionIdsQuery: QueryParam[List[String]], entityStatusesQuery: QueryParam[List[String]], adGroupIdQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[String], bookmarkQuery: QueryParam[String]): Task[ProductGroupPromotionsList200Response] = {
+  def productGroupPromotionsList(adAccountId: String, bookmark: String, pageSize: Integer = 25, order: PaginationOrder, productGroupPromotionIds: List[String] = List.empty[String] , entityStatuses: List[EntityStatus] = ["ACTIVE","PAUSED"], adGroupId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[PaginationOrder], productGroupPromotionIdsQuery: QueryParam[List[String]], entityStatusesQuery: QueryParam[List[EntityStatus]], adGroupIdQuery: QueryParam[String]): Task[ProductGroupPromotionsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[ProductGroupPromotionsList200Response] = jsonOf[ProductGroupPromotionsList200Response]
 
     val path = "/ad_accounts/{ad_account_id}/product_group_promotions".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -202,7 +206,7 @@ class HttpServiceProductGroupPromotionsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("productGroupPromotionIds", Some(product_group_promotion_idsQuery.toParamString(product_group_promotion_ids))), ("entityStatuses", Some(entity_statusesQuery.toParamString(entity_statuses))), ("adGroupId", Some(ad_group_idQuery.toParamString(ad_group_id))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("productGroupPromotionIds", Some(product_group_promotion_idsQuery.toParamString(product_group_promotion_ids))), ("entityStatuses", Some(entity_statusesQuery.toParamString(entity_statuses))), ("adGroupId", Some(ad_group_idQuery.toParamString(ad_group_id))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -213,8 +217,8 @@ class HttpServiceProductGroupPromotionsApi(service: HttpService) {
     } yield resp
   }
 
-  def productGroupPromotionsUpdate(adAccountId: String, productGroupPromotionUpdateRequest: ProductGroupPromotionUpdateRequest): Task[ProductGroupPromotionResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[ProductGroupPromotionResponse] = jsonOf[ProductGroupPromotionResponse]
+  def productGroupPromotionsUpdate(adAccountId: String, productGroupPromotionsUpdateWithRequiredBody: ProductGroupPromotionsUpdateWithRequiredBody): Task[ProductGroupPromotions] = {
+    implicit val returnTypeDecoder: EntityDecoder[ProductGroupPromotions] = jsonOf[ProductGroupPromotions]
 
     val path = "/ad_accounts/{ad_account_id}/product_group_promotions".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -228,14 +232,14 @@ class HttpServiceProductGroupPromotionsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(productGroupPromotionUpdateRequest)
-      resp          <- client.expect[ProductGroupPromotionResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(productGroupPromotionsUpdateWithRequiredBody)
+      resp          <- client.expect[ProductGroupPromotions](req)
 
     } yield resp
   }
 
-  def productGroupsAnalytics(adAccountId: String, startDate: LocalDate, endDate: LocalDate, productGroupIds: List[String] = List.empty[String] , columns: List[String] = List.empty[String] , granularity: Granularity, clickWindowDays: Integer = 30, engagementWindowDays: Integer = 30, viewWindowDays: Integer = 1, conversionReportTime: String = TIME_OF_AD_ACTION, reportingTimezone: ReportingTimeZone)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], productGroupIdsQuery: QueryParam[List[String]], columnsQuery: QueryParam[List[String]], granularityQuery: QueryParam[Granularity], clickWindowDaysQuery: QueryParam[Integer], engagementWindowDaysQuery: QueryParam[Integer], viewWindowDaysQuery: QueryParam[Integer], conversionReportTimeQuery: QueryParam[String], reportingTimezoneQuery: QueryParam[ReportingTimeZone]): Task[List[ProductGroupAnalyticsResponseInner]] = {
-    implicit val returnTypeDecoder: EntityDecoder[List[ProductGroupAnalyticsResponseInner]] = jsonOf[List[ProductGroupAnalyticsResponseInner]]
+  def productGroupsAnalytics(startDate: LocalDate, endDate: LocalDate, productGroupIds: List[String] = List.empty[String] , columns: List[ReportingColumnSync] = List.empty[ReportingColumnSync] , granularity: Granularity, adAccountId: String, clickWindowDays: BigDecimal = 30, engagementWindowDays: BigDecimal = 30, viewWindowDays: BigDecimal = 1, conversionReportTime: String = TIME_OF_AD_ACTION, reportingTimezone: ReportingTimeZone)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], productGroupIdsQuery: QueryParam[List[String]], columnsQuery: QueryParam[List[ReportingColumnSync]], granularityQuery: QueryParam[Granularity], clickWindowDaysQuery: QueryParam[BigDecimal], engagementWindowDaysQuery: QueryParam[BigDecimal], viewWindowDaysQuery: QueryParam[BigDecimal], conversionReportTimeQuery: QueryParam[String], reportingTimezoneQuery: QueryParam[ReportingTimeZone]): Task[List[ProductGroupAnalyticsItems]] = {
+    implicit val returnTypeDecoder: EntityDecoder[List[ProductGroupAnalyticsItems]] = jsonOf[List[ProductGroupAnalyticsItems]]
 
     val path = "/ad_accounts/{ad_account_id}/product_groups/analytics".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -250,7 +254,7 @@ class HttpServiceProductGroupPromotionsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[List[ProductGroupAnalyticsResponseInner]](req)
+      resp          <- client.expect[List[ProductGroupAnalyticsItems]](req)
 
     } yield resp
   }

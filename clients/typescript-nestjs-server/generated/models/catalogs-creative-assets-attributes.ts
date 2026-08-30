@@ -1,0 +1,66 @@
+import { CatalogsAiContentDisclosure } from './catalogs-ai-content-disclosure';
+
+
+export interface CatalogsCreativeAssetsAttributes { 
+  /**
+   * Link to the creative assets page.
+   */
+  android_deep_link?: string | null;
+  /**
+   * Custom grouping of creative assets.
+   */
+  custom_label_0?: string | null;
+  /**
+   * Custom grouping of creative assets.
+   */
+  custom_label_1?: string | null;
+  /**
+   * Custom grouping of creative assets.
+   */
+  custom_label_2?: string | null;
+  /**
+   * Custom grouping of creative assets.
+   */
+  custom_label_3?: string | null;
+  /**
+   * Custom grouping of creative assets.
+   */
+  custom_label_4?: string | null;
+  /**
+   * Brief description of the creative assets.
+   */
+  description?: string;
+  /**
+   * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+   */
+  google_product_category?: string | null;
+  /**
+   * IOS deep link to the creative assets page.
+   */
+  ios_deep_link?: string | null;
+  /**
+   * Link to the creative assets page.
+   */
+  link?: string;
+  /**
+   * The name of the creative assets.
+   */
+  title?: string;
+  /**
+   * Visibility of the creative assets. Must be one of the following values (upper or lowercase): \'visible\', \'hidden\'.
+   */
+  visibility?: string | null;
+  /**
+   * AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
+   */
+  ai_disclosures?: Array<CatalogsAiContentDisclosure>;
+  /**
+   * The creative assets image.
+   */
+  image_link?: string;
+  /**
+   * The creative assets video.
+   */
+  video_link?: string;
+}
+

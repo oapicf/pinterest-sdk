@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Item validation event",
+  "name": "SupplementalItemValidationEvent",
+  "fields": [
+    {
+      "name": "attribute",
+      "type": "string",
+      "doc": "The item attribute referenced by the validation event eg. price, availability, ad_link"
+    },
+    {
+      "name": "code",
+      "type": "int",
+      "doc": "The event code that the item validation event references"
+    },
+    {
+      "name": "message",
+      "type": "string",
+      "doc": "Title message describing the item validation event"
+    }
+  ]
+
+}

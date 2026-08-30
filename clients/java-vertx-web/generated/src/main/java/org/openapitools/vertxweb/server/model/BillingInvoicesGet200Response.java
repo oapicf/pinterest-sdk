@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.BillingInvoiceResponse;
+import org.openapitools.vertxweb.server.model.BillingInvoice;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BillingInvoicesGet200Response   {
   
   private String bookmark;
-  private List<BillingInvoiceResponse> items = new ArrayList<>();
+  private List<BillingInvoice> items = new ArrayList<>();
 
   public BillingInvoicesGet200Response () {
 
   }
 
-  public BillingInvoicesGet200Response (String bookmark, List<BillingInvoiceResponse> items) {
+  public BillingInvoicesGet200Response (String bookmark, List<BillingInvoice> items) {
     this.bookmark = bookmark;
     this.items = items;
   }
@@ -35,10 +35,10 @@ public class BillingInvoicesGet200Response   {
 
     
   @JsonProperty("items")
-  public List<BillingInvoiceResponse> getItems() {
+  public List<BillingInvoice> getItems() {
     return items;
   }
-  public void setItems(List<BillingInvoiceResponse> items) {
+  public void setItems(List<BillingInvoice> items) {
     this.items = items;
   }
 
@@ -77,9 +77,6 @@ public class BillingInvoicesGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -2,6 +2,8 @@
 
 # SSIOAccountItem
 
+Salesforce account item with billing and terms information.
+
 The class is defined in **[SSIOAccountItem.java](../../src/main/java/org/openapitools/model/SSIOAccountItem.java)**
 
 ## Properties

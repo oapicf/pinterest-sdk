@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a name="adAccountsAudiencesSharedAccounts/list"></a>
 # **adAccountsAudiencesSharedAccounts/list**
-> ad_accounts_audiences_shared_accounts_list_200_response adAccountsAudiencesSharedAccounts/list(ad\_account\_id, audience\_id, account\_type, page\_size, bookmark)
+> ad_accounts_audiences_shared_accounts_list_200_response adAccountsAudiencesSharedAccounts/list(audience\_id, account\_type, ad\_account\_id, bookmark, page\_size)
 
 List accounts with access to an audience owned by an ad account
 
@@ -25,11 +25,11 @@ List accounts with access to an audience owned by an ad account
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
 | **audience\_id** | **String**| Unique identifier of the audience to use to filter the results. | [default to null] |
 | **account\_type** | [**AudienceAccountType**](../Models/.md)| Filter accounts by account type. | [default to null] [enum: AD_ACCOUNT, BUSINESS_ACCOUNT] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -46,7 +46,7 @@ List accounts with access to an audience owned by an ad account
 
 <a name="businessAccountAudiencesSharedAccounts/list"></a>
 # **businessAccountAudiencesSharedAccounts/list**
-> ad_accounts_audiences_shared_accounts_list_200_response businessAccountAudiencesSharedAccounts/list(business\_id, audience\_id, account\_type, page\_size, bookmark)
+> ad_accounts_audiences_shared_accounts_list_200_response businessAccountAudiencesSharedAccounts/list(business\_id, audience\_id, account\_type, bookmark, page\_size)
 
 List accounts with access to an audience owned by a business
 
@@ -59,8 +59,8 @@ List accounts with access to an audience owned by a business
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
 | **audience\_id** | **String**| Unique identifier of the audience to use to filter the results. | [default to null] |
 | **account\_type** | [**AudienceAccountType**](../Models/.md)| Filter accounts by account type. | [default to null] [enum: AD_ACCOUNT, BUSINESS_ACCOUNT] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -77,7 +77,7 @@ List accounts with access to an audience owned by a business
 
 <a name="sharedAudiencesForBusiness/list"></a>
 # **sharedAudiencesForBusiness/list**
-> audiences_list_200_response sharedAudiencesForBusiness/list(business\_id, bookmark, order, page\_size)
+> shared_audiences_for_business_list_200_response sharedAudiencesForBusiness/list(business\_id, order, bookmark, page\_size)
 
 List received audiences for a business
 
@@ -88,13 +88,13 @@ List received audiences for a business
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
+| **order** | [**Order**](../Models/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**audiences_list_200_response**](../Models/audiences_list_200_response.md)
+[**shared_audiences_for_business_list_200_response**](../Models/shared_audiences_for_business_list_200_response.md)
 
 ### Authorization
 
@@ -107,22 +107,22 @@ List received audiences for a business
 
 <a name="updateAdAccountToAdAccountSharedAudience"></a>
 # **updateAdAccountToAdAccountSharedAudience**
-> SharedAudienceResponse updateAdAccountToAdAccountSharedAudience(ad\_account\_id, SharedAudience)
+> AdAccountToAdAccountSharedAudience updateAdAccountToAdAccountSharedAudience(ad\_account\_id, AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing between ad accounts
 
-    From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+    From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Parameters
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
-| **SharedAudience** | [**SharedAudience**](../Models/SharedAudience.md)|  | |
+| **AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody** | [**AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](../Models/AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 ### Return type
 
-[**SharedAudienceResponse**](../Models/SharedAudienceResponse.md)
+[**AdAccountToAdAccountSharedAudience**](../Models/AdAccountToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -135,22 +135,22 @@ Update audience sharing between ad accounts
 
 <a name="updateAdAccountToBusinessSharedAudience"></a>
 # **updateAdAccountToBusinessSharedAudience**
-> BusinessSharedAudienceResponse updateAdAccountToBusinessSharedAudience(ad\_account\_id, BusinessSharedAudience)
+> AdAccountToBusinessSharedAudience updateAdAccountToBusinessSharedAudience(ad\_account\_id, AdAccountToBusinessSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing from an ad account to businesses
 
-    From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+    From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Parameters
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
-| **BusinessSharedAudience** | [**BusinessSharedAudience**](../Models/BusinessSharedAudience.md)|  | |
+| **AdAccountToBusinessSharedAudienceUpdateWithRequiredBody** | [**AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](../Models/AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](../Models/BusinessSharedAudienceResponse.md)
+[**AdAccountToBusinessSharedAudience**](../Models/AdAccountToBusinessSharedAudience.md)
 
 ### Authorization
 
@@ -163,22 +163,22 @@ Update audience sharing from an ad account to businesses
 
 <a name="updateBusinessToAdAccountSharedAudience"></a>
 # **updateBusinessToAdAccountSharedAudience**
-> SharedAudienceResponse updateBusinessToAdAccountSharedAudience(business\_id, SharedAudience)
+> BusinessToAdAccountSharedAudience updateBusinessToAdAccountSharedAudience(business\_id, BusinessToAdAccountSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing from a business to ad accounts
 
-    From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+    From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Parameters
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
-| **SharedAudience** | [**SharedAudience**](../Models/SharedAudience.md)|  | |
+| **BusinessToAdAccountSharedAudienceUpdateWithRequiredBody** | [**BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](../Models/BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 ### Return type
 
-[**SharedAudienceResponse**](../Models/SharedAudienceResponse.md)
+[**BusinessToAdAccountSharedAudience**](../Models/BusinessToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -191,22 +191,22 @@ Update audience sharing from a business to ad accounts
 
 <a name="updateBusinessToBusinessSharedAudience"></a>
 # **updateBusinessToBusinessSharedAudience**
-> BusinessSharedAudienceResponse updateBusinessToBusinessSharedAudience(business\_id, BusinessSharedAudience)
+> BusinessToBusinessSharedAudience updateBusinessToBusinessSharedAudience(business\_id, BusinessToBusinessSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing between businesses
 
-    From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+    From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Parameters
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
-| **BusinessSharedAudience** | [**BusinessSharedAudience**](../Models/BusinessSharedAudience.md)|  | |
+| **BusinessToBusinessSharedAudienceUpdateWithRequiredBody** | [**BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](../Models/BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](../Models/BusinessSharedAudienceResponse.md)
+[**BusinessToBusinessSharedAudience**](../Models/BusinessToBusinessSharedAudience.md)
 
 ### Authorization
 

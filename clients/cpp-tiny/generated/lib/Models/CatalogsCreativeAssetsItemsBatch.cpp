@@ -6,8 +6,8 @@ using namespace Tiny;
 
 CatalogsCreativeAssetsItemsBatch::CatalogsCreativeAssetsItemsBatch()
 {
-	batch_id = std::string();
-	catalog_type = CatalogsType();
+	batch_id = null;
+	catalog_type = std::string();
 	completed_time = std::string();
 	created_time = std::string();
 	items = std::list<CreativeAssetsProcessingRecord>();
@@ -50,9 +50,8 @@ CatalogsCreativeAssetsItemsBatch::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -137,8 +136,8 @@ CatalogsCreativeAssetsItemsBatch::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -188,19 +187,19 @@ CatalogsCreativeAssetsItemsBatch::getBatchId()
 }
 
 void
-CatalogsCreativeAssetsItemsBatch::setBatchId(std::string  batch_id)
+CatalogsCreativeAssetsItemsBatch::setBatchId(std::string batch_id)
 {
 	this->batch_id = batch_id;
 }
 
-CatalogsType
+std::string
 CatalogsCreativeAssetsItemsBatch::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsCreativeAssetsItemsBatch::setCatalogType(CatalogsType  catalog_type)
+CatalogsCreativeAssetsItemsBatch::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -212,7 +211,7 @@ CatalogsCreativeAssetsItemsBatch::getCompletedTime()
 }
 
 void
-CatalogsCreativeAssetsItemsBatch::setCompletedTime(std::string  completed_time)
+CatalogsCreativeAssetsItemsBatch::setCompletedTime(std::string completed_time)
 {
 	this->completed_time = completed_time;
 }
@@ -224,7 +223,7 @@ CatalogsCreativeAssetsItemsBatch::getCreatedTime()
 }
 
 void
-CatalogsCreativeAssetsItemsBatch::setCreatedTime(std::string  created_time)
+CatalogsCreativeAssetsItemsBatch::setCreatedTime(std::string created_time)
 {
 	this->created_time = created_time;
 }
@@ -236,7 +235,7 @@ CatalogsCreativeAssetsItemsBatch::getItems()
 }
 
 void
-CatalogsCreativeAssetsItemsBatch::setItems(std::list <CreativeAssetsProcessingRecord> items)
+CatalogsCreativeAssetsItemsBatch::setItems(std::list<CreativeAssetsProcessingRecord> items)
 {
 	this->items = items;
 }
@@ -248,7 +247,7 @@ CatalogsCreativeAssetsItemsBatch::getStatus()
 }
 
 void
-CatalogsCreativeAssetsItemsBatch::setStatus(BatchOperationStatus  status)
+CatalogsCreativeAssetsItemsBatch::setStatus(BatchOperationStatus status)
 {
 	this->status = status;
 }

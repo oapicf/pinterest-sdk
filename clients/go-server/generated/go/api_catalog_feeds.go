@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 	"reflect"
@@ -167,6 +168,20 @@ func (c *CatalogFeedsAPIController) FeedsList(w http.ResponseWriter, r *http.Req
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
+	var catalogIdParam string
+	if query.Has("catalog_id") {
+		param := query.Get("catalog_id")
+
+		catalogIdParam = param
+	} else {
+	}
+	var adAccountIdParam string
+	if query.Has("ad_account_id") {
+		param := query.Get("ad_account_id")
+
+		adAccountIdParam = param
+	} else {
+	}
 	var bookmarkParam string
 	if query.Has("bookmark") {
 		param := query.Get("bookmark")
@@ -192,21 +207,7 @@ func (c *CatalogFeedsAPIController) FeedsList(w http.ResponseWriter, r *http.Req
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var catalogIdParam string
-	if query.Has("catalog_id") {
-		param := query.Get("catalog_id")
-
-		catalogIdParam = param
-	} else {
-	}
-	var adAccountIdParam string
-	if query.Has("ad_account_id") {
-		param := query.Get("ad_account_id")
-
-		adAccountIdParam = param
-	} else {
-	}
-	result, err := c.service.FeedsList(r.Context(), bookmarkParam, pageSizeParam, catalogIdParam, adAccountIdParam)
+	result, err := c.service.FeedsList(r.Context(), catalogIdParam, adAccountIdParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -223,18 +224,23 @@ func (c *CatalogFeedsAPIController) FeedsCreate(w http.ResponseWriter, r *http.R
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	var feedsCreateRequestParam FeedsCreateRequest
+	var catalogsFeedCreateRequestSchemaParam CatalogsFeedCreateRequestSchema
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&feedsCreateRequestParam); err != nil {
+	if err := d.Decode(&catalogsFeedCreateRequestSchemaParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertFeedsCreateRequestRequired(feedsCreateRequestParam); err != nil {
+	if err := AssertCatalogsFeedCreateRequestSchemaRequired(catalogsFeedCreateRequestSchemaParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertFeedsCreateRequestConstraints(feedsCreateRequestParam); err != nil {
+	if err := AssertCatalogsFeedCreateRequestSchemaConstraints(catalogsFeedCreateRequestSchemaParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
@@ -245,7 +251,7 @@ func (c *CatalogFeedsAPIController) FeedsCreate(w http.ResponseWriter, r *http.R
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.FeedsCreate(r.Context(), feedsCreateRequestParam, adAccountIdParam)
+	result, err := c.service.FeedsCreate(r.Context(), catalogsFeedCreateRequestSchemaParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -328,18 +334,23 @@ func (c *CatalogFeedsAPIController) FeedsUpdate(w http.ResponseWriter, r *http.R
 		c.errorHandler(w, r, &RequiredError{"feed_id"}, nil)
 		return
 	}
-	var feedsUpdateRequestParam FeedsUpdateRequest
+	var catalogsFeedUpdateRequestSchemaParam CatalogsFeedUpdateRequestSchema
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&feedsUpdateRequestParam); err != nil {
+	if err := d.Decode(&catalogsFeedUpdateRequestSchemaParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertFeedsUpdateRequestRequired(feedsUpdateRequestParam); err != nil {
+	if err := AssertCatalogsFeedUpdateRequestSchemaRequired(catalogsFeedUpdateRequestSchemaParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertFeedsUpdateRequestConstraints(feedsUpdateRequestParam); err != nil {
+	if err := AssertCatalogsFeedUpdateRequestSchemaConstraints(catalogsFeedUpdateRequestSchemaParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
@@ -350,7 +361,7 @@ func (c *CatalogFeedsAPIController) FeedsUpdate(w http.ResponseWriter, r *http.R
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.FeedsUpdate(r.Context(), feedIdParam, feedsUpdateRequestParam, adAccountIdParam)
+	result, err := c.service.FeedsUpdate(r.Context(), feedIdParam, catalogsFeedUpdateRequestSchemaParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -403,6 +414,13 @@ func (c *CatalogFeedsAPIController) FeedProcessingResultsList(w http.ResponseWri
 		c.errorHandler(w, r, &RequiredError{"feed_id"}, nil)
 		return
 	}
+	var adAccountIdParam string
+	if query.Has("ad_account_id") {
+		param := query.Get("ad_account_id")
+
+		adAccountIdParam = param
+	} else {
+	}
 	var bookmarkParam string
 	if query.Has("bookmark") {
 		param := query.Get("bookmark")
@@ -428,14 +446,7 @@ func (c *CatalogFeedsAPIController) FeedProcessingResultsList(w http.ResponseWri
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var adAccountIdParam string
-	if query.Has("ad_account_id") {
-		param := query.Get("ad_account_id")
-
-		adAccountIdParam = param
-	} else {
-	}
-	result, err := c.service.FeedProcessingResultsList(r.Context(), feedIdParam, bookmarkParam, pageSizeParam, adAccountIdParam)
+	result, err := c.service.FeedProcessingResultsList(r.Context(), feedIdParam, adAccountIdParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -457,31 +468,6 @@ func (c *CatalogFeedsAPIController) ItemsIssuesList(w http.ResponseWriter, r *ht
 	if processingResultIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"processing_result_id"}, nil)
 		return
-	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	var pageSizeParam int32
-	if query.Has("page_size") {
-		param, err := parseNumericParameter[int32](
-			query.Get("page_size"),
-			WithParse[int32](parseInt32),
-			WithMinimum[int32](1),
-			WithMaximum[int32](250),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
-			return
-		}
-
-		pageSizeParam = param
-	} else {
-		var param int32 = 25
-		pageSizeParam = param
 	}
 	itemNumbersParam, err := parseNumericArrayParameter[int32](
 		query.Get("item_numbers"), ",", false,
@@ -505,7 +491,32 @@ func (c *CatalogFeedsAPIController) ItemsIssuesList(w http.ResponseWriter, r *ht
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.ItemsIssuesList(r.Context(), processingResultIdParam, bookmarkParam, pageSizeParam, itemNumbersParam, itemValidationIssueParam, adAccountIdParam)
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
+	var pageSizeParam int32
+	if query.Has("page_size") {
+		param, err := parseNumericParameter[int32](
+			query.Get("page_size"),
+			WithParse[int32](parseInt32),
+			WithMinimum[int32](1),
+			WithMaximum[int32](250),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
+			return
+		}
+
+		pageSizeParam = param
+	} else {
+		var param int32 = 25
+		pageSizeParam = param
+	}
+	result, err := c.service.ItemsIssuesList(r.Context(), processingResultIdParam, itemNumbersParam, itemValidationIssueParam, adAccountIdParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

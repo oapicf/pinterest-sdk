@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## adAccountsAudiencesSharedAccountsList
 
-> AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, opts)
+> AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(audienceId, accountType, adAccountId, opts)
 
 List accounts with access to an audience owned by an ad account
 
@@ -35,14 +35,14 @@ let client_credentials = defaultClient.authentications['client_credentials'];
 client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.AudienceSharingApi();
-let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let audienceId = "audienceId_example"; // String | Unique identifier of the audience to use to filter the results.
 let accountType = new PinterestSdk.AudienceAccountType(); // AudienceAccountType | Filter accounts by account type.
+let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let opts = {
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  'bookmark': "bookmark_example" // String | Cursor used to fetch the next page of items
+  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
-apiInstance.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, opts, (error, data, response) => {
+apiInstance.adAccountsAudiencesSharedAccountsList(audienceId, accountType, adAccountId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -56,11 +56,11 @@ apiInstance.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accou
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. | 
  **audienceId** | **String**| Unique identifier of the audience to use to filter the results. | 
  **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **adAccountId** | **String**| Unique identifier of an ad account. | 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -94,12 +94,12 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.AudienceSharingApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
 let audienceId = "audienceId_example"; // String | Unique identifier of the audience to use to filter the results.
 let accountType = new PinterestSdk.AudienceAccountType(); // AudienceAccountType | Filter accounts by account type.
 let opts = {
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  'bookmark': "bookmark_example" // String | Cursor used to fetch the next page of items
+  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, opts, (error, data, response) => {
   if (error) {
@@ -118,8 +118,8 @@ Name | Type | Description  | Notes
  **businessId** | **String**| Unique identifier of the requesting business. | 
  **audienceId** | **String**| Unique identifier of the audience to use to filter the results. | 
  **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 
 ## sharedAudiencesForBusinessList
 
-> AudiencesList200Response sharedAudiencesForBusinessList(businessId, opts)
+> SharedAudiencesForBusinessList200Response sharedAudiencesForBusinessList(businessId, opts)
 
 List received audiences for a business
 
@@ -153,11 +153,11 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.AudienceSharingApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
 let opts = {
+  'order': new PinterestSdk.Order(), // Order | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'order': "ASCENDING", // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.sharedAudiencesForBusinessList(businessId, opts, (error, data, response) => {
   if (error) {
@@ -174,13 +174,13 @@ apiInstance.sharedAudiencesForBusinessList(businessId, opts, (error, data, respo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
+ **order** | [**Order**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**AudiencesList200Response**](AudiencesList200Response.md)
+[**SharedAudiencesForBusinessList200Response**](SharedAudiencesForBusinessList200Response.md)
 
 ### Authorization
 
@@ -194,11 +194,11 @@ Name | Type | Description  | Notes
 
 ## updateAdAccountToAdAccountSharedAudience
 
-> SharedAudienceResponse updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience)
+> AdAccountToAdAccountSharedAudience updateAdAccountToAdAccountSharedAudience(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -211,8 +211,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.AudienceSharingApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let sharedAudience = new PinterestSdk.SharedAudience(); // SharedAudience | 
-apiInstance.updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience, (error, data, response) => {
+let adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = new PinterestSdk.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody(); // AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody | 
+apiInstance.updateAdAccountToAdAccountSharedAudience(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -227,11 +227,11 @@ apiInstance.updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **sharedAudience** | [**SharedAudience**](SharedAudience.md)|  | 
+ **adAccountToAdAccountSharedAudienceUpdateWithRequiredBody** | [**AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**AdAccountToAdAccountSharedAudience**](AdAccountToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -245,11 +245,11 @@ Name | Type | Description  | Notes
 
 ## updateAdAccountToBusinessSharedAudience
 
-> BusinessSharedAudienceResponse updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience)
+> AdAccountToBusinessSharedAudience updateAdAccountToBusinessSharedAudience(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -262,8 +262,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.AudienceSharingApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let businessSharedAudience = new PinterestSdk.BusinessSharedAudience(); // BusinessSharedAudience | 
-apiInstance.updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience, (error, data, response) => {
+let adAccountToBusinessSharedAudienceUpdateWithRequiredBody = new PinterestSdk.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody(); // AdAccountToBusinessSharedAudienceUpdateWithRequiredBody | 
+apiInstance.updateAdAccountToBusinessSharedAudience(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -278,11 +278,11 @@ apiInstance.updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedA
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **businessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  | 
+ **adAccountToBusinessSharedAudienceUpdateWithRequiredBody** | [**AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**AdAccountToBusinessSharedAudience**](AdAccountToBusinessSharedAudience.md)
 
 ### Authorization
 
@@ -296,11 +296,11 @@ Name | Type | Description  | Notes
 
 ## updateBusinessToAdAccountSharedAudience
 
-> SharedAudienceResponse updateBusinessToAdAccountSharedAudience(businessId, sharedAudience)
+> BusinessToAdAccountSharedAudience updateBusinessToAdAccountSharedAudience(businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -312,9 +312,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.AudienceSharingApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let sharedAudience = new PinterestSdk.SharedAudience(); // SharedAudience | 
-apiInstance.updateBusinessToAdAccountSharedAudience(businessId, sharedAudience, (error, data, response) => {
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let businessToAdAccountSharedAudienceUpdateWithRequiredBody = new PinterestSdk.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody(); // BusinessToAdAccountSharedAudienceUpdateWithRequiredBody | 
+apiInstance.updateBusinessToAdAccountSharedAudience(businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -329,11 +329,11 @@ apiInstance.updateBusinessToAdAccountSharedAudience(businessId, sharedAudience, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
- **sharedAudience** | [**SharedAudience**](SharedAudience.md)|  | 
+ **businessToAdAccountSharedAudienceUpdateWithRequiredBody** | [**BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**BusinessToAdAccountSharedAudience**](BusinessToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -347,11 +347,11 @@ Name | Type | Description  | Notes
 
 ## updateBusinessToBusinessSharedAudience
 
-> BusinessSharedAudienceResponse updateBusinessToBusinessSharedAudience(businessId, businessSharedAudience)
+> BusinessToBusinessSharedAudience updateBusinessToBusinessSharedAudience(businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -363,9 +363,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.AudienceSharingApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let businessSharedAudience = new PinterestSdk.BusinessSharedAudience(); // BusinessSharedAudience | 
-apiInstance.updateBusinessToBusinessSharedAudience(businessId, businessSharedAudience, (error, data, response) => {
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let businessToBusinessSharedAudienceUpdateWithRequiredBody = new PinterestSdk.BusinessToBusinessSharedAudienceUpdateWithRequiredBody(); // BusinessToBusinessSharedAudienceUpdateWithRequiredBody | 
+apiInstance.updateBusinessToBusinessSharedAudience(businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -380,11 +380,11 @@ apiInstance.updateBusinessToBusinessSharedAudience(businessId, businessSharedAud
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
- **businessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  | 
+ **businessToBusinessSharedAudienceUpdateWithRequiredBody** | [**BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**BusinessToBusinessSharedAudience**](BusinessToBusinessSharedAudience.md)
 
 ### Authorization
 

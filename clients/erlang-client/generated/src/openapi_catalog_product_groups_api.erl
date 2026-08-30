@@ -14,7 +14,7 @@
 -define(BASE_URL, <<"/v5">>).
 
 %% @doc List products by product group
-%% Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+%% Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 -spec catalogs_product_group_pins/list(ctx:ctx(), binary()) -> {ok, openapi_catalogs_product_group_pins_list_200_response:openapi_catalogs_product_group_pins_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 catalogs_product_group_pins/list(Ctx, ProductGroupId) ->
     catalogs_product_group_pins/list(Ctx, ProductGroupId, #{}).
@@ -26,7 +26,7 @@ catalogs_product_group_pins/list(Ctx, ProductGroupId, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/catalogs/product_groups/", ProductGroupId, "/products"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['bookmark', 'page_size', 'ad_account_id', 'pin_metrics'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['ad_account_id', 'pin_metrics', 'bookmark', 'page_size'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),
@@ -35,13 +35,13 @@ catalogs_product_group_pins/list(Ctx, ProductGroupId, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Create product group
-%% Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
--spec catalogs_product_groups/create(ctx:ctx(), openapi_multiple_product_groups_inner:openapi_multiple_product_groups_inner()) -> {ok, openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-catalogs_product_groups/create(Ctx, OpenapiMultipleProductGroupsInner) ->
-    catalogs_product_groups/create(Ctx, OpenapiMultipleProductGroupsInner, #{}).
+%% Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+-spec catalogs_product_groups/create(ctx:ctx(), openapi_catalogs_product_groups_create_request_schema:openapi_catalogs_product_groups_create_request_schema()) -> {ok, openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+catalogs_product_groups/create(Ctx, OpenapiCatalogsProductGroupsCreateRequestSchema) ->
+    catalogs_product_groups/create(Ctx, OpenapiCatalogsProductGroupsCreateRequestSchema, #{}).
 
--spec catalogs_product_groups/create(ctx:ctx(), openapi_multiple_product_groups_inner:openapi_multiple_product_groups_inner(), maps:map()) -> {ok, openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-catalogs_product_groups/create(Ctx, OpenapiMultipleProductGroupsInner, Optional) ->
+-spec catalogs_product_groups/create(ctx:ctx(), openapi_catalogs_product_groups_create_request_schema:openapi_catalogs_product_groups_create_request_schema(), maps:map()) -> {ok, openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+catalogs_product_groups/create(Ctx, OpenapiCatalogsProductGroupsCreateRequestSchema, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -49,20 +49,20 @@ catalogs_product_groups/create(Ctx, OpenapiMultipleProductGroupsInner, Optional)
     Path = [?BASE_URL, "/catalogs/product_groups"],
     QS = lists:flatten([])++openapi_utils:optional_params(['ad_account_id'], _OptionalParams),
     Headers = [],
-    Body1 = OpenapiMultipleProductGroupsInner,
+    Body1 = OpenapiCatalogsProductGroupsCreateRequestSchema,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Create product groups
-%% Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+%% Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 -spec catalogs_product_groups/create_many(ctx:ctx(), list()) -> {ok, [binary()], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-catalogs_product_groups/create_many(Ctx, OpenapiMultipleProductGroupsInnerArray) ->
-    catalogs_product_groups/create_many(Ctx, OpenapiMultipleProductGroupsInnerArray, #{}).
+catalogs_product_groups/create_many(Ctx, OpenapiCatalogsProductGroupsCreateManyRequestItemsArray) ->
+    catalogs_product_groups/create_many(Ctx, OpenapiCatalogsProductGroupsCreateManyRequestItemsArray, #{}).
 
 -spec catalogs_product_groups/create_many(ctx:ctx(), list(), maps:map()) -> {ok, [binary()], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-catalogs_product_groups/create_many(Ctx, OpenapiMultipleProductGroupsInnerArray, Optional) ->
+catalogs_product_groups/create_many(Ctx, OpenapiCatalogsProductGroupsCreateManyRequestItemsArray, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -70,19 +70,19 @@ catalogs_product_groups/create_many(Ctx, OpenapiMultipleProductGroupsInnerArray,
     Path = [?BASE_URL, "/catalogs/product_groups/multiple"],
     QS = lists:flatten([])++openapi_utils:optional_params(['ad_account_id'], _OptionalParams),
     Headers = [],
-    Body1 = OpenapiMultipleProductGroupsInnerArray,
+    Body1 = OpenapiCatalogsProductGroupsCreateManyRequestItemsArray,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Delete product group
-%% Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
--spec catalogs_product_groups/delete(ctx:ctx(), binary()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+%% Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
+-spec catalogs_product_groups/delete(ctx:ctx(), binary()) -> {ok, openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 catalogs_product_groups/delete(Ctx, ProductGroupId) ->
     catalogs_product_groups/delete(Ctx, ProductGroupId, #{}).
 
--spec catalogs_product_groups/delete(ctx:ctx(), binary(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec catalogs_product_groups/delete(ctx:ctx(), binary(), maps:map()) -> {ok, openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 catalogs_product_groups/delete(Ctx, ProductGroupId, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -98,7 +98,7 @@ catalogs_product_groups/delete(Ctx, ProductGroupId, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Delete product groups
-%% Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+%% Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 -spec catalogs_product_groups/delete_many(ctx:ctx(), list()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 catalogs_product_groups/delete_many(Ctx, Id) ->
     catalogs_product_groups/delete_many(Ctx, Id, #{}).
@@ -119,7 +119,7 @@ catalogs_product_groups/delete_many(Ctx, Id, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Get product group
-%% Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+%% Get a single product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 -spec catalogs_product_groups/get(ctx:ctx(), binary()) -> {ok, openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 catalogs_product_groups/get(Ctx, ProductGroupId) ->
     catalogs_product_groups/get(Ctx, ProductGroupId, #{}).
@@ -140,7 +140,7 @@ catalogs_product_groups/get(Ctx, ProductGroupId, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc List product groups
-%% Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+%% Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 -spec catalogs_product_groups/list(ctx:ctx()) -> {ok, openapi_catalogs_product_groups_list_200_response:openapi_catalogs_product_groups_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 catalogs_product_groups/list(Ctx) ->
     catalogs_product_groups/list(Ctx, #{}).
@@ -152,7 +152,7 @@ catalogs_product_groups/list(Ctx, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/catalogs/product_groups"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['id', 'feed_id', 'catalog_id', 'bookmark', 'page_size', 'ad_account_id'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['id', 'feed_id', 'catalog_id', 'ad_account_id', 'bookmark', 'page_size'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),
@@ -161,7 +161,7 @@ catalogs_product_groups/list(Ctx, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Get product counts
-%% Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+%% Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 -spec catalogs_product_groups/product_counts_get(ctx:ctx(), binary()) -> {ok, openapi_catalogs_product_group_product_counts_vertical:openapi_catalogs_product_group_product_counts_vertical(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 catalogs_product_groups/product_counts_get(Ctx, ProductGroupId) ->
     catalogs_product_groups/product_counts_get(Ctx, ProductGroupId, #{}).
@@ -182,13 +182,13 @@ catalogs_product_groups/product_counts_get(Ctx, ProductGroupId, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Update single product group
-%% Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
--spec catalogs_product_groups/update(ctx:ctx(), binary(), openapi_catalogs_product_groups_update_request:openapi_catalogs_product_groups_update_request()) -> {ok, openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-catalogs_product_groups/update(Ctx, ProductGroupId, OpenapiCatalogsProductGroupsUpdateRequest) ->
-    catalogs_product_groups/update(Ctx, ProductGroupId, OpenapiCatalogsProductGroupsUpdateRequest, #{}).
+%% Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+-spec catalogs_product_groups/update(ctx:ctx(), binary(), openapi_catalogs_product_groups_update_request_schema:openapi_catalogs_product_groups_update_request_schema()) -> {ok, openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+catalogs_product_groups/update(Ctx, ProductGroupId, OpenapiCatalogsProductGroupsUpdateRequestSchema) ->
+    catalogs_product_groups/update(Ctx, ProductGroupId, OpenapiCatalogsProductGroupsUpdateRequestSchema, #{}).
 
--spec catalogs_product_groups/update(ctx:ctx(), binary(), openapi_catalogs_product_groups_update_request:openapi_catalogs_product_groups_update_request(), maps:map()) -> {ok, openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-catalogs_product_groups/update(Ctx, ProductGroupId, OpenapiCatalogsProductGroupsUpdateRequest, Optional) ->
+-spec catalogs_product_groups/update(ctx:ctx(), binary(), openapi_catalogs_product_groups_update_request_schema:openapi_catalogs_product_groups_update_request_schema(), maps:map()) -> {ok, openapi_catalogs_vertical_product_group:openapi_catalogs_vertical_product_group(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+catalogs_product_groups/update(Ctx, ProductGroupId, OpenapiCatalogsProductGroupsUpdateRequestSchema, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -196,14 +196,14 @@ catalogs_product_groups/update(Ctx, ProductGroupId, OpenapiCatalogsProductGroups
     Path = [?BASE_URL, "/catalogs/product_groups/", ProductGroupId, ""],
     QS = lists:flatten([])++openapi_utils:optional_params(['ad_account_id'], _OptionalParams),
     Headers = [],
-    Body1 = OpenapiCatalogsProductGroupsUpdateRequest,
+    Body1 = OpenapiCatalogsProductGroupsUpdateRequestSchema,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc List products by filter
-%% List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+%% List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  [Learn more](/docs/api-features/shopping-overview/)
 -spec products_by_product_group_filter/list(ctx:ctx(), openapi_catalogs_list_products_by_filter_request:openapi_catalogs_list_products_by_filter_request()) -> {ok, openapi_catalogs_product_group_pins_list_200_response:openapi_catalogs_product_group_pins_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 products_by_product_group_filter/list(Ctx, OpenapiCatalogsListProductsByFilterRequest) ->
     products_by_product_group_filter/list(Ctx, OpenapiCatalogsListProductsByFilterRequest, #{}).

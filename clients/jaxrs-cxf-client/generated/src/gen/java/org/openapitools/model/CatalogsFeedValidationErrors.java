@@ -86,9 +86,9 @@ public class CatalogsFeedValidationErrors  {
   private Integer FETCH_ERROR;
 
  /**
-  * Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+  * Your feed wasn't ingested because it hasn't changed in the previous 90 days.
   */
-  @ApiModelProperty(value = "Your feed wasn't ingested because it hasn’t changed in the previous 90 days.")
+  @ApiModelProperty(value = "Your feed wasn't ingested because it hasn't changed in the previous 90 days.")
 
   private Integer FETCH_INACTIVE_FEED_ERROR;
 
@@ -437,7 +437,7 @@ public class CatalogsFeedValidationErrors  {
   }
 
  /**
-   * Your feed wasn&#39;t ingested because it hasn’t changed in the previous 90 days.
+   * Your feed wasn&#39;t ingested because it hasn&#39;t changed in the previous 90 days.
    * @return FETCH_INACTIVE_FEED_ERROR
   **/
   @JsonProperty("FETCH_INACTIVE_FEED_ERROR")
@@ -928,10 +928,7 @@ public class CatalogsFeedValidationErrors  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

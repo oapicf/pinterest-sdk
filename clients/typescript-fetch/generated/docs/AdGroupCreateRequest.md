@@ -7,27 +7,28 @@
 Name | Type
 ------------ | -------------
 `autoTargetingEnabled` | boolean
+`bidMultiplier` | number
+`budgetType` | [BudgetType](BudgetType.md)
+`pacingDeliveryType` | [PacingDeliveryType](PacingDeliveryType.md)
 `bidInMicroCurrency` | number
-`bidStrategyType` | string
+`bidStrategyType` | [BidStrategyType](BidStrategyType.md)
 `billableEvent` | [ActionType](ActionType.md)
 `budgetInMicroCurrency` | number
-`budgetType` | [BudgetType](BudgetType.md)
 `campaignId` | string
 `endTime` | number
 `isCreativeOptimization` | boolean
 `lifetimeFrequencyCap` | number
 `name` | string
-`optimizationGoalMetadata` | [OptimizationGoalMetadata](OptimizationGoalMetadata.md)
-`pacingDeliveryType` | [PacingDeliveryType](PacingDeliveryType.md)
+`optimizationGoalMetadata` | object
 `placementGroup` | [PlacementGroupType](PlacementGroupType.md)
 `promotionApplicationLevel` | string
 `promotionId` | string
+`promotionIds` | Array&lt;string&gt;
 `startTime` | number
 `status` | [EntityStatus](EntityStatus.md)
 `targetingSpec` | [TargetingSpec](TargetingSpec.md)
 `targetingTemplateIds` | Array&lt;string&gt;
-`trackingUrls` | [TrackingUrls](TrackingUrls.md)
-`bidMultiplier` | number
+`trackingUrls` | object
 
 ## Example
 
@@ -36,28 +37,29 @@ import type { AdGroupCreateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "autoTargetingEnabled": true,
+  "autoTargetingEnabled": null,
+  "bidMultiplier": null,
+  "budgetType": null,
+  "pacingDeliveryType": null,
   "bidInMicroCurrency": 5000000,
-  "bidStrategyType": MAX_BID,
+  "bidStrategyType": null,
   "billableEvent": null,
   "budgetInMicroCurrency": 5000000,
-  "budgetType": null,
   "campaignId": 626736533506,
   "endTime": 5705424000,
   "isCreativeOptimization": true,
   "lifetimeFrequencyCap": 100,
   "name": Ad Group For Pin: 687195905986,
   "optimizationGoalMetadata": null,
-  "pacingDeliveryType": null,
   "placementGroup": null,
   "promotionApplicationLevel": ITEM,
   "promotionId": 7834020347906,
+  "promotionIds": ["7834020347906","7834020347907"],
   "startTime": 5686848000,
   "status": null,
   "targetingSpec": null,
   "targetingTemplateIds": null,
   "trackingUrls": null,
-  "bidMultiplier": 1,
 } satisfies AdGroupCreateRequest
 
 console.log(example)

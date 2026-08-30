@@ -3,11 +3,11 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **catalog\_id** | **String** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. | [optional] [default to null] |
-| **catalog\_type** | [**CatalogsType**](CatalogsType.md) |  | [default to null] |
+| **catalog\_id** | **String** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. | [optional] [default to null] |
+| **catalog\_type** | **String** |  | [default to null] |
 | **credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] [default to null] |
 | **default\_currency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] [default to null] |
-| **default\_locale** | [**CatalogsFeedsCreateRequest_default_locale**](CatalogsFeedsCreateRequest_default_locale.md) |  | [default to null] |
+| **default\_locale** | [**CatalogsCreativeAssetsFeedsCreateRequest_default_locale**](CatalogsCreativeAssetsFeedsCreateRequest_default_locale.md) |  | [default to null] |
 | **format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [default to null] |
 | **location** | **String** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | [default to null] |
 | **name** | **String** | A human-friendly name associated to a given feed. | [default to null] |

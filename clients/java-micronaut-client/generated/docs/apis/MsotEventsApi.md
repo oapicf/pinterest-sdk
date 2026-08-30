@@ -38,18 +38,18 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="msotEventsCreate"></a>
 # **msotEventsCreate**
 ```java
-Mono<Void> MsotEventsApi.msotEventsCreate(adAccountIdconversionMSOTEvents)
+Mono<Void> MsotEventsApi.msotEventsCreate(adAccountIdconversionMSOTEventsCreate)
 ```
 
 Send Measurement Source Of Truth (MSOT) attributed conversion events
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt; &lt;br&gt; &lt;p&gt;Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their &lt;code&gt;ad_account_id&lt;/code&gt;. The request body should be a JSON object.&lt;/p&gt; - These events will NOT be used in Reporting.
+**This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their &#x60;ad_account_id&#x60;. The request body should be a JSON object.  - These events will not be used in Reporting.
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **conversionMSOTEvents** | [**ConversionMSOTEvents**](ConversionMSOTEvents.md)| Attributed MSOT conversion events | |
+| **conversionMSOTEventsCreate** | [**ConversionMSOTEventsCreate**](ConversionMSOTEventsCreate.md)|  | |
 
 
 

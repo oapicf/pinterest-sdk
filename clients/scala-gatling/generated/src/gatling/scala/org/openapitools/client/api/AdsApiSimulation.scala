@@ -63,6 +63,9 @@ class AdsApiSimulation extends Simulation {
     val adsGetPerSecond = config.getDouble("performance.operationsPerSecond.adsGet") * rateMultiplier * instanceMultiplier
     val adsListPerSecond = config.getDouble("performance.operationsPerSecond.adsList") * rateMultiplier * instanceMultiplier
     val adsUpdatePerSecond = config.getDouble("performance.operationsPerSecond.adsUpdate") * rateMultiplier * instanceMultiplier
+    val campaignAdPreviewCreatePerSecond = config.getDouble("performance.operationsPerSecond.campaignAdPreviewCreate") * rateMultiplier * instanceMultiplier
+    val campaignAdPreviewDeletePerSecond = config.getDouble("performance.operationsPerSecond.campaignAdPreviewDelete") * rateMultiplier * instanceMultiplier
+    val campaignAdPreviewReadPerSecond = config.getDouble("performance.operationsPerSecond.campaignAdPreviewRead") * rateMultiplier * instanceMultiplier
 
     val scenarioBuilders: mutable.MutableList[PopulationBuilder] = new mutable.MutableList[PopulationBuilder]()
 
@@ -77,6 +80,11 @@ class AdsApiSimulation extends Simulation {
     val ads/listQUERYFeeder = csv(userDataDirectory + File.separator + "adsList-queryParams.csv").random
     val ads/listPATHFeeder = csv(userDataDirectory + File.separator + "adsList-pathParams.csv").random
     val ads/updatePATHFeeder = csv(userDataDirectory + File.separator + "adsUpdate-pathParams.csv").random
+    val campaign_ad_preview/createPATHFeeder = csv(userDataDirectory + File.separator + "campaignAdPreviewCreate-pathParams.csv").random
+    val campaign_ad_preview/deleteQUERYFeeder = csv(userDataDirectory + File.separator + "campaignAdPreviewDelete-queryParams.csv").random
+    val campaign_ad_preview/deletePATHFeeder = csv(userDataDirectory + File.separator + "campaignAdPreviewDelete-pathParams.csv").random
+    val campaign_ad_preview/readQUERYFeeder = csv(userDataDirectory + File.separator + "campaignAdPreviewRead-queryParams.csv").random
+    val campaign_ad_preview/readPATHFeeder = csv(userDataDirectory + File.separator + "campaignAdPreviewRead-pathParams.csv").random
 
     // Setup all scenarios
 
@@ -101,17 +109,19 @@ class AdsApiSimulation extends Simulation {
         .exec(http("adTargetingAnalyticsGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/ads/targeting_analytics")
         .queryParam("view_window_days","${view_window_days}")
+        .queryParam("click_window_days","${click_window_days}")
+        .queryParam("end_date","${end_date}")
+        .queryParam("sort_ascending","${sort_ascending}")
+        .queryParam("attribution_types","${attribution_types}")
+        .queryParam("columns","${columns}")
+        .queryParam("conversion_report_time","${conversion_report_time}")
+        .queryParam("granularity","${granularity}")
+        .queryParam("start_date","${start_date}")
+        .queryParam("targeting_types","${targeting_types}")
+        .queryParam("engagement_window_days","${engagement_window_days}")
+        .queryParam("sort_columns","${sort_columns}")
         .queryParam("reporting_timezone","${reporting_timezone}")
         .queryParam("ad_ids","${ad_ids}")
-        .queryParam("granularity","${granularity}")
-        .queryParam("attribution_types","${attribution_types}")
-        .queryParam("engagement_window_days","${engagement_window_days}")
-        .queryParam("conversion_report_time","${conversion_report_time}")
-        .queryParam("start_date","${start_date}")
-        .queryParam("end_date","${end_date}")
-        .queryParam("targeting_types","${targeting_types}")
-        .queryParam("columns","${columns}")
-        .queryParam("click_window_days","${click_window_days}")
 )
 
     // Run scnadTargetingAnalyticsGet with warm up and reach a constant rate for entire duration
@@ -127,18 +137,18 @@ class AdsApiSimulation extends Simulation {
         .feed(ads/analyticsPATHFeeder)
         .exec(http("adsAnalytics")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/ads/analytics")
-        .queryParam("view_window_days","${view_window_days}")
-        .queryParam("reporting_timezone","${reporting_timezone}")
-        .queryParam("granularity","${granularity}")
-        .queryParam("engagement_window_days","${engagement_window_days}")
-        .queryParam("campaign_ids","${campaign_ids}")
+        .queryParam("click_window_days","${click_window_days}")
         .queryParam("conversion_report_time","${conversion_report_time}")
+        .queryParam("columns","${columns}")
+        .queryParam("campaign_ids","${campaign_ids}")
+        .queryParam("view_window_days","${view_window_days}")
+        .queryParam("granularity","${granularity}")
         .queryParam("start_date","${start_date}")
         .queryParam("end_date","${end_date}")
-        .queryParam("pin_ids","${pin_ids}")
-        .queryParam("columns","${columns}")
-        .queryParam("click_window_days","${click_window_days}")
         .queryParam("ad_ids","${ad_ids}")
+        .queryParam("pin_ids","${pin_ids}")
+        .queryParam("engagement_window_days","${engagement_window_days}")
+        .queryParam("reporting_timezone","${reporting_timezone}")
 )
 
     // Run scnadsAnalytics with warm up and reach a constant rate for entire duration
@@ -182,13 +192,13 @@ class AdsApiSimulation extends Simulation {
         .feed(ads/listPATHFeeder)
         .exec(http("adsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/ads")
-        .queryParam("entity_statuses","${entity_statuses}")
         .queryParam("campaign_ids","${campaign_ids}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("ad_group_ids","${ad_group_ids}")
         .queryParam("page_size","${page_size}")
         .queryParam("ad_ids","${ad_ids}")
         .queryParam("order","${order}")
+        .queryParam("entity_statuses","${entity_statuses}")
+        .queryParam("ad_group_ids","${ad_group_ids}")
 )
 
     // Run scnadsList with warm up and reach a constant rate for entire duration
@@ -210,6 +220,52 @@ class AdsApiSimulation extends Simulation {
         rampUsersPerSec(1) to(adsUpdatePerSecond) during(rampUpSeconds),
         constantUsersPerSec(adsUpdatePerSecond) during(durationSeconds),
         rampUsersPerSec(adsUpdatePerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scncampaignAdPreviewCreate = scenario("campaignAdPreviewCreateSimulation")
+        .feed(campaign_ad_preview/createPATHFeeder)
+        .exec(http("campaignAdPreviewCreate")
+        .httpRequest("POST","/ad_accounts/${ad_account_id}/campaign_ad_preview")
+)
+
+    // Run scncampaignAdPreviewCreate with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scncampaignAdPreviewCreate.inject(
+        rampUsersPerSec(1) to(campaignAdPreviewCreatePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(campaignAdPreviewCreatePerSecond) during(durationSeconds),
+        rampUsersPerSec(campaignAdPreviewCreatePerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scncampaignAdPreviewDelete = scenario("campaignAdPreviewDeleteSimulation")
+        .feed(campaign_ad_preview/deleteQUERYFeeder)
+        .feed(campaign_ad_preview/deletePATHFeeder)
+        .exec(http("campaignAdPreviewDelete")
+        .httpRequest("DELETE","/ad_accounts/${ad_account_id}/campaign_ad_preview")
+        .queryParam("ad_group_ids","${ad_group_ids}")
+)
+
+    // Run scncampaignAdPreviewDelete with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scncampaignAdPreviewDelete.inject(
+        rampUsersPerSec(1) to(campaignAdPreviewDeletePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(campaignAdPreviewDeletePerSecond) during(durationSeconds),
+        rampUsersPerSec(campaignAdPreviewDeletePerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scncampaignAdPreviewRead = scenario("campaignAdPreviewReadSimulation")
+        .feed(campaign_ad_preview/readQUERYFeeder)
+        .feed(campaign_ad_preview/readPATHFeeder)
+        .exec(http("campaignAdPreviewRead")
+        .httpRequest("GET","/ad_accounts/${ad_account_id}/campaign_ad_preview")
+        .queryParam("ad_group_ids","${ad_group_ids}")
+)
+
+    // Run scncampaignAdPreviewRead with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scncampaignAdPreviewRead.inject(
+        rampUsersPerSec(1) to(campaignAdPreviewReadPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(campaignAdPreviewReadPerSecond) during(durationSeconds),
+        rampUsersPerSec(campaignAdPreviewReadPerSecond) to(1) during(rampDownSeconds)
     )
 
     setUp(

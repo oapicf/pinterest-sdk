@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **field** | **String** |  | 
-**operation** | **String** |  | 
+**operation** | [**TargetingSpecListOperation**](TargetingSpecListOperation.md) |  | 
 **values** | [**[TargetingSpecAppType]**](TargetingSpecAppType.md) |  | 
 
 
@@ -14,19 +14,6 @@ Name | Type | Description | Notes
 
 
 * `APPTYPE` (value: `"APPTYPE"`)
-
-
-
-
-
-## Enum: OperationEnum
-
-
-* `SET` (value: `"SET"`)
-
-* `ADD` (value: `"ADD"`)
-
-* `REMOVE` (value: `"REMOVE"`)
 
 
 

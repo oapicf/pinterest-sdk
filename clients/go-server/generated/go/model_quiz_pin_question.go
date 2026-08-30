@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -24,7 +24,8 @@ type QuizPinQuestion struct {
 	QuestionText string `json:"question_text,omitempty"`
 }
 
-// AssertQuizPinQuestionRequired checks if the required fields are not zero-ed
+// AssertQuizPinQuestionRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertQuizPinQuestionRequired(obj QuizPinQuestion) error {
 	for _, el := range obj.Options {
 		if err := AssertQuizPinOptionRequired(el); err != nil {

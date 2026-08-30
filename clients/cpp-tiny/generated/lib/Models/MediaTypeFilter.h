@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria  mEDIA_TYPE);
+	void setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria mEDIA_TYPE);
 
 
     private:

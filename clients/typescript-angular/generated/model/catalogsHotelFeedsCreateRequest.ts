@@ -9,9 +9,8 @@
  */
 import { CatalogsFeedProcessingSchedule } from './catalogsFeedProcessingSchedule';
 import { CatalogsStatus } from './catalogsStatus';
-import { CatalogsFeedsCreateRequestDefaultLocale } from './catalogsFeedsCreateRequestDefaultLocale';
 import { CatalogsFeedCredentials } from './catalogsFeedCredentials';
-import { CatalogsType } from './catalogsType';
+import { CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale } from './catalogsCreativeAssetsFeedsCreateRequestDefaultLocale';
 import { CatalogsFormat } from './catalogsFormat';
 import { NullableCurrency } from './nullableCurrency';
 
@@ -21,13 +20,13 @@ import { NullableCurrency } from './nullableCurrency';
  */
 export interface CatalogsHotelFeedsCreateRequest { 
     /**
-     * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+     * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
      */
     catalog_id?: string;
-    catalog_type: CatalogsType;
+    catalog_type: CatalogsHotelFeedsCreateRequest.CatalogTypeEnum;
     credentials?: CatalogsFeedCredentials | null;
     default_currency?: NullableCurrency | null;
-    default_locale: CatalogsFeedsCreateRequestDefaultLocale;
+    default_locale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
     format: CatalogsFormat;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
@@ -41,6 +40,10 @@ export interface CatalogsHotelFeedsCreateRequest {
     status?: CatalogsStatus;
 }
 export namespace CatalogsHotelFeedsCreateRequest {
+    export const CatalogTypeEnum = {
+        Hotel: 'HOTEL'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

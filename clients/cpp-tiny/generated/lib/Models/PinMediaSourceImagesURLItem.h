@@ -51,28 +51,28 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setDescription(std::string  description);
+	void setDescription(std::string description);
 	/*! \brief Get 
 	 */
 	std::string getLink();
 
 	/*! \brief Set 
 	 */
-	void setLink(std::string  link);
+	void setLink(std::string link);
 	/*! \brief Get 
 	 */
 	std::string getTitle();
 
 	/*! \brief Set 
 	 */
-	void setTitle(std::string  title);
+	void setTitle(std::string title);
 	/*! \brief Get 
 	 */
 	std::string getUrl();
 
 	/*! \brief Set 
 	 */
-	void setUrl(std::string  url);
+	void setUrl(std::string url);
 
 
     private:

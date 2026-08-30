@@ -7,5 +7,5 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 public enum MMMReportingTargetingType {
-    APPTYPE, COUNTRY, CREATIVE_TYPE, GENDER, LOCATION
+    APPTYPE, COUNTRY, CREATIVE_TYPE, GENDER, LOCATION, PLACEMENT, AUDIENCE_INCLUDE
 }

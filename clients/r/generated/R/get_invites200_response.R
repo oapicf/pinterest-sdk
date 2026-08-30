@@ -8,7 +8,7 @@
 #' @description GetInvites200Response Class
 #' @format An \code{R6Class} generator object
 #' @field bookmark  character [optional]
-#' @field items List of invite and request data. list(\link{InviteResponse})
+#' @field items  list(\link{InviteResponse})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,7 +21,7 @@ GetInvites200Response <- R6::R6Class(
     #' @description
     #' Initialize a new GetInvites200Response class.
     #'
-    #' @param items List of invite and request data.
+    #' @param items items
     #' @param bookmark bookmark
     #' @param ... Other optional arguments.
     initialize = function(`items`, `bookmark` = NULL, ...) {
@@ -75,9 +75,32 @@ GetInvites200Response <- R6::R6Class(
       }
       if (!is.null(self$`items`)) {
         GetInvites200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`items`)
       }
       return(GetInvites200ResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

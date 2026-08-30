@@ -9,7 +9,7 @@ The class is defined in **[LabelsList200Response.java](../../src/main/java/org/o
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;LabelsResponse&gt;`](LabelsResponse.md) |  | 
+**items** | [`List&lt;Label&gt;`](Label.md) |  | 
 
 
 

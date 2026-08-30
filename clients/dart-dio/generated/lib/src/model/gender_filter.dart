@@ -74,7 +74,7 @@ class _$GenderFilterSerializer implements PrimitiveSerializer<GenderFilter> {
             value,
             specifiedType: const FullType(CatalogsProductGroupMultipleGenderCriteria),
           ) as CatalogsProductGroupMultipleGenderCriteria;
-          result.GENDER = valueDes;
+          result.GENDER.replace(valueDes);
           break;
         default:
           unhandled.add(key);

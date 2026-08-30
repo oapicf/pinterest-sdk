@@ -4,9 +4,9 @@ import org.openapitools.server.api.model.ConversionEventResponse
 import org.openapitools.server.api.model.ConversionTag
 import org.openapitools.server.api.model.ConversionTagCreate
 import org.openapitools.server.api.model.ConversionTagsList200Response
-import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.PageVisitConversionTagsGet200Response
 import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -37,7 +37,7 @@ interface ConversionTagsApi  {
     suspend fun ocpmEligibleConversionTagsGet(adAccountId:kotlin.String?,context:OperationRequest):Response<kotlin.collections.Map<kotlin.String, kotlin.Array<ConversionEventResponse>>>
     /* pageVisitConversionTagsGet
      * Get page visit conversion tags */
-    suspend fun pageVisitConversionTagsGet(adAccountId:kotlin.String?,pageSize:kotlin.Int?,order:kotlin.String?,bookmark:kotlin.String?,context:OperationRequest):Response<PageVisitConversionTagsGet200Response>
+    suspend fun pageVisitConversionTagsGet(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,order:PinterestLibPaginationOrder?,context:OperationRequest):Response<PageVisitConversionTagsGet200Response>
     companion object {
         const val address = "ConversionTagsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

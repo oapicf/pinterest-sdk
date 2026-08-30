@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Search pins by a given search term
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 
 ### Example
 
@@ -26,10 +26,10 @@ Search pins by a given search term
 
 SearchApi apiInstance = new SearchApi();
 String term = null; // String | Search term to look up pins.
-String countryCode = US; // String | Two letter country code (ISO 3166-1 alpha-2)
+String countryCode = null; // String | Two letter country code (ISO 3166-1 alpha-2)
 String bookmark = null; // String | Cursor used to fetch the next page of items
 String locale = null; // String | Search locale.
-Integer limit = 4; // Integer | Max search result size
+Integer limit = 10; // Integer | Max search result size
 try {
     SearchPartnerPins200Response result = apiInstance.searchPartnerPins(term, countryCode, bookmark, locale, limit);
     System.out.println(result);
@@ -66,11 +66,11 @@ Name | Type | Description  | Notes
 
 ## searchUserBoardsGet
 
-> SearchUserBoardsGet200Response searchUserBoardsGet(adAccountId, bookmark, pageSize, query)
+> BoardsList200Response searchUserBoardsGet(adAccountId, query, bookmark, pageSize)
 
 Search user&#39;s boards
 
-Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 
@@ -80,11 +80,11 @@ Search for boards for the \&quot;operation user_account\&quot;. This includes bo
 
 SearchApi apiInstance = new SearchApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 String query = null; // String | Search query. Can contain pin description keywords or comma-separated pin IDs.
+String bookmark = null; // String | Cursor used to fetch the next page of items
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    SearchUserBoardsGet200Response result = apiInstance.searchUserBoardsGet(adAccountId, bookmark, pageSize, query);
+    BoardsList200Response result = apiInstance.searchUserBoardsGet(adAccountId, query, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SearchApi#searchUserBoardsGet");
@@ -98,13 +98,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
- **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **query** | **String**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] [default to null]
+ **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**SearchUserBoardsGet200Response**](SearchUserBoardsGet200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -118,11 +118,11 @@ Name | Type | Description  | Notes
 
 ## searchUserPinsList
 
-> SearchUserPinsList200Response searchUserPinsList(query, adAccountId, bookmark)
+> PinsList200Response searchUserPinsList(query, adAccountId, bookmark)
 
 Search user&#39;s Pins
 
-Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 
@@ -131,11 +131,11 @@ Search for pins for the \&quot;operation user_account\&quot;. - By default, the 
 //import org.openapitools.client.api.SearchApi;
 
 SearchApi apiInstance = new SearchApi();
-String query = Plants; // String | Search query. Can contain pin description keywords or comma-separated pin IDs.
+String query = null; // String | Search query. Can contain pin description keywords or comma-separated pin IDs.
 String adAccountId = null; // String | Unique identifier of an ad account.
 String bookmark = null; // String | Cursor used to fetch the next page of items
 try {
-    SearchUserPinsList200Response result = apiInstance.searchUserPinsList(query, adAccountId, bookmark);
+    PinsList200Response result = apiInstance.searchUserPinsList(query, adAccountId, bookmark);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SearchApi#searchUserPinsList");
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
+[**PinsList200Response**](PinsList200Response.md)
 
 ### Authorization
 

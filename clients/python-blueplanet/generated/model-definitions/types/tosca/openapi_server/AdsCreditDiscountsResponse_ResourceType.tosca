@@ -7,6 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  AdsCreditDiscountType = openapi_server.resourceTypes.AdsCreditDiscountType
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -33,13 +34,12 @@ resourceTypes {
         }
         discount_in_micro_currency {
           type =  
-          description = "The discount applied in the offer’s currency value."
+          description = "The discount applied in the offer&#39;s currency value."
           optional = false
         }
         discount_type {
-          type =  string
+          type = AdsCreditDiscountType
           description = "The type of discount of this credit"
-          enum = ["COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND", ""]
           optional = false
         }
         remaining_discount_in_micro_currency {

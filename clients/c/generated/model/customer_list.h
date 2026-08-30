@@ -15,46 +15,41 @@
 
 typedef struct customer_list_t customer_list_t;
 
+#include "customer_list_status.h"
 #include "object.h"
-
-// Enum STATUS for customer_list
-
-typedef enum  { pinterest_rest_api_customer_list_STATUS_NULL = 0, pinterest_rest_api_customer_list_STATUS_PROCESSING, pinterest_rest_api_customer_list_STATUS_READY, pinterest_rest_api_customer_list_STATUS_TOO_SMALL, pinterest_rest_api_customer_list_STATUS_UPLOADING } pinterest_rest_api_customer_list_STATUS_e;
-
-char* customer_list_status_ToString(pinterest_rest_api_customer_list_STATUS_e status);
-
-pinterest_rest_api_customer_list_STATUS_e customer_list_status_FromString(char* status);
 
 
 
 typedef struct customer_list_t {
     char *ad_account_id; // string
-    double created_time; //numeric
+    double *created_time; //numeric
     object_t *exceptions; //object
     char *id; // string
+    int *is_nca; //boolean
     char *name; // string
-    double num_batches; //numeric
-    double num_removed_user_records; //numeric
-    double num_uploaded_user_records; //numeric
-    pinterest_rest_api_customer_list_STATUS_e status; //enum
+    double *num_batches; //numeric
+    double *num_removed_user_records; //numeric
+    double *num_uploaded_user_records; //numeric
+    customer_list_status_t *status; // custom
     char *type; // string
-    double updated_time; //numeric
+    double *updated_time; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } customer_list_t;
 
 __attribute__((deprecated)) customer_list_t *customer_list_create(
     char *ad_account_id,
-    double created_time,
+    double *created_time,
     object_t *exceptions,
     char *id,
+    int *is_nca,
     char *name,
-    double num_batches,
-    double num_removed_user_records,
-    double num_uploaded_user_records,
-    pinterest_rest_api_customer_list_STATUS_e status,
+    double *num_batches,
+    double *num_removed_user_records,
+    double *num_uploaded_user_records,
+    customer_list_status_t *status,
     char *type,
-    double updated_time
+    double *updated_time
 );
 
 void customer_list_free(customer_list_t *customer_list);

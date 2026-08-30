@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.AdvancedAuctionItemsGetRecord;
+import org.openapitools.vertxweb.server.model.AdvancedAuctionKey;
 
 /**
  * Request object used to get bid options values for a batch of retail catalog items
@@ -15,13 +15,13 @@ import org.openapitools.vertxweb.server.model.AdvancedAuctionItemsGetRecord;
 public class AdvancedAuctionItemsGetRequest   {
   
   private String catalogId;
-  private List<AdvancedAuctionItemsGetRecord> items = new ArrayList<>();
+  private List<AdvancedAuctionKey> items = new ArrayList<>();
 
   public AdvancedAuctionItemsGetRequest () {
 
   }
 
-  public AdvancedAuctionItemsGetRequest (String catalogId, List<AdvancedAuctionItemsGetRecord> items) {
+  public AdvancedAuctionItemsGetRequest (String catalogId, List<AdvancedAuctionKey> items) {
     this.catalogId = catalogId;
     this.items = items;
   }
@@ -37,10 +37,10 @@ public class AdvancedAuctionItemsGetRequest   {
 
     
   @JsonProperty("items")
-  public List<AdvancedAuctionItemsGetRecord> getItems() {
+  public List<AdvancedAuctionKey> getItems() {
     return items;
   }
-  public void setItems(List<AdvancedAuctionItemsGetRecord> items) {
+  public void setItems(List<AdvancedAuctionKey> items) {
     this.items = items;
   }
 
@@ -79,9 +79,6 @@ public class AdvancedAuctionItemsGetRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

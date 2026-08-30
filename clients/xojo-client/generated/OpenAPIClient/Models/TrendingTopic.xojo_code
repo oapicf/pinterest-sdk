@@ -11,9 +11,17 @@ Protected Class TrendingTopic
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Unique identifier for the trending topic
+		#tag EndNote
+		id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Month-over-month growth percentage
 		#tag EndNote
-		percent_growth_mom As Integer
+		percent_growth_mom As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -95,6 +103,14 @@ Protected Class TrendingTopic
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="description"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

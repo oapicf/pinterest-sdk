@@ -5,6 +5,77 @@ using namespace Tiny;
 
 
         Response<
+            LabeledEntities
+        >
+        LabelsApi::
+        labels_apply(
+            
+            std::string adAccountId
+            , 
+            
+            std::string labelId
+            , 
+            
+            LabeledEntitiesCreate labeledEntitiesCreate
+            
+        )
+        {
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/labels/{label_id}/apply"; //adAccountId labelId 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+            addHeader("Content-Type", "application/json");
+
+
+
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
+                std::string s_labelId("{");
+                s_labelId.append("label_id");
+                s_labelId.append("}");
+
+                int pos = url.find(s_labelId);
+
+                url.erase(pos, s_labelId.length());
+                url.insert(pos, stringify(labelId));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | POST
+            // Body     | labeledEntitiesCreate
+
+
+
+            payload = labeledEntitiesCreate.toJson().dump();
+
+            int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+
+            LabeledEntities obj(output_string);
+
+
+            Response<LabeledEntities> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
             LabelsResponse
         >
         LabelsApi::
@@ -78,17 +149,17 @@ using namespace Tiny;
             std::list<std::string> labelIds
             
             , 
-            std::list<std::string> entityStatuses
+            std::list<QueryLabelEntityStatusesItems> entityStatuses
             
             , 
-            std::list<std::string> labelTypes
+            std::list<QueryLabelTypesItems> labelTypes
             
-            , 
-            
-            int pageSize
             , 
             
             std::string bookmark
+            , 
+            
+            int pageSize
             
         )
         {
@@ -97,7 +168,7 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | campaignIds labelIds entityStatuses labelTypes pageSize bookmark 
+            // Query    | campaignIds labelIds entityStatuses labelTypes bookmark pageSize 
             for (auto &x : campaignIds){
                 addQueryParam("campaign_ids", std::string(x));
             }
@@ -110,8 +181,8 @@ using namespace Tiny;
             for (auto &x : labelTypes){
                 addQueryParam("label_types", std::string(x));
             }
-            addQueryParam("page_size",pageSize);
             addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
 
             // Form     | 
 
@@ -144,6 +215,77 @@ using namespace Tiny;
 
 
             Response<Labels_list_200_response> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
+            LabeledEntities
+        >
+        LabelsApi::
+        labels_remove(
+            
+            std::string adAccountId
+            , 
+            
+            std::string labelId
+            , 
+            
+            LabeledEntitiesCreate labeledEntitiesCreate
+            
+        )
+        {
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/labels/{label_id}/remove"; //adAccountId labelId 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+            addHeader("Content-Type", "application/json");
+
+
+
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
+                std::string s_labelId("{");
+                s_labelId.append("label_id");
+                s_labelId.append("}");
+
+                int pos = url.find(s_labelId);
+
+                url.erase(pos, s_labelId.length());
+                url.insert(pos, stringify(labelId));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | POST
+            // Body     | labeledEntitiesCreate
+
+
+
+            payload = labeledEntitiesCreate.toJson().dump();
+
+            int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+
+            LabeledEntities obj(output_string);
+
+
+            Response<LabeledEntities> response(obj, httpCode);
             return response;
         }
 

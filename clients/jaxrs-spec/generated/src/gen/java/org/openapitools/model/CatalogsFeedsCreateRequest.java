@@ -3,9 +3,9 @@ package org.openapitools.model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
-import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.Country;
@@ -27,18 +27,18 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
 @JsonTypeName("CatalogsFeedsCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedsCreateRequest   {
   private CatalogsFeedCredentials credentials;
   private ProductAvailabilityType defaultAvailability;
   private Country defaultCountry;
   private NullableCurrency defaultCurrency;
-  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  private CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale;
   private CatalogsFormat format;
   private String location;
   private String name;
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-  private CatalogsStatus status = "ACTIVE";
+  private CatalogsStatus status;
 
   public CatalogsFeedsCreateRequest() {
   }
@@ -132,7 +132,7 @@ public class CatalogsFeedsCreateRequest   {
 
   /**
    **/
-  public CatalogsFeedsCreateRequest defaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public CatalogsFeedsCreateRequest defaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
     return this;
   }
@@ -140,12 +140,12 @@ public class CatalogsFeedsCreateRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("default_locale")
-  @Valid public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+  @Valid public CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
   }
 
   @JsonProperty("default_locale")
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public void setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
 
@@ -297,12 +297,8 @@ public class CatalogsFeedsCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

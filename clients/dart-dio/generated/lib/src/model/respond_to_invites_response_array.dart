@@ -4,7 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/respond_to_invites_response_array_items_inner.dart';
+import 'package:openapi/src/model/respond_to_invite_result_item.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -18,7 +18,7 @@ part 'respond_to_invites_response_array.g.dart';
 abstract class RespondToInvitesResponseArray implements Built<RespondToInvitesResponseArray, RespondToInvitesResponseArrayBuilder> {
   /// List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.
   @BuiltValueField(wireName: r'items')
-  BuiltList<RespondToInvitesResponseArrayItemsInner>? get items;
+  BuiltList<RespondToInviteResultItem>? get items;
 
   RespondToInvitesResponseArray._();
 
@@ -47,7 +47,7 @@ class _$RespondToInvitesResponseArraySerializer implements PrimitiveSerializer<R
       yield r'items';
       yield serializers.serialize(
         object.items,
-        specifiedType: const FullType(BuiltList, [FullType(RespondToInvitesResponseArrayItemsInner)]),
+        specifiedType: const FullType(BuiltList, [FullType(RespondToInviteResultItem)]),
       );
     }
   }
@@ -76,8 +76,9 @@ class _$RespondToInvitesResponseArraySerializer implements PrimitiveSerializer<R
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(RespondToInvitesResponseArrayItemsInner)]),
-          ) as BuiltList<RespondToInvitesResponseArrayItemsInner>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(RespondToInviteResultItem)]),
+          ) as BuiltList<RespondToInviteResultItem>?;
+          if (valueDes == null) continue;
           result.items.replace(valueDes);
           break;
         default:

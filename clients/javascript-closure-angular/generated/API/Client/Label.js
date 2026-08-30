@@ -13,40 +13,21 @@ API.Client.Label = function() {}
 API.Client.Label.prototype.id;
 
 /**
- * @type {!API.Client.LabelType}
+ * @type {!API.Client.NullableLabelType}
  * @export
  */
 API.Client.Label.prototype.labelType;
 
 /**
- * Label parent entity ID.
- * @type {!string}
- * @export
- */
-API.Client.Label.prototype.parentId;
-
-/**
- * Label parent entity type.
- * @type {!string}
- * @export
- */
-API.Client.Label.prototype.parentType;
-
-/**
- * @type {!API.Client.LabelStatus}
+ * @type {!API.Client.NullableLabelStatus}
  * @export
  */
 API.Client.Label.prototype.status;
 
 /**
- * Label name.
+ * Label name. 100-character limit.
  * @type {!string}
  * @export
  */
 API.Client.Label.prototype.value;
 
-/** @enum {string} */
-API.Client.Label.ParentTypeEnum = { 
-  CAMPAIGN: 'CAMPAIGN',
-  : '',
-}

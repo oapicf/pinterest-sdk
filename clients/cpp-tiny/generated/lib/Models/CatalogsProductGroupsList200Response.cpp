@@ -102,7 +102,7 @@ Catalogs_product_groups_list_200_response::getBookmark()
 }
 
 void
-Catalogs_product_groups_list_200_response::setBookmark(std::string  bookmark)
+Catalogs_product_groups_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Catalogs_product_groups_list_200_response::getItems()
 }
 
 void
-Catalogs_product_groups_list_200_response::setItems(std::list <CatalogsVerticalProductGroup> items)
+Catalogs_product_groups_list_200_response::setItems(std::list<CatalogsVerticalProductGroup> items)
 {
 	this->items = items;
 }

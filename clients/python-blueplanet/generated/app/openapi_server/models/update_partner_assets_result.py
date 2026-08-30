@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.asset_type_response import AssetTypeResponse  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -16,13 +17,13 @@ class UpdatePartnerAssetsResult(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, asset_id: str=None, asset_type: str=None, partner_id: str=None, permissions: List[str]=None):  # noqa: E501
+    def __init__(self, asset_id: str=None, asset_type: AssetTypeResponse=None, partner_id: str=None, permissions: List[str]=None):  # noqa: E501
         """UpdatePartnerAssetsResult - a model defined in Swagger
 
         :param asset_id: The asset_id of this UpdatePartnerAssetsResult.  # noqa: E501
         :type asset_id: str
         :param asset_type: The asset_type of this UpdatePartnerAssetsResult.  # noqa: E501
-        :type asset_type: str
+        :type asset_type: AssetTypeResponse
         :param partner_id: The partner_id of this UpdatePartnerAssetsResult.  # noqa: E501
         :type partner_id: str
         :param permissions: The permissions of this UpdatePartnerAssetsResult.  # noqa: E501
@@ -30,7 +31,7 @@ class UpdatePartnerAssetsResult(Model):
         """
         self.swagger_types = {
             'asset_id': str,
-            'asset_type': str,
+            'asset_type': AssetTypeResponse,
             'partner_id': str,
             'permissions': List[str]
         }
@@ -84,24 +85,22 @@ class UpdatePartnerAssetsResult(Model):
         self._asset_id = asset_id
 
     @property
-    def asset_type(self) -> str:
+    def asset_type(self) -> AssetTypeResponse:
         """Gets the asset_type of this UpdatePartnerAssetsResult.
 
-        Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.  # noqa: E501
 
         :return: The asset_type of this UpdatePartnerAssetsResult.
-        :rtype: str
+        :rtype: AssetTypeResponse
         """
         return self._asset_type
 
     @asset_type.setter
-    def asset_type(self, asset_type: str):
+    def asset_type(self, asset_type: AssetTypeResponse):
         """Sets the asset_type of this UpdatePartnerAssetsResult.
 
-        Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.  # noqa: E501
 
         :param asset_type: The asset_type of this UpdatePartnerAssetsResult.
-        :type asset_type: str
+        :type asset_type: AssetTypeResponse
         """
 
         self._asset_type = asset_type

@@ -18,7 +18,7 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `integrationsCommerceDel()`
 
 ```php
-integrationsCommerceDel($external_business_id)
+integrationsCommerceDel($external_business_id): \OpenAPI\Client\Model\IntegrationMetadata
 ```
 
 Delete commerce integration
@@ -45,7 +45,8 @@ $apiInstance = new OpenAPI\Client\Api\IntegrationsApi(
 $external_business_id = 'external_business_id_example'; // string | External business ID for the integration.
 
 try {
-    $apiInstance->integrationsCommerceDel($external_business_id);
+    $result = $apiInstance->integrationsCommerceDel($external_business_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationsApi->integrationsCommerceDel: ', $e->getMessage(), PHP_EOL;
 }
@@ -59,7 +60,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\OpenAPI\Client\Model\IntegrationMetadata**](../Model/IntegrationMetadata.md)
 
 ### Authorization
 
@@ -137,7 +138,7 @@ try {
 ## `integrationsCommercePatch()`
 
 ```php
-integrationsCommercePatch($external_business_id, $integration_request_patch): \OpenAPI\Client\Model\IntegrationMetadata
+integrationsCommercePatch($external_business_id, $integration_metadata_update): \OpenAPI\Client\Model\IntegrationMetadata
 ```
 
 Update commerce integration
@@ -162,10 +163,10 @@ $apiInstance = new OpenAPI\Client\Api\IntegrationsApi(
     $config
 );
 $external_business_id = 'external_business_id_example'; // string | External business ID for the integration.
-$integration_request_patch = new \OpenAPI\Client\Model\IntegrationRequestPatch(); // \OpenAPI\Client\Model\IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
+$integration_metadata_update = new \OpenAPI\Client\Model\IntegrationMetadataUpdate(); // \OpenAPI\Client\Model\IntegrationMetadataUpdate
 
 try {
-    $result = $apiInstance->integrationsCommercePatch($external_business_id, $integration_request_patch);
+    $result = $apiInstance->integrationsCommercePatch($external_business_id, $integration_metadata_update);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationsApi->integrationsCommercePatch: ', $e->getMessage(), PHP_EOL;
@@ -177,7 +178,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **external_business_id** | **string**| External business ID for the integration. | |
-| **integration_request_patch** | [**\OpenAPI\Client\Model\IntegrationRequestPatch**](../Model/IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | |
+| **integration_metadata_update** | [**\OpenAPI\Client\Model\IntegrationMetadataUpdate**](../Model/IntegrationMetadataUpdate.md)|  | |
 
 ### Return type
 
@@ -199,7 +200,7 @@ try {
 ## `integrationsCommercePost()`
 
 ```php
-integrationsCommercePost($integration_request): \OpenAPI\Client\Model\IntegrationMetadata
+integrationsCommercePost($integration_metadata_create): \OpenAPI\Client\Model\IntegrationMetadata
 ```
 
 Create commerce integration
@@ -223,10 +224,10 @@ $apiInstance = new OpenAPI\Client\Api\IntegrationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$integration_request = new \OpenAPI\Client\Model\IntegrationRequest(); // \OpenAPI\Client\Model\IntegrationRequest | Parameters to get create/update the Integration Metadata
+$integration_metadata_create = new \OpenAPI\Client\Model\IntegrationMetadataCreate(); // \OpenAPI\Client\Model\IntegrationMetadataCreate
 
 try {
-    $result = $apiInstance->integrationsCommercePost($integration_request);
+    $result = $apiInstance->integrationsCommercePost($integration_metadata_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationsApi->integrationsCommercePost: ', $e->getMessage(), PHP_EOL;
@@ -237,7 +238,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **integration_request** | [**\OpenAPI\Client\Model\IntegrationRequest**](../Model/IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | |
+| **integration_metadata_create** | [**\OpenAPI\Client\Model\IntegrationMetadataCreate**](../Model/IntegrationMetadataCreate.md)|  | |
 
 ### Return type
 
@@ -283,7 +284,7 @@ $apiInstance = new OpenAPI\Client\Api\IntegrationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 'id_example'; // string | Integration ID.
+$id = 'id_example'; // string | Integration record ID.
 
 try {
     $result = $apiInstance->integrationsGetById($id);
@@ -297,7 +298,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| Integration ID. | |
+| **id** | **string**| Integration record ID. | |
 
 ### Return type
 
@@ -344,7 +345,7 @@ $apiInstance = new OpenAPI\Client\Api\IntegrationsApi(
     $config
 );
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
     $result = $apiInstance->integrationsGetList($bookmark, $page_size);
@@ -359,7 +360,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -381,7 +382,7 @@ try {
 ## `integrationsLogsPost()`
 
 ```php
-integrationsLogsPost($integration_logs_request): \OpenAPI\Client\Model\IntegrationLogsSuccessResponse
+integrationsLogsPost($integration_logs_request_create): \OpenAPI\Client\Model\IntegrationLogsSuccessResponse
 ```
 
 Receives batched logs from integration applications.
@@ -405,10 +406,10 @@ $apiInstance = new OpenAPI\Client\Api\IntegrationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$integration_logs_request = new \OpenAPI\Client\Model\IntegrationLogsRequest(); // \OpenAPI\Client\Model\IntegrationLogsRequest | Ingest log information from external integration application.
+$integration_logs_request_create = new \OpenAPI\Client\Model\IntegrationLogsRequestCreate(); // \OpenAPI\Client\Model\IntegrationLogsRequestCreate
 
 try {
-    $result = $apiInstance->integrationsLogsPost($integration_logs_request);
+    $result = $apiInstance->integrationsLogsPost($integration_logs_request_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationsApi->integrationsLogsPost: ', $e->getMessage(), PHP_EOL;
@@ -419,7 +420,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **integration_logs_request** | [**\OpenAPI\Client\Model\IntegrationLogsRequest**](../Model/IntegrationLogsRequest.md)| Ingest log information from external integration application. | |
+| **integration_logs_request_create** | [**\OpenAPI\Client\Model\IntegrationLogsRequestCreate**](../Model/IntegrationLogsRequestCreate.md)|  | |
 
 ### Return type
 

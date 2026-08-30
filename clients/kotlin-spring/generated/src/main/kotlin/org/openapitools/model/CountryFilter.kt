@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CountryFilter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("COUNTRY")
     @get:JsonProperty("COUNTRY", required = true) val COUNTRY: CatalogsProductGroupMultipleCountriesCriteria
 ) {
 

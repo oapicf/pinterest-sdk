@@ -18,6 +18,8 @@ module OrderLine =
     AdAccountId : string;
     [<JsonProperty(PropertyName = "budget")>]
     Budget : decimal option;
+    [<JsonProperty(PropertyName = "campaign_ids")>]
+    CampaignIds : string[];
     [<JsonProperty(PropertyName = "end_time")>]
     EndTime : decimal option;
     [<JsonProperty(PropertyName = "id")>]
@@ -36,8 +38,6 @@ module OrderLine =
     Status : OrderLineStatus;
     [<JsonProperty(PropertyName = "type")>]
     Type : string;
-    [<JsonProperty(PropertyName = "campaign_ids")>]
-    CampaignIds : string[];
   }
 
   //#endregion

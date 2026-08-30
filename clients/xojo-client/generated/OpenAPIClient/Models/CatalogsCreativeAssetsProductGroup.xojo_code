@@ -3,7 +3,7 @@ Protected Class CatalogsCreativeAssetsProductGroup
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Catalog id pertaining to the creative assets product group.
+			Catalog ID pertaining to the product group.
 		#tag EndNote
 		catalog_id As String
 	#tag EndProperty
@@ -34,7 +34,7 @@ Protected Class CatalogsCreativeAssetsProductGroup
 
 	#tag Property, Flags = &h0
 		#tag Note
-			ID of the creative assets product group.
+			ID of the catalog product group.
 		#tag EndNote
 		id As String
 	#tag EndProperty
@@ -42,7 +42,7 @@ Protected Class CatalogsCreativeAssetsProductGroup
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Name of creative assets product group
+			Name of catalog product group
 		#tag EndNote
 		name As Xoson.O.OptionalString
 	#tag EndProperty

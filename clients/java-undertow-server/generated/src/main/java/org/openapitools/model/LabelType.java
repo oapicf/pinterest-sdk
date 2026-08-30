@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -17,11 +17,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 
 /**
- * Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.
+ * Label type values.
  */
 
 /**
- * Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.
+ * Label type values.
  */
 public enum LabelType {
     
@@ -48,7 +48,7 @@ if (String.valueOf(b.value).equals(text)) {
 return b;
 }
 }
-return null;
+throw new IllegalArgumentException("Unexpected value '" + text + "'");
 }
 }
 

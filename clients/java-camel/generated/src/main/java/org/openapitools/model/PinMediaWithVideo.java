@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -17,20 +18,20 @@ import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Pin with video.
  */
 
 @Schema(name = "PinMediaWithVideo", description = "Pin with video.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PinMediaWithVideo implements PinMedia {
 
   private String coverImageUrl;
@@ -77,6 +78,8 @@ public class PinMediaWithVideo implements PinMedia {
   private MediaTypeEnum mediaType;
 
   private JsonNullable<String> videoUrl = JsonNullable.<String>undefined();
+
+  private JsonNullable<String> videoUrlHls = JsonNullable.<String>undefined();
 
   private JsonNullable<Integer> width = JsonNullable.<Integer>undefined();
 
@@ -211,6 +214,26 @@ public class PinMediaWithVideo implements PinMedia {
     this.videoUrl = videoUrl;
   }
 
+  public PinMediaWithVideo videoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = JsonNullable.of(videoUrlHls);
+    return this;
+  }
+
+  /**
+   * Video url (HLS).  **Note:** This field is limited and not available to all apps.
+   * @return videoUrlHls
+   */
+  
+  @Schema(name = "video_url_hls", description = "Video url (HLS).  **Note:** This field is limited and not available to all apps.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("video_url_hls")
+  public JsonNullable<String> getVideoUrlHls() {
+    return videoUrlHls;
+  }
+
+  public void setVideoUrlHls(JsonNullable<String> videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+  }
+
   public PinMediaWithVideo width(Integer width) {
     this.width = JsonNullable.of(width);
     return this;
@@ -246,6 +269,7 @@ public class PinMediaWithVideo implements PinMedia {
         Objects.equals(this.images, pinMediaWithVideo.images) &&
         Objects.equals(this.mediaType, pinMediaWithVideo.mediaType) &&
         equalsNullable(this.videoUrl, pinMediaWithVideo.videoUrl) &&
+        equalsNullable(this.videoUrlHls, pinMediaWithVideo.videoUrlHls) &&
         equalsNullable(this.width, pinMediaWithVideo.width);
   }
 
@@ -255,7 +279,7 @@ public class PinMediaWithVideo implements PinMedia {
 
   @Override
   public int hashCode() {
-    return Objects.hash(coverImageUrl, hashCodeNullable(duration), hashCodeNullable(height), images, mediaType, hashCodeNullable(videoUrl), hashCodeNullable(width));
+    return Objects.hash(coverImageUrl, hashCodeNullable(duration), hashCodeNullable(height), images, mediaType, hashCodeNullable(videoUrl), hashCodeNullable(videoUrlHls), hashCodeNullable(width));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -275,6 +299,7 @@ public class PinMediaWithVideo implements PinMedia {
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    videoUrlHls: ").append(toIndentedString(videoUrlHls)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -285,10 +310,7 @@ public class PinMediaWithVideo implements PinMedia {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

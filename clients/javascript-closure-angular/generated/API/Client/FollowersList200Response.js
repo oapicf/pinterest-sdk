@@ -12,7 +12,7 @@ API.Client.FollowersList200Response = function() {}
 API.Client.FollowersList200Response.prototype.bookmark;
 
 /**
- * @type {!Array<!API.Client.UserSummary>}
+ * @type {!Array<!API.Client.FollowUser>}
  * @export
  */
 API.Client.FollowersList200Response.prototype.items;

@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -23,7 +28,7 @@ type AdAccount struct {
 
 	Currency Currency `json:"currency,omitempty"`
 
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
 	// Ad account name.
 	Name string `json:"name,omitempty"`
@@ -33,30 +38,119 @@ type AdAccount struct {
 
 	Permissions []BusinessAccessRole `json:"permissions,omitempty"`
 
+	// The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
+	TimeZone string `json:"time_zone,omitempty"`
+
 	UpdatedTime *int32 `json:"updated_time,omitempty"`
 }
-
-// AssertAdAccountRequired checks if the required fields are not zero-ed
-func AssertAdAccountRequired(obj AdAccount) error {
-	elements := map[string]interface{}{
-		"id": obj.Id,
+// UnmarshalJSON validates required property keys then unmarshals into AdAccount
+func (o *AdAccount) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"id",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"id": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"country": {},
+		"created_time": {},
+		"currency": {},
+		"id": {},
+		"name": {},
+		"owner": {},
+		"permissions": {},
+		"time_zone": {},
+		"updated_time": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
-	if err := AssertAdAccountOwnerRequired(obj.Owner); err != nil {
-		return err
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
 	}
+
+	var decoded AdAccount
+
+	if value, exists := allProperties["country"]; exists {
+		if err = json.Unmarshal(value, &decoded.Country); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["created_time"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreatedTime); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["currency"]; exists {
+		if err = json.Unmarshal(value, &decoded.Currency); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["owner"]; exists {
+		if err = json.Unmarshal(value, &decoded.Owner); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["permissions"]; exists {
+		if err = json.Unmarshal(value, &decoded.Permissions); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["time_zone"]; exists {
+		if err = json.Unmarshal(value, &decoded.TimeZone); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["updated_time"]; exists {
+		if err = json.Unmarshal(value, &decoded.UpdatedTime); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertAdAccountRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertAdAccountRequired(obj AdAccount) error {
 	return nil
 }
 
 // AssertAdAccountConstraints checks if the values respects the defined constraints
 func AssertAdAccountConstraints(obj AdAccount) error {
-	if err := AssertAdAccountOwnerConstraints(obj.Owner); err != nil {
-		return err
-	}
 	return nil
 }

@@ -4,10 +4,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * SSIO insertion order status response for a single pin order id lookup.
+ */
+@ApiModel(description="SSIO insertion order status response for a single pin order id lookup.")
 
 public class SSIOInsertionOrderStatusResponse  {
   
@@ -121,10 +126,7 @@ public class SSIOInsertionOrderStatusResponse  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

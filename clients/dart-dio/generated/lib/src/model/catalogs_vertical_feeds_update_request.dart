@@ -8,11 +8,11 @@ import 'package:openapi/src/model/catalogs_feed_processing_schedule.dart';
 import 'package:openapi/src/model/catalogs_creative_assets_feeds_update_request.dart';
 import 'package:openapi/src/model/catalogs_hotel_feeds_update_request.dart';
 import 'package:openapi/src/model/nullable_currency.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/product_availability_type.dart';
 import 'package:openapi/src/model/catalogs_status.dart';
 import 'package:openapi/src/model/catalogs_format.dart';
 import 'package:openapi/src/model/catalogs_retail_feeds_update_request.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -151,5 +151,18 @@ class _$CatalogsVerticalFeedsUpdateRequestSerializer implements PrimitiveSeriali
     result.oneOf = OneOfDynamic(typeIndex: oneOfTypes.indexOf(oneOfType), types: oneOfTypes, value: oneOfResult);
     return result.build();
   }
+}
+
+class CatalogsVerticalFeedsUpdateRequestCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')
+  static const CatalogsVerticalFeedsUpdateRequestCatalogTypeEnum CREATIVE_ASSETS = _$catalogsVerticalFeedsUpdateRequestCatalogTypeEnum_CREATIVE_ASSETS;
+
+  static Serializer<CatalogsVerticalFeedsUpdateRequestCatalogTypeEnum> get serializer => _$catalogsVerticalFeedsUpdateRequestCatalogTypeEnumSerializer;
+
+  const CatalogsVerticalFeedsUpdateRequestCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsVerticalFeedsUpdateRequestCatalogTypeEnum> get values => _$catalogsVerticalFeedsUpdateRequestCatalogTypeEnumValues;
+  static CatalogsVerticalFeedsUpdateRequestCatalogTypeEnum valueOf(String name) => _$catalogsVerticalFeedsUpdateRequestCatalogTypeEnumValueOf(name);
 }
 

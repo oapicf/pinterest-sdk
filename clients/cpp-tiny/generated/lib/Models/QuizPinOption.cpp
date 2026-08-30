@@ -85,7 +85,7 @@ QuizPinOption::getId()
 }
 
 void
-QuizPinOption::setId(long  id)
+QuizPinOption::setId(long id)
 {
 	this->id = id;
 }
@@ -97,7 +97,7 @@ QuizPinOption::getText()
 }
 
 void
-QuizPinOption::setText(std::string  text)
+QuizPinOption::setText(std::string text)
 {
 	this->text = text;
 }

@@ -23,7 +23,7 @@ typedef struct amazon_connect_request_t {
     char *amazon_storefront_name; // string
     char *amazon_storefront_url; // string
     char *amazon_user_id; // string
-    int is_amazon_account_linked; //boolean
+    int *is_amazon_account_linked; //boolean
     char *one_time_passcode; // string
     char *pinterest_user_id; // string
 
@@ -35,7 +35,7 @@ __attribute__((deprecated)) amazon_connect_request_t *amazon_connect_request_cre
     char *amazon_storefront_name,
     char *amazon_storefront_url,
     char *amazon_user_id,
-    int is_amazon_account_linked,
+    int *is_amazon_account_linked,
     char *one_time_passcode,
     char *pinterest_user_id
 );

@@ -12,7 +12,7 @@ import org.openapitools.model.CatalogsHotelGuestRatings;
 
 @Canonical
 class CatalogsUpdatableHotelAttributes {
-    
+    /* Hotel address */
     CatalogsHotelAddress address
     /* Base price of the hotel room per night followed by the ISO currency code */
     String basePrice
@@ -32,7 +32,7 @@ class CatalogsUpdatableHotelAttributes {
     String customLabel4
     /* Brief description of the hotel. */
     String description
-    
+    /* If specified, you must provide all properties */
     CatalogsHotelGuestRatings guestRatings
     /* Latitude of the hotel. */
     BigDecimal latitude

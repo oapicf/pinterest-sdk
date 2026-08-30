@@ -2,8 +2,15 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
+import org.openapitools.model.BillingProfileCardType
+import org.openapitools.model.BillingProfilePaymentMethodBrand
+import org.openapitools.model.BillingProfileStatus
+import org.openapitools.model.BillingType
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -28,119 +35,46 @@ data class BillingProfilesResponse(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "12312451231", description = "Advertiser ID of the billing.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("advertiser_id")
     @get:JsonProperty("advertiser_id") val advertiserId: kotlin.String? = null,
 
+    @field:Valid
     @Schema(example = "CREDIT_CARD", description = "Billing type of the advertiser")
-    @get:JsonProperty("billing_type") val billingType: BillingProfilesResponse.BillingType? = null,
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("billing_type")
+    @get:JsonProperty("billing_type") val billingType: BillingType? = null,
 
+    @field:Valid
     @Schema(example = "VISA", description = "Type of the card.")
-    @get:JsonProperty("card_type") val cardType: BillingProfilesResponse.CardType? = null,
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("card_type")
+    @get:JsonProperty("card_type") val cardType: BillingProfileCardType? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "12312451231", description = "Billing ID.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("id")
     @get:JsonProperty("id") val id: kotlin.String? = null,
 
+    @field:Valid
     @Schema(example = "VISA", description = "Brand of the payment method.")
-    @get:JsonProperty("payment_method_brand") val paymentMethodBrand: BillingProfilesResponse.PaymentMethodBrand? = null,
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("payment_method_brand")
+    @get:JsonProperty("payment_method_brand") val paymentMethodBrand: BillingProfilePaymentMethodBrand? = null,
 
+    @field:Valid
     @Schema(example = "INVALID", description = "Status of the billing.")
-    @get:JsonProperty("status") val status: BillingProfilesResponse.Status? = null
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("status")
+    @get:JsonProperty("status") val status: BillingProfileStatus? = null
 ) {
-
-    /**
-    * Billing type of the advertiser
-    * Values: CREDIT_CARD,INVOICE,INTERNAL,RECURRING,PREPAID
-    */
-    enum class BillingType(@get:JsonValue val value: kotlin.String) {
-
-        CREDIT_CARD("CREDIT_CARD"),
-        INVOICE("INVOICE"),
-        INTERNAL("INTERNAL"),
-        RECURRING("RECURRING"),
-        PREPAID("PREPAID");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): BillingType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingProfilesResponse'")
-            }
-        }
-    }
-
-    /**
-    * Type of the card.
-    * Values: UNKNOWN,VISA,MASTERCARD,AMERICAN_EXPRESS,DISCOVER,ELO
-    */
-    enum class CardType(@get:JsonValue val value: kotlin.String) {
-
-        UNKNOWN("UNKNOWN"),
-        VISA("VISA"),
-        MASTERCARD("MASTERCARD"),
-        AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
-        DISCOVER("DISCOVER"),
-        ELO("ELO");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): CardType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingProfilesResponse'")
-            }
-        }
-    }
-
-    /**
-    * Brand of the payment method.
-    * Values: UNKNOWN,VISA,MASTERCARD,AMERICAN_EXPRESS,DISCOVER,SOFORT,DINERS_CLUB,ELO,CARTE_BANCAIRE
-    */
-    enum class PaymentMethodBrand(@get:JsonValue val value: kotlin.String) {
-
-        UNKNOWN("UNKNOWN"),
-        VISA("VISA"),
-        MASTERCARD("MASTERCARD"),
-        AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
-        DISCOVER("DISCOVER"),
-        SOFORT("SOFORT"),
-        DINERS_CLUB("DINERS_CLUB"),
-        ELO("ELO"),
-        CARTE_BANCAIRE("CARTE_BANCAIRE");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): PaymentMethodBrand {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingProfilesResponse'")
-            }
-        }
-    }
-
-    /**
-    * Status of the billing.
-    * Values: UNSPECIFIED,VALID,INVALID,PENDING,DELETED,SECONDARY,PENDING_SECONDARY
-    */
-    enum class Status(@get:JsonValue val value: kotlin.String) {
-
-        UNSPECIFIED("UNSPECIFIED"),
-        VALID("VALID"),
-        INVALID("INVALID"),
-        PENDING("PENDING"),
-        DELETED("DELETED"),
-        SECONDARY("SECONDARY"),
-        PENDING_SECONDARY("PENDING_SECONDARY");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): Status {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingProfilesResponse'")
-            }
-        }
-    }
 
 }
 

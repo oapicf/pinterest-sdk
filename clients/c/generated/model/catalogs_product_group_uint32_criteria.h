@@ -15,29 +15,22 @@
 
 typedef struct catalogs_product_group_uint32_criteria_t catalogs_product_group_uint32_criteria_t;
 
-
-// Enum OPERATOR for catalogs_product_group_uint32_criteria
-
-typedef enum  { pinterest_rest_api_catalogs_product_group_uint32_criteria_OPERATOR_NULL = 0, pinterest_rest_api_catalogs_product_group_uint32_criteria_OPERATOR_GREATER_THAN, pinterest_rest_api_catalogs_product_group_uint32_criteria_OPERATOR_GREATER_THAN_OR_EQUALS, pinterest_rest_api_catalogs_product_group_uint32_criteria_OPERATOR_LESS_THAN, pinterest_rest_api_catalogs_product_group_uint32_criteria_OPERATOR_LESS_THAN_OR_EQUALS } pinterest_rest_api_catalogs_product_group_uint32_criteria_OPERATOR_e;
-
-char* catalogs_product_group_uint32_criteria__operator_ToString(pinterest_rest_api_catalogs_product_group_uint32_criteria_OPERATOR_e _operator);
-
-pinterest_rest_api_catalogs_product_group_uint32_criteria_OPERATOR_e catalogs_product_group_uint32_criteria__operator_FromString(char* _operator);
+#include "numeric_filter_operator_type.h"
 
 
 
 typedef struct catalogs_product_group_uint32_criteria_t {
-    int negated; //boolean
-    pinterest_rest_api_catalogs_product_group_uint32_criteria_OPERATOR_e _operator; //enum
-    int value; //numeric
+    int *negated; //boolean
+    pinterest_rest_api_numeric_filter_operator_type__e _operator; //referenced enum
+    int *value; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_uint32_criteria_t;
 
 __attribute__((deprecated)) catalogs_product_group_uint32_criteria_t *catalogs_product_group_uint32_criteria_create(
-    int negated,
-    pinterest_rest_api_catalogs_product_group_uint32_criteria_OPERATOR_e _operator,
-    int value
+    int *negated,
+    pinterest_rest_api_numeric_filter_operator_type__e _operator,
+    int *value
 );
 
 void catalogs_product_group_uint32_criteria_free(catalogs_product_group_uint32_criteria_t *catalogs_product_group_uint32_criteria);

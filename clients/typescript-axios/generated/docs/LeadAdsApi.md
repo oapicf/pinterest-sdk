@@ -10,7 +10,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |[**adAccountsSubscriptionsPost**](#adaccountssubscriptionspost) | **POST** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription|
 
 # **adAccountsSubscriptionsDelById**
-> adAccountsSubscriptionsDelById()
+> LeadSubscription adAccountsSubscriptionsDelById()
 
 Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.\'
 
@@ -44,7 +44,7 @@ const { status, data } = await apiInstance.adAccountsSubscriptionsDelById(
 
 ### Return type
 
-void (empty response body)
+**LeadSubscription**
 
 ### Authorization
 
@@ -59,6 +59,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | The request has succeeded. |  -  |
 |**204** | Resource deleted successfully. |  -  |
 |**400** | The request could not be understood by the server due to unexpected data. |  -  |
 |**401** | Authentication is required and has either failed or not been provided. |  -  |

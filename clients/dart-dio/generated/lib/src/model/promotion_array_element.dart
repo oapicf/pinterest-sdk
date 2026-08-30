@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/promotion_response.dart';
+import 'package:openapi/src/model/promotion.dart';
 import 'package:openapi/src/model/exception.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -18,7 +18,7 @@ part 'promotion_array_element.g.dart';
 @BuiltValue()
 abstract class PromotionArrayElement implements Built<PromotionArrayElement, PromotionArrayElementBuilder> {
   @BuiltValueField(wireName: r'data')
-  PromotionResponse? get data;
+  Promotion? get data;
 
   @BuiltValueField(wireName: r'exception')
   Exception? get exception;
@@ -50,7 +50,7 @@ class _$PromotionArrayElementSerializer implements PrimitiveSerializer<Promotion
       yield r'data';
       yield serializers.serialize(
         object.data,
-        specifiedType: const FullType(PromotionResponse),
+        specifiedType: const FullType(Promotion),
       );
     }
     if (object.exception != null) {
@@ -86,15 +86,17 @@ class _$PromotionArrayElementSerializer implements PrimitiveSerializer<Promotion
         case r'data':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(PromotionResponse),
-          ) as PromotionResponse;
+            specifiedType: const FullType.nullable(Promotion),
+          ) as Promotion?;
+          if (valueDes == null) continue;
           result.data.replace(valueDes);
           break;
         case r'exception':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(Exception),
-          ) as Exception;
+            specifiedType: const FullType.nullable(Exception),
+          ) as Exception?;
+          if (valueDes == null) continue;
           result.exception.replace(valueDes);
           break;
         default:

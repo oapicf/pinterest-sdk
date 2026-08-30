@@ -8,6 +8,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 imports {
   Root = tosca.resourceTypes.Root
   PinMedia = openapi_server.resourceTypes.PinMedia
+  import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
 
@@ -29,7 +30,7 @@ resourceTypes {
         id {
           type =  string
           description = ""
-          optional = false
+          optional = true
         }
         link {
           type =  string

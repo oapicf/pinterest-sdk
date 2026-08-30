@@ -1,10 +1,11 @@
 package controllers;
 
-import apimodels.Error;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.TargetingTemplate;
 import apimodels.TargetingTemplateCreate;
-import apimodels.TargetingTemplateGetResponseData;
 import apimodels.TargetingTemplateList200Response;
-import apimodels.TargetingTemplateUpdateRequest;
+import apimodels.TargetingTemplateUpdateRequestReadOrUpdate;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -36,7 +37,7 @@ public abstract class TargetingTemplateApiControllerImpInterface {
             return unauthorized();
         }
 
-        TargetingTemplateGetResponseData obj = targetingTemplateCreate(request, adAccountId, targetingTemplateCreate);
+        TargetingTemplate obj = targetingTemplateCreate(request, adAccountId, targetingTemplateCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -48,14 +49,14 @@ public abstract class TargetingTemplateApiControllerImpInterface {
 
     }
 
-    public abstract TargetingTemplateGetResponseData targetingTemplateCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, TargetingTemplateCreate targetingTemplateCreate) throws Exception;
+    public abstract TargetingTemplate targetingTemplateCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, TargetingTemplateCreate targetingTemplateCreate) throws Exception;
 
-    public Result targetingTemplateListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String order, Boolean includeSizing, String searchQuery,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception {
+    public Result targetingTemplateListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order, Boolean includeSizing, String searchQuery) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        TargetingTemplateList200Response obj = targetingTemplateList(request, adAccountId, order, includeSizing, searchQuery, pageSize, bookmark);
+        TargetingTemplateList200Response obj = targetingTemplateList(request, adAccountId, bookmark, pageSize, order, includeSizing, searchQuery);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -67,18 +68,18 @@ public abstract class TargetingTemplateApiControllerImpInterface {
 
     }
 
-    public abstract TargetingTemplateList200Response targetingTemplateList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String order, Boolean includeSizing, String searchQuery,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception;
+    public abstract TargetingTemplateList200Response targetingTemplateList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order, Boolean includeSizing, String searchQuery) throws Exception;
 
-    public Result targetingTemplateUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, TargetingTemplateUpdateRequest targetingTemplateUpdateRequest) throws Exception {
+    public Result targetingTemplateUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        targetingTemplateUpdate(request, adAccountId, targetingTemplateUpdateRequest);
+        targetingTemplateUpdate(request, adAccountId, targetingTemplateUpdateRequestReadOrUpdate);
         return ok();
 
     }
 
-    public abstract void targetingTemplateUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, TargetingTemplateUpdateRequest targetingTemplateUpdateRequest) throws Exception;
+    public abstract void targetingTemplateUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate) throws Exception;
 
 }

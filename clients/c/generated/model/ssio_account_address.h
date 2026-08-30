@@ -1,7 +1,7 @@
 /*
  * ssio_account_address.h
  *
- * 
+ * Salesforce address information.
  */
 
 #ifndef _ssio_account_address_H_

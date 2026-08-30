@@ -20,7 +20,7 @@ import org.openapitools.server.api.model.AdvancedAuctionItems
 import org.openapitools.server.api.model.AdvancedAuctionItemsGetRequest
 import org.openapitools.server.api.model.AdvancedAuctionItemsSubmitRequest
 import org.openapitools.server.api.model.AdvancedAuctionProcessedItems
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
 
 class AdvancedAuctionApiVertxProxyHandler(private val vertx: Vertx, private val service: AdvancedAuctionApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long

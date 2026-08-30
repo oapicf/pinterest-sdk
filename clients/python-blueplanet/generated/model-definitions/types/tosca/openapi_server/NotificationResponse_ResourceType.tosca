@@ -15,9 +15,9 @@ resourceTypes {
     description = NotificationResponse
     derivedFrom = Root
     properties {
-        success {
-          type =  boolean
-          description = "Returns true if the notification accepted."
+        error_msg {
+          type =  string
+          description = "error message when success is false"
           optional = false
         }
         received_at {
@@ -25,9 +25,9 @@ resourceTypes {
           description = "Received time. Unix timestamp in seconds."
           optional = false
         }
-        error_msg {
-          type =  string
-          description = "error message when success is false"
+        success {
+          type =  boolean
+          description = "Returns true if the notification accepted."
           optional = false
         }
     }

@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setMINPRICE(CatalogsProductGroupPricingCriteria  mIN_PRICE);
+	void setMINPRICE(CatalogsProductGroupPricingCriteria mIN_PRICE);
 
 
     private:

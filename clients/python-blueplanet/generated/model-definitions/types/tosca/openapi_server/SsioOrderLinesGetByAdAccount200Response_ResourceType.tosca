@@ -24,7 +24,7 @@ resourceTypes {
         items {
           type = array
           items.type = SSIOOrderLine
-          description = "SSIO order lines by ad acount id"
+          description = ""
           optional = true
         }
     }

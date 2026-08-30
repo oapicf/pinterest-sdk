@@ -15,7 +15,7 @@
 
 typedef struct respond_to_invites_response_array_t respond_to_invites_response_array_t;
 
-#include "respond_to_invites_response_array_items_inner.h"
+#include "respond_to_invite_result_item.h"
 
 
 

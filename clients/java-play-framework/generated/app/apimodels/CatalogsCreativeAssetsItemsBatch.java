@@ -1,7 +1,6 @@
 package apimodels;
 
 import apimodels.BatchOperationStatus;
-import apimodels.CatalogsType;
 import apimodels.CreativeAssetsProcessingRecord;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -17,18 +16,47 @@ import javax.validation.Valid;
 /**
  * Object describing the catalogs creative assets items batch
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsCreativeAssetsItemsBatch   {
   @JsonProperty("batch_id")
-  
+  @Pattern(regexp="^\\d+$")
+
   private String batchId;
+
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
 
   @JsonProperty("catalog_type")
   @NotNull
-@Valid
 
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("completed_time")
   @Valid
@@ -67,7 +95,7 @@ public class CatalogsCreativeAssetsItemsBatch   {
     this.batchId = batchId;
   }
 
-  public CatalogsCreativeAssetsItemsBatch catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsItemsBatch catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -76,11 +104,11 @@ public class CatalogsCreativeAssetsItemsBatch   {
    * Get catalogType
    * @return catalogType
   **/
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -204,10 +232,7 @@ public class CatalogsCreativeAssetsItemsBatch   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

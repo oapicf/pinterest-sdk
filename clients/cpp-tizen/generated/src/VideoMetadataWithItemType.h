@@ -66,11 +66,11 @@ public:
 	/*! \brief Set Height (in pixels). Field maybe null after creation due to video processing time.
 	 */
 	void setHeight(int  height);
-	/*! \brief Get 
+	/*! \brief Get Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
 	 */
 	std::string getItemType();
 
-	/*! \brief Set 
+	/*! \brief Set Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
 	 */
 	void setItemType(std::string  item_type);
 	/*! \brief Get Video url (720p).  **Note:** This field is limited and not available to all apps.
@@ -80,6 +80,13 @@ public:
 	/*! \brief Set Video url (720p).  **Note:** This field is limited and not available to all apps.
 	 */
 	void setVideoUrl(std::string  video_url);
+	/*! \brief Get Video url (HLS).  **Note:** This field is limited and not available to all apps.
+	 */
+	std::string getVideoUrlHls();
+
+	/*! \brief Set Video url (HLS).  **Note:** This field is limited and not available to all apps.
+	 */
+	void setVideoUrlHls(std::string  video_url_hls);
 	/*! \brief Get Width (in pixels). Field maybe null after creation due to video processing time.
 	 */
 	int getWidth();
@@ -94,6 +101,7 @@ private:
 	int height;
 	std::string item_type;
 	std::string video_url;
+	std::string video_url_hls;
 	int width;
 	void __init();
 	void __cleanup();

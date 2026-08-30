@@ -12,18 +12,21 @@ static item_id_filter_t *item_id_filter_create_internal(
     if (!item_id_filter_local_var) {
         return NULL;
     }
-    item_id_filter_local_var->item_id = item_id;
-
+    memset(item_id_filter_local_var, 0, sizeof(item_id_filter_t));
     item_id_filter_local_var->_library_owned = 1;
+    item_id_filter_local_var->item_id = item_id;
     return item_id_filter_local_var;
 }
 
 __attribute__((deprecated)) item_id_filter_t *item_id_filter_create(
     catalogs_product_group_multiple_string_criteria_t *item_id
     ) {
-    return item_id_filter_create_internal (
+    item_id_filter_t *result = item_id_filter_create_internal (
         item_id
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void item_id_filter_free(item_id_filter_t *item_id_filter) {
@@ -36,7 +39,7 @@ void item_id_filter_free(item_id_filter_t *item_id_filter) {
     }
     listEntry_t *listEntry;
     if (item_id_filter->item_id) {
-        object_free(item_id_filter->item_id);
+        catalogs_product_group_multiple_string_criteria_free(item_id_filter->item_id);
         item_id_filter->item_id = NULL;
     }
     free(item_id_filter);
@@ -49,11 +52,11 @@ cJSON *item_id_filter_convertToJSON(item_id_filter_t *item_id_filter) {
     if (!item_id_filter->item_id) {
         goto fail;
     }
-    cJSON *item_id_object = object_convertToJSON(item_id_filter->item_id);
-    if(item_id_object == NULL) {
+    cJSON *item_id_local_JSON = catalogs_product_group_multiple_string_criteria_convertToJSON(item_id_filter->item_id);
+    if(item_id_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "ITEM_ID", item_id_object);
+    cJSON_AddItemToObject(item, "ITEM_ID", item_id_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -70,6 +73,9 @@ item_id_filter_t *item_id_filter_parseFromJSON(cJSON *item_id_filterJSON){
 
     item_id_filter_t *item_id_filter_local_var = NULL;
 
+    // define the local variable for item_id_filter->item_id
+    catalogs_product_group_multiple_string_criteria_t *item_id_local_nonprim = NULL;
+
     // item_id_filter->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_id_filterJSON, "ITEM_ID");
     if (cJSON_IsNull(item_id)) {
@@ -79,17 +85,25 @@ item_id_filter_t *item_id_filter_parseFromJSON(cJSON *item_id_filterJSON){
         goto end;
     }
 
-    object_t *item_id_local_object = NULL;
     
-    item_id_local_object = object_parseFromJSON(item_id); //object
+    item_id_local_nonprim = catalogs_product_group_multiple_string_criteria_parseFromJSON(item_id); //nonprimitive
+
 
 
     item_id_filter_local_var = item_id_filter_create_internal (
-        item_id_local_object
+        item_id_local_nonprim
         );
+
+    if (!item_id_filter_local_var) {
+        goto end;
+    }
 
     return item_id_filter_local_var;
 end:
+    if (item_id_local_nonprim) {
+        catalogs_product_group_multiple_string_criteria_free(item_id_local_nonprim);
+        item_id_local_nonprim = NULL;
+    }
     return NULL;
 
 }

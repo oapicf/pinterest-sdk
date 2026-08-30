@@ -85,7 +85,7 @@ CatalogsFeedCredentials::getPassword()
 }
 
 void
-CatalogsFeedCredentials::setPassword(std::string  password)
+CatalogsFeedCredentials::setPassword(std::string password)
 {
 	this->password = password;
 }
@@ -97,7 +97,7 @@ CatalogsFeedCredentials::getUsername()
 }
 
 void
-CatalogsFeedCredentials::setUsername(std::string  username)
+CatalogsFeedCredentials::setUsername(std::string username)
 {
 	this->username = username;
 }

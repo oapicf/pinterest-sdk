@@ -4,40 +4,20 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.vertxweb.server.model.NumericFilterOperatorType;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupUint32Criteria   {
   
-  private Boolean negated = false;
-
-
-  public enum OperatorEnum {
-    GREATER_THAN("GREATER_THAN"),
-    GREATER_THAN_OR_EQUALS("GREATER_THAN_OR_EQUALS"),
-    LESS_THAN("LESS_THAN"),
-    LESS_THAN_OR_EQUALS("LESS_THAN_OR_EQUALS");
-
-    private String value;
-
-    OperatorEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private OperatorEnum operator;
+  private Boolean negated;
+  private NumericFilterOperatorType operator;
   private Integer value;
 
   public CatalogsProductGroupUint32Criteria () {
 
   }
 
-  public CatalogsProductGroupUint32Criteria (Boolean negated, OperatorEnum operator, Integer value) {
+  public CatalogsProductGroupUint32Criteria (Boolean negated, NumericFilterOperatorType operator, Integer value) {
     this.negated = negated;
     this.operator = operator;
     this.value = value;
@@ -54,10 +34,10 @@ public class CatalogsProductGroupUint32Criteria   {
 
     
   @JsonProperty("operator")
-  public OperatorEnum getOperator() {
+  public NumericFilterOperatorType getOperator() {
     return operator;
   }
-  public void setOperator(OperatorEnum operator) {
+  public void setOperator(NumericFilterOperatorType operator) {
     this.operator = operator;
   }
 
@@ -107,9 +87,6 @@ public class CatalogsProductGroupUint32Criteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -44,7 +52,7 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
@@ -54,19 +62,20 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;
      * @param adAccountId Unique identifier of an ad account.
      * @param subscriptionId Unique identifier of a subscription.
-     * @return void
+     * @return LeadSubscription
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adAccountsSubscriptionsDelById(adAccountId: kotlin.String, subscriptionId: kotlin.String) : Unit {
+    fun adAccountsSubscriptionsDelById(adAccountId: kotlin.String, subscriptionId: kotlin.String) : LeadSubscription {
         val localVarResponse = adAccountsSubscriptionsDelByIdWithHttpInfo(adAccountId = adAccountId, subscriptionId = subscriptionId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as LeadSubscription
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -86,15 +95,16 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;
      * @param adAccountId Unique identifier of an ad account.
      * @param subscriptionId Unique identifier of a subscription.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<LeadSubscription?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun adAccountsSubscriptionsDelByIdWithHttpInfo(adAccountId: kotlin.String, subscriptionId: kotlin.String) : ApiResponse<Unit?> {
+    fun adAccountsSubscriptionsDelByIdWithHttpInfo(adAccountId: kotlin.String, subscriptionId: kotlin.String) : ApiResponse<LeadSubscription?> {
         val localVariableConfig = adAccountsSubscriptionsDelByIdRequestConfig(adAccountId = adAccountId, subscriptionId = subscriptionId)
 
-        return request<Unit, Unit>(
+        return request<Unit, LeadSubscription>(
             localVariableConfig
         )
     }

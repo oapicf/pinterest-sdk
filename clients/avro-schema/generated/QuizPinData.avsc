@@ -30,15 +30,8 @@
     },
     {
       "name": "tie_breaker_type",
-      "type": ["null", {
-        "type": "enum",
-        "name": "QuizPinData_tieUnderscorebreakerUnderscoretype",
-        "symbols": [
-          "RANDOM",
-          "CUSTOM"
-        ]
-      }],
-      "doc": "Quiz ad tie breaker type, default is RANDOM",
+      "type": ["null", "model.TieBreakerType"],
+      "doc": "",
       "default": null
     }
   ]

@@ -7,6 +7,7 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.catalogs_feed_processing_status import CatalogsFeedProcessingStatus  # noqa: F401,E501
+import re  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -62,6 +63,7 @@ class CatalogsFeedIngestion(Model):
     def created_at(self) -> datetime:
         """Gets the created_at of this CatalogsFeedIngestion.
 
+        Timestamp of the feed ingestion.  # noqa: E501
 
         :return: The created_at of this CatalogsFeedIngestion.
         :rtype: datetime
@@ -72,6 +74,7 @@ class CatalogsFeedIngestion(Model):
     def created_at(self, created_at: datetime):
         """Sets the created_at of this CatalogsFeedIngestion.
 
+        Timestamp of the feed ingestion.  # noqa: E501
 
         :param created_at: The created_at of this CatalogsFeedIngestion.
         :type created_at: datetime
@@ -85,6 +88,7 @@ class CatalogsFeedIngestion(Model):
     def feed_id(self) -> str:
         """Gets the feed_id of this CatalogsFeedIngestion.
 
+        Catalog Feed id pertaining to the feed ingestion.  # noqa: E501
 
         :return: The feed_id of this CatalogsFeedIngestion.
         :rtype: str
@@ -95,12 +99,15 @@ class CatalogsFeedIngestion(Model):
     def feed_id(self, feed_id: str):
         """Sets the feed_id of this CatalogsFeedIngestion.
 
+        Catalog Feed id pertaining to the feed ingestion.  # noqa: E501
 
         :param feed_id: The feed_id of this CatalogsFeedIngestion.
         :type feed_id: str
         """
         if feed_id is None:
             raise ValueError("Invalid value for `feed_id`, must not be `None`")  # noqa: E501
+        if feed_id is not None and not re.search(r'^\d+$', feed_id):  # noqa: E501
+            raise ValueError("Invalid value for `feed_id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
         self._feed_id = feed_id
 
@@ -108,6 +115,7 @@ class CatalogsFeedIngestion(Model):
     def id(self) -> str:
         """Gets the id of this CatalogsFeedIngestion.
 
+        Unique identifier of a feed ingestion.  # noqa: E501
 
         :return: The id of this CatalogsFeedIngestion.
         :rtype: str
@@ -118,12 +126,15 @@ class CatalogsFeedIngestion(Model):
     def id(self, id: str):
         """Sets the id of this CatalogsFeedIngestion.
 
+        Unique identifier of a feed ingestion.  # noqa: E501
 
         :param id: The id of this CatalogsFeedIngestion.
         :type id: str
         """
         if id is None:
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
+            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
         self._id = id
 
@@ -131,6 +142,7 @@ class CatalogsFeedIngestion(Model):
     def status(self) -> CatalogsFeedProcessingStatus:
         """Gets the status of this CatalogsFeedIngestion.
 
+        Status of the feed ingestion.  # noqa: E501
 
         :return: The status of this CatalogsFeedIngestion.
         :rtype: CatalogsFeedProcessingStatus
@@ -141,6 +153,7 @@ class CatalogsFeedIngestion(Model):
     def status(self, status: CatalogsFeedProcessingStatus):
         """Sets the status of this CatalogsFeedIngestion.
 
+        Status of the feed ingestion.  # noqa: E501
 
         :param status: The status of this CatalogsFeedIngestion.
         :type status: CatalogsFeedProcessingStatus

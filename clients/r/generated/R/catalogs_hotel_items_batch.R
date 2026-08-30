@@ -1,14 +1,14 @@
 #' Create a new CatalogsHotelItemsBatch
 #'
 #' @description
-#' Object describing the catalogs hotel items batch
+#' Object describing the catalogs hotel items batch. If specified, you must provide all properties.
 #'
 #' @docType class
 #' @title CatalogsHotelItemsBatch
 #' @description CatalogsHotelItemsBatch Class
 #' @format An \code{R6Class} generator object
 #' @field batch_id Id of the catalogs items batch character [optional]
-#' @field catalog_type  \link{CatalogsType}
+#' @field catalog_type  character
 #' @field completed_time Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss character [optional]
 #' @field created_time Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss character [optional]
 #' @field items Array with the catalogs items processing records part of the catalogs items batch list(\link{HotelProcessingRecord}) [optional]
@@ -38,10 +38,12 @@ CatalogsHotelItemsBatch <- R6::R6Class(
     #' @param ... Other optional arguments.
     initialize = function(`catalog_type`, `batch_id` = NULL, `completed_time` = NULL, `created_time` = NULL, `items` = NULL, `status` = NULL, ...) {
       if (!missing(`catalog_type`)) {
-        if (!(`catalog_type` %in% c())) {
-          stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be .", sep = ""))
+        if (!(`catalog_type` %in% c("HOTEL"))) {
+          stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
         }
-        stopifnot(R6::is.R6(`catalog_type`))
+        if (!(is.character(`catalog_type`) && length(`catalog_type`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", `catalog_type`))
+        }
         self$`catalog_type` <- `catalog_type`
       }
       if (!is.null(`batch_id`)) {
@@ -113,7 +115,7 @@ CatalogsHotelItemsBatch <- R6::R6Class(
       }
       if (!is.null(self$`catalog_type`)) {
         CatalogsHotelItemsBatchObject[["catalog_type"]] <-
-          self$`catalog_type`$toSimpleType()
+          self$`catalog_type`
       }
       if (!is.null(self$`completed_time`)) {
         CatalogsHotelItemsBatchObject[["completed_time"]] <-
@@ -125,13 +127,36 @@ CatalogsHotelItemsBatch <- R6::R6Class(
       }
       if (!is.null(self$`items`)) {
         CatalogsHotelItemsBatchObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`items`)
       }
       if (!is.null(self$`status`)) {
         CatalogsHotelItemsBatchObject[["status"]] <-
-          self$`status`$toSimpleType()
+          self$extractSimpleType(self$`status`)
       }
       return(CatalogsHotelItemsBatchObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -145,9 +170,10 @@ CatalogsHotelItemsBatch <- R6::R6Class(
         self$`batch_id` <- this_object$`batch_id`
       }
       if (!is.null(this_object$`catalog_type`)) {
-        `catalog_type_object` <- CatalogsType$new()
-        `catalog_type_object`$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
-        self$`catalog_type` <- `catalog_type_object`
+        if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("HOTEL"))) {
+          stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
+        }
+        self$`catalog_type` <- this_object$`catalog_type`
       }
       if (!is.null(this_object$`completed_time`)) {
         self$`completed_time` <- this_object$`completed_time`
@@ -185,7 +211,10 @@ CatalogsHotelItemsBatch <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`batch_id` <- this_object$`batch_id`
-      self$`catalog_type` <- CatalogsType$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
+      if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("HOTEL"))) {
+        stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
+      }
+      self$`catalog_type` <- this_object$`catalog_type`
       self$`completed_time` <- this_object$`completed_time`
       self$`created_time` <- this_object$`created_time`
       self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[HotelProcessingRecord]", loadNamespace("openapi"))
@@ -201,7 +230,9 @@ CatalogsHotelItemsBatch <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `catalog_type`
       if (!is.null(input_json$`catalog_type`)) {
-        stopifnot(R6::is.R6(input_json$`catalog_type`))
+        if (!(is.character(input_json$`catalog_type`) && length(input_json$`catalog_type`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", input_json$`catalog_type`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelItemsBatch: the required field `catalog_type` is missing."))
       }
@@ -220,6 +251,10 @@ CatalogsHotelItemsBatch <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      if (!str_detect(self$`batch_id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         return(FALSE)
@@ -234,6 +269,10 @@ CatalogsHotelItemsBatch <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      if (!str_detect(self$`batch_id`, "^\\d+$")) {
+        invalid_fields["batch_id"] <- "Invalid value for `batch_id`, must conform to the pattern ^\\d+$."
+      }
+
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         invalid_fields["catalog_type"] <- "Non-nullable required field `catalog_type` cannot be null."

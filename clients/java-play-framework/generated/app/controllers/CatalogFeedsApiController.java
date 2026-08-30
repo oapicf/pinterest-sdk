@@ -1,14 +1,14 @@
 package controllers;
 
 import apimodels.CatalogsFeed;
+import apimodels.CatalogsFeedCreateRequestSchema;
 import apimodels.CatalogsFeedIngestion;
+import apimodels.CatalogsFeedUpdateRequestSchema;
 import apimodels.CatalogsItemValidationIssue;
-import apimodels.Error;
 import apimodels.FeedProcessingResultsList200Response;
-import apimodels.FeedsCreateRequest;
 import apimodels.FeedsList200Response;
-import apimodels.FeedsUpdateRequest;
 import apimodels.ItemsIssuesList200Response;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -32,7 +32,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogFeedsApiController extends Controller {
     private final CatalogFeedsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -47,6 +47,13 @@ public class CatalogFeedsApiController extends Controller {
 
     @ApiAction
     public Result feedProcessingResultsList(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId) throws Exception {
+        String valueadAccountId = request.getQueryString("ad_account_id");
+        String adAccountId;
+        if (valueadAccountId != null) {
+            adAccountId = valueadAccountId;
+        } else {
+            adAccountId = null;
+        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -61,27 +68,20 @@ public class CatalogFeedsApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        String valueadAccountId = request.getQueryString("ad_account_id");
-        String adAccountId;
-        if (valueadAccountId != null) {
-            adAccountId = valueadAccountId;
-        } else {
-            adAccountId = null;
-        }
-        return imp.feedProcessingResultsListHttp(request, feedId, bookmark, pageSize, adAccountId);
+        return imp.feedProcessingResultsListHttp(request, feedId, adAccountId, bookmark, pageSize);
     }
 
     @ApiAction
     public Result feedsCreate(Http.Request request) throws Exception {
-        JsonNode nodefeedsCreateRequest = request.body().asJson();
-        FeedsCreateRequest feedsCreateRequest;
-        if (nodefeedsCreateRequest != null) {
-            feedsCreateRequest = mapper.readValue(nodefeedsCreateRequest.toString(), FeedsCreateRequest.class);
+        JsonNode nodecatalogsFeedCreateRequestSchema = request.body().asJson();
+        CatalogsFeedCreateRequestSchema catalogsFeedCreateRequestSchema;
+        if (nodecatalogsFeedCreateRequestSchema != null) {
+            catalogsFeedCreateRequestSchema = mapper.readValue(nodecatalogsFeedCreateRequestSchema.toString(), CatalogsFeedCreateRequestSchema.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(feedsCreateRequest);
+                OpenAPIUtils.validate(catalogsFeedCreateRequestSchema);
             }
         } else {
-            throw new IllegalArgumentException("'FeedsCreateRequest' parameter is required");
+            throw new IllegalArgumentException("'CatalogsFeedCreateRequestSchema' parameter is required");
         }
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
@@ -90,7 +90,7 @@ public class CatalogFeedsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.feedsCreateHttp(request, feedsCreateRequest, adAccountId);
+        return imp.feedsCreateHttp(request, catalogsFeedCreateRequestSchema, adAccountId);
     }
 
     @ApiAction
@@ -131,20 +131,6 @@ public class CatalogFeedsApiController extends Controller {
 
     @ApiAction
     public Result feedsList(Http.Request request) throws Exception {
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
-        } else {
-            bookmark = null;
-        }
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
-        } else {
-            pageSize = 25;
-        }
         String valuecatalogId = request.getQueryString("catalog_id");
         String catalogId;
         if (valuecatalogId != null) {
@@ -159,33 +145,6 @@ public class CatalogFeedsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.feedsListHttp(request, bookmark, pageSize, catalogId, adAccountId);
-    }
-
-    @ApiAction
-    public Result feedsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId) throws Exception {
-        JsonNode nodefeedsUpdateRequest = request.body().asJson();
-        FeedsUpdateRequest feedsUpdateRequest;
-        if (nodefeedsUpdateRequest != null) {
-            feedsUpdateRequest = mapper.readValue(nodefeedsUpdateRequest.toString(), FeedsUpdateRequest.class);
-            if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(feedsUpdateRequest);
-            }
-        } else {
-            throw new IllegalArgumentException("'FeedsUpdateRequest' parameter is required");
-        }
-        String valueadAccountId = request.getQueryString("ad_account_id");
-        String adAccountId;
-        if (valueadAccountId != null) {
-            adAccountId = valueadAccountId;
-        } else {
-            adAccountId = null;
-        }
-        return imp.feedsUpdateHttp(request, feedId, feedsUpdateRequest, adAccountId);
-    }
-
-    @ApiAction
-    public Result itemsIssuesList(Http.Request request,  @Pattern(regexp="^\\d+$")String processingResultId) throws Exception {
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -200,6 +159,33 @@ public class CatalogFeedsApiController extends Controller {
         } else {
             pageSize = 25;
         }
+        return imp.feedsListHttp(request, catalogId, adAccountId, bookmark, pageSize);
+    }
+
+    @ApiAction
+    public Result feedsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String feedId) throws Exception {
+        JsonNode nodecatalogsFeedUpdateRequestSchema = request.body().asJson();
+        CatalogsFeedUpdateRequestSchema catalogsFeedUpdateRequestSchema;
+        if (nodecatalogsFeedUpdateRequestSchema != null) {
+            catalogsFeedUpdateRequestSchema = mapper.readValue(nodecatalogsFeedUpdateRequestSchema.toString(), CatalogsFeedUpdateRequestSchema.class);
+            if (configuration.getBoolean("useInputBeanValidation")) {
+                OpenAPIUtils.validate(catalogsFeedUpdateRequestSchema);
+            }
+        } else {
+            throw new IllegalArgumentException("'CatalogsFeedUpdateRequestSchema' parameter is required");
+        }
+        String valueadAccountId = request.getQueryString("ad_account_id");
+        String adAccountId;
+        if (valueadAccountId != null) {
+            adAccountId = valueadAccountId;
+        } else {
+            adAccountId = null;
+        }
+        return imp.feedsUpdateHttp(request, feedId, catalogsFeedUpdateRequestSchema, adAccountId);
+    }
+
+    @ApiAction
+    public Result itemsIssuesList(Http.Request request,  @Pattern(regexp="^\\d+$")String processingResultId) throws Exception {
         String[] itemNumbersArray = request.queryString().get("item_numbers");
         List<String> itemNumbersList = OpenAPIUtils.parametersToList("multi", itemNumbersArray);
         List<Integer> itemNumbers = new ArrayList<>();
@@ -223,7 +209,21 @@ public class CatalogFeedsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.itemsIssuesListHttp(request, processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId);
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        return imp.itemsIssuesListHttp(request, processingResultId, itemNumbers, itemValidationIssue, adAccountId, bookmark, pageSize);
     }
 
 }

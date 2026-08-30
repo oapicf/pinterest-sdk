@@ -2,6 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.AiDisclosures
 open OpenAPI.Model.PinMediaSource
 open OpenAPI.Model.string option
 
@@ -11,6 +12,7 @@ module PinCreate =
 
 
   type PinCreate = {
+    AiDisclosures : AiDisclosures;
     AltText : string option;
     BoardId : string;
     BoardSectionId : string option;

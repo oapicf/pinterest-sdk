@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **errorCounts** | [`List&lt;ErrorDetail&gt;`](ErrorDetail.md) | Error counts by error code |  [optional property]
 **id** | `String` | Customer List Upload ID. | 
 **operation** | `UserListOperationType` |  | 
-**recordCounts** | [`RecordCounts`](RecordCounts.md) |  |  [optional property]
-**state** | [**StateEnum**](#StateEnum) | Workload processing state | 
+**recordCounts** | [`RecordCounts`](RecordCounts.md) | Record processing counts |  [optional property]
+**state** | `WorkloadState` |  | 
 **updatedTime** | `Integer` | Customer List Upload updated_time. Epoch (seconds). | 
 
 
@@ -25,15 +25,6 @@ Name | Type | Description | Notes
 
 
 
-## StateEnum
-
-Name | Value
----- | -----
-NOT_STARTED | `"NOT_STARTED"`
-RUNNING | `"RUNNING"`
-PAUSED | `"PAUSED"`
-SUCCEEDED | `"SUCCEEDED"`
-FAILED | `"FAILED"`
 
 
 

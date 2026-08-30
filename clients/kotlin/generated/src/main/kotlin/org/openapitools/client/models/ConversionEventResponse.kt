@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -27,6 +35,7 @@ import com.squareup.moshi.JsonClass
  * @param conversionEvent 
  * @param conversionTagId Id of the tag.
  * @param createdTime Creation date in epoch format.
+ * @param reportingConversionEvent For advertiser-defined events, the reporting event label shown in optimization UIs.
  */
 
 
@@ -45,7 +54,11 @@ data class ConversionEventResponse (
 
     /* Creation date in epoch format. */
     @Json(name = "created_time")
-    val createdTime: kotlin.Int? = null
+    val createdTime: kotlin.Int? = null,
+
+    /* For advertiser-defined events, the reporting event label shown in optimization UIs. */
+    @Json(name = "reporting_conversion_event")
+    val reportingConversionEvent: kotlin.String? = null
 
 ) {
 

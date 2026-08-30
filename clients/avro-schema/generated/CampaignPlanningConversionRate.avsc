@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Conversion rate estimate for a specific conversion event and attribution window combination.",
+  "name": "CampaignPlanningConversionRate",
+  "fields": [
+    {
+      "name": "attribution_windows",
+      "type": "model.CampaignPlanningConversionAttribution",
+      "doc": ""
+    },
+    {
+      "name": "conversion_event",
+      "type": "model.CampaignPlanningConversionEvent",
+      "doc": ""
+    },
+    {
+      "name": "conversion_rate",
+      "type": "float",
+      "doc": "Conversion rate estimate. Used to translate impressions into conversions for oCPM ads."
+    }
+  ]
+
+}

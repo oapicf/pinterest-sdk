@@ -10,30 +10,30 @@
 
 part of openapi.api;
 
-/// Where a user is taken after clicking on an ad in grid. </p><strong>Note:</strong>  This parameter is read-only and is set to DIRECT_TO_DESTINATION by default for direct links supported ads.  grid_click_type values provided will be ignored.
-class GridClickType {
-  /// Instantiate a new enum with the provided [value].
-  const GridClickType._(this.value);
+/// Where a user is taken after clicking on an ad in grid.  **Note:**  This parameter is read-only and is set to `DIRECT_TO_DESTINATION` by default for direct links supported ads. `grid_click_type` values provided will be ignored.
+enum GridClickType {
+  CLOSEUP._(r'CLOSEUP'),
+  DIRECT_TO_DESTINATION._(r'DIRECT_TO_DESTINATION'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const GridClickType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CLOSEUP = GridClickType._(r'CLOSEUP');
-  static const DIRECT_TO_DESTINATION = GridClickType._(r'DIRECT_TO_DESTINATION');
-
-  /// List of all possible values in this [enum][GridClickType].
-  static const values = <GridClickType>[
-    CLOSEUP,
-    DIRECT_TO_DESTINATION,
-  ];
-
+  /// Returns the instance of [GridClickType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static GridClickType? fromJson(dynamic value) => GridClickTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [GridClickType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<GridClickType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <GridClickType>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class GridClickTypeTypeTransformer {
 
   const GridClickTypeTypeTransformer._();
 
-  String encode(GridClickType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(GridClickType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a GridClickType.
+  /// Returns the instance of [GridClickType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class GridClickTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   GridClickType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is GridClickType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CLOSEUP': return GridClickType.CLOSEUP;
@@ -79,7 +84,7 @@ class GridClickTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [GridClickTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static GridClickTypeTypeTransformer? _instance;
 }
 

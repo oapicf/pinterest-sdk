@@ -1,7 +1,7 @@
 /*
  * bid_floor.h
  *
- * 
+ * Bid floor request and response model.
  */
 
 #ifndef _bid_floor_H_

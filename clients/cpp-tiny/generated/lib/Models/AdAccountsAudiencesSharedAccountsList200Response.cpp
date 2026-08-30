@@ -102,7 +102,7 @@ Ad_accounts_audiences_shared_accounts_list_200_response::getBookmark()
 }
 
 void
-Ad_accounts_audiences_shared_accounts_list_200_response::setBookmark(std::string  bookmark)
+Ad_accounts_audiences_shared_accounts_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Ad_accounts_audiences_shared_accounts_list_200_response::getItems()
 }
 
 void
-Ad_accounts_audiences_shared_accounts_list_200_response::setItems(std::list <SharedAudienceAccount> items)
+Ad_accounts_audiences_shared_accounts_list_200_response::setItems(std::list<SharedAudienceAccount> items)
 {
 	this->items = items;
 }

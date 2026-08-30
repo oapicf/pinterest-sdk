@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;Pin&gt;**](Pin.md) | Pins | [default to undefined]
+**items** | [**Array&lt;PinRead&gt;**](PinRead.md) |  | [default to undefined]
 
 ## Example
 

@@ -6,9 +6,10 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.catalogs_ai_content_disclosure import CatalogsAiContentDisclosure  # noqa: F401,E501
 from app.openapi_server.models.catalogs_hotel_address import CatalogsHotelAddress  # noqa: F401,E501
-from app.openapi_server.models.catalogs_hotel_attributes_all_of_main_image import CatalogsHotelAttributesAllOfMainImage  # noqa: F401,E501
 from app.openapi_server.models.catalogs_hotel_guest_ratings import CatalogsHotelGuestRatings  # noqa: F401,E501
+from app.openapi_server.models.catalogs_hotel_main_image import CatalogsHotelMainImage  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -18,7 +19,7 @@ class CatalogsHotelAttributes(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, address: CatalogsHotelAddress=None, base_price: str=None, brand: str=None, category: str=None, custom_label_0: str=None, custom_label_1: str=None, custom_label_2: str=None, custom_label_3: str=None, custom_label_4: str=None, description: str=None, guest_ratings: CatalogsHotelGuestRatings=None, latitude: float=None, link: str=None, longitude: float=None, name: str=None, neighborhood: List[str]=None, sale_price: str=None, additional_image_link: List[str]=None, main_image: CatalogsHotelAttributesAllOfMainImage=None):  # noqa: E501
+    def __init__(self, address: CatalogsHotelAddress=None, base_price: str=None, brand: str=None, category: str=None, custom_label_0: str=None, custom_label_1: str=None, custom_label_2: str=None, custom_label_3: str=None, custom_label_4: str=None, description: str=None, guest_ratings: CatalogsHotelGuestRatings=None, latitude: float=None, link: str=None, longitude: float=None, name: str=None, neighborhood: List[str]=None, sale_price: str=None, additional_image_link: List[str]=None, ai_disclosures: List[CatalogsAiContentDisclosure]=None, main_image: CatalogsHotelMainImage=None):  # noqa: E501
         """CatalogsHotelAttributes - a model defined in Swagger
 
         :param address: The address of this CatalogsHotelAttributes.  # noqa: E501
@@ -57,8 +58,10 @@ class CatalogsHotelAttributes(Model):
         :type sale_price: str
         :param additional_image_link: The additional_image_link of this CatalogsHotelAttributes.  # noqa: E501
         :type additional_image_link: List[str]
+        :param ai_disclosures: The ai_disclosures of this CatalogsHotelAttributes.  # noqa: E501
+        :type ai_disclosures: List[CatalogsAiContentDisclosure]
         :param main_image: The main_image of this CatalogsHotelAttributes.  # noqa: E501
-        :type main_image: CatalogsHotelAttributesAllOfMainImage
+        :type main_image: CatalogsHotelMainImage
         """
         self.swagger_types = {
             'address': CatalogsHotelAddress,
@@ -79,7 +82,8 @@ class CatalogsHotelAttributes(Model):
             'neighborhood': List[str],
             'sale_price': str,
             'additional_image_link': List[str],
-            'main_image': CatalogsHotelAttributesAllOfMainImage
+            'ai_disclosures': List[CatalogsAiContentDisclosure],
+            'main_image': CatalogsHotelMainImage
         }
 
         self.attribute_map = {
@@ -101,6 +105,7 @@ class CatalogsHotelAttributes(Model):
             'neighborhood': 'neighborhood',
             'sale_price': 'sale_price',
             'additional_image_link': 'additional_image_link',
+            'ai_disclosures': 'ai_disclosures',
             'main_image': 'main_image'
         }
 
@@ -122,6 +127,7 @@ class CatalogsHotelAttributes(Model):
         self._neighborhood = neighborhood
         self._sale_price = sale_price
         self._additional_image_link = additional_image_link
+        self._ai_disclosures = ai_disclosures
         self._main_image = main_image
 
     @classmethod
@@ -139,6 +145,7 @@ class CatalogsHotelAttributes(Model):
     def address(self) -> CatalogsHotelAddress:
         """Gets the address of this CatalogsHotelAttributes.
 
+        Hotel address  # noqa: E501
 
         :return: The address of this CatalogsHotelAttributes.
         :rtype: CatalogsHotelAddress
@@ -149,6 +156,7 @@ class CatalogsHotelAttributes(Model):
     def address(self, address: CatalogsHotelAddress):
         """Sets the address of this CatalogsHotelAttributes.
 
+        Hotel address  # noqa: E501
 
         :param address: The address of this CatalogsHotelAttributes.
         :type address: CatalogsHotelAddress
@@ -367,6 +375,7 @@ class CatalogsHotelAttributes(Model):
     def guest_ratings(self) -> CatalogsHotelGuestRatings:
         """Gets the guest_ratings of this CatalogsHotelAttributes.
 
+        If specified, you must provide all properties  # noqa: E501
 
         :return: The guest_ratings of this CatalogsHotelAttributes.
         :rtype: CatalogsHotelGuestRatings
@@ -377,6 +386,7 @@ class CatalogsHotelAttributes(Model):
     def guest_ratings(self, guest_ratings: CatalogsHotelGuestRatings):
         """Sets the guest_ratings of this CatalogsHotelAttributes.
 
+        If specified, you must provide all properties  # noqa: E501
 
         :param guest_ratings: The guest_ratings of this CatalogsHotelAttributes.
         :type guest_ratings: CatalogsHotelGuestRatings
@@ -526,7 +536,7 @@ class CatalogsHotelAttributes(Model):
     def additional_image_link(self) -> List[str]:
         """Gets the additional_image_link of this CatalogsHotelAttributes.
 
-        <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>  # noqa: E501
+        <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.  # noqa: E501
 
         :return: The additional_image_link of this CatalogsHotelAttributes.
         :rtype: List[str]
@@ -537,7 +547,7 @@ class CatalogsHotelAttributes(Model):
     def additional_image_link(self, additional_image_link: List[str]):
         """Sets the additional_image_link of this CatalogsHotelAttributes.
 
-        <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>  # noqa: E501
+        <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.  # noqa: E501
 
         :param additional_image_link: The additional_image_link of this CatalogsHotelAttributes.
         :type additional_image_link: List[str]
@@ -546,22 +556,47 @@ class CatalogsHotelAttributes(Model):
         self._additional_image_link = additional_image_link
 
     @property
-    def main_image(self) -> CatalogsHotelAttributesAllOfMainImage:
+    def ai_disclosures(self) -> List[CatalogsAiContentDisclosure]:
+        """Gets the ai_disclosures of this CatalogsHotelAttributes.
+
+        AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.  # noqa: E501
+
+        :return: The ai_disclosures of this CatalogsHotelAttributes.
+        :rtype: List[CatalogsAiContentDisclosure]
+        """
+        return self._ai_disclosures
+
+    @ai_disclosures.setter
+    def ai_disclosures(self, ai_disclosures: List[CatalogsAiContentDisclosure]):
+        """Sets the ai_disclosures of this CatalogsHotelAttributes.
+
+        AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.  # noqa: E501
+
+        :param ai_disclosures: The ai_disclosures of this CatalogsHotelAttributes.
+        :type ai_disclosures: List[CatalogsAiContentDisclosure]
+        """
+
+        self._ai_disclosures = ai_disclosures
+
+    @property
+    def main_image(self) -> CatalogsHotelMainImage:
         """Gets the main_image of this CatalogsHotelAttributes.
 
+        The main hotel image  # noqa: E501
 
         :return: The main_image of this CatalogsHotelAttributes.
-        :rtype: CatalogsHotelAttributesAllOfMainImage
+        :rtype: CatalogsHotelMainImage
         """
         return self._main_image
 
     @main_image.setter
-    def main_image(self, main_image: CatalogsHotelAttributesAllOfMainImage):
+    def main_image(self, main_image: CatalogsHotelMainImage):
         """Sets the main_image of this CatalogsHotelAttributes.
 
+        The main hotel image  # noqa: E501
 
         :param main_image: The main_image of this CatalogsHotelAttributes.
-        :type main_image: CatalogsHotelAttributesAllOfMainImage
+        :type main_image: CatalogsHotelMainImage
         """
 
         self._main_image = main_image

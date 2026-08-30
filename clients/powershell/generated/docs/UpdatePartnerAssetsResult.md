@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssetId** | **String** | Unique identifier of a business asset. | [optional] 
-**AssetType** | **String** | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional] 
+**AssetType** | [**AssetTypeResponse**](AssetTypeResponse.md) |  | [optional] 
 **PartnerId** | **String** | Unique identifier of a business partner. | [optional] 
 **Permissions** | **String[]** | Permission levels member or partner has on an asset. | [optional] 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $UpdatePartnerAssetsResult = Initialize-PSOpenAPIToolsUpdatePartnerAssetsResult  -AssetId 549755885175 `
- -AssetType AD_ACCOUNT `
+ -AssetType null `
  -PartnerId 140943737684417 `
  -Permissions [&quot;FINANCE_MANAGER&quot;,&quot;CATALOGS_MANAGER&quot;,&quot;AUDIENCE_MANAGER&quot;]
 ```

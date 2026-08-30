@@ -1,33 +1,9 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "",
+  "doc": "A user's username or email OR a partner id that caused the error.",
   "name": "InviteResponse",
   "fields": [
-    {
-      "name": "id",
-      "type": ["null", "string"],
-      "doc": "Unique identifier of the invite/request.",
-      "default": null
-    },
-    {
-      "name": "invite_data",
-      "type": ["null", "model.BaseInviteDataResponseInviteData"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "is_received_invite",
-      "type": ["null", "boolean"],
-      "doc": "Indicates whether the invite/request was received.",
-      "default": null
-    },
-    {
-      "name": "user",
-      "type": ["null", "model.BusinessAccessUserSummary"],
-      "doc": "Metadata for the member/partner that was sent the invite/request.",
-      "default": null
-    },
     {
       "name": "assets_summary",
       "type": ["null", "model.InviteAssetsSummary"],
@@ -45,13 +21,13 @@
     },
     {
       "name": "created_by_business",
-      "type": ["null", "model.object"],
+      "type": ["null", "model.BusinessAccessUserSummary"],
       "doc": "Metadata for the business that created the invite/request.",
       "default": null
     },
     {
       "name": "created_by_user",
-      "type": ["null", "model.object"],
+      "type": ["null", "model.BusinessAccessUserSummary"],
       "doc": "Metadata for the user that created the invite/request.",
       "default": null
     },
@@ -59,6 +35,30 @@
       "name": "created_time",
       "type": ["null", "int"],
       "doc": "The time the invite/request was created. Returned in milliseconds.",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of the invite/request.",
+      "default": null
+    },
+    {
+      "name": "invite_data",
+      "type": ["null", "model.InviteDataResponse"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "is_received_invite",
+      "type": ["null", "boolean"],
+      "doc": "Indicates whether the invite/request was received.",
+      "default": null
+    },
+    {
+      "name": "user",
+      "type": ["null", "model.BusinessAccessUserSummary"],
+      "doc": "Metadata for the member/partner that was sent the invite/request.",
       "default": null
     }
   ]

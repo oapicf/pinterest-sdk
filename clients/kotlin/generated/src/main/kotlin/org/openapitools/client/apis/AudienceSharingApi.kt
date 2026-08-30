@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,14 +27,19 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
+import org.openapitools.client.models.AdAccountToAdAccountSharedAudience
+import org.openapitools.client.models.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+import org.openapitools.client.models.AdAccountToBusinessSharedAudience
+import org.openapitools.client.models.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
 import org.openapitools.client.models.AdAccountsAudiencesSharedAccountsList200Response
 import org.openapitools.client.models.AudienceAccountType
-import org.openapitools.client.models.AudiencesList200Response
-import org.openapitools.client.models.BusinessSharedAudience
-import org.openapitools.client.models.BusinessSharedAudienceResponse
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.SharedAudience
-import org.openapitools.client.models.SharedAudienceResponse
+import org.openapitools.client.models.BusinessToAdAccountSharedAudience
+import org.openapitools.client.models.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+import org.openapitools.client.models.BusinessToBusinessSharedAudience
+import org.openapitools.client.models.BusinessToBusinessSharedAudienceUpdateWithRequiredBody
+import org.openapitools.client.models.Order
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.SharedAudiencesForBusinessList200Response
 
 import com.squareup.moshi.Json
 
@@ -48,7 +61,7 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
@@ -58,9 +71,9 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      * List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceId Unique identifier of the audience to use to filter the results.
-     * @param accountType Filter accounts by account type. (default to AudienceAccountType.AD_ACCOUNT)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param accountType Filter accounts by account type.
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return AdAccountsAudiencesSharedAccountsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -70,8 +83,8 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adAccountsAudiencesSharedAccountsList(adAccountId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType = AudienceAccountType.AD_ACCOUNT, pageSize: kotlin.Int? = 25, bookmark: kotlin.String? = null) : AdAccountsAudiencesSharedAccountsList200Response {
-        val localVarResponse = adAccountsAudiencesSharedAccountsListWithHttpInfo(adAccountId = adAccountId, audienceId = audienceId, accountType = accountType, pageSize = pageSize, bookmark = bookmark)
+    fun adAccountsAudiencesSharedAccountsList(adAccountId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : AdAccountsAudiencesSharedAccountsList200Response {
+        val localVarResponse = adAccountsAudiencesSharedAccountsListWithHttpInfo(adAccountId = adAccountId, audienceId = audienceId, accountType = accountType, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as AdAccountsAudiencesSharedAccountsList200Response
@@ -94,17 +107,17 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      * List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceId Unique identifier of the audience to use to filter the results.
-     * @param accountType Filter accounts by account type. (default to AudienceAccountType.AD_ACCOUNT)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param accountType Filter accounts by account type.
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<AdAccountsAudiencesSharedAccountsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun adAccountsAudiencesSharedAccountsListWithHttpInfo(adAccountId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType, pageSize: kotlin.Int?, bookmark: kotlin.String?) : ApiResponse<AdAccountsAudiencesSharedAccountsList200Response?> {
-        val localVariableConfig = adAccountsAudiencesSharedAccountsListRequestConfig(adAccountId = adAccountId, audienceId = audienceId, accountType = accountType, pageSize = pageSize, bookmark = bookmark)
+    fun adAccountsAudiencesSharedAccountsListWithHttpInfo(adAccountId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<AdAccountsAudiencesSharedAccountsList200Response?> {
+        val localVariableConfig = adAccountsAudiencesSharedAccountsListRequestConfig(adAccountId = adAccountId, audienceId = audienceId, accountType = accountType, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, AdAccountsAudiencesSharedAccountsList200Response>(
             localVariableConfig
@@ -116,22 +129,22 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      *
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceId Unique identifier of the audience to use to filter the results.
-     * @param accountType Filter accounts by account type. (default to AudienceAccountType.AD_ACCOUNT)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param accountType Filter accounts by account type.
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun adAccountsAudiencesSharedAccountsListRequestConfig(adAccountId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType, pageSize: kotlin.Int?, bookmark: kotlin.String?) : RequestConfig<Unit> {
+    fun adAccountsAudiencesSharedAccountsListRequestConfig(adAccountId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 put("audience_id", listOf(audienceId.toString()))
                 put("account_type", listOf(accountType.toString()))
-                if (pageSize != null) {
-                    put("page_size", listOf(pageSize.toString()))
-                }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
+                }
+                if (pageSize != null) {
+                    put("page_size", listOf(pageSize.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -153,9 +166,9 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      * List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
      * @param businessId Unique identifier of the requesting business.
      * @param audienceId Unique identifier of the audience to use to filter the results.
-     * @param accountType Filter accounts by account type. (default to AudienceAccountType.AD_ACCOUNT)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param accountType Filter accounts by account type.
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return AdAccountsAudiencesSharedAccountsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -165,8 +178,8 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun businessAccountAudiencesSharedAccountsList(businessId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType = AudienceAccountType.AD_ACCOUNT, pageSize: kotlin.Int? = 25, bookmark: kotlin.String? = null) : AdAccountsAudiencesSharedAccountsList200Response {
-        val localVarResponse = businessAccountAudiencesSharedAccountsListWithHttpInfo(businessId = businessId, audienceId = audienceId, accountType = accountType, pageSize = pageSize, bookmark = bookmark)
+    fun businessAccountAudiencesSharedAccountsList(businessId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : AdAccountsAudiencesSharedAccountsList200Response {
+        val localVarResponse = businessAccountAudiencesSharedAccountsListWithHttpInfo(businessId = businessId, audienceId = audienceId, accountType = accountType, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as AdAccountsAudiencesSharedAccountsList200Response
@@ -189,17 +202,17 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      * List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
      * @param businessId Unique identifier of the requesting business.
      * @param audienceId Unique identifier of the audience to use to filter the results.
-     * @param accountType Filter accounts by account type. (default to AudienceAccountType.AD_ACCOUNT)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param accountType Filter accounts by account type.
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<AdAccountsAudiencesSharedAccountsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun businessAccountAudiencesSharedAccountsListWithHttpInfo(businessId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType, pageSize: kotlin.Int?, bookmark: kotlin.String?) : ApiResponse<AdAccountsAudiencesSharedAccountsList200Response?> {
-        val localVariableConfig = businessAccountAudiencesSharedAccountsListRequestConfig(businessId = businessId, audienceId = audienceId, accountType = accountType, pageSize = pageSize, bookmark = bookmark)
+    fun businessAccountAudiencesSharedAccountsListWithHttpInfo(businessId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<AdAccountsAudiencesSharedAccountsList200Response?> {
+        val localVariableConfig = businessAccountAudiencesSharedAccountsListRequestConfig(businessId = businessId, audienceId = audienceId, accountType = accountType, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, AdAccountsAudiencesSharedAccountsList200Response>(
             localVariableConfig
@@ -211,22 +224,22 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      *
      * @param businessId Unique identifier of the requesting business.
      * @param audienceId Unique identifier of the audience to use to filter the results.
-     * @param accountType Filter accounts by account type. (default to AudienceAccountType.AD_ACCOUNT)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param accountType Filter accounts by account type.
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun businessAccountAudiencesSharedAccountsListRequestConfig(businessId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType, pageSize: kotlin.Int?, bookmark: kotlin.String?) : RequestConfig<Unit> {
+    fun businessAccountAudiencesSharedAccountsListRequestConfig(businessId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 put("audience_id", listOf(audienceId.toString()))
                 put("account_type", listOf(accountType.toString()))
-                if (pageSize != null) {
-                    put("page_size", listOf(pageSize.toString()))
-                }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
+                }
+                if (pageSize != null) {
+                    put("page_size", listOf(pageSize.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -243,31 +256,14 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
     }
 
     /**
-     * enum for parameter order
-     */
-     enum class OrderSharedAudiencesForBusinessList(val value: kotlin.String) {
-         @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /businesses/{business_id}/audiences
      * List received audiences for a business
      * Get a list of received audiences for the given business.
      * @param businessId Unique identifier of the requesting business.
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @return AudiencesList200Response
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return SharedAudiencesForBusinessList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -276,11 +272,11 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun sharedAudiencesForBusinessList(businessId: kotlin.String, bookmark: kotlin.String? = null, order: OrderSharedAudiencesForBusinessList? = null, pageSize: kotlin.Int? = 25) : AudiencesList200Response {
-        val localVarResponse = sharedAudiencesForBusinessListWithHttpInfo(businessId = businessId, bookmark = bookmark, order = order, pageSize = pageSize)
+    fun sharedAudiencesForBusinessList(businessId: kotlin.String, order: Order? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : SharedAudiencesForBusinessList200Response {
+        val localVarResponse = sharedAudiencesForBusinessListWithHttpInfo(businessId = businessId, order = order, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as AudiencesList200Response
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SharedAudiencesForBusinessList200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -299,19 +295,19 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      * List received audiences for a business
      * Get a list of received audiences for the given business.
      * @param businessId Unique identifier of the requesting business.
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @return ApiResponse<AudiencesList200Response?>
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return ApiResponse<SharedAudiencesForBusinessList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun sharedAudiencesForBusinessListWithHttpInfo(businessId: kotlin.String, bookmark: kotlin.String?, order: OrderSharedAudiencesForBusinessList?, pageSize: kotlin.Int?) : ApiResponse<AudiencesList200Response?> {
-        val localVariableConfig = sharedAudiencesForBusinessListRequestConfig(businessId = businessId, bookmark = bookmark, order = order, pageSize = pageSize)
+    fun sharedAudiencesForBusinessListWithHttpInfo(businessId: kotlin.String, order: Order?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<SharedAudiencesForBusinessList200Response?> {
+        val localVariableConfig = sharedAudiencesForBusinessListRequestConfig(businessId = businessId, order = order, bookmark = bookmark, pageSize = pageSize)
 
-        return request<Unit, AudiencesList200Response>(
+        return request<Unit, SharedAudiencesForBusinessList200Response>(
             localVariableConfig
         )
     }
@@ -320,20 +316,20 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      * To obtain the request config of the operation sharedAudiencesForBusinessList
      *
      * @param businessId Unique identifier of the requesting business.
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun sharedAudiencesForBusinessListRequestConfig(businessId: kotlin.String, bookmark: kotlin.String?, order: OrderSharedAudiencesForBusinessList?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
+    fun sharedAudiencesForBusinessListRequestConfig(businessId: kotlin.String, order: Order?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (order != null) {
+                    put("order", listOf(order.toString()))
+                }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
-                }
-                if (order != null) {
-                    put("order", listOf(order.value))
                 }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
@@ -355,10 +351,10 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
     /**
      * PATCH /ad_accounts/{ad_account_id}/audiences/ad_accounts/shared
      * Update audience sharing between ad accounts
-     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      * @param adAccountId Unique identifier of an ad account.
-     * @param sharedAudience 
-     * @return SharedAudienceResponse
+     * @param adAccountToAdAccountSharedAudienceUpdateWithRequiredBody 
+     * @return AdAccountToAdAccountSharedAudience
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -367,11 +363,11 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateAdAccountToAdAccountSharedAudience(adAccountId: kotlin.String, sharedAudience: SharedAudience) : SharedAudienceResponse {
-        val localVarResponse = updateAdAccountToAdAccountSharedAudienceWithHttpInfo(adAccountId = adAccountId, sharedAudience = sharedAudience)
+    fun updateAdAccountToAdAccountSharedAudience(adAccountId: kotlin.String, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody) : AdAccountToAdAccountSharedAudience {
+        val localVarResponse = updateAdAccountToAdAccountSharedAudienceWithHttpInfo(adAccountId = adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as SharedAudienceResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AdAccountToAdAccountSharedAudience
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -388,19 +384,19 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
     /**
      * PATCH /ad_accounts/{ad_account_id}/audiences/ad_accounts/shared
      * Update audience sharing between ad accounts
-     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      * @param adAccountId Unique identifier of an ad account.
-     * @param sharedAudience 
-     * @return ApiResponse<SharedAudienceResponse?>
+     * @param adAccountToAdAccountSharedAudienceUpdateWithRequiredBody 
+     * @return ApiResponse<AdAccountToAdAccountSharedAudience?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateAdAccountToAdAccountSharedAudienceWithHttpInfo(adAccountId: kotlin.String, sharedAudience: SharedAudience) : ApiResponse<SharedAudienceResponse?> {
-        val localVariableConfig = updateAdAccountToAdAccountSharedAudienceRequestConfig(adAccountId = adAccountId, sharedAudience = sharedAudience)
+    fun updateAdAccountToAdAccountSharedAudienceWithHttpInfo(adAccountId: kotlin.String, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody) : ApiResponse<AdAccountToAdAccountSharedAudience?> {
+        val localVariableConfig = updateAdAccountToAdAccountSharedAudienceRequestConfig(adAccountId = adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
 
-        return request<SharedAudience, SharedAudienceResponse>(
+        return request<AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody, AdAccountToAdAccountSharedAudience>(
             localVariableConfig
         )
     }
@@ -409,11 +405,11 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      * To obtain the request config of the operation updateAdAccountToAdAccountSharedAudience
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param sharedAudience 
+     * @param adAccountToAdAccountSharedAudienceUpdateWithRequiredBody 
      * @return RequestConfig
      */
-    fun updateAdAccountToAdAccountSharedAudienceRequestConfig(adAccountId: kotlin.String, sharedAudience: SharedAudience) : RequestConfig<SharedAudience> {
-        val localVariableBody = sharedAudience
+    fun updateAdAccountToAdAccountSharedAudienceRequestConfig(adAccountId: kotlin.String, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody) : RequestConfig<AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody> {
+        val localVariableBody = adAccountToAdAccountSharedAudienceUpdateWithRequiredBody
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -432,10 +428,10 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
     /**
      * PATCH /ad_accounts/{ad_account_id}/audiences/businesses/shared
      * Update audience sharing from an ad account to businesses
-     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      * @param adAccountId Unique identifier of an ad account.
-     * @param businessSharedAudience 
-     * @return BusinessSharedAudienceResponse
+     * @param adAccountToBusinessSharedAudienceUpdateWithRequiredBody 
+     * @return AdAccountToBusinessSharedAudience
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -444,11 +440,11 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateAdAccountToBusinessSharedAudience(adAccountId: kotlin.String, businessSharedAudience: BusinessSharedAudience) : BusinessSharedAudienceResponse {
-        val localVarResponse = updateAdAccountToBusinessSharedAudienceWithHttpInfo(adAccountId = adAccountId, businessSharedAudience = businessSharedAudience)
+    fun updateAdAccountToBusinessSharedAudience(adAccountId: kotlin.String, adAccountToBusinessSharedAudienceUpdateWithRequiredBody: AdAccountToBusinessSharedAudienceUpdateWithRequiredBody) : AdAccountToBusinessSharedAudience {
+        val localVarResponse = updateAdAccountToBusinessSharedAudienceWithHttpInfo(adAccountId = adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody = adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as BusinessSharedAudienceResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AdAccountToBusinessSharedAudience
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -465,19 +461,19 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
     /**
      * PATCH /ad_accounts/{ad_account_id}/audiences/businesses/shared
      * Update audience sharing from an ad account to businesses
-     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      * @param adAccountId Unique identifier of an ad account.
-     * @param businessSharedAudience 
-     * @return ApiResponse<BusinessSharedAudienceResponse?>
+     * @param adAccountToBusinessSharedAudienceUpdateWithRequiredBody 
+     * @return ApiResponse<AdAccountToBusinessSharedAudience?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateAdAccountToBusinessSharedAudienceWithHttpInfo(adAccountId: kotlin.String, businessSharedAudience: BusinessSharedAudience) : ApiResponse<BusinessSharedAudienceResponse?> {
-        val localVariableConfig = updateAdAccountToBusinessSharedAudienceRequestConfig(adAccountId = adAccountId, businessSharedAudience = businessSharedAudience)
+    fun updateAdAccountToBusinessSharedAudienceWithHttpInfo(adAccountId: kotlin.String, adAccountToBusinessSharedAudienceUpdateWithRequiredBody: AdAccountToBusinessSharedAudienceUpdateWithRequiredBody) : ApiResponse<AdAccountToBusinessSharedAudience?> {
+        val localVariableConfig = updateAdAccountToBusinessSharedAudienceRequestConfig(adAccountId = adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody = adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
 
-        return request<BusinessSharedAudience, BusinessSharedAudienceResponse>(
+        return request<AdAccountToBusinessSharedAudienceUpdateWithRequiredBody, AdAccountToBusinessSharedAudience>(
             localVariableConfig
         )
     }
@@ -486,11 +482,11 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      * To obtain the request config of the operation updateAdAccountToBusinessSharedAudience
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param businessSharedAudience 
+     * @param adAccountToBusinessSharedAudienceUpdateWithRequiredBody 
      * @return RequestConfig
      */
-    fun updateAdAccountToBusinessSharedAudienceRequestConfig(adAccountId: kotlin.String, businessSharedAudience: BusinessSharedAudience) : RequestConfig<BusinessSharedAudience> {
-        val localVariableBody = businessSharedAudience
+    fun updateAdAccountToBusinessSharedAudienceRequestConfig(adAccountId: kotlin.String, adAccountToBusinessSharedAudienceUpdateWithRequiredBody: AdAccountToBusinessSharedAudienceUpdateWithRequiredBody) : RequestConfig<AdAccountToBusinessSharedAudienceUpdateWithRequiredBody> {
+        val localVariableBody = adAccountToBusinessSharedAudienceUpdateWithRequiredBody
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -509,10 +505,10 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
     /**
      * PATCH /businesses/{business_id}/audiences/ad_accounts/shared
      * Update audience sharing from a business to ad accounts
-     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      * @param businessId Unique identifier of the requesting business.
-     * @param sharedAudience 
-     * @return SharedAudienceResponse
+     * @param businessToAdAccountSharedAudienceUpdateWithRequiredBody 
+     * @return BusinessToAdAccountSharedAudience
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -521,11 +517,11 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateBusinessToAdAccountSharedAudience(businessId: kotlin.String, sharedAudience: SharedAudience) : SharedAudienceResponse {
-        val localVarResponse = updateBusinessToAdAccountSharedAudienceWithHttpInfo(businessId = businessId, sharedAudience = sharedAudience)
+    fun updateBusinessToAdAccountSharedAudience(businessId: kotlin.String, businessToAdAccountSharedAudienceUpdateWithRequiredBody: BusinessToAdAccountSharedAudienceUpdateWithRequiredBody) : BusinessToAdAccountSharedAudience {
+        val localVarResponse = updateBusinessToAdAccountSharedAudienceWithHttpInfo(businessId = businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody = businessToAdAccountSharedAudienceUpdateWithRequiredBody)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as SharedAudienceResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as BusinessToAdAccountSharedAudience
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -542,19 +538,19 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
     /**
      * PATCH /businesses/{business_id}/audiences/ad_accounts/shared
      * Update audience sharing from a business to ad accounts
-     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      * @param businessId Unique identifier of the requesting business.
-     * @param sharedAudience 
-     * @return ApiResponse<SharedAudienceResponse?>
+     * @param businessToAdAccountSharedAudienceUpdateWithRequiredBody 
+     * @return ApiResponse<BusinessToAdAccountSharedAudience?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateBusinessToAdAccountSharedAudienceWithHttpInfo(businessId: kotlin.String, sharedAudience: SharedAudience) : ApiResponse<SharedAudienceResponse?> {
-        val localVariableConfig = updateBusinessToAdAccountSharedAudienceRequestConfig(businessId = businessId, sharedAudience = sharedAudience)
+    fun updateBusinessToAdAccountSharedAudienceWithHttpInfo(businessId: kotlin.String, businessToAdAccountSharedAudienceUpdateWithRequiredBody: BusinessToAdAccountSharedAudienceUpdateWithRequiredBody) : ApiResponse<BusinessToAdAccountSharedAudience?> {
+        val localVariableConfig = updateBusinessToAdAccountSharedAudienceRequestConfig(businessId = businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody = businessToAdAccountSharedAudienceUpdateWithRequiredBody)
 
-        return request<SharedAudience, SharedAudienceResponse>(
+        return request<BusinessToAdAccountSharedAudienceUpdateWithRequiredBody, BusinessToAdAccountSharedAudience>(
             localVariableConfig
         )
     }
@@ -563,11 +559,11 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      * To obtain the request config of the operation updateBusinessToAdAccountSharedAudience
      *
      * @param businessId Unique identifier of the requesting business.
-     * @param sharedAudience 
+     * @param businessToAdAccountSharedAudienceUpdateWithRequiredBody 
      * @return RequestConfig
      */
-    fun updateBusinessToAdAccountSharedAudienceRequestConfig(businessId: kotlin.String, sharedAudience: SharedAudience) : RequestConfig<SharedAudience> {
-        val localVariableBody = sharedAudience
+    fun updateBusinessToAdAccountSharedAudienceRequestConfig(businessId: kotlin.String, businessToAdAccountSharedAudienceUpdateWithRequiredBody: BusinessToAdAccountSharedAudienceUpdateWithRequiredBody) : RequestConfig<BusinessToAdAccountSharedAudienceUpdateWithRequiredBody> {
+        val localVariableBody = businessToAdAccountSharedAudienceUpdateWithRequiredBody
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -586,10 +582,10 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
     /**
      * PATCH /businesses/{business_id}/audiences/businesses/shared
      * Update audience sharing between businesses
-     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      * @param businessId Unique identifier of the requesting business.
-     * @param businessSharedAudience 
-     * @return BusinessSharedAudienceResponse
+     * @param businessToBusinessSharedAudienceUpdateWithRequiredBody 
+     * @return BusinessToBusinessSharedAudience
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -598,11 +594,11 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateBusinessToBusinessSharedAudience(businessId: kotlin.String, businessSharedAudience: BusinessSharedAudience) : BusinessSharedAudienceResponse {
-        val localVarResponse = updateBusinessToBusinessSharedAudienceWithHttpInfo(businessId = businessId, businessSharedAudience = businessSharedAudience)
+    fun updateBusinessToBusinessSharedAudience(businessId: kotlin.String, businessToBusinessSharedAudienceUpdateWithRequiredBody: BusinessToBusinessSharedAudienceUpdateWithRequiredBody) : BusinessToBusinessSharedAudience {
+        val localVarResponse = updateBusinessToBusinessSharedAudienceWithHttpInfo(businessId = businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody = businessToBusinessSharedAudienceUpdateWithRequiredBody)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as BusinessSharedAudienceResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as BusinessToBusinessSharedAudience
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -619,19 +615,19 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
     /**
      * PATCH /businesses/{business_id}/audiences/businesses/shared
      * Update audience sharing between businesses
-     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      * @param businessId Unique identifier of the requesting business.
-     * @param businessSharedAudience 
-     * @return ApiResponse<BusinessSharedAudienceResponse?>
+     * @param businessToBusinessSharedAudienceUpdateWithRequiredBody 
+     * @return ApiResponse<BusinessToBusinessSharedAudience?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateBusinessToBusinessSharedAudienceWithHttpInfo(businessId: kotlin.String, businessSharedAudience: BusinessSharedAudience) : ApiResponse<BusinessSharedAudienceResponse?> {
-        val localVariableConfig = updateBusinessToBusinessSharedAudienceRequestConfig(businessId = businessId, businessSharedAudience = businessSharedAudience)
+    fun updateBusinessToBusinessSharedAudienceWithHttpInfo(businessId: kotlin.String, businessToBusinessSharedAudienceUpdateWithRequiredBody: BusinessToBusinessSharedAudienceUpdateWithRequiredBody) : ApiResponse<BusinessToBusinessSharedAudience?> {
+        val localVariableConfig = updateBusinessToBusinessSharedAudienceRequestConfig(businessId = businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody = businessToBusinessSharedAudienceUpdateWithRequiredBody)
 
-        return request<BusinessSharedAudience, BusinessSharedAudienceResponse>(
+        return request<BusinessToBusinessSharedAudienceUpdateWithRequiredBody, BusinessToBusinessSharedAudience>(
             localVariableConfig
         )
     }
@@ -640,11 +636,11 @@ open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client:
      * To obtain the request config of the operation updateBusinessToBusinessSharedAudience
      *
      * @param businessId Unique identifier of the requesting business.
-     * @param businessSharedAudience 
+     * @param businessToBusinessSharedAudienceUpdateWithRequiredBody 
      * @return RequestConfig
      */
-    fun updateBusinessToBusinessSharedAudienceRequestConfig(businessId: kotlin.String, businessSharedAudience: BusinessSharedAudience) : RequestConfig<BusinessSharedAudience> {
-        val localVariableBody = businessSharedAudience
+    fun updateBusinessToBusinessSharedAudienceRequestConfig(businessId: kotlin.String, businessToBusinessSharedAudienceUpdateWithRequiredBody: BusinessToBusinessSharedAudienceUpdateWithRequiredBody) : RequestConfig<BusinessToBusinessSharedAudienceUpdateWithRequiredBody> {
+        val localVariableBody = businessToBusinessSharedAudienceUpdateWithRequiredBody
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"

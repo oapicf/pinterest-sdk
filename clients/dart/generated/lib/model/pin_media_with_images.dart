@@ -53,10 +53,8 @@ class PinMediaWithImages {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PinMediaWithImages[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PinMediaWithImages[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'media_type'), 'Required key "PinMediaWithImages[media_type]" is missing from JSON.');
+        assert(json[r'media_type'] != null, 'Required key "PinMediaWithImages[media_type]" has a null value in JSON.');
         return true;
       }());
 
@@ -115,27 +113,28 @@ class PinMediaWithImages {
 }
 
 
-class PinMediaWithImagesMediaTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const PinMediaWithImagesMediaTypeEnum._(this.value);
+enum PinMediaWithImagesMediaTypeEnum {
+  multipleImages._(r'multiple_images'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const PinMediaWithImagesMediaTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const multipleImages = PinMediaWithImagesMediaTypeEnum._(r'multiple_images');
-
-  /// List of all possible values in this [enum][PinMediaWithImagesMediaTypeEnum].
-  static const values = <PinMediaWithImagesMediaTypeEnum>[
-    multipleImages,
-  ];
-
+  /// Returns the instance of [PinMediaWithImagesMediaTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static PinMediaWithImagesMediaTypeEnum? fromJson(dynamic value) => PinMediaWithImagesMediaTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [PinMediaWithImagesMediaTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<PinMediaWithImagesMediaTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PinMediaWithImagesMediaTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -157,9 +156,10 @@ class PinMediaWithImagesMediaTypeEnumTypeTransformer {
 
   const PinMediaWithImagesMediaTypeEnumTypeTransformer._();
 
-  String encode(PinMediaWithImagesMediaTypeEnum data) => data.value;
+  String encode(PinMediaWithImagesMediaTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a PinMediaWithImagesMediaTypeEnum.
+  /// Returns the instance of [PinMediaWithImagesMediaTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -168,6 +168,9 @@ class PinMediaWithImagesMediaTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   PinMediaWithImagesMediaTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is PinMediaWithImagesMediaTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'multiple_images': return PinMediaWithImagesMediaTypeEnum.multipleImages;
@@ -180,7 +183,7 @@ class PinMediaWithImagesMediaTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [PinMediaWithImagesMediaTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static PinMediaWithImagesMediaTypeEnumTypeTransformer? _instance;
 }
 

@@ -7,7 +7,6 @@
   if (self) {
     // initialize property's default value, if any
     self.inclusion = @(YES);
-    self.negated = @(NO);
     
   }
   return self;

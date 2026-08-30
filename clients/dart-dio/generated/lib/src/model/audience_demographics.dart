@@ -124,36 +124,41 @@ class _$AudienceDemographicsSerializer implements PrimitiveSerializer<AudienceDe
         case r'ages':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AudienceDemographicValue)]),
-          ) as BuiltList<AudienceDemographicValue>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(AudienceDemographicValue)]),
+          ) as BuiltList<AudienceDemographicValue>?;
+          if (valueDes == null) continue;
           result.ages.replace(valueDes);
           break;
         case r'countries':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AudienceDemographicValue)]),
-          ) as BuiltList<AudienceDemographicValue>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(AudienceDemographicValue)]),
+          ) as BuiltList<AudienceDemographicValue>?;
+          if (valueDes == null) continue;
           result.countries.replace(valueDes);
           break;
         case r'devices':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AudienceDemographicValue)]),
-          ) as BuiltList<AudienceDemographicValue>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(AudienceDemographicValue)]),
+          ) as BuiltList<AudienceDemographicValue>?;
+          if (valueDes == null) continue;
           result.devices.replace(valueDes);
           break;
         case r'genders':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AudienceDemographicValue)]),
-          ) as BuiltList<AudienceDemographicValue>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(AudienceDemographicValue)]),
+          ) as BuiltList<AudienceDemographicValue>?;
+          if (valueDes == null) continue;
           result.genders.replace(valueDes);
           break;
         case r'metros':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AudienceDemographicValue)]),
-          ) as BuiltList<AudienceDemographicValue>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(AudienceDemographicValue)]),
+          ) as BuiltList<AudienceDemographicValue>?;
+          if (valueDes == null) continue;
           result.metros.replace(valueDes);
           break;
         default:

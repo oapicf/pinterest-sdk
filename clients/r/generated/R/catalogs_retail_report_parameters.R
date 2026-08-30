@@ -8,7 +8,7 @@
 #' @description CatalogsRetailReportParameters Class
 #' @format An \code{R6Class} generator object
 #' @field catalog_type  character
-#' @field report  \link{CatalogsHotelReportParametersReport}
+#' @field report  \link{CatalogsRetailReportParametersReport}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -77,9 +77,32 @@ CatalogsRetailReportParameters <- R6::R6Class(
       }
       if (!is.null(self$`report`)) {
         CatalogsRetailReportParametersObject[["report"]] <-
-          self$`report`$toSimpleType()
+          self$extractSimpleType(self$`report`)
       }
       return(CatalogsRetailReportParametersObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -96,7 +119,7 @@ CatalogsRetailReportParameters <- R6::R6Class(
         self$`catalog_type` <- this_object$`catalog_type`
       }
       if (!is.null(this_object$`report`)) {
-        `report_object` <- CatalogsHotelReportParametersReport$new()
+        `report_object` <- CatalogsRetailReportParametersReport$new()
         `report_object`$fromJSON(jsonlite::toJSON(this_object$`report`, auto_unbox = TRUE, digits = NA))
         self$`report` <- `report_object`
       }
@@ -125,7 +148,7 @@ CatalogsRetailReportParameters <- R6::R6Class(
         stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
       }
       self$`catalog_type` <- this_object$`catalog_type`
-      self$`report` <- CatalogsHotelReportParametersReport$new()$fromJSON(jsonlite::toJSON(this_object$`report`, auto_unbox = TRUE, digits = NA))
+      self$`report` <- CatalogsRetailReportParametersReport$new()$fromJSON(jsonlite::toJSON(this_object$`report`, auto_unbox = TRUE, digits = NA))
       self
     },
 

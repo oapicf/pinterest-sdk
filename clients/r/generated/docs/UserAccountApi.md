@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 
 # **BoardsUserFollowsList**
-> BoardsUserFollowsList200Response BoardsUserFollowsList(bookmark = var.bookmark, page_size = 25, explicit_following = FALSE, ad_account_id = var.ad_account_id)
+> BoardsList200Response BoardsUserFollowsList(ad_account_id = var.ad_account_id, explicit_following = FALSE, bookmark = var.bookmark, page_size = 25)
 
 List following boards
 
@@ -34,10 +34,10 @@ library(openapi)
 # List following boards
 #
 # prepare function argument(s)
-var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
-var_explicit_following <- FALSE # character | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (Optional)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
+var_explicit_following <- FALSE # character | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (Optional)
+var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -45,8 +45,8 @@ api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # Configure OAuth2 access token for authorization: client_credentials
 # api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BoardsUserFollowsList(bookmark = var_bookmark, page_size = var_page_size, explicit_following = var_explicit_following, ad_account_id = var_ad_account_iddata_file = "result.txt")
-result <- api_instance$BoardsUserFollowsList(bookmark = var_bookmark, page_size = var_page_size, explicit_following = var_explicit_following, ad_account_id = var_ad_account_id)
+# result <- api_instance$BoardsUserFollowsList(ad_account_id = var_ad_account_id, explicit_following = var_explicit_following, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$BoardsUserFollowsList(ad_account_id = var_ad_account_id, explicit_following = var_explicit_following, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -54,14 +54,14 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **explicit_following** | **character**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to FALSE]
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
+ **explicit_following** | **character**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to FALSE]
+ **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BoardsUserFollowsList200Response**](boards_user_follows_list_200_response.md)
+[**BoardsList200Response**](boards_list_200_response.md)
 
 ### Authorization
 
@@ -75,16 +75,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user id |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **FollowUserUpdate**
-> UserSummary FollowUserUpdate(username, follow_user_request)
+> FollowUser FollowUserUpdate(username, follow_user_create)
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```R
@@ -93,15 +97,15 @@ library(openapi)
 # Follow user
 #
 # prepare function argument(s)
-var_username <- "username" # character | A valid username
-var_follow_user_request <- FollowUserRequest$new("auto_follow_example") # FollowUserRequest | Follow a user.
+var_username <- "username_example" # character | A valid username
+var_follow_user_create <- FollowUserCreate$new("auto_follow_example") # FollowUserCreate | 
 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$FollowUserUpdate(var_username, var_follow_user_requestdata_file = "result.txt")
-result <- api_instance$FollowUserUpdate(var_username, var_follow_user_request)
+# result <- api_instance$FollowUserUpdate(var_username, var_follow_user_createdata_file = "result.txt")
+result <- api_instance$FollowUserUpdate(var_username, var_follow_user_create)
 dput(result)
 ```
 
@@ -110,11 +114,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **character**| A valid username | 
- **follow_user_request** | [**FollowUserRequest**](FollowUserRequest.md)| Follow a user. | 
+ **follow_user_create** | [**FollowUserCreate**](FollowUserCreate.md)|  | 
 
 ### Return type
 
-[**UserSummary**](UserSummary.md)
+[**FollowUser**](FollowUser.md)
 
 ### Authorization
 
@@ -128,9 +132,14 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | User not found |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **FollowersList**
 > FollowersList200Response FollowersList(bookmark = var.bookmark, page_size = 25)
@@ -147,7 +156,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -165,7 +174,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -183,9 +192,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user id |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **LinkedBusinessAccountsGet**
 > array[LinkedBusiness] LinkedBusinessAccountsGet()
@@ -231,15 +244,20 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **UnverifyWebsiteDelete**
-> UnverifyWebsiteDelete(website)
+> UserWebsite UnverifyWebsiteDelete(website)
 
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 ### Example
 ```R
@@ -248,12 +266,15 @@ library(openapi)
 # Unverify website
 #
 # prepare function argument(s)
-var_website <- "mysite.test" # character | Website with path or domain only
+var_website <- "website_example" # character | Website with path or domain only
 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
-api_instance$UnverifyWebsiteDelete(var_website)
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$UnverifyWebsiteDelete(var_websitedata_file = "result.txt")
+result <- api_instance$UnverifyWebsiteDelete(var_website)
+dput(result)
 ```
 
 ### Parameters
@@ -264,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -278,9 +299,14 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Successfully unverified website |  -  |
-| **404** | Website not in user list. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **UserAccountAnalytics**
 > map(AnalyticsMetricsResponse) UserAccountAnalytics(start_date, end_date, from_claimed_content = "BOTH", pin_format = "ALL", app_types = "ALL", content_type = "ALL", source = "ALL", metric_types = var.metric_types, split_field = "NO_SPLIT", ad_account_id = var.ad_account_id)
@@ -303,7 +329,7 @@ var_pin_format <- "ALL" # character | Pin formats to get data for, default is al
 var_app_types <- "ALL" # character | Apps or devices to get data for, default is all. (Optional)
 var_content_type <- "ALL" # character | Filter to paid or organic data. Default is all. (Optional)
 var_source <- "ALL" # character | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (Optional)
-var_metric_types <- c("ENGAGEMENT") # array[character] | Metric types to get data for, default is all.  (Optional)
+var_metric_types <- c(QuerymetrictypesItems$new()) # array[QuerymetrictypesItems] | Metric types to get data for, default is all. (Optional)
 var_split_field <- "NO_SPLIT" # character | How to split the data into groups. Not including this param means data won't be split. (Optional)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
@@ -327,7 +353,7 @@ Name | Type | Description  | Notes
  **app_types** | Enum [ALL, MOBILE, TABLET, WEB] | Apps or devices to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **content_type** | Enum [ALL, PAID, ORGANIC] | Filter to paid or organic data. Default is all. | [optional] [default to &quot;ALL&quot;]
  **source** | Enum [ALL, YOUR_PINS, OTHER_PINS] | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &quot;ALL&quot;]
- **metric_types** | Enum [ENGAGEMENT, ENGAGEMENT_RATE, IMPRESSION, OUTBOUND_CLICK, OUTBOUND_CLICK_RATE, PIN_CLICK, PIN_CLICK_RATE, SAVE, SAVE_RATE] | Metric types to get data for, default is all.  | [optional] 
+ **metric_types** | list( [**QuerymetrictypesItems**](QuerymetrictypesItems.md) )| Metric types to get data for, default is all. | [optional] 
  **split_field** | Enum [NO_SPLIT, APP_TYPE, OWNED_CONTENT, SOURCE, PIN_FORMAT] | How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to &quot;NO_SPLIT&quot;]
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
 
@@ -347,10 +373,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user accounts analytics parameters. |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **UserAccountAnalyticsTopPins**
 > TopPinsAnalyticsResponse UserAccountAnalyticsTopPins(start_date, end_date, sort_by, from_claimed_content = "BOTH", pin_format = "ALL", app_types = "ALL", content_type = "ALL", source = "ALL", metric_types = var.metric_types, num_of_pins = 10, created_in_last_n_days = var.created_in_last_n_days, ad_account_id = var.ad_account_id)
@@ -368,15 +397,15 @@ library(openapi)
 # prepare function argument(s)
 var_start_date <- "start_date_example" # character | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 var_end_date <- "end_date_example" # character | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-var_sort_by <- "sort_by_example" # character | Specify sorting order for metrics
+var_sort_by <- TopPinsSortBy$new() # TopPinsSortBy | Specify sorting order for metrics
 var_from_claimed_content <- "BOTH" # character | Filter on Pins that match your claimed domain. (Optional)
 var_pin_format <- "ALL" # character | Pin formats to get data for, default is all. (Optional)
 var_app_types <- "ALL" # character | Apps or devices to get data for, default is all. (Optional)
 var_content_type <- "ALL" # character | Filter to paid or organic data. Default is all. (Optional)
 var_source <- "ALL" # character | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (Optional)
-var_metric_types <- c("ENGAGEMENT") # array[character] | Metric types to get data for, default is all.  (Optional)
+var_metric_types <- c(QuerymetrictypesItems$new()) # array[QuerymetrictypesItems] | Metric types to get data for, default is all. (Optional)
 var_num_of_pins <- 10 # integer | Number of pins to include, default is 10. Max is 50. (Optional)
-var_created_in_last_n_days <- 30 # integer | Get metrics for pins created in the last \"n\" days. (Optional)
+var_created_in_last_n_days <- 3.4 # numeric | Get metrics for pins created in the last \"n\" days. (Optional)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- UserAccountApi$new()
@@ -396,13 +425,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start_date** | **character**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **end_date** | **character**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **sort_by** | Enum [ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE] | Specify sorting order for metrics | 
+ **sort_by** | [**TopPinsSortBy**](.md)| Specify sorting order for metrics | 
  **from_claimed_content** | Enum [OTHER, CLAIMED, BOTH] | Filter on Pins that match your claimed domain. | [optional] [default to &quot;BOTH&quot;]
  **pin_format** | Enum [ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] | Pin formats to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **app_types** | Enum [ALL, MOBILE, TABLET, WEB] | Apps or devices to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **content_type** | Enum [ALL, PAID, ORGANIC] | Filter to paid or organic data. Default is all. | [optional] [default to &quot;ALL&quot;]
  **source** | Enum [ALL, YOUR_PINS, OTHER_PINS] | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &quot;ALL&quot;]
- **metric_types** | Enum [ENGAGEMENT, ENGAGEMENT_RATE, IMPRESSION, OUTBOUND_CLICK, OUTBOUND_CLICK_RATE, PIN_CLICK, PIN_CLICK_RATE, SAVE, SAVE_RATE] | Metric types to get data for, default is all.  | [optional] 
+ **metric_types** | list( [**QuerymetrictypesItems**](QuerymetrictypesItems.md) )| Metric types to get data for, default is all. | [optional] 
  **num_of_pins** | **integer**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
  **created_in_last_n_days** | Enum [30] | Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] 
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
@@ -423,9 +452,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **UserAccountAnalyticsTopVideoPins**
 > TopVideoPinsAnalyticsResponse UserAccountAnalyticsTopVideoPins(start_date, end_date, sort_by, from_claimed_content = "BOTH", pin_format = "ALL", app_types = "ALL", content_type = "ALL", source = "ALL", metric_types = var.metric_types, num_of_pins = 10, created_in_last_n_days = var.created_in_last_n_days, ad_account_id = var.ad_account_id)
@@ -443,15 +476,15 @@ library(openapi)
 # prepare function argument(s)
 var_start_date <- "start_date_example" # character | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 var_end_date <- "end_date_example" # character | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-var_sort_by <- "sort_by_example" # character | Specify sorting order for video metrics
+var_sort_by <- TopVideoPinsSortBy$new() # TopVideoPinsSortBy | Specify sorting order for video metrics
 var_from_claimed_content <- "BOTH" # character | Filter on Pins that match your claimed domain. (Optional)
 var_pin_format <- "ALL" # character | Pin formats to get data for, default is all. (Optional)
 var_app_types <- "ALL" # character | Apps or devices to get data for, default is all. (Optional)
 var_content_type <- "ALL" # character | Filter to paid or organic data. Default is all. (Optional)
 var_source <- "ALL" # character | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (Optional)
-var_metric_types <- c("IMPRESSION") # array[character] | Metric types to get video data for, default is all.  (Optional)
+var_metric_types <- c(QueryvideopinmetrictypesItems$new()) # array[QueryvideopinmetrictypesItems] | Metric types to get video data for, default is all. (Optional)
 var_num_of_pins <- 10 # integer | Number of pins to include, default is 10. Max is 50. (Optional)
-var_created_in_last_n_days <- 30 # integer | Get metrics for pins created in the last \"n\" days. (Optional)
+var_created_in_last_n_days <- 3.4 # numeric | Get metrics for pins created in the last \"n\" days. (Optional)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- UserAccountApi$new()
@@ -471,13 +504,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start_date** | **character**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **end_date** | **character**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **sort_by** | Enum [IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START] | Specify sorting order for video metrics | 
+ **sort_by** | [**TopVideoPinsSortBy**](.md)| Specify sorting order for video metrics | 
  **from_claimed_content** | Enum [OTHER, CLAIMED, BOTH] | Filter on Pins that match your claimed domain. | [optional] [default to &quot;BOTH&quot;]
  **pin_format** | Enum [ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] | Pin formats to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **app_types** | Enum [ALL, MOBILE, TABLET, WEB] | Apps or devices to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **content_type** | Enum [ALL, PAID, ORGANIC] | Filter to paid or organic data. Default is all. | [optional] [default to &quot;ALL&quot;]
  **source** | Enum [ALL, YOUR_PINS, OTHER_PINS] | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &quot;ALL&quot;]
- **metric_types** | Enum [IMPRESSION, SAVE, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START, OUTBOUND_CLICK] | Metric types to get video data for, default is all.  | [optional] 
+ **metric_types** | list( [**QueryvideopinmetrictypesItems**](QueryvideopinmetrictypesItems.md) )| Metric types to get video data for, default is all. | [optional] 
  **num_of_pins** | **integer**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
  **created_in_last_n_days** | Enum [30] | Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] 
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
@@ -498,9 +531,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **UserAccountFollowedInterests**
 > UserAccountFollowedInterests200Response UserAccountFollowedInterests(username, bookmark = var.bookmark, page_size = 25)
@@ -516,9 +553,9 @@ library(openapi)
 # List following interests
 #
 # prepare function argument(s)
-var_username <- "username" # character | A valid username
+var_username <- "username_example" # character | A valid username
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -537,7 +574,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **character**| A valid username | 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -555,10 +592,10 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters |  -  |
-| **401** | Authorization failed |  -  |
-| **404** | User not found |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The server could not understand the request due to invalid syntax. |  -  |
+| **401** | Access is unauthorized. |  -  |
+| **404** | The server cannot find the requested resource. |  -  |
 | **0** | Unexpected error |  -  |
 
 # **UserAccountGet**
@@ -566,7 +603,7 @@ Name | Type | Description  | Notes
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 
 ### Example
 ```R
@@ -610,12 +647,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **403** | Not authorized to access the user account. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **UserFollowingGet**
-> UserFollowingGet200Response UserFollowingGet(bookmark = var.bookmark, page_size = 25, feed_type = var.feed_type, explicit_following = FALSE, ad_account_id = var.ad_account_id)
+> FollowersList200Response UserFollowingGet(ad_account_id = var.ad_account_id, explicit_following = FALSE, feed_type = var.feed_type, bookmark = var.bookmark, page_size = 25)
 
 List following
 
@@ -628,11 +669,11 @@ library(openapi)
 # List following
 #
 # prepare function argument(s)
-var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
-var_feed_type <- UserFollowingFeedType$new() # UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (Optional)
-var_explicit_following <- FALSE # character | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (Optional)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
+var_explicit_following <- FALSE # character | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (Optional)
+var_feed_type <- UserFollowingFeedType$new() # UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (Optional)
+var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -640,8 +681,8 @@ api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # Configure OAuth2 access token for authorization: client_credentials
 # api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$UserFollowingGet(bookmark = var_bookmark, page_size = var_page_size, feed_type = var_feed_type, explicit_following = var_explicit_following, ad_account_id = var_ad_account_iddata_file = "result.txt")
-result <- api_instance$UserFollowingGet(bookmark = var_bookmark, page_size = var_page_size, feed_type = var_feed_type, explicit_following = var_explicit_following, ad_account_id = var_ad_account_id)
+# result <- api_instance$UserFollowingGet(ad_account_id = var_ad_account_id, explicit_following = var_explicit_following, feed_type = var_feed_type, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$UserFollowingGet(ad_account_id = var_ad_account_id, explicit_following = var_explicit_following, feed_type = var_feed_type, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -649,15 +690,15 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **feed_type** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
- **explicit_following** | **character**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to FALSE]
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
+ **explicit_following** | **character**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to FALSE]
+ **feed_type** | [**UserFollowingFeedType**](.md)| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
+ **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**UserFollowingGet200Response**](user_following_get_200_response.md)
+[**FollowersList200Response**](followers_list_200_response.md)
 
 ### Authorization
 
@@ -671,8 +712,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **UserWebsitesGet**
 > UserWebsitesGet200Response UserWebsitesGet(bookmark = var.bookmark, page_size = 25)
@@ -689,7 +735,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -705,7 +751,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -723,12 +769,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user website list. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **VerifyWebsiteUpdate**
-> UserWebsiteSummary VerifyWebsiteUpdate(user_website_verify_request, ad_account_id = var.ad_account_id)
+> UserWebsite VerifyWebsiteUpdate(user_website_create, ad_account_id = var.ad_account_id)
 
 Verify website
 
@@ -741,15 +791,15 @@ library(openapi)
 # Verify website
 #
 # prepare function argument(s)
-var_user_website_verify_request <- UserWebsiteVerifyRequest$new("FILENAME", "website_example") # UserWebsiteVerifyRequest | Verify a website.
+var_user_website_create <- UserWebsiteCreate$new(WebsiteVerificationMethod$new(), "website_example") # UserWebsiteCreate | 
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$VerifyWebsiteUpdate(var_user_website_verify_request, ad_account_id = var_ad_account_iddata_file = "result.txt")
-result <- api_instance$VerifyWebsiteUpdate(var_user_website_verify_request, ad_account_id = var_ad_account_id)
+# result <- api_instance$VerifyWebsiteUpdate(var_user_website_create, ad_account_id = var_ad_account_iddata_file = "result.txt")
+result <- api_instance$VerifyWebsiteUpdate(var_user_website_create, ad_account_id = var_ad_account_id)
 dput(result)
 ```
 
@@ -757,12 +807,12 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_website_verify_request** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. | 
+ **user_website_create** | [**UserWebsiteCreate**](UserWebsiteCreate.md)|  | 
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
-[**UserWebsiteSummary**](UserWebsiteSummary.md)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -776,11 +826,17 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **WebsiteVerificationGet**
-> UserWebsiteVerificationCode WebsiteVerificationGet(ad_account_id = var.ad_account_id)
+> UserWebsiteVerification WebsiteVerificationGet(ad_account_id = var.ad_account_id)
 
 Get user verification code for website claiming
 
@@ -814,7 +870,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserWebsiteVerificationCode**](UserWebsiteVerificationCode.md)
+[**UserWebsiteVerification**](UserWebsiteVerification.md)
 
 ### Authorization
 
@@ -828,7 +884,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user verification code for website claiming. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

@@ -51,14 +51,14 @@ class IntegrationLog {
   IntegrationLogClientError? error;
 
   /// Log event type
-  IntegrationLogEventTypeEnum eventType;
+  IntegrationLogEventType eventType;
 
   String? externalBusinessId;
 
   String? feedProfileId;
 
   /// Log level type
-  IntegrationLogLogLevelEnum logLevel;
+  IntegrationLogLevel logLevel;
 
   String? merchantId;
 
@@ -195,10 +195,12 @@ class IntegrationLog {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "IntegrationLog[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "IntegrationLog[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'client_timestamp'), 'Required key "IntegrationLog[client_timestamp]" is missing from JSON.');
+        assert(json[r'client_timestamp'] != null, 'Required key "IntegrationLog[client_timestamp]" has a null value in JSON.');
+        assert(json.containsKey(r'event_type'), 'Required key "IntegrationLog[event_type]" is missing from JSON.');
+        assert(json[r'event_type'] != null, 'Required key "IntegrationLog[event_type]" has a null value in JSON.');
+        assert(json.containsKey(r'log_level'), 'Required key "IntegrationLog[log_level]" is missing from JSON.');
+        assert(json[r'log_level'] != null, 'Required key "IntegrationLog[log_level]" has a null value in JSON.');
         return true;
       }());
 
@@ -207,10 +209,10 @@ class IntegrationLog {
         appVersionNumber: mapValueOfType<String>(json, r'app_version_number'),
         clientTimestamp: mapValueOfType<int>(json, r'client_timestamp')!,
         error: IntegrationLogClientError.fromJson(json[r'error']),
-        eventType: IntegrationLogEventTypeEnum.fromJson(json[r'event_type'])!,
+        eventType: IntegrationLogEventType.fromJson(json[r'event_type'])!,
         externalBusinessId: mapValueOfType<String>(json, r'external_business_id'),
         feedProfileId: mapValueOfType<String>(json, r'feed_profile_id'),
-        logLevel: IntegrationLogLogLevelEnum.fromJson(json[r'log_level'])!,
+        logLevel: IntegrationLogLevel.fromJson(json[r'log_level'])!,
         merchantId: mapValueOfType<String>(json, r'merchant_id'),
         message: mapValueOfType<String>(json, r'message'),
         platformVersionNumber: mapValueOfType<String>(json, r'platform_version_number'),
@@ -268,155 +270,4 @@ class IntegrationLog {
     'log_level',
   };
 }
-
-/// Log event type
-class IntegrationLogEventTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const IntegrationLogEventTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const APP = IntegrationLogEventTypeEnum._(r'APP');
-  static const API = IntegrationLogEventTypeEnum._(r'API');
-
-  /// List of all possible values in this [enum][IntegrationLogEventTypeEnum].
-  static const values = <IntegrationLogEventTypeEnum>[
-    APP,
-    API,
-  ];
-
-  static IntegrationLogEventTypeEnum? fromJson(dynamic value) => IntegrationLogEventTypeEnumTypeTransformer().decode(value);
-
-  static List<IntegrationLogEventTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <IntegrationLogEventTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = IntegrationLogEventTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [IntegrationLogEventTypeEnum] to String,
-/// and [decode] dynamic data back to [IntegrationLogEventTypeEnum].
-class IntegrationLogEventTypeEnumTypeTransformer {
-  factory IntegrationLogEventTypeEnumTypeTransformer() => _instance ??= const IntegrationLogEventTypeEnumTypeTransformer._();
-
-  const IntegrationLogEventTypeEnumTypeTransformer._();
-
-  String encode(IntegrationLogEventTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a IntegrationLogEventTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  IntegrationLogEventTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'APP': return IntegrationLogEventTypeEnum.APP;
-        case r'API': return IntegrationLogEventTypeEnum.API;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [IntegrationLogEventTypeEnumTypeTransformer] instance.
-  static IntegrationLogEventTypeEnumTypeTransformer? _instance;
-}
-
-
-/// Log level type
-class IntegrationLogLogLevelEnum {
-  /// Instantiate a new enum with the provided [value].
-  const IntegrationLogLogLevelEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const INFO = IntegrationLogLogLevelEnum._(r'INFO');
-  static const WARN = IntegrationLogLogLevelEnum._(r'WARN');
-  static const ERROR = IntegrationLogLogLevelEnum._(r'ERROR');
-
-  /// List of all possible values in this [enum][IntegrationLogLogLevelEnum].
-  static const values = <IntegrationLogLogLevelEnum>[
-    INFO,
-    WARN,
-    ERROR,
-  ];
-
-  static IntegrationLogLogLevelEnum? fromJson(dynamic value) => IntegrationLogLogLevelEnumTypeTransformer().decode(value);
-
-  static List<IntegrationLogLogLevelEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <IntegrationLogLogLevelEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = IntegrationLogLogLevelEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [IntegrationLogLogLevelEnum] to String,
-/// and [decode] dynamic data back to [IntegrationLogLogLevelEnum].
-class IntegrationLogLogLevelEnumTypeTransformer {
-  factory IntegrationLogLogLevelEnumTypeTransformer() => _instance ??= const IntegrationLogLogLevelEnumTypeTransformer._();
-
-  const IntegrationLogLogLevelEnumTypeTransformer._();
-
-  String encode(IntegrationLogLogLevelEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a IntegrationLogLogLevelEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  IntegrationLogLogLevelEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'INFO': return IntegrationLogLogLevelEnum.INFO;
-        case r'WARN': return IntegrationLogLogLevelEnum.WARN;
-        case r'ERROR': return IntegrationLogLogLevelEnum.ERROR;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [IntegrationLogLogLevelEnumTypeTransformer] instance.
-  static IntegrationLogLogLevelEnumTypeTransformer? _instance;
-}
-
 

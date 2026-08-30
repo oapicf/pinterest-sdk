@@ -2,20 +2,21 @@ package api
 
 import play.api.libs.json._
 import model.AuthRespondInvitesBody
-import model.CancelInvitesBody
+import model.CancelInvitesRequest
+import model.CancelInvitesResponse
 import model.CreateAssetAccessRequestBody
 import model.CreateAssetAccessRequestResponse
 import model.CreateAssetInvitesRequest
 import model.CreateInvitesResultsResponseArray
 import model.CreateMembershipOrPartnershipInvitesBody
-import model.DeleteInvitesResultsResponseArray
 import model.Error
 import model.GetInvites200Response
+import model.InviteFilterStatus
 import model.InviteType
 import model.RespondToInvitesResponseArray
 import model.UpdateInvitesResultsResponseArray
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 trait BusinessAccessInviteApi {
   /**
     * Create a request to access an existing partner&#39;s assets.
@@ -28,15 +29,13 @@ trait BusinessAccessInviteApi {
     * Cancel invites/requests
     * Cancel membership/partnership invites and/or requests.
     * @param businessId Unique identifier of the requesting business.
-    * @param cancelInvitesBody A list with invite ids
     */
-  def cancelInvitesOrRequests(businessId: String, cancelInvitesBody: CancelInvitesBody): DeleteInvitesResultsResponseArray
+  def cancelInvitesOrRequests(businessId: String, cancelInvitesRequest: CancelInvitesRequest): CancelInvitesResponse
 
   /**
     * Update invite/request with an asset permission
     * Assign asset permissions information to an existing invite/request. Can be used to: - Request access to a partner&#39;s asset. Note: This is only for when no existing partnership exists. If an existing   partnership exists, use \&quot;Create a request to access an existing partner&#39;s assets\&quot; to request access to your   partner&#39;s assets.     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot; - Invite a partner to access your business assets. Note: This is only for when there is no existing partnership.   If there is an existing partnership, use \&quot;Assign/Update partner asset permissions\&quot; to assign a partner access to   new assets.     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot; - Invite a member to access your business assets. Note: This is only for when there is no existing membership.   If there is an existing membership, use \&quot;Assign/Update member asset permissions\&quot; to assign a member access to new   assets.     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;  To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview.
     * @param businessId Unique identifier of the requesting business.
-    * @param createAssetInvitesRequest A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
     */
   def createAssetInvites(businessId: String, createAssetInvitesRequest: CreateAssetInvitesRequest): UpdateInvitesResultsResponseArray
 
@@ -44,7 +43,6 @@ trait BusinessAccessInviteApi {
     * Create invites or requests
     * Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;     - business_role&#x3D;\&quot;EMPLOYEE\&quot; OR business_role&#x3D;\&quot;BIZ_ADMIN\&quot; (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners
     * @param businessId Unique identifier of the requesting business.
-    * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role
     */
   def createMembershipOrPartnershipInvites(businessId: String, createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody): CreateInvitesResultsResponseArray
 
@@ -56,9 +54,9 @@ trait BusinessAccessInviteApi {
     * @param inviteStatus A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
     * @param inviteType Invite type to filter invites by. Only invites of the specified type will be returned.
     * @param bookmark Cursor used to fetch the next page of items
-    * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+    * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
-  def getInvites(businessId: String, isMember: Option[Boolean], inviteStatus: Option[List[String]], inviteType: Option[InviteType], bookmark: Option[String], pageSize: Option[Int]): GetInvites200Response
+  def getInvites(businessId: String, isMember: Option[Boolean], inviteStatus: Option[List[InviteFilterStatus]], inviteType: Option[InviteType], bookmark: Option[String], pageSize: Option[Int]): GetInvites200Response
 
   /**
     * Accept or decline an invite/request

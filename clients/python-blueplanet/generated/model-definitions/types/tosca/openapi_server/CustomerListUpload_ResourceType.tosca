@@ -10,6 +10,7 @@ imports {
   ErrorDetail = openapi_server.resourceTypes.ErrorDetail
   RecordCounts = openapi_server.resourceTypes.RecordCounts
   UserListOperationType = openapi_server.resourceTypes.UserListOperationType
+  WorkloadState = openapi_server.resourceTypes.WorkloadState
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -52,13 +53,12 @@ resourceTypes {
         }
         record_counts {
           type = RecordCounts
-          description = ""
+          description = "Record processing counts"
           optional = false
         }
         state {
-          type =  string
-          description = "Workload processing state"
-          enum = ["NOT_STARTED", "RUNNING", "PAUSED", "SUCCEEDED", "FAILED"]
+          type = WorkloadState
+          description = ""
           optional = true
         }
         updated_time {

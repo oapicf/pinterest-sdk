@@ -6,18 +6,18 @@
 import 'package:openapi/src/model/catalogs_creative_assets_attributes.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/pin.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'catalogs_creative_assets_item_response.g.dart';
 
-/// Object describing a hotel record
+/// Object describing a creative assets item record
 ///
 /// Properties:
 /// * [attributes] 
 /// * [catalogType] 
 /// * [creativeAssetsId] - The catalog creative assets id in the merchant namespace
+/// * [itemResponseKind] - Discriminator literal identifying this leaf inside an `ItemResponse` payload.
 /// * [pins] - The pins mapped to the item
 @BuiltValue()
 abstract class CatalogsCreativeAssetsItemResponse implements Built<CatalogsCreativeAssetsItemResponse, CatalogsCreativeAssetsItemResponseBuilder> {
@@ -25,12 +25,17 @@ abstract class CatalogsCreativeAssetsItemResponse implements Built<CatalogsCreat
   CatalogsCreativeAssetsAttributes? get attributes;
 
   @BuiltValueField(wireName: r'catalog_type')
-  CatalogsType get catalogType;
-  // enum catalogTypeEnum {  RETAIL,  HOTEL,  CREATIVE_ASSETS,  };
+  CatalogsCreativeAssetsItemResponseCatalogTypeEnum get catalogType;
+  // enum catalogTypeEnum {  CREATIVE_ASSETS,  };
 
   /// The catalog creative assets id in the merchant namespace
   @BuiltValueField(wireName: r'creative_assets_id')
   String? get creativeAssetsId;
+
+  /// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+  @BuiltValueField(wireName: r'item_response_kind')
+  CatalogsCreativeAssetsItemResponseItemResponseKindEnum get itemResponseKind;
+  // enum itemResponseKindEnum {  creative_assets_item,  };
 
   /// The pins mapped to the item
   @BuiltValueField(wireName: r'pins')
@@ -69,7 +74,7 @@ class _$CatalogsCreativeAssetsItemResponseSerializer implements PrimitiveSeriali
     yield r'catalog_type';
     yield serializers.serialize(
       object.catalogType,
-      specifiedType: const FullType(CatalogsType),
+      specifiedType: const FullType(CatalogsCreativeAssetsItemResponseCatalogTypeEnum),
     );
     if (object.creativeAssetsId != null) {
       yield r'creative_assets_id';
@@ -78,6 +83,11 @@ class _$CatalogsCreativeAssetsItemResponseSerializer implements PrimitiveSeriali
         specifiedType: const FullType(String),
       );
     }
+    yield r'item_response_kind';
+    yield serializers.serialize(
+      object.itemResponseKind,
+      specifiedType: const FullType(CatalogsCreativeAssetsItemResponseItemResponseKindEnum),
+    );
     if (object.pins != null) {
       yield r'pins';
       yield serializers.serialize(
@@ -111,23 +121,32 @@ class _$CatalogsCreativeAssetsItemResponseSerializer implements PrimitiveSeriali
         case r'attributes':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsCreativeAssetsAttributes),
-          ) as CatalogsCreativeAssetsAttributes;
+            specifiedType: const FullType.nullable(CatalogsCreativeAssetsAttributes),
+          ) as CatalogsCreativeAssetsAttributes?;
+          if (valueDes == null) continue;
           result.attributes.replace(valueDes);
           break;
         case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsType),
-          ) as CatalogsType;
+            specifiedType: const FullType(CatalogsCreativeAssetsItemResponseCatalogTypeEnum),
+          ) as CatalogsCreativeAssetsItemResponseCatalogTypeEnum;
           result.catalogType = valueDes;
           break;
         case r'creative_assets_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.creativeAssetsId = valueDes;
+          break;
+        case r'item_response_kind':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(CatalogsCreativeAssetsItemResponseItemResponseKindEnum),
+          ) as CatalogsCreativeAssetsItemResponseItemResponseKindEnum;
+          result.itemResponseKind = valueDes;
           break;
         case r'pins':
           final valueDes = serializers.deserialize(
@@ -164,5 +183,32 @@ class _$CatalogsCreativeAssetsItemResponseSerializer implements PrimitiveSeriali
     );
     return result.build();
   }
+}
+
+class CatalogsCreativeAssetsItemResponseCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')
+  static const CatalogsCreativeAssetsItemResponseCatalogTypeEnum CREATIVE_ASSETS = _$catalogsCreativeAssetsItemResponseCatalogTypeEnum_CREATIVE_ASSETS;
+
+  static Serializer<CatalogsCreativeAssetsItemResponseCatalogTypeEnum> get serializer => _$catalogsCreativeAssetsItemResponseCatalogTypeEnumSerializer;
+
+  const CatalogsCreativeAssetsItemResponseCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsCreativeAssetsItemResponseCatalogTypeEnum> get values => _$catalogsCreativeAssetsItemResponseCatalogTypeEnumValues;
+  static CatalogsCreativeAssetsItemResponseCatalogTypeEnum valueOf(String name) => _$catalogsCreativeAssetsItemResponseCatalogTypeEnumValueOf(name);
+}
+
+class CatalogsCreativeAssetsItemResponseItemResponseKindEnum extends EnumClass {
+
+  /// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+  @BuiltValueEnumConst(wireName: r'creative_assets_item')
+  static const CatalogsCreativeAssetsItemResponseItemResponseKindEnum creativeAssetsItem = _$catalogsCreativeAssetsItemResponseItemResponseKindEnum_creativeAssetsItem;
+
+  static Serializer<CatalogsCreativeAssetsItemResponseItemResponseKindEnum> get serializer => _$catalogsCreativeAssetsItemResponseItemResponseKindEnumSerializer;
+
+  const CatalogsCreativeAssetsItemResponseItemResponseKindEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsCreativeAssetsItemResponseItemResponseKindEnum> get values => _$catalogsCreativeAssetsItemResponseItemResponseKindEnumValues;
+  static CatalogsCreativeAssetsItemResponseItemResponseKindEnum valueOf(String name) => _$catalogsCreativeAssetsItemResponseItemResponseKindEnumValueOf(name);
 }
 

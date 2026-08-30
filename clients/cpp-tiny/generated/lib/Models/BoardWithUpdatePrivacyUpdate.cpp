@@ -107,7 +107,7 @@ BoardWithUpdatePrivacyUpdate::getDescription()
 }
 
 void
-BoardWithUpdatePrivacyUpdate::setDescription(std::string  description)
+BoardWithUpdatePrivacyUpdate::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -119,7 +119,7 @@ BoardWithUpdatePrivacyUpdate::getName()
 }
 
 void
-BoardWithUpdatePrivacyUpdate::setName(std::string  name)
+BoardWithUpdatePrivacyUpdate::setName(std::string name)
 {
 	this->name = name;
 }
@@ -131,7 +131,7 @@ BoardWithUpdatePrivacyUpdate::getPrivacy()
 }
 
 void
-BoardWithUpdatePrivacyUpdate::setPrivacy(BoardUpdatePrivacy  privacy)
+BoardWithUpdatePrivacyUpdate::setPrivacy(BoardUpdatePrivacy privacy)
 {
 	this->privacy = privacy;
 }

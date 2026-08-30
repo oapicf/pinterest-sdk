@@ -25,6 +25,8 @@ import org.openapitools.client.api.Board
 import org.openapitools.client.api.BoardCreate
 import org.openapitools.client.api.BoardPrivacyFilter
 import org.openapitools.client.api.BoardSection
+import org.openapitools.client.api.BoardSectionCreate
+import org.openapitools.client.api.BoardSectionUpdateWithRequiredBody
 import org.openapitools.client.api.BoardSectionsList200Response
 import org.openapitools.client.api.BoardWithUpdatePrivacy
 import org.openapitools.client.api.BoardWithUpdatePrivacyUpdate
@@ -39,7 +41,7 @@ object BoardsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def boardSectionsCreate(host: String, boardId: String, boardSection: BoardSection, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[BoardSection] = {
+  def boardSectionsCreate(host: String, boardId: String, boardSectionCreate: BoardSectionCreate, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[BoardSection] = {
     implicit val returnTypeDecoder: EntityDecoder[BoardSection] = jsonOf[BoardSection]
 
     val path = "/boards/{board_id}/sections".replaceAll("\\{" + "board_id" + "\\}",escape(boardId.toString))
@@ -54,13 +56,15 @@ object BoardsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(boardSection)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(boardSectionCreate)
       resp          <- client.expect[BoardSection](req)
 
     } yield resp
   }
 
-  def boardSectionsDelete(host: String, boardId: String, sectionId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Unit] = {
+  def boardSectionsDelete(host: String, boardId: String, sectionId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[BoardSection] = {
+    implicit val returnTypeDecoder: EntityDecoder[BoardSection] = jsonOf[BoardSection]
+
     val path = "/boards/{board_id}/sections/{section_id}".replaceAll("\\{" + "board_id" + "\\}",escape(boardId.toString)).replaceAll("\\{" + "section_id" + "\\}",escape(sectionId.toString))
 
     val httpMethod = Method.DELETE
@@ -74,7 +78,7 @@ object BoardsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[BoardSection](req)
 
     } yield resp
   }
@@ -121,7 +125,7 @@ object BoardsApi {
     } yield resp
   }
 
-  def boardSectionsUpdate(host: String, boardId: String, sectionId: String, boardSection: BoardSection, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[BoardSection] = {
+  def boardSectionsUpdate(host: String, boardId: String, sectionId: String, boardSectionUpdateWithRequiredBody: BoardSectionUpdateWithRequiredBody, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[BoardSection] = {
     implicit val returnTypeDecoder: EntityDecoder[BoardSection] = jsonOf[BoardSection]
 
     val path = "/boards/{board_id}/sections/{section_id}".replaceAll("\\{" + "board_id" + "\\}",escape(boardId.toString)).replaceAll("\\{" + "section_id" + "\\}",escape(sectionId.toString))
@@ -136,7 +140,7 @@ object BoardsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(boardSection)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(boardSectionUpdateWithRequiredBody)
       resp          <- client.expect[BoardSection](req)
 
     } yield resp
@@ -163,7 +167,9 @@ object BoardsApi {
     } yield resp
   }
 
-  def boardsDelete(host: String, boardId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Unit] = {
+  def boardsDelete(host: String, boardId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Board] = {
+    implicit val returnTypeDecoder: EntityDecoder[Board] = jsonOf[Board]
+
     val path = "/boards/{board_id}".replaceAll("\\{" + "board_id" + "\\}",escape(boardId.toString))
 
     val httpMethod = Method.DELETE
@@ -177,7 +183,7 @@ object BoardsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[Board](req)
 
     } yield resp
   }
@@ -224,7 +230,7 @@ object BoardsApi {
     } yield resp
   }
 
-  def boardsListPins(host: String, boardId: String, bookmark: String, pageSize: Integer = 25, creativeTypes: List[CreativeType] = List.empty[CreativeType] , adAccountId: String, pinMetrics: Boolean = false)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], creativeTypesQuery: QueryParam[List[CreativeType]], adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean]): Task[BoardsListPins200Response] = {
+  def boardsListPins(host: String, boardId: String, creativeTypes: List[CreativeType] = List.empty[CreativeType] , adAccountId: String, pinMetrics: Boolean = false, bookmark: String, pageSize: Integer = 25)(implicit creativeTypesQuery: QueryParam[List[CreativeType]], adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BoardsListPins200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BoardsListPins200Response] = jsonOf[BoardsListPins200Response]
 
     val path = "/boards/{board_id}/pins".replaceAll("\\{" + "board_id" + "\\}",escape(boardId.toString))
@@ -234,7 +240,7 @@ object BoardsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("creativeTypes", Some(creative_typesQuery.toParamString(creative_types))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))))
+      ("creativeTypes", Some(creative_typesQuery.toParamString(creative_types))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -273,7 +279,7 @@ class HttpServiceBoardsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def boardSectionsCreate(boardId: String, boardSection: BoardSection, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[BoardSection] = {
+  def boardSectionsCreate(boardId: String, boardSectionCreate: BoardSectionCreate, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[BoardSection] = {
     implicit val returnTypeDecoder: EntityDecoder[BoardSection] = jsonOf[BoardSection]
 
     val path = "/boards/{board_id}/sections".replaceAll("\\{" + "board_id" + "\\}",escape(boardId.toString))
@@ -288,13 +294,15 @@ class HttpServiceBoardsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(boardSection)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(boardSectionCreate)
       resp          <- client.expect[BoardSection](req)
 
     } yield resp
   }
 
-  def boardSectionsDelete(boardId: String, sectionId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Unit] = {
+  def boardSectionsDelete(boardId: String, sectionId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[BoardSection] = {
+    implicit val returnTypeDecoder: EntityDecoder[BoardSection] = jsonOf[BoardSection]
+
     val path = "/boards/{board_id}/sections/{section_id}".replaceAll("\\{" + "board_id" + "\\}",escape(boardId.toString)).replaceAll("\\{" + "section_id" + "\\}",escape(sectionId.toString))
 
     val httpMethod = Method.DELETE
@@ -308,7 +316,7 @@ class HttpServiceBoardsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[BoardSection](req)
 
     } yield resp
   }
@@ -355,7 +363,7 @@ class HttpServiceBoardsApi(service: HttpService) {
     } yield resp
   }
 
-  def boardSectionsUpdate(boardId: String, sectionId: String, boardSection: BoardSection, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[BoardSection] = {
+  def boardSectionsUpdate(boardId: String, sectionId: String, boardSectionUpdateWithRequiredBody: BoardSectionUpdateWithRequiredBody, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[BoardSection] = {
     implicit val returnTypeDecoder: EntityDecoder[BoardSection] = jsonOf[BoardSection]
 
     val path = "/boards/{board_id}/sections/{section_id}".replaceAll("\\{" + "board_id" + "\\}",escape(boardId.toString)).replaceAll("\\{" + "section_id" + "\\}",escape(sectionId.toString))
@@ -370,7 +378,7 @@ class HttpServiceBoardsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(boardSection)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(boardSectionUpdateWithRequiredBody)
       resp          <- client.expect[BoardSection](req)
 
     } yield resp
@@ -397,7 +405,9 @@ class HttpServiceBoardsApi(service: HttpService) {
     } yield resp
   }
 
-  def boardsDelete(boardId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Unit] = {
+  def boardsDelete(boardId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Board] = {
+    implicit val returnTypeDecoder: EntityDecoder[Board] = jsonOf[Board]
+
     val path = "/boards/{board_id}".replaceAll("\\{" + "board_id" + "\\}",escape(boardId.toString))
 
     val httpMethod = Method.DELETE
@@ -411,7 +421,7 @@ class HttpServiceBoardsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[Board](req)
 
     } yield resp
   }
@@ -458,7 +468,7 @@ class HttpServiceBoardsApi(service: HttpService) {
     } yield resp
   }
 
-  def boardsListPins(boardId: String, bookmark: String, pageSize: Integer = 25, creativeTypes: List[CreativeType] = List.empty[CreativeType] , adAccountId: String, pinMetrics: Boolean = false)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], creativeTypesQuery: QueryParam[List[CreativeType]], adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean]): Task[BoardsListPins200Response] = {
+  def boardsListPins(boardId: String, creativeTypes: List[CreativeType] = List.empty[CreativeType] , adAccountId: String, pinMetrics: Boolean = false, bookmark: String, pageSize: Integer = 25)(implicit creativeTypesQuery: QueryParam[List[CreativeType]], adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BoardsListPins200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BoardsListPins200Response] = jsonOf[BoardsListPins200Response]
 
     val path = "/boards/{board_id}/pins".replaceAll("\\{" + "board_id" + "\\}",escape(boardId.toString))
@@ -468,7 +478,7 @@ class HttpServiceBoardsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("creativeTypes", Some(creative_typesQuery.toParamString(creative_types))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))))
+      ("creativeTypes", Some(creative_typesQuery.toParamString(creative_types))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

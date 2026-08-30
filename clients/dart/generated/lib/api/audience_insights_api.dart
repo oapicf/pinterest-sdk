@@ -18,7 +18,7 @@ class AudienceInsightsApi {
 
   /// Get audience insights
   ///
-  /// Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
+  /// Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -29,7 +29,7 @@ class AudienceInsightsApi {
   ///
   /// * [AudienceInsightType] audienceInsightType (required):
   ///   Type of audience insights.
-  Future<Response> audienceInsightsGetWithHttpInfo(String adAccountId, AudienceInsightType audienceInsightType,) async {
+  Future<Response> audienceInsightsGetWithHttpInfo(String adAccountId, AudienceInsightType audienceInsightType, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/audience_insights'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -54,12 +54,13 @@ class AudienceInsightsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get audience insights
   ///
-  /// Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
+  /// Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
   ///
   /// Parameters:
   ///
@@ -68,8 +69,8 @@ class AudienceInsightsApi {
   ///
   /// * [AudienceInsightType] audienceInsightType (required):
   ///   Type of audience insights.
-  Future<AudienceInsightsResponse?> audienceInsightsGet(String adAccountId, AudienceInsightType audienceInsightType,) async {
-    final response = await audienceInsightsGetWithHttpInfo(adAccountId, audienceInsightType,);
+  Future<AudienceInsights?> audienceInsightsGet(String adAccountId, AudienceInsightType audienceInsightType, { Future<void>? abortTrigger, }) async {
+    final response = await audienceInsightsGetWithHttpInfo(adAccountId, audienceInsightType, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -77,7 +78,7 @@ class AudienceInsightsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AudienceInsightsResponse',) as AudienceInsightsResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AudienceInsights',) as AudienceInsights;
     
     }
     return null;
@@ -93,7 +94,7 @@ class AudienceInsightsApi {
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  Future<Response> audienceInsightsScopeAndTypeGetWithHttpInfo(String adAccountId,) async {
+  Future<Response> audienceInsightsScopeAndTypeGetWithHttpInfo(String adAccountId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/insights/audiences'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -116,6 +117,7 @@ class AudienceInsightsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -127,8 +129,8 @@ class AudienceInsightsApi {
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  Future<AudienceDefinitionResponse?> audienceInsightsScopeAndTypeGet(String adAccountId,) async {
-    final response = await audienceInsightsScopeAndTypeGetWithHttpInfo(adAccountId,);
+  Future<AudienceInsightsScopeAndTypeGet200Response?> audienceInsightsScopeAndTypeGet(String adAccountId, { Future<void>? abortTrigger, }) async {
+    final response = await audienceInsightsScopeAndTypeGetWithHttpInfo(adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -136,7 +138,7 @@ class AudienceInsightsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AudienceDefinitionResponse',) as AudienceDefinitionResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AudienceInsightsScopeAndTypeGet200Response',) as AudienceInsightsScopeAndTypeGet200Response;
     
     }
     return null;

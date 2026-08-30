@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "AudienceAccountType.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -61,11 +62,11 @@ public:
 	void setAccountName(std::string  account_name);
 	/*! \brief Get account type
 	 */
-	std::string getAccountType();
+	AudienceAccountType getAccountType();
 
 	/*! \brief Set account type
 	 */
-	void setAccountType(std::string  account_type);
+	void setAccountType(AudienceAccountType  account_type);
 	/*! \brief Get Epoch timestamp in seconds for the shared audience event
 	 */
 	int getSharedOnTimestamp();
@@ -77,7 +78,7 @@ public:
 private:
 	std::string account_id;
 	std::string account_name;
-	std::string account_type;
+	AudienceAccountType account_type;
 	int shared_on_timestamp;
 	void __init();
 	void __cleanup();

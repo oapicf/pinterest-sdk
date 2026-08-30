@@ -17,15 +17,15 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedProcessingResult   {
   
   private Date createdAt;
   private String id;
-  private Date updatedAt;
   private CatalogsFeedIngestionDetails ingestionDetails;
   private CatalogsFeedProductCounts productCounts;
   private CatalogsFeedProcessingStatus status;
+  private Date updatedAt;
   private CatalogsFeedValidationDetails validationDetails;
   private CatalogsFeedVideoCounts videoCounts;
 
@@ -43,29 +43,17 @@ public class CatalogsFeedProcessingResult   {
   }
 
   /**
+   * ID of the feed processing result.
    **/
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "864344156814050986", required = true, value = "ID of the feed processing result.")
   @JsonProperty("id")
   @NotNull
-  public String getId() {
+ @Pattern(regexp="^\\d+$")  public String getId() {
     return id;
   }
   public void setId(String id) {
     this.id = id;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
-  @JsonProperty("updated_at")
-  @NotNull
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
   }
 
   /**
@@ -113,6 +101,19 @@ public class CatalogsFeedProcessingResult   {
   /**
    **/
   
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+  @JsonProperty("updated_at")
+  @NotNull
+  public Date getUpdatedAt() {
+    return updatedAt;
+  }
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  /**
+   **/
+  
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("validation_details")
   @NotNull
@@ -149,17 +150,17 @@ public class CatalogsFeedProcessingResult   {
     CatalogsFeedProcessingResult catalogsFeedProcessingResult = (CatalogsFeedProcessingResult) o;
     return Objects.equals(this.createdAt, catalogsFeedProcessingResult.createdAt) &&
         Objects.equals(this.id, catalogsFeedProcessingResult.id) &&
-        Objects.equals(this.updatedAt, catalogsFeedProcessingResult.updatedAt) &&
         Objects.equals(this.ingestionDetails, catalogsFeedProcessingResult.ingestionDetails) &&
         Objects.equals(this.productCounts, catalogsFeedProcessingResult.productCounts) &&
         Objects.equals(this.status, catalogsFeedProcessingResult.status) &&
+        Objects.equals(this.updatedAt, catalogsFeedProcessingResult.updatedAt) &&
         Objects.equals(this.validationDetails, catalogsFeedProcessingResult.validationDetails) &&
         Objects.equals(this.videoCounts, catalogsFeedProcessingResult.videoCounts);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, ingestionDetails, productCounts, status, validationDetails, videoCounts);
+    return Objects.hash(createdAt, id, ingestionDetails, productCounts, status, updatedAt, validationDetails, videoCounts);
   }
 
   @Override
@@ -169,10 +170,10 @@ public class CatalogsFeedProcessingResult   {
     
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    ingestionDetails: ").append(toIndentedString(ingestionDetails)).append("\n");
     sb.append("    productCounts: ").append(toIndentedString(productCounts)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    validationDetails: ").append(toIndentedString(validationDetails)).append("\n");
     sb.append("    videoCounts: ").append(toIndentedString(videoCounts)).append("\n");
     sb.append("}");
@@ -184,10 +185,7 @@ public class CatalogsFeedProcessingResult   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

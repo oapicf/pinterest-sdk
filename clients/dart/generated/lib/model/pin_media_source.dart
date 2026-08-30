@@ -179,10 +179,18 @@ class PinMediaSource {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PinMediaSource[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PinMediaSource[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'content_type'), 'Required key "PinMediaSource[content_type]" is missing from JSON.');
+        assert(json[r'content_type'] != null, 'Required key "PinMediaSource[content_type]" has a null value in JSON.');
+        assert(json.containsKey(r'data'), 'Required key "PinMediaSource[data]" is missing from JSON.');
+        assert(json[r'data'] != null, 'Required key "PinMediaSource[data]" has a null value in JSON.');
+        assert(json.containsKey(r'source_type'), 'Required key "PinMediaSource[source_type]" is missing from JSON.');
+        assert(json[r'source_type'] != null, 'Required key "PinMediaSource[source_type]" has a null value in JSON.');
+        assert(json.containsKey(r'url'), 'Required key "PinMediaSource[url]" is missing from JSON.');
+        assert(json[r'url'] != null, 'Required key "PinMediaSource[url]" has a null value in JSON.');
+        assert(json.containsKey(r'media_id'), 'Required key "PinMediaSource[media_id]" is missing from JSON.');
+        assert(json[r'media_id'] != null, 'Required key "PinMediaSource[media_id]" has a null value in JSON.');
+        assert(json.containsKey(r'items'), 'Required key "PinMediaSource[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "PinMediaSource[items]" has a null value in JSON.');
         return true;
       }());
 
@@ -257,27 +265,28 @@ class PinMediaSource {
 }
 
 
-class PinMediaSourceSourceTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const PinMediaSourceSourceTypeEnum._(this.value);
+enum PinMediaSourceSourceTypeEnum {
+  pinUrl._(r'pin_url'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const PinMediaSourceSourceTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const pinUrl = PinMediaSourceSourceTypeEnum._(r'pin_url');
-
-  /// List of all possible values in this [enum][PinMediaSourceSourceTypeEnum].
-  static const values = <PinMediaSourceSourceTypeEnum>[
-    pinUrl,
-  ];
-
+  /// Returns the instance of [PinMediaSourceSourceTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static PinMediaSourceSourceTypeEnum? fromJson(dynamic value) => PinMediaSourceSourceTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [PinMediaSourceSourceTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<PinMediaSourceSourceTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PinMediaSourceSourceTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -299,9 +308,10 @@ class PinMediaSourceSourceTypeEnumTypeTransformer {
 
   const PinMediaSourceSourceTypeEnumTypeTransformer._();
 
-  String encode(PinMediaSourceSourceTypeEnum data) => data.value;
+  String encode(PinMediaSourceSourceTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a PinMediaSourceSourceTypeEnum.
+  /// Returns the instance of [PinMediaSourceSourceTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -310,6 +320,9 @@ class PinMediaSourceSourceTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   PinMediaSourceSourceTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is PinMediaSourceSourceTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'pin_url': return PinMediaSourceSourceTypeEnum.pinUrl;
@@ -322,7 +335,7 @@ class PinMediaSourceSourceTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [PinMediaSourceSourceTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static PinMediaSourceSourceTypeEnumTypeTransformer? _instance;
 }
 

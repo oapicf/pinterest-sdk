@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]SSIOInsertionOrderStatus**](SSIOInsertionOrderStatus.md) | Insertion orders status by ad acount id | 
+**Items** | [**[]SSIOInsertionOrderStatus**](SSIOInsertionOrderStatus.md) |  | 
 
 ## Methods
 

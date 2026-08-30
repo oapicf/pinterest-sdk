@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Accesses** | [**[]UpdateMemberAssetAccessBodyAccessesInner**](UpdateMemberAssetAccessBodyAccessesInner.md) |  | 
+**Accesses** | [**[]UpdateMemberAssetAccessItem**](UpdateMemberAssetAccessItem.md) | List of member asset accesses to assign or update. | 
 
 ## Methods
 
 ### NewUpdateMemberAssetAccessBody
 
-`func NewUpdateMemberAssetAccessBody(accesses []UpdateMemberAssetAccessBodyAccessesInner, ) *UpdateMemberAssetAccessBody`
+`func NewUpdateMemberAssetAccessBody(accesses []UpdateMemberAssetAccessItem, ) *UpdateMemberAssetAccessBody`
 
 NewUpdateMemberAssetAccessBody instantiates a new UpdateMemberAssetAccessBody object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAccesses
 
-`func (o *UpdateMemberAssetAccessBody) GetAccesses() []UpdateMemberAssetAccessBodyAccessesInner`
+`func (o *UpdateMemberAssetAccessBody) GetAccesses() []UpdateMemberAssetAccessItem`
 
 GetAccesses returns the Accesses field if non-nil, zero value otherwise.
 
 ### GetAccessesOk
 
-`func (o *UpdateMemberAssetAccessBody) GetAccessesOk() (*[]UpdateMemberAssetAccessBodyAccessesInner, bool)`
+`func (o *UpdateMemberAssetAccessBody) GetAccessesOk() (*[]UpdateMemberAssetAccessItem, bool)`
 
 GetAccessesOk returns a tuple with the Accesses field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccesses
 
-`func (o *UpdateMemberAssetAccessBody) SetAccesses(v []UpdateMemberAssetAccessBodyAccessesInner)`
+`func (o *UpdateMemberAssetAccessBody) SetAccesses(v []UpdateMemberAssetAccessItem)`
 
 SetAccesses sets Accesses field to given value.
 

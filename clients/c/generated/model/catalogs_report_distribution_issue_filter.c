@@ -30,10 +30,10 @@ static catalogs_report_distribution_issue_filter_t *catalogs_report_distribution
     if (!catalogs_report_distribution_issue_filter_local_var) {
         return NULL;
     }
+    memset(catalogs_report_distribution_issue_filter_local_var, 0, sizeof(catalogs_report_distribution_issue_filter_t));
+    catalogs_report_distribution_issue_filter_local_var->_library_owned = 1;
     catalogs_report_distribution_issue_filter_local_var->catalog_id = catalog_id;
     catalogs_report_distribution_issue_filter_local_var->report_type = report_type;
-
-    catalogs_report_distribution_issue_filter_local_var->_library_owned = 1;
     return catalogs_report_distribution_issue_filter_local_var;
 }
 
@@ -41,10 +41,13 @@ __attribute__((deprecated)) catalogs_report_distribution_issue_filter_t *catalog
     char *catalog_id,
     pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_e report_type
     ) {
-    return catalogs_report_distribution_issue_filter_create_internal (
+    catalogs_report_distribution_issue_filter_t *result = catalogs_report_distribution_issue_filter_create_internal (
         catalog_id,
         report_type
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_report_distribution_issue_filter_free(catalogs_report_distribution_issue_filter_t *catalogs_report_distribution_issue_filter) {
@@ -95,6 +98,8 @@ catalogs_report_distribution_issue_filter_t *catalogs_report_distribution_issue_
 
     catalogs_report_distribution_issue_filter_t *catalogs_report_distribution_issue_filter_local_var = NULL;
 
+    char *catalog_id_local_str = NULL;
+
     // catalogs_report_distribution_issue_filter->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_report_distribution_issue_filterJSON, "catalog_id");
     if (cJSON_IsNull(catalog_id)) {
@@ -125,13 +130,23 @@ catalogs_report_distribution_issue_filter_t *catalogs_report_distribution_issue_
     report_typeVariable = catalogs_report_distribution_issue_filter_report_type_FromString(report_type->valuestring);
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+
     catalogs_report_distribution_issue_filter_local_var = catalogs_report_distribution_issue_filter_create_internal (
-        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
+        catalog_id_local_str,
         report_typeVariable
         );
 
+    if (!catalogs_report_distribution_issue_filter_local_var) {
+        goto end;
+    }
+
     return catalogs_report_distribution_issue_filter_local_var;
 end:
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
+    }
     return NULL;
 
 }

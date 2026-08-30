@@ -1,15 +1,15 @@
 # CatalogsHotelItemsBatch
 
-Object describing the catalogs hotel items batch
+Object describing the catalogs hotel items batch. If specified, you must provide all properties.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **batch_id** | **str** | Id of the catalogs items batch | [optional] 
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | 
-**completed_time** | **datetime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
-**created_time** | **datetime** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
+**catalog_type** | **str** |  | 
+**completed_time** | **datetime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] 
+**created_time** | **datetime** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] 
 **items** | [**List[HotelProcessingRecord]**](HotelProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] 
 **status** | [**BatchOperationStatus**](BatchOperationStatus.md) |  | [optional] 
 

@@ -13,10 +13,10 @@ static create_asset_access_request_response_t *create_asset_access_request_respo
     if (!create_asset_access_request_response_local_var) {
         return NULL;
     }
+    memset(create_asset_access_request_response_local_var, 0, sizeof(create_asset_access_request_response_t));
+    create_asset_access_request_response_local_var->_library_owned = 1;
     create_asset_access_request_response_local_var->exceptions = exceptions;
     create_asset_access_request_response_local_var->invites = invites;
-
-    create_asset_access_request_response_local_var->_library_owned = 1;
     return create_asset_access_request_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) create_asset_access_request_response_t *create_asset
     list_t *exceptions,
     list_t* invites
     ) {
-    return create_asset_access_request_response_create_internal (
+    create_asset_access_request_response_t *result = create_asset_access_request_response_create_internal (
         exceptions,
         invites
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void create_asset_access_request_response_free(create_asset_access_request_response_t *create_asset_access_request_response) {
@@ -41,7 +44,7 @@ void create_asset_access_request_response_free(create_asset_access_request_respo
     listEntry_t *listEntry;
     if (create_asset_access_request_response->exceptions) {
         list_ForEach(listEntry, create_asset_access_request_response->exceptions) {
-            create_asset_access_request_error_message_inner_free(listEntry->data);
+            asset_access_request_error_free(listEntry->data);
         }
         list_freeList(create_asset_access_request_response->exceptions);
         create_asset_access_request_response->exceptions = NULL;
@@ -72,7 +75,7 @@ cJSON *create_asset_access_request_response_convertToJSON(create_asset_access_re
     listEntry_t *exceptionsListEntry;
     if (create_asset_access_request_response->exceptions) {
     list_ForEach(exceptionsListEntry, create_asset_access_request_response->exceptions) {
-    cJSON *itemLocal = create_asset_access_request_error_message_inner_convertToJSON(exceptionsListEntry->data);
+    cJSON *itemLocal = asset_access_request_error_convertToJSON(exceptionsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -137,7 +140,7 @@ create_asset_access_request_response_t *create_asset_access_request_response_par
         if(!cJSON_IsObject(exceptions_local_nonprimitive)){
             goto end;
         }
-        create_asset_access_request_error_message_inner_t *exceptionsItem = create_asset_access_request_error_message_inner_parseFromJSON(exceptions_local_nonprimitive);
+        asset_access_request_error_t *exceptionsItem = asset_access_request_error_parseFromJSON(exceptions_local_nonprimitive);
 
         list_addElement(exceptionsList, exceptionsItem);
     }
@@ -172,17 +175,22 @@ create_asset_access_request_response_t *create_asset_access_request_response_par
     }
 
 
+
     create_asset_access_request_response_local_var = create_asset_access_request_response_create_internal (
         exceptions ? exceptionsList : NULL,
         invites ? invitesList : NULL
         );
+
+    if (!create_asset_access_request_response_local_var) {
+        goto end;
+    }
 
     return create_asset_access_request_response_local_var;
 end:
     if (exceptionsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, exceptionsList) {
-            create_asset_access_request_error_message_inner_free(listEntry->data);
+            asset_access_request_error_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(exceptionsList);

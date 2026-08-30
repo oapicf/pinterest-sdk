@@ -6,7 +6,7 @@
 
 -type openapi_catalogs_feed_processing_schedule() ::
     #{ 'time' := binary(),
-       'timezone' := binary()
+       'timezone' := openapi_catalogs_feed_processing_schedule_timezone:openapi_catalogs_feed_processing_schedule_timezone()
      }.
 
 encode(#{ 'time' := Time,

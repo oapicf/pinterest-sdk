@@ -17,19 +17,10 @@ import { CatalogsUpdatableCreativeAssetsAttributes } from './catalogsUpdatableCr
 /**
  * Creative assets batch item
  */
-export interface CatalogsCreativeAssetsBatchItem { 
-    attributes: CatalogsUpdatableCreativeAssetsAttributes;
-    /**
-     * The catalog creative assets id in the merchant namespace
-     */
-    creative_assets_id: string;
-    operation: CatalogsCreativeAssetsBatchItem.OperationEnum;
-}
-export namespace CatalogsCreativeAssetsBatchItem {
-    export const OperationEnum = {
-        Delete: 'DELETE'
-    } as const;
-    export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
-}
-
+/**
+ * @type CatalogsCreativeAssetsBatchItem
+ * Creative assets batch item
+ * @export
+ */
+export type CatalogsCreativeAssetsBatchItem = CatalogsCreateCreativeAssetsItem | CatalogsDeleteCreativeAssetsItem | CatalogsUpdateCreativeAssetsItem | CatalogsUpsertCreativeAssetsItem;
 

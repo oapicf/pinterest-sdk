@@ -11,7 +11,7 @@
 
 // Build catalogs report
 //
-// Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the All Items report type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+// Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: The All Items report is limited to 25 million items per catalog.
 //
 catalogs_create_report_response_t*
 CatalogReportsAPI_reportsCreate(apiClient_t *apiClient, catalogs_report_parameters_t *catalogs_report_parameters, char *ad_account_id)
@@ -70,19 +70,35 @@ CatalogReportsAPI_reportsCreate(apiClient_t *apiClient, catalogs_report_paramete
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Response containing the report token");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Entity (e.g., catalog, feed or processing_result) not found");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Can&#39;t access this feature without an existing catalog.");
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_create_report_response_t *elementToReturn = NULL;
@@ -133,7 +149,7 @@ end:
 
 // Get catalogs report
 //
-// This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+// This returns a URL to a report given a token returned from [Build catalogs report](/docs/api/v5/#operation/reports/create). You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 //
 catalogs_report_t*
 CatalogReportsAPI_reportsGet(apiClient_t *apiClient, char *token, char *ad_account_id)
@@ -193,19 +209,31 @@ CatalogReportsAPI_reportsGet(apiClient_t *apiClient, char *token, char *ad_accou
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Response that contains a link to download the report");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","The token you provided is not valid or has expired.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Can&#39;t access this feature without an existing catalog.");
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_report_t *elementToReturn = NULL;
@@ -263,10 +291,10 @@ end:
 
 // List report stats
 //
-// List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+// List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 //
 reports_stats_200_response_t*
-CatalogReportsAPI_reportsStats(apiClient_t *apiClient, reports_stats_parameters_parameter_t *parameters, char *ad_account_id, int *page_size, char *bookmark)
+CatalogReportsAPI_reportsStats(apiClient_t *apiClient, catalogs_report_stats_parameters_t *parameters, char *ad_account_id, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -299,16 +327,15 @@ CatalogReportsAPI_reportsStats(apiClient_t *apiClient, reports_stats_parameters_
     }
 
     // query parameters
-    char *keyQuery_page_size = NULL;
-    char * valueQuery_page_size = NULL;
-    keyValuePair_t *keyPairQuery_page_size = 0;
-    if (page_size)
+    char *keyQuery_parameters = NULL;
+    catalogs_report_stats_parameters_t * valueQuery_parameters ;
+    keyValuePair_t *keyPairQuery_parameters = 0;
+    if (parameters)
     {
-        keyQuery_page_size = strdup("page_size");
-        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
-        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
-        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
+        keyQuery_parameters = strdup("parameters");
+        valueQuery_parameters = (parameters);
+        keyPairQuery_parameters = keyValuePair_create(keyQuery_parameters, &valueQuery_parameters);
+        list_addElement(localVarQueryParameters,keyPairQuery_parameters);
     }
 
     // query parameters
@@ -324,15 +351,16 @@ CatalogReportsAPI_reportsStats(apiClient_t *apiClient, reports_stats_parameters_
     }
 
     // query parameters
-    char *keyQuery_parameters = NULL;
-    reports_stats_parameters_parameter_t * valueQuery_parameters ;
-    keyValuePair_t *keyPairQuery_parameters = 0;
-    if (parameters)
+    char *keyQuery_page_size = NULL;
+    char * valueQuery_page_size = NULL;
+    keyValuePair_t *keyPairQuery_page_size = 0;
+    if (page_size)
     {
-        keyQuery_parameters = strdup("parameters");
-        valueQuery_parameters = (parameters);
-        keyPairQuery_parameters = keyValuePair_create(keyQuery_parameters, &valueQuery_parameters);
-        list_addElement(localVarQueryParameters,keyPairQuery_parameters);
+        keyQuery_page_size = strdup("page_size");
+        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
+        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
+        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
@@ -348,15 +376,31 @@ CatalogReportsAPI_reportsStats(apiClient_t *apiClient, reports_stats_parameters_
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Response containing the diagnostics aggregated counters");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Not authorized to access catalogs");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     reports_stats_200_response_t *elementToReturn = NULL;
@@ -393,17 +437,13 @@ CatalogReportsAPI_reportsStats(apiClient_t *apiClient, reports_stats_parameters_
         keyValuePair_free(keyPairQuery_ad_account_id);
         keyPairQuery_ad_account_id = NULL;
     }
-    if(keyQuery_page_size){
-        free(keyQuery_page_size);
-        keyQuery_page_size = NULL;
+    if(keyQuery_parameters){
+        free(keyQuery_parameters);
+        keyQuery_parameters = NULL;
     }
-    if(valueQuery_page_size){
-        free(valueQuery_page_size);
-        valueQuery_page_size = NULL;
-    }
-    if(keyPairQuery_page_size){
-        keyValuePair_free(keyPairQuery_page_size);
-        keyPairQuery_page_size = NULL;
+    if(keyPairQuery_parameters){
+        keyValuePair_free(keyPairQuery_parameters);
+        keyPairQuery_parameters = NULL;
     }
     if(keyQuery_bookmark){
         free(keyQuery_bookmark);
@@ -417,13 +457,17 @@ CatalogReportsAPI_reportsStats(apiClient_t *apiClient, reports_stats_parameters_
         keyValuePair_free(keyPairQuery_bookmark);
         keyPairQuery_bookmark = NULL;
     }
-    if(keyQuery_parameters){
-        free(keyQuery_parameters);
-        keyQuery_parameters = NULL;
+    if(keyQuery_page_size){
+        free(keyQuery_page_size);
+        keyQuery_page_size = NULL;
     }
-    if(keyPairQuery_parameters){
-        keyValuePair_free(keyPairQuery_parameters);
-        keyPairQuery_parameters = NULL;
+    if(valueQuery_page_size){
+        free(valueQuery_page_size);
+        valueQuery_page_size = NULL;
+    }
+    if(keyPairQuery_page_size){
+        keyValuePair_free(keyPairQuery_page_size);
+        keyPairQuery_page_size = NULL;
     }
     return elementToReturn;
 end:

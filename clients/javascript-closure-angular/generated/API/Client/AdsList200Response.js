@@ -12,7 +12,7 @@ API.Client.AdsList200Response = function() {}
 API.Client.AdsList200Response.prototype.bookmark;
 
 /**
- * @type {!Array<!API.Client.AdResponse>}
+ * @type {!Array<!API.Client.Ad>}
  * @export
  */
 API.Client.AdsList200Response.prototype.items;

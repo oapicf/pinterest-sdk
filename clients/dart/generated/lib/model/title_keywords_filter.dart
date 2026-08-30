@@ -47,15 +47,13 @@ class TitleKeywordsFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "TitleKeywordsFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "TitleKeywordsFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'TITLE_KEYWORDS'), 'Required key "TitleKeywordsFilter[TITLE_KEYWORDS]" is missing from JSON.');
+        assert(json[r'TITLE_KEYWORDS'] != null, 'Required key "TitleKeywordsFilter[TITLE_KEYWORDS]" has a null value in JSON.');
         return true;
       }());
 
       return TitleKeywordsFilter(
-        TITLE_KEYWORDS: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'TITLE_KEYWORDS')!,
+        TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'TITLE_KEYWORDS'])!,
       );
     }
     return null;

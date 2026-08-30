@@ -11,35 +11,32 @@
 part of openapi.api;
 
 /// List of ingestion sources for a conversion event.
-class IngestionSourceOptions {
-  /// Instantiate a new enum with the provided [value].
-  const IngestionSourceOptions._(this.value);
+enum IngestionSourceOptions {
+  TAG._(r'TAG'),
+  MMP._(r'MMP'),
+  FILE_UPLOAD._(r'FILE_UPLOAD'),
+  CONVERSIONS_API._(r'CONVERSIONS_API'),
+  NATIVE._(r'NATIVE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const IngestionSourceOptions._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const TAG = IngestionSourceOptions._(r'TAG');
-  static const MMP = IngestionSourceOptions._(r'MMP');
-  static const FILE_UPLOAD = IngestionSourceOptions._(r'FILE_UPLOAD');
-  static const CONVERSIONS_API = IngestionSourceOptions._(r'CONVERSIONS_API');
-  static const NATIVE = IngestionSourceOptions._(r'NATIVE');
-
-  /// List of all possible values in this [enum][IngestionSourceOptions].
-  static const values = <IngestionSourceOptions>[
-    TAG,
-    MMP,
-    FILE_UPLOAD,
-    CONVERSIONS_API,
-    NATIVE,
-  ];
-
+  /// Returns the instance of [IngestionSourceOptions] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static IngestionSourceOptions? fromJson(dynamic value) => IngestionSourceOptionsTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [IngestionSourceOptions]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<IngestionSourceOptions> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <IngestionSourceOptions>[];
     if (json is List && json.isNotEmpty) {
@@ -61,9 +58,11 @@ class IngestionSourceOptionsTypeTransformer {
 
   const IngestionSourceOptionsTypeTransformer._();
 
-  String encode(IngestionSourceOptions data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(IngestionSourceOptions data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a IngestionSourceOptions.
+  /// Returns the instance of [IngestionSourceOptions] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -72,6 +71,9 @@ class IngestionSourceOptionsTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   IngestionSourceOptions? decode(dynamic data, {bool allowNull = true}) {
+    if (data is IngestionSourceOptions) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'TAG': return IngestionSourceOptions.TAG;
@@ -88,7 +90,7 @@ class IngestionSourceOptionsTypeTransformer {
     return null;
   }
 
-  /// Singleton [IngestionSourceOptionsTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static IngestionSourceOptionsTypeTransformer? _instance;
 }
 

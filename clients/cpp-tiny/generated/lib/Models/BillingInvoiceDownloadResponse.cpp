@@ -85,7 +85,7 @@ BillingInvoiceDownloadResponse::getDownloadUrl()
 }
 
 void
-BillingInvoiceDownloadResponse::setDownloadUrl(std::string  download_url)
+BillingInvoiceDownloadResponse::setDownloadUrl(std::string download_url)
 {
 	this->download_url = download_url;
 }
@@ -97,7 +97,7 @@ BillingInvoiceDownloadResponse::getId()
 }
 
 void
-BillingInvoiceDownloadResponse::setId(std::string  id)
+BillingInvoiceDownloadResponse::setId(std::string id)
 {
 	this->id = id;
 }

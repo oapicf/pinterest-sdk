@@ -2,8 +2,14 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -22,12 +28,16 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class PinMediaSourcePinURL(
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("source_type", required = true) val sourceType: PinMediaSourcePinURL.SourceType,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("source_type")
+    @get:JsonProperty("source_type", required = true) override val sourceType: PinMediaSourcePinURL.SourceType = kotlin.String.pin_url,
 
-    @Schema(example = "null", description = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.")
+    @Schema(description = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("is_affiliate_link")
     @get:JsonProperty("is_affiliate_link") val isAffiliateLink: kotlin.Boolean? = false
-) {
+) : PinMediaSource {
 
     /**
     * 
@@ -42,7 +52,7 @@ data class PinMediaSourcePinURL(
             @JsonCreator
             fun forValue(value: kotlin.String): SourceType {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaSourcePinURL'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'SourceType'")
             }
         }
     }

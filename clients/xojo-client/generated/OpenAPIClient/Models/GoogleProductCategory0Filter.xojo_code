@@ -2,7 +2,7 @@
 Protected Class GoogleProductCategory0Filter
 
 	#tag Property, Flags = &h0
-		GOOGLE_PRODUCT_CATEGORY_0 As CatalogsProductGroupMultipleStringListCriteria
+		GOOGLE_PRODUCT_CATEGORY_0 As OpenAPIClient.Models.CatalogsProductGroupMultipleStringListCriteria
 	#tag EndProperty
 
 

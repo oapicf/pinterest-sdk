@@ -20,6 +20,13 @@ API.Client.OrderLine.prototype.adAccountId;
 API.Client.OrderLine.prototype.budget;
 
 /**
+ * Associated List of campaign IDs.
+ * @type {!Array<!string>}
+ * @export
+ */
+API.Client.OrderLine.prototype.campaignIds;
+
+/**
  * End time. Unix timestamp.
  * @type {!number}
  * @export
@@ -81,11 +88,4 @@ API.Client.OrderLine.prototype.status;
  * @export
  */
 API.Client.OrderLine.prototype.type;
-
-/**
- * Associated List of campaign IDs.
- * @type {!Array<!string>}
- * @export
- */
-API.Client.OrderLine.prototype.campaignIds;
 

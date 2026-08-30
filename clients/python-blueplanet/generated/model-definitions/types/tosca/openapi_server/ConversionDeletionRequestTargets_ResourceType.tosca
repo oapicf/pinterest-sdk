@@ -1,0 +1,44 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionDeletionRequestTargets"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionDeletionRequestTargets"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ConversionDeletionRequestEPIKTargets = openapi_server.resourceTypes.ConversionDeletionRequestEPIKTargets
+  ConversionDeletionRequestUserEmailTargets = openapi_server.resourceTypes.ConversionDeletionRequestUserEmailTargets
+}
+resourceTypes {
+
+  ConversionDeletionRequestTargets {
+    title = ConversionDeletionRequestTargets
+    description = ConversionDeletionRequestTargets
+    derivedFrom = Root
+    properties {
+        user_emails {
+          type = array
+          items.type =  string
+          description = "Array of plain text user emails."
+          optional = true
+        }
+        epiks {
+          type = array
+          items.type =  string
+          description = "Array of EPIKs (Encrypted Pinterest ID Keys). An EPIK is a user match type that utilizes 3P browser localStorage (similar to a third-party cookie)."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionDeletionRequestTargets {
+    title = ConversionDeletionRequestTargets
+    description = ConversionDeletionRequestTargets
+    implements = openapi_server.resourceTypes.ConversionDeletionRequestTargets
+
+  }
+}

@@ -7,43 +7,58 @@
 
 static audience_category_t *audience_category_create_internal(
     char *id,
-    double index,
+    double *index,
     char *key,
     char *name,
-    double ratio,
+    double *ratio,
     list_t *subcategories
     ) {
     audience_category_t *audience_category_local_var = malloc(sizeof(audience_category_t));
     if (!audience_category_local_var) {
         return NULL;
     }
+    memset(audience_category_local_var, 0, sizeof(audience_category_t));
+    audience_category_local_var->_library_owned = 1;
     audience_category_local_var->id = id;
     audience_category_local_var->index = index;
     audience_category_local_var->key = key;
     audience_category_local_var->name = name;
     audience_category_local_var->ratio = ratio;
     audience_category_local_var->subcategories = subcategories;
-
-    audience_category_local_var->_library_owned = 1;
     return audience_category_local_var;
 }
 
 __attribute__((deprecated)) audience_category_t *audience_category_create(
     char *id,
-    double index,
+    double *index,
     char *key,
     char *name,
-    double ratio,
+    double *ratio,
     list_t *subcategories
     ) {
-    return audience_category_create_internal (
+    double *index_copy = NULL;
+    if (index) {
+        index_copy = malloc(sizeof(double));
+        if (index_copy) *index_copy = *index;
+    }
+    double *ratio_copy = NULL;
+    if (ratio) {
+        ratio_copy = malloc(sizeof(double));
+        if (ratio_copy) *ratio_copy = *ratio;
+    }
+    audience_category_t *result = audience_category_create_internal (
         id,
-        index,
+        index_copy,
         key,
         name,
-        ratio,
+        ratio_copy,
         subcategories
         );
+    if (!result) {
+        free(index_copy);
+        free(ratio_copy);
+    }
+    return result;
 }
 
 void audience_category_free(audience_category_t *audience_category) {
@@ -59,6 +74,10 @@ void audience_category_free(audience_category_t *audience_category) {
         free(audience_category->id);
         audience_category->id = NULL;
     }
+    if (audience_category->index) {
+        free(audience_category->index);
+        audience_category->index = NULL;
+    }
     if (audience_category->key) {
         free(audience_category->key);
         audience_category->key = NULL;
@@ -66,6 +85,10 @@ void audience_category_free(audience_category_t *audience_category) {
     if (audience_category->name) {
         free(audience_category->name);
         audience_category->name = NULL;
+    }
+    if (audience_category->ratio) {
+        free(audience_category->ratio);
+        audience_category->ratio = NULL;
     }
     if (audience_category->subcategories) {
         list_ForEach(listEntry, audience_category->subcategories) {
@@ -90,7 +113,7 @@ cJSON *audience_category_convertToJSON(audience_category_t *audience_category) {
 
     // audience_category->index
     if(audience_category->index) {
-    if(cJSON_AddNumberToObject(item, "index", audience_category->index) == NULL) {
+    if(cJSON_AddNumberToObject(item, "index", *audience_category->index) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -114,7 +137,7 @@ cJSON *audience_category_convertToJSON(audience_category_t *audience_category) {
 
     // audience_category->ratio
     if(audience_category->ratio) {
-    if(cJSON_AddNumberToObject(item, "ratio", audience_category->ratio) == NULL) {
+    if(cJSON_AddNumberToObject(item, "ratio", *audience_category->ratio) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -151,6 +174,18 @@ audience_category_t *audience_category_parseFromJSON(cJSON *audience_categoryJSO
 
     audience_category_t *audience_category_local_var = NULL;
 
+    char *id_local_str = NULL;
+
+    // define the local variable for audience_category->index
+    double *index_local_var = NULL;
+
+    char *key_local_str = NULL;
+
+    char *name_local_str = NULL;
+
+    // define the local variable for audience_category->ratio
+    double *ratio_local_var = NULL;
+
     // define the local list for audience_category->subcategories
     list_t *subcategoriesList = NULL;
 
@@ -176,6 +211,12 @@ audience_category_t *audience_category_parseFromJSON(cJSON *audience_categoryJSO
     {
     goto end; //Numeric
     }
+    index_local_var = malloc(sizeof(double));
+    if(!index_local_var)
+    {
+        goto end;
+    }
+    *index_local_var = index->valuedouble;
     }
 
     // audience_category->key
@@ -212,6 +253,12 @@ audience_category_t *audience_category_parseFromJSON(cJSON *audience_categoryJSO
     {
     goto end; //Numeric
     }
+    ratio_local_var = malloc(sizeof(double));
+    if(!ratio_local_var)
+    {
+        goto end;
+    }
+    *ratio_local_var = ratio->valuedouble;
     }
 
     // audience_category->subcategories
@@ -239,17 +286,45 @@ audience_category_t *audience_category_parseFromJSON(cJSON *audience_categoryJSO
     }
 
 
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (key && !cJSON_IsNull(key)) key_local_str = strdup(key->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     audience_category_local_var = audience_category_create_internal (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        index ? index->valuedouble : 0,
-        key && !cJSON_IsNull(key) ? strdup(key->valuestring) : NULL,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        ratio ? ratio->valuedouble : 0,
+        id_local_str,
+        index_local_var,
+        key_local_str,
+        name_local_str,
+        ratio_local_var,
         subcategories ? subcategoriesList : NULL
         );
 
+    if (!audience_category_local_var) {
+        goto end;
+    }
+
     return audience_category_local_var;
 end:
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (index_local_var) {
+        free(index_local_var);
+        index_local_var = NULL;
+    }
+    if (key_local_str) {
+        free(key_local_str);
+        key_local_str = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (ratio_local_var) {
+        free(ratio_local_var);
+        ratio_local_var = NULL;
+    }
     if (subcategoriesList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, subcategoriesList) {

@@ -93,7 +93,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* conversionTagId = 2617998078212; // Id of the conversion tag.
+NSString* conversionTagId = @"conversionTagId_example"; // Id of the conversion tag.
 
 OAIConversionTagsApi*apiInstance = [[OAIConversionTagsApi alloc] init];
 
@@ -255,9 +255,9 @@ Name | Type | Description  | Notes
 # **pageVisitConversionTagsGet**
 ```objc
 -(NSURLSessionTask*) pageVisitConversionTagsGetWithAdAccountId: (NSString*) adAccountId
-    pageSize: (NSNumber*) pageSize
-    order: (NSString*) order
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    order: (OAIPinterestLibPaginationOrder) order
         completionHandler: (void (^)(OAIPageVisitConversionTagsGet200Response* output, NSError* error)) handler;
 ```
 
@@ -277,17 +277,17 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSString* order = ASCENDING; // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
+OAIPinterestLibPaginationOrder order = [[OAIPinterestLibPaginationOrder alloc] init]; // The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 OAIConversionTagsApi*apiInstance = [[OAIConversionTagsApi alloc] init];
 
 // Get page visit conversion tags
 [apiInstance pageVisitConversionTagsGetWithAdAccountId:adAccountId
+              bookmark:bookmark
               pageSize:pageSize
               order:order
-              bookmark:bookmark
           completionHandler: ^(OAIPageVisitConversionTagsGet200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -303,9 +303,9 @@ OAIConversionTagsApi*apiInstance = [[OAIConversionTagsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **order** | **NSString***| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
+ **order** | [**OAIPinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 

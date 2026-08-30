@@ -13,10 +13,10 @@ static item_upsert_batch_record_t *item_upsert_batch_record_create_internal(
     if (!item_upsert_batch_record_local_var) {
         return NULL;
     }
+    memset(item_upsert_batch_record_local_var, 0, sizeof(item_upsert_batch_record_t));
+    item_upsert_batch_record_local_var->_library_owned = 1;
     item_upsert_batch_record_local_var->attributes = attributes;
     item_upsert_batch_record_local_var->item_id = item_id;
-
-    item_upsert_batch_record_local_var->_library_owned = 1;
     return item_upsert_batch_record_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) item_upsert_batch_record_t *item_upsert_batch_record
     item_attributes_request_t *attributes,
     char *item_id
     ) {
-    return item_upsert_batch_record_create_internal (
+    item_upsert_batch_record_t *result = item_upsert_batch_record_create_internal (
         attributes,
         item_id
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void item_upsert_batch_record_free(item_upsert_batch_record_t *item_upsert_batch_record) {
@@ -88,6 +91,8 @@ item_upsert_batch_record_t *item_upsert_batch_record_parseFromJSON(cJSON *item_u
     // define the local variable for item_upsert_batch_record->attributes
     item_attributes_request_t *attributes_local_nonprim = NULL;
 
+    char *item_id_local_str = NULL;
+
     // item_upsert_batch_record->attributes
     cJSON *attributes = cJSON_GetObjectItemCaseSensitive(item_upsert_batch_recordJSON, "attributes");
     if (cJSON_IsNull(attributes)) {
@@ -110,16 +115,26 @@ item_upsert_batch_record_t *item_upsert_batch_record_parseFromJSON(cJSON *item_u
     }
 
 
+    if (item_id && !cJSON_IsNull(item_id)) item_id_local_str = strdup(item_id->valuestring);
+
     item_upsert_batch_record_local_var = item_upsert_batch_record_create_internal (
         attributes ? attributes_local_nonprim : NULL,
-        item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL
+        item_id_local_str
         );
+
+    if (!item_upsert_batch_record_local_var) {
+        goto end;
+    }
 
     return item_upsert_batch_record_local_var;
 end:
     if (attributes_local_nonprim) {
         item_attributes_request_free(attributes_local_nonprim);
         attributes_local_nonprim = NULL;
+    }
+    if (item_id_local_str) {
+        free(item_id_local_str);
+        item_id_local_str = NULL;
     }
     return NULL;
 

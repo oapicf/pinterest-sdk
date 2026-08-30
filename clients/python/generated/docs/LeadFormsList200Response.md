@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[LeadFormResponse]**](LeadFormResponse.md) |  | 
+**items** | [**List[LeadForm]**](LeadForm.md) |  | 
 
 ## Example
 

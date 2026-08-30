@@ -9,7 +9,8 @@
 -export_type([openapi_pin_update/0]).
 
 -type openapi_pin_update() ::
-  [ {'alt_text', binary() }
+  [ {'ai_disclosures', openapi_ai_disclosures_update:openapi_ai_disclosures_update() }
+  | {'alt_text', binary() }
   | {'board_id', binary() }
   | {'board_section_id', binary() }
   | {'carousel_slots', list(openapi_carousel_slot:openapi_carousel_slot()) }
@@ -23,7 +24,8 @@ openapi_pin_update() ->
     openapi_pin_update([]).
 
 openapi_pin_update(Fields) ->
-  Default = [ {'alt_text', binary() }
+  Default = [ {'ai_disclosures', openapi_ai_disclosures_update:openapi_ai_disclosures_update() }
+            , {'alt_text', binary() }
             , {'board_id', binary() }
             , {'board_section_id', binary() }
             , {'carousel_slots', list(openapi_carousel_slot:openapi_carousel_slot()) }

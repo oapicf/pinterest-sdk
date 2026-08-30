@@ -29,6 +29,7 @@ class Permissions(Model):
     CATALOGS_VIEWER = 'CATALOGS_VIEWER'
     PROFILE_PUBLISHER = 'PROFILE_PUBLISHER'
     CONSUMER_USER = 'CONSUMER_USER'
+    BIZ_PINNER_LIST_SHARER = 'BIZ_PINNER_LIST_SHARER'
 
     def __init__(self):  # noqa: E501
         """Permissions - a model defined in Swagger

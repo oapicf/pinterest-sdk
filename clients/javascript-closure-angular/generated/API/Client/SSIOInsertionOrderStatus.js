@@ -1,6 +1,7 @@
 goog.provide('API.Client.SSIOInsertionOrderStatus');
 
 /**
+ * SSIO insertion order status item in a list response.
  * @record
  */
 API.Client.SSIOInsertionOrderStatus = function() {}

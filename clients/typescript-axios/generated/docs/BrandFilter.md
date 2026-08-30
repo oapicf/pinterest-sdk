@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
+**BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
 
 ## Example
 

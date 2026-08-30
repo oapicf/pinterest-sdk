@@ -3,8 +3,6 @@ package models
 // CatalogsReportStats - Diagnostics aggregated numbers
 type CatalogsReportStats struct {
 
-	ReportType string `json:"report_type"`
-
 	// ID of the catalog entity.
 	CatalogId string `json:"catalog_id,omitempty"`
 
@@ -19,6 +17,8 @@ type CatalogsReportStats struct {
 
 	// Number of occurrences of the issue
 	Occurrences int32 `json:"occurrences,omitempty"`
+
+	ReportType string `json:"report_type,omitempty"`
 
 	// An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
 	Severity string `json:"severity,omitempty"`

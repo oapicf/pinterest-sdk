@@ -77,7 +77,7 @@ QuizPinQuestion <- R6::R6Class(
       QuizPinQuestionObject <- list()
       if (!is.null(self$`options`)) {
         QuizPinQuestionObject[["options"]] <-
-          lapply(self$`options`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`options`)
       }
       if (!is.null(self$`question_id`)) {
         QuizPinQuestionObject[["question_id"]] <-
@@ -88,6 +88,29 @@ QuizPinQuestion <- R6::R6Class(
           self$`question_text`
       }
       return(QuizPinQuestionObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

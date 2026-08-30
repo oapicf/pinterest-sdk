@@ -81,6 +81,9 @@ class CustomizableCTAType extends EnumClass {
   @BuiltValueEnumConst(wireName: r'FIND_A_LOCATION')
   static const CustomizableCTAType FIND_A_LOCATION = _$FIND_A_LOCATION;
   /// Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  @BuiltValueEnumConst(wireName: r'FIND_RETAILERS')
+  static const CustomizableCTAType FIND_RETAILERS = _$FIND_RETAILERS;
+  /// Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
   @BuiltValueEnumConst(wireName: r'GET_DEAL')
   static const CustomizableCTAType GET_DEAL = _$GET_DEAL;
   /// Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
@@ -98,6 +101,9 @@ class CustomizableCTAType extends EnumClass {
   /// Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
   @BuiltValueEnumConst(wireName: r'TRY_IT')
   static const CustomizableCTAType TRY_IT = _$TRY_IT;
+  /// Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  @BuiltValueEnumConst(wireName: r'TAKE_A_PEEK')
+  static const CustomizableCTAType TAKE_A_PEEK = _$TAKE_A_PEEK;
 
   static Serializer<CustomizableCTAType> get serializer => _$customizableCTATypeSerializer;
 

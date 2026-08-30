@@ -162,7 +162,7 @@ HotelProcessingRecord::getErrors()
 }
 
 void
-HotelProcessingRecord::setErrors(std::list <ItemValidationEvent> errors)
+HotelProcessingRecord::setErrors(std::list<ItemValidationEvent> errors)
 {
 	this->errors = errors;
 }
@@ -174,7 +174,7 @@ HotelProcessingRecord::getHotelId()
 }
 
 void
-HotelProcessingRecord::setHotelId(std::string  hotel_id)
+HotelProcessingRecord::setHotelId(std::string hotel_id)
 {
 	this->hotel_id = hotel_id;
 }
@@ -186,7 +186,7 @@ HotelProcessingRecord::getStatus()
 }
 
 void
-HotelProcessingRecord::setStatus(ItemProcessingStatus  status)
+HotelProcessingRecord::setStatus(ItemProcessingStatus status)
 {
 	this->status = status;
 }
@@ -198,7 +198,7 @@ HotelProcessingRecord::getWarnings()
 }
 
 void
-HotelProcessingRecord::setWarnings(std::list <ItemValidationEvent> warnings)
+HotelProcessingRecord::setWarnings(std::list<ItemValidationEvent> warnings)
 {
 	this->warnings = warnings;
 }

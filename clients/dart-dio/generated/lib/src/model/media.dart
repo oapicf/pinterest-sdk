@@ -110,8 +110,9 @@ class _$MediaSerializer implements PrimitiveSerializer<Media> {
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(MediaUploadStatus),
-          ) as MediaUploadStatus;
+            specifiedType: const FullType.nullable(MediaUploadStatus),
+          ) as MediaUploadStatus?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         default:

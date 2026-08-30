@@ -1,0 +1,33 @@
+## ConversionsApi
+
+### Create advertiser defined events
+## Create advertiser defined events
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/advertiser_defined_events
+Content-Type: application/json
+Accept: application/json
+
+{
+ "items": "<string>"
+}
+
+
+### Delete advertiser defined events
+## Delete advertiser defined events
+DELETE https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/advertiser_defined_events?eventNames={{eventNames}}
+Accept: application/json
+
+### Get advertiser defined events
+## Get advertiser defined events
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/advertiser_defined_events
+Accept: application/json
+
+### Update advertiser defined events
+## Update advertiser defined events
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/advertiser_defined_events
+Content-Type: application/json
+Accept: application/json
+
+{
+ "items": "<string>"
+}
+

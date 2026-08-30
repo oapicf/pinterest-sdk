@@ -1,0 +1,30 @@
+## CatalogItemsApi
+
+### Get catalogs items (POST)
+## Get catalogs items (POST)
+POST https://api.pinterest.com/v5/catalogs/items?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "country": "<string>",
+ "filters": "<string>",
+ "language": "<string>"
+}
+
+
+### Get item batch status
+## Get item batch status
+GET https://api.pinterest.com/v5/catalogs/items/batch/{{batch_id}}?adAccountId={{adAccountId}}
+Accept: application/json
+
+### Operate on item batch
+## Operate on item batch
+POST https://api.pinterest.com/v5/catalogs/items/batch?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+

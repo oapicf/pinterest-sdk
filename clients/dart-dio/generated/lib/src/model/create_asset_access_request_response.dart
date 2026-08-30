@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/create_asset_access_request_error_message_inner.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/asset_access_request_error.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -14,13 +14,14 @@ part 'create_asset_access_request_response.g.dart';
 ///
 /// Properties:
 /// * [exceptions] - A list of errors associated with the asset access requests. Will be returned if there is an error.
-/// * [invites] 
+/// * [invites] - An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
 @BuiltValue()
 abstract class CreateAssetAccessRequestResponse implements Built<CreateAssetAccessRequestResponse, CreateAssetAccessRequestResponseBuilder> {
   /// A list of errors associated with the asset access requests. Will be returned if there is an error.
   @BuiltValueField(wireName: r'exceptions')
-  BuiltList<CreateAssetAccessRequestErrorMessageInner>? get exceptions;
+  BuiltList<AssetAccessRequestError>? get exceptions;
 
+  /// An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
   @BuiltValueField(wireName: r'invites')
   BuiltMap<String, String>? get invites;
 
@@ -51,14 +52,14 @@ class _$CreateAssetAccessRequestResponseSerializer implements PrimitiveSerialize
       yield r'exceptions';
       yield serializers.serialize(
         object.exceptions,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(CreateAssetAccessRequestErrorMessageInner)]),
+        specifiedType: const FullType(BuiltList, [FullType(AssetAccessRequestError)]),
       );
     }
     if (object.invites != null) {
       yield r'invites';
       yield serializers.serialize(
         object.invites,
-        specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(String)]),
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
       );
     }
   }
@@ -87,8 +88,8 @@ class _$CreateAssetAccessRequestResponseSerializer implements PrimitiveSerialize
         case r'exceptions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(CreateAssetAccessRequestErrorMessageInner)]),
-          ) as BuiltList<CreateAssetAccessRequestErrorMessageInner>?;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(AssetAccessRequestError)]),
+          ) as BuiltList<AssetAccessRequestError>?;
           if (valueDes == null) continue;
           result.exceptions.replace(valueDes);
           break;

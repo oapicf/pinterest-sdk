@@ -122,11 +122,11 @@ public:
 	/*! \brief Set Pinterest couldn't download your feed.
 	 */
 	void setFETCHERROR(int  fETCH_ERROR);
-	/*! \brief Get Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+	/*! \brief Get Your feed wasn't ingested because it hasn't changed in the previous 90 days.
 	 */
 	int getFETCHINACTIVEFEEDERROR();
 
-	/*! \brief Set Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+	/*! \brief Set Your feed wasn't ingested because it hasn't changed in the previous 90 days.
 	 */
 	void setFETCHINACTIVEFEEDERROR(int  fETCH_INACTIVE_FEED_ERROR);
 	/*! \brief Get Some image links are formatted incorrectly.

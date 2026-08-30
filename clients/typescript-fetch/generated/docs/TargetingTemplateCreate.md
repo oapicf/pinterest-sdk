@@ -1,6 +1,7 @@
 
 # TargetingTemplateCreate
 
+Resource create operation model.
 
 ## Properties
 
@@ -10,7 +11,7 @@ Name | Type
 `keywords` | [Array&lt;TargetingTemplateKeyword&gt;](TargetingTemplateKeyword.md)
 `name` | string
 `placementGroup` | [PlacementGroupType](PlacementGroupType.md)
-`targetingAttributes` | [TargetingSpec](TargetingSpec.md)
+`targetingAttributes` | [TargetingSpecOptimal](TargetingSpecOptimal.md)
 `trackingUrls` | [TrackingUrls](TrackingUrls.md)
 
 ## Example
@@ -21,8 +22,8 @@ import type { TargetingTemplateCreate } from ''
 // TODO: Update the object below with actual values
 const example = {
   "autoTargetingEnabled": null,
-  "keywords": [{value=cats, match_type=EXACT_NEGATIVE}],
-  "name": Gaming,
+  "keywords": null,
+  "name": null,
   "placementGroup": null,
   "targetingAttributes": null,
   "trackingUrls": null,

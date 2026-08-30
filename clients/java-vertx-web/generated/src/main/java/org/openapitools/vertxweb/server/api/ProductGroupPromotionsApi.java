@@ -1,14 +1,18 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
+import java.math.BigDecimal;
+import org.openapitools.vertxweb.server.model.EntityStatus;
 import org.openapitools.vertxweb.server.model.Granularity;
 import java.time.LocalDate;
-import org.openapitools.vertxweb.server.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PinterestLibPaginationOrder;
+import org.openapitools.vertxweb.server.model.ProductGroupAnalyticsItems;
 import org.openapitools.vertxweb.server.model.ProductGroupPromotion;
-import org.openapitools.vertxweb.server.model.ProductGroupPromotionCreateRequest;
-import org.openapitools.vertxweb.server.model.ProductGroupPromotionResponse;
-import org.openapitools.vertxweb.server.model.ProductGroupPromotionUpdateRequest;
+import org.openapitools.vertxweb.server.model.ProductGroupPromotions;
+import org.openapitools.vertxweb.server.model.ProductGroupPromotionsCreate;
 import org.openapitools.vertxweb.server.model.ProductGroupPromotionsList200Response;
+import org.openapitools.vertxweb.server.model.ProductGroupPromotionsUpdateWithRequiredBody;
+import org.openapitools.vertxweb.server.model.ReportingColumnSync;
 import org.openapitools.vertxweb.server.model.ReportingTimeZone;
 
 import org.openapitools.vertxweb.server.ApiResponse;
@@ -20,9 +24,9 @@ import java.util.List;
 import java.util.Map;
 
 public interface ProductGroupPromotionsApi  {
-    Future<ApiResponse<ProductGroupPromotionResponse>> productGroupPromotionsCreate(String adAccountId, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest);
+    Future<ApiResponse<ProductGroupPromotions>> productGroupPromotionsCreate(String adAccountId, ProductGroupPromotionsCreate productGroupPromotionsCreate);
     Future<ApiResponse<ProductGroupPromotion>> productGroupPromotionsGet(String adAccountId, String productGroupPromotionId);
-    Future<ApiResponse<ProductGroupPromotionsList200Response>> productGroupPromotionsList(String adAccountId, List<String> productGroupPromotionIds, List<String> entityStatuses, String adGroupId, Integer pageSize, String order, String bookmark);
-    Future<ApiResponse<ProductGroupPromotionResponse>> productGroupPromotionsUpdate(String adAccountId, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest);
-    Future<ApiResponse<List<ProductGroupAnalyticsResponseInner>>> productGroupsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone);
+    Future<ApiResponse<ProductGroupPromotionsList200Response>> productGroupPromotionsList(String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order, List<String> productGroupPromotionIds, List<EntityStatus> entityStatuses, String adGroupId);
+    Future<ApiResponse<ProductGroupPromotions>> productGroupPromotionsUpdate(String adAccountId, ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody);
+    Future<ApiResponse<List<ProductGroupAnalyticsItems>>> productGroupsAnalytics(LocalDate startDate, LocalDate endDate, List<String> productGroupIds, List<ReportingColumnSync> columns, Granularity granularity, String adAccountId, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone);
 }

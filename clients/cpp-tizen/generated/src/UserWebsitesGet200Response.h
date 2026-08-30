@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "UserWebsiteSummary.h"
+#include "UserWebsite.h"
 #include <list>
 #include "Object.h"
 
@@ -56,15 +56,15 @@ public:
 	void setBookmark(std::string  bookmark);
 	/*! \brief Get 
 	 */
-	std::list<UserWebsiteSummary> getItems();
+	std::list<UserWebsite> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <UserWebsiteSummary> items);
+	void setItems(std::list <UserWebsite> items);
 
 private:
 	std::string bookmark;
-	std::list <UserWebsiteSummary>items;
+	std::list <UserWebsite>items;
 	void __init();
 	void __cleanup();
 

@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server IneligibleProductTagsErrorDetails"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a IneligibleProductTagsErrorDetails"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  IneligibleProductTagErrorItem = openapi_server.resourceTypes.IneligibleProductTagErrorItem
+}
+resourceTypes {
+
+  IneligibleProductTagsErrorDetails {
+    title = IneligibleProductTagsErrorDetails
+    description = IneligibleProductTagsErrorDetails
+    derivedFrom = Root
+    properties {
+        product_tags {
+          type = array
+          items.type = IneligibleProductTagErrorItem
+          description = "List of product tags that failed eligibility check."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  IneligibleProductTagsErrorDetails {
+    title = IneligibleProductTagsErrorDetails
+    description = IneligibleProductTagsErrorDetails
+    implements = openapi_server.resourceTypes.IneligibleProductTagsErrorDetails
+
+  }
+}

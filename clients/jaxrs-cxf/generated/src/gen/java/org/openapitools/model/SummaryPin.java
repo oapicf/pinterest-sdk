@@ -25,11 +25,11 @@ public class SummaryPin  {
 
   private String description;
 
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
 
   private String id;
 
-  @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
+  @ApiModelProperty(value = "")
 
   private String link;
 
@@ -65,7 +65,7 @@ public class SummaryPin  {
    * @return description
   **/
   @JsonProperty("description")
-  public String getDescription() {
+ @Size(max=800)  public String getDescription() {
     return description;
   }
 
@@ -83,7 +83,8 @@ public class SummaryPin  {
    * @return id
   **/
   @JsonProperty("id")
-  public String getId() {
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getId() {
     return id;
   }
 
@@ -129,7 +130,7 @@ public class SummaryPin  {
    * @return title
   **/
   @JsonProperty("title")
-  public String getTitle() {
+ @Size(max=100)  public String getTitle() {
     return title;
   }
 
@@ -184,10 +185,7 @@ public class SummaryPin  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

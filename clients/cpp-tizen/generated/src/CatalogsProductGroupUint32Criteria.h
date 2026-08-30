@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "NumericFilterOperatorType.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -54,11 +55,11 @@ public:
 	void setNegated(bool  negated);
 	/*! \brief Get 
 	 */
-	std::string getROperator();
+	NumericFilterOperatorType getROperator();
 
 	/*! \brief Set 
 	 */
-	void setROperator(std::string  r_operator);
+	void setROperator(NumericFilterOperatorType  r_operator);
 	/*! \brief Get 
 	 */
 	int getValue();
@@ -69,7 +70,7 @@ public:
 
 private:
 	bool negated;
-	std::string r_operator;
+	NumericFilterOperatorType r_operator;
 	int value;
 	void __init();
 	void __cleanup();

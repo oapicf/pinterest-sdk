@@ -4,9 +4,9 @@ import org.openapitools.vertxweb.server.model.ConversionEventResponse;
 import org.openapitools.vertxweb.server.model.ConversionTag;
 import org.openapitools.vertxweb.server.model.ConversionTagCreate;
 import org.openapitools.vertxweb.server.model.ConversionTagsList200Response;
-import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.PageVisitConversionTagsGet200Response;
 import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PinterestLibPaginationOrder;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -36,7 +36,7 @@ public class ConversionTagsApiImpl implements ConversionTagsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<PageVisitConversionTagsGet200Response>> pageVisitConversionTagsGet(String adAccountId, Integer pageSize, String order, String bookmark) {
+    public Future<ApiResponse<PageVisitConversionTagsGet200Response>> pageVisitConversionTagsGet(String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order) {
         return Future.failedFuture(new HttpException(501));
     }
 

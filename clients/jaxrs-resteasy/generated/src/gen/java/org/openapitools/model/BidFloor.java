@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Bid floor request and response model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BidFloor   {
   
   private List<Integer> bidFloors = new ArrayList<>();
@@ -33,10 +33,10 @@ public class BidFloor   {
   }
 
   /**
-   * Always the string &#39;bidfloor&#39;
+   * Always the string &#39;bidfloor&#39;.
    **/
   
-  @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'")
+  @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'.")
   @JsonProperty("type")
   public String getType() {
     return type;
@@ -80,10 +80,7 @@ public class BidFloor   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

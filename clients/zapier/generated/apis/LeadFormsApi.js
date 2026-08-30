@@ -1,11 +1,12 @@
 const samples = require('../samples/LeadFormsApi');
-const Error = require('../models/Error');
-const LeadFormArrayResponse = require('../models/LeadFormArrayResponse');
-const LeadFormCreateRequest = require('../models/LeadFormCreateRequest');
-const LeadFormResponse = require('../models/LeadFormResponse');
-const LeadFormTestRequest = require('../models/LeadFormTestRequest');
-const LeadFormTestResponse = require('../models/LeadFormTestResponse');
-const LeadFormUpdateRequest = require('../models/LeadFormUpdateRequest');
+const LeadForm = require('../models/LeadForm');
+const LeadFormBatchUpdate = require('../models/LeadFormBatchUpdate');
+const LeadFormCreate = require('../models/LeadFormCreate');
+const LeadFormTest = require('../models/LeadFormTest');
+const LeadFormTestCreate = require('../models/LeadFormTestCreate');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
+const Pinterest.Lib.PaginationOrder = require('../models/Pinterest.Lib.PaginationOrder');
+const lead_forms_create_200_response = require('../models/lead_forms_create_200_response');
 const lead_forms_list_200_response = require('../models/lead_forms_list_200_response');
 const utils = require('../utils/utils');
 
@@ -15,26 +16,26 @@ module.exports = {
         noun: 'lead_forms',
         display: {
             label: 'Get lead form by id',
-            description: '&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.',
+            description: '**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).',
             hidden: false,
         },
         operation: {
             inputFields: [
+                {
+                    key: 'lead_form_id',
+                    label: 'The ID of this lead form',
+                    type: 'string',
+                    required: true,
+                },
                 {
                     key: 'ad_account_id',
                     label: 'Unique identifier of an ad account.',
                     type: 'string',
                     required: true,
                 },
-                {
-                    key: 'lead_form_id',
-                    label: 'Unique identifier of a lead form.',
-                    type: 'string',
-                    required: true,
-                },
             ],
             outputFields: [
-                ...LeadFormResponse.fields('', false),
+                ...LeadForm.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -56,7 +57,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['LeadFormResponseSample']
+            sample: samples['LeadFormSample']
         }
     },
     leadFormTest/create: {
@@ -71,7 +72,7 @@ module.exports = {
             inputFields: [
                 {
                     key: 'ad_account_id',
-                    label: 'Unique identifier of an ad account.',
+                    label: '',
                     type: 'string',
                     required: true,
                 },
@@ -81,10 +82,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...LeadFormTestRequest.fields(),
+                ...LeadFormTestCreate.fields(),
             ],
             outputFields: [
-                ...LeadFormTestResponse.fields('', false),
+                ...LeadFormTest.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -98,7 +99,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...LeadFormTestRequest.mapping(bundle),
+                        ...LeadFormTestCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -107,7 +108,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['LeadFormTestResponseSample']
+            sample: samples['LeadFormTestSample']
         }
     },
     leadForms/create: {
@@ -115,7 +116,7 @@ module.exports = {
         noun: 'lead_forms',
         display: {
             label: 'Create lead forms',
-            description: '&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.',
+            description: '**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form&#39;s description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).',
             hidden: false,
         },
         operation: {
@@ -127,13 +128,13 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'LeadFormCreateRequest',
-                    label: 'List of lead forms to create, size limit [1, 30].',
+                    key: 'LeadFormCreate',
+                    label: '',
                     type: 'string',
                 }
             ],
             outputFields: [
-                ...LeadFormArrayResponse.fields('', false),
+                ...lead_forms_create_200_response.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -147,7 +148,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...LeadFormCreateRequest.mapping(bundle),
+                        ...LeadFormCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -156,7 +157,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['LeadFormArrayResponseSample']
+            sample: samples['lead_forms_create_200_responseSample']
         }
     },
     leadForms/list: {
@@ -164,7 +165,7 @@ module.exports = {
         noun: 'lead_forms',
         display: {
             label: 'List lead forms',
-            description: '&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  List lead forms associated with an ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.',
+            description: '**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).',
             hidden: false,
         },
         operation: {
@@ -176,24 +177,16 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
-                },
-                {
-                    key: 'order',
-                    label: 'The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.',
-                    type: 'string',
-                    choices: [
-                        'ASCENDING',
-                        'DESCENDING',
-                    ],
-                },
-                {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
                     type: 'string',
                 },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
+                },
+                ....fields(),
             ],
             outputFields: [
                 ...lead_forms_list_200_response.fields('', false),
@@ -208,9 +201,9 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
+                        'bookmark': bundle.inputData?.['bookmark'],
                         'page_size': bundle.inputData?.['page_size'],
                         'order': bundle.inputData?.['order'],
-                        'bookmark': bundle.inputData?.['bookmark'],
                     },
                     body: {
                     },
@@ -229,7 +222,7 @@ module.exports = {
         noun: 'lead_forms',
         display: {
             label: 'Update lead forms',
-            description: '&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.',
+            description: '**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).',
             hidden: false,
         },
         operation: {
@@ -241,13 +234,13 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'LeadFormUpdateRequest',
-                    label: 'List of lead forms to update, size limit [1, 30].',
+                    key: 'LeadFormBatchUpdate',
+                    label: '',
                     type: 'string',
                 }
             ],
             outputFields: [
-                ...LeadFormArrayResponse.fields('', false),
+                ...lead_forms_create_200_response.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -261,7 +254,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...LeadFormUpdateRequest.mapping(bundle),
+                        ...LeadFormBatchUpdate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -270,7 +263,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['LeadFormArrayResponseSample']
+            sample: samples['lead_forms_create_200_responseSample']
         }
     },
 }

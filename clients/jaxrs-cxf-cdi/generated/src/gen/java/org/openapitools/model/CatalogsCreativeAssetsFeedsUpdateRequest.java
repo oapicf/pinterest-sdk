@@ -9,7 +9,6 @@ import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.NullableCurrency;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -25,7 +24,38 @@ import java.util.Objects;
 @ApiModel(description = "Request object for updating a feed.")
 public class CatalogsCreativeAssetsFeedsUpdateRequest   {
   
-  private CatalogsType catalogType;
+
+public enum CatalogTypeEnum {
+
+    @JsonProperty("CREATIVE_ASSETS") CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
+
+
+    private String value;
+
+    CatalogTypeEnum(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private CatalogTypeEnum catalogType;
 
   private CatalogsFeedCredentials credentials;
 
@@ -43,7 +73,7 @@ public class CatalogsCreativeAssetsFeedsUpdateRequest   {
 
   /**
    **/
-  public CatalogsCreativeAssetsFeedsUpdateRequest catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsFeedsUpdateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -52,10 +82,10 @@ public class CatalogsCreativeAssetsFeedsUpdateRequest   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
   @NotNull
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -235,10 +265,7 @@ public class CatalogsCreativeAssetsFeedsUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

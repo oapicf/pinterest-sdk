@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **error_counts** | [**Array&lt;ErrorDetail&gt;**](ErrorDetail.md) | Error counts by error code | [optional] [default to undefined]
 **id** | **string** | Customer List Upload ID. | [default to undefined]
 **operation** | [**UserListOperationType**](UserListOperationType.md) |  | [default to undefined]
-**record_counts** | [**RecordCounts**](RecordCounts.md) |  | [optional] [default to undefined]
-**state** | **string** | Workload processing state | [default to undefined]
+**record_counts** | [**RecordCounts**](RecordCounts.md) | Record processing counts | [optional] [default to undefined]
+**state** | [**WorkloadState**](WorkloadState.md) |  | [default to undefined]
 **updated_time** | **number** | Customer List Upload updated_time. Epoch (seconds). | [default to undefined]
 
 ## Example

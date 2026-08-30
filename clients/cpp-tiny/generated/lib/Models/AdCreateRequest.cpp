@@ -19,15 +19,16 @@ AdCreateRequest::AdCreateRequest()
 	disclosure_url = std::string();
 	grid_click_type = GridClickType();
 	ios_deep_link = std::string();
+	is_carting = bool(false);
 	is_pin_deleted = bool(false);
 	is_removable = bool(false);
 	lead_form_id = std::string();
 	name = std::string();
+	pin_id = std::string();
 	quiz_pin_data = null;
 	status = EntityStatus();
 	tracking_urls = null;
 	view_tracking_url = std::string();
-	pin_id = std::string();
 }
 
 AdCreateRequest::AdCreateRequest(std::string jsonString)
@@ -245,6 +246,19 @@ AdCreateRequest::fromJson(std::string jsonObj)
 
     }
 
+    const char *is_cartingKey = "is_carting";
+
+    if(object.has_key(is_cartingKey))
+    {
+        bourne::json value = object[is_cartingKey];
+
+
+
+        jsonToValue(&is_carting, value, "bool");
+
+
+    }
+
     const char *is_pin_deletedKey = "is_pin_deleted";
 
     if(object.has_key(is_pin_deletedKey))
@@ -297,6 +311,19 @@ AdCreateRequest::fromJson(std::string jsonObj)
 
     }
 
+    const char *pin_idKey = "pin_id";
+
+    if(object.has_key(pin_idKey))
+    {
+        bourne::json value = object[pin_idKey];
+
+
+
+        jsonToValue(&pin_id, value, "std::string");
+
+
+    }
+
     const char *quiz_pin_dataKey = "quiz_pin_data";
 
     if(object.has_key(quiz_pin_dataKey))
@@ -306,7 +333,7 @@ AdCreateRequest::fromJson(std::string jsonObj)
 
 
 
-        QuizPinData* obj = &quiz_pin_data;
+        Object* obj = &quiz_pin_data;
 		obj->fromJson(value.dump());
 
     }
@@ -334,7 +361,7 @@ AdCreateRequest::fromJson(std::string jsonObj)
 
 
 
-        TrackingUrls* obj = &tracking_urls;
+        Object* obj = &tracking_urls;
 		obj->fromJson(value.dump());
 
     }
@@ -348,19 +375,6 @@ AdCreateRequest::fromJson(std::string jsonObj)
 
 
         jsonToValue(&view_tracking_url, value, "std::string");
-
-
-    }
-
-    const char *pin_idKey = "pin_id";
-
-    if(object.has_key(pin_idKey))
-    {
-        bourne::json value = object[pin_idKey];
-
-
-
-        jsonToValue(&pin_id, value, "std::string");
 
 
     }
@@ -495,6 +509,13 @@ AdCreateRequest::toJson()
 
 
 
+    object["is_carting"] = isIsCarting();
+
+
+
+
+
+
     object["is_pin_deleted"] = isIsPinDeleted();
 
 
@@ -517,6 +538,13 @@ AdCreateRequest::toJson()
 
 
     object["name"] = getName();
+
+
+
+
+
+
+    object["pin_id"] = getPinId();
 
 
 
@@ -548,13 +576,6 @@ AdCreateRequest::toJson()
 
 
 
-
-
-
-    object["pin_id"] = getPinId();
-
-
-
     return object;
 
 }
@@ -566,7 +587,7 @@ AdCreateRequest::getAdGroupId()
 }
 
 void
-AdCreateRequest::setAdGroupId(std::string  ad_group_id)
+AdCreateRequest::setAdGroupId(std::string ad_group_id)
 {
 	this->ad_group_id = ad_group_id;
 }
@@ -578,7 +599,7 @@ AdCreateRequest::getAndroidDeepLink()
 }
 
 void
-AdCreateRequest::setAndroidDeepLink(std::string  android_deep_link)
+AdCreateRequest::setAndroidDeepLink(std::string android_deep_link)
 {
 	this->android_deep_link = android_deep_link;
 }
@@ -590,7 +611,7 @@ AdCreateRequest::getCarouselAndroidDeepLinks()
 }
 
 void
-AdCreateRequest::setCarouselAndroidDeepLinks(std::list <std::string> carousel_android_deep_links)
+AdCreateRequest::setCarouselAndroidDeepLinks(std::list<std::string> carousel_android_deep_links)
 {
 	this->carousel_android_deep_links = carousel_android_deep_links;
 }
@@ -602,7 +623,7 @@ AdCreateRequest::getCarouselDestinationUrls()
 }
 
 void
-AdCreateRequest::setCarouselDestinationUrls(std::list <std::string> carousel_destination_urls)
+AdCreateRequest::setCarouselDestinationUrls(std::list<std::string> carousel_destination_urls)
 {
 	this->carousel_destination_urls = carousel_destination_urls;
 }
@@ -614,7 +635,7 @@ AdCreateRequest::getCarouselIosDeepLinks()
 }
 
 void
-AdCreateRequest::setCarouselIosDeepLinks(std::list <std::string> carousel_ios_deep_links)
+AdCreateRequest::setCarouselIosDeepLinks(std::list<std::string> carousel_ios_deep_links)
 {
 	this->carousel_ios_deep_links = carousel_ios_deep_links;
 }
@@ -626,7 +647,7 @@ AdCreateRequest::getClickTrackingUrl()
 }
 
 void
-AdCreateRequest::setClickTrackingUrl(std::string  click_tracking_url)
+AdCreateRequest::setClickTrackingUrl(std::string click_tracking_url)
 {
 	this->click_tracking_url = click_tracking_url;
 }
@@ -638,7 +659,7 @@ AdCreateRequest::getCreativeType()
 }
 
 void
-AdCreateRequest::setCreativeType(CreativeType  creative_type)
+AdCreateRequest::setCreativeType(CreativeType creative_type)
 {
 	this->creative_type = creative_type;
 }
@@ -650,7 +671,7 @@ AdCreateRequest::getCustomizableCtaType()
 }
 
 void
-AdCreateRequest::setCustomizableCtaType(CustomizableCTAType  customizable_cta_type)
+AdCreateRequest::setCustomizableCtaType(CustomizableCTAType customizable_cta_type)
 {
 	this->customizable_cta_type = customizable_cta_type;
 }
@@ -662,7 +683,7 @@ AdCreateRequest::getDestinationUrl()
 }
 
 void
-AdCreateRequest::setDestinationUrl(std::string  destination_url)
+AdCreateRequest::setDestinationUrl(std::string destination_url)
 {
 	this->destination_url = destination_url;
 }
@@ -674,7 +695,7 @@ AdCreateRequest::getDisclosureType()
 }
 
 void
-AdCreateRequest::setDisclosureType(DisclosureType  disclosure_type)
+AdCreateRequest::setDisclosureType(DisclosureType disclosure_type)
 {
 	this->disclosure_type = disclosure_type;
 }
@@ -686,7 +707,7 @@ AdCreateRequest::getDisclosureUrl()
 }
 
 void
-AdCreateRequest::setDisclosureUrl(std::string  disclosure_url)
+AdCreateRequest::setDisclosureUrl(std::string disclosure_url)
 {
 	this->disclosure_url = disclosure_url;
 }
@@ -698,7 +719,7 @@ AdCreateRequest::getGridClickType()
 }
 
 void
-AdCreateRequest::setGridClickType(GridClickType  grid_click_type)
+AdCreateRequest::setGridClickType(GridClickType grid_click_type)
 {
 	this->grid_click_type = grid_click_type;
 }
@@ -710,9 +731,21 @@ AdCreateRequest::getIosDeepLink()
 }
 
 void
-AdCreateRequest::setIosDeepLink(std::string  ios_deep_link)
+AdCreateRequest::setIosDeepLink(std::string ios_deep_link)
 {
 	this->ios_deep_link = ios_deep_link;
+}
+
+bool
+AdCreateRequest::isIsCarting()
+{
+	return is_carting;
+}
+
+void
+AdCreateRequest::setIsCarting(bool is_carting)
+{
+	this->is_carting = is_carting;
 }
 
 bool
@@ -722,7 +755,7 @@ AdCreateRequest::isIsPinDeleted()
 }
 
 void
-AdCreateRequest::setIsPinDeleted(bool  is_pin_deleted)
+AdCreateRequest::setIsPinDeleted(bool is_pin_deleted)
 {
 	this->is_pin_deleted = is_pin_deleted;
 }
@@ -734,7 +767,7 @@ AdCreateRequest::isIsRemovable()
 }
 
 void
-AdCreateRequest::setIsRemovable(bool  is_removable)
+AdCreateRequest::setIsRemovable(bool is_removable)
 {
 	this->is_removable = is_removable;
 }
@@ -746,7 +779,7 @@ AdCreateRequest::getLeadFormId()
 }
 
 void
-AdCreateRequest::setLeadFormId(std::string  lead_form_id)
+AdCreateRequest::setLeadFormId(std::string lead_form_id)
 {
 	this->lead_form_id = lead_form_id;
 }
@@ -758,19 +791,31 @@ AdCreateRequest::getName()
 }
 
 void
-AdCreateRequest::setName(std::string  name)
+AdCreateRequest::setName(std::string name)
 {
 	this->name = name;
 }
 
-QuizPinData
+std::string
+AdCreateRequest::getPinId()
+{
+	return pin_id;
+}
+
+void
+AdCreateRequest::setPinId(std::string pin_id)
+{
+	this->pin_id = pin_id;
+}
+
+Object
 AdCreateRequest::getQuizPinData()
 {
 	return quiz_pin_data;
 }
 
 void
-AdCreateRequest::setQuizPinData(QuizPinData  quiz_pin_data)
+AdCreateRequest::setQuizPinData(Object quiz_pin_data)
 {
 	this->quiz_pin_data = quiz_pin_data;
 }
@@ -782,19 +827,19 @@ AdCreateRequest::getStatus()
 }
 
 void
-AdCreateRequest::setStatus(EntityStatus  status)
+AdCreateRequest::setStatus(EntityStatus status)
 {
 	this->status = status;
 }
 
-TrackingUrls
+Object
 AdCreateRequest::getTrackingUrls()
 {
 	return tracking_urls;
 }
 
 void
-AdCreateRequest::setTrackingUrls(TrackingUrls  tracking_urls)
+AdCreateRequest::setTrackingUrls(Object tracking_urls)
 {
 	this->tracking_urls = tracking_urls;
 }
@@ -806,21 +851,9 @@ AdCreateRequest::getViewTrackingUrl()
 }
 
 void
-AdCreateRequest::setViewTrackingUrl(std::string  view_tracking_url)
+AdCreateRequest::setViewTrackingUrl(std::string view_tracking_url)
 {
 	this->view_tracking_url = view_tracking_url;
-}
-
-std::string
-AdCreateRequest::getPinId()
-{
-	return pin_id;
-}
-
-void
-AdCreateRequest::setPinId(std::string  pin_id)
-{
-	this->pin_id = pin_id;
 }
 
 

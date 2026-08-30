@@ -27,6 +27,12 @@
       "type": ["null", "int"],
       "doc": "Creation date in epoch format.",
       "default": null
+    },
+    {
+      "name": "reporting_conversion_event",
+      "type": ["null", "string"],
+      "doc": "For advertiser-defined events, the reporting event label shown in optimization UIs.",
+      "default": null
     }
   ]
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// PromotionType Determines the displayed promotion text along with what parameters (if any) are needed to complete the template. This list is not finalized, and will be updated as new types are supported.
+// PromotionType Determines the displayed promotion text along with what parameters (if any) are needed to complete the template.
 type PromotionType string
 
 // List of PromotionType

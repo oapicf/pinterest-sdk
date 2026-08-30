@@ -1,10 +1,10 @@
 #import "OAICustomerListUploadsApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
+#import "OAICustomerListUpload.h"
 #import "OAICustomerListUploadCreateRequest.h"
 #import "OAICustomerListUploadCreateResponse.h"
-#import "OAICustomerListUploadResponse.h"
-#import "OAIError.h"
+#import "OAIPinterestLibError.h"
 
 
 @interface OAICustomerListUploadsApi ()
@@ -54,12 +54,12 @@ NSInteger kOAICustomerListUploadsApiMissingParamErrorCode = 234513;
 
 ///
 /// Create customer list upload
-/// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a>  <p>Create a customer list upload request for multipart S3 upload.</p> <p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p> <p><b>Please review the <u><a href=\"/docs/api/v5/customer_lists-update/\" target=\"_blank\">update customer list endpoint</a></u> documentation for additional information.</b></p>
-///  @param adAccountId Unique identifier of an ad account. 
+/// Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
+///  @param adAccountId  
 ///
-///  @param customerListId Unique identifier of a customer list 
+///  @param customerListId Customer list ID. 
 ///
-///  @param customerListUploadCreateRequest Parameters to create a customer list upload request 
+///  @param customerListUploadCreateRequest  
 ///
 ///  @returns OAICustomerListUploadCreateResponse*
 ///
@@ -154,19 +154,19 @@ NSInteger kOAICustomerListUploadsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get customer list upload
-/// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Get the metadata for a given upload by its ID.</p>
-///  @param adAccountId Unique identifier of an ad account. 
+/// Get the metadata for a given upload by its ID.
+///  @param adAccountId  
 ///
-///  @param customerListId Unique identifier of a customer list 
+///  @param customerListId Customer list ID. 
 ///
-///  @param customerListUploadId Unique identifier of a customer list upload 
+///  @param customerListUploadId Customer List Upload ID. 
 ///
-///  @returns OAICustomerListUploadResponse*
+///  @returns OAICustomerListUpload*
 ///
 -(NSURLSessionTask*) customerListUploadsGetWithAdAccountId: (NSString*) adAccountId
     customerListId: (NSString*) customerListId
     customerListUploadId: (NSString*) customerListUploadId
-    completionHandler: (void (^)(OAICustomerListUploadResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAICustomerListUpload* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -246,29 +246,29 @@ NSInteger kOAICustomerListUploadsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAICustomerListUploadResponse*"
+                              responseType: @"OAICustomerListUpload*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAICustomerListUploadResponse*)data, error);
+                                    handler((OAICustomerListUpload*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Run customer list upload
-/// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Begin processing a customer list upload.</p>
-///  @param adAccountId Unique identifier of an ad account. 
+/// Begin processing a customer list upload.
+///  @param adAccountId  
 ///
-///  @param customerListId Unique identifier of a customer list 
+///  @param customerListId Customer list ID. 
 ///
-///  @param customerListUploadId Unique identifier of a customer list upload 
+///  @param customerListUploadId Customer List Upload ID. 
 ///
-///  @returns OAICustomerListUploadResponse*
+///  @returns OAICustomerListUpload*
 ///
 -(NSURLSessionTask*) customerListUploadsRunWithAdAccountId: (NSString*) adAccountId
     customerListId: (NSString*) customerListId
     customerListUploadId: (NSString*) customerListUploadId
-    completionHandler: (void (^)(OAICustomerListUploadResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAICustomerListUpload* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -348,10 +348,10 @@ NSInteger kOAICustomerListUploadsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAICustomerListUploadResponse*"
+                              responseType: @"OAICustomerListUpload*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAICustomerListUploadResponse*)data, error);
+                                    handler((OAICustomerListUpload*)data, error);
                                 }
                             }];
 }

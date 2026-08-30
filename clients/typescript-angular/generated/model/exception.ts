@@ -10,13 +10,7 @@
 
 
 export interface Exception { 
-    /**
-     * Exception error code.
-     */
     code?: number;
-    /**
-     * Exception message.
-     */
-    message?: string;
+    message: string;
 }
 

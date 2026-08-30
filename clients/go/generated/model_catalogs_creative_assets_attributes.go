@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -42,8 +42,10 @@ type CatalogsCreativeAssetsAttributes struct {
 	Link *string `json:"link,omitempty"`
 	// The name of the creative assets.
 	Title *string `json:"title,omitempty"`
-	// Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+	// Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
 	Visibility NullableString `json:"visibility,omitempty"`
+	// AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
+	AiDisclosures []CatalogsAiContentDisclosure `json:"ai_disclosures,omitempty"`
 	// The creative assets image.
 	ImageLink *string `json:"image_link,omitempty"`
 	// The creative assets video.
@@ -541,6 +543,38 @@ func (o *CatalogsCreativeAssetsAttributes) UnsetVisibility() {
 	o.Visibility.Unset()
 }
 
+// GetAiDisclosures returns the AiDisclosures field value if set, zero value otherwise.
+func (o *CatalogsCreativeAssetsAttributes) GetAiDisclosures() []CatalogsAiContentDisclosure {
+	if o == nil || IsNil(o.AiDisclosures) {
+		var ret []CatalogsAiContentDisclosure
+		return ret
+	}
+	return o.AiDisclosures
+}
+
+// GetAiDisclosuresOk returns a tuple with the AiDisclosures field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreativeAssetsAttributes) GetAiDisclosuresOk() ([]CatalogsAiContentDisclosure, bool) {
+	if o == nil || IsNil(o.AiDisclosures) {
+		return nil, false
+	}
+	return o.AiDisclosures, true
+}
+
+// HasAiDisclosures returns a boolean if a field has been set.
+func (o *CatalogsCreativeAssetsAttributes) HasAiDisclosures() bool {
+	if o != nil && !IsNil(o.AiDisclosures) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiDisclosures gets a reference to the given []CatalogsAiContentDisclosure and assigns it to the AiDisclosures field.
+func (o *CatalogsCreativeAssetsAttributes) SetAiDisclosures(v []CatalogsAiContentDisclosure) {
+	o.AiDisclosures = v
+}
+
 // GetImageLink returns the ImageLink field value if set, zero value otherwise.
 func (o *CatalogsCreativeAssetsAttributes) GetImageLink() string {
 	if o == nil || IsNil(o.ImageLink) {
@@ -650,6 +684,9 @@ func (o CatalogsCreativeAssetsAttributes) ToMap() (map[string]interface{}, error
 	}
 	if o.Visibility.IsSet() {
 		toSerialize["visibility"] = o.Visibility.Get()
+	}
+	if !IsNil(o.AiDisclosures) {
+		toSerialize["ai_disclosures"] = o.AiDisclosures
 	}
 	if !IsNil(o.ImageLink) {
 		toSerialize["image_link"] = o.ImageLink

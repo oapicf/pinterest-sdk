@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Error encountered while estimating delivery for a campaign.",
+  "name": "CampaignPlanningResponseError",
+  "fields": [
+    {
+      "name": "code",
+      "type": ["null", "model.CampaignPlanningResponseErrorCode"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "Human-readable error message.",
+      "default": null
+    }
+  ]
+
+}

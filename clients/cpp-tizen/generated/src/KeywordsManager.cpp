@@ -89,6 +89,31 @@ static bool countryKeywordsMetricsGetProcessor(MemoryStruct_s p_chunk, long code
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -218,14 +243,14 @@ bool KeywordsManager::countryKeywordsMetricsGetSync(char * accessToken,
 static bool keywordsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(KeywordsResponse, Error, void* )
-	= reinterpret_cast<void(*)(KeywordsResponse, Error, void* )> (voidHandler);
+	void(* handler)(Keywords, Error, void* )
+	= reinterpret_cast<void(*)(Keywords, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	KeywordsResponse out;
+	Keywords out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -233,18 +258,48 @@ static bool keywordsCreateProcessor(MemoryStruct_s p_chunk, long code, char* err
 
 
 
-		if (isprimitive("KeywordsResponse")) {
+		if (isprimitive("Keywords")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "KeywordsResponse", "KeywordsResponse");
+			jsonToValue(&out, pJson, "Keywords", "Keywords");
 			json_node_free(pJson);
 
-			if ("KeywordsResponse" == "std::string") {
+			if ("Keywords" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -276,8 +331,8 @@ static bool keywordsCreateProcessor(MemoryStruct_s p_chunk, long code, char* err
 }
 
 static bool keywordsCreateHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<KeywordsRequest> keywordsRequest, 
-	void(* handler)(KeywordsResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<KeywordsCreate> keywordsCreate, 
+	void(* handler)(Keywords, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -297,11 +352,11 @@ static bool keywordsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("KeywordsRequest")) {
-		node = converttoJson(&keywordsRequest, "KeywordsRequest", "");
+	if (isprimitive("KeywordsCreate")) {
+		node = converttoJson(&keywordsCreate, "KeywordsCreate", "");
 	}
 	
-	char *jsonStr =  keywordsRequest.toJson();
+	char *jsonStr =  keywordsCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -366,22 +421,22 @@ static bool keywordsCreateHelper(char * accessToken,
 
 
 bool KeywordsManager::keywordsCreateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<KeywordsRequest> keywordsRequest, 
-	void(* handler)(KeywordsResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<KeywordsCreate> keywordsCreate, 
+	void(* handler)(Keywords, Error, void* )
 	, void* userData)
 {
 	return keywordsCreateHelper(accessToken,
-	adAccountId, keywordsRequest, 
+	adAccountId, keywordsCreate, 
 	handler, userData, true);
 }
 
 bool KeywordsManager::keywordsCreateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<KeywordsRequest> keywordsRequest, 
-	void(* handler)(KeywordsResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<KeywordsCreate> keywordsCreate, 
+	void(* handler)(Keywords, Error, void* )
 	, void* userData)
 {
 	return keywordsCreateHelper(accessToken,
-	adAccountId, keywordsRequest, 
+	adAccountId, keywordsCreate, 
 	handler, userData, false);
 }
 
@@ -426,6 +481,31 @@ static bool keywordsGetProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -446,7 +526,7 @@ static bool keywordsGetProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 }
 
 static bool keywordsGetHelper(char * accessToken,
-	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<std::string> adGroupIds, std::list<MatchType> matchTypes, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<std::string> adGroupIds, std::list<MatchType> matchTypes, std::string bookmark, int pageSize, 
 	void(* handler)(Keywords_get_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -496,17 +576,17 @@ static bool keywordsGetHelper(char * accessToken,
 	}
 	
 
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
-
-
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
 	}
 
 	string mBody = "";
@@ -569,36 +649,36 @@ static bool keywordsGetHelper(char * accessToken,
 
 
 bool KeywordsManager::keywordsGetAsync(char * accessToken,
-	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<std::string> adGroupIds, std::list<MatchType> matchTypes, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<std::string> adGroupIds, std::list<MatchType> matchTypes, std::string bookmark, int pageSize, 
 	void(* handler)(Keywords_get_200_response, Error, void* )
 	, void* userData)
 {
 	return keywordsGetHelper(accessToken,
-	adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark, 
+	adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool KeywordsManager::keywordsGetSync(char * accessToken,
-	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<std::string> adGroupIds, std::list<MatchType> matchTypes, int pageSize, std::string bookmark, 
+	std::string adAccountId, std::string campaignId, std::string adGroupId, std::list<std::string> adGroupIds, std::list<MatchType> matchTypes, std::string bookmark, int pageSize, 
 	void(* handler)(Keywords_get_200_response, Error, void* )
 	, void* userData)
 {
 	return keywordsGetHelper(accessToken,
-	adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark, 
+	adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, bookmark, pageSize, 
 	handler, userData, false);
 }
 
 static bool keywordsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(KeywordsResponse, Error, void* )
-	= reinterpret_cast<void(*)(KeywordsResponse, Error, void* )> (voidHandler);
+	void(* handler)(Keywords, Error, void* )
+	= reinterpret_cast<void(*)(Keywords, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	KeywordsResponse out;
+	Keywords out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -606,18 +686,43 @@ static bool keywordsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* err
 
 
 
-		if (isprimitive("KeywordsResponse")) {
+		if (isprimitive("Keywords")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "KeywordsResponse", "KeywordsResponse");
+			jsonToValue(&out, pJson, "Keywords", "Keywords");
 			json_node_free(pJson);
 
-			if ("KeywordsResponse" == "std::string") {
+			if ("Keywords" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -649,8 +754,8 @@ static bool keywordsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* err
 }
 
 static bool keywordsUpdateHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<KeywordUpdateBody> keywordUpdateBody, 
-	void(* handler)(KeywordsResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<KeywordsUpdate> keywordsUpdate, 
+	void(* handler)(Keywords, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -670,11 +775,11 @@ static bool keywordsUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("KeywordUpdateBody")) {
-		node = converttoJson(&keywordUpdateBody, "KeywordUpdateBody", "");
+	if (isprimitive("KeywordsUpdate")) {
+		node = converttoJson(&keywordsUpdate, "KeywordsUpdate", "");
 	}
 	
-	char *jsonStr =  keywordUpdateBody.toJson();
+	char *jsonStr =  keywordsUpdate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -739,22 +844,22 @@ static bool keywordsUpdateHelper(char * accessToken,
 
 
 bool KeywordsManager::keywordsUpdateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<KeywordUpdateBody> keywordUpdateBody, 
-	void(* handler)(KeywordsResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<KeywordsUpdate> keywordsUpdate, 
+	void(* handler)(Keywords, Error, void* )
 	, void* userData)
 {
 	return keywordsUpdateHelper(accessToken,
-	adAccountId, keywordUpdateBody, 
+	adAccountId, keywordsUpdate, 
 	handler, userData, true);
 }
 
 bool KeywordsManager::keywordsUpdateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<KeywordUpdateBody> keywordUpdateBody, 
-	void(* handler)(KeywordsResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<KeywordsUpdate> keywordsUpdate, 
+	void(* handler)(Keywords, Error, void* )
 	, void* userData)
 {
 	return keywordsUpdateHelper(accessToken,
-	adAccountId, keywordUpdateBody, 
+	adAccountId, keywordsUpdate, 
 	handler, userData, false);
 }
 
@@ -804,6 +909,26 @@ static bool trendingKeywordsListProcessor(MemoryStruct_s p_chunk, long code, cha
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -824,7 +949,7 @@ static bool trendingKeywordsListProcessor(MemoryStruct_s p_chunk, long code, cha
 }
 
 static bool trendingKeywordsListHelper(char * accessToken,
-	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, bool includePrediction, bool includeDemographics, 
+	TrendsSupportedRegion region, TrendType trendType, std::list<TrendsL1Interest> interests, std::list<TrendsGenderFilter> genders, std::list<TrendsAgeBucket> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, bool includeDemographics, 
 	void(* handler)(TrendingKeywordsResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -842,8 +967,8 @@ static bool trendingKeywordsListHelper(char * accessToken,
 	string itemAtq;
 	
 	for (std::list
-	<std::string>::iterator queryIter = interests.begin(); queryIter != interests.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<TrendsL1Interest>::iterator queryIter = interests.begin(); queryIter != interests.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "TrendsL1Interest");
 		if( itemAt.empty()){
 			continue;
 		}
@@ -851,8 +976,8 @@ static bool trendingKeywordsListHelper(char * accessToken,
 	}
 	
 	for (std::list
-	<std::string>::iterator queryIter = genders.begin(); queryIter != genders.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<TrendsGenderFilter>::iterator queryIter = genders.begin(); queryIter != genders.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "TrendsGenderFilter");
 		if( itemAt.empty()){
 			continue;
 		}
@@ -860,8 +985,8 @@ static bool trendingKeywordsListHelper(char * accessToken,
 	}
 	
 	for (std::list
-	<std::string>::iterator queryIter = ages.begin(); queryIter != ages.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<TrendsAgeBucket>::iterator queryIter = ages.begin(); queryIter != ages.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "TrendsAgeBucket");
 		if( itemAt.empty()){
 			continue;
 		}
@@ -889,13 +1014,6 @@ static bool trendingKeywordsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("limit", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("limit");
-	}
-
-
-	itemAtq = stringify(&includePrediction, "bool");
-	queryParams.insert(pair<string, string>("include_prediction", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("include_prediction");
 	}
 
 
@@ -971,22 +1089,22 @@ static bool trendingKeywordsListHelper(char * accessToken,
 
 
 bool KeywordsManager::trendingKeywordsListAsync(char * accessToken,
-	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, bool includePrediction, bool includeDemographics, 
+	TrendsSupportedRegion region, TrendType trendType, std::list<TrendsL1Interest> interests, std::list<TrendsGenderFilter> genders, std::list<TrendsAgeBucket> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, bool includeDemographics, 
 	void(* handler)(TrendingKeywordsResponse, Error, void* )
 	, void* userData)
 {
 	return trendingKeywordsListHelper(accessToken,
-	region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics, 
+	region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includeDemographics, 
 	handler, userData, true);
 }
 
 bool KeywordsManager::trendingKeywordsListSync(char * accessToken,
-	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, bool includePrediction, bool includeDemographics, 
+	TrendsSupportedRegion region, TrendType trendType, std::list<TrendsL1Interest> interests, std::list<TrendsGenderFilter> genders, std::list<TrendsAgeBucket> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, bool includeDemographics, 
 	void(* handler)(TrendingKeywordsResponse, Error, void* )
 	, void* userData)
 {
 	return trendingKeywordsListHelper(accessToken,
-	region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics, 
+	region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includeDemographics, 
 	handler, userData, false);
 }
 

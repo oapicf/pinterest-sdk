@@ -24,12 +24,12 @@ resourceTypes {
         }
         accepted_terms_time {
           type =  string
-          description = "The UTC timestamp (to the nearest sec) of when terms were accepted"
+          description = "The UTC timestamp (to the nearest second) when terms were accepted."
           optional = false
         }
         ads_manager_order_line_id {
           type =  string
-          description = "Ads manager OrderLineId"
+          description = "Ads manager order line id"
           optional = false
         }
         agency_link {
@@ -39,7 +39,7 @@ resourceTypes {
         }
         bill_to_company_name {
           type =  string
-          description = "Bill To Company name"
+          description = "Bill-to company name"
           optional = false
         }
         billing_contact_email {
@@ -59,7 +59,7 @@ resourceTypes {
         }
         budget_amount {
           type =  
-          description = "If Budget order line, the budget amount."
+          description = "If budget order line, the budget amount."
           optional = false
         }
         currency_info {
@@ -74,7 +74,7 @@ resourceTypes {
         }
         estimated_monthly_spend {
           type =  
-          description = "If Ongoing (perpetual) order line, the estimated monthly spend"
+          description = "If ongoing (perpetual) order line, the estimated monthly spend."
           optional = false
         }
         last_modified_date_time {
@@ -89,12 +89,12 @@ resourceTypes {
         }
         media_contact_firstname {
           type =  string
-          description = "Billing contact first name"
+          description = "Billing media contact first name"
           optional = false
         }
         media_contact_lastname {
           type =  string
-          description = "Billing contact first name"
+          description = "Billing media contact last name"
           optional = false
         }
         order_name {
@@ -114,12 +114,12 @@ resourceTypes {
         }
         po_number {
           type =  string
-          description = "The po number"
+          description = "The PO number"
           optional = false
         }
         salesforce_order_line_id {
           type =  string
-          description = "OrderLineId in SFDC"
+          description = "Order line id in SFDC"
           optional = false
         }
         start_date {

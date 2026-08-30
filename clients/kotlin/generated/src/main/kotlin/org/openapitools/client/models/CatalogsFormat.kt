@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,7 +30,7 @@ import com.squareup.moshi.JsonClass
 /**
  * The file format of a feed.
  *
- * Values: TSV,CSV,XML
+ * Values: TSV,CSV,XML,INTEGRATION
  */
 
 @JsonClass(generateAdapter = false)
@@ -35,7 +43,10 @@ enum class CatalogsFormat(val value: kotlin.String) {
     CSV("CSV"),
 
     @Json(name = "XML")
-    XML("XML");
+    XML("XML"),
+
+    @Json(name = "INTEGRATION")
+    INTEGRATION("INTEGRATION");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -57,7 +68,7 @@ enum class CatalogsFormat(val value: kotlin.String) {
          */
         fun decode(data: kotlin.Any?): CatalogsFormat? = data?.let {
           val normalizedData = "$it".lowercase()
-          values().firstOrNull { value ->
+          entries.firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()
           }
         }

@@ -28,8 +28,7 @@ abstract class CatalogsProductGroupMultipleMediaTypesCriteria implements Built<C
   factory CatalogsProductGroupMultipleMediaTypesCriteria([void updates(CatalogsProductGroupMultipleMediaTypesCriteriaBuilder b)]) = _$CatalogsProductGroupMultipleMediaTypesCriteria;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CatalogsProductGroupMultipleMediaTypesCriteriaBuilder b) => b
-      ..negated = false;
+  static void _defaults(CatalogsProductGroupMultipleMediaTypesCriteriaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<CatalogsProductGroupMultipleMediaTypesCriteria> get serializer => _$CatalogsProductGroupMultipleMediaTypesCriteriaSerializer();
@@ -85,8 +84,9 @@ class _$CatalogsProductGroupMultipleMediaTypesCriteriaSerializer implements Prim
         case r'negated':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.negated = valueDes;
           break;
         case r'values':

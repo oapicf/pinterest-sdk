@@ -6,20 +6,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.RelatedTermsRelatedTermsListInner;
+import org.openapitools.vertxweb.server.model.RelatedTermsRelatedTermsListItems;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class RelatedTerms   {
   
   private String id;
   private Integer relatedTermCount;
-  private List<RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>();
+  private List<RelatedTermsRelatedTermsListItems> relatedTermsList = new ArrayList<>();
 
   public RelatedTerms () {
 
   }
 
-  public RelatedTerms (String id, Integer relatedTermCount, List<RelatedTermsRelatedTermsListInner> relatedTermsList) {
+  public RelatedTerms (String id, Integer relatedTermCount, List<RelatedTermsRelatedTermsListItems> relatedTermsList) {
     this.id = id;
     this.relatedTermCount = relatedTermCount;
     this.relatedTermsList = relatedTermsList;
@@ -45,10 +45,10 @@ public class RelatedTerms   {
 
     
   @JsonProperty("related_terms_list")
-  public List<RelatedTermsRelatedTermsListInner> getRelatedTermsList() {
+  public List<RelatedTermsRelatedTermsListItems> getRelatedTermsList() {
     return relatedTermsList;
   }
-  public void setRelatedTermsList(List<RelatedTermsRelatedTermsListInner> relatedTermsList) {
+  public void setRelatedTermsList(List<RelatedTermsRelatedTermsListItems> relatedTermsList) {
     this.relatedTermsList = relatedTermsList;
   }
 
@@ -89,9 +89,6 @@ public class RelatedTerms   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

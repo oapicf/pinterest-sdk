@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.vertxweb.server.model.CatalogsHotelReportParameters;
 import org.openapitools.vertxweb.server.model.CatalogsHotelReportParametersReport;
 import org.openapitools.vertxweb.server.model.CatalogsRetailReportParameters;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 
 /**
  * Report parameters
@@ -15,24 +14,42 @@ import org.openapitools.vertxweb.server.model.CatalogsType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsReportParameters   {
   
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    HOTEL("HOTEL");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private CatalogsHotelReportParametersReport report;
 
   public CatalogsReportParameters () {
 
   }
 
-  public CatalogsReportParameters (CatalogsType catalogType, CatalogsHotelReportParametersReport report) {
+  public CatalogsReportParameters (CatalogTypeEnum catalogType, CatalogsHotelReportParametersReport report) {
     this.catalogType = catalogType;
     this.report = report;
   }
 
     
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -80,9 +97,6 @@ public class CatalogsReportParameters   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -77,7 +77,7 @@ ItemAttributes::ItemAttributes()
 	free_shipping_limit = std::string();
 	gender = std::string();
 	google_product_category = std::string();
-	gtin = UpdatableItemAttributes_gtin();
+	gtin = UpdatableItemAttributesGtin();
 	id = std::string();
 	installment_price = std::string();
 	ios_deep_link = std::string();
@@ -110,6 +110,7 @@ ItemAttributes::ItemAttributes()
 	variant_names = std::list<std::string>();
 	variant_values = std::list<std::string>();
 	additional_image_link = std::list<std::string>();
+	ai_disclosures = std::list<CatalogsAiContentDisclosure>();
 	image_link = std::list<std::string>();
 	video_link = std::string();
 }
@@ -1061,7 +1062,7 @@ ItemAttributes::fromJson(std::string jsonObj)
 
 
 
-        UpdatableItemAttributes_gtin* obj = &gtin;
+        UpdatableItemAttributesGtin* obj = &gtin;
 		obj->fromJson(value.dump());
 
     }
@@ -1505,6 +1506,28 @@ ItemAttributes::fromJson(std::string jsonObj)
             additional_image_link_list.push_back(element);
         }
         additional_image_link = additional_image_link_list;
+
+
+    }
+
+    const char *ai_disclosuresKey = "ai_disclosures";
+
+    if(object.has_key(ai_disclosuresKey))
+    {
+        bourne::json value = object[ai_disclosuresKey];
+
+
+        std::list<CatalogsAiContentDisclosure> ai_disclosures_list;
+        CatalogsAiContentDisclosure element;
+        for(auto& var : value.array_range())
+        {
+
+
+            element.fromJson(var.dump());
+
+            ai_disclosures_list.push_back(element);
+        }
+        ai_disclosures = ai_disclosures_list;
 
 
     }
@@ -2310,6 +2333,21 @@ ItemAttributes::toJson()
 
 
 
+    std::list<CatalogsAiContentDisclosure> ai_disclosures_list = getAiDisclosures();
+    bourne::json ai_disclosures_arr = bourne::json::array();
+
+    for(auto& var : ai_disclosures_list)
+    {
+        CatalogsAiContentDisclosure obj = var;
+        ai_disclosures_arr.append(obj.toJson());
+    }
+    object["ai_disclosures"] = ai_disclosures_arr;
+
+
+
+
+
+
     std::list<std::string> image_link_list = getImageLink();
     bourne::json image_link_arr = bourne::json::array();
 
@@ -2342,7 +2380,7 @@ ItemAttributes::getAdImage0Link()
 }
 
 void
-ItemAttributes::setAdImage0Link(std::string  ad_image_0_link)
+ItemAttributes::setAdImage0Link(std::string ad_image_0_link)
 {
 	this->ad_image_0_link = ad_image_0_link;
 }
@@ -2354,7 +2392,7 @@ ItemAttributes::getAdImage0Tag()
 }
 
 void
-ItemAttributes::setAdImage0Tag(std::string  ad_image_0_tag)
+ItemAttributes::setAdImage0Tag(std::string ad_image_0_tag)
 {
 	this->ad_image_0_tag = ad_image_0_tag;
 }
@@ -2366,7 +2404,7 @@ ItemAttributes::getAdImage10Link()
 }
 
 void
-ItemAttributes::setAdImage10Link(std::string  ad_image_10_link)
+ItemAttributes::setAdImage10Link(std::string ad_image_10_link)
 {
 	this->ad_image_10_link = ad_image_10_link;
 }
@@ -2378,7 +2416,7 @@ ItemAttributes::getAdImage10Tag()
 }
 
 void
-ItemAttributes::setAdImage10Tag(std::string  ad_image_10_tag)
+ItemAttributes::setAdImage10Tag(std::string ad_image_10_tag)
 {
 	this->ad_image_10_tag = ad_image_10_tag;
 }
@@ -2390,7 +2428,7 @@ ItemAttributes::getAdImage11Link()
 }
 
 void
-ItemAttributes::setAdImage11Link(std::string  ad_image_11_link)
+ItemAttributes::setAdImage11Link(std::string ad_image_11_link)
 {
 	this->ad_image_11_link = ad_image_11_link;
 }
@@ -2402,7 +2440,7 @@ ItemAttributes::getAdImage11Tag()
 }
 
 void
-ItemAttributes::setAdImage11Tag(std::string  ad_image_11_tag)
+ItemAttributes::setAdImage11Tag(std::string ad_image_11_tag)
 {
 	this->ad_image_11_tag = ad_image_11_tag;
 }
@@ -2414,7 +2452,7 @@ ItemAttributes::getAdImage12Link()
 }
 
 void
-ItemAttributes::setAdImage12Link(std::string  ad_image_12_link)
+ItemAttributes::setAdImage12Link(std::string ad_image_12_link)
 {
 	this->ad_image_12_link = ad_image_12_link;
 }
@@ -2426,7 +2464,7 @@ ItemAttributes::getAdImage12Tag()
 }
 
 void
-ItemAttributes::setAdImage12Tag(std::string  ad_image_12_tag)
+ItemAttributes::setAdImage12Tag(std::string ad_image_12_tag)
 {
 	this->ad_image_12_tag = ad_image_12_tag;
 }
@@ -2438,7 +2476,7 @@ ItemAttributes::getAdImage13Link()
 }
 
 void
-ItemAttributes::setAdImage13Link(std::string  ad_image_13_link)
+ItemAttributes::setAdImage13Link(std::string ad_image_13_link)
 {
 	this->ad_image_13_link = ad_image_13_link;
 }
@@ -2450,7 +2488,7 @@ ItemAttributes::getAdImage13Tag()
 }
 
 void
-ItemAttributes::setAdImage13Tag(std::string  ad_image_13_tag)
+ItemAttributes::setAdImage13Tag(std::string ad_image_13_tag)
 {
 	this->ad_image_13_tag = ad_image_13_tag;
 }
@@ -2462,7 +2500,7 @@ ItemAttributes::getAdImage14Link()
 }
 
 void
-ItemAttributes::setAdImage14Link(std::string  ad_image_14_link)
+ItemAttributes::setAdImage14Link(std::string ad_image_14_link)
 {
 	this->ad_image_14_link = ad_image_14_link;
 }
@@ -2474,7 +2512,7 @@ ItemAttributes::getAdImage14Tag()
 }
 
 void
-ItemAttributes::setAdImage14Tag(std::string  ad_image_14_tag)
+ItemAttributes::setAdImage14Tag(std::string ad_image_14_tag)
 {
 	this->ad_image_14_tag = ad_image_14_tag;
 }
@@ -2486,7 +2524,7 @@ ItemAttributes::getAdImage15Link()
 }
 
 void
-ItemAttributes::setAdImage15Link(std::string  ad_image_15_link)
+ItemAttributes::setAdImage15Link(std::string ad_image_15_link)
 {
 	this->ad_image_15_link = ad_image_15_link;
 }
@@ -2498,7 +2536,7 @@ ItemAttributes::getAdImage15Tag()
 }
 
 void
-ItemAttributes::setAdImage15Tag(std::string  ad_image_15_tag)
+ItemAttributes::setAdImage15Tag(std::string ad_image_15_tag)
 {
 	this->ad_image_15_tag = ad_image_15_tag;
 }
@@ -2510,7 +2548,7 @@ ItemAttributes::getAdImage16Link()
 }
 
 void
-ItemAttributes::setAdImage16Link(std::string  ad_image_16_link)
+ItemAttributes::setAdImage16Link(std::string ad_image_16_link)
 {
 	this->ad_image_16_link = ad_image_16_link;
 }
@@ -2522,7 +2560,7 @@ ItemAttributes::getAdImage16Tag()
 }
 
 void
-ItemAttributes::setAdImage16Tag(std::string  ad_image_16_tag)
+ItemAttributes::setAdImage16Tag(std::string ad_image_16_tag)
 {
 	this->ad_image_16_tag = ad_image_16_tag;
 }
@@ -2534,7 +2572,7 @@ ItemAttributes::getAdImage17Link()
 }
 
 void
-ItemAttributes::setAdImage17Link(std::string  ad_image_17_link)
+ItemAttributes::setAdImage17Link(std::string ad_image_17_link)
 {
 	this->ad_image_17_link = ad_image_17_link;
 }
@@ -2546,7 +2584,7 @@ ItemAttributes::getAdImage17Tag()
 }
 
 void
-ItemAttributes::setAdImage17Tag(std::string  ad_image_17_tag)
+ItemAttributes::setAdImage17Tag(std::string ad_image_17_tag)
 {
 	this->ad_image_17_tag = ad_image_17_tag;
 }
@@ -2558,7 +2596,7 @@ ItemAttributes::getAdImage18Link()
 }
 
 void
-ItemAttributes::setAdImage18Link(std::string  ad_image_18_link)
+ItemAttributes::setAdImage18Link(std::string ad_image_18_link)
 {
 	this->ad_image_18_link = ad_image_18_link;
 }
@@ -2570,7 +2608,7 @@ ItemAttributes::getAdImage18Tag()
 }
 
 void
-ItemAttributes::setAdImage18Tag(std::string  ad_image_18_tag)
+ItemAttributes::setAdImage18Tag(std::string ad_image_18_tag)
 {
 	this->ad_image_18_tag = ad_image_18_tag;
 }
@@ -2582,7 +2620,7 @@ ItemAttributes::getAdImage19Link()
 }
 
 void
-ItemAttributes::setAdImage19Link(std::string  ad_image_19_link)
+ItemAttributes::setAdImage19Link(std::string ad_image_19_link)
 {
 	this->ad_image_19_link = ad_image_19_link;
 }
@@ -2594,7 +2632,7 @@ ItemAttributes::getAdImage19Tag()
 }
 
 void
-ItemAttributes::setAdImage19Tag(std::string  ad_image_19_tag)
+ItemAttributes::setAdImage19Tag(std::string ad_image_19_tag)
 {
 	this->ad_image_19_tag = ad_image_19_tag;
 }
@@ -2606,7 +2644,7 @@ ItemAttributes::getAdImage1Link()
 }
 
 void
-ItemAttributes::setAdImage1Link(std::string  ad_image_1_link)
+ItemAttributes::setAdImage1Link(std::string ad_image_1_link)
 {
 	this->ad_image_1_link = ad_image_1_link;
 }
@@ -2618,7 +2656,7 @@ ItemAttributes::getAdImage1Tag()
 }
 
 void
-ItemAttributes::setAdImage1Tag(std::string  ad_image_1_tag)
+ItemAttributes::setAdImage1Tag(std::string ad_image_1_tag)
 {
 	this->ad_image_1_tag = ad_image_1_tag;
 }
@@ -2630,7 +2668,7 @@ ItemAttributes::getAdImage2Link()
 }
 
 void
-ItemAttributes::setAdImage2Link(std::string  ad_image_2_link)
+ItemAttributes::setAdImage2Link(std::string ad_image_2_link)
 {
 	this->ad_image_2_link = ad_image_2_link;
 }
@@ -2642,7 +2680,7 @@ ItemAttributes::getAdImage2Tag()
 }
 
 void
-ItemAttributes::setAdImage2Tag(std::string  ad_image_2_tag)
+ItemAttributes::setAdImage2Tag(std::string ad_image_2_tag)
 {
 	this->ad_image_2_tag = ad_image_2_tag;
 }
@@ -2654,7 +2692,7 @@ ItemAttributes::getAdImage3Link()
 }
 
 void
-ItemAttributes::setAdImage3Link(std::string  ad_image_3_link)
+ItemAttributes::setAdImage3Link(std::string ad_image_3_link)
 {
 	this->ad_image_3_link = ad_image_3_link;
 }
@@ -2666,7 +2704,7 @@ ItemAttributes::getAdImage3Tag()
 }
 
 void
-ItemAttributes::setAdImage3Tag(std::string  ad_image_3_tag)
+ItemAttributes::setAdImage3Tag(std::string ad_image_3_tag)
 {
 	this->ad_image_3_tag = ad_image_3_tag;
 }
@@ -2678,7 +2716,7 @@ ItemAttributes::getAdImage4Link()
 }
 
 void
-ItemAttributes::setAdImage4Link(std::string  ad_image_4_link)
+ItemAttributes::setAdImage4Link(std::string ad_image_4_link)
 {
 	this->ad_image_4_link = ad_image_4_link;
 }
@@ -2690,7 +2728,7 @@ ItemAttributes::getAdImage4Tag()
 }
 
 void
-ItemAttributes::setAdImage4Tag(std::string  ad_image_4_tag)
+ItemAttributes::setAdImage4Tag(std::string ad_image_4_tag)
 {
 	this->ad_image_4_tag = ad_image_4_tag;
 }
@@ -2702,7 +2740,7 @@ ItemAttributes::getAdImage5Link()
 }
 
 void
-ItemAttributes::setAdImage5Link(std::string  ad_image_5_link)
+ItemAttributes::setAdImage5Link(std::string ad_image_5_link)
 {
 	this->ad_image_5_link = ad_image_5_link;
 }
@@ -2714,7 +2752,7 @@ ItemAttributes::getAdImage5Tag()
 }
 
 void
-ItemAttributes::setAdImage5Tag(std::string  ad_image_5_tag)
+ItemAttributes::setAdImage5Tag(std::string ad_image_5_tag)
 {
 	this->ad_image_5_tag = ad_image_5_tag;
 }
@@ -2726,7 +2764,7 @@ ItemAttributes::getAdImage6Link()
 }
 
 void
-ItemAttributes::setAdImage6Link(std::string  ad_image_6_link)
+ItemAttributes::setAdImage6Link(std::string ad_image_6_link)
 {
 	this->ad_image_6_link = ad_image_6_link;
 }
@@ -2738,7 +2776,7 @@ ItemAttributes::getAdImage6Tag()
 }
 
 void
-ItemAttributes::setAdImage6Tag(std::string  ad_image_6_tag)
+ItemAttributes::setAdImage6Tag(std::string ad_image_6_tag)
 {
 	this->ad_image_6_tag = ad_image_6_tag;
 }
@@ -2750,7 +2788,7 @@ ItemAttributes::getAdImage7Link()
 }
 
 void
-ItemAttributes::setAdImage7Link(std::string  ad_image_7_link)
+ItemAttributes::setAdImage7Link(std::string ad_image_7_link)
 {
 	this->ad_image_7_link = ad_image_7_link;
 }
@@ -2762,7 +2800,7 @@ ItemAttributes::getAdImage7Tag()
 }
 
 void
-ItemAttributes::setAdImage7Tag(std::string  ad_image_7_tag)
+ItemAttributes::setAdImage7Tag(std::string ad_image_7_tag)
 {
 	this->ad_image_7_tag = ad_image_7_tag;
 }
@@ -2774,7 +2812,7 @@ ItemAttributes::getAdImage8Link()
 }
 
 void
-ItemAttributes::setAdImage8Link(std::string  ad_image_8_link)
+ItemAttributes::setAdImage8Link(std::string ad_image_8_link)
 {
 	this->ad_image_8_link = ad_image_8_link;
 }
@@ -2786,7 +2824,7 @@ ItemAttributes::getAdImage8Tag()
 }
 
 void
-ItemAttributes::setAdImage8Tag(std::string  ad_image_8_tag)
+ItemAttributes::setAdImage8Tag(std::string ad_image_8_tag)
 {
 	this->ad_image_8_tag = ad_image_8_tag;
 }
@@ -2798,7 +2836,7 @@ ItemAttributes::getAdImage9Link()
 }
 
 void
-ItemAttributes::setAdImage9Link(std::string  ad_image_9_link)
+ItemAttributes::setAdImage9Link(std::string ad_image_9_link)
 {
 	this->ad_image_9_link = ad_image_9_link;
 }
@@ -2810,7 +2848,7 @@ ItemAttributes::getAdImage9Tag()
 }
 
 void
-ItemAttributes::setAdImage9Tag(std::string  ad_image_9_tag)
+ItemAttributes::setAdImage9Tag(std::string ad_image_9_tag)
 {
 	this->ad_image_9_tag = ad_image_9_tag;
 }
@@ -2822,7 +2860,7 @@ ItemAttributes::getAdLink()
 }
 
 void
-ItemAttributes::setAdLink(std::string  ad_link)
+ItemAttributes::setAdLink(std::string ad_link)
 {
 	this->ad_link = ad_link;
 }
@@ -2834,7 +2872,7 @@ ItemAttributes::getAdVideo0Link()
 }
 
 void
-ItemAttributes::setAdVideo0Link(std::string  ad_video_0_link)
+ItemAttributes::setAdVideo0Link(std::string ad_video_0_link)
 {
 	this->ad_video_0_link = ad_video_0_link;
 }
@@ -2846,7 +2884,7 @@ ItemAttributes::getAdVideo0Tag()
 }
 
 void
-ItemAttributes::setAdVideo0Tag(std::string  ad_video_0_tag)
+ItemAttributes::setAdVideo0Tag(std::string ad_video_0_tag)
 {
 	this->ad_video_0_tag = ad_video_0_tag;
 }
@@ -2858,7 +2896,7 @@ ItemAttributes::getAdVideo1Link()
 }
 
 void
-ItemAttributes::setAdVideo1Link(std::string  ad_video_1_link)
+ItemAttributes::setAdVideo1Link(std::string ad_video_1_link)
 {
 	this->ad_video_1_link = ad_video_1_link;
 }
@@ -2870,7 +2908,7 @@ ItemAttributes::getAdVideo1Tag()
 }
 
 void
-ItemAttributes::setAdVideo1Tag(std::string  ad_video_1_tag)
+ItemAttributes::setAdVideo1Tag(std::string ad_video_1_tag)
 {
 	this->ad_video_1_tag = ad_video_1_tag;
 }
@@ -2882,7 +2920,7 @@ ItemAttributes::getAdVideo2Link()
 }
 
 void
-ItemAttributes::setAdVideo2Link(std::string  ad_video_2_link)
+ItemAttributes::setAdVideo2Link(std::string ad_video_2_link)
 {
 	this->ad_video_2_link = ad_video_2_link;
 }
@@ -2894,7 +2932,7 @@ ItemAttributes::getAdVideo2Tag()
 }
 
 void
-ItemAttributes::setAdVideo2Tag(std::string  ad_video_2_tag)
+ItemAttributes::setAdVideo2Tag(std::string ad_video_2_tag)
 {
 	this->ad_video_2_tag = ad_video_2_tag;
 }
@@ -2906,7 +2944,7 @@ ItemAttributes::isAdult()
 }
 
 void
-ItemAttributes::setAdult(bool  adult)
+ItemAttributes::setAdult(bool adult)
 {
 	this->adult = adult;
 }
@@ -2918,7 +2956,7 @@ ItemAttributes::getAgeGroup()
 }
 
 void
-ItemAttributes::setAgeGroup(std::string  age_group)
+ItemAttributes::setAgeGroup(std::string age_group)
 {
 	this->age_group = age_group;
 }
@@ -2930,7 +2968,7 @@ ItemAttributes::getAndroidDeepLink()
 }
 
 void
-ItemAttributes::setAndroidDeepLink(std::string  android_deep_link)
+ItemAttributes::setAndroidDeepLink(std::string android_deep_link)
 {
 	this->android_deep_link = android_deep_link;
 }
@@ -2942,7 +2980,7 @@ ItemAttributes::getAvailability()
 }
 
 void
-ItemAttributes::setAvailability(std::string  availability)
+ItemAttributes::setAvailability(std::string availability)
 {
 	this->availability = availability;
 }
@@ -2954,7 +2992,7 @@ ItemAttributes::getAverageReviewRating()
 }
 
 void
-ItemAttributes::setAverageReviewRating(long  average_review_rating)
+ItemAttributes::setAverageReviewRating(long average_review_rating)
 {
 	this->average_review_rating = average_review_rating;
 }
@@ -2966,7 +3004,7 @@ ItemAttributes::getBrand()
 }
 
 void
-ItemAttributes::setBrand(std::string  brand)
+ItemAttributes::setBrand(std::string brand)
 {
 	this->brand = brand;
 }
@@ -2978,7 +3016,7 @@ ItemAttributes::isCheckoutEnabled()
 }
 
 void
-ItemAttributes::setCheckoutEnabled(bool  checkout_enabled)
+ItemAttributes::setCheckoutEnabled(bool checkout_enabled)
 {
 	this->checkout_enabled = checkout_enabled;
 }
@@ -2990,7 +3028,7 @@ ItemAttributes::getColor()
 }
 
 void
-ItemAttributes::setColor(std::string  color)
+ItemAttributes::setColor(std::string color)
 {
 	this->color = color;
 }
@@ -3002,7 +3040,7 @@ ItemAttributes::getCondition()
 }
 
 void
-ItemAttributes::setCondition(std::string  condition)
+ItemAttributes::setCondition(std::string condition)
 {
 	this->condition = condition;
 }
@@ -3014,7 +3052,7 @@ ItemAttributes::getCustomLabel0()
 }
 
 void
-ItemAttributes::setCustomLabel0(std::string  custom_label_0)
+ItemAttributes::setCustomLabel0(std::string custom_label_0)
 {
 	this->custom_label_0 = custom_label_0;
 }
@@ -3026,7 +3064,7 @@ ItemAttributes::getCustomLabel1()
 }
 
 void
-ItemAttributes::setCustomLabel1(std::string  custom_label_1)
+ItemAttributes::setCustomLabel1(std::string custom_label_1)
 {
 	this->custom_label_1 = custom_label_1;
 }
@@ -3038,7 +3076,7 @@ ItemAttributes::getCustomLabel2()
 }
 
 void
-ItemAttributes::setCustomLabel2(std::string  custom_label_2)
+ItemAttributes::setCustomLabel2(std::string custom_label_2)
 {
 	this->custom_label_2 = custom_label_2;
 }
@@ -3050,7 +3088,7 @@ ItemAttributes::getCustomLabel3()
 }
 
 void
-ItemAttributes::setCustomLabel3(std::string  custom_label_3)
+ItemAttributes::setCustomLabel3(std::string custom_label_3)
 {
 	this->custom_label_3 = custom_label_3;
 }
@@ -3062,7 +3100,7 @@ ItemAttributes::getCustomLabel4()
 }
 
 void
-ItemAttributes::setCustomLabel4(std::string  custom_label_4)
+ItemAttributes::setCustomLabel4(std::string custom_label_4)
 {
 	this->custom_label_4 = custom_label_4;
 }
@@ -3074,7 +3112,7 @@ ItemAttributes::getCustomNumber0()
 }
 
 void
-ItemAttributes::setCustomNumber0(int  custom_number_0)
+ItemAttributes::setCustomNumber0(int custom_number_0)
 {
 	this->custom_number_0 = custom_number_0;
 }
@@ -3086,7 +3124,7 @@ ItemAttributes::getCustomNumber1()
 }
 
 void
-ItemAttributes::setCustomNumber1(int  custom_number_1)
+ItemAttributes::setCustomNumber1(int custom_number_1)
 {
 	this->custom_number_1 = custom_number_1;
 }
@@ -3098,7 +3136,7 @@ ItemAttributes::getCustomNumber2()
 }
 
 void
-ItemAttributes::setCustomNumber2(int  custom_number_2)
+ItemAttributes::setCustomNumber2(int custom_number_2)
 {
 	this->custom_number_2 = custom_number_2;
 }
@@ -3110,7 +3148,7 @@ ItemAttributes::getCustomNumber3()
 }
 
 void
-ItemAttributes::setCustomNumber3(int  custom_number_3)
+ItemAttributes::setCustomNumber3(int custom_number_3)
 {
 	this->custom_number_3 = custom_number_3;
 }
@@ -3122,7 +3160,7 @@ ItemAttributes::getCustomNumber4()
 }
 
 void
-ItemAttributes::setCustomNumber4(int  custom_number_4)
+ItemAttributes::setCustomNumber4(int custom_number_4)
 {
 	this->custom_number_4 = custom_number_4;
 }
@@ -3134,7 +3172,7 @@ ItemAttributes::getDescription()
 }
 
 void
-ItemAttributes::setDescription(std::string  description)
+ItemAttributes::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -3146,7 +3184,7 @@ ItemAttributes::isFreeShippingLabel()
 }
 
 void
-ItemAttributes::setFreeShippingLabel(bool  free_shipping_label)
+ItemAttributes::setFreeShippingLabel(bool free_shipping_label)
 {
 	this->free_shipping_label = free_shipping_label;
 }
@@ -3158,7 +3196,7 @@ ItemAttributes::getFreeShippingLimit()
 }
 
 void
-ItemAttributes::setFreeShippingLimit(std::string  free_shipping_limit)
+ItemAttributes::setFreeShippingLimit(std::string free_shipping_limit)
 {
 	this->free_shipping_limit = free_shipping_limit;
 }
@@ -3170,7 +3208,7 @@ ItemAttributes::getGender()
 }
 
 void
-ItemAttributes::setGender(std::string  gender)
+ItemAttributes::setGender(std::string gender)
 {
 	this->gender = gender;
 }
@@ -3182,19 +3220,19 @@ ItemAttributes::getGoogleProductCategory()
 }
 
 void
-ItemAttributes::setGoogleProductCategory(std::string  google_product_category)
+ItemAttributes::setGoogleProductCategory(std::string google_product_category)
 {
 	this->google_product_category = google_product_category;
 }
 
-UpdatableItemAttributes_gtin
+UpdatableItemAttributesGtin
 ItemAttributes::getGtin()
 {
 	return gtin;
 }
 
 void
-ItemAttributes::setGtin(UpdatableItemAttributes_gtin  gtin)
+ItemAttributes::setGtin(UpdatableItemAttributesGtin gtin)
 {
 	this->gtin = gtin;
 }
@@ -3206,7 +3244,7 @@ ItemAttributes::getId()
 }
 
 void
-ItemAttributes::setId(std::string  id)
+ItemAttributes::setId(std::string id)
 {
 	this->id = id;
 }
@@ -3218,7 +3256,7 @@ ItemAttributes::getInstallmentPrice()
 }
 
 void
-ItemAttributes::setInstallmentPrice(std::string  installment_price)
+ItemAttributes::setInstallmentPrice(std::string installment_price)
 {
 	this->installment_price = installment_price;
 }
@@ -3230,7 +3268,7 @@ ItemAttributes::getIosDeepLink()
 }
 
 void
-ItemAttributes::setIosDeepLink(std::string  ios_deep_link)
+ItemAttributes::setIosDeepLink(std::string ios_deep_link)
 {
 	this->ios_deep_link = ios_deep_link;
 }
@@ -3242,7 +3280,7 @@ ItemAttributes::getItemGroupId()
 }
 
 void
-ItemAttributes::setItemGroupId(std::string  item_group_id)
+ItemAttributes::setItemGroupId(std::string item_group_id)
 {
 	this->item_group_id = item_group_id;
 }
@@ -3254,7 +3292,7 @@ ItemAttributes::getLastUpdatedTime()
 }
 
 void
-ItemAttributes::setLastUpdatedTime(long  last_updated_time)
+ItemAttributes::setLastUpdatedTime(long last_updated_time)
 {
 	this->last_updated_time = last_updated_time;
 }
@@ -3266,7 +3304,7 @@ ItemAttributes::getLink()
 }
 
 void
-ItemAttributes::setLink(std::string  link)
+ItemAttributes::setLink(std::string link)
 {
 	this->link = link;
 }
@@ -3278,7 +3316,7 @@ ItemAttributes::getMaterial()
 }
 
 void
-ItemAttributes::setMaterial(std::string  material)
+ItemAttributes::setMaterial(std::string material)
 {
 	this->material = material;
 }
@@ -3290,7 +3328,7 @@ ItemAttributes::getMinAdPrice()
 }
 
 void
-ItemAttributes::setMinAdPrice(std::string  min_ad_price)
+ItemAttributes::setMinAdPrice(std::string min_ad_price)
 {
 	this->min_ad_price = min_ad_price;
 }
@@ -3302,7 +3340,7 @@ ItemAttributes::getMobileLink()
 }
 
 void
-ItemAttributes::setMobileLink(std::string  mobile_link)
+ItemAttributes::setMobileLink(std::string mobile_link)
 {
 	this->mobile_link = mobile_link;
 }
@@ -3314,7 +3352,7 @@ ItemAttributes::getMpn()
 }
 
 void
-ItemAttributes::setMpn(std::string  mpn)
+ItemAttributes::setMpn(std::string mpn)
 {
 	this->mpn = mpn;
 }
@@ -3326,7 +3364,7 @@ ItemAttributes::getNumberOfRatings()
 }
 
 void
-ItemAttributes::setNumberOfRatings(int  number_of_ratings)
+ItemAttributes::setNumberOfRatings(int number_of_ratings)
 {
 	this->number_of_ratings = number_of_ratings;
 }
@@ -3338,7 +3376,7 @@ ItemAttributes::getNumberOfReviews()
 }
 
 void
-ItemAttributes::setNumberOfReviews(int  number_of_reviews)
+ItemAttributes::setNumberOfReviews(int number_of_reviews)
 {
 	this->number_of_reviews = number_of_reviews;
 }
@@ -3350,7 +3388,7 @@ ItemAttributes::getPattern()
 }
 
 void
-ItemAttributes::setPattern(std::string  pattern)
+ItemAttributes::setPattern(std::string pattern)
 {
 	this->pattern = pattern;
 }
@@ -3362,7 +3400,7 @@ ItemAttributes::getPrice()
 }
 
 void
-ItemAttributes::setPrice(std::string  price)
+ItemAttributes::setPrice(std::string price)
 {
 	this->price = price;
 }
@@ -3374,7 +3412,7 @@ ItemAttributes::getProductType()
 }
 
 void
-ItemAttributes::setProductType(std::string  product_type)
+ItemAttributes::setProductType(std::string product_type)
 {
 	this->product_type = product_type;
 }
@@ -3386,7 +3424,7 @@ ItemAttributes::getPromotionId()
 }
 
 void
-ItemAttributes::setPromotionId(std::string  promotion_id)
+ItemAttributes::setPromotionId(std::string promotion_id)
 {
 	this->promotion_id = promotion_id;
 }
@@ -3398,7 +3436,7 @@ ItemAttributes::getSalePrice()
 }
 
 void
-ItemAttributes::setSalePrice(std::string  sale_price)
+ItemAttributes::setSalePrice(std::string sale_price)
 {
 	this->sale_price = sale_price;
 }
@@ -3410,7 +3448,7 @@ ItemAttributes::getSalePriceEffectiveDate()
 }
 
 void
-ItemAttributes::setSalePriceEffectiveDate(std::string  sale_price_effective_date)
+ItemAttributes::setSalePriceEffectiveDate(std::string sale_price_effective_date)
 {
 	this->sale_price_effective_date = sale_price_effective_date;
 }
@@ -3422,7 +3460,7 @@ ItemAttributes::getShipping()
 }
 
 void
-ItemAttributes::setShipping(std::string  shipping)
+ItemAttributes::setShipping(std::string shipping)
 {
 	this->shipping = shipping;
 }
@@ -3434,7 +3472,7 @@ ItemAttributes::getShippingHeight()
 }
 
 void
-ItemAttributes::setShippingHeight(std::string  shipping_height)
+ItemAttributes::setShippingHeight(std::string shipping_height)
 {
 	this->shipping_height = shipping_height;
 }
@@ -3446,7 +3484,7 @@ ItemAttributes::getShippingWeight()
 }
 
 void
-ItemAttributes::setShippingWeight(std::string  shipping_weight)
+ItemAttributes::setShippingWeight(std::string shipping_weight)
 {
 	this->shipping_weight = shipping_weight;
 }
@@ -3458,7 +3496,7 @@ ItemAttributes::getShippingWidth()
 }
 
 void
-ItemAttributes::setShippingWidth(std::string  shipping_width)
+ItemAttributes::setShippingWidth(std::string shipping_width)
 {
 	this->shipping_width = shipping_width;
 }
@@ -3470,7 +3508,7 @@ ItemAttributes::getSize()
 }
 
 void
-ItemAttributes::setSize(std::string  size)
+ItemAttributes::setSize(std::string size)
 {
 	this->size = size;
 }
@@ -3482,7 +3520,7 @@ ItemAttributes::getSizeSystem()
 }
 
 void
-ItemAttributes::setSizeSystem(std::string  size_system)
+ItemAttributes::setSizeSystem(std::string size_system)
 {
 	this->size_system = size_system;
 }
@@ -3494,7 +3532,7 @@ ItemAttributes::getSizeType()
 }
 
 void
-ItemAttributes::setSizeType(std::string  size_type)
+ItemAttributes::setSizeType(std::string size_type)
 {
 	this->size_type = size_type;
 }
@@ -3506,7 +3544,7 @@ ItemAttributes::getTax()
 }
 
 void
-ItemAttributes::setTax(std::string  tax)
+ItemAttributes::setTax(std::string tax)
 {
 	this->tax = tax;
 }
@@ -3518,7 +3556,7 @@ ItemAttributes::getTitle()
 }
 
 void
-ItemAttributes::setTitle(std::string  title)
+ItemAttributes::setTitle(std::string title)
 {
 	this->title = title;
 }
@@ -3530,7 +3568,7 @@ ItemAttributes::getUnitPricingBaseMeasure()
 }
 
 void
-ItemAttributes::setUnitPricingBaseMeasure(std::string  unit_pricing_base_measure)
+ItemAttributes::setUnitPricingBaseMeasure(std::string unit_pricing_base_measure)
 {
 	this->unit_pricing_base_measure = unit_pricing_base_measure;
 }
@@ -3542,7 +3580,7 @@ ItemAttributes::getUnitPricingMeasure()
 }
 
 void
-ItemAttributes::setUnitPricingMeasure(std::string  unit_pricing_measure)
+ItemAttributes::setUnitPricingMeasure(std::string unit_pricing_measure)
 {
 	this->unit_pricing_measure = unit_pricing_measure;
 }
@@ -3554,7 +3592,7 @@ ItemAttributes::getVariantNames()
 }
 
 void
-ItemAttributes::setVariantNames(std::list <std::string> variant_names)
+ItemAttributes::setVariantNames(std::list<std::string> variant_names)
 {
 	this->variant_names = variant_names;
 }
@@ -3566,7 +3604,7 @@ ItemAttributes::getVariantValues()
 }
 
 void
-ItemAttributes::setVariantValues(std::list <std::string> variant_values)
+ItemAttributes::setVariantValues(std::list<std::string> variant_values)
 {
 	this->variant_values = variant_values;
 }
@@ -3578,9 +3616,21 @@ ItemAttributes::getAdditionalImageLink()
 }
 
 void
-ItemAttributes::setAdditionalImageLink(std::list <std::string> additional_image_link)
+ItemAttributes::setAdditionalImageLink(std::list<std::string> additional_image_link)
 {
 	this->additional_image_link = additional_image_link;
+}
+
+std::list<CatalogsAiContentDisclosure>
+ItemAttributes::getAiDisclosures()
+{
+	return ai_disclosures;
+}
+
+void
+ItemAttributes::setAiDisclosures(std::list<CatalogsAiContentDisclosure> ai_disclosures)
+{
+	this->ai_disclosures = ai_disclosures;
 }
 
 std::list<std::string>
@@ -3590,7 +3640,7 @@ ItemAttributes::getImageLink()
 }
 
 void
-ItemAttributes::setImageLink(std::list <std::string> image_link)
+ItemAttributes::setImageLink(std::list<std::string> image_link)
 {
 	this->image_link = image_link;
 }
@@ -3602,7 +3652,7 @@ ItemAttributes::getVideoLink()
 }
 
 void
-ItemAttributes::setVideoLink(std::string  video_link)
+ItemAttributes::setVideoLink(std::string video_link)
 {
 	this->video_link = video_link;
 }

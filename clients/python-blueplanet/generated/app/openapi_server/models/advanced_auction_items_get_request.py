@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.advanced_auction_items_get_record import AdvancedAuctionItemsGetRecord  # noqa: F401,E501
+from app.openapi_server.models.advanced_auction_key import AdvancedAuctionKey  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -17,17 +17,17 @@ class AdvancedAuctionItemsGetRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, catalog_id: str=None, items: List[AdvancedAuctionItemsGetRecord]=None):  # noqa: E501
+    def __init__(self, catalog_id: str=None, items: List[AdvancedAuctionKey]=None):  # noqa: E501
         """AdvancedAuctionItemsGetRequest - a model defined in Swagger
 
         :param catalog_id: The catalog_id of this AdvancedAuctionItemsGetRequest.  # noqa: E501
         :type catalog_id: str
         :param items: The items of this AdvancedAuctionItemsGetRequest.  # noqa: E501
-        :type items: List[AdvancedAuctionItemsGetRecord]
+        :type items: List[AdvancedAuctionKey]
         """
         self.swagger_types = {
             'catalog_id': str,
-            'items': List[AdvancedAuctionItemsGetRecord]
+            'items': List[AdvancedAuctionKey]
         }
 
         self.attribute_map = {
@@ -77,24 +77,24 @@ class AdvancedAuctionItemsGetRequest(Model):
         self._catalog_id = catalog_id
 
     @property
-    def items(self) -> List[AdvancedAuctionItemsGetRecord]:
+    def items(self) -> List[AdvancedAuctionKey]:
         """Gets the items of this AdvancedAuctionItemsGetRequest.
 
         A list of retail catalog items to fetch bid options for  # noqa: E501
 
         :return: The items of this AdvancedAuctionItemsGetRequest.
-        :rtype: List[AdvancedAuctionItemsGetRecord]
+        :rtype: List[AdvancedAuctionKey]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[AdvancedAuctionItemsGetRecord]):
+    def items(self, items: List[AdvancedAuctionKey]):
         """Sets the items of this AdvancedAuctionItemsGetRequest.
 
         A list of retail catalog items to fetch bid options for  # noqa: E501
 
         :param items: The items of this AdvancedAuctionItemsGetRequest.
-        :type items: List[AdvancedAuctionItemsGetRecord]
+        :type items: List[AdvancedAuctionKey]
         """
         if items is None:
             raise ValueError("Invalid value for `items`, must not be `None`")  # noqa: E501

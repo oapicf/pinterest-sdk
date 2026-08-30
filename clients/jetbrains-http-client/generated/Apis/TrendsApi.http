@@ -1,0 +1,21 @@
+## TrendsApi
+
+### Returns editorial articles for a given region
+## Returns editorial articles for a given region
+GET https://api.pinterest.com/v5/trends/editorial_articles?region={{region}}
+Accept: application/json
+
+### Get featured topics
+## Get featured topics
+GET https://api.pinterest.com/v5/trends/topics/featured?interest={{interest}}&region={{region}}
+Accept: application/json
+
+### Get product category details
+## Get product category details
+GET https://api.pinterest.com/v5/trends/product_categories/details?productCategories={{productCategories}}&region={{region}}&lookbackWindow={{lookbackWindow}}&engagementType={{engagementType}}
+Accept: application/json
+
+### Get a list of growing Shopping Product Categories
+## Get a list of growing Shopping Product Categories
+GET https://api.pinterest.com/v5/trends/product_categories/trending?region={{region}}&verticals={{verticals}}&ages={{ages}}&genders={{genders}}&engagementType={{engagementType}}
+Accept: application/json

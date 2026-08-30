@@ -129,7 +129,7 @@ MediaUpload::getMediaId()
 }
 
 void
-MediaUpload::setMediaId(std::string  media_id)
+MediaUpload::setMediaId(std::string media_id)
 {
 	this->media_id = media_id;
 }
@@ -141,7 +141,7 @@ MediaUpload::getMediaType()
 }
 
 void
-MediaUpload::setMediaType(MediaUploadType  media_type)
+MediaUpload::setMediaType(MediaUploadType media_type)
 {
 	this->media_type = media_type;
 }
@@ -153,7 +153,7 @@ MediaUpload::getUploadParameters()
 }
 
 void
-MediaUpload::setUploadParameters(MediaUploadParameters  upload_parameters)
+MediaUpload::setUploadParameters(MediaUploadParameters upload_parameters)
 {
 	this->upload_parameters = upload_parameters;
 }
@@ -165,7 +165,7 @@ MediaUpload::getUploadUrl()
 }
 
 void
-MediaUpload::setUploadUrl(std::string  upload_url)
+MediaUpload::setUploadUrl(std::string upload_url)
 {
 	this->upload_url = upload_url;
 }

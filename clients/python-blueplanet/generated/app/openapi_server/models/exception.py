@@ -51,7 +51,6 @@ class Exception(Model):
     def code(self) -> int:
         """Gets the code of this Exception.
 
-        Exception error code.  # noqa: E501
 
         :return: The code of this Exception.
         :rtype: int
@@ -62,7 +61,6 @@ class Exception(Model):
     def code(self, code: int):
         """Sets the code of this Exception.
 
-        Exception error code.  # noqa: E501
 
         :param code: The code of this Exception.
         :type code: int
@@ -74,7 +72,6 @@ class Exception(Model):
     def message(self) -> str:
         """Gets the message of this Exception.
 
-        Exception message.  # noqa: E501
 
         :return: The message of this Exception.
         :rtype: str
@@ -85,10 +82,11 @@ class Exception(Model):
     def message(self, message: str):
         """Sets the message of this Exception.
 
-        Exception message.  # noqa: E501
 
         :param message: The message of this Exception.
         :type message: str
         """
+        if message is None:
+            raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
 
         self._message = message

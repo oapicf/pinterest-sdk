@@ -25,7 +25,7 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `boardsUserFollowsList()`
 
 ```php
-boardsUserFollowsList($bookmark, $page_size, $explicit_following, $ad_account_id): \OpenAPI\Client\Model\BoardsUserFollowsList200Response
+boardsUserFollowsList($ad_account_id, $explicit_following, $bookmark, $page_size): \OpenAPI\Client\Model\BoardsList200Response
 ```
 
 List following boards
@@ -52,13 +52,13 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-$explicit_following = false; // bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
+$explicit_following = false; // bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
+$bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
-    $result = $apiInstance->boardsUserFollowsList($bookmark, $page_size, $explicit_following, $ad_account_id);
+    $result = $apiInstance->boardsUserFollowsList($ad_account_id, $explicit_following, $bookmark, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserAccountApi->boardsUserFollowsList: ', $e->getMessage(), PHP_EOL;
@@ -69,14 +69,14 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **explicit_following** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
+| **explicit_following** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
+| **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BoardsUserFollowsList200Response**](../Model/BoardsUserFollowsList200Response.md)
+[**\OpenAPI\Client\Model\BoardsList200Response**](../Model/BoardsList200Response.md)
 
 ### Authorization
 
@@ -94,12 +94,12 @@ try {
 ## `followUserUpdate()`
 
 ```php
-followUserUpdate($username, $follow_user_request): \OpenAPI\Client\Model\UserSummary
+followUserUpdate($username, $follow_user_create): \OpenAPI\Client\Model\FollowUser
 ```
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 
@@ -118,11 +118,11 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$username = username; // string | A valid username
-$follow_user_request = new \OpenAPI\Client\Model\FollowUserRequest(); // \OpenAPI\Client\Model\FollowUserRequest | Follow a user.
+$username = 'username_example'; // string | A valid username
+$follow_user_create = new \OpenAPI\Client\Model\FollowUserCreate(); // \OpenAPI\Client\Model\FollowUserCreate
 
 try {
-    $result = $apiInstance->followUserUpdate($username, $follow_user_request);
+    $result = $apiInstance->followUserUpdate($username, $follow_user_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserAccountApi->followUserUpdate: ', $e->getMessage(), PHP_EOL;
@@ -134,11 +134,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **username** | **string**| A valid username | |
-| **follow_user_request** | [**\OpenAPI\Client\Model\FollowUserRequest**](../Model/FollowUserRequest.md)| Follow a user. | |
+| **follow_user_create** | [**\OpenAPI\Client\Model\FollowUserCreate**](../Model/FollowUserCreate.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\UserSummary**](../Model/UserSummary.md)
+[**\OpenAPI\Client\Model\FollowUser**](../Model/FollowUser.md)
 
 ### Authorization
 
@@ -184,7 +184,7 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     $config
 );
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
     $result = $apiInstance->followersList($bookmark, $page_size);
@@ -199,7 +199,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -281,12 +281,12 @@ This endpoint does not need any parameter.
 ## `unverifyWebsiteDelete()`
 
 ```php
-unverifyWebsiteDelete($website)
+unverifyWebsiteDelete($website): \OpenAPI\Client\Model\UserWebsite
 ```
 
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 ### Example
 
@@ -305,10 +305,11 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$website = mysite.test; // string | Website with path or domain only
+$website = 'website_example'; // string | Website with path or domain only
 
 try {
-    $apiInstance->unverifyWebsiteDelete($website);
+    $result = $apiInstance->unverifyWebsiteDelete($website);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserAccountApi->unverifyWebsiteDelete: ', $e->getMessage(), PHP_EOL;
 }
@@ -322,7 +323,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\OpenAPI\Client\Model\UserWebsite**](../Model/UserWebsite.md)
 
 ### Authorization
 
@@ -371,7 +372,7 @@ $pin_format = 'ALL'; // string | Pin formats to get data for, default is all.
 $app_types = 'ALL'; // string | Apps or devices to get data for, default is all.
 $content_type = 'ALL'; // string | Filter to paid or organic data. Default is all.
 $source = 'ALL'; // string | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-$metric_types = array('metric_types_example'); // string[] | Metric types to get data for, default is all.
+$metric_types = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\QuerymetrictypesItems()); // \OpenAPI\Client\Model\QuerymetrictypesItems[] | Metric types to get data for, default is all.
 $split_field = 'NO_SPLIT'; // string | How to split the data into groups. Not including this param means data won't be split.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
@@ -394,7 +395,7 @@ try {
 | **app_types** | **string**| Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;] |
 | **content_type** | **string**| Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;] |
 | **source** | **string**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;] |
-| **metric_types** | [**string[]**](../Model/string.md)| Metric types to get data for, default is all. | [optional] |
+| **metric_types** | [**\OpenAPI\Client\Model\QuerymetrictypesItems[]**](../Model/\OpenAPI\Client\Model\QuerymetrictypesItems.md)| Metric types to get data for, default is all. | [optional] |
 | **split_field** | **string**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to &#39;NO_SPLIT&#39;] |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
@@ -447,15 +448,15 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
 );
 $start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 $end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-$sort_by = 'sort_by_example'; // string | Specify sorting order for metrics
+$sort_by = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\TopPinsSortBy(); // \OpenAPI\Client\Model\TopPinsSortBy | Specify sorting order for metrics
 $from_claimed_content = 'BOTH'; // string | Filter on Pins that match your claimed domain.
 $pin_format = 'ALL'; // string | Pin formats to get data for, default is all.
 $app_types = 'ALL'; // string | Apps or devices to get data for, default is all.
 $content_type = 'ALL'; // string | Filter to paid or organic data. Default is all.
 $source = 'ALL'; // string | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-$metric_types = array('metric_types_example'); // string[] | Metric types to get data for, default is all.
-$num_of_pins = 25; // int | Number of pins to include, default is 10. Max is 50.
-$created_in_last_n_days = 30; // int | Get metrics for pins created in the last \"n\" days.
+$metric_types = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\QuerymetrictypesItems()); // \OpenAPI\Client\Model\QuerymetrictypesItems[] | Metric types to get data for, default is all.
+$num_of_pins = 10; // int | Number of pins to include, default is 10. Max is 50.
+$created_in_last_n_days = 3.4; // float | Get metrics for pins created in the last \"n\" days.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
@@ -472,15 +473,15 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **start_date** | **\DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | |
 | **end_date** | **\DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
-| **sort_by** | **string**| Specify sorting order for metrics | |
+| **sort_by** | [**\OpenAPI\Client\Model\TopPinsSortBy**](../Model/.md)| Specify sorting order for metrics | |
 | **from_claimed_content** | **string**| Filter on Pins that match your claimed domain. | [optional] [default to &#39;BOTH&#39;] |
 | **pin_format** | **string**| Pin formats to get data for, default is all. | [optional] [default to &#39;ALL&#39;] |
 | **app_types** | **string**| Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;] |
 | **content_type** | **string**| Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;] |
 | **source** | **string**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;] |
-| **metric_types** | [**string[]**](../Model/string.md)| Metric types to get data for, default is all. | [optional] |
+| **metric_types** | [**\OpenAPI\Client\Model\QuerymetrictypesItems[]**](../Model/\OpenAPI\Client\Model\QuerymetrictypesItems.md)| Metric types to get data for, default is all. | [optional] |
 | **num_of_pins** | **int**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10] |
-| **created_in_last_n_days** | **int**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] |
+| **created_in_last_n_days** | **float**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -532,15 +533,15 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
 );
 $start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 $end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-$sort_by = 'sort_by_example'; // string | Specify sorting order for video metrics
+$sort_by = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\TopVideoPinsSortBy(); // \OpenAPI\Client\Model\TopVideoPinsSortBy | Specify sorting order for video metrics
 $from_claimed_content = 'BOTH'; // string | Filter on Pins that match your claimed domain.
 $pin_format = 'ALL'; // string | Pin formats to get data for, default is all.
 $app_types = 'ALL'; // string | Apps or devices to get data for, default is all.
 $content_type = 'ALL'; // string | Filter to paid or organic data. Default is all.
 $source = 'ALL'; // string | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-$metric_types = array('metric_types_example'); // string[] | Metric types to get video data for, default is all.
-$num_of_pins = 25; // int | Number of pins to include, default is 10. Max is 50.
-$created_in_last_n_days = 30; // int | Get metrics for pins created in the last \"n\" days.
+$metric_types = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\QueryvideopinmetrictypesItems()); // \OpenAPI\Client\Model\QueryvideopinmetrictypesItems[] | Metric types to get video data for, default is all.
+$num_of_pins = 10; // int | Number of pins to include, default is 10. Max is 50.
+$created_in_last_n_days = 3.4; // float | Get metrics for pins created in the last \"n\" days.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
@@ -557,15 +558,15 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **start_date** | **\DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | |
 | **end_date** | **\DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
-| **sort_by** | **string**| Specify sorting order for video metrics | |
+| **sort_by** | [**\OpenAPI\Client\Model\TopVideoPinsSortBy**](../Model/.md)| Specify sorting order for video metrics | |
 | **from_claimed_content** | **string**| Filter on Pins that match your claimed domain. | [optional] [default to &#39;BOTH&#39;] |
 | **pin_format** | **string**| Pin formats to get data for, default is all. | [optional] [default to &#39;ALL&#39;] |
 | **app_types** | **string**| Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;] |
 | **content_type** | **string**| Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;] |
 | **source** | **string**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;] |
-| **metric_types** | [**string[]**](../Model/string.md)| Metric types to get video data for, default is all. | [optional] |
+| **metric_types** | [**\OpenAPI\Client\Model\QueryvideopinmetrictypesItems[]**](../Model/\OpenAPI\Client\Model\QueryvideopinmetrictypesItems.md)| Metric types to get video data for, default is all. | [optional] |
 | **num_of_pins** | **int**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10] |
-| **created_in_last_n_days** | **int**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] |
+| **created_in_last_n_days** | **float**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -615,9 +616,9 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$username = username; // string | A valid username
+$username = 'username_example'; // string | A valid username
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
     $result = $apiInstance->userAccountFollowedInterests($username, $bookmark, $page_size);
@@ -633,7 +634,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **username** | **string**| A valid username | |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -660,7 +661,7 @@ userAccountGet($ad_account_id): \OpenAPI\Client\Model\Account
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 
 ### Example
 
@@ -718,7 +719,7 @@ try {
 ## `userFollowingGet()`
 
 ```php
-userFollowingGet($bookmark, $page_size, $feed_type, $explicit_following, $ad_account_id): \OpenAPI\Client\Model\UserFollowingGet200Response
+userFollowingGet($ad_account_id, $explicit_following, $feed_type, $bookmark, $page_size): \OpenAPI\Client\Model\FollowersList200Response
 ```
 
 List following
@@ -745,14 +746,14 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-$feed_type = 'feed_type_example'; // \OpenAPI\Client\Model\UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
-$explicit_following = false; // bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
+$explicit_following = false; // bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
+$feed_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\UserFollowingFeedType(); // \OpenAPI\Client\Model\UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
+$bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
-    $result = $apiInstance->userFollowingGet($bookmark, $page_size, $feed_type, $explicit_following, $ad_account_id);
+    $result = $apiInstance->userFollowingGet($ad_account_id, $explicit_following, $feed_type, $bookmark, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserAccountApi->userFollowingGet: ', $e->getMessage(), PHP_EOL;
@@ -763,15 +764,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **feed_type** | **\OpenAPI\Client\Model\UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] |
-| **explicit_following** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
+| **explicit_following** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
+| **feed_type** | [**\OpenAPI\Client\Model\UserFollowingFeedType**](../Model/.md)| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] |
+| **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\UserFollowingGet200Response**](../Model/UserFollowingGet200Response.md)
+[**\OpenAPI\Client\Model\FollowersList200Response**](../Model/FollowersList200Response.md)
 
 ### Authorization
 
@@ -814,7 +815,7 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     $config
 );
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
     $result = $apiInstance->userWebsitesGet($bookmark, $page_size);
@@ -829,7 +830,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -851,7 +852,7 @@ try {
 ## `verifyWebsiteUpdate()`
 
 ```php
-verifyWebsiteUpdate($user_website_verify_request, $ad_account_id): \OpenAPI\Client\Model\UserWebsiteSummary
+verifyWebsiteUpdate($user_website_create, $ad_account_id): \OpenAPI\Client\Model\UserWebsite
 ```
 
 Verify website
@@ -875,11 +876,11 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$user_website_verify_request = new \OpenAPI\Client\Model\UserWebsiteVerifyRequest(); // \OpenAPI\Client\Model\UserWebsiteVerifyRequest | Verify a website.
+$user_website_create = new \OpenAPI\Client\Model\UserWebsiteCreate(); // \OpenAPI\Client\Model\UserWebsiteCreate
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
-    $result = $apiInstance->verifyWebsiteUpdate($user_website_verify_request, $ad_account_id);
+    $result = $apiInstance->verifyWebsiteUpdate($user_website_create, $ad_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserAccountApi->verifyWebsiteUpdate: ', $e->getMessage(), PHP_EOL;
@@ -890,12 +891,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **user_website_verify_request** | [**\OpenAPI\Client\Model\UserWebsiteVerifyRequest**](../Model/UserWebsiteVerifyRequest.md)| Verify a website. | |
+| **user_website_create** | [**\OpenAPI\Client\Model\UserWebsiteCreate**](../Model/UserWebsiteCreate.md)|  | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\UserWebsiteSummary**](../Model/UserWebsiteSummary.md)
+[**\OpenAPI\Client\Model\UserWebsite**](../Model/UserWebsite.md)
 
 ### Authorization
 
@@ -913,7 +914,7 @@ try {
 ## `websiteVerificationGet()`
 
 ```php
-websiteVerificationGet($ad_account_id): \OpenAPI\Client\Model\UserWebsiteVerificationCode
+websiteVerificationGet($ad_account_id): \OpenAPI\Client\Model\UserWebsiteVerification
 ```
 
 Get user verification code for website claiming
@@ -958,7 +959,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\UserWebsiteVerificationCode**](../Model/UserWebsiteVerificationCode.md)
+[**\OpenAPI\Client\Model\UserWebsiteVerification**](../Model/UserWebsiteVerification.md)
 
 ### Authorization
 

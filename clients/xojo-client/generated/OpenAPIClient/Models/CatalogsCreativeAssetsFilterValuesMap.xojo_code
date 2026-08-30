@@ -62,31 +62,11 @@ Protected Class CatalogsCreativeAssetsFilterValuesMap
 
 
 	#tag Property, Flags = &h0
-		media_type() As String
+		media_type() As MediaType
 	#tag EndProperty
 
 
-    #tag Enum, Name = Media_typeEnum, Type = Integer, Flags = &h0
-        
-        Image
-        Video
-        
-    #tag EndEnum
 
-
-	#tag Method, Flags = &h0
-		Shared Function Media_typeEnumToString(value As Media_typeEnum) As String
-		  Select Case value
-		    
-		    Case Media_typeEnum.Image
-		      Return "IMAGE"
-		    Case Media_typeEnum.Video
-		      Return "VIDEO"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -216,6 +196,14 @@ Protected Class CatalogsCreativeAssetsFilterValuesMap
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="media_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="MediaType"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

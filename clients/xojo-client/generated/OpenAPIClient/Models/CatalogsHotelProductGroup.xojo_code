@@ -3,7 +3,7 @@ Protected Class CatalogsHotelProductGroup
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Catalog id pertaining to the hotel product group.
+			Catalog ID pertaining to the product group.
 		#tag EndNote
 		catalog_id As String
 	#tag EndProperty
@@ -34,7 +34,7 @@ Protected Class CatalogsHotelProductGroup
 
 	#tag Property, Flags = &h0
 		#tag Note
-			ID of the hotel product group.
+			ID of the catalog product group.
 		#tag EndNote
 		id As String
 	#tag EndProperty
@@ -42,7 +42,7 @@ Protected Class CatalogsHotelProductGroup
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Name of hotel product group
+			Name of catalog product group
 		#tag EndNote
 		name As Xoson.O.OptionalString
 	#tag EndProperty

@@ -37,7 +37,7 @@ class RelatedTerms {
   int? relatedTermCount;
 
   /// The id of the advertiser.
-  List<RelatedTermsRelatedTermsListInner> relatedTermsList;
+  List<RelatedTermsRelatedTermsListItems> relatedTermsList;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is RelatedTerms &&
@@ -82,17 +82,13 @@ class RelatedTerms {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "RelatedTerms[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "RelatedTerms[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return RelatedTerms(
         id: mapValueOfType<String>(json, r'id'),
         relatedTermCount: mapValueOfType<int>(json, r'related_term_count'),
-        relatedTermsList: RelatedTermsRelatedTermsListInner.listFromJson(json[r'related_terms_list']),
+        relatedTermsList: RelatedTermsRelatedTermsListItems.listFromJson(json[r'related_terms_list']),
       );
     }
     return null;

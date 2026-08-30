@@ -11,11 +11,12 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |[**campaignsGet**](#campaignsget) | **GET** /ad_accounts/{ad_account_id}/campaigns/{campaign_id} | Get campaign|
 |[**campaignsList**](#campaignslist) | **GET** /ad_accounts/{ad_account_id}/campaigns | List campaigns|
 |[**campaignsUpdate**](#campaignsupdate) | **PATCH** /ad_accounts/{ad_account_id}/campaigns | Update campaigns|
+|[**getCampaignDeliveryEstimates**](#getcampaigndeliveryestimates) | **POST** /ad_accounts/{ad_account_id}/campaigns/delivery_estimates | Get campaign delivery estimates|
 
 # **adPinsAnalytics**
 > Array<AdPinAnalytics> adPinsAnalytics()
 
-Get analytics for the pins given a campaign and pins in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
+Get analytics for the pins given a campaign and pins in the specified `ad_account_id`, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
 
 ### Example
 
@@ -28,26 +29,26 @@ import {
 const configuration = new Configuration();
 const apiInstance = new CampaignsApi(configuration);
 
-let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
 let campaignId: string; //Campaign Id to use to filter the results. (default to undefined)
 let pinIds: Array<string>; //List of Pin IDs. (default to undefined)
 let startDate: string; //Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (default to undefined)
 let endDate: string; //Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. (default to undefined)
-let columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'OUTBOUND_CTR_1' | 'CAMPAIGN_NAME' | 'CAMPAIGN_BRAND_LABEL' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_NAME' | 'AD_GROUP_BUDGET_TYPE' | 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY' | 'AD_GROUP_ENTITY_STATUS' | 'AD_GROUP_BID_MULTIPLIER' | 'PROMO_ID' | 'PROMO_NAME' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'AD_NAME' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'AD_GROUP_OPTIMIZATION' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'CAMPAIGN_BUDGET_OPTIMIZATION' | 'IS_PREMIERE_CAMPAIGN' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_ADD_TO_WISHLIST' | 'TOTAL_SUBSCRIBE' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'PRODUCT_GROUP_AD_IMAGE_TAG' | 'PRODUCT_GROUP_AD_VIDEO_TAG' | 'VIDEO_3SEC_VIEWS_1' | 'VIDEO_15SEC_UNIQUE_VIEWS_1' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_15SEC_UNIQUE_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'VIDEO_SPEND_IN_DOLLAR' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'TOTAL_APP_INSTALL_CONVERSION_RATE' | 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>; //Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\'s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\'s microdollars. Otherwise, it\'s in microunits of the advertiser\'s currency.<br/>For example, if the advertiser\'s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned (default to undefined)
-let granularity: Granularity; //TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly (default to undefined)
+let columns: Array<ReportingColumnSync>; //Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\'s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\'s microdollars. Otherwise, it\'s in microunits of the advertiser\'s currency.  For example, if the advertiser\'s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. (default to undefined)
+let granularity: Granularity; //  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly (default to undefined)
+let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
 let clickWindowDays: 0 | 1 | 7 | 14 | 30 | 60; //Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
-let engagementWindowDays: 0 | 1 | 7 | 14 | 30 | 60; //Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to 30)
+let engagementWindowDays: 0 | 1 | 7 | 14 | 30 | 60; //Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional) (default to 30)
 let viewWindowDays: 0 | 1 | 7 | 14 | 30 | 60; //Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to 1)
 let conversionReportTime: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION'; //The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to 'TIME_OF_AD_ACTION')
 
 const { status, data } = await apiInstance.adPinsAnalytics(
-    adAccountId,
     campaignId,
     pinIds,
     startDate,
     endDate,
     columns,
     granularity,
+    adAccountId,
     clickWindowDays,
     engagementWindowDays,
     viewWindowDays,
@@ -59,15 +60,15 @@ const { status, data } = await apiInstance.adPinsAnalytics(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 | **campaignId** | [**string**] | Campaign Id to use to filter the results. | defaults to undefined|
 | **pinIds** | **Array&lt;string&gt;** | List of Pin IDs. | defaults to undefined|
 | **startDate** | [**string**] | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | defaults to undefined|
 | **endDate** | [**string**] | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | defaults to undefined|
-| **columns** | **Array<&#39;SPEND_IN_MICRO_DOLLAR&#39; &#124; &#39;PAID_IMPRESSION&#39; &#124; &#39;SPEND_IN_DOLLAR&#39; &#124; &#39;CPC_IN_MICRO_DOLLAR&#39; &#124; &#39;ECPC_IN_MICRO_DOLLAR&#39; &#124; &#39;ECPC_IN_DOLLAR&#39; &#124; &#39;CTR&#39; &#124; &#39;ECTR&#39; &#124; &#39;OUTBOUND_CTR_1&#39; &#124; &#39;CAMPAIGN_NAME&#39; &#124; &#39;CAMPAIGN_BRAND_LABEL&#39; &#124; &#39;PIN_ID&#39; &#124; &#39;TOTAL_ENGAGEMENT&#39; &#124; &#39;ENGAGEMENT_1&#39; &#124; &#39;ENGAGEMENT_2&#39; &#124; &#39;ECPE_IN_DOLLAR&#39; &#124; &#39;ENGAGEMENT_RATE&#39; &#124; &#39;EENGAGEMENT_RATE&#39; &#124; &#39;ECPM_IN_MICRO_DOLLAR&#39; &#124; &#39;REPIN_RATE&#39; &#124; &#39;CTR_2&#39; &#124; &#39;CAMPAIGN_ID&#39; &#124; &#39;ADVERTISER_ID&#39; &#124; &#39;AD_ACCOUNT_ID&#39; &#124; &#39;PIN_PROMOTION_ID&#39; &#124; &#39;AD_ID&#39; &#124; &#39;AD_GROUP_ID&#39; &#124; &#39;CAMPAIGN_ENTITY_STATUS&#39; &#124; &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; &#124; &#39;CPM_IN_MICRO_DOLLAR&#39; &#124; &#39;CPM_IN_DOLLAR&#39; &#124; &#39;AD_GROUP_NAME&#39; &#124; &#39;AD_GROUP_BUDGET_TYPE&#39; &#124; &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; &#124; &#39;AD_GROUP_ENTITY_STATUS&#39; &#124; &#39;AD_GROUP_BID_MULTIPLIER&#39; &#124; &#39;PROMO_ID&#39; &#124; &#39;PROMO_NAME&#39; &#124; &#39;ORDER_LINE_ID&#39; &#124; &#39;ORDER_LINE_NAME&#39; &#124; &#39;CLICKTHROUGH_1&#39; &#124; &#39;REPIN_1&#39; &#124; &#39;IMPRESSION_1&#39; &#124; &#39;IMPRESSION_1_GROSS&#39; &#124; &#39;CLICKTHROUGH_1_GROSS&#39; &#124; &#39;OUTBOUND_CLICK_1&#39; &#124; &#39;CLICKTHROUGH_2&#39; &#124; &#39;REPIN_2&#39; &#124; &#39;IMPRESSION_2&#39; &#124; &#39;OUTBOUND_CLICK_2&#39; &#124; &#39;TOTAL_CLICKTHROUGH&#39; &#124; &#39;TOTAL_IMPRESSION&#39; &#124; &#39;TOTAL_IMPRESSION_USER&#39; &#124; &#39;TOTAL_IMPRESSION_FREQUENCY&#39; &#124; &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; &#124; &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; &#124; &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; &#124; &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; &#124; &#39;TOTAL_ENGAGEMENT_LEAD&#39; &#124; &#39;TOTAL_CLICK_SIGNUP&#39; &#124; &#39;TOTAL_CLICK_CHECKOUT&#39; &#124; &#39;TOTAL_CLICK_ADD_TO_CART&#39; &#124; &#39;TOTAL_CLICK_LEAD&#39; &#124; &#39;TOTAL_VIEW_SIGNUP&#39; &#124; &#39;TOTAL_VIEW_CHECKOUT&#39; &#124; &#39;TOTAL_VIEW_ADD_TO_CART&#39; &#124; &#39;TOTAL_VIEW_LEAD&#39; &#124; &#39;TOTAL_CONVERSIONS&#39; &#124; &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_SESSIONS&#39; &#124; &#39;WEB_SESSIONS_1&#39; &#124; &#39;WEB_SESSIONS_2&#39; &#124; &#39;AD_NAME&#39; &#124; &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; &#124; &#39;AD_GROUP_OPTIMIZATION&#39; &#124; &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; &#124; &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; &#124; &#39;IS_PREMIERE_CAMPAIGN&#39; &#124; &#39;TOTAL_PAGE_VISIT&#39; &#124; &#39;TOTAL_SIGNUP&#39; &#124; &#39;TOTAL_CHECKOUT&#39; &#124; &#39;TOTAL_CUSTOM&#39; &#124; &#39;TOTAL_LEAD&#39; &#124; &#39;TOTAL_ADD_TO_WISHLIST&#39; &#124; &#39;TOTAL_SUBSCRIBE&#39; &#124; &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;PAGE_VISIT_COST_PER_ACTION&#39; &#124; &#39;PAGE_VISIT_ROAS&#39; &#124; &#39;CHECKOUT_ROAS&#39; &#124; &#39;CUSTOM_ROAS&#39; &#124; &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; &#124; &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; &#124; &#39;VIDEO_3SEC_VIEWS_1&#39; &#124; &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; &#124; &#39;VIDEO_MRC_VIEWS_1&#39; &#124; &#39;VIDEO_3SEC_VIEWS_2&#39; &#124; &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; &#124; &#39;VIDEO_P100_COMPLETE_2&#39; &#124; &#39;VIDEO_P0_COMBINED_2&#39; &#124; &#39;VIDEO_P25_COMBINED_2&#39; &#124; &#39;VIDEO_P50_COMBINED_2&#39; &#124; &#39;VIDEO_P75_COMBINED_2&#39; &#124; &#39;VIDEO_P95_COMBINED_2&#39; &#124; &#39;VIDEO_MRC_VIEWS_2&#39; &#124; &#39;PAID_VIDEO_VIEWABLE_RATE&#39; &#124; &#39;VIDEO_LENGTH&#39; &#124; &#39;VIDEO_SPEND_IN_DOLLAR&#39; &#124; &#39;ECPV_IN_DOLLAR&#39; &#124; &#39;ECPCV_IN_DOLLAR&#39; &#124; &#39;ECPCV_P95_IN_DOLLAR&#39; &#124; &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_P100_COMPLETE&#39; &#124; &#39;TOTAL_VIDEO_P0_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P25_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P50_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P75_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P95_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_MRC_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; &#124; &#39;TOTAL_REPIN_RATE&#39; &#124; &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; &#124; &#39;WEB_CHECKOUT_ROAS&#39; &#124; &#39;TOTAL_WEB_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; &#124; &#39;TOTAL_OFFLINE_CHECKOUT&#39; &#124; &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; &#124; &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; &#124; &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; &#124; &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; &#124; &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; &#124; &#39;LEADS&#39; &#124; &#39;COST_PER_LEAD&#39; &#124; &#39;QUIZ_COMPLETED&#39; &#124; &#39;QUIZ_PIN_RESULT_OPEN&#39; &#124; &#39;QUIZ_COMPLETION_RATE&#39; &#124; &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; &#124; &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; &#124; &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; &#124; &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; &#124; &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; &#124; &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; &#124; &#39;SHOWCASE_SUBPAGE_REPIN&#39; &#124; &#39;SHOWCASE_SUBPIN_REPIN&#39; &#124; &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; &#124; &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; &#124; &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; &#124; &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; &#124; &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; &#124; &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; &#124; &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; &#124; &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; &#124; &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; &#124; &#39;TOTAL_LEAD_CONVERSION_RATE&#39; &#124; &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; &#124; &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; &#124; &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; &#124; &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;>** | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | defaults to undefined|
-| **granularity** | **Granularity** | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | defaults to undefined|
+| **columns** | **Array&lt;ReportingColumnSync&gt;** | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.  For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | defaults to undefined|
+| **granularity** | **Granularity** |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | defaults to undefined|
+| **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 | **clickWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | (optional) defaults to 30|
-| **engagementWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | (optional) defaults to 30|
+| **engagementWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | (optional) defaults to 30|
 | **viewWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | (optional) defaults to 1|
 | **conversionReportTime** | [**&#39;TIME_OF_AD_ACTION&#39; | &#39;TIME_OF_CONVERSION&#39;**]**Array<&#39;TIME_OF_AD_ACTION&#39; &#124; &#39;TIME_OF_CONVERSION&#39;>** | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | (optional) defaults to 'TIME_OF_AD_ACTION'|
 
@@ -89,16 +90,20 @@ const { status, data } = await apiInstance.adPinsAnalytics(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**400** | Invalid ad account pins analytics parameters. |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **campaignTargetingAnalyticsGet**
 > MetricsResponse campaignTargetingAnalyticsGet()
 
-Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\").  * The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 
@@ -115,11 +120,11 @@ let adAccountId: string; //Unique identifier of an ad account. (default to undef
 let campaignIds: Array<string>; //List of Campaign Ids to use to filter the results. (default to undefined)
 let startDate: string; //Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (default to undefined)
 let endDate: string; //Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. (default to undefined)
-let targetingTypes: Array<AdsAnalyticsCampaignTargetingType>; //Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. (default to undefined)
-let columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'OUTBOUND_CTR_1' | 'CAMPAIGN_NAME' | 'CAMPAIGN_BRAND_LABEL' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_NAME' | 'AD_GROUP_BUDGET_TYPE' | 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY' | 'AD_GROUP_ENTITY_STATUS' | 'AD_GROUP_BID_MULTIPLIER' | 'PROMO_ID' | 'PROMO_NAME' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'AD_NAME' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'AD_GROUP_OPTIMIZATION' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'CAMPAIGN_BUDGET_OPTIMIZATION' | 'IS_PREMIERE_CAMPAIGN' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_ADD_TO_WISHLIST' | 'TOTAL_SUBSCRIBE' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'PRODUCT_GROUP_AD_IMAGE_TAG' | 'PRODUCT_GROUP_AD_VIDEO_TAG' | 'VIDEO_3SEC_VIEWS_1' | 'VIDEO_15SEC_UNIQUE_VIEWS_1' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_15SEC_UNIQUE_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'VIDEO_SPEND_IN_DOLLAR' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'TOTAL_APP_INSTALL_CONVERSION_RATE' | 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>; //Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\'s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\'s microdollars. Otherwise, it\'s in microunits of the advertiser\'s currency.<br/>For example, if the advertiser\'s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned (default to undefined)
-let granularity: Granularity; //TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly (default to undefined)
+let targetingTypes: Array<AdsAnalyticsCampaignTargetingType>; //Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. (default to undefined)
+let columns: Array<ReportingColumnSync>; //Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\'s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\'s microdollars. Otherwise, it\'s in microunits of the advertiser\'s currency.  For example, if the advertiser\'s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. (default to undefined)
+let granularity: Granularity; //  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly (default to undefined)
 let clickWindowDays: 0 | 1 | 7 | 14 | 30 | 60; //Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
-let engagementWindowDays: 0 | 1 | 7 | 14 | 30 | 60; //Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to 30)
+let engagementWindowDays: 0 | 1 | 7 | 14 | 30 | 60; //Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional) (default to 30)
 let viewWindowDays: 0 | 1 | 7 | 14 | 30 | 60; //Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to 1)
 let conversionReportTime: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION'; //The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to 'TIME_OF_AD_ACTION')
 let attributionTypes: Array<ConversionReportAttributionType>; //List of types of attribution for the conversion report (optional) (default to undefined)
@@ -150,11 +155,11 @@ const { status, data } = await apiInstance.campaignTargetingAnalyticsGet(
 | **campaignIds** | **Array&lt;string&gt;** | List of Campaign Ids to use to filter the results. | defaults to undefined|
 | **startDate** | [**string**] | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | defaults to undefined|
 | **endDate** | [**string**] | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | defaults to undefined|
-| **targetingTypes** | **Array&lt;AdsAnalyticsCampaignTargetingType&gt;** | Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | defaults to undefined|
-| **columns** | **Array<&#39;SPEND_IN_MICRO_DOLLAR&#39; &#124; &#39;PAID_IMPRESSION&#39; &#124; &#39;SPEND_IN_DOLLAR&#39; &#124; &#39;CPC_IN_MICRO_DOLLAR&#39; &#124; &#39;ECPC_IN_MICRO_DOLLAR&#39; &#124; &#39;ECPC_IN_DOLLAR&#39; &#124; &#39;CTR&#39; &#124; &#39;ECTR&#39; &#124; &#39;OUTBOUND_CTR_1&#39; &#124; &#39;CAMPAIGN_NAME&#39; &#124; &#39;CAMPAIGN_BRAND_LABEL&#39; &#124; &#39;PIN_ID&#39; &#124; &#39;TOTAL_ENGAGEMENT&#39; &#124; &#39;ENGAGEMENT_1&#39; &#124; &#39;ENGAGEMENT_2&#39; &#124; &#39;ECPE_IN_DOLLAR&#39; &#124; &#39;ENGAGEMENT_RATE&#39; &#124; &#39;EENGAGEMENT_RATE&#39; &#124; &#39;ECPM_IN_MICRO_DOLLAR&#39; &#124; &#39;REPIN_RATE&#39; &#124; &#39;CTR_2&#39; &#124; &#39;CAMPAIGN_ID&#39; &#124; &#39;ADVERTISER_ID&#39; &#124; &#39;AD_ACCOUNT_ID&#39; &#124; &#39;PIN_PROMOTION_ID&#39; &#124; &#39;AD_ID&#39; &#124; &#39;AD_GROUP_ID&#39; &#124; &#39;CAMPAIGN_ENTITY_STATUS&#39; &#124; &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; &#124; &#39;CPM_IN_MICRO_DOLLAR&#39; &#124; &#39;CPM_IN_DOLLAR&#39; &#124; &#39;AD_GROUP_NAME&#39; &#124; &#39;AD_GROUP_BUDGET_TYPE&#39; &#124; &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; &#124; &#39;AD_GROUP_ENTITY_STATUS&#39; &#124; &#39;AD_GROUP_BID_MULTIPLIER&#39; &#124; &#39;PROMO_ID&#39; &#124; &#39;PROMO_NAME&#39; &#124; &#39;ORDER_LINE_ID&#39; &#124; &#39;ORDER_LINE_NAME&#39; &#124; &#39;CLICKTHROUGH_1&#39; &#124; &#39;REPIN_1&#39; &#124; &#39;IMPRESSION_1&#39; &#124; &#39;IMPRESSION_1_GROSS&#39; &#124; &#39;CLICKTHROUGH_1_GROSS&#39; &#124; &#39;OUTBOUND_CLICK_1&#39; &#124; &#39;CLICKTHROUGH_2&#39; &#124; &#39;REPIN_2&#39; &#124; &#39;IMPRESSION_2&#39; &#124; &#39;OUTBOUND_CLICK_2&#39; &#124; &#39;TOTAL_CLICKTHROUGH&#39; &#124; &#39;TOTAL_IMPRESSION&#39; &#124; &#39;TOTAL_IMPRESSION_USER&#39; &#124; &#39;TOTAL_IMPRESSION_FREQUENCY&#39; &#124; &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; &#124; &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; &#124; &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; &#124; &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; &#124; &#39;TOTAL_ENGAGEMENT_LEAD&#39; &#124; &#39;TOTAL_CLICK_SIGNUP&#39; &#124; &#39;TOTAL_CLICK_CHECKOUT&#39; &#124; &#39;TOTAL_CLICK_ADD_TO_CART&#39; &#124; &#39;TOTAL_CLICK_LEAD&#39; &#124; &#39;TOTAL_VIEW_SIGNUP&#39; &#124; &#39;TOTAL_VIEW_CHECKOUT&#39; &#124; &#39;TOTAL_VIEW_ADD_TO_CART&#39; &#124; &#39;TOTAL_VIEW_LEAD&#39; &#124; &#39;TOTAL_CONVERSIONS&#39; &#124; &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_SESSIONS&#39; &#124; &#39;WEB_SESSIONS_1&#39; &#124; &#39;WEB_SESSIONS_2&#39; &#124; &#39;AD_NAME&#39; &#124; &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; &#124; &#39;AD_GROUP_OPTIMIZATION&#39; &#124; &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; &#124; &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; &#124; &#39;IS_PREMIERE_CAMPAIGN&#39; &#124; &#39;TOTAL_PAGE_VISIT&#39; &#124; &#39;TOTAL_SIGNUP&#39; &#124; &#39;TOTAL_CHECKOUT&#39; &#124; &#39;TOTAL_CUSTOM&#39; &#124; &#39;TOTAL_LEAD&#39; &#124; &#39;TOTAL_ADD_TO_WISHLIST&#39; &#124; &#39;TOTAL_SUBSCRIBE&#39; &#124; &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;PAGE_VISIT_COST_PER_ACTION&#39; &#124; &#39;PAGE_VISIT_ROAS&#39; &#124; &#39;CHECKOUT_ROAS&#39; &#124; &#39;CUSTOM_ROAS&#39; &#124; &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; &#124; &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; &#124; &#39;VIDEO_3SEC_VIEWS_1&#39; &#124; &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; &#124; &#39;VIDEO_MRC_VIEWS_1&#39; &#124; &#39;VIDEO_3SEC_VIEWS_2&#39; &#124; &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; &#124; &#39;VIDEO_P100_COMPLETE_2&#39; &#124; &#39;VIDEO_P0_COMBINED_2&#39; &#124; &#39;VIDEO_P25_COMBINED_2&#39; &#124; &#39;VIDEO_P50_COMBINED_2&#39; &#124; &#39;VIDEO_P75_COMBINED_2&#39; &#124; &#39;VIDEO_P95_COMBINED_2&#39; &#124; &#39;VIDEO_MRC_VIEWS_2&#39; &#124; &#39;PAID_VIDEO_VIEWABLE_RATE&#39; &#124; &#39;VIDEO_LENGTH&#39; &#124; &#39;VIDEO_SPEND_IN_DOLLAR&#39; &#124; &#39;ECPV_IN_DOLLAR&#39; &#124; &#39;ECPCV_IN_DOLLAR&#39; &#124; &#39;ECPCV_P95_IN_DOLLAR&#39; &#124; &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_P100_COMPLETE&#39; &#124; &#39;TOTAL_VIDEO_P0_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P25_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P50_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P75_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P95_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_MRC_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; &#124; &#39;TOTAL_REPIN_RATE&#39; &#124; &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; &#124; &#39;WEB_CHECKOUT_ROAS&#39; &#124; &#39;TOTAL_WEB_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; &#124; &#39;TOTAL_OFFLINE_CHECKOUT&#39; &#124; &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; &#124; &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; &#124; &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; &#124; &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; &#124; &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; &#124; &#39;LEADS&#39; &#124; &#39;COST_PER_LEAD&#39; &#124; &#39;QUIZ_COMPLETED&#39; &#124; &#39;QUIZ_PIN_RESULT_OPEN&#39; &#124; &#39;QUIZ_COMPLETION_RATE&#39; &#124; &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; &#124; &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; &#124; &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; &#124; &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; &#124; &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; &#124; &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; &#124; &#39;SHOWCASE_SUBPAGE_REPIN&#39; &#124; &#39;SHOWCASE_SUBPIN_REPIN&#39; &#124; &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; &#124; &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; &#124; &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; &#124; &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; &#124; &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; &#124; &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; &#124; &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; &#124; &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; &#124; &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; &#124; &#39;TOTAL_LEAD_CONVERSION_RATE&#39; &#124; &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; &#124; &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; &#124; &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; &#124; &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;>** | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | defaults to undefined|
-| **granularity** | **Granularity** | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | defaults to undefined|
+| **targetingTypes** | **Array&lt;AdsAnalyticsCampaignTargetingType&gt;** | Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | defaults to undefined|
+| **columns** | **Array&lt;ReportingColumnSync&gt;** | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.  For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | defaults to undefined|
+| **granularity** | **Granularity** |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | defaults to undefined|
 | **clickWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | (optional) defaults to 30|
-| **engagementWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | (optional) defaults to 30|
+| **engagementWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | (optional) defaults to 30|
 | **viewWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | (optional) defaults to 1|
 | **conversionReportTime** | [**&#39;TIME_OF_AD_ACTION&#39; | &#39;TIME_OF_CONVERSION&#39;**]**Array<&#39;TIME_OF_AD_ACTION&#39; &#124; &#39;TIME_OF_CONVERSION&#39;>** | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | (optional) defaults to 'TIME_OF_AD_ACTION'|
 | **attributionTypes** | **Array&lt;ConversionReportAttributionType&gt;** | List of types of attribution for the conversion report | (optional) defaults to undefined|
@@ -178,15 +183,20 @@ const { status, data } = await apiInstance.campaignTargetingAnalyticsGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **campaignsAnalytics**
-> Array<CampaignsAnalyticsResponseInner> campaignsAnalytics()
+> Array<CampaignsAnalyticsMetrics> campaignsAnalytics()
 
-Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+Get analytics for the specified campaigns in the specified `ad_account_id`, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 
@@ -199,26 +209,26 @@ import {
 const configuration = new Configuration();
 const apiInstance = new CampaignsApi(configuration);
 
-let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
 let startDate: string; //Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (default to undefined)
 let endDate: string; //Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. (default to undefined)
 let campaignIds: Array<string>; //List of Campaign Ids to use to filter the results. (default to undefined)
-let columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'OUTBOUND_CTR_1' | 'CAMPAIGN_NAME' | 'CAMPAIGN_BRAND_LABEL' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_NAME' | 'AD_GROUP_BUDGET_TYPE' | 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY' | 'AD_GROUP_ENTITY_STATUS' | 'AD_GROUP_BID_MULTIPLIER' | 'PROMO_ID' | 'PROMO_NAME' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'AD_NAME' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'AD_GROUP_OPTIMIZATION' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'CAMPAIGN_BUDGET_OPTIMIZATION' | 'IS_PREMIERE_CAMPAIGN' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_ADD_TO_WISHLIST' | 'TOTAL_SUBSCRIBE' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'PRODUCT_GROUP_AD_IMAGE_TAG' | 'PRODUCT_GROUP_AD_VIDEO_TAG' | 'VIDEO_3SEC_VIEWS_1' | 'VIDEO_15SEC_UNIQUE_VIEWS_1' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_15SEC_UNIQUE_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'VIDEO_SPEND_IN_DOLLAR' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'TOTAL_APP_INSTALL_CONVERSION_RATE' | 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>; //Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\'s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\'s microdollars. Otherwise, it\'s in microunits of the advertiser\'s currency.<br/>For example, if the advertiser\'s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned (default to undefined)
-let granularity: Granularity; //TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly (default to undefined)
+let columns: Array<ReportingColumnSync>; //Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\'s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\'s microdollars. Otherwise, it\'s in microunits of the advertiser\'s currency.  For example, if the advertiser\'s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. (default to undefined)
+let granularity: Granularity; //  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly (default to undefined)
+let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
 let clickWindowDays: 0 | 1 | 7 | 14 | 30 | 60; //Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
-let engagementWindowDays: 0 | 1 | 7 | 14 | 30 | 60; //Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to 30)
+let engagementWindowDays: 0 | 1 | 7 | 14 | 30 | 60; //Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional) (default to 30)
 let viewWindowDays: 0 | 1 | 7 | 14 | 30 | 60; //Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to 1)
 let conversionReportTime: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION'; //The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to 'TIME_OF_AD_ACTION')
 let aggregateReportRows: boolean; //Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users. (optional) (default to false)
 let reportingTimezone: ReportingTimeZone; //Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.campaignsAnalytics(
-    adAccountId,
     startDate,
     endDate,
     campaignIds,
     columns,
     granularity,
+    adAccountId,
     clickWindowDays,
     engagementWindowDays,
     viewWindowDays,
@@ -232,14 +242,14 @@ const { status, data } = await apiInstance.campaignsAnalytics(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 | **startDate** | [**string**] | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | defaults to undefined|
 | **endDate** | [**string**] | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | defaults to undefined|
 | **campaignIds** | **Array&lt;string&gt;** | List of Campaign Ids to use to filter the results. | defaults to undefined|
-| **columns** | **Array<&#39;SPEND_IN_MICRO_DOLLAR&#39; &#124; &#39;PAID_IMPRESSION&#39; &#124; &#39;SPEND_IN_DOLLAR&#39; &#124; &#39;CPC_IN_MICRO_DOLLAR&#39; &#124; &#39;ECPC_IN_MICRO_DOLLAR&#39; &#124; &#39;ECPC_IN_DOLLAR&#39; &#124; &#39;CTR&#39; &#124; &#39;ECTR&#39; &#124; &#39;OUTBOUND_CTR_1&#39; &#124; &#39;CAMPAIGN_NAME&#39; &#124; &#39;CAMPAIGN_BRAND_LABEL&#39; &#124; &#39;PIN_ID&#39; &#124; &#39;TOTAL_ENGAGEMENT&#39; &#124; &#39;ENGAGEMENT_1&#39; &#124; &#39;ENGAGEMENT_2&#39; &#124; &#39;ECPE_IN_DOLLAR&#39; &#124; &#39;ENGAGEMENT_RATE&#39; &#124; &#39;EENGAGEMENT_RATE&#39; &#124; &#39;ECPM_IN_MICRO_DOLLAR&#39; &#124; &#39;REPIN_RATE&#39; &#124; &#39;CTR_2&#39; &#124; &#39;CAMPAIGN_ID&#39; &#124; &#39;ADVERTISER_ID&#39; &#124; &#39;AD_ACCOUNT_ID&#39; &#124; &#39;PIN_PROMOTION_ID&#39; &#124; &#39;AD_ID&#39; &#124; &#39;AD_GROUP_ID&#39; &#124; &#39;CAMPAIGN_ENTITY_STATUS&#39; &#124; &#39;CAMPAIGN_OBJECTIVE_TYPE&#39; &#124; &#39;CPM_IN_MICRO_DOLLAR&#39; &#124; &#39;CPM_IN_DOLLAR&#39; &#124; &#39;AD_GROUP_NAME&#39; &#124; &#39;AD_GROUP_BUDGET_TYPE&#39; &#124; &#39;AD_GROUP_BUDGET_IN_LOCAL_CURRENCY&#39; &#124; &#39;AD_GROUP_ENTITY_STATUS&#39; &#124; &#39;AD_GROUP_BID_MULTIPLIER&#39; &#124; &#39;PROMO_ID&#39; &#124; &#39;PROMO_NAME&#39; &#124; &#39;ORDER_LINE_ID&#39; &#124; &#39;ORDER_LINE_NAME&#39; &#124; &#39;CLICKTHROUGH_1&#39; &#124; &#39;REPIN_1&#39; &#124; &#39;IMPRESSION_1&#39; &#124; &#39;IMPRESSION_1_GROSS&#39; &#124; &#39;CLICKTHROUGH_1_GROSS&#39; &#124; &#39;OUTBOUND_CLICK_1&#39; &#124; &#39;CLICKTHROUGH_2&#39; &#124; &#39;REPIN_2&#39; &#124; &#39;IMPRESSION_2&#39; &#124; &#39;OUTBOUND_CLICK_2&#39; &#124; &#39;TOTAL_CLICKTHROUGH&#39; &#124; &#39;TOTAL_IMPRESSION&#39; &#124; &#39;TOTAL_IMPRESSION_USER&#39; &#124; &#39;TOTAL_IMPRESSION_FREQUENCY&#39; &#124; &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR&#39; &#124; &#39;COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1&#39; &#124; &#39;TOTAL_ENGAGEMENT_SIGNUP&#39; &#124; &#39;TOTAL_ENGAGEMENT_CHECKOUT&#39; &#124; &#39;TOTAL_ENGAGEMENT_LEAD&#39; &#124; &#39;TOTAL_CLICK_SIGNUP&#39; &#124; &#39;TOTAL_CLICK_CHECKOUT&#39; &#124; &#39;TOTAL_CLICK_ADD_TO_CART&#39; &#124; &#39;TOTAL_CLICK_LEAD&#39; &#124; &#39;TOTAL_VIEW_SIGNUP&#39; &#124; &#39;TOTAL_VIEW_CHECKOUT&#39; &#124; &#39;TOTAL_VIEW_ADD_TO_CART&#39; &#124; &#39;TOTAL_VIEW_LEAD&#39; &#124; &#39;TOTAL_CONVERSIONS&#39; &#124; &#39;TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_SESSIONS&#39; &#124; &#39;WEB_SESSIONS_1&#39; &#124; &#39;WEB_SESSIONS_2&#39; &#124; &#39;AD_NAME&#39; &#124; &#39;CAMPAIGN_LIFETIME_SPEND_CAP&#39; &#124; &#39;AD_GROUP_OPTIMIZATION&#39; &#124; &#39;CAMPAIGN_DAILY_SPEND_CAP&#39; &#124; &#39;CAMPAIGN_BUDGET_OPTIMIZATION&#39; &#124; &#39;IS_PREMIERE_CAMPAIGN&#39; &#124; &#39;TOTAL_PAGE_VISIT&#39; &#124; &#39;TOTAL_SIGNUP&#39; &#124; &#39;TOTAL_CHECKOUT&#39; &#124; &#39;TOTAL_CUSTOM&#39; &#124; &#39;TOTAL_LEAD&#39; &#124; &#39;TOTAL_ADD_TO_WISHLIST&#39; &#124; &#39;TOTAL_SUBSCRIBE&#39; &#124; &#39;TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;PAGE_VISIT_COST_PER_ACTION&#39; &#124; &#39;PAGE_VISIT_ROAS&#39; &#124; &#39;CHECKOUT_ROAS&#39; &#124; &#39;CUSTOM_ROAS&#39; &#124; &#39;PRODUCT_GROUP_AD_IMAGE_TAG&#39; &#124; &#39;PRODUCT_GROUP_AD_VIDEO_TAG&#39; &#124; &#39;VIDEO_3SEC_VIEWS_1&#39; &#124; &#39;VIDEO_15SEC_UNIQUE_VIEWS_1&#39; &#124; &#39;VIDEO_MRC_VIEWS_1&#39; &#124; &#39;VIDEO_3SEC_VIEWS_2&#39; &#124; &#39;VIDEO_15SEC_UNIQUE_VIEWS_2&#39; &#124; &#39;VIDEO_P100_COMPLETE_2&#39; &#124; &#39;VIDEO_P0_COMBINED_2&#39; &#124; &#39;VIDEO_P25_COMBINED_2&#39; &#124; &#39;VIDEO_P50_COMBINED_2&#39; &#124; &#39;VIDEO_P75_COMBINED_2&#39; &#124; &#39;VIDEO_P95_COMBINED_2&#39; &#124; &#39;VIDEO_MRC_VIEWS_2&#39; &#124; &#39;PAID_VIDEO_VIEWABLE_RATE&#39; &#124; &#39;VIDEO_LENGTH&#39; &#124; &#39;VIDEO_SPEND_IN_DOLLAR&#39; &#124; &#39;ECPV_IN_DOLLAR&#39; &#124; &#39;ECPCV_IN_DOLLAR&#39; &#124; &#39;ECPCV_P95_IN_DOLLAR&#39; &#124; &#39;TOTAL_VIDEO_3SEC_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_15SEC_UNIQUE_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_P100_COMPLETE&#39; &#124; &#39;TOTAL_VIDEO_P0_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P25_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P50_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P75_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_P95_COMBINED&#39; &#124; &#39;TOTAL_VIDEO_MRC_VIEWS&#39; &#124; &#39;TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND&#39; &#124; &#39;TOTAL_REPIN_RATE&#39; &#124; &#39;WEB_CHECKOUT_COST_PER_ACTION&#39; &#124; &#39;WEB_CHECKOUT_ROAS&#39; &#124; &#39;TOTAL_WEB_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_CLICK_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;TOTAL_WEB_VIEW_CHECKOUT&#39; &#124; &#39;TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR&#39; &#124; &#39;INAPP_CHECKOUT_COST_PER_ACTION&#39; &#124; &#39;TOTAL_OFFLINE_CHECKOUT&#39; &#124; &#39;TOTAL_APP_INSTALL_CONVERSION_RATE&#39; &#124; &#39;TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE&#39; &#124; &#39;IDEA_PIN_PRODUCT_TAG_VISIT_1&#39; &#124; &#39;IDEA_PIN_PRODUCT_TAG_VISIT_2&#39; &#124; &#39;TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT&#39; &#124; &#39;LEADS&#39; &#124; &#39;COST_PER_LEAD&#39; &#124; &#39;QUIZ_COMPLETED&#39; &#124; &#39;QUIZ_PIN_RESULT_OPEN&#39; &#124; &#39;QUIZ_COMPLETION_RATE&#39; &#124; &#39;SHOWCASE_PIN_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPAGE_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPIN_CLICKTHROUGH&#39; &#124; &#39;SHOWCASE_SUBPAGE_IMPRESSION&#39; &#124; &#39;SHOWCASE_SUBPIN_IMPRESSION&#39; &#124; &#39;SHOWCASE_SUBPAGE_SWIPE_LEFT&#39; &#124; &#39;SHOWCASE_SUBPAGE_SWIPE_RIGHT&#39; &#124; &#39;SHOWCASE_SUBPIN_SWIPE_LEFT&#39; &#124; &#39;SHOWCASE_SUBPIN_SWIPE_RIGHT&#39; &#124; &#39;SHOWCASE_SUBPAGE_REPIN&#39; &#124; &#39;SHOWCASE_SUBPIN_REPIN&#39; &#124; &#39;SHOWCASE_SUBPAGE_CLOSEUP&#39; &#124; &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD&#39; &#124; &#39;SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD&#39; &#124; &#39;SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION&#39; &#124; &#39;TOTAL_CHECKOUT_CONVERSION_RATE&#39; &#124; &#39;TOTAL_VIEW_CATEGORY_CONVERSION_RATE&#39; &#124; &#39;TOTAL_ADD_TO_CART_CONVERSION_RATE&#39; &#124; &#39;TOTAL_SIGNUP_CONVERSION_RATE&#39; &#124; &#39;TOTAL_PAGE_VISIT_CONVERSION_RATE&#39; &#124; &#39;TOTAL_LEAD_CONVERSION_RATE&#39; &#124; &#39;TOTAL_SEARCH_CONVERSION_RATE&#39; &#124; &#39;TOTAL_WATCH_VIDEO_CONVERSION_RATE&#39; &#124; &#39;TOTAL_UNKNOWN_CONVERSION_RATE&#39; &#124; &#39;TOTAL_CUSTOM_CONVERSION_RATE&#39;>** | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.&lt;br/&gt;For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | defaults to undefined|
-| **granularity** | **Granularity** | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | defaults to undefined|
+| **columns** | **Array&lt;ReportingColumnSync&gt;** | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile\&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it\&#39;s microdollars. Otherwise, it\&#39;s in microunits of the advertiser\&#39;s currency.  For example, if the advertiser\&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | defaults to undefined|
+| **granularity** | **Granularity** |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | defaults to undefined|
+| **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 | **clickWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | (optional) defaults to 30|
-| **engagementWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | (optional) defaults to 30|
+| **engagementWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | (optional) defaults to 30|
 | **viewWindowDays** | [**0 | 1 | 7 | 14 | 30 | 60**]**Array<0 &#124; 1 &#124; 7 &#124; 14 &#124; 30 &#124; 60>** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | (optional) defaults to 1|
 | **conversionReportTime** | [**&#39;TIME_OF_AD_ACTION&#39; | &#39;TIME_OF_CONVERSION&#39;**]**Array<&#39;TIME_OF_AD_ACTION&#39; &#124; &#39;TIME_OF_CONVERSION&#39;>** | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | (optional) defaults to 'TIME_OF_AD_ACTION'|
 | **aggregateReportRows** | [**boolean**] | Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users. | (optional) defaults to false|
@@ -248,7 +258,7 @@ const { status, data } = await apiInstance.campaignsAnalytics(
 
 ### Return type
 
-**Array<CampaignsAnalyticsResponseInner>**
+**Array<CampaignsAnalyticsMetrics>**
 
 ### Authorization
 
@@ -263,16 +273,20 @@ const { status, data } = await apiInstance.campaignsAnalytics(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**400** | Invalid ad account campaign analytics parameters. |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **campaignsCreate**
-> CampaignCreateResponse campaignsCreate(campaignCreateRequest)
+> CampaignBatchWriteResponseModel campaignsCreate(campaignCreateItem)
 
-Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for \'lifetime_spend_cap\' and \'daily_spend_cap\' are microcurrency amounts based on the currency field set in the advertiser\'s profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads.  For more, see [Set up your campaign](https://help.pinterest.com/en/business/article/set-up-your-campaign/).  **Note:** - The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser\'s profile (e.g. USD).  Microcurrency is used to track very small transactions, based on the currency set in the advertiser\'s profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser\'s profile.  **Equivalency equations**, using dollars as an example currency:  - $1 = 1,000,000 microdollars - 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000
 
 ### Example
 
@@ -286,11 +300,11 @@ const configuration = new Configuration();
 const apiInstance = new CampaignsApi(configuration);
 
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let campaignCreateRequest: Array<CampaignCreateRequest>; //Array of campaigns.
+let campaignCreateItem: Array<CampaignCreateItem>; //
 
 const { status, data } = await apiInstance.campaignsCreate(
     adAccountId,
-    campaignCreateRequest
+    campaignCreateItem
 );
 ```
 
@@ -298,13 +312,13 @@ const { status, data } = await apiInstance.campaignsCreate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **campaignCreateRequest** | **Array<CampaignCreateRequest>**| Array of campaigns. | |
+| **campaignCreateItem** | **Array<CampaignCreateItem>**|  | |
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 
 
 ### Return type
 
-**CampaignCreateResponse**
+**CampaignBatchWriteResponseModel**
 
 ### Authorization
 
@@ -319,13 +333,18 @@ const { status, data } = await apiInstance.campaignsCreate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | response |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **campaignsGet**
-> CampaignResponse campaignsGet()
+> Campaign campaignsGet()
 
 Get a specific campaign given the campaign ID.
 
@@ -340,12 +359,12 @@ import {
 const configuration = new Configuration();
 const apiInstance = new CampaignsApi(configuration);
 
-let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
 let campaignId: string; //Campaign ID, must be associated with the ad account ID provided in the path. (default to undefined)
+let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
 
 const { status, data } = await apiInstance.campaignsGet(
-    adAccountId,
-    campaignId
+    campaignId,
+    adAccountId
 );
 ```
 
@@ -353,13 +372,13 @@ const { status, data } = await apiInstance.campaignsGet(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 | **campaignId** | [**string**] | Campaign ID, must be associated with the ad account ID provided in the path. | defaults to undefined|
+| **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 
 
 ### Return type
 
-**CampaignResponse**
+**Campaign**
 
 ### Authorization
 
@@ -374,15 +393,20 @@ const { status, data } = await apiInstance.campaignsGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **campaignsList**
 > CampaignsList200Response campaignsList()
 
-Get a list of the campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+Get a list of the campaigns in the specified `ad_account_id`, filtered by the specified options. - The token\'s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
 
 ### Example
 
@@ -396,19 +420,19 @@ const configuration = new Configuration();
 const apiInstance = new CampaignsApi(configuration);
 
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let campaignIds: Array<string>; //List of Campaign Ids to use to filter the results. (optional) (default to undefined)
-let entityStatuses: Array<'ACTIVE' | 'PAUSED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT'>; //Entity status (optional) (default to undefined)
-let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
-let order: 'ASCENDING' | 'DESCENDING'; //The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional) (default to undefined)
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
+let pageSize: number; //Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+let order: PinterestLibPaginationOrder; //The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional) (default to undefined)
+let campaignIds: Array<string>; //List of Campaign Ids to use to filter the results. (optional) (default to undefined)
+let entityStatuses: Array<EntityStatus>; //Entity status (optional) (default to undefined)
 
 const { status, data } = await apiInstance.campaignsList(
     adAccountId,
-    campaignIds,
-    entityStatuses,
+    bookmark,
     pageSize,
     order,
-    bookmark
+    campaignIds,
+    entityStatuses
 );
 ```
 
@@ -417,11 +441,11 @@ const { status, data } = await apiInstance.campaignsList(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
-| **campaignIds** | **Array&lt;string&gt;** | List of Campaign Ids to use to filter the results. | (optional) defaults to undefined|
-| **entityStatuses** | **Array<&#39;ACTIVE&#39; &#124; &#39;PAUSED&#39; &#124; &#39;ARCHIVED&#39; &#124; &#39;DRAFT&#39; &#124; &#39;DELETED_DRAFT&#39;>** | Entity status | (optional) defaults to undefined|
-| **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
-| **order** | [**&#39;ASCENDING&#39; | &#39;DESCENDING&#39;**]**Array<&#39;ASCENDING&#39; &#124; &#39;DESCENDING&#39;>** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | (optional) defaults to undefined|
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
+| **pageSize** | [**number**] | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | (optional) defaults to 25|
+| **order** | **PinterestLibPaginationOrder** | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | (optional) defaults to undefined|
+| **campaignIds** | **Array&lt;string&gt;** | List of Campaign Ids to use to filter the results. | (optional) defaults to undefined|
+| **entityStatuses** | **Array&lt;EntityStatus&gt;** | Entity status | (optional) defaults to undefined|
 
 
 ### Return type
@@ -441,16 +465,20 @@ const { status, data } = await apiInstance.campaignsList(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**400** | Invalid ad account campaign parameters. |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **campaignsUpdate**
-> CampaignUpdateResponse campaignsUpdate(campaignUpdateRequest)
+> CampaignBatchWriteResponseModel campaignsUpdate(campaignBatchUpdateItem)
 
-<p>Update multiple ad campaigns based on campaign_ids. </p> <p><strong>Note:</strong></p> - <p>The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser\'s profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser\'s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser\'s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+Update multiple ad campaigns based on campaign_ids.  **Note:** - The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser\'s profile (e.g. USD).  Microcurrency is used to track very small transactions, based on the currency set in the advertiser\'s profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser\'s profile.  **Equivalency equations**, using dollars as an example currency:  - $1 = 1,000,000 microdollars - 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000
 
 ### Example
 
@@ -464,11 +492,11 @@ const configuration = new Configuration();
 const apiInstance = new CampaignsApi(configuration);
 
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let campaignUpdateRequest: Array<CampaignUpdateRequest>; //Array of campaigns.
+let campaignBatchUpdateItem: Array<CampaignBatchUpdateItem>; //
 
 const { status, data } = await apiInstance.campaignsUpdate(
     adAccountId,
-    campaignUpdateRequest
+    campaignBatchUpdateItem
 );
 ```
 
@@ -476,13 +504,13 @@ const { status, data } = await apiInstance.campaignsUpdate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **campaignUpdateRequest** | **Array<CampaignUpdateRequest>**| Array of campaigns. | |
+| **campaignBatchUpdateItem** | **Array<CampaignBatchUpdateItem>**|  | |
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 
 
 ### Return type
 
-**CampaignUpdateResponse**
+**CampaignBatchWriteResponseModel**
 
 ### Authorization
 
@@ -497,8 +525,74 @@ const { status, data } = await apiInstance.campaignsUpdate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | response |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCampaignDeliveryEstimates**
+> CampaignDeliveryEstimatesResponse getCampaignDeliveryEstimates(campaignDeliveryEstimatesCampaign)
+
+Get delivery estimates for an ads campaign  **This endpoint is currently in beta and is not available to all apps [Learn more](/docs/new/about-beta-access/).**
+
+### Example
+
+```typescript
+import {
+    CampaignsApi,
+    Configuration
+} from './api';
+
+const configuration = new Configuration();
+const apiInstance = new CampaignsApi(configuration);
+
+let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
+let campaignDeliveryEstimatesCampaign: Array<CampaignDeliveryEstimatesCampaign>; //
+
+const { status, data } = await apiInstance.getCampaignDeliveryEstimates(
+    adAccountId,
+    campaignDeliveryEstimatesCampaign
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **campaignDeliveryEstimatesCampaign** | **Array<CampaignDeliveryEstimatesCampaign>**|  | |
+| **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
+
+
+### Return type
+
+**CampaignDeliveryEstimatesResponse**
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**503** | The service is temporarily unavailable. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

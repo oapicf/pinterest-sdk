@@ -6,14 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | raw string name of the event, usually logged as raw_event_name in our dataset |  [optional]
-**mappedConversionType** | [**MappedConversionTypeEnum**](#MappedConversionTypeEnum) | standard type mapped to ADE for optimization |  [optional]
-
-
-## Enum: MappedConversionTypeEnum
-
-Name | Value
----- | -----
+**mappedConversionType** | [**ConversionTagTypeOptimal**](ConversionTagTypeOptimal.md) | Standard type mapped to ADE for optimization |  [optional]
+**name** | **String** | Raw string name of the event, usually logged as raw_event_name in our dataset |  [optional]
 
 
 

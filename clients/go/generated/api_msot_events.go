@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,12 +28,11 @@ type ApiMsotEventsCreateRequest struct {
 	ctx context.Context
 	ApiService *MsotEventsAPIService
 	adAccountId string
-	conversionMSOTEvents *ConversionMSOTEvents
+	conversionMSOTEventsCreate *ConversionMSOTEventsCreate
 }
 
-// Attributed MSOT conversion events
-func (r ApiMsotEventsCreateRequest) ConversionMSOTEvents(conversionMSOTEvents ConversionMSOTEvents) ApiMsotEventsCreateRequest {
-	r.conversionMSOTEvents = &conversionMSOTEvents
+func (r ApiMsotEventsCreateRequest) ConversionMSOTEventsCreate(conversionMSOTEventsCreate ConversionMSOTEventsCreate) ApiMsotEventsCreateRequest {
+	r.conversionMSOTEventsCreate = &conversionMSOTEventsCreate
 	return r
 }
 
@@ -44,10 +43,13 @@ func (r ApiMsotEventsCreateRequest) Execute() (*http.Response, error) {
 /*
 MsotEventsCreate Send Measurement Source Of Truth (MSOT) attributed conversion events
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
-<br>
-<p>Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their <code>ad_account_id</code>. The request body should be a JSON object.</p>
-- These events will NOT be used in Reporting.
+**This feature is currently in beta and not available to all apps.**
+If you are interested in joining the beta, reach out to your Pinterest account manager.
+
+Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest
+based on their `ad_account_id`. The request body should be a JSON object.
+
+- These events will not be used in Reporting.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -83,8 +85,8 @@ func (a *MsotEventsAPIService) MsotEventsCreateExecute(r ApiMsotEventsCreateRequ
 	if strlen(r.adAccountId) > 18 {
 		return nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.conversionMSOTEvents == nil {
-		return nil, reportError("conversionMSOTEvents is required and must be specified")
+	if r.conversionMSOTEventsCreate == nil {
+		return nil, reportError("conversionMSOTEventsCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -105,7 +107,7 @@ func (a *MsotEventsAPIService) MsotEventsCreateExecute(r ApiMsotEventsCreateRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.conversionMSOTEvents
+	localVarPostBody = r.conversionMSOTEventsCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -129,7 +131,7 @@ func (a *MsotEventsAPIService) MsotEventsCreateExecute(r ApiMsotEventsCreateRequ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -140,7 +142,7 @@ func (a *MsotEventsAPIService) MsotEventsCreateExecute(r ApiMsotEventsCreateRequ
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -151,7 +153,18 @@ func (a *MsotEventsAPIService) MsotEventsCreateExecute(r ApiMsotEventsCreateRequ
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -162,7 +175,7 @@ func (a *MsotEventsAPIService) MsotEventsCreateExecute(r ApiMsotEventsCreateRequ
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -172,7 +185,7 @@ func (a *MsotEventsAPIService) MsotEventsCreateExecute(r ApiMsotEventsCreateRequ
 					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

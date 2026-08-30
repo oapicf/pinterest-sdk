@@ -15,25 +15,26 @@ class CatalogsFeedProcessingResult {
   CatalogsFeedProcessingResult({
     required this.createdAt,
     required this.id,
-    required this.updatedAt,
     required this.ingestionDetails,
     required this.productCounts,
     required this.status,
+    required this.updatedAt,
     required this.validationDetails,
     this.videoCounts,
   });
 
   DateTime createdAt;
 
+  /// ID of the feed processing result.
   String id;
-
-  DateTime updatedAt;
 
   CatalogsFeedIngestionDetails ingestionDetails;
 
   CatalogsFeedProductCounts? productCounts;
 
   CatalogsFeedProcessingStatus status;
+
+  DateTime updatedAt;
 
   CatalogsFeedValidationDetails validationDetails;
 
@@ -49,10 +50,10 @@ class CatalogsFeedProcessingResult {
   bool operator ==(Object other) => identical(this, other) || other is CatalogsFeedProcessingResult &&
     other.createdAt == createdAt &&
     other.id == id &&
-    other.updatedAt == updatedAt &&
     other.ingestionDetails == ingestionDetails &&
     other.productCounts == productCounts &&
     other.status == status &&
+    other.updatedAt == updatedAt &&
     other.validationDetails == validationDetails &&
     other.videoCounts == videoCounts;
 
@@ -61,21 +62,20 @@ class CatalogsFeedProcessingResult {
     // ignore: unnecessary_parenthesis
     (createdAt.hashCode) +
     (id.hashCode) +
-    (updatedAt.hashCode) +
     (ingestionDetails.hashCode) +
     (productCounts == null ? 0 : productCounts!.hashCode) +
     (status.hashCode) +
+    (updatedAt.hashCode) +
     (validationDetails.hashCode) +
     (videoCounts == null ? 0 : videoCounts!.hashCode);
 
   @override
-  String toString() => 'CatalogsFeedProcessingResult[createdAt=$createdAt, id=$id, updatedAt=$updatedAt, ingestionDetails=$ingestionDetails, productCounts=$productCounts, status=$status, validationDetails=$validationDetails, videoCounts=$videoCounts]';
+  String toString() => 'CatalogsFeedProcessingResult[createdAt=$createdAt, id=$id, ingestionDetails=$ingestionDetails, productCounts=$productCounts, status=$status, updatedAt=$updatedAt, validationDetails=$validationDetails, videoCounts=$videoCounts]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
       json[r'id'] = this.id;
-      json[r'updated_at'] = this.updatedAt.toUtc().toIso8601String();
       json[r'ingestion_details'] = this.ingestionDetails;
     if (this.productCounts != null) {
       json[r'product_counts'] = this.productCounts;
@@ -83,6 +83,7 @@ class CatalogsFeedProcessingResult {
       json[r'product_counts'] = null;
     }
       json[r'status'] = this.status;
+      json[r'updated_at'] = this.updatedAt.toUtc().toIso8601String();
       json[r'validation_details'] = this.validationDetails;
     if (this.videoCounts != null) {
       json[r'video_counts'] = this.videoCounts;
@@ -103,20 +104,29 @@ class CatalogsFeedProcessingResult {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsFeedProcessingResult[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsFeedProcessingResult[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'created_at'), 'Required key "CatalogsFeedProcessingResult[created_at]" is missing from JSON.');
+        assert(json[r'created_at'] != null, 'Required key "CatalogsFeedProcessingResult[created_at]" has a null value in JSON.');
+        assert(json.containsKey(r'id'), 'Required key "CatalogsFeedProcessingResult[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "CatalogsFeedProcessingResult[id]" has a null value in JSON.');
+        assert(json.containsKey(r'ingestion_details'), 'Required key "CatalogsFeedProcessingResult[ingestion_details]" is missing from JSON.');
+        assert(json[r'ingestion_details'] != null, 'Required key "CatalogsFeedProcessingResult[ingestion_details]" has a null value in JSON.');
+        assert(json.containsKey(r'product_counts'), 'Required key "CatalogsFeedProcessingResult[product_counts]" is missing from JSON.');
+        assert(json.containsKey(r'status'), 'Required key "CatalogsFeedProcessingResult[status]" is missing from JSON.');
+        assert(json[r'status'] != null, 'Required key "CatalogsFeedProcessingResult[status]" has a null value in JSON.');
+        assert(json.containsKey(r'updated_at'), 'Required key "CatalogsFeedProcessingResult[updated_at]" is missing from JSON.');
+        assert(json[r'updated_at'] != null, 'Required key "CatalogsFeedProcessingResult[updated_at]" has a null value in JSON.');
+        assert(json.containsKey(r'validation_details'), 'Required key "CatalogsFeedProcessingResult[validation_details]" is missing from JSON.');
+        assert(json[r'validation_details'] != null, 'Required key "CatalogsFeedProcessingResult[validation_details]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsFeedProcessingResult(
         createdAt: mapDateTime(json, r'created_at', r'')!,
         id: mapValueOfType<String>(json, r'id')!,
-        updatedAt: mapDateTime(json, r'updated_at', r'')!,
         ingestionDetails: CatalogsFeedIngestionDetails.fromJson(json[r'ingestion_details'])!,
         productCounts: CatalogsFeedProductCounts.fromJson(json[r'product_counts']),
         status: CatalogsFeedProcessingStatus.fromJson(json[r'status'])!,
+        updatedAt: mapDateTime(json, r'updated_at', r'')!,
         validationDetails: CatalogsFeedValidationDetails.fromJson(json[r'validation_details'])!,
         videoCounts: CatalogsFeedVideoCounts.fromJson(json[r'video_counts']),
       );
@@ -168,10 +178,10 @@ class CatalogsFeedProcessingResult {
   static const requiredKeys = <String>{
     'created_at',
     'id',
-    'updated_at',
     'ingestion_details',
     'product_counts',
     'status',
+    'updated_at',
     'validation_details',
   };
 }

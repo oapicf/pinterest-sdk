@@ -29,9 +29,6 @@ ProductCategoryDetailLookbackWindow <- R6::R6Class(
           stop("Use one of the valid values: ",
             paste0(enumvec, collapse = ", "))
         }
-        warning("Initializing ProductCategoryDetailLookbackWindow with DUMMY_ENUM. Use one of the valid values: ",
-          paste0(enumvec, collapse = ", "),
-          ". If you did not manually initialize ProductCategoryDetailLookbackWindow, this may already be overwritten by an enum loaded from a JSON config.")
       }
       private$value <- val
     },

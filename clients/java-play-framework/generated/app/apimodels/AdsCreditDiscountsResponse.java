@@ -1,5 +1,6 @@
 package apimodels;
 
+import apimodels.AdsCreditDiscountType;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
@@ -11,7 +12,7 @@ import javax.validation.Valid;
 /**
  * AdsCreditDiscountsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdsCreditDiscountsResponse   {
   @JsonProperty("active")
@@ -32,76 +33,10 @@ public class AdsCreditDiscountsResponse   {
 
   private BigDecimal discountInMicroCurrency;
 
-  /**
-   * The type of discount of this credit
-   */
-  public enum DiscountTypeEnum {
-    COUPON("COUPON"),
-    
-    CREDIT("CREDIT"),
-    
-    COUPON_APPLIED("COUPON_APPLIED"),
-    
-    CREDIT_APPLIED("CREDIT_APPLIED"),
-    
-    MARKETING_OFFER_CREDIT("MARKETING_OFFER_CREDIT"),
-    
-    MARKETING_OFFER_CREDIT_APPLIED("MARKETING_OFFER_CREDIT_APPLIED"),
-    
-    GOODWILL_CREDIT("GOODWILL_CREDIT"),
-    
-    GOODWILL_CREDIT_APPLIED("GOODWILL_CREDIT_APPLIED"),
-    
-    INTERNAL_CREDIT("INTERNAL_CREDIT"),
-    
-    INTERNAL_CREDIT_APPLIED("INTERNAL_CREDIT_APPLIED"),
-    
-    PREPAID_CREDIT("PREPAID_CREDIT"),
-    
-    PREPAID_CREDIT_APPLIED("PREPAID_CREDIT_APPLIED"),
-    
-    SALES_INCENTIVE_CREDIT("SALES_INCENTIVE_CREDIT"),
-    
-    SALES_INCENTIVE_CREDIT_APPLIED("SALES_INCENTIVE_CREDIT_APPLIED"),
-    
-    CREDIT_EXPIRED("CREDIT_EXPIRED"),
-    
-    FUTURE_CREDIT("FUTURE_CREDIT"),
-    
-    REFERRAL_CREDIT("REFERRAL_CREDIT"),
-    
-    INVOICE_SALES_INCENTIVE_CREDIT("INVOICE_SALES_INCENTIVE_CREDIT"),
-    
-    INVOICE_SALES_INCENTIVE_CREDIT_APPLIED("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"),
-    
-    PREPAID_CREDIT_REFUND("PREPAID_CREDIT_REFUND");
-
-    private final String value;
-
-    DiscountTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static DiscountTypeEnum fromValue(String value) {
-      for (DiscountTypeEnum b : DiscountTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("discountType")
-  
-  private DiscountTypeEnum discountType;
+  @Valid
+
+  private AdsCreditDiscountType discountType;
 
   @JsonProperty("remainingDiscountInMicroCurrency")
   @Valid
@@ -169,7 +104,7 @@ public class AdsCreditDiscountsResponse   {
   }
 
    /**
-   * The discount applied in the offer’s currency value.
+   * The discount applied in the offer's currency value.
    * @return discountInMicroCurrency
   **/
   public BigDecimal getDiscountInMicroCurrency() {
@@ -180,7 +115,7 @@ public class AdsCreditDiscountsResponse   {
     this.discountInMicroCurrency = discountInMicroCurrency;
   }
 
-  public AdsCreditDiscountsResponse discountType(DiscountTypeEnum discountType) {
+  public AdsCreditDiscountsResponse discountType(AdsCreditDiscountType discountType) {
     this.discountType = discountType;
     return this;
   }
@@ -189,11 +124,11 @@ public class AdsCreditDiscountsResponse   {
    * The type of discount of this credit
    * @return discountType
   **/
-  public DiscountTypeEnum getDiscountType() {
+  public AdsCreditDiscountType getDiscountType() {
     return discountType;
   }
 
-  public void setDiscountType(DiscountTypeEnum discountType) {
+  public void setDiscountType(AdsCreditDiscountType discountType) {
     this.discountType = discountType;
   }
 
@@ -277,10 +212,7 @@ public class AdsCreditDiscountsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

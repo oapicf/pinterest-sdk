@@ -12,18 +12,21 @@ static media_upload_create_t *media_upload_create_create_internal(
     if (!media_upload_create_local_var) {
         return NULL;
     }
-    media_upload_create_local_var->media_type = media_type;
-
+    memset(media_upload_create_local_var, 0, sizeof(media_upload_create_t));
     media_upload_create_local_var->_library_owned = 1;
+    media_upload_create_local_var->media_type = media_type;
     return media_upload_create_local_var;
 }
 
 __attribute__((deprecated)) media_upload_create_t *media_upload_create_create(
     media_upload_type_t *media_type
     ) {
-    return media_upload_create_create_internal (
+    media_upload_create_t *result = media_upload_create_create_internal (
         media_type
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void media_upload_create_free(media_upload_create_t *media_upload_create) {
@@ -86,9 +89,14 @@ media_upload_create_t *media_upload_create_parseFromJSON(cJSON *media_upload_cre
     media_type_local_nonprim = media_upload_type_parseFromJSON(media_type); //custom
 
 
+
     media_upload_create_local_var = media_upload_create_create_internal (
         media_type_local_nonprim
         );
+
+    if (!media_upload_create_local_var) {
+        goto end;
+    }
 
     return media_upload_create_local_var;
 end:

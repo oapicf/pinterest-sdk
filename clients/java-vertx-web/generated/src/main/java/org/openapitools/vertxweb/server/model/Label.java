@@ -5,46 +5,24 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.LabelStatus;
-import org.openapitools.vertxweb.server.model.LabelType;
+import org.openapitools.vertxweb.server.model.NullableLabelStatus;
+import org.openapitools.vertxweb.server.model.NullableLabelType;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Label   {
   
   private String id;
-  private LabelType labelType;
-  private String parentId;
-
-
-  public enum ParentTypeEnum {
-    CAMPAIGN("CAMPAIGN");
-
-    private String value;
-
-    ParentTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private ParentTypeEnum parentType;
-  private LabelStatus status;
+  private NullableLabelType labelType;
+  private NullableLabelStatus status;
   private String value;
 
   public Label () {
 
   }
 
-  public Label (String id, LabelType labelType, String parentId, ParentTypeEnum parentType, LabelStatus status, String value) {
+  public Label (String id, NullableLabelType labelType, NullableLabelStatus status, String value) {
     this.id = id;
     this.labelType = labelType;
-    this.parentId = parentId;
-    this.parentType = parentType;
     this.status = status;
     this.value = value;
   }
@@ -60,37 +38,19 @@ public class Label   {
 
     
   @JsonProperty("label_type")
-  public LabelType getLabelType() {
+  public NullableLabelType getLabelType() {
     return labelType;
   }
-  public void setLabelType(LabelType labelType) {
+  public void setLabelType(NullableLabelType labelType) {
     this.labelType = labelType;
   }
 
     
-  @JsonProperty("parent_id")
-  public String getParentId() {
-    return parentId;
-  }
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
-  }
-
-    
-  @JsonProperty("parent_type")
-  public ParentTypeEnum getParentType() {
-    return parentType;
-  }
-  public void setParentType(ParentTypeEnum parentType) {
-    this.parentType = parentType;
-  }
-
-    
   @JsonProperty("status")
-  public LabelStatus getStatus() {
+  public NullableLabelStatus getStatus() {
     return status;
   }
-  public void setStatus(LabelStatus status) {
+  public void setStatus(NullableLabelStatus status) {
     this.status = status;
   }
 
@@ -115,15 +75,13 @@ public class Label   {
     Label label = (Label) o;
     return Objects.equals(id, label.id) &&
         Objects.equals(labelType, label.labelType) &&
-        Objects.equals(parentId, label.parentId) &&
-        Objects.equals(parentType, label.parentType) &&
         Objects.equals(status, label.status) &&
         Objects.equals(value, label.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, labelType, parentId, parentType, status, value);
+    return Objects.hash(id, labelType, status, value);
   }
 
   @Override
@@ -133,8 +91,6 @@ public class Label   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    labelType: ").append(toIndentedString(labelType)).append("\n");
-    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
-    sb.append("    parentType: ").append(toIndentedString(parentType)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
@@ -146,9 +102,6 @@ public class Label   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

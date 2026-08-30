@@ -2,7 +2,8 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.BaseInviteDataResponseInviteData
+open OpenAPI.Model.BusinessAccessUserSummary
+open OpenAPI.Model.InviteDataResponse
 
 module InviteBusinessRoleBinding =
 
@@ -10,11 +11,11 @@ module InviteBusinessRoleBinding =
 
 
   type InviteBusinessRoleBinding = {
-    Id : string;
-    InviteData : BaseInviteDataResponseInviteData;
-    IsReceivedInvite : bool;
-    User : obj;
     CreatedByBusinessId : string;
     CreatedByUserId : string;
+    Id : string;
+    InviteData : InviteDataResponse;
+    IsReceivedInvite : bool;
+    User : BusinessAccessUserSummary;
   }
   //#endregion

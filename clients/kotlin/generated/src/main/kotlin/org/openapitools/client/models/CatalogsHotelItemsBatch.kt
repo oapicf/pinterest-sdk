@@ -8,22 +8,29 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.BatchOperationStatus
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.HotelProcessingRecord
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Object describing the catalogs hotel items batch
+ * Object describing the catalogs hotel items batch. If specified, you must provide all properties.
  *
  * @param catalogType 
  * @param batchId Id of the catalogs items batch
@@ -37,7 +44,7 @@ import com.squareup.moshi.JsonClass
 data class CatalogsHotelItemsBatch (
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
+    val catalogType: CatalogsHotelItemsBatch.CatalogType,
 
     /* Id of the catalogs items batch */
     @Json(name = "batch_id")
@@ -60,6 +67,15 @@ data class CatalogsHotelItemsBatch (
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: HOTEL
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "HOTEL") HOTEL("HOTEL");
+    }
 
 }
 

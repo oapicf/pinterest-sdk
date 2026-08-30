@@ -10,9 +10,14 @@ The class is defined in **[CatalogsReportParameters.java](../../src/main/java/or
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | `CatalogsType` |  | 
+**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **report** | [`CatalogsHotelReportParametersReport`](CatalogsHotelReportParametersReport.md) |  | 
 
+## CatalogTypeEnum
+
+Name | Value
+---- | -----
+HOTEL | `"HOTEL"`
 
 
 

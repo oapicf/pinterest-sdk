@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request body for bulk deleting product tags from a pin.",
+  "name": "ProductTagsBulkDeleteRequest",
+  "fields": [
+    {
+      "name": "product_tags",
+      "type": {
+        "type": "array",
+        "items": "model.ProductTagItem"
+      },
+      "doc": "List of product tags to delete."
+    }
+  ]
+
+}

@@ -10,34 +10,32 @@
 
 part of openapi.api;
 
-/// Asset group type
-class AssetGroupType {
-  /// Instantiate a new enum with the provided [value].
-  const AssetGroupType._(this.value);
+/// Asset group type.
+enum AssetGroupType {
+  BRAND._(r'BRAND'),
+  LOCATION_OR_LANGUAGE._(r'LOCATION_OR_LANGUAGE'),
+  PRODUCT_LINE._(r'PRODUCT_LINE'),
+  OTHER._(r'OTHER'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const AssetGroupType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const BRAND = AssetGroupType._(r'BRAND');
-  static const LOCATION_OR_LANGUAGE = AssetGroupType._(r'LOCATION_OR_LANGUAGE');
-  static const PRODUCT_LINE = AssetGroupType._(r'PRODUCT_LINE');
-  static const OTHER = AssetGroupType._(r'OTHER');
-
-  /// List of all possible values in this [enum][AssetGroupType].
-  static const values = <AssetGroupType>[
-    BRAND,
-    LOCATION_OR_LANGUAGE,
-    PRODUCT_LINE,
-    OTHER,
-  ];
-
+  /// Returns the instance of [AssetGroupType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static AssetGroupType? fromJson(dynamic value) => AssetGroupTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [AssetGroupType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<AssetGroupType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <AssetGroupType>[];
     if (json is List && json.isNotEmpty) {
@@ -59,9 +57,11 @@ class AssetGroupTypeTypeTransformer {
 
   const AssetGroupTypeTypeTransformer._();
 
-  String encode(AssetGroupType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(AssetGroupType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a AssetGroupType.
+  /// Returns the instance of [AssetGroupType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -70,6 +70,9 @@ class AssetGroupTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   AssetGroupType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is AssetGroupType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'BRAND': return AssetGroupType.BRAND;
@@ -85,7 +88,7 @@ class AssetGroupTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [AssetGroupTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static AssetGroupTypeTypeTransformer? _instance;
 }
 

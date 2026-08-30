@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.AssetTypeResponse;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "An object containing the permissions a business partner has on the asset.")
 @JsonTypeName("UpdatePartnerAssetsResult")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UpdatePartnerAssetsResult   {
   private String assetId;
-  private String assetType;
+  private AssetTypeResponse assetType;
   private String partnerId;
   private @Valid List<String> permissions = new ArrayList<>();
 
@@ -52,22 +53,21 @@ public class UpdatePartnerAssetsResult   {
   }
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    **/
-  public UpdatePartnerAssetsResult assetType(String assetType) {
+  public UpdatePartnerAssetsResult assetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
     return this;
   }
 
   
-  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
+  @ApiModelProperty(value = "")
   @JsonProperty("asset_type")
-  public String getAssetType() {
+  public AssetTypeResponse getAssetType() {
     return assetType;
   }
 
   @JsonProperty("asset_type")
-  public void setAssetType(String assetType) {
+  public void setAssetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
   }
 
@@ -166,12 +166,8 @@ public class UpdatePartnerAssetsResult   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

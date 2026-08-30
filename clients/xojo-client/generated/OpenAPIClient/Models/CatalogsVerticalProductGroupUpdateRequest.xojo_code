@@ -27,6 +27,9 @@ Protected Class CatalogsVerticalProductGroupUpdateRequest
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Name of catalog product group
+		#tag EndNote
 		name As Xoson.O.OptionalString
 	#tag EndProperty
 

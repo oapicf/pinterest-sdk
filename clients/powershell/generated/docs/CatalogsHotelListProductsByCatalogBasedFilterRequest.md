@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogId** | **String** | Catalog id pertaining to the hotel product group. | 
+**CatalogId** | **String** | Catalog ID pertaining to the product group. | 
 **CatalogType** | **String** |  | 
 **Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
 

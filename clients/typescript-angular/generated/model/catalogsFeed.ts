@@ -13,7 +13,6 @@ import { CatalogsRetailFeed } from './catalogsRetailFeed';
 import { CatalogsStatus } from './catalogsStatus';
 import { CatalogsFeedCredentials } from './catalogsFeedCredentials';
 import { CatalogsHotelFeed } from './catalogsHotelFeed';
-import { CatalogsType } from './catalogsType';
 import { Country } from './country';
 import { CatalogsFormat } from './catalogsFormat';
 import { CatalogsCreativeAssetsFeed } from './catalogsCreativeAssetsFeed';

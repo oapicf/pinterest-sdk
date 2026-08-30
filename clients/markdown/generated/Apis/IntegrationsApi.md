@@ -25,7 +25,7 @@ Get integration metadata
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Integration ID. | [default to null] |
+| **id** | **String**| Integration record ID. | [default to null] |
 
 ### Return type
 
@@ -53,7 +53,7 @@ Get integration metadata list
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -70,7 +70,7 @@ Get integration metadata list
 
 <a name="integrationsCommerce/del"></a>
 # **integrationsCommerce/del**
-> integrationsCommerce/del(external\_business\_id)
+> IntegrationMetadata integrationsCommerce/del(external\_business\_id)
 
 Delete commerce integration
 
@@ -84,7 +84,7 @@ Delete commerce integration
 
 ### Return type
 
-null (empty response body)
+[**IntegrationMetadata**](../Models/IntegrationMetadata.md)
 
 ### Authorization
 
@@ -124,7 +124,7 @@ Get commerce integration
 
 <a name="integrationsCommerce/patch"></a>
 # **integrationsCommerce/patch**
-> IntegrationMetadata integrationsCommerce/patch(external\_business\_id, IntegrationRequestPatch)
+> IntegrationMetadata integrationsCommerce/patch(external\_business\_id, IntegrationMetadataUpdate)
 
 Update commerce integration
 
@@ -135,7 +135,7 @@ Update commerce integration
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **external\_business\_id** | **String**| External business ID for the integration. | [default to null] |
-| **IntegrationRequestPatch** | [**IntegrationRequestPatch**](../Models/IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | |
+| **IntegrationMetadataUpdate** | [**IntegrationMetadataUpdate**](../Models/IntegrationMetadataUpdate.md)|  | |
 
 ### Return type
 
@@ -152,7 +152,7 @@ Update commerce integration
 
 <a name="integrationsCommerce/post"></a>
 # **integrationsCommerce/post**
-> IntegrationMetadata integrationsCommerce/post(IntegrationRequest)
+> IntegrationMetadata integrationsCommerce/post(IntegrationMetadataCreate)
 
 Create commerce integration
 
@@ -162,7 +162,7 @@ Create commerce integration
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **IntegrationRequest** | [**IntegrationRequest**](../Models/IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | |
+| **IntegrationMetadataCreate** | [**IntegrationMetadataCreate**](../Models/IntegrationMetadataCreate.md)|  | |
 
 ### Return type
 
@@ -179,7 +179,7 @@ Create commerce integration
 
 <a name="integrationsLogs/post"></a>
 # **integrationsLogs/post**
-> IntegrationLogsSuccessResponse integrationsLogs/post(IntegrationLogsRequest)
+> IntegrationLogsSuccessResponse integrationsLogs/post(IntegrationLogsRequestCreate)
 
 Receives batched logs from integration applications.
 
@@ -189,7 +189,7 @@ Receives batched logs from integration applications.
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **IntegrationLogsRequest** | [**IntegrationLogsRequest**](../Models/IntegrationLogsRequest.md)| Ingest log information from external integration application. | |
+| **IntegrationLogsRequestCreate** | [**IntegrationLogsRequestCreate**](../Models/IntegrationLogsRequestCreate.md)|  | |
 
 ### Return type
 

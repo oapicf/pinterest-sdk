@@ -2,36 +2,28 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.Gender
+open OpenAPI.Model.MediaType
+open OpenAPI.Model.ProductAvailability
+open OpenAPI.Model.ProductCondition
 
 module CatalogsRetailFilterValuesMap =
 
   //#region CatalogsRetailFilterValuesMap
 
-  //#region enums
-  type AvailabilityEnum[] = INSTOCKEnum of string[]  |  OUTOFSTOCKEnum of string[]  |  PREORDEREnum of string[]  |  UNAVAILABLEEnum of string[]  
-  //#endregion
-  //#region enums
-  type ConditionEnum[] = NEWEnum of string[]  |  USEDEnum of string[]  |  REFURBISHEDEnum of string[]  
-  //#endregion
-  //#region enums
-  type GenderEnum[] = FEMALEEnum of string[]  |  MALEEnum of string[]  |  UNISEXEnum of string[]  
-  //#endregion
-  //#region enums
-  type MediaTypeEnum[] = IMAGEEnum of string[]  |  VIDEOEnum of string[]  
-  //#endregion
 
-  type catalogs_retail_filter_values_map = {
+  type CatalogsRetailFilterValuesMap = {
     AdImageTags : string[];
     AdVideoTags : string[];
-    Availability : AvailabilityEnum[];
+    Availability : ProductAvailability[];
     Brand : string[];
-    Condition : ConditionEnum[];
+    Condition : ProductCondition[];
     CustomLabel0 : string[];
     CustomLabel1 : string[];
     CustomLabel2 : string[];
     CustomLabel3 : string[];
     CustomLabel4 : string[];
-    Gender : GenderEnum[];
+    Gender : Gender[];
     GoogleProductCategory0 : string[];
     GoogleProductCategory1 : string[];
     GoogleProductCategory2 : string[];
@@ -39,7 +31,7 @@ module CatalogsRetailFilterValuesMap =
     GoogleProductCategory4 : string[];
     GoogleProductCategory5 : string[];
     GoogleProductCategory6 : string[];
-    MediaType : MediaTypeEnum[];
+    MediaType : MediaType[];
     ProductType0 : string[];
     ProductType1 : string[];
     ProductType2 : string[];

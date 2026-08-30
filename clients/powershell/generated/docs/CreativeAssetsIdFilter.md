@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CREATIVEASSETSID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CREATIVEASSETSID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 ## Examples
 

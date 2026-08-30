@@ -12,13 +12,13 @@ import org.joda.time.DateTime
 import AssetIdPermissions._
 
 case class AssetIdPermissions (
+  /* An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'. */
   assetGroupInfo: Option[AssetGroupBinding],
 /* Unique identifier of a business asset. */
-  assetId: Option[String],
-/* Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */
-  assetType: Option[String],
+  assetId: String,
+assetType: AssetTypeResponse,
 /* Permission levels member or partner has on an asset. */
-  permissions: Option[List[String]])
+  permissions: List[String])
 
 object AssetIdPermissions {
   import DateTimeCodecs._

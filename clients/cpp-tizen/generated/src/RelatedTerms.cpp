@@ -83,12 +83,12 @@ RelatedTerms::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<RelatedTerms_related_terms_list_inner> new_list;
-			RelatedTerms_related_terms_list_inner inst;
+			list<RelatedTermsRelatedTermsListItems> new_list;
+			RelatedTermsRelatedTermsListItems inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("RelatedTerms_related_terms_list_inner")) {
-					jsonToValue(&inst, temp_json, "RelatedTerms_related_terms_list_inner", "");
+				if (isprimitive("RelatedTermsRelatedTermsListItems")) {
+					jsonToValue(&inst, temp_json, "RelatedTermsRelatedTermsListItems", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -130,18 +130,18 @@ RelatedTerms::toJson()
 	}
 	const gchar *related_term_countKey = "related_term_count";
 	json_object_set_member(pJsonObject, related_term_countKey, node);
-	if (isprimitive("RelatedTerms_related_terms_list_inner")) {
-		list<RelatedTerms_related_terms_list_inner> new_list = static_cast<list <RelatedTerms_related_terms_list_inner> > (getRelatedTermsList());
-		node = converttoJson(&new_list, "RelatedTerms_related_terms_list_inner", "array");
+	if (isprimitive("RelatedTermsRelatedTermsListItems")) {
+		list<RelatedTermsRelatedTermsListItems> new_list = static_cast<list <RelatedTermsRelatedTermsListItems> > (getRelatedTermsList());
+		node = converttoJson(&new_list, "RelatedTermsRelatedTermsListItems", "array");
 	} else {
 		node = json_node_alloc();
-		list<RelatedTerms_related_terms_list_inner> new_list = static_cast<list <RelatedTerms_related_terms_list_inner> > (getRelatedTermsList());
+		list<RelatedTermsRelatedTermsListItems> new_list = static_cast<list <RelatedTermsRelatedTermsListItems> > (getRelatedTermsList());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<RelatedTerms_related_terms_list_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<RelatedTermsRelatedTermsListItems>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			RelatedTerms_related_terms_list_inner obj = *it;
+			RelatedTermsRelatedTermsListItems obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -187,14 +187,14 @@ RelatedTerms::setRelatedTermCount(int  related_term_count)
 	this->related_term_count = related_term_count;
 }
 
-std::list<RelatedTerms_related_terms_list_inner>
+std::list<RelatedTermsRelatedTermsListItems>
 RelatedTerms::getRelatedTermsList()
 {
 	return related_terms_list;
 }
 
 void
-RelatedTerms::setRelatedTermsList(std::list <RelatedTerms_related_terms_list_inner> related_terms_list)
+RelatedTerms::setRelatedTermsList(std::list <RelatedTermsRelatedTermsListItems> related_terms_list)
 {
 	this->related_terms_list = related_terms_list;
 }

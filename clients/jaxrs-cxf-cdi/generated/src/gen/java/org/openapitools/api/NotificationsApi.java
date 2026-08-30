@@ -1,8 +1,8 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
 import org.openapitools.model.NotificationPostRequest;
 import org.openapitools.model.NotificationResponse;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.api.NotificationsApiService;
 
 import javax.ws.rs.*;
@@ -29,7 +29,7 @@ import javax.validation.Valid;
 @Api
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-31T04:54:28.741368951Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-08-30T09:54:04.171825690Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 
 public class NotificationsApi  {
 
@@ -49,10 +49,10 @@ public class NotificationsApi  {
             @AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers") })
          }, tags={ "notification" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successfully received notification", response = NotificationResponse.class),
-        @ApiResponse(code = 400, message = "Invalid request parameter.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response notificationPost(@ApiParam(value = "notification event." ,required=true) NotificationPostRequest notificationPostRequest) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = NotificationResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response notificationPost(@ApiParam(value = "" ,required=true) NotificationPostRequest notificationPostRequest) {
         return delegate.notificationPost(notificationPostRequest, securityContext);
     }
 }

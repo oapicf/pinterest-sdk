@@ -1,0 +1,61 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ScheduleBidMultipliers"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ScheduleBidMultipliers"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BidOptionsAgeBucketMultipliers = openapi_server.resourceTypes.BidOptionsAgeBucketMultipliers
+  BidOptionsAppTypeMultipliers = openapi_server.resourceTypes.BidOptionsAppTypeMultipliers
+  BidOptionsAudienceMultipliers = openapi_server.resourceTypes.BidOptionsAudienceMultipliers
+  BidOptionsGenderMultipliers = openapi_server.resourceTypes.BidOptionsGenderMultipliers
+  BidOptionsPlacementMultipliers = openapi_server.resourceTypes.BidOptionsPlacementMultipliers
+}
+resourceTypes {
+
+  ScheduleBidMultipliers {
+    title = ScheduleBidMultipliers
+    description = ScheduleBidMultipliers
+    derivedFrom = Root
+    properties {
+        age_bucket_multipliers {
+          type = BidOptionsAgeBucketMultipliers
+          description = ""
+          optional = false
+        }
+        app_type_multipliers {
+          type = BidOptionsAppTypeMultipliers
+          description = ""
+          optional = false
+        }
+        audience_multipliers {
+          type = array
+          items.type = BidOptionsAudienceMultipliers
+          description = ""
+          optional = false
+        }
+        gender_multipliers {
+          type = BidOptionsGenderMultipliers
+          description = ""
+          optional = false
+        }
+        placement_multipliers {
+          type = BidOptionsPlacementMultipliers
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ScheduleBidMultipliers {
+    title = ScheduleBidMultipliers
+    description = ScheduleBidMultipliers
+    implements = openapi_server.resourceTypes.ScheduleBidMultipliers
+
+  }
+}

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.BusinessRoleForInvite;
 import org.openapitools.model.InviteType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -21,42 +22,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CreateMembershipOrPartnershipInvitesBody  {
   
-public enum BusinessRoleEnum {
-
-    @JsonProperty("EMPLOYEE") EMPLOYEE(String.valueOf("EMPLOYEE")),
-    @JsonProperty("BIZ_ADMIN") BIZ_ADMIN(String.valueOf("BIZ_ADMIN")),
-    @JsonProperty("PARTNER") PARTNER(String.valueOf("PARTNER"));
-
-    private String value;
-
-    BusinessRoleEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static BusinessRoleEnum fromValue(String value) {
-        for (BusinessRoleEnum b : BusinessRoleEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
- /**
-  * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-  */
-  @ApiModelProperty(example = "BIZ_ADMIN", required = true, value = "The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.")
-  private BusinessRoleEnum businessRole;
+  @ApiModelProperty(example = "BIZ_ADMIN", required = true, value = "")
+  @Valid
+  private BusinessRoleForInvite businessRole;
 
   @ApiModelProperty(required = true, value = "")
   @Valid
@@ -74,26 +42,26 @@ public enum BusinessRoleEnum {
   @ApiModelProperty(example = "[\"809944451643622187\",\"766456567741825556\"]", value = "A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST")
   private List<@Pattern(regexp = "^\\d+$")@Size(max = 25)String> partners = new ArrayList<>();
  /**
-  * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
+  * Get businessRole
   * @return businessRole
   */
   @JsonProperty("business_role")
   @NotNull
-  public String getBusinessRole() {
-    return businessRole == null ? null : businessRole.value();
+  public BusinessRoleForInvite getBusinessRole() {
+    return businessRole;
   }
 
   /**
    * Sets the <code>businessRole</code> property.
    */
- public void setBusinessRole(BusinessRoleEnum businessRole) {
+ public void setBusinessRole(BusinessRoleForInvite businessRole) {
     this.businessRole = businessRole;
   }
 
   /**
    * Sets the <code>businessRole</code> property.
    */
-  public CreateMembershipOrPartnershipInvitesBody businessRole(BusinessRoleEnum businessRole) {
+  public CreateMembershipOrPartnershipInvitesBody businessRole(BusinessRoleForInvite businessRole) {
     this.businessRole = businessRole;
     return this;
   }
@@ -226,10 +194,7 @@ public enum BusinessRoleEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

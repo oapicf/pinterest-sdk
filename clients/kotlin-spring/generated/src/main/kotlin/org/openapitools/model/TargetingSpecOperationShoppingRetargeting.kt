@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.TargetingSpecShoppingRetargeting
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -24,16 +27,19 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class TargetingSpecOperationShoppingRetargeting(
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("field", required = true) val `field`: TargetingSpecOperationShoppingRetargeting.`Field`,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("field")
+    @get:JsonProperty("field", required = true) override val `field`: TargetingSpecOperationShoppingRetargeting.`Field` = kotlin.String.SHOPPING_RETARGETING,
 
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("operation")
     @get:JsonProperty("operation", required = true) val operation: TargetingSpecOperationShoppingRetargeting.Operation,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("values", required = true) val propertyValues: kotlin.collections.List<TargetingSpecShoppingRetargeting>?
-) {
+    @Schema(required = true, description = "")
+    @param:JsonProperty("values")
+    @get:JsonProperty("values", required = true) val propertyValues: kotlin.collections.List<TargetingSpecShoppingRetargeting>
+) : TargetingSpecOperations {
 
     /**
     * 
@@ -48,7 +54,7 @@ data class TargetingSpecOperationShoppingRetargeting(
             @JsonCreator
             fun forValue(value: kotlin.String): `Field` {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingSpecOperationShoppingRetargeting'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum '&#x60;Field&#x60;'")
             }
         }
     }
@@ -66,7 +72,7 @@ data class TargetingSpecOperationShoppingRetargeting(
             @JsonCreator
             fun forValue(value: kotlin.String): Operation {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingSpecOperationShoppingRetargeting'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Operation'")
             }
         }
     }

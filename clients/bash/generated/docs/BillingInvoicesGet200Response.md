@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to null]
-**items** | [**array[BillingInvoiceResponse]**](BillingInvoiceResponse.md) |  | [default to null]
+**items** | [**array[BillingInvoice]**](BillingInvoice.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

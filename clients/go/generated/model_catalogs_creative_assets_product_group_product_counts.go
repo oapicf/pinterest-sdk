@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,9 @@ var _ MappedNullable = &CatalogsCreativeAssetsProductGroupProductCounts{}
 
 // CatalogsCreativeAssetsProductGroupProductCounts Product counts for a Creative Assets CatalogsProductGroup
 type CatalogsCreativeAssetsProductGroupProductCounts struct {
+	AppLinks float32 `json:"app_links"`
 	CatalogType string `json:"catalog_type"`
+	Images float32 `json:"images"`
 	Total float32 `json:"total"`
 	Videos float32 `json:"videos"`
 }
@@ -33,9 +35,11 @@ type _CatalogsCreativeAssetsProductGroupProductCounts CatalogsCreativeAssetsProd
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsCreativeAssetsProductGroupProductCounts(catalogType string, total float32, videos float32) *CatalogsCreativeAssetsProductGroupProductCounts {
+func NewCatalogsCreativeAssetsProductGroupProductCounts(appLinks float32, catalogType string, images float32, total float32, videos float32) *CatalogsCreativeAssetsProductGroupProductCounts {
 	this := CatalogsCreativeAssetsProductGroupProductCounts{}
+	this.AppLinks = appLinks
 	this.CatalogType = catalogType
+	this.Images = images
 	this.Total = total
 	this.Videos = videos
 	return &this
@@ -47,6 +51,30 @@ func NewCatalogsCreativeAssetsProductGroupProductCounts(catalogType string, tota
 func NewCatalogsCreativeAssetsProductGroupProductCountsWithDefaults() *CatalogsCreativeAssetsProductGroupProductCounts {
 	this := CatalogsCreativeAssetsProductGroupProductCounts{}
 	return &this
+}
+
+// GetAppLinks returns the AppLinks field value
+func (o *CatalogsCreativeAssetsProductGroupProductCounts) GetAppLinks() float32 {
+	if o == nil {
+		var ret float32
+		return ret
+	}
+
+	return o.AppLinks
+}
+
+// GetAppLinksOk returns a tuple with the AppLinks field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreativeAssetsProductGroupProductCounts) GetAppLinksOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AppLinks, true
+}
+
+// SetAppLinks sets field value
+func (o *CatalogsCreativeAssetsProductGroupProductCounts) SetAppLinks(v float32) {
+	o.AppLinks = v
 }
 
 // GetCatalogType returns the CatalogType field value
@@ -71,6 +99,30 @@ func (o *CatalogsCreativeAssetsProductGroupProductCounts) GetCatalogTypeOk() (*s
 // SetCatalogType sets field value
 func (o *CatalogsCreativeAssetsProductGroupProductCounts) SetCatalogType(v string) {
 	o.CatalogType = v
+}
+
+// GetImages returns the Images field value
+func (o *CatalogsCreativeAssetsProductGroupProductCounts) GetImages() float32 {
+	if o == nil {
+		var ret float32
+		return ret
+	}
+
+	return o.Images
+}
+
+// GetImagesOk returns a tuple with the Images field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreativeAssetsProductGroupProductCounts) GetImagesOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Images, true
+}
+
+// SetImages sets field value
+func (o *CatalogsCreativeAssetsProductGroupProductCounts) SetImages(v float32) {
+	o.Images = v
 }
 
 // GetTotal returns the Total field value
@@ -131,7 +183,9 @@ func (o CatalogsCreativeAssetsProductGroupProductCounts) MarshalJSON() ([]byte, 
 
 func (o CatalogsCreativeAssetsProductGroupProductCounts) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["app_links"] = o.AppLinks
 	toSerialize["catalog_type"] = o.CatalogType
+	toSerialize["images"] = o.Images
 	toSerialize["total"] = o.Total
 	toSerialize["videos"] = o.Videos
 	return toSerialize, nil
@@ -142,7 +196,9 @@ func (o *CatalogsCreativeAssetsProductGroupProductCounts) UnmarshalJSON(data []b
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"app_links",
 		"catalog_type",
+		"images",
 		"total",
 		"videos",
 	}

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,7 +25,9 @@ type AdAccountCreate struct {
 	// Ad account name.
 	Name *string `json:"name,omitempty"`
 	// Advertiser's owning user ID.
-	OwnerUserId *string `json:"owner_user_id,omitempty" validate:"regexp=^\\\\d+$"`
+	OwnerUserId *string `json:"owner_user_id,omitempty" validate:"regexp=^\\d+$"`
+	// The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
+	TimeZone *string `json:"time_zone,omitempty"`
 }
 
 // NewAdAccountCreate instantiates a new AdAccountCreate object
@@ -173,6 +175,38 @@ func (o *AdAccountCreate) SetOwnerUserId(v string) {
 	o.OwnerUserId = &v
 }
 
+// GetTimeZone returns the TimeZone field value if set, zero value otherwise.
+func (o *AdAccountCreate) GetTimeZone() string {
+	if o == nil || IsNil(o.TimeZone) {
+		var ret string
+		return ret
+	}
+	return *o.TimeZone
+}
+
+// GetTimeZoneOk returns a tuple with the TimeZone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdAccountCreate) GetTimeZoneOk() (*string, bool) {
+	if o == nil || IsNil(o.TimeZone) {
+		return nil, false
+	}
+	return o.TimeZone, true
+}
+
+// HasTimeZone returns a boolean if a field has been set.
+func (o *AdAccountCreate) HasTimeZone() bool {
+	if o != nil && !IsNil(o.TimeZone) {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeZone gets a reference to the given string and assigns it to the TimeZone field.
+func (o *AdAccountCreate) SetTimeZone(v string) {
+	o.TimeZone = &v
+}
+
 func (o AdAccountCreate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -194,6 +228,9 @@ func (o AdAccountCreate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OwnerUserId) {
 		toSerialize["owner_user_id"] = o.OwnerUserId
+	}
+	if !IsNil(o.TimeZone) {
+		toSerialize["time_zone"] = o.TimeZone
 	}
 	return toSerialize, nil
 }

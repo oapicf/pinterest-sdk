@@ -19,6 +19,8 @@ module ConversionEventResponse =
     ConversionTagId : string;
     [<JsonProperty(PropertyName = "created_time")>]
     CreatedTime : int;
+    [<JsonProperty(PropertyName = "reporting_conversion_event")>]
+    ReportingConversionEvent : string;
   }
 
   //#endregion

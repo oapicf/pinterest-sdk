@@ -15,7 +15,7 @@ import javax.validation.Valid;
 /**
  * UserBusinessRoleBinding
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class UserBusinessRoleBinding   {
   @JsonProperty("assets_summary")
@@ -61,7 +61,7 @@ public class UserBusinessRoleBinding   {
   }
 
    /**
-   * Get assetsSummary
+   * Ad accounts and profiles the business member/partner has access to.
    * @return assetsSummary
   **/
   public BusinessMemberAssetsSummary getAssetsSummary() {
@@ -171,7 +171,7 @@ public class UserBusinessRoleBinding   {
   }
 
    /**
-   * This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
+   * This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
    * @return isSharedPartner
   **/
   public Boolean getIsSharedPartner() {
@@ -247,10 +247,7 @@ public class UserBusinessRoleBinding   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

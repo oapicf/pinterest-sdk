@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &CatalogsHotelProductGroupCreateRequest{}
 
 // CatalogsHotelProductGroupCreateRequest Request object for creating a hotel product group.
 type CatalogsHotelProductGroupCreateRequest struct {
-	// Catalog id pertaining to the hotel product group.
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	// Catalog ID pertaining to the product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\d+$"`
 	CatalogType string `json:"catalog_type"`
 	Description NullableString `json:"description,omitempty"`
 	Filters CatalogsHotelProductGroupFilters `json:"filters"`

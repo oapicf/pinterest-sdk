@@ -12,18 +12,21 @@ static custom_label3_filter_t *custom_label3_filter_create_internal(
     if (!custom_label3_filter_local_var) {
         return NULL;
     }
-    custom_label3_filter_local_var->custom_label_3 = custom_label_3;
-
+    memset(custom_label3_filter_local_var, 0, sizeof(custom_label3_filter_t));
     custom_label3_filter_local_var->_library_owned = 1;
+    custom_label3_filter_local_var->custom_label_3 = custom_label_3;
     return custom_label3_filter_local_var;
 }
 
 __attribute__((deprecated)) custom_label3_filter_t *custom_label3_filter_create(
     catalogs_product_group_filter_operator_type_criteria_t *custom_label_3
     ) {
-    return custom_label3_filter_create_internal (
+    custom_label3_filter_t *result = custom_label3_filter_create_internal (
         custom_label_3
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void custom_label3_filter_free(custom_label3_filter_t *custom_label3_filter) {
@@ -36,7 +39,7 @@ void custom_label3_filter_free(custom_label3_filter_t *custom_label3_filter) {
     }
     listEntry_t *listEntry;
     if (custom_label3_filter->custom_label_3) {
-        object_free(custom_label3_filter->custom_label_3);
+        catalogs_product_group_filter_operator_type_criteria_free(custom_label3_filter->custom_label_3);
         custom_label3_filter->custom_label_3 = NULL;
     }
     free(custom_label3_filter);
@@ -49,11 +52,11 @@ cJSON *custom_label3_filter_convertToJSON(custom_label3_filter_t *custom_label3_
     if (!custom_label3_filter->custom_label_3) {
         goto fail;
     }
-    cJSON *custom_label_3_object = object_convertToJSON(custom_label3_filter->custom_label_3);
-    if(custom_label_3_object == NULL) {
+    cJSON *custom_label_3_local_JSON = catalogs_product_group_filter_operator_type_criteria_convertToJSON(custom_label3_filter->custom_label_3);
+    if(custom_label_3_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "CUSTOM_LABEL_3", custom_label_3_object);
+    cJSON_AddItemToObject(item, "CUSTOM_LABEL_3", custom_label_3_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -70,6 +73,9 @@ custom_label3_filter_t *custom_label3_filter_parseFromJSON(cJSON *custom_label3_
 
     custom_label3_filter_t *custom_label3_filter_local_var = NULL;
 
+    // define the local variable for custom_label3_filter->custom_label_3
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_3_local_nonprim = NULL;
+
     // custom_label3_filter->custom_label_3
     cJSON *custom_label_3 = cJSON_GetObjectItemCaseSensitive(custom_label3_filterJSON, "CUSTOM_LABEL_3");
     if (cJSON_IsNull(custom_label_3)) {
@@ -79,17 +85,25 @@ custom_label3_filter_t *custom_label3_filter_parseFromJSON(cJSON *custom_label3_
         goto end;
     }
 
-    object_t *custom_label_3_local_object = NULL;
     
-    custom_label_3_local_object = object_parseFromJSON(custom_label_3); //object
+    custom_label_3_local_nonprim = catalogs_product_group_filter_operator_type_criteria_parseFromJSON(custom_label_3); //nonprimitive
+
 
 
     custom_label3_filter_local_var = custom_label3_filter_create_internal (
-        custom_label_3_local_object
+        custom_label_3_local_nonprim
         );
+
+    if (!custom_label3_filter_local_var) {
+        goto end;
+    }
 
     return custom_label3_filter_local_var;
 end:
+    if (custom_label_3_local_nonprim) {
+        catalogs_product_group_filter_operator_type_criteria_free(custom_label_3_local_nonprim);
+        custom_label_3_local_nonprim = NULL;
+    }
     return NULL;
 
 }

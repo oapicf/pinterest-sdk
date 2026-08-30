@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -42,7 +42,7 @@ const (
 	JP TargetingAdvertiserCountry = "JP"
 	KR TargetingAdvertiserCountry = "KR"
 	SG TargetingAdvertiserCountry = "SG"
-	NO TargetingAdvertiserCountry = "NO"
+	FALSE TargetingAdvertiserCountry = "false"
 	DK TargetingAdvertiserCountry = "DK"
 	FI TargetingAdvertiserCountry = "FI"
 	CY TargetingAdvertiserCountry = "CY"
@@ -84,7 +84,7 @@ var AllowedTargetingAdvertiserCountryEnumValues = []TargetingAdvertiserCountry{
 	"JP",
 	"KR",
 	"SG",
-	"NO",
+	"false",
 	"DK",
 	"FI",
 	"CY",

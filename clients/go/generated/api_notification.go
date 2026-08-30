@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -29,7 +29,6 @@ type ApiNotificationPostRequest struct {
 	notificationPostRequest *NotificationPostRequest
 }
 
-// notification event.
 func (r ApiNotificationPostRequest) NotificationPostRequest(notificationPostRequest NotificationPostRequest) ApiNotificationPostRequest {
 	r.notificationPostRequest = &notificationPostRequest
 	return r
@@ -120,7 +119,7 @@ func (a *NotificationAPIService) NotificationPostExecute(r ApiNotificationPostRe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -130,7 +129,7 @@ func (a *NotificationAPIService) NotificationPostExecute(r ApiNotificationPostRe
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

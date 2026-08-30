@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.catalogs_ai_content_disclosure import CatalogsAiContentDisclosure  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -15,7 +16,7 @@ class CatalogsCreativeAssetsAttributes(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, android_deep_link: str=None, custom_label_0: str=None, custom_label_1: str=None, custom_label_2: str=None, custom_label_3: str=None, custom_label_4: str=None, description: str=None, google_product_category: str=None, ios_deep_link: str=None, link: str=None, title: str=None, visibility: str=None, image_link: str=None, video_link: str=None):  # noqa: E501
+    def __init__(self, android_deep_link: str=None, custom_label_0: str=None, custom_label_1: str=None, custom_label_2: str=None, custom_label_3: str=None, custom_label_4: str=None, description: str=None, google_product_category: str=None, ios_deep_link: str=None, link: str=None, title: str=None, visibility: str=None, ai_disclosures: List[CatalogsAiContentDisclosure]=None, image_link: str=None, video_link: str=None):  # noqa: E501
         """CatalogsCreativeAssetsAttributes - a model defined in Swagger
 
         :param android_deep_link: The android_deep_link of this CatalogsCreativeAssetsAttributes.  # noqa: E501
@@ -42,6 +43,8 @@ class CatalogsCreativeAssetsAttributes(Model):
         :type title: str
         :param visibility: The visibility of this CatalogsCreativeAssetsAttributes.  # noqa: E501
         :type visibility: str
+        :param ai_disclosures: The ai_disclosures of this CatalogsCreativeAssetsAttributes.  # noqa: E501
+        :type ai_disclosures: List[CatalogsAiContentDisclosure]
         :param image_link: The image_link of this CatalogsCreativeAssetsAttributes.  # noqa: E501
         :type image_link: str
         :param video_link: The video_link of this CatalogsCreativeAssetsAttributes.  # noqa: E501
@@ -60,6 +63,7 @@ class CatalogsCreativeAssetsAttributes(Model):
             'link': str,
             'title': str,
             'visibility': str,
+            'ai_disclosures': List[CatalogsAiContentDisclosure],
             'image_link': str,
             'video_link': str
         }
@@ -77,6 +81,7 @@ class CatalogsCreativeAssetsAttributes(Model):
             'link': 'link',
             'title': 'title',
             'visibility': 'visibility',
+            'ai_disclosures': 'ai_disclosures',
             'image_link': 'image_link',
             'video_link': 'video_link'
         }
@@ -93,6 +98,7 @@ class CatalogsCreativeAssetsAttributes(Model):
         self._link = link
         self._title = title
         self._visibility = visibility
+        self._ai_disclosures = ai_disclosures
         self._image_link = image_link
         self._video_link = video_link
 
@@ -364,7 +370,7 @@ class CatalogsCreativeAssetsAttributes(Model):
     def visibility(self) -> str:
         """Gets the visibility of this CatalogsCreativeAssetsAttributes.
 
-        Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.  # noqa: E501
+        Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.  # noqa: E501
 
         :return: The visibility of this CatalogsCreativeAssetsAttributes.
         :rtype: str
@@ -375,13 +381,36 @@ class CatalogsCreativeAssetsAttributes(Model):
     def visibility(self, visibility: str):
         """Sets the visibility of this CatalogsCreativeAssetsAttributes.
 
-        Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.  # noqa: E501
+        Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.  # noqa: E501
 
         :param visibility: The visibility of this CatalogsCreativeAssetsAttributes.
         :type visibility: str
         """
 
         self._visibility = visibility
+
+    @property
+    def ai_disclosures(self) -> List[CatalogsAiContentDisclosure]:
+        """Gets the ai_disclosures of this CatalogsCreativeAssetsAttributes.
+
+        AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.  # noqa: E501
+
+        :return: The ai_disclosures of this CatalogsCreativeAssetsAttributes.
+        :rtype: List[CatalogsAiContentDisclosure]
+        """
+        return self._ai_disclosures
+
+    @ai_disclosures.setter
+    def ai_disclosures(self, ai_disclosures: List[CatalogsAiContentDisclosure]):
+        """Sets the ai_disclosures of this CatalogsCreativeAssetsAttributes.
+
+        AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.  # noqa: E501
+
+        :param ai_disclosures: The ai_disclosures of this CatalogsCreativeAssetsAttributes.
+        :type ai_disclosures: List[CatalogsAiContentDisclosure]
+        """
+
+        self._ai_disclosures = ai_disclosures
 
     @property
     def image_link(self) -> str:

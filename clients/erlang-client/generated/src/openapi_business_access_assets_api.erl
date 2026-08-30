@@ -16,13 +16,13 @@
 -define(BASE_URL, <<"/v5">>).
 
 %% @doc Create a new asset group.
-%% Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
--spec asset_group/create(ctx:ctx(), binary(), openapi_create_asset_group_body:openapi_create_asset_group_body()) -> {ok, openapi_create_asset_group_response:openapi_create_asset_group_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-asset_group/create(Ctx, BusinessId, OpenapiCreateAssetGroupBody) ->
-    asset_group/create(Ctx, BusinessId, OpenapiCreateAssetGroupBody, #{}).
+%% Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
+-spec asset_group/create(ctx:ctx(), binary(), openapi_asset_group_input_create:openapi_asset_group_input_create()) -> {ok, openapi_asset_group_input:openapi_asset_group_input(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+asset_group/create(Ctx, BusinessId, OpenapiAssetGroupInputCreate) ->
+    asset_group/create(Ctx, BusinessId, OpenapiAssetGroupInputCreate, #{}).
 
--spec asset_group/create(ctx:ctx(), binary(), openapi_create_asset_group_body:openapi_create_asset_group_body(), maps:map()) -> {ok, openapi_create_asset_group_response:openapi_create_asset_group_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-asset_group/create(Ctx, BusinessId, OpenapiCreateAssetGroupBody, Optional) ->
+-spec asset_group/create(ctx:ctx(), binary(), openapi_asset_group_input_create:openapi_asset_group_input_create(), maps:map()) -> {ok, openapi_asset_group_input:openapi_asset_group_input(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+asset_group/create(Ctx, BusinessId, OpenapiAssetGroupInputCreate, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -30,7 +30,7 @@ asset_group/create(Ctx, BusinessId, OpenapiCreateAssetGroupBody, Optional) ->
     Path = [?BASE_URL, "/businesses/", BusinessId, "/asset_groups"],
     QS = [],
     Headers = [],
-    Body1 = OpenapiCreateAssetGroupBody,
+    Body1 = OpenapiAssetGroupInputCreate,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
@@ -38,12 +38,12 @@ asset_group/create(Ctx, BusinessId, OpenapiCreateAssetGroupBody, Optional) ->
 
 %% @doc Delete asset groups.
 %% Delete a batch of asset groups.
--spec asset_group/delete(ctx:ctx(), binary(), openapi_delete_asset_group_body:openapi_delete_asset_group_body()) -> {ok, openapi_delete_asset_group_response:openapi_delete_asset_group_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-asset_group/delete(Ctx, BusinessId, OpenapiDeleteAssetGroupBody) ->
-    asset_group/delete(Ctx, BusinessId, OpenapiDeleteAssetGroupBody, #{}).
+-spec asset_group/delete(ctx:ctx(), binary(), openapi_asset_group_deletion_delete:openapi_asset_group_deletion_delete()) -> {ok, openapi_asset_group_deletion:openapi_asset_group_deletion(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+asset_group/delete(Ctx, BusinessId, OpenapiAssetGroupDeletionDelete) ->
+    asset_group/delete(Ctx, BusinessId, OpenapiAssetGroupDeletionDelete, #{}).
 
--spec asset_group/delete(ctx:ctx(), binary(), openapi_delete_asset_group_body:openapi_delete_asset_group_body(), maps:map()) -> {ok, openapi_delete_asset_group_response:openapi_delete_asset_group_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-asset_group/delete(Ctx, BusinessId, OpenapiDeleteAssetGroupBody, Optional) ->
+-spec asset_group/delete(ctx:ctx(), binary(), openapi_asset_group_deletion_delete:openapi_asset_group_deletion_delete(), maps:map()) -> {ok, openapi_asset_group_deletion:openapi_asset_group_deletion(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+asset_group/delete(Ctx, BusinessId, OpenapiAssetGroupDeletionDelete, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -51,7 +51,7 @@ asset_group/delete(Ctx, BusinessId, OpenapiDeleteAssetGroupBody, Optional) ->
     Path = [?BASE_URL, "/businesses/", BusinessId, "/asset_groups"],
     QS = [],
     Headers = [],
-    Body1 = OpenapiDeleteAssetGroupBody,
+    Body1 = OpenapiAssetGroupDeletionDelete,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
@@ -59,12 +59,12 @@ asset_group/delete(Ctx, BusinessId, OpenapiDeleteAssetGroupBody, Optional) ->
 
 %% @doc Update asset groups.
 %% Update a batch of asset groups with the specified parameters.
--spec asset_group/update(ctx:ctx(), binary(), openapi_update_asset_group_body:openapi_update_asset_group_body()) -> {ok, openapi_update_asset_group_response:openapi_update_asset_group_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-asset_group/update(Ctx, BusinessId, OpenapiUpdateAssetGroupBody) ->
-    asset_group/update(Ctx, BusinessId, OpenapiUpdateAssetGroupBody, #{}).
+-spec asset_group/update(ctx:ctx(), binary(), openapi_asset_group_modification_read_or_update:openapi_asset_group_modification_read_or_update()) -> {ok, openapi_asset_group_modification:openapi_asset_group_modification(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+asset_group/update(Ctx, BusinessId, OpenapiAssetGroupModificationReadOrUpdate) ->
+    asset_group/update(Ctx, BusinessId, OpenapiAssetGroupModificationReadOrUpdate, #{}).
 
--spec asset_group/update(ctx:ctx(), binary(), openapi_update_asset_group_body:openapi_update_asset_group_body(), maps:map()) -> {ok, openapi_update_asset_group_response:openapi_update_asset_group_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-asset_group/update(Ctx, BusinessId, OpenapiUpdateAssetGroupBody, Optional) ->
+-spec asset_group/update(ctx:ctx(), binary(), openapi_asset_group_modification_read_or_update:openapi_asset_group_modification_read_or_update(), maps:map()) -> {ok, openapi_asset_group_modification:openapi_asset_group_modification(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+asset_group/update(Ctx, BusinessId, OpenapiAssetGroupModificationReadOrUpdate, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -72,7 +72,7 @@ asset_group/update(Ctx, BusinessId, OpenapiUpdateAssetGroupBody, Optional) ->
     Path = [?BASE_URL, "/businesses/", BusinessId, "/asset_groups"],
     QS = [],
     Headers = [],
-    Body1 = OpenapiUpdateAssetGroupBody,
+    Body1 = OpenapiAssetGroupModificationReadOrUpdate,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
@@ -91,7 +91,7 @@ business_asset_members/get(Ctx, BusinessId, AssetId, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/businesses/", BusinessId, "/assets/", AssetId, "/members"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['fetch_system_users', 'bookmark', 'page_size', 'start_index'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['start_index', 'fetch_system_users', 'bookmark', 'page_size'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),
@@ -101,11 +101,11 @@ business_asset_members/get(Ctx, BusinessId, AssetId, Optional) ->
 
 %% @doc Get partners with access to asset
 %% Get all the partners the requesting business has granted access to on the given asset. Note: If the asset has been shared with you, an empty array will be returned. This is because an asset shared with you cannot be shared with a different partner.
--spec business_asset_partners/get(ctx:ctx(), binary(), binary()) -> {ok, openapi_business_asset_partners_get_200_response:openapi_business_asset_partners_get_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec business_asset_partners/get(ctx:ctx(), binary(), binary()) -> {ok, openapi_business_asset_members_get_200_response:openapi_business_asset_members_get_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 business_asset_partners/get(Ctx, BusinessId, AssetId) ->
     business_asset_partners/get(Ctx, BusinessId, AssetId, #{}).
 
--spec business_asset_partners/get(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_business_asset_partners_get_200_response:openapi_business_asset_partners_get_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec business_asset_partners/get(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_business_asset_members_get_200_response:openapi_business_asset_members_get_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 business_asset_partners/get(Ctx, BusinessId, AssetId, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -143,18 +143,18 @@ business_assets/get(Ctx, BusinessId, Optional) ->
 
 %% @doc Get assets assigned to a member
 %% Get assets on which you assigned asset permissions to the given member. Can be used to: - get all assets, regardless of asset type or - get assets of one asset type by using the asset_type query. The return response will include the permissions the member has to that asset and the asset type.
--spec business_member_assets/get(ctx:ctx(), binary(), binary()) -> {ok, openapi_business_member_assets_get_200_response:openapi_business_member_assets_get_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec business_member_assets/get(ctx:ctx(), binary(), binary()) -> {ok, openapi_business_member_assets_get_response:openapi_business_member_assets_get_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 business_member_assets/get(Ctx, BusinessId, MemberId) ->
     business_member_assets/get(Ctx, BusinessId, MemberId, #{}).
 
--spec business_member_assets/get(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_business_member_assets_get_200_response:openapi_business_member_assets_get_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec business_member_assets/get(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_business_member_assets_get_response:openapi_business_member_assets_get_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 business_member_assets/get(Ctx, BusinessId, MemberId, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
     Method = get,
     Path = [?BASE_URL, "/businesses/", BusinessId, "/members/", MemberId, "/assets"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['asset_type', 'start_index', 'bookmark', 'page_size'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['asset_type', 'start_index', 'sort_by', 'sort_ascending', 'search_by', 'search_value', 'asset_permission_type', 'ad_account_statuses', 'bookmark', 'page_size'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),
@@ -164,12 +164,12 @@ business_member_assets/get(Ctx, BusinessId, MemberId, Optional) ->
 
 %% @doc Delete member access to asset
 %% Terminate multiple members' access to an asset.
--spec business_members_asset_access/delete(ctx:ctx(), binary(), openapi_business_members_asset_access_delete_request:openapi_business_members_asset_access_delete_request()) -> {ok, openapi_delete_member_access_results_response_array:openapi_delete_member_access_results_response_array(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-business_members_asset_access/delete(Ctx, BusinessId, OpenapiBusinessMembersAssetAccessDeleteRequest) ->
-    business_members_asset_access/delete(Ctx, BusinessId, OpenapiBusinessMembersAssetAccessDeleteRequest, #{}).
+-spec business_members_asset_access/delete(ctx:ctx(), binary(), openapi_business_members_asset_access_delete_body:openapi_business_members_asset_access_delete_body()) -> {ok, openapi_delete_member_access_results_response_array:openapi_delete_member_access_results_response_array(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+business_members_asset_access/delete(Ctx, BusinessId, OpenapiBusinessMembersAssetAccessDeleteBody) ->
+    business_members_asset_access/delete(Ctx, BusinessId, OpenapiBusinessMembersAssetAccessDeleteBody, #{}).
 
--spec business_members_asset_access/delete(ctx:ctx(), binary(), openapi_business_members_asset_access_delete_request:openapi_business_members_asset_access_delete_request(), maps:map()) -> {ok, openapi_delete_member_access_results_response_array:openapi_delete_member_access_results_response_array(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-business_members_asset_access/delete(Ctx, BusinessId, OpenapiBusinessMembersAssetAccessDeleteRequest, Optional) ->
+-spec business_members_asset_access/delete(ctx:ctx(), binary(), openapi_business_members_asset_access_delete_body:openapi_business_members_asset_access_delete_body(), maps:map()) -> {ok, openapi_delete_member_access_results_response_array:openapi_delete_member_access_results_response_array(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+business_members_asset_access/delete(Ctx, BusinessId, OpenapiBusinessMembersAssetAccessDeleteBody, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -177,14 +177,14 @@ business_members_asset_access/delete(Ctx, BusinessId, OpenapiBusinessMembersAsse
     Path = [?BASE_URL, "/businesses/", BusinessId, "/members/assets/access"],
     QS = [],
     Headers = [],
-    Body1 = OpenapiBusinessMembersAssetAccessDeleteRequest,
+    Body1 = OpenapiBusinessMembersAssetAccessDeleteBody,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Assign/Update member asset permissions
-%% Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+%% Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 -spec business_members_asset_access/update(ctx:ctx(), binary(), openapi_update_member_asset_access_body:openapi_update_member_asset_access_body()) -> {ok, openapi_update_member_assets_results_response_array:openapi_update_member_assets_results_response_array(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 business_members_asset_access/update(Ctx, BusinessId, OpenapiUpdateMemberAssetAccessBody) ->
     business_members_asset_access/update(Ctx, BusinessId, OpenapiUpdateMemberAssetAccessBody, #{}).
@@ -217,7 +217,7 @@ business_partner_asset_access/get(Ctx, BusinessId, PartnerId, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/businesses/", BusinessId, "/partners/", PartnerId, "/assets"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['partner_type', 'asset_type', 'start_index', 'page_size', 'bookmark'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['partner_type', 'asset_type', 'start_index', 'sort_by', 'sort_ascending', 'search_by', 'search_value', 'bookmark', 'page_size'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),
@@ -227,11 +227,11 @@ business_partner_asset_access/get(Ctx, BusinessId, PartnerId, Optional) ->
 
 %% @doc Delete partner access to asset
 %% Terminate multiple partners' access to an asset. If - partner_type=INTERNAL: You will terminate a partner's asset access to your business assets. - partner_type=EXTERNAL: You will terminate your own access to your partner's business assets.
--spec delete_partner_asset_access_handler_impl(ctx:ctx(), binary(), openapi_delete_partner_asset_access_body:openapi_delete_partner_asset_access_body()) -> {ok, openapi_delete_partner_assets_results_response_array:openapi_delete_partner_assets_results_response_array(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec delete_partner_asset_access_handler_impl(ctx:ctx(), binary(), openapi_delete_partner_asset_access_body:openapi_delete_partner_asset_access_body()) -> {ok, openapi_delete_partner_asset_access_results_response_array:openapi_delete_partner_asset_access_results_response_array(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 delete_partner_asset_access_handler_impl(Ctx, BusinessId, OpenapiDeletePartnerAssetAccessBody) ->
     delete_partner_asset_access_handler_impl(Ctx, BusinessId, OpenapiDeletePartnerAssetAccessBody, #{}).
 
--spec delete_partner_asset_access_handler_impl(ctx:ctx(), binary(), openapi_delete_partner_asset_access_body:openapi_delete_partner_asset_access_body(), maps:map()) -> {ok, openapi_delete_partner_assets_results_response_array:openapi_delete_partner_assets_results_response_array(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec delete_partner_asset_access_handler_impl(ctx:ctx(), binary(), openapi_delete_partner_asset_access_body:openapi_delete_partner_asset_access_body(), maps:map()) -> {ok, openapi_delete_partner_asset_access_results_response_array:openapi_delete_partner_asset_access_results_response_array(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 delete_partner_asset_access_handler_impl(Ctx, BusinessId, OpenapiDeletePartnerAssetAccessBody, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),

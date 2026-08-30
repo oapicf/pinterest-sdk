@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Resource create or update operation model.")
 @JsonTypeName("BoardWithUpdatePrivacyUpdate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BoardWithUpdatePrivacyUpdate   {
   private String description;
   private String name;
@@ -49,7 +49,7 @@ public class BoardWithUpdatePrivacyUpdate   {
   }
 
   /**
-   *      Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;.
+   *     Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;.
    **/
   public BoardWithUpdatePrivacyUpdate name(String name) {
     this.name = name;
@@ -57,7 +57,7 @@ public class BoardWithUpdatePrivacyUpdate   {
   }
 
   
-  @ApiModelProperty(example = "Summer recipes", value = "     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".")
+  @ApiModelProperty(example = "Summer recipes", value = "    Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -124,12 +124,8 @@ public class BoardWithUpdatePrivacyUpdate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

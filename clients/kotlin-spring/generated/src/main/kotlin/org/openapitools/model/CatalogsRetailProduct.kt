@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsRetailProductMetadata
 import org.openapitools.model.Pin
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -25,17 +28,20 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CatalogsRetailProduct(
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsRetailProduct.CatalogType,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("catalog_type")
+    @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsRetailProduct.CatalogType = kotlin.String.RETAIL,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("metadata")
     @get:JsonProperty("metadata", required = true) val metadata: CatalogsRetailProductMetadata,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("pin")
     @get:JsonProperty("pin", required = true) val pin: Pin
-) {
+) : CatalogsProduct {
 
     /**
     * 
@@ -50,7 +56,7 @@ data class CatalogsRetailProduct(
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsRetailProduct'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }
     }

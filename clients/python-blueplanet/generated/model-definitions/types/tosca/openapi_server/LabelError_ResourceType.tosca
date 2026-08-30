@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  Label = openapi_server.resourceTypes.Label
+  LabelErrorData = openapi_server.resourceTypes.LabelErrorData
 }
 resourceTypes {
 
@@ -17,7 +17,7 @@ resourceTypes {
     derivedFrom = Root
     properties {
         data {
-          type = Label
+          type = LabelErrorData
           description = ""
           optional = false
         }

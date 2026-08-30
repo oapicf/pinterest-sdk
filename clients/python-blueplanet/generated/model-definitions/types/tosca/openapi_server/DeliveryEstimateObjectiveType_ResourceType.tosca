@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DeliveryEstimateObjectiveType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DeliveryEstimateObjectiveType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  DeliveryEstimateObjectiveType {
+    title = DeliveryEstimateObjectiveType
+    description = DeliveryEstimateObjectiveType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  DeliveryEstimateObjectiveType {
+    title = DeliveryEstimateObjectiveType
+    description = DeliveryEstimateObjectiveType
+    implements = openapi_server.resourceTypes.DeliveryEstimateObjectiveType
+
+  }
+}

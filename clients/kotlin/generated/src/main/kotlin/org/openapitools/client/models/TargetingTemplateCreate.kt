@@ -8,15 +8,23 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.PlacementGroupType
-import org.openapitools.client.models.TargetingSpec
+import org.openapitools.client.models.TargetingSpecOptimal
 import org.openapitools.client.models.TargetingTemplateKeyword
 import org.openapitools.client.models.TrackingUrls
 
@@ -24,11 +32,11 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * 
+ * Resource create operation model.
  *
- * @param name Name of targeting template.
- * @param targetingAttributes 
- * @param autoTargetingEnabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+ * @param name targeting template name
+ * @param targetingAttributes targeting profile attributes
+ * @param autoTargetingEnabled Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).
  * @param keywords 
  * @param placementGroup 
  * @param trackingUrls 
@@ -37,14 +45,15 @@ import com.squareup.moshi.JsonClass
 
 data class TargetingTemplateCreate (
 
-    /* Name of targeting template. */
+    /* targeting template name */
     @Json(name = "name")
     val name: kotlin.String,
 
+    /* targeting profile attributes */
     @Json(name = "targeting_attributes")
-    val targetingAttributes: TargetingSpec,
+    val targetingAttributes: TargetingSpecOptimal,
 
-    /* Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
+    /* Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting). */
     @Json(name = "auto_targeting_enabled")
     val autoTargetingEnabled: kotlin.Boolean? = true,
 

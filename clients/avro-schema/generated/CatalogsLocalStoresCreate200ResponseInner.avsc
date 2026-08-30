@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsLocalStoresCreate200ResponseInner",
+  "fields": [
+    {
+      "name": "data",
+      "type": "model.CatalogsLocalStoresCreate200ResponseInnerData",
+      "doc": ""
+    }
+  ]
+
+}

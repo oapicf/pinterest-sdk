@@ -1,5 +1,5 @@
 const samples = require('../samples/TermsOfServiceApi');
-const Error = require('../models/Error');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
 const TermsOfService = require('../models/TermsOfService');
 const utils = require('../utils/utils');
 

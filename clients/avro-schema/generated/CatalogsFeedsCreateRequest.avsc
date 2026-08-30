@@ -30,7 +30,7 @@
     },
     {
       "name": "default_locale",
-      "type": ["null", "model.CatalogsFeedsCreateRequestDefaultLocale"],
+      "type": ["null", "model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale"],
       "doc": "",
       "default": null
     },
@@ -59,7 +59,7 @@
       "name": "status",
       "type": ["model.CatalogsStatus", "null"],
       "doc": "",
-      "default": CatalogsStatus.ACTIVE
+      "default": ACTIVE
     }
   ]
 

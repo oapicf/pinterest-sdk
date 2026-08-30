@@ -2,17 +2,19 @@
 
 # TargetingTemplateCreate
 
+Resource create operation model.
+
 The class is defined in **[TargetingTemplateCreate.java](../../src/main/java/org/openapitools/model/TargetingTemplateCreate.java)**
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**autoTargetingEnabled** | `Boolean` | Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;. |  [optional property]
+**autoTargetingEnabled** | `Boolean` | Enable auto-targeting for ad group. Also known as [\&quot;expanded targeting\&quot;](https://help.pinterest.com/en/business/article/expanded-targeting). |  [optional property]
 **keywords** | [`List&lt;TargetingTemplateKeyword&gt;`](TargetingTemplateKeyword.md) |  |  [optional property]
-**name** | `String` | Name of targeting template. | 
+**name** | `String` | targeting template name | 
 **placementGroup** | `PlacementGroupType` |  |  [optional property]
-**targetingAttributes** | [`TargetingSpec`](TargetingSpec.md) |  | 
+**targetingAttributes** | [`TargetingSpecOptimal`](TargetingSpecOptimal.md) | targeting profile attributes | 
 **trackingUrls** | [`TrackingUrls`](TrackingUrls.md) |  |  [optional property]
 
 

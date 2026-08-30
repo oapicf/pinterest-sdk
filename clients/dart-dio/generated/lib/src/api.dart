@@ -27,13 +27,16 @@ import 'package:openapi/src/api/catalog_feeds_api.dart';
 import 'package:openapi/src/api/catalog_items_api.dart';
 import 'package:openapi/src/api/catalog_product_groups_api.dart';
 import 'package:openapi/src/api/catalog_reports_api.dart';
+import 'package:openapi/src/api/catalog_supplemental_api.dart';
 import 'package:openapi/src/api/catalogs_api.dart';
+import 'package:openapi/src/api/conversion_deletion_requests_api.dart';
 import 'package:openapi/src/api/conversion_eqs_api.dart';
 import 'package:openapi/src/api/conversion_events_api.dart';
 import 'package:openapi/src/api/conversion_tags_api.dart';
 import 'package:openapi/src/api/conversions_api.dart';
 import 'package:openapi/src/api/customer_list_uploads_api.dart';
 import 'package:openapi/src/api/customer_lists_api.dart';
+import 'package:openapi/src/api/customer_segment_api.dart';
 import 'package:openapi/src/api/integrations_api.dart';
 import 'package:openapi/src/api/keywords_api.dart';
 import 'package:openapi/src/api/labels_api.dart';
@@ -46,14 +49,16 @@ import 'package:openapi/src/api/notification_api.dart';
 import 'package:openapi/src/api/oauth_api.dart';
 import 'package:openapi/src/api/order_lines_api.dart';
 import 'package:openapi/src/api/pins_api.dart';
-import 'package:openapi/src/api/product_categories_api.dart';
 import 'package:openapi/src/api/product_group_promotions_api.dart';
+import 'package:openapi/src/api/product_tags_api.dart';
 import 'package:openapi/src/api/promotions_api.dart';
 import 'package:openapi/src/api/resources_api.dart';
+import 'package:openapi/src/api/schedules_api.dart';
 import 'package:openapi/src/api/search_api.dart';
 import 'package:openapi/src/api/targeting_template_api.dart';
 import 'package:openapi/src/api/terms_api.dart';
 import 'package:openapi/src/api/terms_of_service_api.dart';
+import 'package:openapi/src/api/trends_api.dart';
 import 'package:openapi/src/api/user_account_api.dart';
 
 class Openapi {
@@ -92,9 +97,29 @@ class Openapi {
     }
   }
 
+  /// Removes the OAuth token associated with the given [name].
+  ///
+  /// If no [OAuthInterceptor] is registered or no token exists for the given
+  /// [name], this method has no effect.
+  void removeOAuthToken(String name) {
+    if (this.dio.interceptors.any((i) => i is OAuthInterceptor)) {
+      (this.dio.interceptors.firstWhere((i) => i is OAuthInterceptor) as OAuthInterceptor).tokens.remove(name);
+    }
+  }
+
   void setBearerAuth(String name, String token) {
     if (this.dio.interceptors.any((i) => i is BearerAuthInterceptor)) {
       (this.dio.interceptors.firstWhere((i) => i is BearerAuthInterceptor) as BearerAuthInterceptor).tokens[name] = token;
+    }
+  }
+
+  /// Removes the bearer authentication token associated with the given [name].
+  ///
+  /// If no [BearerAuthInterceptor] is registered or no token exists for the
+  /// given [name], this method has no effect.
+  void removeBearerAuth(String name) {
+    if (this.dio.interceptors.any((i) => i is BearerAuthInterceptor)) {
+      (this.dio.interceptors.firstWhere((i) => i is BearerAuthInterceptor) as BearerAuthInterceptor).tokens.remove(name);
     }
   }
 
@@ -104,9 +129,29 @@ class Openapi {
     }
   }
 
+  /// Removes the basic authentication credentials associated with the given [name].
+  ///
+  /// If no [BasicAuthInterceptor] is registered or no credentials exist for the
+  /// given [name], this method has no effect.
+  void removeBasicAuth(String name) {
+    if (this.dio.interceptors.any((i) => i is BasicAuthInterceptor)) {
+      (this.dio.interceptors.firstWhere((i) => i is BasicAuthInterceptor) as BasicAuthInterceptor).authInfo.remove(name);
+    }
+  }
+
   void setApiKey(String name, String apiKey) {
     if (this.dio.interceptors.any((i) => i is ApiKeyAuthInterceptor)) {
       (this.dio.interceptors.firstWhere((element) => element is ApiKeyAuthInterceptor) as ApiKeyAuthInterceptor).apiKeys[name] = apiKey;
+    }
+  }
+
+  /// Removes the API key associated with the given [name].
+  ///
+  /// If no [ApiKeyAuthInterceptor] is registered or no API key exists for the
+  /// given [name], this method has no effect.
+  void removeApiKey(String name) {
+    if (this.dio.interceptors.any((i) => i is ApiKeyAuthInterceptor)) {
+      (this.dio.interceptors.firstWhere((element) => element is ApiKeyAuthInterceptor) as ApiKeyAuthInterceptor).apiKeys.remove(name);
     }
   }
 
@@ -218,10 +263,22 @@ class Openapi {
     return CatalogReportsApi(dio, serializers);
   }
 
+  /// Get CatalogSupplementalApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  CatalogSupplementalApi getCatalogSupplementalApi() {
+    return CatalogSupplementalApi(dio, serializers);
+  }
+
   /// Get CatalogsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   CatalogsApi getCatalogsApi() {
     return CatalogsApi(dio, serializers);
+  }
+
+  /// Get ConversionDeletionRequestsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  ConversionDeletionRequestsApi getConversionDeletionRequestsApi() {
+    return ConversionDeletionRequestsApi(dio, serializers);
   }
 
   /// Get ConversionEqsApi instance, base route and serializer can be overridden by a given but be careful,
@@ -258,6 +315,12 @@ class Openapi {
   /// by doing that all interceptors will not be executed
   CustomerListsApi getCustomerListsApi() {
     return CustomerListsApi(dio, serializers);
+  }
+
+  /// Get CustomerSegmentApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  CustomerSegmentApi getCustomerSegmentApi() {
+    return CustomerSegmentApi(dio, serializers);
   }
 
   /// Get IntegrationsApi instance, base route and serializer can be overridden by a given but be careful,
@@ -332,16 +395,16 @@ class Openapi {
     return PinsApi(dio, serializers);
   }
 
-  /// Get ProductCategoriesApi instance, base route and serializer can be overridden by a given but be careful,
-  /// by doing that all interceptors will not be executed
-  ProductCategoriesApi getProductCategoriesApi() {
-    return ProductCategoriesApi(dio, serializers);
-  }
-
   /// Get ProductGroupPromotionsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   ProductGroupPromotionsApi getProductGroupPromotionsApi() {
     return ProductGroupPromotionsApi(dio, serializers);
+  }
+
+  /// Get ProductTagsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  ProductTagsApi getProductTagsApi() {
+    return ProductTagsApi(dio, serializers);
   }
 
   /// Get PromotionsApi instance, base route and serializer can be overridden by a given but be careful,
@@ -354,6 +417,12 @@ class Openapi {
   /// by doing that all interceptors will not be executed
   ResourcesApi getResourcesApi() {
     return ResourcesApi(dio, serializers);
+  }
+
+  /// Get SchedulesApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  SchedulesApi getSchedulesApi() {
+    return SchedulesApi(dio, serializers);
   }
 
   /// Get SearchApi instance, base route and serializer can be overridden by a given but be careful,
@@ -378,6 +447,12 @@ class Openapi {
   /// by doing that all interceptors will not be executed
   TermsOfServiceApi getTermsOfServiceApi() {
     return TermsOfServiceApi(dio, serializers);
+  }
+
+  /// Get TrendsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  TrendsApi getTrendsApi() {
+    return TrendsApi(dio, serializers);
   }
 
   /// Get UserAccountApi instance, base route and serializer can be overridden by a given but be careful,

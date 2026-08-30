@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  | [optional] 
-**items** | [**[LeadFormResponse]**](LeadFormResponse.md) |  | 
+**items** | [**[LeadForm]**](LeadForm.md) |  | 
 
 

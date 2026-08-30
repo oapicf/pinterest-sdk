@@ -51,14 +51,14 @@ public:
 
 	/*! \brief Set This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
 	 */
-	void setIsAffiliateLink(bool  is_affiliate_link);
+	void setIsAffiliateLink(bool is_affiliate_link);
 	/*! \brief Get 
 	 */
 	std::string getSourceType();
 
 	/*! \brief Set 
 	 */
-	void setSourceType(std::string  source_type);
+	void setSourceType(std::string source_type);
 
 
     private:

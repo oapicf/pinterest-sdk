@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsCreativeAssetsFilterValuesMap
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -23,13 +26,15 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CatalogsCreativeAssetsAvailableFilterValues(
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsCreativeAssetsAvailableFilterValues.CatalogType,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("catalog_type")
+    @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsCreativeAssetsAvailableFilterValues.CatalogType = kotlin.String.CREATIVE_ASSETS,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("filter_values")
     @get:JsonProperty("filter_values", required = true) val filterValues: CatalogsCreativeAssetsFilterValuesMap
-) {
+) : CatalogsAvailableFilterValues {
 
     /**
     * 
@@ -44,7 +49,7 @@ data class CatalogsCreativeAssetsAvailableFilterValues(
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsCreativeAssetsAvailableFilterValues'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }
     }

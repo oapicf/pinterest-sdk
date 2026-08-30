@@ -1,0 +1,39 @@
+import { BusinessMemberAssetsSummary } from './business-member-assets-summary';
+import { BusinessAccessUserSummary } from './business-access-user-summary';
+
+
+export interface UserBusinessRoleBinding { 
+  /**
+   * Ad accounts and profiles the business member/partner has access to.
+   */
+  assets_summary?: BusinessMemberAssetsSummary | null;
+  /**
+   * The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+   */
+  business_roles?: Array<string>;
+  /**
+   * Metadata for the business that created the business relationship.
+   */
+  created_by_business?: BusinessAccessUserSummary | null;
+  /**
+   * Metadata for the user that created the business relationship.
+   */
+  created_by_user?: BusinessAccessUserSummary | null;
+  /**
+   * The time the business relationship was created. Returned in milliseconds.
+   */
+  created_time?: number | null;
+  /**
+   * Unique identifier of the business member/business partner/employer.
+   */
+  id?: string;
+  /**
+   * This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner\'s business asset. If assets_summary is not empty, the assets listed are the partner\'s business assets you have access to.
+   */
+  is_shared_partner?: boolean;
+  /**
+   * Metadata for the business member/business partner/employer.
+   */
+  user?: BusinessAccessUserSummary | null;
+}
+

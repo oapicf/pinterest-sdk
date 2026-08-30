@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;CatalogsProduct&gt;**](CatalogsProduct.md) | Pins | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;CatalogsProduct&gt;**](CatalogsProduct.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 

@@ -5,7 +5,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- * &lt;p&gt;Catalog hotel product group type&lt;/p&gt; &lt;p&gt;MERCHANT_CREATED: Product groups created by merchants. &lt;br&gt;ALL_LISTINGS: Includes every hotel item in your catalog.
+ * Catalog hotel product group type
  **/
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

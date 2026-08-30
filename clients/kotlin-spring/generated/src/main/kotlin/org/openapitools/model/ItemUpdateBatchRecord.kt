@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.UpdatableItemAttributes
 import org.openapitools.model.UpdateMaskFieldType
 import javax.validation.constraints.DecimalMax
@@ -24,14 +27,21 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class ItemUpdateBatchRecord(
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("attributes")
     @get:JsonProperty("attributes") val attributes: UpdatableItemAttributes? = null,
 
     @Schema(example = "DS0294-M", description = "The catalog item id in the merchant namespace")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("item_id")
     @get:JsonProperty("item_id") val itemId: kotlin.String? = null,
 
     @field:Valid
     @Schema(example = "[\"ad_link\",\"adult\",\"age_group\",\"availability\",\"average_review_rating\",\"brand\",\"checkout_enabled\",\"color\",\"condition\",\"custom_label_0\",\"custom_label_1\",\"custom_label_2\",\"custom_label_3\",\"custom_label_4\",\"description\",\"free_shipping_label\",\"free_shipping_limit\",\"gender\",\"google_product_category\",\"gtin\",\"item_group_id\",\"last_updated_time\",\"link\",\"material\",\"min_ad_price\",\"mpn\",\"number_of_ratings\",\"number_of_reviews\",\"pattern\",\"price\",\"product_type\",\"sale_price\",\"shipping\",\"shipping_height\",\"shipping_weight\",\"shipping_width\",\"size\",\"size_system\",\"size_type\",\"tax\",\"title\",\"variant_names\",\"variant_values\"]", description = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.")
+    @param:JsonProperty("update_mask")
     @get:JsonProperty("update_mask") val updateMask: kotlin.collections.List<UpdateMaskFieldType>? = null
 ) {
 

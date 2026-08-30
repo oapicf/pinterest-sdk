@@ -24,7 +24,7 @@ void
 AdsAnalyticsCreateAsyncResponse::__init()
 {
 	//message = std::string();
-	//report_status = std::string();
+	//report_status = new BulkReportingJobStatus();
 	//token = std::string();
 }
 

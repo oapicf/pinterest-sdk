@@ -16,23 +16,23 @@ CatalogsProductGroupFiltersRequest <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
-    any_of = list("AllOf", "AnyOf"),
+    any_of = list("CatalogsProductGroupFiltersRequestAnyOfItems0", "CatalogsProductGroupFiltersRequestAnyOfItems1"),
 
     #' @description
     #' Initialize a new CatalogsProductGroupFiltersRequest.
     #'
-    #' @param instance an instance of the object defined in the anyOf schemas: "AllOf", "AnyOf"
+    #' @param instance an instance of the object defined in the anyOf schemas: "CatalogsProductGroupFiltersRequestAnyOfItems0", "CatalogsProductGroupFiltersRequestAnyOfItems1"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "AllOf") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsProductGroupFiltersRequestAnyOfItems0") {
         self$actual_instance <- instance
-        self$actual_type <- "AllOf"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "AnyOf") {
+        self$actual_type <- "CatalogsProductGroupFiltersRequestAnyOfItems0"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsProductGroupFiltersRequestAnyOfItems1") {
         self$actual_instance <- instance
-        self$actual_type <- "AnyOf"
+        self$actual_type <- "CatalogsProductGroupFiltersRequestAnyOfItems1"
       } else {
-        stop(paste("Failed to initialize CatalogsProductGroupFiltersRequest with anyOf schemas AllOf, AnyOf. Provided class name: ",
+        stop(paste("Failed to initialize CatalogsProductGroupFiltersRequest with anyOf schemas CatalogsProductGroupFiltersRequestAnyOfItems0, CatalogsProductGroupFiltersRequestAnyOfItems1. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -57,36 +57,36 @@ CatalogsProductGroupFiltersRequest <- R6::R6Class(
     fromJSON = function(input) {
       error_messages <- list()
 
-      `AnyOf_result` <- tryCatch({
-          `AnyOf`$public_methods$validateJSON(input)
-          `AnyOf_instance` <- `AnyOf`$new()
-          self$actual_instance <- `AnyOf_instance`$fromJSON(input)
-          self$actual_type <- "AnyOf"
+      `CatalogsProductGroupFiltersRequestAnyOfItems0_result` <- tryCatch({
+          `CatalogsProductGroupFiltersRequestAnyOfItems0`$public_methods$validateJSON(input)
+          `CatalogsProductGroupFiltersRequestAnyOfItems0_instance` <- `CatalogsProductGroupFiltersRequestAnyOfItems0`$new()
+          self$actual_instance <- `CatalogsProductGroupFiltersRequestAnyOfItems0_instance`$fromJSON(input)
+          self$actual_type <- "CatalogsProductGroupFiltersRequestAnyOfItems0"
           return(self)
         },
         error = function(err) err
       )
 
-      if (!is.null(`AnyOf_result`["error"])) {
-        error_messages <- append(error_messages, `AnyOf_result`["message"])
+      if (!is.null(`CatalogsProductGroupFiltersRequestAnyOfItems0_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsProductGroupFiltersRequestAnyOfItems0_result`["message"])
       }
 
-      `AllOf_result` <- tryCatch({
-          `AllOf`$public_methods$validateJSON(input)
-          `AllOf_instance` <- `AllOf`$new()
-          self$actual_instance <- `AllOf_instance`$fromJSON(input)
-          self$actual_type <- "AllOf"
+      `CatalogsProductGroupFiltersRequestAnyOfItems1_result` <- tryCatch({
+          `CatalogsProductGroupFiltersRequestAnyOfItems1`$public_methods$validateJSON(input)
+          `CatalogsProductGroupFiltersRequestAnyOfItems1_instance` <- `CatalogsProductGroupFiltersRequestAnyOfItems1`$new()
+          self$actual_instance <- `CatalogsProductGroupFiltersRequestAnyOfItems1_instance`$fromJSON(input)
+          self$actual_type <- "CatalogsProductGroupFiltersRequestAnyOfItems1"
           return(self)
         },
         error = function(err) err
       )
 
-      if (!is.null(`AllOf_result`["error"])) {
-        error_messages <- append(error_messages, `AllOf_result`["message"])
+      if (!is.null(`CatalogsProductGroupFiltersRequestAnyOfItems1_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsProductGroupFiltersRequestAnyOfItems1_result`["message"])
       }
 
       # no match
-      stop(paste("No match found when deserializing the input into CatalogsProductGroupFiltersRequest with anyOf schemas AllOf, AnyOf. Details: >>",
+      stop(paste("No match found when deserializing the input into CatalogsProductGroupFiltersRequest with anyOf schemas CatalogsProductGroupFiltersRequestAnyOfItems0, CatalogsProductGroupFiltersRequestAnyOfItems1. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
 

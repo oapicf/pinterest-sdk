@@ -37,6 +37,11 @@ resourceTypes {
           description = "Creation date in epoch format."
           optional = false
         }
+        reporting_conversion_event {
+          type =  string
+          description = "For advertiser-defined events, the reporting event label shown in optimization UIs."
+          optional = false
+        }
     }
   }
 }

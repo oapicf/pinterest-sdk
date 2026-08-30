@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
  * The terminated asset access.
  */
 @ApiModel(description = "The terminated asset access.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class DeleteMemberAccessResult   {
   @JsonProperty("asset_id")
   private String assetId;
@@ -89,10 +89,7 @@ public class DeleteMemberAccessResult   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

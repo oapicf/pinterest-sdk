@@ -19,17 +19,17 @@ typedef struct catalogs_product_group_pricing_criteria_t catalogs_product_group_
 
 
 typedef struct catalogs_product_group_pricing_criteria_t {
-    int inclusion; //boolean
-    int negated; //boolean
-    double values; //numeric
+    int *inclusion; //boolean
+    int *negated; //boolean
+    double *values; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_pricing_criteria_t;
 
 __attribute__((deprecated)) catalogs_product_group_pricing_criteria_t *catalogs_product_group_pricing_criteria_create(
-    int inclusion,
-    int negated,
-    double values
+    int *inclusion,
+    int *negated,
+    double *values
 );
 
 void catalogs_product_group_pricing_criteria_free(catalogs_product_group_pricing_criteria_t *catalogs_product_group_pricing_criteria);

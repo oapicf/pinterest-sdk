@@ -10,6 +10,6 @@ import java.util.Arrays;
 class BidFloor {
     /* A list of bid floors in micro currency. For example, [100000, 200000] */
     List<Integer> bidFloors = new ArrayList<>()
-    /* Always the string 'bidfloor' */
+    /* Always the string 'bidfloor'. */
     String type = "bidfloor"
 }

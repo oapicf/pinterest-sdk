@@ -7,47 +7,22 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.TopPinsAnalyticsResponseDateAvailability;
-import org.openapitools.vertxweb.server.model.TopVideoPinsAnalyticsResponsePinsInner;
+import org.openapitools.vertxweb.server.model.TopVideoPinsAnalyticsResponseDateAvailability;
+import org.openapitools.vertxweb.server.model.TopVideoPinsAnalyticsResponsePinsItems;
+import org.openapitools.vertxweb.server.model.TopVideoPinsSortBy;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TopVideoPinsAnalyticsResponse   {
   
-  private TopPinsAnalyticsResponseDateAvailability dateAvailability;
-  private List<TopVideoPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
-
-
-  public enum SortByEnum {
-    SAVE("SAVE"),
-    IMPRESSION("IMPRESSION"),
-    OUTBOUND_CLICK("OUTBOUND_CLICK"),
-    VIDEO_MRC_VIEW("VIDEO_MRC_VIEW"),
-    VIDEO_AVG_WATCH_TIME("VIDEO_AVG_WATCH_TIME"),
-    VIDEO_V50_WATCH_TIME("VIDEO_V50_WATCH_TIME"),
-    QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
-    VIDEO_10_S_VIEW("VIDEO_10S_VIEW"),
-    VIDEO_START("VIDEO_START");
-
-    private String value;
-
-    SortByEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private SortByEnum sortBy;
+  private TopVideoPinsAnalyticsResponseDateAvailability dateAvailability;
+  private List<TopVideoPinsAnalyticsResponsePinsItems> pins = new ArrayList<>();
+  private TopVideoPinsSortBy sortBy;
 
   public TopVideoPinsAnalyticsResponse () {
 
   }
 
-  public TopVideoPinsAnalyticsResponse (TopPinsAnalyticsResponseDateAvailability dateAvailability, List<TopVideoPinsAnalyticsResponsePinsInner> pins, SortByEnum sortBy) {
+  public TopVideoPinsAnalyticsResponse (TopVideoPinsAnalyticsResponseDateAvailability dateAvailability, List<TopVideoPinsAnalyticsResponsePinsItems> pins, TopVideoPinsSortBy sortBy) {
     this.dateAvailability = dateAvailability;
     this.pins = pins;
     this.sortBy = sortBy;
@@ -55,28 +30,28 @@ public class TopVideoPinsAnalyticsResponse   {
 
     
   @JsonProperty("date_availability")
-  public TopPinsAnalyticsResponseDateAvailability getDateAvailability() {
+  public TopVideoPinsAnalyticsResponseDateAvailability getDateAvailability() {
     return dateAvailability;
   }
-  public void setDateAvailability(TopPinsAnalyticsResponseDateAvailability dateAvailability) {
+  public void setDateAvailability(TopVideoPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;
   }
 
     
   @JsonProperty("pins")
-  public List<TopVideoPinsAnalyticsResponsePinsInner> getPins() {
+  public List<TopVideoPinsAnalyticsResponsePinsItems> getPins() {
     return pins;
   }
-  public void setPins(List<TopVideoPinsAnalyticsResponsePinsInner> pins) {
+  public void setPins(List<TopVideoPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
   }
 
     
   @JsonProperty("sort_by")
-  public SortByEnum getSortBy() {
+  public TopVideoPinsSortBy getSortBy() {
     return sortBy;
   }
-  public void setSortBy(SortByEnum sortBy) {
+  public void setSortBy(TopVideoPinsSortBy sortBy) {
     this.sortBy = sortBy;
   }
 
@@ -117,9 +92,6 @@ public class TopVideoPinsAnalyticsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

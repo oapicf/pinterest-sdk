@@ -1,11 +1,12 @@
 package models
 
+// BaseInviteDataResponse - Common invite/request data returned by the business access endpoints.
 type BaseInviteDataResponse struct {
 
 	// Unique identifier of the invite/request.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 
-	InviteData BaseInviteDataResponseInviteData `json:"invite_data,omitempty"`
+	InviteData InviteDataResponse `json:"invite_data,omitempty"`
 
 	// Indicates whether the invite/request was received.
 	IsReceivedInvite bool `json:"is_received_invite,omitempty"`

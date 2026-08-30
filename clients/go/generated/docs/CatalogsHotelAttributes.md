@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | Pointer to [**CatalogsHotelAddress**](CatalogsHotelAddress.md) |  | [optional] 
+**Address** | Pointer to [**CatalogsHotelAddress**](CatalogsHotelAddress.md) | Hotel address | [optional] 
 **BasePrice** | Pointer to **NullableString** | Base price of the hotel room per night followed by the ISO currency code | [optional] 
 **Brand** | Pointer to **NullableString** | The brand to which this hotel belongs to. | [optional] 
 **Category** | Pointer to **NullableString** | The type of property. The category can be any type of internal description desired. | [optional] 
@@ -14,15 +14,16 @@ Name | Type | Description | Notes
 **CustomLabel3** | Pointer to **NullableString** | Custom grouping of hotels | [optional] 
 **CustomLabel4** | Pointer to **NullableString** | Custom grouping of hotels | [optional] 
 **Description** | Pointer to **NullableString** | Brief description of the hotel. | [optional] 
-**GuestRatings** | Pointer to [**CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) |  | [optional] 
+**GuestRatings** | Pointer to [**CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) | If specified, you must provide all properties | [optional] 
 **Latitude** | Pointer to **float32** | Latitude of the hotel. | [optional] 
 **Link** | Pointer to **NullableString** | Link to the product page | [optional] 
 **Longitude** | Pointer to **NullableFloat32** | Longitude of the hotel. | [optional] 
 **Name** | Pointer to **NullableString** | The hotel&#39;s name. | [optional] 
 **Neighborhood** | Pointer to **[]string** | A list of neighborhoods where the hotel is located | [optional] 
 **SalePrice** | Pointer to **NullableString** | Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. | [optional] 
-**AdditionalImageLink** | Pointer to **[]string** | &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.&lt;/p&gt; | [optional] 
-**MainImage** | Pointer to [**CatalogsHotelAttributesAllOfMainImage**](CatalogsHotelAttributesAllOfMainImage.md) |  | [optional] 
+**AdditionalImageLink** | Pointer to **[]string** | &lt;&#x3D; 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://. | [optional] 
+**AiDisclosures** | Pointer to [**[]CatalogsAiContentDisclosure**](CatalogsAiContentDisclosure.md) | AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL. | [optional] 
+**MainImage** | Pointer to [**CatalogsHotelMainImage**](CatalogsHotelMainImage.md) | The main hotel image | [optional] 
 
 ## Methods
 
@@ -643,22 +644,47 @@ HasAdditionalImageLink returns a boolean if a field has been set.
 `func (o *CatalogsHotelAttributes) UnsetAdditionalImageLink()`
 
 UnsetAdditionalImageLink ensures that no value is present for AdditionalImageLink, not even an explicit nil
+### GetAiDisclosures
+
+`func (o *CatalogsHotelAttributes) GetAiDisclosures() []CatalogsAiContentDisclosure`
+
+GetAiDisclosures returns the AiDisclosures field if non-nil, zero value otherwise.
+
+### GetAiDisclosuresOk
+
+`func (o *CatalogsHotelAttributes) GetAiDisclosuresOk() (*[]CatalogsAiContentDisclosure, bool)`
+
+GetAiDisclosuresOk returns a tuple with the AiDisclosures field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiDisclosures
+
+`func (o *CatalogsHotelAttributes) SetAiDisclosures(v []CatalogsAiContentDisclosure)`
+
+SetAiDisclosures sets AiDisclosures field to given value.
+
+### HasAiDisclosures
+
+`func (o *CatalogsHotelAttributes) HasAiDisclosures() bool`
+
+HasAiDisclosures returns a boolean if a field has been set.
+
 ### GetMainImage
 
-`func (o *CatalogsHotelAttributes) GetMainImage() CatalogsHotelAttributesAllOfMainImage`
+`func (o *CatalogsHotelAttributes) GetMainImage() CatalogsHotelMainImage`
 
 GetMainImage returns the MainImage field if non-nil, zero value otherwise.
 
 ### GetMainImageOk
 
-`func (o *CatalogsHotelAttributes) GetMainImageOk() (*CatalogsHotelAttributesAllOfMainImage, bool)`
+`func (o *CatalogsHotelAttributes) GetMainImageOk() (*CatalogsHotelMainImage, bool)`
 
 GetMainImageOk returns a tuple with the MainImage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMainImage
 
-`func (o *CatalogsHotelAttributes) SetMainImage(v CatalogsHotelAttributesAllOfMainImage)`
+`func (o *CatalogsHotelAttributes) SetMainImage(v CatalogsHotelMainImage)`
 
 SetMainImage sets MainImage field to given value.
 

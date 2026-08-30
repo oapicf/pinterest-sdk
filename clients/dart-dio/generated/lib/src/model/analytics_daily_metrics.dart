@@ -15,7 +15,7 @@ part 'analytics_daily_metrics.g.dart';
 /// Properties:
 /// * [dataStatus] 
 /// * [date] - Metrics date (UTC): YYYY-MM-DD.
-/// * [metrics] - The metric name and daily value for each requested metric
+/// * [metrics] 
 @BuiltValue()
 abstract class AnalyticsDailyMetrics implements Built<AnalyticsDailyMetrics, AnalyticsDailyMetricsBuilder> {
   @BuiltValueField(wireName: r'data_status')
@@ -26,7 +26,6 @@ abstract class AnalyticsDailyMetrics implements Built<AnalyticsDailyMetrics, Ana
   @BuiltValueField(wireName: r'date')
   String? get date;
 
-  /// The metric name and daily value for each requested metric
   @BuiltValueField(wireName: r'metrics')
   BuiltMap<String, num>? get metrics;
 
@@ -100,22 +99,25 @@ class _$AnalyticsDailyMetricsSerializer implements PrimitiveSerializer<Analytics
         case r'data_status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(DataStatus),
-          ) as DataStatus;
+            specifiedType: const FullType.nullable(DataStatus),
+          ) as DataStatus?;
+          if (valueDes == null) continue;
           result.dataStatus = valueDes;
           break;
         case r'date':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.date = valueDes;
           break;
         case r'metrics':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(num)]),
-          ) as BuiltMap<String, num>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(num)]),
+          ) as BuiltMap<String, num>?;
+          if (valueDes == null) continue;
           result.metrics.replace(valueDes);
           break;
         default:

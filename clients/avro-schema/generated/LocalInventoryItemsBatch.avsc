@@ -1,0 +1,38 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Unified model for local inventory items batch operation",
+  "name": "LocalInventoryItemsBatch",
+  "fields": [
+    {
+      "name": "batch_id",
+      "type": "string",
+      "doc": "Id of the batch operation"
+    },
+    {
+      "name": "completed_time",
+      "type": ["null", "string"],
+      "doc": "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss",
+      "default": null
+    },
+    {
+      "name": "created_time",
+      "type": "string",
+      "doc": "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss"
+    },
+    {
+      "name": "operation_results",
+      "type": {
+        "type": "array",
+        "items": "model.SupplementalOperationResult"
+      },
+      "doc": "Array of operation results"
+    },
+    {
+      "name": "status",
+      "type": "model.SupplementalItemBatchOperationStatus",
+      "doc": "Status of the batch: PROCESSING, COMPLETED, FAILED"
+    }
+  ]
+
+}

@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  | [optional] 
-**items** | [**[UserBusinessRoleBinding]**](UserBusinessRoleBinding.md) | List of employers. | 
+**items** | [**[UserBusinessRoleBinding]**](UserBusinessRoleBinding.md) |  | 
 
 

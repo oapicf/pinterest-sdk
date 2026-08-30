@@ -1,23 +1,25 @@
 package controllers;
 
 import apimodels.AdAccount;
-import apimodels.AdAccountAnalyticsResponseInner;
+import apimodels.AdAccountAnalyticsItems;
 import apimodels.AdAccountCreate;
 import apimodels.AdAccountsList200Response;
+import apimodels.AdsAnalyticsAccountTargetingType;
 import apimodels.AdsAnalyticsCreateAsyncRequest;
 import apimodels.AdsAnalyticsCreateAsyncResponse;
 import apimodels.AdsAnalyticsGetAsyncResponse;
-import apimodels.AdsAnalyticsTargetingType;
-import apimodels.ConversionProductReportRequest;
+import java.math.BigDecimal;
+import apimodels.ConversionProductReport;
+import apimodels.ConversionProductReportCreate;
 import apimodels.ConversionReportAttributionType;
-import apimodels.CreateMMMReportRequest;
-import apimodels.CreateMMMReportResponse;
-import apimodels.Error;
-import apimodels.GetMMMReportResponse;
 import apimodels.Granularity;
 import java.time.LocalDate;
+import apimodels.MMMReport;
+import apimodels.MMMReportCreate;
 import apimodels.MetricsResponse;
 import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.ReportingColumnSync;
 import apimodels.ReportingTimeZone;
 import apimodels.TemplateBasedReport;
 import apimodels.TemplatesList200Response;
@@ -47,15 +49,15 @@ public abstract class AdAccountsApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result adAccountAnalyticsHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) throws Exception {
+    public Result adAccountAnalyticsHttp(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull List<ReportingColumnSync> columns, @NotNull Granularity granularity,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        List<AdAccountAnalyticsResponseInner> obj = adAccountAnalytics(request, adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone);
+        List<AdAccountAnalyticsItems> obj = adAccountAnalytics(request, startDate, endDate, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
-            for (AdAccountAnalyticsResponseInner curItem : obj) {
+            for (AdAccountAnalyticsItems curItem : obj) {
                 OpenAPIUtils.validate(curItem);
             }
         }
@@ -66,9 +68,9 @@ public abstract class AdAccountsApiControllerImpInterface {
 
     }
 
-    public abstract List<AdAccountAnalyticsResponseInner> adAccountAnalytics(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) throws Exception;
+    public abstract List<AdAccountAnalyticsItems> adAccountAnalytics(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull List<ReportingColumnSync> columns, @NotNull Granularity granularity,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) throws Exception;
 
-    public Result adAccountTargetingAnalyticsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=15)List<AdsAnalyticsTargetingType> targetingTypes, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime,    @Size(max=2)List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone) throws Exception {
+    public Result adAccountTargetingAnalyticsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=15)List<AdsAnalyticsAccountTargetingType> targetingTypes, @NotNull List<ReportingColumnSync> columns, @NotNull Granularity granularity, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime,    @Size(max=2)List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
@@ -85,7 +87,7 @@ public abstract class AdAccountsApiControllerImpInterface {
 
     }
 
-    public abstract MetricsResponse adAccountTargetingAnalyticsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=15)List<AdsAnalyticsTargetingType> targetingTypes, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime,    @Size(max=2)List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone) throws Exception;
+    public abstract MetricsResponse adAccountTargetingAnalyticsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=15)List<AdsAnalyticsAccountTargetingType> targetingTypes, @NotNull List<ReportingColumnSync> columns, @NotNull Granularity granularity, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime,    @Size(max=2)List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone) throws Exception;
 
     public Result adAccountsCreateHttp(Http.Request request, AdAccountCreate adAccountCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -144,12 +146,12 @@ public abstract class AdAccountsApiControllerImpInterface {
 
     public abstract AdAccountsList200Response adAccountsList(Http.Request request, Boolean includeSharedAccounts, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result analyticsCreateConversionProductReportHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionProductReportRequest conversionProductReportRequest) throws Exception {
+    public Result analyticsCreateConversionProductReportHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionProductReportCreate conversionProductReportCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        AdsAnalyticsCreateAsyncResponse obj = analyticsCreateConversionProductReport(request, adAccountId, conversionProductReportRequest);
+        ConversionProductReport obj = analyticsCreateConversionProductReport(request, adAccountId, conversionProductReportCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -161,14 +163,14 @@ public abstract class AdAccountsApiControllerImpInterface {
 
     }
 
-    public abstract AdsAnalyticsCreateAsyncResponse analyticsCreateConversionProductReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionProductReportRequest conversionProductReportRequest) throws Exception;
+    public abstract ConversionProductReport analyticsCreateConversionProductReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionProductReportCreate conversionProductReportCreate) throws Exception;
 
-    public Result analyticsCreateMmmReportHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, CreateMMMReportRequest createMMMReportRequest) throws Exception {
+    public Result analyticsCreateMmmReportHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, MMMReportCreate mmMReportCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        CreateMMMReportResponse obj = analyticsCreateMmmReport(request, adAccountId, createMMMReportRequest);
+        MMMReport obj = analyticsCreateMmmReport(request, adAccountId, mmMReportCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -180,7 +182,7 @@ public abstract class AdAccountsApiControllerImpInterface {
 
     }
 
-    public abstract CreateMMMReportResponse analyticsCreateMmmReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, CreateMMMReportRequest createMMMReportRequest) throws Exception;
+    public abstract MMMReport analyticsCreateMmmReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, MMMReportCreate mmMReportCreate) throws Exception;
 
     public Result analyticsCreateReportHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -225,7 +227,7 @@ public abstract class AdAccountsApiControllerImpInterface {
             return unauthorized();
         }
 
-        AdsAnalyticsGetAsyncResponse obj = analyticsGetConversionProductReport(request, adAccountId, token);
+        ConversionProductReport obj = analyticsGetConversionProductReport(request, adAccountId, token);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -237,14 +239,14 @@ public abstract class AdAccountsApiControllerImpInterface {
 
     }
 
-    public abstract AdsAnalyticsGetAsyncResponse analyticsGetConversionProductReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull String token) throws Exception;
+    public abstract ConversionProductReport analyticsGetConversionProductReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull String token) throws Exception;
 
     public Result analyticsGetMmmReportHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull String token) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        GetMMMReportResponse obj = analyticsGetMmmReport(request, adAccountId, token);
+        MMMReport obj = analyticsGetMmmReport(request, adAccountId, token);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -256,7 +258,7 @@ public abstract class AdAccountsApiControllerImpInterface {
 
     }
 
-    public abstract GetMMMReportResponse analyticsGetMmmReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull String token) throws Exception;
+    public abstract MMMReport analyticsGetMmmReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull String token) throws Exception;
 
     public Result analyticsGetReportHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull String token) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -291,12 +293,12 @@ public abstract class AdAccountsApiControllerImpInterface {
 
     public abstract String sandboxDelete(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result templatesListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception {
+    public Result templatesListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        TemplatesList200Response obj = templatesList(request, adAccountId, pageSize, order, bookmark);
+        TemplatesList200Response obj = templatesList(request, adAccountId, bookmark, pageSize, order);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -308,6 +310,6 @@ public abstract class AdAccountsApiControllerImpInterface {
 
     }
 
-    public abstract TemplatesList200Response templatesList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception;
+    public abstract TemplatesList200Response templatesList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order) throws Exception;
 
 }

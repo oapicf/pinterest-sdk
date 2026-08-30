@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **char \*** |  | [optional] 
-**items** | [**list_t**](get_partner_assets_response.md) \* | List assets on which you granted access to your partner or assets on which your partner has granted you access. | 
+**items** | [**list_t**](base_business_assets.md) \* |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

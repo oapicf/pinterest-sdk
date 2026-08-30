@@ -18,6 +18,7 @@ API.Client.ImageMetadata.prototype.description;
 API.Client.ImageMetadata.prototype.images;
 
 /**
+ * Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
  * @type {!string}
  * @export
  */
@@ -35,3 +36,7 @@ API.Client.ImageMetadata.prototype.link;
  */
 API.Client.ImageMetadata.prototype.title;
 
+/** @enum {string} */
+API.Client.ImageMetadata.ItemTypeEnum = { 
+  image: 'image',
+}

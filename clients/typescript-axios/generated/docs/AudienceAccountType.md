@@ -1,5 +1,6 @@
 # AudienceAccountType
 
+Account type filter for audience sharing.
 
 ## Enum
 

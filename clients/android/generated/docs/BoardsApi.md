@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## boardSectionsCreate
 
-> BoardSection boardSectionsCreate(boardId, boardSection, adAccountId)
+> BoardSection boardSectionsCreate(boardId, boardSectionCreate, adAccountId)
 
 Create board section
 
@@ -34,10 +34,10 @@ Create a board section on a board owned by the \&quot;operation user_account\&qu
 
 BoardsApi apiInstance = new BoardsApi();
 String boardId = null; // String | Unique identifier of a board.
-BoardSection boardSection = new BoardSection(); // BoardSection | Create a board section.
+BoardSectionCreate boardSectionCreate = new BoardSectionCreate(); // BoardSectionCreate | 
 String adAccountId = null; // String | Unique identifier of an ad account.
 try {
-    BoardSection result = apiInstance.boardSectionsCreate(boardId, boardSection, adAccountId);
+    BoardSection result = apiInstance.boardSectionsCreate(boardId, boardSectionCreate, adAccountId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BoardsApi#boardSectionsCreate");
@@ -51,7 +51,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **String**| Unique identifier of a board. | [default to null]
- **boardSection** | [**BoardSection**](BoardSection.md)| Create a board section. |
+ **boardSectionCreate** | [**BoardSectionCreate**](BoardSectionCreate.md)|  |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ## boardSectionsDelete
 
-> boardSectionsDelete(boardId, sectionId, adAccountId)
+> BoardSection boardSectionsDelete(boardId, sectionId, adAccountId)
 
 Delete board section
 
@@ -87,7 +87,8 @@ String boardId = null; // String | Unique identifier of a board.
 String sectionId = null; // String | Unique identifier of a board section.
 String adAccountId = null; // String | Unique identifier of an ad account.
 try {
-    apiInstance.boardSectionsDelete(boardId, sectionId, adAccountId);
+    BoardSection result = apiInstance.boardSectionsDelete(boardId, sectionId, adAccountId);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BoardsApi#boardSectionsDelete");
     e.printStackTrace();
@@ -105,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**BoardSection**](BoardSection.md)
 
 ### Authorization
 
@@ -135,7 +136,7 @@ BoardsApi apiInstance = new BoardsApi();
 String boardId = null; // String | Unique identifier of a board.
 String adAccountId = null; // String | Unique identifier of an ad account.
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
     BoardSectionsList200Response result = apiInstance.boardSectionsList(boardId, adAccountId, bookmark, pageSize);
     System.out.println(result);
@@ -153,7 +154,7 @@ Name | Type | Description  | Notes
  **boardId** | **String**| Unique identifier of a board. | [default to null]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -188,7 +189,7 @@ String boardId = null; // String | Unique identifier of a board.
 String sectionId = null; // String | Unique identifier of a board section.
 String adAccountId = null; // String | Unique identifier of an ad account.
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
     BoardsListPins200Response result = apiInstance.boardSectionsListPins(boardId, sectionId, adAccountId, bookmark, pageSize);
     System.out.println(result);
@@ -207,7 +208,7 @@ Name | Type | Description  | Notes
  **sectionId** | **String**| Unique identifier of a board section. | [default to null]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -225,7 +226,7 @@ Name | Type | Description  | Notes
 
 ## boardSectionsUpdate
 
-> BoardSection boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId)
+> BoardSection boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId)
 
 Update board section
 
@@ -240,10 +241,10 @@ Update a board section on a board owned by the \&quot;operation user_account\&qu
 BoardsApi apiInstance = new BoardsApi();
 String boardId = null; // String | Unique identifier of a board.
 String sectionId = null; // String | Unique identifier of a board section.
-BoardSection boardSection = new BoardSection(); // BoardSection | Update a board section.
+BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody = new BoardSectionUpdateWithRequiredBody(); // BoardSectionUpdateWithRequiredBody | 
 String adAccountId = null; // String | Unique identifier of an ad account.
 try {
-    BoardSection result = apiInstance.boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId);
+    BoardSection result = apiInstance.boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BoardsApi#boardSectionsUpdate");
@@ -258,7 +259,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **String**| Unique identifier of a board. | [default to null]
  **sectionId** | **String**| Unique identifier of a board section. | [default to null]
- **boardSection** | [**BoardSection**](BoardSection.md)| Update a board section. |
+ **boardSectionUpdateWithRequiredBody** | [**BoardSectionUpdateWithRequiredBody**](BoardSectionUpdateWithRequiredBody.md)|  |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -325,7 +326,7 @@ Name | Type | Description  | Notes
 
 ## boardsDelete
 
-> boardsDelete(boardId, adAccountId)
+> Board boardsDelete(boardId, adAccountId)
 
 Delete board
 
@@ -341,7 +342,8 @@ BoardsApi apiInstance = new BoardsApi();
 String boardId = null; // String | 
 String adAccountId = null; // String | Unique identifier of an ad account.
 try {
-    apiInstance.boardsDelete(boardId, adAccountId);
+    Board result = apiInstance.boardsDelete(boardId, adAccountId);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BoardsApi#boardsDelete");
     e.printStackTrace();
@@ -358,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**Board**](Board.md)
 
 ### Authorization
 
@@ -472,7 +474,7 @@ Name | Type | Description  | Notes
 
 ## boardsListPins
 
-> BoardsListPins200Response boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics)
+> BoardsListPins200Response boardsListPins(boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize)
 
 List Pins on board
 
@@ -486,13 +488,13 @@ Get a list of the Pins on a board owned by the \&quot;operation user_account\&qu
 
 BoardsApi apiInstance = new BoardsApi();
 String boardId = null; // String | Unique identifier of a board.
-String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 List<CreativeType> creativeTypes = null; // List<CreativeType> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 String adAccountId = null; // String | Unique identifier of an ad account.
 Boolean pinMetrics = false; // Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+String bookmark = null; // String | Cursor used to fetch the next page of items
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    BoardsListPins200Response result = apiInstance.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics);
+    BoardsListPins200Response result = apiInstance.boardsListPins(boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BoardsApi#boardsListPins");
@@ -506,11 +508,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **String**| Unique identifier of a board. | [default to null]
- **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **creativeTypes** | [**List&lt;CreativeType&gt;**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [default to null]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
  **pinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
+ **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

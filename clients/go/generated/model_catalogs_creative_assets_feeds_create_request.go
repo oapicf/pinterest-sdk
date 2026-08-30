@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,16 +22,16 @@ var _ MappedNullable = &CatalogsCreativeAssetsFeedsCreateRequest{}
 
 // CatalogsCreativeAssetsFeedsCreateRequest Request object for creating a feed.
 type CatalogsCreativeAssetsFeedsCreateRequest struct {
-	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
-	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
-	CatalogType CatalogsType `json:"catalog_type"`
+	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\d+$"`
+	CatalogType string `json:"catalog_type"`
 	Credentials NullableCatalogsFeedCredentials `json:"credentials,omitempty"`
 	DefaultCountry Country `json:"default_country"`
 	DefaultCurrency NullableNullableCurrency `json:"default_currency,omitempty"`
-	DefaultLocale CatalogsFeedsCreateRequestDefaultLocale `json:"default_locale"`
+	DefaultLocale CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale `json:"default_locale"`
 	Format CatalogsFormat `json:"format"`
 	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	Location string `json:"location" validate:"regexp=^(http|https|ftp|sftp):\\/\\/"`
+	Location string `json:"location" validate:"regexp=^(http|https|ftp|sftp)://"`
 	// A human-friendly name associated to a given feed.
 	Name string `json:"name"`
 	PreferredProcessingSchedule NullableCatalogsFeedProcessingSchedule `json:"preferred_processing_schedule,omitempty"`
@@ -44,7 +44,7 @@ type _CatalogsCreativeAssetsFeedsCreateRequest CatalogsCreativeAssetsFeedsCreate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsCreativeAssetsFeedsCreateRequest(catalogType CatalogsType, defaultCountry Country, defaultLocale CatalogsFeedsCreateRequestDefaultLocale, format CatalogsFormat, location string, name string) *CatalogsCreativeAssetsFeedsCreateRequest {
+func NewCatalogsCreativeAssetsFeedsCreateRequest(catalogType string, defaultCountry Country, defaultLocale CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale, format CatalogsFormat, location string, name string) *CatalogsCreativeAssetsFeedsCreateRequest {
 	this := CatalogsCreativeAssetsFeedsCreateRequest{}
 	this.CatalogType = catalogType
 	this.DefaultCountry = defaultCountry
@@ -100,9 +100,9 @@ func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetCatalogId(v string) {
 }
 
 // GetCatalogType returns the CatalogType field value
-func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetCatalogType() CatalogsType {
+func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetCatalogType() string {
 	if o == nil {
-		var ret CatalogsType
+		var ret string
 		return ret
 	}
 
@@ -111,7 +111,7 @@ func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetCatalogType() CatalogsType
 
 // GetCatalogTypeOk returns a tuple with the CatalogType field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetCatalogTypeOk() (*CatalogsType, bool) {
+func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetCatalogTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -119,7 +119,7 @@ func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetCatalogTypeOk() (*Catalogs
 }
 
 // SetCatalogType sets field value
-func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetCatalogType(v CatalogsType) {
+func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetCatalogType(v string) {
 	o.CatalogType = v
 }
 
@@ -232,9 +232,9 @@ func (o *CatalogsCreativeAssetsFeedsCreateRequest) UnsetDefaultCurrency() {
 }
 
 // GetDefaultLocale returns the DefaultLocale field value
-func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultLocale() CatalogsFeedsCreateRequestDefaultLocale {
+func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultLocale() CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale {
 	if o == nil {
-		var ret CatalogsFeedsCreateRequestDefaultLocale
+		var ret CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
 		return ret
 	}
 
@@ -243,7 +243,7 @@ func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultLocale() CatalogsFe
 
 // GetDefaultLocaleOk returns a tuple with the DefaultLocale field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultLocaleOk() (*CatalogsFeedsCreateRequestDefaultLocale, bool) {
+func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultLocaleOk() (*CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -251,7 +251,7 @@ func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultLocaleOk() (*Catalo
 }
 
 // SetDefaultLocale sets field value
-func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetDefaultLocale(v CatalogsFeedsCreateRequestDefaultLocale) {
+func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetDefaultLocale(v CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale) {
 	o.DefaultLocale = v
 }
 

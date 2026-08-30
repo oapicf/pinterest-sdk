@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[AdResponse]**](AdResponse.md) |  | 
+**items** | [**List[Ad]**](Ad.md) |  | 
 
 ## Example
 

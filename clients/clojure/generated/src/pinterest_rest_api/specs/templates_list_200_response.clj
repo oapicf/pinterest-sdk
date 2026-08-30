@@ -1,7 +1,7 @@
 (ns pinterest-rest-api.specs.templates-list-200-response
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs.template-response :refer :all]
+            [pinterest-rest-api.specs.account-template :refer :all]
             )
   (:import (java.io File)))
 
@@ -9,7 +9,7 @@
 (def templates-list-200-response-data
   {
    (ds/opt :bookmark) string?
-   (ds/req :items) (s/coll-of template-response-spec)
+   (ds/req :items) (s/coll-of account-template-spec)
    })
 
 (def templates-list-200-response-spec

@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** |  | [optional] |
-| **items** | [**Array&lt;CatalogsProduct&gt;**](CatalogsProduct.md) | Pins |  |
+| **items** | [**Array&lt;CatalogsProduct&gt;**](CatalogsProduct.md) |  |  |
 
 ## Example
 

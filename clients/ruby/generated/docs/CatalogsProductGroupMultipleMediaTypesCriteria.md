@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **negated** | **Boolean** |  | [optional][default to false] |
+| **negated** | **Boolean** |  | [optional] |
 | **values** | [**Array&lt;MediaType&gt;**](MediaType.md) |  |  |
 
 ## Example

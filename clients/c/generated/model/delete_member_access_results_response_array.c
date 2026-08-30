@@ -12,18 +12,21 @@ static delete_member_access_results_response_array_t *delete_member_access_resul
     if (!delete_member_access_results_response_array_local_var) {
         return NULL;
     }
-    delete_member_access_results_response_array_local_var->items = items;
-
+    memset(delete_member_access_results_response_array_local_var, 0, sizeof(delete_member_access_results_response_array_t));
     delete_member_access_results_response_array_local_var->_library_owned = 1;
+    delete_member_access_results_response_array_local_var->items = items;
     return delete_member_access_results_response_array_local_var;
 }
 
 __attribute__((deprecated)) delete_member_access_results_response_array_t *delete_member_access_results_response_array_create(
     list_t *items
     ) {
-    return delete_member_access_results_response_array_create_internal (
+    delete_member_access_results_response_array_t *result = delete_member_access_results_response_array_create_internal (
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void delete_member_access_results_response_array_free(delete_member_access_results_response_array_t *delete_member_access_results_response_array) {
@@ -107,9 +110,14 @@ delete_member_access_results_response_array_t *delete_member_access_results_resp
     }
 
 
+
     delete_member_access_results_response_array_local_var = delete_member_access_results_response_array_create_internal (
         items ? itemsList : NULL
         );
+
+    if (!delete_member_access_results_response_array_local_var) {
+        goto end;
+    }
 
     return delete_member_access_results_response_array_local_var;
 end:

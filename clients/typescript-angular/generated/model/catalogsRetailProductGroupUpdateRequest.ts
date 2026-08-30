@@ -24,6 +24,9 @@ export interface CatalogsRetailProductGroupUpdateRequest {
     description?: string | null;
     filters?: CatalogsProductGroupFiltersRequest;
     locale?: CatalogsLocale;
+    /**
+     * Name of catalog product group
+     */
     name?: string;
 }
 export namespace CatalogsRetailProductGroupUpdateRequest {

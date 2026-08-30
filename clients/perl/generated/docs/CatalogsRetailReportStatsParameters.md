@@ -9,7 +9,7 @@ use WWW::OpenAPIClient::Object::CatalogsRetailReportStatsParameters;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | **string** |  | 
-**report** | [**CatalogsHotelReportStatsParametersReport**](CatalogsHotelReportStatsParametersReport.md) |  | 
+**report** | [**CatalogsRetailReportStatsParametersReport**](CatalogsRetailReportStatsParametersReport.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

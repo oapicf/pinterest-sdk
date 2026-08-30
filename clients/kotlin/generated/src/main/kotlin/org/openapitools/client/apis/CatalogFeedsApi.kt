@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -20,14 +28,14 @@ import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.CatalogsFeed
+import org.openapitools.client.models.CatalogsFeedCreateRequestSchema
 import org.openapitools.client.models.CatalogsFeedIngestion
+import org.openapitools.client.models.CatalogsFeedUpdateRequestSchema
 import org.openapitools.client.models.CatalogsItemValidationIssue
-import org.openapitools.client.models.Error
 import org.openapitools.client.models.FeedProcessingResultsList200Response
-import org.openapitools.client.models.FeedsCreateRequest
 import org.openapitools.client.models.FeedsList200Response
-import org.openapitools.client.models.FeedsUpdateRequest
 import org.openapitools.client.models.ItemsIssuesList200Response
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -49,18 +57,18 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * GET /catalogs/feeds/{feed_id}/processing_results
      * List feed processing results
-     * Fetch a feed processing results owned by the \&quot;operation user_account\&quot;. Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
-     * @param feedId Unique identifier of a feed
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * Fetch a feed processing results owned by the \&quot;operation user_account\&quot;. Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
+     * @param feedId Unique identifier of a feed.
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return FeedProcessingResultsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -70,8 +78,8 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun feedProcessingResultsList(feedId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, adAccountId: kotlin.String? = null) : FeedProcessingResultsList200Response {
-        val localVarResponse = feedProcessingResultsListWithHttpInfo(feedId = feedId, bookmark = bookmark, pageSize = pageSize, adAccountId = adAccountId)
+    fun feedProcessingResultsList(feedId: kotlin.String, adAccountId: kotlin.String? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : FeedProcessingResultsList200Response {
+        val localVarResponse = feedProcessingResultsListWithHttpInfo(feedId = feedId, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as FeedProcessingResultsList200Response
@@ -91,19 +99,19 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * GET /catalogs/feeds/{feed_id}/processing_results
      * List feed processing results
-     * Fetch a feed processing results owned by the \&quot;operation user_account\&quot;. Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
-     * @param feedId Unique identifier of a feed
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * Fetch a feed processing results owned by the \&quot;operation user_account\&quot;. Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
+     * @param feedId Unique identifier of a feed.
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<FeedProcessingResultsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun feedProcessingResultsListWithHttpInfo(feedId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, adAccountId: kotlin.String?) : ApiResponse<FeedProcessingResultsList200Response?> {
-        val localVariableConfig = feedProcessingResultsListRequestConfig(feedId = feedId, bookmark = bookmark, pageSize = pageSize, adAccountId = adAccountId)
+    fun feedProcessingResultsListWithHttpInfo(feedId: kotlin.String, adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<FeedProcessingResultsList200Response?> {
+        val localVariableConfig = feedProcessingResultsListRequestConfig(feedId = feedId, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, FeedProcessingResultsList200Response>(
             localVariableConfig
@@ -113,24 +121,24 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * To obtain the request config of the operation feedProcessingResultsList
      *
-     * @param feedId Unique identifier of a feed
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param feedId Unique identifier of a feed.
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun feedProcessingResultsListRequestConfig(feedId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
+    fun feedProcessingResultsListRequestConfig(feedId: kotlin.String, adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (adAccountId != null) {
+                    put("ad_account_id", listOf(adAccountId.toString()))
+                }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
                 }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
-                }
-                if (adAccountId != null) {
-                    put("ad_account_id", listOf(adAccountId.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -149,8 +157,8 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * POST /catalogs/feeds
      * Create feed
-     * Create a new feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * @param feedsCreateRequest Request object used to created a feed.
+     * Create a new feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * @param catalogsFeedCreateRequestSchema 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return CatalogsFeed
      * @throws IllegalStateException If the request is not correctly configured
@@ -161,8 +169,8 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun feedsCreate(feedsCreateRequest: FeedsCreateRequest, adAccountId: kotlin.String? = null) : CatalogsFeed {
-        val localVarResponse = feedsCreateWithHttpInfo(feedsCreateRequest = feedsCreateRequest, adAccountId = adAccountId)
+    fun feedsCreate(catalogsFeedCreateRequestSchema: CatalogsFeedCreateRequestSchema, adAccountId: kotlin.String? = null) : CatalogsFeed {
+        val localVarResponse = feedsCreateWithHttpInfo(catalogsFeedCreateRequestSchema = catalogsFeedCreateRequestSchema, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as CatalogsFeed
@@ -182,8 +190,8 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * POST /catalogs/feeds
      * Create feed
-     * Create a new feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * @param feedsCreateRequest Request object used to created a feed.
+     * Create a new feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * @param catalogsFeedCreateRequestSchema 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<CatalogsFeed?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -191,10 +199,10 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun feedsCreateWithHttpInfo(feedsCreateRequest: FeedsCreateRequest, adAccountId: kotlin.String?) : ApiResponse<CatalogsFeed?> {
-        val localVariableConfig = feedsCreateRequestConfig(feedsCreateRequest = feedsCreateRequest, adAccountId = adAccountId)
+    fun feedsCreateWithHttpInfo(catalogsFeedCreateRequestSchema: CatalogsFeedCreateRequestSchema, adAccountId: kotlin.String?) : ApiResponse<CatalogsFeed?> {
+        val localVariableConfig = feedsCreateRequestConfig(catalogsFeedCreateRequestSchema = catalogsFeedCreateRequestSchema, adAccountId = adAccountId)
 
-        return request<FeedsCreateRequest, CatalogsFeed>(
+        return request<CatalogsFeedCreateRequestSchema, CatalogsFeed>(
             localVariableConfig
         )
     }
@@ -202,12 +210,12 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * To obtain the request config of the operation feedsCreate
      *
-     * @param feedsCreateRequest Request object used to created a feed.
+     * @param catalogsFeedCreateRequestSchema 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun feedsCreateRequestConfig(feedsCreateRequest: FeedsCreateRequest, adAccountId: kotlin.String?) : RequestConfig<FeedsCreateRequest> {
-        val localVariableBody = feedsCreateRequest
+    fun feedsCreateRequestConfig(catalogsFeedCreateRequestSchema: CatalogsFeedCreateRequestSchema, adAccountId: kotlin.String?) : RequestConfig<CatalogsFeedCreateRequestSchema> {
+        val localVariableBody = catalogsFeedCreateRequestSchema
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (adAccountId != null) {
@@ -231,22 +239,23 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * DELETE /catalogs/feeds/{feed_id}
      * Delete feed
-     * Delete a feed owned by the \&quot;operating user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.
-     * @param feedId Unique identifier of a feed
+     * Delete a feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
+     * @param feedId Unique identifier of a feed.
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return void
+     * @return CatalogsFeed
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun feedsDelete(feedId: kotlin.String, adAccountId: kotlin.String? = null) : Unit {
+    fun feedsDelete(feedId: kotlin.String, adAccountId: kotlin.String? = null) : CatalogsFeed {
         val localVarResponse = feedsDeleteWithHttpInfo(feedId = feedId, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as CatalogsFeed
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -263,18 +272,19 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * DELETE /catalogs/feeds/{feed_id}
      * Delete feed
-     * Delete a feed owned by the \&quot;operating user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.
-     * @param feedId Unique identifier of a feed
+     * Delete a feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
+     * @param feedId Unique identifier of a feed.
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<CatalogsFeed?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun feedsDeleteWithHttpInfo(feedId: kotlin.String, adAccountId: kotlin.String?) : ApiResponse<Unit?> {
+    fun feedsDeleteWithHttpInfo(feedId: kotlin.String, adAccountId: kotlin.String?) : ApiResponse<CatalogsFeed?> {
         val localVariableConfig = feedsDeleteRequestConfig(feedId = feedId, adAccountId = adAccountId)
 
-        return request<Unit, Unit>(
+        return request<Unit, CatalogsFeed>(
             localVariableConfig
         )
     }
@@ -282,7 +292,7 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * To obtain the request config of the operation feedsDelete
      *
-     * @param feedId Unique identifier of a feed
+     * @param feedId Unique identifier of a feed.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
@@ -310,8 +320,8 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * GET /catalogs/feeds/{feed_id}
      * Get feed
-     * Get a single feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.
-     * @param feedId Unique identifier of a feed
+     * Get a single feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
+     * @param feedId Unique identifier of a feed.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return CatalogsFeed
      * @throws IllegalStateException If the request is not correctly configured
@@ -343,8 +353,8 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * GET /catalogs/feeds/{feed_id}
      * Get feed
-     * Get a single feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.
-     * @param feedId Unique identifier of a feed
+     * Get a single feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
+     * @param feedId Unique identifier of a feed.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<CatalogsFeed?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -363,7 +373,7 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * To obtain the request config of the operation feedsGet
      *
-     * @param feedId Unique identifier of a feed
+     * @param feedId Unique identifier of a feed.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
@@ -391,8 +401,8 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * POST /catalogs/feeds/{feed_id}/ingest
      * Ingest feed items
-     * Ingest items for a given feed owned by the \&quot;operation user_account\&quot;.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * @param feedId Unique identifier of a feed
+     * Ingest items for a given feed owned by the \&quot;operation user_account\&quot;.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * @param feedId Unique identifier of a feed.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return CatalogsFeedIngestion
      * @throws IllegalStateException If the request is not correctly configured
@@ -424,8 +434,8 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * POST /catalogs/feeds/{feed_id}/ingest
      * Ingest feed items
-     * Ingest items for a given feed owned by the \&quot;operation user_account\&quot;.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * @param feedId Unique identifier of a feed
+     * Ingest items for a given feed owned by the \&quot;operation user_account\&quot;.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * @param feedId Unique identifier of a feed.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<CatalogsFeedIngestion?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -444,7 +454,7 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * To obtain the request config of the operation feedsIngest
      *
-     * @param feedId Unique identifier of a feed
+     * @param feedId Unique identifier of a feed.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
@@ -472,11 +482,11 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * GET /catalogs/feeds
      * List feeds
-     * Fetch feeds owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * Fetch feeds owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
      * @param catalogId Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return FeedsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -486,8 +496,8 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun feedsList(bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, catalogId: kotlin.String? = null, adAccountId: kotlin.String? = null) : FeedsList200Response {
-        val localVarResponse = feedsListWithHttpInfo(bookmark = bookmark, pageSize = pageSize, catalogId = catalogId, adAccountId = adAccountId)
+    fun feedsList(catalogId: kotlin.String? = null, adAccountId: kotlin.String? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : FeedsList200Response {
+        val localVarResponse = feedsListWithHttpInfo(catalogId = catalogId, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as FeedsList200Response
@@ -507,19 +517,19 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * GET /catalogs/feeds
      * List feeds
-     * Fetch feeds owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * Fetch feeds owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
      * @param catalogId Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<FeedsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun feedsListWithHttpInfo(bookmark: kotlin.String?, pageSize: kotlin.Int?, catalogId: kotlin.String?, adAccountId: kotlin.String?) : ApiResponse<FeedsList200Response?> {
-        val localVariableConfig = feedsListRequestConfig(bookmark = bookmark, pageSize = pageSize, catalogId = catalogId, adAccountId = adAccountId)
+    fun feedsListWithHttpInfo(catalogId: kotlin.String?, adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<FeedsList200Response?> {
+        val localVariableConfig = feedsListRequestConfig(catalogId = catalogId, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, FeedsList200Response>(
             localVariableConfig
@@ -529,27 +539,27 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * To obtain the request config of the operation feedsList
      *
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param catalogId Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun feedsListRequestConfig(bookmark: kotlin.String?, pageSize: kotlin.Int?, catalogId: kotlin.String?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
+    fun feedsListRequestConfig(catalogId: kotlin.String?, adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (bookmark != null) {
-                    put("bookmark", listOf(bookmark.toString()))
-                }
-                if (pageSize != null) {
-                    put("page_size", listOf(pageSize.toString()))
-                }
                 if (catalogId != null) {
                     put("catalog_id", listOf(catalogId.toString()))
                 }
                 if (adAccountId != null) {
                     put("ad_account_id", listOf(adAccountId.toString()))
+                }
+                if (bookmark != null) {
+                    put("bookmark", listOf(bookmark.toString()))
+                }
+                if (pageSize != null) {
+                    put("page_size", listOf(pageSize.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -568,9 +578,9 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * PATCH /catalogs/feeds/{feed_id}
      * Update feed
-     * Update a feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * @param feedId Unique identifier of a feed
-     * @param feedsUpdateRequest Request object used to update a feed.
+     * Update a feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * @param feedId Unique identifier of a feed.
+     * @param catalogsFeedUpdateRequestSchema 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return CatalogsFeed
      * @throws IllegalStateException If the request is not correctly configured
@@ -581,8 +591,8 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun feedsUpdate(feedId: kotlin.String, feedsUpdateRequest: FeedsUpdateRequest, adAccountId: kotlin.String? = null) : CatalogsFeed {
-        val localVarResponse = feedsUpdateWithHttpInfo(feedId = feedId, feedsUpdateRequest = feedsUpdateRequest, adAccountId = adAccountId)
+    fun feedsUpdate(feedId: kotlin.String, catalogsFeedUpdateRequestSchema: CatalogsFeedUpdateRequestSchema, adAccountId: kotlin.String? = null) : CatalogsFeed {
+        val localVarResponse = feedsUpdateWithHttpInfo(feedId = feedId, catalogsFeedUpdateRequestSchema = catalogsFeedUpdateRequestSchema, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as CatalogsFeed
@@ -602,9 +612,9 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * PATCH /catalogs/feeds/{feed_id}
      * Update feed
-     * Update a feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * @param feedId Unique identifier of a feed
-     * @param feedsUpdateRequest Request object used to update a feed.
+     * Update a feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * @param feedId Unique identifier of a feed.
+     * @param catalogsFeedUpdateRequestSchema 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<CatalogsFeed?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -612,10 +622,10 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun feedsUpdateWithHttpInfo(feedId: kotlin.String, feedsUpdateRequest: FeedsUpdateRequest, adAccountId: kotlin.String?) : ApiResponse<CatalogsFeed?> {
-        val localVariableConfig = feedsUpdateRequestConfig(feedId = feedId, feedsUpdateRequest = feedsUpdateRequest, adAccountId = adAccountId)
+    fun feedsUpdateWithHttpInfo(feedId: kotlin.String, catalogsFeedUpdateRequestSchema: CatalogsFeedUpdateRequestSchema, adAccountId: kotlin.String?) : ApiResponse<CatalogsFeed?> {
+        val localVariableConfig = feedsUpdateRequestConfig(feedId = feedId, catalogsFeedUpdateRequestSchema = catalogsFeedUpdateRequestSchema, adAccountId = adAccountId)
 
-        return request<FeedsUpdateRequest, CatalogsFeed>(
+        return request<CatalogsFeedUpdateRequestSchema, CatalogsFeed>(
             localVariableConfig
         )
     }
@@ -623,13 +633,13 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * To obtain the request config of the operation feedsUpdate
      *
-     * @param feedId Unique identifier of a feed
-     * @param feedsUpdateRequest Request object used to update a feed.
+     * @param feedId Unique identifier of a feed.
+     * @param catalogsFeedUpdateRequestSchema 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun feedsUpdateRequestConfig(feedId: kotlin.String, feedsUpdateRequest: FeedsUpdateRequest, adAccountId: kotlin.String?) : RequestConfig<FeedsUpdateRequest> {
-        val localVariableBody = feedsUpdateRequest
+    fun feedsUpdateRequestConfig(feedId: kotlin.String, catalogsFeedUpdateRequestSchema: CatalogsFeedUpdateRequestSchema, adAccountId: kotlin.String?) : RequestConfig<CatalogsFeedUpdateRequestSchema> {
+        val localVariableBody = catalogsFeedUpdateRequestSchema
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (adAccountId != null) {
@@ -653,13 +663,13 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * GET /catalogs/processing_results/{processing_result_id}/item_issues
      * List item issues
-     * List item validation issues for a given feed processing result owned by the \&quot;operation user_account\&quot;. Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters &#39;item_numbers&#39; and &#39;item_validation_issue&#39; cannot be used simultaneously until it is implemented in some release in the future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to &lt;a href&#x3D;&#39;/docs/api/v5/#operation/reports/create&#39;&gt;Build catalogs report&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api/v5/#operation/reports/get&#39;&gt;Get catalogs report&lt;/a&gt; endpoints. Moreover, they support multiple types of catalogs.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * List item validation issues for a given feed processing result owned by the \&quot;operation user_account\&quot;. Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters &#39;item_numbers&#39; and &#39;item_validation_issue&#39; cannot be used simultaneously until it is implemented in some release in the future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to [Build catalogs report](/docs/api/v5/#operation/reports/create) and [Get catalogs report](/docs/api/v5/#operation/reports/get) endpoints. Moreover, they support multiple types of catalogs.  [Learn more](/docs/api-features/shopping-overview/)
      * @param processingResultId Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param itemNumbers Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation. (optional)
      * @param itemValidationIssue Filter item validation issues that have a given type of item validation issue. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ItemsIssuesList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -669,8 +679,8 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun itemsIssuesList(processingResultId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, itemNumbers: kotlin.collections.List<kotlin.Int>? = null, itemValidationIssue: CatalogsItemValidationIssue? = null, adAccountId: kotlin.String? = null) : ItemsIssuesList200Response {
-        val localVarResponse = itemsIssuesListWithHttpInfo(processingResultId = processingResultId, bookmark = bookmark, pageSize = pageSize, itemNumbers = itemNumbers, itemValidationIssue = itemValidationIssue, adAccountId = adAccountId)
+    fun itemsIssuesList(processingResultId: kotlin.String, itemNumbers: kotlin.collections.List<kotlin.Int>? = null, itemValidationIssue: CatalogsItemValidationIssue? = null, adAccountId: kotlin.String? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : ItemsIssuesList200Response {
+        val localVarResponse = itemsIssuesListWithHttpInfo(processingResultId = processingResultId, itemNumbers = itemNumbers, itemValidationIssue = itemValidationIssue, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ItemsIssuesList200Response
@@ -690,21 +700,21 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * GET /catalogs/processing_results/{processing_result_id}/item_issues
      * List item issues
-     * List item validation issues for a given feed processing result owned by the \&quot;operation user_account\&quot;. Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters &#39;item_numbers&#39; and &#39;item_validation_issue&#39; cannot be used simultaneously until it is implemented in some release in the future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to &lt;a href&#x3D;&#39;/docs/api/v5/#operation/reports/create&#39;&gt;Build catalogs report&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api/v5/#operation/reports/get&#39;&gt;Get catalogs report&lt;/a&gt; endpoints. Moreover, they support multiple types of catalogs.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * List item validation issues for a given feed processing result owned by the \&quot;operation user_account\&quot;. Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters &#39;item_numbers&#39; and &#39;item_validation_issue&#39; cannot be used simultaneously until it is implemented in some release in the future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to [Build catalogs report](/docs/api/v5/#operation/reports/create) and [Get catalogs report](/docs/api/v5/#operation/reports/get) endpoints. Moreover, they support multiple types of catalogs.  [Learn more](/docs/api-features/shopping-overview/)
      * @param processingResultId Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param itemNumbers Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation. (optional)
      * @param itemValidationIssue Filter item validation issues that have a given type of item validation issue. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<ItemsIssuesList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun itemsIssuesListWithHttpInfo(processingResultId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, itemNumbers: kotlin.collections.List<kotlin.Int>?, itemValidationIssue: CatalogsItemValidationIssue?, adAccountId: kotlin.String?) : ApiResponse<ItemsIssuesList200Response?> {
-        val localVariableConfig = itemsIssuesListRequestConfig(processingResultId = processingResultId, bookmark = bookmark, pageSize = pageSize, itemNumbers = itemNumbers, itemValidationIssue = itemValidationIssue, adAccountId = adAccountId)
+    fun itemsIssuesListWithHttpInfo(processingResultId: kotlin.String, itemNumbers: kotlin.collections.List<kotlin.Int>?, itemValidationIssue: CatalogsItemValidationIssue?, adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<ItemsIssuesList200Response?> {
+        val localVariableConfig = itemsIssuesListRequestConfig(processingResultId = processingResultId, itemNumbers = itemNumbers, itemValidationIssue = itemValidationIssue, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, ItemsIssuesList200Response>(
             localVariableConfig
@@ -715,23 +725,17 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * To obtain the request config of the operation itemsIssuesList
      *
      * @param processingResultId Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param itemNumbers Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation. (optional)
      * @param itemValidationIssue Filter item validation issues that have a given type of item validation issue. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun itemsIssuesListRequestConfig(processingResultId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, itemNumbers: kotlin.collections.List<kotlin.Int>?, itemValidationIssue: CatalogsItemValidationIssue?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
+    fun itemsIssuesListRequestConfig(processingResultId: kotlin.String, itemNumbers: kotlin.collections.List<kotlin.Int>?, itemValidationIssue: CatalogsItemValidationIssue?, adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (bookmark != null) {
-                    put("bookmark", listOf(bookmark.toString()))
-                }
-                if (pageSize != null) {
-                    put("page_size", listOf(pageSize.toString()))
-                }
                 if (itemNumbers != null) {
                     put("item_numbers", toMultiValue(itemNumbers.toList(), "multi"))
                 }
@@ -740,6 +744,12 @@ open class CatalogFeedsApi(basePath: kotlin.String = defaultBasePath, client: Ca
                 }
                 if (adAccountId != null) {
                     put("ad_account_id", listOf(adAccountId.toString()))
+                }
+                if (bookmark != null) {
+                    put("bookmark", listOf(bookmark.toString()))
+                }
+                if (pageSize != null) {
+                    put("page_size", listOf(pageSize.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

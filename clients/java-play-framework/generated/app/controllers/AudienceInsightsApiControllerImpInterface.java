@@ -1,9 +1,9 @@
 package controllers;
 
-import apimodels.AudienceDefinitionResponse;
 import apimodels.AudienceInsightType;
-import apimodels.AudienceInsightsResponse;
-import apimodels.Error;
+import apimodels.AudienceInsights;
+import apimodels.AudienceInsightsScopeAndTypeGet200Response;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -35,7 +35,7 @@ public abstract class AudienceInsightsApiControllerImpInterface {
             return unauthorized();
         }
 
-        AudienceInsightsResponse obj = audienceInsightsGet(request, adAccountId, audienceInsightType);
+        AudienceInsights obj = audienceInsightsGet(request, adAccountId, audienceInsightType);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -47,14 +47,14 @@ public abstract class AudienceInsightsApiControllerImpInterface {
 
     }
 
-    public abstract AudienceInsightsResponse audienceInsightsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull AudienceInsightType audienceInsightType) throws Exception;
+    public abstract AudienceInsights audienceInsightsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull AudienceInsightType audienceInsightType) throws Exception;
 
     public Result audienceInsightsScopeAndTypeGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        AudienceDefinitionResponse obj = audienceInsightsScopeAndTypeGet(request, adAccountId);
+        AudienceInsightsScopeAndTypeGet200Response obj = audienceInsightsScopeAndTypeGet(request, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -66,6 +66,6 @@ public abstract class AudienceInsightsApiControllerImpInterface {
 
     }
 
-    public abstract AudienceDefinitionResponse audienceInsightsScopeAndTypeGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract AudienceInsightsScopeAndTypeGet200Response audienceInsightsScopeAndTypeGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
 }

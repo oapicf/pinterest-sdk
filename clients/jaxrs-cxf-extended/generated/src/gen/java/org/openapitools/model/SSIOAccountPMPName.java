@@ -8,6 +8,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
+/**
+ * Pinterest marketing partner name.
+ */
+@ApiModel(description="Pinterest marketing partner name.")
+
 public class SSIOAccountPMPName  {
   
  /**
@@ -104,10 +109,7 @@ public class SSIOAccountPMPName  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

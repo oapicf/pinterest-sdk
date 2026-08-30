@@ -21,9 +21,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class S3FilePart(
 
     @Schema(example = "1", required = true, description = "Part number for upload.")
+    @param:JsonProperty("part_number")
     @get:JsonProperty("part_number", required = true) val partNumber: kotlin.Int,
 
-    @Schema(example = "null", required = true, description = "Pre-signed URL.")
+    @Schema(required = true, description = "Pre-signed URL.")
+    @param:JsonProperty("presigned_url")
     @get:JsonProperty("presigned_url", required = true) val presignedUrl: kotlin.String
 ) {
 

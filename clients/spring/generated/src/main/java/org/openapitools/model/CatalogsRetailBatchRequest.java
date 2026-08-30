@@ -2,13 +2,14 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CatalogsRetailBatchRequestItemsInner;
+import org.openapitools.model.CatalogsRetailBatchRequestItemsItems;
 import org.openapitools.model.Country;
 import org.springframework.lang.Nullable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -16,22 +17,23 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * A request object that can have multiple operations on a single retail batch
  */
 
 @Schema(name = "CatalogsRetailBatchRequest", description = "A request object that can have multiple operations on a single retail batch")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String catalogId;
 
   /**
@@ -71,8 +73,7 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
 
   private Country country;
 
-  @Valid
-  private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
+  private List<@Valid CatalogsRetailBatchRequestItemsItems> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -256,7 +257,7 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
     
     NL2("NL"),
     
-    NO("NO"),
+    FALSE("false"),
     
     PL("PL"),
     
@@ -328,7 +329,7 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailBatchRequest(CatalogTypeEnum catalogType, Country country, List<CatalogsRetailBatchRequestItemsInner> items, LanguageEnum language) {
+  public CatalogsRetailBatchRequest(CatalogTypeEnum catalogType, Country country, List<@Valid CatalogsRetailBatchRequestItemsItems> items, LanguageEnum language) {
     this.catalogType = catalogType;
     this.country = country;
     this.items = items;
@@ -351,6 +352,7 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
     return catalogId;
   }
 
+  @JsonProperty("catalog_id")
   public void setCatalogId(@Nullable String catalogId) {
     this.catalogId = catalogId;
   }
@@ -371,6 +373,7 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
     return catalogType;
   }
 
+  @JsonProperty("catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -391,16 +394,17 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
     return country;
   }
 
+  @JsonProperty("country")
   public void setCountry(Country country) {
     this.country = country;
   }
 
-  public CatalogsRetailBatchRequest items(List<CatalogsRetailBatchRequestItemsInner> items) {
+  public CatalogsRetailBatchRequest items(List<@Valid CatalogsRetailBatchRequestItemsItems> items) {
     this.items = items;
     return this;
   }
 
-  public CatalogsRetailBatchRequest addItemsItem(CatalogsRetailBatchRequestItemsInner itemsItem) {
+  public CatalogsRetailBatchRequest addItemsItem(CatalogsRetailBatchRequestItemsItems itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -415,11 +419,12 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
   @NotNull @Valid @Size(min = 1, max = 1000) 
   @Schema(name = "items", description = "Array with catalogs item operations", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
-  public List<CatalogsRetailBatchRequestItemsInner> getItems() {
+  public List<@Valid CatalogsRetailBatchRequestItemsItems> getItems() {
     return items;
   }
 
-  public void setItems(List<CatalogsRetailBatchRequestItemsInner> items) {
+  @JsonProperty("items")
+  public void setItems(List<@Valid CatalogsRetailBatchRequestItemsItems> items) {
     this.items = items;
   }
 
@@ -439,6 +444,7 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
     return language;
   }
 
+  @JsonProperty("language")
   public void setLanguage(LanguageEnum language) {
     this.language = language;
   }
@@ -481,11 +487,8 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

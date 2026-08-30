@@ -61,9 +61,32 @@ TitleKeywordsFilter <- R6::R6Class(
       TitleKeywordsFilterObject <- list()
       if (!is.null(self$`TITLE_KEYWORDS`)) {
         TitleKeywordsFilterObject[["TITLE_KEYWORDS"]] <-
-          self$`TITLE_KEYWORDS`$toSimpleType()
+          self$extractSimpleType(self$`TITLE_KEYWORDS`)
       }
       return(TitleKeywordsFilterObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

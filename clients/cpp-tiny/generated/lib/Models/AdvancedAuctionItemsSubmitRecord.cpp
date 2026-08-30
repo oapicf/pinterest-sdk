@@ -6,12 +6,12 @@ using namespace Tiny;
 
 AdvancedAuctionItemsSubmitRecord::AdvancedAuctionItemsSubmitRecord()
 {
-	operation = AdvancedAuctionOperation();
+	bid_options = AdvancedAuctionBidOptions();
 	country = Country();
+	errors = std::list<AdvancedAuctionOperationError>();
 	item_id = std::string();
 	language = Language();
-	bid_options = AdvancedAuctionBidOptions();
-	errors = std::list<AdvancedAuctionOperationError>();
+	operation = std::string();
 	update_mask = std::list<UpdateMaskBidOptionField>();
 }
 
@@ -30,16 +30,16 @@ AdvancedAuctionItemsSubmitRecord::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
-    const char *operationKey = "operation";
+    const char *bid_optionsKey = "bid_options";
 
-    if(object.has_key(operationKey))
+    if(object.has_key(bid_optionsKey))
     {
-        bourne::json value = object[operationKey];
+        bourne::json value = object[bid_optionsKey];
 
 
 
 
-        AdvancedAuctionOperation* obj = &operation;
+        AdvancedAuctionBidOptions* obj = &bid_options;
 		obj->fromJson(value.dump());
 
     }
@@ -55,6 +55,28 @@ AdvancedAuctionItemsSubmitRecord::fromJson(std::string jsonObj)
 
         Country* obj = &country;
 		obj->fromJson(value.dump());
+
+    }
+
+    const char *errorsKey = "errors";
+
+    if(object.has_key(errorsKey))
+    {
+        bourne::json value = object[errorsKey];
+
+
+        std::list<AdvancedAuctionOperationError> errors_list;
+        AdvancedAuctionOperationError element;
+        for(auto& var : value.array_range())
+        {
+
+
+            element.fromJson(var.dump());
+
+            errors_list.push_back(element);
+        }
+        errors = errors_list;
+
 
     }
 
@@ -85,38 +107,15 @@ AdvancedAuctionItemsSubmitRecord::fromJson(std::string jsonObj)
 
     }
 
-    const char *bid_optionsKey = "bid_options";
+    const char *operationKey = "operation";
 
-    if(object.has_key(bid_optionsKey))
+    if(object.has_key(operationKey))
     {
-        bourne::json value = object[bid_optionsKey];
+        bourne::json value = object[operationKey];
 
 
 
-
-        AdvancedAuctionBidOptions* obj = &bid_options;
-		obj->fromJson(value.dump());
-
-    }
-
-    const char *errorsKey = "errors";
-
-    if(object.has_key(errorsKey))
-    {
-        bourne::json value = object[errorsKey];
-
-
-        std::list<AdvancedAuctionOperationError> errors_list;
-        AdvancedAuctionOperationError element;
-        for(auto& var : value.array_range())
-        {
-
-
-            element.fromJson(var.dump());
-
-            errors_list.push_back(element);
-        }
-        errors = errors_list;
+        jsonToValue(&operation, value, "std::string");
 
 
     }
@@ -156,7 +155,7 @@ AdvancedAuctionItemsSubmitRecord::toJson()
 
 
 
-	object["operation"] = getOperation().toJson();
+	object["bid_options"] = getBidOptions().toJson();
 
 
 
@@ -164,6 +163,21 @@ AdvancedAuctionItemsSubmitRecord::toJson()
 
 
 	object["country"] = getCountry().toJson();
+
+
+
+
+    std::list<AdvancedAuctionOperationError> errors_list = getErrors();
+    bourne::json errors_arr = bourne::json::array();
+
+    for(auto& var : errors_list)
+    {
+        AdvancedAuctionOperationError obj = var;
+        errors_arr.append(obj.toJson());
+    }
+    object["errors"] = errors_arr;
+
+
 
 
 
@@ -183,22 +197,7 @@ AdvancedAuctionItemsSubmitRecord::toJson()
 
 
 
-
-	object["bid_options"] = getBidOptions().toJson();
-
-
-
-
-    std::list<AdvancedAuctionOperationError> errors_list = getErrors();
-    bourne::json errors_arr = bourne::json::array();
-
-    for(auto& var : errors_list)
-    {
-        AdvancedAuctionOperationError obj = var;
-        errors_arr.append(obj.toJson());
-    }
-    object["errors"] = errors_arr;
-
+    object["operation"] = getOperation();
 
 
 
@@ -221,16 +220,16 @@ AdvancedAuctionItemsSubmitRecord::toJson()
 
 }
 
-AdvancedAuctionOperation
-AdvancedAuctionItemsSubmitRecord::getOperation()
+AdvancedAuctionBidOptions
+AdvancedAuctionItemsSubmitRecord::getBidOptions()
 {
-	return operation;
+	return bid_options;
 }
 
 void
-AdvancedAuctionItemsSubmitRecord::setOperation(AdvancedAuctionOperation  operation)
+AdvancedAuctionItemsSubmitRecord::setBidOptions(AdvancedAuctionBidOptions bid_options)
 {
-	this->operation = operation;
+	this->bid_options = bid_options;
 }
 
 Country
@@ -240,9 +239,21 @@ AdvancedAuctionItemsSubmitRecord::getCountry()
 }
 
 void
-AdvancedAuctionItemsSubmitRecord::setCountry(Country  country)
+AdvancedAuctionItemsSubmitRecord::setCountry(Country country)
 {
 	this->country = country;
+}
+
+std::list<AdvancedAuctionOperationError>
+AdvancedAuctionItemsSubmitRecord::getErrors()
+{
+	return errors;
+}
+
+void
+AdvancedAuctionItemsSubmitRecord::setErrors(std::list<AdvancedAuctionOperationError> errors)
+{
+	this->errors = errors;
 }
 
 std::string
@@ -252,7 +263,7 @@ AdvancedAuctionItemsSubmitRecord::getItemId()
 }
 
 void
-AdvancedAuctionItemsSubmitRecord::setItemId(std::string  item_id)
+AdvancedAuctionItemsSubmitRecord::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
 }
@@ -264,33 +275,21 @@ AdvancedAuctionItemsSubmitRecord::getLanguage()
 }
 
 void
-AdvancedAuctionItemsSubmitRecord::setLanguage(Language  language)
+AdvancedAuctionItemsSubmitRecord::setLanguage(Language language)
 {
 	this->language = language;
 }
 
-AdvancedAuctionBidOptions
-AdvancedAuctionItemsSubmitRecord::getBidOptions()
+std::string
+AdvancedAuctionItemsSubmitRecord::getOperation()
 {
-	return bid_options;
+	return operation;
 }
 
 void
-AdvancedAuctionItemsSubmitRecord::setBidOptions(AdvancedAuctionBidOptions  bid_options)
+AdvancedAuctionItemsSubmitRecord::setOperation(std::string operation)
 {
-	this->bid_options = bid_options;
-}
-
-std::list<AdvancedAuctionOperationError>
-AdvancedAuctionItemsSubmitRecord::getErrors()
-{
-	return errors;
-}
-
-void
-AdvancedAuctionItemsSubmitRecord::setErrors(std::list <AdvancedAuctionOperationError> errors)
-{
-	this->errors = errors;
+	this->operation = operation;
 }
 
 std::list<UpdateMaskBidOptionField>
@@ -300,7 +299,7 @@ AdvancedAuctionItemsSubmitRecord::getUpdateMask()
 }
 
 void
-AdvancedAuctionItemsSubmitRecord::setUpdateMask(std::list <UpdateMaskBidOptionField> update_mask)
+AdvancedAuctionItemsSubmitRecord::setUpdateMask(std::list<UpdateMaskBidOptionField> update_mask)
 {
 	this->update_mask = update_mask;
 }

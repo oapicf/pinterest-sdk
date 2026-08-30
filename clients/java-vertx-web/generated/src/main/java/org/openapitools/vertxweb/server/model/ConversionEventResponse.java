@@ -13,16 +13,18 @@ public class ConversionEventResponse   {
   private ConversionTagType conversionEvent;
   private String conversionTagId;
   private Integer createdTime;
+  private String reportingConversionEvent;
 
   public ConversionEventResponse () {
 
   }
 
-  public ConversionEventResponse (String adAccountId, ConversionTagType conversionEvent, String conversionTagId, Integer createdTime) {
+  public ConversionEventResponse (String adAccountId, ConversionTagType conversionEvent, String conversionTagId, Integer createdTime, String reportingConversionEvent) {
     this.adAccountId = adAccountId;
     this.conversionEvent = conversionEvent;
     this.conversionTagId = conversionTagId;
     this.createdTime = createdTime;
+    this.reportingConversionEvent = reportingConversionEvent;
   }
 
     
@@ -61,6 +63,15 @@ public class ConversionEventResponse   {
     this.createdTime = createdTime;
   }
 
+    
+  @JsonProperty("reporting_conversion_event")
+  public String getReportingConversionEvent() {
+    return reportingConversionEvent;
+  }
+  public void setReportingConversionEvent(String reportingConversionEvent) {
+    this.reportingConversionEvent = reportingConversionEvent;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -74,12 +85,13 @@ public class ConversionEventResponse   {
     return Objects.equals(adAccountId, conversionEventResponse.adAccountId) &&
         Objects.equals(conversionEvent, conversionEventResponse.conversionEvent) &&
         Objects.equals(conversionTagId, conversionEventResponse.conversionTagId) &&
-        Objects.equals(createdTime, conversionEventResponse.createdTime);
+        Objects.equals(createdTime, conversionEventResponse.createdTime) &&
+        Objects.equals(reportingConversionEvent, conversionEventResponse.reportingConversionEvent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime);
+    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime, reportingConversionEvent);
   }
 
   @Override
@@ -91,6 +103,7 @@ public class ConversionEventResponse   {
     sb.append("    conversionEvent: ").append(toIndentedString(conversionEvent)).append("\n");
     sb.append("    conversionTagId: ").append(toIndentedString(conversionTagId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    reportingConversionEvent: ").append(toIndentedString(reportingConversionEvent)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -100,9 +113,6 @@ public class ConversionEventResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

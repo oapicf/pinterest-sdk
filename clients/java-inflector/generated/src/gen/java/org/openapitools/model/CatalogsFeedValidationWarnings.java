@@ -3,7 +3,6 @@ package org.openapitools.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -11,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedValidationWarnings   {
   @JsonProperty("AD_IMAGE_0_LINK_DUPLICATED")
   private Integer AD_IMAGE_0_LINK_DUPLICATED;
@@ -538,37 +537,8 @@ public class CatalogsFeedValidationWarnings   {
   @JsonProperty("EXPIRATION_DATE_INVALID")
   private Integer EXPIRATION_DATE_INVALID;
 
-  /**
-   * Ingestion completed early because there are no changes to your feed since the last successful update.
-   */
-  public enum FETCHSAMESIGNATUREEnum {
-    NUMBER_1(1);
-
-    private Integer value;
-
-    FETCHSAMESIGNATUREEnum(Integer value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FETCHSAMESIGNATUREEnum fromValue(String text) {
-      for (FETCHSAMESIGNATUREEnum b : FETCHSAMESIGNATUREEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
   @JsonProperty("FETCH_SAME_SIGNATURE")
-  private FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE;
+  private Integer FETCH_SAME_SIGNATURE;
 
   @JsonProperty("GENDER_INVALID")
   private Integer GENDER_INVALID;
@@ -3828,7 +3798,7 @@ public class CatalogsFeedValidationWarnings   {
   /**
    * Ingestion completed early because there are no changes to your feed since the last successful update.
    **/
-  public CatalogsFeedValidationWarnings FETCH_SAME_SIGNATURE(FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
+  public CatalogsFeedValidationWarnings FETCH_SAME_SIGNATURE(Integer FETCH_SAME_SIGNATURE) {
     this.FETCH_SAME_SIGNATURE = FETCH_SAME_SIGNATURE;
     return this;
   }
@@ -3836,10 +3806,10 @@ public class CatalogsFeedValidationWarnings   {
   
   @ApiModelProperty(value = "Ingestion completed early because there are no changes to your feed since the last successful update.")
   @JsonProperty("FETCH_SAME_SIGNATURE")
-  public FETCHSAMESIGNATUREEnum getFETCHSAMESIGNATURE() {
+  public Integer getFETCHSAMESIGNATURE() {
     return FETCH_SAME_SIGNATURE;
   }
-  public void setFETCHSAMESIGNATURE(FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
+  public void setFETCHSAMESIGNATURE(Integer FETCH_SAME_SIGNATURE) {
     this.FETCH_SAME_SIGNATURE = FETCH_SAME_SIGNATURE;
   }
 
@@ -4926,10 +4896,7 @@ public class CatalogsFeedValidationWarnings   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

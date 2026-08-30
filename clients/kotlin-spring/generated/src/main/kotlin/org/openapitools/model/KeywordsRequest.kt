@@ -22,11 +22,13 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class KeywordsRequest(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "Keyword JSON array. Each array element has 3 fields")
+    @Schema(required = true, description = "Keyword JSON array. Each array element has 3 fields")
+    @param:JsonProperty("keywords")
     @get:JsonProperty("keywords", required = true) val keywords: kotlin.collections.List<KeywordsCommon>,
 
     @get:Pattern(regexp="^((AG)|C)?\\d+$")
-    @Schema(example = "383791336903426391", required = true, description = "Keyword parent entity ID (advertiser, campaign, ad group).")
+    @Schema(required = true, description = "Keyword parent entity ID (advertiser, campaign, ad group).")
+    @param:JsonProperty("parent_id")
     @get:JsonProperty("parent_id", required = true) val parentId: kotlin.String
 ) {
 

@@ -15,14 +15,18 @@ import org.openapitools.model.CustomizableCTAType;
 import org.openapitools.model.DisclosureType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
-import org.openapitools.model.QuizPinData;
-import org.openapitools.model.TrackingUrls;
 
 /**
  * AdUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdUpdateRequest   {
+  @JsonProperty("id")
+  private String id;
+
+  @JsonProperty("pin_id")
+  private String pinId;
+
   @JsonProperty("ad_group_id")
   private String adGroupId;
 
@@ -62,6 +66,9 @@ public class AdUpdateRequest   {
   @JsonProperty("ios_deep_link")
   private String iosDeepLink;
 
+  @JsonProperty("is_carting")
+  private Boolean isCarting;
+
   @JsonProperty("is_pin_deleted")
   private Boolean isPinDeleted;
 
@@ -75,22 +82,52 @@ public class AdUpdateRequest   {
   private String name;
 
   @JsonProperty("quiz_pin_data")
-  private QuizPinData quizPinData;
+  private Object quizPinData;
 
   @JsonProperty("status")
   private EntityStatus status;
 
   @JsonProperty("tracking_urls")
-  private TrackingUrls trackingUrls;
+  private Object trackingUrls;
 
   @JsonProperty("view_tracking_url")
   private String viewTrackingUrl;
 
-  @JsonProperty("id")
-  private String id;
+  public AdUpdateRequest id(String id) {
+    this.id = id;
+    return this;
+  }
 
-  @JsonProperty("pin_id")
-  private String pinId;
+   /**
+   * The ID of this ad.
+   * @return id
+  **/
+  @ApiModelProperty(required = true, value = "The ID of this ad.")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public AdUpdateRequest pinId(String pinId) {
+    this.pinId = pinId;
+    return this;
+  }
+
+   /**
+   * Pin ID. This field may only be updated for draft ads.
+   * @return pinId
+  **/
+  @ApiModelProperty(value = "Pin ID. This field may only be updated for draft ads.")
+  public String getPinId() {
+    return pinId;
+  }
+
+  public void setPinId(String pinId) {
+    this.pinId = pinId;
+  }
 
   public AdUpdateRequest adGroupId(String adGroupId) {
     this.adGroupId = adGroupId;
@@ -101,7 +138,7 @@ public class AdUpdateRequest   {
    * ID of the ad group that contains the ad.
    * @return adGroupId
   **/
-  @ApiModelProperty(example = "2680059592705", value = "ID of the ad group that contains the ad.")
+  @ApiModelProperty(value = "ID of the ad group that contains the ad.")
   public String getAdGroupId() {
     return adGroupId;
   }
@@ -350,6 +387,24 @@ public class AdUpdateRequest   {
     this.iosDeepLink = iosDeepLink;
   }
 
+  public AdUpdateRequest isCarting(Boolean isCarting) {
+    this.isCarting = isCarting;
+    return this;
+  }
+
+   /**
+   * Is the ad a carting/WTB ad?
+   * @return isCarting
+  **/
+  @ApiModelProperty(value = "Is the ad a carting/WTB ad?")
+  public Boolean getIsCarting() {
+    return isCarting;
+  }
+
+  public void setIsCarting(Boolean isCarting) {
+    this.isCarting = isCarting;
+  }
+
   public AdUpdateRequest isPinDeleted(Boolean isPinDeleted) {
     this.isPinDeleted = isPinDeleted;
     return this;
@@ -422,7 +477,7 @@ public class AdUpdateRequest   {
     this.name = name;
   }
 
-  public AdUpdateRequest quizPinData(QuizPinData quizPinData) {
+  public AdUpdateRequest quizPinData(Object quizPinData) {
     this.quizPinData = quizPinData;
     return this;
   }
@@ -432,11 +487,11 @@ public class AdUpdateRequest   {
    * @return quizPinData
   **/
   @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
-  public QuizPinData getQuizPinData() {
+  public Object getQuizPinData() {
     return quizPinData;
   }
 
-  public void setQuizPinData(QuizPinData quizPinData) {
+  public void setQuizPinData(Object quizPinData) {
     this.quizPinData = quizPinData;
   }
 
@@ -458,7 +513,7 @@ public class AdUpdateRequest   {
     this.status = status;
   }
 
-  public AdUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
+  public AdUpdateRequest trackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -468,11 +523,11 @@ public class AdUpdateRequest   {
    * @return trackingUrls
   **/
   @ApiModelProperty(value = "")
-  public TrackingUrls getTrackingUrls() {
+  public Object getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
+  public void setTrackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -494,42 +549,6 @@ public class AdUpdateRequest   {
     this.viewTrackingUrl = viewTrackingUrl;
   }
 
-  public AdUpdateRequest id(String id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * The ID of this ad.
-   * @return id
-  **/
-  @ApiModelProperty(example = "687195134316", required = true, value = "The ID of this ad.")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public AdUpdateRequest pinId(String pinId) {
-    this.pinId = pinId;
-    return this;
-  }
-
-   /**
-   * Pin ID. This field may only be updated for draft ads.
-   * @return pinId
-  **/
-  @ApiModelProperty(example = "394205773611545468", value = "Pin ID. This field may only be updated for draft ads.")
-  public String getPinId() {
-    return pinId;
-  }
-
-  public void setPinId(String pinId) {
-    this.pinId = pinId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -540,7 +559,9 @@ public class AdUpdateRequest   {
       return false;
     }
     AdUpdateRequest adUpdateRequest = (AdUpdateRequest) o;
-    return Objects.equals(this.adGroupId, adUpdateRequest.adGroupId) &&
+    return Objects.equals(this.id, adUpdateRequest.id) &&
+        Objects.equals(this.pinId, adUpdateRequest.pinId) &&
+        Objects.equals(this.adGroupId, adUpdateRequest.adGroupId) &&
         Objects.equals(this.androidDeepLink, adUpdateRequest.androidDeepLink) &&
         Objects.equals(this.carouselAndroidDeepLinks, adUpdateRequest.carouselAndroidDeepLinks) &&
         Objects.equals(this.carouselDestinationUrls, adUpdateRequest.carouselDestinationUrls) &&
@@ -553,6 +574,7 @@ public class AdUpdateRequest   {
         Objects.equals(this.disclosureUrl, adUpdateRequest.disclosureUrl) &&
         Objects.equals(this.gridClickType, adUpdateRequest.gridClickType) &&
         Objects.equals(this.iosDeepLink, adUpdateRequest.iosDeepLink) &&
+        Objects.equals(this.isCarting, adUpdateRequest.isCarting) &&
         Objects.equals(this.isPinDeleted, adUpdateRequest.isPinDeleted) &&
         Objects.equals(this.isRemovable, adUpdateRequest.isRemovable) &&
         Objects.equals(this.leadFormId, adUpdateRequest.leadFormId) &&
@@ -560,14 +582,12 @@ public class AdUpdateRequest   {
         Objects.equals(this.quizPinData, adUpdateRequest.quizPinData) &&
         Objects.equals(this.status, adUpdateRequest.status) &&
         Objects.equals(this.trackingUrls, adUpdateRequest.trackingUrls) &&
-        Objects.equals(this.viewTrackingUrl, adUpdateRequest.viewTrackingUrl) &&
-        Objects.equals(this.id, adUpdateRequest.id) &&
-        Objects.equals(this.pinId, adUpdateRequest.pinId);
+        Objects.equals(this.viewTrackingUrl, adUpdateRequest.viewTrackingUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroupId, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, creativeType, customizableCtaType, destinationUrl, disclosureType, disclosureUrl, gridClickType, iosDeepLink, isPinDeleted, isRemovable, leadFormId, name, quizPinData, status, trackingUrls, viewTrackingUrl, id, pinId);
+    return Objects.hash(id, pinId, adGroupId, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, creativeType, customizableCtaType, destinationUrl, disclosureType, disclosureUrl, gridClickType, iosDeepLink, isCarting, isPinDeleted, isRemovable, leadFormId, name, quizPinData, status, trackingUrls, viewTrackingUrl);
   }
 
   @Override
@@ -575,6 +595,8 @@ public class AdUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdUpdateRequest {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("    adGroupId: ").append(toIndentedString(adGroupId)).append("\n");
     sb.append("    androidDeepLink: ").append(toIndentedString(androidDeepLink)).append("\n");
     sb.append("    carouselAndroidDeepLinks: ").append(toIndentedString(carouselAndroidDeepLinks)).append("\n");
@@ -588,6 +610,7 @@ public class AdUpdateRequest   {
     sb.append("    disclosureUrl: ").append(toIndentedString(disclosureUrl)).append("\n");
     sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");
     sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
+    sb.append("    isCarting: ").append(toIndentedString(isCarting)).append("\n");
     sb.append("    isPinDeleted: ").append(toIndentedString(isPinDeleted)).append("\n");
     sb.append("    isRemovable: ").append(toIndentedString(isRemovable)).append("\n");
     sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
@@ -596,8 +619,6 @@ public class AdUpdateRequest   {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    viewTrackingUrl: ").append(toIndentedString(viewTrackingUrl)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -607,10 +628,7 @@ public class AdUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

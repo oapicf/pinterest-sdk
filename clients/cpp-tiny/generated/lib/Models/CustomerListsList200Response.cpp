@@ -102,7 +102,7 @@ Customer_lists_list_200_response::getBookmark()
 }
 
 void
-Customer_lists_list_200_response::setBookmark(std::string  bookmark)
+Customer_lists_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Customer_lists_list_200_response::getItems()
 }
 
 void
-Customer_lists_list_200_response::setItems(std::list <CustomerList> items)
+Customer_lists_list_200_response::setItems(std::list<CustomerList> items)
 {
 	this->items = items;
 }

@@ -23,12 +23,12 @@ CatalogsReportStats::~CatalogsReportStats()
 void
 CatalogsReportStats::__init()
 {
-	//report_type = std::string();
 	//catalog_id = std::string();
 	//code = int(0);
 	//code_label = std::string();
 	//message = std::string();
 	//occurrences = int(0);
+	//report_type = std::string();
 	//severity = std::string();
 	//ineligible_for_ads = bool(false);
 	//ineligible_for_organic = bool(false);
@@ -37,11 +37,6 @@ CatalogsReportStats::__init()
 void
 CatalogsReportStats::__cleanup()
 {
-	//if(report_type != NULL) {
-	//
-	//delete report_type;
-	//report_type = NULL;
-	//}
 	//if(catalog_id != NULL) {
 	//
 	//delete catalog_id;
@@ -67,6 +62,11 @@ CatalogsReportStats::__cleanup()
 	//delete occurrences;
 	//occurrences = NULL;
 	//}
+	//if(report_type != NULL) {
+	//
+	//delete report_type;
+	//report_type = NULL;
+	//}
 	//if(severity != NULL) {
 	//
 	//delete severity;
@@ -90,17 +90,6 @@ CatalogsReportStats::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *report_typeKey = "report_type";
-	node = json_object_get_member(pJsonObject, report_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&report_type, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *catalog_idKey = "catalog_id";
 	node = json_object_get_member(pJsonObject, catalog_idKey);
 	if (node !=NULL) {
@@ -156,6 +145,17 @@ CatalogsReportStats::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *report_typeKey = "report_type";
+	node = json_object_get_member(pJsonObject, report_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&report_type, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *severityKey = "severity";
 	node = json_object_get_member(pJsonObject, severityKey);
 	if (node !=NULL) {
@@ -202,15 +202,6 @@ CatalogsReportStats::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getReportType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *report_typeKey = "report_type";
-	json_object_set_member(pJsonObject, report_typeKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getCatalogId();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -256,6 +247,15 @@ CatalogsReportStats::toJson()
 	const gchar *occurrencesKey = "occurrences";
 	json_object_set_member(pJsonObject, occurrencesKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getReportType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *report_typeKey = "report_type";
+	json_object_set_member(pJsonObject, report_typeKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getSeverity();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -288,18 +288,6 @@ CatalogsReportStats::toJson()
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-CatalogsReportStats::getReportType()
-{
-	return report_type;
-}
-
-void
-CatalogsReportStats::setReportType(std::string  report_type)
-{
-	this->report_type = report_type;
 }
 
 std::string
@@ -360,6 +348,18 @@ void
 CatalogsReportStats::setOccurrences(int  occurrences)
 {
 	this->occurrences = occurrences;
+}
+
+std::string
+CatalogsReportStats::getReportType()
+{
+	return report_type;
+}
+
+void
+CatalogsReportStats::setReportType(std::string  report_type)
+{
+	this->report_type = report_type;
 }
 
 std::string

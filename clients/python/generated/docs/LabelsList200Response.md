@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[LabelsResponse]**](LabelsResponse.md) |  | 
+**items** | [**List[Label]**](Label.md) |  | 
 
 ## Example
 

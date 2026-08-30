@@ -11,7 +11,7 @@ import javax.validation.Valid;
 /**
  * CustomerListUploadCreateResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CustomerListUploadCreateResponse   {
   @JsonProperty("customer_list_upload")
@@ -32,7 +32,7 @@ public class CustomerListUploadCreateResponse   {
   }
 
    /**
-   * Get customerListUpload
+   * The Customer List Upload created.
    * @return customerListUpload
   **/
   public CustomerListUpload getCustomerListUpload() {
@@ -49,7 +49,7 @@ public class CustomerListUploadCreateResponse   {
   }
 
    /**
-   * Get s3MultipartUploadData
+   * Pre-signed upload URLs corresponding to each part of the upload.
    * @return s3MultipartUploadData
   **/
   public S3MultipartUploadData getS3MultipartUploadData() {
@@ -96,10 +96,7 @@ public class CustomerListUploadCreateResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

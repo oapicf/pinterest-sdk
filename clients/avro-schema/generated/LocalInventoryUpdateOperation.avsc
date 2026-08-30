@@ -1,0 +1,35 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Update operation for local inventory item",
+  "name": "LocalInventoryUpdateOperation",
+  "fields": [
+    {
+      "name": "attributes",
+      "type": "model.RetailLocalInventoryItemAttributesOptional",
+      "doc": ""
+    },
+    {
+      "name": "item_id",
+      "type": "string",
+      "doc": "Catalog item id in the merchant namespace"
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "LocalInventoryUpdateOperation_operation",
+        "symbols": [
+          "UPDATE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "store_code",
+      "type": "string",
+      "doc": "Store code for the local inventory item"
+    }
+  ]
+
+}

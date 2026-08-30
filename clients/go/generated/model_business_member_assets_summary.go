@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &BusinessMemberAssetsSummary{}
 // BusinessMemberAssetsSummary Ad accounts and profiles the business member/partner has access to.
 type BusinessMemberAssetsSummary struct {
 	// List of ad account IDs and respective permission levels.
-	AdAccounts []BusinessMemberAssetsSummaryAdAccountsInner `json:"ad_accounts,omitempty"`
+	AdAccounts []AssetIdWithPermissions `json:"ad_accounts,omitempty"`
 	// List of profile IDs and respective permission levels.
-	Profiles []BusinessMemberAssetsSummaryProfilesInner `json:"profiles,omitempty"`
+	Profiles []AssetIdWithPermissions `json:"profiles,omitempty"`
 }
 
 // NewBusinessMemberAssetsSummary instantiates a new BusinessMemberAssetsSummary object
@@ -44,9 +44,9 @@ func NewBusinessMemberAssetsSummaryWithDefaults() *BusinessMemberAssetsSummary {
 }
 
 // GetAdAccounts returns the AdAccounts field value if set, zero value otherwise.
-func (o *BusinessMemberAssetsSummary) GetAdAccounts() []BusinessMemberAssetsSummaryAdAccountsInner {
+func (o *BusinessMemberAssetsSummary) GetAdAccounts() []AssetIdWithPermissions {
 	if o == nil || IsNil(o.AdAccounts) {
-		var ret []BusinessMemberAssetsSummaryAdAccountsInner
+		var ret []AssetIdWithPermissions
 		return ret
 	}
 	return o.AdAccounts
@@ -54,7 +54,7 @@ func (o *BusinessMemberAssetsSummary) GetAdAccounts() []BusinessMemberAssetsSumm
 
 // GetAdAccountsOk returns a tuple with the AdAccounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BusinessMemberAssetsSummary) GetAdAccountsOk() ([]BusinessMemberAssetsSummaryAdAccountsInner, bool) {
+func (o *BusinessMemberAssetsSummary) GetAdAccountsOk() ([]AssetIdWithPermissions, bool) {
 	if o == nil || IsNil(o.AdAccounts) {
 		return nil, false
 	}
@@ -70,15 +70,15 @@ func (o *BusinessMemberAssetsSummary) HasAdAccounts() bool {
 	return false
 }
 
-// SetAdAccounts gets a reference to the given []BusinessMemberAssetsSummaryAdAccountsInner and assigns it to the AdAccounts field.
-func (o *BusinessMemberAssetsSummary) SetAdAccounts(v []BusinessMemberAssetsSummaryAdAccountsInner) {
+// SetAdAccounts gets a reference to the given []AssetIdWithPermissions and assigns it to the AdAccounts field.
+func (o *BusinessMemberAssetsSummary) SetAdAccounts(v []AssetIdWithPermissions) {
 	o.AdAccounts = v
 }
 
 // GetProfiles returns the Profiles field value if set, zero value otherwise.
-func (o *BusinessMemberAssetsSummary) GetProfiles() []BusinessMemberAssetsSummaryProfilesInner {
+func (o *BusinessMemberAssetsSummary) GetProfiles() []AssetIdWithPermissions {
 	if o == nil || IsNil(o.Profiles) {
-		var ret []BusinessMemberAssetsSummaryProfilesInner
+		var ret []AssetIdWithPermissions
 		return ret
 	}
 	return o.Profiles
@@ -86,7 +86,7 @@ func (o *BusinessMemberAssetsSummary) GetProfiles() []BusinessMemberAssetsSummar
 
 // GetProfilesOk returns a tuple with the Profiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BusinessMemberAssetsSummary) GetProfilesOk() ([]BusinessMemberAssetsSummaryProfilesInner, bool) {
+func (o *BusinessMemberAssetsSummary) GetProfilesOk() ([]AssetIdWithPermissions, bool) {
 	if o == nil || IsNil(o.Profiles) {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *BusinessMemberAssetsSummary) HasProfiles() bool {
 	return false
 }
 
-// SetProfiles gets a reference to the given []BusinessMemberAssetsSummaryProfilesInner and assigns it to the Profiles field.
-func (o *BusinessMemberAssetsSummary) SetProfiles(v []BusinessMemberAssetsSummaryProfilesInner) {
+// SetProfiles gets a reference to the given []AssetIdWithPermissions and assigns it to the Profiles field.
+func (o *BusinessMemberAssetsSummary) SetProfiles(v []AssetIdWithPermissions) {
 	o.Profiles = v
 }
 

@@ -23,7 +23,9 @@ CatalogsCreativeAssetsProductGroupProductCounts::~CatalogsCreativeAssetsProductG
 void
 CatalogsCreativeAssetsProductGroupProductCounts::__init()
 {
+	//app_links = double(0);
 	//catalog_type = std::string();
+	//images = double(0);
 	//total = double(0);
 	//videos = double(0);
 }
@@ -31,10 +33,20 @@ CatalogsCreativeAssetsProductGroupProductCounts::__init()
 void
 CatalogsCreativeAssetsProductGroupProductCounts::__cleanup()
 {
+	//if(app_links != NULL) {
+	//
+	//delete app_links;
+	//app_links = NULL;
+	//}
 	//if(catalog_type != NULL) {
 	//
 	//delete catalog_type;
 	//catalog_type = NULL;
+	//}
+	//if(images != NULL) {
+	//
+	//delete images;
+	//images = NULL;
 	//}
 	//if(total != NULL) {
 	//
@@ -54,6 +66,20 @@ CatalogsCreativeAssetsProductGroupProductCounts::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *app_linksKey = "app_links";
+	node = json_object_get_member(pJsonObject, app_linksKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&app_links, node, "long long", "");
+		} else {
+			
+			long long* obj = static_cast<long long*> (&app_links);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *catalog_typeKey = "catalog_type";
 	node = json_object_get_member(pJsonObject, catalog_typeKey);
 	if (node !=NULL) {
@@ -62,6 +88,20 @@ CatalogsCreativeAssetsProductGroupProductCounts::fromJson(char* jsonStr)
 		if (isprimitive("std::string")) {
 			jsonToValue(&catalog_type, node, "std::string", "");
 		} else {
+			
+		}
+	}
+	const gchar *imagesKey = "images";
+	node = json_object_get_member(pJsonObject, imagesKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&images, node, "long long", "");
+		} else {
+			
+			long long* obj = static_cast<long long*> (&images);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -105,6 +145,20 @@ CatalogsCreativeAssetsProductGroupProductCounts::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("long long")) {
+		long long obj = getAppLinks();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+		long long obj = static_cast<long long> (getAppLinks());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *app_linksKey = "app_links";
+	json_object_set_member(pJsonObject, app_linksKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCatalogType();
 		node = converttoJson(&obj, "std::string", "");
@@ -114,6 +168,20 @@ CatalogsCreativeAssetsProductGroupProductCounts::toJson()
 	}
 	const gchar *catalog_typeKey = "catalog_type";
 	json_object_set_member(pJsonObject, catalog_typeKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getImages();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+		long long obj = static_cast<long long> (getImages());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *imagesKey = "images";
+	json_object_set_member(pJsonObject, imagesKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getTotal();
 		node = converttoJson(&obj, "long long", "");
@@ -150,6 +218,18 @@ CatalogsCreativeAssetsProductGroupProductCounts::toJson()
 	return ret;
 }
 
+long long
+CatalogsCreativeAssetsProductGroupProductCounts::getAppLinks()
+{
+	return app_links;
+}
+
+void
+CatalogsCreativeAssetsProductGroupProductCounts::setAppLinks(long long  app_links)
+{
+	this->app_links = app_links;
+}
+
 std::string
 CatalogsCreativeAssetsProductGroupProductCounts::getCatalogType()
 {
@@ -160,6 +240,18 @@ void
 CatalogsCreativeAssetsProductGroupProductCounts::setCatalogType(std::string  catalog_type)
 {
 	this->catalog_type = catalog_type;
+}
+
+long long
+CatalogsCreativeAssetsProductGroupProductCounts::getImages()
+{
+	return images;
+}
+
+void
+CatalogsCreativeAssetsProductGroupProductCounts::setImages(long long  images)
+{
+	this->images = images;
 }
 
 long long

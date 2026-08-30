@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -10,55 +11,82 @@ import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Integration record
  */
 
 @Schema(name = "IntegrationRecord", description = "Integration record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationRecord {
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> additionalId1 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> connectedAdvertiserId = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> connectedLbaId = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> connectedMerchantId = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> connectedTagId = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String connectedUserId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer createdTime;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> externalBusinessId = JsonNullable.<String>undefined();
 
-  private @Nullable String id;
+  private String id;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> partnerAccessToken = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> partnerAccessTokenExpiry = JsonNullable.<Integer>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> partnerMetadata = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> partnerPrimaryEmail = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> partnerRefreshToken = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> partnerRefreshTokenExpiry = JsonNullable.<Integer>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> scopes = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer updatedTime;
+
+  public IntegrationRecord() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public IntegrationRecord(String id) {
+    this.id = id;
+  }
 
   public IntegrationRecord additionalId1(String additionalId1) {
     this.additionalId1 = JsonNullable.of(additionalId1);
@@ -90,7 +118,7 @@ public class IntegrationRecord {
    * @return connectedAdvertiserId
    */
   
-  @Schema(name = "connected_advertiser_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "connected_advertiser_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_advertiser_id")
   public JsonNullable<String> getConnectedAdvertiserId() {
     return connectedAdvertiserId;
@@ -170,12 +198,13 @@ public class IntegrationRecord {
    * @return connectedUserId
    */
   
-  @Schema(name = "connected_user_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "connected_user_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_user_id")
   public @Nullable String getConnectedUserId() {
     return connectedUserId;
   }
 
+  @JsonProperty("connected_user_id")
   public void setConnectedUserId(@Nullable String connectedUserId) {
     this.connectedUserId = connectedUserId;
   }
@@ -196,6 +225,7 @@ public class IntegrationRecord {
     return createdTime;
   }
 
+  @JsonProperty("created_time")
   public void setCreatedTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
@@ -220,23 +250,24 @@ public class IntegrationRecord {
     this.externalBusinessId = externalBusinessId;
   }
 
-  public IntegrationRecord id(@Nullable String id) {
+  public IntegrationRecord id(String id) {
     this.id = id;
     return this;
   }
 
   /**
-   * Get id
+   * Integration record ID.
    * @return id
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "id", accessMode = Schema.AccessMode.READ_ONLY, description = "Integration record ID.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
-  public @Nullable String getId() {
+  public String getId() {
     return id;
   }
 
-  public void setId(@Nullable String id) {
+  @JsonProperty("id")
+  public void setId(String id) {
     this.id = id;
   }
 
@@ -396,6 +427,7 @@ public class IntegrationRecord {
     return updatedTime;
   }
 
+  @JsonProperty("updated_time")
   public void setUpdatedTime(@Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
@@ -473,11 +505,8 @@ public class IntegrationRecord {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

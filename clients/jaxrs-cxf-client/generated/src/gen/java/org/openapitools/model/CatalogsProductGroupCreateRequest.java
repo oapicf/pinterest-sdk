@@ -35,7 +35,7 @@ public class CatalogsProductGroupCreateRequest  {
   */
   @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
 
-  private Boolean isFeatured = false;
+  private Boolean isFeatured;
 
   @ApiModelProperty(required = true, value = "")
 
@@ -170,10 +170,7 @@ public class CatalogsProductGroupCreateRequest  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

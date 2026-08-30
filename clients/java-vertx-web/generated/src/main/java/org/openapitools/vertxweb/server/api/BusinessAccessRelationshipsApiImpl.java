@@ -1,21 +1,19 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.BrandAccountsCreate200Response;
-import org.openapitools.vertxweb.server.model.BrandAccountsCreateRequest;
-import org.openapitools.vertxweb.server.model.BrandAccountsUpdateRequest;
-import org.openapitools.vertxweb.server.model.DeletePartnersRequest;
-import org.openapitools.vertxweb.server.model.DeletePartnersResponse;
-import org.openapitools.vertxweb.server.model.DeletedMembersResponse;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.BrandAccount;
+import org.openapitools.vertxweb.server.model.BrandAccountCreate;
+import org.openapitools.vertxweb.server.model.BrandAccountUpdate;
+import org.openapitools.vertxweb.server.model.BusinessMembershipMember;
+import org.openapitools.vertxweb.server.model.DeleteBusinessMembership200Response;
+import org.openapitools.vertxweb.server.model.DeleteBusinessMembershipBody;
+import org.openapitools.vertxweb.server.model.DeleteBusinessPartners;
+import org.openapitools.vertxweb.server.model.DeleteBusinessPartnersDelete;
 import org.openapitools.vertxweb.server.model.GetBusinessEmployers200Response;
-import org.openapitools.vertxweb.server.model.GetBusinessMembers200Response;
-import org.openapitools.vertxweb.server.model.GetBusinessPartners200Response;
 import org.openapitools.vertxweb.server.model.MemberBusinessRole;
-import org.openapitools.vertxweb.server.model.MembersToDeleteBody;
 import org.openapitools.vertxweb.server.model.PartnerType;
-import org.openapitools.vertxweb.server.model.SystemUserUpdateRequest;
-import org.openapitools.vertxweb.server.model.UpdateMemberBusinessRoleBody;
-import org.openapitools.vertxweb.server.model.UpdateMemberResultsResponseArray;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.SystemUserUpdateWithRequiredBody;
+import org.openapitools.vertxweb.server.model.UpdateBusinessMembershipsResponse;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -29,39 +27,39 @@ import java.util.Map;
 // Implement this class
 
 public class BusinessAccessRelationshipsApiImpl implements BusinessAccessRelationshipsApi {
-    public Future<ApiResponse<BrandAccountsCreate200Response>> brandAccountsCreate(String businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest) {
+    public Future<ApiResponse<BrandAccount>> brandAccountsCreate(String businessHierarchyId, BrandAccountCreate brandAccountCreate) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<BrandAccountsCreate200Response>> brandAccountsUpdate(String businessHierarchyId, String brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest) {
+    public Future<ApiResponse<BrandAccount>> brandAccountsUpdate(String brandAccountId, String businessHierarchyId, BrandAccountUpdate brandAccountUpdate) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<DeletedMembersResponse>> deleteBusinessMembership(String businessId, MembersToDeleteBody membersToDeleteBody) {
+    public Future<ApiResponse<DeleteBusinessMembership200Response>> deleteBusinessMembership(String businessId, DeleteBusinessMembershipBody deleteBusinessMembershipBody) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<DeletePartnersResponse>> deleteBusinessPartners(String businessId, DeletePartnersRequest deletePartnersRequest) {
+    public Future<ApiResponse<DeleteBusinessPartners>> deleteBusinessPartners(String businessId, DeleteBusinessPartnersDelete deleteBusinessPartnersDelete) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<GetBusinessEmployers200Response>> getBusinessEmployers(Integer pageSize, String bookmark) {
+    public Future<ApiResponse<GetBusinessEmployers200Response>> getBusinessEmployers(Boolean assetsSummary, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<GetBusinessMembers200Response>> getBusinessMembers(String businessId, Boolean fetchSystemUsers, Boolean assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, Integer startIndex, String bookmark, Integer pageSize) {
+    public Future<ApiResponse<GetBusinessEmployers200Response>> getBusinessMembers(String businessId, Boolean fetchSystemUsers, Boolean assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, Integer startIndex, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<GetBusinessPartners200Response>> getBusinessPartners(String businessId, Boolean assetsSummary, PartnerType partnerType, String partnerIds, Integer startIndex, Integer pageSize, String bookmark) {
+    public Future<ApiResponse<GetBusinessEmployers200Response>> getBusinessPartners(String businessId, Boolean assetsSummary, PartnerType partnerType, String partnerIds, Integer startIndex, Boolean sortAscending, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<Void>> systemUserUpdate(String businessId, String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest) {
+    public Future<ApiResponse<Void>> systemUserUpdate(String businessId, String systemUserId, SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<UpdateMemberResultsResponseArray>> updateBusinessMemberships(String businessId, List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody) {
+    public Future<ApiResponse<UpdateBusinessMembershipsResponse>> updateBusinessMemberships(String businessId, List<BusinessMembershipMember> businessMembershipMember) {
         return Future.failedFuture(new HttpException(501));
     }
 

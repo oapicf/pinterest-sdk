@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **country** | `Country` |  | 
 **items** | [`List&lt;ItemCreateBatchRecord&gt;`](ItemCreateBatchRecord.md) | Array with catalogs items | 
 **language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. | 
-**operation** | `BatchOperation` |  | 
+**operation** | [**OperationEnum**](#OperationEnum) |  | 
 
 
 
@@ -110,7 +110,7 @@ MY | `"MY"`
 NB | `"NB"`
 NE | `"NE"`
 NL2 | `"NL"`
-NO | `"NO"`
+FALSE | `"false"`
 PL | `"PL"`
 PT | `"PT"`
 RO | `"RO"`
@@ -129,5 +129,10 @@ TR2 | `"TR"`
 XX | `"XX"`
 ZH | `"ZH"`
 
+## OperationEnum
+
+Name | Value
+---- | -----
+CREATE | `"CREATE"`
 
 

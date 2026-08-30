@@ -13,11 +13,17 @@ part of openapi.api;
 class CatalogsProductGroupMultipleCountriesCriteria {
   /// Returns a new [CatalogsProductGroupMultipleCountriesCriteria] instance.
   CatalogsProductGroupMultipleCountriesCriteria({
-    this.negated = false,
+    this.negated,
     this.values = const [],
   });
 
-  bool negated;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? negated;
 
   List<Country> values;
 
@@ -29,7 +35,7 @@ class CatalogsProductGroupMultipleCountriesCriteria {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (negated.hashCode) +
+    (negated == null ? 0 : negated!.hashCode) +
     (values.hashCode);
 
   @override
@@ -37,7 +43,11 @@ class CatalogsProductGroupMultipleCountriesCriteria {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.negated != null) {
       json[r'negated'] = this.negated;
+    } else {
+      json[r'negated'] = null;
+    }
       json[r'values'] = this.values;
     return json;
   }
@@ -53,15 +63,13 @@ class CatalogsProductGroupMultipleCountriesCriteria {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsProductGroupMultipleCountriesCriteria[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsProductGroupMultipleCountriesCriteria[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'values'), 'Required key "CatalogsProductGroupMultipleCountriesCriteria[values]" is missing from JSON.');
+        assert(json[r'values'] != null, 'Required key "CatalogsProductGroupMultipleCountriesCriteria[values]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsProductGroupMultipleCountriesCriteria(
-        negated: mapValueOfType<bool>(json, r'negated') ?? false,
+        negated: mapValueOfType<bool>(json, r'negated'),
         values: Country.listFromJson(json[r'values']),
       );
     }

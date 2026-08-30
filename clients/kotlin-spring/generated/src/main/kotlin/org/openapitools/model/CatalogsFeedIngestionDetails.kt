@@ -25,15 +25,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsFeedIngestionDetails(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("errors")
     @get:JsonProperty("errors", required = true) val errors: CatalogsFeedIngestionErrors,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("info")
     @get:JsonProperty("info", required = true) val info: CatalogsFeedIngestionInfo,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("warnings")
     @get:JsonProperty("warnings", required = true) val warnings: CatalogsFeedIngestionWarnings
 ) {
 

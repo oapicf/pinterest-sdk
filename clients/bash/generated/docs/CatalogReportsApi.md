@@ -17,10 +17,9 @@ Build catalogs report
 Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed.
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-Note: Access to the All Items report type is restricted to a specific group of users.
-If you require access, please reach out to your partner manager.
+Note: The All Items report is limited to 25 million items per catalog.
 
 ### Example
 
@@ -33,7 +32,7 @@ If you require access, please reach out to your partner manager.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogsReportParameters** | [**CatalogsReportParameters**](CatalogsReportParameters.md) | Request object to asynchronously create a report. |
+ **catalogsReportParameters** | [**CatalogsReportParameters**](CatalogsReportParameters.md) |  |
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -56,10 +55,10 @@ Name | Type | Description  | Notes
 
 Get catalogs report
 
-This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report.
+This returns a URL to a report given a token returned from [Build catalogs report](/docs/api/v5/#operation/reports/create). You can use the URL to download the report.
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Example
 
@@ -72,7 +71,7 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **string** | Token returned from async build report call | [default to null]
+ **token** | **string** | Token returned from the post request creation call | [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -98,12 +97,12 @@ List report stats
 List aggregated numbers of issues for a catalog owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Example
 
 ```bash
- reportsStats  parameters=value  ad_account_id=value  page_size=value  bookmark=value
+ reportsStats  parameters=value  ad_account_id=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -111,10 +110,11 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameters** | [**ReportsStatsParametersParameter**](.md) | Contains the parameters for report identification. | [default to null]
+ **parameters** | [**CatalogsReportStatsParameters**](.md) | Contains the parameters for report identification. | [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

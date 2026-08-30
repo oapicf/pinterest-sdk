@@ -74,7 +74,7 @@ class _$MinPriceFilterSerializer implements PrimitiveSerializer<MinPriceFilter> 
             value,
             specifiedType: const FullType(CatalogsProductGroupPricingCriteria),
           ) as CatalogsProductGroupPricingCriteria;
-          result.MIN_PRICE = valueDes;
+          result.MIN_PRICE.replace(valueDes);
           break;
         default:
           unhandled.add(key);

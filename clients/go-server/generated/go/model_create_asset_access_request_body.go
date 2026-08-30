@@ -5,22 +5,80 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 // CreateAssetAccessRequestBody - An object containing a list of all the asset access requests
 type CreateAssetAccessRequestBody struct {
 
-	AssetRequests []CreateAssetAccessRequestBodyAssetRequestsInner `json:"asset_requests"`
+	AssetRequests []CreateAssetAccessRequestItem `json:"asset_requests"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into CreateAssetAccessRequestBody
+func (o *CreateAssetAccessRequestBody) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"asset_requests",
+	}
+
+	requiredNullableProperties := map[string]bool{
+		"asset_requests": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"asset_requests": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CreateAssetAccessRequestBody
+
+	if value, exists := allProperties["asset_requests"]; exists {
+		if err = json.Unmarshal(value, &decoded.AssetRequests); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
 }
 
-// AssertCreateAssetAccessRequestBodyRequired checks if the required fields are not zero-ed
+// AssertCreateAssetAccessRequestBodyRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCreateAssetAccessRequestBodyRequired(obj CreateAssetAccessRequestBody) error {
 	elements := map[string]interface{}{
 		"asset_requests": obj.AssetRequests,
@@ -32,7 +90,7 @@ func AssertCreateAssetAccessRequestBodyRequired(obj CreateAssetAccessRequestBody
 	}
 
 	for _, el := range obj.AssetRequests {
-		if err := AssertCreateAssetAccessRequestBodyAssetRequestsInnerRequired(el); err != nil {
+		if err := AssertCreateAssetAccessRequestItemRequired(el); err != nil {
 			return err
 		}
 	}
@@ -42,7 +100,7 @@ func AssertCreateAssetAccessRequestBodyRequired(obj CreateAssetAccessRequestBody
 // AssertCreateAssetAccessRequestBodyConstraints checks if the values respects the defined constraints
 func AssertCreateAssetAccessRequestBodyConstraints(obj CreateAssetAccessRequestBody) error {
 	for _, el := range obj.AssetRequests {
-		if err := AssertCreateAssetAccessRequestBodyAssetRequestsInnerConstraints(el); err != nil {
+		if err := AssertCreateAssetAccessRequestItemConstraints(el); err != nil {
 			return err
 		}
 	}

@@ -1,0 +1,45 @@
+<?php
+declare(strict_types=1);
+
+namespace App\DTO;
+
+use Articus\DataTransfer\Annotation as DTA;
+
+/**
+ * An object containing the permissions a business has on the asset.
+ */
+class BaseBusinessAssets
+{
+    /**
+     * An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals &#39;ASSET_GROUP&#39;.
+     * @DTA\Data(field="asset_group_info", nullable=true)
+     * @DTA\Strategy(name="Object", options={"type":\App\DTO\AssetGroupBinding::class})
+     * @DTA\Validator(name="TypeCompliant", options={"type":\App\DTO\AssetGroupBinding::class})
+     */
+    public ?\App\DTO\AssetGroupBinding $asset_group_info = null;
+
+    /**
+     * Unique identifier of a business asset.
+     * @DTA\Data(field="asset_id", nullable=true)
+     * @DTA\Validator(name="Scalar", options={"type":"string"})
+     * @DTA\Validator(name="Length", options={"min":1, "max":20})
+     * @DTA\Validator(name="Match", options={"pattern":"/^\d+$/"})
+     */
+    public ?string $asset_id = null;
+
+    /**
+     * @DTA\Data(field="asset_type", nullable=true)
+     * @DTA\Strategy(name="Object", options={"type":\App\DTO\AssetTypeResponse::class})
+     * @DTA\Validator(name="TypeCompliant", options={"type":\App\DTO\AssetTypeResponse::class})
+     */
+    public ?\App\DTO\AssetTypeResponse $asset_type = null;
+
+    /**
+     * Permission levels the requesting business has on an asset.
+     * @DTA\Data(field="permissions", nullable=true)
+     * @DTA\Strategy(name="Object", options={"type":\App\DTO\Collection398::class})
+     * @DTA\Validator(name="TypeCompliant", options={"type":\App\DTO\Collection398::class})
+     */
+    public ?\App\DTO\Collection398 $permissions = null;
+
+}

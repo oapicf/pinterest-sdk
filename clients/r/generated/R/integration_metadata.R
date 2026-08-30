@@ -14,7 +14,7 @@
 #' @field connected_tag_id  character [optional]
 #' @field connected_user_id  character [optional]
 #' @field created_timestamp  numeric [optional]
-#' @field external_business_id  character [optional]
+#' @field external_business_id External business ID for the integration. character [optional]
 #' @field id  character [optional]
 #' @field partner_access_token_expiry  numeric [optional]
 #' @field partner_metadata  character [optional]
@@ -52,7 +52,7 @@ IntegrationMetadata <- R6::R6Class(
     #' @param connected_tag_id connected_tag_id
     #' @param connected_user_id connected_user_id
     #' @param created_timestamp created_timestamp
-    #' @param external_business_id external_business_id
+    #' @param external_business_id External business ID for the integration.
     #' @param id id
     #' @param partner_access_token_expiry partner_access_token_expiry
     #' @param partner_metadata partner_metadata

@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "Catalogs_hotel_filter_values_map.h"
+#include "CatalogsHotelFilterValuesMap.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -55,15 +55,15 @@ public:
 	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
-	Catalogs_hotel_filter_values_map getFilterValues();
+	CatalogsHotelFilterValuesMap getFilterValues();
 
 	/*! \brief Set 
 	 */
-	void setFilterValues(Catalogs_hotel_filter_values_map  filter_values);
+	void setFilterValues(CatalogsHotelFilterValuesMap  filter_values);
 
 private:
 	std::string catalog_type;
-	Catalogs_hotel_filter_values_map filter_values;
+	CatalogsHotelFilterValuesMap filter_values;
 	void __init();
 	void __cleanup();
 

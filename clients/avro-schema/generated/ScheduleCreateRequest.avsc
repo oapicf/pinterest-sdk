@@ -1,0 +1,54 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ScheduleCreateRequest",
+  "fields": [
+    {
+      "name": "entity_id",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "entity_type",
+      "type": "string",
+      "doc": "Entity type"
+    },
+    {
+      "name": "delta_value",
+      "type": "model.ScheduleCommonDeltaValue",
+      "doc": ""
+    },
+    {
+      "name": "end_timestamp",
+      "type": "int",
+      "doc": "Schedule end time. Unix timestamp in seconds."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "schedule_action",
+      "type": "model.ScheduleAction",
+      "doc": ""
+    },
+    {
+      "name": "schedule_status",
+      "type": "model.ScheduleStatus",
+      "doc": ""
+    },
+    {
+      "name": "schedule_type",
+      "type": "model.ScheduleType",
+      "doc": ""
+    },
+    {
+      "name": "start_timestamp",
+      "type": "int",
+      "doc": "Schedule start time. Unix timestamp in seconds."
+    }
+  ]
+
+}

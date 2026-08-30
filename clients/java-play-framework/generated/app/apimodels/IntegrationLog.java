@@ -2,6 +2,8 @@ package apimodels;
 
 import apimodels.IntegrationLogClientError;
 import apimodels.IntegrationLogClientRequest;
+import apimodels.IntegrationLogEventType;
+import apimodels.IntegrationLogLevel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -12,7 +14,7 @@ import javax.validation.Valid;
 /**
  * Schema for log sent from an integration application.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class IntegrationLog   {
   @JsonProperty("advertiser_id")
@@ -35,41 +37,11 @@ public class IntegrationLog   {
 
   private IntegrationLogClientError error;
 
-  /**
-   * Log event type
-   */
-  public enum EventTypeEnum {
-    APP("APP"),
-    
-    API("API");
-
-    private final String value;
-
-    EventTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static EventTypeEnum fromValue(String value) {
-      for (EventTypeEnum b : EventTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @JsonProperty("event_type")
   @NotNull
+@Valid
 
-  private EventTypeEnum eventType;
+  private IntegrationLogEventType eventType;
 
   @JsonProperty("external_business_id")
   @Size(max=2048)
@@ -81,43 +53,11 @@ public class IntegrationLog   {
 
   private String feedProfileId;
 
-  /**
-   * Log level type
-   */
-  public enum LogLevelEnum {
-    INFO("INFO"),
-    
-    WARN("WARN"),
-    
-    ERROR("ERROR");
-
-    private final String value;
-
-    LogLevelEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static LogLevelEnum fromValue(String value) {
-      for (LogLevelEnum b : LogLevelEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @JsonProperty("log_level")
   @NotNull
+@Valid
 
-  private LogLevelEnum logLevel;
+  private IntegrationLogLevel logLevel;
 
   @JsonProperty("merchant_id")
   @Size(max=128)
@@ -212,7 +152,7 @@ public class IntegrationLog   {
     this.error = error;
   }
 
-  public IntegrationLog eventType(EventTypeEnum eventType) {
+  public IntegrationLog eventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -221,11 +161,11 @@ public class IntegrationLog   {
    * Log event type
    * @return eventType
   **/
-  public EventTypeEnum getEventType() {
+  public IntegrationLogEventType getEventType() {
     return eventType;
   }
 
-  public void setEventType(EventTypeEnum eventType) {
+  public void setEventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
   }
 
@@ -263,7 +203,7 @@ public class IntegrationLog   {
     this.feedProfileId = feedProfileId;
   }
 
-  public IntegrationLog logLevel(LogLevelEnum logLevel) {
+  public IntegrationLog logLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
     return this;
   }
@@ -272,11 +212,11 @@ public class IntegrationLog   {
    * Log level type
    * @return logLevel
   **/
-  public LogLevelEnum getLogLevel() {
+  public IntegrationLogLevel getLogLevel() {
     return logLevel;
   }
 
-  public void setLogLevel(LogLevelEnum logLevel) {
+  public void setLogLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
   }
 
@@ -423,10 +363,7 @@ public class IntegrationLog   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

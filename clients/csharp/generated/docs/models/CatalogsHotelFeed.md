@@ -5,19 +5,19 @@ Catalogs Hotel Feed object
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **DateTime** |  | 
-**Id** | **string** |  | 
-**UpdatedAt** | **DateTime** |  | 
-**CatalogType** | **CatalogsType** |  | 
+**CatalogType** | **string** |  | 
+**CreatedAt** | **DateTime** |  | [readonly] 
 **DefaultLocale** | **string** | The locale used within a feed for product descriptions. | 
 **Format** | **CatalogsFormat** |  | 
+**Id** | **string** | ID of the feed entity. | [readonly] 
 **Location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
 **Status** | **CatalogsStatus** |  | 
+**UpdatedAt** | **DateTime** |  | [readonly] 
 **CatalogId** | **string** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. | 
-**Credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | 
-**DefaultCurrency** | **NullableCurrency** |  | 
+**Credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
+**DefaultCurrency** | **NullableCurrency** |  | [optional] 
 **Name** | **string** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
-**PreferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | 
+**PreferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

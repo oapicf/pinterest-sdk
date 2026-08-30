@@ -18,7 +18,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CustomerListUploadCreateResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CustomerListUploadCreateResponse   {
   private CustomerListUpload customerListUpload;
   private S3MultipartUploadData s3MultipartUploadData;
@@ -36,6 +36,7 @@ public class CustomerListUploadCreateResponse   {
   }
 
   /**
+   * The Customer List Upload created.
    **/
   public CustomerListUploadCreateResponse customerListUpload(CustomerListUpload customerListUpload) {
     this.customerListUpload = customerListUpload;
@@ -43,7 +44,7 @@ public class CustomerListUploadCreateResponse   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The Customer List Upload created.")
   @JsonProperty(required = true, value = "customer_list_upload")
   @NotNull @Valid public CustomerListUpload getCustomerListUpload() {
     return customerListUpload;
@@ -55,6 +56,7 @@ public class CustomerListUploadCreateResponse   {
   }
 
   /**
+   * Pre-signed upload URLs corresponding to each part of the upload.
    **/
   public CustomerListUploadCreateResponse s3MultipartUploadData(S3MultipartUploadData s3MultipartUploadData) {
     this.s3MultipartUploadData = s3MultipartUploadData;
@@ -62,7 +64,7 @@ public class CustomerListUploadCreateResponse   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Pre-signed upload URLs corresponding to each part of the upload.")
   @JsonProperty(required = true, value = "s3_multipart_upload_data")
   @NotNull @Valid public S3MultipartUploadData getS3MultipartUploadData() {
     return s3MultipartUploadData;
@@ -108,12 +110,8 @@ public class CustomerListUploadCreateResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

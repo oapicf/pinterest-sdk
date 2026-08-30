@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ItemType** | **string** | Discriminator literal identifying this as image metadata inside a &#x60;PinMediaMetadata&#x60; payload. | 
 **Description** | **string** |  | [optional] 
 **Images** | [**ImageSize**](ImageSize.md) |  | [optional] 
-**ItemType** | **string** |  | [optional] 
 **Link** | **string** |  | [optional] 
 **Title** | **string** |  | [optional] 
 

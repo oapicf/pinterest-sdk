@@ -92,7 +92,7 @@ SET(String.valueOf("SET"));
 
   @Valid
 
-  private List<TargetingSpecAgeBucket> values;
+  private List<TargetingSpecAgeBucket> values = new ArrayList<>();
  /**
    * Get field
    * @return field
@@ -197,10 +197,7 @@ SET(String.valueOf("SET"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

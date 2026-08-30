@@ -10,30 +10,30 @@
 
 part of openapi.api;
 
-/// The access level a member/partner has to the business. Values are case-sensitive. <br> - EMPLOYEE: Can only view and access ad accounts you assign to them. They cannot see details about other employees, external partners or other ad accounts. <br> - BIZ_ADMIN: Have full control of roles and can add employees, external partners as well as grant ad account access.
-class MemberBusinessRole {
-  /// Instantiate a new enum with the provided [value].
-  const MemberBusinessRole._(this.value);
+/// The access level a member/partner has to the business. Values are case-sensitive. - EMPLOYEE: Can only view and access ad accounts you assign to them. They cannot see details about other employees, external partners or other ad accounts. - BIZ_ADMIN: Have full control of roles and can add employees, external partners as well as grant ad account access.
+enum MemberBusinessRole {
+  EMPLOYEE._(r'EMPLOYEE'),
+  BIZ_ADMIN._(r'BIZ_ADMIN'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const MemberBusinessRole._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const EMPLOYEE = MemberBusinessRole._(r'EMPLOYEE');
-  static const BIZ_ADMIN = MemberBusinessRole._(r'BIZ_ADMIN');
-
-  /// List of all possible values in this [enum][MemberBusinessRole].
-  static const values = <MemberBusinessRole>[
-    EMPLOYEE,
-    BIZ_ADMIN,
-  ];
-
+  /// Returns the instance of [MemberBusinessRole] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static MemberBusinessRole? fromJson(dynamic value) => MemberBusinessRoleTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [MemberBusinessRole]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<MemberBusinessRole> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <MemberBusinessRole>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class MemberBusinessRoleTypeTransformer {
 
   const MemberBusinessRoleTypeTransformer._();
 
-  String encode(MemberBusinessRole data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(MemberBusinessRole data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a MemberBusinessRole.
+  /// Returns the instance of [MemberBusinessRole] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class MemberBusinessRoleTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   MemberBusinessRole? decode(dynamic data, {bool allowNull = true}) {
+    if (data is MemberBusinessRole) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'EMPLOYEE': return MemberBusinessRole.EMPLOYEE;
@@ -79,7 +84,7 @@ class MemberBusinessRoleTypeTransformer {
     return null;
   }
 
-  /// Singleton [MemberBusinessRoleTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static MemberBusinessRoleTypeTransformer? _instance;
 }
 

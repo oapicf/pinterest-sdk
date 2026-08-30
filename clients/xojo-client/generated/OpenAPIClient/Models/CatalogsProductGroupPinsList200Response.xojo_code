@@ -7,9 +7,6 @@ Protected Class CatalogsProductGroupPinsList200Response
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Pins
-		#tag EndNote
 		items() As OpenAPIClient.Models.CatalogsProduct
 	#tag EndProperty
 

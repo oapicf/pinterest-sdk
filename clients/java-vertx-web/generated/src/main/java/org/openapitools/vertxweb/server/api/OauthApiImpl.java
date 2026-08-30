@@ -1,8 +1,10 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.ConversionAccessTokenResponse;
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.OauthAccessTokenResponse;
+import org.openapitools.vertxweb.server.model.ConversionAccessToken;
+import org.openapitools.vertxweb.server.model.OauthAccessToken;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.TokenGrantType;
+import org.openapitools.vertxweb.server.model.TokenTypeHint;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -16,11 +18,11 @@ import java.util.Map;
 // Implement this class
 
 public class OauthApiImpl implements OauthApi {
-    public Future<ApiResponse<ConversionAccessTokenResponse>> oauthConversionToken() {
+    public Future<ApiResponse<ConversionAccessToken>> oauthConversionToken() {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<OauthAccessTokenResponse>> oauthToken(JsonObject formBody) {
+    public Future<ApiResponse<OauthAccessToken>> oauthToken(JsonObject formBody) {
         return Future.failedFuture(new HttpException(501));
     }
 

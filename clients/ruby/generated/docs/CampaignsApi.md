@@ -11,15 +11,16 @@ All URIs are relative to *https://api.pinterest.com/v5*
 | [**campaigns_get**](CampaignsApi.md#campaigns_get) | **GET** /ad_accounts/{ad_account_id}/campaigns/{campaign_id} | Get campaign |
 | [**campaigns_list**](CampaignsApi.md#campaigns_list) | **GET** /ad_accounts/{ad_account_id}/campaigns | List campaigns |
 | [**campaigns_update**](CampaignsApi.md#campaigns_update) | **PATCH** /ad_accounts/{ad_account_id}/campaigns | Update campaigns |
+| [**get_campaign_delivery_estimates**](CampaignsApi.md#get_campaign_delivery_estimates) | **POST** /ad_accounts/{ad_account_id}/campaigns/delivery_estimates | Get campaign delivery estimates |
 
 
 ## ad_pins_analytics
 
-> <Array<AdPinAnalytics>> ad_pins_analytics(ad_account_id, campaign_id, pin_ids, start_date, end_date, columns, granularity, opts)
+> <Array<AdPinAnalytics>> ad_pins_analytics(campaign_id, pin_ids, start_date, end_date, columns, granularity, ad_account_id, opts)
 
 Get pins analytics
 
-Get analytics for the pins given a campaign and pins in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
+Get analytics for the pins given a campaign and pins in the specified `ad_account_id`, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
 
 ### Examples
 
@@ -36,23 +37,23 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CampaignsApi.new
-ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 campaign_id = 'campaign_id_example' # String | Campaign Id to use to filter the results.
 pin_ids = ['inner_example'] # Array<String> | List of Pin IDs.
 start_date = Date.parse('2013-10-20') # Date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 end_date = Date.parse('2013-10-20') # Date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-columns = ['SPEND_IN_MICRO_DOLLAR'] # Array<String> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-granularity = PinterestSdkClient::Granularity::TOTAL # Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+columns = [PinterestSdkClient::ReportingColumnSync::SPEND_IN_MICRO_DOLLAR] # Array<ReportingColumnSync> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+granularity = PinterestSdkClient::Granularity::TOTAL # Granularity |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
-  click_window_days: 0, # Integer | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-  engagement_window_days: 0, # Integer | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
-  view_window_days: 0, # Integer | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+  click_window_days: 0, # Float | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+  engagement_window_days: 0, # Float | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+  view_window_days: 0, # Float | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
   conversion_report_time: 'TIME_OF_AD_ACTION' # String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
 }
 
 begin
   # Get pins analytics
-  result = api_instance.ad_pins_analytics(ad_account_id, campaign_id, pin_ids, start_date, end_date, columns, granularity, opts)
+  result = api_instance.ad_pins_analytics(campaign_id, pin_ids, start_date, end_date, columns, granularity, ad_account_id, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling CampaignsApi->ad_pins_analytics: #{e}"
@@ -63,12 +64,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<AdPinAnalytics>>, Integer, Hash)> ad_pins_analytics_with_http_info(ad_account_id, campaign_id, pin_ids, start_date, end_date, columns, granularity, opts)
+> <Array(<Array<AdPinAnalytics>>, Integer, Hash)> ad_pins_analytics_with_http_info(campaign_id, pin_ids, start_date, end_date, columns, granularity, ad_account_id, opts)
 
 ```ruby
 begin
   # Get pins analytics
-  data, status_code, headers = api_instance.ad_pins_analytics_with_http_info(ad_account_id, campaign_id, pin_ids, start_date, end_date, columns, granularity, opts)
+  data, status_code, headers = api_instance.ad_pins_analytics_with_http_info(campaign_id, pin_ids, start_date, end_date, columns, granularity, ad_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<AdPinAnalytics>>
@@ -81,16 +82,16 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **campaign_id** | **String** | Campaign Id to use to filter the results. |  |
 | **pin_ids** | [**Array&lt;String&gt;**](String.md) | List of Pin IDs. |  |
 | **start_date** | **Date** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |  |
 | **end_date** | **Date** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |  |
-| **columns** | [**Array&lt;String&gt;**](String.md) | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned |  |
-| **granularity** | [**Granularity**](.md) | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly |  |
-| **click_window_days** | **Integer** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional][default to 30] |
-| **engagement_window_days** | **Integer** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional][default to 30] |
-| **view_window_days** | **Integer** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional][default to 1] |
+| **columns** | [**Array&lt;ReportingColumnSync&gt;**](ReportingColumnSync.md) | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. |  |
+| **granularity** | [**Granularity**](.md) |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly |  |
+| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
+| **click_window_days** | **Float** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional][default to 30] |
+| **engagement_window_days** | **Float** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional][default to 30] |
+| **view_window_days** | **Float** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional][default to 1] |
 | **conversion_report_time** | **String** | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional][default to &#39;TIME_OF_AD_ACTION&#39;] |
 
 ### Return type
@@ -113,7 +114,7 @@ end
 
 Get targeting analytics for campaigns
 
-Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\").  * The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Examples
 
@@ -134,13 +135,13 @@ ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad ac
 campaign_ids = ['inner_example'] # Array<String> | List of Campaign Ids to use to filter the results.
 start_date = Date.parse('2013-10-20') # Date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 end_date = Date.parse('2013-10-20') # Date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-targeting_types = [PinterestSdkClient::AdsAnalyticsCampaignTargetingType::KEYWORD] # Array<AdsAnalyticsCampaignTargetingType> | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-columns = ['SPEND_IN_MICRO_DOLLAR'] # Array<String> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-granularity = PinterestSdkClient::Granularity::TOTAL # Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+targeting_types = [PinterestSdkClient::AdsAnalyticsCampaignTargetingType::KEYWORD] # Array<AdsAnalyticsCampaignTargetingType> | Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+columns = [PinterestSdkClient::ReportingColumnSync::SPEND_IN_MICRO_DOLLAR] # Array<ReportingColumnSync> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+granularity = PinterestSdkClient::Granularity::TOTAL # Granularity |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
 opts = {
-  click_window_days: 0, # Integer | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-  engagement_window_days: 0, # Integer | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
-  view_window_days: 0, # Integer | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+  click_window_days: 0, # Float | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+  engagement_window_days: 0, # Float | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+  view_window_days: 0, # Float | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
   conversion_report_time: 'TIME_OF_AD_ACTION', # String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
   attribution_types: [PinterestSdkClient::ConversionReportAttributionType::INDIVIDUAL], # Array<ConversionReportAttributionType> | List of types of attribution for the conversion report
   reporting_timezone: PinterestSdkClient::ReportingTimeZone::PINTEREST_TIME_ZONE # ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
@@ -181,12 +182,12 @@ end
 | **campaign_ids** | [**Array&lt;String&gt;**](String.md) | List of Campaign Ids to use to filter the results. |  |
 | **start_date** | **Date** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |  |
 | **end_date** | **Date** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |  |
-| **targeting_types** | [**Array&lt;AdsAnalyticsCampaignTargetingType&gt;**](AdsAnalyticsCampaignTargetingType.md) | Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. |  |
-| **columns** | [**Array&lt;String&gt;**](String.md) | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned |  |
-| **granularity** | [**Granularity**](.md) | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly |  |
-| **click_window_days** | **Integer** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional][default to 30] |
-| **engagement_window_days** | **Integer** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional][default to 30] |
-| **view_window_days** | **Integer** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional][default to 1] |
+| **targeting_types** | [**Array&lt;AdsAnalyticsCampaignTargetingType&gt;**](AdsAnalyticsCampaignTargetingType.md) | Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. |  |
+| **columns** | [**Array&lt;ReportingColumnSync&gt;**](ReportingColumnSync.md) | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. |  |
+| **granularity** | [**Granularity**](.md) |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly |  |
+| **click_window_days** | **Float** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional][default to 30] |
+| **engagement_window_days** | **Float** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional][default to 30] |
+| **view_window_days** | **Float** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional][default to 1] |
 | **conversion_report_time** | **String** | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional][default to &#39;TIME_OF_AD_ACTION&#39;] |
 | **attribution_types** | [**Array&lt;ConversionReportAttributionType&gt;**](ConversionReportAttributionType.md) | List of types of attribution for the conversion report | [optional] |
 | **reporting_timezone** | [**ReportingTimeZone**](.md) | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] |
@@ -207,11 +208,11 @@ end
 
 ## campaigns_analytics
 
-> <Array<CampaignsAnalyticsResponseInner>> campaigns_analytics(ad_account_id, start_date, end_date, campaign_ids, columns, granularity, opts)
+> <Array<CampaignsAnalyticsMetrics>> campaigns_analytics(start_date, end_date, campaign_ids, columns, granularity, ad_account_id, opts)
 
 Get campaign analytics
 
-Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+Get analytics for the specified campaigns in the specified `ad_account_id`, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Examples
 
@@ -228,16 +229,16 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CampaignsApi.new
-ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 start_date = Date.parse('2013-10-20') # Date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 end_date = Date.parse('2013-10-20') # Date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
 campaign_ids = ['inner_example'] # Array<String> | List of Campaign Ids to use to filter the results.
-columns = ['SPEND_IN_MICRO_DOLLAR'] # Array<String> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-granularity = PinterestSdkClient::Granularity::TOTAL # Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+columns = [PinterestSdkClient::ReportingColumnSync::SPEND_IN_MICRO_DOLLAR] # Array<ReportingColumnSync> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+granularity = PinterestSdkClient::Granularity::TOTAL # Granularity |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
-  click_window_days: 0, # Integer | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-  engagement_window_days: 0, # Integer | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
-  view_window_days: 0, # Integer | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+  click_window_days: 0, # Float | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+  engagement_window_days: 0, # Float | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+  view_window_days: 0, # Float | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
   conversion_report_time: 'TIME_OF_AD_ACTION', # String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
   aggregate_report_rows: true, # Boolean | Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.
   reporting_timezone: PinterestSdkClient::ReportingTimeZone::PINTEREST_TIME_ZONE # ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
@@ -245,7 +246,7 @@ opts = {
 
 begin
   # Get campaign analytics
-  result = api_instance.campaigns_analytics(ad_account_id, start_date, end_date, campaign_ids, columns, granularity, opts)
+  result = api_instance.campaigns_analytics(start_date, end_date, campaign_ids, columns, granularity, ad_account_id, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling CampaignsApi->campaigns_analytics: #{e}"
@@ -256,15 +257,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<CampaignsAnalyticsResponseInner>>, Integer, Hash)> campaigns_analytics_with_http_info(ad_account_id, start_date, end_date, campaign_ids, columns, granularity, opts)
+> <Array(<Array<CampaignsAnalyticsMetrics>>, Integer, Hash)> campaigns_analytics_with_http_info(start_date, end_date, campaign_ids, columns, granularity, ad_account_id, opts)
 
 ```ruby
 begin
   # Get campaign analytics
-  data, status_code, headers = api_instance.campaigns_analytics_with_http_info(ad_account_id, start_date, end_date, campaign_ids, columns, granularity, opts)
+  data, status_code, headers = api_instance.campaigns_analytics_with_http_info(start_date, end_date, campaign_ids, columns, granularity, ad_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Array<CampaignsAnalyticsResponseInner>>
+  p data # => <Array<CampaignsAnalyticsMetrics>>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling CampaignsApi->campaigns_analytics_with_http_info: #{e}"
 end
@@ -274,22 +275,22 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **start_date** | **Date** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |  |
 | **end_date** | **Date** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |  |
 | **campaign_ids** | [**Array&lt;String&gt;**](String.md) | List of Campaign Ids to use to filter the results. |  |
-| **columns** | [**Array&lt;String&gt;**](String.md) | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned |  |
-| **granularity** | [**Granularity**](.md) | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly |  |
-| **click_window_days** | **Integer** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional][default to 30] |
-| **engagement_window_days** | **Integer** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional][default to 30] |
-| **view_window_days** | **Integer** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional][default to 1] |
+| **columns** | [**Array&lt;ReportingColumnSync&gt;**](ReportingColumnSync.md) | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. |  |
+| **granularity** | [**Granularity**](.md) |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly |  |
+| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
+| **click_window_days** | **Float** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional][default to 30] |
+| **engagement_window_days** | **Float** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional][default to 30] |
+| **view_window_days** | **Float** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional][default to 1] |
 | **conversion_report_time** | **String** | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional][default to &#39;TIME_OF_AD_ACTION&#39;] |
 | **aggregate_report_rows** | **Boolean** | Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users. | [optional][default to false] |
 | **reporting_timezone** | [**ReportingTimeZone**](.md) | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] |
 
 ### Return type
 
-[**Array&lt;CampaignsAnalyticsResponseInner&gt;**](CampaignsAnalyticsResponseInner.md)
+[**Array&lt;CampaignsAnalyticsMetrics&gt;**](CampaignsAnalyticsMetrics.md)
 
 ### Authorization
 
@@ -303,11 +304,11 @@ end
 
 ## campaigns_create
 
-> <CampaignCreateResponse> campaigns_create(ad_account_id, campaign_create_request)
+> <CampaignBatchWriteResponseModel> campaigns_create(ad_account_id, campaign_create_item)
 
 Create campaigns
 
-Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads.  For more, see [Set up your campaign](https://help.pinterest.com/en/business/article/set-up-your-campaign/).  **Note:** - The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile (e.g. USD).  Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.  **Equivalency equations**, using dollars as an example currency:  - $1 = 1,000,000 microdollars - 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000
 
 ### Examples
 
@@ -322,11 +323,11 @@ end
 
 api_instance = PinterestSdkClient::CampaignsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-campaign_create_request = [PinterestSdkClient::CampaignCreateRequest.new({ad_account_id: '549755885175', name: 'ACME Tools', objective_type: PinterestSdkClient::ObjectiveType::AWARENESS})] # Array<CampaignCreateRequest> | Array of campaigns.
+campaign_create_item = [PinterestSdkClient::CampaignCreateItem.new({name: 'ACME Tools', objective_type: PinterestSdkClient::ConversionObjectiveType::AWARENESS})] # Array<CampaignCreateItem> | 
 
 begin
   # Create campaigns
-  result = api_instance.campaigns_create(ad_account_id, campaign_create_request)
+  result = api_instance.campaigns_create(ad_account_id, campaign_create_item)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling CampaignsApi->campaigns_create: #{e}"
@@ -337,15 +338,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CampaignCreateResponse>, Integer, Hash)> campaigns_create_with_http_info(ad_account_id, campaign_create_request)
+> <Array(<CampaignBatchWriteResponseModel>, Integer, Hash)> campaigns_create_with_http_info(ad_account_id, campaign_create_item)
 
 ```ruby
 begin
   # Create campaigns
-  data, status_code, headers = api_instance.campaigns_create_with_http_info(ad_account_id, campaign_create_request)
+  data, status_code, headers = api_instance.campaigns_create_with_http_info(ad_account_id, campaign_create_item)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CampaignCreateResponse>
+  p data # => <CampaignBatchWriteResponseModel>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling CampaignsApi->campaigns_create_with_http_info: #{e}"
 end
@@ -356,11 +357,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **campaign_create_request** | [**Array&lt;CampaignCreateRequest&gt;**](CampaignCreateRequest.md) | Array of campaigns. |  |
+| **campaign_create_item** | [**Array&lt;CampaignCreateItem&gt;**](CampaignCreateItem.md) |  |  |
 
 ### Return type
 
-[**CampaignCreateResponse**](CampaignCreateResponse.md)
+[**CampaignBatchWriteResponseModel**](CampaignBatchWriteResponseModel.md)
 
 ### Authorization
 
@@ -374,7 +375,7 @@ end
 
 ## campaigns_get
 
-> <CampaignResponse> campaigns_get(ad_account_id, campaign_id)
+> <Campaign> campaigns_get(campaign_id, ad_account_id)
 
 Get campaign
 
@@ -395,12 +396,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CampaignsApi.new
-ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 campaign_id = 'campaign_id_example' # String | Campaign ID, must be associated with the ad account ID provided in the path.
+ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 
 begin
   # Get campaign
-  result = api_instance.campaigns_get(ad_account_id, campaign_id)
+  result = api_instance.campaigns_get(campaign_id, ad_account_id)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling CampaignsApi->campaigns_get: #{e}"
@@ -411,15 +412,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CampaignResponse>, Integer, Hash)> campaigns_get_with_http_info(ad_account_id, campaign_id)
+> <Array(<Campaign>, Integer, Hash)> campaigns_get_with_http_info(campaign_id, ad_account_id)
 
 ```ruby
 begin
   # Get campaign
-  data, status_code, headers = api_instance.campaigns_get_with_http_info(ad_account_id, campaign_id)
+  data, status_code, headers = api_instance.campaigns_get_with_http_info(campaign_id, ad_account_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CampaignResponse>
+  p data # => <Campaign>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling CampaignsApi->campaigns_get_with_http_info: #{e}"
 end
@@ -429,12 +430,12 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **campaign_id** | **String** | Campaign ID, must be associated with the ad account ID provided in the path. |  |
+| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 
 ### Return type
 
-[**CampaignResponse**](CampaignResponse.md)
+[**Campaign**](Campaign.md)
 
 ### Authorization
 
@@ -452,7 +453,7 @@ end
 
 List campaigns
 
-Get a list of the campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+Get a list of the campaigns in the specified `ad_account_id`, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
 
 ### Examples
 
@@ -471,11 +472,11 @@ end
 api_instance = PinterestSdkClient::CampaignsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56, # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  order: PinterestSdkClient::PinterestLibPaginationOrder::ASCENDING, # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
   campaign_ids: ['inner_example'], # Array<String> | List of Campaign Ids to use to filter the results.
-  entity_statuses: ['ACTIVE'], # Array<String> | Entity status
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  order: 'ASCENDING', # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  bookmark: 'bookmark_example' # String | Cursor used to fetch the next page of items
+  entity_statuses: [PinterestSdkClient::EntityStatus::ACTIVE] # Array<EntityStatus> | Entity status
 }
 
 begin
@@ -510,11 +511,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **campaign_ids** | [**Array&lt;String&gt;**](String.md) | List of Campaign Ids to use to filter the results. | [optional] |
-| **entity_statuses** | [**Array&lt;String&gt;**](String.md) | Entity status | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
-| **order** | **String** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
+| **order** | [**PinterestLibPaginationOrder**](.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
+| **campaign_ids** | [**Array&lt;String&gt;**](String.md) | List of Campaign Ids to use to filter the results. | [optional] |
+| **entity_statuses** | [**Array&lt;EntityStatus&gt;**](EntityStatus.md) | Entity status | [optional] |
 
 ### Return type
 
@@ -532,11 +533,11 @@ end
 
 ## campaigns_update
 
-> <CampaignUpdateResponse> campaigns_update(ad_account_id, campaign_update_request)
+> <CampaignBatchWriteResponseModel> campaigns_update(ad_account_id, campaign_batch_update_item)
 
 Update campaigns
 
-<p>Update multiple ad campaigns based on campaign_ids. </p> <p><strong>Note:</strong></p> - <p>The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+Update multiple ad campaigns based on campaign_ids.  **Note:** - The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile (e.g. USD).  Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.  **Equivalency equations**, using dollars as an example currency:  - $1 = 1,000,000 microdollars - 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000
 
 ### Examples
 
@@ -551,11 +552,11 @@ end
 
 api_instance = PinterestSdkClient::CampaignsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-campaign_update_request = [PinterestSdkClient::CampaignUpdateRequest.new({id: '549755885175', ad_account_id: '549755885175'})] # Array<CampaignUpdateRequest> | Array of campaigns.
+campaign_batch_update_item = [PinterestSdkClient::CampaignBatchUpdateItem.new({id: '549755885175'})] # Array<CampaignBatchUpdateItem> | 
 
 begin
   # Update campaigns
-  result = api_instance.campaigns_update(ad_account_id, campaign_update_request)
+  result = api_instance.campaigns_update(ad_account_id, campaign_batch_update_item)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling CampaignsApi->campaigns_update: #{e}"
@@ -566,15 +567,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CampaignUpdateResponse>, Integer, Hash)> campaigns_update_with_http_info(ad_account_id, campaign_update_request)
+> <Array(<CampaignBatchWriteResponseModel>, Integer, Hash)> campaigns_update_with_http_info(ad_account_id, campaign_batch_update_item)
 
 ```ruby
 begin
   # Update campaigns
-  data, status_code, headers = api_instance.campaigns_update_with_http_info(ad_account_id, campaign_update_request)
+  data, status_code, headers = api_instance.campaigns_update_with_http_info(ad_account_id, campaign_batch_update_item)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CampaignUpdateResponse>
+  p data # => <CampaignBatchWriteResponseModel>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling CampaignsApi->campaigns_update_with_http_info: #{e}"
 end
@@ -585,11 +586,82 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **campaign_update_request** | [**Array&lt;CampaignUpdateRequest&gt;**](CampaignUpdateRequest.md) | Array of campaigns. |  |
+| **campaign_batch_update_item** | [**Array&lt;CampaignBatchUpdateItem&gt;**](CampaignBatchUpdateItem.md) |  |  |
 
 ### Return type
 
-[**CampaignUpdateResponse**](CampaignUpdateResponse.md)
+[**CampaignBatchWriteResponseModel**](CampaignBatchWriteResponseModel.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_campaign_delivery_estimates
+
+> <CampaignDeliveryEstimatesResponse> get_campaign_delivery_estimates(ad_account_id, campaign_delivery_estimates_campaign)
+
+Get campaign delivery estimates
+
+Get delivery estimates for an ads campaign  **This endpoint is currently in beta and is not available to all apps [Learn more](/docs/new/about-beta-access/).**
+
+### Examples
+
+```ruby
+require 'time'
+require 'pinterest_sdk'
+# setup authorization
+PinterestSdkClient.configure do |config|
+  # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = PinterestSdkClient::CampaignsApi.new
+ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
+campaign_delivery_estimates_campaign = [PinterestSdkClient::CampaignDeliveryEstimatesCampaign.new({ad_groups: [PinterestSdkClient::AdGroupDeliveryEstimates.new], budget_duration_type: PinterestSdkClient::BudgetDurationType::FIXED_DAILY, objective_type: PinterestSdkClient::DeliveryEstimateObjectiveType::AWARENESS, start_date: 'start_date_example'})] # Array<CampaignDeliveryEstimatesCampaign> | 
+
+begin
+  # Get campaign delivery estimates
+  result = api_instance.get_campaign_delivery_estimates(ad_account_id, campaign_delivery_estimates_campaign)
+  p result
+rescue PinterestSdkClient::ApiError => e
+  puts "Error when calling CampaignsApi->get_campaign_delivery_estimates: #{e}"
+end
+```
+
+#### Using the get_campaign_delivery_estimates_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CampaignDeliveryEstimatesResponse>, Integer, Hash)> get_campaign_delivery_estimates_with_http_info(ad_account_id, campaign_delivery_estimates_campaign)
+
+```ruby
+begin
+  # Get campaign delivery estimates
+  data, status_code, headers = api_instance.get_campaign_delivery_estimates_with_http_info(ad_account_id, campaign_delivery_estimates_campaign)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CampaignDeliveryEstimatesResponse>
+rescue PinterestSdkClient::ApiError => e
+  puts "Error when calling CampaignsApi->get_campaign_delivery_estimates_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
+| **campaign_delivery_estimates_campaign** | [**Array&lt;CampaignDeliveryEstimatesCampaign&gt;**](CampaignDeliveryEstimatesCampaign.md) |  |  |
+
+### Return type
+
+[**CampaignDeliveryEstimatesResponse**](CampaignDeliveryEstimatesResponse.md)
 
 ### Authorization
 

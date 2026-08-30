@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **catalog_type** | **character** |  | [optional] [Enum: [CREATIVE_ASSETS]] 
 **description** | **character** |  | [optional] 
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [optional] 
-**name** | **character** |  | [optional] 
+**name** | **character** | Name of catalog product group | [optional] 
 
 

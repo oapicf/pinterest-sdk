@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,16 +24,18 @@ var _ MappedNullable = &AdGroupCreateRequest{}
 type AdGroupCreateRequest struct {
 	// Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
 	AutoTargetingEnabled *bool `json:"auto_targeting_enabled,omitempty"`
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+	BidMultiplier *float32 `json:"bid_multiplier,omitempty"`
+	BudgetType *BudgetType `json:"budget_type,omitempty"`
+	PacingDeliveryType *PacingDeliveryType `json:"pacing_delivery_type,omitempty"`
 	// Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
 	BidInMicroCurrency NullableInt32 `json:"bid_in_micro_currency,omitempty"`
-	// Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
-	BidStrategyType NullableString `json:"bid_strategy_type,omitempty"`
+	BidStrategyType NullableBidStrategyType `json:"bid_strategy_type,omitempty"`
 	BillableEvent ActionType `json:"billable_event"`
 	// Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
 	BudgetInMicroCurrency NullableInt32 `json:"budget_in_micro_currency,omitempty"`
-	BudgetType *BudgetType `json:"budget_type,omitempty"`
 	// Campaign ID of the ad group.
-	CampaignId string `json:"campaign_id" validate:"regexp=^[C]?\\\\d+$"`
+	CampaignId string `json:"campaign_id" validate:"regexp=^[C]?\\d+$"`
 	// Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
 	EndTime NullableInt32 `json:"end_time,omitempty"`
 	// Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.
@@ -43,14 +45,15 @@ type AdGroupCreateRequest struct {
 	// Ad group name.
 	Name string `json:"name"`
 	// Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
-	OptimizationGoalMetadata NullableOptimizationGoalMetadata `json:"optimization_goal_metadata,omitempty"`
-	PacingDeliveryType *PacingDeliveryType `json:"pacing_delivery_type,omitempty"`
+	OptimizationGoalMetadata map[string]interface{} `json:"optimization_goal_metadata,omitempty"`
 	// <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
 	PlacementGroup *PlacementGroupType `json:"placement_group,omitempty"`
 	// Specify if the promotion is applied at ad group or item level
 	PromotionApplicationLevel NullableString `json:"promotion_application_level,omitempty"`
 	// Promotion ID. To clear this field, set to null.
-	PromotionId NullableString `json:"promotion_id,omitempty" validate:"regexp=^\\\\d+$"`
+	PromotionId NullableString `json:"promotion_id,omitempty" validate:"regexp=^\\d+$"`
+	// Promotion IDs list. To clear this field, set to an empty array [].
+	PromotionIds []string `json:"promotion_ids,omitempty"`
 	// Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
 	StartTime NullableInt32 `json:"start_time,omitempty"`
 	// Ad group/entity status.
@@ -58,10 +61,8 @@ type AdGroupCreateRequest struct {
 	TargetingSpec *TargetingSpec `json:"targeting_spec,omitempty"`
 	// Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
 	TargetingTemplateIds []string `json:"targeting_template_ids,omitempty"`
-	// Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
-	TrackingUrls NullableTrackingUrls `json:"tracking_urls,omitempty"`
-	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
-	BidMultiplier *float32 `json:"bid_multiplier,omitempty"`
+	// Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+	TrackingUrls map[string]interface{} `json:"tracking_urls,omitempty"`
 }
 
 type _AdGroupCreateRequest AdGroupCreateRequest
@@ -73,12 +74,8 @@ type _AdGroupCreateRequest AdGroupCreateRequest
 func NewAdGroupCreateRequest(billableEvent ActionType, campaignId string, name string) *AdGroupCreateRequest {
 	this := AdGroupCreateRequest{}
 	this.BillableEvent = billableEvent
-	var budgetType BudgetType = DAILY
-	this.BudgetType = &budgetType
 	this.CampaignId = campaignId
 	this.Name = name
-	var pacingDeliveryType PacingDeliveryType = STANDARD
-	this.PacingDeliveryType = &pacingDeliveryType
 	var promotionId string = "0"
 	this.PromotionId = *NewNullableString(&promotionId)
 	return &this
@@ -89,10 +86,6 @@ func NewAdGroupCreateRequest(billableEvent ActionType, campaignId string, name s
 // but it doesn't guarantee that properties required by API are set
 func NewAdGroupCreateRequestWithDefaults() *AdGroupCreateRequest {
 	this := AdGroupCreateRequest{}
-	var budgetType BudgetType = DAILY
-	this.BudgetType = &budgetType
-	var pacingDeliveryType PacingDeliveryType = STANDARD
-	this.PacingDeliveryType = &pacingDeliveryType
 	var promotionId string = "0"
 	this.PromotionId = *NewNullableString(&promotionId)
 	return &this
@@ -128,6 +121,102 @@ func (o *AdGroupCreateRequest) HasAutoTargetingEnabled() bool {
 // SetAutoTargetingEnabled gets a reference to the given bool and assigns it to the AutoTargetingEnabled field.
 func (o *AdGroupCreateRequest) SetAutoTargetingEnabled(v bool) {
 	o.AutoTargetingEnabled = &v
+}
+
+// GetBidMultiplier returns the BidMultiplier field value if set, zero value otherwise.
+func (o *AdGroupCreateRequest) GetBidMultiplier() float32 {
+	if o == nil || IsNil(o.BidMultiplier) {
+		var ret float32
+		return ret
+	}
+	return *o.BidMultiplier
+}
+
+// GetBidMultiplierOk returns a tuple with the BidMultiplier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupCreateRequest) GetBidMultiplierOk() (*float32, bool) {
+	if o == nil || IsNil(o.BidMultiplier) {
+		return nil, false
+	}
+	return o.BidMultiplier, true
+}
+
+// HasBidMultiplier returns a boolean if a field has been set.
+func (o *AdGroupCreateRequest) HasBidMultiplier() bool {
+	if o != nil && !IsNil(o.BidMultiplier) {
+		return true
+	}
+
+	return false
+}
+
+// SetBidMultiplier gets a reference to the given float32 and assigns it to the BidMultiplier field.
+func (o *AdGroupCreateRequest) SetBidMultiplier(v float32) {
+	o.BidMultiplier = &v
+}
+
+// GetBudgetType returns the BudgetType field value if set, zero value otherwise.
+func (o *AdGroupCreateRequest) GetBudgetType() BudgetType {
+	if o == nil || IsNil(o.BudgetType) {
+		var ret BudgetType
+		return ret
+	}
+	return *o.BudgetType
+}
+
+// GetBudgetTypeOk returns a tuple with the BudgetType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupCreateRequest) GetBudgetTypeOk() (*BudgetType, bool) {
+	if o == nil || IsNil(o.BudgetType) {
+		return nil, false
+	}
+	return o.BudgetType, true
+}
+
+// HasBudgetType returns a boolean if a field has been set.
+func (o *AdGroupCreateRequest) HasBudgetType() bool {
+	if o != nil && !IsNil(o.BudgetType) {
+		return true
+	}
+
+	return false
+}
+
+// SetBudgetType gets a reference to the given BudgetType and assigns it to the BudgetType field.
+func (o *AdGroupCreateRequest) SetBudgetType(v BudgetType) {
+	o.BudgetType = &v
+}
+
+// GetPacingDeliveryType returns the PacingDeliveryType field value if set, zero value otherwise.
+func (o *AdGroupCreateRequest) GetPacingDeliveryType() PacingDeliveryType {
+	if o == nil || IsNil(o.PacingDeliveryType) {
+		var ret PacingDeliveryType
+		return ret
+	}
+	return *o.PacingDeliveryType
+}
+
+// GetPacingDeliveryTypeOk returns a tuple with the PacingDeliveryType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupCreateRequest) GetPacingDeliveryTypeOk() (*PacingDeliveryType, bool) {
+	if o == nil || IsNil(o.PacingDeliveryType) {
+		return nil, false
+	}
+	return o.PacingDeliveryType, true
+}
+
+// HasPacingDeliveryType returns a boolean if a field has been set.
+func (o *AdGroupCreateRequest) HasPacingDeliveryType() bool {
+	if o != nil && !IsNil(o.PacingDeliveryType) {
+		return true
+	}
+
+	return false
+}
+
+// SetPacingDeliveryType gets a reference to the given PacingDeliveryType and assigns it to the PacingDeliveryType field.
+func (o *AdGroupCreateRequest) SetPacingDeliveryType(v PacingDeliveryType) {
+	o.PacingDeliveryType = &v
 }
 
 // GetBidInMicroCurrency returns the BidInMicroCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -173,9 +262,9 @@ func (o *AdGroupCreateRequest) UnsetBidInMicroCurrency() {
 }
 
 // GetBidStrategyType returns the BidStrategyType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupCreateRequest) GetBidStrategyType() string {
+func (o *AdGroupCreateRequest) GetBidStrategyType() BidStrategyType {
 	if o == nil || IsNil(o.BidStrategyType.Get()) {
-		var ret string
+		var ret BidStrategyType
 		return ret
 	}
 	return *o.BidStrategyType.Get()
@@ -184,7 +273,7 @@ func (o *AdGroupCreateRequest) GetBidStrategyType() string {
 // GetBidStrategyTypeOk returns a tuple with the BidStrategyType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupCreateRequest) GetBidStrategyTypeOk() (*string, bool) {
+func (o *AdGroupCreateRequest) GetBidStrategyTypeOk() (*BidStrategyType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -200,8 +289,8 @@ func (o *AdGroupCreateRequest) HasBidStrategyType() bool {
 	return false
 }
 
-// SetBidStrategyType gets a reference to the given NullableString and assigns it to the BidStrategyType field.
-func (o *AdGroupCreateRequest) SetBidStrategyType(v string) {
+// SetBidStrategyType gets a reference to the given NullableBidStrategyType and assigns it to the BidStrategyType field.
+func (o *AdGroupCreateRequest) SetBidStrategyType(v BidStrategyType) {
 	o.BidStrategyType.Set(&v)
 }
 // SetBidStrategyTypeNil sets the value for BidStrategyType to be an explicit nil
@@ -278,38 +367,6 @@ func (o *AdGroupCreateRequest) SetBudgetInMicroCurrencyNil() {
 // UnsetBudgetInMicroCurrency ensures that no value is present for BudgetInMicroCurrency, not even an explicit nil
 func (o *AdGroupCreateRequest) UnsetBudgetInMicroCurrency() {
 	o.BudgetInMicroCurrency.Unset()
-}
-
-// GetBudgetType returns the BudgetType field value if set, zero value otherwise.
-func (o *AdGroupCreateRequest) GetBudgetType() BudgetType {
-	if o == nil || IsNil(o.BudgetType) {
-		var ret BudgetType
-		return ret
-	}
-	return *o.BudgetType
-}
-
-// GetBudgetTypeOk returns a tuple with the BudgetType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupCreateRequest) GetBudgetTypeOk() (*BudgetType, bool) {
-	if o == nil || IsNil(o.BudgetType) {
-		return nil, false
-	}
-	return o.BudgetType, true
-}
-
-// HasBudgetType returns a boolean if a field has been set.
-func (o *AdGroupCreateRequest) HasBudgetType() bool {
-	if o != nil && !IsNil(o.BudgetType) {
-		return true
-	}
-
-	return false
-}
-
-// SetBudgetType gets a reference to the given BudgetType and assigns it to the BudgetType field.
-func (o *AdGroupCreateRequest) SetBudgetType(v BudgetType) {
-	o.BudgetType = &v
 }
 
 // GetCampaignId returns the CampaignId field value
@@ -477,77 +534,36 @@ func (o *AdGroupCreateRequest) SetName(v string) {
 }
 
 // GetOptimizationGoalMetadata returns the OptimizationGoalMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupCreateRequest) GetOptimizationGoalMetadata() OptimizationGoalMetadata {
-	if o == nil || IsNil(o.OptimizationGoalMetadata.Get()) {
-		var ret OptimizationGoalMetadata
+func (o *AdGroupCreateRequest) GetOptimizationGoalMetadata() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.OptimizationGoalMetadata.Get()
+	return o.OptimizationGoalMetadata
 }
 
 // GetOptimizationGoalMetadataOk returns a tuple with the OptimizationGoalMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupCreateRequest) GetOptimizationGoalMetadataOk() (*OptimizationGoalMetadata, bool) {
-	if o == nil {
-		return nil, false
+func (o *AdGroupCreateRequest) GetOptimizationGoalMetadataOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.OptimizationGoalMetadata) {
+		return map[string]interface{}{}, false
 	}
-	return o.OptimizationGoalMetadata.Get(), o.OptimizationGoalMetadata.IsSet()
+	return o.OptimizationGoalMetadata, true
 }
 
 // HasOptimizationGoalMetadata returns a boolean if a field has been set.
 func (o *AdGroupCreateRequest) HasOptimizationGoalMetadata() bool {
-	if o != nil && o.OptimizationGoalMetadata.IsSet() {
+	if o != nil && !IsNil(o.OptimizationGoalMetadata) {
 		return true
 	}
 
 	return false
 }
 
-// SetOptimizationGoalMetadata gets a reference to the given NullableOptimizationGoalMetadata and assigns it to the OptimizationGoalMetadata field.
-func (o *AdGroupCreateRequest) SetOptimizationGoalMetadata(v OptimizationGoalMetadata) {
-	o.OptimizationGoalMetadata.Set(&v)
-}
-// SetOptimizationGoalMetadataNil sets the value for OptimizationGoalMetadata to be an explicit nil
-func (o *AdGroupCreateRequest) SetOptimizationGoalMetadataNil() {
-	o.OptimizationGoalMetadata.Set(nil)
-}
-
-// UnsetOptimizationGoalMetadata ensures that no value is present for OptimizationGoalMetadata, not even an explicit nil
-func (o *AdGroupCreateRequest) UnsetOptimizationGoalMetadata() {
-	o.OptimizationGoalMetadata.Unset()
-}
-
-// GetPacingDeliveryType returns the PacingDeliveryType field value if set, zero value otherwise.
-func (o *AdGroupCreateRequest) GetPacingDeliveryType() PacingDeliveryType {
-	if o == nil || IsNil(o.PacingDeliveryType) {
-		var ret PacingDeliveryType
-		return ret
-	}
-	return *o.PacingDeliveryType
-}
-
-// GetPacingDeliveryTypeOk returns a tuple with the PacingDeliveryType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupCreateRequest) GetPacingDeliveryTypeOk() (*PacingDeliveryType, bool) {
-	if o == nil || IsNil(o.PacingDeliveryType) {
-		return nil, false
-	}
-	return o.PacingDeliveryType, true
-}
-
-// HasPacingDeliveryType returns a boolean if a field has been set.
-func (o *AdGroupCreateRequest) HasPacingDeliveryType() bool {
-	if o != nil && !IsNil(o.PacingDeliveryType) {
-		return true
-	}
-
-	return false
-}
-
-// SetPacingDeliveryType gets a reference to the given PacingDeliveryType and assigns it to the PacingDeliveryType field.
-func (o *AdGroupCreateRequest) SetPacingDeliveryType(v PacingDeliveryType) {
-	o.PacingDeliveryType = &v
+// SetOptimizationGoalMetadata gets a reference to the given map[string]interface{} and assigns it to the OptimizationGoalMetadata field.
+func (o *AdGroupCreateRequest) SetOptimizationGoalMetadata(v map[string]interface{}) {
+	o.OptimizationGoalMetadata = v
 }
 
 // GetPlacementGroup returns the PlacementGroup field value if set, zero value otherwise.
@@ -664,6 +680,38 @@ func (o *AdGroupCreateRequest) SetPromotionIdNil() {
 // UnsetPromotionId ensures that no value is present for PromotionId, not even an explicit nil
 func (o *AdGroupCreateRequest) UnsetPromotionId() {
 	o.PromotionId.Unset()
+}
+
+// GetPromotionIds returns the PromotionIds field value if set, zero value otherwise.
+func (o *AdGroupCreateRequest) GetPromotionIds() []string {
+	if o == nil || IsNil(o.PromotionIds) {
+		var ret []string
+		return ret
+	}
+	return o.PromotionIds
+}
+
+// GetPromotionIdsOk returns a tuple with the PromotionIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupCreateRequest) GetPromotionIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.PromotionIds) {
+		return nil, false
+	}
+	return o.PromotionIds, true
+}
+
+// HasPromotionIds returns a boolean if a field has been set.
+func (o *AdGroupCreateRequest) HasPromotionIds() bool {
+	if o != nil && !IsNil(o.PromotionIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetPromotionIds gets a reference to the given []string and assigns it to the PromotionIds field.
+func (o *AdGroupCreateRequest) SetPromotionIds(v []string) {
+	o.PromotionIds = v
 }
 
 // GetStartTime returns the StartTime field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -806,77 +854,36 @@ func (o *AdGroupCreateRequest) SetTargetingTemplateIds(v []string) {
 }
 
 // GetTrackingUrls returns the TrackingUrls field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupCreateRequest) GetTrackingUrls() TrackingUrls {
-	if o == nil || IsNil(o.TrackingUrls.Get()) {
-		var ret TrackingUrls
+func (o *AdGroupCreateRequest) GetTrackingUrls() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.TrackingUrls.Get()
+	return o.TrackingUrls
 }
 
 // GetTrackingUrlsOk returns a tuple with the TrackingUrls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupCreateRequest) GetTrackingUrlsOk() (*TrackingUrls, bool) {
-	if o == nil {
-		return nil, false
+func (o *AdGroupCreateRequest) GetTrackingUrlsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.TrackingUrls) {
+		return map[string]interface{}{}, false
 	}
-	return o.TrackingUrls.Get(), o.TrackingUrls.IsSet()
+	return o.TrackingUrls, true
 }
 
 // HasTrackingUrls returns a boolean if a field has been set.
 func (o *AdGroupCreateRequest) HasTrackingUrls() bool {
-	if o != nil && o.TrackingUrls.IsSet() {
+	if o != nil && !IsNil(o.TrackingUrls) {
 		return true
 	}
 
 	return false
 }
 
-// SetTrackingUrls gets a reference to the given NullableTrackingUrls and assigns it to the TrackingUrls field.
-func (o *AdGroupCreateRequest) SetTrackingUrls(v TrackingUrls) {
-	o.TrackingUrls.Set(&v)
-}
-// SetTrackingUrlsNil sets the value for TrackingUrls to be an explicit nil
-func (o *AdGroupCreateRequest) SetTrackingUrlsNil() {
-	o.TrackingUrls.Set(nil)
-}
-
-// UnsetTrackingUrls ensures that no value is present for TrackingUrls, not even an explicit nil
-func (o *AdGroupCreateRequest) UnsetTrackingUrls() {
-	o.TrackingUrls.Unset()
-}
-
-// GetBidMultiplier returns the BidMultiplier field value if set, zero value otherwise.
-func (o *AdGroupCreateRequest) GetBidMultiplier() float32 {
-	if o == nil || IsNil(o.BidMultiplier) {
-		var ret float32
-		return ret
-	}
-	return *o.BidMultiplier
-}
-
-// GetBidMultiplierOk returns a tuple with the BidMultiplier field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupCreateRequest) GetBidMultiplierOk() (*float32, bool) {
-	if o == nil || IsNil(o.BidMultiplier) {
-		return nil, false
-	}
-	return o.BidMultiplier, true
-}
-
-// HasBidMultiplier returns a boolean if a field has been set.
-func (o *AdGroupCreateRequest) HasBidMultiplier() bool {
-	if o != nil && !IsNil(o.BidMultiplier) {
-		return true
-	}
-
-	return false
-}
-
-// SetBidMultiplier gets a reference to the given float32 and assigns it to the BidMultiplier field.
-func (o *AdGroupCreateRequest) SetBidMultiplier(v float32) {
-	o.BidMultiplier = &v
+// SetTrackingUrls gets a reference to the given map[string]interface{} and assigns it to the TrackingUrls field.
+func (o *AdGroupCreateRequest) SetTrackingUrls(v map[string]interface{}) {
+	o.TrackingUrls = v
 }
 
 func (o AdGroupCreateRequest) MarshalJSON() ([]byte, error) {
@@ -892,6 +899,15 @@ func (o AdGroupCreateRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoTargetingEnabled) {
 		toSerialize["auto_targeting_enabled"] = o.AutoTargetingEnabled
 	}
+	if !IsNil(o.BidMultiplier) {
+		toSerialize["bid_multiplier"] = o.BidMultiplier
+	}
+	if !IsNil(o.BudgetType) {
+		toSerialize["budget_type"] = o.BudgetType
+	}
+	if !IsNil(o.PacingDeliveryType) {
+		toSerialize["pacing_delivery_type"] = o.PacingDeliveryType
+	}
 	if o.BidInMicroCurrency.IsSet() {
 		toSerialize["bid_in_micro_currency"] = o.BidInMicroCurrency.Get()
 	}
@@ -901,9 +917,6 @@ func (o AdGroupCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["billable_event"] = o.BillableEvent
 	if o.BudgetInMicroCurrency.IsSet() {
 		toSerialize["budget_in_micro_currency"] = o.BudgetInMicroCurrency.Get()
-	}
-	if !IsNil(o.BudgetType) {
-		toSerialize["budget_type"] = o.BudgetType
 	}
 	toSerialize["campaign_id"] = o.CampaignId
 	if o.EndTime.IsSet() {
@@ -916,11 +929,8 @@ func (o AdGroupCreateRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["lifetime_frequency_cap"] = o.LifetimeFrequencyCap
 	}
 	toSerialize["name"] = o.Name
-	if o.OptimizationGoalMetadata.IsSet() {
-		toSerialize["optimization_goal_metadata"] = o.OptimizationGoalMetadata.Get()
-	}
-	if !IsNil(o.PacingDeliveryType) {
-		toSerialize["pacing_delivery_type"] = o.PacingDeliveryType
+	if o.OptimizationGoalMetadata != nil {
+		toSerialize["optimization_goal_metadata"] = o.OptimizationGoalMetadata
 	}
 	if !IsNil(o.PlacementGroup) {
 		toSerialize["placement_group"] = o.PlacementGroup
@@ -930,6 +940,9 @@ func (o AdGroupCreateRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.PromotionId.IsSet() {
 		toSerialize["promotion_id"] = o.PromotionId.Get()
+	}
+	if !IsNil(o.PromotionIds) {
+		toSerialize["promotion_ids"] = o.PromotionIds
 	}
 	if o.StartTime.IsSet() {
 		toSerialize["start_time"] = o.StartTime.Get()
@@ -943,11 +956,8 @@ func (o AdGroupCreateRequest) ToMap() (map[string]interface{}, error) {
 	if o.TargetingTemplateIds != nil {
 		toSerialize["targeting_template_ids"] = o.TargetingTemplateIds
 	}
-	if o.TrackingUrls.IsSet() {
-		toSerialize["tracking_urls"] = o.TrackingUrls.Get()
-	}
-	if !IsNil(o.BidMultiplier) {
-		toSerialize["bid_multiplier"] = o.BidMultiplier
+	if o.TrackingUrls != nil {
+		toSerialize["tracking_urls"] = o.TrackingUrls
 	}
 	return toSerialize, nil
 }

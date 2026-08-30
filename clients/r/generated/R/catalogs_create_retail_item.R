@@ -82,7 +82,7 @@ CatalogsCreateRetailItem <- R6::R6Class(
       CatalogsCreateRetailItemObject <- list()
       if (!is.null(self$`attributes`)) {
         CatalogsCreateRetailItemObject[["attributes"]] <-
-          self$`attributes`$toSimpleType()
+          self$extractSimpleType(self$`attributes`)
       }
       if (!is.null(self$`item_id`)) {
         CatalogsCreateRetailItemObject[["item_id"]] <-
@@ -93,6 +93,29 @@ CatalogsCreateRetailItem <- R6::R6Class(
           self$`operation`
       }
       return(CatalogsCreateRetailItemObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

@@ -11,10 +11,10 @@ part 'reporting_time_zone.g.dart';
 
 class ReportingTimeZone extends EnumClass {
 
-  /// [Closed beta](/docs/getting-started/using-beta-and-restricted-features/) Specify the timezone to be applied for the reporting.
+  /// Specify the timezone to be applied for the reporting.
   @BuiltValueEnumConst(wireName: r'PINTEREST_TIME_ZONE')
   static const ReportingTimeZone PINTEREST_TIME_ZONE = _$PINTEREST_TIME_ZONE;
-  /// [Closed beta](/docs/getting-started/using-beta-and-restricted-features/) Specify the timezone to be applied for the reporting.
+  /// Specify the timezone to be applied for the reporting.
   @BuiltValueEnumConst(wireName: r'AD_ACCOUNT_TIME_ZONE')
   static const ReportingTimeZone AD_ACCOUNT_TIME_ZONE = _$AD_ACCOUNT_TIME_ZONE;
 

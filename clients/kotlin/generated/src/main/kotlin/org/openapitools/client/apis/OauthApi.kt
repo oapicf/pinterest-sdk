@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,9 +27,11 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.ConversionAccessTokenResponse
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.OauthAccessTokenResponse
+import org.openapitools.client.models.ConversionAccessToken
+import org.openapitools.client.models.OauthAccessToken
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.TokenGrantType
+import org.openapitools.client.models.TokenTypeHint
 
 import com.squareup.moshi.Json
 
@@ -43,7 +53,7 @@ open class OauthApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
@@ -51,7 +61,7 @@ open class OauthApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      * POST /oauth/conversion_token
      * Generate OAuth access token for conversion API
      * Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
-     * @return ConversionAccessTokenResponse
+     * @return ConversionAccessToken
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -60,11 +70,11 @@ open class OauthApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun oauthConversionToken() : ConversionAccessTokenResponse {
+    fun oauthConversionToken() : ConversionAccessToken {
         val localVarResponse = oauthConversionTokenWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as ConversionAccessTokenResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ConversionAccessToken
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -82,16 +92,16 @@ open class OauthApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      * POST /oauth/conversion_token
      * Generate OAuth access token for conversion API
      * Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
-     * @return ApiResponse<ConversionAccessTokenResponse?>
+     * @return ApiResponse<ConversionAccessToken?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun oauthConversionTokenWithHttpInfo() : ApiResponse<ConversionAccessTokenResponse?> {
+    fun oauthConversionTokenWithHttpInfo() : ApiResponse<ConversionAccessToken?> {
         val localVariableConfig = oauthConversionTokenRequestConfig()
 
-        return request<Unit, ConversionAccessTokenResponse>(
+        return request<Unit, ConversionAccessToken>(
             localVariableConfig
         )
     }
@@ -118,29 +128,16 @@ open class OauthApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
-     * enum for parameter grantType
-     */
-     enum class GrantTypeOauthToken(val value: kotlin.String) {
-         @Json(name = "authorization_code") authorization_code("authorization_code"),
-         @Json(name = "refresh_token") refresh_token("refresh_token"),
-         @Json(name = "client_credentials") client_credentials("client_credentials");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * POST /oauth/token
      * Generate OAuth access token
-     * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for &lt;a href&#x3D;&#39;/docs/getting-started/set-up-authentication-and-authorization/&#39; target&#x3D;&#39;blank&#39;&gt;requesting and refreshing tokens&lt;/a&gt;.  &lt;strong&gt;Note:&lt;/strong&gt; If your app was created &lt;strong&gt;before September 25, 2025&lt;/strong&gt;, make sure to set the &lt;code&gt;continuous_refresh&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use &lt;a href&#x3D;&#39;/docs/developer-tools/token-debugger/&#39; target&#x3D;&#39;blank&#39;&gt;Token Debugger&lt;/a&gt; to validate and inspect your access token.
+     * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the &#x60;continuous_refresh&#x60; parameter to &#x60;true&#x60; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
      * @param grantType 
-     * @return OauthAccessTokenResponse
+     * @param code  (optional)
+     * @param continuousRefresh   If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. (optional)
+     * @param redirectUri  (optional)
+     * @param refreshToken  (optional)
+     * @param scope  (optional)
+     * @return OauthAccessToken
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -149,11 +146,11 @@ open class OauthApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun oauthToken(grantType: GrantTypeOauthToken) : OauthAccessTokenResponse {
-        val localVarResponse = oauthTokenWithHttpInfo(grantType = grantType)
+    fun oauthToken(grantType: TokenGrantType, code: kotlin.String? = null, continuousRefresh: kotlin.String? = null, redirectUri: kotlin.String? = null, refreshToken: kotlin.String? = null, scope: kotlin.String? = null) : OauthAccessToken {
+        val localVarResponse = oauthTokenWithHttpInfo(grantType = grantType, code = code, continuousRefresh = continuousRefresh, redirectUri = redirectUri, refreshToken = refreshToken, scope = scope)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as OauthAccessTokenResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as OauthAccessToken
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -170,18 +167,23 @@ open class OauthApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     /**
      * POST /oauth/token
      * Generate OAuth access token
-     * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for &lt;a href&#x3D;&#39;/docs/getting-started/set-up-authentication-and-authorization/&#39; target&#x3D;&#39;blank&#39;&gt;requesting and refreshing tokens&lt;/a&gt;.  &lt;strong&gt;Note:&lt;/strong&gt; If your app was created &lt;strong&gt;before September 25, 2025&lt;/strong&gt;, make sure to set the &lt;code&gt;continuous_refresh&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use &lt;a href&#x3D;&#39;/docs/developer-tools/token-debugger/&#39; target&#x3D;&#39;blank&#39;&gt;Token Debugger&lt;/a&gt; to validate and inspect your access token.
+     * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the &#x60;continuous_refresh&#x60; parameter to &#x60;true&#x60; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
      * @param grantType 
-     * @return ApiResponse<OauthAccessTokenResponse?>
+     * @param code  (optional)
+     * @param continuousRefresh   If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. (optional)
+     * @param redirectUri  (optional)
+     * @param refreshToken  (optional)
+     * @param scope  (optional)
+     * @return ApiResponse<OauthAccessToken?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun oauthTokenWithHttpInfo(grantType: GrantTypeOauthToken) : ApiResponse<OauthAccessTokenResponse?> {
-        val localVariableConfig = oauthTokenRequestConfig(grantType = grantType)
+    fun oauthTokenWithHttpInfo(grantType: TokenGrantType, code: kotlin.String?, continuousRefresh: kotlin.String?, redirectUri: kotlin.String?, refreshToken: kotlin.String?, scope: kotlin.String?) : ApiResponse<OauthAccessToken?> {
+        val localVariableConfig = oauthTokenRequestConfig(grantType = grantType, code = code, continuousRefresh = continuousRefresh, redirectUri = redirectUri, refreshToken = refreshToken, scope = scope)
 
-        return request<Map<String, PartConfig<*>>, OauthAccessTokenResponse>(
+        return request<Map<String, PartConfig<*>>, OauthAccessToken>(
             localVariableConfig
         )
     }
@@ -190,11 +192,21 @@ open class OauthApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      * To obtain the request config of the operation oauthToken
      *
      * @param grantType 
+     * @param code  (optional)
+     * @param continuousRefresh   If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. (optional)
+     * @param redirectUri  (optional)
+     * @param refreshToken  (optional)
+     * @param scope  (optional)
      * @return RequestConfig
      */
-    fun oauthTokenRequestConfig(grantType: GrantTypeOauthToken) : RequestConfig<Map<String, PartConfig<*>>> {
+    fun oauthTokenRequestConfig(grantType: TokenGrantType, code: kotlin.String?, continuousRefresh: kotlin.String?, redirectUri: kotlin.String?, refreshToken: kotlin.String?, scope: kotlin.String?) : RequestConfig<Map<String, PartConfig<*>>> {
         val localVariableBody = mapOf(
-            "grant_type" to PartConfig(body = grantType.value, headers = mutableMapOf()),)
+            "code" to PartConfig(body = code, headers = mutableMapOf()),
+            "continuous_refresh" to PartConfig(body = continuousRefresh, headers = mutableMapOf()),
+            "grant_type" to PartConfig(body = grantType, headers = mutableMapOf()),
+            "redirect_uri" to PartConfig(body = redirectUri, headers = mutableMapOf()),
+            "refresh_token" to PartConfig(body = refreshToken, headers = mutableMapOf()),
+            "scope" to PartConfig(body = scope, headers = mutableMapOf()),)
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf("Content-Type" to "application/x-www-form-urlencoded")
         localVariableHeaders["Accept"] = "application/json"
@@ -210,23 +222,6 @@ open class OauthApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     }
 
     /**
-     * enum for parameter tokenTypeHint
-     */
-     enum class TokenTypeHintTokenRevoke(val value: kotlin.String) {
-         @Json(name = "access_token") access_token("access_token"),
-         @Json(name = "refresh_token") refresh_token("refresh_token");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * POST /oauth/token/revoke
      * Revoke a token
      * Revokes an access or refresh token. Only tokens issued for system users are currently supported. Revoked tokens become immediately invalid and unusable.
@@ -240,7 +235,7 @@ open class OauthApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun tokenRevoke(token: kotlin.String, tokenTypeHint: TokenTypeHintTokenRevoke? = null) : Unit {
+    fun tokenRevoke(token: kotlin.String, tokenTypeHint: TokenTypeHint? = null) : Unit {
         val localVarResponse = tokenRevokeWithHttpInfo(token = token, tokenTypeHint = tokenTypeHint)
 
         return when (localVarResponse.responseType) {
@@ -269,7 +264,7 @@ open class OauthApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun tokenRevokeWithHttpInfo(token: kotlin.String, tokenTypeHint: TokenTypeHintTokenRevoke?) : ApiResponse<Unit?> {
+    fun tokenRevokeWithHttpInfo(token: kotlin.String, tokenTypeHint: TokenTypeHint?) : ApiResponse<Unit?> {
         val localVariableConfig = tokenRevokeRequestConfig(token = token, tokenTypeHint = tokenTypeHint)
 
         return request<Map<String, PartConfig<*>>, Unit>(
@@ -284,10 +279,10 @@ open class OauthApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      * @param tokenTypeHint The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. (optional)
      * @return RequestConfig
      */
-    fun tokenRevokeRequestConfig(token: kotlin.String, tokenTypeHint: TokenTypeHintTokenRevoke?) : RequestConfig<Map<String, PartConfig<*>>> {
+    fun tokenRevokeRequestConfig(token: kotlin.String, tokenTypeHint: TokenTypeHint?) : RequestConfig<Map<String, PartConfig<*>>> {
         val localVariableBody = mapOf(
             "token" to PartConfig(body = token, headers = mutableMapOf()),
-            "token_type_hint" to PartConfig(body = tokenTypeHint?.value, headers = mutableMapOf()),)
+            "token_type_hint" to PartConfig(body = tokenTypeHint, headers = mutableMapOf()),)
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf("Content-Type" to "application/x-www-form-urlencoded")
         localVariableHeaders["Accept"] = "application/json"

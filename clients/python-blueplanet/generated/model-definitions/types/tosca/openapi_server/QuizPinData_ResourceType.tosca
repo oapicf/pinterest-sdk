@@ -9,6 +9,7 @@ imports {
   Root = tosca.resourceTypes.Root
   QuizPinQuestion = openapi_server.resourceTypes.QuizPinQuestion
   QuizPinResult = openapi_server.resourceTypes.QuizPinResult
+  TieBreakerType = openapi_server.resourceTypes.TieBreakerType
 }
 resourceTypes {
 
@@ -35,9 +36,8 @@ resourceTypes {
           optional = false
         }
         tie_breaker_type {
-          type =  string
-          description = "Quiz ad tie breaker type, default is RANDOM"
-          enum = ["RANDOM", "CUSTOM"]
+          type = TieBreakerType
+          description = ""
           optional = false
         }
     }

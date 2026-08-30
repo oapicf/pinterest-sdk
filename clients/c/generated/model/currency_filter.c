@@ -12,18 +12,21 @@ static currency_filter_t *currency_filter_create_internal(
     if (!currency_filter_local_var) {
         return NULL;
     }
-    currency_filter_local_var->currency = currency;
-
+    memset(currency_filter_local_var, 0, sizeof(currency_filter_t));
     currency_filter_local_var->_library_owned = 1;
+    currency_filter_local_var->currency = currency;
     return currency_filter_local_var;
 }
 
 __attribute__((deprecated)) currency_filter_t *currency_filter_create(
     catalogs_product_group_currency_criteria_t *currency
     ) {
-    return currency_filter_create_internal (
+    currency_filter_t *result = currency_filter_create_internal (
         currency
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void currency_filter_free(currency_filter_t *currency_filter) {
@@ -36,7 +39,7 @@ void currency_filter_free(currency_filter_t *currency_filter) {
     }
     listEntry_t *listEntry;
     if (currency_filter->currency) {
-        object_free(currency_filter->currency);
+        catalogs_product_group_currency_criteria_free(currency_filter->currency);
         currency_filter->currency = NULL;
     }
     free(currency_filter);
@@ -49,11 +52,11 @@ cJSON *currency_filter_convertToJSON(currency_filter_t *currency_filter) {
     if (!currency_filter->currency) {
         goto fail;
     }
-    cJSON *currency_object = object_convertToJSON(currency_filter->currency);
-    if(currency_object == NULL) {
+    cJSON *currency_local_JSON = catalogs_product_group_currency_criteria_convertToJSON(currency_filter->currency);
+    if(currency_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "CURRENCY", currency_object);
+    cJSON_AddItemToObject(item, "CURRENCY", currency_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -70,6 +73,9 @@ currency_filter_t *currency_filter_parseFromJSON(cJSON *currency_filterJSON){
 
     currency_filter_t *currency_filter_local_var = NULL;
 
+    // define the local variable for currency_filter->currency
+    catalogs_product_group_currency_criteria_t *currency_local_nonprim = NULL;
+
     // currency_filter->currency
     cJSON *currency = cJSON_GetObjectItemCaseSensitive(currency_filterJSON, "CURRENCY");
     if (cJSON_IsNull(currency)) {
@@ -79,17 +85,25 @@ currency_filter_t *currency_filter_parseFromJSON(cJSON *currency_filterJSON){
         goto end;
     }
 
-    object_t *currency_local_object = NULL;
     
-    currency_local_object = object_parseFromJSON(currency); //object
+    currency_local_nonprim = catalogs_product_group_currency_criteria_parseFromJSON(currency); //nonprimitive
+
 
 
     currency_filter_local_var = currency_filter_create_internal (
-        currency_local_object
+        currency_local_nonprim
         );
+
+    if (!currency_filter_local_var) {
+        goto end;
+    }
 
     return currency_filter_local_var;
 end:
+    if (currency_local_nonprim) {
+        catalogs_product_group_currency_criteria_free(currency_local_nonprim);
+        currency_local_nonprim = NULL;
+    }
     return NULL;
 
 }

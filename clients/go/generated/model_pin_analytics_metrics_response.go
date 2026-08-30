@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &PinAnalyticsMetricsResponse{}
 // PinAnalyticsMetricsResponse struct for PinAnalyticsMetricsResponse
 type PinAnalyticsMetricsResponse struct {
 	// Array with the requested daily metric records
-	DailyMetrics []PinAnalyticsMetricsResponseDailyMetricsInner `json:"daily_metrics,omitempty"`
+	DailyMetrics []PinAnalyticsDailyMetrics `json:"daily_metrics,omitempty"`
 	// The lifetime metric name and value.
 	LifetimeMetrics *map[string]int32 `json:"lifetime_metrics,omitempty"`
 	// The metric name and value over the requested period for each requested metric
@@ -46,9 +46,9 @@ func NewPinAnalyticsMetricsResponseWithDefaults() *PinAnalyticsMetricsResponse {
 }
 
 // GetDailyMetrics returns the DailyMetrics field value if set, zero value otherwise.
-func (o *PinAnalyticsMetricsResponse) GetDailyMetrics() []PinAnalyticsMetricsResponseDailyMetricsInner {
+func (o *PinAnalyticsMetricsResponse) GetDailyMetrics() []PinAnalyticsDailyMetrics {
 	if o == nil || IsNil(o.DailyMetrics) {
-		var ret []PinAnalyticsMetricsResponseDailyMetricsInner
+		var ret []PinAnalyticsDailyMetrics
 		return ret
 	}
 	return o.DailyMetrics
@@ -56,7 +56,7 @@ func (o *PinAnalyticsMetricsResponse) GetDailyMetrics() []PinAnalyticsMetricsRes
 
 // GetDailyMetricsOk returns a tuple with the DailyMetrics field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PinAnalyticsMetricsResponse) GetDailyMetricsOk() ([]PinAnalyticsMetricsResponseDailyMetricsInner, bool) {
+func (o *PinAnalyticsMetricsResponse) GetDailyMetricsOk() ([]PinAnalyticsDailyMetrics, bool) {
 	if o == nil || IsNil(o.DailyMetrics) {
 		return nil, false
 	}
@@ -72,8 +72,8 @@ func (o *PinAnalyticsMetricsResponse) HasDailyMetrics() bool {
 	return false
 }
 
-// SetDailyMetrics gets a reference to the given []PinAnalyticsMetricsResponseDailyMetricsInner and assigns it to the DailyMetrics field.
-func (o *PinAnalyticsMetricsResponse) SetDailyMetrics(v []PinAnalyticsMetricsResponseDailyMetricsInner) {
+// SetDailyMetrics gets a reference to the given []PinAnalyticsDailyMetrics and assigns it to the DailyMetrics field.
+func (o *PinAnalyticsMetricsResponse) SetDailyMetrics(v []PinAnalyticsDailyMetrics) {
 	o.DailyMetrics = v
 }
 

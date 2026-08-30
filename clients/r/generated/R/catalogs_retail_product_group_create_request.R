@@ -7,7 +7,7 @@
 #' @title CatalogsRetailProductGroupCreateRequest
 #' @description CatalogsRetailProductGroupCreateRequest Class
 #' @format An \code{R6Class} generator object
-#' @field catalog_id Catalog id pertaining to the retail product group. character
+#' @field catalog_id Catalog ID pertaining to the product group. character
 #' @field catalog_type Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. character
 #' @field country  \link{Country} [optional]
 #' @field description  character [optional]
@@ -31,7 +31,7 @@ CatalogsRetailProductGroupCreateRequest <- R6::R6Class(
     #' @description
     #' Initialize a new CatalogsRetailProductGroupCreateRequest class.
     #'
-    #' @param catalog_id Catalog id pertaining to the retail product group.
+    #' @param catalog_id Catalog ID pertaining to the product group.
     #' @param catalog_type Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
     #' @param filters filters
     #' @param name name
@@ -128,7 +128,7 @@ CatalogsRetailProductGroupCreateRequest <- R6::R6Class(
       }
       if (!is.null(self$`country`)) {
         CatalogsRetailProductGroupCreateRequestObject[["country"]] <-
-          self$`country`$toSimpleType()
+          self$extractSimpleType(self$`country`)
       }
       if (!is.null(self$`description`)) {
         CatalogsRetailProductGroupCreateRequestObject[["description"]] <-
@@ -136,17 +136,40 @@ CatalogsRetailProductGroupCreateRequest <- R6::R6Class(
       }
       if (!is.null(self$`filters`)) {
         CatalogsRetailProductGroupCreateRequestObject[["filters"]] <-
-          self$`filters`$toSimpleType()
+          self$extractSimpleType(self$`filters`)
       }
       if (!is.null(self$`locale`)) {
         CatalogsRetailProductGroupCreateRequestObject[["locale"]] <-
-          self$`locale`$toSimpleType()
+          self$extractSimpleType(self$`locale`)
       }
       if (!is.null(self$`name`)) {
         CatalogsRetailProductGroupCreateRequestObject[["name"]] <-
           self$`name`
       }
       return(CatalogsRetailProductGroupCreateRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

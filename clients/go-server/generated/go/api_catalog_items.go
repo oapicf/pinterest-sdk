@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -110,6 +111,11 @@ func (c *CatalogItemsAPIController) ItemsPost(w http.ResponseWriter, r *http.Req
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&catalogsItemsRequestParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -145,18 +151,23 @@ func (c *CatalogItemsAPIController) ItemsBatchPost(w http.ResponseWriter, r *htt
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	var itemsBatchPostRequestParam ItemsBatchPostRequest
+	var catalogsItemsBatchPostRequestParam CatalogsItemsBatchPostRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&itemsBatchPostRequestParam); err != nil {
+	if err := d.Decode(&catalogsItemsBatchPostRequestParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertItemsBatchPostRequestRequired(itemsBatchPostRequestParam); err != nil {
+	if err := AssertCatalogsItemsBatchPostRequestRequired(catalogsItemsBatchPostRequestParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertItemsBatchPostRequestConstraints(itemsBatchPostRequestParam); err != nil {
+	if err := AssertCatalogsItemsBatchPostRequestConstraints(catalogsItemsBatchPostRequestParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
@@ -167,7 +178,7 @@ func (c *CatalogItemsAPIController) ItemsBatchPost(w http.ResponseWriter, r *htt
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.ItemsBatchPost(r.Context(), itemsBatchPostRequestParam, adAccountIdParam)
+	result, err := c.service.ItemsBatchPost(r.Context(), catalogsItemsBatchPostRequestParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

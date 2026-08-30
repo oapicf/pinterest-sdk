@@ -1,0 +1,193 @@
+#' Create a new AttributionWindows
+#'
+#' @description
+#' AttributionWindows Class
+#'
+#' @docType class
+#' @title AttributionWindows
+#' @description AttributionWindows Class
+#' @format An \code{R6Class} generator object
+#' @field click_window_days  integer [optional]
+#' @field engagement_window_days  integer [optional]
+#' @field view_window_days  integer [optional]
+#' @importFrom R6 R6Class
+#' @importFrom jsonlite fromJSON toJSON
+#' @export
+AttributionWindows <- R6::R6Class(
+  "AttributionWindows",
+  public = list(
+    `click_window_days` = NULL,
+    `engagement_window_days` = NULL,
+    `view_window_days` = NULL,
+
+    #' @description
+    #' Initialize a new AttributionWindows class.
+    #'
+    #' @param click_window_days click_window_days
+    #' @param engagement_window_days engagement_window_days
+    #' @param view_window_days view_window_days
+    #' @param ... Other optional arguments.
+    initialize = function(`click_window_days` = NULL, `engagement_window_days` = NULL, `view_window_days` = NULL, ...) {
+      if (!is.null(`click_window_days`)) {
+        if (!(is.numeric(`click_window_days`) && length(`click_window_days`) == 1)) {
+          stop(paste("Error! Invalid data for `click_window_days`. Must be an integer:", `click_window_days`))
+        }
+        self$`click_window_days` <- `click_window_days`
+      }
+      if (!is.null(`engagement_window_days`)) {
+        if (!(is.numeric(`engagement_window_days`) && length(`engagement_window_days`) == 1)) {
+          stop(paste("Error! Invalid data for `engagement_window_days`. Must be an integer:", `engagement_window_days`))
+        }
+        self$`engagement_window_days` <- `engagement_window_days`
+      }
+      if (!is.null(`view_window_days`)) {
+        if (!(is.numeric(`view_window_days`) && length(`view_window_days`) == 1)) {
+          stop(paste("Error! Invalid data for `view_window_days`. Must be an integer:", `view_window_days`))
+        }
+        self$`view_window_days` <- `view_window_days`
+      }
+    },
+
+    #' @description
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
+    toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AttributionWindows as a base R list.
+    #' @examples
+    #' # convert array of AttributionWindows (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AttributionWindows to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
+      AttributionWindowsObject <- list()
+      if (!is.null(self$`click_window_days`)) {
+        AttributionWindowsObject[["click_window_days"]] <-
+          self$`click_window_days`
+      }
+      if (!is.null(self$`engagement_window_days`)) {
+        AttributionWindowsObject[["engagement_window_days"]] <-
+          self$`engagement_window_days`
+      }
+      if (!is.null(self$`view_window_days`)) {
+        AttributionWindowsObject[["view_window_days"]] <-
+          self$`view_window_days`
+      }
+      return(AttributionWindowsObject)
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of AttributionWindows
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of AttributionWindows
+    fromJSON = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`click_window_days`)) {
+        self$`click_window_days` <- this_object$`click_window_days`
+      }
+      if (!is.null(this_object$`engagement_window_days`)) {
+        self$`engagement_window_days` <- this_object$`engagement_window_days`
+      }
+      if (!is.null(this_object$`view_window_days`)) {
+        self$`view_window_days` <- this_object$`view_window_days`
+      }
+      self
+    },
+
+    #' @description
+    #' To JSON String
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
+    #' @return AttributionWindows in JSON format
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of AttributionWindows
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of AttributionWindows
+    fromJSONString = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      self$`click_window_days` <- this_object$`click_window_days`
+      self$`engagement_window_days` <- this_object$`engagement_window_days`
+      self$`view_window_days` <- this_object$`view_window_days`
+      self
+    },
+
+    #' @description
+    #' Validate JSON input with respect to AttributionWindows and throw an exception if invalid
+    #'
+    #' @param input the JSON input
+    validateJSON = function(input) {
+      input_json <- jsonlite::fromJSON(input)
+    },
+
+    #' @description
+    #' To string (JSON format)
+    #'
+    #' @return String representation of AttributionWindows
+    toString = function() {
+      self$toJSONString()
+    },
+
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    isValid = function() {
+      TRUE
+    },
+
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      invalid_fields
+    },
+
+    #' @description
+    #' Print the object
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
+)
+## Uncomment below to unlock the class to allow modifications of the method or field
+# AttributionWindows$unlock()
+#
+## Below is an example to define the print function
+# AttributionWindows$set("public", "print", function(...) {
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
+# })
+## Uncomment below to lock the class to prevent modifications to the method or field
+# AttributionWindows$lock()
+

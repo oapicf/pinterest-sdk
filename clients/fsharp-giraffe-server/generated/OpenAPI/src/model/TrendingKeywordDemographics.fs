@@ -2,16 +2,16 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.TrendingKeywordDemographicsAgeDistribution
-open OpenAPI.Model.TrendingKeywordDemographicsGenderDistribution
+open OpenAPI.Model.TrendsAgeDistribution
+open OpenAPI.Model.TrendsGenderDistribution
 
 module TrendingKeywordDemographics =
 
   //#region TrendingKeywordDemographics
 
 
-  type TrendingKeyword_demographics = {
-    AgeDistribution : TrendingKeywordDemographicsAgeDistribution;
-    GenderDistribution : TrendingKeywordDemographicsGenderDistribution;
+  type TrendingKeywordDemographics = {
+    AgeDistribution : TrendsAgeDistribution;
+    GenderDistribution : TrendsGenderDistribution;
   }
   //#endregion

@@ -1,0 +1,10 @@
+
+
+# CampaignPlanningConversionEvent
+
+## Enum
+
+
+
+
+

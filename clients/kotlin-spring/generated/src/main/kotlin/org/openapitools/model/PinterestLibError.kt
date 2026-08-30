@@ -2,6 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -20,12 +22,14 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class PinterestLibError(
 
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("code")
     @get:JsonProperty("code", required = true) val code: kotlin.Int,
 
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("message")
     @get:JsonProperty("message", required = true) val message: kotlin.String
-) {
+) : CampaignAdPreviewDelete200ResponseInnerStatus {
 
 }
 

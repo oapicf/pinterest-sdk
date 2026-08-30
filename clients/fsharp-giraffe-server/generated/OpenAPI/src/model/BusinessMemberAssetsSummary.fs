@@ -2,8 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.BusinessMemberAssetsSummaryAdAccountsInner
-open OpenAPI.Model.BusinessMemberAssetsSummaryProfilesInner
+open OpenAPI.Model.AssetIdWithPermissions
 
 module BusinessMemberAssetsSummary =
 
@@ -11,7 +10,7 @@ module BusinessMemberAssetsSummary =
 
 
   type BusinessMemberAssetsSummary = {
-    AdAccounts : BusinessMemberAssetsSummaryAdAccountsInner[];
-    Profiles : BusinessMemberAssetsSummaryProfilesInner[];
+    AdAccounts : AssetIdWithPermissions[];
+    Profiles : AssetIdWithPermissions[];
   }
   //#endregion

@@ -9,7 +9,7 @@ package org.openapitools.server.model
  * @param catalogType  for example: ''null''
  * @param description  for example: ''null''
  * @param filters  for example: ''null''
- * @param name  for example: ''null''
+ * @param name Name of catalog product group for example: ''Most Popular''
 */
 final case class CatalogsCreativeAssetsProductGroupUpdateRequest (
   catalogType: Option[String] = None,

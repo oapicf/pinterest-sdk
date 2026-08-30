@@ -7,19 +7,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * ErrorDetail
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ErrorDetail {
 
   private Integer count;
@@ -51,12 +51,13 @@ public class ErrorDetail {
    * @return count
    */
   @NotNull 
-  @Schema(name = "count", example = "20", description = "Number of records with this error", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "count", description = "Number of records with this error", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("count")
   public Integer getCount() {
     return count;
   }
 
+  @JsonProperty("count")
   public void setCount(Integer count) {
     this.count = count;
   }
@@ -71,12 +72,13 @@ public class ErrorDetail {
    * @return errorCode
    */
   @NotNull 
-  @Schema(name = "error_code", example = "42", description = "Numeric error code", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "error_code", description = "Numeric error code", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("error_code")
   public Integer getErrorCode() {
     return errorCode;
   }
 
+  @JsonProperty("error_code")
   public void setErrorCode(Integer errorCode) {
     this.errorCode = errorCode;
   }
@@ -91,12 +93,13 @@ public class ErrorDetail {
    * @return message
    */
   @NotNull 
-  @Schema(name = "message", example = "Invalid email", description = "Error message description", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "message", description = "Error message description", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("message")
   public String getMessage() {
     return message;
   }
 
+  @JsonProperty("message")
   public void setMessage(String message) {
     this.message = message;
   }
@@ -135,11 +138,8 @@ public class ErrorDetail {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

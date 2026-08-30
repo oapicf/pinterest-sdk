@@ -10,8 +10,9 @@ import model.ConversionTagCreate
 import model.ConversionTagsList200Response
 import model.Error
 import model.PageVisitConversionTagsGet200Response
+import model.PaginationOrder
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class ConversionTagsApiController @Inject()(cc: ControllerComponents, api: ConversionTagsApi) extends AbstractController(cc) {
   /**
@@ -78,19 +79,20 @@ class ConversionTagsApiController @Inject()(cc: ControllerComponents, api: Conve
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/conversion_tags/page_visit?pageSize=[value]&order=[value]&bookmark=[value]
+    * GET /v5/ad_accounts/:adAccountId/conversion_tags/page_visit?bookmark=[value]&pageSize=[value]&order=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def pageVisitConversionTagsGet(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): PageVisitConversionTagsGet200Response = {
+      val bookmark = request.getQueryString("bookmark")
+        
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
       val order = request.getQueryString("order")
+        .map(value => )
         
-      val bookmark = request.getQueryString("bookmark")
-        
-      api.pageVisitConversionTagsGet(adAccountId, pageSize, order, bookmark)
+      api.pageVisitConversionTagsGet(adAccountId, bookmark, pageSize, order)
     }
 
     val result = executeApi()

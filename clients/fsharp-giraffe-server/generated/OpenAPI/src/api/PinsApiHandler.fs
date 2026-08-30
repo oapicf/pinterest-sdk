@@ -8,15 +8,18 @@ open PinsApiHandlerParams
 open PinsApiServiceInterface
 open PinsApiServiceImplementation
 open OpenAPI.Model.CreativeType
-open OpenAPI.Model.Error
 open System.Collections.Generic
+open OpenAPI.Model.MultiPinsAnalyticsMetricTypesItem
 open OpenAPI.Model.Pin
 open OpenAPI.Model.PinAnalyticsMetricsResponse
 open OpenAPI.Model.PinCreate
+open OpenAPI.Model.PinFilter
+open OpenAPI.Model.PinType
 open OpenAPI.Model.PinUpdate
 open OpenAPI.Model.PinsList200Response
-open OpenAPI.Model.PinsSaveRequest
+open OpenAPI.Model.PinsSaveRequestCreate
 open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.QuerypinanalyticsmetrictypesItems
 
 module PinsApiHandler =
 
@@ -42,6 +45,8 @@ module PinsApiHandler =
                             setStatusCode 400 >=> json resolved.content
                       | MultiPinsAnalyticsStatusCode401 resolved ->
                             setStatusCode 401 >=> json resolved.content
+                      | MultiPinsAnalyticsStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | MultiPinsAnalyticsStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
                       | MultiPinsAnalyticsStatusCode429 resolved ->
@@ -68,10 +73,14 @@ module PinsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | PinsAnalyticsStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | PinsAnalyticsStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | PinsAnalyticsStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
                       | PinsAnalyticsStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | PinsAnalyticsStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | PinsAnalyticsDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -124,6 +133,8 @@ module PinsApiHandler =
           let serviceArgs = {  queryParams=queryParams;  pathParams=pathParams;  } : PinsDeleteArgs
           let result = PinsApiService.PinsDelete ctx serviceArgs
           return! (match result with
+                      | PinsDeleteStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
                       | PinsDeleteStatusCode204 resolved ->
                             setStatusCode 204 >=> text resolved.content
                       | PinsDeleteStatusCode400 resolved ->
@@ -218,10 +229,16 @@ module PinsApiHandler =
           return! (match result with
                       | PinsSaveStatusCode201 resolved ->
                             setStatusCode 201 >=> json resolved.content
+                      | PinsSaveStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | PinsSaveStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | PinsSaveStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
                       | PinsSaveStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | PinsSaveStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | PinsSaveDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

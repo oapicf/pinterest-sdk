@@ -2,6 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.AssetTypeResponse
 
 module UpdatePartnerAssetsResult =
 
@@ -10,7 +11,7 @@ module UpdatePartnerAssetsResult =
 
   type UpdatePartnerAssetsResult = {
     AssetId : string;
-    AssetType : string;
+    AssetType : AssetTypeResponse;
     PartnerId : string;
     Permissions : string[];
   }

@@ -1,5 +1,6 @@
 # SSIOInsertionOrderStatus
 
+SSIO insertion order status item in a list response.
 
 ## Properties
 

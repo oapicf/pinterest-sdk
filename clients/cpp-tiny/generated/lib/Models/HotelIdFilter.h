@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setHOTELID(CatalogsProductGroupMultipleStringCriteria  hOTEL_ID);
+	void setHOTELID(CatalogsProductGroupMultipleStringCriteria hOTEL_ID);
 
 
     private:

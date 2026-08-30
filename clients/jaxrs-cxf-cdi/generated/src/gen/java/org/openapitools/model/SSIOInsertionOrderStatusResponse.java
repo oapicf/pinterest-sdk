@@ -8,12 +8,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+/**
+ * SSIO insertion order status response for a single pin order id lookup.
+ **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-
+@ApiModel(description = "SSIO insertion order status response for a single pin order id lookup.")
 public class SSIOInsertionOrderStatusResponse   {
   
   private String creationTime;
@@ -116,10 +119,7 @@ public class SSIOInsertionOrderStatusResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

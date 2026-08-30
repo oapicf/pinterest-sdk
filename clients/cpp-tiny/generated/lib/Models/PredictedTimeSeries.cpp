@@ -65,7 +65,7 @@ PredictedTimeSeries::getDate()
 }
 
 void
-PredictedTimeSeries::setDate(Date  date)
+PredictedTimeSeries::setDate(Date date)
 {
 	this->date = date;
 }

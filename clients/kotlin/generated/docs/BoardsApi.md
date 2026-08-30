@@ -19,7 +19,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="boardSectionsCreate"></a>
 # **boardSectionsCreate**
-> BoardSection boardSectionsCreate(boardId, boardSection, adAccountId)
+> BoardSection boardSectionsCreate(boardId, boardSectionCreate, adAccountId)
 
 Create board section
 
@@ -33,10 +33,10 @@ Create a board section on a board owned by the \&quot;operation user_account\&qu
 
 val apiInstance = BoardsApi()
 val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
-val boardSection : BoardSection =  // BoardSection | Create a board section.
+val boardSectionCreate : BoardSectionCreate =  // BoardSectionCreate | 
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 try {
-    val result : BoardSection = apiInstance.boardSectionsCreate(boardId, boardSection, adAccountId)
+    val result : BoardSection = apiInstance.boardSectionsCreate(boardId, boardSectionCreate, adAccountId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BoardsApi#boardSectionsCreate")
@@ -49,7 +49,7 @@ try {
 
 ### Parameters
 | **boardId** | **kotlin.String**| Unique identifier of a board. | |
-| **boardSection** | [**BoardSection**](BoardSection.md)| Create a board section. | |
+| **boardSectionCreate** | [**BoardSectionCreate**](BoardSectionCreate.md)|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
@@ -61,8 +61,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -71,7 +77,7 @@ Configure pinterest_oauth2:
 
 <a id="boardSectionsDelete"></a>
 # **boardSectionsDelete**
-> boardSectionsDelete(boardId, sectionId, adAccountId)
+> BoardSection boardSectionsDelete(boardId, sectionId, adAccountId)
 
 Delete board section
 
@@ -88,7 +94,8 @@ val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifi
 val sectionId : kotlin.String = sectionId_example // kotlin.String | Unique identifier of a board section.
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 try {
-    apiInstance.boardSectionsDelete(boardId, sectionId, adAccountId)
+    val result : BoardSection = apiInstance.boardSectionsDelete(boardId, sectionId, adAccountId)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling BoardsApi#boardSectionsDelete")
     e.printStackTrace()
@@ -107,13 +114,19 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**BoardSection**](BoardSection.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -138,7 +151,7 @@ val apiInstance = BoardsApi()
 val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
     val result : BoardSectionsList200Response = apiInstance.boardSectionsList(boardId, adAccountId, bookmark, pageSize)
     println(result)
@@ -157,7 +170,7 @@ try {
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -166,10 +179,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -195,7 +220,7 @@ val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifi
 val sectionId : kotlin.String = sectionId_example // kotlin.String | Unique identifier of a board section.
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
     val result : BoardsListPins200Response = apiInstance.boardSectionsListPins(boardId, sectionId, adAccountId, bookmark, pageSize)
     println(result)
@@ -215,7 +240,7 @@ try {
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -224,10 +249,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -236,7 +273,7 @@ Configure client_credentials:
 
 <a id="boardSectionsUpdate"></a>
 # **boardSectionsUpdate**
-> BoardSection boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId)
+> BoardSection boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId)
 
 Update board section
 
@@ -251,10 +288,10 @@ Update a board section on a board owned by the \&quot;operation user_account\&qu
 val apiInstance = BoardsApi()
 val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
 val sectionId : kotlin.String = sectionId_example // kotlin.String | Unique identifier of a board section.
-val boardSection : BoardSection =  // BoardSection | Update a board section.
+val boardSectionUpdateWithRequiredBody : BoardSectionUpdateWithRequiredBody =  // BoardSectionUpdateWithRequiredBody | 
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 try {
-    val result : BoardSection = apiInstance.boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId)
+    val result : BoardSection = apiInstance.boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BoardsApi#boardSectionsUpdate")
@@ -268,7 +305,7 @@ try {
 ### Parameters
 | **boardId** | **kotlin.String**| Unique identifier of a board. | |
 | **sectionId** | **kotlin.String**| Unique identifier of a board section. | |
-| **boardSection** | [**BoardSection**](BoardSection.md)| Update a board section. | |
+| **boardSectionUpdateWithRequiredBody** | [**BoardSectionUpdateWithRequiredBody**](BoardSectionUpdateWithRequiredBody.md)|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
@@ -280,8 +317,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -330,10 +373,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -342,7 +397,7 @@ Configure client_credentials:
 
 <a id="boardsDelete"></a>
 # **boardsDelete**
-> boardsDelete(boardId, adAccountId)
+> Board boardsDelete(boardId, adAccountId)
 
 Delete board
 
@@ -358,7 +413,8 @@ val apiInstance = BoardsApi()
 val boardId : kotlin.String = boardId_example // kotlin.String | 
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 try {
-    apiInstance.boardsDelete(boardId, adAccountId)
+    val result : Board = apiInstance.boardsDelete(boardId, adAccountId)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling BoardsApi#boardsDelete")
     e.printStackTrace()
@@ -376,13 +432,19 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**Board**](Board.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -431,10 +493,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -487,10 +561,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -499,7 +585,7 @@ Configure client_credentials:
 
 <a id="boardsListPins"></a>
 # **boardsListPins**
-> BoardsListPins200Response boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics)
+> BoardsListPins200Response boardsListPins(boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize)
 
 List Pins on board
 
@@ -513,13 +599,13 @@ Get a list of the Pins on a board owned by the \&quot;operation user_account\&qu
 
 val apiInstance = BoardsApi()
 val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
-val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 val creativeTypes : kotlin.collections.List<CreativeType> =  // kotlin.collections.List<CreativeType> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    val result : BoardsListPins200Response = apiInstance.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics)
+    val result : BoardsListPins200Response = apiInstance.boardsListPins(boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BoardsApi#boardsListPins")
@@ -532,13 +618,13 @@ try {
 
 ### Parameters
 | **boardId** | **kotlin.String**| Unique identifier of a board. | |
-| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **creativeTypes** | [**kotlin.collections.List&lt;CreativeType&gt;**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
+| **pinMetrics** | **kotlin.Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pinMetrics** | **kotlin.Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -547,10 +633,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -601,10 +699,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

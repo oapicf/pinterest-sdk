@@ -1,13 +1,13 @@
 #tag Interface
 Protected Interface OauthApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub OauthConversionTokenCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ConversionAccessTokenResponse)
+		Sub OauthConversionTokenCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ConversionAccessToken)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub OauthTokenCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.OauthAccessTokenResponse)
+		Sub OauthTokenCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.OauthAccessToken)
 		  
 		End Sub
 	#tag EndMethod

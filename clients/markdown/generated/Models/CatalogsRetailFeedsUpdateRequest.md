@@ -3,7 +3,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **catalog\_type** | [**CatalogsType**](CatalogsType.md) |  | [default to null] |
+| **catalog\_type** | **String** |  | [default to null] |
 | **credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] [default to null] |
 | **default\_availability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] [default to null] |
 | **default\_currency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] [default to null] |

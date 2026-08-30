@@ -9,15 +9,15 @@
 -export_type([openapi_invite_response/0]).
 
 -type openapi_invite_response() ::
-  [ {'id', binary() }
-  | {'invite_data', openapi_base_invite_data_response_invite_data:openapi_base_invite_data_response_invite_data() }
+  [ {'assets_summary', openapi_invite_assets_summary:openapi_invite_assets_summary() }
+  | {'business_roles', list(binary()) }
+  | {'created_by_business', openapi_business_access_user_summary:openapi_business_access_user_summary() }
+  | {'created_by_user', openapi_business_access_user_summary:openapi_business_access_user_summary() }
+  | {'created_time', integer() }
+  | {'id', binary() }
+  | {'invite_data', openapi_invite_data_response:openapi_invite_data_response() }
   | {'is_received_invite', boolean() }
   | {'user', openapi_business_access_user_summary:openapi_business_access_user_summary() }
-  | {'assets_summary', openapi_invite_assets_summary:openapi_invite_assets_summary() }
-  | {'business_roles', list(binary()) }
-  | {'created_by_business', map() }
-  | {'created_by_user', map() }
-  | {'created_time', integer() }
   ].
 
 
@@ -25,15 +25,15 @@ openapi_invite_response() ->
     openapi_invite_response([]).
 
 openapi_invite_response(Fields) ->
-  Default = [ {'id', binary() }
-            , {'invite_data', openapi_base_invite_data_response_invite_data:openapi_base_invite_data_response_invite_data() }
+  Default = [ {'assets_summary', openapi_invite_assets_summary:openapi_invite_assets_summary() }
+            , {'business_roles', list(binary()) }
+            , {'created_by_business', openapi_business_access_user_summary:openapi_business_access_user_summary() }
+            , {'created_by_user', openapi_business_access_user_summary:openapi_business_access_user_summary() }
+            , {'created_time', integer() }
+            , {'id', binary() }
+            , {'invite_data', openapi_invite_data_response:openapi_invite_data_response() }
             , {'is_received_invite', boolean() }
             , {'user', openapi_business_access_user_summary:openapi_business_access_user_summary() }
-            , {'assets_summary', openapi_invite_assets_summary:openapi_invite_assets_summary() }
-            , {'business_roles', list(binary()) }
-            , {'created_by_business', map() }
-            , {'created_by_user', map() }
-            , {'created_time', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

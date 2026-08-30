@@ -7,13 +7,13 @@ Protected Interface PromotionsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub PromotionsDeleteCallback(status As OpenAPIClient.OpenAPIClientException)
+		Sub PromotionsDeleteCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Promotion)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub PromotionsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.PromotionResponse)
+		Sub PromotionsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Promotion)
 		  
 		End Sub
 	#tag EndMethod

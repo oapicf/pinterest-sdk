@@ -7,12 +7,12 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open BulkApiHandlerParams
 open BulkApiServiceInterface
 open BulkApiServiceImplementation
-open OpenAPI.Model.BulkDownloadRequest
-open OpenAPI.Model.BulkDownloadResponse
+open OpenAPI.Model.BulkDownload
+open OpenAPI.Model.BulkDownloadCreate
+open OpenAPI.Model.BulkJobData
 open OpenAPI.Model.BulkUpsertRequest
 open OpenAPI.Model.BulkUpsertResponse
-open OpenAPI.Model.BulkUpsertStatusResponse
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 
 module BulkApiHandler =
 
@@ -35,6 +35,18 @@ module BulkApiHandler =
           return! (match result with
                       | BulkDownloadCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BulkDownloadCreateStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
+                      | BulkDownloadCreateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BulkDownloadCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BulkDownloadCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BulkDownloadCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BulkDownloadCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BulkDownloadCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -55,6 +67,16 @@ module BulkApiHandler =
           return! (match result with
                       | BulkRequestGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BulkRequestGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BulkRequestGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BulkRequestGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BulkRequestGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BulkRequestGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BulkRequestGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

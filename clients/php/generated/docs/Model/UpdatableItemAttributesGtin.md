@@ -1,4 +1,4 @@
-# # UpdatableItemAttributesGtin
+# UpdatableItemAttributesGtin
 
 ## Properties
 

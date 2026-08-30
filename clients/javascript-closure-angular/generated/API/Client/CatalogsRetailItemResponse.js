@@ -13,7 +13,7 @@ API.Client.CatalogsRetailItemResponse = function() {}
 API.Client.CatalogsRetailItemResponse.prototype.attributes;
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsRetailItemResponse.prototype.catalogType;
@@ -26,9 +26,24 @@ API.Client.CatalogsRetailItemResponse.prototype.catalogType;
 API.Client.CatalogsRetailItemResponse.prototype.itemId;
 
 /**
+ * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsRetailItemResponse.prototype.itemResponseKind;
+
+/**
  * The pins mapped to the item
  * @type {!Array<!API.Client.Pin>}
  * @export
  */
 API.Client.CatalogsRetailItemResponse.prototype.pins;
 
+/** @enum {string} */
+API.Client.CatalogsRetailItemResponse.CatalogTypeEnum = { 
+  RETAIL: 'RETAIL',
+}
+/** @enum {string} */
+API.Client.CatalogsRetailItemResponse.ItemResponseKindEnum = { 
+  retail_item: 'retail_item',
+}

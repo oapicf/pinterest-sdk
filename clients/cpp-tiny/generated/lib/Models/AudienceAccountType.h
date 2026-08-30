@@ -2,7 +2,7 @@
 /*
  * AudienceAccountType.h
  *
- * 
+ * Account type filter for audience sharing.
  */
 
 #ifndef TINY_CPP_CLIENT_AudienceAccountType_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief 
+/*! \brief Account type filter for audience sharing.
  *
  *  \ingroup Models
  *

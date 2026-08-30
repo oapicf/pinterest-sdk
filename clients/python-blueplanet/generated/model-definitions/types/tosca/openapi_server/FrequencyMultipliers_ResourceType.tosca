@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server FrequencyMultipliers"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a FrequencyMultipliers"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  FrequencyMultipliers {
+    title = FrequencyMultipliers
+    description = FrequencyMultipliers
+    derivedFrom = Root
+    properties {
+        impression_count {
+          type =  string
+          description = "Impression count identifier."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  FrequencyMultipliers {
+    title = FrequencyMultipliers
+    description = FrequencyMultipliers
+    implements = openapi_server.resourceTypes.FrequencyMultipliers
+
+  }
+}

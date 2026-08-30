@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -21,29 +29,29 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * 
+ * A Salesforce SSIO order line.
  *
  * @param acceptedTermsId The SFDC id for the terms
- * @param acceptedTermsTime The UTC timestamp (to the nearest sec) of when terms were accepted
- * @param adsManagerOrderLineId Ads manager OrderLineId
+ * @param acceptedTermsTime The UTC timestamp (to the nearest second) when terms were accepted.
+ * @param adsManagerOrderLineId Ads manager order line id
  * @param agencyLink Agency link
- * @param billToCompanyName Bill To Company name
+ * @param billToCompanyName Bill-to company name
  * @param billingContactEmail Billing contact email
  * @param billingContactFirstname Billing contact first name
  * @param billingContactLastname Billing contact last name
- * @param budgetAmount If Budget order line, the budget amount.
+ * @param budgetAmount If budget order line, the budget amount.
  * @param currencyInfo 
  * @param endDate End date of the order line.
- * @param estimatedMonthlySpend If Ongoing (perpetual) order line, the estimated monthly spend
+ * @param estimatedMonthlySpend If ongoing (perpetual) order line, the estimated monthly spend.
  * @param lastModifiedDateTime Last modified date.
  * @param mediaContactEmail Billing media email
- * @param mediaContactFirstname Billing contact first name
- * @param mediaContactLastname Billing contact first name
+ * @param mediaContactFirstname Billing media contact first name
+ * @param mediaContactLastname Billing media contact last name
  * @param orderName The order name
  * @param pinOrderId The pin order id associated with the order line in SFDC
  * @param pmpName The Pinterest marketing partner name
- * @param poNumber The po number
- * @param salesforceOrderLineId OrderLineId in SFDC
+ * @param poNumber The PO number
+ * @param salesforceOrderLineId Order line id in SFDC
  * @param startDate Start date of the order line.
  */
 
@@ -54,11 +62,11 @@ data class SSIOOrderLine (
     @Json(name = "accepted_terms_id")
     val acceptedTermsId: kotlin.String? = null,
 
-    /* The UTC timestamp (to the nearest sec) of when terms were accepted */
+    /* The UTC timestamp (to the nearest second) when terms were accepted. */
     @Json(name = "accepted_terms_time")
     val acceptedTermsTime: kotlin.String? = null,
 
-    /* Ads manager OrderLineId */
+    /* Ads manager order line id */
     @Json(name = "ads_manager_order_line_id")
     val adsManagerOrderLineId: kotlin.String? = null,
 
@@ -66,7 +74,7 @@ data class SSIOOrderLine (
     @Json(name = "agency_link")
     val agencyLink: kotlin.String? = null,
 
-    /* Bill To Company name */
+    /* Bill-to company name */
     @Json(name = "bill_to_company_name")
     val billToCompanyName: kotlin.String? = null,
 
@@ -82,7 +90,7 @@ data class SSIOOrderLine (
     @Json(name = "billing_contact_lastname")
     val billingContactLastname: kotlin.String? = null,
 
-    /* If Budget order line, the budget amount. */
+    /* If budget order line, the budget amount. */
     @Json(name = "budget_amount")
     val budgetAmount: java.math.BigDecimal? = null,
 
@@ -93,7 +101,7 @@ data class SSIOOrderLine (
     @Json(name = "end_date")
     val endDate: java.time.LocalDate? = null,
 
-    /* If Ongoing (perpetual) order line, the estimated monthly spend */
+    /* If ongoing (perpetual) order line, the estimated monthly spend. */
     @Json(name = "estimated_monthly_spend")
     val estimatedMonthlySpend: java.math.BigDecimal? = null,
 
@@ -105,11 +113,11 @@ data class SSIOOrderLine (
     @Json(name = "media_contact_email")
     val mediaContactEmail: kotlin.String? = null,
 
-    /* Billing contact first name */
+    /* Billing media contact first name */
     @Json(name = "media_contact_firstname")
     val mediaContactFirstname: kotlin.String? = null,
 
-    /* Billing contact first name */
+    /* Billing media contact last name */
     @Json(name = "media_contact_lastname")
     val mediaContactLastname: kotlin.String? = null,
 
@@ -125,11 +133,11 @@ data class SSIOOrderLine (
     @Json(name = "pmp_name")
     val pmpName: kotlin.String? = null,
 
-    /* The po number */
+    /* The PO number */
     @Json(name = "po_number")
     val poNumber: kotlin.String? = null,
 
-    /* OrderLineId in SFDC */
+    /* Order line id in SFDC */
     @Json(name = "salesforce_order_line_id")
     val salesforceOrderLineId: kotlin.String? = null,
 

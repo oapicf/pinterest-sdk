@@ -10,13 +10,13 @@ Name | Type | Description | Notes
 **CpuCores** | Pointer to **int32** | Number of CPU cores | [optional] 
 **ExternalStorageFreeSpace** | Pointer to **int32** | External storage size in GB | [optional] 
 **ExternalStorageSize** | Pointer to **int32** | External storage size in GB | [optional] 
-**FormFactor** | Pointer to **string** | Device form factor | [optional] 
+**FormFactor** | Pointer to [**FormFactor**](FormFactor.md) | Device form factor | [optional] 
 **KernelVersion** | Pointer to **string** | Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release | [optional] 
 **Languages** | Pointer to **[]string** | List of user installed languages. ISO 639-1 format | [optional] 
 **Locale** | Pointer to **string** | Device locale BCP-47 format | [optional] 
 **Model** | Pointer to **string** | Device model name | [optional] 
-**NetworkType** | Pointer to **string** | Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities() | [optional] 
-**OsFamily** | Pointer to **string** | OS Family | [optional] 
+**NetworkType** | Pointer to [**NetworkType**](NetworkType.md) | Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities() | [optional] 
+**OsFamily** | Pointer to [**OsFamily**](OsFamily.md) | OS Family | [optional] 
 **OsName** | Pointer to **string** | Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch | [optional] 
 **OsReleaseName** | Pointer to **string** | Marketing name for the release version iOS: Dawn Android: Baklava MacOS: Sequoia Ubuntu Linux: Plucky Puffin | [optional] 
 **OsVersion** | Pointer to **string** | Full name of the version. Examples: iOS: 18.3 Android: 16.1 MacOS: 15.5 Windows: 24H2 Ubuntu Linux: 25.04 | [optional] 
@@ -200,20 +200,20 @@ HasExternalStorageSize returns a boolean if a field has been set.
 
 ### GetFormFactor
 
-`func (o *ConversionEventDeviceInfo) GetFormFactor() string`
+`func (o *ConversionEventDeviceInfo) GetFormFactor() FormFactor`
 
 GetFormFactor returns the FormFactor field if non-nil, zero value otherwise.
 
 ### GetFormFactorOk
 
-`func (o *ConversionEventDeviceInfo) GetFormFactorOk() (*string, bool)`
+`func (o *ConversionEventDeviceInfo) GetFormFactorOk() (*FormFactor, bool)`
 
 GetFormFactorOk returns a tuple with the FormFactor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFormFactor
 
-`func (o *ConversionEventDeviceInfo) SetFormFactor(v string)`
+`func (o *ConversionEventDeviceInfo) SetFormFactor(v FormFactor)`
 
 SetFormFactor sets FormFactor field to given value.
 
@@ -325,20 +325,20 @@ HasModel returns a boolean if a field has been set.
 
 ### GetNetworkType
 
-`func (o *ConversionEventDeviceInfo) GetNetworkType() string`
+`func (o *ConversionEventDeviceInfo) GetNetworkType() NetworkType`
 
 GetNetworkType returns the NetworkType field if non-nil, zero value otherwise.
 
 ### GetNetworkTypeOk
 
-`func (o *ConversionEventDeviceInfo) GetNetworkTypeOk() (*string, bool)`
+`func (o *ConversionEventDeviceInfo) GetNetworkTypeOk() (*NetworkType, bool)`
 
 GetNetworkTypeOk returns a tuple with the NetworkType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetworkType
 
-`func (o *ConversionEventDeviceInfo) SetNetworkType(v string)`
+`func (o *ConversionEventDeviceInfo) SetNetworkType(v NetworkType)`
 
 SetNetworkType sets NetworkType field to given value.
 
@@ -350,20 +350,20 @@ HasNetworkType returns a boolean if a field has been set.
 
 ### GetOsFamily
 
-`func (o *ConversionEventDeviceInfo) GetOsFamily() string`
+`func (o *ConversionEventDeviceInfo) GetOsFamily() OsFamily`
 
 GetOsFamily returns the OsFamily field if non-nil, zero value otherwise.
 
 ### GetOsFamilyOk
 
-`func (o *ConversionEventDeviceInfo) GetOsFamilyOk() (*string, bool)`
+`func (o *ConversionEventDeviceInfo) GetOsFamilyOk() (*OsFamily, bool)`
 
 GetOsFamilyOk returns a tuple with the OsFamily field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOsFamily
 
-`func (o *ConversionEventDeviceInfo) SetOsFamily(v string)`
+`func (o *ConversionEventDeviceInfo) SetOsFamily(v OsFamily)`
 
 SetOsFamily sets OsFamily field to given value.
 

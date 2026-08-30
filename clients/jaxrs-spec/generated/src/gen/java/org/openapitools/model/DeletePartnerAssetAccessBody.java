@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.DeletePartnerAssetAccessBodyAccessesInner;
+import org.openapitools.model.DeletePartnerAssetAccessItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -17,43 +17,46 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-
-
+/**
+ * An object with a list of partner asset accesses to delete.
+ **/
+@ApiModel(description = "An object with a list of partner asset accesses to delete.")
 @JsonTypeName("DeletePartnerAssetAccessBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class DeletePartnerAssetAccessBody   {
-  private @Valid List<@Valid DeletePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+  private @Valid List<@Valid DeletePartnerAssetAccessItem> accesses = new ArrayList<>();
 
   public DeletePartnerAssetAccessBody() {
   }
 
   @JsonCreator
   public DeletePartnerAssetAccessBody(
-    @JsonProperty(required = true, value = "accesses") List<@Valid DeletePartnerAssetAccessBodyAccessesInner> accesses
+    @JsonProperty(required = true, value = "accesses") List<@Valid DeletePartnerAssetAccessItem> accesses
   ) {
     this.accesses = accesses;
   }
 
   /**
+   * List of partner asset accesses to delete.
    **/
-  public DeletePartnerAssetAccessBody accesses(List<@Valid DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public DeletePartnerAssetAccessBody accesses(List<@Valid DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "List of partner asset accesses to delete.")
   @JsonProperty(required = true, value = "accesses")
-  @NotNull @Valid  @Size(min=1,max=50)public List<@Valid DeletePartnerAssetAccessBodyAccessesInner> getAccesses() {
+  @NotNull @Valid  @Size(min=1,max=50)public List<@Valid DeletePartnerAssetAccessItem> getAccesses() {
     return accesses;
   }
 
   @JsonProperty(required = true, value = "accesses")
-  public void setAccesses(List<@Valid DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<@Valid DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
-  public DeletePartnerAssetAccessBody addAccessesItem(DeletePartnerAssetAccessBodyAccessesInner accessesItem) {
+  public DeletePartnerAssetAccessBody addAccessesItem(DeletePartnerAssetAccessItem accessesItem) {
     if (this.accesses == null) {
       this.accesses = new ArrayList<>();
     }
@@ -62,7 +65,7 @@ public class DeletePartnerAssetAccessBody   {
     return this;
   }
 
-  public DeletePartnerAssetAccessBody removeAccessesItem(DeletePartnerAssetAccessBodyAccessesInner accessesItem) {
+  public DeletePartnerAssetAccessBody removeAccessesItem(DeletePartnerAssetAccessItem accessesItem) {
     if (accessesItem != null && this.accesses != null) {
       this.accesses.remove(accessesItem);
     }
@@ -102,12 +105,8 @@ public class DeletePartnerAssetAccessBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

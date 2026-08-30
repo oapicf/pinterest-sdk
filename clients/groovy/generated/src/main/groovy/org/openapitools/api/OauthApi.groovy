@@ -1,9 +1,11 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.ConversionAccessTokenResponse
-import org.openapitools.model.Error
-import org.openapitools.model.OauthAccessTokenResponse
+import org.openapitools.model.ConversionAccessToken
+import org.openapitools.model.OauthAccessToken
+import org.openapitools.model.PinterestLibError
+import org.openapitools.model.TokenGrantType
+import org.openapitools.model.TokenTypeHint
 
 class OauthApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -17,6 +19,7 @@ class OauthApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
 
@@ -24,19 +27,22 @@ class OauthApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    ConversionAccessTokenResponse.class )
+                    ConversionAccessToken.class )
 
     }
 
-    def oauthToken ( String grantType, Closure onSuccess, Closure onFailure)  {
+    def oauthToken ( TokenGrantType grantType, String code, String continuousRefresh, String redirectUri, String refreshToken, String scope, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/oauth/token"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -48,21 +54,30 @@ class OauthApi {
 
 
         contentType = 'application/x-www-form-urlencoded';
-        bodyParams = grantType
+        bodyParams = [:]
+        bodyParams.put("code", code)
+        bodyParams.put("continuous_refresh", continuousRefresh)
+        bodyParams.put("grant_type", grantType)
+        bodyParams.put("redirect_uri", redirectUri)
+        bodyParams.put("refresh_token", refreshToken)
+        bodyParams.put("scope", scope)
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    OauthAccessTokenResponse.class )
+                    OauthAccessToken.class )
 
     }
 
-    def tokenRevoke ( String token, String tokenTypeHint, Closure onSuccess, Closure onFailure)  {
+    def tokenRevoke ( String token, TokenTypeHint tokenTypeHint, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/oauth/token/revoke"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -78,7 +93,9 @@ class OauthApi {
         bodyParams.put("token", token)
         bodyParams.put("token_type_hint", tokenTypeHint)
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     null )
 

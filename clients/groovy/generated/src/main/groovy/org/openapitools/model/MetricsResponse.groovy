@@ -5,9 +5,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.openapitools.model.MetricsResponseDataItems;
 
 @Canonical
 class MetricsResponse {
     
-    List<Object> data = new ArrayList<>()
+    List<MetricsResponseDataItems> data = new ArrayList<>()
 }

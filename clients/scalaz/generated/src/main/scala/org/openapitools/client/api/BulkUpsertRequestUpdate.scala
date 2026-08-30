@@ -15,10 +15,11 @@ case class BulkUpsertRequestUpdate (
   adGroups: Option[List[AdGroupUpdateRequest]],
 ads: Option[List[AdUpdateRequest]],
 campaigns: Option[List[CampaignUpdateRequest]],
-catalogProductGroups: Option[List[CatalogsProductGroupsUpdateRequest]],
-keywords: Option[List[KeywordUpdate]],
+catalogProductGroups: Option[List[BulkUpsertRequestUpdateCatalogProductGroupsItems]],
+keywords: Option[List[KeywordUpdateGenerated]],
 labels: Option[List[LabelBulkUpdateRequest]],
-productGroups: Option[List[ProductGroupPromotionUpdateRequest]])
+productGroups: Option[List[ProductGroupPromotionUpdateRequest]],
+schedules: Option[List[ScheduleUpdateRequest]])
 
 object BulkUpsertRequestUpdate {
   import DateTimeCodecs._

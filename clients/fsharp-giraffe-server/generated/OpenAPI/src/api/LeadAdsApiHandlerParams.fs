@@ -19,6 +19,11 @@ module LeadAdsApiHandlerParams =
     //#endregion
 
 
+    type AdAccountsSubscriptionsDelByIdStatusCode200Response = {
+      content:LeadSubscription;
+      
+    }
+
     type AdAccountsSubscriptionsDelByIdStatusCode204Response = {
       content:string;
       
@@ -53,7 +58,7 @@ module LeadAdsApiHandlerParams =
       content:PinterestLibError;
       
     }
-    type AdAccountsSubscriptionsDelByIdResult = AdAccountsSubscriptionsDelByIdStatusCode204 of AdAccountsSubscriptionsDelByIdStatusCode204Response|AdAccountsSubscriptionsDelByIdStatusCode400 of AdAccountsSubscriptionsDelByIdStatusCode400Response|AdAccountsSubscriptionsDelByIdStatusCode401 of AdAccountsSubscriptionsDelByIdStatusCode401Response|AdAccountsSubscriptionsDelByIdStatusCode403 of AdAccountsSubscriptionsDelByIdStatusCode403Response|AdAccountsSubscriptionsDelByIdStatusCode404 of AdAccountsSubscriptionsDelByIdStatusCode404Response|AdAccountsSubscriptionsDelByIdStatusCode429 of AdAccountsSubscriptionsDelByIdStatusCode429Response|AdAccountsSubscriptionsDelByIdDefaultStatusCode of AdAccountsSubscriptionsDelByIdDefaultStatusCodeResponse
+    type AdAccountsSubscriptionsDelByIdResult = AdAccountsSubscriptionsDelByIdStatusCode200 of AdAccountsSubscriptionsDelByIdStatusCode200Response|AdAccountsSubscriptionsDelByIdStatusCode204 of AdAccountsSubscriptionsDelByIdStatusCode204Response|AdAccountsSubscriptionsDelByIdStatusCode400 of AdAccountsSubscriptionsDelByIdStatusCode400Response|AdAccountsSubscriptionsDelByIdStatusCode401 of AdAccountsSubscriptionsDelByIdStatusCode401Response|AdAccountsSubscriptionsDelByIdStatusCode403 of AdAccountsSubscriptionsDelByIdStatusCode403Response|AdAccountsSubscriptionsDelByIdStatusCode404 of AdAccountsSubscriptionsDelByIdStatusCode404Response|AdAccountsSubscriptionsDelByIdStatusCode429 of AdAccountsSubscriptionsDelByIdStatusCode429Response|AdAccountsSubscriptionsDelByIdDefaultStatusCode of AdAccountsSubscriptionsDelByIdDefaultStatusCodeResponse
 
     type AdAccountsSubscriptionsDelByIdArgs = {
       pathParams:AdAccountsSubscriptionsDelByIdPathParams;

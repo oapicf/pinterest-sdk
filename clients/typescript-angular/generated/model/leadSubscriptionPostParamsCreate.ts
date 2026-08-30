@@ -7,7 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { LeadSubscriptionPostParamsCreateAllOfPartnerMetadata } from './leadSubscriptionPostParamsCreateAllOfPartnerMetadata';
+import { PartnerMetadata } from './partnerMetadata';
 
 
 export interface LeadSubscriptionPostParamsCreate { 
@@ -23,7 +23,10 @@ export interface LeadSubscriptionPostParamsCreate {
      * Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
      */
     partner_access_token?: string;
-    partner_metadata?: LeadSubscriptionPostParamsCreateAllOfPartnerMetadata;
+    /**
+     * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
+     */
+    partner_metadata?: PartnerMetadata;
     /**
      * Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
      */

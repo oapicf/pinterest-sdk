@@ -7,29 +7,26 @@
     {
       "name": "asset_group_info",
       "type": ["null", "model.AssetGroupBinding"],
-      "doc": "",
+      "doc": "An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.",
       "default": null
     },
     {
       "name": "asset_id",
-      "type": ["null", "string"],
-      "doc": "Unique identifier of a business asset.",
-      "default": null
+      "type": "string",
+      "doc": "Unique identifier of a business asset."
     },
     {
       "name": "asset_type",
-      "type": ["null", "string"],
-      "doc": "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.",
-      "default": null
+      "type": "model.AssetTypeResponse",
+      "doc": ""
     },
     {
       "name": "permissions",
-      "type": ["null", {
+      "type": {
         "type": "array",
         "items": "string"
-      }],
-      "doc": "Permission levels member or partner has on an asset.",
-      "default": null
+      },
+      "doc": "Permission levels member or partner has on an asset."
     }
   ]
 

@@ -7,9 +7,6 @@ module CatalogsFeedIngestionErrors =
 
   //#region CatalogsFeedIngestionErrors
 
-  //#region enums
-  type LARGEPRODUCTCOUNTDECREASEEnum = _1Enum of int  
-  //#endregion
 
   type CatalogsFeedIngestionErrors = {
     ACCOUNT_FLAGGED : int;
@@ -19,7 +16,7 @@ module CatalogsFeedIngestionErrors =
     IMAGE_INVALID_FILE : int;
     IMAGE_LEVEL_INTERNAL_ERROR : int;
     IMAGE_MALFORMED_URL : int;
-    LARGE_PRODUCT_COUNT_DECREASE : LARGEPRODUCTCOUNTDECREASEEnum;
+    LARGE_PRODUCT_COUNT_DECREASE : int;
     LINE_LEVEL_INTERNAL_ERROR : int;
   }
   //#endregion

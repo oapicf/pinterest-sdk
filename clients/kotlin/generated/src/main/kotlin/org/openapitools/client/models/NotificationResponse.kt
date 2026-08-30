@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,25 +30,25 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param success Returns true if the notification accepted.
- * @param receivedAt Received time. Unix timestamp in seconds.
  * @param errorMsg error message when success is false
+ * @param receivedAt Received time. Unix timestamp in seconds.
+ * @param success Returns true if the notification accepted.
  */
 
 
 data class NotificationResponse (
 
-    /* Returns true if the notification accepted. */
-    @Json(name = "success")
-    val success: kotlin.Boolean? = null,
+    /* error message when success is false */
+    @Json(name = "error_msg")
+    val errorMsg: kotlin.String? = null,
 
     /* Received time. Unix timestamp in seconds. */
     @Json(name = "received_at")
     val receivedAt: kotlin.Int? = null,
 
-    /* error message when success is false */
-    @Json(name = "error_msg")
-    val errorMsg: kotlin.String? = null
+    /* Returns true if the notification accepted. */
+    @Json(name = "success")
+    val success: kotlin.Boolean? = null
 
 ) {
 

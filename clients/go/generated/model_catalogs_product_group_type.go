@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// CatalogsProductGroupType <p>Catalog product group type</p> <p>MERCHANT_CREATED: Product groups created by merchants. <br>ALL_PRODUCTS: Consists of every product in your latest successful feed upload. <br>BEST_DEALS: Consists of products with the deepest drop in price. <br>PINNER_FAVORITES: Consists of products that are resonating most with people on Pinterest, based on engagement. <br>TOP_SELLERS: Consists of products with the highest conversion rate, if you have the conversion tag installed. <br>BACK_IN_STOCK: Consists of products that were previously out of stock and are now in stock. <br>NEW_ARRIVALS: Consists of products that are new to your Catalog. <br>SHOPIFY_COLLECTION: Product groups created based on Shopify Product Collections. <br>I2PC: Product groups created based on predicted product category.</p>
+// CatalogsProductGroupType Catalog product group type  - **MERCHANT_CREATED**: Product groups created by merchants. - **ALL_PRODUCTS**: Consists of every product in your latest successful feed upload. - **BEST_DEALS**: Consists of products with the deepest drop in price. - **PINNER_FAVORITES**: Consists of products that are resonating most with people on Pinterest, based on engagement. - **TOP_SELLERS**: Consists of products with the highest conversion rate, if you have the conversion tag installed. - **BACK_IN_STOCK**: Consists of products that were previously out of stock and are now in stock. - **NEW_ARRIVALS**: Consists of products that are new to your Catalog. - **SHOPIFY_COLLECTIONS**: Product groups created based on Shopify Product Collections. - **I2PC**: Product groups created based on predicted product category. - **CATALOG_EXPANSION**: Consists of high-potential, recommended products from your catalog.
 type CatalogsProductGroupType string
 
 // List of CatalogsProductGroupType
@@ -30,6 +30,7 @@ const (
 	NEW_ARRIVALS CatalogsProductGroupType = "NEW_ARRIVALS"
 	SHOPIFY_COLLECTIONS CatalogsProductGroupType = "SHOPIFY_COLLECTIONS"
 	I2_PC CatalogsProductGroupType = "I2PC"
+	CATALOG_EXPANSION CatalogsProductGroupType = "CATALOG_EXPANSION"
 )
 
 // All allowed values of CatalogsProductGroupType enum
@@ -43,6 +44,7 @@ var AllowedCatalogsProductGroupTypeEnumValues = []CatalogsProductGroupType{
 	"NEW_ARRIVALS",
 	"SHOPIFY_COLLECTIONS",
 	"I2PC",
+	"CATALOG_EXPANSION",
 }
 
 func (v *CatalogsProductGroupType) UnmarshalJSON(src []byte) error {

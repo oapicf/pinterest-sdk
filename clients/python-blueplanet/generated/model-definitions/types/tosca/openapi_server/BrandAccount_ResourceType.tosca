@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BrandAccount"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BrandAccount"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BrandAccount {
+    title = BrandAccount
+    description = BrandAccount
+    derivedFrom = Root
+    properties {
+        brand_account_id {
+          type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BrandAccount {
+    title = BrandAccount
+    description = BrandAccount
+    implements = openapi_server.resourceTypes.BrandAccount
+
+  }
+}

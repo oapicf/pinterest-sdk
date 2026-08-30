@@ -1,0 +1,68 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Campaign ad preview record.",
+  "name": "CampaignAdPreview",
+  "fields": [
+    {
+      "name": "ad_account_id",
+      "type": "string",
+      "doc": "Advertiser ID for this preview."
+    },
+    {
+      "name": "ad_group_id",
+      "type": "string",
+      "doc": "Ad group ID to create a preview record for."
+    },
+    {
+      "name": "client_id",
+      "type": ["null", "int"],
+      "doc": "Client ID that created preview.",
+      "default": null
+    },
+    {
+      "name": "expires_at",
+      "type": "int",
+      "doc": "Unix timestamp in milliseconds for preview expiration."
+    },
+    {
+      "name": "is_active",
+      "type": "boolean",
+      "doc": "Whether preview link is active."
+    },
+    {
+      "name": "pin_id",
+      "type": ["null", "int"],
+      "doc": "Pin ID for pin promotion preview.",
+      "default": null
+    },
+    {
+      "name": "pin_promotion_id",
+      "type": ["null", "int"],
+      "doc": "Pin promotion ID for this preview.",
+      "default": null
+    },
+    {
+      "name": "promoted_product_group_id",
+      "type": ["null", "int"],
+      "doc": "Promoted product group ID for catalog previews.",
+      "default": null
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "doc": "Campaign ad preview URL."
+    },
+    {
+      "name": "user_id",
+      "type": "int",
+      "doc": "User ID that created preview."
+    },
+    {
+      "name": "uuid",
+      "type": "string",
+      "doc": "Pin promotion preview key."
+    }
+  ]
+
+}

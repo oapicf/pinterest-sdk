@@ -128,7 +128,7 @@ PromotionTemplateValue::getAmount()
 }
 
 void
-PromotionTemplateValue::setAmount(long  amount)
+PromotionTemplateValue::setAmount(long amount)
 {
 	this->amount = amount;
 }
@@ -140,7 +140,7 @@ PromotionTemplateValue::getCurrencyCode()
 }
 
 void
-PromotionTemplateValue::setCurrencyCode(Currency  currency_code)
+PromotionTemplateValue::setCurrencyCode(Currency currency_code)
 {
 	this->currency_code = currency_code;
 }
@@ -152,7 +152,7 @@ PromotionTemplateValue::getCustomText()
 }
 
 void
-PromotionTemplateValue::setCustomText(std::string  custom_text)
+PromotionTemplateValue::setCustomText(std::string custom_text)
 {
 	this->custom_text = custom_text;
 }
@@ -164,7 +164,7 @@ PromotionTemplateValue::getPercent()
 }
 
 void
-PromotionTemplateValue::setPercent(long  percent)
+PromotionTemplateValue::setPercent(long percent)
 {
 	this->percent = percent;
 }

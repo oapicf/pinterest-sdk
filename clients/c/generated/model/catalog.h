@@ -20,21 +20,21 @@ typedef struct catalog_t catalog_t;
 
 
 typedef struct catalog_t {
+    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     char *created_at; //date time
     char *id; // string
-    char *updated_at; //date time
-    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     char *name; // string
+    char *updated_at; //date time
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalog_t;
 
 __attribute__((deprecated)) catalog_t *catalog_create(
+    pinterest_rest_api_catalogs_type__e catalog_type,
     char *created_at,
     char *id,
-    char *updated_at,
-    pinterest_rest_api_catalogs_type__e catalog_type,
-    char *name
+    char *name,
+    char *updated_at
 );
 
 void catalog_free(catalog_t *catalog);

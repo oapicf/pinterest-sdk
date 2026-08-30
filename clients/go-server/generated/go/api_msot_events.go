@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -83,22 +84,27 @@ func (c *MsotEventsAPIController) MsotEventsCreate(w http.ResponseWriter, r *htt
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var conversionMsotEventsParam ConversionMsotEvents
+	var conversionMsotEventsCreateParam ConversionMsotEventsCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&conversionMsotEventsParam); err != nil {
+	if err := d.Decode(&conversionMsotEventsCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertConversionMsotEventsRequired(conversionMsotEventsParam); err != nil {
+	if err := AssertConversionMsotEventsCreateRequired(conversionMsotEventsCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertConversionMsotEventsConstraints(conversionMsotEventsParam); err != nil {
+	if err := AssertConversionMsotEventsCreateConstraints(conversionMsotEventsCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.MsotEventsCreate(r.Context(), adAccountIdParam, conversionMsotEventsParam)
+	result, err := c.service.MsotEventsCreate(r.Context(), adAccountIdParam, conversionMsotEventsCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

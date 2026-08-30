@@ -1,7 +1,7 @@
 goog.provide('API.Client.CatalogsHotelItemsBatch');
 
 /**
- * Object describing the catalogs hotel items batch
+ * Object describing the catalogs hotel items batch. If specified, you must provide all properties.
  * @record
  */
 API.Client.CatalogsHotelItemsBatch = function() {}
@@ -14,7 +14,7 @@ API.Client.CatalogsHotelItemsBatch = function() {}
 API.Client.CatalogsHotelItemsBatch.prototype.batchId;
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsHotelItemsBatch.prototype.catalogType;
@@ -46,3 +46,7 @@ API.Client.CatalogsHotelItemsBatch.prototype.items;
  */
 API.Client.CatalogsHotelItemsBatch.prototype.status;
 
+/** @enum {string} */
+API.Client.CatalogsHotelItemsBatch.CatalogTypeEnum = { 
+  HOTEL: 'HOTEL',
+}

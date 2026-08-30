@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **description** | **string** |  | [optional] 
 **filters** | [**OpenAPI\Server\Model\CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | [optional] 
 **locale** | [**OpenAPI\Server\Model\CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
-**name** | **string** |  | [optional] 
+**name** | **string** | Name of catalog product group | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

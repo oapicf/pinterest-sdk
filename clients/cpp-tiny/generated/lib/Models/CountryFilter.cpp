@@ -65,7 +65,7 @@ CountryFilter::getCOUNTRY()
 }
 
 void
-CountryFilter::setCOUNTRY(CatalogsProductGroupMultipleCountriesCriteria  cOUNTRY)
+CountryFilter::setCOUNTRY(CatalogsProductGroupMultipleCountriesCriteria cOUNTRY)
 {
 	this->cOUNTRY = cOUNTRY;
 }

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **GoogleProductCategory4** | **List&lt;string&gt;** |  | [optional] 
 **GoogleProductCategory5** | **List&lt;string&gt;** |  | [optional] 
 **GoogleProductCategory6** | **List&lt;string&gt;** |  | [optional] 
-**MediaType** | **List&lt;CatalogsCreativeAssetsFilterValuesMap.MediaTypeEnum&gt;** |  | [optional] 
+**MediaType** | [**List&lt;MediaType&gt;**](MediaType.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

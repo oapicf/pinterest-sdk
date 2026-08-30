@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[GetBusinessAssetsResponse]**](GetBusinessAssetsResponse.md) | List of assets the requesting business has access to. | 
+**items** | [**List[BusinessAssets]**](BusinessAssets.md) |  | 
 
 ## Example
 

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,10 +27,10 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.AudienceDefinitionResponse
 import org.openapitools.client.models.AudienceInsightType
-import org.openapitools.client.models.AudienceInsightsResponse
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.AudienceInsights
+import org.openapitools.client.models.AudienceInsightsScopeAndTypeGet200Response
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -44,17 +52,17 @@ open class AudienceInsightsApi(basePath: kotlin.String = defaultBasePath, client
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * GET /ad_accounts/{ad_account_id}/audience_insights
      * Get audience insights
-     * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
+     * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceInsightType Type of audience insights. (default to AudienceInsightType.YOUR_TOTAL_AUDIENCE)
-     * @return AudienceInsightsResponse
+     * @param audienceInsightType Type of audience insights.
+     * @return AudienceInsights
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -63,11 +71,11 @@ open class AudienceInsightsApi(basePath: kotlin.String = defaultBasePath, client
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun audienceInsightsGet(adAccountId: kotlin.String, audienceInsightType: AudienceInsightType = AudienceInsightType.YOUR_TOTAL_AUDIENCE) : AudienceInsightsResponse {
+    fun audienceInsightsGet(adAccountId: kotlin.String, audienceInsightType: AudienceInsightType) : AudienceInsights {
         val localVarResponse = audienceInsightsGetWithHttpInfo(adAccountId = adAccountId, audienceInsightType = audienceInsightType)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as AudienceInsightsResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AudienceInsights
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -84,19 +92,19 @@ open class AudienceInsightsApi(basePath: kotlin.String = defaultBasePath, client
     /**
      * GET /ad_accounts/{ad_account_id}/audience_insights
      * Get audience insights
-     * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
+     * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceInsightType Type of audience insights. (default to AudienceInsightType.YOUR_TOTAL_AUDIENCE)
-     * @return ApiResponse<AudienceInsightsResponse?>
+     * @param audienceInsightType Type of audience insights.
+     * @return ApiResponse<AudienceInsights?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun audienceInsightsGetWithHttpInfo(adAccountId: kotlin.String, audienceInsightType: AudienceInsightType) : ApiResponse<AudienceInsightsResponse?> {
+    fun audienceInsightsGetWithHttpInfo(adAccountId: kotlin.String, audienceInsightType: AudienceInsightType) : ApiResponse<AudienceInsights?> {
         val localVariableConfig = audienceInsightsGetRequestConfig(adAccountId = adAccountId, audienceInsightType = audienceInsightType)
 
-        return request<Unit, AudienceInsightsResponse>(
+        return request<Unit, AudienceInsights>(
             localVariableConfig
         )
     }
@@ -105,7 +113,7 @@ open class AudienceInsightsApi(basePath: kotlin.String = defaultBasePath, client
      * To obtain the request config of the operation audienceInsightsGet
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceInsightType Type of audience insights. (default to AudienceInsightType.YOUR_TOTAL_AUDIENCE)
+     * @param audienceInsightType Type of audience insights.
      * @return RequestConfig
      */
     fun audienceInsightsGetRequestConfig(adAccountId: kotlin.String, audienceInsightType: AudienceInsightType) : RequestConfig<Unit> {
@@ -132,7 +140,7 @@ open class AudienceInsightsApi(basePath: kotlin.String = defaultBasePath, client
      * Get audience insights scope and type
      * Get the scope and type of available audiences, which along with a date, is an audience that has recently had an interaction (referred to here as a type) on pins. Interacted pins can belong to at least the most common **partner** or **Pinterest** scopes. This means that user interactions made on advertiser or partner pins will have the **partner** scope. You can also have user interactions performed in general on Pinterest with the **Pinterest** scope. In that case, you can then use the returned type and scope values together on requests to other endpoints to retrieve insight metrics for a desired audience.
      * @param adAccountId Unique identifier of an ad account.
-     * @return AudienceDefinitionResponse
+     * @return AudienceInsightsScopeAndTypeGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -141,11 +149,11 @@ open class AudienceInsightsApi(basePath: kotlin.String = defaultBasePath, client
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun audienceInsightsScopeAndTypeGet(adAccountId: kotlin.String) : AudienceDefinitionResponse {
+    fun audienceInsightsScopeAndTypeGet(adAccountId: kotlin.String) : AudienceInsightsScopeAndTypeGet200Response {
         val localVarResponse = audienceInsightsScopeAndTypeGetWithHttpInfo(adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as AudienceDefinitionResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AudienceInsightsScopeAndTypeGet200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -164,16 +172,16 @@ open class AudienceInsightsApi(basePath: kotlin.String = defaultBasePath, client
      * Get audience insights scope and type
      * Get the scope and type of available audiences, which along with a date, is an audience that has recently had an interaction (referred to here as a type) on pins. Interacted pins can belong to at least the most common **partner** or **Pinterest** scopes. This means that user interactions made on advertiser or partner pins will have the **partner** scope. You can also have user interactions performed in general on Pinterest with the **Pinterest** scope. In that case, you can then use the returned type and scope values together on requests to other endpoints to retrieve insight metrics for a desired audience.
      * @param adAccountId Unique identifier of an ad account.
-     * @return ApiResponse<AudienceDefinitionResponse?>
+     * @return ApiResponse<AudienceInsightsScopeAndTypeGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun audienceInsightsScopeAndTypeGetWithHttpInfo(adAccountId: kotlin.String) : ApiResponse<AudienceDefinitionResponse?> {
+    fun audienceInsightsScopeAndTypeGetWithHttpInfo(adAccountId: kotlin.String) : ApiResponse<AudienceInsightsScopeAndTypeGet200Response?> {
         val localVariableConfig = audienceInsightsScopeAndTypeGetRequestConfig(adAccountId = adAccountId)
 
-        return request<Unit, AudienceDefinitionResponse>(
+        return request<Unit, AudienceInsightsScopeAndTypeGet200Response>(
             localVariableConfig
         )
     }

@@ -18,10 +18,12 @@ case class TrendingProductCategory (
   pctChangeMom: Integer,
 /* Relative volume percentage */
   percentRelativeVolume: Integer,
+/* Pinterest Product Category Id */
+  pinterestProductCategoryId: Integer,
 /* Product Category Name */
   productCategory: String,
 /* Vertical name associated with the product category */
-  verticals: Option[List[VerticalProductCategory]])
+  verticals: Option[List[String]])
 
 object TrendingProductCategory {
   import DateTimeCodecs._

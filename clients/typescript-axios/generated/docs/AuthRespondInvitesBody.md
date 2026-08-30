@@ -6,7 +6,7 @@ An object with a list of all the invites the user would like to respond to and t
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**invites** | [**Array&lt;AuthRespondInvitesBodyInvitesInner&gt;**](AuthRespondInvitesBodyInvitesInner.md) |  | [default to undefined]
+**invites** | [**Array&lt;AuthRespondInvitesBodyItem&gt;**](AuthRespondInvitesBodyItem.md) |  | [default to undefined]
 
 ## Example
 

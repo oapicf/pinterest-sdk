@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**negated** | **boolean** |  | [optional] [default to false]
+**negated** | **boolean** |  | [optional] [default to undefined]
 **values** | [**Array&lt;MediaType&gt;**](MediaType.md) |  | [default to undefined]
 
 ## Example

@@ -12,6 +12,7 @@ PinMediaWithVideo::PinMediaWithVideo()
 	images = ImageSize();
 	media_type = std::string();
 	video_url = std::string();
+	video_url_hls = std::string();
 	width = int(0);
 }
 
@@ -109,6 +110,19 @@ PinMediaWithVideo::fromJson(std::string jsonObj)
 
     }
 
+    const char *video_url_hlsKey = "video_url_hls";
+
+    if(object.has_key(video_url_hlsKey))
+    {
+        bourne::json value = object[video_url_hlsKey];
+
+
+
+        jsonToValue(&video_url_hls, value, "std::string");
+
+
+    }
+
     const char *widthKey = "width";
 
     if(object.has_key(widthKey))
@@ -176,6 +190,13 @@ PinMediaWithVideo::toJson()
 
 
 
+    object["video_url_hls"] = getVideoUrlHls();
+
+
+
+
+
+
     object["width"] = getWidth();
 
 
@@ -191,7 +212,7 @@ PinMediaWithVideo::getCoverImageUrl()
 }
 
 void
-PinMediaWithVideo::setCoverImageUrl(std::string  cover_image_url)
+PinMediaWithVideo::setCoverImageUrl(std::string cover_image_url)
 {
 	this->cover_image_url = cover_image_url;
 }
@@ -203,7 +224,7 @@ PinMediaWithVideo::getDuration()
 }
 
 void
-PinMediaWithVideo::setDuration(long  duration)
+PinMediaWithVideo::setDuration(long duration)
 {
 	this->duration = duration;
 }
@@ -215,7 +236,7 @@ PinMediaWithVideo::getHeight()
 }
 
 void
-PinMediaWithVideo::setHeight(int  height)
+PinMediaWithVideo::setHeight(int height)
 {
 	this->height = height;
 }
@@ -227,7 +248,7 @@ PinMediaWithVideo::getImages()
 }
 
 void
-PinMediaWithVideo::setImages(ImageSize  images)
+PinMediaWithVideo::setImages(ImageSize images)
 {
 	this->images = images;
 }
@@ -239,7 +260,7 @@ PinMediaWithVideo::getMediaType()
 }
 
 void
-PinMediaWithVideo::setMediaType(std::string  media_type)
+PinMediaWithVideo::setMediaType(std::string media_type)
 {
 	this->media_type = media_type;
 }
@@ -251,9 +272,21 @@ PinMediaWithVideo::getVideoUrl()
 }
 
 void
-PinMediaWithVideo::setVideoUrl(std::string  video_url)
+PinMediaWithVideo::setVideoUrl(std::string video_url)
 {
 	this->video_url = video_url;
+}
+
+std::string
+PinMediaWithVideo::getVideoUrlHls()
+{
+	return video_url_hls;
+}
+
+void
+PinMediaWithVideo::setVideoUrlHls(std::string video_url_hls)
+{
+	this->video_url_hls = video_url_hls;
 }
 
 int
@@ -263,7 +296,7 @@ PinMediaWithVideo::getWidth()
 }
 
 void
-PinMediaWithVideo::setWidth(int  width)
+PinMediaWithVideo::setWidth(int width)
 {
 	this->width = width;
 }

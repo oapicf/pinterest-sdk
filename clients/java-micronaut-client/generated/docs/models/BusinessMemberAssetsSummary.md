@@ -10,8 +10,8 @@ The class is defined in **[BusinessMemberAssetsSummary.java](../../src/main/java
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**adAccounts** | [`List&lt;BusinessMemberAssetsSummaryAdAccountsInner&gt;`](BusinessMemberAssetsSummaryAdAccountsInner.md) | List of ad account IDs and respective permission levels. |  [optional property]
-**profiles** | [`List&lt;BusinessMemberAssetsSummaryProfilesInner&gt;`](BusinessMemberAssetsSummaryProfilesInner.md) | List of profile IDs and respective permission levels. |  [optional property]
+**adAccounts** | [`List&lt;AssetIdWithPermissions&gt;`](AssetIdWithPermissions.md) | List of ad account IDs and respective permission levels. |  [optional property]
+**profiles** | [`List&lt;AssetIdWithPermissions&gt;`](AssetIdWithPermissions.md) | List of profile IDs and respective permission levels. |  [optional property]
 
 
 

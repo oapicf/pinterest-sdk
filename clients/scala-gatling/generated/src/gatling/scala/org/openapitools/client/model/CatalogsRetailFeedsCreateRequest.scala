@@ -3,14 +3,14 @@ package org.openapitools.client.model
 
 
 case class CatalogsRetailFeedsCreateRequest (
-    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect. */
+    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
     _catalogId: Option[String],
-    _catalogType: CatalogsType,
+    _catalogType: String,
     _credentials: Option[CatalogsFeedCredentials],
     _defaultAvailability: Option[ProductAvailabilityType],
     _defaultCountry: Country,
     _defaultCurrency: Option[NullableCurrency],
-    _defaultLocale: CatalogsFeedsCreateRequestDefaultLocale,
+    _defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale,
     _format: CatalogsFormat,
     /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
     _location: String,

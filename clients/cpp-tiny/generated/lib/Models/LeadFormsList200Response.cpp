@@ -7,7 +7,7 @@ using namespace Tiny;
 Lead_forms_list_200_response::Lead_forms_list_200_response()
 {
 	bookmark = std::string();
-	items = std::list<LeadFormResponse>();
+	items = std::list<LeadForm>();
 }
 
 Lead_forms_list_200_response::Lead_forms_list_200_response(std::string jsonString)
@@ -45,8 +45,8 @@ Lead_forms_list_200_response::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<LeadFormResponse> items_list;
-        LeadFormResponse element;
+        std::list<LeadForm> items_list;
+        LeadForm element;
         for(auto& var : value.array_range())
         {
 
@@ -78,12 +78,12 @@ Lead_forms_list_200_response::toJson()
 
 
 
-    std::list<LeadFormResponse> items_list = getItems();
+    std::list<LeadForm> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        LeadFormResponse obj = var;
+        LeadForm obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -102,19 +102,19 @@ Lead_forms_list_200_response::getBookmark()
 }
 
 void
-Lead_forms_list_200_response::setBookmark(std::string  bookmark)
+Lead_forms_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
 
-std::list<LeadFormResponse>
+std::list<LeadForm>
 Lead_forms_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Lead_forms_list_200_response::setItems(std::list <LeadFormResponse> items)
+Lead_forms_list_200_response::setItems(std::list<LeadForm> items)
 {
 	this->items = items;
 }

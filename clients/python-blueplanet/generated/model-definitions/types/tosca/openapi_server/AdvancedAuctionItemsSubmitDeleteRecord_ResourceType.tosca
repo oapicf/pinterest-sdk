@@ -23,6 +23,12 @@ resourceTypes {
           description = ""
           optional = true
         }
+        errors {
+          type = array
+          items.type = AdvancedAuctionOperationError
+          description = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied."
+          optional = false
+        }
         item_id {
           type =  string
           description = "The catalog retail item id in the merchant namespace"
@@ -33,11 +39,11 @@ resourceTypes {
           description = ""
           optional = true
         }
-        errors {
-          type = array
-          items.type = AdvancedAuctionOperationError
-          description = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied."
-          optional = false
+        operation {
+          type =  string
+          description = ""
+          enum = ["DELETE"]
+          optional = true
         }
     }
   }

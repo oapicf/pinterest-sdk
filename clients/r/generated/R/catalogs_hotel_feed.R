@@ -7,75 +7,57 @@
 #' @title CatalogsHotelFeed
 #' @description CatalogsHotelFeed Class
 #' @format An \code{R6Class} generator object
-#' @field created_at  character
-#' @field id  character
-#' @field updated_at  character
 #' @field catalog_id Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. character
-#' @field catalog_type  \link{CatalogsType}
-#' @field credentials  \link{CatalogsFeedCredentials}
-#' @field default_currency  \link{NullableCurrency}
+#' @field catalog_type  character
+#' @field created_at  character
+#' @field credentials  \link{CatalogsFeedCredentials} [optional]
+#' @field default_currency  \link{NullableCurrency} [optional]
 #' @field default_locale The locale used within a feed for product descriptions. character
 #' @field format  \link{CatalogsFormat}
+#' @field id ID of the feed entity. character
 #' @field location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. character
 #' @field name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. character
-#' @field preferred_processing_schedule  \link{CatalogsFeedProcessingSchedule}
+#' @field preferred_processing_schedule  \link{CatalogsFeedProcessingSchedule} [optional]
 #' @field status  \link{CatalogsStatus}
+#' @field updated_at  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsHotelFeed <- R6::R6Class(
   "CatalogsHotelFeed",
   public = list(
-    `created_at` = NULL,
-    `id` = NULL,
-    `updated_at` = NULL,
     `catalog_id` = NULL,
     `catalog_type` = NULL,
+    `created_at` = NULL,
     `credentials` = NULL,
     `default_currency` = NULL,
     `default_locale` = NULL,
     `format` = NULL,
+    `id` = NULL,
     `location` = NULL,
     `name` = NULL,
     `preferred_processing_schedule` = NULL,
     `status` = NULL,
+    `updated_at` = NULL,
 
     #' @description
     #' Initialize a new CatalogsHotelFeed class.
     #'
-    #' @param created_at created_at
-    #' @param id id
-    #' @param updated_at updated_at
     #' @param catalog_id Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
     #' @param catalog_type catalog_type
-    #' @param credentials credentials
-    #' @param default_currency default_currency
+    #' @param created_at created_at
     #' @param default_locale The locale used within a feed for product descriptions.
     #' @param format format
+    #' @param id ID of the feed entity.
     #' @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
     #' @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-    #' @param preferred_processing_schedule preferred_processing_schedule
     #' @param status status
+    #' @param updated_at updated_at
+    #' @param credentials credentials
+    #' @param default_currency default_currency
+    #' @param preferred_processing_schedule preferred_processing_schedule
     #' @param ... Other optional arguments.
-    initialize = function(`created_at`, `id`, `updated_at`, `catalog_id`, `catalog_type`, `credentials`, `default_currency`, `default_locale`, `format`, `location`, `name`, `preferred_processing_schedule`, `status`, ...) {
-      if (!missing(`created_at`)) {
-        if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
-          stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
-        }
-        self$`created_at` <- `created_at`
-      }
-      if (!missing(`id`)) {
-        if (!(is.character(`id`) && length(`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
-        }
-        self$`id` <- `id`
-      }
-      if (!missing(`updated_at`)) {
-        if (!(is.character(`updated_at`) && length(`updated_at`) == 1)) {
-          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", `updated_at`))
-        }
-        self$`updated_at` <- `updated_at`
-      }
+    initialize = function(`catalog_id`, `catalog_type`, `created_at`, `default_locale`, `format`, `id`, `location`, `name`, `status`, `updated_at`, `credentials` = NULL, `default_currency` = NULL, `preferred_processing_schedule` = NULL, ...) {
       if (!missing(`catalog_id`)) {
         if (!(is.character(`catalog_id`) && length(`catalog_id`) == 1)) {
           stop(paste("Error! Invalid data for `catalog_id`. Must be a string:", `catalog_id`))
@@ -83,22 +65,19 @@ CatalogsHotelFeed <- R6::R6Class(
         self$`catalog_id` <- `catalog_id`
       }
       if (!missing(`catalog_type`)) {
-        if (!(`catalog_type` %in% c())) {
-          stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be .", sep = ""))
+        if (!(`catalog_type` %in% c("HOTEL"))) {
+          stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
         }
-        stopifnot(R6::is.R6(`catalog_type`))
+        if (!(is.character(`catalog_type`) && length(`catalog_type`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", `catalog_type`))
+        }
         self$`catalog_type` <- `catalog_type`
       }
-      if (!missing(`credentials`)) {
-        stopifnot(R6::is.R6(`credentials`))
-        self$`credentials` <- `credentials`
-      }
-      if (!missing(`default_currency`)) {
-        if (!(`default_currency` %in% c())) {
-          stop(paste("Error! \"", `default_currency`, "\" cannot be assigned to `default_currency`. Must be .", sep = ""))
+      if (!missing(`created_at`)) {
+        if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
         }
-        stopifnot(R6::is.R6(`default_currency`))
-        self$`default_currency` <- `default_currency`
+        self$`created_at` <- `created_at`
       }
       if (!missing(`default_locale`)) {
         if (!(is.character(`default_locale`) && length(`default_locale`) == 1)) {
@@ -113,6 +92,12 @@ CatalogsHotelFeed <- R6::R6Class(
         stopifnot(R6::is.R6(`format`))
         self$`format` <- `format`
       }
+      if (!missing(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
+        self$`id` <- `id`
+      }
       if (!missing(`location`)) {
         if (!(is.character(`location`) && length(`location`) == 1)) {
           stop(paste("Error! Invalid data for `location`. Must be a string:", `location`))
@@ -125,16 +110,33 @@ CatalogsHotelFeed <- R6::R6Class(
         }
         self$`name` <- `name`
       }
-      if (!missing(`preferred_processing_schedule`)) {
-        stopifnot(R6::is.R6(`preferred_processing_schedule`))
-        self$`preferred_processing_schedule` <- `preferred_processing_schedule`
-      }
       if (!missing(`status`)) {
         if (!(`status` %in% c())) {
           stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`status`))
         self$`status` <- `status`
+      }
+      if (!missing(`updated_at`)) {
+        if (!(is.character(`updated_at`) && length(`updated_at`) == 1)) {
+          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", `updated_at`))
+        }
+        self$`updated_at` <- `updated_at`
+      }
+      if (!is.null(`credentials`)) {
+        stopifnot(R6::is.R6(`credentials`))
+        self$`credentials` <- `credentials`
+      }
+      if (!is.null(`default_currency`)) {
+        if (!(`default_currency` %in% c())) {
+          stop(paste("Error! \"", `default_currency`, "\" cannot be assigned to `default_currency`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`default_currency`))
+        self$`default_currency` <- `default_currency`
+      }
+      if (!is.null(`preferred_processing_schedule`)) {
+        stopifnot(R6::is.R6(`preferred_processing_schedule`))
+        self$`preferred_processing_schedule` <- `preferred_processing_schedule`
       }
     },
 
@@ -169,33 +171,25 @@ CatalogsHotelFeed <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsHotelFeedObject <- list()
-      if (!is.null(self$`created_at`)) {
-        CatalogsHotelFeedObject[["created_at"]] <-
-          self$`created_at`
-      }
-      if (!is.null(self$`id`)) {
-        CatalogsHotelFeedObject[["id"]] <-
-          self$`id`
-      }
-      if (!is.null(self$`updated_at`)) {
-        CatalogsHotelFeedObject[["updated_at"]] <-
-          self$`updated_at`
-      }
       if (!is.null(self$`catalog_id`)) {
         CatalogsHotelFeedObject[["catalog_id"]] <-
           self$`catalog_id`
       }
       if (!is.null(self$`catalog_type`)) {
         CatalogsHotelFeedObject[["catalog_type"]] <-
-          self$`catalog_type`$toSimpleType()
+          self$`catalog_type`
+      }
+      if (!is.null(self$`created_at`)) {
+        CatalogsHotelFeedObject[["created_at"]] <-
+          self$`created_at`
       }
       if (!is.null(self$`credentials`)) {
         CatalogsHotelFeedObject[["credentials"]] <-
-          self$`credentials`$toSimpleType()
+          self$extractSimpleType(self$`credentials`)
       }
       if (!is.null(self$`default_currency`)) {
         CatalogsHotelFeedObject[["default_currency"]] <-
-          self$`default_currency`$toSimpleType()
+          self$extractSimpleType(self$`default_currency`)
       }
       if (!is.null(self$`default_locale`)) {
         CatalogsHotelFeedObject[["default_locale"]] <-
@@ -203,7 +197,11 @@ CatalogsHotelFeed <- R6::R6Class(
       }
       if (!is.null(self$`format`)) {
         CatalogsHotelFeedObject[["format"]] <-
-          self$`format`$toSimpleType()
+          self$extractSimpleType(self$`format`)
+      }
+      if (!is.null(self$`id`)) {
+        CatalogsHotelFeedObject[["id"]] <-
+          self$`id`
       }
       if (!is.null(self$`location`)) {
         CatalogsHotelFeedObject[["location"]] <-
@@ -215,13 +213,40 @@ CatalogsHotelFeed <- R6::R6Class(
       }
       if (!is.null(self$`preferred_processing_schedule`)) {
         CatalogsHotelFeedObject[["preferred_processing_schedule"]] <-
-          self$`preferred_processing_schedule`$toSimpleType()
+          self$extractSimpleType(self$`preferred_processing_schedule`)
       }
       if (!is.null(self$`status`)) {
         CatalogsHotelFeedObject[["status"]] <-
-          self$`status`$toSimpleType()
+          self$extractSimpleType(self$`status`)
+      }
+      if (!is.null(self$`updated_at`)) {
+        CatalogsHotelFeedObject[["updated_at"]] <-
+          self$`updated_at`
       }
       return(CatalogsHotelFeedObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -231,22 +256,17 @@ CatalogsHotelFeed <- R6::R6Class(
     #' @return the instance of CatalogsHotelFeed
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`created_at`)) {
-        self$`created_at` <- this_object$`created_at`
-      }
-      if (!is.null(this_object$`id`)) {
-        self$`id` <- this_object$`id`
-      }
-      if (!is.null(this_object$`updated_at`)) {
-        self$`updated_at` <- this_object$`updated_at`
-      }
       if (!is.null(this_object$`catalog_id`)) {
         self$`catalog_id` <- this_object$`catalog_id`
       }
       if (!is.null(this_object$`catalog_type`)) {
-        `catalog_type_object` <- CatalogsType$new()
-        `catalog_type_object`$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
-        self$`catalog_type` <- `catalog_type_object`
+        if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("HOTEL"))) {
+          stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
+        }
+        self$`catalog_type` <- this_object$`catalog_type`
+      }
+      if (!is.null(this_object$`created_at`)) {
+        self$`created_at` <- this_object$`created_at`
       }
       if (!is.null(this_object$`credentials`)) {
         `credentials_object` <- CatalogsFeedCredentials$new()
@@ -266,6 +286,9 @@ CatalogsHotelFeed <- R6::R6Class(
         `format_object`$fromJSON(jsonlite::toJSON(this_object$`format`, auto_unbox = TRUE, digits = NA))
         self$`format` <- `format_object`
       }
+      if (!is.null(this_object$`id`)) {
+        self$`id` <- this_object$`id`
+      }
       if (!is.null(this_object$`location`)) {
         self$`location` <- this_object$`location`
       }
@@ -281,6 +304,9 @@ CatalogsHotelFeed <- R6::R6Class(
         `status_object` <- CatalogsStatus$new()
         `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
         self$`status` <- `status_object`
+      }
+      if (!is.null(this_object$`updated_at`)) {
+        self$`updated_at` <- this_object$`updated_at`
       }
       self
     },
@@ -303,19 +329,22 @@ CatalogsHotelFeed <- R6::R6Class(
     #' @return the instance of CatalogsHotelFeed
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`created_at` <- this_object$`created_at`
-      self$`id` <- this_object$`id`
-      self$`updated_at` <- this_object$`updated_at`
       self$`catalog_id` <- this_object$`catalog_id`
-      self$`catalog_type` <- CatalogsType$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
+      if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("HOTEL"))) {
+        stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
+      }
+      self$`catalog_type` <- this_object$`catalog_type`
+      self$`created_at` <- this_object$`created_at`
       self$`credentials` <- CatalogsFeedCredentials$new()$fromJSON(jsonlite::toJSON(this_object$`credentials`, auto_unbox = TRUE, digits = NA))
       self$`default_currency` <- NullableCurrency$new()$fromJSON(jsonlite::toJSON(this_object$`default_currency`, auto_unbox = TRUE, digits = NA))
       self$`default_locale` <- this_object$`default_locale`
       self$`format` <- CatalogsFormat$new()$fromJSON(jsonlite::toJSON(this_object$`format`, auto_unbox = TRUE, digits = NA))
+      self$`id` <- this_object$`id`
       self$`location` <- this_object$`location`
       self$`name` <- this_object$`name`
       self$`preferred_processing_schedule` <- CatalogsFeedProcessingSchedule$new()$fromJSON(jsonlite::toJSON(this_object$`preferred_processing_schedule`, auto_unbox = TRUE, digits = NA))
       self$`status` <- CatalogsStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+      self$`updated_at` <- this_object$`updated_at`
       self
     },
 
@@ -325,30 +354,6 @@ CatalogsHotelFeed <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `created_at`
-      if (!is.null(input_json$`created_at`)) {
-        if (!(is.character(input_json$`created_at`) && length(input_json$`created_at`) == 1)) {
-          stop(paste("Error! Invalid data for `created_at`. Must be a string:", input_json$`created_at`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `created_at` is missing."))
-      }
-      # check the required field `id`
-      if (!is.null(input_json$`id`)) {
-        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `id` is missing."))
-      }
-      # check the required field `updated_at`
-      if (!is.null(input_json$`updated_at`)) {
-        if (!(is.character(input_json$`updated_at`) && length(input_json$`updated_at`) == 1)) {
-          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", input_json$`updated_at`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `updated_at` is missing."))
-      }
       # check the required field `catalog_id`
       if (!is.null(input_json$`catalog_id`)) {
         if (!(is.character(input_json$`catalog_id`) && length(input_json$`catalog_id`) == 1)) {
@@ -359,21 +364,19 @@ CatalogsHotelFeed <- R6::R6Class(
       }
       # check the required field `catalog_type`
       if (!is.null(input_json$`catalog_type`)) {
-        stopifnot(R6::is.R6(input_json$`catalog_type`))
+        if (!(is.character(input_json$`catalog_type`) && length(input_json$`catalog_type`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", input_json$`catalog_type`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `catalog_type` is missing."))
       }
-      # check the required field `credentials`
-      if (!is.null(input_json$`credentials`)) {
-        stopifnot(R6::is.R6(input_json$`credentials`))
+      # check the required field `created_at`
+      if (!is.null(input_json$`created_at`)) {
+        if (!(is.character(input_json$`created_at`) && length(input_json$`created_at`) == 1)) {
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", input_json$`created_at`))
+        }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `credentials` is missing."))
-      }
-      # check the required field `default_currency`
-      if (!is.null(input_json$`default_currency`)) {
-        stopifnot(R6::is.R6(input_json$`default_currency`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `default_currency` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `created_at` is missing."))
       }
       # check the required field `default_locale`
       if (!is.null(input_json$`default_locale`)) {
@@ -388,6 +391,14 @@ CatalogsHotelFeed <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`format`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `format` is missing."))
+      }
+      # check the required field `id`
+      if (!is.null(input_json$`id`)) {
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `id` is missing."))
       }
       # check the required field `location`
       if (!is.null(input_json$`location`)) {
@@ -405,17 +416,19 @@ CatalogsHotelFeed <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `name` is missing."))
       }
-      # check the required field `preferred_processing_schedule`
-      if (!is.null(input_json$`preferred_processing_schedule`)) {
-        stopifnot(R6::is.R6(input_json$`preferred_processing_schedule`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `preferred_processing_schedule` is missing."))
-      }
       # check the required field `status`
       if (!is.null(input_json$`status`)) {
         stopifnot(R6::is.R6(input_json$`status`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `status` is missing."))
+      }
+      # check the required field `updated_at`
+      if (!is.null(input_json$`updated_at`)) {
+        if (!(is.character(input_json$`updated_at`) && length(input_json$`updated_at`) == 1)) {
+          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", input_json$`updated_at`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `updated_at` is missing."))
       }
     },
 
@@ -432,27 +445,17 @@ CatalogsHotelFeed <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `created_at` is null
-      if (is.null(self$`created_at`)) {
-        return(FALSE)
-      }
-
-      # check if the required `id` is null
-      if (is.null(self$`id`)) {
-        return(FALSE)
-      }
-
-      # check if the required `updated_at` is null
-      if (is.null(self$`updated_at`)) {
-        return(FALSE)
-      }
-
       if (!str_detect(self$`catalog_id`, "^\\d+$")) {
         return(FALSE)
       }
 
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
+        return(FALSE)
+      }
+
+      # check if the required `created_at` is null
+      if (is.null(self$`created_at`)) {
         return(FALSE)
       }
 
@@ -466,13 +469,31 @@ CatalogsHotelFeed <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        return(FALSE)
+      }
+
+      if (!str_detect(self$`id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
       # check if the required `location` is null
       if (is.null(self$`location`)) {
         return(FALSE)
       }
 
+      if (!str_detect(self$`location`, "^(http|https|ftp|sftp):/")) {
+        return(FALSE)
+      }
+
       # check if the required `status` is null
       if (is.null(self$`status`)) {
+        return(FALSE)
+      }
+
+      # check if the required `updated_at` is null
+      if (is.null(self$`updated_at`)) {
         return(FALSE)
       }
 
@@ -485,21 +506,6 @@ CatalogsHotelFeed <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `created_at` is null
-      if (is.null(self$`created_at`)) {
-        invalid_fields["created_at"] <- "Non-nullable required field `created_at` cannot be null."
-      }
-
-      # check if the required `id` is null
-      if (is.null(self$`id`)) {
-        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
-      }
-
-      # check if the required `updated_at` is null
-      if (is.null(self$`updated_at`)) {
-        invalid_fields["updated_at"] <- "Non-nullable required field `updated_at` cannot be null."
-      }
-
       if (!str_detect(self$`catalog_id`, "^\\d+$")) {
         invalid_fields["catalog_id"] <- "Invalid value for `catalog_id`, must conform to the pattern ^\\d+$."
       }
@@ -507,6 +513,11 @@ CatalogsHotelFeed <- R6::R6Class(
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         invalid_fields["catalog_type"] <- "Non-nullable required field `catalog_type` cannot be null."
+      }
+
+      # check if the required `created_at` is null
+      if (is.null(self$`created_at`)) {
+        invalid_fields["created_at"] <- "Non-nullable required field `created_at` cannot be null."
       }
 
       # check if the required `default_locale` is null
@@ -519,14 +530,32 @@ CatalogsHotelFeed <- R6::R6Class(
         invalid_fields["format"] <- "Non-nullable required field `format` cannot be null."
       }
 
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+      }
+
+      if (!str_detect(self$`id`, "^\\d+$")) {
+        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
+      }
+
       # check if the required `location` is null
       if (is.null(self$`location`)) {
         invalid_fields["location"] <- "Non-nullable required field `location` cannot be null."
       }
 
+      if (!str_detect(self$`location`, "^(http|https|ftp|sftp):/")) {
+        invalid_fields["location"] <- "Invalid value for `location`, must conform to the pattern ^(http|https|ftp|sftp):/."
+      }
+
       # check if the required `status` is null
       if (is.null(self$`status`)) {
         invalid_fields["status"] <- "Non-nullable required field `status` cannot be null."
+      }
+
+      # check if the required `updated_at` is null
+      if (is.null(self$`updated_at`)) {
+        invalid_fields["updated_at"] <- "Non-nullable required field `updated_at` cannot be null."
       }
 
       invalid_fields

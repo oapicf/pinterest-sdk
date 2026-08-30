@@ -19,13 +19,13 @@ typedef struct inner_product_categories_metrics_highlights_t inner_product_categ
 
 
 typedef struct inner_product_categories_metrics_highlights_t {
-    double pct_change_mom; //numeric
+    double *pct_change_mom; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } inner_product_categories_metrics_highlights_t;
 
 __attribute__((deprecated)) inner_product_categories_metrics_highlights_t *inner_product_categories_metrics_highlights_create(
-    double pct_change_mom
+    double *pct_change_mom
 );
 
 void inner_product_categories_metrics_highlights_free(inner_product_categories_metrics_highlights_t *inner_product_categories_metrics_highlights);

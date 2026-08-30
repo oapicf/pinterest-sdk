@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setGOOGLEPRODUCTCATEGORY1(CatalogsProductGroupMultipleStringListCriteria  gOOGLE_PRODUCT_CATEGORY_1);
+	void setGOOGLEPRODUCTCATEGORY1(CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_1);
 
 
     private:

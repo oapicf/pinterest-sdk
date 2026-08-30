@@ -2,8 +2,8 @@ package models
 
 type CatalogsCreativeAssetsProductGroup struct {
 
-	// Catalog id pertaining to the creative assets product group.
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	// Catalog ID pertaining to the product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\d+$"`
 
 	CatalogType string `json:"catalog_type"`
 
@@ -14,10 +14,10 @@ type CatalogsCreativeAssetsProductGroup struct {
 
 	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters"`
 
-	// ID of the creative assets product group.
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	// ID of the catalog product group.
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
-	// Name of creative assets product group
+	// Name of catalog product group
 	Name string `json:"name,omitempty"`
 
 	// Unix timestamp in seconds of last time catalog product group was updated.

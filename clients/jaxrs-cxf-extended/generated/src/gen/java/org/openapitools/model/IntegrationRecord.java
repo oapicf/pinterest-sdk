@@ -40,7 +40,10 @@ public class IntegrationRecord  {
   @ApiModelProperty(value = "")
   private String externalBusinessId;
 
-  @ApiModelProperty(value = "")
+ /**
+  * Integration record ID.
+  */
+  @ApiModelProperty(required = true, value = "Integration record ID.")
   private String id;
 
   @ApiModelProperty(value = "")
@@ -101,7 +104,6 @@ public class IntegrationRecord  {
 
   /**
    * Sets the <code>connectedAdvertiserId</code> property.
-   * <br><em>N.B. <code>connectedAdvertiserId</code> is <b>read only</b>; client code should not call this method</em>.
    */
  public void setConnectedAdvertiserId(String connectedAdvertiserId) {
     this.connectedAdvertiserId = connectedAdvertiserId;
@@ -109,7 +111,6 @@ public class IntegrationRecord  {
 
   /**
    * Sets the <code>connectedAdvertiserId</code> property.
-   * <br><em>N.B. <code>connectedAdvertiserId</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public IntegrationRecord connectedAdvertiserId(String connectedAdvertiserId) {
     this.connectedAdvertiserId = connectedAdvertiserId;
@@ -199,7 +200,6 @@ public class IntegrationRecord  {
 
   /**
    * Sets the <code>connectedUserId</code> property.
-   * <br><em>N.B. <code>connectedUserId</code> is <b>read only</b>; client code should not call this method</em>.
    */
  public void setConnectedUserId(String connectedUserId) {
     this.connectedUserId = connectedUserId;
@@ -207,7 +207,6 @@ public class IntegrationRecord  {
 
   /**
    * Sets the <code>connectedUserId</code> property.
-   * <br><em>N.B. <code>connectedUserId</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public IntegrationRecord connectedUserId(String connectedUserId) {
     this.connectedUserId = connectedUserId;
@@ -263,16 +262,18 @@ public class IntegrationRecord  {
   }
 
  /**
-  * Get id
+  * Integration record ID.
   * @return id
   */
   @JsonProperty("id")
+  @NotNull
  @Pattern(regexp="^\\d+$")  public String getId() {
     return id;
   }
 
   /**
    * Sets the <code>id</code> property.
+   * <br><em>N.B. <code>id</code> is <b>read only</b>; client code should not call this method</em>.
    */
  public void setId(String id) {
     this.id = id;
@@ -280,6 +281,7 @@ public class IntegrationRecord  {
 
   /**
    * Sets the <code>id</code> property.
+   * <br><em>N.B. <code>id</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public IntegrationRecord id(String id) {
     this.id = id;
@@ -543,10 +545,7 @@ public class IntegrationRecord  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | **String** |  | [optional] 
-**Items** | [**LabelsResponse[]**](LabelsResponse.md) |  | 
+**Items** | [**Label[]**](Label.md) |  | 
 
 ## Examples
 

@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -20,7 +25,7 @@ type IntegrationLogClientRequest struct {
 	// HTTP request host from host header.
 	Host string `json:"host"`
 
-	Method string `json:"method"`
+	Method HttpMethod `json:"method"`
 
 	// HTTP request path.
 	Path string `json:"path"`
@@ -33,20 +38,96 @@ type IntegrationLogClientRequest struct {
 
 	ResponseStatusCode int32 `json:"response_status_code,omitempty"`
 }
-
-// AssertIntegrationLogClientRequestRequired checks if the required fields are not zero-ed
-func AssertIntegrationLogClientRequestRequired(obj IntegrationLogClientRequest) error {
-	elements := map[string]interface{}{
-		"host": obj.Host,
-		"method": obj.Method,
-		"path": obj.Path,
+// UnmarshalJSON validates required property keys then unmarshals into IntegrationLogClientRequest
+func (o *IntegrationLogClientRequest) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"host",
+		"method",
+		"path",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"host": false,
+		"method": false,
+		"path": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"host": {},
+		"method": {},
+		"path": {},
+		"request_headers": {},
+		"response_headers": {},
+		"response_status_code": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded IntegrationLogClientRequest
+
+	if value, exists := allProperties["host"]; exists {
+		if err = json.Unmarshal(value, &decoded.Host); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["method"]; exists {
+		if err = json.Unmarshal(value, &decoded.Method); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["path"]; exists {
+		if err = json.Unmarshal(value, &decoded.Path); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["request_headers"]; exists {
+		if err = json.Unmarshal(value, &decoded.RequestHeaders); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["response_headers"]; exists {
+		if err = json.Unmarshal(value, &decoded.ResponseHeaders); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["response_status_code"]; exists {
+		if err = json.Unmarshal(value, &decoded.ResponseStatusCode); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertIntegrationLogClientRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertIntegrationLogClientRequestRequired(obj IntegrationLogClientRequest) error {
 	return nil
 }
 

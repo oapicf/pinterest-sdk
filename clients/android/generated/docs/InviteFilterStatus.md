@@ -1,0 +1,10 @@
+
+
+# InviteFilterStatus
+
+## Enum
+
+
+
+
+

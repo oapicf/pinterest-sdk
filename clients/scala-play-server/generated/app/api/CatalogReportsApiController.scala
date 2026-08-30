@@ -7,11 +7,11 @@ import play.api.mvc._
 import model.CatalogsCreateReportResponse
 import model.CatalogsReport
 import model.CatalogsReportParameters
+import model.CatalogsReportStatsParameters
 import model.Error
 import model.ReportsStats200Response
-import model.ReportsStatsParametersParameter
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class CatalogReportsApiController @Inject()(cc: ControllerComponents, api: CatalogReportsApi) extends AbstractController(cc) {
   /**
@@ -53,16 +53,11 @@ class CatalogReportsApiController @Inject()(cc: ControllerComponents, api: Catal
   }
 
   /**
-    * GET /v5/catalogs/reports/stats?adAccountId=[value]&pageSize=[value]&bookmark=[value]&parameters=[value]
+    * GET /v5/catalogs/reports/stats?adAccountId=[value]&parameters=[value]&bookmark=[value]&pageSize=[value]
     */
   def reportsStats(): Action[AnyContent] = Action { request =>
     def executeApi(): ReportsStats200Response = {
       val adAccountId = request.getQueryString("ad_account_id")
-        
-      val pageSize = request.getQueryString("page_size")
-        .map(value => value.toInt)
-        
-      val bookmark = request.getQueryString("bookmark")
         
       val parameters = request.getQueryString("parameters")
         .map(value => )
@@ -70,7 +65,12 @@ class CatalogReportsApiController @Inject()(cc: ControllerComponents, api: Catal
           throw new OpenApiExceptions.MissingRequiredParameterException("parameters", "query string")
         }
         
-      api.reportsStats(parameters, adAccountId, pageSize, bookmark)
+      val bookmark = request.getQueryString("bookmark")
+        
+      val pageSize = request.getQueryString("page_size")
+        .map(value => value.toInt)
+        
+      api.reportsStats(parameters, adAccountId, bookmark, pageSize)
     }
 
     val result = executeApi()

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -31,6 +31,8 @@ type PinMediaWithVideo struct {
 	MediaType string `json:"media_type"`
 	// Video url (720p).  **Note:** This field is limited and not available to all apps.
 	VideoUrl NullableString `json:"video_url,omitempty"`
+	// Video url (HLS).  **Note:** This field is limited and not available to all apps.
+	VideoUrlHls NullableString `json:"video_url_hls,omitempty"`
 	// Width (in pixels). Field maybe null after creation due to video processing time.
 	Width NullableInt32 `json:"width,omitempty"`
 }
@@ -269,6 +271,48 @@ func (o *PinMediaWithVideo) UnsetVideoUrl() {
 	o.VideoUrl.Unset()
 }
 
+// GetVideoUrlHls returns the VideoUrlHls field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PinMediaWithVideo) GetVideoUrlHls() string {
+	if o == nil || IsNil(o.VideoUrlHls.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.VideoUrlHls.Get()
+}
+
+// GetVideoUrlHlsOk returns a tuple with the VideoUrlHls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PinMediaWithVideo) GetVideoUrlHlsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.VideoUrlHls.Get(), o.VideoUrlHls.IsSet()
+}
+
+// HasVideoUrlHls returns a boolean if a field has been set.
+func (o *PinMediaWithVideo) HasVideoUrlHls() bool {
+	if o != nil && o.VideoUrlHls.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVideoUrlHls gets a reference to the given NullableString and assigns it to the VideoUrlHls field.
+func (o *PinMediaWithVideo) SetVideoUrlHls(v string) {
+	o.VideoUrlHls.Set(&v)
+}
+// SetVideoUrlHlsNil sets the value for VideoUrlHls to be an explicit nil
+func (o *PinMediaWithVideo) SetVideoUrlHlsNil() {
+	o.VideoUrlHls.Set(nil)
+}
+
+// UnsetVideoUrlHls ensures that no value is present for VideoUrlHls, not even an explicit nil
+func (o *PinMediaWithVideo) UnsetVideoUrlHls() {
+	o.VideoUrlHls.Unset()
+}
+
 // GetWidth returns the Width field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PinMediaWithVideo) GetWidth() int32 {
 	if o == nil || IsNil(o.Width.Get()) {
@@ -336,6 +380,9 @@ func (o PinMediaWithVideo) ToMap() (map[string]interface{}, error) {
 	toSerialize["media_type"] = o.MediaType
 	if o.VideoUrl.IsSet() {
 		toSerialize["video_url"] = o.VideoUrl.Get()
+	}
+	if o.VideoUrlHls.IsSet() {
+		toSerialize["video_url_hls"] = o.VideoUrlHls.Get()
 	}
 	if o.Width.IsSet() {
 		toSerialize["width"] = o.Width.Get()

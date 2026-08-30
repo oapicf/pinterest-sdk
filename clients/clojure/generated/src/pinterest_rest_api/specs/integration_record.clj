@@ -15,7 +15,7 @@
    (ds/opt :connected_user_id) string?
    (ds/opt :created_time) int?
    (ds/opt :external_business_id) string?
-   (ds/opt :id) string?
+   (ds/req :id) string?
    (ds/opt :partner_access_token) string?
    (ds/opt :partner_access_token_expiry) int?
    (ds/opt :partner_metadata) string?

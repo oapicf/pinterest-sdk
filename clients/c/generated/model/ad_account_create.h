@@ -25,6 +25,7 @@ typedef struct ad_account_create_t {
     pinterest_rest_api_currency__e currency; //referenced enum
     char *name; // string
     char *owner_user_id; // string
+    char *time_zone; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ad_account_create_t;
@@ -33,7 +34,8 @@ __attribute__((deprecated)) ad_account_create_t *ad_account_create_create(
     pinterest_rest_api_country__e country,
     pinterest_rest_api_currency__e currency,
     char *name,
-    char *owner_user_id
+    char *owner_user_id,
+    char *time_zone
 );
 
 void ad_account_create_free(ad_account_create_t *ad_account_create);

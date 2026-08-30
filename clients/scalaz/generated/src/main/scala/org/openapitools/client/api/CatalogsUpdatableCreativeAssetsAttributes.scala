@@ -34,7 +34,7 @@ case class CatalogsUpdatableCreativeAssetsAttributes (
   link: Option[String],
 /* The name of the creative assets. */
   title: Option[String],
-/* Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. */
+/* Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'. */
   visibility: Option[String])
 
 object CatalogsUpdatableCreativeAssetsAttributes {

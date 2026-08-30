@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+/**
+ * SSIO insertion order status item in a list response.
+ **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SSIOInsertionOrderStatus   {
   
@@ -86,9 +89,6 @@ public class SSIOInsertionOrderStatus   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

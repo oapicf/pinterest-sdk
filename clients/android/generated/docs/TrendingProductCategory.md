@@ -9,8 +9,9 @@ Name | Type | Description | Notes
 **engagementType** | [**ProductCategoriesEngagementType**](ProductCategoriesEngagementType.md) | Engagement type | 
 **pctChangeMom** | **Integer** | Month-over-month change percentage | 
 **percentRelativeVolume** | **Integer** | Relative volume percentage | 
+**pinterestProductCategoryId** | **Integer** | Pinterest Product Category Id | 
 **productCategory** | **String** | Product Category Name | 
-**verticals** | [**List&lt;VerticalProductCategory&gt;**](VerticalProductCategory.md) | Vertical name associated with the product category |  [optional]
+**verticals** | **List&lt;String&gt;** | Vertical name associated with the product category |  [optional]
 
 
 

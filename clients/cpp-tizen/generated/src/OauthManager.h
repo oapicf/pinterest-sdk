@@ -5,9 +5,11 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
-#include "ConversionAccessTokenResponse.h"
-#include "Error.h"
-#include "OauthAccessTokenResponse.h"
+#include "ConversionAccessToken.h"
+#include "OauthAccessToken.h"
+#include "Pinterest.Lib.Error.h"
+#include "TokenGrantType.h"
+#include "TokenTypeHint.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -35,7 +37,7 @@ public:
  */
 bool oauthConversionTokenSync(char * accessToken,
 	
-	void(* handler)(ConversionAccessTokenResponse, Error, void* )
+	void(* handler)(ConversionAccessToken, Error, void* )
 	, void* userData);
 
 /*! \brief Generate OAuth access token for conversion API. *Asynchronous*
@@ -47,34 +49,44 @@ bool oauthConversionTokenSync(char * accessToken,
  */
 bool oauthConversionTokenAsync(char * accessToken,
 	
-	void(* handler)(ConversionAccessTokenResponse, Error, void* )
+	void(* handler)(ConversionAccessToken, Error, void* )
 	, void* userData);
 
 
 /*! \brief Generate OAuth access token. *Synchronous*
  *
- * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
+ * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
  * \param grantType  *Required*
+ * \param code 
+ * \param continuousRefresh   If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token.
+ * \param redirectUri 
+ * \param refreshToken 
+ * \param scope 
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool oauthTokenSync(char * accessToken,
-	std::string grantType, 
-	void(* handler)(OauthAccessTokenResponse, Error, void* )
+	TokenGrantType grantType, std::string code, std::string continuousRefresh, std::string redirectUri, std::string refreshToken, std::string scope, 
+	void(* handler)(OauthAccessToken, Error, void* )
 	, void* userData);
 
 /*! \brief Generate OAuth access token. *Asynchronous*
  *
- * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
+ * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
  * \param grantType  *Required*
+ * \param code 
+ * \param continuousRefresh   If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token.
+ * \param redirectUri 
+ * \param refreshToken 
+ * \param scope 
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool oauthTokenAsync(char * accessToken,
-	std::string grantType, 
-	void(* handler)(OauthAccessTokenResponse, Error, void* )
+	TokenGrantType grantType, std::string code, std::string continuousRefresh, std::string redirectUri, std::string refreshToken, std::string scope, 
+	void(* handler)(OauthAccessToken, Error, void* )
 	, void* userData);
 
 
@@ -88,7 +100,7 @@ bool oauthTokenAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool tokenRevokeSync(char * accessToken,
-	std::string token, std::string tokenTypeHint, 
+	std::string token, TokenTypeHint tokenTypeHint, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
@@ -102,7 +114,7 @@ bool tokenRevokeSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool tokenRevokeAsync(char * accessToken,
-	std::string token, std::string tokenTypeHint, 
+	std::string token, TokenTypeHint tokenTypeHint, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 

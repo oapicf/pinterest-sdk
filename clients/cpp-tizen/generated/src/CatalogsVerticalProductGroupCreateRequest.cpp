@@ -23,7 +23,7 @@ CatalogsVerticalProductGroupCreateRequest::~CatalogsVerticalProductGroupCreateRe
 void
 CatalogsVerticalProductGroupCreateRequest::__init()
 {
-	//catalog_id = std::string();
+	//catalog_id = null;
 	//catalog_type = std::string();
 	//country = new Country();
 	//description = std::string();

@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LocalInventoryItemsBatchCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LocalInventoryItemsBatchCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  LocalInventoryOperation = openapi_server.resourceTypes.LocalInventoryOperation
+}
+resourceTypes {
+
+  LocalInventoryItemsBatchCreate {
+    title = LocalInventoryItemsBatchCreate
+    description = LocalInventoryItemsBatchCreate
+    derivedFrom = Root
+    properties {
+        operations {
+          type = array
+          items.type = LocalInventoryOperation
+          description = "Array of inventory operations. Up to 1000 items per request."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LocalInventoryItemsBatchCreate {
+    title = LocalInventoryItemsBatchCreate
+    description = LocalInventoryItemsBatchCreate
+    implements = openapi_server.resourceTypes.LocalInventoryItemsBatchCreate
+
+  }
+}

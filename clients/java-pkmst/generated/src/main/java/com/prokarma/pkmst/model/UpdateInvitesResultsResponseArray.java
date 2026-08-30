@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.UpdateInvitesResultsResponseArrayItemsInner;
+import com.prokarma.pkmst.model.InviteActionResultItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -18,18 +18,18 @@ import java.util.List;
  * UpdateInvitesResultsResponseArray
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UpdateInvitesResultsResponseArray   {
   @JsonProperty("items")
   
-  private List<UpdateInvitesResultsResponseArrayItemsInner> items = null;
+  private List<InviteActionResultItem> items = null;
 
-  public UpdateInvitesResultsResponseArray items(List<UpdateInvitesResultsResponseArrayItemsInner> items) {
+  public UpdateInvitesResultsResponseArray items(List<InviteActionResultItem> items) {
     this.items = items;
     return this;
   }
 
-  public UpdateInvitesResultsResponseArray addItemsItem(UpdateInvitesResultsResponseArrayItemsInner itemsItem) {
+  public UpdateInvitesResultsResponseArray addItemsItem(InviteActionResultItem itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -42,11 +42,11 @@ public class UpdateInvitesResultsResponseArray   {
    * @return items
    */
   @ApiModelProperty(value = "List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.")
-  public List<UpdateInvitesResultsResponseArrayItemsInner> getItems() {
+  public List<InviteActionResultItem> getItems() {
     return items;
   }
 
-  public void setItems(List<UpdateInvitesResultsResponseArrayItemsInner> items) {
+  public void setItems(List<InviteActionResultItem> items) {
     this.items = items;
   }
 
@@ -83,10 +83,7 @@ public class UpdateInvitesResultsResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

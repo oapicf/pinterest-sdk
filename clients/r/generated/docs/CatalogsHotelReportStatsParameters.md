@@ -6,6 +6,6 @@ Parameters for hotel report
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | **character** |  | [Enum: [HOTEL]] 
-**report** | [**CatalogsHotelReportStatsParametersReport**](CatalogsHotelReportStatsParameters_report.md) |  | 
+**report** | [**CatalogsHotelReportStatsParametersReport**](CatalogsHotelReportStatsParametersReport.md) |  | 
 
 

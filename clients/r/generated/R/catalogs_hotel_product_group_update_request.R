@@ -10,7 +10,7 @@
 #' @field catalog_type  character [optional]
 #' @field description  character [optional]
 #' @field filters  \link{CatalogsHotelProductGroupFilters} [optional]
-#' @field name  character [optional]
+#' @field name Name of catalog product group character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -28,7 +28,7 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
     #' @param catalog_type catalog_type
     #' @param description description
     #' @param filters filters
-    #' @param name name
+    #' @param name Name of catalog product group
     #' @param ... Other optional arguments.
     initialize = function(`catalog_type` = NULL, `description` = NULL, `filters` = NULL, `name` = NULL, ...) {
       if (!is.null(`catalog_type`)) {
@@ -99,13 +99,36 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
       }
       if (!is.null(self$`filters`)) {
         CatalogsHotelProductGroupUpdateRequestObject[["filters"]] <-
-          self$`filters`$toSimpleType()
+          self$extractSimpleType(self$`filters`)
       }
       if (!is.null(self$`name`)) {
         CatalogsHotelProductGroupUpdateRequestObject[["name"]] <-
           self$`name`
       }
       return(CatalogsHotelProductGroupUpdateRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

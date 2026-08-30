@@ -48,10 +48,8 @@ class CatalogsHotelProductMetadata {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsHotelProductMetadata[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsHotelProductMetadata[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'hotel_id'), 'Required key "CatalogsHotelProductMetadata[hotel_id]" is missing from JSON.');
+        assert(json[r'hotel_id'] != null, 'Required key "CatalogsHotelProductMetadata[hotel_id]" has a null value in JSON.');
         return true;
       }());
 

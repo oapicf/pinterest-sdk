@@ -2,7 +2,7 @@
 Protected Class MinPriceFilter
 
 	#tag Property, Flags = &h0
-		MIN_PRICE As CatalogsProductGroupPricingCriteria
+		MIN_PRICE As OpenAPIClient.Models.CatalogsProductGroupPricingCriteria
 	#tag EndProperty
 
 

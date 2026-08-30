@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | 
 **catalog_id** | **str** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
+**catalog_type** | **str** |  | 
 **item_ids** | **List[str]** |  | 
 **hotel_ids** | **List[str]** |  | 
 **creative_assets_ids** | **List[str]** |  | 

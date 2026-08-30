@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BillingProfilePaymentMethodBrand"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BillingProfilePaymentMethodBrand"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BillingProfilePaymentMethodBrand {
+    title = BillingProfilePaymentMethodBrand
+    description = BillingProfilePaymentMethodBrand
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  BillingProfilePaymentMethodBrand {
+    title = BillingProfilePaymentMethodBrand
+    description = BillingProfilePaymentMethodBrand
+    implements = openapi_server.resourceTypes.BillingProfilePaymentMethodBrand
+
+  }
+}

@@ -22,7 +22,8 @@ $SSIOAccountItem = Initialize-PSOpenAPIToolsSSIOAccountItem  -Addresses null `
  -IoTerms The IO is governed by the terms available at https://business.pinterest.com/en/pinterest-advertising-services-agreement/. If a budget is listed on this IO, the parties agree that Advertiser (or if applicable, its Agency) may apply any of the budget to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees. The terms of the Agreement supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID. `
  -IoTermsId a2S1N000000bKHgUAM `
  -IoType Pinterest Paper `
- -RowTerms The IO is governed by the terms available at
+ -RowTerms   The IO is governed by the terms available at
+
 https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement `
  -RowTermsId a2S1N000000bKHhUAM `
  -UsTerms This Insertion Order (&quot;IO&quot;) is subject to the Pinterest Addendum To IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0), as executed by Pinterest, Inc. and GroupM Worldwide LLC on May 7, 2014 and Amendment No. 1 to Pinterest Addendum to IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0) as executed by Pinterest, Inc. and GroupM Worldwide LLC on August 20, 2015. The parties agree that Agency may apply any of the budget listed on this IO to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees.The terms of the Addendum supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID. `

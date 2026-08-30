@@ -9,10 +9,10 @@ case class AdsCreditDiscountsResponse (
     _advertiserId: Option[String],
     /* Currency value for the discount. */
     _discountCurrency: Option[String],
-    /* The discount applied in the offer’s currency value. */
+    /* The discount applied in the offer's currency value. */
     _discountInMicroCurrency: Option[Number],
     /* The type of discount of this credit */
-    _discountType: Option[String],
+    _discountType: Option[AdsCreditDiscountType],
     /* The credits left to spend. */
     _remainingDiscountInMicroCurrency: Option[Number],
     /* Human readable title of the offer code. */

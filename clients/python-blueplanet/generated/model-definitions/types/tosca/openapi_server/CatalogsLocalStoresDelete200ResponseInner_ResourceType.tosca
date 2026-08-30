@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsLocalStoresDelete200ResponseInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsLocalStoresDelete200ResponseInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CampaignAdPreviewDelete200ResponseInnerStatus = openapi_server.resourceTypes.CampaignAdPreviewDelete200ResponseInnerStatus
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsLocalStoresDelete200ResponseInner {
+    title = CatalogsLocalStoresDelete200ResponseInner
+    description = CatalogsLocalStoresDelete200ResponseInner
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "The ID of the local store."
+          optional = true
+        }
+        status {
+          type = CampaignAdPreviewDelete200ResponseInnerStatus
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsLocalStoresDelete200ResponseInner {
+    title = CatalogsLocalStoresDelete200ResponseInner
+    description = CatalogsLocalStoresDelete200ResponseInner
+    implements = openapi_server.resourceTypes.CatalogsLocalStoresDelete200ResponseInner
+
+  }
+}

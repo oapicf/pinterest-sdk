@@ -102,7 +102,7 @@ Ssio_order_lines_get_by_ad_account_200_response::getBookmark()
 }
 
 void
-Ssio_order_lines_get_by_ad_account_200_response::setBookmark(std::string  bookmark)
+Ssio_order_lines_get_by_ad_account_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Ssio_order_lines_get_by_ad_account_200_response::getItems()
 }
 
 void
-Ssio_order_lines_get_by_ad_account_200_response::setItems(std::list <SSIOOrderLine> items)
+Ssio_order_lines_get_by_ad_account_200_response::setItems(std::list<SSIOOrderLine> items)
 {
 	this->items = items;
 }

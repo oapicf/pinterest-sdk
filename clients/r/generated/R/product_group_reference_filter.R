@@ -61,9 +61,32 @@ ProductGroupReferenceFilter <- R6::R6Class(
       ProductGroupReferenceFilterObject <- list()
       if (!is.null(self$`PRODUCT_GROUP`)) {
         ProductGroupReferenceFilterObject[["PRODUCT_GROUP"]] <-
-          self$`PRODUCT_GROUP`$toSimpleType()
+          self$extractSimpleType(self$`PRODUCT_GROUP`)
       }
       return(ProductGroupReferenceFilterObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

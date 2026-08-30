@@ -4,14 +4,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **additional_id_1** | **char \*** |  | [optional] 
-**connected_advertiser_id** | **char \*** |  | [optional] [readonly] 
+**connected_advertiser_id** | **char \*** |  | [optional] 
 **connected_lba_id** | **char \*** |  | [optional] 
 **connected_merchant_id** | **char \*** |  | [optional] 
 **connected_tag_id** | **char \*** |  | [optional] 
-**connected_user_id** | **char \*** |  | [optional] [readonly] 
+**connected_user_id** | **char \*** |  | [optional] 
 **created_time** | **int** |  | [optional] 
 **external_business_id** | **char \*** |  | [optional] 
-**id** | **char \*** |  | [optional] 
+**id** | **char \*** | Integration record ID. | [readonly] 
 **partner_access_token** | **char \*** |  | [optional] 
 **partner_access_token_expiry** | **int** |  | [optional] 
 **partner_metadata** | **char \*** |  | [optional] 

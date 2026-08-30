@@ -1,0 +1,11 @@
+
+# TemplatesList200Response
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**items** | [**kotlin.collections.List&lt;AccountTemplate&gt;**](AccountTemplate.md) |  | 
+**bookmark** | **kotlin.String** |  |  [optional]
+
+
+

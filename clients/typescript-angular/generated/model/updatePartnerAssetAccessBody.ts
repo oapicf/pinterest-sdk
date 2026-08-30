@@ -7,10 +7,16 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { UpdatePartnerAssetAccessBodyAccessesInner } from './updatePartnerAssetAccessBodyAccessesInner';
+import { UpdatePartnerAssetAccessItem } from './updatePartnerAssetAccessItem';
 
 
+/**
+ * An object with a list of partner asset accesses to assign or update.
+ */
 export interface UpdatePartnerAssetAccessBody { 
-    accesses: Array<UpdatePartnerAssetAccessBodyAccessesInner>;
+    /**
+     * List of partner asset accesses to assign or update.
+     */
+    accesses: Array<UpdatePartnerAssetAccessItem>;
 }
 

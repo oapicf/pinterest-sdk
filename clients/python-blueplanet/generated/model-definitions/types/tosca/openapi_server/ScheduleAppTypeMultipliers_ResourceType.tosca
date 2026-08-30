@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ScheduleAppTypeMultipliers"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ScheduleAppTypeMultipliers"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TargetingSpecAppType = openapi_server.resourceTypes.TargetingSpecAppType
+}
+resourceTypes {
+
+  ScheduleAppTypeMultipliers {
+    title = ScheduleAppTypeMultipliers
+    description = ScheduleAppTypeMultipliers
+    derivedFrom = Root
+    properties {
+        app_type {
+          type = TargetingSpecAppType
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ScheduleAppTypeMultipliers {
+    title = ScheduleAppTypeMultipliers
+    description = ScheduleAppTypeMultipliers
+    implements = openapi_server.resourceTypes.ScheduleAppTypeMultipliers
+
+  }
+}

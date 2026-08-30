@@ -10,13 +10,18 @@ import io.swagger.annotations.ApiModelProperty;
  * Sections help organize pins within a board.
  */
 @ApiModel(description = "Sections help organize pins within a board.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BoardSection   {
   @JsonProperty("id")
   private String id;
 
   @JsonProperty("name")
   private String name;
+
+  public BoardSection id(String id) {
+    this.id = id;
+    return this;
+  }
 
    /**
    * Get id
@@ -25,6 +30,10 @@ public class BoardSection   {
   @ApiModelProperty(example = "549755885175", value = "")
   public String getId() {
     return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
   public BoardSection name(String name) {
@@ -80,10 +89,7 @@ public class BoardSection   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

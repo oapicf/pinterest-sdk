@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -31,23 +31,21 @@ type ApiTargetingTemplateCreateRequest struct {
 	targetingTemplateCreate *TargetingTemplateCreate
 }
 
-// targeting template creation entity
 func (r ApiTargetingTemplateCreateRequest) TargetingTemplateCreate(targetingTemplateCreate TargetingTemplateCreate) ApiTargetingTemplateCreateRequest {
 	r.targetingTemplateCreate = &targetingTemplateCreate
 	return r
 }
 
-func (r ApiTargetingTemplateCreateRequest) Execute() (*TargetingTemplateGetResponseData, *http.Response, error) {
+func (r ApiTargetingTemplateCreateRequest) Execute() (*TargetingTemplate, *http.Response, error) {
 	return r.ApiService.TargetingTemplateCreateExecute(r)
 }
 
 /*
 TargetingTemplateCreate Create targeting templates
 
-<p>Targeting templates allow advertisers to save a set of targeting details including audience lists,
- keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>
- <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse
-  performance targeting from prior campaigns for new campaigns.</p>
+Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.
+
+Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -62,13 +60,13 @@ func (a *TargetingTemplateAPIService) TargetingTemplateCreate(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return TargetingTemplateGetResponseData
-func (a *TargetingTemplateAPIService) TargetingTemplateCreateExecute(r ApiTargetingTemplateCreateRequest) (*TargetingTemplateGetResponseData, *http.Response, error) {
+//  @return TargetingTemplate
+func (a *TargetingTemplateAPIService) TargetingTemplateCreateExecute(r ApiTargetingTemplateCreateRequest) (*TargetingTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TargetingTemplateGetResponseData
+		localVarReturnValue  *TargetingTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TargetingTemplateAPIService.TargetingTemplateCreate")
@@ -131,7 +129,7 @@ func (a *TargetingTemplateAPIService) TargetingTemplateCreateExecute(r ApiTarget
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -141,7 +139,51 @@ func (a *TargetingTemplateAPIService) TargetingTemplateCreateExecute(r ApiTarget
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -168,15 +210,27 @@ type ApiTargetingTemplateListRequest struct {
 	ctx context.Context
 	ApiService *TargetingTemplateAPIService
 	adAccountId string
-	order *string
+	bookmark *string
+	pageSize *int32
+	order *PinterestLibPaginationOrder
 	includeSizing *bool
 	searchQuery *string
-	pageSize *int32
-	bookmark *string
 }
 
-// The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-func (r ApiTargetingTemplateListRequest) Order(order string) ApiTargetingTemplateListRequest {
+// Cursor used to fetch the next page of items
+func (r ApiTargetingTemplateListRequest) Bookmark(bookmark string) ApiTargetingTemplateListRequest {
+	r.bookmark = &bookmark
+	return r
+}
+
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+func (r ApiTargetingTemplateListRequest) PageSize(pageSize int32) ApiTargetingTemplateListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
+func (r ApiTargetingTemplateListRequest) Order(order PinterestLibPaginationOrder) ApiTargetingTemplateListRequest {
 	r.order = &order
 	return r
 }
@@ -187,21 +241,9 @@ func (r ApiTargetingTemplateListRequest) IncludeSizing(includeSizing bool) ApiTa
 	return r
 }
 
-// Search keyword for targeting templates
+// Search query. Can contain pin description keywords or comma-separated pin IDs.
 func (r ApiTargetingTemplateListRequest) SearchQuery(searchQuery string) ApiTargetingTemplateListRequest {
 	r.searchQuery = &searchQuery
-	return r
-}
-
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-func (r ApiTargetingTemplateListRequest) PageSize(pageSize int32) ApiTargetingTemplateListRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// Cursor used to fetch the next page of items
-func (r ApiTargetingTemplateListRequest) Bookmark(bookmark string) ApiTargetingTemplateListRequest {
-	r.bookmark = &bookmark
 	return r
 }
 
@@ -212,7 +254,7 @@ func (r ApiTargetingTemplateListRequest) Execute() (*TargetingTemplateList200Res
 /*
 TargetingTemplateList List targeting templates
 
-Get a list of the targeting templates in the specified <code>ad_account_id</code>
+Get a list of the targeting templates in the specified `ad_account_id`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -251,28 +293,28 @@ func (a *TargetingTemplateAPIService) TargetingTemplateListExecute(r ApiTargetin
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
 
+	if r.bookmark != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	} else {
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
+	}
 	if r.order != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	if r.includeSizing != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_sizing", r.includeSizing, "form", "")
 	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "include_sizing", defaultValue, "form", "")
-        r.includeSizing = &defaultValue
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_sizing", defaultValue, "form", "")
+		r.includeSizing = &defaultValue
 	}
 	if r.searchQuery != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "search_query", r.searchQuery, "form", "")
-	}
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
-	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
-	}
-	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -314,7 +356,7 @@ func (a *TargetingTemplateAPIService) TargetingTemplateListExecute(r ApiTargetin
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -324,7 +366,51 @@ func (a *TargetingTemplateAPIService) TargetingTemplateListExecute(r ApiTargetin
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -351,12 +437,11 @@ type ApiTargetingTemplateUpdateRequest struct {
 	ctx context.Context
 	ApiService *TargetingTemplateAPIService
 	adAccountId string
-	targetingTemplateUpdateRequest *TargetingTemplateUpdateRequest
+	targetingTemplateUpdateRequestReadOrUpdate *TargetingTemplateUpdateRequestReadOrUpdate
 }
 
-// Operation type and targeting template ID
-func (r ApiTargetingTemplateUpdateRequest) TargetingTemplateUpdateRequest(targetingTemplateUpdateRequest TargetingTemplateUpdateRequest) ApiTargetingTemplateUpdateRequest {
-	r.targetingTemplateUpdateRequest = &targetingTemplateUpdateRequest
+func (r ApiTargetingTemplateUpdateRequest) TargetingTemplateUpdateRequestReadOrUpdate(targetingTemplateUpdateRequestReadOrUpdate TargetingTemplateUpdateRequestReadOrUpdate) ApiTargetingTemplateUpdateRequest {
+	r.targetingTemplateUpdateRequestReadOrUpdate = &targetingTemplateUpdateRequestReadOrUpdate
 	return r
 }
 
@@ -367,7 +452,7 @@ func (r ApiTargetingTemplateUpdateRequest) Execute() (*http.Response, error) {
 /*
 TargetingTemplateUpdate Update targeting templates
 
-<p>Update the targeting template given advertiser ID and targeting template ID</p>
+Update the targeting template given advertiser ID and targeting template ID
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -403,8 +488,8 @@ func (a *TargetingTemplateAPIService) TargetingTemplateUpdateExecute(r ApiTarget
 	if strlen(r.adAccountId) > 18 {
 		return nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.targetingTemplateUpdateRequest == nil {
-		return nil, reportError("targetingTemplateUpdateRequest is required and must be specified")
+	if r.targetingTemplateUpdateRequestReadOrUpdate == nil {
+		return nil, reportError("targetingTemplateUpdateRequestReadOrUpdate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -425,7 +510,7 @@ func (a *TargetingTemplateAPIService) TargetingTemplateUpdateExecute(r ApiTarget
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.targetingTemplateUpdateRequest
+	localVarPostBody = r.targetingTemplateUpdateRequestReadOrUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -449,7 +534,7 @@ func (a *TargetingTemplateAPIService) TargetingTemplateUpdateExecute(r ApiTarget
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -459,7 +544,51 @@ func (a *TargetingTemplateAPIService) TargetingTemplateUpdateExecute(r ApiTarget
 					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

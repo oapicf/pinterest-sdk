@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **description** | **str** |  | [optional] 
 **filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | [optional] 
 **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
-**name** | **str** |  | [optional] 
+**name** | **str** | Name of catalog product group | [optional] 
 
 ## Example
 

@@ -7,7 +7,9 @@
 
 (def catalogs-creative-assets-product-group-product-counts-data
   {
+   (ds/req :app_links) float?
    (ds/req :catalog_type) string?
+   (ds/req :images) float?
    (ds/req :total) float?
    (ds/req :videos) float?
    })

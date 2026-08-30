@@ -17,6 +17,7 @@ class AdAccountCreate {
     this.currency,
     this.name,
     this.ownerUserId,
+    this.timeZone,
   });
 
   ///
@@ -53,12 +54,22 @@ class AdAccountCreate {
   ///
   String? ownerUserId;
 
+  /// The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? timeZone;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AdAccountCreate &&
     other.country == country &&
     other.currency == currency &&
     other.name == name &&
-    other.ownerUserId == ownerUserId;
+    other.ownerUserId == ownerUserId &&
+    other.timeZone == timeZone;
 
   @override
   int get hashCode =>
@@ -66,10 +77,11 @@ class AdAccountCreate {
     (country == null ? 0 : country!.hashCode) +
     (currency == null ? 0 : currency!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
-    (ownerUserId == null ? 0 : ownerUserId!.hashCode);
+    (ownerUserId == null ? 0 : ownerUserId!.hashCode) +
+    (timeZone == null ? 0 : timeZone!.hashCode);
 
   @override
-  String toString() => 'AdAccountCreate[country=$country, currency=$currency, name=$name, ownerUserId=$ownerUserId]';
+  String toString() => 'AdAccountCreate[country=$country, currency=$currency, name=$name, ownerUserId=$ownerUserId, timeZone=$timeZone]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -93,6 +105,11 @@ class AdAccountCreate {
     } else {
       json[r'owner_user_id'] = null;
     }
+    if (this.timeZone != null) {
+      json[r'time_zone'] = this.timeZone;
+    } else {
+      json[r'time_zone'] = null;
+    }
     return json;
   }
 
@@ -107,10 +124,6 @@ class AdAccountCreate {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AdAccountCreate[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AdAccountCreate[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -119,6 +132,7 @@ class AdAccountCreate {
         currency: Currency.fromJson(json[r'currency']),
         name: mapValueOfType<String>(json, r'name'),
         ownerUserId: mapValueOfType<String>(json, r'owner_user_id'),
+        timeZone: mapValueOfType<String>(json, r'time_zone'),
       );
     }
     return null;

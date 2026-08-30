@@ -7,27 +7,26 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.LabelUpdateRequestLabelsInner;
+import org.openapitools.model.LabelUpdateItem;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * LabelUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LabelUpdateRequest {
 
-  @Valid
-  private List<@Valid LabelUpdateRequestLabelsInner> labels = new ArrayList<>();
+  private List<@Valid LabelUpdateItem> labels = new ArrayList<>();
 
   public LabelUpdateRequest() {
     super();
@@ -36,16 +35,16 @@ public class LabelUpdateRequest {
   /**
    * Constructor with only required parameters
    */
-  public LabelUpdateRequest(List<@Valid LabelUpdateRequestLabelsInner> labels) {
+  public LabelUpdateRequest(List<@Valid LabelUpdateItem> labels) {
     this.labels = labels;
   }
 
-  public LabelUpdateRequest labels(List<@Valid LabelUpdateRequestLabelsInner> labels) {
+  public LabelUpdateRequest labels(List<@Valid LabelUpdateItem> labels) {
     this.labels = labels;
     return this;
   }
 
-  public LabelUpdateRequest addLabelsItem(LabelUpdateRequestLabelsInner labelsItem) {
+  public LabelUpdateRequest addLabelsItem(LabelUpdateItem labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -60,11 +59,12 @@ public class LabelUpdateRequest {
   @NotNull @Valid 
   @Schema(name = "labels", description = "Labels that you are applying to the campaign.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("labels")
-  public List<@Valid LabelUpdateRequestLabelsInner> getLabels() {
+  public List<@Valid LabelUpdateItem> getLabels() {
     return labels;
   }
 
-  public void setLabels(List<@Valid LabelUpdateRequestLabelsInner> labels) {
+  @JsonProperty("labels")
+  public void setLabels(List<@Valid LabelUpdateItem> labels) {
     this.labels = labels;
   }
 
@@ -98,11 +98,8 @@ public class LabelUpdateRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

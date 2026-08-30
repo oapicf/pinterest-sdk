@@ -28,7 +28,7 @@ import type { CatalogsVerticalProductGroup } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "catalogId": null,
+  "catalogId": 2680059592705,
   "catalogType": null,
   "country": null,
   "createdAt": 1621350033000,

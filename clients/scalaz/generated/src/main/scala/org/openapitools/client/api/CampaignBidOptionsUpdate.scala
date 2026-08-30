@@ -12,30 +12,25 @@ import org.joda.time.DateTime
 import CampaignBidOptionsUpdate._
 
 case class CampaignBidOptionsUpdate (
+  /* Age bucket multipliers for bid adjustments. */
+  ageBucketMultipliers: Option[AgeBucketMultipliers],
+/* App type multipliers for bid adjustments. */
   appTypeMultipliers: Option[AppTypeMultipliers],
-audienceMultipliers: Option[CampaignAudienceMultipliers],
-placementMultipliers: Option[PlacementMultipliers],
-/* List of fields to update, only the fields in the list will be updated. */
-  updateMask: List[UpdateMask])
+/* Audience multipliers for bid adjustments. */
+  audienceMultipliers: Option[CampaignAudienceMultipliers],
+/* The time window for frequency bid multipliers. */
+  freqBidMultiplierTimeWindow: Option[FreqBidMultiplierTimeWindow],
+/* Frequency multipliers for bid adjustments. */
+  frequencyMultipliers: Option[FrequencyMultipliers],
+/* Gender multipliers for bid adjustments. */
+  genderMultipliers: Option[GenderMultipliers],
+/* Placement multipliers for bid adjustments. */
+  placementMultipliers: Option[PlacementMultipliers],
+/* List of fields to update. Only the fields in the list will be updated. */
+  updateMask: List[CampaignBidOptionsUpdateMaskItems])
 
 object CampaignBidOptionsUpdate {
   import DateTimeCodecs._
-  sealed trait List[UpdateMask]
-
-  object List[UpdateMask] {
-    def toList[UpdateMask](s: String): Option[List[UpdateMask]] = s match {
-      case _ => None
-    }
-
-    def fromList[UpdateMask](x: List[UpdateMask]): String = x match {
-    }
-  }
-
-  implicit val List[UpdateMask]EnumEncoder: EncodeJson[List[UpdateMask]] =
-    EncodeJson[List[UpdateMask]](is => StringEncodeJson(List[UpdateMask].fromList[UpdateMask](is)))
-
-  implicit val List[UpdateMask]EnumDecoder: DecodeJson[List[UpdateMask]] =
-    DecodeJson.optionDecoder[List[UpdateMask]](n => n.string.flatMap(jStr => List[UpdateMask].toList[UpdateMask](jStr)), "List[UpdateMask] failed to de-serialize")
 
   implicit val CampaignBidOptionsUpdateCodecJson: CodecJson[CampaignBidOptionsUpdate] = CodecJson.derive[CampaignBidOptionsUpdate]
   implicit val CampaignBidOptionsUpdateDecoder: EntityDecoder[CampaignBidOptionsUpdate] = jsonOf[CampaignBidOptionsUpdate]

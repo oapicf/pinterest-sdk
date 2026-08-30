@@ -7,9 +7,11 @@ import org.openapitools.api.factories.OauthApiServiceFactory;
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
 
-import org.openapitools.model.ConversionAccessTokenResponse;
-import org.openapitools.model.Error;
-import org.openapitools.model.OauthAccessTokenResponse;
+import org.openapitools.model.ConversionAccessToken;
+import org.openapitools.model.OauthAccessToken;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.TokenGrantType;
+import org.openapitools.model.TokenTypeHint;
 
 import java.util.List;
 import org.openapitools.api.NotFoundException;
@@ -28,7 +30,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the oauth API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class OauthApi  {
    private final OauthApiService delegate = OauthApiServiceFactory.getOauthApi();
 
@@ -36,15 +38,25 @@ public class OauthApi  {
     @Path("/conversion_token")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Generate OAuth access token for conversion API", notes = "Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.", response = ConversionAccessTokenResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Generate OAuth access token for conversion API", notes = "Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.", response = ConversionAccessToken.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
     }, tags={ "oauth", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "response", response = ConversionAccessTokenResponse.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionAccessToken.class),
         
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = ConversionAccessTokenResponse.class) })
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = ConversionAccessToken.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = ConversionAccessToken.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = ConversionAccessToken.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = ConversionAccessToken.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = ConversionAccessToken.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = ConversionAccessToken.class) })
     public Response oauthConversionToken()
     throws NotFoundException {
         return delegate.oauthConversionToken();
@@ -53,17 +65,34 @@ public class OauthApi  {
     @Path("/token")
     @Consumes({ "application/x-www-form-urlencoded" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Generate OAuth access token", notes = "Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.", response = OauthAccessTokenResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Generate OAuth access token", notes = "Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. ", response = OauthAccessToken.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "basic")
     }, tags={ "oauth", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "response", response = OauthAccessTokenResponse.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = OauthAccessToken.class),
         
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = OauthAccessTokenResponse.class) })
-    public Response oauthToken(@ApiParam(value = "", required=true, allowableValues="authorization_code, refresh_token, client_credentials")  @FormParam("grant_type")  String grantType
+        @io.swagger.annotations.ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = OauthAccessToken.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = OauthAccessToken.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = OauthAccessToken.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = OauthAccessToken.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = OauthAccessToken.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = OauthAccessToken.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = OauthAccessToken.class) })
+    public Response oauthToken(@ApiParam(value = "", required=true, allowableValues="authorization_code, refresh_token, client_credentials")  @FormParam("grant_type")  TokenGrantType grantType
+,@ApiParam(value = "")  @FormParam("code")  String code
+,@ApiParam(value = "  If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token.")  @FormParam("continuous_refresh")  String continuousRefresh
+,@ApiParam(value = "")  @FormParam("redirect_uri")  String redirectUri
+,@ApiParam(value = "")  @FormParam("refresh_token")  String refreshToken
+,@ApiParam(value = "")  @FormParam("scope")  String scope
 )
     throws NotFoundException {
-        return delegate.oauthToken(grantType);
+        return delegate.oauthToken(grantType,code,continuousRefresh,redirectUri,refreshToken,scope);
     }
     @POST
     @Path("/token/revoke")
@@ -73,15 +102,15 @@ public class OauthApi  {
         @io.swagger.annotations.Authorization(value = "basic")
     }, tags={ "oauth", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Successful token revocation. No content is returned.", response = Void.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = Void.class),
         
-        @io.swagger.annotations.ApiResponse(code = 401, message = "Client authentication error.", response = Void.class),
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = Void.class),
         
-        @io.swagger.annotations.ApiResponse(code = 403, message = "Client is not allowed to revoke token.", response = Void.class),
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = Void.class),
         
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Void.class) })
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = Void.class) })
     public Response tokenRevoke(@ApiParam(value = "The token to revoke.", required=true)  @FormParam("token")  String token
-,@ApiParam(value = "The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.", allowableValues="access_token, refresh_token")  @FormParam("token_type_hint")  String tokenTypeHint
+,@ApiParam(value = "The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.", allowableValues="access_token, refresh_token")  @FormParam("token_type_hint")  TokenTypeHint tokenTypeHint
 )
     throws NotFoundException {
         return delegate.tokenRevoke(token,tokenTypeHint);

@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get Age demographic distribution
 	 */
-	Map<std::string, std::string> getAge();
+	std::map<std::string, long> getAge();
 
 	/*! \brief Set Age demographic distribution
 	 */
-	void setAge(Map <std::string, std::string> age);
+	void setAge(std::map<std::string, long> age);
 	/*! \brief Get 
 	 */
 	GenderDemographics getGender();
 
 	/*! \brief Set 
 	 */
-	void setGender(GenderDemographics  gender);
+	void setGender(GenderDemographics gender);
 
 
     private:
-    Map<std::string, std::string> age;
+    std::map<std::string, long> age;
     GenderDemographics gender;
 };
 }

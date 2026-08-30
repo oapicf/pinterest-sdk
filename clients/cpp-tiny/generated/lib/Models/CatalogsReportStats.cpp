@@ -6,12 +6,12 @@ using namespace Tiny;
 
 CatalogsReportStats::CatalogsReportStats()
 {
-	report_type = std::string();
 	catalog_id = std::string();
 	code = int(0);
 	code_label = std::string();
 	message = std::string();
 	occurrences = int(0);
+	report_type = std::string();
 	severity = std::string();
 	ineligible_for_ads = bool(false);
 	ineligible_for_organic = bool(false);
@@ -31,19 +31,6 @@ void
 CatalogsReportStats::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
-
-    const char *report_typeKey = "report_type";
-
-    if(object.has_key(report_typeKey))
-    {
-        bourne::json value = object[report_typeKey];
-
-
-
-        jsonToValue(&report_type, value, "std::string");
-
-
-    }
 
     const char *catalog_idKey = "catalog_id";
 
@@ -110,6 +97,19 @@ CatalogsReportStats::fromJson(std::string jsonObj)
 
     }
 
+    const char *report_typeKey = "report_type";
+
+    if(object.has_key(report_typeKey))
+    {
+        bourne::json value = object[report_typeKey];
+
+
+
+        jsonToValue(&report_type, value, "std::string");
+
+
+    }
+
     const char *severityKey = "severity";
 
     if(object.has_key(severityKey))
@@ -161,13 +161,6 @@ CatalogsReportStats::toJson()
 
 
 
-    object["report_type"] = getReportType();
-
-
-
-
-
-
     object["catalog_id"] = getCatalogId();
 
 
@@ -203,6 +196,13 @@ CatalogsReportStats::toJson()
 
 
 
+    object["report_type"] = getReportType();
+
+
+
+
+
+
     object["severity"] = getSeverity();
 
 
@@ -226,25 +226,13 @@ CatalogsReportStats::toJson()
 }
 
 std::string
-CatalogsReportStats::getReportType()
-{
-	return report_type;
-}
-
-void
-CatalogsReportStats::setReportType(std::string  report_type)
-{
-	this->report_type = report_type;
-}
-
-std::string
 CatalogsReportStats::getCatalogId()
 {
 	return catalog_id;
 }
 
 void
-CatalogsReportStats::setCatalogId(std::string  catalog_id)
+CatalogsReportStats::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -256,7 +244,7 @@ CatalogsReportStats::getCode()
 }
 
 void
-CatalogsReportStats::setCode(int  code)
+CatalogsReportStats::setCode(int code)
 {
 	this->code = code;
 }
@@ -268,7 +256,7 @@ CatalogsReportStats::getCodeLabel()
 }
 
 void
-CatalogsReportStats::setCodeLabel(std::string  code_label)
+CatalogsReportStats::setCodeLabel(std::string code_label)
 {
 	this->code_label = code_label;
 }
@@ -280,7 +268,7 @@ CatalogsReportStats::getMessage()
 }
 
 void
-CatalogsReportStats::setMessage(std::string  message)
+CatalogsReportStats::setMessage(std::string message)
 {
 	this->message = message;
 }
@@ -292,9 +280,21 @@ CatalogsReportStats::getOccurrences()
 }
 
 void
-CatalogsReportStats::setOccurrences(int  occurrences)
+CatalogsReportStats::setOccurrences(int occurrences)
 {
 	this->occurrences = occurrences;
+}
+
+std::string
+CatalogsReportStats::getReportType()
+{
+	return report_type;
+}
+
+void
+CatalogsReportStats::setReportType(std::string report_type)
+{
+	this->report_type = report_type;
 }
 
 std::string
@@ -304,7 +304,7 @@ CatalogsReportStats::getSeverity()
 }
 
 void
-CatalogsReportStats::setSeverity(std::string  severity)
+CatalogsReportStats::setSeverity(std::string severity)
 {
 	this->severity = severity;
 }
@@ -316,7 +316,7 @@ CatalogsReportStats::isIneligibleForAds()
 }
 
 void
-CatalogsReportStats::setIneligibleForAds(bool  ineligible_for_ads)
+CatalogsReportStats::setIneligibleForAds(bool ineligible_for_ads)
 {
 	this->ineligible_for_ads = ineligible_for_ads;
 }
@@ -328,7 +328,7 @@ CatalogsReportStats::isIneligibleForOrganic()
 }
 
 void
-CatalogsReportStats::setIneligibleForOrganic(bool  ineligible_for_organic)
+CatalogsReportStats::setIneligibleForOrganic(bool ineligible_for_organic)
 {
 	this->ineligible_for_organic = ineligible_for_organic;
 }

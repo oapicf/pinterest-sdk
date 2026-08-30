@@ -110,17 +110,17 @@ using namespace Tiny;
         >
         CatalogReportsApi::
         reports_stats(
-            
-            Reports_stats_parameters_parameter parameters
+            // TODO: Implement Maps
+            CatalogsReportStatsParameters parameters
             , 
             
             std::string adAccountId
             , 
             
-            int pageSize
+            std::string bookmark
             , 
             
-            std::string bookmark
+            int pageSize
             
         )
         {
@@ -129,11 +129,11 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | adAccountId pageSize bookmark parameters 
+            // Query    | adAccountId parameters bookmark pageSize 
             addQueryParam("ad_account_id",adAccountId);
-            addQueryParam("page_size",pageSize);
-            addQueryParam("bookmark",bookmark);
             addQueryParam("parameters",parameters);
+            addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
 
             // Form     | 
 

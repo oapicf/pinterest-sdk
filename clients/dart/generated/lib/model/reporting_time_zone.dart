@@ -10,30 +10,30 @@
 
 part of openapi.api;
 
-/// [Closed beta](/docs/getting-started/using-beta-and-restricted-features/) Specify the timezone to be applied for the reporting.
-class ReportingTimeZone {
-  /// Instantiate a new enum with the provided [value].
-  const ReportingTimeZone._(this.value);
+/// Specify the timezone to be applied for the reporting.
+enum ReportingTimeZone {
+  PINTEREST_TIME_ZONE._(r'PINTEREST_TIME_ZONE'),
+  AD_ACCOUNT_TIME_ZONE._(r'AD_ACCOUNT_TIME_ZONE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const ReportingTimeZone._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const PINTEREST_TIME_ZONE = ReportingTimeZone._(r'PINTEREST_TIME_ZONE');
-  static const AD_ACCOUNT_TIME_ZONE = ReportingTimeZone._(r'AD_ACCOUNT_TIME_ZONE');
-
-  /// List of all possible values in this [enum][ReportingTimeZone].
-  static const values = <ReportingTimeZone>[
-    PINTEREST_TIME_ZONE,
-    AD_ACCOUNT_TIME_ZONE,
-  ];
-
+  /// Returns the instance of [ReportingTimeZone] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static ReportingTimeZone? fromJson(dynamic value) => ReportingTimeZoneTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [ReportingTimeZone]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<ReportingTimeZone> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ReportingTimeZone>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class ReportingTimeZoneTypeTransformer {
 
   const ReportingTimeZoneTypeTransformer._();
 
-  String encode(ReportingTimeZone data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(ReportingTimeZone data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a ReportingTimeZone.
+  /// Returns the instance of [ReportingTimeZone] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class ReportingTimeZoneTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   ReportingTimeZone? decode(dynamic data, {bool allowNull = true}) {
+    if (data is ReportingTimeZone) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'PINTEREST_TIME_ZONE': return ReportingTimeZone.PINTEREST_TIME_ZONE;
@@ -79,7 +84,7 @@ class ReportingTimeZoneTypeTransformer {
     return null;
   }
 
-  /// Singleton [ReportingTimeZoneTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static ReportingTimeZoneTypeTransformer? _instance;
 }
 

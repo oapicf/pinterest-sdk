@@ -15,7 +15,7 @@
 
 typedef struct catalogs_retail_report_parameters_t catalogs_retail_report_parameters_t;
 
-#include "catalogs_hotel_report_parameters_report.h"
+#include "catalogs_retail_report_parameters_report.h"
 
 // Enum CATALOGTYPE for catalogs_retail_report_parameters
 
@@ -29,14 +29,14 @@ pinterest_rest_api_catalogs_retail_report_parameters_CATALOGTYPE_e catalogs_reta
 
 typedef struct catalogs_retail_report_parameters_t {
     pinterest_rest_api_catalogs_retail_report_parameters_CATALOGTYPE_e catalog_type; //enum
-    struct catalogs_hotel_report_parameters_report_t *report; //model
+    struct catalogs_retail_report_parameters_report_t *report; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_retail_report_parameters_t;
 
 __attribute__((deprecated)) catalogs_retail_report_parameters_t *catalogs_retail_report_parameters_create(
     pinterest_rest_api_catalogs_retail_report_parameters_CATALOGTYPE_e catalog_type,
-    catalogs_hotel_report_parameters_report_t *report
+    catalogs_retail_report_parameters_report_t *report
 );
 
 void catalogs_retail_report_parameters_free(catalogs_retail_report_parameters_t *catalogs_retail_report_parameters);

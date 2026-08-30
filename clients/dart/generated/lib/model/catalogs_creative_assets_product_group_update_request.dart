@@ -31,6 +31,7 @@ class CatalogsCreativeAssetsProductGroupUpdateRequest {
   ///
   CatalogsCreativeAssetsProductGroupFilters? filters;
 
+  /// Name of catalog product group
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -93,10 +94,6 @@ class CatalogsCreativeAssetsProductGroupUpdateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsCreativeAssetsProductGroupUpdateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsCreativeAssetsProductGroupUpdateRequest[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -156,27 +153,28 @@ class CatalogsCreativeAssetsProductGroupUpdateRequest {
 }
 
 
-class CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum._(this.value);
+enum CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum {
+  CREATIVE_ASSETS._(r'CREATIVE_ASSETS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CREATIVE_ASSETS = CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum._(r'CREATIVE_ASSETS');
-
-  /// List of all possible values in this [enum][CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum].
-  static const values = <CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum>[
-    CREATIVE_ASSETS,
-  ];
-
+  /// Returns the instance of [CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum? fromJson(dynamic value) => CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -198,9 +196,10 @@ class CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnumTypeTransfor
 
   const CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum data) => data.value;
+  String encode(CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum.
+  /// Returns the instance of [CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -209,6 +208,9 @@ class CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnumTypeTransfor
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CREATIVE_ASSETS': return CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum.CREATIVE_ASSETS;
@@ -221,7 +223,7 @@ class CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnumTypeTransfor
     return null;
   }
 
-  /// Singleton [CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnumTypeTransformer? _instance;
 }
 

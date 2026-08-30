@@ -12,8 +12,29 @@ class ImageMetadata {
     String description
     
     ImageSize images
+
+    enum ItemTypeEnum {
     
-    String itemType
+        IMAGE("image")
+    
+        private final String value
+    
+        ItemTypeEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    /* Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload. */
+    ItemTypeEnum itemType
     
     String link
     

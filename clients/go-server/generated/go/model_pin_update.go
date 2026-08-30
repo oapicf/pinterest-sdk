@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,13 +17,16 @@ package openapi
 // PinUpdate - Resource create or update operation model.
 type PinUpdate struct {
 
+	// AI disclosure declarations the creator has made about this Pin.
+	AiDisclosures AiDisclosuresUpdate `json:"ai_disclosures,omitempty"`
+
 	AltText *string `json:"alt_text,omitempty"`
 
 	// The board to which this Pin belongs.
-	BoardId string `json:"board_id,omitempty" validate:"regexp=^\\\\d+$"`
+	BoardId string `json:"board_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// The board section to which this Pin belongs.
-	BoardSectionId *string `json:"board_section_id,omitempty" validate:"regexp=^\\\\d+$"`
+	BoardSectionId *string `json:"board_section_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Carousel Pin slots data.
 	CarouselSlots []CarouselSlot `json:"carousel_slots,omitempty"`
@@ -35,8 +38,12 @@ type PinUpdate struct {
 	Title *string `json:"title,omitempty"`
 }
 
-// AssertPinUpdateRequired checks if the required fields are not zero-ed
+// AssertPinUpdateRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertPinUpdateRequired(obj PinUpdate) error {
+	if err := AssertAiDisclosuresUpdateRequired(obj.AiDisclosures); err != nil {
+		return err
+	}
 	for _, el := range obj.CarouselSlots {
 		if err := AssertCarouselSlotRequired(el); err != nil {
 			return err
@@ -47,6 +54,9 @@ func AssertPinUpdateRequired(obj PinUpdate) error {
 
 // AssertPinUpdateConstraints checks if the values respects the defined constraints
 func AssertPinUpdateConstraints(obj PinUpdate) error {
+	if err := AssertAiDisclosuresUpdateConstraints(obj.AiDisclosures); err != nil {
+		return err
+	}
 	for _, el := range obj.CarouselSlots {
 		if err := AssertCarouselSlotConstraints(el); err != nil {
 			return err

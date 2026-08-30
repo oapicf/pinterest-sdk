@@ -47,15 +47,13 @@ class CountryFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CountryFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CountryFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'COUNTRY'), 'Required key "CountryFilter[COUNTRY]" is missing from JSON.');
+        assert(json[r'COUNTRY'] != null, 'Required key "CountryFilter[COUNTRY]" has a null value in JSON.');
         return true;
       }());
 
       return CountryFilter(
-        COUNTRY: mapValueOfType<CatalogsProductGroupMultipleCountriesCriteria>(json, r'COUNTRY')!,
+        COUNTRY: CatalogsProductGroupMultipleCountriesCriteria.fromJson(json[r'COUNTRY'])!,
       );
     }
     return null;

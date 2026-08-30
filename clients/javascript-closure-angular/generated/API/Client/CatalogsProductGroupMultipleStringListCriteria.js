@@ -12,7 +12,7 @@ API.Client.CatalogsProductGroupMultipleStringListCriteria = function() {}
 API.Client.CatalogsProductGroupMultipleStringListCriteria.prototype.negated;
 
 /**
- * @type {!Array<!Array<!string>>}
+ * @type {!Array<!API.Client.Array>}
  * @export
  */
 API.Client.CatalogsProductGroupMultipleStringListCriteria.prototype.values;

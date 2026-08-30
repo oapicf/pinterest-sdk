@@ -51,14 +51,14 @@ static gpointer __LeadsExportManagerthreadFunc(gpointer data)
 static bool leadsExportCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(LeadsExportCreateResponse, Error, void* )
-	= reinterpret_cast<void(*)(LeadsExportCreateResponse, Error, void* )> (voidHandler);
+	void(* handler)(LeadsExports, Error, void* )
+	= reinterpret_cast<void(*)(LeadsExports, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	LeadsExportCreateResponse out;
+	LeadsExports out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,43 @@ static bool leadsExportCreateProcessor(MemoryStruct_s p_chunk, long code, char* 
 
 
 
-		if (isprimitive("LeadsExportCreateResponse")) {
+		if (isprimitive("LeadsExports")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "LeadsExportCreateResponse", "LeadsExportCreateResponse");
+			jsonToValue(&out, pJson, "LeadsExports", "LeadsExports");
 			json_node_free(pJson);
 
-			if ("LeadsExportCreateResponse" == "std::string") {
+			if ("LeadsExports" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -114,8 +139,8 @@ static bool leadsExportCreateProcessor(MemoryStruct_s p_chunk, long code, char* 
 }
 
 static bool leadsExportCreateHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<LeadsExportCreateRequest> leadsExportCreateRequest, 
-	void(* handler)(LeadsExportCreateResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<LeadsExportsCreate> leadsExportsCreate, 
+	void(* handler)(LeadsExports, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -135,11 +160,11 @@ static bool leadsExportCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("LeadsExportCreateRequest")) {
-		node = converttoJson(&leadsExportCreateRequest, "LeadsExportCreateRequest", "");
+	if (isprimitive("LeadsExportsCreate")) {
+		node = converttoJson(&leadsExportsCreate, "LeadsExportsCreate", "");
 	}
 	
-	char *jsonStr =  leadsExportCreateRequest.toJson();
+	char *jsonStr =  leadsExportsCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -204,22 +229,22 @@ static bool leadsExportCreateHelper(char * accessToken,
 
 
 bool LeadsExportManager::leadsExportCreateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<LeadsExportCreateRequest> leadsExportCreateRequest, 
-	void(* handler)(LeadsExportCreateResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<LeadsExportsCreate> leadsExportsCreate, 
+	void(* handler)(LeadsExports, Error, void* )
 	, void* userData)
 {
 	return leadsExportCreateHelper(accessToken,
-	adAccountId, leadsExportCreateRequest, 
+	adAccountId, leadsExportsCreate, 
 	handler, userData, true);
 }
 
 bool LeadsExportManager::leadsExportCreateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<LeadsExportCreateRequest> leadsExportCreateRequest, 
-	void(* handler)(LeadsExportCreateResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<LeadsExportsCreate> leadsExportsCreate, 
+	void(* handler)(LeadsExports, Error, void* )
 	, void* userData)
 {
 	return leadsExportCreateHelper(accessToken,
-	adAccountId, leadsExportCreateRequest, 
+	adAccountId, leadsExportsCreate, 
 	handler, userData, false);
 }
 
@@ -253,6 +278,21 @@ static bool leadsExportGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();

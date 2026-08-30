@@ -1,13 +1,16 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.EntityStatus
 import org.openapitools.server.api.model.Granularity
-import org.openapitools.server.api.model.ProductGroupAnalyticsResponseInner
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
+import org.openapitools.server.api.model.ProductGroupAnalyticsItems
 import org.openapitools.server.api.model.ProductGroupPromotion
-import org.openapitools.server.api.model.ProductGroupPromotionCreateRequest
-import org.openapitools.server.api.model.ProductGroupPromotionResponse
-import org.openapitools.server.api.model.ProductGroupPromotionUpdateRequest
+import org.openapitools.server.api.model.ProductGroupPromotions
+import org.openapitools.server.api.model.ProductGroupPromotionsCreate
 import org.openapitools.server.api.model.ProductGroupPromotionsList200Response
+import org.openapitools.server.api.model.ProductGroupPromotionsUpdateWithRequiredBody
+import org.openapitools.server.api.model.ReportingColumnSync
 import org.openapitools.server.api.model.ReportingTimeZone
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
@@ -27,19 +30,19 @@ interface ProductGroupPromotionsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* productGroupPromotionsCreate
      * Create product group promotions */
-    suspend fun productGroupPromotionsCreate(adAccountId:kotlin.String?,productGroupPromotionCreateRequest:ProductGroupPromotionCreateRequest?,context:OperationRequest):Response<ProductGroupPromotionResponse>
+    suspend fun productGroupPromotionsCreate(adAccountId:kotlin.String?,productGroupPromotionsCreate:ProductGroupPromotionsCreate?,context:OperationRequest):Response<ProductGroupPromotions>
     /* productGroupPromotionsGet
      * Get a product group promotion by id */
     suspend fun productGroupPromotionsGet(adAccountId:kotlin.String?,productGroupPromotionId:kotlin.String?,context:OperationRequest):Response<ProductGroupPromotion>
     /* productGroupPromotionsList
      * Get product group promotions */
-    suspend fun productGroupPromotionsList(adAccountId:kotlin.String?,productGroupPromotionIds:kotlin.Array<kotlin.String>?,entityStatuses:kotlin.Array<kotlin.String>?,adGroupId:kotlin.String?,pageSize:kotlin.Int?,order:kotlin.String?,bookmark:kotlin.String?,context:OperationRequest):Response<ProductGroupPromotionsList200Response>
+    suspend fun productGroupPromotionsList(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,order:PinterestLibPaginationOrder?,productGroupPromotionIds:kotlin.Array<kotlin.String>?,entityStatuses:kotlin.Array<EntityStatus>?,adGroupId:kotlin.String?,context:OperationRequest):Response<ProductGroupPromotionsList200Response>
     /* productGroupPromotionsUpdate
      * Update product group promotions */
-    suspend fun productGroupPromotionsUpdate(adAccountId:kotlin.String?,productGroupPromotionUpdateRequest:ProductGroupPromotionUpdateRequest?,context:OperationRequest):Response<ProductGroupPromotionResponse>
+    suspend fun productGroupPromotionsUpdate(adAccountId:kotlin.String?,productGroupPromotionsUpdateWithRequiredBody:ProductGroupPromotionsUpdateWithRequiredBody?,context:OperationRequest):Response<ProductGroupPromotions>
     /* productGroupsAnalytics
      * Get product group analytics */
-    suspend fun productGroupsAnalytics(adAccountId:kotlin.String?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,productGroupIds:kotlin.Array<kotlin.String>?,columns:kotlin.Array<kotlin.String>?,granularity:Granularity?,clickWindowDays:kotlin.Int?,engagementWindowDays:kotlin.Int?,viewWindowDays:kotlin.Int?,conversionReportTime:kotlin.String?,reportingTimezone:ReportingTimeZone?,context:OperationRequest):Response<kotlin.Array<ProductGroupAnalyticsResponseInner>>
+    suspend fun productGroupsAnalytics(startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,productGroupIds:kotlin.Array<kotlin.String>?,columns:kotlin.Array<ReportingColumnSync>?,granularity:Granularity?,adAccountId:kotlin.String?,clickWindowDays:java.math.BigDecimal?,engagementWindowDays:java.math.BigDecimal?,viewWindowDays:java.math.BigDecimal?,conversionReportTime:kotlin.String?,reportingTimezone:ReportingTimeZone?,context:OperationRequest):Response<kotlin.Array<ProductGroupAnalyticsItems>>
     companion object {
         const val address = "ProductGroupPromotionsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

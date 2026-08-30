@@ -37,7 +37,7 @@ Method | HTTP request | Description
 
 ## boardsUserFollowsList
 
-> boardsUserFollowsList(boardsUserFollowsListRequest): ApiRequest[BoardsUserFollowsList200Response]
+> boardsUserFollowsList(boardsUserFollowsListRequest): ApiRequest[BoardsList200Response]
 
 List following boards
 
@@ -64,15 +64,15 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = UserAccountApi("https://api.pinterest.com/v5")
-    val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
-
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
     val explicitFollowing: Boolean = true // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
 
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.boardsUserFollowsList(bookmark, pageSize, explicitFollowing, adAccountId)
+    val request = apiInstance.boardsUserFollowsList(adAccountId, explicitFollowing, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -100,14 +100,14 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
- **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
+ **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional]
+ **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
-ApiRequest[[**BoardsUserFollowsList200Response**](BoardsUserFollowsList200Response.md)]
+ApiRequest[[**BoardsList200Response**](BoardsList200Response.md)]
 
 
 ### Authorization
@@ -122,18 +122,22 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user id |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## followUserUpdate
 
-> followUserUpdate(followUserUpdateRequest): ApiRequest[UserSummary]
+> followUserUpdate(followUserUpdateRequest): ApiRequest[FollowUser]
 
 Follow user
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 
@@ -157,11 +161,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = UserAccountApi("https://api.pinterest.com/v5")
-    val username: String = username // String | A valid username
+    val username: String = username_example // String | A valid username
 
-    val followUserRequest: FollowUserRequest =  // FollowUserRequest | Follow a user.
+    val followUserCreate: FollowUserCreate =  // FollowUserCreate | 
     
-    val request = apiInstance.followUserUpdate(username, followUserRequest)
+    val request = apiInstance.followUserUpdate(username, followUserCreate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -190,11 +194,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **String**| A valid username |
- **followUserRequest** | [**FollowUserRequest**](FollowUserRequest.md)| Follow a user. |
+ **followUserCreate** | [**FollowUserCreate**](FollowUserCreate.md)|  |
 
 ### Return type
 
-ApiRequest[[**UserSummary**](UserSummary.md)]
+ApiRequest[[**FollowUser**](FollowUser.md)]
 
 
 ### Authorization
@@ -209,9 +213,14 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | User not found |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## followersList
@@ -245,7 +254,7 @@ object Example extends App {
     val apiInstance = UserAccountApi("https://api.pinterest.com/v5")
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
     val request = apiInstance.followersList(bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -276,7 +285,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -295,9 +304,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user id |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## linkedBusinessAccountsGet
@@ -373,22 +386,28 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## unverifyWebsiteDelete
 
-> unverifyWebsiteDelete(unverifyWebsiteDeleteRequest): ApiRequest[Unit]
+> unverifyWebsiteDelete(unverifyWebsiteDeleteRequest): ApiRequest[UserWebsite]
 
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 ### Example
 
 ```scala
 // Import classes:
+import 
 import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
@@ -405,7 +424,7 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = UserAccountApi("https://api.pinterest.com/v5")
-    val website: String = mysite.test // String | Website with path or domain only
+    val website: String = website_example // String | Website with path or domain only
     
     val request = apiInstance.unverifyWebsiteDelete(website)
     val response = apiInvoker.execute(request)
@@ -414,6 +433,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling UserAccountApi#unverifyWebsiteDelete")
@@ -438,8 +458,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**UserWebsite**](UserWebsite.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -453,9 +473,14 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Successfully unverified website |  -  |
-| **404** | Website not in user list. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## userAccountAnalytics
@@ -470,6 +495,7 @@ Get analytics for the \&quot;operation user_account\&quot; - By default, the \&q
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import 
@@ -502,7 +528,7 @@ object Example extends App {
 
     val source: String = source_example // String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
 
-    val metricTypes: Seq[String] =  // Seq[String] | Metric types to get data for, default is all. 
+    val metricTypes: Seq[QuerymetrictypesItems] =  // Seq[QuerymetrictypesItems] | Metric types to get data for, default is all.
 
     val splitField: String = splitField_example // String | How to split the data into groups. Not including this param means data won't be split.
 
@@ -543,7 +569,7 @@ Name | Type | Description  | Notes
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [enum: ALL, MOBILE, TABLET, WEB]
  **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [enum: ALL, PAID, ORGANIC]
  **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [enum: ALL, YOUR_PINS, OTHER_PINS]
- **metricTypes** | [**Seq[String]**](String.md)| Metric types to get data for, default is all.  | [optional] [enum: ENGAGEMENT, ENGAGEMENT_RATE, IMPRESSION, OUTBOUND_CLICK, OUTBOUND_CLICK_RATE, PIN_CLICK, PIN_CLICK_RATE, SAVE, SAVE_RATE]
+ **metricTypes** | [**Seq[QuerymetrictypesItems]**](QuerymetrictypesItems.md)| Metric types to get data for, default is all. | [optional]
  **splitField** | **String**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [enum: NO_SPLIT, APP_TYPE, OWNED_CONTENT, SOURCE, PIN_FORMAT]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
 
@@ -564,10 +590,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user accounts analytics parameters. |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## userAccountAnalyticsTopPins
@@ -582,6 +611,9 @@ Gets analytics data about a user&#39;s top pins (limited to the top 50). - By de
 
 ```scala
 // Import classes:
+import 
+import 
+import 
 import 
 import 
 import 
@@ -604,7 +636,7 @@ object Example extends App {
 
     val endDate: LocalDate = 2013-10-20 // LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
 
-    val sortBy: String = sortBy_example // String | Specify sorting order for metrics
+    val sortBy: TopPinsSortBy =  // TopPinsSortBy | Specify sorting order for metrics
 
     val fromClaimedContent: String = fromClaimedContent_example // String | Filter on Pins that match your claimed domain.
 
@@ -616,11 +648,11 @@ object Example extends App {
 
     val source: String = source_example // String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
 
-    val metricTypes: Seq[String] =  // Seq[String] | Metric types to get data for, default is all. 
+    val metricTypes: Seq[QuerymetrictypesItems] =  // Seq[QuerymetrictypesItems] | Metric types to get data for, default is all.
 
-    val numOfPins: Int = 25 // Int | Number of pins to include, default is 10. Max is 50.
+    val numOfPins: Int = 56 // Int | Number of pins to include, default is 10. Max is 50.
 
-    val createdInLastNDays: Int = 30 // Int | Get metrics for pins created in the last \"n\" days.
+    val createdInLastNDays: BigDecimal = 8.14 // BigDecimal | Get metrics for pins created in the last \"n\" days.
 
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
     
@@ -654,15 +686,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
  **endDate** | **LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
- **sortBy** | **String**| Specify sorting order for metrics | [enum: ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE]
+ **sortBy** | [**TopPinsSortBy**](.md)| Specify sorting order for metrics | [enum: ENGAGEMENT, SAVE, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK]
  **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [enum: OTHER, CLAIMED, BOTH]
  **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA]
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [enum: ALL, MOBILE, TABLET, WEB]
  **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [enum: ALL, PAID, ORGANIC]
  **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [enum: ALL, YOUR_PINS, OTHER_PINS]
- **metricTypes** | [**Seq[String]**](String.md)| Metric types to get data for, default is all.  | [optional] [enum: ENGAGEMENT, ENGAGEMENT_RATE, IMPRESSION, OUTBOUND_CLICK, OUTBOUND_CLICK_RATE, PIN_CLICK, PIN_CLICK_RATE, SAVE, SAVE_RATE]
+ **metricTypes** | [**Seq[QuerymetrictypesItems]**](QuerymetrictypesItems.md)| Metric types to get data for, default is all. | [optional]
  **numOfPins** | **Int**| Number of pins to include, default is 10. Max is 50. | [optional]
- **createdInLastNDays** | **Int**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] [enum: 30]
+ **createdInLastNDays** | **BigDecimal**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] [enum: 30]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -682,9 +714,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## userAccountAnalyticsTopVideoPins
@@ -699,6 +735,9 @@ Gets analytics data about a user&#39;s top video pins (limited to the top 50). -
 
 ```scala
 // Import classes:
+import 
+import 
+import 
 import 
 import 
 import 
@@ -721,7 +760,7 @@ object Example extends App {
 
     val endDate: LocalDate = 2013-10-20 // LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
 
-    val sortBy: String = sortBy_example // String | Specify sorting order for video metrics
+    val sortBy: TopVideoPinsSortBy =  // TopVideoPinsSortBy | Specify sorting order for video metrics
 
     val fromClaimedContent: String = fromClaimedContent_example // String | Filter on Pins that match your claimed domain.
 
@@ -733,11 +772,11 @@ object Example extends App {
 
     val source: String = source_example // String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
 
-    val metricTypes: Seq[String] =  // Seq[String] | Metric types to get video data for, default is all. 
+    val metricTypes: Seq[QueryvideopinmetrictypesItems] =  // Seq[QueryvideopinmetrictypesItems] | Metric types to get video data for, default is all.
 
-    val numOfPins: Int = 25 // Int | Number of pins to include, default is 10. Max is 50.
+    val numOfPins: Int = 56 // Int | Number of pins to include, default is 10. Max is 50.
 
-    val createdInLastNDays: Int = 30 // Int | Get metrics for pins created in the last \"n\" days.
+    val createdInLastNDays: BigDecimal = 8.14 // BigDecimal | Get metrics for pins created in the last \"n\" days.
 
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
     
@@ -771,15 +810,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
  **endDate** | **LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
- **sortBy** | **String**| Specify sorting order for video metrics | [enum: IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START]
+ **sortBy** | [**TopVideoPinsSortBy**](.md)| Specify sorting order for video metrics | [enum: SAVE, IMPRESSION, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START]
  **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [enum: OTHER, CLAIMED, BOTH]
  **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA]
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [enum: ALL, MOBILE, TABLET, WEB]
  **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [enum: ALL, PAID, ORGANIC]
  **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [enum: ALL, YOUR_PINS, OTHER_PINS]
- **metricTypes** | [**Seq[String]**](String.md)| Metric types to get video data for, default is all.  | [optional] [enum: IMPRESSION, SAVE, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START, OUTBOUND_CLICK]
+ **metricTypes** | [**Seq[QueryvideopinmetrictypesItems]**](QueryvideopinmetrictypesItems.md)| Metric types to get video data for, default is all. | [optional]
  **numOfPins** | **Int**| Number of pins to include, default is 10. Max is 50. | [optional]
- **createdInLastNDays** | **Int**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] [enum: 30]
+ **createdInLastNDays** | **BigDecimal**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] [enum: 30]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -799,9 +838,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## userAccountFollowedInterests
@@ -833,11 +876,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = UserAccountApi("https://api.pinterest.com/v5")
-    val username: String = username // String | A valid username
+    val username: String = username_example // String | A valid username
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
     val request = apiInstance.userAccountFollowedInterests(username, bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -869,7 +912,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **String**| A valid username |
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -888,10 +931,10 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters |  -  |
-| **401** | Authorization failed |  -  |
-| **404** | User not found |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The server could not understand the request due to invalid syntax. |  -  |
+| **401** | Access is unauthorized. |  -  |
+| **404** | The server cannot find the requested resource. |  -  |
 | **0** | Unexpected error |  -  |
 
 
@@ -901,7 +944,7 @@ No authorization required
 
 Get user account
 
-Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.
 
 ### Example
 
@@ -973,14 +1016,18 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **403** | Not authorized to access the user account. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## userFollowingGet
 
-> userFollowingGet(userFollowingGetRequest): ApiRequest[UserFollowingGet200Response]
+> userFollowingGet(userFollowingGetRequest): ApiRequest[FollowersList200Response]
 
 List following
 
@@ -1008,17 +1055,17 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = UserAccountApi("https://api.pinterest.com/v5")
-    val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
-
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-
-    val feedType: UserFollowingFeedType = feedType_example // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
     val explicitFollowing: Boolean = true // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
 
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    val feedType: UserFollowingFeedType =  // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
+
+    val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.userFollowingGet(bookmark, pageSize, feedType, explicitFollowing, adAccountId)
+    val request = apiInstance.userFollowingGet(adAccountId, explicitFollowing, feedType, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -1046,15 +1093,15 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
- **feedType** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [enum: ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY]
- **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
+ **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional]
+ **feedType** | [**UserFollowingFeedType**](.md)| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [enum: ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY]
+ **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
-ApiRequest[[**UserFollowingGet200Response**](UserFollowingGet200Response.md)]
+ApiRequest[[**FollowersList200Response**](FollowersList200Response.md)]
 
 
 ### Authorization
@@ -1069,8 +1116,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## userWebsitesGet
@@ -1104,7 +1156,7 @@ object Example extends App {
     val apiInstance = UserAccountApi("https://api.pinterest.com/v5")
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
     val request = apiInstance.userWebsitesGet(bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -1135,7 +1187,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -1154,14 +1206,18 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user website list. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## verifyWebsiteUpdate
 
-> verifyWebsiteUpdate(verifyWebsiteUpdateRequest): ApiRequest[UserWebsiteSummary]
+> verifyWebsiteUpdate(verifyWebsiteUpdateRequest): ApiRequest[UserWebsite]
 
 Verify website
 
@@ -1189,11 +1245,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = UserAccountApi("https://api.pinterest.com/v5")
-    val userWebsiteVerifyRequest: UserWebsiteVerifyRequest =  // UserWebsiteVerifyRequest | Verify a website.
+    val userWebsiteCreate: UserWebsiteCreate =  // UserWebsiteCreate | 
 
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
     
-    val request = apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
+    val request = apiInstance.verifyWebsiteUpdate(userWebsiteCreate, adAccountId)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -1221,12 +1277,12 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. |
+ **userWebsiteCreate** | [**UserWebsiteCreate**](UserWebsiteCreate.md)|  |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
 
 ### Return type
 
-ApiRequest[[**UserWebsiteSummary**](UserWebsiteSummary.md)]
+ApiRequest[[**UserWebsite**](UserWebsite.md)]
 
 
 ### Authorization
@@ -1241,13 +1297,19 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## websiteVerificationGet
 
-> websiteVerificationGet(websiteVerificationGetRequest): ApiRequest[UserWebsiteVerificationCode]
+> websiteVerificationGet(websiteVerificationGetRequest): ApiRequest[UserWebsiteVerification]
 
 Get user verification code for website claiming
 
@@ -1308,7 +1370,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-ApiRequest[[**UserWebsiteVerificationCode**](UserWebsiteVerificationCode.md)]
+ApiRequest[[**UserWebsiteVerification**](UserWebsiteVerification.md)]
 
 
 ### Authorization
@@ -1323,7 +1385,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user verification code for website claiming. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

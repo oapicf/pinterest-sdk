@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CustomConversionEventMetrics",
+  "fields": [
+    {
+      "name": "custom_event_metrics_type",
+      "type": "model.AdeColumnType",
+      "doc": ""
+    },
+    {
+      "name": "custom_event_name",
+      "type": "string",
+      "doc": "Name of the advertiser-defined custom conversion event"
+    }
+  ]
+
+}

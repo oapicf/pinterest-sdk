@@ -3,10 +3,12 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.vertxweb.server.model.AssetGroupBinding;
+import org.openapitools.vertxweb.server.model.AssetTypeResponse;
 
 /**
  * An object containing the permissions a business member has on the asset.
@@ -16,14 +18,14 @@ public class AssetIdPermissions   {
   
   private AssetGroupBinding assetGroupInfo;
   private String assetId;
-  private String assetType;
+  private AssetTypeResponse assetType;
   private List<String> permissions = new ArrayList<>();
 
   public AssetIdPermissions () {
 
   }
 
-  public AssetIdPermissions (AssetGroupBinding assetGroupInfo, String assetId, String assetType, List<String> permissions) {
+  public AssetIdPermissions (AssetGroupBinding assetGroupInfo, String assetId, AssetTypeResponse assetType, List<String> permissions) {
     this.assetGroupInfo = assetGroupInfo;
     this.assetId = assetId;
     this.assetType = assetType;
@@ -50,10 +52,10 @@ public class AssetIdPermissions   {
 
     
   @JsonProperty("asset_type")
-  public String getAssetType() {
+  public AssetTypeResponse getAssetType() {
     return assetType;
   }
-  public void setAssetType(String assetType) {
+  public void setAssetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
   }
 
@@ -105,9 +107,6 @@ public class AssetIdPermissions   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

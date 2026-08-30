@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Filter audiences by ownership type.",
+  "name": "AudienceOwnershipType",
+  "symbols": [
+    "OWNED",
+    "RECEIVED"
+  ]
+}

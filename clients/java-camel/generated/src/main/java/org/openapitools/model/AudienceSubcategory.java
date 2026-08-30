@@ -2,24 +2,25 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * AudienceSubcategory
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AudienceSubcategory {
 
   private String id;
@@ -38,11 +39,11 @@ public class AudienceSubcategory {
   }
 
   /**
-   * Subinterest ID.
+   * Get id
    * @return id
    */
   
-  @Schema(name = "id", example = "958862518888", description = "Subinterest ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -58,11 +59,11 @@ public class AudienceSubcategory {
   }
 
   /**
-   * Subinterest affinity index.
+   * Get index
    * @return index
    */
   @Valid 
-  @Schema(name = "index", example = "1.2", description = "Subinterest affinity index.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "index", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("index")
   public BigDecimal getIndex() {
     return index;
@@ -78,11 +79,11 @@ public class AudienceSubcategory {
   }
 
   /**
-   * Interest unique key (same as ID).
+   * Get key
    * @return key
    */
   
-  @Schema(name = "key", example = "958862518888", description = "Interest unique key (same as ID).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "key", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("key")
   public String getKey() {
     return key;
@@ -98,11 +99,11 @@ public class AudienceSubcategory {
   }
 
   /**
-   * Subinterest name.
+   * Get name
    * @return name
    */
   
-  @Schema(name = "name", example = "travel destinations", description = "Subinterest name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -118,11 +119,11 @@ public class AudienceSubcategory {
   }
 
   /**
-   * Subinterest's percent of category's total audience.
+   * Get ratio
    * @return ratio
    */
   @Valid 
-  @Schema(name = "ratio", example = "0.482", description = "Subinterest's percent of category's total audience.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ratio", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ratio")
   public BigDecimal getRatio() {
     return ratio;
@@ -171,10 +172,7 @@ public class AudienceSubcategory {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

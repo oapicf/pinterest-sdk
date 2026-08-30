@@ -102,7 +102,7 @@ ProductGroupPromotionCreateRequest::getAdGroupId()
 }
 
 void
-ProductGroupPromotionCreateRequest::setAdGroupId(std::string  ad_group_id)
+ProductGroupPromotionCreateRequest::setAdGroupId(std::string ad_group_id)
 {
 	this->ad_group_id = ad_group_id;
 }
@@ -114,7 +114,7 @@ ProductGroupPromotionCreateRequest::getProductGroupPromotion()
 }
 
 void
-ProductGroupPromotionCreateRequest::setProductGroupPromotion(std::list <ProductGroupPromotion> product_group_promotion)
+ProductGroupPromotionCreateRequest::setProductGroupPromotion(std::list<ProductGroupPromotion> product_group_promotion)
 {
 	this->product_group_promotion = product_group_promotion;
 }

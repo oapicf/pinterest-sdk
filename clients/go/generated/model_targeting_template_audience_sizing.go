@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,7 +18,7 @@ import (
 // checks if the TargetingTemplateAudienceSizing type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TargetingTemplateAudienceSizing{}
 
-// TargetingTemplateAudienceSizing Gets an audience size estimate for a set of given targeting spec data. <p>Returns:</p> An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. 
+// TargetingTemplateAudienceSizing Gets an audience size estimate for a set of given targeting spec data. **Returns:** An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate.
 type TargetingTemplateAudienceSizing struct {
 	ReachEstimate *TargetingTemplateAudienceSizingReachEstimate `json:"reach_estimate,omitempty"`
 }

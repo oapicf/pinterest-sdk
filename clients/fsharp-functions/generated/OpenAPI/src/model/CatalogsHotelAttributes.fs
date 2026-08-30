@@ -3,9 +3,10 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.CatalogsAiContentDisclosure
 open OpenAPI.Model.CatalogsHotelAddress
-open OpenAPI.Model.CatalogsHotelAttributesAllOfMainImage
 open OpenAPI.Model.CatalogsHotelGuestRatings
+open OpenAPI.Model.CatalogsHotelMainImage
 open OpenAPI.Model.decimal option
 open OpenAPI.Model.string option
 
@@ -51,8 +52,10 @@ module CatalogsHotelAttributes =
     SalePrice : string option;
     [<JsonProperty(PropertyName = "additional_image_link")>]
     AdditionalImageLink : string[];
+    [<JsonProperty(PropertyName = "ai_disclosures")>]
+    AiDisclosures : CatalogsAiContentDisclosure[];
     [<JsonProperty(PropertyName = "main_image")>]
-    MainImage : CatalogsHotelAttributesAllOfMainImage;
+    MainImage : CatalogsHotelMainImage;
   }
 
   //#endregion

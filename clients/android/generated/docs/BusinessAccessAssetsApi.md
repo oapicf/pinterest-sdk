@@ -21,11 +21,11 @@ Method | HTTP request | Description
 
 ## assetGroupCreate
 
-> CreateAssetGroupResponse assetGroupCreate(businessId, createAssetGroupBody)
+> AssetGroupInput assetGroupCreate(businessId, assetGroupInputCreate)
 
 Create a new asset group.
 
-Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 
 ### Example
 
@@ -34,10 +34,10 @@ Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&q
 //import org.openapitools.client.api.BusinessAccessAssetsApi;
 
 BusinessAccessAssetsApi apiInstance = new BusinessAccessAssetsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
-CreateAssetGroupBody createAssetGroupBody = new CreateAssetGroupBody(); // CreateAssetGroupBody | 
+String businessId = null; // String | Unique identifier of the requesting business.
+AssetGroupInputCreate assetGroupInputCreate = new AssetGroupInputCreate(); // AssetGroupInputCreate | 
 try {
-    CreateAssetGroupResponse result = apiInstance.assetGroupCreate(businessId, createAssetGroupBody);
+    AssetGroupInput result = apiInstance.assetGroupCreate(businessId, assetGroupInputCreate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessAssetsApi#assetGroupCreate");
@@ -51,11 +51,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
- **createAssetGroupBody** | [**CreateAssetGroupBody**](CreateAssetGroupBody.md)|  |
+ **assetGroupInputCreate** | [**AssetGroupInputCreate**](AssetGroupInputCreate.md)|  |
 
 ### Return type
 
-[**CreateAssetGroupResponse**](CreateAssetGroupResponse.md)
+[**AssetGroupInput**](AssetGroupInput.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ## assetGroupDelete
 
-> DeleteAssetGroupResponse assetGroupDelete(businessId, deleteAssetGroupBody)
+> AssetGroupDeletion assetGroupDelete(businessId, assetGroupDeletionDelete)
 
 Delete asset groups.
 
@@ -82,10 +82,10 @@ Delete a batch of asset groups.
 //import org.openapitools.client.api.BusinessAccessAssetsApi;
 
 BusinessAccessAssetsApi apiInstance = new BusinessAccessAssetsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
-DeleteAssetGroupBody deleteAssetGroupBody = new DeleteAssetGroupBody(); // DeleteAssetGroupBody | 
+String businessId = null; // String | Unique identifier of the requesting business.
+AssetGroupDeletionDelete assetGroupDeletionDelete = new AssetGroupDeletionDelete(); // AssetGroupDeletionDelete | 
 try {
-    DeleteAssetGroupResponse result = apiInstance.assetGroupDelete(businessId, deleteAssetGroupBody);
+    AssetGroupDeletion result = apiInstance.assetGroupDelete(businessId, assetGroupDeletionDelete);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessAssetsApi#assetGroupDelete");
@@ -99,11 +99,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
- **deleteAssetGroupBody** | [**DeleteAssetGroupBody**](DeleteAssetGroupBody.md)|  |
+ **assetGroupDeletionDelete** | [**AssetGroupDeletionDelete**](AssetGroupDeletionDelete.md)|  |
 
 ### Return type
 
-[**DeleteAssetGroupResponse**](DeleteAssetGroupResponse.md)
+[**AssetGroupDeletion**](AssetGroupDeletion.md)
 
 ### Authorization
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 
 ## assetGroupUpdate
 
-> UpdateAssetGroupResponse assetGroupUpdate(businessId, updateAssetGroupBody)
+> AssetGroupModification assetGroupUpdate(businessId, assetGroupModificationReadOrUpdate)
 
 Update asset groups.
 
@@ -130,10 +130,10 @@ Update a batch of asset groups with the specified parameters.
 //import org.openapitools.client.api.BusinessAccessAssetsApi;
 
 BusinessAccessAssetsApi apiInstance = new BusinessAccessAssetsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
-UpdateAssetGroupBody updateAssetGroupBody = new UpdateAssetGroupBody(); // UpdateAssetGroupBody | 
+String businessId = null; // String | Unique identifier of the requesting business.
+AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate = new AssetGroupModificationReadOrUpdate(); // AssetGroupModificationReadOrUpdate | 
 try {
-    UpdateAssetGroupResponse result = apiInstance.assetGroupUpdate(businessId, updateAssetGroupBody);
+    AssetGroupModification result = apiInstance.assetGroupUpdate(businessId, assetGroupModificationReadOrUpdate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessAssetsApi#assetGroupUpdate");
@@ -147,11 +147,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
- **updateAssetGroupBody** | [**UpdateAssetGroupBody**](UpdateAssetGroupBody.md)|  |
+ **assetGroupModificationReadOrUpdate** | [**AssetGroupModificationReadOrUpdate**](AssetGroupModificationReadOrUpdate.md)|  |
 
 ### Return type
 
-[**UpdateAssetGroupResponse**](UpdateAssetGroupResponse.md)
+[**AssetGroupModification**](AssetGroupModification.md)
 
 ### Authorization
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ## businessAssetMembersGet
 
-> BusinessAssetMembersGet200Response businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex)
+> BusinessAssetMembersGet200Response businessAssetMembersGet(businessId, assetId, startIndex, fetchSystemUsers, bookmark, pageSize)
 
 Get members with access to asset
 
@@ -178,14 +178,14 @@ Get all the members the requesting business has granted access to on the given a
 //import org.openapitools.client.api.BusinessAccessAssetsApi;
 
 BusinessAccessAssetsApi apiInstance = new BusinessAccessAssetsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
-String assetId = 729090764583391194; // String | Unique identifier of a business asset.
+String businessId = null; // String | Unique identifier of the requesting business.
+String assetId = null; // String | Unique identifier of a business asset.
+Integer startIndex = 0; // Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
 Boolean fetchSystemUsers = false; // Boolean | Fetches system users if True. Fetches regular user employees if False.
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-Integer startIndex = 0; // Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    BusinessAssetMembersGet200Response result = apiInstance.businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex);
+    BusinessAssetMembersGet200Response result = apiInstance.businessAssetMembersGet(businessId, assetId, startIndex, fetchSystemUsers, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessAssetsApi#businessAssetMembersGet");
@@ -200,10 +200,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
  **assetId** | **String**| Unique identifier of a business asset. | [default to null]
+ **startIndex** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **fetchSystemUsers** | **Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **startIndex** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## businessAssetPartnersGet
 
-> BusinessAssetPartnersGet200Response businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize)
+> BusinessAssetMembersGet200Response businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize)
 
 Get partners with access to asset
 
@@ -234,13 +234,13 @@ Get all the partners the requesting business has granted access to on the given 
 //import org.openapitools.client.api.BusinessAccessAssetsApi;
 
 BusinessAccessAssetsApi apiInstance = new BusinessAccessAssetsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
-String assetId = 729090764583391194; // String | Unique identifier of a business asset.
+String businessId = null; // String | Unique identifier of the requesting business.
+String assetId = null; // String | Unique identifier of a business asset.
 Integer startIndex = 0; // Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    BusinessAssetPartnersGet200Response result = apiInstance.businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize);
+    BusinessAssetMembersGet200Response result = apiInstance.businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessAssetsApi#businessAssetPartnersGet");
@@ -257,11 +257,11 @@ Name | Type | Description  | Notes
  **assetId** | **String**| Unique identifier of a business asset. | [default to null]
  **startIndex** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BusinessAssetPartnersGet200Response**](BusinessAssetPartnersGet200Response.md)
+[**BusinessAssetMembersGet200Response**](BusinessAssetMembersGet200Response.md)
 
 ### Authorization
 
@@ -288,14 +288,14 @@ Get all the assets the requesting business has access to. This includes assets t
 //import org.openapitools.client.api.BusinessAccessAssetsApi;
 
 BusinessAccessAssetsApi apiInstance = new BusinessAccessAssetsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
+String businessId = null; // String | Unique identifier of the requesting business.
 List<PermissionsWithOwner> permissions = null; // List<PermissionsWithOwner> | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.
-String childAssetId = 549764894835; // String | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
-String assetGroupId = 7078106104032; // String | An asset group unique identifier. Used to fetch assets contained within the specified asset group.
+String childAssetId = null; // String | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
+String assetGroupId = null; // String | An asset group unique identifier. Used to fetch assets contained within the specified asset group.
 String assetType = AD_ACCOUNT; // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
 Integer startIndex = 0; // Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
     BusinessAssetsGet200Response result = apiInstance.businessAssetsGet(businessId, permissions, childAssetId, assetGroupId, assetType, startIndex, bookmark, pageSize);
     System.out.println(result);
@@ -317,7 +317,7 @@ Name | Type | Description  | Notes
  **assetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER]
  **startIndex** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -335,7 +335,7 @@ Name | Type | Description  | Notes
 
 ## businessMemberAssetsGet
 
-> BusinessMemberAssetsGet200Response businessMemberAssetsGet(businessId, memberId, assetType, startIndex, bookmark, pageSize)
+> BusinessMemberAssetsGetResponse businessMemberAssetsGet(businessId, memberId, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, assetPermissionType, adAccountStatuses, bookmark, pageSize)
 
 Get assets assigned to a member
 
@@ -348,14 +348,20 @@ Get assets on which you assigned asset permissions to the given member. Can be u
 //import org.openapitools.client.api.BusinessAccessAssetsApi;
 
 BusinessAccessAssetsApi apiInstance = new BusinessAccessAssetsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
-String memberId = 729090764583391194; // String | The member id to fetch assets for.
+String businessId = null; // String | Unique identifier of the requesting business.
+String memberId = null; // String | The member id to fetch assets for.
 String assetType = AD_ACCOUNT; // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
 Integer startIndex = 0; // Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
+AssetSortBy sortBy = null; // AssetSortBy | The field to sort member assets by
+Boolean sortAscending = true; // Boolean | Sort assets in ascending order
+AssetSearchBy searchBy = null; // AssetSearchBy | The field to search member assets by
+String searchValue = null; // String | The value to search for
+AssetPermissionType assetPermissionType = null; // AssetPermissionType | The type of asset permission to filter by
+List<NonDraftEntityStatus> adAccountStatuses = null; // List<NonDraftEntityStatus> | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    BusinessMemberAssetsGet200Response result = apiInstance.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, bookmark, pageSize);
+    BusinessMemberAssetsGetResponse result = apiInstance.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, assetPermissionType, adAccountStatuses, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessAssetsApi#businessMemberAssetsGet");
@@ -370,14 +376,20 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
  **memberId** | **String**| The member id to fetch assets for. | [default to null]
- **assetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER]
+ **assetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER, CONVERSION_TAG]
  **startIndex** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
+ **sortBy** | [**AssetSortBy**](.md)| The field to sort member assets by | [optional] [default to null] [enum: NAME, ID, PERMISSIONS]
+ **sortAscending** | **Boolean**| Sort assets in ascending order | [optional] [default to true]
+ **searchBy** | [**AssetSearchBy**](.md)| The field to search member assets by | [optional] [default to null] [enum: NAME, ID, NAME_OR_ID, OWNER_NAME, NAME_OR_OWNER]
+ **searchValue** | **String**| The value to search for | [optional] [default to null]
+ **assetPermissionType** | [**AssetPermissionType**](.md)| The type of asset permission to filter by | [optional] [default to null] [enum: AGGREGATED_PERMISSION, DIRECT_PERMISSION]
+ **adAccountStatuses** | [**List&lt;NonDraftEntityStatus&gt;**](NonDraftEntityStatus.md)| A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | [optional] [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BusinessMemberAssetsGet200Response**](BusinessMemberAssetsGet200Response.md)
+[**BusinessMemberAssetsGetResponse**](BusinessMemberAssetsGetResponse.md)
 
 ### Authorization
 
@@ -391,7 +403,7 @@ Name | Type | Description  | Notes
 
 ## businessMembersAssetAccessDelete
 
-> DeleteMemberAccessResultsResponseArray businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest)
+> DeleteMemberAccessResultsResponseArray businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteBody)
 
 Delete member access to asset
 
@@ -404,10 +416,10 @@ Terminate multiple members&#39; access to an asset.
 //import org.openapitools.client.api.BusinessAccessAssetsApi;
 
 BusinessAccessAssetsApi apiInstance = new BusinessAccessAssetsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
-BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest = new BusinessMembersAssetAccessDeleteRequest(); // BusinessMembersAssetAccessDeleteRequest | List member assset permissions to delete.
+String businessId = null; // String | Unique identifier of the requesting business.
+BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody = new BusinessMembersAssetAccessDeleteBody(); // BusinessMembersAssetAccessDeleteBody | 
 try {
-    DeleteMemberAccessResultsResponseArray result = apiInstance.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest);
+    DeleteMemberAccessResultsResponseArray result = apiInstance.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessAssetsApi#businessMembersAssetAccessDelete");
@@ -421,7 +433,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
- **businessMembersAssetAccessDeleteRequest** | [**BusinessMembersAssetAccessDeleteRequest**](BusinessMembersAssetAccessDeleteRequest.md)| List member assset permissions to delete. |
+ **businessMembersAssetAccessDeleteBody** | [**BusinessMembersAssetAccessDeleteBody**](BusinessMembersAssetAccessDeleteBody.md)|  |
 
 ### Return type
 
@@ -443,7 +455,7 @@ Name | Type | Description  | Notes
 
 Assign/Update member asset permissions
 
-Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 
 ### Example
 
@@ -452,8 +464,8 @@ Grant multiple members access to assets and/or update multiple member&#39;s exis
 //import org.openapitools.client.api.BusinessAccessAssetsApi;
 
 BusinessAccessAssetsApi apiInstance = new BusinessAccessAssetsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
-UpdateMemberAssetAccessBody updateMemberAssetAccessBody = new UpdateMemberAssetAccessBody(); // UpdateMemberAssetAccessBody | List of member asset permissions to create or update.
+String businessId = null; // String | Unique identifier of the requesting business.
+UpdateMemberAssetAccessBody updateMemberAssetAccessBody = new UpdateMemberAssetAccessBody(); // UpdateMemberAssetAccessBody | 
 try {
     UpdateMemberAssetsResultsResponseArray result = apiInstance.businessMembersAssetAccessUpdate(businessId, updateMemberAssetAccessBody);
     System.out.println(result);
@@ -469,7 +481,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
- **updateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md)| List of member asset permissions to create or update. |
+ **updateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md)|  |
 
 ### Return type
 
@@ -487,7 +499,7 @@ Name | Type | Description  | Notes
 
 ## businessPartnerAssetAccessGet
 
-> BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark)
+> BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, bookmark, pageSize)
 
 Get assets assigned to a partner or assets assigned by a partner
 
@@ -500,15 +512,19 @@ Can be used to get the business assets your partner has granted you access to or
 //import org.openapitools.client.api.BusinessAccessAssetsApi;
 
 BusinessAccessAssetsApi apiInstance = new BusinessAccessAssetsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
-String partnerId = 729090764583391194; // String | The partner id to be bound to the Business
-PartnerType partnerType = INTERNAL; // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+String businessId = null; // String | Unique identifier of the requesting business.
+String partnerId = null; // String | The partner id to be bound to the Business
+String partnerType = INTERNAL; // String | Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
 String assetType = AD_ACCOUNT; // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
 Integer startIndex = 0; // Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+AssetSortBy sortBy = null; // AssetSortBy | The field to sort member assets by
+Boolean sortAscending = true; // Boolean | Sort assets in ascending order
+AssetSearchBy searchBy = null; // AssetSearchBy | The field to search member assets by
+String searchValue = null; // String | The value to search for
 String bookmark = null; // String | Cursor used to fetch the next page of items
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    BusinessPartnerAssetAccessGet200Response result = apiInstance.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark);
+    BusinessPartnerAssetAccessGet200Response result = apiInstance.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessAssetsApi#businessPartnerAssetAccessGet");
@@ -523,11 +539,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
  **partnerId** | **String**| The partner id to be bound to the Business | [default to null]
- **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to INTERNAL] [enum: INTERNAL, EXTERNAL]
- **assetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER]
+ **partnerType** | **String**| Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to INTERNAL] [enum: INTERNAL, EXTERNAL]
+ **assetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, PINNER_LIST, CONVERSION_TAG, CATALOG, CONSUMER, CONVERSION_SEGMENT]
  **startIndex** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **sortBy** | [**AssetSortBy**](.md)| The field to sort member assets by | [optional] [default to null] [enum: NAME, ID, PERMISSIONS]
+ **sortAscending** | **Boolean**| Sort assets in ascending order | [optional] [default to true]
+ **searchBy** | [**AssetSearchBy**](.md)| The field to search member assets by | [optional] [default to null] [enum: NAME, ID, NAME_OR_ID, OWNER_NAME, NAME_OR_OWNER]
+ **searchValue** | **String**| The value to search for | [optional] [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -545,7 +565,7 @@ Name | Type | Description  | Notes
 
 ## deletePartnerAssetAccessHandlerImpl
 
-> DeletePartnerAssetsResultsResponseArray deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody)
+> DeletePartnerAssetAccessResultsResponseArray deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody)
 
 Delete partner access to asset
 
@@ -558,10 +578,10 @@ Terminate multiple partners&#39; access to an asset. If - partner_type&#x3D;INTE
 //import org.openapitools.client.api.BusinessAccessAssetsApi;
 
 BusinessAccessAssetsApi apiInstance = new BusinessAccessAssetsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
+String businessId = null; // String | Unique identifier of the requesting business.
 DeletePartnerAssetAccessBody deletePartnerAssetAccessBody = new DeletePartnerAssetAccessBody(); // DeletePartnerAssetAccessBody | 
 try {
-    DeletePartnerAssetsResultsResponseArray result = apiInstance.deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody);
+    DeletePartnerAssetAccessResultsResponseArray result = apiInstance.deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BusinessAccessAssetsApi#deletePartnerAssetAccessHandlerImpl");
@@ -579,7 +599,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeletePartnerAssetsResultsResponseArray**](DeletePartnerAssetsResultsResponseArray.md)
+[**DeletePartnerAssetAccessResultsResponseArray**](DeletePartnerAssetAccessResultsResponseArray.md)
 
 ### Authorization
 
@@ -606,8 +626,8 @@ Grant multiple partners access to assets and/or update multiple partner&#39;s ex
 //import org.openapitools.client.api.BusinessAccessAssetsApi;
 
 BusinessAccessAssetsApi apiInstance = new BusinessAccessAssetsApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
-UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody = new UpdatePartnerAssetAccessBody(); // UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+String businessId = null; // String | Unique identifier of the requesting business.
+UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody = new UpdatePartnerAssetAccessBody(); // UpdatePartnerAssetAccessBody | 
 try {
     UpdatePartnerAssetsResultsResponseArray result = apiInstance.updatePartnerAssetAccessHandlerImpl(businessId, updatePartnerAssetAccessBody);
     System.out.println(result);
@@ -623,7 +643,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
- **updatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md)| A list of assets and permissions to assign to your partners. |
+ **updatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md)|  |
 
 ### Return type
 

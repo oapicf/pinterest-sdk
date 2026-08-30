@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoTargetingEnabled** | Pointer to **bool** | Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;. | [optional] [default to true]
+**AutoTargetingEnabled** | Pointer to **bool** | Enable auto-targeting for ad group. Also known as [\&quot;expanded targeting\&quot;](https://help.pinterest.com/en/business/article/expanded-targeting). | [optional] [default to true]
 **Keywords** | Pointer to [**[]TargetingTemplateKeyword**](TargetingTemplateKeyword.md) |  | [optional] 
-**Name** | **string** | Name of targeting template. | 
+**Name** | **string** | targeting template name | 
 **PlacementGroup** | Pointer to [**PlacementGroupType**](PlacementGroupType.md) |  | [optional] [default to ALL]
-**TargetingAttributes** | [**TargetingSpec**](TargetingSpec.md) |  | 
+**TargetingAttributes** | [**TargetingSpecOptimal**](TargetingSpecOptimal.md) | targeting profile attributes | 
 **TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) |  | [optional] 
 
 ## Methods
 
 ### NewTargetingTemplateCreate
 
-`func NewTargetingTemplateCreate(name string, targetingAttributes TargetingSpec, ) *TargetingTemplateCreate`
+`func NewTargetingTemplateCreate(name string, targetingAttributes TargetingSpecOptimal, ) *TargetingTemplateCreate`
 
 NewTargetingTemplateCreate instantiates a new TargetingTemplateCreate object
 This constructor will assign default values to properties that have it defined,
@@ -127,20 +127,20 @@ HasPlacementGroup returns a boolean if a field has been set.
 
 ### GetTargetingAttributes
 
-`func (o *TargetingTemplateCreate) GetTargetingAttributes() TargetingSpec`
+`func (o *TargetingTemplateCreate) GetTargetingAttributes() TargetingSpecOptimal`
 
 GetTargetingAttributes returns the TargetingAttributes field if non-nil, zero value otherwise.
 
 ### GetTargetingAttributesOk
 
-`func (o *TargetingTemplateCreate) GetTargetingAttributesOk() (*TargetingSpec, bool)`
+`func (o *TargetingTemplateCreate) GetTargetingAttributesOk() (*TargetingSpecOptimal, bool)`
 
 GetTargetingAttributesOk returns a tuple with the TargetingAttributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTargetingAttributes
 
-`func (o *TargetingTemplateCreate) SetTargetingAttributes(v TargetingSpec)`
+`func (o *TargetingTemplateCreate) SetTargetingAttributes(v TargetingSpecOptimal)`
 
 SetTargetingAttributes sets TargetingAttributes field to given value.
 

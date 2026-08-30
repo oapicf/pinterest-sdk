@@ -84,14 +84,14 @@ update_params_with_auth(Cfg, Headers, QS) ->
     Auths = #{ 'pinterest_oauth2' =>
                 #{type => 'oauth2',
                   key => <<"Authorization">>,
+                  in => header}, 'client_credentials' =>
+                #{type => 'oauth2',
+                  key => <<"Authorization">>,
                   in => header}, 'conversion_token' =>
                 #{type => 'http',
                   key => <<"Authorization">>,
                   in => header}, 'basic' =>
                 #{type => 'http',
-                  key => <<"Authorization">>,
-                  in => header}, 'client_credentials' =>
-                #{type => 'oauth2',
                   key => <<"Authorization">>,
                   in => header}},
 

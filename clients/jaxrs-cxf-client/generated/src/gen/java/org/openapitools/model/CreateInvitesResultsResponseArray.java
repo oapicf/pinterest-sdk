@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CreateInvitesResultsResponseArrayItemsInner;
+import org.openapitools.model.InviteActionResultItem;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -17,26 +17,26 @@ public class CreateInvitesResultsResponseArray  {
   */
   @ApiModelProperty(value = "List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.")
 
-  private List<CreateInvitesResultsResponseArrayItemsInner> items = new ArrayList<>();
+  private List<InviteActionResultItem> items = new ArrayList<>();
  /**
    * List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
    * @return items
   **/
   @JsonProperty("items")
-  public List<CreateInvitesResultsResponseArrayItemsInner> getItems() {
+  public List<InviteActionResultItem> getItems() {
     return items;
   }
 
-  public void setItems(List<CreateInvitesResultsResponseArrayItemsInner> items) {
+  public void setItems(List<InviteActionResultItem> items) {
     this.items = items;
   }
 
-  public CreateInvitesResultsResponseArray items(List<CreateInvitesResultsResponseArrayItemsInner> items) {
+  public CreateInvitesResultsResponseArray items(List<InviteActionResultItem> items) {
     this.items = items;
     return this;
   }
 
-  public CreateInvitesResultsResponseArray addItemsItem(CreateInvitesResultsResponseArrayItemsInner itemsItem) {
+  public CreateInvitesResultsResponseArray addItemsItem(InviteActionResultItem itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -73,10 +73,7 @@ public class CreateInvitesResultsResponseArray  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

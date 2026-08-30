@@ -102,7 +102,7 @@ Feed_processing_results_list_200_response::getBookmark()
 }
 
 void
-Feed_processing_results_list_200_response::setBookmark(std::string  bookmark)
+Feed_processing_results_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Feed_processing_results_list_200_response::getItems()
 }
 
 void
-Feed_processing_results_list_200_response::setItems(std::list <CatalogsFeedProcessingResult> items)
+Feed_processing_results_list_200_response::setItems(std::list<CatalogsFeedProcessingResult> items)
 {
 	this->items = items;
 }

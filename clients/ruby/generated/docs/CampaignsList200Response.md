@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** |  | [optional] |
-| **items** | [**Array&lt;CampaignResponse&gt;**](CampaignResponse.md) |  |  |
+| **items** | [**Array&lt;Campaign&gt;**](Campaign.md) |  |  |
 
 ## Example
 

@@ -20,7 +20,7 @@ Used by third-party partners to send notifications to Pinterest. These notificat
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**notification_post_request** | [**NotificationPostRequest**](NotificationPostRequest.md) | notification event. | [required] |
+**notification_post_request** | Option<[**NotificationPostRequest**](NotificationPostRequest.md)> |  | [required] |
 
 ### Return type
 

@@ -16,7 +16,7 @@ class PriceFilter {
     required this.PRICE,
   });
 
-  CatalogsProductGroupPricingCurrencyCriteria PRICE;
+  PriceFilterPrice PRICE;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PriceFilter &&
@@ -47,15 +47,13 @@ class PriceFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PriceFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PriceFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'PRICE'), 'Required key "PriceFilter[PRICE]" is missing from JSON.');
+        assert(json[r'PRICE'] != null, 'Required key "PriceFilter[PRICE]" has a null value in JSON.');
         return true;
       }());
 
       return PriceFilter(
-        PRICE: CatalogsProductGroupPricingCurrencyCriteria.fromJson(json[r'PRICE'])!,
+        PRICE: PriceFilterPrice.fromJson(json[r'PRICE'])!,
       );
     }
     return null;

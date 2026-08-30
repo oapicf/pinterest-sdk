@@ -14,9 +14,9 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::ErrorDetail.new(
-  count: 20,
-  error_code: 42,
-  message: Invalid email
+  count: null,
+  error_code: null,
+  message: null
 )
 ```
 

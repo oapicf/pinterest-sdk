@@ -12,7 +12,6 @@
 #include "AdvancedAuctionBidOptions.h"
 #include "AdvancedAuctionItemsSubmitDeleteRecord.h"
 #include "AdvancedAuctionItemsSubmitUpsertRecord.h"
-#include "AdvancedAuctionOperation.h"
 #include "AdvancedAuctionOperationError.h"
 #include "Country.h"
 #include "Language.h"
@@ -56,11 +55,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	AdvancedAuctionOperation getOperation();
+	AdvancedAuctionBidOptions getBidOptions();
 
 	/*! \brief Set 
 	 */
-	void setOperation(AdvancedAuctionOperation  operation);
+	void setBidOptions(AdvancedAuctionBidOptions  bid_options);
 	/*! \brief Get 
 	 */
 	Country getCountry();
@@ -68,6 +67,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setCountry(Country  country);
+	/*! \brief Get Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+	 */
+	std::list<AdvancedAuctionOperationError> getErrors();
+
+	/*! \brief Set Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+	 */
+	void setErrors(std::list <AdvancedAuctionOperationError> errors);
 	/*! \brief Get The catalog retail item id in the merchant namespace
 	 */
 	std::string getItemId();
@@ -84,18 +90,11 @@ public:
 	void setLanguage(Language  language);
 	/*! \brief Get 
 	 */
-	AdvancedAuctionBidOptions getBidOptions();
+	std::string getOperation();
 
 	/*! \brief Set 
 	 */
-	void setBidOptions(AdvancedAuctionBidOptions  bid_options);
-	/*! \brief Get Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
-	 */
-	std::list<AdvancedAuctionOperationError> getErrors();
-
-	/*! \brief Set Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
-	 */
-	void setErrors(std::list <AdvancedAuctionOperationError> errors);
+	void setOperation(std::string  operation);
 	/*! \brief Get The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
 	 */
 	std::list<UpdateMaskBidOptionField> getUpdateMask();
@@ -105,12 +104,12 @@ public:
 	void setUpdateMask(std::list <UpdateMaskBidOptionField> update_mask);
 
 private:
-	AdvancedAuctionOperation operation;
+	AdvancedAuctionBidOptions bid_options;
 	Country country;
+	std::list <AdvancedAuctionOperationError>errors;
 	std::string item_id;
 	Language language;
-	AdvancedAuctionBidOptions bid_options;
-	std::list <AdvancedAuctionOperationError>errors;
+	std::string operation;
 	std::list <UpdateMaskBidOptionField>update_mask;
 	void __init();
 	void __cleanup();

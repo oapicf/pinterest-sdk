@@ -8,47 +8,24 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
+import org.openapitools.model.CustomerListStatus;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CustomerList   {
   
   private String adAccountId;
   private BigDecimal createdTime;
   private Object exceptions;
   private String id;
+  private Boolean isNca;
   private String name;
   private BigDecimal numBatches;
   private BigDecimal numRemovedUserRecords;
   private BigDecimal numUploadedUserRecords;
-
-  /**
-   * Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-   */
-  public enum StatusEnum {
-    PROCESSING("PROCESSING"),
-
-        READY("READY"),
-
-        TOO_SMALL("TOO_SMALL"),
-
-        UPLOADING("UPLOADING");
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private StatusEnum status;
+  private CustomerListStatus status;
   private String type;
   private BigDecimal updatedTime;
 
@@ -80,10 +57,10 @@ public class CustomerList   {
   }
 
   /**
-   * Customer list errors
+   * Customer list errors.
    **/
   
-  @ApiModelProperty(value = "Customer list errors")
+  @ApiModelProperty(value = "Customer list errors.")
   @JsonProperty("exceptions")
   public Object getExceptions() {
     return exceptions;
@@ -96,9 +73,10 @@ public class CustomerList   {
    * Customer list ID.
    **/
   
-  @ApiModelProperty(example = "643", value = "Customer list ID.")
+  @ApiModelProperty(example = "643", required = true, value = "Customer list ID.")
   @JsonProperty("id")
-  public String getId() {
+  @NotNull
+ @Pattern(regexp="^\\d+$") @Size(max=18)  public String getId() {
     return id;
   }
   public void setId(String id) {
@@ -106,11 +84,25 @@ public class CustomerList   {
   }
 
   /**
+   * Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.
+   **/
+  
+  @ApiModelProperty(value = "Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.")
+  @JsonProperty("is_nca")
+  public Boolean getIsNca() {
+    return isNca;
+  }
+  public void setIsNca(Boolean isNca) {
+    this.isNca = isNca;
+  }
+
+  /**
    * Customer list name.
    **/
   
-  @ApiModelProperty(example = "The Glengarry Glen Ross leads", value = "Customer list name.")
+  @ApiModelProperty(example = "The Glengarry Glen Ross leads", required = true, value = "Customer list name.")
   @JsonProperty("name")
+  @NotNull
   public String getName() {
     return name;
   }
@@ -119,10 +111,10 @@ public class CustomerList   {
   }
 
   /**
-   * Total number of list updates.  List creation counts as one batch. Each &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\&quot;&gt;Append&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\&quot;&gt;Remove API&lt;/a&gt; call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
+   * Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.
    **/
   
-  @ApiModelProperty(example = "2", value = "Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.")
+  @ApiModelProperty(example = "2", value = "Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.")
   @JsonProperty("num_batches")
   @Valid
   public BigDecimal getNumBatches() {
@@ -133,10 +125,10 @@ public class CustomerList   {
   }
 
   /**
-   * Number of removed user records. In a &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\&quot;&gt;Remove API&lt;/a&gt; call, this counter increases even if the user is not found in the list.
+   * Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.
    **/
   
-  @ApiModelProperty(example = "0", value = "Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.")
+  @ApiModelProperty(example = "0", value = "Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.")
   @JsonProperty("num_removed_user_records")
   @Valid
   public BigDecimal getNumRemovedUserRecords() {
@@ -147,10 +139,10 @@ public class CustomerList   {
   }
 
   /**
-   * Number of uploaded user records. In an &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\&quot;&gt;Append API&lt;/a&gt; call, this counter increases even if the uploaded user is already in the list.
+   * Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.
    **/
   
-  @ApiModelProperty(example = "11", value = "Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.")
+  @ApiModelProperty(example = "11", value = "Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.")
   @JsonProperty("num_uploaded_user_records")
   @Valid
   public BigDecimal getNumUploadedUserRecords() {
@@ -161,23 +153,24 @@ public class CustomerList   {
   }
 
   /**
-   * Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
+   * Customer list status. &#x60;TOO_SMALL&#x60; means the list has fewer than 100 Pinterest users.
    **/
   
-  @ApiModelProperty(example = "PROCESSING", value = "Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.")
+  @ApiModelProperty(example = "PROCESSING", value = "Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.")
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  @Valid
+  public CustomerListStatus getStatus() {
     return status;
   }
-  public void setStatus(StatusEnum status) {
+  public void setStatus(CustomerListStatus status) {
     this.status = status;
   }
 
   /**
-   * Always \&quot;customerlist\&quot;.
+   * Always &#x60;customerlist&#x60;.
    **/
   
-  @ApiModelProperty(example = "customerlist", value = "Always \"customerlist\".")
+  @ApiModelProperty(example = "customerlist", value = "Always `customerlist`.")
   @JsonProperty("type")
   public String getType() {
     return type;
@@ -214,6 +207,7 @@ public class CustomerList   {
         Objects.equals(this.createdTime, customerList.createdTime) &&
         Objects.equals(this.exceptions, customerList.exceptions) &&
         Objects.equals(this.id, customerList.id) &&
+        Objects.equals(this.isNca, customerList.isNca) &&
         Objects.equals(this.name, customerList.name) &&
         Objects.equals(this.numBatches, customerList.numBatches) &&
         Objects.equals(this.numRemovedUserRecords, customerList.numRemovedUserRecords) &&
@@ -225,7 +219,7 @@ public class CustomerList   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, createdTime, exceptions, id, name, numBatches, numRemovedUserRecords, numUploadedUserRecords, status, type, updatedTime);
+    return Objects.hash(adAccountId, createdTime, exceptions, id, isNca, name, numBatches, numRemovedUserRecords, numUploadedUserRecords, status, type, updatedTime);
   }
 
   @Override
@@ -237,6 +231,7 @@ public class CustomerList   {
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isNca: ").append(toIndentedString(isNca)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    numBatches: ").append(toIndentedString(numBatches)).append("\n");
     sb.append("    numRemovedUserRecords: ").append(toIndentedString(numRemovedUserRecords)).append("\n");
@@ -253,10 +248,7 @@ public class CustomerList   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -6,30 +6,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.UpdateMemberAssetAccessBodyAccessesInner;
+import org.openapitools.vertxweb.server.model.UpdateMemberAssetAccessItem;
 
 /**
- * An object with a list of all the new accesses.
+ * An object with a list of all the new member asset accesses.
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UpdateMemberAssetAccessBody   {
   
-  private List<UpdateMemberAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+  private List<UpdateMemberAssetAccessItem> accesses = new ArrayList<>();
 
   public UpdateMemberAssetAccessBody () {
 
   }
 
-  public UpdateMemberAssetAccessBody (List<UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+  public UpdateMemberAssetAccessBody (List<UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
     
   @JsonProperty("accesses")
-  public List<UpdateMemberAssetAccessBodyAccessesInner> getAccesses() {
+  public List<UpdateMemberAssetAccessItem> getAccesses() {
     return accesses;
   }
-  public void setAccesses(List<UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
@@ -66,9 +66,6 @@ public class UpdateMemberAssetAccessBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

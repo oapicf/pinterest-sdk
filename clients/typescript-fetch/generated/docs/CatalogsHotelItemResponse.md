@@ -8,8 +8,9 @@ Object describing a hotel record
 Name | Type
 ------------ | -------------
 `attributes` | [CatalogsHotelAttributes](CatalogsHotelAttributes.md)
-`catalogType` | [CatalogsType](CatalogsType.md)
+`catalogType` | string
 `hotelId` | string
+`itemResponseKind` | string
 `pins` | [Array&lt;Pin&gt;](Pin.md)
 
 ## Example
@@ -22,6 +23,7 @@ const example = {
   "attributes": null,
   "catalogType": null,
   "hotelId": DS0294-M,
+  "itemResponseKind": null,
   "pins": null,
 } satisfies CatalogsHotelItemResponse
 

@@ -211,7 +211,7 @@ CatalogsReportDistributionStats::getCatalogId()
 }
 
 void
-CatalogsReportDistributionStats::setCatalogId(std::string  catalog_id)
+CatalogsReportDistributionStats::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -223,7 +223,7 @@ CatalogsReportDistributionStats::getCode()
 }
 
 void
-CatalogsReportDistributionStats::setCode(int  code)
+CatalogsReportDistributionStats::setCode(int code)
 {
 	this->code = code;
 }
@@ -235,7 +235,7 @@ CatalogsReportDistributionStats::getCodeLabel()
 }
 
 void
-CatalogsReportDistributionStats::setCodeLabel(std::string  code_label)
+CatalogsReportDistributionStats::setCodeLabel(std::string code_label)
 {
 	this->code_label = code_label;
 }
@@ -247,7 +247,7 @@ CatalogsReportDistributionStats::isIneligibleForAds()
 }
 
 void
-CatalogsReportDistributionStats::setIneligibleForAds(bool  ineligible_for_ads)
+CatalogsReportDistributionStats::setIneligibleForAds(bool ineligible_for_ads)
 {
 	this->ineligible_for_ads = ineligible_for_ads;
 }
@@ -259,7 +259,7 @@ CatalogsReportDistributionStats::isIneligibleForOrganic()
 }
 
 void
-CatalogsReportDistributionStats::setIneligibleForOrganic(bool  ineligible_for_organic)
+CatalogsReportDistributionStats::setIneligibleForOrganic(bool ineligible_for_organic)
 {
 	this->ineligible_for_organic = ineligible_for_organic;
 }
@@ -271,7 +271,7 @@ CatalogsReportDistributionStats::getMessage()
 }
 
 void
-CatalogsReportDistributionStats::setMessage(std::string  message)
+CatalogsReportDistributionStats::setMessage(std::string message)
 {
 	this->message = message;
 }
@@ -283,7 +283,7 @@ CatalogsReportDistributionStats::getOccurrences()
 }
 
 void
-CatalogsReportDistributionStats::setOccurrences(int  occurrences)
+CatalogsReportDistributionStats::setOccurrences(int occurrences)
 {
 	this->occurrences = occurrences;
 }
@@ -295,7 +295,7 @@ CatalogsReportDistributionStats::getReportType()
 }
 
 void
-CatalogsReportDistributionStats::setReportType(std::string  report_type)
+CatalogsReportDistributionStats::setReportType(std::string report_type)
 {
 	this->report_type = report_type;
 }

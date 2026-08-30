@@ -11,7 +11,8 @@
        'catalog_product_groups' => list(),
        'keywords' => list(),
        'labels' => list(),
-       'product_groups' => list()
+       'product_groups' => list(),
+       'schedules' => list()
      }.
 
 encode(#{ 'ad_groups' := AdGroups,
@@ -20,7 +21,8 @@ encode(#{ 'ad_groups' := AdGroups,
           'catalog_product_groups' := CatalogProductGroups,
           'keywords' := Keywords,
           'labels' := Labels,
-          'product_groups' := ProductGroups
+          'product_groups' := ProductGroups,
+          'schedules' := Schedules
         }) ->
     #{ 'ad_groups' => AdGroups,
        'ads' => Ads,
@@ -28,5 +30,6 @@ encode(#{ 'ad_groups' := AdGroups,
        'catalog_product_groups' => CatalogProductGroups,
        'keywords' => Keywords,
        'labels' => Labels,
-       'product_groups' => ProductGroups
+       'product_groups' => ProductGroups,
+       'schedules' => Schedules
      }.

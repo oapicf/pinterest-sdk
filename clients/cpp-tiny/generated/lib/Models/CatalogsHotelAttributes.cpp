@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsHotelAttributes::CatalogsHotelAttributes()
 {
-	address = CatalogsHotelAddress();
+	address = null;
 	base_price = std::string();
 	brand = std::string();
 	category = std::string();
@@ -16,7 +16,7 @@ CatalogsHotelAttributes::CatalogsHotelAttributes()
 	custom_label_3 = std::string();
 	custom_label_4 = std::string();
 	description = std::string();
-	guest_ratings = CatalogsHotelGuestRatings();
+	guest_ratings = null;
 	latitude = float(0);
 	link = std::string();
 	longitude = float(0);
@@ -24,7 +24,8 @@ CatalogsHotelAttributes::CatalogsHotelAttributes()
 	neighborhood = std::list<std::string>();
 	sale_price = std::string();
 	additional_image_link = std::list<std::string>();
-	main_image = CatalogsHotelAttributes_allOf_main_image();
+	ai_disclosures = std::list<CatalogsAiContentDisclosure>();
+	main_image = null;
 }
 
 CatalogsHotelAttributes::CatalogsHotelAttributes(std::string jsonString)
@@ -296,6 +297,28 @@ CatalogsHotelAttributes::fromJson(std::string jsonObj)
 
     }
 
+    const char *ai_disclosuresKey = "ai_disclosures";
+
+    if(object.has_key(ai_disclosuresKey))
+    {
+        bourne::json value = object[ai_disclosuresKey];
+
+
+        std::list<CatalogsAiContentDisclosure> ai_disclosures_list;
+        CatalogsAiContentDisclosure element;
+        for(auto& var : value.array_range())
+        {
+
+
+            element.fromJson(var.dump());
+
+            ai_disclosures_list.push_back(element);
+        }
+        ai_disclosures = ai_disclosures_list;
+
+
+    }
+
     const char *main_imageKey = "main_image";
 
     if(object.has_key(main_imageKey))
@@ -305,7 +328,7 @@ CatalogsHotelAttributes::fromJson(std::string jsonObj)
 
 
 
-        CatalogsHotelAttributes_allOf_main_image* obj = &main_image;
+        CatalogsHotelMainImage* obj = &main_image;
 		obj->fromJson(value.dump());
 
     }
@@ -465,6 +488,21 @@ CatalogsHotelAttributes::toJson()
 
 
 
+    std::list<CatalogsAiContentDisclosure> ai_disclosures_list = getAiDisclosures();
+    bourne::json ai_disclosures_arr = bourne::json::array();
+
+    for(auto& var : ai_disclosures_list)
+    {
+        CatalogsAiContentDisclosure obj = var;
+        ai_disclosures_arr.append(obj.toJson());
+    }
+    object["ai_disclosures"] = ai_disclosures_arr;
+
+
+
+
+
+
 
 
 	object["main_image"] = getMainImage().toJson();
@@ -481,7 +519,7 @@ CatalogsHotelAttributes::getAddress()
 }
 
 void
-CatalogsHotelAttributes::setAddress(CatalogsHotelAddress  address)
+CatalogsHotelAttributes::setAddress(CatalogsHotelAddress address)
 {
 	this->address = address;
 }
@@ -493,7 +531,7 @@ CatalogsHotelAttributes::getBasePrice()
 }
 
 void
-CatalogsHotelAttributes::setBasePrice(std::string  base_price)
+CatalogsHotelAttributes::setBasePrice(std::string base_price)
 {
 	this->base_price = base_price;
 }
@@ -505,7 +543,7 @@ CatalogsHotelAttributes::getBrand()
 }
 
 void
-CatalogsHotelAttributes::setBrand(std::string  brand)
+CatalogsHotelAttributes::setBrand(std::string brand)
 {
 	this->brand = brand;
 }
@@ -517,7 +555,7 @@ CatalogsHotelAttributes::getCategory()
 }
 
 void
-CatalogsHotelAttributes::setCategory(std::string  category)
+CatalogsHotelAttributes::setCategory(std::string category)
 {
 	this->category = category;
 }
@@ -529,7 +567,7 @@ CatalogsHotelAttributes::getCustomLabel0()
 }
 
 void
-CatalogsHotelAttributes::setCustomLabel0(std::string  custom_label_0)
+CatalogsHotelAttributes::setCustomLabel0(std::string custom_label_0)
 {
 	this->custom_label_0 = custom_label_0;
 }
@@ -541,7 +579,7 @@ CatalogsHotelAttributes::getCustomLabel1()
 }
 
 void
-CatalogsHotelAttributes::setCustomLabel1(std::string  custom_label_1)
+CatalogsHotelAttributes::setCustomLabel1(std::string custom_label_1)
 {
 	this->custom_label_1 = custom_label_1;
 }
@@ -553,7 +591,7 @@ CatalogsHotelAttributes::getCustomLabel2()
 }
 
 void
-CatalogsHotelAttributes::setCustomLabel2(std::string  custom_label_2)
+CatalogsHotelAttributes::setCustomLabel2(std::string custom_label_2)
 {
 	this->custom_label_2 = custom_label_2;
 }
@@ -565,7 +603,7 @@ CatalogsHotelAttributes::getCustomLabel3()
 }
 
 void
-CatalogsHotelAttributes::setCustomLabel3(std::string  custom_label_3)
+CatalogsHotelAttributes::setCustomLabel3(std::string custom_label_3)
 {
 	this->custom_label_3 = custom_label_3;
 }
@@ -577,7 +615,7 @@ CatalogsHotelAttributes::getCustomLabel4()
 }
 
 void
-CatalogsHotelAttributes::setCustomLabel4(std::string  custom_label_4)
+CatalogsHotelAttributes::setCustomLabel4(std::string custom_label_4)
 {
 	this->custom_label_4 = custom_label_4;
 }
@@ -589,7 +627,7 @@ CatalogsHotelAttributes::getDescription()
 }
 
 void
-CatalogsHotelAttributes::setDescription(std::string  description)
+CatalogsHotelAttributes::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -601,7 +639,7 @@ CatalogsHotelAttributes::getGuestRatings()
 }
 
 void
-CatalogsHotelAttributes::setGuestRatings(CatalogsHotelGuestRatings  guest_ratings)
+CatalogsHotelAttributes::setGuestRatings(CatalogsHotelGuestRatings guest_ratings)
 {
 	this->guest_ratings = guest_ratings;
 }
@@ -613,7 +651,7 @@ CatalogsHotelAttributes::getLatitude()
 }
 
 void
-CatalogsHotelAttributes::setLatitude(long  latitude)
+CatalogsHotelAttributes::setLatitude(long latitude)
 {
 	this->latitude = latitude;
 }
@@ -625,7 +663,7 @@ CatalogsHotelAttributes::getLink()
 }
 
 void
-CatalogsHotelAttributes::setLink(std::string  link)
+CatalogsHotelAttributes::setLink(std::string link)
 {
 	this->link = link;
 }
@@ -637,7 +675,7 @@ CatalogsHotelAttributes::getLongitude()
 }
 
 void
-CatalogsHotelAttributes::setLongitude(long  longitude)
+CatalogsHotelAttributes::setLongitude(long longitude)
 {
 	this->longitude = longitude;
 }
@@ -649,7 +687,7 @@ CatalogsHotelAttributes::getName()
 }
 
 void
-CatalogsHotelAttributes::setName(std::string  name)
+CatalogsHotelAttributes::setName(std::string name)
 {
 	this->name = name;
 }
@@ -661,7 +699,7 @@ CatalogsHotelAttributes::getNeighborhood()
 }
 
 void
-CatalogsHotelAttributes::setNeighborhood(std::list <std::string> neighborhood)
+CatalogsHotelAttributes::setNeighborhood(std::list<std::string> neighborhood)
 {
 	this->neighborhood = neighborhood;
 }
@@ -673,7 +711,7 @@ CatalogsHotelAttributes::getSalePrice()
 }
 
 void
-CatalogsHotelAttributes::setSalePrice(std::string  sale_price)
+CatalogsHotelAttributes::setSalePrice(std::string sale_price)
 {
 	this->sale_price = sale_price;
 }
@@ -685,19 +723,31 @@ CatalogsHotelAttributes::getAdditionalImageLink()
 }
 
 void
-CatalogsHotelAttributes::setAdditionalImageLink(std::list <std::string> additional_image_link)
+CatalogsHotelAttributes::setAdditionalImageLink(std::list<std::string> additional_image_link)
 {
 	this->additional_image_link = additional_image_link;
 }
 
-CatalogsHotelAttributes_allOf_main_image
+std::list<CatalogsAiContentDisclosure>
+CatalogsHotelAttributes::getAiDisclosures()
+{
+	return ai_disclosures;
+}
+
+void
+CatalogsHotelAttributes::setAiDisclosures(std::list<CatalogsAiContentDisclosure> ai_disclosures)
+{
+	this->ai_disclosures = ai_disclosures;
+}
+
+CatalogsHotelMainImage
 CatalogsHotelAttributes::getMainImage()
 {
 	return main_image;
 }
 
 void
-CatalogsHotelAttributes::setMainImage(CatalogsHotelAttributes_allOf_main_image  main_image)
+CatalogsHotelAttributes::setMainImage(CatalogsHotelMainImage main_image)
 {
 	this->main_image = main_image;
 }

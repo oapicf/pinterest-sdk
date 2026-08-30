@@ -2,7 +2,7 @@
 Protected Class CreateAssetAccessRequestBody
 
 	#tag Property, Flags = &h0
-		asset_requests() As OpenAPIClient.Models.CreateAssetAccessRequestBodyAssetRequestsInner
+		asset_requests() As OpenAPIClient.Models.CreateAssetAccessRequestItem
 	#tag EndProperty
 
 
@@ -47,7 +47,7 @@ Protected Class CreateAssetAccessRequestBody
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CreateAssetAccessRequestBodyAssetRequestsInner"
+			Type="CreateAssetAccessRequestItem"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

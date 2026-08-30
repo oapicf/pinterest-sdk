@@ -9,7 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field data_status  \link{DataStatus} [optional]
 #' @field date Metrics date (UTC): YYYY-MM-DD. character [optional]
-#' @field metrics The metric name and daily value for each requested metric named list(numeric) [optional]
+#' @field metrics  named list(numeric) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -25,7 +25,7 @@ AnalyticsDailyMetrics <- R6::R6Class(
     #'
     #' @param data_status data_status
     #' @param date Metrics date (UTC): YYYY-MM-DD.
-    #' @param metrics The metric name and daily value for each requested metric
+    #' @param metrics metrics
     #' @param ... Other optional arguments.
     initialize = function(`data_status` = NULL, `date` = NULL, `metrics` = NULL, ...) {
       if (!is.null(`data_status`)) {
@@ -81,7 +81,7 @@ AnalyticsDailyMetrics <- R6::R6Class(
       AnalyticsDailyMetricsObject <- list()
       if (!is.null(self$`data_status`)) {
         AnalyticsDailyMetricsObject[["data_status"]] <-
-          self$`data_status`$toSimpleType()
+          self$extractSimpleType(self$`data_status`)
       }
       if (!is.null(self$`date`)) {
         AnalyticsDailyMetricsObject[["date"]] <-
@@ -92,6 +92,29 @@ AnalyticsDailyMetrics <- R6::R6Class(
           self$`metrics`
       }
       return(AnalyticsDailyMetricsObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

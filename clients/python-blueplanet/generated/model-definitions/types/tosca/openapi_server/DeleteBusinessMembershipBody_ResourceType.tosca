@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DeleteBusinessMembershipBody"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DeleteBusinessMembershipBody"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  DeleteBusinessMembershipMember = openapi_server.resourceTypes.DeleteBusinessMembershipMember
+}
+resourceTypes {
+
+  DeleteBusinessMembershipBody {
+    title = DeleteBusinessMembershipBody
+    description = DeleteBusinessMembershipBody
+    derivedFrom = Root
+    properties {
+        members {
+          type = array
+          items.type = DeleteBusinessMembershipMember
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DeleteBusinessMembershipBody {
+    title = DeleteBusinessMembershipBody
+    description = DeleteBusinessMembershipBody
+    implements = openapi_server.resourceTypes.DeleteBusinessMembershipBody
+
+  }
+}

@@ -4,7 +4,7 @@ package models
 type AdvancedAuctionItemsSubmitRequest struct {
 
 	// Catalog id pertaining to all items
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\d+$"`
 
 	// Array of item bid option operations
 	Items []AdvancedAuctionItemsSubmitRecord `json:"items"`

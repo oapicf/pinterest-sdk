@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Field** | **string** |  | 
-**Operation** | **string** |  | 
+**Operation** | **TargetingSpecListOperation** |  | 
 **Values** | [**List&lt;TargetingSpecGender&gt;**](TargetingSpecGender.md) |  | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

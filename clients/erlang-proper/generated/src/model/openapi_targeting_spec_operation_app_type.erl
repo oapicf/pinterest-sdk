@@ -10,7 +10,7 @@
 
 -type openapi_targeting_spec_operation_app_type() ::
   [ {'field', binary() }
-  | {'operation', binary() }
+  | {'operation', openapi_targeting_spec_list_operation:openapi_targeting_spec_list_operation() }
   | {'values', list(openapi_targeting_spec_app_type:openapi_targeting_spec_app_type()) }
   ].
 
@@ -20,7 +20,7 @@ openapi_targeting_spec_operation_app_type() ->
 
 openapi_targeting_spec_operation_app_type(Fields) ->
   Default = [ {'field', elements([<<"APPTYPE">>]) }
-            , {'operation', elements([<<"SET">>, <<"ADD">>, <<"REMOVE">>]) }
+            , {'operation', openapi_targeting_spec_list_operation:openapi_targeting_spec_list_operation() }
             , {'values', list(openapi_targeting_spec_app_type:openapi_targeting_spec_app_type()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

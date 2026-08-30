@@ -17,16 +17,17 @@ import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
 import org.openapitools.server.api.model.AuthRespondInvitesBody
-import org.openapitools.server.api.model.CancelInvitesBody
+import org.openapitools.server.api.model.CancelInvitesRequest
+import org.openapitools.server.api.model.CancelInvitesResponse
 import org.openapitools.server.api.model.CreateAssetAccessRequestBody
 import org.openapitools.server.api.model.CreateAssetAccessRequestResponse
 import org.openapitools.server.api.model.CreateAssetInvitesRequest
 import org.openapitools.server.api.model.CreateInvitesResultsResponseArray
 import org.openapitools.server.api.model.CreateMembershipOrPartnershipInvitesBody
-import org.openapitools.server.api.model.DeleteInvitesResultsResponseArray
-import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.GetInvites200Response
+import org.openapitools.server.api.model.InviteFilterStatus
 import org.openapitools.server.api.model.InviteType
+import org.openapitools.server.api.model.PinterestLibError
 import org.openapitools.server.api.model.RespondToInvitesResponseArray
 import org.openapitools.server.api.model.UpdateInvitesResultsResponseArray
 
@@ -103,13 +104,13 @@ class BusinessAccessInviteApiVertxProxyHandler(private val vertx: Vertx, private
                     if(businessId == null){
                         throw IllegalArgumentException("businessId is required")
                     }
-                    val cancelInvitesBodyParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (cancelInvitesBodyParam == null) {
-                        throw IllegalArgumentException("cancelInvitesBody is required")
+                    val cancelInvitesRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (cancelInvitesRequestParam == null) {
+                        throw IllegalArgumentException("cancelInvitesRequest is required")
                     }
-                    val cancelInvitesBody = Gson().fromJson(cancelInvitesBodyParam.encode(), CancelInvitesBody::class.java)
+                    val cancelInvitesRequest = Gson().fromJson(cancelInvitesRequestParam.encode(), CancelInvitesRequest::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.cancelInvitesOrRequests(businessId,cancelInvitesBody,context)
+                        val result = service.cancelInvitesOrRequests(businessId,cancelInvitesRequest,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -168,9 +169,9 @@ class BusinessAccessInviteApiVertxProxyHandler(private val vertx: Vertx, private
                     }
                     val isMember = ApiHandlerUtils.searchStringInJson(params,"is_member")?.toBoolean()
                     val inviteStatusParam = ApiHandlerUtils.searchJsonArrayInJson(params,"invite_status")
-                    val inviteStatus:kotlin.Array<kotlin.String>? = if(inviteStatusParam == null) null
+                    val inviteStatus:kotlin.Array<InviteFilterStatus>? = if(inviteStatusParam == null) null
                             else Gson().fromJson(inviteStatusParam.encode(),
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                            , object : TypeToken<kotlin.collections.List<InviteFilterStatus>>(){}.type)
                     val inviteTypeParam = ApiHandlerUtils.searchJsonObjectInJson(params,"invite_type")
                     val inviteType = if(inviteTypeParam ==null) null else Gson().fromJson(inviteTypeParam.encode(), InviteType::class.java)
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")

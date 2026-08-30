@@ -4,6 +4,7 @@
             [pinterest-rest-api.specs.quiz-pin-question :refer :all]
             [pinterest-rest-api.specs.quiz-pin-result :refer :all]
             [pinterest-rest-api.specs.quiz-pin-result :refer :all]
+            [pinterest-rest-api.specs.tie-breaker-type :refer :all]
             )
   (:import (java.io File)))
 
@@ -13,7 +14,7 @@
    (ds/opt :questions) (s/coll-of quiz-pin-question-spec)
    (ds/opt :results) (s/coll-of quiz-pin-result-spec)
    (ds/opt :tie_breaker_custom_result) quiz-pin-result-spec
-   (ds/opt :tie_breaker_type) string?
+   (ds/opt :tie_breaker_type) tie-breaker-type-spec
    })
 
 (def quiz-pin-data-spec

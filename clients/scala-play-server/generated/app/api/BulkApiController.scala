@@ -4,14 +4,14 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BulkDownloadRequest
-import model.BulkDownloadResponse
+import model.BulkDownload
+import model.BulkDownloadCreate
+import model.BulkJobData
 import model.BulkUpsertRequest
 import model.BulkUpsertResponse
-import model.BulkUpsertStatusResponse
 import model.Error
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class BulkApiController @Inject()(cc: ControllerComponents, api: BulkApi) extends AbstractController(cc) {
   /**
@@ -19,11 +19,11 @@ class BulkApiController @Inject()(cc: ControllerComponents, api: BulkApi) extend
     * @param adAccountId Unique identifier of an ad account.
     */
   def bulkDownloadCreate(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): BulkDownloadResponse = {
-      val bulkDownloadRequest = request.body.asJson.map(_.as[BulkDownloadRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "bulkDownloadRequest")
+    def executeApi(): BulkDownload = {
+      val bulkDownloadCreate = request.body.asJson.map(_.as[BulkDownloadCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "bulkDownloadCreate")
       }
-      api.bulkDownloadCreate(adAccountId, bulkDownloadRequest)
+      api.bulkDownloadCreate(adAccountId, bulkDownloadCreate)
     }
 
     val result = executeApi()
@@ -34,10 +34,10 @@ class BulkApiController @Inject()(cc: ControllerComponents, api: BulkApi) extend
   /**
     * GET /v5/ad_accounts/:adAccountId/bulk/:bulkRequestId?includeDetails=[value]
     * @param adAccountId Unique identifier of an ad account.
-    * @param bulkRequestId Unique identifier of a bulk upsert request.
+    * @param bulkRequestId Bulk request ID that is from one of the entities bulk endpoints
     */
   def bulkRequestGet(adAccountId: String, bulkRequestId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): BulkUpsertStatusResponse = {
+    def executeApi(): BulkJobData = {
       val includeDetails = request.getQueryString("include_details")
         .map(value => value.toBoolean)
         

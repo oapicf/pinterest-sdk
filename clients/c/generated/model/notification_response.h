@@ -19,17 +19,17 @@ typedef struct notification_response_t notification_response_t;
 
 
 typedef struct notification_response_t {
-    int success; //boolean
-    int received_at; //numeric
     char *error_msg; // string
+    int *received_at; //numeric
+    int *success; //boolean
 
     int _library_owned; // Is the library responsible for freeing this object?
 } notification_response_t;
 
 __attribute__((deprecated)) notification_response_t *notification_response_create(
-    int success,
-    int received_at,
-    char *error_msg
+    char *error_msg,
+    int *received_at,
+    int *success
 );
 
 void notification_response_free(notification_response_t *notification_response);

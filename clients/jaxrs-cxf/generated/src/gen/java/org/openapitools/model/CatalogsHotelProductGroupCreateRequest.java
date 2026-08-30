@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsHotelProductGroupCreateRequest  {
   
  /**
-  * Catalog id pertaining to the hotel product group.
+  * Catalog ID pertaining to the product group.
   */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog ID pertaining to the product group.")
 
   private String catalogId;
 
@@ -76,7 +76,7 @@ HOTEL(String.valueOf("HOTEL"));
 
   private String name;
  /**
-   * Catalog id pertaining to the hotel product group.
+   * Catalog ID pertaining to the product group.
    * @return catalogId
   **/
   @JsonProperty("catalog_id")
@@ -212,10 +212,7 @@ HOTEL(String.valueOf("HOTEL"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -48,7 +48,7 @@ ProductType4Filter::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleStringListCriteria")) {
-			jsonToValue(&pRODUCT_TYPE_4, node, "CatalogsProductGroupMultipleStringListCriteria", "");
+			jsonToValue(&pRODUCT_TYPE_4, node, "CatalogsProductGroupMultipleStringListCriteria", "CatalogsProductGroupMultipleStringListCriteria");
 		} else {
 			
 			CatalogsProductGroupMultipleStringListCriteria* obj = static_cast<CatalogsProductGroupMultipleStringListCriteria*> (&pRODUCT_TYPE_4);

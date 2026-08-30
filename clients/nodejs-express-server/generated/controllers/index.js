@@ -16,13 +16,16 @@ const CatalogFeedsController = require('./CatalogFeedsController');
 const CatalogItemsController = require('./CatalogItemsController');
 const CatalogProductGroupsController = require('./CatalogProductGroupsController');
 const CatalogReportsController = require('./CatalogReportsController');
+const CatalogSupplementalController = require('./CatalogSupplementalController');
 const CatalogsController = require('./CatalogsController');
+const ConversionDeletionRequestsController = require('./ConversionDeletionRequestsController');
 const ConversionEqsController = require('./ConversionEqsController');
 const ConversionEventsController = require('./ConversionEventsController');
 const ConversionTagsController = require('./ConversionTagsController');
 const ConversionsController = require('./ConversionsController');
 const CustomerListUploadsController = require('./CustomerListUploadsController');
 const CustomerListsController = require('./CustomerListsController');
+const CustomerSegmentController = require('./CustomerSegmentController');
 const IntegrationsController = require('./IntegrationsController');
 const KeywordsController = require('./KeywordsController');
 const LabelsController = require('./LabelsController');
@@ -35,14 +38,16 @@ const NotificationController = require('./NotificationController');
 const OauthController = require('./OauthController');
 const OrderLinesController = require('./OrderLinesController');
 const PinsController = require('./PinsController');
-const ProductCategoriesController = require('./ProductCategoriesController');
 const ProductGroupPromotionsController = require('./ProductGroupPromotionsController');
+const ProductTagsController = require('./ProductTagsController');
 const PromotionsController = require('./PromotionsController');
 const ResourcesController = require('./ResourcesController');
+const SchedulesController = require('./SchedulesController');
 const SearchController = require('./SearchController');
 const TargetingTemplateController = require('./TargetingTemplateController');
 const TermsController = require('./TermsController');
 const TermsOfServiceController = require('./TermsOfServiceController');
+const TrendsController = require('./TrendsController');
 const UserAccountController = require('./UserAccountController');
 
 module.exports = {
@@ -64,13 +69,16 @@ module.exports = {
   CatalogItemsController,
   CatalogProductGroupsController,
   CatalogReportsController,
+  CatalogSupplementalController,
   CatalogsController,
+  ConversionDeletionRequestsController,
   ConversionEqsController,
   ConversionEventsController,
   ConversionTagsController,
   ConversionsController,
   CustomerListUploadsController,
   CustomerListsController,
+  CustomerSegmentController,
   IntegrationsController,
   KeywordsController,
   LabelsController,
@@ -83,13 +91,15 @@ module.exports = {
   OauthController,
   OrderLinesController,
   PinsController,
-  ProductCategoriesController,
   ProductGroupPromotionsController,
+  ProductTagsController,
   PromotionsController,
   ResourcesController,
+  SchedulesController,
   SearchController,
   TargetingTemplateController,
   TermsController,
   TermsOfServiceController,
+  TrendsController,
   UserAccountController,
 };

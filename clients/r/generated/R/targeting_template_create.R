@@ -1,17 +1,17 @@
 #' Create a new TargetingTemplateCreate
 #'
 #' @description
-#' TargetingTemplateCreate Class
+#' Resource create operation model.
 #'
 #' @docType class
 #' @title TargetingTemplateCreate
 #' @description TargetingTemplateCreate Class
 #' @format An \code{R6Class} generator object
-#' @field auto_targeting_enabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. character [optional]
+#' @field auto_targeting_enabled Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting). character [optional]
 #' @field keywords  list(\link{TargetingTemplateKeyword}) [optional]
-#' @field name Name of targeting template. character
+#' @field name targeting template name character
 #' @field placement_group  \link{PlacementGroupType} [optional]
-#' @field targeting_attributes  \link{TargetingSpec}
+#' @field targeting_attributes targeting profile attributes \link{TargetingSpecOptimal}
 #' @field tracking_urls  \link{TrackingUrls} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -29,9 +29,9 @@ TargetingTemplateCreate <- R6::R6Class(
     #' @description
     #' Initialize a new TargetingTemplateCreate class.
     #'
-    #' @param name Name of targeting template.
-    #' @param targeting_attributes targeting_attributes
-    #' @param auto_targeting_enabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.. Default to TRUE.
+    #' @param name targeting template name
+    #' @param targeting_attributes targeting profile attributes
+    #' @param auto_targeting_enabled Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).. Default to TRUE.
     #' @param keywords keywords
     #' @param placement_group placement_group
     #' @param tracking_urls tracking_urls
@@ -108,7 +108,7 @@ TargetingTemplateCreate <- R6::R6Class(
       }
       if (!is.null(self$`keywords`)) {
         TargetingTemplateCreateObject[["keywords"]] <-
-          lapply(self$`keywords`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`keywords`)
       }
       if (!is.null(self$`name`)) {
         TargetingTemplateCreateObject[["name"]] <-
@@ -116,17 +116,40 @@ TargetingTemplateCreate <- R6::R6Class(
       }
       if (!is.null(self$`placement_group`)) {
         TargetingTemplateCreateObject[["placement_group"]] <-
-          self$`placement_group`$toSimpleType()
+          self$extractSimpleType(self$`placement_group`)
       }
       if (!is.null(self$`targeting_attributes`)) {
         TargetingTemplateCreateObject[["targeting_attributes"]] <-
-          self$`targeting_attributes`$toSimpleType()
+          self$extractSimpleType(self$`targeting_attributes`)
       }
       if (!is.null(self$`tracking_urls`)) {
         TargetingTemplateCreateObject[["tracking_urls"]] <-
-          self$`tracking_urls`$toSimpleType()
+          self$extractSimpleType(self$`tracking_urls`)
       }
       return(TargetingTemplateCreateObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -151,7 +174,7 @@ TargetingTemplateCreate <- R6::R6Class(
         self$`placement_group` <- `placement_group_object`
       }
       if (!is.null(this_object$`targeting_attributes`)) {
-        `targeting_attributes_object` <- TargetingSpec$new()
+        `targeting_attributes_object` <- TargetingSpecOptimal$new()
         `targeting_attributes_object`$fromJSON(jsonlite::toJSON(this_object$`targeting_attributes`, auto_unbox = TRUE, digits = NA))
         self$`targeting_attributes` <- `targeting_attributes_object`
       }
@@ -185,7 +208,7 @@ TargetingTemplateCreate <- R6::R6Class(
       self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[TargetingTemplateKeyword]", loadNamespace("openapi"))
       self$`name` <- this_object$`name`
       self$`placement_group` <- PlacementGroupType$new()$fromJSON(jsonlite::toJSON(this_object$`placement_group`, auto_unbox = TRUE, digits = NA))
-      self$`targeting_attributes` <- TargetingSpec$new()$fromJSON(jsonlite::toJSON(this_object$`targeting_attributes`, auto_unbox = TRUE, digits = NA))
+      self$`targeting_attributes` <- TargetingSpecOptimal$new()$fromJSON(jsonlite::toJSON(this_object$`targeting_attributes`, auto_unbox = TRUE, digits = NA))
       self$`tracking_urls` <- TrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
       self
     },

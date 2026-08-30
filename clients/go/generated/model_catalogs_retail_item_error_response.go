@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,11 +22,13 @@ var _ MappedNullable = &CatalogsRetailItemErrorResponse{}
 
 // CatalogsRetailItemErrorResponse Object describing a retail item error
 type CatalogsRetailItemErrorResponse struct {
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 	// Array with the errors for the item id requested
 	Errors []ItemValidationEvent `json:"errors"`
 	// The catalog item id in the merchant namespace
 	ItemId *string `json:"item_id,omitempty"`
+	// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	ItemResponseKind string `json:"item_response_kind"`
 }
 
 type _CatalogsRetailItemErrorResponse CatalogsRetailItemErrorResponse
@@ -35,10 +37,11 @@ type _CatalogsRetailItemErrorResponse CatalogsRetailItemErrorResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailItemErrorResponse(catalogType CatalogsType, errors []ItemValidationEvent) *CatalogsRetailItemErrorResponse {
+func NewCatalogsRetailItemErrorResponse(catalogType string, errors []ItemValidationEvent, itemResponseKind string) *CatalogsRetailItemErrorResponse {
 	this := CatalogsRetailItemErrorResponse{}
 	this.CatalogType = catalogType
 	this.Errors = errors
+	this.ItemResponseKind = itemResponseKind
 	return &this
 }
 
@@ -51,9 +54,9 @@ func NewCatalogsRetailItemErrorResponseWithDefaults() *CatalogsRetailItemErrorRe
 }
 
 // GetCatalogType returns the CatalogType field value
-func (o *CatalogsRetailItemErrorResponse) GetCatalogType() CatalogsType {
+func (o *CatalogsRetailItemErrorResponse) GetCatalogType() string {
 	if o == nil {
-		var ret CatalogsType
+		var ret string
 		return ret
 	}
 
@@ -62,7 +65,7 @@ func (o *CatalogsRetailItemErrorResponse) GetCatalogType() CatalogsType {
 
 // GetCatalogTypeOk returns a tuple with the CatalogType field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailItemErrorResponse) GetCatalogTypeOk() (*CatalogsType, bool) {
+func (o *CatalogsRetailItemErrorResponse) GetCatalogTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -70,7 +73,7 @@ func (o *CatalogsRetailItemErrorResponse) GetCatalogTypeOk() (*CatalogsType, boo
 }
 
 // SetCatalogType sets field value
-func (o *CatalogsRetailItemErrorResponse) SetCatalogType(v CatalogsType) {
+func (o *CatalogsRetailItemErrorResponse) SetCatalogType(v string) {
 	o.CatalogType = v
 }
 
@@ -130,6 +133,30 @@ func (o *CatalogsRetailItemErrorResponse) SetItemId(v string) {
 	o.ItemId = &v
 }
 
+// GetItemResponseKind returns the ItemResponseKind field value
+func (o *CatalogsRetailItemErrorResponse) GetItemResponseKind() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ItemResponseKind
+}
+
+// GetItemResponseKindOk returns a tuple with the ItemResponseKind field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailItemErrorResponse) GetItemResponseKindOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ItemResponseKind, true
+}
+
+// SetItemResponseKind sets field value
+func (o *CatalogsRetailItemErrorResponse) SetItemResponseKind(v string) {
+	o.ItemResponseKind = v
+}
+
 func (o CatalogsRetailItemErrorResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -145,6 +172,7 @@ func (o CatalogsRetailItemErrorResponse) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.ItemId) {
 		toSerialize["item_id"] = o.ItemId
 	}
+	toSerialize["item_response_kind"] = o.ItemResponseKind
 	return toSerialize, nil
 }
 
@@ -155,6 +183,7 @@ func (o *CatalogsRetailItemErrorResponse) UnmarshalJSON(data []byte) (err error)
 	requiredProperties := []string{
 		"catalog_type",
 		"errors",
+		"item_response_kind",
 	}
 
 	allProperties := make(map[string]interface{})

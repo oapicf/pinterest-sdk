@@ -3,9 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/invite_assets_summary_profiles_inner.dart';
+import 'package:openapi/src/model/invite_assets_summary_item.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/invite_assets_summary_ad_accounts_inner.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -20,11 +19,11 @@ part 'invite_assets_summary.g.dart';
 abstract class InviteAssetsSummary implements Built<InviteAssetsSummary, InviteAssetsSummaryBuilder> {
   /// List of ad account IDs and respective permission levels that will be assigned.
   @BuiltValueField(wireName: r'ad_accounts')
-  BuiltList<InviteAssetsSummaryAdAccountsInner>? get adAccounts;
+  BuiltList<InviteAssetsSummaryItem>? get adAccounts;
 
   /// List of profile IDs and respective permission levels that will be assigned.
   @BuiltValueField(wireName: r'profiles')
-  BuiltList<InviteAssetsSummaryProfilesInner>? get profiles;
+  BuiltList<InviteAssetsSummaryItem>? get profiles;
 
   InviteAssetsSummary._();
 
@@ -53,14 +52,14 @@ class _$InviteAssetsSummarySerializer implements PrimitiveSerializer<InviteAsset
       yield r'ad_accounts';
       yield serializers.serialize(
         object.adAccounts,
-        specifiedType: const FullType(BuiltList, [FullType(InviteAssetsSummaryAdAccountsInner)]),
+        specifiedType: const FullType(BuiltList, [FullType(InviteAssetsSummaryItem)]),
       );
     }
     if (object.profiles != null) {
       yield r'profiles';
       yield serializers.serialize(
         object.profiles,
-        specifiedType: const FullType(BuiltList, [FullType(InviteAssetsSummaryProfilesInner)]),
+        specifiedType: const FullType(BuiltList, [FullType(InviteAssetsSummaryItem)]),
       );
     }
   }
@@ -89,15 +88,17 @@ class _$InviteAssetsSummarySerializer implements PrimitiveSerializer<InviteAsset
         case r'ad_accounts':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(InviteAssetsSummaryAdAccountsInner)]),
-          ) as BuiltList<InviteAssetsSummaryAdAccountsInner>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(InviteAssetsSummaryItem)]),
+          ) as BuiltList<InviteAssetsSummaryItem>?;
+          if (valueDes == null) continue;
           result.adAccounts.replace(valueDes);
           break;
         case r'profiles':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(InviteAssetsSummaryProfilesInner)]),
-          ) as BuiltList<InviteAssetsSummaryProfilesInner>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(InviteAssetsSummaryItem)]),
+          ) as BuiltList<InviteAssetsSummaryItem>?;
+          if (valueDes == null) continue;
           result.profiles.replace(valueDes);
           break;
         default:

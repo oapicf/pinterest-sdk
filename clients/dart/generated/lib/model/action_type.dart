@@ -11,31 +11,30 @@
 part of openapi.api;
 
 /// Ad group billable event type. For update, only draft ad groups may update billable event.
-class ActionType {
-  /// Instantiate a new enum with the provided [value].
-  const ActionType._(this.value);
+enum ActionType {
+  CLICKTHROUGH._(r'CLICKTHROUGH'),
+  IMPRESSION._(r'IMPRESSION'),
+  VIDEO_V_50_MRC._(r'VIDEO_V_50_MRC'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const ActionType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CLICKTHROUGH = ActionType._(r'CLICKTHROUGH');
-  static const IMPRESSION = ActionType._(r'IMPRESSION');
-  static const vIDEOV50MRC = ActionType._(r'VIDEO_V_50_MRC');
-
-  /// List of all possible values in this [enum][ActionType].
-  static const values = <ActionType>[
-    CLICKTHROUGH,
-    IMPRESSION,
-    vIDEOV50MRC,
-  ];
-
+  /// Returns the instance of [ActionType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static ActionType? fromJson(dynamic value) => ActionTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [ActionType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<ActionType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ActionType>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class ActionTypeTypeTransformer {
 
   const ActionTypeTypeTransformer._();
 
-  String encode(ActionType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(ActionType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a ActionType.
+  /// Returns the instance of [ActionType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,11 +69,14 @@ class ActionTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   ActionType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is ActionType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CLICKTHROUGH': return ActionType.CLICKTHROUGH;
         case r'IMPRESSION': return ActionType.IMPRESSION;
-        case r'VIDEO_V_50_MRC': return ActionType.vIDEOV50MRC;
+        case r'VIDEO_V_50_MRC': return ActionType.VIDEO_V_50_MRC;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -82,7 +86,7 @@ class ActionTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [ActionTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static ActionTypeTypeTransformer? _instance;
 }
 

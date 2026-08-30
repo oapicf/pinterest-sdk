@@ -25,7 +25,7 @@ services:
 
 Build catalogs report
 
-Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the All Items report type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: The All Items report is limited to 25 million items per catalog.
 
 ### Example Implementation
 ```php
@@ -65,7 +65,7 @@ class CatalogReportsApi implements CatalogReportsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogsReportParameters** | [**OpenAPI\Server\Model\CatalogsReportParameters**](../Model/CatalogsReportParameters.md)| Request object to asynchronously create a report. |
+ **catalogsReportParameters** | [**OpenAPI\Server\Model\CatalogsReportParameters**](../Model/CatalogsReportParameters.md)|  |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 Get catalogs report
 
-This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+This returns a URL to a report given a token returned from [Build catalogs report](/docs/api/v5/#operation/reports/create). You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Example Implementation
 ```php
@@ -128,7 +128,7 @@ class CatalogReportsApi implements CatalogReportsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **string**| Token returned from async build report call |
+ **token** | **string**| Token returned from the post request creation call |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -147,11 +147,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **reportsStats**
-> OpenAPI\Server\Model\ReportsStats200Response reportsStats($parameters, $adAccountId, $pageSize, $bookmark)
+> OpenAPI\Server\Model\ReportsStats200Response reportsStats($parameters, $adAccountId, $bookmark, $pageSize)
 
 List report stats
 
-List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Example Implementation
 ```php
@@ -178,7 +178,7 @@ class CatalogReportsApi implements CatalogReportsApiInterface
     /**
      * Implementation of CatalogReportsApiInterface#reportsStats
      */
-    public function reportsStats(ReportsStatsParametersParameter $parameters, ?string $adAccountId, int $pageSize, ?string $bookmark, int &$responseCode, array &$responseHeaders): array|object|null
+    public function reportsStats(CatalogsReportStatsParameters $parameters, ?string $adAccountId, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -191,10 +191,10 @@ class CatalogReportsApi implements CatalogReportsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameters** | [**OpenAPI\Server\Model\ReportsStatsParametersParameter**](../Model/.md)| Contains the parameters for report identification. |
+ **parameters** | [**OpenAPI\Server\Model\CatalogsReportStatsParameters**](../Model/.md)| Contains the parameters for report identification. |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

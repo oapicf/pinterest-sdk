@@ -15,7 +15,7 @@
 
 typedef struct labels_list_200_response_t labels_list_200_response_t;
 
-#include "labels_response.h"
+#include "label.h"
 
 
 

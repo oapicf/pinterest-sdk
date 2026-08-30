@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <PinMediaMetadata> items);
+	void setItems(std::list<PinMediaMetadata> items);
 	/*! \brief Get 
 	 */
 	std::string getMediaType();
 
 	/*! \brief Set 
 	 */
-	void setMediaType(std::string  media_type);
+	void setMediaType(std::string media_type);
 
 
     private:

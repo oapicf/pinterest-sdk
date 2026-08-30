@@ -22,15 +22,16 @@ import scalaz.concurrent.Task
 import HelperCodecs._
 
 import org.openapitools.client.api.AuthRespondInvitesBody
-import org.openapitools.client.api.CancelInvitesBody
+import org.openapitools.client.api.CancelInvitesRequest
+import org.openapitools.client.api.CancelInvitesResponse
 import org.openapitools.client.api.CreateAssetAccessRequestBody
 import org.openapitools.client.api.CreateAssetAccessRequestResponse
 import org.openapitools.client.api.CreateAssetInvitesRequest
 import org.openapitools.client.api.CreateInvitesResultsResponseArray
 import org.openapitools.client.api.CreateMembershipOrPartnershipInvitesBody
-import org.openapitools.client.api.DeleteInvitesResultsResponseArray
 import org.openapitools.client.api.Error
 import org.openapitools.client.api.GetInvites200Response
+import org.openapitools.client.api.InviteFilterStatus
 import org.openapitools.client.api.InviteType
 import org.openapitools.client.api.RespondToInvitesResponseArray
 import org.openapitools.client.api.UpdateInvitesResultsResponseArray
@@ -62,8 +63,8 @@ object BusinessAccessInviteApi {
     } yield resp
   }
 
-  def cancelInvitesOrRequests(host: String, businessId: String, cancelInvitesBody: CancelInvitesBody): Task[DeleteInvitesResultsResponseArray] = {
-    implicit val returnTypeDecoder: EntityDecoder[DeleteInvitesResultsResponseArray] = jsonOf[DeleteInvitesResultsResponseArray]
+  def cancelInvitesOrRequests(host: String, businessId: String, cancelInvitesRequest: CancelInvitesRequest): Task[CancelInvitesResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[CancelInvitesResponse] = jsonOf[CancelInvitesResponse]
 
     val path = "/businesses/{business_id}/invites".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -77,8 +78,8 @@ object BusinessAccessInviteApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(cancelInvitesBody)
-      resp          <- client.expect[DeleteInvitesResultsResponseArray](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(cancelInvitesRequest)
+      resp          <- client.expect[CancelInvitesResponse](req)
 
     } yield resp
   }
@@ -125,7 +126,7 @@ object BusinessAccessInviteApi {
     } yield resp
   }
 
-  def getInvites(host: String, businessId: String, isMember: Boolean = true, inviteStatus: List[String] = List.empty[String] , inviteType: InviteType, bookmark: String, pageSize: Integer = 25)(implicit isMemberQuery: QueryParam[Boolean], inviteStatusQuery: QueryParam[List[String]], inviteTypeQuery: QueryParam[InviteType], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[GetInvites200Response] = {
+  def getInvites(host: String, businessId: String, isMember: Boolean = true, inviteStatus: List[InviteFilterStatus] = List.empty[InviteFilterStatus] , inviteType: InviteType, bookmark: String, pageSize: Integer = 25)(implicit isMemberQuery: QueryParam[Boolean], inviteStatusQuery: QueryParam[List[InviteFilterStatus]], inviteTypeQuery: QueryParam[InviteType], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[GetInvites200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[GetInvites200Response] = jsonOf[GetInvites200Response]
 
     val path = "/businesses/{business_id}/invites".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
@@ -195,8 +196,8 @@ class HttpServiceBusinessAccessInviteApi(service: HttpService) {
     } yield resp
   }
 
-  def cancelInvitesOrRequests(businessId: String, cancelInvitesBody: CancelInvitesBody): Task[DeleteInvitesResultsResponseArray] = {
-    implicit val returnTypeDecoder: EntityDecoder[DeleteInvitesResultsResponseArray] = jsonOf[DeleteInvitesResultsResponseArray]
+  def cancelInvitesOrRequests(businessId: String, cancelInvitesRequest: CancelInvitesRequest): Task[CancelInvitesResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[CancelInvitesResponse] = jsonOf[CancelInvitesResponse]
 
     val path = "/businesses/{business_id}/invites".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -210,8 +211,8 @@ class HttpServiceBusinessAccessInviteApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(cancelInvitesBody)
-      resp          <- client.expect[DeleteInvitesResultsResponseArray](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(cancelInvitesRequest)
+      resp          <- client.expect[CancelInvitesResponse](req)
 
     } yield resp
   }
@@ -258,7 +259,7 @@ class HttpServiceBusinessAccessInviteApi(service: HttpService) {
     } yield resp
   }
 
-  def getInvites(businessId: String, isMember: Boolean = true, inviteStatus: List[String] = List.empty[String] , inviteType: InviteType, bookmark: String, pageSize: Integer = 25)(implicit isMemberQuery: QueryParam[Boolean], inviteStatusQuery: QueryParam[List[String]], inviteTypeQuery: QueryParam[InviteType], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[GetInvites200Response] = {
+  def getInvites(businessId: String, isMember: Boolean = true, inviteStatus: List[InviteFilterStatus] = List.empty[InviteFilterStatus] , inviteType: InviteType, bookmark: String, pageSize: Integer = 25)(implicit isMemberQuery: QueryParam[Boolean], inviteStatusQuery: QueryParam[List[InviteFilterStatus]], inviteTypeQuery: QueryParam[InviteType], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[GetInvites200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[GetInvites200Response] = jsonOf[GetInvites200Response]
 
     val path = "/businesses/{business_id}/invites".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))

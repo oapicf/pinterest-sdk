@@ -13,12 +13,12 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `audienceInsightsGet()`
 
 ```php
-audienceInsightsGet($ad_account_id, $audience_insight_type): \OpenAPI\Client\Model\AudienceInsightsResponse
+audienceInsightsGet($ad_account_id, $audience_insight_type): \OpenAPI\Client\Model\AudienceInsights
 ```
 
 Get audience insights
 
-Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
+Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 
 ### Example
 
@@ -60,7 +60,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\AudienceInsightsResponse**](../Model/AudienceInsightsResponse.md)
+[**\OpenAPI\Client\Model\AudienceInsights**](../Model/AudienceInsights.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ try {
 ## `audienceInsightsScopeAndTypeGet()`
 
 ```php
-audienceInsightsScopeAndTypeGet($ad_account_id): \OpenAPI\Client\Model\AudienceDefinitionResponse
+audienceInsightsScopeAndTypeGet($ad_account_id): \OpenAPI\Client\Model\AudienceInsightsScopeAndTypeGet200Response
 ```
 
 Get audience insights scope and type
@@ -123,7 +123,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\AudienceDefinitionResponse**](../Model/AudienceDefinitionResponse.md)
+[**\OpenAPI\Client\Model\AudienceInsightsScopeAndTypeGet200Response**](../Model/AudienceInsightsScopeAndTypeGet200Response.md)
 
 ### Authorization
 

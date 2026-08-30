@@ -5,17 +5,17 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**accesses** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;UpdatePartnerAssetAccessBodyAccessesInner&gt;**](UpdatePartnerAssetAccessBodyAccessesInner.md) |  | 
+**accesses** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;UpdatePartnerAssetAccessItem&gt;**](UpdatePartnerAssetAccessItem.md) | List of partner asset accesses to assign or update. | 
 
 
-# **Table `UpdatePartnerAssetAccessBodyUpdatePartnerAssetAccessBodyAccessesInner`**
-(mapped from: UpdatePartnerAssetAccessBodyUpdatePartnerAssetAccessBodyAccessesInner)
+# **Table `UpdatePartnerAssetAccessBodyUpdatePartnerAssetAccessItem`**
+(mapped from: UpdatePartnerAssetAccessBodyUpdatePartnerAssetAccessItem)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 updatePartnerAssetAccessBody | updatePartnerAssetAccessBody | long | | kotlin.Long | Primary Key | *one*
-updatePartnerAssetAccessBodyAccessesInner | updatePartnerAssetAccessBodyAccessesInner | long | | kotlin.Long | Foreign Key | *many*
+updatePartnerAssetAccessItem | updatePartnerAssetAccessItem | long | | kotlin.Long | Foreign Key | *many*
 
 
 

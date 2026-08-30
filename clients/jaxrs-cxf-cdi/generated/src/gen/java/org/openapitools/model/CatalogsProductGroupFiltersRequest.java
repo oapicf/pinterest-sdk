@@ -7,21 +7,21 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AllOf;
-import org.openapitools.model.AnyOf;
 import org.openapitools.model.CatalogsProductGroupFilterKeys;
+import org.openapitools.model.CatalogsProductGroupFiltersRequestAnyOfItems0;
+import org.openapitools.model.CatalogsProductGroupFiltersRequestAnyOfItems1;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- * Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
+ * Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
  **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-@ApiModel(description = "Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.")
+@ApiModel(description = "Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.")
 public class CatalogsProductGroupFiltersRequest   {
   
   private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
@@ -117,10 +117,7 @@ public class CatalogsProductGroupFiltersRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

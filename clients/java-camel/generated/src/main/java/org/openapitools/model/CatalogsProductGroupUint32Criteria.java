@@ -2,68 +2,31 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.model.NumericFilterOperatorType;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsProductGroupUint32Criteria
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupUint32Criteria {
 
-  private Boolean negated = false;
+  private Boolean negated;
 
-  /**
-   * Gets or Sets operator
-   */
-  public enum OperatorEnum {
-    GREATER_THAN("GREATER_THAN"),
-    
-    GREATER_THAN_OR_EQUALS("GREATER_THAN_OR_EQUALS"),
-    
-    LESS_THAN("LESS_THAN"),
-    
-    LESS_THAN_OR_EQUALS("LESS_THAN_OR_EQUALS");
-
-    private final String value;
-
-    OperatorEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OperatorEnum fromValue(String value) {
-      for (OperatorEnum b : OperatorEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private OperatorEnum operator;
+  private NumericFilterOperatorType operator;
 
   private Integer value;
 
@@ -74,7 +37,7 @@ public class CatalogsProductGroupUint32Criteria {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsProductGroupUint32Criteria(OperatorEnum operator, Integer value) {
+  public CatalogsProductGroupUint32Criteria(NumericFilterOperatorType operator, Integer value) {
     this.operator = operator;
     this.value = value;
   }
@@ -99,7 +62,7 @@ public class CatalogsProductGroupUint32Criteria {
     this.negated = negated;
   }
 
-  public CatalogsProductGroupUint32Criteria operator(OperatorEnum operator) {
+  public CatalogsProductGroupUint32Criteria operator(NumericFilterOperatorType operator) {
     this.operator = operator;
     return this;
   }
@@ -108,14 +71,14 @@ public class CatalogsProductGroupUint32Criteria {
    * Get operator
    * @return operator
    */
-  @NotNull 
+  @NotNull @Valid 
   @Schema(name = "operator", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("operator")
-  public OperatorEnum getOperator() {
+  public NumericFilterOperatorType getOperator() {
     return operator;
   }
 
-  public void setOperator(OperatorEnum operator) {
+  public void setOperator(NumericFilterOperatorType operator) {
     this.operator = operator;
   }
 
@@ -176,10 +139,7 @@ public class CatalogsProductGroupUint32Criteria {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -34,7 +34,7 @@ class CatalogsRetailBatchRequest {
   Country country;
 
   /// Array with catalogs item operations
-  List<CatalogsRetailBatchRequestItemsInner> items;
+  List<CatalogsRetailBatchRequestItemsItems> items;
 
   /// We recommend using the CatalogsLocale values.
   LanguageEnum language;
@@ -84,10 +84,14 @@ class CatalogsRetailBatchRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsRetailBatchRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsRetailBatchRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsRetailBatchRequest[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsRetailBatchRequest[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'country'), 'Required key "CatalogsRetailBatchRequest[country]" is missing from JSON.');
+        assert(json[r'country'] != null, 'Required key "CatalogsRetailBatchRequest[country]" has a null value in JSON.');
+        assert(json.containsKey(r'items'), 'Required key "CatalogsRetailBatchRequest[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "CatalogsRetailBatchRequest[items]" has a null value in JSON.');
+        assert(json.containsKey(r'language'), 'Required key "CatalogsRetailBatchRequest[language]" is missing from JSON.');
+        assert(json[r'language'] != null, 'Required key "CatalogsRetailBatchRequest[language]" has a null value in JSON.');
         return true;
       }());
 
@@ -95,7 +99,7 @@ class CatalogsRetailBatchRequest {
         catalogId: mapValueOfType<String>(json, r'catalog_id'),
         catalogType: CatalogsRetailBatchRequestCatalogTypeEnum.fromJson(json[r'catalog_type'])!,
         country: Country.fromJson(json[r'country'])!,
-        items: CatalogsRetailBatchRequestItemsInner.listFromJson(json[r'items']),
+        items: CatalogsRetailBatchRequestItemsItems.listFromJson(json[r'items']),
         language: LanguageEnum.fromJson(json[r'language'])!,
       );
     }
@@ -152,27 +156,28 @@ class CatalogsRetailBatchRequest {
 }
 
 
-class CatalogsRetailBatchRequestCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsRetailBatchRequestCatalogTypeEnum._(this.value);
+enum CatalogsRetailBatchRequestCatalogTypeEnum {
+  RETAIL._(r'RETAIL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsRetailBatchRequestCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const RETAIL = CatalogsRetailBatchRequestCatalogTypeEnum._(r'RETAIL');
-
-  /// List of all possible values in this [enum][CatalogsRetailBatchRequestCatalogTypeEnum].
-  static const values = <CatalogsRetailBatchRequestCatalogTypeEnum>[
-    RETAIL,
-  ];
-
+  /// Returns the instance of [CatalogsRetailBatchRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsRetailBatchRequestCatalogTypeEnum? fromJson(dynamic value) => CatalogsRetailBatchRequestCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsRetailBatchRequestCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsRetailBatchRequestCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsRetailBatchRequestCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -194,9 +199,10 @@ class CatalogsRetailBatchRequestCatalogTypeEnumTypeTransformer {
 
   const CatalogsRetailBatchRequestCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsRetailBatchRequestCatalogTypeEnum data) => data.value;
+  String encode(CatalogsRetailBatchRequestCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsRetailBatchRequestCatalogTypeEnum.
+  /// Returns the instance of [CatalogsRetailBatchRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -205,6 +211,9 @@ class CatalogsRetailBatchRequestCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsRetailBatchRequestCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsRetailBatchRequestCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'RETAIL': return CatalogsRetailBatchRequestCatalogTypeEnum.RETAIL;
@@ -217,7 +226,7 @@ class CatalogsRetailBatchRequestCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsRetailBatchRequestCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsRetailBatchRequestCatalogTypeEnumTypeTransformer? _instance;
 }
 

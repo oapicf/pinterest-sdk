@@ -115,12 +115,8 @@
     {
       "name": "media_type",
       "type": ["null", {
-        "type": "enum",
-        "name": "CatalogsCreativeAssetsFilterValuesMap_mediaUnderscoretype",
-        "symbols": [
-          "IMAGE",
-          "VIDEO"
-        ]
+        "type": "array",
+        "items": "model.MediaType"
       }],
       "doc": "",
       "default": null

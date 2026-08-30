@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AssetAccessRequestError"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AssetAccessRequestError"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AssetAccessRequestError {
+    title = AssetAccessRequestError
+    description = AssetAccessRequestError
+    derivedFrom = Root
+    properties {
+        code {
+          type =  integer
+          description = "Error code associated with the error in requesting asset access."
+          optional = false
+        }
+        messages {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AssetAccessRequestError {
+    title = AssetAccessRequestError
+    description = AssetAccessRequestError
+    implements = openapi_server.resourceTypes.AssetAccessRequestError
+
+  }
+}

@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.AdResponse;
+import apimodels.Ad;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 /**
  * AdsList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdsList200Response   {
   @JsonProperty("bookmark")
@@ -26,7 +26,7 @@ public class AdsList200Response   {
   @NotNull
 @Valid
 
-  private List<@Valid AdResponse> items = new ArrayList<>();
+  private List<@Valid Ad> items = new ArrayList<>();
 
   public AdsList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -45,12 +45,12 @@ public class AdsList200Response   {
     this.bookmark = bookmark;
   }
 
-  public AdsList200Response items(List<@Valid AdResponse> items) {
+  public AdsList200Response items(List<@Valid Ad> items) {
     this.items = items;
     return this;
   }
 
-  public AdsList200Response addItemsItem(AdResponse itemsItem) {
+  public AdsList200Response addItemsItem(Ad itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -62,11 +62,11 @@ public class AdsList200Response   {
    * Get items
    * @return items
   **/
-  public List<@Valid AdResponse> getItems() {
+  public List<@Valid Ad> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid AdResponse> items) {
+  public void setItems(List<@Valid Ad> items) {
     this.items = items;
   }
 
@@ -106,10 +106,7 @@ public class AdsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

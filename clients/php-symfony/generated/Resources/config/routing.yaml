@@ -145,14 +145,50 @@ open_api_server_adGroups_adgroupscreate:
     requirements:
         adAccountId: '^\\d+$'
 
+open_api_server_adGroups_adgroupsdynamictitlesdownloadcsv:
+    path:     /ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/csv
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.adGroups::adGroupsDynamicTitlesDownloadCsvAction
+    requirements:
+        adAccountId: '^\\d+$'
+        adGroupId: '^\\d+$'
+
+open_api_server_adGroups_adgroupsdynamictitlesgetstatus:
+    path:     /ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/status
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.adGroups::adGroupsDynamicTitlesGetStatusAction
+    requirements:
+        adAccountId: '^\\d+$'
+        adGroupId: '^\\d+$'
+
+open_api_server_adGroups_adgroupsdynamictitlesgetuploadurl:
+    path:     /ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/uploads
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.adGroups::adGroupsDynamicTitlesGetUploadUrlAction
+    requirements:
+        adAccountId: '^\\d+$'
+        adGroupId: '^\\d+$'
+
+open_api_server_adGroups_adgroupsdynamictitlesprocesscsv:
+    path:     /ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles
+    methods:  [POST]
+    defaults:
+        _controller: open_api_server.controller.adGroups::adGroupsDynamicTitlesProcessCsvAction
+    requirements:
+        adAccountId: '^\\d+$'
+        adGroupId: '^\\d+$'
+
 open_api_server_adGroups_adgroupsget:
     path:     /ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}
     methods:  [GET]
     defaults:
         _controller: open_api_server.controller.adGroups::adGroupsGetAction
     requirements:
-        adAccountId: '^\\d+$'
         adGroupId: '^\\d+$'
+        adAccountId: '^\\d+$'
 
 open_api_server_adGroups_adgroupslist:
     path:     /ad_accounts/{ad_account_id}/ad_groups
@@ -175,6 +211,14 @@ open_api_server_adGroups_adgroupsupdate:
     methods:  [PATCH]
     defaults:
         _controller: open_api_server.controller.adGroups::adGroupsUpdateAction
+    requirements:
+        adAccountId: '^\\d+$'
+
+open_api_server_adGroups_getadgroupsbypromotionidslist:
+    path:     /ad_accounts/{ad_account_id}/promotion_applied_entities
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.adGroups::getAdGroupsByPromotionIdsListAction
     requirements:
         adAccountId: '^\\d+$'
 
@@ -217,8 +261,8 @@ open_api_server_ads_adsget:
     defaults:
         _controller: open_api_server.controller.ads::adsGetAction
     requirements:
-        adAccountId: '^\\d+$'
         adId: '^\\d+$'
+        adAccountId: '^\\d+$'
 
 open_api_server_ads_adslist:
     path:     /ad_accounts/{ad_account_id}/ads
@@ -233,6 +277,30 @@ open_api_server_ads_adsupdate:
     methods:  [PATCH]
     defaults:
         _controller: open_api_server.controller.ads::adsUpdateAction
+    requirements:
+        adAccountId: '^\\d+$'
+
+open_api_server_ads_campaignadpreviewcreate:
+    path:     /ad_accounts/{ad_account_id}/campaign_ad_preview
+    methods:  [POST]
+    defaults:
+        _controller: open_api_server.controller.ads::campaignAdPreviewCreateAction
+    requirements:
+        adAccountId: '^\\d+$'
+
+open_api_server_ads_campaignadpreviewdelete:
+    path:     /ad_accounts/{ad_account_id}/campaign_ad_preview
+    methods:  [DELETE]
+    defaults:
+        _controller: open_api_server.controller.ads::campaignAdPreviewDeleteAction
+    requirements:
+        adAccountId: '^\\d+$'
+
+open_api_server_ads_campaignadpreviewread:
+    path:     /ad_accounts/{ad_account_id}/campaign_ad_preview
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.ads::campaignAdPreviewReadAction
     requirements:
         adAccountId: '^\\d+$'
 
@@ -338,8 +406,8 @@ open_api_server_audiences_audiencesget:
     defaults:
         _controller: open_api_server.controller.audiences::audiencesGetAction
     requirements:
-        adAccountId: '^\\d+$'
         audienceId: '^\\d+$'
+        adAccountId: '^\\d+$'
 
 open_api_server_audiences_audienceslist:
     path:     /ad_accounts/{ad_account_id}/audiences
@@ -355,8 +423,8 @@ open_api_server_audiences_audiencesupdate:
     defaults:
         _controller: open_api_server.controller.audiences::audiencesUpdateAction
     requirements:
-        adAccountId: '^\\d+$'
         audienceId: '^\\d+$'
+        adAccountId: '^\\d+$'
 
 # billing
 open_api_server_billing_adscreditredeem:
@@ -726,8 +794,8 @@ open_api_server_businessAccessRelationships_brandaccountsupdate:
     defaults:
         _controller: open_api_server.controller.businessAccessRelationships::brandAccountsUpdateAction
     requirements:
+        brandAccountId: '[a-z0-9]+'
         businessHierarchyId: '^\\d+$'
-        brandAccountId: '^\\d+$'
 
 open_api_server_businessAccessRelationships_deletebusinessmembership:
     path:     /businesses/{business_id}/members
@@ -823,8 +891,8 @@ open_api_server_campaigns_campaignsget:
     defaults:
         _controller: open_api_server.controller.campaigns::campaignsGetAction
     requirements:
-        adAccountId: '^\\d+$'
         campaignId: '^\\d+$'
+        adAccountId: '^\\d+$'
 
 open_api_server_campaigns_campaignslist:
     path:     /ad_accounts/{ad_account_id}/campaigns
@@ -839,6 +907,14 @@ open_api_server_campaigns_campaignsupdate:
     methods:  [PATCH]
     defaults:
         _controller: open_api_server.controller.campaigns::campaignsUpdateAction
+    requirements:
+        adAccountId: '^\\d+$'
+
+open_api_server_campaigns_getcampaigndeliveryestimates:
+    path:     /ad_accounts/{ad_account_id}/campaigns/delivery_estimates
+    methods:  [POST]
+    defaults:
+        _controller: open_api_server.controller.campaigns::getCampaignDeliveryEstimatesAction
     requirements:
         adAccountId: '^\\d+$'
 
@@ -910,7 +986,7 @@ open_api_server_catalogItems_itemsbatchget:
     defaults:
         _controller: open_api_server.controller.catalogItems::itemsBatchGetAction
     requirements:
-        batchId: '^[a-zA-Z0-9]+$'
+        batchId: '^\\d+$'
 
 open_api_server_catalogItems_itemsbatchpost:
     path:     /catalogs/items/batch
@@ -1014,6 +1090,64 @@ open_api_server_catalogReports_reportsstats:
     defaults:
         _controller: open_api_server.controller.catalogReports::reportsStatsAction
 
+# catalogSupplemental
+open_api_server_catalogSupplemental_catalogslocalinventoryitemsbatchoperate:
+    path:     /catalogs/{catalog_id}/local_inventory_items/batch
+    methods:  [POST]
+    defaults:
+        _controller: open_api_server.controller.catalogSupplemental::catalogsLocalInventoryItemsBatchOperateAction
+    requirements:
+        catalogId: '^\\d+$'
+
+open_api_server_catalogSupplemental_catalogslocalinventoryitemspost:
+    path:     /catalogs/{catalog_id}/local_inventory_items/query
+    methods:  [POST]
+    defaults:
+        _controller: open_api_server.controller.catalogSupplemental::catalogsLocalInventoryItemsPostAction
+    requirements:
+        catalogId: '^\\d+$'
+
+open_api_server_catalogSupplemental_catalogslocalstorescreate:
+    path:     /catalogs/{catalog_id}/local_stores
+    methods:  [POST]
+    defaults:
+        _controller: open_api_server.controller.catalogSupplemental::catalogsLocalStoresCreateAction
+    requirements:
+        catalogId: '^\\d+$'
+
+open_api_server_catalogSupplemental_catalogslocalstoresdelete:
+    path:     /catalogs/{catalog_id}/local_stores
+    methods:  [DELETE]
+    defaults:
+        _controller: open_api_server.controller.catalogSupplemental::catalogsLocalStoresDeleteAction
+    requirements:
+        catalogId: '^\\d+$'
+
+open_api_server_catalogSupplemental_catalogslocalstoreslist:
+    path:     /catalogs/{catalog_id}/local_stores
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.catalogSupplemental::catalogsLocalStoresListAction
+    requirements:
+        catalogId: '^\\d+$'
+
+open_api_server_catalogSupplemental_catalogslocalstoresupdate:
+    path:     /catalogs/{catalog_id}/local_stores
+    methods:  [PATCH]
+    defaults:
+        _controller: open_api_server.controller.catalogSupplemental::catalogsLocalStoresUpdateAction
+    requirements:
+        catalogId: '^\\d+$'
+
+open_api_server_catalogSupplemental_catalogssupplementalitemsbatchget:
+    path:     /catalogs/{catalog_id}/supplemental_items/batch/{batch_id}
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.catalogSupplemental::catalogsSupplementalItemsBatchGetAction
+    requirements:
+        catalogId: '^\\d+$'
+        batchId: '^\\d+$'
+
 # catalogs
 open_api_server_catalogs_catalogsavailablefiltervalues:
     path:     /catalogs/available_filter_values
@@ -1032,6 +1166,41 @@ open_api_server_catalogs_catalogslist:
     methods:  [GET]
     defaults:
         _controller: open_api_server.controller.catalogs::catalogsListAction
+
+# conversionDeletionRequests
+open_api_server_conversionDeletionRequests_conversiondeletionrequestcreate:
+    path:     /ad_accounts/{ad_account_id}/conversion_deletion_requests
+    methods:  [POST]
+    defaults:
+        _controller: open_api_server.controller.conversionDeletionRequests::conversionDeletionRequestCreateAction
+    requirements:
+        adAccountId: '^\\d+$'
+
+open_api_server_conversionDeletionRequests_conversiondeletionrequestdelete:
+    path:     /ad_accounts/{ad_account_id}/conversion_deletion_requests/{request_id}
+    methods:  [DELETE]
+    defaults:
+        _controller: open_api_server.controller.conversionDeletionRequests::conversionDeletionRequestDeleteAction
+    requirements:
+        requestId: '^\\d+$'
+        adAccountId: '^\\d+$'
+
+open_api_server_conversionDeletionRequests_conversiondeletionrequestget:
+    path:     /ad_accounts/{ad_account_id}/conversion_deletion_requests/{request_id}
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.conversionDeletionRequests::conversionDeletionRequestGetAction
+    requirements:
+        requestId: '^\\d+$'
+        adAccountId: '^\\d+$'
+
+open_api_server_conversionDeletionRequests_conversiondeletionrequestlist:
+    path:     /ad_accounts/{ad_account_id}/conversion_deletion_requests
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.conversionDeletionRequests::conversionDeletionRequestListAction
+    requirements:
+        adAccountId: '^\\d+$'
 
 # conversionEqs
 open_api_server_conversionEqs_conversioneqslist:
@@ -1094,11 +1263,35 @@ open_api_server_conversionTags_pagevisitconversiontagsget:
         adAccountId: '^\\d+$'
 
 # conversions
+open_api_server_conversions_advertiserdefinedeventscreate:
+    path:     /ad_accounts/{ad_account_id}/advertiser_defined_events
+    methods:  [POST]
+    defaults:
+        _controller: open_api_server.controller.conversions::advertiserDefinedEventsCreateAction
+    requirements:
+        adAccountId: '^\\d+$'
+
+open_api_server_conversions_advertiserdefinedeventsdelete:
+    path:     /ad_accounts/{ad_account_id}/advertiser_defined_events
+    methods:  [DELETE]
+    defaults:
+        _controller: open_api_server.controller.conversions::advertiserDefinedEventsDeleteAction
+    requirements:
+        adAccountId: '^\\d+$'
+
 open_api_server_conversions_advertiserdefinedeventsget:
     path:     /ad_accounts/{ad_account_id}/advertiser_defined_events
     methods:  [GET]
     defaults:
         _controller: open_api_server.controller.conversions::advertiserDefinedEventsGetAction
+    requirements:
+        adAccountId: '^\\d+$'
+
+open_api_server_conversions_advertiserdefinedeventsupdate:
+    path:     /ad_accounts/{ad_account_id}/advertiser_defined_events
+    methods:  [PATCH]
+    defaults:
+        _controller: open_api_server.controller.conversions::advertiserDefinedEventsUpdateAction
     requirements:
         adAccountId: '^\\d+$'
 
@@ -1167,6 +1360,31 @@ open_api_server_customerLists_customerlistsupdate:
         adAccountId: '^\\d+$'
         customerListId: '^\\d+$'
 
+# customerSegment
+open_api_server_customerSegment_customersegmentcreate:
+    path:     /ad_accounts/{ad_account_id}/customer_segments
+    methods:  [POST]
+    defaults:
+        _controller: open_api_server.controller.customerSegment::customerSegmentCreateAction
+    requirements:
+        adAccountId: '^\\d+$'
+
+open_api_server_customerSegment_customersegmentlist:
+    path:     /ad_accounts/{ad_account_id}/customer_segments
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.customerSegment::customerSegmentListAction
+    requirements:
+        adAccountId: '^\\d+$'
+
+open_api_server_customerSegment_customersegmentupdate:
+    path:     /ad_accounts/{ad_account_id}/customer_segments
+    methods:  [PATCH]
+    defaults:
+        _controller: open_api_server.controller.customerSegment::customerSegmentUpdateAction
+    requirements:
+        adAccountId: '^\\d+$'
+
 # integrations
 open_api_server_integrations_integrationscommercedel:
     path:     /integrations/commerce/{external_business_id}
@@ -1204,7 +1422,7 @@ open_api_server_integrations_integrationsgetbyid:
     defaults:
         _controller: open_api_server.controller.integrations::integrationsGetByIdAction
     requirements:
-        id: '[a-z0-9]+'
+        id: '^\\d+$'
 
 open_api_server_integrations_integrationsgetlist:
     path:     /integrations
@@ -1259,6 +1477,15 @@ open_api_server_keywords_trendingkeywordslist:
     requirements:
 
 # labels
+open_api_server_labels_labelsapply:
+    path:     /ad_accounts/{ad_account_id}/labels/{label_id}/apply
+    methods:  [POST]
+    defaults:
+        _controller: open_api_server.controller.labels::labelsApplyAction
+    requirements:
+        adAccountId: '^\\d+$'
+        labelId: '[a-z0-9]+'
+
 open_api_server_labels_labelscreate:
     path:     /ad_accounts/{ad_account_id}/labels
     methods:  [POST]
@@ -1274,6 +1501,15 @@ open_api_server_labels_labelslist:
         _controller: open_api_server.controller.labels::labelsListAction
     requirements:
         adAccountId: '^\\d+$'
+
+open_api_server_labels_labelsremove:
+    path:     /ad_accounts/{ad_account_id}/labels/{label_id}/remove
+    methods:  [POST]
+    defaults:
+        _controller: open_api_server.controller.labels::labelsRemoveAction
+    requirements:
+        adAccountId: '^\\d+$'
+        labelId: '[a-z0-9]+'
 
 open_api_server_labels_labelsupdate:
     path:     /ad_accounts/{ad_account_id}/labels
@@ -1325,8 +1561,8 @@ open_api_server_leadForms_leadformget:
     defaults:
         _controller: open_api_server.controller.leadForms::leadFormGetAction
     requirements:
-        adAccountId: '^\\d+$'
         leadFormId: '^\\d+$'
+        adAccountId: '^\\d+$'
 
 open_api_server_leadForms_leadformtestcreate:
     path:     /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test
@@ -1442,8 +1678,8 @@ open_api_server_orderLines_orderlinesget:
     defaults:
         _controller: open_api_server.controller.orderLines::orderLinesGetAction
     requirements:
-        adAccountId: '^\\d+$'
         orderLineId: '^\\d+$'
+        adAccountId: '^\\d+$'
 
 open_api_server_orderLines_orderlineslist:
     path:     /ad_accounts/{ad_account_id}/order_lines
@@ -1512,25 +1748,6 @@ open_api_server_pins_pinsupdate:
     requirements:
         pinId: '^\\d+$'
 
-# productCategories
-open_api_server_productCategories_trendsfeaturedtopicslist:
-    path:     /trends/topics/featured
-    methods:  [GET]
-    defaults:
-        _controller: open_api_server.controller.productCategories::trendsFeaturedTopicsListAction
-
-open_api_server_productCategories_trendsproductcategoriesdetailslist:
-    path:     /trends/product_categories/details
-    methods:  [GET]
-    defaults:
-        _controller: open_api_server.controller.productCategories::trendsProductCategoriesDetailsListAction
-
-open_api_server_productCategories_trendsproductcategoriestrendinglist:
-    path:     /trends/product_categories/trending
-    methods:  [GET]
-    defaults:
-        _controller: open_api_server.controller.productCategories::trendsProductCategoriesTrendingListAction
-
 # productGroupPromotions
 open_api_server_productGroupPromotions_productgrouppromotionscreate:
     path:     /ad_accounts/{ad_account_id}/product_group_promotions
@@ -1573,6 +1790,31 @@ open_api_server_productGroupPromotions_productgroupsanalytics:
     requirements:
         adAccountId: '^\\d+$'
 
+# productTags
+open_api_server_productTags_producttagsbulkadd:
+    path:     /pins/{pin_id}/product_tags
+    methods:  [POST]
+    defaults:
+        _controller: open_api_server.controller.productTags::productTagsBulkAddAction
+    requirements:
+        pinId: '^\\d+$'
+
+open_api_server_productTags_producttagsbulkdelete:
+    path:     /pins/{pin_id}/product_tags/bulk-delete
+    methods:  [POST]
+    defaults:
+        _controller: open_api_server.controller.productTags::productTagsBulkDeleteAction
+    requirements:
+        pinId: '^\\d+$'
+
+open_api_server_productTags_producttagslist:
+    path:     /pins/{pin_id}/product_tags
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.productTags::productTagsListAction
+    requirements:
+        pinId: '^\\d+$'
+
 # promotions
 open_api_server_promotions_promotionscreate:
     path:     /ad_accounts/{ad_account_id}/promotions
@@ -1588,8 +1830,8 @@ open_api_server_promotions_promotionsdelete:
     defaults:
         _controller: open_api_server.controller.promotions::promotionsDeleteAction
     requirements:
-        adAccountId: '^\\d+$'
         promotionId: '^\\d+$'
+        adAccountId: '^\\d+$'
 
 open_api_server_promotions_promotionsget:
     path:     /ad_accounts/{ad_account_id}/promotions/{promotion_id}
@@ -1597,8 +1839,8 @@ open_api_server_promotions_promotionsget:
     defaults:
         _controller: open_api_server.controller.promotions::promotionsGetAction
     requirements:
-        adAccountId: '^\\d+$'
         promotionId: '^\\d+$'
+        adAccountId: '^\\d+$'
 
 open_api_server_promotions_promotionslist:
     path:     /ad_accounts/{ad_account_id}/promotions
@@ -1655,7 +1897,31 @@ open_api_server_resources_targetingoptionsget:
     defaults:
         _controller: open_api_server.controller.resources::targetingOptionsGetAction
     requirements:
-        targetingType: '[a-z0-9]+'
+
+# schedules
+open_api_server_schedules_schedulescreate:
+    path:     /ad_accounts/{ad_account_id}/schedules
+    methods:  [POST]
+    defaults:
+        _controller: open_api_server.controller.schedules::schedulesCreateAction
+    requirements:
+        adAccountId: '^\\d+$'
+
+open_api_server_schedules_scheduleslist:
+    path:     /ad_accounts/{ad_account_id}/schedules
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.schedules::schedulesListAction
+    requirements:
+        adAccountId: '^\\d+$'
+
+open_api_server_schedules_schedulesupdate:
+    path:     /ad_accounts/{ad_account_id}/schedules
+    methods:  [PATCH]
+    defaults:
+        _controller: open_api_server.controller.schedules::schedulesUpdateAction
+    requirements:
+        adAccountId: '^\\d+$'
 
 # search
 open_api_server_search_searchpartnerpins:
@@ -1722,6 +1988,31 @@ open_api_server_termsOfService_termsofserviceget:
         _controller: open_api_server.controller.termsOfService::termsOfServiceGetAction
     requirements:
         adAccountId: '^\\d+$'
+
+# trends
+open_api_server_trends_trendseditorialarticleslist:
+    path:     /trends/editorial_articles
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.trends::trendsEditorialArticlesListAction
+
+open_api_server_trends_trendsfeaturedtopicslist:
+    path:     /trends/topics/featured
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.trends::trendsFeaturedTopicsListAction
+
+open_api_server_trends_trendsproductcategoriesdetailslist:
+    path:     /trends/product_categories/details
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.trends::trendsProductCategoriesDetailsListAction
+
+open_api_server_trends_trendsproductcategoriestrendinglist:
+    path:     /trends/product_categories/trending
+    methods:  [GET]
+    defaults:
+        _controller: open_api_server.controller.trends::trendsProductCategoriesTrendingListAction
 
 # userAccount
 open_api_server_userAccount_boardsuserfollowslist:

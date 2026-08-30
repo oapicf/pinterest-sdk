@@ -1,0 +1,20 @@
+
+
+/**
+ * Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.
+ */
+export interface PinMediaSourcePinURL { 
+  /**
+   * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
+   */
+  is_affiliate_link?: boolean;
+  source_type: PinMediaSourcePinURL.SourceTypeEnum;
+}
+export namespace PinMediaSourcePinURL {
+  export const SourceTypeEnum = {
+    PinUrl: 'pin_url'
+  } as const;
+  export type SourceTypeEnum = typeof SourceTypeEnum[keyof typeof SourceTypeEnum];
+}
+
+

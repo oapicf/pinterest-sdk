@@ -1,13 +1,14 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.LeadFormArrayResponse;
-import org.openapitools.vertxweb.server.model.LeadFormCreateRequest;
-import org.openapitools.vertxweb.server.model.LeadFormResponse;
-import org.openapitools.vertxweb.server.model.LeadFormTestRequest;
-import org.openapitools.vertxweb.server.model.LeadFormTestResponse;
-import org.openapitools.vertxweb.server.model.LeadFormUpdateRequest;
+import org.openapitools.vertxweb.server.model.LeadForm;
+import org.openapitools.vertxweb.server.model.LeadFormBatchUpdate;
+import org.openapitools.vertxweb.server.model.LeadFormCreate;
+import org.openapitools.vertxweb.server.model.LeadFormTest;
+import org.openapitools.vertxweb.server.model.LeadFormTestCreate;
+import org.openapitools.vertxweb.server.model.LeadFormsCreate200Response;
 import org.openapitools.vertxweb.server.model.LeadFormsList200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PinterestLibPaginationOrder;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -18,9 +19,9 @@ import java.util.List;
 import java.util.Map;
 
 public interface LeadFormsApi  {
-    Future<ApiResponse<LeadFormResponse>> leadFormGet(String adAccountId, String leadFormId);
-    Future<ApiResponse<LeadFormTestResponse>> leadFormTestCreate(String adAccountId, String leadFormId, LeadFormTestRequest leadFormTestRequest);
-    Future<ApiResponse<LeadFormArrayResponse>> leadFormsCreate(String adAccountId, List<LeadFormCreateRequest> leadFormCreateRequest);
-    Future<ApiResponse<LeadFormsList200Response>> leadFormsList(String adAccountId, Integer pageSize, String order, String bookmark);
-    Future<ApiResponse<LeadFormArrayResponse>> leadFormsUpdate(String adAccountId, List<LeadFormUpdateRequest> leadFormUpdateRequest);
+    Future<ApiResponse<LeadForm>> leadFormGet(String leadFormId, String adAccountId);
+    Future<ApiResponse<LeadFormTest>> leadFormTestCreate(String adAccountId, String leadFormId, LeadFormTestCreate leadFormTestCreate);
+    Future<ApiResponse<LeadFormsCreate200Response>> leadFormsCreate(String adAccountId, List<LeadFormCreate> leadFormCreate);
+    Future<ApiResponse<LeadFormsList200Response>> leadFormsList(String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order);
+    Future<ApiResponse<LeadFormsCreate200Response>> leadFormsUpdate(String adAccountId, List<LeadFormBatchUpdate> leadFormBatchUpdate);
 }

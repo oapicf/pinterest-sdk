@@ -12,28 +12,13 @@ import { ImageSize } from './imageSize';
 import { ImageMetadata } from './imageMetadata';
 
 
-export interface PinMediaMetadata { 
-    description?: string | null;
-    images?: ImageSize;
-    item_type?: string;
-    link?: string | null;
-    title?: string | null;
-    cover_image_url?: string;
-    /**
-     * Duration (in miliseconds). Field maybe null after creation due to video processing time.
-     */
-    duration?: number | null;
-    /**
-     * Height (in pixels). Field maybe null after creation due to video processing time.
-     */
-    height?: number | null;
-    /**
-     * Video url (720p).  **Note:** This field is limited and not available to all apps.
-     */
-    video_url?: string | null;
-    /**
-     * Width (in pixels). Field maybe null after creation due to video processing time.
-     */
-    width?: number | null;
-}
+/**
+ * Per-item entry inside `PinMedia.items` for mixed image/video pins. Discriminated by `item_type`.
+ */
+/**
+ * @type PinMediaMetadata
+ * Per-item entry inside `PinMedia.items` for mixed image/video pins. Discriminated by `item_type`.
+ * @export
+ */
+export type PinMediaMetadata = ImageMetadata | VideoMetadataWithItemType;
 

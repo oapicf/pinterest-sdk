@@ -3,6 +3,8 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.AdShoppingPreviewCreativeType
+open OpenAPI.Model.BasePreferredMediaType
 open OpenAPI.Model.CustomizableCTAType
 
 module AdPreviewShopping =
@@ -14,7 +16,7 @@ module AdPreviewShopping =
     [<JsonProperty(PropertyName = "catalog_product_group_id")>]
     CatalogProductGroupId : string;
     [<JsonProperty(PropertyName = "creative_type")>]
-    CreativeType : string;
+    CreativeType : AdShoppingPreviewCreativeType;
     [<JsonProperty(PropertyName = "customizable_cta_type")>]
     CustomizableCtaType : CustomizableCTAType;
     [<JsonProperty(PropertyName = "hero_image_title")>]
@@ -28,7 +30,9 @@ module AdPreviewShopping =
     [<JsonProperty(PropertyName = "item_id")>]
     ItemId : string;
     [<JsonProperty(PropertyName = "preferred_media_type")>]
-    PreferredMediaType : string;
+    PreferredMediaType : BasePreferredMediaType;
+    [<JsonProperty(PropertyName = "show_promotion")>]
+    ShowPromotion : bool;
     [<JsonProperty(PropertyName = "video_tag")>]
     VideoTag : string;
   }

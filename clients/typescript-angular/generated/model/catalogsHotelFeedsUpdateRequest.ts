@@ -10,7 +10,6 @@
 import { CatalogsFeedProcessingSchedule } from './catalogsFeedProcessingSchedule';
 import { CatalogsStatus } from './catalogsStatus';
 import { CatalogsFeedCredentials } from './catalogsFeedCredentials';
-import { CatalogsType } from './catalogsType';
 import { CatalogsFormat } from './catalogsFormat';
 import { NullableCurrency } from './nullableCurrency';
 
@@ -19,7 +18,7 @@ import { NullableCurrency } from './nullableCurrency';
  * Request object for updating a feed.
  */
 export interface CatalogsHotelFeedsUpdateRequest { 
-    catalog_type: CatalogsType;
+    catalog_type: CatalogsHotelFeedsUpdateRequest.CatalogTypeEnum;
     credentials?: CatalogsFeedCredentials | null;
     default_currency?: NullableCurrency | null;
     format?: CatalogsFormat;
@@ -35,6 +34,10 @@ export interface CatalogsHotelFeedsUpdateRequest {
     status?: CatalogsStatus;
 }
 export namespace CatalogsHotelFeedsUpdateRequest {
+    export const CatalogTypeEnum = {
+        Hotel: 'HOTEL'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

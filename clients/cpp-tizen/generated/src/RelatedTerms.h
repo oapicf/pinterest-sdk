@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "RelatedTerms_related_terms_list_inner.h"
+#include "RelatedTermsRelatedTermsListItems.h"
 #include <list>
 #include "Object.h"
 
@@ -63,16 +63,16 @@ public:
 	void setRelatedTermCount(int  related_term_count);
 	/*! \brief Get The id of the advertiser.
 	 */
-	std::list<RelatedTerms_related_terms_list_inner> getRelatedTermsList();
+	std::list<RelatedTermsRelatedTermsListItems> getRelatedTermsList();
 
 	/*! \brief Set The id of the advertiser.
 	 */
-	void setRelatedTermsList(std::list <RelatedTerms_related_terms_list_inner> related_terms_list);
+	void setRelatedTermsList(std::list <RelatedTermsRelatedTermsListItems> related_terms_list);
 
 private:
 	std::string id;
 	int related_term_count;
-	std::list <RelatedTerms_related_terms_list_inner>related_terms_list;
+	std::list <RelatedTermsRelatedTermsListItems>related_terms_list;
 	void __init();
 	void __cleanup();
 

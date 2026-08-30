@@ -52,14 +52,14 @@ public:
 
 	/*! \brief Set Board cover image
 	 */
-	void setImageCoverUrl(std::string  image_cover_url);
+	void setImageCoverUrl(std::string image_cover_url);
 	/*! \brief Get Board pin thumbnail urls.
 	 */
 	std::list<std::string> getPinThumbnailUrls();
 
 	/*! \brief Set Board pin thumbnail urls.
 	 */
-	void setPinThumbnailUrls(std::list <std::string> pin_thumbnail_urls);
+	void setPinThumbnailUrls(std::list<std::string> pin_thumbnail_urls);
 
 
     private:

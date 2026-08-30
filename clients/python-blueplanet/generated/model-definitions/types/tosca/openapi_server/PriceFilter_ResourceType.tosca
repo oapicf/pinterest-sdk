@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  CatalogsProductGroupPricingCurrencyCriteria = openapi_server.resourceTypes.CatalogsProductGroupPricingCurrencyCriteria
+  PriceFilterPrice = openapi_server.resourceTypes.PriceFilterPrice
 }
 resourceTypes {
 
@@ -17,7 +17,7 @@ resourceTypes {
     derivedFrom = Root
     properties {
         price {
-          type = CatalogsProductGroupPricingCurrencyCriteria
+          type = PriceFilterPrice
           description = ""
           optional = true
         }

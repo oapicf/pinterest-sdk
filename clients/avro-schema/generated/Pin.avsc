@@ -1,13 +1,13 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "Pin model containing properties related to a Pinterest Pin.",
+  "doc": "",
   "name": "Pin",
   "fields": [
     {
-      "name": "alt_text",
-      "type": ["null", "string"],
-      "doc": "",
+      "name": "ai_disclosures",
+      "type": ["null", "model.AiDisclosures"],
+      "doc": "AI disclosure declarations the creator has made about this Pin.",
       "default": null
     },
     {
@@ -41,12 +41,6 @@
       "default": null
     },
     {
-      "name": "description",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "dominant_color",
       "type": ["null", "string"],
       "doc": "Dominant pin color. Hex number, e.g. `#6E7874`.",
@@ -70,15 +64,15 @@
       "default": null
     },
     {
-      "name": "is_standard",
+      "name": "is_product",
       "type": ["null", "boolean"],
-      "doc": "Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.",
+      "doc": "Whether the Pin is a product Pin.",
       "default": null
     },
     {
-      "name": "link",
-      "type": ["null", "string"],
-      "doc": "",
+      "name": "is_standard",
+      "type": ["null", "boolean"],
+      "doc": "Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.",
       "default": null
     },
     {
@@ -97,6 +91,24 @@
       "name": "pin_metrics",
       "type": ["null", "model.object"],
       "doc": "Pin metrics with associated time intervals if any.",
+      "default": null
+    },
+    {
+      "name": "alt_text",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
+      "doc": "",
       "default": null
     },
     {

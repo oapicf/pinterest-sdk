@@ -6,7 +6,7 @@ using namespace Tiny;
 
 LabelError::LabelError()
 {
-	data = Label();
+	data = LabelErrorData();
 	error_messages = std::list<std::string>();
 }
 
@@ -34,7 +34,7 @@ LabelError::fromJson(std::string jsonObj)
 
 
 
-        Label* obj = &data;
+        LabelErrorData* obj = &data;
 		obj->fromJson(value.dump());
 
     }
@@ -97,14 +97,14 @@ LabelError::toJson()
 
 }
 
-Label
+LabelErrorData
 LabelError::getData()
 {
 	return data;
 }
 
 void
-LabelError::setData(Label  data)
+LabelError::setData(LabelErrorData data)
 {
 	this->data = data;
 }
@@ -116,7 +116,7 @@ LabelError::getErrorMessages()
 }
 
 void
-LabelError::setErrorMessages(std::list <std::string> error_messages)
+LabelError::setErrorMessages(std::list<std::string> error_messages)
 {
 	this->error_messages = error_messages;
 }

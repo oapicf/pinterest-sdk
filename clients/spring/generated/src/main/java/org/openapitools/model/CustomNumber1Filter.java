@@ -8,19 +8,19 @@ import org.openapitools.model.CatalogsProductGroupUint32Criteria;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CustomNumber1Filter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CustomNumber1Filter {
 
   private CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_1;
@@ -52,6 +52,7 @@ public class CustomNumber1Filter {
     return CUSTOM_NUMBER_1;
   }
 
+  @JsonProperty("CUSTOM_NUMBER_1")
   public void setCUSTOMNUMBER1(CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_1) {
     this.CUSTOM_NUMBER_1 = CUSTOM_NUMBER_1;
   }
@@ -86,11 +87,8 @@ public class CustomNumber1Filter {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

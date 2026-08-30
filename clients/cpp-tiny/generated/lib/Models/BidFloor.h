@@ -2,7 +2,7 @@
 /*
  * BidFloor.h
  *
- * 
+ * Bid floor request and response model.
  */
 
 #ifndef TINY_CPP_CLIENT_BidFloor_H_
@@ -17,7 +17,7 @@
 namespace Tiny {
 
 
-/*! \brief 
+/*! \brief Bid floor request and response model.
  *
  *  \ingroup Models
  *
@@ -52,14 +52,14 @@ public:
 
 	/*! \brief Set A list of bid floors in micro currency. For example, [100000, 200000]
 	 */
-	void setBidFloors(std::list <int> bid_floors);
-	/*! \brief Get Always the string 'bidfloor'
+	void setBidFloors(std::list<int> bid_floors);
+	/*! \brief Get Always the string 'bidfloor'.
 	 */
 	std::string getType();
 
-	/*! \brief Set Always the string 'bidfloor'
+	/*! \brief Set Always the string 'bidfloor'.
 	 */
-	void setType(std::string  type);
+	void setType(std::string type);
 
 
     private:

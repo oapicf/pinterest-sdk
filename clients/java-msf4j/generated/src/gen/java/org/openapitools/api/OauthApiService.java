@@ -6,9 +6,11 @@ import org.openapitools.model.*;
 import org.wso2.msf4j.formparam.FormDataParam;
 import org.wso2.msf4j.formparam.FileInfo;
 
-import org.openapitools.model.ConversionAccessTokenResponse;
-import org.openapitools.model.Error;
-import org.openapitools.model.OauthAccessTokenResponse;
+import org.openapitools.model.ConversionAccessToken;
+import org.openapitools.model.OauthAccessToken;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.TokenGrantType;
+import org.openapitools.model.TokenTypeHint;
 
 import java.util.List;
 import org.openapitools.api.NotFoundException;
@@ -18,12 +20,17 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public abstract class OauthApiService {
     public abstract Response oauthConversionToken() throws NotFoundException;
-    public abstract Response oauthToken(String grantType
+    public abstract Response oauthToken(TokenGrantType grantType
+ ,String code
+ ,String continuousRefresh
+ ,String redirectUri
+ ,String refreshToken
+ ,String scope
  ) throws NotFoundException;
     public abstract Response tokenRevoke(String token
- ,String tokenTypeHint
+ ,TokenTypeHint tokenTypeHint
  ) throws NotFoundException;
 }

@@ -8,16 +8,17 @@ open BusinessAccessInviteApiHandlerParams
 open BusinessAccessInviteApiServiceInterface
 open BusinessAccessInviteApiServiceImplementation
 open OpenAPI.Model.AuthRespondInvitesBody
-open OpenAPI.Model.CancelInvitesBody
+open OpenAPI.Model.CancelInvitesRequest
+open OpenAPI.Model.CancelInvitesResponse
 open OpenAPI.Model.CreateAssetAccessRequestBody
 open OpenAPI.Model.CreateAssetAccessRequestResponse
 open OpenAPI.Model.CreateAssetInvitesRequest
 open OpenAPI.Model.CreateInvitesResultsResponseArray
 open OpenAPI.Model.CreateMembershipOrPartnershipInvitesBody
-open OpenAPI.Model.DeleteInvitesResultsResponseArray
-open OpenAPI.Model.Error
 open OpenAPI.Model.GetInvites200Response
+open OpenAPI.Model.InviteFilterStatus
 open OpenAPI.Model.InviteType
+open OpenAPI.Model.PinterestLibError
 open OpenAPI.Model.RespondToInvitesResponseArray
 open OpenAPI.Model.UpdateInvitesResultsResponseArray
 
@@ -42,6 +43,18 @@ module BusinessAccessInviteApiHandler =
           return! (match result with
                       | AssetAccessRequestsCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AssetAccessRequestsCreateStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
+                      | AssetAccessRequestsCreateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AssetAccessRequestsCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AssetAccessRequestsCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AssetAccessRequestsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AssetAccessRequestsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AssetAccessRequestsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -84,6 +97,18 @@ module BusinessAccessInviteApiHandler =
           return! (match result with
                       | CreateAssetInvitesStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | CreateAssetInvitesStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
+                      | CreateAssetInvitesStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | CreateAssetInvitesStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CreateAssetInvitesStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CreateAssetInvitesStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CreateAssetInvitesStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CreateAssetInvitesDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -105,6 +130,18 @@ module BusinessAccessInviteApiHandler =
           return! (match result with
                       | CreateMembershipOrPartnershipInvitesStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | CreateMembershipOrPartnershipInvitesStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
+                      | CreateMembershipOrPartnershipInvitesStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | CreateMembershipOrPartnershipInvitesStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CreateMembershipOrPartnershipInvitesStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CreateMembershipOrPartnershipInvitesStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CreateMembershipOrPartnershipInvitesStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CreateMembershipOrPartnershipInvitesDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -125,6 +162,16 @@ module BusinessAccessInviteApiHandler =
           return! (match result with
                       | GetInvitesStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | GetInvitesStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | GetInvitesStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | GetInvitesStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | GetInvitesStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | GetInvitesStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | GetInvitesDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -146,6 +193,16 @@ module BusinessAccessInviteApiHandler =
           return! (match result with
                       | RespondBusinessAccessInvitesStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | RespondBusinessAccessInvitesStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | RespondBusinessAccessInvitesStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | RespondBusinessAccessInvitesStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | RespondBusinessAccessInvitesStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | RespondBusinessAccessInvitesStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | RespondBusinessAccessInvitesDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

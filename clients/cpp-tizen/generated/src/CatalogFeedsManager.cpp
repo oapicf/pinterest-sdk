@@ -104,6 +104,16 @@ static bool feedProcessingResultsListProcessor(MemoryStruct_s p_chunk, long code
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -124,7 +134,7 @@ static bool feedProcessingResultsListProcessor(MemoryStruct_s p_chunk, long code
 }
 
 static bool feedProcessingResultsListHelper(char * accessToken,
-	std::string feedId, std::string bookmark, int pageSize, std::string adAccountId, 
+	std::string feedId, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Feed_processing_results_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -142,6 +152,13 @@ static bool feedProcessingResultsListHelper(char * accessToken,
 	string itemAtq;
 	
 
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
@@ -153,13 +170,6 @@ static bool feedProcessingResultsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&adAccountId, "std::string");
-	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("ad_account_id");
 	}
 
 	string mBody = "";
@@ -222,22 +232,22 @@ static bool feedProcessingResultsListHelper(char * accessToken,
 
 
 bool CatalogFeedsManager::feedProcessingResultsListAsync(char * accessToken,
-	std::string feedId, std::string bookmark, int pageSize, std::string adAccountId, 
+	std::string feedId, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Feed_processing_results_list_200_response, Error, void* )
 	, void* userData)
 {
 	return feedProcessingResultsListHelper(accessToken,
-	feedId, bookmark, pageSize, adAccountId, 
+	feedId, adAccountId, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool CatalogFeedsManager::feedProcessingResultsListSync(char * accessToken,
-	std::string feedId, std::string bookmark, int pageSize, std::string adAccountId, 
+	std::string feedId, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Feed_processing_results_list_200_response, Error, void* )
 	, void* userData)
 {
 	return feedProcessingResultsListHelper(accessToken,
-	feedId, bookmark, pageSize, adAccountId, 
+	feedId, adAccountId, bookmark, pageSize, 
 	handler, userData, false);
 }
 
@@ -332,7 +342,7 @@ static bool feedsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 }
 
 static bool feedsCreateHelper(char * accessToken,
-	std::shared_ptr<Feeds_create_request> feedsCreateRequest, std::string adAccountId, 
+	std::shared_ptr<CatalogsFeedCreateRequestSchema> catalogsFeedCreateRequestSchema, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -360,11 +370,11 @@ static bool feedsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("Feeds_create_request")) {
-		node = converttoJson(&feedsCreateRequest, "Feeds_create_request", "");
+	if (isprimitive("CatalogsFeedCreateRequestSchema")) {
+		node = converttoJson(&catalogsFeedCreateRequestSchema, "CatalogsFeedCreateRequestSchema", "");
 	}
 	
-	char *jsonStr =  feedsCreateRequest.toJson();
+	char *jsonStr =  catalogsFeedCreateRequestSchema.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -423,43 +433,95 @@ static bool feedsCreateHelper(char * accessToken,
 
 
 bool CatalogFeedsManager::feedsCreateAsync(char * accessToken,
-	std::shared_ptr<Feeds_create_request> feedsCreateRequest, std::string adAccountId, 
+	std::shared_ptr<CatalogsFeedCreateRequestSchema> catalogsFeedCreateRequestSchema, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData)
 {
 	return feedsCreateHelper(accessToken,
-	feedsCreateRequest, adAccountId, 
+	catalogsFeedCreateRequestSchema, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogFeedsManager::feedsCreateSync(char * accessToken,
-	std::shared_ptr<Feeds_create_request> feedsCreateRequest, std::string adAccountId, 
+	std::shared_ptr<CatalogsFeedCreateRequestSchema> catalogsFeedCreateRequestSchema, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData)
 {
 	return feedsCreateHelper(accessToken,
-	feedsCreateRequest, adAccountId, 
+	catalogsFeedCreateRequestSchema, adAccountId, 
 	handler, userData, false);
 }
 
 static bool feedsDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(CatalogsFeed, Error, void* )
+	= reinterpret_cast<void(*)(CatalogsFeed, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	CatalogsFeed out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("CatalogsFeed")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "CatalogsFeed", "CatalogsFeed");
+			json_node_free(pJson);
+
+			if ("CatalogsFeed" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -470,15 +532,15 @@ static bool feedsDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool feedsDeleteHelper(char * accessToken,
 	std::string feedId, std::string adAccountId, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(CatalogsFeed, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -561,8 +623,8 @@ static bool feedsDeleteHelper(char * accessToken,
 
 bool CatalogFeedsManager::feedsDeleteAsync(char * accessToken,
 	std::string feedId, std::string adAccountId, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(CatalogsFeed, Error, void* )
+	, void* userData)
 {
 	return feedsDeleteHelper(accessToken,
 	feedId, adAccountId, 
@@ -571,8 +633,8 @@ bool CatalogFeedsManager::feedsDeleteAsync(char * accessToken,
 
 bool CatalogFeedsManager::feedsDeleteSync(char * accessToken,
 	std::string feedId, std::string adAccountId, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(CatalogsFeed, Error, void* )
+	, void* userData)
 {
 	return feedsDeleteHelper(accessToken,
 	feedId, adAccountId, 
@@ -609,6 +671,16 @@ static bool feedsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg,
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -814,6 +886,16 @@ static bool feedsIngestProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -988,6 +1070,21 @@ static bool feedsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1008,7 +1105,7 @@ static bool feedsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 }
 
 static bool feedsListHelper(char * accessToken,
-	std::string bookmark, int pageSize, std::string catalogId, std::string adAccountId, 
+	std::string catalogId, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Feeds_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1026,20 +1123,6 @@ static bool feedsListHelper(char * accessToken,
 	string itemAtq;
 	
 
-	itemAtq = stringify(&bookmark, "std::string");
-	queryParams.insert(pair<string, string>("bookmark", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("bookmark");
-	}
-
-
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
-
-
 	itemAtq = stringify(&catalogId, "std::string");
 	queryParams.insert(pair<string, string>("catalog_id", itemAtq));
 	if( itemAtq.empty()==true){
@@ -1051,6 +1134,20 @@ static bool feedsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("ad_account_id");
+	}
+
+
+	itemAtq = stringify(&bookmark, "std::string");
+	queryParams.insert(pair<string, string>("bookmark", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
 	}
 
 	string mBody = "";
@@ -1107,22 +1204,22 @@ static bool feedsListHelper(char * accessToken,
 
 
 bool CatalogFeedsManager::feedsListAsync(char * accessToken,
-	std::string bookmark, int pageSize, std::string catalogId, std::string adAccountId, 
+	std::string catalogId, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Feeds_list_200_response, Error, void* )
 	, void* userData)
 {
 	return feedsListHelper(accessToken,
-	bookmark, pageSize, catalogId, adAccountId, 
+	catalogId, adAccountId, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool CatalogFeedsManager::feedsListSync(char * accessToken,
-	std::string bookmark, int pageSize, std::string catalogId, std::string adAccountId, 
+	std::string catalogId, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Feeds_list_200_response, Error, void* )
 	, void* userData)
 {
 	return feedsListHelper(accessToken,
-	bookmark, pageSize, catalogId, adAccountId, 
+	catalogId, adAccountId, bookmark, pageSize, 
 	handler, userData, false);
 }
 
@@ -1182,6 +1279,16 @@ static bool feedsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1202,7 +1309,7 @@ static bool feedsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 }
 
 static bool feedsUpdateHelper(char * accessToken,
-	std::string feedId, std::shared_ptr<Feeds_update_request> feedsUpdateRequest, std::string adAccountId, 
+	std::string feedId, std::shared_ptr<CatalogsFeedUpdateRequestSchema> catalogsFeedUpdateRequestSchema, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1230,11 +1337,11 @@ static bool feedsUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("Feeds_update_request")) {
-		node = converttoJson(&feedsUpdateRequest, "Feeds_update_request", "");
+	if (isprimitive("CatalogsFeedUpdateRequestSchema")) {
+		node = converttoJson(&catalogsFeedUpdateRequestSchema, "CatalogsFeedUpdateRequestSchema", "");
 	}
 	
-	char *jsonStr =  feedsUpdateRequest.toJson();
+	char *jsonStr =  catalogsFeedUpdateRequestSchema.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -1299,22 +1406,22 @@ static bool feedsUpdateHelper(char * accessToken,
 
 
 bool CatalogFeedsManager::feedsUpdateAsync(char * accessToken,
-	std::string feedId, std::shared_ptr<Feeds_update_request> feedsUpdateRequest, std::string adAccountId, 
+	std::string feedId, std::shared_ptr<CatalogsFeedUpdateRequestSchema> catalogsFeedUpdateRequestSchema, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData)
 {
 	return feedsUpdateHelper(accessToken,
-	feedId, feedsUpdateRequest, adAccountId, 
+	feedId, catalogsFeedUpdateRequestSchema, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogFeedsManager::feedsUpdateSync(char * accessToken,
-	std::string feedId, std::shared_ptr<Feeds_update_request> feedsUpdateRequest, std::string adAccountId, 
+	std::string feedId, std::shared_ptr<CatalogsFeedUpdateRequestSchema> catalogsFeedUpdateRequestSchema, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData)
 {
 	return feedsUpdateHelper(accessToken,
-	feedId, feedsUpdateRequest, adAccountId, 
+	feedId, catalogsFeedUpdateRequestSchema, adAccountId, 
 	handler, userData, false);
 }
 
@@ -1374,6 +1481,16 @@ static bool itemsIssuesListProcessor(MemoryStruct_s p_chunk, long code, char* er
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1394,7 +1511,7 @@ static bool itemsIssuesListProcessor(MemoryStruct_s p_chunk, long code, char* er
 }
 
 static bool itemsIssuesListHelper(char * accessToken,
-	std::string processingResultId, std::string bookmark, int pageSize, std::list<int> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, std::string adAccountId, 
+	std::string processingResultId, std::list<int> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Items_issues_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1411,20 +1528,6 @@ static bool itemsIssuesListHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
-
-	itemAtq = stringify(&bookmark, "std::string");
-	queryParams.insert(pair<string, string>("bookmark", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("bookmark");
-	}
-
-
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
-
 	for (std::list
 	<int>::iterator queryIter = itemNumbers.begin(); queryIter != itemNumbers.end(); ++queryIter) {
 		string itemAt = stringify(&(*queryIter), "int");
@@ -1446,6 +1549,20 @@ static bool itemsIssuesListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("ad_account_id");
+	}
+
+
+	itemAtq = stringify(&bookmark, "std::string");
+	queryParams.insert(pair<string, string>("bookmark", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
 	}
 
 	string mBody = "";
@@ -1508,22 +1625,22 @@ static bool itemsIssuesListHelper(char * accessToken,
 
 
 bool CatalogFeedsManager::itemsIssuesListAsync(char * accessToken,
-	std::string processingResultId, std::string bookmark, int pageSize, std::list<int> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, std::string adAccountId, 
+	std::string processingResultId, std::list<int> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Items_issues_list_200_response, Error, void* )
 	, void* userData)
 {
 	return itemsIssuesListHelper(accessToken,
-	processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId, 
+	processingResultId, itemNumbers, itemValidationIssue, adAccountId, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool CatalogFeedsManager::itemsIssuesListSync(char * accessToken,
-	std::string processingResultId, std::string bookmark, int pageSize, std::list<int> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, std::string adAccountId, 
+	std::string processingResultId, std::list<int> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Items_issues_list_200_response, Error, void* )
 	, void* userData)
 {
 	return itemsIssuesListHelper(accessToken,
-	processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId, 
+	processingResultId, itemNumbers, itemValidationIssue, adAccountId, bookmark, pageSize, 
 	handler, userData, false);
 }
 

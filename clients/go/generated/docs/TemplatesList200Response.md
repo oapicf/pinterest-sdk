@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]TemplateResponse**](TemplateResponse.md) |  | 
+**Items** | [**[]AccountTemplate**](AccountTemplate.md) |  | 
 
 ## Methods
 
 ### NewTemplatesList200Response
 
-`func NewTemplatesList200Response(items []TemplateResponse, ) *TemplatesList200Response`
+`func NewTemplatesList200Response(items []AccountTemplate, ) *TemplatesList200Response`
 
 NewTemplatesList200Response instantiates a new TemplatesList200Response object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ HasBookmark returns a boolean if a field has been set.
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
 ### GetItems
 
-`func (o *TemplatesList200Response) GetItems() []TemplateResponse`
+`func (o *TemplatesList200Response) GetItems() []AccountTemplate`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *TemplatesList200Response) GetItemsOk() (*[]TemplateResponse, bool)`
+`func (o *TemplatesList200Response) GetItemsOk() (*[]AccountTemplate, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *TemplatesList200Response) SetItems(v []TemplateResponse)`
+`func (o *TemplatesList200Response) SetItems(v []AccountTemplate)`
 
 SetItems sets Items field to given value.
 

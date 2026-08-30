@@ -6,6 +6,10 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}catalog_type`,
+                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
+            },
+            {
                 key: `${keyPrefix}created_at`,
                 label: `[${labelPrefix}created_at]`,
                 required: true,
@@ -18,18 +22,14 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}updated_at`,
-                label: `[${labelPrefix}updated_at]`,
+                key: `${keyPrefix}name`,
+                label: `A human-friendly name associated to a catalog entity. - [${labelPrefix}name]`,
                 required: true,
                 type: 'string',
             },
             {
-                key: `${keyPrefix}catalog_type`,
-                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
-            },
-            {
-                key: `${keyPrefix}name`,
-                label: `A human-friendly name associated to a catalog entity. - [${labelPrefix}name]`,
+                key: `${keyPrefix}updated_at`,
+                label: `[${labelPrefix}updated_at]`,
                 required: true,
                 type: 'string',
             },
@@ -38,11 +38,11 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'created_at': bundle.inputData?.[`${keyPrefix}created_at`],
             'id': bundle.inputData?.[`${keyPrefix}id`],
-            'updated_at': bundle.inputData?.[`${keyPrefix}updated_at`],
-            'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
+            'updated_at': bundle.inputData?.[`${keyPrefix}updated_at`],
         }
     },
 }

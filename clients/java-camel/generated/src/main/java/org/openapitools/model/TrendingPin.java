@@ -2,31 +2,36 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Pin image data for trending topics
  */
 
 @Schema(name = "TrendingPin", description = "Pin image data for trending topics")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TrendingPin {
+
+  private String color;
 
   private Integer height;
 
   private String id;
 
   private String src;
+
+  private Double verticalOffset;
 
   private Integer width;
 
@@ -37,11 +42,32 @@ public class TrendingPin {
   /**
    * Constructor with only required parameters
    */
-  public TrendingPin(Integer height, String id, String src, Integer width) {
+  public TrendingPin(String color, Integer height, String id, String src, Integer width) {
+    this.color = color;
     this.height = height;
     this.id = id;
     this.src = src;
     this.width = width;
+  }
+
+  public TrendingPin color(String color) {
+    this.color = color;
+    return this;
+  }
+
+  /**
+   * Dominant color of the pin image in hex format
+   * @return color
+   */
+  @NotNull 
+  @Schema(name = "color", description = "Dominant color of the pin image in hex format", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("color")
+  public String getColor() {
+    return color;
+  }
+
+  public void setColor(String color) {
+    this.color = color;
   }
 
   public TrendingPin height(Integer height) {
@@ -104,6 +130,26 @@ public class TrendingPin {
     this.src = src;
   }
 
+  public TrendingPin verticalOffset(Double verticalOffset) {
+    this.verticalOffset = verticalOffset;
+    return this;
+  }
+
+  /**
+   * The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.
+   * @return verticalOffset
+   */
+  
+  @Schema(name = "vertical_offset", description = "The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("vertical_offset")
+  public Double getVerticalOffset() {
+    return verticalOffset;
+  }
+
+  public void setVerticalOffset(Double verticalOffset) {
+    this.verticalOffset = verticalOffset;
+  }
+
   public TrendingPin width(Integer width) {
     this.width = width;
     return this;
@@ -133,24 +179,28 @@ public class TrendingPin {
       return false;
     }
     TrendingPin trendingPin = (TrendingPin) o;
-    return Objects.equals(this.height, trendingPin.height) &&
+    return Objects.equals(this.color, trendingPin.color) &&
+        Objects.equals(this.height, trendingPin.height) &&
         Objects.equals(this.id, trendingPin.id) &&
         Objects.equals(this.src, trendingPin.src) &&
+        Objects.equals(this.verticalOffset, trendingPin.verticalOffset) &&
         Objects.equals(this.width, trendingPin.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(height, id, src, width);
+    return Objects.hash(color, height, id, src, verticalOffset, width);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TrendingPin {\n");
+    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    src: ").append(toIndentedString(src)).append("\n");
+    sb.append("    verticalOffset: ").append(toIndentedString(verticalOffset)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -161,10 +211,7 @@ public class TrendingPin {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

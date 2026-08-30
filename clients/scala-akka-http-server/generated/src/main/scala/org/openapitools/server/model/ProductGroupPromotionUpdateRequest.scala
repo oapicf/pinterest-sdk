@@ -4,7 +4,7 @@ package org.openapitools.server.model
 /**
  * = ProductGroupPromotionUpdateRequest =
  *
- * @param adGroupId ID of the ad group the product group belongs to. for example: ''2680059592705''
+ * @param adGroupId ID of the ad group the product group belongs to. for example: ''null''
  * @param productGroupPromotion  for example: ''null''
 */
 final case class ProductGroupPromotionUpdateRequest (

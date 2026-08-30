@@ -46,6 +46,13 @@ API.Client.PinMedia.prototype.height;
 API.Client.PinMedia.prototype.videoUrl;
 
 /**
+ * Video url (HLS).  **Note:** This field is limited and not available to all apps.
+ * @type {!string}
+ * @export
+ */
+API.Client.PinMedia.prototype.videoUrlHls;
+
+/**
  * Width (in pixels). Field maybe null after creation due to video processing time.
  * @type {!number}
  * @export

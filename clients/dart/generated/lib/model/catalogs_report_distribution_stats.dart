@@ -170,10 +170,6 @@ class CatalogsReportDistributionStats {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsReportDistributionStats[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsReportDistributionStats[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -237,27 +233,28 @@ class CatalogsReportDistributionStats {
 }
 
 
-class CatalogsReportDistributionStatsReportTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsReportDistributionStatsReportTypeEnum._(this.value);
+enum CatalogsReportDistributionStatsReportTypeEnum {
+  DISTRIBUTION_ISSUES._(r'DISTRIBUTION_ISSUES'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsReportDistributionStatsReportTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const DISTRIBUTION_ISSUES = CatalogsReportDistributionStatsReportTypeEnum._(r'DISTRIBUTION_ISSUES');
-
-  /// List of all possible values in this [enum][CatalogsReportDistributionStatsReportTypeEnum].
-  static const values = <CatalogsReportDistributionStatsReportTypeEnum>[
-    DISTRIBUTION_ISSUES,
-  ];
-
+  /// Returns the instance of [CatalogsReportDistributionStatsReportTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsReportDistributionStatsReportTypeEnum? fromJson(dynamic value) => CatalogsReportDistributionStatsReportTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsReportDistributionStatsReportTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsReportDistributionStatsReportTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsReportDistributionStatsReportTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -279,9 +276,10 @@ class CatalogsReportDistributionStatsReportTypeEnumTypeTransformer {
 
   const CatalogsReportDistributionStatsReportTypeEnumTypeTransformer._();
 
-  String encode(CatalogsReportDistributionStatsReportTypeEnum data) => data.value;
+  String encode(CatalogsReportDistributionStatsReportTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsReportDistributionStatsReportTypeEnum.
+  /// Returns the instance of [CatalogsReportDistributionStatsReportTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -290,6 +288,9 @@ class CatalogsReportDistributionStatsReportTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsReportDistributionStatsReportTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsReportDistributionStatsReportTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'DISTRIBUTION_ISSUES': return CatalogsReportDistributionStatsReportTypeEnum.DISTRIBUTION_ISSUES;
@@ -302,7 +303,7 @@ class CatalogsReportDistributionStatsReportTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsReportDistributionStatsReportTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsReportDistributionStatsReportTypeEnumTypeTransformer? _instance;
 }
 

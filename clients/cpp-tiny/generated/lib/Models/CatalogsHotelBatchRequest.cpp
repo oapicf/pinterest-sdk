@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsHotelBatchRequest::CatalogsHotelBatchRequest()
 {
-	catalog_id = std::string();
+	catalog_id = null;
 	catalog_type = std::string();
 	country = Country();
 	items = std::list<CatalogsHotelBatchItem>();
@@ -166,7 +166,7 @@ CatalogsHotelBatchRequest::getCatalogId()
 }
 
 void
-CatalogsHotelBatchRequest::setCatalogId(std::string  catalog_id)
+CatalogsHotelBatchRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -178,7 +178,7 @@ CatalogsHotelBatchRequest::getCatalogType()
 }
 
 void
-CatalogsHotelBatchRequest::setCatalogType(std::string  catalog_type)
+CatalogsHotelBatchRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -190,7 +190,7 @@ CatalogsHotelBatchRequest::getCountry()
 }
 
 void
-CatalogsHotelBatchRequest::setCountry(Country  country)
+CatalogsHotelBatchRequest::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -202,7 +202,7 @@ CatalogsHotelBatchRequest::getItems()
 }
 
 void
-CatalogsHotelBatchRequest::setItems(std::list <CatalogsHotelBatchItem> items)
+CatalogsHotelBatchRequest::setItems(std::list<CatalogsHotelBatchItem> items)
 {
 	this->items = items;
 }
@@ -214,7 +214,7 @@ CatalogsHotelBatchRequest::getLanguage()
 }
 
 void
-CatalogsHotelBatchRequest::setLanguage(std::string  language)
+CatalogsHotelBatchRequest::setLanguage(std::string language)
 {
 	this->language = language;
 }

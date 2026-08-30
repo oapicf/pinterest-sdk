@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | **String** |  | [optional] 
-**Items** | [**UserSummary[]**](UserSummary.md) |  | 
+**Items** | [**FollowUser[]**](FollowUser.md) |  | 
 
 ## Examples
 

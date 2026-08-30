@@ -1,13 +1,13 @@
 #' Create a new UpdatePartnerAssetAccessBody
 #'
 #' @description
-#' UpdatePartnerAssetAccessBody Class
+#' An object with a list of partner asset accesses to assign or update.
 #'
 #' @docType class
 #' @title UpdatePartnerAssetAccessBody
 #' @description UpdatePartnerAssetAccessBody Class
 #' @format An \code{R6Class} generator object
-#' @field accesses  list(\link{UpdatePartnerAssetAccessBodyAccessesInner})
+#' @field accesses List of partner asset accesses to assign or update. list(\link{UpdatePartnerAssetAccessItem})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,7 +19,7 @@ UpdatePartnerAssetAccessBody <- R6::R6Class(
     #' @description
     #' Initialize a new UpdatePartnerAssetAccessBody class.
     #'
-    #' @param accesses accesses
+    #' @param accesses List of partner asset accesses to assign or update.
     #' @param ... Other optional arguments.
     initialize = function(`accesses`, ...) {
       if (!missing(`accesses`)) {
@@ -62,9 +62,32 @@ UpdatePartnerAssetAccessBody <- R6::R6Class(
       UpdatePartnerAssetAccessBodyObject <- list()
       if (!is.null(self$`accesses`)) {
         UpdatePartnerAssetAccessBodyObject[["accesses"]] <-
-          lapply(self$`accesses`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`accesses`)
       }
       return(UpdatePartnerAssetAccessBodyObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -75,7 +98,7 @@ UpdatePartnerAssetAccessBody <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`accesses`)) {
-        self$`accesses` <- ApiClient$new()$deserializeObj(this_object$`accesses`, "array[UpdatePartnerAssetAccessBodyAccessesInner]", loadNamespace("openapi"))
+        self$`accesses` <- ApiClient$new()$deserializeObj(this_object$`accesses`, "array[UpdatePartnerAssetAccessItem]", loadNamespace("openapi"))
       }
       self
     },
@@ -98,7 +121,7 @@ UpdatePartnerAssetAccessBody <- R6::R6Class(
     #' @return the instance of UpdatePartnerAssetAccessBody
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`accesses` <- ApiClient$new()$deserializeObj(this_object$`accesses`, "array[UpdatePartnerAssetAccessBodyAccessesInner]", loadNamespace("openapi"))
+      self$`accesses` <- ApiClient$new()$deserializeObj(this_object$`accesses`, "array[UpdatePartnerAssetAccessItem]", loadNamespace("openapi"))
       self
     },
 

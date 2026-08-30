@@ -2,24 +2,25 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.model.CatalogsItemValidationDetails;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsItemValidationErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsItemValidationErrors {
 
   private CatalogsItemValidationDetails ADULT_INVALID;
@@ -74,11 +75,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get ADULT_INVALID
+   * Item has an invalid adult value.
    * @return ADULT_INVALID
    */
   @Valid 
-  @Schema(name = "ADULT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ADULT_INVALID", description = "Item has an invalid adult value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADULT_INVALID")
   public CatalogsItemValidationDetails getADULTINVALID() {
     return ADULT_INVALID;
@@ -94,11 +95,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get ADWORDS_FORMAT_INVALID
+   * Adword link contains too many characters.
    * @return ADWORDS_FORMAT_INVALID
    */
   @Valid 
-  @Schema(name = "ADWORDS_FORMAT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ADWORDS_FORMAT_INVALID", description = "Adword link contains too many characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADWORDS_FORMAT_INVALID")
   public CatalogsItemValidationDetails getADWORDSFORMATINVALID() {
     return ADWORDS_FORMAT_INVALID;
@@ -114,11 +115,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get AVAILABILITY_INVALID
+   * Item is missing availability value in its product metadata, this item will not be published.
    * @return AVAILABILITY_INVALID
    */
   @Valid 
-  @Schema(name = "AVAILABILITY_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AVAILABILITY_INVALID", description = "Item is missing availability value in its product metadata, this item will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AVAILABILITY_INVALID")
   public CatalogsItemValidationDetails getAVAILABILITYINVALID() {
     return AVAILABILITY_INVALID;
@@ -134,11 +135,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get BLOCKLISTED_IMAGE_SIGNATURE
+   * Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.
    * @return BLOCKLISTED_IMAGE_SIGNATURE
    */
   @Valid 
-  @Schema(name = "BLOCKLISTED_IMAGE_SIGNATURE", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "BLOCKLISTED_IMAGE_SIGNATURE", description = "Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("BLOCKLISTED_IMAGE_SIGNATURE")
   public CatalogsItemValidationDetails getBLOCKLISTEDIMAGESIGNATURE() {
     return BLOCKLISTED_IMAGE_SIGNATURE;
@@ -154,11 +155,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get DESCRIPTION_MISSING
+   * Item is missing description in its product metadata, this item will not be published.
    * @return DESCRIPTION_MISSING
    */
   @Valid 
-  @Schema(name = "DESCRIPTION_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "DESCRIPTION_MISSING", description = "Item is missing description in its product metadata, this item will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DESCRIPTION_MISSING")
   public CatalogsItemValidationDetails getDESCRIPTIONMISSING() {
     return DESCRIPTION_MISSING;
@@ -174,11 +175,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get DUPLICATE_PRODUCTS
+   * This product is duplicated. The duplicate entry will not be published.
    * @return DUPLICATE_PRODUCTS
    */
   @Valid 
-  @Schema(name = "DUPLICATE_PRODUCTS", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "DUPLICATE_PRODUCTS", description = "This product is duplicated. The duplicate entry will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DUPLICATE_PRODUCTS")
   public CatalogsItemValidationDetails getDUPLICATEPRODUCTS() {
     return DUPLICATE_PRODUCTS;
@@ -194,11 +195,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get IMAGE_LINK_INVALID
+   * Image link is invalid.
    * @return IMAGE_LINK_INVALID
    */
   @Valid 
-  @Schema(name = "IMAGE_LINK_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "IMAGE_LINK_INVALID", description = "Image link is invalid.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_INVALID")
   public CatalogsItemValidationDetails getIMAGELINKINVALID() {
     return IMAGE_LINK_INVALID;
@@ -214,11 +215,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get IMAGE_LINK_LENGTH_TOO_LONG
+   * Item has image_link URL that contains too many characters, so the item will not be published.
    * @return IMAGE_LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "IMAGE_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "IMAGE_LINK_LENGTH_TOO_LONG", description = "Item has image_link URL that contains too many characters, so the item will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getIMAGELINKLENGTHTOOLONG() {
     return IMAGE_LINK_LENGTH_TOO_LONG;
@@ -234,11 +235,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get IMAGE_LINK_MISSING
+   * Item is missing an image link URL in its product metadata, this item will not be published.
    * @return IMAGE_LINK_MISSING
    */
   @Valid 
-  @Schema(name = "IMAGE_LINK_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "IMAGE_LINK_MISSING", description = "Item is missing an image link URL in its product metadata, this item will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_MISSING")
   public CatalogsItemValidationDetails getIMAGELINKMISSING() {
     return IMAGE_LINK_MISSING;
@@ -254,11 +255,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get INVALID_DOMAIN
+   * Product link value doesn't match the verified domain associated with this account.
    * @return INVALID_DOMAIN
    */
   @Valid 
-  @Schema(name = "INVALID_DOMAIN", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "INVALID_DOMAIN", description = "Product link value doesn't match the verified domain associated with this account.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("INVALID_DOMAIN")
   public CatalogsItemValidationDetails getINVALIDDOMAIN() {
     return INVALID_DOMAIN;
@@ -274,11 +275,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
+   * Main image can't be found.
    * @return ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
    */
   @Valid 
-  @Schema(name = "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE", description = "Main image can't be found.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE")
   public CatalogsItemValidationDetails getITEMMAINIMAGEDOWNLOADFAILURE() {
     return ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
@@ -294,11 +295,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get ITEMID_MISSING
+   * Item is missing item id in its product metadata, this item will not be published.
    * @return ITEMID_MISSING
    */
   @Valid 
-  @Schema(name = "ITEMID_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ITEMID_MISSING", description = "Item is missing item id in its product metadata, this item will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ITEMID_MISSING")
   public CatalogsItemValidationDetails getITEMIDMISSING() {
     return ITEMID_MISSING;
@@ -314,11 +315,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get LINK_FORMAT_INVALID
+   * Link is invalid.
    * @return LINK_FORMAT_INVALID
    */
   @Valid 
-  @Schema(name = "LINK_FORMAT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "LINK_FORMAT_INVALID", description = "Link is invalid.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINK_FORMAT_INVALID")
   public CatalogsItemValidationDetails getLINKFORMATINVALID() {
     return LINK_FORMAT_INVALID;
@@ -334,11 +335,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get LINK_LENGTH_TOO_LONG
+   * Product link contains too many characters, this item will not be published.
    * @return LINK_LENGTH_TOO_LONG
    */
   @Valid 
-  @Schema(name = "LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "LINK_LENGTH_TOO_LONG", description = "Product link contains too many characters, this item will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINK_LENGTH_TOO_LONG")
   public CatalogsItemValidationDetails getLINKLENGTHTOOLONG() {
     return LINK_LENGTH_TOO_LONG;
@@ -354,11 +355,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get LIST_PRICE_INVALID
+   * Item has a list price formatting error, this item will not be published.
    * @return LIST_PRICE_INVALID
    */
   @Valid 
-  @Schema(name = "LIST_PRICE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "LIST_PRICE_INVALID", description = "Item has a list price formatting error, this item will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LIST_PRICE_INVALID")
   public CatalogsItemValidationDetails getLISTPRICEINVALID() {
     return LIST_PRICE_INVALID;
@@ -374,11 +375,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED
+   * Item exceed the maximum number of items per item group, this item will not be published.
    * @return MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED
    */
   @Valid 
-  @Schema(name = "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED", description = "Item exceed the maximum number of items per item group, this item will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED")
   public CatalogsItemValidationDetails getMAXITEMSPERITEMGROUPEXCEEDED() {
     return MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
@@ -394,11 +395,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get PARSE_LINE_ERROR
+   * Item contains formating errors.
    * @return PARSE_LINE_ERROR
    */
   @Valid 
-  @Schema(name = "PARSE_LINE_ERROR", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "PARSE_LINE_ERROR", description = "Item contains formating errors.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PARSE_LINE_ERROR")
   public CatalogsItemValidationDetails getPARSELINEERROR() {
     return PARSE_LINE_ERROR;
@@ -414,11 +415,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get PINJOIN_CONTENT_UNSAFE
+   * Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.
    * @return PINJOIN_CONTENT_UNSAFE
    */
   @Valid 
-  @Schema(name = "PINJOIN_CONTENT_UNSAFE", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "PINJOIN_CONTENT_UNSAFE", description = "Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PINJOIN_CONTENT_UNSAFE")
   public CatalogsItemValidationDetails getPINJOINCONTENTUNSAFE() {
     return PINJOIN_CONTENT_UNSAFE;
@@ -434,11 +435,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get PRICE_CANNOT_BE_DETERMINED
+   * Item price cannot be determined because the price, list price, and sale price are all different.
    * @return PRICE_CANNOT_BE_DETERMINED
    */
   @Valid 
-  @Schema(name = "PRICE_CANNOT_BE_DETERMINED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "PRICE_CANNOT_BE_DETERMINED", description = "Item price cannot be determined because the price, list price, and sale price are all different.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRICE_CANNOT_BE_DETERMINED")
   public CatalogsItemValidationDetails getPRICECANNOTBEDETERMINED() {
     return PRICE_CANNOT_BE_DETERMINED;
@@ -454,11 +455,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get PRICE_MISSING
+   * Product is missing a price, this item will not be published.
    * @return PRICE_MISSING
    */
   @Valid 
-  @Schema(name = "PRICE_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "PRICE_MISSING", description = "Product is missing a price, this item will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRICE_MISSING")
   public CatalogsItemValidationDetails getPRICEMISSING() {
     return PRICE_MISSING;
@@ -474,11 +475,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get PRODUCT_LINK_MISSING
+   * Item is missing a link URL in its product metadata, this item will not be published.
    * @return PRODUCT_LINK_MISSING
    */
   @Valid 
-  @Schema(name = "PRODUCT_LINK_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "PRODUCT_LINK_MISSING", description = "Item is missing a link URL in its product metadata, this item will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_LINK_MISSING")
   public CatalogsItemValidationDetails getPRODUCTLINKMISSING() {
     return PRODUCT_LINK_MISSING;
@@ -494,11 +495,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get PRODUCT_PRICE_INVALID
+   * Item has a price formatting error in its product metadata, this item will not be published.
    * @return PRODUCT_PRICE_INVALID
    */
   @Valid 
-  @Schema(name = "PRODUCT_PRICE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "PRODUCT_PRICE_INVALID", description = "Item has a price formatting error in its product metadata, this item will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_PRICE_INVALID")
   public CatalogsItemValidationDetails getPRODUCTPRICEINVALID() {
     return PRODUCT_PRICE_INVALID;
@@ -514,11 +515,11 @@ public class CatalogsItemValidationErrors {
   }
 
   /**
-   * Get TITLE_MISSING
+   * Item is missing title in its product metadata, this item will not be published.
    * @return TITLE_MISSING
    */
   @Valid 
-  @Schema(name = "TITLE_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "TITLE_MISSING", description = "Item is missing title in its product metadata, this item will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TITLE_MISSING")
   public CatalogsItemValidationDetails getTITLEMISSING() {
     return TITLE_MISSING;
@@ -603,10 +604,7 @@ public class CatalogsItemValidationErrors {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -16,10 +16,10 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.LeadsExportCreateRequest
-import org.openapitools.server.api.model.LeadsExportCreateResponse
 import org.openapitools.server.api.model.LeadsExportResponseData
+import org.openapitools.server.api.model.LeadsExports
+import org.openapitools.server.api.model.LeadsExportsCreate
+import org.openapitools.server.api.model.PinterestLibError
 
 class LeadsExportApiVertxProxyHandler(private val vertx: Vertx, private val service: LeadsExportApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -73,13 +73,13 @@ class LeadsExportApiVertxProxyHandler(private val vertx: Vertx, private val serv
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val leadsExportCreateRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (leadsExportCreateRequestParam == null) {
-                        throw IllegalArgumentException("leadsExportCreateRequest is required")
+                    val leadsExportsCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (leadsExportsCreateParam == null) {
+                        throw IllegalArgumentException("leadsExportsCreate is required")
                     }
-                    val leadsExportCreateRequest = Gson().fromJson(leadsExportCreateRequestParam.encode(), LeadsExportCreateRequest::class.java)
+                    val leadsExportsCreate = Gson().fromJson(leadsExportsCreateParam.encode(), LeadsExportsCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.leadsExportCreate(adAccountId,leadsExportCreateRequest,context)
+                        val result = service.leadsExportCreate(adAccountId,leadsExportsCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

@@ -6,11 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **advertiser_id** | **string** | Advertiser ID of the billing. | [optional] [default to undefined]
-**billing_type** | **string** | Billing type of the advertiser | [optional] [default to undefined]
-**card_type** | **string** | Type of the card. | [optional] [default to undefined]
+**billing_type** | [**BillingType**](BillingType.md) | Billing type of the advertiser | [optional] [default to undefined]
+**card_type** | [**BillingProfileCardType**](BillingProfileCardType.md) | Type of the card. | [optional] [default to undefined]
 **id** | **string** | Billing ID. | [optional] [default to undefined]
-**payment_method_brand** | **string** | Brand of the payment method. | [optional] [default to undefined]
-**status** | **string** | Status of the billing. | [optional] [default to undefined]
+**payment_method_brand** | [**BillingProfilePaymentMethodBrand**](BillingProfilePaymentMethodBrand.md) | Brand of the payment method. | [optional] [default to undefined]
+**status** | [**BillingProfileStatus**](BillingProfileStatus.md) | Status of the billing. | [optional] [default to undefined]
 
 ## Example
 

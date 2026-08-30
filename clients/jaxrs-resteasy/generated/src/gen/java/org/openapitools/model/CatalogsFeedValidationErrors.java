@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedValidationErrors   {
   
   private Integer ADULT_INVALID;
@@ -191,10 +191,10 @@ public class CatalogsFeedValidationErrors   {
   }
 
   /**
-   * Your feed wasn&#39;t ingested because it hasn’t changed in the previous 90 days.
+   * Your feed wasn&#39;t ingested because it hasn&#39;t changed in the previous 90 days.
    **/
   
-  @ApiModelProperty(value = "Your feed wasn't ingested because it hasn’t changed in the previous 90 days.")
+  @ApiModelProperty(value = "Your feed wasn't ingested because it hasn't changed in the previous 90 days.")
   @JsonProperty("FETCH_INACTIVE_FEED_ERROR")
   public Integer getFETCHINACTIVEFEEDERROR() {
     return FETCH_INACTIVE_FEED_ERROR;
@@ -573,10 +573,7 @@ public class CatalogsFeedValidationErrors   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

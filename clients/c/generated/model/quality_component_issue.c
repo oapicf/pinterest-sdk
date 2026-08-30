@@ -14,11 +14,11 @@ static quality_component_issue_t *quality_component_issue_create_internal(
     if (!quality_component_issue_local_var) {
         return NULL;
     }
+    memset(quality_component_issue_local_var, 0, sizeof(quality_component_issue_t));
+    quality_component_issue_local_var->_library_owned = 1;
     quality_component_issue_local_var->id = id;
     quality_component_issue_local_var->name = name;
     quality_component_issue_local_var->reason = reason;
-
-    quality_component_issue_local_var->_library_owned = 1;
     return quality_component_issue_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) quality_component_issue_t *quality_component_issue_c
     char *name,
     char *reason
     ) {
-    return quality_component_issue_create_internal (
+    quality_component_issue_t *result = quality_component_issue_create_internal (
         id,
         name,
         reason
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quality_component_issue_free(quality_component_issue_t *quality_component_issue) {
@@ -99,6 +102,12 @@ quality_component_issue_t *quality_component_issue_parseFromJSON(cJSON *quality_
 
     quality_component_issue_t *quality_component_issue_local_var = NULL;
 
+    char *id_local_str = NULL;
+
+    char *name_local_str = NULL;
+
+    char *reason_local_str = NULL;
+
     // quality_component_issue->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(quality_component_issueJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -145,14 +154,34 @@ quality_component_issue_t *quality_component_issue_parseFromJSON(cJSON *quality_
     }
 
 
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (reason && !cJSON_IsNull(reason)) reason_local_str = strdup(reason->valuestring);
+
     quality_component_issue_local_var = quality_component_issue_create_internal (
-        strdup(id->valuestring),
-        strdup(name->valuestring),
-        strdup(reason->valuestring)
+        id_local_str,
+        name_local_str,
+        reason_local_str
         );
+
+    if (!quality_component_issue_local_var) {
+        goto end;
+    }
 
     return quality_component_issue_local_var;
 end:
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (reason_local_str) {
+        free(reason_local_str);
+        reason_local_str = NULL;
+    }
     return NULL;
 
 }

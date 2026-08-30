@@ -6,12 +6,14 @@ Product counts for a CatalogsProductGroup
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | 
+**catalog_type** | **str** |  | 
 **in_stock** | **float** |  | 
 **out_of_stock** | **float** |  | 
 **preorder** | **float** |  | 
 **total** | **float** |  | 
 **videos** | **float** |  | 
+**app_links** | **float** |  | 
+**images** | **float** |  | 
 
 ## Example
 

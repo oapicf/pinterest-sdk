@@ -71,14 +71,14 @@ ProductCategoriesDemographic::toJson()
 
 }
 
-Map<string, string>
+std::map<std::string, long>
 ProductCategoriesDemographic::getAge()
 {
 	return age;
 }
 
 void
-ProductCategoriesDemographic::setAge(Map <string, string> age)
+ProductCategoriesDemographic::setAge(std::map<std::string, long> age)
 {
 	this->age = age;
 }
@@ -90,7 +90,7 @@ ProductCategoriesDemographic::getGender()
 }
 
 void
-ProductCategoriesDemographic::setGender(GenderDemographics  gender)
+ProductCategoriesDemographic::setGender(GenderDemographics gender)
 {
 	this->gender = gender;
 }

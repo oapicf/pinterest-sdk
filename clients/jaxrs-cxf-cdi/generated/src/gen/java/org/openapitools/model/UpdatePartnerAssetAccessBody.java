@@ -7,39 +7,43 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.UpdatePartnerAssetAccessBodyAccessesInner;
+import org.openapitools.model.UpdatePartnerAssetAccessItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+/**
+ * An object with a list of partner asset accesses to assign or update.
+ **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-
+@ApiModel(description = "An object with a list of partner asset accesses to assign or update.")
 public class UpdatePartnerAssetAccessBody   {
   
-  private List<@Valid UpdatePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+  private List<@Valid UpdatePartnerAssetAccessItem> accesses = new ArrayList<>();
 
   /**
+   * List of partner asset accesses to assign or update.
    **/
-  public UpdatePartnerAssetAccessBody accesses(List<@Valid UpdatePartnerAssetAccessBodyAccessesInner> accesses) {
+  public UpdatePartnerAssetAccessBody accesses(List<@Valid UpdatePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "List of partner asset accesses to assign or update.")
   @JsonProperty("accesses")
   @NotNull
- @Size(min=1,max=50)  public List<@Valid UpdatePartnerAssetAccessBodyAccessesInner> getAccesses() {
+ @Size(min=1,max=50)  public List<@Valid UpdatePartnerAssetAccessItem> getAccesses() {
     return accesses;
   }
-  public void setAccesses(List<@Valid UpdatePartnerAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<@Valid UpdatePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
-  public UpdatePartnerAssetAccessBody addAccessesItem(UpdatePartnerAssetAccessBodyAccessesInner accessesItem) {
+  public UpdatePartnerAssetAccessBody addAccessesItem(UpdatePartnerAssetAccessItem accessesItem) {
     if (this.accesses == null) {
       this.accesses = new ArrayList<>();
     }
@@ -81,10 +85,7 @@ public class UpdatePartnerAssetAccessBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

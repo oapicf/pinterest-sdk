@@ -1,7 +1,7 @@
 /*
  * record_counts.h
  *
- * Record processing counts
+ * 
  */
 
 #ifndef _record_counts_H_
@@ -19,17 +19,17 @@ typedef struct record_counts_t record_counts_t;
 
 
 typedef struct record_counts_t {
-    int invalid; //numeric
-    int processed; //numeric
-    int valid; //numeric
+    int *invalid; //numeric
+    int *processed; //numeric
+    int *valid; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } record_counts_t;
 
 __attribute__((deprecated)) record_counts_t *record_counts_create(
-    int invalid,
-    int processed,
-    int valid
+    int *invalid,
+    int *processed,
+    int *valid
 );
 
 void record_counts_free(record_counts_t *record_counts);

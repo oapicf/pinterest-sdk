@@ -11,60 +11,63 @@ import java.util.List;
 import org.openapitools.model.*;
 
 import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
+import org.openapitools.model.AssetGroupDeletion;
+import org.openapitools.model.AssetGroupDeletionDelete;
+import org.openapitools.model.AssetGroupInput;
+import org.openapitools.model.AssetGroupInputCreate;
+import org.openapitools.model.AssetGroupModification;
+import org.openapitools.model.AssetGroupModificationReadOrUpdate;
+import org.openapitools.model.AssetPermissionType;
+import org.openapitools.model.AssetSearchBy;
+import org.openapitools.model.AssetSortBy;
 import org.openapitools.model.AudienceAccountType;
-import org.openapitools.model.AudiencesList200Response;
 import org.openapitools.model.AuthRespondInvitesBody;
 import org.openapitools.model.BusinessAssetMembersGet200Response;
-import org.openapitools.model.BusinessAssetPartnersGet200Response;
 import org.openapitools.model.BusinessAssetsGet200Response;
-import org.openapitools.model.BusinessMemberAssetsGet200Response;
-import org.openapitools.model.BusinessMembersAssetAccessDeleteRequest;
+import org.openapitools.model.BusinessMemberAssetsGetResponse;
+import org.openapitools.model.BusinessMembersAssetAccessDeleteBody;
+import org.openapitools.model.BusinessMembershipMember;
 import org.openapitools.model.BusinessPartnerAssetAccessGet200Response;
-import org.openapitools.model.BusinessSharedAudience;
-import org.openapitools.model.BusinessSharedAudienceResponse;
-import org.openapitools.model.CancelInvitesBody;
+import org.openapitools.model.BusinessToAdAccountSharedAudience;
+import org.openapitools.model.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.BusinessToBusinessSharedAudience;
+import org.openapitools.model.BusinessToBusinessSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.CancelInvitesRequest;
+import org.openapitools.model.CancelInvitesResponse;
 import org.openapitools.model.CreateAssetAccessRequestBody;
 import org.openapitools.model.CreateAssetAccessRequestResponse;
-import org.openapitools.model.CreateAssetGroupBody;
-import org.openapitools.model.CreateAssetGroupResponse;
 import org.openapitools.model.CreateAssetInvitesRequest;
 import org.openapitools.model.CreateInvitesResultsResponseArray;
 import org.openapitools.model.CreateMembershipOrPartnershipInvitesBody;
-import org.openapitools.model.DeleteAssetGroupBody;
-import org.openapitools.model.DeleteAssetGroupResponse;
-import org.openapitools.model.DeleteInvitesResultsResponseArray;
+import org.openapitools.model.DeleteBusinessMembership200Response;
+import org.openapitools.model.DeleteBusinessMembershipBody;
+import org.openapitools.model.DeleteBusinessPartners;
+import org.openapitools.model.DeleteBusinessPartnersDelete;
 import org.openapitools.model.DeleteMemberAccessResultsResponseArray;
 import org.openapitools.model.DeletePartnerAssetAccessBody;
-import org.openapitools.model.DeletePartnerAssetsResultsResponseArray;
-import org.openapitools.model.DeletePartnersRequest;
-import org.openapitools.model.DeletePartnersResponse;
-import org.openapitools.model.DeletedMembersResponse;
-import org.openapitools.model.Error;
+import org.openapitools.model.DeletePartnerAssetAccessResultsResponseArray;
 import org.openapitools.model.GetBusinessEmployers200Response;
-import org.openapitools.model.GetBusinessMembers200Response;
-import org.openapitools.model.GetBusinessPartners200Response;
 import org.openapitools.model.GetInvites200Response;
+import org.openapitools.model.InviteFilterStatus;
 import org.openapitools.model.InviteType;
 import java.util.List;
 import org.openapitools.model.MemberBusinessRole;
-import org.openapitools.model.MembersToDeleteBody;
+import org.openapitools.model.NonDraftEntityStatus;
+import org.openapitools.model.Order;
 import org.openapitools.model.PartnerType;
 import org.openapitools.model.PermissionsWithOwner;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.RespondToInvitesResponseArray;
-import org.openapitools.model.SharedAudience;
-import org.openapitools.model.SharedAudienceResponse;
-import org.openapitools.model.SystemUserUpdateRequest;
-import org.openapitools.model.UpdateAssetGroupBody;
-import org.openapitools.model.UpdateAssetGroupResponse;
+import org.openapitools.model.SharedAudiencesForBusinessList200Response;
+import org.openapitools.model.SystemUserUpdateWithRequiredBody;
+import org.openapitools.model.UpdateBusinessMembershipsResponse;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
 import org.openapitools.model.UpdateMemberAssetAccessBody;
 import org.openapitools.model.UpdateMemberAssetsResultsResponseArray;
-import org.openapitools.model.UpdateMemberBusinessRoleBody;
-import org.openapitools.model.UpdateMemberResultsResponseArray;
 import org.openapitools.model.UpdatePartnerAssetAccessBody;
 import org.openapitools.model.UpdatePartnerAssetsResultsResponseArray;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessesController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map
@@ -79,31 +82,31 @@ public class BusinessesController  {
   */
 
   /*
-    public ResponseContext assetGroupCreate(RequestContext request , String businessId, CreateAssetGroupBody createAssetGroupBody) {
+    public ResponseContext assetGroupCreate(RequestContext request , String businessId, AssetGroupInputCreate assetGroupInputCreate) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext assetGroupDelete(RequestContext request , String businessId, DeleteAssetGroupBody deleteAssetGroupBody) {
+    public ResponseContext assetGroupDelete(RequestContext request , String businessId, AssetGroupDeletionDelete assetGroupDeletionDelete) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext assetGroupUpdate(RequestContext request , String businessId, UpdateAssetGroupBody updateAssetGroupBody) {
+    public ResponseContext assetGroupUpdate(RequestContext request , String businessId, AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext businessAccountAudiencesSharedAccountsList(RequestContext request , String businessId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark) {
+    public ResponseContext businessAccountAudiencesSharedAccountsList(RequestContext request , String businessId, String audienceId, AudienceAccountType accountType, String bookmark, Integer pageSize) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext businessAssetMembersGet(RequestContext request , String businessId, String assetId, Boolean fetchSystemUsers, String bookmark, Integer pageSize, Integer startIndex) {
+    public ResponseContext businessAssetMembersGet(RequestContext request , String businessId, String assetId, Integer startIndex, Boolean fetchSystemUsers, String bookmark, Integer pageSize) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -121,13 +124,13 @@ public class BusinessesController  {
   */
 
   /*
-    public ResponseContext businessMemberAssetsGet(RequestContext request , String businessId, String memberId, String assetType, Integer startIndex, String bookmark, Integer pageSize) {
+    public ResponseContext businessMemberAssetsGet(RequestContext request , String businessId, String memberId, String assetType, Integer startIndex, AssetSortBy sortBy, Boolean sortAscending, AssetSearchBy searchBy, String searchValue, AssetPermissionType assetPermissionType, List<NonDraftEntityStatus> adAccountStatuses, String bookmark, Integer pageSize) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext businessMembersAssetAccessDelete(RequestContext request , String businessId, BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest) {
+    public ResponseContext businessMembersAssetAccessDelete(RequestContext request , String businessId, BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -139,13 +142,13 @@ public class BusinessesController  {
   */
 
   /*
-    public ResponseContext businessPartnerAssetAccessGet(RequestContext request , String businessId, String partnerId, PartnerType partnerType, String assetType, Integer startIndex, Integer pageSize, String bookmark) {
+    public ResponseContext businessPartnerAssetAccessGet(RequestContext request , String businessId, String partnerId, String partnerType, String assetType, Integer startIndex, AssetSortBy sortBy, Boolean sortAscending, AssetSearchBy searchBy, String searchValue, String bookmark, Integer pageSize) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext cancelInvitesOrRequests(RequestContext request , String businessId, CancelInvitesBody cancelInvitesBody) {
+    public ResponseContext cancelInvitesOrRequests(RequestContext request , String businessId, CancelInvitesRequest cancelInvitesRequest) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -163,13 +166,13 @@ public class BusinessesController  {
   */
 
   /*
-    public ResponseContext deleteBusinessMembership(RequestContext request , String businessId, MembersToDeleteBody membersToDeleteBody) {
+    public ResponseContext deleteBusinessMembership(RequestContext request , String businessId, DeleteBusinessMembershipBody deleteBusinessMembershipBody) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext deleteBusinessPartners(RequestContext request , String businessId, DeletePartnersRequest deletePartnersRequest) {
+    public ResponseContext deleteBusinessPartners(RequestContext request , String businessId, DeleteBusinessPartnersDelete deleteBusinessPartnersDelete) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -181,7 +184,7 @@ public class BusinessesController  {
   */
 
   /*
-    public ResponseContext getBusinessEmployers(RequestContext request , Integer pageSize, String bookmark) {
+    public ResponseContext getBusinessEmployers(RequestContext request , Boolean assetsSummary, String bookmark, Integer pageSize) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -193,13 +196,13 @@ public class BusinessesController  {
   */
 
   /*
-    public ResponseContext getBusinessPartners(RequestContext request , String businessId, Boolean assetsSummary, PartnerType partnerType, String partnerIds, Integer startIndex, Integer pageSize, String bookmark) {
+    public ResponseContext getBusinessPartners(RequestContext request , String businessId, Boolean assetsSummary, PartnerType partnerType, String partnerIds, Integer startIndex, Boolean sortAscending, String bookmark, Integer pageSize) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext getInvites(RequestContext request , String businessId, Boolean isMember, List<String> inviteStatus, InviteType inviteType, String bookmark, Integer pageSize) {
+    public ResponseContext getInvites(RequestContext request , String businessId, Boolean isMember, List<InviteFilterStatus> inviteStatus, InviteType inviteType, String bookmark, Integer pageSize) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -211,31 +214,31 @@ public class BusinessesController  {
   */
 
   /*
-    public ResponseContext sharedAudiencesForBusinessList(RequestContext request , String businessId, String bookmark, String order, Integer pageSize) {
+    public ResponseContext sharedAudiencesForBusinessList(RequestContext request , String businessId, Order order, String bookmark, Integer pageSize) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext systemUserUpdate(RequestContext request , String businessId, String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest) {
+    public ResponseContext systemUserUpdate(RequestContext request , String businessId, String systemUserId, SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext updateBusinessMemberships(RequestContext request , String businessId, List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody) {
+    public ResponseContext updateBusinessMemberships(RequestContext request , String businessId, List<BusinessMembershipMember> businessMembershipMember) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext updateBusinessToAdAccountSharedAudience(RequestContext request , String businessId, SharedAudience sharedAudience) {
+    public ResponseContext updateBusinessToAdAccountSharedAudience(RequestContext request , String businessId, BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext updateBusinessToBusinessSharedAudience(RequestContext request , String businessId, BusinessSharedAudience businessSharedAudience) {
+    public ResponseContext updateBusinessToBusinessSharedAudience(RequestContext request , String businessId, BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

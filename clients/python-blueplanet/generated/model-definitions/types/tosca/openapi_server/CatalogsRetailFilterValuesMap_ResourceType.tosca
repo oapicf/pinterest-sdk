@@ -7,6 +7,10 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  Gender = openapi_server.resourceTypes.Gender
+  MediaType = openapi_server.resourceTypes.MediaType
+  ProductAvailability = openapi_server.resourceTypes.ProductAvailability
+  ProductCondition = openapi_server.resourceTypes.ProductCondition
 }
 resourceTypes {
 
@@ -29,9 +33,8 @@ resourceTypes {
         }
         availability {
           type = array
-          items.type =  string
+          items.type = ProductAvailability
           description = ""
-          enum = ["IN_STOCK", "OUT_OF_STOCK", "PREORDER", "UNAVAILABLE"]
           optional = false
         }
         brand {
@@ -42,9 +45,8 @@ resourceTypes {
         }
         condition {
           type = array
-          items.type =  string
+          items.type = ProductCondition
           description = ""
-          enum = ["NEW", "USED", "REFURBISHED"]
           optional = false
         }
         custom_label_0 {
@@ -79,9 +81,8 @@ resourceTypes {
         }
         gender {
           type = array
-          items.type =  string
+          items.type = Gender
           description = ""
-          enum = ["FEMALE", "MALE", "UNISEX"]
           optional = false
         }
         google_product_category_0 {
@@ -128,9 +129,8 @@ resourceTypes {
         }
         media_type {
           type = array
-          items.type =  string
+          items.type = MediaType
           description = ""
-          enum = ["IMAGE", "VIDEO"]
           optional = false
         }
         product_type_0 {

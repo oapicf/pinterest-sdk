@@ -5,7 +5,7 @@ Protected Class OrderLine
 		#tag Note
 			Ad account ID.
 		#tag EndNote
-		ad_account_id As Xoson.O.OptionalString
+		ad_account_id As String
 	#tag EndProperty
 
 
@@ -14,6 +14,14 @@ Protected Class OrderLine
 			Order line budget in micro currency.
 		#tag EndNote
 		budget As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Associated List of campaign IDs.
+		#tag EndNote
+		campaign_ids() As String
 	#tag EndProperty
 
 
@@ -29,7 +37,7 @@ Protected Class OrderLine
 		#tag Note
 			Order line ID.
 		#tag EndNote
-		id As Xoson.O.OptionalString
+		id As String
 	#tag EndProperty
 
 
@@ -77,7 +85,7 @@ Protected Class OrderLine
 		#tag Note
 			Order line status.
 		#tag EndNote
-		status As Xoson.O.OptionalString
+		status As String
 	#tag EndProperty
 
 
@@ -85,15 +93,7 @@ Protected Class OrderLine
 		#tag Note
 			Always "orderline".
 		#tag EndNote
-		type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Associated List of campaign IDs.
-		#tag EndNote
-		campaign_ids() As String
+		type As String
 	#tag EndProperty
 
 
@@ -147,6 +147,14 @@ Protected Class OrderLine
 			Group="Behavior"
 			InitialValue=""
 			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="campaign_ids"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -215,14 +223,6 @@ Protected Class OrderLine
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="campaign_ids"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

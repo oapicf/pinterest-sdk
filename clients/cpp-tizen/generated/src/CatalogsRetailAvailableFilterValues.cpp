@@ -24,7 +24,7 @@ void
 CatalogsRetailAvailableFilterValues::__init()
 {
 	//catalog_type = std::string();
-	//filter_values = new Catalogs_retail_filter_values_map();
+	//filter_values = new CatalogsRetailFilterValuesMap();
 }
 
 void
@@ -64,11 +64,11 @@ CatalogsRetailAvailableFilterValues::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("Catalogs_retail_filter_values_map")) {
-			jsonToValue(&filter_values, node, "Catalogs_retail_filter_values_map", "Catalogs_retail_filter_values_map");
+		if (isprimitive("CatalogsRetailFilterValuesMap")) {
+			jsonToValue(&filter_values, node, "CatalogsRetailFilterValuesMap", "CatalogsRetailFilterValuesMap");
 		} else {
 			
-			Catalogs_retail_filter_values_map* obj = static_cast<Catalogs_retail_filter_values_map*> (&filter_values);
+			CatalogsRetailFilterValuesMap* obj = static_cast<CatalogsRetailFilterValuesMap*> (&filter_values);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -94,13 +94,13 @@ CatalogsRetailAvailableFilterValues::toJson()
 	}
 	const gchar *catalog_typeKey = "catalog_type";
 	json_object_set_member(pJsonObject, catalog_typeKey, node);
-	if (isprimitive("Catalogs_retail_filter_values_map")) {
-		Catalogs_retail_filter_values_map obj = getFilterValues();
-		node = converttoJson(&obj, "Catalogs_retail_filter_values_map", "");
+	if (isprimitive("CatalogsRetailFilterValuesMap")) {
+		CatalogsRetailFilterValuesMap obj = getFilterValues();
+		node = converttoJson(&obj, "CatalogsRetailFilterValuesMap", "");
 	}
 	else {
 		
-		Catalogs_retail_filter_values_map obj = static_cast<Catalogs_retail_filter_values_map> (getFilterValues());
+		CatalogsRetailFilterValuesMap obj = static_cast<CatalogsRetailFilterValuesMap> (getFilterValues());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -128,14 +128,14 @@ CatalogsRetailAvailableFilterValues::setCatalogType(std::string  catalog_type)
 	this->catalog_type = catalog_type;
 }
 
-Catalogs_retail_filter_values_map
+CatalogsRetailFilterValuesMap
 CatalogsRetailAvailableFilterValues::getFilterValues()
 {
 	return filter_values;
 }
 
 void
-CatalogsRetailAvailableFilterValues::setFilterValues(Catalogs_retail_filter_values_map  filter_values)
+CatalogsRetailAvailableFilterValues::setFilterValues(CatalogsRetailFilterValuesMap  filter_values)
 {
 	this->filter_values = filter_values;
 }

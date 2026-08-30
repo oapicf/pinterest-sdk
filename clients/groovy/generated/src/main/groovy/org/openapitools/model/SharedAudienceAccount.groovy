@@ -3,6 +3,7 @@ package org.openapitools.model;
 import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.AudienceAccountType;
 
 @Canonical
 class SharedAudienceAccount {
@@ -10,31 +11,8 @@ class SharedAudienceAccount {
     String accountId
     /* Account name. */
     String accountName
-
-    enum AccountTypeEnum {
-    
-        AD_ACCOUNT("AD_ACCOUNT"),
-        
-        BUSINESS_ACCOUNT("BUSINESS_ACCOUNT")
-    
-        private final String value
-    
-        AccountTypeEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
     /* account type */
-    AccountTypeEnum accountType
+    AudienceAccountType accountType
     /* Epoch timestamp in seconds for the shared audience event */
     Integer sharedOnTimestamp
 }

@@ -15,7 +15,7 @@ Feature | HTTP request | Description
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 
 
 ### Parameters
@@ -44,12 +44,12 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_user_boards_get**
-> search_user_boards_get (ad_account_id:  detachable STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; query:  detachable STRING_32 ): detachable SEARCH_USER_BOARDS_GET_200_RESPONSE
+> search_user_boards_get (ad_account_id:  detachable STRING_32 ; query:  detachable STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ): detachable BOARDS_LIST_200_RESPONSE
 
 
 Search user's boards
 
-Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 
 ### Parameters
@@ -57,13 +57,13 @@ Search for boards for the \"operation user_account\". This includes boards of al
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
- **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **query** | **STRING_32**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] [default to null]
+ **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**SEARCH_USER_BOARDS_GET_200_RESPONSE**](search_user_boards_get_200_response.md)
+[**BOARDS_LIST_200_RESPONSE**](boards_list_200_response.md)
 
 ### Authorization
 
@@ -77,12 +77,12 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_user_pins_list**
-> search_user_pins_list (query: STRING_32 ; ad_account_id:  detachable STRING_32 ; bookmark:  detachable STRING_32 ): detachable SEARCH_USER_PINS_LIST_200_RESPONSE
+> search_user_pins_list (query: STRING_32 ; ad_account_id:  detachable STRING_32 ; bookmark:  detachable STRING_32 ): detachable PINS_LIST_200_RESPONSE
 
 
 Search user's Pins
 
-Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 
 ### Parameters
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SEARCH_USER_PINS_LIST_200_RESPONSE**](search_user_pins_list_200_response.md)
+[**PINS_LIST_200_RESPONSE**](pins_list_200_response.md)
 
 ### Authorization
 

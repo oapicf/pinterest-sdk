@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **string** |  | [optional] [default to undefined]
 **images** | [**ImageSize**](ImageSize.md) |  | [optional] [default to undefined]
-**item_type** | **string** |  | [optional] [default to undefined]
+**item_type** | **string** | Discriminator literal identifying this as image metadata inside a &#x60;PinMediaMetadata&#x60; payload. | [default to undefined]
 **link** | **string** |  | [optional] [default to undefined]
 **title** | **string** |  | [optional] [default to undefined]
 

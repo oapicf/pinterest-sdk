@@ -109,15 +109,17 @@ class _$FeaturedTrendSerializer implements PrimitiveSerializer<FeaturedTrend> {
         case r'market':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ProductCategoryRegion),
-          ) as ProductCategoryRegion;
+            specifiedType: const FullType.nullable(ProductCategoryRegion),
+          ) as ProductCategoryRegion?;
+          if (valueDes == null) continue;
           result.market = valueDes;
           break;
         case r'trends':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(TrendingTopic)]),
-          ) as BuiltList<TrendingTopic>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(TrendingTopic)]),
+          ) as BuiltList<TrendingTopic>?;
+          if (valueDes == null) continue;
           result.trends.replace(valueDes);
           break;
         default:

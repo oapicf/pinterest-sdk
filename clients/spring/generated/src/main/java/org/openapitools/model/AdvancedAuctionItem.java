@@ -11,28 +11,28 @@ import org.openapitools.model.Language;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * AdvancedAuctionItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdvancedAuctionItem {
+
+  private AdvancedAuctionBidOptions bidOptions;
 
   private Country country;
 
   private String itemId;
 
   private Language language;
-
-  private AdvancedAuctionBidOptions bidOptions;
 
   public AdvancedAuctionItem() {
     super();
@@ -41,10 +41,31 @@ public class AdvancedAuctionItem {
   /**
    * Constructor with only required parameters
    */
-  public AdvancedAuctionItem(Country country, String itemId, Language language, AdvancedAuctionBidOptions bidOptions) {
+  public AdvancedAuctionItem(AdvancedAuctionBidOptions bidOptions, Country country, String itemId, Language language) {
+    this.bidOptions = bidOptions;
     this.country = country;
     this.itemId = itemId;
     this.language = language;
+  }
+
+  public AdvancedAuctionItem bidOptions(AdvancedAuctionBidOptions bidOptions) {
+    this.bidOptions = bidOptions;
+    return this;
+  }
+
+  /**
+   * Get bidOptions
+   * @return bidOptions
+   */
+  @NotNull @Valid 
+  @Schema(name = "bid_options", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("bid_options")
+  public AdvancedAuctionBidOptions getBidOptions() {
+    return bidOptions;
+  }
+
+  @JsonProperty("bid_options")
+  public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
     this.bidOptions = bidOptions;
   }
 
@@ -64,6 +85,7 @@ public class AdvancedAuctionItem {
     return country;
   }
 
+  @JsonProperty("country")
   public void setCountry(Country country) {
     this.country = country;
   }
@@ -84,6 +106,7 @@ public class AdvancedAuctionItem {
     return itemId;
   }
 
+  @JsonProperty("item_id")
   public void setItemId(String itemId) {
     this.itemId = itemId;
   }
@@ -104,28 +127,9 @@ public class AdvancedAuctionItem {
     return language;
   }
 
+  @JsonProperty("language")
   public void setLanguage(Language language) {
     this.language = language;
-  }
-
-  public AdvancedAuctionItem bidOptions(AdvancedAuctionBidOptions bidOptions) {
-    this.bidOptions = bidOptions;
-    return this;
-  }
-
-  /**
-   * Get bidOptions
-   * @return bidOptions
-   */
-  @NotNull @Valid 
-  @Schema(name = "bid_options", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("bid_options")
-  public AdvancedAuctionBidOptions getBidOptions() {
-    return bidOptions;
-  }
-
-  public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
-    this.bidOptions = bidOptions;
   }
 
   @Override
@@ -137,25 +141,25 @@ public class AdvancedAuctionItem {
       return false;
     }
     AdvancedAuctionItem advancedAuctionItem = (AdvancedAuctionItem) o;
-    return Objects.equals(this.country, advancedAuctionItem.country) &&
+    return Objects.equals(this.bidOptions, advancedAuctionItem.bidOptions) &&
+        Objects.equals(this.country, advancedAuctionItem.country) &&
         Objects.equals(this.itemId, advancedAuctionItem.itemId) &&
-        Objects.equals(this.language, advancedAuctionItem.language) &&
-        Objects.equals(this.bidOptions, advancedAuctionItem.bidOptions);
+        Objects.equals(this.language, advancedAuctionItem.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, itemId, language, bidOptions);
+    return Objects.hash(bidOptions, country, itemId, language);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItem {\n");
+    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
-    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -164,11 +168,8 @@ public class AdvancedAuctionItem {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

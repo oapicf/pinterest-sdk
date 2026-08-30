@@ -23,40 +23,25 @@ CatalogsCreativeAssetsFeed::~CatalogsCreativeAssetsFeed()
 void
 CatalogsCreativeAssetsFeed::__init()
 {
-	//created_at = null;
-	//id = std::string();
-	//updated_at = null;
 	//catalog_id = std::string();
-	//catalog_type = new CatalogsType();
+	//catalog_type = std::string();
+	//created_at = null;
 	//credentials = new CatalogsFeedCredentials();
 	//default_country = new Country();
 	//default_currency = new NullableCurrency();
 	//default_locale = std::string();
 	//format = new CatalogsFormat();
+	//id = std::string();
 	//location = std::string();
 	//name = std::string();
 	//preferred_processing_schedule = new CatalogsFeedProcessingSchedule();
 	//status = new CatalogsStatus();
+	//updated_at = null;
 }
 
 void
 CatalogsCreativeAssetsFeed::__cleanup()
 {
-	//if(created_at != NULL) {
-	//
-	//delete created_at;
-	//created_at = NULL;
-	//}
-	//if(id != NULL) {
-	//
-	//delete id;
-	//id = NULL;
-	//}
-	//if(updated_at != NULL) {
-	//
-	//delete updated_at;
-	//updated_at = NULL;
-	//}
 	//if(catalog_id != NULL) {
 	//
 	//delete catalog_id;
@@ -66,6 +51,11 @@ CatalogsCreativeAssetsFeed::__cleanup()
 	//
 	//delete catalog_type;
 	//catalog_type = NULL;
+	//}
+	//if(created_at != NULL) {
+	//
+	//delete created_at;
+	//created_at = NULL;
 	//}
 	//if(credentials != NULL) {
 	//
@@ -92,6 +82,11 @@ CatalogsCreativeAssetsFeed::__cleanup()
 	//delete format;
 	//format = NULL;
 	//}
+	//if(id != NULL) {
+	//
+	//delete id;
+	//id = NULL;
+	//}
 	//if(location != NULL) {
 	//
 	//delete location;
@@ -112,6 +107,11 @@ CatalogsCreativeAssetsFeed::__cleanup()
 	//delete status;
 	//status = NULL;
 	//}
+	//if(updated_at != NULL) {
+	//
+	//delete updated_at;
+	//updated_at = NULL;
+	//}
 	//
 }
 
@@ -120,39 +120,6 @@ CatalogsCreativeAssetsFeed::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *created_atKey = "created_at";
-	node = json_object_get_member(pJsonObject, created_atKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&created_at, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *updated_atKey = "updated_at";
-	node = json_object_get_member(pJsonObject, updated_atKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&updated_at, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *catalog_idKey = "catalog_id";
 	node = json_object_get_member(pJsonObject, catalog_idKey);
 	if (node !=NULL) {
@@ -169,12 +136,20 @@ CatalogsCreativeAssetsFeed::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsType")) {
-			jsonToValue(&catalog_type, node, "CatalogsType", "CatalogsType");
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_type, node, "std::string", "");
 		} else {
 			
-			CatalogsType* obj = static_cast<CatalogsType*> (&catalog_type);
-			obj->fromJson(json_to_string(node, false));
+		}
+	}
+	const gchar *created_atKey = "created_at";
+	node = json_object_get_member(pJsonObject, created_atKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&created_at, node, "std::string", "");
+		} else {
 			
 		}
 	}
@@ -245,6 +220,17 @@ CatalogsCreativeAssetsFeed::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *locationKey = "location";
 	node = json_object_get_member(pJsonObject, locationKey);
 	if (node !=NULL) {
@@ -295,6 +281,17 @@ CatalogsCreativeAssetsFeed::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *updated_atKey = "updated_at";
+	node = json_object_get_member(pJsonObject, updated_atKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&updated_at, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 CatalogsCreativeAssetsFeed::CatalogsCreativeAssetsFeed(char* json)
@@ -308,33 +305,6 @@ CatalogsCreativeAssetsFeed::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getCreatedAt();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *created_atKey = "created_at";
-	json_object_set_member(pJsonObject, created_atKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getUpdatedAt();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *updated_atKey = "updated_at";
-	json_object_set_member(pJsonObject, updated_atKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getCatalogId();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -343,20 +313,24 @@ CatalogsCreativeAssetsFeed::toJson()
 	}
 	const gchar *catalog_idKey = "catalog_id";
 	json_object_set_member(pJsonObject, catalog_idKey, node);
-	if (isprimitive("CatalogsType")) {
-		CatalogsType obj = getCatalogType();
-		node = converttoJson(&obj, "CatalogsType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogType();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		CatalogsType obj = static_cast<CatalogsType> (getCatalogType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *catalog_typeKey = "catalog_type";
 	json_object_set_member(pJsonObject, catalog_typeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCreatedAt();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *created_atKey = "created_at";
+	json_object_set_member(pJsonObject, created_atKey, node);
 	if (isprimitive("CatalogsFeedCredentials")) {
 		CatalogsFeedCredentials obj = getCredentials();
 		node = converttoJson(&obj, "CatalogsFeedCredentials", "");
@@ -423,6 +397,15 @@ CatalogsCreativeAssetsFeed::toJson()
 	const gchar *formatKey = "format";
 	json_object_set_member(pJsonObject, formatKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getLocation();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -468,48 +451,21 @@ CatalogsCreativeAssetsFeed::toJson()
 	}
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getUpdatedAt();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *updated_atKey = "updated_at";
+	json_object_set_member(pJsonObject, updated_atKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-CatalogsCreativeAssetsFeed::getCreatedAt()
-{
-	return created_at;
-}
-
-void
-CatalogsCreativeAssetsFeed::setCreatedAt(std::string  created_at)
-{
-	this->created_at = created_at;
-}
-
-std::string
-CatalogsCreativeAssetsFeed::getId()
-{
-	return id;
-}
-
-void
-CatalogsCreativeAssetsFeed::setId(std::string  id)
-{
-	this->id = id;
-}
-
-std::string
-CatalogsCreativeAssetsFeed::getUpdatedAt()
-{
-	return updated_at;
-}
-
-void
-CatalogsCreativeAssetsFeed::setUpdatedAt(std::string  updated_at)
-{
-	this->updated_at = updated_at;
 }
 
 std::string
@@ -524,16 +480,28 @@ CatalogsCreativeAssetsFeed::setCatalogId(std::string  catalog_id)
 	this->catalog_id = catalog_id;
 }
 
-CatalogsType
+std::string
 CatalogsCreativeAssetsFeed::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsCreativeAssetsFeed::setCatalogType(CatalogsType  catalog_type)
+CatalogsCreativeAssetsFeed::setCatalogType(std::string  catalog_type)
 {
 	this->catalog_type = catalog_type;
+}
+
+std::string
+CatalogsCreativeAssetsFeed::getCreatedAt()
+{
+	return created_at;
+}
+
+void
+CatalogsCreativeAssetsFeed::setCreatedAt(std::string  created_at)
+{
+	this->created_at = created_at;
 }
 
 CatalogsFeedCredentials
@@ -597,6 +565,18 @@ CatalogsCreativeAssetsFeed::setFormat(CatalogsFormat  format)
 }
 
 std::string
+CatalogsCreativeAssetsFeed::getId()
+{
+	return id;
+}
+
+void
+CatalogsCreativeAssetsFeed::setId(std::string  id)
+{
+	this->id = id;
+}
+
+std::string
 CatalogsCreativeAssetsFeed::getLocation()
 {
 	return location;
@@ -642,6 +622,18 @@ void
 CatalogsCreativeAssetsFeed::setStatus(CatalogsStatus  status)
 {
 	this->status = status;
+}
+
+std::string
+CatalogsCreativeAssetsFeed::getUpdatedAt()
+{
+	return updated_at;
+}
+
+void
+CatalogsCreativeAssetsFeed::setUpdatedAt(std::string  updated_at)
+{
+	this->updated_at = updated_at;
 }
 
 

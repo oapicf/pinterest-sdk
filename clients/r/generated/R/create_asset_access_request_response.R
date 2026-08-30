@@ -7,8 +7,8 @@
 #' @title CreateAssetAccessRequestResponse
 #' @description CreateAssetAccessRequestResponse Class
 #' @format An \code{R6Class} generator object
-#' @field exceptions A list of errors associated with the asset access requests. Will be returned if there is an error. list(\link{CreateAssetAccessRequestErrorMessageInner}) [optional]
-#' @field invites  named list(character) [optional]
+#' @field exceptions A list of errors associated with the asset access requests. Will be returned if there is an error. list(\link{AssetAccessRequestError}) [optional]
+#' @field invites An object mapping each partner id to the asset access request id. Only one request id is returned per partner. named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,7 +22,7 @@ CreateAssetAccessRequestResponse <- R6::R6Class(
     #' Initialize a new CreateAssetAccessRequestResponse class.
     #'
     #' @param exceptions A list of errors associated with the asset access requests. Will be returned if there is an error.
-    #' @param invites invites
+    #' @param invites An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
     #' @param ... Other optional arguments.
     initialize = function(`exceptions` = NULL, `invites` = NULL, ...) {
       if (!is.null(`exceptions`)) {
@@ -70,13 +70,36 @@ CreateAssetAccessRequestResponse <- R6::R6Class(
       CreateAssetAccessRequestResponseObject <- list()
       if (!is.null(self$`exceptions`)) {
         CreateAssetAccessRequestResponseObject[["exceptions"]] <-
-          lapply(self$`exceptions`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`exceptions`)
       }
       if (!is.null(self$`invites`)) {
         CreateAssetAccessRequestResponseObject[["invites"]] <-
           self$`invites`
       }
       return(CreateAssetAccessRequestResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -87,7 +110,7 @@ CreateAssetAccessRequestResponse <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`exceptions`)) {
-        self$`exceptions` <- ApiClient$new()$deserializeObj(this_object$`exceptions`, "array[CreateAssetAccessRequestErrorMessageInner]", loadNamespace("openapi"))
+        self$`exceptions` <- ApiClient$new()$deserializeObj(this_object$`exceptions`, "array[AssetAccessRequestError]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`invites`)) {
         self$`invites` <- ApiClient$new()$deserializeObj(this_object$`invites`, "map(character)", loadNamespace("openapi"))
@@ -113,7 +136,7 @@ CreateAssetAccessRequestResponse <- R6::R6Class(
     #' @return the instance of CreateAssetAccessRequestResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`exceptions` <- ApiClient$new()$deserializeObj(this_object$`exceptions`, "array[CreateAssetAccessRequestErrorMessageInner]", loadNamespace("openapi"))
+      self$`exceptions` <- ApiClient$new()$deserializeObj(this_object$`exceptions`, "array[AssetAccessRequestError]", loadNamespace("openapi"))
       self$`invites` <- ApiClient$new()$deserializeObj(this_object$`invites`, "map(character)", loadNamespace("openapi"))
       self
     },

@@ -1,7 +1,7 @@
 /*
  * AssetGroupType.h
  *
- * Asset group type
+ * Asset group type.
  */
 
 #ifndef _AssetGroupType_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Asset group type
+/*! \brief Asset group type.
  *
  *  \ingroup Models
  *

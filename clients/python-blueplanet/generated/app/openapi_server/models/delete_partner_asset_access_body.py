@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.delete_partner_asset_access_body_accesses_inner import DeletePartnerAssetAccessBodyAccessesInner  # noqa: F401,E501
+from app.openapi_server.models.delete_partner_asset_access_item import DeletePartnerAssetAccessItem  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,14 +16,14 @@ class DeletePartnerAssetAccessBody(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, accesses: List[DeletePartnerAssetAccessBodyAccessesInner]=None):  # noqa: E501
+    def __init__(self, accesses: List[DeletePartnerAssetAccessItem]=None):  # noqa: E501
         """DeletePartnerAssetAccessBody - a model defined in Swagger
 
         :param accesses: The accesses of this DeletePartnerAssetAccessBody.  # noqa: E501
-        :type accesses: List[DeletePartnerAssetAccessBodyAccessesInner]
+        :type accesses: List[DeletePartnerAssetAccessItem]
         """
         self.swagger_types = {
-            'accesses': List[DeletePartnerAssetAccessBodyAccessesInner]
+            'accesses': List[DeletePartnerAssetAccessItem]
         }
 
         self.attribute_map = {
@@ -44,22 +44,24 @@ class DeletePartnerAssetAccessBody(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def accesses(self) -> List[DeletePartnerAssetAccessBodyAccessesInner]:
+    def accesses(self) -> List[DeletePartnerAssetAccessItem]:
         """Gets the accesses of this DeletePartnerAssetAccessBody.
 
+        List of partner asset accesses to delete.  # noqa: E501
 
         :return: The accesses of this DeletePartnerAssetAccessBody.
-        :rtype: List[DeletePartnerAssetAccessBodyAccessesInner]
+        :rtype: List[DeletePartnerAssetAccessItem]
         """
         return self._accesses
 
     @accesses.setter
-    def accesses(self, accesses: List[DeletePartnerAssetAccessBodyAccessesInner]):
+    def accesses(self, accesses: List[DeletePartnerAssetAccessItem]):
         """Sets the accesses of this DeletePartnerAssetAccessBody.
 
+        List of partner asset accesses to delete.  # noqa: E501
 
         :param accesses: The accesses of this DeletePartnerAssetAccessBody.
-        :type accesses: List[DeletePartnerAssetAccessBodyAccessesInner]
+        :type accesses: List[DeletePartnerAssetAccessItem]
         """
         if accesses is None:
             raise ValueError("Invalid value for `accesses`, must not be `None`")  # noqa: E501

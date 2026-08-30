@@ -1,7 +1,7 @@
 /*
  * advertiser_defined_event.h
  *
- * 
+ * Advertiser defined event
  */
 
 #ifndef _advertiser_defined_event_H_
@@ -15,19 +15,20 @@
 
 typedef struct advertiser_defined_event_t advertiser_defined_event_t;
 
+#include "conversion_tag_type_optimal.h"
 
 
 
 typedef struct advertiser_defined_event_t {
+    conversion_tag_type_optimal_t *mapped_conversion_type; // custom
     char *name; // string
-    pinterest_rest_api_advertiser_defined_event_MAPPEDCONVERSIONTYPE_e mapped_conversion_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } advertiser_defined_event_t;
 
 __attribute__((deprecated)) advertiser_defined_event_t *advertiser_defined_event_create(
-    char *name,
-    pinterest_rest_api_advertiser_defined_event_MAPPEDCONVERSIONTYPE_e mapped_conversion_type
+    conversion_tag_type_optimal_t *mapped_conversion_type,
+    char *name
 );
 
 void advertiser_defined_event_free(advertiser_defined_event_t *advertiser_defined_event);

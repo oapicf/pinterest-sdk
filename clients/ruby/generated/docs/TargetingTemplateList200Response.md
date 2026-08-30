@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** |  | [optional] |
-| **items** | [**Array&lt;TargetingTemplateGetResponseData&gt;**](TargetingTemplateGetResponseData.md) |  |  |
+| **items** | [**Array&lt;TargetingTemplate&gt;**](TargetingTemplate.md) |  |  |
 
 ## Example
 

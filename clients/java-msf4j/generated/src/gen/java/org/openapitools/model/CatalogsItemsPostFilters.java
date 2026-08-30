@@ -15,18 +15,46 @@ import java.util.List;
 import org.openapitools.model.CatalogsCreativeAssetsItemsPostFilter;
 import org.openapitools.model.CatalogsHotelItemsPostFilter;
 import org.openapitools.model.CatalogsRetailItemsPostFilter;
-import org.openapitools.model.CatalogsType;
 
 /**
  * CatalogsItemsPostFilters
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsItemsPostFilters   {
-  @JsonProperty("catalog_type")
-  private CatalogsType catalogType;
-
   @JsonProperty("catalog_id")
   private String catalogId;
+
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String text) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
+  @JsonProperty("catalog_type")
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("item_ids")
   private List<String> itemIds = new ArrayList<>();
@@ -36,24 +64,6 @@ public class CatalogsItemsPostFilters   {
 
   @JsonProperty("creative_assets_ids")
   private List<String> creativeAssetsIds = new ArrayList<>();
-
-  public CatalogsItemsPostFilters catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-   /**
-   * Get catalogType
-   * @return catalogType
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
 
   public CatalogsItemsPostFilters catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -71,6 +81,24 @@ public class CatalogsItemsPostFilters   {
 
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
+  }
+
+  public CatalogsItemsPostFilters catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
+   /**
+   * Get catalogType
+   * @return catalogType
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
+  }
+
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsItemsPostFilters itemIds(List<String> itemIds) {
@@ -152,8 +180,8 @@ public class CatalogsItemsPostFilters   {
       return false;
     }
     CatalogsItemsPostFilters catalogsItemsPostFilters = (CatalogsItemsPostFilters) o;
-    return Objects.equals(this.catalogType, catalogsItemsPostFilters.catalogType) &&
-        Objects.equals(this.catalogId, catalogsItemsPostFilters.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsItemsPostFilters.catalogId) &&
+        Objects.equals(this.catalogType, catalogsItemsPostFilters.catalogType) &&
         Objects.equals(this.itemIds, catalogsItemsPostFilters.itemIds) &&
         Objects.equals(this.hotelIds, catalogsItemsPostFilters.hotelIds) &&
         Objects.equals(this.creativeAssetsIds, catalogsItemsPostFilters.creativeAssetsIds);
@@ -161,7 +189,7 @@ public class CatalogsItemsPostFilters   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, itemIds, hotelIds, creativeAssetsIds);
+    return Objects.hash(catalogId, catalogType, itemIds, hotelIds, creativeAssetsIds);
   }
 
   @Override
@@ -169,8 +197,8 @@ public class CatalogsItemsPostFilters   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemsPostFilters {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
@@ -183,10 +211,7 @@ public class CatalogsItemsPostFilters   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

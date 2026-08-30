@@ -1,7 +1,5 @@
 package org.openapitools.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -54,40 +52,11 @@ public class CatalogsFeedIngestionErrors  {
   @ApiModelProperty(value = "Image files are unreadable. Please check your link and upload new files to continue.")
   private Integer IMAGE_MALFORMED_URL;
 
-public enum LARGEPRODUCTCOUNTDECREASEEnum {
-
-    @JsonProperty("1") NUMBER_1(Integer.valueOf(1));
-
-    private Integer value;
-
-    LARGEPRODUCTCOUNTDECREASEEnum (Integer v) {
-        value = v;
-    }
-
-    public Integer value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static LARGEPRODUCTCOUNTDECREASEEnum fromValue(Integer value) {
-        for (LARGEPRODUCTCOUNTDECREASEEnum b : LARGEPRODUCTCOUNTDECREASEEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
   * The product count has decreased by more than 99% compared to the last successful ingestion.
   */
   @ApiModelProperty(value = "The product count has decreased by more than 99% compared to the last successful ingestion.")
-  private LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE;
+  private Integer LARGE_PRODUCT_COUNT_DECREASE;
 
  /**
   * We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
@@ -268,20 +237,20 @@ public enum LARGEPRODUCTCOUNTDECREASEEnum {
   */
   @JsonProperty("LARGE_PRODUCT_COUNT_DECREASE")
   public Integer getLARGEPRODUCTCOUNTDECREASE() {
-    return LARGE_PRODUCT_COUNT_DECREASE == null ? null : LARGE_PRODUCT_COUNT_DECREASE.value();
+    return LARGE_PRODUCT_COUNT_DECREASE;
   }
 
   /**
    * Sets the <code>LARGE_PRODUCT_COUNT_DECREASE</code> property.
    */
- public void setLARGEPRODUCTCOUNTDECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+ public void setLARGEPRODUCTCOUNTDECREASE(Integer LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
   }
 
   /**
    * Sets the <code>LARGE_PRODUCT_COUNT_DECREASE</code> property.
    */
-  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(Integer LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
     return this;
   }
@@ -359,10 +328,7 @@ public enum LARGEPRODUCTCOUNTDECREASEEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

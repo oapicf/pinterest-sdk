@@ -7,7 +7,6 @@ import com.prokarma.pkmst.model.BrandFilter;
 import com.prokarma.pkmst.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import com.prokarma.pkmst.model.CatalogsProductGroupMultipleCountriesCriteria;
 import com.prokarma.pkmst.model.CatalogsProductGroupMultipleStringCriteria;
-import com.prokarma.pkmst.model.CatalogsProductGroupPricingCurrencyCriteria;
 import com.prokarma.pkmst.model.CountryFilter;
 import com.prokarma.pkmst.model.CustomLabel0Filter;
 import com.prokarma.pkmst.model.CustomLabel1Filter;
@@ -16,6 +15,7 @@ import com.prokarma.pkmst.model.CustomLabel3Filter;
 import com.prokarma.pkmst.model.CustomLabel4Filter;
 import com.prokarma.pkmst.model.HotelIdFilter;
 import com.prokarma.pkmst.model.PriceFilter;
+import com.prokarma.pkmst.model.PriceFilterPrice;
 import com.prokarma.pkmst.model.TitleKeywordsFilter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -28,10 +28,10 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsHotelProductGroupFilterKeys
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelProductGroupFilterKeys   {
   @JsonProperty("PRICE")
-  private CatalogsProductGroupPricingCurrencyCriteria PRICE;
+  private PriceFilterPrice PRICE;
 
   @JsonProperty("HOTEL_ID")
   private CatalogsProductGroupMultipleStringCriteria HOTEL_ID;
@@ -60,7 +60,7 @@ public class CatalogsHotelProductGroupFilterKeys   {
   @JsonProperty("TITLE_KEYWORDS")
   private CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS;
 
-  public CatalogsHotelProductGroupFilterKeys PRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public CatalogsHotelProductGroupFilterKeys PRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
     return this;
   }
@@ -70,11 +70,11 @@ public class CatalogsHotelProductGroupFilterKeys   {
    * @return PRICE
    */
   @ApiModelProperty(required = true, value = "")
-  public CatalogsProductGroupPricingCurrencyCriteria getPRICE() {
+  public PriceFilterPrice getPRICE() {
     return PRICE;
   }
 
-  public void setPRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public void setPRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
   }
 
@@ -291,10 +291,7 @@ public class CatalogsHotelProductGroupFilterKeys   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

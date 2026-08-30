@@ -6,8 +6,12 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.age_bucket_multipliers import AgeBucketMultipliers  # noqa: F401,E501
 from app.openapi_server.models.app_type_multipliers import AppTypeMultipliers  # noqa: F401,E501
 from app.openapi_server.models.campaign_audience_multipliers import CampaignAudienceMultipliers  # noqa: F401,E501
+from app.openapi_server.models.freq_bid_multiplier_time_window import FreqBidMultiplierTimeWindow  # noqa: F401,E501
+from app.openapi_server.models.frequency_multipliers import FrequencyMultipliers  # noqa: F401,E501
+from app.openapi_server.models.gender_multipliers import GenderMultipliers  # noqa: F401,E501
 from app.openapi_server.models.placement_multipliers import PlacementMultipliers  # noqa: F401,E501
 from openapi_server import util
 
@@ -18,30 +22,50 @@ class CampaignBidOptionsCreate(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, app_type_multipliers: AppTypeMultipliers=None, audience_multipliers: CampaignAudienceMultipliers=None, placement_multipliers: PlacementMultipliers=None):  # noqa: E501
+    def __init__(self, age_bucket_multipliers: AgeBucketMultipliers=None, app_type_multipliers: AppTypeMultipliers=None, audience_multipliers: CampaignAudienceMultipliers=None, freq_bid_multiplier_time_window: FreqBidMultiplierTimeWindow=None, frequency_multipliers: FrequencyMultipliers=None, gender_multipliers: GenderMultipliers=None, placement_multipliers: PlacementMultipliers=None):  # noqa: E501
         """CampaignBidOptionsCreate - a model defined in Swagger
 
+        :param age_bucket_multipliers: The age_bucket_multipliers of this CampaignBidOptionsCreate.  # noqa: E501
+        :type age_bucket_multipliers: AgeBucketMultipliers
         :param app_type_multipliers: The app_type_multipliers of this CampaignBidOptionsCreate.  # noqa: E501
         :type app_type_multipliers: AppTypeMultipliers
         :param audience_multipliers: The audience_multipliers of this CampaignBidOptionsCreate.  # noqa: E501
         :type audience_multipliers: CampaignAudienceMultipliers
+        :param freq_bid_multiplier_time_window: The freq_bid_multiplier_time_window of this CampaignBidOptionsCreate.  # noqa: E501
+        :type freq_bid_multiplier_time_window: FreqBidMultiplierTimeWindow
+        :param frequency_multipliers: The frequency_multipliers of this CampaignBidOptionsCreate.  # noqa: E501
+        :type frequency_multipliers: FrequencyMultipliers
+        :param gender_multipliers: The gender_multipliers of this CampaignBidOptionsCreate.  # noqa: E501
+        :type gender_multipliers: GenderMultipliers
         :param placement_multipliers: The placement_multipliers of this CampaignBidOptionsCreate.  # noqa: E501
         :type placement_multipliers: PlacementMultipliers
         """
         self.swagger_types = {
+            'age_bucket_multipliers': AgeBucketMultipliers,
             'app_type_multipliers': AppTypeMultipliers,
             'audience_multipliers': CampaignAudienceMultipliers,
+            'freq_bid_multiplier_time_window': FreqBidMultiplierTimeWindow,
+            'frequency_multipliers': FrequencyMultipliers,
+            'gender_multipliers': GenderMultipliers,
             'placement_multipliers': PlacementMultipliers
         }
 
         self.attribute_map = {
+            'age_bucket_multipliers': 'age_bucket_multipliers',
             'app_type_multipliers': 'app_type_multipliers',
             'audience_multipliers': 'audience_multipliers',
+            'freq_bid_multiplier_time_window': 'freq_bid_multiplier_time_window',
+            'frequency_multipliers': 'frequency_multipliers',
+            'gender_multipliers': 'gender_multipliers',
             'placement_multipliers': 'placement_multipliers'
         }
 
+        self._age_bucket_multipliers = age_bucket_multipliers
         self._app_type_multipliers = app_type_multipliers
         self._audience_multipliers = audience_multipliers
+        self._freq_bid_multiplier_time_window = freq_bid_multiplier_time_window
+        self._frequency_multipliers = frequency_multipliers
+        self._gender_multipliers = gender_multipliers
         self._placement_multipliers = placement_multipliers
 
     @classmethod
@@ -56,9 +80,33 @@ class CampaignBidOptionsCreate(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
+    def age_bucket_multipliers(self) -> AgeBucketMultipliers:
+        """Gets the age_bucket_multipliers of this CampaignBidOptionsCreate.
+
+        Age bucket multipliers for bid adjustments.  # noqa: E501
+
+        :return: The age_bucket_multipliers of this CampaignBidOptionsCreate.
+        :rtype: AgeBucketMultipliers
+        """
+        return self._age_bucket_multipliers
+
+    @age_bucket_multipliers.setter
+    def age_bucket_multipliers(self, age_bucket_multipliers: AgeBucketMultipliers):
+        """Sets the age_bucket_multipliers of this CampaignBidOptionsCreate.
+
+        Age bucket multipliers for bid adjustments.  # noqa: E501
+
+        :param age_bucket_multipliers: The age_bucket_multipliers of this CampaignBidOptionsCreate.
+        :type age_bucket_multipliers: AgeBucketMultipliers
+        """
+
+        self._age_bucket_multipliers = age_bucket_multipliers
+
+    @property
     def app_type_multipliers(self) -> AppTypeMultipliers:
         """Gets the app_type_multipliers of this CampaignBidOptionsCreate.
 
+        App type multipliers for bid adjustments.  # noqa: E501
 
         :return: The app_type_multipliers of this CampaignBidOptionsCreate.
         :rtype: AppTypeMultipliers
@@ -69,6 +117,7 @@ class CampaignBidOptionsCreate(Model):
     def app_type_multipliers(self, app_type_multipliers: AppTypeMultipliers):
         """Sets the app_type_multipliers of this CampaignBidOptionsCreate.
 
+        App type multipliers for bid adjustments.  # noqa: E501
 
         :param app_type_multipliers: The app_type_multipliers of this CampaignBidOptionsCreate.
         :type app_type_multipliers: AppTypeMultipliers
@@ -80,6 +129,7 @@ class CampaignBidOptionsCreate(Model):
     def audience_multipliers(self) -> CampaignAudienceMultipliers:
         """Gets the audience_multipliers of this CampaignBidOptionsCreate.
 
+        Audience multipliers for bid adjustments.  # noqa: E501
 
         :return: The audience_multipliers of this CampaignBidOptionsCreate.
         :rtype: CampaignAudienceMultipliers
@@ -90,6 +140,7 @@ class CampaignBidOptionsCreate(Model):
     def audience_multipliers(self, audience_multipliers: CampaignAudienceMultipliers):
         """Sets the audience_multipliers of this CampaignBidOptionsCreate.
 
+        Audience multipliers for bid adjustments.  # noqa: E501
 
         :param audience_multipliers: The audience_multipliers of this CampaignBidOptionsCreate.
         :type audience_multipliers: CampaignAudienceMultipliers
@@ -98,9 +149,79 @@ class CampaignBidOptionsCreate(Model):
         self._audience_multipliers = audience_multipliers
 
     @property
+    def freq_bid_multiplier_time_window(self) -> FreqBidMultiplierTimeWindow:
+        """Gets the freq_bid_multiplier_time_window of this CampaignBidOptionsCreate.
+
+        The time window for frequency bid multipliers.  # noqa: E501
+
+        :return: The freq_bid_multiplier_time_window of this CampaignBidOptionsCreate.
+        :rtype: FreqBidMultiplierTimeWindow
+        """
+        return self._freq_bid_multiplier_time_window
+
+    @freq_bid_multiplier_time_window.setter
+    def freq_bid_multiplier_time_window(self, freq_bid_multiplier_time_window: FreqBidMultiplierTimeWindow):
+        """Sets the freq_bid_multiplier_time_window of this CampaignBidOptionsCreate.
+
+        The time window for frequency bid multipliers.  # noqa: E501
+
+        :param freq_bid_multiplier_time_window: The freq_bid_multiplier_time_window of this CampaignBidOptionsCreate.
+        :type freq_bid_multiplier_time_window: FreqBidMultiplierTimeWindow
+        """
+
+        self._freq_bid_multiplier_time_window = freq_bid_multiplier_time_window
+
+    @property
+    def frequency_multipliers(self) -> FrequencyMultipliers:
+        """Gets the frequency_multipliers of this CampaignBidOptionsCreate.
+
+        Frequency multipliers for bid adjustments.  # noqa: E501
+
+        :return: The frequency_multipliers of this CampaignBidOptionsCreate.
+        :rtype: FrequencyMultipliers
+        """
+        return self._frequency_multipliers
+
+    @frequency_multipliers.setter
+    def frequency_multipliers(self, frequency_multipliers: FrequencyMultipliers):
+        """Sets the frequency_multipliers of this CampaignBidOptionsCreate.
+
+        Frequency multipliers for bid adjustments.  # noqa: E501
+
+        :param frequency_multipliers: The frequency_multipliers of this CampaignBidOptionsCreate.
+        :type frequency_multipliers: FrequencyMultipliers
+        """
+
+        self._frequency_multipliers = frequency_multipliers
+
+    @property
+    def gender_multipliers(self) -> GenderMultipliers:
+        """Gets the gender_multipliers of this CampaignBidOptionsCreate.
+
+        Gender multipliers for bid adjustments.  # noqa: E501
+
+        :return: The gender_multipliers of this CampaignBidOptionsCreate.
+        :rtype: GenderMultipliers
+        """
+        return self._gender_multipliers
+
+    @gender_multipliers.setter
+    def gender_multipliers(self, gender_multipliers: GenderMultipliers):
+        """Sets the gender_multipliers of this CampaignBidOptionsCreate.
+
+        Gender multipliers for bid adjustments.  # noqa: E501
+
+        :param gender_multipliers: The gender_multipliers of this CampaignBidOptionsCreate.
+        :type gender_multipliers: GenderMultipliers
+        """
+
+        self._gender_multipliers = gender_multipliers
+
+    @property
     def placement_multipliers(self) -> PlacementMultipliers:
         """Gets the placement_multipliers of this CampaignBidOptionsCreate.
 
+        Placement multipliers for bid adjustments.  # noqa: E501
 
         :return: The placement_multipliers of this CampaignBidOptionsCreate.
         :rtype: PlacementMultipliers
@@ -111,6 +232,7 @@ class CampaignBidOptionsCreate(Model):
     def placement_multipliers(self, placement_multipliers: PlacementMultipliers):
         """Sets the placement_multipliers of this CampaignBidOptionsCreate.
 
+        Placement multipliers for bid adjustments.  # noqa: E501
 
         :param placement_multipliers: The placement_multipliers of this CampaignBidOptionsCreate.
         :type placement_multipliers: PlacementMultipliers

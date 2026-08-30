@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.prokarma.pkmst.model.ErrorDetail;
 import com.prokarma.pkmst.model.RecordCounts;
 import com.prokarma.pkmst.model.UserListOperationType;
+import com.prokarma.pkmst.model.WorkloadState;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * CustomerListUpload
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CustomerListUpload   {
   @JsonProperty("ad_account_id")
   private String adAccountId;
@@ -46,45 +47,8 @@ public class CustomerListUpload   {
   @JsonProperty("record_counts")
   private RecordCounts recordCounts;
 
-  /**
-   * Workload processing state
-   */
-  public enum StateEnum {
-    NOT_STARTED("NOT_STARTED"),
-    
-    RUNNING("RUNNING"),
-    
-    PAUSED("PAUSED"),
-    
-    SUCCEEDED("SUCCEEDED"),
-    
-    FAILED("FAILED");
-
-    private String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StateEnum fromValue(String text) {
-      for (StateEnum b : StateEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
   @JsonProperty("state")
-  private StateEnum state;
+  private WorkloadState state;
 
   @JsonProperty("updated_time")
   private Integer updatedTime;
@@ -211,10 +175,10 @@ public class CustomerListUpload   {
   }
 
   /**
-   * Get recordCounts
+   * Record processing counts
    * @return recordCounts
    */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Record processing counts")
   public RecordCounts getRecordCounts() {
     return recordCounts;
   }
@@ -223,21 +187,21 @@ public class CustomerListUpload   {
     this.recordCounts = recordCounts;
   }
 
-  public CustomerListUpload state(StateEnum state) {
+  public CustomerListUpload state(WorkloadState state) {
     this.state = state;
     return this;
   }
 
   /**
-   * Workload processing state
+   * Get state
    * @return state
    */
-  @ApiModelProperty(example = "RUNNING", required = true, value = "Workload processing state")
-  public StateEnum getState() {
+  @ApiModelProperty(example = "RUNNING", required = true, value = "")
+  public WorkloadState getState() {
     return state;
   }
 
-  public void setState(StateEnum state) {
+  public void setState(WorkloadState state) {
     this.state = state;
   }
 
@@ -308,10 +272,7 @@ public class CustomerListUpload   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

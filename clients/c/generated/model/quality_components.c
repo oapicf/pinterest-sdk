@@ -22,6 +22,8 @@ static quality_components_t *quality_components_create_internal(
     if (!quality_components_local_var) {
         return NULL;
     }
+    memset(quality_components_local_var, 0, sizeof(quality_components_t));
+    quality_components_local_var->_library_owned = 1;
     quality_components_local_var->advertiser_external_id = advertiser_external_id;
     quality_components_local_var->click_id_epik = click_id_epik;
     quality_components_local_var->external_event_id = external_event_id;
@@ -33,8 +35,6 @@ static quality_components_t *quality_components_create_internal(
     quality_components_local_var->product_id = product_id;
     quality_components_local_var->source_url = source_url;
     quality_components_local_var->user_agent = user_agent;
-
-    quality_components_local_var->_library_owned = 1;
     return quality_components_local_var;
 }
 
@@ -51,7 +51,7 @@ __attribute__((deprecated)) quality_components_t *quality_components_create(
     list_t* source_url,
     list_t* user_agent
     ) {
-    return quality_components_create_internal (
+    quality_components_t *result = quality_components_create_internal (
         advertiser_external_id,
         click_id_epik,
         external_event_id,
@@ -64,6 +64,9 @@ __attribute__((deprecated)) quality_components_t *quality_components_create(
         source_url,
         user_agent
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quality_components_free(quality_components_t *quality_components) {
@@ -533,6 +536,7 @@ quality_components_t *quality_components_parseFromJSON(cJSON *quality_components
     }
 
 
+
     quality_components_local_var = quality_components_create_internal (
         advertiser_external_id ? advertiser_external_idList : NULL,
         click_id_epik ? click_id_epikList : NULL,
@@ -546,6 +550,10 @@ quality_components_t *quality_components_parseFromJSON(cJSON *quality_components
         source_url ? source_urlList : NULL,
         user_agent ? user_agentList : NULL
         );
+
+    if (!quality_components_local_var) {
+        goto end;
+    }
 
     return quality_components_local_var;
 end:

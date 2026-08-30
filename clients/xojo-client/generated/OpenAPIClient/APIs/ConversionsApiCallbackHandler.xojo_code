@@ -1,7 +1,25 @@
 #tag Interface
 Protected Interface ConversionsApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub AdvertiserDefinedEventsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdvertiserDefinedEventsResponse)
+		Sub AdvertiserDefinedEventsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdvertiserDefinedEventsCreate200Response)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub AdvertiserDefinedEventsDeleteCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdvertiserDefinedEventsCreate200Response)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub AdvertiserDefinedEventsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdvertiserDefinedEventsGet200Response)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub AdvertiserDefinedEventsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdvertiserDefinedEventsCreate200Response)
 		  
 		End Sub
 	#tag EndMethod

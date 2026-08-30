@@ -1,6 +1,6 @@
 package org.openapitools.api
 
-import org.openapitools.model.Error
+import org.openapitools.model.PinterestLibError
 import org.openapitools.model.RelatedTerms
 import io.swagger.v3.oas.annotations.*
 import io.swagger.v3.oas.annotations.enums.*
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
-import org.openapitools.api.TermsApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -32,23 +31,29 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
+@RequestMapping("\${api.base-path:/v5}")
 class TermsApiController() {
 
     @Operation(
         summary = "List related terms",
         operationId = "termsRelatedList",
-        description = """Get a list of terms logically related to each input term. <p/>
+        description = """Get a list of terms logically related to each input term.
+
 Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = RelatedTerms::class))]),
-            ApiResponse(responseCode = "400", description = "Invalid terms related parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = RelatedTerms::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_TERMS_RELATED_LIST /* "/terms/related" */],
+        // "/terms/related"
+        value = [PATH_TERMS_RELATED_LIST],
         produces = ["application/json"]
     )
     fun termsRelatedList(
@@ -60,17 +65,23 @@ Example: the term 'workout' would list related terms like 'one song workout', 'y
     @Operation(
         summary = "List suggested terms",
         operationId = "termsSuggestedList",
-        description = """Get popular search terms that begin with your input term. <p/>
+        description = """Get popular search terms that begin with your input term.
+
 Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(array = ArraySchema(schema = Schema(implementation = kotlin.String::class)))]),
-            ApiResponse(responseCode = "400", description = "Invalid terms suggested parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(array = ArraySchema(schema = Schema(implementation = kotlin.String::class)))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_TERMS_SUGGESTED_LIST /* "/terms/suggested" */],
+        // "/terms/suggested"
+        value = [PATH_TERMS_SUGGESTED_LIST],
         produces = ["application/json"]
     )
     fun termsSuggestedList(

@@ -6,6 +6,9 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.form_factor import FormFactor  # noqa: F401,E501
+from app.openapi_server.models.network_type import NetworkType  # noqa: F401,E501
+from app.openapi_server.models.os_family import OsFamily  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -15,7 +18,7 @@ class ConversionEventDeviceInfo(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, battery_level: int=None, brand: str=None, carrier: str=None, cpu_cores: int=None, external_storage_free_space: int=None, external_storage_size: int=None, form_factor: str=None, kernel_version: str=None, languages: List[str]=None, locale: str=None, model: str=None, network_type: str=None, os_family: str=None, os_name: str=None, os_release_name: str=None, os_version: str=None, screen_density: int=None, screen_height: int=None, screen_width: int=None, storage_free_space: int=None, storage_size: int=None, timezone: str=None, timezone_abbr: str=None, type: str=None):  # noqa: E501
+    def __init__(self, battery_level: int=None, brand: str=None, carrier: str=None, cpu_cores: int=None, external_storage_free_space: int=None, external_storage_size: int=None, form_factor: FormFactor=None, kernel_version: str=None, languages: List[str]=None, locale: str=None, model: str=None, network_type: NetworkType=None, os_family: OsFamily=None, os_name: str=None, os_release_name: str=None, os_version: str=None, screen_density: int=None, screen_height: int=None, screen_width: int=None, storage_free_space: int=None, storage_size: int=None, timezone: str=None, timezone_abbr: str=None, type: str=None):  # noqa: E501
         """ConversionEventDeviceInfo - a model defined in Swagger
 
         :param battery_level: The battery_level of this ConversionEventDeviceInfo.  # noqa: E501
@@ -31,7 +34,7 @@ class ConversionEventDeviceInfo(Model):
         :param external_storage_size: The external_storage_size of this ConversionEventDeviceInfo.  # noqa: E501
         :type external_storage_size: int
         :param form_factor: The form_factor of this ConversionEventDeviceInfo.  # noqa: E501
-        :type form_factor: str
+        :type form_factor: FormFactor
         :param kernel_version: The kernel_version of this ConversionEventDeviceInfo.  # noqa: E501
         :type kernel_version: str
         :param languages: The languages of this ConversionEventDeviceInfo.  # noqa: E501
@@ -41,9 +44,9 @@ class ConversionEventDeviceInfo(Model):
         :param model: The model of this ConversionEventDeviceInfo.  # noqa: E501
         :type model: str
         :param network_type: The network_type of this ConversionEventDeviceInfo.  # noqa: E501
-        :type network_type: str
+        :type network_type: NetworkType
         :param os_family: The os_family of this ConversionEventDeviceInfo.  # noqa: E501
-        :type os_family: str
+        :type os_family: OsFamily
         :param os_name: The os_name of this ConversionEventDeviceInfo.  # noqa: E501
         :type os_name: str
         :param os_release_name: The os_release_name of this ConversionEventDeviceInfo.  # noqa: E501
@@ -74,13 +77,13 @@ class ConversionEventDeviceInfo(Model):
             'cpu_cores': int,
             'external_storage_free_space': int,
             'external_storage_size': int,
-            'form_factor': str,
+            'form_factor': FormFactor,
             'kernel_version': str,
             'languages': List[str],
             'locale': str,
             'model': str,
-            'network_type': str,
-            'os_family': str,
+            'network_type': NetworkType,
+            'os_family': OsFamily,
             'os_name': str,
             'os_release_name': str,
             'os_version': str,
@@ -316,31 +319,25 @@ class ConversionEventDeviceInfo(Model):
         self._external_storage_size = external_storage_size
 
     @property
-    def form_factor(self) -> str:
+    def form_factor(self) -> FormFactor:
         """Gets the form_factor of this ConversionEventDeviceInfo.
 
         Device form factor  # noqa: E501
 
         :return: The form_factor of this ConversionEventDeviceInfo.
-        :rtype: str
+        :rtype: FormFactor
         """
         return self._form_factor
 
     @form_factor.setter
-    def form_factor(self, form_factor: str):
+    def form_factor(self, form_factor: FormFactor):
         """Sets the form_factor of this ConversionEventDeviceInfo.
 
         Device form factor  # noqa: E501
 
         :param form_factor: The form_factor of this ConversionEventDeviceInfo.
-        :type form_factor: str
+        :type form_factor: FormFactor
         """
-        allowed_values = ["desktop", "laptop", "cellphone", "tablet", "smartwatch", "tv", "vr", "console", "other"]  # noqa: E501
-        if form_factor not in allowed_values:
-            raise ValueError(
-                "Invalid value for `form_factor` ({0}), must be one of {1}"
-                .format(form_factor, allowed_values)
-            )
 
         self._form_factor = form_factor
 
@@ -447,60 +444,48 @@ class ConversionEventDeviceInfo(Model):
         self._model = model
 
     @property
-    def network_type(self) -> str:
+    def network_type(self) -> NetworkType:
         """Gets the network_type of this ConversionEventDeviceInfo.
 
         Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()  # noqa: E501
 
         :return: The network_type of this ConversionEventDeviceInfo.
-        :rtype: str
+        :rtype: NetworkType
         """
         return self._network_type
 
     @network_type.setter
-    def network_type(self, network_type: str):
+    def network_type(self, network_type: NetworkType):
         """Sets the network_type of this ConversionEventDeviceInfo.
 
         Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()  # noqa: E501
 
         :param network_type: The network_type of this ConversionEventDeviceInfo.
-        :type network_type: str
+        :type network_type: NetworkType
         """
-        allowed_values = ["wifi", "cellular_2g", "cellular_3g", "cellular_4g", "cellular_5g", "cellular_6g", "ethernet", "unknown"]  # noqa: E501
-        if network_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `network_type` ({0}), must be one of {1}"
-                .format(network_type, allowed_values)
-            )
 
         self._network_type = network_type
 
     @property
-    def os_family(self) -> str:
+    def os_family(self) -> OsFamily:
         """Gets the os_family of this ConversionEventDeviceInfo.
 
         OS Family  # noqa: E501
 
         :return: The os_family of this ConversionEventDeviceInfo.
-        :rtype: str
+        :rtype: OsFamily
         """
         return self._os_family
 
     @os_family.setter
-    def os_family(self, os_family: str):
+    def os_family(self, os_family: OsFamily):
         """Sets the os_family of this ConversionEventDeviceInfo.
 
         OS Family  # noqa: E501
 
         :param os_family: The os_family of this ConversionEventDeviceInfo.
-        :type os_family: str
+        :type os_family: OsFamily
         """
-        allowed_values = ["ios", "android", "macos", "windows", "linux", "bsd", "other"]  # noqa: E501
-        if os_family not in allowed_values:
-            raise ValueError(
-                "Invalid value for `os_family` ({0}), must be one of {1}"
-                .format(os_family, allowed_values)
-            )
 
         self._os_family = os_family
 

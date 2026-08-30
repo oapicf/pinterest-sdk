@@ -4,9 +4,11 @@ import org.openapitools.api.*;
 import org.openapitools.model.*;
 
 
-import org.openapitools.model.ConversionAccessTokenResponse;
-import org.openapitools.model.Error;
-import org.openapitools.model.OauthAccessTokenResponse;
+import org.openapitools.model.ConversionAccessToken;
+import org.openapitools.model.OauthAccessToken;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.TokenGrantType;
+import org.openapitools.model.TokenTypeHint;
 
 import java.util.List;
 
@@ -17,17 +19,17 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class OauthApiServiceImpl implements OauthApi {
       public Response oauthConversionToken(SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response oauthToken(String grantType,SecurityContext securityContext) {
+      public Response oauthToken(TokenGrantType grantType,String code,String continuousRefresh,String redirectUri,String refreshToken,String scope,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response tokenRevoke(String token,String tokenTypeHint,SecurityContext securityContext) {
+      public Response tokenRevoke(String token,TokenTypeHint tokenTypeHint,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

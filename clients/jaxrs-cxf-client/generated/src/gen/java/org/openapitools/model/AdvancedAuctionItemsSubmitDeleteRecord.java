@@ -24,6 +24,13 @@ public class AdvancedAuctionItemsSubmitDeleteRecord  {
   private Country country;
 
  /**
+  * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+  */
+  @ApiModelProperty(value = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
+
+  private List<AdvancedAuctionOperationError> errors = new ArrayList<>();
+
+ /**
   * The catalog retail item id in the merchant namespace
   */
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
@@ -34,12 +41,39 @@ public class AdvancedAuctionItemsSubmitDeleteRecord  {
 
   private Language language;
 
- /**
-  * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
-  */
-  @ApiModelProperty(value = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
+public enum OperationEnum {
 
-  private List<AdvancedAuctionOperationError> errors = new ArrayList<>();
+DELETE(String.valueOf("DELETE"));
+
+
+    private String value;
+
+    OperationEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static OperationEnum fromValue(String value) {
+        for (OperationEnum b : OperationEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  @ApiModelProperty(required = true, value = "")
+
+  private OperationEnum operation;
  /**
    * Get country
    * @return country
@@ -55,6 +89,29 @@ public class AdvancedAuctionItemsSubmitDeleteRecord  {
 
   public AdvancedAuctionItemsSubmitDeleteRecord country(Country country) {
     this.country = country;
+    return this;
+  }
+
+ /**
+   * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+   * @return errors
+  **/
+  @JsonProperty("errors")
+  public List<AdvancedAuctionOperationError> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
+  }
+
+  public AdvancedAuctionItemsSubmitDeleteRecord errors(List<AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public AdvancedAuctionItemsSubmitDeleteRecord addErrorsItem(AdvancedAuctionOperationError errorsItem) {
+    this.errors.add(errorsItem);
     return this;
   }
 
@@ -95,25 +152,23 @@ public class AdvancedAuctionItemsSubmitDeleteRecord  {
   }
 
  /**
-   * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
-   * @return errors
+   * Get operation
+   * @return operation
   **/
-  @JsonProperty("errors")
-  public List<AdvancedAuctionOperationError> getErrors() {
-    return errors;
+  @JsonProperty("operation")
+  public String getOperation() {
+    if (operation == null) {
+      return null;
+    }
+    return operation.value();
   }
 
-  public void setErrors(List<AdvancedAuctionOperationError> errors) {
-    this.errors = errors;
+  public void setOperation(OperationEnum operation) {
+    this.operation = operation;
   }
 
-  public AdvancedAuctionItemsSubmitDeleteRecord errors(List<AdvancedAuctionOperationError> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  public AdvancedAuctionItemsSubmitDeleteRecord addErrorsItem(AdvancedAuctionOperationError errorsItem) {
-    this.errors.add(errorsItem);
+  public AdvancedAuctionItemsSubmitDeleteRecord operation(OperationEnum operation) {
+    this.operation = operation;
     return this;
   }
 
@@ -127,14 +182,15 @@ public class AdvancedAuctionItemsSubmitDeleteRecord  {
     }
     AdvancedAuctionItemsSubmitDeleteRecord advancedAuctionItemsSubmitDeleteRecord = (AdvancedAuctionItemsSubmitDeleteRecord) o;
     return Objects.equals(this.country, advancedAuctionItemsSubmitDeleteRecord.country) &&
+        Objects.equals(this.errors, advancedAuctionItemsSubmitDeleteRecord.errors) &&
         Objects.equals(this.itemId, advancedAuctionItemsSubmitDeleteRecord.itemId) &&
         Objects.equals(this.language, advancedAuctionItemsSubmitDeleteRecord.language) &&
-        Objects.equals(this.errors, advancedAuctionItemsSubmitDeleteRecord.errors);
+        Objects.equals(this.operation, advancedAuctionItemsSubmitDeleteRecord.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, itemId, language, errors);
+    return Objects.hash(country, errors, itemId, language, operation);
   }
 
   @Override
@@ -143,9 +199,10 @@ public class AdvancedAuctionItemsSubmitDeleteRecord  {
     sb.append("class AdvancedAuctionItemsSubmitDeleteRecord {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -155,10 +212,7 @@ public class AdvancedAuctionItemsSubmitDeleteRecord  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

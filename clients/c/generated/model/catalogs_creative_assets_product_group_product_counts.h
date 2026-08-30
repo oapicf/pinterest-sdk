@@ -27,17 +27,21 @@ pinterest_rest_api_catalogs_creative_assets_product_group_product_counts_CATALOG
 
 
 typedef struct catalogs_creative_assets_product_group_product_counts_t {
+    double *app_links; //numeric
     pinterest_rest_api_catalogs_creative_assets_product_group_product_counts_CATALOGTYPE_e catalog_type; //enum
-    double total; //numeric
-    double videos; //numeric
+    double *images; //numeric
+    double *total; //numeric
+    double *videos; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_product_group_product_counts_t;
 
 __attribute__((deprecated)) catalogs_creative_assets_product_group_product_counts_t *catalogs_creative_assets_product_group_product_counts_create(
+    double *app_links,
     pinterest_rest_api_catalogs_creative_assets_product_group_product_counts_CATALOGTYPE_e catalog_type,
-    double total,
-    double videos
+    double *images,
+    double *total,
+    double *videos
 );
 
 void catalogs_creative_assets_product_group_product_counts_free(catalogs_creative_assets_product_group_product_counts_t *catalogs_creative_assets_product_group_product_counts);

@@ -4,10 +4,13 @@ import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AiDisclosures;
 import org.openapitools.model.PinMediaSource;
 
 @Canonical
 class PinCreate {
+    /* AI disclosure declarations the creator has made about this Pin. */
+    AiDisclosures aiDisclosures
     
     String altText
     /* The board to which this Pin belongs. */

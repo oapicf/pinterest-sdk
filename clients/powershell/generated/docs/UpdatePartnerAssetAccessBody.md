@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Accesses** | [**UpdatePartnerAssetAccessBodyAccessesInner[]**](UpdatePartnerAssetAccessBodyAccessesInner.md) |  | 
+**Accesses** | [**UpdatePartnerAssetAccessItem[]**](UpdatePartnerAssetAccessItem.md) | List of partner asset accesses to assign or update. | 
 
 ## Examples
 

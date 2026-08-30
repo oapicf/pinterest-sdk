@@ -8,7 +8,7 @@
 #' @description SsioInsertionOrdersStatusGetByAdAccount200Response Class
 #' @format An \code{R6Class} generator object
 #' @field bookmark  character [optional]
-#' @field items Insertion orders status by ad acount id list(\link{SSIOInsertionOrderStatus})
+#' @field items  list(\link{SSIOInsertionOrderStatus})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,7 +21,7 @@ SsioInsertionOrdersStatusGetByAdAccount200Response <- R6::R6Class(
     #' @description
     #' Initialize a new SsioInsertionOrdersStatusGetByAdAccount200Response class.
     #'
-    #' @param items Insertion orders status by ad acount id
+    #' @param items items
     #' @param bookmark bookmark
     #' @param ... Other optional arguments.
     initialize = function(`items`, `bookmark` = NULL, ...) {
@@ -75,9 +75,32 @@ SsioInsertionOrdersStatusGetByAdAccount200Response <- R6::R6Class(
       }
       if (!is.null(self$`items`)) {
         SsioInsertionOrdersStatusGetByAdAccount200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`items`)
       }
       return(SsioInsertionOrdersStatusGetByAdAccount200ResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

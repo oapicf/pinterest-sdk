@@ -1,0 +1,24 @@
+package org.openapitools.client.api
+
+import argonaut._
+import argonaut.EncodeJson._
+import argonaut.DecodeJson._
+
+import org.http4s.{EntityDecoder, EntityEncoder}
+import org.http4s.argonaut._
+import org.joda.time.DateTime
+
+
+import CatalogsProductGroupMultiplePinterestProductCategoryCriteria._
+
+case class CatalogsProductGroupMultiplePinterestProductCategoryCriteria (
+  negated: Option[Boolean],
+values: List[ProductCategoryEnum])
+
+object CatalogsProductGroupMultiplePinterestProductCategoryCriteria {
+  import DateTimeCodecs._
+
+  implicit val CatalogsProductGroupMultiplePinterestProductCategoryCriteriaCodecJson: CodecJson[CatalogsProductGroupMultiplePinterestProductCategoryCriteria] = CodecJson.derive[CatalogsProductGroupMultiplePinterestProductCategoryCriteria]
+  implicit val CatalogsProductGroupMultiplePinterestProductCategoryCriteriaDecoder: EntityDecoder[CatalogsProductGroupMultiplePinterestProductCategoryCriteria] = jsonOf[CatalogsProductGroupMultiplePinterestProductCategoryCriteria]
+  implicit val CatalogsProductGroupMultiplePinterestProductCategoryCriteriaEncoder: EntityEncoder[CatalogsProductGroupMultiplePinterestProductCategoryCriteria] = jsonEncoderOf[CatalogsProductGroupMultiplePinterestProductCategoryCriteria]
+}

@@ -18,22 +18,22 @@ class LeadFormsApi {
 
   /// Get lead form by id
   ///
-  /// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+  /// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
+  /// * [String] leadFormId (required):
+  ///   The ID of this lead form
+  ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  ///
-  /// * [String] leadFormId (required):
-  ///   Unique identifier of a lead form.
-  Future<Response> leadFormGetWithHttpInfo(String adAccountId, String leadFormId,) async {
+  Future<Response> leadFormGetWithHttpInfo(String leadFormId, String adAccountId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}'
-      .replaceAll('{ad_account_id}', adAccountId)
-      .replaceAll('{lead_form_id}', leadFormId);
+      .replaceAll('{lead_form_id}', leadFormId)
+      .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -53,22 +53,23 @@ class LeadFormsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get lead form by id
   ///
-  /// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+  /// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
   ///
   /// Parameters:
   ///
+  /// * [String] leadFormId (required):
+  ///   The ID of this lead form
+  ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  ///
-  /// * [String] leadFormId (required):
-  ///   Unique identifier of a lead form.
-  Future<LeadFormResponse?> leadFormGet(String adAccountId, String leadFormId,) async {
-    final response = await leadFormGetWithHttpInfo(adAccountId, leadFormId,);
+  Future<LeadForm?> leadFormGet(String leadFormId, String adAccountId, { Future<void>? abortTrigger, }) async {
+    final response = await leadFormGetWithHttpInfo(leadFormId, adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -76,7 +77,7 @@ class LeadFormsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LeadFormResponse',) as LeadFormResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LeadForm',) as LeadForm;
     
     }
     return null;
@@ -91,21 +92,19 @@ class LeadFormsApi {
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
   ///
   /// * [String] leadFormId (required):
   ///   Unique identifier of a lead form.
   ///
-  /// * [LeadFormTestRequest] leadFormTestRequest (required):
-  ///   Subscription to create.
-  Future<Response> leadFormTestCreateWithHttpInfo(String adAccountId, String leadFormId, LeadFormTestRequest leadFormTestRequest,) async {
+  /// * [LeadFormTestCreate] leadFormTestCreate (required):
+  Future<Response> leadFormTestCreateWithHttpInfo(String adAccountId, String leadFormId, LeadFormTestCreate leadFormTestCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test'
       .replaceAll('{ad_account_id}', adAccountId)
       .replaceAll('{lead_form_id}', leadFormId);
 
     // ignore: prefer_final_locals
-    Object? postBody = leadFormTestRequest;
+    Object? postBody = leadFormTestCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -122,6 +121,7 @@ class LeadFormsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -132,15 +132,13 @@ class LeadFormsApi {
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
   ///
   /// * [String] leadFormId (required):
   ///   Unique identifier of a lead form.
   ///
-  /// * [LeadFormTestRequest] leadFormTestRequest (required):
-  ///   Subscription to create.
-  Future<LeadFormTestResponse?> leadFormTestCreate(String adAccountId, String leadFormId, LeadFormTestRequest leadFormTestRequest,) async {
-    final response = await leadFormTestCreateWithHttpInfo(adAccountId, leadFormId, leadFormTestRequest,);
+  /// * [LeadFormTestCreate] leadFormTestCreate (required):
+  Future<LeadFormTest?> leadFormTestCreate(String adAccountId, String leadFormId, LeadFormTestCreate leadFormTestCreate, { Future<void>? abortTrigger, }) async {
+    final response = await leadFormTestCreateWithHttpInfo(adAccountId, leadFormId, leadFormTestCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -148,7 +146,7 @@ class LeadFormsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LeadFormTestResponse',) as LeadFormTestResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LeadFormTest',) as LeadFormTest;
     
     }
     return null;
@@ -156,7 +154,7 @@ class LeadFormsApi {
 
   /// Create lead forms
   ///
-  /// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+  /// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -165,15 +163,14 @@ class LeadFormsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [List<LeadFormCreateRequest>] leadFormCreateRequest (required):
-  ///   List of lead forms to create, size limit [1, 30].
-  Future<Response> leadFormsCreateWithHttpInfo(String adAccountId, List<LeadFormCreateRequest> leadFormCreateRequest,) async {
+  /// * [List<LeadFormCreate>] leadFormCreate (required):
+  Future<Response> leadFormsCreateWithHttpInfo(String adAccountId, List<LeadFormCreate> leadFormCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/lead_forms'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = leadFormCreateRequest;
+    Object? postBody = leadFormCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -190,22 +187,22 @@ class LeadFormsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Create lead forms
   ///
-  /// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+  /// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [List<LeadFormCreateRequest>] leadFormCreateRequest (required):
-  ///   List of lead forms to create, size limit [1, 30].
-  Future<LeadFormArrayResponse?> leadFormsCreate(String adAccountId, List<LeadFormCreateRequest> leadFormCreateRequest,) async {
-    final response = await leadFormsCreateWithHttpInfo(adAccountId, leadFormCreateRequest,);
+  /// * [List<LeadFormCreate>] leadFormCreate (required):
+  Future<LeadFormsCreate200Response?> leadFormsCreate(String adAccountId, List<LeadFormCreate> leadFormCreate, { Future<void>? abortTrigger, }) async {
+    final response = await leadFormsCreateWithHttpInfo(adAccountId, leadFormCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -213,7 +210,7 @@ class LeadFormsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LeadFormArrayResponse',) as LeadFormArrayResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LeadFormsCreate200Response',) as LeadFormsCreate200Response;
     
     }
     return null;
@@ -221,7 +218,7 @@ class LeadFormsApi {
 
   /// List lead forms
   ///
-  /// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+  /// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -230,15 +227,15 @@ class LeadFormsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<Response> leadFormsListWithHttpInfo(String adAccountId, { int? pageSize, String? order, String? bookmark, }) async {
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  Future<Response> leadFormsListWithHttpInfo(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/lead_forms'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -250,14 +247,14 @@ class LeadFormsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (bookmark != null) {
+      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
     if (pageSize != null) {
       queryParams.addAll(_queryParams('', 'page_size', pageSize));
     }
     if (order != null) {
       queryParams.addAll(_queryParams('', 'order', order));
-    }
-    if (bookmark != null) {
-      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
     }
 
     const contentTypes = <String>[];
@@ -271,28 +268,29 @@ class LeadFormsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// List lead forms
   ///
-  /// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+  /// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<LeadFormsList200Response?> leadFormsList(String adAccountId, { int? pageSize, String? order, String? bookmark, }) async {
-    final response = await leadFormsListWithHttpInfo(adAccountId,  pageSize: pageSize, order: order, bookmark: bookmark, );
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  Future<LeadFormsList200Response?> leadFormsList(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, Future<void>? abortTrigger, }) async {
+    final response = await leadFormsListWithHttpInfo(adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -308,7 +306,7 @@ class LeadFormsApi {
 
   /// Update lead forms
   ///
-  /// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+  /// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -317,15 +315,14 @@ class LeadFormsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [List<LeadFormUpdateRequest>] leadFormUpdateRequest (required):
-  ///   List of lead forms to update, size limit [1, 30].
-  Future<Response> leadFormsUpdateWithHttpInfo(String adAccountId, List<LeadFormUpdateRequest> leadFormUpdateRequest,) async {
+  /// * [List<LeadFormBatchUpdate>] leadFormBatchUpdate (required):
+  Future<Response> leadFormsUpdateWithHttpInfo(String adAccountId, List<LeadFormBatchUpdate> leadFormBatchUpdate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/lead_forms'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = leadFormUpdateRequest;
+    Object? postBody = leadFormBatchUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -342,22 +339,22 @@ class LeadFormsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Update lead forms
   ///
-  /// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+  /// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [List<LeadFormUpdateRequest>] leadFormUpdateRequest (required):
-  ///   List of lead forms to update, size limit [1, 30].
-  Future<LeadFormArrayResponse?> leadFormsUpdate(String adAccountId, List<LeadFormUpdateRequest> leadFormUpdateRequest,) async {
-    final response = await leadFormsUpdateWithHttpInfo(adAccountId, leadFormUpdateRequest,);
+  /// * [List<LeadFormBatchUpdate>] leadFormBatchUpdate (required):
+  Future<LeadFormsCreate200Response?> leadFormsUpdate(String adAccountId, List<LeadFormBatchUpdate> leadFormBatchUpdate, { Future<void>? abortTrigger, }) async {
+    final response = await leadFormsUpdateWithHttpInfo(adAccountId, leadFormBatchUpdate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -365,7 +362,7 @@ class LeadFormsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LeadFormArrayResponse',) as LeadFormArrayResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LeadFormsCreate200Response',) as LeadFormsCreate200Response;
     
     }
     return null;

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dailyUnderscoremetrics** | [**array[PinAnalyticsMetricsResponseDailyMetricsInner]**](PinAnalyticsMetricsResponseDailyMetricsInner.md) |  | [optional] [default to null]
+**dailyUnderscoremetrics** | [**array[PinAnalyticsDailyMetrics]**](PinAnalyticsDailyMetrics.md) |  | [optional] [default to null]
 **lifetimeUnderscoremetrics** | **map[String, integer]** |  | [optional] [default to null]
 **summaryUnderscoremetrics** | **map[String, integer]** |  | [optional] [default to null]
 

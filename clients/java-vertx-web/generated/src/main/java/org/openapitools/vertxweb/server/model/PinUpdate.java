@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.vertxweb.server.model.AiDisclosuresUpdate;
 import org.openapitools.vertxweb.server.model.CarouselSlot;
 
 /**
@@ -15,6 +16,7 @@ import org.openapitools.vertxweb.server.model.CarouselSlot;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinUpdate   {
   
+  private AiDisclosuresUpdate aiDisclosures;
   private String altText;
   private String boardId;
   private String boardSectionId;
@@ -27,7 +29,8 @@ public class PinUpdate   {
 
   }
 
-  public PinUpdate (String altText, String boardId, String boardSectionId, List<CarouselSlot> carouselSlots, String description, String link, String title) {
+  public PinUpdate (AiDisclosuresUpdate aiDisclosures, String altText, String boardId, String boardSectionId, List<CarouselSlot> carouselSlots, String description, String link, String title) {
+    this.aiDisclosures = aiDisclosures;
     this.altText = altText;
     this.boardId = boardId;
     this.boardSectionId = boardSectionId;
@@ -35,6 +38,15 @@ public class PinUpdate   {
     this.description = description;
     this.link = link;
     this.title = title;
+  }
+
+    
+  @JsonProperty("ai_disclosures")
+  public AiDisclosuresUpdate getAiDisclosures() {
+    return aiDisclosures;
+  }
+  public void setAiDisclosures(AiDisclosuresUpdate aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
   }
 
     
@@ -110,7 +122,8 @@ public class PinUpdate   {
       return false;
     }
     PinUpdate pinUpdate = (PinUpdate) o;
-    return Objects.equals(altText, pinUpdate.altText) &&
+    return Objects.equals(aiDisclosures, pinUpdate.aiDisclosures) &&
+        Objects.equals(altText, pinUpdate.altText) &&
         Objects.equals(boardId, pinUpdate.boardId) &&
         Objects.equals(boardSectionId, pinUpdate.boardSectionId) &&
         Objects.equals(carouselSlots, pinUpdate.carouselSlots) &&
@@ -121,7 +134,7 @@ public class PinUpdate   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(altText, boardId, boardSectionId, carouselSlots, description, link, title);
+    return Objects.hash(aiDisclosures, altText, boardId, boardSectionId, carouselSlots, description, link, title);
   }
 
   @Override
@@ -129,6 +142,7 @@ public class PinUpdate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinUpdate {\n");
     
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
@@ -145,9 +159,6 @@ public class PinUpdate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

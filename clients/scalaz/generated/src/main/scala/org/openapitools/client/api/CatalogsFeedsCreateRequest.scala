@@ -16,7 +16,7 @@ case class CatalogsFeedsCreateRequest (
 defaultAvailability: Option[ProductAvailabilityType],
 defaultCountry: Option[Country],
 defaultCurrency: Option[NullableCurrency],
-defaultLocale: Option[CatalogsFeedsCreateRequestDefaultLocale],
+defaultLocale: Option[CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale],
 format: CatalogsFormat,
 /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
   location: String,

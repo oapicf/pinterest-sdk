@@ -10,6 +10,7 @@
 
 #include <string>
 #include "AssetGroupBinding.h"
+#include "AssetTypeResponse.h"
 #include <list>
 #include "Object.h"
 
@@ -47,11 +48,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
 	 */
 	AssetGroupBinding getAssetGroupInfo();
 
-	/*! \brief Set 
+	/*! \brief Set An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
 	 */
 	void setAssetGroupInfo(AssetGroupBinding  asset_group_info);
 	/*! \brief Get Unique identifier of a business asset.
@@ -61,13 +62,13 @@ public:
 	/*! \brief Set Unique identifier of a business asset.
 	 */
 	void setAssetId(std::string  asset_id);
-	/*! \brief Get Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+	/*! \brief Get 
 	 */
-	std::string getAssetType();
+	AssetTypeResponse getAssetType();
 
-	/*! \brief Set Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+	/*! \brief Set 
 	 */
-	void setAssetType(std::string  asset_type);
+	void setAssetType(AssetTypeResponse  asset_type);
 	/*! \brief Get Permission levels member or partner has on an asset.
 	 */
 	std::list<std::string> getPermissions();
@@ -79,7 +80,7 @@ public:
 private:
 	AssetGroupBinding asset_group_info;
 	std::string asset_id;
-	std::string asset_type;
+	AssetTypeResponse asset_type;
 	std::list <std::string>permissions;
 	void __init();
 	void __cleanup();

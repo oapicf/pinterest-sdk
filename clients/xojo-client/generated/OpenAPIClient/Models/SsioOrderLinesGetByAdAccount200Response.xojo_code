@@ -7,9 +7,6 @@ Protected Class SsioOrderLinesGetByAdAccount200Response
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			SSIO order lines by ad acount id
-		#tag EndNote
 		items() As OpenAPIClient.Models.SSIOOrderLine
 	#tag EndProperty
 

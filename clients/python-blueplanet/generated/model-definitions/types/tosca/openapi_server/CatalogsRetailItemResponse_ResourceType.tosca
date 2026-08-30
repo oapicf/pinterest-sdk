@@ -7,7 +7,6 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  CatalogsType = openapi_server.resourceTypes.CatalogsType
   ItemAttributes = openapi_server.resourceTypes.ItemAttributes
   Pin = openapi_server.resourceTypes.Pin
 }
@@ -24,14 +23,21 @@ resourceTypes {
           optional = false
         }
         catalog_type {
-          type = CatalogsType
+          type =  string
           description = ""
+          enum = ["RETAIL"]
           optional = true
         }
         item_id {
           type =  string
           description = "The catalog retail item id in the merchant namespace"
           optional = false
+        }
+        item_response_kind {
+          type =  string
+          description = "Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload."
+          enum = ["retail_item"]
+          optional = true
         }
         pins {
           type = array

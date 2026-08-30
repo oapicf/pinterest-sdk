@@ -4,24 +4,22 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BrandAccountsCreate200Response
-import model.BrandAccountsCreateRequest
-import model.BrandAccountsUpdateRequest
-import model.DeletePartnersRequest
-import model.DeletePartnersResponse
-import model.DeletedMembersResponse
+import model.BrandAccount
+import model.BrandAccountCreate
+import model.BrandAccountUpdate
+import model.BusinessMembershipMember
+import model.DeleteBusinessMembership200Response
+import model.DeleteBusinessMembershipBody
+import model.DeleteBusinessPartners
+import model.DeleteBusinessPartnersDelete
 import model.Error
 import model.GetBusinessEmployers200Response
-import model.GetBusinessMembers200Response
-import model.GetBusinessPartners200Response
 import model.MemberBusinessRole
-import model.MembersToDeleteBody
 import model.PartnerType
-import model.SystemUserUpdateRequest
-import model.UpdateMemberBusinessRoleBody
-import model.UpdateMemberResultsResponseArray
+import model.SystemUserUpdateWithRequiredBody
+import model.UpdateBusinessMembershipsResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class BusinessAccessRelationshipsApiController @Inject()(cc: ControllerComponents, api: BusinessAccessRelationshipsApi) extends AbstractController(cc) {
   /**
@@ -29,11 +27,11 @@ class BusinessAccessRelationshipsApiController @Inject()(cc: ControllerComponent
     * @param businessHierarchyId business hierarchy node id
     */
   def brandAccountsCreate(businessHierarchyId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): BrandAccountsCreate200Response = {
-      val brandAccountsCreateRequest = request.body.asJson.map(_.as[BrandAccountsCreateRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "brandAccountsCreateRequest")
+    def executeApi(): BrandAccount = {
+      val brandAccountCreate = request.body.asJson.map(_.as[BrandAccountCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "brandAccountCreate")
       }
-      api.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest)
+      api.brandAccountsCreate(businessHierarchyId, brandAccountCreate)
     }
 
     val result = executeApi()
@@ -44,14 +42,13 @@ class BusinessAccessRelationshipsApiController @Inject()(cc: ControllerComponent
   /**
     * PATCH /v5/business_access/business_hierarchy/:businessHierarchyId/brand_accounts/:brandAccountId
     * @param businessHierarchyId business hierarchy node id
-    * @param brandAccountId Unique identifier of a brand account.
     */
-  def brandAccountsUpdate(businessHierarchyId: String, brandAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): BrandAccountsCreate200Response = {
-      val brandAccountsUpdateRequest = request.body.asJson.map(_.as[BrandAccountsUpdateRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "brandAccountsUpdateRequest")
+  def brandAccountsUpdate(brandAccountId: String, businessHierarchyId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): BrandAccount = {
+      val brandAccountUpdate = request.body.asJson.map(_.as[BrandAccountUpdate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "brandAccountUpdate")
       }
-      api.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest)
+      api.brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate)
     }
 
     val result = executeApi()
@@ -64,11 +61,11 @@ class BusinessAccessRelationshipsApiController @Inject()(cc: ControllerComponent
     * @param businessId Business id
     */
   def deleteBusinessMembership(businessId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): DeletedMembersResponse = {
-      val membersToDeleteBody = request.body.asJson.map(_.as[MembersToDeleteBody]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "membersToDeleteBody")
+    def executeApi(): DeleteBusinessMembership200Response = {
+      val deleteBusinessMembershipBody = request.body.asJson.map(_.as[DeleteBusinessMembershipBody]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "deleteBusinessMembershipBody")
       }
-      api.deleteBusinessMembership(businessId, membersToDeleteBody)
+      api.deleteBusinessMembership(businessId, deleteBusinessMembershipBody)
     }
 
     val result = executeApi()
@@ -81,11 +78,11 @@ class BusinessAccessRelationshipsApiController @Inject()(cc: ControllerComponent
     * @param businessId Unique identifier of the requesting business.
     */
   def deleteBusinessPartners(businessId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): DeletePartnersResponse = {
-      val deletePartnersRequest = request.body.asJson.map(_.as[DeletePartnersRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "deletePartnersRequest")
+    def executeApi(): DeleteBusinessPartners = {
+      val deleteBusinessPartnersDelete = request.body.asJson.map(_.as[DeleteBusinessPartnersDelete]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "deleteBusinessPartnersDelete")
       }
-      api.deleteBusinessPartners(businessId, deletePartnersRequest)
+      api.deleteBusinessPartners(businessId, deleteBusinessPartnersDelete)
     }
 
     val result = executeApi()
@@ -94,16 +91,19 @@ class BusinessAccessRelationshipsApiController @Inject()(cc: ControllerComponent
   }
 
   /**
-    * GET /v5/businesses/employers?pageSize=[value]&bookmark=[value]
+    * GET /v5/businesses/employers?assetsSummary=[value]&bookmark=[value]&pageSize=[value]
     */
   def getBusinessEmployers(): Action[AnyContent] = Action { request =>
     def executeApi(): GetBusinessEmployers200Response = {
-      val pageSize = request.getQueryString("page_size")
-        .map(value => value.toInt)
+      val assetsSummary = request.getQueryString("assets_summary")
+        .map(value => value.toBoolean)
         
       val bookmark = request.getQueryString("bookmark")
         
-      api.getBusinessEmployers(pageSize, bookmark)
+      val pageSize = request.getQueryString("page_size")
+        .map(value => value.toInt)
+        
+      api.getBusinessEmployers(assetsSummary, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -116,7 +116,7 @@ class BusinessAccessRelationshipsApiController @Inject()(cc: ControllerComponent
     * @param businessId Unique identifier of the requesting business.
     */
   def getBusinessMembers(businessId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): GetBusinessMembers200Response = {
+    def executeApi(): GetBusinessEmployers200Response = {
       val fetchSystemUsers = request.getQueryString("fetch_system_users")
         .map(value => value.toBoolean)
         
@@ -146,11 +146,11 @@ class BusinessAccessRelationshipsApiController @Inject()(cc: ControllerComponent
   }
 
   /**
-    * GET /v5/businesses/:businessId/partners?assetsSummary=[value]&partnerType=[value]&partnerIds=[value]&startIndex=[value]&pageSize=[value]&bookmark=[value]
+    * GET /v5/businesses/:businessId/partners?assetsSummary=[value]&partnerType=[value]&partnerIds=[value]&startIndex=[value]&sortAscending=[value]&bookmark=[value]&pageSize=[value]
     * @param businessId Unique identifier of the requesting business.
     */
   def getBusinessPartners(businessId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): GetBusinessPartners200Response = {
+    def executeApi(): GetBusinessEmployers200Response = {
       val assetsSummary = request.getQueryString("assets_summary")
         .map(value => value.toBoolean)
         
@@ -162,12 +162,15 @@ class BusinessAccessRelationshipsApiController @Inject()(cc: ControllerComponent
       val startIndex = request.getQueryString("start_index")
         .map(value => value.toInt)
         
-      val pageSize = request.getQueryString("page_size")
-        .map(value => value.toInt)
+      val sortAscending = request.getQueryString("sort_ascending")
+        .map(value => value.toBoolean)
         
       val bookmark = request.getQueryString("bookmark")
         
-      api.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark)
+      val pageSize = request.getQueryString("page_size")
+        .map(value => value.toInt)
+        
+      api.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, sortAscending, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -182,10 +185,10 @@ class BusinessAccessRelationshipsApiController @Inject()(cc: ControllerComponent
     */
   def systemUserUpdate(businessId: String, systemUserId: String): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
-      val systemUserUpdateRequest = request.body.asJson.map(_.as[SystemUserUpdateRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "systemUserUpdateRequest")
+      val systemUserUpdateWithRequiredBody = request.body.asJson.map(_.as[SystemUserUpdateWithRequiredBody]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "systemUserUpdateWithRequiredBody")
       }
-      api.systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest)
+      api.systemUserUpdate(businessId, systemUserId, systemUserUpdateWithRequiredBody)
     }
 
     executeApi()
@@ -197,11 +200,11 @@ class BusinessAccessRelationshipsApiController @Inject()(cc: ControllerComponent
     * @param businessId Business id
     */
   def updateBusinessMemberships(businessId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): UpdateMemberResultsResponseArray = {
-      val updateMemberBusinessRoleBody = request.body.asJson.map(_.as[List[UpdateMemberBusinessRoleBody]]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "updateMemberBusinessRoleBody")
+    def executeApi(): UpdateBusinessMembershipsResponse = {
+      val businessMembershipMember = request.body.asJson.map(_.as[List[BusinessMembershipMember]]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "businessMembershipMember")
       }
-      api.updateBusinessMemberships(businessId, updateMemberBusinessRoleBody)
+      api.updateBusinessMemberships(businessId, businessMembershipMember)
     }
 
     val result = executeApi()

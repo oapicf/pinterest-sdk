@@ -1,16 +1,17 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.AuthRespondInvitesBody;
-import org.openapitools.vertxweb.server.model.CancelInvitesBody;
+import org.openapitools.vertxweb.server.model.CancelInvitesRequest;
+import org.openapitools.vertxweb.server.model.CancelInvitesResponse;
 import org.openapitools.vertxweb.server.model.CreateAssetAccessRequestBody;
 import org.openapitools.vertxweb.server.model.CreateAssetAccessRequestResponse;
 import org.openapitools.vertxweb.server.model.CreateAssetInvitesRequest;
 import org.openapitools.vertxweb.server.model.CreateInvitesResultsResponseArray;
 import org.openapitools.vertxweb.server.model.CreateMembershipOrPartnershipInvitesBody;
-import org.openapitools.vertxweb.server.model.DeleteInvitesResultsResponseArray;
-import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.GetInvites200Response;
+import org.openapitools.vertxweb.server.model.InviteFilterStatus;
 import org.openapitools.vertxweb.server.model.InviteType;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 import org.openapitools.vertxweb.server.model.RespondToInvitesResponseArray;
 import org.openapitools.vertxweb.server.model.UpdateInvitesResultsResponseArray;
 
@@ -30,7 +31,7 @@ public class BusinessAccessInviteApiImpl implements BusinessAccessInviteApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<DeleteInvitesResultsResponseArray>> cancelInvitesOrRequests(String businessId, CancelInvitesBody cancelInvitesBody) {
+    public Future<ApiResponse<CancelInvitesResponse>> cancelInvitesOrRequests(String businessId, CancelInvitesRequest cancelInvitesRequest) {
         return Future.failedFuture(new HttpException(501));
     }
 
@@ -42,7 +43,7 @@ public class BusinessAccessInviteApiImpl implements BusinessAccessInviteApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<GetInvites200Response>> getInvites(String businessId, Boolean isMember, List<String> inviteStatus, InviteType inviteType, String bookmark, Integer pageSize) {
+    public Future<ApiResponse<GetInvites200Response>> getInvites(String businessId, Boolean isMember, List<InviteFilterStatus> inviteStatus, InviteType inviteType, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 

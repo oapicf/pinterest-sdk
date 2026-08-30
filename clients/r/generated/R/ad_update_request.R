@@ -7,6 +7,8 @@
 #' @title AdUpdateRequest
 #' @description AdUpdateRequest Class
 #' @format An \code{R6Class} generator object
+#' @field id The ID of this ad. character
+#' @field pin_id Pin ID. This field may only be updated for draft ads. character [optional]
 #' @field ad_group_id ID of the ad group that contains the ad. character [optional]
 #' @field android_deep_link Deep link URL for Android devices. character [optional]
 #' @field carousel_android_deep_links Comma-separated deep links for the carousel pin on Android. list(character) [optional]
@@ -20,22 +22,23 @@
 #' @field disclosure_url URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. character [optional]
 #' @field grid_click_type  \link{GridClickType} [optional]
 #' @field ios_deep_link Deep link URL for iOS devices. character [optional]
+#' @field is_carting Is the ad a carting/WTB ad? character [optional]
 #' @field is_pin_deleted Is original pin deleted? character [optional]
 #' @field is_removable Is pin repinnable? character [optional]
 #' @field lead_form_id Lead form ID for lead ad generation. character [optional]
 #' @field name Name of the ad - 255 chars max. character [optional]
-#' @field quiz_pin_data Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. \link{QuizPinData} [optional]
+#' @field quiz_pin_data Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. object [optional]
 #' @field status  \link{EntityStatus} [optional]
-#' @field tracking_urls  \link{TrackingUrls} [optional]
+#' @field tracking_urls  object [optional]
 #' @field view_tracking_url Tracking URL for ad impressions. character [optional]
-#' @field id The ID of this ad. character
-#' @field pin_id Pin ID. This field may only be updated for draft ads. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AdUpdateRequest <- R6::R6Class(
   "AdUpdateRequest",
   public = list(
+    `id` = NULL,
+    `pin_id` = NULL,
     `ad_group_id` = NULL,
     `android_deep_link` = NULL,
     `carousel_android_deep_links` = NULL,
@@ -49,6 +52,7 @@ AdUpdateRequest <- R6::R6Class(
     `disclosure_url` = NULL,
     `grid_click_type` = NULL,
     `ios_deep_link` = NULL,
+    `is_carting` = NULL,
     `is_pin_deleted` = NULL,
     `is_removable` = NULL,
     `lead_form_id` = NULL,
@@ -57,13 +61,12 @@ AdUpdateRequest <- R6::R6Class(
     `status` = NULL,
     `tracking_urls` = NULL,
     `view_tracking_url` = NULL,
-    `id` = NULL,
-    `pin_id` = NULL,
 
     #' @description
     #' Initialize a new AdUpdateRequest class.
     #'
     #' @param id The ID of this ad.
+    #' @param pin_id Pin ID. This field may only be updated for draft ads.
     #' @param ad_group_id ID of the ad group that contains the ad.
     #' @param android_deep_link Deep link URL for Android devices.
     #' @param carousel_android_deep_links Comma-separated deep links for the carousel pin on Android.
@@ -77,6 +80,7 @@ AdUpdateRequest <- R6::R6Class(
     #' @param disclosure_url URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
     #' @param grid_click_type grid_click_type
     #' @param ios_deep_link Deep link URL for iOS devices.
+    #' @param is_carting Is the ad a carting/WTB ad?
     #' @param is_pin_deleted Is original pin deleted?
     #' @param is_removable Is pin repinnable?
     #' @param lead_form_id Lead form ID for lead ad generation.
@@ -85,14 +89,19 @@ AdUpdateRequest <- R6::R6Class(
     #' @param status status
     #' @param tracking_urls tracking_urls
     #' @param view_tracking_url Tracking URL for ad impressions.
-    #' @param pin_id Pin ID. This field may only be updated for draft ads.
     #' @param ... Other optional arguments.
-    initialize = function(`id`, `ad_group_id` = NULL, `android_deep_link` = NULL, `carousel_android_deep_links` = NULL, `carousel_destination_urls` = NULL, `carousel_ios_deep_links` = NULL, `click_tracking_url` = NULL, `creative_type` = NULL, `customizable_cta_type` = NULL, `destination_url` = NULL, `disclosure_type` = NULL, `disclosure_url` = NULL, `grid_click_type` = NULL, `ios_deep_link` = NULL, `is_pin_deleted` = NULL, `is_removable` = NULL, `lead_form_id` = NULL, `name` = NULL, `quiz_pin_data` = NULL, `status` = NULL, `tracking_urls` = NULL, `view_tracking_url` = NULL, `pin_id` = NULL, ...) {
+    initialize = function(`id`, `pin_id` = NULL, `ad_group_id` = NULL, `android_deep_link` = NULL, `carousel_android_deep_links` = NULL, `carousel_destination_urls` = NULL, `carousel_ios_deep_links` = NULL, `click_tracking_url` = NULL, `creative_type` = NULL, `customizable_cta_type` = NULL, `destination_url` = NULL, `disclosure_type` = NULL, `disclosure_url` = NULL, `grid_click_type` = NULL, `ios_deep_link` = NULL, `is_carting` = NULL, `is_pin_deleted` = NULL, `is_removable` = NULL, `lead_form_id` = NULL, `name` = NULL, `quiz_pin_data` = NULL, `status` = NULL, `tracking_urls` = NULL, `view_tracking_url` = NULL, ...) {
       if (!missing(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
         }
         self$`id` <- `id`
+      }
+      if (!is.null(`pin_id`)) {
+        if (!(is.character(`pin_id`) && length(`pin_id`) == 1)) {
+          stop(paste("Error! Invalid data for `pin_id`. Must be a string:", `pin_id`))
+        }
+        self$`pin_id` <- `pin_id`
       }
       if (!is.null(`ad_group_id`)) {
         if (!(is.character(`ad_group_id`) && length(`ad_group_id`) == 1)) {
@@ -173,6 +182,12 @@ AdUpdateRequest <- R6::R6Class(
         }
         self$`ios_deep_link` <- `ios_deep_link`
       }
+      if (!is.null(`is_carting`)) {
+        if (!(is.logical(`is_carting`) && length(`is_carting`) == 1)) {
+          stop(paste("Error! Invalid data for `is_carting`. Must be a boolean:", `is_carting`))
+        }
+        self$`is_carting` <- `is_carting`
+      }
       if (!is.null(`is_pin_deleted`)) {
         if (!(is.logical(`is_pin_deleted`) && length(`is_pin_deleted`) == 1)) {
           stop(paste("Error! Invalid data for `is_pin_deleted`. Must be a boolean:", `is_pin_deleted`))
@@ -198,7 +213,6 @@ AdUpdateRequest <- R6::R6Class(
         self$`name` <- `name`
       }
       if (!is.null(`quiz_pin_data`)) {
-        stopifnot(R6::is.R6(`quiz_pin_data`))
         self$`quiz_pin_data` <- `quiz_pin_data`
       }
       if (!is.null(`status`)) {
@@ -209,7 +223,6 @@ AdUpdateRequest <- R6::R6Class(
         self$`status` <- `status`
       }
       if (!is.null(`tracking_urls`)) {
-        stopifnot(R6::is.R6(`tracking_urls`))
         self$`tracking_urls` <- `tracking_urls`
       }
       if (!is.null(`view_tracking_url`)) {
@@ -217,12 +230,6 @@ AdUpdateRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `view_tracking_url`. Must be a string:", `view_tracking_url`))
         }
         self$`view_tracking_url` <- `view_tracking_url`
-      }
-      if (!is.null(`pin_id`)) {
-        if (!(is.character(`pin_id`) && length(`pin_id`) == 1)) {
-          stop(paste("Error! Invalid data for `pin_id`. Must be a string:", `pin_id`))
-        }
-        self$`pin_id` <- `pin_id`
       }
     },
 
@@ -257,6 +264,14 @@ AdUpdateRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AdUpdateRequestObject <- list()
+      if (!is.null(self$`id`)) {
+        AdUpdateRequestObject[["id"]] <-
+          self$`id`
+      }
+      if (!is.null(self$`pin_id`)) {
+        AdUpdateRequestObject[["pin_id"]] <-
+          self$`pin_id`
+      }
       if (!is.null(self$`ad_group_id`)) {
         AdUpdateRequestObject[["ad_group_id"]] <-
           self$`ad_group_id`
@@ -283,11 +298,11 @@ AdUpdateRequest <- R6::R6Class(
       }
       if (!is.null(self$`creative_type`)) {
         AdUpdateRequestObject[["creative_type"]] <-
-          self$`creative_type`$toSimpleType()
+          self$extractSimpleType(self$`creative_type`)
       }
       if (!is.null(self$`customizable_cta_type`)) {
         AdUpdateRequestObject[["customizable_cta_type"]] <-
-          self$`customizable_cta_type`$toSimpleType()
+          self$extractSimpleType(self$`customizable_cta_type`)
       }
       if (!is.null(self$`destination_url`)) {
         AdUpdateRequestObject[["destination_url"]] <-
@@ -295,7 +310,7 @@ AdUpdateRequest <- R6::R6Class(
       }
       if (!is.null(self$`disclosure_type`)) {
         AdUpdateRequestObject[["disclosure_type"]] <-
-          self$`disclosure_type`$toSimpleType()
+          self$extractSimpleType(self$`disclosure_type`)
       }
       if (!is.null(self$`disclosure_url`)) {
         AdUpdateRequestObject[["disclosure_url"]] <-
@@ -303,11 +318,15 @@ AdUpdateRequest <- R6::R6Class(
       }
       if (!is.null(self$`grid_click_type`)) {
         AdUpdateRequestObject[["grid_click_type"]] <-
-          self$`grid_click_type`$toSimpleType()
+          self$extractSimpleType(self$`grid_click_type`)
       }
       if (!is.null(self$`ios_deep_link`)) {
         AdUpdateRequestObject[["ios_deep_link"]] <-
           self$`ios_deep_link`
+      }
+      if (!is.null(self$`is_carting`)) {
+        AdUpdateRequestObject[["is_carting"]] <-
+          self$`is_carting`
       }
       if (!is.null(self$`is_pin_deleted`)) {
         AdUpdateRequestObject[["is_pin_deleted"]] <-
@@ -327,29 +346,44 @@ AdUpdateRequest <- R6::R6Class(
       }
       if (!is.null(self$`quiz_pin_data`)) {
         AdUpdateRequestObject[["quiz_pin_data"]] <-
-          self$`quiz_pin_data`$toSimpleType()
+          self$`quiz_pin_data`
       }
       if (!is.null(self$`status`)) {
         AdUpdateRequestObject[["status"]] <-
-          self$`status`$toSimpleType()
+          self$extractSimpleType(self$`status`)
       }
       if (!is.null(self$`tracking_urls`)) {
         AdUpdateRequestObject[["tracking_urls"]] <-
-          self$`tracking_urls`$toSimpleType()
+          self$`tracking_urls`
       }
       if (!is.null(self$`view_tracking_url`)) {
         AdUpdateRequestObject[["view_tracking_url"]] <-
           self$`view_tracking_url`
       }
-      if (!is.null(self$`id`)) {
-        AdUpdateRequestObject[["id"]] <-
-          self$`id`
-      }
-      if (!is.null(self$`pin_id`)) {
-        AdUpdateRequestObject[["pin_id"]] <-
-          self$`pin_id`
-      }
       return(AdUpdateRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -359,6 +393,12 @@ AdUpdateRequest <- R6::R6Class(
     #' @return the instance of AdUpdateRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`id`)) {
+        self$`id` <- this_object$`id`
+      }
+      if (!is.null(this_object$`pin_id`)) {
+        self$`pin_id` <- this_object$`pin_id`
+      }
       if (!is.null(this_object$`ad_group_id`)) {
         self$`ad_group_id` <- this_object$`ad_group_id`
       }
@@ -406,6 +446,9 @@ AdUpdateRequest <- R6::R6Class(
       if (!is.null(this_object$`ios_deep_link`)) {
         self$`ios_deep_link` <- this_object$`ios_deep_link`
       }
+      if (!is.null(this_object$`is_carting`)) {
+        self$`is_carting` <- this_object$`is_carting`
+      }
       if (!is.null(this_object$`is_pin_deleted`)) {
         self$`is_pin_deleted` <- this_object$`is_pin_deleted`
       }
@@ -419,9 +462,7 @@ AdUpdateRequest <- R6::R6Class(
         self$`name` <- this_object$`name`
       }
       if (!is.null(this_object$`quiz_pin_data`)) {
-        `quiz_pin_data_object` <- QuizPinData$new()
-        `quiz_pin_data_object`$fromJSON(jsonlite::toJSON(this_object$`quiz_pin_data`, auto_unbox = TRUE, digits = NA))
-        self$`quiz_pin_data` <- `quiz_pin_data_object`
+        self$`quiz_pin_data` <- this_object$`quiz_pin_data`
       }
       if (!is.null(this_object$`status`)) {
         `status_object` <- EntityStatus$new()
@@ -429,18 +470,10 @@ AdUpdateRequest <- R6::R6Class(
         self$`status` <- `status_object`
       }
       if (!is.null(this_object$`tracking_urls`)) {
-        `tracking_urls_object` <- TrackingUrls$new()
-        `tracking_urls_object`$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
-        self$`tracking_urls` <- `tracking_urls_object`
+        self$`tracking_urls` <- this_object$`tracking_urls`
       }
       if (!is.null(this_object$`view_tracking_url`)) {
         self$`view_tracking_url` <- this_object$`view_tracking_url`
-      }
-      if (!is.null(this_object$`id`)) {
-        self$`id` <- this_object$`id`
-      }
-      if (!is.null(this_object$`pin_id`)) {
-        self$`pin_id` <- this_object$`pin_id`
       }
       self
     },
@@ -463,6 +496,8 @@ AdUpdateRequest <- R6::R6Class(
     #' @return the instance of AdUpdateRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`id` <- this_object$`id`
+      self$`pin_id` <- this_object$`pin_id`
       self$`ad_group_id` <- this_object$`ad_group_id`
       self$`android_deep_link` <- this_object$`android_deep_link`
       self$`carousel_android_deep_links` <- ApiClient$new()$deserializeObj(this_object$`carousel_android_deep_links`, "array[character]", loadNamespace("openapi"))
@@ -476,16 +511,15 @@ AdUpdateRequest <- R6::R6Class(
       self$`disclosure_url` <- this_object$`disclosure_url`
       self$`grid_click_type` <- GridClickType$new()$fromJSON(jsonlite::toJSON(this_object$`grid_click_type`, auto_unbox = TRUE, digits = NA))
       self$`ios_deep_link` <- this_object$`ios_deep_link`
+      self$`is_carting` <- this_object$`is_carting`
       self$`is_pin_deleted` <- this_object$`is_pin_deleted`
       self$`is_removable` <- this_object$`is_removable`
       self$`lead_form_id` <- this_object$`lead_form_id`
       self$`name` <- this_object$`name`
-      self$`quiz_pin_data` <- QuizPinData$new()$fromJSON(jsonlite::toJSON(this_object$`quiz_pin_data`, auto_unbox = TRUE, digits = NA))
+      self$`quiz_pin_data` <- this_object$`quiz_pin_data`
       self$`status` <- EntityStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
-      self$`tracking_urls` <- TrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
+      self$`tracking_urls` <- this_object$`tracking_urls`
       self$`view_tracking_url` <- this_object$`view_tracking_url`
-      self$`id` <- this_object$`id`
-      self$`pin_id` <- this_object$`pin_id`
       self
     },
 
@@ -518,14 +552,6 @@ AdUpdateRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      if (!str_detect(self$`ad_group_id`, "^(AG)?\\d+$")) {
-        return(FALSE)
-      }
-
-      if (!str_detect(self$`lead_form_id`, "^(AG)?\\d+$")) {
-        return(FALSE)
-      }
-
       # check if the required `id` is null
       if (is.null(self$`id`)) {
         return(FALSE)
@@ -536,6 +562,14 @@ AdUpdateRequest <- R6::R6Class(
       }
 
       if (!str_detect(self$`pin_id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
+      if (!str_detect(self$`ad_group_id`, "^(AG)?\\d+$")) {
+        return(FALSE)
+      }
+
+      if (!str_detect(self$`lead_form_id`, "^(AG)?\\d+$")) {
         return(FALSE)
       }
 
@@ -548,14 +582,6 @@ AdUpdateRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (!str_detect(self$`ad_group_id`, "^(AG)?\\d+$")) {
-        invalid_fields["ad_group_id"] <- "Invalid value for `ad_group_id`, must conform to the pattern ^(AG)?\\d+$."
-      }
-
-      if (!str_detect(self$`lead_form_id`, "^(AG)?\\d+$")) {
-        invalid_fields["lead_form_id"] <- "Invalid value for `lead_form_id`, must conform to the pattern ^(AG)?\\d+$."
-      }
-
       # check if the required `id` is null
       if (is.null(self$`id`)) {
         invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
@@ -567,6 +593,14 @@ AdUpdateRequest <- R6::R6Class(
 
       if (!str_detect(self$`pin_id`, "^\\d+$")) {
         invalid_fields["pin_id"] <- "Invalid value for `pin_id`, must conform to the pattern ^\\d+$."
+      }
+
+      if (!str_detect(self$`ad_group_id`, "^(AG)?\\d+$")) {
+        invalid_fields["ad_group_id"] <- "Invalid value for `ad_group_id`, must conform to the pattern ^(AG)?\\d+$."
+      }
+
+      if (!str_detect(self$`lead_form_id`, "^(AG)?\\d+$")) {
+        invalid_fields["lead_form_id"] <- "Invalid value for `lead_form_id`, must conform to the pattern ^(AG)?\\d+$."
       }
 
       invalid_fields

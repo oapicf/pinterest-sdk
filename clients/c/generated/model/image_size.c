@@ -15,12 +15,12 @@ static image_size_t *image_size_create_internal(
     if (!image_size_local_var) {
         return NULL;
     }
+    memset(image_size_local_var, 0, sizeof(image_size_t));
+    image_size_local_var->_library_owned = 1;
     image_size_local_var->_1200x = _1200x;
     image_size_local_var->_150x150 = _150x150;
     image_size_local_var->_400x300 = _400x300;
     image_size_local_var->_600x = _600x;
-
-    image_size_local_var->_library_owned = 1;
     return image_size_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) image_size_t *image_size_create(
     image_details_t *_400x300,
     image_details_t *_600x
     ) {
-    return image_size_create_internal (
+    image_size_t *result = image_size_create_internal (
         _1200x,
         _150x150,
         _400x300,
         _600x
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void image_size_free(image_size_t *image_size) {
@@ -181,12 +184,17 @@ image_size_t *image_size_parseFromJSON(cJSON *image_sizeJSON){
     }
 
 
+
     image_size_local_var = image_size_create_internal (
         _1200x ? _1200x_local_nonprim : NULL,
         _150x150 ? _150x150_local_nonprim : NULL,
         _400x300 ? _400x300_local_nonprim : NULL,
         _600x ? _600x_local_nonprim : NULL
         );
+
+    if (!image_size_local_var) {
+        goto end;
+    }
 
     return image_size_local_var;
 end:

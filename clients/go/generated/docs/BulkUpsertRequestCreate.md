@@ -7,10 +7,11 @@ Name | Type | Description | Notes
 **AdGroups** | Pointer to [**[]AdGroupCreateRequest**](AdGroupCreateRequest.md) |  | [optional] 
 **Ads** | Pointer to [**[]AdCreateRequest**](AdCreateRequest.md) |  | [optional] 
 **Campaigns** | Pointer to [**[]CampaignCreateRequest**](CampaignCreateRequest.md) |  | [optional] 
-**CatalogProductGroups** | Pointer to [**[]MultipleProductGroupsInner**](MultipleProductGroupsInner.md) |  | [optional] 
+**CatalogProductGroups** | Pointer to [**[]BulkUpsertRequestCreateCatalogProductGroupsItems**](BulkUpsertRequestCreateCatalogProductGroupsItems.md) |  | [optional] 
 **Keywords** | Pointer to [**[]KeywordsRequest**](KeywordsRequest.md) |  | [optional] 
-**Labels** | Pointer to [**[]LabelCreateRequest**](LabelCreateRequest.md) |  | [optional] 
+**Labels** | Pointer to [**[]LabelBulkCreateRequest**](LabelBulkCreateRequest.md) |  | [optional] 
 **ProductGroups** | Pointer to [**[]ProductGroupPromotionCreateRequest**](ProductGroupPromotionCreateRequest.md) |  | [optional] 
+**Schedules** | Pointer to [**[]ScheduleCreateRequest**](ScheduleCreateRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -108,20 +109,20 @@ HasCampaigns returns a boolean if a field has been set.
 
 ### GetCatalogProductGroups
 
-`func (o *BulkUpsertRequestCreate) GetCatalogProductGroups() []MultipleProductGroupsInner`
+`func (o *BulkUpsertRequestCreate) GetCatalogProductGroups() []BulkUpsertRequestCreateCatalogProductGroupsItems`
 
 GetCatalogProductGroups returns the CatalogProductGroups field if non-nil, zero value otherwise.
 
 ### GetCatalogProductGroupsOk
 
-`func (o *BulkUpsertRequestCreate) GetCatalogProductGroupsOk() (*[]MultipleProductGroupsInner, bool)`
+`func (o *BulkUpsertRequestCreate) GetCatalogProductGroupsOk() (*[]BulkUpsertRequestCreateCatalogProductGroupsItems, bool)`
 
 GetCatalogProductGroupsOk returns a tuple with the CatalogProductGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogProductGroups
 
-`func (o *BulkUpsertRequestCreate) SetCatalogProductGroups(v []MultipleProductGroupsInner)`
+`func (o *BulkUpsertRequestCreate) SetCatalogProductGroups(v []BulkUpsertRequestCreateCatalogProductGroupsItems)`
 
 SetCatalogProductGroups sets CatalogProductGroups field to given value.
 
@@ -158,20 +159,20 @@ HasKeywords returns a boolean if a field has been set.
 
 ### GetLabels
 
-`func (o *BulkUpsertRequestCreate) GetLabels() []LabelCreateRequest`
+`func (o *BulkUpsertRequestCreate) GetLabels() []LabelBulkCreateRequest`
 
 GetLabels returns the Labels field if non-nil, zero value otherwise.
 
 ### GetLabelsOk
 
-`func (o *BulkUpsertRequestCreate) GetLabelsOk() (*[]LabelCreateRequest, bool)`
+`func (o *BulkUpsertRequestCreate) GetLabelsOk() (*[]LabelBulkCreateRequest, bool)`
 
 GetLabelsOk returns a tuple with the Labels field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLabels
 
-`func (o *BulkUpsertRequestCreate) SetLabels(v []LabelCreateRequest)`
+`func (o *BulkUpsertRequestCreate) SetLabels(v []LabelBulkCreateRequest)`
 
 SetLabels sets Labels field to given value.
 
@@ -205,6 +206,31 @@ SetProductGroups sets ProductGroups field to given value.
 `func (o *BulkUpsertRequestCreate) HasProductGroups() bool`
 
 HasProductGroups returns a boolean if a field has been set.
+
+### GetSchedules
+
+`func (o *BulkUpsertRequestCreate) GetSchedules() []ScheduleCreateRequest`
+
+GetSchedules returns the Schedules field if non-nil, zero value otherwise.
+
+### GetSchedulesOk
+
+`func (o *BulkUpsertRequestCreate) GetSchedulesOk() (*[]ScheduleCreateRequest, bool)`
+
+GetSchedulesOk returns a tuple with the Schedules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSchedules
+
+`func (o *BulkUpsertRequestCreate) SetSchedules(v []ScheduleCreateRequest)`
+
+SetSchedules sets Schedules field to given value.
+
+### HasSchedules
+
+`func (o *BulkUpsertRequestCreate) HasSchedules() bool`
+
+HasSchedules returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

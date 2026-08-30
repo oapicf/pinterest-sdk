@@ -13,11 +13,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="leadFormGet"></a>
 # **leadFormGet**
-> LeadFormResponse leadFormGet(adAccountId, leadFormId)
+> LeadForm leadFormGet(leadFormId, adAccountId)
 
 Get lead form by id
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```java
@@ -39,10 +39,10 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     LeadFormsApi apiInstance = new LeadFormsApi(defaultClient);
+    String leadFormId = "leadFormId_example"; // String | The ID of this lead form
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    String leadFormId = "1234567890123"; // String | Unique identifier of a lead form.
     try {
-      LeadFormResponse result = apiInstance.leadFormGet(adAccountId, leadFormId);
+      LeadForm result = apiInstance.leadFormGet(leadFormId, adAccountId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LeadFormsApi#leadFormGet");
@@ -59,12 +59,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **leadFormId** | **String**| The ID of this lead form | |
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **leadFormId** | **String**| Unique identifier of a lead form. | |
 
 ### Return type
 
-[**LeadFormResponse**](LeadFormResponse.md)
+[**LeadForm**](LeadForm.md)
 
 ### Authorization
 
@@ -78,14 +78,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account lead forms parameters. |  -  |
-| **404** | The lead form ID for the given ad account ID does not exist. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="leadFormTestCreate"></a>
 # **leadFormTestCreate**
-> LeadFormTestResponse leadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest)
+> LeadFormTest leadFormTestCreate(adAccountId, leadFormId, leadFormTestCreate)
 
 Create lead form test data
 
@@ -111,11 +114,11 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     LeadFormsApi apiInstance = new LeadFormsApi(defaultClient);
-    String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    String leadFormId = "1234567890123"; // String | Unique identifier of a lead form.
-    LeadFormTestRequest leadFormTestRequest = new LeadFormTestRequest(); // LeadFormTestRequest | Subscription to create.
+    String adAccountId = "adAccountId_example"; // String | 
+    String leadFormId = "leadFormId_example"; // String | Unique identifier of a lead form.
+    LeadFormTestCreate leadFormTestCreate = new LeadFormTestCreate(); // LeadFormTestCreate | 
     try {
-      LeadFormTestResponse result = apiInstance.leadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest);
+      LeadFormTest result = apiInstance.leadFormTestCreate(adAccountId, leadFormId, leadFormTestCreate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LeadFormsApi#leadFormTestCreate");
@@ -132,13 +135,13 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | **String**| Unique identifier of an ad account. | |
+| **adAccountId** | **String**|  | |
 | **leadFormId** | **String**| Unique identifier of a lead form. | |
-| **leadFormTestRequest** | [**LeadFormTestRequest**](LeadFormTestRequest.md)| Subscription to create. | |
+| **leadFormTestCreate** | [**LeadFormTestCreate**](LeadFormTestCreate.md)|  | |
 
 ### Return type
 
-[**LeadFormTestResponse**](LeadFormTestResponse.md)
+[**LeadFormTest**](LeadFormTest.md)
 
 ### Authorization
 
@@ -152,18 +155,18 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **404** | Lead not found. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="leadFormsCreate"></a>
 # **leadFormsCreate**
-> LeadFormArrayResponse leadFormsCreate(adAccountId, leadFormCreateRequest)
+> LeadFormsCreate200Response leadFormsCreate(adAccountId, leadFormCreate)
 
 Create lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form&#39;s description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```java
@@ -186,9 +189,9 @@ public class Example {
 
     LeadFormsApi apiInstance = new LeadFormsApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    List<LeadFormCreateRequest> leadFormCreateRequest = Arrays.asList(); // List<LeadFormCreateRequest> | List of lead forms to create, size limit [1, 30].
+    List<LeadFormCreate> leadFormCreate = Arrays.asList(); // List<LeadFormCreate> | 
     try {
-      LeadFormArrayResponse result = apiInstance.leadFormsCreate(adAccountId, leadFormCreateRequest);
+      LeadFormsCreate200Response result = apiInstance.leadFormsCreate(adAccountId, leadFormCreate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LeadFormsApi#leadFormsCreate");
@@ -206,11 +209,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **leadFormCreateRequest** | [**List&lt;LeadFormCreateRequest&gt;**](LeadFormCreateRequest.md)| List of lead forms to create, size limit [1, 30]. | |
+| **leadFormCreate** | [**List&lt;LeadFormCreate&gt;**](LeadFormCreate.md)|  | |
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 
@@ -224,17 +227,21 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account lead forms parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="leadFormsList"></a>
 # **leadFormsList**
-> LeadFormsList200Response leadFormsList(adAccountId, pageSize, order, bookmark)
+> LeadFormsList200Response leadFormsList(adAccountId, bookmark, pageSize, order)
 
 List lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  List lead forms associated with an ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```java
@@ -257,11 +264,11 @@ public class Example {
 
     LeadFormsApi apiInstance = new LeadFormsApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    String order = "ASCENDING"; // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+    PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING"); // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
     try {
-      LeadFormsList200Response result = apiInstance.leadFormsList(adAccountId, pageSize, order, bookmark);
+      LeadFormsList200Response result = apiInstance.leadFormsList(adAccountId, bookmark, pageSize, order);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LeadFormsApi#leadFormsList");
@@ -279,9 +286,9 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
 
 ### Return type
 
@@ -299,17 +306,21 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account lead forms parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="leadFormsUpdate"></a>
 # **leadFormsUpdate**
-> LeadFormArrayResponse leadFormsUpdate(adAccountId, leadFormUpdateRequest)
+> LeadFormsCreate200Response leadFormsUpdate(adAccountId, leadFormBatchUpdate)
 
 Update lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```java
@@ -332,9 +343,9 @@ public class Example {
 
     LeadFormsApi apiInstance = new LeadFormsApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    List<LeadFormUpdateRequest> leadFormUpdateRequest = Arrays.asList(); // List<LeadFormUpdateRequest> | List of lead forms to update, size limit [1, 30].
+    List<LeadFormBatchUpdate> leadFormBatchUpdate = Arrays.asList(); // List<LeadFormBatchUpdate> | 
     try {
-      LeadFormArrayResponse result = apiInstance.leadFormsUpdate(adAccountId, leadFormUpdateRequest);
+      LeadFormsCreate200Response result = apiInstance.leadFormsUpdate(adAccountId, leadFormBatchUpdate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LeadFormsApi#leadFormsUpdate");
@@ -352,11 +363,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **leadFormUpdateRequest** | [**List&lt;LeadFormUpdateRequest&gt;**](LeadFormUpdateRequest.md)| List of lead forms to update, size limit [1, 30]. | |
+| **leadFormBatchUpdate** | [**List&lt;LeadFormBatchUpdate&gt;**](LeadFormBatchUpdate.md)|  | |
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 
@@ -370,7 +381,11 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account lead forms parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

@@ -12,7 +12,6 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "BatchOperation.h"
 #include "Country.h"
 #include "ItemUpsertBatchRecord.h"
 #include <list>
@@ -55,35 +54,35 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCountry(Country  country);
+	void setCountry(Country country);
 	/*! \brief Get Array with catalogs items
 	 */
 	std::list<ItemUpsertBatchRecord> getItems();
 
 	/*! \brief Set Array with catalogs items
 	 */
-	void setItems(std::list <ItemUpsertBatchRecord> items);
+	void setItems(std::list<ItemUpsertBatchRecord> items);
 	/*! \brief Get We recommend using the CatalogsLocale values.
 	 */
 	std::string getLanguage();
 
 	/*! \brief Set We recommend using the CatalogsLocale values.
 	 */
-	void setLanguage(std::string  language);
+	void setLanguage(std::string language);
 	/*! \brief Get 
 	 */
-	BatchOperation getOperation();
+	std::string getOperation();
 
 	/*! \brief Set 
 	 */
-	void setOperation(BatchOperation  operation);
+	void setOperation(std::string operation);
 
 
     private:
     Country country;
     std::list<ItemUpsertBatchRecord> items;
     std::string language{};
-    BatchOperation operation;
+    std::string operation{};
 };
 }
 

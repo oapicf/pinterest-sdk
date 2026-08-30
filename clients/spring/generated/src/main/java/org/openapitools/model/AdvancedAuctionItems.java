@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -11,26 +12,27 @@ import org.openapitools.model.AdvancedAuctionItem;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Response object containing item bid options
  */
 
 @Schema(name = "AdvancedAuctionItems", description = "Response object containing item bid options")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdvancedAuctionItems {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String catalogId;
 
-  @Valid
-  private List<AdvancedAuctionItem> items = new ArrayList<>();
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<@Valid AdvancedAuctionItem> items = new ArrayList<>();
 
   public AdvancedAuctionItems catalogId(@Nullable String catalogId) {
     this.catalogId = catalogId;
@@ -48,11 +50,12 @@ public class AdvancedAuctionItems {
     return catalogId;
   }
 
+  @JsonProperty("catalog_id")
   public void setCatalogId(@Nullable String catalogId) {
     this.catalogId = catalogId;
   }
 
-  public AdvancedAuctionItems items(List<AdvancedAuctionItem> items) {
+  public AdvancedAuctionItems items(List<@Valid AdvancedAuctionItem> items) {
     this.items = items;
     return this;
   }
@@ -72,11 +75,12 @@ public class AdvancedAuctionItems {
   @Valid 
   @Schema(name = "items", description = "Array with item bid options", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")
-  public List<AdvancedAuctionItem> getItems() {
+  public List<@Valid AdvancedAuctionItem> getItems() {
     return items;
   }
 
-  public void setItems(List<AdvancedAuctionItem> items) {
+  @JsonProperty("items")
+  public void setItems(List<@Valid AdvancedAuctionItem> items) {
     this.items = items;
   }
 
@@ -112,11 +116,8 @@ public class AdvancedAuctionItems {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

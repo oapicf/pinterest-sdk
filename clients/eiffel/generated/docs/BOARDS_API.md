@@ -18,7 +18,7 @@ Feature | HTTP request | Description
 
 
 # **board_sections_create**
-> board_sections_create (board_id: STRING_32 ; board_section: BOARD_SECTION ; ad_account_id:  detachable STRING_32 ): detachable BOARD_SECTION
+> board_sections_create (board_id: STRING_32 ; board_section_create: BOARD_SECTION_CREATE ; ad_account_id:  detachable STRING_32 ): detachable BOARD_SECTION
 
 
 Create board section
@@ -31,7 +31,7 @@ Create a board section on a board owned by the \"operation user_account\" - or o
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **board_id** | **STRING_32**| Unique identifier of a board. | [default to null]
- **board_section** | [**BOARD_SECTION**](BOARD_SECTION.md)| Create a board section. | 
+ **board_section_create** | [**BOARD_SECTION_CREATE**](BOARD_SECTION_CREATE.md)|  | 
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **board_sections_delete**
-> board_sections_delete (board_id: STRING_32 ; section_id: STRING_32 ; ad_account_id:  detachable STRING_32 )
+> board_sections_delete (board_id: STRING_32 ; section_id: STRING_32 ; ad_account_id:  detachable STRING_32 ): detachable BOARD_SECTION
 
 
 Delete board section
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**BOARD_SECTION**](BoardSection.md)
 
 ### Authorization
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
  **board_id** | **STRING_32**| Unique identifier of a board. | [default to null]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
  **section_id** | **STRING_32**| Unique identifier of a board section. | [default to null]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **board_sections_update**
-> board_sections_update (board_id: STRING_32 ; section_id: STRING_32 ; board_section: BOARD_SECTION ; ad_account_id:  detachable STRING_32 ): detachable BOARD_SECTION
+> board_sections_update (board_id: STRING_32 ; section_id: STRING_32 ; board_section_update_with_required_body: BOARD_SECTION_UPDATE_WITH_REQUIRED_BODY ; ad_account_id:  detachable STRING_32 ): detachable BOARD_SECTION
 
 
 Update board section
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **board_id** | **STRING_32**| Unique identifier of a board. | [default to null]
  **section_id** | **STRING_32**| Unique identifier of a board section. | [default to null]
- **board_section** | [**BOARD_SECTION**](BOARD_SECTION.md)| Update a board section. | 
+ **board_section_update_with_required_body** | [**BOARD_SECTION_UPDATE_WITH_REQUIRED_BODY**](BOARD_SECTION_UPDATE_WITH_REQUIRED_BODY.md)|  | 
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boards_delete**
-> boards_delete (board_id: STRING_32 ; ad_account_id:  detachable STRING_32 )
+> boards_delete (board_id: STRING_32 ; ad_account_id:  detachable STRING_32 ): detachable BOARD
 
 
 Delete board
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**BOARD**](Board.md)
 
 ### Authorization
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boards_list_pins**
-> boards_list_pins (board_id: STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; creative_types:  detachable LIST [CREATIVE_TYPE] ; ad_account_id:  detachable STRING_32 ; pin_metrics:  detachable BOOLEAN ): detachable BOARDS_LIST_PINS_200_RESPONSE
+> boards_list_pins (board_id: STRING_32 ; creative_types:  detachable LIST [CREATIVE_TYPE] ; ad_account_id:  detachable STRING_32 ; pin_metrics:  detachable BOOLEAN ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ): detachable BOARDS_LIST_PINS_200_RESPONSE
 
 
 List Pins on board
@@ -321,11 +321,11 @@ Get a list of the Pins on a board owned by the \"operation user_account\" - or o
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **board_id** | **STRING_32**| Unique identifier of a board. | [default to null]
- **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **creative_types** | [**LIST [CREATIVE_TYPE]**](CREATIVE_TYPE.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [default to null]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
  **pin_metrics** | **BOOLEAN**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
+ **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

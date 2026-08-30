@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssetRequests** | [**CreateAssetAccessRequestBodyAssetRequestsInner[]**](CreateAssetAccessRequestBodyAssetRequestsInner.md) |  | 
+**AssetRequests** | [**CreateAssetAccessRequestItem[]**](CreateAssetAccessRequestItem.md) |  | 
 
 ## Examples
 

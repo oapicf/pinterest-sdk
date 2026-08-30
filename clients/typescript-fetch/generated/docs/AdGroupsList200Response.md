@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `bookmark` | string
-`items` | [Array&lt;AdGroupResponse&gt;](AdGroupResponse.md)
+`items` | [Array&lt;AdGroup&gt;](AdGroup.md)
 
 ## Example
 

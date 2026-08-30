@@ -9,7 +9,6 @@ from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.catalogs_creative_assets_items_post_filter import CatalogsCreativeAssetsItemsPostFilter  # noqa: F401,E501
 from app.openapi_server.models.catalogs_hotel_items_post_filter import CatalogsHotelItemsPostFilter  # noqa: F401,E501
 from app.openapi_server.models.catalogs_retail_items_post_filter import CatalogsRetailItemsPostFilter  # noqa: F401,E501
-from app.openapi_server.models.catalogs_type import CatalogsType  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -20,13 +19,13 @@ class CatalogsItemsPostFilters(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, catalog_type: CatalogsType=None, catalog_id: str=None, item_ids: List[str]=None, hotel_ids: List[str]=None, creative_assets_ids: List[str]=None):  # noqa: E501
+    def __init__(self, catalog_id: str=None, catalog_type: str=None, item_ids: List[str]=None, hotel_ids: List[str]=None, creative_assets_ids: List[str]=None):  # noqa: E501
         """CatalogsItemsPostFilters - a model defined in Swagger
 
-        :param catalog_type: The catalog_type of this CatalogsItemsPostFilters.  # noqa: E501
-        :type catalog_type: CatalogsType
         :param catalog_id: The catalog_id of this CatalogsItemsPostFilters.  # noqa: E501
         :type catalog_id: str
+        :param catalog_type: The catalog_type of this CatalogsItemsPostFilters.  # noqa: E501
+        :type catalog_type: str
         :param item_ids: The item_ids of this CatalogsItemsPostFilters.  # noqa: E501
         :type item_ids: List[str]
         :param hotel_ids: The hotel_ids of this CatalogsItemsPostFilters.  # noqa: E501
@@ -35,23 +34,23 @@ class CatalogsItemsPostFilters(Model):
         :type creative_assets_ids: List[str]
         """
         self.swagger_types = {
-            'catalog_type': CatalogsType,
             'catalog_id': str,
+            'catalog_type': str,
             'item_ids': List[str],
             'hotel_ids': List[str],
             'creative_assets_ids': List[str]
         }
 
         self.attribute_map = {
-            'catalog_type': 'catalog_type',
             'catalog_id': 'catalog_id',
+            'catalog_type': 'catalog_type',
             'item_ids': 'item_ids',
             'hotel_ids': 'hotel_ids',
             'creative_assets_ids': 'creative_assets_ids'
         }
 
-        self._catalog_type = catalog_type
         self._catalog_id = catalog_id
+        self._catalog_type = catalog_type
         self._item_ids = item_ids
         self._hotel_ids = hotel_ids
         self._creative_assets_ids = creative_assets_ids
@@ -66,29 +65,6 @@ class CatalogsItemsPostFilters(Model):
         :rtype: CatalogsItemsPostFilters
         """
         return util.deserialize_model(dikt, cls)
-
-    @property
-    def catalog_type(self) -> CatalogsType:
-        """Gets the catalog_type of this CatalogsItemsPostFilters.
-
-
-        :return: The catalog_type of this CatalogsItemsPostFilters.
-        :rtype: CatalogsType
-        """
-        return self._catalog_type
-
-    @catalog_type.setter
-    def catalog_type(self, catalog_type: CatalogsType):
-        """Sets the catalog_type of this CatalogsItemsPostFilters.
-
-
-        :param catalog_type: The catalog_type of this CatalogsItemsPostFilters.
-        :type catalog_type: CatalogsType
-        """
-        if catalog_type is None:
-            raise ValueError("Invalid value for `catalog_type`, must not be `None`")  # noqa: E501
-
-        self._catalog_type = catalog_type
 
     @property
     def catalog_id(self) -> str:
@@ -114,6 +90,33 @@ class CatalogsItemsPostFilters(Model):
             raise ValueError("Invalid value for `catalog_id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
         self._catalog_id = catalog_id
+
+    @property
+    def catalog_type(self) -> str:
+        """Gets the catalog_type of this CatalogsItemsPostFilters.
+
+
+        :return: The catalog_type of this CatalogsItemsPostFilters.
+        :rtype: str
+        """
+        return self._catalog_type
+
+    @catalog_type.setter
+    def catalog_type(self, catalog_type: str):
+        """Sets the catalog_type of this CatalogsItemsPostFilters.
+
+
+        :param catalog_type: The catalog_type of this CatalogsItemsPostFilters.
+        :type catalog_type: str
+        """
+        allowed_values = ["CREATIVE_ASSETS"]  # noqa: E501
+        if catalog_type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `catalog_type` ({0}), must be one of {1}"
+                .format(catalog_type, allowed_values)
+            )
+
+        self._catalog_type = catalog_type
 
     @property
     def item_ids(self) -> List[str]:

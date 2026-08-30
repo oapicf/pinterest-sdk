@@ -5,36 +5,127 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
+
+// TargetingTemplateCreate - Resource create operation model.
 type TargetingTemplateCreate struct {
 
-	// Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+	// Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).
 	AutoTargetingEnabled bool `json:"auto_targeting_enabled,omitempty"`
 
 	Keywords []TargetingTemplateKeyword `json:"keywords,omitempty"`
 
-	// Name of targeting template.
+	// targeting template name
 	Name string `json:"name"`
 
 	PlacementGroup PlacementGroupType `json:"placement_group,omitempty"`
 
-	TargetingAttributes TargetingSpec `json:"targeting_attributes"`
+	// targeting profile attributes
+	TargetingAttributes TargetingSpecOptimal `json:"targeting_attributes"`
 
 	TrackingUrls *TrackingUrls `json:"tracking_urls,omitempty"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into TargetingTemplateCreate
+func (o *TargetingTemplateCreate) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"name",
+		"targeting_attributes",
+	}
 
-// AssertTargetingTemplateCreateRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"name": false,
+		"targeting_attributes": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"auto_targeting_enabled": {},
+		"keywords": {},
+		"name": {},
+		"placement_group": {},
+		"targeting_attributes": {},
+		"tracking_urls": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded TargetingTemplateCreate
+
+	if value, exists := allProperties["auto_targeting_enabled"]; exists {
+		if err = json.Unmarshal(value, &decoded.AutoTargetingEnabled); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["keywords"]; exists {
+		if err = json.Unmarshal(value, &decoded.Keywords); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["placement_group"]; exists {
+		if err = json.Unmarshal(value, &decoded.PlacementGroup); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["targeting_attributes"]; exists {
+		if err = json.Unmarshal(value, &decoded.TargetingAttributes); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["tracking_urls"]; exists {
+		if err = json.Unmarshal(value, &decoded.TrackingUrls); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertTargetingTemplateCreateRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertTargetingTemplateCreateRequired(obj TargetingTemplateCreate) error {
 	elements := map[string]interface{}{
-		"name": obj.Name,
 		"targeting_attributes": obj.TargetingAttributes,
 	}
 	for name, el := range elements {
@@ -48,7 +139,7 @@ func AssertTargetingTemplateCreateRequired(obj TargetingTemplateCreate) error {
 			return err
 		}
 	}
-	if err := AssertTargetingSpecRequired(obj.TargetingAttributes); err != nil {
+	if err := AssertTargetingSpecOptimalRequired(obj.TargetingAttributes); err != nil {
 		return err
 	}
 	if obj.TrackingUrls != nil {
@@ -66,7 +157,7 @@ func AssertTargetingTemplateCreateConstraints(obj TargetingTemplateCreate) error
 			return err
 		}
 	}
-	if err := AssertTargetingSpecConstraints(obj.TargetingAttributes); err != nil {
+	if err := AssertTargetingSpecOptimalConstraints(obj.TargetingAttributes); err != nil {
 		return err
 	}
     if obj.TrackingUrls != nil {

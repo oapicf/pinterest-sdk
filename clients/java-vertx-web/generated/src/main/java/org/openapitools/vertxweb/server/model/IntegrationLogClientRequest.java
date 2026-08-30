@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.vertxweb.server.model.HttpMethod;
 
 /**
  * HTTP request details included in the log sent by the client.
@@ -14,33 +15,7 @@ import java.util.Map;
 public class IntegrationLogClientRequest   {
   
   private String host;
-
-
-  public enum MethodEnum {
-    GET("GET"),
-    HEAD("HEAD"),
-    POST("POST"),
-    PUT("PUT"),
-    DELETE("DELETE"),
-    CONNECT("CONNECT"),
-    OPTIONS("OPTIONS"),
-    TRACE("TRACE"),
-    PATCH("PATCH");
-
-    private String value;
-
-    MethodEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private MethodEnum method;
+  private HttpMethod method;
   private String path;
   private Map<String, String> requestHeaders = new HashMap<>();
   private Map<String, String> responseHeaders = new HashMap<>();
@@ -50,7 +25,7 @@ public class IntegrationLogClientRequest   {
 
   }
 
-  public IntegrationLogClientRequest (String host, MethodEnum method, String path, Map<String, String> requestHeaders, Map<String, String> responseHeaders, Integer responseStatusCode) {
+  public IntegrationLogClientRequest (String host, HttpMethod method, String path, Map<String, String> requestHeaders, Map<String, String> responseHeaders, Integer responseStatusCode) {
     this.host = host;
     this.method = method;
     this.path = path;
@@ -70,10 +45,10 @@ public class IntegrationLogClientRequest   {
 
     
   @JsonProperty("method")
-  public MethodEnum getMethod() {
+  public HttpMethod getMethod() {
     return method;
   }
-  public void setMethod(MethodEnum method) {
+  public void setMethod(HttpMethod method) {
     this.method = method;
   }
 
@@ -156,9 +131,6 @@ public class IntegrationLogClientRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

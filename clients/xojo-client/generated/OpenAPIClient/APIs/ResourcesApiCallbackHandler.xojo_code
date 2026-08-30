@@ -1,19 +1,19 @@
 #tag Interface
 Protected Interface ResourcesApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub AdAccountCountriesGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdAccountsCountryResponse)
+		Sub AdAccountCountriesGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdAccountCountriesGet200Response)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub DeliveryMetricsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.DeliveryMetricsResponse)
+		Sub DeliveryMetricsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.DeliveryMetricsGet200Response)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub InterestTargetingOptionsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SingleInterestTargetingOptionResponse)
+		Sub InterestTargetingOptionsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SingleInterestTargetingOption)
 		  
 		End Sub
 	#tag EndMethod
@@ -25,7 +25,7 @@ Protected Interface ResourcesApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub MetricsReadyStateGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BookClosedResponse)
+		Sub MetricsReadyStateGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BookClosed)
 		  
 		End Sub
 	#tag EndMethod

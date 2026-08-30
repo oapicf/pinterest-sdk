@@ -12,13 +12,17 @@ module AdvancedAuctionItemsSubmitUpsertRecord =
 
   //#region AdvancedAuctionItemsSubmitUpsertRecord
 
+  //#region enums
+  type OperationEnum = UPSERTEnum of string  
+  //#endregion
 
   type AdvancedAuctionItemsSubmitUpsertRecord = {
+    BidOptions : AdvancedAuctionBidOptions;
     Country : Country;
+    Errors : AdvancedAuctionOperationError[];
     ItemId : string;
     Language : Language;
-    BidOptions : AdvancedAuctionBidOptions;
-    Errors : AdvancedAuctionOperationError[];
+    Operation : OperationEnum;
     UpdateMask : UpdateMaskBidOptionField[];
   }
   //#endregion

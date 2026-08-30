@@ -1,0 +1,97 @@
+import { Currency } from './currency';
+
+
+/**
+ * A Salesforce SSIO order line.
+ */
+export interface SSIOOrderLine { 
+  /**
+   * The SFDC id for the terms
+   */
+  accepted_terms_id?: string | null;
+  /**
+   * The UTC timestamp (to the nearest second) when terms were accepted.
+   */
+  accepted_terms_time?: string | null;
+  /**
+   * Ads manager order line id
+   */
+  ads_manager_order_line_id?: string | null;
+  /**
+   * Agency link
+   */
+  agency_link?: string | null;
+  /**
+   * Bill-to company name
+   */
+  bill_to_company_name?: string | null;
+  /**
+   * Billing contact email
+   */
+  billing_contact_email?: string | null;
+  /**
+   * Billing contact first name
+   */
+  billing_contact_firstname?: string | null;
+  /**
+   * Billing contact last name
+   */
+  billing_contact_lastname?: string | null;
+  /**
+   * If budget order line, the budget amount.
+   */
+  budget_amount?: number | null;
+  currency_info?: Currency;
+  /**
+   * End date of the order line.
+   */
+  end_date?: string | null;
+  /**
+   * If ongoing (perpetual) order line, the estimated monthly spend.
+   */
+  estimated_monthly_spend?: number | null;
+  /**
+   * Last modified date.
+   */
+  last_modified_date_time?: string | null;
+  /**
+   * Billing media email
+   */
+  media_contact_email?: string | null;
+  /**
+   * Billing media contact first name
+   */
+  media_contact_firstname?: string | null;
+  /**
+   * Billing media contact last name
+   */
+  media_contact_lastname?: string | null;
+  /**
+   * The order name
+   */
+  order_name?: string | null;
+  /**
+   * The pin order id associated with the order line in SFDC
+   */
+  pin_order_id?: string | null;
+  /**
+   * The Pinterest marketing partner name
+   */
+  pmp_name?: string | null;
+  /**
+   * The PO number
+   */
+  po_number?: string | null;
+  /**
+   * Order line id in SFDC
+   */
+  salesforce_order_line_id?: string | null;
+  /**
+   * Start date of the order line.
+   */
+  start_date?: string | null;
+}
+export namespace SSIOOrderLine {
+}
+
+

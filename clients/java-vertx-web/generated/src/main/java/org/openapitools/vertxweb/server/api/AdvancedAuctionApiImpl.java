@@ -4,7 +4,7 @@ import org.openapitools.vertxweb.server.model.AdvancedAuctionItems;
 import org.openapitools.vertxweb.server.model.AdvancedAuctionItemsGetRequest;
 import org.openapitools.vertxweb.server.model.AdvancedAuctionItemsSubmitRequest;
 import org.openapitools.vertxweb.server.model.AdvancedAuctionProcessedItems;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 

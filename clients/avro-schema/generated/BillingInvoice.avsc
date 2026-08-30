@@ -1,0 +1,99 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A billing invoice in the advertiser account.",
+  "name": "BillingInvoice",
+  "fields": [
+    {
+      "name": "ad_account_id",
+      "type": ["null", "string"],
+      "doc": "The ID of the ad account this invoice belongs to",
+      "default": null
+    },
+    {
+      "name": "ad_account_name",
+      "type": ["null", "string"],
+      "doc": "The name of the ad account this invoice belongs to",
+      "default": null
+    },
+    {
+      "name": "amount_billed_micro_currency",
+      "type": ["null", "int"],
+      "doc": "The amount billed in this invoice. Denoted in micro currency",
+      "default": null
+    },
+    {
+      "name": "amount_discount_micro_currency",
+      "type": ["null", "int"],
+      "doc": "The discount in this invoice. Denoted in micro currency",
+      "default": null
+    },
+    {
+      "name": "amount_net_micro_currency",
+      "type": ["null", "int"],
+      "doc": "The net amount in this invoice. Denoted in micro currency",
+      "default": null
+    },
+    {
+      "name": "amount_tax_micro_currency",
+      "type": ["null", "int"],
+      "doc": "The tax in this invoice. Denoted in micro currency",
+      "default": null
+    },
+    {
+      "name": "bill_to_country",
+      "type": ["null", "string"],
+      "doc": "The country of the bill to address",
+      "default": null
+    },
+    {
+      "name": "billing_period_end_date",
+      "type": ["null", "string"],
+      "doc": "The end date of the billing period. Format: YYYY-MM-DD",
+      "default": null
+    },
+    {
+      "name": "billing_period_start_date",
+      "type": ["null", "string"],
+      "doc": "The start date of the billing period. Format: YYYY-MM-DD",
+      "default": null
+    },
+    {
+      "name": "currency",
+      "type": ["null", "model.Currency"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "document_type",
+      "type": ["null", "model.BillingInvoiceDocumentType"],
+      "doc": "The type of the document",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier for the billing invoice",
+      "default": null
+    },
+    {
+      "name": "invoice_due_date",
+      "type": ["null", "string"],
+      "doc": "The date the invoice is due. Format: YYYY-MM-DD",
+      "default": null
+    },
+    {
+      "name": "payment_terms",
+      "type": ["null", "string"],
+      "doc": "The payment terms of the invoice",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.BillingInvoiceStatus"],
+      "doc": "The status of the invoice",
+      "default": null
+    }
+  ]
+
+}

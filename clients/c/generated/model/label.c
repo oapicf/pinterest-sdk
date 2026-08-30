@@ -4,63 +4,41 @@
 #include "label.h"
 
 
-char* label_parent_type_ToString(pinterest_rest_api_label_PARENTTYPE_e parent_type) {
-    char* parent_typeArray[] =  { "NULL", "CAMPAIGN", "" };
-    return parent_typeArray[parent_type];
-}
-
-pinterest_rest_api_label_PARENTTYPE_e label_parent_type_FromString(char* parent_type){
-    int stringToReturn = 0;
-    char *parent_typeArray[] =  { "NULL", "CAMPAIGN", "" };
-    size_t sizeofArray = sizeof(parent_typeArray) / sizeof(parent_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(parent_type, parent_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static label_t *label_create_internal(
     char *id,
-    pinterest_rest_api_label_type__e label_type,
-    char *parent_id,
-    pinterest_rest_api_label_PARENTTYPE_e parent_type,
-    pinterest_rest_api_label_status__e status,
+    pinterest_rest_api_nullable_label_type__e label_type,
+    pinterest_rest_api_nullable_label_status__e status,
     char *value
     ) {
     label_t *label_local_var = malloc(sizeof(label_t));
     if (!label_local_var) {
         return NULL;
     }
+    memset(label_local_var, 0, sizeof(label_t));
+    label_local_var->_library_owned = 1;
     label_local_var->id = id;
     label_local_var->label_type = label_type;
-    label_local_var->parent_id = parent_id;
-    label_local_var->parent_type = parent_type;
     label_local_var->status = status;
     label_local_var->value = value;
-
-    label_local_var->_library_owned = 1;
     return label_local_var;
 }
 
 __attribute__((deprecated)) label_t *label_create(
     char *id,
-    pinterest_rest_api_label_type__e label_type,
-    char *parent_id,
-    pinterest_rest_api_label_PARENTTYPE_e parent_type,
-    pinterest_rest_api_label_status__e status,
+    pinterest_rest_api_nullable_label_type__e label_type,
+    pinterest_rest_api_nullable_label_status__e status,
     char *value
     ) {
-    return label_create_internal (
+    label_t *result = label_create_internal (
         id,
         label_type,
-        parent_id,
-        parent_type,
         status,
         value
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void label_free(label_t *label) {
@@ -76,10 +54,6 @@ void label_free(label_t *label) {
         free(label->id);
         label->id = NULL;
     }
-    if (label->parent_id) {
-        free(label->parent_id);
-        label->parent_id = NULL;
-    }
     if (label->value) {
         free(label->value);
         label->value = NULL;
@@ -91,16 +65,19 @@ cJSON *label_convertToJSON(label_t *label) {
     cJSON *item = cJSON_CreateObject();
 
     // label->id
-    if(label->id) {
+    if (!label->id) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "id", label->id) == NULL) {
     goto fail; //String
-    }
     }
 
 
     // label->label_type
-    if(label->label_type != pinterest_rest_api_label_type__NULL) {
-    cJSON *label_type_local_JSON = label_type_convertToJSON(label->label_type);
+    if (pinterest_rest_api_nullable_label_type__NULL == label->label_type) {
+        goto fail;
+    }
+    cJSON *label_type_local_JSON = nullable_label_type_convertToJSON(label->label_type);
     if(label_type_local_JSON == NULL) {
         goto fail; // custom
     }
@@ -108,29 +85,11 @@ cJSON *label_convertToJSON(label_t *label) {
     if(item->child == NULL) {
         goto fail;
     }
-    }
-
-
-    // label->parent_id
-    if(label->parent_id) {
-    if(cJSON_AddStringToObject(item, "parent_id", label->parent_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // label->parent_type
-    if(label->parent_type != pinterest_rest_api_label_PARENTTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "parent_type", label_parent_type_ToString(label->parent_type)) == NULL)
-    {
-    goto fail; //Enum
-    }
-    }
 
 
     // label->status
-    if(label->status != pinterest_rest_api_label_status__NULL) {
-    cJSON *status_local_JSON = label_status_convertToJSON(label->status);
+    if(label->status != pinterest_rest_api_nullable_label_status__NULL) {
+    cJSON *status_local_JSON = nullable_label_status_convertToJSON(label->status);
     if(status_local_JSON == NULL) {
         goto fail; // custom
     }
@@ -142,10 +101,11 @@ cJSON *label_convertToJSON(label_t *label) {
 
 
     // label->value
-    if(label->value) {
+    if (!label->value) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "value", label->value) == NULL) {
     goto fail; //String
-    }
     }
 
     return item;
@@ -160,22 +120,29 @@ label_t *label_parseFromJSON(cJSON *labelJSON){
 
     label_t *label_local_var = NULL;
 
+    char *id_local_str = NULL;
+
     // define the local variable for label->label_type
-    pinterest_rest_api_label_type__e label_type_local_nonprim = 0;
+    pinterest_rest_api_nullable_label_type__e label_type_local_nonprim = 0;
 
     // define the local variable for label->status
-    pinterest_rest_api_label_status__e status_local_nonprim = 0;
+    pinterest_rest_api_nullable_label_status__e status_local_nonprim = 0;
+
+    char *value_local_str = NULL;
 
     // label->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(labelJSON, "id");
     if (cJSON_IsNull(id)) {
         id = NULL;
     }
-    if (id) { 
-    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    if (!id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(id))
     {
     goto end; //String
-    }
     }
 
     // label->label_type
@@ -183,35 +150,12 @@ label_t *label_parseFromJSON(cJSON *labelJSON){
     if (cJSON_IsNull(label_type)) {
         label_type = NULL;
     }
-    if (label_type) { 
-    label_type_local_nonprim = label_type_parseFromJSON(label_type); //custom
+    if (!label_type) {
+        goto end;
     }
 
-    // label->parent_id
-    cJSON *parent_id = cJSON_GetObjectItemCaseSensitive(labelJSON, "parent_id");
-    if (cJSON_IsNull(parent_id)) {
-        parent_id = NULL;
-    }
-    if (parent_id) { 
-    if(!cJSON_IsString(parent_id) && !cJSON_IsNull(parent_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // label->parent_type
-    cJSON *parent_type = cJSON_GetObjectItemCaseSensitive(labelJSON, "parent_type");
-    if (cJSON_IsNull(parent_type)) {
-        parent_type = NULL;
-    }
-    pinterest_rest_api_label_PARENTTYPE_e parent_typeVariable;
-    if (parent_type) { 
-    if(!cJSON_IsString(parent_type))
-    {
-    goto end; //Enum
-    }
-    parent_typeVariable = label_parent_type_FromString(parent_type->valuestring);
-    }
+    
+    label_type_local_nonprim = nullable_label_type_parseFromJSON(label_type); //custom
 
     // label->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(labelJSON, "status");
@@ -219,7 +163,7 @@ label_t *label_parseFromJSON(cJSON *labelJSON){
         status = NULL;
     }
     if (status) { 
-    status_local_nonprim = label_status_parseFromJSON(status); //custom
+    status_local_nonprim = nullable_label_status_parseFromJSON(status); //custom
     }
 
     // label->value
@@ -227,30 +171,46 @@ label_t *label_parseFromJSON(cJSON *labelJSON){
     if (cJSON_IsNull(value)) {
         value = NULL;
     }
-    if (value) { 
-    if(!cJSON_IsString(value) && !cJSON_IsNull(value))
+    if (!value) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(value))
     {
     goto end; //String
     }
-    }
 
+
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (value && !cJSON_IsNull(value)) value_local_str = strdup(value->valuestring);
 
     label_local_var = label_create_internal (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        label_type ? label_type_local_nonprim : 0,
-        parent_id && !cJSON_IsNull(parent_id) ? strdup(parent_id->valuestring) : NULL,
-        parent_type ? parent_typeVariable : pinterest_rest_api_label_PARENTTYPE_NULL,
+        id_local_str,
+        label_type_local_nonprim,
         status ? status_local_nonprim : 0,
-        value && !cJSON_IsNull(value) ? strdup(value->valuestring) : NULL
+        value_local_str
         );
+
+    if (!label_local_var) {
+        goto end;
+    }
 
     return label_local_var;
 end:
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
     if (label_type_local_nonprim) {
         label_type_local_nonprim = 0;
     }
     if (status_local_nonprim) {
         status_local_nonprim = 0;
+    }
+    if (value_local_str) {
+        free(value_local_str);
+        value_local_str = NULL;
     }
     return NULL;
 

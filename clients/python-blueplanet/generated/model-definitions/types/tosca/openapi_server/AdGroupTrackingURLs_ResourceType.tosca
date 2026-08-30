@@ -1,0 +1,60 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdGroupTrackingURLs"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdGroupTrackingURLs"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdGroupTrackingURLs {
+    title = AdGroupTrackingURLs
+    description = AdGroupTrackingURLs
+    derivedFrom = Root
+    properties {
+        audience_verification {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        buyable_button {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        click {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        engagement {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        impression {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdGroupTrackingURLs {
+    title = AdGroupTrackingURLs
+    description = AdGroupTrackingURLs
+    implements = openapi_server.resourceTypes.AdGroupTrackingURLs
+
+  }
+}

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **defaultUnderscoreavailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] [default to null]
 **defaultUnderscorecountry** | [**Country**](Country.md) |  | [optional] [default to null]
 **defaultUnderscorecurrency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] [default to null]
-**defaultUnderscorelocale** | [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequestDefaultLocale.md) |  | [optional] [default to null]
+**defaultUnderscorelocale** | [**CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale**](CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.md) |  | [optional] [default to null]
 **format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [default to null]
 **location** | **string** |  | [default to null]
 **name** | **string** |  | [default to null]

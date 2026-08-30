@@ -5,7 +5,7 @@ Protected Class NotificationApi
 		  // Operation notification/post
 		  // Receive notifications from external partners.
 		  // - 
-		  // - parameter notificationPostRequest: (body) notification event. 
+		  // - parameter notificationPostRequest: (body)  
 		  //
 		  // Invokes NotificationApiCallbackHandler.NotificationPostCallback(NotificationResponse) on completion. 
 		  //

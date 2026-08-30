@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  |  [optional]
-**items** | [**List&lt;CampaignResponse&gt;**](CampaignResponse.md) |  | 
+**items** | [**List&lt;Campaign&gt;**](Campaign.md) |  | 
 
 
 

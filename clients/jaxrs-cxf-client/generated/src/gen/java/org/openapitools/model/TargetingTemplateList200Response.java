@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.TargetingTemplateGetResponseData;
+import org.openapitools.model.TargetingTemplate;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -19,7 +19,7 @@ public class TargetingTemplateList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  private List<TargetingTemplateGetResponseData> items = new ArrayList<>();
+  private List<TargetingTemplate> items = new ArrayList<>();
  /**
    * Get bookmark
    * @return bookmark
@@ -43,20 +43,20 @@ public class TargetingTemplateList200Response  {
    * @return items
   **/
   @JsonProperty("items")
-  public List<TargetingTemplateGetResponseData> getItems() {
+  public List<TargetingTemplate> getItems() {
     return items;
   }
 
-  public void setItems(List<TargetingTemplateGetResponseData> items) {
+  public void setItems(List<TargetingTemplate> items) {
     this.items = items;
   }
 
-  public TargetingTemplateList200Response items(List<TargetingTemplateGetResponseData> items) {
+  public TargetingTemplateList200Response items(List<TargetingTemplate> items) {
     this.items = items;
     return this;
   }
 
-  public TargetingTemplateList200Response addItemsItem(TargetingTemplateGetResponseData itemsItem) {
+  public TargetingTemplateList200Response addItemsItem(TargetingTemplate itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -95,10 +95,7 @@ public class TargetingTemplateList200Response  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

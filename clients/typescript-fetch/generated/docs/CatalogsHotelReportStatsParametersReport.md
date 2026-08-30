@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`reportType` | string
 `feedId` | string
 `processingResultId` | string
+`reportType` | string
 `catalogId` | string
 
 ## Example
@@ -18,9 +18,9 @@ import type { CatalogsHotelReportStatsParametersReport } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "reportType": null,
   "feedId": null,
   "processingResultId": null,
+  "reportType": null,
   "catalogId": null,
 } satisfies CatalogsHotelReportStatsParametersReport
 

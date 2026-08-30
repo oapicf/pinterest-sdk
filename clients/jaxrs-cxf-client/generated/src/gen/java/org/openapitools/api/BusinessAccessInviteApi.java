@@ -1,16 +1,17 @@
 package org.openapitools.api;
 
 import org.openapitools.model.AuthRespondInvitesBody;
-import org.openapitools.model.CancelInvitesBody;
+import org.openapitools.model.CancelInvitesRequest;
+import org.openapitools.model.CancelInvitesResponse;
 import org.openapitools.model.CreateAssetAccessRequestBody;
 import org.openapitools.model.CreateAssetAccessRequestResponse;
 import org.openapitools.model.CreateAssetInvitesRequest;
 import org.openapitools.model.CreateInvitesResultsResponseArray;
 import org.openapitools.model.CreateMembershipOrPartnershipInvitesBody;
-import org.openapitools.model.DeleteInvitesResultsResponseArray;
-import org.openapitools.model.Error;
 import org.openapitools.model.GetInvites200Response;
+import org.openapitools.model.InviteFilterStatus;
 import org.openapitools.model.InviteType;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.RespondToInvitesResponseArray;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
 
@@ -47,8 +48,14 @@ public interface BusinessAccessInviteApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Create a request to access an existing partner's assets.", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CreateAssetAccessRequestResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CreateAssetAccessRequestResponse.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = CreateAssetAccessRequestResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public CreateAssetAccessRequestResponse assetAccessRequestsCreate(@PathParam("business_id") String businessId, CreateAssetAccessRequestBody createAssetAccessRequestBody);
 
     /**
@@ -63,9 +70,9 @@ public interface BusinessAccessInviteApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Cancel invites/requests", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = DeleteInvitesResultsResponseArray.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public DeleteInvitesResultsResponseArray cancelInvitesOrRequests(@PathParam("business_id") String businessId, CancelInvitesBody cancelInvitesBody);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CancelInvitesResponse.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public CancelInvitesResponse cancelInvitesOrRequests(@PathParam("business_id") String businessId, CancelInvitesRequest cancelInvitesRequest);
 
     /**
      * Update invite/request with an asset permission
@@ -79,8 +86,14 @@ public interface BusinessAccessInviteApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update invite/request with an asset permission", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = UpdateInvitesResultsResponseArray.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = UpdateInvitesResultsResponseArray.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = UpdateInvitesResultsResponseArray.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public UpdateInvitesResultsResponseArray createAssetInvites(@PathParam("business_id") String businessId, CreateAssetInvitesRequest createAssetInvitesRequest);
 
     /**
@@ -95,8 +108,14 @@ public interface BusinessAccessInviteApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Create invites or requests", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CreateInvitesResultsResponseArray.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CreateInvitesResultsResponseArray.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = CreateInvitesResultsResponseArray.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public CreateInvitesResultsResponseArray createMembershipOrPartnershipInvites(@PathParam("business_id") String businessId, CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody);
 
     /**
@@ -110,9 +129,14 @@ public interface BusinessAccessInviteApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get invites/requests", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = GetInvites200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public GetInvites200Response getInvites(@PathParam("business_id") String businessId, @QueryParam("is_member") @DefaultValue("true")Boolean isMember, @QueryParam("invite_status") List<String> inviteStatus, @QueryParam("invite_type") InviteType inviteType, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = GetInvites200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public GetInvites200Response getInvites(@PathParam("business_id") String businessId, @QueryParam("is_member") @DefaultValue("true")Boolean isMember, @QueryParam("invite_status") List<InviteFilterStatus> inviteStatus, @QueryParam("invite_type") InviteType inviteType, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize);
 
     /**
      * Accept or decline an invite/request
@@ -126,7 +150,12 @@ public interface BusinessAccessInviteApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Accept or decline an invite/request", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = RespondToInvitesResponseArray.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = RespondToInvitesResponseArray.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public RespondToInvitesResponseArray respondBusinessAccessInvites(AuthRespondInvitesBody authRespondInvitesBody);
 }

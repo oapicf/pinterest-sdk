@@ -7,7 +7,7 @@ goog.provide('API.Client.CatalogsVerticalFeedsUpdateRequest');
 API.Client.CatalogsVerticalFeedsUpdateRequest = function() {}
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.catalogType;
@@ -62,3 +62,7 @@ API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.preferredProcessingSched
  */
 API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.status;
 
+/** @enum {string} */
+API.Client.CatalogsVerticalFeedsUpdateRequest.CatalogTypeEnum = { 
+  CREATIVE_ASSETS: 'CREATIVE_ASSETS',
+}

@@ -43,11 +43,11 @@ class CatalogsRetailFilterValuesMap {
 
   List<String> adVideoTags;
 
-  List<CatalogsRetailFilterValuesMapAvailabilityEnum> availability;
+  List<ProductAvailability> availability;
 
   List<String> brand;
 
-  List<CatalogsRetailFilterValuesMapConditionEnum> condition;
+  List<ProductCondition> condition;
 
   List<String> customLabel0;
 
@@ -59,7 +59,7 @@ class CatalogsRetailFilterValuesMap {
 
   List<String> customLabel4;
 
-  List<CatalogsRetailFilterValuesMapGenderEnum> gender;
+  List<Gender> gender;
 
   List<String> googleProductCategory0;
 
@@ -75,7 +75,7 @@ class CatalogsRetailFilterValuesMap {
 
   List<String> googleProductCategory6;
 
-  List<CatalogsRetailFilterValuesMapMediaTypeEnum> mediaType;
+  List<MediaType> mediaType;
 
   List<String> productType0;
 
@@ -185,10 +185,6 @@ class CatalogsRetailFilterValuesMap {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsRetailFilterValuesMap[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsRetailFilterValuesMap[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -199,11 +195,11 @@ class CatalogsRetailFilterValuesMap {
         adVideoTags: json[r'ad_video_tags'] is Iterable
             ? (json[r'ad_video_tags'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        availability: CatalogsRetailFilterValuesMapAvailabilityEnum.listFromJson(json[r'availability']),
+        availability: ProductAvailability.listFromJson(json[r'availability']),
         brand: json[r'brand'] is Iterable
             ? (json[r'brand'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        condition: CatalogsRetailFilterValuesMapConditionEnum.listFromJson(json[r'condition']),
+        condition: ProductCondition.listFromJson(json[r'condition']),
         customLabel0: json[r'custom_label_0'] is Iterable
             ? (json[r'custom_label_0'] as Iterable).cast<String>().toList(growable: false)
             : const [],
@@ -219,7 +215,7 @@ class CatalogsRetailFilterValuesMap {
         customLabel4: json[r'custom_label_4'] is Iterable
             ? (json[r'custom_label_4'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        gender: CatalogsRetailFilterValuesMapGenderEnum.listFromJson(json[r'gender']),
+        gender: Gender.listFromJson(json[r'gender']),
         googleProductCategory0: json[r'google_product_category_0'] is Iterable
             ? (json[r'google_product_category_0'] as Iterable).cast<String>().toList(growable: false)
             : const [],
@@ -241,7 +237,7 @@ class CatalogsRetailFilterValuesMap {
         googleProductCategory6: json[r'google_product_category_6'] is Iterable
             ? (json[r'google_product_category_6'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        mediaType: CatalogsRetailFilterValuesMapMediaTypeEnum.listFromJson(json[r'media_type']),
+        mediaType: MediaType.listFromJson(json[r'media_type']),
         productType0: json[r'product_type_0'] is Iterable
             ? (json[r'product_type_0'] as Iterable).cast<String>().toList(growable: false)
             : const [],
@@ -306,312 +302,4 @@ class CatalogsRetailFilterValuesMap {
   static const requiredKeys = <String>{
   };
 }
-
-
-class CatalogsRetailFilterValuesMapAvailabilityEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsRetailFilterValuesMapAvailabilityEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const IN_STOCK = CatalogsRetailFilterValuesMapAvailabilityEnum._(r'IN_STOCK');
-  static const OUT_OF_STOCK = CatalogsRetailFilterValuesMapAvailabilityEnum._(r'OUT_OF_STOCK');
-  static const PREORDER = CatalogsRetailFilterValuesMapAvailabilityEnum._(r'PREORDER');
-  static const UNAVAILABLE = CatalogsRetailFilterValuesMapAvailabilityEnum._(r'UNAVAILABLE');
-
-  /// List of all possible values in this [enum][CatalogsRetailFilterValuesMapAvailabilityEnum].
-  static const values = <CatalogsRetailFilterValuesMapAvailabilityEnum>[
-    IN_STOCK,
-    OUT_OF_STOCK,
-    PREORDER,
-    UNAVAILABLE,
-  ];
-
-  static CatalogsRetailFilterValuesMapAvailabilityEnum? fromJson(dynamic value) => CatalogsRetailFilterValuesMapAvailabilityEnumTypeTransformer().decode(value);
-
-  static List<CatalogsRetailFilterValuesMapAvailabilityEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CatalogsRetailFilterValuesMapAvailabilityEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = CatalogsRetailFilterValuesMapAvailabilityEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [CatalogsRetailFilterValuesMapAvailabilityEnum] to String,
-/// and [decode] dynamic data back to [CatalogsRetailFilterValuesMapAvailabilityEnum].
-class CatalogsRetailFilterValuesMapAvailabilityEnumTypeTransformer {
-  factory CatalogsRetailFilterValuesMapAvailabilityEnumTypeTransformer() => _instance ??= const CatalogsRetailFilterValuesMapAvailabilityEnumTypeTransformer._();
-
-  const CatalogsRetailFilterValuesMapAvailabilityEnumTypeTransformer._();
-
-  String encode(CatalogsRetailFilterValuesMapAvailabilityEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a CatalogsRetailFilterValuesMapAvailabilityEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  CatalogsRetailFilterValuesMapAvailabilityEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'IN_STOCK': return CatalogsRetailFilterValuesMapAvailabilityEnum.IN_STOCK;
-        case r'OUT_OF_STOCK': return CatalogsRetailFilterValuesMapAvailabilityEnum.OUT_OF_STOCK;
-        case r'PREORDER': return CatalogsRetailFilterValuesMapAvailabilityEnum.PREORDER;
-        case r'UNAVAILABLE': return CatalogsRetailFilterValuesMapAvailabilityEnum.UNAVAILABLE;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [CatalogsRetailFilterValuesMapAvailabilityEnumTypeTransformer] instance.
-  static CatalogsRetailFilterValuesMapAvailabilityEnumTypeTransformer? _instance;
-}
-
-
-
-class CatalogsRetailFilterValuesMapConditionEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsRetailFilterValuesMapConditionEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const NEW = CatalogsRetailFilterValuesMapConditionEnum._(r'NEW');
-  static const USED = CatalogsRetailFilterValuesMapConditionEnum._(r'USED');
-  static const REFURBISHED = CatalogsRetailFilterValuesMapConditionEnum._(r'REFURBISHED');
-
-  /// List of all possible values in this [enum][CatalogsRetailFilterValuesMapConditionEnum].
-  static const values = <CatalogsRetailFilterValuesMapConditionEnum>[
-    NEW,
-    USED,
-    REFURBISHED,
-  ];
-
-  static CatalogsRetailFilterValuesMapConditionEnum? fromJson(dynamic value) => CatalogsRetailFilterValuesMapConditionEnumTypeTransformer().decode(value);
-
-  static List<CatalogsRetailFilterValuesMapConditionEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CatalogsRetailFilterValuesMapConditionEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = CatalogsRetailFilterValuesMapConditionEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [CatalogsRetailFilterValuesMapConditionEnum] to String,
-/// and [decode] dynamic data back to [CatalogsRetailFilterValuesMapConditionEnum].
-class CatalogsRetailFilterValuesMapConditionEnumTypeTransformer {
-  factory CatalogsRetailFilterValuesMapConditionEnumTypeTransformer() => _instance ??= const CatalogsRetailFilterValuesMapConditionEnumTypeTransformer._();
-
-  const CatalogsRetailFilterValuesMapConditionEnumTypeTransformer._();
-
-  String encode(CatalogsRetailFilterValuesMapConditionEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a CatalogsRetailFilterValuesMapConditionEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  CatalogsRetailFilterValuesMapConditionEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'NEW': return CatalogsRetailFilterValuesMapConditionEnum.NEW;
-        case r'USED': return CatalogsRetailFilterValuesMapConditionEnum.USED;
-        case r'REFURBISHED': return CatalogsRetailFilterValuesMapConditionEnum.REFURBISHED;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [CatalogsRetailFilterValuesMapConditionEnumTypeTransformer] instance.
-  static CatalogsRetailFilterValuesMapConditionEnumTypeTransformer? _instance;
-}
-
-
-
-class CatalogsRetailFilterValuesMapGenderEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsRetailFilterValuesMapGenderEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const FEMALE = CatalogsRetailFilterValuesMapGenderEnum._(r'FEMALE');
-  static const MALE = CatalogsRetailFilterValuesMapGenderEnum._(r'MALE');
-  static const UNISEX = CatalogsRetailFilterValuesMapGenderEnum._(r'UNISEX');
-
-  /// List of all possible values in this [enum][CatalogsRetailFilterValuesMapGenderEnum].
-  static const values = <CatalogsRetailFilterValuesMapGenderEnum>[
-    FEMALE,
-    MALE,
-    UNISEX,
-  ];
-
-  static CatalogsRetailFilterValuesMapGenderEnum? fromJson(dynamic value) => CatalogsRetailFilterValuesMapGenderEnumTypeTransformer().decode(value);
-
-  static List<CatalogsRetailFilterValuesMapGenderEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CatalogsRetailFilterValuesMapGenderEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = CatalogsRetailFilterValuesMapGenderEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [CatalogsRetailFilterValuesMapGenderEnum] to String,
-/// and [decode] dynamic data back to [CatalogsRetailFilterValuesMapGenderEnum].
-class CatalogsRetailFilterValuesMapGenderEnumTypeTransformer {
-  factory CatalogsRetailFilterValuesMapGenderEnumTypeTransformer() => _instance ??= const CatalogsRetailFilterValuesMapGenderEnumTypeTransformer._();
-
-  const CatalogsRetailFilterValuesMapGenderEnumTypeTransformer._();
-
-  String encode(CatalogsRetailFilterValuesMapGenderEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a CatalogsRetailFilterValuesMapGenderEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  CatalogsRetailFilterValuesMapGenderEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'FEMALE': return CatalogsRetailFilterValuesMapGenderEnum.FEMALE;
-        case r'MALE': return CatalogsRetailFilterValuesMapGenderEnum.MALE;
-        case r'UNISEX': return CatalogsRetailFilterValuesMapGenderEnum.UNISEX;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [CatalogsRetailFilterValuesMapGenderEnumTypeTransformer] instance.
-  static CatalogsRetailFilterValuesMapGenderEnumTypeTransformer? _instance;
-}
-
-
-
-class CatalogsRetailFilterValuesMapMediaTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsRetailFilterValuesMapMediaTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const IMAGE = CatalogsRetailFilterValuesMapMediaTypeEnum._(r'IMAGE');
-  static const VIDEO = CatalogsRetailFilterValuesMapMediaTypeEnum._(r'VIDEO');
-
-  /// List of all possible values in this [enum][CatalogsRetailFilterValuesMapMediaTypeEnum].
-  static const values = <CatalogsRetailFilterValuesMapMediaTypeEnum>[
-    IMAGE,
-    VIDEO,
-  ];
-
-  static CatalogsRetailFilterValuesMapMediaTypeEnum? fromJson(dynamic value) => CatalogsRetailFilterValuesMapMediaTypeEnumTypeTransformer().decode(value);
-
-  static List<CatalogsRetailFilterValuesMapMediaTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CatalogsRetailFilterValuesMapMediaTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = CatalogsRetailFilterValuesMapMediaTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [CatalogsRetailFilterValuesMapMediaTypeEnum] to String,
-/// and [decode] dynamic data back to [CatalogsRetailFilterValuesMapMediaTypeEnum].
-class CatalogsRetailFilterValuesMapMediaTypeEnumTypeTransformer {
-  factory CatalogsRetailFilterValuesMapMediaTypeEnumTypeTransformer() => _instance ??= const CatalogsRetailFilterValuesMapMediaTypeEnumTypeTransformer._();
-
-  const CatalogsRetailFilterValuesMapMediaTypeEnumTypeTransformer._();
-
-  String encode(CatalogsRetailFilterValuesMapMediaTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a CatalogsRetailFilterValuesMapMediaTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  CatalogsRetailFilterValuesMapMediaTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'IMAGE': return CatalogsRetailFilterValuesMapMediaTypeEnum.IMAGE;
-        case r'VIDEO': return CatalogsRetailFilterValuesMapMediaTypeEnum.VIDEO;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [CatalogsRetailFilterValuesMapMediaTypeEnumTypeTransformer] instance.
-  static CatalogsRetailFilterValuesMapMediaTypeEnumTypeTransformer? _instance;
-}
-
 

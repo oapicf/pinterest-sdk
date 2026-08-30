@@ -19,15 +19,16 @@ Name | Type
 `disclosureUrl` | string
 `gridClickType` | [GridClickType](GridClickType.md)
 `iosDeepLink` | string
+`isCarting` | boolean
 `isPinDeleted` | boolean
 `isRemovable` | boolean
 `leadFormId` | string
 `name` | string
-`quizPinData` | [QuizPinData](QuizPinData.md)
-`status` | [EntityStatus](EntityStatus.md)
-`trackingUrls` | [TrackingUrls](TrackingUrls.md)
-`viewTrackingUrl` | string
 `pinId` | string
+`quizPinData` | object
+`status` | [EntityStatus](EntityStatus.md)
+`trackingUrls` | object
+`viewTrackingUrl` | string
 
 ## Example
 
@@ -36,7 +37,7 @@ import type { AdCreateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "adGroupId": 2680059592705,
+  "adGroupId": null,
   "androidDeepLink": null,
   "carouselAndroidDeepLinks": null,
   "carouselDestinationUrls": null,
@@ -49,15 +50,16 @@ const example = {
   "disclosureUrl": null,
   "gridClickType": null,
   "iosDeepLink": null,
+  "isCarting": null,
   "isPinDeleted": false,
   "isRemovable": false,
   "leadFormId": null,
   "name": null,
+  "pinId": 394205773611545468,
   "quizPinData": null,
   "status": null,
   "trackingUrls": null,
   "viewTrackingUrl": null,
-  "pinId": 394205773611545468,
 } satisfies AdCreateRequest
 
 console.log(example)

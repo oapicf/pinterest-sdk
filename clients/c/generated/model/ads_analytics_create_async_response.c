@@ -7,31 +7,34 @@
 
 static ads_analytics_create_async_response_t *ads_analytics_create_async_response_create_internal(
     char *message,
-    bulk_reporting_job_status_t *report_status,
+    pinterest_rest_api_bulk_reporting_job_status__e report_status,
     char *token
     ) {
     ads_analytics_create_async_response_t *ads_analytics_create_async_response_local_var = malloc(sizeof(ads_analytics_create_async_response_t));
     if (!ads_analytics_create_async_response_local_var) {
         return NULL;
     }
+    memset(ads_analytics_create_async_response_local_var, 0, sizeof(ads_analytics_create_async_response_t));
+    ads_analytics_create_async_response_local_var->_library_owned = 1;
     ads_analytics_create_async_response_local_var->message = message;
     ads_analytics_create_async_response_local_var->report_status = report_status;
     ads_analytics_create_async_response_local_var->token = token;
-
-    ads_analytics_create_async_response_local_var->_library_owned = 1;
     return ads_analytics_create_async_response_local_var;
 }
 
 __attribute__((deprecated)) ads_analytics_create_async_response_t *ads_analytics_create_async_response_create(
     char *message,
-    bulk_reporting_job_status_t *report_status,
+    pinterest_rest_api_bulk_reporting_job_status__e report_status,
     char *token
     ) {
-    return ads_analytics_create_async_response_create_internal (
+    ads_analytics_create_async_response_t *result = ads_analytics_create_async_response_create_internal (
         message,
         report_status,
         token
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ads_analytics_create_async_response_free(ads_analytics_create_async_response_t *ads_analytics_create_async_response) {
@@ -46,10 +49,6 @@ void ads_analytics_create_async_response_free(ads_analytics_create_async_respons
     if (ads_analytics_create_async_response->message) {
         free(ads_analytics_create_async_response->message);
         ads_analytics_create_async_response->message = NULL;
-    }
-    if (ads_analytics_create_async_response->report_status) {
-        bulk_reporting_job_status_free(ads_analytics_create_async_response->report_status);
-        ads_analytics_create_async_response->report_status = NULL;
     }
     if (ads_analytics_create_async_response->token) {
         free(ads_analytics_create_async_response->token);
@@ -70,7 +69,7 @@ cJSON *ads_analytics_create_async_response_convertToJSON(ads_analytics_create_as
 
 
     // ads_analytics_create_async_response->report_status
-    if(ads_analytics_create_async_response->report_status) {
+    if(ads_analytics_create_async_response->report_status != pinterest_rest_api_bulk_reporting_job_status__NULL) {
     cJSON *report_status_local_JSON = bulk_reporting_job_status_convertToJSON(ads_analytics_create_async_response->report_status);
     if(report_status_local_JSON == NULL) {
         goto fail; // custom
@@ -101,8 +100,12 @@ ads_analytics_create_async_response_t *ads_analytics_create_async_response_parse
 
     ads_analytics_create_async_response_t *ads_analytics_create_async_response_local_var = NULL;
 
+    char *message_local_str = NULL;
+
     // define the local variable for ads_analytics_create_async_response->report_status
-    bulk_reporting_job_status_t *report_status_local_nonprim = NULL;
+    pinterest_rest_api_bulk_reporting_job_status__e report_status_local_nonprim = 0;
+
+    char *token_local_str = NULL;
 
     // ads_analytics_create_async_response->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(ads_analytics_create_async_responseJSON, "message");
@@ -138,17 +141,31 @@ ads_analytics_create_async_response_t *ads_analytics_create_async_response_parse
     }
 
 
+    if (message && !cJSON_IsNull(message)) message_local_str = strdup(message->valuestring);
+    if (token && !cJSON_IsNull(token)) token_local_str = strdup(token->valuestring);
+
     ads_analytics_create_async_response_local_var = ads_analytics_create_async_response_create_internal (
-        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,
-        report_status ? report_status_local_nonprim : NULL,
-        token && !cJSON_IsNull(token) ? strdup(token->valuestring) : NULL
+        message_local_str,
+        report_status ? report_status_local_nonprim : 0,
+        token_local_str
         );
+
+    if (!ads_analytics_create_async_response_local_var) {
+        goto end;
+    }
 
     return ads_analytics_create_async_response_local_var;
 end:
+    if (message_local_str) {
+        free(message_local_str);
+        message_local_str = NULL;
+    }
     if (report_status_local_nonprim) {
-        bulk_reporting_job_status_free(report_status_local_nonprim);
-        report_status_local_nonprim = NULL;
+        report_status_local_nonprim = 0;
+    }
+    if (token_local_str) {
+        free(token_local_str);
+        token_local_str = NULL;
     }
     return NULL;
 

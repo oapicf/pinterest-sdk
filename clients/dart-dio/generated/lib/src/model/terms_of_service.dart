@@ -8,7 +8,7 @@ import 'package:built_value/serializer.dart';
 
 part 'terms_of_service.g.dart';
 
-/// TermsOfService
+/// The ID of the ad account.
 ///
 /// Properties:
 /// * [adAccountId] - The ID of the ad account.
@@ -110,15 +110,17 @@ class _$TermsOfServiceSerializer implements PrimitiveSerializer<TermsOfService> 
         case r'ad_account_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.adAccountId = valueDes;
           break;
         case r'has_accepted':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.hasAccepted = valueDes;
           break;
         case r'html':
@@ -132,8 +134,9 @@ class _$TermsOfServiceSerializer implements PrimitiveSerializer<TermsOfService> 
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         default:

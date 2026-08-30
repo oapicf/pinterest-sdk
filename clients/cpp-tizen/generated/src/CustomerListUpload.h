@@ -12,6 +12,7 @@
 #include "ErrorDetail.h"
 #include "RecordCounts.h"
 #include "UserListOperationType.h"
+#include "WorkloadState.h"
 #include <list>
 #include "Object.h"
 
@@ -91,20 +92,20 @@ public:
 	/*! \brief Set 
 	 */
 	void setOperation(UserListOperationType  operation);
-	/*! \brief Get 
+	/*! \brief Get Record processing counts
 	 */
 	RecordCounts getRecordCounts();
 
-	/*! \brief Set 
+	/*! \brief Set Record processing counts
 	 */
 	void setRecordCounts(RecordCounts  record_counts);
-	/*! \brief Get Workload processing state
+	/*! \brief Get 
 	 */
-	std::string getState();
+	WorkloadState getState();
 
-	/*! \brief Set Workload processing state
+	/*! \brief Set 
 	 */
-	void setState(std::string  state);
+	void setState(WorkloadState  state);
 	/*! \brief Get Customer List Upload updated_time. Epoch (seconds).
 	 */
 	int getUpdatedTime();
@@ -121,7 +122,7 @@ private:
 	std::string id;
 	UserListOperationType operation;
 	RecordCounts record_counts;
-	std::string state;
+	WorkloadState state;
 	int updated_time;
 	void __init();
 	void __cleanup();

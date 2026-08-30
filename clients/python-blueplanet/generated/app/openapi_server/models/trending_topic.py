@@ -16,11 +16,13 @@ class TrendingTopic(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, description: str=None, percent_growth_mom: int=None, pins: List[TrendingPin]=None, related_interests: List[str]=None, related_searches: List[str]=None, time_series: Dict[str, float]=None, title: str=None):  # noqa: E501
+    def __init__(self, description: str=None, id: str=None, percent_growth_mom: int=None, pins: List[TrendingPin]=None, related_interests: List[str]=None, related_searches: List[str]=None, time_series: Dict[str, float]=None, title: str=None):  # noqa: E501
         """TrendingTopic - a model defined in Swagger
 
         :param description: The description of this TrendingTopic.  # noqa: E501
         :type description: str
+        :param id: The id of this TrendingTopic.  # noqa: E501
+        :type id: str
         :param percent_growth_mom: The percent_growth_mom of this TrendingTopic.  # noqa: E501
         :type percent_growth_mom: int
         :param pins: The pins of this TrendingTopic.  # noqa: E501
@@ -36,6 +38,7 @@ class TrendingTopic(Model):
         """
         self.swagger_types = {
             'description': str,
+            'id': str,
             'percent_growth_mom': int,
             'pins': List[TrendingPin],
             'related_interests': List[str],
@@ -46,6 +49,7 @@ class TrendingTopic(Model):
 
         self.attribute_map = {
             'description': 'description',
+            'id': 'id',
             'percent_growth_mom': 'percent_growth_mom',
             'pins': 'pins',
             'related_interests': 'related_interests',
@@ -55,6 +59,7 @@ class TrendingTopic(Model):
         }
 
         self._description = description
+        self._id = id
         self._percent_growth_mom = percent_growth_mom
         self._pins = pins
         self._related_interests = related_interests
@@ -99,6 +104,31 @@ class TrendingTopic(Model):
         self._description = description
 
     @property
+    def id(self) -> str:
+        """Gets the id of this TrendingTopic.
+
+        Unique identifier for the trending topic  # noqa: E501
+
+        :return: The id of this TrendingTopic.
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id: str):
+        """Sets the id of this TrendingTopic.
+
+        Unique identifier for the trending topic  # noqa: E501
+
+        :param id: The id of this TrendingTopic.
+        :type id: str
+        """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
+
+    @property
     def percent_growth_mom(self) -> int:
         """Gets the percent_growth_mom of this TrendingTopic.
 
@@ -118,8 +148,6 @@ class TrendingTopic(Model):
         :param percent_growth_mom: The percent_growth_mom of this TrendingTopic.
         :type percent_growth_mom: int
         """
-        if percent_growth_mom is None:
-            raise ValueError("Invalid value for `percent_growth_mom`, must not be `None`")  # noqa: E501
 
         self._percent_growth_mom = percent_growth_mom
 

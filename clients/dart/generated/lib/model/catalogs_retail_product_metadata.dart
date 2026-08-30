@@ -21,7 +21,7 @@ class CatalogsRetailProductMetadata {
     required this.salePrice,
   });
 
-  NonNullableProductAvailabilityType availability;
+  ProductAvailability availability;
 
   NonNullableCatalogsCurrency currency;
 
@@ -89,15 +89,21 @@ class CatalogsRetailProductMetadata {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsRetailProductMetadata[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsRetailProductMetadata[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'availability'), 'Required key "CatalogsRetailProductMetadata[availability]" is missing from JSON.');
+        assert(json[r'availability'] != null, 'Required key "CatalogsRetailProductMetadata[availability]" has a null value in JSON.');
+        assert(json.containsKey(r'currency'), 'Required key "CatalogsRetailProductMetadata[currency]" is missing from JSON.');
+        assert(json[r'currency'] != null, 'Required key "CatalogsRetailProductMetadata[currency]" has a null value in JSON.');
+        assert(json.containsKey(r'item_group_id'), 'Required key "CatalogsRetailProductMetadata[item_group_id]" is missing from JSON.');
+        assert(json.containsKey(r'item_id'), 'Required key "CatalogsRetailProductMetadata[item_id]" is missing from JSON.');
+        assert(json[r'item_id'] != null, 'Required key "CatalogsRetailProductMetadata[item_id]" has a null value in JSON.');
+        assert(json.containsKey(r'price'), 'Required key "CatalogsRetailProductMetadata[price]" is missing from JSON.');
+        assert(json[r'price'] != null, 'Required key "CatalogsRetailProductMetadata[price]" has a null value in JSON.');
+        assert(json.containsKey(r'sale_price'), 'Required key "CatalogsRetailProductMetadata[sale_price]" is missing from JSON.');
         return true;
       }());
 
       return CatalogsRetailProductMetadata(
-        availability: NonNullableProductAvailabilityType.fromJson(json[r'availability'])!,
+        availability: ProductAvailability.fromJson(json[r'availability'])!,
         currency: NonNullableCatalogsCurrency.fromJson(json[r'currency'])!,
         itemGroupId: mapValueOfType<String>(json, r'item_group_id'),
         itemId: mapValueOfType<String>(json, r'item_id')!,

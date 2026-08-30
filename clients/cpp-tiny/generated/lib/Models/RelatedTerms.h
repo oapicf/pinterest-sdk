@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "RelatedTerms_related_terms_list_inner.h"
+#include "RelatedTermsRelatedTermsListItems.h"
 #include <list>
 
 namespace Tiny {
@@ -53,27 +53,27 @@ public:
 
 	/*! \brief Set First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"
 	 */
-	void setId(std::string  id);
+	void setId(std::string id);
 	/*! \brief Get Total number of related terms returned
 	 */
 	int getRelatedTermCount();
 
 	/*! \brief Set Total number of related terms returned
 	 */
-	void setRelatedTermCount(int  related_term_count);
+	void setRelatedTermCount(int related_term_count);
 	/*! \brief Get The id of the advertiser.
 	 */
-	std::list<RelatedTerms_related_terms_list_inner> getRelatedTermsList();
+	std::list<RelatedTermsRelatedTermsListItems> getRelatedTermsList();
 
 	/*! \brief Set The id of the advertiser.
 	 */
-	void setRelatedTermsList(std::list <RelatedTerms_related_terms_list_inner> related_terms_list);
+	void setRelatedTermsList(std::list<RelatedTermsRelatedTermsListItems> related_terms_list);
 
 
     private:
     std::string id{};
     int related_term_count{};
-    std::list<RelatedTerms_related_terms_list_inner> related_terms_list;
+    std::list<RelatedTermsRelatedTermsListItems> related_terms_list;
 };
 }
 

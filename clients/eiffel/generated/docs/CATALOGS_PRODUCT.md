@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CATALOGS_TYPE**](CatalogsType.md) |  | [default to null]
+**catalog_type** | [**STRING_32**](STRING_32.md) |  | [default to null]
 **metadata** | [**CATALOGS_CREATIVE_ASSETS_PRODUCT_METADATA**](CatalogsCreativeAssetsProductMetadata.md) |  | [default to null]
 **pin** | [**PIN**](Pin.md) |  | [default to null]
 

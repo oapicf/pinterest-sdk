@@ -8,15 +8,24 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.TopPinsAnalyticsResponseDateAvailability
-import org.openapitools.client.models.TopVideoPinsAnalyticsResponsePinsInner
+import org.openapitools.client.models.TopVideoPinsAnalyticsResponseDateAvailability
+import org.openapitools.client.models.TopVideoPinsAnalyticsResponsePinsItems
+import org.openapitools.client.models.TopVideoPinsSortBy
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -33,33 +42,16 @@ import com.squareup.moshi.JsonClass
 data class TopVideoPinsAnalyticsResponse (
 
     @Json(name = "date_availability")
-    val dateAvailability: TopPinsAnalyticsResponseDateAvailability? = null,
+    val dateAvailability: TopVideoPinsAnalyticsResponseDateAvailability? = null,
 
     @Json(name = "pins")
-    val pins: kotlin.collections.List<TopVideoPinsAnalyticsResponsePinsInner>? = null,
+    val pins: kotlin.collections.List<TopVideoPinsAnalyticsResponsePinsItems>? = null,
 
     @Json(name = "sort_by")
-    val sortBy: TopVideoPinsAnalyticsResponse.SortBy? = null
+    val sortBy: TopVideoPinsSortBy? = null
 
 ) {
 
-    /**
-     * 
-     *
-     * Values: SAVE,IMPRESSION,OUTBOUND_CLICK,VIDEO_MRC_VIEW,VIDEO_AVG_WATCH_TIME,VIDEO_V50_WATCH_TIME,QUARTILE_95_PERCENT_VIEW,VIDEO_10S_VIEW,VIDEO_START
-     */
-    @JsonClass(generateAdapter = false)
-    enum class SortBy(val value: kotlin.String) {
-        @Json(name = "SAVE") SAVE("SAVE"),
-        @Json(name = "IMPRESSION") IMPRESSION("IMPRESSION"),
-        @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK"),
-        @Json(name = "VIDEO_MRC_VIEW") VIDEO_MRC_VIEW("VIDEO_MRC_VIEW"),
-        @Json(name = "VIDEO_AVG_WATCH_TIME") VIDEO_AVG_WATCH_TIME("VIDEO_AVG_WATCH_TIME"),
-        @Json(name = "VIDEO_V50_WATCH_TIME") VIDEO_V50_WATCH_TIME("VIDEO_V50_WATCH_TIME"),
-        @Json(name = "QUARTILE_95_PERCENT_VIEW") QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
-        @Json(name = "VIDEO_10S_VIEW") VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
-        @Json(name = "VIDEO_START") VIDEO_START("VIDEO_START");
-    }
 
 }
 

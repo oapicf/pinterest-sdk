@@ -8,7 +8,9 @@
  * Do not edit the class manually.
  */
 import { IntegrationLogClientRequest } from './integrationLogClientRequest';
+import { IntegrationLogLevel } from './integrationLogLevel';
 import { IntegrationLogClientError } from './integrationLogClientError';
+import { IntegrationLogEventType } from './integrationLogEventType';
 
 
 /**
@@ -28,13 +30,13 @@ export interface IntegrationLog {
     /**
      * Log event type
      */
-    event_type: IntegrationLog.EventTypeEnum;
+    event_type: IntegrationLogEventType;
     external_business_id?: string | null;
     feed_profile_id?: string | null;
     /**
      * Log level type
      */
-    log_level: IntegrationLog.LogLevelEnum;
+    log_level: IntegrationLogLevel;
     merchant_id?: string | null;
     /**
      * Explanation of the event that occured.
@@ -48,17 +50,6 @@ export interface IntegrationLog {
     tag_id?: string | null;
 }
 export namespace IntegrationLog {
-    export const EventTypeEnum = {
-        App: 'APP',
-        Api: 'API'
-    } as const;
-    export type EventTypeEnum = typeof EventTypeEnum[keyof typeof EventTypeEnum];
-    export const LogLevelEnum = {
-        Info: 'INFO',
-        Warn: 'WARN',
-        Error: 'ERROR'
-    } as const;
-    export type LogLevelEnum = typeof LogLevelEnum[keyof typeof LogLevelEnum];
 }
 
 

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -20,9 +28,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * 
+ * Permission levels available on a business asset.
  *
- * Values: ADMIN,ANALYST,FINANCE_MANAGER,FINANCE_EDIT,FINANCE_VIEW,AUDIENCE_MANAGER,CAMPAIGN_MANAGER,CATALOGS_MANAGER,CATALOGS_VIEWER,PROFILE_PUBLISHER,CONSUMER_USER
+ * Values: ADMIN,ANALYST,FINANCE_MANAGER,FINANCE_EDIT,FINANCE_VIEW,AUDIENCE_MANAGER,CAMPAIGN_MANAGER,CATALOGS_MANAGER,CATALOGS_VIEWER,PROFILE_PUBLISHER,CONSUMER_USER,BIZ_PINNER_LIST_SHARER
  */
 
 @JsonClass(generateAdapter = false)
@@ -59,7 +67,10 @@ enum class Permissions(val value: kotlin.String) {
     PROFILE_PUBLISHER("PROFILE_PUBLISHER"),
 
     @Json(name = "CONSUMER_USER")
-    CONSUMER_USER("CONSUMER_USER");
+    CONSUMER_USER("CONSUMER_USER"),
+
+    @Json(name = "BIZ_PINNER_LIST_SHARER")
+    BIZ_PINNER_LIST_SHARER("BIZ_PINNER_LIST_SHARER");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -81,7 +92,7 @@ enum class Permissions(val value: kotlin.String) {
          */
         fun decode(data: kotlin.Any?): Permissions? = data?.let {
           val normalizedData = "$it".lowercase()
-          values().firstOrNull { value ->
+          entries.firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()
           }
         }

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **country** | [**Country**](Country.md) |  | 
 **items** | [**List[ItemDeleteDiscontinuedBatchRecord]**](ItemDeleteDiscontinuedBatchRecord.md) | Array with catalogs items | 
 **language** | **str** | We recommend using the CatalogsLocale values. | 
-**operation** | [**BatchOperation**](BatchOperation.md) |  | 
+**operation** | **str** |  | 
 
 ## Example
 

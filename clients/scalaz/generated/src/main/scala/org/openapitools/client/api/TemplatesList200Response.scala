@@ -13,7 +13,7 @@ import TemplatesList200Response._
 
 case class TemplatesList200Response (
   bookmark: Option[String],
-items: List[TemplateResponse])
+items: List[AccountTemplate])
 
 object TemplatesList200Response {
   import DateTimeCodecs._

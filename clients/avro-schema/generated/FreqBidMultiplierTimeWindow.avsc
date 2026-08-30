@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The time window for frequency bid multipliers.",
+  "name": "FreqBidMultiplierTimeWindow",
+  "symbols": [
+    "WEEK",
+    "MONTH"
+  ]
+}

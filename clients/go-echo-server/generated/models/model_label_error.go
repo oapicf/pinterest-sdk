@@ -2,7 +2,7 @@ package models
 
 type LabelError struct {
 
-	Data Label `json:"data,omitempty"`
+	Data LabelErrorData `json:"data,omitempty"`
 
 	ErrorMessages []string `json:"error_messages,omitempty"`
 }

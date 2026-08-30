@@ -102,7 +102,7 @@ Search_partner_pins_200_response::getBookmark()
 }
 
 void
-Search_partner_pins_200_response::setBookmark(std::string  bookmark)
+Search_partner_pins_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Search_partner_pins_200_response::getItems()
 }
 
 void
-Search_partner_pins_200_response::setItems(std::list <SummaryPin> items)
+Search_partner_pins_200_response::setItems(std::list<SummaryPin> items)
 {
 	this->items = items;
 }

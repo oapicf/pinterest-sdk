@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.update_member_asset_access_body_accesses_inner import UpdateMemberAssetAccessBodyAccessesInner  # noqa: F401,E501
+from app.openapi_server.models.update_member_asset_access_item import UpdateMemberAssetAccessItem  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,14 +16,14 @@ class UpdateMemberAssetAccessBody(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, accesses: List[UpdateMemberAssetAccessBodyAccessesInner]=None):  # noqa: E501
+    def __init__(self, accesses: List[UpdateMemberAssetAccessItem]=None):  # noqa: E501
         """UpdateMemberAssetAccessBody - a model defined in Swagger
 
         :param accesses: The accesses of this UpdateMemberAssetAccessBody.  # noqa: E501
-        :type accesses: List[UpdateMemberAssetAccessBodyAccessesInner]
+        :type accesses: List[UpdateMemberAssetAccessItem]
         """
         self.swagger_types = {
-            'accesses': List[UpdateMemberAssetAccessBodyAccessesInner]
+            'accesses': List[UpdateMemberAssetAccessItem]
         }
 
         self.attribute_map = {
@@ -44,22 +44,24 @@ class UpdateMemberAssetAccessBody(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def accesses(self) -> List[UpdateMemberAssetAccessBodyAccessesInner]:
+    def accesses(self) -> List[UpdateMemberAssetAccessItem]:
         """Gets the accesses of this UpdateMemberAssetAccessBody.
 
+        List of member asset accesses to assign or update.  # noqa: E501
 
         :return: The accesses of this UpdateMemberAssetAccessBody.
-        :rtype: List[UpdateMemberAssetAccessBodyAccessesInner]
+        :rtype: List[UpdateMemberAssetAccessItem]
         """
         return self._accesses
 
     @accesses.setter
-    def accesses(self, accesses: List[UpdateMemberAssetAccessBodyAccessesInner]):
+    def accesses(self, accesses: List[UpdateMemberAssetAccessItem]):
         """Sets the accesses of this UpdateMemberAssetAccessBody.
 
+        List of member asset accesses to assign or update.  # noqa: E501
 
         :param accesses: The accesses of this UpdateMemberAssetAccessBody.
-        :type accesses: List[UpdateMemberAssetAccessBodyAccessesInner]
+        :type accesses: List[UpdateMemberAssetAccessItem]
         """
         if accesses is None:
             raise ValueError("Invalid value for `accesses`, must not be `None`")  # noqa: E501

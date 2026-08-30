@@ -1,10 +1,14 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.LabelCreateRequest
 import org.openapitools.server.api.model.LabelUpdateRequest
+import org.openapitools.server.api.model.LabeledEntities
+import org.openapitools.server.api.model.LabeledEntitiesCreate
 import org.openapitools.server.api.model.LabelsList200Response
 import org.openapitools.server.api.model.LabelsResponse
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.QueryLabelEntityStatusesItems
+import org.openapitools.server.api.model.QueryLabelTypesItems
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -21,12 +25,18 @@ import java.util.Map
 
 interface LabelsApi  {
     fun init(vertx:Vertx,config:JsonObject)
+    /* labelsApply
+     * Apply label to entity */
+    suspend fun labelsApply(adAccountId:kotlin.String?,labelId:kotlin.String?,labeledEntitiesCreate:LabeledEntitiesCreate?,context:OperationRequest):Response<LabeledEntities>
     /* labelsCreate
      * Create labels */
     suspend fun labelsCreate(adAccountId:kotlin.String?,labelCreateRequest:LabelCreateRequest?,context:OperationRequest):Response<LabelsResponse>
     /* labelsList
      * List labels */
-    suspend fun labelsList(adAccountId:kotlin.String?,campaignIds:kotlin.Array<kotlin.String>?,labelIds:kotlin.Array<kotlin.String>?,entityStatuses:kotlin.Array<kotlin.String>?,labelTypes:kotlin.Array<kotlin.String>?,pageSize:kotlin.Int?,bookmark:kotlin.String?,context:OperationRequest):Response<LabelsList200Response>
+    suspend fun labelsList(adAccountId:kotlin.String?,campaignIds:kotlin.Array<kotlin.String>?,labelIds:kotlin.Array<kotlin.String>?,entityStatuses:kotlin.Array<QueryLabelEntityStatusesItems>?,labelTypes:kotlin.Array<QueryLabelTypesItems>?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<LabelsList200Response>
+    /* labelsRemove
+     * Remove label from entities */
+    suspend fun labelsRemove(adAccountId:kotlin.String?,labelId:kotlin.String?,labeledEntitiesCreate:LabeledEntitiesCreate?,context:OperationRequest):Response<LabeledEntities>
     /* labelsUpdate
      * Update labels */
     suspend fun labelsUpdate(adAccountId:kotlin.String?,labelUpdateRequest:LabelUpdateRequest?,context:OperationRequest):Response<LabelsResponse>

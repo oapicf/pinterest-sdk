@@ -1,51 +1,74 @@
 #' Create a new InviteResponse
 #'
 #' @description
-#' InviteResponse Class
+#' A user's username or email OR a partner id that caused the error.
 #'
 #' @docType class
 #' @title InviteResponse
 #' @description InviteResponse Class
 #' @format An \code{R6Class} generator object
-#' @field id Unique identifier of the invite/request. character [optional]
-#' @field invite_data  \link{BaseInviteDataResponseInviteData} [optional]
-#' @field is_received_invite Indicates whether the invite/request was received. character [optional]
-#' @field user Metadata for the member/partner that was sent the invite/request. \link{BusinessAccessUserSummary} [optional]
 #' @field assets_summary  \link{InviteAssetsSummary} [optional]
 #' @field business_roles The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. list(character) [optional]
-#' @field created_by_business Metadata for the business that created the invite/request. object [optional]
-#' @field created_by_user Metadata for the user that created the invite/request. object [optional]
+#' @field created_by_business Metadata for the business that created the invite/request. \link{BusinessAccessUserSummary} [optional]
+#' @field created_by_user Metadata for the user that created the invite/request. \link{BusinessAccessUserSummary} [optional]
 #' @field created_time The time the invite/request was created. Returned in milliseconds. integer [optional]
+#' @field id Unique identifier of the invite/request. character [optional]
+#' @field invite_data  \link{InviteDataResponse} [optional]
+#' @field is_received_invite Indicates whether the invite/request was received. character [optional]
+#' @field user Metadata for the member/partner that was sent the invite/request. \link{BusinessAccessUserSummary} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 InviteResponse <- R6::R6Class(
   "InviteResponse",
   public = list(
-    `id` = NULL,
-    `invite_data` = NULL,
-    `is_received_invite` = NULL,
-    `user` = NULL,
     `assets_summary` = NULL,
     `business_roles` = NULL,
     `created_by_business` = NULL,
     `created_by_user` = NULL,
     `created_time` = NULL,
+    `id` = NULL,
+    `invite_data` = NULL,
+    `is_received_invite` = NULL,
+    `user` = NULL,
 
     #' @description
     #' Initialize a new InviteResponse class.
     #'
-    #' @param id Unique identifier of the invite/request.
-    #' @param invite_data invite_data
-    #' @param is_received_invite Indicates whether the invite/request was received.
-    #' @param user Metadata for the member/partner that was sent the invite/request.
     #' @param assets_summary assets_summary
     #' @param business_roles The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
     #' @param created_by_business Metadata for the business that created the invite/request.
     #' @param created_by_user Metadata for the user that created the invite/request.
     #' @param created_time The time the invite/request was created. Returned in milliseconds.
+    #' @param id Unique identifier of the invite/request.
+    #' @param invite_data invite_data
+    #' @param is_received_invite Indicates whether the invite/request was received.
+    #' @param user Metadata for the member/partner that was sent the invite/request.
     #' @param ... Other optional arguments.
-    initialize = function(`id` = NULL, `invite_data` = NULL, `is_received_invite` = NULL, `user` = NULL, `assets_summary` = NULL, `business_roles` = NULL, `created_by_business` = NULL, `created_by_user` = NULL, `created_time` = NULL, ...) {
+    initialize = function(`assets_summary` = NULL, `business_roles` = NULL, `created_by_business` = NULL, `created_by_user` = NULL, `created_time` = NULL, `id` = NULL, `invite_data` = NULL, `is_received_invite` = NULL, `user` = NULL, ...) {
+      if (!is.null(`assets_summary`)) {
+        stopifnot(R6::is.R6(`assets_summary`))
+        self$`assets_summary` <- `assets_summary`
+      }
+      if (!is.null(`business_roles`)) {
+        stopifnot(is.vector(`business_roles`), length(`business_roles`) != 0)
+        sapply(`business_roles`, function(x) stopifnot(is.character(x)))
+        self$`business_roles` <- `business_roles`
+      }
+      if (!is.null(`created_by_business`)) {
+        stopifnot(R6::is.R6(`created_by_business`))
+        self$`created_by_business` <- `created_by_business`
+      }
+      if (!is.null(`created_by_user`)) {
+        stopifnot(R6::is.R6(`created_by_user`))
+        self$`created_by_user` <- `created_by_user`
+      }
+      if (!is.null(`created_time`)) {
+        if (!(is.numeric(`created_time`) && length(`created_time`) == 1)) {
+          stop(paste("Error! Invalid data for `created_time`. Must be an integer:", `created_time`))
+        }
+        self$`created_time` <- `created_time`
+      }
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
@@ -65,27 +88,6 @@ InviteResponse <- R6::R6Class(
       if (!is.null(`user`)) {
         stopifnot(R6::is.R6(`user`))
         self$`user` <- `user`
-      }
-      if (!is.null(`assets_summary`)) {
-        stopifnot(R6::is.R6(`assets_summary`))
-        self$`assets_summary` <- `assets_summary`
-      }
-      if (!is.null(`business_roles`)) {
-        stopifnot(is.vector(`business_roles`), length(`business_roles`) != 0)
-        sapply(`business_roles`, function(x) stopifnot(is.character(x)))
-        self$`business_roles` <- `business_roles`
-      }
-      if (!is.null(`created_by_business`)) {
-        self$`created_by_business` <- `created_by_business`
-      }
-      if (!is.null(`created_by_user`)) {
-        self$`created_by_user` <- `created_by_user`
-      }
-      if (!is.null(`created_time`)) {
-        if (!(is.numeric(`created_time`) && length(`created_time`) == 1)) {
-          stop(paste("Error! Invalid data for `created_time`. Must be an integer:", `created_time`))
-        }
-        self$`created_time` <- `created_time`
       }
     },
 
@@ -120,25 +122,9 @@ InviteResponse <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       InviteResponseObject <- list()
-      if (!is.null(self$`id`)) {
-        InviteResponseObject[["id"]] <-
-          self$`id`
-      }
-      if (!is.null(self$`invite_data`)) {
-        InviteResponseObject[["invite_data"]] <-
-          self$`invite_data`$toSimpleType()
-      }
-      if (!is.null(self$`is_received_invite`)) {
-        InviteResponseObject[["is_received_invite"]] <-
-          self$`is_received_invite`
-      }
-      if (!is.null(self$`user`)) {
-        InviteResponseObject[["user"]] <-
-          self$`user`$toSimpleType()
-      }
       if (!is.null(self$`assets_summary`)) {
         InviteResponseObject[["assets_summary"]] <-
-          self$`assets_summary`$toSimpleType()
+          self$extractSimpleType(self$`assets_summary`)
       }
       if (!is.null(self$`business_roles`)) {
         InviteResponseObject[["business_roles"]] <-
@@ -146,17 +132,56 @@ InviteResponse <- R6::R6Class(
       }
       if (!is.null(self$`created_by_business`)) {
         InviteResponseObject[["created_by_business"]] <-
-          self$`created_by_business`
+          self$extractSimpleType(self$`created_by_business`)
       }
       if (!is.null(self$`created_by_user`)) {
         InviteResponseObject[["created_by_user"]] <-
-          self$`created_by_user`
+          self$extractSimpleType(self$`created_by_user`)
       }
       if (!is.null(self$`created_time`)) {
         InviteResponseObject[["created_time"]] <-
           self$`created_time`
       }
+      if (!is.null(self$`id`)) {
+        InviteResponseObject[["id"]] <-
+          self$`id`
+      }
+      if (!is.null(self$`invite_data`)) {
+        InviteResponseObject[["invite_data"]] <-
+          self$extractSimpleType(self$`invite_data`)
+      }
+      if (!is.null(self$`is_received_invite`)) {
+        InviteResponseObject[["is_received_invite"]] <-
+          self$`is_received_invite`
+      }
+      if (!is.null(self$`user`)) {
+        InviteResponseObject[["user"]] <-
+          self$extractSimpleType(self$`user`)
+      }
       return(InviteResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -166,11 +191,32 @@ InviteResponse <- R6::R6Class(
     #' @return the instance of InviteResponse
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`assets_summary`)) {
+        `assets_summary_object` <- InviteAssetsSummary$new()
+        `assets_summary_object`$fromJSON(jsonlite::toJSON(this_object$`assets_summary`, auto_unbox = TRUE, digits = NA))
+        self$`assets_summary` <- `assets_summary_object`
+      }
+      if (!is.null(this_object$`business_roles`)) {
+        self$`business_roles` <- ApiClient$new()$deserializeObj(this_object$`business_roles`, "array[character]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`created_by_business`)) {
+        `created_by_business_object` <- BusinessAccessUserSummary$new()
+        `created_by_business_object`$fromJSON(jsonlite::toJSON(this_object$`created_by_business`, auto_unbox = TRUE, digits = NA))
+        self$`created_by_business` <- `created_by_business_object`
+      }
+      if (!is.null(this_object$`created_by_user`)) {
+        `created_by_user_object` <- BusinessAccessUserSummary$new()
+        `created_by_user_object`$fromJSON(jsonlite::toJSON(this_object$`created_by_user`, auto_unbox = TRUE, digits = NA))
+        self$`created_by_user` <- `created_by_user_object`
+      }
+      if (!is.null(this_object$`created_time`)) {
+        self$`created_time` <- this_object$`created_time`
+      }
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
       }
       if (!is.null(this_object$`invite_data`)) {
-        `invite_data_object` <- BaseInviteDataResponseInviteData$new()
+        `invite_data_object` <- InviteDataResponse$new()
         `invite_data_object`$fromJSON(jsonlite::toJSON(this_object$`invite_data`, auto_unbox = TRUE, digits = NA))
         self$`invite_data` <- `invite_data_object`
       }
@@ -181,23 +227,6 @@ InviteResponse <- R6::R6Class(
         `user_object` <- BusinessAccessUserSummary$new()
         `user_object`$fromJSON(jsonlite::toJSON(this_object$`user`, auto_unbox = TRUE, digits = NA))
         self$`user` <- `user_object`
-      }
-      if (!is.null(this_object$`assets_summary`)) {
-        `assets_summary_object` <- InviteAssetsSummary$new()
-        `assets_summary_object`$fromJSON(jsonlite::toJSON(this_object$`assets_summary`, auto_unbox = TRUE, digits = NA))
-        self$`assets_summary` <- `assets_summary_object`
-      }
-      if (!is.null(this_object$`business_roles`)) {
-        self$`business_roles` <- ApiClient$new()$deserializeObj(this_object$`business_roles`, "array[character]", loadNamespace("openapi"))
-      }
-      if (!is.null(this_object$`created_by_business`)) {
-        self$`created_by_business` <- this_object$`created_by_business`
-      }
-      if (!is.null(this_object$`created_by_user`)) {
-        self$`created_by_user` <- this_object$`created_by_user`
-      }
-      if (!is.null(this_object$`created_time`)) {
-        self$`created_time` <- this_object$`created_time`
       }
       self
     },
@@ -220,15 +249,15 @@ InviteResponse <- R6::R6Class(
     #' @return the instance of InviteResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`id` <- this_object$`id`
-      self$`invite_data` <- BaseInviteDataResponseInviteData$new()$fromJSON(jsonlite::toJSON(this_object$`invite_data`, auto_unbox = TRUE, digits = NA))
-      self$`is_received_invite` <- this_object$`is_received_invite`
-      self$`user` <- BusinessAccessUserSummary$new()$fromJSON(jsonlite::toJSON(this_object$`user`, auto_unbox = TRUE, digits = NA))
       self$`assets_summary` <- InviteAssetsSummary$new()$fromJSON(jsonlite::toJSON(this_object$`assets_summary`, auto_unbox = TRUE, digits = NA))
       self$`business_roles` <- ApiClient$new()$deserializeObj(this_object$`business_roles`, "array[character]", loadNamespace("openapi"))
-      self$`created_by_business` <- this_object$`created_by_business`
-      self$`created_by_user` <- this_object$`created_by_user`
+      self$`created_by_business` <- BusinessAccessUserSummary$new()$fromJSON(jsonlite::toJSON(this_object$`created_by_business`, auto_unbox = TRUE, digits = NA))
+      self$`created_by_user` <- BusinessAccessUserSummary$new()$fromJSON(jsonlite::toJSON(this_object$`created_by_user`, auto_unbox = TRUE, digits = NA))
       self$`created_time` <- this_object$`created_time`
+      self$`id` <- this_object$`id`
+      self$`invite_data` <- InviteDataResponse$new()$fromJSON(jsonlite::toJSON(this_object$`invite_data`, auto_unbox = TRUE, digits = NA))
+      self$`is_received_invite` <- this_object$`is_received_invite`
+      self$`user` <- BusinessAccessUserSummary$new()$fromJSON(jsonlite::toJSON(this_object$`user`, auto_unbox = TRUE, digits = NA))
       self
     },
 

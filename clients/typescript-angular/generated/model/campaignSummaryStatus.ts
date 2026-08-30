@@ -9,9 +9,6 @@
  */
 
 
-/**
- * Summary status for campaign
- */
 export const CampaignSummaryStatus = {
     Running: 'RUNNING',
     Paused: 'PAUSED',

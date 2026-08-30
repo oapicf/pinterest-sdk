@@ -14,24 +14,14 @@
       "name": "pins",
       "type": ["null", {
         "type": "array",
-        "items": "model.TopPinsAnalyticsResponsePinsInner"
+        "items": "model.TopPinsAnalyticsResponsePinsItems"
       }],
       "doc": "",
       "default": null
     },
     {
       "name": "sort_by",
-      "type": ["null", {
-        "type": "enum",
-        "name": "TopPinsAnalyticsResponse_sortUnderscoreby",
-        "symbols": [
-          "ENGAGEMENT",
-          "SAVE",
-          "IMPRESSION",
-          "OUTBOUND_CLICK",
-          "PIN_CLICK"
-        ]
-      }],
+      "type": ["null", "model.TopPinsSortBy"],
       "doc": "",
       "default": null
     }

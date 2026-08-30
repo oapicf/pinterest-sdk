@@ -74,7 +74,7 @@ class _$CountryFilterSerializer implements PrimitiveSerializer<CountryFilter> {
             value,
             specifiedType: const FullType(CatalogsProductGroupMultipleCountriesCriteria),
           ) as CatalogsProductGroupMultipleCountriesCriteria;
-          result.COUNTRY = valueDes;
+          result.COUNTRY.replace(valueDes);
           break;
         default:
           unhandled.add(key);

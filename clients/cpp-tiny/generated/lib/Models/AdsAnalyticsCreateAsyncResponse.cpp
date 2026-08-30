@@ -7,7 +7,7 @@ using namespace Tiny;
 AdsAnalyticsCreateAsyncResponse::AdsAnalyticsCreateAsyncResponse()
 {
 	message = std::string();
-	report_status = std::string();
+	report_status = BulkReportingJobStatus();
 	token = std::string();
 }
 
@@ -107,7 +107,7 @@ AdsAnalyticsCreateAsyncResponse::getMessage()
 }
 
 void
-AdsAnalyticsCreateAsyncResponse::setMessage(std::string  message)
+AdsAnalyticsCreateAsyncResponse::setMessage(std::string message)
 {
 	this->message = message;
 }
@@ -119,7 +119,7 @@ AdsAnalyticsCreateAsyncResponse::getReportStatus()
 }
 
 void
-AdsAnalyticsCreateAsyncResponse::setReportStatus(BulkReportingJobStatus  report_status)
+AdsAnalyticsCreateAsyncResponse::setReportStatus(BulkReportingJobStatus report_status)
 {
 	this->report_status = report_status;
 }
@@ -131,7 +131,7 @@ AdsAnalyticsCreateAsyncResponse::getToken()
 }
 
 void
-AdsAnalyticsCreateAsyncResponse::setToken(std::string  token)
+AdsAnalyticsCreateAsyncResponse::setToken(std::string token)
 {
 	this->token = token;
 }

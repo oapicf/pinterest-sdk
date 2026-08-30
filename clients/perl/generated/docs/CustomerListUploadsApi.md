@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 Create customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a>  <p>Create a customer list upload request for multipart S3 upload.</p> <p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p> <p><b>Please review the <u><a href=\"/docs/api/v5/customer_lists-update/\" target=\"_blank\">update customer list endpoint</a></u> documentation for additional information.</b></p>
+Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 
 ### Example
 ```perl
@@ -31,9 +31,9 @@ my $api_instance = WWW::OpenAPIClient::CustomerListUploadsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $customer_list_id = "customer_list_id_example"; # string | Unique identifier of a customer list
-my $customer_list_upload_create_request = WWW::OpenAPIClient::Object::CustomerListUploadCreateRequest->new(); # CustomerListUploadCreateRequest | Parameters to create a customer list upload request
+my $ad_account_id = "ad_account_id_example"; # string | 
+my $customer_list_id = "customer_list_id_example"; # string | Customer list ID.
+my $customer_list_upload_create_request = WWW::OpenAPIClient::Object::CustomerListUploadCreateRequest->new(); # CustomerListUploadCreateRequest | 
 
 eval {
     my $result = $api_instance->customer_list_uploads_create(ad_account_id => $ad_account_id, customer_list_id => $customer_list_id, customer_list_upload_create_request => $customer_list_upload_create_request);
@@ -48,9 +48,9 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **customer_list_id** | **string**| Unique identifier of a customer list | 
- **customer_list_upload_create_request** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)| Parameters to create a customer list upload request | 
+ **ad_account_id** | **string**|  | 
+ **customer_list_id** | **string**| Customer list ID. | 
+ **customer_list_upload_create_request** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)|  | 
 
 ### Return type
 
@@ -68,11 +68,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_list_uploads_get**
-> CustomerListUploadResponse customer_list_uploads_get(ad_account_id => $ad_account_id, customer_list_id => $customer_list_id, customer_list_upload_id => $customer_list_upload_id)
+> CustomerListUpload customer_list_uploads_get(ad_account_id => $ad_account_id, customer_list_id => $customer_list_id, customer_list_upload_id => $customer_list_upload_id)
 
 Get customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Get the metadata for a given upload by its ID.</p>
+Get the metadata for a given upload by its ID.
 
 ### Example
 ```perl
@@ -84,9 +84,9 @@ my $api_instance = WWW::OpenAPIClient::CustomerListUploadsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $customer_list_id = "customer_list_id_example"; # string | Unique identifier of a customer list
-my $customer_list_upload_id = "customer_list_upload_id_example"; # string | Unique identifier of a customer list upload
+my $ad_account_id = "ad_account_id_example"; # string | 
+my $customer_list_id = "customer_list_id_example"; # string | Customer list ID.
+my $customer_list_upload_id = "customer_list_upload_id_example"; # string | Customer List Upload ID.
 
 eval {
     my $result = $api_instance->customer_list_uploads_get(ad_account_id => $ad_account_id, customer_list_id => $customer_list_id, customer_list_upload_id => $customer_list_upload_id);
@@ -101,13 +101,13 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **customer_list_id** | **string**| Unique identifier of a customer list | 
- **customer_list_upload_id** | **string**| Unique identifier of a customer list upload | 
+ **ad_account_id** | **string**|  | 
+ **customer_list_id** | **string**| Customer list ID. | 
+ **customer_list_upload_id** | **string**| Customer List Upload ID. | 
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 
@@ -121,11 +121,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_list_uploads_run**
-> CustomerListUploadResponse customer_list_uploads_run(ad_account_id => $ad_account_id, customer_list_id => $customer_list_id, customer_list_upload_id => $customer_list_upload_id)
+> CustomerListUpload customer_list_uploads_run(ad_account_id => $ad_account_id, customer_list_id => $customer_list_id, customer_list_upload_id => $customer_list_upload_id)
 
 Run customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Begin processing a customer list upload.</p>
+Begin processing a customer list upload.
 
 ### Example
 ```perl
@@ -137,9 +137,9 @@ my $api_instance = WWW::OpenAPIClient::CustomerListUploadsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $customer_list_id = "customer_list_id_example"; # string | Unique identifier of a customer list
-my $customer_list_upload_id = "customer_list_upload_id_example"; # string | Unique identifier of a customer list upload
+my $ad_account_id = "ad_account_id_example"; # string | 
+my $customer_list_id = "customer_list_id_example"; # string | Customer list ID.
+my $customer_list_upload_id = "customer_list_upload_id_example"; # string | Customer List Upload ID.
 
 eval {
     my $result = $api_instance->customer_list_uploads_run(ad_account_id => $ad_account_id, customer_list_id => $customer_list_id, customer_list_upload_id => $customer_list_upload_id);
@@ -154,13 +154,13 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **customer_list_id** | **string**| Unique identifier of a customer list | 
- **customer_list_upload_id** | **string**| Unique identifier of a customer list upload | 
+ **ad_account_id** | **string**|  | 
+ **customer_list_id** | **string**| Customer list ID. | 
+ **customer_list_upload_id** | **string**| Customer List Upload ID. | 
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]UserBusinessRoleBinding**](UserBusinessRoleBinding.md) | List of employers. | 
+**Items** | [**[]UserBusinessRoleBinding**](UserBusinessRoleBinding.md) |  | 
 
 ## Methods
 

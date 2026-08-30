@@ -8,13 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CustomerListStatus
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -22,21 +31,30 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param adAccountId Associated ad account ID.
- * @param createdTime Creation time. Unix timestamp in seconds.
- * @param exceptions Customer list errors
  * @param id Customer list ID.
  * @param name Customer list name.
- * @param numBatches Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
- * @param numRemovedUserRecords Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
- * @param numUploadedUserRecords Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
- * @param status Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
- * @param type Always \"customerlist\".
+ * @param adAccountId Associated ad account ID.
+ * @param createdTime Creation time. Unix timestamp in seconds.
+ * @param exceptions Customer list errors.
+ * @param isNca Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.
+ * @param numBatches Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.
+ * @param numRemovedUserRecords Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.
+ * @param numUploadedUserRecords Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.
+ * @param status Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
+ * @param type Always `customerlist`.
  * @param updatedTime Last update time. Unix timestamp in seconds.
  */
 
 
 data class CustomerList (
+
+    /* Customer list ID. */
+    @Json(name = "id")
+    val id: kotlin.String,
+
+    /* Customer list name. */
+    @Json(name = "name")
+    val name: kotlin.String,
 
     /* Associated ad account ID. */
     @Json(name = "ad_account_id")
@@ -46,35 +64,31 @@ data class CustomerList (
     @Json(name = "created_time")
     val createdTime: java.math.BigDecimal? = null,
 
-    /* Customer list errors */
+    /* Customer list errors. */
     @Json(name = "exceptions")
     val exceptions: kotlin.Any? = null,
 
-    /* Customer list ID. */
-    @Json(name = "id")
-    val id: kotlin.String? = null,
+    /* Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation. */
+    @Json(name = "is_nca")
+    val isNca: kotlin.Boolean? = null,
 
-    /* Customer list name. */
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
-    /* Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists. */
+    /* Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists. */
     @Json(name = "num_batches")
     val numBatches: java.math.BigDecimal? = null,
 
-    /* Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list. */
+    /* Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list. */
     @Json(name = "num_removed_user_records")
     val numRemovedUserRecords: java.math.BigDecimal? = null,
 
-    /* Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list. */
+    /* Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list. */
     @Json(name = "num_uploaded_user_records")
     val numUploadedUserRecords: java.math.BigDecimal? = null,
 
-    /* Customer list status. TOO_SMALL - the list has less than 100 Pinterest users. */
+    /* Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users. */
     @Json(name = "status")
-    val status: CustomerList.Status? = null,
+    val status: CustomerListStatus? = null,
 
-    /* Always \"customerlist\". */
+    /* Always `customerlist`. */
     @Json(name = "type")
     val type: kotlin.String? = null,
 
@@ -84,18 +98,6 @@ data class CustomerList (
 
 ) {
 
-    /**
-     * Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-     *
-     * Values: PROCESSING,READY,TOO_SMALL,UPLOADING
-     */
-    @JsonClass(generateAdapter = false)
-    enum class Status(val value: kotlin.String) {
-        @Json(name = "PROCESSING") PROCESSING("PROCESSING"),
-        @Json(name = "READY") READY("READY"),
-        @Json(name = "TOO_SMALL") TOO_SMALL("TOO_SMALL"),
-        @Json(name = "UPLOADING") UPLOADING("UPLOADING");
-    }
 
 }
 

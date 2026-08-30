@@ -8,13 +8,25 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.Gender
+import org.openapitools.client.models.MediaType
+import org.openapitools.client.models.ProductAvailability
+import org.openapitools.client.models.ProductCondition
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -58,13 +70,13 @@ data class CatalogsRetailFilterValuesMap (
     val adVideoTags: kotlin.collections.List<kotlin.String>? = null,
 
     @Json(name = "availability")
-    val availability: kotlin.collections.List<CatalogsRetailFilterValuesMap.Availability>? = null,
+    val availability: kotlin.collections.List<ProductAvailability>? = null,
 
     @Json(name = "brand")
     val brand: kotlin.collections.List<kotlin.String>? = null,
 
     @Json(name = "condition")
-    val condition: kotlin.collections.List<CatalogsRetailFilterValuesMap.Condition>? = null,
+    val condition: kotlin.collections.List<ProductCondition>? = null,
 
     @Json(name = "custom_label_0")
     val customLabel0: kotlin.collections.List<kotlin.String>? = null,
@@ -82,7 +94,7 @@ data class CatalogsRetailFilterValuesMap (
     val customLabel4: kotlin.collections.List<kotlin.String>? = null,
 
     @Json(name = "gender")
-    val gender: kotlin.collections.List<CatalogsRetailFilterValuesMap.Gender>? = null,
+    val gender: kotlin.collections.List<Gender>? = null,
 
     @Json(name = "google_product_category_0")
     val googleProductCategory0: kotlin.collections.List<kotlin.String>? = null,
@@ -106,7 +118,7 @@ data class CatalogsRetailFilterValuesMap (
     val googleProductCategory6: kotlin.collections.List<kotlin.String>? = null,
 
     @Json(name = "media_type")
-    val mediaType: kotlin.collections.List<CatalogsRetailFilterValuesMap.MediaType>? = null,
+    val mediaType: kotlin.collections.List<MediaType>? = null,
 
     @Json(name = "product_type_0")
     val productType0: kotlin.collections.List<kotlin.String>? = null,
@@ -125,50 +137,6 @@ data class CatalogsRetailFilterValuesMap (
 
 ) {
 
-    /**
-     * 
-     *
-     * Values: IN_STOCK,OUT_OF_STOCK,PREORDER,UNAVAILABLE
-     */
-    @JsonClass(generateAdapter = false)
-    enum class Availability(val value: kotlin.String) {
-        @Json(name = "IN_STOCK") IN_STOCK("IN_STOCK"),
-        @Json(name = "OUT_OF_STOCK") OUT_OF_STOCK("OUT_OF_STOCK"),
-        @Json(name = "PREORDER") PREORDER("PREORDER"),
-        @Json(name = "UNAVAILABLE") UNAVAILABLE("UNAVAILABLE");
-    }
-    /**
-     * 
-     *
-     * Values: NEW,USED,REFURBISHED
-     */
-    @JsonClass(generateAdapter = false)
-    enum class Condition(val value: kotlin.String) {
-        @Json(name = "NEW") NEW("NEW"),
-        @Json(name = "USED") USED("USED"),
-        @Json(name = "REFURBISHED") REFURBISHED("REFURBISHED");
-    }
-    /**
-     * 
-     *
-     * Values: FEMALE,MALE,UNISEX
-     */
-    @JsonClass(generateAdapter = false)
-    enum class Gender(val value: kotlin.String) {
-        @Json(name = "FEMALE") FEMALE("FEMALE"),
-        @Json(name = "MALE") MALE("MALE"),
-        @Json(name = "UNISEX") UNISEX("UNISEX");
-    }
-    /**
-     * 
-     *
-     * Values: IMAGE,VIDEO
-     */
-    @JsonClass(generateAdapter = false)
-    enum class MediaType(val value: kotlin.String) {
-        @Json(name = "IMAGE") IMAGE("IMAGE"),
-        @Json(name = "VIDEO") VIDEO("VIDEO");
-    }
 
 }
 

@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            String
+            LeadSubscription
         >
         LeadAdsApi::
         adAccountsSubscriptions_delById(
@@ -57,7 +57,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            LeadSubscription obj(output_string);
+
+
+            Response<LeadSubscription> response(obj, httpCode);
             return response;
         }
 

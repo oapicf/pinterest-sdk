@@ -4,18 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | **Date** |  | 
-**id** | **String** |  | 
-**updatedAt** | **Date** |  | 
 **catalogId** | **String** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. | 
-**catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
-**credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | 
-**defaultCurrency** | [**NullableCurrency**](NullableCurrency.md) |  | 
+**catalogType** | **String** |  | 
+**createdAt** | **Date** |  | [readonly] 
+**credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
+**defaultCurrency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] 
 **defaultLocale** | **String** | The locale used within a feed for product descriptions. | 
 **format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
+**id** | **String** | ID of the feed entity. | [readonly] 
 **location** | **String** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
 **name** | **String** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
-**preferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | 
+**preferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **status** | [**CatalogsStatus**](CatalogsStatus.md) |  | 
+**updatedAt** | **Date** |  | [readonly] 
+
+
+
+## Enum: CatalogTypeEnum
+
+
+* `HOTEL` (value: `"HOTEL"`)
+
+
 
 

@@ -27,13 +27,13 @@ pinterest_rest_api_pinterest_lib_status204_STATUSCODE_e pinterest_lib_status204_
 
 
 typedef struct pinterest_lib_status204_t {
-    double status_code; //numeric
+    double *status_code; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pinterest_lib_status204_t;
 
 __attribute__((deprecated)) pinterest_lib_status204_t *pinterest_lib_status204_create(
-    double status_code
+    double *status_code
 );
 
 void pinterest_lib_status204_free(pinterest_lib_status204_t *pinterest_lib_status204);

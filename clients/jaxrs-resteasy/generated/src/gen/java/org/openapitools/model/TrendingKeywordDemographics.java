@@ -4,21 +4,20 @@ import java.util.Objects;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.TrendingKeywordDemographicsAgeDistribution;
-import org.openapitools.model.TrendingKeywordDemographicsGenderDistribution;
+import org.openapitools.model.TrendsAgeDistribution;
+import org.openapitools.model.TrendsGenderDistribution;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. <br /> For each dimension: <br />   - Key: The category (e.g., \"female\", \"18-24\"). <br />   - Value: The proportion of search volume (e.g., 0.12 for 12%). <br />     Values less than 0.05 are set to 0.04 for privacy. <br />     The sum for all categories in a dimension will approximately equal 1. <br />     Only applicable when `include_demographics` query parameter is set to `true`.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. For each dimension: Key: The category (e.g., \"female\", \"18-24\"). Value: The proportion of search volume (e.g., 0.12 for 12%). Values less than 0.05 are set to 0.04 for privacy. The sum for all categories in a dimension will approximately equal 1. Only applicable when `include_demographics` query parameter is set to `true`.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TrendingKeywordDemographics   {
   
-  private TrendingKeywordDemographicsAgeDistribution ageDistribution;
-  private TrendingKeywordDemographicsGenderDistribution genderDistribution;
+  private TrendsAgeDistribution ageDistribution;
+  private TrendsGenderDistribution genderDistribution;
 
   /**
    **/
@@ -26,10 +25,10 @@ public class TrendingKeywordDemographics   {
   @ApiModelProperty(value = "")
   @JsonProperty("age_distribution")
   @Valid
-  public TrendingKeywordDemographicsAgeDistribution getAgeDistribution() {
+  public TrendsAgeDistribution getAgeDistribution() {
     return ageDistribution;
   }
-  public void setAgeDistribution(TrendingKeywordDemographicsAgeDistribution ageDistribution) {
+  public void setAgeDistribution(TrendsAgeDistribution ageDistribution) {
     this.ageDistribution = ageDistribution;
   }
 
@@ -39,10 +38,10 @@ public class TrendingKeywordDemographics   {
   @ApiModelProperty(value = "")
   @JsonProperty("gender_distribution")
   @Valid
-  public TrendingKeywordDemographicsGenderDistribution getGenderDistribution() {
+  public TrendsGenderDistribution getGenderDistribution() {
     return genderDistribution;
   }
-  public void setGenderDistribution(TrendingKeywordDemographicsGenderDistribution genderDistribution) {
+  public void setGenderDistribution(TrendsGenderDistribution genderDistribution) {
     this.genderDistribution = genderDistribution;
   }
 
@@ -81,10 +80,7 @@ public class TrendingKeywordDemographics   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

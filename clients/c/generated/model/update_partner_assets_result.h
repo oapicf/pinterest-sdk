@@ -15,12 +15,13 @@
 
 typedef struct update_partner_assets_result_t update_partner_assets_result_t;
 
+#include "asset_type_response.h"
 
 
 
 typedef struct update_partner_assets_result_t {
     char *asset_id; // string
-    char *asset_type; // string
+    pinterest_rest_api_asset_type_response__e asset_type; //referenced enum
     char *partner_id; // string
     list_t *permissions; //primitive container
 
@@ -29,7 +30,7 @@ typedef struct update_partner_assets_result_t {
 
 __attribute__((deprecated)) update_partner_assets_result_t *update_partner_assets_result_create(
     char *asset_id,
-    char *asset_type,
+    pinterest_rest_api_asset_type_response__e asset_type,
     char *partner_id,
     list_t *permissions
 );

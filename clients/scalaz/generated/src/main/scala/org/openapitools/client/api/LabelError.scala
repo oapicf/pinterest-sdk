@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import LabelError._
 
 case class LabelError (
-  data: Option[Label],
+  data: Option[LabelErrorData],
 errorMessages: Option[List[String]])
 
 object LabelError {

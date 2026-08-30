@@ -10,11 +10,11 @@ The class is defined in **[CatalogsHotelFeedsCreateRequest.java](../../src/main/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | `String` | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. |  [optional property]
-**catalogType** | `CatalogsType` |  | 
+**catalogId** | `String` | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. |  [optional property]
+**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **credentials** | [`CatalogsFeedCredentials`](CatalogsFeedCredentials.md) |  |  [optional property]
 **defaultCurrency** | `NullableCurrency` |  |  [optional property]
-**defaultLocale** | [`CatalogsFeedsCreateRequestDefaultLocale`](CatalogsFeedsCreateRequestDefaultLocale.md) |  | 
+**defaultLocale** | [`CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale`](CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.md) |  | 
 **_format** | `CatalogsFormat` |  | 
 **location** | `String` | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
 **name** | `String` | A human-friendly name associated to a given feed. | 
@@ -22,6 +22,11 @@ Name | Type | Description | Notes
 **status** | `CatalogsStatus` |  |  [optional property]
 
 
+## CatalogTypeEnum
+
+Name | Value
+---- | -----
+HOTEL | `"HOTEL"`
 
 
 

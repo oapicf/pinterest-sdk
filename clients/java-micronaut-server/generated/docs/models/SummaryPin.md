@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **altText** | `String` |  |  [optional property]
 **description** | `String` |  |  [optional property]
-**id** | `String` |  |  [optional property]
+**id** | `String` |  | 
 **link** | `String` |  |  [optional property]
 **media** | [`PinMedia`](PinMedia.md) |  |  [optional property] [readonly property]
 **title** | `String` |  |  [optional property]

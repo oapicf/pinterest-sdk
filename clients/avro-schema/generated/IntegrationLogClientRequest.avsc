@@ -11,21 +11,7 @@
     },
     {
       "name": "method",
-      "type": {
-        "type": "enum",
-        "name": "IntegrationLogClientRequest_method",
-        "symbols": [
-          "GET",
-          "HEAD",
-          "POST",
-          "PUT",
-          "DELETE",
-          "CONNECT",
-          "OPTIONS",
-          "TRACE",
-          "PATCH"
-        ]
-      },
+      "type": "model.HttpMethod",
       "doc": ""
     },
     {

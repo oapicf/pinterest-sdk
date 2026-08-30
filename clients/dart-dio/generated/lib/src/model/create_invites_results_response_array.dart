@@ -4,7 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/create_invites_results_response_array_items_inner.dart';
+import 'package:openapi/src/model/invite_action_result_item.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -18,7 +18,7 @@ part 'create_invites_results_response_array.g.dart';
 abstract class CreateInvitesResultsResponseArray implements Built<CreateInvitesResultsResponseArray, CreateInvitesResultsResponseArrayBuilder> {
   /// List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
   @BuiltValueField(wireName: r'items')
-  BuiltList<CreateInvitesResultsResponseArrayItemsInner>? get items;
+  BuiltList<InviteActionResultItem>? get items;
 
   CreateInvitesResultsResponseArray._();
 
@@ -47,7 +47,7 @@ class _$CreateInvitesResultsResponseArraySerializer implements PrimitiveSerializ
       yield r'items';
       yield serializers.serialize(
         object.items,
-        specifiedType: const FullType(BuiltList, [FullType(CreateInvitesResultsResponseArrayItemsInner)]),
+        specifiedType: const FullType(BuiltList, [FullType(InviteActionResultItem)]),
       );
     }
   }
@@ -76,8 +76,9 @@ class _$CreateInvitesResultsResponseArraySerializer implements PrimitiveSerializ
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CreateInvitesResultsResponseArrayItemsInner)]),
-          ) as BuiltList<CreateInvitesResultsResponseArrayItemsInner>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(InviteActionResultItem)]),
+          ) as BuiltList<InviteActionResultItem>?;
+          if (valueDes == null) continue;
           result.items.replace(valueDes);
           break;
         default:

@@ -1,15 +1,21 @@
 package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsAttributes;
-import org.openapitools.model.CatalogsType;
-import org.openapitools.model.ItemResponseOneOf;
-import org.openapitools.model.ItemResponseOneOf1;
+import org.openapitools.model.CatalogsCreativeAssetsItemErrorResponse;
+import org.openapitools.model.CatalogsCreativeAssetsItemResponse;
+import org.openapitools.model.CatalogsHotelItemErrorResponse;
+import org.openapitools.model.CatalogsHotelItemResponse;
+import org.openapitools.model.CatalogsRetailItemErrorResponse;
+import org.openapitools.model.CatalogsRetailItemResponse;
 import org.openapitools.model.ItemValidationEvent;
 import org.openapitools.model.Pin;
 import javax.validation.constraints.*;
@@ -19,27 +25,99 @@ import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "item_response_kind", visible = true)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemResponse.class, name = "creative_assets_item"),
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemErrorResponse.class, name = "creative_assets_item_error"),
+  @JsonSubTypes.Type(value = CatalogsHotelItemResponse.class, name = "hotel_item"),
+  @JsonSubTypes.Type(value = CatalogsHotelItemErrorResponse.class, name = "hotel_item_error"),
+  @JsonSubTypes.Type(value = CatalogsRetailItemResponse.class, name = "retail_item"),
+  @JsonSubTypes.Type(value = CatalogsRetailItemErrorResponse.class, name = "retail_item_error"),
+})
 
 /**
- * Object describing an item record or error
+ * Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).
  */
-@ApiModel(description="Object describing an item record or error")
+@ApiModel(description="Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).")
 
 public class ItemResponse  {
   
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private CatalogsType catalogType;
-
   @ApiModelProperty(value = "")
   @Valid
   private CatalogsCreativeAssetsAttributes attributes;
+
+public enum CatalogTypeEnum {
+
+    @JsonProperty("CREATIVE_ASSETS") CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
+
+    private String value;
+
+    CatalogTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  @ApiModelProperty(required = true, value = "")
+  private CatalogTypeEnum catalogType;
 
  /**
   * The catalog item id in the merchant namespace
   */
   @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
   private String itemId;
+
+public enum ItemResponseKindEnum {
+
+    @JsonProperty("creative_assets_item_error") CREATIVE_ASSETS_ITEM_ERROR(String.valueOf("creative_assets_item_error"));
+
+    private String value;
+
+    ItemResponseKindEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static ItemResponseKindEnum fromValue(String value) {
+        for (ItemResponseKindEnum b : ItemResponseKindEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+ /**
+  * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+  */
+  @ApiModelProperty(required = true, value = "Discriminator literal identifying this leaf inside an `ItemResponse` payload.")
+  private ItemResponseKindEnum itemResponseKind;
 
  /**
   * The pins mapped to the item
@@ -67,31 +145,6 @@ public class ItemResponse  {
   @Valid
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
  /**
-  * Get catalogType
-  * @return catalogType
-  */
-  @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  /**
-   * Sets the <code>catalogType</code> property.
-   */
- public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
-  /**
-   * Sets the <code>catalogType</code> property.
-   */
-  public ItemResponse catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
- /**
   * Get attributes
   * @return attributes
   */
@@ -116,6 +169,31 @@ public class ItemResponse  {
   }
 
  /**
+  * Get catalogType
+  * @return catalogType
+  */
+  @JsonProperty("catalog_type")
+  @NotNull
+  public String getCatalogType() {
+    return catalogType == null ? null : catalogType.value();
+  }
+
+  /**
+   * Sets the <code>catalogType</code> property.
+   */
+ public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
+  }
+
+  /**
+   * Sets the <code>catalogType</code> property.
+   */
+  public ItemResponse catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
+ /**
   * The catalog item id in the merchant namespace
   * @return itemId
   */
@@ -136,6 +214,31 @@ public class ItemResponse  {
    */
   public ItemResponse itemId(String itemId) {
     this.itemId = itemId;
+    return this;
+  }
+
+ /**
+  * Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload.
+  * @return itemResponseKind
+  */
+  @JsonProperty("item_response_kind")
+  @NotNull
+  public String getItemResponseKind() {
+    return itemResponseKind == null ? null : itemResponseKind.value();
+  }
+
+  /**
+   * Sets the <code>itemResponseKind</code> property.
+   */
+ public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+  }
+
+  /**
+   * Sets the <code>itemResponseKind</code> property.
+   */
+  public ItemResponse itemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
     return this;
   }
 
@@ -262,9 +365,10 @@ public class ItemResponse  {
       return false;
     }
     ItemResponse itemResponse = (ItemResponse) o;
-    return Objects.equals(this.catalogType, itemResponse.catalogType) &&
-        Objects.equals(this.attributes, itemResponse.attributes) &&
+    return Objects.equals(this.attributes, itemResponse.attributes) &&
+        Objects.equals(this.catalogType, itemResponse.catalogType) &&
         Objects.equals(this.itemId, itemResponse.itemId) &&
+        Objects.equals(this.itemResponseKind, itemResponse.itemResponseKind) &&
         Objects.equals(this.pins, itemResponse.pins) &&
         Objects.equals(this.hotelId, itemResponse.hotelId) &&
         Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId) &&
@@ -273,7 +377,7 @@ public class ItemResponse  {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, attributes, itemId, pins, hotelId, creativeAssetsId, errors);
+    return Objects.hash(attributes, catalogType, itemId, itemResponseKind, pins, hotelId, creativeAssetsId, errors);
   }
 
   @Override
@@ -281,9 +385,10 @@ public class ItemResponse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemResponse {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
@@ -297,10 +402,7 @@ public class ItemResponse  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

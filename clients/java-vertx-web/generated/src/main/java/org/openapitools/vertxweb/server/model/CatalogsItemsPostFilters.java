@@ -10,13 +10,30 @@ import java.util.List;
 import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsItemsPostFilter;
 import org.openapitools.vertxweb.server.model.CatalogsHotelItemsPostFilter;
 import org.openapitools.vertxweb.server.model.CatalogsRetailItemsPostFilter;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsItemsPostFilters   {
   
-  private CatalogsType catalogType;
   private String catalogId;
+
+
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private List<String> itemIds = new ArrayList<>();
   private List<String> hotelIds = new ArrayList<>();
   private List<String> creativeAssetsIds = new ArrayList<>();
@@ -25,21 +42,12 @@ public class CatalogsItemsPostFilters   {
 
   }
 
-  public CatalogsItemsPostFilters (CatalogsType catalogType, String catalogId, List<String> itemIds, List<String> hotelIds, List<String> creativeAssetsIds) {
-    this.catalogType = catalogType;
+  public CatalogsItemsPostFilters (String catalogId, CatalogTypeEnum catalogType, List<String> itemIds, List<String> hotelIds, List<String> creativeAssetsIds) {
     this.catalogId = catalogId;
+    this.catalogType = catalogType;
     this.itemIds = itemIds;
     this.hotelIds = hotelIds;
     this.creativeAssetsIds = creativeAssetsIds;
-  }
-
-    
-  @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
   }
 
     
@@ -49,6 +57,15 @@ public class CatalogsItemsPostFilters   {
   }
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
+  }
+
+    
+  @JsonProperty("catalog_type")
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
     
@@ -88,8 +105,8 @@ public class CatalogsItemsPostFilters   {
       return false;
     }
     CatalogsItemsPostFilters catalogsItemsPostFilters = (CatalogsItemsPostFilters) o;
-    return Objects.equals(catalogType, catalogsItemsPostFilters.catalogType) &&
-        Objects.equals(catalogId, catalogsItemsPostFilters.catalogId) &&
+    return Objects.equals(catalogId, catalogsItemsPostFilters.catalogId) &&
+        Objects.equals(catalogType, catalogsItemsPostFilters.catalogType) &&
         Objects.equals(itemIds, catalogsItemsPostFilters.itemIds) &&
         Objects.equals(hotelIds, catalogsItemsPostFilters.hotelIds) &&
         Objects.equals(creativeAssetsIds, catalogsItemsPostFilters.creativeAssetsIds);
@@ -97,7 +114,7 @@ public class CatalogsItemsPostFilters   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, itemIds, hotelIds, creativeAssetsIds);
+    return Objects.hash(catalogId, catalogType, itemIds, hotelIds, creativeAssetsIds);
   }
 
   @Override
@@ -105,8 +122,8 @@ public class CatalogsItemsPostFilters   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemsPostFilters {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
@@ -119,9 +136,6 @@ public class CatalogsItemsPostFilters   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -85,7 +85,7 @@ SSIOAccountPMPName::getId()
 }
 
 void
-SSIOAccountPMPName::setId(std::string  id)
+SSIOAccountPMPName::setId(std::string id)
 {
 	this->id = id;
 }
@@ -97,7 +97,7 @@ SSIOAccountPMPName::getName()
 }
 
 void
-SSIOAccountPMPName::setName(std::string  name)
+SSIOAccountPMPName::setName(std::string name)
 {
 	this->name = name;
 }

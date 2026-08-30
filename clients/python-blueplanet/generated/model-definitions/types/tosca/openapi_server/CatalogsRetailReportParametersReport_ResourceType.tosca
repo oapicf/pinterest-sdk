@@ -1,0 +1,60 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsRetailReportParametersReport"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsRetailReportParametersReport"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsReportDistributionIssueFilter = openapi_server.resourceTypes.CatalogsReportDistributionIssueFilter
+  CatalogsReportFeedIngestionFilter = openapi_server.resourceTypes.CatalogsReportFeedIngestionFilter
+  CatalogsRetailReportAllItemsFilter = openapi_server.resourceTypes.CatalogsRetailReportAllItemsFilter
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsRetailReportParametersReport {
+    title = CatalogsRetailReportParametersReport
+    description = CatalogsRetailReportParametersReport
+    derivedFrom = Root
+    properties {
+        feed_id {
+          type =  string
+          description = "ID of the feed entity."
+          optional = true
+        }
+        processing_result_id {
+          type =  string
+          description = "Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result."
+          optional = false
+        }
+        report_type {
+          type =  string
+          description = ""
+          enum = ["ALL_ITEMS"]
+          optional = true
+        }
+        catalog_id {
+          type =  string
+          description = "Unique identifier of a catalog. If not given, oldest catalog will be used"
+          optional = false
+        }
+        product_group_id {
+          type =  string
+          description = "Optional product group ID. If omitted, all items are included. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsRetailReportParametersReport {
+    title = CatalogsRetailReportParametersReport
+    description = CatalogsRetailReportParametersReport
+    implements = openapi_server.resourceTypes.CatalogsRetailReportParametersReport
+
+  }
+}

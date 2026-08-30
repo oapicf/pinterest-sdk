@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  LeadFormResponse = openapi_server.resourceTypes.LeadFormResponse
+  LeadForm = openapi_server.resourceTypes.LeadForm
 }
 resourceTypes {
 
@@ -23,7 +23,7 @@ resourceTypes {
         }
         items {
           type = array
-          items.type = LeadFormResponse
+          items.type = LeadForm
           description = ""
           optional = true
         }

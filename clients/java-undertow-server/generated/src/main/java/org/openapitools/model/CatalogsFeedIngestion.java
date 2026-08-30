@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -23,7 +23,7 @@ import org.openapitools.model.CatalogsFeedProcessingStatus;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedIngestion   {
   
   private Date createdAt;
@@ -32,6 +32,7 @@ public class CatalogsFeedIngestion   {
   private CatalogsFeedProcessingStatus status;
 
   /**
+   * Timestamp of the feed ingestion.
    */
   public CatalogsFeedIngestion createdAt(Date createdAt) {
     this.createdAt = createdAt;
@@ -39,7 +40,7 @@ public class CatalogsFeedIngestion   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "Timestamp of the feed ingestion.")
   @JsonProperty("created_at")
   public Date getCreatedAt() {
     return createdAt;
@@ -49,6 +50,7 @@ public class CatalogsFeedIngestion   {
   }
 
   /**
+   * Catalog Feed id pertaining to the feed ingestion.
    */
   public CatalogsFeedIngestion feedId(String feedId) {
     this.feedId = feedId;
@@ -56,7 +58,7 @@ public class CatalogsFeedIngestion   {
   }
 
   
-  @ApiModelProperty(example = "56789", required = true, value = "")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the feed ingestion.")
   @JsonProperty("feed_id")
   public String getFeedId() {
     return feedId;
@@ -66,6 +68,7 @@ public class CatalogsFeedIngestion   {
   }
 
   /**
+   * Unique identifier of a feed ingestion.
    */
   public CatalogsFeedIngestion id(String id) {
     this.id = id;
@@ -73,7 +76,7 @@ public class CatalogsFeedIngestion   {
   }
 
   
-  @ApiModelProperty(example = "01234", required = true, value = "")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Unique identifier of a feed ingestion.")
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -83,6 +86,7 @@ public class CatalogsFeedIngestion   {
   }
 
   /**
+   * Status of the feed ingestion.
    */
   public CatalogsFeedIngestion status(CatalogsFeedProcessingStatus status) {
     this.status = status;
@@ -90,7 +94,7 @@ public class CatalogsFeedIngestion   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Status of the feed ingestion.")
   @JsonProperty("status")
   public CatalogsFeedProcessingStatus getStatus() {
     return status;
@@ -138,10 +142,7 @@ public class CatalogsFeedIngestion   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Response containing a list of product tags for a pin.",
+  "name": "ProductTagsResponse",
+  "fields": [
+    {
+      "name": "product_tags",
+      "type": {
+        "type": "array",
+        "items": "model.ProductTagItem"
+      },
+      "doc": "List of product tags on the pin."
+    }
+  ]
+
+}

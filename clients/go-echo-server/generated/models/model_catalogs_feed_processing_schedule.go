@@ -7,5 +7,5 @@ type CatalogsFeedProcessingSchedule struct {
 	Time string `json:"time" validate:"regexp=^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"`
 
 	// The timezone considered for the processing schedule time.
-	Timezone *string `json:"timezone"`
+	Timezone *CatalogsFeedProcessingScheduleTimezone `json:"timezone"`
 }

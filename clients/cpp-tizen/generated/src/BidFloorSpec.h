@@ -1,7 +1,7 @@
 /*
  * BidFloorSpec.h
  *
- * 
+ * Bid floor specification for a given campaign configuration.
  */
 
 #ifndef _BidFloorSpec_H_
@@ -10,10 +10,10 @@
 
 #include <string>
 #include "ActionType.h"
+#include "BidFloorObjectiveType.h"
 #include "Country.h"
 #include "CreativeType.h"
 #include "Currency.h"
-#include "ObjectiveType.h"
 #include "OptimizationGoalMetadata.h"
 #include <list>
 #include "Object.h"
@@ -27,7 +27,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief Bid floor specification for a given campaign configuration.
  *
  *  \ingroup Models
  *
@@ -52,46 +52,46 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get Ad group billable event type.
 	 */
 	ActionType getBillableEvent();
 
-	/*! \brief Set 
+	/*! \brief Set Ad group billable event type.
 	 */
 	void setBillableEvent(ActionType  billable_event);
-	/*! \brief Get 
+	/*! \brief Get List of ISO 3166-1 alpha-2 country codes.
 	 */
 	std::list<Country> getCountries();
 
-	/*! \brief Set 
+	/*! \brief Set List of ISO 3166-1 alpha-2 country codes.
 	 */
 	void setCountries(std::list <Country> countries);
-	/*! \brief Get 
+	/*! \brief Get Creative type for the bid floor request.
 	 */
 	CreativeType getCreativeType();
 
-	/*! \brief Set 
+	/*! \brief Set Creative type for the bid floor request.
 	 */
 	void setCreativeType(CreativeType  creative_type);
-	/*! \brief Get 
+	/*! \brief Get Currency for the bid floor value.
 	 */
 	Currency getCurrency();
 
-	/*! \brief Set 
+	/*! \brief Set Currency for the bid floor value.
 	 */
 	void setCurrency(Currency  currency);
-	/*! \brief Get 
+	/*! \brief Get Campaign objective type.
 	 */
-	ObjectiveType getObjectiveType();
+	BidFloorObjectiveType getObjectiveType();
 
-	/*! \brief Set 
+	/*! \brief Set Campaign objective type.
 	 */
-	void setObjectiveType(ObjectiveType  objective_type);
-	/*! \brief Get 
+	void setObjectiveType(BidFloorObjectiveType  objective_type);
+	/*! \brief Get Optimization goal metadata.
 	 */
 	OptimizationGoalMetadata getOptimizationGoalMetadata();
 
-	/*! \brief Set 
+	/*! \brief Set Optimization goal metadata.
 	 */
 	void setOptimizationGoalMetadata(OptimizationGoalMetadata  optimization_goal_metadata);
 
@@ -100,7 +100,7 @@ private:
 	std::list <Country>countries;
 	CreativeType creative_type;
 	Currency currency;
-	ObjectiveType objective_type;
+	BidFloorObjectiveType objective_type;
 	OptimizationGoalMetadata optimization_goal_metadata;
 	void __init();
 	void __cleanup();

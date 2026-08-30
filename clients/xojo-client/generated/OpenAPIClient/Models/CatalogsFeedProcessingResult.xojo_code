@@ -7,12 +7,10 @@ Protected Class CatalogsFeedProcessingResult
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			ID of the feed processing result.
+		#tag EndNote
 		id As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		updated_at As Date
 	#tag EndProperty
 
 
@@ -28,6 +26,11 @@ Protected Class CatalogsFeedProcessingResult
 
 	#tag Property, Flags = &h0
 		status As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		updated_at As Date
 	#tag EndProperty
 
 
@@ -94,14 +97,6 @@ Protected Class CatalogsFeedProcessingResult
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="updated_at"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Date"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="ingestion_details"
 			Visible=false
 			Group="Behavior"
@@ -123,6 +118,14 @@ Protected Class CatalogsFeedProcessingResult
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsFeedProcessingStatus"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="updated_at"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Date"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

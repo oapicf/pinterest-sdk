@@ -15,7 +15,7 @@ public class CatalogsProductGroupCreateRequest   {
   private String description;
   private String feedId;
   private CatalogsProductGroupFiltersRequest filters;
-  private Boolean isFeatured = false;
+  private Boolean isFeatured;
   private String name;
 
   public CatalogsProductGroupCreateRequest () {
@@ -116,9 +116,6 @@ public class CatalogsProductGroupCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

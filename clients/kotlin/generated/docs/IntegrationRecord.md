@@ -4,15 +4,15 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
+| **id** | **kotlin.String** | Integration record ID. |  [readonly] |
 | **additionalId1** | **kotlin.String** |  |  [optional] |
-| **connectedAdvertiserId** | **kotlin.String** |  |  [optional] [readonly] |
+| **connectedAdvertiserId** | **kotlin.String** |  |  [optional] |
 | **connectedLbaId** | **kotlin.String** |  |  [optional] |
 | **connectedMerchantId** | **kotlin.String** |  |  [optional] |
 | **connectedTagId** | **kotlin.String** |  |  [optional] |
-| **connectedUserId** | **kotlin.String** |  |  [optional] [readonly] |
+| **connectedUserId** | **kotlin.String** |  |  [optional] |
 | **createdTime** | **kotlin.Int** |  |  [optional] |
 | **externalBusinessId** | **kotlin.String** |  |  [optional] |
-| **id** | **kotlin.String** |  |  [optional] |
 | **partnerAccessToken** | **kotlin.String** |  |  [optional] |
 | **partnerAccessTokenExpiry** | **kotlin.Int** |  |  [optional] |
 | **partnerMetadata** | **kotlin.String** |  |  [optional] |

@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Audience } from './audience';
+import { AdAccountsAudience } from './adAccountsAudience';
 
 
 export interface AudiencesList200Response { 
     bookmark?: string | null;
-    items: Array<Audience>;
+    items: Array<AdAccountsAudience>;
 }
 

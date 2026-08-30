@@ -1,8 +1,8 @@
 package controllers;
 
-import apimodels.Error;
 import apimodels.NotificationPostRequest;
 import apimodels.NotificationResponse;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -23,12 +23,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ErrorDetail;
 import org.openapitools.model.RecordCounts;
 import org.openapitools.model.UserListOperationType;
+import org.openapitools.model.WorkloadState;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CustomerListUpload   {
   
   private String adAccountId;
@@ -38,29 +39,7 @@ public class CustomerListUpload   {
   private String id;
   private UserListOperationType operation;
   private RecordCounts recordCounts;
-
-
-  public enum StateEnum {
-    NOT_STARTED("NOT_STARTED"),
-    RUNNING("RUNNING"),
-    PAUSED("PAUSED"),
-    SUCCEEDED("SUCCEEDED"),
-    FAILED("FAILED");
-
-    private String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private StateEnum state;
+  private WorkloadState state;
   private Integer updatedTime;
 
   /**
@@ -171,6 +150,7 @@ public class CustomerListUpload   {
   }
 
   /**
+   * Record processing counts
    */
   public CustomerListUpload recordCounts(RecordCounts recordCounts) {
     this.recordCounts = recordCounts;
@@ -178,7 +158,7 @@ public class CustomerListUpload   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Record processing counts")
   @JsonProperty("record_counts")
   public RecordCounts getRecordCounts() {
     return recordCounts;
@@ -188,20 +168,19 @@ public class CustomerListUpload   {
   }
 
   /**
-   * Workload processing state
    */
-  public CustomerListUpload state(StateEnum state) {
+  public CustomerListUpload state(WorkloadState state) {
     this.state = state;
     return this;
   }
 
   
-  @ApiModelProperty(example = "RUNNING", required = true, value = "Workload processing state")
+  @ApiModelProperty(example = "RUNNING", required = true, value = "")
   @JsonProperty("state")
-  public StateEnum getState() {
+  public WorkloadState getState() {
     return state;
   }
-  public void setState(StateEnum state) {
+  public void setState(WorkloadState state) {
     this.state = state;
   }
 
@@ -272,10 +251,7 @@ public class CustomerListUpload   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

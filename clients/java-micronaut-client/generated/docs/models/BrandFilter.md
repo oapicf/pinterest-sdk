@@ -8,7 +8,7 @@ The class is defined in **[BrandFilter.java](../../src/main/java/org/openapitool
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BRAND** | `CatalogsProductGroupMultipleStringCriteria` |  | 
+**BRAND** | [`CatalogsProductGroupMultipleStringCriteria`](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 
 

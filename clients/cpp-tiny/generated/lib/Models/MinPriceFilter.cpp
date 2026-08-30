@@ -65,7 +65,7 @@ MinPriceFilter::getMINPRICE()
 }
 
 void
-MinPriceFilter::setMINPRICE(CatalogsProductGroupPricingCriteria  mIN_PRICE)
+MinPriceFilter::setMINPRICE(CatalogsProductGroupPricingCriteria mIN_PRICE)
 {
 	this->mIN_PRICE = mIN_PRICE;
 }

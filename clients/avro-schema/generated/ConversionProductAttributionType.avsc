@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Conversion product attribution level",
+  "name": "ConversionProductAttributionType",
+  "symbols": [
+    "DEFAULT",
+    "BRAND_ATTRIBUTION"
+  ]
+}

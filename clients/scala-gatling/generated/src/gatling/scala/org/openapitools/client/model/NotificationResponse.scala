@@ -3,18 +3,18 @@ package org.openapitools.client.model
 
 
 case class NotificationResponse (
-    /* Returns true if the notification accepted. */
-    _success: Option[Boolean],
+    /* error message when success is false */
+    _errorMsg: Option[String],
     /* Received time. Unix timestamp in seconds. */
     _receivedAt: Option[Integer],
-    /* error message when success is false */
-    _errorMsg: Option[String]
+    /* Returns true if the notification accepted. */
+    _success: Option[Boolean]
 )
 object NotificationResponse {
-    def toStringBody(var_success: Object, var_receivedAt: Object, var_errorMsg: Object) =
+    def toStringBody(var_errorMsg: Object, var_receivedAt: Object, var_success: Object) =
         s"""
         | {
-        | "success":$var_success,"receivedAt":$var_receivedAt,"errorMsg":$var_errorMsg
+        | "errorMsg":$var_errorMsg,"receivedAt":$var_receivedAt,"success":$var_success
         | }
         """.stripMargin
 }

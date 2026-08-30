@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`dailyMetrics` | [Array&lt;PinAnalyticsMetricsResponseDailyMetricsInner&gt;](PinAnalyticsMetricsResponseDailyMetricsInner.md)
+`dailyMetrics` | [Array&lt;PinAnalyticsDailyMetrics&gt;](PinAnalyticsDailyMetrics.md)
 `lifetimeMetrics` | { [key: string]: number; }
 `summaryMetrics` | { [key: string]: number; }
 

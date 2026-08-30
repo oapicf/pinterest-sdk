@@ -48,7 +48,7 @@ CustomLabel3Filter::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_3, node, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
+			jsonToValue(&cUSTOM_LABEL_3, node, "CatalogsProductGroupFilterOperatorTypeCriteria", "CatalogsProductGroupFilterOperatorTypeCriteria");
 		} else {
 			
 			CatalogsProductGroupFilterOperatorTypeCriteria* obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria*> (&cUSTOM_LABEL_3);

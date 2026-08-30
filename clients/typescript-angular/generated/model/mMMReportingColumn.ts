@@ -32,7 +32,13 @@ export const MMMReportingColumn = {
     TotalClickthrough: 'TOTAL_CLICKTHROUGH',
     TotalImpression: 'TOTAL_IMPRESSION',
     AdvertiserName: 'ADVERTISER_NAME',
-    SpendOrderLinePaidType: 'SPEND_ORDER_LINE_PAID_TYPE'
+    SpendOrderLinePaidType: 'SPEND_ORDER_LINE_PAID_TYPE',
+    CampaignObjectiveType: 'CAMPAIGN_OBJECTIVE_TYPE',
+    PinnerListName: 'PINNER_LIST_NAME',
+    AdsCreditSpendInDollar: 'ADS_CREDIT_SPEND_IN_DOLLAR',
+    AdvertiserPaidSpendInDollar: 'ADVERTISER_PAID_SPEND_IN_DOLLAR',
+    AdvertiserPaidEcpcInDollar: 'ADVERTISER_PAID_ECPC_IN_DOLLAR',
+    AdvertiserPaidEcpmInDollar: 'ADVERTISER_PAID_ECPM_IN_DOLLAR'
 } as const;
 export type MMMReportingColumn = typeof MMMReportingColumn[keyof typeof MMMReportingColumn];
 

@@ -2,7 +2,10 @@
 Protected Class Pin
 
 	#tag Property, Flags = &h0
-		alt_text As Xoson.O.OptionalString
+		#tag Note
+			AI disclosure declarations the creator has made about this Pin.
+		#tag EndNote
+		ai_disclosures As OpenAPIClient.Models.AiDisclosures
 	#tag EndProperty
 
 
@@ -38,11 +41,6 @@ Protected Class Pin
 
 
 	#tag Property, Flags = &h0
-		description As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			Dominant pin color. Hex number, e.g. `#6E7874`.
 		#tag EndNote
@@ -73,14 +71,17 @@ Protected Class Pin
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
+			Whether the Pin is a product Pin.
 		#tag EndNote
-		is_standard As Xoson.O.OptionalBoolean
+		is_product As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		link As Xoson.O.OptionalString
+		#tag Note
+			Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
+		#tag EndNote
+		is_standard As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -102,6 +103,21 @@ Protected Class Pin
 			Pin metrics with associated time intervals if any.
 		#tag EndNote
 		pin_metrics As Object
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		alt_text As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		description As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		link As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -147,11 +163,11 @@ Protected Class Pin
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="alt_text"
+			Name="ai_disclosures"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="AiDisclosures"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -195,14 +211,6 @@ Protected Class Pin
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="description"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="dominant_color"
 			Visible=false
 			Group="Behavior"
@@ -235,7 +243,7 @@ Protected Class Pin
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="is_standard"
+			Name="is_product"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -243,11 +251,11 @@ Protected Class Pin
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="link"
+			Name="is_standard"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -272,6 +280,30 @@ Protected Class Pin
 			Group="Behavior"
 			InitialValue=""
 			Type="Object"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="alt_text"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="description"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="link"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

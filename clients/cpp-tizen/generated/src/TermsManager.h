@@ -5,7 +5,7 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
-#include "Error.h"
+#include "Pinterest.Lib.Error.h"
 #include "RelatedTerms.h"
 #include <list>
 #include "Error.h"
@@ -28,7 +28,7 @@ public:
 
 /*! \brief List related terms. *Synchronous*
  *
- * Get a list of terms logically related to each input term. <p/> Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
+ * Get a list of terms logically related to each input term.  Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
  * \param terms List of input terms. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -41,7 +41,7 @@ bool termsRelatedListSync(char * accessToken,
 
 /*! \brief List related terms. *Asynchronous*
  *
- * Get a list of terms logically related to each input term. <p/> Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
+ * Get a list of terms logically related to each input term.  Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
  * \param terms List of input terms. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -55,7 +55,7 @@ bool termsRelatedListAsync(char * accessToken,
 
 /*! \brief List suggested terms. *Synchronous*
  *
- * Get popular search terms that begin with your input term. <p/> Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
+ * Get popular search terms that begin with your input term.  Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
  * \param term Input term. *Required*
  * \param limit Max suggested terms to return.
  * \param handler The callback function to be invoked on completion. *Required*
@@ -69,7 +69,7 @@ bool termsSuggestedListSync(char * accessToken,
 
 /*! \brief List suggested terms. *Asynchronous*
  *
- * Get popular search terms that begin with your input term. <p/> Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
+ * Get popular search terms that begin with your input term.  Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
  * \param term Input term. *Required*
  * \param limit Max suggested terms to return.
  * \param handler The callback function to be invoked on completion. *Required*

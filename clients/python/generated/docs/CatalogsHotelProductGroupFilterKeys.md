@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**price** | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  | 
-**hotel_id** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**brand** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**custom_label_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
-**custom_label_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
-**custom_label_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
-**custom_label_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
-**custom_label_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
-**country** | [**CatalogsProductGroupMultipleCountriesCriteria**](.md) |  | 
-**title_keywords** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**price** | [**PriceFilterPrice**](PriceFilterPrice.md) |  | 
+**hotel_id** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**brand** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**custom_label_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**custom_label_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**custom_label_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**custom_label_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**custom_label_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**country** | [**CatalogsProductGroupMultipleCountriesCriteria**](CatalogsProductGroupMultipleCountriesCriteria.md) |  | 
+**title_keywords** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 ## Example
 

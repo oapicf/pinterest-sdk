@@ -17,9 +17,11 @@
    (ds/opt :AUDIENCE_INCLUDE) (s/coll-of string?)
    (ds/opt :GENDER) (s/coll-of targeting-spec-gender-spec)
    (ds/opt :GEO) (s/coll-of string?)
+   (ds/opt :GEO_EXCLUDE) (s/coll-of string?)
    (ds/opt :INTEREST) (s/coll-of string?)
    (ds/opt :LOCALE) (s/coll-of string?)
    (ds/opt :LOCATION) (s/coll-of string?)
+   (ds/opt :LOCATION_EXCLUDE) (s/coll-of string?)
    (ds/opt :MAXIMUM_AGE) string?
    (ds/opt :MINIMUM_AGE) string?
    (ds/opt :SHOPPING_RETARGETING) (s/coll-of targeting-spec-shopping-retargeting-spec)

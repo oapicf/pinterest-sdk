@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,8 +23,61 @@ type GenderFilter struct {
 
 	GENDER CatalogsProductGroupMultipleGenderCriteria `json:"GENDER"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into GenderFilter
+func (o *GenderFilter) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"GENDER",
+	}
 
-// AssertGenderFilterRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"GENDER": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"GENDER": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded GenderFilter
+
+	if value, exists := allProperties["GENDER"]; exists {
+		if err = json.Unmarshal(value, &decoded.GENDER); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertGenderFilterRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertGenderFilterRequired(obj GenderFilter) error {
 	elements := map[string]interface{}{
 		"GENDER": obj.GENDER,
@@ -30,10 +88,16 @@ func AssertGenderFilterRequired(obj GenderFilter) error {
 		}
 	}
 
+	if err := AssertCatalogsProductGroupMultipleGenderCriteriaRequired(obj.GENDER); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertGenderFilterConstraints checks if the values respects the defined constraints
 func AssertGenderFilterConstraints(obj GenderFilter) error {
+	if err := AssertCatalogsProductGroupMultipleGenderCriteriaConstraints(obj.GENDER); err != nil {
+		return err
+	}
 	return nil
 }

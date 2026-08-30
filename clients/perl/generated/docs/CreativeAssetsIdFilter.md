@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::CreativeAssetsIdFilter;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**creative_assets_id** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**creative_assets_id** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

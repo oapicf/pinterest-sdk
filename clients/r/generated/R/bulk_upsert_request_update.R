@@ -10,10 +10,11 @@
 #' @field ad_groups  list(\link{AdGroupUpdateRequest}) [optional]
 #' @field ads  list(\link{AdUpdateRequest}) [optional]
 #' @field campaigns  list(\link{CampaignUpdateRequest}) [optional]
-#' @field catalog_product_groups  list(\link{CatalogsProductGroupsUpdateRequest}) [optional]
-#' @field keywords  list(\link{KeywordUpdate}) [optional]
+#' @field catalog_product_groups  list(\link{BulkUpsertRequestUpdateCatalogProductGroupsItems}) [optional]
+#' @field keywords  list(\link{KeywordUpdateGenerated}) [optional]
 #' @field labels  list(\link{LabelBulkUpdateRequest}) [optional]
 #' @field product_groups  list(\link{ProductGroupPromotionUpdateRequest}) [optional]
+#' @field schedules  list(\link{ScheduleUpdateRequest}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -27,6 +28,7 @@ BulkUpsertRequestUpdate <- R6::R6Class(
     `keywords` = NULL,
     `labels` = NULL,
     `product_groups` = NULL,
+    `schedules` = NULL,
 
     #' @description
     #' Initialize a new BulkUpsertRequestUpdate class.
@@ -38,8 +40,9 @@ BulkUpsertRequestUpdate <- R6::R6Class(
     #' @param keywords keywords
     #' @param labels labels
     #' @param product_groups product_groups
+    #' @param schedules schedules
     #' @param ... Other optional arguments.
-    initialize = function(`ad_groups` = NULL, `ads` = NULL, `campaigns` = NULL, `catalog_product_groups` = NULL, `keywords` = NULL, `labels` = NULL, `product_groups` = NULL, ...) {
+    initialize = function(`ad_groups` = NULL, `ads` = NULL, `campaigns` = NULL, `catalog_product_groups` = NULL, `keywords` = NULL, `labels` = NULL, `product_groups` = NULL, `schedules` = NULL, ...) {
       if (!is.null(`ad_groups`)) {
         stopifnot(is.vector(`ad_groups`), length(`ad_groups`) != 0)
         sapply(`ad_groups`, function(x) stopifnot(R6::is.R6(x)))
@@ -74,6 +77,11 @@ BulkUpsertRequestUpdate <- R6::R6Class(
         stopifnot(is.vector(`product_groups`), length(`product_groups`) != 0)
         sapply(`product_groups`, function(x) stopifnot(R6::is.R6(x)))
         self$`product_groups` <- `product_groups`
+      }
+      if (!is.null(`schedules`)) {
+        stopifnot(is.vector(`schedules`), length(`schedules`) != 0)
+        sapply(`schedules`, function(x) stopifnot(R6::is.R6(x)))
+        self$`schedules` <- `schedules`
       }
     },
 
@@ -110,33 +118,60 @@ BulkUpsertRequestUpdate <- R6::R6Class(
       BulkUpsertRequestUpdateObject <- list()
       if (!is.null(self$`ad_groups`)) {
         BulkUpsertRequestUpdateObject[["ad_groups"]] <-
-          lapply(self$`ad_groups`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`ad_groups`)
       }
       if (!is.null(self$`ads`)) {
         BulkUpsertRequestUpdateObject[["ads"]] <-
-          lapply(self$`ads`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`ads`)
       }
       if (!is.null(self$`campaigns`)) {
         BulkUpsertRequestUpdateObject[["campaigns"]] <-
-          lapply(self$`campaigns`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`campaigns`)
       }
       if (!is.null(self$`catalog_product_groups`)) {
         BulkUpsertRequestUpdateObject[["catalog_product_groups"]] <-
-          lapply(self$`catalog_product_groups`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`catalog_product_groups`)
       }
       if (!is.null(self$`keywords`)) {
         BulkUpsertRequestUpdateObject[["keywords"]] <-
-          lapply(self$`keywords`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`keywords`)
       }
       if (!is.null(self$`labels`)) {
         BulkUpsertRequestUpdateObject[["labels"]] <-
-          lapply(self$`labels`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`labels`)
       }
       if (!is.null(self$`product_groups`)) {
         BulkUpsertRequestUpdateObject[["product_groups"]] <-
-          lapply(self$`product_groups`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`product_groups`)
+      }
+      if (!is.null(self$`schedules`)) {
+        BulkUpsertRequestUpdateObject[["schedules"]] <-
+          self$extractSimpleType(self$`schedules`)
       }
       return(BulkUpsertRequestUpdateObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -156,16 +191,19 @@ BulkUpsertRequestUpdate <- R6::R6Class(
         self$`campaigns` <- ApiClient$new()$deserializeObj(this_object$`campaigns`, "array[CampaignUpdateRequest]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`catalog_product_groups`)) {
-        self$`catalog_product_groups` <- ApiClient$new()$deserializeObj(this_object$`catalog_product_groups`, "array[CatalogsProductGroupsUpdateRequest]", loadNamespace("openapi"))
+        self$`catalog_product_groups` <- ApiClient$new()$deserializeObj(this_object$`catalog_product_groups`, "array[BulkUpsertRequestUpdateCatalogProductGroupsItems]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`keywords`)) {
-        self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[KeywordUpdate]", loadNamespace("openapi"))
+        self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[KeywordUpdateGenerated]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`labels`)) {
         self$`labels` <- ApiClient$new()$deserializeObj(this_object$`labels`, "array[LabelBulkUpdateRequest]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`product_groups`)) {
         self$`product_groups` <- ApiClient$new()$deserializeObj(this_object$`product_groups`, "array[ProductGroupPromotionUpdateRequest]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`schedules`)) {
+        self$`schedules` <- ApiClient$new()$deserializeObj(this_object$`schedules`, "array[ScheduleUpdateRequest]", loadNamespace("openapi"))
       }
       self
     },
@@ -191,10 +229,11 @@ BulkUpsertRequestUpdate <- R6::R6Class(
       self$`ad_groups` <- ApiClient$new()$deserializeObj(this_object$`ad_groups`, "array[AdGroupUpdateRequest]", loadNamespace("openapi"))
       self$`ads` <- ApiClient$new()$deserializeObj(this_object$`ads`, "array[AdUpdateRequest]", loadNamespace("openapi"))
       self$`campaigns` <- ApiClient$new()$deserializeObj(this_object$`campaigns`, "array[CampaignUpdateRequest]", loadNamespace("openapi"))
-      self$`catalog_product_groups` <- ApiClient$new()$deserializeObj(this_object$`catalog_product_groups`, "array[CatalogsProductGroupsUpdateRequest]", loadNamespace("openapi"))
-      self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[KeywordUpdate]", loadNamespace("openapi"))
+      self$`catalog_product_groups` <- ApiClient$new()$deserializeObj(this_object$`catalog_product_groups`, "array[BulkUpsertRequestUpdateCatalogProductGroupsItems]", loadNamespace("openapi"))
+      self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[KeywordUpdateGenerated]", loadNamespace("openapi"))
       self$`labels` <- ApiClient$new()$deserializeObj(this_object$`labels`, "array[LabelBulkUpdateRequest]", loadNamespace("openapi"))
       self$`product_groups` <- ApiClient$new()$deserializeObj(this_object$`product_groups`, "array[ProductGroupPromotionUpdateRequest]", loadNamespace("openapi"))
+      self$`schedules` <- ApiClient$new()$deserializeObj(this_object$`schedules`, "array[ScheduleUpdateRequest]", loadNamespace("openapi"))
       self
     },
 

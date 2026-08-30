@@ -13,10 +13,10 @@ static search_partner_pins_200_response_t *search_partner_pins_200_response_crea
     if (!search_partner_pins_200_response_local_var) {
         return NULL;
     }
+    memset(search_partner_pins_200_response_local_var, 0, sizeof(search_partner_pins_200_response_t));
+    search_partner_pins_200_response_local_var->_library_owned = 1;
     search_partner_pins_200_response_local_var->bookmark = bookmark;
     search_partner_pins_200_response_local_var->items = items;
-
-    search_partner_pins_200_response_local_var->_library_owned = 1;
     return search_partner_pins_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) search_partner_pins_200_response_t *search_partner_p
     char *bookmark,
     list_t *items
     ) {
-    return search_partner_pins_200_response_create_internal (
+    search_partner_pins_200_response_t *result = search_partner_pins_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void search_partner_pins_200_response_free(search_partner_pins_200_response_t *search_partner_pins_200_response) {
@@ -96,6 +99,8 @@ search_partner_pins_200_response_t *search_partner_pins_200_response_parseFromJS
 
     search_partner_pins_200_response_t *search_partner_pins_200_response_local_var = NULL;
 
+    char *bookmark_local_str = NULL;
+
     // define the local list for search_partner_pins_200_response->items
     list_t *itemsList = NULL;
 
@@ -139,13 +144,23 @@ search_partner_pins_200_response_t *search_partner_pins_200_response_parseFromJS
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     search_partner_pins_200_response_local_var = search_partner_pins_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!search_partner_pins_200_response_local_var) {
+        goto end;
+    }
+
     return search_partner_pins_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {

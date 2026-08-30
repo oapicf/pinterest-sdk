@@ -1,0 +1,11 @@
+## OrderLinesApi
+
+### Get order line
+## Get order line
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/order_lines/{{order_line_id}}
+Accept: application/json
+
+### Get order lines.
+## Get order lines.
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/order_lines?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}
+Accept: application/json

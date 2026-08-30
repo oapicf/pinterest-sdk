@@ -13,14 +13,14 @@ Method | HTTP request | Description
 
 # **leadFormGet**
 ```objc
--(NSURLSessionTask*) leadFormGetWithAdAccountId: (NSString*) adAccountId
-    leadFormId: (NSString*) leadFormId
-        completionHandler: (void (^)(OAILeadFormResponse* output, NSError* error)) handler;
+-(NSURLSessionTask*) leadFormGetWithLeadFormId: (NSString*) leadFormId
+    adAccountId: (NSString*) adAccountId
+        completionHandler: (void (^)(OAILeadForm* output, NSError* error)) handler;
 ```
 
 Get lead form by id
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```objc
@@ -30,15 +30,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
+NSString* leadFormId = @"leadFormId_example"; // The ID of this lead form
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* leadFormId = 1234567890123; // Unique identifier of a lead form.
 
 OAILeadFormsApi*apiInstance = [[OAILeadFormsApi alloc] init];
 
 // Get lead form by id
-[apiInstance leadFormGetWithAdAccountId:adAccountId
-              leadFormId:leadFormId
-          completionHandler: ^(OAILeadFormResponse* output, NSError* error) {
+[apiInstance leadFormGetWithLeadFormId:leadFormId
+              adAccountId:adAccountId
+          completionHandler: ^(OAILeadForm* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -52,12 +52,12 @@ OAILeadFormsApi*apiInstance = [[OAILeadFormsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **leadFormId** | **NSString***| The ID of this lead form | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **leadFormId** | **NSString***| Unique identifier of a lead form. | 
 
 ### Return type
 
-[**OAILeadFormResponse***](OAILeadFormResponse.md)
+[**OAILeadForm***](OAILeadForm.md)
 
 ### Authorization
 
@@ -74,8 +74,8 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) leadFormTestCreateWithAdAccountId: (NSString*) adAccountId
     leadFormId: (NSString*) leadFormId
-    leadFormTestRequest: (OAILeadFormTestRequest*) leadFormTestRequest
-        completionHandler: (void (^)(OAILeadFormTestResponse* output, NSError* error)) handler;
+    leadFormTestCreate: (OAILeadFormTestCreate*) leadFormTestCreate
+        completionHandler: (void (^)(OAILeadFormTest* output, NSError* error)) handler;
 ```
 
 Create lead form test data
@@ -90,17 +90,17 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* leadFormId = 1234567890123; // Unique identifier of a lead form.
-OAILeadFormTestRequest* leadFormTestRequest = [[OAILeadFormTestRequest alloc] init]; // Subscription to create.
+NSString* adAccountId = @"adAccountId_example"; // 
+NSString* leadFormId = @"leadFormId_example"; // Unique identifier of a lead form.
+OAILeadFormTestCreate* leadFormTestCreate = [[OAILeadFormTestCreate alloc] init]; // 
 
 OAILeadFormsApi*apiInstance = [[OAILeadFormsApi alloc] init];
 
 // Create lead form test data
 [apiInstance leadFormTestCreateWithAdAccountId:adAccountId
               leadFormId:leadFormId
-              leadFormTestRequest:leadFormTestRequest
-          completionHandler: ^(OAILeadFormTestResponse* output, NSError* error) {
+              leadFormTestCreate:leadFormTestCreate
+          completionHandler: ^(OAILeadFormTest* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -114,13 +114,13 @@ OAILeadFormsApi*apiInstance = [[OAILeadFormsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
+ **adAccountId** | **NSString***|  | 
  **leadFormId** | **NSString***| Unique identifier of a lead form. | 
- **leadFormTestRequest** | [**OAILeadFormTestRequest***](OAILeadFormTestRequest.md)| Subscription to create. | 
+ **leadFormTestCreate** | [**OAILeadFormTestCreate***](OAILeadFormTestCreate.md)|  | 
 
 ### Return type
 
-[**OAILeadFormTestResponse***](OAILeadFormTestResponse.md)
+[**OAILeadFormTest***](OAILeadFormTest.md)
 
 ### Authorization
 
@@ -136,13 +136,13 @@ Name | Type | Description  | Notes
 # **leadFormsCreate**
 ```objc
 -(NSURLSessionTask*) leadFormsCreateWithAdAccountId: (NSString*) adAccountId
-    leadFormCreateRequest: (NSArray<OAILeadFormCreateRequest>*) leadFormCreateRequest
-        completionHandler: (void (^)(OAILeadFormArrayResponse* output, NSError* error)) handler;
+    leadFormCreate: (NSArray<OAILeadFormCreate>*) leadFormCreate
+        completionHandler: (void (^)(OAILeadFormsCreate200Response* output, NSError* error)) handler;
 ```
 
 Create lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```objc
@@ -153,14 +153,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSArray<OAILeadFormCreateRequest>* leadFormCreateRequest = @[[[OAILeadFormCreateRequest alloc] init]]; // List of lead forms to create, size limit [1, 30].
+NSArray<OAILeadFormCreate>* leadFormCreate = @[[[OAILeadFormCreate alloc] init]]; // 
 
 OAILeadFormsApi*apiInstance = [[OAILeadFormsApi alloc] init];
 
 // Create lead forms
 [apiInstance leadFormsCreateWithAdAccountId:adAccountId
-              leadFormCreateRequest:leadFormCreateRequest
-          completionHandler: ^(OAILeadFormArrayResponse* output, NSError* error) {
+              leadFormCreate:leadFormCreate
+          completionHandler: ^(OAILeadFormsCreate200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -175,11 +175,11 @@ OAILeadFormsApi*apiInstance = [[OAILeadFormsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **leadFormCreateRequest** | [**NSArray&lt;OAILeadFormCreateRequest&gt;***](OAILeadFormCreateRequest.md)| List of lead forms to create, size limit [1, 30]. | 
+ **leadFormCreate** | [**NSArray&lt;OAILeadFormCreate&gt;***](OAILeadFormCreate.md)|  | 
 
 ### Return type
 
-[**OAILeadFormArrayResponse***](OAILeadFormArrayResponse.md)
+[**OAILeadFormsCreate200Response***](OAILeadFormsCreate200Response.md)
 
 ### Authorization
 
@@ -195,15 +195,15 @@ Name | Type | Description  | Notes
 # **leadFormsList**
 ```objc
 -(NSURLSessionTask*) leadFormsListWithAdAccountId: (NSString*) adAccountId
-    pageSize: (NSNumber*) pageSize
-    order: (NSString*) order
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    order: (OAIPinterestLibPaginationOrder) order
         completionHandler: (void (^)(OAILeadFormsList200Response* output, NSError* error)) handler;
 ```
 
 List lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```objc
@@ -214,17 +214,17 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSString* order = ASCENDING; // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
+OAIPinterestLibPaginationOrder order = [[OAIPinterestLibPaginationOrder alloc] init]; // The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 OAILeadFormsApi*apiInstance = [[OAILeadFormsApi alloc] init];
 
 // List lead forms
 [apiInstance leadFormsListWithAdAccountId:adAccountId
+              bookmark:bookmark
               pageSize:pageSize
               order:order
-              bookmark:bookmark
           completionHandler: ^(OAILeadFormsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -240,9 +240,9 @@ OAILeadFormsApi*apiInstance = [[OAILeadFormsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **order** | **NSString***| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
+ **order** | [**OAIPinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 
@@ -262,13 +262,13 @@ Name | Type | Description  | Notes
 # **leadFormsUpdate**
 ```objc
 -(NSURLSessionTask*) leadFormsUpdateWithAdAccountId: (NSString*) adAccountId
-    leadFormUpdateRequest: (NSArray<OAILeadFormUpdateRequest>*) leadFormUpdateRequest
-        completionHandler: (void (^)(OAILeadFormArrayResponse* output, NSError* error)) handler;
+    leadFormBatchUpdate: (NSArray<OAILeadFormBatchUpdate>*) leadFormBatchUpdate
+        completionHandler: (void (^)(OAILeadFormsCreate200Response* output, NSError* error)) handler;
 ```
 
 Update lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```objc
@@ -279,14 +279,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSArray<OAILeadFormUpdateRequest>* leadFormUpdateRequest = @[[[OAILeadFormUpdateRequest alloc] init]]; // List of lead forms to update, size limit [1, 30].
+NSArray<OAILeadFormBatchUpdate>* leadFormBatchUpdate = @[[[OAILeadFormBatchUpdate alloc] init]]; // 
 
 OAILeadFormsApi*apiInstance = [[OAILeadFormsApi alloc] init];
 
 // Update lead forms
 [apiInstance leadFormsUpdateWithAdAccountId:adAccountId
-              leadFormUpdateRequest:leadFormUpdateRequest
-          completionHandler: ^(OAILeadFormArrayResponse* output, NSError* error) {
+              leadFormBatchUpdate:leadFormBatchUpdate
+          completionHandler: ^(OAILeadFormsCreate200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -301,11 +301,11 @@ OAILeadFormsApi*apiInstance = [[OAILeadFormsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **leadFormUpdateRequest** | [**NSArray&lt;OAILeadFormUpdateRequest&gt;***](OAILeadFormUpdateRequest.md)| List of lead forms to update, size limit [1, 30]. | 
+ **leadFormBatchUpdate** | [**NSArray&lt;OAILeadFormBatchUpdate&gt;***](OAILeadFormBatchUpdate.md)|  | 
 
 ### Return type
 
-[**OAILeadFormArrayResponse***](OAILeadFormArrayResponse.md)
+[**OAILeadFormsCreate200Response***](OAILeadFormsCreate200Response.md)
 
 ### Authorization
 

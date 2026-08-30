@@ -1,0 +1,58 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LocalInventoryItemsBatch"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LocalInventoryItemsBatch"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  SupplementalItemBatchOperationStatus = openapi_server.resourceTypes.SupplementalItemBatchOperationStatus
+  SupplementalOperationResult = openapi_server.resourceTypes.SupplementalOperationResult
+}
+resourceTypes {
+
+  LocalInventoryItemsBatch {
+    title = LocalInventoryItemsBatch
+    description = LocalInventoryItemsBatch
+    derivedFrom = Root
+    properties {
+        batch_id {
+          type =  string
+          description = "Id of the batch operation"
+          optional = true
+        }
+        completed_time {
+          type =  string
+          description = "Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss"
+          optional = false
+        }
+        created_time {
+          type =  string
+          description = "Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss"
+          optional = true
+        }
+        operation_results {
+          type = array
+          items.type = SupplementalOperationResult
+          description = "Array of operation results"
+          optional = true
+        }
+        status {
+          type = SupplementalItemBatchOperationStatus
+          description = "Status of the batch: PROCESSING, COMPLETED, FAILED"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LocalInventoryItemsBatch {
+    title = LocalInventoryItemsBatch
+    description = LocalInventoryItemsBatch
+    implements = openapi_server.resourceTypes.LocalInventoryItemsBatch
+
+  }
+}

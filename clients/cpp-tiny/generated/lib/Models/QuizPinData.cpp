@@ -9,7 +9,7 @@ QuizPinData::QuizPinData()
 	questions = std::list<QuizPinQuestion>();
 	results = std::list<QuizPinResult>();
 	tie_breaker_custom_result = QuizPinResult();
-	tie_breaker_type = std::string();
+	tie_breaker_type = TieBreakerType();
 }
 
 QuizPinData::QuizPinData(std::string jsonString)
@@ -93,8 +93,9 @@ QuizPinData::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&tie_breaker_type, value, "std::string");
 
+        TieBreakerType* obj = &tie_breaker_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -147,8 +148,8 @@ QuizPinData::toJson()
 
 
 
-    object["tie_breaker_type"] = getTieBreakerType();
 
+	object["tie_breaker_type"] = getTieBreakerType().toJson();
 
 
     return object;
@@ -162,7 +163,7 @@ QuizPinData::getQuestions()
 }
 
 void
-QuizPinData::setQuestions(std::list <QuizPinQuestion> questions)
+QuizPinData::setQuestions(std::list<QuizPinQuestion> questions)
 {
 	this->questions = questions;
 }
@@ -174,7 +175,7 @@ QuizPinData::getResults()
 }
 
 void
-QuizPinData::setResults(std::list <QuizPinResult> results)
+QuizPinData::setResults(std::list<QuizPinResult> results)
 {
 	this->results = results;
 }
@@ -186,19 +187,19 @@ QuizPinData::getTieBreakerCustomResult()
 }
 
 void
-QuizPinData::setTieBreakerCustomResult(QuizPinResult  tie_breaker_custom_result)
+QuizPinData::setTieBreakerCustomResult(QuizPinResult tie_breaker_custom_result)
 {
 	this->tie_breaker_custom_result = tie_breaker_custom_result;
 }
 
-std::string
+TieBreakerType
 QuizPinData::getTieBreakerType()
 {
 	return tie_breaker_type;
 }
 
 void
-QuizPinData::setTieBreakerType(std::string  tie_breaker_type)
+QuizPinData::setTieBreakerType(TieBreakerType tie_breaker_type)
 {
 	this->tie_breaker_type = tie_breaker_type;
 }

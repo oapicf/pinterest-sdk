@@ -14,16 +14,17 @@ part 'user_business_role_binding.g.dart';
 /// UserBusinessRoleBinding
 ///
 /// Properties:
-/// * [assetsSummary] 
+/// * [assetsSummary] - Ad accounts and profiles the business member/partner has access to.
 /// * [businessRoles] - The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
 /// * [createdByBusiness] - Metadata for the business that created the business relationship.
 /// * [createdByUser] - Metadata for the user that created the business relationship.
 /// * [createdTime] - The time the business relationship was created. Returned in milliseconds.
 /// * [id] - Unique identifier of the business member/business partner/employer.
-/// * [isSharedPartner] - This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
+/// * [isSharedPartner] - This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
 /// * [user] - Metadata for the business member/business partner/employer.
 @BuiltValue()
 abstract class UserBusinessRoleBinding implements Built<UserBusinessRoleBinding, UserBusinessRoleBindingBuilder> {
+  /// Ad accounts and profiles the business member/partner has access to.
   @BuiltValueField(wireName: r'assets_summary')
   BusinessMemberAssetsSummary? get assetsSummary;
 
@@ -47,7 +48,7 @@ abstract class UserBusinessRoleBinding implements Built<UserBusinessRoleBinding,
   @BuiltValueField(wireName: r'id')
   String? get id;
 
-  /// This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
+  /// This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
   @BuiltValueField(wireName: r'is_shared_partner')
   bool? get isSharedPartner;
 
@@ -168,8 +169,9 @@ class _$UserBusinessRoleBindingSerializer implements PrimitiveSerializer<UserBus
         case r'business_roles':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.businessRoles.replace(valueDes);
           break;
         case r'created_by_business':
@@ -199,15 +201,17 @@ class _$UserBusinessRoleBindingSerializer implements PrimitiveSerializer<UserBus
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'is_shared_partner':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.isSharedPartner = valueDes;
           break;
         case r'user':

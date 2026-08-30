@@ -86,15 +86,17 @@ class _$BulkUpsertRequestSerializer implements PrimitiveSerializer<BulkUpsertReq
         case r'create':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BulkUpsertRequestCreate),
-          ) as BulkUpsertRequestCreate;
+            specifiedType: const FullType.nullable(BulkUpsertRequestCreate),
+          ) as BulkUpsertRequestCreate?;
+          if (valueDes == null) continue;
           result.create.replace(valueDes);
           break;
         case r'update':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BulkUpsertRequestUpdate),
-          ) as BulkUpsertRequestUpdate;
+            specifiedType: const FullType.nullable(BulkUpsertRequestUpdate),
+          ) as BulkUpsertRequestUpdate?;
+          if (valueDes == null) continue;
           result.update.replace(valueDes);
           break;
         default:

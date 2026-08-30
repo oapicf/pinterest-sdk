@@ -56,8 +56,10 @@
   | {'ad_video_1_tag', binary() }
   | {'ad_video_2_link', binary() }
   | {'ad_video_2_tag', binary() }
+  | {'additional_image_link', list(binary()) }
   | {'adult', boolean() }
   | {'age_group', binary() }
+  | {'ai_disclosures', list(openapi_catalogs_ai_content_disclosure:openapi_catalogs_ai_content_disclosure()) }
   | {'android_deep_link', binary() }
   | {'availability', binary() }
   | {'average_review_rating', integer() }
@@ -82,6 +84,7 @@
   | {'google_product_category', binary() }
   | {'gtin', openapi_updatable_item_attributes_gtin:openapi_updatable_item_attributes_gtin() }
   | {'id', binary() }
+  | {'image_link', openapi_item_attributes_request_image_link:openapi_item_attributes_request_image_link() }
   | {'installment_price', binary() }
   | {'ios_deep_link', binary() }
   | {'item_group_id', binary() }
@@ -99,6 +102,7 @@
   | {'promotion_id', binary() }
   | {'sale_price', binary() }
   | {'sale_price_effective_date', binary() }
+  | {'save_pin_disabled', boolean() }
   | {'shipping', binary() }
   | {'shipping_height', binary() }
   | {'shipping_weight', binary() }
@@ -112,9 +116,6 @@
   | {'unit_pricing_measure', binary() }
   | {'variant_names', list(binary()) }
   | {'variant_values', list(binary()) }
-  | {'additional_image_link', list(binary()) }
-  | {'image_link', openapi_item_attributes_request_all_of_image_link:openapi_item_attributes_request_all_of_image_link() }
-  | {'save_pin_disabled', boolean() }
   | {'video_link', binary() }
   ].
 
@@ -170,8 +171,10 @@ openapi_item_attributes_request(Fields) ->
             , {'ad_video_1_tag', binary() }
             , {'ad_video_2_link', binary() }
             , {'ad_video_2_tag', binary() }
+            , {'additional_image_link', list(binary()) }
             , {'adult', boolean() }
             , {'age_group', binary() }
+            , {'ai_disclosures', list(openapi_catalogs_ai_content_disclosure:openapi_catalogs_ai_content_disclosure()) }
             , {'android_deep_link', binary() }
             , {'availability', binary() }
             , {'average_review_rating', integer() }
@@ -196,6 +199,7 @@ openapi_item_attributes_request(Fields) ->
             , {'google_product_category', binary() }
             , {'gtin', openapi_updatable_item_attributes_gtin:openapi_updatable_item_attributes_gtin() }
             , {'id', binary() }
+            , {'image_link', openapi_item_attributes_request_image_link:openapi_item_attributes_request_image_link() }
             , {'installment_price', binary() }
             , {'ios_deep_link', binary() }
             , {'item_group_id', binary() }
@@ -213,6 +217,7 @@ openapi_item_attributes_request(Fields) ->
             , {'promotion_id', binary() }
             , {'sale_price', binary() }
             , {'sale_price_effective_date', binary() }
+            , {'save_pin_disabled', boolean() }
             , {'shipping', binary() }
             , {'shipping_height', binary() }
             , {'shipping_weight', binary() }
@@ -226,9 +231,6 @@ openapi_item_attributes_request(Fields) ->
             , {'unit_pricing_measure', binary() }
             , {'variant_names', list(binary()) }
             , {'variant_values', list(binary()) }
-            , {'additional_image_link', list(binary()) }
-            , {'image_link', openapi_item_attributes_request_all_of_image_link:openapi_item_attributes_request_all_of_image_link() }
-            , {'save_pin_disabled', boolean() }
             , {'video_link', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

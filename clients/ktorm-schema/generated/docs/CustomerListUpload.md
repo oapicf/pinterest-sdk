@@ -10,10 +10,10 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **customerListId** | customer_list_id | text NOT NULL |  | **kotlin.String** | ID of the customer list associated with this upload. | 
 **id** | id | text NOT NULL PRIMARY KEY |  | **kotlin.String** | Customer List Upload ID. | 
 **operation** | operation | long NOT NULL |  | [**UserListOperationType**](UserListOperationType.md) |  |  [foreignkey]
-**state** | state | text NOT NULL |  | [**state**](#State) | Workload processing state | 
+**state** | state | long NOT NULL |  | [**WorkloadState**](WorkloadState.md) |  |  [foreignkey]
 **updatedTime** | updated_time | int NOT NULL |  | **kotlin.Int** | Customer List Upload updated_time. Epoch (seconds). | 
 **errorCounts** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ErrorDetail&gt;**](ErrorDetail.md) | Error counts by error code |  [optional]
-**recordCounts** | record_counts | long |  | [**RecordCounts**](RecordCounts.md) |  |  [optional] [foreignkey]
+**recordCounts** | record_counts | long |  | [**RecordCounts**](RecordCounts.md) | Record processing counts |  [optional] [foreignkey]
 
 
 

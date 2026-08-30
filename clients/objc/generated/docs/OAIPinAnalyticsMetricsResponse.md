@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dailyMetrics** | [**NSArray&lt;OAIPinAnalyticsMetricsResponseDailyMetricsInner&gt;***](OAIPinAnalyticsMetricsResponseDailyMetricsInner.md) | Array with the requested daily metric records | [optional] 
+**dailyMetrics** | [**NSArray&lt;OAIPinAnalyticsDailyMetrics&gt;***](OAIPinAnalyticsDailyMetrics.md) | Array with the requested daily metric records | [optional] 
 **lifetimeMetrics** | **NSDictionary&lt;NSString*, NSNumber*&gt;*** | The lifetime metric name and value. | [optional] 
 **summaryMetrics** | **NSDictionary&lt;NSString*, NSNumber*&gt;*** | The metric name and value over the requested period for each requested metric | [optional] 
 

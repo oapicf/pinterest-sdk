@@ -53,10 +53,10 @@ class CatalogsAvailableFilterValues {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsAvailableFilterValues[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsAvailableFilterValues[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsAvailableFilterValues[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsAvailableFilterValues[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'filter_values'), 'Required key "CatalogsAvailableFilterValues[filter_values]" is missing from JSON.');
+        assert(json[r'filter_values'] != null, 'Required key "CatalogsAvailableFilterValues[filter_values]" has a null value in JSON.');
         return true;
       }());
 
@@ -116,27 +116,28 @@ class CatalogsAvailableFilterValues {
 }
 
 
-class CatalogsAvailableFilterValuesCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsAvailableFilterValuesCatalogTypeEnum._(this.value);
+enum CatalogsAvailableFilterValuesCatalogTypeEnum {
+  CREATIVE_ASSETS._(r'CREATIVE_ASSETS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsAvailableFilterValuesCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CREATIVE_ASSETS = CatalogsAvailableFilterValuesCatalogTypeEnum._(r'CREATIVE_ASSETS');
-
-  /// List of all possible values in this [enum][CatalogsAvailableFilterValuesCatalogTypeEnum].
-  static const values = <CatalogsAvailableFilterValuesCatalogTypeEnum>[
-    CREATIVE_ASSETS,
-  ];
-
+  /// Returns the instance of [CatalogsAvailableFilterValuesCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsAvailableFilterValuesCatalogTypeEnum? fromJson(dynamic value) => CatalogsAvailableFilterValuesCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsAvailableFilterValuesCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsAvailableFilterValuesCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsAvailableFilterValuesCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -158,9 +159,10 @@ class CatalogsAvailableFilterValuesCatalogTypeEnumTypeTransformer {
 
   const CatalogsAvailableFilterValuesCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsAvailableFilterValuesCatalogTypeEnum data) => data.value;
+  String encode(CatalogsAvailableFilterValuesCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsAvailableFilterValuesCatalogTypeEnum.
+  /// Returns the instance of [CatalogsAvailableFilterValuesCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -169,6 +171,9 @@ class CatalogsAvailableFilterValuesCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsAvailableFilterValuesCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsAvailableFilterValuesCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CREATIVE_ASSETS': return CatalogsAvailableFilterValuesCatalogTypeEnum.CREATIVE_ASSETS;
@@ -181,7 +186,7 @@ class CatalogsAvailableFilterValuesCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsAvailableFilterValuesCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsAvailableFilterValuesCatalogTypeEnumTypeTransformer? _instance;
 }
 

@@ -1,10 +1,12 @@
 const utils = require('../utils/utils');
+const AiDisclosuresUpdate = require('../models/AiDisclosuresUpdate');
 const CarouselSlot = require('../models/CarouselSlot');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            ...AiDisclosuresUpdate.fields(`${keyPrefix}ai_disclosures`, isInput),
             {
                 key: `${keyPrefix}alt_text`,
                 label: `[${labelPrefix}alt_text]`,
@@ -45,6 +47,7 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'ai_disclosures': utils.removeIfEmpty(AiDisclosuresUpdate.mapping(bundle, `${keyPrefix}ai_disclosures`)),
             'alt_text': bundle.inputData?.[`${keyPrefix}alt_text`],
             'board_id': bundle.inputData?.[`${keyPrefix}board_id`],
             'board_section_id': bundle.inputData?.[`${keyPrefix}board_section_id`],

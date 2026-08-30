@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.LabelsResponse;
+import org.openapitools.vertxweb.server.model.Label;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LabelsList200Response   {
   
   private String bookmark;
-  private List<LabelsResponse> items = new ArrayList<>();
+  private List<Label> items = new ArrayList<>();
 
   public LabelsList200Response () {
 
   }
 
-  public LabelsList200Response (String bookmark, List<LabelsResponse> items) {
+  public LabelsList200Response (String bookmark, List<Label> items) {
     this.bookmark = bookmark;
     this.items = items;
   }
@@ -35,10 +35,10 @@ public class LabelsList200Response   {
 
     
   @JsonProperty("items")
-  public List<LabelsResponse> getItems() {
+  public List<Label> getItems() {
     return items;
   }
-  public void setItems(List<LabelsResponse> items) {
+  public void setItems(List<Label> items) {
     this.items = items;
   }
 
@@ -77,9 +77,6 @@ public class LabelsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

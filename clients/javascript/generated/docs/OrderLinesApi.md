@@ -5,13 +5,13 @@ All URIs are relative to *https://api.pinterest.com/v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**orderLinesGet**](OrderLinesApi.md#orderLinesGet) | **GET** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line
-[**orderLinesList**](OrderLinesApi.md#orderLinesList) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines
+[**orderLinesList**](OrderLinesApi.md#orderLinesList) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines.
 
 
 
 ## orderLinesGet
 
-> OrderLine orderLinesGet(adAccountId, orderLineId)
+> OrderLine orderLinesGet(orderLineId, adAccountId)
 
 Get order line
 
@@ -27,9 +27,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.OrderLinesApi();
+let orderLineId = "orderLineId_example"; // String | Order line ID.
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let orderLineId = "orderLineId_example"; // String | Unique identifier of an order line.
-apiInstance.orderLinesGet(adAccountId, orderLineId, (error, data, response) => {
+apiInstance.orderLinesGet(orderLineId, adAccountId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -43,8 +43,8 @@ apiInstance.orderLinesGet(adAccountId, orderLineId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **orderLineId** | **String**| Order line ID. | 
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **orderLineId** | **String**| Unique identifier of an order line. | 
 
 ### Return type
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 > OrderLinesList200Response orderLinesList(adAccountId, opts)
 
-Get order lines
+Get order lines.
 
 List existing order lines associated with an ad account.
 
@@ -80,9 +80,9 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.OrderLinesApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let opts = {
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  'order': "ASCENDING", // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  'bookmark': "bookmark_example" // String | Cursor used to fetch the next page of items
+  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
+  'pageSize': 25, // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  'order': new PinterestSdk.PinterestLibPaginationOrder() // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 };
 apiInstance.orderLinesList(adAccountId, opts, (error, data, response) => {
   if (error) {
@@ -99,9 +99,9 @@ apiInstance.orderLinesList(adAccountId, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 

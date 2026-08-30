@@ -1,8 +1,8 @@
 namespace OpenAPI
-open OpenAPI.Model.ConversionApiResponse
 open OpenAPI.Model.ConversionEvents
+open OpenAPI.Model.ConversionEventsCreate
 open OpenAPI.Model.DetailedError
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 open ConversionEventsApiHandlerParams
 open ConversionEventsApiServiceInterface
 open System.Collections.Generic
@@ -17,28 +17,31 @@ module ConversionEventsApiServiceImplementation =
 
         member this.EventsCreate ctx args =
           if true then
-            let content = "Success" :> obj :?> ConversionApiResponse // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> ConversionEvents // this cast is obviously wrong, and is only intended to allow generated project to compile   
             EventsCreateStatusCode200 { content = content }
           else if true then
-            let content = "The request was invalid." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             EventsCreateStatusCode400 { content = content }
           else if true then
-            let content = "Not authorized to send conversion events" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             EventsCreateStatusCode401 { content = content }
           else if true then
-            let content = "Unauthorized access." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             EventsCreateStatusCode403 { content = content }
           else if true then
-            let content = "Not all events were successfully processed." :> obj :?> DetailedError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            EventsCreateStatusCode404 { content = content }
+          else if true then
+            let content = "The request was well-formed but was unable to be followed due to semantic errors." :> obj :?> DetailedError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             EventsCreateStatusCode422 { content = content }
           else if true then
-            let content = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             EventsCreateStatusCode429 { content = content }
           else if true then
-            let content = "The endpoint has been ramped down and is currently not accepting any traffic." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The server is currently unable to handle the request due to a temporary overload or scheduled maintenance." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             EventsCreateStatusCode503 { content = content }
           else
-            let content = "Unexpected errors" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             EventsCreateDefaultStatusCode { content = content }
 
       //#endregion

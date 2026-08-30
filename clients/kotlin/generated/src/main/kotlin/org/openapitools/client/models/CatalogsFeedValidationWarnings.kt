@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -940,7 +948,7 @@ data class CatalogsFeedValidationWarnings (
 
     /* Ingestion completed early because there are no changes to your feed since the last successful update. */
     @Json(name = "FETCH_SAME_SIGNATURE")
-    val FETCH_SAME_SIGNATURE: CatalogsFeedValidationWarnings.FETCHSAMESIGNATURE? = null,
+    val FETCH_SAME_SIGNATURE: kotlin.Int? = null,
 
     /* Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences. */
     @Json(name = "GENDER_INVALID")
@@ -1084,15 +1092,6 @@ data class CatalogsFeedValidationWarnings (
 
 ) {
 
-    /**
-     * Ingestion completed early because there are no changes to your feed since the last successful update.
-     *
-     * Values: _1
-     */
-    @JsonClass(generateAdapter = false)
-    enum class FETCHSAMESIGNATURE(val value: kotlin.Int) {
-        @Json(name = "1") _1(1);
-    }
 
 }
 

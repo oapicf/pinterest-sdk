@@ -10,9 +10,9 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |[**customerListsUpdate**](#customerlistsupdate) | **PATCH** /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id} | Update customer list|
 
 # **customerListsCreate**
-> CustomerList customerListsCreate(customerListRequest)
+> CustomerList customerListsCreate(customerListCreate)
 
-<p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the <a href=\"https://developer.pinterest.com/docs/api/v5/audiences-create\" target=\"blank\">create audience endpoint</a>.</p>
+Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
 
 ### Example
 
@@ -20,18 +20,18 @@ All URIs are relative to *https://api.pinterest.com/v5*
 import {
     CustomerListsApi,
     Configuration,
-    CustomerListRequest
+    CustomerListCreate
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new CustomerListsApi(configuration);
 
-let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let customerListRequest: CustomerListRequest; //Parameters to get Customer lists info
+let adAccountId: string; // (default to undefined)
+let customerListCreate: CustomerListCreate; //
 
 const { status, data } = await apiInstance.customerListsCreate(
     adAccountId,
-    customerListRequest
+    customerListCreate
 );
 ```
 
@@ -39,8 +39,8 @@ const { status, data } = await apiInstance.customerListsCreate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **customerListRequest** | **CustomerListRequest**| Parameters to get Customer lists info | |
-| **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
+| **customerListCreate** | **CustomerListCreate**|  | |
+| **adAccountId** | [**string**] |  | defaults to undefined|
 
 
 ### Return type
@@ -60,8 +60,14 @@ const { status, data } = await apiInstance.customerListsCreate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**201** | Resource create operation completed successfully. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -81,8 +87,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new CustomerListsApi(configuration);
 
-let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let customerListId: string; //Unique identifier of a customer list (default to undefined)
+let adAccountId: string; // (default to undefined)
+let customerListId: string; //Customer list ID. (default to undefined)
 
 const { status, data } = await apiInstance.customerListsGet(
     adAccountId,
@@ -94,8 +100,8 @@ const { status, data } = await apiInstance.customerListsGet(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
-| **customerListId** | [**string**] | Unique identifier of a customer list | defaults to undefined|
+| **adAccountId** | [**string**] |  | defaults to undefined|
+| **customerListId** | [**string**] | Customer list ID. | defaults to undefined|
 
 
 ### Return type
@@ -115,15 +121,20 @@ const { status, data } = await apiInstance.customerListsGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customerListsList**
 > CustomerListsList200Response customerListsList()
 
-<p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 
 ### Example
 
@@ -136,16 +147,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new CustomerListsApi(configuration);
 
-let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
-let order: 'ASCENDING' | 'DESCENDING'; //The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional) (default to undefined)
+let adAccountId: string; // (default to undefined)
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
+let pageSize: number; //Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+let order: PinterestLibPaginationOrder; //The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional) (default to undefined)
+let excludeNca: boolean; //When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all). (optional) (default to false)
 
 const { status, data } = await apiInstance.customerListsList(
     adAccountId,
+    bookmark,
     pageSize,
     order,
-    bookmark
+    excludeNca
 );
 ```
 
@@ -153,10 +166,11 @@ const { status, data } = await apiInstance.customerListsList(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
-| **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
-| **order** | [**&#39;ASCENDING&#39; | &#39;DESCENDING&#39;**]**Array<&#39;ASCENDING&#39; &#124; &#39;DESCENDING&#39;>** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | (optional) defaults to undefined|
+| **adAccountId** | [**string**] |  | defaults to undefined|
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
+| **pageSize** | [**number**] | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | (optional) defaults to 25|
+| **order** | **PinterestLibPaginationOrder** | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | (optional) defaults to undefined|
+| **excludeNca** | [**boolean**] | When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all). | (optional) defaults to false|
 
 
 ### Return type
@@ -176,15 +190,20 @@ const { status, data } = await apiInstance.customerListsList(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customerListsUpdate**
-> CustomerList customerListsUpdate(customerListUpdateRequest)
+> CustomerList customerListsUpdate(customerListUpdateWithRequiredBody)
 
-<p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \"CUSTOMER_LIST\" audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 
 ### Example
 
@@ -192,20 +211,20 @@ const { status, data } = await apiInstance.customerListsList(
 import {
     CustomerListsApi,
     Configuration,
-    CustomerListUpdateRequest
+    CustomerListUpdateWithRequiredBody
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new CustomerListsApi(configuration);
 
-let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let customerListId: string; //Unique identifier of a customer list (default to undefined)
-let customerListUpdateRequest: CustomerListUpdateRequest; //
+let adAccountId: string; // (default to undefined)
+let customerListId: string; //Customer list ID. (default to undefined)
+let customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody; //
 
 const { status, data } = await apiInstance.customerListsUpdate(
     adAccountId,
     customerListId,
-    customerListUpdateRequest
+    customerListUpdateWithRequiredBody
 );
 ```
 
@@ -213,9 +232,9 @@ const { status, data } = await apiInstance.customerListsUpdate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **customerListUpdateRequest** | **CustomerListUpdateRequest**|  | |
-| **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
-| **customerListId** | [**string**] | Unique identifier of a customer list | defaults to undefined|
+| **customerListUpdateWithRequiredBody** | **CustomerListUpdateWithRequiredBody**|  | |
+| **adAccountId** | [**string**] |  | defaults to undefined|
+| **customerListId** | [**string**] | Customer list ID. | defaults to undefined|
 
 
 ### Return type
@@ -235,8 +254,13 @@ const { status, data } = await apiInstance.customerListsUpdate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

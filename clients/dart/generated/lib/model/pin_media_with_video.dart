@@ -19,6 +19,7 @@ class PinMediaWithVideo {
     this.images,
     required this.mediaType,
     this.videoUrl,
+    this.videoUrlHls,
     this.width,
   });
 
@@ -49,6 +50,9 @@ class PinMediaWithVideo {
   /// Video url (720p).  **Note:** This field is limited and not available to all apps.
   String? videoUrl;
 
+  /// Video url (HLS).  **Note:** This field is limited and not available to all apps.
+  String? videoUrlHls;
+
   /// Width (in pixels). Field maybe null after creation due to video processing time.
   int? width;
 
@@ -60,6 +64,7 @@ class PinMediaWithVideo {
     other.images == images &&
     other.mediaType == mediaType &&
     other.videoUrl == videoUrl &&
+    other.videoUrlHls == videoUrlHls &&
     other.width == width;
 
   @override
@@ -71,10 +76,11 @@ class PinMediaWithVideo {
     (images == null ? 0 : images!.hashCode) +
     (mediaType.hashCode) +
     (videoUrl == null ? 0 : videoUrl!.hashCode) +
+    (videoUrlHls == null ? 0 : videoUrlHls!.hashCode) +
     (width == null ? 0 : width!.hashCode);
 
   @override
-  String toString() => 'PinMediaWithVideo[coverImageUrl=$coverImageUrl, duration=$duration, height=$height, images=$images, mediaType=$mediaType, videoUrl=$videoUrl, width=$width]';
+  String toString() => 'PinMediaWithVideo[coverImageUrl=$coverImageUrl, duration=$duration, height=$height, images=$images, mediaType=$mediaType, videoUrl=$videoUrl, videoUrlHls=$videoUrlHls, width=$width]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -104,6 +110,11 @@ class PinMediaWithVideo {
     } else {
       json[r'video_url'] = null;
     }
+    if (this.videoUrlHls != null) {
+      json[r'video_url_hls'] = this.videoUrlHls;
+    } else {
+      json[r'video_url_hls'] = null;
+    }
     if (this.width != null) {
       json[r'width'] = this.width;
     } else {
@@ -123,10 +134,8 @@ class PinMediaWithVideo {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PinMediaWithVideo[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PinMediaWithVideo[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'media_type'), 'Required key "PinMediaWithVideo[media_type]" is missing from JSON.');
+        assert(json[r'media_type'] != null, 'Required key "PinMediaWithVideo[media_type]" has a null value in JSON.');
         return true;
       }());
 
@@ -139,6 +148,7 @@ class PinMediaWithVideo {
         images: ImageSize.fromJson(json[r'images']),
         mediaType: PinMediaWithVideoMediaTypeEnum.fromJson(json[r'media_type'])!,
         videoUrl: mapValueOfType<String>(json, r'video_url'),
+        videoUrlHls: mapValueOfType<String>(json, r'video_url_hls'),
         width: mapValueOfType<int>(json, r'width'),
       );
     }
@@ -192,27 +202,28 @@ class PinMediaWithVideo {
 }
 
 
-class PinMediaWithVideoMediaTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const PinMediaWithVideoMediaTypeEnum._(this.value);
+enum PinMediaWithVideoMediaTypeEnum {
+  video._(r'video'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const PinMediaWithVideoMediaTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const video = PinMediaWithVideoMediaTypeEnum._(r'video');
-
-  /// List of all possible values in this [enum][PinMediaWithVideoMediaTypeEnum].
-  static const values = <PinMediaWithVideoMediaTypeEnum>[
-    video,
-  ];
-
+  /// Returns the instance of [PinMediaWithVideoMediaTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static PinMediaWithVideoMediaTypeEnum? fromJson(dynamic value) => PinMediaWithVideoMediaTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [PinMediaWithVideoMediaTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<PinMediaWithVideoMediaTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PinMediaWithVideoMediaTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -234,9 +245,10 @@ class PinMediaWithVideoMediaTypeEnumTypeTransformer {
 
   const PinMediaWithVideoMediaTypeEnumTypeTransformer._();
 
-  String encode(PinMediaWithVideoMediaTypeEnum data) => data.value;
+  String encode(PinMediaWithVideoMediaTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a PinMediaWithVideoMediaTypeEnum.
+  /// Returns the instance of [PinMediaWithVideoMediaTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -245,6 +257,9 @@ class PinMediaWithVideoMediaTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   PinMediaWithVideoMediaTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is PinMediaWithVideoMediaTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'video': return PinMediaWithVideoMediaTypeEnum.video;
@@ -257,7 +272,7 @@ class PinMediaWithVideoMediaTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [PinMediaWithVideoMediaTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static PinMediaWithVideoMediaTypeEnumTypeTransformer? _instance;
 }
 

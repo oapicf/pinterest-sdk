@@ -2,9 +2,6 @@
 Protected Class CreateMembershipOrPartnershipInvitesBody
 
 	#tag Property, Flags = &h0
-		#tag Note
-			The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-		#tag EndNote
 		business_role As String
 	#tag EndProperty
 
@@ -30,30 +27,7 @@ Protected Class CreateMembershipOrPartnershipInvitesBody
 	#tag EndProperty
 
 
-    #tag Enum, Name = Business_roleEnum, Type = Integer, Flags = &h0
-        
-        Employee
-        BizAdmin
-        Partner
-        
-    #tag EndEnum
 
-
-	#tag Method, Flags = &h0
-		Shared Function Business_roleEnumToString(value As Business_roleEnum) As String
-		  Select Case value
-		    
-		    Case Business_roleEnum.Employee
-		      Return "EMPLOYEE"
-		    Case Business_roleEnum.BizAdmin
-		      Return "BIZ_ADMIN"
-		    Case Business_roleEnum.Partner
-		      Return "PARTNER"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -87,6 +61,14 @@ Protected Class CreateMembershipOrPartnershipInvitesBody
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="business_role"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="BusinessRoleForInvite"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

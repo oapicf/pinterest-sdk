@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -86,7 +86,7 @@ func (c *OrderLinesAPIController) OrderedRoutes() []Route {
 
 
 
-// OrderLinesList - Get order lines
+// OrderLinesList - Get order lines.
 func (c *OrderLinesAPIController) OrderLinesList(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
@@ -98,6 +98,13 @@ func (c *OrderLinesAPIController) OrderLinesList(w http.ResponseWriter, r *http.
 	if adAccountIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
+	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
 	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
@@ -117,21 +124,14 @@ func (c *OrderLinesAPIController) OrderLinesList(w http.ResponseWriter, r *http.
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var orderParam string
+	var orderParam PinterestLibPaginationOrder
 	if query.Has("order") {
-		param := query.Get("order")
+		param := PinterestLibPaginationOrder(query.Get("order"))
 
 		orderParam = param
 	} else {
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.OrderLinesList(r.Context(), adAccountIdParam, pageSizeParam, orderParam, bookmarkParam)
+	result, err := c.service.OrderLinesList(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, orderParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -144,17 +144,17 @@ func (c *OrderLinesAPIController) OrderLinesList(w http.ResponseWriter, r *http.
 // OrderLinesGet - Get order line
 func (c *OrderLinesAPIController) OrderLinesGet(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
-		return
-	}
 	orderLineIdParam := params["order_line_id"]
 	if orderLineIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"order_line_id"}, nil)
 		return
 	}
-	result, err := c.service.OrderLinesGet(r.Context(), adAccountIdParam, orderLineIdParam)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	result, err := c.service.OrderLinesGet(r.Context(), orderLineIdParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

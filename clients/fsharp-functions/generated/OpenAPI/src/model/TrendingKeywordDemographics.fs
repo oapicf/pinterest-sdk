@@ -3,8 +3,8 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.TrendingKeywordDemographicsAgeDistribution
-open OpenAPI.Model.TrendingKeywordDemographicsGenderDistribution
+open OpenAPI.Model.TrendsAgeDistribution
+open OpenAPI.Model.TrendsGenderDistribution
 
 module TrendingKeywordDemographics =
 
@@ -13,9 +13,9 @@ module TrendingKeywordDemographics =
   [<CLIMutable>]
   type TrendingKeywordDemographics = {
     [<JsonProperty(PropertyName = "age_distribution")>]
-    AgeDistribution : TrendingKeywordDemographicsAgeDistribution;
+    AgeDistribution : TrendsAgeDistribution;
     [<JsonProperty(PropertyName = "gender_distribution")>]
-    GenderDistribution : TrendingKeywordDemographicsGenderDistribution;
+    GenderDistribution : TrendsGenderDistribution;
   }
 
   //#endregion

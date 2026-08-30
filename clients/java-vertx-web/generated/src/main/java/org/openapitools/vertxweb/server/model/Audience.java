@@ -3,22 +3,26 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.AudienceRule;
+import org.openapitools.vertxweb.server.model.AudienceStatus;
+import org.openapitools.vertxweb.server.model.PinnerListType;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Audience   {
   
   private String adAccountId;
-  private String audienceType;
+  private PinnerListType audienceType;
   private String createdByCompanyName;
   private Integer createdTimestamp;
   private String description;
   private String id;
+  private Boolean isNca;
   private String name;
   private AudienceRule rule;
   private Integer size;
-  private String status;
+  private AudienceStatus status;
   private String type;
   private Integer updatedTimestamp;
 
@@ -26,13 +30,14 @@ public class Audience   {
 
   }
 
-  public Audience (String adAccountId, String audienceType, String createdByCompanyName, Integer createdTimestamp, String description, String id, String name, AudienceRule rule, Integer size, String status, String type, Integer updatedTimestamp) {
+  public Audience (String adAccountId, PinnerListType audienceType, String createdByCompanyName, Integer createdTimestamp, String description, String id, Boolean isNca, String name, AudienceRule rule, Integer size, AudienceStatus status, String type, Integer updatedTimestamp) {
     this.adAccountId = adAccountId;
     this.audienceType = audienceType;
     this.createdByCompanyName = createdByCompanyName;
     this.createdTimestamp = createdTimestamp;
     this.description = description;
     this.id = id;
+    this.isNca = isNca;
     this.name = name;
     this.rule = rule;
     this.size = size;
@@ -52,10 +57,10 @@ public class Audience   {
 
     
   @JsonProperty("audience_type")
-  public String getAudienceType() {
+  public PinnerListType getAudienceType() {
     return audienceType;
   }
-  public void setAudienceType(String audienceType) {
+  public void setAudienceType(PinnerListType audienceType) {
     this.audienceType = audienceType;
   }
 
@@ -96,6 +101,15 @@ public class Audience   {
   }
 
     
+  @JsonProperty("is_nca")
+  public Boolean getIsNca() {
+    return isNca;
+  }
+  public void setIsNca(Boolean isNca) {
+    this.isNca = isNca;
+  }
+
+    
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -124,10 +138,10 @@ public class Audience   {
 
     
   @JsonProperty("status")
-  public String getStatus() {
+  public AudienceStatus getStatus() {
     return status;
   }
-  public void setStatus(String status) {
+  public void setStatus(AudienceStatus status) {
     this.status = status;
   }
 
@@ -165,6 +179,7 @@ public class Audience   {
         Objects.equals(createdTimestamp, audience.createdTimestamp) &&
         Objects.equals(description, audience.description) &&
         Objects.equals(id, audience.id) &&
+        Objects.equals(isNca, audience.isNca) &&
         Objects.equals(name, audience.name) &&
         Objects.equals(rule, audience.rule) &&
         Objects.equals(size, audience.size) &&
@@ -175,7 +190,7 @@ public class Audience   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, audienceType, createdByCompanyName, createdTimestamp, description, id, name, rule, size, status, type, updatedTimestamp);
+    return Objects.hash(adAccountId, audienceType, createdByCompanyName, createdTimestamp, description, id, isNca, name, rule, size, status, type, updatedTimestamp);
   }
 
   @Override
@@ -189,6 +204,7 @@ public class Audience   {
     sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isNca: ").append(toIndentedString(isNca)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
@@ -204,9 +220,6 @@ public class Audience   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -6,7 +6,7 @@ goog.provide('API.Client.CatalogsRetailProductGroup');
 API.Client.CatalogsRetailProductGroup = function() {}
 
 /**
- * Catalog id pertaining to the retail product group.
+ * Catalog ID pertaining to the product group.
  * @type {!string}
  * @export
  */

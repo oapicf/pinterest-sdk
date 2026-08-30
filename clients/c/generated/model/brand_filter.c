@@ -12,18 +12,21 @@ static brand_filter_t *brand_filter_create_internal(
     if (!brand_filter_local_var) {
         return NULL;
     }
-    brand_filter_local_var->brand = brand;
-
+    memset(brand_filter_local_var, 0, sizeof(brand_filter_t));
     brand_filter_local_var->_library_owned = 1;
+    brand_filter_local_var->brand = brand;
     return brand_filter_local_var;
 }
 
 __attribute__((deprecated)) brand_filter_t *brand_filter_create(
     catalogs_product_group_multiple_string_criteria_t *brand
     ) {
-    return brand_filter_create_internal (
+    brand_filter_t *result = brand_filter_create_internal (
         brand
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void brand_filter_free(brand_filter_t *brand_filter) {
@@ -36,7 +39,7 @@ void brand_filter_free(brand_filter_t *brand_filter) {
     }
     listEntry_t *listEntry;
     if (brand_filter->brand) {
-        object_free(brand_filter->brand);
+        catalogs_product_group_multiple_string_criteria_free(brand_filter->brand);
         brand_filter->brand = NULL;
     }
     free(brand_filter);
@@ -49,11 +52,11 @@ cJSON *brand_filter_convertToJSON(brand_filter_t *brand_filter) {
     if (!brand_filter->brand) {
         goto fail;
     }
-    cJSON *brand_object = object_convertToJSON(brand_filter->brand);
-    if(brand_object == NULL) {
+    cJSON *brand_local_JSON = catalogs_product_group_multiple_string_criteria_convertToJSON(brand_filter->brand);
+    if(brand_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "BRAND", brand_object);
+    cJSON_AddItemToObject(item, "BRAND", brand_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -70,6 +73,9 @@ brand_filter_t *brand_filter_parseFromJSON(cJSON *brand_filterJSON){
 
     brand_filter_t *brand_filter_local_var = NULL;
 
+    // define the local variable for brand_filter->brand
+    catalogs_product_group_multiple_string_criteria_t *brand_local_nonprim = NULL;
+
     // brand_filter->brand
     cJSON *brand = cJSON_GetObjectItemCaseSensitive(brand_filterJSON, "BRAND");
     if (cJSON_IsNull(brand)) {
@@ -79,17 +85,25 @@ brand_filter_t *brand_filter_parseFromJSON(cJSON *brand_filterJSON){
         goto end;
     }
 
-    object_t *brand_local_object = NULL;
     
-    brand_local_object = object_parseFromJSON(brand); //object
+    brand_local_nonprim = catalogs_product_group_multiple_string_criteria_parseFromJSON(brand); //nonprimitive
+
 
 
     brand_filter_local_var = brand_filter_create_internal (
-        brand_local_object
+        brand_local_nonprim
         );
+
+    if (!brand_filter_local_var) {
+        goto end;
+    }
 
     return brand_filter_local_var;
 end:
+    if (brand_local_nonprim) {
+        catalogs_product_group_multiple_string_criteria_free(brand_local_nonprim);
+        brand_local_nonprim = NULL;
+    }
     return NULL;
 
 }

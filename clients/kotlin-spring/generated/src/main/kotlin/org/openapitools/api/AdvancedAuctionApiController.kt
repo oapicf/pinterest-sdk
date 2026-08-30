@@ -4,7 +4,7 @@ import org.openapitools.model.AdvancedAuctionItems
 import org.openapitools.model.AdvancedAuctionItemsGetRequest
 import org.openapitools.model.AdvancedAuctionItemsSubmitRequest
 import org.openapitools.model.AdvancedAuctionProcessedItems
-import org.openapitools.model.Error
+import org.openapitools.model.PinterestLibError
 import io.swagger.v3.oas.annotations.*
 import io.swagger.v3.oas.annotations.enums.*
 import io.swagger.v3.oas.annotations.media.*
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
-import org.openapitools.api.AdvancedAuctionApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -35,7 +34,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
+@RequestMapping("\${api.base-path:/v5}")
 class AdvancedAuctionApiController() {
 
     @Operation(
@@ -43,28 +42,31 @@ class AdvancedAuctionApiController() {
         operationId = "advancedAuctionItemsGetPost",
         description = """Get the bid options for a batch of retail catalog items.
 
-The catalog must be owned by the "operation user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a> By default, the "operation user_account" is the token user_account.
+The catalog must be owned by the "operation user_account". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: `Owner`, `Admin`.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: `Owner`, `Admin`.
 
 This endpoint is not available to all users.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Response containing the bid option values for the requested retail catalog items. Items that don't exist or do not have bid options set won't be present in the response.", content = [Content(schema = Schema(implementation = AdvancedAuctionItems::class))]),
-            ApiResponse(responseCode = "400", description = "Invalid request parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "401", description = "Not authenticated to get item bid options", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "403", description = "Not authorized to get item bid options", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "500", description = "Internal error", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = AdvancedAuctionItems::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "500", description = "The server encountered an unexpected condition that prevented it from fulfilling the request.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read", "catalogs:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = [PATH_ADVANCED_AUCTION_ITEMS_GET_POST /* "/advanced_auction/items/get" */],
+        // "/advanced_auction/items/get"
+        value = [PATH_ADVANCED_AUCTION_ITEMS_GET_POST],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun advancedAuctionItemsGetPost(
-        @Parameter(description = "Request object used to get bid options values for a batch of retail catalog items", required = true) @Valid @RequestBody advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest,
+        @Parameter(description = "", required = true) @Valid @RequestBody advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest,
         @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
     ): ResponseEntity<AdvancedAuctionItems> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
@@ -75,29 +77,32 @@ This endpoint is not available to all users.""",
         operationId = "advancedAuctionItemsSubmitPost",
         description = """This endpoint supports multiple operations on a set of one or more bid options (bid price and bid adjustments for targeting categories) for retail catalog items. These advanced auction settings are applied in campaigns using objective_type `CATALOG_SALES` and ad groups using bid_strategy_type `MAX_BID`.
 
-The catalog must be owned by the "operation user_account". <a href="/docs/api-features/modify-items-in-batch/" target="_blank">See detailed documentation here.</a> By default, the "operation user_account" is the token user_account.
+The catalog must be owned by the "operation user_account". [See detailed documentation here.](/docs/api-features/modify-items-in-batch/) By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: `Owner`, `Admin`.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: `Owner`, `Admin`.
 
 This endpoint is not available to all users.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Response containing the results of the item bid options operations", content = [Content(schema = Schema(implementation = AdvancedAuctionProcessedItems::class))]),
-            ApiResponse(responseCode = "206", description = "Response containing the results of the item bid options operations (where some/all operation results have errors)", content = [Content(schema = Schema(implementation = AdvancedAuctionProcessedItems::class))]),
-            ApiResponse(responseCode = "400", description = "Invalid request parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "401", description = "Not authenticated to post item bid options", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "403", description = "Not authorized to post item bid options", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "500", description = "Internal error", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = AdvancedAuctionProcessedItems::class))]),
+            ApiResponse(responseCode = "206", description = "Successful", content = [Content(schema = Schema(implementation = AdvancedAuctionProcessedItems::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "500", description = "The server encountered an unexpected condition that prevented it from fulfilling the request.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:write", "catalogs:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = [PATH_ADVANCED_AUCTION_ITEMS_SUBMIT_POST /* "/advanced_auction/items/submit" */],
+        // "/advanced_auction/items/submit"
+        value = [PATH_ADVANCED_AUCTION_ITEMS_SUBMIT_POST],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun advancedAuctionItemsSubmitPost(
-        @Parameter(description = "Request object used to upsert or delete bid options for a batch of retail catalog items", required = true) @Valid @RequestBody advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest,
+        @Parameter(description = "", required = true) @Valid @RequestBody advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest,
         @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
     ): ResponseEntity<AdvancedAuctionProcessedItems> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)

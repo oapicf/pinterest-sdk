@@ -1689,12 +1689,6 @@ Protected Class CatalogsFeedValidationWarnings
 	#tag EndProperty
 
 
-    #tag Enum, Name = FETCH_SAME_SIGNATUREEnum, Type = Integer, Flags = &h0
-        
-        Escaped1 = "1"
-        
-    #tag EndEnum
-
 
 
 
@@ -3125,6 +3119,14 @@ Protected Class CatalogsFeedValidationWarnings
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="EXPIRATION_DATE_INVALID"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="FETCH_SAME_SIGNATURE"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

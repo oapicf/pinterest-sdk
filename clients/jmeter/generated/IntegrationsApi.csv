@@ -1,2 +1,2 @@
-testCase,httpStatusCode,id,bookmark,pageSize,externalBusinessId,externalBusinessId,externalBusinessId,integrationRequestPatch,integrationRequest,integrationLogsRequest
+testCase,httpStatusCode,id,bookmark,pageSize,externalBusinessId,externalBusinessId,externalBusinessId,integrationMetadataUpdate,integrationMetadataCreate,integrationLogsRequestCreate
 Success,200,0,0,0,0,0,0,0,0,0

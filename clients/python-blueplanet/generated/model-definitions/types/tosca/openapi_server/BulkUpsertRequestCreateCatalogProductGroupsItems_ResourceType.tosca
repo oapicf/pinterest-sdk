@@ -1,0 +1,82 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BulkUpsertRequestCreateCatalogProductGroupsItems"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BulkUpsertRequestCreateCatalogProductGroupsItems"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsProductGroupFilters = openapi_server.resourceTypes.CatalogsCreativeAssetsProductGroupFilters
+  CatalogsLocale = openapi_server.resourceTypes.CatalogsLocale
+  CatalogsProductGroupCreateRequest = openapi_server.resourceTypes.CatalogsProductGroupCreateRequest
+  CatalogsVerticalProductGroupCreateRequest = openapi_server.resourceTypes.CatalogsVerticalProductGroupCreateRequest
+  Country = openapi_server.resourceTypes.Country
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  BulkUpsertRequestCreateCatalogProductGroupsItems {
+    title = BulkUpsertRequestCreateCatalogProductGroupsItems
+    description = BulkUpsertRequestCreateCatalogProductGroupsItems
+    derivedFrom = Root
+    properties {
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        feed_id {
+          type =  string
+          description = "Catalog Feed id pertaining to the catalog product group."
+          optional = true
+        }
+        filters {
+          type = CatalogsCreativeAssetsProductGroupFilters
+          description = ""
+          optional = true
+        }
+        is_featured {
+          type =  boolean
+          description = "boolean indicator of whether the product group is being featured or not"
+          optional = false
+        }
+        name {
+          type =  string
+          description = ""
+          optional = true
+        }
+        catalog_id {
+          type =  string
+          description = "Catalog ID pertaining to the product group."
+          optional = true
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["CREATIVE_ASSETS"]
+          optional = true
+        }
+        country {
+          type = Country
+          description = ""
+          optional = false
+        }
+        locale {
+          type = CatalogsLocale
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BulkUpsertRequestCreateCatalogProductGroupsItems {
+    title = BulkUpsertRequestCreateCatalogProductGroupsItems
+    description = BulkUpsertRequestCreateCatalogProductGroupsItems
+    implements = openapi_server.resourceTypes.BulkUpsertRequestCreateCatalogProductGroupsItems
+
+  }
+}

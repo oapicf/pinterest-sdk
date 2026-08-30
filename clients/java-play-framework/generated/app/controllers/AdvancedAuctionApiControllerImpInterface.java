@@ -4,7 +4,7 @@ import apimodels.AdvancedAuctionItems;
 import apimodels.AdvancedAuctionItemsGetRequest;
 import apimodels.AdvancedAuctionItemsSubmitRequest;
 import apimodels.AdvancedAuctionProcessedItems;
-import apimodels.Error;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;

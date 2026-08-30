@@ -4,7 +4,7 @@ package models
 type CatalogsCreativeAssetsBatchRequest struct {
 
 	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\d+$"`
 
 	CatalogType string `json:"catalog_type"`
 

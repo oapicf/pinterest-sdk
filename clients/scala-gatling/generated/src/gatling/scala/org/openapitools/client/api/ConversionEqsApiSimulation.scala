@@ -72,9 +72,9 @@ class ConversionEqsApiSimulation extends Simulation {
         .feed(conversion_eqs/listPATHFeeder)
         .exec(http("conversionEqsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/conversion_eqs")
-        .queryParam("source_platform","${source_platform}")
         .queryParam("lookback_period","${lookback_period}")
         .queryParam("ingestion_source","${ingestion_source}")
+        .queryParam("source_platform","${source_platform}")
 )
 
     // Run scnconversionEqsList with warm up and reach a constant rate for entire duration

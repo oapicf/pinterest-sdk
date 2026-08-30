@@ -11,31 +11,30 @@
 part of openapi.api;
 
 
-class BoardPrivacy {
-  /// Instantiate a new enum with the provided [value].
-  const BoardPrivacy._(this.value);
+enum BoardPrivacy {
+  PUBLIC._(r'PUBLIC'),
+  PROTECTED._(r'PROTECTED'),
+  SECRET._(r'SECRET'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const BoardPrivacy._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const PUBLIC = BoardPrivacy._(r'PUBLIC');
-  static const PROTECTED = BoardPrivacy._(r'PROTECTED');
-  static const SECRET = BoardPrivacy._(r'SECRET');
-
-  /// List of all possible values in this [enum][BoardPrivacy].
-  static const values = <BoardPrivacy>[
-    PUBLIC,
-    PROTECTED,
-    SECRET,
-  ];
-
+  /// Returns the instance of [BoardPrivacy] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static BoardPrivacy? fromJson(dynamic value) => BoardPrivacyTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [BoardPrivacy]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<BoardPrivacy> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <BoardPrivacy>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class BoardPrivacyTypeTransformer {
 
   const BoardPrivacyTypeTransformer._();
 
-  String encode(BoardPrivacy data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(BoardPrivacy data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a BoardPrivacy.
+  /// Returns the instance of [BoardPrivacy] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class BoardPrivacyTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   BoardPrivacy? decode(dynamic data, {bool allowNull = true}) {
+    if (data is BoardPrivacy) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'PUBLIC': return BoardPrivacy.PUBLIC;
@@ -82,7 +86,7 @@ class BoardPrivacyTypeTransformer {
     return null;
   }
 
-  /// Singleton [BoardPrivacyTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static BoardPrivacyTypeTransformer? _instance;
 }
 

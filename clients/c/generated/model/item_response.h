@@ -1,7 +1,7 @@
 /*
  * item_response.h
  *
- * Object describing an item record or error
+ * Object describing an item record or error. Discriminated by &#x60;item_response_kind&#x60; (one unique value per leaf).
  */
 
 #ifndef _item_response_H_
@@ -16,18 +16,38 @@
 typedef struct item_response_t item_response_t;
 
 #include "catalogs_creative_assets_attributes.h"
-#include "catalogs_type.h"
-#include "item_response_one_of.h"
-#include "item_response_one_of_1.h"
+#include "catalogs_creative_assets_item_error_response.h"
+#include "catalogs_creative_assets_item_response.h"
+#include "catalogs_hotel_item_error_response.h"
+#include "catalogs_hotel_item_response.h"
+#include "catalogs_retail_item_error_response.h"
+#include "catalogs_retail_item_response.h"
 #include "item_validation_event.h"
 #include "pin.h"
+
+// Enum CATALOGTYPE for item_response
+
+typedef enum  { pinterest_rest_api_item_response_CATALOGTYPE_NULL = 0, pinterest_rest_api_item_response_CATALOGTYPE_CREATIVE_ASSETS } pinterest_rest_api_item_response_CATALOGTYPE_e;
+
+char* item_response_catalog_type_ToString(pinterest_rest_api_item_response_CATALOGTYPE_e catalog_type);
+
+pinterest_rest_api_item_response_CATALOGTYPE_e item_response_catalog_type_FromString(char* catalog_type);
+
+// Enum ITEMRESPONSEKIND for item_response
+
+typedef enum  { pinterest_rest_api_item_response_ITEMRESPONSEKIND_NULL = 0, pinterest_rest_api_item_response_ITEMRESPONSEKIND_creative_assets_item_error } pinterest_rest_api_item_response_ITEMRESPONSEKIND_e;
+
+char* item_response_item_response_kind_ToString(pinterest_rest_api_item_response_ITEMRESPONSEKIND_e item_response_kind);
+
+pinterest_rest_api_item_response_ITEMRESPONSEKIND_e item_response_item_response_kind_FromString(char* item_response_kind);
 
 
 
 typedef struct item_response_t {
-    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     struct catalogs_creative_assets_attributes_t *attributes; //model
+    pinterest_rest_api_item_response_CATALOGTYPE_e catalog_type; //enum
     char *item_id; // string
+    pinterest_rest_api_item_response_ITEMRESPONSEKIND_e item_response_kind; //enum
     list_t *pins; //nonprimitive container
     char *hotel_id; // string
     char *creative_assets_id; // string
@@ -37,9 +57,10 @@ typedef struct item_response_t {
 } item_response_t;
 
 __attribute__((deprecated)) item_response_t *item_response_create(
-    pinterest_rest_api_catalogs_type__e catalog_type,
     catalogs_creative_assets_attributes_t *attributes,
+    pinterest_rest_api_item_response_CATALOGTYPE_e catalog_type,
     char *item_id,
+    pinterest_rest_api_item_response_ITEMRESPONSEKIND_e item_response_kind,
     list_t *pins,
     char *hotel_id,
     char *creative_assets_id,

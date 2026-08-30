@@ -1,0 +1,29 @@
+import { QualityComponentDetails } from './quality-component-details';
+
+
+/**
+ * Set of quality components, with each component containing a event coverage and details.
+ */
+export interface QualityComponents { 
+  advertiser_external_id?: { [key: string]: QualityComponentDetails; };
+  click_id_epik?: { [key: string]: QualityComponentDetails; };
+  /**
+   * Dedup components.
+   */
+  external_event_id?: { [key: string]: QualityComponentDetails; };
+  /**
+   * User matching identifiers.
+   */
+  hashed_email?: { [key: string]: QualityComponentDetails; };
+  hashed_maid?: { [key: string]: QualityComponentDetails; };
+  ip_address?: { [key: string]: QualityComponentDetails; };
+  order_id?: { [key: string]: QualityComponentDetails; };
+  order_value?: { [key: string]: QualityComponentDetails; };
+  /**
+   * Product/event metadata.
+   */
+  product_id?: { [key: string]: QualityComponentDetails; };
+  source_url?: { [key: string]: QualityComponentDetails; };
+  user_agent?: { [key: string]: QualityComponentDetails; };
+}
+

@@ -13,11 +13,11 @@ Method | HTTP request | Description
 
 ## audiencesCreate
 
-> Audience audiencesCreate(adAccountId, audienceCreateRequest)
+> AdAccountsAudience audiencesCreate(adAccountId, adAccountsAudienceCreate)
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+Create a new audience for the ad account.
 
 ### Example
 
@@ -27,9 +27,9 @@ Create an audience you can use in targeting for specific ad groups. Targeting co
 
 AudiencesApi apiInstance = new AudiencesApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-AudienceCreateRequest audienceCreateRequest = new AudienceCreateRequest(); // AudienceCreateRequest | List of ads to create, size limit [1, 30]
+AdAccountsAudienceCreate adAccountsAudienceCreate = new AdAccountsAudienceCreate(); // AdAccountsAudienceCreate | 
 try {
-    Audience result = apiInstance.audiencesCreate(adAccountId, audienceCreateRequest);
+    AdAccountsAudience result = apiInstance.audiencesCreate(adAccountId, adAccountsAudienceCreate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AudiencesApi#audiencesCreate");
@@ -43,11 +43,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **audienceCreateRequest** | [**AudienceCreateRequest**](AudienceCreateRequest.md)| List of ads to create, size limit [1, 30] |
+ **adAccountsAudienceCreate** | [**AdAccountsAudienceCreate**](AdAccountsAudienceCreate.md)|  |
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ## audiencesGet
 
-> Audience audiencesGet(adAccountId, audienceId)
+> AdAccountsAudience audiencesGet(audienceId, adAccountId)
 
 Get audience
 
@@ -74,10 +74,10 @@ Get a specific audience given the audience ID.
 //import org.openapitools.client.api.AudiencesApi;
 
 AudiencesApi apiInstance = new AudiencesApi();
+String audienceId = null; // String | Audience ID.
 String adAccountId = null; // String | Unique identifier of an ad account.
-String audienceId = null; // String | Unique identifier of an audience
 try {
-    Audience result = apiInstance.audiencesGet(adAccountId, audienceId);
+    AdAccountsAudience result = apiInstance.audiencesGet(audienceId, adAccountId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AudiencesApi#audiencesGet");
@@ -90,12 +90,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audienceId** | **String**| Audience ID. | [default to null]
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **audienceId** | **String**| Unique identifier of an audience | [default to null]
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 
 ## audiencesList
 
-> AudiencesList200Response audiencesList(adAccountId, bookmark, order, pageSize, ownershipType)
+> AudiencesList200Response audiencesList(adAccountId, bookmark, pageSize, order, ownershipType, excludeNca)
 
 List audiences
 
@@ -124,11 +124,12 @@ Get list of audiences for the ad account.
 AudiencesApi apiInstance = new AudiencesApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
 String bookmark = null; // String | Cursor used to fetch the next page of items
-String order = ASCENDING; // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-String ownershipType = OWNED; // String | Filter audiences by ownership type.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+PinterestLibPaginationOrder order = null; // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+AudienceOwnershipType ownershipType = null; // AudienceOwnershipType | 
+Boolean excludeNca = false; // Boolean | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
 try {
-    AudiencesList200Response result = apiInstance.audiencesList(adAccountId, bookmark, order, pageSize, ownershipType);
+    AudiencesList200Response result = apiInstance.audiencesList(adAccountId, bookmark, pageSize, order, ownershipType, excludeNca);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AudiencesApi#audiencesList");
@@ -143,9 +144,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **ownershipType** | **String**| Filter audiences by ownership type. | [optional] [default to OWNED] [enum: OWNED, RECEIVED]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING]
+ **ownershipType** | [**AudienceOwnershipType**](.md)|  | [optional] [default to null] [enum: OWNED, RECEIVED]
+ **excludeNca** | **Boolean**| When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [optional] [default to false]
 
 ### Return type
 
@@ -163,11 +165,11 @@ Name | Type | Description  | Notes
 
 ## audiencesUpdate
 
-> Audience audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest)
+> AdAccountsAudience audiencesUpdate(audienceId, adAccountId, adAccountsAudienceUpdate)
 
 Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 ### Example
 
@@ -176,11 +178,11 @@ Update (edit or remove) an existing targeting audience.
 //import org.openapitools.client.api.AudiencesApi;
 
 AudiencesApi apiInstance = new AudiencesApi();
+String audienceId = null; // String | Audience ID.
 String adAccountId = null; // String | Unique identifier of an ad account.
-String audienceId = null; // String | Unique identifier of an audience
-AudienceUpdateRequest audienceUpdateRequest = new AudienceUpdateRequest(); // AudienceUpdateRequest | The audience to be updated.
+AdAccountsAudienceUpdate adAccountsAudienceUpdate = new AdAccountsAudienceUpdate(); // AdAccountsAudienceUpdate | 
 try {
-    Audience result = apiInstance.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest);
+    AdAccountsAudience result = apiInstance.audiencesUpdate(audienceId, adAccountId, adAccountsAudienceUpdate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AudiencesApi#audiencesUpdate");
@@ -193,13 +195,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audienceId** | **String**| Audience ID. | [default to null]
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **audienceId** | **String**| Unique identifier of an audience | [default to null]
- **audienceUpdateRequest** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md)| The audience to be updated. |
+ **adAccountsAudienceUpdate** | [**AdAccountsAudienceUpdate**](AdAccountsAudienceUpdate.md)|  |
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 

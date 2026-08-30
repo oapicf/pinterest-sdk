@@ -3,11 +3,12 @@ package controllers;
 import apimodels.CatalogsListProductsByFilterRequest;
 import apimodels.CatalogsProductGroupPinsList200Response;
 import apimodels.CatalogsProductGroupProductCountsVertical;
+import apimodels.CatalogsProductGroupsCreateManyRequestItems;
+import apimodels.CatalogsProductGroupsCreateRequestSchema;
 import apimodels.CatalogsProductGroupsList200Response;
-import apimodels.CatalogsProductGroupsUpdateRequest;
+import apimodels.CatalogsProductGroupsUpdateRequestSchema;
 import apimodels.CatalogsVerticalProductGroup;
-import apimodels.Error;
-import apimodels.MultipleProductGroupsInner;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -31,7 +32,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogProductGroupsApiController extends Controller {
     private final CatalogProductGroupsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -46,20 +47,6 @@ public class CatalogProductGroupsApiController extends Controller {
 
     @ApiAction
     public Result catalogsProductGroupPinsList(Http.Request request,  @Pattern(regexp="^\\d+$")String productGroupId) throws Exception {
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
-        } else {
-            bookmark = null;
-        }
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
-        } else {
-            pageSize = 25;
-        }
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
         if (valueadAccountId != null) {
@@ -74,20 +61,34 @@ public class CatalogProductGroupsApiController extends Controller {
         } else {
             pinMetrics = false;
         }
-        return imp.catalogsProductGroupPinsListHttp(request, productGroupId, bookmark, pageSize, adAccountId, pinMetrics);
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        return imp.catalogsProductGroupPinsListHttp(request, productGroupId, adAccountId, pinMetrics, bookmark, pageSize);
     }
 
     @ApiAction
     public Result catalogsProductGroupsCreate(Http.Request request) throws Exception {
-        JsonNode nodemultipleProductGroupsInner = request.body().asJson();
-        MultipleProductGroupsInner multipleProductGroupsInner;
-        if (nodemultipleProductGroupsInner != null) {
-            multipleProductGroupsInner = mapper.readValue(nodemultipleProductGroupsInner.toString(), MultipleProductGroupsInner.class);
+        JsonNode nodecatalogsProductGroupsCreateRequestSchema = request.body().asJson();
+        CatalogsProductGroupsCreateRequestSchema catalogsProductGroupsCreateRequestSchema;
+        if (nodecatalogsProductGroupsCreateRequestSchema != null) {
+            catalogsProductGroupsCreateRequestSchema = mapper.readValue(nodecatalogsProductGroupsCreateRequestSchema.toString(), CatalogsProductGroupsCreateRequestSchema.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(multipleProductGroupsInner);
+                OpenAPIUtils.validate(catalogsProductGroupsCreateRequestSchema);
             }
         } else {
-            throw new IllegalArgumentException("'MultipleProductGroupsInner' parameter is required");
+            throw new IllegalArgumentException("'CatalogsProductGroupsCreateRequestSchema' parameter is required");
         }
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
@@ -96,22 +97,22 @@ public class CatalogProductGroupsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.catalogsProductGroupsCreateHttp(request, multipleProductGroupsInner, adAccountId);
+        return imp.catalogsProductGroupsCreateHttp(request, catalogsProductGroupsCreateRequestSchema, adAccountId);
     }
 
     @ApiAction
     public Result catalogsProductGroupsCreateMany(Http.Request request) throws Exception {
-        JsonNode nodemultipleProductGroupsInner = request.body().asJson();
-        List<MultipleProductGroupsInner> multipleProductGroupsInner;
-        if (nodemultipleProductGroupsInner != null) {
-            multipleProductGroupsInner = mapper.readValue(nodemultipleProductGroupsInner.toString(), new TypeReference<List<MultipleProductGroupsInner>>(){});
+        JsonNode nodecatalogsProductGroupsCreateManyRequestItems = request.body().asJson();
+        List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems;
+        if (nodecatalogsProductGroupsCreateManyRequestItems != null) {
+            catalogsProductGroupsCreateManyRequestItems = mapper.readValue(nodecatalogsProductGroupsCreateManyRequestItems.toString(), new TypeReference<List<CatalogsProductGroupsCreateManyRequestItems>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
-                for (MultipleProductGroupsInner curItem : multipleProductGroupsInner) {
+                for (CatalogsProductGroupsCreateManyRequestItems curItem : catalogsProductGroupsCreateManyRequestItems) {
                     OpenAPIUtils.validate(curItem);
                 }
             }
         } else {
-            throw new IllegalArgumentException("'MultipleProductGroupsInner' parameter is required");
+            throw new IllegalArgumentException("'CatalogsProductGroupsCreateManyRequestItems' parameter is required");
         }
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
@@ -120,7 +121,7 @@ public class CatalogProductGroupsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.catalogsProductGroupsCreateManyHttp(request, multipleProductGroupsInner, adAccountId);
+        return imp.catalogsProductGroupsCreateManyHttp(request, catalogsProductGroupsCreateManyRequestItems, adAccountId);
     }
 
     @ApiAction
@@ -196,6 +197,13 @@ public class CatalogProductGroupsApiController extends Controller {
         } else {
             catalogId = null;
         }
+        String valueadAccountId = request.getQueryString("ad_account_id");
+        String adAccountId;
+        if (valueadAccountId != null) {
+            adAccountId = valueadAccountId;
+        } else {
+            adAccountId = null;
+        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -210,14 +218,7 @@ public class CatalogProductGroupsApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        String valueadAccountId = request.getQueryString("ad_account_id");
-        String adAccountId;
-        if (valueadAccountId != null) {
-            adAccountId = valueadAccountId;
-        } else {
-            adAccountId = null;
-        }
-        return imp.catalogsProductGroupsListHttp(request, id, feedId, catalogId, bookmark, pageSize, adAccountId);
+        return imp.catalogsProductGroupsListHttp(request, id, feedId, catalogId, adAccountId, bookmark, pageSize);
     }
 
     @ApiAction
@@ -234,15 +235,15 @@ public class CatalogProductGroupsApiController extends Controller {
 
     @ApiAction
     public Result catalogsProductGroupsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String productGroupId) throws Exception {
-        JsonNode nodecatalogsProductGroupsUpdateRequest = request.body().asJson();
-        CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest;
-        if (nodecatalogsProductGroupsUpdateRequest != null) {
-            catalogsProductGroupsUpdateRequest = mapper.readValue(nodecatalogsProductGroupsUpdateRequest.toString(), CatalogsProductGroupsUpdateRequest.class);
+        JsonNode nodecatalogsProductGroupsUpdateRequestSchema = request.body().asJson();
+        CatalogsProductGroupsUpdateRequestSchema catalogsProductGroupsUpdateRequestSchema;
+        if (nodecatalogsProductGroupsUpdateRequestSchema != null) {
+            catalogsProductGroupsUpdateRequestSchema = mapper.readValue(nodecatalogsProductGroupsUpdateRequestSchema.toString(), CatalogsProductGroupsUpdateRequestSchema.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(catalogsProductGroupsUpdateRequest);
+                OpenAPIUtils.validate(catalogsProductGroupsUpdateRequestSchema);
             }
         } else {
-            throw new IllegalArgumentException("'CatalogsProductGroupsUpdateRequest' parameter is required");
+            throw new IllegalArgumentException("'CatalogsProductGroupsUpdateRequestSchema' parameter is required");
         }
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
@@ -251,7 +252,7 @@ public class CatalogProductGroupsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.catalogsProductGroupsUpdateHttp(request, productGroupId, catalogsProductGroupsUpdateRequest, adAccountId);
+        return imp.catalogsProductGroupsUpdateHttp(request, productGroupId, catalogsProductGroupsUpdateRequestSchema, adAccountId);
     }
 
     @ApiAction

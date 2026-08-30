@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &CreateAssetAccessRequestBody{}
 
 // CreateAssetAccessRequestBody An object containing a list of all the asset access requests
 type CreateAssetAccessRequestBody struct {
-	AssetRequests []CreateAssetAccessRequestBodyAssetRequestsInner `json:"asset_requests"`
+	AssetRequests []CreateAssetAccessRequestItem `json:"asset_requests"`
 }
 
 type _CreateAssetAccessRequestBody CreateAssetAccessRequestBody
@@ -31,7 +31,7 @@ type _CreateAssetAccessRequestBody CreateAssetAccessRequestBody
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAssetAccessRequestBody(assetRequests []CreateAssetAccessRequestBodyAssetRequestsInner) *CreateAssetAccessRequestBody {
+func NewCreateAssetAccessRequestBody(assetRequests []CreateAssetAccessRequestItem) *CreateAssetAccessRequestBody {
 	this := CreateAssetAccessRequestBody{}
 	this.AssetRequests = assetRequests
 	return &this
@@ -46,9 +46,9 @@ func NewCreateAssetAccessRequestBodyWithDefaults() *CreateAssetAccessRequestBody
 }
 
 // GetAssetRequests returns the AssetRequests field value
-func (o *CreateAssetAccessRequestBody) GetAssetRequests() []CreateAssetAccessRequestBodyAssetRequestsInner {
+func (o *CreateAssetAccessRequestBody) GetAssetRequests() []CreateAssetAccessRequestItem {
 	if o == nil {
-		var ret []CreateAssetAccessRequestBodyAssetRequestsInner
+		var ret []CreateAssetAccessRequestItem
 		return ret
 	}
 
@@ -57,7 +57,7 @@ func (o *CreateAssetAccessRequestBody) GetAssetRequests() []CreateAssetAccessReq
 
 // GetAssetRequestsOk returns a tuple with the AssetRequests field value
 // and a boolean to check if the value has been set.
-func (o *CreateAssetAccessRequestBody) GetAssetRequestsOk() ([]CreateAssetAccessRequestBodyAssetRequestsInner, bool) {
+func (o *CreateAssetAccessRequestBody) GetAssetRequestsOk() ([]CreateAssetAccessRequestItem, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *CreateAssetAccessRequestBody) GetAssetRequestsOk() ([]CreateAssetAccess
 }
 
 // SetAssetRequests sets field value
-func (o *CreateAssetAccessRequestBody) SetAssetRequests(v []CreateAssetAccessRequestBodyAssetRequestsInner) {
+func (o *CreateAssetAccessRequestBody) SetAssetRequests(v []CreateAssetAccessRequestItem) {
 	o.AssetRequests = v
 }
 

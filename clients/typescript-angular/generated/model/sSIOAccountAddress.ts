@@ -9,6 +9,9 @@
  */
 
 
+/**
+ * Salesforce address information.
+ */
 export interface SSIOAccountAddress { 
     /**
      * Salesforce id for address

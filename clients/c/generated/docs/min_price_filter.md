@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**min_price** | [**catalogs_product_group_pricing_criteria_t**](.md) \* |  | 
+**min_price** | [**catalogs_product_group_pricing_criteria_t**](catalogs_product_group_pricing_criteria.md) \* |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

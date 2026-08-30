@@ -18,36 +18,36 @@ class AdvancedAuctionItem(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, country: Country=None, item_id: str=None, language: Language=None, bid_options: AdvancedAuctionBidOptions=None):  # noqa: E501
+    def __init__(self, bid_options: AdvancedAuctionBidOptions=None, country: Country=None, item_id: str=None, language: Language=None):  # noqa: E501
         """AdvancedAuctionItem - a model defined in Swagger
 
+        :param bid_options: The bid_options of this AdvancedAuctionItem.  # noqa: E501
+        :type bid_options: AdvancedAuctionBidOptions
         :param country: The country of this AdvancedAuctionItem.  # noqa: E501
         :type country: Country
         :param item_id: The item_id of this AdvancedAuctionItem.  # noqa: E501
         :type item_id: str
         :param language: The language of this AdvancedAuctionItem.  # noqa: E501
         :type language: Language
-        :param bid_options: The bid_options of this AdvancedAuctionItem.  # noqa: E501
-        :type bid_options: AdvancedAuctionBidOptions
         """
         self.swagger_types = {
+            'bid_options': AdvancedAuctionBidOptions,
             'country': Country,
             'item_id': str,
-            'language': Language,
-            'bid_options': AdvancedAuctionBidOptions
+            'language': Language
         }
 
         self.attribute_map = {
+            'bid_options': 'bid_options',
             'country': 'country',
             'item_id': 'item_id',
-            'language': 'language',
-            'bid_options': 'bid_options'
+            'language': 'language'
         }
 
+        self._bid_options = bid_options
         self._country = country
         self._item_id = item_id
         self._language = language
-        self._bid_options = bid_options
 
     @classmethod
     def from_dict(cls, dikt) -> 'AdvancedAuctionItem':
@@ -59,6 +59,29 @@ class AdvancedAuctionItem(Model):
         :rtype: AdvancedAuctionItem
         """
         return util.deserialize_model(dikt, cls)
+
+    @property
+    def bid_options(self) -> AdvancedAuctionBidOptions:
+        """Gets the bid_options of this AdvancedAuctionItem.
+
+
+        :return: The bid_options of this AdvancedAuctionItem.
+        :rtype: AdvancedAuctionBidOptions
+        """
+        return self._bid_options
+
+    @bid_options.setter
+    def bid_options(self, bid_options: AdvancedAuctionBidOptions):
+        """Sets the bid_options of this AdvancedAuctionItem.
+
+
+        :param bid_options: The bid_options of this AdvancedAuctionItem.
+        :type bid_options: AdvancedAuctionBidOptions
+        """
+        if bid_options is None:
+            raise ValueError("Invalid value for `bid_options`, must not be `None`")  # noqa: E501
+
+        self._bid_options = bid_options
 
     @property
     def country(self) -> Country:
@@ -130,26 +153,3 @@ class AdvancedAuctionItem(Model):
             raise ValueError("Invalid value for `language`, must not be `None`")  # noqa: E501
 
         self._language = language
-
-    @property
-    def bid_options(self) -> AdvancedAuctionBidOptions:
-        """Gets the bid_options of this AdvancedAuctionItem.
-
-
-        :return: The bid_options of this AdvancedAuctionItem.
-        :rtype: AdvancedAuctionBidOptions
-        """
-        return self._bid_options
-
-    @bid_options.setter
-    def bid_options(self, bid_options: AdvancedAuctionBidOptions):
-        """Sets the bid_options of this AdvancedAuctionItem.
-
-
-        :param bid_options: The bid_options of this AdvancedAuctionItem.
-        :type bid_options: AdvancedAuctionBidOptions
-        """
-        if bid_options is None:
-            raise ValueError("Invalid value for `bid_options`, must not be `None`")  # noqa: E501
-
-        self._bid_options = bid_options

@@ -54,10 +54,10 @@ class CatalogsCreativeAssetsProductMetadata {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsCreativeAssetsProductMetadata[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsCreativeAssetsProductMetadata[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'creative_assets_id'), 'Required key "CatalogsCreativeAssetsProductMetadata[creative_assets_id]" is missing from JSON.');
+        assert(json[r'creative_assets_id'] != null, 'Required key "CatalogsCreativeAssetsProductMetadata[creative_assets_id]" has a null value in JSON.');
+        assert(json.containsKey(r'visibility'), 'Required key "CatalogsCreativeAssetsProductMetadata[visibility]" is missing from JSON.');
+        assert(json[r'visibility'] != null, 'Required key "CatalogsCreativeAssetsProductMetadata[visibility]" has a null value in JSON.');
         return true;
       }());
 

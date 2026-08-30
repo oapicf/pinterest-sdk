@@ -5,13 +5,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **string** |  | [optional] [default to null]
 **images** | [**ImageSize**](ImageSize.md) |  | [optional] [default to null]
-**itemUnderscoretype** | **string** |  | [optional] [default to null]
+**itemUnderscoretype** | **string** |  | [default to null]
 **link** | **string** |  | [optional] [default to null]
 **title** | **string** |  | [optional] [default to null]
 **coverUnderscoreimageUnderscoreurl** | **string** |  | [optional] [default to null]
 **duration** | **integer** |  | [optional] [default to null]
 **height** | **integer** |  | [optional] [default to null]
 **videoUnderscoreurl** | **string** |  | [optional] [default to null]
+**videoUnderscoreurlUnderscorehls** | **string** |  | [optional] [default to null]
 **width** | **integer** |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

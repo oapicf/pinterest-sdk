@@ -27,10 +27,10 @@ IntegrationLog::__init()
 	//app_version_number = std::string();
 	//client_timestamp = int(0);
 	//error = new IntegrationLogClientError();
-	//event_type = std::string();
+	//event_type = null;
 	//external_business_id = std::string();
 	//feed_profile_id = std::string();
-	//log_level = std::string();
+	//log_level = null;
 	//merchant_id = std::string();
 	//message = std::string();
 	//platform_version_number = std::string();
@@ -166,9 +166,12 @@ IntegrationLog::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&event_type, node, "std::string", "");
+		if (isprimitive("IntegrationLogEventType")) {
+			jsonToValue(&event_type, node, "IntegrationLogEventType", "IntegrationLogEventType");
 		} else {
+			
+			IntegrationLogEventType* obj = static_cast<IntegrationLogEventType*> (&event_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -199,9 +202,12 @@ IntegrationLog::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&log_level, node, "std::string", "");
+		if (isprimitive("IntegrationLogLevel")) {
+			jsonToValue(&log_level, node, "IntegrationLogLevel", "IntegrationLogLevel");
 		} else {
+			
+			IntegrationLogLevel* obj = static_cast<IntegrationLogLevel*> (&log_level);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -316,11 +322,16 @@ IntegrationLog::toJson()
 	}
 	const gchar *errorKey = "error";
 	json_object_set_member(pJsonObject, errorKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getEventType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("IntegrationLogEventType")) {
+		IntegrationLogEventType obj = getEventType();
+		node = converttoJson(&obj, "IntegrationLogEventType", "");
 	}
 	else {
+		
+		IntegrationLogEventType obj = static_cast<IntegrationLogEventType> (getEventType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *event_typeKey = "event_type";
@@ -343,11 +354,16 @@ IntegrationLog::toJson()
 	}
 	const gchar *feed_profile_idKey = "feed_profile_id";
 	json_object_set_member(pJsonObject, feed_profile_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getLogLevel();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("IntegrationLogLevel")) {
+		IntegrationLogLevel obj = getLogLevel();
+		node = converttoJson(&obj, "IntegrationLogLevel", "");
 	}
 	else {
+		
+		IntegrationLogLevel obj = static_cast<IntegrationLogLevel> (getLogLevel());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *log_levelKey = "log_level";
@@ -458,14 +474,14 @@ IntegrationLog::setError(IntegrationLogClientError  error)
 	this->error = error;
 }
 
-std::string
+IntegrationLogEventType
 IntegrationLog::getEventType()
 {
 	return event_type;
 }
 
 void
-IntegrationLog::setEventType(std::string  event_type)
+IntegrationLog::setEventType(IntegrationLogEventType  event_type)
 {
 	this->event_type = event_type;
 }
@@ -494,14 +510,14 @@ IntegrationLog::setFeedProfileId(std::string  feed_profile_id)
 	this->feed_profile_id = feed_profile_id;
 }
 
-std::string
+IntegrationLogLevel
 IntegrationLog::getLogLevel()
 {
 	return log_level;
 }
 
 void
-IntegrationLog::setLogLevel(std::string  log_level)
+IntegrationLog::setLogLevel(IntegrationLogLevel  log_level)
 {
 	this->log_level = log_level;
 }

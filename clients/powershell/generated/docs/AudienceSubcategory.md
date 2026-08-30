@@ -3,21 +3,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **String** | Subinterest ID. | [optional] 
-**Index** | **Decimal** | Subinterest affinity index. | [optional] 
-**Key** | **String** | Interest unique key (same as ID). | [optional] 
-**Name** | **String** | Subinterest name. | [optional] 
-**Ratio** | **Decimal** | Subinterest&#39;s percent of category&#39;s total audience. | [optional] 
+**Id** | **String** |  | [optional] 
+**Index** | **Decimal** |  | [optional] 
+**Key** | **String** |  | [optional] 
+**Name** | **String** |  | [optional] 
+**Ratio** | **Decimal** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AudienceSubcategory = Initialize-PSOpenAPIToolsAudienceSubcategory  -Id 958862518888 `
- -Index 1.2 `
- -Key 958862518888 `
- -Name travel destinations `
- -Ratio 0.482
+$AudienceSubcategory = Initialize-PSOpenAPIToolsAudienceSubcategory  -Id null `
+ -Index null `
+ -Key null `
+ -Name null `
+ -Ratio null
 ```
 
 - Convert the resource to JSON

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -88,18 +89,23 @@ func (c *ConversionEventsAPIController) EventsCreate(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var conversionEventsParam ConversionEvents
+	var conversionEventsCreateParam ConversionEventsCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&conversionEventsParam); err != nil {
+	if err := d.Decode(&conversionEventsCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertConversionEventsRequired(conversionEventsParam); err != nil {
+	if err := AssertConversionEventsCreateRequired(conversionEventsCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertConversionEventsConstraints(conversionEventsParam); err != nil {
+	if err := AssertConversionEventsCreateConstraints(conversionEventsCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
@@ -117,7 +123,7 @@ func (c *ConversionEventsAPIController) EventsCreate(w http.ResponseWriter, r *h
 		testParam = param
 	} else {
 	}
-	result, err := c.service.EventsCreate(r.Context(), adAccountIdParam, conversionEventsParam, testParam)
+	result, err := c.service.EventsCreate(r.Context(), adAccountIdParam, conversionEventsCreateParam, testParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

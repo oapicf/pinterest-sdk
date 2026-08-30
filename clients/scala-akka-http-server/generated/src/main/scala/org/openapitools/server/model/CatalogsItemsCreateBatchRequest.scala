@@ -13,6 +13,6 @@ final case class CatalogsItemsCreateBatchRequest (
   country: Country,
   items: Seq[ItemCreateBatchRecord],
   language: String,
-  operation: BatchOperation
+  operation: String
 )
 

@@ -1,0 +1,58 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdAccountsAudienceCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdAccountsAudienceCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdAccountsAudienceRule = openapi_server.resourceTypes.AdAccountsAudienceRule
+  AudienceType = openapi_server.resourceTypes.AudienceType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdAccountsAudienceCreate {
+    title = AdAccountsAudienceCreate
+    description = AdAccountsAudienceCreate
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = "Ad account ID."
+          optional = false
+        }
+        audience_type {
+          type = AudienceType
+          description = "[Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR"
+          optional = false
+        }
+        description {
+          type =  string
+          description = "Audience description."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Audience name."
+          optional = false
+        }
+        rule {
+          type = AdAccountsAudienceRule
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdAccountsAudienceCreate {
+    title = AdAccountsAudienceCreate
+    description = AdAccountsAudienceCreate
+    implements = openapi_server.resourceTypes.AdAccountsAudienceCreate
+
+  }
+}

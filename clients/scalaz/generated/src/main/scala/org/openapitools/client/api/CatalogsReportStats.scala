@@ -12,8 +12,7 @@ import org.joda.time.DateTime
 import CatalogsReportStats._
 
 case class CatalogsReportStats (
-  reportType: ReportType,
-/* ID of the catalog entity. */
+  /* ID of the catalog entity. */
   catalogId: Option[String],
 /* The event code that a diagnostics aggregated number references */
   code: Option[Integer],
@@ -23,6 +22,7 @@ case class CatalogsReportStats (
   message: Option[String],
 /* Number of occurrences of the issue */
   occurrences: Option[Integer],
+reportType: Option[ReportType],
 /* An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue */
   severity: Option[Severity],
 /* Indicates if issue makes items ineligible for ads distribution */
@@ -33,18 +33,15 @@ case class CatalogsReportStats (
 object CatalogsReportStats {
   import DateTimeCodecs._
   sealed trait ReportType
-  case object FEEDINGESTIONISSUES extends ReportType
   case object DISTRIBUTIONISSUES extends ReportType
 
   object ReportType {
     def toReportType(s: String): Option[ReportType] = s match {
-      case "FEEDINGESTIONISSUES" => Some(FEEDINGESTIONISSUES)
       case "DISTRIBUTIONISSUES" => Some(DISTRIBUTIONISSUES)
       case _ => None
     }
 
     def fromReportType(x: ReportType): String = x match {
-      case FEEDINGESTIONISSUES => "FEEDINGESTIONISSUES"
       case DISTRIBUTIONISSUES => "DISTRIBUTIONISSUES"
     }
   }

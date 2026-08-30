@@ -1,5 +1,5 @@
 # Org.OpenAPITools.Model.BulkEntityType
-Refers ads entity type. Schedule enum is only applicable to beta users
+Refers ads entity type.
 
 ## Properties
 

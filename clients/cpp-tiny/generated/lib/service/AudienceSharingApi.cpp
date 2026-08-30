@@ -10,19 +10,19 @@ using namespace Tiny;
         AudienceSharingApi::
         adAccountsAudiencesSharedAccounts_list(
             
-            std::string adAccountId
-            , 
-            
             std::string audienceId
             , 
             
             AudienceAccountType accountType
             , 
             
-            int pageSize
+            std::string adAccountId
             , 
             
             std::string bookmark
+            , 
+            
+            int pageSize
             
         )
         {
@@ -31,11 +31,11 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | audienceId accountType pageSize bookmark 
+            // Query    | audienceId accountType bookmark pageSize 
             addQueryParam("audience_id",audienceId);
             addQueryParam("account_type",accountType);
-            addQueryParam("page_size",pageSize);
             addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
 
             // Form     | 
 
@@ -86,10 +86,10 @@ using namespace Tiny;
             AudienceAccountType accountType
             , 
             
-            int pageSize
+            std::string bookmark
             , 
             
-            std::string bookmark
+            int pageSize
             
         )
         {
@@ -98,11 +98,11 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | audienceId accountType pageSize bookmark 
+            // Query    | audienceId accountType bookmark pageSize 
             addQueryParam("audience_id",audienceId);
             addQueryParam("account_type",accountType);
-            addQueryParam("page_size",pageSize);
             addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
 
             // Form     | 
 
@@ -139,7 +139,7 @@ using namespace Tiny;
         }
 
         Response<
-            Audiences_list_200_response
+            Shared_audiences_for_business_list_200_response
         >
         AudienceSharingApi::
         sharedAudiencesForBusiness_list(
@@ -147,10 +147,10 @@ using namespace Tiny;
             std::string businessId
             , 
             
-            std::string bookmark
+            Order order
             , 
             
-            std::string order
+            std::string bookmark
             , 
             
             int pageSize
@@ -162,9 +162,9 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | bookmark order pageSize 
-            addQueryParam("bookmark",bookmark);
+            // Query    | order bookmark pageSize 
             addQueryParam("order",order);
+            addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
 
             // Form     | 
@@ -194,15 +194,15 @@ using namespace Tiny;
 
 
 
-            Audiences_list_200_response obj(output_string);
+            Shared_audiences_for_business_list_200_response obj(output_string);
 
 
-            Response<Audiences_list_200_response> response(obj, httpCode);
+            Response<Shared_audiences_for_business_list_200_response> response(obj, httpCode);
             return response;
         }
 
         Response<
-            SharedAudienceResponse
+            AdAccountToAdAccountSharedAudience
         >
         AudienceSharingApi::
         updateAdAccountToAdAccountSharedAudience(
@@ -210,7 +210,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            SharedAudience sharedAudience
+            AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody
             
         )
         {
@@ -239,11 +239,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | sharedAudience
+            // Body     | adAccountToAdAccountSharedAudienceUpdateWithRequiredBody
 
 
 
-            payload = sharedAudience.toJson().dump();
+            payload = adAccountToAdAccountSharedAudienceUpdateWithRequiredBody.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -254,15 +254,15 @@ using namespace Tiny;
 
 
 
-            SharedAudienceResponse obj(output_string);
+            AdAccountToAdAccountSharedAudience obj(output_string);
 
 
-            Response<SharedAudienceResponse> response(obj, httpCode);
+            Response<AdAccountToAdAccountSharedAudience> response(obj, httpCode);
             return response;
         }
 
         Response<
-            BusinessSharedAudienceResponse
+            AdAccountToBusinessSharedAudience
         >
         AudienceSharingApi::
         updateAdAccountToBusinessSharedAudience(
@@ -270,7 +270,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            BusinessSharedAudience businessSharedAudience
+            AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody
             
         )
         {
@@ -299,11 +299,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | businessSharedAudience
+            // Body     | adAccountToBusinessSharedAudienceUpdateWithRequiredBody
 
 
 
-            payload = businessSharedAudience.toJson().dump();
+            payload = adAccountToBusinessSharedAudienceUpdateWithRequiredBody.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -314,15 +314,15 @@ using namespace Tiny;
 
 
 
-            BusinessSharedAudienceResponse obj(output_string);
+            AdAccountToBusinessSharedAudience obj(output_string);
 
 
-            Response<BusinessSharedAudienceResponse> response(obj, httpCode);
+            Response<AdAccountToBusinessSharedAudience> response(obj, httpCode);
             return response;
         }
 
         Response<
-            SharedAudienceResponse
+            BusinessToAdAccountSharedAudience
         >
         AudienceSharingApi::
         updateBusinessToAdAccountSharedAudience(
@@ -330,7 +330,7 @@ using namespace Tiny;
             std::string businessId
             , 
             
-            SharedAudience sharedAudience
+            BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody
             
         )
         {
@@ -359,11 +359,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | sharedAudience
+            // Body     | businessToAdAccountSharedAudienceUpdateWithRequiredBody
 
 
 
-            payload = sharedAudience.toJson().dump();
+            payload = businessToAdAccountSharedAudienceUpdateWithRequiredBody.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -374,15 +374,15 @@ using namespace Tiny;
 
 
 
-            SharedAudienceResponse obj(output_string);
+            BusinessToAdAccountSharedAudience obj(output_string);
 
 
-            Response<SharedAudienceResponse> response(obj, httpCode);
+            Response<BusinessToAdAccountSharedAudience> response(obj, httpCode);
             return response;
         }
 
         Response<
-            BusinessSharedAudienceResponse
+            BusinessToBusinessSharedAudience
         >
         AudienceSharingApi::
         updateBusinessToBusinessSharedAudience(
@@ -390,7 +390,7 @@ using namespace Tiny;
             std::string businessId
             , 
             
-            BusinessSharedAudience businessSharedAudience
+            BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody
             
         )
         {
@@ -419,11 +419,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | businessSharedAudience
+            // Body     | businessToBusinessSharedAudienceUpdateWithRequiredBody
 
 
 
-            payload = businessSharedAudience.toJson().dump();
+            payload = businessToBusinessSharedAudienceUpdateWithRequiredBody.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -434,10 +434,10 @@ using namespace Tiny;
 
 
 
-            BusinessSharedAudienceResponse obj(output_string);
+            BusinessToBusinessSharedAudience obj(output_string);
 
 
-            Response<BusinessSharedAudienceResponse> response(obj, httpCode);
+            Response<BusinessToBusinessSharedAudience> response(obj, httpCode);
             return response;
         }
 

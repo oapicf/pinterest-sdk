@@ -18,7 +18,9 @@ conversionEvent: Option[ConversionTagType],
 /* Id of the tag. */
   conversionTagId: Option[String],
 /* Creation date in epoch format. */
-  createdTime: Option[Integer])
+  createdTime: Option[Integer],
+/* For advertiser-defined events, the reporting event label shown in optimization UIs. */
+  reportingConversionEvent: Option[String])
 
 object ConversionEventResponse {
   import DateTimeCodecs._

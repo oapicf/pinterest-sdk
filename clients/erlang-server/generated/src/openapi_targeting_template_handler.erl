@@ -4,15 +4,15 @@ Exposes the following operation IDs:
 
 - `POST` to `/ad_accounts/:ad_account_id/targeting_templates`, OperationId: `targeting_template/create`:
 Create targeting templates.
-&lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
+Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 
 - `GET` to `/ad_accounts/:ad_account_id/targeting_templates`, OperationId: `targeting_template/list`:
 List targeting templates.
-Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
+Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;
 
 - `PATCH` to `/ad_accounts/:ad_account_id/targeting_templates`, OperationId: `targeting_template/update`:
 Update targeting templates.
-&lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
+Update the targeting template given advertiser ID and targeting template ID
 
 """.
 

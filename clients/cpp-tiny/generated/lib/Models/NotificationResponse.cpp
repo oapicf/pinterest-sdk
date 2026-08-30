@@ -6,9 +6,9 @@ using namespace Tiny;
 
 NotificationResponse::NotificationResponse()
 {
-	success = bool(false);
-	received_at = int(0);
 	error_msg = std::string();
+	received_at = int(0);
+	success = bool(false);
 }
 
 NotificationResponse::NotificationResponse(std::string jsonString)
@@ -26,15 +26,15 @@ NotificationResponse::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
-    const char *successKey = "success";
+    const char *error_msgKey = "error_msg";
 
-    if(object.has_key(successKey))
+    if(object.has_key(error_msgKey))
     {
-        bourne::json value = object[successKey];
+        bourne::json value = object[error_msgKey];
 
 
 
-        jsonToValue(&success, value, "bool");
+        jsonToValue(&error_msg, value, "std::string");
 
 
     }
@@ -52,15 +52,15 @@ NotificationResponse::fromJson(std::string jsonObj)
 
     }
 
-    const char *error_msgKey = "error_msg";
+    const char *successKey = "success";
 
-    if(object.has_key(error_msgKey))
+    if(object.has_key(successKey))
     {
-        bourne::json value = object[error_msgKey];
+        bourne::json value = object[successKey];
 
 
 
-        jsonToValue(&error_msg, value, "std::string");
+        jsonToValue(&success, value, "bool");
 
 
     }
@@ -77,7 +77,7 @@ NotificationResponse::toJson()
 
 
 
-    object["success"] = isSuccess();
+    object["error_msg"] = getErrorMsg();
 
 
 
@@ -91,36 +91,12 @@ NotificationResponse::toJson()
 
 
 
-    object["error_msg"] = getErrorMsg();
+    object["success"] = isSuccess();
 
 
 
     return object;
 
-}
-
-bool
-NotificationResponse::isSuccess()
-{
-	return success;
-}
-
-void
-NotificationResponse::setSuccess(bool  success)
-{
-	this->success = success;
-}
-
-int
-NotificationResponse::getReceivedAt()
-{
-	return received_at;
-}
-
-void
-NotificationResponse::setReceivedAt(int  received_at)
-{
-	this->received_at = received_at;
 }
 
 std::string
@@ -130,9 +106,33 @@ NotificationResponse::getErrorMsg()
 }
 
 void
-NotificationResponse::setErrorMsg(std::string  error_msg)
+NotificationResponse::setErrorMsg(std::string error_msg)
 {
 	this->error_msg = error_msg;
+}
+
+int
+NotificationResponse::getReceivedAt()
+{
+	return received_at;
+}
+
+void
+NotificationResponse::setReceivedAt(int received_at)
+{
+	this->received_at = received_at;
+}
+
+bool
+NotificationResponse::isSuccess()
+{
+	return success;
+}
+
+void
+NotificationResponse::setSuccess(bool success)
+{
+	this->success = success;
 }
 
 

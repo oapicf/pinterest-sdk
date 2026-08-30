@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -25,7 +25,7 @@ import org.openapitools.model.EnhancedMatchStatusType;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionTagCommon   {
   
   private String codeSnippet;
@@ -80,7 +80,7 @@ public class ConversionTagCommon   {
   }
 
   
-  @ApiModelProperty(value = "The enhanced match status of the tag")
+  @ApiModelProperty(example = "VALIDATION_COMPLETE", value = "The enhanced match status of the tag")
   @JsonProperty("enhanced_match_status")
   public EnhancedMatchStatusType getEnhancedMatchStatus() {
     return enhancedMatchStatus;
@@ -134,7 +134,7 @@ public class ConversionTagCommon   {
   }
 
   
-  @ApiModelProperty(example = "ACME Checkout Test Tag", required = true, value = "Conversion tag name.")
+  @ApiModelProperty(example = "download_picture", required = true, value = "Conversion tag name.")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -206,10 +206,7 @@ public class ConversionTagCommon   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

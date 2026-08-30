@@ -9,7 +9,7 @@ import           Import
 --
 -- Get integration metadata by ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
 -- operationId: integrations/getById
-getIntegrationsByTextR :: Text -- ^ Integration ID.
+getIntegrationsByTextR :: Text -- ^ Integration record ID.
                        -> Handler Value
 getIntegrationsByTextR id = notImplemented
 

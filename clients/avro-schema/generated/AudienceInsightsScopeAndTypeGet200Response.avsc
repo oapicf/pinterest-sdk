@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AudienceInsightsScopeAndTypeGet200Response",
+  "fields": [
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.AudienceDefinition"
+      },
+      "doc": ""
+    }
+  ]
+
+}

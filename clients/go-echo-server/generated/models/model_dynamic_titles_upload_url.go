@@ -1,0 +1,13 @@
+package models
+
+type DynamicTitlesUploadUrl struct {
+
+	// If present, a reviewed CSV was previously submitted for this ad group. Uploading a new file will replace it. Absent when no prior submission exists.
+	ExistingFilename string `json:"existing_filename,omitempty"`
+
+	// Unique identifier for this upload session. Must be passed to the process endpoint.
+	RequestId string `json:"request_id"`
+
+	// Pre-signed S3 PUT URL to upload the reviewed CSV file.
+	UploadUrl string `json:"upload_url"`
+}

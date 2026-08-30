@@ -22,7 +22,7 @@ part 'catalogs_updatable_creative_assets_attributes.g.dart';
 /// * [iosDeepLink] - IOS deep link to the creative assets page.
 /// * [link] - Link to the creative assets page.
 /// * [title] - The name of the creative assets.
-/// * [visibility] - Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+/// * [visibility] - Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
 @BuiltValue(instantiable: false)
 abstract class CatalogsUpdatableCreativeAssetsAttributes  {
   /// Link to the creative assets page.
@@ -69,7 +69,7 @@ abstract class CatalogsUpdatableCreativeAssetsAttributes  {
   @BuiltValueField(wireName: r'title')
   String? get title;
 
-  /// Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+  /// Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
   @BuiltValueField(wireName: r'visibility')
   String? get visibility;
 
@@ -287,8 +287,9 @@ class _$$CatalogsUpdatableCreativeAssetsAttributesSerializer implements Primitiv
         case r'description':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.description = valueDes;
           break;
         case r'google_product_category':
@@ -310,15 +311,17 @@ class _$$CatalogsUpdatableCreativeAssetsAttributesSerializer implements Primitiv
         case r'link':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.link = valueDes;
           break;
         case r'title':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.title = valueDes;
           break;
         case r'visibility':

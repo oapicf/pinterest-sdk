@@ -1,0 +1,40 @@
+## ProductGroupPromotionsApi
+
+### Create product group promotions
+## Create product group promotions
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/product_group_promotions
+Content-Type: application/json
+Accept: application/json
+
+{
+ "ad_group_id": "<string>",
+ "product_group_promotion": "<string>"
+}
+
+
+### Get a product group promotion by id
+## Get a product group promotion by id
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/product_group_promotions/{{product_group_promotion_id}}
+Accept: application/json
+
+### Get product group promotions
+## Get product group promotions
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/product_group_promotions?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}&productGroupPromotionIds={{productGroupPromotionIds}}&entityStatuses={{entityStatuses}}&adGroupId={{adGroupId}}
+Accept: application/json
+
+### Update product group promotions
+## Update product group promotions
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/product_group_promotions
+Content-Type: application/json
+Accept: application/json
+
+{
+ "ad_group_id": "<string>",
+ "product_group_promotion": "<string>"
+}
+
+
+### Get product group analytics
+## Get product group analytics
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/product_groups/analytics?startDate={{startDate}}&endDate={{endDate}}&productGroupIds={{productGroupIds}}&columns={{columns}}&granularity={{granularity}}&clickWindowDays={{clickWindowDays}}&engagementWindowDays={{engagementWindowDays}}&viewWindowDays={{viewWindowDays}}&conversionReportTime={{conversionReportTime}}&reportingTimezone={{reportingTimezone}}
+Accept: application/json

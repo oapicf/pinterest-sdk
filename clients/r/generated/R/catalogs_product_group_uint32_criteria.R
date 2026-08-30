@@ -8,7 +8,7 @@
 #' @description CatalogsProductGroupUint32Criteria Class
 #' @format An \code{R6Class} generator object
 #' @field negated  character [optional]
-#' @field operator  character
+#' @field operator  \link{NumericFilterOperatorType}
 #' @field value  integer
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -25,16 +25,14 @@ CatalogsProductGroupUint32Criteria <- R6::R6Class(
     #'
     #' @param operator operator
     #' @param value value
-    #' @param negated negated. Default to FALSE.
+    #' @param negated negated
     #' @param ... Other optional arguments.
-    initialize = function(`operator`, `value`, `negated` = FALSE, ...) {
+    initialize = function(`operator`, `value`, `negated` = NULL, ...) {
       if (!missing(`operator`)) {
-        if (!(`operator` %in% c("GREATER_THAN", "GREATER_THAN_OR_EQUALS", "LESS_THAN", "LESS_THAN_OR_EQUALS"))) {
-          stop(paste("Error! \"", `operator`, "\" cannot be assigned to `operator`. Must be \"GREATER_THAN\", \"GREATER_THAN_OR_EQUALS\", \"LESS_THAN\", \"LESS_THAN_OR_EQUALS\".", sep = ""))
+        if (!(`operator` %in% c())) {
+          stop(paste("Error! \"", `operator`, "\" cannot be assigned to `operator`. Must be .", sep = ""))
         }
-        if (!(is.character(`operator`) && length(`operator`) == 1)) {
-          stop(paste("Error! Invalid data for `operator`. Must be a string:", `operator`))
-        }
+        stopifnot(R6::is.R6(`operator`))
         self$`operator` <- `operator`
       }
       if (!missing(`value`)) {
@@ -88,13 +86,36 @@ CatalogsProductGroupUint32Criteria <- R6::R6Class(
       }
       if (!is.null(self$`operator`)) {
         CatalogsProductGroupUint32CriteriaObject[["operator"]] <-
-          self$`operator`
+          self$extractSimpleType(self$`operator`)
       }
       if (!is.null(self$`value`)) {
         CatalogsProductGroupUint32CriteriaObject[["value"]] <-
           self$`value`
       }
       return(CatalogsProductGroupUint32CriteriaObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -108,10 +129,9 @@ CatalogsProductGroupUint32Criteria <- R6::R6Class(
         self$`negated` <- this_object$`negated`
       }
       if (!is.null(this_object$`operator`)) {
-        if (!is.null(this_object$`operator`) && !(this_object$`operator` %in% c("GREATER_THAN", "GREATER_THAN_OR_EQUALS", "LESS_THAN", "LESS_THAN_OR_EQUALS"))) {
-          stop(paste("Error! \"", this_object$`operator`, "\" cannot be assigned to `operator`. Must be \"GREATER_THAN\", \"GREATER_THAN_OR_EQUALS\", \"LESS_THAN\", \"LESS_THAN_OR_EQUALS\".", sep = ""))
-        }
-        self$`operator` <- this_object$`operator`
+        `operator_object` <- NumericFilterOperatorType$new()
+        `operator_object`$fromJSON(jsonlite::toJSON(this_object$`operator`, auto_unbox = TRUE, digits = NA))
+        self$`operator` <- `operator_object`
       }
       if (!is.null(this_object$`value`)) {
         self$`value` <- this_object$`value`
@@ -138,10 +158,7 @@ CatalogsProductGroupUint32Criteria <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`negated` <- this_object$`negated`
-      if (!is.null(this_object$`operator`) && !(this_object$`operator` %in% c("GREATER_THAN", "GREATER_THAN_OR_EQUALS", "LESS_THAN", "LESS_THAN_OR_EQUALS"))) {
-        stop(paste("Error! \"", this_object$`operator`, "\" cannot be assigned to `operator`. Must be \"GREATER_THAN\", \"GREATER_THAN_OR_EQUALS\", \"LESS_THAN\", \"LESS_THAN_OR_EQUALS\".", sep = ""))
-      }
-      self$`operator` <- this_object$`operator`
+      self$`operator` <- NumericFilterOperatorType$new()$fromJSON(jsonlite::toJSON(this_object$`operator`, auto_unbox = TRUE, digits = NA))
       self$`value` <- this_object$`value`
       self
     },
@@ -154,9 +171,7 @@ CatalogsProductGroupUint32Criteria <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `operator`
       if (!is.null(input_json$`operator`)) {
-        if (!(is.character(input_json$`operator`) && length(input_json$`operator`) == 1)) {
-          stop(paste("Error! Invalid data for `operator`. Must be a string:", input_json$`operator`))
-        }
+        stopifnot(R6::is.R6(input_json$`operator`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsProductGroupUint32Criteria: the required field `operator` is missing."))
       }

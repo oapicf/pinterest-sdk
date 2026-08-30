@@ -4,18 +4,22 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
+import model.BigDecimal
+import model.EntityStatus
 import model.Error
 import model.Granularity
 import java.time.LocalDate
-import model.ProductGroupAnalyticsResponseInner
+import model.PaginationOrder
+import model.ProductGroupAnalyticsItems
 import model.ProductGroupPromotion
-import model.ProductGroupPromotionCreateRequest
-import model.ProductGroupPromotionResponse
-import model.ProductGroupPromotionUpdateRequest
+import model.ProductGroupPromotions
+import model.ProductGroupPromotionsCreate
 import model.ProductGroupPromotionsList200Response
+import model.ProductGroupPromotionsUpdateWithRequiredBody
+import model.ReportingColumnSync
 import model.ReportingTimeZone
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class ProductGroupPromotionsApiController @Inject()(cc: ControllerComponents, api: ProductGroupPromotionsApi) extends AbstractController(cc) {
   /**
@@ -23,11 +27,11 @@ class ProductGroupPromotionsApiController @Inject()(cc: ControllerComponents, ap
     * @param adAccountId Unique identifier of an ad account.
     */
   def productGroupPromotionsCreate(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): ProductGroupPromotionResponse = {
-      val productGroupPromotionCreateRequest = request.body.asJson.map(_.as[ProductGroupPromotionCreateRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "productGroupPromotionCreateRequest")
+    def executeApi(): ProductGroupPromotions = {
+      val productGroupPromotionsCreate = request.body.asJson.map(_.as[ProductGroupPromotionsCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "productGroupPromotionsCreate")
       }
-      api.productGroupPromotionsCreate(adAccountId, productGroupPromotionCreateRequest)
+      api.productGroupPromotionsCreate(adAccountId, productGroupPromotionsCreate)
     }
 
     val result = executeApi()
@@ -51,27 +55,29 @@ class ProductGroupPromotionsApiController @Inject()(cc: ControllerComponents, ap
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/product_group_promotions?productGroupPromotionIds=[value]&entityStatuses=[value]&adGroupId=[value]&pageSize=[value]&order=[value]&bookmark=[value]
+    * GET /v5/ad_accounts/:adAccountId/product_group_promotions?bookmark=[value]&pageSize=[value]&order=[value]&productGroupPromotionIds=[value]&entityStatuses=[value]&adGroupId=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def productGroupPromotionsList(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): ProductGroupPromotionsList200Response = {
-      val productGroupPromotionIds = request.queryString.get("product_group_promotion_ids")
-        .map(_.toList)
-        
-      val entityStatuses = request.queryString.get("entity_statuses")
-        .map(_.toList)
-        
-      val adGroupId = request.getQueryString("ad_group_id")
+      val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
       val order = request.getQueryString("order")
+        .map(value => )
         
-      val bookmark = request.getQueryString("bookmark")
+      val productGroupPromotionIds = request.queryString.get("product_group_promotion_ids")
+        .map(_.toList)
         
-      api.productGroupPromotionsList(adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark)
+      val entityStatuses = request.queryString.get("entity_statuses")
+        .map(_.toList)
+        .map(_.map(value => )
+        
+      val adGroupId = request.getQueryString("ad_group_id")
+        
+      api.productGroupPromotionsList(adAccountId, bookmark, pageSize, order, productGroupPromotionIds, entityStatuses, adGroupId)
     }
 
     val result = executeApi()
@@ -84,11 +90,11 @@ class ProductGroupPromotionsApiController @Inject()(cc: ControllerComponents, ap
     * @param adAccountId Unique identifier of an ad account.
     */
   def productGroupPromotionsUpdate(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): ProductGroupPromotionResponse = {
-      val productGroupPromotionUpdateRequest = request.body.asJson.map(_.as[ProductGroupPromotionUpdateRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "productGroupPromotionUpdateRequest")
+    def executeApi(): ProductGroupPromotions = {
+      val productGroupPromotionsUpdateWithRequiredBody = request.body.asJson.map(_.as[ProductGroupPromotionsUpdateWithRequiredBody]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "productGroupPromotionsUpdateWithRequiredBody")
       }
-      api.productGroupPromotionsUpdate(adAccountId, productGroupPromotionUpdateRequest)
+      api.productGroupPromotionsUpdate(adAccountId, productGroupPromotionsUpdateWithRequiredBody)
     }
 
     val result = executeApi()
@@ -101,7 +107,7 @@ class ProductGroupPromotionsApiController @Inject()(cc: ControllerComponents, ap
     * @param adAccountId Unique identifier of an ad account.
     */
   def productGroupsAnalytics(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): List[ProductGroupAnalyticsResponseInner] = {
+    def executeApi(): List[ProductGroupAnalyticsItems] = {
       val startDate = request.getQueryString("start_date")
         .map(value => LocalDate.parse(value))
         .getOrElse {
@@ -122,6 +128,7 @@ class ProductGroupPromotionsApiController @Inject()(cc: ControllerComponents, ap
         
       val columns = request.getQueryString("columns")
         .map(values => splitCollectionParam(values, "csv"))
+        .map(_.map(value => )
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("columns", "query string")
         }
@@ -133,20 +140,20 @@ class ProductGroupPromotionsApiController @Inject()(cc: ControllerComponents, ap
         }
         
       val clickWindowDays = request.getQueryString("click_window_days")
-        .map(value => value.toInt)
+        .map(value => BigDecimal(value))
         
       val engagementWindowDays = request.getQueryString("engagement_window_days")
-        .map(value => value.toInt)
+        .map(value => BigDecimal(value))
         
       val viewWindowDays = request.getQueryString("view_window_days")
-        .map(value => value.toInt)
+        .map(value => BigDecimal(value))
         
       val conversionReportTime = request.getQueryString("conversion_report_time")
         
       val reportingTimezone = request.getQueryString("reporting_timezone")
         .map(value => )
         
-      api.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone)
+      api.productGroupsAnalytics(startDate, endDate, productGroupIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone)
     }
 
     val result = executeApi()

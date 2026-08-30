@@ -14,9 +14,9 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::RecordCounts.new(
-  invalid: 50,
-  processed: 1000,
-  valid: 950
+  invalid: null,
+  processed: null,
+  valid: null
 )
 ```
 

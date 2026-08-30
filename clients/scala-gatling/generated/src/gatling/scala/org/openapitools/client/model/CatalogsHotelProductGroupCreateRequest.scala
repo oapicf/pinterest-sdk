@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsHotelProductGroupCreateRequest (
-    /* Catalog id pertaining to the hotel product group. */
+    /* Catalog ID pertaining to the product group. */
     _catalogId: String,
     _catalogType: String,
     _description: Option[String],

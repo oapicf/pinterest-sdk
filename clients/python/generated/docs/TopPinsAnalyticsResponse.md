@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **date_availability** | [**TopPinsAnalyticsResponseDateAvailability**](TopPinsAnalyticsResponseDateAvailability.md) |  | [optional] 
-**pins** | [**List[TopPinsAnalyticsResponsePinsInner]**](TopPinsAnalyticsResponsePinsInner.md) |  | [optional] 
-**sort_by** | **str** |  | [optional] 
+**pins** | [**List[TopPinsAnalyticsResponsePinsItems]**](TopPinsAnalyticsResponsePinsItems.md) |  | [optional] 
+**sort_by** | [**TopPinsSortBy**](TopPinsSortBy.md) |  | [optional] 
 
 ## Example
 

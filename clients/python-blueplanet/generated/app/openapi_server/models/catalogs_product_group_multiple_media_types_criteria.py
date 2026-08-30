@@ -16,7 +16,7 @@ class CatalogsProductGroupMultipleMediaTypesCriteria(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, negated: bool=False, values: List[MediaType]=None):  # noqa: E501
+    def __init__(self, negated: bool=None, values: List[MediaType]=None):  # noqa: E501
         """CatalogsProductGroupMultipleMediaTypesCriteria - a model defined in Swagger
 
         :param negated: The negated of this CatalogsProductGroupMultipleMediaTypesCriteria.  # noqa: E501

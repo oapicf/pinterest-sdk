@@ -10,19 +10,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Exception  {
   
- /**
-  * Exception error code.
-  */
-  @ApiModelProperty(example = "2", value = "Exception error code.")
+  @ApiModelProperty(example = "2", value = "")
   private Integer code;
 
- /**
-  * Exception message.
-  */
-  @ApiModelProperty(example = "Advertiser not found.", value = "Exception message.")
+  @ApiModelProperty(example = "Advertiser not found.", required = true, value = "")
   private String message;
  /**
-  * Exception error code.
+  * Get code
   * @return code
   */
   @JsonProperty("code")
@@ -46,10 +40,11 @@ public class Exception  {
   }
 
  /**
-  * Exception message.
+  * Get message
   * @return message
   */
   @JsonProperty("message")
+  @NotNull
   public String getMessage() {
     return message;
   }
@@ -104,10 +99,7 @@ public class Exception  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

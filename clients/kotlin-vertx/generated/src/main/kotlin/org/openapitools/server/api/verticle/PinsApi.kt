@@ -1,14 +1,17 @@
 package org.openapitools.server.api.verticle
 
 import org.openapitools.server.api.model.CreativeType
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.MultiPinsAnalyticsMetricTypesItem
 import org.openapitools.server.api.model.Pin
 import org.openapitools.server.api.model.PinAnalyticsMetricsResponse
 import org.openapitools.server.api.model.PinCreate
+import org.openapitools.server.api.model.PinFilter
+import org.openapitools.server.api.model.PinType
 import org.openapitools.server.api.model.PinUpdate
 import org.openapitools.server.api.model.PinsList200Response
-import org.openapitools.server.api.model.PinsSaveRequest
+import org.openapitools.server.api.model.PinsSaveRequestCreate
 import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.QuerypinanalyticsmetrictypesItems
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -27,25 +30,25 @@ interface PinsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* multiPinsAnalytics
      * Get multiple Pin analytics */
-    suspend fun multiPinsAnalytics(pinIds:kotlin.Array<kotlin.String>?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,metricTypes:kotlin.Array<kotlin.String>?,appTypes:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>>
+    suspend fun multiPinsAnalytics(pinIds:kotlin.Array<kotlin.String>?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,metricTypes:kotlin.Array<MultiPinsAnalyticsMetricTypesItem>?,appTypes:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>>
     /* pinsAnalytics
      * Get Pin analytics */
-    suspend fun pinsAnalytics(pinId:kotlin.String?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,metricTypes:kotlin.Array<kotlin.String>?,appTypes:kotlin.String?,splitField:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>
+    suspend fun pinsAnalytics(pinId:kotlin.String?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,metricTypes:kotlin.Array<QuerypinanalyticsmetrictypesItems>?,appTypes:kotlin.String?,splitField:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>
     /* pinsCreate
      * Create Pin */
     suspend fun pinsCreate(pinCreate:PinCreate?,adAccountId:kotlin.String?,context:OperationRequest):Response<Pin>
     /* pinsDelete
      * Delete Pin */
-    suspend fun pinsDelete(pinId:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<Void>
+    suspend fun pinsDelete(pinId:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<Pin>
     /* pinsGet
      * Get Pin */
     suspend fun pinsGet(pinId:kotlin.String?,adAccountId:kotlin.String?,pinMetrics:kotlin.Boolean?,context:OperationRequest):Response<Pin>
     /* pinsList
      * List Pins */
-    suspend fun pinsList(pinFilter:kotlin.String?,pinMetrics:kotlin.Boolean?,includeProtectedPins:kotlin.Boolean?,pinType:kotlin.String?,creativeTypes:kotlin.Array<CreativeType>?,adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<PinsList200Response>
+    suspend fun pinsList(pinFilter:PinFilter?,pinMetrics:kotlin.Boolean?,includeProtectedPins:kotlin.Boolean?,pinType:PinType?,creativeTypes:kotlin.Array<CreativeType>?,adAccountId:kotlin.String?,domain:kotlin.String?,domains:kotlin.Array<kotlin.String>?,includeProductTagObj:kotlin.Boolean?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<PinsList200Response>
     /* pinsSave
      * Save Pin */
-    suspend fun pinsSave(pinId:kotlin.String?,pinsSaveRequest:PinsSaveRequest?,adAccountId:kotlin.String?,context:OperationRequest):Response<Pin>
+    suspend fun pinsSave(pinId:kotlin.String?,pinsSaveRequestCreate:PinsSaveRequestCreate?,adAccountId:kotlin.String?,context:OperationRequest):Response<Pin>
     /* pinsUpdate
      * Update Pin */
     suspend fun pinsUpdate(pinId:kotlin.String?,pinUpdate:PinUpdate?,adAccountId:kotlin.String?,context:OperationRequest):Response<Pin>

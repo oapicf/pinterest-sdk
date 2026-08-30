@@ -15,25 +15,18 @@
 
 typedef struct placement_multipliers_t placement_multipliers_t;
 
-
-// Enum PLACEMENT for placement_multipliers
-
-typedef enum  { pinterest_rest_api_placement_multipliers_PLACEMENT_NULL = 0, pinterest_rest_api_placement_multipliers_PLACEMENT_SEARCH, pinterest_rest_api_placement_multipliers_PLACEMENT_BROWSE, pinterest_rest_api_placement_multipliers_PLACEMENT_RELATED_PINS } pinterest_rest_api_placement_multipliers_PLACEMENT_e;
-
-char* placement_multipliers_placement_ToString(pinterest_rest_api_placement_multipliers_PLACEMENT_e placement);
-
-pinterest_rest_api_placement_multipliers_PLACEMENT_e placement_multipliers_placement_FromString(char* placement);
+#include "placement_type.h"
 
 
 
 typedef struct placement_multipliers_t {
-    pinterest_rest_api_placement_multipliers_PLACEMENT_e placement; //enum
+    placement_type_t *placement; // custom
 
     int _library_owned; // Is the library responsible for freeing this object?
 } placement_multipliers_t;
 
 __attribute__((deprecated)) placement_multipliers_t *placement_multipliers_create(
-    pinterest_rest_api_placement_multipliers_PLACEMENT_e placement
+    placement_type_t *placement
 );
 
 void placement_multipliers_free(placement_multipliers_t *placement_multipliers);

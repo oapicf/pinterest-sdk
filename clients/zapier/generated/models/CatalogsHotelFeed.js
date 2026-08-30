@@ -3,31 +3,12 @@ const CatalogsFeedCredentials = require('../models/CatalogsFeedCredentials');
 const CatalogsFeedProcessingSchedule = require('../models/CatalogsFeedProcessingSchedule');
 const CatalogsFormat = require('../models/CatalogsFormat');
 const CatalogsStatus = require('../models/CatalogsStatus');
-const CatalogsType = require('../models/CatalogsType');
 const NullableCurrency = require('../models/NullableCurrency');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
-            {
-                key: `${keyPrefix}created_at`,
-                label: `[${labelPrefix}created_at]`,
-                required: true,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}id`,
-                label: `[${labelPrefix}id]`,
-                required: true,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}updated_at`,
-                label: `[${labelPrefix}updated_at]`,
-                required: true,
-                type: 'string',
-            },
             {
                 key: `${keyPrefix}catalog_id`,
                 label: `Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. - [${labelPrefix}catalog_id]`,
@@ -36,7 +17,18 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}catalog_type`,
-                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
+                label: `[${labelPrefix}catalog_type]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'HOTEL',
+                ],
+            },
+            {
+                key: `${keyPrefix}created_at`,
+                label: `[${labelPrefix}created_at]`,
+                required: true,
+                type: 'string',
             },
             ...CatalogsFeedCredentials.fields(`${keyPrefix}credentials`, isInput),
             {
@@ -52,6 +44,12 @@ module.exports = {
             {
                 key: `${keyPrefix}format`,
                 ...CatalogsFormat.fields(`${keyPrefix}format`, isInput),
+            },
+            {
+                key: `${keyPrefix}id`,
+                label: `ID of the feed entity. - [${labelPrefix}id]`,
+                required: true,
+                type: 'string',
             },
             {
                 key: `${keyPrefix}location`,
@@ -70,24 +68,30 @@ module.exports = {
                 key: `${keyPrefix}status`,
                 ...CatalogsStatus.fields(`${keyPrefix}status`, isInput),
             },
+            {
+                key: `${keyPrefix}updated_at`,
+                label: `[${labelPrefix}updated_at]`,
+                required: true,
+                type: 'string',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'created_at': bundle.inputData?.[`${keyPrefix}created_at`],
-            'id': bundle.inputData?.[`${keyPrefix}id`],
-            'updated_at': bundle.inputData?.[`${keyPrefix}updated_at`],
             'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
+            'created_at': bundle.inputData?.[`${keyPrefix}created_at`],
             'credentials': utils.removeIfEmpty(CatalogsFeedCredentials.mapping(bundle, `${keyPrefix}credentials`)),
             'default_currency': bundle.inputData?.[`${keyPrefix}default_currency`],
             'default_locale': bundle.inputData?.[`${keyPrefix}default_locale`],
             'format': bundle.inputData?.[`${keyPrefix}format`],
+            'id': bundle.inputData?.[`${keyPrefix}id`],
             'location': bundle.inputData?.[`${keyPrefix}location`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'preferred_processing_schedule': utils.removeIfEmpty(CatalogsFeedProcessingSchedule.mapping(bundle, `${keyPrefix}preferred_processing_schedule`)),
             'status': bundle.inputData?.[`${keyPrefix}status`],
+            'updated_at': bundle.inputData?.[`${keyPrefix}updated_at`],
         }
     },
 }

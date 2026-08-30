@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.numeric_filter_operator_type import NumericFilterOperatorType  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -15,19 +16,19 @@ class CatalogsProductGroupUint32Criteria(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, negated: bool=False, operator: str=None, value: int=None):  # noqa: E501
+    def __init__(self, negated: bool=None, operator: NumericFilterOperatorType=None, value: int=None):  # noqa: E501
         """CatalogsProductGroupUint32Criteria - a model defined in Swagger
 
         :param negated: The negated of this CatalogsProductGroupUint32Criteria.  # noqa: E501
         :type negated: bool
         :param operator: The operator of this CatalogsProductGroupUint32Criteria.  # noqa: E501
-        :type operator: str
+        :type operator: NumericFilterOperatorType
         :param value: The value of this CatalogsProductGroupUint32Criteria.  # noqa: E501
         :type value: int
         """
         self.swagger_types = {
             'negated': bool,
-            'operator': str,
+            'operator': NumericFilterOperatorType,
             'value': int
         }
 
@@ -74,29 +75,25 @@ class CatalogsProductGroupUint32Criteria(Model):
         self._negated = negated
 
     @property
-    def operator(self) -> str:
+    def operator(self) -> NumericFilterOperatorType:
         """Gets the operator of this CatalogsProductGroupUint32Criteria.
 
 
         :return: The operator of this CatalogsProductGroupUint32Criteria.
-        :rtype: str
+        :rtype: NumericFilterOperatorType
         """
         return self._operator
 
     @operator.setter
-    def operator(self, operator: str):
+    def operator(self, operator: NumericFilterOperatorType):
         """Sets the operator of this CatalogsProductGroupUint32Criteria.
 
 
         :param operator: The operator of this CatalogsProductGroupUint32Criteria.
-        :type operator: str
+        :type operator: NumericFilterOperatorType
         """
-        allowed_values = ["GREATER_THAN", "GREATER_THAN_OR_EQUALS", "LESS_THAN", "LESS_THAN_OR_EQUALS"]  # noqa: E501
-        if operator not in allowed_values:
-            raise ValueError(
-                "Invalid value for `operator` ({0}), must be one of {1}"
-                .format(operator, allowed_values)
-            )
+        if operator is None:
+            raise ValueError("Invalid value for `operator`, must not be `None`")  # noqa: E501
 
         self._operator = operator
 

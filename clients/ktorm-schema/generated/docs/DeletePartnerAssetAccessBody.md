@@ -5,17 +5,17 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**accesses** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;DeletePartnerAssetAccessBodyAccessesInner&gt;**](DeletePartnerAssetAccessBodyAccessesInner.md) |  | 
+**accesses** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;DeletePartnerAssetAccessItem&gt;**](DeletePartnerAssetAccessItem.md) | List of partner asset accesses to delete. | 
 
 
-# **Table `DeletePartnerAssetAccessBodyDeletePartnerAssetAccessBodyAccessesInner`**
-(mapped from: DeletePartnerAssetAccessBodyDeletePartnerAssetAccessBodyAccessesInner)
+# **Table `DeletePartnerAssetAccessBodyDeletePartnerAssetAccessItem`**
+(mapped from: DeletePartnerAssetAccessBodyDeletePartnerAssetAccessItem)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 deletePartnerAssetAccessBody | deletePartnerAssetAccessBody | long | | kotlin.Long | Primary Key | *one*
-deletePartnerAssetAccessBodyAccessesInner | deletePartnerAssetAccessBodyAccessesInner | long | | kotlin.Long | Foreign Key | *many*
+deletePartnerAssetAccessItem | deletePartnerAssetAccessItem | long | | kotlin.Long | Foreign Key | *many*
 
 
 

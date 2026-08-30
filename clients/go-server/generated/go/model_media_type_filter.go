@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,8 +23,61 @@ type MediaTypeFilter struct {
 
 	MEDIA_TYPE CatalogsProductGroupMultipleMediaTypesCriteria `json:"MEDIA_TYPE"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into MediaTypeFilter
+func (o *MediaTypeFilter) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"MEDIA_TYPE",
+	}
 
-// AssertMediaTypeFilterRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"MEDIA_TYPE": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"MEDIA_TYPE": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded MediaTypeFilter
+
+	if value, exists := allProperties["MEDIA_TYPE"]; exists {
+		if err = json.Unmarshal(value, &decoded.MEDIA_TYPE); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertMediaTypeFilterRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertMediaTypeFilterRequired(obj MediaTypeFilter) error {
 	elements := map[string]interface{}{
 		"MEDIA_TYPE": obj.MEDIA_TYPE,
@@ -30,10 +88,16 @@ func AssertMediaTypeFilterRequired(obj MediaTypeFilter) error {
 		}
 	}
 
+	if err := AssertCatalogsProductGroupMultipleMediaTypesCriteriaRequired(obj.MEDIA_TYPE); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertMediaTypeFilterConstraints checks if the values respects the defined constraints
 func AssertMediaTypeFilterConstraints(obj MediaTypeFilter) error {
+	if err := AssertCatalogsProductGroupMultipleMediaTypesCriteriaConstraints(obj.MEDIA_TYPE); err != nil {
+		return err
+	}
 	return nil
 }

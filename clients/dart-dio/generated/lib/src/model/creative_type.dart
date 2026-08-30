@@ -50,6 +50,9 @@ class CreativeType extends EnumClass {
   /// Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
   @BuiltValueEnumConst(wireName: r'MAX_WIDTH_VIDEO_COLLECTION')
   static const CreativeType MAX_WIDTH_VIDEO_COLLECTION = _$MAX_WIDTH_VIDEO_COLLECTION;
+  /// Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+  @BuiltValueEnumConst(wireName: r'APP')
+  static const CreativeType APP = _$APP;
 
   static Serializer<CreativeType> get serializer => _$creativeTypeSerializer;
 

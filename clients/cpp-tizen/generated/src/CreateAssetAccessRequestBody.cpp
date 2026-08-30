@@ -49,12 +49,12 @@ CreateAssetAccessRequestBody::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<CreateAssetAccessRequestBody_asset_requests_inner> new_list;
-			CreateAssetAccessRequestBody_asset_requests_inner inst;
+			list<CreateAssetAccessRequestItem> new_list;
+			CreateAssetAccessRequestItem inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("CreateAssetAccessRequestBody_asset_requests_inner")) {
-					jsonToValue(&inst, temp_json, "CreateAssetAccessRequestBody_asset_requests_inner", "");
+				if (isprimitive("CreateAssetAccessRequestItem")) {
+					jsonToValue(&inst, temp_json, "CreateAssetAccessRequestItem", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -78,18 +78,18 @@ CreateAssetAccessRequestBody::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("CreateAssetAccessRequestBody_asset_requests_inner")) {
-		list<CreateAssetAccessRequestBody_asset_requests_inner> new_list = static_cast<list <CreateAssetAccessRequestBody_asset_requests_inner> > (getAssetRequests());
-		node = converttoJson(&new_list, "CreateAssetAccessRequestBody_asset_requests_inner", "array");
+	if (isprimitive("CreateAssetAccessRequestItem")) {
+		list<CreateAssetAccessRequestItem> new_list = static_cast<list <CreateAssetAccessRequestItem> > (getAssetRequests());
+		node = converttoJson(&new_list, "CreateAssetAccessRequestItem", "array");
 	} else {
 		node = json_node_alloc();
-		list<CreateAssetAccessRequestBody_asset_requests_inner> new_list = static_cast<list <CreateAssetAccessRequestBody_asset_requests_inner> > (getAssetRequests());
+		list<CreateAssetAccessRequestItem> new_list = static_cast<list <CreateAssetAccessRequestItem> > (getAssetRequests());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<CreateAssetAccessRequestBody_asset_requests_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<CreateAssetAccessRequestItem>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			CreateAssetAccessRequestBody_asset_requests_inner obj = *it;
+			CreateAssetAccessRequestItem obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -111,14 +111,14 @@ CreateAssetAccessRequestBody::toJson()
 	return ret;
 }
 
-std::list<CreateAssetAccessRequestBody_asset_requests_inner>
+std::list<CreateAssetAccessRequestItem>
 CreateAssetAccessRequestBody::getAssetRequests()
 {
 	return asset_requests;
 }
 
 void
-CreateAssetAccessRequestBody::setAssetRequests(std::list <CreateAssetAccessRequestBody_asset_requests_inner> asset_requests)
+CreateAssetAccessRequestBody::setAssetRequests(std::list <CreateAssetAccessRequestItem> asset_requests)
 {
 	this->asset_requests = asset_requests;
 }

@@ -18,13 +18,15 @@ class OrderLine(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, ad_account_id: str=None, budget: float=None, end_time: float=None, id: str=None, name: str=None, paid_budget: float=None, paid_type: OrderLinePaidType=None, purchase_order_id: str=None, start_time: float=None, status: OrderLineStatus=None, type: str=None, campaign_ids: List[str]=None):  # noqa: E501
+    def __init__(self, ad_account_id: str=None, budget: float=None, campaign_ids: List[str]=None, end_time: float=None, id: str=None, name: str=None, paid_budget: float=None, paid_type: OrderLinePaidType=None, purchase_order_id: str=None, start_time: float=None, status: OrderLineStatus=None, type: str=None):  # noqa: E501
         """OrderLine - a model defined in Swagger
 
         :param ad_account_id: The ad_account_id of this OrderLine.  # noqa: E501
         :type ad_account_id: str
         :param budget: The budget of this OrderLine.  # noqa: E501
         :type budget: float
+        :param campaign_ids: The campaign_ids of this OrderLine.  # noqa: E501
+        :type campaign_ids: List[str]
         :param end_time: The end_time of this OrderLine.  # noqa: E501
         :type end_time: float
         :param id: The id of this OrderLine.  # noqa: E501
@@ -43,12 +45,11 @@ class OrderLine(Model):
         :type status: OrderLineStatus
         :param type: The type of this OrderLine.  # noqa: E501
         :type type: str
-        :param campaign_ids: The campaign_ids of this OrderLine.  # noqa: E501
-        :type campaign_ids: List[str]
         """
         self.swagger_types = {
             'ad_account_id': str,
             'budget': float,
+            'campaign_ids': List[str],
             'end_time': float,
             'id': str,
             'name': str,
@@ -57,13 +58,13 @@ class OrderLine(Model):
             'purchase_order_id': str,
             'start_time': float,
             'status': OrderLineStatus,
-            'type': str,
-            'campaign_ids': List[str]
+            'type': str
         }
 
         self.attribute_map = {
             'ad_account_id': 'ad_account_id',
             'budget': 'budget',
+            'campaign_ids': 'campaign_ids',
             'end_time': 'end_time',
             'id': 'id',
             'name': 'name',
@@ -72,12 +73,12 @@ class OrderLine(Model):
             'purchase_order_id': 'purchase_order_id',
             'start_time': 'start_time',
             'status': 'status',
-            'type': 'type',
-            'campaign_ids': 'campaign_ids'
+            'type': 'type'
         }
 
         self._ad_account_id = ad_account_id
         self._budget = budget
+        self._campaign_ids = campaign_ids
         self._end_time = end_time
         self._id = id
         self._name = name
@@ -87,7 +88,6 @@ class OrderLine(Model):
         self._start_time = start_time
         self._status = status
         self._type = type
-        self._campaign_ids = campaign_ids
 
     @classmethod
     def from_dict(cls, dikt) -> 'OrderLine':
@@ -120,6 +120,8 @@ class OrderLine(Model):
         :param ad_account_id: The ad_account_id of this OrderLine.
         :type ad_account_id: str
         """
+        if ad_account_id is None:
+            raise ValueError("Invalid value for `ad_account_id`, must not be `None`")  # noqa: E501
 
         self._ad_account_id = ad_account_id
 
@@ -145,6 +147,31 @@ class OrderLine(Model):
         """
 
         self._budget = budget
+
+    @property
+    def campaign_ids(self) -> List[str]:
+        """Gets the campaign_ids of this OrderLine.
+
+        Associated List of campaign IDs.  # noqa: E501
+
+        :return: The campaign_ids of this OrderLine.
+        :rtype: List[str]
+        """
+        return self._campaign_ids
+
+    @campaign_ids.setter
+    def campaign_ids(self, campaign_ids: List[str]):
+        """Sets the campaign_ids of this OrderLine.
+
+        Associated List of campaign IDs.  # noqa: E501
+
+        :param campaign_ids: The campaign_ids of this OrderLine.
+        :type campaign_ids: List[str]
+        """
+        if campaign_ids is None:
+            raise ValueError("Invalid value for `campaign_ids`, must not be `None`")  # noqa: E501
+
+        self._campaign_ids = campaign_ids
 
     @property
     def end_time(self) -> float:
@@ -189,6 +216,8 @@ class OrderLine(Model):
         :param id: The id of this OrderLine.
         :type id: str
         """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
         if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
             raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
@@ -329,6 +358,8 @@ class OrderLine(Model):
         :param status: The status of this OrderLine.
         :type status: OrderLineStatus
         """
+        if status is None:
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
 
         self._status = status
 
@@ -352,30 +383,7 @@ class OrderLine(Model):
         :param type: The type of this OrderLine.
         :type type: str
         """
+        if type is None:
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
 
         self._type = type
-
-    @property
-    def campaign_ids(self) -> List[str]:
-        """Gets the campaign_ids of this OrderLine.
-
-        Associated List of campaign IDs.  # noqa: E501
-
-        :return: The campaign_ids of this OrderLine.
-        :rtype: List[str]
-        """
-        return self._campaign_ids
-
-    @campaign_ids.setter
-    def campaign_ids(self, campaign_ids: List[str]):
-        """Sets the campaign_ids of this OrderLine.
-
-        Associated List of campaign IDs.  # noqa: E501
-
-        :param campaign_ids: The campaign_ids of this OrderLine.
-        :type campaign_ids: List[str]
-        """
-        if campaign_ids is None:
-            raise ValueError("Invalid value for `campaign_ids`, must not be `None`")  # noqa: E501
-
-        self._campaign_ids = campaign_ids

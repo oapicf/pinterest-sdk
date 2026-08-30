@@ -87,7 +87,7 @@ CatalogsFeedValidationDetails::getErrors()
 }
 
 void
-CatalogsFeedValidationDetails::setErrors(CatalogsFeedValidationErrors  errors)
+CatalogsFeedValidationDetails::setErrors(CatalogsFeedValidationErrors errors)
 {
 	this->errors = errors;
 }
@@ -99,7 +99,7 @@ CatalogsFeedValidationDetails::getWarnings()
 }
 
 void
-CatalogsFeedValidationDetails::setWarnings(CatalogsFeedValidationWarnings  warnings)
+CatalogsFeedValidationDetails::setWarnings(CatalogsFeedValidationWarnings warnings)
 {
 	this->warnings = warnings;
 }

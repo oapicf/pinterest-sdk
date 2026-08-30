@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FilterOperatorType** | Pointer to **string** |  | [optional] [default to "IS"]
-**Negated** | Pointer to **bool** |  | [optional] [default to false]
+**FilterOperatorType** | Pointer to [**FilterOperatorType**](FilterOperatorType.md) |  | [optional] 
+**Negated** | Pointer to **bool** |  | [optional] 
 **Values** | **[]string** |  | 
 
 ## Methods
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetFilterOperatorType
 
-`func (o *CatalogsProductGroupFilterOperatorTypeCriteria) GetFilterOperatorType() string`
+`func (o *CatalogsProductGroupFilterOperatorTypeCriteria) GetFilterOperatorType() FilterOperatorType`
 
 GetFilterOperatorType returns the FilterOperatorType field if non-nil, zero value otherwise.
 
 ### GetFilterOperatorTypeOk
 
-`func (o *CatalogsProductGroupFilterOperatorTypeCriteria) GetFilterOperatorTypeOk() (*string, bool)`
+`func (o *CatalogsProductGroupFilterOperatorTypeCriteria) GetFilterOperatorTypeOk() (*FilterOperatorType, bool)`
 
 GetFilterOperatorTypeOk returns a tuple with the FilterOperatorType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilterOperatorType
 
-`func (o *CatalogsProductGroupFilterOperatorTypeCriteria) SetFilterOperatorType(v string)`
+`func (o *CatalogsProductGroupFilterOperatorTypeCriteria) SetFilterOperatorType(v FilterOperatorType)`
 
 SetFilterOperatorType sets FilterOperatorType field to given value.
 

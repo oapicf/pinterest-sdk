@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import CreateAssetAccessRequestBody._
 
 case class CreateAssetAccessRequestBody (
-  assetRequests: List[CreateAssetAccessRequestBodyAssetRequestsInner])
+  assetRequests: List[CreateAssetAccessRequestItem])
 
 object CreateAssetAccessRequestBody {
   import DateTimeCodecs._

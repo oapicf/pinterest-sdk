@@ -23,11 +23,11 @@ public class SummaryPin  {
 
   private String description;
 
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
 
   private String id;
 
-  @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
+  @ApiModelProperty(value = "")
 
   private String link;
 
@@ -180,10 +180,7 @@ public class SummaryPin  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -23,29 +23,29 @@ CatalogsItemValidationErrors::~CatalogsItemValidationErrors()
 void
 CatalogsItemValidationErrors::__init()
 {
-	//aDULT_INVALID = new CatalogsItemValidationDetails();
-	//aDWORDS_FORMAT_INVALID = new CatalogsItemValidationDetails();
-	//aVAILABILITY_INVALID = new CatalogsItemValidationDetails();
-	//bLOCKLISTED_IMAGE_SIGNATURE = new CatalogsItemValidationDetails();
-	//dESCRIPTION_MISSING = new CatalogsItemValidationDetails();
-	//dUPLICATE_PRODUCTS = new CatalogsItemValidationDetails();
-	//iMAGE_LINK_INVALID = new CatalogsItemValidationDetails();
-	//iMAGE_LINK_LENGTH_TOO_LONG = new CatalogsItemValidationDetails();
-	//iMAGE_LINK_MISSING = new CatalogsItemValidationDetails();
-	//iNVALID_DOMAIN = new CatalogsItemValidationDetails();
-	//iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE = new CatalogsItemValidationDetails();
-	//iTEMID_MISSING = new CatalogsItemValidationDetails();
-	//lINK_FORMAT_INVALID = new CatalogsItemValidationDetails();
-	//lINK_LENGTH_TOO_LONG = new CatalogsItemValidationDetails();
-	//lIST_PRICE_INVALID = new CatalogsItemValidationDetails();
-	//mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = new CatalogsItemValidationDetails();
-	//pARSE_LINE_ERROR = new CatalogsItemValidationDetails();
-	//pINJOIN_CONTENT_UNSAFE = new CatalogsItemValidationDetails();
-	//pRICE_CANNOT_BE_DETERMINED = new CatalogsItemValidationDetails();
-	//pRICE_MISSING = new CatalogsItemValidationDetails();
-	//pRODUCT_LINK_MISSING = new CatalogsItemValidationDetails();
-	//pRODUCT_PRICE_INVALID = new CatalogsItemValidationDetails();
-	//tITLE_MISSING = new CatalogsItemValidationDetails();
+	//aDULT_INVALID = null;
+	//aDWORDS_FORMAT_INVALID = null;
+	//aVAILABILITY_INVALID = null;
+	//bLOCKLISTED_IMAGE_SIGNATURE = null;
+	//dESCRIPTION_MISSING = null;
+	//dUPLICATE_PRODUCTS = null;
+	//iMAGE_LINK_INVALID = null;
+	//iMAGE_LINK_LENGTH_TOO_LONG = null;
+	//iMAGE_LINK_MISSING = null;
+	//iNVALID_DOMAIN = null;
+	//iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE = null;
+	//iTEMID_MISSING = null;
+	//lINK_FORMAT_INVALID = null;
+	//lINK_LENGTH_TOO_LONG = null;
+	//lIST_PRICE_INVALID = null;
+	//mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = null;
+	//pARSE_LINE_ERROR = null;
+	//pINJOIN_CONTENT_UNSAFE = null;
+	//pRICE_CANNOT_BE_DETERMINED = null;
+	//pRICE_MISSING = null;
+	//pRODUCT_LINK_MISSING = null;
+	//pRODUCT_PRICE_INVALID = null;
+	//tITLE_MISSING = null;
 }
 
 void

@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.BusinessRoleForInvite
 open OpenAPI.Model.InviteType
 
 module CreateMembershipOrPartnershipInvitesBody =
@@ -12,7 +13,7 @@ module CreateMembershipOrPartnershipInvitesBody =
   [<CLIMutable>]
   type CreateMembershipOrPartnershipInvitesBody = {
     [<JsonProperty(PropertyName = "business_role")>]
-    BusinessRole : string;
+    BusinessRole : BusinessRoleForInvite;
     [<JsonProperty(PropertyName = "invite_type")>]
     InviteType : InviteType;
     [<JsonProperty(PropertyName = "members")>]

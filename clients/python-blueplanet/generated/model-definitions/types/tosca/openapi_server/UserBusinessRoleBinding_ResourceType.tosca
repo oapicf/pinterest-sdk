@@ -20,7 +20,7 @@ resourceTypes {
     properties {
         assets_summary {
           type = BusinessMemberAssetsSummary
-          description = ""
+          description = "Ad accounts and profiles the business member/partner has access to."
           optional = false
         }
         business_roles {
@@ -51,7 +51,7 @@ resourceTypes {
         }
         is_shared_partner {
           type =  boolean
-          description = "This field is only relevant when business_role&#x3D;\&quot;PARTNER\&quot;. &lt;br&gt;If is_shared_partner&#x3D;FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. &lt;br&gt;If is_shared_partner&#x3D;TRUE, you can access the partner&#39;s business asset. If assets_summary is not empty, the assets listed are the partner&#39;s business assets you have access to."
+          description = "This field is only relevant when business_role&#x3D;\&quot;PARTNER\&quot;. If is_shared_partner&#x3D;FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner&#x3D;TRUE, you can access the partner&#39;s business asset. If assets_summary is not empty, the assets listed are the partner&#39;s business assets you have access to."
           optional = false
         }
         user {

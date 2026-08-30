@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CreativeAssetsIdFilter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("CREATIVE_ASSETS_ID")
     @get:JsonProperty("CREATIVE_ASSETS_ID", required = true) val CREATIVE_ASSETS_ID: CatalogsProductGroupMultipleStringCriteria
 ) {
 

@@ -5,18 +5,18 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;UserWebsiteSummary&gt;**](UserWebsiteSummary.md) |  | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;UserWebsite&gt;**](UserWebsite.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 
-# **Table `UserWebsitesGet200ResponseUserWebsiteSummary`**
-(mapped from: UserWebsitesGet200ResponseUserWebsiteSummary)
+# **Table `UserWebsitesGet200ResponseUserWebsite`**
+(mapped from: UserWebsitesGet200ResponseUserWebsite)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 userWebsitesGet200Response | userWebsitesGet200Response | long | | kotlin.Long | Primary Key | *one*
-userWebsiteSummary | userWebsiteSummary | long | | kotlin.Long | Foreign Key | *many*
+userWebsite | userWebsite | long | | kotlin.Long | Foreign Key | *many*
 
 
 

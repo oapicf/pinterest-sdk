@@ -11,7 +11,7 @@ Feature | HTTP request | Description
 
 
 # **ad_accounts_subscriptions_del_by_id**
-> ad_accounts_subscriptions_del_by_id (ad_account_id: STRING_32 ; subscription_id: STRING_32 )
+> ad_accounts_subscriptions_del_by_id (ad_account_id: STRING_32 ; subscription_id: STRING_32 ): detachable LEAD_SUBSCRIPTION
 
 
 Delete lead ads subscription
@@ -28,7 +28,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**LEAD_SUBSCRIPTION**](LeadSubscription.md)
 
 ### Authorization
 

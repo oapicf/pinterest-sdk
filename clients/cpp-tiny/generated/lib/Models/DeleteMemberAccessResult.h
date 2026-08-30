@@ -51,14 +51,14 @@ public:
 
 	/*! \brief Set Unique identifier of the business asset.
 	 */
-	void setAssetId(std::string  asset_id);
+	void setAssetId(std::string asset_id);
 	/*! \brief Get Unique identifier of the business member.
 	 */
 	std::string getMemberId();
 
 	/*! \brief Set Unique identifier of the business member.
 	 */
-	void setMemberId(std::string  member_id);
+	void setMemberId(std::string member_id);
 
 
     private:

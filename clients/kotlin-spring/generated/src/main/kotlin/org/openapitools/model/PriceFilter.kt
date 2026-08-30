@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.CatalogsProductGroupPricingCurrencyCriteria
+import org.openapitools.model.PriceFilterPrice
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -21,8 +21,9 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class PriceFilter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("PRICE", required = true) val PRICE: CatalogsProductGroupPricingCurrencyCriteria
+    @Schema(required = true, description = "")
+    @param:JsonProperty("PRICE")
+    @get:JsonProperty("PRICE", required = true) val PRICE: PriceFilterPrice
 ) {
 
 }

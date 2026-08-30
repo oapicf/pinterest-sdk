@@ -51,14 +51,14 @@ public:
 
 	/*! \brief Set The download url for the billing invoice
 	 */
-	void setDownloadUrl(std::string  download_url);
+	void setDownloadUrl(std::string download_url);
 	/*! \brief Get The billing invoice id
 	 */
 	std::string getId();
 
 	/*! \brief Set The billing invoice id
 	 */
-	void setId(std::string  id);
+	void setId(std::string id);
 
 
     private:

@@ -6,7 +6,7 @@
 
 
 static keywords_common_t *keywords_common_create_internal(
-    int bid,
+    int *bid,
     pinterest_rest_api_match_type_response__e match_type,
     char *value
     ) {
@@ -14,24 +14,33 @@ static keywords_common_t *keywords_common_create_internal(
     if (!keywords_common_local_var) {
         return NULL;
     }
+    memset(keywords_common_local_var, 0, sizeof(keywords_common_t));
+    keywords_common_local_var->_library_owned = 1;
     keywords_common_local_var->bid = bid;
     keywords_common_local_var->match_type = match_type;
     keywords_common_local_var->value = value;
-
-    keywords_common_local_var->_library_owned = 1;
     return keywords_common_local_var;
 }
 
 __attribute__((deprecated)) keywords_common_t *keywords_common_create(
-    int bid,
+    int *bid,
     pinterest_rest_api_match_type_response__e match_type,
     char *value
     ) {
-    return keywords_common_create_internal (
-        bid,
+    int *bid_copy = NULL;
+    if (bid) {
+        bid_copy = malloc(sizeof(int));
+        if (bid_copy) *bid_copy = *bid;
+    }
+    keywords_common_t *result = keywords_common_create_internal (
+        bid_copy,
         match_type,
         value
         );
+    if (!result) {
+        free(bid_copy);
+    }
+    return result;
 }
 
 void keywords_common_free(keywords_common_t *keywords_common) {
@@ -43,6 +52,10 @@ void keywords_common_free(keywords_common_t *keywords_common) {
         return ;
     }
     listEntry_t *listEntry;
+    if (keywords_common->bid) {
+        free(keywords_common->bid);
+        keywords_common->bid = NULL;
+    }
     if (keywords_common->value) {
         free(keywords_common->value);
         keywords_common->value = NULL;
@@ -55,7 +68,7 @@ cJSON *keywords_common_convertToJSON(keywords_common_t *keywords_common) {
 
     // keywords_common->bid
     if(keywords_common->bid) {
-    if(cJSON_AddNumberToObject(item, "bid", keywords_common->bid) == NULL) {
+    if(cJSON_AddNumberToObject(item, "bid", *keywords_common->bid) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -95,8 +108,13 @@ keywords_common_t *keywords_common_parseFromJSON(cJSON *keywords_commonJSON){
 
     keywords_common_t *keywords_common_local_var = NULL;
 
+    // define the local variable for keywords_common->bid
+    int *bid_local_var = NULL;
+
     // define the local variable for keywords_common->match_type
     pinterest_rest_api_match_type_response__e match_type_local_nonprim = 0;
+
+    char *value_local_str = NULL;
 
     // keywords_common->bid
     cJSON *bid = cJSON_GetObjectItemCaseSensitive(keywords_commonJSON, "bid");
@@ -108,6 +126,12 @@ keywords_common_t *keywords_common_parseFromJSON(cJSON *keywords_commonJSON){
     {
     goto end; //Numeric
     }
+    bid_local_var = malloc(sizeof(int));
+    if(!bid_local_var)
+    {
+        goto end;
+    }
+    *bid_local_var = bid->valuedouble;
     }
 
     // keywords_common->match_type
@@ -138,16 +162,30 @@ keywords_common_t *keywords_common_parseFromJSON(cJSON *keywords_commonJSON){
     }
 
 
+    if (value && !cJSON_IsNull(value)) value_local_str = strdup(value->valuestring);
+
     keywords_common_local_var = keywords_common_create_internal (
-        bid ? bid->valuedouble : 0,
+        bid_local_var,
         match_type_local_nonprim,
-        strdup(value->valuestring)
+        value_local_str
         );
+
+    if (!keywords_common_local_var) {
+        goto end;
+    }
 
     return keywords_common_local_var;
 end:
+    if (bid_local_var) {
+        free(bid_local_var);
+        bid_local_var = NULL;
+    }
     if (match_type_local_nonprim) {
         match_type_local_nonprim = 0;
+    }
+    if (value_local_str) {
+        free(value_local_str);
+        value_local_str = NULL;
     }
     return NULL;
 

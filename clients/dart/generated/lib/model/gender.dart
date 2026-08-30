@@ -11,31 +11,30 @@
 part of openapi.api;
 
 
-class Gender {
-  /// Instantiate a new enum with the provided [value].
-  const Gender._(this.value);
+enum Gender {
+  FEMALE._(r'FEMALE'),
+  MALE._(r'MALE'),
+  UNISEX._(r'UNISEX'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const Gender._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const FEMALE = Gender._(r'FEMALE');
-  static const MALE = Gender._(r'MALE');
-  static const UNISEX = Gender._(r'UNISEX');
-
-  /// List of all possible values in this [enum][Gender].
-  static const values = <Gender>[
-    FEMALE,
-    MALE,
-    UNISEX,
-  ];
-
+  /// Returns the instance of [Gender] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static Gender? fromJson(dynamic value) => GenderTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [Gender]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<Gender> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Gender>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class GenderTypeTransformer {
 
   const GenderTypeTransformer._();
 
-  String encode(Gender data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(Gender data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a Gender.
+  /// Returns the instance of [Gender] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class GenderTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   Gender? decode(dynamic data, {bool allowNull = true}) {
+    if (data is Gender) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'FEMALE': return Gender.FEMALE;
@@ -82,7 +86,7 @@ class GenderTypeTransformer {
     return null;
   }
 
-  /// Singleton [GenderTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static GenderTypeTransformer? _instance;
 }
 

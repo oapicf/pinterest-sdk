@@ -1,17 +1,17 @@
 #tag Class
 Protected Class LeadsExportApi
 	#tag Method, Flags = &h0
-		Sub LeadsExportCreate(, adAccountId As String, leadsExportCreateRequest As OpenAPIClient.Models.LeadsExportCreateRequest)
+		Sub LeadsExportCreate(, adAccountId As String, leadsExportsCreate As OpenAPIClient.Models.LeadsExportsCreate)
 		  // Operation leads_export/create
 		  // Create a request to export leads collected from a lead ad
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter leadsExportCreateRequest: (body)  
+		  // - parameter leadsExportsCreate: (body)  
 		  //
-		  // Invokes LeadsExportApiCallbackHandler.LeadsExportCreateCallback(LeadsExportCreateResponse) on completion. 
+		  // Invokes LeadsExportApiCallbackHandler.LeadsExportCreateCallback(LeadsExports) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/leads_export
-		  // - <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+		  // - **This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a `leads_export_id` token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -21,7 +21,7 @@ Protected Class LeadsExportApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(leadsExportCreateRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(leadsExportsCreate), "application/json")
 		  
 		  
 		  
@@ -48,7 +48,7 @@ Protected Class LeadsExportApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function LeadsExportCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LeadsExportCreateResponse) As Boolean
+		Private Function LeadsExportCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LeadsExports) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -56,7 +56,7 @@ Protected Class LeadsExportApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.LeadsExportCreateResponse
+			  outData = New OpenAPIClient.Models.LeadsExports
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -109,7 +109,7 @@ Protected Class LeadsExportApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.LeadsExportCreateResponse
+		  Dim data As OpenAPIClient.Models.LeadsExports
 		  CallbackHandler.LeadsExportCreateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -123,7 +123,7 @@ Protected Class LeadsExportApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.LeadsExportCreateResponse
+		  Dim data As OpenAPIClient.Models.LeadsExports
 		  Call LeadsExportCreatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.LeadsExportCreateCallback(error, data)
@@ -144,7 +144,7 @@ Protected Class LeadsExportApi
 		  // Invokes LeadsExportApiCallbackHandler.LeadsExportGetCallback(LeadsExportResponseData) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/leads_export/{leads_export_id}
-		  // - <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+		  // - **This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:

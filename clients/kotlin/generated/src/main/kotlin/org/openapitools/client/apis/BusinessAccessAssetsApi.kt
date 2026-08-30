@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,24 +27,26 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
+import org.openapitools.client.models.AssetGroupDeletion
+import org.openapitools.client.models.AssetGroupDeletionDelete
+import org.openapitools.client.models.AssetGroupInput
+import org.openapitools.client.models.AssetGroupInputCreate
+import org.openapitools.client.models.AssetGroupModification
+import org.openapitools.client.models.AssetGroupModificationReadOrUpdate
+import org.openapitools.client.models.AssetPermissionType
+import org.openapitools.client.models.AssetSearchBy
+import org.openapitools.client.models.AssetSortBy
 import org.openapitools.client.models.BusinessAssetMembersGet200Response
-import org.openapitools.client.models.BusinessAssetPartnersGet200Response
 import org.openapitools.client.models.BusinessAssetsGet200Response
-import org.openapitools.client.models.BusinessMemberAssetsGet200Response
-import org.openapitools.client.models.BusinessMembersAssetAccessDeleteRequest
+import org.openapitools.client.models.BusinessMemberAssetsGetResponse
+import org.openapitools.client.models.BusinessMembersAssetAccessDeleteBody
 import org.openapitools.client.models.BusinessPartnerAssetAccessGet200Response
-import org.openapitools.client.models.CreateAssetGroupBody
-import org.openapitools.client.models.CreateAssetGroupResponse
-import org.openapitools.client.models.DeleteAssetGroupBody
-import org.openapitools.client.models.DeleteAssetGroupResponse
 import org.openapitools.client.models.DeleteMemberAccessResultsResponseArray
 import org.openapitools.client.models.DeletePartnerAssetAccessBody
-import org.openapitools.client.models.DeletePartnerAssetsResultsResponseArray
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.PartnerType
+import org.openapitools.client.models.DeletePartnerAssetAccessResultsResponseArray
+import org.openapitools.client.models.NonDraftEntityStatus
 import org.openapitools.client.models.PermissionsWithOwner
-import org.openapitools.client.models.UpdateAssetGroupBody
-import org.openapitools.client.models.UpdateAssetGroupResponse
+import org.openapitools.client.models.PinterestLibError
 import org.openapitools.client.models.UpdateMemberAssetAccessBody
 import org.openapitools.client.models.UpdateMemberAssetsResultsResponseArray
 import org.openapitools.client.models.UpdatePartnerAssetAccessBody
@@ -62,17 +72,17 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * POST /businesses/{business_id}/asset_groups
      * Create a new asset group.
-     * Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+     * Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
      * @param businessId Unique identifier of the requesting business.
-     * @param createAssetGroupBody 
-     * @return CreateAssetGroupResponse
+     * @param assetGroupInputCreate 
+     * @return AssetGroupInput
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -81,11 +91,11 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun assetGroupCreate(businessId: kotlin.String, createAssetGroupBody: CreateAssetGroupBody) : CreateAssetGroupResponse {
-        val localVarResponse = assetGroupCreateWithHttpInfo(businessId = businessId, createAssetGroupBody = createAssetGroupBody)
+    fun assetGroupCreate(businessId: kotlin.String, assetGroupInputCreate: AssetGroupInputCreate) : AssetGroupInput {
+        val localVarResponse = assetGroupCreateWithHttpInfo(businessId = businessId, assetGroupInputCreate = assetGroupInputCreate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as CreateAssetGroupResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AssetGroupInput
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -102,19 +112,19 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * POST /businesses/{business_id}/asset_groups
      * Create a new asset group.
-     * Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+     * Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
      * @param businessId Unique identifier of the requesting business.
-     * @param createAssetGroupBody 
-     * @return ApiResponse<CreateAssetGroupResponse?>
+     * @param assetGroupInputCreate 
+     * @return ApiResponse<AssetGroupInput?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun assetGroupCreateWithHttpInfo(businessId: kotlin.String, createAssetGroupBody: CreateAssetGroupBody) : ApiResponse<CreateAssetGroupResponse?> {
-        val localVariableConfig = assetGroupCreateRequestConfig(businessId = businessId, createAssetGroupBody = createAssetGroupBody)
+    fun assetGroupCreateWithHttpInfo(businessId: kotlin.String, assetGroupInputCreate: AssetGroupInputCreate) : ApiResponse<AssetGroupInput?> {
+        val localVariableConfig = assetGroupCreateRequestConfig(businessId = businessId, assetGroupInputCreate = assetGroupInputCreate)
 
-        return request<CreateAssetGroupBody, CreateAssetGroupResponse>(
+        return request<AssetGroupInputCreate, AssetGroupInput>(
             localVariableConfig
         )
     }
@@ -123,11 +133,11 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * To obtain the request config of the operation assetGroupCreate
      *
      * @param businessId Unique identifier of the requesting business.
-     * @param createAssetGroupBody 
+     * @param assetGroupInputCreate 
      * @return RequestConfig
      */
-    fun assetGroupCreateRequestConfig(businessId: kotlin.String, createAssetGroupBody: CreateAssetGroupBody) : RequestConfig<CreateAssetGroupBody> {
-        val localVariableBody = createAssetGroupBody
+    fun assetGroupCreateRequestConfig(businessId: kotlin.String, assetGroupInputCreate: AssetGroupInputCreate) : RequestConfig<AssetGroupInputCreate> {
+        val localVariableBody = assetGroupInputCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -148,8 +158,8 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Delete asset groups.
      * Delete a batch of asset groups.
      * @param businessId Unique identifier of the requesting business.
-     * @param deleteAssetGroupBody 
-     * @return DeleteAssetGroupResponse
+     * @param assetGroupDeletionDelete 
+     * @return AssetGroupDeletion
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -158,11 +168,11 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun assetGroupDelete(businessId: kotlin.String, deleteAssetGroupBody: DeleteAssetGroupBody) : DeleteAssetGroupResponse {
-        val localVarResponse = assetGroupDeleteWithHttpInfo(businessId = businessId, deleteAssetGroupBody = deleteAssetGroupBody)
+    fun assetGroupDelete(businessId: kotlin.String, assetGroupDeletionDelete: AssetGroupDeletionDelete) : AssetGroupDeletion {
+        val localVarResponse = assetGroupDeleteWithHttpInfo(businessId = businessId, assetGroupDeletionDelete = assetGroupDeletionDelete)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as DeleteAssetGroupResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AssetGroupDeletion
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -181,17 +191,17 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Delete asset groups.
      * Delete a batch of asset groups.
      * @param businessId Unique identifier of the requesting business.
-     * @param deleteAssetGroupBody 
-     * @return ApiResponse<DeleteAssetGroupResponse?>
+     * @param assetGroupDeletionDelete 
+     * @return ApiResponse<AssetGroupDeletion?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun assetGroupDeleteWithHttpInfo(businessId: kotlin.String, deleteAssetGroupBody: DeleteAssetGroupBody) : ApiResponse<DeleteAssetGroupResponse?> {
-        val localVariableConfig = assetGroupDeleteRequestConfig(businessId = businessId, deleteAssetGroupBody = deleteAssetGroupBody)
+    fun assetGroupDeleteWithHttpInfo(businessId: kotlin.String, assetGroupDeletionDelete: AssetGroupDeletionDelete) : ApiResponse<AssetGroupDeletion?> {
+        val localVariableConfig = assetGroupDeleteRequestConfig(businessId = businessId, assetGroupDeletionDelete = assetGroupDeletionDelete)
 
-        return request<DeleteAssetGroupBody, DeleteAssetGroupResponse>(
+        return request<AssetGroupDeletionDelete, AssetGroupDeletion>(
             localVariableConfig
         )
     }
@@ -200,11 +210,11 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * To obtain the request config of the operation assetGroupDelete
      *
      * @param businessId Unique identifier of the requesting business.
-     * @param deleteAssetGroupBody 
+     * @param assetGroupDeletionDelete 
      * @return RequestConfig
      */
-    fun assetGroupDeleteRequestConfig(businessId: kotlin.String, deleteAssetGroupBody: DeleteAssetGroupBody) : RequestConfig<DeleteAssetGroupBody> {
-        val localVariableBody = deleteAssetGroupBody
+    fun assetGroupDeleteRequestConfig(businessId: kotlin.String, assetGroupDeletionDelete: AssetGroupDeletionDelete) : RequestConfig<AssetGroupDeletionDelete> {
+        val localVariableBody = assetGroupDeletionDelete
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -225,8 +235,8 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Update asset groups.
      * Update a batch of asset groups with the specified parameters.
      * @param businessId Unique identifier of the requesting business.
-     * @param updateAssetGroupBody 
-     * @return UpdateAssetGroupResponse
+     * @param assetGroupModificationReadOrUpdate 
+     * @return AssetGroupModification
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -235,11 +245,11 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun assetGroupUpdate(businessId: kotlin.String, updateAssetGroupBody: UpdateAssetGroupBody) : UpdateAssetGroupResponse {
-        val localVarResponse = assetGroupUpdateWithHttpInfo(businessId = businessId, updateAssetGroupBody = updateAssetGroupBody)
+    fun assetGroupUpdate(businessId: kotlin.String, assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate) : AssetGroupModification {
+        val localVarResponse = assetGroupUpdateWithHttpInfo(businessId = businessId, assetGroupModificationReadOrUpdate = assetGroupModificationReadOrUpdate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as UpdateAssetGroupResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AssetGroupModification
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -258,17 +268,17 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Update asset groups.
      * Update a batch of asset groups with the specified parameters.
      * @param businessId Unique identifier of the requesting business.
-     * @param updateAssetGroupBody 
-     * @return ApiResponse<UpdateAssetGroupResponse?>
+     * @param assetGroupModificationReadOrUpdate 
+     * @return ApiResponse<AssetGroupModification?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun assetGroupUpdateWithHttpInfo(businessId: kotlin.String, updateAssetGroupBody: UpdateAssetGroupBody) : ApiResponse<UpdateAssetGroupResponse?> {
-        val localVariableConfig = assetGroupUpdateRequestConfig(businessId = businessId, updateAssetGroupBody = updateAssetGroupBody)
+    fun assetGroupUpdateWithHttpInfo(businessId: kotlin.String, assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate) : ApiResponse<AssetGroupModification?> {
+        val localVariableConfig = assetGroupUpdateRequestConfig(businessId = businessId, assetGroupModificationReadOrUpdate = assetGroupModificationReadOrUpdate)
 
-        return request<UpdateAssetGroupBody, UpdateAssetGroupResponse>(
+        return request<AssetGroupModificationReadOrUpdate, AssetGroupModification>(
             localVariableConfig
         )
     }
@@ -277,11 +287,11 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * To obtain the request config of the operation assetGroupUpdate
      *
      * @param businessId Unique identifier of the requesting business.
-     * @param updateAssetGroupBody 
+     * @param assetGroupModificationReadOrUpdate 
      * @return RequestConfig
      */
-    fun assetGroupUpdateRequestConfig(businessId: kotlin.String, updateAssetGroupBody: UpdateAssetGroupBody) : RequestConfig<UpdateAssetGroupBody> {
-        val localVariableBody = updateAssetGroupBody
+    fun assetGroupUpdateRequestConfig(businessId: kotlin.String, assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate) : RequestConfig<AssetGroupModificationReadOrUpdate> {
+        val localVariableBody = assetGroupModificationReadOrUpdate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -303,10 +313,10 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Get all the members the requesting business has granted access to on the given asset.
      * @param businessId Unique identifier of the requesting business.
      * @param assetId Unique identifier of a business asset.
+     * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return BusinessAssetMembersGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -316,8 +326,8 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun businessAssetMembersGet(businessId: kotlin.String, assetId: kotlin.String, fetchSystemUsers: kotlin.Boolean? = false, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, startIndex: kotlin.Int? = 0) : BusinessAssetMembersGet200Response {
-        val localVarResponse = businessAssetMembersGetWithHttpInfo(businessId = businessId, assetId = assetId, fetchSystemUsers = fetchSystemUsers, bookmark = bookmark, pageSize = pageSize, startIndex = startIndex)
+    fun businessAssetMembersGet(businessId: kotlin.String, assetId: kotlin.String, startIndex: kotlin.Int? = 0, fetchSystemUsers: kotlin.Boolean? = false, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : BusinessAssetMembersGet200Response {
+        val localVarResponse = businessAssetMembersGetWithHttpInfo(businessId = businessId, assetId = assetId, startIndex = startIndex, fetchSystemUsers = fetchSystemUsers, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as BusinessAssetMembersGet200Response
@@ -340,18 +350,18 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Get all the members the requesting business has granted access to on the given asset.
      * @param businessId Unique identifier of the requesting business.
      * @param assetId Unique identifier of a business asset.
+     * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<BusinessAssetMembersGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun businessAssetMembersGetWithHttpInfo(businessId: kotlin.String, assetId: kotlin.String, fetchSystemUsers: kotlin.Boolean?, bookmark: kotlin.String?, pageSize: kotlin.Int?, startIndex: kotlin.Int?) : ApiResponse<BusinessAssetMembersGet200Response?> {
-        val localVariableConfig = businessAssetMembersGetRequestConfig(businessId = businessId, assetId = assetId, fetchSystemUsers = fetchSystemUsers, bookmark = bookmark, pageSize = pageSize, startIndex = startIndex)
+    fun businessAssetMembersGetWithHttpInfo(businessId: kotlin.String, assetId: kotlin.String, startIndex: kotlin.Int?, fetchSystemUsers: kotlin.Boolean?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<BusinessAssetMembersGet200Response?> {
+        val localVariableConfig = businessAssetMembersGetRequestConfig(businessId = businessId, assetId = assetId, startIndex = startIndex, fetchSystemUsers = fetchSystemUsers, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, BusinessAssetMembersGet200Response>(
             localVariableConfig
@@ -363,16 +373,19 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      *
      * @param businessId Unique identifier of the requesting business.
      * @param assetId Unique identifier of a business asset.
+     * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun businessAssetMembersGetRequestConfig(businessId: kotlin.String, assetId: kotlin.String, fetchSystemUsers: kotlin.Boolean?, bookmark: kotlin.String?, pageSize: kotlin.Int?, startIndex: kotlin.Int?) : RequestConfig<Unit> {
+    fun businessAssetMembersGetRequestConfig(businessId: kotlin.String, assetId: kotlin.String, startIndex: kotlin.Int?, fetchSystemUsers: kotlin.Boolean?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (startIndex != null) {
+                    put("start_index", listOf(startIndex.toString()))
+                }
                 if (fetchSystemUsers != null) {
                     put("fetch_system_users", listOf(fetchSystemUsers.toString()))
                 }
@@ -381,9 +394,6 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
                 }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
-                }
-                if (startIndex != null) {
-                    put("start_index", listOf(startIndex.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -407,8 +417,8 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * @param assetId Unique identifier of a business asset.
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @return BusinessAssetPartnersGet200Response
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return BusinessAssetMembersGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -417,11 +427,11 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun businessAssetPartnersGet(businessId: kotlin.String, assetId: kotlin.String, startIndex: kotlin.Int? = 0, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : BusinessAssetPartnersGet200Response {
+    fun businessAssetPartnersGet(businessId: kotlin.String, assetId: kotlin.String, startIndex: kotlin.Int? = 0, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : BusinessAssetMembersGet200Response {
         val localVarResponse = businessAssetPartnersGetWithHttpInfo(businessId = businessId, assetId = assetId, startIndex = startIndex, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as BusinessAssetPartnersGet200Response
+            ResponseType.Success -> (localVarResponse as Success<*>).data as BusinessAssetMembersGet200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -443,17 +453,17 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * @param assetId Unique identifier of a business asset.
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @return ApiResponse<BusinessAssetPartnersGet200Response?>
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return ApiResponse<BusinessAssetMembersGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun businessAssetPartnersGetWithHttpInfo(businessId: kotlin.String, assetId: kotlin.String, startIndex: kotlin.Int?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<BusinessAssetPartnersGet200Response?> {
+    fun businessAssetPartnersGetWithHttpInfo(businessId: kotlin.String, assetId: kotlin.String, startIndex: kotlin.Int?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<BusinessAssetMembersGet200Response?> {
         val localVariableConfig = businessAssetPartnersGetRequestConfig(businessId = businessId, assetId = assetId, startIndex = startIndex, bookmark = bookmark, pageSize = pageSize)
 
-        return request<Unit, BusinessAssetPartnersGet200Response>(
+        return request<Unit, BusinessAssetMembersGet200Response>(
             localVariableConfig
         )
     }
@@ -465,7 +475,7 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * @param assetId Unique identifier of a business asset.
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun businessAssetPartnersGetRequestConfig(businessId: kotlin.String, assetId: kotlin.String, startIndex: kotlin.Int?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -526,7 +536,7 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return BusinessAssetsGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -565,7 +575,7 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<BusinessAssetsGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -590,7 +600,7 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun businessAssetsGetRequestConfig(businessId: kotlin.String, permissions: kotlin.collections.List<PermissionsWithOwner>?, childAssetId: kotlin.String?, assetGroupId: kotlin.String?, assetType: AssetTypeBusinessAssetsGet?, startIndex: kotlin.Int?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -640,7 +650,8 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
          @Json(name = "PROFILE") PROFILE("PROFILE"),
          @Json(name = "ASSET_GROUP") ASSET_GROUP("ASSET_GROUP"),
          @Json(name = "CATALOG") CATALOG("CATALOG"),
-         @Json(name = "CONSUMER") CONSUMER("CONSUMER");
+         @Json(name = "CONSUMER") CONSUMER("CONSUMER"),
+         @Json(name = "CONVERSION_TAG") CONVERSION_TAG("CONVERSION_TAG");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -660,9 +671,15 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * @param memberId The member id to fetch assets for.
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
+     * @param sortBy The field to sort member assets by (optional)
+     * @param sortAscending Sort assets in ascending order (optional, default to true)
+     * @param searchBy The field to search member assets by (optional)
+     * @param searchValue The value to search for (optional)
+     * @param assetPermissionType The type of asset permission to filter by (optional)
+     * @param adAccountStatuses A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @return BusinessMemberAssetsGet200Response
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return BusinessMemberAssetsGetResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -671,11 +688,11 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun businessMemberAssetsGet(businessId: kotlin.String, memberId: kotlin.String, assetType: AssetTypeBusinessMemberAssetsGet? = AssetTypeBusinessMemberAssetsGet.AD_ACCOUNT, startIndex: kotlin.Int? = 0, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : BusinessMemberAssetsGet200Response {
-        val localVarResponse = businessMemberAssetsGetWithHttpInfo(businessId = businessId, memberId = memberId, assetType = assetType, startIndex = startIndex, bookmark = bookmark, pageSize = pageSize)
+    fun businessMemberAssetsGet(businessId: kotlin.String, memberId: kotlin.String, assetType: AssetTypeBusinessMemberAssetsGet? = AssetTypeBusinessMemberAssetsGet.AD_ACCOUNT, startIndex: kotlin.Int? = 0, sortBy: AssetSortBy? = null, sortAscending: kotlin.Boolean? = true, searchBy: AssetSearchBy? = null, searchValue: kotlin.String? = null, assetPermissionType: AssetPermissionType? = null, adAccountStatuses: kotlin.collections.List<NonDraftEntityStatus>? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : BusinessMemberAssetsGetResponse {
+        val localVarResponse = businessMemberAssetsGetWithHttpInfo(businessId = businessId, memberId = memberId, assetType = assetType, startIndex = startIndex, sortBy = sortBy, sortAscending = sortAscending, searchBy = searchBy, searchValue = searchValue, assetPermissionType = assetPermissionType, adAccountStatuses = adAccountStatuses, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as BusinessMemberAssetsGet200Response
+            ResponseType.Success -> (localVarResponse as Success<*>).data as BusinessMemberAssetsGetResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -697,18 +714,24 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * @param memberId The member id to fetch assets for.
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
+     * @param sortBy The field to sort member assets by (optional)
+     * @param sortAscending Sort assets in ascending order (optional, default to true)
+     * @param searchBy The field to search member assets by (optional)
+     * @param searchValue The value to search for (optional)
+     * @param assetPermissionType The type of asset permission to filter by (optional)
+     * @param adAccountStatuses A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @return ApiResponse<BusinessMemberAssetsGet200Response?>
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return ApiResponse<BusinessMemberAssetsGetResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun businessMemberAssetsGetWithHttpInfo(businessId: kotlin.String, memberId: kotlin.String, assetType: AssetTypeBusinessMemberAssetsGet?, startIndex: kotlin.Int?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<BusinessMemberAssetsGet200Response?> {
-        val localVariableConfig = businessMemberAssetsGetRequestConfig(businessId = businessId, memberId = memberId, assetType = assetType, startIndex = startIndex, bookmark = bookmark, pageSize = pageSize)
+    fun businessMemberAssetsGetWithHttpInfo(businessId: kotlin.String, memberId: kotlin.String, assetType: AssetTypeBusinessMemberAssetsGet?, startIndex: kotlin.Int?, sortBy: AssetSortBy?, sortAscending: kotlin.Boolean?, searchBy: AssetSearchBy?, searchValue: kotlin.String?, assetPermissionType: AssetPermissionType?, adAccountStatuses: kotlin.collections.List<NonDraftEntityStatus>?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<BusinessMemberAssetsGetResponse?> {
+        val localVariableConfig = businessMemberAssetsGetRequestConfig(businessId = businessId, memberId = memberId, assetType = assetType, startIndex = startIndex, sortBy = sortBy, sortAscending = sortAscending, searchBy = searchBy, searchValue = searchValue, assetPermissionType = assetPermissionType, adAccountStatuses = adAccountStatuses, bookmark = bookmark, pageSize = pageSize)
 
-        return request<Unit, BusinessMemberAssetsGet200Response>(
+        return request<Unit, BusinessMemberAssetsGetResponse>(
             localVariableConfig
         )
     }
@@ -720,11 +743,17 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * @param memberId The member id to fetch assets for.
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
+     * @param sortBy The field to sort member assets by (optional)
+     * @param sortAscending Sort assets in ascending order (optional, default to true)
+     * @param searchBy The field to search member assets by (optional)
+     * @param searchValue The value to search for (optional)
+     * @param assetPermissionType The type of asset permission to filter by (optional)
+     * @param adAccountStatuses A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun businessMemberAssetsGetRequestConfig(businessId: kotlin.String, memberId: kotlin.String, assetType: AssetTypeBusinessMemberAssetsGet?, startIndex: kotlin.Int?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
+    fun businessMemberAssetsGetRequestConfig(businessId: kotlin.String, memberId: kotlin.String, assetType: AssetTypeBusinessMemberAssetsGet?, startIndex: kotlin.Int?, sortBy: AssetSortBy?, sortAscending: kotlin.Boolean?, searchBy: AssetSearchBy?, searchValue: kotlin.String?, assetPermissionType: AssetPermissionType?, adAccountStatuses: kotlin.collections.List<NonDraftEntityStatus>?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -733,6 +762,24 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
                 }
                 if (startIndex != null) {
                     put("start_index", listOf(startIndex.toString()))
+                }
+                if (sortBy != null) {
+                    put("sort_by", listOf(sortBy.toString()))
+                }
+                if (sortAscending != null) {
+                    put("sort_ascending", listOf(sortAscending.toString()))
+                }
+                if (searchBy != null) {
+                    put("search_by", listOf(searchBy.toString()))
+                }
+                if (searchValue != null) {
+                    put("search_value", listOf(searchValue.toString()))
+                }
+                if (assetPermissionType != null) {
+                    put("asset_permission_type", listOf(assetPermissionType.toString()))
+                }
+                if (adAccountStatuses != null) {
+                    put("ad_account_statuses", toMultiValue(adAccountStatuses.toList(), "multi"))
                 }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
@@ -759,7 +806,7 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Delete member access to asset
      * Terminate multiple members&#39; access to an asset.
      * @param businessId Unique identifier of the requesting business.
-     * @param businessMembersAssetAccessDeleteRequest List member assset permissions to delete.
+     * @param businessMembersAssetAccessDeleteBody 
      * @return DeleteMemberAccessResultsResponseArray
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -769,8 +816,8 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun businessMembersAssetAccessDelete(businessId: kotlin.String, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest) : DeleteMemberAccessResultsResponseArray {
-        val localVarResponse = businessMembersAssetAccessDeleteWithHttpInfo(businessId = businessId, businessMembersAssetAccessDeleteRequest = businessMembersAssetAccessDeleteRequest)
+    fun businessMembersAssetAccessDelete(businessId: kotlin.String, businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody) : DeleteMemberAccessResultsResponseArray {
+        val localVarResponse = businessMembersAssetAccessDeleteWithHttpInfo(businessId = businessId, businessMembersAssetAccessDeleteBody = businessMembersAssetAccessDeleteBody)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as DeleteMemberAccessResultsResponseArray
@@ -792,17 +839,17 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Delete member access to asset
      * Terminate multiple members&#39; access to an asset.
      * @param businessId Unique identifier of the requesting business.
-     * @param businessMembersAssetAccessDeleteRequest List member assset permissions to delete.
+     * @param businessMembersAssetAccessDeleteBody 
      * @return ApiResponse<DeleteMemberAccessResultsResponseArray?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun businessMembersAssetAccessDeleteWithHttpInfo(businessId: kotlin.String, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest) : ApiResponse<DeleteMemberAccessResultsResponseArray?> {
-        val localVariableConfig = businessMembersAssetAccessDeleteRequestConfig(businessId = businessId, businessMembersAssetAccessDeleteRequest = businessMembersAssetAccessDeleteRequest)
+    fun businessMembersAssetAccessDeleteWithHttpInfo(businessId: kotlin.String, businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody) : ApiResponse<DeleteMemberAccessResultsResponseArray?> {
+        val localVariableConfig = businessMembersAssetAccessDeleteRequestConfig(businessId = businessId, businessMembersAssetAccessDeleteBody = businessMembersAssetAccessDeleteBody)
 
-        return request<BusinessMembersAssetAccessDeleteRequest, DeleteMemberAccessResultsResponseArray>(
+        return request<BusinessMembersAssetAccessDeleteBody, DeleteMemberAccessResultsResponseArray>(
             localVariableConfig
         )
     }
@@ -811,11 +858,11 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * To obtain the request config of the operation businessMembersAssetAccessDelete
      *
      * @param businessId Unique identifier of the requesting business.
-     * @param businessMembersAssetAccessDeleteRequest List member assset permissions to delete.
+     * @param businessMembersAssetAccessDeleteBody 
      * @return RequestConfig
      */
-    fun businessMembersAssetAccessDeleteRequestConfig(businessId: kotlin.String, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest) : RequestConfig<BusinessMembersAssetAccessDeleteRequest> {
-        val localVariableBody = businessMembersAssetAccessDeleteRequest
+    fun businessMembersAssetAccessDeleteRequestConfig(businessId: kotlin.String, businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody) : RequestConfig<BusinessMembersAssetAccessDeleteBody> {
+        val localVariableBody = businessMembersAssetAccessDeleteBody
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -834,9 +881,9 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * PATCH /businesses/{business_id}/members/assets/access
      * Assign/Update member asset permissions
-     * Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+     * Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
      * @param businessId Unique identifier of the requesting business.
-     * @param updateMemberAssetAccessBody List of member asset permissions to create or update.
+     * @param updateMemberAssetAccessBody 
      * @return UpdateMemberAssetsResultsResponseArray
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -867,9 +914,9 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * PATCH /businesses/{business_id}/members/assets/access
      * Assign/Update member asset permissions
-     * Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+     * Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
      * @param businessId Unique identifier of the requesting business.
-     * @param updateMemberAssetAccessBody List of member asset permissions to create or update.
+     * @param updateMemberAssetAccessBody 
      * @return ApiResponse<UpdateMemberAssetsResultsResponseArray?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -888,7 +935,7 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * To obtain the request config of the operation businessMembersAssetAccessUpdate
      *
      * @param businessId Unique identifier of the requesting business.
-     * @param updateMemberAssetAccessBody List of member asset permissions to create or update.
+     * @param updateMemberAssetAccessBody 
      * @return RequestConfig
      */
     fun businessMembersAssetAccessUpdateRequestConfig(businessId: kotlin.String, updateMemberAssetAccessBody: UpdateMemberAssetAccessBody) : RequestConfig<UpdateMemberAssetAccessBody> {
@@ -909,14 +956,34 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
     }
 
     /**
+     * enum for parameter partnerType
+     */
+     enum class PartnerTypeBusinessPartnerAssetAccessGet(val value: kotlin.String) {
+         @Json(name = "INTERNAL") INTERNAL("INTERNAL"),
+         @Json(name = "EXTERNAL") EXTERNAL("EXTERNAL");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
+     }
+
+    /**
      * enum for parameter assetType
      */
      enum class AssetTypeBusinessPartnerAssetAccessGet(val value: kotlin.String) {
          @Json(name = "AD_ACCOUNT") AD_ACCOUNT("AD_ACCOUNT"),
          @Json(name = "PROFILE") PROFILE("PROFILE"),
          @Json(name = "ASSET_GROUP") ASSET_GROUP("ASSET_GROUP"),
+         @Json(name = "PINNER_LIST") PINNER_LIST("PINNER_LIST"),
+         @Json(name = "CONVERSION_TAG") CONVERSION_TAG("CONVERSION_TAG"),
          @Json(name = "CATALOG") CATALOG("CATALOG"),
-         @Json(name = "CONSUMER") CONSUMER("CONSUMER");
+         @Json(name = "CONSUMER") CONSUMER("CONSUMER"),
+         @Json(name = "CONVERSION_SEGMENT") CONVERSION_SEGMENT("CONVERSION_SEGMENT");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -934,11 +1001,15 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type&#x3D;INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type&#x3D;EXTERNAL, you will retrieve the partner&#39;s business assets that the partner has granted you access to.
      * @param businessId Unique identifier of the requesting business.
      * @param partnerId The partner id to be bound to the Business
-     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional)
+     * @param partnerType Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to PartnerType.INTERNAL)
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param sortBy The field to sort member assets by (optional)
+     * @param sortAscending Sort assets in ascending order (optional, default to true)
+     * @param searchBy The field to search member assets by (optional)
+     * @param searchValue The value to search for (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return BusinessPartnerAssetAccessGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -948,8 +1019,8 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun businessPartnerAssetAccessGet(businessId: kotlin.String, partnerId: kotlin.String, partnerType: PartnerType? = null, assetType: AssetTypeBusinessPartnerAssetAccessGet? = AssetTypeBusinessPartnerAssetAccessGet.AD_ACCOUNT, startIndex: kotlin.Int? = 0, pageSize: kotlin.Int? = 25, bookmark: kotlin.String? = null) : BusinessPartnerAssetAccessGet200Response {
-        val localVarResponse = businessPartnerAssetAccessGetWithHttpInfo(businessId = businessId, partnerId = partnerId, partnerType = partnerType, assetType = assetType, startIndex = startIndex, pageSize = pageSize, bookmark = bookmark)
+    fun businessPartnerAssetAccessGet(businessId: kotlin.String, partnerId: kotlin.String, partnerType: PartnerTypeBusinessPartnerAssetAccessGet? = PartnerTypeBusinessPartnerAssetAccessGet.INTERNAL, assetType: AssetTypeBusinessPartnerAssetAccessGet? = AssetTypeBusinessPartnerAssetAccessGet.AD_ACCOUNT, startIndex: kotlin.Int? = 0, sortBy: AssetSortBy? = null, sortAscending: kotlin.Boolean? = true, searchBy: AssetSearchBy? = null, searchValue: kotlin.String? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : BusinessPartnerAssetAccessGet200Response {
+        val localVarResponse = businessPartnerAssetAccessGetWithHttpInfo(businessId = businessId, partnerId = partnerId, partnerType = partnerType, assetType = assetType, startIndex = startIndex, sortBy = sortBy, sortAscending = sortAscending, searchBy = searchBy, searchValue = searchValue, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as BusinessPartnerAssetAccessGet200Response
@@ -972,19 +1043,23 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type&#x3D;INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type&#x3D;EXTERNAL, you will retrieve the partner&#39;s business assets that the partner has granted you access to.
      * @param businessId Unique identifier of the requesting business.
      * @param partnerId The partner id to be bound to the Business
-     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional)
+     * @param partnerType Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to PartnerType.INTERNAL)
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param sortBy The field to sort member assets by (optional)
+     * @param sortAscending Sort assets in ascending order (optional, default to true)
+     * @param searchBy The field to search member assets by (optional)
+     * @param searchValue The value to search for (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<BusinessPartnerAssetAccessGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun businessPartnerAssetAccessGetWithHttpInfo(businessId: kotlin.String, partnerId: kotlin.String, partnerType: PartnerType?, assetType: AssetTypeBusinessPartnerAssetAccessGet?, startIndex: kotlin.Int?, pageSize: kotlin.Int?, bookmark: kotlin.String?) : ApiResponse<BusinessPartnerAssetAccessGet200Response?> {
-        val localVariableConfig = businessPartnerAssetAccessGetRequestConfig(businessId = businessId, partnerId = partnerId, partnerType = partnerType, assetType = assetType, startIndex = startIndex, pageSize = pageSize, bookmark = bookmark)
+    fun businessPartnerAssetAccessGetWithHttpInfo(businessId: kotlin.String, partnerId: kotlin.String, partnerType: PartnerTypeBusinessPartnerAssetAccessGet?, assetType: AssetTypeBusinessPartnerAssetAccessGet?, startIndex: kotlin.Int?, sortBy: AssetSortBy?, sortAscending: kotlin.Boolean?, searchBy: AssetSearchBy?, searchValue: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<BusinessPartnerAssetAccessGet200Response?> {
+        val localVariableConfig = businessPartnerAssetAccessGetRequestConfig(businessId = businessId, partnerId = partnerId, partnerType = partnerType, assetType = assetType, startIndex = startIndex, sortBy = sortBy, sortAscending = sortAscending, searchBy = searchBy, searchValue = searchValue, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, BusinessPartnerAssetAccessGet200Response>(
             localVariableConfig
@@ -996,19 +1071,23 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      *
      * @param businessId Unique identifier of the requesting business.
      * @param partnerId The partner id to be bound to the Business
-     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional)
+     * @param partnerType Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to PartnerType.INTERNAL)
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param sortBy The field to sort member assets by (optional)
+     * @param sortAscending Sort assets in ascending order (optional, default to true)
+     * @param searchBy The field to search member assets by (optional)
+     * @param searchValue The value to search for (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun businessPartnerAssetAccessGetRequestConfig(businessId: kotlin.String, partnerId: kotlin.String, partnerType: PartnerType?, assetType: AssetTypeBusinessPartnerAssetAccessGet?, startIndex: kotlin.Int?, pageSize: kotlin.Int?, bookmark: kotlin.String?) : RequestConfig<Unit> {
+    fun businessPartnerAssetAccessGetRequestConfig(businessId: kotlin.String, partnerId: kotlin.String, partnerType: PartnerTypeBusinessPartnerAssetAccessGet?, assetType: AssetTypeBusinessPartnerAssetAccessGet?, startIndex: kotlin.Int?, sortBy: AssetSortBy?, sortAscending: kotlin.Boolean?, searchBy: AssetSearchBy?, searchValue: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (partnerType != null) {
-                    put("partner_type", listOf(partnerType.toString()))
+                    put("partner_type", listOf(partnerType.value))
                 }
                 if (assetType != null) {
                     put("asset_type", listOf(assetType.value))
@@ -1016,11 +1095,23 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
                 if (startIndex != null) {
                     put("start_index", listOf(startIndex.toString()))
                 }
-                if (pageSize != null) {
-                    put("page_size", listOf(pageSize.toString()))
+                if (sortBy != null) {
+                    put("sort_by", listOf(sortBy.toString()))
+                }
+                if (sortAscending != null) {
+                    put("sort_ascending", listOf(sortAscending.toString()))
+                }
+                if (searchBy != null) {
+                    put("search_by", listOf(searchBy.toString()))
+                }
+                if (searchValue != null) {
+                    put("search_value", listOf(searchValue.toString()))
                 }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
+                }
+                if (pageSize != null) {
+                    put("page_size", listOf(pageSize.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -1042,7 +1133,7 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Terminate multiple partners&#39; access to an asset. If - partner_type&#x3D;INTERNAL: You will terminate a partner&#39;s asset access to your business assets. - partner_type&#x3D;EXTERNAL: You will terminate your own access to your partner&#39;s business assets.
      * @param businessId Unique identifier of the requesting business.
      * @param deletePartnerAssetAccessBody 
-     * @return DeletePartnerAssetsResultsResponseArray
+     * @return DeletePartnerAssetAccessResultsResponseArray
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -1051,11 +1142,11 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun deletePartnerAssetAccessHandlerImpl(businessId: kotlin.String, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody) : DeletePartnerAssetsResultsResponseArray {
+    fun deletePartnerAssetAccessHandlerImpl(businessId: kotlin.String, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody) : DeletePartnerAssetAccessResultsResponseArray {
         val localVarResponse = deletePartnerAssetAccessHandlerImplWithHttpInfo(businessId = businessId, deletePartnerAssetAccessBody = deletePartnerAssetAccessBody)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as DeletePartnerAssetsResultsResponseArray
+            ResponseType.Success -> (localVarResponse as Success<*>).data as DeletePartnerAssetAccessResultsResponseArray
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1075,16 +1166,16 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Terminate multiple partners&#39; access to an asset. If - partner_type&#x3D;INTERNAL: You will terminate a partner&#39;s asset access to your business assets. - partner_type&#x3D;EXTERNAL: You will terminate your own access to your partner&#39;s business assets.
      * @param businessId Unique identifier of the requesting business.
      * @param deletePartnerAssetAccessBody 
-     * @return ApiResponse<DeletePartnerAssetsResultsResponseArray?>
+     * @return ApiResponse<DeletePartnerAssetAccessResultsResponseArray?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun deletePartnerAssetAccessHandlerImplWithHttpInfo(businessId: kotlin.String, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody) : ApiResponse<DeletePartnerAssetsResultsResponseArray?> {
+    fun deletePartnerAssetAccessHandlerImplWithHttpInfo(businessId: kotlin.String, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody) : ApiResponse<DeletePartnerAssetAccessResultsResponseArray?> {
         val localVariableConfig = deletePartnerAssetAccessHandlerImplRequestConfig(businessId = businessId, deletePartnerAssetAccessBody = deletePartnerAssetAccessBody)
 
-        return request<DeletePartnerAssetAccessBody, DeletePartnerAssetsResultsResponseArray>(
+        return request<DeletePartnerAssetAccessBody, DeletePartnerAssetAccessResultsResponseArray>(
             localVariableConfig
         )
     }
@@ -1118,7 +1209,7 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Assign/Update partner asset permissions
      * Grant multiple partners access to assets and/or update multiple partner&#39;s exisiting permissions to an asset. If your partner already had permissions on the asset, they will be overriden with the new permissions you assign to them. To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview  Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
      * @param businessId Unique identifier of the requesting business.
-     * @param updatePartnerAssetAccessBody A list of assets and permissions to assign to your partners.
+     * @param updatePartnerAssetAccessBody 
      * @return UpdatePartnerAssetsResultsResponseArray
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1151,7 +1242,7 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Assign/Update partner asset permissions
      * Grant multiple partners access to assets and/or update multiple partner&#39;s exisiting permissions to an asset. If your partner already had permissions on the asset, they will be overriden with the new permissions you assign to them. To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview  Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
      * @param businessId Unique identifier of the requesting business.
-     * @param updatePartnerAssetAccessBody A list of assets and permissions to assign to your partners.
+     * @param updatePartnerAssetAccessBody 
      * @return ApiResponse<UpdatePartnerAssetsResultsResponseArray?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1170,7 +1261,7 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * To obtain the request config of the operation updatePartnerAssetAccessHandlerImpl
      *
      * @param businessId Unique identifier of the requesting business.
-     * @param updatePartnerAssetAccessBody A list of assets and permissions to assign to your partners.
+     * @param updatePartnerAssetAccessBody 
      * @return RequestConfig
      */
     fun updatePartnerAssetAccessHandlerImplRequestConfig(businessId: kotlin.String, updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody) : RequestConfig<UpdatePartnerAssetAccessBody> {

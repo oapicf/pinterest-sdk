@@ -1,6 +1,5 @@
 package models
 
-// CatalogsHotelGuestRatings - If specified, you must provide all properties
 type CatalogsHotelGuestRatings struct {
 
 	// Max value for the hotel rating score.

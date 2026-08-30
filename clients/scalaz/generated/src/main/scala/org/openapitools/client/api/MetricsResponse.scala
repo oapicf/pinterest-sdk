@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import MetricsResponse._
 
 case class MetricsResponse (
-  data: Option[List[Any]])
+  data: Option[List[MetricsResponseDataItems]])
 
 object MetricsResponse {
   import DateTimeCodecs._

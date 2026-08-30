@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server FrequencyGoalMetadata"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a FrequencyGoalMetadata"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  FrequencyGoalMetadataTimerange = openapi_server.resourceTypes.FrequencyGoalMetadataTimerange
+}
+resourceTypes {
+
+  FrequencyGoalMetadata {
+    title = FrequencyGoalMetadata
+    description = FrequencyGoalMetadata
+    derivedFrom = Root
+    properties {
+        frequency {
+          type =  integer
+          description = ""
+          optional = false
+        }
+        timerange {
+          type = FrequencyGoalMetadataTimerange
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  FrequencyGoalMetadata {
+    title = FrequencyGoalMetadata
+    description = FrequencyGoalMetadata
+    implements = openapi_server.resourceTypes.FrequencyGoalMetadata
+
+  }
+}

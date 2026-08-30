@@ -83,7 +83,7 @@ API.Client.CatalogsFeedValidationErrors.prototype.FEED_TOO_SMALL;
 API.Client.CatalogsFeedValidationErrors.prototype.FETCH_ERROR;
 
 /**
- * Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+ * Your feed wasn't ingested because it hasn't changed in the previous 90 days.
  * @type {!number}
  * @export
  */

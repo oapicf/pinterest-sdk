@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [**OAICatalogsHotelAddress***](OAICatalogsHotelAddress.md) |  | [optional] 
+**address** | [**OAICatalogsHotelAddress***](OAICatalogsHotelAddress.md) | Hotel address | [optional] 
 **basePrice** | **NSString*** | Base price of the hotel room per night followed by the ISO currency code | [optional] 
 **brand** | **NSString*** | The brand to which this hotel belongs to. | [optional] 
 **category** | **NSString*** | The type of property. The category can be any type of internal description desired. | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **customLabel3** | **NSString*** | Custom grouping of hotels | [optional] 
 **customLabel4** | **NSString*** | Custom grouping of hotels | [optional] 
 **_description** | **NSString*** | Brief description of the hotel. | [optional] 
-**guestRatings** | [**OAICatalogsHotelGuestRatings***](OAICatalogsHotelGuestRatings.md) |  | [optional] 
+**guestRatings** | [**OAICatalogsHotelGuestRatings***](OAICatalogsHotelGuestRatings.md) | If specified, you must provide all properties | [optional] 
 **latitude** | **NSNumber*** | Latitude of the hotel. | [optional] 
 **link** | **NSString*** | Link to the product page | [optional] 
 **longitude** | **NSNumber*** | Longitude of the hotel. | [optional] 

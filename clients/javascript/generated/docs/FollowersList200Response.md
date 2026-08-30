@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  | [optional] 
-**items** | [**[UserSummary]**](UserSummary.md) |  | 
+**items** | [**[FollowUser]**](FollowUser.md) |  | 
 
 

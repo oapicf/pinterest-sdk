@@ -11,12 +11,16 @@ import org.openapitools.server.AkkaHttpHelper._
 import org.openapitools.server.model.CreativeType
 import org.openapitools.server.model.Error
 import java.time.LocalDate
+import org.openapitools.server.model.MultiPinsAnalyticsMetricTypesItem
 import org.openapitools.server.model.Pin
 import org.openapitools.server.model.PinAnalyticsMetricsResponse
 import org.openapitools.server.model.PinCreate
+import org.openapitools.server.model.PinFilter
+import org.openapitools.server.model.PinType
 import org.openapitools.server.model.PinUpdate
 import org.openapitools.server.model.PinsList200Response
-import org.openapitools.server.model.PinsSaveRequest
+import org.openapitools.server.model.PinsSaveRequestCreate
+import org.openapitools.server.model.QuerypinanalyticsmetrictypesItems
 
 
 class PinsApi(
@@ -68,16 +72,16 @@ class PinsApi(
     } ~
     path("pins") { 
       get { 
-        parameters("pin_filter".as[String].?, "pin_metrics".as[Boolean].?(false), "include_protected_pins".as[Boolean].?(false), "pin_type".as[String].?, "creative_types".as[String].?, "ad_account_id".as[String].?, "bookmark".as[String].?, "page_size".as[Int].?(25)) { (pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize) => 
-            pinsService.pinsList(pinFilter = pinFilter, pinMetrics = pinMetrics, includeProtectedPins = includeProtectedPins, pinType = pinType, creativeTypes = creativeTypes, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
+        parameters("pin_filter".as[String].?, "pin_metrics".as[Boolean].?(false), "include_protected_pins".as[Boolean].?(false), "pin_type".as[String].?, "creative_types".as[String].?, "ad_account_id".as[String].?, "domain".as[String].?, "domains".as[String].?, "include_product_tag_obj".as[Boolean].?, "bookmark".as[String].?, "page_size".as[Int].?(25)) { (pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, domain, domains, includeProductTagObj, bookmark, pageSize) => 
+            pinsService.pinsList(pinFilter = pinFilter, pinMetrics = pinMetrics, includeProtectedPins = includeProtectedPins, pinType = pinType, creativeTypes = creativeTypes, adAccountId = adAccountId, domain = domain, domains = domains, includeProductTagObj = includeProductTagObj, bookmark = bookmark, pageSize = pageSize)
         }
       }
     } ~
     path("pins" / Segment / "save") { (pinId) => 
       post { 
         parameters("ad_account_id".as[String].?) { (adAccountId) => 
-            entity(as[PinsSaveRequest]){ pinsSaveRequest =>
-              pinsService.pinsSave(pinId = pinId, pinsSaveRequest = pinsSaveRequest, adAccountId = adAccountId)
+            entity(as[PinsSaveRequestCreate]){ pinsSaveRequestCreate =>
+              pinsService.pinsSave(pinId = pinId, pinsSaveRequestCreate = pinsSaveRequestCreate, adAccountId = adAccountId)
             }
         }
       }
@@ -95,7 +99,7 @@ class PinsApi(
 
 object PinsApiPatterns {
 
-    val pinIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
+    val pinIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
 }
 
 trait PinsApiService {
@@ -106,6 +110,8 @@ trait PinsApiService {
     complete((400, responseError))
   def multiPinsAnalytics401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((401, responseError))
+  def multiPinsAnalytics403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
   def multiPinsAnalytics404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
   def multiPinsAnalytics429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
@@ -113,12 +119,13 @@ trait PinsApiService {
   def multiPinsAnalyticsDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: response, DataType: Map[String, Map[String, PinAnalyticsMetricsResponse]]
-   * Code: 400, Message: Invalid pins analytics parameters., DataType: Error
-   * Code: 401, Message: Not authorized to access board or Pin., DataType: Error
-   * Code: 404, Message: Pin not found., DataType: Error
-   * Code: 429, Message: This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: Map[String, Map[String, PinAnalyticsMetricsResponse]]
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def multiPinsAnalytics(pinIds: String, startDate: String, endDate: String, metricTypes: String, appTypes: String, adAccountId: Option[String])
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route
@@ -127,18 +134,24 @@ trait PinsApiService {
     complete((200, responsePinAnalyticsMetricsResponsemap))
   def pinsAnalytics400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def pinsAnalytics401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
   def pinsAnalytics403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
   def pinsAnalytics404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
+  def pinsAnalytics429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def pinsAnalyticsDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: response, DataType: Map[String, PinAnalyticsMetricsResponse]
-   * Code: 400, Message: Invalid pins analytics parameters., DataType: Error
-   * Code: 403, Message: Not authorized to access board or Pin., DataType: Error
-   * Code: 404, Message: Pin not found., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: Map[String, PinAnalyticsMetricsResponse]
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def pinsAnalytics(pinId: String, startDate: String, endDate: String, metricTypes: String, appTypes: String, splitField: String, adAccountId: Option[String])
       (implicit toEntityMarshallerPinAnalyticsMetricsResponsemap: ToEntityMarshaller[Map[String, PinAnalyticsMetricsResponse]], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
@@ -172,6 +185,8 @@ trait PinsApiService {
   def pinsCreate(pinCreate: PinCreate, adAccountId: Option[String])
       (implicit toEntityMarshallerPin: ToEntityMarshaller[Pin], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
+  def pinsDelete200(responsePin: Pin)(implicit toEntityMarshallerPin: ToEntityMarshaller[Pin]): Route =
+    complete((200, responsePin))
   def pinsDelete204: Route =
     complete((204, "Resource deleted successfully."))
   def pinsDelete400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
@@ -187,6 +202,7 @@ trait PinsApiService {
   def pinsDeleteDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
+   * Code: 200, Message: The request has succeeded., DataType: Pin
    * Code: 204, Message: Resource deleted successfully.
    * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
    * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
@@ -196,7 +212,7 @@ trait PinsApiService {
    * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def pinsDelete(pinId: String, adAccountId: Option[String])
-      (implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerPin: ToEntityMarshaller[Pin], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def pinsGet200(responsePin: Pin)(implicit toEntityMarshallerPin: ToEntityMarshaller[Pin]): Route =
     complete((200, responsePin))
@@ -247,24 +263,33 @@ trait PinsApiService {
    * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
    * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def pinsList(pinFilter: Option[String], pinMetrics: Boolean, includeProtectedPins: Boolean, pinType: Option[String], creativeTypes: Option[String], adAccountId: Option[String], bookmark: Option[String], pageSize: Int)
+  def pinsList(pinFilter: Option[String], pinMetrics: Boolean, includeProtectedPins: Boolean, pinType: Option[String], creativeTypes: Option[String], adAccountId: Option[String], domain: Option[String], domains: Option[String], includeProductTagObj: Option[Boolean], bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerPinsList200Response: ToEntityMarshaller[PinsList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def pinsSave201(responsePin: Pin)(implicit toEntityMarshallerPin: ToEntityMarshaller[Pin]): Route =
     complete((201, responsePin))
+  def pinsSave400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def pinsSave401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
   def pinsSave403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
   def pinsSave404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
+  def pinsSave429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def pinsSaveDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 201, Message: Successfully saved pin., DataType: Pin
-   * Code: 403, Message: Not authorized to access Board or Pin., DataType: Error
-   * Code: 404, Message: Board or Pin not found., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 201, Message: The request has succeeded and a new resource has been created as a result., DataType: Pin
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def pinsSave(pinId: String, pinsSaveRequest: PinsSaveRequest, adAccountId: Option[String])
+  def pinsSave(pinId: String, pinsSaveRequestCreate: PinsSaveRequestCreate, adAccountId: Option[String])
       (implicit toEntityMarshallerPin: ToEntityMarshaller[Pin], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def pinsUpdate200(responsePin: Pin)(implicit toEntityMarshallerPin: ToEntityMarshaller[Pin]): Route =
@@ -298,7 +323,7 @@ trait PinsApiService {
 trait PinsApiMarshaller {
   implicit def fromEntityUnmarshallerPinCreate: FromEntityUnmarshaller[PinCreate]
 
-  implicit def fromEntityUnmarshallerPinsSaveRequest: FromEntityUnmarshaller[PinsSaveRequest]
+  implicit def fromEntityUnmarshallerPinsSaveRequestCreate: FromEntityUnmarshaller[PinsSaveRequestCreate]
 
   implicit def fromEntityUnmarshallerPinUpdate: FromEntityUnmarshaller[PinUpdate]
 

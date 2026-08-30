@@ -31,9 +31,11 @@ class CatalogsHotelAttributes {
     this.neighborhood = const [],
     this.salePrice,
     this.additionalImageLink = const [],
+    this.aiDisclosures = const [],
     this.mainImage,
   });
 
+  /// Hotel address
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -69,6 +71,7 @@ class CatalogsHotelAttributes {
   /// Brief description of the hotel.
   String? description;
 
+  /// If specified, you must provide all properties
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -101,16 +104,20 @@ class CatalogsHotelAttributes {
   /// Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
   String? salePrice;
 
-  /// <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+  /// <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
   List<String>? additionalImageLink;
 
+  /// AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+  List<CatalogsAiContentDisclosure> aiDisclosures;
+
+  /// The main hotel image
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsHotelAttributesAllOfMainImage? mainImage;
+  CatalogsHotelMainImage? mainImage;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CatalogsHotelAttributes &&
@@ -132,6 +139,7 @@ class CatalogsHotelAttributes {
     _deepEquality.equals(other.neighborhood, neighborhood) &&
     other.salePrice == salePrice &&
     _deepEquality.equals(other.additionalImageLink, additionalImageLink) &&
+    _deepEquality.equals(other.aiDisclosures, aiDisclosures) &&
     other.mainImage == mainImage;
 
   @override
@@ -155,10 +163,11 @@ class CatalogsHotelAttributes {
     (neighborhood == null ? 0 : neighborhood!.hashCode) +
     (salePrice == null ? 0 : salePrice!.hashCode) +
     (additionalImageLink == null ? 0 : additionalImageLink!.hashCode) +
+    (aiDisclosures.hashCode) +
     (mainImage == null ? 0 : mainImage!.hashCode);
 
   @override
-  String toString() => 'CatalogsHotelAttributes[address=$address, basePrice=$basePrice, brand=$brand, category=$category, customLabel0=$customLabel0, customLabel1=$customLabel1, customLabel2=$customLabel2, customLabel3=$customLabel3, customLabel4=$customLabel4, description=$description, guestRatings=$guestRatings, latitude=$latitude, link=$link, longitude=$longitude, name=$name, neighborhood=$neighborhood, salePrice=$salePrice, additionalImageLink=$additionalImageLink, mainImage=$mainImage]';
+  String toString() => 'CatalogsHotelAttributes[address=$address, basePrice=$basePrice, brand=$brand, category=$category, customLabel0=$customLabel0, customLabel1=$customLabel1, customLabel2=$customLabel2, customLabel3=$customLabel3, customLabel4=$customLabel4, description=$description, guestRatings=$guestRatings, latitude=$latitude, link=$link, longitude=$longitude, name=$name, neighborhood=$neighborhood, salePrice=$salePrice, additionalImageLink=$additionalImageLink, aiDisclosures=$aiDisclosures, mainImage=$mainImage]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -252,6 +261,7 @@ class CatalogsHotelAttributes {
     } else {
       json[r'additional_image_link'] = null;
     }
+      json[r'ai_disclosures'] = this.aiDisclosures;
     if (this.mainImage != null) {
       json[r'main_image'] = this.mainImage;
     } else {
@@ -271,10 +281,6 @@ class CatalogsHotelAttributes {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsHotelAttributes[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsHotelAttributes[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -303,7 +309,8 @@ class CatalogsHotelAttributes {
         additionalImageLink: json[r'additional_image_link'] is Iterable
             ? (json[r'additional_image_link'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        mainImage: CatalogsHotelAttributesAllOfMainImage.fromJson(json[r'main_image']),
+        aiDisclosures: CatalogsAiContentDisclosure.listFromJson(json[r'ai_disclosures']),
+        mainImage: CatalogsHotelMainImage.fromJson(json[r'main_image']),
       );
     }
     return null;

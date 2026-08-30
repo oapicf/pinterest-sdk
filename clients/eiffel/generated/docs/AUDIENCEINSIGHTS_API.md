@@ -9,12 +9,12 @@ Feature | HTTP request | Description
 
 
 # **audience_insights_get**
-> audience_insights_get (ad_account_id: STRING_32 ; audience_insight_type: AUDIENCE_INSIGHT_TYPE ): detachable AUDIENCE_INSIGHTS_RESPONSE
+> audience_insights_get (ad_account_id: STRING_32 ; audience_insight_type: AUDIENCE_INSIGHT_TYPE ): detachable AUDIENCE_INSIGHTS
 
 
 Get audience insights
 
-Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
+Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 
 
 ### Parameters
@@ -26,7 +26,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AUDIENCE_INSIGHTS_RESPONSE**](AudienceInsightsResponse.md)
+[**AUDIENCE_INSIGHTS**](AudienceInsights.md)
 
 ### Authorization
 
@@ -40,7 +40,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **audience_insights_scope_and_type_get**
-> audience_insights_scope_and_type_get (ad_account_id: STRING_32 ): detachable AUDIENCE_DEFINITION_RESPONSE
+> audience_insights_scope_and_type_get (ad_account_id: STRING_32 ): detachable AUDIENCE_INSIGHTS_SCOPE_AND_TYPE_GET_200_RESPONSE
 
 
 Get audience insights scope and type
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AUDIENCE_DEFINITION_RESPONSE**](AudienceDefinitionResponse.md)
+[**AUDIENCE_INSIGHTS_SCOPE_AND_TYPE_GET_200_RESPONSE**](audience_insights_scope_and_type_get_200_response.md)
 
 ### Authorization
 

@@ -1,0 +1,9 @@
+
+
+# CollectionsHeaderType
+
+## Enum
+
+
+
+

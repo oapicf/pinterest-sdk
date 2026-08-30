@@ -1,0 +1,35 @@
+
+# Table `IntegrationMetadataCreate`
+(mapped from: IntegrationMetadataCreate)
+
+## Properties
+Name | Mapping | SQL Type | Default | Type | Description | Notes
+---- | ------- | -------- | ------- | ---- | ----------- | -----
+**additionalId1** | additional_id_1 | text |  | **kotlin.String** |  |  [optional]
+**connectedAdvertiserId** | connected_advertiser_id | text |  | **kotlin.String** |  |  [optional]
+**connectedLbaId** | connected_lba_id | text |  | **kotlin.String** |  |  [optional]
+**connectedMerchantId** | connected_merchant_id | text |  | **kotlin.String** |  |  [optional]
+**connectedTagId** | connected_tag_id | text |  | **kotlin.String** |  |  [optional]
+**externalBusinessId** | external_business_id | text |  | **kotlin.String** | External business ID for the integration. |  [optional]
+**partnerAccessToken** | partner_access_token | text |  | **kotlin.String** |  |  [optional]
+**partnerAccessTokenExpiry** | partner_access_token_expiry | decimal |  | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  |  [optional]
+**partnerMetadata** | partner_metadata | text |  | **kotlin.String** |  |  [optional]
+**partnerPrimaryEmail** | partner_primary_email | text |  | **kotlin.String** |  |  [optional]
+**partnerRefreshToken** | partner_refresh_token | text |  | **kotlin.String** |  |  [optional]
+**partnerRefreshTokenExpiry** | partner_refresh_token_expiry | decimal |  | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  |  [optional]
+**scopes** | scopes | text |  | **kotlin.String** |  |  [optional]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,6 +7,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.FormFactor;
+import org.openapitools.model.NetworkType;
+import org.openapitools.model.OsFamily;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -33,38 +36,7 @@ public class ConversionEventDeviceInfo   {
 
   private Integer externalStorageSize;
 
-
-public enum FormFactorEnum {
-
-    @JsonProperty("desktop") DESKTOP(String.valueOf("desktop")), @JsonProperty("laptop") LAPTOP(String.valueOf("laptop")), @JsonProperty("cellphone") CELLPHONE(String.valueOf("cellphone")), @JsonProperty("tablet") TABLET(String.valueOf("tablet")), @JsonProperty("smartwatch") SMARTWATCH(String.valueOf("smartwatch")), @JsonProperty("tv") TV(String.valueOf("tv")), @JsonProperty("vr") VR(String.valueOf("vr")), @JsonProperty("console") CONSOLE(String.valueOf("console")), @JsonProperty("other") OTHER(String.valueOf("other"));
-
-
-    private String value;
-
-    FormFactorEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static FormFactorEnum fromValue(String value) {
-        for (FormFactorEnum b : FormFactorEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private FormFactorEnum formFactor;
+  private FormFactor formFactor;
 
   private String kernelVersion;
 
@@ -74,71 +46,9 @@ public enum FormFactorEnum {
 
   private String model;
 
+  private NetworkType networkType;
 
-public enum NetworkTypeEnum {
-
-    @JsonProperty("wifi") WIFI(String.valueOf("wifi")), @JsonProperty("cellular_2g") CELLULAR_2G(String.valueOf("cellular_2g")), @JsonProperty("cellular_3g") CELLULAR_3G(String.valueOf("cellular_3g")), @JsonProperty("cellular_4g") CELLULAR_4G(String.valueOf("cellular_4g")), @JsonProperty("cellular_5g") CELLULAR_5G(String.valueOf("cellular_5g")), @JsonProperty("cellular_6g") CELLULAR_6G(String.valueOf("cellular_6g")), @JsonProperty("ethernet") ETHERNET(String.valueOf("ethernet")), @JsonProperty("unknown") UNKNOWN(String.valueOf("unknown"));
-
-
-    private String value;
-
-    NetworkTypeEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static NetworkTypeEnum fromValue(String value) {
-        for (NetworkTypeEnum b : NetworkTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private NetworkTypeEnum networkType;
-
-
-public enum OsFamilyEnum {
-
-    @JsonProperty("ios") IOS(String.valueOf("ios")), @JsonProperty("android") ANDROID(String.valueOf("android")), @JsonProperty("macos") MACOS(String.valueOf("macos")), @JsonProperty("windows") WINDOWS(String.valueOf("windows")), @JsonProperty("linux") LINUX(String.valueOf("linux")), @JsonProperty("bsd") BSD(String.valueOf("bsd")), @JsonProperty("other") OTHER(String.valueOf("other"));
-
-
-    private String value;
-
-    OsFamilyEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static OsFamilyEnum fromValue(String value) {
-        for (OsFamilyEnum b : OsFamilyEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private OsFamilyEnum osFamily;
+  private OsFamily osFamily;
 
   private String osName;
 
@@ -287,7 +197,7 @@ public enum OsFamilyEnum {
   /**
    * Device form factor
    **/
-  public ConversionEventDeviceInfo formFactor(FormFactorEnum formFactor) {
+  public ConversionEventDeviceInfo formFactor(FormFactor formFactor) {
     this.formFactor = formFactor;
     return this;
   }
@@ -295,10 +205,10 @@ public enum OsFamilyEnum {
   
   @ApiModelProperty(example = "cellphone", value = "Device form factor")
   @JsonProperty("form_factor")
-  public FormFactorEnum getFormFactor() {
+  public FormFactor getFormFactor() {
     return formFactor;
   }
-  public void setFormFactor(FormFactorEnum formFactor) {
+  public void setFormFactor(FormFactor formFactor) {
     this.formFactor = formFactor;
   }
 
@@ -377,7 +287,7 @@ public enum OsFamilyEnum {
   }
 
   
-  @ApiModelProperty(example = "16 Pro, Galaxy S25 Ultra", value = "Device model name")
+  @ApiModelProperty(value = "Device model name")
   @JsonProperty("model")
  @Size(max=100)  public String getModel() {
     return model;
@@ -390,7 +300,7 @@ public enum OsFamilyEnum {
   /**
    * Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
    **/
-  public ConversionEventDeviceInfo networkType(NetworkTypeEnum networkType) {
+  public ConversionEventDeviceInfo networkType(NetworkType networkType) {
     this.networkType = networkType;
     return this;
   }
@@ -398,10 +308,10 @@ public enum OsFamilyEnum {
   
   @ApiModelProperty(example = "wifi", value = "Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()")
   @JsonProperty("network_type")
-  public NetworkTypeEnum getNetworkType() {
+  public NetworkType getNetworkType() {
     return networkType;
   }
-  public void setNetworkType(NetworkTypeEnum networkType) {
+  public void setNetworkType(NetworkType networkType) {
     this.networkType = networkType;
   }
 
@@ -409,7 +319,7 @@ public enum OsFamilyEnum {
   /**
    * OS Family
    **/
-  public ConversionEventDeviceInfo osFamily(OsFamilyEnum osFamily) {
+  public ConversionEventDeviceInfo osFamily(OsFamily osFamily) {
     this.osFamily = osFamily;
     return this;
   }
@@ -417,10 +327,10 @@ public enum OsFamilyEnum {
   
   @ApiModelProperty(example = "ios", value = "OS Family")
   @JsonProperty("os_family")
-  public OsFamilyEnum getOsFamily() {
+  public OsFamily getOsFamily() {
     return osFamily;
   }
-  public void setOsFamily(OsFamilyEnum osFamily) {
+  public void setOsFamily(OsFamily osFamily) {
     this.osFamily = osFamily;
   }
 
@@ -723,10 +633,7 @@ public enum OsFamilyEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

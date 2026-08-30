@@ -8,13 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.HttpMethod
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -38,7 +47,7 @@ data class IntegrationLogClientRequest (
     val host: kotlin.String,
 
     @Json(name = "method")
-    val method: IntegrationLogClientRequest.Method,
+    val method: HttpMethod,
 
     /* HTTP request path. */
     @Json(name = "path")
@@ -57,23 +66,6 @@ data class IntegrationLogClientRequest (
 
 ) {
 
-    /**
-     * 
-     *
-     * Values: GET,HEAD,POST,PUT,DELETE,CONNECT,OPTIONS,TRACE,PATCH
-     */
-    @JsonClass(generateAdapter = false)
-    enum class Method(val value: kotlin.String) {
-        @Json(name = "GET") GET("GET"),
-        @Json(name = "HEAD") HEAD("HEAD"),
-        @Json(name = "POST") POST("POST"),
-        @Json(name = "PUT") PUT("PUT"),
-        @Json(name = "DELETE") DELETE("DELETE"),
-        @Json(name = "CONNECT") CONNECT("CONNECT"),
-        @Json(name = "OPTIONS") OPTIONS("OPTIONS"),
-        @Json(name = "TRACE") TRACE("TRACE"),
-        @Json(name = "PATCH") PATCH("PATCH");
-    }
 
 }
 

@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **character** |  | [optional] 
-**items** | [**array[SSIOInsertionOrderStatus]**](SSIOInsertionOrderStatus.md) | Insertion orders status by ad acount id | 
+**items** | [**array[SSIOInsertionOrderStatus]**](SSIOInsertionOrderStatus.md) |  | 
 
 

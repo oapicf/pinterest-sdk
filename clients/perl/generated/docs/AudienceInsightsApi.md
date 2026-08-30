@@ -14,11 +14,11 @@ Method | HTTP request | Description
 
 
 # **audience_insights_get**
-> AudienceInsightsResponse audience_insights_get(ad_account_id => $ad_account_id, audience_insight_type => $audience_insight_type)
+> AudienceInsights audience_insights_get(ad_account_id => $ad_account_id, audience_insight_type => $audience_insight_type)
 
 Get audience insights
 
-Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
+Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 
 ### Example
 ```perl
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AudienceInsightsResponse**](AudienceInsightsResponse.md)
+[**AudienceInsights**](AudienceInsights.md)
 
 ### Authorization
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **audience_insights_scope_and_type_get**
-> AudienceDefinitionResponse audience_insights_scope_and_type_get(ad_account_id => $ad_account_id)
+> AudienceInsightsScopeAndTypeGet200Response audience_insights_scope_and_type_get(ad_account_id => $ad_account_id)
 
 Get audience insights scope and type
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AudienceDefinitionResponse**](AudienceDefinitionResponse.md)
+[**AudienceInsightsScopeAndTypeGet200Response**](AudienceInsightsScopeAndTypeGet200Response.md)
 
 ### Authorization
 

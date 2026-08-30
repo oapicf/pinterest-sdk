@@ -51,21 +51,73 @@ static gpointer __LeadAdsManagerthreadFunc(gpointer data)
 static bool adAccountsSubscriptionsDelByIdProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(LeadSubscription, Error, void* )
+	= reinterpret_cast<void(*)(LeadSubscription, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	LeadSubscription out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("LeadSubscription")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "LeadSubscription", "LeadSubscription");
+			json_node_free(pJson);
+
+			if ("LeadSubscription" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -76,15 +128,15 @@ static bool adAccountsSubscriptionsDelByIdProcessor(MemoryStruct_s p_chunk, long
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool adAccountsSubscriptionsDelByIdHelper(char * accessToken,
 	std::string adAccountId, std::string subscriptionId, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(LeadSubscription, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -166,8 +218,8 @@ static bool adAccountsSubscriptionsDelByIdHelper(char * accessToken,
 
 bool LeadAdsManager::adAccountsSubscriptionsDelByIdAsync(char * accessToken,
 	std::string adAccountId, std::string subscriptionId, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(LeadSubscription, Error, void* )
+	, void* userData)
 {
 	return adAccountsSubscriptionsDelByIdHelper(accessToken,
 	adAccountId, subscriptionId, 
@@ -176,8 +228,8 @@ bool LeadAdsManager::adAccountsSubscriptionsDelByIdAsync(char * accessToken,
 
 bool LeadAdsManager::adAccountsSubscriptionsDelByIdSync(char * accessToken,
 	std::string adAccountId, std::string subscriptionId, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(LeadSubscription, Error, void* )
+	, void* userData)
 {
 	return adAccountsSubscriptionsDelByIdHelper(accessToken,
 	adAccountId, subscriptionId, 

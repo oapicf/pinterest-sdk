@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -14,24 +15,22 @@ import org.openapitools.model.CustomizableCTAType;
 import org.openapitools.model.DisclosureType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
-import org.openapitools.model.QuizPinData;
-import org.openapitools.model.TrackingUrls;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * AdCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdCreateRequest {
 
   private String adGroupId;
@@ -63,6 +62,8 @@ public class AdCreateRequest {
 
   private JsonNullable<String> iosDeepLink = JsonNullable.<String>undefined();
 
+  private Boolean isCarting;
+
   private Boolean isPinDeleted;
 
   private Boolean isRemovable;
@@ -71,15 +72,15 @@ public class AdCreateRequest {
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-  private JsonNullable<QuizPinData> quizPinData = JsonNullable.<QuizPinData>undefined();
+  private String pinId;
+
+  private JsonNullable<Object> quizPinData = JsonNullable.<Object>undefined();
 
   private EntityStatus status;
 
-  private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
+  private JsonNullable<Object> trackingUrls = JsonNullable.<Object>undefined();
 
   private JsonNullable<String> viewTrackingUrl = JsonNullable.<String>undefined();
-
-  private String pinId;
 
   public AdCreateRequest() {
     super();
@@ -104,7 +105,7 @@ public class AdCreateRequest {
    * @return adGroupId
    */
   @NotNull @Pattern(regexp = "^(AG)?\\d+$") 
-  @Schema(name = "ad_group_id", example = "2680059592705", description = "ID of the ad group that contains the ad.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "ad_group_id", description = "ID of the ad group that contains the ad.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("ad_group_id")
   public String getAdGroupId() {
     return adGroupId;
@@ -378,6 +379,26 @@ public class AdCreateRequest {
     this.iosDeepLink = iosDeepLink;
   }
 
+  public AdCreateRequest isCarting(Boolean isCarting) {
+    this.isCarting = isCarting;
+    return this;
+  }
+
+  /**
+   * Is the ad a carting/WTB ad?
+   * @return isCarting
+   */
+  
+  @Schema(name = "is_carting", description = "Is the ad a carting/WTB ad?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("is_carting")
+  public Boolean getIsCarting() {
+    return isCarting;
+  }
+
+  public void setIsCarting(Boolean isCarting) {
+    this.isCarting = isCarting;
+  }
+
   public AdCreateRequest isPinDeleted(Boolean isPinDeleted) {
     this.isPinDeleted = isPinDeleted;
     return this;
@@ -458,7 +479,27 @@ public class AdCreateRequest {
     this.name = name;
   }
 
-  public AdCreateRequest quizPinData(QuizPinData quizPinData) {
+  public AdCreateRequest pinId(String pinId) {
+    this.pinId = pinId;
+    return this;
+  }
+
+  /**
+   * Pin ID.
+   * @return pinId
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "pin_id", example = "394205773611545468", description = "Pin ID.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("pin_id")
+  public String getPinId() {
+    return pinId;
+  }
+
+  public void setPinId(String pinId) {
+    this.pinId = pinId;
+  }
+
+  public AdCreateRequest quizPinData(Object quizPinData) {
     this.quizPinData = JsonNullable.of(quizPinData);
     return this;
   }
@@ -467,14 +508,14 @@ public class AdCreateRequest {
    * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
    * @return quizPinData
    */
-  @Valid 
+  
   @Schema(name = "quiz_pin_data", description = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("quiz_pin_data")
-  public JsonNullable<QuizPinData> getQuizPinData() {
+  public JsonNullable<Object> getQuizPinData() {
     return quizPinData;
   }
 
-  public void setQuizPinData(JsonNullable<QuizPinData> quizPinData) {
+  public void setQuizPinData(JsonNullable<Object> quizPinData) {
     this.quizPinData = quizPinData;
   }
 
@@ -498,7 +539,7 @@ public class AdCreateRequest {
     this.status = status;
   }
 
-  public AdCreateRequest trackingUrls(TrackingUrls trackingUrls) {
+  public AdCreateRequest trackingUrls(Object trackingUrls) {
     this.trackingUrls = JsonNullable.of(trackingUrls);
     return this;
   }
@@ -507,14 +548,14 @@ public class AdCreateRequest {
    * Get trackingUrls
    * @return trackingUrls
    */
-  @Valid 
+  
   @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tracking_urls")
-  public JsonNullable<TrackingUrls> getTrackingUrls() {
+  public JsonNullable<Object> getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(JsonNullable<TrackingUrls> trackingUrls) {
+  public void setTrackingUrls(JsonNullable<Object> trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -536,26 +577,6 @@ public class AdCreateRequest {
 
   public void setViewTrackingUrl(JsonNullable<String> viewTrackingUrl) {
     this.viewTrackingUrl = viewTrackingUrl;
-  }
-
-  public AdCreateRequest pinId(String pinId) {
-    this.pinId = pinId;
-    return this;
-  }
-
-  /**
-   * Pin ID.
-   * @return pinId
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "pin_id", example = "394205773611545468", description = "Pin ID.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("pin_id")
-  public String getPinId() {
-    return pinId;
-  }
-
-  public void setPinId(String pinId) {
-    this.pinId = pinId;
   }
 
   @Override
@@ -580,15 +601,16 @@ public class AdCreateRequest {
         equalsNullable(this.disclosureUrl, adCreateRequest.disclosureUrl) &&
         equalsNullable(this.gridClickType, adCreateRequest.gridClickType) &&
         equalsNullable(this.iosDeepLink, adCreateRequest.iosDeepLink) &&
+        Objects.equals(this.isCarting, adCreateRequest.isCarting) &&
         Objects.equals(this.isPinDeleted, adCreateRequest.isPinDeleted) &&
         Objects.equals(this.isRemovable, adCreateRequest.isRemovable) &&
         equalsNullable(this.leadFormId, adCreateRequest.leadFormId) &&
         equalsNullable(this.name, adCreateRequest.name) &&
+        Objects.equals(this.pinId, adCreateRequest.pinId) &&
         equalsNullable(this.quizPinData, adCreateRequest.quizPinData) &&
         Objects.equals(this.status, adCreateRequest.status) &&
         equalsNullable(this.trackingUrls, adCreateRequest.trackingUrls) &&
-        equalsNullable(this.viewTrackingUrl, adCreateRequest.viewTrackingUrl) &&
-        Objects.equals(this.pinId, adCreateRequest.pinId);
+        equalsNullable(this.viewTrackingUrl, adCreateRequest.viewTrackingUrl);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -597,7 +619,7 @@ public class AdCreateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroupId, hashCodeNullable(androidDeepLink), hashCodeNullable(carouselAndroidDeepLinks), hashCodeNullable(carouselDestinationUrls), hashCodeNullable(carouselIosDeepLinks), hashCodeNullable(clickTrackingUrl), creativeType, hashCodeNullable(customizableCtaType), hashCodeNullable(destinationUrl), hashCodeNullable(disclosureType), hashCodeNullable(disclosureUrl), hashCodeNullable(gridClickType), hashCodeNullable(iosDeepLink), isPinDeleted, isRemovable, hashCodeNullable(leadFormId), hashCodeNullable(name), hashCodeNullable(quizPinData), status, hashCodeNullable(trackingUrls), hashCodeNullable(viewTrackingUrl), pinId);
+    return Objects.hash(adGroupId, hashCodeNullable(androidDeepLink), hashCodeNullable(carouselAndroidDeepLinks), hashCodeNullable(carouselDestinationUrls), hashCodeNullable(carouselIosDeepLinks), hashCodeNullable(clickTrackingUrl), creativeType, hashCodeNullable(customizableCtaType), hashCodeNullable(destinationUrl), hashCodeNullable(disclosureType), hashCodeNullable(disclosureUrl), hashCodeNullable(gridClickType), hashCodeNullable(iosDeepLink), isCarting, isPinDeleted, isRemovable, hashCodeNullable(leadFormId), hashCodeNullable(name), pinId, hashCodeNullable(quizPinData), status, hashCodeNullable(trackingUrls), hashCodeNullable(viewTrackingUrl));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -624,15 +646,16 @@ public class AdCreateRequest {
     sb.append("    disclosureUrl: ").append(toIndentedString(disclosureUrl)).append("\n");
     sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");
     sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
+    sb.append("    isCarting: ").append(toIndentedString(isCarting)).append("\n");
     sb.append("    isPinDeleted: ").append(toIndentedString(isPinDeleted)).append("\n");
     sb.append("    isRemovable: ").append(toIndentedString(isRemovable)).append("\n");
     sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("    quizPinData: ").append(toIndentedString(quizPinData)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    viewTrackingUrl: ").append(toIndentedString(viewTrackingUrl)).append("\n");
-    sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -642,10 +665,7 @@ public class AdCreateRequest {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

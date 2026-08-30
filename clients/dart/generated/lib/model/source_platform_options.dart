@@ -11,43 +11,36 @@
 part of openapi.api;
 
 /// List of source platforms for a conversion event.
-class SourcePlatformOptions {
-  /// Instantiate a new enum with the provided [value].
-  const SourcePlatformOptions._(this.value);
+enum SourcePlatformOptions {
+  WEB._(r'WEB'),
+  MOBILE._(r'MOBILE'),
+  MOBILE_ANDROID._(r'MOBILE_ANDROID'),
+  MOBILE_IOS._(r'MOBILE_IOS'),
+  OFFLINE._(r'OFFLINE'),
+  PINTEREST_WEB._(r'PINTEREST_WEB'),
+  PINTEREST_ANDROID._(r'PINTEREST_ANDROID'),
+  PINTEREST_IOS._(r'PINTEREST_IOS'),
+  POINT_OF_SALE._(r'POINT_OF_SALE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const SourcePlatformOptions._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const WEB = SourcePlatformOptions._(r'WEB');
-  static const MOBILE = SourcePlatformOptions._(r'MOBILE');
-  static const MOBILE_ANDROID = SourcePlatformOptions._(r'MOBILE_ANDROID');
-  static const MOBILE_IOS = SourcePlatformOptions._(r'MOBILE_IOS');
-  static const OFFLINE = SourcePlatformOptions._(r'OFFLINE');
-  static const PINTEREST_WEB = SourcePlatformOptions._(r'PINTEREST_WEB');
-  static const PINTEREST_ANDROID = SourcePlatformOptions._(r'PINTEREST_ANDROID');
-  static const PINTEREST_IOS = SourcePlatformOptions._(r'PINTEREST_IOS');
-  static const POINT_OF_SALE = SourcePlatformOptions._(r'POINT_OF_SALE');
-
-  /// List of all possible values in this [enum][SourcePlatformOptions].
-  static const values = <SourcePlatformOptions>[
-    WEB,
-    MOBILE,
-    MOBILE_ANDROID,
-    MOBILE_IOS,
-    OFFLINE,
-    PINTEREST_WEB,
-    PINTEREST_ANDROID,
-    PINTEREST_IOS,
-    POINT_OF_SALE,
-  ];
-
+  /// Returns the instance of [SourcePlatformOptions] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static SourcePlatformOptions? fromJson(dynamic value) => SourcePlatformOptionsTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [SourcePlatformOptions]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<SourcePlatformOptions> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <SourcePlatformOptions>[];
     if (json is List && json.isNotEmpty) {
@@ -69,9 +62,11 @@ class SourcePlatformOptionsTypeTransformer {
 
   const SourcePlatformOptionsTypeTransformer._();
 
-  String encode(SourcePlatformOptions data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(SourcePlatformOptions data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a SourcePlatformOptions.
+  /// Returns the instance of [SourcePlatformOptions] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -80,6 +75,9 @@ class SourcePlatformOptionsTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   SourcePlatformOptions? decode(dynamic data, {bool allowNull = true}) {
+    if (data is SourcePlatformOptions) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'WEB': return SourcePlatformOptions.WEB;
@@ -100,7 +98,7 @@ class SourcePlatformOptionsTypeTransformer {
     return null;
   }
 
-  /// Singleton [SourcePlatformOptionsTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static SourcePlatformOptionsTypeTransformer? _instance;
 }
 

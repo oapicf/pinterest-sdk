@@ -11,29 +11,29 @@
 part of openapi.api;
 
 /// Creative assets visibility.
-class CreativeAssetsVisibilityType {
-  /// Instantiate a new enum with the provided [value].
-  const CreativeAssetsVisibilityType._(this.value);
+enum CreativeAssetsVisibilityType {
+  VISIBLE._(r'VISIBLE'),
+  HIDDEN._(r'HIDDEN'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CreativeAssetsVisibilityType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const VISIBLE = CreativeAssetsVisibilityType._(r'VISIBLE');
-  static const HIDDEN = CreativeAssetsVisibilityType._(r'HIDDEN');
-
-  /// List of all possible values in this [enum][CreativeAssetsVisibilityType].
-  static const values = <CreativeAssetsVisibilityType>[
-    VISIBLE,
-    HIDDEN,
-  ];
-
+  /// Returns the instance of [CreativeAssetsVisibilityType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CreativeAssetsVisibilityType? fromJson(dynamic value) => CreativeAssetsVisibilityTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CreativeAssetsVisibilityType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CreativeAssetsVisibilityType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CreativeAssetsVisibilityType>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class CreativeAssetsVisibilityTypeTypeTransformer {
 
   const CreativeAssetsVisibilityTypeTypeTransformer._();
 
-  String encode(CreativeAssetsVisibilityType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(CreativeAssetsVisibilityType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CreativeAssetsVisibilityType.
+  /// Returns the instance of [CreativeAssetsVisibilityType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class CreativeAssetsVisibilityTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CreativeAssetsVisibilityType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CreativeAssetsVisibilityType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'VISIBLE': return CreativeAssetsVisibilityType.VISIBLE;
@@ -79,7 +84,7 @@ class CreativeAssetsVisibilityTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [CreativeAssetsVisibilityTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CreativeAssetsVisibilityTypeTypeTransformer? _instance;
 }
 

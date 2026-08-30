@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -33,6 +41,7 @@ import com.squareup.moshi.JsonClass
  * @param name Ad account name.
  * @param owner Ad account owner
  * @param permissions 
+ * @param timeZone The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
  * @param updatedTime 
  */
 
@@ -62,6 +71,10 @@ data class AdAccount (
 
     @Json(name = "permissions")
     val permissions: kotlin.collections.List<BusinessAccessRole>? = null,
+
+    /* The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC. */
+    @Json(name = "time_zone")
+    val timeZone: kotlin.String? = null,
 
     @Json(name = "updated_time")
     val updatedTime: kotlin.Int? = null

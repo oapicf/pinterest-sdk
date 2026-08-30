@@ -15,7 +15,7 @@ public class ProductGroupPromotionUpdateRequest  {
  /**
   * ID of the ad group the product group belongs to.
   */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the ad group the product group belongs to.")
+  @ApiModelProperty(required = true, value = "ID of the ad group the product group belongs to.")
 
   private String adGroupId;
 
@@ -97,10 +97,7 @@ public class ProductGroupPromotionUpdateRequest  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

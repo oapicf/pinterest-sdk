@@ -106,7 +106,7 @@ CatalogsDeleteRetailItem::getItemId()
 }
 
 void
-CatalogsDeleteRetailItem::setItemId(std::string  item_id)
+CatalogsDeleteRetailItem::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
 }
@@ -118,7 +118,7 @@ CatalogsDeleteRetailItem::getLastUpdatedTime()
 }
 
 void
-CatalogsDeleteRetailItem::setLastUpdatedTime(long  last_updated_time)
+CatalogsDeleteRetailItem::setLastUpdatedTime(long last_updated_time)
 {
 	this->last_updated_time = last_updated_time;
 }
@@ -130,7 +130,7 @@ CatalogsDeleteRetailItem::getOperation()
 }
 
 void
-CatalogsDeleteRetailItem::setOperation(std::string  operation)
+CatalogsDeleteRetailItem::setOperation(std::string operation)
 {
 	this->operation = operation;
 }

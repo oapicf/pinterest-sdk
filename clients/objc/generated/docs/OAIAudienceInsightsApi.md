@@ -12,12 +12,12 @@ Method | HTTP request | Description
 ```objc
 -(NSURLSessionTask*) audienceInsightsGetWithAdAccountId: (NSString*) adAccountId
     audienceInsightType: (OAIAudienceInsightType) audienceInsightType
-        completionHandler: (void (^)(OAIAudienceInsightsResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIAudienceInsights* output, NSError* error)) handler;
 ```
 
 Get audience insights
 
-Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
+Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 
 ### Example
 ```objc
@@ -38,7 +38,7 @@ OAIAudienceInsightsApi*apiInstance = [[OAIAudienceInsightsApi alloc] init];
 // Get audience insights
 [apiInstance audienceInsightsGetWithAdAccountId:adAccountId
               audienceInsightType:audienceInsightType
-          completionHandler: ^(OAIAudienceInsightsResponse* output, NSError* error) {
+          completionHandler: ^(OAIAudienceInsights* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIAudienceInsightsResponse***](OAIAudienceInsightsResponse.md)
+[**OAIAudienceInsights***](OAIAudienceInsights.md)
 
 ### Authorization
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 # **audienceInsightsScopeAndTypeGet**
 ```objc
 -(NSURLSessionTask*) audienceInsightsScopeAndTypeGetWithAdAccountId: (NSString*) adAccountId
-        completionHandler: (void (^)(OAIAudienceDefinitionResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIAudienceInsightsScopeAndTypeGet200Response* output, NSError* error)) handler;
 ```
 
 Get audience insights scope and type
@@ -97,7 +97,7 @@ OAIAudienceInsightsApi*apiInstance = [[OAIAudienceInsightsApi alloc] init];
 
 // Get audience insights scope and type
 [apiInstance audienceInsightsScopeAndTypeGetWithAdAccountId:adAccountId
-          completionHandler: ^(OAIAudienceDefinitionResponse* output, NSError* error) {
+          completionHandler: ^(OAIAudienceInsightsScopeAndTypeGet200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIAudienceDefinitionResponse***](OAIAudienceDefinitionResponse.md)
+[**OAIAudienceInsightsScopeAndTypeGet200Response***](OAIAudienceInsightsScopeAndTypeGet200Response.md)
 
 ### Authorization
 

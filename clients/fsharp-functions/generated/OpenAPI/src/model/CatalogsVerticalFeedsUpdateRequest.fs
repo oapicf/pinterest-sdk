@@ -10,7 +10,6 @@ open OpenAPI.Model.CatalogsFormat
 open OpenAPI.Model.CatalogsHotelFeedsUpdateRequest
 open OpenAPI.Model.CatalogsRetailFeedsUpdateRequest
 open OpenAPI.Model.CatalogsStatus
-open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.NullableCurrency
 open OpenAPI.Model.ProductAvailabilityType
 
@@ -21,7 +20,7 @@ module CatalogsVerticalFeedsUpdateRequest =
   [<CLIMutable>]
   type CatalogsVerticalFeedsUpdateRequest = {
     [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : CatalogsType;
+    CatalogType : string;
     [<JsonProperty(PropertyName = "credentials")>]
     Credentials : CatalogsFeedCredentials;
     [<JsonProperty(PropertyName = "default_availability")>]

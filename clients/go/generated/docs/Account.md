@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **About** | Pointer to **string** | Profile about description. | [optional] 
-**AccountType** | Pointer to **string** | Type of account | [optional] 
-**BoardCount** | Pointer to **NullableInt32** | User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] 
+**AccountType** | Pointer to [**UserAccountType**](UserAccountType.md) | Type of account | [optional] 
+**BoardCount** | Pointer to **NullableInt32** |   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] 
 **BusinessName** | Pointer to **NullableString** |  | [optional] 
 **FollowerCount** | Pointer to **NullableInt32** | User account follower count. | [optional] [readonly] 
 **FollowingCount** | Pointer to **NullableInt32** | User account following count. | [optional] [readonly] 
@@ -63,20 +63,20 @@ HasAbout returns a boolean if a field has been set.
 
 ### GetAccountType
 
-`func (o *Account) GetAccountType() string`
+`func (o *Account) GetAccountType() UserAccountType`
 
 GetAccountType returns the AccountType field if non-nil, zero value otherwise.
 
 ### GetAccountTypeOk
 
-`func (o *Account) GetAccountTypeOk() (*string, bool)`
+`func (o *Account) GetAccountTypeOk() (*UserAccountType, bool)`
 
 GetAccountTypeOk returns a tuple with the AccountType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountType
 
-`func (o *Account) SetAccountType(v string)`
+`func (o *Account) SetAccountType(v UserAccountType)`
 
 SetAccountType sets AccountType field to given value.
 

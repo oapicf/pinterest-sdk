@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TopPinsSortBy"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TopPinsSortBy"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  TopPinsSortBy {
+    title = TopPinsSortBy
+    description = TopPinsSortBy
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  TopPinsSortBy {
+    title = TopPinsSortBy
+    description = TopPinsSortBy
+    implements = openapi_server.resourceTypes.TopPinsSortBy
+
+  }
+}

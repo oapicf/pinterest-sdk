@@ -7,20 +7,20 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * This field is **OPTIONAL**. Use this if your feed file requires username and password.
  */
 
 @Schema(name = "CatalogsFeedCredentials", description = "This field is **OPTIONAL**. Use this if your feed file requires username and password.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedCredentials {
 
   private String password;
@@ -55,6 +55,7 @@ public class CatalogsFeedCredentials {
     return password;
   }
 
+  @JsonProperty("password")
   public void setPassword(String password) {
     this.password = password;
   }
@@ -75,6 +76,7 @@ public class CatalogsFeedCredentials {
     return username;
   }
 
+  @JsonProperty("username")
   public void setUsername(String username) {
     this.username = username;
   }
@@ -112,10 +114,7 @@ public class CatalogsFeedCredentials {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

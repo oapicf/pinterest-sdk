@@ -1,7 +1,7 @@
 #' Create a new CatalogsHotelGuestRatings
 #'
 #' @description
-#' If specified, you must provide all properties
+#' CatalogsHotelGuestRatings Class
 #'
 #' @docType class
 #' @title CatalogsHotelGuestRatings

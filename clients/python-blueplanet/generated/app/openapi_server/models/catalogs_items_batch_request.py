@@ -6,7 +6,6 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.batch_operation import BatchOperation  # noqa: F401,E501
 from app.openapi_server.models.catalogs_items_create_batch_request import CatalogsItemsCreateBatchRequest  # noqa: F401,E501
 from app.openapi_server.models.catalogs_items_delete_batch_request import CatalogsItemsDeleteBatchRequest  # noqa: F401,E501
 from app.openapi_server.models.catalogs_items_delete_discontinued_batch_request import CatalogsItemsDeleteDiscontinuedBatchRequest  # noqa: F401,E501
@@ -23,7 +22,7 @@ class CatalogsItemsBatchRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, country: Country=None, items: List[ItemDeleteBatchRecord]=None, language: str=None, operation: BatchOperation=None):  # noqa: E501
+    def __init__(self, country: Country=None, items: List[ItemDeleteBatchRecord]=None, language: str=None, operation: str=None):  # noqa: E501
         """CatalogsItemsBatchRequest - a model defined in Swagger
 
         :param country: The country of this CatalogsItemsBatchRequest.  # noqa: E501
@@ -33,13 +32,13 @@ class CatalogsItemsBatchRequest(Model):
         :param language: The language of this CatalogsItemsBatchRequest.  # noqa: E501
         :type language: str
         :param operation: The operation of this CatalogsItemsBatchRequest.  # noqa: E501
-        :type operation: BatchOperation
+        :type operation: str
         """
         self.swagger_types = {
             'country': Country,
             'items': List[ItemDeleteBatchRecord],
             'language': str,
-            'operation': BatchOperation
+            'operation': str
         }
 
         self.attribute_map = {
@@ -133,7 +132,7 @@ class CatalogsItemsBatchRequest(Model):
         :param language: The language of this CatalogsItemsBatchRequest.
         :type language: str
         """
-        allowed_values = ["af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH"]  # noqa: E501
+        allowed_values = ["af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "false", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH"]  # noqa: E501
         if language not in allowed_values:
             raise ValueError(
                 "Invalid value for `language` ({0}), must be one of {1}"
@@ -143,24 +142,28 @@ class CatalogsItemsBatchRequest(Model):
         self._language = language
 
     @property
-    def operation(self) -> BatchOperation:
+    def operation(self) -> str:
         """Gets the operation of this CatalogsItemsBatchRequest.
 
 
         :return: The operation of this CatalogsItemsBatchRequest.
-        :rtype: BatchOperation
+        :rtype: str
         """
         return self._operation
 
     @operation.setter
-    def operation(self, operation: BatchOperation):
+    def operation(self, operation: str):
         """Sets the operation of this CatalogsItemsBatchRequest.
 
 
         :param operation: The operation of this CatalogsItemsBatchRequest.
-        :type operation: BatchOperation
+        :type operation: str
         """
-        if operation is None:
-            raise ValueError("Invalid value for `operation`, must not be `None`")  # noqa: E501
+        allowed_values = ["DELETE"]  # noqa: E501
+        if operation not in allowed_values:
+            raise ValueError(
+                "Invalid value for `operation` ({0}), must be one of {1}"
+                .format(operation, allowed_values)
+            )
 
         self._operation = operation

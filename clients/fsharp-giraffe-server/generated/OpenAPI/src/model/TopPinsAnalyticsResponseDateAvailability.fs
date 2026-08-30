@@ -8,7 +8,7 @@ module TopPinsAnalyticsResponseDateAvailability =
   //#region TopPinsAnalyticsResponseDateAvailability
 
 
-  type TopPinsAnalyticsResponse_date_availability = {
+  type TopPinsAnalyticsResponseDateAvailability = {
     IsRealtime : bool;
     LatestAvailableTimestamp : decimal;
   }

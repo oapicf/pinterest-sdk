@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ageDistribution** | [**TrendingKeywordDemographicsAgeDistribution**](TrendingKeywordDemographicsAgeDistribution.md) |  | [optional] 
-**genderDistribution** | [**TrendingKeywordDemographicsGenderDistribution**](TrendingKeywordDemographicsGenderDistribution.md) |  | [optional] 
+**ageDistribution** | [**TrendsAgeDistribution**](TrendsAgeDistribution.md) |  | [optional] 
+**genderDistribution** | [**TrendsGenderDistribution**](TrendsGenderDistribution.md) |  | [optional] 
 
 

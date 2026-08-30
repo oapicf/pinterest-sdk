@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -65,7 +65,8 @@ type ConversionEventsUserDataProperties struct {
 	Zp []string `json:"zp,omitempty"`
 }
 
-// AssertConversionEventsUserDataPropertiesRequired checks if the required fields are not zero-ed
+// AssertConversionEventsUserDataPropertiesRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertConversionEventsUserDataPropertiesRequired(obj ConversionEventsUserDataProperties) error {
 	return nil
 }

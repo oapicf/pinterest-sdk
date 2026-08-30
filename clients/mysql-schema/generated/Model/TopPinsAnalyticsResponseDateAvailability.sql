@@ -1,26 +1,26 @@
 --
 -- Pinterest REST API.
--- Prepared SQL queries for 'TopPinsAnalyticsResponse_date_availability' definition.
+-- Prepared SQL queries for 'TopPinsAnalyticsResponseDateAvailability' definition.
 --
 
 
 --
--- SELECT template for table `TopPinsAnalyticsResponse_date_availability`
+-- SELECT template for table `TopPinsAnalyticsResponseDateAvailability`
 --
-SELECT `is_realtime`, `latest_available_timestamp` FROM `TopPinsAnalyticsResponse_date_availability` WHERE 1;
+SELECT `is_realtime`, `latest_available_timestamp` FROM `TopPinsAnalyticsResponseDateAvailability` WHERE 1;
 
 --
--- INSERT template for table `TopPinsAnalyticsResponse_date_availability`
+-- INSERT template for table `TopPinsAnalyticsResponseDateAvailability`
 --
-INSERT INTO `TopPinsAnalyticsResponse_date_availability`(`is_realtime`, `latest_available_timestamp`) VALUES (?, ?);
+INSERT INTO `TopPinsAnalyticsResponseDateAvailability`(`is_realtime`, `latest_available_timestamp`) VALUES (?, ?);
 
 --
--- UPDATE template for table `TopPinsAnalyticsResponse_date_availability`
+-- UPDATE template for table `TopPinsAnalyticsResponseDateAvailability`
 --
-UPDATE `TopPinsAnalyticsResponse_date_availability` SET `is_realtime` = ?, `latest_available_timestamp` = ? WHERE 1;
+UPDATE `TopPinsAnalyticsResponseDateAvailability` SET `is_realtime` = ?, `latest_available_timestamp` = ? WHERE 1;
 
 --
--- DELETE template for table `TopPinsAnalyticsResponse_date_availability`
+-- DELETE template for table `TopPinsAnalyticsResponseDateAvailability`
 --
-DELETE FROM `TopPinsAnalyticsResponse_date_availability` WHERE 0;
+DELETE FROM `TopPinsAnalyticsResponseDateAvailability` WHERE 0;
 

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | **string** | Catalog id pertaining to the retail product group. | 
+**catalogId** | **string** | Catalog ID pertaining to the product group. | 
 **catalogType** | **string** |  | 
 **country** | **string** |  | [optional] 
 **createdAt** | **int** | Unix timestamp in seconds of when catalog product group was created. | [optional] 

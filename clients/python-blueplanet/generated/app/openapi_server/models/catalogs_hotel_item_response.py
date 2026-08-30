@@ -7,7 +7,6 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.catalogs_hotel_attributes import CatalogsHotelAttributes  # noqa: F401,E501
-from app.openapi_server.models.catalogs_type import CatalogsType  # noqa: F401,E501
 from app.openapi_server.models.pin import Pin  # noqa: F401,E501
 from openapi_server import util
 
@@ -18,22 +17,25 @@ class CatalogsHotelItemResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, attributes: CatalogsHotelAttributes=None, catalog_type: CatalogsType=None, hotel_id: str=None, pins: List[Pin]=None):  # noqa: E501
+    def __init__(self, attributes: CatalogsHotelAttributes=None, catalog_type: str=None, hotel_id: str=None, item_response_kind: str=None, pins: List[Pin]=None):  # noqa: E501
         """CatalogsHotelItemResponse - a model defined in Swagger
 
         :param attributes: The attributes of this CatalogsHotelItemResponse.  # noqa: E501
         :type attributes: CatalogsHotelAttributes
         :param catalog_type: The catalog_type of this CatalogsHotelItemResponse.  # noqa: E501
-        :type catalog_type: CatalogsType
+        :type catalog_type: str
         :param hotel_id: The hotel_id of this CatalogsHotelItemResponse.  # noqa: E501
         :type hotel_id: str
+        :param item_response_kind: The item_response_kind of this CatalogsHotelItemResponse.  # noqa: E501
+        :type item_response_kind: str
         :param pins: The pins of this CatalogsHotelItemResponse.  # noqa: E501
         :type pins: List[Pin]
         """
         self.swagger_types = {
             'attributes': CatalogsHotelAttributes,
-            'catalog_type': CatalogsType,
+            'catalog_type': str,
             'hotel_id': str,
+            'item_response_kind': str,
             'pins': List[Pin]
         }
 
@@ -41,12 +43,14 @@ class CatalogsHotelItemResponse(Model):
             'attributes': 'attributes',
             'catalog_type': 'catalog_type',
             'hotel_id': 'hotel_id',
+            'item_response_kind': 'item_response_kind',
             'pins': 'pins'
         }
 
         self._attributes = attributes
         self._catalog_type = catalog_type
         self._hotel_id = hotel_id
+        self._item_response_kind = item_response_kind
         self._pins = pins
 
     @classmethod
@@ -82,25 +86,29 @@ class CatalogsHotelItemResponse(Model):
         self._attributes = attributes
 
     @property
-    def catalog_type(self) -> CatalogsType:
+    def catalog_type(self) -> str:
         """Gets the catalog_type of this CatalogsHotelItemResponse.
 
 
         :return: The catalog_type of this CatalogsHotelItemResponse.
-        :rtype: CatalogsType
+        :rtype: str
         """
         return self._catalog_type
 
     @catalog_type.setter
-    def catalog_type(self, catalog_type: CatalogsType):
+    def catalog_type(self, catalog_type: str):
         """Sets the catalog_type of this CatalogsHotelItemResponse.
 
 
         :param catalog_type: The catalog_type of this CatalogsHotelItemResponse.
-        :type catalog_type: CatalogsType
+        :type catalog_type: str
         """
-        if catalog_type is None:
-            raise ValueError("Invalid value for `catalog_type`, must not be `None`")  # noqa: E501
+        allowed_values = ["HOTEL"]  # noqa: E501
+        if catalog_type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `catalog_type` ({0}), must be one of {1}"
+                .format(catalog_type, allowed_values)
+            )
 
         self._catalog_type = catalog_type
 
@@ -126,6 +134,35 @@ class CatalogsHotelItemResponse(Model):
         """
 
         self._hotel_id = hotel_id
+
+    @property
+    def item_response_kind(self) -> str:
+        """Gets the item_response_kind of this CatalogsHotelItemResponse.
+
+        Discriminator literal identifying this leaf inside an `ItemResponse` payload.  # noqa: E501
+
+        :return: The item_response_kind of this CatalogsHotelItemResponse.
+        :rtype: str
+        """
+        return self._item_response_kind
+
+    @item_response_kind.setter
+    def item_response_kind(self, item_response_kind: str):
+        """Sets the item_response_kind of this CatalogsHotelItemResponse.
+
+        Discriminator literal identifying this leaf inside an `ItemResponse` payload.  # noqa: E501
+
+        :param item_response_kind: The item_response_kind of this CatalogsHotelItemResponse.
+        :type item_response_kind: str
+        """
+        allowed_values = ["hotel_item"]  # noqa: E501
+        if item_response_kind not in allowed_values:
+            raise ValueError(
+                "Invalid value for `item_response_kind` ({0}), must be one of {1}"
+                .format(item_response_kind, allowed_values)
+            )
+
+        self._item_response_kind = item_response_kind
 
     @property
     def pins(self) -> List[Pin]:

@@ -7,9 +7,9 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  AllOf = openapi_server.resourceTypes.AllOf
-  AnyOf = openapi_server.resourceTypes.AnyOf
   CatalogsProductGroupFilterKeys = openapi_server.resourceTypes.CatalogsProductGroupFilterKeys
+  CatalogsProductGroupFiltersRequestAnyOfItems0 = openapi_server.resourceTypes.CatalogsProductGroupFiltersRequestAnyOfItems0
+  CatalogsProductGroupFiltersRequestAnyOfItems1 = openapi_server.resourceTypes.CatalogsProductGroupFiltersRequestAnyOfItems1
 }
 resourceTypes {
 

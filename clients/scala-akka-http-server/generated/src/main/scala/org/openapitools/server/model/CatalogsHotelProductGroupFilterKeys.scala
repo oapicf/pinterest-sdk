@@ -16,7 +16,7 @@ package org.openapitools.server.model
  * @param TITLE_KEYWORDS  for example: ''null''
 */
 final case class CatalogsHotelProductGroupFilterKeys (
-  PRICE: CatalogsProductGroupPricingCurrencyCriteria,
+  PRICE: PriceFilterPrice,
   HOTEL_ID: CatalogsProductGroupMultipleStringCriteria,
   BRAND: CatalogsProductGroupMultipleStringCriteria,
   CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria,

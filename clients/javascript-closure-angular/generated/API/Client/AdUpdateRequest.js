@@ -6,6 +6,20 @@ goog.provide('API.Client.AdUpdateRequest');
 API.Client.AdUpdateRequest = function() {}
 
 /**
+ * The ID of this ad.
+ * @type {!string}
+ * @export
+ */
+API.Client.AdUpdateRequest.prototype.id;
+
+/**
+ * Pin ID. This field may only be updated for draft ads.
+ * @type {!string}
+ * @export
+ */
+API.Client.AdUpdateRequest.prototype.pinId;
+
+/**
  * ID of the ad group that contains the ad.
  * @type {!string}
  * @export
@@ -93,6 +107,13 @@ API.Client.AdUpdateRequest.prototype.gridClickType;
 API.Client.AdUpdateRequest.prototype.iosDeepLink;
 
 /**
+ * Is the ad a carting/WTB ad?
+ * @type {!boolean}
+ * @export
+ */
+API.Client.AdUpdateRequest.prototype.isCarting;
+
+/**
  * Is original pin deleted?
  * @type {!boolean}
  * @export
@@ -122,7 +143,7 @@ API.Client.AdUpdateRequest.prototype.name;
 
 /**
  * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
- * @type {!API.Client.QuizPinData}
+ * @type {!API.Client.Object}
  * @export
  */
 API.Client.AdUpdateRequest.prototype.quizPinData;
@@ -134,7 +155,7 @@ API.Client.AdUpdateRequest.prototype.quizPinData;
 API.Client.AdUpdateRequest.prototype.status;
 
 /**
- * @type {!API.Client.TrackingUrls}
+ * @type {!API.Client.Object}
  * @export
  */
 API.Client.AdUpdateRequest.prototype.trackingUrls;
@@ -145,18 +166,4 @@ API.Client.AdUpdateRequest.prototype.trackingUrls;
  * @export
  */
 API.Client.AdUpdateRequest.prototype.viewTrackingUrl;
-
-/**
- * The ID of this ad.
- * @type {!string}
- * @export
- */
-API.Client.AdUpdateRequest.prototype.id;
-
-/**
- * Pin ID. This field may only be updated for draft ads.
- * @type {!string}
- * @export
- */
-API.Client.AdUpdateRequest.prototype.pinId;
 

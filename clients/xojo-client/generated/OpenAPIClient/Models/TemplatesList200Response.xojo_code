@@ -7,7 +7,7 @@ Protected Class TemplatesList200Response
 
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.TemplateResponse
+		items() As OpenAPIClient.Models.AccountTemplate
 	#tag EndProperty
 
 
@@ -60,7 +60,7 @@ Protected Class TemplatesList200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="TemplateResponse"
+			Type="AccountTemplate"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

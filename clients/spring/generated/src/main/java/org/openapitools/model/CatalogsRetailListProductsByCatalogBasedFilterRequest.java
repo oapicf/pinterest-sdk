@@ -14,20 +14,20 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Request object to list products for a given retail catalog_id and product group filter.
  */
 
 @Schema(name = "CatalogsRetailListProductsByCatalogBasedFilterRequest", description = "Request object to list products for a given retail catalog_id and product group filter.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements CatalogsVerticalsListProductsByCatalogBasedFilterRequest {
 
   private String catalogId;
@@ -94,16 +94,17 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements Ca
   }
 
   /**
-   * Catalog id pertaining to the retail product group.
+   * Catalog ID pertaining to the product group.
    * @return catalogId
    */
   @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", example = "2680059592705", description = "Catalog id pertaining to the retail product group.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "catalog_id", example = "2680059592705", description = "Catalog ID pertaining to the product group.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_id")
   public String getCatalogId() {
     return catalogId;
   }
 
+  @JsonProperty("catalog_id")
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
@@ -124,6 +125,7 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements Ca
     return catalogType;
   }
 
+  @JsonProperty("catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -144,6 +146,7 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements Ca
     return country;
   }
 
+  @JsonProperty("country")
   public void setCountry(Country country) {
     this.country = country;
   }
@@ -164,6 +167,7 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements Ca
     return filters;
   }
 
+  @JsonProperty("filters")
   public void setFilters(CatalogsProductGroupFilters filters) {
     this.filters = filters;
   }
@@ -184,6 +188,7 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements Ca
     return locale;
   }
 
+  @JsonProperty("locale")
   public void setLocale(CatalogsLocale locale) {
     this.locale = locale;
   }
@@ -226,11 +231,8 @@ public class CatalogsRetailListProductsByCatalogBasedFilterRequest implements Ca
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

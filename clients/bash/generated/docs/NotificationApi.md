@@ -25,7 +25,7 @@ Used by third-party partners to send notifications to Pinterest. These notificat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md) | notification event. |
+ **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md) |  |
 
 ### Return type
 

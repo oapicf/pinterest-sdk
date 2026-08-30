@@ -223,7 +223,7 @@ class CatalogsVerticalBatchRequest {
         
         NL2("NL"),
         
-        NO("NO"),
+        FALSE("false"),
         
         PL("PL"),
         

@@ -24,7 +24,7 @@ resourceTypes {
         items {
           type = array
           items.type = BoardSection
-          description = "Board sections"
+          description = ""
           optional = true
         }
     }

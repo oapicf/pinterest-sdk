@@ -13,7 +13,7 @@ import LabelUpdateRequest._
 
 case class LabelUpdateRequest (
   /* Labels that you are applying to the campaign. */
-  labels: List[LabelUpdateRequestLabelsInner])
+  labels: List[LabelUpdateItem])
 
 object LabelUpdateRequest {
   import DateTimeCodecs._

@@ -1,10 +1,12 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.AdAccountsCountryResponse
-import org.openapitools.server.api.model.BookClosedResponse
-import org.openapitools.server.api.model.DeliveryMetricsResponse
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.SingleInterestTargetingOptionResponse
+import org.openapitools.server.api.model.AdAccountCountriesGet200Response
+import org.openapitools.server.api.model.BookClosed
+import org.openapitools.server.api.model.DeliveryMetricsGet200Response
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PublicTargetingType
+import org.openapitools.server.api.model.ReportType
+import org.openapitools.server.api.model.SingleInterestTargetingOption
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -23,22 +25,22 @@ interface ResourcesApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* adAccountCountriesGet
      * Get ad accounts countries */
-    suspend fun adAccountCountriesGet(context:OperationRequest):Response<AdAccountsCountryResponse>
+    suspend fun adAccountCountriesGet(context:OperationRequest):Response<AdAccountCountriesGet200Response>
     /* deliveryMetricsGet
      * Get available metrics&#39; definitions */
-    suspend fun deliveryMetricsGet(reportType:kotlin.String?,context:OperationRequest):Response<DeliveryMetricsResponse>
+    suspend fun deliveryMetricsGet(reportType:ReportType?,context:OperationRequest):Response<DeliveryMetricsGet200Response>
     /* interestTargetingOptionsGet
      * Get interest details */
-    suspend fun interestTargetingOptionsGet(interestId:kotlin.String?,context:OperationRequest):Response<SingleInterestTargetingOptionResponse>
+    suspend fun interestTargetingOptionsGet(interestId:kotlin.String?,context:OperationRequest):Response<SingleInterestTargetingOption>
     /* leadFormQuestionsGet
      * Get lead form questions */
     suspend fun leadFormQuestionsGet(context:OperationRequest):Response<Void>
     /* metricsReadyStateGet
      * Get metrics ready state */
-    suspend fun metricsReadyStateGet(date:kotlin.String?,context:OperationRequest):Response<BookClosedResponse>
+    suspend fun metricsReadyStateGet(date:kotlin.String?,context:OperationRequest):Response<BookClosed>
     /* targetingOptionsGet
      * Get targeting options */
-    suspend fun targetingOptionsGet(targetingType:kotlin.String?,clientId:kotlin.String?,oauthSignature:kotlin.String?,timestamp:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<kotlin.Array<kotlin.Any>>
+    suspend fun targetingOptionsGet(targetingType:PublicTargetingType?,adAccountId:kotlin.String?,clientId:kotlin.String?,oauthSignature:kotlin.String?,timestamp:kotlin.String?,context:OperationRequest):Response<kotlin.Array<kotlin.Any>>
     companion object {
         const val address = "ResourcesApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

@@ -7,7 +7,7 @@
     {
       "name": "address",
       "type": ["null", "model.CatalogsHotelAddress"],
-      "doc": "",
+      "doc": "Hotel address",
       "default": null
     },
     {
@@ -67,7 +67,7 @@
     {
       "name": "guest_ratings",
       "type": ["null", "model.CatalogsHotelGuestRatings"],
-      "doc": "",
+      "doc": "If specified, you must provide all properties",
       "default": null
     },
     {
@@ -115,13 +115,22 @@
         "type": "array",
         "items": "string"
       }],
-      "doc": "<p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>",
+      "doc": "<= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.",
+      "default": null
+    },
+    {
+      "name": "ai_disclosures",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CatalogsAiContentDisclosure"
+      }],
+      "doc": "AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.",
       "default": null
     },
     {
       "name": "main_image",
-      "type": ["null", "model.CatalogsHotelAttributesAllOfMainImage"],
-      "doc": "",
+      "type": ["null", "model.CatalogsHotelMainImage"],
+      "doc": "The main hotel image",
       "default": null
     }
   ]

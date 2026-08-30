@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Active** | **bool** | True if the offer code is currently active. | [optional] 
 **AdvertiserId** | **string** | Advertiser ID the offer was applied to. | [optional] 
 **DiscountCurrency** | **string** | Currency value for the discount. | [optional] 
-**DiscountInMicroCurrency** | **decimal** | The discount applied in the offer’s currency value. | [optional] 
-**DiscountType** | **string** | The type of discount of this credit | [optional] 
+**DiscountInMicroCurrency** | **decimal** | The discount applied in the offer&#39;s currency value. | [optional] 
+**DiscountType** | **AdsCreditDiscountType** | The type of discount of this credit | [optional] 
 **RemainingDiscountInMicroCurrency** | **decimal** | The credits left to spend. | [optional] 
 **Title** | **string** | Human readable title of the offer code. | [optional] 
 

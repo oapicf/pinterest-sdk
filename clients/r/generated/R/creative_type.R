@@ -29,9 +29,6 @@ CreativeType <- R6::R6Class(
           stop("Use one of the valid values: ",
             paste0(enumvec, collapse = ", "))
         }
-        warning("Initializing CreativeType with DUMMY_ENUM. Use one of the valid values: ",
-          paste0(enumvec, collapse = ", "),
-          ". If you did not manually initialize CreativeType, this may already be overwritten by an enum loaded from a JSON config.")
       }
       private$value <- val
     },
@@ -92,7 +89,7 @@ CreativeType <- R6::R6Class(
 
 # add to utils.R
 .parse_CreativeType <- function(vals) {
-  res <- gsub("^\\[|\\]$", "", "[REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA, SHOWCASE, QUIZ, COLLAGE, MAX_WIDTH_REGULAR_COLLECTION, MAX_WIDTH_VIDEO_COLLECTION]")
+  res <- gsub("^\\[|\\]$", "", "[REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA, SHOWCASE, QUIZ, COLLAGE, MAX_WIDTH_REGULAR_COLLECTION, MAX_WIDTH_VIDEO_COLLECTION, APP]")
   unlist(strsplit(res, ", "))
 }
 

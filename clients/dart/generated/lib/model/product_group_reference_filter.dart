@@ -47,15 +47,13 @@ class ProductGroupReferenceFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProductGroupReferenceFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProductGroupReferenceFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'PRODUCT_GROUP'), 'Required key "ProductGroupReferenceFilter[PRODUCT_GROUP]" is missing from JSON.');
+        assert(json[r'PRODUCT_GROUP'] != null, 'Required key "ProductGroupReferenceFilter[PRODUCT_GROUP]" has a null value in JSON.');
         return true;
       }());
 
       return ProductGroupReferenceFilter(
-        PRODUCT_GROUP: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'PRODUCT_GROUP')!,
+        PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'PRODUCT_GROUP'])!,
       );
     }
     return null;

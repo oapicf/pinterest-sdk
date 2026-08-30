@@ -8,8 +8,8 @@ use WWW::OpenAPIClient::Object::TrendingKeywordDemographics;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**age_distribution** | [**TrendingKeywordDemographicsAgeDistribution**](TrendingKeywordDemographicsAgeDistribution.md) |  | [optional] 
-**gender_distribution** | [**TrendingKeywordDemographicsGenderDistribution**](TrendingKeywordDemographicsGenderDistribution.md) |  | [optional] 
+**age_distribution** | [**TrendsAgeDistribution**](TrendsAgeDistribution.md) |  | [optional] 
+**gender_distribution** | [**TrendsGenderDistribution**](TrendsGenderDistribution.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

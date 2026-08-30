@@ -1,0 +1,19 @@
+## LeadsExportApi
+
+### Create a request to export leads collected from a lead ad
+## Create a request to export leads collected from a lead ad
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/leads_export
+Content-Type: application/json
+Accept: application/json
+
+{
+ "ad_id": "<string>",
+ "end_date": "<string>",
+ "start_date": "<string>"
+}
+
+
+### Get the lead export from the lead export create call
+## Get the lead export from the lead export create call
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/leads_export/{{leads_export_id}}
+Accept: application/json

@@ -4,14 +4,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **additional_id_1** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
-**connected_advertiser_id** | [**STRING_32**](STRING_32.md) |  | [optional] [readonly] [default to null]
+**connected_advertiser_id** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
 **connected_lba_id** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
 **connected_merchant_id** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
 **connected_tag_id** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
-**connected_user_id** | [**STRING_32**](STRING_32.md) |  | [optional] [readonly] [default to null]
+**connected_user_id** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
 **created_time** | **INTEGER_32** |  | [optional] [default to null]
 **external_business_id** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
-**id** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
+**id** | [**STRING_32**](STRING_32.md) | Integration record ID. | [readonly] [default to null]
 **partner_access_token** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
 **partner_access_token_expiry** | **INTEGER_32** |  | [optional] [default to null]
 **partner_metadata** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]

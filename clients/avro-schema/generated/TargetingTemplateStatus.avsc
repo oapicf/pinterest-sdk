@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Indicate targeting template is active or Deleted",
+  "name": "TargetingTemplateStatus",
+  "symbols": [
+    "ACTIVE",
+    "DELETED"
+  ]
+}

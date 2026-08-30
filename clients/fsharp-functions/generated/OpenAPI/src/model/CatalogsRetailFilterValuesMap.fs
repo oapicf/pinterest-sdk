@@ -3,6 +3,10 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.Gender
+open OpenAPI.Model.MediaType
+open OpenAPI.Model.ProductAvailability
+open OpenAPI.Model.ProductCondition
 
 module CatalogsRetailFilterValuesMap =
 
@@ -15,11 +19,11 @@ module CatalogsRetailFilterValuesMap =
     [<JsonProperty(PropertyName = "ad_video_tags")>]
     AdVideoTags : string[];
     [<JsonProperty(PropertyName = "availability")>]
-    Availability : string[];
+    Availability : ProductAvailability[];
     [<JsonProperty(PropertyName = "brand")>]
     Brand : string[];
     [<JsonProperty(PropertyName = "condition")>]
-    Condition : string[];
+    Condition : ProductCondition[];
     [<JsonProperty(PropertyName = "custom_label_0")>]
     CustomLabel0 : string[];
     [<JsonProperty(PropertyName = "custom_label_1")>]
@@ -31,7 +35,7 @@ module CatalogsRetailFilterValuesMap =
     [<JsonProperty(PropertyName = "custom_label_4")>]
     CustomLabel4 : string[];
     [<JsonProperty(PropertyName = "gender")>]
-    Gender : string[];
+    Gender : Gender[];
     [<JsonProperty(PropertyName = "google_product_category_0")>]
     GoogleProductCategory0 : string[];
     [<JsonProperty(PropertyName = "google_product_category_1")>]
@@ -47,7 +51,7 @@ module CatalogsRetailFilterValuesMap =
     [<JsonProperty(PropertyName = "google_product_category_6")>]
     GoogleProductCategory6 : string[];
     [<JsonProperty(PropertyName = "media_type")>]
-    MediaType : string[];
+    MediaType : MediaType[];
     [<JsonProperty(PropertyName = "product_type_0")>]
     ProductType0 : string[];
     [<JsonProperty(PropertyName = "product_type_1")>]

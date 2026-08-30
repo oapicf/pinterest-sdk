@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.CatalogsHotelReportParametersReport;
+import org.openapitools.model.CatalogsRetailReportParametersReport;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -52,7 +52,7 @@ public enum CatalogTypeEnum {
 
   private CatalogTypeEnum catalogType;
 
-  private CatalogsHotelReportParametersReport report;
+  private CatalogsRetailReportParametersReport report;
 
   /**
    **/
@@ -75,7 +75,7 @@ public enum CatalogTypeEnum {
 
   /**
    **/
-  public CatalogsRetailReportParameters report(CatalogsHotelReportParametersReport report) {
+  public CatalogsRetailReportParameters report(CatalogsRetailReportParametersReport report) {
     this.report = report;
     return this;
   }
@@ -84,10 +84,10 @@ public enum CatalogTypeEnum {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("report")
   @NotNull
-  public CatalogsHotelReportParametersReport getReport() {
+  public CatalogsRetailReportParametersReport getReport() {
     return report;
   }
-  public void setReport(CatalogsHotelReportParametersReport report) {
+  public void setReport(CatalogsRetailReportParametersReport report) {
     this.report = report;
   }
 
@@ -127,10 +127,7 @@ public enum CatalogTypeEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

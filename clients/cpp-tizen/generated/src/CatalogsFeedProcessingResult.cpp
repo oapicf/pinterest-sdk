@@ -25,10 +25,10 @@ CatalogsFeedProcessingResult::__init()
 {
 	//created_at = null;
 	//id = std::string();
-	//updated_at = null;
 	//ingestion_details = new CatalogsFeedIngestionDetails();
 	//product_counts = new CatalogsFeedProductCounts();
 	//status = new CatalogsFeedProcessingStatus();
+	//updated_at = null;
 	//validation_details = new CatalogsFeedValidationDetails();
 	//video_counts = new CatalogsFeedVideoCounts();
 }
@@ -46,11 +46,6 @@ CatalogsFeedProcessingResult::__cleanup()
 	//delete id;
 	//id = NULL;
 	//}
-	//if(updated_at != NULL) {
-	//
-	//delete updated_at;
-	//updated_at = NULL;
-	//}
 	//if(ingestion_details != NULL) {
 	//
 	//delete ingestion_details;
@@ -65,6 +60,11 @@ CatalogsFeedProcessingResult::__cleanup()
 	//
 	//delete status;
 	//status = NULL;
+	//}
+	//if(updated_at != NULL) {
+	//
+	//delete updated_at;
+	//updated_at = NULL;
 	//}
 	//if(validation_details != NULL) {
 	//
@@ -102,17 +102,6 @@ CatalogsFeedProcessingResult::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *updated_atKey = "updated_at";
-	node = json_object_get_member(pJsonObject, updated_atKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&updated_at, node, "std::string", "");
 		} else {
 			
 		}
@@ -156,6 +145,17 @@ CatalogsFeedProcessingResult::fromJson(char* jsonStr)
 			
 			CatalogsFeedProcessingStatus* obj = static_cast<CatalogsFeedProcessingStatus*> (&status);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *updated_atKey = "updated_at";
+	node = json_object_get_member(pJsonObject, updated_atKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&updated_at, node, "std::string", "");
+		} else {
 			
 		}
 	}
@@ -217,15 +217,6 @@ CatalogsFeedProcessingResult::toJson()
 	}
 	const gchar *idKey = "id";
 	json_object_set_member(pJsonObject, idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getUpdatedAt();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *updated_atKey = "updated_at";
-	json_object_set_member(pJsonObject, updated_atKey, node);
 	if (isprimitive("CatalogsFeedIngestionDetails")) {
 		CatalogsFeedIngestionDetails obj = getIngestionDetails();
 		node = converttoJson(&obj, "CatalogsFeedIngestionDetails", "");
@@ -268,6 +259,15 @@ CatalogsFeedProcessingResult::toJson()
 	}
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getUpdatedAt();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *updated_atKey = "updated_at";
+	json_object_set_member(pJsonObject, updated_atKey, node);
 	if (isprimitive("CatalogsFeedValidationDetails")) {
 		CatalogsFeedValidationDetails obj = getValidationDetails();
 		node = converttoJson(&obj, "CatalogsFeedValidationDetails", "");
@@ -328,18 +328,6 @@ CatalogsFeedProcessingResult::setId(std::string  id)
 	this->id = id;
 }
 
-std::string
-CatalogsFeedProcessingResult::getUpdatedAt()
-{
-	return updated_at;
-}
-
-void
-CatalogsFeedProcessingResult::setUpdatedAt(std::string  updated_at)
-{
-	this->updated_at = updated_at;
-}
-
 CatalogsFeedIngestionDetails
 CatalogsFeedProcessingResult::getIngestionDetails()
 {
@@ -374,6 +362,18 @@ void
 CatalogsFeedProcessingResult::setStatus(CatalogsFeedProcessingStatus  status)
 {
 	this->status = status;
+}
+
+std::string
+CatalogsFeedProcessingResult::getUpdatedAt()
+{
+	return updated_at;
+}
+
+void
+CatalogsFeedProcessingResult::setUpdatedAt(std::string  updated_at)
+{
+	this->updated_at = updated_at;
 }
 
 CatalogsFeedValidationDetails

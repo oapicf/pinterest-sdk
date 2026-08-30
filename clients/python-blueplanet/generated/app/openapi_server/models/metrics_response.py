@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.metrics_response_data_items import MetricsResponseDataItems  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -15,14 +16,14 @@ class MetricsResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, data: List[object]=None):  # noqa: E501
+    def __init__(self, data: List[MetricsResponseDataItems]=None):  # noqa: E501
         """MetricsResponse - a model defined in Swagger
 
         :param data: The data of this MetricsResponse.  # noqa: E501
-        :type data: List[object]
+        :type data: List[MetricsResponseDataItems]
         """
         self.swagger_types = {
-            'data': List[object]
+            'data': List[MetricsResponseDataItems]
         }
 
         self.attribute_map = {
@@ -43,22 +44,22 @@ class MetricsResponse(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def data(self) -> List[object]:
+    def data(self) -> List[MetricsResponseDataItems]:
         """Gets the data of this MetricsResponse.
 
 
         :return: The data of this MetricsResponse.
-        :rtype: List[object]
+        :rtype: List[MetricsResponseDataItems]
         """
         return self._data
 
     @data.setter
-    def data(self, data: List[object]):
+    def data(self, data: List[MetricsResponseDataItems]):
         """Sets the data of this MetricsResponse.
 
 
         :param data: The data of this MetricsResponse.
-        :type data: List[object]
+        :type data: List[MetricsResponseDataItems]
         """
 
         self._data = data

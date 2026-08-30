@@ -22,11 +22,13 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class ProductGroupPromotionCreateRequest(
 
     @get:Pattern(regexp="^(AG)?\\d+$")
-    @Schema(example = "2680059592705", required = true, description = "ID of the Ad Group the Product Group Promotion belongs to.")
+    @Schema(required = true, description = "ID of the Ad Group the Product Group Promotion belongs to.")
+    @param:JsonProperty("ad_group_id")
     @get:JsonProperty("ad_group_id", required = true) val adGroupId: kotlin.String,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("product_group_promotion")
     @get:JsonProperty("product_group_promotion", required = true) val productGroupPromotion: kotlin.collections.List<ProductGroupPromotion>
 ) {
 

@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object for updating a hotel product group.")
 @JsonTypeName("CatalogsHotelProductGroupUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelProductGroupUpdateRequest   {
   public enum CatalogTypeEnum {
 
@@ -135,6 +135,7 @@ public class CatalogsHotelProductGroupUpdateRequest   {
   }
 
   /**
+   * Name of catalog product group
    **/
   public CatalogsHotelProductGroupUpdateRequest name(String name) {
     this.name = name;
@@ -142,7 +143,7 @@ public class CatalogsHotelProductGroupUpdateRequest   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -192,12 +193,8 @@ public class CatalogsHotelProductGroupUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

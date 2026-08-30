@@ -53,7 +53,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setAllOf(std::list <CatalogsCreativeAssetsProductGroupFilterKeys> all_of);
+	void setAllOf(std::list<CatalogsCreativeAssetsProductGroupFilterKeys> all_of);
 
 
     private:

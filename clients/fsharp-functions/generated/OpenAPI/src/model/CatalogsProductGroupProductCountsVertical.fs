@@ -6,7 +6,6 @@ open Newtonsoft.Json
 open OpenAPI.Model.CatalogsCreativeAssetsProductGroupProductCounts
 open OpenAPI.Model.CatalogsHotelProductGroupProductCounts
 open OpenAPI.Model.CatalogsRetailProductGroupProductCounts
-open OpenAPI.Model.CatalogsType
 
 module CatalogsProductGroupProductCountsVertical =
 
@@ -15,7 +14,7 @@ module CatalogsProductGroupProductCountsVertical =
   [<CLIMutable>]
   type CatalogsProductGroupProductCountsVertical = {
     [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : CatalogsType;
+    CatalogType : string;
     [<JsonProperty(PropertyName = "in_stock")>]
     InStock : decimal;
     [<JsonProperty(PropertyName = "out_of_stock")>]
@@ -26,6 +25,10 @@ module CatalogsProductGroupProductCountsVertical =
     Total : decimal;
     [<JsonProperty(PropertyName = "videos")>]
     Videos : decimal;
+    [<JsonProperty(PropertyName = "app_links")>]
+    AppLinks : decimal;
+    [<JsonProperty(PropertyName = "images")>]
+    Images : decimal;
   }
 
   //#endregion

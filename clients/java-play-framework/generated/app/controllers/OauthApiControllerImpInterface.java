@@ -1,8 +1,10 @@
 package controllers;
 
-import apimodels.ConversionAccessTokenResponse;
-import apimodels.Error;
-import apimodels.OauthAccessTokenResponse;
+import apimodels.ConversionAccessToken;
+import apimodels.OauthAccessToken;
+import apimodels.PinterestLibError;
+import apimodels.TokenGrantType;
+import apimodels.TokenTypeHint;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -34,7 +36,7 @@ public abstract class OauthApiControllerImpInterface {
             return unauthorized();
         }
 
-        ConversionAccessTokenResponse obj = oauthConversionToken(request);
+        ConversionAccessToken obj = oauthConversionToken(request);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -46,10 +48,10 @@ public abstract class OauthApiControllerImpInterface {
 
     }
 
-    public abstract ConversionAccessTokenResponse oauthConversionToken(Http.Request request) throws Exception;
+    public abstract ConversionAccessToken oauthConversionToken(Http.Request request) throws Exception;
 
-    public Result oauthTokenHttp(Http.Request request, String grantType) throws Exception {
-        OauthAccessTokenResponse obj = oauthToken(request, grantType);
+    public Result oauthTokenHttp(Http.Request request, TokenGrantType grantType, String code, String continuousRefresh, String redirectUri, String refreshToken, String scope) throws Exception {
+        OauthAccessToken obj = oauthToken(request, grantType, code, continuousRefresh, redirectUri, refreshToken, scope);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -61,14 +63,14 @@ public abstract class OauthApiControllerImpInterface {
 
     }
 
-    public abstract OauthAccessTokenResponse oauthToken(Http.Request request, String grantType) throws Exception;
+    public abstract OauthAccessToken oauthToken(Http.Request request, TokenGrantType grantType, String code, String continuousRefresh, String redirectUri, String refreshToken, String scope) throws Exception;
 
-    public Result tokenRevokeHttp(Http.Request request, String token, String tokenTypeHint) throws Exception {
+    public Result tokenRevokeHttp(Http.Request request, String token, TokenTypeHint tokenTypeHint) throws Exception {
         tokenRevoke(request, token, tokenTypeHint);
         return ok();
 
     }
 
-    public abstract void tokenRevoke(Http.Request request, String token, String tokenTypeHint) throws Exception;
+    public abstract void tokenRevoke(Http.Request request, String token, TokenTypeHint tokenTypeHint) throws Exception;
 
 }

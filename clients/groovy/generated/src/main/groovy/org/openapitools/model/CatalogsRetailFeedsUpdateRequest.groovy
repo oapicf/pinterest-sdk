@@ -8,14 +8,34 @@ import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.NullableCurrency;
 import org.openapitools.model.ProductAvailabilityType;
 
 @Canonical
 class CatalogsRetailFeedsUpdateRequest {
+
+    enum CatalogTypeEnum {
     
-    CatalogsType catalogType
+        RETAIL("RETAIL")
+    
+        private final String value
+    
+        CatalogTypeEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    
+    CatalogTypeEnum catalogType
     
     CatalogsFeedCredentials credentials
     

@@ -1,10 +1,10 @@
 #import "OAISearchApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIError.h"
+#import "OAIBoardsList200Response.h"
+#import "OAIPinsList200Response.h"
+#import "OAIPinterestLibError.h"
 #import "OAISearchPartnerPins200Response.h"
-#import "OAISearchUserBoardsGet200Response.h"
-#import "OAISearchUserPinsList200Response.h"
 
 
 @interface OAISearchApi ()
@@ -54,7 +54,7 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
 
 ///
 /// Search pins by a given search term
-/// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+/// **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 ///  @param term Search term to look up pins. 
 ///
 ///  @param countryCode Two letter country code (ISO 3166-1 alpha-2) 
@@ -157,22 +157,22 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
 
 ///
 /// Search user's boards
-/// Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+/// Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 ///  @param adAccountId Unique identifier of an ad account. (optional)
-///
-///  @param bookmark Cursor used to fetch the next page of items (optional)
-///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param query Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
 ///
-///  @returns OAISearchUserBoardsGet200Response*
+///  @param bookmark Cursor used to fetch the next page of items (optional)
+///
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
+///
+///  @returns OAIBoardsList200Response*
 ///
 -(NSURLSessionTask*) searchUserBoardsGetWithAdAccountId: (NSString*) adAccountId
+    query: (NSString*) query
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    query: (NSString*) query
-    completionHandler: (void (^)(OAISearchUserBoardsGet200Response* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIBoardsList200Response* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/search/boards"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -181,14 +181,14 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
     if (adAccountId != nil) {
         queryParams[@"ad_account_id"] = adAccountId;
     }
+    if (query != nil) {
+        queryParams[@"query"] = query;
+    }
     if (bookmark != nil) {
         queryParams[@"bookmark"] = bookmark;
     }
     if (pageSize != nil) {
         queryParams[@"page_size"] = pageSize;
-    }
-    if (query != nil) {
-        queryParams[@"query"] = query;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -222,29 +222,29 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAISearchUserBoardsGet200Response*"
+                              responseType: @"OAIBoardsList200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAISearchUserBoardsGet200Response*)data, error);
+                                    handler((OAIBoardsList200Response*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Search user's Pins
-/// Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+/// Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 ///  @param query Search query. Can contain pin description keywords or comma-separated pin IDs. 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @returns OAISearchUserPinsList200Response*
+///  @returns OAIPinsList200Response*
 ///
 -(NSURLSessionTask*) searchUserPinsListWithQuery: (NSString*) query
     adAccountId: (NSString*) adAccountId
     bookmark: (NSString*) bookmark
-    completionHandler: (void (^)(OAISearchUserPinsList200Response* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIPinsList200Response* output, NSError* error)) handler {
     // verify the required parameter 'query' is set
     if (query == nil) {
         NSParameterAssert(query);
@@ -302,10 +302,10 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAISearchUserPinsList200Response*"
+                              responseType: @"OAIPinsList200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAISearchUserPinsList200Response*)data, error);
+                                    handler((OAIPinsList200Response*)data, error);
                                 }
                             }];
 }

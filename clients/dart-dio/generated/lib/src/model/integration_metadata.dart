@@ -18,7 +18,7 @@ part 'integration_metadata.g.dart';
 /// * [connectedTagId] 
 /// * [connectedUserId] 
 /// * [createdTimestamp] 
-/// * [externalBusinessId] 
+/// * [externalBusinessId] - External business ID for the integration.
 /// * [id] 
 /// * [partnerAccessTokenExpiry] 
 /// * [partnerMetadata] 
@@ -48,6 +48,7 @@ abstract class IntegrationMetadata implements Built<IntegrationMetadata, Integra
   @BuiltValueField(wireName: r'created_timestamp')
   num? get createdTimestamp;
 
+  /// External business ID for the integration.
   @BuiltValueField(wireName: r'external_business_id')
   String? get externalBusinessId;
 
@@ -216,99 +217,113 @@ class _$IntegrationMetadataSerializer implements PrimitiveSerializer<Integration
         case r'additional_id_1':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.additionalId1 = valueDes;
           break;
         case r'connected_advertiser_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.connectedAdvertiserId = valueDes;
           break;
         case r'connected_lba_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.connectedLbaId = valueDes;
           break;
         case r'connected_merchant_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.connectedMerchantId = valueDes;
           break;
         case r'connected_tag_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.connectedTagId = valueDes;
           break;
         case r'connected_user_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.connectedUserId = valueDes;
           break;
         case r'created_timestamp':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.createdTimestamp = valueDes;
           break;
         case r'external_business_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.externalBusinessId = valueDes;
           break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'partner_access_token_expiry':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.partnerAccessTokenExpiry = valueDes;
           break;
         case r'partner_metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.partnerMetadata = valueDes;
           break;
         case r'partner_refresh_token_expiry':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.partnerRefreshTokenExpiry = valueDes;
           break;
         case r'scopes':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.scopes = valueDes;
           break;
         case r'updated_timestamp':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.updatedTimestamp = valueDes;
           break;
         default:

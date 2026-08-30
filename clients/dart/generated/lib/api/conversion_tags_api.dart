@@ -28,7 +28,7 @@ class ConversionTagsApi {
   ///   Unique identifier of an ad account.
   ///
   /// * [ConversionTagCreate] conversionTagCreate (required):
-  Future<Response> conversionTagsCreateWithHttpInfo(String adAccountId, ConversionTagCreate conversionTagCreate,) async {
+  Future<Response> conversionTagsCreateWithHttpInfo(String adAccountId, ConversionTagCreate conversionTagCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/conversion_tags'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -51,6 +51,7 @@ class ConversionTagsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -64,8 +65,8 @@ class ConversionTagsApi {
   ///   Unique identifier of an ad account.
   ///
   /// * [ConversionTagCreate] conversionTagCreate (required):
-  Future<ConversionTag?> conversionTagsCreate(String adAccountId, ConversionTagCreate conversionTagCreate,) async {
-    final response = await conversionTagsCreateWithHttpInfo(adAccountId, conversionTagCreate,);
+  Future<ConversionTag?> conversionTagsCreate(String adAccountId, ConversionTagCreate conversionTagCreate, { Future<void>? abortTrigger, }) async {
+    final response = await conversionTagsCreateWithHttpInfo(adAccountId, conversionTagCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -92,7 +93,7 @@ class ConversionTagsApi {
   ///
   /// * [String] conversionTagId (required):
   ///   Id of the conversion tag.
-  Future<Response> conversionTagsGetWithHttpInfo(String adAccountId, String conversionTagId,) async {
+  Future<Response> conversionTagsGetWithHttpInfo(String adAccountId, String conversionTagId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}'
       .replaceAll('{ad_account_id}', adAccountId)
@@ -116,6 +117,7 @@ class ConversionTagsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -130,8 +132,8 @@ class ConversionTagsApi {
   ///
   /// * [String] conversionTagId (required):
   ///   Id of the conversion tag.
-  Future<ConversionTag?> conversionTagsGet(String adAccountId, String conversionTagId,) async {
-    final response = await conversionTagsGetWithHttpInfo(adAccountId, conversionTagId,);
+  Future<ConversionTag?> conversionTagsGet(String adAccountId, String conversionTagId, { Future<void>? abortTrigger, }) async {
+    final response = await conversionTagsGetWithHttpInfo(adAccountId, conversionTagId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -158,7 +160,7 @@ class ConversionTagsApi {
   ///
   /// * [bool] filterDeleted:
   ///   Filter by deleted status
-  Future<Response> conversionTagsListWithHttpInfo(String adAccountId, { bool? filterDeleted, }) async {
+  Future<Response> conversionTagsListWithHttpInfo(String adAccountId, { bool? filterDeleted, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/conversion_tags'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -185,6 +187,7 @@ class ConversionTagsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -199,8 +202,8 @@ class ConversionTagsApi {
   ///
   /// * [bool] filterDeleted:
   ///   Filter by deleted status
-  Future<ConversionTagsList200Response?> conversionTagsList(String adAccountId, { bool? filterDeleted, }) async {
-    final response = await conversionTagsListWithHttpInfo(adAccountId,  filterDeleted: filterDeleted, );
+  Future<ConversionTagsList200Response?> conversionTagsList(String adAccountId, { bool? filterDeleted, Future<void>? abortTrigger, }) async {
+    final response = await conversionTagsListWithHttpInfo(adAccountId, filterDeleted: filterDeleted, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -224,7 +227,7 @@ class ConversionTagsApi {
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  Future<Response> ocpmEligibleConversionTagsGetWithHttpInfo(String adAccountId,) async {
+  Future<Response> ocpmEligibleConversionTagsGetWithHttpInfo(String adAccountId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -247,6 +250,7 @@ class ConversionTagsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -258,8 +262,8 @@ class ConversionTagsApi {
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  Future<Map<String, List<ConversionEventResponse>>?> ocpmEligibleConversionTagsGet(String adAccountId,) async {
-    final response = await ocpmEligibleConversionTagsGetWithHttpInfo(adAccountId,);
+  Future<Map<String, List<ConversionEventResponse>>?> ocpmEligibleConversionTagsGet(String adAccountId, { Future<void>? abortTrigger, }) async {
+    final response = await ocpmEligibleConversionTagsGetWithHttpInfo(adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -284,15 +288,15 @@ class ConversionTagsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<Response> pageVisitConversionTagsGetWithHttpInfo(String adAccountId, { int? pageSize, String? order, String? bookmark, }) async {
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  Future<Response> pageVisitConversionTagsGetWithHttpInfo(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/conversion_tags/page_visit'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -304,14 +308,14 @@ class ConversionTagsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (bookmark != null) {
+      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
     if (pageSize != null) {
       queryParams.addAll(_queryParams('', 'page_size', pageSize));
     }
     if (order != null) {
       queryParams.addAll(_queryParams('', 'order', order));
-    }
-    if (bookmark != null) {
-      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
     }
 
     const contentTypes = <String>[];
@@ -325,6 +329,7 @@ class ConversionTagsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -337,16 +342,16 @@ class ConversionTagsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<PageVisitConversionTagsGet200Response?> pageVisitConversionTagsGet(String adAccountId, { int? pageSize, String? order, String? bookmark, }) async {
-    final response = await pageVisitConversionTagsGetWithHttpInfo(adAccountId,  pageSize: pageSize, order: order, bookmark: bookmark, );
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  Future<PageVisitConversionTagsGet200Response?> pageVisitConversionTagsGet(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, Future<void>? abortTrigger, }) async {
+    final response = await pageVisitConversionTagsGetWithHttpInfo(adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

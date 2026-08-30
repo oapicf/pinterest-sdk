@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -136,6 +137,13 @@ func (c *PromotionsAPIController) PromotionsList(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
 		param, err := parseNumericParameter[int32](
@@ -154,21 +162,14 @@ func (c *PromotionsAPIController) PromotionsList(w http.ResponseWriter, r *http.
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var orderParam string
+	var orderParam PinterestLibPaginationOrder
 	if query.Has("order") {
-		param := query.Get("order")
+		param := PinterestLibPaginationOrder(query.Get("order"))
 
 		orderParam = param
 	} else {
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.PromotionsList(r.Context(), adAccountIdParam, pageSizeParam, orderParam, bookmarkParam)
+	result, err := c.service.PromotionsList(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, orderParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -186,20 +187,25 @@ func (c *PromotionsAPIController) PromotionsCreate(w http.ResponseWriter, r *htt
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var promotionCreateRequestParam []PromotionCreateRequest
+	var promotionCreateParam []PromotionCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&promotionCreateRequestParam); err != nil {
+	if err := d.Decode(&promotionCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	for _, el := range promotionCreateRequestParam {
-		if err := AssertPromotionCreateRequestRequired(el); err != nil {
+	for _, el := range promotionCreateParam {
+		if err := AssertPromotionCreateRequired(el); err != nil {
 			c.errorHandler(w, r, err, nil)
 			return
 		}
 	}
-	result, err := c.service.PromotionsCreate(r.Context(), adAccountIdParam, promotionCreateRequestParam)
+	result, err := c.service.PromotionsCreate(r.Context(), adAccountIdParam, promotionCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -217,20 +223,25 @@ func (c *PromotionsAPIController) PromotionsUpdate(w http.ResponseWriter, r *htt
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var promotionUpdateRequestParam []PromotionUpdateRequest
+	var promotionBatchUpdateParam []PromotionBatchUpdate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&promotionUpdateRequestParam); err != nil {
+	if err := d.Decode(&promotionBatchUpdateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	for _, el := range promotionUpdateRequestParam {
-		if err := AssertPromotionUpdateRequestRequired(el); err != nil {
+	for _, el := range promotionBatchUpdateParam {
+		if err := AssertPromotionBatchUpdateRequired(el); err != nil {
 			c.errorHandler(w, r, err, nil)
 			return
 		}
 	}
-	result, err := c.service.PromotionsUpdate(r.Context(), adAccountIdParam, promotionUpdateRequestParam)
+	result, err := c.service.PromotionsUpdate(r.Context(), adAccountIdParam, promotionBatchUpdateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -243,17 +254,17 @@ func (c *PromotionsAPIController) PromotionsUpdate(w http.ResponseWriter, r *htt
 // PromotionsGet - Get promotion by id
 func (c *PromotionsAPIController) PromotionsGet(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
-		return
-	}
 	promotionIdParam := params["promotion_id"]
 	if promotionIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"promotion_id"}, nil)
 		return
 	}
-	result, err := c.service.PromotionsGet(r.Context(), adAccountIdParam, promotionIdParam)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	result, err := c.service.PromotionsGet(r.Context(), promotionIdParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -266,17 +277,17 @@ func (c *PromotionsAPIController) PromotionsGet(w http.ResponseWriter, r *http.R
 // PromotionsDelete - Delete promotion by id
 func (c *PromotionsAPIController) PromotionsDelete(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
-		return
-	}
 	promotionIdParam := params["promotion_id"]
 	if promotionIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"promotion_id"}, nil)
 		return
 	}
-	result, err := c.service.PromotionsDelete(r.Context(), adAccountIdParam, promotionIdParam)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	result, err := c.service.PromotionsDelete(r.Context(), promotionIdParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

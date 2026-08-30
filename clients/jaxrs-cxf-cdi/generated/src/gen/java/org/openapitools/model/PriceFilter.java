@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.CatalogsProductGroupPricingCurrencyCriteria;
+import org.openapitools.model.PriceFilterPrice;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -16,11 +16,11 @@ import java.util.Objects;
 
 public class PriceFilter   {
   
-  private CatalogsProductGroupPricingCurrencyCriteria PRICE;
+  private PriceFilterPrice PRICE;
 
   /**
    **/
-  public PriceFilter PRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public PriceFilter PRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
     return this;
   }
@@ -29,10 +29,10 @@ public class PriceFilter   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("PRICE")
   @NotNull
-  public CatalogsProductGroupPricingCurrencyCriteria getPRICE() {
+  public PriceFilterPrice getPRICE() {
     return PRICE;
   }
-  public void setPRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public void setPRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
   }
 
@@ -70,10 +70,7 @@ public class PriceFilter   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

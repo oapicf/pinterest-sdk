@@ -29,9 +29,6 @@ LabelType <- R6::R6Class(
           stop("Use one of the valid values: ",
             paste0(enumvec, collapse = ", "))
         }
-        warning("Initializing LabelType with DUMMY_ENUM. Use one of the valid values: ",
-          paste0(enumvec, collapse = ", "),
-          ". If you did not manually initialize LabelType, this may already be overwritten by an enum loaded from a JSON config.")
       }
       private$value <- val
     },
@@ -92,7 +89,7 @@ LabelType <- R6::R6Class(
 
 # add to utils.R
 .parse_LabelType <- function(vals) {
-  res <- gsub("^\\[|\\]$", "", "[BRAND, CUSTOM, null]")
+  res <- gsub("^\\[|\\]$", "", "[BRAND, CUSTOM]")
   unlist(strsplit(res, ", "))
 }
 

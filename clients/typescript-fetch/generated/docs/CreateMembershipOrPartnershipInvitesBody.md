@@ -7,7 +7,7 @@ Body to be used on path to send Members or Partners Invite or Request
 
 Name | Type
 ------------ | -------------
-`businessRole` | string
+`businessRole` | [BusinessRoleForInvite](BusinessRoleForInvite.md)
 `inviteType` | [InviteType](InviteType.md)
 `members` | Array&lt;string&gt;
 `partners` | Array&lt;string&gt;

@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **ad_accounts_audiences_shared_accounts_list**
-> AdAccountsAudiencesSharedAccountsList200Response ad_accounts_audiences_shared_accounts_list(ad_account_id => $ad_account_id, audience_id => $audience_id, account_type => $account_type, page_size => $page_size, bookmark => $bookmark)
+> AdAccountsAudiencesSharedAccountsList200Response ad_accounts_audiences_shared_accounts_list(audience_id => $audience_id, account_type => $account_type, ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size)
 
 List accounts with access to an audience owned by an ad account
 
@@ -37,14 +37,14 @@ my $api_instance = WWW::OpenAPIClient::AudienceSharingApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $audience_id = "audience_id_example"; # string | Unique identifier of the audience to use to filter the results.
 my $account_type = new WWW::OpenAPIClient.AudienceAccountType(); # AudienceAccountType | Filter accounts by account type.
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
-    my $result = $api_instance->ad_accounts_audiences_shared_accounts_list(ad_account_id => $ad_account_id, audience_id => $audience_id, account_type => $account_type, page_size => $page_size, bookmark => $bookmark);
+    my $result = $api_instance->ad_accounts_audiences_shared_accounts_list(audience_id => $audience_id, account_type => $account_type, ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size);
     print Dumper($result);
 };
 if ($@) {
@@ -56,11 +56,11 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **string**| Unique identifier of an ad account. | 
  **audience_id** | **string**| Unique identifier of the audience to use to filter the results. | 
  **account_type** | [**AudienceAccountType**](.md)| Filter accounts by account type. | 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **ad_account_id** | **string**| Unique identifier of an ad account. | 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **business_account_audiences_shared_accounts_list**
-> AdAccountsAudiencesSharedAccountsList200Response business_account_audiences_shared_accounts_list(business_id => $business_id, audience_id => $audience_id, account_type => $account_type, page_size => $page_size, bookmark => $bookmark)
+> AdAccountsAudiencesSharedAccountsList200Response business_account_audiences_shared_accounts_list(business_id => $business_id, audience_id => $audience_id, account_type => $account_type, bookmark => $bookmark, page_size => $page_size)
 
 List accounts with access to an audience owned by a business
 
@@ -94,14 +94,14 @@ my $api_instance = WWW::OpenAPIClient::AudienceSharingApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
+my $business_id = "business_id_example"; # string | Unique identifier of the requesting business.
 my $audience_id = "audience_id_example"; # string | Unique identifier of the audience to use to filter the results.
 my $account_type = new WWW::OpenAPIClient.AudienceAccountType(); # AudienceAccountType | Filter accounts by account type.
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
-    my $result = $api_instance->business_account_audiences_shared_accounts_list(business_id => $business_id, audience_id => $audience_id, account_type => $account_type, page_size => $page_size, bookmark => $bookmark);
+    my $result = $api_instance->business_account_audiences_shared_accounts_list(business_id => $business_id, audience_id => $audience_id, account_type => $account_type, bookmark => $bookmark, page_size => $page_size);
     print Dumper($result);
 };
 if ($@) {
@@ -116,8 +116,8 @@ Name | Type | Description  | Notes
  **business_id** | **string**| Unique identifier of the requesting business. | 
  **audience_id** | **string**| Unique identifier of the audience to use to filter the results. | 
  **account_type** | [**AudienceAccountType**](.md)| Filter accounts by account type. | 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **shared_audiences_for_business_list**
-> AudiencesList200Response shared_audiences_for_business_list(business_id => $business_id, bookmark => $bookmark, order => $order, page_size => $page_size)
+> SharedAudiencesForBusinessList200Response shared_audiences_for_business_list(business_id => $business_id, order => $order, bookmark => $bookmark, page_size => $page_size)
 
 List received audiences for a business
 
@@ -151,13 +151,13 @@ my $api_instance = WWW::OpenAPIClient::AudienceSharingApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
+my $business_id = "business_id_example"; # string | Unique identifier of the requesting business.
+my $order = new WWW::OpenAPIClient.Order(); # Order | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $order = ASCENDING; # string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
-    my $result = $api_instance->shared_audiences_for_business_list(business_id => $business_id, bookmark => $bookmark, order => $order, page_size => $page_size);
+    my $result = $api_instance->shared_audiences_for_business_list(business_id => $business_id, order => $order, bookmark => $bookmark, page_size => $page_size);
     print Dumper($result);
 };
 if ($@) {
@@ -170,13 +170,13 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **string**| Unique identifier of the requesting business. | 
+ **order** | [**Order**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**AudiencesList200Response**](AudiencesList200Response.md)
+[**SharedAudiencesForBusinessList200Response**](SharedAudiencesForBusinessList200Response.md)
 
 ### Authorization
 
@@ -190,11 +190,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_ad_account_to_ad_account_shared_audience**
-> SharedAudienceResponse update_ad_account_to_ad_account_shared_audience(ad_account_id => $ad_account_id, shared_audience => $shared_audience)
+> AdAccountToAdAccountSharedAudience update_ad_account_to_ad_account_shared_audience(ad_account_id => $ad_account_id, ad_account_to_ad_account_shared_audience_update_with_required_body => $ad_account_to_ad_account_shared_audience_update_with_required_body)
 
 Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```perl
@@ -207,10 +207,10 @@ my $api_instance = WWW::OpenAPIClient::AudienceSharingApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $shared_audience = WWW::OpenAPIClient::Object::SharedAudience->new(); # SharedAudience | 
+my $ad_account_to_ad_account_shared_audience_update_with_required_body = WWW::OpenAPIClient::Object::AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody->new(); # AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody | 
 
 eval {
-    my $result = $api_instance->update_ad_account_to_ad_account_shared_audience(ad_account_id => $ad_account_id, shared_audience => $shared_audience);
+    my $result = $api_instance->update_ad_account_to_ad_account_shared_audience(ad_account_id => $ad_account_id, ad_account_to_ad_account_shared_audience_update_with_required_body => $ad_account_to_ad_account_shared_audience_update_with_required_body);
     print Dumper($result);
 };
 if ($@) {
@@ -223,11 +223,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **shared_audience** | [**SharedAudience**](SharedAudience.md)|  | 
+ **ad_account_to_ad_account_shared_audience_update_with_required_body** | [**AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**AdAccountToAdAccountSharedAudience**](AdAccountToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -241,11 +241,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_ad_account_to_business_shared_audience**
-> BusinessSharedAudienceResponse update_ad_account_to_business_shared_audience(ad_account_id => $ad_account_id, business_shared_audience => $business_shared_audience)
+> AdAccountToBusinessSharedAudience update_ad_account_to_business_shared_audience(ad_account_id => $ad_account_id, ad_account_to_business_shared_audience_update_with_required_body => $ad_account_to_business_shared_audience_update_with_required_body)
 
 Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```perl
@@ -258,10 +258,10 @@ my $api_instance = WWW::OpenAPIClient::AudienceSharingApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $business_shared_audience = WWW::OpenAPIClient::Object::BusinessSharedAudience->new(); # BusinessSharedAudience | 
+my $ad_account_to_business_shared_audience_update_with_required_body = WWW::OpenAPIClient::Object::AdAccountToBusinessSharedAudienceUpdateWithRequiredBody->new(); # AdAccountToBusinessSharedAudienceUpdateWithRequiredBody | 
 
 eval {
-    my $result = $api_instance->update_ad_account_to_business_shared_audience(ad_account_id => $ad_account_id, business_shared_audience => $business_shared_audience);
+    my $result = $api_instance->update_ad_account_to_business_shared_audience(ad_account_id => $ad_account_id, ad_account_to_business_shared_audience_update_with_required_body => $ad_account_to_business_shared_audience_update_with_required_body);
     print Dumper($result);
 };
 if ($@) {
@@ -274,11 +274,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **business_shared_audience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  | 
+ **ad_account_to_business_shared_audience_update_with_required_body** | [**AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**AdAccountToBusinessSharedAudience**](AdAccountToBusinessSharedAudience.md)
 
 ### Authorization
 
@@ -292,11 +292,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_business_to_ad_account_shared_audience**
-> SharedAudienceResponse update_business_to_ad_account_shared_audience(business_id => $business_id, shared_audience => $shared_audience)
+> BusinessToAdAccountSharedAudience update_business_to_ad_account_shared_audience(business_id => $business_id, business_to_ad_account_shared_audience_update_with_required_body => $business_to_ad_account_shared_audience_update_with_required_body)
 
 Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```perl
@@ -308,11 +308,11 @@ my $api_instance = WWW::OpenAPIClient::AudienceSharingApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
-my $shared_audience = WWW::OpenAPIClient::Object::SharedAudience->new(); # SharedAudience | 
+my $business_id = "business_id_example"; # string | Unique identifier of the requesting business.
+my $business_to_ad_account_shared_audience_update_with_required_body = WWW::OpenAPIClient::Object::BusinessToAdAccountSharedAudienceUpdateWithRequiredBody->new(); # BusinessToAdAccountSharedAudienceUpdateWithRequiredBody | 
 
 eval {
-    my $result = $api_instance->update_business_to_ad_account_shared_audience(business_id => $business_id, shared_audience => $shared_audience);
+    my $result = $api_instance->update_business_to_ad_account_shared_audience(business_id => $business_id, business_to_ad_account_shared_audience_update_with_required_body => $business_to_ad_account_shared_audience_update_with_required_body);
     print Dumper($result);
 };
 if ($@) {
@@ -325,11 +325,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **string**| Unique identifier of the requesting business. | 
- **shared_audience** | [**SharedAudience**](SharedAudience.md)|  | 
+ **business_to_ad_account_shared_audience_update_with_required_body** | [**BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**BusinessToAdAccountSharedAudience**](BusinessToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -343,11 +343,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_business_to_business_shared_audience**
-> BusinessSharedAudienceResponse update_business_to_business_shared_audience(business_id => $business_id, business_shared_audience => $business_shared_audience)
+> BusinessToBusinessSharedAudience update_business_to_business_shared_audience(business_id => $business_id, business_to_business_shared_audience_update_with_required_body => $business_to_business_shared_audience_update_with_required_body)
 
 Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```perl
@@ -359,11 +359,11 @@ my $api_instance = WWW::OpenAPIClient::AudienceSharingApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
-my $business_shared_audience = WWW::OpenAPIClient::Object::BusinessSharedAudience->new(); # BusinessSharedAudience | 
+my $business_id = "business_id_example"; # string | Unique identifier of the requesting business.
+my $business_to_business_shared_audience_update_with_required_body = WWW::OpenAPIClient::Object::BusinessToBusinessSharedAudienceUpdateWithRequiredBody->new(); # BusinessToBusinessSharedAudienceUpdateWithRequiredBody | 
 
 eval {
-    my $result = $api_instance->update_business_to_business_shared_audience(business_id => $business_id, business_shared_audience => $business_shared_audience);
+    my $result = $api_instance->update_business_to_business_shared_audience(business_id => $business_id, business_to_business_shared_audience_update_with_required_body => $business_to_business_shared_audience_update_with_required_body);
     print Dumper($result);
 };
 if ($@) {
@@ -376,11 +376,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **string**| Unique identifier of the requesting business. | 
- **business_shared_audience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  | 
+ **business_to_business_shared_audience_update_with_required_body** | [**BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**BusinessToBusinessSharedAudience**](BusinessToBusinessSharedAudience.md)
 
 ### Authorization
 

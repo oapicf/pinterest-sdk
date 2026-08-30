@@ -10,14 +10,16 @@ import java.util.List;
 
 import org.openapitools.model.*;
 
-import org.openapitools.model.AdAccountsCountryResponse;
-import org.openapitools.model.BookClosedResponse;
-import org.openapitools.model.DeliveryMetricsResponse;
-import org.openapitools.model.Error;
+import org.openapitools.model.AdAccountCountriesGet200Response;
+import org.openapitools.model.BookClosed;
+import org.openapitools.model.DeliveryMetricsGet200Response;
 import java.util.List;
-import org.openapitools.model.SingleInterestTargetingOptionResponse;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PublicTargetingType;
+import org.openapitools.model.ReportType;
+import org.openapitools.model.SingleInterestTargetingOption;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ResourcesController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map
@@ -32,7 +34,7 @@ public class ResourcesController  {
   */
 
   /*
-    public ResponseContext deliveryMetricsGet(RequestContext request , String reportType) {
+    public ResponseContext deliveryMetricsGet(RequestContext request , ReportType reportType) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -56,7 +58,7 @@ public class ResourcesController  {
   */
 
   /*
-    public ResponseContext targetingOptionsGet(RequestContext request , String targetingType, String clientId, String oauthSignature, String timestamp, String adAccountId) {
+    public ResponseContext targetingOptionsGet(RequestContext request , PublicTargetingType targetingType, String adAccountId, String clientId, String oauthSignature, String timestamp) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

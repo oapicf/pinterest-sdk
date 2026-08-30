@@ -2,25 +2,26 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.model.ConversionTagType;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * ConversionEventResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionEventResponse {
 
   private String adAccountId;
@@ -30,6 +31,8 @@ public class ConversionEventResponse {
   private String conversionTagId;
 
   private Integer createdTime;
+
+  private String reportingConversionEvent;
 
   public ConversionEventResponse adAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
@@ -111,6 +114,26 @@ public class ConversionEventResponse {
     this.createdTime = createdTime;
   }
 
+  public ConversionEventResponse reportingConversionEvent(String reportingConversionEvent) {
+    this.reportingConversionEvent = reportingConversionEvent;
+    return this;
+  }
+
+  /**
+   * For advertiser-defined events, the reporting event label shown in optimization UIs.
+   * @return reportingConversionEvent
+   */
+  
+  @Schema(name = "reporting_conversion_event", example = "GET_QUOTE", description = "For advertiser-defined events, the reporting event label shown in optimization UIs.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("reporting_conversion_event")
+  public String getReportingConversionEvent() {
+    return reportingConversionEvent;
+  }
+
+  public void setReportingConversionEvent(String reportingConversionEvent) {
+    this.reportingConversionEvent = reportingConversionEvent;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -123,12 +146,13 @@ public class ConversionEventResponse {
     return Objects.equals(this.adAccountId, conversionEventResponse.adAccountId) &&
         Objects.equals(this.conversionEvent, conversionEventResponse.conversionEvent) &&
         Objects.equals(this.conversionTagId, conversionEventResponse.conversionTagId) &&
-        Objects.equals(this.createdTime, conversionEventResponse.createdTime);
+        Objects.equals(this.createdTime, conversionEventResponse.createdTime) &&
+        Objects.equals(this.reportingConversionEvent, conversionEventResponse.reportingConversionEvent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime);
+    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime, reportingConversionEvent);
   }
 
   @Override
@@ -139,6 +163,7 @@ public class ConversionEventResponse {
     sb.append("    conversionEvent: ").append(toIndentedString(conversionEvent)).append("\n");
     sb.append("    conversionTagId: ").append(toIndentedString(conversionTagId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    reportingConversionEvent: ").append(toIndentedString(reportingConversionEvent)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -148,10 +173,7 @@ public class ConversionEventResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

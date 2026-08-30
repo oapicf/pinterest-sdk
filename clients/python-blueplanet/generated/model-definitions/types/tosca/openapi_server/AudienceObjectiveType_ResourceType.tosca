@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AudienceObjectiveType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AudienceObjectiveType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AudienceObjectiveType {
+    title = AudienceObjectiveType
+    description = AudienceObjectiveType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  AudienceObjectiveType {
+    title = AudienceObjectiveType
+    description = AudienceObjectiveType
+    implements = openapi_server.resourceTypes.AudienceObjectiveType
+
+  }
+}

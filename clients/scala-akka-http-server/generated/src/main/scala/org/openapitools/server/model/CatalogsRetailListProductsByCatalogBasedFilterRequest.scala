@@ -6,7 +6,7 @@ package org.openapitools.server.model
  *
  * Request object to list products for a given retail catalog_id and product group filter.
  *
- * @param catalogId Catalog id pertaining to the retail product group. for example: ''2680059592705''
+ * @param catalogId Catalog ID pertaining to the product group. for example: ''2680059592705''
  * @param catalogType Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. for example: ''null''
  * @param country  for example: ''null''
  * @param filters  for example: ''null''

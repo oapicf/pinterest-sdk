@@ -7,14 +7,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PinAnalyticsMetricsResponseDailyMetricsInner } from './pinAnalyticsMetricsResponseDailyMetricsInner';
+import { PinAnalyticsDailyMetrics } from './pinAnalyticsDailyMetrics';
 
 
 export interface PinAnalyticsMetricsResponse { 
     /**
      * Array with the requested daily metric records
      */
-    daily_metrics?: Array<PinAnalyticsMetricsResponseDailyMetricsInner>;
+    daily_metrics?: Array<PinAnalyticsDailyMetrics>;
     /**
      * The lifetime metric name and value.
      */

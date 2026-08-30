@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **time.Time** |  | 
-**Id** | **string** |  | 
-**UpdatedAt** | **time.Time** |  | 
+**CreatedAt** | **time.Time** |  | [readonly] 
+**Id** | **string** | ID of the feed processing result. | 
 **IngestionDetails** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | 
 **ProductCounts** | [**NullableCatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | 
 **Status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
+**UpdatedAt** | **time.Time** |  | [readonly] 
 **ValidationDetails** | [**CatalogsFeedValidationDetails**](CatalogsFeedValidationDetails.md) |  | 
 **VideoCounts** | Pointer to [**CatalogsFeedVideoCounts**](CatalogsFeedVideoCounts.md) |  | [optional] 
 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsFeedProcessingResult
 
-`func NewCatalogsFeedProcessingResult(createdAt time.Time, id string, updatedAt time.Time, ingestionDetails CatalogsFeedIngestionDetails, productCounts NullableCatalogsFeedProductCounts, status CatalogsFeedProcessingStatus, validationDetails CatalogsFeedValidationDetails, ) *CatalogsFeedProcessingResult`
+`func NewCatalogsFeedProcessingResult(createdAt time.Time, id string, ingestionDetails CatalogsFeedIngestionDetails, productCounts NullableCatalogsFeedProductCounts, status CatalogsFeedProcessingStatus, updatedAt time.Time, validationDetails CatalogsFeedValidationDetails, ) *CatalogsFeedProcessingResult`
 
 NewCatalogsFeedProcessingResult instantiates a new CatalogsFeedProcessingResult object
 This constructor will assign default values to properties that have it defined,
@@ -70,26 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsFeedProcessingResult) SetId(v string)`
 
 SetId sets Id field to given value.
-
-
-### GetUpdatedAt
-
-`func (o *CatalogsFeedProcessingResult) GetUpdatedAt() time.Time`
-
-GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
-
-### GetUpdatedAtOk
-
-`func (o *CatalogsFeedProcessingResult) GetUpdatedAtOk() (*time.Time, bool)`
-
-GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpdatedAt
-
-`func (o *CatalogsFeedProcessingResult) SetUpdatedAt(v time.Time)`
-
-SetUpdatedAt sets UpdatedAt field to given value.
 
 
 ### GetIngestionDetails
@@ -160,6 +140,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsFeedProcessingResult) SetStatus(v CatalogsFeedProcessingStatus)`
 
 SetStatus sets Status field to given value.
+
+
+### GetUpdatedAt
+
+`func (o *CatalogsFeedProcessingResult) GetUpdatedAt() time.Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *CatalogsFeedProcessingResult) GetUpdatedAtOk() (*time.Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *CatalogsFeedProcessingResult) SetUpdatedAt(v time.Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
 
 
 ### GetValidationDetails

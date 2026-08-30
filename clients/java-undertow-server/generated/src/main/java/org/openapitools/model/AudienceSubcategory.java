@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -21,7 +21,7 @@ import java.math.BigDecimal;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AudienceSubcategory   {
   
   private String id;
@@ -31,7 +31,6 @@ public class AudienceSubcategory   {
   private BigDecimal ratio;
 
   /**
-   * Subinterest ID.
    */
   public AudienceSubcategory id(String id) {
     this.id = id;
@@ -39,7 +38,7 @@ public class AudienceSubcategory   {
   }
 
   
-  @ApiModelProperty(example = "958862518888", value = "Subinterest ID.")
+  @ApiModelProperty(value = "")
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -49,7 +48,6 @@ public class AudienceSubcategory   {
   }
 
   /**
-   * Subinterest affinity index.
    */
   public AudienceSubcategory index(BigDecimal index) {
     this.index = index;
@@ -57,7 +55,7 @@ public class AudienceSubcategory   {
   }
 
   
-  @ApiModelProperty(example = "1.2", value = "Subinterest affinity index.")
+  @ApiModelProperty(value = "")
   @JsonProperty("index")
   public BigDecimal getIndex() {
     return index;
@@ -67,7 +65,6 @@ public class AudienceSubcategory   {
   }
 
   /**
-   * Interest unique key (same as ID).
    */
   public AudienceSubcategory key(String key) {
     this.key = key;
@@ -75,7 +72,7 @@ public class AudienceSubcategory   {
   }
 
   
-  @ApiModelProperty(example = "958862518888", value = "Interest unique key (same as ID).")
+  @ApiModelProperty(value = "")
   @JsonProperty("key")
   public String getKey() {
     return key;
@@ -85,7 +82,6 @@ public class AudienceSubcategory   {
   }
 
   /**
-   * Subinterest name.
    */
   public AudienceSubcategory name(String name) {
     this.name = name;
@@ -93,7 +89,7 @@ public class AudienceSubcategory   {
   }
 
   
-  @ApiModelProperty(example = "travel destinations", value = "Subinterest name.")
+  @ApiModelProperty(value = "")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -103,7 +99,6 @@ public class AudienceSubcategory   {
   }
 
   /**
-   * Subinterest's percent of category's total audience.
    */
   public AudienceSubcategory ratio(BigDecimal ratio) {
     this.ratio = ratio;
@@ -111,7 +106,7 @@ public class AudienceSubcategory   {
   }
 
   
-  @ApiModelProperty(example = "0.482", value = "Subinterest's percent of category's total audience.")
+  @ApiModelProperty(value = "")
   @JsonProperty("ratio")
   public BigDecimal getRatio() {
     return ratio;
@@ -161,10 +156,7 @@ public class AudienceSubcategory   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

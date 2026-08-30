@@ -3,7 +3,11 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/product_availability.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/gender.dart';
+import 'package:openapi/src/model/media_type.dart';
+import 'package:openapi/src/model/product_condition.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -45,15 +49,13 @@ abstract class CatalogsRetailFilterValuesMap implements Built<CatalogsRetailFilt
   BuiltList<String>? get adVideoTags;
 
   @BuiltValueField(wireName: r'availability')
-  BuiltList<CatalogsRetailFilterValuesMapAvailabilityEnum>? get availability;
-  // enum availabilityEnum {  IN_STOCK,  OUT_OF_STOCK,  PREORDER,  UNAVAILABLE,  };
+  BuiltList<ProductAvailability>? get availability;
 
   @BuiltValueField(wireName: r'brand')
   BuiltList<String>? get brand;
 
   @BuiltValueField(wireName: r'condition')
-  BuiltList<CatalogsRetailFilterValuesMapConditionEnum>? get condition;
-  // enum conditionEnum {  NEW,  USED,  REFURBISHED,  };
+  BuiltList<ProductCondition>? get condition;
 
   @BuiltValueField(wireName: r'custom_label_0')
   BuiltList<String>? get customLabel0;
@@ -71,8 +73,7 @@ abstract class CatalogsRetailFilterValuesMap implements Built<CatalogsRetailFilt
   BuiltList<String>? get customLabel4;
 
   @BuiltValueField(wireName: r'gender')
-  BuiltList<CatalogsRetailFilterValuesMapGenderEnum>? get gender;
-  // enum genderEnum {  FEMALE,  MALE,  UNISEX,  };
+  BuiltList<Gender>? get gender;
 
   @BuiltValueField(wireName: r'google_product_category_0')
   BuiltList<String>? get googleProductCategory0;
@@ -96,8 +97,7 @@ abstract class CatalogsRetailFilterValuesMap implements Built<CatalogsRetailFilt
   BuiltList<String>? get googleProductCategory6;
 
   @BuiltValueField(wireName: r'media_type')
-  BuiltList<CatalogsRetailFilterValuesMapMediaTypeEnum>? get mediaType;
-  // enum mediaTypeEnum {  IMAGE,  VIDEO,  };
+  BuiltList<MediaType>? get mediaType;
 
   @BuiltValueField(wireName: r'product_type_0')
   BuiltList<String>? get productType0;
@@ -155,7 +155,7 @@ class _$CatalogsRetailFilterValuesMapSerializer implements PrimitiveSerializer<C
       yield r'availability';
       yield serializers.serialize(
         object.availability,
-        specifiedType: const FullType(BuiltList, [FullType(CatalogsRetailFilterValuesMapAvailabilityEnum)]),
+        specifiedType: const FullType(BuiltList, [FullType(ProductAvailability)]),
       );
     }
     if (object.brand != null) {
@@ -169,7 +169,7 @@ class _$CatalogsRetailFilterValuesMapSerializer implements PrimitiveSerializer<C
       yield r'condition';
       yield serializers.serialize(
         object.condition,
-        specifiedType: const FullType(BuiltList, [FullType(CatalogsRetailFilterValuesMapConditionEnum)]),
+        specifiedType: const FullType(BuiltList, [FullType(ProductCondition)]),
       );
     }
     if (object.customLabel0 != null) {
@@ -211,7 +211,7 @@ class _$CatalogsRetailFilterValuesMapSerializer implements PrimitiveSerializer<C
       yield r'gender';
       yield serializers.serialize(
         object.gender,
-        specifiedType: const FullType(BuiltList, [FullType(CatalogsRetailFilterValuesMapGenderEnum)]),
+        specifiedType: const FullType(BuiltList, [FullType(Gender)]),
       );
     }
     if (object.googleProductCategory0 != null) {
@@ -267,7 +267,7 @@ class _$CatalogsRetailFilterValuesMapSerializer implements PrimitiveSerializer<C
       yield r'media_type';
       yield serializers.serialize(
         object.mediaType,
-        specifiedType: const FullType(BuiltList, [FullType(CatalogsRetailFilterValuesMapMediaTypeEnum)]),
+        specifiedType: const FullType(BuiltList, [FullType(MediaType)]),
       );
     }
     if (object.productType0 != null) {
@@ -331,169 +331,193 @@ class _$CatalogsRetailFilterValuesMapSerializer implements PrimitiveSerializer<C
         case r'ad_image_tags':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.adImageTags.replace(valueDes);
           break;
         case r'ad_video_tags':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.adVideoTags.replace(valueDes);
           break;
         case r'availability':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CatalogsRetailFilterValuesMapAvailabilityEnum)]),
-          ) as BuiltList<CatalogsRetailFilterValuesMapAvailabilityEnum>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(ProductAvailability)]),
+          ) as BuiltList<ProductAvailability>?;
+          if (valueDes == null) continue;
           result.availability.replace(valueDes);
           break;
         case r'brand':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.brand.replace(valueDes);
           break;
         case r'condition':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CatalogsRetailFilterValuesMapConditionEnum)]),
-          ) as BuiltList<CatalogsRetailFilterValuesMapConditionEnum>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(ProductCondition)]),
+          ) as BuiltList<ProductCondition>?;
+          if (valueDes == null) continue;
           result.condition.replace(valueDes);
           break;
         case r'custom_label_0':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.customLabel0.replace(valueDes);
           break;
         case r'custom_label_1':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.customLabel1.replace(valueDes);
           break;
         case r'custom_label_2':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.customLabel2.replace(valueDes);
           break;
         case r'custom_label_3':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.customLabel3.replace(valueDes);
           break;
         case r'custom_label_4':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.customLabel4.replace(valueDes);
           break;
         case r'gender':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CatalogsRetailFilterValuesMapGenderEnum)]),
-          ) as BuiltList<CatalogsRetailFilterValuesMapGenderEnum>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(Gender)]),
+          ) as BuiltList<Gender>?;
+          if (valueDes == null) continue;
           result.gender.replace(valueDes);
           break;
         case r'google_product_category_0':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.googleProductCategory0.replace(valueDes);
           break;
         case r'google_product_category_1':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.googleProductCategory1.replace(valueDes);
           break;
         case r'google_product_category_2':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.googleProductCategory2.replace(valueDes);
           break;
         case r'google_product_category_3':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.googleProductCategory3.replace(valueDes);
           break;
         case r'google_product_category_4':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.googleProductCategory4.replace(valueDes);
           break;
         case r'google_product_category_5':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.googleProductCategory5.replace(valueDes);
           break;
         case r'google_product_category_6':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.googleProductCategory6.replace(valueDes);
           break;
         case r'media_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CatalogsRetailFilterValuesMapMediaTypeEnum)]),
-          ) as BuiltList<CatalogsRetailFilterValuesMapMediaTypeEnum>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(MediaType)]),
+          ) as BuiltList<MediaType>?;
+          if (valueDes == null) continue;
           result.mediaType.replace(valueDes);
           break;
         case r'product_type_0':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.productType0.replace(valueDes);
           break;
         case r'product_type_1':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.productType1.replace(valueDes);
           break;
         case r'product_type_2':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.productType2.replace(valueDes);
           break;
         case r'product_type_3':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.productType3.replace(valueDes);
           break;
         case r'product_type_4':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.productType4.replace(valueDes);
           break;
         default:
@@ -523,73 +547,5 @@ class _$CatalogsRetailFilterValuesMapSerializer implements PrimitiveSerializer<C
     );
     return result.build();
   }
-}
-
-class CatalogsRetailFilterValuesMapAvailabilityEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'IN_STOCK')
-  static const CatalogsRetailFilterValuesMapAvailabilityEnum IN_STOCK = _$catalogsRetailFilterValuesMapAvailabilityEnum_IN_STOCK;
-  @BuiltValueEnumConst(wireName: r'OUT_OF_STOCK')
-  static const CatalogsRetailFilterValuesMapAvailabilityEnum OUT_OF_STOCK = _$catalogsRetailFilterValuesMapAvailabilityEnum_OUT_OF_STOCK;
-  @BuiltValueEnumConst(wireName: r'PREORDER')
-  static const CatalogsRetailFilterValuesMapAvailabilityEnum PREORDER = _$catalogsRetailFilterValuesMapAvailabilityEnum_PREORDER;
-  @BuiltValueEnumConst(wireName: r'UNAVAILABLE')
-  static const CatalogsRetailFilterValuesMapAvailabilityEnum UNAVAILABLE = _$catalogsRetailFilterValuesMapAvailabilityEnum_UNAVAILABLE;
-
-  static Serializer<CatalogsRetailFilterValuesMapAvailabilityEnum> get serializer => _$catalogsRetailFilterValuesMapAvailabilityEnumSerializer;
-
-  const CatalogsRetailFilterValuesMapAvailabilityEnum._(String name): super(name);
-
-  static BuiltSet<CatalogsRetailFilterValuesMapAvailabilityEnum> get values => _$catalogsRetailFilterValuesMapAvailabilityEnumValues;
-  static CatalogsRetailFilterValuesMapAvailabilityEnum valueOf(String name) => _$catalogsRetailFilterValuesMapAvailabilityEnumValueOf(name);
-}
-
-class CatalogsRetailFilterValuesMapConditionEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'NEW')
-  static const CatalogsRetailFilterValuesMapConditionEnum NEW = _$catalogsRetailFilterValuesMapConditionEnum_NEW;
-  @BuiltValueEnumConst(wireName: r'USED')
-  static const CatalogsRetailFilterValuesMapConditionEnum USED = _$catalogsRetailFilterValuesMapConditionEnum_USED;
-  @BuiltValueEnumConst(wireName: r'REFURBISHED')
-  static const CatalogsRetailFilterValuesMapConditionEnum REFURBISHED = _$catalogsRetailFilterValuesMapConditionEnum_REFURBISHED;
-
-  static Serializer<CatalogsRetailFilterValuesMapConditionEnum> get serializer => _$catalogsRetailFilterValuesMapConditionEnumSerializer;
-
-  const CatalogsRetailFilterValuesMapConditionEnum._(String name): super(name);
-
-  static BuiltSet<CatalogsRetailFilterValuesMapConditionEnum> get values => _$catalogsRetailFilterValuesMapConditionEnumValues;
-  static CatalogsRetailFilterValuesMapConditionEnum valueOf(String name) => _$catalogsRetailFilterValuesMapConditionEnumValueOf(name);
-}
-
-class CatalogsRetailFilterValuesMapGenderEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'FEMALE')
-  static const CatalogsRetailFilterValuesMapGenderEnum FEMALE = _$catalogsRetailFilterValuesMapGenderEnum_FEMALE;
-  @BuiltValueEnumConst(wireName: r'MALE')
-  static const CatalogsRetailFilterValuesMapGenderEnum MALE = _$catalogsRetailFilterValuesMapGenderEnum_MALE;
-  @BuiltValueEnumConst(wireName: r'UNISEX')
-  static const CatalogsRetailFilterValuesMapGenderEnum UNISEX = _$catalogsRetailFilterValuesMapGenderEnum_UNISEX;
-
-  static Serializer<CatalogsRetailFilterValuesMapGenderEnum> get serializer => _$catalogsRetailFilterValuesMapGenderEnumSerializer;
-
-  const CatalogsRetailFilterValuesMapGenderEnum._(String name): super(name);
-
-  static BuiltSet<CatalogsRetailFilterValuesMapGenderEnum> get values => _$catalogsRetailFilterValuesMapGenderEnumValues;
-  static CatalogsRetailFilterValuesMapGenderEnum valueOf(String name) => _$catalogsRetailFilterValuesMapGenderEnumValueOf(name);
-}
-
-class CatalogsRetailFilterValuesMapMediaTypeEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'IMAGE')
-  static const CatalogsRetailFilterValuesMapMediaTypeEnum IMAGE = _$catalogsRetailFilterValuesMapMediaTypeEnum_IMAGE;
-  @BuiltValueEnumConst(wireName: r'VIDEO')
-  static const CatalogsRetailFilterValuesMapMediaTypeEnum VIDEO = _$catalogsRetailFilterValuesMapMediaTypeEnum_VIDEO;
-
-  static Serializer<CatalogsRetailFilterValuesMapMediaTypeEnum> get serializer => _$catalogsRetailFilterValuesMapMediaTypeEnumSerializer;
-
-  const CatalogsRetailFilterValuesMapMediaTypeEnum._(String name): super(name);
-
-  static BuiltSet<CatalogsRetailFilterValuesMapMediaTypeEnum> get values => _$catalogsRetailFilterValuesMapMediaTypeEnumValues;
-  static CatalogsRetailFilterValuesMapMediaTypeEnum valueOf(String name) => _$catalogsRetailFilterValuesMapMediaTypeEnumValueOf(name);
 }
 

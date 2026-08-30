@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,6 +20,7 @@ var _ MappedNullable = &CatalogsHotelAttributes{}
 
 // CatalogsHotelAttributes struct for CatalogsHotelAttributes
 type CatalogsHotelAttributes struct {
+	// Hotel address
 	Address *CatalogsHotelAddress `json:"address,omitempty"`
 	// Base price of the hotel room per night followed by the ISO currency code
 	BasePrice NullableString `json:"base_price,omitempty"`
@@ -39,6 +40,7 @@ type CatalogsHotelAttributes struct {
 	CustomLabel4 NullableString `json:"custom_label_4,omitempty"`
 	// Brief description of the hotel.
 	Description NullableString `json:"description,omitempty"`
+	// If specified, you must provide all properties
 	GuestRatings *CatalogsHotelGuestRatings `json:"guest_ratings,omitempty"`
 	// Latitude of the hotel.
 	Latitude *float32 `json:"latitude,omitempty"`
@@ -52,9 +54,12 @@ type CatalogsHotelAttributes struct {
 	Neighborhood []string `json:"neighborhood,omitempty"`
 	// Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
 	SalePrice NullableString `json:"sale_price,omitempty"`
-	// <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+	// <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
 	AdditionalImageLink []string `json:"additional_image_link,omitempty"`
-	MainImage *CatalogsHotelAttributesAllOfMainImage `json:"main_image,omitempty"`
+	// AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+	AiDisclosures []CatalogsAiContentDisclosure `json:"ai_disclosures,omitempty"`
+	// The main hotel image
+	MainImage *CatalogsHotelMainImage `json:"main_image,omitempty"`
 }
 
 // NewCatalogsHotelAttributes instantiates a new CatalogsHotelAttributes object
@@ -782,10 +787,42 @@ func (o *CatalogsHotelAttributes) SetAdditionalImageLink(v []string) {
 	o.AdditionalImageLink = v
 }
 
+// GetAiDisclosures returns the AiDisclosures field value if set, zero value otherwise.
+func (o *CatalogsHotelAttributes) GetAiDisclosures() []CatalogsAiContentDisclosure {
+	if o == nil || IsNil(o.AiDisclosures) {
+		var ret []CatalogsAiContentDisclosure
+		return ret
+	}
+	return o.AiDisclosures
+}
+
+// GetAiDisclosuresOk returns a tuple with the AiDisclosures field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsHotelAttributes) GetAiDisclosuresOk() ([]CatalogsAiContentDisclosure, bool) {
+	if o == nil || IsNil(o.AiDisclosures) {
+		return nil, false
+	}
+	return o.AiDisclosures, true
+}
+
+// HasAiDisclosures returns a boolean if a field has been set.
+func (o *CatalogsHotelAttributes) HasAiDisclosures() bool {
+	if o != nil && !IsNil(o.AiDisclosures) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiDisclosures gets a reference to the given []CatalogsAiContentDisclosure and assigns it to the AiDisclosures field.
+func (o *CatalogsHotelAttributes) SetAiDisclosures(v []CatalogsAiContentDisclosure) {
+	o.AiDisclosures = v
+}
+
 // GetMainImage returns the MainImage field value if set, zero value otherwise.
-func (o *CatalogsHotelAttributes) GetMainImage() CatalogsHotelAttributesAllOfMainImage {
+func (o *CatalogsHotelAttributes) GetMainImage() CatalogsHotelMainImage {
 	if o == nil || IsNil(o.MainImage) {
-		var ret CatalogsHotelAttributesAllOfMainImage
+		var ret CatalogsHotelMainImage
 		return ret
 	}
 	return *o.MainImage
@@ -793,7 +830,7 @@ func (o *CatalogsHotelAttributes) GetMainImage() CatalogsHotelAttributesAllOfMai
 
 // GetMainImageOk returns a tuple with the MainImage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsHotelAttributes) GetMainImageOk() (*CatalogsHotelAttributesAllOfMainImage, bool) {
+func (o *CatalogsHotelAttributes) GetMainImageOk() (*CatalogsHotelMainImage, bool) {
 	if o == nil || IsNil(o.MainImage) {
 		return nil, false
 	}
@@ -809,8 +846,8 @@ func (o *CatalogsHotelAttributes) HasMainImage() bool {
 	return false
 }
 
-// SetMainImage gets a reference to the given CatalogsHotelAttributesAllOfMainImage and assigns it to the MainImage field.
-func (o *CatalogsHotelAttributes) SetMainImage(v CatalogsHotelAttributesAllOfMainImage) {
+// SetMainImage gets a reference to the given CatalogsHotelMainImage and assigns it to the MainImage field.
+func (o *CatalogsHotelAttributes) SetMainImage(v CatalogsHotelMainImage) {
 	o.MainImage = &v
 }
 
@@ -877,6 +914,9 @@ func (o CatalogsHotelAttributes) ToMap() (map[string]interface{}, error) {
 	}
 	if o.AdditionalImageLink != nil {
 		toSerialize["additional_image_link"] = o.AdditionalImageLink
+	}
+	if !IsNil(o.AiDisclosures) {
+		toSerialize["ai_disclosures"] = o.AiDisclosures
 	}
 	if !IsNil(o.MainImage) {
 		toSerialize["main_image"] = o.MainImage

@@ -17,6 +17,7 @@ class CatalogsItemValidationDetails {
     required this.providedValue,
   });
 
+  /// Attribute that has a validation issue.
   NullableCatalogsItemFieldType? attributeName;
 
   /// Provided value that caused the validation issue.
@@ -62,10 +63,8 @@ class CatalogsItemValidationDetails {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsItemValidationDetails[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsItemValidationDetails[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'attribute_name'), 'Required key "CatalogsItemValidationDetails[attribute_name]" is missing from JSON.');
+        assert(json.containsKey(r'provided_value'), 'Required key "CatalogsItemValidationDetails[provided_value]" is missing from JSON.');
         return true;
       }());
 

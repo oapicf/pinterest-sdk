@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The type of OAuth grant being requested.",
+  "name": "TokenGrantType",
+  "symbols": [
+    "authorization_code",
+    "refresh_token",
+    "client_credentials"
+  ]
+}

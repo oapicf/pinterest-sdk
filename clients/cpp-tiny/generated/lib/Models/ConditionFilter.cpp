@@ -65,7 +65,7 @@ ConditionFilter::getCONDITION()
 }
 
 void
-ConditionFilter::setCONDITION(CatalogsProductGroupMultipleStringCriteria  cONDITION)
+ConditionFilter::setCONDITION(CatalogsProductGroupMultipleStringCriteria cONDITION)
 {
 	this->cONDITION = cONDITION;
 }

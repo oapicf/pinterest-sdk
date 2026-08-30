@@ -25,7 +25,7 @@ services:
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 
 ### Example Implementation
 ```php
@@ -87,11 +87,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **searchUserBoardsGet**
-> OpenAPI\Server\Model\SearchUserBoardsGet200Response searchUserBoardsGet($adAccountId, $bookmark, $pageSize, $query)
+> OpenAPI\Server\Model\BoardsList200Response searchUserBoardsGet($adAccountId, $query, $bookmark, $pageSize)
 
 Search user's boards
 
-Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example Implementation
 ```php
@@ -126,7 +126,7 @@ class SearchApi implements SearchApiInterface
     /**
      * Implementation of SearchApiInterface#searchUserBoardsGet
      */
-    public function searchUserBoardsGet(?string $adAccountId, ?string $bookmark, int $pageSize, ?string $query, int &$responseCode, array &$responseHeaders): array|object|null
+    public function searchUserBoardsGet(?string $adAccountId, ?string $query, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -140,13 +140,13 @@ class SearchApi implements SearchApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
- **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **query** | **string**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional]
+ **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**OpenAPI\Server\Model\SearchUserBoardsGet200Response**](../Model/SearchUserBoardsGet200Response.md)
+[**OpenAPI\Server\Model\BoardsList200Response**](../Model/BoardsList200Response.md)
 
 ### Authorization
 
@@ -160,11 +160,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **searchUserPinsList**
-> OpenAPI\Server\Model\SearchUserPinsList200Response searchUserPinsList($query, $adAccountId, $bookmark)
+> OpenAPI\Server\Model\PinsList200Response searchUserPinsList($query, $adAccountId, $bookmark)
 
 Search user's Pins
 
-Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example Implementation
 ```php
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OpenAPI\Server\Model\SearchUserPinsList200Response**](../Model/SearchUserPinsList200Response.md)
+[**OpenAPI\Server\Model\PinsList200Response**](../Model/PinsList200Response.md)
 
 ### Authorization
 

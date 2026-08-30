@@ -7,22 +7,20 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open BusinessAccessRelationshipsApiHandlerParams
 open BusinessAccessRelationshipsApiServiceInterface
 open BusinessAccessRelationshipsApiServiceImplementation
-open OpenAPI.Model.BrandAccountsCreate200Response
-open OpenAPI.Model.BrandAccountsCreateRequest
-open OpenAPI.Model.BrandAccountsUpdateRequest
-open OpenAPI.Model.DeletePartnersRequest
-open OpenAPI.Model.DeletePartnersResponse
-open OpenAPI.Model.DeletedMembersResponse
-open OpenAPI.Model.Error
+open OpenAPI.Model.BrandAccount
+open OpenAPI.Model.BrandAccountCreate
+open OpenAPI.Model.BrandAccountUpdate
+open OpenAPI.Model.BusinessMembershipMember
+open OpenAPI.Model.DeleteBusinessMembership200Response
+open OpenAPI.Model.DeleteBusinessMembershipBody
+open OpenAPI.Model.DeleteBusinessPartners
+open OpenAPI.Model.DeleteBusinessPartnersDelete
 open OpenAPI.Model.GetBusinessEmployers200Response
-open OpenAPI.Model.GetBusinessMembers200Response
-open OpenAPI.Model.GetBusinessPartners200Response
 open OpenAPI.Model.MemberBusinessRole
-open OpenAPI.Model.MembersToDeleteBody
 open OpenAPI.Model.PartnerType
-open OpenAPI.Model.SystemUserUpdateRequest
-open OpenAPI.Model.UpdateMemberBusinessRoleBody
-open OpenAPI.Model.UpdateMemberResultsResponseArray
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.SystemUserUpdateWithRequiredBody
+open OpenAPI.Model.UpdateBusinessMembershipsResponse
 
 module BusinessAccessRelationshipsApiHandler =
 
@@ -45,8 +43,18 @@ module BusinessAccessRelationshipsApiHandler =
           return! (match result with
                       | BrandAccountsCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BrandAccountsCreateStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
                       | BrandAccountsCreateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | BrandAccountsCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BrandAccountsCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BrandAccountsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BrandAccountsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BrandAccountsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -144,6 +152,16 @@ module BusinessAccessRelationshipsApiHandler =
           return! (match result with
                       | GetBusinessEmployersStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | GetBusinessEmployersStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | GetBusinessEmployersStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | GetBusinessEmployersStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | GetBusinessEmployersStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | GetBusinessEmployersStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | GetBusinessEmployersDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -164,6 +182,16 @@ module BusinessAccessRelationshipsApiHandler =
           return! (match result with
                       | GetBusinessMembersStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | GetBusinessMembersStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | GetBusinessMembersStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | GetBusinessMembersStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | GetBusinessMembersStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | GetBusinessMembersStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | GetBusinessMembersDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -184,6 +212,16 @@ module BusinessAccessRelationshipsApiHandler =
           return! (match result with
                       | GetBusinessPartnersStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | GetBusinessPartnersStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | GetBusinessPartnersStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | GetBusinessPartnersStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | GetBusinessPartnersStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | GetBusinessPartnersStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | GetBusinessPartnersDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -207,6 +245,14 @@ module BusinessAccessRelationshipsApiHandler =
                             setStatusCode 200 >=> text resolved.content
                       | SystemUserUpdateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | SystemUserUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | SystemUserUpdateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | SystemUserUpdateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | SystemUserUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | SystemUserUpdateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -228,6 +274,16 @@ module BusinessAccessRelationshipsApiHandler =
           return! (match result with
                       | UpdateBusinessMembershipsStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | UpdateBusinessMembershipsStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | UpdateBusinessMembershipsStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | UpdateBusinessMembershipsStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | UpdateBusinessMembershipsStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | UpdateBusinessMembershipsStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | UpdateBusinessMembershipsDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

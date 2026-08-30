@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -19,13 +19,14 @@ type BoardWithUpdatePrivacyUpdate struct {
 
 	Description *string `json:"description,omitempty"`
 
-	//      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+	//     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
 	Name string `json:"name,omitempty"`
 
 	Privacy BoardUpdatePrivacy `json:"privacy,omitempty"`
 }
 
-// AssertBoardWithUpdatePrivacyUpdateRequired checks if the required fields are not zero-ed
+// AssertBoardWithUpdatePrivacyUpdateRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertBoardWithUpdatePrivacyUpdateRequired(obj BoardWithUpdatePrivacyUpdate) error {
 	return nil
 }

@@ -14,12 +14,12 @@ Method | HTTP request | Description
 
 Create customer list upload
 
-<a href="/docs/getting-started/using-beta-and-restricted-features/" target="_blank">Closed beta</a>
+Create a customer list upload request for multipart S3 upload.
 
-<p>Create a customer list upload request for multipart S3 upload.</p>
-<p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0.
-Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p>
-<p><b>Please review the <u><a href="/docs/api/v5/customer_lists-update/" target="_blank">update customer list endpoint</a></u> documentation for additional information.</b></p>
+Note: Each part must be at least 5mb; however the last part can be any size greater than 0.
+Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.
+
+**Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 
 ### Example
 
@@ -49,9 +49,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.CustomerListUploadsApi(api_client)
-    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    customer_list_id = 'customer_list_id_example' # str | Unique identifier of a customer list
-    customer_list_upload_create_request = pinterestsdk.CustomerListUploadCreateRequest() # CustomerListUploadCreateRequest | Parameters to create a customer list upload request
+    ad_account_id = 'ad_account_id_example' # str | 
+    customer_list_id = 'customer_list_id_example' # str | Customer list ID.
+    customer_list_upload_create_request = pinterestsdk.CustomerListUploadCreateRequest() # CustomerListUploadCreateRequest | 
 
     try:
         # Create customer list upload
@@ -69,9 +69,9 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **customer_list_id** | **str**| Unique identifier of a customer list | 
- **customer_list_upload_create_request** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)| Parameters to create a customer list upload request | 
+ **ad_account_id** | **str**|  | 
+ **customer_list_id** | **str**| Customer list ID. | 
+ **customer_list_upload_create_request** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)|  | 
 
 ### Return type
 
@@ -90,18 +90,22 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_list_uploads_get**
-> CustomerListUploadResponse customer_list_uploads_get(ad_account_id, customer_list_id, customer_list_upload_id)
+> CustomerListUpload customer_list_uploads_get(ad_account_id, customer_list_id, customer_list_upload_id)
 
 Get customer list upload
 
-<a href="/docs/getting-started/using-beta-and-restricted-features/" target="_blank">Closed beta</a>
-<p>Get the metadata for a given upload by its ID.</p>
+Get the metadata for a given upload by its ID.
 
 ### Example
 
@@ -109,7 +113,7 @@ Get customer list upload
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.customer_list_upload_response import CustomerListUploadResponse
+from pinterestsdk.models.customer_list_upload import CustomerListUpload
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -130,9 +134,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.CustomerListUploadsApi(api_client)
-    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    customer_list_id = 'customer_list_id_example' # str | Unique identifier of a customer list
-    customer_list_upload_id = 'customer_list_upload_id_example' # str | Unique identifier of a customer list upload
+    ad_account_id = 'ad_account_id_example' # str | 
+    customer_list_id = 'customer_list_id_example' # str | Customer list ID.
+    customer_list_upload_id = 'customer_list_upload_id_example' # str | Customer List Upload ID.
 
     try:
         # Get customer list upload
@@ -150,13 +154,13 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **customer_list_id** | **str**| Unique identifier of a customer list | 
- **customer_list_upload_id** | **str**| Unique identifier of a customer list upload | 
+ **ad_account_id** | **str**|  | 
+ **customer_list_id** | **str**| Customer list ID. | 
+ **customer_list_upload_id** | **str**| Customer List Upload ID. | 
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 
@@ -171,18 +175,22 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_list_uploads_run**
-> CustomerListUploadResponse customer_list_uploads_run(ad_account_id, customer_list_id, customer_list_upload_id)
+> CustomerListUpload customer_list_uploads_run(ad_account_id, customer_list_id, customer_list_upload_id)
 
 Run customer list upload
 
-<a href="/docs/getting-started/using-beta-and-restricted-features/" target="_blank">Closed beta</a>
-<p>Begin processing a customer list upload.</p>
+Begin processing a customer list upload.
 
 ### Example
 
@@ -190,7 +198,7 @@ Run customer list upload
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.customer_list_upload_response import CustomerListUploadResponse
+from pinterestsdk.models.customer_list_upload import CustomerListUpload
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -211,9 +219,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.CustomerListUploadsApi(api_client)
-    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    customer_list_id = 'customer_list_id_example' # str | Unique identifier of a customer list
-    customer_list_upload_id = 'customer_list_upload_id_example' # str | Unique identifier of a customer list upload
+    ad_account_id = 'ad_account_id_example' # str | 
+    customer_list_id = 'customer_list_id_example' # str | Customer list ID.
+    customer_list_upload_id = 'customer_list_upload_id_example' # str | Customer List Upload ID.
 
     try:
         # Run customer list upload
@@ -231,13 +239,13 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **customer_list_id** | **str**| Unique identifier of a customer list | 
- **customer_list_upload_id** | **str**| Unique identifier of a customer list upload | 
+ **ad_account_id** | **str**|  | 
+ **customer_list_id** | **str**| Customer list ID. | 
+ **customer_list_upload_id** | **str**| Customer List Upload ID. | 
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 
@@ -252,8 +260,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

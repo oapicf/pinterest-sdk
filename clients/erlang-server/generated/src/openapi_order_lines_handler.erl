@@ -7,7 +7,7 @@ Get order line.
 Get a specific existing order line associated with an ad account.
 
 - `GET` to `/ad_accounts/:ad_account_id/order_lines`, OperationId: `order_lines/list`:
-Get order lines.
+Get order lines..
 List existing order lines associated with an ad account.
 
 """.
@@ -34,7 +34,7 @@ List existing order lines associated with an ad account.
 
 -type operation_id() ::
     'order_lines/get' %% Get order line
-    | 'order_lines/list'. %% Get order lines
+    | 'order_lines/list'. %% Get order lines.
 
 
 -record(state,

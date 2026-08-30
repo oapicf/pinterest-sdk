@@ -9,9 +9,15 @@ module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            ...AdvancedAuctionBidOptions.fields(`${keyPrefix}bid_options`, isInput),
             {
                 key: `${keyPrefix}country`,
                 ...Country.fields(`${keyPrefix}country`, isInput),
+            },
+            {
+                key: `${keyPrefix}errors`,
+                label: `[${labelPrefix}errors]`,
+                children: AdvancedAuctionOperationError.fields(`${keyPrefix}errors${!isInput ? '[]' : ''}`, isInput, true), 
             },
             {
                 key: `${keyPrefix}item_id`,
@@ -23,11 +29,14 @@ module.exports = {
                 key: `${keyPrefix}language`,
                 ...Language.fields(`${keyPrefix}language`, isInput),
             },
-            ...AdvancedAuctionBidOptions.fields(`${keyPrefix}bid_options`, isInput),
             {
-                key: `${keyPrefix}errors`,
-                label: `[${labelPrefix}errors]`,
-                children: AdvancedAuctionOperationError.fields(`${keyPrefix}errors${!isInput ? '[]' : ''}`, isInput, true), 
+                key: `${keyPrefix}operation`,
+                label: `[${labelPrefix}operation]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'UPSERT',
+                ],
             },
             {
                 key: `${keyPrefix}update_mask`,
@@ -40,11 +49,12 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'bid_options': utils.removeIfEmpty(AdvancedAuctionBidOptions.mapping(bundle, `${keyPrefix}bid_options`)),
             'country': bundle.inputData?.[`${keyPrefix}country`],
+            'errors': utils.childMapping(bundle.inputData?.[`${keyPrefix}errors`], `${keyPrefix}errors`, AdvancedAuctionOperationError),
             'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'language': bundle.inputData?.[`${keyPrefix}language`],
-            'bid_options': utils.removeIfEmpty(AdvancedAuctionBidOptions.mapping(bundle, `${keyPrefix}bid_options`)),
-            'errors': utils.childMapping(bundle.inputData?.[`${keyPrefix}errors`], `${keyPrefix}errors`, AdvancedAuctionOperationError),
+            'operation': bundle.inputData?.[`${keyPrefix}operation`],
             'update_mask': utils.childMapping(bundle.inputData?.[`${keyPrefix}update_mask`], `${keyPrefix}update_mask`, UpdateMaskBidOptionField),
         }
     },

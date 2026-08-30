@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -30,21 +30,24 @@ type TargetingSpec struct {
 	AUDIENCE_INCLUDE []string `json:"AUDIENCE_INCLUDE,omitempty"`
 	// Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
 	GENDER []TargetingSpecGender `json:"GENDER,omitempty"`
-	// Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).
+	// Region codes or postal codes to include for targeting.<br /><br /> Region codes represent broader geographical areas. Example: <code>US-CA</code> is the region code for California in the United States.<br /><br /> Postal codes represent more granular, specific areas. Example: <code>94103</code> is a postal code for a specifc area in San Francisco, California, U.S.A.<br /><br /> For each ad group, use only one of these methods, depending on which fits your targeting needs. Do not use both. For example, either specify a broader region code like <code>US-CA</code> or a more granular postal code within that regon, such as <code>94103</code>.<br /><br /> You can specify multiple region codes or postal codes in an array, depending on which method you choose.<br /><br /> Precede a region code array with the <code>region_codes</code> key and a postal code value with the <code>postal_codes</code> key. Examples:<br /><br /> <code>\"geo\": {</code><br /> <code>\"region_codes\": [\"US-CA\"]</code><br /> <code>}</code><br /><br /> <code>\"geo\": {</code><br /> <code>\"postal_codes\": [\"94103\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code>. <br /><br /> If you do not specifiy a <code>GEO</code> code, only <code>LOCATION</code> values will be targeted (See <code>LOCATION</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>.
 	GEO []string `json:"GEO,omitempty"`
+	// Region codes or postal codes to exclude from the targeting inclusion area.<br /><br /> See <code>GEO</code> parameter in this targeting spec for rules, syntax, and other information.<br />
+	GEO_EXCLUDE []string `json:"GEO_EXCLUDE,omitempty"`
 	// Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.
 	INTEREST []string `json:"INTEREST,omitempty"`
 	// 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
 	LOCALE []string `json:"LOCALE,omitempty"`
-	// 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+	// Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to include for targeting.<br /><br /> Precede country code values with the <code>country_codes</code> key and metro code values with <code>metro_codes</code> key. Example:<br /><br /> <code>\"location\": {</code><br /> <code>\"country_codes\": [\"US\", \"CA\"],</code><br /> <code>\"metro_codes\": [\"501\", \"602\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code> code. <br /><br /> If you do not specify a <code>LOCATION</code> code, only <code>GEO</code> values will be targeted (See <code>GEO</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>.
 	LOCATION []string `json:"LOCATION,omitempty"`
+	// Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to exclude from targeting.<br /><br /> See <code>LOCATION</code> parameter in this targeting spec for rules, syntax, and other information.
+	LOCATION_EXCLUDE []string `json:"LOCATION_EXCLUDE,omitempty"`
 	// Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
-	MAXIMUM_AGE *string `json:"MAXIMUM_AGE,omitempty" validate:"regexp=^\\\\d+\\\\+?$"`
+	MAXIMUM_AGE *string `json:"MAXIMUM_AGE,omitempty" validate:"regexp=^\\d+\\+?$"`
 	// Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
-	MINIMUM_AGE *string `json:"MINIMUM_AGE,omitempty" validate:"regexp=^\\\\d+$"`
+	MINIMUM_AGE *string `json:"MINIMUM_AGE,omitempty" validate:"regexp=^\\d+$"`
 	// Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
 	SHOPPING_RETARGETING []TargetingSpecShoppingRetargeting `json:"SHOPPING_RETARGETING,omitempty"`
-	// 
 	TARGETING_STRATEGY []string `json:"TARGETING_STRATEGY,omitempty"`
 }
 
@@ -263,6 +266,38 @@ func (o *TargetingSpec) SetGEO(v []string) {
 	o.GEO = v
 }
 
+// GetGEO_EXCLUDE returns the GEO_EXCLUDE field value if set, zero value otherwise.
+func (o *TargetingSpec) GetGEO_EXCLUDE() []string {
+	if o == nil || IsNil(o.GEO_EXCLUDE) {
+		var ret []string
+		return ret
+	}
+	return o.GEO_EXCLUDE
+}
+
+// GetGEO_EXCLUDEOk returns a tuple with the GEO_EXCLUDE field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetingSpec) GetGEO_EXCLUDEOk() ([]string, bool) {
+	if o == nil || IsNil(o.GEO_EXCLUDE) {
+		return nil, false
+	}
+	return o.GEO_EXCLUDE, true
+}
+
+// HasGEO_EXCLUDE returns a boolean if a field has been set.
+func (o *TargetingSpec) HasGEO_EXCLUDE() bool {
+	if o != nil && !IsNil(o.GEO_EXCLUDE) {
+		return true
+	}
+
+	return false
+}
+
+// SetGEO_EXCLUDE gets a reference to the given []string and assigns it to the GEO_EXCLUDE field.
+func (o *TargetingSpec) SetGEO_EXCLUDE(v []string) {
+	o.GEO_EXCLUDE = v
+}
+
 // GetINTEREST returns the INTEREST field value if set, zero value otherwise.
 func (o *TargetingSpec) GetINTEREST() []string {
 	if o == nil || IsNil(o.INTEREST) {
@@ -359,6 +394,38 @@ func (o *TargetingSpec) HasLOCATION() bool {
 // SetLOCATION gets a reference to the given []string and assigns it to the LOCATION field.
 func (o *TargetingSpec) SetLOCATION(v []string) {
 	o.LOCATION = v
+}
+
+// GetLOCATION_EXCLUDE returns the LOCATION_EXCLUDE field value if set, zero value otherwise.
+func (o *TargetingSpec) GetLOCATION_EXCLUDE() []string {
+	if o == nil || IsNil(o.LOCATION_EXCLUDE) {
+		var ret []string
+		return ret
+	}
+	return o.LOCATION_EXCLUDE
+}
+
+// GetLOCATION_EXCLUDEOk returns a tuple with the LOCATION_EXCLUDE field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetingSpec) GetLOCATION_EXCLUDEOk() ([]string, bool) {
+	if o == nil || IsNil(o.LOCATION_EXCLUDE) {
+		return nil, false
+	}
+	return o.LOCATION_EXCLUDE, true
+}
+
+// HasLOCATION_EXCLUDE returns a boolean if a field has been set.
+func (o *TargetingSpec) HasLOCATION_EXCLUDE() bool {
+	if o != nil && !IsNil(o.LOCATION_EXCLUDE) {
+		return true
+	}
+
+	return false
+}
+
+// SetLOCATION_EXCLUDE gets a reference to the given []string and assigns it to the LOCATION_EXCLUDE field.
+func (o *TargetingSpec) SetLOCATION_EXCLUDE(v []string) {
+	o.LOCATION_EXCLUDE = v
 }
 
 // GetMAXIMUM_AGE returns the MAXIMUM_AGE field value if set, zero value otherwise.
@@ -519,6 +586,9 @@ func (o TargetingSpec) ToMap() (map[string]interface{}, error) {
 	if o.GEO != nil {
 		toSerialize["GEO"] = o.GEO
 	}
+	if !IsNil(o.GEO_EXCLUDE) {
+		toSerialize["GEO_EXCLUDE"] = o.GEO_EXCLUDE
+	}
 	if !IsNil(o.INTEREST) {
 		toSerialize["INTEREST"] = o.INTEREST
 	}
@@ -527,6 +597,9 @@ func (o TargetingSpec) ToMap() (map[string]interface{}, error) {
 	}
 	if o.LOCATION != nil {
 		toSerialize["LOCATION"] = o.LOCATION
+	}
+	if !IsNil(o.LOCATION_EXCLUDE) {
+		toSerialize["LOCATION_EXCLUDE"] = o.LOCATION_EXCLUDE
 	}
 	if !IsNil(o.MAXIMUM_AGE) {
 		toSerialize["MAXIMUM_AGE"] = o.MAXIMUM_AGE

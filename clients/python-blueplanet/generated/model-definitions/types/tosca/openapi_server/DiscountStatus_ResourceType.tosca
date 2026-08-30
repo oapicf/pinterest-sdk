@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DiscountStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DiscountStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  DiscountStatus {
+    title = DiscountStatus
+    description = DiscountStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  DiscountStatus {
+    title = DiscountStatus
+    description = DiscountStatus
+    implements = openapi_server.resourceTypes.DiscountStatus
+
+  }
+}

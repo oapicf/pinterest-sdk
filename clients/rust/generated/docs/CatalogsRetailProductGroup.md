@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **String** | Catalog id pertaining to the retail product group. | 
-**catalog_type** | **String** |  | 
+**catalog_id** | **String** | Catalog ID pertaining to the product group. | 
+**catalog_type** | **CatalogType** |  (enum: RETAIL) | 
 **country** | Option<**String**> |  | [optional]
 **created_at** | Option<**i32**> | Unix timestamp in seconds of when catalog product group was created. | [optional]
 **description** | Option<**String**> |  | [optional]

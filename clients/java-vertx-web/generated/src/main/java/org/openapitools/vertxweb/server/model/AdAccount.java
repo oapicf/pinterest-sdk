@@ -23,13 +23,14 @@ public class AdAccount   {
   private String name;
   private AdAccountOwner owner;
   private List<BusinessAccessRole> permissions = new ArrayList<>();
+  private String timeZone;
   private Integer updatedTime;
 
   public AdAccount () {
 
   }
 
-  public AdAccount (Country country, Integer createdTime, Currency currency, String id, String name, AdAccountOwner owner, List<BusinessAccessRole> permissions, Integer updatedTime) {
+  public AdAccount (Country country, Integer createdTime, Currency currency, String id, String name, AdAccountOwner owner, List<BusinessAccessRole> permissions, String timeZone, Integer updatedTime) {
     this.country = country;
     this.createdTime = createdTime;
     this.currency = currency;
@@ -37,6 +38,7 @@ public class AdAccount   {
     this.name = name;
     this.owner = owner;
     this.permissions = permissions;
+    this.timeZone = timeZone;
     this.updatedTime = updatedTime;
   }
 
@@ -104,6 +106,15 @@ public class AdAccount   {
   }
 
     
+  @JsonProperty("time_zone")
+  public String getTimeZone() {
+    return timeZone;
+  }
+  public void setTimeZone(String timeZone) {
+    this.timeZone = timeZone;
+  }
+
+    
   @JsonProperty("updated_time")
   public Integer getUpdatedTime() {
     return updatedTime;
@@ -129,12 +140,13 @@ public class AdAccount   {
         Objects.equals(name, adAccount.name) &&
         Objects.equals(owner, adAccount.owner) &&
         Objects.equals(permissions, adAccount.permissions) &&
+        Objects.equals(timeZone, adAccount.timeZone) &&
         Objects.equals(updatedTime, adAccount.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, createdTime, currency, id, name, owner, permissions, updatedTime);
+    return Objects.hash(country, createdTime, currency, id, name, owner, permissions, timeZone, updatedTime);
   }
 
   @Override
@@ -149,6 +161,7 @@ public class AdAccount   {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
+    sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -159,9 +172,6 @@ public class AdAccount   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

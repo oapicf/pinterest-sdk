@@ -27,7 +27,7 @@ Create a request to access an existing partner&#39;s assets with the specified p
 //import org.openapitools.client.models.*
 
 val apiInstance = BusinessAccessInviteApi()
-val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
+val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
 val createAssetAccessRequestBody : CreateAssetAccessRequestBody =  // CreateAssetAccessRequestBody | 
 try {
     val result : CreateAssetAccessRequestResponse = apiInstance.assetAccessRequestsCreate(businessId, createAssetAccessRequestBody)
@@ -54,8 +54,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -64,7 +70,7 @@ Configure pinterest_oauth2:
 
 <a id="cancelInvitesOrRequests"></a>
 # **cancelInvitesOrRequests**
-> DeleteInvitesResultsResponseArray cancelInvitesOrRequests(businessId, cancelInvitesBody)
+> CancelInvitesResponse cancelInvitesOrRequests(businessId, cancelInvitesRequest)
 
 Cancel invites/requests
 
@@ -77,10 +83,10 @@ Cancel membership/partnership invites and/or requests.
 //import org.openapitools.client.models.*
 
 val apiInstance = BusinessAccessInviteApi()
-val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-val cancelInvitesBody : CancelInvitesBody =  // CancelInvitesBody | A list with invite ids
+val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+val cancelInvitesRequest : CancelInvitesRequest =  // CancelInvitesRequest | 
 try {
-    val result : DeleteInvitesResultsResponseArray = apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesBody)
+    val result : CancelInvitesResponse = apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesRequest)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BusinessAccessInviteApi#cancelInvitesOrRequests")
@@ -95,17 +101,23 @@ try {
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cancelInvitesBody** | [**CancelInvitesBody**](CancelInvitesBody.md)| A list with invite ids | |
+| **cancelInvitesRequest** | [**CancelInvitesRequest**](CancelInvitesRequest.md)|  | |
 
 ### Return type
 
-[**DeleteInvitesResultsResponseArray**](DeleteInvitesResultsResponseArray.md)
+[**CancelInvitesResponse**](CancelInvitesResponse.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -127,8 +139,8 @@ Assign asset permissions information to an existing invite/request. Can be used 
 //import org.openapitools.client.models.*
 
 val apiInstance = BusinessAccessInviteApi()
-val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-val createAssetInvitesRequest : CreateAssetInvitesRequest =  // CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+val createAssetInvitesRequest : CreateAssetInvitesRequest =  // CreateAssetInvitesRequest | 
 try {
     val result : UpdateInvitesResultsResponseArray = apiInstance.createAssetInvites(businessId, createAssetInvitesRequest)
     println(result)
@@ -145,7 +157,7 @@ try {
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md)| A list of invites/requests together with the asset permissions to be assigned to the invite/request.  | |
+| **createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md)|  | |
 
 ### Return type
 
@@ -154,8 +166,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -177,8 +195,8 @@ Create batch invites or requests. Can create batch invites or requests as descri
 //import org.openapitools.client.models.*
 
 val apiInstance = BusinessAccessInviteApi()
-val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-val createMembershipOrPartnershipInvitesBody : CreateMembershipOrPartnershipInvitesBody =  // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
+val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+val createMembershipOrPartnershipInvitesBody : CreateMembershipOrPartnershipInvitesBody =  // CreateMembershipOrPartnershipInvitesBody | 
 try {
     val result : CreateInvitesResultsResponseArray = apiInstance.createMembershipOrPartnershipInvites(businessId, createMembershipOrPartnershipInvitesBody)
     println(result)
@@ -195,7 +213,7 @@ try {
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | |
+| **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)|  | |
 
 ### Return type
 
@@ -204,8 +222,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -227,12 +251,12 @@ Get the membership/partnership invites and/or requests for the authorized user.
 //import org.openapitools.client.models.*
 
 val apiInstance = BusinessAccessInviteApi()
-val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
+val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
 val isMember : kotlin.Boolean = true // kotlin.Boolean | A boolean field to indicate whether the invite is to create a partnership or a membership.
-val inviteStatus : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
+val inviteStatus : kotlin.collections.List<InviteFilterStatus> =  // kotlin.collections.List<InviteFilterStatus> | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
 val inviteType : InviteType =  // InviteType | Invite type to filter invites by. Only invites of the specified type will be returned.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
     val result : GetInvites200Response = apiInstance.getInvites(businessId, isMember, inviteStatus, inviteType, bookmark, pageSize)
     println(result)
@@ -248,12 +272,12 @@ try {
 ### Parameters
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **isMember** | **kotlin.Boolean**| A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional] [default to true] |
-| **inviteStatus** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] [enum: PENDING, EXPIRED] |
+| **inviteStatus** | [**kotlin.collections.List&lt;InviteFilterStatus&gt;**](InviteFilterStatus.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] |
 | **inviteType** | [**InviteType**](.md)| Invite type to filter invites by. Only invites of the specified type will be returned. | [optional] [enum: MEMBER_INVITE, PARTNER_INVITE, PARTNER_REQUEST] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -262,8 +286,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -310,8 +340,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

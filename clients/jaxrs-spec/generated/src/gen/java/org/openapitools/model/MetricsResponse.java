@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.MetricsResponseDataItems;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,33 +20,33 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("MetricsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class MetricsResponse   {
-  private @Valid List<Object> data = new ArrayList<>();
+  private @Valid List<@Valid MetricsResponseDataItems> data = new ArrayList<>();
 
   public MetricsResponse() {
   }
 
   /**
    **/
-  public MetricsResponse data(List<Object> data) {
+  public MetricsResponse data(List<@Valid MetricsResponseDataItems> data) {
     this.data = data;
     return this;
   }
 
   
-  @ApiModelProperty(example = "[{\"targeting_type\":\"KEYWORD\",\"targeting_value\":\"christmas decor ideas\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"iphone\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"ipad\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"web\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"web_mobile\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"android_mobile\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"android_tablet\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"GENDER\",\"targeting_value\":\"female\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"LOCATION\",\"targeting_value\":500,\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"PLACEMENT\",\"targeting_value\":\"SEARCH\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"COUNTRY\",\"targeting_value\":\"US\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"TARGETED_INTEREST\",\"targeting_value\":\"Food and Drinks\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"PINNER_INTEREST\",\"targeting_value\":\"Chocolate Cookies\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"AUDIENCE_INCLUDE\",\"targeting_value\":254261234567,\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"GEO\",\"targeting_value\":\"US:94102\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"AGE_BUCKET\",\"targeting_value\":\"45-49\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"REGION\",\"targeting_value\":\"US-CA\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}}]", value = "")
+  @ApiModelProperty(example = "[{\"targeting_type\":\"KEYWORD\",\"targeting_value\":\"christmas decor ideas\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"iphone\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"ipad\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"web\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"web_mobile\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"android_mobile\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"android_tablet\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"GENDER\",\"targeting_value\":\"female\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"LOCATION\",\"targeting_value\":\"500\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"PLACEMENT\",\"targeting_value\":\"SEARCH\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"COUNTRY\",\"targeting_value\":\"US\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"TARGETED_INTEREST\",\"targeting_value\":\"Food and Drinks\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"PINNER_INTEREST\",\"targeting_value\":\"Chocolate Cookies\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"AUDIENCE_INCLUDE\",\"targeting_value\":\"254261234567\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"GEO\",\"targeting_value\":\"US:94102\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"AGE_BUCKET\",\"targeting_value\":\"45-49\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"REGION\",\"targeting_value\":\"US-CA\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}}]", value = "")
   @JsonProperty("data")
-  public List<Object> getData() {
+  @Valid public List<@Valid MetricsResponseDataItems> getData() {
     return data;
   }
 
   @JsonProperty("data")
-  public void setData(List<Object> data) {
+  public void setData(List<@Valid MetricsResponseDataItems> data) {
     this.data = data;
   }
 
-  public MetricsResponse addDataItem(Object dataItem) {
+  public MetricsResponse addDataItem(MetricsResponseDataItems dataItem) {
     if (this.data == null) {
       this.data = new ArrayList<>();
     }
@@ -54,7 +55,7 @@ public class MetricsResponse   {
     return this;
   }
 
-  public MetricsResponse removeDataItem(Object dataItem) {
+  public MetricsResponse removeDataItem(MetricsResponseDataItems dataItem) {
     if (dataItem != null && this.data != null) {
       this.data.remove(dataItem);
     }
@@ -94,12 +95,8 @@ public class MetricsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

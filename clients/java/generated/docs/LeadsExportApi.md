@@ -10,11 +10,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="leadsExportCreate"></a>
 # **leadsExportCreate**
-> LeadsExportCreateResponse leadsExportCreate(adAccountId, leadsExportCreateRequest)
+> LeadsExports leadsExportCreate(adAccountId, leadsExportsCreate)
 
 Create a request to export leads collected from a lead ad
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps. If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a &#x60;leads_export_id&#x60; token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```java
@@ -37,9 +37,9 @@ public class Example {
 
     LeadsExportApi apiInstance = new LeadsExportApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    LeadsExportCreateRequest leadsExportCreateRequest = new LeadsExportCreateRequest(); // LeadsExportCreateRequest | 
+    LeadsExportsCreate leadsExportsCreate = new LeadsExportsCreate(); // LeadsExportsCreate | 
     try {
-      LeadsExportCreateResponse result = apiInstance.leadsExportCreate(adAccountId, leadsExportCreateRequest);
+      LeadsExports result = apiInstance.leadsExportCreate(adAccountId, leadsExportsCreate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LeadsExportApi#leadsExportCreate");
@@ -57,11 +57,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **leadsExportCreateRequest** | [**LeadsExportCreateRequest**](LeadsExportCreateRequest.md)|  | |
+| **leadsExportsCreate** | [**LeadsExportsCreate**](LeadsExportsCreate.md)|  | |
 
 ### Return type
 
-[**LeadsExportCreateResponse**](LeadsExportCreateResponse.md)
+[**LeadsExports**](LeadsExports.md)
 
 ### Authorization
 
@@ -75,9 +75,14 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="leadsExportGet"></a>
 # **leadsExportGet**
@@ -85,7 +90,7 @@ public class Example {
 
 Get the lead export from the lead export create call
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps. If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```java
@@ -108,7 +113,7 @@ public class Example {
 
     LeadsExportApi apiInstance = new LeadsExportApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    String leadsExportId = "123755885175"; // String | lead_export_id token returned from the create a lead export endpoint
+    String leadsExportId = "leadsExportId_example"; // String | lead_export_id token returned from the create a lead export endpoint
     try {
       LeadsExportResponseData result = apiInstance.leadsExportGet(adAccountId, leadsExportId);
       System.out.println(result);
@@ -146,8 +151,11 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account parameter. |  -  |
-| **404** | Invalid leads export id parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

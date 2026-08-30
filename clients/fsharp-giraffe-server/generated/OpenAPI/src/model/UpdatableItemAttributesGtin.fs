@@ -8,6 +8,6 @@ module UpdatableItemAttributesGtin =
   //#region UpdatableItemAttributesGtin
 
 
-  type UpdatableItemAttributes_gtin = {
+  type UpdatableItemAttributesGtin = {
   }
   //#endregion

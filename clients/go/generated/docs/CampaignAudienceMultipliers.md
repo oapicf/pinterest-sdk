@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AUDIENCE_ID** | Pointer to **string** |  | [optional] 
+**AUDIENCE_ID** | Pointer to **string** | Audience ID for the multiplier. | [optional] 
 
 ## Methods
 

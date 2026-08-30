@@ -18,7 +18,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 # **catalogsProductGroupPinsList**
 > CatalogsProductGroupPinsList200Response catalogsProductGroupPinsList()
 
-Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
@@ -32,17 +32,17 @@ const configuration = new Configuration();
 const apiInstance = new CatalogProductGroupsApi(configuration);
 
 let productGroupId: string; //Unique identifier of a product group (default to undefined)
-let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
-let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
 let adAccountId: string; //Unique identifier of an ad account. (optional) (default to undefined)
 let pinMetrics: boolean; //Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
+let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
+let pageSize: number; //Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 const { status, data } = await apiInstance.catalogsProductGroupPinsList(
     productGroupId,
-    bookmark,
-    pageSize,
     adAccountId,
-    pinMetrics
+    pinMetrics,
+    bookmark,
+    pageSize
 );
 ```
 
@@ -51,10 +51,10 @@ const { status, data } = await apiInstance.catalogsProductGroupPinsList(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **productGroupId** | [**string**] | Unique identifier of a product group | defaults to undefined|
-| **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
-| **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined|
 | **pinMetrics** | [**boolean**] | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | (optional) defaults to false|
+| **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
+| **pageSize** | [**number**] | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | (optional) defaults to 25|
 
 
 ### Return type
@@ -63,7 +63,7 @@ const { status, data } = await apiInstance.catalogsProductGroupPinsList(
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -74,18 +74,20 @@ const { status, data } = await apiInstance.catalogsProductGroupPinsList(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**400** | Invalid parameters. |  -  |
-|**401** | Unauthorized access. |  -  |
-|**404** | Catalogs product group not found. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **catalogsProductGroupsCreate**
-> CatalogsVerticalProductGroup catalogsProductGroupsCreate(multipleProductGroupsInner)
+> CatalogsVerticalProductGroup catalogsProductGroupsCreate(catalogsProductGroupsCreateRequestSchema)
 
-Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
 ### Example
 
@@ -93,17 +95,17 @@ Create product group to use in Catalogs owned by the \"operation user_account\".
 import {
     CatalogProductGroupsApi,
     Configuration,
-    MultipleProductGroupsInner
+    CatalogsProductGroupsCreateRequestSchema
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new CatalogProductGroupsApi(configuration);
 
-let multipleProductGroupsInner: MultipleProductGroupsInner; //Request object used to create a single catalogs product groups.
+let catalogsProductGroupsCreateRequestSchema: CatalogsProductGroupsCreateRequestSchema; //
 let adAccountId: string; //Unique identifier of an ad account. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.catalogsProductGroupsCreate(
-    multipleProductGroupsInner,
+    catalogsProductGroupsCreateRequestSchema,
     adAccountId
 );
 ```
@@ -112,7 +114,7 @@ const { status, data } = await apiInstance.catalogsProductGroupsCreate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **multipleProductGroupsInner** | **MultipleProductGroupsInner**| Request object used to create a single catalogs product groups. | |
+| **catalogsProductGroupsCreateRequestSchema** | **CatalogsProductGroupsCreateRequestSchema**|  | |
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined|
 
 
@@ -133,19 +135,21 @@ const { status, data } = await apiInstance.catalogsProductGroupsCreate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Success |  -  |
-|**400** | Invalid body. |  -  |
-|**401** | Unauthorized access. |  -  |
-|**403** | Forbidden. Account not approved for catalog product group mutations yet. |  -  |
-|**409** | Conflict. Can\&#39;t create this catalogs product group with this value. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**201** | Resource create operation completed successfully. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **catalogsProductGroupsCreateMany**
-> Array<string> catalogsProductGroupsCreateMany(multipleProductGroupsInner)
+> Array<string> catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems)
 
-Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
 ### Example
 
@@ -158,11 +162,11 @@ import {
 const configuration = new Configuration();
 const apiInstance = new CatalogProductGroupsApi(configuration);
 
-let multipleProductGroupsInner: Array<MultipleProductGroupsInner>; //Request object used to create one or more catalogs product groups.
+let catalogsProductGroupsCreateManyRequestItems: Array<CatalogsProductGroupsCreateManyRequestItems>; //
 let adAccountId: string; //Unique identifier of an ad account. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.catalogsProductGroupsCreateMany(
-    multipleProductGroupsInner,
+    catalogsProductGroupsCreateManyRequestItems,
     adAccountId
 );
 ```
@@ -171,7 +175,7 @@ const { status, data } = await apiInstance.catalogsProductGroupsCreateMany(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **multipleProductGroupsInner** | **Array<MultipleProductGroupsInner>**| Request object used to create one or more catalogs product groups. | |
+| **catalogsProductGroupsCreateManyRequestItems** | **Array<CatalogsProductGroupsCreateManyRequestItems>**|  | |
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined|
 
 
@@ -192,19 +196,20 @@ const { status, data } = await apiInstance.catalogsProductGroupsCreateMany(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Success |  -  |
-|**400** | Invalid body. |  -  |
-|**401** | Unauthorized access. |  -  |
-|**403** | Forbidden. Account not approved for catalog product group mutations yet. |  -  |
-|**409** | Conflict. Can\&#39;t create this catalogs product group with this value. |  -  |
-|**0** | Unexpected error. |  -  |
+|**201** | The request has succeeded and a new resource has been created as a result. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **catalogsProductGroupsDelete**
-> catalogsProductGroupsDelete()
+> CatalogsVerticalProductGroup catalogsProductGroupsDelete()
 
-Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
@@ -236,7 +241,7 @@ const { status, data } = await apiInstance.catalogsProductGroupsDelete(
 
 ### Return type
 
-void (empty response body)
+**CatalogsVerticalProductGroup**
 
 ### Authorization
 
@@ -251,20 +256,21 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | Catalogs Product Group deleted successfully. |  -  |
-|**400** | Invalid catalogs product group id parameters. |  -  |
-|**401** | Unauthorized access. |  -  |
-|**403** | Forbidden. Account not approved for catalog product group mutations yet. |  -  |
-|**404** | Catalogs product group not found. |  -  |
-|**409** | Conflict. Can\&#39;t delete this catalogs product group. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**204** | Resource deleted successfully. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **catalogsProductGroupsDeleteMany**
 > catalogsProductGroupsDeleteMany()
 
-Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
@@ -311,19 +317,20 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | Catalogs Product Groups deleted successfully. |  -  |
-|**401** | Unauthorized access. |  -  |
-|**403** | Forbidden. Account not approved for catalog product group mutations yet. |  -  |
-|**404** | Catalogs product group not found. |  -  |
-|**409** | Conflict. Can\&#39;t delete this catalogs product group. |  -  |
-|**0** | Unexpected error. |  -  |
+|**204** | Resource deleted successfully. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **catalogsProductGroupsGet**
 > CatalogsVerticalProductGroup catalogsProductGroupsGet()
 
-Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+Get a single product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
@@ -370,20 +377,20 @@ const { status, data } = await apiInstance.catalogsProductGroupsGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**400** | Invalid catalogs product group id parameters. |  -  |
-|**401** | Unauthorized access. |  -  |
-|**403** | Forbidden. Account not approved for catalog product group mutations yet. |  -  |
-|**404** | Catalogs product group not found. |  -  |
-|**409** | Conflict. Can\&#39;t get a catalogs product group without an existing catalog. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **catalogsProductGroupsList**
 > CatalogsProductGroupsList200Response catalogsProductGroupsList()
 
-Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
@@ -399,17 +406,17 @@ const apiInstance = new CatalogProductGroupsApi(configuration);
 let id: Array<number>; //Comma-separated list of product group ids (optional) (default to undefined)
 let feedId: string; //Filter entities for a given feed_id. If not given, all feeds are considered. (optional) (default to undefined)
 let catalogId: string; //Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional) (default to undefined)
-let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
-let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
 let adAccountId: string; //Unique identifier of an ad account. (optional) (default to undefined)
+let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
+let pageSize: number; //Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 const { status, data } = await apiInstance.catalogsProductGroupsList(
     id,
     feedId,
     catalogId,
+    adAccountId,
     bookmark,
-    pageSize,
-    adAccountId
+    pageSize
 );
 ```
 
@@ -420,9 +427,9 @@ const { status, data } = await apiInstance.catalogsProductGroupsList(
 | **id** | **Array&lt;number&gt;** | Comma-separated list of product group ids | (optional) defaults to undefined|
 | **feedId** | [**string**] | Filter entities for a given feed_id. If not given, all feeds are considered. | (optional) defaults to undefined|
 | **catalogId** | [**string**] | Filter entities for a given catalog_id. If not given, all catalogs are considered. | (optional) defaults to undefined|
-| **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
-| **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined|
+| **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
+| **pageSize** | [**number**] | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | (optional) defaults to 25|
 
 
 ### Return type
@@ -442,20 +449,20 @@ const { status, data } = await apiInstance.catalogsProductGroupsList(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**400** | Invalid feed parameters. |  -  |
-|**401** | Unauthorized access. |  -  |
-|**403** | Forbidden. Account not approved for catalog product group mutations yet. |  -  |
-|**404** | Data feed not found. |  -  |
-|**409** | Conflict. Can\&#39;t create this catalogs product group with this value. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **catalogsProductGroupsProductCountsGet**
 > CatalogsProductGroupProductCountsVertical catalogsProductGroupsProductCountsGet()
 
-Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
@@ -502,17 +509,20 @@ const { status, data } = await apiInstance.catalogsProductGroupsProductCountsGet
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**404** | Product Group Not Found. |  -  |
-|**409** | Can\&#39;t access this feature without an existing catalog. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **catalogsProductGroupsUpdate**
-> CatalogsVerticalProductGroup catalogsProductGroupsUpdate(catalogsProductGroupsUpdateRequest)
+> CatalogsVerticalProductGroup catalogsProductGroupsUpdate(catalogsProductGroupsUpdateRequestSchema)
 
-Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
 ### Example
 
@@ -520,19 +530,19 @@ Update product group owned by the \"operation user_account\" to use in Catalogs.
 import {
     CatalogProductGroupsApi,
     Configuration,
-    CatalogsProductGroupsUpdateRequest
+    CatalogsProductGroupsUpdateRequestSchema
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new CatalogProductGroupsApi(configuration);
 
 let productGroupId: string; //Unique identifier of a product group (default to undefined)
-let catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest; //Request object used to Update a catalogs product group.
+let catalogsProductGroupsUpdateRequestSchema: CatalogsProductGroupsUpdateRequestSchema; //
 let adAccountId: string; //Unique identifier of an ad account. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.catalogsProductGroupsUpdate(
     productGroupId,
-    catalogsProductGroupsUpdateRequest,
+    catalogsProductGroupsUpdateRequestSchema,
     adAccountId
 );
 ```
@@ -541,7 +551,7 @@ const { status, data } = await apiInstance.catalogsProductGroupsUpdate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **catalogsProductGroupsUpdateRequest** | **CatalogsProductGroupsUpdateRequest**| Request object used to Update a catalogs product group. | |
+| **catalogsProductGroupsUpdateRequestSchema** | **CatalogsProductGroupsUpdateRequestSchema**|  | |
 | **productGroupId** | [**string**] | Unique identifier of a product group | defaults to undefined|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined|
 
@@ -563,20 +573,20 @@ const { status, data } = await apiInstance.catalogsProductGroupsUpdate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**400** | Invalid parameters. |  -  |
-|**401** | Unauthorized access. |  -  |
-|**403** | Forbidden. Account not approved for catalog product group mutations yet. |  -  |
-|**404** | Catalogs product group not found. |  -  |
-|**409** | Conflict. Can\&#39;t update this catalogs product group to this value. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **productsByProductGroupFilterList**
 > CatalogsProductGroupPinsList200Response productsByProductGroupFilterList(catalogsListProductsByFilterRequest)
 
-List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href=\'/docs/api-features/shopping-overview/\'>Learn more</a>
+List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
@@ -590,9 +600,9 @@ import {
 const configuration = new Configuration();
 const apiInstance = new CatalogProductGroupsApi(configuration);
 
-let catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest; //Object holding a group of filters for a catalog product group
+let catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest; //
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
-let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize: number; //Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 let adAccountId: string; //Unique identifier of an ad account. (optional) (default to undefined)
 let pinMetrics: boolean; //Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
 
@@ -609,9 +619,9 @@ const { status, data } = await apiInstance.productsByProductGroupFilterList(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **catalogsListProductsByFilterRequest** | **CatalogsListProductsByFilterRequest**| Object holding a group of filters for a catalog product group | |
+| **catalogsListProductsByFilterRequest** | **CatalogsListProductsByFilterRequest**|  | |
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
-| **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
+| **pageSize** | [**number**] | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | (optional) defaults to 25|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined|
 | **pinMetrics** | [**boolean**] | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | (optional) defaults to false|
 
@@ -633,10 +643,13 @@ const { status, data } = await apiInstance.productsByProductGroupFilterList(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**401** | Unauthorized access. |  -  |
-|**409** | Conflict. Can\&#39;t get products. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

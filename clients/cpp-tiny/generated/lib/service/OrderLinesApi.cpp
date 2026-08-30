@@ -10,14 +10,14 @@ using namespace Tiny;
         OrderLinesApi::
         orderLines_get(
             
-            std::string adAccountId
+            std::string orderLineId
             , 
             
-            std::string orderLineId
+            std::string adAccountId
             
         )
         {
-            std::string url = basepath + "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}"; //adAccountId orderLineId 
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}"; //orderLineId adAccountId 
 
 
             // Headers  | 
@@ -28,14 +28,6 @@ using namespace Tiny;
 
 
 
-                std::string s_adAccountId("{");
-                s_adAccountId.append("ad_account_id");
-                s_adAccountId.append("}");
-
-                int pos = url.find(s_adAccountId);
-
-                url.erase(pos, s_adAccountId.length());
-                url.insert(pos, stringify(adAccountId));
                 std::string s_orderLineId("{");
                 s_orderLineId.append("order_line_id");
                 s_orderLineId.append("}");
@@ -44,6 +36,14 @@ using namespace Tiny;
 
                 url.erase(pos, s_orderLineId.length());
                 url.insert(pos, stringify(orderLineId));
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
 
 
             std::string payload = "";
@@ -75,13 +75,13 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
+            std::string bookmark
+            , 
+            
             int pageSize
             , 
             
-            std::string order
-            , 
-            
-            std::string bookmark
+            Pinterest.Lib.PaginationOrder order
             
         )
         {
@@ -90,10 +90,10 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | pageSize order bookmark 
+            // Query    | bookmark pageSize order 
+            addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
             addQueryParam("order",order);
-            addQueryParam("bookmark",bookmark);
 
             // Form     | 
 

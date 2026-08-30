@@ -8,20 +8,30 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.AdShoppingPreviewCreativeType
+import org.openapitools.client.models.BasePreferredMediaType
 import org.openapitools.client.models.CustomizableCTAType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * 
+ * Ad preview from a catalog product group (shopping).
  *
  * @param catalogProductGroupId Catalog Product Group Id.
  * @param creativeType Ad format of the shopping ad preview.
@@ -32,6 +42,7 @@ import com.squareup.moshi.JsonClass
  * @param imageTag Multi image template tag.
  * @param itemId Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING.
  * @param preferredMediaType Preferred media type.
+ * @param showPromotion Include promotion data in preview when available on catalog item. Defaults to false.
  * @param videoTag Multi video template tag, image_tag and video_tag are mutual exclusive.
  */
 
@@ -44,7 +55,7 @@ data class AdPreviewShopping (
 
     /* Ad format of the shopping ad preview. */
     @Json(name = "creative_type")
-    val creativeType: AdPreviewShopping.CreativeType,
+    val creativeType: AdShoppingPreviewCreativeType,
 
     /* Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE` */
     @Json(name = "customizable_cta_type")
@@ -72,7 +83,11 @@ data class AdPreviewShopping (
 
     /* Preferred media type. */
     @Json(name = "preferred_media_type")
-    val preferredMediaType: AdPreviewShopping.PreferredMediaType? = null,
+    val preferredMediaType: BasePreferredMediaType? = null,
+
+    /* Include promotion data in preview when available on catalog item. Defaults to false. */
+    @Json(name = "show_promotion")
+    val showPromotion: kotlin.Boolean? = null,
 
     /* Multi video template tag, image_tag and video_tag are mutual exclusive. */
     @Json(name = "video_tag")
@@ -80,28 +95,6 @@ data class AdPreviewShopping (
 
 ) {
 
-    /**
-     * Ad format of the shopping ad preview.
-     *
-     * Values: SHOPPING,CAROUSEL,COLLECTION,REGULAR
-     */
-    @JsonClass(generateAdapter = false)
-    enum class CreativeType(val value: kotlin.String) {
-        @Json(name = "SHOPPING") SHOPPING("SHOPPING"),
-        @Json(name = "CAROUSEL") CAROUSEL("CAROUSEL"),
-        @Json(name = "COLLECTION") COLLECTION("COLLECTION"),
-        @Json(name = "REGULAR") REGULAR("REGULAR");
-    }
-    /**
-     * Preferred media type.
-     *
-     * Values: VIDEO,IMAGE
-     */
-    @JsonClass(generateAdapter = false)
-    enum class PreferredMediaType(val value: kotlin.String) {
-        @Json(name = "VIDEO") VIDEO("VIDEO"),
-        @Json(name = "IMAGE") IMAGE("IMAGE");
-    }
 
 }
 

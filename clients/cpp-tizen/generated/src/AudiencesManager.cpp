@@ -51,14 +51,14 @@ static gpointer __AudiencesManagerthreadFunc(gpointer data)
 static bool audiencesCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Audience, Error, void* )
-	= reinterpret_cast<void(*)(Audience, Error, void* )> (voidHandler);
+	void(* handler)(AdAccountsAudience, Error, void* )
+	= reinterpret_cast<void(*)(AdAccountsAudience, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Audience out;
+	AdAccountsAudience out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,48 @@ static bool audiencesCreateProcessor(MemoryStruct_s p_chunk, long code, char* er
 
 
 
-		if (isprimitive("Audience")) {
+		if (isprimitive("AdAccountsAudience")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Audience", "Audience");
+			jsonToValue(&out, pJson, "AdAccountsAudience", "AdAccountsAudience");
 			json_node_free(pJson);
 
-			if ("Audience" == "std::string") {
+			if ("AdAccountsAudience" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -109,8 +139,8 @@ static bool audiencesCreateProcessor(MemoryStruct_s p_chunk, long code, char* er
 }
 
 static bool audiencesCreateHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<AudienceCreateRequest> audienceCreateRequest, 
-	void(* handler)(Audience, Error, void* )
+	std::string adAccountId, std::shared_ptr<AdAccountsAudienceCreate> adAccountsAudienceCreate, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -130,11 +160,11 @@ static bool audiencesCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("AudienceCreateRequest")) {
-		node = converttoJson(&audienceCreateRequest, "AudienceCreateRequest", "");
+	if (isprimitive("AdAccountsAudienceCreate")) {
+		node = converttoJson(&adAccountsAudienceCreate, "AdAccountsAudienceCreate", "");
 	}
 	
-	char *jsonStr =  audienceCreateRequest.toJson();
+	char *jsonStr =  adAccountsAudienceCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -199,36 +229,36 @@ static bool audiencesCreateHelper(char * accessToken,
 
 
 bool AudiencesManager::audiencesCreateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<AudienceCreateRequest> audienceCreateRequest, 
-	void(* handler)(Audience, Error, void* )
+	std::string adAccountId, std::shared_ptr<AdAccountsAudienceCreate> adAccountsAudienceCreate, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData)
 {
 	return audiencesCreateHelper(accessToken,
-	adAccountId, audienceCreateRequest, 
+	adAccountId, adAccountsAudienceCreate, 
 	handler, userData, true);
 }
 
 bool AudiencesManager::audiencesCreateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<AudienceCreateRequest> audienceCreateRequest, 
-	void(* handler)(Audience, Error, void* )
+	std::string adAccountId, std::shared_ptr<AdAccountsAudienceCreate> adAccountsAudienceCreate, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData)
 {
 	return audiencesCreateHelper(accessToken,
-	adAccountId, audienceCreateRequest, 
+	adAccountId, adAccountsAudienceCreate, 
 	handler, userData, false);
 }
 
 static bool audiencesGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Audience, Error, void* )
-	= reinterpret_cast<void(*)(Audience, Error, void* )> (voidHandler);
+	void(* handler)(AdAccountsAudience, Error, void* )
+	= reinterpret_cast<void(*)(AdAccountsAudience, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Audience out;
+	AdAccountsAudience out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -236,18 +266,38 @@ static bool audiencesGetProcessor(MemoryStruct_s p_chunk, long code, char* error
 
 
 
-		if (isprimitive("Audience")) {
+		if (isprimitive("AdAccountsAudience")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Audience", "Audience");
+			jsonToValue(&out, pJson, "AdAccountsAudience", "AdAccountsAudience");
 			json_node_free(pJson);
 
-			if ("Audience" == "std::string") {
+			if ("AdAccountsAudience" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -284,8 +334,8 @@ static bool audiencesGetProcessor(MemoryStruct_s p_chunk, long code, char* error
 }
 
 static bool audiencesGetHelper(char * accessToken,
-	std::string adAccountId, std::string audienceId, 
-	void(* handler)(Audience, Error, void* )
+	std::string audienceId, std::string adAccountId, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -308,18 +358,18 @@ static bool audiencesGetHelper(char * accessToken,
 	string url("/ad_accounts/{ad_account_id}/audiences/{audience_id}");
 	int pos;
 
-	string s_adAccountId("{");
-	s_adAccountId.append("ad_account_id");
-	s_adAccountId.append("}");
-	pos = url.find(s_adAccountId);
-	url.erase(pos, s_adAccountId.length());
-	url.insert(pos, stringify(&adAccountId, "std::string"));
 	string s_audienceId("{");
 	s_audienceId.append("audience_id");
 	s_audienceId.append("}");
 	pos = url.find(s_audienceId);
 	url.erase(pos, s_audienceId.length());
 	url.insert(pos, stringify(&audienceId, "std::string"));
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -367,22 +417,22 @@ static bool audiencesGetHelper(char * accessToken,
 
 
 bool AudiencesManager::audiencesGetAsync(char * accessToken,
-	std::string adAccountId, std::string audienceId, 
-	void(* handler)(Audience, Error, void* )
+	std::string audienceId, std::string adAccountId, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData)
 {
 	return audiencesGetHelper(accessToken,
-	adAccountId, audienceId, 
+	audienceId, adAccountId, 
 	handler, userData, true);
 }
 
 bool AudiencesManager::audiencesGetSync(char * accessToken,
-	std::string adAccountId, std::string audienceId, 
-	void(* handler)(Audience, Error, void* )
+	std::string audienceId, std::string adAccountId, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData)
 {
 	return audiencesGetHelper(accessToken,
-	adAccountId, audienceId, 
+	audienceId, adAccountId, 
 	handler, userData, false);
 }
 
@@ -432,6 +482,26 @@ static bool audiencesListProcessor(MemoryStruct_s p_chunk, long code, char* erro
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -452,7 +522,7 @@ static bool audiencesListProcessor(MemoryStruct_s p_chunk, long code, char* erro
 }
 
 static bool audiencesListHelper(char * accessToken,
-	std::string adAccountId, std::string bookmark, std::string order, int pageSize, std::string ownershipType, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, AudienceOwnershipType ownershipType, bool excludeNca, 
 	void(* handler)(Audiences_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -477,13 +547,6 @@ static bool audiencesListHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&order, "std::string");
-	queryParams.insert(pair<string, string>("order", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("order");
-	}
-
-
 	itemAtq = stringify(&pageSize, "int");
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
@@ -491,10 +554,24 @@ static bool audiencesListHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&ownershipType, "std::string");
+	itemAtq = stringify(&order, "Pinterest.Lib.PaginationOrder");
+	queryParams.insert(pair<string, string>("order", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("order");
+	}
+
+
+	itemAtq = stringify(&ownershipType, "AudienceOwnershipType");
 	queryParams.insert(pair<string, string>("ownership_type", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("ownership_type");
+	}
+
+
+	itemAtq = stringify(&excludeNca, "bool");
+	queryParams.insert(pair<string, string>("exclude_nca", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("exclude_nca");
 	}
 
 	string mBody = "";
@@ -557,36 +634,36 @@ static bool audiencesListHelper(char * accessToken,
 
 
 bool AudiencesManager::audiencesListAsync(char * accessToken,
-	std::string adAccountId, std::string bookmark, std::string order, int pageSize, std::string ownershipType, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, AudienceOwnershipType ownershipType, bool excludeNca, 
 	void(* handler)(Audiences_list_200_response, Error, void* )
 	, void* userData)
 {
 	return audiencesListHelper(accessToken,
-	adAccountId, bookmark, order, pageSize, ownershipType, 
+	adAccountId, bookmark, pageSize, order, ownershipType, excludeNca, 
 	handler, userData, true);
 }
 
 bool AudiencesManager::audiencesListSync(char * accessToken,
-	std::string adAccountId, std::string bookmark, std::string order, int pageSize, std::string ownershipType, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, AudienceOwnershipType ownershipType, bool excludeNca, 
 	void(* handler)(Audiences_list_200_response, Error, void* )
 	, void* userData)
 {
 	return audiencesListHelper(accessToken,
-	adAccountId, bookmark, order, pageSize, ownershipType, 
+	adAccountId, bookmark, pageSize, order, ownershipType, excludeNca, 
 	handler, userData, false);
 }
 
 static bool audiencesUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Audience, Error, void* )
-	= reinterpret_cast<void(*)(Audience, Error, void* )> (voidHandler);
+	void(* handler)(AdAccountsAudience, Error, void* )
+	= reinterpret_cast<void(*)(AdAccountsAudience, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Audience out;
+	AdAccountsAudience out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -594,18 +671,43 @@ static bool audiencesUpdateProcessor(MemoryStruct_s p_chunk, long code, char* er
 
 
 
-		if (isprimitive("Audience")) {
+		if (isprimitive("AdAccountsAudience")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Audience", "Audience");
+			jsonToValue(&out, pJson, "AdAccountsAudience", "AdAccountsAudience");
 			json_node_free(pJson);
 
-			if ("Audience" == "std::string") {
+			if ("AdAccountsAudience" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -637,8 +739,8 @@ static bool audiencesUpdateProcessor(MemoryStruct_s p_chunk, long code, char* er
 }
 
 static bool audiencesUpdateHelper(char * accessToken,
-	std::string adAccountId, std::string audienceId, std::shared_ptr<AudienceUpdateRequest> audienceUpdateRequest, 
-	void(* handler)(Audience, Error, void* )
+	std::string audienceId, std::string adAccountId, std::shared_ptr<AdAccountsAudienceUpdate> adAccountsAudienceUpdate, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -658,11 +760,11 @@ static bool audiencesUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("AudienceUpdateRequest")) {
-		node = converttoJson(&audienceUpdateRequest, "AudienceUpdateRequest", "");
+	if (isprimitive("AdAccountsAudienceUpdate")) {
+		node = converttoJson(&adAccountsAudienceUpdate, "AdAccountsAudienceUpdate", "");
 	}
 	
-	char *jsonStr =  audienceUpdateRequest.toJson();
+	char *jsonStr =  adAccountsAudienceUpdate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -674,18 +776,18 @@ static bool audiencesUpdateHelper(char * accessToken,
 	string url("/ad_accounts/{ad_account_id}/audiences/{audience_id}");
 	int pos;
 
-	string s_adAccountId("{");
-	s_adAccountId.append("ad_account_id");
-	s_adAccountId.append("}");
-	pos = url.find(s_adAccountId);
-	url.erase(pos, s_adAccountId.length());
-	url.insert(pos, stringify(&adAccountId, "std::string"));
 	string s_audienceId("{");
 	s_audienceId.append("audience_id");
 	s_audienceId.append("}");
 	pos = url.find(s_audienceId);
 	url.erase(pos, s_audienceId.length());
 	url.insert(pos, stringify(&audienceId, "std::string"));
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -733,22 +835,22 @@ static bool audiencesUpdateHelper(char * accessToken,
 
 
 bool AudiencesManager::audiencesUpdateAsync(char * accessToken,
-	std::string adAccountId, std::string audienceId, std::shared_ptr<AudienceUpdateRequest> audienceUpdateRequest, 
-	void(* handler)(Audience, Error, void* )
+	std::string audienceId, std::string adAccountId, std::shared_ptr<AdAccountsAudienceUpdate> adAccountsAudienceUpdate, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData)
 {
 	return audiencesUpdateHelper(accessToken,
-	adAccountId, audienceId, audienceUpdateRequest, 
+	audienceId, adAccountId, adAccountsAudienceUpdate, 
 	handler, userData, true);
 }
 
 bool AudiencesManager::audiencesUpdateSync(char * accessToken,
-	std::string adAccountId, std::string audienceId, std::shared_ptr<AudienceUpdateRequest> audienceUpdateRequest, 
-	void(* handler)(Audience, Error, void* )
+	std::string audienceId, std::string adAccountId, std::shared_ptr<AdAccountsAudienceUpdate> adAccountsAudienceUpdate, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData)
 {
 	return audiencesUpdateHelper(accessToken,
-	adAccountId, audienceId, audienceUpdateRequest, 
+	audienceId, adAccountId, adAccountsAudienceUpdate, 
 	handler, userData, false);
 }
 

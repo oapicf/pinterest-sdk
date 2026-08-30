@@ -11,35 +11,32 @@
 part of openapi.api;
 
 /// Audience type
-class AudienceType {
-  /// Instantiate a new enum with the provided [value].
-  const AudienceType._(this.value);
+enum AudienceType {
+  CUSTOMER_LIST._(r'CUSTOMER_LIST'),
+  VISITOR._(r'VISITOR'),
+  ENGAGEMENT._(r'ENGAGEMENT'),
+  ACTALIKE._(r'ACTALIKE'),
+  PERSONA._(r'PERSONA'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const AudienceType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CUSTOMER_LIST = AudienceType._(r'CUSTOMER_LIST');
-  static const VISITOR = AudienceType._(r'VISITOR');
-  static const ENGAGEMENT = AudienceType._(r'ENGAGEMENT');
-  static const ACTALIKE = AudienceType._(r'ACTALIKE');
-  static const PERSONA = AudienceType._(r'PERSONA');
-
-  /// List of all possible values in this [enum][AudienceType].
-  static const values = <AudienceType>[
-    CUSTOMER_LIST,
-    VISITOR,
-    ENGAGEMENT,
-    ACTALIKE,
-    PERSONA,
-  ];
-
+  /// Returns the instance of [AudienceType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static AudienceType? fromJson(dynamic value) => AudienceTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [AudienceType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<AudienceType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <AudienceType>[];
     if (json is List && json.isNotEmpty) {
@@ -61,9 +58,11 @@ class AudienceTypeTypeTransformer {
 
   const AudienceTypeTypeTransformer._();
 
-  String encode(AudienceType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(AudienceType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a AudienceType.
+  /// Returns the instance of [AudienceType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -72,6 +71,9 @@ class AudienceTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   AudienceType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is AudienceType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CUSTOMER_LIST': return AudienceType.CUSTOMER_LIST;
@@ -88,7 +90,7 @@ class AudienceTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [AudienceTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static AudienceTypeTypeTransformer? _instance;
 }
 

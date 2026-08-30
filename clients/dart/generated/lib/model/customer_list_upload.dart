@@ -41,10 +41,16 @@ class CustomerListUpload {
 
   UserListOperationType operation;
 
+  /// Record processing counts
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   RecordCounts? recordCounts;
 
-  /// Workload processing state
-  CustomerListUploadStateEnum state;
+  WorkloadState state;
 
   /// Customer List Upload updated_time. Epoch (seconds).
   int updatedTime;
@@ -110,10 +116,20 @@ class CustomerListUpload {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CustomerListUpload[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CustomerListUpload[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'ad_account_id'), 'Required key "CustomerListUpload[ad_account_id]" is missing from JSON.');
+        assert(json[r'ad_account_id'] != null, 'Required key "CustomerListUpload[ad_account_id]" has a null value in JSON.');
+        assert(json.containsKey(r'creation_time'), 'Required key "CustomerListUpload[creation_time]" is missing from JSON.');
+        assert(json[r'creation_time'] != null, 'Required key "CustomerListUpload[creation_time]" has a null value in JSON.');
+        assert(json.containsKey(r'customer_list_id'), 'Required key "CustomerListUpload[customer_list_id]" is missing from JSON.');
+        assert(json[r'customer_list_id'] != null, 'Required key "CustomerListUpload[customer_list_id]" has a null value in JSON.');
+        assert(json.containsKey(r'id'), 'Required key "CustomerListUpload[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "CustomerListUpload[id]" has a null value in JSON.');
+        assert(json.containsKey(r'operation'), 'Required key "CustomerListUpload[operation]" is missing from JSON.');
+        assert(json[r'operation'] != null, 'Required key "CustomerListUpload[operation]" has a null value in JSON.');
+        assert(json.containsKey(r'state'), 'Required key "CustomerListUpload[state]" is missing from JSON.');
+        assert(json[r'state'] != null, 'Required key "CustomerListUpload[state]" has a null value in JSON.');
+        assert(json.containsKey(r'updated_time'), 'Required key "CustomerListUpload[updated_time]" is missing from JSON.');
+        assert(json[r'updated_time'] != null, 'Required key "CustomerListUpload[updated_time]" has a null value in JSON.');
         return true;
       }());
 
@@ -125,7 +141,7 @@ class CustomerListUpload {
         id: mapValueOfType<String>(json, r'id')!,
         operation: UserListOperationType.fromJson(json[r'operation'])!,
         recordCounts: RecordCounts.fromJson(json[r'record_counts']),
-        state: CustomerListUploadStateEnum.fromJson(json[r'state'])!,
+        state: WorkloadState.fromJson(json[r'state'])!,
         updatedTime: mapValueOfType<int>(json, r'updated_time')!,
       );
     }
@@ -183,87 +199,4 @@ class CustomerListUpload {
     'updated_time',
   };
 }
-
-/// Workload processing state
-class CustomerListUploadStateEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CustomerListUploadStateEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const NOT_STARTED = CustomerListUploadStateEnum._(r'NOT_STARTED');
-  static const RUNNING = CustomerListUploadStateEnum._(r'RUNNING');
-  static const PAUSED = CustomerListUploadStateEnum._(r'PAUSED');
-  static const SUCCEEDED = CustomerListUploadStateEnum._(r'SUCCEEDED');
-  static const FAILED = CustomerListUploadStateEnum._(r'FAILED');
-
-  /// List of all possible values in this [enum][CustomerListUploadStateEnum].
-  static const values = <CustomerListUploadStateEnum>[
-    NOT_STARTED,
-    RUNNING,
-    PAUSED,
-    SUCCEEDED,
-    FAILED,
-  ];
-
-  static CustomerListUploadStateEnum? fromJson(dynamic value) => CustomerListUploadStateEnumTypeTransformer().decode(value);
-
-  static List<CustomerListUploadStateEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CustomerListUploadStateEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = CustomerListUploadStateEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [CustomerListUploadStateEnum] to String,
-/// and [decode] dynamic data back to [CustomerListUploadStateEnum].
-class CustomerListUploadStateEnumTypeTransformer {
-  factory CustomerListUploadStateEnumTypeTransformer() => _instance ??= const CustomerListUploadStateEnumTypeTransformer._();
-
-  const CustomerListUploadStateEnumTypeTransformer._();
-
-  String encode(CustomerListUploadStateEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a CustomerListUploadStateEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  CustomerListUploadStateEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'NOT_STARTED': return CustomerListUploadStateEnum.NOT_STARTED;
-        case r'RUNNING': return CustomerListUploadStateEnum.RUNNING;
-        case r'PAUSED': return CustomerListUploadStateEnum.PAUSED;
-        case r'SUCCEEDED': return CustomerListUploadStateEnum.SUCCEEDED;
-        case r'FAILED': return CustomerListUploadStateEnum.FAILED;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [CustomerListUploadStateEnumTypeTransformer] instance.
-  static CustomerListUploadStateEnumTypeTransformer? _instance;
-}
-
 

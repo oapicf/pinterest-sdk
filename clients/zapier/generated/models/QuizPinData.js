@@ -1,6 +1,7 @@
 const utils = require('../utils/utils');
 const QuizPinQuestion = require('../models/QuizPinQuestion');
 const QuizPinResult = require('../models/QuizPinResult');
+const TieBreakerType = require('../models/TieBreakerType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -19,12 +20,7 @@ module.exports = {
             ...QuizPinResult.fields(`${keyPrefix}tie_breaker_custom_result`, isInput),
             {
                 key: `${keyPrefix}tie_breaker_type`,
-                label: `Quiz ad tie breaker type, default is RANDOM - [${labelPrefix}tie_breaker_type]`,
-                type: 'string',
-                choices: [
-                    'RANDOM',
-                    'CUSTOM',
-                ],
+                ...TieBreakerType.fields(`${keyPrefix}tie_breaker_type`, isInput),
             },
         ]
     },

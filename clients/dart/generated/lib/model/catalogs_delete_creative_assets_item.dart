@@ -54,10 +54,10 @@ class CatalogsDeleteCreativeAssetsItem {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsDeleteCreativeAssetsItem[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsDeleteCreativeAssetsItem[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'creative_assets_id'), 'Required key "CatalogsDeleteCreativeAssetsItem[creative_assets_id]" is missing from JSON.');
+        assert(json[r'creative_assets_id'] != null, 'Required key "CatalogsDeleteCreativeAssetsItem[creative_assets_id]" has a null value in JSON.');
+        assert(json.containsKey(r'operation'), 'Required key "CatalogsDeleteCreativeAssetsItem[operation]" is missing from JSON.');
+        assert(json[r'operation'] != null, 'Required key "CatalogsDeleteCreativeAssetsItem[operation]" has a null value in JSON.');
         return true;
       }());
 
@@ -117,27 +117,28 @@ class CatalogsDeleteCreativeAssetsItem {
 }
 
 
-class CatalogsDeleteCreativeAssetsItemOperationEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsDeleteCreativeAssetsItemOperationEnum._(this.value);
+enum CatalogsDeleteCreativeAssetsItemOperationEnum {
+  DELETE._(r'DELETE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsDeleteCreativeAssetsItemOperationEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const DELETE = CatalogsDeleteCreativeAssetsItemOperationEnum._(r'DELETE');
-
-  /// List of all possible values in this [enum][CatalogsDeleteCreativeAssetsItemOperationEnum].
-  static const values = <CatalogsDeleteCreativeAssetsItemOperationEnum>[
-    DELETE,
-  ];
-
+  /// Returns the instance of [CatalogsDeleteCreativeAssetsItemOperationEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsDeleteCreativeAssetsItemOperationEnum? fromJson(dynamic value) => CatalogsDeleteCreativeAssetsItemOperationEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsDeleteCreativeAssetsItemOperationEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsDeleteCreativeAssetsItemOperationEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsDeleteCreativeAssetsItemOperationEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -159,9 +160,10 @@ class CatalogsDeleteCreativeAssetsItemOperationEnumTypeTransformer {
 
   const CatalogsDeleteCreativeAssetsItemOperationEnumTypeTransformer._();
 
-  String encode(CatalogsDeleteCreativeAssetsItemOperationEnum data) => data.value;
+  String encode(CatalogsDeleteCreativeAssetsItemOperationEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsDeleteCreativeAssetsItemOperationEnum.
+  /// Returns the instance of [CatalogsDeleteCreativeAssetsItemOperationEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -170,6 +172,9 @@ class CatalogsDeleteCreativeAssetsItemOperationEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsDeleteCreativeAssetsItemOperationEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsDeleteCreativeAssetsItemOperationEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'DELETE': return CatalogsDeleteCreativeAssetsItemOperationEnum.DELETE;
@@ -182,7 +187,7 @@ class CatalogsDeleteCreativeAssetsItemOperationEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsDeleteCreativeAssetsItemOperationEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsDeleteCreativeAssetsItemOperationEnumTypeTransformer? _instance;
 }
 

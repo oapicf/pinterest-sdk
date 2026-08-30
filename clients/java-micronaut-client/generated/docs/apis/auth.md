@@ -27,13 +27,6 @@ It can be configured in the [application.yml](src/main/resources/application.yml
 
 More information on configuring can be found in [Micronaut Security Guide](https://micronaut-projects.github.io/micronaut-security/latest/guide/#oauth).
 <a id="name"></a>
-# conversion_token
-<a id="name"></a>
-# basic
-Authorization method is of **basic auth**.
-
-It can be configured in the [application.yml](src/main/resources/application.yml) using Micronaut security features.
-<a id="name"></a>
 # client_credentials
 Authorization method is **OAuth2** with `application` flow.
 The scopes are: 
@@ -60,3 +53,10 @@ The scopes are:
 It can be configured in the [application.yml](src/main/resources/application.yml) using Micronaut security features.
 
 More information on configuring can be found in [Micronaut Security Guide](https://micronaut-projects.github.io/micronaut-security/latest/guide/#oauth).
+<a id="name"></a>
+# conversion_token
+<a id="name"></a>
+# basic
+Authorization method is of **basic auth**.
+
+It can be configured in the [application.yml](src/main/resources/application.yml) using Micronaut security features.

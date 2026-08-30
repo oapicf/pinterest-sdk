@@ -1,10 +1,12 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.AdAccountsCountryResponse;
-import org.openapitools.vertxweb.server.model.BookClosedResponse;
-import org.openapitools.vertxweb.server.model.DeliveryMetricsResponse;
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.SingleInterestTargetingOptionResponse;
+import org.openapitools.vertxweb.server.model.AdAccountCountriesGet200Response;
+import org.openapitools.vertxweb.server.model.BookClosed;
+import org.openapitools.vertxweb.server.model.DeliveryMetricsGet200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PublicTargetingType;
+import org.openapitools.vertxweb.server.model.ReportType;
+import org.openapitools.vertxweb.server.model.SingleInterestTargetingOption;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -70,7 +72,7 @@ public class ResourcesApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
-        String reportType = requestParameters.queryParameter("report_type") != null ? requestParameters.queryParameter("report_type").getString() : null;
+        ReportType reportType = requestParameters.queryParameter("report_type") != null ? requestParameters.queryParameter("report_type").getReportType() : null;
 
         logger.debug("Parameter reportType is {}", reportType);
 
@@ -156,19 +158,19 @@ public class ResourcesApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
-        String targetingType = requestParameters.pathParameter("targeting_type") != null ? requestParameters.pathParameter("targeting_type").getString() : null;
+        PublicTargetingType targetingType = requestParameters.pathParameter("targeting_type") != null ? requestParameters.pathParameter("targeting_type").getPublicTargetingType() : null;
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
         String clientId = requestParameters.queryParameter("client_id") != null ? requestParameters.queryParameter("client_id").getString() : null;
         String oauthSignature = requestParameters.queryParameter("oauth_signature") != null ? requestParameters.queryParameter("oauth_signature").getString() : null;
         String timestamp = requestParameters.queryParameter("timestamp") != null ? requestParameters.queryParameter("timestamp").getString() : null;
-        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter targetingType is {}", targetingType);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter clientId is {}", clientId);
         logger.debug("Parameter oauthSignature is {}", oauthSignature);
         logger.debug("Parameter timestamp is {}", timestamp);
-        logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId)
+        api.targetingOptionsGet(targetingType, adAccountId, clientId, oauthSignature, timestamp)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

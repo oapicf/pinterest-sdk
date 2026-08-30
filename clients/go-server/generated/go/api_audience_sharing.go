@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -52,12 +53,6 @@ func NewAudienceSharingAPIController(s AudienceSharingAPIServicer, opts ...Audie
 // Routes returns all the api routes for the AudienceSharingAPIController
 func (c *AudienceSharingAPIController) Routes() Routes {
 	return Routes{
-		"AdAccountsAudiencesSharedAccountsList": Route{
-			"AdAccountsAudiencesSharedAccountsList",
-			strings.ToUpper("Get"),
-			"/v5/ad_accounts/{ad_account_id}/audiences/shared/accounts",
-			c.AdAccountsAudiencesSharedAccountsList,
-		},
 		"UpdateAdAccountToAdAccountSharedAudience": Route{
 			"UpdateAdAccountToAdAccountSharedAudience",
 			strings.ToUpper("Patch"),
@@ -70,17 +65,17 @@ func (c *AudienceSharingAPIController) Routes() Routes {
 			"/v5/ad_accounts/{ad_account_id}/audiences/businesses/shared",
 			c.UpdateAdAccountToBusinessSharedAudience,
 		},
+		"AdAccountsAudiencesSharedAccountsList": Route{
+			"AdAccountsAudiencesSharedAccountsList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/audiences/shared/accounts",
+			c.AdAccountsAudiencesSharedAccountsList,
+		},
 		"SharedAudiencesForBusinessList": Route{
 			"SharedAudiencesForBusinessList",
 			strings.ToUpper("Get"),
 			"/v5/businesses/{business_id}/audiences",
 			c.SharedAudiencesForBusinessList,
-		},
-		"BusinessAccountAudiencesSharedAccountsList": Route{
-			"BusinessAccountAudiencesSharedAccountsList",
-			strings.ToUpper("Get"),
-			"/v5/businesses/{business_id}/audiences/shared/accounts",
-			c.BusinessAccountAudiencesSharedAccountsList,
 		},
 		"UpdateBusinessToAdAccountSharedAudience": Route{
 			"UpdateBusinessToAdAccountSharedAudience",
@@ -94,18 +89,18 @@ func (c *AudienceSharingAPIController) Routes() Routes {
 			"/v5/businesses/{business_id}/audiences/businesses/shared",
 			c.UpdateBusinessToBusinessSharedAudience,
 		},
+		"BusinessAccountAudiencesSharedAccountsList": Route{
+			"BusinessAccountAudiencesSharedAccountsList",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/audiences/shared/accounts",
+			c.BusinessAccountAudiencesSharedAccountsList,
+		},
 	}
 }
 
 // OrderedRoutes returns all the api routes in a deterministic order for the AudienceSharingAPIController
 func (c *AudienceSharingAPIController) OrderedRoutes() []Route {
 	return []Route{
-		Route{
-			"AdAccountsAudiencesSharedAccountsList",
-			strings.ToUpper("Get"),
-			"/v5/ad_accounts/{ad_account_id}/audiences/shared/accounts",
-			c.AdAccountsAudiencesSharedAccountsList,
-		},
 		Route{
 			"UpdateAdAccountToAdAccountSharedAudience",
 			strings.ToUpper("Patch"),
@@ -119,16 +114,16 @@ func (c *AudienceSharingAPIController) OrderedRoutes() []Route {
 			c.UpdateAdAccountToBusinessSharedAudience,
 		},
 		Route{
+			"AdAccountsAudiencesSharedAccountsList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/audiences/shared/accounts",
+			c.AdAccountsAudiencesSharedAccountsList,
+		},
+		Route{
 			"SharedAudiencesForBusinessList",
 			strings.ToUpper("Get"),
 			"/v5/businesses/{business_id}/audiences",
 			c.SharedAudiencesForBusinessList,
-		},
-		Route{
-			"BusinessAccountAudiencesSharedAccountsList",
-			strings.ToUpper("Get"),
-			"/v5/businesses/{business_id}/audiences/shared/accounts",
-			c.BusinessAccountAudiencesSharedAccountsList,
 		},
 		Route{
 			"UpdateBusinessToAdAccountSharedAudience",
@@ -142,10 +137,92 @@ func (c *AudienceSharingAPIController) OrderedRoutes() []Route {
 			"/v5/businesses/{business_id}/audiences/businesses/shared",
 			c.UpdateBusinessToBusinessSharedAudience,
 		},
+		Route{
+			"BusinessAccountAudiencesSharedAccountsList",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/audiences/shared/accounts",
+			c.BusinessAccountAudiencesSharedAccountsList,
+		},
 	}
 }
 
 
+
+// UpdateAdAccountToAdAccountSharedAudience - Update audience sharing between ad accounts
+func (c *AudienceSharingAPIController) UpdateAdAccountToAdAccountSharedAudience(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var adAccountToAdAccountSharedAudienceUpdateWithRequiredBodyParam AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&adAccountToAdAccountSharedAudienceUpdateWithRequiredBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertAdAccountToAdAccountSharedAudienceUpdateWithRequiredBodyRequired(adAccountToAdAccountSharedAudienceUpdateWithRequiredBodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertAdAccountToAdAccountSharedAudienceUpdateWithRequiredBodyConstraints(adAccountToAdAccountSharedAudienceUpdateWithRequiredBodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.UpdateAdAccountToAdAccountSharedAudience(r.Context(), adAccountIdParam, adAccountToAdAccountSharedAudienceUpdateWithRequiredBodyParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// UpdateAdAccountToBusinessSharedAudience - Update audience sharing from an ad account to businesses
+func (c *AudienceSharingAPIController) UpdateAdAccountToBusinessSharedAudience(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var adAccountToBusinessSharedAudienceUpdateWithRequiredBodyParam AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&adAccountToBusinessSharedAudienceUpdateWithRequiredBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertAdAccountToBusinessSharedAudienceUpdateWithRequiredBodyRequired(adAccountToBusinessSharedAudienceUpdateWithRequiredBodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertAdAccountToBusinessSharedAudienceUpdateWithRequiredBodyConstraints(adAccountToBusinessSharedAudienceUpdateWithRequiredBodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.UpdateAdAccountToBusinessSharedAudience(r.Context(), adAccountIdParam, adAccountToBusinessSharedAudienceUpdateWithRequiredBodyParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
 
 // AdAccountsAudiencesSharedAccountsList - List accounts with access to an audience owned by an ad account
 func (c *AudienceSharingAPIController) AdAccountsAudiencesSharedAccountsList(w http.ResponseWriter, r *http.Request) {
@@ -153,11 +230,6 @@ func (c *AudienceSharingAPIController) AdAccountsAudiencesSharedAccountsList(w h
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
 	var audienceIdParam string
@@ -178,6 +250,18 @@ func (c *AudienceSharingAPIController) AdAccountsAudiencesSharedAccountsList(w h
 		c.errorHandler(w, r, &RequiredError{Field: "account_type"}, nil)
 		return
 	}
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
 		param, err := parseNumericParameter[int32](
@@ -196,80 +280,7 @@ func (c *AudienceSharingAPIController) AdAccountsAudiencesSharedAccountsList(w h
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.AdAccountsAudiencesSharedAccountsList(r.Context(), adAccountIdParam, audienceIdParam, accountTypeParam, pageSizeParam, bookmarkParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// UpdateAdAccountToAdAccountSharedAudience - Update audience sharing between ad accounts
-func (c *AudienceSharingAPIController) UpdateAdAccountToAdAccountSharedAudience(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
-		return
-	}
-	var sharedAudienceParam SharedAudience
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&sharedAudienceParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertSharedAudienceRequired(sharedAudienceParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertSharedAudienceConstraints(sharedAudienceParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.UpdateAdAccountToAdAccountSharedAudience(r.Context(), adAccountIdParam, sharedAudienceParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// UpdateAdAccountToBusinessSharedAudience - Update audience sharing from an ad account to businesses
-func (c *AudienceSharingAPIController) UpdateAdAccountToBusinessSharedAudience(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
-		return
-	}
-	var businessSharedAudienceParam BusinessSharedAudience
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&businessSharedAudienceParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertBusinessSharedAudienceRequired(businessSharedAudienceParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertBusinessSharedAudienceConstraints(businessSharedAudienceParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.UpdateAdAccountToBusinessSharedAudience(r.Context(), adAccountIdParam, businessSharedAudienceParam)
+	result, err := c.service.AdAccountsAudiencesSharedAccountsList(r.Context(), audienceIdParam, accountTypeParam, adAccountIdParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -292,18 +303,18 @@ func (c *AudienceSharingAPIController) SharedAudiencesForBusinessList(w http.Res
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
+	var orderParam Order
+	if query.Has("order") {
+		param := Order(query.Get("order"))
+
+		orderParam = param
+	} else {
+	}
 	var bookmarkParam string
 	if query.Has("bookmark") {
 		param := query.Get("bookmark")
 
 		bookmarkParam = param
-	} else {
-	}
-	var orderParam string
-	if query.Has("order") {
-		param := query.Get("order")
-
-		orderParam = param
 	} else {
 	}
 	var pageSizeParam int32
@@ -324,7 +335,83 @@ func (c *AudienceSharingAPIController) SharedAudiencesForBusinessList(w http.Res
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	result, err := c.service.SharedAudiencesForBusinessList(r.Context(), businessIdParam, bookmarkParam, orderParam, pageSizeParam)
+	result, err := c.service.SharedAudiencesForBusinessList(r.Context(), businessIdParam, orderParam, bookmarkParam, pageSizeParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// UpdateBusinessToAdAccountSharedAudience - Update audience sharing from a business to ad accounts
+func (c *AudienceSharingAPIController) UpdateBusinessToAdAccountSharedAudience(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	businessIdParam := params["business_id"]
+	if businessIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
+		return
+	}
+	var businessToAdAccountSharedAudienceUpdateWithRequiredBodyParam BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&businessToAdAccountSharedAudienceUpdateWithRequiredBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertBusinessToAdAccountSharedAudienceUpdateWithRequiredBodyRequired(businessToAdAccountSharedAudienceUpdateWithRequiredBodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertBusinessToAdAccountSharedAudienceUpdateWithRequiredBodyConstraints(businessToAdAccountSharedAudienceUpdateWithRequiredBodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.UpdateBusinessToAdAccountSharedAudience(r.Context(), businessIdParam, businessToAdAccountSharedAudienceUpdateWithRequiredBodyParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// UpdateBusinessToBusinessSharedAudience - Update audience sharing between businesses
+func (c *AudienceSharingAPIController) UpdateBusinessToBusinessSharedAudience(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	businessIdParam := params["business_id"]
+	if businessIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
+		return
+	}
+	var businessToBusinessSharedAudienceUpdateWithRequiredBodyParam BusinessToBusinessSharedAudienceUpdateWithRequiredBody
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&businessToBusinessSharedAudienceUpdateWithRequiredBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertBusinessToBusinessSharedAudienceUpdateWithRequiredBodyRequired(businessToBusinessSharedAudienceUpdateWithRequiredBodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertBusinessToBusinessSharedAudienceUpdateWithRequiredBodyConstraints(businessToBusinessSharedAudienceUpdateWithRequiredBodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.UpdateBusinessToBusinessSharedAudience(r.Context(), businessIdParam, businessToBusinessSharedAudienceUpdateWithRequiredBodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -365,6 +452,13 @@ func (c *AudienceSharingAPIController) BusinessAccountAudiencesSharedAccountsLis
 		c.errorHandler(w, r, &RequiredError{Field: "account_type"}, nil)
 		return
 	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
 		param, err := parseNumericParameter[int32](
@@ -383,80 +477,7 @@ func (c *AudienceSharingAPIController) BusinessAccountAudiencesSharedAccountsLis
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.BusinessAccountAudiencesSharedAccountsList(r.Context(), businessIdParam, audienceIdParam, accountTypeParam, pageSizeParam, bookmarkParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// UpdateBusinessToAdAccountSharedAudience - Update audience sharing from a business to ad accounts
-func (c *AudienceSharingAPIController) UpdateBusinessToAdAccountSharedAudience(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	businessIdParam := params["business_id"]
-	if businessIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
-		return
-	}
-	var sharedAudienceParam SharedAudience
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&sharedAudienceParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertSharedAudienceRequired(sharedAudienceParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertSharedAudienceConstraints(sharedAudienceParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.UpdateBusinessToAdAccountSharedAudience(r.Context(), businessIdParam, sharedAudienceParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// UpdateBusinessToBusinessSharedAudience - Update audience sharing between businesses
-func (c *AudienceSharingAPIController) UpdateBusinessToBusinessSharedAudience(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	businessIdParam := params["business_id"]
-	if businessIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
-		return
-	}
-	var businessSharedAudienceParam BusinessSharedAudience
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&businessSharedAudienceParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertBusinessSharedAudienceRequired(businessSharedAudienceParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertBusinessSharedAudienceConstraints(businessSharedAudienceParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.UpdateBusinessToBusinessSharedAudience(r.Context(), businessIdParam, businessSharedAudienceParam)
+	result, err := c.service.BusinessAccountAudiencesSharedAccountsList(r.Context(), businessIdParam, audienceIdParam, accountTypeParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

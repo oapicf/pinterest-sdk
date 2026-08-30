@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -10,40 +11,40 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.openapitools.model.PinAnalyticsMetricsResponseDailyMetricsInner;
+import org.openapitools.model.PinAnalyticsDailyMetrics;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * PinAnalyticsMetricsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PinAnalyticsMetricsResponse {
 
-  @Valid
-  private List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>();
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<@Valid PinAnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, Integer> lifetimeMetrics = new HashMap<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 
-  public PinAnalyticsMetricsResponse dailyMetrics(List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
+  public PinAnalyticsMetricsResponse dailyMetrics(List<@Valid PinAnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
     return this;
   }
 
-  public PinAnalyticsMetricsResponse addDailyMetricsItem(PinAnalyticsMetricsResponseDailyMetricsInner dailyMetricsItem) {
+  public PinAnalyticsMetricsResponse addDailyMetricsItem(PinAnalyticsDailyMetrics dailyMetricsItem) {
     if (this.dailyMetrics == null) {
       this.dailyMetrics = new ArrayList<>();
     }
@@ -58,11 +59,12 @@ public class PinAnalyticsMetricsResponse {
   @Valid 
   @Schema(name = "daily_metrics", description = "Array with the requested daily metric records", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("daily_metrics")
-  public List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> getDailyMetrics() {
+  public List<@Valid PinAnalyticsDailyMetrics> getDailyMetrics() {
     return dailyMetrics;
   }
 
-  public void setDailyMetrics(List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
+  @JsonProperty("daily_metrics")
+  public void setDailyMetrics(List<@Valid PinAnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
   }
 
@@ -90,6 +92,7 @@ public class PinAnalyticsMetricsResponse {
     return lifetimeMetrics;
   }
 
+  @JsonProperty("lifetime_metrics")
   public void setLifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
     this.lifetimeMetrics = lifetimeMetrics;
   }
@@ -118,6 +121,7 @@ public class PinAnalyticsMetricsResponse {
     return summaryMetrics;
   }
 
+  @JsonProperty("summary_metrics")
   public void setSummaryMetrics(Map<String, BigDecimal> summaryMetrics) {
     this.summaryMetrics = summaryMetrics;
   }
@@ -156,11 +160,8 @@ public class PinAnalyticsMetricsResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

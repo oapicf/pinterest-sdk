@@ -70,10 +70,10 @@ class CatalogsCreativeAssetsItemsPostFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsCreativeAssetsItemsPostFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsCreativeAssetsItemsPostFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsCreativeAssetsItemsPostFilter[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsCreativeAssetsItemsPostFilter[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'creative_assets_ids'), 'Required key "CatalogsCreativeAssetsItemsPostFilter[creative_assets_ids]" is missing from JSON.');
+        assert(json[r'creative_assets_ids'] != null, 'Required key "CatalogsCreativeAssetsItemsPostFilter[creative_assets_ids]" has a null value in JSON.');
         return true;
       }());
 
@@ -136,27 +136,28 @@ class CatalogsCreativeAssetsItemsPostFilter {
 }
 
 
-class CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum._(this.value);
+enum CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum {
+  CREATIVE_ASSETS._(r'CREATIVE_ASSETS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CREATIVE_ASSETS = CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum._(r'CREATIVE_ASSETS');
-
-  /// List of all possible values in this [enum][CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum].
-  static const values = <CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum>[
-    CREATIVE_ASSETS,
-  ];
-
+  /// Returns the instance of [CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum? fromJson(dynamic value) => CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -178,9 +179,10 @@ class CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnumTypeTransformer {
 
   const CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum data) => data.value;
+  String encode(CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum.
+  /// Returns the instance of [CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -189,6 +191,9 @@ class CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CREATIVE_ASSETS': return CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum.CREATIVE_ASSETS;
@@ -201,7 +206,7 @@ class CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnumTypeTransformer? _instance;
 }
 

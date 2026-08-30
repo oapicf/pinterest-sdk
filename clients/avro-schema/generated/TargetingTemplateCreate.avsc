@@ -1,13 +1,13 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "",
+  "doc": "Resource create operation model.",
   "name": "TargetingTemplateCreate",
   "fields": [
     {
       "name": "auto_targeting_enabled",
       "type": ["boolean", "null"],
-      "doc": "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.",
+      "doc": "Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).",
       "default": true
     },
     {
@@ -22,7 +22,7 @@
     {
       "name": "name",
       "type": "string",
-      "doc": "Name of targeting template."
+      "doc": "targeting template name"
     },
     {
       "name": "placement_group",
@@ -32,8 +32,8 @@
     },
     {
       "name": "targeting_attributes",
-      "type": "model.TargetingSpec",
-      "doc": ""
+      "type": "model.TargetingSpecOptimal",
+      "doc": "targeting profile attributes"
     },
     {
       "name": "tracking_urls",

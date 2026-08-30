@@ -6,7 +6,13 @@
   "fields": [
     {
       "name": "catalog_type",
-      "type": "model.CatalogsType",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsRetailItemErrorResponse_catalogUnderscoretype",
+        "symbols": [
+          "RETAIL"
+        ]
+      },
       "doc": ""
     },
     {
@@ -22,6 +28,17 @@
       "type": ["null", "string"],
       "doc": "The catalog item id in the merchant namespace",
       "default": null
+    },
+    {
+      "name": "item_response_kind",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsRetailItemErrorResponse_itemUnderscoreresponseUnderscorekind",
+        "symbols": [
+          "retail_item_error"
+        ]
+      },
+      "doc": "Discriminator literal identifying this leaf inside an `ItemResponse` payload."
     }
   ]
 

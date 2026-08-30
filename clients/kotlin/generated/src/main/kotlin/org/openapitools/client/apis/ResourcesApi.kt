@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,11 +27,13 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.AdAccountsCountryResponse
-import org.openapitools.client.models.BookClosedResponse
-import org.openapitools.client.models.DeliveryMetricsResponse
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.SingleInterestTargetingOptionResponse
+import org.openapitools.client.models.AdAccountCountriesGet200Response
+import org.openapitools.client.models.BookClosed
+import org.openapitools.client.models.DeliveryMetricsGet200Response
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PublicTargetingType
+import org.openapitools.client.models.ReportType
+import org.openapitools.client.models.SingleInterestTargetingOption
 
 import com.squareup.moshi.Json
 
@@ -45,7 +55,7 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
@@ -53,7 +63,7 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * GET /resources/ad_account_countries
      * Get ad accounts countries
      * Get Ad Accounts countries
-     * @return AdAccountsCountryResponse
+     * @return AdAccountCountriesGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -62,11 +72,11 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adAccountCountriesGet() : AdAccountsCountryResponse {
+    fun adAccountCountriesGet() : AdAccountCountriesGet200Response {
         val localVarResponse = adAccountCountriesGetWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as AdAccountsCountryResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AdAccountCountriesGet200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -84,16 +94,16 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * GET /resources/ad_account_countries
      * Get ad accounts countries
      * Get Ad Accounts countries
-     * @return ApiResponse<AdAccountsCountryResponse?>
+     * @return ApiResponse<AdAccountCountriesGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun adAccountCountriesGetWithHttpInfo() : ApiResponse<AdAccountsCountryResponse?> {
+    fun adAccountCountriesGetWithHttpInfo() : ApiResponse<AdAccountCountriesGet200Response?> {
         val localVariableConfig = adAccountCountriesGetRequestConfig()
 
-        return request<Unit, AdAccountsCountryResponse>(
+        return request<Unit, AdAccountCountriesGet200Response>(
             localVariableConfig
         )
     }
@@ -120,28 +130,11 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * enum for parameter reportType
-     */
-     enum class ReportTypeDeliveryMetricsGet(val value: kotlin.String) {
-         @Json(name = "SYNC") SYNC("SYNC"),
-         @Json(name = "ASYNC") ASYNC("ASYNC");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /resources/delivery_metrics
      * Get available metrics&#39; definitions
-     * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api-features/ads-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
+     * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See [Organic Analytics](/docs/api-features/analytics-overview/) and [Ads Analytics](/docs/api-features/ads-reporting/) for more information.
      * @param reportType Report type. (optional)
-     * @return DeliveryMetricsResponse
+     * @return DeliveryMetricsGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -150,11 +143,11 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun deliveryMetricsGet(reportType: ReportTypeDeliveryMetricsGet? = null) : DeliveryMetricsResponse {
+    fun deliveryMetricsGet(reportType: ReportType? = null) : DeliveryMetricsGet200Response {
         val localVarResponse = deliveryMetricsGetWithHttpInfo(reportType = reportType)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as DeliveryMetricsResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as DeliveryMetricsGet200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -171,18 +164,18 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /resources/delivery_metrics
      * Get available metrics&#39; definitions
-     * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api-features/ads-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
+     * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See [Organic Analytics](/docs/api-features/analytics-overview/) and [Ads Analytics](/docs/api-features/ads-reporting/) for more information.
      * @param reportType Report type. (optional)
-     * @return ApiResponse<DeliveryMetricsResponse?>
+     * @return ApiResponse<DeliveryMetricsGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun deliveryMetricsGetWithHttpInfo(reportType: ReportTypeDeliveryMetricsGet?) : ApiResponse<DeliveryMetricsResponse?> {
+    fun deliveryMetricsGetWithHttpInfo(reportType: ReportType?) : ApiResponse<DeliveryMetricsGet200Response?> {
         val localVariableConfig = deliveryMetricsGetRequestConfig(reportType = reportType)
 
-        return request<Unit, DeliveryMetricsResponse>(
+        return request<Unit, DeliveryMetricsGet200Response>(
             localVariableConfig
         )
     }
@@ -193,12 +186,12 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * @param reportType Report type. (optional)
      * @return RequestConfig
      */
-    fun deliveryMetricsGetRequestConfig(reportType: ReportTypeDeliveryMetricsGet?) : RequestConfig<Unit> {
+    fun deliveryMetricsGetRequestConfig(reportType: ReportType?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (reportType != null) {
-                    put("report_type", listOf(reportType.value))
+                    put("report_type", listOf(reportType.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -217,9 +210,9 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /resources/targeting/interests/{interest_id}
      * Get interest details
-     * &lt;p&gt;Get details of a specific interest given interest ID.&lt;/p&gt; &lt;p&gt;Click &lt;a href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid&#x3D;118370875\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; for a spreadsheet listing interests and their IDs.&lt;/p&gt;
+     * Get details of a specific interest given interest ID.  Click [here](https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid&#x3D;118370875) for a spreadsheet listing interests and their IDs.
      * @param interestId Unique identifier of an interest.
-     * @return SingleInterestTargetingOptionResponse
+     * @return SingleInterestTargetingOption
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -228,11 +221,11 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun interestTargetingOptionsGet(interestId: kotlin.String) : SingleInterestTargetingOptionResponse {
+    fun interestTargetingOptionsGet(interestId: kotlin.String) : SingleInterestTargetingOption {
         val localVarResponse = interestTargetingOptionsGetWithHttpInfo(interestId = interestId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as SingleInterestTargetingOptionResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SingleInterestTargetingOption
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -249,18 +242,18 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /resources/targeting/interests/{interest_id}
      * Get interest details
-     * &lt;p&gt;Get details of a specific interest given interest ID.&lt;/p&gt; &lt;p&gt;Click &lt;a href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid&#x3D;118370875\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; for a spreadsheet listing interests and their IDs.&lt;/p&gt;
+     * Get details of a specific interest given interest ID.  Click [here](https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid&#x3D;118370875) for a spreadsheet listing interests and their IDs.
      * @param interestId Unique identifier of an interest.
-     * @return ApiResponse<SingleInterestTargetingOptionResponse?>
+     * @return ApiResponse<SingleInterestTargetingOption?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun interestTargetingOptionsGetWithHttpInfo(interestId: kotlin.String) : ApiResponse<SingleInterestTargetingOptionResponse?> {
+    fun interestTargetingOptionsGetWithHttpInfo(interestId: kotlin.String) : ApiResponse<SingleInterestTargetingOption?> {
         val localVariableConfig = interestTargetingOptionsGetRequestConfig(interestId = interestId)
 
-        return request<Unit, SingleInterestTargetingOptionResponse>(
+        return request<Unit, SingleInterestTargetingOption>(
             localVariableConfig
         )
     }
@@ -290,7 +283,7 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /resources/lead_form_questions
      * Get lead form questions
-     * Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get a list of all lead form question type names. Some questions might not be used.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -320,7 +313,7 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /resources/lead_form_questions
      * Get lead form questions
-     * Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get a list of all lead form question type names. Some questions might not be used.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -360,7 +353,7 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * Get metrics ready state
      * Learn whether conversion or non-conversion metrics are finalized and ready to query.
      * @param date Analytics reports request date (UTC). Format: YYYY-MM-DD
-     * @return BookClosedResponse
+     * @return BookClosed
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -369,11 +362,11 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun metricsReadyStateGet(date: kotlin.String) : BookClosedResponse {
+    fun metricsReadyStateGet(date: kotlin.String) : BookClosed {
         val localVarResponse = metricsReadyStateGetWithHttpInfo(date = date)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as BookClosedResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as BookClosed
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -392,16 +385,16 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * Get metrics ready state
      * Learn whether conversion or non-conversion metrics are finalized and ready to query.
      * @param date Analytics reports request date (UTC). Format: YYYY-MM-DD
-     * @return ApiResponse<BookClosedResponse?>
+     * @return ApiResponse<BookClosed?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun metricsReadyStateGetWithHttpInfo(date: kotlin.String) : ApiResponse<BookClosedResponse?> {
+    fun metricsReadyStateGetWithHttpInfo(date: kotlin.String) : ApiResponse<BookClosed?> {
         val localVariableConfig = metricsReadyStateGetRequestConfig(date = date)
 
-        return request<Unit, BookClosedResponse>(
+        return request<Unit, BookClosed>(
             localVariableConfig
         )
     }
@@ -432,39 +425,14 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * enum for parameter targetingType
-     */
-     enum class TargetingTypeTargetingOptionsGet(val value: kotlin.String) {
-         @Json(name = "APPTYPE") APPTYPE("APPTYPE"),
-         @Json(name = "GENDER") GENDER("GENDER"),
-         @Json(name = "LOCALE") LOCALE("LOCALE"),
-         @Json(name = "AGE_BUCKET") AGE_BUCKET("AGE_BUCKET"),
-         @Json(name = "LOCATION") LOCATION("LOCATION"),
-         @Json(name = "GEO") GEO("GEO"),
-         @Json(name = "INTEREST") INTEREST("INTEREST"),
-         @Json(name = "KEYWORD") KEYWORD("KEYWORD"),
-         @Json(name = "AUDIENCE_INCLUDE") AUDIENCE_INCLUDE("AUDIENCE_INCLUDE"),
-         @Json(name = "AUDIENCE_EXCLUDE") AUDIENCE_EXCLUDE("AUDIENCE_EXCLUDE");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /resources/targeting/{targeting_type}
      * Get targeting options
-     * &lt;p&gt;You can use targeting values in ads placement to define your intended audience. &lt;/p&gt; &lt;p&gt;Targeting metrics are organized around targeting specifications.&lt;/p&gt; &lt;p&gt;For more information on ads targeting, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Sample return:&lt;/b&gt;&lt;/p&gt; &lt;pre class&#x3D;\&quot;literal-block\&quot;&gt; [{&amp;quot;36313&amp;quot;: &amp;quot;Australia: Moreton Bay - North&amp;quot;, &amp;quot;124735&amp;quot;: &amp;quot;Canada: North Battleford&amp;quot;, &amp;quot;36109&amp;quot;: &amp;quot;Australia: Murray&amp;quot;, &amp;quot;36108&amp;quot;: &amp;quot;Australia: Mid North Coast&amp;quot;, &amp;quot;36101&amp;quot;: &amp;quot;Australia: Capital Region&amp;quot;, &amp;quot;811&amp;quot;: &amp;quot;U.S.: Reno&amp;quot;, &amp;quot;36103&amp;quot;: &amp;quot;Australia: Central West&amp;quot;, &amp;quot;36102&amp;quot;: &amp;quot;Australia: Central Coast&amp;quot;, &amp;quot;36105&amp;quot;: &amp;quot;Australia: Far West and Orana&amp;quot;, &amp;quot;36104&amp;quot;: &amp;quot;Australia: Coffs Harbour - Grafton&amp;quot;, &amp;quot;36107&amp;quot;: &amp;quot;Australia: Illawarra&amp;quot;, &amp;quot;36106&amp;quot;: &amp;quot;Australia: Hunter Valley Exc Newcastle&amp;quot;, &amp;quot;554017&amp;quot;: &amp;quot;New Zealand: Wanganui&amp;quot;, &amp;quot;554016&amp;quot;: &amp;quot;New Zealand: Marlborough&amp;quot;, &amp;quot;554015&amp;quot;: &amp;quot;New Zealand: Gisborne&amp;quot;, &amp;quot;554014&amp;quot;: &amp;quot;New Zealand: Tararua&amp;quot;, &amp;quot;554013&amp;quot;: &amp;quot;New Zealand: Invercargill&amp;quot;, &amp;quot;GR&amp;quot;: &amp;quot;Greece&amp;quot;, &amp;quot;554011&amp;quot;: &amp;quot;New Zealand: Whangarei&amp;quot;, &amp;quot;554010&amp;quot;: &amp;quot;New Zealand: Far North&amp;quot;, &amp;quot;717&amp;quot;: &amp;quot;U.S.: Quincy-Hannibal-Keokuk&amp;quot;, &amp;quot;716&amp;quot;: &amp;quot;U.S.: Baton Rouge&amp;quot;,...}] &lt;/pre&gt;
-     * @param targetingType Public targeting type.
-     * @param clientId Client ID. (optional)
-     * @param oauthSignature Oauth signature (optional)
-     * @param timestamp Timestamp (optional)
+     *     You can use targeting values in ads placement to define your intended audience.      Targeting metrics are organized around targeting specifications.      For more information on ads targeting, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting).      **Sample return:**      &#x60;&#x60;&#x60;     [{\&quot;36313\&quot;: \&quot;Australia: Moreton Bay - North\&quot;, \&quot;124735\&quot;: \&quot;Canada: North Battleford\&quot;, \&quot;36109\&quot;: \&quot;Australia: Murray\&quot;, \&quot;36108\&quot;: \&quot;Australia: Mid North Coast\&quot;, \&quot;36101\&quot;: \&quot;Australia: Capital Region\&quot;, \&quot;811\&quot;: \&quot;U.S.: Reno\&quot;, \&quot;36103\&quot;: \&quot;Australia: Central West\&quot;, \&quot;36102\&quot;: \&quot;Australia: Central Coast\&quot;, \&quot;36105\&quot;: \&quot;Australia: Far West and Orana\&quot;, \&quot;36104\&quot;: \&quot;Australia: Coffs Harbour - Grafton\&quot;, \&quot;36107\&quot;: \&quot;Australia: Illawarra\&quot;, \&quot;36106\&quot;: \&quot;Australia: Hunter Valley Exc Newcastle\&quot;, \&quot;554017\&quot;: \&quot;New Zealand: Wanganui\&quot;, \&quot;554016\&quot;: \&quot;New Zealand: Marlborough\&quot;, \&quot;554015\&quot;: \&quot;New Zealand: Gisborne\&quot;, \&quot;554014\&quot;: \&quot;New Zealand: Tararua\&quot;, \&quot;554013\&quot;: \&quot;New Zealand: Invercargill\&quot;, \&quot;GR\&quot;: \&quot;Greece\&quot;, \&quot;554011\&quot;: \&quot;New Zealand: Whangarei\&quot;, \&quot;554010\&quot;: \&quot;New Zealand: Far North\&quot;, \&quot;717\&quot;: \&quot;U.S.: Quincy-Hannibal-Keokuk\&quot;, \&quot;716\&quot;: \&quot;U.S.: Baton Rouge\&quot;,...}]     &#x60;&#x60;&#x60;
+     * @param targetingType Public targeting type
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param clientId Client ID (optional)
+     * @param oauthSignature Oauth signature (optional)
+     * @param timestamp Timestamp. (optional)
      * @return kotlin.collections.List<kotlin.Any>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -474,8 +442,8 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun targetingOptionsGet(targetingType: TargetingTypeTargetingOptionsGet, clientId: kotlin.String? = null, oauthSignature: kotlin.String? = null, timestamp: kotlin.String? = null, adAccountId: kotlin.String? = null) : kotlin.collections.List<kotlin.Any> {
-        val localVarResponse = targetingOptionsGetWithHttpInfo(targetingType = targetingType, clientId = clientId, oauthSignature = oauthSignature, timestamp = timestamp, adAccountId = adAccountId)
+    fun targetingOptionsGet(targetingType: PublicTargetingType, adAccountId: kotlin.String? = null, clientId: kotlin.String? = null, oauthSignature: kotlin.String? = null, timestamp: kotlin.String? = null) : kotlin.collections.List<kotlin.Any> {
+        val localVarResponse = targetingOptionsGetWithHttpInfo(targetingType = targetingType, adAccountId = adAccountId, clientId = clientId, oauthSignature = oauthSignature, timestamp = timestamp)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<kotlin.Any>
@@ -495,20 +463,20 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /resources/targeting/{targeting_type}
      * Get targeting options
-     * &lt;p&gt;You can use targeting values in ads placement to define your intended audience. &lt;/p&gt; &lt;p&gt;Targeting metrics are organized around targeting specifications.&lt;/p&gt; &lt;p&gt;For more information on ads targeting, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Sample return:&lt;/b&gt;&lt;/p&gt; &lt;pre class&#x3D;\&quot;literal-block\&quot;&gt; [{&amp;quot;36313&amp;quot;: &amp;quot;Australia: Moreton Bay - North&amp;quot;, &amp;quot;124735&amp;quot;: &amp;quot;Canada: North Battleford&amp;quot;, &amp;quot;36109&amp;quot;: &amp;quot;Australia: Murray&amp;quot;, &amp;quot;36108&amp;quot;: &amp;quot;Australia: Mid North Coast&amp;quot;, &amp;quot;36101&amp;quot;: &amp;quot;Australia: Capital Region&amp;quot;, &amp;quot;811&amp;quot;: &amp;quot;U.S.: Reno&amp;quot;, &amp;quot;36103&amp;quot;: &amp;quot;Australia: Central West&amp;quot;, &amp;quot;36102&amp;quot;: &amp;quot;Australia: Central Coast&amp;quot;, &amp;quot;36105&amp;quot;: &amp;quot;Australia: Far West and Orana&amp;quot;, &amp;quot;36104&amp;quot;: &amp;quot;Australia: Coffs Harbour - Grafton&amp;quot;, &amp;quot;36107&amp;quot;: &amp;quot;Australia: Illawarra&amp;quot;, &amp;quot;36106&amp;quot;: &amp;quot;Australia: Hunter Valley Exc Newcastle&amp;quot;, &amp;quot;554017&amp;quot;: &amp;quot;New Zealand: Wanganui&amp;quot;, &amp;quot;554016&amp;quot;: &amp;quot;New Zealand: Marlborough&amp;quot;, &amp;quot;554015&amp;quot;: &amp;quot;New Zealand: Gisborne&amp;quot;, &amp;quot;554014&amp;quot;: &amp;quot;New Zealand: Tararua&amp;quot;, &amp;quot;554013&amp;quot;: &amp;quot;New Zealand: Invercargill&amp;quot;, &amp;quot;GR&amp;quot;: &amp;quot;Greece&amp;quot;, &amp;quot;554011&amp;quot;: &amp;quot;New Zealand: Whangarei&amp;quot;, &amp;quot;554010&amp;quot;: &amp;quot;New Zealand: Far North&amp;quot;, &amp;quot;717&amp;quot;: &amp;quot;U.S.: Quincy-Hannibal-Keokuk&amp;quot;, &amp;quot;716&amp;quot;: &amp;quot;U.S.: Baton Rouge&amp;quot;,...}] &lt;/pre&gt;
-     * @param targetingType Public targeting type.
-     * @param clientId Client ID. (optional)
-     * @param oauthSignature Oauth signature (optional)
-     * @param timestamp Timestamp (optional)
+     *     You can use targeting values in ads placement to define your intended audience.      Targeting metrics are organized around targeting specifications.      For more information on ads targeting, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting).      **Sample return:**      &#x60;&#x60;&#x60;     [{\&quot;36313\&quot;: \&quot;Australia: Moreton Bay - North\&quot;, \&quot;124735\&quot;: \&quot;Canada: North Battleford\&quot;, \&quot;36109\&quot;: \&quot;Australia: Murray\&quot;, \&quot;36108\&quot;: \&quot;Australia: Mid North Coast\&quot;, \&quot;36101\&quot;: \&quot;Australia: Capital Region\&quot;, \&quot;811\&quot;: \&quot;U.S.: Reno\&quot;, \&quot;36103\&quot;: \&quot;Australia: Central West\&quot;, \&quot;36102\&quot;: \&quot;Australia: Central Coast\&quot;, \&quot;36105\&quot;: \&quot;Australia: Far West and Orana\&quot;, \&quot;36104\&quot;: \&quot;Australia: Coffs Harbour - Grafton\&quot;, \&quot;36107\&quot;: \&quot;Australia: Illawarra\&quot;, \&quot;36106\&quot;: \&quot;Australia: Hunter Valley Exc Newcastle\&quot;, \&quot;554017\&quot;: \&quot;New Zealand: Wanganui\&quot;, \&quot;554016\&quot;: \&quot;New Zealand: Marlborough\&quot;, \&quot;554015\&quot;: \&quot;New Zealand: Gisborne\&quot;, \&quot;554014\&quot;: \&quot;New Zealand: Tararua\&quot;, \&quot;554013\&quot;: \&quot;New Zealand: Invercargill\&quot;, \&quot;GR\&quot;: \&quot;Greece\&quot;, \&quot;554011\&quot;: \&quot;New Zealand: Whangarei\&quot;, \&quot;554010\&quot;: \&quot;New Zealand: Far North\&quot;, \&quot;717\&quot;: \&quot;U.S.: Quincy-Hannibal-Keokuk\&quot;, \&quot;716\&quot;: \&quot;U.S.: Baton Rouge\&quot;,...}]     &#x60;&#x60;&#x60;
+     * @param targetingType Public targeting type
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param clientId Client ID (optional)
+     * @param oauthSignature Oauth signature (optional)
+     * @param timestamp Timestamp. (optional)
      * @return ApiResponse<kotlin.collections.List<kotlin.Any>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun targetingOptionsGetWithHttpInfo(targetingType: TargetingTypeTargetingOptionsGet, clientId: kotlin.String?, oauthSignature: kotlin.String?, timestamp: kotlin.String?, adAccountId: kotlin.String?) : ApiResponse<kotlin.collections.List<kotlin.Any>?> {
-        val localVariableConfig = targetingOptionsGetRequestConfig(targetingType = targetingType, clientId = clientId, oauthSignature = oauthSignature, timestamp = timestamp, adAccountId = adAccountId)
+    fun targetingOptionsGetWithHttpInfo(targetingType: PublicTargetingType, adAccountId: kotlin.String?, clientId: kotlin.String?, oauthSignature: kotlin.String?, timestamp: kotlin.String?) : ApiResponse<kotlin.collections.List<kotlin.Any>?> {
+        val localVariableConfig = targetingOptionsGetRequestConfig(targetingType = targetingType, adAccountId = adAccountId, clientId = clientId, oauthSignature = oauthSignature, timestamp = timestamp)
 
         return request<Unit, kotlin.collections.List<kotlin.Any>>(
             localVariableConfig
@@ -518,17 +486,20 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * To obtain the request config of the operation targetingOptionsGet
      *
-     * @param targetingType Public targeting type.
-     * @param clientId Client ID. (optional)
-     * @param oauthSignature Oauth signature (optional)
-     * @param timestamp Timestamp (optional)
+     * @param targetingType Public targeting type
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param clientId Client ID (optional)
+     * @param oauthSignature Oauth signature (optional)
+     * @param timestamp Timestamp. (optional)
      * @return RequestConfig
      */
-    fun targetingOptionsGetRequestConfig(targetingType: TargetingTypeTargetingOptionsGet, clientId: kotlin.String?, oauthSignature: kotlin.String?, timestamp: kotlin.String?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
+    fun targetingOptionsGetRequestConfig(targetingType: PublicTargetingType, adAccountId: kotlin.String?, clientId: kotlin.String?, oauthSignature: kotlin.String?, timestamp: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (adAccountId != null) {
+                    put("ad_account_id", listOf(adAccountId.toString()))
+                }
                 if (clientId != null) {
                     put("client_id", listOf(clientId.toString()))
                 }
@@ -538,16 +509,13 @@ open class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.
                 if (timestamp != null) {
                     put("timestamp", listOf(timestamp.toString()))
                 }
-                if (adAccountId != null) {
-                    put("ad_account_id", listOf(adAccountId.toString()))
-                }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/resources/targeting/{targeting_type}".replace("{"+"targeting_type"+"}", encodeURIComponent(targetingType.value.toString())),
+            path = "/resources/targeting/{targeting_type}".replace("{"+"targeting_type"+"}", encodeURIComponent(targetingType.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

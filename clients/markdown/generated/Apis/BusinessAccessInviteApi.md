@@ -42,7 +42,7 @@ Create a request to access an existing partner&#39;s assets.
 
 <a name="cancelInvitesOrRequests"></a>
 # **cancelInvitesOrRequests**
-> DeleteInvitesResultsResponseArray cancelInvitesOrRequests(business\_id, CancelInvitesBody)
+> CancelInvitesResponse cancelInvitesOrRequests(business\_id, CancelInvitesRequest)
 
 Cancel invites/requests
 
@@ -53,11 +53,11 @@ Cancel invites/requests
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
-| **CancelInvitesBody** | [**CancelInvitesBody**](../Models/CancelInvitesBody.md)| A list with invite ids | |
+| **CancelInvitesRequest** | [**CancelInvitesRequest**](../Models/CancelInvitesRequest.md)|  | |
 
 ### Return type
 
-[**DeleteInvitesResultsResponseArray**](../Models/DeleteInvitesResultsResponseArray.md)
+[**CancelInvitesResponse**](../Models/CancelInvitesResponse.md)
 
 ### Authorization
 
@@ -81,7 +81,7 @@ Update invite/request with an asset permission
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
-| **CreateAssetInvitesRequest** | [**CreateAssetInvitesRequest**](../Models/CreateAssetInvitesRequest.md)| A list of invites/requests together with the asset permissions to be assigned to the invite/request.  | |
+| **CreateAssetInvitesRequest** | [**CreateAssetInvitesRequest**](../Models/CreateAssetInvitesRequest.md)|  | |
 
 ### Return type
 
@@ -109,7 +109,7 @@ Create invites or requests
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
-| **CreateMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](../Models/CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | |
+| **CreateMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](../Models/CreateMembershipOrPartnershipInvitesBody.md)|  | |
 
 ### Return type
 
@@ -138,10 +138,10 @@ Get invites/requests
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
 | **is\_member** | **Boolean**| A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional] [default to true] |
-| **invite\_status** | [**List**](../Models/String.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] [default to null] [enum: PENDING, EXPIRED] |
+| **invite\_status** | [**List**](../Models/InviteFilterStatus.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] [default to null] |
 | **invite\_type** | [**InviteType**](../Models/.md)| Invite type to filter invites by. Only invites of the specified type will be returned. | [optional] [default to null] [enum: MEMBER_INVITE, PARTNER_INVITE, PARTNER_REQUEST] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 

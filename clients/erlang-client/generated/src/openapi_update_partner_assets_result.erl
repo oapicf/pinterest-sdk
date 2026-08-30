@@ -6,7 +6,7 @@
 
 -type openapi_update_partner_assets_result() ::
     #{ 'asset_id' => binary(),
-       'asset_type' => binary(),
+       'asset_type' => openapi_asset_type_response:openapi_asset_type_response(),
        'partner_id' => binary(),
        'permissions' => list()
      }.

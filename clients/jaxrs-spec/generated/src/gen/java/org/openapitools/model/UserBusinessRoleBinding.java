@@ -22,7 +22,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("UserBusinessRoleBinding")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UserBusinessRoleBinding   {
   private BusinessMemberAssetsSummary assetsSummary;
   private @Valid List<String> businessRoles = new ArrayList<>();
@@ -37,6 +37,7 @@ public class UserBusinessRoleBinding   {
   }
 
   /**
+   * Ad accounts and profiles the business member/partner has access to.
    **/
   public UserBusinessRoleBinding assetsSummary(BusinessMemberAssetsSummary assetsSummary) {
     this.assetsSummary = assetsSummary;
@@ -44,7 +45,7 @@ public class UserBusinessRoleBinding   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ad accounts and profiles the business member/partner has access to.")
   @JsonProperty("assets_summary")
   @Valid public BusinessMemberAssetsSummary getAssetsSummary() {
     return assetsSummary;
@@ -160,7 +161,7 @@ public class UserBusinessRoleBinding   {
   }
 
   
-  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the business member/business partner/employer.")
+  @ApiModelProperty(example = "549755885175", value = "Unique identifier of the business member/business partner/employer.")
   @JsonProperty("id")
    @Pattern(regexp="^\\d+$")public String getId() {
     return id;
@@ -172,7 +173,7 @@ public class UserBusinessRoleBinding   {
   }
 
   /**
-   * This field is only relevant when business_role&#x3D;\&quot;PARTNER\&quot;. &lt;br&gt;If is_shared_partner&#x3D;FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. &lt;br&gt;If is_shared_partner&#x3D;TRUE, you can access the partner&#39;s business asset. If assets_summary is not empty, the assets listed are the partner&#39;s business assets you have access to.
+   * This field is only relevant when business_role&#x3D;\&quot;PARTNER\&quot;. If is_shared_partner&#x3D;FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner&#x3D;TRUE, you can access the partner&#39;s business asset. If assets_summary is not empty, the assets listed are the partner&#39;s business assets you have access to.
    **/
   public UserBusinessRoleBinding isSharedPartner(Boolean isSharedPartner) {
     this.isSharedPartner = isSharedPartner;
@@ -180,7 +181,7 @@ public class UserBusinessRoleBinding   {
   }
 
   
-  @ApiModelProperty(example = "false", value = "This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.")
+  @ApiModelProperty(example = "false", value = "This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.")
   @JsonProperty("is_shared_partner")
   public Boolean getIsSharedPartner() {
     return isSharedPartner;
@@ -258,12 +259,8 @@ public class UserBusinessRoleBinding   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

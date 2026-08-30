@@ -7,8 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { InviteAssetsSummaryAdAccountsInner } from './inviteAssetsSummaryAdAccountsInner';
-import { InviteAssetsSummaryProfilesInner } from './inviteAssetsSummaryProfilesInner';
+import { InviteAssetsSummaryItem } from './inviteAssetsSummaryItem';
 
 
 /**
@@ -18,10 +17,10 @@ export interface InviteAssetsSummary {
     /**
      * List of ad account IDs and respective permission levels that will be assigned.
      */
-    ad_accounts?: Array<InviteAssetsSummaryAdAccountsInner>;
+    ad_accounts?: Array<InviteAssetsSummaryItem>;
     /**
      * List of profile IDs and respective permission levels that will be assigned.
      */
-    profiles?: Array<InviteAssetsSummaryProfilesInner>;
+    profiles?: Array<InviteAssetsSummaryItem>;
 }
 

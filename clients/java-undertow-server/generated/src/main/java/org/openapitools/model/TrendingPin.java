@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -23,13 +23,33 @@ import io.swagger.annotations.ApiModelProperty;
  */
 
 @ApiModel(description = "Pin image data for trending topics")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TrendingPin   {
   
+  private String color;
   private Integer height;
   private String id;
   private String src;
+  private Double verticalOffset;
   private Integer width;
+
+  /**
+   * Dominant color of the pin image in hex format
+   */
+  public TrendingPin color(String color) {
+    this.color = color;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Dominant color of the pin image in hex format")
+  @JsonProperty("color")
+  public String getColor() {
+    return color;
+  }
+  public void setColor(String color) {
+    this.color = color;
+  }
 
   /**
    * Height of the pin image in pixels
@@ -86,6 +106,24 @@ public class TrendingPin   {
   }
 
   /**
+   * The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.
+   */
+  public TrendingPin verticalOffset(Double verticalOffset) {
+    this.verticalOffset = verticalOffset;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.")
+  @JsonProperty("vertical_offset")
+  public Double getVerticalOffset() {
+    return verticalOffset;
+  }
+  public void setVerticalOffset(Double verticalOffset) {
+    this.verticalOffset = verticalOffset;
+  }
+
+  /**
    * Width of the pin image in pixels
    */
   public TrendingPin width(Integer width) {
@@ -113,15 +151,17 @@ public class TrendingPin   {
       return false;
     }
     TrendingPin trendingPin = (TrendingPin) o;
-    return Objects.equals(height, trendingPin.height) &&
+    return Objects.equals(color, trendingPin.color) &&
+        Objects.equals(height, trendingPin.height) &&
         Objects.equals(id, trendingPin.id) &&
         Objects.equals(src, trendingPin.src) &&
+        Objects.equals(verticalOffset, trendingPin.verticalOffset) &&
         Objects.equals(width, trendingPin.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(height, id, src, width);
+    return Objects.hash(color, height, id, src, verticalOffset, width);
   }
 
   @Override
@@ -129,9 +169,11 @@ public class TrendingPin   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TrendingPin {\n");
     
+    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    src: ").append(toIndentedString(src)).append("\n");
+    sb.append("    verticalOffset: ").append(toIndentedString(verticalOffset)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -142,10 +184,7 @@ public class TrendingPin   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -1,0 +1,11 @@
+package models
+
+// ProductGroupPromotionsCreate - Resource create operation model.
+type ProductGroupPromotionsCreate struct {
+
+	// ID of the ad group the product group promotion belongs to.
+	AdGroupId string `json:"ad_group_id" validate:"regexp=^(AG)?\\d+$"`
+
+	// List of product group promotions to create or update.
+	ProductGroupPromotion []ProductGroupPromotion `json:"product_group_promotion"`
+}

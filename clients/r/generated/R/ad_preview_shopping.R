@@ -1,21 +1,22 @@
 #' Create a new AdPreviewShopping
 #'
 #' @description
-#' AdPreviewShopping Class
+#' Ad preview from a catalog product group (shopping).
 #'
 #' @docType class
 #' @title AdPreviewShopping
 #' @description AdPreviewShopping Class
 #' @format An \code{R6Class} generator object
 #' @field catalog_product_group_id Catalog Product Group Id. character
-#' @field creative_type Ad format of the shopping ad preview. character
+#' @field creative_type Ad format of the shopping ad preview. \link{AdShoppingPreviewCreativeType}
 #' @field customizable_cta_type Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE` \link{CustomizableCTAType} [optional]
 #' @field hero_image_title Title displayed below ad. character [optional]
 #' @field hero_image_url Hero image URL. character [optional]
 #' @field hero_pin_id Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required. character [optional]
 #' @field image_tag Multi image template tag. character [optional]
 #' @field item_id Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING. character [optional]
-#' @field preferred_media_type Preferred media type. character [optional]
+#' @field preferred_media_type Preferred media type. \link{BasePreferredMediaType} [optional]
+#' @field show_promotion Include promotion data in preview when available on catalog item. Defaults to false. character [optional]
 #' @field video_tag Multi video template tag, image_tag and video_tag are mutual exclusive. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,6 +33,7 @@ AdPreviewShopping <- R6::R6Class(
     `image_tag` = NULL,
     `item_id` = NULL,
     `preferred_media_type` = NULL,
+    `show_promotion` = NULL,
     `video_tag` = NULL,
 
     #' @description
@@ -46,9 +48,10 @@ AdPreviewShopping <- R6::R6Class(
     #' @param image_tag Multi image template tag.
     #' @param item_id Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING.
     #' @param preferred_media_type Preferred media type.
+    #' @param show_promotion Include promotion data in preview when available on catalog item. Defaults to false.
     #' @param video_tag Multi video template tag, image_tag and video_tag are mutual exclusive.
     #' @param ... Other optional arguments.
-    initialize = function(`catalog_product_group_id`, `creative_type`, `customizable_cta_type` = NULL, `hero_image_title` = NULL, `hero_image_url` = NULL, `hero_pin_id` = NULL, `image_tag` = NULL, `item_id` = NULL, `preferred_media_type` = NULL, `video_tag` = NULL, ...) {
+    initialize = function(`catalog_product_group_id`, `creative_type`, `customizable_cta_type` = NULL, `hero_image_title` = NULL, `hero_image_url` = NULL, `hero_pin_id` = NULL, `image_tag` = NULL, `item_id` = NULL, `preferred_media_type` = NULL, `show_promotion` = NULL, `video_tag` = NULL, ...) {
       if (!missing(`catalog_product_group_id`)) {
         if (!(is.character(`catalog_product_group_id`) && length(`catalog_product_group_id`) == 1)) {
           stop(paste("Error! Invalid data for `catalog_product_group_id`. Must be a string:", `catalog_product_group_id`))
@@ -56,12 +59,10 @@ AdPreviewShopping <- R6::R6Class(
         self$`catalog_product_group_id` <- `catalog_product_group_id`
       }
       if (!missing(`creative_type`)) {
-        if (!(`creative_type` %in% c("SHOPPING", "CAROUSEL", "COLLECTION", "REGULAR"))) {
-          stop(paste("Error! \"", `creative_type`, "\" cannot be assigned to `creative_type`. Must be \"SHOPPING\", \"CAROUSEL\", \"COLLECTION\", \"REGULAR\".", sep = ""))
+        if (!(`creative_type` %in% c())) {
+          stop(paste("Error! \"", `creative_type`, "\" cannot be assigned to `creative_type`. Must be .", sep = ""))
         }
-        if (!(is.character(`creative_type`) && length(`creative_type`) == 1)) {
-          stop(paste("Error! Invalid data for `creative_type`. Must be a string:", `creative_type`))
-        }
+        stopifnot(R6::is.R6(`creative_type`))
         self$`creative_type` <- `creative_type`
       }
       if (!is.null(`customizable_cta_type`)) {
@@ -102,13 +103,17 @@ AdPreviewShopping <- R6::R6Class(
         self$`item_id` <- `item_id`
       }
       if (!is.null(`preferred_media_type`)) {
-        if (!(`preferred_media_type` %in% c("VIDEO", "IMAGE"))) {
-          stop(paste("Error! \"", `preferred_media_type`, "\" cannot be assigned to `preferred_media_type`. Must be \"VIDEO\", \"IMAGE\".", sep = ""))
+        if (!(`preferred_media_type` %in% c())) {
+          stop(paste("Error! \"", `preferred_media_type`, "\" cannot be assigned to `preferred_media_type`. Must be .", sep = ""))
         }
-        if (!(is.character(`preferred_media_type`) && length(`preferred_media_type`) == 1)) {
-          stop(paste("Error! Invalid data for `preferred_media_type`. Must be a string:", `preferred_media_type`))
-        }
+        stopifnot(R6::is.R6(`preferred_media_type`))
         self$`preferred_media_type` <- `preferred_media_type`
+      }
+      if (!is.null(`show_promotion`)) {
+        if (!(is.logical(`show_promotion`) && length(`show_promotion`) == 1)) {
+          stop(paste("Error! Invalid data for `show_promotion`. Must be a boolean:", `show_promotion`))
+        }
+        self$`show_promotion` <- `show_promotion`
       }
       if (!is.null(`video_tag`)) {
         if (!(is.character(`video_tag`) && length(`video_tag`) == 1)) {
@@ -155,11 +160,11 @@ AdPreviewShopping <- R6::R6Class(
       }
       if (!is.null(self$`creative_type`)) {
         AdPreviewShoppingObject[["creative_type"]] <-
-          self$`creative_type`
+          self$extractSimpleType(self$`creative_type`)
       }
       if (!is.null(self$`customizable_cta_type`)) {
         AdPreviewShoppingObject[["customizable_cta_type"]] <-
-          self$`customizable_cta_type`$toSimpleType()
+          self$extractSimpleType(self$`customizable_cta_type`)
       }
       if (!is.null(self$`hero_image_title`)) {
         AdPreviewShoppingObject[["hero_image_title"]] <-
@@ -183,13 +188,40 @@ AdPreviewShopping <- R6::R6Class(
       }
       if (!is.null(self$`preferred_media_type`)) {
         AdPreviewShoppingObject[["preferred_media_type"]] <-
-          self$`preferred_media_type`
+          self$extractSimpleType(self$`preferred_media_type`)
+      }
+      if (!is.null(self$`show_promotion`)) {
+        AdPreviewShoppingObject[["show_promotion"]] <-
+          self$`show_promotion`
       }
       if (!is.null(self$`video_tag`)) {
         AdPreviewShoppingObject[["video_tag"]] <-
           self$`video_tag`
       }
       return(AdPreviewShoppingObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -203,10 +235,9 @@ AdPreviewShopping <- R6::R6Class(
         self$`catalog_product_group_id` <- this_object$`catalog_product_group_id`
       }
       if (!is.null(this_object$`creative_type`)) {
-        if (!is.null(this_object$`creative_type`) && !(this_object$`creative_type` %in% c("SHOPPING", "CAROUSEL", "COLLECTION", "REGULAR"))) {
-          stop(paste("Error! \"", this_object$`creative_type`, "\" cannot be assigned to `creative_type`. Must be \"SHOPPING\", \"CAROUSEL\", \"COLLECTION\", \"REGULAR\".", sep = ""))
-        }
-        self$`creative_type` <- this_object$`creative_type`
+        `creative_type_object` <- AdShoppingPreviewCreativeType$new()
+        `creative_type_object`$fromJSON(jsonlite::toJSON(this_object$`creative_type`, auto_unbox = TRUE, digits = NA))
+        self$`creative_type` <- `creative_type_object`
       }
       if (!is.null(this_object$`customizable_cta_type`)) {
         `customizable_cta_type_object` <- CustomizableCTAType$new()
@@ -229,10 +260,12 @@ AdPreviewShopping <- R6::R6Class(
         self$`item_id` <- this_object$`item_id`
       }
       if (!is.null(this_object$`preferred_media_type`)) {
-        if (!is.null(this_object$`preferred_media_type`) && !(this_object$`preferred_media_type` %in% c("VIDEO", "IMAGE"))) {
-          stop(paste("Error! \"", this_object$`preferred_media_type`, "\" cannot be assigned to `preferred_media_type`. Must be \"VIDEO\", \"IMAGE\".", sep = ""))
-        }
-        self$`preferred_media_type` <- this_object$`preferred_media_type`
+        `preferred_media_type_object` <- BasePreferredMediaType$new()
+        `preferred_media_type_object`$fromJSON(jsonlite::toJSON(this_object$`preferred_media_type`, auto_unbox = TRUE, digits = NA))
+        self$`preferred_media_type` <- `preferred_media_type_object`
+      }
+      if (!is.null(this_object$`show_promotion`)) {
+        self$`show_promotion` <- this_object$`show_promotion`
       }
       if (!is.null(this_object$`video_tag`)) {
         self$`video_tag` <- this_object$`video_tag`
@@ -259,20 +292,15 @@ AdPreviewShopping <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`catalog_product_group_id` <- this_object$`catalog_product_group_id`
-      if (!is.null(this_object$`creative_type`) && !(this_object$`creative_type` %in% c("SHOPPING", "CAROUSEL", "COLLECTION", "REGULAR"))) {
-        stop(paste("Error! \"", this_object$`creative_type`, "\" cannot be assigned to `creative_type`. Must be \"SHOPPING\", \"CAROUSEL\", \"COLLECTION\", \"REGULAR\".", sep = ""))
-      }
-      self$`creative_type` <- this_object$`creative_type`
+      self$`creative_type` <- AdShoppingPreviewCreativeType$new()$fromJSON(jsonlite::toJSON(this_object$`creative_type`, auto_unbox = TRUE, digits = NA))
       self$`customizable_cta_type` <- CustomizableCTAType$new()$fromJSON(jsonlite::toJSON(this_object$`customizable_cta_type`, auto_unbox = TRUE, digits = NA))
       self$`hero_image_title` <- this_object$`hero_image_title`
       self$`hero_image_url` <- this_object$`hero_image_url`
       self$`hero_pin_id` <- this_object$`hero_pin_id`
       self$`image_tag` <- this_object$`image_tag`
       self$`item_id` <- this_object$`item_id`
-      if (!is.null(this_object$`preferred_media_type`) && !(this_object$`preferred_media_type` %in% c("VIDEO", "IMAGE"))) {
-        stop(paste("Error! \"", this_object$`preferred_media_type`, "\" cannot be assigned to `preferred_media_type`. Must be \"VIDEO\", \"IMAGE\".", sep = ""))
-      }
-      self$`preferred_media_type` <- this_object$`preferred_media_type`
+      self$`preferred_media_type` <- BasePreferredMediaType$new()$fromJSON(jsonlite::toJSON(this_object$`preferred_media_type`, auto_unbox = TRUE, digits = NA))
+      self$`show_promotion` <- this_object$`show_promotion`
       self$`video_tag` <- this_object$`video_tag`
       self
     },
@@ -293,9 +321,7 @@ AdPreviewShopping <- R6::R6Class(
       }
       # check the required field `creative_type`
       if (!is.null(input_json$`creative_type`)) {
-        if (!(is.character(input_json$`creative_type`) && length(input_json$`creative_type`) == 1)) {
-          stop(paste("Error! Invalid data for `creative_type`. Must be a string:", input_json$`creative_type`))
-        }
+        stopifnot(R6::is.R6(input_json$`creative_type`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for AdPreviewShopping: the required field `creative_type` is missing."))
       }

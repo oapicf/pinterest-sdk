@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## boardsUserFollowsList
 
-> BoardsUserFollowsList200Response boardsUserFollowsList(opts)
+> BoardsList200Response boardsUserFollowsList(opts)
 
 List following boards
 
@@ -43,10 +43,10 @@ client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
 let opts = {
-  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'adAccountId': "adAccountId_example", // String | Unique identifier of an ad account.
   'explicitFollowing': false, // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
-  'adAccountId': "adAccountId_example" // String | Unique identifier of an ad account.
+  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.boardsUserFollowsList(opts, (error, data, response) => {
   if (error) {
@@ -62,14 +62,14 @@ apiInstance.boardsUserFollowsList(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
+ **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
+ **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BoardsUserFollowsList200Response**](BoardsUserFollowsList200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -83,11 +83,11 @@ Name | Type | Description  | Notes
 
 ## followUserUpdate
 
-> UserSummary followUserUpdate(username, followUserRequest)
+> FollowUser followUserUpdate(username, followUserCreate)
 
 Follow user
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 
@@ -99,9 +99,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
-let username = "username"; // String | A valid username
-let followUserRequest = new PinterestSdk.FollowUserRequest(); // FollowUserRequest | Follow a user.
-apiInstance.followUserUpdate(username, followUserRequest, (error, data, response) => {
+let username = "username_example"; // String | A valid username
+let followUserCreate = new PinterestSdk.FollowUserCreate(); // FollowUserCreate | 
+apiInstance.followUserUpdate(username, followUserCreate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -116,11 +116,11 @@ apiInstance.followUserUpdate(username, followUserRequest, (error, data, response
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **String**| A valid username | 
- **followUserRequest** | [**FollowUserRequest**](FollowUserRequest.md)| Follow a user. | 
+ **followUserCreate** | [**FollowUserCreate**](FollowUserCreate.md)|  | 
 
 ### Return type
 
-[**UserSummary**](UserSummary.md)
+[**FollowUser**](FollowUser.md)
 
 ### Authorization
 
@@ -155,7 +155,7 @@ client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.UserAccountApi();
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.followersList(opts, (error, data, response) => {
   if (error) {
@@ -172,7 +172,7 @@ apiInstance.followersList(opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -238,11 +238,11 @@ This endpoint does not need any parameter.
 
 ## unverifyWebsiteDelete
 
-> unverifyWebsiteDelete(website)
+> UserWebsite unverifyWebsiteDelete(website)
 
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 ### Example
 
@@ -254,12 +254,12 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
-let website = "mysite.test"; // String | Website with path or domain only
+let website = "website_example"; // String | Website with path or domain only
 apiInstance.unverifyWebsiteDelete(website, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -311,7 +311,7 @@ let opts = {
   'appTypes': "'ALL'", // String | Apps or devices to get data for, default is all.
   'contentType': "'ALL'", // String | Filter to paid or organic data. Default is all.
   'source': "'ALL'", // String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-  'metricTypes': ["null"], // [String] | Metric types to get data for, default is all. 
+  'metricTypes': [new PinterestSdk.QuerymetrictypesItems()], // [QuerymetrictypesItems] | Metric types to get data for, default is all.
   'splitField': "'NO_SPLIT'", // String | How to split the data into groups. Not including this param means data won't be split.
   'adAccountId': "adAccountId_example" // String | Unique identifier of an ad account.
 };
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
  **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;]
  **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;]
- **metricTypes** | [**[String]**](String.md)| Metric types to get data for, default is all.  | [optional] 
+ **metricTypes** | [**[QuerymetrictypesItems]**](QuerymetrictypesItems.md)| Metric types to get data for, default is all. | [optional] 
  **splitField** | **String**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to &#39;NO_SPLIT&#39;]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
@@ -377,16 +377,16 @@ client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.UserAccountApi();
 let startDate = new Date("2013-10-20"); // Date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 let endDate = new Date("2013-10-20"); // Date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-let sortBy = "sortBy_example"; // String | Specify sorting order for metrics
+let sortBy = new PinterestSdk.TopPinsSortBy(); // TopPinsSortBy | Specify sorting order for metrics
 let opts = {
   'fromClaimedContent': "'BOTH'", // String | Filter on Pins that match your claimed domain.
   'pinFormat': "'ALL'", // String | Pin formats to get data for, default is all.
   'appTypes': "'ALL'", // String | Apps or devices to get data for, default is all.
   'contentType': "'ALL'", // String | Filter to paid or organic data. Default is all.
   'source': "'ALL'", // String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-  'metricTypes': ["null"], // [String] | Metric types to get data for, default is all. 
-  'numOfPins': 25, // Number | Number of pins to include, default is 10. Max is 50.
-  'createdInLastNDays': 30, // Number | Get metrics for pins created in the last \"n\" days.
+  'metricTypes': [new PinterestSdk.QuerymetrictypesItems()], // [QuerymetrictypesItems] | Metric types to get data for, default is all.
+  'numOfPins': 10, // Number | Number of pins to include, default is 10. Max is 50.
+  'createdInLastNDays': 3.4, // Number | Get metrics for pins created in the last \"n\" days.
   'adAccountId': "adAccountId_example" // String | Unique identifier of an ad account.
 };
 apiInstance.userAccountAnalyticsTopPins(startDate, endDate, sortBy, opts, (error, data, response) => {
@@ -405,13 +405,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **Date**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **Date**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **sortBy** | **String**| Specify sorting order for metrics | 
+ **sortBy** | [**TopPinsSortBy**](.md)| Specify sorting order for metrics | 
  **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [default to &#39;BOTH&#39;]
  **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
  **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;]
  **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;]
- **metricTypes** | [**[String]**](String.md)| Metric types to get data for, default is all.  | [optional] 
+ **metricTypes** | [**[QuerymetrictypesItems]**](QuerymetrictypesItems.md)| Metric types to get data for, default is all. | [optional] 
  **numOfPins** | **Number**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
  **createdInLastNDays** | **Number**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] 
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
@@ -453,16 +453,16 @@ client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.UserAccountApi();
 let startDate = new Date("2013-10-20"); // Date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 let endDate = new Date("2013-10-20"); // Date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-let sortBy = "sortBy_example"; // String | Specify sorting order for video metrics
+let sortBy = new PinterestSdk.TopVideoPinsSortBy(); // TopVideoPinsSortBy | Specify sorting order for video metrics
 let opts = {
   'fromClaimedContent': "'BOTH'", // String | Filter on Pins that match your claimed domain.
   'pinFormat': "'ALL'", // String | Pin formats to get data for, default is all.
   'appTypes': "'ALL'", // String | Apps or devices to get data for, default is all.
   'contentType': "'ALL'", // String | Filter to paid or organic data. Default is all.
   'source': "'ALL'", // String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-  'metricTypes': ["null"], // [String] | Metric types to get video data for, default is all. 
-  'numOfPins': 25, // Number | Number of pins to include, default is 10. Max is 50.
-  'createdInLastNDays': 30, // Number | Get metrics for pins created in the last \"n\" days.
+  'metricTypes': [new PinterestSdk.QueryvideopinmetrictypesItems()], // [QueryvideopinmetrictypesItems] | Metric types to get video data for, default is all.
+  'numOfPins': 10, // Number | Number of pins to include, default is 10. Max is 50.
+  'createdInLastNDays': 3.4, // Number | Get metrics for pins created in the last \"n\" days.
   'adAccountId': "adAccountId_example" // String | Unique identifier of an ad account.
 };
 apiInstance.userAccountAnalyticsTopVideoPins(startDate, endDate, sortBy, opts, (error, data, response) => {
@@ -481,13 +481,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **Date**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **Date**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **sortBy** | **String**| Specify sorting order for video metrics | 
+ **sortBy** | [**TopVideoPinsSortBy**](.md)| Specify sorting order for video metrics | 
  **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [default to &#39;BOTH&#39;]
  **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
  **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;]
  **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;]
- **metricTypes** | [**[String]**](String.md)| Metric types to get video data for, default is all.  | [optional] 
+ **metricTypes** | [**[QueryvideopinmetrictypesItems]**](QueryvideopinmetrictypesItems.md)| Metric types to get video data for, default is all. | [optional] 
  **numOfPins** | **Number**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
  **createdInLastNDays** | **Number**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] 
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
@@ -527,10 +527,10 @@ let client_credentials = defaultClient.authentications['client_credentials'];
 client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
-let username = "username"; // String | A valid username
+let username = "username_example"; // String | A valid username
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.userAccountFollowedInterests(username, opts, (error, data, response) => {
   if (error) {
@@ -548,7 +548,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **String**| A valid username | 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -570,7 +570,7 @@ Name | Type | Description  | Notes
 
 Get user account
 
-Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.
 
 ### Example
 
@@ -620,7 +620,7 @@ Name | Type | Description  | Notes
 
 ## userFollowingGet
 
-> UserFollowingGet200Response userFollowingGet(opts)
+> FollowersList200Response userFollowingGet(opts)
 
 List following
 
@@ -640,11 +640,11 @@ client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
 let opts = {
-  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  'feedType': "feedType_example", // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
+  'adAccountId': "adAccountId_example", // String | Unique identifier of an ad account.
   'explicitFollowing': false, // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
-  'adAccountId': "adAccountId_example" // String | Unique identifier of an ad account.
+  'feedType': new PinterestSdk.UserFollowingFeedType(), // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
+  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.userFollowingGet(opts, (error, data, response) => {
   if (error) {
@@ -660,15 +660,15 @@ apiInstance.userFollowingGet(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **feedType** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
- **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
+ **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
+ **feedType** | [**UserFollowingFeedType**](.md)| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
+ **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**UserFollowingGet200Response**](UserFollowingGet200Response.md)
+[**FollowersList200Response**](FollowersList200Response.md)
 
 ### Authorization
 
@@ -700,7 +700,7 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.UserAccountApi();
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.userWebsitesGet(opts, (error, data, response) => {
   if (error) {
@@ -717,7 +717,7 @@ apiInstance.userWebsitesGet(opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -735,7 +735,7 @@ Name | Type | Description  | Notes
 
 ## verifyWebsiteUpdate
 
-> UserWebsiteSummary verifyWebsiteUpdate(userWebsiteVerifyRequest, opts)
+> UserWebsite verifyWebsiteUpdate(userWebsiteCreate, opts)
 
 Verify website
 
@@ -751,11 +751,11 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
-let userWebsiteVerifyRequest = new PinterestSdk.UserWebsiteVerifyRequest(); // UserWebsiteVerifyRequest | Verify a website.
+let userWebsiteCreate = new PinterestSdk.UserWebsiteCreate(); // UserWebsiteCreate | 
 let opts = {
   'adAccountId': "adAccountId_example" // String | Unique identifier of an ad account.
 };
-apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest, opts, (error, data, response) => {
+apiInstance.verifyWebsiteUpdate(userWebsiteCreate, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -769,12 +769,12 @@ apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest, opts, (error, data, re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. | 
+ **userWebsiteCreate** | [**UserWebsiteCreate**](UserWebsiteCreate.md)|  | 
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
-[**UserWebsiteSummary**](UserWebsiteSummary.md)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -788,7 +788,7 @@ Name | Type | Description  | Notes
 
 ## websiteVerificationGet
 
-> UserWebsiteVerificationCode websiteVerificationGet(opts)
+> UserWebsiteVerification websiteVerificationGet(opts)
 
 Get user verification code for website claiming
 
@@ -828,7 +828,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserWebsiteVerificationCode**](UserWebsiteVerificationCode.md)
+[**UserWebsiteVerification**](UserWebsiteVerification.md)
 
 ### Authorization
 

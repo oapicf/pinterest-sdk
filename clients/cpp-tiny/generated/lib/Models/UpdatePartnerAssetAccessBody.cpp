@@ -6,7 +6,7 @@ using namespace Tiny;
 
 UpdatePartnerAssetAccessBody::UpdatePartnerAssetAccessBody()
 {
-	accesses = std::list<UpdatePartnerAssetAccessBody_accesses_inner>();
+	accesses = std::list<UpdatePartnerAssetAccessItem>();
 }
 
 UpdatePartnerAssetAccessBody::UpdatePartnerAssetAccessBody(std::string jsonString)
@@ -31,8 +31,8 @@ UpdatePartnerAssetAccessBody::fromJson(std::string jsonObj)
         bourne::json value = object[accessesKey];
 
 
-        std::list<UpdatePartnerAssetAccessBody_accesses_inner> accesses_list;
-        UpdatePartnerAssetAccessBody_accesses_inner element;
+        std::list<UpdatePartnerAssetAccessItem> accesses_list;
+        UpdatePartnerAssetAccessItem element;
         for(auto& var : value.array_range())
         {
 
@@ -57,12 +57,12 @@ UpdatePartnerAssetAccessBody::toJson()
 
 
 
-    std::list<UpdatePartnerAssetAccessBody_accesses_inner> accesses_list = getAccesses();
+    std::list<UpdatePartnerAssetAccessItem> accesses_list = getAccesses();
     bourne::json accesses_arr = bourne::json::array();
 
     for(auto& var : accesses_list)
     {
-        UpdatePartnerAssetAccessBody_accesses_inner obj = var;
+        UpdatePartnerAssetAccessItem obj = var;
         accesses_arr.append(obj.toJson());
     }
     object["accesses"] = accesses_arr;
@@ -74,14 +74,14 @@ UpdatePartnerAssetAccessBody::toJson()
 
 }
 
-std::list<UpdatePartnerAssetAccessBody_accesses_inner>
+std::list<UpdatePartnerAssetAccessItem>
 UpdatePartnerAssetAccessBody::getAccesses()
 {
 	return accesses;
 }
 
 void
-UpdatePartnerAssetAccessBody::setAccesses(std::list <UpdatePartnerAssetAccessBody_accesses_inner> accesses)
+UpdatePartnerAssetAccessBody::setAccesses(std::list<UpdatePartnerAssetAccessItem> accesses)
 {
 	this->accesses = accesses;
 }

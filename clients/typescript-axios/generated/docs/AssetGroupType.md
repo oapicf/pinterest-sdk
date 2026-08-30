@@ -1,6 +1,6 @@
 # AssetGroupType
 
-Asset group type
+Asset group type.
 
 ## Enum
 

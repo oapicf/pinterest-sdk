@@ -12,9 +12,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Product counts for a Creative Assets CatalogsProductGroup")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Product counts for a Creative Assets CatalogsProductGroup")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsProductGroupProductCounts   {
   
+  private BigDecimal appLinks;
 
   /**
    * Gets or Sets catalogType
@@ -35,8 +36,23 @@ public class CatalogsCreativeAssetsProductGroupProductCounts   {
   }
 
   private CatalogTypeEnum catalogType;
+  private BigDecimal images;
   private BigDecimal total;
   private BigDecimal videos;
+
+  /**
+   * minimum: 0
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("app_links")
+  @NotNull
+ @DecimalMin("0")  public BigDecimal getAppLinks() {
+    return appLinks;
+  }
+  public void setAppLinks(BigDecimal appLinks) {
+    this.appLinks = appLinks;
+  }
 
   /**
    **/
@@ -49,6 +65,20 @@ public class CatalogsCreativeAssetsProductGroupProductCounts   {
   }
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
+  }
+
+  /**
+   * minimum: 0
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("images")
+  @NotNull
+ @DecimalMin("0")  public BigDecimal getImages() {
+    return images;
+  }
+  public void setImages(BigDecimal images) {
+    this.images = images;
   }
 
   /**
@@ -89,14 +119,16 @@ public class CatalogsCreativeAssetsProductGroupProductCounts   {
       return false;
     }
     CatalogsCreativeAssetsProductGroupProductCounts catalogsCreativeAssetsProductGroupProductCounts = (CatalogsCreativeAssetsProductGroupProductCounts) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupProductCounts.catalogType) &&
+    return Objects.equals(this.appLinks, catalogsCreativeAssetsProductGroupProductCounts.appLinks) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupProductCounts.catalogType) &&
+        Objects.equals(this.images, catalogsCreativeAssetsProductGroupProductCounts.images) &&
         Objects.equals(this.total, catalogsCreativeAssetsProductGroupProductCounts.total) &&
         Objects.equals(this.videos, catalogsCreativeAssetsProductGroupProductCounts.videos);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, total, videos);
+    return Objects.hash(appLinks, catalogType, images, total, videos);
   }
 
   @Override
@@ -104,7 +136,9 @@ public class CatalogsCreativeAssetsProductGroupProductCounts   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroupProductCounts {\n");
     
+    sb.append("    appLinks: ").append(toIndentedString(appLinks)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    videos: ").append(toIndentedString(videos)).append("\n");
     sb.append("}");
@@ -116,10 +150,7 @@ public class CatalogsCreativeAssetsProductGroupProductCounts   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -1,0 +1,77 @@
+## PinsApi
+
+### Get multiple Pin analytics
+## Get multiple Pin analytics
+GET https://api.pinterest.com/v5/pins/analytics?pinIds={{pinIds}}&startDate={{startDate}}&endDate={{endDate}}&appTypes={{appTypes}}&metricTypes={{metricTypes}}&adAccountId={{adAccountId}}
+Accept: application/json
+
+### Get Pin analytics
+## Get Pin analytics
+GET https://api.pinterest.com/v5/pins/{{pin_id}}/analytics?startDate={{startDate}}&endDate={{endDate}}&appTypes={{appTypes}}&metricTypes={{metricTypes}}&splitField={{splitField}}&adAccountId={{adAccountId}}
+Accept: application/json
+
+### Create Pin
+## Create Pin
+POST https://api.pinterest.com/v5/pins?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "ai_disclosures": "<string>",
+ "alt_text": "<string>",
+ "board_id": "<string>",
+ "board_section_id": "<string>",
+ "description": "<string>",
+ "dominant_color": "<string>",
+ "link": "<string>",
+ "media_source": "<string>",
+ "parent_pin_id": "<string>",
+ "sponsor_id": "<string>",
+ "title": "<string>"
+}
+
+
+### Delete Pin
+## Delete Pin
+DELETE https://api.pinterest.com/v5/pins/{{pin_id}}?adAccountId={{adAccountId}}
+Accept: application/json
+
+### Get Pin
+## Get Pin
+GET https://api.pinterest.com/v5/pins/{{pin_id}}?adAccountId={{adAccountId}}&pinMetrics={{pinMetrics}}
+Accept: application/json
+
+### List Pins
+## List Pins
+GET https://api.pinterest.com/v5/pins?pinFilter={{pinFilter}}&pinMetrics={{pinMetrics}}&includeProtectedPins={{includeProtectedPins}}&pinType={{pinType}}&creativeTypes={{creativeTypes}}&adAccountId={{adAccountId}}&domain={{domain}}&domains={{domains}}&includeProductTagObj={{includeProductTagObj}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Save Pin
+## Save Pin
+POST https://api.pinterest.com/v5/pins/{{pin_id}}/save?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "board_id": "<string>",
+ "board_section_id": "<string>"
+}
+
+
+### Update Pin
+## Update Pin
+PATCH https://api.pinterest.com/v5/pins/{{pin_id}}?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "ai_disclosures": "<string>",
+ "alt_text": "<string>",
+ "board_id": "<string>",
+ "board_section_id": "<string>",
+ "carousel_slots": "<string>",
+ "description": "<string>",
+ "link": "<string>",
+ "title": "<string>"
+}
+

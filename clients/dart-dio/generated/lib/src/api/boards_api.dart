@@ -14,13 +14,14 @@ import 'package:openapi/src/model/board.dart';
 import 'package:openapi/src/model/board_create.dart';
 import 'package:openapi/src/model/board_privacy_filter.dart';
 import 'package:openapi/src/model/board_section.dart';
+import 'package:openapi/src/model/board_section_create.dart';
+import 'package:openapi/src/model/board_section_update_with_required_body.dart';
 import 'package:openapi/src/model/board_sections_list200_response.dart';
 import 'package:openapi/src/model/board_with_update_privacy.dart';
 import 'package:openapi/src/model/board_with_update_privacy_update.dart';
 import 'package:openapi/src/model/boards_list200_response.dart';
 import 'package:openapi/src/model/boards_list_pins200_response.dart';
 import 'package:openapi/src/model/creative_type.dart';
-import 'package:openapi/src/model/error.dart';
 import 'package:openapi/src/model/pinterest_lib_error.dart';
 
 class BoardsApi {
@@ -36,7 +37,7 @@ class BoardsApi {
   ///
   /// Parameters:
   /// * [boardId] - Unique identifier of a board.
-  /// * [boardSection] - Create a board section.
+  /// * [boardSectionCreate] 
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -49,7 +50,7 @@ class BoardsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<BoardSection>> boardSectionsCreate({ 
     required String boardId,
-    required BoardSection boardSection,
+    required BoardSectionCreate boardSectionCreate,
     String? adAccountId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -84,8 +85,8 @@ class BoardsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BoardSection);
-      _bodyData = _serializers.serialize(boardSection, specifiedType: _type);
+      const _type = FullType(BoardSectionCreate);
+      _bodyData = _serializers.serialize(boardSectionCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -155,9 +156,9 @@ class BoardsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [BoardSection] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> boardSectionsDelete({ 
+  Future<Response<BoardSection>> boardSectionsDelete({ 
     required String boardId,
     required String sectionId,
     String? adAccountId,
@@ -199,7 +200,35 @@ class BoardsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    BoardSection? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BoardSection),
+      ) as BoardSection;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<BoardSection>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// List board sections
@@ -209,7 +238,7 @@ class BoardsApi {
   /// * [boardId] - Unique identifier of a board.
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -306,7 +335,7 @@ class BoardsApi {
   /// * [sectionId] - Unique identifier of a board section.
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -402,7 +431,7 @@ class BoardsApi {
   /// Parameters:
   /// * [boardId] - Unique identifier of a board.
   /// * [sectionId] - Unique identifier of a board section.
-  /// * [boardSection] - Update a board section.
+  /// * [boardSectionUpdateWithRequiredBody] 
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -416,7 +445,7 @@ class BoardsApi {
   Future<Response<BoardSection>> boardSectionsUpdate({ 
     required String boardId,
     required String sectionId,
-    required BoardSection boardSection,
+    required BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody,
     String? adAccountId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -451,8 +480,8 @@ class BoardsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BoardSection);
-      _bodyData = _serializers.serialize(boardSection, specifiedType: _type);
+      const _type = FullType(BoardSectionUpdateWithRequiredBody);
+      _bodyData = _serializers.serialize(boardSectionUpdateWithRequiredBody, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -632,9 +661,9 @@ class BoardsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [Board] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> boardsDelete({ 
+  Future<Response<Board>> boardsDelete({ 
     required String boardId,
     String? adAccountId,
     CancelToken? cancelToken,
@@ -675,7 +704,35 @@ class BoardsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    Board? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(Board),
+      ) as Board;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<Board>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// Get board
@@ -870,11 +927,11 @@ class BoardsApi {
   ///
   /// Parameters:
   /// * [boardId] - Unique identifier of a board.
-  /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   /// * [creativeTypes] - Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [pinMetrics] - Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+  /// * [bookmark] - Cursor used to fetch the next page of items
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -886,11 +943,11 @@ class BoardsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<BoardsListPins200Response>> boardsListPins({ 
     required String boardId,
-    String? bookmark,
-    int? pageSize = 25,
     BuiltList<CreativeType>? creativeTypes,
     String? adAccountId,
     bool? pinMetrics = false,
+    String? bookmark,
+    int? pageSize = 25,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -920,11 +977,11 @@ class BoardsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
-      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
       if (creativeTypes != null) r'creative_types': encodeCollectionQueryParameter<CreativeType>(_serializers, creativeTypes, const FullType(BuiltList, [FullType(CreativeType)]), format: ListFormat.multi,),
       if (adAccountId != null) r'ad_account_id': encodeQueryParameter(_serializers, adAccountId, const FullType(String)),
       if (pinMetrics != null) r'pin_metrics': encodeQueryParameter(_serializers, pinMetrics, const FullType(bool)),
+      if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
+      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(

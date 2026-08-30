@@ -2,38 +2,54 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.AssetGroupBinding;
+import org.openapitools.model.AssetTypeResponse;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * An object containing the permissions a business member has on the asset.
  */
 
 @Schema(name = "AssetIdPermissions", description = "An object containing the permissions a business member has on the asset.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AssetIdPermissions {
 
   private AssetGroupBinding assetGroupInfo;
 
   private String assetId;
 
-  private String assetType;
+  private AssetTypeResponse assetType;
 
   @Valid
   private List<String> permissions = new ArrayList<>();
+
+  public AssetIdPermissions() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public AssetIdPermissions(String assetId, AssetTypeResponse assetType, List<String> permissions) {
+    this.assetId = assetId;
+    this.assetType = assetType;
+    this.permissions = permissions;
+  }
 
   public AssetIdPermissions assetGroupInfo(AssetGroupBinding assetGroupInfo) {
     this.assetGroupInfo = assetGroupInfo;
@@ -41,11 +57,11 @@ public class AssetIdPermissions {
   }
 
   /**
-   * Get assetGroupInfo
+   * An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
    * @return assetGroupInfo
    */
   @Valid 
-  @Schema(name = "asset_group_info", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "asset_group_info", description = "An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_group_info")
   public AssetGroupBinding getAssetGroupInfo() {
     return assetGroupInfo;
@@ -64,8 +80,8 @@ public class AssetIdPermissions {
    * Unique identifier of a business asset.
    * @return assetId
    */
-  @Pattern(regexp = "^\\d+$") @Size(min = 1, max = 20) 
-  @Schema(name = "asset_id", example = "549755885175", description = "Unique identifier of a business asset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Pattern(regexp = "^\\d+$") @Size(min = 1, max = 20) 
+  @Schema(name = "asset_id", example = "549755885175", description = "Unique identifier of a business asset.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("asset_id")
   public String getAssetId() {
     return assetId;
@@ -75,23 +91,23 @@ public class AssetIdPermissions {
     this.assetId = assetId;
   }
 
-  public AssetIdPermissions assetType(String assetType) {
+  public AssetIdPermissions assetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
     return this;
   }
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+   * Get assetType
    * @return assetType
    */
-  
-  @Schema(name = "asset_type", example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "asset_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("asset_type")
-  public String getAssetType() {
+  public AssetTypeResponse getAssetType() {
     return assetType;
   }
 
-  public void setAssetType(String assetType) {
+  public void setAssetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
   }
 
@@ -112,8 +128,8 @@ public class AssetIdPermissions {
    * Permission levels member or partner has on an asset.
    * @return permissions
    */
-  
-  @Schema(name = "permissions", example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", description = "Permission levels member or partner has on an asset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "permissions", example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", description = "Permission levels member or partner has on an asset.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("permissions")
   public List<String> getPermissions() {
     return permissions;
@@ -160,10 +176,7 @@ public class AssetIdPermissions {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

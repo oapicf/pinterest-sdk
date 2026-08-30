@@ -49,6 +49,7 @@ API.Client.IntegrationMetadata.prototype.connectedUserId;
 API.Client.IntegrationMetadata.prototype.createdTimestamp;
 
 /**
+ * External business ID for the integration.
  * @type {!string}
  * @export
  */

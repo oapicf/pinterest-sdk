@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filter_operator_type** | **str** |  | [optional] [default to 'IS']
-**negated** | **bool** |  | [optional] [default to False]
+**filter_operator_type** | [**FilterOperatorType**](FilterOperatorType.md) |  | [optional] 
+**negated** | **bool** |  | [optional] 
 **values** | **List[str]** |  | 
 
 ## Example

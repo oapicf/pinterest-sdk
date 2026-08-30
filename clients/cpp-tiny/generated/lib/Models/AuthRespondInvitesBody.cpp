@@ -6,7 +6,7 @@ using namespace Tiny;
 
 AuthRespondInvitesBody::AuthRespondInvitesBody()
 {
-	invites = std::list<AuthRespondInvitesBody_invites_inner>();
+	invites = std::list<AuthRespondInvitesBodyItem>();
 }
 
 AuthRespondInvitesBody::AuthRespondInvitesBody(std::string jsonString)
@@ -31,8 +31,8 @@ AuthRespondInvitesBody::fromJson(std::string jsonObj)
         bourne::json value = object[invitesKey];
 
 
-        std::list<AuthRespondInvitesBody_invites_inner> invites_list;
-        AuthRespondInvitesBody_invites_inner element;
+        std::list<AuthRespondInvitesBodyItem> invites_list;
+        AuthRespondInvitesBodyItem element;
         for(auto& var : value.array_range())
         {
 
@@ -57,12 +57,12 @@ AuthRespondInvitesBody::toJson()
 
 
 
-    std::list<AuthRespondInvitesBody_invites_inner> invites_list = getInvites();
+    std::list<AuthRespondInvitesBodyItem> invites_list = getInvites();
     bourne::json invites_arr = bourne::json::array();
 
     for(auto& var : invites_list)
     {
-        AuthRespondInvitesBody_invites_inner obj = var;
+        AuthRespondInvitesBodyItem obj = var;
         invites_arr.append(obj.toJson());
     }
     object["invites"] = invites_arr;
@@ -74,14 +74,14 @@ AuthRespondInvitesBody::toJson()
 
 }
 
-std::list<AuthRespondInvitesBody_invites_inner>
+std::list<AuthRespondInvitesBodyItem>
 AuthRespondInvitesBody::getInvites()
 {
 	return invites;
 }
 
 void
-AuthRespondInvitesBody::setInvites(std::list <AuthRespondInvitesBody_invites_inner> invites)
+AuthRespondInvitesBody::setInvites(std::list<AuthRespondInvitesBodyItem> invites)
 {
 	this->invites = invites;
 }

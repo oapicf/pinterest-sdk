@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the AssetIdPermissions type satisfies the MappedNullable interface at compile time
@@ -20,21 +22,26 @@ var _ MappedNullable = &AssetIdPermissions{}
 
 // AssetIdPermissions An object containing the permissions a business member has on the asset.
 type AssetIdPermissions struct {
+	// An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
 	AssetGroupInfo *AssetGroupBinding `json:"asset_group_info,omitempty"`
 	// Unique identifier of a business asset.
-	AssetId *string `json:"asset_id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
-	AssetType *string `json:"asset_type,omitempty"`
+	AssetId string `json:"asset_id" validate:"regexp=^\\d+$"`
+	AssetType AssetTypeResponse `json:"asset_type"`
 	// Permission levels member or partner has on an asset.
-	Permissions []string `json:"permissions,omitempty"`
+	Permissions []string `json:"permissions"`
 }
+
+type _AssetIdPermissions AssetIdPermissions
 
 // NewAssetIdPermissions instantiates a new AssetIdPermissions object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAssetIdPermissions() *AssetIdPermissions {
+func NewAssetIdPermissions(assetId string, assetType AssetTypeResponse, permissions []string) *AssetIdPermissions {
 	this := AssetIdPermissions{}
+	this.AssetId = assetId
+	this.AssetType = assetType
+	this.Permissions = permissions
 	return &this
 }
 
@@ -78,98 +85,74 @@ func (o *AssetIdPermissions) SetAssetGroupInfo(v AssetGroupBinding) {
 	o.AssetGroupInfo = &v
 }
 
-// GetAssetId returns the AssetId field value if set, zero value otherwise.
+// GetAssetId returns the AssetId field value
 func (o *AssetIdPermissions) GetAssetId() string {
-	if o == nil || IsNil(o.AssetId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.AssetId
+
+	return o.AssetId
 }
 
-// GetAssetIdOk returns a tuple with the AssetId field value if set, nil otherwise
+// GetAssetIdOk returns a tuple with the AssetId field value
 // and a boolean to check if the value has been set.
 func (o *AssetIdPermissions) GetAssetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.AssetId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AssetId, true
+	return &o.AssetId, true
 }
 
-// HasAssetId returns a boolean if a field has been set.
-func (o *AssetIdPermissions) HasAssetId() bool {
-	if o != nil && !IsNil(o.AssetId) {
-		return true
-	}
-
-	return false
-}
-
-// SetAssetId gets a reference to the given string and assigns it to the AssetId field.
+// SetAssetId sets field value
 func (o *AssetIdPermissions) SetAssetId(v string) {
-	o.AssetId = &v
+	o.AssetId = v
 }
 
-// GetAssetType returns the AssetType field value if set, zero value otherwise.
-func (o *AssetIdPermissions) GetAssetType() string {
-	if o == nil || IsNil(o.AssetType) {
-		var ret string
+// GetAssetType returns the AssetType field value
+func (o *AssetIdPermissions) GetAssetType() AssetTypeResponse {
+	if o == nil {
+		var ret AssetTypeResponse
 		return ret
 	}
-	return *o.AssetType
+
+	return o.AssetType
 }
 
-// GetAssetTypeOk returns a tuple with the AssetType field value if set, nil otherwise
+// GetAssetTypeOk returns a tuple with the AssetType field value
 // and a boolean to check if the value has been set.
-func (o *AssetIdPermissions) GetAssetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.AssetType) {
+func (o *AssetIdPermissions) GetAssetTypeOk() (*AssetTypeResponse, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AssetType, true
+	return &o.AssetType, true
 }
 
-// HasAssetType returns a boolean if a field has been set.
-func (o *AssetIdPermissions) HasAssetType() bool {
-	if o != nil && !IsNil(o.AssetType) {
-		return true
-	}
-
-	return false
+// SetAssetType sets field value
+func (o *AssetIdPermissions) SetAssetType(v AssetTypeResponse) {
+	o.AssetType = v
 }
 
-// SetAssetType gets a reference to the given string and assigns it to the AssetType field.
-func (o *AssetIdPermissions) SetAssetType(v string) {
-	o.AssetType = &v
-}
-
-// GetPermissions returns the Permissions field value if set, zero value otherwise.
+// GetPermissions returns the Permissions field value
 func (o *AssetIdPermissions) GetPermissions() []string {
-	if o == nil || IsNil(o.Permissions) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Permissions
 }
 
-// GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
+// GetPermissionsOk returns a tuple with the Permissions field value
 // and a boolean to check if the value has been set.
 func (o *AssetIdPermissions) GetPermissionsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Permissions) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Permissions, true
 }
 
-// HasPermissions returns a boolean if a field has been set.
-func (o *AssetIdPermissions) HasPermissions() bool {
-	if o != nil && !IsNil(o.Permissions) {
-		return true
-	}
-
-	return false
-}
-
-// SetPermissions gets a reference to the given []string and assigns it to the Permissions field.
+// SetPermissions sets field value
 func (o *AssetIdPermissions) SetPermissions(v []string) {
 	o.Permissions = v
 }
@@ -187,16 +170,49 @@ func (o AssetIdPermissions) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AssetGroupInfo) {
 		toSerialize["asset_group_info"] = o.AssetGroupInfo
 	}
-	if !IsNil(o.AssetId) {
-		toSerialize["asset_id"] = o.AssetId
-	}
-	if !IsNil(o.AssetType) {
-		toSerialize["asset_type"] = o.AssetType
-	}
-	if !IsNil(o.Permissions) {
-		toSerialize["permissions"] = o.Permissions
-	}
+	toSerialize["asset_id"] = o.AssetId
+	toSerialize["asset_type"] = o.AssetType
+	toSerialize["permissions"] = o.Permissions
 	return toSerialize, nil
+}
+
+func (o *AssetIdPermissions) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"asset_id",
+		"asset_type",
+		"permissions",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAssetIdPermissions := _AssetIdPermissions{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAssetIdPermissions)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AssetIdPermissions(varAssetIdPermissions)
+
+	return err
 }
 
 type NullableAssetIdPermissions struct {

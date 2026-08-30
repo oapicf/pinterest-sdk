@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Summarized pin information")
 @JsonTypeName("SummaryPin")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SummaryPin   {
   private String altText;
   private String description;
@@ -30,6 +30,13 @@ public class SummaryPin   {
   private String title;
 
   public SummaryPin() {
+  }
+
+  @JsonCreator
+  public SummaryPin(
+    @JsonProperty(required = true, value = "id") String id
+  ) {
+    this.id = id;
   }
 
   /**
@@ -61,7 +68,7 @@ public class SummaryPin   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("description")
-  public String getDescription() {
+   @Size(max=800)public String getDescription() {
     return description;
   }
 
@@ -78,13 +85,13 @@ public class SummaryPin   {
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("id")
-  public String getId() {
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "id")
+  @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
-  @JsonProperty("id")
+  @JsonProperty(required = true, value = "id")
   public void setId(String id) {
     this.id = id;
   }
@@ -97,7 +104,7 @@ public class SummaryPin   {
   }
 
   
-  @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("link")
    @Size(max=2048)public String getLink() {
     return link;
@@ -137,7 +144,7 @@ public class SummaryPin   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("title")
-  public String getTitle() {
+   @Size(max=100)public String getTitle() {
     return title;
   }
 
@@ -189,12 +196,8 @@ public class SummaryPin   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

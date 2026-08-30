@@ -74,13 +74,36 @@ PinMediaWithImages <- R6::R6Class(
       PinMediaWithImagesObject <- list()
       if (!is.null(self$`items`)) {
         PinMediaWithImagesObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`items`)
       }
       if (!is.null(self$`media_type`)) {
         PinMediaWithImagesObject[["media_type"]] <-
           self$`media_type`
       }
       return(PinMediaWithImagesObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

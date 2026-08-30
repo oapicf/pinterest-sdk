@@ -127,6 +127,7 @@ async def ad_accounts_subscriptions_get_by_id(
 @router.delete(
     "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}",
     responses={
+        200: {"model": LeadSubscription, "description": "The request has succeeded."},
         204: {"description": "Resource deleted successfully."},
         400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
         401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
@@ -145,7 +146,7 @@ async def ad_accounts_subscriptions_del_by_id(
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write"]
     ),
-) -> None:
+) -> LeadSubscription:
     """Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;"""
     if not BaseLeadAdsApi.subclasses:
         raise HTTPException(status_code=500, detail="Not implemented")

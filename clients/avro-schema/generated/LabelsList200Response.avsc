@@ -14,7 +14,7 @@
       "name": "items",
       "type": {
         "type": "array",
-        "items": "model.LabelsResponse"
+        "items": "model.Label"
       },
       "doc": ""
     }

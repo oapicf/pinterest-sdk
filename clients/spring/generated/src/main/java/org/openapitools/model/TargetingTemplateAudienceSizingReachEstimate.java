@@ -2,32 +2,34 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * TargetingTemplateAudienceSizingReachEstimate
  */
 
-@JsonTypeName("TargetingTemplateAudienceSizing_reach_estimate")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingTemplateAudienceSizingReachEstimate {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Long estimate;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Long lowerBound;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Long upperBound;
 
   public TargetingTemplateAudienceSizingReachEstimate estimate(@Nullable Long estimate) {
@@ -40,12 +42,13 @@ public class TargetingTemplateAudienceSizingReachEstimate {
    * @return estimate
    */
   
-  @Schema(name = "estimate", example = "63492000", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "estimate", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("estimate")
   public @Nullable Long getEstimate() {
     return estimate;
   }
 
+  @JsonProperty("estimate")
   public void setEstimate(@Nullable Long estimate) {
     this.estimate = estimate;
   }
@@ -60,12 +63,13 @@ public class TargetingTemplateAudienceSizingReachEstimate {
    * @return lowerBound
    */
   
-  @Schema(name = "lower_bound", example = "47619000", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "lower_bound", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lower_bound")
   public @Nullable Long getLowerBound() {
     return lowerBound;
   }
 
+  @JsonProperty("lower_bound")
   public void setLowerBound(@Nullable Long lowerBound) {
     this.lowerBound = lowerBound;
   }
@@ -80,12 +84,13 @@ public class TargetingTemplateAudienceSizingReachEstimate {
    * @return upperBound
    */
   
-  @Schema(name = "upper_bound", example = "79365000", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "upper_bound", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("upper_bound")
   public @Nullable Long getUpperBound() {
     return upperBound;
   }
 
+  @JsonProperty("upper_bound")
   public void setUpperBound(@Nullable Long upperBound) {
     this.upperBound = upperBound;
   }
@@ -124,11 +129,8 @@ public class TargetingTemplateAudienceSizingReachEstimate {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

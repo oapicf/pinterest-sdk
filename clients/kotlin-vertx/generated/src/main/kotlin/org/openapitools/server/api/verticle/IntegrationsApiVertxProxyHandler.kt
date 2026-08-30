@@ -16,15 +16,15 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.IntegrationLogsRequest
+import org.openapitools.server.api.model.IntegrationLogsInvalidLogResponse
+import org.openapitools.server.api.model.IntegrationLogsRequestCreate
 import org.openapitools.server.api.model.IntegrationLogsSuccessResponse
 import org.openapitools.server.api.model.IntegrationMetadata
+import org.openapitools.server.api.model.IntegrationMetadataCreate
+import org.openapitools.server.api.model.IntegrationMetadataUpdate
 import org.openapitools.server.api.model.IntegrationRecord
-import org.openapitools.server.api.model.IntegrationRequest
-import org.openapitools.server.api.model.IntegrationRequestPatch
 import org.openapitools.server.api.model.IntegrationsGetList200Response
-import org.openapitools.server.api.model.IntegrationsLogsPost400Response
+import org.openapitools.server.api.model.PinterestLibError
 
 class IntegrationsApiVertxProxyHandler(private val vertx: Vertx, private val service: IntegrationsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -110,13 +110,13 @@ class IntegrationsApiVertxProxyHandler(private val vertx: Vertx, private val ser
                     if(externalBusinessId == null){
                         throw IllegalArgumentException("externalBusinessId is required")
                     }
-                    val integrationRequestPatchParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (integrationRequestPatchParam == null) {
-                        throw IllegalArgumentException("integrationRequestPatch is required")
+                    val integrationMetadataUpdateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (integrationMetadataUpdateParam == null) {
+                        throw IllegalArgumentException("integrationMetadataUpdate is required")
                     }
-                    val integrationRequestPatch = Gson().fromJson(integrationRequestPatchParam.encode(), IntegrationRequestPatch::class.java)
+                    val integrationMetadataUpdate = Gson().fromJson(integrationMetadataUpdateParam.encode(), IntegrationMetadataUpdate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.integrationsCommercePatch(externalBusinessId,integrationRequestPatch,context)
+                        val result = service.integrationsCommercePatch(externalBusinessId,integrationMetadataUpdate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -127,13 +127,13 @@ class IntegrationsApiVertxProxyHandler(private val vertx: Vertx, private val ser
         
                 "integrationsCommercePost" -> {
                     val params = context.params
-                    val integrationRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (integrationRequestParam == null) {
-                        throw IllegalArgumentException("integrationRequest is required")
+                    val integrationMetadataCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (integrationMetadataCreateParam == null) {
+                        throw IllegalArgumentException("integrationMetadataCreate is required")
                     }
-                    val integrationRequest = Gson().fromJson(integrationRequestParam.encode(), IntegrationRequest::class.java)
+                    val integrationMetadataCreate = Gson().fromJson(integrationMetadataCreateParam.encode(), IntegrationMetadataCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.integrationsCommercePost(integrationRequest,context)
+                        val result = service.integrationsCommercePost(integrationMetadataCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -174,13 +174,13 @@ class IntegrationsApiVertxProxyHandler(private val vertx: Vertx, private val ser
         
                 "integrationsLogsPost" -> {
                     val params = context.params
-                    val integrationLogsRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (integrationLogsRequestParam == null) {
-                        throw IllegalArgumentException("integrationLogsRequest is required")
+                    val integrationLogsRequestCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (integrationLogsRequestCreateParam == null) {
+                        throw IllegalArgumentException("integrationLogsRequestCreate is required")
                     }
-                    val integrationLogsRequest = Gson().fromJson(integrationLogsRequestParam.encode(), IntegrationLogsRequest::class.java)
+                    val integrationLogsRequestCreate = Gson().fromJson(integrationLogsRequestCreateParam.encode(), IntegrationLogsRequestCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.integrationsLogsPost(integrationLogsRequest,context)
+                        val result = service.integrationsLogsPost(integrationLogsRequestCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

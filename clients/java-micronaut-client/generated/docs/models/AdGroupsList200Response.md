@@ -9,7 +9,7 @@ The class is defined in **[AdGroupsList200Response.java](../../src/main/java/org
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;AdGroupResponse&gt;`](AdGroupResponse.md) |  | 
+**items** | [`List&lt;AdGroup&gt;`](AdGroup.md) |  | 
 
 
 

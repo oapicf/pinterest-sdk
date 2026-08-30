@@ -1,14 +1,14 @@
 #tag Class
 Protected Class BusinessAccessRelationshipsApi
 	#tag Method, Flags = &h0
-		Sub BrandAccountsCreate(, businessHierarchyId As String, brandAccountsCreateRequest As OpenAPIClient.Models.BrandAccountsCreateRequest)
+		Sub BrandAccountsCreate(, businessHierarchyId As String, brandAccountCreate As OpenAPIClient.Models.BrandAccountCreate)
 		  // Operation brand_accounts/create
 		  // Create a Brand Account
 		  // - 
 		  // - parameter businessHierarchyId: (path) business hierarchy node id 
-		  // - parameter brandAccountsCreateRequest: (body)  
+		  // - parameter brandAccountCreate: (body)  
 		  //
-		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.BrandAccountsCreateCallback(BrandAccountsCreate200Response) on completion. 
+		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.BrandAccountsCreateCallback(BrandAccount) on completion. 
 		  //
 		  // - POST /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts
 		  // - Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
@@ -21,7 +21,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(brandAccountsCreateRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(brandAccountCreate), "application/json")
 		  
 		  
 		  
@@ -48,7 +48,7 @@ Protected Class BusinessAccessRelationshipsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function BrandAccountsCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BrandAccountsCreate200Response) As Boolean
+		Private Function BrandAccountsCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BrandAccount) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -56,7 +56,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.BrandAccountsCreate200Response
+			  outData = New OpenAPIClient.Models.BrandAccount
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -109,7 +109,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.BrandAccountsCreate200Response
+		  Dim data As OpenAPIClient.Models.BrandAccount
 		  CallbackHandler.BrandAccountsCreateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -123,7 +123,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.BrandAccountsCreate200Response
+		  Dim data As OpenAPIClient.Models.BrandAccount
 		  Call BrandAccountsCreatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.BrandAccountsCreateCallback(error, data)
@@ -134,15 +134,15 @@ Protected Class BusinessAccessRelationshipsApi
 
 
 	#tag Method, Flags = &h0
-		Sub BrandAccountsUpdate(, businessHierarchyId As String, brandAccountId As String, brandAccountsUpdateRequest As OpenAPIClient.Models.BrandAccountsUpdateRequest)
+		Sub BrandAccountsUpdate(, brandAccountId As String, businessHierarchyId As String, brandAccountUpdate As OpenAPIClient.Models.BrandAccountUpdate)
 		  // Operation brand_accounts/update
 		  // Update a Brand Account
 		  // - 
+		  // - parameter brandAccountId: (path)  
 		  // - parameter businessHierarchyId: (path) business hierarchy node id 
-		  // - parameter brandAccountId: (path) Unique identifier of a brand account. 
-		  // - parameter brandAccountsUpdateRequest: (body)  
+		  // - parameter brandAccountUpdate: (body)  
 		  //
-		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.BrandAccountsUpdateCallback(BrandAccountsCreate200Response) on completion. 
+		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.BrandAccountsUpdateCallback(BrandAccount) on completion. 
 		  //
 		  // - PATCH /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}
 		  // - Update an existing Brand Account
@@ -155,7 +155,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(brandAccountsUpdateRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(brandAccountUpdate), "application/json")
 		  
 		  
 		  
@@ -163,12 +163,12 @@ Protected Class BusinessAccessRelationshipsApi
 
 		  Dim localVarPath As String = "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}"
 		  
-		  Dim localVarPathStringbusinessHierarchyId As String = businessHierarchyId
-		  
-		  localVarPath = localVarPath.ReplaceAllB("{business_hierarchy_id}", localVarPathStringbusinessHierarchyId)
 		  Dim localVarPathStringbrandAccountId As String = brandAccountId
 		  
 		  localVarPath = localVarPath.ReplaceAllB("{brand_account_id}", localVarPathStringbrandAccountId)
+		  Dim localVarPathStringbusinessHierarchyId As String = businessHierarchyId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{business_hierarchy_id}", localVarPathStringbusinessHierarchyId)
 		  
 		  
 		  AddHandler localVarHTTPSocket.PageReceived, addressof me.BrandAccountsUpdate_handler
@@ -185,7 +185,7 @@ Protected Class BusinessAccessRelationshipsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function BrandAccountsUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BrandAccountsCreate200Response) As Boolean
+		Private Function BrandAccountsUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BrandAccount) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -193,7 +193,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.BrandAccountsCreate200Response
+			  outData = New OpenAPIClient.Models.BrandAccount
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -246,7 +246,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.BrandAccountsCreate200Response
+		  Dim data As OpenAPIClient.Models.BrandAccount
 		  CallbackHandler.BrandAccountsUpdateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -260,7 +260,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.BrandAccountsCreate200Response
+		  Dim data As OpenAPIClient.Models.BrandAccount
 		  Call BrandAccountsUpdatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.BrandAccountsUpdateCallback(error, data)
@@ -271,14 +271,14 @@ Protected Class BusinessAccessRelationshipsApi
 
 
 	#tag Method, Flags = &h0
-		Sub DeleteBusinessMembership(, businessId As String, membersToDeleteBody As OpenAPIClient.Models.MembersToDeleteBody)
+		Sub DeleteBusinessMembership(, businessId As String, deleteBusinessMembershipBody As OpenAPIClient.Models.DeleteBusinessMembershipBody)
 		  // Operation delete_business_membership
 		  // Terminate business memberships
 		  // - 
 		  // - parameter businessId: (path) Business id 
-		  // - parameter membersToDeleteBody: (body) List of members with role to delete. 
+		  // - parameter deleteBusinessMembershipBody: (body)  
 		  //
-		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.DeleteBusinessMembershipCallback(DeletedMembersResponse) on completion. 
+		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.DeleteBusinessMembershipCallback(DeleteBusinessMembership200Response) on completion. 
 		  //
 		  // - DELETE /businesses/{business_id}/members
 		  // - Terminate memberships between the specified members and your business.
@@ -291,7 +291,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(membersToDeleteBody), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(deleteBusinessMembershipBody), "application/json")
 		  
 		  
 		  
@@ -318,7 +318,7 @@ Protected Class BusinessAccessRelationshipsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function DeleteBusinessMembershipPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.DeletedMembersResponse) As Boolean
+		Private Function DeleteBusinessMembershipPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.DeleteBusinessMembership200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -326,7 +326,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.DeletedMembersResponse
+			  outData = New OpenAPIClient.Models.DeleteBusinessMembership200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -379,7 +379,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.DeletedMembersResponse
+		  Dim data As OpenAPIClient.Models.DeleteBusinessMembership200Response
 		  CallbackHandler.DeleteBusinessMembershipCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -393,7 +393,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.DeletedMembersResponse
+		  Dim data As OpenAPIClient.Models.DeleteBusinessMembership200Response
 		  Call DeleteBusinessMembershipPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.DeleteBusinessMembershipCallback(error, data)
@@ -404,14 +404,14 @@ Protected Class BusinessAccessRelationshipsApi
 
 
 	#tag Method, Flags = &h0
-		Sub DeleteBusinessPartners(, businessId As String, deletePartnersRequest As OpenAPIClient.Models.DeletePartnersRequest)
+		Sub DeleteBusinessPartners(, businessId As String, deleteBusinessPartnersDelete As OpenAPIClient.Models.DeleteBusinessPartnersDelete)
 		  // Operation delete_business_partners
 		  // Terminate business partnerships
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
-		  // - parameter deletePartnersRequest: (body) An object containing a &quot;partner_ids&quot; property composed of a list of partner IDs and a &quot;partners_type&quot; property specifying the type of partners to delete.  
+		  // - parameter deleteBusinessPartnersDelete: (body)  
 		  //
-		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.DeleteBusinessPartnersCallback(DeletePartnersResponse) on completion. 
+		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.DeleteBusinessPartnersCallback(DeleteBusinessPartners) on completion. 
 		  //
 		  // - DELETE /businesses/{business_id}/partners
 		  // - Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
@@ -424,7 +424,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(deletePartnersRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(deleteBusinessPartnersDelete), "application/json")
 		  
 		  
 		  
@@ -451,7 +451,7 @@ Protected Class BusinessAccessRelationshipsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function DeleteBusinessPartnersPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.DeletePartnersResponse) As Boolean
+		Private Function DeleteBusinessPartnersPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.DeleteBusinessPartners) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -459,7 +459,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.DeletePartnersResponse
+			  outData = New OpenAPIClient.Models.DeleteBusinessPartners
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -512,7 +512,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.DeletePartnersResponse
+		  Dim data As OpenAPIClient.Models.DeleteBusinessPartners
 		  CallbackHandler.DeleteBusinessPartnersCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -526,7 +526,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.DeletePartnersResponse
+		  Dim data As OpenAPIClient.Models.DeleteBusinessPartners
 		  Call DeleteBusinessPartnersPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.DeleteBusinessPartnersCallback(error, data)
@@ -537,12 +537,13 @@ Protected Class BusinessAccessRelationshipsApi
 
 
 	#tag Method, Flags = &h0
-		Sub GetBusinessEmployers(, Optional pageSize As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString)
+		Sub GetBusinessEmployers(, Optional assetsSummary As Xoson.O.OptionalBoolean, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation get/business_employers
 		  // List business employers for user
 		  // - 
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter assetsSummary: (query) Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional, default to true)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.GetBusinessEmployersCallback(GetBusinessEmployers200Response) on completion. 
 		  //
@@ -559,9 +560,11 @@ Protected Class BusinessAccessRelationshipsApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
+		  If assetsSummary <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("assets_summary") + "=" + EncodeURLComponent(assetsSummary.ToString)
 		  
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
 		  
@@ -683,9 +686,9 @@ Protected Class BusinessAccessRelationshipsApi
 		  // - parameter memberIds: (query) A list of business members ids separated by comma. (optional, default to Sample)
 		  // - parameter startIndex: (query) An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
-		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.GetBusinessMembersCallback(GetBusinessMembers200Response) on completion. 
+		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.GetBusinessMembersCallback(GetBusinessEmployers200Response) on completion. 
 		  //
 		  // - GET /businesses/{business_id}/members
 		  // - Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
@@ -756,7 +759,7 @@ Protected Class BusinessAccessRelationshipsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function GetBusinessMembersPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.GetBusinessMembers200Response) As Boolean
+		Private Function GetBusinessMembersPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.GetBusinessEmployers200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -764,7 +767,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.GetBusinessMembers200Response
+			  outData = New OpenAPIClient.Models.GetBusinessEmployers200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -817,7 +820,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.GetBusinessMembers200Response
+		  Dim data As OpenAPIClient.Models.GetBusinessEmployers200Response
 		  CallbackHandler.GetBusinessMembersCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -831,7 +834,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.GetBusinessMembers200Response
+		  Dim data As OpenAPIClient.Models.GetBusinessEmployers200Response
 		  Call GetBusinessMembersPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.GetBusinessMembersCallback(error, data)
@@ -842,19 +845,20 @@ Protected Class BusinessAccessRelationshipsApi
 
 
 	#tag Method, Flags = &h0
-		Sub GetBusinessPartners(, businessId As String, Optional assetsSummary As Xoson.O.OptionalBoolean, partnerType As OpenAPIClient.Models.PartnerTypeOptional, Optional partnerIds As Xoson.O.OptionalString, Optional startIndex As Xoson.O.OptionalInteger, Optional pageSize As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString)
+		Sub GetBusinessPartners(, businessId As String, Optional assetsSummary As Xoson.O.OptionalBoolean, partnerType As OpenAPIClient.Models.PartnerTypeOptional, Optional partnerIds As Xoson.O.OptionalString, Optional startIndex As Xoson.O.OptionalInteger, Optional sortAscending As Xoson.O.OptionalBoolean, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation get/business_partners
 		  // Get business partners
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
 		  // - parameter assetsSummary: (query) Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional, default to false)
-		  // - parameter partnerType: (query) Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to Nil)
+		  // - parameter partnerType: (query) Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to Nil)
 		  // - parameter partnerIds: (query) A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. (optional, default to Sample)
 		  // - parameter startIndex: (query) An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter sortAscending: (query) Sort ascending. (optional, default to False)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
-		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.GetBusinessPartnersCallback(GetBusinessPartners200Response) on completion. 
+		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.GetBusinessPartnersCallback(GetBusinessEmployers200Response) on completion. 
 		  //
 		  // - GET /businesses/{business_id}/partners
 		  // - Get all partners of the specified business.  If the assets_summary=TRUE and: - partner_type=INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type=EXTERNAL, the business assets returned are your partner's business assets the partner has granted you   access to.
@@ -877,9 +881,11 @@ Protected Class BusinessAccessRelationshipsApi
 		  
 		  If startIndex <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("start_index") + "=" + EncodeURLComponent(startIndex.ToString)
 		  
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
+		  If sortAscending <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("sort_ascending") + "=" + EncodeURLComponent(sortAscending.ToString)
 		  
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
 		  
@@ -907,7 +913,7 @@ Protected Class BusinessAccessRelationshipsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function GetBusinessPartnersPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.GetBusinessPartners200Response) As Boolean
+		Private Function GetBusinessPartnersPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.GetBusinessEmployers200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -915,7 +921,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.GetBusinessPartners200Response
+			  outData = New OpenAPIClient.Models.GetBusinessEmployers200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -968,7 +974,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.GetBusinessPartners200Response
+		  Dim data As OpenAPIClient.Models.GetBusinessEmployers200Response
 		  CallbackHandler.GetBusinessPartnersCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -982,7 +988,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.GetBusinessPartners200Response
+		  Dim data As OpenAPIClient.Models.GetBusinessEmployers200Response
 		  Call GetBusinessPartnersPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.GetBusinessPartnersCallback(error, data)
@@ -993,12 +999,12 @@ Protected Class BusinessAccessRelationshipsApi
 
 
 	#tag Method, Flags = &h0
-		Sub SystemUserUpdate(, businessId As String, systemUserId As String, systemUserUpdateRequest As OpenAPIClient.Models.SystemUserUpdateRequest)
+		Sub SystemUserUpdate(, businessId As String, systemUserId As String, systemUserUpdateWithRequiredBody As OpenAPIClient.Models.SystemUserUpdateWithRequiredBody)
 		  // Operation system_user/update
 		  // Update a system user information.
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
 		  // - parameter systemUserId: (path) Unique identifier of a system user. 
-		  // - parameter systemUserUpdateRequest: (body)  
+		  // - parameter systemUserUpdateWithRequiredBody: (body)  
 		  //
 		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.SystemUserUpdateCallback() on completion. 
 		  //
@@ -1012,7 +1018,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(systemUserUpdateRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(systemUserUpdateWithRequiredBody), "application/json")
 		  
 		  
 		  
@@ -1070,14 +1076,14 @@ Protected Class BusinessAccessRelationshipsApi
 
 
 	#tag Method, Flags = &h0
-		Sub UpdateBusinessMemberships(, businessId As String, updateMemberBusinessRoleBody() As OpenAPIClient.Models.UpdateMemberBusinessRoleBody)
+		Sub UpdateBusinessMemberships(, businessId As String, businessMembershipMember() As OpenAPIClient.Models.BusinessMembershipMember)
 		  // Operation update/business_memberships
 		  // Update member's business role
 		  // - 
 		  // - parameter businessId: (path) Business id 
-		  // - parameter updateMemberBusinessRoleBody: (body) List of objects with the member id and the business_role. 
+		  // - parameter businessMembershipMember: (body)  
 		  //
-		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.UpdateBusinessMembershipsCallback(UpdateMemberResultsResponseArray) on completion. 
+		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.UpdateBusinessMembershipsCallback(UpdateBusinessMembershipsResponse) on completion. 
 		  //
 		  // - PATCH /businesses/{business_id}/members
 		  // - Update a member's business role within the business.
@@ -1090,7 +1096,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(updateMemberBusinessRoleBody), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(businessMembershipMember), "application/json")
 		  
 		  
 		  
@@ -1117,7 +1123,7 @@ Protected Class BusinessAccessRelationshipsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function UpdateBusinessMembershipsPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.UpdateMemberResultsResponseArray) As Boolean
+		Private Function UpdateBusinessMembershipsPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.UpdateBusinessMembershipsResponse) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -1125,7 +1131,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.UpdateMemberResultsResponseArray
+			  outData = New OpenAPIClient.Models.UpdateBusinessMembershipsResponse
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -1178,7 +1184,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.UpdateMemberResultsResponseArray
+		  Dim data As OpenAPIClient.Models.UpdateBusinessMembershipsResponse
 		  CallbackHandler.UpdateBusinessMembershipsCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -1192,7 +1198,7 @@ Protected Class BusinessAccessRelationshipsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.UpdateMemberResultsResponseArray
+		  Dim data As OpenAPIClient.Models.UpdateBusinessMembershipsResponse
 		  Call UpdateBusinessMembershipsPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.UpdateBusinessMembershipsCallback(error, data)

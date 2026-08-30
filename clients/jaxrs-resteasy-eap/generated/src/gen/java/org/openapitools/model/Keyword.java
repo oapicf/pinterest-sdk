@@ -8,62 +8,22 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.MatchTypeResponse;
+import org.openapitools.model.MatchType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Keyword   {
   
-  private Integer bid;
-  private MatchTypeResponse matchType;
-  private String value;
   private Boolean archived;
+  private Integer bid;
   private String id;
+  private MatchType matchType;
   private String parentId;
   private String parentType;
   private String type;
-
-  /**
-   * &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-   **/
-  
-  @ApiModelProperty(value = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
-  @JsonProperty("bid")
-  public Integer getBid() {
-    return bid;
-  }
-  public void setBid(Integer bid) {
-    this.bid = bid;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("match_type")
-  @NotNull
-  public MatchTypeResponse getMatchType() {
-    return matchType;
-  }
-  public void setMatchType(MatchTypeResponse matchType) {
-    this.matchType = matchType;
-  }
-
-  /**
-   * Keyword value (120 chars max).
-   **/
-  
-  @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
-  @JsonProperty("value")
-  @NotNull
-  public String getValue() {
-    return value;
-  }
-  public void setValue(String value) {
-    this.value = value;
-  }
+  private String value;
 
   /**
    **/
@@ -78,11 +38,25 @@ public class Keyword   {
   }
 
   /**
+   * **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+   **/
+  
+  @ApiModelProperty(value = "**Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+  @JsonProperty("bid")
+  public Integer getBid() {
+    return bid;
+  }
+  public void setBid(Integer bid) {
+    this.bid = bid;
+  }
+
+  /**
    * Keyword ID .
    **/
   
-  @ApiModelProperty(example = "383791336903426391", value = "Keyword ID .")
+  @ApiModelProperty(example = "383791336903426391", required = true, value = "Keyword ID .")
   @JsonProperty("id")
+  @NotNull
  @Pattern(regexp="^\\d+$")  public String getId() {
     return id;
   }
@@ -91,11 +65,26 @@ public class Keyword   {
   }
 
   /**
+   * Keyword [match type](/docs/api-features/targeting-overview/)
+   **/
+  
+  @ApiModelProperty(required = true, value = "Keyword [match type](/docs/api-features/targeting-overview/)")
+  @JsonProperty("match_type")
+  @NotNull
+  public MatchType getMatchType() {
+    return matchType;
+  }
+  public void setMatchType(MatchType matchType) {
+    this.matchType = matchType;
+  }
+
+  /**
    * Keyword parent entity ID (advertiser, campaign, ad group).
    **/
   
-  @ApiModelProperty(example = "383791336903426391", value = "Keyword parent entity ID (advertiser, campaign, ad group).")
+  @ApiModelProperty(example = "383791336903426391", required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
   @JsonProperty("parent_id")
+  @NotNull
  @Pattern(regexp="^\\d+$")  public String getParentId() {
     return parentId;
   }
@@ -104,10 +93,10 @@ public class Keyword   {
   }
 
   /**
-   * Parent entity type
+   * Parent entity type (advertiser, campaign, ad group).
    **/
   
-  @ApiModelProperty(example = "campaign", value = "Parent entity type")
+  @ApiModelProperty(example = "campaign", value = "Parent entity type (advertiser, campaign, ad group).")
   @JsonProperty("parent_type")
   public String getParentType() {
     return parentType;
@@ -129,6 +118,20 @@ public class Keyword   {
     this.type = type;
   }
 
+  /**
+   * Keyword value (120 chars max).
+   **/
+  
+  @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
+  @JsonProperty("value")
+  @NotNull
+  public String getValue() {
+    return value;
+  }
+  public void setValue(String value) {
+    this.value = value;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,19 +142,19 @@ public class Keyword   {
       return false;
     }
     Keyword keyword = (Keyword) o;
-    return Objects.equals(this.bid, keyword.bid) &&
-        Objects.equals(this.matchType, keyword.matchType) &&
-        Objects.equals(this.value, keyword.value) &&
-        Objects.equals(this.archived, keyword.archived) &&
+    return Objects.equals(this.archived, keyword.archived) &&
+        Objects.equals(this.bid, keyword.bid) &&
         Objects.equals(this.id, keyword.id) &&
+        Objects.equals(this.matchType, keyword.matchType) &&
         Objects.equals(this.parentId, keyword.parentId) &&
         Objects.equals(this.parentType, keyword.parentType) &&
-        Objects.equals(this.type, keyword.type);
+        Objects.equals(this.type, keyword.type) &&
+        Objects.equals(this.value, keyword.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bid, matchType, value, archived, id, parentId, parentType, type);
+    return Objects.hash(archived, bid, id, matchType, parentId, parentType, type, value);
   }
 
   @Override
@@ -159,14 +162,14 @@ public class Keyword   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Keyword {\n");
     
-    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
-    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
+    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    parentType: ").append(toIndentedString(parentType)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -176,10 +179,7 @@ public class Keyword   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

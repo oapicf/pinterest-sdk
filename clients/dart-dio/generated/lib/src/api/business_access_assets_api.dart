@@ -10,24 +10,26 @@ import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/api_util.dart';
+import 'package:openapi/src/model/asset_group_deletion.dart';
+import 'package:openapi/src/model/asset_group_deletion_delete.dart';
+import 'package:openapi/src/model/asset_group_input.dart';
+import 'package:openapi/src/model/asset_group_input_create.dart';
+import 'package:openapi/src/model/asset_group_modification.dart';
+import 'package:openapi/src/model/asset_group_modification_read_or_update.dart';
+import 'package:openapi/src/model/asset_permission_type.dart';
+import 'package:openapi/src/model/asset_search_by.dart';
+import 'package:openapi/src/model/asset_sort_by.dart';
 import 'package:openapi/src/model/business_asset_members_get200_response.dart';
-import 'package:openapi/src/model/business_asset_partners_get200_response.dart';
 import 'package:openapi/src/model/business_assets_get200_response.dart';
-import 'package:openapi/src/model/business_member_assets_get200_response.dart';
-import 'package:openapi/src/model/business_members_asset_access_delete_request.dart';
+import 'package:openapi/src/model/business_member_assets_get_response.dart';
+import 'package:openapi/src/model/business_members_asset_access_delete_body.dart';
 import 'package:openapi/src/model/business_partner_asset_access_get200_response.dart';
-import 'package:openapi/src/model/create_asset_group_body.dart';
-import 'package:openapi/src/model/create_asset_group_response.dart';
-import 'package:openapi/src/model/delete_asset_group_body.dart';
-import 'package:openapi/src/model/delete_asset_group_response.dart';
 import 'package:openapi/src/model/delete_member_access_results_response_array.dart';
 import 'package:openapi/src/model/delete_partner_asset_access_body.dart';
-import 'package:openapi/src/model/delete_partner_assets_results_response_array.dart';
-import 'package:openapi/src/model/error.dart';
-import 'package:openapi/src/model/partner_type.dart';
+import 'package:openapi/src/model/delete_partner_asset_access_results_response_array.dart';
+import 'package:openapi/src/model/non_draft_entity_status.dart';
 import 'package:openapi/src/model/permissions_with_owner.dart';
-import 'package:openapi/src/model/update_asset_group_body.dart';
-import 'package:openapi/src/model/update_asset_group_response.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
 import 'package:openapi/src/model/update_member_asset_access_body.dart';
 import 'package:openapi/src/model/update_member_assets_results_response_array.dart';
 import 'package:openapi/src/model/update_partner_asset_access_body.dart';
@@ -42,11 +44,11 @@ class BusinessAccessAssetsApi {
   const BusinessAccessAssetsApi(this._dio, this._serializers);
 
   /// Create a new asset group.
-  /// Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+  /// Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
   ///
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
-  /// * [createAssetGroupBody] 
+  /// * [assetGroupInputCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -54,11 +56,11 @@ class BusinessAccessAssetsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [CreateAssetGroupResponse] as data
+  /// Returns a [Future] containing a [Response] with a [AssetGroupInput] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CreateAssetGroupResponse>> assetGroupCreate({ 
+  Future<Response<AssetGroupInput>> assetGroupCreate({ 
     required String businessId,
-    required CreateAssetGroupBody createAssetGroupBody,
+    required AssetGroupInputCreate assetGroupInputCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -88,8 +90,8 @@ class BusinessAccessAssetsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CreateAssetGroupBody);
-      _bodyData = _serializers.serialize(createAssetGroupBody, specifiedType: _type);
+      const _type = FullType(AssetGroupInputCreate);
+      _bodyData = _serializers.serialize(assetGroupInputCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -112,14 +114,14 @@ class BusinessAccessAssetsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    CreateAssetGroupResponse? _responseData;
+    AssetGroupInput? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(CreateAssetGroupResponse),
-      ) as CreateAssetGroupResponse;
+        specifiedType: const FullType(AssetGroupInput),
+      ) as AssetGroupInput;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -131,7 +133,7 @@ class BusinessAccessAssetsApi {
       );
     }
 
-    return Response<CreateAssetGroupResponse>(
+    return Response<AssetGroupInput>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -148,7 +150,7 @@ class BusinessAccessAssetsApi {
   ///
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
-  /// * [deleteAssetGroupBody] 
+  /// * [assetGroupDeletionDelete] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -156,11 +158,11 @@ class BusinessAccessAssetsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [DeleteAssetGroupResponse] as data
+  /// Returns a [Future] containing a [Response] with a [AssetGroupDeletion] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DeleteAssetGroupResponse>> assetGroupDelete({ 
+  Future<Response<AssetGroupDeletion>> assetGroupDelete({ 
     required String businessId,
-    required DeleteAssetGroupBody deleteAssetGroupBody,
+    required AssetGroupDeletionDelete assetGroupDeletionDelete,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -190,8 +192,8 @@ class BusinessAccessAssetsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(DeleteAssetGroupBody);
-      _bodyData = _serializers.serialize(deleteAssetGroupBody, specifiedType: _type);
+      const _type = FullType(AssetGroupDeletionDelete);
+      _bodyData = _serializers.serialize(assetGroupDeletionDelete, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -214,14 +216,14 @@ class BusinessAccessAssetsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    DeleteAssetGroupResponse? _responseData;
+    AssetGroupDeletion? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(DeleteAssetGroupResponse),
-      ) as DeleteAssetGroupResponse;
+        specifiedType: const FullType(AssetGroupDeletion),
+      ) as AssetGroupDeletion;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -233,7 +235,7 @@ class BusinessAccessAssetsApi {
       );
     }
 
-    return Response<DeleteAssetGroupResponse>(
+    return Response<AssetGroupDeletion>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -250,7 +252,7 @@ class BusinessAccessAssetsApi {
   ///
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
-  /// * [updateAssetGroupBody] 
+  /// * [assetGroupModificationReadOrUpdate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -258,11 +260,11 @@ class BusinessAccessAssetsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [UpdateAssetGroupResponse] as data
+  /// Returns a [Future] containing a [Response] with a [AssetGroupModification] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UpdateAssetGroupResponse>> assetGroupUpdate({ 
+  Future<Response<AssetGroupModification>> assetGroupUpdate({ 
     required String businessId,
-    required UpdateAssetGroupBody updateAssetGroupBody,
+    required AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -292,8 +294,8 @@ class BusinessAccessAssetsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(UpdateAssetGroupBody);
-      _bodyData = _serializers.serialize(updateAssetGroupBody, specifiedType: _type);
+      const _type = FullType(AssetGroupModificationReadOrUpdate);
+      _bodyData = _serializers.serialize(assetGroupModificationReadOrUpdate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -316,14 +318,14 @@ class BusinessAccessAssetsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    UpdateAssetGroupResponse? _responseData;
+    AssetGroupModification? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(UpdateAssetGroupResponse),
-      ) as UpdateAssetGroupResponse;
+        specifiedType: const FullType(AssetGroupModification),
+      ) as AssetGroupModification;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -335,7 +337,7 @@ class BusinessAccessAssetsApi {
       );
     }
 
-    return Response<UpdateAssetGroupResponse>(
+    return Response<AssetGroupModification>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -353,10 +355,10 @@ class BusinessAccessAssetsApi {
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
   /// * [assetId] - Unique identifier of a business asset.
+  /// * [startIndex] - An index to start fetching the results from. Only the results starting from this index will be returned.
   /// * [fetchSystemUsers] - Fetches system users if True. Fetches regular user employees if False.
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  /// * [startIndex] - An index to start fetching the results from. Only the results starting from this index will be returned.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -369,10 +371,10 @@ class BusinessAccessAssetsApi {
   Future<Response<BusinessAssetMembersGet200Response>> businessAssetMembersGet({ 
     required String businessId,
     required String assetId,
+    int? startIndex = 0,
     bool? fetchSystemUsers = false,
     String? bookmark,
     int? pageSize = 25,
-    int? startIndex = 0,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -399,10 +401,10 @@ class BusinessAccessAssetsApi {
     );
 
     final _queryParameters = <String, dynamic>{
+      if (startIndex != null) r'start_index': encodeQueryParameter(_serializers, startIndex, const FullType(int)),
       if (fetchSystemUsers != null) r'fetch_system_users': encodeQueryParameter(_serializers, fetchSystemUsers, const FullType(bool)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
       if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-      if (startIndex != null) r'start_index': encodeQueryParameter(_serializers, startIndex, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -453,7 +455,7 @@ class BusinessAccessAssetsApi {
   /// * [assetId] - Unique identifier of a business asset.
   /// * [startIndex] - An index to start fetching the results from. Only the results starting from this index will be returned.
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -461,9 +463,9 @@ class BusinessAccessAssetsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BusinessAssetPartnersGet200Response] as data
+  /// Returns a [Future] containing a [Response] with a [BusinessAssetMembersGet200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BusinessAssetPartnersGet200Response>> businessAssetPartnersGet({ 
+  Future<Response<BusinessAssetMembersGet200Response>> businessAssetPartnersGet({ 
     required String businessId,
     required String assetId,
     int? startIndex = 0,
@@ -509,14 +511,14 @@ class BusinessAccessAssetsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BusinessAssetPartnersGet200Response? _responseData;
+    BusinessAssetMembersGet200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BusinessAssetPartnersGet200Response),
-      ) as BusinessAssetPartnersGet200Response;
+        specifiedType: const FullType(BusinessAssetMembersGet200Response),
+      ) as BusinessAssetMembersGet200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -528,7 +530,7 @@ class BusinessAccessAssetsApi {
       );
     }
 
-    return Response<BusinessAssetPartnersGet200Response>(
+    return Response<BusinessAssetMembersGet200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -551,7 +553,7 @@ class BusinessAccessAssetsApi {
   /// * [assetType] - A resource type to filter the assets by. Only assets of the specified type will be returned.
   /// * [startIndex] - An index to start fetching the results from. Only the results starting from this index will be returned.
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -653,8 +655,14 @@ class BusinessAccessAssetsApi {
   /// * [memberId] - The member id to fetch assets for.
   /// * [assetType] - A resource type to filter the assets by. Only assets of the specified type will be returned.
   /// * [startIndex] - An index to start fetching the results from. Only the results starting from this index will be returned.
+  /// * [sortBy] - The field to sort member assets by
+  /// * [sortAscending] - Sort assets in ascending order
+  /// * [searchBy] - The field to search member assets by
+  /// * [searchValue] - The value to search for
+  /// * [assetPermissionType] - The type of asset permission to filter by
+  /// * [adAccountStatuses] - A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -662,13 +670,19 @@ class BusinessAccessAssetsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BusinessMemberAssetsGet200Response] as data
+  /// Returns a [Future] containing a [Response] with a [BusinessMemberAssetsGetResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BusinessMemberAssetsGet200Response>> businessMemberAssetsGet({ 
+  Future<Response<BusinessMemberAssetsGetResponse>> businessMemberAssetsGet({ 
     required String businessId,
     required String memberId,
     String? assetType = 'AD_ACCOUNT',
     int? startIndex = 0,
+    AssetSortBy? sortBy,
+    bool? sortAscending = true,
+    AssetSearchBy? searchBy,
+    String? searchValue,
+    AssetPermissionType? assetPermissionType,
+    BuiltList<NonDraftEntityStatus>? adAccountStatuses,
     String? bookmark,
     int? pageSize = 25,
     CancelToken? cancelToken,
@@ -699,6 +713,12 @@ class BusinessAccessAssetsApi {
     final _queryParameters = <String, dynamic>{
       if (assetType != null) r'asset_type': encodeQueryParameter(_serializers, assetType, const FullType(String)),
       if (startIndex != null) r'start_index': encodeQueryParameter(_serializers, startIndex, const FullType(int)),
+      if (sortBy != null) r'sort_by': encodeQueryParameter(_serializers, sortBy, const FullType(AssetSortBy)),
+      if (sortAscending != null) r'sort_ascending': encodeQueryParameter(_serializers, sortAscending, const FullType(bool)),
+      if (searchBy != null) r'search_by': encodeQueryParameter(_serializers, searchBy, const FullType(AssetSearchBy)),
+      if (searchValue != null) r'search_value': encodeQueryParameter(_serializers, searchValue, const FullType(String)),
+      if (assetPermissionType != null) r'asset_permission_type': encodeQueryParameter(_serializers, assetPermissionType, const FullType(AssetPermissionType)),
+      if (adAccountStatuses != null) r'ad_account_statuses': encodeCollectionQueryParameter<NonDraftEntityStatus>(_serializers, adAccountStatuses, const FullType(BuiltList, [FullType(NonDraftEntityStatus)]), format: ListFormat.multi,),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
       if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
     };
@@ -712,14 +732,14 @@ class BusinessAccessAssetsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BusinessMemberAssetsGet200Response? _responseData;
+    BusinessMemberAssetsGetResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BusinessMemberAssetsGet200Response),
-      ) as BusinessMemberAssetsGet200Response;
+        specifiedType: const FullType(BusinessMemberAssetsGetResponse),
+      ) as BusinessMemberAssetsGetResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -731,7 +751,7 @@ class BusinessAccessAssetsApi {
       );
     }
 
-    return Response<BusinessMemberAssetsGet200Response>(
+    return Response<BusinessMemberAssetsGetResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -748,7 +768,7 @@ class BusinessAccessAssetsApi {
   ///
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
-  /// * [businessMembersAssetAccessDeleteRequest] - List member assset permissions to delete.
+  /// * [businessMembersAssetAccessDeleteBody] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -760,7 +780,7 @@ class BusinessAccessAssetsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<DeleteMemberAccessResultsResponseArray>> businessMembersAssetAccessDelete({ 
     required String businessId,
-    required BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest,
+    required BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -790,8 +810,8 @@ class BusinessAccessAssetsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BusinessMembersAssetAccessDeleteRequest);
-      _bodyData = _serializers.serialize(businessMembersAssetAccessDeleteRequest, specifiedType: _type);
+      const _type = FullType(BusinessMembersAssetAccessDeleteBody);
+      _bodyData = _serializers.serialize(businessMembersAssetAccessDeleteBody, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -846,11 +866,11 @@ class BusinessAccessAssetsApi {
   }
 
   /// Assign/Update member asset permissions
-  /// Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+  /// Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
   ///
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
-  /// * [updateMemberAssetAccessBody] - List of member asset permissions to create or update.
+  /// * [updateMemberAssetAccessBody] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -953,11 +973,15 @@ class BusinessAccessAssetsApi {
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
   /// * [partnerId] - The partner id to be bound to the Business
-  /// * [partnerType] - Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+  /// * [partnerType] - Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
   /// * [assetType] - A resource type to filter the assets by. Only assets of the specified type will be returned.
   /// * [startIndex] - An index to start fetching the results from. Only the results starting from this index will be returned.
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [sortBy] - The field to sort member assets by
+  /// * [sortAscending] - Sort assets in ascending order
+  /// * [searchBy] - The field to search member assets by
+  /// * [searchValue] - The value to search for
   /// * [bookmark] - Cursor used to fetch the next page of items
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -970,11 +994,15 @@ class BusinessAccessAssetsApi {
   Future<Response<BusinessPartnerAssetAccessGet200Response>> businessPartnerAssetAccessGet({ 
     required String businessId,
     required String partnerId,
-    PartnerType? partnerType = INTERNAL,
+    String? partnerType = 'INTERNAL',
     String? assetType = 'AD_ACCOUNT',
     int? startIndex = 0,
-    int? pageSize = 25,
+    AssetSortBy? sortBy,
+    bool? sortAscending = true,
+    AssetSearchBy? searchBy,
+    String? searchValue,
     String? bookmark,
+    int? pageSize = 25,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1001,11 +1029,15 @@ class BusinessAccessAssetsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (partnerType != null) r'partner_type': encodeQueryParameter(_serializers, partnerType, const FullType(PartnerType)),
+      if (partnerType != null) r'partner_type': encodeQueryParameter(_serializers, partnerType, const FullType(String)),
       if (assetType != null) r'asset_type': encodeQueryParameter(_serializers, assetType, const FullType(String)),
       if (startIndex != null) r'start_index': encodeQueryParameter(_serializers, startIndex, const FullType(int)),
-      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
+      if (sortBy != null) r'sort_by': encodeQueryParameter(_serializers, sortBy, const FullType(AssetSortBy)),
+      if (sortAscending != null) r'sort_ascending': encodeQueryParameter(_serializers, sortAscending, const FullType(bool)),
+      if (searchBy != null) r'search_by': encodeQueryParameter(_serializers, searchBy, const FullType(AssetSearchBy)),
+      if (searchValue != null) r'search_value': encodeQueryParameter(_serializers, searchValue, const FullType(String)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
+      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1061,9 +1093,9 @@ class BusinessAccessAssetsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [DeletePartnerAssetsResultsResponseArray] as data
+  /// Returns a [Future] containing a [Response] with a [DeletePartnerAssetAccessResultsResponseArray] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DeletePartnerAssetsResultsResponseArray>> deletePartnerAssetAccessHandlerImpl({ 
+  Future<Response<DeletePartnerAssetAccessResultsResponseArray>> deletePartnerAssetAccessHandlerImpl({ 
     required String businessId,
     required DeletePartnerAssetAccessBody deletePartnerAssetAccessBody,
     CancelToken? cancelToken,
@@ -1119,14 +1151,14 @@ class BusinessAccessAssetsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    DeletePartnerAssetsResultsResponseArray? _responseData;
+    DeletePartnerAssetAccessResultsResponseArray? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(DeletePartnerAssetsResultsResponseArray),
-      ) as DeletePartnerAssetsResultsResponseArray;
+        specifiedType: const FullType(DeletePartnerAssetAccessResultsResponseArray),
+      ) as DeletePartnerAssetAccessResultsResponseArray;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -1138,7 +1170,7 @@ class BusinessAccessAssetsApi {
       );
     }
 
-    return Response<DeletePartnerAssetsResultsResponseArray>(
+    return Response<DeletePartnerAssetAccessResultsResponseArray>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -1155,7 +1187,7 @@ class BusinessAccessAssetsApi {
   ///
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
-  /// * [updatePartnerAssetAccessBody] - A list of assets and permissions to assign to your partners.
+  /// * [updatePartnerAssetAccessBody] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request

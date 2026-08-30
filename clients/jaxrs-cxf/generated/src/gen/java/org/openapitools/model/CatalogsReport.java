@@ -158,10 +158,7 @@ FINISHED(String.valueOf("FINISHED")), IN_PROGRESS(String.valueOf("IN_PROGRESS"))
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

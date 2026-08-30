@@ -162,7 +162,7 @@ CreativeAssetsProcessingRecord::getCreativeAssetsId()
 }
 
 void
-CreativeAssetsProcessingRecord::setCreativeAssetsId(std::string  creative_assets_id)
+CreativeAssetsProcessingRecord::setCreativeAssetsId(std::string creative_assets_id)
 {
 	this->creative_assets_id = creative_assets_id;
 }
@@ -174,7 +174,7 @@ CreativeAssetsProcessingRecord::getErrors()
 }
 
 void
-CreativeAssetsProcessingRecord::setErrors(std::list <ItemValidationEvent> errors)
+CreativeAssetsProcessingRecord::setErrors(std::list<ItemValidationEvent> errors)
 {
 	this->errors = errors;
 }
@@ -186,7 +186,7 @@ CreativeAssetsProcessingRecord::getStatus()
 }
 
 void
-CreativeAssetsProcessingRecord::setStatus(ItemProcessingStatus  status)
+CreativeAssetsProcessingRecord::setStatus(ItemProcessingStatus status)
 {
 	this->status = status;
 }
@@ -198,7 +198,7 @@ CreativeAssetsProcessingRecord::getWarnings()
 }
 
 void
-CreativeAssetsProcessingRecord::setWarnings(std::list <ItemValidationEvent> warnings)
+CreativeAssetsProcessingRecord::setWarnings(std::list<ItemValidationEvent> warnings)
 {
 	this->warnings = warnings;
 }

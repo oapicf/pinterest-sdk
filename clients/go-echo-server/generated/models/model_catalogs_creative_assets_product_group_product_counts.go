@@ -3,7 +3,11 @@ package models
 // CatalogsCreativeAssetsProductGroupProductCounts - Product counts for a Creative Assets CatalogsProductGroup
 type CatalogsCreativeAssetsProductGroupProductCounts struct {
 
+	AppLinks float32 `json:"app_links"`
+
 	CatalogType string `json:"catalog_type"`
+
+	Images float32 `json:"images"`
 
 	Total float32 `json:"total"`
 

@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -19,24 +24,83 @@ type LabelBulkUpdateRequest struct {
 	// Label ID.
 	Id string `json:"id"`
 
-	// Set status to `ARCHIVED` to remove the label from the parent entity.
-	Status string `json:"status,omitempty"`
+	// Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
+	ParentId string `json:"parent_id"`
 
-	// </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
-	Value string `json:"value,omitempty"`
+	Status LabelStatusBulkUpdate `json:"status"`
 }
-
-// AssertLabelBulkUpdateRequestRequired checks if the required fields are not zero-ed
-func AssertLabelBulkUpdateRequestRequired(obj LabelBulkUpdateRequest) error {
-	elements := map[string]interface{}{
-		"id": obj.Id,
+// UnmarshalJSON validates required property keys then unmarshals into LabelBulkUpdateRequest
+func (o *LabelBulkUpdateRequest) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"id",
+		"parent_id",
+		"status",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"id": false,
+		"parent_id": false,
+		"status": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"id": {},
+		"parent_id": {},
+		"status": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded LabelBulkUpdateRequest
+
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["parent_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.ParentId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["status"]; exists {
+		if err = json.Unmarshal(value, &decoded.Status); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertLabelBulkUpdateRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertLabelBulkUpdateRequestRequired(obj LabelBulkUpdateRequest) error {
 	return nil
 }
 

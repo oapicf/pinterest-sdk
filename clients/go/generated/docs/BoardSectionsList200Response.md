@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]BoardSection**](BoardSection.md) | Board sections | 
+**Items** | [**[]BoardSection**](BoardSection.md) |  | 
 
 ## Methods
 

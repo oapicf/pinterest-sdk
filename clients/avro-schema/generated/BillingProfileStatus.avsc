@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Billing profile status",
+  "name": "BillingProfileStatus",
+  "symbols": [
+    "UNSPECIFIED",
+    "VALID",
+    "INVALID",
+    "PENDING",
+    "DELETED",
+    "SECONDARY",
+    "PENDING_SECONDARY"
+  ]
+}

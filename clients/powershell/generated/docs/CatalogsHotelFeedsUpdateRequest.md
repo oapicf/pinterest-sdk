@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CatalogType** | **String** |  | 
 **Credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
 **DefaultCurrency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] 
 **Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [optional] 

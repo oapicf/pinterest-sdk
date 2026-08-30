@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Estimation type for campaign planning estimated curve",
+  "name": "CampaignPlanningEstimationType",
+  "symbols": [
+    "IMPRESSION",
+    "CLICK",
+    "CONVERSION",
+    "WEEKLY_FREQUENCY",
+    "WEEKLY_REACH",
+    "LIFETIME_FREQUENCY",
+    "LIFETIME_REACH",
+    "CPM",
+    "CPC",
+    "CPA"
+  ]
+}

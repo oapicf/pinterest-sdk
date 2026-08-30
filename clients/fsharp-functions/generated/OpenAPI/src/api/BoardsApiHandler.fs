@@ -36,6 +36,10 @@ module BoardsApiHandlers =
       let bodyParams = reader.ReadToEnd() |> bind req.ContentType
       let result = BoardsApiService.BoardSectionsCreate bodyParams
       match result with
+      | BoardSectionsCreateStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
       | BoardSectionsCreateStatusCode201 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -44,18 +48,22 @@ module BoardsApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | BoardSectionsCreateStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
       | BoardSectionsCreateStatusCode403 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
-      | BoardSectionsCreateStatusCode409 resolved ->
+      | BoardSectionsCreateStatusCode404 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
-          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(409))
-      | BoardSectionsCreateStatusCode500 resolved ->
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | BoardSectionsCreateStatusCode429 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
-          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(500))
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | BoardSectionsCreateDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -72,10 +80,22 @@ module BoardsApiHandlers =
 
       let result = BoardsApiService.BoardSectionsDelete ()
       match result with
+      | BoardSectionsDeleteStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
       | BoardSectionsDeleteStatusCode204 resolved ->
           let content = resolved.content
           let responseContentType = "text/plain"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(204))
+      | BoardSectionsDeleteStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | BoardSectionsDeleteStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
       | BoardSectionsDeleteStatusCode403 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -84,10 +104,10 @@ module BoardsApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
-      | BoardSectionsDeleteStatusCode409 resolved ->
+      | BoardSectionsDeleteStatusCode429 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
-          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(409))
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | BoardSectionsDeleteDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -108,6 +128,26 @@ module BoardsApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | BoardSectionsListStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | BoardSectionsListStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | BoardSectionsListStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | BoardSectionsListStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | BoardSectionsListStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | BoardSectionsListDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -128,6 +168,14 @@ module BoardsApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | BoardSectionsListPinsStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | BoardSectionsListPinsStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
       | BoardSectionsListPinsStatusCode403 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -136,10 +184,10 @@ module BoardsApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
-      | BoardSectionsListPinsStatusCode409 resolved ->
+      | BoardSectionsListPinsStatusCode429 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
-          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(409))
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | BoardSectionsListPinsDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -175,14 +223,22 @@ module BoardsApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | BoardSectionsUpdateStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
       | BoardSectionsUpdateStatusCode403 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
-      | BoardSectionsUpdateStatusCode409 resolved ->
+      | BoardSectionsUpdateStatusCode404 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
-          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(409))
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | BoardSectionsUpdateStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | BoardSectionsUpdateDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -254,6 +310,10 @@ module BoardsApiHandlers =
 
       let result = BoardsApiService.BoardsDelete ()
       match result with
+      | BoardsDeleteStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
       | BoardsDeleteStatusCode204 resolved ->
           let content = resolved.content
           let responseContentType = "text/plain"
@@ -378,10 +438,26 @@ module BoardsApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | BoardsListPinsStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | BoardsListPinsStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | BoardsListPinsStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
       | BoardsListPinsStatusCode404 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | BoardsListPinsStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
       | BoardsListPinsDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"

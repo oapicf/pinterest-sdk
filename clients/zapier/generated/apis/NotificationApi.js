@@ -1,7 +1,7 @@
 const samples = require('../samples/NotificationApi');
-const Error = require('../models/Error');
+const NotificationPostRequest = require('../models/NotificationPostRequest');
 const NotificationResponse = require('../models/NotificationResponse');
-const notification_post_request = require('../models/notification_post_request');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
 const utils = require('../utils/utils');
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
         },
         operation: {
             inputFields: [
-                ...notification_post_request.fields(),
+                ...NotificationPostRequest.fields(),
             ],
             outputFields: [
                 ...NotificationResponse.fields('', false),
@@ -32,7 +32,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...notification_post_request.mapping(bundle),
+                        ...NotificationPostRequest.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {

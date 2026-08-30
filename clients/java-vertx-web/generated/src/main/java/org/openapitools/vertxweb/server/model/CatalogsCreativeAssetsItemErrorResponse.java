@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 import org.openapitools.vertxweb.server.model.ItemValidationEvent;
 
 /**
@@ -16,26 +15,64 @@ import org.openapitools.vertxweb.server.model.ItemValidationEvent;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreativeAssetsItemErrorResponse   {
   
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private String creativeAssetsId;
   private List<ItemValidationEvent> errors = new ArrayList<>();
+
+
+  public enum ItemResponseKindEnum {
+    CREATIVE_ASSETS_ITEM_ERROR("creative_assets_item_error");
+
+    private String value;
+
+    ItemResponseKindEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private ItemResponseKindEnum itemResponseKind;
 
   public CatalogsCreativeAssetsItemErrorResponse () {
 
   }
 
-  public CatalogsCreativeAssetsItemErrorResponse (CatalogsType catalogType, String creativeAssetsId, List<ItemValidationEvent> errors) {
+  public CatalogsCreativeAssetsItemErrorResponse (CatalogTypeEnum catalogType, String creativeAssetsId, List<ItemValidationEvent> errors, ItemResponseKindEnum itemResponseKind) {
     this.catalogType = catalogType;
     this.creativeAssetsId = creativeAssetsId;
     this.errors = errors;
+    this.itemResponseKind = itemResponseKind;
   }
 
     
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -57,6 +94,15 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
     this.errors = errors;
   }
 
+    
+  @JsonProperty("item_response_kind")
+  public ItemResponseKindEnum getItemResponseKind() {
+    return itemResponseKind;
+  }
+  public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -69,12 +115,13 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
     CatalogsCreativeAssetsItemErrorResponse catalogsCreativeAssetsItemErrorResponse = (CatalogsCreativeAssetsItemErrorResponse) o;
     return Objects.equals(catalogType, catalogsCreativeAssetsItemErrorResponse.catalogType) &&
         Objects.equals(creativeAssetsId, catalogsCreativeAssetsItemErrorResponse.creativeAssetsId) &&
-        Objects.equals(errors, catalogsCreativeAssetsItemErrorResponse.errors);
+        Objects.equals(errors, catalogsCreativeAssetsItemErrorResponse.errors) &&
+        Objects.equals(itemResponseKind, catalogsCreativeAssetsItemErrorResponse.itemResponseKind);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsId, errors);
+    return Objects.hash(catalogType, creativeAssetsId, errors, itemResponseKind);
   }
 
   @Override
@@ -85,6 +132,7 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -94,9 +142,6 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

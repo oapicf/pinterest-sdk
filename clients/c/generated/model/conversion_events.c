@@ -6,24 +6,47 @@
 
 
 static conversion_events_t *conversion_events_create_internal(
-    list_t *data
+    list_t *events,
+    int *num_events_processed,
+    int *num_events_received
     ) {
     conversion_events_t *conversion_events_local_var = malloc(sizeof(conversion_events_t));
     if (!conversion_events_local_var) {
         return NULL;
     }
-    conversion_events_local_var->data = data;
-
+    memset(conversion_events_local_var, 0, sizeof(conversion_events_t));
     conversion_events_local_var->_library_owned = 1;
+    conversion_events_local_var->events = events;
+    conversion_events_local_var->num_events_processed = num_events_processed;
+    conversion_events_local_var->num_events_received = num_events_received;
     return conversion_events_local_var;
 }
 
 __attribute__((deprecated)) conversion_events_t *conversion_events_create(
-    list_t *data
+    list_t *events,
+    int *num_events_processed,
+    int *num_events_received
     ) {
-    return conversion_events_create_internal (
-        data
+    int *num_events_processed_copy = NULL;
+    if (num_events_processed) {
+        num_events_processed_copy = malloc(sizeof(int));
+        if (num_events_processed_copy) *num_events_processed_copy = *num_events_processed;
+    }
+    int *num_events_received_copy = NULL;
+    if (num_events_received) {
+        num_events_received_copy = malloc(sizeof(int));
+        if (num_events_received_copy) *num_events_received_copy = *num_events_received;
+    }
+    conversion_events_t *result = conversion_events_create_internal (
+        events,
+        num_events_processed_copy,
+        num_events_received_copy
         );
+    if (!result) {
+        free(num_events_processed_copy);
+        free(num_events_received_copy);
+    }
+    return result;
 }
 
 void conversion_events_free(conversion_events_t *conversion_events) {
@@ -35,12 +58,20 @@ void conversion_events_free(conversion_events_t *conversion_events) {
         return ;
     }
     listEntry_t *listEntry;
-    if (conversion_events->data) {
-        list_ForEach(listEntry, conversion_events->data) {
-            conversion_events_data_inner_free(listEntry->data);
+    if (conversion_events->events) {
+        list_ForEach(listEntry, conversion_events->events) {
+            conversion_api_response_events_items_free(listEntry->data);
         }
-        list_freeList(conversion_events->data);
-        conversion_events->data = NULL;
+        list_freeList(conversion_events->events);
+        conversion_events->events = NULL;
+    }
+    if (conversion_events->num_events_processed) {
+        free(conversion_events->num_events_processed);
+        conversion_events->num_events_processed = NULL;
+    }
+    if (conversion_events->num_events_received) {
+        free(conversion_events->num_events_received);
+        conversion_events->num_events_received = NULL;
     }
     free(conversion_events);
 }
@@ -48,24 +79,42 @@ void conversion_events_free(conversion_events_t *conversion_events) {
 cJSON *conversion_events_convertToJSON(conversion_events_t *conversion_events) {
     cJSON *item = cJSON_CreateObject();
 
-    // conversion_events->data
-    if (!conversion_events->data) {
+    // conversion_events->events
+    if (!conversion_events->events) {
         goto fail;
     }
-    cJSON *data = cJSON_AddArrayToObject(item, "data");
-    if(data == NULL) {
+    cJSON *events = cJSON_AddArrayToObject(item, "events");
+    if(events == NULL) {
     goto fail; //nonprimitive container
     }
 
-    listEntry_t *dataListEntry;
-    if (conversion_events->data) {
-    list_ForEach(dataListEntry, conversion_events->data) {
-    cJSON *itemLocal = conversion_events_data_inner_convertToJSON(dataListEntry->data);
+    listEntry_t *eventsListEntry;
+    if (conversion_events->events) {
+    list_ForEach(eventsListEntry, conversion_events->events) {
+    cJSON *itemLocal = conversion_api_response_events_items_convertToJSON(eventsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
-    cJSON_AddItemToArray(data, itemLocal);
+    cJSON_AddItemToArray(events, itemLocal);
     }
+    }
+
+
+    // conversion_events->num_events_processed
+    if (!conversion_events->num_events_processed) {
+        goto fail;
+    }
+    if(cJSON_AddNumberToObject(item, "num_events_processed", *conversion_events->num_events_processed) == NULL) {
+    goto fail; //Numeric
+    }
+
+
+    // conversion_events->num_events_received
+    if (!conversion_events->num_events_received) {
+        goto fail;
+    }
+    if(cJSON_AddNumberToObject(item, "num_events_received", *conversion_events->num_events_received) == NULL) {
+    goto fail; //Numeric
     }
 
     return item;
@@ -80,51 +129,114 @@ conversion_events_t *conversion_events_parseFromJSON(cJSON *conversion_eventsJSO
 
     conversion_events_t *conversion_events_local_var = NULL;
 
-    // define the local list for conversion_events->data
-    list_t *dataList = NULL;
+    // define the local list for conversion_events->events
+    list_t *eventsList = NULL;
 
-    // conversion_events->data
-    cJSON *data = cJSON_GetObjectItemCaseSensitive(conversion_eventsJSON, "data");
-    if (cJSON_IsNull(data)) {
-        data = NULL;
+    // define the local variable for conversion_events->num_events_processed
+    int *num_events_processed_local_var = NULL;
+
+    // define the local variable for conversion_events->num_events_received
+    int *num_events_received_local_var = NULL;
+
+    // conversion_events->events
+    cJSON *events = cJSON_GetObjectItemCaseSensitive(conversion_eventsJSON, "events");
+    if (cJSON_IsNull(events)) {
+        events = NULL;
     }
-    if (!data) {
+    if (!events) {
         goto end;
     }
 
     
-    cJSON *data_local_nonprimitive = NULL;
-    if(!cJSON_IsArray(data)){
+    cJSON *events_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(events)){
         goto end; //nonprimitive container
     }
 
-    dataList = list_createList();
+    eventsList = list_createList();
 
-    cJSON_ArrayForEach(data_local_nonprimitive,data )
+    cJSON_ArrayForEach(events_local_nonprimitive,events )
     {
-        if(!cJSON_IsObject(data_local_nonprimitive)){
+        if(!cJSON_IsObject(events_local_nonprimitive)){
             goto end;
         }
-        conversion_events_data_inner_t *dataItem = conversion_events_data_inner_parseFromJSON(data_local_nonprimitive);
+        conversion_api_response_events_items_t *eventsItem = conversion_api_response_events_items_parseFromJSON(events_local_nonprimitive);
 
-        list_addElement(dataList, dataItem);
+        list_addElement(eventsList, eventsItem);
     }
+
+    // conversion_events->num_events_processed
+    cJSON *num_events_processed = cJSON_GetObjectItemCaseSensitive(conversion_eventsJSON, "num_events_processed");
+    if (cJSON_IsNull(num_events_processed)) {
+        num_events_processed = NULL;
+    }
+    if (!num_events_processed) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsNumber(num_events_processed))
+    {
+    goto end; //Numeric
+    }
+    num_events_processed_local_var = malloc(sizeof(int));
+    if(!num_events_processed_local_var)
+    {
+        goto end;
+    }
+    *num_events_processed_local_var = num_events_processed->valuedouble;
+
+    // conversion_events->num_events_received
+    cJSON *num_events_received = cJSON_GetObjectItemCaseSensitive(conversion_eventsJSON, "num_events_received");
+    if (cJSON_IsNull(num_events_received)) {
+        num_events_received = NULL;
+    }
+    if (!num_events_received) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsNumber(num_events_received))
+    {
+    goto end; //Numeric
+    }
+    num_events_received_local_var = malloc(sizeof(int));
+    if(!num_events_received_local_var)
+    {
+        goto end;
+    }
+    *num_events_received_local_var = num_events_received->valuedouble;
+
 
 
     conversion_events_local_var = conversion_events_create_internal (
-        dataList
+        eventsList,
+        num_events_processed_local_var,
+        num_events_received_local_var
         );
+
+    if (!conversion_events_local_var) {
+        goto end;
+    }
 
     return conversion_events_local_var;
 end:
-    if (dataList) {
+    if (eventsList) {
         listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, dataList) {
-            conversion_events_data_inner_free(listEntry->data);
+        list_ForEach(listEntry, eventsList) {
+            conversion_api_response_events_items_free(listEntry->data);
             listEntry->data = NULL;
         }
-        list_freeList(dataList);
-        dataList = NULL;
+        list_freeList(eventsList);
+        eventsList = NULL;
+    }
+    if (num_events_processed_local_var) {
+        free(num_events_processed_local_var);
+        num_events_processed_local_var = NULL;
+    }
+    if (num_events_received_local_var) {
+        free(num_events_received_local_var);
+        num_events_received_local_var = NULL;
     }
     return NULL;
 

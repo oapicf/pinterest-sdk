@@ -2,7 +2,6 @@
 package org.openapitools.client.model
 
 import java.time.LocalDate
-import java.util.HashMap
 
 case class AdPinAnalytics (
     /* Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */

@@ -3,13 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | **String!** | Catalog id pertaining to the hotel product group. | [default to null]
+**catalogId** | **String!** | Catalog ID pertaining to the product group. | [default to null]
 **catalogType** | **String!** |  | [default to null]
 **createdAt** | **Int!** | Unix timestamp in seconds of when catalog product group was created. | [optional] [default to null]
 **description** | **String** |  | [optional] [default to null]
 **filters** | [***CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | [default to null]
-**Id_** | **String!** | ID of the hotel product group. | [default to null]
-**name** | **String!** | Name of hotel product group | [optional] [default to null]
+**Id_** | **String!** | ID of the catalog product group. | [default to null]
+**name** | **String!** | Name of catalog product group | [optional] [default to null]
 **Type_** | [***CatalogsHotelProductGroupType**](CatalogsHotelProductGroupType.md) |  | [default to null]
 **updatedAt** | **Int!** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] [default to null]
 

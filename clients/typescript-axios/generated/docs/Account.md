@@ -1,13 +1,14 @@
 # Account
 
+User account model containing properties related to a user\'s account.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **about** | **string** | Profile about description. | [optional] [default to undefined]
-**account_type** | **string** | Type of account | [optional] [default to undefined]
-**board_count** | **number** | User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] [default to undefined]
+**account_type** | [**UserAccountType**](UserAccountType.md) | Type of account | [optional] [default to undefined]
+**board_count** | **number** |   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] [default to undefined]
 **business_name** | **string** |  | [optional] [default to undefined]
 **follower_count** | **number** | User account follower count. | [optional] [readonly] [default to undefined]
 **following_count** | **number** | User account following count. | [optional] [readonly] [default to undefined]

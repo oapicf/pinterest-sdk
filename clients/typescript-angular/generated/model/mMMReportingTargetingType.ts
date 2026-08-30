@@ -17,7 +17,9 @@ export const MMMReportingTargetingType = {
     Country: 'COUNTRY',
     CreativeType: 'CREATIVE_TYPE',
     Gender: 'GENDER',
-    Location: 'LOCATION'
+    Location: 'LOCATION',
+    Placement: 'PLACEMENT',
+    AudienceInclude: 'AUDIENCE_INCLUDE'
 } as const;
 export type MMMReportingTargetingType = typeof MMMReportingTargetingType[keyof typeof MMMReportingTargetingType];
 

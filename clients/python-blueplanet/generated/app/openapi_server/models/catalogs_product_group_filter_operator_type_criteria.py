@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.filter_operator_type import FilterOperatorType  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -15,18 +16,18 @@ class CatalogsProductGroupFilterOperatorTypeCriteria(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, filter_operator_type: str='IS', negated: bool=False, values: List[str]=None):  # noqa: E501
+    def __init__(self, filter_operator_type: FilterOperatorType=None, negated: bool=None, values: List[str]=None):  # noqa: E501
         """CatalogsProductGroupFilterOperatorTypeCriteria - a model defined in Swagger
 
         :param filter_operator_type: The filter_operator_type of this CatalogsProductGroupFilterOperatorTypeCriteria.  # noqa: E501
-        :type filter_operator_type: str
+        :type filter_operator_type: FilterOperatorType
         :param negated: The negated of this CatalogsProductGroupFilterOperatorTypeCriteria.  # noqa: E501
         :type negated: bool
         :param values: The values of this CatalogsProductGroupFilterOperatorTypeCriteria.  # noqa: E501
         :type values: List[str]
         """
         self.swagger_types = {
-            'filter_operator_type': str,
+            'filter_operator_type': FilterOperatorType,
             'negated': bool,
             'values': List[str]
         }
@@ -53,29 +54,23 @@ class CatalogsProductGroupFilterOperatorTypeCriteria(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def filter_operator_type(self) -> str:
+    def filter_operator_type(self) -> FilterOperatorType:
         """Gets the filter_operator_type of this CatalogsProductGroupFilterOperatorTypeCriteria.
 
 
         :return: The filter_operator_type of this CatalogsProductGroupFilterOperatorTypeCriteria.
-        :rtype: str
+        :rtype: FilterOperatorType
         """
         return self._filter_operator_type
 
     @filter_operator_type.setter
-    def filter_operator_type(self, filter_operator_type: str):
+    def filter_operator_type(self, filter_operator_type: FilterOperatorType):
         """Sets the filter_operator_type of this CatalogsProductGroupFilterOperatorTypeCriteria.
 
 
         :param filter_operator_type: The filter_operator_type of this CatalogsProductGroupFilterOperatorTypeCriteria.
-        :type filter_operator_type: str
+        :type filter_operator_type: FilterOperatorType
         """
-        allowed_values = ["IS", "CONTAINS"]  # noqa: E501
-        if filter_operator_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `filter_operator_type` ({0}), must be one of {1}"
-                .format(filter_operator_type, allowed_values)
-            )
 
         self._filter_operator_type = filter_operator_type
 

@@ -11,7 +11,7 @@
 
 // Get item batch status
 //
-// Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+// Get a single catalogs items batch owned by the \"operating user_account\". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 //
 catalogs_items_batch_t*
 CatalogItemsAPI_itemsBatchGet(apiClient_t *apiClient, char *batch_id, char *ad_account_id)
@@ -71,27 +71,31 @@ CatalogItemsAPI_itemsBatchGet(apiClient_t *apiClient, char *batch_id, char *ad_a
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Response containing the requested catalogs items batch");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Not authenticated to access catalogs items batch");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Not authorized to access catalogs items batch");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Catalogs items batch not found");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 405) {
-    //    printf("%s\n","Method Not Allowed.");
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_items_batch_t *elementToReturn = NULL;
@@ -138,10 +142,10 @@ end:
 
 // Operate on item batch
 //
-// This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
+// This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". [See detailed documentation here.](/docs/work-with-catalogs/modify-items-in-batch/) - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
 //
 catalogs_items_batch_t*
-CatalogItemsAPI_itemsBatchPost(apiClient_t *apiClient, items_batch_post_request_t *items_batch_post_request, char *ad_account_id)
+CatalogItemsAPI_itemsBatchPost(apiClient_t *apiClient, catalogs_items_batch_post_request_t *catalogs_items_batch_post_request, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -174,12 +178,12 @@ CatalogItemsAPI_itemsBatchPost(apiClient_t *apiClient, items_batch_post_request_
     }
 
     // Body Param
-    cJSON *localVarSingleItemJSON_items_batch_post_request = NULL;
-    if (items_batch_post_request != NULL)
+    cJSON *localVarSingleItemJSON_catalogs_items_batch_post_request = NULL;
+    if (catalogs_items_batch_post_request != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_items_batch_post_request = items_batch_post_request_convertToJSON(items_batch_post_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_items_batch_post_request);
+        localVarSingleItemJSON_catalogs_items_batch_post_request = catalogs_items_batch_post_request_convertToJSON(catalogs_items_batch_post_request);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_items_batch_post_request);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -197,23 +201,31 @@ CatalogItemsAPI_itemsBatchPost(apiClient_t *apiClient, items_batch_post_request_
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Response containing the requested catalogs items batch");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid request parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Not authenticated to post catalogs items");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Not authorized to post catalogs items");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_items_batch_t *elementToReturn = NULL;
@@ -238,9 +250,9 @@ CatalogItemsAPI_itemsBatchPost(apiClient_t *apiClient, items_batch_post_request_
     list_freeList(localVarHeaderType);
     list_freeList(localVarContentType);
     free(localVarPath);
-    if (localVarSingleItemJSON_items_batch_post_request) {
-        cJSON_Delete(localVarSingleItemJSON_items_batch_post_request);
-        localVarSingleItemJSON_items_batch_post_request = NULL;
+    if (localVarSingleItemJSON_catalogs_items_batch_post_request) {
+        cJSON_Delete(localVarSingleItemJSON_catalogs_items_batch_post_request);
+        localVarSingleItemJSON_catalogs_items_batch_post_request = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_ad_account_id){
@@ -264,9 +276,9 @@ end:
 
 // Get catalogs items (POST)
 //
-// Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+// Get the items of the catalog owned by the \"operation user_account\". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 //
-catalogs_items_t*
+items_post_200_response_t*
 CatalogItemsAPI_itemsPost(apiClient_t *apiClient, catalogs_items_request_t *catalogs_items_request, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -323,29 +335,37 @@ CatalogItemsAPI_itemsPost(apiClient_t *apiClient, catalogs_items_request_t *cata
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Response containing the requested catalogs items");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid request");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Not authorized to access catalogs items");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Not authorized to access catalogs items");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    catalogs_items_t *elementToReturn = NULL;
+    items_post_200_response_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *CatalogItemsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = catalogs_items_parseFromJSON(CatalogItemsAPIlocalVarJSON);
+        elementToReturn = items_post_200_response_parseFromJSON(CatalogItemsAPIlocalVarJSON);
         cJSON_Delete(CatalogItemsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;

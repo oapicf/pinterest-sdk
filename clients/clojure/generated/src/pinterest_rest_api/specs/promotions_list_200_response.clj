@@ -1,7 +1,7 @@
 (ns pinterest-rest-api.specs.promotions-list-200-response
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs.promotion-response :refer :all]
+            [pinterest-rest-api.specs.promotion :refer :all]
             )
   (:import (java.io File)))
 
@@ -9,7 +9,7 @@
 (def promotions-list-200-response-data
   {
    (ds/opt :bookmark) string?
-   (ds/req :items) (s/coll-of promotion-response-spec)
+   (ds/req :items) (s/coll-of promotion-spec)
    })
 
 (def promotions-list-200-response-spec

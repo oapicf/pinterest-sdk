@@ -1,0 +1,52 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server EntityLabel"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a EntityLabel"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  EntityLabelStatus = openapi_server.resourceTypes.EntityLabelStatus
+  LabelParentType = openapi_server.resourceTypes.LabelParentType
+}
+resourceTypes {
+
+  EntityLabel {
+    title = EntityLabel
+    description = EntityLabel
+    derivedFrom = Root
+    properties {
+        entity_id {
+          type =  string
+          description = "Entity ID to apply label to."
+          optional = true
+        }
+        entity_type {
+          type = LabelParentType
+          description = ""
+          optional = false
+        }
+        label_id {
+          type =  string
+          description = "Label ID."
+          optional = true
+        }
+        status {
+          type = EntityLabelStatus
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  EntityLabel {
+    title = EntityLabel
+    description = EntityLabel
+    implements = openapi_server.resourceTypes.EntityLabel
+
+  }
+}

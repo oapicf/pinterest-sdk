@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  GetBusinessAssetsResponse = openapi_server.resourceTypes.GetBusinessAssetsResponse
+  BusinessAssets = openapi_server.resourceTypes.BusinessAssets
 }
 resourceTypes {
 
@@ -23,8 +23,8 @@ resourceTypes {
         }
         items {
           type = array
-          items.type = GetBusinessAssetsResponse
-          description = "List of assets the requesting business has access to."
+          items.type = BusinessAssets
+          description = ""
           optional = true
         }
     }

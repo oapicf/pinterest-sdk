@@ -20,15 +20,16 @@
 #' @field disclosure_url URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. character [optional]
 #' @field grid_click_type  \link{GridClickType} [optional]
 #' @field ios_deep_link Deep link URL for iOS devices. character [optional]
+#' @field is_carting Is the ad a carting/WTB ad? character [optional]
 #' @field is_pin_deleted Is original pin deleted? character [optional]
 #' @field is_removable Is pin repinnable? character [optional]
 #' @field lead_form_id Lead form ID for lead ad generation. character [optional]
 #' @field name Name of the ad - 255 chars max. character [optional]
-#' @field quiz_pin_data Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. \link{QuizPinData} [optional]
-#' @field status  \link{EntityStatus} [optional]
-#' @field tracking_urls  \link{TrackingUrls} [optional]
-#' @field view_tracking_url Tracking URL for ad impressions. character [optional]
 #' @field pin_id Pin ID. character
+#' @field quiz_pin_data Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. object [optional]
+#' @field status  \link{EntityStatus} [optional]
+#' @field tracking_urls  object [optional]
+#' @field view_tracking_url Tracking URL for ad impressions. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -48,15 +49,16 @@ AdCreateRequest <- R6::R6Class(
     `disclosure_url` = NULL,
     `grid_click_type` = NULL,
     `ios_deep_link` = NULL,
+    `is_carting` = NULL,
     `is_pin_deleted` = NULL,
     `is_removable` = NULL,
     `lead_form_id` = NULL,
     `name` = NULL,
+    `pin_id` = NULL,
     `quiz_pin_data` = NULL,
     `status` = NULL,
     `tracking_urls` = NULL,
     `view_tracking_url` = NULL,
-    `pin_id` = NULL,
 
     #' @description
     #' Initialize a new AdCreateRequest class.
@@ -75,6 +77,7 @@ AdCreateRequest <- R6::R6Class(
     #' @param disclosure_url URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
     #' @param grid_click_type grid_click_type
     #' @param ios_deep_link Deep link URL for iOS devices.
+    #' @param is_carting Is the ad a carting/WTB ad?
     #' @param is_pin_deleted Is original pin deleted?
     #' @param is_removable Is pin repinnable?
     #' @param lead_form_id Lead form ID for lead ad generation.
@@ -84,7 +87,7 @@ AdCreateRequest <- R6::R6Class(
     #' @param tracking_urls tracking_urls
     #' @param view_tracking_url Tracking URL for ad impressions.
     #' @param ... Other optional arguments.
-    initialize = function(`ad_group_id`, `creative_type`, `pin_id`, `android_deep_link` = NULL, `carousel_android_deep_links` = NULL, `carousel_destination_urls` = NULL, `carousel_ios_deep_links` = NULL, `click_tracking_url` = NULL, `customizable_cta_type` = NULL, `destination_url` = NULL, `disclosure_type` = NULL, `disclosure_url` = NULL, `grid_click_type` = NULL, `ios_deep_link` = NULL, `is_pin_deleted` = NULL, `is_removable` = NULL, `lead_form_id` = NULL, `name` = NULL, `quiz_pin_data` = NULL, `status` = NULL, `tracking_urls` = NULL, `view_tracking_url` = NULL, ...) {
+    initialize = function(`ad_group_id`, `creative_type`, `pin_id`, `android_deep_link` = NULL, `carousel_android_deep_links` = NULL, `carousel_destination_urls` = NULL, `carousel_ios_deep_links` = NULL, `click_tracking_url` = NULL, `customizable_cta_type` = NULL, `destination_url` = NULL, `disclosure_type` = NULL, `disclosure_url` = NULL, `grid_click_type` = NULL, `ios_deep_link` = NULL, `is_carting` = NULL, `is_pin_deleted` = NULL, `is_removable` = NULL, `lead_form_id` = NULL, `name` = NULL, `quiz_pin_data` = NULL, `status` = NULL, `tracking_urls` = NULL, `view_tracking_url` = NULL, ...) {
       if (!missing(`ad_group_id`)) {
         if (!(is.character(`ad_group_id`) && length(`ad_group_id`) == 1)) {
           stop(paste("Error! Invalid data for `ad_group_id`. Must be a string:", `ad_group_id`))
@@ -170,6 +173,12 @@ AdCreateRequest <- R6::R6Class(
         }
         self$`ios_deep_link` <- `ios_deep_link`
       }
+      if (!is.null(`is_carting`)) {
+        if (!(is.logical(`is_carting`) && length(`is_carting`) == 1)) {
+          stop(paste("Error! Invalid data for `is_carting`. Must be a boolean:", `is_carting`))
+        }
+        self$`is_carting` <- `is_carting`
+      }
       if (!is.null(`is_pin_deleted`)) {
         if (!(is.logical(`is_pin_deleted`) && length(`is_pin_deleted`) == 1)) {
           stop(paste("Error! Invalid data for `is_pin_deleted`. Must be a boolean:", `is_pin_deleted`))
@@ -195,7 +204,6 @@ AdCreateRequest <- R6::R6Class(
         self$`name` <- `name`
       }
       if (!is.null(`quiz_pin_data`)) {
-        stopifnot(R6::is.R6(`quiz_pin_data`))
         self$`quiz_pin_data` <- `quiz_pin_data`
       }
       if (!is.null(`status`)) {
@@ -206,7 +214,6 @@ AdCreateRequest <- R6::R6Class(
         self$`status` <- `status`
       }
       if (!is.null(`tracking_urls`)) {
-        stopifnot(R6::is.R6(`tracking_urls`))
         self$`tracking_urls` <- `tracking_urls`
       }
       if (!is.null(`view_tracking_url`)) {
@@ -274,11 +281,11 @@ AdCreateRequest <- R6::R6Class(
       }
       if (!is.null(self$`creative_type`)) {
         AdCreateRequestObject[["creative_type"]] <-
-          self$`creative_type`$toSimpleType()
+          self$extractSimpleType(self$`creative_type`)
       }
       if (!is.null(self$`customizable_cta_type`)) {
         AdCreateRequestObject[["customizable_cta_type"]] <-
-          self$`customizable_cta_type`$toSimpleType()
+          self$extractSimpleType(self$`customizable_cta_type`)
       }
       if (!is.null(self$`destination_url`)) {
         AdCreateRequestObject[["destination_url"]] <-
@@ -286,7 +293,7 @@ AdCreateRequest <- R6::R6Class(
       }
       if (!is.null(self$`disclosure_type`)) {
         AdCreateRequestObject[["disclosure_type"]] <-
-          self$`disclosure_type`$toSimpleType()
+          self$extractSimpleType(self$`disclosure_type`)
       }
       if (!is.null(self$`disclosure_url`)) {
         AdCreateRequestObject[["disclosure_url"]] <-
@@ -294,11 +301,15 @@ AdCreateRequest <- R6::R6Class(
       }
       if (!is.null(self$`grid_click_type`)) {
         AdCreateRequestObject[["grid_click_type"]] <-
-          self$`grid_click_type`$toSimpleType()
+          self$extractSimpleType(self$`grid_click_type`)
       }
       if (!is.null(self$`ios_deep_link`)) {
         AdCreateRequestObject[["ios_deep_link"]] <-
           self$`ios_deep_link`
+      }
+      if (!is.null(self$`is_carting`)) {
+        AdCreateRequestObject[["is_carting"]] <-
+          self$`is_carting`
       }
       if (!is.null(self$`is_pin_deleted`)) {
         AdCreateRequestObject[["is_pin_deleted"]] <-
@@ -316,27 +327,50 @@ AdCreateRequest <- R6::R6Class(
         AdCreateRequestObject[["name"]] <-
           self$`name`
       }
+      if (!is.null(self$`pin_id`)) {
+        AdCreateRequestObject[["pin_id"]] <-
+          self$`pin_id`
+      }
       if (!is.null(self$`quiz_pin_data`)) {
         AdCreateRequestObject[["quiz_pin_data"]] <-
-          self$`quiz_pin_data`$toSimpleType()
+          self$`quiz_pin_data`
       }
       if (!is.null(self$`status`)) {
         AdCreateRequestObject[["status"]] <-
-          self$`status`$toSimpleType()
+          self$extractSimpleType(self$`status`)
       }
       if (!is.null(self$`tracking_urls`)) {
         AdCreateRequestObject[["tracking_urls"]] <-
-          self$`tracking_urls`$toSimpleType()
+          self$`tracking_urls`
       }
       if (!is.null(self$`view_tracking_url`)) {
         AdCreateRequestObject[["view_tracking_url"]] <-
           self$`view_tracking_url`
       }
-      if (!is.null(self$`pin_id`)) {
-        AdCreateRequestObject[["pin_id"]] <-
-          self$`pin_id`
-      }
       return(AdCreateRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -393,6 +427,9 @@ AdCreateRequest <- R6::R6Class(
       if (!is.null(this_object$`ios_deep_link`)) {
         self$`ios_deep_link` <- this_object$`ios_deep_link`
       }
+      if (!is.null(this_object$`is_carting`)) {
+        self$`is_carting` <- this_object$`is_carting`
+      }
       if (!is.null(this_object$`is_pin_deleted`)) {
         self$`is_pin_deleted` <- this_object$`is_pin_deleted`
       }
@@ -405,10 +442,11 @@ AdCreateRequest <- R6::R6Class(
       if (!is.null(this_object$`name`)) {
         self$`name` <- this_object$`name`
       }
+      if (!is.null(this_object$`pin_id`)) {
+        self$`pin_id` <- this_object$`pin_id`
+      }
       if (!is.null(this_object$`quiz_pin_data`)) {
-        `quiz_pin_data_object` <- QuizPinData$new()
-        `quiz_pin_data_object`$fromJSON(jsonlite::toJSON(this_object$`quiz_pin_data`, auto_unbox = TRUE, digits = NA))
-        self$`quiz_pin_data` <- `quiz_pin_data_object`
+        self$`quiz_pin_data` <- this_object$`quiz_pin_data`
       }
       if (!is.null(this_object$`status`)) {
         `status_object` <- EntityStatus$new()
@@ -416,15 +454,10 @@ AdCreateRequest <- R6::R6Class(
         self$`status` <- `status_object`
       }
       if (!is.null(this_object$`tracking_urls`)) {
-        `tracking_urls_object` <- TrackingUrls$new()
-        `tracking_urls_object`$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
-        self$`tracking_urls` <- `tracking_urls_object`
+        self$`tracking_urls` <- this_object$`tracking_urls`
       }
       if (!is.null(this_object$`view_tracking_url`)) {
         self$`view_tracking_url` <- this_object$`view_tracking_url`
-      }
-      if (!is.null(this_object$`pin_id`)) {
-        self$`pin_id` <- this_object$`pin_id`
       }
       self
     },
@@ -460,15 +493,16 @@ AdCreateRequest <- R6::R6Class(
       self$`disclosure_url` <- this_object$`disclosure_url`
       self$`grid_click_type` <- GridClickType$new()$fromJSON(jsonlite::toJSON(this_object$`grid_click_type`, auto_unbox = TRUE, digits = NA))
       self$`ios_deep_link` <- this_object$`ios_deep_link`
+      self$`is_carting` <- this_object$`is_carting`
       self$`is_pin_deleted` <- this_object$`is_pin_deleted`
       self$`is_removable` <- this_object$`is_removable`
       self$`lead_form_id` <- this_object$`lead_form_id`
       self$`name` <- this_object$`name`
-      self$`quiz_pin_data` <- QuizPinData$new()$fromJSON(jsonlite::toJSON(this_object$`quiz_pin_data`, auto_unbox = TRUE, digits = NA))
-      self$`status` <- EntityStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
-      self$`tracking_urls` <- TrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
-      self$`view_tracking_url` <- this_object$`view_tracking_url`
       self$`pin_id` <- this_object$`pin_id`
+      self$`quiz_pin_data` <- this_object$`quiz_pin_data`
+      self$`status` <- EntityStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+      self$`tracking_urls` <- this_object$`tracking_urls`
+      self$`view_tracking_url` <- this_object$`view_tracking_url`
       self
     },
 

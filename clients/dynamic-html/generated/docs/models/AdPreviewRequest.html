@@ -6,8 +6,18 @@
   </li>
 </ul>
 <ul class="parameter">
+  <li class="param-required-false">promotionUnderscoreid : String
+    <br/>Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-true">title : String
     <br/>Title displayed below ad.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">creativeUnderscoretype : AdShoppingPreviewCreativeType
+    <br/>Ad format of the shopping ad preview.
   </li>
 </ul>
 <ul class="parameter">
@@ -18,19 +28,6 @@
 <ul class="parameter">
   <li class="param-required-true">catalogUnderscoreproductUnderscoregroupUnderscoreid : String
     <br/>Catalog Product Group Id.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">creativeUnderscoretype : String
-    <br/>Ad format of the shopping ad preview.
-      <dl class="param-enum">
-        <dt>Enum:
-            <dd>SHOPPING</dd>
-            <dd>CAROUSEL</dd>
-            <dd>COLLECTION</dd>
-            <dd>REGULAR</dd>
-        </dt>
-      </dl>
   </li>
 </ul>
 <ul class="parameter">
@@ -64,14 +61,13 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">preferredUnderscoremediaUnderscoretype : String
+  <li class="param-required-false">preferredUnderscoremediaUnderscoretype : BasePreferredMediaType
     <br/>Preferred media type.
-      <dl class="param-enum">
-        <dt>Enum:
-            <dd>VIDEO</dd>
-            <dd>IMAGE</dd>
-        </dt>
-      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">showUnderscorepromotion : Boolean
+    <br/>Include promotion data in preview when available on catalog item. Defaults to false.
   </li>
 </ul>
 <ul class="parameter">

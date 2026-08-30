@@ -7,8 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  LabelCreateRequestLabelsInner = openapi_server.resourceTypes.LabelCreateRequestLabelsInner
-  import re = openapi_server.resourceTypes.import re
+  LabelCreateItem = openapi_server.resourceTypes.LabelCreateItem
 }
 resourceTypes {
 
@@ -19,13 +18,8 @@ resourceTypes {
     properties {
         labels {
           type = array
-          items.type = LabelCreateRequestLabelsInner
+          items.type = LabelCreateItem
           description = "Labels that you are applying to the campaign."
-          optional = true
-        }
-        parent_id {
-          type =  string
-          description = "Unique identifier of the asset you are labelling. Currently, you can only label campaigns."
           optional = true
         }
     }

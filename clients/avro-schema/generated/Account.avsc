@@ -1,7 +1,7 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "",
+  "doc": "User account model containing properties related to a user's account.",
   "name": "Account",
   "fields": [
     {
@@ -12,21 +12,14 @@
     },
     {
       "name": "account_type",
-      "type": ["null", {
-        "type": "enum",
-        "name": "Account_accountUnderscoretype",
-        "symbols": [
-          "PINNER",
-          "BUSINESS"
-        ]
-      }],
+      "type": ["null", "model.UserAccountType"],
       "doc": "Type of account",
       "default": null
     },
     {
       "name": "board_count",
       "type": ["null", "int"],
-      "doc": "User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.",
+      "doc": "  User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.",
       "default": null
     },
     {

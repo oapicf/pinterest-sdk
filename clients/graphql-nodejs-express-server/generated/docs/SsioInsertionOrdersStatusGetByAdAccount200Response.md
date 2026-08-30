@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  | [optional] [default to null]
-**items** | [**SsioInsertionOrderStatus**](SSIOInsertionOrderStatus.md) | Insertion orders status by ad acount id | [default to null]
+**items** | [**SsioInsertionOrderStatus**](SSIOInsertionOrderStatus.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

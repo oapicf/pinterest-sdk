@@ -4,13 +4,14 @@ import org.openapitools.vertxweb.server.model.Board;
 import org.openapitools.vertxweb.server.model.BoardCreate;
 import org.openapitools.vertxweb.server.model.BoardPrivacyFilter;
 import org.openapitools.vertxweb.server.model.BoardSection;
+import org.openapitools.vertxweb.server.model.BoardSectionCreate;
+import org.openapitools.vertxweb.server.model.BoardSectionUpdateWithRequiredBody;
 import org.openapitools.vertxweb.server.model.BoardSectionsList200Response;
 import org.openapitools.vertxweb.server.model.BoardWithUpdatePrivacy;
 import org.openapitools.vertxweb.server.model.BoardWithUpdatePrivacyUpdate;
 import org.openapitools.vertxweb.server.model.BoardsList200Response;
 import org.openapitools.vertxweb.server.model.BoardsListPins200Response;
 import org.openapitools.vertxweb.server.model.CreativeType;
-import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -64,14 +65,14 @@ public class BoardsApiHandler {
 
         String boardId = requestParameters.pathParameter("board_id") != null ? requestParameters.pathParameter("board_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        BoardSection boardSection = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BoardSection>(){}) : null;
+        BoardSectionCreate boardSectionCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BoardSectionCreate>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter boardId is {}", boardId);
-        logger.debug("Parameter boardSection is {}", boardSection);
+        logger.debug("Parameter boardSectionCreate is {}", boardSectionCreate);
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.boardSectionsCreate(boardId, boardSection, adAccountId)
+        api.boardSectionsCreate(boardId, boardSectionCreate, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -176,15 +177,15 @@ public class BoardsApiHandler {
         String boardId = requestParameters.pathParameter("board_id") != null ? requestParameters.pathParameter("board_id").getString() : null;
         String sectionId = requestParameters.pathParameter("section_id") != null ? requestParameters.pathParameter("section_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        BoardSection boardSection = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BoardSection>(){}) : null;
+        BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BoardSectionUpdateWithRequiredBody>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter boardId is {}", boardId);
         logger.debug("Parameter sectionId is {}", sectionId);
-        logger.debug("Parameter boardSection is {}", boardSection);
+        logger.debug("Parameter boardSectionUpdateWithRequiredBody is {}", boardSectionUpdateWithRequiredBody);
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId)
+        api.boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -304,20 +305,20 @@ public class BoardsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String boardId = requestParameters.pathParameter("board_id") != null ? requestParameters.pathParameter("board_id").getString() : null;
-        String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
-        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
         List<CreativeType> creativeTypes = requestParameters.queryParameter("creative_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("creative_types").get(), new TypeReference<List<CreativeType>>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
         Boolean pinMetrics = requestParameters.queryParameter("pin_metrics") != null ? requestParameters.queryParameter("pin_metrics").getBoolean() : false;
+        String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
 
         logger.debug("Parameter boardId is {}", boardId);
-        logger.debug("Parameter bookmark is {}", bookmark);
-        logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter creativeTypes is {}", creativeTypes);
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter pinMetrics is {}", pinMetrics);
+        logger.debug("Parameter bookmark is {}", bookmark);
+        logger.debug("Parameter pageSize is {}", pageSize);
 
-        api.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics)
+        api.boardsListPins(boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

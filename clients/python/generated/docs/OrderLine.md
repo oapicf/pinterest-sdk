@@ -5,18 +5,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ad_account_id** | **str** | Ad account ID. | [optional] 
+**ad_account_id** | **str** | Ad account ID. | 
 **budget** | **float** | Order line budget in micro currency. | [optional] 
+**campaign_ids** | **List[str]** | Associated List of campaign IDs. | 
 **end_time** | **float** | End time. Unix timestamp. | [optional] 
-**id** | **str** | Order line ID. | [optional] 
+**id** | **str** | Order line ID. | 
 **name** | **str** | Order line name. | [optional] 
 **paid_budget** | **float** | Order line paid budget in micro currency. | [optional] 
 **paid_type** | [**OrderLinePaidType**](OrderLinePaidType.md) | Order line paid type. | [optional] 
 **purchase_order_id** | **str** | Purchase order ID. | [optional] 
 **start_time** | **float** | Start time. Unix timestamp. | [optional] 
-**status** | [**OrderLineStatus**](OrderLineStatus.md) | Order line status. | [optional] 
-**type** | **str** | Always \&quot;orderline\&quot;. | [optional] 
-**campaign_ids** | **List[str]** | Associated List of campaign IDs. | 
+**status** | [**OrderLineStatus**](OrderLineStatus.md) | Order line status. | 
+**type** | **str** | Always \&quot;orderline\&quot;. | 
 
 ## Example
 

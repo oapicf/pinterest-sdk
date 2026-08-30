@@ -3,7 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**app_links** | **REAL_32** |  | [default to null]
 **catalog_type** | [**STRING_32**](STRING_32.md) |  | [default to null]
+**images** | **REAL_32** |  | [default to null]
 **total** | **REAL_32** |  | [default to null]
 **videos** | **REAL_32** |  | [default to null]
 

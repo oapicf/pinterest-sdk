@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &AdvancedAuctionItems{}
 // AdvancedAuctionItems Response object containing item bid options
 type AdvancedAuctionItems struct {
 	// Response object of item bid options
-	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\d+$"`
 	// Array with item bid options
 	Items []AdvancedAuctionItem `json:"items,omitempty"`
 }

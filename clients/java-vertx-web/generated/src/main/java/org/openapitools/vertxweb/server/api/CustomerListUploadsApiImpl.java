@@ -1,9 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
+import org.openapitools.vertxweb.server.model.CustomerListUpload;
 import org.openapitools.vertxweb.server.model.CustomerListUploadCreateRequest;
 import org.openapitools.vertxweb.server.model.CustomerListUploadCreateResponse;
-import org.openapitools.vertxweb.server.model.CustomerListUploadResponse;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -21,11 +21,11 @@ public class CustomerListUploadsApiImpl implements CustomerListUploadsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<CustomerListUploadResponse>> customerListUploadsGet(String adAccountId, String customerListId, String customerListUploadId) {
+    public Future<ApiResponse<CustomerListUpload>> customerListUploadsGet(String adAccountId, String customerListId, String customerListUploadId) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<CustomerListUploadResponse>> customerListUploadsRun(String adAccountId, String customerListId, String customerListUploadId) {
+    public Future<ApiResponse<CustomerListUpload>> customerListUploadsRun(String adAccountId, String customerListId, String customerListUploadId) {
         return Future.failedFuture(new HttpException(501));
     }
 

@@ -15,6 +15,7 @@
 
 typedef struct catalogs_creative_assets_attributes_t catalogs_creative_assets_attributes_t;
 
+#include "catalogs_ai_content_disclosure.h"
 
 
 
@@ -31,6 +32,7 @@ typedef struct catalogs_creative_assets_attributes_t {
     char *link; // string
     char *title; // string
     char *visibility; // string
+    list_t *ai_disclosures; //nonprimitive container
     char *image_link; // string
     char *video_link; // string
 
@@ -50,6 +52,7 @@ __attribute__((deprecated)) catalogs_creative_assets_attributes_t *catalogs_crea
     char *link,
     char *title,
     char *visibility,
+    list_t *ai_disclosures,
     char *image_link,
     char *video_link
 );

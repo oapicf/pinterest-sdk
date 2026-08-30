@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | **String** |  | [optional] 
-**Items** | [**UserWebsiteSummary[]**](UserWebsiteSummary.md) |  | 
+**Items** | [**UserWebsite[]**](UserWebsite.md) |  | 
 
 ## Examples
 

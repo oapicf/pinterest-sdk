@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `VideoMetadataWithItemType`
 --
-SELECT `cover_image_url`, `duration`, `height`, `item_type`, `video_url`, `width` FROM `VideoMetadataWithItemType` WHERE 1;
+SELECT `cover_image_url`, `duration`, `height`, `item_type`, `video_url`, `video_url_hls`, `width` FROM `VideoMetadataWithItemType` WHERE 1;
 
 --
 -- INSERT template for table `VideoMetadataWithItemType`
 --
-INSERT INTO `VideoMetadataWithItemType`(`cover_image_url`, `duration`, `height`, `item_type`, `video_url`, `width`) VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO `VideoMetadataWithItemType`(`cover_image_url`, `duration`, `height`, `item_type`, `video_url`, `video_url_hls`, `width`) VALUES (?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `VideoMetadataWithItemType`
 --
-UPDATE `VideoMetadataWithItemType` SET `cover_image_url` = ?, `duration` = ?, `height` = ?, `item_type` = ?, `video_url` = ?, `width` = ? WHERE 1;
+UPDATE `VideoMetadataWithItemType` SET `cover_image_url` = ?, `duration` = ?, `height` = ?, `item_type` = ?, `video_url` = ?, `video_url_hls` = ?, `width` = ? WHERE 1;
 
 --
 -- DELETE template for table `VideoMetadataWithItemType`

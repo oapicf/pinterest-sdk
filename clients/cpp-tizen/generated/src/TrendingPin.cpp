@@ -23,15 +23,22 @@ TrendingPin::~TrendingPin()
 void
 TrendingPin::__init()
 {
+	//color = std::string();
 	//height = int(0);
 	//id = std::string();
 	//src = std::string();
+	//vertical_offset = double(0);
 	//width = int(0);
 }
 
 void
 TrendingPin::__cleanup()
 {
+	//if(color != NULL) {
+	//
+	//delete color;
+	//color = NULL;
+	//}
 	//if(height != NULL) {
 	//
 	//delete height;
@@ -47,6 +54,11 @@ TrendingPin::__cleanup()
 	//delete src;
 	//src = NULL;
 	//}
+	//if(vertical_offset != NULL) {
+	//
+	//delete vertical_offset;
+	//vertical_offset = NULL;
+	//}
 	//if(width != NULL) {
 	//
 	//delete width;
@@ -60,6 +72,17 @@ TrendingPin::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *colorKey = "color";
+	node = json_object_get_member(pJsonObject, colorKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&color, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *heightKey = "height";
 	node = json_object_get_member(pJsonObject, heightKey);
 	if (node !=NULL) {
@@ -93,6 +116,17 @@ TrendingPin::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *vertical_offsetKey = "vertical_offset";
+	node = json_object_get_member(pJsonObject, vertical_offsetKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("double")) {
+			jsonToValue(&vertical_offset, node, "double", "");
+		} else {
+			
+		}
+	}
 	const gchar *widthKey = "width";
 	node = json_object_get_member(pJsonObject, widthKey);
 	if (node !=NULL) {
@@ -116,6 +150,15 @@ TrendingPin::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getColor();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *colorKey = "color";
+	json_object_set_member(pJsonObject, colorKey, node);
 	if (isprimitive("int")) {
 		int obj = getHeight();
 		node = converttoJson(&obj, "int", "");
@@ -143,6 +186,15 @@ TrendingPin::toJson()
 	}
 	const gchar *srcKey = "src";
 	json_object_set_member(pJsonObject, srcKey, node);
+	if (isprimitive("double")) {
+		double obj = getVerticalOffset();
+		node = converttoJson(&obj, "double", "");
+	}
+	else {
+		
+	}
+	const gchar *vertical_offsetKey = "vertical_offset";
+	json_object_set_member(pJsonObject, vertical_offsetKey, node);
 	if (isprimitive("int")) {
 		int obj = getWidth();
 		node = converttoJson(&obj, "int", "");
@@ -158,6 +210,18 @@ TrendingPin::toJson()
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::string
+TrendingPin::getColor()
+{
+	return color;
+}
+
+void
+TrendingPin::setColor(std::string  color)
+{
+	this->color = color;
 }
 
 int
@@ -194,6 +258,18 @@ void
 TrendingPin::setSrc(std::string  src)
 {
 	this->src = src;
+}
+
+double
+TrendingPin::getVerticalOffset()
+{
+	return vertical_offset;
+}
+
+void
+TrendingPin::setVerticalOffset(double  vertical_offset)
+{
+	this->vertical_offset = vertical_offset;
 }
 
 int

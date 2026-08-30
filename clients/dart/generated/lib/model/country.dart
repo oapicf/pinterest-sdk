@@ -11,521 +11,275 @@
 part of openapi.api;
 
 /// Country ID from ISO 3166-1 alpha-2.
-class Country {
-  /// Instantiate a new enum with the provided [value].
-  const Country._(this.value);
+enum Country {
+  AD._(r'AD'),
+  AE._(r'AE'),
+  AF._(r'AF'),
+  AG._(r'AG'),
+  AI._(r'AI'),
+  AL._(r'AL'),
+  AM._(r'AM'),
+  AO._(r'AO'),
+  AQ._(r'AQ'),
+  AR._(r'AR'),
+  AS._(r'AS'),
+  AT._(r'AT'),
+  AU._(r'AU'),
+  AW._(r'AW'),
+  AX._(r'AX'),
+  AZ._(r'AZ'),
+  BA._(r'BA'),
+  BB._(r'BB'),
+  BD._(r'BD'),
+  BE._(r'BE'),
+  BF._(r'BF'),
+  BG._(r'BG'),
+  BH._(r'BH'),
+  BI._(r'BI'),
+  BJ._(r'BJ'),
+  BL._(r'BL'),
+  BM._(r'BM'),
+  BN._(r'BN'),
+  BO._(r'BO'),
+  BQ._(r'BQ'),
+  BR._(r'BR'),
+  BS._(r'BS'),
+  BT._(r'BT'),
+  BV._(r'BV'),
+  BW._(r'BW'),
+  BY._(r'BY'),
+  BZ._(r'BZ'),
+  CA._(r'CA'),
+  CC._(r'CC'),
+  CD._(r'CD'),
+  CF._(r'CF'),
+  CG._(r'CG'),
+  CH._(r'CH'),
+  CI._(r'CI'),
+  CK._(r'CK'),
+  CL._(r'CL'),
+  CM._(r'CM'),
+  CN._(r'CN'),
+  CO._(r'CO'),
+  CR._(r'CR'),
+  CU._(r'CU'),
+  CV._(r'CV'),
+  CW._(r'CW'),
+  CX._(r'CX'),
+  CY._(r'CY'),
+  CZ._(r'CZ'),
+  DE._(r'DE'),
+  DJ._(r'DJ'),
+  DK._(r'DK'),
+  DM._(r'DM'),
+  DO._(r'DO'),
+  DZ._(r'DZ'),
+  EC._(r'EC'),
+  EE._(r'EE'),
+  EG._(r'EG'),
+  EH._(r'EH'),
+  ER._(r'ER'),
+  ES._(r'ES'),
+  ET._(r'ET'),
+  FI._(r'FI'),
+  FJ._(r'FJ'),
+  FK._(r'FK'),
+  FM._(r'FM'),
+  FO._(r'FO'),
+  FR._(r'FR'),
+  GA._(r'GA'),
+  GB._(r'GB'),
+  GD._(r'GD'),
+  GE._(r'GE'),
+  GF._(r'GF'),
+  GG._(r'GG'),
+  GH._(r'GH'),
+  GI._(r'GI'),
+  GL._(r'GL'),
+  GM._(r'GM'),
+  GN._(r'GN'),
+  GP._(r'GP'),
+  GQ._(r'GQ'),
+  GR._(r'GR'),
+  GS._(r'GS'),
+  GT._(r'GT'),
+  GU._(r'GU'),
+  GW._(r'GW'),
+  GY._(r'GY'),
+  HK._(r'HK'),
+  HM._(r'HM'),
+  HN._(r'HN'),
+  HR._(r'HR'),
+  HT._(r'HT'),
+  HU._(r'HU'),
+  ID._(r'ID'),
+  IE._(r'IE'),
+  IL._(r'IL'),
+  IM._(r'IM'),
+  IN._(r'IN'),
+  IO._(r'IO'),
+  IQ._(r'IQ'),
+  IR._(r'IR'),
+  IS._(r'IS'),
+  IT._(r'IT'),
+  JE._(r'JE'),
+  JM._(r'JM'),
+  JO._(r'JO'),
+  JP._(r'JP'),
+  KE._(r'KE'),
+  KG._(r'KG'),
+  KH._(r'KH'),
+  KI._(r'KI'),
+  KM._(r'KM'),
+  KN._(r'KN'),
+  KR._(r'KR'),
+  KW._(r'KW'),
+  KY._(r'KY'),
+  KZ._(r'KZ'),
+  LA._(r'LA'),
+  LB._(r'LB'),
+  LC._(r'LC'),
+  LI._(r'LI'),
+  LK._(r'LK'),
+  LR._(r'LR'),
+  LS._(r'LS'),
+  LT._(r'LT'),
+  LU._(r'LU'),
+  LV._(r'LV'),
+  LY._(r'LY'),
+  MA._(r'MA'),
+  MC._(r'MC'),
+  MD._(r'MD'),
+  ME._(r'ME'),
+  MF._(r'MF'),
+  MG._(r'MG'),
+  MH._(r'MH'),
+  MK._(r'MK'),
+  ML._(r'ML'),
+  MM._(r'MM'),
+  MN._(r'MN'),
+  MO._(r'MO'),
+  MP._(r'MP'),
+  MQ._(r'MQ'),
+  MR._(r'MR'),
+  MS._(r'MS'),
+  MT._(r'MT'),
+  MU._(r'MU'),
+  MV._(r'MV'),
+  MW._(r'MW'),
+  MX._(r'MX'),
+  MY._(r'MY'),
+  MZ._(r'MZ'),
+  NA._(r'NA'),
+  NC._(r'NC'),
+  NE._(r'NE'),
+  NF._(r'NF'),
+  NG._(r'NG'),
+  NI._(r'NI'),
+  NL._(r'NL'),
+  false_._(r'false'),
+  NP._(r'NP'),
+  NR._(r'NR'),
+  NU._(r'NU'),
+  NZ._(r'NZ'),
+  OM._(r'OM'),
+  PA._(r'PA'),
+  PE._(r'PE'),
+  PF._(r'PF'),
+  PG._(r'PG'),
+  PH._(r'PH'),
+  PK._(r'PK'),
+  PL._(r'PL'),
+  PM._(r'PM'),
+  PN._(r'PN'),
+  PR._(r'PR'),
+  PS._(r'PS'),
+  PT._(r'PT'),
+  PW._(r'PW'),
+  PY._(r'PY'),
+  QA._(r'QA'),
+  RE._(r'RE'),
+  RO._(r'RO'),
+  RS._(r'RS'),
+  RU._(r'RU'),
+  RW._(r'RW'),
+  SA._(r'SA'),
+  SB._(r'SB'),
+  SC._(r'SC'),
+  SD._(r'SD'),
+  SE._(r'SE'),
+  SG._(r'SG'),
+  SH._(r'SH'),
+  SI._(r'SI'),
+  SJ._(r'SJ'),
+  SK._(r'SK'),
+  SL._(r'SL'),
+  SM._(r'SM'),
+  SN._(r'SN'),
+  SO._(r'SO'),
+  SR._(r'SR'),
+  SS._(r'SS'),
+  ST._(r'ST'),
+  SV._(r'SV'),
+  SX._(r'SX'),
+  SY._(r'SY'),
+  SZ._(r'SZ'),
+  TC._(r'TC'),
+  TD._(r'TD'),
+  TF._(r'TF'),
+  TG._(r'TG'),
+  TH._(r'TH'),
+  TJ._(r'TJ'),
+  TK._(r'TK'),
+  TL._(r'TL'),
+  TM._(r'TM'),
+  TN._(r'TN'),
+  TO._(r'TO'),
+  TR._(r'TR'),
+  TT._(r'TT'),
+  TV._(r'TV'),
+  TW._(r'TW'),
+  TZ._(r'TZ'),
+  UA._(r'UA'),
+  UG._(r'UG'),
+  UM._(r'UM'),
+  US._(r'US'),
+  UY._(r'UY'),
+  UZ._(r'UZ'),
+  VA._(r'VA'),
+  VC._(r'VC'),
+  VE._(r'VE'),
+  VG._(r'VG'),
+  VI._(r'VI'),
+  VN._(r'VN'),
+  VU._(r'VU'),
+  WF._(r'WF'),
+  WS._(r'WS'),
+  YE._(r'YE'),
+  YT._(r'YT'),
+  ZA._(r'ZA'),
+  ZM._(r'ZM'),
+  ZW._(r'ZW'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const Country._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const AD = Country._(r'AD');
-  static const AE = Country._(r'AE');
-  static const AF = Country._(r'AF');
-  static const AG = Country._(r'AG');
-  static const AI = Country._(r'AI');
-  static const AL = Country._(r'AL');
-  static const AM = Country._(r'AM');
-  static const AO = Country._(r'AO');
-  static const AQ = Country._(r'AQ');
-  static const AR = Country._(r'AR');
-  static const AS = Country._(r'AS');
-  static const AT = Country._(r'AT');
-  static const AU = Country._(r'AU');
-  static const AW = Country._(r'AW');
-  static const AX = Country._(r'AX');
-  static const AZ = Country._(r'AZ');
-  static const BA = Country._(r'BA');
-  static const BB = Country._(r'BB');
-  static const BD = Country._(r'BD');
-  static const BE = Country._(r'BE');
-  static const BF = Country._(r'BF');
-  static const BG = Country._(r'BG');
-  static const BH = Country._(r'BH');
-  static const BI = Country._(r'BI');
-  static const BJ = Country._(r'BJ');
-  static const BL = Country._(r'BL');
-  static const BM = Country._(r'BM');
-  static const BN = Country._(r'BN');
-  static const BO = Country._(r'BO');
-  static const BQ = Country._(r'BQ');
-  static const BR = Country._(r'BR');
-  static const BS = Country._(r'BS');
-  static const BT = Country._(r'BT');
-  static const BV = Country._(r'BV');
-  static const BW = Country._(r'BW');
-  static const BY = Country._(r'BY');
-  static const BZ = Country._(r'BZ');
-  static const CA = Country._(r'CA');
-  static const CC = Country._(r'CC');
-  static const CD = Country._(r'CD');
-  static const CF = Country._(r'CF');
-  static const CG = Country._(r'CG');
-  static const CH = Country._(r'CH');
-  static const CI = Country._(r'CI');
-  static const CK = Country._(r'CK');
-  static const CL = Country._(r'CL');
-  static const CM = Country._(r'CM');
-  static const CN = Country._(r'CN');
-  static const CO = Country._(r'CO');
-  static const CR = Country._(r'CR');
-  static const CU = Country._(r'CU');
-  static const CV = Country._(r'CV');
-  static const CW = Country._(r'CW');
-  static const CX = Country._(r'CX');
-  static const CY = Country._(r'CY');
-  static const CZ = Country._(r'CZ');
-  static const DE = Country._(r'DE');
-  static const DJ = Country._(r'DJ');
-  static const DK = Country._(r'DK');
-  static const DM = Country._(r'DM');
-  static const DO = Country._(r'DO');
-  static const DZ = Country._(r'DZ');
-  static const EC = Country._(r'EC');
-  static const EE = Country._(r'EE');
-  static const EG = Country._(r'EG');
-  static const EH = Country._(r'EH');
-  static const ER = Country._(r'ER');
-  static const ES = Country._(r'ES');
-  static const ET = Country._(r'ET');
-  static const FI = Country._(r'FI');
-  static const FJ = Country._(r'FJ');
-  static const FK = Country._(r'FK');
-  static const FM = Country._(r'FM');
-  static const FO = Country._(r'FO');
-  static const FR = Country._(r'FR');
-  static const GA = Country._(r'GA');
-  static const GB = Country._(r'GB');
-  static const GD = Country._(r'GD');
-  static const GE = Country._(r'GE');
-  static const GF = Country._(r'GF');
-  static const GG = Country._(r'GG');
-  static const GH = Country._(r'GH');
-  static const GI = Country._(r'GI');
-  static const GL = Country._(r'GL');
-  static const GM = Country._(r'GM');
-  static const GN = Country._(r'GN');
-  static const GP = Country._(r'GP');
-  static const GQ = Country._(r'GQ');
-  static const GR = Country._(r'GR');
-  static const GS = Country._(r'GS');
-  static const GT = Country._(r'GT');
-  static const GU = Country._(r'GU');
-  static const GW = Country._(r'GW');
-  static const GY = Country._(r'GY');
-  static const HK = Country._(r'HK');
-  static const HM = Country._(r'HM');
-  static const HN = Country._(r'HN');
-  static const HR = Country._(r'HR');
-  static const HT = Country._(r'HT');
-  static const HU = Country._(r'HU');
-  static const ID = Country._(r'ID');
-  static const IE = Country._(r'IE');
-  static const IL = Country._(r'IL');
-  static const IM = Country._(r'IM');
-  static const IN = Country._(r'IN');
-  static const IO = Country._(r'IO');
-  static const IQ = Country._(r'IQ');
-  static const IR = Country._(r'IR');
-  static const IS = Country._(r'IS');
-  static const IT = Country._(r'IT');
-  static const JE = Country._(r'JE');
-  static const JM = Country._(r'JM');
-  static const JO = Country._(r'JO');
-  static const JP = Country._(r'JP');
-  static const KE = Country._(r'KE');
-  static const KG = Country._(r'KG');
-  static const KH = Country._(r'KH');
-  static const KI = Country._(r'KI');
-  static const KM = Country._(r'KM');
-  static const KN = Country._(r'KN');
-  static const KR = Country._(r'KR');
-  static const KW = Country._(r'KW');
-  static const KY = Country._(r'KY');
-  static const KZ = Country._(r'KZ');
-  static const LA = Country._(r'LA');
-  static const LB = Country._(r'LB');
-  static const LC = Country._(r'LC');
-  static const LI = Country._(r'LI');
-  static const LK = Country._(r'LK');
-  static const LR = Country._(r'LR');
-  static const LS = Country._(r'LS');
-  static const LT = Country._(r'LT');
-  static const LU = Country._(r'LU');
-  static const LV = Country._(r'LV');
-  static const LY = Country._(r'LY');
-  static const MA = Country._(r'MA');
-  static const MC = Country._(r'MC');
-  static const MD = Country._(r'MD');
-  static const ME = Country._(r'ME');
-  static const MF = Country._(r'MF');
-  static const MG = Country._(r'MG');
-  static const MH = Country._(r'MH');
-  static const MK = Country._(r'MK');
-  static const ML = Country._(r'ML');
-  static const MM = Country._(r'MM');
-  static const MN = Country._(r'MN');
-  static const MO = Country._(r'MO');
-  static const MP = Country._(r'MP');
-  static const MQ = Country._(r'MQ');
-  static const MR = Country._(r'MR');
-  static const MS = Country._(r'MS');
-  static const MT = Country._(r'MT');
-  static const MU = Country._(r'MU');
-  static const MV = Country._(r'MV');
-  static const MW = Country._(r'MW');
-  static const MX = Country._(r'MX');
-  static const MY = Country._(r'MY');
-  static const MZ = Country._(r'MZ');
-  static const NA = Country._(r'NA');
-  static const NC = Country._(r'NC');
-  static const NE = Country._(r'NE');
-  static const NF = Country._(r'NF');
-  static const NG = Country._(r'NG');
-  static const NI = Country._(r'NI');
-  static const NL = Country._(r'NL');
-  static const NO = Country._(r'NO');
-  static const NP = Country._(r'NP');
-  static const NR = Country._(r'NR');
-  static const NU = Country._(r'NU');
-  static const NZ = Country._(r'NZ');
-  static const OM = Country._(r'OM');
-  static const PA = Country._(r'PA');
-  static const PE = Country._(r'PE');
-  static const PF = Country._(r'PF');
-  static const PG = Country._(r'PG');
-  static const PH = Country._(r'PH');
-  static const PK = Country._(r'PK');
-  static const PL = Country._(r'PL');
-  static const PM = Country._(r'PM');
-  static const PN = Country._(r'PN');
-  static const PR = Country._(r'PR');
-  static const PS = Country._(r'PS');
-  static const PT = Country._(r'PT');
-  static const PW = Country._(r'PW');
-  static const PY = Country._(r'PY');
-  static const QA = Country._(r'QA');
-  static const RE = Country._(r'RE');
-  static const RO = Country._(r'RO');
-  static const RS = Country._(r'RS');
-  static const RU = Country._(r'RU');
-  static const RW = Country._(r'RW');
-  static const SA = Country._(r'SA');
-  static const SB = Country._(r'SB');
-  static const SC = Country._(r'SC');
-  static const SD = Country._(r'SD');
-  static const SE = Country._(r'SE');
-  static const SG = Country._(r'SG');
-  static const SH = Country._(r'SH');
-  static const SI = Country._(r'SI');
-  static const SJ = Country._(r'SJ');
-  static const SK = Country._(r'SK');
-  static const SL = Country._(r'SL');
-  static const SM = Country._(r'SM');
-  static const SN = Country._(r'SN');
-  static const SO = Country._(r'SO');
-  static const SR = Country._(r'SR');
-  static const SS = Country._(r'SS');
-  static const ST = Country._(r'ST');
-  static const SV = Country._(r'SV');
-  static const SX = Country._(r'SX');
-  static const SY = Country._(r'SY');
-  static const SZ = Country._(r'SZ');
-  static const TC = Country._(r'TC');
-  static const TD = Country._(r'TD');
-  static const TF = Country._(r'TF');
-  static const TG = Country._(r'TG');
-  static const TH = Country._(r'TH');
-  static const TJ = Country._(r'TJ');
-  static const TK = Country._(r'TK');
-  static const TL = Country._(r'TL');
-  static const TM = Country._(r'TM');
-  static const TN = Country._(r'TN');
-  static const TO = Country._(r'TO');
-  static const TR = Country._(r'TR');
-  static const TT = Country._(r'TT');
-  static const TV = Country._(r'TV');
-  static const TW = Country._(r'TW');
-  static const TZ = Country._(r'TZ');
-  static const UA = Country._(r'UA');
-  static const UG = Country._(r'UG');
-  static const UM = Country._(r'UM');
-  static const US = Country._(r'US');
-  static const UY = Country._(r'UY');
-  static const UZ = Country._(r'UZ');
-  static const VA = Country._(r'VA');
-  static const VC = Country._(r'VC');
-  static const VE = Country._(r'VE');
-  static const VG = Country._(r'VG');
-  static const VI = Country._(r'VI');
-  static const VN = Country._(r'VN');
-  static const VU = Country._(r'VU');
-  static const WF = Country._(r'WF');
-  static const WS = Country._(r'WS');
-  static const YE = Country._(r'YE');
-  static const YT = Country._(r'YT');
-  static const ZA = Country._(r'ZA');
-  static const ZM = Country._(r'ZM');
-  static const ZW = Country._(r'ZW');
-
-  /// List of all possible values in this [enum][Country].
-  static const values = <Country>[
-    AD,
-    AE,
-    AF,
-    AG,
-    AI,
-    AL,
-    AM,
-    AO,
-    AQ,
-    AR,
-    AS,
-    AT,
-    AU,
-    AW,
-    AX,
-    AZ,
-    BA,
-    BB,
-    BD,
-    BE,
-    BF,
-    BG,
-    BH,
-    BI,
-    BJ,
-    BL,
-    BM,
-    BN,
-    BO,
-    BQ,
-    BR,
-    BS,
-    BT,
-    BV,
-    BW,
-    BY,
-    BZ,
-    CA,
-    CC,
-    CD,
-    CF,
-    CG,
-    CH,
-    CI,
-    CK,
-    CL,
-    CM,
-    CN,
-    CO,
-    CR,
-    CU,
-    CV,
-    CW,
-    CX,
-    CY,
-    CZ,
-    DE,
-    DJ,
-    DK,
-    DM,
-    DO,
-    DZ,
-    EC,
-    EE,
-    EG,
-    EH,
-    ER,
-    ES,
-    ET,
-    FI,
-    FJ,
-    FK,
-    FM,
-    FO,
-    FR,
-    GA,
-    GB,
-    GD,
-    GE,
-    GF,
-    GG,
-    GH,
-    GI,
-    GL,
-    GM,
-    GN,
-    GP,
-    GQ,
-    GR,
-    GS,
-    GT,
-    GU,
-    GW,
-    GY,
-    HK,
-    HM,
-    HN,
-    HR,
-    HT,
-    HU,
-    ID,
-    IE,
-    IL,
-    IM,
-    IN,
-    IO,
-    IQ,
-    IR,
-    IS,
-    IT,
-    JE,
-    JM,
-    JO,
-    JP,
-    KE,
-    KG,
-    KH,
-    KI,
-    KM,
-    KN,
-    KR,
-    KW,
-    KY,
-    KZ,
-    LA,
-    LB,
-    LC,
-    LI,
-    LK,
-    LR,
-    LS,
-    LT,
-    LU,
-    LV,
-    LY,
-    MA,
-    MC,
-    MD,
-    ME,
-    MF,
-    MG,
-    MH,
-    MK,
-    ML,
-    MM,
-    MN,
-    MO,
-    MP,
-    MQ,
-    MR,
-    MS,
-    MT,
-    MU,
-    MV,
-    MW,
-    MX,
-    MY,
-    MZ,
-    NA,
-    NC,
-    NE,
-    NF,
-    NG,
-    NI,
-    NL,
-    NO,
-    NP,
-    NR,
-    NU,
-    NZ,
-    OM,
-    PA,
-    PE,
-    PF,
-    PG,
-    PH,
-    PK,
-    PL,
-    PM,
-    PN,
-    PR,
-    PS,
-    PT,
-    PW,
-    PY,
-    QA,
-    RE,
-    RO,
-    RS,
-    RU,
-    RW,
-    SA,
-    SB,
-    SC,
-    SD,
-    SE,
-    SG,
-    SH,
-    SI,
-    SJ,
-    SK,
-    SL,
-    SM,
-    SN,
-    SO,
-    SR,
-    SS,
-    ST,
-    SV,
-    SX,
-    SY,
-    SZ,
-    TC,
-    TD,
-    TF,
-    TG,
-    TH,
-    TJ,
-    TK,
-    TL,
-    TM,
-    TN,
-    TO,
-    TR,
-    TT,
-    TV,
-    TW,
-    TZ,
-    UA,
-    UG,
-    UM,
-    US,
-    UY,
-    UZ,
-    VA,
-    VC,
-    VE,
-    VG,
-    VI,
-    VN,
-    VU,
-    WF,
-    WS,
-    YE,
-    YT,
-    ZA,
-    ZM,
-    ZW,
-  ];
-
+  /// Returns the instance of [Country] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static Country? fromJson(dynamic value) => CountryTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [Country]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<Country> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Country>[];
     if (json is List && json.isNotEmpty) {
@@ -547,9 +301,11 @@ class CountryTypeTransformer {
 
   const CountryTypeTransformer._();
 
-  String encode(Country data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(Country data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a Country.
+  /// Returns the instance of [Country] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -558,6 +314,9 @@ class CountryTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   Country? decode(dynamic data, {bool allowNull = true}) {
+    if (data is Country) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'AD': return Country.AD;
@@ -725,7 +484,7 @@ class CountryTypeTransformer {
         case r'NG': return Country.NG;
         case r'NI': return Country.NI;
         case r'NL': return Country.NL;
-        case r'NO': return Country.NO;
+        case r'false': return Country.false_;
         case r'NP': return Country.NP;
         case r'NR': return Country.NR;
         case r'NU': return Country.NU;
@@ -817,7 +576,7 @@ class CountryTypeTransformer {
     return null;
   }
 
-  /// Singleton [CountryTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CountryTypeTransformer? _instance;
 }
 

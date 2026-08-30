@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AiDisclosuresUpdate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AiDisclosuresUpdate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AiDisclosureItem = openapi_server.resourceTypes.AiDisclosureItem
+}
+resourceTypes {
+
+  AiDisclosuresUpdate {
+    title = AiDisclosuresUpdate
+    description = AiDisclosuresUpdate
+    derivedFrom = Root
+    properties {
+        values {
+          type = array
+          items.type = AiDisclosureItem
+          description = "List of AI disclosure declarations the creator has made about this Pin."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AiDisclosuresUpdate {
+    title = AiDisclosuresUpdate
+    description = AiDisclosuresUpdate
+    implements = openapi_server.resourceTypes.AiDisclosuresUpdate
+
+  }
+}

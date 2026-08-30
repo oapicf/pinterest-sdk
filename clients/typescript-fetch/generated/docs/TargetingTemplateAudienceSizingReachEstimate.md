@@ -17,9 +17,9 @@ import type { TargetingTemplateAudienceSizingReachEstimate } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "estimate": 63492000,
-  "lowerBound": 47619000,
-  "upperBound": 79365000,
+  "estimate": null,
+  "lowerBound": null,
+  "upperBound": null,
 } satisfies TargetingTemplateAudienceSizingReachEstimate
 
 console.log(example)

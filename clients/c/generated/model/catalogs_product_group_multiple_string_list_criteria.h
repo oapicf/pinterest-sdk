@@ -19,14 +19,14 @@ typedef struct catalogs_product_group_multiple_string_list_criteria_t catalogs_p
 
 
 typedef struct catalogs_product_group_multiple_string_list_criteria_t {
-    int negated; //boolean
+    int *negated; //boolean
     list_t *values; //primitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_multiple_string_list_criteria_t;
 
 __attribute__((deprecated)) catalogs_product_group_multiple_string_list_criteria_t *catalogs_product_group_multiple_string_list_criteria_create(
-    int negated,
+    int *negated,
     list_t *values
 );
 

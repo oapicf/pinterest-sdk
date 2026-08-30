@@ -10,7 +10,7 @@ The class is defined in **[AuthRespondInvitesBody.java](../../src/main/java/org/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**invites** | [`List&lt;AuthRespondInvitesBodyInvitesInner&gt;`](AuthRespondInvitesBodyInvitesInner.md) |  | 
+**invites** | [`List&lt;AuthRespondInvitesBodyItem&gt;`](AuthRespondInvitesBodyItem.md) |  | 
 
 
 

@@ -1,0 +1,21 @@
+# WWW::OpenAPIClient::Object::CustomerSegment
+
+## Load the model package
+```perl
+use WWW::OpenAPIClient::Object::CustomerSegment;
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**ad_account_id** | **string** | The ID of the ad account that this customer segment belongs to. | [optional] [readonly] 
+**audience_ids** | **ARRAY[string]** | Audience IDs included in the customer segment. | 
+**created_time** | **int** | Customer segment created time. Unix timestamp in seconds. | [optional] [readonly] 
+**id** | **string** | Customer segment ID. | [optional] [readonly] 
+**name** | **string** | Customer segment name. | 
+**status** | [**TargetingTemplateStatus**](TargetingTemplateStatus.md) | Indicates whether the customer segment is active or deleted. | [optional] [readonly] 
+**updated_time** | **int** | Customer segment updated time. Unix timestamp in seconds. | [optional] [readonly] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

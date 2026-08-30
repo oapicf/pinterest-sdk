@@ -17,6 +17,10 @@ public class AdvancedAuctionItem  {
   
   @ApiModelProperty(required = true, value = "")
   @Valid
+  private AdvancedAuctionBidOptions bidOptions;
+
+  @ApiModelProperty(required = true, value = "")
+  @Valid
   private Country country;
 
  /**
@@ -28,10 +32,31 @@ public class AdvancedAuctionItem  {
   @ApiModelProperty(required = true, value = "")
   @Valid
   private Language language;
+ /**
+  * Get bidOptions
+  * @return bidOptions
+  */
+  @JsonProperty("bid_options")
+  @NotNull
+  public AdvancedAuctionBidOptions getBidOptions() {
+    return bidOptions;
+  }
 
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private AdvancedAuctionBidOptions bidOptions;
+  /**
+   * Sets the <code>bidOptions</code> property.
+   */
+ public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
+    this.bidOptions = bidOptions;
+  }
+
+  /**
+   * Sets the <code>bidOptions</code> property.
+   */
+  public AdvancedAuctionItem bidOptions(AdvancedAuctionBidOptions bidOptions) {
+    this.bidOptions = bidOptions;
+    return this;
+  }
+
  /**
   * Get country
   * @return country
@@ -107,31 +132,6 @@ public class AdvancedAuctionItem  {
     return this;
   }
 
- /**
-  * Get bidOptions
-  * @return bidOptions
-  */
-  @JsonProperty("bid_options")
-  @NotNull
-  public AdvancedAuctionBidOptions getBidOptions() {
-    return bidOptions;
-  }
-
-  /**
-   * Sets the <code>bidOptions</code> property.
-   */
- public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
-    this.bidOptions = bidOptions;
-  }
-
-  /**
-   * Sets the <code>bidOptions</code> property.
-   */
-  public AdvancedAuctionItem bidOptions(AdvancedAuctionBidOptions bidOptions) {
-    this.bidOptions = bidOptions;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -142,15 +142,15 @@ public class AdvancedAuctionItem  {
       return false;
     }
     AdvancedAuctionItem advancedAuctionItem = (AdvancedAuctionItem) o;
-    return Objects.equals(this.country, advancedAuctionItem.country) &&
+    return Objects.equals(this.bidOptions, advancedAuctionItem.bidOptions) &&
+        Objects.equals(this.country, advancedAuctionItem.country) &&
         Objects.equals(this.itemId, advancedAuctionItem.itemId) &&
-        Objects.equals(this.language, advancedAuctionItem.language) &&
-        Objects.equals(this.bidOptions, advancedAuctionItem.bidOptions);
+        Objects.equals(this.language, advancedAuctionItem.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, itemId, language, bidOptions);
+    return Objects.hash(bidOptions, country, itemId, language);
   }
 
   @Override
@@ -158,10 +158,10 @@ public class AdvancedAuctionItem  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItem {\n");
     
+    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
-    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -171,10 +171,7 @@ public class AdvancedAuctionItem  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdDisapprovalReasons"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdDisapprovalReasons"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdDisapprovalReasons {
+    title = AdDisapprovalReasons
+    description = AdDisapprovalReasons
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdDisapprovalReasons {
+    title = AdDisapprovalReasons
+    description = AdDisapprovalReasons
+    implements = openapi_server.resourceTypes.AdDisapprovalReasons
+
+  }
+}

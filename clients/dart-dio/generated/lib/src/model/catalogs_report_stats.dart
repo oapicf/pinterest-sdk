@@ -15,12 +15,12 @@ part 'catalogs_report_stats.g.dart';
 /// Diagnostics aggregated numbers
 ///
 /// Properties:
-/// * [reportType] 
 /// * [catalogId] - ID of the catalog entity.
 /// * [code] - The event code that a diagnostics aggregated number references
 /// * [codeLabel] - A human-friendly label for the event code (e.g, 'SPAM')
 /// * [message] - Title message describing the diagnostic issue
 /// * [occurrences] - Number of occurrences of the issue
+/// * [reportType] 
 /// * [severity] - An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
 /// * [ineligibleForAds] - Indicates if issue makes items ineligible for ads distribution
 /// * [ineligibleForOrganic] - Indicates if issue makes items ineligible for organic distribution
@@ -134,8 +134,6 @@ class _$CatalogsReportStatsSerializer implements PrimitiveSerializer<CatalogsRep
 
 class CatalogsReportStatsReportTypeEnum extends EnumClass {
 
-  @BuiltValueEnumConst(wireName: r'FEED_INGESTION_ISSUES')
-  static const CatalogsReportStatsReportTypeEnum FEED_INGESTION_ISSUES = _$catalogsReportStatsReportTypeEnum_FEED_INGESTION_ISSUES;
   @BuiltValueEnumConst(wireName: r'DISTRIBUTION_ISSUES')
   static const CatalogsReportStatsReportTypeEnum DISTRIBUTION_ISSUES = _$catalogsReportStatsReportTypeEnum_DISTRIBUTION_ISSUES;
 

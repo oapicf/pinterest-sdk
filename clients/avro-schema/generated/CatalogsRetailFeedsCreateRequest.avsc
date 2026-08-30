@@ -7,12 +7,18 @@
     {
       "name": "catalog_id",
       "type": ["null", "string"],
-      "doc": "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.",
+      "doc": "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.",
       "default": null
     },
     {
       "name": "catalog_type",
-      "type": "model.CatalogsType",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsRetailFeedsCreateRequest_catalogUnderscoretype",
+        "symbols": [
+          "RETAIL"
+        ]
+      },
       "doc": ""
     },
     {
@@ -40,7 +46,7 @@
     },
     {
       "name": "default_locale",
-      "type": "model.CatalogsFeedsCreateRequestDefaultLocale",
+      "type": "model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale",
       "doc": ""
     },
     {
@@ -68,7 +74,7 @@
       "name": "status",
       "type": ["model.CatalogsStatus", "null"],
       "doc": "",
-      "default": CatalogsStatus.ACTIVE
+      "default": ACTIVE
     }
   ]
 

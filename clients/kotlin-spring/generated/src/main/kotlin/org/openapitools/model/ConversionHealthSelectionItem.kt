@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -23,19 +26,29 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class ConversionHealthSelectionItem(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "Overall status for this selection item")
+    @Schema(required = true, description = "Overall status for this selection item")
+    @param:JsonProperty("status")
     @get:JsonProperty("status", required = true) val status: kotlin.Any?,
 
     @field:Valid
-    @Schema(example = "null", description = "Status for conversion types")
+    @Schema(description = "Status for conversion types")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("conversionType")
     @get:JsonProperty("conversionType") val conversionType: kotlin.Any? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "Status for criteria")
+    @Schema(description = "Status for criteria")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("criteria")
     @get:JsonProperty("criteria") val criteria: kotlin.Any? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "Status for ingestion sources")
+    @Schema(description = "Status for ingestion sources")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("ingestionSource")
     @get:JsonProperty("ingestionSource") val ingestionSource: kotlin.Any? = null
 ) {
 

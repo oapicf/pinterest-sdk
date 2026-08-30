@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,11 +22,11 @@ var _ MappedNullable = &AdvancedAuctionItem{}
 
 // AdvancedAuctionItem struct for AdvancedAuctionItem
 type AdvancedAuctionItem struct {
+	BidOptions AdvancedAuctionBidOptions `json:"bid_options"`
 	Country Country `json:"country"`
 	// The catalog retail item id in the merchant namespace
 	ItemId string `json:"item_id"`
 	Language Language `json:"language"`
-	BidOptions AdvancedAuctionBidOptions `json:"bid_options"`
 }
 
 type _AdvancedAuctionItem AdvancedAuctionItem
@@ -35,12 +35,12 @@ type _AdvancedAuctionItem AdvancedAuctionItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdvancedAuctionItem(country Country, itemId string, language Language, bidOptions AdvancedAuctionBidOptions) *AdvancedAuctionItem {
+func NewAdvancedAuctionItem(bidOptions AdvancedAuctionBidOptions, country Country, itemId string, language Language) *AdvancedAuctionItem {
 	this := AdvancedAuctionItem{}
+	this.BidOptions = bidOptions
 	this.Country = country
 	this.ItemId = itemId
 	this.Language = language
-	this.BidOptions = bidOptions
 	return &this
 }
 
@@ -50,6 +50,30 @@ func NewAdvancedAuctionItem(country Country, itemId string, language Language, b
 func NewAdvancedAuctionItemWithDefaults() *AdvancedAuctionItem {
 	this := AdvancedAuctionItem{}
 	return &this
+}
+
+// GetBidOptions returns the BidOptions field value
+func (o *AdvancedAuctionItem) GetBidOptions() AdvancedAuctionBidOptions {
+	if o == nil {
+		var ret AdvancedAuctionBidOptions
+		return ret
+	}
+
+	return o.BidOptions
+}
+
+// GetBidOptionsOk returns a tuple with the BidOptions field value
+// and a boolean to check if the value has been set.
+func (o *AdvancedAuctionItem) GetBidOptionsOk() (*AdvancedAuctionBidOptions, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BidOptions, true
+}
+
+// SetBidOptions sets field value
+func (o *AdvancedAuctionItem) SetBidOptions(v AdvancedAuctionBidOptions) {
+	o.BidOptions = v
 }
 
 // GetCountry returns the Country field value
@@ -124,30 +148,6 @@ func (o *AdvancedAuctionItem) SetLanguage(v Language) {
 	o.Language = v
 }
 
-// GetBidOptions returns the BidOptions field value
-func (o *AdvancedAuctionItem) GetBidOptions() AdvancedAuctionBidOptions {
-	if o == nil {
-		var ret AdvancedAuctionBidOptions
-		return ret
-	}
-
-	return o.BidOptions
-}
-
-// GetBidOptionsOk returns a tuple with the BidOptions field value
-// and a boolean to check if the value has been set.
-func (o *AdvancedAuctionItem) GetBidOptionsOk() (*AdvancedAuctionBidOptions, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BidOptions, true
-}
-
-// SetBidOptions sets field value
-func (o *AdvancedAuctionItem) SetBidOptions(v AdvancedAuctionBidOptions) {
-	o.BidOptions = v
-}
-
 func (o AdvancedAuctionItem) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -158,10 +158,10 @@ func (o AdvancedAuctionItem) MarshalJSON() ([]byte, error) {
 
 func (o AdvancedAuctionItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["bid_options"] = o.BidOptions
 	toSerialize["country"] = o.Country
 	toSerialize["item_id"] = o.ItemId
 	toSerialize["language"] = o.Language
-	toSerialize["bid_options"] = o.BidOptions
 	return toSerialize, nil
 }
 
@@ -170,10 +170,10 @@ func (o *AdvancedAuctionItem) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"bid_options",
 		"country",
 		"item_id",
 		"language",
-		"bid_options",
 	}
 
 	allProperties := make(map[string]interface{})

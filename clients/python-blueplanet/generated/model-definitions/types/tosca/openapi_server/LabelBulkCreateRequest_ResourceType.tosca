@@ -1,0 +1,43 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LabelBulkCreateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LabelBulkCreateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  LabelCreateItem = openapi_server.resourceTypes.LabelCreateItem
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  LabelBulkCreateRequest {
+    title = LabelBulkCreateRequest
+    description = LabelBulkCreateRequest
+    derivedFrom = Root
+    properties {
+        labels {
+          type = array
+          items.type = LabelCreateItem
+          description = "Labels that you are applying to the campaign."
+          optional = true
+        }
+        parent_id {
+          type =  string
+          description = "Unique identifier of the asset you are labelling. Currently, you can only label campaigns."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LabelBulkCreateRequest {
+    title = LabelBulkCreateRequest
+    description = LabelBulkCreateRequest
+    implements = openapi_server.resourceTypes.LabelBulkCreateRequest
+
+  }
+}

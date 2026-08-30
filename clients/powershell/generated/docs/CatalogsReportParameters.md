@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CatalogType** | **String** |  | 
 **Report** | [**CatalogsHotelReportParametersReport**](CatalogsHotelReportParametersReport.md) |  | 
 
 ## Examples

@@ -12,6 +12,8 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include "TargetingSpecAppType.h"
+#include <map>
 
 namespace Tiny {
 
@@ -45,17 +47,17 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get 
+	/*! \brief Get App type identifier.
 	 */
-	std::string getAPPTYPE();
+	TargetingSpecAppType getAPPTYPE();
 
-	/*! \brief Set 
+	/*! \brief Set App type identifier.
 	 */
-	void setAPPTYPE(std::string  aPP_TYPE);
+	void setAPPTYPE(TargetingSpecAppType aPP_TYPE);
 
 
     private:
-    std::string aPP_TYPE{};
+    TargetingSpecAppType aPP_TYPE;
 };
 }
 

@@ -11,7 +11,7 @@ import java.time.OffsetDateTime
  * @param id  for example: ''549755885175''
  * @param isAdsOnly If set to `true`, the board will be ad-only and can store ad-only Pins. for example: ''true''
  * @param media Board media. for example: ''null''
- * @param name      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". for example: ''Summer recipes''
+ * @param name     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". for example: ''Summer recipes''
  * @param owner  for example: ''null''
  * @param pinCount Count of Pins on the board. for example: ''5''
 */

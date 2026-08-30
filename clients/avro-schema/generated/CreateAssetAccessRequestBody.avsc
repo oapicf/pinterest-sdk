@@ -8,7 +8,7 @@
       "name": "asset_requests",
       "type": {
         "type": "array",
-        "items": "model.CreateAssetAccessRequestBodyAssetRequestsInner"
+        "items": "model.CreateAssetAccessRequestItem"
       },
       "doc": ""
     }

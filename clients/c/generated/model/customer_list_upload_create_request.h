@@ -20,15 +20,15 @@ typedef struct customer_list_upload_create_request_t customer_list_upload_create
 
 
 typedef struct customer_list_upload_create_request_t {
-    user_list_operation_type_t *operation; // custom
-    int total_parts; //numeric
+    pinterest_rest_api_user_list_operation_type__e operation; //referenced enum
+    int *total_parts; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } customer_list_upload_create_request_t;
 
 __attribute__((deprecated)) customer_list_upload_create_request_t *customer_list_upload_create_request_create(
-    user_list_operation_type_t *operation,
-    int total_parts
+    pinterest_rest_api_user_list_operation_type__e operation,
+    int *total_parts
 );
 
 void customer_list_upload_create_request_free(customer_list_upload_create_request_t *customer_list_upload_create_request);

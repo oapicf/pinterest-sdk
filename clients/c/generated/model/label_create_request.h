@@ -15,20 +15,18 @@
 
 typedef struct label_create_request_t label_create_request_t;
 
-#include "label_create_request_labels_inner.h"
+#include "label_create_item.h"
 
 
 
 typedef struct label_create_request_t {
     list_t *labels; //nonprimitive container
-    char *parent_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } label_create_request_t;
 
 __attribute__((deprecated)) label_create_request_t *label_create_request_create(
-    list_t *labels,
-    char *parent_id
+    list_t *labels
 );
 
 void label_create_request_free(label_create_request_t *label_create_request);

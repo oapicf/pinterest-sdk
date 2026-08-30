@@ -62,10 +62,12 @@ class RecordCounts {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "RecordCounts[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "RecordCounts[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'invalid'), 'Required key "RecordCounts[invalid]" is missing from JSON.');
+        assert(json[r'invalid'] != null, 'Required key "RecordCounts[invalid]" has a null value in JSON.');
+        assert(json.containsKey(r'processed'), 'Required key "RecordCounts[processed]" is missing from JSON.');
+        assert(json[r'processed'] != null, 'Required key "RecordCounts[processed]" has a null value in JSON.');
+        assert(json.containsKey(r'valid'), 'Required key "RecordCounts[valid]" is missing from JSON.');
+        assert(json[r'valid'] != null, 'Required key "RecordCounts[valid]" has a null value in JSON.');
         return true;
       }());
 

@@ -1,0 +1,22 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "CustomerSegmentCreate",
+  "fields": [
+    {
+      "name": "audience_ids",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "Audience IDs included in the customer segment."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Customer segment name."
+    }
+  ]
+
+}

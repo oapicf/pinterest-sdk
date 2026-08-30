@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set Email of the business member/partner.
 	 */
-	void setEmail(std::string  email);
+	void setEmail(std::string email);
 	/*! \brief Get Unique identifier of the business member/partner.
 	 */
 	std::string getId();
 
 	/*! \brief Set Unique identifier of the business member/partner.
 	 */
-	void setId(std::string  id);
+	void setId(std::string id);
 	/*! \brief Get Username of the business member/partner.
 	 */
 	std::string getUsername();
 
 	/*! \brief Set Username of the business member/partner.
 	 */
-	void setUsername(std::string  username);
+	void setUsername(std::string username);
 
 
     private:

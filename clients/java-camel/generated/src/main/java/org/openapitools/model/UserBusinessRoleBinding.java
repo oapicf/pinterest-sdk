@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -13,19 +14,19 @@ import org.openapitools.model.BusinessMemberAssetsSummary;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * UserBusinessRoleBinding
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UserBusinessRoleBinding {
 
   private JsonNullable<BusinessMemberAssetsSummary> assetsSummary = JsonNullable.<BusinessMemberAssetsSummary>undefined();
@@ -51,11 +52,11 @@ public class UserBusinessRoleBinding {
   }
 
   /**
-   * Get assetsSummary
+   * Ad accounts and profiles the business member/partner has access to.
    * @return assetsSummary
    */
   @Valid 
-  @Schema(name = "assets_summary", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "assets_summary", description = "Ad accounts and profiles the business member/partner has access to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("assets_summary")
   public JsonNullable<BusinessMemberAssetsSummary> getAssetsSummary() {
     return assetsSummary;
@@ -163,7 +164,7 @@ public class UserBusinessRoleBinding {
    * @return id
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "383791336903426391", description = "Unique identifier of the business member/business partner/employer.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "id", example = "549755885175", description = "Unique identifier of the business member/business partner/employer.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -179,11 +180,11 @@ public class UserBusinessRoleBinding {
   }
 
   /**
-   * This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
+   * This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
    * @return isSharedPartner
    */
   
-  @Schema(name = "is_shared_partner", example = "false", description = "This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "is_shared_partner", example = "false", description = "This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_shared_partner")
   public Boolean getIsSharedPartner() {
     return isSharedPartner;
@@ -269,10 +270,7 @@ public class UserBusinessRoleBinding {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

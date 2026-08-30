@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.LabelUpdateRequestLabelsInner
+import org.openapitools.model.LabelUpdateItem
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -21,8 +21,9 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class LabelUpdateRequest(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "Labels that you are applying to the campaign.")
-    @get:JsonProperty("labels", required = true) val labels: kotlin.collections.List<LabelUpdateRequestLabelsInner>
+    @Schema(required = true, description = "Labels that you are applying to the campaign.")
+    @param:JsonProperty("labels")
+    @get:JsonProperty("labels", required = true) val labels: kotlin.collections.List<LabelUpdateItem>
 ) {
 
 }

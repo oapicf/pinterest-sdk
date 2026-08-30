@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.Audience;
+import org.openapitools.model.AdAccountsAudience;
 
 @Canonical
 class AudiencesList200Response {
     
     String bookmark
     
-    List<Audience> items = new ArrayList<>()
+    List<AdAccountsAudience> items = new ArrayList<>()
 }

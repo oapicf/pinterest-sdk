@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **bool** | Returns true if the notification accepted. | [optional] 
-**received_at** | **int** | Received time. Unix timestamp in seconds. | [optional] 
 **error_msg** | **str** | error message when success is false | [optional] 
+**received_at** | **int** | Received time. Unix timestamp in seconds. | [optional] 
+**success** | **bool** | Returns true if the notification accepted. | [optional] 
 
 ## Example
 

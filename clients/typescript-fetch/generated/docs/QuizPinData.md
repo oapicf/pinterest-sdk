@@ -10,7 +10,7 @@ Name | Type
 `questions` | [Array&lt;QuizPinQuestion&gt;](QuizPinQuestion.md)
 `results` | [Array&lt;QuizPinResult&gt;](QuizPinResult.md)
 `tieBreakerCustomResult` | [QuizPinResult](QuizPinResult.md)
-`tieBreakerType` | string
+`tieBreakerType` | [TieBreakerType](TieBreakerType.md)
 
 ## Example
 

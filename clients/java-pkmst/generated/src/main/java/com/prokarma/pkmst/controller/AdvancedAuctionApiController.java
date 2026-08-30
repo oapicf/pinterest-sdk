@@ -4,7 +4,7 @@ import com.prokarma.pkmst.model.AdvancedAuctionItems;
 import com.prokarma.pkmst.model.AdvancedAuctionItemsGetRequest;
 import com.prokarma.pkmst.model.AdvancedAuctionItemsSubmitRequest;
 import com.prokarma.pkmst.model.AdvancedAuctionProcessedItems;
-import com.prokarma.pkmst.model.Error;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 
@@ -27,7 +27,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Controller
 public class AdvancedAuctionApiController implements AdvancedAuctionApi {
     private final ObjectMapper objectMapper;
@@ -36,10 +36,20 @@ public class AdvancedAuctionApiController implements AdvancedAuctionApi {
         this.objectMapper = objectMapper;
     }
 
-    public ResponseEntity<AdvancedAuctionItems> advancedAuctionItemsGetPost(@ApiParam(value = "Request object used to get bid options values for a batch of retail catalog items" ,required=true )   @RequestBody AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest,
+    public ResponseEntity<AdvancedAuctionItems> advancedAuctionItemsGetPost(@ApiParam(value = "" ,required=true )   @RequestBody AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest,
         @ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvancedAuctionItems>(objectMapper.readValue("", AdvancedAuctionItems.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvancedAuctionItems>(objectMapper.readValue("", AdvancedAuctionItems.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<AdvancedAuctionItems>(objectMapper.readValue("", AdvancedAuctionItems.class), HttpStatus.OK);
@@ -73,10 +83,20 @@ public class AdvancedAuctionApiController implements AdvancedAuctionApi {
         return new ResponseEntity<AdvancedAuctionItems>(HttpStatus.OK);
     }
 
-    public ResponseEntity<AdvancedAuctionProcessedItems> advancedAuctionItemsSubmitPost(@ApiParam(value = "Request object used to upsert or delete bid options for a batch of retail catalog items" ,required=true )   @RequestBody AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest,
+    public ResponseEntity<AdvancedAuctionProcessedItems> advancedAuctionItemsSubmitPost(@ApiParam(value = "" ,required=true )   @RequestBody AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest,
         @ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvancedAuctionProcessedItems>(objectMapper.readValue("", AdvancedAuctionProcessedItems.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvancedAuctionProcessedItems>(objectMapper.readValue("", AdvancedAuctionProcessedItems.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<AdvancedAuctionProcessedItems>(objectMapper.readValue("", AdvancedAuctionProcessedItems.class), HttpStatus.OK);

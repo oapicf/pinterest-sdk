@@ -1,5 +1,6 @@
 package apimodels;
 
+import apimodels.AiDisclosuresUpdate;
 import apimodels.CarouselSlot;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,9 +15,14 @@ import javax.validation.Valid;
 /**
  * Resource create or update operation model.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class PinUpdate   {
+  @JsonProperty("ai_disclosures")
+  @Valid
+
+  private AiDisclosuresUpdate aiDisclosures;
+
   @JsonProperty("alt_text")
   @Size(max=500)
 
@@ -51,6 +57,23 @@ public class PinUpdate   {
   @Size(max=100)
 
   private String title;
+
+  public PinUpdate aiDisclosures(AiDisclosuresUpdate aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+    return this;
+  }
+
+   /**
+   * AI disclosure declarations the creator has made about this Pin.
+   * @return aiDisclosures
+  **/
+  public AiDisclosuresUpdate getAiDisclosures() {
+    return aiDisclosures;
+  }
+
+  public void setAiDisclosures(AiDisclosuresUpdate aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+  }
 
   public PinUpdate altText(String altText) {
     this.altText = altText;
@@ -189,7 +212,8 @@ public class PinUpdate   {
       return false;
     }
     PinUpdate pinUpdate = (PinUpdate) o;
-    return Objects.equals(altText, pinUpdate.altText) &&
+    return Objects.equals(aiDisclosures, pinUpdate.aiDisclosures) &&
+        Objects.equals(altText, pinUpdate.altText) &&
         Objects.equals(boardId, pinUpdate.boardId) &&
         Objects.equals(boardSectionId, pinUpdate.boardSectionId) &&
         Objects.equals(carouselSlots, pinUpdate.carouselSlots) &&
@@ -200,7 +224,7 @@ public class PinUpdate   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(altText, boardId, boardSectionId, carouselSlots, description, link, title);
+    return Objects.hash(aiDisclosures, altText, boardId, boardSectionId, carouselSlots, description, link, title);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -209,6 +233,7 @@ public class PinUpdate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinUpdate {\n");
     
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
@@ -225,10 +250,7 @@ public class PinUpdate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

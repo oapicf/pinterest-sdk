@@ -1072,6 +1072,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_0_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_0_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_0_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_0_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1082,6 +1083,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_0_link_duplicated(self, ad_image_0_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_0_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_0_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_0_link_duplicated: The ad_image_0_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_0_link_duplicated: CatalogsItemValidationDetails
@@ -1093,6 +1095,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_0_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_0_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 0 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_0_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1103,6 +1106,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_0_link_length_too_long(self, ad_image_0_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_0_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 0 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_0_link_length_too_long: The ad_image_0_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_0_link_length_too_long: CatalogsItemValidationDetails
@@ -1114,6 +1118,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_0_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_0_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 0 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_0_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1124,6 +1129,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_0_link_required(self, ad_image_0_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_0_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 0 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_0_link_required: The ad_image_0_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_0_link_required: CatalogsItemValidationDetails
@@ -1135,6 +1141,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_0_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_0_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 0 format is unsupported.  # noqa: E501
 
         :return: The ad_image_0_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1145,6 +1152,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_0_link_warning(self, ad_image_0_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_0_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 0 format is unsupported.  # noqa: E501
 
         :param ad_image_0_link_warning: The ad_image_0_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_0_link_warning: CatalogsItemValidationDetails
@@ -1156,6 +1164,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_0_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_0_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_0_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_0_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1166,6 +1175,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_0_tag_duplicated(self, ad_image_0_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_0_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_0_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_0_tag_duplicated: The ad_image_0_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_0_tag_duplicated: CatalogsItemValidationDetails
@@ -1177,6 +1187,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_0_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_0_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 0 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_0_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1187,6 +1198,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_0_tag_length_too_long(self, ad_image_0_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_0_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 0 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_0_tag_length_too_long: The ad_image_0_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_0_tag_length_too_long: CatalogsItemValidationDetails
@@ -1198,6 +1210,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_0_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_0_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 0 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_0_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1208,6 +1221,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_0_tag_required(self, ad_image_0_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_0_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 0 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_0_tag_required: The ad_image_0_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_0_tag_required: CatalogsItemValidationDetails
@@ -1219,6 +1233,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_10_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_10_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_10_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_10_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1229,6 +1244,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_10_link_duplicated(self, ad_image_10_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_10_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_10_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_10_link_duplicated: The ad_image_10_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_10_link_duplicated: CatalogsItemValidationDetails
@@ -1240,6 +1256,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_10_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_10_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 10 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_10_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1250,6 +1267,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_10_link_length_too_long(self, ad_image_10_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_10_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 10 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_10_link_length_too_long: The ad_image_10_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_10_link_length_too_long: CatalogsItemValidationDetails
@@ -1261,6 +1279,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_10_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_10_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 10 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_10_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1271,6 +1290,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_10_link_required(self, ad_image_10_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_10_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 10 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_10_link_required: The ad_image_10_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_10_link_required: CatalogsItemValidationDetails
@@ -1282,6 +1302,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_10_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_10_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 10 format is unsupported.  # noqa: E501
 
         :return: The ad_image_10_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1292,6 +1313,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_10_link_warning(self, ad_image_10_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_10_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 10 format is unsupported.  # noqa: E501
 
         :param ad_image_10_link_warning: The ad_image_10_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_10_link_warning: CatalogsItemValidationDetails
@@ -1303,6 +1325,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_10_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_10_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_10_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_10_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1313,6 +1336,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_10_tag_duplicated(self, ad_image_10_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_10_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_10_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_10_tag_duplicated: The ad_image_10_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_10_tag_duplicated: CatalogsItemValidationDetails
@@ -1324,6 +1348,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_10_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_10_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 10 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_10_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1334,6 +1359,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_10_tag_length_too_long(self, ad_image_10_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_10_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 10 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_10_tag_length_too_long: The ad_image_10_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_10_tag_length_too_long: CatalogsItemValidationDetails
@@ -1345,6 +1371,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_10_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_10_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 10 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_10_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1355,6 +1382,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_10_tag_required(self, ad_image_10_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_10_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 10 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_10_tag_required: The ad_image_10_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_10_tag_required: CatalogsItemValidationDetails
@@ -1366,6 +1394,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_11_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_11_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_11_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_11_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1376,6 +1405,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_11_link_duplicated(self, ad_image_11_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_11_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_11_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_11_link_duplicated: The ad_image_11_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_11_link_duplicated: CatalogsItemValidationDetails
@@ -1387,6 +1417,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_11_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_11_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 11 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_11_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1397,6 +1428,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_11_link_length_too_long(self, ad_image_11_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_11_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 11 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_11_link_length_too_long: The ad_image_11_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_11_link_length_too_long: CatalogsItemValidationDetails
@@ -1408,6 +1440,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_11_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_11_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 11 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_11_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1418,6 +1451,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_11_link_required(self, ad_image_11_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_11_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 11 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_11_link_required: The ad_image_11_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_11_link_required: CatalogsItemValidationDetails
@@ -1429,6 +1463,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_11_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_11_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 11 format is unsupported.  # noqa: E501
 
         :return: The ad_image_11_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1439,6 +1474,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_11_link_warning(self, ad_image_11_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_11_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 11 format is unsupported.  # noqa: E501
 
         :param ad_image_11_link_warning: The ad_image_11_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_11_link_warning: CatalogsItemValidationDetails
@@ -1450,6 +1486,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_11_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_11_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_11_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_11_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1460,6 +1497,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_11_tag_duplicated(self, ad_image_11_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_11_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_11_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_11_tag_duplicated: The ad_image_11_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_11_tag_duplicated: CatalogsItemValidationDetails
@@ -1471,6 +1509,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_11_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_11_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 11 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_11_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1481,6 +1520,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_11_tag_length_too_long(self, ad_image_11_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_11_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 11 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_11_tag_length_too_long: The ad_image_11_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_11_tag_length_too_long: CatalogsItemValidationDetails
@@ -1492,6 +1532,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_11_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_11_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 11 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_11_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1502,6 +1543,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_11_tag_required(self, ad_image_11_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_11_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 11 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_11_tag_required: The ad_image_11_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_11_tag_required: CatalogsItemValidationDetails
@@ -1513,6 +1555,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_12_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_12_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_12_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_12_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1523,6 +1566,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_12_link_duplicated(self, ad_image_12_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_12_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_12_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_12_link_duplicated: The ad_image_12_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_12_link_duplicated: CatalogsItemValidationDetails
@@ -1534,6 +1578,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_12_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_12_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 12 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_12_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1544,6 +1589,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_12_link_length_too_long(self, ad_image_12_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_12_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 12 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_12_link_length_too_long: The ad_image_12_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_12_link_length_too_long: CatalogsItemValidationDetails
@@ -1555,6 +1601,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_12_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_12_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 12 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_12_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1565,6 +1612,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_12_link_required(self, ad_image_12_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_12_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 12 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_12_link_required: The ad_image_12_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_12_link_required: CatalogsItemValidationDetails
@@ -1576,6 +1624,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_12_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_12_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 12 format is unsupported.  # noqa: E501
 
         :return: The ad_image_12_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1586,6 +1635,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_12_link_warning(self, ad_image_12_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_12_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 12 format is unsupported.  # noqa: E501
 
         :param ad_image_12_link_warning: The ad_image_12_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_12_link_warning: CatalogsItemValidationDetails
@@ -1597,6 +1647,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_12_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_12_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_12_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_12_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1607,6 +1658,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_12_tag_duplicated(self, ad_image_12_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_12_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_12_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_12_tag_duplicated: The ad_image_12_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_12_tag_duplicated: CatalogsItemValidationDetails
@@ -1618,6 +1670,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_12_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_12_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 12 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_12_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1628,6 +1681,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_12_tag_length_too_long(self, ad_image_12_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_12_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 12 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_12_tag_length_too_long: The ad_image_12_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_12_tag_length_too_long: CatalogsItemValidationDetails
@@ -1639,6 +1693,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_12_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_12_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 12 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_12_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1649,6 +1704,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_12_tag_required(self, ad_image_12_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_12_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 12 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_12_tag_required: The ad_image_12_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_12_tag_required: CatalogsItemValidationDetails
@@ -1660,6 +1716,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_13_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_13_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_13_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_13_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1670,6 +1727,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_13_link_duplicated(self, ad_image_13_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_13_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_13_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_13_link_duplicated: The ad_image_13_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_13_link_duplicated: CatalogsItemValidationDetails
@@ -1681,6 +1739,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_13_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_13_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 13 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_13_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1691,6 +1750,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_13_link_length_too_long(self, ad_image_13_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_13_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 13 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_13_link_length_too_long: The ad_image_13_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_13_link_length_too_long: CatalogsItemValidationDetails
@@ -1702,6 +1762,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_13_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_13_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 13 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_13_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1712,6 +1773,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_13_link_required(self, ad_image_13_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_13_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 13 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_13_link_required: The ad_image_13_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_13_link_required: CatalogsItemValidationDetails
@@ -1723,6 +1785,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_13_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_13_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 13 format is unsupported.  # noqa: E501
 
         :return: The ad_image_13_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1733,6 +1796,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_13_link_warning(self, ad_image_13_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_13_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 13 format is unsupported.  # noqa: E501
 
         :param ad_image_13_link_warning: The ad_image_13_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_13_link_warning: CatalogsItemValidationDetails
@@ -1744,6 +1808,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_13_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_13_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_13_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_13_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1754,6 +1819,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_13_tag_duplicated(self, ad_image_13_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_13_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_13_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_13_tag_duplicated: The ad_image_13_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_13_tag_duplicated: CatalogsItemValidationDetails
@@ -1765,6 +1831,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_13_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_13_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 13 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_13_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1775,6 +1842,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_13_tag_length_too_long(self, ad_image_13_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_13_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 13 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_13_tag_length_too_long: The ad_image_13_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_13_tag_length_too_long: CatalogsItemValidationDetails
@@ -1786,6 +1854,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_13_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_13_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 13 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_13_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1796,6 +1865,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_13_tag_required(self, ad_image_13_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_13_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 13 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_13_tag_required: The ad_image_13_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_13_tag_required: CatalogsItemValidationDetails
@@ -1807,6 +1877,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_14_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_14_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_14_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_14_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1817,6 +1888,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_14_link_duplicated(self, ad_image_14_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_14_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_14_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_14_link_duplicated: The ad_image_14_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_14_link_duplicated: CatalogsItemValidationDetails
@@ -1828,6 +1900,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_14_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_14_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 14 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_14_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1838,6 +1911,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_14_link_length_too_long(self, ad_image_14_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_14_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 14 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_14_link_length_too_long: The ad_image_14_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_14_link_length_too_long: CatalogsItemValidationDetails
@@ -1849,6 +1923,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_14_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_14_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 14 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_14_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1859,6 +1934,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_14_link_required(self, ad_image_14_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_14_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 14 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_14_link_required: The ad_image_14_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_14_link_required: CatalogsItemValidationDetails
@@ -1870,6 +1946,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_14_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_14_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 14 format is unsupported.  # noqa: E501
 
         :return: The ad_image_14_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1880,6 +1957,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_14_link_warning(self, ad_image_14_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_14_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 14 format is unsupported.  # noqa: E501
 
         :param ad_image_14_link_warning: The ad_image_14_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_14_link_warning: CatalogsItemValidationDetails
@@ -1891,6 +1969,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_14_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_14_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_14_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_14_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1901,6 +1980,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_14_tag_duplicated(self, ad_image_14_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_14_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_14_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_14_tag_duplicated: The ad_image_14_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_14_tag_duplicated: CatalogsItemValidationDetails
@@ -1912,6 +1992,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_14_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_14_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 14 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_14_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1922,6 +2003,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_14_tag_length_too_long(self, ad_image_14_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_14_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 14 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_14_tag_length_too_long: The ad_image_14_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_14_tag_length_too_long: CatalogsItemValidationDetails
@@ -1933,6 +2015,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_14_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_14_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 14 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_14_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1943,6 +2026,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_14_tag_required(self, ad_image_14_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_14_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 14 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_14_tag_required: The ad_image_14_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_14_tag_required: CatalogsItemValidationDetails
@@ -1954,6 +2038,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_15_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_15_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_15_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_15_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1964,6 +2049,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_15_link_duplicated(self, ad_image_15_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_15_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_15_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_15_link_duplicated: The ad_image_15_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_15_link_duplicated: CatalogsItemValidationDetails
@@ -1975,6 +2061,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_15_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_15_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 15 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_15_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -1985,6 +2072,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_15_link_length_too_long(self, ad_image_15_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_15_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 15 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_15_link_length_too_long: The ad_image_15_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_15_link_length_too_long: CatalogsItemValidationDetails
@@ -1996,6 +2084,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_15_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_15_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 15 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_15_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2006,6 +2095,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_15_link_required(self, ad_image_15_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_15_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 15 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_15_link_required: The ad_image_15_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_15_link_required: CatalogsItemValidationDetails
@@ -2017,6 +2107,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_15_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_15_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 15 format is unsupported.  # noqa: E501
 
         :return: The ad_image_15_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2027,6 +2118,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_15_link_warning(self, ad_image_15_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_15_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 15 format is unsupported.  # noqa: E501
 
         :param ad_image_15_link_warning: The ad_image_15_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_15_link_warning: CatalogsItemValidationDetails
@@ -2038,6 +2130,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_15_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_15_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_15_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_15_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2048,6 +2141,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_15_tag_duplicated(self, ad_image_15_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_15_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_15_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_15_tag_duplicated: The ad_image_15_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_15_tag_duplicated: CatalogsItemValidationDetails
@@ -2059,6 +2153,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_15_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_15_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 15 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_15_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2069,6 +2164,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_15_tag_length_too_long(self, ad_image_15_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_15_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 15 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_15_tag_length_too_long: The ad_image_15_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_15_tag_length_too_long: CatalogsItemValidationDetails
@@ -2080,6 +2176,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_15_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_15_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 15 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_15_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2090,6 +2187,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_15_tag_required(self, ad_image_15_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_15_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 15 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_15_tag_required: The ad_image_15_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_15_tag_required: CatalogsItemValidationDetails
@@ -2101,6 +2199,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_16_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_16_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_16_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_16_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2111,6 +2210,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_16_link_duplicated(self, ad_image_16_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_16_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_16_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_16_link_duplicated: The ad_image_16_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_16_link_duplicated: CatalogsItemValidationDetails
@@ -2122,6 +2222,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_16_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_16_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 16 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_16_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2132,6 +2233,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_16_link_length_too_long(self, ad_image_16_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_16_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 16 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_16_link_length_too_long: The ad_image_16_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_16_link_length_too_long: CatalogsItemValidationDetails
@@ -2143,6 +2245,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_16_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_16_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 16 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_16_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2153,6 +2256,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_16_link_required(self, ad_image_16_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_16_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 16 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_16_link_required: The ad_image_16_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_16_link_required: CatalogsItemValidationDetails
@@ -2164,6 +2268,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_16_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_16_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 16 format is unsupported.  # noqa: E501
 
         :return: The ad_image_16_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2174,6 +2279,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_16_link_warning(self, ad_image_16_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_16_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 16 format is unsupported.  # noqa: E501
 
         :param ad_image_16_link_warning: The ad_image_16_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_16_link_warning: CatalogsItemValidationDetails
@@ -2185,6 +2291,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_16_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_16_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_16_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_16_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2195,6 +2302,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_16_tag_duplicated(self, ad_image_16_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_16_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_16_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_16_tag_duplicated: The ad_image_16_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_16_tag_duplicated: CatalogsItemValidationDetails
@@ -2206,6 +2314,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_16_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_16_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 16 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_16_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2216,6 +2325,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_16_tag_length_too_long(self, ad_image_16_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_16_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 16 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_16_tag_length_too_long: The ad_image_16_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_16_tag_length_too_long: CatalogsItemValidationDetails
@@ -2227,6 +2337,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_16_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_16_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 16 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_16_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2237,6 +2348,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_16_tag_required(self, ad_image_16_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_16_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 16 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_16_tag_required: The ad_image_16_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_16_tag_required: CatalogsItemValidationDetails
@@ -2248,6 +2360,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_17_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_17_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_17_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_17_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2258,6 +2371,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_17_link_duplicated(self, ad_image_17_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_17_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_17_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_17_link_duplicated: The ad_image_17_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_17_link_duplicated: CatalogsItemValidationDetails
@@ -2269,6 +2383,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_17_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_17_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 17 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_17_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2279,6 +2394,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_17_link_length_too_long(self, ad_image_17_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_17_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 17 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_17_link_length_too_long: The ad_image_17_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_17_link_length_too_long: CatalogsItemValidationDetails
@@ -2290,6 +2406,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_17_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_17_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 17 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_17_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2300,6 +2417,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_17_link_required(self, ad_image_17_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_17_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 17 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_17_link_required: The ad_image_17_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_17_link_required: CatalogsItemValidationDetails
@@ -2311,6 +2429,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_17_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_17_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 17 format is unsupported.  # noqa: E501
 
         :return: The ad_image_17_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2321,6 +2440,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_17_link_warning(self, ad_image_17_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_17_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 17 format is unsupported.  # noqa: E501
 
         :param ad_image_17_link_warning: The ad_image_17_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_17_link_warning: CatalogsItemValidationDetails
@@ -2332,6 +2452,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_17_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_17_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_17_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_17_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2342,6 +2463,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_17_tag_duplicated(self, ad_image_17_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_17_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_17_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_17_tag_duplicated: The ad_image_17_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_17_tag_duplicated: CatalogsItemValidationDetails
@@ -2353,6 +2475,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_17_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_17_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 17 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_17_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2363,6 +2486,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_17_tag_length_too_long(self, ad_image_17_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_17_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 17 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_17_tag_length_too_long: The ad_image_17_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_17_tag_length_too_long: CatalogsItemValidationDetails
@@ -2374,6 +2498,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_17_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_17_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 17 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_17_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2384,6 +2509,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_17_tag_required(self, ad_image_17_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_17_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 17 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_17_tag_required: The ad_image_17_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_17_tag_required: CatalogsItemValidationDetails
@@ -2395,6 +2521,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_18_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_18_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_18_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_18_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2405,6 +2532,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_18_link_duplicated(self, ad_image_18_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_18_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_18_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_18_link_duplicated: The ad_image_18_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_18_link_duplicated: CatalogsItemValidationDetails
@@ -2416,6 +2544,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_18_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_18_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 18 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_18_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2426,6 +2555,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_18_link_length_too_long(self, ad_image_18_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_18_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 18 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_18_link_length_too_long: The ad_image_18_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_18_link_length_too_long: CatalogsItemValidationDetails
@@ -2437,6 +2567,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_18_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_18_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 18 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_18_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2447,6 +2578,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_18_link_required(self, ad_image_18_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_18_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 18 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_18_link_required: The ad_image_18_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_18_link_required: CatalogsItemValidationDetails
@@ -2458,6 +2590,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_18_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_18_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 18 format is unsupported.  # noqa: E501
 
         :return: The ad_image_18_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2468,6 +2601,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_18_link_warning(self, ad_image_18_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_18_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 18 format is unsupported.  # noqa: E501
 
         :param ad_image_18_link_warning: The ad_image_18_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_18_link_warning: CatalogsItemValidationDetails
@@ -2479,6 +2613,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_18_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_18_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_18_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_18_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2489,6 +2624,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_18_tag_duplicated(self, ad_image_18_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_18_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_18_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_18_tag_duplicated: The ad_image_18_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_18_tag_duplicated: CatalogsItemValidationDetails
@@ -2500,6 +2636,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_18_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_18_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 18 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_18_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2510,6 +2647,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_18_tag_length_too_long(self, ad_image_18_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_18_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 18 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_18_tag_length_too_long: The ad_image_18_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_18_tag_length_too_long: CatalogsItemValidationDetails
@@ -2521,6 +2659,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_18_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_18_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 18 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_18_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2531,6 +2670,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_18_tag_required(self, ad_image_18_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_18_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 18 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_18_tag_required: The ad_image_18_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_18_tag_required: CatalogsItemValidationDetails
@@ -2542,6 +2682,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_19_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_19_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_19_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_19_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2552,6 +2693,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_19_link_duplicated(self, ad_image_19_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_19_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_19_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_19_link_duplicated: The ad_image_19_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_19_link_duplicated: CatalogsItemValidationDetails
@@ -2563,6 +2705,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_19_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_19_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 19 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_19_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2573,6 +2716,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_19_link_length_too_long(self, ad_image_19_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_19_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 19 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_19_link_length_too_long: The ad_image_19_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_19_link_length_too_long: CatalogsItemValidationDetails
@@ -2584,6 +2728,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_19_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_19_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 19 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_19_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2594,6 +2739,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_19_link_required(self, ad_image_19_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_19_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 19 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_19_link_required: The ad_image_19_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_19_link_required: CatalogsItemValidationDetails
@@ -2605,6 +2751,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_19_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_19_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 19 format is unsupported.  # noqa: E501
 
         :return: The ad_image_19_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2615,6 +2762,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_19_link_warning(self, ad_image_19_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_19_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 19 format is unsupported.  # noqa: E501
 
         :param ad_image_19_link_warning: The ad_image_19_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_19_link_warning: CatalogsItemValidationDetails
@@ -2626,6 +2774,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_19_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_19_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_19_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_19_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2636,6 +2785,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_19_tag_duplicated(self, ad_image_19_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_19_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_19_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_19_tag_duplicated: The ad_image_19_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_19_tag_duplicated: CatalogsItemValidationDetails
@@ -2647,6 +2797,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_19_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_19_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 19 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_19_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2657,6 +2808,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_19_tag_length_too_long(self, ad_image_19_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_19_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 19 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_19_tag_length_too_long: The ad_image_19_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_19_tag_length_too_long: CatalogsItemValidationDetails
@@ -2668,6 +2820,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_19_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_19_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 19 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_19_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2678,6 +2831,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_19_tag_required(self, ad_image_19_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_19_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 19 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_19_tag_required: The ad_image_19_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_19_tag_required: CatalogsItemValidationDetails
@@ -2689,6 +2843,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_1_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_1_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_1_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_1_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2699,6 +2854,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_1_link_duplicated(self, ad_image_1_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_1_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_1_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_1_link_duplicated: The ad_image_1_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_1_link_duplicated: CatalogsItemValidationDetails
@@ -2710,6 +2866,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_1_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_1_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 1 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_1_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2720,6 +2877,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_1_link_length_too_long(self, ad_image_1_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_1_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 1 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_1_link_length_too_long: The ad_image_1_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_1_link_length_too_long: CatalogsItemValidationDetails
@@ -2731,6 +2889,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_1_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_1_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 1 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_1_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2741,6 +2900,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_1_link_required(self, ad_image_1_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_1_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 1 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_1_link_required: The ad_image_1_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_1_link_required: CatalogsItemValidationDetails
@@ -2752,6 +2912,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_1_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_1_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 1 format is unsupported.  # noqa: E501
 
         :return: The ad_image_1_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2762,6 +2923,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_1_link_warning(self, ad_image_1_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_1_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 1 format is unsupported.  # noqa: E501
 
         :param ad_image_1_link_warning: The ad_image_1_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_1_link_warning: CatalogsItemValidationDetails
@@ -2773,6 +2935,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_1_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_1_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_1_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_1_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2783,6 +2946,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_1_tag_duplicated(self, ad_image_1_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_1_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_1_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_1_tag_duplicated: The ad_image_1_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_1_tag_duplicated: CatalogsItemValidationDetails
@@ -2794,6 +2958,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_1_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_1_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 1 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_1_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2804,6 +2969,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_1_tag_length_too_long(self, ad_image_1_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_1_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 1 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_1_tag_length_too_long: The ad_image_1_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_1_tag_length_too_long: CatalogsItemValidationDetails
@@ -2815,6 +2981,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_1_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_1_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 1 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_1_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2825,6 +2992,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_1_tag_required(self, ad_image_1_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_1_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 1 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_1_tag_required: The ad_image_1_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_1_tag_required: CatalogsItemValidationDetails
@@ -2836,6 +3004,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_2_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_2_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_2_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_2_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2846,6 +3015,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_2_link_duplicated(self, ad_image_2_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_2_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_2_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_2_link_duplicated: The ad_image_2_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_2_link_duplicated: CatalogsItemValidationDetails
@@ -2857,6 +3027,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_2_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_2_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 2 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_2_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2867,6 +3038,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_2_link_length_too_long(self, ad_image_2_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_2_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 2 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_2_link_length_too_long: The ad_image_2_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_2_link_length_too_long: CatalogsItemValidationDetails
@@ -2878,6 +3050,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_2_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_2_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 2 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_2_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2888,6 +3061,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_2_link_required(self, ad_image_2_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_2_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 2 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_2_link_required: The ad_image_2_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_2_link_required: CatalogsItemValidationDetails
@@ -2899,6 +3073,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_2_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_2_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 2 format is unsupported.  # noqa: E501
 
         :return: The ad_image_2_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2909,6 +3084,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_2_link_warning(self, ad_image_2_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_2_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 2 format is unsupported.  # noqa: E501
 
         :param ad_image_2_link_warning: The ad_image_2_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_2_link_warning: CatalogsItemValidationDetails
@@ -2920,6 +3096,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_2_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_2_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_2_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_2_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2930,6 +3107,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_2_tag_duplicated(self, ad_image_2_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_2_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_2_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_2_tag_duplicated: The ad_image_2_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_2_tag_duplicated: CatalogsItemValidationDetails
@@ -2941,6 +3119,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_2_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_2_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 2 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_2_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2951,6 +3130,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_2_tag_length_too_long(self, ad_image_2_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_2_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 2 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_2_tag_length_too_long: The ad_image_2_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_2_tag_length_too_long: CatalogsItemValidationDetails
@@ -2962,6 +3142,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_2_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_2_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 2 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_2_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2972,6 +3153,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_2_tag_required(self, ad_image_2_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_2_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 2 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_2_tag_required: The ad_image_2_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_2_tag_required: CatalogsItemValidationDetails
@@ -2983,6 +3165,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_3_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_3_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_3_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_3_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -2993,6 +3176,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_3_link_duplicated(self, ad_image_3_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_3_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_3_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_3_link_duplicated: The ad_image_3_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_3_link_duplicated: CatalogsItemValidationDetails
@@ -3004,6 +3188,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_3_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_3_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 3 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_3_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3014,6 +3199,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_3_link_length_too_long(self, ad_image_3_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_3_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 3 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_3_link_length_too_long: The ad_image_3_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_3_link_length_too_long: CatalogsItemValidationDetails
@@ -3025,6 +3211,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_3_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_3_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 3 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_3_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3035,6 +3222,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_3_link_required(self, ad_image_3_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_3_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 3 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_3_link_required: The ad_image_3_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_3_link_required: CatalogsItemValidationDetails
@@ -3046,6 +3234,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_3_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_3_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 3 format is unsupported.  # noqa: E501
 
         :return: The ad_image_3_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3056,6 +3245,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_3_link_warning(self, ad_image_3_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_3_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 3 format is unsupported.  # noqa: E501
 
         :param ad_image_3_link_warning: The ad_image_3_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_3_link_warning: CatalogsItemValidationDetails
@@ -3067,6 +3257,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_3_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_3_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_3_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_3_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3077,6 +3268,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_3_tag_duplicated(self, ad_image_3_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_3_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_3_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_3_tag_duplicated: The ad_image_3_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_3_tag_duplicated: CatalogsItemValidationDetails
@@ -3088,6 +3280,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_3_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_3_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 3 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_3_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3098,6 +3291,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_3_tag_length_too_long(self, ad_image_3_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_3_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 3 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_3_tag_length_too_long: The ad_image_3_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_3_tag_length_too_long: CatalogsItemValidationDetails
@@ -3109,6 +3303,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_3_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_3_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 3 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_3_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3119,6 +3314,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_3_tag_required(self, ad_image_3_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_3_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 3 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_3_tag_required: The ad_image_3_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_3_tag_required: CatalogsItemValidationDetails
@@ -3130,6 +3326,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_4_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_4_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_4_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_4_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3140,6 +3337,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_4_link_duplicated(self, ad_image_4_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_4_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_4_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_4_link_duplicated: The ad_image_4_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_4_link_duplicated: CatalogsItemValidationDetails
@@ -3151,6 +3349,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_4_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_4_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 4 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_4_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3161,6 +3360,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_4_link_length_too_long(self, ad_image_4_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_4_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 4 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_4_link_length_too_long: The ad_image_4_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_4_link_length_too_long: CatalogsItemValidationDetails
@@ -3172,6 +3372,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_4_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_4_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 4 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_4_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3182,6 +3383,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_4_link_required(self, ad_image_4_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_4_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 4 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_4_link_required: The ad_image_4_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_4_link_required: CatalogsItemValidationDetails
@@ -3193,6 +3395,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_4_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_4_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 4 format is unsupported.  # noqa: E501
 
         :return: The ad_image_4_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3203,6 +3406,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_4_link_warning(self, ad_image_4_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_4_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 4 format is unsupported.  # noqa: E501
 
         :param ad_image_4_link_warning: The ad_image_4_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_4_link_warning: CatalogsItemValidationDetails
@@ -3214,6 +3418,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_4_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_4_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_4_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_4_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3224,6 +3429,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_4_tag_duplicated(self, ad_image_4_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_4_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_4_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_4_tag_duplicated: The ad_image_4_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_4_tag_duplicated: CatalogsItemValidationDetails
@@ -3235,6 +3441,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_4_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_4_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 4 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_4_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3245,6 +3452,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_4_tag_length_too_long(self, ad_image_4_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_4_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 4 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_4_tag_length_too_long: The ad_image_4_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_4_tag_length_too_long: CatalogsItemValidationDetails
@@ -3256,6 +3464,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_4_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_4_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 4 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_4_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3266,6 +3475,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_4_tag_required(self, ad_image_4_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_4_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 4 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_4_tag_required: The ad_image_4_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_4_tag_required: CatalogsItemValidationDetails
@@ -3277,6 +3487,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_5_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_5_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_5_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_5_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3287,6 +3498,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_5_link_duplicated(self, ad_image_5_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_5_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_5_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_5_link_duplicated: The ad_image_5_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_5_link_duplicated: CatalogsItemValidationDetails
@@ -3298,6 +3510,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_5_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_5_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 5 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_5_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3308,6 +3521,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_5_link_length_too_long(self, ad_image_5_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_5_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 5 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_5_link_length_too_long: The ad_image_5_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_5_link_length_too_long: CatalogsItemValidationDetails
@@ -3319,6 +3533,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_5_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_5_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 5 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_5_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3329,6 +3544,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_5_link_required(self, ad_image_5_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_5_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 5 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_5_link_required: The ad_image_5_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_5_link_required: CatalogsItemValidationDetails
@@ -3340,6 +3556,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_5_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_5_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 5 format is unsupported.  # noqa: E501
 
         :return: The ad_image_5_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3350,6 +3567,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_5_link_warning(self, ad_image_5_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_5_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 5 format is unsupported.  # noqa: E501
 
         :param ad_image_5_link_warning: The ad_image_5_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_5_link_warning: CatalogsItemValidationDetails
@@ -3361,6 +3579,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_5_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_5_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_5_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_5_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3371,6 +3590,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_5_tag_duplicated(self, ad_image_5_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_5_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_5_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_5_tag_duplicated: The ad_image_5_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_5_tag_duplicated: CatalogsItemValidationDetails
@@ -3382,6 +3602,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_5_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_5_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 5 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_5_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3392,6 +3613,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_5_tag_length_too_long(self, ad_image_5_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_5_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 5 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_5_tag_length_too_long: The ad_image_5_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_5_tag_length_too_long: CatalogsItemValidationDetails
@@ -3403,6 +3625,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_5_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_5_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 5 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_5_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3413,6 +3636,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_5_tag_required(self, ad_image_5_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_5_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 5 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_5_tag_required: The ad_image_5_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_5_tag_required: CatalogsItemValidationDetails
@@ -3424,6 +3648,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_6_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_6_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_6_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_6_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3434,6 +3659,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_6_link_duplicated(self, ad_image_6_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_6_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_6_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_6_link_duplicated: The ad_image_6_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_6_link_duplicated: CatalogsItemValidationDetails
@@ -3445,6 +3671,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_6_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_6_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 6 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_6_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3455,6 +3682,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_6_link_length_too_long(self, ad_image_6_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_6_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 6 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_6_link_length_too_long: The ad_image_6_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_6_link_length_too_long: CatalogsItemValidationDetails
@@ -3466,6 +3694,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_6_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_6_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 6 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_6_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3476,6 +3705,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_6_link_required(self, ad_image_6_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_6_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 6 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_6_link_required: The ad_image_6_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_6_link_required: CatalogsItemValidationDetails
@@ -3487,6 +3717,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_6_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_6_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 6 format is unsupported.  # noqa: E501
 
         :return: The ad_image_6_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3497,6 +3728,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_6_link_warning(self, ad_image_6_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_6_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 6 format is unsupported.  # noqa: E501
 
         :param ad_image_6_link_warning: The ad_image_6_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_6_link_warning: CatalogsItemValidationDetails
@@ -3508,6 +3740,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_6_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_6_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_6_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_6_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3518,6 +3751,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_6_tag_duplicated(self, ad_image_6_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_6_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_6_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_6_tag_duplicated: The ad_image_6_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_6_tag_duplicated: CatalogsItemValidationDetails
@@ -3529,6 +3763,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_6_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_6_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 6 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_6_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3539,6 +3774,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_6_tag_length_too_long(self, ad_image_6_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_6_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 6 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_6_tag_length_too_long: The ad_image_6_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_6_tag_length_too_long: CatalogsItemValidationDetails
@@ -3550,6 +3786,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_6_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_6_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 6 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_6_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3560,6 +3797,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_6_tag_required(self, ad_image_6_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_6_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 6 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_6_tag_required: The ad_image_6_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_6_tag_required: CatalogsItemValidationDetails
@@ -3571,6 +3809,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_7_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_7_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_7_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_7_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3581,6 +3820,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_7_link_duplicated(self, ad_image_7_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_7_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_7_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_7_link_duplicated: The ad_image_7_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_7_link_duplicated: CatalogsItemValidationDetails
@@ -3592,6 +3832,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_7_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_7_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 7 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_7_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3602,6 +3843,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_7_link_length_too_long(self, ad_image_7_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_7_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 7 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_7_link_length_too_long: The ad_image_7_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_7_link_length_too_long: CatalogsItemValidationDetails
@@ -3613,6 +3855,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_7_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_7_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 7 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_7_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3623,6 +3866,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_7_link_required(self, ad_image_7_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_7_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 7 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_7_link_required: The ad_image_7_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_7_link_required: CatalogsItemValidationDetails
@@ -3634,6 +3878,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_7_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_7_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 7 format is unsupported.  # noqa: E501
 
         :return: The ad_image_7_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3644,6 +3889,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_7_link_warning(self, ad_image_7_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_7_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 7 format is unsupported.  # noqa: E501
 
         :param ad_image_7_link_warning: The ad_image_7_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_7_link_warning: CatalogsItemValidationDetails
@@ -3655,6 +3901,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_7_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_7_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_7_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_7_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3665,6 +3912,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_7_tag_duplicated(self, ad_image_7_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_7_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_7_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_7_tag_duplicated: The ad_image_7_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_7_tag_duplicated: CatalogsItemValidationDetails
@@ -3676,6 +3924,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_7_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_7_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 7 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_7_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3686,6 +3935,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_7_tag_length_too_long(self, ad_image_7_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_7_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 7 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_7_tag_length_too_long: The ad_image_7_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_7_tag_length_too_long: CatalogsItemValidationDetails
@@ -3697,6 +3947,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_7_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_7_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 7 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_7_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3707,6 +3958,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_7_tag_required(self, ad_image_7_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_7_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 7 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_7_tag_required: The ad_image_7_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_7_tag_required: CatalogsItemValidationDetails
@@ -3718,6 +3970,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_8_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_8_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_8_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_8_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3728,6 +3981,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_8_link_duplicated(self, ad_image_8_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_8_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_8_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_8_link_duplicated: The ad_image_8_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_8_link_duplicated: CatalogsItemValidationDetails
@@ -3739,6 +3993,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_8_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_8_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 8 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_8_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3749,6 +4004,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_8_link_length_too_long(self, ad_image_8_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_8_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 8 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_8_link_length_too_long: The ad_image_8_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_8_link_length_too_long: CatalogsItemValidationDetails
@@ -3760,6 +4016,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_8_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_8_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 8 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_8_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3770,6 +4027,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_8_link_required(self, ad_image_8_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_8_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 8 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_8_link_required: The ad_image_8_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_8_link_required: CatalogsItemValidationDetails
@@ -3781,6 +4039,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_8_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_8_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 8 format is unsupported.  # noqa: E501
 
         :return: The ad_image_8_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3791,6 +4050,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_8_link_warning(self, ad_image_8_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_8_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 8 format is unsupported.  # noqa: E501
 
         :param ad_image_8_link_warning: The ad_image_8_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_8_link_warning: CatalogsItemValidationDetails
@@ -3802,6 +4062,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_8_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_8_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_8_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_8_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3812,6 +4073,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_8_tag_duplicated(self, ad_image_8_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_8_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_8_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_8_tag_duplicated: The ad_image_8_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_8_tag_duplicated: CatalogsItemValidationDetails
@@ -3823,6 +4085,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_8_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_8_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 8 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_8_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3833,6 +4096,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_8_tag_length_too_long(self, ad_image_8_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_8_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 8 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_8_tag_length_too_long: The ad_image_8_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_8_tag_length_too_long: CatalogsItemValidationDetails
@@ -3844,6 +4108,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_8_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_8_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 8 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_8_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3854,6 +4119,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_8_tag_required(self, ad_image_8_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_8_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 8 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_8_tag_required: The ad_image_8_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_8_tag_required: CatalogsItemValidationDetails
@@ -3865,6 +4131,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_9_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_9_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_9_link is duplicated with another ad image link.  # noqa: E501
 
         :return: The ad_image_9_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3875,6 +4142,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_9_link_duplicated(self, ad_image_9_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_9_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_9_link is duplicated with another ad image link.  # noqa: E501
 
         :param ad_image_9_link_duplicated: The ad_image_9_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_9_link_duplicated: CatalogsItemValidationDetails
@@ -3886,6 +4154,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_9_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_9_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 9 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :return: The ad_image_9_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3896,6 +4165,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_9_link_length_too_long(self, ad_image_9_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_9_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image link 9 length is too long. The maximum length is 2047 characters.  # noqa: E501
 
         :param ad_image_9_link_length_too_long: The ad_image_9_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_9_link_length_too_long: CatalogsItemValidationDetails
@@ -3907,6 +4177,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_9_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_9_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 9 is required because an image tag was provided.  # noqa: E501
 
         :return: The ad_image_9_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3917,6 +4188,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_9_link_required(self, ad_image_9_link_required: CatalogsItemValidationDetails):
         """Sets the ad_image_9_link_required of this CatalogsItemValidationWarnings.
 
+        Ad image link 9 is required because an image tag was provided.  # noqa: E501
 
         :param ad_image_9_link_required: The ad_image_9_link_required of this CatalogsItemValidationWarnings.
         :type ad_image_9_link_required: CatalogsItemValidationDetails
@@ -3928,6 +4200,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_9_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_9_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 9 format is unsupported.  # noqa: E501
 
         :return: The ad_image_9_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3938,6 +4211,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_9_link_warning(self, ad_image_9_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_image_9_link_warning of this CatalogsItemValidationWarnings.
 
+        Ad image link 9 format is unsupported.  # noqa: E501
 
         :param ad_image_9_link_warning: The ad_image_9_link_warning of this CatalogsItemValidationWarnings.
         :type ad_image_9_link_warning: CatalogsItemValidationDetails
@@ -3949,6 +4223,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_9_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_9_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_9_tag is duplicated with another ad image tag.  # noqa: E501
 
         :return: The ad_image_9_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3959,6 +4234,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_9_tag_duplicated(self, ad_image_9_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_image_9_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_image_9_tag is duplicated with another ad image tag.  # noqa: E501
 
         :param ad_image_9_tag_duplicated: The ad_image_9_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_image_9_tag_duplicated: CatalogsItemValidationDetails
@@ -3970,6 +4246,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_9_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_9_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 9 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_image_9_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -3980,6 +4257,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_9_tag_length_too_long(self, ad_image_9_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_image_9_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        Ad image tag 9 length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_image_9_tag_length_too_long: The ad_image_9_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_image_9_tag_length_too_long: CatalogsItemValidationDetails
@@ -3991,6 +4269,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_9_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_image_9_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 9 is required because an image link was provided.  # noqa: E501
 
         :return: The ad_image_9_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4001,6 +4280,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_image_9_tag_required(self, ad_image_9_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_image_9_tag_required of this CatalogsItemValidationWarnings.
 
+        Ad image tag 9 is required because an image link was provided.  # noqa: E501
 
         :param ad_image_9_tag_required: The ad_image_9_tag_required of this CatalogsItemValidationWarnings.
         :type ad_image_9_tag_required: CatalogsItemValidationDetails
@@ -4012,6 +4292,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_link_format_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_link_format_warning of this CatalogsItemValidationWarnings.
 
+        Item has an ad link that is formatted incorrectly.  # noqa: E501
 
         :return: The ad_link_format_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4022,6 +4303,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_link_format_warning(self, ad_link_format_warning: CatalogsItemValidationDetails):
         """Sets the ad_link_format_warning of this CatalogsItemValidationWarnings.
 
+        Item has an ad link that is formatted incorrectly.  # noqa: E501
 
         :param ad_link_format_warning: The ad_link_format_warning of this CatalogsItemValidationWarnings.
         :type ad_link_format_warning: CatalogsItemValidationDetails
@@ -4033,6 +4315,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_link_same_as_link(self) -> CatalogsItemValidationDetails:
         """Gets the ad_link_same_as_link of this CatalogsItemValidationWarnings.
 
+        Item has an ad link URL that is duplicate of the link URL.  # noqa: E501
 
         :return: The ad_link_same_as_link of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4043,6 +4326,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_link_same_as_link(self, ad_link_same_as_link: CatalogsItemValidationDetails):
         """Sets the ad_link_same_as_link of this CatalogsItemValidationWarnings.
 
+        Item has an ad link URL that is duplicate of the link URL.  # noqa: E501
 
         :param ad_link_same_as_link: The ad_link_same_as_link of this CatalogsItemValidationWarnings.
         :type ad_link_same_as_link: CatalogsItemValidationDetails
@@ -4054,6 +4338,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_0_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_0_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_video_0_link is duplicated with another ad video link.  # noqa: E501
 
         :return: The ad_video_0_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4064,6 +4349,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_0_link_duplicated(self, ad_video_0_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_video_0_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_video_0_link is duplicated with another ad video link.  # noqa: E501
 
         :param ad_video_0_link_duplicated: The ad_video_0_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_video_0_link_duplicated: CatalogsItemValidationDetails
@@ -4075,6 +4361,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_0_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_0_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        ad_video_0_link length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_video_0_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4085,6 +4372,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_0_link_length_too_long(self, ad_video_0_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_video_0_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        ad_video_0_link length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_video_0_link_length_too_long: The ad_video_0_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_video_0_link_length_too_long: CatalogsItemValidationDetails
@@ -4096,6 +4384,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_0_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_0_link_required of this CatalogsItemValidationWarnings.
 
+        ad_video_0_link is required for this item because ad_video_0_tag was provided.  # noqa: E501
 
         :return: The ad_video_0_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4106,6 +4395,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_0_link_required(self, ad_video_0_link_required: CatalogsItemValidationDetails):
         """Sets the ad_video_0_link_required of this CatalogsItemValidationWarnings.
 
+        ad_video_0_link is required for this item because ad_video_0_tag was provided.  # noqa: E501
 
         :param ad_video_0_link_required: The ad_video_0_link_required of this CatalogsItemValidationWarnings.
         :type ad_video_0_link_required: CatalogsItemValidationDetails
@@ -4117,6 +4407,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_0_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_0_link_warning of this CatalogsItemValidationWarnings.
 
+        ad_video_0_link is formatted incorrectly and will not be published with your items.  # noqa: E501
 
         :return: The ad_video_0_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4127,6 +4418,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_0_link_warning(self, ad_video_0_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_video_0_link_warning of this CatalogsItemValidationWarnings.
 
+        ad_video_0_link is formatted incorrectly and will not be published with your items.  # noqa: E501
 
         :param ad_video_0_link_warning: The ad_video_0_link_warning of this CatalogsItemValidationWarnings.
         :type ad_video_0_link_warning: CatalogsItemValidationDetails
@@ -4138,6 +4430,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_0_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_0_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_video_0_tag is duplicated with another ad video tag.  # noqa: E501
 
         :return: The ad_video_0_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4148,6 +4441,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_0_tag_duplicated(self, ad_video_0_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_video_0_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_video_0_tag is duplicated with another ad video tag.  # noqa: E501
 
         :param ad_video_0_tag_duplicated: The ad_video_0_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_video_0_tag_duplicated: CatalogsItemValidationDetails
@@ -4159,6 +4453,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_0_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_0_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        ad_video_0_tag length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_video_0_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4169,6 +4464,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_0_tag_length_too_long(self, ad_video_0_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_video_0_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        ad_video_0_tag length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_video_0_tag_length_too_long: The ad_video_0_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_video_0_tag_length_too_long: CatalogsItemValidationDetails
@@ -4180,6 +4476,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_0_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_0_tag_required of this CatalogsItemValidationWarnings.
 
+        ad_video_0_tag is required because ad_video_0_link was provided.  # noqa: E501
 
         :return: The ad_video_0_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4190,6 +4487,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_0_tag_required(self, ad_video_0_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_video_0_tag_required of this CatalogsItemValidationWarnings.
 
+        ad_video_0_tag is required because ad_video_0_link was provided.  # noqa: E501
 
         :param ad_video_0_tag_required: The ad_video_0_tag_required of this CatalogsItemValidationWarnings.
         :type ad_video_0_tag_required: CatalogsItemValidationDetails
@@ -4201,6 +4499,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_1_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_1_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_video_1_link is duplicated with another ad video link.  # noqa: E501
 
         :return: The ad_video_1_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4211,6 +4510,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_1_link_duplicated(self, ad_video_1_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_video_1_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_video_1_link is duplicated with another ad video link.  # noqa: E501
 
         :param ad_video_1_link_duplicated: The ad_video_1_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_video_1_link_duplicated: CatalogsItemValidationDetails
@@ -4222,6 +4522,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_1_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_1_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        ad_video_1_link length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_video_1_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4232,6 +4533,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_1_link_length_too_long(self, ad_video_1_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_video_1_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        ad_video_1_link length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_video_1_link_length_too_long: The ad_video_1_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_video_1_link_length_too_long: CatalogsItemValidationDetails
@@ -4243,6 +4545,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_1_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_1_link_required of this CatalogsItemValidationWarnings.
 
+        ad_video_1_link is required for this item because ad_video_1_tag was provided.  # noqa: E501
 
         :return: The ad_video_1_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4253,6 +4556,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_1_link_required(self, ad_video_1_link_required: CatalogsItemValidationDetails):
         """Sets the ad_video_1_link_required of this CatalogsItemValidationWarnings.
 
+        ad_video_1_link is required for this item because ad_video_1_tag was provided.  # noqa: E501
 
         :param ad_video_1_link_required: The ad_video_1_link_required of this CatalogsItemValidationWarnings.
         :type ad_video_1_link_required: CatalogsItemValidationDetails
@@ -4264,6 +4568,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_1_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_1_link_warning of this CatalogsItemValidationWarnings.
 
+        ad_video_1_link is formatted incorrectly and will not be published with your items.  # noqa: E501
 
         :return: The ad_video_1_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4274,6 +4579,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_1_link_warning(self, ad_video_1_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_video_1_link_warning of this CatalogsItemValidationWarnings.
 
+        ad_video_1_link is formatted incorrectly and will not be published with your items.  # noqa: E501
 
         :param ad_video_1_link_warning: The ad_video_1_link_warning of this CatalogsItemValidationWarnings.
         :type ad_video_1_link_warning: CatalogsItemValidationDetails
@@ -4285,6 +4591,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_1_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_1_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_video_1_tag is duplicated with another ad video tag.  # noqa: E501
 
         :return: The ad_video_1_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4295,6 +4602,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_1_tag_duplicated(self, ad_video_1_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_video_1_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_video_1_tag is duplicated with another ad video tag.  # noqa: E501
 
         :param ad_video_1_tag_duplicated: The ad_video_1_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_video_1_tag_duplicated: CatalogsItemValidationDetails
@@ -4306,6 +4614,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_1_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_1_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        ad_video_1_tag length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_video_1_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4316,6 +4625,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_1_tag_length_too_long(self, ad_video_1_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_video_1_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        ad_video_1_tag length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_video_1_tag_length_too_long: The ad_video_1_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_video_1_tag_length_too_long: CatalogsItemValidationDetails
@@ -4327,6 +4637,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_1_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_1_tag_required of this CatalogsItemValidationWarnings.
 
+        ad_video_1_tag is required because ad_video_1_link was provided.  # noqa: E501
 
         :return: The ad_video_1_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4337,6 +4648,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_1_tag_required(self, ad_video_1_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_video_1_tag_required of this CatalogsItemValidationWarnings.
 
+        ad_video_1_tag is required because ad_video_1_link was provided.  # noqa: E501
 
         :param ad_video_1_tag_required: The ad_video_1_tag_required of this CatalogsItemValidationWarnings.
         :type ad_video_1_tag_required: CatalogsItemValidationDetails
@@ -4348,6 +4660,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_2_link_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_2_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_video_2_link is duplicated with another ad video link.  # noqa: E501
 
         :return: The ad_video_2_link_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4358,6 +4671,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_2_link_duplicated(self, ad_video_2_link_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_video_2_link_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_video_2_link is duplicated with another ad video link.  # noqa: E501
 
         :param ad_video_2_link_duplicated: The ad_video_2_link_duplicated of this CatalogsItemValidationWarnings.
         :type ad_video_2_link_duplicated: CatalogsItemValidationDetails
@@ -4369,6 +4683,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_2_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_2_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        ad_video_2_link length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_video_2_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4379,6 +4694,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_2_link_length_too_long(self, ad_video_2_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_video_2_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        ad_video_2_link length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_video_2_link_length_too_long: The ad_video_2_link_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_video_2_link_length_too_long: CatalogsItemValidationDetails
@@ -4390,6 +4706,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_2_link_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_2_link_required of this CatalogsItemValidationWarnings.
 
+        ad_video_2_link is required for this item because ad_video_2_tag was provided.  # noqa: E501
 
         :return: The ad_video_2_link_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4400,6 +4717,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_2_link_required(self, ad_video_2_link_required: CatalogsItemValidationDetails):
         """Sets the ad_video_2_link_required of this CatalogsItemValidationWarnings.
 
+        ad_video_2_link is required for this item because ad_video_2_tag was provided.  # noqa: E501
 
         :param ad_video_2_link_required: The ad_video_2_link_required of this CatalogsItemValidationWarnings.
         :type ad_video_2_link_required: CatalogsItemValidationDetails
@@ -4411,6 +4729,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_2_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_2_link_warning of this CatalogsItemValidationWarnings.
 
+        ad_video_2_link is formatted incorrectly and will not be published with your items.  # noqa: E501
 
         :return: The ad_video_2_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4421,6 +4740,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_2_link_warning(self, ad_video_2_link_warning: CatalogsItemValidationDetails):
         """Sets the ad_video_2_link_warning of this CatalogsItemValidationWarnings.
 
+        ad_video_2_link is formatted incorrectly and will not be published with your items.  # noqa: E501
 
         :param ad_video_2_link_warning: The ad_video_2_link_warning of this CatalogsItemValidationWarnings.
         :type ad_video_2_link_warning: CatalogsItemValidationDetails
@@ -4432,6 +4752,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_2_tag_duplicated(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_2_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_video_2_tag is duplicated with another ad video tag.  # noqa: E501
 
         :return: The ad_video_2_tag_duplicated of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4442,6 +4763,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_2_tag_duplicated(self, ad_video_2_tag_duplicated: CatalogsItemValidationDetails):
         """Sets the ad_video_2_tag_duplicated of this CatalogsItemValidationWarnings.
 
+        ad_video_2_tag is duplicated with another ad video tag.  # noqa: E501
 
         :param ad_video_2_tag_duplicated: The ad_video_2_tag_duplicated of this CatalogsItemValidationWarnings.
         :type ad_video_2_tag_duplicated: CatalogsItemValidationDetails
@@ -4453,6 +4775,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_2_tag_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_2_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        ad_video_2_tag length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :return: The ad_video_2_tag_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4463,6 +4786,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_2_tag_length_too_long(self, ad_video_2_tag_length_too_long: CatalogsItemValidationDetails):
         """Sets the ad_video_2_tag_length_too_long of this CatalogsItemValidationWarnings.
 
+        ad_video_2_tag length is too long. The maximum length is 511 characters.  # noqa: E501
 
         :param ad_video_2_tag_length_too_long: The ad_video_2_tag_length_too_long of this CatalogsItemValidationWarnings.
         :type ad_video_2_tag_length_too_long: CatalogsItemValidationDetails
@@ -4474,6 +4798,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_2_tag_required(self) -> CatalogsItemValidationDetails:
         """Gets the ad_video_2_tag_required of this CatalogsItemValidationWarnings.
 
+        ad_video_2_tag is required because ad_video_2_link was provided.  # noqa: E501
 
         :return: The ad_video_2_tag_required of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4484,6 +4809,7 @@ class CatalogsItemValidationWarnings(Model):
     def ad_video_2_tag_required(self, ad_video_2_tag_required: CatalogsItemValidationDetails):
         """Sets the ad_video_2_tag_required of this CatalogsItemValidationWarnings.
 
+        ad_video_2_tag is required because ad_video_2_link was provided.  # noqa: E501
 
         :param ad_video_2_tag_required: The ad_video_2_tag_required of this CatalogsItemValidationWarnings.
         :type ad_video_2_tag_required: CatalogsItemValidationDetails
@@ -4495,6 +4821,7 @@ class CatalogsItemValidationWarnings(Model):
     def additional_image_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the additional_image_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Item has an additional_image_link URL that contains too many characters, so the item will not be published.  # noqa: E501
 
         :return: The additional_image_link_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4505,6 +4832,7 @@ class CatalogsItemValidationWarnings(Model):
     def additional_image_link_length_too_long(self, additional_image_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the additional_image_link_length_too_long of this CatalogsItemValidationWarnings.
 
+        Item has an additional_image_link URL that contains too many characters, so the item will not be published.  # noqa: E501
 
         :param additional_image_link_length_too_long: The additional_image_link_length_too_long of this CatalogsItemValidationWarnings.
         :type additional_image_link_length_too_long: CatalogsItemValidationDetails
@@ -4516,6 +4844,7 @@ class CatalogsItemValidationWarnings(Model):
     def additional_image_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the additional_image_link_warning of this CatalogsItemValidationWarnings.
 
+        Item has additional_image_link URLs that are formatted incorrectly and will not be published with your items.  # noqa: E501
 
         :return: The additional_image_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4526,6 +4855,7 @@ class CatalogsItemValidationWarnings(Model):
     def additional_image_link_warning(self, additional_image_link_warning: CatalogsItemValidationDetails):
         """Sets the additional_image_link_warning of this CatalogsItemValidationWarnings.
 
+        Item has additional_image_link URLs that are formatted incorrectly and will not be published with your items.  # noqa: E501
 
         :param additional_image_link_warning: The additional_image_link_warning of this CatalogsItemValidationWarnings.
         :type additional_image_link_warning: CatalogsItemValidationDetails
@@ -4537,6 +4867,7 @@ class CatalogsItemValidationWarnings(Model):
     def adwords_format_warning(self) -> CatalogsItemValidationDetails:
         """Gets the adwords_format_warning of this CatalogsItemValidationWarnings.
 
+        Item has an adwords_redirect link that is formatted incorrectly.  # noqa: E501
 
         :return: The adwords_format_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4547,6 +4878,7 @@ class CatalogsItemValidationWarnings(Model):
     def adwords_format_warning(self, adwords_format_warning: CatalogsItemValidationDetails):
         """Sets the adwords_format_warning of this CatalogsItemValidationWarnings.
 
+        Item has an adwords_redirect link that is formatted incorrectly.  # noqa: E501
 
         :param adwords_format_warning: The adwords_format_warning of this CatalogsItemValidationWarnings.
         :type adwords_format_warning: CatalogsItemValidationDetails
@@ -4558,6 +4890,7 @@ class CatalogsItemValidationWarnings(Model):
     def adwords_same_as_link(self) -> CatalogsItemValidationDetails:
         """Gets the adwords_same_as_link of this CatalogsItemValidationWarnings.
 
+        Item has an adwords_redirect URL that is duplicate of the link URL.  # noqa: E501
 
         :return: The adwords_same_as_link of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4568,6 +4901,7 @@ class CatalogsItemValidationWarnings(Model):
     def adwords_same_as_link(self, adwords_same_as_link: CatalogsItemValidationDetails):
         """Sets the adwords_same_as_link of this CatalogsItemValidationWarnings.
 
+        Item has an adwords_redirect URL that is duplicate of the link URL.  # noqa: E501
 
         :param adwords_same_as_link: The adwords_same_as_link of this CatalogsItemValidationWarnings.
         :type adwords_same_as_link: CatalogsItemValidationDetails
@@ -4579,6 +4913,7 @@ class CatalogsItemValidationWarnings(Model):
     def age_group_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the age_group_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an age group value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.  # noqa: E501
 
         :return: The age_group_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4589,6 +4924,7 @@ class CatalogsItemValidationWarnings(Model):
     def age_group_invalid(self, age_group_invalid: CatalogsItemValidationDetails):
         """Sets the age_group_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an age group value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.  # noqa: E501
 
         :param age_group_invalid: The age_group_invalid of this CatalogsItemValidationWarnings.
         :type age_group_invalid: CatalogsItemValidationDetails
@@ -4600,6 +4936,7 @@ class CatalogsItemValidationWarnings(Model):
     def android_deep_link_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the android_deep_link_invalid of this CatalogsItemValidationWarnings.
 
+        Item includes an invalid android_deep_link.  # noqa: E501
 
         :return: The android_deep_link_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4610,6 +4947,7 @@ class CatalogsItemValidationWarnings(Model):
     def android_deep_link_invalid(self, android_deep_link_invalid: CatalogsItemValidationDetails):
         """Sets the android_deep_link_invalid of this CatalogsItemValidationWarnings.
 
+        Item includes an invalid android_deep_link.  # noqa: E501
 
         :param android_deep_link_invalid: The android_deep_link_invalid of this CatalogsItemValidationWarnings.
         :type android_deep_link_invalid: CatalogsItemValidationDetails
@@ -4621,6 +4959,7 @@ class CatalogsItemValidationWarnings(Model):
     def availability_date_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the availability_date_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an availability_date value that is formatted incorrectly, this item will be published without an availability date.  # noqa: E501
 
         :return: The availability_date_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4631,6 +4970,7 @@ class CatalogsItemValidationWarnings(Model):
     def availability_date_invalid(self, availability_date_invalid: CatalogsItemValidationDetails):
         """Sets the availability_date_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an availability_date value that is formatted incorrectly, this item will be published without an availability date.  # noqa: E501
 
         :param availability_date_invalid: The availability_date_invalid of this CatalogsItemValidationWarnings.
         :type availability_date_invalid: CatalogsItemValidationDetails
@@ -4642,6 +4982,7 @@ class CatalogsItemValidationWarnings(Model):
     def country_does_not_map_to_currency(self) -> CatalogsItemValidationDetails:
         """Gets the country_does_not_map_to_currency of this CatalogsItemValidationWarnings.
 
+        Item includes a currency that doesn't match the usual currency for the location where the product is sold or shipped.  # noqa: E501
 
         :return: The country_does_not_map_to_currency of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4652,6 +4993,7 @@ class CatalogsItemValidationWarnings(Model):
     def country_does_not_map_to_currency(self, country_does_not_map_to_currency: CatalogsItemValidationDetails):
         """Sets the country_does_not_map_to_currency of this CatalogsItemValidationWarnings.
 
+        Item includes a currency that doesn't match the usual currency for the location where the product is sold or shipped.  # noqa: E501
 
         :param country_does_not_map_to_currency: The country_does_not_map_to_currency of this CatalogsItemValidationWarnings.
         :type country_does_not_map_to_currency: CatalogsItemValidationDetails
@@ -4663,6 +5005,7 @@ class CatalogsItemValidationWarnings(Model):
     def custom_label_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the custom_label_length_too_long of this CatalogsItemValidationWarnings.
 
+        Item has a custom_label value that is too long, this item will be published without that custom label.  # noqa: E501
 
         :return: The custom_label_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4673,6 +5016,7 @@ class CatalogsItemValidationWarnings(Model):
     def custom_label_length_too_long(self, custom_label_length_too_long: CatalogsItemValidationDetails):
         """Sets the custom_label_length_too_long of this CatalogsItemValidationWarnings.
 
+        Item has a custom_label value that is too long, this item will be published without that custom label.  # noqa: E501
 
         :param custom_label_length_too_long: The custom_label_length_too_long of this CatalogsItemValidationWarnings.
         :type custom_label_length_too_long: CatalogsItemValidationDetails
@@ -4684,6 +5028,7 @@ class CatalogsItemValidationWarnings(Model):
     def description_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the description_length_too_long of this CatalogsItemValidationWarnings.
 
+        The description for this item was truncated because it contains too many characters.  # noqa: E501
 
         :return: The description_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4694,6 +5039,7 @@ class CatalogsItemValidationWarnings(Model):
     def description_length_too_long(self, description_length_too_long: CatalogsItemValidationDetails):
         """Sets the description_length_too_long of this CatalogsItemValidationWarnings.
 
+        The description for this item was truncated because it contains too many characters.  # noqa: E501
 
         :param description_length_too_long: The description_length_too_long of this CatalogsItemValidationWarnings.
         :type description_length_too_long: CatalogsItemValidationDetails
@@ -4705,6 +5051,7 @@ class CatalogsItemValidationWarnings(Model):
     def expiration_date_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the expiration_date_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an expiration_date value that is formatted incorrectly, this item will be published without an expiration date.  # noqa: E501
 
         :return: The expiration_date_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4715,6 +5062,7 @@ class CatalogsItemValidationWarnings(Model):
     def expiration_date_invalid(self, expiration_date_invalid: CatalogsItemValidationDetails):
         """Sets the expiration_date_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an expiration_date value that is formatted incorrectly, this item will be published without an expiration date.  # noqa: E501
 
         :param expiration_date_invalid: The expiration_date_invalid of this CatalogsItemValidationWarnings.
         :type expiration_date_invalid: CatalogsItemValidationDetails
@@ -4726,6 +5074,7 @@ class CatalogsItemValidationWarnings(Model):
     def gender_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the gender_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a gender value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.  # noqa: E501
 
         :return: The gender_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4736,6 +5085,7 @@ class CatalogsItemValidationWarnings(Model):
     def gender_invalid(self, gender_invalid: CatalogsItemValidationDetails):
         """Sets the gender_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a gender value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.  # noqa: E501
 
         :param gender_invalid: The gender_invalid of this CatalogsItemValidationWarnings.
         :type gender_invalid: CatalogsItemValidationDetails
@@ -4747,6 +5097,7 @@ class CatalogsItemValidationWarnings(Model):
     def gtin_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the gtin_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a GTIN value that is formatted incorrectly.  # noqa: E501
 
         :return: The gtin_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4757,6 +5108,7 @@ class CatalogsItemValidationWarnings(Model):
     def gtin_invalid(self, gtin_invalid: CatalogsItemValidationDetails):
         """Sets the gtin_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a GTIN value that is formatted incorrectly.  # noqa: E501
 
         :param gtin_invalid: The gtin_invalid of this CatalogsItemValidationWarnings.
         :type gtin_invalid: CatalogsItemValidationDetails
@@ -4768,6 +5120,7 @@ class CatalogsItemValidationWarnings(Model):
     def image_link_warning(self) -> CatalogsItemValidationDetails:
         """Gets the image_link_warning of this CatalogsItemValidationWarnings.
 
+        Item has an image_link URL that is formatted incorrectly and will not be published.  # noqa: E501
 
         :return: The image_link_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4778,6 +5131,7 @@ class CatalogsItemValidationWarnings(Model):
     def image_link_warning(self, image_link_warning: CatalogsItemValidationDetails):
         """Sets the image_link_warning of this CatalogsItemValidationWarnings.
 
+        Item has an image_link URL that is formatted incorrectly and will not be published.  # noqa: E501
 
         :param image_link_warning: The image_link_warning of this CatalogsItemValidationWarnings.
         :type image_link_warning: CatalogsItemValidationDetails
@@ -4789,6 +5143,7 @@ class CatalogsItemValidationWarnings(Model):
     def ios_deep_link_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the ios_deep_link_invalid of this CatalogsItemValidationWarnings.
 
+        Item includes an invalid ios_deep_link value.  # noqa: E501
 
         :return: The ios_deep_link_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4799,6 +5154,7 @@ class CatalogsItemValidationWarnings(Model):
     def ios_deep_link_invalid(self, ios_deep_link_invalid: CatalogsItemValidationDetails):
         """Sets the ios_deep_link_invalid of this CatalogsItemValidationWarnings.
 
+        Item includes an invalid ios_deep_link value.  # noqa: E501
 
         :param ios_deep_link_invalid: The ios_deep_link_invalid of this CatalogsItemValidationWarnings.
         :type ios_deep_link_invalid: CatalogsItemValidationDetails
@@ -4810,6 +5166,7 @@ class CatalogsItemValidationWarnings(Model):
     def is_bundle_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the is_bundle_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an is_bundle value that is formatted incorrectly, this item will be published without being bundled with other products.  # noqa: E501
 
         :return: The is_bundle_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4820,6 +5177,7 @@ class CatalogsItemValidationWarnings(Model):
     def is_bundle_invalid(self, is_bundle_invalid: CatalogsItemValidationDetails):
         """Sets the is_bundle_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an is_bundle value that is formatted incorrectly, this item will be published without being bundled with other products.  # noqa: E501
 
         :param is_bundle_invalid: The is_bundle_invalid of this CatalogsItemValidationWarnings.
         :type is_bundle_invalid: CatalogsItemValidationDetails
@@ -4831,6 +5189,7 @@ class CatalogsItemValidationWarnings(Model):
     def item_additional_image_download_failure(self) -> CatalogsItemValidationDetails:
         """Gets the item_additional_image_download_failure of this CatalogsItemValidationWarnings.
 
+        Item includes additional_image_links that can't be found.  # noqa: E501
 
         :return: The item_additional_image_download_failure of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4841,6 +5200,7 @@ class CatalogsItemValidationWarnings(Model):
     def item_additional_image_download_failure(self, item_additional_image_download_failure: CatalogsItemValidationDetails):
         """Sets the item_additional_image_download_failure of this CatalogsItemValidationWarnings.
 
+        Item includes additional_image_links that can't be found.  # noqa: E501
 
         :param item_additional_image_download_failure: The item_additional_image_download_failure of this CatalogsItemValidationWarnings.
         :type item_additional_image_download_failure: CatalogsItemValidationDetails
@@ -4852,6 +5212,7 @@ class CatalogsItemValidationWarnings(Model):
     def link_format_warning(self) -> CatalogsItemValidationDetails:
         """Gets the link_format_warning of this CatalogsItemValidationWarnings.
 
+        Item has an invalid product link which contains invalid UTM tracking paramaters.  # noqa: E501
 
         :return: The link_format_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4862,6 +5223,7 @@ class CatalogsItemValidationWarnings(Model):
     def link_format_warning(self, link_format_warning: CatalogsItemValidationDetails):
         """Sets the link_format_warning of this CatalogsItemValidationWarnings.
 
+        Item has an invalid product link which contains invalid UTM tracking paramaters.  # noqa: E501
 
         :param link_format_warning: The link_format_warning of this CatalogsItemValidationWarnings.
         :type link_format_warning: CatalogsItemValidationDetails
@@ -4873,6 +5235,7 @@ class CatalogsItemValidationWarnings(Model):
     def min_ad_price_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the min_ad_price_invalid of this CatalogsItemValidationWarnings.
 
+        Item includes a min_ad_price value that is formatted incorrectly.  # noqa: E501
 
         :return: The min_ad_price_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4883,6 +5246,7 @@ class CatalogsItemValidationWarnings(Model):
     def min_ad_price_invalid(self, min_ad_price_invalid: CatalogsItemValidationDetails):
         """Sets the min_ad_price_invalid of this CatalogsItemValidationWarnings.
 
+        Item includes a min_ad_price value that is formatted incorrectly.  # noqa: E501
 
         :param min_ad_price_invalid: The min_ad_price_invalid of this CatalogsItemValidationWarnings.
         :type min_ad_price_invalid: CatalogsItemValidationDetails
@@ -4894,6 +5258,7 @@ class CatalogsItemValidationWarnings(Model):
     def mpn_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the mpn_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a MPN value that is formatted incorrectly.  # noqa: E501
 
         :return: The mpn_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4904,6 +5269,7 @@ class CatalogsItemValidationWarnings(Model):
     def mpn_invalid(self, mpn_invalid: CatalogsItemValidationDetails):
         """Sets the mpn_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a MPN value that is formatted incorrectly.  # noqa: E501
 
         :param mpn_invalid: The mpn_invalid of this CatalogsItemValidationWarnings.
         :type mpn_invalid: CatalogsItemValidationDetails
@@ -4915,6 +5281,7 @@ class CatalogsItemValidationWarnings(Model):
     def multipack_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the multipack_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an invalid multipack value.  # noqa: E501
 
         :return: The multipack_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4925,6 +5292,7 @@ class CatalogsItemValidationWarnings(Model):
     def multipack_invalid(self, multipack_invalid: CatalogsItemValidationDetails):
         """Sets the multipack_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an invalid multipack value.  # noqa: E501
 
         :param multipack_invalid: The multipack_invalid of this CatalogsItemValidationWarnings.
         :type multipack_invalid: CatalogsItemValidationDetails
@@ -4936,6 +5304,7 @@ class CatalogsItemValidationWarnings(Model):
     def optional_condition_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the optional_condition_invalid of this CatalogsItemValidationWarnings.
 
+        Item includes a condition value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.  # noqa: E501
 
         :return: The optional_condition_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4946,6 +5315,7 @@ class CatalogsItemValidationWarnings(Model):
     def optional_condition_invalid(self, optional_condition_invalid: CatalogsItemValidationDetails):
         """Sets the optional_condition_invalid of this CatalogsItemValidationWarnings.
 
+        Item includes a condition value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.  # noqa: E501
 
         :param optional_condition_invalid: The optional_condition_invalid of this CatalogsItemValidationWarnings.
         :type optional_condition_invalid: CatalogsItemValidationDetails
@@ -4957,6 +5327,7 @@ class CatalogsItemValidationWarnings(Model):
     def optional_condition_missing(self) -> CatalogsItemValidationDetails:
         """Gets the optional_condition_missing of this CatalogsItemValidationWarnings.
 
+        Item is missing condition value, which may limit visibility in recommendations, search results and shopping experiences.  # noqa: E501
 
         :return: The optional_condition_missing of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4967,6 +5338,7 @@ class CatalogsItemValidationWarnings(Model):
     def optional_condition_missing(self, optional_condition_missing: CatalogsItemValidationDetails):
         """Sets the optional_condition_missing of this CatalogsItemValidationWarnings.
 
+        Item is missing condition value, which may limit visibility in recommendations, search results and shopping experiences.  # noqa: E501
 
         :param optional_condition_missing: The optional_condition_missing of this CatalogsItemValidationWarnings.
         :type optional_condition_missing: CatalogsItemValidationDetails
@@ -4978,6 +5350,7 @@ class CatalogsItemValidationWarnings(Model):
     def optional_product_category_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the optional_product_category_invalid of this CatalogsItemValidationWarnings.
 
+        Item includes a google_product_category value that is not formatted correctly according to the GPC taxonomy.  # noqa: E501
 
         :return: The optional_product_category_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -4988,6 +5361,7 @@ class CatalogsItemValidationWarnings(Model):
     def optional_product_category_invalid(self, optional_product_category_invalid: CatalogsItemValidationDetails):
         """Sets the optional_product_category_invalid of this CatalogsItemValidationWarnings.
 
+        Item includes a google_product_category value that is not formatted correctly according to the GPC taxonomy.  # noqa: E501
 
         :param optional_product_category_invalid: The optional_product_category_invalid of this CatalogsItemValidationWarnings.
         :type optional_product_category_invalid: CatalogsItemValidationDetails
@@ -4999,6 +5373,7 @@ class CatalogsItemValidationWarnings(Model):
     def optional_product_category_missing(self) -> CatalogsItemValidationDetails:
         """Gets the optional_product_category_missing of this CatalogsItemValidationWarnings.
 
+        Item is missing google_product_category.  # noqa: E501
 
         :return: The optional_product_category_missing of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5009,6 +5384,7 @@ class CatalogsItemValidationWarnings(Model):
     def optional_product_category_missing(self, optional_product_category_missing: CatalogsItemValidationDetails):
         """Sets the optional_product_category_missing of this CatalogsItemValidationWarnings.
 
+        Item is missing google_product_category.  # noqa: E501
 
         :param optional_product_category_missing: The optional_product_category_missing of this CatalogsItemValidationWarnings.
         :type optional_product_category_missing: CatalogsItemValidationDetails
@@ -5020,6 +5396,7 @@ class CatalogsItemValidationWarnings(Model):
     def product_category_depth_warning(self) -> CatalogsItemValidationDetails:
         """Gets the product_category_depth_warning of this CatalogsItemValidationWarnings.
 
+        Item only has 1 or 2 levels of google_product_category value, which may limit visibility in recommendations, search results and shopping experiences.  # noqa: E501
 
         :return: The product_category_depth_warning of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5030,6 +5407,7 @@ class CatalogsItemValidationWarnings(Model):
     def product_category_depth_warning(self, product_category_depth_warning: CatalogsItemValidationDetails):
         """Sets the product_category_depth_warning of this CatalogsItemValidationWarnings.
 
+        Item only has 1 or 2 levels of google_product_category value, which may limit visibility in recommendations, search results and shopping experiences.  # noqa: E501
 
         :param product_category_depth_warning: The product_category_depth_warning of this CatalogsItemValidationWarnings.
         :type product_category_depth_warning: CatalogsItemValidationDetails
@@ -5041,6 +5419,7 @@ class CatalogsItemValidationWarnings(Model):
     def product_type_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the product_type_length_too_long of this CatalogsItemValidationWarnings.
 
+        Item has a product_type value that is too long, this item will be published without that product type.  # noqa: E501
 
         :return: The product_type_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5051,6 +5430,7 @@ class CatalogsItemValidationWarnings(Model):
     def product_type_length_too_long(self, product_type_length_too_long: CatalogsItemValidationDetails):
         """Sets the product_type_length_too_long of this CatalogsItemValidationWarnings.
 
+        Item has a product_type value that is too long, this item will be published without that product type.  # noqa: E501
 
         :param product_type_length_too_long: The product_type_length_too_long of this CatalogsItemValidationWarnings.
         :type product_type_length_too_long: CatalogsItemValidationDetails
@@ -5062,6 +5442,7 @@ class CatalogsItemValidationWarnings(Model):
     def sale_date_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the sale_date_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a sale_price_effective_date value that is formatted incorrectly, this item will be published without a sale date.  # noqa: E501
 
         :return: The sale_date_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5072,6 +5453,7 @@ class CatalogsItemValidationWarnings(Model):
     def sale_date_invalid(self, sale_date_invalid: CatalogsItemValidationDetails):
         """Sets the sale_date_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a sale_price_effective_date value that is formatted incorrectly, this item will be published without a sale date.  # noqa: E501
 
         :param sale_date_invalid: The sale_date_invalid of this CatalogsItemValidationWarnings.
         :type sale_date_invalid: CatalogsItemValidationDetails
@@ -5083,6 +5465,7 @@ class CatalogsItemValidationWarnings(Model):
     def sales_price_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the sales_price_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an incorrectly formatted sales price.  # noqa: E501
 
         :return: The sales_price_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5093,6 +5476,7 @@ class CatalogsItemValidationWarnings(Model):
     def sales_price_invalid(self, sales_price_invalid: CatalogsItemValidationDetails):
         """Sets the sales_price_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an incorrectly formatted sales price.  # noqa: E501
 
         :param sales_price_invalid: The sales_price_invalid of this CatalogsItemValidationWarnings.
         :type sales_price_invalid: CatalogsItemValidationDetails
@@ -5104,6 +5488,7 @@ class CatalogsItemValidationWarnings(Model):
     def sales_price_too_high(self) -> CatalogsItemValidationDetails:
         """Gets the sales_price_too_high of this CatalogsItemValidationWarnings.
 
+        Item has a sale price value that is higher than the original price of the item.  # noqa: E501
 
         :return: The sales_price_too_high of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5114,6 +5499,7 @@ class CatalogsItemValidationWarnings(Model):
     def sales_price_too_high(self, sales_price_too_high: CatalogsItemValidationDetails):
         """Sets the sales_price_too_high of this CatalogsItemValidationWarnings.
 
+        Item has a sale price value that is higher than the original price of the item.  # noqa: E501
 
         :param sales_price_too_high: The sales_price_too_high of this CatalogsItemValidationWarnings.
         :type sales_price_too_high: CatalogsItemValidationDetails
@@ -5125,6 +5511,7 @@ class CatalogsItemValidationWarnings(Model):
     def sales_price_too_low(self) -> CatalogsItemValidationDetails:
         """Gets the sales_price_too_low of this CatalogsItemValidationWarnings.
 
+        Item has a sale price value that is discounted very low compared to the price.  # noqa: E501
 
         :return: The sales_price_too_low of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5135,6 +5522,7 @@ class CatalogsItemValidationWarnings(Model):
     def sales_price_too_low(self, sales_price_too_low: CatalogsItemValidationDetails):
         """Sets the sales_price_too_low of this CatalogsItemValidationWarnings.
 
+        Item has a sale price value that is discounted very low compared to the price.  # noqa: E501
 
         :param sales_price_too_low: The sales_price_too_low of this CatalogsItemValidationWarnings.
         :type sales_price_too_low: CatalogsItemValidationDetails
@@ -5146,6 +5534,7 @@ class CatalogsItemValidationWarnings(Model):
     def shipping_height_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the shipping_height_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an incorrectly formatted shipping_height value. The value must first contain a numeric value then a valid dimension unit type.  # noqa: E501
 
         :return: The shipping_height_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5156,6 +5545,7 @@ class CatalogsItemValidationWarnings(Model):
     def shipping_height_invalid(self, shipping_height_invalid: CatalogsItemValidationDetails):
         """Sets the shipping_height_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an incorrectly formatted shipping_height value. The value must first contain a numeric value then a valid dimension unit type.  # noqa: E501
 
         :param shipping_height_invalid: The shipping_height_invalid of this CatalogsItemValidationWarnings.
         :type shipping_height_invalid: CatalogsItemValidationDetails
@@ -5167,6 +5557,7 @@ class CatalogsItemValidationWarnings(Model):
     def shipping_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the shipping_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a shipping value that is formatted incorrectly.  # noqa: E501
 
         :return: The shipping_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5177,6 +5568,7 @@ class CatalogsItemValidationWarnings(Model):
     def shipping_invalid(self, shipping_invalid: CatalogsItemValidationDetails):
         """Sets the shipping_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a shipping value that is formatted incorrectly.  # noqa: E501
 
         :param shipping_invalid: The shipping_invalid of this CatalogsItemValidationWarnings.
         :type shipping_invalid: CatalogsItemValidationDetails
@@ -5188,6 +5580,7 @@ class CatalogsItemValidationWarnings(Model):
     def shipping_weight_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the shipping_weight_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an invalid shipping_weight value.  # noqa: E501
 
         :return: The shipping_weight_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5198,6 +5591,7 @@ class CatalogsItemValidationWarnings(Model):
     def shipping_weight_invalid(self, shipping_weight_invalid: CatalogsItemValidationDetails):
         """Sets the shipping_weight_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an invalid shipping_weight value.  # noqa: E501
 
         :param shipping_weight_invalid: The shipping_weight_invalid of this CatalogsItemValidationWarnings.
         :type shipping_weight_invalid: CatalogsItemValidationDetails
@@ -5209,6 +5603,7 @@ class CatalogsItemValidationWarnings(Model):
     def shipping_width_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the shipping_width_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an incorrectly formatted shipping_width value. The value must first contain a numeric value then a valid dimension unit type.  # noqa: E501
 
         :return: The shipping_width_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5219,6 +5614,7 @@ class CatalogsItemValidationWarnings(Model):
     def shipping_width_invalid(self, shipping_width_invalid: CatalogsItemValidationDetails):
         """Sets the shipping_width_invalid of this CatalogsItemValidationWarnings.
 
+        Item has an incorrectly formatted shipping_width value. The value must first contain a numeric value then a valid dimension unit type.  # noqa: E501
 
         :param shipping_width_invalid: The shipping_width_invalid of this CatalogsItemValidationWarnings.
         :type shipping_width_invalid: CatalogsItemValidationDetails
@@ -5230,6 +5626,7 @@ class CatalogsItemValidationWarnings(Model):
     def size_system_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the size_system_invalid of this CatalogsItemValidationWarnings.
 
+        Some items have size system values which are not one of the supported size systems.  # noqa: E501
 
         :return: The size_system_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5240,6 +5637,7 @@ class CatalogsItemValidationWarnings(Model):
     def size_system_invalid(self, size_system_invalid: CatalogsItemValidationDetails):
         """Sets the size_system_invalid of this CatalogsItemValidationWarnings.
 
+        Some items have size system values which are not one of the supported size systems.  # noqa: E501
 
         :param size_system_invalid: The size_system_invalid of this CatalogsItemValidationWarnings.
         :type size_system_invalid: CatalogsItemValidationDetails
@@ -5251,6 +5649,7 @@ class CatalogsItemValidationWarnings(Model):
     def size_type_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the size_type_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a size type value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.  # noqa: E501
 
         :return: The size_type_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5261,6 +5660,7 @@ class CatalogsItemValidationWarnings(Model):
     def size_type_invalid(self, size_type_invalid: CatalogsItemValidationDetails):
         """Sets the size_type_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a size type value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.  # noqa: E501
 
         :param size_type_invalid: The size_type_invalid of this CatalogsItemValidationWarnings.
         :type size_type_invalid: CatalogsItemValidationDetails
@@ -5272,6 +5672,7 @@ class CatalogsItemValidationWarnings(Model):
     def tax_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the tax_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a tax value that is formatted incorrectly.  # noqa: E501
 
         :return: The tax_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5282,6 +5683,7 @@ class CatalogsItemValidationWarnings(Model):
     def tax_invalid(self, tax_invalid: CatalogsItemValidationDetails):
         """Sets the tax_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a tax value that is formatted incorrectly.  # noqa: E501
 
         :param tax_invalid: The tax_invalid of this CatalogsItemValidationWarnings.
         :type tax_invalid: CatalogsItemValidationDetails
@@ -5293,6 +5695,7 @@ class CatalogsItemValidationWarnings(Model):
     def title_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the title_length_too_long of this CatalogsItemValidationWarnings.
 
+        The title for the item was truncated because it contains too many characters.  # noqa: E501
 
         :return: The title_length_too_long of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5303,6 +5706,7 @@ class CatalogsItemValidationWarnings(Model):
     def title_length_too_long(self, title_length_too_long: CatalogsItemValidationDetails):
         """Sets the title_length_too_long of this CatalogsItemValidationWarnings.
 
+        The title for the item was truncated because it contains too many characters.  # noqa: E501
 
         :param title_length_too_long: The title_length_too_long of this CatalogsItemValidationWarnings.
         :type title_length_too_long: CatalogsItemValidationDetails
@@ -5314,6 +5718,7 @@ class CatalogsItemValidationWarnings(Model):
     def too_many_additional_image_links(self) -> CatalogsItemValidationDetails:
         """Gets the too_many_additional_image_links of this CatalogsItemValidationWarnings.
 
+        Item has a additional_image_link value that exceed the limit for additional images, this item will be published without some of your images.  # noqa: E501
 
         :return: The too_many_additional_image_links of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5324,6 +5729,7 @@ class CatalogsItemValidationWarnings(Model):
     def too_many_additional_image_links(self, too_many_additional_image_links: CatalogsItemValidationDetails):
         """Sets the too_many_additional_image_links of this CatalogsItemValidationWarnings.
 
+        Item has a additional_image_link value that exceed the limit for additional images, this item will be published without some of your images.  # noqa: E501
 
         :param too_many_additional_image_links: The too_many_additional_image_links of this CatalogsItemValidationWarnings.
         :type too_many_additional_image_links: CatalogsItemValidationDetails
@@ -5335,6 +5741,7 @@ class CatalogsItemValidationWarnings(Model):
     def utm_source_auto_corrected(self) -> CatalogsItemValidationDetails:
         """Gets the utm_source_auto_corrected of this CatalogsItemValidationWarnings.
 
+        Item includes an utm_source value that is formatted incorrectly and has been automatically corrected.  # noqa: E501
 
         :return: The utm_source_auto_corrected of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5345,6 +5752,7 @@ class CatalogsItemValidationWarnings(Model):
     def utm_source_auto_corrected(self, utm_source_auto_corrected: CatalogsItemValidationDetails):
         """Sets the utm_source_auto_corrected of this CatalogsItemValidationWarnings.
 
+        Item includes an utm_source value that is formatted incorrectly and has been automatically corrected.  # noqa: E501
 
         :param utm_source_auto_corrected: The utm_source_auto_corrected of this CatalogsItemValidationWarnings.
         :type utm_source_auto_corrected: CatalogsItemValidationDetails
@@ -5356,6 +5764,7 @@ class CatalogsItemValidationWarnings(Model):
     def video_required_when_ad_video_provided(self) -> CatalogsItemValidationDetails:
         """Gets the video_required_when_ad_video_provided of this CatalogsItemValidationWarnings.
 
+        A video is required in the item when ad_video fields are provided.  # noqa: E501
 
         :return: The video_required_when_ad_video_provided of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5366,6 +5775,7 @@ class CatalogsItemValidationWarnings(Model):
     def video_required_when_ad_video_provided(self, video_required_when_ad_video_provided: CatalogsItemValidationDetails):
         """Sets the video_required_when_ad_video_provided of this CatalogsItemValidationWarnings.
 
+        A video is required in the item when ad_video fields are provided.  # noqa: E501
 
         :param video_required_when_ad_video_provided: The video_required_when_ad_video_provided of this CatalogsItemValidationWarnings.
         :type video_required_when_ad_video_provided: CatalogsItemValidationDetails
@@ -5377,6 +5787,7 @@ class CatalogsItemValidationWarnings(Model):
     def weight_unit_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the weight_unit_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a weight_unit value that is formatted incorrectly, this item will be published without a weight unit.  # noqa: E501
 
         :return: The weight_unit_invalid of this CatalogsItemValidationWarnings.
         :rtype: CatalogsItemValidationDetails
@@ -5387,6 +5798,7 @@ class CatalogsItemValidationWarnings(Model):
     def weight_unit_invalid(self, weight_unit_invalid: CatalogsItemValidationDetails):
         """Sets the weight_unit_invalid of this CatalogsItemValidationWarnings.
 
+        Item has a weight_unit value that is formatted incorrectly, this item will be published without a weight unit.  # noqa: E501
 
         :param weight_unit_invalid: The weight_unit_invalid of this CatalogsItemValidationWarnings.
         :type weight_unit_invalid: CatalogsItemValidationDetails

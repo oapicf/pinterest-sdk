@@ -2,106 +2,70 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.MediaType;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * A map of filter attributes to their available values.
  */
 
-@Schema(name = "catalogs_creative_assets_filter_values_map", description = "A map of filter attributes to their available values.")
-@JsonTypeName("catalogs_creative_assets_filter_values_map")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "CatalogsCreativeAssetsFilterValuesMap", description = "A map of filter attributes to their available values.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsFilterValuesMap {
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel0 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel1 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel2 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel3 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel4 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> googleProductCategory0 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> googleProductCategory1 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> googleProductCategory2 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> googleProductCategory3 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> googleProductCategory4 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> googleProductCategory5 = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> googleProductCategory6 = new ArrayList<>();
 
-  /**
-   * Gets or Sets mediaType
-   */
-  public enum MediaTypeEnum {
-    IMAGE("IMAGE"),
-    
-    VIDEO("VIDEO");
-
-    private final String value;
-
-    MediaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static MediaTypeEnum fromValue(String value) {
-      for (MediaTypeEnum b : MediaTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  @Valid
-  private List<MediaTypeEnum> mediaType = new ArrayList<>();
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<MediaType> mediaType = new ArrayList<>();
 
   public CatalogsCreativeAssetsFilterValuesMap customLabel0(List<String> customLabel0) {
     this.customLabel0 = customLabel0;
@@ -127,6 +91,7 @@ public class CatalogsCreativeAssetsFilterValuesMap {
     return customLabel0;
   }
 
+  @JsonProperty("custom_label_0")
   public void setCustomLabel0(List<String> customLabel0) {
     this.customLabel0 = customLabel0;
   }
@@ -155,6 +120,7 @@ public class CatalogsCreativeAssetsFilterValuesMap {
     return customLabel1;
   }
 
+  @JsonProperty("custom_label_1")
   public void setCustomLabel1(List<String> customLabel1) {
     this.customLabel1 = customLabel1;
   }
@@ -183,6 +149,7 @@ public class CatalogsCreativeAssetsFilterValuesMap {
     return customLabel2;
   }
 
+  @JsonProperty("custom_label_2")
   public void setCustomLabel2(List<String> customLabel2) {
     this.customLabel2 = customLabel2;
   }
@@ -211,6 +178,7 @@ public class CatalogsCreativeAssetsFilterValuesMap {
     return customLabel3;
   }
 
+  @JsonProperty("custom_label_3")
   public void setCustomLabel3(List<String> customLabel3) {
     this.customLabel3 = customLabel3;
   }
@@ -239,6 +207,7 @@ public class CatalogsCreativeAssetsFilterValuesMap {
     return customLabel4;
   }
 
+  @JsonProperty("custom_label_4")
   public void setCustomLabel4(List<String> customLabel4) {
     this.customLabel4 = customLabel4;
   }
@@ -267,6 +236,7 @@ public class CatalogsCreativeAssetsFilterValuesMap {
     return googleProductCategory0;
   }
 
+  @JsonProperty("google_product_category_0")
   public void setGoogleProductCategory0(List<String> googleProductCategory0) {
     this.googleProductCategory0 = googleProductCategory0;
   }
@@ -295,6 +265,7 @@ public class CatalogsCreativeAssetsFilterValuesMap {
     return googleProductCategory1;
   }
 
+  @JsonProperty("google_product_category_1")
   public void setGoogleProductCategory1(List<String> googleProductCategory1) {
     this.googleProductCategory1 = googleProductCategory1;
   }
@@ -323,6 +294,7 @@ public class CatalogsCreativeAssetsFilterValuesMap {
     return googleProductCategory2;
   }
 
+  @JsonProperty("google_product_category_2")
   public void setGoogleProductCategory2(List<String> googleProductCategory2) {
     this.googleProductCategory2 = googleProductCategory2;
   }
@@ -351,6 +323,7 @@ public class CatalogsCreativeAssetsFilterValuesMap {
     return googleProductCategory3;
   }
 
+  @JsonProperty("google_product_category_3")
   public void setGoogleProductCategory3(List<String> googleProductCategory3) {
     this.googleProductCategory3 = googleProductCategory3;
   }
@@ -379,6 +352,7 @@ public class CatalogsCreativeAssetsFilterValuesMap {
     return googleProductCategory4;
   }
 
+  @JsonProperty("google_product_category_4")
   public void setGoogleProductCategory4(List<String> googleProductCategory4) {
     this.googleProductCategory4 = googleProductCategory4;
   }
@@ -407,6 +381,7 @@ public class CatalogsCreativeAssetsFilterValuesMap {
     return googleProductCategory5;
   }
 
+  @JsonProperty("google_product_category_5")
   public void setGoogleProductCategory5(List<String> googleProductCategory5) {
     this.googleProductCategory5 = googleProductCategory5;
   }
@@ -435,16 +410,17 @@ public class CatalogsCreativeAssetsFilterValuesMap {
     return googleProductCategory6;
   }
 
+  @JsonProperty("google_product_category_6")
   public void setGoogleProductCategory6(List<String> googleProductCategory6) {
     this.googleProductCategory6 = googleProductCategory6;
   }
 
-  public CatalogsCreativeAssetsFilterValuesMap mediaType(List<MediaTypeEnum> mediaType) {
+  public CatalogsCreativeAssetsFilterValuesMap mediaType(List<MediaType> mediaType) {
     this.mediaType = mediaType;
     return this;
   }
 
-  public CatalogsCreativeAssetsFilterValuesMap addMediaTypeItem(MediaTypeEnum mediaTypeItem) {
+  public CatalogsCreativeAssetsFilterValuesMap addMediaTypeItem(MediaType mediaTypeItem) {
     if (this.mediaType == null) {
       this.mediaType = new ArrayList<>();
     }
@@ -456,14 +432,15 @@ public class CatalogsCreativeAssetsFilterValuesMap {
    * Get mediaType
    * @return mediaType
    */
-  
+  @Valid 
   @Schema(name = "media_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_type")
-  public List<MediaTypeEnum> getMediaType() {
+  public List<MediaType> getMediaType() {
     return mediaType;
   }
 
-  public void setMediaType(List<MediaTypeEnum> mediaType) {
+  @JsonProperty("media_type")
+  public void setMediaType(List<MediaType> mediaType) {
     this.mediaType = mediaType;
   }
 
@@ -521,11 +498,8 @@ public class CatalogsCreativeAssetsFilterValuesMap {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

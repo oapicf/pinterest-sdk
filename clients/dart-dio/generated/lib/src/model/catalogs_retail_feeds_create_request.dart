@@ -6,12 +6,12 @@
 import 'package:openapi/src/model/catalogs_feed_credentials.dart';
 import 'package:openapi/src/model/catalogs_feed_processing_schedule.dart';
 import 'package:openapi/src/model/nullable_currency.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/country.dart';
 import 'package:openapi/src/model/product_availability_type.dart';
 import 'package:openapi/src/model/catalogs_status.dart';
 import 'package:openapi/src/model/catalogs_format.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
-import 'package:openapi/src/model/catalogs_feeds_create_request_default_locale.dart';
+import 'package:openapi/src/model/catalogs_creative_assets_feeds_create_request_default_locale.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -20,7 +20,7 @@ part 'catalogs_retail_feeds_create_request.g.dart';
 /// Request object for creating a retail feed.
 ///
 /// Properties:
-/// * [catalogId] - Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.
+/// * [catalogId] - Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
 /// * [catalogType] 
 /// * [credentials] 
 /// * [defaultAvailability] 
@@ -34,13 +34,13 @@ part 'catalogs_retail_feeds_create_request.g.dart';
 /// * [status] 
 @BuiltValue()
 abstract class CatalogsRetailFeedsCreateRequest implements Built<CatalogsRetailFeedsCreateRequest, CatalogsRetailFeedsCreateRequestBuilder> {
-  /// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.
+  /// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
   @BuiltValueField(wireName: r'catalog_id')
   String? get catalogId;
 
   @BuiltValueField(wireName: r'catalog_type')
-  CatalogsType get catalogType;
-  // enum catalogTypeEnum {  RETAIL,  HOTEL,  CREATIVE_ASSETS,  };
+  CatalogsRetailFeedsCreateRequestCatalogTypeEnum get catalogType;
+  // enum catalogTypeEnum {  RETAIL,  };
 
   @BuiltValueField(wireName: r'credentials')
   CatalogsFeedCredentials? get credentials;
@@ -51,18 +51,18 @@ abstract class CatalogsRetailFeedsCreateRequest implements Built<CatalogsRetailF
 
   @BuiltValueField(wireName: r'default_country')
   Country get defaultCountry;
-  // enum defaultCountryEnum {  AD,  AE,  AF,  AG,  AI,  AL,  AM,  AO,  AQ,  AR,  AS,  AT,  AU,  AW,  AX,  AZ,  BA,  BB,  BD,  BE,  BF,  BG,  BH,  BI,  BJ,  BL,  BM,  BN,  BO,  BQ,  BR,  BS,  BT,  BV,  BW,  BY,  BZ,  CA,  CC,  CD,  CF,  CG,  CH,  CI,  CK,  CL,  CM,  CN,  CO,  CR,  CU,  CV,  CW,  CX,  CY,  CZ,  DE,  DJ,  DK,  DM,  DO,  DZ,  EC,  EE,  EG,  EH,  ER,  ES,  ET,  FI,  FJ,  FK,  FM,  FO,  FR,  GA,  GB,  GD,  GE,  GF,  GG,  GH,  GI,  GL,  GM,  GN,  GP,  GQ,  GR,  GS,  GT,  GU,  GW,  GY,  HK,  HM,  HN,  HR,  HT,  HU,  ID,  IE,  IL,  IM,  IN,  IO,  IQ,  IR,  IS,  IT,  JE,  JM,  JO,  JP,  KE,  KG,  KH,  KI,  KM,  KN,  KR,  KW,  KY,  KZ,  LA,  LB,  LC,  LI,  LK,  LR,  LS,  LT,  LU,  LV,  LY,  MA,  MC,  MD,  ME,  MF,  MG,  MH,  MK,  ML,  MM,  MN,  MO,  MP,  MQ,  MR,  MS,  MT,  MU,  MV,  MW,  MX,  MY,  MZ,  NA,  NC,  NE,  NF,  NG,  NI,  NL,  NO,  NP,  NR,  NU,  NZ,  OM,  PA,  PE,  PF,  PG,  PH,  PK,  PL,  PM,  PN,  PR,  PS,  PT,  PW,  PY,  QA,  RE,  RO,  RS,  RU,  RW,  SA,  SB,  SC,  SD,  SE,  SG,  SH,  SI,  SJ,  SK,  SL,  SM,  SN,  SO,  SR,  SS,  ST,  SV,  SX,  SY,  SZ,  TC,  TD,  TF,  TG,  TH,  TJ,  TK,  TL,  TM,  TN,  TO,  TR,  TT,  TV,  TW,  TZ,  UA,  UG,  UM,  US,  UY,  UZ,  VA,  VC,  VE,  VG,  VI,  VN,  VU,  WF,  WS,  YE,  YT,  ZA,  ZM,  ZW,  };
+  // enum defaultCountryEnum {  AD,  AE,  AF,  AG,  AI,  AL,  AM,  AO,  AQ,  AR,  AS,  AT,  AU,  AW,  AX,  AZ,  BA,  BB,  BD,  BE,  BF,  BG,  BH,  BI,  BJ,  BL,  BM,  BN,  BO,  BQ,  BR,  BS,  BT,  BV,  BW,  BY,  BZ,  CA,  CC,  CD,  CF,  CG,  CH,  CI,  CK,  CL,  CM,  CN,  CO,  CR,  CU,  CV,  CW,  CX,  CY,  CZ,  DE,  DJ,  DK,  DM,  DO,  DZ,  EC,  EE,  EG,  EH,  ER,  ES,  ET,  FI,  FJ,  FK,  FM,  FO,  FR,  GA,  GB,  GD,  GE,  GF,  GG,  GH,  GI,  GL,  GM,  GN,  GP,  GQ,  GR,  GS,  GT,  GU,  GW,  GY,  HK,  HM,  HN,  HR,  HT,  HU,  ID,  IE,  IL,  IM,  IN,  IO,  IQ,  IR,  IS,  IT,  JE,  JM,  JO,  JP,  KE,  KG,  KH,  KI,  KM,  KN,  KR,  KW,  KY,  KZ,  LA,  LB,  LC,  LI,  LK,  LR,  LS,  LT,  LU,  LV,  LY,  MA,  MC,  MD,  ME,  MF,  MG,  MH,  MK,  ML,  MM,  MN,  MO,  MP,  MQ,  MR,  MS,  MT,  MU,  MV,  MW,  MX,  MY,  MZ,  NA,  NC,  NE,  NF,  NG,  NI,  NL,  false,  NP,  NR,  NU,  NZ,  OM,  PA,  PE,  PF,  PG,  PH,  PK,  PL,  PM,  PN,  PR,  PS,  PT,  PW,  PY,  QA,  RE,  RO,  RS,  RU,  RW,  SA,  SB,  SC,  SD,  SE,  SG,  SH,  SI,  SJ,  SK,  SL,  SM,  SN,  SO,  SR,  SS,  ST,  SV,  SX,  SY,  SZ,  TC,  TD,  TF,  TG,  TH,  TJ,  TK,  TL,  TM,  TN,  TO,  TR,  TT,  TV,  TW,  TZ,  UA,  UG,  UM,  US,  UY,  UZ,  VA,  VC,  VE,  VG,  VI,  VN,  VU,  WF,  WS,  YE,  YT,  ZA,  ZM,  ZW,  };
 
   @BuiltValueField(wireName: r'default_currency')
   NullableCurrency? get defaultCurrency;
   // enum defaultCurrencyEnum {  AED,  AFN,  ALL,  AMD,  ANG,  AOA,  ARS,  AUD,  AWG,  AZN,  BAM,  BBD,  BDT,  BGN,  BHD,  BIF,  BMD,  BND,  BOB,  BRL,  BSD,  BTN,  BWP,  BYN,  BYR,  BZD,  CAD,  CDF,  CHF,  CLP,  CNY,  COP,  CRC,  CUC,  CUP,  CVE,  CZK,  DJF,  DKK,  DOP,  DZD,  EGP,  ERN,  ETB,  EUR,  FJD,  FKP,  GBP,  GEL,  GGP,  GHS,  GIP,  GMD,  GNF,  GTQ,  GYD,  HKD,  HNL,  HRK,  HTG,  HUF,  IDR,  ILS,  IMP,  INR,  IQD,  IRR,  ISK,  JEP,  JMD,  JOD,  JPY,  KES,  KGS,  KHR,  KMF,  KPW,  KRW,  KWD,  KYD,  KZT,  LAK,  LBP,  LKR,  LRD,  LSL,  LYD,  MAD,  MDL,  MGA,  MKD,  MMK,  MNT,  MOP,  MRO,  MUR,  MVR,  MWK,  MXN,  MYR,  MZN,  NAD,  NGN,  NIO,  NOK,  NPR,  NZD,  OMR,  PAB,  PEN,  PGK,  PHP,  PKR,  PLN,  PYG,  QAR,  RON,  RSD,  RUB,  RWF,  SAR,  SBD,  SCR,  SDG,  SEK,  SGD,  SHP,  SLL,  SOS,  SPL,  SRD,  STD,  SVC,  SYP,  SZL,  THB,  TJS,  TMT,  TND,  TOP,  TRY,  TTD,  TVD,  TWD,  TZS,  UAH,  UGX,  USD,  UYU,  UZS,  VEF,  VND,  VUV,  WST,  XAF,  XCD,  XDR,  XOF,  XPF,  YER,  ZAR,  ZMW,  ZWD,  ,  };
 
   @BuiltValueField(wireName: r'default_locale')
-  CatalogsFeedsCreateRequestDefaultLocale get defaultLocale;
+  CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale get defaultLocale;
 
   @BuiltValueField(wireName: r'format')
   CatalogsFormat get format;
-  // enum formatEnum {  TSV,  CSV,  XML,  };
+  // enum formatEnum {  TSV,  CSV,  XML,  INTEGRATION,  };
 
   /// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
   @BuiltValueField(wireName: r'location')
@@ -85,7 +85,7 @@ abstract class CatalogsRetailFeedsCreateRequest implements Built<CatalogsRetailF
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CatalogsRetailFeedsCreateRequestBuilder b) => b
-      ..status = 'ACTIVE';
+      ..status = CatalogsStatus.ACTIVE;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<CatalogsRetailFeedsCreateRequest> get serializer => _$CatalogsRetailFeedsCreateRequestSerializer();
@@ -113,7 +113,7 @@ class _$CatalogsRetailFeedsCreateRequestSerializer implements PrimitiveSerialize
     yield r'catalog_type';
     yield serializers.serialize(
       object.catalogType,
-      specifiedType: const FullType(CatalogsType),
+      specifiedType: const FullType(CatalogsRetailFeedsCreateRequestCatalogTypeEnum),
     );
     if (object.credentials != null) {
       yield r'credentials';
@@ -144,7 +144,7 @@ class _$CatalogsRetailFeedsCreateRequestSerializer implements PrimitiveSerialize
     yield r'default_locale';
     yield serializers.serialize(
       object.defaultLocale,
-      specifiedType: const FullType(CatalogsFeedsCreateRequestDefaultLocale),
+      specifiedType: const FullType(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale),
     );
     yield r'format';
     yield serializers.serialize(
@@ -201,15 +201,16 @@ class _$CatalogsRetailFeedsCreateRequestSerializer implements PrimitiveSerialize
         case r'catalog_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.catalogId = valueDes;
           break;
         case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsType),
-          ) as CatalogsType;
+            specifiedType: const FullType(CatalogsRetailFeedsCreateRequestCatalogTypeEnum),
+          ) as CatalogsRetailFeedsCreateRequestCatalogTypeEnum;
           result.catalogType = valueDes;
           break;
         case r'credentials':
@@ -246,8 +247,8 @@ class _$CatalogsRetailFeedsCreateRequestSerializer implements PrimitiveSerialize
         case r'default_locale':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsFeedsCreateRequestDefaultLocale),
-          ) as CatalogsFeedsCreateRequestDefaultLocale;
+            specifiedType: const FullType(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale),
+          ) as CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
           result.defaultLocale.replace(valueDes);
           break;
         case r'format':
@@ -282,8 +283,9 @@ class _$CatalogsRetailFeedsCreateRequestSerializer implements PrimitiveSerialize
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsStatus),
-          ) as CatalogsStatus;
+            specifiedType: const FullType.nullable(CatalogsStatus),
+          ) as CatalogsStatus?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         default:
@@ -313,5 +315,18 @@ class _$CatalogsRetailFeedsCreateRequestSerializer implements PrimitiveSerialize
     );
     return result.build();
   }
+}
+
+class CatalogsRetailFeedsCreateRequestCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'RETAIL')
+  static const CatalogsRetailFeedsCreateRequestCatalogTypeEnum RETAIL = _$catalogsRetailFeedsCreateRequestCatalogTypeEnum_RETAIL;
+
+  static Serializer<CatalogsRetailFeedsCreateRequestCatalogTypeEnum> get serializer => _$catalogsRetailFeedsCreateRequestCatalogTypeEnumSerializer;
+
+  const CatalogsRetailFeedsCreateRequestCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsRetailFeedsCreateRequestCatalogTypeEnum> get values => _$catalogsRetailFeedsCreateRequestCatalogTypeEnumValues;
+  static CatalogsRetailFeedsCreateRequestCatalogTypeEnum valueOf(String name) => _$catalogsRetailFeedsCreateRequestCatalogTypeEnumValueOf(name);
 }
 

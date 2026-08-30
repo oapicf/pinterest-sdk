@@ -2,7 +2,7 @@
 Protected Class BrandFilter
 
 	#tag Property, Flags = &h0
-		BRAND As CatalogsProductGroupMultipleStringCriteria
+		BRAND As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 

@@ -47,14 +47,14 @@ Protected Class CustomerListUpload
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Record processing counts
+		#tag EndNote
 		record_counts As OpenAPIClient.Models.RecordCounts
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Workload processing state
-		#tag EndNote
 		state As String
 	#tag EndProperty
 
@@ -67,36 +67,7 @@ Protected Class CustomerListUpload
 	#tag EndProperty
 
 
-    #tag Enum, Name = StateEnum, Type = Integer, Flags = &h0
-        
-        NotStarted
-        Running
-        Paused
-        Succeeded
-        Failed
-        
-    #tag EndEnum
 
-
-	#tag Method, Flags = &h0
-		Shared Function StateEnumToString(value As StateEnum) As String
-		  Select Case value
-		    
-		    Case StateEnum.NotStarted
-		      Return "NOT_STARTED"
-		    Case StateEnum.Running
-		      Return "RUNNING"
-		    Case StateEnum.Paused
-		      Return "PAUSED"
-		    Case StateEnum.Succeeded
-		      Return "SUCCEEDED"
-		    Case StateEnum.Failed
-		      Return "FAILED"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -186,6 +157,14 @@ Protected Class CustomerListUpload
 			Group="Behavior"
 			InitialValue=""
 			Type="RecordCounts"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="state"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="WorkloadState"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

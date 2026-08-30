@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AttributionMatchType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AttributionMatchType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AttributionMatchType {
+    title = AttributionMatchType
+    description = AttributionMatchType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  AttributionMatchType {
+    title = AttributionMatchType
+    description = AttributionMatchType
+    implements = openapi_server.resourceTypes.AttributionMatchType
+
+  }
+}

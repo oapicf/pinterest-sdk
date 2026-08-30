@@ -5,17 +5,25 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 // TrendingPin - Pin image data for trending topics
 type TrendingPin struct {
+
+	// Dominant color of the pin image in hex format
+	Color string `json:"color"`
 
 	// Height of the pin image in pixels
 	Height int32 `json:"height"`
@@ -26,24 +34,106 @@ type TrendingPin struct {
 	// URL of the pin image
 	Src string `json:"src"`
 
+	// The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.
+	VerticalOffset float64 `json:"vertical_offset,omitempty"`
+
 	// Width of the pin image in pixels
 	Width int32 `json:"width"`
 }
-
-// AssertTrendingPinRequired checks if the required fields are not zero-ed
-func AssertTrendingPinRequired(obj TrendingPin) error {
-	elements := map[string]interface{}{
-		"height": obj.Height,
-		"id": obj.Id,
-		"src": obj.Src,
-		"width": obj.Width,
+// UnmarshalJSON validates required property keys then unmarshals into TrendingPin
+func (o *TrendingPin) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"color",
+		"height",
+		"id",
+		"src",
+		"width",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"color": false,
+		"height": false,
+		"id": false,
+		"src": false,
+		"width": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"color": {},
+		"height": {},
+		"id": {},
+		"src": {},
+		"vertical_offset": {},
+		"width": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded TrendingPin
+
+	if value, exists := allProperties["color"]; exists {
+		if err = json.Unmarshal(value, &decoded.Color); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["height"]; exists {
+		if err = json.Unmarshal(value, &decoded.Height); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["src"]; exists {
+		if err = json.Unmarshal(value, &decoded.Src); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["vertical_offset"]; exists {
+		if err = json.Unmarshal(value, &decoded.VerticalOffset); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["width"]; exists {
+		if err = json.Unmarshal(value, &decoded.Width); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertTrendingPinRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertTrendingPinRequired(obj TrendingPin) error {
 	return nil
 }
 

@@ -10,12 +10,21 @@ The class is defined in **[CatalogsProductGroupProductCountsVertical.java](../..
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | `CatalogsType` |  | 
+**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **inStock** | `BigDecimal` |  | 
 **outOfStock** | `BigDecimal` |  | 
 **preorder** | `BigDecimal` |  | 
 **total** | `BigDecimal` |  | 
 **videos** | `BigDecimal` |  | 
+**appLinks** | `BigDecimal` |  | 
+**images** | `BigDecimal` |  | 
+
+## CatalogTypeEnum
+
+Name | Value
+---- | -----
+CREATIVE_ASSETS | `"CREATIVE_ASSETS"`
+
 
 
 

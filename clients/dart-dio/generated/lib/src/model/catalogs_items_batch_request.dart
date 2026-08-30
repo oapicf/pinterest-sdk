@@ -9,7 +9,6 @@ import 'package:openapi/src/model/catalogs_items_update_batch_request.dart';
 import 'package:openapi/src/model/country.dart';
 import 'package:openapi/src/model/catalogs_items_upsert_batch_request.dart';
 import 'package:openapi/src/model/catalogs_items_delete_discontinued_batch_request.dart';
-import 'package:openapi/src/model/batch_operation.dart';
 import 'package:openapi/src/model/catalogs_items_create_batch_request.dart';
 import 'package:openapi/src/model/catalogs_items_delete_batch_request.dart';
 import 'package:built_value/built_value.dart';
@@ -445,8 +444,8 @@ class CatalogsItemsBatchRequestLanguageEnum extends EnumClass {
   @BuiltValueEnumConst(wireName: r'NL')
   static const CatalogsItemsBatchRequestLanguageEnum NL = _$catalogsItemsBatchRequestLanguageEnum_NL;
   /// We recommend using the CatalogsLocale values.
-  @BuiltValueEnumConst(wireName: r'NO')
-  static const CatalogsItemsBatchRequestLanguageEnum NO = _$catalogsItemsBatchRequestLanguageEnum_NO;
+  @BuiltValueEnumConst(wireName: r'false')
+  static const CatalogsItemsBatchRequestLanguageEnum false_ = _$catalogsItemsBatchRequestLanguageEnum_false_;
   /// We recommend using the CatalogsLocale values.
   @BuiltValueEnumConst(wireName: r'PL')
   static const CatalogsItemsBatchRequestLanguageEnum PL = _$catalogsItemsBatchRequestLanguageEnum_PL;
@@ -505,5 +504,18 @@ class CatalogsItemsBatchRequestLanguageEnum extends EnumClass {
 
   static BuiltSet<CatalogsItemsBatchRequestLanguageEnum> get values => _$catalogsItemsBatchRequestLanguageEnumValues;
   static CatalogsItemsBatchRequestLanguageEnum valueOf(String name) => _$catalogsItemsBatchRequestLanguageEnumValueOf(name);
+}
+
+class CatalogsItemsBatchRequestOperationEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'DELETE')
+  static const CatalogsItemsBatchRequestOperationEnum DELETE = _$catalogsItemsBatchRequestOperationEnum_DELETE;
+
+  static Serializer<CatalogsItemsBatchRequestOperationEnum> get serializer => _$catalogsItemsBatchRequestOperationEnumSerializer;
+
+  const CatalogsItemsBatchRequestOperationEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsItemsBatchRequestOperationEnum> get values => _$catalogsItemsBatchRequestOperationEnumValues;
+  static CatalogsItemsBatchRequestOperationEnum valueOf(String name) => _$catalogsItemsBatchRequestOperationEnumValueOf(name);
 }
 

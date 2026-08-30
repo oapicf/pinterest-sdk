@@ -19,13 +19,16 @@ from pinterestsdk.api.catalog_feeds_api import CatalogFeedsApi
 from pinterestsdk.api.catalog_items_api import CatalogItemsApi
 from pinterestsdk.api.catalog_product_groups_api import CatalogProductGroupsApi
 from pinterestsdk.api.catalog_reports_api import CatalogReportsApi
+from pinterestsdk.api.catalog_supplemental_api import CatalogSupplementalApi
 from pinterestsdk.api.catalogs_api import CatalogsApi
+from pinterestsdk.api.conversion_deletion_requests_api import ConversionDeletionRequestsApi
 from pinterestsdk.api.conversion_eqs_api import ConversionEqsApi
 from pinterestsdk.api.conversion_events_api import ConversionEventsApi
 from pinterestsdk.api.conversion_tags_api import ConversionTagsApi
 from pinterestsdk.api.conversions_api import ConversionsApi
 from pinterestsdk.api.customer_list_uploads_api import CustomerListUploadsApi
 from pinterestsdk.api.customer_lists_api import CustomerListsApi
+from pinterestsdk.api.customer_segment_api import CustomerSegmentApi
 from pinterestsdk.api.integrations_api import IntegrationsApi
 from pinterestsdk.api.keywords_api import KeywordsApi
 from pinterestsdk.api.labels_api import LabelsApi
@@ -38,13 +41,15 @@ from pinterestsdk.api.notification_api import NotificationApi
 from pinterestsdk.api.oauth_api import OauthApi
 from pinterestsdk.api.order_lines_api import OrderLinesApi
 from pinterestsdk.api.pins_api import PinsApi
-from pinterestsdk.api.product_categories_api import ProductCategoriesApi
 from pinterestsdk.api.product_group_promotions_api import ProductGroupPromotionsApi
+from pinterestsdk.api.product_tags_api import ProductTagsApi
 from pinterestsdk.api.promotions_api import PromotionsApi
 from pinterestsdk.api.resources_api import ResourcesApi
+from pinterestsdk.api.schedules_api import SchedulesApi
 from pinterestsdk.api.search_api import SearchApi
 from pinterestsdk.api.targeting_template_api import TargetingTemplateApi
 from pinterestsdk.api.terms_api import TermsApi
 from pinterestsdk.api.terms_of_service_api import TermsOfServiceApi
+from pinterestsdk.api.trends_api import TrendsApi
 from pinterestsdk.api.user_account_api import UserAccountApi
 

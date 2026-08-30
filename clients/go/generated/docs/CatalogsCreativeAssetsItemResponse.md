@@ -5,15 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Attributes** | Pointer to [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] 
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CatalogType** | **string** |  | 
 **CreativeAssetsId** | Pointer to **string** | The catalog creative assets id in the merchant namespace | [optional] 
+**ItemResponseKind** | **string** | Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload. | 
 **Pins** | Pointer to [**[]Pin**](Pin.md) | The pins mapped to the item | [optional] 
 
 ## Methods
 
 ### NewCatalogsCreativeAssetsItemResponse
 
-`func NewCatalogsCreativeAssetsItemResponse(catalogType CatalogsType, ) *CatalogsCreativeAssetsItemResponse`
+`func NewCatalogsCreativeAssetsItemResponse(catalogType string, itemResponseKind string, ) *CatalogsCreativeAssetsItemResponse`
 
 NewCatalogsCreativeAssetsItemResponse instantiates a new CatalogsCreativeAssetsItemResponse object
 This constructor will assign default values to properties that have it defined,
@@ -55,20 +56,20 @@ HasAttributes returns a boolean if a field has been set.
 
 ### GetCatalogType
 
-`func (o *CatalogsCreativeAssetsItemResponse) GetCatalogType() CatalogsType`
+`func (o *CatalogsCreativeAssetsItemResponse) GetCatalogType() string`
 
 GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
 ### GetCatalogTypeOk
 
-`func (o *CatalogsCreativeAssetsItemResponse) GetCatalogTypeOk() (*CatalogsType, bool)`
+`func (o *CatalogsCreativeAssetsItemResponse) GetCatalogTypeOk() (*string, bool)`
 
 GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogType
 
-`func (o *CatalogsCreativeAssetsItemResponse) SetCatalogType(v CatalogsType)`
+`func (o *CatalogsCreativeAssetsItemResponse) SetCatalogType(v string)`
 
 SetCatalogType sets CatalogType field to given value.
 
@@ -97,6 +98,26 @@ SetCreativeAssetsId sets CreativeAssetsId field to given value.
 `func (o *CatalogsCreativeAssetsItemResponse) HasCreativeAssetsId() bool`
 
 HasCreativeAssetsId returns a boolean if a field has been set.
+
+### GetItemResponseKind
+
+`func (o *CatalogsCreativeAssetsItemResponse) GetItemResponseKind() string`
+
+GetItemResponseKind returns the ItemResponseKind field if non-nil, zero value otherwise.
+
+### GetItemResponseKindOk
+
+`func (o *CatalogsCreativeAssetsItemResponse) GetItemResponseKindOk() (*string, bool)`
+
+GetItemResponseKindOk returns a tuple with the ItemResponseKind field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemResponseKind
+
+`func (o *CatalogsCreativeAssetsItemResponse) SetItemResponseKind(v string)`
+
+SetItemResponseKind sets ItemResponseKind field to given value.
+
 
 ### GetPins
 

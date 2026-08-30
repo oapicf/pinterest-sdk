@@ -33,13 +33,13 @@ static catalogs_creative_assets_product_group_create_request_t *catalogs_creativ
     if (!catalogs_creative_assets_product_group_create_request_local_var) {
         return NULL;
     }
+    memset(catalogs_creative_assets_product_group_create_request_local_var, 0, sizeof(catalogs_creative_assets_product_group_create_request_t));
+    catalogs_creative_assets_product_group_create_request_local_var->_library_owned = 1;
     catalogs_creative_assets_product_group_create_request_local_var->catalog_id = catalog_id;
     catalogs_creative_assets_product_group_create_request_local_var->catalog_type = catalog_type;
     catalogs_creative_assets_product_group_create_request_local_var->description = description;
     catalogs_creative_assets_product_group_create_request_local_var->filters = filters;
     catalogs_creative_assets_product_group_create_request_local_var->name = name;
-
-    catalogs_creative_assets_product_group_create_request_local_var->_library_owned = 1;
     return catalogs_creative_assets_product_group_create_request_local_var;
 }
 
@@ -50,13 +50,16 @@ __attribute__((deprecated)) catalogs_creative_assets_product_group_create_reques
     catalogs_creative_assets_product_group_filters_t *filters,
     char *name
     ) {
-    return catalogs_creative_assets_product_group_create_request_create_internal (
+    catalogs_creative_assets_product_group_create_request_t *result = catalogs_creative_assets_product_group_create_request_create_internal (
         catalog_id,
         catalog_type,
         description,
         filters,
         name
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_creative_assets_product_group_create_request_free(catalogs_creative_assets_product_group_create_request_t *catalogs_creative_assets_product_group_create_request) {
@@ -151,8 +154,14 @@ catalogs_creative_assets_product_group_create_request_t *catalogs_creative_asset
 
     catalogs_creative_assets_product_group_create_request_t *catalogs_creative_assets_product_group_create_request_local_var = NULL;
 
+    char *catalog_id_local_str = NULL;
+
+    char *description_local_str = NULL;
+
     // define the local variable for catalogs_creative_assets_product_group_create_request->filters
     catalogs_creative_assets_product_group_filters_t *filters_local_nonprim = NULL;
+
+    char *name_local_str = NULL;
 
     // catalogs_creative_assets_product_group_create_request->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_product_group_create_requestJSON, "catalog_id");
@@ -226,19 +235,39 @@ catalogs_creative_assets_product_group_create_request_t *catalogs_creative_asset
     }
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     catalogs_creative_assets_product_group_create_request_local_var = catalogs_creative_assets_product_group_create_request_create_internal (
-        strdup(catalog_id->valuestring),
+        catalog_id_local_str,
         catalog_typeVariable,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        description_local_str,
         filters_local_nonprim,
-        strdup(name->valuestring)
+        name_local_str
         );
+
+    if (!catalogs_creative_assets_product_group_create_request_local_var) {
+        goto end;
+    }
 
     return catalogs_creative_assets_product_group_create_request_local_var;
 end:
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
+    }
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
     if (filters_local_nonprim) {
         catalogs_creative_assets_product_group_filters_free(filters_local_nonprim);
         filters_local_nonprim = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
     }
     return NULL;
 

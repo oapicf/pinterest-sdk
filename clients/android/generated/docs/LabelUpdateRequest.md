@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**labels** | [**List&lt;LabelUpdateRequestLabelsInner&gt;**](LabelUpdateRequestLabelsInner.md) | Labels that you are applying to the campaign. | 
+**labels** | [**List&lt;LabelUpdateItem&gt;**](LabelUpdateItem.md) | Labels that you are applying to the campaign. | 
 
 
 

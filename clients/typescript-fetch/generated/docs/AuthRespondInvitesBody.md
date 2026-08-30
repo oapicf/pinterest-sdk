@@ -7,7 +7,7 @@ An object with a list of all the invites the user would like to respond to and t
 
 Name | Type
 ------------ | -------------
-`invites` | [Array&lt;AuthRespondInvitesBodyInvitesInner&gt;](AuthRespondInvitesBodyInvitesInner.md)
+`invites` | [Array&lt;AuthRespondInvitesBodyItem&gt;](AuthRespondInvitesBodyItem.md)
 
 ## Example
 

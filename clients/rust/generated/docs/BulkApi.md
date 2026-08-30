@@ -12,10 +12,10 @@ Method | HTTP request | Description
 
 ## bulk_download_slash_create
 
-> models::BulkDownloadResponse bulk_download_slash_create(ad_account_id, bulk_download_request)
+> models::BulkDownload bulk_download_slash_create(ad_account_id, bulk_download_create)
 Get advertiser entities in bulk
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Parameters
 
@@ -23,11 +23,11 @@ Create an asynchronous report that may include information on campaigns, ad grou
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**bulk_download_request** | [**BulkDownloadRequest**](BulkDownloadRequest.md) | Parameters to get ad entities in bulk | [required] |
+**bulk_download_create** | [**BulkDownloadCreate**](BulkDownloadCreate.md) |  | [required] |
 
 ### Return type
 
-[**models::BulkDownloadResponse**](BulkDownloadResponse.md)
+[**models::BulkDownload**](BulkDownload.md)
 
 ### Authorization
 
@@ -43,10 +43,10 @@ Name | Type | Description  | Required | Notes
 
 ## bulk_request_slash_get
 
-> models::BulkUpsertStatusResponse bulk_request_slash_get(ad_account_id, bulk_request_id, include_details)
+> models::BulkJobData bulk_request_slash_get(ad_account_id, bulk_request_id, include_details)
 Download advertiser entities in bulk
 
-Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Parameters
 
@@ -54,12 +54,12 @@ Get the status of a bulk request by <code>request_id</code>, along with a downlo
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**bulk_request_id** | **String** | Unique identifier of a bulk upsert request. | [required] |
-**include_details** | Option<**bool**> | if set to True then attach the errors/details to all the requests |  |[default to false]
+**bulk_request_id** | **String** | Bulk request ID that is from one of the entities bulk endpoints | [required] |
+**include_details** | Option<**bool**> | If set to True then attach the errors/details to all the requests |  |[default to false]
 
 ### Return type
 
-[**models::BulkUpsertStatusResponse**](BulkUpsertStatusResponse.md)
+[**models::BulkJobData**](BulkJobData.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Required | Notes
 > models::BulkUpsertResponse bulk_upsert_slash_create(ad_account_id, bulk_upsert_request)
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 
 ### Parameters
 

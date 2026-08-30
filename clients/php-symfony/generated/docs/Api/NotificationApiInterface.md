@@ -71,7 +71,7 @@ class NotificationApi implements NotificationApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **notificationPostRequest** | [**OpenAPI\Server\Model\NotificationPostRequest**](../Model/NotificationPostRequest.md)| notification event. |
+ **notificationPostRequest** | [**OpenAPI\Server\Model\NotificationPostRequest**](../Model/NotificationPostRequest.md)|  |
 
 ### Return type
 

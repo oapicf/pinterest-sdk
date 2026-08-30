@@ -6,29 +6,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.Label;
+import org.openapitools.vertxweb.server.model.LabelErrorData;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LabelError   {
   
-  private Label data;
+  private LabelErrorData data;
   private List<String> errorMessages = new ArrayList<>();
 
   public LabelError () {
 
   }
 
-  public LabelError (Label data, List<String> errorMessages) {
+  public LabelError (LabelErrorData data, List<String> errorMessages) {
     this.data = data;
     this.errorMessages = errorMessages;
   }
 
     
   @JsonProperty("data")
-  public Label getData() {
+  public LabelErrorData getData() {
     return data;
   }
-  public void setData(Label data) {
+  public void setData(LabelErrorData data) {
     this.data = data;
   }
 
@@ -76,9 +76,6 @@ public class LabelError   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

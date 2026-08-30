@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **AdAccountCountriesGet**
-> AdAccountsCountryResponse AdAccountCountriesGet()
+> AdAccountCountriesGet200Response AdAccountCountriesGet()
 
 Get ad accounts countries
 
@@ -42,7 +42,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**AdAccountsCountryResponse**](AdAccountsCountryResponse.md)
+[**AdAccountCountriesGet200Response**](ad_account_countries_get_200_response.md)
 
 ### Authorization
 
@@ -56,15 +56,20 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **DeliveryMetricsGet**
-> DeliveryMetricsResponse DeliveryMetricsGet(report_type = var.report_type)
+> DeliveryMetricsGet200Response DeliveryMetricsGet(report_type = var.report_type)
 
 Get available metrics' definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See [Organic Analytics](/docs/api-features/analytics-overview/) and [Ads Analytics](/docs/api-features/ads-reporting/) for more information.
 
 ### Example
 ```R
@@ -73,7 +78,7 @@ library(openapi)
 # Get available metrics' definitions
 #
 # prepare function argument(s)
-var_report_type <- "report_type_example" # character | Report type. (Optional)
+var_report_type <- ReportType$new() # ReportType | Report type. (Optional)
 
 api_instance <- ResourcesApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -90,11 +95,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **report_type** | Enum [SYNC, ASYNC] | Report type. | [optional] 
+ **report_type** | [**ReportType**](.md)| Report type. | [optional] 
 
 ### Return type
 
-[**DeliveryMetricsResponse**](DeliveryMetricsResponse.md)
+[**DeliveryMetricsGet200Response**](delivery_metrics_get_200_response.md)
 
 ### Authorization
 
@@ -108,15 +113,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **InterestTargetingOptionsGet**
-> SingleInterestTargetingOptionResponse InterestTargetingOptionsGet(interest_id)
+> SingleInterestTargetingOption InterestTargetingOptionsGet(interest_id)
 
 Get interest details
 
-<p>Get details of a specific interest given interest ID.</p> <p>Click <a href=\"https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875\" target=\"_blank\">here</a> for a spreadsheet listing interests and their IDs.</p>
+Get details of a specific interest given interest ID.  Click [here](https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875) for a spreadsheet listing interests and their IDs.
 
 ### Example
 ```R
@@ -146,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SingleInterestTargetingOptionResponse**](SingleInterestTargetingOptionResponse.md)
+[**SingleInterestTargetingOption**](SingleInterestTargetingOption.md)
 
 ### Authorization
 
@@ -160,15 +170,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **LeadFormQuestionsGet**
 > LeadFormQuestionsGet()
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```R
@@ -202,11 +217,16 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **MetricsReadyStateGet**
-> BookClosedResponse MetricsReadyStateGet(date)
+> BookClosed MetricsReadyStateGet(date)
 
 Get metrics ready state
 
@@ -219,7 +239,7 @@ library(openapi)
 # Get metrics ready state
 #
 # prepare function argument(s)
-var_date <- "2022-07-13" # character | Analytics reports request date (UTC). Format: YYYY-MM-DD
+var_date <- "date_example" # character | Analytics reports request date (UTC). Format: YYYY-MM-DD
 
 api_instance <- ResourcesApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -238,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BookClosedResponse**](BookClosedResponse.md)
+[**BookClosed**](BookClosed.md)
 
 ### Authorization
 
@@ -252,15 +272,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **TargetingOptionsGet**
-> array[object] TargetingOptionsGet(targeting_type, client_id = var.client_id, oauth_signature = var.oauth_signature, timestamp = var.timestamp, ad_account_id = var.ad_account_id)
+> array[object] TargetingOptionsGet(targeting_type, ad_account_id = var.ad_account_id, client_id = var.client_id, oauth_signature = var.oauth_signature, timestamp = var.timestamp)
 
 Get targeting options
 
-<p>You can use targeting values in ads placement to define your intended audience. </p> <p>Targeting metrics are organized around targeting specifications.</p> <p>For more information on ads targeting, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.</p> <p><b>Sample return:</b></p> <pre class=\"literal-block\"> [{&quot;36313&quot;: &quot;Australia: Moreton Bay - North&quot;, &quot;124735&quot;: &quot;Canada: North Battleford&quot;, &quot;36109&quot;: &quot;Australia: Murray&quot;, &quot;36108&quot;: &quot;Australia: Mid North Coast&quot;, &quot;36101&quot;: &quot;Australia: Capital Region&quot;, &quot;811&quot;: &quot;U.S.: Reno&quot;, &quot;36103&quot;: &quot;Australia: Central West&quot;, &quot;36102&quot;: &quot;Australia: Central Coast&quot;, &quot;36105&quot;: &quot;Australia: Far West and Orana&quot;, &quot;36104&quot;: &quot;Australia: Coffs Harbour - Grafton&quot;, &quot;36107&quot;: &quot;Australia: Illawarra&quot;, &quot;36106&quot;: &quot;Australia: Hunter Valley Exc Newcastle&quot;, &quot;554017&quot;: &quot;New Zealand: Wanganui&quot;, &quot;554016&quot;: &quot;New Zealand: Marlborough&quot;, &quot;554015&quot;: &quot;New Zealand: Gisborne&quot;, &quot;554014&quot;: &quot;New Zealand: Tararua&quot;, &quot;554013&quot;: &quot;New Zealand: Invercargill&quot;, &quot;GR&quot;: &quot;Greece&quot;, &quot;554011&quot;: &quot;New Zealand: Whangarei&quot;, &quot;554010&quot;: &quot;New Zealand: Far North&quot;, &quot;717&quot;: &quot;U.S.: Quincy-Hannibal-Keokuk&quot;, &quot;716&quot;: &quot;U.S.: Baton Rouge&quot;,...}] </pre>
+    You can use targeting values in ads placement to define your intended audience.      Targeting metrics are organized around targeting specifications.      For more information on ads targeting, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting).      **Sample return:**      ```     [{\"36313\": \"Australia: Moreton Bay - North\", \"124735\": \"Canada: North Battleford\", \"36109\": \"Australia: Murray\", \"36108\": \"Australia: Mid North Coast\", \"36101\": \"Australia: Capital Region\", \"811\": \"U.S.: Reno\", \"36103\": \"Australia: Central West\", \"36102\": \"Australia: Central Coast\", \"36105\": \"Australia: Far West and Orana\", \"36104\": \"Australia: Coffs Harbour - Grafton\", \"36107\": \"Australia: Illawarra\", \"36106\": \"Australia: Hunter Valley Exc Newcastle\", \"554017\": \"New Zealand: Wanganui\", \"554016\": \"New Zealand: Marlborough\", \"554015\": \"New Zealand: Gisborne\", \"554014\": \"New Zealand: Tararua\", \"554013\": \"New Zealand: Invercargill\", \"GR\": \"Greece\", \"554011\": \"New Zealand: Whangarei\", \"554010\": \"New Zealand: Far North\", \"717\": \"U.S.: Quincy-Hannibal-Keokuk\", \"716\": \"U.S.: Baton Rouge\",...}]     ```
 
 ### Example
 ```R
@@ -269,11 +294,11 @@ library(openapi)
 # Get targeting options
 #
 # prepare function argument(s)
-var_targeting_type <- "APPTYPE" # character | Public targeting type.
-var_client_id <- "1094834" # character | Client ID. (Optional)
-var_oauth_signature <- "8209f" # character | Oauth signature (Optional)
-var_timestamp <- "1618338184277" # character | Timestamp (Optional)
+var_targeting_type <- PublicTargetingType$new() # PublicTargetingType | Public targeting type
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
+var_client_id <- "client_id_example" # character | Client ID (Optional)
+var_oauth_signature <- "oauth_signature_example" # character | Oauth signature (Optional)
+var_timestamp <- "timestamp_example" # character | Timestamp. (Optional)
 
 api_instance <- ResourcesApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -281,8 +306,8 @@ api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # Configure OAuth2 access token for authorization: client_credentials
 # api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$TargetingOptionsGet(var_targeting_type, client_id = var_client_id, oauth_signature = var_oauth_signature, timestamp = var_timestamp, ad_account_id = var_ad_account_iddata_file = "result.txt")
-result <- api_instance$TargetingOptionsGet(var_targeting_type, client_id = var_client_id, oauth_signature = var_oauth_signature, timestamp = var_timestamp, ad_account_id = var_ad_account_id)
+# result <- api_instance$TargetingOptionsGet(var_targeting_type, ad_account_id = var_ad_account_id, client_id = var_client_id, oauth_signature = var_oauth_signature, timestamp = var_timestampdata_file = "result.txt")
+result <- api_instance$TargetingOptionsGet(var_targeting_type, ad_account_id = var_ad_account_id, client_id = var_client_id, oauth_signature = var_oauth_signature, timestamp = var_timestamp)
 dput(result)
 ```
 
@@ -290,11 +315,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **targeting_type** | Enum [APPTYPE, GENDER, LOCALE, AGE_BUCKET, LOCATION, GEO, INTEREST, KEYWORD, AUDIENCE_INCLUDE, AUDIENCE_EXCLUDE] | Public targeting type. | 
- **client_id** | **character**| Client ID. | [optional] 
- **oauth_signature** | **character**| Oauth signature | [optional] 
- **timestamp** | **character**| Timestamp | [optional] 
+ **targeting_type** | [**PublicTargetingType**](.md)| Public targeting type | 
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
+ **client_id** | **character**| Client ID | [optional] 
+ **oauth_signature** | **character**| Oauth signature | [optional] 
+ **timestamp** | **character**| Timestamp. | [optional] 
 
 ### Return type
 
@@ -312,6 +337,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

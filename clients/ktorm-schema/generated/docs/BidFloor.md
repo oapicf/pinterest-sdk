@@ -5,8 +5,8 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**bidFloors** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.Int&gt;** | A list of bid floors in micro currency. For example, [100000, 200000] |  [optional]
-**type** | type | text |  | **kotlin.String** | Always the string &#39;bidfloor&#39; |  [optional]
+**bidFloors** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.Int&gt;** | A list of bid floors in micro currency. For example, [100000, 200000] |  [optional] [readonly]
+**type** | type | text |  | **kotlin.String** | Always the string &#39;bidfloor&#39;. |  [optional] [readonly]
 
 
 # **Table `BidFloorBidFloors`**

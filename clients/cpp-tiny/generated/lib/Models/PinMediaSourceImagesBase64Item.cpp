@@ -149,7 +149,7 @@ PinMediaSourceImagesBase64Item::getContentType()
 }
 
 void
-PinMediaSourceImagesBase64Item::setContentType(ContentType  content_type)
+PinMediaSourceImagesBase64Item::setContentType(ContentType content_type)
 {
 	this->content_type = content_type;
 }
@@ -161,7 +161,7 @@ PinMediaSourceImagesBase64Item::getData()
 }
 
 void
-PinMediaSourceImagesBase64Item::setData(std::string  data)
+PinMediaSourceImagesBase64Item::setData(std::string data)
 {
 	this->data = data;
 }
@@ -173,7 +173,7 @@ PinMediaSourceImagesBase64Item::getDescription()
 }
 
 void
-PinMediaSourceImagesBase64Item::setDescription(std::string  description)
+PinMediaSourceImagesBase64Item::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -185,7 +185,7 @@ PinMediaSourceImagesBase64Item::getLink()
 }
 
 void
-PinMediaSourceImagesBase64Item::setLink(std::string  link)
+PinMediaSourceImagesBase64Item::setLink(std::string link)
 {
 	this->link = link;
 }
@@ -197,7 +197,7 @@ PinMediaSourceImagesBase64Item::getTitle()
 }
 
 void
-PinMediaSourceImagesBase64Item::setTitle(std::string  title)
+PinMediaSourceImagesBase64Item::setTitle(std::string title)
 {
 	this->title = title;
 }

@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { AiDisclosures } from './aiDisclosures';
 import { PinMediaSource } from './pinMediaSource';
 
 
@@ -14,6 +15,10 @@ import { PinMediaSource } from './pinMediaSource';
  * Resource create operation model.
  */
 export interface PinCreate { 
+    /**
+     * AI disclosure declarations the creator has made about this Pin.
+     */
+    ai_disclosures?: AiDisclosures;
     alt_text?: string | null;
     /**
      * The board to which this Pin belongs.

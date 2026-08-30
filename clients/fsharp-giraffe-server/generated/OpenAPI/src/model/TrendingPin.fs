@@ -9,9 +9,11 @@ module TrendingPin =
 
 
   type TrendingPin = {
+    Color : string;
     Height : int;
     Id : string;
     Src : string;
+    VerticalOffset : double;
     Width : int;
   }
   //#endregion

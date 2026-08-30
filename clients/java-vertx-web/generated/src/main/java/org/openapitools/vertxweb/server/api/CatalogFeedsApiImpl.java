@@ -1,14 +1,14 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.CatalogsFeed;
+import org.openapitools.vertxweb.server.model.CatalogsFeedCreateRequestSchema;
 import org.openapitools.vertxweb.server.model.CatalogsFeedIngestion;
+import org.openapitools.vertxweb.server.model.CatalogsFeedUpdateRequestSchema;
 import org.openapitools.vertxweb.server.model.CatalogsItemValidationIssue;
-import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.FeedProcessingResultsList200Response;
-import org.openapitools.vertxweb.server.model.FeedsCreateRequest;
 import org.openapitools.vertxweb.server.model.FeedsList200Response;
-import org.openapitools.vertxweb.server.model.FeedsUpdateRequest;
 import org.openapitools.vertxweb.server.model.ItemsIssuesList200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -22,15 +22,15 @@ import java.util.Map;
 // Implement this class
 
 public class CatalogFeedsApiImpl implements CatalogFeedsApi {
-    public Future<ApiResponse<FeedProcessingResultsList200Response>> feedProcessingResultsList(String feedId, String bookmark, Integer pageSize, String adAccountId) {
+    public Future<ApiResponse<FeedProcessingResultsList200Response>> feedProcessingResultsList(String feedId, String adAccountId, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<CatalogsFeed>> feedsCreate(FeedsCreateRequest feedsCreateRequest, String adAccountId) {
+    public Future<ApiResponse<CatalogsFeed>> feedsCreate(CatalogsFeedCreateRequestSchema catalogsFeedCreateRequestSchema, String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<Void>> feedsDelete(String feedId, String adAccountId) {
+    public Future<ApiResponse<CatalogsFeed>> feedsDelete(String feedId, String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 
@@ -42,15 +42,15 @@ public class CatalogFeedsApiImpl implements CatalogFeedsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<FeedsList200Response>> feedsList(String bookmark, Integer pageSize, String catalogId, String adAccountId) {
+    public Future<ApiResponse<FeedsList200Response>> feedsList(String catalogId, String adAccountId, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<CatalogsFeed>> feedsUpdate(String feedId, FeedsUpdateRequest feedsUpdateRequest, String adAccountId) {
+    public Future<ApiResponse<CatalogsFeed>> feedsUpdate(String feedId, CatalogsFeedUpdateRequestSchema catalogsFeedUpdateRequestSchema, String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<ItemsIssuesList200Response>> itemsIssuesList(String processingResultId, String bookmark, Integer pageSize, List<Integer> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, String adAccountId) {
+    public Future<ApiResponse<ItemsIssuesList200Response>> itemsIssuesList(String processingResultId, List<Integer> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, String adAccountId, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 

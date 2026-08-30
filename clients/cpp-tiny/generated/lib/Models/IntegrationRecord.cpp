@@ -14,7 +14,7 @@ IntegrationRecord::IntegrationRecord()
 	connected_user_id = std::string();
 	created_time = int(0);
 	external_business_id = std::string();
-	id = std::string();
+	id = null;
 	partner_access_token = std::string();
 	partner_access_token_expiry = int(0);
 	partner_metadata = std::string();
@@ -400,7 +400,7 @@ IntegrationRecord::getAdditionalId1()
 }
 
 void
-IntegrationRecord::setAdditionalId1(std::string  additional_id_1)
+IntegrationRecord::setAdditionalId1(std::string additional_id_1)
 {
 	this->additional_id_1 = additional_id_1;
 }
@@ -412,7 +412,7 @@ IntegrationRecord::getConnectedAdvertiserId()
 }
 
 void
-IntegrationRecord::setConnectedAdvertiserId(std::string  connected_advertiser_id)
+IntegrationRecord::setConnectedAdvertiserId(std::string connected_advertiser_id)
 {
 	this->connected_advertiser_id = connected_advertiser_id;
 }
@@ -424,7 +424,7 @@ IntegrationRecord::getConnectedLbaId()
 }
 
 void
-IntegrationRecord::setConnectedLbaId(std::string  connected_lba_id)
+IntegrationRecord::setConnectedLbaId(std::string connected_lba_id)
 {
 	this->connected_lba_id = connected_lba_id;
 }
@@ -436,7 +436,7 @@ IntegrationRecord::getConnectedMerchantId()
 }
 
 void
-IntegrationRecord::setConnectedMerchantId(std::string  connected_merchant_id)
+IntegrationRecord::setConnectedMerchantId(std::string connected_merchant_id)
 {
 	this->connected_merchant_id = connected_merchant_id;
 }
@@ -448,7 +448,7 @@ IntegrationRecord::getConnectedTagId()
 }
 
 void
-IntegrationRecord::setConnectedTagId(std::string  connected_tag_id)
+IntegrationRecord::setConnectedTagId(std::string connected_tag_id)
 {
 	this->connected_tag_id = connected_tag_id;
 }
@@ -460,7 +460,7 @@ IntegrationRecord::getConnectedUserId()
 }
 
 void
-IntegrationRecord::setConnectedUserId(std::string  connected_user_id)
+IntegrationRecord::setConnectedUserId(std::string connected_user_id)
 {
 	this->connected_user_id = connected_user_id;
 }
@@ -472,7 +472,7 @@ IntegrationRecord::getCreatedTime()
 }
 
 void
-IntegrationRecord::setCreatedTime(int  created_time)
+IntegrationRecord::setCreatedTime(int created_time)
 {
 	this->created_time = created_time;
 }
@@ -484,7 +484,7 @@ IntegrationRecord::getExternalBusinessId()
 }
 
 void
-IntegrationRecord::setExternalBusinessId(std::string  external_business_id)
+IntegrationRecord::setExternalBusinessId(std::string external_business_id)
 {
 	this->external_business_id = external_business_id;
 }
@@ -496,7 +496,7 @@ IntegrationRecord::getId()
 }
 
 void
-IntegrationRecord::setId(std::string  id)
+IntegrationRecord::setId(std::string id)
 {
 	this->id = id;
 }
@@ -508,7 +508,7 @@ IntegrationRecord::getPartnerAccessToken()
 }
 
 void
-IntegrationRecord::setPartnerAccessToken(std::string  partner_access_token)
+IntegrationRecord::setPartnerAccessToken(std::string partner_access_token)
 {
 	this->partner_access_token = partner_access_token;
 }
@@ -520,7 +520,7 @@ IntegrationRecord::getPartnerAccessTokenExpiry()
 }
 
 void
-IntegrationRecord::setPartnerAccessTokenExpiry(int  partner_access_token_expiry)
+IntegrationRecord::setPartnerAccessTokenExpiry(int partner_access_token_expiry)
 {
 	this->partner_access_token_expiry = partner_access_token_expiry;
 }
@@ -532,7 +532,7 @@ IntegrationRecord::getPartnerMetadata()
 }
 
 void
-IntegrationRecord::setPartnerMetadata(std::string  partner_metadata)
+IntegrationRecord::setPartnerMetadata(std::string partner_metadata)
 {
 	this->partner_metadata = partner_metadata;
 }
@@ -544,7 +544,7 @@ IntegrationRecord::getPartnerPrimaryEmail()
 }
 
 void
-IntegrationRecord::setPartnerPrimaryEmail(std::string  partner_primary_email)
+IntegrationRecord::setPartnerPrimaryEmail(std::string partner_primary_email)
 {
 	this->partner_primary_email = partner_primary_email;
 }
@@ -556,7 +556,7 @@ IntegrationRecord::getPartnerRefreshToken()
 }
 
 void
-IntegrationRecord::setPartnerRefreshToken(std::string  partner_refresh_token)
+IntegrationRecord::setPartnerRefreshToken(std::string partner_refresh_token)
 {
 	this->partner_refresh_token = partner_refresh_token;
 }
@@ -568,7 +568,7 @@ IntegrationRecord::getPartnerRefreshTokenExpiry()
 }
 
 void
-IntegrationRecord::setPartnerRefreshTokenExpiry(int  partner_refresh_token_expiry)
+IntegrationRecord::setPartnerRefreshTokenExpiry(int partner_refresh_token_expiry)
 {
 	this->partner_refresh_token_expiry = partner_refresh_token_expiry;
 }
@@ -580,7 +580,7 @@ IntegrationRecord::getScopes()
 }
 
 void
-IntegrationRecord::setScopes(std::string  scopes)
+IntegrationRecord::setScopes(std::string scopes)
 {
 	this->scopes = scopes;
 }
@@ -592,7 +592,7 @@ IntegrationRecord::getUpdatedTime()
 }
 
 void
-IntegrationRecord::setUpdatedTime(int  updated_time)
+IntegrationRecord::setUpdatedTime(int updated_time)
 {
 	this->updated_time = updated_time;
 }

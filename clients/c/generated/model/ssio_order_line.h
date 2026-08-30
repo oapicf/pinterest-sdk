@@ -1,7 +1,7 @@
 /*
  * ssio_order_line.h
  *
- * 
+ * A Salesforce SSIO order line.
  */
 
 #ifndef _ssio_order_line_H_
@@ -28,10 +28,10 @@ typedef struct ssio_order_line_t {
     char *billing_contact_email; // string
     char *billing_contact_firstname; // string
     char *billing_contact_lastname; // string
-    double budget_amount; //numeric
+    double *budget_amount; //numeric
     pinterest_rest_api_currency__e currency_info; //referenced enum
     char *end_date; //date
-    double estimated_monthly_spend; //numeric
+    double *estimated_monthly_spend; //numeric
     char *last_modified_date_time; // string
     char *media_contact_email; // string
     char *media_contact_firstname; // string
@@ -55,10 +55,10 @@ __attribute__((deprecated)) ssio_order_line_t *ssio_order_line_create(
     char *billing_contact_email,
     char *billing_contact_firstname,
     char *billing_contact_lastname,
-    double budget_amount,
+    double *budget_amount,
     pinterest_rest_api_currency__e currency_info,
     char *end_date,
-    double estimated_monthly_spend,
+    double *estimated_monthly_spend,
     char *last_modified_date_time,
     char *media_contact_email,
     char *media_contact_firstname,

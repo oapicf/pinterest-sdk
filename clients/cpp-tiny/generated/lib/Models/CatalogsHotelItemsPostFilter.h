@@ -52,21 +52,21 @@ public:
 
 	/*! \brief Set Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
 	 */
-	void setCatalogId(std::string  catalog_id);
+	void setCatalogId(std::string catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getHotelIds();
 
 	/*! \brief Set 
 	 */
-	void setHotelIds(std::list <std::string> hotel_ids);
+	void setHotelIds(std::list<std::string> hotel_ids);
 
 
     private:

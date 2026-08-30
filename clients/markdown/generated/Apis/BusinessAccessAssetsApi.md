@@ -20,22 +20,22 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a name="assetGroup/create"></a>
 # **assetGroup/create**
-> CreateAssetGroupResponse assetGroup/create(business\_id, CreateAssetGroupBody)
+> AssetGroupInput assetGroup/create(business\_id, AssetGroupInputCreate)
 
 Create a new asset group.
 
-    Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+    Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 
 ### Parameters
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
-| **CreateAssetGroupBody** | [**CreateAssetGroupBody**](../Models/CreateAssetGroupBody.md)|  | |
+| **AssetGroupInputCreate** | [**AssetGroupInputCreate**](../Models/AssetGroupInputCreate.md)|  | |
 
 ### Return type
 
-[**CreateAssetGroupResponse**](../Models/CreateAssetGroupResponse.md)
+[**AssetGroupInput**](../Models/AssetGroupInput.md)
 
 ### Authorization
 
@@ -48,7 +48,7 @@ Create a new asset group.
 
 <a name="assetGroup/delete"></a>
 # **assetGroup/delete**
-> DeleteAssetGroupResponse assetGroup/delete(business\_id, DeleteAssetGroupBody)
+> AssetGroupDeletion assetGroup/delete(business\_id, AssetGroupDeletionDelete)
 
 Delete asset groups.
 
@@ -59,11 +59,11 @@ Delete asset groups.
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
-| **DeleteAssetGroupBody** | [**DeleteAssetGroupBody**](../Models/DeleteAssetGroupBody.md)|  | |
+| **AssetGroupDeletionDelete** | [**AssetGroupDeletionDelete**](../Models/AssetGroupDeletionDelete.md)|  | |
 
 ### Return type
 
-[**DeleteAssetGroupResponse**](../Models/DeleteAssetGroupResponse.md)
+[**AssetGroupDeletion**](../Models/AssetGroupDeletion.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ Delete asset groups.
 
 <a name="assetGroup/update"></a>
 # **assetGroup/update**
-> UpdateAssetGroupResponse assetGroup/update(business\_id, UpdateAssetGroupBody)
+> AssetGroupModification assetGroup/update(business\_id, AssetGroupModificationReadOrUpdate)
 
 Update asset groups.
 
@@ -87,11 +87,11 @@ Update asset groups.
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
-| **UpdateAssetGroupBody** | [**UpdateAssetGroupBody**](../Models/UpdateAssetGroupBody.md)|  | |
+| **AssetGroupModificationReadOrUpdate** | [**AssetGroupModificationReadOrUpdate**](../Models/AssetGroupModificationReadOrUpdate.md)|  | |
 
 ### Return type
 
-[**UpdateAssetGroupResponse**](../Models/UpdateAssetGroupResponse.md)
+[**AssetGroupModification**](../Models/AssetGroupModification.md)
 
 ### Authorization
 
@@ -104,7 +104,7 @@ Update asset groups.
 
 <a name="businessAssetMembers/get"></a>
 # **businessAssetMembers/get**
-> business_asset_members_get_200_response businessAssetMembers/get(business\_id, asset\_id, fetch\_system\_users, bookmark, page\_size, start\_index)
+> business_asset_members_get_200_response businessAssetMembers/get(business\_id, asset\_id, start\_index, fetch\_system\_users, bookmark, page\_size)
 
 Get members with access to asset
 
@@ -116,10 +116,10 @@ Get members with access to asset
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
 | **asset\_id** | **String**| Unique identifier of a business asset. | [default to null] |
+| **start\_index** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **fetch\_system\_users** | **Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **start\_index** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -136,7 +136,7 @@ Get members with access to asset
 
 <a name="businessAssetPartners/get"></a>
 # **businessAssetPartners/get**
-> business_asset_partners_get_200_response businessAssetPartners/get(business\_id, asset\_id, start\_index, bookmark, page\_size)
+> business_asset_members_get_200_response businessAssetPartners/get(business\_id, asset\_id, start\_index, bookmark, page\_size)
 
 Get partners with access to asset
 
@@ -150,11 +150,11 @@ Get partners with access to asset
 | **asset\_id** | **String**| Unique identifier of a business asset. | [default to null] |
 | **start\_index** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**business_asset_partners_get_200_response**](../Models/business_asset_partners_get_200_response.md)
+[**business_asset_members_get_200_response**](../Models/business_asset_members_get_200_response.md)
 
 ### Authorization
 
@@ -184,7 +184,7 @@ List business assets
 | **asset\_type** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] |
 | **start\_index** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -201,7 +201,7 @@ List business assets
 
 <a name="businessMemberAssets/get"></a>
 # **businessMemberAssets/get**
-> business_member_assets_get_200_response businessMemberAssets/get(business\_id, member\_id, asset\_type, start\_index, bookmark, page\_size)
+> BusinessMemberAssetsGetResponse businessMemberAssets/get(business\_id, member\_id, asset\_type, start\_index, sort\_by, sort\_ascending, search\_by, search\_value, asset\_permission\_type, ad\_account\_statuses, bookmark, page\_size)
 
 Get assets assigned to a member
 
@@ -213,14 +213,20 @@ Get assets assigned to a member
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
 | **member\_id** | **String**| The member id to fetch assets for. | [default to null] |
-| **asset\_type** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] |
+| **asset\_type** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER, CONVERSION_TAG] |
 | **start\_index** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
+| **sort\_by** | [**AssetSortBy**](../Models/.md)| The field to sort member assets by | [optional] [default to null] [enum: NAME, ID, PERMISSIONS] |
+| **sort\_ascending** | **Boolean**| Sort assets in ascending order | [optional] [default to true] |
+| **search\_by** | [**AssetSearchBy**](../Models/.md)| The field to search member assets by | [optional] [default to null] [enum: NAME, ID, NAME_OR_ID, OWNER_NAME, NAME_OR_OWNER] |
+| **search\_value** | **String**| The value to search for | [optional] [default to null] |
+| **asset\_permission\_type** | [**AssetPermissionType**](../Models/.md)| The type of asset permission to filter by | [optional] [default to null] [enum: AGGREGATED_PERMISSION, DIRECT_PERMISSION] |
+| **ad\_account\_statuses** | [**List**](../Models/NonDraftEntityStatus.md)| A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | [optional] [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**business_member_assets_get_200_response**](../Models/business_member_assets_get_200_response.md)
+[**BusinessMemberAssetsGetResponse**](../Models/BusinessMemberAssetsGetResponse.md)
 
 ### Authorization
 
@@ -233,7 +239,7 @@ Get assets assigned to a member
 
 <a name="businessMembersAssetAccess/delete"></a>
 # **businessMembersAssetAccess/delete**
-> DeleteMemberAccessResultsResponseArray businessMembersAssetAccess/delete(business\_id, business\_members\_asset\_access\_delete\_request)
+> DeleteMemberAccessResultsResponseArray businessMembersAssetAccess/delete(business\_id, BusinessMembersAssetAccessDeleteBody)
 
 Delete member access to asset
 
@@ -244,7 +250,7 @@ Delete member access to asset
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
-| **business\_members\_asset\_access\_delete\_request** | [**business_members_asset_access_delete_request**](../Models/business_members_asset_access_delete_request.md)| List member assset permissions to delete. | |
+| **BusinessMembersAssetAccessDeleteBody** | [**BusinessMembersAssetAccessDeleteBody**](../Models/BusinessMembersAssetAccessDeleteBody.md)|  | |
 
 ### Return type
 
@@ -265,14 +271,14 @@ Delete member access to asset
 
 Assign/Update member asset permissions
 
-    Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+    Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 
 ### Parameters
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
-| **UpdateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](../Models/UpdateMemberAssetAccessBody.md)| List of member asset permissions to create or update. | |
+| **UpdateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](../Models/UpdateMemberAssetAccessBody.md)|  | |
 
 ### Return type
 
@@ -289,7 +295,7 @@ Assign/Update member asset permissions
 
 <a name="businessPartnerAssetAccess/get"></a>
 # **businessPartnerAssetAccess/get**
-> business_partner_asset_access_get_200_response businessPartnerAssetAccess/get(business\_id, partner\_id, partner\_type, asset\_type, start\_index, page\_size, bookmark)
+> business_partner_asset_access_get_200_response businessPartnerAssetAccess/get(business\_id, partner\_id, partner\_type, asset\_type, start\_index, sort\_by, sort\_ascending, search\_by, search\_value, bookmark, page\_size)
 
 Get assets assigned to a partner or assets assigned by a partner
 
@@ -301,11 +307,15 @@ Get assets assigned to a partner or assets assigned by a partner
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
 | **partner\_id** | **String**| The partner id to be bound to the Business | [default to null] |
-| **partner\_type** | [**PartnerType**](../Models/.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to INTERNAL] [enum: INTERNAL, EXTERNAL] |
-| **asset\_type** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] |
+| **partner\_type** | **String**| Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to INTERNAL] [enum: INTERNAL, EXTERNAL] |
+| **asset\_type** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, PINNER_LIST, CONVERSION_TAG, CATALOG, CONSUMER, CONVERSION_SEGMENT] |
 | **start\_index** | **Integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **sort\_by** | [**AssetSortBy**](../Models/.md)| The field to sort member assets by | [optional] [default to null] [enum: NAME, ID, PERMISSIONS] |
+| **sort\_ascending** | **Boolean**| Sort assets in ascending order | [optional] [default to true] |
+| **search\_by** | [**AssetSearchBy**](../Models/.md)| The field to search member assets by | [optional] [default to null] [enum: NAME, ID, NAME_OR_ID, OWNER_NAME, NAME_OR_OWNER] |
+| **search\_value** | **String**| The value to search for | [optional] [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -322,7 +332,7 @@ Get assets assigned to a partner or assets assigned by a partner
 
 <a name="deletePartnerAssetAccessHandlerImpl"></a>
 # **deletePartnerAssetAccessHandlerImpl**
-> DeletePartnerAssetsResultsResponseArray deletePartnerAssetAccessHandlerImpl(business\_id, DeletePartnerAssetAccessBody)
+> DeletePartnerAssetAccessResultsResponseArray deletePartnerAssetAccessHandlerImpl(business\_id, DeletePartnerAssetAccessBody)
 
 Delete partner access to asset
 
@@ -337,7 +347,7 @@ Delete partner access to asset
 
 ### Return type
 
-[**DeletePartnerAssetsResultsResponseArray**](../Models/DeletePartnerAssetsResultsResponseArray.md)
+[**DeletePartnerAssetAccessResultsResponseArray**](../Models/DeletePartnerAssetAccessResultsResponseArray.md)
 
 ### Authorization
 
@@ -361,7 +371,7 @@ Assign/Update partner asset permissions
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
-| **UpdatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](../Models/UpdatePartnerAssetAccessBody.md)| A list of assets and permissions to assign to your partners. | |
+| **UpdatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](../Models/UpdatePartnerAssetAccessBody.md)|  | |
 
 ### Return type
 

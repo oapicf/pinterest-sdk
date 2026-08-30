@@ -8,7 +8,7 @@
 (def exception-data
   {
    (ds/opt :code) int?
-   (ds/opt :message) string?
+   (ds/req :message) string?
    })
 
 (def exception-spec

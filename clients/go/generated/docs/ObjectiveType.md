@@ -13,6 +13,12 @@
 
 * `VIDEO_COMPLETION` (value: `"VIDEO_COMPLETION"`)
 
+* `SALES` (value: `"SALES"`)
+
+* `APP_INSTALL` (value: `"APP_INSTALL"`)
+
+* `CTV_CONSIDERATION` (value: `"CTV_CONSIDERATION"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

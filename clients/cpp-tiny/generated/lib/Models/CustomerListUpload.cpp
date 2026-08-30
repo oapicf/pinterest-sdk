@@ -6,14 +6,14 @@ using namespace Tiny;
 
 CustomerListUpload::CustomerListUpload()
 {
-	ad_account_id = std::string();
+	ad_account_id = null;
 	creation_time = int(0);
-	customer_list_id = std::string();
+	customer_list_id = null;
 	error_counts = std::list<ErrorDetail>();
-	id = std::string();
+	id = null;
 	operation = UserListOperationType();
-	record_counts = RecordCounts();
-	state = std::string();
+	record_counts = null;
+	state = null;
 	updated_time = int(0);
 }
 
@@ -142,8 +142,9 @@ CustomerListUpload::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&state, value, "std::string");
 
+        WorkloadState* obj = &state;
+		obj->fromJson(value.dump());
 
     }
 
@@ -229,8 +230,8 @@ CustomerListUpload::toJson()
 
 
 
-    object["state"] = getState();
 
+	object["state"] = getState().toJson();
 
 
 
@@ -251,7 +252,7 @@ CustomerListUpload::getAdAccountId()
 }
 
 void
-CustomerListUpload::setAdAccountId(std::string  ad_account_id)
+CustomerListUpload::setAdAccountId(std::string ad_account_id)
 {
 	this->ad_account_id = ad_account_id;
 }
@@ -263,7 +264,7 @@ CustomerListUpload::getCreationTime()
 }
 
 void
-CustomerListUpload::setCreationTime(int  creation_time)
+CustomerListUpload::setCreationTime(int creation_time)
 {
 	this->creation_time = creation_time;
 }
@@ -275,7 +276,7 @@ CustomerListUpload::getCustomerListId()
 }
 
 void
-CustomerListUpload::setCustomerListId(std::string  customer_list_id)
+CustomerListUpload::setCustomerListId(std::string customer_list_id)
 {
 	this->customer_list_id = customer_list_id;
 }
@@ -287,7 +288,7 @@ CustomerListUpload::getErrorCounts()
 }
 
 void
-CustomerListUpload::setErrorCounts(std::list <ErrorDetail> error_counts)
+CustomerListUpload::setErrorCounts(std::list<ErrorDetail> error_counts)
 {
 	this->error_counts = error_counts;
 }
@@ -299,7 +300,7 @@ CustomerListUpload::getId()
 }
 
 void
-CustomerListUpload::setId(std::string  id)
+CustomerListUpload::setId(std::string id)
 {
 	this->id = id;
 }
@@ -311,7 +312,7 @@ CustomerListUpload::getOperation()
 }
 
 void
-CustomerListUpload::setOperation(UserListOperationType  operation)
+CustomerListUpload::setOperation(UserListOperationType operation)
 {
 	this->operation = operation;
 }
@@ -323,19 +324,19 @@ CustomerListUpload::getRecordCounts()
 }
 
 void
-CustomerListUpload::setRecordCounts(RecordCounts  record_counts)
+CustomerListUpload::setRecordCounts(RecordCounts record_counts)
 {
 	this->record_counts = record_counts;
 }
 
-std::string
+WorkloadState
 CustomerListUpload::getState()
 {
 	return state;
 }
 
 void
-CustomerListUpload::setState(std::string  state)
+CustomerListUpload::setState(WorkloadState state)
 {
 	this->state = state;
 }
@@ -347,7 +348,7 @@ CustomerListUpload::getUpdatedTime()
 }
 
 void
-CustomerListUpload::setUpdatedTime(int  updated_time)
+CustomerListUpload::setUpdatedTime(int updated_time)
 {
 	this->updated_time = updated_time;
 }

@@ -7,7 +7,7 @@ Parameters for retail report
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | **string** |  | [default to undefined]
-**report** | [**CatalogsHotelReportStatsParametersReport**](CatalogsHotelReportStatsParametersReport.md) |  | [default to undefined]
+**report** | [**CatalogsRetailReportStatsParametersReport**](CatalogsRetailReportStatsParametersReport.md) |  | [default to undefined]
 
 ## Example
 

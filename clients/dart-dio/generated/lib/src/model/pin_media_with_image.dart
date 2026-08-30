@@ -85,8 +85,9 @@ class _$PinMediaWithImageSerializer implements PrimitiveSerializer<PinMediaWithI
         case r'images':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ImageSize),
-          ) as ImageSize;
+            specifiedType: const FullType.nullable(ImageSize),
+          ) as ImageSize?;
+          if (valueDes == null) continue;
           result.images.replace(valueDes);
           break;
         case r'media_type':

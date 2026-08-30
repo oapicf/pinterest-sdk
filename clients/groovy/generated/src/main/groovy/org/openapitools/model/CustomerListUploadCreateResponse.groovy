@@ -8,8 +8,8 @@ import org.openapitools.model.S3MultipartUploadData;
 
 @Canonical
 class CustomerListUploadCreateResponse {
-    
+    /* The Customer List Upload created. */
     CustomerListUpload customerListUpload
-    
+    /* Pre-signed upload URLs corresponding to each part of the upload. */
     S3MultipartUploadData s3MultipartUploadData
 }

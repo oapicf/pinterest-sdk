@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -19,16 +19,8 @@ import (
 
 // CatalogsHotelReportParametersReport - struct for CatalogsHotelReportParametersReport
 type CatalogsHotelReportParametersReport struct {
-	CatalogsReportAllItemsFilter *CatalogsReportAllItemsFilter
 	CatalogsReportDistributionIssueFilter *CatalogsReportDistributionIssueFilter
 	CatalogsReportFeedIngestionFilter *CatalogsReportFeedIngestionFilter
-}
-
-// CatalogsReportAllItemsFilterAsCatalogsHotelReportParametersReport is a convenience function that returns CatalogsReportAllItemsFilter wrapped in CatalogsHotelReportParametersReport
-func CatalogsReportAllItemsFilterAsCatalogsHotelReportParametersReport(v *CatalogsReportAllItemsFilter) CatalogsHotelReportParametersReport {
-	return CatalogsHotelReportParametersReport{
-		CatalogsReportAllItemsFilter: v,
-	}
 }
 
 // CatalogsReportDistributionIssueFilterAsCatalogsHotelReportParametersReport is a convenience function that returns CatalogsReportDistributionIssueFilter wrapped in CatalogsHotelReportParametersReport
@@ -50,23 +42,6 @@ func CatalogsReportFeedIngestionFilterAsCatalogsHotelReportParametersReport(v *C
 func (dst *CatalogsHotelReportParametersReport) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into CatalogsReportAllItemsFilter
-	err = newStrictDecoder(data).Decode(&dst.CatalogsReportAllItemsFilter)
-	if err == nil {
-		jsonCatalogsReportAllItemsFilter, _ := json.Marshal(dst.CatalogsReportAllItemsFilter)
-		if string(jsonCatalogsReportAllItemsFilter) == "{}" { // empty struct
-			dst.CatalogsReportAllItemsFilter = nil
-		} else {
-			if err = validator.Validate(dst.CatalogsReportAllItemsFilter); err != nil {
-				dst.CatalogsReportAllItemsFilter = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.CatalogsReportAllItemsFilter = nil
-	}
-
 	// try to unmarshal data into CatalogsReportDistributionIssueFilter
 	err = newStrictDecoder(data).Decode(&dst.CatalogsReportDistributionIssueFilter)
 	if err == nil {
@@ -103,7 +78,6 @@ func (dst *CatalogsHotelReportParametersReport) UnmarshalJSON(data []byte) error
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.CatalogsReportAllItemsFilter = nil
 		dst.CatalogsReportDistributionIssueFilter = nil
 		dst.CatalogsReportFeedIngestionFilter = nil
 
@@ -111,16 +85,21 @@ func (dst *CatalogsHotelReportParametersReport) UnmarshalJSON(data []byte) error
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(CatalogsHotelReportParametersReport)")
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsHotelReportParametersReport): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsHotelReportParametersReport)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsHotelReportParametersReport): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsHotelReportParametersReport)")
+        }
 	}
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src CatalogsHotelReportParametersReport) MarshalJSON() ([]byte, error) {
-	if src.CatalogsReportAllItemsFilter != nil {
-		return json.Marshal(&src.CatalogsReportAllItemsFilter)
-	}
-
 	if src.CatalogsReportDistributionIssueFilter != nil {
 		return json.Marshal(&src.CatalogsReportDistributionIssueFilter)
 	}
@@ -137,10 +116,6 @@ func (obj *CatalogsHotelReportParametersReport) GetActualInstance() (interface{}
 	if obj == nil {
 		return nil
 	}
-	if obj.CatalogsReportAllItemsFilter != nil {
-		return obj.CatalogsReportAllItemsFilter
-	}
-
 	if obj.CatalogsReportDistributionIssueFilter != nil {
 		return obj.CatalogsReportDistributionIssueFilter
 	}
@@ -155,10 +130,6 @@ func (obj *CatalogsHotelReportParametersReport) GetActualInstance() (interface{}
 
 // Get the actual instance value
 func (obj CatalogsHotelReportParametersReport) GetActualInstanceValue() (interface{}) {
-	if obj.CatalogsReportAllItemsFilter != nil {
-		return *obj.CatalogsReportAllItemsFilter
-	}
-
 	if obj.CatalogsReportDistributionIssueFilter != nil {
 		return *obj.CatalogsReportDistributionIssueFilter
 	}

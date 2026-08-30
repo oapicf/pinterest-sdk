@@ -9,17 +9,21 @@ open CampaignsApiServiceInterface
 open CampaignsApiServiceImplementation
 open OpenAPI.Model.AdPinAnalytics
 open OpenAPI.Model.AdsAnalyticsCampaignTargetingType
-open OpenAPI.Model.CampaignCreateRequest
-open OpenAPI.Model.CampaignCreateResponse
-open OpenAPI.Model.CampaignResponse
-open OpenAPI.Model.CampaignUpdateRequest
-open OpenAPI.Model.CampaignUpdateResponse
-open OpenAPI.Model.CampaignsAnalyticsResponseInner
+open OpenAPI.Model.Campaign
+open OpenAPI.Model.CampaignBatchUpdateItem
+open OpenAPI.Model.CampaignBatchWriteResponseModel
+open OpenAPI.Model.CampaignCreateItem
+open OpenAPI.Model.CampaignDeliveryEstimatesCampaign
+open OpenAPI.Model.CampaignDeliveryEstimatesResponse
+open OpenAPI.Model.CampaignsAnalyticsMetrics
 open OpenAPI.Model.CampaignsList200Response
 open OpenAPI.Model.ConversionReportAttributionType
-open OpenAPI.Model.Error
+open OpenAPI.Model.EntityStatus
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.MetricsResponse
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PinterestLibPaginationOrder
+open OpenAPI.Model.ReportingColumnSync
 open OpenAPI.Model.ReportingTimeZone
 
 module CampaignsApiHandler =
@@ -44,6 +48,14 @@ module CampaignsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | AdPinsAnalyticsStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AdPinsAnalyticsStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AdPinsAnalyticsStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AdPinsAnalyticsStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AdPinsAnalyticsStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdPinsAnalyticsDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -64,6 +76,16 @@ module CampaignsApiHandler =
           return! (match result with
                       | CampaignTargetingAnalyticsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | CampaignTargetingAnalyticsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | CampaignTargetingAnalyticsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CampaignTargetingAnalyticsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CampaignTargetingAnalyticsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CampaignTargetingAnalyticsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CampaignTargetingAnalyticsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -86,6 +108,14 @@ module CampaignsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | CampaignsAnalyticsStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | CampaignsAnalyticsStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CampaignsAnalyticsStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CampaignsAnalyticsStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CampaignsAnalyticsStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CampaignsAnalyticsDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -107,6 +137,16 @@ module CampaignsApiHandler =
           return! (match result with
                       | CampaignsCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | CampaignsCreateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | CampaignsCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CampaignsCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CampaignsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CampaignsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CampaignsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -126,6 +166,16 @@ module CampaignsApiHandler =
           return! (match result with
                       | CampaignsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | CampaignsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | CampaignsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CampaignsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CampaignsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CampaignsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CampaignsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -148,6 +198,14 @@ module CampaignsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | CampaignsListStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | CampaignsListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CampaignsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CampaignsListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CampaignsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CampaignsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -169,7 +227,50 @@ module CampaignsApiHandler =
           return! (match result with
                       | CampaignsUpdateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | CampaignsUpdateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | CampaignsUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CampaignsUpdateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CampaignsUpdateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CampaignsUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CampaignsUpdateDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
+    //#region GetCampaignDeliveryEstimates
+    /// <summary>
+    /// Get campaign delivery estimates
+    /// </summary>
+
+    let GetCampaignDeliveryEstimates (pathParams:GetCampaignDeliveryEstimatesPathParams) : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let! bodyParams =
+            ctx.BindJsonAsync<GetCampaignDeliveryEstimatesBodyParams>()
+          let serviceArgs = {    pathParams=pathParams; bodyParams=bodyParams } : GetCampaignDeliveryEstimatesArgs
+          let result = CampaignsApiService.GetCampaignDeliveryEstimates ctx serviceArgs
+          return! (match result with
+                      | GetCampaignDeliveryEstimatesStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | GetCampaignDeliveryEstimatesStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | GetCampaignDeliveryEstimatesStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | GetCampaignDeliveryEstimatesStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | GetCampaignDeliveryEstimatesStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | GetCampaignDeliveryEstimatesStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
+                      | GetCampaignDeliveryEstimatesStatusCode503 resolved ->
+                            setStatusCode 503 >=> json resolved.content
+                      | GetCampaignDeliveryEstimatesDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
         }

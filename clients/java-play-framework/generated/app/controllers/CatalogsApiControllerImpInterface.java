@@ -1,12 +1,12 @@
 package controllers;
 
 import apimodels.Catalog;
+import apimodels.CatalogCreate;
 import apimodels.CatalogsAvailableFilterValues;
-import apimodels.CatalogsCreateRequest;
 import apimodels.CatalogsList200Response;
 import apimodels.CatalogsLocale;
 import apimodels.Country;
-import apimodels.Error;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -52,12 +52,12 @@ public abstract class CatalogsApiControllerImpInterface {
 
     public abstract CatalogsAvailableFilterValues catalogsAvailableFilterValues(Http.Request request, @NotNull  @Pattern(regexp="^\\d+$")String catalogId,  @Pattern(regexp="^\\d+$")String feedId, Country country, CatalogsLocale language,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result catalogsCreateHttp(Http.Request request, CatalogsCreateRequest catalogsCreateRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result catalogsCreateHttp(Http.Request request, CatalogCreate catalogCreate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        Catalog obj = catalogsCreate(request, catalogsCreateRequest, adAccountId);
+        Catalog obj = catalogsCreate(request, catalogCreate, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -69,14 +69,14 @@ public abstract class CatalogsApiControllerImpInterface {
 
     }
 
-    public abstract Catalog catalogsCreate(Http.Request request, CatalogsCreateRequest catalogsCreateRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract Catalog catalogsCreate(Http.Request request, CatalogCreate catalogCreate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result catalogsListHttp(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result catalogsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        CatalogsList200Response obj = catalogsList(request, bookmark, pageSize, adAccountId);
+        CatalogsList200Response obj = catalogsList(request, adAccountId, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -88,6 +88,6 @@ public abstract class CatalogsApiControllerImpInterface {
 
     }
 
-    public abstract CatalogsList200Response catalogsList(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract CatalogsList200Response catalogsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
 }

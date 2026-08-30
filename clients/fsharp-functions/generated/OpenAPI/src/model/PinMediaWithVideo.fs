@@ -26,6 +26,8 @@ module PinMediaWithVideo =
     MediaType : string;
     [<JsonProperty(PropertyName = "video_url")>]
     VideoUrl : string option;
+    [<JsonProperty(PropertyName = "video_url_hls")>]
+    VideoUrlHls : string option;
     [<JsonProperty(PropertyName = "width")>]
     Width : int option;
   }

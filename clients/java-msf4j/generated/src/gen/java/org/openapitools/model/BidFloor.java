@@ -10,28 +10,16 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * BidFloor
+ * Bid floor request and response model.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "Bid floor request and response model.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BidFloor   {
   @JsonProperty("bid_floors")
   private List<Integer> bidFloors = null;
 
   @JsonProperty("type")
   private String type = "bidfloor";
-
-  public BidFloor bidFloors(List<Integer> bidFloors) {
-    this.bidFloors = bidFloors;
-    return this;
-  }
-
-  public BidFloor addBidFloorsItem(Integer bidFloorsItem) {
-    if (this.bidFloors == null) {
-      this.bidFloors = new ArrayList<>();
-    }
-    this.bidFloors.add(bidFloorsItem);
-    return this;
-  }
 
    /**
    * A list of bid floors in micro currency. For example, [100000, 200000]
@@ -42,26 +30,13 @@ public class BidFloor   {
     return bidFloors;
   }
 
-  public void setBidFloors(List<Integer> bidFloors) {
-    this.bidFloors = bidFloors;
-  }
-
-  public BidFloor type(String type) {
-    this.type = type;
-    return this;
-  }
-
    /**
-   * Always the string 'bidfloor'
+   * Always the string 'bidfloor'.
    * @return type
   **/
-  @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'")
+  @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'.")
   public String getType() {
     return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
   }
 
 
@@ -99,10 +74,7 @@ public class BidFloor   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

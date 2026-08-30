@@ -1,0 +1,106 @@
+import { AdCollectionsHeaderType } from './ad-collections-header-type';
+import { QuizPinData } from './quiz-pin-data';
+import { EntityStatus } from './entity-status';
+import { DisclosureType } from './disclosure-type';
+import { TrackingUrls } from './tracking-urls';
+import { CustomizableCTAType } from './customizable-cta-type';
+import { GridClickType } from './grid-click-type';
+import { CreativeType } from './creative-type';
+
+
+/**
+ * Resource create operation model.
+ */
+export interface AdCreate { 
+  /**
+   * ID of the ad group that contains the ad.
+   */
+  ad_group_id: string;
+  /**
+   * Deep link URL for Android devices.
+   */
+  android_deep_link?: string | null;
+  /**
+   * Comma-separated deep links for the carousel pin on Android.
+   */
+  carousel_android_deep_links?: Array<string> | null;
+  /**
+   * Comma-separated destination URLs for the carousel pin to promote.
+   */
+  carousel_destination_urls?: Array<string> | null;
+  /**
+   * Comma-separated deep links for the carousel pin on iOS.
+   */
+  carousel_ios_deep_links?: Array<string> | null;
+  /**
+   * Tracking url for the ad clicks.
+   */
+  click_tracking_url?: string | null;
+  /**
+   * Destination URL template for all items within a collections drawer.
+   */
+  collection_items_destination_url_template?: string | null;
+  collections_header_type?: AdCollectionsHeaderType | null;
+  creative_type: CreativeType;
+  customizable_cta_type?: CustomizableCTAType | null;
+  /**
+   * Destination URL.
+   */
+  destination_url?: string | null;
+  disclosure_type?: DisclosureType | null;
+  /**
+   * URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+   */
+  disclosure_url?: string | null;
+  grid_click_type?: GridClickType | null;
+  /**
+   * Deep link URL for iOS devices.
+   */
+  ios_deep_link?: string | null;
+  /**
+   * Is the ad a carting/WTB ad?
+   */
+  is_carting?: boolean;
+  /**
+   * Whether the advertiser has accepted the terms and conditions for collage ad.
+   */
+  is_collage_accepted_terms?: boolean;
+  /**
+   * Whether the collage ad has a single destination url override.
+   */
+  is_collage_single_destination?: boolean;
+  /**
+   * Is original pin deleted?
+   */
+  is_pin_deleted?: boolean;
+  /**
+   * Is pin repinnable?
+   */
+  is_removable?: boolean;
+  /**
+   * Lead form ID for lead ad generation.
+   */
+  lead_form_id?: string | null;
+  /**
+   * Name of the ad - 255 chars max.
+   */
+  name?: string | null;
+  /**
+   * Pin ID. This field may only be updated for draft ads.
+   */
+  pin_id: string;
+  /**
+   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+   */
+  quiz_pin_data?: QuizPinData | null;
+  status?: EntityStatus;
+  tracking_urls?: TrackingUrls | null;
+  /**
+   * Tracking URL for ad impressions.
+   */
+  view_tracking_url?: string | null;
+}
+export namespace AdCreate {
+}
+
+

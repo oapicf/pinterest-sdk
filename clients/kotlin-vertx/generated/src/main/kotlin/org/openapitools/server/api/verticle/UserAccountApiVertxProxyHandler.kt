@@ -18,20 +18,23 @@ import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
 import org.openapitools.server.api.model.Account
 import org.openapitools.server.api.model.AnalyticsMetricsResponse
-import org.openapitools.server.api.model.BoardsUserFollowsList200Response
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.FollowUserRequest
+import org.openapitools.server.api.model.BoardsList200Response
+import org.openapitools.server.api.model.FollowUser
+import org.openapitools.server.api.model.FollowUserCreate
 import org.openapitools.server.api.model.FollowersList200Response
 import org.openapitools.server.api.model.LinkedBusiness
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.QuerymetrictypesItems
+import org.openapitools.server.api.model.QueryvideopinmetrictypesItems
 import org.openapitools.server.api.model.TopPinsAnalyticsResponse
+import org.openapitools.server.api.model.TopPinsSortBy
 import org.openapitools.server.api.model.TopVideoPinsAnalyticsResponse
+import org.openapitools.server.api.model.TopVideoPinsSortBy
 import org.openapitools.server.api.model.UserAccountFollowedInterests200Response
 import org.openapitools.server.api.model.UserFollowingFeedType
-import org.openapitools.server.api.model.UserFollowingGet200Response
-import org.openapitools.server.api.model.UserSummary
-import org.openapitools.server.api.model.UserWebsiteSummary
-import org.openapitools.server.api.model.UserWebsiteVerificationCode
-import org.openapitools.server.api.model.UserWebsiteVerifyRequest
+import org.openapitools.server.api.model.UserWebsite
+import org.openapitools.server.api.model.UserWebsiteCreate
+import org.openapitools.server.api.model.UserWebsiteVerification
 import org.openapitools.server.api.model.UserWebsitesGet200Response
 
 class UserAccountApiVertxProxyHandler(private val vertx: Vertx, private val service: UserAccountApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
@@ -82,12 +85,12 @@ class UserAccountApiVertxProxyHandler(private val vertx: Vertx, private val serv
         
                 "boardsUserFollowsList" -> {
                     val params = context.params
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    val explicitFollowing = ApiHandlerUtils.searchStringInJson(params,"explicit_following")?.toBoolean()
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val explicitFollowing = ApiHandlerUtils.searchStringInJson(params,"explicit_following")?.toBoolean()
-                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.boardsUserFollowsList(bookmark,pageSize,explicitFollowing,adAccountId,context)
+                        val result = service.boardsUserFollowsList(adAccountId,explicitFollowing,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -102,13 +105,13 @@ class UserAccountApiVertxProxyHandler(private val vertx: Vertx, private val serv
                     if(username == null){
                         throw IllegalArgumentException("username is required")
                     }
-                    val followUserRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (followUserRequestParam == null) {
-                        throw IllegalArgumentException("followUserRequest is required")
+                    val followUserCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (followUserCreateParam == null) {
+                        throw IllegalArgumentException("followUserCreate is required")
                     }
-                    val followUserRequest = Gson().fromJson(followUserRequestParam.encode(), FollowUserRequest::class.java)
+                    val followUserCreate = Gson().fromJson(followUserCreateParam.encode(), FollowUserCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.followUserUpdate(username,followUserRequest,context)
+                        val result = service.followUserUpdate(username,followUserCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -166,9 +169,9 @@ class UserAccountApiVertxProxyHandler(private val vertx: Vertx, private val serv
                     val contentType = ApiHandlerUtils.searchStringInJson(params,"content_type")
                     val source = ApiHandlerUtils.searchStringInJson(params,"source")
                     val metricTypesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"metric_types")
-                    val metricTypes:kotlin.Array<kotlin.String>? = if(metricTypesParam == null) null
+                    val metricTypes:kotlin.Array<QuerymetrictypesItems>? = if(metricTypesParam == null) null
                             else Gson().fromJson(metricTypesParam.encode(),
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                            , object : TypeToken<kotlin.collections.List<QuerymetrictypesItems>>(){}.type)
                     val splitField = ApiHandlerUtils.searchStringInJson(params,"split_field")
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
@@ -191,21 +194,22 @@ class UserAccountApiVertxProxyHandler(private val vertx: Vertx, private val serv
                     if(endDate == null){
                         throw IllegalArgumentException("endDate is required")
                     }
-                    val sortBy = ApiHandlerUtils.searchStringInJson(params,"sort_by")
-                    if(sortBy == null){
+                    val sortByParam = ApiHandlerUtils.searchJsonObjectInJson(params,"sort_by")
+                    if (sortByParam == null) {
                         throw IllegalArgumentException("sortBy is required")
                     }
+                    val sortBy = Gson().fromJson(sortByParam.encode(), TopPinsSortBy::class.java)
                     val fromClaimedContent = ApiHandlerUtils.searchStringInJson(params,"from_claimed_content")
                     val pinFormat = ApiHandlerUtils.searchStringInJson(params,"pin_format")
                     val appTypes = ApiHandlerUtils.searchStringInJson(params,"app_types")
                     val contentType = ApiHandlerUtils.searchStringInJson(params,"content_type")
                     val source = ApiHandlerUtils.searchStringInJson(params,"source")
                     val metricTypesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"metric_types")
-                    val metricTypes:kotlin.Array<kotlin.String>? = if(metricTypesParam == null) null
+                    val metricTypes:kotlin.Array<QuerymetrictypesItems>? = if(metricTypesParam == null) null
                             else Gson().fromJson(metricTypesParam.encode(),
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                            , object : TypeToken<kotlin.collections.List<QuerymetrictypesItems>>(){}.type)
                     val numOfPins = ApiHandlerUtils.searchIntegerInJson(params,"num_of_pins")
-                    val createdInLastNDays = ApiHandlerUtils.searchIntegerInJson(params,"created_in_last_n_days")
+                    val createdInLastNDays = ApiHandlerUtils.searchDoubleInJson(params,"created_in_last_n_days")
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
                         val result = service.userAccountAnalyticsTopPins(startDate,endDate,sortBy,fromClaimedContent,pinFormat,appTypes,contentType,source,metricTypes,numOfPins,createdInLastNDays,adAccountId,context)
@@ -227,21 +231,22 @@ class UserAccountApiVertxProxyHandler(private val vertx: Vertx, private val serv
                     if(endDate == null){
                         throw IllegalArgumentException("endDate is required")
                     }
-                    val sortBy = ApiHandlerUtils.searchStringInJson(params,"sort_by")
-                    if(sortBy == null){
+                    val sortByParam = ApiHandlerUtils.searchJsonObjectInJson(params,"sort_by")
+                    if (sortByParam == null) {
                         throw IllegalArgumentException("sortBy is required")
                     }
+                    val sortBy = Gson().fromJson(sortByParam.encode(), TopVideoPinsSortBy::class.java)
                     val fromClaimedContent = ApiHandlerUtils.searchStringInJson(params,"from_claimed_content")
                     val pinFormat = ApiHandlerUtils.searchStringInJson(params,"pin_format")
                     val appTypes = ApiHandlerUtils.searchStringInJson(params,"app_types")
                     val contentType = ApiHandlerUtils.searchStringInJson(params,"content_type")
                     val source = ApiHandlerUtils.searchStringInJson(params,"source")
                     val metricTypesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"metric_types")
-                    val metricTypes:kotlin.Array<kotlin.String>? = if(metricTypesParam == null) null
+                    val metricTypes:kotlin.Array<QueryvideopinmetrictypesItems>? = if(metricTypesParam == null) null
                             else Gson().fromJson(metricTypesParam.encode(),
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                            , object : TypeToken<kotlin.collections.List<QueryvideopinmetrictypesItems>>(){}.type)
                     val numOfPins = ApiHandlerUtils.searchIntegerInJson(params,"num_of_pins")
-                    val createdInLastNDays = ApiHandlerUtils.searchIntegerInJson(params,"created_in_last_n_days")
+                    val createdInLastNDays = ApiHandlerUtils.searchDoubleInJson(params,"created_in_last_n_days")
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
                         val result = service.userAccountAnalyticsTopVideoPins(startDate,endDate,sortBy,fromClaimedContent,pinFormat,appTypes,contentType,source,metricTypes,numOfPins,createdInLastNDays,adAccountId,context)
@@ -286,13 +291,14 @@ class UserAccountApiVertxProxyHandler(private val vertx: Vertx, private val serv
         
                 "userFollowingGet" -> {
                     val params = context.params
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    val explicitFollowing = ApiHandlerUtils.searchStringInJson(params,"explicit_following")?.toBoolean()
+                    val feedTypeParam = ApiHandlerUtils.searchJsonObjectInJson(params,"feed_type")
+                    val feedType = if(feedTypeParam ==null) null else Gson().fromJson(feedTypeParam.encode(), UserFollowingFeedType::class.java)
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val feedType = ApiHandlerUtils.searchStringInJson(params,"feed_type")
-                    val explicitFollowing = ApiHandlerUtils.searchStringInJson(params,"explicit_following")?.toBoolean()
-                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.userFollowingGet(bookmark,pageSize,feedType,explicitFollowing,adAccountId,context)
+                        val result = service.userFollowingGet(adAccountId,explicitFollowing,feedType,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -317,14 +323,14 @@ class UserAccountApiVertxProxyHandler(private val vertx: Vertx, private val serv
         
                 "verifyWebsiteUpdate" -> {
                     val params = context.params
-                    val userWebsiteVerifyRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (userWebsiteVerifyRequestParam == null) {
-                        throw IllegalArgumentException("userWebsiteVerifyRequest is required")
+                    val userWebsiteCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (userWebsiteCreateParam == null) {
+                        throw IllegalArgumentException("userWebsiteCreate is required")
                     }
-                    val userWebsiteVerifyRequest = Gson().fromJson(userWebsiteVerifyRequestParam.encode(), UserWebsiteVerifyRequest::class.java)
+                    val userWebsiteCreate = Gson().fromJson(userWebsiteCreateParam.encode(), UserWebsiteCreate::class.java)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.verifyWebsiteUpdate(userWebsiteVerifyRequest,adAccountId,context)
+                        val result = service.verifyWebsiteUpdate(userWebsiteCreate,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

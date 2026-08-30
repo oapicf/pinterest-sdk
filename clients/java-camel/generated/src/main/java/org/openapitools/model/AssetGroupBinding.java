@@ -7,28 +7,26 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BusinessAccessUserSummary;
-import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * AssetGroupBinding
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AssetGroupBinding {
 
   @Valid
-  private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> adAccountsIds = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
+  private List<@Pattern(regexp = "^\\d+$")String> adAccountsIds = new ArrayList<>();
 
   private JsonNullable<String> assetGroupDescription = JsonNullable.<String>undefined();
 
@@ -38,31 +36,52 @@ public class AssetGroupBinding {
   private List<String> assetGroupTypes = new ArrayList<>();
 
   @Valid
-  private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> catalogsIds = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
+  private List<@Pattern(regexp = "^\\d+$")String> catalogsIds = new ArrayList<>();
 
-  private JsonNullable<BusinessAccessUserSummary> createdBy = JsonNullable.<BusinessAccessUserSummary>undefined();
+  private BusinessAccessUserSummary createdBy;
 
   private JsonNullable<Integer> createdTime = JsonNullable.<Integer>undefined();
 
   private String id;
 
-  private JsonNullable<BusinessAccessUserSummary> owner = JsonNullable.<BusinessAccessUserSummary>undefined();
+  private BusinessAccessUserSummary owner;
 
   @Valid
-  private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> profilesIds = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
+  private List<@Pattern(regexp = "^\\d+$")String> profilesIds = new ArrayList<>();
 
   private JsonNullable<Integer> updatedTime = JsonNullable.<Integer>undefined();
 
+  public AssetGroupBinding() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public AssetGroupBinding(List<@Pattern(regexp = "^\\d+$")String> adAccountsIds, String assetGroupDescription, String assetGroupName, List<String> assetGroupTypes, List<@Pattern(regexp = "^\\d+$")String> catalogsIds, BusinessAccessUserSummary createdBy, Integer createdTime, String id, BusinessAccessUserSummary owner, List<@Pattern(regexp = "^\\d+$")String> profilesIds, Integer updatedTime) {
+    this.adAccountsIds = adAccountsIds;
+    this.assetGroupDescription = JsonNullable.of(assetGroupDescription);
+    this.assetGroupName = JsonNullable.of(assetGroupName);
+    this.assetGroupTypes = assetGroupTypes;
+    this.catalogsIds = catalogsIds;
+    this.createdBy = createdBy;
+    this.createdTime = JsonNullable.of(createdTime);
+    this.id = id;
+    this.owner = owner;
+    this.profilesIds = profilesIds;
+    this.updatedTime = JsonNullable.of(updatedTime);
+  }
+
   public AssetGroupBinding adAccountsIds(List<@Pattern(regexp = "^\\d+$")String> adAccountsIds) {
-    this.adAccountsIds = JsonNullable.of(adAccountsIds);
+    this.adAccountsIds = adAccountsIds;
     return this;
   }
 
   public AssetGroupBinding addAdAccountsIdsItem(String adAccountsIdsItem) {
-    if (this.adAccountsIds == null || !this.adAccountsIds.isPresent()) {
-      this.adAccountsIds = JsonNullable.of(new ArrayList<>());
+    if (this.adAccountsIds == null) {
+      this.adAccountsIds = new ArrayList<>();
     }
-    this.adAccountsIds.get().add(adAccountsIdsItem);
+    this.adAccountsIds.add(adAccountsIdsItem);
     return this;
   }
 
@@ -70,14 +89,14 @@ public class AssetGroupBinding {
    * A list of ad account IDs under the asset group
    * @return adAccountsIds
    */
-  
-  @Schema(name = "ad_accounts_ids", example = "[\"549755885175\"]", description = "A list of ad account IDs under the asset group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "ad_accounts_ids", example = "[\"549755885175\"]", description = "A list of ad account IDs under the asset group", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("ad_accounts_ids")
-  public JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> getAdAccountsIds() {
+  public List<@Pattern(regexp = "^\\d+$")String> getAdAccountsIds() {
     return adAccountsIds;
   }
 
-  public void setAdAccountsIds(JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> adAccountsIds) {
+  public void setAdAccountsIds(List<@Pattern(regexp = "^\\d+$")String> adAccountsIds) {
     this.adAccountsIds = adAccountsIds;
   }
 
@@ -90,8 +109,8 @@ public class AssetGroupBinding {
    * Asset group description
    * @return assetGroupDescription
    */
-  
-  @Schema(name = "asset_group_description", example = "Asset group that has ad accounts used in Canada", description = "Asset group description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "asset_group_description", example = "Asset group that has ad accounts used in Canada", description = "Asset group description", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("asset_group_description")
   public JsonNullable<String> getAssetGroupDescription() {
     return assetGroupDescription;
@@ -110,8 +129,8 @@ public class AssetGroupBinding {
    * Asset Group name
    * @return assetGroupName
    */
-  
-  @Schema(name = "asset_group_name", example = "Canada Ad Accounts", description = "Asset Group name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "asset_group_name", example = "Canada Ad Accounts", description = "Asset Group name", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("asset_group_name")
   public JsonNullable<String> getAssetGroupName() {
     return assetGroupName;
@@ -138,8 +157,8 @@ public class AssetGroupBinding {
    * Asset group types
    * @return assetGroupTypes
    */
-  
-  @Schema(name = "asset_group_types", example = "[\"LOCATION_OR_LANGUAGE\"]", description = "Asset group types", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "asset_group_types", example = "[\"LOCATION_OR_LANGUAGE\"]", description = "Asset group types", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("asset_group_types")
   public List<String> getAssetGroupTypes() {
     return assetGroupTypes;
@@ -150,15 +169,15 @@ public class AssetGroupBinding {
   }
 
   public AssetGroupBinding catalogsIds(List<@Pattern(regexp = "^\\d+$")String> catalogsIds) {
-    this.catalogsIds = JsonNullable.of(catalogsIds);
+    this.catalogsIds = catalogsIds;
     return this;
   }
 
   public AssetGroupBinding addCatalogsIdsItem(String catalogsIdsItem) {
-    if (this.catalogsIds == null || !this.catalogsIds.isPresent()) {
-      this.catalogsIds = JsonNullable.of(new ArrayList<>());
+    if (this.catalogsIds == null) {
+      this.catalogsIds = new ArrayList<>();
     }
-    this.catalogsIds.get().add(catalogsIdsItem);
+    this.catalogsIds.add(catalogsIdsItem);
     return this;
   }
 
@@ -166,19 +185,19 @@ public class AssetGroupBinding {
    * A list of catalog IDs under asset group
    * @return catalogsIds
    */
-  
-  @Schema(name = "catalogs_ids", example = "[\"4836859046874\"]", description = "A list of catalog IDs under asset group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "catalogs_ids", example = "[\"4836859046874\"]", description = "A list of catalog IDs under asset group", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalogs_ids")
-  public JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> getCatalogsIds() {
+  public List<@Pattern(regexp = "^\\d+$")String> getCatalogsIds() {
     return catalogsIds;
   }
 
-  public void setCatalogsIds(JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> catalogsIds) {
+  public void setCatalogsIds(List<@Pattern(regexp = "^\\d+$")String> catalogsIds) {
     this.catalogsIds = catalogsIds;
   }
 
   public AssetGroupBinding createdBy(BusinessAccessUserSummary createdBy) {
-    this.createdBy = JsonNullable.of(createdBy);
+    this.createdBy = createdBy;
     return this;
   }
 
@@ -186,14 +205,14 @@ public class AssetGroupBinding {
    * The data of the user that created the asset group.
    * @return createdBy
    */
-  @Valid 
-  @Schema(name = "created_by", description = "The data of the user that created the asset group.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "created_by", description = "The data of the user that created the asset group.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("created_by")
-  public JsonNullable<BusinessAccessUserSummary> getCreatedBy() {
+  public BusinessAccessUserSummary getCreatedBy() {
     return createdBy;
   }
 
-  public void setCreatedBy(JsonNullable<BusinessAccessUserSummary> createdBy) {
+  public void setCreatedBy(BusinessAccessUserSummary createdBy) {
     this.createdBy = createdBy;
   }
 
@@ -206,8 +225,8 @@ public class AssetGroupBinding {
    * The creation time of the asset group
    * @return createdTime
    */
-  
-  @Schema(name = "created_time", example = "1646767577816", description = "The creation time of the asset group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "created_time", example = "1646767577816", description = "The creation time of the asset group", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("created_time")
   public JsonNullable<Integer> getCreatedTime() {
     return createdTime;
@@ -226,8 +245,8 @@ public class AssetGroupBinding {
    * Asset Group ID.
    * @return id
    */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "666791336903426391", description = "Asset Group ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", example = "666791336903426391", description = "Asset Group ID.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -238,7 +257,7 @@ public class AssetGroupBinding {
   }
 
   public AssetGroupBinding owner(BusinessAccessUserSummary owner) {
-    this.owner = JsonNullable.of(owner);
+    this.owner = owner;
     return this;
   }
 
@@ -246,27 +265,27 @@ public class AssetGroupBinding {
    * The data of the business that owns the asset group.
    * @return owner
    */
-  @Valid 
-  @Schema(name = "owner", description = "The data of the business that owns the asset group.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "owner", description = "The data of the business that owns the asset group.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("owner")
-  public JsonNullable<BusinessAccessUserSummary> getOwner() {
+  public BusinessAccessUserSummary getOwner() {
     return owner;
   }
 
-  public void setOwner(JsonNullable<BusinessAccessUserSummary> owner) {
+  public void setOwner(BusinessAccessUserSummary owner) {
     this.owner = owner;
   }
 
   public AssetGroupBinding profilesIds(List<@Pattern(regexp = "^\\d+$")String> profilesIds) {
-    this.profilesIds = JsonNullable.of(profilesIds);
+    this.profilesIds = profilesIds;
     return this;
   }
 
   public AssetGroupBinding addProfilesIdsItem(String profilesIdsItem) {
-    if (this.profilesIds == null || !this.profilesIds.isPresent()) {
-      this.profilesIds = JsonNullable.of(new ArrayList<>());
+    if (this.profilesIds == null) {
+      this.profilesIds = new ArrayList<>();
     }
-    this.profilesIds.get().add(profilesIdsItem);
+    this.profilesIds.add(profilesIdsItem);
     return this;
   }
 
@@ -274,14 +293,14 @@ public class AssetGroupBinding {
    * A list of profile IDs under asset group
    * @return profilesIds
    */
-  
-  @Schema(name = "profiles_ids", example = "[\"630433785246278264\"]", description = "A list of profile IDs under asset group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "profiles_ids", example = "[\"630433785246278264\"]", description = "A list of profile IDs under asset group", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("profiles_ids")
-  public JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> getProfilesIds() {
+  public List<@Pattern(regexp = "^\\d+$")String> getProfilesIds() {
     return profilesIds;
   }
 
-  public void setProfilesIds(JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> profilesIds) {
+  public void setProfilesIds(List<@Pattern(regexp = "^\\d+$")String> profilesIds) {
     this.profilesIds = profilesIds;
   }
 
@@ -294,8 +313,8 @@ public class AssetGroupBinding {
    * The last update time of the asset group
    * @return updatedTime
    */
-  
-  @Schema(name = "updated_time", example = "1646767577816", description = "The last update time of the asset group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "updated_time", example = "1646767577816", description = "The last update time of the asset group", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("updated_time")
   public JsonNullable<Integer> getUpdatedTime() {
     return updatedTime;
@@ -314,33 +333,22 @@ public class AssetGroupBinding {
       return false;
     }
     AssetGroupBinding assetGroupBinding = (AssetGroupBinding) o;
-    return equalsNullable(this.adAccountsIds, assetGroupBinding.adAccountsIds) &&
-        equalsNullable(this.assetGroupDescription, assetGroupBinding.assetGroupDescription) &&
-        equalsNullable(this.assetGroupName, assetGroupBinding.assetGroupName) &&
+    return Objects.equals(this.adAccountsIds, assetGroupBinding.adAccountsIds) &&
+        Objects.equals(this.assetGroupDescription, assetGroupBinding.assetGroupDescription) &&
+        Objects.equals(this.assetGroupName, assetGroupBinding.assetGroupName) &&
         Objects.equals(this.assetGroupTypes, assetGroupBinding.assetGroupTypes) &&
-        equalsNullable(this.catalogsIds, assetGroupBinding.catalogsIds) &&
-        equalsNullable(this.createdBy, assetGroupBinding.createdBy) &&
-        equalsNullable(this.createdTime, assetGroupBinding.createdTime) &&
+        Objects.equals(this.catalogsIds, assetGroupBinding.catalogsIds) &&
+        Objects.equals(this.createdBy, assetGroupBinding.createdBy) &&
+        Objects.equals(this.createdTime, assetGroupBinding.createdTime) &&
         Objects.equals(this.id, assetGroupBinding.id) &&
-        equalsNullable(this.owner, assetGroupBinding.owner) &&
-        equalsNullable(this.profilesIds, assetGroupBinding.profilesIds) &&
-        equalsNullable(this.updatedTime, assetGroupBinding.updatedTime);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+        Objects.equals(this.owner, assetGroupBinding.owner) &&
+        Objects.equals(this.profilesIds, assetGroupBinding.profilesIds) &&
+        Objects.equals(this.updatedTime, assetGroupBinding.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(adAccountsIds), hashCodeNullable(assetGroupDescription), hashCodeNullable(assetGroupName), assetGroupTypes, hashCodeNullable(catalogsIds), hashCodeNullable(createdBy), hashCodeNullable(createdTime), id, hashCodeNullable(owner), hashCodeNullable(profilesIds), hashCodeNullable(updatedTime));
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(adAccountsIds, assetGroupDescription, assetGroupName, assetGroupTypes, catalogsIds, createdBy, createdTime, id, owner, profilesIds, updatedTime);
   }
 
   @Override
@@ -367,10 +375,7 @@ public class AssetGroupBinding {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

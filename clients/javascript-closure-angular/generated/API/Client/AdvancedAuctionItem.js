@@ -6,6 +6,12 @@ goog.provide('API.Client.AdvancedAuctionItem');
 API.Client.AdvancedAuctionItem = function() {}
 
 /**
+ * @type {!API.Client.AdvancedAuctionBidOptions}
+ * @export
+ */
+API.Client.AdvancedAuctionItem.prototype.bidOptions;
+
+/**
  * @type {!API.Client.Country}
  * @export
  */
@@ -23,10 +29,4 @@ API.Client.AdvancedAuctionItem.prototype.itemId;
  * @export
  */
 API.Client.AdvancedAuctionItem.prototype.language;
-
-/**
- * @type {!API.Client.AdvancedAuctionBidOptions}
- * @export
- */
-API.Client.AdvancedAuctionItem.prototype.bidOptions;
 

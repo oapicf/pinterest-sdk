@@ -1,11 +1,11 @@
-# # CatalogsItemsPostFilters
+# CatalogsItemsPostFilters
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**\OpenAPI\Client\Model\CatalogsType**](CatalogsType.md) |  |
 **catalog_id** | **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional]
+**catalog_type** | **string** |  |
 **item_ids** | **string[]** |  |
 **hotel_ids** | **string[]** |  |
 **creative_assets_ids** | **string[]** |  |

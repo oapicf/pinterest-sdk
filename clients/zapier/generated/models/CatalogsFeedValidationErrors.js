@@ -61,7 +61,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}FETCH_INACTIVE_FEED_ERROR`,
-                label: `Your feed wasn't ingested because it hasn’t changed in the previous 90 days. - [${labelPrefix}FETCH_INACTIVE_FEED_ERROR]`,
+                label: `Your feed wasn't ingested because it hasn't changed in the previous 90 days. - [${labelPrefix}FETCH_INACTIVE_FEED_ERROR]`,
                 type: 'integer',
             },
             {

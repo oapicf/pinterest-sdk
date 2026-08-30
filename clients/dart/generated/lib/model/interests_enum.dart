@@ -11,57 +11,43 @@
 part of openapi.api;
 
 
-class InterestsEnum {
-  /// Instantiate a new enum with the provided [value].
-  const InterestsEnum._(this.value);
+enum InterestsEnum {
+  ALL._(r'ALL'),
+  ANIMALS._(r'ANIMALS'),
+  ARCHITECTURE._(r'ARCHITECTURE'),
+  ART._(r'ART'),
+  BEAUTY._(r'BEAUTY'),
+  DIY_AND_CRAFTS._(r'DIY_AND_CRAFTS'),
+  EDUCATION._(r'EDUCATION'),
+  EVENT_PLANNING._(r'EVENT_PLANNING'),
+  FASHION._(r'FASHION'),
+  FOOD_AND_DRINKS._(r'FOOD_AND_DRINKS'),
+  GARDENING._(r'GARDENING'),
+  HEALTH._(r'HEALTH'),
+  HOME_DECOR._(r'HOME_DECOR'),
+  PARENTING._(r'PARENTING'),
+  TRAVEL._(r'TRAVEL'),
+  WEDDING._(r'WEDDING'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const InterestsEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const ALL = InterestsEnum._(r'ALL');
-  static const ANIMALS = InterestsEnum._(r'ANIMALS');
-  static const ARCHITECTURE = InterestsEnum._(r'ARCHITECTURE');
-  static const ART = InterestsEnum._(r'ART');
-  static const BEAUTY = InterestsEnum._(r'BEAUTY');
-  static const DIY_AND_CRAFTS = InterestsEnum._(r'DIY_AND_CRAFTS');
-  static const EDUCATION = InterestsEnum._(r'EDUCATION');
-  static const EVENT_PLANNING = InterestsEnum._(r'EVENT_PLANNING');
-  static const FASHION = InterestsEnum._(r'FASHION');
-  static const FOOD_AND_DRINKS = InterestsEnum._(r'FOOD_AND_DRINKS');
-  static const GARDENING = InterestsEnum._(r'GARDENING');
-  static const HEALTH = InterestsEnum._(r'HEALTH');
-  static const HOME_DECOR = InterestsEnum._(r'HOME_DECOR');
-  static const PARENTING = InterestsEnum._(r'PARENTING');
-  static const TRAVEL = InterestsEnum._(r'TRAVEL');
-  static const WEDDING = InterestsEnum._(r'WEDDING');
-
-  /// List of all possible values in this [enum][InterestsEnum].
-  static const values = <InterestsEnum>[
-    ALL,
-    ANIMALS,
-    ARCHITECTURE,
-    ART,
-    BEAUTY,
-    DIY_AND_CRAFTS,
-    EDUCATION,
-    EVENT_PLANNING,
-    FASHION,
-    FOOD_AND_DRINKS,
-    GARDENING,
-    HEALTH,
-    HOME_DECOR,
-    PARENTING,
-    TRAVEL,
-    WEDDING,
-  ];
-
+  /// Returns the instance of [InterestsEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static InterestsEnum? fromJson(dynamic value) => InterestsEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [InterestsEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<InterestsEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <InterestsEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -83,9 +69,11 @@ class InterestsEnumTypeTransformer {
 
   const InterestsEnumTypeTransformer._();
 
-  String encode(InterestsEnum data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(InterestsEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a InterestsEnum.
+  /// Returns the instance of [InterestsEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -94,6 +82,9 @@ class InterestsEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   InterestsEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is InterestsEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'ALL': return InterestsEnum.ALL;
@@ -121,7 +112,7 @@ class InterestsEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [InterestsEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static InterestsEnumTypeTransformer? _instance;
 }
 

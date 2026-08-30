@@ -5,7 +5,7 @@ Protected Class CreateInvitesResultsResponseArray
 		#tag Note
 			List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
 		#tag EndNote
-		items() As OpenAPIClient.Models.CreateInvitesResultsResponseArrayItemsInner
+		items() As OpenAPIClient.Models.InviteActionResultItem
 	#tag EndProperty
 
 
@@ -50,7 +50,7 @@ Protected Class CreateInvitesResultsResponseArray
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CreateInvitesResultsResponseArrayItemsInner"
+			Type="InviteActionResultItem"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

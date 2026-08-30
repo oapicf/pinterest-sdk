@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "Catalogs_hotel_filter_values_map.h"
+#include "CatalogsHotelFilterValuesMap.h"
 
 namespace Tiny {
 
@@ -52,19 +52,19 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
-	Catalogs_hotel_filter_values_map getFilterValues();
+	CatalogsHotelFilterValuesMap getFilterValues();
 
 	/*! \brief Set 
 	 */
-	void setFilterValues(Catalogs_hotel_filter_values_map  filter_values);
+	void setFilterValues(CatalogsHotelFilterValuesMap filter_values);
 
 
     private:
     std::string catalog_type{};
-    Catalogs_hotel_filter_values_map filter_values;
+    CatalogsHotelFilterValuesMap filter_values;
 };
 }
 

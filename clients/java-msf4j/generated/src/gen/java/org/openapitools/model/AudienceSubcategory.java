@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 /**
  * AudienceSubcategory
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AudienceSubcategory   {
   @JsonProperty("id")
   private String id;
@@ -33,10 +33,10 @@ public class AudienceSubcategory   {
   }
 
    /**
-   * Subinterest ID.
+   * Get id
    * @return id
   **/
-  @ApiModelProperty(example = "958862518888", value = "Subinterest ID.")
+  @ApiModelProperty(value = "")
   public String getId() {
     return id;
   }
@@ -51,10 +51,10 @@ public class AudienceSubcategory   {
   }
 
    /**
-   * Subinterest affinity index.
+   * Get index
    * @return index
   **/
-  @ApiModelProperty(example = "1.2", value = "Subinterest affinity index.")
+  @ApiModelProperty(value = "")
   public BigDecimal getIndex() {
     return index;
   }
@@ -69,10 +69,10 @@ public class AudienceSubcategory   {
   }
 
    /**
-   * Interest unique key (same as ID).
+   * Get key
    * @return key
   **/
-  @ApiModelProperty(example = "958862518888", value = "Interest unique key (same as ID).")
+  @ApiModelProperty(value = "")
   public String getKey() {
     return key;
   }
@@ -87,10 +87,10 @@ public class AudienceSubcategory   {
   }
 
    /**
-   * Subinterest name.
+   * Get name
    * @return name
   **/
-  @ApiModelProperty(example = "travel destinations", value = "Subinterest name.")
+  @ApiModelProperty(value = "")
   public String getName() {
     return name;
   }
@@ -105,10 +105,10 @@ public class AudienceSubcategory   {
   }
 
    /**
-   * Subinterest's percent of category's total audience.
+   * Get ratio
    * @return ratio
   **/
-  @ApiModelProperty(example = "0.482", value = "Subinterest's percent of category's total audience.")
+  @ApiModelProperty(value = "")
   public BigDecimal getRatio() {
     return ratio;
   }
@@ -158,10 +158,7 @@ public class AudienceSubcategory   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

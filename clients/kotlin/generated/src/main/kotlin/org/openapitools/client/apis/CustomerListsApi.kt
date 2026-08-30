@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -20,10 +28,11 @@ import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.CustomerList
-import org.openapitools.client.models.CustomerListRequest
-import org.openapitools.client.models.CustomerListUpdateRequest
+import org.openapitools.client.models.CustomerListCreate
+import org.openapitools.client.models.CustomerListUpdateWithRequiredBody
 import org.openapitools.client.models.CustomerListsList200Response
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
 
 import com.squareup.moshi.Json
 
@@ -45,16 +54,16 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * POST /ad_accounts/{ad_account_id}/customer_lists
      * Create customer lists
-     * &lt;p&gt;Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).&lt;/p&gt; &lt;p&gt;A customer list is one of the four types of Pinterest audiences: for more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;p/&gt; &lt;p&gt;&lt;b&gt;Please review our &lt;u&gt;&lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting#section-13341\&quot; target&#x3D;\&quot;_blank\&quot;&gt;requirements&lt;/a&gt;&lt;/u&gt; for what type of information is allowed when uploading a customer list.&lt;/b&gt;&lt;/p&gt; &lt;p&gt;When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.&lt;/p&gt; &lt;p&gt;To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the &lt;a href&#x3D;\&quot;https://developer.pinterest.com/docs/api/v5/audiences-create\&quot; target&#x3D;\&quot;blank\&quot;&gt;create audience endpoint&lt;/a&gt;.&lt;/p&gt;
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListRequest Parameters to get Customer lists info
+     * Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
+     * @param adAccountId 
+     * @param customerListCreate 
      * @return CustomerList
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -64,8 +73,8 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun customerListsCreate(adAccountId: kotlin.String, customerListRequest: CustomerListRequest) : CustomerList {
-        val localVarResponse = customerListsCreateWithHttpInfo(adAccountId = adAccountId, customerListRequest = customerListRequest)
+    fun customerListsCreate(adAccountId: kotlin.String, customerListCreate: CustomerListCreate) : CustomerList {
+        val localVarResponse = customerListsCreateWithHttpInfo(adAccountId = adAccountId, customerListCreate = customerListCreate)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerList
@@ -85,19 +94,19 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
     /**
      * POST /ad_accounts/{ad_account_id}/customer_lists
      * Create customer lists
-     * &lt;p&gt;Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).&lt;/p&gt; &lt;p&gt;A customer list is one of the four types of Pinterest audiences: for more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;p/&gt; &lt;p&gt;&lt;b&gt;Please review our &lt;u&gt;&lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting#section-13341\&quot; target&#x3D;\&quot;_blank\&quot;&gt;requirements&lt;/a&gt;&lt;/u&gt; for what type of information is allowed when uploading a customer list.&lt;/b&gt;&lt;/p&gt; &lt;p&gt;When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.&lt;/p&gt; &lt;p&gt;To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the &lt;a href&#x3D;\&quot;https://developer.pinterest.com/docs/api/v5/audiences-create\&quot; target&#x3D;\&quot;blank\&quot;&gt;create audience endpoint&lt;/a&gt;.&lt;/p&gt;
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListRequest Parameters to get Customer lists info
+     * Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
+     * @param adAccountId 
+     * @param customerListCreate 
      * @return ApiResponse<CustomerList?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun customerListsCreateWithHttpInfo(adAccountId: kotlin.String, customerListRequest: CustomerListRequest) : ApiResponse<CustomerList?> {
-        val localVariableConfig = customerListsCreateRequestConfig(adAccountId = adAccountId, customerListRequest = customerListRequest)
+    fun customerListsCreateWithHttpInfo(adAccountId: kotlin.String, customerListCreate: CustomerListCreate) : ApiResponse<CustomerList?> {
+        val localVariableConfig = customerListsCreateRequestConfig(adAccountId = adAccountId, customerListCreate = customerListCreate)
 
-        return request<CustomerListRequest, CustomerList>(
+        return request<CustomerListCreate, CustomerList>(
             localVariableConfig
         )
     }
@@ -105,12 +114,12 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
     /**
      * To obtain the request config of the operation customerListsCreate
      *
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListRequest Parameters to get Customer lists info
+     * @param adAccountId 
+     * @param customerListCreate 
      * @return RequestConfig
      */
-    fun customerListsCreateRequestConfig(adAccountId: kotlin.String, customerListRequest: CustomerListRequest) : RequestConfig<CustomerListRequest> {
-        val localVariableBody = customerListRequest
+    fun customerListsCreateRequestConfig(adAccountId: kotlin.String, customerListCreate: CustomerListCreate) : RequestConfig<CustomerListCreate> {
+        val localVariableBody = customerListCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -130,8 +139,8 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
      * GET /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}
      * Get customer list
      * Gets a specific customer list given the customer list ID.
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
      * @return CustomerList
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -163,8 +172,8 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
      * GET /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}
      * Get customer list
      * Gets a specific customer list given the customer list ID.
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
      * @return ApiResponse<CustomerList?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -182,8 +191,8 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
     /**
      * To obtain the request config of the operation customerListsGet
      *
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
      * @return RequestConfig
      */
     fun customerListsGetRequestConfig(adAccountId: kotlin.String, customerListId: kotlin.String) : RequestConfig<Unit> {
@@ -203,30 +212,14 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
     }
 
     /**
-     * enum for parameter order
-     */
-     enum class OrderCustomerListsList(val value: kotlin.String) {
-         @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /ad_accounts/{ad_account_id}/customer_lists
      * Get customer lists
-     * &lt;p&gt;Get a set of customer lists including id and name based on the filters provided.&lt;/p&gt; &lt;p&gt;(Customer lists are a type of audience.) For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;  or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
-     * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
+     * @param adAccountId 
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param excludeNca When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all). (optional, default to false)
      * @return CustomerListsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -236,8 +229,8 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun customerListsList(adAccountId: kotlin.String, pageSize: kotlin.Int? = 25, order: OrderCustomerListsList? = null, bookmark: kotlin.String? = null) : CustomerListsList200Response {
-        val localVarResponse = customerListsListWithHttpInfo(adAccountId = adAccountId, pageSize = pageSize, order = order, bookmark = bookmark)
+    fun customerListsList(adAccountId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, order: PinterestLibPaginationOrder? = null, excludeNca: kotlin.Boolean? = false) : CustomerListsList200Response {
+        val localVarResponse = customerListsListWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order, excludeNca = excludeNca)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerListsList200Response
@@ -257,19 +250,20 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
     /**
      * GET /ad_accounts/{ad_account_id}/customer_lists
      * Get customer lists
-     * &lt;p&gt;Get a set of customer lists including id and name based on the filters provided.&lt;/p&gt; &lt;p&gt;(Customer lists are a type of audience.) For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;  or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
-     * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
+     * @param adAccountId 
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param excludeNca When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all). (optional, default to false)
      * @return ApiResponse<CustomerListsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun customerListsListWithHttpInfo(adAccountId: kotlin.String, pageSize: kotlin.Int?, order: OrderCustomerListsList?, bookmark: kotlin.String?) : ApiResponse<CustomerListsList200Response?> {
-        val localVariableConfig = customerListsListRequestConfig(adAccountId = adAccountId, pageSize = pageSize, order = order, bookmark = bookmark)
+    fun customerListsListWithHttpInfo(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?, excludeNca: kotlin.Boolean?) : ApiResponse<CustomerListsList200Response?> {
+        val localVariableConfig = customerListsListRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order, excludeNca = excludeNca)
 
         return request<Unit, CustomerListsList200Response>(
             localVariableConfig
@@ -279,24 +273,28 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
     /**
      * To obtain the request config of the operation customerListsList
      *
-     * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param adAccountId 
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param excludeNca When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all). (optional, default to false)
      * @return RequestConfig
      */
-    fun customerListsListRequestConfig(adAccountId: kotlin.String, pageSize: kotlin.Int?, order: OrderCustomerListsList?, bookmark: kotlin.String?) : RequestConfig<Unit> {
+    fun customerListsListRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?, excludeNca: kotlin.Boolean?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (bookmark != null) {
+                    put("bookmark", listOf(bookmark.toString()))
+                }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
                 }
                 if (order != null) {
-                    put("order", listOf(order.value))
+                    put("order", listOf(order.toString()))
                 }
-                if (bookmark != null) {
-                    put("bookmark", listOf(bookmark.toString()))
+                if (excludeNca != null) {
+                    put("exclude_nca", listOf(excludeNca.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -315,10 +313,10 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
     /**
      * PATCH /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}
      * Update customer list
-     * &lt;p&gt;Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)&lt;/p&gt; &lt;p&gt;When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUpdateRequest 
+     * Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \&quot;CUSTOMER_LIST\&quot; audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUpdateWithRequiredBody 
      * @return CustomerList
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -328,8 +326,8 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun customerListsUpdate(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUpdateRequest: CustomerListUpdateRequest) : CustomerList {
-        val localVarResponse = customerListsUpdateWithHttpInfo(adAccountId = adAccountId, customerListId = customerListId, customerListUpdateRequest = customerListUpdateRequest)
+    fun customerListsUpdate(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody) : CustomerList {
+        val localVarResponse = customerListsUpdateWithHttpInfo(adAccountId = adAccountId, customerListId = customerListId, customerListUpdateWithRequiredBody = customerListUpdateWithRequiredBody)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerList
@@ -349,20 +347,20 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
     /**
      * PATCH /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}
      * Update customer list
-     * &lt;p&gt;Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)&lt;/p&gt; &lt;p&gt;When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUpdateRequest 
+     * Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \&quot;CUSTOMER_LIST\&quot; audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUpdateWithRequiredBody 
      * @return ApiResponse<CustomerList?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun customerListsUpdateWithHttpInfo(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUpdateRequest: CustomerListUpdateRequest) : ApiResponse<CustomerList?> {
-        val localVariableConfig = customerListsUpdateRequestConfig(adAccountId = adAccountId, customerListId = customerListId, customerListUpdateRequest = customerListUpdateRequest)
+    fun customerListsUpdateWithHttpInfo(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody) : ApiResponse<CustomerList?> {
+        val localVariableConfig = customerListsUpdateRequestConfig(adAccountId = adAccountId, customerListId = customerListId, customerListUpdateWithRequiredBody = customerListUpdateWithRequiredBody)
 
-        return request<CustomerListUpdateRequest, CustomerList>(
+        return request<CustomerListUpdateWithRequiredBody, CustomerList>(
             localVariableConfig
         )
     }
@@ -370,13 +368,13 @@ open class CustomerListsApi(basePath: kotlin.String = defaultBasePath, client: C
     /**
      * To obtain the request config of the operation customerListsUpdate
      *
-     * @param adAccountId Unique identifier of an ad account.
-     * @param customerListId Unique identifier of a customer list
-     * @param customerListUpdateRequest 
+     * @param adAccountId 
+     * @param customerListId Customer list ID.
+     * @param customerListUpdateWithRequiredBody 
      * @return RequestConfig
      */
-    fun customerListsUpdateRequestConfig(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUpdateRequest: CustomerListUpdateRequest) : RequestConfig<CustomerListUpdateRequest> {
-        val localVariableBody = customerListUpdateRequest
+    fun customerListsUpdateRequestConfig(adAccountId: kotlin.String, customerListId: kotlin.String, customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody) : RequestConfig<CustomerListUpdateWithRequiredBody> {
+        val localVariableBody = customerListUpdateWithRequiredBody
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"

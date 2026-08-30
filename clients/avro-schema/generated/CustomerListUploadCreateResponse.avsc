@@ -7,12 +7,12 @@
     {
       "name": "customer_list_upload",
       "type": "model.CustomerListUpload",
-      "doc": ""
+      "doc": "The Customer List Upload created."
     },
     {
       "name": "s3_multipart_upload_data",
       "type": "model.S3MultipartUploadData",
-      "doc": ""
+      "doc": "Pre-signed upload URLs corresponding to each part of the upload."
     }
   ]
 

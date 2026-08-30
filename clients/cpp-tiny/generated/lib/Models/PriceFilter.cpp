@@ -6,7 +6,7 @@ using namespace Tiny;
 
 PriceFilter::PriceFilter()
 {
-	pRICE = Catalogs_product_group_pricing_currency_criteria();
+	pRICE = PriceFilterPrice();
 }
 
 PriceFilter::PriceFilter(std::string jsonString)
@@ -33,7 +33,7 @@ PriceFilter::fromJson(std::string jsonObj)
 
 
 
-        Catalogs_product_group_pricing_currency_criteria* obj = &pRICE;
+        PriceFilterPrice* obj = &pRICE;
 		obj->fromJson(value.dump());
 
     }
@@ -58,14 +58,14 @@ PriceFilter::toJson()
 
 }
 
-Catalogs_product_group_pricing_currency_criteria
+PriceFilterPrice
 PriceFilter::getPRICE()
 {
 	return pRICE;
 }
 
 void
-PriceFilter::setPRICE(Catalogs_product_group_pricing_currency_criteria  pRICE)
+PriceFilter::setPRICE(PriceFilterPrice pRICE)
 {
 	this->pRICE = pRICE;
 }

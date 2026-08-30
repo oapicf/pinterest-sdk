@@ -1,0 +1,48 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Information of the published editorial article.",
+  "name": "TrendsEditorial",
+  "fields": [
+    {
+      "name": "board_url",
+      "type": "string",
+      "doc": "URL of the editorial board"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "doc": "Description of the editorial article"
+    },
+    {
+      "name": "interests",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "List of interests related to the editorial article"
+    },
+    {
+      "name": "pins_url",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "URL of the pins related to the editorial article"
+    },
+    {
+      "name": "related_keywords",
+      "type": {
+        "type": "array",
+        "items": "model.KeywordInfo"
+      },
+      "doc": "List of keywords related to the editorial article"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "doc": "Title of the editorial article"
+    }
+  ]
+
+}

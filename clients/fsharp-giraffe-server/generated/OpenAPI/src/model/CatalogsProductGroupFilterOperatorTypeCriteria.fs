@@ -2,17 +2,15 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.FilterOperatorType
 
 module CatalogsProductGroupFilterOperatorTypeCriteria =
 
   //#region CatalogsProductGroupFilterOperatorTypeCriteria
 
-  //#region enums
-  type FilterOperatorTypeEnum = ISEnum of string  |  CONTAINSEnum of string  
-  //#endregion
 
   type CatalogsProductGroupFilterOperatorTypeCriteria = {
-    FilterOperatorType : FilterOperatorTypeEnum;
+    FilterOperatorType : FilterOperatorType;
     Negated : bool;
     Values : string[];
   }

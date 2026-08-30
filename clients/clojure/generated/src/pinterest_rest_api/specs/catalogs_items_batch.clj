@@ -1,7 +1,6 @@
 (ns pinterest-rest-api.specs.catalogs-items-batch
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs.catalogs-type :refer :all]
             [pinterest-rest-api.specs.creative-assets-processing-record :refer :all]
             [pinterest-rest-api.specs.batch-operation-status :refer :all]
             )
@@ -10,8 +9,8 @@
 
 (def catalogs-items-batch-data
   {
-   (ds/req :catalog_type) catalogs-type-spec
    (ds/opt :batch_id) string?
+   (ds/req :catalog_type) string?
    (ds/opt :completed_time) inst?
    (ds/req :created_time) inst?
    (ds/opt :items) (s/coll-of creative-assets-processing-record-spec)

@@ -6,10 +6,8 @@
   self = [super init];
   if (self) {
     // initialize property's default value, if any
-    self.isAutomatedCampaign = @(NO);
-    self.isFlexibleDailyBudgets = @(NO);
-    self.status = @"ACTIVE";
     self.isPerformancePlus = @(NO);
+    self.isTopOfSearch = @(NO);
     
   }
   return self;
@@ -21,7 +19,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountId": @"ad_account_id", @"dailySpendCap": @"daily_spend_cap", @"endTime": @"end_time", @"isAutomatedCampaign": @"is_automated_campaign", @"isFlexibleDailyBudgets": @"is_flexible_daily_budgets", @"lifetimeSpendCap": @"lifetime_spend_cap", @"name": @"name", @"orderLineId": @"order_line_id", @"startTime": @"start_time", @"status": @"status", @"trackingUrls": @"tracking_urls", @"defaultAdGroupBudgetInMicroCurrency": @"default_ad_group_budget_in_micro_currency", @"isCampaignBudgetOptimization": @"is_campaign_budget_optimization", @"bidOptions": @"bid_options", @"isPerformancePlus": @"is_performance_plus", @"objectiveType": @"objective_type" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"bidOptions": @"bid_options", @"intendedPromotionType": @"intended_promotion_type", @"isAutomatedCampaign": @"is_automated_campaign", @"isCampaignBudgetOptimization": @"is_campaign_budget_optimization", @"isFlexibleDailyBudgets": @"is_flexible_daily_budgets", @"isLtvOptimized": @"is_ltv_optimized", @"isPerformancePlus": @"is_performance_plus", @"isTopOfSearch": @"is_top_of_search", @"objectiveType": @"objective_type", @"status": @"status", @"adAccountId": @"ad_account_id", @"dailySpendCap": @"daily_spend_cap", @"defaultAdGroupBudgetInMicroCurrency": @"default_ad_group_budget_in_micro_currency", @"endTime": @"end_time", @"lifetimeSpendCap": @"lifetime_spend_cap", @"name": @"name", @"orderLineId": @"order_line_id", @"startTime": @"start_time", @"trackingUrls": @"tracking_urls" }];
 }
 
 /**
@@ -31,7 +29,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"dailySpendCap", @"endTime", @"isAutomatedCampaign", @"isFlexibleDailyBudgets", @"lifetimeSpendCap", @"orderLineId", @"startTime", @"status", @"trackingUrls", @"defaultAdGroupBudgetInMicroCurrency", @"isCampaignBudgetOptimization", @"bidOptions", @"isPerformancePlus", ];
+  NSArray *optionalProperties = @[@"bidOptions", @"intendedPromotionType", @"isAutomatedCampaign", @"isCampaignBudgetOptimization", @"isFlexibleDailyBudgets", @"isLtvOptimized", @"isPerformancePlus", @"isTopOfSearch", @"status", @"dailySpendCap", @"defaultAdGroupBudgetInMicroCurrency", @"endTime", @"lifetimeSpendCap", @"orderLineId", @"startTime", @"trackingUrls"];
   return [optionalProperties containsObject:propertyName];
 }
 

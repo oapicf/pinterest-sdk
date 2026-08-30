@@ -8,7 +8,7 @@ The class is defined in **[ConditionFilter.java](../../src/main/java/org/openapi
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CONDITION** | `CatalogsProductGroupMultipleStringCriteria` |  | 
+**CONDITION** | [`CatalogsProductGroupMultipleStringCriteria`](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 
 

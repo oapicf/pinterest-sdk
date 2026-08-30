@@ -9,7 +9,7 @@ The class is defined in **[TargetingTemplateList200Response.java](../../src/main
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;TargetingTemplateGetResponseData&gt;`](TargetingTemplateGetResponseData.md) |  | 
+**items** | [`List&lt;TargetingTemplate&gt;`](TargetingTemplate.md) |  | 
 
 
 

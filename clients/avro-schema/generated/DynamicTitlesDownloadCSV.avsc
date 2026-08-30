@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "DynamicTitlesDownloadCSV",
+  "fields": [
+    {
+      "name": "download_url",
+      "type": ["null", "string"],
+      "doc": "Pre-signed S3 URL to download the CSV file.",
+      "default": null
+    }
+  ]
+
+}

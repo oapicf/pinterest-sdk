@@ -54,10 +54,10 @@ class ProductCategoriesDemographic {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProductCategoriesDemographic[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProductCategoriesDemographic[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'age'), 'Required key "ProductCategoriesDemographic[age]" is missing from JSON.');
+        assert(json[r'age'] != null, 'Required key "ProductCategoriesDemographic[age]" has a null value in JSON.');
+        assert(json.containsKey(r'gender'), 'Required key "ProductCategoriesDemographic[gender]" is missing from JSON.');
+        assert(json[r'gender'] != null, 'Required key "ProductCategoriesDemographic[gender]" has a null value in JSON.');
         return true;
       }());
 

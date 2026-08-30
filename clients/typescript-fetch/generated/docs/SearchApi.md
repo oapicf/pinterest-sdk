@@ -16,7 +16,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Search pins by a given search term
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 
 ### Example
 
@@ -39,13 +39,13 @@ async function example() {
     // string | Search term to look up pins.
     term: term_example,
     // string | Two letter country code (ISO 3166-1 alpha-2)
-    countryCode: US,
+    countryCode: countryCode_example,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
     // string | Search locale. (optional)
     locale: locale_example,
     // number | Max search result size (optional)
-    limit: 4,
+    limit: 56,
   } satisfies SearchPartnerPinsRequest;
 
   try {
@@ -88,20 +88,24 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid pins |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## searchUserBoardsGet
 
-> SearchUserBoardsGet200Response searchUserBoardsGet(adAccountId, bookmark, pageSize, query)
+> BoardsList200Response searchUserBoardsGet(adAccountId, query, bookmark, pageSize)
 
 Search user\&#39;s boards
 
-Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;\&#39;/docs/getting-started/using-business-access/\&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 
@@ -125,12 +129,12 @@ async function example() {
   const body = {
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
-    // string | Cursor used to fetch the next page of items (optional)
-    bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
-    pageSize: 56,
     // string | Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
     query: query_example,
+    // string | Cursor used to fetch the next page of items (optional)
+    bookmark: bookmark_example,
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+    pageSize: 56,
   } satisfies SearchUserBoardsGetRequest;
 
   try {
@@ -151,13 +155,13 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
-| **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
 | **query** | `string` | Search query. Can contain pin description keywords or comma-separated pin IDs. | [Optional] [Defaults to `undefined`] |
+| **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
-[**SearchUserBoardsGet200Response**](SearchUserBoardsGet200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -172,19 +176,24 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## searchUserPinsList
 
-> SearchUserPinsList200Response searchUserPinsList(query, adAccountId, bookmark)
+> PinsList200Response searchUserPinsList(query, adAccountId, bookmark)
 
 Search user\&#39;s Pins
 
-Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;\&#39;/docs/getting-started/using-business-access/\&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 
@@ -205,7 +214,7 @@ async function example() {
 
   const body = {
     // string | Search query. Can contain pin description keywords or comma-separated pin IDs.
-    query: Plants,
+    query: query_example,
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
     // string | Cursor used to fetch the next page of items (optional)
@@ -235,7 +244,7 @@ example().catch(console.error);
 
 ### Return type
 
-[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
+[**PinsList200Response**](PinsList200Response.md)
 
 ### Authorization
 
@@ -250,9 +259,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | User not found |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

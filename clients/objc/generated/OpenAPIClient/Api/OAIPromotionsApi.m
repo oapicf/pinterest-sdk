@@ -1,10 +1,11 @@
 #import "OAIPromotionsApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIError.h"
-#import "OAIPromotionCreateRequest.h"
-#import "OAIPromotionResponse.h"
-#import "OAIPromotionUpdateRequest.h"
+#import "OAIPinterestLibError.h"
+#import "OAIPinterestLibPaginationOrder.h"
+#import "OAIPromotion.h"
+#import "OAIPromotionBatchUpdate.h"
+#import "OAIPromotionCreate.h"
 #import "OAIPromotionsList200Response.h"
 #import "OAIPromotionsResponse.h"
 
@@ -59,12 +60,12 @@ NSInteger kOAIPromotionsApiMissingParamErrorCode = 234513;
 /// Create multiple new promotions.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param promotionCreateRequest List of promotions to create, size limit [1, 30]. 
+///  @param promotionCreate  
 ///
 ///  @returns OAIPromotionsResponse*
 ///
 -(NSURLSessionTask*) promotionsCreateWithAdAccountId: (NSString*) adAccountId
-    promotionCreateRequest: (NSArray<OAIPromotionCreateRequest>*) promotionCreateRequest
+    promotionCreate: (NSArray<OAIPromotionCreate>*) promotionCreate
     completionHandler: (void (^)(OAIPromotionsResponse* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
@@ -77,11 +78,11 @@ NSInteger kOAIPromotionsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'promotionCreateRequest' is set
-    if (promotionCreateRequest == nil) {
-        NSParameterAssert(promotionCreateRequest);
+    // verify the required parameter 'promotionCreate' is set
+    if (promotionCreate == nil) {
+        NSParameterAssert(promotionCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"promotionCreateRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"promotionCreate"] };
             NSError* error = [NSError errorWithDomain:kOAIPromotionsApiErrorDomain code:kOAIPromotionsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -116,7 +117,7 @@ NSInteger kOAIPromotionsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = promotionCreateRequest;
+    bodyParam = promotionCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -140,33 +141,33 @@ NSInteger kOAIPromotionsApiMissingParamErrorCode = 234513;
 ///
 /// Delete promotion by id
 /// Delete a promotion within Pinterest.
+///  @param promotionId Promotion ID 
+///
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param promotionId Unique identifier of a promotion 
+///  @returns OAIPromotion*
 ///
-///  @returns void
-///
--(NSURLSessionTask*) promotionsDeleteWithAdAccountId: (NSString*) adAccountId
-    promotionId: (NSString*) promotionId
-    completionHandler: (void (^)(NSError* error)) handler {
-    // verify the required parameter 'adAccountId' is set
-    if (adAccountId == nil) {
-        NSParameterAssert(adAccountId);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
-            NSError* error = [NSError errorWithDomain:kOAIPromotionsApiErrorDomain code:kOAIPromotionsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
-        }
-        return nil;
-    }
-
+-(NSURLSessionTask*) promotionsDeleteWithPromotionId: (NSString*) promotionId
+    adAccountId: (NSString*) adAccountId
+    completionHandler: (void (^)(OAIPromotion* output, NSError* error)) handler {
     // verify the required parameter 'promotionId' is set
     if (promotionId == nil) {
         NSParameterAssert(promotionId);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"promotionId"] };
             NSError* error = [NSError errorWithDomain:kOAIPromotionsApiErrorDomain code:kOAIPromotionsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'adAccountId' is set
+    if (adAccountId == nil) {
+        NSParameterAssert(adAccountId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
+            NSError* error = [NSError errorWithDomain:kOAIPromotionsApiErrorDomain code:kOAIPromotionsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
         }
         return nil;
     }
@@ -174,11 +175,11 @@ NSInteger kOAIPromotionsApiMissingParamErrorCode = 234513;
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/ad_accounts/{ad_account_id}/promotions/{promotion_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (adAccountId != nil) {
-        pathParams[@"ad_account_id"] = adAccountId;
-    }
     if (promotionId != nil) {
         pathParams[@"promotion_id"] = promotionId;
+    }
+    if (adAccountId != nil) {
+        pathParams[@"ad_account_id"] = adAccountId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
@@ -214,10 +215,10 @@ NSInteger kOAIPromotionsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"OAIPromotion*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((OAIPromotion*)data, error);
                                 }
                             }];
 }
@@ -225,26 +226,15 @@ NSInteger kOAIPromotionsApiMissingParamErrorCode = 234513;
 ///
 /// Get promotion by id
 /// Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
+///  @param promotionId Promotion ID 
+///
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param promotionId Unique identifier of a promotion 
+///  @returns OAIPromotion*
 ///
-///  @returns OAIPromotionResponse*
-///
--(NSURLSessionTask*) promotionsGetWithAdAccountId: (NSString*) adAccountId
-    promotionId: (NSString*) promotionId
-    completionHandler: (void (^)(OAIPromotionResponse* output, NSError* error)) handler {
-    // verify the required parameter 'adAccountId' is set
-    if (adAccountId == nil) {
-        NSParameterAssert(adAccountId);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
-            NSError* error = [NSError errorWithDomain:kOAIPromotionsApiErrorDomain code:kOAIPromotionsApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
+-(NSURLSessionTask*) promotionsGetWithPromotionId: (NSString*) promotionId
+    adAccountId: (NSString*) adAccountId
+    completionHandler: (void (^)(OAIPromotion* output, NSError* error)) handler {
     // verify the required parameter 'promotionId' is set
     if (promotionId == nil) {
         NSParameterAssert(promotionId);
@@ -256,14 +246,25 @@ NSInteger kOAIPromotionsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
+    // verify the required parameter 'adAccountId' is set
+    if (adAccountId == nil) {
+        NSParameterAssert(adAccountId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
+            NSError* error = [NSError errorWithDomain:kOAIPromotionsApiErrorDomain code:kOAIPromotionsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/ad_accounts/{ad_account_id}/promotions/{promotion_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (adAccountId != nil) {
-        pathParams[@"ad_account_id"] = adAccountId;
-    }
     if (promotionId != nil) {
         pathParams[@"promotion_id"] = promotionId;
+    }
+    if (adAccountId != nil) {
+        pathParams[@"ad_account_id"] = adAccountId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
@@ -299,10 +300,10 @@ NSInteger kOAIPromotionsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIPromotionResponse*"
+                              responseType: @"OAIPromotion*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIPromotionResponse*)data, error);
+                                    handler((OAIPromotion*)data, error);
                                 }
                             }];
 }
@@ -312,18 +313,18 @@ NSInteger kOAIPromotionsApiMissingParamErrorCode = 234513;
 /// Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
-///
-///  @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
+///
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
+///
+///  @param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 ///
 ///  @returns OAIPromotionsList200Response*
 ///
 -(NSURLSessionTask*) promotionsListWithAdAccountId: (NSString*) adAccountId
-    pageSize: (NSNumber*) pageSize
-    order: (NSString*) order
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    order: (OAIPinterestLibPaginationOrder) order
     completionHandler: (void (^)(OAIPromotionsList200Response* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
@@ -344,14 +345,14 @@ NSInteger kOAIPromotionsApiMissingParamErrorCode = 234513;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (bookmark != nil) {
+        queryParams[@"bookmark"] = bookmark;
+    }
     if (pageSize != nil) {
         queryParams[@"page_size"] = pageSize;
     }
     if (order != nil) {
         queryParams[@"order"] = order;
-    }
-    if (bookmark != nil) {
-        queryParams[@"bookmark"] = bookmark;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -398,12 +399,12 @@ NSInteger kOAIPromotionsApiMissingParamErrorCode = 234513;
 /// Update multiple promotions.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param promotionUpdateRequest List of promotions to create, size limit [1, 30]. 
+///  @param promotionBatchUpdate  
 ///
 ///  @returns OAIPromotionsResponse*
 ///
 -(NSURLSessionTask*) promotionsUpdateWithAdAccountId: (NSString*) adAccountId
-    promotionUpdateRequest: (NSArray<OAIPromotionUpdateRequest>*) promotionUpdateRequest
+    promotionBatchUpdate: (NSArray<OAIPromotionBatchUpdate>*) promotionBatchUpdate
     completionHandler: (void (^)(OAIPromotionsResponse* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
@@ -416,11 +417,11 @@ NSInteger kOAIPromotionsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'promotionUpdateRequest' is set
-    if (promotionUpdateRequest == nil) {
-        NSParameterAssert(promotionUpdateRequest);
+    // verify the required parameter 'promotionBatchUpdate' is set
+    if (promotionBatchUpdate == nil) {
+        NSParameterAssert(promotionBatchUpdate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"promotionUpdateRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"promotionBatchUpdate"] };
             NSError* error = [NSError errorWithDomain:kOAIPromotionsApiErrorDomain code:kOAIPromotionsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -455,7 +456,7 @@ NSInteger kOAIPromotionsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = promotionUpdateRequest;
+    bodyParam = promotionBatchUpdate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"

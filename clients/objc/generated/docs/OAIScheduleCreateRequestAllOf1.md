@@ -1,0 +1,11 @@
+# OAIScheduleCreateRequestAllOf1
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**entityId** | **NSString*** |  | 
+**entityType** | **NSString*** | Entity type | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

@@ -4,6 +4,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GOOGLE_PRODUCT_CATEGORY_6** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
+**GOOGLE_PRODUCT_CATEGORY_6** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
 
 

@@ -11,11 +11,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## targeting_template_create
 
-> <TargetingTemplateGetResponseData> targeting_template_create(ad_account_id, targeting_template_create)
+> <TargetingTemplate> targeting_template_create(ad_account_id, targeting_template_create)
 
 Create targeting templates
 
-<p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
+Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 
 ### Examples
 
@@ -30,7 +30,7 @@ end
 
 api_instance = PinterestSdkClient::TargetingTemplateApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-targeting_template_create = PinterestSdkClient::TargetingTemplateCreate.new({name: 'Gaming', targeting_attributes: PinterestSdkClient::TargetingSpec.new}) # TargetingTemplateCreate | targeting template creation entity
+targeting_template_create = PinterestSdkClient::TargetingTemplateCreate.new({name: 'name_example', targeting_attributes: PinterestSdkClient::TargetingSpecOptimal.new}) # TargetingTemplateCreate | 
 
 begin
   # Create targeting templates
@@ -45,7 +45,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<TargetingTemplateGetResponseData>, Integer, Hash)> targeting_template_create_with_http_info(ad_account_id, targeting_template_create)
+> <Array(<TargetingTemplate>, Integer, Hash)> targeting_template_create_with_http_info(ad_account_id, targeting_template_create)
 
 ```ruby
 begin
@@ -53,7 +53,7 @@ begin
   data, status_code, headers = api_instance.targeting_template_create_with_http_info(ad_account_id, targeting_template_create)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <TargetingTemplateGetResponseData>
+  p data # => <TargetingTemplate>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling TargetingTemplateApi->targeting_template_create_with_http_info: #{e}"
 end
@@ -64,11 +64,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **targeting_template_create** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md) | targeting template creation entity |  |
+| **targeting_template_create** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md) |  |  |
 
 ### Return type
 
-[**TargetingTemplateGetResponseData**](TargetingTemplateGetResponseData.md)
+[**TargetingTemplate**](TargetingTemplate.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ end
 
 List targeting templates
 
-Get a list of the targeting templates in the specified <code>ad_account_id</code>
+Get a list of the targeting templates in the specified `ad_account_id`
 
 ### Examples
 
@@ -105,11 +105,11 @@ end
 api_instance = PinterestSdkClient::TargetingTemplateApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
-  order: 'ASCENDING', # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56, # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  order: PinterestSdkClient::PinterestLibPaginationOrder::ASCENDING, # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
   include_sizing: true, # Boolean | Include audience sizing in result or not
-  search_query: 'gaming', # String | Search keyword for targeting templates
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  bookmark: 'bookmark_example' # String | Cursor used to fetch the next page of items
+  search_query: 'search_query_example' # String | Search query. Can contain pin description keywords or comma-separated pin IDs.
 }
 
 begin
@@ -144,11 +144,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **order** | **String** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
-| **include_sizing** | **Boolean** | Include audience sizing in result or not | [optional][default to false] |
-| **search_query** | **String** | Search keyword for targeting templates | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
+| **order** | [**PinterestLibPaginationOrder**](.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
+| **include_sizing** | **Boolean** | Include audience sizing in result or not | [optional][default to false] |
+| **search_query** | **String** | Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] |
 
 ### Return type
 
@@ -166,11 +166,11 @@ end
 
 ## targeting_template_update
 
-> targeting_template_update(ad_account_id, targeting_template_update_request)
+> targeting_template_update(ad_account_id, targeting_template_update_request_read_or_update)
 
 Update targeting templates
 
-<p>Update the targeting template given advertiser ID and targeting template ID</p>
+Update the targeting template given advertiser ID and targeting template ID
 
 ### Examples
 
@@ -185,11 +185,11 @@ end
 
 api_instance = PinterestSdkClient::TargetingTemplateApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-targeting_template_update_request = PinterestSdkClient::TargetingTemplateUpdateRequest.new({id: '643', operation_type: 'REMOVE'}) # TargetingTemplateUpdateRequest | Operation type and targeting template ID
+targeting_template_update_request_read_or_update = PinterestSdkClient::TargetingTemplateUpdateRequestReadOrUpdate.new({id: '643', operation_type: PinterestSdkClient::AudienceUpdateOperationType::UPDATE}) # TargetingTemplateUpdateRequestReadOrUpdate | 
 
 begin
   # Update targeting templates
-  api_instance.targeting_template_update(ad_account_id, targeting_template_update_request)
+  api_instance.targeting_template_update(ad_account_id, targeting_template_update_request_read_or_update)
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling TargetingTemplateApi->targeting_template_update: #{e}"
 end
@@ -199,12 +199,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> targeting_template_update_with_http_info(ad_account_id, targeting_template_update_request)
+> <Array(nil, Integer, Hash)> targeting_template_update_with_http_info(ad_account_id, targeting_template_update_request_read_or_update)
 
 ```ruby
 begin
   # Update targeting templates
-  data, status_code, headers = api_instance.targeting_template_update_with_http_info(ad_account_id, targeting_template_update_request)
+  data, status_code, headers = api_instance.targeting_template_update_with_http_info(ad_account_id, targeting_template_update_request_read_or_update)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -218,7 +218,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **targeting_template_update_request** | [**TargetingTemplateUpdateRequest**](TargetingTemplateUpdateRequest.md) | Operation type and targeting template ID |  |
+| **targeting_template_update_request_read_or_update** | [**TargetingTemplateUpdateRequestReadOrUpdate**](TargetingTemplateUpdateRequestReadOrUpdate.md) |  |  |
 
 ### Return type
 

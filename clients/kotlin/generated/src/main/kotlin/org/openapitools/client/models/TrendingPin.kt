@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,14 +30,20 @@ import com.squareup.moshi.JsonClass
 /**
  * Pin image data for trending topics
  *
+ * @param color Dominant color of the pin image in hex format
  * @param height Height of the pin image in pixels
  * @param id Unique identifier for the pin
  * @param src URL of the pin image
  * @param width Width of the pin image in pixels
+ * @param verticalOffset The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.
  */
 
 
 data class TrendingPin (
+
+    /* Dominant color of the pin image in hex format */
+    @Json(name = "color")
+    val color: kotlin.String,
 
     /* Height of the pin image in pixels */
     @Json(name = "height")
@@ -45,7 +59,11 @@ data class TrendingPin (
 
     /* Width of the pin image in pixels */
     @Json(name = "width")
-    val width: kotlin.Int
+    val width: kotlin.Int,
+
+    /* The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom. */
+    @Json(name = "vertical_offset")
+    val verticalOffset: kotlin.Double? = null
 
 ) {
 

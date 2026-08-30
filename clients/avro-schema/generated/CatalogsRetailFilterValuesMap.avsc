@@ -25,14 +25,8 @@
     {
       "name": "availability",
       "type": ["null", {
-        "type": "enum",
-        "name": "CatalogsRetailFilterValuesMap_availability",
-        "symbols": [
-          "IN_STOCK",
-          "OUT_OF_STOCK",
-          "PREORDER",
-          "UNAVAILABLE"
-        ]
+        "type": "array",
+        "items": "model.ProductAvailability"
       }],
       "doc": "",
       "default": null
@@ -49,13 +43,8 @@
     {
       "name": "condition",
       "type": ["null", {
-        "type": "enum",
-        "name": "CatalogsRetailFilterValuesMap_condition",
-        "symbols": [
-          "NEW",
-          "USED",
-          "REFURBISHED"
-        ]
+        "type": "array",
+        "items": "model.ProductCondition"
       }],
       "doc": "",
       "default": null
@@ -108,13 +97,8 @@
     {
       "name": "gender",
       "type": ["null", {
-        "type": "enum",
-        "name": "CatalogsRetailFilterValuesMap_gender",
-        "symbols": [
-          "FEMALE",
-          "MALE",
-          "UNISEX"
-        ]
+        "type": "array",
+        "items": "model.Gender"
       }],
       "doc": "",
       "default": null
@@ -185,12 +169,8 @@
     {
       "name": "media_type",
       "type": ["null", {
-        "type": "enum",
-        "name": "CatalogsRetailFilterValuesMap_mediaUnderscoretype",
-        "symbols": [
-          "IMAGE",
-          "VIDEO"
-        ]
+        "type": "array",
+        "items": "model.MediaType"
       }],
       "doc": "",
       "default": null

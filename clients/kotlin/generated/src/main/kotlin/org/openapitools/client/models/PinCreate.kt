@@ -8,13 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.AiDisclosures
 import org.openapitools.client.models.PinMediaSource
 
 import com.squareup.moshi.Json
@@ -23,6 +32,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Resource create operation model.
  *
+ * @param aiDisclosures AI disclosure declarations the creator has made about this Pin.
  * @param altText 
  * @param boardId The board to which this Pin belongs.
  * @param boardSectionId The board section to which this Pin belongs.
@@ -37,6 +47,10 @@ import com.squareup.moshi.JsonClass
 
 
 data class PinCreate (
+
+    /* AI disclosure declarations the creator has made about this Pin. */
+    @Json(name = "ai_disclosures")
+    val aiDisclosures: AiDisclosures? = null,
 
     @Json(name = "alt_text")
     val altText: kotlin.String? = null,

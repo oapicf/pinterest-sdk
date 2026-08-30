@@ -10,7 +10,7 @@
   {
    (ds/opt :description) string?
    (ds/opt :images) image-size-spec
-   (ds/opt :item_type) string?
+   (ds/req :item_type) string?
    (ds/opt :link) string?
    (ds/opt :title) string?
    })

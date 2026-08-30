@@ -9,7 +9,7 @@ import 'package:built_value/serializer.dart';
 
 part 'targeting_template_audience_sizing.g.dart';
 
-/// Gets an audience size estimate for a set of given targeting spec data. <p>Returns:</p> An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. 
+/// Gets an audience size estimate for a set of given targeting spec data. **Returns:** An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate.
 ///
 /// Properties:
 /// * [reachEstimate] 
@@ -74,8 +74,9 @@ class _$TargetingTemplateAudienceSizingSerializer implements PrimitiveSerializer
         case r'reach_estimate':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(TargetingTemplateAudienceSizingReachEstimate),
-          ) as TargetingTemplateAudienceSizingReachEstimate;
+            specifiedType: const FullType.nullable(TargetingTemplateAudienceSizingReachEstimate),
+          ) as TargetingTemplateAudienceSizingReachEstimate?;
+          if (valueDes == null) continue;
           result.reachEstimate.replace(valueDes);
           break;
         default:

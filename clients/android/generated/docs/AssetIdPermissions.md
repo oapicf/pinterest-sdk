@@ -6,10 +6,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**assetGroupInfo** | [**AssetGroupBinding**](AssetGroupBinding.md) |  |  [optional]
-**assetId** | **String** | Unique identifier of a business asset. |  [optional]
-**assetType** | **String** | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. |  [optional]
-**permissions** | **List&lt;String&gt;** | Permission levels member or partner has on an asset. |  [optional]
+**assetGroupInfo** | [**AssetGroupBinding**](AssetGroupBinding.md) | An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals &#39;ASSET_GROUP&#39;. |  [optional]
+**assetId** | **String** | Unique identifier of a business asset. | 
+**assetType** | [**AssetTypeResponse**](AssetTypeResponse.md) |  | 
+**permissions** | **List&lt;String&gt;** | Permission levels member or partner has on an asset. | 
 
 
 

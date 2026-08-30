@@ -6,8 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.BusinessMemberAssetsSummaryAdAccountsInner;
-import org.openapitools.vertxweb.server.model.BusinessMemberAssetsSummaryProfilesInner;
+import org.openapitools.vertxweb.server.model.AssetIdWithPermissions;
 
 /**
  * Ad accounts and profiles the business member/partner has access to.
@@ -15,33 +14,33 @@ import org.openapitools.vertxweb.server.model.BusinessMemberAssetsSummaryProfile
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BusinessMemberAssetsSummary   {
   
-  private List<BusinessMemberAssetsSummaryAdAccountsInner> adAccounts = new ArrayList<>();
-  private List<BusinessMemberAssetsSummaryProfilesInner> profiles = new ArrayList<>();
+  private List<AssetIdWithPermissions> adAccounts = new ArrayList<>();
+  private List<AssetIdWithPermissions> profiles = new ArrayList<>();
 
   public BusinessMemberAssetsSummary () {
 
   }
 
-  public BusinessMemberAssetsSummary (List<BusinessMemberAssetsSummaryAdAccountsInner> adAccounts, List<BusinessMemberAssetsSummaryProfilesInner> profiles) {
+  public BusinessMemberAssetsSummary (List<AssetIdWithPermissions> adAccounts, List<AssetIdWithPermissions> profiles) {
     this.adAccounts = adAccounts;
     this.profiles = profiles;
   }
 
     
   @JsonProperty("ad_accounts")
-  public List<BusinessMemberAssetsSummaryAdAccountsInner> getAdAccounts() {
+  public List<AssetIdWithPermissions> getAdAccounts() {
     return adAccounts;
   }
-  public void setAdAccounts(List<BusinessMemberAssetsSummaryAdAccountsInner> adAccounts) {
+  public void setAdAccounts(List<AssetIdWithPermissions> adAccounts) {
     this.adAccounts = adAccounts;
   }
 
     
   @JsonProperty("profiles")
-  public List<BusinessMemberAssetsSummaryProfilesInner> getProfiles() {
+  public List<AssetIdWithPermissions> getProfiles() {
     return profiles;
   }
-  public void setProfiles(List<BusinessMemberAssetsSummaryProfilesInner> profiles) {
+  public void setProfiles(List<AssetIdWithPermissions> profiles) {
     this.profiles = profiles;
   }
 
@@ -80,9 +79,6 @@ public class BusinessMemberAssetsSummary   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BidStrategyType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BidStrategyType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BidStrategyType {
+    title = BidStrategyType
+    description = BidStrategyType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  BidStrategyType {
+    title = BidStrategyType
+    description = BidStrategyType
+    implements = openapi_server.resourceTypes.BidStrategyType
+
+  }
+}

@@ -9,20 +9,20 @@ import org.openapitools.model.MediaUploadType;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Resource create operation model.
  */
 
 @Schema(name = "MediaUploadCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class MediaUploadCreate {
 
   private MediaUploadType mediaType;
@@ -48,12 +48,13 @@ public class MediaUploadCreate {
    * @return mediaType
    */
   @NotNull @Valid 
-  @Schema(name = "media_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "media_type", example = "video", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("media_type")
   public MediaUploadType getMediaType() {
     return mediaType;
   }
 
+  @JsonProperty("media_type")
   public void setMediaType(MediaUploadType mediaType) {
     this.mediaType = mediaType;
   }
@@ -88,11 +89,8 @@ public class MediaUploadCreate {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

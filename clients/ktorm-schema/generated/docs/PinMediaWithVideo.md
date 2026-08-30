@@ -11,7 +11,9 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **height** | height | int |  | **kotlin.Int** | Height (in pixels). Field maybe null after creation due to video processing time. |  [optional]
 **images** | images | long |  | [**ImageSize**](ImageSize.md) |  |  [optional] [foreignkey]
 **videoUrl** | video_url | text |  | **kotlin.String** | Video url (720p).  **Note:** This field is limited and not available to all apps. |  [optional]
+**videoUrlHls** | video_url_hls | text |  | **kotlin.String** | Video url (HLS).  **Note:** This field is limited and not available to all apps. |  [optional]
 **width** | width | int |  | **kotlin.Int** | Width (in pixels). Field maybe null after creation due to video processing time. |  [optional]
+
 
 
 

@@ -9,7 +9,7 @@ import org.openapitools.model.Country;
 
 @Canonical
 class CatalogsRetailListProductsByCatalogBasedFilterRequest {
-    /* Catalog id pertaining to the retail product group. */
+    /* Catalog ID pertaining to the product group. */
     String catalogId
 
     enum CatalogTypeEnum {

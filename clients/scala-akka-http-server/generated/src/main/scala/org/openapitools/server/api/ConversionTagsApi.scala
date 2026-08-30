@@ -14,6 +14,7 @@ import org.openapitools.server.model.ConversionTagCreate
 import org.openapitools.server.model.ConversionTagsList200Response
 import org.openapitools.server.model.Error
 import org.openapitools.server.model.PageVisitConversionTagsGet200Response
+import org.openapitools.server.model.PaginationOrder
 
 
 class ConversionTagsApi(
@@ -53,8 +54,8 @@ import ConversionTagsApiPatterns.adAccountIdPattern
     } ~
     path("ad_accounts" / adAccountIdPattern / "conversion_tags" / "page_visit") { (adAccountId) => 
       get { 
-        parameters("page_size".as[Int].?(25), "order".as[String].?, "bookmark".as[String].?) { (pageSize, order, bookmark) => 
-            conversionTagsService.pageVisitConversionTagsGet(adAccountId = adAccountId, pageSize = pageSize, order = order, bookmark = bookmark)
+        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "order".as[String].?) { (bookmark, pageSize, order) => 
+            conversionTagsService.pageVisitConversionTagsGet(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order)
         }
       }
     }
@@ -62,8 +63,8 @@ import ConversionTagsApiPatterns.adAccountIdPattern
 
 object ConversionTagsApiPatterns {
 
-    val conversionTagIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
-val adAccountIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
+    val conversionTagIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
+val adAccountIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
 }
 
 trait ConversionTagsApiService {
@@ -99,11 +100,26 @@ trait ConversionTagsApiService {
 
   def conversionTagsGet200(responseConversionTag: ConversionTag)(implicit toEntityMarshallerConversionTag: ToEntityMarshaller[ConversionTag]): Route =
     complete((200, responseConversionTag))
+  def conversionTagsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def conversionTagsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def conversionTagsGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def conversionTagsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def conversionTagsGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def conversionTagsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: ConversionTag
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: ConversionTag
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def conversionTagsGet(adAccountId: String, conversionTagId: String)
       (implicit toEntityMarshallerConversionTag: ToEntityMarshaller[ConversionTag], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
@@ -136,24 +152,54 @@ trait ConversionTagsApiService {
 
   def ocpmEligibleConversionTagsGet200(responseMapmap: Map[String, Seq[ConversionEventResponse]])(implicit toEntityMarshallerMapmap: ToEntityMarshaller[Map[String, Seq[ConversionEventResponse]]]): Route =
     complete((200, responseMapmap))
+  def ocpmEligibleConversionTagsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def ocpmEligibleConversionTagsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def ocpmEligibleConversionTagsGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def ocpmEligibleConversionTagsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def ocpmEligibleConversionTagsGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def ocpmEligibleConversionTagsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: Map[String, Seq[ConversionEventResponse]]
-   * Code: 0, Message: Unexpected errors, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: Map[String, Seq[ConversionEventResponse]]
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def ocpmEligibleConversionTagsGet(adAccountId: String)
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def pageVisitConversionTagsGet200(responsePageVisitConversionTagsGet200Response: PageVisitConversionTagsGet200Response)(implicit toEntityMarshallerPageVisitConversionTagsGet200Response: ToEntityMarshaller[PageVisitConversionTagsGet200Response]): Route =
     complete((200, responsePageVisitConversionTagsGet200Response))
+  def pageVisitConversionTagsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def pageVisitConversionTagsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def pageVisitConversionTagsGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def pageVisitConversionTagsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def pageVisitConversionTagsGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def pageVisitConversionTagsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: PageVisitConversionTagsGet200Response
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: PageVisitConversionTagsGet200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def pageVisitConversionTagsGet(adAccountId: String, pageSize: Int, order: Option[String], bookmark: Option[String])
+  def pageVisitConversionTagsGet(adAccountId: String, bookmark: Option[String], pageSize: Int, order: Option[String])
       (implicit toEntityMarshallerPageVisitConversionTagsGet200Response: ToEntityMarshaller[PageVisitConversionTagsGet200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }

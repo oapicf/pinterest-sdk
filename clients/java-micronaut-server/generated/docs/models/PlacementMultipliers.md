@@ -10,14 +10,7 @@ The class is defined in **[PlacementMultipliers.java](../../src/main/java/org/op
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PLACEMENT** | [**PLACEMENTEnum**](#PLACEMENTEnum) |  |  [optional property]
+**PLACEMENT** | `PlacementType` | Placement type identifier. |  [optional property]
 
-## PLACEMENTEnum
-
-Name | Value
----- | -----
-SEARCH | `"SEARCH"`
-BROWSE | `"BROWSE"`
-RELATED_PINS | `"RELATED_PINS"`
 
 

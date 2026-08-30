@@ -4,7 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.prokarma.pkmst.model.CatalogsHotelReportParametersReport;
+import com.prokarma.pkmst.model.CatalogsRetailReportParametersReport;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 /**
@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Parameters for retail report")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailReportParameters   {
   /**
    * Gets or Sets catalogType
@@ -52,7 +52,7 @@ public class CatalogsRetailReportParameters   {
   private CatalogTypeEnum catalogType;
 
   @JsonProperty("report")
-  private CatalogsHotelReportParametersReport report;
+  private CatalogsRetailReportParametersReport report;
 
   public CatalogsRetailReportParameters catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -72,7 +72,7 @@ public class CatalogsRetailReportParameters   {
     this.catalogType = catalogType;
   }
 
-  public CatalogsRetailReportParameters report(CatalogsHotelReportParametersReport report) {
+  public CatalogsRetailReportParameters report(CatalogsRetailReportParametersReport report) {
     this.report = report;
     return this;
   }
@@ -82,11 +82,11 @@ public class CatalogsRetailReportParameters   {
    * @return report
    */
   @ApiModelProperty(required = true, value = "")
-  public CatalogsHotelReportParametersReport getReport() {
+  public CatalogsRetailReportParametersReport getReport() {
     return report;
   }
 
-  public void setReport(CatalogsHotelReportParametersReport report) {
+  public void setReport(CatalogsRetailReportParametersReport report) {
     this.report = report;
   }
 
@@ -125,10 +125,7 @@ public class CatalogsRetailReportParameters   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

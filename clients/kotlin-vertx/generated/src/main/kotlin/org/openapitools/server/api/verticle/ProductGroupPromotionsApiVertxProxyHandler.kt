@@ -16,14 +16,17 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.EntityStatus
 import org.openapitools.server.api.model.Granularity
-import org.openapitools.server.api.model.ProductGroupAnalyticsResponseInner
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
+import org.openapitools.server.api.model.ProductGroupAnalyticsItems
 import org.openapitools.server.api.model.ProductGroupPromotion
-import org.openapitools.server.api.model.ProductGroupPromotionCreateRequest
-import org.openapitools.server.api.model.ProductGroupPromotionResponse
-import org.openapitools.server.api.model.ProductGroupPromotionUpdateRequest
+import org.openapitools.server.api.model.ProductGroupPromotions
+import org.openapitools.server.api.model.ProductGroupPromotionsCreate
 import org.openapitools.server.api.model.ProductGroupPromotionsList200Response
+import org.openapitools.server.api.model.ProductGroupPromotionsUpdateWithRequiredBody
+import org.openapitools.server.api.model.ReportingColumnSync
 import org.openapitools.server.api.model.ReportingTimeZone
 
 class ProductGroupPromotionsApiVertxProxyHandler(private val vertx: Vertx, private val service: ProductGroupPromotionsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
@@ -78,13 +81,13 @@ class ProductGroupPromotionsApiVertxProxyHandler(private val vertx: Vertx, priva
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val productGroupPromotionCreateRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (productGroupPromotionCreateRequestParam == null) {
-                        throw IllegalArgumentException("productGroupPromotionCreateRequest is required")
+                    val productGroupPromotionsCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (productGroupPromotionsCreateParam == null) {
+                        throw IllegalArgumentException("productGroupPromotionsCreate is required")
                     }
-                    val productGroupPromotionCreateRequest = Gson().fromJson(productGroupPromotionCreateRequestParam.encode(), ProductGroupPromotionCreateRequest::class.java)
+                    val productGroupPromotionsCreate = Gson().fromJson(productGroupPromotionsCreateParam.encode(), ProductGroupPromotionsCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.productGroupPromotionsCreate(adAccountId,productGroupPromotionCreateRequest,context)
+                        val result = service.productGroupPromotionsCreate(adAccountId,productGroupPromotionsCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -119,20 +122,21 @@ class ProductGroupPromotionsApiVertxProxyHandler(private val vertx: Vertx, priva
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
+                    val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
+                    val orderParam = ApiHandlerUtils.searchJsonObjectInJson(params,"order")
+                    val order = if(orderParam ==null) null else Gson().fromJson(orderParam.encode(), PinterestLibPaginationOrder::class.java)
                     val productGroupPromotionIdsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"product_group_promotion_ids")
                     val productGroupPromotionIds:kotlin.Array<kotlin.String>? = if(productGroupPromotionIdsParam == null) null
                             else Gson().fromJson(productGroupPromotionIdsParam.encode(),
                             , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
                     val entityStatusesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"entity_statuses")
-                    val entityStatuses:kotlin.Array<kotlin.String>? = if(entityStatusesParam == null) arrayListOf(EntityStatuses.ACTIVE,EntityStatuses.PAUSED)
+                    val entityStatuses:kotlin.Array<EntityStatus>? = if(entityStatusesParam == null) arrayListOf(EntityStatus.ACTIVE,EntityStatus.PAUSED)
                             else Gson().fromJson(entityStatusesParam.encode(),
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                            , object : TypeToken<kotlin.collections.List<EntityStatus>>(){}.type)
                     val adGroupId = ApiHandlerUtils.searchStringInJson(params,"ad_group_id")
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val order = ApiHandlerUtils.searchStringInJson(params,"order")
-                    val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.productGroupPromotionsList(adAccountId,productGroupPromotionIds,entityStatuses,adGroupId,pageSize,order,bookmark,context)
+                        val result = service.productGroupPromotionsList(adAccountId,bookmark,pageSize,order,productGroupPromotionIds,entityStatuses,adGroupId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -147,13 +151,13 @@ class ProductGroupPromotionsApiVertxProxyHandler(private val vertx: Vertx, priva
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val productGroupPromotionUpdateRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (productGroupPromotionUpdateRequestParam == null) {
-                        throw IllegalArgumentException("productGroupPromotionUpdateRequest is required")
+                    val productGroupPromotionsUpdateWithRequiredBodyParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (productGroupPromotionsUpdateWithRequiredBodyParam == null) {
+                        throw IllegalArgumentException("productGroupPromotionsUpdateWithRequiredBody is required")
                     }
-                    val productGroupPromotionUpdateRequest = Gson().fromJson(productGroupPromotionUpdateRequestParam.encode(), ProductGroupPromotionUpdateRequest::class.java)
+                    val productGroupPromotionsUpdateWithRequiredBody = Gson().fromJson(productGroupPromotionsUpdateWithRequiredBodyParam.encode(), ProductGroupPromotionsUpdateWithRequiredBody::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.productGroupPromotionsUpdate(adAccountId,productGroupPromotionUpdateRequest,context)
+                        val result = service.productGroupPromotionsUpdate(adAccountId,productGroupPromotionsUpdateWithRequiredBody,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -164,10 +168,6 @@ class ProductGroupPromotionsApiVertxProxyHandler(private val vertx: Vertx, priva
         
                 "productGroupsAnalytics" -> {
                     val params = context.params
-                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
-                    if(adAccountId == null){
-                        throw IllegalArgumentException("adAccountId is required")
-                    }
                     val startDate = java.time.LocalDate.parse(ApiHandlerUtils.searchStringInJson(params,"start_date"))
                     if(startDate == null){
                         throw IllegalArgumentException("startDate is required")
@@ -186,21 +186,25 @@ class ProductGroupPromotionsApiVertxProxyHandler(private val vertx: Vertx, priva
                     if(columnsParam == null){
                          throw IllegalArgumentException("columns is required")
                     }
-                    val columns:kotlin.Array<kotlin.String> = Gson().fromJson(columnsParam.encode()
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                    val columns:kotlin.Array<ReportingColumnSync> = Gson().fromJson(columnsParam.encode()
+                            , object : TypeToken<kotlin.collections.List<ReportingColumnSync>>(){}.type)
                     val granularityParam = ApiHandlerUtils.searchJsonObjectInJson(params,"granularity")
                     if (granularityParam == null) {
                         throw IllegalArgumentException("granularity is required")
                     }
                     val granularity = Gson().fromJson(granularityParam.encode(), Granularity::class.java)
-                    val clickWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"click_window_days")
-                    val engagementWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"engagement_window_days")
-                    val viewWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"view_window_days")
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
+                    val clickWindowDays = ApiHandlerUtils.searchDoubleInJson(params,"click_window_days")
+                    val engagementWindowDays = ApiHandlerUtils.searchDoubleInJson(params,"engagement_window_days")
+                    val viewWindowDays = ApiHandlerUtils.searchDoubleInJson(params,"view_window_days")
                     val conversionReportTime = ApiHandlerUtils.searchStringInJson(params,"conversion_report_time")
                     val reportingTimezoneParam = ApiHandlerUtils.searchJsonObjectInJson(params,"reporting_timezone")
                     val reportingTimezone = if(reportingTimezoneParam ==null) null else Gson().fromJson(reportingTimezoneParam.encode(), ReportingTimeZone::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.productGroupsAnalytics(adAccountId,startDate,endDate,productGroupIds,columns,granularity,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,reportingTimezone,context)
+                        val result = service.productGroupsAnalytics(startDate,endDate,productGroupIds,columns,granularity,adAccountId,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,reportingTimezone,context)
                         val payload = JsonArray(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

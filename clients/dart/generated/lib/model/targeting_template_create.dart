@@ -21,12 +21,12 @@ class TargetingTemplateCreate {
     this.trackingUrls,
   });
 
-  /// Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  /// Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).
   bool autoTargetingEnabled;
 
   List<TargetingTemplateKeyword> keywords;
 
-  /// Name of targeting template.
+  /// targeting template name
   String name;
 
   ///
@@ -37,7 +37,8 @@ class TargetingTemplateCreate {
   ///
   PlacementGroupType? placementGroup;
 
-  TargetingSpec targetingAttributes;
+  /// targeting profile attributes
+  TargetingSpecOptimal targetingAttributes;
 
   TrackingUrls? trackingUrls;
 
@@ -93,10 +94,10 @@ class TargetingTemplateCreate {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "TargetingTemplateCreate[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "TargetingTemplateCreate[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'name'), 'Required key "TargetingTemplateCreate[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "TargetingTemplateCreate[name]" has a null value in JSON.');
+        assert(json.containsKey(r'targeting_attributes'), 'Required key "TargetingTemplateCreate[targeting_attributes]" is missing from JSON.');
+        assert(json[r'targeting_attributes'] != null, 'Required key "TargetingTemplateCreate[targeting_attributes]" has a null value in JSON.');
         return true;
       }());
 
@@ -105,7 +106,7 @@ class TargetingTemplateCreate {
         keywords: TargetingTemplateKeyword.listFromJson(json[r'keywords']),
         name: mapValueOfType<String>(json, r'name')!,
         placementGroup: PlacementGroupType.fromJson(json[r'placement_group']),
-        targetingAttributes: TargetingSpec.fromJson(json[r'targeting_attributes'])!,
+        targetingAttributes: TargetingSpecOptimal.fromJson(json[r'targeting_attributes'])!,
         trackingUrls: TrackingUrls.fromJson(json[r'tracking_urls']),
       );
     }

@@ -58,15 +58,15 @@ NotificationAPI_notificationPost(apiClient_t *apiClient, notification_post_reque
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Successfully received notification");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid request parameter.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     notification_response_t *elementToReturn = NULL;

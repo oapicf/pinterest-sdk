@@ -1,0 +1,41 @@
+
+
+export interface CatalogsReportDistributionStats { 
+  /**
+   * ID of the catalog entity.
+   */
+  catalog_id?: string;
+  /**
+   * The event code that a diagnostics aggregated number references
+   */
+  code?: number;
+  /**
+   * A human-friendly label for the event code (e.g, \'SPAM\')
+   */
+  code_label?: string;
+  /**
+   * Indicates if issue makes items ineligible for ads distribution
+   */
+  ineligible_for_ads?: boolean;
+  /**
+   * Indicates if issue makes items ineligible for organic distribution
+   */
+  ineligible_for_organic?: boolean;
+  /**
+   * Title message describing the diagnostic issue
+   */
+  message?: string;
+  /**
+   * Number of occurrences of the issue
+   */
+  occurrences?: number;
+  report_type?: CatalogsReportDistributionStats.ReportTypeEnum;
+}
+export namespace CatalogsReportDistributionStats {
+  export const ReportTypeEnum = {
+    DistributionIssues: 'DISTRIBUTION_ISSUES'
+  } as const;
+  export type ReportTypeEnum = typeof ReportTypeEnum[keyof typeof ReportTypeEnum];
+}
+
+

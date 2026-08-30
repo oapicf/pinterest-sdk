@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -57,11 +57,11 @@ func (o *CustomNumber3Filter) GetCUSTOMNUMBER3() CatalogsProductGroupUint32Crite
 
 // GetCUSTOMNUMBER3Ok returns a tuple with the CUSTOMNUMBER3 field value
 // and a boolean to check if the value has been set.
-func (o *CustomNumber3Filter) GetCUSTOMNUMBER3Ok() (CatalogsProductGroupUint32Criteria, bool) {
+func (o *CustomNumber3Filter) GetCUSTOMNUMBER3Ok() (*CatalogsProductGroupUint32Criteria, bool) {
 	if o == nil {
-		return CatalogsProductGroupUint32Criteria{}, false
+		return nil, false
 	}
-	return o.CUSTOMNUMBER3, true
+	return &o.CUSTOMNUMBER3, true
 }
 
 // SetCUSTOMNUMBER3 sets field value

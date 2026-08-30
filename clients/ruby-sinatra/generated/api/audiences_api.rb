@@ -5,9 +5,9 @@ MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/audiences', {
   "resourcePath" => "/Audiences",
   "summary" => "Create audience",
   "nickname" => "audiences/create",
-  "responseClass" => "Audience",
+  "responseClass" => "AdAccountsAudience",
   "endpoint" => "/ad_accounts/{ad_account_id}/audiences",
-  "notes" => "Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.",
+  "notes" => "Create a new audience for the ad account.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -17,8 +17,8 @@ MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/audiences', {
     },
     {
       "name" => "body",
-      "description" => "List of ads to create, size limit [1, 30]",
-      "dataType" => "AudienceCreateRequest",
+      "description" => "",
+      "dataType" => "AdAccountsAudienceCreate",
       "paramType" => "body",
     }
     ]}) do
@@ -33,19 +33,19 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/audiences/{audience_id}'
   "resourcePath" => "/Audiences",
   "summary" => "Get audience",
   "nickname" => "audiences/get",
-  "responseClass" => "Audience",
+  "responseClass" => "AdAccountsAudience",
   "endpoint" => "/ad_accounts/{ad_account_id}/audiences/{audience_id}",
   "notes" => "Get a specific audience given the audience ID.",
   "parameters" => [
     {
-      "name" => "ad_account_id",
-      "description" => "Unique identifier of an ad account.",
+      "name" => "audience_id",
+      "description" => "Audience ID.",
       "dataType" => "String",
       "paramType" => "path",
     },
     {
-      "name" => "audience_id",
-      "description" => "Unique identifier of an audience",
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
       "dataType" => "String",
       "paramType" => "path",
     },
@@ -73,26 +73,33 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/audiences', {
       "paramType" => "query",
     },
     {
-      "name" => "order",
-      "description" => "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.",
-      "dataType" => "String",
-      "allowableValues" => "[ASCENDING, DESCENDING]",
-      "paramType" => "query",
-    },
-    {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
       "paramType" => "query",
     },
     {
+      "name" => "order",
+      "description" => "The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.",
+      "dataType" => "PinterestLibPaginationOrder",
+      "allowableValues" => "[ASCENDING, DESCENDING]",
+      "paramType" => "query",
+    },
+    {
       "name" => "ownership_type",
-      "description" => "Filter audiences by ownership type.",
-      "dataType" => "String",
+      "description" => "",
+      "dataType" => "AudienceOwnershipType",
       "allowableValues" => "[OWNED, RECEIVED]",
-      "defaultValue" => "'OWNED'",
+      "paramType" => "query",
+    },
+    {
+      "name" => "exclude_nca",
+      "description" => "When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "defaultValue" => "false",
       "paramType" => "query",
     },
     {
@@ -113,10 +120,16 @@ MyApp.add_route('PATCH', '/v5/ad_accounts/{ad_account_id}/audiences/{audience_id
   "resourcePath" => "/Audiences",
   "summary" => "Update audience",
   "nickname" => "audiences/update",
-  "responseClass" => "Audience",
+  "responseClass" => "AdAccountsAudience",
   "endpoint" => "/ad_accounts/{ad_account_id}/audiences/{audience_id}",
-  "notes" => "Update (edit or remove) an existing targeting audience.",
+  "notes" => "Update an existing audience for the ad account.",
   "parameters" => [
+    {
+      "name" => "audience_id",
+      "description" => "Audience ID.",
+      "dataType" => "String",
+      "paramType" => "path",
+    },
     {
       "name" => "ad_account_id",
       "description" => "Unique identifier of an ad account.",
@@ -124,15 +137,9 @@ MyApp.add_route('PATCH', '/v5/ad_accounts/{ad_account_id}/audiences/{audience_id
       "paramType" => "path",
     },
     {
-      "name" => "audience_id",
-      "description" => "Unique identifier of an audience",
-      "dataType" => "String",
-      "paramType" => "path",
-    },
-    {
       "name" => "body",
-      "description" => "The audience to be updated.",
-      "dataType" => "AudienceUpdateRequest",
+      "description" => "",
+      "dataType" => "AdAccountsAudienceUpdate",
       "paramType" => "body",
     }
     ]}) do

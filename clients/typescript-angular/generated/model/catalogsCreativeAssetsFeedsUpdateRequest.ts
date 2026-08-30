@@ -10,7 +10,6 @@
 import { CatalogsFeedProcessingSchedule } from './catalogsFeedProcessingSchedule';
 import { CatalogsStatus } from './catalogsStatus';
 import { CatalogsFeedCredentials } from './catalogsFeedCredentials';
-import { CatalogsType } from './catalogsType';
 import { CatalogsFormat } from './catalogsFormat';
 import { NullableCurrency } from './nullableCurrency';
 
@@ -19,7 +18,7 @@ import { NullableCurrency } from './nullableCurrency';
  * Request object for updating a feed.
  */
 export interface CatalogsCreativeAssetsFeedsUpdateRequest { 
-    catalog_type: CatalogsType;
+    catalog_type: CatalogsCreativeAssetsFeedsUpdateRequest.CatalogTypeEnum;
     credentials?: CatalogsFeedCredentials | null;
     default_currency?: NullableCurrency | null;
     format?: CatalogsFormat;
@@ -35,6 +34,10 @@ export interface CatalogsCreativeAssetsFeedsUpdateRequest {
     status?: CatalogsStatus;
 }
 export namespace CatalogsCreativeAssetsFeedsUpdateRequest {
+    export const CatalogTypeEnum = {
+        CreativeAssets: 'CREATIVE_ASSETS'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

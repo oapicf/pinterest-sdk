@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CustomNumber2Filter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("CUSTOM_NUMBER_2")
     @get:JsonProperty("CUSTOM_NUMBER_2", required = true) val CUSTOM_NUMBER_2: CatalogsProductGroupUint32Criteria
 ) {
 

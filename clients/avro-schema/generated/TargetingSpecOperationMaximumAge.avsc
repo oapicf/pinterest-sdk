@@ -1,0 +1,36 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingSpecOperationMaximumAge",
+  "fields": [
+    {
+      "name": "field",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationMaximumAge_field",
+        "symbols": [
+          "MAXIMUM_AGE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationMaximumAge_operation",
+        "symbols": [
+          "SET"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "doc": ""
+    }
+  ]
+
+}

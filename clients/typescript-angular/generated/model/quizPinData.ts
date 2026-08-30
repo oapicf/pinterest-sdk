@@ -9,6 +9,7 @@
  */
 import { QuizPinResult } from './quizPinResult';
 import { QuizPinQuestion } from './quizPinQuestion';
+import { TieBreakerType } from './tieBreakerType';
 
 
 /**
@@ -18,17 +19,9 @@ export interface QuizPinData {
     questions?: Array<QuizPinQuestion>;
     results?: Array<QuizPinResult>;
     tie_breaker_custom_result?: QuizPinResult | null;
-    /**
-     * Quiz ad tie breaker type, default is RANDOM
-     */
-    tie_breaker_type?: QuizPinData.TieBreakerTypeEnum;
+    tie_breaker_type?: TieBreakerType;
 }
 export namespace QuizPinData {
-    export const TieBreakerTypeEnum = {
-        Random: 'RANDOM',
-        Custom: 'CUSTOM'
-    } as const;
-    export type TieBreakerTypeEnum = typeof TieBreakerTypeEnum[keyof typeof TieBreakerTypeEnum];
 }
 
 

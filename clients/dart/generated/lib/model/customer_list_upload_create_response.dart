@@ -17,8 +17,10 @@ class CustomerListUploadCreateResponse {
     required this.s3MultipartUploadData,
   });
 
+  /// The Customer List Upload created.
   CustomerListUpload customerListUpload;
 
+  /// Pre-signed upload URLs corresponding to each part of the upload.
   S3MultipartUploadData s3MultipartUploadData;
 
   @override
@@ -53,10 +55,10 @@ class CustomerListUploadCreateResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CustomerListUploadCreateResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CustomerListUploadCreateResponse[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'customer_list_upload'), 'Required key "CustomerListUploadCreateResponse[customer_list_upload]" is missing from JSON.');
+        assert(json[r'customer_list_upload'] != null, 'Required key "CustomerListUploadCreateResponse[customer_list_upload]" has a null value in JSON.');
+        assert(json.containsKey(r's3_multipart_upload_data'), 'Required key "CustomerListUploadCreateResponse[s3_multipart_upload_data]" is missing from JSON.');
+        assert(json[r's3_multipart_upload_data'] != null, 'Required key "CustomerListUploadCreateResponse[s3_multipart_upload_data]" has a null value in JSON.');
         return true;
       }());
 

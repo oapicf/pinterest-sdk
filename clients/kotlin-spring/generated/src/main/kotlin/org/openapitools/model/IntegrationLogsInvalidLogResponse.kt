@@ -1,8 +1,11 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.IntegrationLogsInvalidLogResponseRejectedLogsInner
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
+import org.openapitools.model.IntegrationLogsInvalidLogResponseRejectedLogsItems
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -21,8 +24,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class IntegrationLogsInvalidLogResponse(
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("rejected_logs") val rejectedLogs: kotlin.collections.List<IntegrationLogsInvalidLogResponseRejectedLogsInner>? = null
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("rejected_logs")
+    @get:JsonProperty("rejected_logs") val rejectedLogs: kotlin.collections.List<IntegrationLogsInvalidLogResponseRejectedLogsItems>? = null
 ) {
 
 }

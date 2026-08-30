@@ -1,8 +1,8 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.NotificationPostRequest;
 import org.openapitools.vertxweb.server.model.NotificationResponse;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 

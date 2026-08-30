@@ -13,10 +13,10 @@ static followers_list_200_response_t *followers_list_200_response_create_interna
     if (!followers_list_200_response_local_var) {
         return NULL;
     }
+    memset(followers_list_200_response_local_var, 0, sizeof(followers_list_200_response_t));
+    followers_list_200_response_local_var->_library_owned = 1;
     followers_list_200_response_local_var->bookmark = bookmark;
     followers_list_200_response_local_var->items = items;
-
-    followers_list_200_response_local_var->_library_owned = 1;
     return followers_list_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) followers_list_200_response_t *followers_list_200_re
     char *bookmark,
     list_t *items
     ) {
-    return followers_list_200_response_create_internal (
+    followers_list_200_response_t *result = followers_list_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void followers_list_200_response_free(followers_list_200_response_t *followers_list_200_response) {
@@ -45,7 +48,7 @@ void followers_list_200_response_free(followers_list_200_response_t *followers_l
     }
     if (followers_list_200_response->items) {
         list_ForEach(listEntry, followers_list_200_response->items) {
-            user_summary_free(listEntry->data);
+            follow_user_free(listEntry->data);
         }
         list_freeList(followers_list_200_response->items);
         followers_list_200_response->items = NULL;
@@ -76,7 +79,7 @@ cJSON *followers_list_200_response_convertToJSON(followers_list_200_response_t *
     listEntry_t *itemsListEntry;
     if (followers_list_200_response->items) {
     list_ForEach(itemsListEntry, followers_list_200_response->items) {
-    cJSON *itemLocal = user_summary_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = follow_user_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -95,6 +98,8 @@ fail:
 followers_list_200_response_t *followers_list_200_response_parseFromJSON(cJSON *followers_list_200_responseJSON){
 
     followers_list_200_response_t *followers_list_200_response_local_var = NULL;
+
+    char *bookmark_local_str = NULL;
 
     // define the local list for followers_list_200_response->items
     list_t *itemsList = NULL;
@@ -133,23 +138,33 @@ followers_list_200_response_t *followers_list_200_response_parseFromJSON(cJSON *
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        user_summary_t *itemsItem = user_summary_parseFromJSON(items_local_nonprimitive);
+        follow_user_t *itemsItem = follow_user_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     followers_list_200_response_local_var = followers_list_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!followers_list_200_response_local_var) {
+        goto end;
+    }
+
     return followers_list_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            user_summary_free(listEntry->data);
+            follow_user_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

@@ -65,7 +65,7 @@ AvailabilityFilter::getAVAILABILITY()
 }
 
 void
-AvailabilityFilter::setAVAILABILITY(CatalogsProductGroupMultipleStringCriteria  aVAILABILITY)
+AvailabilityFilter::setAVAILABILITY(CatalogsProductGroupMultipleStringCriteria aVAILABILITY)
 {
 	this->aVAILABILITY = aVAILABILITY;
 }

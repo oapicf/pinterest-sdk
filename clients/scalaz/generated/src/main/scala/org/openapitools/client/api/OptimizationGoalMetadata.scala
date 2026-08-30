@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import OptimizationGoalMetadata._
 
 case class OptimizationGoalMetadata (
-  conversionTagV3GoalMetadata: Option[OptimizationGoalMetadataConversionTagV3GoalMetadata],
-frequencyGoalMetadata: Option[OptimizationGoalMetadataFrequencyGoalMetadata],
-scrollupGoalMetadata: Option[OptimizationGoalMetadataScrollupGoalMetadata])
+  conversionTagV3GoalMetadata: Option[ConversionTagV3GoalMetadata],
+frequencyGoalMetadata: Option[FrequencyGoalMetadata],
+scrollupGoalMetadata: Option[ScrollupGoalMetadata])
 
 object OptimizationGoalMetadata {
   import DateTimeCodecs._

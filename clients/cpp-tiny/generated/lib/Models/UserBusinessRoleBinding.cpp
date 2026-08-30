@@ -233,7 +233,7 @@ UserBusinessRoleBinding::getAssetsSummary()
 }
 
 void
-UserBusinessRoleBinding::setAssetsSummary(BusinessMemberAssetsSummary  assets_summary)
+UserBusinessRoleBinding::setAssetsSummary(BusinessMemberAssetsSummary assets_summary)
 {
 	this->assets_summary = assets_summary;
 }
@@ -245,7 +245,7 @@ UserBusinessRoleBinding::getBusinessRoles()
 }
 
 void
-UserBusinessRoleBinding::setBusinessRoles(std::list <std::string> business_roles)
+UserBusinessRoleBinding::setBusinessRoles(std::list<std::string> business_roles)
 {
 	this->business_roles = business_roles;
 }
@@ -257,7 +257,7 @@ UserBusinessRoleBinding::getCreatedByBusiness()
 }
 
 void
-UserBusinessRoleBinding::setCreatedByBusiness(BusinessAccessUserSummary  created_by_business)
+UserBusinessRoleBinding::setCreatedByBusiness(BusinessAccessUserSummary created_by_business)
 {
 	this->created_by_business = created_by_business;
 }
@@ -269,7 +269,7 @@ UserBusinessRoleBinding::getCreatedByUser()
 }
 
 void
-UserBusinessRoleBinding::setCreatedByUser(BusinessAccessUserSummary  created_by_user)
+UserBusinessRoleBinding::setCreatedByUser(BusinessAccessUserSummary created_by_user)
 {
 	this->created_by_user = created_by_user;
 }
@@ -281,7 +281,7 @@ UserBusinessRoleBinding::getCreatedTime()
 }
 
 void
-UserBusinessRoleBinding::setCreatedTime(int  created_time)
+UserBusinessRoleBinding::setCreatedTime(int created_time)
 {
 	this->created_time = created_time;
 }
@@ -293,7 +293,7 @@ UserBusinessRoleBinding::getId()
 }
 
 void
-UserBusinessRoleBinding::setId(std::string  id)
+UserBusinessRoleBinding::setId(std::string id)
 {
 	this->id = id;
 }
@@ -305,7 +305,7 @@ UserBusinessRoleBinding::isIsSharedPartner()
 }
 
 void
-UserBusinessRoleBinding::setIsSharedPartner(bool  is_shared_partner)
+UserBusinessRoleBinding::setIsSharedPartner(bool is_shared_partner)
 {
 	this->is_shared_partner = is_shared_partner;
 }
@@ -317,7 +317,7 @@ UserBusinessRoleBinding::getUser()
 }
 
 void
-UserBusinessRoleBinding::setUser(BusinessAccessUserSummary  user)
+UserBusinessRoleBinding::setUser(BusinessAccessUserSummary user)
 {
 	this->user = user;
 }

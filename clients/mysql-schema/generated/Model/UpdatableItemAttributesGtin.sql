@@ -1,26 +1,26 @@
 --
 -- Pinterest REST API.
--- Prepared SQL queries for 'UpdatableItemAttributes_gtin' definition.
+-- Prepared SQL queries for 'UpdatableItemAttributesGtin' definition.
 --
 
 
 --
--- SELECT template for table `UpdatableItemAttributes_gtin`
+-- SELECT template for table `UpdatableItemAttributesGtin`
 --
-SELECT  FROM `UpdatableItemAttributes_gtin` WHERE 1;
+SELECT  FROM `UpdatableItemAttributesGtin` WHERE 1;
 
 --
--- INSERT template for table `UpdatableItemAttributes_gtin`
+-- INSERT template for table `UpdatableItemAttributesGtin`
 --
-INSERT INTO `UpdatableItemAttributes_gtin`() VALUES ();
+INSERT INTO `UpdatableItemAttributesGtin`() VALUES ();
 
 --
--- UPDATE template for table `UpdatableItemAttributes_gtin`
+-- UPDATE template for table `UpdatableItemAttributesGtin`
 --
-UPDATE `UpdatableItemAttributes_gtin` SET  WHERE 1;
+UPDATE `UpdatableItemAttributesGtin` SET  WHERE 1;
 
 --
--- DELETE template for table `UpdatableItemAttributes_gtin`
+-- DELETE template for table `UpdatableItemAttributesGtin`
 --
-DELETE FROM `UpdatableItemAttributes_gtin` WHERE 0;
+DELETE FROM `UpdatableItemAttributesGtin` WHERE 0;
 

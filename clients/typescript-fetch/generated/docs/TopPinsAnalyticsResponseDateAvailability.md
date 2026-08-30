@@ -16,8 +16,8 @@ import type { TopPinsAnalyticsResponseDateAvailability } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "isRealtime": false,
-  "latestAvailableTimestamp": 1649116799000,
+  "isRealtime": null,
+  "latestAvailableTimestamp": null,
 } satisfies TopPinsAnalyticsResponseDateAvailability
 
 console.log(example)

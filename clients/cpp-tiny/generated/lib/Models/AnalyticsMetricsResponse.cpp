@@ -94,19 +94,19 @@ AnalyticsMetricsResponse::getDailyMetrics()
 }
 
 void
-AnalyticsMetricsResponse::setDailyMetrics(std::list <AnalyticsDailyMetrics> daily_metrics)
+AnalyticsMetricsResponse::setDailyMetrics(std::list<AnalyticsDailyMetrics> daily_metrics)
 {
 	this->daily_metrics = daily_metrics;
 }
 
-Map<string, string>
+std::map<std::string, long>
 AnalyticsMetricsResponse::getSummaryMetrics()
 {
 	return summary_metrics;
 }
 
 void
-AnalyticsMetricsResponse::setSummaryMetrics(Map <string, string> summary_metrics)
+AnalyticsMetricsResponse::setSummaryMetrics(std::map<std::string, long> summary_metrics)
 {
 	this->summary_metrics = summary_metrics;
 }

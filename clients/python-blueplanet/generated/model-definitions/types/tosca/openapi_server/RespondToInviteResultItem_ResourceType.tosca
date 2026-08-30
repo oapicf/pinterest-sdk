@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server RespondToInviteResultItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a RespondToInviteResultItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BaseInviteDataResponse = openapi_server.resourceTypes.BaseInviteDataResponse
+  InviteExceptionResponse = openapi_server.resourceTypes.InviteExceptionResponse
+}
+resourceTypes {
+
+  RespondToInviteResultItem {
+    title = RespondToInviteResultItem
+    description = RespondToInviteResultItem
+    derivedFrom = Root
+    properties {
+        exception {
+          type = InviteExceptionResponse
+          description = ""
+          optional = false
+        }
+        invite {
+          type = BaseInviteDataResponse
+          description = "An invite object for the invite/request that was successfully accepted/declined. Will only be provided if the an invite/request is successfully created."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  RespondToInviteResultItem {
+    title = RespondToInviteResultItem
+    description = RespondToInviteResultItem
+    implements = openapi_server.resourceTypes.RespondToInviteResultItem
+
+  }
+}

@@ -106,7 +106,7 @@ CatalogsProductGroupPricingCriteria::isInclusion()
 }
 
 void
-CatalogsProductGroupPricingCriteria::setInclusion(bool  inclusion)
+CatalogsProductGroupPricingCriteria::setInclusion(bool inclusion)
 {
 	this->inclusion = inclusion;
 }
@@ -118,7 +118,7 @@ CatalogsProductGroupPricingCriteria::isNegated()
 }
 
 void
-CatalogsProductGroupPricingCriteria::setNegated(bool  negated)
+CatalogsProductGroupPricingCriteria::setNegated(bool negated)
 {
 	this->negated = negated;
 }
@@ -130,7 +130,7 @@ CatalogsProductGroupPricingCriteria::getValues()
 }
 
 void
-CatalogsProductGroupPricingCriteria::setValues(long  values)
+CatalogsProductGroupPricingCriteria::setValues(long values)
 {
 	this->values = values;
 }

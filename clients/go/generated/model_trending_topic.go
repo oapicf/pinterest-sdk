@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,8 +24,10 @@ var _ MappedNullable = &TrendingTopic{}
 type TrendingTopic struct {
 	// Description of the trending topic
 	Description string `json:"description"`
+	// Unique identifier for the trending topic
+	Id string `json:"id"`
 	// Month-over-month growth percentage
-	PercentGrowthMom int32 `json:"percent_growth_mom"`
+	PercentGrowthMom *int32 `json:"percent_growth_mom,omitempty"`
 	// Array of pin images related to this trend (up to 6)
 	Pins []TrendingPin `json:"pins"`
 	// List of related interest categories
@@ -44,10 +46,10 @@ type _TrendingTopic TrendingTopic
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTrendingTopic(description string, percentGrowthMom int32, pins []TrendingPin, relatedInterests []string, relatedSearches []string, timeSeries map[string]float32, title string) *TrendingTopic {
+func NewTrendingTopic(description string, id string, pins []TrendingPin, relatedInterests []string, relatedSearches []string, timeSeries map[string]float32, title string) *TrendingTopic {
 	this := TrendingTopic{}
 	this.Description = description
-	this.PercentGrowthMom = percentGrowthMom
+	this.Id = id
 	this.Pins = pins
 	this.RelatedInterests = relatedInterests
 	this.RelatedSearches = relatedSearches
@@ -88,28 +90,60 @@ func (o *TrendingTopic) SetDescription(v string) {
 	o.Description = v
 }
 
-// GetPercentGrowthMom returns the PercentGrowthMom field value
-func (o *TrendingTopic) GetPercentGrowthMom() int32 {
+// GetId returns the Id field value
+func (o *TrendingTopic) GetId() string {
 	if o == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 
-	return o.PercentGrowthMom
+	return o.Id
 }
 
-// GetPercentGrowthMomOk returns a tuple with the PercentGrowthMom field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *TrendingTopic) GetPercentGrowthMomOk() (*int32, bool) {
+func (o *TrendingTopic) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PercentGrowthMom, true
+	return &o.Id, true
 }
 
-// SetPercentGrowthMom sets field value
+// SetId sets field value
+func (o *TrendingTopic) SetId(v string) {
+	o.Id = v
+}
+
+// GetPercentGrowthMom returns the PercentGrowthMom field value if set, zero value otherwise.
+func (o *TrendingTopic) GetPercentGrowthMom() int32 {
+	if o == nil || IsNil(o.PercentGrowthMom) {
+		var ret int32
+		return ret
+	}
+	return *o.PercentGrowthMom
+}
+
+// GetPercentGrowthMomOk returns a tuple with the PercentGrowthMom field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TrendingTopic) GetPercentGrowthMomOk() (*int32, bool) {
+	if o == nil || IsNil(o.PercentGrowthMom) {
+		return nil, false
+	}
+	return o.PercentGrowthMom, true
+}
+
+// HasPercentGrowthMom returns a boolean if a field has been set.
+func (o *TrendingTopic) HasPercentGrowthMom() bool {
+	if o != nil && !IsNil(o.PercentGrowthMom) {
+		return true
+	}
+
+	return false
+}
+
+// SetPercentGrowthMom gets a reference to the given int32 and assigns it to the PercentGrowthMom field.
 func (o *TrendingTopic) SetPercentGrowthMom(v int32) {
-	o.PercentGrowthMom = v
+	o.PercentGrowthMom = &v
 }
 
 // GetPins returns the Pins field value
@@ -243,7 +277,10 @@ func (o TrendingTopic) MarshalJSON() ([]byte, error) {
 func (o TrendingTopic) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["description"] = o.Description
-	toSerialize["percent_growth_mom"] = o.PercentGrowthMom
+	toSerialize["id"] = o.Id
+	if !IsNil(o.PercentGrowthMom) {
+		toSerialize["percent_growth_mom"] = o.PercentGrowthMom
+	}
 	toSerialize["pins"] = o.Pins
 	toSerialize["related_interests"] = o.RelatedInterests
 	toSerialize["related_searches"] = o.RelatedSearches
@@ -258,7 +295,7 @@ func (o *TrendingTopic) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"description",
-		"percent_growth_mom",
+		"id",
 		"pins",
 		"related_interests",
 		"related_searches",

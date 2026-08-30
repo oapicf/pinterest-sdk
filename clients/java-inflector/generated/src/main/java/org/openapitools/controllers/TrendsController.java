@@ -11,7 +11,6 @@ import java.util.List;
 import org.openapitools.model.*;
 
 import org.openapitools.model.AgeTrendsBucket;
-import org.openapitools.model.Error;
 import org.openapitools.model.FeaturedTrend;
 import org.openapitools.model.GenderBucket;
 import org.openapitools.model.InterestsEnum;
@@ -25,10 +24,14 @@ import org.openapitools.model.ProductCategoryRegion;
 import org.openapitools.model.TrendType;
 import org.openapitools.model.TrendingKeywordsResponse;
 import org.openapitools.model.TrendingProductCategory;
+import org.openapitools.model.TrendsAgeBucket;
+import org.openapitools.model.TrendsEditorial;
+import org.openapitools.model.TrendsGenderFilter;
+import org.openapitools.model.TrendsL1Interest;
 import org.openapitools.model.TrendsSupportedRegion;
 import org.openapitools.model.VerticalProductCategory;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TrendsController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map
@@ -37,7 +40,13 @@ public class TrendsController  {
    **/
 
   /*
-    public ResponseContext trendingKeywordsList(RequestContext request , TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, Boolean includePrediction, Boolean includeDemographics) {
+    public ResponseContext trendingKeywordsList(RequestContext request , TrendsSupportedRegion region, TrendType trendType, List<TrendsL1Interest> interests, List<TrendsGenderFilter> genders, List<TrendsAgeBucket> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, Boolean includeDemographics) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext trendsEditorialArticlesList(RequestContext request , ProductCategoryRegion region) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

@@ -8,14 +8,15 @@
 #include "Helpers.h"
 #include <list>
 
-#include "Error.h"
-#include "LeadFormArrayResponse.h"
-#include "LeadFormCreateRequest.h"
-#include "LeadFormResponse.h"
-#include "LeadFormTestRequest.h"
-#include "LeadFormTestResponse.h"
-#include "LeadFormUpdateRequest.h"
+#include "LeadForm.h"
+#include "LeadFormBatchUpdate.h"
+#include "LeadFormCreate.h"
+#include "LeadFormTest.h"
+#include "LeadFormTestCreate.h"
+#include "Lead_forms_create_200_response.h"
 #include "Lead_forms_list_200_response.h"
+#include "Pinterest.Lib.Error.h"
+#include "Pinterest.Lib.PaginationOrder.h"
 
 namespace Tiny {
 
@@ -28,18 +29,18 @@ class LeadFormsApi : public Service {
 public:
     LeadFormsApi() = default;
 
-    virtual ~LeadFormsApi() = default;
+    virtual ~LeadFormsApi();
 
     /**
     * Create lead form test data.
     *
     * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
-    * \param adAccountId Unique identifier of an ad account. *Required*
+    * \param adAccountId  *Required*
     * \param leadFormId Unique identifier of a lead form. *Required*
-    * \param leadFormTestRequest Subscription to create. *Required*
+    * \param leadFormTestCreate  *Required*
     */
     Response<
-                LeadFormTestResponse
+                LeadFormTest
         >
     leadFormTest_create(
             
@@ -49,53 +50,53 @@ public:
             std::string leadFormId
             , 
             
-            LeadFormTestRequest leadFormTestRequest
+            LeadFormTestCreate leadFormTestCreate
             
     );
     /**
     * Get lead form by id.
     *
-    * <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+    * **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
+    * \param leadFormId The ID of this lead form *Required*
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param leadFormId Unique identifier of a lead form. *Required*
     */
     Response<
-                LeadFormResponse
+                LeadForm
         >
     leadForm_get(
             
-            std::string adAccountId
+            std::string leadFormId
             , 
             
-            std::string leadFormId
+            std::string adAccountId
             
     );
     /**
     * Create lead forms.
     *
-    * <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+    * **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param leadFormCreateRequest List of lead forms to create, size limit [1, 30]. *Required*
+    * \param leadFormCreate  *Required*
     */
     Response<
-                LeadFormArrayResponse
+                Lead_forms_create_200_response
         >
     leadForms_create(
             
             std::string adAccountId
             , 
-            std::list<LeadFormCreateRequest> leadFormCreateRequest
+            std::list<LeadFormCreate> leadFormCreate
             
             
     );
     /**
     * List lead forms.
     *
-    * <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+    * **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
     * \param bookmark Cursor used to fetch the next page of items
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+    * \param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
     */
     Response<
                 Lead_forms_list_200_response
@@ -105,30 +106,30 @@ public:
             std::string adAccountId
             , 
             
+            std::string bookmark
+            , 
+            
             int pageSize
             , 
             
-            std::string order
-            , 
-            
-            std::string bookmark
+            Pinterest.Lib.PaginationOrder order
             
     );
     /**
     * Update lead forms.
     *
-    * <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+    * **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param leadFormUpdateRequest List of lead forms to update, size limit [1, 30]. *Required*
+    * \param leadFormBatchUpdate  *Required*
     */
     Response<
-                LeadFormArrayResponse
+                Lead_forms_create_200_response
         >
     leadForms_update(
             
             std::string adAccountId
             , 
-            std::list<LeadFormUpdateRequest> leadFormUpdateRequest
+            std::list<LeadFormBatchUpdate> leadFormBatchUpdate
             
             
     );

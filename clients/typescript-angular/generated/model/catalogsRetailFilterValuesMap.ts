@@ -7,6 +7,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { ProductAvailability } from './productAvailability';
+import { ProductCondition } from './productCondition';
+import { MediaType } from './mediaType';
+import { Gender } from './gender';
 
 
 /**
@@ -15,15 +19,15 @@
 export interface CatalogsRetailFilterValuesMap { 
     ad_image_tags?: Array<string>;
     ad_video_tags?: Array<string>;
-    availability?: Array<CatalogsRetailFilterValuesMap.AvailabilityEnum>;
+    availability?: Array<ProductAvailability>;
     brand?: Array<string>;
-    condition?: Array<CatalogsRetailFilterValuesMap.ConditionEnum>;
+    condition?: Array<ProductCondition>;
     custom_label_0?: Array<string>;
     custom_label_1?: Array<string>;
     custom_label_2?: Array<string>;
     custom_label_3?: Array<string>;
     custom_label_4?: Array<string>;
-    gender?: Array<CatalogsRetailFilterValuesMap.GenderEnum>;
+    gender?: Array<Gender>;
     google_product_category_0?: Array<string>;
     google_product_category_1?: Array<string>;
     google_product_category_2?: Array<string>;
@@ -31,38 +35,11 @@ export interface CatalogsRetailFilterValuesMap {
     google_product_category_4?: Array<string>;
     google_product_category_5?: Array<string>;
     google_product_category_6?: Array<string>;
-    media_type?: Array<CatalogsRetailFilterValuesMap.MediaTypeEnum>;
+    media_type?: Array<MediaType>;
     product_type_0?: Array<string>;
     product_type_1?: Array<string>;
     product_type_2?: Array<string>;
     product_type_3?: Array<string>;
     product_type_4?: Array<string>;
 }
-export namespace CatalogsRetailFilterValuesMap {
-    export const AvailabilityEnum = {
-        InStock: 'IN_STOCK',
-        OutOfStock: 'OUT_OF_STOCK',
-        Preorder: 'PREORDER',
-        Unavailable: 'UNAVAILABLE'
-    } as const;
-    export type AvailabilityEnum = typeof AvailabilityEnum[keyof typeof AvailabilityEnum];
-    export const ConditionEnum = {
-        New: 'NEW',
-        Used: 'USED',
-        Refurbished: 'REFURBISHED'
-    } as const;
-    export type ConditionEnum = typeof ConditionEnum[keyof typeof ConditionEnum];
-    export const GenderEnum = {
-        Female: 'FEMALE',
-        Male: 'MALE',
-        Unisex: 'UNISEX'
-    } as const;
-    export type GenderEnum = typeof GenderEnum[keyof typeof GenderEnum];
-    export const MediaTypeEnum = {
-        Image: 'IMAGE',
-        Video: 'VIDEO'
-    } as const;
-    export type MediaTypeEnum = typeof MediaTypeEnum[keyof typeof MediaTypeEnum];
-}
-
 

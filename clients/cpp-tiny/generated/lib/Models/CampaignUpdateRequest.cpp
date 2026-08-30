@@ -6,23 +6,26 @@ using namespace Tiny;
 
 CampaignUpdateRequest::CampaignUpdateRequest()
 {
-	id = std::string();
+	bid_options = CampaignBidOptionsUpdate();
+	intended_promotion_type = IntendedPromotionType();
+	is_ltv_optimized = bool(false);
+	is_performance_plus = bool(false);
+	is_top_of_search = bool(false);
+	objective_type = null;
 	ad_account_id = std::string();
 	daily_spend_cap = int(0);
+	default_ad_group_budget_in_micro_currency = int(0);
 	end_time = int(0);
+	id = std::string();
 	is_automated_campaign = bool(false);
+	is_campaign_budget_optimization = bool(false);
 	is_flexible_daily_budgets = bool(false);
 	lifetime_spend_cap = int(0);
 	name = std::string();
 	order_line_id = std::string();
 	start_time = int(0);
-	status = std::string();
+	status = EntityStatus();
 	tracking_urls = null;
-	default_ad_group_budget_in_micro_currency = int(0);
-	is_campaign_budget_optimization = bool(false);
-	bid_options = CampaignBidOptionsUpdate();
-	is_performance_plus = bool(false);
-	objective_type = std::string();
 }
 
 CampaignUpdateRequest::CampaignUpdateRequest(std::string jsonString)
@@ -40,16 +43,84 @@ CampaignUpdateRequest::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
-    const char *idKey = "id";
+    const char *bid_optionsKey = "bid_options";
 
-    if(object.has_key(idKey))
+    if(object.has_key(bid_optionsKey))
     {
-        bourne::json value = object[idKey];
+        bourne::json value = object[bid_optionsKey];
 
 
 
-        jsonToValue(&id, value, "std::string");
 
+        CampaignBidOptionsUpdate* obj = &bid_options;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *intended_promotion_typeKey = "intended_promotion_type";
+
+    if(object.has_key(intended_promotion_typeKey))
+    {
+        bourne::json value = object[intended_promotion_typeKey];
+
+
+
+
+        IntendedPromotionType* obj = &intended_promotion_type;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *is_ltv_optimizedKey = "is_ltv_optimized";
+
+    if(object.has_key(is_ltv_optimizedKey))
+    {
+        bourne::json value = object[is_ltv_optimizedKey];
+
+
+
+        jsonToValue(&is_ltv_optimized, value, "bool");
+
+
+    }
+
+    const char *is_performance_plusKey = "is_performance_plus";
+
+    if(object.has_key(is_performance_plusKey))
+    {
+        bourne::json value = object[is_performance_plusKey];
+
+
+
+        jsonToValue(&is_performance_plus, value, "bool");
+
+
+    }
+
+    const char *is_top_of_searchKey = "is_top_of_search";
+
+    if(object.has_key(is_top_of_searchKey))
+    {
+        bourne::json value = object[is_top_of_searchKey];
+
+
+
+        jsonToValue(&is_top_of_search, value, "bool");
+
+
+    }
+
+    const char *objective_typeKey = "objective_type";
+
+    if(object.has_key(objective_typeKey))
+    {
+        bourne::json value = object[objective_typeKey];
+
+
+
+
+        ObjectiveType* obj = &objective_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -79,6 +150,19 @@ CampaignUpdateRequest::fromJson(std::string jsonObj)
 
     }
 
+    const char *default_ad_group_budget_in_micro_currencyKey = "default_ad_group_budget_in_micro_currency";
+
+    if(object.has_key(default_ad_group_budget_in_micro_currencyKey))
+    {
+        bourne::json value = object[default_ad_group_budget_in_micro_currencyKey];
+
+
+
+        jsonToValue(&default_ad_group_budget_in_micro_currency, value, "int");
+
+
+    }
+
     const char *end_timeKey = "end_time";
 
     if(object.has_key(end_timeKey))
@@ -92,6 +176,19 @@ CampaignUpdateRequest::fromJson(std::string jsonObj)
 
     }
 
+    const char *idKey = "id";
+
+    if(object.has_key(idKey))
+    {
+        bourne::json value = object[idKey];
+
+
+
+        jsonToValue(&id, value, "std::string");
+
+
+    }
+
     const char *is_automated_campaignKey = "is_automated_campaign";
 
     if(object.has_key(is_automated_campaignKey))
@@ -101,6 +198,19 @@ CampaignUpdateRequest::fromJson(std::string jsonObj)
 
 
         jsonToValue(&is_automated_campaign, value, "bool");
+
+
+    }
+
+    const char *is_campaign_budget_optimizationKey = "is_campaign_budget_optimization";
+
+    if(object.has_key(is_campaign_budget_optimizationKey))
+    {
+        bourne::json value = object[is_campaign_budget_optimizationKey];
+
+
+
+        jsonToValue(&is_campaign_budget_optimization, value, "bool");
 
 
     }
@@ -193,74 +303,7 @@ CampaignUpdateRequest::fromJson(std::string jsonObj)
 
 
 
-        TrackingUrls* obj = &tracking_urls;
-		obj->fromJson(value.dump());
-
-    }
-
-    const char *default_ad_group_budget_in_micro_currencyKey = "default_ad_group_budget_in_micro_currency";
-
-    if(object.has_key(default_ad_group_budget_in_micro_currencyKey))
-    {
-        bourne::json value = object[default_ad_group_budget_in_micro_currencyKey];
-
-
-
-        jsonToValue(&default_ad_group_budget_in_micro_currency, value, "int");
-
-
-    }
-
-    const char *is_campaign_budget_optimizationKey = "is_campaign_budget_optimization";
-
-    if(object.has_key(is_campaign_budget_optimizationKey))
-    {
-        bourne::json value = object[is_campaign_budget_optimizationKey];
-
-
-
-        jsonToValue(&is_campaign_budget_optimization, value, "bool");
-
-
-    }
-
-    const char *bid_optionsKey = "bid_options";
-
-    if(object.has_key(bid_optionsKey))
-    {
-        bourne::json value = object[bid_optionsKey];
-
-
-
-
-        CampaignBidOptionsUpdate* obj = &bid_options;
-		obj->fromJson(value.dump());
-
-    }
-
-    const char *is_performance_plusKey = "is_performance_plus";
-
-    if(object.has_key(is_performance_plusKey))
-    {
-        bourne::json value = object[is_performance_plusKey];
-
-
-
-        jsonToValue(&is_performance_plus, value, "bool");
-
-
-    }
-
-    const char *objective_typeKey = "objective_type";
-
-    if(object.has_key(objective_typeKey))
-    {
-        bourne::json value = object[objective_typeKey];
-
-
-
-
-        ObjectiveType* obj = &objective_type;
+        Object* obj = &tracking_urls;
 		obj->fromJson(value.dump());
 
     }
@@ -277,8 +320,43 @@ CampaignUpdateRequest::toJson()
 
 
 
-    object["id"] = getId();
 
+	object["bid_options"] = getBidOptions().toJson();
+
+
+
+
+
+
+	object["intended_promotion_type"] = getIntendedPromotionType().toJson();
+
+
+
+
+
+    object["is_ltv_optimized"] = isIsLtvOptimized();
+
+
+
+
+
+
+    object["is_performance_plus"] = isIsPerformancePlus();
+
+
+
+
+
+
+    object["is_top_of_search"] = isIsTopOfSearch();
+
+
+
+
+
+
+
+	object["objective_type"] = getObjectiveType().toJson();
 
 
 
@@ -298,6 +376,13 @@ CampaignUpdateRequest::toJson()
 
 
 
+    object["default_ad_group_budget_in_micro_currency"] = getDefaultAdGroupBudgetInMicroCurrency();
+
+
+
+
+
+
     object["end_time"] = getEndTime();
 
 
@@ -305,7 +390,21 @@ CampaignUpdateRequest::toJson()
 
 
 
+    object["id"] = getId();
+
+
+
+
+
+
     object["is_automated_campaign"] = isIsAutomatedCampaign();
+
+
+
+
+
+
+    object["is_campaign_budget_optimization"] = isIsCampaignBudgetOptimization();
 
 
 
@@ -358,55 +457,80 @@ CampaignUpdateRequest::toJson()
 	object["tracking_urls"] = getTrackingUrls().toJson();
 
 
-
-
-
-    object["default_ad_group_budget_in_micro_currency"] = getDefaultAdGroupBudgetInMicroCurrency();
-
-
-
-
-
-
-    object["is_campaign_budget_optimization"] = isIsCampaignBudgetOptimization();
-
-
-
-
-
-
-
-	object["bid_options"] = getBidOptions().toJson();
-
-
-
-
-
-    object["is_performance_plus"] = isIsPerformancePlus();
-
-
-
-
-
-
-
-	object["objective_type"] = getObjectiveType().toJson();
-
-
     return object;
 
 }
 
-std::string
-CampaignUpdateRequest::getId()
+CampaignBidOptionsUpdate
+CampaignUpdateRequest::getBidOptions()
 {
-	return id;
+	return bid_options;
 }
 
 void
-CampaignUpdateRequest::setId(std::string  id)
+CampaignUpdateRequest::setBidOptions(CampaignBidOptionsUpdate bid_options)
 {
-	this->id = id;
+	this->bid_options = bid_options;
+}
+
+IntendedPromotionType
+CampaignUpdateRequest::getIntendedPromotionType()
+{
+	return intended_promotion_type;
+}
+
+void
+CampaignUpdateRequest::setIntendedPromotionType(IntendedPromotionType intended_promotion_type)
+{
+	this->intended_promotion_type = intended_promotion_type;
+}
+
+bool
+CampaignUpdateRequest::isIsLtvOptimized()
+{
+	return is_ltv_optimized;
+}
+
+void
+CampaignUpdateRequest::setIsLtvOptimized(bool is_ltv_optimized)
+{
+	this->is_ltv_optimized = is_ltv_optimized;
+}
+
+bool
+CampaignUpdateRequest::isIsPerformancePlus()
+{
+	return is_performance_plus;
+}
+
+void
+CampaignUpdateRequest::setIsPerformancePlus(bool is_performance_plus)
+{
+	this->is_performance_plus = is_performance_plus;
+}
+
+bool
+CampaignUpdateRequest::isIsTopOfSearch()
+{
+	return is_top_of_search;
+}
+
+void
+CampaignUpdateRequest::setIsTopOfSearch(bool is_top_of_search)
+{
+	this->is_top_of_search = is_top_of_search;
+}
+
+ObjectiveType
+CampaignUpdateRequest::getObjectiveType()
+{
+	return objective_type;
+}
+
+void
+CampaignUpdateRequest::setObjectiveType(ObjectiveType objective_type)
+{
+	this->objective_type = objective_type;
 }
 
 std::string
@@ -416,7 +540,7 @@ CampaignUpdateRequest::getAdAccountId()
 }
 
 void
-CampaignUpdateRequest::setAdAccountId(std::string  ad_account_id)
+CampaignUpdateRequest::setAdAccountId(std::string ad_account_id)
 {
 	this->ad_account_id = ad_account_id;
 }
@@ -428,9 +552,21 @@ CampaignUpdateRequest::getDailySpendCap()
 }
 
 void
-CampaignUpdateRequest::setDailySpendCap(int  daily_spend_cap)
+CampaignUpdateRequest::setDailySpendCap(int daily_spend_cap)
 {
 	this->daily_spend_cap = daily_spend_cap;
+}
+
+int
+CampaignUpdateRequest::getDefaultAdGroupBudgetInMicroCurrency()
+{
+	return default_ad_group_budget_in_micro_currency;
+}
+
+void
+CampaignUpdateRequest::setDefaultAdGroupBudgetInMicroCurrency(int default_ad_group_budget_in_micro_currency)
+{
+	this->default_ad_group_budget_in_micro_currency = default_ad_group_budget_in_micro_currency;
 }
 
 int
@@ -440,9 +576,21 @@ CampaignUpdateRequest::getEndTime()
 }
 
 void
-CampaignUpdateRequest::setEndTime(int  end_time)
+CampaignUpdateRequest::setEndTime(int end_time)
 {
 	this->end_time = end_time;
+}
+
+std::string
+CampaignUpdateRequest::getId()
+{
+	return id;
+}
+
+void
+CampaignUpdateRequest::setId(std::string id)
+{
+	this->id = id;
 }
 
 bool
@@ -452,9 +600,21 @@ CampaignUpdateRequest::isIsAutomatedCampaign()
 }
 
 void
-CampaignUpdateRequest::setIsAutomatedCampaign(bool  is_automated_campaign)
+CampaignUpdateRequest::setIsAutomatedCampaign(bool is_automated_campaign)
 {
 	this->is_automated_campaign = is_automated_campaign;
+}
+
+bool
+CampaignUpdateRequest::isIsCampaignBudgetOptimization()
+{
+	return is_campaign_budget_optimization;
+}
+
+void
+CampaignUpdateRequest::setIsCampaignBudgetOptimization(bool is_campaign_budget_optimization)
+{
+	this->is_campaign_budget_optimization = is_campaign_budget_optimization;
 }
 
 bool
@@ -464,7 +624,7 @@ CampaignUpdateRequest::isIsFlexibleDailyBudgets()
 }
 
 void
-CampaignUpdateRequest::setIsFlexibleDailyBudgets(bool  is_flexible_daily_budgets)
+CampaignUpdateRequest::setIsFlexibleDailyBudgets(bool is_flexible_daily_budgets)
 {
 	this->is_flexible_daily_budgets = is_flexible_daily_budgets;
 }
@@ -476,7 +636,7 @@ CampaignUpdateRequest::getLifetimeSpendCap()
 }
 
 void
-CampaignUpdateRequest::setLifetimeSpendCap(int  lifetime_spend_cap)
+CampaignUpdateRequest::setLifetimeSpendCap(int lifetime_spend_cap)
 {
 	this->lifetime_spend_cap = lifetime_spend_cap;
 }
@@ -488,7 +648,7 @@ CampaignUpdateRequest::getName()
 }
 
 void
-CampaignUpdateRequest::setName(std::string  name)
+CampaignUpdateRequest::setName(std::string name)
 {
 	this->name = name;
 }
@@ -500,7 +660,7 @@ CampaignUpdateRequest::getOrderLineId()
 }
 
 void
-CampaignUpdateRequest::setOrderLineId(std::string  order_line_id)
+CampaignUpdateRequest::setOrderLineId(std::string order_line_id)
 {
 	this->order_line_id = order_line_id;
 }
@@ -512,7 +672,7 @@ CampaignUpdateRequest::getStartTime()
 }
 
 void
-CampaignUpdateRequest::setStartTime(int  start_time)
+CampaignUpdateRequest::setStartTime(int start_time)
 {
 	this->start_time = start_time;
 }
@@ -524,81 +684,21 @@ CampaignUpdateRequest::getStatus()
 }
 
 void
-CampaignUpdateRequest::setStatus(EntityStatus  status)
+CampaignUpdateRequest::setStatus(EntityStatus status)
 {
 	this->status = status;
 }
 
-TrackingUrls
+Object
 CampaignUpdateRequest::getTrackingUrls()
 {
 	return tracking_urls;
 }
 
 void
-CampaignUpdateRequest::setTrackingUrls(TrackingUrls  tracking_urls)
+CampaignUpdateRequest::setTrackingUrls(Object tracking_urls)
 {
 	this->tracking_urls = tracking_urls;
-}
-
-int
-CampaignUpdateRequest::getDefaultAdGroupBudgetInMicroCurrency()
-{
-	return default_ad_group_budget_in_micro_currency;
-}
-
-void
-CampaignUpdateRequest::setDefaultAdGroupBudgetInMicroCurrency(int  default_ad_group_budget_in_micro_currency)
-{
-	this->default_ad_group_budget_in_micro_currency = default_ad_group_budget_in_micro_currency;
-}
-
-bool
-CampaignUpdateRequest::isIsCampaignBudgetOptimization()
-{
-	return is_campaign_budget_optimization;
-}
-
-void
-CampaignUpdateRequest::setIsCampaignBudgetOptimization(bool  is_campaign_budget_optimization)
-{
-	this->is_campaign_budget_optimization = is_campaign_budget_optimization;
-}
-
-CampaignBidOptionsUpdate
-CampaignUpdateRequest::getBidOptions()
-{
-	return bid_options;
-}
-
-void
-CampaignUpdateRequest::setBidOptions(CampaignBidOptionsUpdate  bid_options)
-{
-	this->bid_options = bid_options;
-}
-
-bool
-CampaignUpdateRequest::isIsPerformancePlus()
-{
-	return is_performance_plus;
-}
-
-void
-CampaignUpdateRequest::setIsPerformancePlus(bool  is_performance_plus)
-{
-	this->is_performance_plus = is_performance_plus;
-}
-
-ObjectiveType
-CampaignUpdateRequest::getObjectiveType()
-{
-	return objective_type;
-}
-
-void
-CampaignUpdateRequest::setObjectiveType(ObjectiveType  objective_type)
-{
-	this->objective_type = objective_type;
 }
 
 

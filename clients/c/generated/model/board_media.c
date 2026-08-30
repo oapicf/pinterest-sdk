@@ -13,10 +13,10 @@ static board_media_t *board_media_create_internal(
     if (!board_media_local_var) {
         return NULL;
     }
+    memset(board_media_local_var, 0, sizeof(board_media_t));
+    board_media_local_var->_library_owned = 1;
     board_media_local_var->image_cover_url = image_cover_url;
     board_media_local_var->pin_thumbnail_urls = pin_thumbnail_urls;
-
-    board_media_local_var->_library_owned = 1;
     return board_media_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) board_media_t *board_media_create(
     char *image_cover_url,
     list_t *pin_thumbnail_urls
     ) {
-    return board_media_create_internal (
+    board_media_t *result = board_media_create_internal (
         image_cover_url,
         pin_thumbnail_urls
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void board_media_free(board_media_t *board_media) {
@@ -92,6 +95,8 @@ board_media_t *board_media_parseFromJSON(cJSON *board_mediaJSON){
 
     board_media_t *board_media_local_var = NULL;
 
+    char *image_cover_url_local_str = NULL;
+
     // define the local list for board_media->pin_thumbnail_urls
     list_t *pin_thumbnail_urlsList = NULL;
 
@@ -130,13 +135,23 @@ board_media_t *board_media_parseFromJSON(cJSON *board_mediaJSON){
     }
 
 
+    if (image_cover_url && !cJSON_IsNull(image_cover_url)) image_cover_url_local_str = strdup(image_cover_url->valuestring);
+
     board_media_local_var = board_media_create_internal (
-        image_cover_url && !cJSON_IsNull(image_cover_url) ? strdup(image_cover_url->valuestring) : NULL,
+        image_cover_url_local_str,
         pin_thumbnail_urls ? pin_thumbnail_urlsList : NULL
         );
 
+    if (!board_media_local_var) {
+        goto end;
+    }
+
     return board_media_local_var;
 end:
+    if (image_cover_url_local_str) {
+        free(image_cover_url_local_str);
+        image_cover_url_local_str = NULL;
+    }
     if (pin_thumbnail_urlsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, pin_thumbnail_urlsList) {

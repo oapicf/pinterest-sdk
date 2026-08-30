@@ -18,23 +18,23 @@ using namespace Tiny;
             
             Date endDate
             , 
-            std::list<AdsAnalyticsTargetingType> targetingTypes
+            std::list<AdsAnalyticsAccountTargetingType> targetingTypes
             
             , 
-            std::list<std::string> columns
+            std::list<ReportingColumnSync> columns
             
             , 
             
             Granularity granularity
             , 
             
-            int clickWindowDays
+            long clickWindowDays
             , 
             
-            int engagementWindowDays
+            long engagementWindowDays
             , 
             
-            int viewWindowDays
+            long viewWindowDays
             , 
             
             std::string conversionReportTime
@@ -106,33 +106,33 @@ using namespace Tiny;
         }
 
         Response<
-            std::list<AdAccountAnalyticsResponse_inner>
+            std::list<AdAccountAnalyticsItems>
         >
         AdAccountsApi::
         adAccount_analytics(
-            
-            std::string adAccountId
-            , 
             
             Date startDate
             , 
             
             Date endDate
             , 
-            std::list<std::string> columns
+            std::list<ReportingColumnSync> columns
             
             , 
             
             Granularity granularity
             , 
             
-            int clickWindowDays
+            std::string adAccountId
             , 
             
-            int engagementWindowDays
+            long clickWindowDays
             , 
             
-            int viewWindowDays
+            long engagementWindowDays
+            , 
+            
+            long viewWindowDays
             , 
             
             std::string conversionReportTime
@@ -186,7 +186,7 @@ using namespace Tiny;
 
 
 
-            std::list<AdAccountAnalyticsResponse_inner> obj = std::list<AdAccountAnalyticsResponse_inner>();
+            std::list<AdAccountAnalyticsItems> obj = std::list<AdAccountAnalyticsItems>();
             bourne::json jsonPayload(output_string);
 
 
@@ -199,7 +199,7 @@ using namespace Tiny;
             
             for(auto& var : jsonPayload.array_range())
             {
-                AdAccountAnalyticsResponse_inner tmp(var.dump());
+                AdAccountAnalyticsItems tmp(var.dump());
                 obj.push_back(tmp);
             }
             
@@ -210,7 +210,7 @@ using namespace Tiny;
 
 
 
-            Response<std::list<AdAccountAnalyticsResponse_inner>> response(obj, httpCode);
+            Response<std::list<AdAccountAnalyticsItems>> response(obj, httpCode);
             return response;
         }
 
@@ -367,7 +367,7 @@ using namespace Tiny;
         }
 
         Response<
-            AdsAnalyticsCreateAsyncResponse
+            ConversionProductReport
         >
         AdAccountsApi::
         analytics_createConversionProductReport(
@@ -375,7 +375,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            ConversionProductReportRequest conversionProductReportRequest
+            ConversionProductReportCreate conversionProductReportCreate
             
         )
         {
@@ -404,11 +404,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | conversionProductReportRequest
+            // Body     | conversionProductReportCreate
 
 
 
-            payload = conversionProductReportRequest.toJson().dump();
+            payload = conversionProductReportCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -419,15 +419,15 @@ using namespace Tiny;
 
 
 
-            AdsAnalyticsCreateAsyncResponse obj(output_string);
+            ConversionProductReport obj(output_string);
 
 
-            Response<AdsAnalyticsCreateAsyncResponse> response(obj, httpCode);
+            Response<ConversionProductReport> response(obj, httpCode);
             return response;
         }
 
         Response<
-            CreateMMMReportResponse
+            MMMReport
         >
         AdAccountsApi::
         analytics_createMmmReport(
@@ -435,7 +435,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            CreateMMMReportRequest createMMMReportRequest
+            MMMReportCreate mMMReportCreate
             
         )
         {
@@ -464,11 +464,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | createMMMReportRequest
+            // Body     | mMMReportCreate
 
 
 
-            payload = createMMMReportRequest.toJson().dump();
+            payload = mMMReportCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -479,10 +479,10 @@ using namespace Tiny;
 
 
 
-            CreateMMMReportResponse obj(output_string);
+            MMMReport obj(output_string);
 
 
-            Response<CreateMMMReportResponse> response(obj, httpCode);
+            Response<MMMReport> response(obj, httpCode);
             return response;
         }
 
@@ -621,7 +621,7 @@ using namespace Tiny;
         }
 
         Response<
-            AdsAnalyticsGetAsyncResponse
+            ConversionProductReport
         >
         AdAccountsApi::
         analytics_getConversionProductReport(
@@ -668,15 +668,15 @@ using namespace Tiny;
 
 
 
-            AdsAnalyticsGetAsyncResponse obj(output_string);
+            ConversionProductReport obj(output_string);
 
 
-            Response<AdsAnalyticsGetAsyncResponse> response(obj, httpCode);
+            Response<ConversionProductReport> response(obj, httpCode);
             return response;
         }
 
         Response<
-            GetMMMReportResponse
+            MMMReport
         >
         AdAccountsApi::
         analytics_getMmmReport(
@@ -723,10 +723,10 @@ using namespace Tiny;
 
 
 
-            GetMMMReportResponse obj(output_string);
+            MMMReport obj(output_string);
 
 
-            Response<GetMMMReportResponse> response(obj, httpCode);
+            Response<MMMReport> response(obj, httpCode);
             return response;
         }
 
@@ -847,13 +847,13 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
+            std::string bookmark
+            , 
+            
             int pageSize
             , 
             
-            std::string order
-            , 
-            
-            std::string bookmark
+            Pinterest.Lib.PaginationOrder order
             
         )
         {
@@ -862,10 +862,10 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | pageSize order bookmark 
+            // Query    | bookmark pageSize order 
+            addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
             addQueryParam("order",order);
-            addQueryParam("bookmark",bookmark);
 
             // Form     | 
 

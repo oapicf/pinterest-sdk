@@ -7,6 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { FreqBidMultiplierTimeWindow } from './freqBidMultiplierTimeWindow';
+import { AgeBucketMultipliers } from './ageBucketMultipliers';
+import { FrequencyMultipliers } from './frequencyMultipliers';
+import { GenderMultipliers } from './genderMultipliers';
+import { CampaignBidOptionsUpdateMaskItems } from './campaignBidOptionsUpdateMaskItems';
 import { CampaignAudienceMultipliers } from './campaignAudienceMultipliers';
 import { AppTypeMultipliers } from './appTypeMultipliers';
 import { PlacementMultipliers } from './placementMultipliers';
@@ -16,23 +21,40 @@ import { PlacementMultipliers } from './placementMultipliers';
  * Object describing an update to the campaign level bid multipliers.
  */
 export interface CampaignBidOptionsUpdate { 
+    /**
+     * Age bucket multipliers for bid adjustments.
+     */
+    age_bucket_multipliers?: AgeBucketMultipliers | null;
+    /**
+     * App type multipliers for bid adjustments.
+     */
     app_type_multipliers?: AppTypeMultipliers | null;
+    /**
+     * Audience multipliers for bid adjustments.
+     */
     audience_multipliers?: CampaignAudienceMultipliers;
+    /**
+     * The time window for frequency bid multipliers.
+     */
+    freq_bid_multiplier_time_window?: FreqBidMultiplierTimeWindow | null;
+    /**
+     * Frequency multipliers for bid adjustments.
+     */
+    frequency_multipliers?: FrequencyMultipliers | null;
+    /**
+     * Gender multipliers for bid adjustments.
+     */
+    gender_multipliers?: GenderMultipliers | null;
+    /**
+     * Placement multipliers for bid adjustments.
+     */
     placement_multipliers?: PlacementMultipliers | null;
     /**
-     * List of fields to update, only the fields in the list will be updated.
+     * List of fields to update. Only the fields in the list will be updated.
      */
-    update_mask: Array<CampaignBidOptionsUpdate.UpdateMaskEnum>;
+    update_mask: Array<CampaignBidOptionsUpdateMaskItems>;
 }
 export namespace CampaignBidOptionsUpdate {
-    export const UpdateMaskEnum = {
-        Audience: 'AUDIENCE',
-        AppType: 'APP_TYPE',
-        Placement: 'PLACEMENT',
-        Gender: 'GENDER',
-        AgeBucket: 'AGE_BUCKET'
-    } as const;
-    export type UpdateMaskEnum = typeof UpdateMaskEnum[keyof typeof UpdateMaskEnum];
 }
 
 

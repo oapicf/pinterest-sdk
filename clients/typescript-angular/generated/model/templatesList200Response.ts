@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { TemplateResponse } from './templateResponse';
+import { AccountTemplate } from './accountTemplate';
 
 
 export interface TemplatesList200Response { 
     bookmark?: string | null;
-    items: Array<TemplateResponse>;
+    items: Array<AccountTemplate>;
 }
 

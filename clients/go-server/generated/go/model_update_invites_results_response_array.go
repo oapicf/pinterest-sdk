@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,13 +17,14 @@ package openapi
 type UpdateInvitesResultsResponseArray struct {
 
 	// List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
-	Items []UpdateInvitesResultsResponseArrayItemsInner `json:"items,omitempty"`
+	Items []InviteActionResultItem `json:"items,omitempty"`
 }
 
-// AssertUpdateInvitesResultsResponseArrayRequired checks if the required fields are not zero-ed
+// AssertUpdateInvitesResultsResponseArrayRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertUpdateInvitesResultsResponseArrayRequired(obj UpdateInvitesResultsResponseArray) error {
 	for _, el := range obj.Items {
-		if err := AssertUpdateInvitesResultsResponseArrayItemsInnerRequired(el); err != nil {
+		if err := AssertInviteActionResultItemRequired(el); err != nil {
 			return err
 		}
 	}
@@ -33,7 +34,7 @@ func AssertUpdateInvitesResultsResponseArrayRequired(obj UpdateInvitesResultsRes
 // AssertUpdateInvitesResultsResponseArrayConstraints checks if the values respects the defined constraints
 func AssertUpdateInvitesResultsResponseArrayConstraints(obj UpdateInvitesResultsResponseArray) error {
 	for _, el := range obj.Items {
-		if err := AssertUpdateInvitesResultsResponseArrayItemsInnerConstraints(el); err != nil {
+		if err := AssertInviteActionResultItemConstraints(el); err != nil {
 			return err
 		}
 	}

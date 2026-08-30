@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **ios_deep_link** | [**STRING_32**](STRING_32.md) | IOS deep link to the creative assets page. | [optional] [default to null]
 **link** | [**STRING_32**](STRING_32.md) | Link to the creative assets page. | [optional] [default to null]
 **title** | [**STRING_32**](STRING_32.md) | The name of the creative assets. | [optional] [default to null]
-**visibility** | [**STRING_32**](STRING_32.md) | Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. | [optional] [default to null]
+**visibility** | [**STRING_32**](STRING_32.md) | Visibility of the creative assets. Must be one of the following values (upper or lowercase): &#39;visible&#39;, &#39;hidden&#39;. | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

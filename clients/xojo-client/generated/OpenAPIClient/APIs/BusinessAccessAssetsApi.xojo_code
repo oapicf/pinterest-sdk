@@ -1,17 +1,17 @@
 #tag Class
 Protected Class BusinessAccessAssetsApi
 	#tag Method, Flags = &h0
-		Sub AssetGroupCreate(, businessId As String, createAssetGroupBody As OpenAPIClient.Models.CreateAssetGroupBody)
+		Sub AssetGroupCreate(, businessId As String, assetGroupInputCreate As OpenAPIClient.Models.AssetGroupInputCreate)
 		  // Operation asset_group/create
 		  // Create a new asset group.
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
-		  // - parameter createAssetGroupBody: (body)  
+		  // - parameter assetGroupInputCreate: (body)  
 		  //
-		  // Invokes BusinessAccessAssetsApiCallbackHandler.AssetGroupCreateCallback(CreateAssetGroupResponse) on completion. 
+		  // Invokes BusinessAccessAssetsApiCallbackHandler.AssetGroupCreateCallback(AssetGroupInput) on completion. 
 		  //
 		  // - POST /businesses/{business_id}/asset_groups
-		  // - Create a new asset group with the specified parameters. - An <a href="https://help.pinterest.com/en/business/article/asset-groups">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+		  // - Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -21,7 +21,7 @@ Protected Class BusinessAccessAssetsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(createAssetGroupBody), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(assetGroupInputCreate), "application/json")
 		  
 		  
 		  
@@ -48,7 +48,7 @@ Protected Class BusinessAccessAssetsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function AssetGroupCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.CreateAssetGroupResponse) As Boolean
+		Private Function AssetGroupCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AssetGroupInput) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -56,7 +56,7 @@ Protected Class BusinessAccessAssetsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.CreateAssetGroupResponse
+			  outData = New OpenAPIClient.Models.AssetGroupInput
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -109,7 +109,7 @@ Protected Class BusinessAccessAssetsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.CreateAssetGroupResponse
+		  Dim data As OpenAPIClient.Models.AssetGroupInput
 		  CallbackHandler.AssetGroupCreateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -123,7 +123,7 @@ Protected Class BusinessAccessAssetsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.CreateAssetGroupResponse
+		  Dim data As OpenAPIClient.Models.AssetGroupInput
 		  Call AssetGroupCreatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.AssetGroupCreateCallback(error, data)
@@ -134,14 +134,14 @@ Protected Class BusinessAccessAssetsApi
 
 
 	#tag Method, Flags = &h0
-		Sub AssetGroupDelete(, businessId As String, deleteAssetGroupBody As OpenAPIClient.Models.DeleteAssetGroupBody)
+		Sub AssetGroupDelete(, businessId As String, assetGroupDeletionDelete As OpenAPIClient.Models.AssetGroupDeletionDelete)
 		  // Operation asset_group/delete
 		  // Delete asset groups.
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
-		  // - parameter deleteAssetGroupBody: (body)  
+		  // - parameter assetGroupDeletionDelete: (body)  
 		  //
-		  // Invokes BusinessAccessAssetsApiCallbackHandler.AssetGroupDeleteCallback(DeleteAssetGroupResponse) on completion. 
+		  // Invokes BusinessAccessAssetsApiCallbackHandler.AssetGroupDeleteCallback(AssetGroupDeletion) on completion. 
 		  //
 		  // - DELETE /businesses/{business_id}/asset_groups
 		  // - Delete a batch of asset groups.
@@ -154,7 +154,7 @@ Protected Class BusinessAccessAssetsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(deleteAssetGroupBody), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(assetGroupDeletionDelete), "application/json")
 		  
 		  
 		  
@@ -181,7 +181,7 @@ Protected Class BusinessAccessAssetsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function AssetGroupDeletePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.DeleteAssetGroupResponse) As Boolean
+		Private Function AssetGroupDeletePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AssetGroupDeletion) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -189,7 +189,7 @@ Protected Class BusinessAccessAssetsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.DeleteAssetGroupResponse
+			  outData = New OpenAPIClient.Models.AssetGroupDeletion
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -242,7 +242,7 @@ Protected Class BusinessAccessAssetsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.DeleteAssetGroupResponse
+		  Dim data As OpenAPIClient.Models.AssetGroupDeletion
 		  CallbackHandler.AssetGroupDeleteCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -256,7 +256,7 @@ Protected Class BusinessAccessAssetsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.DeleteAssetGroupResponse
+		  Dim data As OpenAPIClient.Models.AssetGroupDeletion
 		  Call AssetGroupDeletePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.AssetGroupDeleteCallback(error, data)
@@ -267,14 +267,14 @@ Protected Class BusinessAccessAssetsApi
 
 
 	#tag Method, Flags = &h0
-		Sub AssetGroupUpdate(, businessId As String, updateAssetGroupBody As OpenAPIClient.Models.UpdateAssetGroupBody)
+		Sub AssetGroupUpdate(, businessId As String, assetGroupModificationReadOrUpdate As OpenAPIClient.Models.AssetGroupModificationReadOrUpdate)
 		  // Operation asset_group/update
 		  // Update asset groups.
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
-		  // - parameter updateAssetGroupBody: (body)  
+		  // - parameter assetGroupModificationReadOrUpdate: (body)  
 		  //
-		  // Invokes BusinessAccessAssetsApiCallbackHandler.AssetGroupUpdateCallback(UpdateAssetGroupResponse) on completion. 
+		  // Invokes BusinessAccessAssetsApiCallbackHandler.AssetGroupUpdateCallback(AssetGroupModification) on completion. 
 		  //
 		  // - PATCH /businesses/{business_id}/asset_groups
 		  // - Update a batch of asset groups with the specified parameters.
@@ -287,7 +287,7 @@ Protected Class BusinessAccessAssetsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(updateAssetGroupBody), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(assetGroupModificationReadOrUpdate), "application/json")
 		  
 		  
 		  
@@ -314,7 +314,7 @@ Protected Class BusinessAccessAssetsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function AssetGroupUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.UpdateAssetGroupResponse) As Boolean
+		Private Function AssetGroupUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AssetGroupModification) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -322,7 +322,7 @@ Protected Class BusinessAccessAssetsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.UpdateAssetGroupResponse
+			  outData = New OpenAPIClient.Models.AssetGroupModification
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -375,7 +375,7 @@ Protected Class BusinessAccessAssetsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.UpdateAssetGroupResponse
+		  Dim data As OpenAPIClient.Models.AssetGroupModification
 		  CallbackHandler.AssetGroupUpdateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -389,7 +389,7 @@ Protected Class BusinessAccessAssetsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.UpdateAssetGroupResponse
+		  Dim data As OpenAPIClient.Models.AssetGroupModification
 		  Call AssetGroupUpdatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.AssetGroupUpdateCallback(error, data)
@@ -400,16 +400,16 @@ Protected Class BusinessAccessAssetsApi
 
 
 	#tag Method, Flags = &h0
-		Sub BusinessAssetMembersGet(, businessId As String, assetId As String, Optional fetchSystemUsers As Xoson.O.OptionalBoolean, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, Optional startIndex As Xoson.O.OptionalInteger)
+		Sub BusinessAssetMembersGet(, businessId As String, assetId As String, Optional startIndex As Xoson.O.OptionalInteger, Optional fetchSystemUsers As Xoson.O.OptionalBoolean, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation business_asset_members/get
 		  // Get members with access to asset
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
 		  // - parameter assetId: (path) Unique identifier of a business asset. 
+		  // - parameter startIndex: (query) An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
 		  // - parameter fetchSystemUsers: (query) Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-		  // - parameter startIndex: (query) An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes BusinessAccessAssetsApiCallbackHandler.BusinessAssetMembersGetCallback(BusinessAssetMembersGet200Response) on completion. 
 		  //
@@ -426,13 +426,13 @@ Protected Class BusinessAccessAssetsApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If fetchSystemUsers <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("fetch_system_users") + "=" + EncodeURLComponent(fetchSystemUsers.ToString)
+		  If startIndex <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("start_index") + "=" + EncodeURLComponent(startIndex.ToString)
+		  
+		  If fetchSystemUsers <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("fetch_system_users") + "=" + EncodeURLComponent(fetchSystemUsers.ToString)
 		  
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
-		  
-		  If startIndex <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("start_index") + "=" + EncodeURLComponent(startIndex.ToString)
 		  
 
 		  
@@ -557,9 +557,9 @@ Protected Class BusinessAccessAssetsApi
 		  // - parameter assetId: (path) Unique identifier of a business asset. 
 		  // - parameter startIndex: (query) An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
-		  // Invokes BusinessAccessAssetsApiCallbackHandler.BusinessAssetPartnersGetCallback(BusinessAssetPartnersGet200Response) on completion. 
+		  // Invokes BusinessAccessAssetsApiCallbackHandler.BusinessAssetPartnersGetCallback(BusinessAssetMembersGet200Response) on completion. 
 		  //
 		  // - GET /businesses/{business_id}/assets/{asset_id}/partners
 		  // - Get all the partners the requesting business has granted access to on the given asset. Note: If the asset has been shared with you, an empty array will be returned. This is because an asset shared with you cannot be shared with a different partner.
@@ -609,7 +609,7 @@ Protected Class BusinessAccessAssetsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function BusinessAssetPartnersGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BusinessAssetPartnersGet200Response) As Boolean
+		Private Function BusinessAssetPartnersGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BusinessAssetMembersGet200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -617,7 +617,7 @@ Protected Class BusinessAccessAssetsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.BusinessAssetPartnersGet200Response
+			  outData = New OpenAPIClient.Models.BusinessAssetMembersGet200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -670,7 +670,7 @@ Protected Class BusinessAccessAssetsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.BusinessAssetPartnersGet200Response
+		  Dim data As OpenAPIClient.Models.BusinessAssetMembersGet200Response
 		  CallbackHandler.BusinessAssetPartnersGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -684,7 +684,7 @@ Protected Class BusinessAccessAssetsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.BusinessAssetPartnersGet200Response
+		  Dim data As OpenAPIClient.Models.BusinessAssetMembersGet200Response
 		  Call BusinessAssetPartnersGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.BusinessAssetPartnersGetCallback(error, data)
@@ -706,7 +706,7 @@ Protected Class BusinessAccessAssetsApi
 		  // - parameter assetType: (query) A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
 		  // - parameter startIndex: (query) An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes BusinessAccessAssetsApiCallbackHandler.BusinessAssetsGetCallback(BusinessAssetsGet200Response) on completion. 
 		  //
@@ -884,7 +884,7 @@ Protected Class BusinessAccessAssetsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub BusinessMemberAssetsGet(, businessId As String, memberId As String, assetType As Asset_typeEnum_BusinessMemberAssetsGet, Optional startIndex As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
+		Sub BusinessMemberAssetsGet(, businessId As String, memberId As String, assetType As Asset_typeEnum_BusinessMemberAssetsGet, Optional startIndex As Xoson.O.OptionalInteger, sortBy As OpenAPIClient.Models.AssetSortByOptional, Optional sortAscending As Xoson.O.OptionalBoolean, searchBy As OpenAPIClient.Models.AssetSearchByOptional, Optional searchValue As Xoson.O.OptionalString, assetPermissionType As OpenAPIClient.Models.AssetPermissionTypeOptional, adAccountStatuses() As NonDraftEntityStatus, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation business_member_assets/get
 		  // Get assets assigned to a member
 		  // - 
@@ -892,10 +892,16 @@ Protected Class BusinessAccessAssetsApi
 		  // - parameter memberId: (path) The member id to fetch assets for. 
 		  // - parameter assetType: (query) A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
 		  // - parameter startIndex: (query) An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
+		  // - parameter sortBy: (query) The field to sort member assets by (optional, default to Nil)
+		  // - parameter sortAscending: (query) Sort assets in ascending order (optional, default to true)
+		  // - parameter searchBy: (query) The field to search member assets by (optional, default to Nil)
+		  // - parameter searchValue: (query) The value to search for (optional, default to Sample)
+		  // - parameter assetPermissionType: (query) The type of asset permission to filter by (optional, default to Nil)
+		  // - parameter adAccountStatuses: (query) A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. (optional, default to Nil)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
-		  // Invokes BusinessAccessAssetsApiCallbackHandler.BusinessMemberAssetsGetCallback(BusinessMemberAssetsGet200Response) on completion. 
+		  // Invokes BusinessAccessAssetsApiCallbackHandler.BusinessMemberAssetsGetCallback(BusinessMemberAssetsGetResponse) on completion. 
 		  //
 		  // - GET /businesses/{business_id}/members/{member_id}/assets
 		  // - Get assets on which you assigned asset permissions to the given member. Can be used to: - get all assets, regardless of asset type or - get assets of one asset type by using the asset_type query. The return response will include the permissions the member has to that asset and the asset type.
@@ -914,6 +920,34 @@ Protected Class BusinessAccessAssetsApi
 		  
 		  If startIndex <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("start_index") + "=" + EncodeURLComponent(startIndex.ToString)
 		  
+		  If sortBy <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("sort_by") + "=" + EncodeURLComponent(Xoson.toJSON(sortBy))
+		  
+		  If sortAscending <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("sort_ascending") + "=" + EncodeURLComponent(sortAscending.ToString)
+		  
+		  If searchBy <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("search_by") + "=" + EncodeURLComponent(Xoson.toJSON(searchBy))
+		  
+		  If searchValue <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("search_value") + "=" + EncodeURLComponent(searchValue)
+		  
+		  If assetPermissionType <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("asset_permission_type") + "=" + EncodeURLComponent(Xoson.toJSON(assetPermissionType))
+		  
+		  
+		  Dim localVarQueryStringsadAccountStatuses() As String
+		  For Each localVarItemadAccountStatuses As NonDraftEntityStatus in adAccountStatuses
+		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarItemadAccountStatuses))
+		    Select Case "form"
+		      Case "form"
+		        localVarQueryStringsadAccountStatuses.Append("inner=" + encodedParameter)
+		      Case "spaceDelimited"
+		        localVarQueryStringsadAccountStatuses.Append("inner=" + encodedParameter)
+		      Case "pipeDelimited"
+		        localVarQueryStringsadAccountStatuses.Append("inner=" + encodedParameter)
+		      Case "deepObject"
+		        Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
+		    End Select
+		  Next
+		  
+		  Dim localVarQueryStringadAccountStatuses As String
+		  localVarQueryStringadAccountStatuses = Join(localVarQueryStringsadAccountStatuses, "&")
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
@@ -947,7 +981,7 @@ Protected Class BusinessAccessAssetsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function BusinessMemberAssetsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BusinessMemberAssetsGet200Response) As Boolean
+		Private Function BusinessMemberAssetsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BusinessMemberAssetsGetResponse) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -955,7 +989,7 @@ Protected Class BusinessAccessAssetsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.BusinessMemberAssetsGet200Response
+			  outData = New OpenAPIClient.Models.BusinessMemberAssetsGetResponse
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -1008,7 +1042,7 @@ Protected Class BusinessAccessAssetsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.BusinessMemberAssetsGet200Response
+		  Dim data As OpenAPIClient.Models.BusinessMemberAssetsGetResponse
 		  CallbackHandler.BusinessMemberAssetsGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -1022,7 +1056,7 @@ Protected Class BusinessAccessAssetsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.BusinessMemberAssetsGet200Response
+		  Dim data As OpenAPIClient.Models.BusinessMemberAssetsGetResponse
 		  Call BusinessMemberAssetsGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.BusinessMemberAssetsGetCallback(error, data)
@@ -1045,6 +1079,8 @@ Protected Class BusinessAccessAssetsApi
 		      Return "CATALOG"
 		    Case Asset_typeEnum_BusinessMemberAssetsGet.Consumer
 		      Return "CONSUMER"
+		    Case Asset_typeEnum_BusinessMemberAssetsGet.ConversionTag
+		      Return "CONVERSION_TAG"
 		    
 		  End Select
 		  Return ""
@@ -1052,12 +1088,12 @@ Protected Class BusinessAccessAssetsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub BusinessMembersAssetAccessDelete(, businessId As String, businessMembersAssetAccessDeleteRequest As OpenAPIClient.Models.BusinessMembersAssetAccessDeleteRequest)
+		Sub BusinessMembersAssetAccessDelete(, businessId As String, businessMembersAssetAccessDeleteBody As OpenAPIClient.Models.BusinessMembersAssetAccessDeleteBody)
 		  // Operation business_members_asset_access/delete
 		  // Delete member access to asset
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
-		  // - parameter businessMembersAssetAccessDeleteRequest: (body) List member assset permissions to delete. 
+		  // - parameter businessMembersAssetAccessDeleteBody: (body)  
 		  //
 		  // Invokes BusinessAccessAssetsApiCallbackHandler.BusinessMembersAssetAccessDeleteCallback(DeleteMemberAccessResultsResponseArray) on completion. 
 		  //
@@ -1072,7 +1108,7 @@ Protected Class BusinessAccessAssetsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(businessMembersAssetAccessDeleteRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(businessMembersAssetAccessDeleteBody), "application/json")
 		  
 		  
 		  
@@ -1190,12 +1226,12 @@ Protected Class BusinessAccessAssetsApi
 		  // Assign/Update member asset permissions
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
-		  // - parameter updateMemberAssetAccessBody: (body) List of member asset permissions to create or update. 
+		  // - parameter updateMemberAssetAccessBody: (body)  
 		  //
 		  // Invokes BusinessAccessAssetsApiCallbackHandler.BusinessMembersAssetAccessUpdateCallback(UpdateMemberAssetsResultsResponseArray) on completion. 
 		  //
 		  // - PATCH /businesses/{business_id}/members/assets/access
-		  // - Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+		  // - Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1318,17 +1354,21 @@ Protected Class BusinessAccessAssetsApi
 
 
 	#tag Method, Flags = &h0
-		Sub BusinessPartnerAssetAccessGet(, businessId As String, partnerId As String, partnerType As OpenAPIClient.Models.PartnerTypeOptional, assetType As Asset_typeEnum_BusinessPartnerAssetAccessGet, Optional startIndex As Xoson.O.OptionalInteger, Optional pageSize As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString)
+		Sub BusinessPartnerAssetAccessGet(, businessId As String, partnerId As String, partnerType As Partner_typeEnum_BusinessPartnerAssetAccessGet, assetType As Asset_typeEnum_BusinessPartnerAssetAccessGet, Optional startIndex As Xoson.O.OptionalInteger, sortBy As OpenAPIClient.Models.AssetSortByOptional, Optional sortAscending As Xoson.O.OptionalBoolean, searchBy As OpenAPIClient.Models.AssetSearchByOptional, Optional searchValue As Xoson.O.OptionalString, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation business_partner_asset_access/get
 		  // Get assets assigned to a partner or assets assigned by a partner
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
 		  // - parameter partnerId: (path) The partner id to be bound to the Business 
-		  // - parameter partnerType: (query) Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to INTERNAL)
+		  // - parameter partnerType: (query) Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to INTERNAL)
 		  // - parameter assetType: (query) A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
 		  // - parameter startIndex: (query) An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter sortBy: (query) The field to sort member assets by (optional, default to Nil)
+		  // - parameter sortAscending: (query) Sort assets in ascending order (optional, default to true)
+		  // - parameter searchBy: (query) The field to search member assets by (optional, default to Nil)
+		  // - parameter searchValue: (query) The value to search for (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes BusinessAccessAssetsApiCallbackHandler.BusinessPartnerAssetAccessGetCallback(BusinessPartnerAssetAccessGet200Response) on completion. 
 		  //
@@ -1345,15 +1385,23 @@ Protected Class BusinessAccessAssetsApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If partnerType <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("partner_type") + "=" + EncodeURLComponent(Xoson.toJSON(partnerType))
+		  localVarQueryParams = localVarQueryParams + EncodeURLComponent("partner_type") + "=" + EncodeURLComponent(Partner_typeEnum_BusinessPartnerAssetAccessGetToString(partnerType))
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("asset_type") + "=" + EncodeURLComponent(Asset_typeEnum_BusinessPartnerAssetAccessGetToString(assetType))
 		  
 		  If startIndex <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("start_index") + "=" + EncodeURLComponent(startIndex.ToString)
 		  
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
+		  If sortBy <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("sort_by") + "=" + EncodeURLComponent(Xoson.toJSON(sortBy))
+		  
+		  If sortAscending <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("sort_ascending") + "=" + EncodeURLComponent(sortAscending.ToString)
+		  
+		  If searchBy <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("search_by") + "=" + EncodeURLComponent(Xoson.toJSON(searchBy))
+		  
+		  If searchValue <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("search_value") + "=" + EncodeURLComponent(searchValue)
 		  
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
 		  
@@ -1469,6 +1517,19 @@ Protected Class BusinessAccessAssetsApi
 
 
 	#tag Method, Flags = &h21
+		Private Function Partner_typeEnum_BusinessPartnerAssetAccessGetToString(value As Partner_typeEnum_BusinessPartnerAssetAccessGet) As String
+		  Select Case value
+		    
+		    Case Partner_typeEnum_BusinessPartnerAssetAccessGet.Internal
+		      Return "INTERNAL"
+		    Case Partner_typeEnum_BusinessPartnerAssetAccessGet.External
+		      Return "EXTERNAL"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+	#tag Method, Flags = &h21
 		Private Function Asset_typeEnum_BusinessPartnerAssetAccessGetToString(value As Asset_typeEnum_BusinessPartnerAssetAccessGet) As String
 		  Select Case value
 		    
@@ -1478,10 +1539,16 @@ Protected Class BusinessAccessAssetsApi
 		      Return "PROFILE"
 		    Case Asset_typeEnum_BusinessPartnerAssetAccessGet.AssetGroup
 		      Return "ASSET_GROUP"
+		    Case Asset_typeEnum_BusinessPartnerAssetAccessGet.PinnerList
+		      Return "PINNER_LIST"
+		    Case Asset_typeEnum_BusinessPartnerAssetAccessGet.ConversionTag
+		      Return "CONVERSION_TAG"
 		    Case Asset_typeEnum_BusinessPartnerAssetAccessGet.Catalog
 		      Return "CATALOG"
 		    Case Asset_typeEnum_BusinessPartnerAssetAccessGet.Consumer
 		      Return "CONSUMER"
+		    Case Asset_typeEnum_BusinessPartnerAssetAccessGet.ConversionSegment
+		      Return "CONVERSION_SEGMENT"
 		    
 		  End Select
 		  Return ""
@@ -1496,7 +1563,7 @@ Protected Class BusinessAccessAssetsApi
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
 		  // - parameter deletePartnerAssetAccessBody: (body)  
 		  //
-		  // Invokes BusinessAccessAssetsApiCallbackHandler.DeletePartnerAssetAccessHandlerImplCallback(DeletePartnerAssetsResultsResponseArray) on completion. 
+		  // Invokes BusinessAccessAssetsApiCallbackHandler.DeletePartnerAssetAccessHandlerImplCallback(DeletePartnerAssetAccessResultsResponseArray) on completion. 
 		  //
 		  // - DELETE /businesses/{business_id}/partners/assets
 		  // - Terminate multiple partners' access to an asset. If - partner_type=INTERNAL: You will terminate a partner's asset access to your business assets. - partner_type=EXTERNAL: You will terminate your own access to your partner's business assets.
@@ -1536,7 +1603,7 @@ Protected Class BusinessAccessAssetsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function DeletePartnerAssetAccessHandlerImplPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.DeletePartnerAssetsResultsResponseArray) As Boolean
+		Private Function DeletePartnerAssetAccessHandlerImplPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.DeletePartnerAssetAccessResultsResponseArray) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -1544,7 +1611,7 @@ Protected Class BusinessAccessAssetsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.DeletePartnerAssetsResultsResponseArray
+			  outData = New OpenAPIClient.Models.DeletePartnerAssetAccessResultsResponseArray
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -1597,7 +1664,7 @@ Protected Class BusinessAccessAssetsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.DeletePartnerAssetsResultsResponseArray
+		  Dim data As OpenAPIClient.Models.DeletePartnerAssetAccessResultsResponseArray
 		  CallbackHandler.DeletePartnerAssetAccessHandlerImplCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -1611,7 +1678,7 @@ Protected Class BusinessAccessAssetsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.DeletePartnerAssetsResultsResponseArray
+		  Dim data As OpenAPIClient.Models.DeletePartnerAssetAccessResultsResponseArray
 		  Call DeletePartnerAssetAccessHandlerImplPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.DeletePartnerAssetAccessHandlerImplCallback(error, data)
@@ -1627,7 +1694,7 @@ Protected Class BusinessAccessAssetsApi
 		  // Assign/Update partner asset permissions
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
-		  // - parameter updatePartnerAssetAccessBody: (body) A list of assets and permissions to assign to your partners. 
+		  // - parameter updatePartnerAssetAccessBody: (body)  
 		  //
 		  // Invokes BusinessAccessAssetsApiCallbackHandler.UpdatePartnerAssetAccessHandlerImplCallback(UpdatePartnerAssetsResultsResponseArray) on completion. 
 		  //
@@ -1847,6 +1914,14 @@ Protected Class BusinessAccessAssetsApi
         AssetGroup
         Catalog
         Consumer
+        ConversionTag
+		
+	#tag EndEnum
+
+	#tag Enum, Name = Partner_typeEnum_BusinessPartnerAssetAccessGet, Type = Integer, Flags = &h0
+		
+        Internal
+        External
 		
 	#tag EndEnum
 
@@ -1855,8 +1930,11 @@ Protected Class BusinessAccessAssetsApi
         AdAccount
         Profile
         AssetGroup
+        PinnerList
+        ConversionTag
         Catalog
         Consumer
+        ConversionSegment
 		
 	#tag EndEnum
 

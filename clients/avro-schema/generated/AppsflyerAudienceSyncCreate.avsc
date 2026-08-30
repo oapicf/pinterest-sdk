@@ -1,0 +1,26 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "AppsflyerAudienceSyncCreate",
+  "fields": [
+    {
+      "name": "container_id",
+      "type": "string",
+      "doc": "The container ID of the audience"
+    },
+    {
+      "name": "url_adid_sha256",
+      "type": ["null", "string"],
+      "doc": "The pre-signed URL for SHA256 hashed GAID/IDFA file",
+      "default": null
+    },
+    {
+      "name": "url_email_sha256",
+      "type": ["null", "string"],
+      "doc": "The pre-signed URL for SHA256 hashed email file",
+      "default": null
+    }
+  ]
+
+}

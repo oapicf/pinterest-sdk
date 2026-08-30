@@ -7,48 +7,17 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  AvailabilityFilter = openapi_server.resourceTypes.AvailabilityFilter
-  BrandFilter = openapi_server.resourceTypes.BrandFilter
+  CatalogsBaseFilterKeys = openapi_server.resourceTypes.CatalogsBaseFilterKeys
   CatalogsProductGroupCurrencyCriteria = openapi_server.resourceTypes.CatalogsProductGroupCurrencyCriteria
   CatalogsProductGroupFilterOperatorTypeCriteria = openapi_server.resourceTypes.CatalogsProductGroupFilterOperatorTypeCriteria
   CatalogsProductGroupMultipleGenderCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleGenderCriteria
   CatalogsProductGroupMultipleMediaTypesCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleMediaTypesCriteria
+  CatalogsProductGroupMultiplePinterestProductCategoryCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultiplePinterestProductCategoryCriteria
   CatalogsProductGroupMultipleStringCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleStringCriteria
   CatalogsProductGroupMultipleStringListCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleStringListCriteria
   CatalogsProductGroupPricingCriteria = openapi_server.resourceTypes.CatalogsProductGroupPricingCriteria
   CatalogsProductGroupUint32Criteria = openapi_server.resourceTypes.CatalogsProductGroupUint32Criteria
-  ConditionFilter = openapi_server.resourceTypes.ConditionFilter
-  CurrencyFilter = openapi_server.resourceTypes.CurrencyFilter
-  CustomLabel0Filter = openapi_server.resourceTypes.CustomLabel0Filter
-  CustomLabel1Filter = openapi_server.resourceTypes.CustomLabel1Filter
-  CustomLabel2Filter = openapi_server.resourceTypes.CustomLabel2Filter
-  CustomLabel3Filter = openapi_server.resourceTypes.CustomLabel3Filter
-  CustomLabel4Filter = openapi_server.resourceTypes.CustomLabel4Filter
-  CustomNumber0Filter = openapi_server.resourceTypes.CustomNumber0Filter
-  CustomNumber1Filter = openapi_server.resourceTypes.CustomNumber1Filter
-  CustomNumber2Filter = openapi_server.resourceTypes.CustomNumber2Filter
-  CustomNumber3Filter = openapi_server.resourceTypes.CustomNumber3Filter
-  CustomNumber4Filter = openapi_server.resourceTypes.CustomNumber4Filter
-  GenderFilter = openapi_server.resourceTypes.GenderFilter
-  GoogleProductCategory0Filter = openapi_server.resourceTypes.GoogleProductCategory0Filter
-  GoogleProductCategory1Filter = openapi_server.resourceTypes.GoogleProductCategory1Filter
-  GoogleProductCategory2Filter = openapi_server.resourceTypes.GoogleProductCategory2Filter
-  GoogleProductCategory3Filter = openapi_server.resourceTypes.GoogleProductCategory3Filter
-  GoogleProductCategory4Filter = openapi_server.resourceTypes.GoogleProductCategory4Filter
-  GoogleProductCategory5Filter = openapi_server.resourceTypes.GoogleProductCategory5Filter
-  GoogleProductCategory6Filter = openapi_server.resourceTypes.GoogleProductCategory6Filter
-  ItemGroupIdFilter = openapi_server.resourceTypes.ItemGroupIdFilter
-  ItemIdFilter = openapi_server.resourceTypes.ItemIdFilter
-  MaxPriceFilter = openapi_server.resourceTypes.MaxPriceFilter
-  MediaTypeFilter = openapi_server.resourceTypes.MediaTypeFilter
-  MinPriceFilter = openapi_server.resourceTypes.MinPriceFilter
   ProductGroupReferenceFilter = openapi_server.resourceTypes.ProductGroupReferenceFilter
-  ProductType0Filter = openapi_server.resourceTypes.ProductType0Filter
-  ProductType1Filter = openapi_server.resourceTypes.ProductType1Filter
-  ProductType2Filter = openapi_server.resourceTypes.ProductType2Filter
-  ProductType3Filter = openapi_server.resourceTypes.ProductType3Filter
-  ProductType4Filter = openapi_server.resourceTypes.ProductType4Filter
-  TitleKeywordsFilter = openapi_server.resourceTypes.TitleKeywordsFilter
 }
 resourceTypes {
 
@@ -192,11 +161,6 @@ resourceTypes {
           description = ""
           optional = true
         }
-        product_group {
-          type = CatalogsProductGroupMultipleStringCriteria
-          description = ""
-          optional = true
-        }
         custom_number_0 {
           type = CatalogsProductGroupUint32Criteria
           description = ""
@@ -223,6 +187,16 @@ resourceTypes {
           optional = true
         }
         title_keywords {
+          type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+        pinterest_product_categories {
+          type = CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+          description = ""
+          optional = true
+        }
+        product_group {
           type = CatalogsProductGroupMultipleStringCriteria
           description = ""
           optional = true

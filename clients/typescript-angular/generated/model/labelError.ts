@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Label } from './label';
+import { LabelErrorData } from './labelErrorData';
 
 
 export interface LabelError { 
-    data?: Label;
+    data?: LabelErrorData;
     error_messages?: Array<string>;
 }
 

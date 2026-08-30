@@ -86,15 +86,17 @@ class _$KeywordMetricsResponseSerializer implements PrimitiveSerializer<KeywordM
         case r'keyword':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.keyword = valueDes;
           break;
         case r'metrics':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(KeywordMetrics),
-          ) as KeywordMetrics;
+            specifiedType: const FullType.nullable(KeywordMetrics),
+          ) as KeywordMetrics?;
+          if (valueDes == null) continue;
           result.metrics.replace(valueDes);
           break;
         default:

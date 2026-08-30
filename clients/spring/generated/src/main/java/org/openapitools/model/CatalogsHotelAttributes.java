@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -9,67 +10,88 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsAiContentDisclosure;
 import org.openapitools.model.CatalogsHotelAddress;
-import org.openapitools.model.CatalogsHotelAttributesAllOfMainImage;
 import org.openapitools.model.CatalogsHotelGuestRatings;
+import org.openapitools.model.CatalogsHotelMainImage;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsHotelAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelAttributes {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsHotelAddress address;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> basePrice = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> brand = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> category = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel0 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel1 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel2 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel3 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel4 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsHotelGuestRatings guestRatings;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal latitude;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> link = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> longitude = JsonNullable.<BigDecimal>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> neighborhood = JsonNullable.<List<String>>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> salePrice = JsonNullable.<String>undefined();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> additionalImageLink = JsonNullable.<List<String>>undefined();
 
-  private @Nullable CatalogsHotelAttributesAllOfMainImage mainImage;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable CatalogsHotelMainImage mainImage;
 
   public CatalogsHotelAttributes address(@Nullable CatalogsHotelAddress address) {
     this.address = address;
@@ -77,16 +99,17 @@ public class CatalogsHotelAttributes {
   }
 
   /**
-   * Get address
+   * Hotel address
    * @return address
    */
   @Valid 
-  @Schema(name = "address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "address", description = "Hotel address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("address")
   public @Nullable CatalogsHotelAddress getAddress() {
     return address;
   }
 
+  @JsonProperty("address")
   public void setAddress(@Nullable CatalogsHotelAddress address) {
     this.address = address;
   }
@@ -277,16 +300,17 @@ public class CatalogsHotelAttributes {
   }
 
   /**
-   * Get guestRatings
+   * If specified, you must provide all properties
    * @return guestRatings
    */
   @Valid 
-  @Schema(name = "guest_ratings", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "guest_ratings", description = "If specified, you must provide all properties", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("guest_ratings")
   public @Nullable CatalogsHotelGuestRatings getGuestRatings() {
     return guestRatings;
   }
 
+  @JsonProperty("guest_ratings")
   public void setGuestRatings(@Nullable CatalogsHotelGuestRatings guestRatings) {
     this.guestRatings = guestRatings;
   }
@@ -307,6 +331,7 @@ public class CatalogsHotelAttributes {
     return latitude;
   }
 
+  @JsonProperty("latitude")
   public void setLatitude(@Nullable BigDecimal latitude) {
     this.latitude = latitude;
   }
@@ -433,11 +458,11 @@ public class CatalogsHotelAttributes {
   }
 
   /**
-   * <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+   * <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
    * @return additionalImageLink
    */
   
-  @Schema(name = "additional_image_link", example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", description = "<p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "additional_image_link", example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", description = "<= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("additional_image_link")
   public JsonNullable<List<String>> getAdditionalImageLink() {
     return additionalImageLink;
@@ -447,23 +472,53 @@ public class CatalogsHotelAttributes {
     this.additionalImageLink = additionalImageLink;
   }
 
-  public CatalogsHotelAttributes mainImage(@Nullable CatalogsHotelAttributesAllOfMainImage mainImage) {
+  public CatalogsHotelAttributes aiDisclosures(List<@Valid CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+    return this;
+  }
+
+  public CatalogsHotelAttributes addAiDisclosuresItem(CatalogsAiContentDisclosure aiDisclosuresItem) {
+    if (this.aiDisclosures == null) {
+      this.aiDisclosures = new ArrayList<>();
+    }
+    this.aiDisclosures.add(aiDisclosuresItem);
+    return this;
+  }
+
+  /**
+   * AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+   * @return aiDisclosures
+   */
+  @Valid 
+  @Schema(name = "ai_disclosures", example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", description = "AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("ai_disclosures")
+  public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
+    return aiDisclosures;
+  }
+
+  @JsonProperty("ai_disclosures")
+  public void setAiDisclosures(List<@Valid CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+  }
+
+  public CatalogsHotelAttributes mainImage(@Nullable CatalogsHotelMainImage mainImage) {
     this.mainImage = mainImage;
     return this;
   }
 
   /**
-   * Get mainImage
+   * The main hotel image
    * @return mainImage
    */
   @Valid 
-  @Schema(name = "main_image", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "main_image", description = "The main hotel image", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("main_image")
-  public @Nullable CatalogsHotelAttributesAllOfMainImage getMainImage() {
+  public @Nullable CatalogsHotelMainImage getMainImage() {
     return mainImage;
   }
 
-  public void setMainImage(@Nullable CatalogsHotelAttributesAllOfMainImage mainImage) {
+  @JsonProperty("main_image")
+  public void setMainImage(@Nullable CatalogsHotelMainImage mainImage) {
     this.mainImage = mainImage;
   }
 
@@ -494,6 +549,7 @@ public class CatalogsHotelAttributes {
         equalsNullable(this.neighborhood, catalogsHotelAttributes.neighborhood) &&
         equalsNullable(this.salePrice, catalogsHotelAttributes.salePrice) &&
         equalsNullable(this.additionalImageLink, catalogsHotelAttributes.additionalImageLink) &&
+        Objects.equals(this.aiDisclosures, catalogsHotelAttributes.aiDisclosures) &&
         Objects.equals(this.mainImage, catalogsHotelAttributes.mainImage);
   }
 
@@ -503,7 +559,7 @@ public class CatalogsHotelAttributes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, hashCodeNullable(basePrice), hashCodeNullable(brand), hashCodeNullable(category), hashCodeNullable(customLabel0), hashCodeNullable(customLabel1), hashCodeNullable(customLabel2), hashCodeNullable(customLabel3), hashCodeNullable(customLabel4), hashCodeNullable(description), guestRatings, latitude, hashCodeNullable(link), hashCodeNullable(longitude), hashCodeNullable(name), hashCodeNullable(neighborhood), hashCodeNullable(salePrice), hashCodeNullable(additionalImageLink), mainImage);
+    return Objects.hash(address, hashCodeNullable(basePrice), hashCodeNullable(brand), hashCodeNullable(category), hashCodeNullable(customLabel0), hashCodeNullable(customLabel1), hashCodeNullable(customLabel2), hashCodeNullable(customLabel3), hashCodeNullable(customLabel4), hashCodeNullable(description), guestRatings, latitude, hashCodeNullable(link), hashCodeNullable(longitude), hashCodeNullable(name), hashCodeNullable(neighborhood), hashCodeNullable(salePrice), hashCodeNullable(additionalImageLink), aiDisclosures, mainImage);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -535,6 +591,7 @@ public class CatalogsHotelAttributes {
     sb.append("    neighborhood: ").append(toIndentedString(neighborhood)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
     sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    mainImage: ").append(toIndentedString(mainImage)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -544,11 +601,8 @@ public class CatalogsHotelAttributes {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

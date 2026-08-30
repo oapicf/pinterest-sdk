@@ -1,0 +1,56 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server EntityDataChangeHistory"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a EntityDataChangeHistory"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ChangeHistoryDataType = openapi_server.resourceTypes.ChangeHistoryDataType
+}
+resourceTypes {
+
+  EntityDataChangeHistory {
+    title = EntityDataChangeHistory
+    description = EntityDataChangeHistory
+    derivedFrom = Root
+    properties {
+        changed_field_id {
+          type =  string
+          description = "A string identifier representing the changed field on the entity"
+          optional = false
+        }
+        changed_field_name {
+          type =  string
+          description = "The human readable name of the changed field on the entity"
+          optional = false
+        }
+        data_type {
+          type = ChangeHistoryDataType
+          description = "Specifies the type of the field&#39;s data values"
+          optional = false
+        }
+        new_data_value {
+          type =  string
+          description = "A string representation of the value of the changed field, after the change"
+          optional = false
+        }
+        old_data_value {
+          type =  string
+          description = "A string representation of the value of the changed field, before the change"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  EntityDataChangeHistory {
+    title = EntityDataChangeHistory
+    description = EntityDataChangeHistory
+    implements = openapi_server.resourceTypes.EntityDataChangeHistory
+
+  }
+}

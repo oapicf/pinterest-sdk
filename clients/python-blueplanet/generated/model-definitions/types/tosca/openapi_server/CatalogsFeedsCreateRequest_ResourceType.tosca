@@ -7,9 +7,9 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale = openapi_server.resourceTypes.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
   CatalogsFeedCredentials = openapi_server.resourceTypes.CatalogsFeedCredentials
   CatalogsFeedProcessingSchedule = openapi_server.resourceTypes.CatalogsFeedProcessingSchedule
-  CatalogsFeedsCreateRequestDefaultLocale = openapi_server.resourceTypes.CatalogsFeedsCreateRequestDefaultLocale
   CatalogsFormat = openapi_server.resourceTypes.CatalogsFormat
   CatalogsStatus = openapi_server.resourceTypes.CatalogsStatus
   Country = openapi_server.resourceTypes.Country
@@ -45,7 +45,7 @@ resourceTypes {
           optional = false
         }
         default_locale {
-          type = CatalogsFeedsCreateRequestDefaultLocale
+          type = CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
           description = ""
           optional = false
         }

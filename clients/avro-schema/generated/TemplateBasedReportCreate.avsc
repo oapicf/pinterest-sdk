@@ -1,0 +1,26 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "TemplateBasedReportCreate",
+  "fields": [
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "report_status",
+      "type": "model.BulkReportingJobStatus",
+      "doc": ""
+    },
+    {
+      "name": "token",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

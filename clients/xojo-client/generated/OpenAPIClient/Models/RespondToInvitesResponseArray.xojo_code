@@ -5,7 +5,7 @@ Protected Class RespondToInvitesResponseArray
 		#tag Note
 			List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.
 		#tag EndNote
-		items() As OpenAPIClient.Models.RespondToInvitesResponseArrayItemsInner
+		items() As OpenAPIClient.Models.RespondToInviteResultItem
 	#tag EndProperty
 
 
@@ -50,7 +50,7 @@ Protected Class RespondToInvitesResponseArray
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="RespondToInvitesResponseArrayItemsInner"
+			Type="RespondToInviteResultItem"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

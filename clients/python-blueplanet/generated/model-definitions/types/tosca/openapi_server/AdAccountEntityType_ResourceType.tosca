@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdAccountEntityType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdAccountEntityType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdAccountEntityType {
+    title = AdAccountEntityType
+    description = AdAccountEntityType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdAccountEntityType {
+    title = AdAccountEntityType
+    description = AdAccountEntityType
+    implements = openapi_server.resourceTypes.AdAccountEntityType
+
+  }
+}

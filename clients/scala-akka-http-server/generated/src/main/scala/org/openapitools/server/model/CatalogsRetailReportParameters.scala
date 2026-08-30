@@ -9,6 +9,6 @@ package org.openapitools.server.model
 */
 final case class CatalogsRetailReportParameters (
   catalogType: String,
-  report: CatalogsHotelReportParametersReport
+  report: CatalogsRetailReportParametersReport
 )
 

@@ -57,42 +57,42 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	Country getCountry();
 
 	/*! \brief Set 
 	 */
-	void setCountry(Country  country);
+	void setCountry(Country country);
 	/*! \brief Get 
 	 */
 	std::string getDescription();
 
 	/*! \brief Set 
 	 */
-	void setDescription(std::string  description);
+	void setDescription(std::string description);
 	/*! \brief Get 
 	 */
 	CatalogsCreativeAssetsProductGroupFilters getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
+	void setFilters(CatalogsCreativeAssetsProductGroupFilters filters);
 	/*! \brief Get 
 	 */
 	CatalogsLocale getLocale();
 
 	/*! \brief Set 
 	 */
-	void setLocale(CatalogsLocale  locale);
-	/*! \brief Get 
+	void setLocale(CatalogsLocale locale);
+	/*! \brief Get Name of catalog product group
 	 */
 	std::string getName();
 
-	/*! \brief Set 
+	/*! \brief Set Name of catalog product group
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 
 
     private:

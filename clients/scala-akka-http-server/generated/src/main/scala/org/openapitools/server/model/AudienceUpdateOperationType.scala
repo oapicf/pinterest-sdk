@@ -2,8 +2,6 @@ package org.openapitools.server.model
 
 
 /**
- * = operation_type =
- *
  * Audience operation type (update or remove).
  *
 */

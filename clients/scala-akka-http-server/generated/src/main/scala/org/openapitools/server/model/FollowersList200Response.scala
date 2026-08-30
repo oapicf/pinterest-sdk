@@ -7,6 +7,6 @@ package org.openapitools.server.model
 */
 final case class FollowersList200Response (
   bookmark: Option[String] = None,
-  items: Seq[UserSummary]
+  items: Seq[FollowUser]
 )
 

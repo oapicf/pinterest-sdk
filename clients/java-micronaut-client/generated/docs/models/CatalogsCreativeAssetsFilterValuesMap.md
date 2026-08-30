@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **googleProductCategory4** | `List&lt;String&gt;` |  |  [optional property]
 **googleProductCategory5** | `List&lt;String&gt;` |  |  [optional property]
 **googleProductCategory6** | `List&lt;String&gt;` |  |  [optional property]
-**mediaType** | [**List&lt;MediaTypeEnum&gt;**](#List&lt;MediaTypeEnum&gt;) |  |  [optional property]
+**mediaType** | `List&lt;MediaType&gt;` |  |  [optional property]
 
 
 
@@ -36,11 +36,5 @@ Name | Type | Description | Notes
 
 
 
-## List&lt;MediaTypeEnum&gt;
-
-Name | Value
----- | -----
-IMAGE | `"IMAGE"`
-VIDEO | `"VIDEO"`
 
 

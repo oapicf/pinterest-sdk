@@ -109,7 +109,7 @@ CatalogsFeedIngestionDetails::getErrors()
 }
 
 void
-CatalogsFeedIngestionDetails::setErrors(CatalogsFeedIngestionErrors  errors)
+CatalogsFeedIngestionDetails::setErrors(CatalogsFeedIngestionErrors errors)
 {
 	this->errors = errors;
 }
@@ -121,7 +121,7 @@ CatalogsFeedIngestionDetails::getInfo()
 }
 
 void
-CatalogsFeedIngestionDetails::setInfo(CatalogsFeedIngestionInfo  info)
+CatalogsFeedIngestionDetails::setInfo(CatalogsFeedIngestionInfo info)
 {
 	this->info = info;
 }
@@ -133,7 +133,7 @@ CatalogsFeedIngestionDetails::getWarnings()
 }
 
 void
-CatalogsFeedIngestionDetails::setWarnings(CatalogsFeedIngestionWarnings  warnings)
+CatalogsFeedIngestionDetails::setWarnings(CatalogsFeedIngestionWarnings warnings)
 {
 	this->warnings = warnings;
 }

@@ -5,8 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**labels** | [**List[LabelCreateRequestLabelsInner]**](LabelCreateRequestLabelsInner.md) | Labels that you are applying to the campaign. | 
-**parent_id** | **str** | Unique identifier of the asset you are labelling. Currently, you can only label campaigns. | 
+**labels** | [**List[LabelCreateItem]**](LabelCreateItem.md) | Labels that you are applying to the campaign. | 
 
 ## Example
 

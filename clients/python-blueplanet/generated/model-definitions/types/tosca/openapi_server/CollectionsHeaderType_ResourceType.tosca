@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CollectionsHeaderType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CollectionsHeaderType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CollectionsHeaderType {
+    title = CollectionsHeaderType
+    description = CollectionsHeaderType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  CollectionsHeaderType {
+    title = CollectionsHeaderType
+    description = CollectionsHeaderType
+    implements = openapi_server.resourceTypes.CollectionsHeaderType
+
+  }
+}

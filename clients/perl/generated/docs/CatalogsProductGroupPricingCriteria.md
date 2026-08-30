@@ -9,7 +9,7 @@ use WWW::OpenAPIClient::Object::CatalogsProductGroupPricingCriteria;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **inclusion** | **boolean** |  | [optional] [default to true]
-**negated** | **boolean** |  | [optional] [default to false]
+**negated** | **boolean** |  | [optional] 
 **values** | **double** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

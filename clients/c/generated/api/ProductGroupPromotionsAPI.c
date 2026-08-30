@@ -8,6 +8,49 @@
 #define MAX_BUFFER_LENGTH 4096
 #define MAX_NUMBER_LENGTH_LONG 21
 
+// Functions for enum  for ProductGroupPromotionsAPI_productGroupPromotionsList
+
+static char* productGroupPromotionsList__ToString(pinterest_rest_api_productGroupPromotionsList_order_e ){
+    char *Array[] =  { "NULL", "ASCENDING", "DESCENDING" };
+    return Array[];
+}
+
+static pinterest_rest_api_productGroupPromotionsList_order_e productGroupPromotionsList__FromString(char* ){
+    int stringToReturn = 0;
+    char *Array[] =  { "NULL", "ASCENDING", "DESCENDING" };
+    size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(, Array[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
+
+/*
+// Function productGroupPromotionsList__convertToJSON is not currently used,
+// since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
+//
+static cJSON *productGroupPromotionsList__convertToJSON(pinterest_rest_api_productGroupPromotionsList_order_e ) {
+    cJSON *item = cJSON_CreateObject();
+    return item;
+    fail:
+    cJSON_Delete(item);
+    return NULL;
+}
+
+// Function productGroupPromotionsList__parseFromJSON is not currently used,
+// since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
+//
+static pinterest_rest_api_productGroupPromotionsList_order_e productGroupPromotionsList__parseFromJSON(cJSON* JSON) {
+    pinterest_rest_api_productGroupPromotionsList_order_e Variable = 0;
+    return Variable;
+end:
+    return 0;
+}
+*/
+
 // Functions for enum ENTITYSTATUSES for ProductGroupPromotionsAPI_productGroupPromotionsList
 
 static char* productGroupPromotionsList_ENTITYSTATUSES_ToString(pinterest_rest_api_productGroupPromotionsList_entity_statuses_e ENTITYSTATUSES){
@@ -51,68 +94,16 @@ end:
 }
 */
 
-// Functions for enum ORDER for ProductGroupPromotionsAPI_productGroupPromotionsList
-
-static char* productGroupPromotionsList_ORDER_ToString(pinterest_rest_api_productGroupPromotionsList_order_e ORDER){
-    char *ORDERArray[] =  { "NULL", "ASCENDING", "DESCENDING" };
-    return ORDERArray[ORDER];
-}
-
-static pinterest_rest_api_productGroupPromotionsList_order_e productGroupPromotionsList_ORDER_FromString(char* ORDER){
-    int stringToReturn = 0;
-    char *ORDERArray[] =  { "NULL", "ASCENDING", "DESCENDING" };
-    size_t sizeofArray = sizeof(ORDERArray) / sizeof(ORDERArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(ORDER, ORDERArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-/*
-// Function productGroupPromotionsList_ORDER_convertToJSON is not currently used,
-// since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
-//
-static cJSON *productGroupPromotionsList_ORDER_convertToJSON(pinterest_rest_api_productGroupPromotionsList_order_e ORDER) {
-    cJSON *item = cJSON_CreateObject();
-    if(cJSON_AddStringToObject(item, "order", productGroupPromotionsList_ORDER_ToString(ORDER)) == NULL) {
-        goto fail;
-    }
-    return item;
-    fail:
-    cJSON_Delete(item);
-    return NULL;
-}
-
-// Function productGroupPromotionsList_ORDER_parseFromJSON is not currently used,
-// since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
-//
-static pinterest_rest_api_productGroupPromotionsList_order_e productGroupPromotionsList_ORDER_parseFromJSON(cJSON* ORDERJSON) {
-    pinterest_rest_api_productGroupPromotionsList_order_e ORDERVariable = 0;
-    cJSON *ORDERVar = cJSON_GetObjectItemCaseSensitive(ORDERJSON, "order");
-    if(!cJSON_IsString(ORDERVar) || (ORDERVar->valuestring == NULL))
-    {
-        goto end;
-    }
-    ORDERVariable = productGroupPromotionsList_ORDER_FromString(ORDERVar->valuestring);
-    return ORDERVariable;
-end:
-    return 0;
-}
-*/
-
 // Functions for enum COLUMNS for ProductGroupPromotionsAPI_productGroupsAnalytics
 
 static char* productGroupsAnalytics_COLUMNS_ToString(pinterest_rest_api_productGroupsAnalytics_columns_e COLUMNS){
-    char *COLUMNSArray[] =  { "NULL", "SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "OUTBOUND_CTR_1", "CAMPAIGN_NAME", "CAMPAIGN_BRAND_LABEL", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_NAME", "AD_GROUP_BUDGET_TYPE", "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY", "AD_GROUP_ENTITY_STATUS", "AD_GROUP_BID_MULTIPLIER", "PROMO_ID", "PROMO_NAME", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "AD_NAME", "CAMPAIGN_LIFETIME_SPEND_CAP", "AD_GROUP_OPTIMIZATION", "CAMPAIGN_DAILY_SPEND_CAP", "CAMPAIGN_BUDGET_OPTIMIZATION", "IS_PREMIERE_CAMPAIGN", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_ADD_TO_WISHLIST", "TOTAL_SUBSCRIBE", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "PRODUCT_GROUP_AD_IMAGE_TAG", "PRODUCT_GROUP_AD_VIDEO_TAG", "VIDEO_3SEC_VIEWS_1", "VIDEO_15SEC_UNIQUE_VIEWS_1", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_15SEC_UNIQUE_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "VIDEO_SPEND_IN_DOLLAR", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "TOTAL_APP_INSTALL_CONVERSION_RATE", "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE" };
+    char *COLUMNSArray[] =  { "NULL", "SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "OUTBOUND_CTR_1", "CAMPAIGN_NAME", "CAMPAIGN_BRAND_LABEL", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_NAME", "AD_GROUP_BUDGET_TYPE", "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY", "AD_GROUP_ENTITY_STATUS", "AD_GROUP_BID_MULTIPLIER", "PROMO_ID", "PROMO_NAME", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "COLLECTION_PIN_ITEM_IMPRESSION_1", "COLLECTION_PIN_ITEM_IMPRESSION_2", "TOTAL_COLLECTION_PIN_ITEM_IMPRESSION", "COLLECTION_PIN_ITEM_CLICKTHROUGH_1", "COLLECTION_PIN_ITEM_CLICKTHROUGH_2", "TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "AD_NAME", "CAMPAIGN_LIFETIME_SPEND_CAP", "AD_GROUP_OPTIMIZATION", "CAMPAIGN_DAILY_SPEND_CAP", "CAMPAIGN_BUDGET_OPTIMIZATION", "IS_PREMIERE_CAMPAIGN", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_ADD_TO_WISHLIST", "TOTAL_SUBSCRIBE", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "PRODUCT_GROUP_AD_IMAGE_TAG", "PRODUCT_GROUP_AD_VIDEO_TAG", "VIDEO_3SEC_VIEWS_1", "VIDEO_15SEC_UNIQUE_VIEWS_1", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_15SEC_UNIQUE_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "VIDEO_SPEND_IN_DOLLAR", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "TOTAL_APP_INSTALL_CONVERSION_RATE", "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE", "INAPP_SKAN_APP_INSTALL", "INAPP_SKAN_ASSISTED_APP_INSTALL", "INAPP_SKAN_APP_INSTALL_COST_PER_ACTION", "INAPP_SKAN_APP_INSTALL_CONVERSION_RATE" };
     return COLUMNSArray[COLUMNS];
 }
 
 static pinterest_rest_api_productGroupsAnalytics_columns_e productGroupsAnalytics_COLUMNS_FromString(char* COLUMNS){
     int stringToReturn = 0;
-    char *COLUMNSArray[] =  { "NULL", "SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "OUTBOUND_CTR_1", "CAMPAIGN_NAME", "CAMPAIGN_BRAND_LABEL", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_NAME", "AD_GROUP_BUDGET_TYPE", "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY", "AD_GROUP_ENTITY_STATUS", "AD_GROUP_BID_MULTIPLIER", "PROMO_ID", "PROMO_NAME", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "AD_NAME", "CAMPAIGN_LIFETIME_SPEND_CAP", "AD_GROUP_OPTIMIZATION", "CAMPAIGN_DAILY_SPEND_CAP", "CAMPAIGN_BUDGET_OPTIMIZATION", "IS_PREMIERE_CAMPAIGN", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_ADD_TO_WISHLIST", "TOTAL_SUBSCRIBE", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "PRODUCT_GROUP_AD_IMAGE_TAG", "PRODUCT_GROUP_AD_VIDEO_TAG", "VIDEO_3SEC_VIEWS_1", "VIDEO_15SEC_UNIQUE_VIEWS_1", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_15SEC_UNIQUE_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "VIDEO_SPEND_IN_DOLLAR", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "TOTAL_APP_INSTALL_CONVERSION_RATE", "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE" };
+    char *COLUMNSArray[] =  { "NULL", "SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "OUTBOUND_CTR_1", "CAMPAIGN_NAME", "CAMPAIGN_BRAND_LABEL", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_NAME", "AD_GROUP_BUDGET_TYPE", "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY", "AD_GROUP_ENTITY_STATUS", "AD_GROUP_BID_MULTIPLIER", "PROMO_ID", "PROMO_NAME", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "COLLECTION_PIN_ITEM_IMPRESSION_1", "COLLECTION_PIN_ITEM_IMPRESSION_2", "TOTAL_COLLECTION_PIN_ITEM_IMPRESSION", "COLLECTION_PIN_ITEM_CLICKTHROUGH_1", "COLLECTION_PIN_ITEM_CLICKTHROUGH_2", "TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "AD_NAME", "CAMPAIGN_LIFETIME_SPEND_CAP", "AD_GROUP_OPTIMIZATION", "CAMPAIGN_DAILY_SPEND_CAP", "CAMPAIGN_BUDGET_OPTIMIZATION", "IS_PREMIERE_CAMPAIGN", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_ADD_TO_WISHLIST", "TOTAL_SUBSCRIBE", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "PRODUCT_GROUP_AD_IMAGE_TAG", "PRODUCT_GROUP_AD_VIDEO_TAG", "VIDEO_3SEC_VIEWS_1", "VIDEO_15SEC_UNIQUE_VIEWS_1", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_15SEC_UNIQUE_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "VIDEO_SPEND_IN_DOLLAR", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "TOTAL_APP_INSTALL_CONVERSION_RATE", "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE", "INAPP_SKAN_APP_INSTALL", "INAPP_SKAN_ASSISTED_APP_INSTALL", "INAPP_SKAN_APP_INSTALL_COST_PER_ACTION", "INAPP_SKAN_APP_INSTALL_CONVERSION_RATE" };
     size_t sizeofArray = sizeof(COLUMNSArray) / sizeof(COLUMNSArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(COLUMNS, COLUMNSArray[stringToReturn]) == 0) {
@@ -418,8 +409,8 @@ end:
 //
 // Add one or more product groups from your catalog to an existing ad group. (Product groups added to an ad group are a 'product group promotion.')
 //
-product_group_promotion_response_t*
-ProductGroupPromotionsAPI_productGroupPromotionsCreate(apiClient_t *apiClient, char *ad_account_id, product_group_promotion_create_request_t *product_group_promotion_create_request)
+product_group_promotions_t*
+ProductGroupPromotionsAPI_productGroupPromotionsCreate(apiClient_t *apiClient, char *ad_account_id, product_group_promotions_create_t *product_group_promotions_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -452,12 +443,12 @@ ProductGroupPromotionsAPI_productGroupPromotionsCreate(apiClient_t *apiClient, c
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_product_group_promotion_create_request = NULL;
-    if (product_group_promotion_create_request != NULL)
+    cJSON *localVarSingleItemJSON_product_group_promotions_create = NULL;
+    if (product_group_promotions_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_product_group_promotion_create_request = product_group_promotion_create_request_convertToJSON(product_group_promotion_create_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_product_group_promotion_create_request);
+        localVarSingleItemJSON_product_group_promotions_create = product_group_promotions_create_convertToJSON(product_group_promotions_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_product_group_promotions_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -475,17 +466,41 @@ ProductGroupPromotionsAPI_productGroupPromotionsCreate(apiClient_t *apiClient, c
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    product_group_promotion_response_t *elementToReturn = NULL;
+    product_group_promotions_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *ProductGroupPromotionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = product_group_promotion_response_parseFromJSON(ProductGroupPromotionsAPIlocalVarJSON);
+        elementToReturn = product_group_promotions_parseFromJSON(ProductGroupPromotionsAPIlocalVarJSON);
         cJSON_Delete(ProductGroupPromotionsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -505,9 +520,9 @@ ProductGroupPromotionsAPI_productGroupPromotionsCreate(apiClient_t *apiClient, c
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarSingleItemJSON_product_group_promotion_create_request) {
-        cJSON_Delete(localVarSingleItemJSON_product_group_promotion_create_request);
-        localVarSingleItemJSON_product_group_promotion_create_request = NULL;
+    if (localVarSingleItemJSON_product_group_promotions_create) {
+        cJSON_Delete(localVarSingleItemJSON_product_group_promotions_create);
+        localVarSingleItemJSON_product_group_promotions_create = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -579,11 +594,31 @@ ProductGroupPromotionsAPI_productGroupPromotionsGet(apiClient_t *apiClient, char
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     product_group_promotion_t *elementToReturn = NULL;
@@ -619,10 +654,10 @@ end:
 
 // Get product group promotions
 //
-// List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  <b>Note:</b> ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
+// List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  **Note:** ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
 //
 product_group_promotions_list_200_response_t*
-ProductGroupPromotionsAPI_productGroupPromotionsList(apiClient_t *apiClient, char *ad_account_id, list_t *product_group_promotion_ids, list_t *entity_statuses, char *ad_group_id, int *page_size, pinterest_rest_api_productGroupPromotionsList_order_e order, char *bookmark)
+ProductGroupPromotionsAPI_productGroupPromotionsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_lib_pagination_order_e order, list_t *product_group_promotion_ids, list_t *entity_statuses, char *ad_group_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -655,6 +690,44 @@ ProductGroupPromotionsAPI_productGroupPromotionsList(apiClient_t *apiClient, cha
 
 
     // query parameters
+    char *keyQuery_bookmark = NULL;
+    char * valueQuery_bookmark = NULL;
+    keyValuePair_t *keyPairQuery_bookmark = 0;
+    if (bookmark)
+    {
+        keyQuery_bookmark = strdup("bookmark");
+        valueQuery_bookmark = strdup((bookmark));
+        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
+        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
+    }
+
+    // query parameters
+    char *keyQuery_page_size = NULL;
+    char * valueQuery_page_size = NULL;
+    keyValuePair_t *keyPairQuery_page_size = 0;
+    if (page_size)
+    {
+        keyQuery_page_size = strdup("page_size");
+        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
+        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
+        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
+    }
+
+    // query parameters
+    char *keyQuery_order = NULL;
+    pinterest_lib_pagination_order_e valueQuery_order ;
+    keyValuePair_t *keyPairQuery_order = 0;
+    if (order)
+    {
+        keyQuery_order = strdup("order");
+        valueQuery_order = (order);
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(productGroupPromotionsList__ToString(
+        &valueQuery_order)));
+        list_addElement(localVarQueryParameters,keyPairQuery_order);
+    }
+
+    // query parameters
     if (product_group_promotion_ids)
     {
         list_addElement(localVarQueryParameters,product_group_promotion_ids);
@@ -677,44 +750,6 @@ ProductGroupPromotionsAPI_productGroupPromotionsList(apiClient_t *apiClient, cha
         keyPairQuery_ad_group_id = keyValuePair_create(keyQuery_ad_group_id, valueQuery_ad_group_id);
         list_addElement(localVarQueryParameters,keyPairQuery_ad_group_id);
     }
-
-    // query parameters
-    char *keyQuery_page_size = NULL;
-    char * valueQuery_page_size = NULL;
-    keyValuePair_t *keyPairQuery_page_size = 0;
-    if (page_size)
-    {
-        keyQuery_page_size = strdup("page_size");
-        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
-        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
-        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
-    }
-
-    // query parameters
-    char *keyQuery_order = NULL;
-    pinterest_rest_api_productGroupPromotionsList_order_e valueQuery_order ;
-    keyValuePair_t *keyPairQuery_order = 0;
-    if (order)
-    {
-        keyQuery_order = strdup("order");
-        valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(productGroupPromotionsList_ORDER_ToString(
-        valueQuery_order)));
-        list_addElement(localVarQueryParameters,keyPairQuery_order);
-    }
-
-    // query parameters
-    char *keyQuery_bookmark = NULL;
-    char * valueQuery_bookmark = NULL;
-    keyValuePair_t *keyPairQuery_bookmark = 0;
-    if (bookmark)
-    {
-        keyQuery_bookmark = strdup("bookmark");
-        valueQuery_bookmark = strdup((bookmark));
-        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
-        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
-    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -729,11 +764,31 @@ ProductGroupPromotionsAPI_productGroupPromotionsList(apiClient_t *apiClient, cha
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     product_group_promotions_list_200_response_t *elementToReturn = NULL;
@@ -759,17 +814,17 @@ ProductGroupPromotionsAPI_productGroupPromotionsList(apiClient_t *apiClient, cha
     
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if(keyQuery_ad_group_id){
-        free(keyQuery_ad_group_id);
-        keyQuery_ad_group_id = NULL;
+    if(keyQuery_bookmark){
+        free(keyQuery_bookmark);
+        keyQuery_bookmark = NULL;
     }
-    if(valueQuery_ad_group_id){
-        free(valueQuery_ad_group_id);
-        valueQuery_ad_group_id = NULL;
+    if(valueQuery_bookmark){
+        free(valueQuery_bookmark);
+        valueQuery_bookmark = NULL;
     }
-    if(keyPairQuery_ad_group_id){
-        keyValuePair_free(keyPairQuery_ad_group_id);
-        keyPairQuery_ad_group_id = NULL;
+    if(keyPairQuery_bookmark){
+        keyValuePair_free(keyPairQuery_bookmark);
+        keyPairQuery_bookmark = NULL;
     }
     if(keyQuery_page_size){
         free(keyQuery_page_size);
@@ -791,17 +846,17 @@ ProductGroupPromotionsAPI_productGroupPromotionsList(apiClient_t *apiClient, cha
         keyValuePair_free(keyPairQuery_order);
         keyPairQuery_order = NULL;
     }
-    if(keyQuery_bookmark){
-        free(keyQuery_bookmark);
-        keyQuery_bookmark = NULL;
+    if(keyQuery_ad_group_id){
+        free(keyQuery_ad_group_id);
+        keyQuery_ad_group_id = NULL;
     }
-    if(valueQuery_bookmark){
-        free(valueQuery_bookmark);
-        valueQuery_bookmark = NULL;
+    if(valueQuery_ad_group_id){
+        free(valueQuery_ad_group_id);
+        valueQuery_ad_group_id = NULL;
     }
-    if(keyPairQuery_bookmark){
-        keyValuePair_free(keyPairQuery_bookmark);
-        keyPairQuery_bookmark = NULL;
+    if(keyPairQuery_ad_group_id){
+        keyValuePair_free(keyPairQuery_ad_group_id);
+        keyPairQuery_ad_group_id = NULL;
     }
     return elementToReturn;
 end:
@@ -814,8 +869,8 @@ end:
 //
 // Update multiple existing Product Group Promotions (by product_group_id)
 //
-product_group_promotion_response_t*
-ProductGroupPromotionsAPI_productGroupPromotionsUpdate(apiClient_t *apiClient, char *ad_account_id, product_group_promotion_update_request_t *product_group_promotion_update_request)
+product_group_promotions_t*
+ProductGroupPromotionsAPI_productGroupPromotionsUpdate(apiClient_t *apiClient, char *ad_account_id, product_group_promotions_update_with_required_body_t *product_group_promotions_update_with_required_body)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -848,12 +903,12 @@ ProductGroupPromotionsAPI_productGroupPromotionsUpdate(apiClient_t *apiClient, c
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_product_group_promotion_update_request = NULL;
-    if (product_group_promotion_update_request != NULL)
+    cJSON *localVarSingleItemJSON_product_group_promotions_update_with_required_body = NULL;
+    if (product_group_promotions_update_with_required_body != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_product_group_promotion_update_request = product_group_promotion_update_request_convertToJSON(product_group_promotion_update_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_product_group_promotion_update_request);
+        localVarSingleItemJSON_product_group_promotions_update_with_required_body = product_group_promotions_update_with_required_body_convertToJSON(product_group_promotions_update_with_required_body);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_product_group_promotions_update_with_required_body);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -871,17 +926,37 @@ ProductGroupPromotionsAPI_productGroupPromotionsUpdate(apiClient_t *apiClient, c
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    product_group_promotion_response_t *elementToReturn = NULL;
+    product_group_promotions_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *ProductGroupPromotionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = product_group_promotion_response_parseFromJSON(ProductGroupPromotionsAPIlocalVarJSON);
+        elementToReturn = product_group_promotions_parseFromJSON(ProductGroupPromotionsAPIlocalVarJSON);
         cJSON_Delete(ProductGroupPromotionsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -901,9 +976,9 @@ ProductGroupPromotionsAPI_productGroupPromotionsUpdate(apiClient_t *apiClient, c
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarSingleItemJSON_product_group_promotion_update_request) {
-        cJSON_Delete(localVarSingleItemJSON_product_group_promotion_update_request);
-        localVarSingleItemJSON_product_group_promotion_update_request = NULL;
+    if (localVarSingleItemJSON_product_group_promotions_update_with_required_body) {
+        cJSON_Delete(localVarSingleItemJSON_product_group_promotions_update_with_required_body);
+        localVarSingleItemJSON_product_group_promotions_update_with_required_body = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -915,10 +990,10 @@ end:
 
 // Get product group analytics
 //
-// Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+// Get analytics for the specified product groups in the specified `ad_account_id`, filtered by the specified options.  - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 //
 list_t*
-ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char *ad_account_id, char start_date, char end_date, list_t *product_group_ids, list_t *columns, granularity_e granularity, int *click_window_days, int *engagement_window_days, int *view_window_days, pinterest_rest_api_productGroupsAnalytics_conversion_report_time_e conversion_report_time, reporting_time_zone_e reporting_timezone)
+ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char start_date, char end_date, list_t *product_group_ids, list_t *columns, granularity_e granularity, char *ad_account_id, double click_window_days, double engagement_window_days, double view_window_days, pinterest_rest_api_productGroupsAnalytics_conversion_report_time_e conversion_report_time, reporting_time_zone_e reporting_timezone)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1001,43 +1076,40 @@ ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char *a
 
     // query parameters
     char *keyQuery_click_window_days = NULL;
-    char * valueQuery_click_window_days = NULL;
+    double valueQuery_click_window_days ;
     keyValuePair_t *keyPairQuery_click_window_days = 0;
     if (click_window_days)
     {
         keyQuery_click_window_days = strdup("click_window_days");
-        valueQuery_click_window_days = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_click_window_days, MAX_NUMBER_LENGTH, "%d", *click_window_days);
+        valueQuery_click_window_days = (click_window_days);
         keyPairQuery_click_window_days = keyValuePair_create(keyQuery_click_window_days, strdup(productGroupsAnalytics_CLICKWINDOWDAYS_ToString(
-        valueQuery_click_window_days)));
+        &valueQuery_click_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_click_window_days);
     }
 
     // query parameters
     char *keyQuery_engagement_window_days = NULL;
-    char * valueQuery_engagement_window_days = NULL;
+    double valueQuery_engagement_window_days ;
     keyValuePair_t *keyPairQuery_engagement_window_days = 0;
     if (engagement_window_days)
     {
         keyQuery_engagement_window_days = strdup("engagement_window_days");
-        valueQuery_engagement_window_days = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_engagement_window_days, MAX_NUMBER_LENGTH, "%d", *engagement_window_days);
+        valueQuery_engagement_window_days = (engagement_window_days);
         keyPairQuery_engagement_window_days = keyValuePair_create(keyQuery_engagement_window_days, strdup(productGroupsAnalytics_ENGAGEMENTWINDOWDAYS_ToString(
-        valueQuery_engagement_window_days)));
+        &valueQuery_engagement_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_engagement_window_days);
     }
 
     // query parameters
     char *keyQuery_view_window_days = NULL;
-    char * valueQuery_view_window_days = NULL;
+    double valueQuery_view_window_days ;
     keyValuePair_t *keyPairQuery_view_window_days = 0;
     if (view_window_days)
     {
         keyQuery_view_window_days = strdup("view_window_days");
-        valueQuery_view_window_days = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_view_window_days, MAX_NUMBER_LENGTH, "%d", *view_window_days);
+        valueQuery_view_window_days = (view_window_days);
         keyPairQuery_view_window_days = keyValuePair_create(keyQuery_view_window_days, strdup(productGroupsAnalytics_VIEWWINDOWDAYS_ToString(
-        valueQuery_view_window_days)));
+        &valueQuery_view_window_days)));
         list_addElement(localVarQueryParameters,keyPairQuery_view_window_days);
     }
 
@@ -1080,15 +1152,31 @@ ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char *a
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid ad account ads analytics parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     list_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
@@ -1152,10 +1240,6 @@ ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char *a
         free(keyQuery_click_window_days);
         keyQuery_click_window_days = NULL;
     }
-    if(valueQuery_click_window_days){
-        free(valueQuery_click_window_days);
-        valueQuery_click_window_days = NULL;
-    }
     if(keyPairQuery_click_window_days){
         keyValuePair_free(keyPairQuery_click_window_days);
         keyPairQuery_click_window_days = NULL;
@@ -1164,10 +1248,6 @@ ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char *a
         free(keyQuery_engagement_window_days);
         keyQuery_engagement_window_days = NULL;
     }
-    if(valueQuery_engagement_window_days){
-        free(valueQuery_engagement_window_days);
-        valueQuery_engagement_window_days = NULL;
-    }
     if(keyPairQuery_engagement_window_days){
         keyValuePair_free(keyPairQuery_engagement_window_days);
         keyPairQuery_engagement_window_days = NULL;
@@ -1175,10 +1255,6 @@ ProductGroupPromotionsAPI_productGroupsAnalytics(apiClient_t *apiClient, char *a
     if(keyQuery_view_window_days){
         free(keyQuery_view_window_days);
         keyQuery_view_window_days = NULL;
-    }
-    if(valueQuery_view_window_days){
-        free(valueQuery_view_window_days);
-        valueQuery_view_window_days = NULL;
     }
     if(keyPairQuery_view_window_days){
         keyValuePair_free(keyPairQuery_view_window_days);

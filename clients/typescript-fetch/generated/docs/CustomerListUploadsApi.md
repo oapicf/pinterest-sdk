@@ -16,7 +16,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Create customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt;  &lt;p&gt;Create a customer list upload request for multipart S3 upload.&lt;/p&gt; &lt;p&gt;Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Please review the &lt;u&gt;&lt;a href&#x3D;\&quot;/docs/api/v5/customer_lists-update/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;update customer list endpoint&lt;/a&gt;&lt;/u&gt; documentation for additional information.&lt;/b&gt;&lt;/p&gt;
+Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 
 ### Example
 
@@ -36,11 +36,11 @@ async function example() {
   const api = new CustomerListUploadsApi(config);
 
   const body = {
-    // string | Unique identifier of an ad account.
+    // string
     adAccountId: adAccountId_example,
-    // string | Unique identifier of a customer list
+    // string | Customer list ID.
     customerListId: customerListId_example,
-    // CustomerListUploadCreateRequest | Parameters to create a customer list upload request
+    // CustomerListUploadCreateRequest
     customerListUploadCreateRequest: ...,
   } satisfies CustomerListUploadsCreateRequest;
 
@@ -61,9 +61,9 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **customerListId** | `string` | Unique identifier of a customer list | [Defaults to `undefined`] |
-| **customerListUploadCreateRequest** | [CustomerListUploadCreateRequest](CustomerListUploadCreateRequest.md) | Parameters to create a customer list upload request | |
+| **adAccountId** | `string` |  | [Defaults to `undefined`] |
+| **customerListId** | `string` | Customer list ID. | [Defaults to `undefined`] |
+| **customerListUploadCreateRequest** | [CustomerListUploadCreateRequest](CustomerListUploadCreateRequest.md) |  | |
 
 ### Return type
 
@@ -82,19 +82,24 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## customerListUploadsGet
 
-> CustomerListUploadResponse customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
+> CustomerListUpload customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
 
 Get customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Get the metadata for a given upload by its ID.&lt;/p&gt;
+Get the metadata for a given upload by its ID.
 
 ### Example
 
@@ -114,11 +119,11 @@ async function example() {
   const api = new CustomerListUploadsApi(config);
 
   const body = {
-    // string | Unique identifier of an ad account.
+    // string
     adAccountId: adAccountId_example,
-    // string | Unique identifier of a customer list
+    // string | Customer list ID.
     customerListId: customerListId_example,
-    // string | Unique identifier of a customer list upload
+    // string | Customer List Upload ID.
     customerListUploadId: customerListUploadId_example,
   } satisfies CustomerListUploadsGetRequest;
 
@@ -139,13 +144,13 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **customerListId** | `string` | Unique identifier of a customer list | [Defaults to `undefined`] |
-| **customerListUploadId** | `string` | Unique identifier of a customer list upload | [Defaults to `undefined`] |
+| **adAccountId** | `string` |  | [Defaults to `undefined`] |
+| **customerListId** | `string` | Customer list ID. | [Defaults to `undefined`] |
+| **customerListUploadId** | `string` | Customer List Upload ID. | [Defaults to `undefined`] |
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 
@@ -160,19 +165,24 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## customerListUploadsRun
 
-> CustomerListUploadResponse customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
+> CustomerListUpload customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
 
 Run customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Begin processing a customer list upload.&lt;/p&gt;
+Begin processing a customer list upload.
 
 ### Example
 
@@ -192,11 +202,11 @@ async function example() {
   const api = new CustomerListUploadsApi(config);
 
   const body = {
-    // string | Unique identifier of an ad account.
+    // string
     adAccountId: adAccountId_example,
-    // string | Unique identifier of a customer list
+    // string | Customer list ID.
     customerListId: customerListId_example,
-    // string | Unique identifier of a customer list upload
+    // string | Customer List Upload ID.
     customerListUploadId: customerListUploadId_example,
   } satisfies CustomerListUploadsRunRequest;
 
@@ -217,13 +227,13 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **customerListId** | `string` | Unique identifier of a customer list | [Defaults to `undefined`] |
-| **customerListUploadId** | `string` | Unique identifier of a customer list upload | [Defaults to `undefined`] |
+| **adAccountId** | `string` |  | [Defaults to `undefined`] |
+| **customerListId** | `string` | Customer list ID. | [Defaults to `undefined`] |
+| **customerListUploadId** | `string` | Customer List Upload ID. | [Defaults to `undefined`] |
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 
@@ -238,8 +248,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

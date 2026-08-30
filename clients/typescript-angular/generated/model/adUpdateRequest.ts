@@ -7,16 +7,22 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { QuizPinData } from './quizPinData';
 import { EntityStatus } from './entityStatus';
 import { DisclosureType } from './disclosureType';
-import { TrackingUrls } from './trackingUrls';
 import { CustomizableCTAType } from './customizableCTAType';
 import { GridClickType } from './gridClickType';
 import { CreativeType } from './creativeType';
 
 
 export interface AdUpdateRequest { 
+    /**
+     * The ID of this ad.
+     */
+    id: string;
+    /**
+     * Pin ID. This field may only be updated for draft ads.
+     */
+    pin_id?: string | null;
     /**
      * ID of the ad group that contains the ad.
      */
@@ -58,6 +64,10 @@ export interface AdUpdateRequest {
      */
     ios_deep_link?: string | null;
     /**
+     * Is the ad a carting/WTB ad?
+     */
+    is_carting?: boolean;
+    /**
      * Is original pin deleted?
      */
     is_pin_deleted?: boolean;
@@ -76,21 +86,13 @@ export interface AdUpdateRequest {
     /**
      * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
      */
-    quiz_pin_data?: QuizPinData | null;
+    quiz_pin_data?: object | null;
     status?: EntityStatus;
-    tracking_urls?: TrackingUrls | null;
+    tracking_urls?: object | null;
     /**
      * Tracking URL for ad impressions.
      */
     view_tracking_url?: string | null;
-    /**
-     * The ID of this ad.
-     */
-    id: string;
-    /**
-     * Pin ID. This field may only be updated for draft ads.
-     */
-    pin_id?: string | null;
 }
 export namespace AdUpdateRequest {
 }

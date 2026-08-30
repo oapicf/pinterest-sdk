@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -15,6 +15,8 @@ package openapi
 import (
 	"time"
 	"errors"
+	"encoding/json"
+	"fmt"
 )
 
 
@@ -35,7 +37,7 @@ type BoardWithUpdatePrivacy struct {
 	// Board follower count.
 	FollowerCount int32 `json:"follower_count,omitempty"`
 
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
 	// If set to `true`, the board will be ad-only and can store ad-only Pins.
 	IsAdsOnly bool `json:"is_ads_only,omitempty"`
@@ -43,7 +45,7 @@ type BoardWithUpdatePrivacy struct {
 	// Board media.
 	Media BoardMedia `json:"media,omitempty"`
 
-	//      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+	//     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
 	Name string `json:"name"`
 
 	Owner BoardOwner `json:"owner,omitempty"`
@@ -53,44 +55,132 @@ type BoardWithUpdatePrivacy struct {
 
 	Privacy BoardUpdatePrivacy `json:"privacy,omitempty"`
 }
-
-// AssertBoardWithUpdatePrivacyRequired checks if the required fields are not zero-ed
-func AssertBoardWithUpdatePrivacyRequired(obj BoardWithUpdatePrivacy) error {
-	elements := map[string]interface{}{
-		"id": obj.Id,
-		"name": obj.Name,
+// UnmarshalJSON validates required property keys then unmarshals into BoardWithUpdatePrivacy
+func (o *BoardWithUpdatePrivacy) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"name",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"name": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"board_pins_modified_at": {},
+		"collaborator_count": {},
+		"created_at": {},
+		"description": {},
+		"follower_count": {},
+		"id": {},
+		"is_ads_only": {},
+		"media": {},
+		"name": {},
+		"owner": {},
+		"pin_count": {},
+		"privacy": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
-	if err := AssertBoardMediaRequired(obj.Media); err != nil {
-		return err
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
 	}
-	if err := AssertBoardOwnerRequired(obj.Owner); err != nil {
-		return err
+
+	var decoded BoardWithUpdatePrivacy
+
+	if value, exists := allProperties["board_pins_modified_at"]; exists {
+		if err = json.Unmarshal(value, &decoded.BoardPinsModifiedAt); err != nil {
+			return err
+		}
 	}
+	if value, exists := allProperties["collaborator_count"]; exists {
+		if err = json.Unmarshal(value, &decoded.CollaboratorCount); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["created_at"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreatedAt); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["description"]; exists {
+		if err = json.Unmarshal(value, &decoded.Description); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["follower_count"]; exists {
+		if err = json.Unmarshal(value, &decoded.FollowerCount); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["is_ads_only"]; exists {
+		if err = json.Unmarshal(value, &decoded.IsAdsOnly); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["media"]; exists {
+		if err = json.Unmarshal(value, &decoded.Media); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["owner"]; exists {
+		if err = json.Unmarshal(value, &decoded.Owner); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["pin_count"]; exists {
+		if err = json.Unmarshal(value, &decoded.PinCount); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["privacy"]; exists {
+		if err = json.Unmarshal(value, &decoded.Privacy); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertBoardWithUpdatePrivacyRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertBoardWithUpdatePrivacyRequired(obj BoardWithUpdatePrivacy) error {
 	return nil
 }
 
 // AssertBoardWithUpdatePrivacyConstraints checks if the values respects the defined constraints
 func AssertBoardWithUpdatePrivacyConstraints(obj BoardWithUpdatePrivacy) error {
-	if obj.CollaboratorCount < 0 {
-		return &ParsingError{Param: "CollaboratorCount", Err: errors.New(errMsgMinValueConstraint)}
-	}
-	if obj.FollowerCount < 0 {
-		return &ParsingError{Param: "FollowerCount", Err: errors.New(errMsgMinValueConstraint)}
-	}
-	if err := AssertBoardMediaConstraints(obj.Media); err != nil {
-		return err
-	}
-	if err := AssertBoardOwnerConstraints(obj.Owner); err != nil {
-		return err
-	}
-	if obj.PinCount < 0 {
-		return &ParsingError{Param: "PinCount", Err: errors.New(errMsgMinValueConstraint)}
-	}
 	return nil
 }

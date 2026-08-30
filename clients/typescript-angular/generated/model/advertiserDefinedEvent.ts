@@ -7,50 +7,23 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { ConversionTagTypeOptimal } from './conversionTagTypeOptimal';
 
 
+/**
+ * Advertiser defined event
+ */
 export interface AdvertiserDefinedEvent { 
     /**
-     * raw string name of the event, usually logged as raw_event_name in our dataset
+     * Standard type mapped to ADE for optimization
+     */
+    mapped_conversion_type?: ConversionTagTypeOptimal;
+    /**
+     * Raw string name of the event, usually logged as raw_event_name in our dataset
      */
     name?: string;
-    /**
-     * standard type mapped to ADE for optimization
-     */
-    mapped_conversion_type?: AdvertiserDefinedEvent.MappedConversionTypeEnum | null;
 }
 export namespace AdvertiserDefinedEvent {
-    export const MappedConversionTypeEnum = {
-        PageLoad: 'PAGE_LOAD',
-        Unknown: 'UNKNOWN',
-        Initialized: 'INITIALIZED',
-        PageVisit: 'PAGE_VISIT',
-        Signup: 'SIGNUP',
-        Checkout: 'CHECKOUT',
-        Custom: 'CUSTOM',
-        ViewCategory: 'VIEW_CATEGORY',
-        Search: 'SEARCH',
-        AddToCart: 'ADD_TO_CART',
-        WatchVideo: 'WATCH_VIDEO',
-        Lead: 'LEAD',
-        AppInstall: 'APP_INSTALL',
-        WebSession: 'WEB_SESSION',
-        ExternalMeasurement: 'EXTERNAL_MEASUREMENT',
-        AddPaymentInfo: 'ADD_PAYMENT_INFO',
-        AddToWishlist: 'ADD_TO_WISHLIST',
-        InitiateCheckout: 'INITIATE_CHECKOUT',
-        Subscribe: 'SUBSCRIBE',
-        ViewContent: 'VIEW_CONTENT',
-        AdvertiserDefinedEvent: 'ADVERTISER_DEFINED_EVENT',
-        AppOpen: 'APP_OPEN',
-        Contact: 'CONTACT',
-        Schedule: 'SCHEDULE',
-        FindLocation: 'FIND_LOCATION',
-        CustomizeProduct: 'CUSTOMIZE_PRODUCT',
-        SubmitApplication: 'SUBMIT_APPLICATION',
-        StartTrial: 'START_TRIAL'
-    } as const;
-    export type MappedConversionTypeEnum = typeof MappedConversionTypeEnum[keyof typeof MappedConversionTypeEnum];
 }
 
 

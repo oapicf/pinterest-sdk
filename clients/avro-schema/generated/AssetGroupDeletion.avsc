@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AssetGroupDeletion",
+  "fields": [
+    {
+      "name": "deleted_asset_groups",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "exceptions",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AssetGroupDeleteError"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

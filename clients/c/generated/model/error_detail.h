@@ -19,16 +19,16 @@ typedef struct error_detail_t error_detail_t;
 
 
 typedef struct error_detail_t {
-    int count; //numeric
-    int error_code; //numeric
+    int *count; //numeric
+    int *error_code; //numeric
     char *message; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } error_detail_t;
 
 __attribute__((deprecated)) error_detail_t *error_detail_create(
-    int count,
-    int error_code,
+    int *count,
+    int *error_code,
     char *message
 );
 

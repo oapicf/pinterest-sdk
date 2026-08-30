@@ -1,10 +1,10 @@
 #import "OAILeadsExportApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIError.h"
-#import "OAILeadsExportCreateRequest.h"
-#import "OAILeadsExportCreateResponse.h"
 #import "OAILeadsExportResponseData.h"
+#import "OAILeadsExports.h"
+#import "OAILeadsExportsCreate.h"
+#import "OAIPinterestLibError.h"
 
 
 @interface OAILeadsExportApi ()
@@ -54,16 +54,16 @@ NSInteger kOAILeadsExportApiMissingParamErrorCode = 234513;
 
 ///
 /// Create a request to export leads collected from a lead ad
-/// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+/// **This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a `leads_export_id` token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param leadsExportCreateRequest  
+///  @param leadsExportsCreate  
 ///
-///  @returns OAILeadsExportCreateResponse*
+///  @returns OAILeadsExports*
 ///
 -(NSURLSessionTask*) leadsExportCreateWithAdAccountId: (NSString*) adAccountId
-    leadsExportCreateRequest: (OAILeadsExportCreateRequest*) leadsExportCreateRequest
-    completionHandler: (void (^)(OAILeadsExportCreateResponse* output, NSError* error)) handler {
+    leadsExportsCreate: (OAILeadsExportsCreate*) leadsExportsCreate
+    completionHandler: (void (^)(OAILeadsExports* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -75,11 +75,11 @@ NSInteger kOAILeadsExportApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'leadsExportCreateRequest' is set
-    if (leadsExportCreateRequest == nil) {
-        NSParameterAssert(leadsExportCreateRequest);
+    // verify the required parameter 'leadsExportsCreate' is set
+    if (leadsExportsCreate == nil) {
+        NSParameterAssert(leadsExportsCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"leadsExportCreateRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"leadsExportsCreate"] };
             NSError* error = [NSError errorWithDomain:kOAILeadsExportApiErrorDomain code:kOAILeadsExportApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -114,7 +114,7 @@ NSInteger kOAILeadsExportApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = leadsExportCreateRequest;
+    bodyParam = leadsExportsCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -127,17 +127,17 @@ NSInteger kOAILeadsExportApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAILeadsExportCreateResponse*"
+                              responseType: @"OAILeadsExports*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAILeadsExportCreateResponse*)data, error);
+                                    handler((OAILeadsExports*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Get the lead export from the lead export create call
-/// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+/// **This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param leadsExportId lead_export_id token returned from the create a lead export endpoint 

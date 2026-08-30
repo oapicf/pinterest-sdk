@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PRICE** | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  | 
+**PRICE** | [**PriceFilterPrice**](PriceFilterPrice.md) |  | 
 **HOTEL_ID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 **BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 **CUSTOMLABEL0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsHotelProductGroupFilterKeys
 
-`func NewCatalogsHotelProductGroupFilterKeys(pRICE CatalogsProductGroupPricingCurrencyCriteria, hOTELID CatalogsProductGroupMultipleStringCriteria, bRAND CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL1 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL2 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL3 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL4 CatalogsProductGroupFilterOperatorTypeCriteria, cOUNTRY CatalogsProductGroupMultipleCountriesCriteria, tITLEKEYWORDS CatalogsProductGroupMultipleStringCriteria, ) *CatalogsHotelProductGroupFilterKeys`
+`func NewCatalogsHotelProductGroupFilterKeys(pRICE PriceFilterPrice, hOTELID CatalogsProductGroupMultipleStringCriteria, bRAND CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL1 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL2 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL3 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL4 CatalogsProductGroupFilterOperatorTypeCriteria, cOUNTRY CatalogsProductGroupMultipleCountriesCriteria, tITLEKEYWORDS CatalogsProductGroupMultipleStringCriteria, ) *CatalogsHotelProductGroupFilterKeys`
 
 NewCatalogsHotelProductGroupFilterKeys instantiates a new CatalogsHotelProductGroupFilterKeys object
 This constructor will assign default values to properties that have it defined,
@@ -36,20 +36,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPRICE
 
-`func (o *CatalogsHotelProductGroupFilterKeys) GetPRICE() CatalogsProductGroupPricingCurrencyCriteria`
+`func (o *CatalogsHotelProductGroupFilterKeys) GetPRICE() PriceFilterPrice`
 
 GetPRICE returns the PRICE field if non-nil, zero value otherwise.
 
 ### GetPRICEOk
 
-`func (o *CatalogsHotelProductGroupFilterKeys) GetPRICEOk() (*CatalogsProductGroupPricingCurrencyCriteria, bool)`
+`func (o *CatalogsHotelProductGroupFilterKeys) GetPRICEOk() (*PriceFilterPrice, bool)`
 
 GetPRICEOk returns a tuple with the PRICE field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPRICE
 
-`func (o *CatalogsHotelProductGroupFilterKeys) SetPRICE(v CatalogsProductGroupPricingCurrencyCriteria)`
+`func (o *CatalogsHotelProductGroupFilterKeys) SetPRICE(v PriceFilterPrice)`
 
 SetPRICE sets PRICE field to given value.
 

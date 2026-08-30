@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignAdPreviewCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignAdPreviewCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CampaignAdPreviewCreate {
+    title = CampaignAdPreviewCreate
+    description = CampaignAdPreviewCreate
+    derivedFrom = Root
+    properties {
+        ad_group_id {
+          type =  string
+          description = "Ad group ID to create a preview record for."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignAdPreviewCreate {
+    title = CampaignAdPreviewCreate
+    description = CampaignAdPreviewCreate
+    implements = openapi_server.resourceTypes.CampaignAdPreviewCreate
+
+  }
+}

@@ -17,6 +17,8 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
+import { PinterestLibError } from '../model/pinterestLibError';
+// @ts-ignore
 import { TermsOfService } from '../model/termsOfService';
 
 // @ts-ignore

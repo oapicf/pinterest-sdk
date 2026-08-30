@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **LeadFormId** | **String** | Lead form ID. | [optional] 
 **WebhookUrl** | **String** | Standard HTTPS webhook URL. | 
 **PartnerAccessToken** | **String** | Partner access token. Only for clients that requires authentication. We recommend to avoid this param. | [optional] 
-**PartnerMetadata** | [**LeadSubscriptionPostParamsCreateAllOfPartnerMetadata**](LeadSubscriptionPostParamsCreateAllOfPartnerMetadata.md) |  | [optional] 
+**PartnerMetadata** | [**PartnerMetadata**](PartnerMetadata.md) | Partner metadata. Only for clients that requires special handling. We recommend to avoid this param. | [optional] 
 **PartnerRefreshToken** | **String** | Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. | [optional] 
 
 ## Examples

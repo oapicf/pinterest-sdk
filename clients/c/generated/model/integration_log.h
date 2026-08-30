@@ -17,34 +17,20 @@ typedef struct integration_log_t integration_log_t;
 
 #include "integration_log_client_error.h"
 #include "integration_log_client_request.h"
-
-// Enum EVENTTYPE for integration_log
-
-typedef enum  { pinterest_rest_api_integration_log_EVENTTYPE_NULL = 0, pinterest_rest_api_integration_log_EVENTTYPE_APP, pinterest_rest_api_integration_log_EVENTTYPE_API } pinterest_rest_api_integration_log_EVENTTYPE_e;
-
-char* integration_log_event_type_ToString(pinterest_rest_api_integration_log_EVENTTYPE_e event_type);
-
-pinterest_rest_api_integration_log_EVENTTYPE_e integration_log_event_type_FromString(char* event_type);
-
-// Enum LOGLEVEL for integration_log
-
-typedef enum  { pinterest_rest_api_integration_log_LOGLEVEL_NULL = 0, pinterest_rest_api_integration_log_LOGLEVEL_INFO, pinterest_rest_api_integration_log_LOGLEVEL_WARN, pinterest_rest_api_integration_log_LOGLEVEL_ERROR } pinterest_rest_api_integration_log_LOGLEVEL_e;
-
-char* integration_log_log_level_ToString(pinterest_rest_api_integration_log_LOGLEVEL_e log_level);
-
-pinterest_rest_api_integration_log_LOGLEVEL_e integration_log_log_level_FromString(char* log_level);
+#include "integration_log_event_type.h"
+#include "integration_log_level.h"
 
 
 
 typedef struct integration_log_t {
     char *advertiser_id; // string
     char *app_version_number; // string
-    int client_timestamp; //numeric
+    int *client_timestamp; //numeric
     struct integration_log_client_error_t *error; //model
-    pinterest_rest_api_integration_log_EVENTTYPE_e event_type; //enum
+    integration_log_event_type_t *event_type; // custom
     char *external_business_id; // string
     char *feed_profile_id; // string
-    pinterest_rest_api_integration_log_LOGLEVEL_e log_level; //enum
+    integration_log_level_t *log_level; // custom
     char *merchant_id; // string
     char *message; // string
     char *platform_version_number; // string
@@ -57,12 +43,12 @@ typedef struct integration_log_t {
 __attribute__((deprecated)) integration_log_t *integration_log_create(
     char *advertiser_id,
     char *app_version_number,
-    int client_timestamp,
+    int *client_timestamp,
     integration_log_client_error_t *error,
-    pinterest_rest_api_integration_log_EVENTTYPE_e event_type,
+    integration_log_event_type_t *event_type,
     char *external_business_id,
     char *feed_profile_id,
-    pinterest_rest_api_integration_log_LOGLEVEL_e log_level,
+    integration_log_level_t *log_level,
     char *merchant_id,
     char *message,
     char *platform_version_number,

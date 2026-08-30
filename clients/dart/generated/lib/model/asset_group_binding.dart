@@ -14,20 +14,20 @@ class AssetGroupBinding {
   /// Returns a new [AssetGroupBinding] instance.
   AssetGroupBinding({
     this.adAccountsIds = const [],
-    this.assetGroupDescription,
-    this.assetGroupName,
+    required this.assetGroupDescription,
+    required this.assetGroupName,
     this.assetGroupTypes = const [],
     this.catalogsIds = const [],
-    this.createdBy,
-    this.createdTime,
-    this.id,
-    this.owner,
+    required this.createdBy,
+    required this.createdTime,
+    required this.id,
+    required this.owner,
     this.profilesIds = const [],
-    this.updatedTime,
+    required this.updatedTime,
   });
 
   /// A list of ad account IDs under the asset group
-  List<String>? adAccountsIds;
+  List<String> adAccountsIds;
 
   /// Asset group description
   String? assetGroupDescription;
@@ -39,28 +39,22 @@ class AssetGroupBinding {
   List<String> assetGroupTypes;
 
   /// A list of catalog IDs under asset group
-  List<String>? catalogsIds;
+  List<String> catalogsIds;
 
   /// The data of the user that created the asset group.
-  BusinessAccessUserSummary? createdBy;
+  BusinessAccessUserSummary createdBy;
 
   /// The creation time of the asset group
   int? createdTime;
 
   /// Asset Group ID.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? id;
+  String id;
 
   /// The data of the business that owns the asset group.
-  BusinessAccessUserSummary? owner;
+  BusinessAccessUserSummary owner;
 
   /// A list of profile IDs under asset group
-  List<String>? profilesIds;
+  List<String> profilesIds;
 
   /// The last update time of the asset group
   int? updatedTime;
@@ -82,16 +76,16 @@ class AssetGroupBinding {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (adAccountsIds == null ? 0 : adAccountsIds!.hashCode) +
+    (adAccountsIds.hashCode) +
     (assetGroupDescription == null ? 0 : assetGroupDescription!.hashCode) +
     (assetGroupName == null ? 0 : assetGroupName!.hashCode) +
     (assetGroupTypes.hashCode) +
-    (catalogsIds == null ? 0 : catalogsIds!.hashCode) +
-    (createdBy == null ? 0 : createdBy!.hashCode) +
+    (catalogsIds.hashCode) +
+    (createdBy.hashCode) +
     (createdTime == null ? 0 : createdTime!.hashCode) +
-    (id == null ? 0 : id!.hashCode) +
-    (owner == null ? 0 : owner!.hashCode) +
-    (profilesIds == null ? 0 : profilesIds!.hashCode) +
+    (id.hashCode) +
+    (owner.hashCode) +
+    (profilesIds.hashCode) +
     (updatedTime == null ? 0 : updatedTime!.hashCode);
 
   @override
@@ -99,11 +93,7 @@ class AssetGroupBinding {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.adAccountsIds != null) {
       json[r'ad_accounts_ids'] = this.adAccountsIds;
-    } else {
-      json[r'ad_accounts_ids'] = null;
-    }
     if (this.assetGroupDescription != null) {
       json[r'asset_group_description'] = this.assetGroupDescription;
     } else {
@@ -115,36 +105,16 @@ class AssetGroupBinding {
       json[r'asset_group_name'] = null;
     }
       json[r'asset_group_types'] = this.assetGroupTypes;
-    if (this.catalogsIds != null) {
       json[r'catalogs_ids'] = this.catalogsIds;
-    } else {
-      json[r'catalogs_ids'] = null;
-    }
-    if (this.createdBy != null) {
       json[r'created_by'] = this.createdBy;
-    } else {
-      json[r'created_by'] = null;
-    }
     if (this.createdTime != null) {
       json[r'created_time'] = this.createdTime;
     } else {
       json[r'created_time'] = null;
     }
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.owner != null) {
       json[r'owner'] = this.owner;
-    } else {
-      json[r'owner'] = null;
-    }
-    if (this.profilesIds != null) {
       json[r'profiles_ids'] = this.profilesIds;
-    } else {
-      json[r'profiles_ids'] = null;
-    }
     if (this.updatedTime != null) {
       json[r'updated_time'] = this.updatedTime;
     } else {
@@ -164,10 +134,24 @@ class AssetGroupBinding {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AssetGroupBinding[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AssetGroupBinding[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'ad_accounts_ids'), 'Required key "AssetGroupBinding[ad_accounts_ids]" is missing from JSON.');
+        assert(json[r'ad_accounts_ids'] != null, 'Required key "AssetGroupBinding[ad_accounts_ids]" has a null value in JSON.');
+        assert(json.containsKey(r'asset_group_description'), 'Required key "AssetGroupBinding[asset_group_description]" is missing from JSON.');
+        assert(json.containsKey(r'asset_group_name'), 'Required key "AssetGroupBinding[asset_group_name]" is missing from JSON.');
+        assert(json.containsKey(r'asset_group_types'), 'Required key "AssetGroupBinding[asset_group_types]" is missing from JSON.');
+        assert(json[r'asset_group_types'] != null, 'Required key "AssetGroupBinding[asset_group_types]" has a null value in JSON.');
+        assert(json.containsKey(r'catalogs_ids'), 'Required key "AssetGroupBinding[catalogs_ids]" is missing from JSON.');
+        assert(json[r'catalogs_ids'] != null, 'Required key "AssetGroupBinding[catalogs_ids]" has a null value in JSON.');
+        assert(json.containsKey(r'created_by'), 'Required key "AssetGroupBinding[created_by]" is missing from JSON.');
+        assert(json[r'created_by'] != null, 'Required key "AssetGroupBinding[created_by]" has a null value in JSON.');
+        assert(json.containsKey(r'created_time'), 'Required key "AssetGroupBinding[created_time]" is missing from JSON.');
+        assert(json.containsKey(r'id'), 'Required key "AssetGroupBinding[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "AssetGroupBinding[id]" has a null value in JSON.');
+        assert(json.containsKey(r'owner'), 'Required key "AssetGroupBinding[owner]" is missing from JSON.');
+        assert(json[r'owner'] != null, 'Required key "AssetGroupBinding[owner]" has a null value in JSON.');
+        assert(json.containsKey(r'profiles_ids'), 'Required key "AssetGroupBinding[profiles_ids]" is missing from JSON.');
+        assert(json[r'profiles_ids'] != null, 'Required key "AssetGroupBinding[profiles_ids]" has a null value in JSON.');
+        assert(json.containsKey(r'updated_time'), 'Required key "AssetGroupBinding[updated_time]" is missing from JSON.');
         return true;
       }());
 
@@ -183,10 +167,10 @@ class AssetGroupBinding {
         catalogsIds: json[r'catalogs_ids'] is Iterable
             ? (json[r'catalogs_ids'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        createdBy: BusinessAccessUserSummary.fromJson(json[r'created_by']),
+        createdBy: BusinessAccessUserSummary.fromJson(json[r'created_by'])!,
         createdTime: mapValueOfType<int>(json, r'created_time'),
-        id: mapValueOfType<String>(json, r'id'),
-        owner: BusinessAccessUserSummary.fromJson(json[r'owner']),
+        id: mapValueOfType<String>(json, r'id')!,
+        owner: BusinessAccessUserSummary.fromJson(json[r'owner'])!,
         profilesIds: json[r'profiles_ids'] is Iterable
             ? (json[r'profiles_ids'] as Iterable).cast<String>().toList(growable: false)
             : const [],
@@ -238,6 +222,17 @@ class AssetGroupBinding {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'ad_accounts_ids',
+    'asset_group_description',
+    'asset_group_name',
+    'asset_group_types',
+    'catalogs_ids',
+    'created_by',
+    'created_time',
+    'id',
+    'owner',
+    'profiles_ids',
+    'updated_time',
   };
 }
 

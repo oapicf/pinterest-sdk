@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,11 +18,11 @@ import (
 // checks if the BaseInviteDataResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &BaseInviteDataResponse{}
 
-// BaseInviteDataResponse struct for BaseInviteDataResponse
+// BaseInviteDataResponse Common invite/request data returned by the business access endpoints.
 type BaseInviteDataResponse struct {
 	// Unique identifier of the invite/request.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-	InviteData *BaseInviteDataResponseInviteData `json:"invite_data,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\d+$"`
+	InviteData *InviteDataResponse `json:"invite_data,omitempty"`
 	// Indicates whether the invite/request was received.
 	IsReceivedInvite *bool `json:"is_received_invite,omitempty"`
 	// Metadata for the member/partner that was sent the invite/request.
@@ -79,9 +79,9 @@ func (o *BaseInviteDataResponse) SetId(v string) {
 }
 
 // GetInviteData returns the InviteData field value if set, zero value otherwise.
-func (o *BaseInviteDataResponse) GetInviteData() BaseInviteDataResponseInviteData {
+func (o *BaseInviteDataResponse) GetInviteData() InviteDataResponse {
 	if o == nil || IsNil(o.InviteData) {
-		var ret BaseInviteDataResponseInviteData
+		var ret InviteDataResponse
 		return ret
 	}
 	return *o.InviteData
@@ -89,7 +89,7 @@ func (o *BaseInviteDataResponse) GetInviteData() BaseInviteDataResponseInviteDat
 
 // GetInviteDataOk returns a tuple with the InviteData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseInviteDataResponse) GetInviteDataOk() (*BaseInviteDataResponseInviteData, bool) {
+func (o *BaseInviteDataResponse) GetInviteDataOk() (*InviteDataResponse, bool) {
 	if o == nil || IsNil(o.InviteData) {
 		return nil, false
 	}
@@ -105,8 +105,8 @@ func (o *BaseInviteDataResponse) HasInviteData() bool {
 	return false
 }
 
-// SetInviteData gets a reference to the given BaseInviteDataResponseInviteData and assigns it to the InviteData field.
-func (o *BaseInviteDataResponse) SetInviteData(v BaseInviteDataResponseInviteData) {
+// SetInviteData gets a reference to the given InviteDataResponse and assigns it to the InviteData field.
+func (o *BaseInviteDataResponse) SetInviteData(v InviteDataResponse) {
 	o.InviteData = &v
 }
 

@@ -23,6 +23,7 @@ from app.openapi_server.models.google_product_category3_filter import GoogleProd
 from app.openapi_server.models.google_product_category4_filter import GoogleProductCategory4Filter  # noqa: F401,E501
 from app.openapi_server.models.google_product_category5_filter import GoogleProductCategory5Filter  # noqa: F401,E501
 from app.openapi_server.models.google_product_category6_filter import GoogleProductCategory6Filter  # noqa: F401,E501
+from app.openapi_server.models.link_filter import LinkFilter  # noqa: F401,E501
 from app.openapi_server.models.media_type_filter import MediaTypeFilter  # noqa: F401,E501
 from app.openapi_server.models.title_keywords_filter import TitleKeywordsFilter  # noqa: F401,E501
 from openapi_server import util
@@ -34,7 +35,7 @@ class CatalogsCreativeAssetsProductGroupFilterKeys(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, creative_assets_id: CatalogsProductGroupMultipleStringCriteria=None, custom_label_0: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_1: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_2: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_3: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_4: CatalogsProductGroupFilterOperatorTypeCriteria=None, google_product_category_6: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_5: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_4: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_3: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_2: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_1: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_0: CatalogsProductGroupMultipleStringListCriteria=None, media_type: CatalogsProductGroupMultipleMediaTypesCriteria=None, title_keywords: CatalogsProductGroupMultipleStringCriteria=None):  # noqa: E501
+    def __init__(self, creative_assets_id: CatalogsProductGroupMultipleStringCriteria=None, custom_label_0: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_1: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_2: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_3: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_4: CatalogsProductGroupFilterOperatorTypeCriteria=None, google_product_category_6: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_5: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_4: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_3: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_2: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_1: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_0: CatalogsProductGroupMultipleStringListCriteria=None, media_type: CatalogsProductGroupMultipleMediaTypesCriteria=None, title_keywords: CatalogsProductGroupMultipleStringCriteria=None, link: CatalogsProductGroupFilterOperatorTypeCriteria=None):  # noqa: E501
         """CatalogsCreativeAssetsProductGroupFilterKeys - a model defined in Swagger
 
         :param creative_assets_id: The creative_assets_id of this CatalogsCreativeAssetsProductGroupFilterKeys.  # noqa: E501
@@ -67,6 +68,8 @@ class CatalogsCreativeAssetsProductGroupFilterKeys(Model):
         :type media_type: CatalogsProductGroupMultipleMediaTypesCriteria
         :param title_keywords: The title_keywords of this CatalogsCreativeAssetsProductGroupFilterKeys.  # noqa: E501
         :type title_keywords: CatalogsProductGroupMultipleStringCriteria
+        :param link: The link of this CatalogsCreativeAssetsProductGroupFilterKeys.  # noqa: E501
+        :type link: CatalogsProductGroupFilterOperatorTypeCriteria
         """
         self.swagger_types = {
             'creative_assets_id': CatalogsProductGroupMultipleStringCriteria,
@@ -83,7 +86,8 @@ class CatalogsCreativeAssetsProductGroupFilterKeys(Model):
             'google_product_category_1': CatalogsProductGroupMultipleStringListCriteria,
             'google_product_category_0': CatalogsProductGroupMultipleStringListCriteria,
             'media_type': CatalogsProductGroupMultipleMediaTypesCriteria,
-            'title_keywords': CatalogsProductGroupMultipleStringCriteria
+            'title_keywords': CatalogsProductGroupMultipleStringCriteria,
+            'link': CatalogsProductGroupFilterOperatorTypeCriteria
         }
 
         self.attribute_map = {
@@ -101,7 +105,8 @@ class CatalogsCreativeAssetsProductGroupFilterKeys(Model):
             'google_product_category_1': 'GOOGLE_PRODUCT_CATEGORY_1',
             'google_product_category_0': 'GOOGLE_PRODUCT_CATEGORY_0',
             'media_type': 'MEDIA_TYPE',
-            'title_keywords': 'TITLE_KEYWORDS'
+            'title_keywords': 'TITLE_KEYWORDS',
+            'link': 'LINK'
         }
 
         self._creative_assets_id = creative_assets_id
@@ -119,6 +124,7 @@ class CatalogsCreativeAssetsProductGroupFilterKeys(Model):
         self._google_product_category_0 = google_product_category_0
         self._media_type = media_type
         self._title_keywords = title_keywords
+        self._link = link
 
     @classmethod
     def from_dict(cls, dikt) -> 'CatalogsCreativeAssetsProductGroupFilterKeys':
@@ -475,3 +481,26 @@ class CatalogsCreativeAssetsProductGroupFilterKeys(Model):
             raise ValueError("Invalid value for `title_keywords`, must not be `None`")  # noqa: E501
 
         self._title_keywords = title_keywords
+
+    @property
+    def link(self) -> CatalogsProductGroupFilterOperatorTypeCriteria:
+        """Gets the link of this CatalogsCreativeAssetsProductGroupFilterKeys.
+
+
+        :return: The link of this CatalogsCreativeAssetsProductGroupFilterKeys.
+        :rtype: CatalogsProductGroupFilterOperatorTypeCriteria
+        """
+        return self._link
+
+    @link.setter
+    def link(self, link: CatalogsProductGroupFilterOperatorTypeCriteria):
+        """Sets the link of this CatalogsCreativeAssetsProductGroupFilterKeys.
+
+
+        :param link: The link of this CatalogsCreativeAssetsProductGroupFilterKeys.
+        :type link: CatalogsProductGroupFilterOperatorTypeCriteria
+        """
+        if link is None:
+            raise ValueError("Invalid value for `link`, must not be `None`")  # noqa: E501
+
+        self._link = link

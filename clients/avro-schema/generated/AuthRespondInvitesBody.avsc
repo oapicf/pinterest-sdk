@@ -8,7 +8,7 @@
       "name": "invites",
       "type": {
         "type": "array",
-        "items": "model.AuthRespondInvitesBodyInvitesInner"
+        "items": "model.AuthRespondInvitesBodyItem"
       },
       "doc": ""
     }

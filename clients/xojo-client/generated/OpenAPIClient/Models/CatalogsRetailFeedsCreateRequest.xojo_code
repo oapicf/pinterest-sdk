@@ -3,7 +3,7 @@ Protected Class CatalogsRetailFeedsCreateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.
+			Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
 		#tag EndNote
 		catalog_id As Xoson.O.OptionalString
 	#tag EndProperty
@@ -35,7 +35,7 @@ Protected Class CatalogsRetailFeedsCreateRequest
 
 
 	#tag Property, Flags = &h0
-		default_locale As OpenAPIClient.Models.CatalogsFeedsCreateRequestDefaultLocale
+		default_locale As OpenAPIClient.Models.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
 	#tag EndProperty
 
 
@@ -70,7 +70,24 @@ Protected Class CatalogsRetailFeedsCreateRequest
 	#tag EndProperty
 
 
+    #tag Enum, Name = Catalog_typeEnum, Type = Integer, Flags = &h0
+        
+        Retail
+        
+    #tag EndEnum
 
+
+	#tag Method, Flags = &h0
+		Shared Function Catalog_typeEnumToString(value As Catalog_typeEnum) As String
+		  Select Case value
+		    
+		    Case Catalog_typeEnum.Retail
+		      Return "RETAIL"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -115,14 +132,6 @@ Protected Class CatalogsRetailFeedsCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="catalog_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsType"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="credentials"
 			Visible=false
 			Group="Behavior"
@@ -159,7 +168,7 @@ Protected Class CatalogsRetailFeedsCreateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsFeedsCreateRequestDefaultLocale"
+			Type="CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

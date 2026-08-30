@@ -1,7 +1,7 @@
 #' Create a new RecordCounts
 #'
 #' @description
-#' Record processing counts
+#' RecordCounts Class
 #'
 #' @docType class
 #' @title RecordCounts

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 	"reflect"
@@ -59,18 +60,6 @@ func (c *BusinessAccessInviteAPIController) Routes() Routes {
 			"/v5/businesses/invites",
 			c.RespondBusinessAccessInvites,
 		},
-		"CreateAssetInvites": Route{
-			"CreateAssetInvites",
-			strings.ToUpper("Post"),
-			"/v5/businesses/{business_id}/invites/assets/access",
-			c.CreateAssetInvites,
-		},
-		"AssetAccessRequestsCreate": Route{
-			"AssetAccessRequestsCreate",
-			strings.ToUpper("Post"),
-			"/v5/businesses/{business_id}/requests/assets/access",
-			c.AssetAccessRequestsCreate,
-		},
 		"GetInvites": Route{
 			"GetInvites",
 			strings.ToUpper("Get"),
@@ -89,6 +78,18 @@ func (c *BusinessAccessInviteAPIController) Routes() Routes {
 			"/v5/businesses/{business_id}/invites",
 			c.CancelInvitesOrRequests,
 		},
+		"CreateAssetInvites": Route{
+			"CreateAssetInvites",
+			strings.ToUpper("Post"),
+			"/v5/businesses/{business_id}/invites/assets/access",
+			c.CreateAssetInvites,
+		},
+		"AssetAccessRequestsCreate": Route{
+			"AssetAccessRequestsCreate",
+			strings.ToUpper("Post"),
+			"/v5/businesses/{business_id}/requests/assets/access",
+			c.AssetAccessRequestsCreate,
+		},
 	}
 }
 
@@ -100,18 +101,6 @@ func (c *BusinessAccessInviteAPIController) OrderedRoutes() []Route {
 			strings.ToUpper("Patch"),
 			"/v5/businesses/invites",
 			c.RespondBusinessAccessInvites,
-		},
-		Route{
-			"CreateAssetInvites",
-			strings.ToUpper("Post"),
-			"/v5/businesses/{business_id}/invites/assets/access",
-			c.CreateAssetInvites,
-		},
-		Route{
-			"AssetAccessRequestsCreate",
-			strings.ToUpper("Post"),
-			"/v5/businesses/{business_id}/requests/assets/access",
-			c.AssetAccessRequestsCreate,
 		},
 		Route{
 			"GetInvites",
@@ -131,6 +120,18 @@ func (c *BusinessAccessInviteAPIController) OrderedRoutes() []Route {
 			"/v5/businesses/{business_id}/invites",
 			c.CancelInvitesOrRequests,
 		},
+		Route{
+			"CreateAssetInvites",
+			strings.ToUpper("Post"),
+			"/v5/businesses/{business_id}/invites/assets/access",
+			c.CreateAssetInvites,
+		},
+		Route{
+			"AssetAccessRequestsCreate",
+			strings.ToUpper("Post"),
+			"/v5/businesses/{business_id}/requests/assets/access",
+			c.AssetAccessRequestsCreate,
+		},
 	}
 }
 
@@ -142,6 +143,11 @@ func (c *BusinessAccessInviteAPIController) RespondBusinessAccessInvites(w http.
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&authRespondInvitesBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -154,72 +160,6 @@ func (c *BusinessAccessInviteAPIController) RespondBusinessAccessInvites(w http.
 		return
 	}
 	result, err := c.service.RespondBusinessAccessInvites(r.Context(), authRespondInvitesBodyParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// CreateAssetInvites - Update invite/request with an asset permission
-func (c *BusinessAccessInviteAPIController) CreateAssetInvites(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	businessIdParam := params["business_id"]
-	if businessIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
-		return
-	}
-	var createAssetInvitesRequestParam CreateAssetInvitesRequest
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&createAssetInvitesRequestParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertCreateAssetInvitesRequestRequired(createAssetInvitesRequestParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertCreateAssetInvitesRequestConstraints(createAssetInvitesRequestParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.CreateAssetInvites(r.Context(), businessIdParam, createAssetInvitesRequestParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// AssetAccessRequestsCreate - Create a request to access an existing partner's assets.
-func (c *BusinessAccessInviteAPIController) AssetAccessRequestsCreate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	businessIdParam := params["business_id"]
-	if businessIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
-		return
-	}
-	var createAssetAccessRequestBodyParam CreateAssetAccessRequestBody
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&createAssetAccessRequestBodyParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertCreateAssetAccessRequestBodyRequired(createAssetAccessRequestBodyParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertCreateAssetAccessRequestBodyConstraints(createAssetAccessRequestBodyParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.AssetAccessRequestsCreate(r.Context(), businessIdParam, createAssetAccessRequestBodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -258,9 +198,18 @@ func (c *BusinessAccessInviteAPIController) GetInvites(w http.ResponseWriter, r 
 		var param bool = true
 		isMemberParam = param
 	}
-	var inviteStatusParam []string
+	var inviteStatusParam []InviteFilterStatus
 	if query.Has("invite_status") {
-		inviteStatusParam = strings.Split(query.Get("invite_status"), ",")
+		paramSplits := strings.Split(query.Get("invite_status"), ",")
+		inviteStatusParam = make([]InviteFilterStatus, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewInviteFilterStatusFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "invite_status", Err: err}, nil)
+				return
+			}
+			inviteStatusParam = append(inviteStatusParam, paramEnum)
+		}
 	}
 	var inviteTypeParam InviteType
 	if query.Has("invite_type") {
@@ -316,6 +265,11 @@ func (c *BusinessAccessInviteAPIController) CreateMembershipOrPartnershipInvites
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&createMembershipOrPartnershipInvitesBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -345,22 +299,103 @@ func (c *BusinessAccessInviteAPIController) CancelInvitesOrRequests(w http.Respo
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	var cancelInvitesBodyParam CancelInvitesBody
+	var cancelInvitesRequestParam CancelInvitesRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&cancelInvitesBodyParam); err != nil {
+	if err := d.Decode(&cancelInvitesRequestParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertCancelInvitesBodyRequired(cancelInvitesBodyParam); err != nil {
+	if err := AssertCancelInvitesRequestRequired(cancelInvitesRequestParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertCancelInvitesBodyConstraints(cancelInvitesBodyParam); err != nil {
+	if err := AssertCancelInvitesRequestConstraints(cancelInvitesRequestParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CancelInvitesOrRequests(r.Context(), businessIdParam, cancelInvitesBodyParam)
+	result, err := c.service.CancelInvitesOrRequests(r.Context(), businessIdParam, cancelInvitesRequestParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// CreateAssetInvites - Update invite/request with an asset permission
+func (c *BusinessAccessInviteAPIController) CreateAssetInvites(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	businessIdParam := params["business_id"]
+	if businessIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
+		return
+	}
+	var createAssetInvitesRequestParam CreateAssetInvitesRequest
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&createAssetInvitesRequestParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertCreateAssetInvitesRequestRequired(createAssetInvitesRequestParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertCreateAssetInvitesRequestConstraints(createAssetInvitesRequestParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.CreateAssetInvites(r.Context(), businessIdParam, createAssetInvitesRequestParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// AssetAccessRequestsCreate - Create a request to access an existing partner's assets.
+func (c *BusinessAccessInviteAPIController) AssetAccessRequestsCreate(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	businessIdParam := params["business_id"]
+	if businessIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
+		return
+	}
+	var createAssetAccessRequestBodyParam CreateAssetAccessRequestBody
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&createAssetAccessRequestBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertCreateAssetAccessRequestBodyRequired(createAssetAccessRequestBodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertCreateAssetAccessRequestBodyConstraints(createAssetAccessRequestBodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.AssetAccessRequestsCreate(r.Context(), businessIdParam, createAssetAccessRequestBodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

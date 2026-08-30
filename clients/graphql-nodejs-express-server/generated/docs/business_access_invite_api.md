@@ -21,7 +21,7 @@ Create a request to access an existing partner&#39;s assets.
 Create a request to access an existing partner&#39;s assets with the specified permissions. The request will be sent to the partner for approval. The assets that can be requested are ad accounts and profiles.
 <a name="CancelInvitesOrRequests"></a>
 # **CancelInvitesOrRequests**
-> DeleteInvitesResultsResponseArray CancelInvitesOrRequests(businessId, cancelInvitesBody)
+> CancelInvitesResponse CancelInvitesOrRequests(businessId, cancelInvitesRequest)
 
 Cancel invites/requests
 

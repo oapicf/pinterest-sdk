@@ -18,7 +18,7 @@ class SearchApi {
 
   /// Search pins by a given search term
   ///
-  /// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+  /// **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -38,7 +38,7 @@ class SearchApi {
   ///
   /// * [int] limit:
   ///   Max search result size
-  Future<Response> searchPartnerPinsWithHttpInfo(String term, String countryCode, { String? bookmark, String? locale, int? limit, }) async {
+  Future<Response> searchPartnerPinsWithHttpInfo(String term, String countryCode, { String? bookmark, String? locale, int? limit, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/search/partner/pins';
 
@@ -72,12 +72,13 @@ class SearchApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Search pins by a given search term
   ///
-  /// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+  /// **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
   ///
   /// Parameters:
   ///
@@ -95,8 +96,8 @@ class SearchApi {
   ///
   /// * [int] limit:
   ///   Max search result size
-  Future<SearchPartnerPins200Response?> searchPartnerPins(String term, String countryCode, { String? bookmark, String? locale, int? limit, }) async {
-    final response = await searchPartnerPinsWithHttpInfo(term, countryCode,  bookmark: bookmark, locale: locale, limit: limit, );
+  Future<SearchPartnerPins200Response?> searchPartnerPins(String term, String countryCode, { String? bookmark, String? locale, int? limit, Future<void>? abortTrigger, }) async {
+    final response = await searchPartnerPinsWithHttpInfo(term, countryCode, bookmark: bookmark, locale: locale, limit: limit, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -112,7 +113,7 @@ class SearchApi {
 
   /// Search user's boards
   ///
-  /// Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+  /// Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -121,15 +122,15 @@ class SearchApi {
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
   ///
+  /// * [String] query:
+  ///   Search query. Can contain pin description keywords or comma-separated pin IDs.
+  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] query:
-  ///   Search query. Can contain pin description keywords or comma-separated pin IDs.
-  Future<Response> searchUserBoardsGetWithHttpInfo({ String? adAccountId, String? bookmark, int? pageSize, String? query, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> searchUserBoardsGetWithHttpInfo({ String? adAccountId, String? query, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/search/boards';
 
@@ -143,14 +144,14 @@ class SearchApi {
     if (adAccountId != null) {
       queryParams.addAll(_queryParams('', 'ad_account_id', adAccountId));
     }
+    if (query != null) {
+      queryParams.addAll(_queryParams('', 'query', query));
+    }
     if (bookmark != null) {
       queryParams.addAll(_queryParams('', 'bookmark', bookmark));
     }
     if (pageSize != null) {
       queryParams.addAll(_queryParams('', 'page_size', pageSize));
-    }
-    if (query != null) {
-      queryParams.addAll(_queryParams('', 'query', query));
     }
 
     const contentTypes = <String>[];
@@ -164,28 +165,29 @@ class SearchApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Search user's boards
   ///
-  /// Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+  /// Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
   ///
+  /// * [String] query:
+  ///   Search query. Can contain pin description keywords or comma-separated pin IDs.
+  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] query:
-  ///   Search query. Can contain pin description keywords or comma-separated pin IDs.
-  Future<SearchUserBoardsGet200Response?> searchUserBoardsGet({ String? adAccountId, String? bookmark, int? pageSize, String? query, }) async {
-    final response = await searchUserBoardsGetWithHttpInfo( adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, query: query, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<BoardsList200Response?> searchUserBoardsGet({ String? adAccountId, String? query, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await searchUserBoardsGetWithHttpInfo(adAccountId: adAccountId, query: query, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -193,7 +195,7 @@ class SearchApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SearchUserBoardsGet200Response',) as SearchUserBoardsGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BoardsList200Response',) as BoardsList200Response;
     
     }
     return null;
@@ -201,7 +203,7 @@ class SearchApi {
 
   /// Search user's Pins
   ///
-  /// Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+  /// Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -215,7 +217,7 @@ class SearchApi {
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<Response> searchUserPinsListWithHttpInfo(String query, { String? adAccountId, String? bookmark, }) async {
+  Future<Response> searchUserPinsListWithHttpInfo(String query, { String? adAccountId, String? bookmark, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/search/pins';
 
@@ -245,12 +247,13 @@ class SearchApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Search user's Pins
   ///
-  /// Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+  /// Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
   ///
   /// Parameters:
   ///
@@ -262,8 +265,8 @@ class SearchApi {
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<SearchUserPinsList200Response?> searchUserPinsList(String query, { String? adAccountId, String? bookmark, }) async {
-    final response = await searchUserPinsListWithHttpInfo(query,  adAccountId: adAccountId, bookmark: bookmark, );
+  Future<PinsList200Response?> searchUserPinsList(String query, { String? adAccountId, String? bookmark, Future<void>? abortTrigger, }) async {
+    final response = await searchUserPinsListWithHttpInfo(query, adAccountId: adAccountId, bookmark: bookmark, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -271,7 +274,7 @@ class SearchApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SearchUserPinsList200Response',) as SearchUserPinsList200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PinsList200Response',) as PinsList200Response;
     
     }
     return null;

@@ -1,0 +1,13 @@
+# LabelErrorData
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Id_** | **String!** | Label ID. | [optional] [default to null]
+**labelType** | [***NullableLabelType**](NullableLabelType.md) |  | [optional] [default to null]
+**status** | [***NullableLabelStatus**](NullableLabelStatus.md) |  | [optional] [default to null]
+**value** | **String!** | Label name. 100-character limit. | [optional] [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

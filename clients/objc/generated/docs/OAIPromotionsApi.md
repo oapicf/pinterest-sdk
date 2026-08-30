@@ -14,7 +14,7 @@ Method | HTTP request | Description
 # **promotionsCreate**
 ```objc
 -(NSURLSessionTask*) promotionsCreateWithAdAccountId: (NSString*) adAccountId
-    promotionCreateRequest: (NSArray<OAIPromotionCreateRequest>*) promotionCreateRequest
+    promotionCreate: (NSArray<OAIPromotionCreate>*) promotionCreate
         completionHandler: (void (^)(OAIPromotionsResponse* output, NSError* error)) handler;
 ```
 
@@ -31,13 +31,13 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSArray<OAIPromotionCreateRequest>* promotionCreateRequest = @[[[OAIPromotionCreateRequest alloc] init]]; // List of promotions to create, size limit [1, 30].
+NSArray<OAIPromotionCreate>* promotionCreate = @[[[OAIPromotionCreate alloc] init]]; // 
 
 OAIPromotionsApi*apiInstance = [[OAIPromotionsApi alloc] init];
 
 // Create promotions
 [apiInstance promotionsCreateWithAdAccountId:adAccountId
-              promotionCreateRequest:promotionCreateRequest
+              promotionCreate:promotionCreate
           completionHandler: ^(OAIPromotionsResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -53,7 +53,7 @@ OAIPromotionsApi*apiInstance = [[OAIPromotionsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **promotionCreateRequest** | [**NSArray&lt;OAIPromotionCreateRequest&gt;***](OAIPromotionCreateRequest.md)| List of promotions to create, size limit [1, 30]. | 
+ **promotionCreate** | [**NSArray&lt;OAIPromotionCreate&gt;***](OAIPromotionCreate.md)|  | 
 
 ### Return type
 
@@ -72,9 +72,9 @@ Name | Type | Description  | Notes
 
 # **promotionsDelete**
 ```objc
--(NSURLSessionTask*) promotionsDeleteWithAdAccountId: (NSString*) adAccountId
-    promotionId: (NSString*) promotionId
-        completionHandler: (void (^)(NSError* error)) handler;
+-(NSURLSessionTask*) promotionsDeleteWithPromotionId: (NSString*) promotionId
+    adAccountId: (NSString*) adAccountId
+        completionHandler: (void (^)(OAIPromotion* output, NSError* error)) handler;
 ```
 
 Delete promotion by id
@@ -89,15 +89,18 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
+NSString* promotionId = @"promotionId_example"; // Promotion ID
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* promotionId = @"promotionId_example"; // Unique identifier of a promotion
 
 OAIPromotionsApi*apiInstance = [[OAIPromotionsApi alloc] init];
 
 // Delete promotion by id
-[apiInstance promotionsDeleteWithAdAccountId:adAccountId
-              promotionId:promotionId
-          completionHandler: ^(NSError* error) {
+[apiInstance promotionsDeleteWithPromotionId:promotionId
+              adAccountId:adAccountId
+          completionHandler: ^(OAIPromotion* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling OAIPromotionsApi->promotionsDelete: %@", error);
                         }
@@ -108,12 +111,12 @@ OAIPromotionsApi*apiInstance = [[OAIPromotionsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotionId** | **NSString***| Promotion ID | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **promotionId** | **NSString***| Unique identifier of a promotion | 
 
 ### Return type
 
-void (empty response body)
+[**OAIPromotion***](OAIPromotion.md)
 
 ### Authorization
 
@@ -128,9 +131,9 @@ void (empty response body)
 
 # **promotionsGet**
 ```objc
--(NSURLSessionTask*) promotionsGetWithAdAccountId: (NSString*) adAccountId
-    promotionId: (NSString*) promotionId
-        completionHandler: (void (^)(OAIPromotionResponse* output, NSError* error)) handler;
+-(NSURLSessionTask*) promotionsGetWithPromotionId: (NSString*) promotionId
+    adAccountId: (NSString*) adAccountId
+        completionHandler: (void (^)(OAIPromotion* output, NSError* error)) handler;
 ```
 
 Get promotion by id
@@ -145,15 +148,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
+NSString* promotionId = @"promotionId_example"; // Promotion ID
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* promotionId = @"promotionId_example"; // Unique identifier of a promotion
 
 OAIPromotionsApi*apiInstance = [[OAIPromotionsApi alloc] init];
 
 // Get promotion by id
-[apiInstance promotionsGetWithAdAccountId:adAccountId
-              promotionId:promotionId
-          completionHandler: ^(OAIPromotionResponse* output, NSError* error) {
+[apiInstance promotionsGetWithPromotionId:promotionId
+              adAccountId:adAccountId
+          completionHandler: ^(OAIPromotion* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -167,12 +170,12 @@ OAIPromotionsApi*apiInstance = [[OAIPromotionsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotionId** | **NSString***| Promotion ID | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **promotionId** | **NSString***| Unique identifier of a promotion | 
 
 ### Return type
 
-[**OAIPromotionResponse***](OAIPromotionResponse.md)
+[**OAIPromotion***](OAIPromotion.md)
 
 ### Authorization
 
@@ -188,9 +191,9 @@ Name | Type | Description  | Notes
 # **promotionsList**
 ```objc
 -(NSURLSessionTask*) promotionsListWithAdAccountId: (NSString*) adAccountId
-    pageSize: (NSNumber*) pageSize
-    order: (NSString*) order
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    order: (OAIPinterestLibPaginationOrder) order
         completionHandler: (void (^)(OAIPromotionsList200Response* output, NSError* error)) handler;
 ```
 
@@ -207,17 +210,17 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSString* order = ASCENDING; // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
+OAIPinterestLibPaginationOrder order = [[OAIPinterestLibPaginationOrder alloc] init]; // The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 OAIPromotionsApi*apiInstance = [[OAIPromotionsApi alloc] init];
 
 // Get promotions
 [apiInstance promotionsListWithAdAccountId:adAccountId
+              bookmark:bookmark
               pageSize:pageSize
               order:order
-              bookmark:bookmark
           completionHandler: ^(OAIPromotionsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -233,9 +236,9 @@ OAIPromotionsApi*apiInstance = [[OAIPromotionsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **order** | **NSString***| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
+ **order** | [**OAIPinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 
@@ -255,7 +258,7 @@ Name | Type | Description  | Notes
 # **promotionsUpdate**
 ```objc
 -(NSURLSessionTask*) promotionsUpdateWithAdAccountId: (NSString*) adAccountId
-    promotionUpdateRequest: (NSArray<OAIPromotionUpdateRequest>*) promotionUpdateRequest
+    promotionBatchUpdate: (NSArray<OAIPromotionBatchUpdate>*) promotionBatchUpdate
         completionHandler: (void (^)(OAIPromotionsResponse* output, NSError* error)) handler;
 ```
 
@@ -272,13 +275,13 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSArray<OAIPromotionUpdateRequest>* promotionUpdateRequest = @[[[OAIPromotionUpdateRequest alloc] init]]; // List of promotions to create, size limit [1, 30].
+NSArray<OAIPromotionBatchUpdate>* promotionBatchUpdate = @[[[OAIPromotionBatchUpdate alloc] init]]; // 
 
 OAIPromotionsApi*apiInstance = [[OAIPromotionsApi alloc] init];
 
 // Update promotions
 [apiInstance promotionsUpdateWithAdAccountId:adAccountId
-              promotionUpdateRequest:promotionUpdateRequest
+              promotionBatchUpdate:promotionBatchUpdate
           completionHandler: ^(OAIPromotionsResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -294,7 +297,7 @@ OAIPromotionsApi*apiInstance = [[OAIPromotionsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **promotionUpdateRequest** | [**NSArray&lt;OAIPromotionUpdateRequest&gt;***](OAIPromotionUpdateRequest.md)| List of promotions to create, size limit [1, 30]. | 
+ **promotionBatchUpdate** | [**NSArray&lt;OAIPromotionBatchUpdate&gt;***](OAIPromotionBatchUpdate.md)|  | 
 
 ### Return type
 

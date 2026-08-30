@@ -81,7 +81,7 @@ DeleteMemberAccessResultsResponseArray::getItems()
 }
 
 void
-DeleteMemberAccessResultsResponseArray::setItems(std::list <DeleteMemberAccessResult> items)
+DeleteMemberAccessResultsResponseArray::setItems(std::list<DeleteMemberAccessResult> items)
 {
 	this->items = items;
 }

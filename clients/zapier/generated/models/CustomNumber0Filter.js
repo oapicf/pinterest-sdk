@@ -5,12 +5,13 @@ module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            ...CatalogsProductGroupUint32Criteria.fields(`${keyPrefix}CUSTOM_NUMBER_0`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'CUSTOM_NUMBER_0': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_NUMBER_0`)),
+            'CUSTOM_NUMBER_0': utils.removeIfEmpty(CatalogsProductGroupUint32Criteria.mapping(bundle, `${keyPrefix}CUSTOM_NUMBER_0`)),
         }
     },
 }

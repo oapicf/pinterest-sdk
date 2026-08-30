@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setHeight(int  height);
+	void setHeight(int height);
 	/*! \brief Get 
 	 */
 	std::string getUrl();
 
 	/*! \brief Set 
 	 */
-	void setUrl(std::string  url);
+	void setUrl(std::string url);
 	/*! \brief Get 
 	 */
 	int getWidth();
 
 	/*! \brief Set 
 	 */
-	void setWidth(int  width);
+	void setWidth(int width);
 
 
     private:

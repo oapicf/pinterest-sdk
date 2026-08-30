@@ -45,41 +45,41 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get Subinterest ID.
+	/*! \brief Get 
 	 */
 	std::string getId();
 
-	/*! \brief Set Subinterest ID.
+	/*! \brief Set 
 	 */
-	void setId(std::string  id);
-	/*! \brief Get Subinterest affinity index.
+	void setId(std::string id);
+	/*! \brief Get 
 	 */
 	long getIndex();
 
-	/*! \brief Set Subinterest affinity index.
+	/*! \brief Set 
 	 */
-	void setIndex(long  index);
-	/*! \brief Get Interest unique key (same as ID).
+	void setIndex(long index);
+	/*! \brief Get 
 	 */
 	std::string getKey();
 
-	/*! \brief Set Interest unique key (same as ID).
+	/*! \brief Set 
 	 */
-	void setKey(std::string  key);
-	/*! \brief Get Subinterest name.
+	void setKey(std::string key);
+	/*! \brief Get 
 	 */
 	std::string getName();
 
-	/*! \brief Set Subinterest name.
+	/*! \brief Set 
 	 */
-	void setName(std::string  name);
-	/*! \brief Get Subinterest's percent of category's total audience.
+	void setName(std::string name);
+	/*! \brief Get 
 	 */
 	long getRatio();
 
-	/*! \brief Set Subinterest's percent of category's total audience.
+	/*! \brief Set 
 	 */
-	void setRatio(long  ratio);
+	void setRatio(long ratio);
 
 
     private:

@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	terms := []string{"workout"} // []string | List of input terms.
+	terms := []string{"Inner_example"} // []string | List of input terms.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -96,8 +96,8 @@ import (
 )
 
 func main() {
-	term := "sports" // string | Input term.
-	limit := int32(4) // int32 | Max suggested terms to return. (optional) (default to 4)
+	term := "term_example" // string | Input term.
+	limit := int32(56) // int32 | Max suggested terms to return. (optional) (default to 4)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

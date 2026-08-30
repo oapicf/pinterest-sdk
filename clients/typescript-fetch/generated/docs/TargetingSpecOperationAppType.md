@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `field` | string
-`operation` | string
+`operation` | [TargetingSpecListOperation](TargetingSpecListOperation.md)
 `values` | [Array&lt;TargetingSpecAppType&gt;](TargetingSpecAppType.md)
 
 ## Example

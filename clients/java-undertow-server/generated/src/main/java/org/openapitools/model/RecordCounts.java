@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -18,12 +18,9 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-/**
- * Record processing counts
- */
 
-@ApiModel(description = "Record processing counts")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class RecordCounts   {
   
   private Integer invalid;
@@ -39,7 +36,7 @@ public class RecordCounts   {
   }
 
   
-  @ApiModelProperty(example = "50", required = true, value = "Number of invalid records processed")
+  @ApiModelProperty(required = true, value = "Number of invalid records processed")
   @JsonProperty("invalid")
   public Integer getInvalid() {
     return invalid;
@@ -57,7 +54,7 @@ public class RecordCounts   {
   }
 
   
-  @ApiModelProperty(example = "1000", required = true, value = "Number of records processed")
+  @ApiModelProperty(required = true, value = "Number of records processed")
   @JsonProperty("processed")
   public Integer getProcessed() {
     return processed;
@@ -75,7 +72,7 @@ public class RecordCounts   {
   }
 
   
-  @ApiModelProperty(example = "950", required = true, value = "Number of valid records processed")
+  @ApiModelProperty(required = true, value = "Number of valid records processed")
   @JsonProperty("valid")
   public Integer getValid() {
     return valid;
@@ -121,10 +118,7 @@ public class RecordCounts   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

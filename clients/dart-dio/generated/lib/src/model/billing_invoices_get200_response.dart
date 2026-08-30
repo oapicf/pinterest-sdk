@@ -3,9 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/billing_invoice_response.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
+import 'package:openapi/src/model/billing_invoice.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,7 +16,13 @@ part 'billing_invoices_get200_response.g.dart';
 /// * [bookmark] 
 /// * [items] 
 @BuiltValue()
-abstract class BillingInvoicesGet200Response implements Paginated, Built<BillingInvoicesGet200Response, BillingInvoicesGet200ResponseBuilder> {
+abstract class BillingInvoicesGet200Response implements Built<BillingInvoicesGet200Response, BillingInvoicesGet200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<BillingInvoice> get items;
+
   BillingInvoicesGet200Response._();
 
   factory BillingInvoicesGet200Response([void updates(BillingInvoicesGet200ResponseBuilder b)]) = _$BillingInvoicesGet200Response;
@@ -51,7 +56,7 @@ class _$BillingInvoicesGet200ResponseSerializer implements PrimitiveSerializer<B
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(BillingInvoice)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$BillingInvoicesGet200ResponseSerializer implements PrimitiveSerializer<B
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(BillingInvoice)]),
+          ) as BuiltList<BillingInvoice>;
           result.items.replace(valueDes);
           break;
         default:

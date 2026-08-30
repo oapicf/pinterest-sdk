@@ -35,7 +35,6 @@ class AnalyticsDailyMetrics {
   ///
   String? date;
 
-  /// The metric name and daily value for each requested metric
   Map<String, num> metrics;
 
   @override
@@ -81,10 +80,6 @@ class AnalyticsDailyMetrics {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AnalyticsDailyMetrics[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AnalyticsDailyMetrics[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

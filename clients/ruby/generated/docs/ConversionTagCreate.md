@@ -28,7 +28,7 @@ instance = PinterestSdkClient::ConversionTagCreate.new(
   aem_loc_enabled: null,
   aem_ph_enabled: null,
   md_frequency: 0.6,
-  name: ACME Checkout Test Tag
+  name: download_picture
 )
 ```
 

@@ -102,7 +102,7 @@ Ads_credits_discounts_get_200_response::getBookmark()
 }
 
 void
-Ads_credits_discounts_get_200_response::setBookmark(std::string  bookmark)
+Ads_credits_discounts_get_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Ads_credits_discounts_get_200_response::getItems()
 }
 
 void
-Ads_credits_discounts_get_200_response::setItems(std::list <AdsCreditDiscountsResponse> items)
+Ads_credits_discounts_get_200_response::setItems(std::list<AdsCreditDiscountsResponse> items)
 {
 	this->items = items;
 }

@@ -1,7 +1,9 @@
 package controllers;
 
-import apimodels.AdvertiserDefinedEventsResponse;
-import apimodels.Error;
+import apimodels.AdvertiserDefinedEventsCreate200Response;
+import apimodels.AdvertiserDefinedEventsCreateRequest;
+import apimodels.AdvertiserDefinedEventsGet200Response;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -25,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionsApiController extends Controller {
     private final ConversionsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,8 +41,55 @@ public class ConversionsApiController extends Controller {
     }
 
     @ApiAction
+    public Result advertiserDefinedEventsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        JsonNode nodeadvertiserDefinedEventsCreateRequest = request.body().asJson();
+        AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest;
+        if (nodeadvertiserDefinedEventsCreateRequest != null) {
+            advertiserDefinedEventsCreateRequest = mapper.readValue(nodeadvertiserDefinedEventsCreateRequest.toString(), AdvertiserDefinedEventsCreateRequest.class);
+            if (configuration.getBoolean("useInputBeanValidation")) {
+                OpenAPIUtils.validate(advertiserDefinedEventsCreateRequest);
+            }
+        } else {
+            throw new IllegalArgumentException("'AdvertiserDefinedEventsCreateRequest' parameter is required");
+        }
+        return imp.advertiserDefinedEventsCreateHttp(request, adAccountId, advertiserDefinedEventsCreateRequest);
+    }
+
+    @ApiAction
+    public Result advertiserDefinedEventsDelete(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String[] eventNamesArray = request.queryString().get("event_names");
+        if (eventNamesArray == null) {
+            throw new IllegalArgumentException("'event_names' parameter is required");
+        }
+        List<String> eventNamesList = OpenAPIUtils.parametersToList("csv", eventNamesArray);
+        List<String> eventNames = new ArrayList<>();
+        for (String curParam : eventNamesList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                eventNames.add(curParam);
+            }
+        }
+        return imp.advertiserDefinedEventsDeleteHttp(request, adAccountId, eventNames);
+    }
+
+    @ApiAction
     public Result advertiserDefinedEventsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         return imp.advertiserDefinedEventsGetHttp(request, adAccountId);
+    }
+
+    @ApiAction
+    public Result advertiserDefinedEventsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        JsonNode nodeadvertiserDefinedEventsCreateRequest = request.body().asJson();
+        AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest;
+        if (nodeadvertiserDefinedEventsCreateRequest != null) {
+            advertiserDefinedEventsCreateRequest = mapper.readValue(nodeadvertiserDefinedEventsCreateRequest.toString(), AdvertiserDefinedEventsCreateRequest.class);
+            if (configuration.getBoolean("useInputBeanValidation")) {
+                OpenAPIUtils.validate(advertiserDefinedEventsCreateRequest);
+            }
+        } else {
+            throw new IllegalArgumentException("'AdvertiserDefinedEventsCreateRequest' parameter is required");
+        }
+        return imp.advertiserDefinedEventsUpdateHttp(request, adAccountId, advertiserDefinedEventsCreateRequest);
     }
 
 }

@@ -16,13 +16,16 @@ pub mod catalog_feeds;
 pub mod catalog_items;
 pub mod catalog_product_groups;
 pub mod catalog_reports;
+pub mod catalog_supplemental;
 pub mod catalogs;
+pub mod conversion_deletion_requests;
 pub mod conversion_eqs;
 pub mod conversion_events;
 pub mod conversion_tags;
 pub mod conversions;
 pub mod customer_list_uploads;
 pub mod customer_lists;
+pub mod customer_segment;
 pub mod integrations;
 pub mod keywords;
 pub mod labels;
@@ -35,14 +38,16 @@ pub mod notification;
 pub mod oauth;
 pub mod order_lines;
 pub mod pins;
-pub mod product_categories;
 pub mod product_group_promotions;
+pub mod product_tags;
 pub mod promotions;
 pub mod resources;
+pub mod schedules;
 pub mod search;
 pub mod targeting_template;
 pub mod terms;
 pub mod terms_of_service;
+pub mod trends;
 pub mod user_account;
 
 
@@ -73,7 +78,7 @@ pub trait ErrorHandler<E: std::fmt::Debug + Send + Sync + 'static = ()> {
     async fn handle_error(
         &self,
         method: &::http::Method,
-        host: &axum_extra::extract::Host,
+        host: &headers::Host,
         cookies: &axum_extra::extract::CookieJar,
         error: E
     ) -> Result<axum::response::Response, http::StatusCode> {

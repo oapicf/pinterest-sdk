@@ -96,19 +96,19 @@ const ocpm_eligible_conversion_tags/get = ({ adUnderscoreaccountUnderscoreid }) 
 * Get all page visit conversion tag events for an ad account.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-* order String The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+* order PinterestLibPaginationOrder The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 * returns page_visit_conversion_tags_get_200_response
 * */
-const page_visit_conversion_tags/get = ({ adUnderscoreaccountUnderscoreid, pageUnderscoresize, order, bookmark }) => new Promise(
+const page_visit_conversion_tags/get = ({ adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize, order }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         adUnderscoreaccountUnderscoreid,
+        bookmark,
         pageUnderscoresize,
         order,
-        bookmark,
       }));
     } catch (e) {
       reject(Service.rejectResponse(

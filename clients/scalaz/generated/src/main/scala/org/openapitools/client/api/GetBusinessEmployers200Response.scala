@@ -13,8 +13,7 @@ import GetBusinessEmployers200Response._
 
 case class GetBusinessEmployers200Response (
   bookmark: Option[String],
-/* List of employers. */
-  items: List[UserBusinessRoleBinding])
+items: List[UserBusinessRoleBinding])
 
 object GetBusinessEmployers200Response {
   import DateTimeCodecs._

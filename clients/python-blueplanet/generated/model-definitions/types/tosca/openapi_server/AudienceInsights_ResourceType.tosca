@@ -1,0 +1,65 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AudienceInsights"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AudienceInsights"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AudienceCategory = openapi_server.resourceTypes.AudienceCategory
+  AudienceDemographics = openapi_server.resourceTypes.AudienceDemographics
+  AudienceInsightType = openapi_server.resourceTypes.AudienceInsightType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AudienceInsights {
+    title = AudienceInsights
+    description = AudienceInsights
+    derivedFrom = Root
+    properties {
+        categories {
+          type = array
+          items.type = AudienceCategory
+          description = "Category interest distribution"
+          optional = false
+        }
+        _date {
+          type =  string
+          description = "Generation date"
+          optional = false
+        }
+        demographics {
+          type = AudienceDemographics
+          description = ""
+          optional = false
+        }
+        size {
+          type =  integer
+          description = "Population count."
+          optional = false
+        }
+        size_is_upper_bound {
+          type =  boolean
+          description = "Indicates whether the audience size has been rounded up to the next highest upper boundary."
+          optional = false
+        }
+        type {
+          type = AudienceInsightType
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AudienceInsights {
+    title = AudienceInsights
+    description = AudienceInsights
+    implements = openapi_server.resourceTypes.AudienceInsights
+
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A single row in a multi-field customer list (v2 format).",
+  "name": "CustomerListRecordRow",
+  "fields": [
+    {
+      "name": "email",
+      "type": ["null", "string"],
+      "doc": "Email address (plain or hashed with SHA1, SHA256, or MD5).",
+      "default": null
+    },
+    {
+      "name": "external_id",
+      "type": ["null", "string"],
+      "doc": "External ID identifier (not hashed).",
+      "default": null
+    },
+    {
+      "name": "hashed_phone_number",
+      "type": ["null", "string"],
+      "doc": "Hashed phone number (hashed with SHA1, SHA256, or MD5).",
+      "default": null
+    },
+    {
+      "name": "hashed_pinner_id",
+      "type": ["null", "string"],
+      "doc": "Hashed pinner ID (hashed with SHA1, SHA256, or MD5).",
+      "default": null
+    },
+    {
+      "name": "ip_address",
+      "type": ["null", "string"],
+      "doc": "IP address (not hashed).",
+      "default": null
+    },
+    {
+      "name": "liveramp_envelope",
+      "type": ["null", "string"],
+      "doc": "LiveRamp envelope identifier (Base64-encoded, not hashed).",
+      "default": null
+    },
+    {
+      "name": "maid",
+      "type": ["null", "string"],
+      "doc": "Mobile advertising ID (plain or hashed with SHA1, SHA256, or MD5).",
+      "default": null
+    },
+    {
+      "name": "user_agent",
+      "type": ["null", "string"],
+      "doc": "User agent string (not hashed).",
+      "default": null
+    }
+  ]
+
+}

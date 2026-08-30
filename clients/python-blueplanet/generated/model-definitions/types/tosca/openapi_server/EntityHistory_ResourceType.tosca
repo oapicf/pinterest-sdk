@@ -1,0 +1,69 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server EntityHistory"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a EntityHistory"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ChangeHistoryOperationType = openapi_server.resourceTypes.ChangeHistoryOperationType
+  EntityDataChangeHistory = openapi_server.resourceTypes.EntityDataChangeHistory
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  EntityHistory {
+    title = EntityHistory
+    description = EntityHistory
+    derivedFrom = Root
+    properties {
+        change_timestamp {
+          type =  integer
+          description = "A Unix timestamp representing the time of the change in seconds"
+          optional = false
+        }
+        data_changes {
+          type = array
+          items.type = EntityDataChangeHistory
+          description = "Properties associated with a particular change to an entity&#39;s data"
+          optional = false
+        }
+        entity_id {
+          type =  string
+          description = "The id of the entity that was changed"
+          optional = false
+        }
+        entity_name {
+          type =  string
+          description = "The name of the entity that was changed"
+          optional = false
+        }
+        ldap {
+          type =  string
+          description = "The LDAP of the user who initiated the change; only pertinent for changes initiated by internal users"
+          optional = false
+        }
+        operation {
+          type = ChangeHistoryOperationType
+          description = "The type of operation that caused the change"
+          optional = false
+        }
+        user_id {
+          type =  string
+          description = "The id of the user who initiated the change"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  EntityHistory {
+    title = EntityHistory
+    description = EntityHistory
+    implements = openapi_server.resourceTypes.EntityHistory
+
+  }
+}

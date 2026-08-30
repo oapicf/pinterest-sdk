@@ -8,14 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.UpdateMemberAssetsResultsResponseArrayItemsInner
+import org.openapitools.client.models.UpdateMemberAssetResultItem
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -31,7 +39,7 @@ data class UpdateMemberAssetsResultsResponseArray (
 
     /* List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned. */
     @Json(name = "items")
-    val items: kotlin.collections.List<UpdateMemberAssetsResultsResponseArrayItemsInner>? = null
+    val items: kotlin.collections.List<UpdateMemberAssetResultItem>? = null
 
 ) {
 

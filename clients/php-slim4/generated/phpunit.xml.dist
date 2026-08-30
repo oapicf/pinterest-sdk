@@ -11,10 +11,6 @@
     <testsuite name="Apis">
       <directory>./tests/Api</directory>
     </testsuite>
-    <testsuite name="Models">
-      <file>./tests/BaseModelTest.php</file>
-      <directory>./tests/Model</directory>
-    </testsuite>
   </testsuites>
   <php>
     <ini name="error_reporting" value="E_ALL"/>

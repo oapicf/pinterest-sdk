@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  CreateInvitesResultsResponseArrayItemsInner = openapi_server.resourceTypes.CreateInvitesResultsResponseArrayItemsInner
+  InviteActionResultItem = openapi_server.resourceTypes.InviteActionResultItem
 }
 resourceTypes {
 
@@ -18,7 +18,7 @@ resourceTypes {
     properties {
         items {
           type = array
-          items.type = CreateInvitesResultsResponseArrayItemsInner
+          items.type = InviteActionResultItem
           description = "List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned."
           optional = false
         }

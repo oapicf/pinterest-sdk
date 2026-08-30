@@ -1,0 +1,14 @@
+
+
+# AdAccountAnalyticsItems
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AD_ACCOUNT_ID** | **String** |  | 
+**DATE** | [**Date**](Date.md) |  |  [optional]
+
+
+
+

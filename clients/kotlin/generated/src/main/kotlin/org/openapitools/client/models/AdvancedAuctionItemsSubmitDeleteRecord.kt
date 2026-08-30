@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -28,6 +36,7 @@ import com.squareup.moshi.JsonClass
  * @param country 
  * @param itemId The catalog retail item id in the merchant namespace
  * @param language 
+ * @param operation 
  * @param errors Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
  */
 
@@ -44,12 +53,24 @@ data class AdvancedAuctionItemsSubmitDeleteRecord (
     @Json(name = "language")
     val language: Language,
 
+    @Json(name = "operation")
+    val operation: AdvancedAuctionItemsSubmitDeleteRecord.Operation,
+
     /* Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. */
     @Json(name = "errors")
     val errors: kotlin.collections.List<AdvancedAuctionOperationError>? = null
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: DELETE
+     */
+    @JsonClass(generateAdapter = false)
+    enum class Operation(val value: kotlin.String) {
+        @Json(name = "DELETE") DELETE("DELETE");
+    }
 
 }
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **questions** | [**Array&lt;QuizPinQuestion&gt;**](QuizPinQuestion.md) |  | [optional] [default to undefined]
 **results** | [**Array&lt;QuizPinResult&gt;**](QuizPinResult.md) |  | [optional] [default to undefined]
 **tie_breaker_custom_result** | [**QuizPinResult**](QuizPinResult.md) |  | [optional] [default to undefined]
-**tie_breaker_type** | **string** | Quiz ad tie breaker type, default is RANDOM | [optional] [default to undefined]
+**tie_breaker_type** | [**TieBreakerType**](TieBreakerType.md) |  | [optional] [default to undefined]
 
 ## Example
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **alt_text** | Option<**String**> |  | [optional]
 **description** | Option<**String**> |  | [optional]
-**id** | Option<**String**> |  | [optional]
+**id** | **String** |  | 
 **link** | Option<**String**> |  | [optional]
 **media** | Option<[**models::PinMedia**](PinMedia.md)> |  | [optional][readonly]
 **title** | Option<**String**> |  | [optional]

@@ -65,7 +65,7 @@ GoogleProductCategory2Filter::getGOOGLEPRODUCTCATEGORY2()
 }
 
 void
-GoogleProductCategory2Filter::setGOOGLEPRODUCTCATEGORY2(CatalogsProductGroupMultipleStringListCriteria  gOOGLE_PRODUCT_CATEGORY_2)
+GoogleProductCategory2Filter::setGOOGLEPRODUCTCATEGORY2(CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_2)
 {
 	this->gOOGLE_PRODUCT_CATEGORY_2 = gOOGLE_PRODUCT_CATEGORY_2;
 }

@@ -5,46 +5,46 @@
 #include "Helpers.h"
 
 
-#include "Notification_post_request.h"
+#include "NotificationPostRequest.h"
 
 using namespace std;
 using namespace Tizen::ArtikCloud;
 
-Notification_post_request::Notification_post_request()
+NotificationPostRequest::NotificationPostRequest()
 {
 	//__init();
 }
 
-Notification_post_request::~Notification_post_request()
+NotificationPostRequest::~NotificationPostRequest()
 {
 	//__cleanup();
 }
 
 void
-Notification_post_request::__init()
+NotificationPostRequest::__init()
 {
 }
 
 void
-Notification_post_request::__cleanup()
+NotificationPostRequest::__cleanup()
 {
 	//
 }
 
 void
-Notification_post_request::fromJson(char* jsonStr)
+NotificationPostRequest::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
 }
 
-Notification_post_request::Notification_post_request(char* json)
+NotificationPostRequest::NotificationPostRequest(char* json)
 {
 	this->fromJson(json);
 }
 
 char*
-Notification_post_request::toJson()
+NotificationPostRequest::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;

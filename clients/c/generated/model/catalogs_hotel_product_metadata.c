@@ -12,18 +12,21 @@ static catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata_create
     if (!catalogs_hotel_product_metadata_local_var) {
         return NULL;
     }
-    catalogs_hotel_product_metadata_local_var->hotel_id = hotel_id;
-
+    memset(catalogs_hotel_product_metadata_local_var, 0, sizeof(catalogs_hotel_product_metadata_t));
     catalogs_hotel_product_metadata_local_var->_library_owned = 1;
+    catalogs_hotel_product_metadata_local_var->hotel_id = hotel_id;
     return catalogs_hotel_product_metadata_local_var;
 }
 
 __attribute__((deprecated)) catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata_create(
     char *hotel_id
     ) {
-    return catalogs_hotel_product_metadata_create_internal (
+    catalogs_hotel_product_metadata_t *result = catalogs_hotel_product_metadata_create_internal (
         hotel_id
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_hotel_product_metadata_free(catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata) {
@@ -65,6 +68,8 @@ catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata_parseFromJSON
 
     catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata_local_var = NULL;
 
+    char *hotel_id_local_str = NULL;
+
     // catalogs_hotel_product_metadata->hotel_id
     cJSON *hotel_id = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_product_metadataJSON, "hotel_id");
     if (cJSON_IsNull(hotel_id)) {
@@ -81,12 +86,22 @@ catalogs_hotel_product_metadata_t *catalogs_hotel_product_metadata_parseFromJSON
     }
 
 
+    if (hotel_id && !cJSON_IsNull(hotel_id)) hotel_id_local_str = strdup(hotel_id->valuestring);
+
     catalogs_hotel_product_metadata_local_var = catalogs_hotel_product_metadata_create_internal (
-        strdup(hotel_id->valuestring)
+        hotel_id_local_str
         );
+
+    if (!catalogs_hotel_product_metadata_local_var) {
+        goto end;
+    }
 
     return catalogs_hotel_product_metadata_local_var;
 end:
+    if (hotel_id_local_str) {
+        free(hotel_id_local_str);
+        hotel_id_local_str = NULL;
+    }
     return NULL;
 
 }

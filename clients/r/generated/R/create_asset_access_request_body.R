@@ -7,7 +7,7 @@
 #' @title CreateAssetAccessRequestBody
 #' @description CreateAssetAccessRequestBody Class
 #' @format An \code{R6Class} generator object
-#' @field asset_requests  list(\link{CreateAssetAccessRequestBodyAssetRequestsInner})
+#' @field asset_requests  list(\link{CreateAssetAccessRequestItem})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -62,9 +62,32 @@ CreateAssetAccessRequestBody <- R6::R6Class(
       CreateAssetAccessRequestBodyObject <- list()
       if (!is.null(self$`asset_requests`)) {
         CreateAssetAccessRequestBodyObject[["asset_requests"]] <-
-          lapply(self$`asset_requests`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`asset_requests`)
       }
       return(CreateAssetAccessRequestBodyObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -75,7 +98,7 @@ CreateAssetAccessRequestBody <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`asset_requests`)) {
-        self$`asset_requests` <- ApiClient$new()$deserializeObj(this_object$`asset_requests`, "array[CreateAssetAccessRequestBodyAssetRequestsInner]", loadNamespace("openapi"))
+        self$`asset_requests` <- ApiClient$new()$deserializeObj(this_object$`asset_requests`, "array[CreateAssetAccessRequestItem]", loadNamespace("openapi"))
       }
       self
     },
@@ -98,7 +121,7 @@ CreateAssetAccessRequestBody <- R6::R6Class(
     #' @return the instance of CreateAssetAccessRequestBody
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`asset_requests` <- ApiClient$new()$deserializeObj(this_object$`asset_requests`, "array[CreateAssetAccessRequestBodyAssetRequestsInner]", loadNamespace("openapi"))
+      self$`asset_requests` <- ApiClient$new()$deserializeObj(this_object$`asset_requests`, "array[CreateAssetAccessRequestItem]", loadNamespace("openapi"))
       self
     },
 

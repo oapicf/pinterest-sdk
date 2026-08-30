@@ -9,7 +9,6 @@
  */
 import { ItemDeleteBatchRecord } from './itemDeleteBatchRecord';
 import { Country } from './country';
-import { BatchOperation } from './batchOperation';
 
 
 /**
@@ -25,7 +24,7 @@ export interface CatalogsItemsDeleteBatchRequest {
      * We recommend using the CatalogsLocale values.
      */
     language: CatalogsItemsDeleteBatchRequest.LanguageEnum;
-    operation: BatchOperation;
+    operation: CatalogsItemsDeleteBatchRequest.OperationEnum;
 }
 export namespace CatalogsItemsDeleteBatchRequest {
     export const LanguageEnum = {
@@ -118,7 +117,7 @@ export namespace CatalogsItemsDeleteBatchRequest {
         Nb: 'NB',
         Ne: 'NE',
         Nl2: 'NL',
-        No: 'NO',
+        False: 'false',
         Pl: 'PL',
         Pt: 'PT',
         Ro: 'RO',
@@ -138,6 +137,10 @@ export namespace CatalogsItemsDeleteBatchRequest {
         Zh: 'ZH'
     } as const;
     export type LanguageEnum = typeof LanguageEnum[keyof typeof LanguageEnum];
+    export const OperationEnum = {
+        Delete: 'DELETE'
+    } as const;
+    export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }
 
 

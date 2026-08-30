@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | Pointer to [**[]RespondToInvitesResponseArrayItemsInner**](RespondToInvitesResponseArrayItemsInner.md) | List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned. | [optional] 
+**Items** | Pointer to [**[]RespondToInviteResultItem**](RespondToInviteResultItem.md) | List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned. | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetItems
 
-`func (o *RespondToInvitesResponseArray) GetItems() []RespondToInvitesResponseArrayItemsInner`
+`func (o *RespondToInvitesResponseArray) GetItems() []RespondToInviteResultItem`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *RespondToInvitesResponseArray) GetItemsOk() (*[]RespondToInvitesResponseArrayItemsInner, bool)`
+`func (o *RespondToInvitesResponseArray) GetItemsOk() (*[]RespondToInviteResultItem, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *RespondToInvitesResponseArray) SetItems(v []RespondToInvitesResponseArrayItemsInner)`
+`func (o *RespondToInvitesResponseArray) SetItems(v []RespondToInviteResultItem)`
 
 SetItems sets Items field to given value.
 

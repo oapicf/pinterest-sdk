@@ -22,9 +22,11 @@ module TargetingSpec =
     AUDIENCE_INCLUDE : string[];
     GENDER : TargetingSpecGender[];
     GEO : string[];
+    GEO_EXCLUDE : string[];
     INTEREST : string[];
     LOCALE : string[];
     LOCATION : string[];
+    LOCATION_EXCLUDE : string[];
     MAXIMUM_AGE : string;
     MINIMUM_AGE : string;
     SHOPPING_RETARGETING : TargetingSpecShoppingRetargeting[];

@@ -6,7 +6,7 @@
 
 -type openapi_integration_log_client_request() ::
     #{ 'host' := binary(),
-       'method' := binary(),
+       'method' := openapi_http_method:openapi_http_method(),
        'path' := binary(),
        'request_headers' => maps:map(),
        'response_headers' => maps:map(),

@@ -16,7 +16,14 @@ class PlacementMultipliers {
     this.PLACEMENT,
   });
 
-  PlacementMultipliersPLACEMENTEnum? PLACEMENT;
+  /// Placement type identifier.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  PlacementType? PLACEMENT;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PlacementMultipliers &&
@@ -51,15 +58,11 @@ class PlacementMultipliers {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PlacementMultipliers[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PlacementMultipliers[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return PlacementMultipliers(
-        PLACEMENT: PlacementMultipliersPLACEMENTEnum.fromJson(json[r'PLACEMENT']),
+        PLACEMENT: PlacementType.fromJson(json[r'PLACEMENT']),
       );
     }
     return null;
@@ -109,81 +112,4 @@ class PlacementMultipliers {
   static const requiredKeys = <String>{
   };
 }
-
-
-class PlacementMultipliersPLACEMENTEnum {
-  /// Instantiate a new enum with the provided [value].
-  const PlacementMultipliersPLACEMENTEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const SEARCH = PlacementMultipliersPLACEMENTEnum._(r'SEARCH');
-  static const BROWSE = PlacementMultipliersPLACEMENTEnum._(r'BROWSE');
-  static const RELATED_PINS = PlacementMultipliersPLACEMENTEnum._(r'RELATED_PINS');
-
-  /// List of all possible values in this [enum][PlacementMultipliersPLACEMENTEnum].
-  static const values = <PlacementMultipliersPLACEMENTEnum>[
-    SEARCH,
-    BROWSE,
-    RELATED_PINS,
-  ];
-
-  static PlacementMultipliersPLACEMENTEnum? fromJson(dynamic value) => PlacementMultipliersPLACEMENTEnumTypeTransformer().decode(value);
-
-  static List<PlacementMultipliersPLACEMENTEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PlacementMultipliersPLACEMENTEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = PlacementMultipliersPLACEMENTEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [PlacementMultipliersPLACEMENTEnum] to String,
-/// and [decode] dynamic data back to [PlacementMultipliersPLACEMENTEnum].
-class PlacementMultipliersPLACEMENTEnumTypeTransformer {
-  factory PlacementMultipliersPLACEMENTEnumTypeTransformer() => _instance ??= const PlacementMultipliersPLACEMENTEnumTypeTransformer._();
-
-  const PlacementMultipliersPLACEMENTEnumTypeTransformer._();
-
-  String encode(PlacementMultipliersPLACEMENTEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a PlacementMultipliersPLACEMENTEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  PlacementMultipliersPLACEMENTEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'SEARCH': return PlacementMultipliersPLACEMENTEnum.SEARCH;
-        case r'BROWSE': return PlacementMultipliersPLACEMENTEnum.BROWSE;
-        case r'RELATED_PINS': return PlacementMultipliersPLACEMENTEnum.RELATED_PINS;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [PlacementMultipliersPLACEMENTEnumTypeTransformer] instance.
-  static PlacementMultipliersPLACEMENTEnumTypeTransformer? _instance;
-}
-
 

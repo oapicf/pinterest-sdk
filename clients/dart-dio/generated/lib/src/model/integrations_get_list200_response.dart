@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
 import 'package:openapi/src/model/integration_record.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -17,7 +16,13 @@ part 'integrations_get_list200_response.g.dart';
 /// * [bookmark] 
 /// * [items] 
 @BuiltValue()
-abstract class IntegrationsGetList200Response implements Paginated, Built<IntegrationsGetList200Response, IntegrationsGetList200ResponseBuilder> {
+abstract class IntegrationsGetList200Response implements Built<IntegrationsGetList200Response, IntegrationsGetList200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<IntegrationRecord> get items;
+
   IntegrationsGetList200Response._();
 
   factory IntegrationsGetList200Response([void updates(IntegrationsGetList200ResponseBuilder b)]) = _$IntegrationsGetList200Response;
@@ -51,7 +56,7 @@ class _$IntegrationsGetList200ResponseSerializer implements PrimitiveSerializer<
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(IntegrationRecord)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$IntegrationsGetList200ResponseSerializer implements PrimitiveSerializer<
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(IntegrationRecord)]),
+          ) as BuiltList<IntegrationRecord>;
           result.items.replace(valueDes);
           break;
         default:

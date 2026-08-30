@@ -5,60 +5,163 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type CustomerListUpload struct {
 
 	// Advertiser ID.
-	AdAccountId string `json:"ad_account_id" validate:"regexp=^\\\\d+$"`
+	AdAccountId string `json:"ad_account_id" validate:"regexp=^\\d+$"`
 
 	// Customer List Upload creation_time. Epoch (seconds).
 	CreationTime int32 `json:"creation_time"`
 
 	// ID of the customer list associated with this upload.
-	CustomerListId string `json:"customer_list_id" validate:"regexp=^\\\\d+$"`
+	CustomerListId string `json:"customer_list_id" validate:"regexp=^\\d+$"`
 
 	// Error counts by error code
 	ErrorCounts *[]ErrorDetail `json:"error_counts,omitempty"`
 
 	// Customer List Upload ID.
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
 	Operation UserListOperationType `json:"operation"`
 
-	RecordCounts *RecordCounts `json:"record_counts,omitempty"`
+	// Record processing counts
+	RecordCounts RecordCounts `json:"record_counts,omitempty"`
 
-	// Workload processing state
-	State string `json:"state"`
+	State WorkloadState `json:"state"`
 
 	// Customer List Upload updated_time. Epoch (seconds).
 	UpdatedTime int32 `json:"updated_time"`
 }
-
-// AssertCustomerListUploadRequired checks if the required fields are not zero-ed
-func AssertCustomerListUploadRequired(obj CustomerListUpload) error {
-	elements := map[string]interface{}{
-		"ad_account_id": obj.AdAccountId,
-		"creation_time": obj.CreationTime,
-		"customer_list_id": obj.CustomerListId,
-		"id": obj.Id,
-		"operation": obj.Operation,
-		"state": obj.State,
-		"updated_time": obj.UpdatedTime,
+// UnmarshalJSON validates required property keys then unmarshals into CustomerListUpload
+func (o *CustomerListUpload) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"ad_account_id",
+		"creation_time",
+		"customer_list_id",
+		"id",
+		"operation",
+		"state",
+		"updated_time",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"ad_account_id": false,
+		"creation_time": false,
+		"customer_list_id": false,
+		"id": false,
+		"operation": false,
+		"state": false,
+		"updated_time": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"ad_account_id": {},
+		"creation_time": {},
+		"customer_list_id": {},
+		"error_counts": {},
+		"id": {},
+		"operation": {},
+		"record_counts": {},
+		"state": {},
+		"updated_time": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CustomerListUpload
+
+	if value, exists := allProperties["ad_account_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.AdAccountId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["creation_time"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreationTime); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["customer_list_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CustomerListId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["error_counts"]; exists {
+		if err = json.Unmarshal(value, &decoded.ErrorCounts); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["operation"]; exists {
+		if err = json.Unmarshal(value, &decoded.Operation); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["record_counts"]; exists {
+		if err = json.Unmarshal(value, &decoded.RecordCounts); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["state"]; exists {
+		if err = json.Unmarshal(value, &decoded.State); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["updated_time"]; exists {
+		if err = json.Unmarshal(value, &decoded.UpdatedTime); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCustomerListUploadRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertCustomerListUploadRequired(obj CustomerListUpload) error {
 	if obj.ErrorCounts != nil {
 		for _, el := range *obj.ErrorCounts {
 			if err := AssertErrorDetailRequired(el); err != nil {
@@ -66,10 +169,8 @@ func AssertCustomerListUploadRequired(obj CustomerListUpload) error {
 			}
 		}
 	}
-	if obj.RecordCounts != nil {
-		if err := AssertRecordCountsRequired(*obj.RecordCounts); err != nil {
-			return err
-		}
+	if err := AssertRecordCountsRequired(obj.RecordCounts); err != nil {
+		return err
 	}
 	return nil
 }
@@ -83,10 +184,8 @@ func AssertCustomerListUploadConstraints(obj CustomerListUpload) error {
      		}
      	}
     }
-    if obj.RecordCounts != nil {
-     	if err := AssertRecordCountsConstraints(*obj.RecordCounts); err != nil {
-     		return err
-     	}
-    }
+	if err := AssertRecordCountsConstraints(obj.RecordCounts); err != nil {
+		return err
+	}
 	return nil
 }

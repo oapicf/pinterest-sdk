@@ -2,28 +2,30 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AdsCreditDiscountType;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * AdsCreditDiscountsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdsCreditDiscountsResponse {
 
   private Boolean active;
@@ -34,78 +36,7 @@ public class AdsCreditDiscountsResponse {
 
   private JsonNullable<BigDecimal> discountInMicroCurrency = JsonNullable.<BigDecimal>undefined();
 
-  /**
-   * The type of discount of this credit
-   */
-  public enum DiscountTypeEnum {
-    COUPON("COUPON"),
-    
-    CREDIT("CREDIT"),
-    
-    COUPON_APPLIED("COUPON_APPLIED"),
-    
-    CREDIT_APPLIED("CREDIT_APPLIED"),
-    
-    MARKETING_OFFER_CREDIT("MARKETING_OFFER_CREDIT"),
-    
-    MARKETING_OFFER_CREDIT_APPLIED("MARKETING_OFFER_CREDIT_APPLIED"),
-    
-    GOODWILL_CREDIT("GOODWILL_CREDIT"),
-    
-    GOODWILL_CREDIT_APPLIED("GOODWILL_CREDIT_APPLIED"),
-    
-    INTERNAL_CREDIT("INTERNAL_CREDIT"),
-    
-    INTERNAL_CREDIT_APPLIED("INTERNAL_CREDIT_APPLIED"),
-    
-    PREPAID_CREDIT("PREPAID_CREDIT"),
-    
-    PREPAID_CREDIT_APPLIED("PREPAID_CREDIT_APPLIED"),
-    
-    SALES_INCENTIVE_CREDIT("SALES_INCENTIVE_CREDIT"),
-    
-    SALES_INCENTIVE_CREDIT_APPLIED("SALES_INCENTIVE_CREDIT_APPLIED"),
-    
-    CREDIT_EXPIRED("CREDIT_EXPIRED"),
-    
-    FUTURE_CREDIT("FUTURE_CREDIT"),
-    
-    REFERRAL_CREDIT("REFERRAL_CREDIT"),
-    
-    INVOICE_SALES_INCENTIVE_CREDIT("INVOICE_SALES_INCENTIVE_CREDIT"),
-    
-    INVOICE_SALES_INCENTIVE_CREDIT_APPLIED("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"),
-    
-    PREPAID_CREDIT_REFUND("PREPAID_CREDIT_REFUND");
-
-    private final String value;
-
-    DiscountTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static DiscountTypeEnum fromValue(String value) {
-      for (DiscountTypeEnum b : DiscountTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  private JsonNullable<DiscountTypeEnum> discountType = JsonNullable.<DiscountTypeEnum>undefined();
+  private JsonNullable<AdsCreditDiscountType> discountType = JsonNullable.<AdsCreditDiscountType>undefined();
 
   private JsonNullable<BigDecimal> remainingDiscountInMicroCurrency = JsonNullable.<BigDecimal>undefined();
 
@@ -177,11 +108,11 @@ public class AdsCreditDiscountsResponse {
   }
 
   /**
-   * The discount applied in the offer’s currency value.
+   * The discount applied in the offer's currency value.
    * @return discountInMicroCurrency
    */
   @Valid 
-  @Schema(name = "discountInMicroCurrency", example = "125000000", description = "The discount applied in the offer’s currency value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "discountInMicroCurrency", example = "125000000", description = "The discount applied in the offer's currency value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("discountInMicroCurrency")
   public JsonNullable<BigDecimal> getDiscountInMicroCurrency() {
     return discountInMicroCurrency;
@@ -191,7 +122,7 @@ public class AdsCreditDiscountsResponse {
     this.discountInMicroCurrency = discountInMicroCurrency;
   }
 
-  public AdsCreditDiscountsResponse discountType(DiscountTypeEnum discountType) {
+  public AdsCreditDiscountsResponse discountType(AdsCreditDiscountType discountType) {
     this.discountType = JsonNullable.of(discountType);
     return this;
   }
@@ -200,14 +131,14 @@ public class AdsCreditDiscountsResponse {
    * The type of discount of this credit
    * @return discountType
    */
-  
+  @Valid 
   @Schema(name = "discountType", description = "The type of discount of this credit", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("discountType")
-  public JsonNullable<DiscountTypeEnum> getDiscountType() {
+  public JsonNullable<AdsCreditDiscountType> getDiscountType() {
     return discountType;
   }
 
-  public void setDiscountType(JsonNullable<DiscountTypeEnum> discountType) {
+  public void setDiscountType(JsonNullable<AdsCreditDiscountType> discountType) {
     this.discountType = discountType;
   }
 
@@ -305,10 +236,7 @@ public class AdsCreditDiscountsResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

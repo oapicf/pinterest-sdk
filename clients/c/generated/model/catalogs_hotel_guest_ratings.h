@@ -1,7 +1,7 @@
 /*
  * catalogs_hotel_guest_ratings.h
  *
- * If specified, you must provide all properties
+ * 
  */
 
 #ifndef _catalogs_hotel_guest_ratings_H_
@@ -19,19 +19,19 @@ typedef struct catalogs_hotel_guest_ratings_t catalogs_hotel_guest_ratings_t;
 
 
 typedef struct catalogs_hotel_guest_ratings_t {
-    double max_score; //numeric
-    int number_of_reviewers; //numeric
+    double *max_score; //numeric
+    int *number_of_reviewers; //numeric
     char *rating_system; // string
-    double score; //numeric
+    double *score; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_guest_ratings_t;
 
 __attribute__((deprecated)) catalogs_hotel_guest_ratings_t *catalogs_hotel_guest_ratings_create(
-    double max_score,
-    int number_of_reviewers,
+    double *max_score,
+    int *number_of_reviewers,
     char *rating_system,
-    double score
+    double *score
 );
 
 void catalogs_hotel_guest_ratings_free(catalogs_hotel_guest_ratings_t *catalogs_hotel_guest_ratings);

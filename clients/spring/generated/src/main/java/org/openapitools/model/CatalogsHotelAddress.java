@@ -2,34 +2,40 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsHotelAddress
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelAddress {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String addr1;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String city;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String country;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String postalCode;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String region;
 
   public CatalogsHotelAddress addr1(@Nullable String addr1) {
@@ -48,6 +54,7 @@ public class CatalogsHotelAddress {
     return addr1;
   }
 
+  @JsonProperty("addr1")
   public void setAddr1(@Nullable String addr1) {
     this.addr1 = addr1;
   }
@@ -68,6 +75,7 @@ public class CatalogsHotelAddress {
     return city;
   }
 
+  @JsonProperty("city")
   public void setCity(@Nullable String city) {
     this.city = city;
   }
@@ -88,6 +96,7 @@ public class CatalogsHotelAddress {
     return country;
   }
 
+  @JsonProperty("country")
   public void setCountry(@Nullable String country) {
     this.country = country;
   }
@@ -108,6 +117,7 @@ public class CatalogsHotelAddress {
     return postalCode;
   }
 
+  @JsonProperty("postal_code")
   public void setPostalCode(@Nullable String postalCode) {
     this.postalCode = postalCode;
   }
@@ -128,6 +138,7 @@ public class CatalogsHotelAddress {
     return region;
   }
 
+  @JsonProperty("region")
   public void setRegion(@Nullable String region) {
     this.region = region;
   }
@@ -170,11 +181,8 @@ public class CatalogsHotelAddress {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

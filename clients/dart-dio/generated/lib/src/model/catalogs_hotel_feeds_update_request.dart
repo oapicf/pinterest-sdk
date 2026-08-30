@@ -6,9 +6,9 @@
 import 'package:openapi/src/model/catalogs_feed_credentials.dart';
 import 'package:openapi/src/model/catalogs_feed_processing_schedule.dart';
 import 'package:openapi/src/model/nullable_currency.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/catalogs_status.dart';
 import 'package:openapi/src/model/catalogs_format.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -28,8 +28,8 @@ part 'catalogs_hotel_feeds_update_request.g.dart';
 @BuiltValue()
 abstract class CatalogsHotelFeedsUpdateRequest implements Built<CatalogsHotelFeedsUpdateRequest, CatalogsHotelFeedsUpdateRequestBuilder> {
   @BuiltValueField(wireName: r'catalog_type')
-  CatalogsType get catalogType;
-  // enum catalogTypeEnum {  RETAIL,  HOTEL,  CREATIVE_ASSETS,  };
+  CatalogsHotelFeedsUpdateRequestCatalogTypeEnum get catalogType;
+  // enum catalogTypeEnum {  HOTEL,  };
 
   @BuiltValueField(wireName: r'credentials')
   CatalogsFeedCredentials? get credentials;
@@ -40,7 +40,7 @@ abstract class CatalogsHotelFeedsUpdateRequest implements Built<CatalogsHotelFee
 
   @BuiltValueField(wireName: r'format')
   CatalogsFormat? get format;
-  // enum formatEnum {  TSV,  CSV,  XML,  };
+  // enum formatEnum {  TSV,  CSV,  XML,  INTEGRATION,  };
 
   /// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
   @BuiltValueField(wireName: r'location')
@@ -83,7 +83,7 @@ class _$CatalogsHotelFeedsUpdateRequestSerializer implements PrimitiveSerializer
     yield r'catalog_type';
     yield serializers.serialize(
       object.catalogType,
-      specifiedType: const FullType(CatalogsType),
+      specifiedType: const FullType(CatalogsHotelFeedsUpdateRequestCatalogTypeEnum),
     );
     if (object.credentials != null) {
       yield r'credentials';
@@ -160,8 +160,8 @@ class _$CatalogsHotelFeedsUpdateRequestSerializer implements PrimitiveSerializer
         case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsType),
-          ) as CatalogsType;
+            specifiedType: const FullType(CatalogsHotelFeedsUpdateRequestCatalogTypeEnum),
+          ) as CatalogsHotelFeedsUpdateRequestCatalogTypeEnum;
           result.catalogType = valueDes;
           break;
         case r'credentials':
@@ -183,22 +183,25 @@ class _$CatalogsHotelFeedsUpdateRequestSerializer implements PrimitiveSerializer
         case r'format':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsFormat),
-          ) as CatalogsFormat;
+            specifiedType: const FullType.nullable(CatalogsFormat),
+          ) as CatalogsFormat?;
+          if (valueDes == null) continue;
           result.format = valueDes;
           break;
         case r'location':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.location = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         case r'preferred_processing_schedule':
@@ -212,8 +215,9 @@ class _$CatalogsHotelFeedsUpdateRequestSerializer implements PrimitiveSerializer
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsStatus),
-          ) as CatalogsStatus;
+            specifiedType: const FullType.nullable(CatalogsStatus),
+          ) as CatalogsStatus?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         default:
@@ -243,5 +247,18 @@ class _$CatalogsHotelFeedsUpdateRequestSerializer implements PrimitiveSerializer
     );
     return result.build();
   }
+}
+
+class CatalogsHotelFeedsUpdateRequestCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'HOTEL')
+  static const CatalogsHotelFeedsUpdateRequestCatalogTypeEnum HOTEL = _$catalogsHotelFeedsUpdateRequestCatalogTypeEnum_HOTEL;
+
+  static Serializer<CatalogsHotelFeedsUpdateRequestCatalogTypeEnum> get serializer => _$catalogsHotelFeedsUpdateRequestCatalogTypeEnumSerializer;
+
+  const CatalogsHotelFeedsUpdateRequestCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsHotelFeedsUpdateRequestCatalogTypeEnum> get values => _$catalogsHotelFeedsUpdateRequestCatalogTypeEnumValues;
+  static CatalogsHotelFeedsUpdateRequestCatalogTypeEnum valueOf(String name) => _$catalogsHotelFeedsUpdateRequestCatalogTypeEnumValueOf(name);
 }
 

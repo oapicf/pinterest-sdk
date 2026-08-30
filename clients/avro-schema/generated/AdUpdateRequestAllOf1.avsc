@@ -1,0 +1,20 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdUpdateRequestAllOf1",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "The ID of this ad."
+    },
+    {
+      "name": "pin_id",
+      "type": ["null", "string"],
+      "doc": "Pin ID. This field may only be updated for draft ads.",
+      "default": null
+    }
+  ]
+
+}

@@ -19,6 +19,8 @@ static media_upload_parameters_t *media_upload_parameters_create_internal(
     if (!media_upload_parameters_local_var) {
         return NULL;
     }
+    memset(media_upload_parameters_local_var, 0, sizeof(media_upload_parameters_t));
+    media_upload_parameters_local_var->_library_owned = 1;
     media_upload_parameters_local_var->content_type = content_type;
     media_upload_parameters_local_var->key = key;
     media_upload_parameters_local_var->policy = policy;
@@ -27,8 +29,6 @@ static media_upload_parameters_t *media_upload_parameters_create_internal(
     media_upload_parameters_local_var->x_amz_date = x_amz_date;
     media_upload_parameters_local_var->x_amz_security_token = x_amz_security_token;
     media_upload_parameters_local_var->x_amz_signature = x_amz_signature;
-
-    media_upload_parameters_local_var->_library_owned = 1;
     return media_upload_parameters_local_var;
 }
 
@@ -42,7 +42,7 @@ __attribute__((deprecated)) media_upload_parameters_t *media_upload_parameters_c
     char *x_amz_security_token,
     char *x_amz_signature
     ) {
-    return media_upload_parameters_create_internal (
+    media_upload_parameters_t *result = media_upload_parameters_create_internal (
         content_type,
         key,
         policy,
@@ -52,6 +52,9 @@ __attribute__((deprecated)) media_upload_parameters_t *media_upload_parameters_c
         x_amz_security_token,
         x_amz_signature
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void media_upload_parameters_free(media_upload_parameters_t *media_upload_parameters) {
@@ -176,6 +179,22 @@ media_upload_parameters_t *media_upload_parameters_parseFromJSON(cJSON *media_up
 
     media_upload_parameters_t *media_upload_parameters_local_var = NULL;
 
+    char *content_type_local_str = NULL;
+
+    char *key_local_str = NULL;
+
+    char *policy_local_str = NULL;
+
+    char *x_amz_algorithm_local_str = NULL;
+
+    char *x_amz_credential_local_str = NULL;
+
+    char *x_amz_date_local_str = NULL;
+
+    char *x_amz_security_token_local_str = NULL;
+
+    char *x_amz_signature_local_str = NULL;
+
     // media_upload_parameters->content_type
     cJSON *content_type = cJSON_GetObjectItemCaseSensitive(media_upload_parametersJSON, "Content-Type");
     if (cJSON_IsNull(content_type)) {
@@ -273,19 +292,64 @@ media_upload_parameters_t *media_upload_parameters_parseFromJSON(cJSON *media_up
     }
 
 
+    if (content_type && !cJSON_IsNull(content_type)) content_type_local_str = strdup(content_type->valuestring);
+    if (key && !cJSON_IsNull(key)) key_local_str = strdup(key->valuestring);
+    if (policy && !cJSON_IsNull(policy)) policy_local_str = strdup(policy->valuestring);
+    if (x_amz_algorithm && !cJSON_IsNull(x_amz_algorithm)) x_amz_algorithm_local_str = strdup(x_amz_algorithm->valuestring);
+    if (x_amz_credential && !cJSON_IsNull(x_amz_credential)) x_amz_credential_local_str = strdup(x_amz_credential->valuestring);
+    if (x_amz_date && !cJSON_IsNull(x_amz_date)) x_amz_date_local_str = strdup(x_amz_date->valuestring);
+    if (x_amz_security_token && !cJSON_IsNull(x_amz_security_token)) x_amz_security_token_local_str = strdup(x_amz_security_token->valuestring);
+    if (x_amz_signature && !cJSON_IsNull(x_amz_signature)) x_amz_signature_local_str = strdup(x_amz_signature->valuestring);
+
     media_upload_parameters_local_var = media_upload_parameters_create_internal (
-        content_type && !cJSON_IsNull(content_type) ? strdup(content_type->valuestring) : NULL,
-        key && !cJSON_IsNull(key) ? strdup(key->valuestring) : NULL,
-        policy && !cJSON_IsNull(policy) ? strdup(policy->valuestring) : NULL,
-        x_amz_algorithm && !cJSON_IsNull(x_amz_algorithm) ? strdup(x_amz_algorithm->valuestring) : NULL,
-        x_amz_credential && !cJSON_IsNull(x_amz_credential) ? strdup(x_amz_credential->valuestring) : NULL,
-        x_amz_date && !cJSON_IsNull(x_amz_date) ? strdup(x_amz_date->valuestring) : NULL,
-        x_amz_security_token && !cJSON_IsNull(x_amz_security_token) ? strdup(x_amz_security_token->valuestring) : NULL,
-        x_amz_signature && !cJSON_IsNull(x_amz_signature) ? strdup(x_amz_signature->valuestring) : NULL
+        content_type_local_str,
+        key_local_str,
+        policy_local_str,
+        x_amz_algorithm_local_str,
+        x_amz_credential_local_str,
+        x_amz_date_local_str,
+        x_amz_security_token_local_str,
+        x_amz_signature_local_str
         );
+
+    if (!media_upload_parameters_local_var) {
+        goto end;
+    }
 
     return media_upload_parameters_local_var;
 end:
+    if (content_type_local_str) {
+        free(content_type_local_str);
+        content_type_local_str = NULL;
+    }
+    if (key_local_str) {
+        free(key_local_str);
+        key_local_str = NULL;
+    }
+    if (policy_local_str) {
+        free(policy_local_str);
+        policy_local_str = NULL;
+    }
+    if (x_amz_algorithm_local_str) {
+        free(x_amz_algorithm_local_str);
+        x_amz_algorithm_local_str = NULL;
+    }
+    if (x_amz_credential_local_str) {
+        free(x_amz_credential_local_str);
+        x_amz_credential_local_str = NULL;
+    }
+    if (x_amz_date_local_str) {
+        free(x_amz_date_local_str);
+        x_amz_date_local_str = NULL;
+    }
+    if (x_amz_security_token_local_str) {
+        free(x_amz_security_token_local_str);
+        x_amz_security_token_local_str = NULL;
+    }
+    if (x_amz_signature_local_str) {
+        free(x_amz_signature_local_str);
+        x_amz_signature_local_str = NULL;
+    }
     return NULL;
 
 }

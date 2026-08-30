@@ -4,7 +4,6 @@ package org.openapitools.client.model
 
 case class CatalogsProductGroupPinsList200Response (
     _bookmark: Option[String],
-    /* Pins */
     _items: List[CatalogsProduct]
 )
 object CatalogsProductGroupPinsList200Response {

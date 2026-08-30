@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set Number of records with this error
 	 */
-	void setCount(int  count);
+	void setCount(int count);
 	/*! \brief Get Numeric error code
 	 */
 	int getErrorCode();
 
 	/*! \brief Set Numeric error code
 	 */
-	void setErrorCode(int  error_code);
+	void setErrorCode(int error_code);
 	/*! \brief Get Error message description
 	 */
 	std::string getMessage();
 
 	/*! \brief Set Error message description
 	 */
-	void setMessage(std::string  message);
+	void setMessage(std::string message);
 
 
     private:

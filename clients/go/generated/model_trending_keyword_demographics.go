@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,10 +18,10 @@ import (
 // checks if the TrendingKeywordDemographics type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TrendingKeywordDemographics{}
 
-// TrendingKeywordDemographics A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. <br /> For each dimension: <br />   - Key: The category (e.g., \"female\", \"18-24\"). <br />   - Value: The proportion of search volume (e.g., 0.12 for 12%). <br />     Values less than 0.05 are set to 0.04 for privacy. <br />     The sum for all categories in a dimension will approximately equal 1. <br />     Only applicable when `include_demographics` query parameter is set to `true`.
+// TrendingKeywordDemographics A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. For each dimension: Key: The category (e.g., \"female\", \"18-24\"). Value: The proportion of search volume (e.g., 0.12 for 12%). Values less than 0.05 are set to 0.04 for privacy. The sum for all categories in a dimension will approximately equal 1. Only applicable when `include_demographics` query parameter is set to `true`.
 type TrendingKeywordDemographics struct {
-	AgeDistribution NullableTrendingKeywordDemographicsAgeDistribution `json:"age_distribution,omitempty"`
-	GenderDistribution NullableTrendingKeywordDemographicsGenderDistribution `json:"gender_distribution,omitempty"`
+	AgeDistribution NullableTrendsAgeDistribution `json:"age_distribution,omitempty"`
+	GenderDistribution NullableTrendsGenderDistribution `json:"gender_distribution,omitempty"`
 }
 
 // NewTrendingKeywordDemographics instantiates a new TrendingKeywordDemographics object
@@ -42,9 +42,9 @@ func NewTrendingKeywordDemographicsWithDefaults() *TrendingKeywordDemographics {
 }
 
 // GetAgeDistribution returns the AgeDistribution field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TrendingKeywordDemographics) GetAgeDistribution() TrendingKeywordDemographicsAgeDistribution {
+func (o *TrendingKeywordDemographics) GetAgeDistribution() TrendsAgeDistribution {
 	if o == nil || IsNil(o.AgeDistribution.Get()) {
-		var ret TrendingKeywordDemographicsAgeDistribution
+		var ret TrendsAgeDistribution
 		return ret
 	}
 	return *o.AgeDistribution.Get()
@@ -53,7 +53,7 @@ func (o *TrendingKeywordDemographics) GetAgeDistribution() TrendingKeywordDemogr
 // GetAgeDistributionOk returns a tuple with the AgeDistribution field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TrendingKeywordDemographics) GetAgeDistributionOk() (*TrendingKeywordDemographicsAgeDistribution, bool) {
+func (o *TrendingKeywordDemographics) GetAgeDistributionOk() (*TrendsAgeDistribution, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,8 +69,8 @@ func (o *TrendingKeywordDemographics) HasAgeDistribution() bool {
 	return false
 }
 
-// SetAgeDistribution gets a reference to the given NullableTrendingKeywordDemographicsAgeDistribution and assigns it to the AgeDistribution field.
-func (o *TrendingKeywordDemographics) SetAgeDistribution(v TrendingKeywordDemographicsAgeDistribution) {
+// SetAgeDistribution gets a reference to the given NullableTrendsAgeDistribution and assigns it to the AgeDistribution field.
+func (o *TrendingKeywordDemographics) SetAgeDistribution(v TrendsAgeDistribution) {
 	o.AgeDistribution.Set(&v)
 }
 // SetAgeDistributionNil sets the value for AgeDistribution to be an explicit nil
@@ -84,9 +84,9 @@ func (o *TrendingKeywordDemographics) UnsetAgeDistribution() {
 }
 
 // GetGenderDistribution returns the GenderDistribution field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TrendingKeywordDemographics) GetGenderDistribution() TrendingKeywordDemographicsGenderDistribution {
+func (o *TrendingKeywordDemographics) GetGenderDistribution() TrendsGenderDistribution {
 	if o == nil || IsNil(o.GenderDistribution.Get()) {
-		var ret TrendingKeywordDemographicsGenderDistribution
+		var ret TrendsGenderDistribution
 		return ret
 	}
 	return *o.GenderDistribution.Get()
@@ -95,7 +95,7 @@ func (o *TrendingKeywordDemographics) GetGenderDistribution() TrendingKeywordDem
 // GetGenderDistributionOk returns a tuple with the GenderDistribution field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TrendingKeywordDemographics) GetGenderDistributionOk() (*TrendingKeywordDemographicsGenderDistribution, bool) {
+func (o *TrendingKeywordDemographics) GetGenderDistributionOk() (*TrendsGenderDistribution, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -111,8 +111,8 @@ func (o *TrendingKeywordDemographics) HasGenderDistribution() bool {
 	return false
 }
 
-// SetGenderDistribution gets a reference to the given NullableTrendingKeywordDemographicsGenderDistribution and assigns it to the GenderDistribution field.
-func (o *TrendingKeywordDemographics) SetGenderDistribution(v TrendingKeywordDemographicsGenderDistribution) {
+// SetGenderDistribution gets a reference to the given NullableTrendsGenderDistribution and assigns it to the GenderDistribution field.
+func (o *TrendingKeywordDemographics) SetGenderDistribution(v TrendsGenderDistribution) {
 	o.GenderDistribution.Set(&v)
 }
 // SetGenderDistributionNil sets the value for GenderDistribution to be an explicit nil

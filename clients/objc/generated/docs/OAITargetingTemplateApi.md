@@ -13,12 +13,12 @@ Method | HTTP request | Description
 ```objc
 -(NSURLSessionTask*) targetingTemplateCreateWithAdAccountId: (NSString*) adAccountId
     targetingTemplateCreate: (OAITargetingTemplateCreate*) targetingTemplateCreate
-        completionHandler: (void (^)(OAITargetingTemplateGetResponseData* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAITargetingTemplate* output, NSError* error)) handler;
 ```
 
 Create targeting templates
 
-<p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
+Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 
 ### Example
 ```objc
@@ -29,14 +29,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAITargetingTemplateCreate* targetingTemplateCreate = [[OAITargetingTemplateCreate alloc] init]; // targeting template creation entity
+OAITargetingTemplateCreate* targetingTemplateCreate = [[OAITargetingTemplateCreate alloc] init]; // 
 
 OAITargetingTemplateApi*apiInstance = [[OAITargetingTemplateApi alloc] init];
 
 // Create targeting templates
 [apiInstance targetingTemplateCreateWithAdAccountId:adAccountId
               targetingTemplateCreate:targetingTemplateCreate
-          completionHandler: ^(OAITargetingTemplateGetResponseData* output, NSError* error) {
+          completionHandler: ^(OAITargetingTemplate* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -51,11 +51,11 @@ OAITargetingTemplateApi*apiInstance = [[OAITargetingTemplateApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **targetingTemplateCreate** | [**OAITargetingTemplateCreate***](OAITargetingTemplateCreate.md)| targeting template creation entity | 
+ **targetingTemplateCreate** | [**OAITargetingTemplateCreate***](OAITargetingTemplateCreate.md)|  | 
 
 ### Return type
 
-[**OAITargetingTemplateGetResponseData***](OAITargetingTemplateGetResponseData.md)
+[**OAITargetingTemplate***](OAITargetingTemplate.md)
 
 ### Authorization
 
@@ -71,17 +71,17 @@ Name | Type | Description  | Notes
 # **targetingTemplateList**
 ```objc
 -(NSURLSessionTask*) targetingTemplateListWithAdAccountId: (NSString*) adAccountId
-    order: (NSString*) order
+    bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    order: (OAIPinterestLibPaginationOrder) order
     includeSizing: (NSNumber*) includeSizing
     searchQuery: (NSString*) searchQuery
-    pageSize: (NSNumber*) pageSize
-    bookmark: (NSString*) bookmark
         completionHandler: (void (^)(OAITargetingTemplateList200Response* output, NSError* error)) handler;
 ```
 
 List targeting templates
 
-Get a list of the targeting templates in the specified <code>ad_account_id</code>
+Get a list of the targeting templates in the specified `ad_account_id`
 
 ### Example
 ```objc
@@ -95,21 +95,21 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* order = ASCENDING; // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-NSNumber* includeSizing = @(NO); // Include audience sizing in result or not (optional) (default to @(NO))
-NSString* searchQuery = gaming; // Search keyword for targeting templates (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
+OAIPinterestLibPaginationOrder order = [[OAIPinterestLibPaginationOrder alloc] init]; // The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+NSNumber* includeSizing = @(NO); // Include audience sizing in result or not (optional) (default to @(NO))
+NSString* searchQuery = @"searchQuery_example"; // Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
 
 OAITargetingTemplateApi*apiInstance = [[OAITargetingTemplateApi alloc] init];
 
 // List targeting templates
 [apiInstance targetingTemplateListWithAdAccountId:adAccountId
+              bookmark:bookmark
+              pageSize:pageSize
               order:order
               includeSizing:includeSizing
               searchQuery:searchQuery
-              pageSize:pageSize
-              bookmark:bookmark
           completionHandler: ^(OAITargetingTemplateList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -125,11 +125,11 @@ OAITargetingTemplateApi*apiInstance = [[OAITargetingTemplateApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **order** | **NSString***| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **includeSizing** | **NSNumber***| Include audience sizing in result or not | [optional] [default to @(NO)]
- **searchQuery** | **NSString***| Search keyword for targeting templates | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
+ **order** | [**OAIPinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **includeSizing** | **NSNumber***| Include audience sizing in result or not | [optional] [default to @(NO)]
+ **searchQuery** | **NSString***| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] 
 
 ### Return type
 
@@ -149,13 +149,13 @@ Name | Type | Description  | Notes
 # **targetingTemplateUpdate**
 ```objc
 -(NSURLSessionTask*) targetingTemplateUpdateWithAdAccountId: (NSString*) adAccountId
-    targetingTemplateUpdateRequest: (OAITargetingTemplateUpdateRequest*) targetingTemplateUpdateRequest
+    targetingTemplateUpdateRequestReadOrUpdate: (OAITargetingTemplateUpdateRequestReadOrUpdate*) targetingTemplateUpdateRequestReadOrUpdate
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
 Update targeting templates
 
-<p>Update the targeting template given advertiser ID and targeting template ID</p>
+Update the targeting template given advertiser ID and targeting template ID
 
 ### Example
 ```objc
@@ -166,13 +166,13 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAITargetingTemplateUpdateRequest* targetingTemplateUpdateRequest = [[OAITargetingTemplateUpdateRequest alloc] init]; // Operation type and targeting template ID
+OAITargetingTemplateUpdateRequestReadOrUpdate* targetingTemplateUpdateRequestReadOrUpdate = [[OAITargetingTemplateUpdateRequestReadOrUpdate alloc] init]; // 
 
 OAITargetingTemplateApi*apiInstance = [[OAITargetingTemplateApi alloc] init];
 
 // Update targeting templates
 [apiInstance targetingTemplateUpdateWithAdAccountId:adAccountId
-              targetingTemplateUpdateRequest:targetingTemplateUpdateRequest
+              targetingTemplateUpdateRequestReadOrUpdate:targetingTemplateUpdateRequestReadOrUpdate
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling OAITargetingTemplateApi->targetingTemplateUpdate: %@", error);
@@ -185,7 +185,7 @@ OAITargetingTemplateApi*apiInstance = [[OAITargetingTemplateApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **targetingTemplateUpdateRequest** | [**OAITargetingTemplateUpdateRequest***](OAITargetingTemplateUpdateRequest.md)| Operation type and targeting template ID | 
+ **targetingTemplateUpdateRequestReadOrUpdate** | [**OAITargetingTemplateUpdateRequestReadOrUpdate***](OAITargetingTemplateUpdateRequestReadOrUpdate.md)|  | 
 
 ### Return type
 

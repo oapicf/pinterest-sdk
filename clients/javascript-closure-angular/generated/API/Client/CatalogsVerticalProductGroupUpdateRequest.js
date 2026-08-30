@@ -37,6 +37,7 @@ API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.filters;
 API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.locale;
 
 /**
+ * Name of catalog product group
  * @type {!string}
  * @export
  */

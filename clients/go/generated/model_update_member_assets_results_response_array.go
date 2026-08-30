@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &UpdateMemberAssetsResultsResponseArray{}
 // UpdateMemberAssetsResultsResponseArray struct for UpdateMemberAssetsResultsResponseArray
 type UpdateMemberAssetsResultsResponseArray struct {
 	// List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.
-	Items []UpdateMemberAssetsResultsResponseArrayItemsInner `json:"items,omitempty"`
+	Items []UpdateMemberAssetResultItem `json:"items,omitempty"`
 }
 
 // NewUpdateMemberAssetsResultsResponseArray instantiates a new UpdateMemberAssetsResultsResponseArray object
@@ -42,9 +42,9 @@ func NewUpdateMemberAssetsResultsResponseArrayWithDefaults() *UpdateMemberAssets
 }
 
 // GetItems returns the Items field value if set, zero value otherwise.
-func (o *UpdateMemberAssetsResultsResponseArray) GetItems() []UpdateMemberAssetsResultsResponseArrayItemsInner {
+func (o *UpdateMemberAssetsResultsResponseArray) GetItems() []UpdateMemberAssetResultItem {
 	if o == nil || IsNil(o.Items) {
-		var ret []UpdateMemberAssetsResultsResponseArrayItemsInner
+		var ret []UpdateMemberAssetResultItem
 		return ret
 	}
 	return o.Items
@@ -52,7 +52,7 @@ func (o *UpdateMemberAssetsResultsResponseArray) GetItems() []UpdateMemberAssets
 
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateMemberAssetsResultsResponseArray) GetItemsOk() ([]UpdateMemberAssetsResultsResponseArrayItemsInner, bool) {
+func (o *UpdateMemberAssetsResultsResponseArray) GetItemsOk() ([]UpdateMemberAssetResultItem, bool) {
 	if o == nil || IsNil(o.Items) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *UpdateMemberAssetsResultsResponseArray) HasItems() bool {
 	return false
 }
 
-// SetItems gets a reference to the given []UpdateMemberAssetsResultsResponseArrayItemsInner and assigns it to the Items field.
-func (o *UpdateMemberAssetsResultsResponseArray) SetItems(v []UpdateMemberAssetsResultsResponseArrayItemsInner) {
+// SetItems gets a reference to the given []UpdateMemberAssetResultItem and assigns it to the Items field.
+func (o *UpdateMemberAssetsResultsResponseArray) SetItems(v []UpdateMemberAssetResultItem) {
 	o.Items = v
 }
 

@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsCreativeAssetsFeedsUpdateRequest (
-    _catalogType: CatalogsType,
+    _catalogType: String,
     _credentials: Option[CatalogsFeedCredentials],
     _defaultCurrency: Option[NullableCurrency],
     _format: Option[CatalogsFormat],

@@ -4,22 +4,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.BaseInviteDataResponseInviteData;
 import org.openapitools.model.BusinessAccessUserSummary;
+import org.openapitools.model.InviteDataResponse;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+/**
+ * Common invite/request data returned by the business access endpoints.
+ **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-
+@ApiModel(description = "Common invite/request data returned by the business access endpoints.")
 public class BaseInviteDataResponse   {
   
   private String id;
 
-  private BaseInviteDataResponseInviteData inviteData;
+  private InviteDataResponse inviteData;
 
   private Boolean isReceivedInvite;
 
@@ -46,7 +49,7 @@ public class BaseInviteDataResponse   {
 
   /**
    **/
-  public BaseInviteDataResponse inviteData(BaseInviteDataResponseInviteData inviteData) {
+  public BaseInviteDataResponse inviteData(InviteDataResponse inviteData) {
     this.inviteData = inviteData;
     return this;
   }
@@ -54,10 +57,10 @@ public class BaseInviteDataResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("invite_data")
-  public BaseInviteDataResponseInviteData getInviteData() {
+  public InviteDataResponse getInviteData() {
     return inviteData;
   }
-  public void setInviteData(BaseInviteDataResponseInviteData inviteData) {
+  public void setInviteData(InviteDataResponse inviteData) {
     this.inviteData = inviteData;
   }
 
@@ -139,10 +142,7 @@ public class BaseInviteDataResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

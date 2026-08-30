@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 List available filter values
 
-Get the available filter attributes and values associated with a given feed or catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - <code>country</code>, <code>language</code>, and <code>feed_id</code> are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+Get the available filter attributes and values associated with a given feed or catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - `country`, `language`, and `feed_id` are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Examples
 
@@ -90,11 +90,11 @@ end
 
 ## catalogs_create
 
-> <Catalog> catalogs_create(catalogs_create_request, opts)
+> <Catalog> catalogs_create(catalog_create, opts)
 
 Create catalog
 
-Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
 ### Examples
 
@@ -108,14 +108,14 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CatalogsApi.new
-catalogs_create_request = PinterestSdkClient::CatalogsCreateRequest.new({catalog_type: PinterestSdkClient::CatalogsType::RETAIL, name: 'name_example'}) # CatalogsCreateRequest | Request object used to created a feed.
+catalog_create = PinterestSdkClient::CatalogCreate.new({catalog_type: PinterestSdkClient::CatalogsType::RETAIL, name: 'name_example'}) # CatalogCreate | 
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
 
 begin
   # Create catalog
-  result = api_instance.catalogs_create(catalogs_create_request, opts)
+  result = api_instance.catalogs_create(catalog_create, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling CatalogsApi->catalogs_create: #{e}"
@@ -126,12 +126,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Catalog>, Integer, Hash)> catalogs_create_with_http_info(catalogs_create_request, opts)
+> <Array(<Catalog>, Integer, Hash)> catalogs_create_with_http_info(catalog_create, opts)
 
 ```ruby
 begin
   # Create catalog
-  data, status_code, headers = api_instance.catalogs_create_with_http_info(catalogs_create_request, opts)
+  data, status_code, headers = api_instance.catalogs_create_with_http_info(catalog_create, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Catalog>
@@ -144,7 +144,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **catalogs_create_request** | [**CatalogsCreateRequest**](CatalogsCreateRequest.md) | Request object used to created a feed. |  |
+| **catalog_create** | [**CatalogCreate**](CatalogCreate.md) |  |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -167,7 +167,7 @@ end
 
 List catalogs
 
-Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Examples
 
@@ -182,9 +182,9 @@ end
 
 api_instance = PinterestSdkClient::CatalogsApi.new
 opts = {
+  ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -218,9 +218,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
+| **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 

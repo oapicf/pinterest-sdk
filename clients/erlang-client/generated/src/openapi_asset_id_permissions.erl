@@ -6,9 +6,9 @@
 
 -type openapi_asset_id_permissions() ::
     #{ 'asset_group_info' => openapi_asset_group_binding:openapi_asset_group_binding(),
-       'asset_id' => binary(),
-       'asset_type' => binary(),
-       'permissions' => list()
+       'asset_id' := binary(),
+       'asset_type' := openapi_asset_type_response:openapi_asset_type_response(),
+       'permissions' := list()
      }.
 
 encode(#{ 'asset_group_info' := AssetGroupInfo,

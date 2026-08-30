@@ -105,15 +105,17 @@ class _$AdsAnalyticsCreateAsyncResponseSerializer implements PrimitiveSerializer
         case r'report_status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BulkReportingJobStatus),
-          ) as BulkReportingJobStatus;
+            specifiedType: const FullType.nullable(BulkReportingJobStatus),
+          ) as BulkReportingJobStatus?;
+          if (valueDes == null) continue;
           result.reportStatus = valueDes;
           break;
         case r'token':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.token = valueDes;
           break;
         default:

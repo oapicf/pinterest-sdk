@@ -6,19 +6,8 @@
   "fields": [
     {
       "name": "APP_TYPE",
-      "type": ["null", {
-        "type": "enum",
-        "name": "AppTypeMultipliers_APPUnderscoreTYPE",
-        "symbols": [
-          "android_mobile",
-          "android_tablet",
-          "ipad",
-          "iphone",
-          "web",
-          "web_mobile"
-        ]
-      }],
-      "doc": "",
+      "type": ["null", "model.TargetingSpecAppType"],
+      "doc": "App type identifier.",
       "default": null
     }
   ]

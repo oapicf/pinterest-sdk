@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AdsCreditDiscountType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -36,52 +37,22 @@ public class AdsCreditDiscountsResponse  {
   private String discountCurrency;
 
  /**
-  * The discount applied in the offer’s currency value.
+  * The discount applied in the offer's currency value.
   */
-  @ApiModelProperty(example = "125000000", value = "The discount applied in the offer’s currency value.")
+  @ApiModelProperty(example = "125000000", value = "The discount applied in the offer's currency value.")
 
   @Valid
 
   private BigDecimal discountInMicroCurrency;
-
-public enum DiscountTypeEnum {
-
-COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLIED(String.valueOf("COUPON_APPLIED")), CREDIT_APPLIED(String.valueOf("CREDIT_APPLIED")), MARKETING_OFFER_CREDIT(String.valueOf("MARKETING_OFFER_CREDIT")), MARKETING_OFFER_CREDIT_APPLIED(String.valueOf("MARKETING_OFFER_CREDIT_APPLIED")), GOODWILL_CREDIT(String.valueOf("GOODWILL_CREDIT")), GOODWILL_CREDIT_APPLIED(String.valueOf("GOODWILL_CREDIT_APPLIED")), INTERNAL_CREDIT(String.valueOf("INTERNAL_CREDIT")), INTERNAL_CREDIT_APPLIED(String.valueOf("INTERNAL_CREDIT_APPLIED")), PREPAID_CREDIT(String.valueOf("PREPAID_CREDIT")), PREPAID_CREDIT_APPLIED(String.valueOf("PREPAID_CREDIT_APPLIED")), SALES_INCENTIVE_CREDIT(String.valueOf("SALES_INCENTIVE_CREDIT")), SALES_INCENTIVE_CREDIT_APPLIED(String.valueOf("SALES_INCENTIVE_CREDIT_APPLIED")), CREDIT_EXPIRED(String.valueOf("CREDIT_EXPIRED")), FUTURE_CREDIT(String.valueOf("FUTURE_CREDIT")), REFERRAL_CREDIT(String.valueOf("REFERRAL_CREDIT")), INVOICE_SALES_INCENTIVE_CREDIT(String.valueOf("INVOICE_SALES_INCENTIVE_CREDIT")), INVOICE_SALES_INCENTIVE_CREDIT_APPLIED(String.valueOf("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED")), PREPAID_CREDIT_REFUND(String.valueOf("PREPAID_CREDIT_REFUND"));
-
-
-    private String value;
-
-    DiscountTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static DiscountTypeEnum fromValue(String value) {
-        for (DiscountTypeEnum b : DiscountTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        return null;
-    }
-}
 
  /**
   * The type of discount of this credit
   */
   @ApiModelProperty(value = "The type of discount of this credit")
 
-  private DiscountTypeEnum discountType;
+  @Valid
+
+  private AdsCreditDiscountType discountType;
 
  /**
   * The credits left to spend.
@@ -153,7 +124,7 @@ COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLI
   }
 
  /**
-   * The discount applied in the offer’s currency value.
+   * The discount applied in the offer&#39;s currency value.
    * @return discountInMicroCurrency
   **/
   @JsonProperty("discountInMicroCurrency")
@@ -175,18 +146,15 @@ COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLI
    * @return discountType
   **/
   @JsonProperty("discountType")
-  public String getDiscountType() {
-    if (discountType == null) {
-      return null;
-    }
-    return discountType.value();
+  public AdsCreditDiscountType getDiscountType() {
+    return discountType;
   }
 
-  public void setDiscountType(DiscountTypeEnum discountType) {
+  public void setDiscountType(AdsCreditDiscountType discountType) {
     this.discountType = discountType;
   }
 
-  public AdsCreditDiscountsResponse discountType(DiscountTypeEnum discountType) {
+  public AdsCreditDiscountsResponse discountType(AdsCreditDiscountType discountType) {
     this.discountType = discountType;
     return this;
   }
@@ -271,10 +239,7 @@ COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLI
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -31,6 +31,7 @@ class CreativeType(Model):
     COLLAGE = 'COLLAGE'
     MAX_WIDTH_REGULAR_COLLECTION = 'MAX_WIDTH_REGULAR_COLLECTION'
     MAX_WIDTH_VIDEO_COLLECTION = 'MAX_WIDTH_VIDEO_COLLECTION'
+    APP = 'APP'
 
     def __init__(self):  # noqa: E501
         """CreativeType - a model defined in Swagger

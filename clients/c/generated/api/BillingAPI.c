@@ -8,19 +8,19 @@
 #define MAX_BUFFER_LENGTH 4096
 #define MAX_NUMBER_LENGTH_LONG 21
 
-// Functions for enum SORT for BillingAPI_billingInvoicesGet
+// Functions for enum  for BillingAPI_billingInvoicesGet
 
-static char* billingInvoicesGet_SORT_ToString(pinterest_rest_api_billingInvoicesGet_sort_e SORT){
-    char *SORTArray[] =  { "NULL", "DUE_DATE", "BILLING_PERIOD", "DOCUMENT_TYPE", "TOTAL_AMOUNT", "INVOICE_NUMBER" };
-    return SORTArray[SORT];
+static char* billingInvoicesGet__ToString(pinterest_rest_api_billingInvoicesGet_order_e ){
+    char *Array[] =  { "NULL", "ASCENDING", "DESCENDING" };
+    return Array[];
 }
 
-static pinterest_rest_api_billingInvoicesGet_sort_e billingInvoicesGet_SORT_FromString(char* SORT){
+static pinterest_rest_api_billingInvoicesGet_order_e billingInvoicesGet__FromString(char* ){
     int stringToReturn = 0;
-    char *SORTArray[] =  { "NULL", "DUE_DATE", "BILLING_PERIOD", "DOCUMENT_TYPE", "TOTAL_AMOUNT", "INVOICE_NUMBER" };
-    size_t sizeofArray = sizeof(SORTArray) / sizeof(SORTArray[0]);
+    char *Array[] =  { "NULL", "ASCENDING", "DESCENDING" };
+    size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
     while(stringToReturn < sizeofArray) {
-        if(strcmp(SORT, SORTArray[stringToReturn]) == 0) {
+        if(strcmp(, Array[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -29,50 +29,41 @@ static pinterest_rest_api_billingInvoicesGet_sort_e billingInvoicesGet_SORT_From
 }
 
 /*
-// Function billingInvoicesGet_SORT_convertToJSON is not currently used,
+// Function billingInvoicesGet__convertToJSON is not currently used,
 // since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
 //
-static cJSON *billingInvoicesGet_SORT_convertToJSON(pinterest_rest_api_billingInvoicesGet_sort_e SORT) {
+static cJSON *billingInvoicesGet__convertToJSON(pinterest_rest_api_billingInvoicesGet_order_e ) {
     cJSON *item = cJSON_CreateObject();
-    if(cJSON_AddStringToObject(item, "sort", billingInvoicesGet_SORT_ToString(SORT)) == NULL) {
-        goto fail;
-    }
     return item;
     fail:
     cJSON_Delete(item);
     return NULL;
 }
 
-// Function billingInvoicesGet_SORT_parseFromJSON is not currently used,
+// Function billingInvoicesGet__parseFromJSON is not currently used,
 // since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
 //
-static pinterest_rest_api_billingInvoicesGet_sort_e billingInvoicesGet_SORT_parseFromJSON(cJSON* SORTJSON) {
-    pinterest_rest_api_billingInvoicesGet_sort_e SORTVariable = 0;
-    cJSON *SORTVar = cJSON_GetObjectItemCaseSensitive(SORTJSON, "sort");
-    if(!cJSON_IsString(SORTVar) || (SORTVar->valuestring == NULL))
-    {
-        goto end;
-    }
-    SORTVariable = billingInvoicesGet_SORT_FromString(SORTVar->valuestring);
-    return SORTVariable;
+static pinterest_rest_api_billingInvoicesGet_order_e billingInvoicesGet__parseFromJSON(cJSON* JSON) {
+    pinterest_rest_api_billingInvoicesGet_order_e Variable = 0;
+    return Variable;
 end:
     return 0;
 }
 */
 
-// Functions for enum ORDER for BillingAPI_billingInvoicesGet
+// Functions for enum  for BillingAPI_billingInvoicesGet
 
-static char* billingInvoicesGet_ORDER_ToString(pinterest_rest_api_billingInvoicesGet_order_e ORDER){
-    char *ORDERArray[] =  { "NULL", "ASCENDING", "DESCENDING" };
-    return ORDERArray[ORDER];
+static char* billingInvoicesGet__ToString(pinterest_rest_api_billingInvoicesGet_sort_e ){
+    char *Array[] =  { "NULL", "DUE_DATE", "BILLING_PERIOD", "DOCUMENT_TYPE", "TOTAL_AMOUNT", "INVOICE_NUMBER" };
+    return Array[];
 }
 
-static pinterest_rest_api_billingInvoicesGet_order_e billingInvoicesGet_ORDER_FromString(char* ORDER){
+static pinterest_rest_api_billingInvoicesGet_sort_e billingInvoicesGet__FromString(char* ){
     int stringToReturn = 0;
-    char *ORDERArray[] =  { "NULL", "ASCENDING", "DESCENDING" };
-    size_t sizeofArray = sizeof(ORDERArray) / sizeof(ORDERArray[0]);
+    char *Array[] =  { "NULL", "DUE_DATE", "BILLING_PERIOD", "DOCUMENT_TYPE", "TOTAL_AMOUNT", "INVOICE_NUMBER" };
+    size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
     while(stringToReturn < sizeofArray) {
-        if(strcmp(ORDER, ORDERArray[stringToReturn]) == 0) {
+        if(strcmp(, Array[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -81,50 +72,41 @@ static pinterest_rest_api_billingInvoicesGet_order_e billingInvoicesGet_ORDER_Fr
 }
 
 /*
-// Function billingInvoicesGet_ORDER_convertToJSON is not currently used,
+// Function billingInvoicesGet__convertToJSON is not currently used,
 // since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
 //
-static cJSON *billingInvoicesGet_ORDER_convertToJSON(pinterest_rest_api_billingInvoicesGet_order_e ORDER) {
+static cJSON *billingInvoicesGet__convertToJSON(pinterest_rest_api_billingInvoicesGet_sort_e ) {
     cJSON *item = cJSON_CreateObject();
-    if(cJSON_AddStringToObject(item, "order", billingInvoicesGet_ORDER_ToString(ORDER)) == NULL) {
-        goto fail;
-    }
     return item;
     fail:
     cJSON_Delete(item);
     return NULL;
 }
 
-// Function billingInvoicesGet_ORDER_parseFromJSON is not currently used,
+// Function billingInvoicesGet__parseFromJSON is not currently used,
 // since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
 //
-static pinterest_rest_api_billingInvoicesGet_order_e billingInvoicesGet_ORDER_parseFromJSON(cJSON* ORDERJSON) {
-    pinterest_rest_api_billingInvoicesGet_order_e ORDERVariable = 0;
-    cJSON *ORDERVar = cJSON_GetObjectItemCaseSensitive(ORDERJSON, "order");
-    if(!cJSON_IsString(ORDERVar) || (ORDERVar->valuestring == NULL))
-    {
-        goto end;
-    }
-    ORDERVariable = billingInvoicesGet_ORDER_FromString(ORDERVar->valuestring);
-    return ORDERVariable;
+static pinterest_rest_api_billingInvoicesGet_sort_e billingInvoicesGet__parseFromJSON(cJSON* JSON) {
+    pinterest_rest_api_billingInvoicesGet_sort_e Variable = 0;
+    return Variable;
 end:
     return 0;
 }
 */
 
-// Functions for enum STATUS for BillingAPI_billingInvoicesGet
+// Functions for enum  for BillingAPI_billingInvoicesGet
 
-static char* billingInvoicesGet_STATUS_ToString(pinterest_rest_api_billingInvoicesGet_status_e STATUS){
-    char *STATUSArray[] =  { "NULL", "OPEN", "CLOSED" };
-    return STATUSArray[STATUS];
+static char* billingInvoicesGet__ToString(pinterest_rest_api_billingInvoicesGet_status_e ){
+    char *Array[] =  { "NULL", "OPEN", "CLOSED" };
+    return Array[];
 }
 
-static pinterest_rest_api_billingInvoicesGet_status_e billingInvoicesGet_STATUS_FromString(char* STATUS){
+static pinterest_rest_api_billingInvoicesGet_status_e billingInvoicesGet__FromString(char* ){
     int stringToReturn = 0;
-    char *STATUSArray[] =  { "NULL", "OPEN", "CLOSED" };
-    size_t sizeofArray = sizeof(STATUSArray) / sizeof(STATUSArray[0]);
+    char *Array[] =  { "NULL", "OPEN", "CLOSED" };
+    size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
     while(stringToReturn < sizeofArray) {
-        if(strcmp(STATUS, STATUSArray[stringToReturn]) == 0) {
+        if(strcmp(, Array[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -133,50 +115,41 @@ static pinterest_rest_api_billingInvoicesGet_status_e billingInvoicesGet_STATUS_
 }
 
 /*
-// Function billingInvoicesGet_STATUS_convertToJSON is not currently used,
+// Function billingInvoicesGet__convertToJSON is not currently used,
 // since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
 //
-static cJSON *billingInvoicesGet_STATUS_convertToJSON(pinterest_rest_api_billingInvoicesGet_status_e STATUS) {
+static cJSON *billingInvoicesGet__convertToJSON(pinterest_rest_api_billingInvoicesGet_status_e ) {
     cJSON *item = cJSON_CreateObject();
-    if(cJSON_AddStringToObject(item, "status", billingInvoicesGet_STATUS_ToString(STATUS)) == NULL) {
-        goto fail;
-    }
     return item;
     fail:
     cJSON_Delete(item);
     return NULL;
 }
 
-// Function billingInvoicesGet_STATUS_parseFromJSON is not currently used,
+// Function billingInvoicesGet__parseFromJSON is not currently used,
 // since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
 //
-static pinterest_rest_api_billingInvoicesGet_status_e billingInvoicesGet_STATUS_parseFromJSON(cJSON* STATUSJSON) {
-    pinterest_rest_api_billingInvoicesGet_status_e STATUSVariable = 0;
-    cJSON *STATUSVar = cJSON_GetObjectItemCaseSensitive(STATUSJSON, "status");
-    if(!cJSON_IsString(STATUSVar) || (STATUSVar->valuestring == NULL))
-    {
-        goto end;
-    }
-    STATUSVariable = billingInvoicesGet_STATUS_FromString(STATUSVar->valuestring);
-    return STATUSVariable;
+static pinterest_rest_api_billingInvoicesGet_status_e billingInvoicesGet__parseFromJSON(cJSON* JSON) {
+    pinterest_rest_api_billingInvoicesGet_status_e Variable = 0;
+    return Variable;
 end:
     return 0;
 }
 */
 
-// Functions for enum DOCUMENTTYPE for BillingAPI_billingInvoicesGet
+// Functions for enum  for BillingAPI_billingInvoicesGet
 
-static char* billingInvoicesGet_DOCUMENTTYPE_ToString(pinterest_rest_api_billingInvoicesGet_document_type_e DOCUMENTTYPE){
-    char *DOCUMENTTYPEArray[] =  { "NULL", "INVOICE", "CREDIT_MEMO" };
-    return DOCUMENTTYPEArray[DOCUMENTTYPE];
+static char* billingInvoicesGet__ToString(pinterest_rest_api_billingInvoicesGet_document_type_e ){
+    char *Array[] =  { "NULL", "INVOICE", "CREDIT_MEMO" };
+    return Array[];
 }
 
-static pinterest_rest_api_billingInvoicesGet_document_type_e billingInvoicesGet_DOCUMENTTYPE_FromString(char* DOCUMENTTYPE){
+static pinterest_rest_api_billingInvoicesGet_document_type_e billingInvoicesGet__FromString(char* ){
     int stringToReturn = 0;
-    char *DOCUMENTTYPEArray[] =  { "NULL", "INVOICE", "CREDIT_MEMO" };
-    size_t sizeofArray = sizeof(DOCUMENTTYPEArray) / sizeof(DOCUMENTTYPEArray[0]);
+    char *Array[] =  { "NULL", "INVOICE", "CREDIT_MEMO" };
+    size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
     while(stringToReturn < sizeofArray) {
-        if(strcmp(DOCUMENTTYPE, DOCUMENTTYPEArray[stringToReturn]) == 0) {
+        if(strcmp(, Array[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -185,32 +158,23 @@ static pinterest_rest_api_billingInvoicesGet_document_type_e billingInvoicesGet_
 }
 
 /*
-// Function billingInvoicesGet_DOCUMENTTYPE_convertToJSON is not currently used,
+// Function billingInvoicesGet__convertToJSON is not currently used,
 // since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
 //
-static cJSON *billingInvoicesGet_DOCUMENTTYPE_convertToJSON(pinterest_rest_api_billingInvoicesGet_document_type_e DOCUMENTTYPE) {
+static cJSON *billingInvoicesGet__convertToJSON(pinterest_rest_api_billingInvoicesGet_document_type_e ) {
     cJSON *item = cJSON_CreateObject();
-    if(cJSON_AddStringToObject(item, "document_type", billingInvoicesGet_DOCUMENTTYPE_ToString(DOCUMENTTYPE)) == NULL) {
-        goto fail;
-    }
     return item;
     fail:
     cJSON_Delete(item);
     return NULL;
 }
 
-// Function billingInvoicesGet_DOCUMENTTYPE_parseFromJSON is not currently used,
+// Function billingInvoicesGet__parseFromJSON is not currently used,
 // since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
 //
-static pinterest_rest_api_billingInvoicesGet_document_type_e billingInvoicesGet_DOCUMENTTYPE_parseFromJSON(cJSON* DOCUMENTTYPEJSON) {
-    pinterest_rest_api_billingInvoicesGet_document_type_e DOCUMENTTYPEVariable = 0;
-    cJSON *DOCUMENTTYPEVar = cJSON_GetObjectItemCaseSensitive(DOCUMENTTYPEJSON, "document_type");
-    if(!cJSON_IsString(DOCUMENTTYPEVar) || (DOCUMENTTYPEVar->valuestring == NULL))
-    {
-        goto end;
-    }
-    DOCUMENTTYPEVariable = billingInvoicesGet_DOCUMENTTYPE_FromString(DOCUMENTTYPEVar->valuestring);
-    return DOCUMENTTYPEVariable;
+static pinterest_rest_api_billingInvoicesGet_document_type_e billingInvoicesGet__parseFromJSON(cJSON* JSON) {
+    pinterest_rest_api_billingInvoicesGet_document_type_e Variable = 0;
+    return Variable;
 end:
     return 0;
 }
@@ -219,10 +183,10 @@ end:
 
 // Redeem ad credits
 //
-// Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+// Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 //
-ads_credit_redeem_response_t*
-BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_credit_redeem_request_t *ads_credit_redeem_request)
+ads_credit_redeem_t*
+BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_credit_redeem_create_t *ads_credit_redeem_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -255,12 +219,12 @@ BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_cred
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_ads_credit_redeem_request = NULL;
-    if (ads_credit_redeem_request != NULL)
+    cJSON *localVarSingleItemJSON_ads_credit_redeem_create = NULL;
+    if (ads_credit_redeem_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_ads_credit_redeem_request = ads_credit_redeem_request_convertToJSON(ads_credit_redeem_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_ads_credit_redeem_request);
+        localVarSingleItemJSON_ads_credit_redeem_create = ads_credit_redeem_create_convertToJSON(ads_credit_redeem_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_ads_credit_redeem_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -278,21 +242,41 @@ BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_cred
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Successfully redeemed ad credits.");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Error thrown when unable to redeem offer code.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    ads_credit_redeem_response_t *elementToReturn = NULL;
+    ads_credit_redeem_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = ads_credit_redeem_response_parseFromJSON(BillingAPIlocalVarJSON);
+        elementToReturn = ads_credit_redeem_parseFromJSON(BillingAPIlocalVarJSON);
         cJSON_Delete(BillingAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -312,9 +296,9 @@ BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_cred
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarSingleItemJSON_ads_credit_redeem_request) {
-        cJSON_Delete(localVarSingleItemJSON_ads_credit_redeem_request);
-        localVarSingleItemJSON_ads_credit_redeem_request = NULL;
+    if (localVarSingleItemJSON_ads_credit_redeem_create) {
+        cJSON_Delete(localVarSingleItemJSON_ads_credit_redeem_create);
+        localVarSingleItemJSON_ads_credit_redeem_create = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -326,7 +310,7 @@ end:
 
 // Get ads credit discounts
 //
-// Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+// Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 //
 ads_credits_discounts_get_200_response_t*
 BillingAPI_adsCreditsDiscountsGet(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size)
@@ -399,11 +383,31 @@ BillingAPI_adsCreditsDiscountsGet(apiClient_t *apiClient, char *ad_account_id, c
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     ads_credits_discounts_get_200_response_t *elementToReturn = NULL;
@@ -522,15 +526,31 @@ BillingAPI_billingInvoiceDownloadGet(apiClient_t *apiClient, char *ad_account_id
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Successfully fetched Billing invoice information for a given ad account");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid request parameter.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     billing_invoice_download_response_t *elementToReturn = NULL;
@@ -569,7 +589,7 @@ end:
 // Get billing invoices in the advertiser account.
 //
 billing_invoices_get_200_response_t*
-BillingAPI_billingInvoicesGet(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_rest_api_billingInvoicesGet_sort_e sort, pinterest_rest_api_billingInvoicesGet_order_e order, pinterest_rest_api_billingInvoicesGet_status_e status, pinterest_rest_api_billingInvoicesGet_document_type_e document_type, char start_due_date, char end_due_date)
+BillingAPI_billingInvoicesGet(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_lib_pagination_order_e order, billing_invoice_sort_field_e sort, billing_invoice_status_e status, billing_invoice_document_type_e document_type, char start_due_date, char end_due_date)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -627,54 +647,54 @@ BillingAPI_billingInvoicesGet(apiClient_t *apiClient, char *ad_account_id, char 
     }
 
     // query parameters
-    char *keyQuery_sort = NULL;
-    pinterest_rest_api_billingInvoicesGet_sort_e valueQuery_sort ;
-    keyValuePair_t *keyPairQuery_sort = 0;
-    if (sort)
-    {
-        keyQuery_sort = strdup("sort");
-        valueQuery_sort = (sort);
-        keyPairQuery_sort = keyValuePair_create(keyQuery_sort, strdup(billingInvoicesGet_SORT_ToString(
-        valueQuery_sort)));
-        list_addElement(localVarQueryParameters,keyPairQuery_sort);
-    }
-
-    // query parameters
     char *keyQuery_order = NULL;
-    pinterest_rest_api_billingInvoicesGet_order_e valueQuery_order ;
+    pinterest_lib_pagination_order_e valueQuery_order ;
     keyValuePair_t *keyPairQuery_order = 0;
     if (order)
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(billingInvoicesGet_ORDER_ToString(
-        valueQuery_order)));
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(billingInvoicesGet__ToString(
+        &valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
     }
 
     // query parameters
+    char *keyQuery_sort = NULL;
+    billing_invoice_sort_field_e valueQuery_sort ;
+    keyValuePair_t *keyPairQuery_sort = 0;
+    if (sort)
+    {
+        keyQuery_sort = strdup("sort");
+        valueQuery_sort = (sort);
+        keyPairQuery_sort = keyValuePair_create(keyQuery_sort, strdup(billingInvoicesGet__ToString(
+        &valueQuery_sort)));
+        list_addElement(localVarQueryParameters,keyPairQuery_sort);
+    }
+
+    // query parameters
     char *keyQuery_status = NULL;
-    pinterest_rest_api_billingInvoicesGet_status_e valueQuery_status ;
+    billing_invoice_status_e valueQuery_status ;
     keyValuePair_t *keyPairQuery_status = 0;
     if (status)
     {
         keyQuery_status = strdup("status");
         valueQuery_status = (status);
-        keyPairQuery_status = keyValuePair_create(keyQuery_status, strdup(billingInvoicesGet_STATUS_ToString(
-        valueQuery_status)));
+        keyPairQuery_status = keyValuePair_create(keyQuery_status, strdup(billingInvoicesGet__ToString(
+        &valueQuery_status)));
         list_addElement(localVarQueryParameters,keyPairQuery_status);
     }
 
     // query parameters
     char *keyQuery_document_type = NULL;
-    pinterest_rest_api_billingInvoicesGet_document_type_e valueQuery_document_type ;
+    billing_invoice_document_type_e valueQuery_document_type ;
     keyValuePair_t *keyPairQuery_document_type = 0;
     if (document_type)
     {
         keyQuery_document_type = strdup("document_type");
         valueQuery_document_type = (document_type);
-        keyPairQuery_document_type = keyValuePair_create(keyQuery_document_type, strdup(billingInvoicesGet_DOCUMENTTYPE_ToString(
-        valueQuery_document_type)));
+        keyPairQuery_document_type = keyValuePair_create(keyQuery_document_type, strdup(billingInvoicesGet__ToString(
+        &valueQuery_document_type)));
         list_addElement(localVarQueryParameters,keyPairQuery_document_type);
     }
 
@@ -715,15 +735,31 @@ BillingAPI_billingInvoicesGet(apiClient_t *apiClient, char *ad_account_id, char 
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid request parameter.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     billing_invoices_get_200_response_t *elementToReturn = NULL;
@@ -773,14 +809,6 @@ BillingAPI_billingInvoicesGet(apiClient_t *apiClient, char *ad_account_id, char 
         keyValuePair_free(keyPairQuery_page_size);
         keyPairQuery_page_size = NULL;
     }
-    if(keyQuery_sort){
-        free(keyQuery_sort);
-        keyQuery_sort = NULL;
-    }
-    if(keyPairQuery_sort){
-        keyValuePair_free(keyPairQuery_sort);
-        keyPairQuery_sort = NULL;
-    }
     if(keyQuery_order){
         free(keyQuery_order);
         keyQuery_order = NULL;
@@ -788,6 +816,14 @@ BillingAPI_billingInvoicesGet(apiClient_t *apiClient, char *ad_account_id, char 
     if(keyPairQuery_order){
         keyValuePair_free(keyPairQuery_order);
         keyPairQuery_order = NULL;
+    }
+    if(keyQuery_sort){
+        free(keyQuery_sort);
+        keyQuery_sort = NULL;
+    }
+    if(keyPairQuery_sort){
+        keyValuePair_free(keyPairQuery_sort);
+        keyPairQuery_sort = NULL;
     }
     if(keyQuery_status){
         free(keyQuery_status);
@@ -830,10 +866,10 @@ end:
 
 // Get billing profiles
 //
-// Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+// Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 //
 billing_profiles_get_200_response_t*
-BillingAPI_billingProfilesGet(apiClient_t *apiClient, char *ad_account_id, int *is_active, char *bookmark, int *page_size)
+BillingAPI_billingProfilesGet(apiClient_t *apiClient, int *is_active, char *ad_account_id, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -916,11 +952,31 @@ BillingAPI_billingProfilesGet(apiClient_t *apiClient, char *ad_account_id, int *
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     billing_profiles_get_200_response_t *elementToReturn = NULL;
@@ -991,9 +1047,9 @@ end:
 
 // Get Salesforce account details including bill-to information.
 //
-// Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+//   Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 //
-ssio_account_response_t*
+ssio_account_t*
 BillingAPI_ssioAccountsGet(apiClient_t *apiClient, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -1039,21 +1095,37 @@ BillingAPI_ssioAccountsGet(apiClient_t *apiClient, char *ad_account_id)
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid request parameter.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    ssio_account_response_t *elementToReturn = NULL;
+    ssio_account_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = ssio_account_response_parseFromJSON(BillingAPIlocalVarJSON);
+        elementToReturn = ssio_account_parseFromJSON(BillingAPIlocalVarJSON);
         cJSON_Delete(BillingAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -1082,10 +1154,10 @@ end:
 
 // Create insertion order through SSIO.
 //
-// Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+//   Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 //
-ssio_create_insertion_order_response_t*
-BillingAPI_ssioInsertionOrderCreate(apiClient_t *apiClient, char *ad_account_id, ssio_create_insertion_order_request_t *ssio_create_insertion_order_request)
+ssio_insertion_order_t*
+BillingAPI_ssioInsertionOrderCreate(apiClient_t *apiClient, char *ad_account_id, ssio_insertion_order_create_t *ssio_insertion_order_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -1118,12 +1190,12 @@ BillingAPI_ssioInsertionOrderCreate(apiClient_t *apiClient, char *ad_account_id,
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_ssio_create_insertion_order_request = NULL;
-    if (ssio_create_insertion_order_request != NULL)
+    cJSON *localVarSingleItemJSON_ssio_insertion_order_create = NULL;
+    if (ssio_insertion_order_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_ssio_create_insertion_order_request = ssio_create_insertion_order_request_convertToJSON(ssio_create_insertion_order_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_ssio_create_insertion_order_request);
+        localVarSingleItemJSON_ssio_insertion_order_create = ssio_insertion_order_create_convertToJSON(ssio_insertion_order_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_ssio_insertion_order_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -1141,21 +1213,41 @@ BillingAPI_ssioInsertionOrderCreate(apiClient_t *apiClient, char *ad_account_id,
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid request.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    ssio_create_insertion_order_response_t *elementToReturn = NULL;
+    ssio_insertion_order_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = ssio_create_insertion_order_response_parseFromJSON(BillingAPIlocalVarJSON);
+        elementToReturn = ssio_insertion_order_parseFromJSON(BillingAPIlocalVarJSON);
         cJSON_Delete(BillingAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -1175,9 +1267,9 @@ BillingAPI_ssioInsertionOrderCreate(apiClient_t *apiClient, char *ad_account_id,
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarSingleItemJSON_ssio_create_insertion_order_request) {
-        cJSON_Delete(localVarSingleItemJSON_ssio_create_insertion_order_request);
-        localVarSingleItemJSON_ssio_create_insertion_order_request = NULL;
+    if (localVarSingleItemJSON_ssio_insertion_order_create) {
+        cJSON_Delete(localVarSingleItemJSON_ssio_insertion_order_create);
+        localVarSingleItemJSON_ssio_insertion_order_create = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -1189,10 +1281,10 @@ end:
 
 // Edit insertion order through SSIO.
 //
-// Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+//   Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 //
-ssio_edit_insertion_order_response_t*
-BillingAPI_ssioInsertionOrderEdit(apiClient_t *apiClient, char *ad_account_id, ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request)
+ssio_insertion_order_t*
+BillingAPI_ssioInsertionOrderEdit(apiClient_t *apiClient, char *ad_account_id, ssio_insertion_order_update_t *ssio_insertion_order_update)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -1225,12 +1317,12 @@ BillingAPI_ssioInsertionOrderEdit(apiClient_t *apiClient, char *ad_account_id, s
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_ssio_edit_insertion_order_request = NULL;
-    if (ssio_edit_insertion_order_request != NULL)
+    cJSON *localVarSingleItemJSON_ssio_insertion_order_update = NULL;
+    if (ssio_insertion_order_update != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_ssio_edit_insertion_order_request = ssio_edit_insertion_order_request_convertToJSON(ssio_edit_insertion_order_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_ssio_edit_insertion_order_request);
+        localVarSingleItemJSON_ssio_insertion_order_update = ssio_insertion_order_update_convertToJSON(ssio_insertion_order_update);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_ssio_insertion_order_update);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -1248,21 +1340,37 @@ BillingAPI_ssioInsertionOrderEdit(apiClient_t *apiClient, char *ad_account_id, s
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid request.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    ssio_edit_insertion_order_response_t *elementToReturn = NULL;
+    ssio_insertion_order_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = ssio_edit_insertion_order_response_parseFromJSON(BillingAPIlocalVarJSON);
+        elementToReturn = ssio_insertion_order_parseFromJSON(BillingAPIlocalVarJSON);
         cJSON_Delete(BillingAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -1282,9 +1390,9 @@ BillingAPI_ssioInsertionOrderEdit(apiClient_t *apiClient, char *ad_account_id, s
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarSingleItemJSON_ssio_edit_insertion_order_request) {
-        cJSON_Delete(localVarSingleItemJSON_ssio_edit_insertion_order_request);
-        localVarSingleItemJSON_ssio_edit_insertion_order_request = NULL;
+    if (localVarSingleItemJSON_ssio_insertion_order_update) {
+        cJSON_Delete(localVarSingleItemJSON_ssio_insertion_order_update);
+        localVarSingleItemJSON_ssio_insertion_order_update = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -1296,7 +1404,7 @@ end:
 
 // Get insertion order status by ad account id.
 //
-// Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+//   Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 //
 ssio_insertion_orders_status_get_by_ad_account_200_response_t*
 BillingAPI_ssioInsertionOrdersStatusGetByAdAccount(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size)
@@ -1369,15 +1477,31 @@ BillingAPI_ssioInsertionOrdersStatusGetByAdAccount(apiClient_t *apiClient, char 
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid request parameter.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     ssio_insertion_orders_status_get_by_ad_account_200_response_t *elementToReturn = NULL;
@@ -1436,7 +1560,7 @@ end:
 
 // Get insertion order status by pin order id.
 //
-// Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+//   Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 //
 ssio_insertion_order_status_response_t*
 BillingAPI_ssioInsertionOrdersStatusGetByPinOrderId(apiClient_t *apiClient, char *ad_account_id, char *pin_order_id)
@@ -1496,15 +1620,31 @@ BillingAPI_ssioInsertionOrdersStatusGetByPinOrderId(apiClient_t *apiClient, char
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid request parameter.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     ssio_insertion_order_status_response_t *elementToReturn = NULL;
@@ -1540,10 +1680,10 @@ end:
 
 // Get Salesforce order lines by ad account id.
 //
-// Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+//   Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 //
 ssio_order_lines_get_by_ad_account_200_response_t*
-BillingAPI_ssioOrderLinesGetByAdAccount(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, char *pin_order_id)
+BillingAPI_ssioOrderLinesGetByAdAccount(apiClient_t *apiClient, char *ad_account_id, char *pin_order_id, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1576,6 +1716,18 @@ BillingAPI_ssioOrderLinesGetByAdAccount(apiClient_t *apiClient, char *ad_account
 
 
     // query parameters
+    char *keyQuery_pin_order_id = NULL;
+    char * valueQuery_pin_order_id = NULL;
+    keyValuePair_t *keyPairQuery_pin_order_id = 0;
+    if (pin_order_id)
+    {
+        keyQuery_pin_order_id = strdup("pin_order_id");
+        valueQuery_pin_order_id = strdup((pin_order_id));
+        keyPairQuery_pin_order_id = keyValuePair_create(keyQuery_pin_order_id, valueQuery_pin_order_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_pin_order_id);
+    }
+
+    // query parameters
     char *keyQuery_bookmark = NULL;
     char * valueQuery_bookmark = NULL;
     keyValuePair_t *keyPairQuery_bookmark = 0;
@@ -1599,18 +1751,6 @@ BillingAPI_ssioOrderLinesGetByAdAccount(apiClient_t *apiClient, char *ad_account
         keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
         list_addElement(localVarQueryParameters,keyPairQuery_page_size);
     }
-
-    // query parameters
-    char *keyQuery_pin_order_id = NULL;
-    char * valueQuery_pin_order_id = NULL;
-    keyValuePair_t *keyPairQuery_pin_order_id = 0;
-    if (pin_order_id)
-    {
-        keyQuery_pin_order_id = strdup("pin_order_id");
-        valueQuery_pin_order_id = strdup((pin_order_id));
-        keyPairQuery_pin_order_id = keyValuePair_create(keyQuery_pin_order_id, valueQuery_pin_order_id);
-        list_addElement(localVarQueryParameters,keyPairQuery_pin_order_id);
-    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -1625,15 +1765,31 @@ BillingAPI_ssioOrderLinesGetByAdAccount(apiClient_t *apiClient, char *ad_account
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid request parameter.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     ssio_order_lines_get_by_ad_account_200_response_t *elementToReturn = NULL;
@@ -1659,6 +1815,18 @@ BillingAPI_ssioOrderLinesGetByAdAccount(apiClient_t *apiClient, char *ad_account
     
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
+    if(keyQuery_pin_order_id){
+        free(keyQuery_pin_order_id);
+        keyQuery_pin_order_id = NULL;
+    }
+    if(valueQuery_pin_order_id){
+        free(valueQuery_pin_order_id);
+        valueQuery_pin_order_id = NULL;
+    }
+    if(keyPairQuery_pin_order_id){
+        keyValuePair_free(keyPairQuery_pin_order_id);
+        keyPairQuery_pin_order_id = NULL;
+    }
     if(keyQuery_bookmark){
         free(keyQuery_bookmark);
         keyQuery_bookmark = NULL;
@@ -1682,18 +1850,6 @@ BillingAPI_ssioOrderLinesGetByAdAccount(apiClient_t *apiClient, char *ad_account
     if(keyPairQuery_page_size){
         keyValuePair_free(keyPairQuery_page_size);
         keyPairQuery_page_size = NULL;
-    }
-    if(keyQuery_pin_order_id){
-        free(keyQuery_pin_order_id);
-        keyQuery_pin_order_id = NULL;
-    }
-    if(valueQuery_pin_order_id){
-        free(valueQuery_pin_order_id);
-        valueQuery_pin_order_id = NULL;
-    }
-    if(keyPairQuery_pin_order_id){
-        keyValuePair_free(keyPairQuery_pin_order_id);
-        keyPairQuery_pin_order_id = NULL;
     }
     return elementToReturn;
 end:

@@ -19,10 +19,7 @@ public class BusinessAssetMembersGet200Response  {
   @ApiModelProperty(value = "")
   private String bookmark;
 
- /**
-  * List of members with permissions to the asset.
-  */
-  @ApiModelProperty(required = true, value = "List of members with permissions to the asset.")
+  @ApiModelProperty(required = true, value = "")
   @Valid
   private List<@Valid UserSingleAssetBinding> items = new ArrayList<>();
  /**
@@ -50,7 +47,7 @@ public class BusinessAssetMembersGet200Response  {
   }
 
  /**
-  * List of members with permissions to the asset.
+  * Get items
   * @return items
   */
   @JsonProperty("items")
@@ -117,10 +114,7 @@ public class BusinessAssetMembersGet200Response  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

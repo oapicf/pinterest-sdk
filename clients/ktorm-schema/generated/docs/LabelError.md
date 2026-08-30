@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**data** | data | long |  | [**Label**](Label.md) |  |  [optional] [foreignkey]
+**data** | data | long |  | [**LabelErrorData**](LabelErrorData.md) |  |  [optional] [foreignkey]
 **errorMessages** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 
 

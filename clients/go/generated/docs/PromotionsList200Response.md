@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]PromotionResponse**](PromotionResponse.md) |  | 
+**Items** | [**[]Promotion**](Promotion.md) |  | 
 
 ## Methods
 
 ### NewPromotionsList200Response
 
-`func NewPromotionsList200Response(items []PromotionResponse, ) *PromotionsList200Response`
+`func NewPromotionsList200Response(items []Promotion, ) *PromotionsList200Response`
 
 NewPromotionsList200Response instantiates a new PromotionsList200Response object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ HasBookmark returns a boolean if a field has been set.
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
 ### GetItems
 
-`func (o *PromotionsList200Response) GetItems() []PromotionResponse`
+`func (o *PromotionsList200Response) GetItems() []Promotion`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *PromotionsList200Response) GetItemsOk() (*[]PromotionResponse, bool)`
+`func (o *PromotionsList200Response) GetItemsOk() (*[]Promotion, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *PromotionsList200Response) SetItems(v []PromotionResponse)`
+`func (o *PromotionsList200Response) SetItems(v []Promotion)`
 
 SetItems sets Items field to given value.
 

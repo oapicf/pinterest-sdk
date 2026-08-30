@@ -12,18 +12,21 @@ static integration_logs_invalid_log_response_t *integration_logs_invalid_log_res
     if (!integration_logs_invalid_log_response_local_var) {
         return NULL;
     }
-    integration_logs_invalid_log_response_local_var->rejected_logs = rejected_logs;
-
+    memset(integration_logs_invalid_log_response_local_var, 0, sizeof(integration_logs_invalid_log_response_t));
     integration_logs_invalid_log_response_local_var->_library_owned = 1;
+    integration_logs_invalid_log_response_local_var->rejected_logs = rejected_logs;
     return integration_logs_invalid_log_response_local_var;
 }
 
 __attribute__((deprecated)) integration_logs_invalid_log_response_t *integration_logs_invalid_log_response_create(
     list_t *rejected_logs
     ) {
-    return integration_logs_invalid_log_response_create_internal (
+    integration_logs_invalid_log_response_t *result = integration_logs_invalid_log_response_create_internal (
         rejected_logs
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void integration_logs_invalid_log_response_free(integration_logs_invalid_log_response_t *integration_logs_invalid_log_response) {
@@ -37,7 +40,7 @@ void integration_logs_invalid_log_response_free(integration_logs_invalid_log_res
     listEntry_t *listEntry;
     if (integration_logs_invalid_log_response->rejected_logs) {
         list_ForEach(listEntry, integration_logs_invalid_log_response->rejected_logs) {
-            integration_logs_invalid_log_response_rejected_logs_inner_free(listEntry->data);
+            integration_logs_invalid_log_response_rejected_logs_items_free(listEntry->data);
         }
         list_freeList(integration_logs_invalid_log_response->rejected_logs);
         integration_logs_invalid_log_response->rejected_logs = NULL;
@@ -58,7 +61,7 @@ cJSON *integration_logs_invalid_log_response_convertToJSON(integration_logs_inva
     listEntry_t *rejected_logsListEntry;
     if (integration_logs_invalid_log_response->rejected_logs) {
     list_ForEach(rejected_logsListEntry, integration_logs_invalid_log_response->rejected_logs) {
-    cJSON *itemLocal = integration_logs_invalid_log_response_rejected_logs_inner_convertToJSON(rejected_logsListEntry->data);
+    cJSON *itemLocal = integration_logs_invalid_log_response_rejected_logs_items_convertToJSON(rejected_logsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -100,23 +103,28 @@ integration_logs_invalid_log_response_t *integration_logs_invalid_log_response_p
         if(!cJSON_IsObject(rejected_logs_local_nonprimitive)){
             goto end;
         }
-        integration_logs_invalid_log_response_rejected_logs_inner_t *rejected_logsItem = integration_logs_invalid_log_response_rejected_logs_inner_parseFromJSON(rejected_logs_local_nonprimitive);
+        integration_logs_invalid_log_response_rejected_logs_items_t *rejected_logsItem = integration_logs_invalid_log_response_rejected_logs_items_parseFromJSON(rejected_logs_local_nonprimitive);
 
         list_addElement(rejected_logsList, rejected_logsItem);
     }
     }
 
 
+
     integration_logs_invalid_log_response_local_var = integration_logs_invalid_log_response_create_internal (
         rejected_logs ? rejected_logsList : NULL
         );
+
+    if (!integration_logs_invalid_log_response_local_var) {
+        goto end;
+    }
 
     return integration_logs_invalid_log_response_local_var;
 end:
     if (rejected_logsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, rejected_logsList) {
-            integration_logs_invalid_log_response_rejected_logs_inner_free(listEntry->data);
+            integration_logs_invalid_log_response_rejected_logs_items_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(rejected_logsList);

@@ -13,14 +13,23 @@ part of openapi.api;
 class CampaignBidOptionsUpdate {
   /// Returns a new [CampaignBidOptionsUpdate] instance.
   CampaignBidOptionsUpdate({
+    this.ageBucketMultipliers,
     this.appTypeMultipliers,
     this.audienceMultipliers,
+    this.freqBidMultiplierTimeWindow,
+    this.frequencyMultipliers,
+    this.genderMultipliers,
     this.placementMultipliers,
     this.updateMask = const [],
   });
 
+  /// Age bucket multipliers for bid adjustments.
+  AgeBucketMultipliers? ageBucketMultipliers;
+
+  /// App type multipliers for bid adjustments.
   AppTypeMultipliers? appTypeMultipliers;
 
+  /// Audience multipliers for bid adjustments.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -29,31 +38,54 @@ class CampaignBidOptionsUpdate {
   ///
   CampaignAudienceMultipliers? audienceMultipliers;
 
+  /// The time window for frequency bid multipliers.
+  FreqBidMultiplierTimeWindow? freqBidMultiplierTimeWindow;
+
+  /// Frequency multipliers for bid adjustments.
+  FrequencyMultipliers? frequencyMultipliers;
+
+  /// Gender multipliers for bid adjustments.
+  GenderMultipliers? genderMultipliers;
+
+  /// Placement multipliers for bid adjustments.
   PlacementMultipliers? placementMultipliers;
 
-  /// List of fields to update, only the fields in the list will be updated.
-  List<CampaignBidOptionsUpdateUpdateMaskEnum> updateMask;
+  /// List of fields to update. Only the fields in the list will be updated.
+  List<CampaignBidOptionsUpdateMaskItems> updateMask;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CampaignBidOptionsUpdate &&
+    other.ageBucketMultipliers == ageBucketMultipliers &&
     other.appTypeMultipliers == appTypeMultipliers &&
     other.audienceMultipliers == audienceMultipliers &&
+    other.freqBidMultiplierTimeWindow == freqBidMultiplierTimeWindow &&
+    other.frequencyMultipliers == frequencyMultipliers &&
+    other.genderMultipliers == genderMultipliers &&
     other.placementMultipliers == placementMultipliers &&
     _deepEquality.equals(other.updateMask, updateMask);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (ageBucketMultipliers == null ? 0 : ageBucketMultipliers!.hashCode) +
     (appTypeMultipliers == null ? 0 : appTypeMultipliers!.hashCode) +
     (audienceMultipliers == null ? 0 : audienceMultipliers!.hashCode) +
+    (freqBidMultiplierTimeWindow == null ? 0 : freqBidMultiplierTimeWindow!.hashCode) +
+    (frequencyMultipliers == null ? 0 : frequencyMultipliers!.hashCode) +
+    (genderMultipliers == null ? 0 : genderMultipliers!.hashCode) +
     (placementMultipliers == null ? 0 : placementMultipliers!.hashCode) +
     (updateMask.hashCode);
 
   @override
-  String toString() => 'CampaignBidOptionsUpdate[appTypeMultipliers=$appTypeMultipliers, audienceMultipliers=$audienceMultipliers, placementMultipliers=$placementMultipliers, updateMask=$updateMask]';
+  String toString() => 'CampaignBidOptionsUpdate[ageBucketMultipliers=$ageBucketMultipliers, appTypeMultipliers=$appTypeMultipliers, audienceMultipliers=$audienceMultipliers, freqBidMultiplierTimeWindow=$freqBidMultiplierTimeWindow, frequencyMultipliers=$frequencyMultipliers, genderMultipliers=$genderMultipliers, placementMultipliers=$placementMultipliers, updateMask=$updateMask]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.ageBucketMultipliers != null) {
+      json[r'age_bucket_multipliers'] = this.ageBucketMultipliers;
+    } else {
+      json[r'age_bucket_multipliers'] = null;
+    }
     if (this.appTypeMultipliers != null) {
       json[r'app_type_multipliers'] = this.appTypeMultipliers;
     } else {
@@ -63,6 +95,21 @@ class CampaignBidOptionsUpdate {
       json[r'audience_multipliers'] = this.audienceMultipliers;
     } else {
       json[r'audience_multipliers'] = null;
+    }
+    if (this.freqBidMultiplierTimeWindow != null) {
+      json[r'freq_bid_multiplier_time_window'] = this.freqBidMultiplierTimeWindow;
+    } else {
+      json[r'freq_bid_multiplier_time_window'] = null;
+    }
+    if (this.frequencyMultipliers != null) {
+      json[r'frequency_multipliers'] = this.frequencyMultipliers;
+    } else {
+      json[r'frequency_multipliers'] = null;
+    }
+    if (this.genderMultipliers != null) {
+      json[r'gender_multipliers'] = this.genderMultipliers;
+    } else {
+      json[r'gender_multipliers'] = null;
     }
     if (this.placementMultipliers != null) {
       json[r'placement_multipliers'] = this.placementMultipliers;
@@ -84,18 +131,20 @@ class CampaignBidOptionsUpdate {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CampaignBidOptionsUpdate[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CampaignBidOptionsUpdate[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'update_mask'), 'Required key "CampaignBidOptionsUpdate[update_mask]" is missing from JSON.');
+        assert(json[r'update_mask'] != null, 'Required key "CampaignBidOptionsUpdate[update_mask]" has a null value in JSON.');
         return true;
       }());
 
       return CampaignBidOptionsUpdate(
+        ageBucketMultipliers: AgeBucketMultipliers.fromJson(json[r'age_bucket_multipliers']),
         appTypeMultipliers: AppTypeMultipliers.fromJson(json[r'app_type_multipliers']),
         audienceMultipliers: CampaignAudienceMultipliers.fromJson(json[r'audience_multipliers']),
+        freqBidMultiplierTimeWindow: FreqBidMultiplierTimeWindow.fromJson(json[r'freq_bid_multiplier_time_window']),
+        frequencyMultipliers: FrequencyMultipliers.fromJson(json[r'frequency_multipliers']),
+        genderMultipliers: GenderMultipliers.fromJson(json[r'gender_multipliers']),
         placementMultipliers: PlacementMultipliers.fromJson(json[r'placement_multipliers']),
-        updateMask: CampaignBidOptionsUpdateUpdateMaskEnum.listFromJson(json[r'update_mask']),
+        updateMask: CampaignBidOptionsUpdateMaskItems.listFromJson(json[r'update_mask']),
       );
     }
     return null;
@@ -146,87 +195,4 @@ class CampaignBidOptionsUpdate {
     'update_mask',
   };
 }
-
-
-class CampaignBidOptionsUpdateUpdateMaskEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CampaignBidOptionsUpdateUpdateMaskEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const AUDIENCE = CampaignBidOptionsUpdateUpdateMaskEnum._(r'AUDIENCE');
-  static const APP_TYPE = CampaignBidOptionsUpdateUpdateMaskEnum._(r'APP_TYPE');
-  static const PLACEMENT = CampaignBidOptionsUpdateUpdateMaskEnum._(r'PLACEMENT');
-  static const GENDER = CampaignBidOptionsUpdateUpdateMaskEnum._(r'GENDER');
-  static const AGE_BUCKET = CampaignBidOptionsUpdateUpdateMaskEnum._(r'AGE_BUCKET');
-
-  /// List of all possible values in this [enum][CampaignBidOptionsUpdateUpdateMaskEnum].
-  static const values = <CampaignBidOptionsUpdateUpdateMaskEnum>[
-    AUDIENCE,
-    APP_TYPE,
-    PLACEMENT,
-    GENDER,
-    AGE_BUCKET,
-  ];
-
-  static CampaignBidOptionsUpdateUpdateMaskEnum? fromJson(dynamic value) => CampaignBidOptionsUpdateUpdateMaskEnumTypeTransformer().decode(value);
-
-  static List<CampaignBidOptionsUpdateUpdateMaskEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CampaignBidOptionsUpdateUpdateMaskEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = CampaignBidOptionsUpdateUpdateMaskEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [CampaignBidOptionsUpdateUpdateMaskEnum] to String,
-/// and [decode] dynamic data back to [CampaignBidOptionsUpdateUpdateMaskEnum].
-class CampaignBidOptionsUpdateUpdateMaskEnumTypeTransformer {
-  factory CampaignBidOptionsUpdateUpdateMaskEnumTypeTransformer() => _instance ??= const CampaignBidOptionsUpdateUpdateMaskEnumTypeTransformer._();
-
-  const CampaignBidOptionsUpdateUpdateMaskEnumTypeTransformer._();
-
-  String encode(CampaignBidOptionsUpdateUpdateMaskEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a CampaignBidOptionsUpdateUpdateMaskEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  CampaignBidOptionsUpdateUpdateMaskEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'AUDIENCE': return CampaignBidOptionsUpdateUpdateMaskEnum.AUDIENCE;
-        case r'APP_TYPE': return CampaignBidOptionsUpdateUpdateMaskEnum.APP_TYPE;
-        case r'PLACEMENT': return CampaignBidOptionsUpdateUpdateMaskEnum.PLACEMENT;
-        case r'GENDER': return CampaignBidOptionsUpdateUpdateMaskEnum.GENDER;
-        case r'AGE_BUCKET': return CampaignBidOptionsUpdateUpdateMaskEnum.AGE_BUCKET;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [CampaignBidOptionsUpdateUpdateMaskEnumTypeTransformer] instance.
-  static CampaignBidOptionsUpdateUpdateMaskEnumTypeTransformer? _instance;
-}
-
 

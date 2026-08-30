@@ -11,7 +11,6 @@ import java.util.List;
 import org.openapitools.model.CatalogsCreativeAssetsItemsPostFilter;
 import org.openapitools.model.CatalogsHotelItemsPostFilter;
 import org.openapitools.model.CatalogsRetailItemsPostFilter;
-import org.openapitools.model.CatalogsType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -28,15 +27,43 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsItemsPostFilters  {
   
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private CatalogsType catalogType;
-
  /**
   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   */
   @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
   private String catalogId;
+
+public enum CatalogTypeEnum {
+
+    @JsonProperty("CREATIVE_ASSETS") CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
+
+    private String value;
+
+    CatalogTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  @ApiModelProperty(required = true, value = "")
+  private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
   private List<String> itemIds = new ArrayList<>();
@@ -46,31 +73,6 @@ public class CatalogsItemsPostFilters  {
 
   @ApiModelProperty(required = true, value = "")
   private List<String> creativeAssetsIds = new ArrayList<>();
- /**
-  * Get catalogType
-  * @return catalogType
-  */
-  @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  /**
-   * Sets the <code>catalogType</code> property.
-   */
- public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
-  /**
-   * Sets the <code>catalogType</code> property.
-   */
-  public CatalogsItemsPostFilters catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
  /**
   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   * @return catalogId
@@ -92,6 +94,31 @@ public class CatalogsItemsPostFilters  {
    */
   public CatalogsItemsPostFilters catalogId(String catalogId) {
     this.catalogId = catalogId;
+    return this;
+  }
+
+ /**
+  * Get catalogType
+  * @return catalogType
+  */
+  @JsonProperty("catalog_type")
+  @NotNull
+  public String getCatalogType() {
+    return catalogType == null ? null : catalogType.value();
+  }
+
+  /**
+   * Sets the <code>catalogType</code> property.
+   */
+ public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
+  }
+
+  /**
+   * Sets the <code>catalogType</code> property.
+   */
+  public CatalogsItemsPostFilters catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
@@ -204,8 +231,8 @@ public class CatalogsItemsPostFilters  {
       return false;
     }
     CatalogsItemsPostFilters catalogsItemsPostFilters = (CatalogsItemsPostFilters) o;
-    return Objects.equals(this.catalogType, catalogsItemsPostFilters.catalogType) &&
-        Objects.equals(this.catalogId, catalogsItemsPostFilters.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsItemsPostFilters.catalogId) &&
+        Objects.equals(this.catalogType, catalogsItemsPostFilters.catalogType) &&
         Objects.equals(this.itemIds, catalogsItemsPostFilters.itemIds) &&
         Objects.equals(this.hotelIds, catalogsItemsPostFilters.hotelIds) &&
         Objects.equals(this.creativeAssetsIds, catalogsItemsPostFilters.creativeAssetsIds);
@@ -213,7 +240,7 @@ public class CatalogsItemsPostFilters  {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, itemIds, hotelIds, creativeAssetsIds);
+    return Objects.hash(catalogId, catalogType, itemIds, hotelIds, creativeAssetsIds);
   }
 
   @Override
@@ -221,8 +248,8 @@ public class CatalogsItemsPostFilters  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemsPostFilters {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
@@ -235,10 +262,7 @@ public class CatalogsItemsPostFilters  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

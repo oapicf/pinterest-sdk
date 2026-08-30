@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Method used to verify website ownership.",
+  "name": "WebsiteVerificationMethod",
+  "symbols": [
+    "FILENAME",
+    "METATAG",
+    "DNSTXT"
+  ]
+}

@@ -64,7 +64,7 @@ CatalogsHotelProductMetadata::getHotelId()
 }
 
 void
-CatalogsHotelProductMetadata::setHotelId(std::string  hotel_id)
+CatalogsHotelProductMetadata::setHotelId(std::string hotel_id)
 {
 	this->hotel_id = hotel_id;
 }

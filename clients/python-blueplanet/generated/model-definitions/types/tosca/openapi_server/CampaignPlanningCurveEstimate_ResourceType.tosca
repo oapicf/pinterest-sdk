@@ -1,0 +1,43 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignPlanningCurveEstimate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignPlanningCurveEstimate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CampaignPlanningEstimationType = openapi_server.resourceTypes.CampaignPlanningEstimationType
+  CampaignPlanningPointEstimate = openapi_server.resourceTypes.CampaignPlanningPointEstimate
+}
+resourceTypes {
+
+  CampaignPlanningCurveEstimate {
+    title = CampaignPlanningCurveEstimate
+    description = CampaignPlanningCurveEstimate
+    derivedFrom = Root
+    properties {
+        estimation_type {
+          type = CampaignPlanningEstimationType
+          description = "Estimation type for campaign planning estimated curve"
+          optional = false
+        }
+        points {
+          type = array
+          items.type = CampaignPlanningPointEstimate
+          description = "The estimation points that make up the estimated curve."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignPlanningCurveEstimate {
+    title = CampaignPlanningCurveEstimate
+    description = CampaignPlanningCurveEstimate
+    implements = openapi_server.resourceTypes.CampaignPlanningCurveEstimate
+
+  }
+}

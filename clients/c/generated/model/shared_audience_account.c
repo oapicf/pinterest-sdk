@@ -4,55 +4,47 @@
 #include "shared_audience_account.h"
 
 
-char* shared_audience_account_account_type_ToString(pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_e account_type) {
-    char* account_typeArray[] =  { "NULL", "AD_ACCOUNT", "BUSINESS_ACCOUNT" };
-    return account_typeArray[account_type];
-}
-
-pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_e shared_audience_account_account_type_FromString(char* account_type){
-    int stringToReturn = 0;
-    char *account_typeArray[] =  { "NULL", "AD_ACCOUNT", "BUSINESS_ACCOUNT" };
-    size_t sizeofArray = sizeof(account_typeArray) / sizeof(account_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(account_type, account_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static shared_audience_account_t *shared_audience_account_create_internal(
     char *account_id,
     char *account_name,
-    pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_e account_type,
-    int shared_on_timestamp
+    audience_account_type_t *account_type,
+    int *shared_on_timestamp
     ) {
     shared_audience_account_t *shared_audience_account_local_var = malloc(sizeof(shared_audience_account_t));
     if (!shared_audience_account_local_var) {
         return NULL;
     }
+    memset(shared_audience_account_local_var, 0, sizeof(shared_audience_account_t));
+    shared_audience_account_local_var->_library_owned = 1;
     shared_audience_account_local_var->account_id = account_id;
     shared_audience_account_local_var->account_name = account_name;
     shared_audience_account_local_var->account_type = account_type;
     shared_audience_account_local_var->shared_on_timestamp = shared_on_timestamp;
-
-    shared_audience_account_local_var->_library_owned = 1;
     return shared_audience_account_local_var;
 }
 
 __attribute__((deprecated)) shared_audience_account_t *shared_audience_account_create(
     char *account_id,
     char *account_name,
-    pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_e account_type,
-    int shared_on_timestamp
+    audience_account_type_t *account_type,
+    int *shared_on_timestamp
     ) {
-    return shared_audience_account_create_internal (
+    int *shared_on_timestamp_copy = NULL;
+    if (shared_on_timestamp) {
+        shared_on_timestamp_copy = malloc(sizeof(int));
+        if (shared_on_timestamp_copy) *shared_on_timestamp_copy = *shared_on_timestamp;
+    }
+    shared_audience_account_t *result = shared_audience_account_create_internal (
         account_id,
         account_name,
         account_type,
-        shared_on_timestamp
+        shared_on_timestamp_copy
         );
+    if (!result) {
+        free(shared_on_timestamp_copy);
+    }
+    return result;
 }
 
 void shared_audience_account_free(shared_audience_account_t *shared_audience_account) {
@@ -71,6 +63,14 @@ void shared_audience_account_free(shared_audience_account_t *shared_audience_acc
     if (shared_audience_account->account_name) {
         free(shared_audience_account->account_name);
         shared_audience_account->account_name = NULL;
+    }
+    if (shared_audience_account->account_type) {
+        audience_account_type_free(shared_audience_account->account_type);
+        shared_audience_account->account_type = NULL;
+    }
+    if (shared_audience_account->shared_on_timestamp) {
+        free(shared_audience_account->shared_on_timestamp);
+        shared_audience_account->shared_on_timestamp = NULL;
     }
     free(shared_audience_account);
 }
@@ -97,12 +97,16 @@ cJSON *shared_audience_account_convertToJSON(shared_audience_account_t *shared_a
 
 
     // shared_audience_account->account_type
-    if (pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_NULL == shared_audience_account->account_type) {
+    if (!shared_audience_account->account_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "account_type", shared_audience_account_account_type_ToString(shared_audience_account->account_type)) == NULL)
-    {
-    goto fail; //Enum
+    cJSON *account_type_local_JSON = audience_account_type_convertToJSON(shared_audience_account->account_type);
+    if(account_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "account_type", account_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
 
 
@@ -110,7 +114,7 @@ cJSON *shared_audience_account_convertToJSON(shared_audience_account_t *shared_a
     if (!shared_audience_account->shared_on_timestamp) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "shared_on_timestamp", shared_audience_account->shared_on_timestamp) == NULL) {
+    if(cJSON_AddNumberToObject(item, "shared_on_timestamp", *shared_audience_account->shared_on_timestamp) == NULL) {
     goto fail; //Numeric
     }
 
@@ -125,6 +129,16 @@ fail:
 shared_audience_account_t *shared_audience_account_parseFromJSON(cJSON *shared_audience_accountJSON){
 
     shared_audience_account_t *shared_audience_account_local_var = NULL;
+
+    char *account_id_local_str = NULL;
+
+    char *account_name_local_str = NULL;
+
+    // define the local variable for shared_audience_account->account_type
+    audience_account_type_t *account_type_local_nonprim = NULL;
+
+    // define the local variable for shared_audience_account->shared_on_timestamp
+    int *shared_on_timestamp_local_var = NULL;
 
     // shared_audience_account->account_id
     cJSON *account_id = cJSON_GetObjectItemCaseSensitive(shared_audience_accountJSON, "account_id");
@@ -165,13 +179,8 @@ shared_audience_account_t *shared_audience_account_parseFromJSON(cJSON *shared_a
         goto end;
     }
 
-    pinterest_rest_api_shared_audience_account_ACCOUNTTYPE_e account_typeVariable;
     
-    if(!cJSON_IsString(account_type))
-    {
-    goto end; //Enum
-    }
-    account_typeVariable = shared_audience_account_account_type_FromString(account_type->valuestring);
+    account_type_local_nonprim = audience_account_type_parseFromJSON(account_type); //custom
 
     // shared_audience_account->shared_on_timestamp
     cJSON *shared_on_timestamp = cJSON_GetObjectItemCaseSensitive(shared_audience_accountJSON, "shared_on_timestamp");
@@ -187,17 +196,46 @@ shared_audience_account_t *shared_audience_account_parseFromJSON(cJSON *shared_a
     {
     goto end; //Numeric
     }
+    shared_on_timestamp_local_var = malloc(sizeof(int));
+    if(!shared_on_timestamp_local_var)
+    {
+        goto end;
+    }
+    *shared_on_timestamp_local_var = shared_on_timestamp->valuedouble;
 
+
+    if (account_id && !cJSON_IsNull(account_id)) account_id_local_str = strdup(account_id->valuestring);
+    if (account_name && !cJSON_IsNull(account_name)) account_name_local_str = strdup(account_name->valuestring);
 
     shared_audience_account_local_var = shared_audience_account_create_internal (
-        strdup(account_id->valuestring),
-        strdup(account_name->valuestring),
-        account_typeVariable,
-        shared_on_timestamp->valuedouble
+        account_id_local_str,
+        account_name_local_str,
+        account_type_local_nonprim,
+        shared_on_timestamp_local_var
         );
+
+    if (!shared_audience_account_local_var) {
+        goto end;
+    }
 
     return shared_audience_account_local_var;
 end:
+    if (account_id_local_str) {
+        free(account_id_local_str);
+        account_id_local_str = NULL;
+    }
+    if (account_name_local_str) {
+        free(account_name_local_str);
+        account_name_local_str = NULL;
+    }
+    if (account_type_local_nonprim) {
+        audience_account_type_free(account_type_local_nonprim);
+        account_type_local_nonprim = NULL;
+    }
+    if (shared_on_timestamp_local_var) {
+        free(shared_on_timestamp_local_var);
+        shared_on_timestamp_local_var = NULL;
+    }
     return NULL;
 
 }

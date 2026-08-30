@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**HOTEL_ID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
+**HOTEL_ID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
 
 ## Example
 

@@ -8,15 +8,24 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.TopPinsAnalyticsResponseDateAvailability
-import org.openapitools.client.models.TopPinsAnalyticsResponsePinsInner
+import org.openapitools.client.models.TopPinsAnalyticsResponsePinsItems
+import org.openapitools.client.models.TopPinsSortBy
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -36,26 +45,13 @@ data class TopPinsAnalyticsResponse (
     val dateAvailability: TopPinsAnalyticsResponseDateAvailability? = null,
 
     @Json(name = "pins")
-    val pins: kotlin.collections.List<TopPinsAnalyticsResponsePinsInner>? = null,
+    val pins: kotlin.collections.List<TopPinsAnalyticsResponsePinsItems>? = null,
 
     @Json(name = "sort_by")
-    val sortBy: TopPinsAnalyticsResponse.SortBy? = null
+    val sortBy: TopPinsSortBy? = null
 
 ) {
 
-    /**
-     * 
-     *
-     * Values: ENGAGEMENT,SAVE,IMPRESSION,OUTBOUND_CLICK,PIN_CLICK
-     */
-    @JsonClass(generateAdapter = false)
-    enum class SortBy(val value: kotlin.String) {
-        @Json(name = "ENGAGEMENT") ENGAGEMENT("ENGAGEMENT"),
-        @Json(name = "SAVE") SAVE("SAVE"),
-        @Json(name = "IMPRESSION") IMPRESSION("IMPRESSION"),
-        @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK"),
-        @Json(name = "PIN_CLICK") PIN_CLICK("PIN_CLICK");
-    }
 
 }
 

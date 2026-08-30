@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &AuthRespondInvitesBody{}
 
 // AuthRespondInvitesBody An object with a list of all the invites the user would like to respond to and the action to take.
 type AuthRespondInvitesBody struct {
-	Invites []AuthRespondInvitesBodyInvitesInner `json:"invites"`
+	Invites []AuthRespondInvitesBodyItem `json:"invites"`
 }
 
 type _AuthRespondInvitesBody AuthRespondInvitesBody
@@ -31,7 +31,7 @@ type _AuthRespondInvitesBody AuthRespondInvitesBody
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthRespondInvitesBody(invites []AuthRespondInvitesBodyInvitesInner) *AuthRespondInvitesBody {
+func NewAuthRespondInvitesBody(invites []AuthRespondInvitesBodyItem) *AuthRespondInvitesBody {
 	this := AuthRespondInvitesBody{}
 	this.Invites = invites
 	return &this
@@ -46,9 +46,9 @@ func NewAuthRespondInvitesBodyWithDefaults() *AuthRespondInvitesBody {
 }
 
 // GetInvites returns the Invites field value
-func (o *AuthRespondInvitesBody) GetInvites() []AuthRespondInvitesBodyInvitesInner {
+func (o *AuthRespondInvitesBody) GetInvites() []AuthRespondInvitesBodyItem {
 	if o == nil {
-		var ret []AuthRespondInvitesBodyInvitesInner
+		var ret []AuthRespondInvitesBodyItem
 		return ret
 	}
 
@@ -57,7 +57,7 @@ func (o *AuthRespondInvitesBody) GetInvites() []AuthRespondInvitesBodyInvitesInn
 
 // GetInvitesOk returns a tuple with the Invites field value
 // and a boolean to check if the value has been set.
-func (o *AuthRespondInvitesBody) GetInvitesOk() ([]AuthRespondInvitesBodyInvitesInner, bool) {
+func (o *AuthRespondInvitesBody) GetInvitesOk() ([]AuthRespondInvitesBodyItem, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *AuthRespondInvitesBody) GetInvitesOk() ([]AuthRespondInvitesBodyInvites
 }
 
 // SetInvites sets field value
-func (o *AuthRespondInvitesBody) SetInvites(v []AuthRespondInvitesBodyInvitesInner) {
+func (o *AuthRespondInvitesBody) SetInvites(v []AuthRespondInvitesBodyItem) {
 	o.Invites = v
 }
 

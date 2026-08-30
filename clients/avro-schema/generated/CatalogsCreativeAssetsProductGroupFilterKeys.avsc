@@ -78,6 +78,11 @@
       "name": "TITLE_KEYWORDS",
       "type": "model.CatalogsProductGroupMultipleStringCriteria",
       "doc": ""
+    },
+    {
+      "name": "LINK",
+      "type": "model.CatalogsProductGroupFilterOperatorTypeCriteria",
+      "doc": ""
     }
   ]
 

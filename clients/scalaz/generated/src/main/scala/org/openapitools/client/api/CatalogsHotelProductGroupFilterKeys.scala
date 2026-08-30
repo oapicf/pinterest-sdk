@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import CatalogsHotelProductGroupFilterKeys._
 
 case class CatalogsHotelProductGroupFilterKeys (
-  PRICE: CatalogsProductGroupPricingCurrencyCriteria,
+  PRICE: PriceFilterPrice,
 HOTEL_ID: CatalogsProductGroupMultipleStringCriteria,
 BRAND: CatalogsProductGroupMultipleStringCriteria,
 CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria,

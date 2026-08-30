@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ScheduleBidOptionsPlacementMultipliers"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ScheduleBidOptionsPlacementMultipliers"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ScheduleBidOptionsPlacementMultipliers {
+    title = ScheduleBidOptionsPlacementMultipliers
+    description = ScheduleBidOptionsPlacementMultipliers
+    derivedFrom = Root
+    properties {
+        browse {
+          type =  integer
+          description = "Browse (home-feed and related surfaces)"
+          optional = false
+        }
+        related_pins {
+          type =  integer
+          description = "Related-Pins placement"
+          optional = false
+        }
+        search {
+          type =  integer
+          description = "Search placement"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ScheduleBidOptionsPlacementMultipliers {
+    title = ScheduleBidOptionsPlacementMultipliers
+    description = ScheduleBidOptionsPlacementMultipliers
+    implements = openapi_server.resourceTypes.ScheduleBidOptionsPlacementMultipliers
+
+  }
+}

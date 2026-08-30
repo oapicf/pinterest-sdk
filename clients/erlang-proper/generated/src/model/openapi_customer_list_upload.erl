@@ -16,7 +16,7 @@
   | {'id', binary() }
   | {'operation', openapi_user_list_operation_type:openapi_user_list_operation_type() }
   | {'record_counts', openapi_record_counts:openapi_record_counts() }
-  | {'state', binary() }
+  | {'state', openapi_workload_state:openapi_workload_state() }
   | {'updated_time', integer() }
   ].
 
@@ -32,7 +32,7 @@ openapi_customer_list_upload(Fields) ->
             , {'id', binary() }
             , {'operation', openapi_user_list_operation_type:openapi_user_list_operation_type() }
             , {'record_counts', openapi_record_counts:openapi_record_counts() }
-            , {'state', elements([<<"NOT_STARTED">>, <<"RUNNING">>, <<"PAUSED">>, <<"SUCCEEDED">>, <<"FAILED">>]) }
+            , {'state', openapi_workload_state:openapi_workload_state() }
             , {'updated_time', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LabelCreateItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LabelCreateItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  LabelType = openapi_server.resourceTypes.LabelType
+}
+resourceTypes {
+
+  LabelCreateItem {
+    title = LabelCreateItem
+    description = LabelCreateItem
+    derivedFrom = Root
+    properties {
+        label_type {
+          type = LabelType
+          description = ""
+          optional = true
+        }
+        value {
+          type =  string
+          description = "Label name. 100-character limit."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LabelCreateItem {
+    title = LabelCreateItem
+    description = LabelCreateItem
+    implements = openapi_server.resourceTypes.LabelCreateItem
+
+  }
+}

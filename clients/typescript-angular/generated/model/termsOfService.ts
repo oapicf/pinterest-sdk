@@ -9,6 +9,9 @@
  */
 
 
+/**
+ * The ID of the ad account.
+ */
 export interface TermsOfService { 
     /**
      * The ID of the ad account.

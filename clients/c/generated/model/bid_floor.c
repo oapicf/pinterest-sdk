@@ -13,10 +13,10 @@ static bid_floor_t *bid_floor_create_internal(
     if (!bid_floor_local_var) {
         return NULL;
     }
+    memset(bid_floor_local_var, 0, sizeof(bid_floor_t));
+    bid_floor_local_var->_library_owned = 1;
     bid_floor_local_var->bid_floors = bid_floors;
     bid_floor_local_var->type = type;
-
-    bid_floor_local_var->_library_owned = 1;
     return bid_floor_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) bid_floor_t *bid_floor_create(
     list_t *bid_floors,
     char *type
     ) {
-    return bid_floor_create_internal (
+    bid_floor_t *result = bid_floor_create_internal (
         bid_floors,
         type
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void bid_floor_free(bid_floor_t *bid_floor) {
@@ -95,6 +98,8 @@ bid_floor_t *bid_floor_parseFromJSON(cJSON *bid_floorJSON){
     // define the local list for bid_floor->bid_floors
     list_t *bid_floorsList = NULL;
 
+    char *type_local_str = NULL;
+
     // bid_floor->bid_floors
     cJSON *bid_floors = cJSON_GetObjectItemCaseSensitive(bid_floorJSON, "bid_floors");
     if (cJSON_IsNull(bid_floors)) {
@@ -136,10 +141,16 @@ bid_floor_t *bid_floor_parseFromJSON(cJSON *bid_floorJSON){
     }
 
 
+    if (type && !cJSON_IsNull(type)) type_local_str = strdup(type->valuestring);
+
     bid_floor_local_var = bid_floor_create_internal (
         bid_floors ? bid_floorsList : NULL,
-        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL
+        type_local_str
         );
+
+    if (!bid_floor_local_var) {
+        goto end;
+    }
 
     return bid_floor_local_var;
 end:
@@ -151,6 +162,10 @@ end:
         }
         list_freeList(bid_floorsList);
         bid_floorsList = NULL;
+    }
+    if (type_local_str) {
+        free(type_local_str);
+        type_local_str = NULL;
     }
     return NULL;
 

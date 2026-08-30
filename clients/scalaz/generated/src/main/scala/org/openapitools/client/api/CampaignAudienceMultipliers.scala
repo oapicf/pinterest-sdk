@@ -13,6 +13,7 @@ import java.util.HashMap
 import CampaignAudienceMultipliers._
 
 case class CampaignAudienceMultipliers (
+  /* Audience ID for the multiplier. */
   AUDIENCE_ID: Option[String])
 
 object CampaignAudienceMultipliers {

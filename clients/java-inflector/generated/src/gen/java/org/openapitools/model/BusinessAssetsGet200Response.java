@@ -10,19 +10,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.GetBusinessAssetsResponse;
+import org.openapitools.model.BusinessAssets;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessAssetsGet200Response   {
   @JsonProperty("bookmark")
   private String bookmark;
 
   @JsonProperty("items")
-  private List<GetBusinessAssetsResponse> items = new ArrayList<>();
+  private List<BusinessAssets> items = new ArrayList<>();
 
   /**
    **/
@@ -42,20 +42,19 @@ public class BusinessAssetsGet200Response   {
   }
 
   /**
-   * List of assets the requesting business has access to.
    **/
-  public BusinessAssetsGet200Response items(List<GetBusinessAssetsResponse> items) {
+  public BusinessAssetsGet200Response items(List<BusinessAssets> items) {
     this.items = items;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "List of assets the requesting business has access to.")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
-  public List<GetBusinessAssetsResponse> getItems() {
+  public List<BusinessAssets> getItems() {
     return items;
   }
-  public void setItems(List<GetBusinessAssetsResponse> items) {
+  public void setItems(List<BusinessAssets> items) {
     this.items = items;
   }
 
@@ -94,10 +93,7 @@ public class BusinessAssetsGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

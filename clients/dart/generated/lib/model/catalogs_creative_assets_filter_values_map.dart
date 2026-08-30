@@ -52,7 +52,7 @@ class CatalogsCreativeAssetsFilterValuesMap {
 
   List<String> googleProductCategory6;
 
-  List<CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum> mediaType;
+  List<MediaType> mediaType;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CatalogsCreativeAssetsFilterValuesMap &&
@@ -119,10 +119,6 @@ class CatalogsCreativeAssetsFilterValuesMap {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsCreativeAssetsFilterValuesMap[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsCreativeAssetsFilterValuesMap[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -163,7 +159,7 @@ class CatalogsCreativeAssetsFilterValuesMap {
         googleProductCategory6: json[r'google_product_category_6'] is Iterable
             ? (json[r'google_product_category_6'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        mediaType: CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum.listFromJson(json[r'media_type']),
+        mediaType: MediaType.listFromJson(json[r'media_type']),
       );
     }
     return null;
@@ -213,78 +209,4 @@ class CatalogsCreativeAssetsFilterValuesMap {
   static const requiredKeys = <String>{
   };
 }
-
-
-class CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const IMAGE = CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum._(r'IMAGE');
-  static const VIDEO = CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum._(r'VIDEO');
-
-  /// List of all possible values in this [enum][CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum].
-  static const values = <CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum>[
-    IMAGE,
-    VIDEO,
-  ];
-
-  static CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum? fromJson(dynamic value) => CatalogsCreativeAssetsFilterValuesMapMediaTypeEnumTypeTransformer().decode(value);
-
-  static List<CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum] to String,
-/// and [decode] dynamic data back to [CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum].
-class CatalogsCreativeAssetsFilterValuesMapMediaTypeEnumTypeTransformer {
-  factory CatalogsCreativeAssetsFilterValuesMapMediaTypeEnumTypeTransformer() => _instance ??= const CatalogsCreativeAssetsFilterValuesMapMediaTypeEnumTypeTransformer._();
-
-  const CatalogsCreativeAssetsFilterValuesMapMediaTypeEnumTypeTransformer._();
-
-  String encode(CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'IMAGE': return CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum.IMAGE;
-        case r'VIDEO': return CatalogsCreativeAssetsFilterValuesMapMediaTypeEnum.VIDEO;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [CatalogsCreativeAssetsFilterValuesMapMediaTypeEnumTypeTransformer] instance.
-  static CatalogsCreativeAssetsFilterValuesMapMediaTypeEnumTypeTransformer? _instance;
-}
-
 

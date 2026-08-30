@@ -14,10 +14,10 @@ Method | HTTP request | Description
 
 Get item batch status
 
-Get a single catalogs items batch owned by the "operating user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
+Get a single catalogs items batch owned by the "operating user_account". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch)
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Example
 
@@ -49,7 +49,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.CatalogItemsApi(api_client)
-    batch_id = '66753b9bb65c46c49bd8503b27fecf9e' # str | Id of a catalogs items batch to fetch
+    batch_id = 'batch_id_example' # str | Id of a catalogs items batch to fetch
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account. (optional)
 
     try:
@@ -88,24 +88,25 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response containing the requested catalogs items batch |  -  |
-**401** | Not authenticated to access catalogs items batch |  -  |
-**403** | Not authorized to access catalogs items batch |  -  |
-**404** | Catalogs items batch not found |  -  |
-**405** | Method Not Allowed. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **items_batch_post**
-> CatalogsItemsBatch items_batch_post(items_batch_post_request, ad_account_id=ad_account_id)
+> CatalogsItemsBatch items_batch_post(catalogs_items_batch_post_request, ad_account_id=ad_account_id)
 
 Operate on item batch
 
-This endpoint supports multiple operations on a set of one or more catalog items owned by the "operation user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
+This endpoint supports multiple operations on a set of one or more catalog items owned by the "operation user_account". [See detailed documentation here.](/docs/work-with-catalogs/modify-items-in-batch/)
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 Note:
 - Access to the Creative Assets catalog type is restricted to a specific group of users.
@@ -120,7 +121,7 @@ If you require access, please reach out to your partner manager.
 ```python
 import pinterestsdk
 from pinterestsdk.models.catalogs_items_batch import CatalogsItemsBatch
-from pinterestsdk.models.items_batch_post_request import ItemsBatchPostRequest
+from pinterestsdk.models.catalogs_items_batch_post_request import CatalogsItemsBatchPostRequest
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -143,12 +144,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.CatalogItemsApi(api_client)
-    items_batch_post_request = pinterestsdk.ItemsBatchPostRequest() # ItemsBatchPostRequest | Request object used to create catalogs items in a batch
+    catalogs_items_batch_post_request = pinterestsdk.CatalogsItemsBatchPostRequest() # CatalogsItemsBatchPostRequest | 
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account. (optional)
 
     try:
         # Operate on item batch
-        api_response = api_instance.items_batch_post(items_batch_post_request, ad_account_id=ad_account_id)
+        api_response = api_instance.items_batch_post(catalogs_items_batch_post_request, ad_account_id=ad_account_id)
         print("The response of CatalogItemsApi->items_batch_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -162,7 +163,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **items_batch_post_request** | [**ItemsBatchPostRequest**](ItemsBatchPostRequest.md)| Request object used to create catalogs items in a batch | 
+ **catalogs_items_batch_post_request** | [**CatalogsItemsBatchPostRequest**](CatalogsItemsBatchPostRequest.md)|  | 
  **ad_account_id** | **str**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -182,23 +183,25 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response containing the requested catalogs items batch |  -  |
-**400** | Invalid request parameters. |  -  |
-**401** | Not authenticated to post catalogs items |  -  |
-**403** | Not authorized to post catalogs items |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **items_post**
-> CatalogsItems items_post(catalogs_items_request, ad_account_id=ad_account_id)
+> ItemsPost200Response items_post(catalogs_items_request, ad_account_id=ad_account_id)
 
 Get catalogs items (POST)
 
-Get the items of the catalog owned by the "operation user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
+Get the items of the catalog owned by the "operation user_account". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch)
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
 If you require access, please reach out to your partner manager.
@@ -209,8 +212,8 @@ If you require access, please reach out to your partner manager.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.catalogs_items import CatalogsItems
 from pinterestsdk.models.catalogs_items_request import CatalogsItemsRequest
+from pinterestsdk.models.items_post200_response import ItemsPost200Response
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -231,7 +234,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.CatalogItemsApi(api_client)
-    catalogs_items_request = pinterestsdk.CatalogsItemsRequest() # CatalogsItemsRequest | Request object used to get catalogs items
+    catalogs_items_request = pinterestsdk.CatalogsItemsRequest() # CatalogsItemsRequest | 
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account. (optional)
 
     try:
@@ -250,12 +253,12 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogs_items_request** | [**CatalogsItemsRequest**](CatalogsItemsRequest.md)| Request object used to get catalogs items | 
+ **catalogs_items_request** | [**CatalogsItemsRequest**](CatalogsItemsRequest.md)|  | 
  **ad_account_id** | **str**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
-[**CatalogsItems**](CatalogsItems.md)
+[**ItemsPost200Response**](ItemsPost200Response.md)
 
 ### Authorization
 
@@ -270,11 +273,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Response containing the requested catalogs items |  -  |
-**400** | Invalid request |  -  |
-**401** | Not authorized to access catalogs items |  -  |
-**403** | Not authorized to access catalogs items |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

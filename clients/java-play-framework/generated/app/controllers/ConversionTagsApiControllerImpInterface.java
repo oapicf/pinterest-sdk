@@ -4,10 +4,10 @@ import apimodels.ConversionEventResponse;
 import apimodels.ConversionTag;
 import apimodels.ConversionTagCreate;
 import apimodels.ConversionTagsList200Response;
-import apimodels.Error;
 import java.util.Map;
 import apimodels.PageVisitConversionTagsGet200Response;
 import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -112,12 +112,12 @@ public abstract class ConversionTagsApiControllerImpInterface {
 
     public abstract Map<String, List<ConversionEventResponse>> ocpmEligibleConversionTagsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result pageVisitConversionTagsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception {
+    public Result pageVisitConversionTagsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        PageVisitConversionTagsGet200Response obj = pageVisitConversionTagsGet(request, adAccountId, pageSize, order, bookmark);
+        PageVisitConversionTagsGet200Response obj = pageVisitConversionTagsGet(request, adAccountId, bookmark, pageSize, order);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -129,6 +129,6 @@ public abstract class ConversionTagsApiControllerImpInterface {
 
     }
 
-    public abstract PageVisitConversionTagsGet200Response pageVisitConversionTagsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception;
+    public abstract PageVisitConversionTagsGet200Response pageVisitConversionTagsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order) throws Exception;
 
 }

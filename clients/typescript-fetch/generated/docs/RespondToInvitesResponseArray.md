@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;RespondToInvitesResponseArrayItemsInner&gt;](RespondToInvitesResponseArrayItemsInner.md)
+`items` | [Array&lt;RespondToInviteResultItem&gt;](RespondToInviteResultItem.md)
 
 ## Example
 

@@ -8,7 +8,7 @@
 static lead_subscription_t *lead_subscription_create_internal(
     char *ad_account_id,
     char *api_version,
-    int created_time,
+    int *created_time,
     char *cryptographic_algorithm,
     char *cryptographic_key,
     char *id,
@@ -20,6 +20,8 @@ static lead_subscription_t *lead_subscription_create_internal(
     if (!lead_subscription_local_var) {
         return NULL;
     }
+    memset(lead_subscription_local_var, 0, sizeof(lead_subscription_t));
+    lead_subscription_local_var->_library_owned = 1;
     lead_subscription_local_var->ad_account_id = ad_account_id;
     lead_subscription_local_var->api_version = api_version;
     lead_subscription_local_var->created_time = created_time;
@@ -29,15 +31,13 @@ static lead_subscription_t *lead_subscription_create_internal(
     lead_subscription_local_var->lead_form_id = lead_form_id;
     lead_subscription_local_var->user_account_id = user_account_id;
     lead_subscription_local_var->webhook_url = webhook_url;
-
-    lead_subscription_local_var->_library_owned = 1;
     return lead_subscription_local_var;
 }
 
 __attribute__((deprecated)) lead_subscription_t *lead_subscription_create(
     char *ad_account_id,
     char *api_version,
-    int created_time,
+    int *created_time,
     char *cryptographic_algorithm,
     char *cryptographic_key,
     char *id,
@@ -45,10 +45,15 @@ __attribute__((deprecated)) lead_subscription_t *lead_subscription_create(
     char *user_account_id,
     char *webhook_url
     ) {
-    return lead_subscription_create_internal (
+    int *created_time_copy = NULL;
+    if (created_time) {
+        created_time_copy = malloc(sizeof(int));
+        if (created_time_copy) *created_time_copy = *created_time;
+    }
+    lead_subscription_t *result = lead_subscription_create_internal (
         ad_account_id,
         api_version,
-        created_time,
+        created_time_copy,
         cryptographic_algorithm,
         cryptographic_key,
         id,
@@ -56,6 +61,10 @@ __attribute__((deprecated)) lead_subscription_t *lead_subscription_create(
         user_account_id,
         webhook_url
         );
+    if (!result) {
+        free(created_time_copy);
+    }
+    return result;
 }
 
 void lead_subscription_free(lead_subscription_t *lead_subscription) {
@@ -74,6 +83,10 @@ void lead_subscription_free(lead_subscription_t *lead_subscription) {
     if (lead_subscription->api_version) {
         free(lead_subscription->api_version);
         lead_subscription->api_version = NULL;
+    }
+    if (lead_subscription->created_time) {
+        free(lead_subscription->created_time);
+        lead_subscription->created_time = NULL;
     }
     if (lead_subscription->cryptographic_algorithm) {
         free(lead_subscription->cryptographic_algorithm);
@@ -123,7 +136,7 @@ cJSON *lead_subscription_convertToJSON(lead_subscription_t *lead_subscription) {
 
     // lead_subscription->created_time
     if(lead_subscription->created_time) {
-    if(cJSON_AddNumberToObject(item, "created_time", lead_subscription->created_time) == NULL) {
+    if(cJSON_AddNumberToObject(item, "created_time", *lead_subscription->created_time) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -188,6 +201,25 @@ lead_subscription_t *lead_subscription_parseFromJSON(cJSON *lead_subscriptionJSO
 
     lead_subscription_t *lead_subscription_local_var = NULL;
 
+    char *ad_account_id_local_str = NULL;
+
+    char *api_version_local_str = NULL;
+
+    // define the local variable for lead_subscription->created_time
+    int *created_time_local_var = NULL;
+
+    char *cryptographic_algorithm_local_str = NULL;
+
+    char *cryptographic_key_local_str = NULL;
+
+    char *id_local_str = NULL;
+
+    char *lead_form_id_local_str = NULL;
+
+    char *user_account_id_local_str = NULL;
+
+    char *webhook_url_local_str = NULL;
+
     // lead_subscription->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(lead_subscriptionJSON, "ad_account_id");
     if (cJSON_IsNull(ad_account_id)) {
@@ -222,6 +254,12 @@ lead_subscription_t *lead_subscription_parseFromJSON(cJSON *lead_subscriptionJSO
     {
     goto end; //Numeric
     }
+    created_time_local_var = malloc(sizeof(int));
+    if(!created_time_local_var)
+    {
+        goto end;
+    }
+    *created_time_local_var = created_time->valuedouble;
     }
 
     // lead_subscription->cryptographic_algorithm
@@ -297,20 +335,69 @@ lead_subscription_t *lead_subscription_parseFromJSON(cJSON *lead_subscriptionJSO
     }
 
 
+    if (ad_account_id && !cJSON_IsNull(ad_account_id)) ad_account_id_local_str = strdup(ad_account_id->valuestring);
+    if (api_version && !cJSON_IsNull(api_version)) api_version_local_str = strdup(api_version->valuestring);
+    if (cryptographic_algorithm && !cJSON_IsNull(cryptographic_algorithm)) cryptographic_algorithm_local_str = strdup(cryptographic_algorithm->valuestring);
+    if (cryptographic_key && !cJSON_IsNull(cryptographic_key)) cryptographic_key_local_str = strdup(cryptographic_key->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (lead_form_id && !cJSON_IsNull(lead_form_id)) lead_form_id_local_str = strdup(lead_form_id->valuestring);
+    if (user_account_id && !cJSON_IsNull(user_account_id)) user_account_id_local_str = strdup(user_account_id->valuestring);
+    if (webhook_url && !cJSON_IsNull(webhook_url)) webhook_url_local_str = strdup(webhook_url->valuestring);
+
     lead_subscription_local_var = lead_subscription_create_internal (
-        ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
-        api_version && !cJSON_IsNull(api_version) ? strdup(api_version->valuestring) : NULL,
-        created_time ? created_time->valuedouble : 0,
-        cryptographic_algorithm && !cJSON_IsNull(cryptographic_algorithm) ? strdup(cryptographic_algorithm->valuestring) : NULL,
-        cryptographic_key && !cJSON_IsNull(cryptographic_key) ? strdup(cryptographic_key->valuestring) : NULL,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        lead_form_id && !cJSON_IsNull(lead_form_id) ? strdup(lead_form_id->valuestring) : NULL,
-        user_account_id && !cJSON_IsNull(user_account_id) ? strdup(user_account_id->valuestring) : NULL,
-        webhook_url && !cJSON_IsNull(webhook_url) ? strdup(webhook_url->valuestring) : NULL
+        ad_account_id_local_str,
+        api_version_local_str,
+        created_time_local_var,
+        cryptographic_algorithm_local_str,
+        cryptographic_key_local_str,
+        id_local_str,
+        lead_form_id_local_str,
+        user_account_id_local_str,
+        webhook_url_local_str
         );
+
+    if (!lead_subscription_local_var) {
+        goto end;
+    }
 
     return lead_subscription_local_var;
 end:
+    if (ad_account_id_local_str) {
+        free(ad_account_id_local_str);
+        ad_account_id_local_str = NULL;
+    }
+    if (api_version_local_str) {
+        free(api_version_local_str);
+        api_version_local_str = NULL;
+    }
+    if (created_time_local_var) {
+        free(created_time_local_var);
+        created_time_local_var = NULL;
+    }
+    if (cryptographic_algorithm_local_str) {
+        free(cryptographic_algorithm_local_str);
+        cryptographic_algorithm_local_str = NULL;
+    }
+    if (cryptographic_key_local_str) {
+        free(cryptographic_key_local_str);
+        cryptographic_key_local_str = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (lead_form_id_local_str) {
+        free(lead_form_id_local_str);
+        lead_form_id_local_str = NULL;
+    }
+    if (user_account_id_local_str) {
+        free(user_account_id_local_str);
+        user_account_id_local_str = NULL;
+    }
+    if (webhook_url_local_str) {
+        free(webhook_url_local_str);
+        webhook_url_local_str = NULL;
+    }
     return NULL;
 
 }

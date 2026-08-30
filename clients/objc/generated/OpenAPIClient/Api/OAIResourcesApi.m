@@ -1,11 +1,13 @@
 #import "OAIResourcesApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIAdAccountsCountryResponse.h"
-#import "OAIBookClosedResponse.h"
-#import "OAIDeliveryMetricsResponse.h"
-#import "OAIError.h"
-#import "OAISingleInterestTargetingOptionResponse.h"
+#import "OAIAdAccountCountriesGet200Response.h"
+#import "OAIBookClosed.h"
+#import "OAIDeliveryMetricsGet200Response.h"
+#import "OAIPinterestLibError.h"
+#import "OAIPublicTargetingType.h"
+#import "OAIReportType.h"
+#import "OAISingleInterestTargetingOption.h"
 
 
 @interface OAIResourcesApi ()
@@ -56,10 +58,10 @@ NSInteger kOAIResourcesApiMissingParamErrorCode = 234513;
 ///
 /// Get ad accounts countries
 /// Get Ad Accounts countries
-///  @returns OAIAdAccountsCountryResponse*
+///  @returns OAIAdAccountCountriesGet200Response*
 ///
 -(NSURLSessionTask*) adAccountCountriesGetWithCompletionHandler: 
-    (void (^)(OAIAdAccountsCountryResponse* output, NSError* error)) handler {
+    (void (^)(OAIAdAccountCountriesGet200Response* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/resources/ad_account_countries"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -97,23 +99,23 @@ NSInteger kOAIResourcesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIAdAccountsCountryResponse*"
+                              responseType: @"OAIAdAccountCountriesGet200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIAdAccountsCountryResponse*)data, error);
+                                    handler((OAIAdAccountCountriesGet200Response*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Get available metrics' definitions
-/// Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
+/// Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See [Organic Analytics](/docs/api-features/analytics-overview/) and [Ads Analytics](/docs/api-features/ads-reporting/) for more information.
 ///  @param reportType Report type. (optional)
 ///
-///  @returns OAIDeliveryMetricsResponse*
+///  @returns OAIDeliveryMetricsGet200Response*
 ///
--(NSURLSessionTask*) deliveryMetricsGetWithReportType: (NSString*) reportType
-    completionHandler: (void (^)(OAIDeliveryMetricsResponse* output, NSError* error)) handler {
+-(NSURLSessionTask*) deliveryMetricsGetWithReportType: (OAIReportType) reportType
+    completionHandler: (void (^)(OAIDeliveryMetricsGet200Response* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/resources/delivery_metrics"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -154,23 +156,23 @@ NSInteger kOAIResourcesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIDeliveryMetricsResponse*"
+                              responseType: @"OAIDeliveryMetricsGet200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIDeliveryMetricsResponse*)data, error);
+                                    handler((OAIDeliveryMetricsGet200Response*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Get interest details
-/// <p>Get details of a specific interest given interest ID.</p> <p>Click <a href=\"https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875\" target=\"_blank\">here</a> for a spreadsheet listing interests and their IDs.</p>
+/// Get details of a specific interest given interest ID.  Click [here](https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875) for a spreadsheet listing interests and their IDs.
 ///  @param interestId Unique identifier of an interest. 
 ///
-///  @returns OAISingleInterestTargetingOptionResponse*
+///  @returns OAISingleInterestTargetingOption*
 ///
 -(NSURLSessionTask*) interestTargetingOptionsGetWithInterestId: (NSString*) interestId
-    completionHandler: (void (^)(OAISingleInterestTargetingOptionResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAISingleInterestTargetingOption* output, NSError* error)) handler {
     // verify the required parameter 'interestId' is set
     if (interestId == nil) {
         NSParameterAssert(interestId);
@@ -222,17 +224,17 @@ NSInteger kOAIResourcesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAISingleInterestTargetingOptionResponse*"
+                              responseType: @"OAISingleInterestTargetingOption*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAISingleInterestTargetingOptionResponse*)data, error);
+                                    handler((OAISingleInterestTargetingOption*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Get lead form questions
-/// Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+/// Get a list of all lead form question type names. Some questions might not be used.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 ///  @returns void
 ///
 -(NSURLSessionTask*) leadFormQuestionsGetWithCompletionHandler: 
@@ -287,10 +289,10 @@ NSInteger kOAIResourcesApiMissingParamErrorCode = 234513;
 /// Learn whether conversion or non-conversion metrics are finalized and ready to query.
 ///  @param date Analytics reports request date (UTC). Format: YYYY-MM-DD 
 ///
-///  @returns OAIBookClosedResponse*
+///  @returns OAIBookClosed*
 ///
 -(NSURLSessionTask*) metricsReadyStateGetWithDate: (NSString*) date
-    completionHandler: (void (^)(OAIBookClosedResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIBookClosed* output, NSError* error)) handler {
     // verify the required parameter 'date' is set
     if (date == nil) {
         NSParameterAssert(date);
@@ -342,34 +344,34 @@ NSInteger kOAIResourcesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIBookClosedResponse*"
+                              responseType: @"OAIBookClosed*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIBookClosedResponse*)data, error);
+                                    handler((OAIBookClosed*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Get targeting options
-/// <p>You can use targeting values in ads placement to define your intended audience. </p> <p>Targeting metrics are organized around targeting specifications.</p> <p>For more information on ads targeting, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.</p> <p><b>Sample return:</b></p> <pre class=\"literal-block\"> [{&quot;36313&quot;: &quot;Australia: Moreton Bay - North&quot;, &quot;124735&quot;: &quot;Canada: North Battleford&quot;, &quot;36109&quot;: &quot;Australia: Murray&quot;, &quot;36108&quot;: &quot;Australia: Mid North Coast&quot;, &quot;36101&quot;: &quot;Australia: Capital Region&quot;, &quot;811&quot;: &quot;U.S.: Reno&quot;, &quot;36103&quot;: &quot;Australia: Central West&quot;, &quot;36102&quot;: &quot;Australia: Central Coast&quot;, &quot;36105&quot;: &quot;Australia: Far West and Orana&quot;, &quot;36104&quot;: &quot;Australia: Coffs Harbour - Grafton&quot;, &quot;36107&quot;: &quot;Australia: Illawarra&quot;, &quot;36106&quot;: &quot;Australia: Hunter Valley Exc Newcastle&quot;, &quot;554017&quot;: &quot;New Zealand: Wanganui&quot;, &quot;554016&quot;: &quot;New Zealand: Marlborough&quot;, &quot;554015&quot;: &quot;New Zealand: Gisborne&quot;, &quot;554014&quot;: &quot;New Zealand: Tararua&quot;, &quot;554013&quot;: &quot;New Zealand: Invercargill&quot;, &quot;GR&quot;: &quot;Greece&quot;, &quot;554011&quot;: &quot;New Zealand: Whangarei&quot;, &quot;554010&quot;: &quot;New Zealand: Far North&quot;, &quot;717&quot;: &quot;U.S.: Quincy-Hannibal-Keokuk&quot;, &quot;716&quot;: &quot;U.S.: Baton Rouge&quot;,...}] </pre>
-///  @param targetingType Public targeting type. 
-///
-///  @param clientId Client ID. (optional)
-///
-///  @param oauthSignature Oauth signature (optional)
-///
-///  @param timestamp Timestamp (optional)
+///     You can use targeting values in ads placement to define your intended audience.      Targeting metrics are organized around targeting specifications.      For more information on ads targeting, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting).      **Sample return:**      ```     [{\"36313\": \"Australia: Moreton Bay - North\", \"124735\": \"Canada: North Battleford\", \"36109\": \"Australia: Murray\", \"36108\": \"Australia: Mid North Coast\", \"36101\": \"Australia: Capital Region\", \"811\": \"U.S.: Reno\", \"36103\": \"Australia: Central West\", \"36102\": \"Australia: Central Coast\", \"36105\": \"Australia: Far West and Orana\", \"36104\": \"Australia: Coffs Harbour - Grafton\", \"36107\": \"Australia: Illawarra\", \"36106\": \"Australia: Hunter Valley Exc Newcastle\", \"554017\": \"New Zealand: Wanganui\", \"554016\": \"New Zealand: Marlborough\", \"554015\": \"New Zealand: Gisborne\", \"554014\": \"New Zealand: Tararua\", \"554013\": \"New Zealand: Invercargill\", \"GR\": \"Greece\", \"554011\": \"New Zealand: Whangarei\", \"554010\": \"New Zealand: Far North\", \"717\": \"U.S.: Quincy-Hannibal-Keokuk\", \"716\": \"U.S.: Baton Rouge\",...}]     ```
+///  @param targetingType Public targeting type 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
+///  @param clientId Client ID (optional)
+///
+///  @param oauthSignature Oauth signature (optional)
+///
+///  @param timestamp Timestamp. (optional)
+///
 ///  @returns NSArray<NSObject*>*
 ///
--(NSURLSessionTask*) targetingOptionsGetWithTargetingType: (NSString*) targetingType
+-(NSURLSessionTask*) targetingOptionsGetWithTargetingType: (OAIPublicTargetingType) targetingType
+    adAccountId: (NSString*) adAccountId
     clientId: (NSString*) clientId
     oauthSignature: (NSString*) oauthSignature
     timestamp: (NSString*) timestamp
-    adAccountId: (NSString*) adAccountId
     completionHandler: (void (^)(NSArray<NSObject*>* output, NSError* error)) handler {
     // verify the required parameter 'targetingType' is set
     if (targetingType == nil) {
@@ -390,6 +392,9 @@ NSInteger kOAIResourcesApiMissingParamErrorCode = 234513;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
+    }
     if (clientId != nil) {
         queryParams[@"client_id"] = clientId;
     }
@@ -398,9 +403,6 @@ NSInteger kOAIResourcesApiMissingParamErrorCode = 234513;
     }
     if (timestamp != nil) {
         queryParams[@"timestamp"] = timestamp;
-    }
-    if (adAccountId != nil) {
-        queryParams[@"ad_account_id"] = adAccountId;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];

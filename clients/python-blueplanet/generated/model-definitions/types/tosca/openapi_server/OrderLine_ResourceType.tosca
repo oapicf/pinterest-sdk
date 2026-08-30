@@ -21,12 +21,18 @@ resourceTypes {
         ad_account_id {
           type =  string
           description = "Ad account ID."
-          optional = false
+          optional = true
         }
         budget {
           type =  
           description = "Order line budget in micro currency."
           optional = false
+        }
+        campaign_ids {
+          type = array
+          items.type =  string
+          description = "Associated List of campaign IDs."
+          optional = true
         }
         end_time {
           type =  
@@ -36,7 +42,7 @@ resourceTypes {
         id {
           type =  string
           description = "Order line ID."
-          optional = false
+          optional = true
         }
         name {
           type =  string
@@ -66,17 +72,11 @@ resourceTypes {
         status {
           type = OrderLineStatus
           description = "Order line status."
-          optional = false
+          optional = true
         }
         type {
           type =  string
           description = "Always \&quot;orderline\&quot;."
-          optional = false
-        }
-        campaign_ids {
-          type = array
-          items.type =  string
-          description = "Associated List of campaign IDs."
           optional = true
         }
     }

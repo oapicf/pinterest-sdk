@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;BillingInvoiceResponse&gt;**](BillingInvoiceResponse.md) |  | [default to undefined]
+**items** | [**Array&lt;BillingInvoice&gt;**](BillingInvoice.md) |  | [default to undefined]
 
 ## Example
 

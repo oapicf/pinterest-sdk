@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -24,30 +32,42 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param campaignIds Associated List of campaign IDs.
  * @param adAccountId Ad account ID.
+ * @param campaignIds Associated List of campaign IDs.
+ * @param id Order line ID.
+ * @param status Order line status.
+ * @param type Always \"orderline\".
  * @param budget Order line budget in micro currency.
  * @param endTime End time. Unix timestamp.
- * @param id Order line ID.
  * @param name Order line name.
  * @param paidBudget Order line paid budget in micro currency.
  * @param paidType Order line paid type.
  * @param purchaseOrderId Purchase order ID.
  * @param startTime Start time. Unix timestamp.
- * @param status Order line status.
- * @param type Always \"orderline\".
  */
 
 
 data class OrderLine (
 
+    /* Ad account ID. */
+    @Json(name = "ad_account_id")
+    val adAccountId: kotlin.String,
+
     /* Associated List of campaign IDs. */
     @Json(name = "campaign_ids")
     val campaignIds: kotlin.collections.List<kotlin.String>,
 
-    /* Ad account ID. */
-    @Json(name = "ad_account_id")
-    val adAccountId: kotlin.String? = null,
+    /* Order line ID. */
+    @Json(name = "id")
+    val id: kotlin.String,
+
+    /* Order line status. */
+    @Json(name = "status")
+    val status: OrderLineStatus,
+
+    /* Always \"orderline\". */
+    @Json(name = "type")
+    val type: kotlin.String,
 
     /* Order line budget in micro currency. */
     @Json(name = "budget")
@@ -56,10 +76,6 @@ data class OrderLine (
     /* End time. Unix timestamp. */
     @Json(name = "end_time")
     val endTime: java.math.BigDecimal? = null,
-
-    /* Order line ID. */
-    @Json(name = "id")
-    val id: kotlin.String? = null,
 
     /* Order line name. */
     @Json(name = "name")
@@ -79,15 +95,7 @@ data class OrderLine (
 
     /* Start time. Unix timestamp. */
     @Json(name = "start_time")
-    val startTime: java.math.BigDecimal? = null,
-
-    /* Order line status. */
-    @Json(name = "status")
-    val status: OrderLineStatus? = null,
-
-    /* Always \"orderline\". */
-    @Json(name = "type")
-    val type: kotlin.String? = null
+    val startTime: java.math.BigDecimal? = null
 
 ) {
 

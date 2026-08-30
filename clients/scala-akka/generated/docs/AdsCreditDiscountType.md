@@ -1,0 +1,9 @@
+
+
+# AdsCreditDiscountType
+
+## Enum
+
+
+
+

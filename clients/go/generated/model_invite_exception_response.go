@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ type InviteExceptionResponse struct {
 	// Error code associated with the error in performing the action on the invite/request.
 	Code *int32 `json:"code,omitempty"`
 	// Unique identifier of the invite/request.
-	InviteOrRequestId NullableString `json:"invite_or_request_id,omitempty" validate:"regexp=^\\\\d+$"`
+	InviteOrRequestId NullableString `json:"invite_or_request_id,omitempty" validate:"regexp=^\\d+$"`
 	// Error message associated with the error in performing the action on the invite/request.
 	Message *string `json:"message,omitempty"`
 	// A list of users' usernames or emails OR a list of partner ids that caused the error.
@@ -153,9 +153,9 @@ func (o *InviteExceptionResponse) SetMessage(v string) {
 	o.Message = &v
 }
 
-// GetUsersOrPartnerIds returns the UsersOrPartnerIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUsersOrPartnerIds returns the UsersOrPartnerIds field value if set, zero value otherwise.
 func (o *InviteExceptionResponse) GetUsersOrPartnerIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.UsersOrPartnerIds) {
 		var ret []string
 		return ret
 	}
@@ -164,7 +164,6 @@ func (o *InviteExceptionResponse) GetUsersOrPartnerIds() []string {
 
 // GetUsersOrPartnerIdsOk returns a tuple with the UsersOrPartnerIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InviteExceptionResponse) GetUsersOrPartnerIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.UsersOrPartnerIds) {
 		return nil, false
@@ -205,7 +204,7 @@ func (o InviteExceptionResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
-	if o.UsersOrPartnerIds != nil {
+	if !IsNil(o.UsersOrPartnerIds) {
 		toSerialize["users_or_partner_ids"] = o.UsersOrPartnerIds
 	}
 	return toSerialize, nil

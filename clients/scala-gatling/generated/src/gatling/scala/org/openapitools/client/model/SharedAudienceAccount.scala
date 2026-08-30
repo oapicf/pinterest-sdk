@@ -8,7 +8,7 @@ case class SharedAudienceAccount (
     /* Account name. */
     _accountName: String,
     /* account type */
-    _accountType: String,
+    _accountType: AudienceAccountType,
     /* Epoch timestamp in seconds for the shared audience event */
     _sharedOnTimestamp: Integer
 )

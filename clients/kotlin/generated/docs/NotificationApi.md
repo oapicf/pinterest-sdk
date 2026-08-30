@@ -22,7 +22,7 @@ Used by third-party partners to send notifications to Pinterest. These notificat
 //import org.openapitools.client.models.*
 
 val apiInstance = NotificationApi()
-val notificationPostRequest : NotificationPostRequest =  // NotificationPostRequest | notification event.
+val notificationPostRequest : NotificationPostRequest =  // NotificationPostRequest | 
 try {
     val result : NotificationResponse = apiInstance.notificationPost(notificationPostRequest)
     println(result)
@@ -38,7 +38,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md)| notification event. | |
+| **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md)|  | |
 
 ### Return type
 
@@ -47,10 +47,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

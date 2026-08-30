@@ -29,7 +29,7 @@ services:
 ```
 
 ## **boardSectionsCreate**
-> OpenAPI\Server\Model\BoardSection boardSectionsCreate($boardId, $boardSection, $adAccountId)
+> OpenAPI\Server\Model\BoardSection boardSectionsCreate($boardId, $boardSectionCreate, $adAccountId)
 
 Create board section
 
@@ -60,7 +60,7 @@ class BoardsApi implements BoardsApiInterface
     /**
      * Implementation of BoardsApiInterface#boardSectionsCreate
      */
-    public function boardSectionsCreate(string $boardId, BoardSection $boardSection, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function boardSectionsCreate(string $boardId, BoardSectionCreate $boardSectionCreate, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -74,7 +74,7 @@ class BoardsApi implements BoardsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **string**| Unique identifier of a board. |
- **boardSection** | [**OpenAPI\Server\Model\BoardSection**](../Model/BoardSection.md)| Create a board section. |
+ **boardSectionCreate** | [**OpenAPI\Server\Model\BoardSectionCreate**](../Model/BoardSectionCreate.md)|  |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **boardSectionsDelete**
-> boardSectionsDelete($boardId, $sectionId, $adAccountId)
+> OpenAPI\Server\Model\BoardSection boardSectionsDelete($boardId, $sectionId, $adAccountId)
 
 Delete board section
 
@@ -124,7 +124,7 @@ class BoardsApi implements BoardsApiInterface
     /**
      * Implementation of BoardsApiInterface#boardSectionsDelete
      */
-    public function boardSectionsDelete(string $boardId, string $sectionId, ?string $adAccountId, int &$responseCode, array &$responseHeaders): void
+    public function boardSectionsDelete(string $boardId, string $sectionId, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**OpenAPI\Server\Model\BoardSection**](../Model/BoardSection.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
  **boardId** | **string**| Unique identifier of a board. |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
  **sectionId** | **string**| Unique identifier of a board section. |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **boardSectionsUpdate**
-> OpenAPI\Server\Model\BoardSection boardSectionsUpdate($boardId, $sectionId, $boardSection, $adAccountId)
+> OpenAPI\Server\Model\BoardSection boardSectionsUpdate($boardId, $sectionId, $boardSectionUpdateWithRequiredBody, $adAccountId)
 
 Update board section
 
@@ -335,7 +335,7 @@ class BoardsApi implements BoardsApiInterface
     /**
      * Implementation of BoardsApiInterface#boardSectionsUpdate
      */
-    public function boardSectionsUpdate(string $boardId, string $sectionId, BoardSection $boardSection, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function boardSectionsUpdate(string $boardId, string $sectionId, BoardSectionUpdateWithRequiredBody $boardSectionUpdateWithRequiredBody, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -350,7 +350,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **string**| Unique identifier of a board. |
  **sectionId** | **string**| Unique identifier of a board section. |
- **boardSection** | [**OpenAPI\Server\Model\BoardSection**](../Model/BoardSection.md)| Update a board section. |
+ **boardSectionUpdateWithRequiredBody** | [**OpenAPI\Server\Model\BoardSectionUpdateWithRequiredBody**](../Model/BoardSectionUpdateWithRequiredBody.md)|  |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **boardsDelete**
-> boardsDelete($boardId, $adAccountId)
+> OpenAPI\Server\Model\Board boardsDelete($boardId, $adAccountId)
 
 Delete board
 
@@ -471,7 +471,7 @@ class BoardsApi implements BoardsApiInterface
     /**
      * Implementation of BoardsApiInterface#boardsDelete
      */
-    public function boardsDelete(string $boardId, ?string $adAccountId, int &$responseCode, array &$responseHeaders): void
+    public function boardsDelete(string $boardId, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -489,7 +489,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**OpenAPI\Server\Model\Board**](../Model/Board.md)
 
 ### Authorization
 
@@ -627,7 +627,7 @@ class BoardsApi implements BoardsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
- **privacy** | [**OpenAPI\Server\Model\BoardPrivacyFilter**](../Model/.md)| The privacy level of the board | [optional]
+ **privacy** | [**BoardPrivacyFilter**](../Model/.md)| The privacy level of the board | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
  **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
@@ -647,7 +647,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **boardsListPins**
-> OpenAPI\Server\Model\BoardsListPins200Response boardsListPins($boardId, $bookmark, $pageSize, $creativeTypes, $adAccountId, $pinMetrics)
+> OpenAPI\Server\Model\BoardsListPins200Response boardsListPins($boardId, $creativeTypes, $adAccountId, $pinMetrics, $bookmark, $pageSize)
 
 List Pins on board
 
@@ -686,7 +686,7 @@ class BoardsApi implements BoardsApiInterface
     /**
      * Implementation of BoardsApiInterface#boardsListPins
      */
-    public function boardsListPins(string $boardId, ?string $bookmark, int $pageSize, ?array $creativeTypes, ?string $adAccountId, bool $pinMetrics, int &$responseCode, array &$responseHeaders): array|object|null
+    public function boardsListPins(string $boardId, ?array $creativeTypes, ?string $adAccountId, bool $pinMetrics, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -700,11 +700,11 @@ class BoardsApi implements BoardsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **string**| Unique identifier of a board. |
- **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **creativeTypes** | [**OpenAPI\Server\Model\CreativeType**](../Model/OpenAPI\Server\Model\CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
  **pinMetrics** | **bool**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
+ **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

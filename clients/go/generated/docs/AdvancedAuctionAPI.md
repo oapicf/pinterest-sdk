@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	advancedAuctionItemsGetRequest := *openapiclient.NewAdvancedAuctionItemsGetRequest("2680059592705", []openapiclient.AdvancedAuctionItemsGetRecord{*openapiclient.NewAdvancedAuctionItemsGetRecord(openapiclient.Country("AD"), "DS0294-M", openapiclient.Language("AM"))}) // AdvancedAuctionItemsGetRequest | Request object used to get bid options values for a batch of retail catalog items
+	advancedAuctionItemsGetRequest := *openapiclient.NewAdvancedAuctionItemsGetRequest("2680059592705", []openapiclient.AdvancedAuctionKey{*openapiclient.NewAdvancedAuctionKey(openapiclient.Country("AD"), "DS0294-M", openapiclient.Language("AM"))}) // AdvancedAuctionItemsGetRequest | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -56,7 +56,7 @@ Other parameters are passed through a pointer to a apiAdvancedAuctionItemsGetPos
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **advancedAuctionItemsGetRequest** | [**AdvancedAuctionItemsGetRequest**](AdvancedAuctionItemsGetRequest.md) | Request object used to get bid options values for a batch of retail catalog items | 
+ **advancedAuctionItemsGetRequest** | [**AdvancedAuctionItemsGetRequest**](AdvancedAuctionItemsGetRequest.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
@@ -98,7 +98,7 @@ import (
 )
 
 func main() {
-	advancedAuctionItemsSubmitRequest := *openapiclient.NewAdvancedAuctionItemsSubmitRequest("2680059592705", []openapiclient.AdvancedAuctionItemsSubmitRecord{openapiclient.AdvancedAuctionItemsSubmitRecord{AdvancedAuctionItemsSubmitDeleteRecord: openapiclient.NewAdvancedAuctionItemsSubmitDeleteRecord(openapiclient.Country("AD"), "DS0294-M", openapiclient.Language("AM"))}}) // AdvancedAuctionItemsSubmitRequest | Request object used to upsert or delete bid options for a batch of retail catalog items
+	advancedAuctionItemsSubmitRequest := *openapiclient.NewAdvancedAuctionItemsSubmitRequest("2680059592705", []openapiclient.AdvancedAuctionItemsSubmitRecord{openapiclient.AdvancedAuctionItemsSubmitRecord{AdvancedAuctionItemsSubmitDeleteRecord: openapiclient.NewAdvancedAuctionItemsSubmitDeleteRecord(openapiclient.Country("AD"), "DS0294-M", openapiclient.Language("AM"), "Operation_example")}}) // AdvancedAuctionItemsSubmitRequest | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -124,7 +124,7 @@ Other parameters are passed through a pointer to a apiAdvancedAuctionItemsSubmit
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **advancedAuctionItemsSubmitRequest** | [**AdvancedAuctionItemsSubmitRequest**](AdvancedAuctionItemsSubmitRequest.md) | Request object used to upsert or delete bid options for a batch of retail catalog items | 
+ **advancedAuctionItemsSubmitRequest** | [**AdvancedAuctionItemsSubmitRequest**](AdvancedAuctionItemsSubmitRequest.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type

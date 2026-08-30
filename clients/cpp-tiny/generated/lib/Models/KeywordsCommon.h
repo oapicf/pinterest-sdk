@@ -52,21 +52,21 @@ public:
 
 	/*! \brief Set </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
 	 */
-	void setBid(int  bid);
+	void setBid(int bid);
 	/*! \brief Get 
 	 */
 	MatchTypeResponse getMatchType();
 
 	/*! \brief Set 
 	 */
-	void setMatchType(MatchTypeResponse  match_type);
+	void setMatchType(MatchTypeResponse match_type);
 	/*! \brief Get Keyword value (120 chars max).
 	 */
 	std::string getValue();
 
 	/*! \brief Set Keyword value (120 chars max).
 	 */
-	void setValue(std::string  value);
+	void setValue(std::string value);
 
 
     private:

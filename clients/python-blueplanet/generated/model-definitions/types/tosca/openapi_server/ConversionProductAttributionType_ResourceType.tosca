@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionProductAttributionType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionProductAttributionType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ConversionProductAttributionType {
+    title = ConversionProductAttributionType
+    description = ConversionProductAttributionType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionProductAttributionType {
+    title = ConversionProductAttributionType
+    description = ConversionProductAttributionType
+    implements = openapi_server.resourceTypes.ConversionProductAttributionType
+
+  }
+}

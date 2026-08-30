@@ -71,10 +71,10 @@ class CatalogsReportFeedIngestionFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsReportFeedIngestionFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsReportFeedIngestionFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'feed_id'), 'Required key "CatalogsReportFeedIngestionFilter[feed_id]" is missing from JSON.');
+        assert(json[r'feed_id'] != null, 'Required key "CatalogsReportFeedIngestionFilter[feed_id]" has a null value in JSON.');
+        assert(json.containsKey(r'report_type'), 'Required key "CatalogsReportFeedIngestionFilter[report_type]" is missing from JSON.');
+        assert(json[r'report_type'] != null, 'Required key "CatalogsReportFeedIngestionFilter[report_type]" has a null value in JSON.');
         return true;
       }());
 
@@ -135,27 +135,28 @@ class CatalogsReportFeedIngestionFilter {
 }
 
 
-class CatalogsReportFeedIngestionFilterReportTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsReportFeedIngestionFilterReportTypeEnum._(this.value);
+enum CatalogsReportFeedIngestionFilterReportTypeEnum {
+  FEED_INGESTION_ISSUES._(r'FEED_INGESTION_ISSUES'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsReportFeedIngestionFilterReportTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const FEED_INGESTION_ISSUES = CatalogsReportFeedIngestionFilterReportTypeEnum._(r'FEED_INGESTION_ISSUES');
-
-  /// List of all possible values in this [enum][CatalogsReportFeedIngestionFilterReportTypeEnum].
-  static const values = <CatalogsReportFeedIngestionFilterReportTypeEnum>[
-    FEED_INGESTION_ISSUES,
-  ];
-
+  /// Returns the instance of [CatalogsReportFeedIngestionFilterReportTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsReportFeedIngestionFilterReportTypeEnum? fromJson(dynamic value) => CatalogsReportFeedIngestionFilterReportTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsReportFeedIngestionFilterReportTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsReportFeedIngestionFilterReportTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsReportFeedIngestionFilterReportTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -177,9 +178,10 @@ class CatalogsReportFeedIngestionFilterReportTypeEnumTypeTransformer {
 
   const CatalogsReportFeedIngestionFilterReportTypeEnumTypeTransformer._();
 
-  String encode(CatalogsReportFeedIngestionFilterReportTypeEnum data) => data.value;
+  String encode(CatalogsReportFeedIngestionFilterReportTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsReportFeedIngestionFilterReportTypeEnum.
+  /// Returns the instance of [CatalogsReportFeedIngestionFilterReportTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -188,6 +190,9 @@ class CatalogsReportFeedIngestionFilterReportTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsReportFeedIngestionFilterReportTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsReportFeedIngestionFilterReportTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'FEED_INGESTION_ISSUES': return CatalogsReportFeedIngestionFilterReportTypeEnum.FEED_INGESTION_ISSUES;
@@ -200,7 +205,7 @@ class CatalogsReportFeedIngestionFilterReportTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsReportFeedIngestionFilterReportTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsReportFeedIngestionFilterReportTypeEnumTypeTransformer? _instance;
 }
 

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | **NSString*** | Catalog id pertaining to the retail product group. | 
+**catalogId** | **NSString*** | Catalog ID pertaining to the product group. | 
 **catalogType** | **NSString*** |  | 
 **country** | **NSString*** |  | [optional] 
 **createdAt** | **NSNumber*** | Unix timestamp in seconds of when catalog product group was created. | [optional] 

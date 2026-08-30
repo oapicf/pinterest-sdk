@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -18,22 +18,21 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.LabelCreateRequestLabelsInner;
+import org.openapitools.model.LabelCreateItem;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LabelCreateRequest   {
   
-  private List<LabelCreateRequestLabelsInner> labels = new ArrayList<>();
-  private String parentId;
+  private List<LabelCreateItem> labels = new ArrayList<>();
 
   /**
    * Labels that you are applying to the campaign.
    */
-  public LabelCreateRequest labels(List<LabelCreateRequestLabelsInner> labels) {
+  public LabelCreateRequest labels(List<LabelCreateItem> labels) {
     this.labels = labels;
     return this;
   }
@@ -41,29 +40,11 @@ public class LabelCreateRequest   {
   
   @ApiModelProperty(required = true, value = "Labels that you are applying to the campaign.")
   @JsonProperty("labels")
-  public List<LabelCreateRequestLabelsInner> getLabels() {
+  public List<LabelCreateItem> getLabels() {
     return labels;
   }
-  public void setLabels(List<LabelCreateRequestLabelsInner> labels) {
+  public void setLabels(List<LabelCreateItem> labels) {
     this.labels = labels;
-  }
-
-  /**
-   * Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
-   */
-  public LabelCreateRequest parentId(String parentId) {
-    this.parentId = parentId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "626753052072", required = true, value = "Unique identifier of the asset you are labelling. Currently, you can only label campaigns.")
-  @JsonProperty("parent_id")
-  public String getParentId() {
-    return parentId;
-  }
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
   }
 
 
@@ -76,13 +57,12 @@ public class LabelCreateRequest   {
       return false;
     }
     LabelCreateRequest labelCreateRequest = (LabelCreateRequest) o;
-    return Objects.equals(labels, labelCreateRequest.labels) &&
-        Objects.equals(parentId, labelCreateRequest.parentId);
+    return Objects.equals(labels, labelCreateRequest.labels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(labels, parentId);
+    return Objects.hash(labels);
   }
 
   @Override
@@ -91,7 +71,6 @@ public class LabelCreateRequest   {
     sb.append("class LabelCreateRequest {\n");
     
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -101,10 +80,7 @@ public class LabelCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

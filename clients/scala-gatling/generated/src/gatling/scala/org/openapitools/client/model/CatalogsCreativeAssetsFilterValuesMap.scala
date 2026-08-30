@@ -15,7 +15,7 @@ case class CatalogsCreativeAssetsFilterValuesMap (
     _googleProductCategory4: Option[List[String]],
     _googleProductCategory5: Option[List[String]],
     _googleProductCategory6: Option[List[String]],
-    _mediaType: Option[List[String]]
+    _mediaType: Option[List[MediaType]]
 )
 object CatalogsCreativeAssetsFilterValuesMap {
     def toStringBody(var_customLabel0: Object, var_customLabel1: Object, var_customLabel2: Object, var_customLabel3: Object, var_customLabel4: Object, var_googleProductCategory0: Object, var_googleProductCategory1: Object, var_googleProductCategory2: Object, var_googleProductCategory3: Object, var_googleProductCategory4: Object, var_googleProductCategory5: Object, var_googleProductCategory6: Object, var_mediaType: Object) =

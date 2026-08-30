@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingSpecOperationAudienceInclude",
+  "fields": [
+    {
+      "name": "field",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationAudienceInclude_field",
+        "symbols": [
+          "AUDIENCE_INCLUDE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": "model.TargetingSpecListOperation",
+      "doc": ""
+    },
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": ""
+    }
+  ]
+
+}

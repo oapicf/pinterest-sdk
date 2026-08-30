@@ -13,7 +13,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="promotionsCreate"></a>
 # **promotionsCreate**
-> PromotionsResponse promotionsCreate(adAccountId, promotionCreateRequest)
+> PromotionsResponse promotionsCreate(adAccountId, promotionCreate)
 
 Create promotions
 
@@ -27,9 +27,9 @@ Create multiple new promotions.
 
 val apiInstance = PromotionsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val promotionCreateRequest : kotlin.collections.List<PromotionCreateRequest> =  // kotlin.collections.List<PromotionCreateRequest> | List of promotions to create, size limit [1, 30].
+val promotionCreate : kotlin.collections.List<PromotionCreate> =  // kotlin.collections.List<PromotionCreate> | 
 try {
-    val result : PromotionsResponse = apiInstance.promotionsCreate(adAccountId, promotionCreateRequest)
+    val result : PromotionsResponse = apiInstance.promotionsCreate(adAccountId, promotionCreate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PromotionsApi#promotionsCreate")
@@ -44,7 +44,7 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **promotionCreateRequest** | [**kotlin.collections.List&lt;PromotionCreateRequest&gt;**](PromotionCreateRequest.md)| List of promotions to create, size limit [1, 30]. | |
+| **promotionCreate** | [**kotlin.collections.List&lt;PromotionCreate&gt;**](PromotionCreate.md)|  | |
 
 ### Return type
 
@@ -53,8 +53,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -63,7 +69,7 @@ Configure pinterest_oauth2:
 
 <a id="promotionsDelete"></a>
 # **promotionsDelete**
-> promotionsDelete(adAccountId, promotionId)
+> Promotion promotionsDelete(promotionId, adAccountId)
 
 Delete promotion by id
 
@@ -76,10 +82,11 @@ Delete a promotion within Pinterest.
 //import org.openapitools.client.models.*
 
 val apiInstance = PromotionsApi()
+val promotionId : kotlin.String = promotionId_example // kotlin.String | Promotion ID
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val promotionId : kotlin.String = promotionId_example // kotlin.String | Unique identifier of a promotion
 try {
-    apiInstance.promotionsDelete(adAccountId, promotionId)
+    val result : Promotion = apiInstance.promotionsDelete(promotionId, adAccountId)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PromotionsApi#promotionsDelete")
     e.printStackTrace()
@@ -90,20 +97,26 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| **promotionId** | **kotlin.String**| Promotion ID | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **promotionId** | **kotlin.String**| Unique identifier of a promotion | |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 
 ### Return type
 
-null (empty response body)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -112,7 +125,7 @@ Configure pinterest_oauth2:
 
 <a id="promotionsGet"></a>
 # **promotionsGet**
-> PromotionResponse promotionsGet(adAccountId, promotionId)
+> Promotion promotionsGet(promotionId, adAccountId)
 
 Get promotion by id
 
@@ -125,10 +138,10 @@ Get a promotion by its Pinterest-specific id. It must be associated with the pro
 //import org.openapitools.client.models.*
 
 val apiInstance = PromotionsApi()
+val promotionId : kotlin.String = promotionId_example // kotlin.String | Promotion ID
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val promotionId : kotlin.String = promotionId_example // kotlin.String | Unique identifier of a promotion
 try {
-    val result : PromotionResponse = apiInstance.promotionsGet(adAccountId, promotionId)
+    val result : Promotion = apiInstance.promotionsGet(promotionId, adAccountId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PromotionsApi#promotionsGet")
@@ -140,20 +153,26 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| **promotionId** | **kotlin.String**| Promotion ID | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **promotionId** | **kotlin.String**| Unique identifier of a promotion | |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 
 ### Return type
 
-[**PromotionResponse**](PromotionResponse.md)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -162,7 +181,7 @@ Configure pinterest_oauth2:
 
 <a id="promotionsList"></a>
 # **promotionsList**
-> PromotionsList200Response promotionsList(adAccountId, pageSize, order, bookmark)
+> PromotionsList200Response promotionsList(adAccountId, bookmark, pageSize, order)
 
 Get promotions
 
@@ -176,11 +195,11 @@ Gets all promotions associated with an ad account ID that can be applied to an a
 
 val apiInstance = PromotionsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 try {
-    val result : PromotionsList200Response = apiInstance.promotionsList(adAccountId, pageSize, order, bookmark)
+    val result : PromotionsList200Response = apiInstance.promotionsList(adAccountId, bookmark, pageSize, order)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PromotionsApi#promotionsList")
@@ -193,11 +212,11 @@ try {
 
 ### Parameters
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **order** | **kotlin.String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
 
 ### Return type
 
@@ -206,8 +225,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -216,7 +241,7 @@ Configure pinterest_oauth2:
 
 <a id="promotionsUpdate"></a>
 # **promotionsUpdate**
-> PromotionsResponse promotionsUpdate(adAccountId, promotionUpdateRequest)
+> PromotionsResponse promotionsUpdate(adAccountId, promotionBatchUpdate)
 
 Update promotions
 
@@ -230,9 +255,9 @@ Update multiple promotions.
 
 val apiInstance = PromotionsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val promotionUpdateRequest : kotlin.collections.List<PromotionUpdateRequest> =  // kotlin.collections.List<PromotionUpdateRequest> | List of promotions to create, size limit [1, 30].
+val promotionBatchUpdate : kotlin.collections.List<PromotionBatchUpdate> =  // kotlin.collections.List<PromotionBatchUpdate> | 
 try {
-    val result : PromotionsResponse = apiInstance.promotionsUpdate(adAccountId, promotionUpdateRequest)
+    val result : PromotionsResponse = apiInstance.promotionsUpdate(adAccountId, promotionBatchUpdate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PromotionsApi#promotionsUpdate")
@@ -247,7 +272,7 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **promotionUpdateRequest** | [**kotlin.collections.List&lt;PromotionUpdateRequest&gt;**](PromotionUpdateRequest.md)| List of promotions to create, size limit [1, 30]. | |
+| **promotionBatchUpdate** | [**kotlin.collections.List&lt;PromotionBatchUpdate&gt;**](PromotionBatchUpdate.md)|  | |
 
 ### Return type
 
@@ -256,8 +281,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

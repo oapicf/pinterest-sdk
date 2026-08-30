@@ -13,7 +13,7 @@
       "name": "items",
       "type": {
         "type": "array",
-        "items": "model.AdvancedAuctionItemsGetRecord"
+        "items": "model.AdvancedAuctionKey"
       },
       "doc": "A list of retail catalog items to fetch bid options for"
     }

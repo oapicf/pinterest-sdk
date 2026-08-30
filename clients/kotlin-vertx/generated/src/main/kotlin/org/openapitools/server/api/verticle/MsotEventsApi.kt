@@ -1,7 +1,7 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.ConversionMSOTEvents
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.ConversionMSOTEventsCreate
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -20,7 +20,7 @@ interface MsotEventsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* msotEventsCreate
      * Send Measurement Source Of Truth (MSOT) attributed conversion events */
-    suspend fun msotEventsCreate(adAccountId:kotlin.String?,conversionMSOTEvents:ConversionMSOTEvents?,context:OperationRequest):Response<Void>
+    suspend fun msotEventsCreate(adAccountId:kotlin.String?,conversionMSOTEventsCreate:ConversionMSOTEventsCreate?,context:OperationRequest):Response<Void>
     companion object {
         const val address = "MsotEventsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

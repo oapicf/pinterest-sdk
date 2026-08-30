@@ -7,9 +7,9 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open NotificationApiHandlerParams
 open NotificationApiServiceInterface
 open NotificationApiServiceImplementation
-open OpenAPI.Model.Error
 open OpenAPI.Model.NotificationPostRequest
 open OpenAPI.Model.NotificationResponse
+open OpenAPI.Model.PinterestLibError
 
 module NotificationApiHandler =
 

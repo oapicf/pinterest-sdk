@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **catalog_id** | **String** | Catalog id pertaining to the retail product group. |  |
+| **catalog_id** | **String** | Catalog ID pertaining to the product group. |  |
 | **catalog_type** | **String** |  |  |
 | **country** | **String** |  | [optional] |
 | **created_at** | **Integer** | Unix timestamp in seconds of when catalog product group was created. | [optional] |
@@ -25,7 +25,7 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::CatalogsRetailProductGroup.new(
-  catalog_id: null,
+  catalog_id: 2680059592705,
   catalog_type: null,
   country: null,
   created_at: 1621350033000,

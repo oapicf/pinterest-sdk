@@ -9,6 +9,8 @@
 | CreativeType | CREATIVE_TYPE |
 | Gender | GENDER |
 | Location | LOCATION |
+| Placement | PLACEMENT |
+| AudienceInclude | AUDIENCE_INCLUDE |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

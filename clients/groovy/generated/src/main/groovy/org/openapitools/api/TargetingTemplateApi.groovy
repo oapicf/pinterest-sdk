@@ -1,11 +1,12 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.Error
+import org.openapitools.model.PinterestLibError
+import org.openapitools.model.PinterestLibPaginationOrder
+import org.openapitools.model.TargetingTemplate
 import org.openapitools.model.TargetingTemplateCreate
-import org.openapitools.model.TargetingTemplateGetResponseData
 import org.openapitools.model.TargetingTemplateList200Response
-import org.openapitools.model.TargetingTemplateUpdateRequest
+import org.openapitools.model.TargetingTemplateUpdateRequestReadOrUpdate
 
 class TargetingTemplateApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -19,6 +20,7 @@ class TargetingTemplateApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -36,19 +38,22 @@ class TargetingTemplateApi {
         bodyParams = targetingTemplateCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    TargetingTemplateGetResponseData.class )
+                    TargetingTemplate.class )
 
     }
 
-    def targetingTemplateList ( String adAccountId, String order, Boolean includeSizing, String searchQuery, Integer pageSize, String bookmark, Closure onSuccess, Closure onFailure)  {
+    def targetingTemplateList ( String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order, Boolean includeSizing, String searchQuery, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/targeting_templates"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -56,6 +61,12 @@ class TargetingTemplateApi {
             throw new RuntimeException("missing required params adAccountId")
         }
 
+        if (bookmark != null) {
+            queryParams.put("bookmark", bookmark)
+        }
+        if (pageSize != null) {
+            queryParams.put("page_size", pageSize)
+        }
         if (order != null) {
             queryParams.put("order", order)
         }
@@ -65,29 +76,26 @@ class TargetingTemplateApi {
         if (searchQuery != null) {
             queryParams.put("search_query", searchQuery)
         }
-        if (pageSize != null) {
-            queryParams.put("page_size", pageSize)
-        }
-        if (bookmark != null) {
-            queryParams.put("bookmark", bookmark)
-        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     TargetingTemplateList200Response.class )
 
     }
 
-    def targetingTemplateUpdate ( String adAccountId, TargetingTemplateUpdateRequest targetingTemplateUpdateRequest, Closure onSuccess, Closure onFailure)  {
+    def targetingTemplateUpdate ( String adAccountId, TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/targeting_templates"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -95,17 +103,19 @@ class TargetingTemplateApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (targetingTemplateUpdateRequest == null) {
-            throw new RuntimeException("missing required params targetingTemplateUpdateRequest")
+        if (targetingTemplateUpdateRequestReadOrUpdate == null) {
+            throw new RuntimeException("missing required params targetingTemplateUpdateRequestReadOrUpdate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = targetingTemplateUpdateRequest
+        bodyParams = targetingTemplateUpdateRequestReadOrUpdate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
                     null )
 

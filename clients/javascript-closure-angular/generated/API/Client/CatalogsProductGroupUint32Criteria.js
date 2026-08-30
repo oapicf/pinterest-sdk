@@ -12,7 +12,7 @@ API.Client.CatalogsProductGroupUint32Criteria = function() {}
 API.Client.CatalogsProductGroupUint32Criteria.prototype.negated;
 
 /**
- * @type {!string}
+ * @type {!API.Client.NumericFilterOperatorType}
  * @export
  */
 API.Client.CatalogsProductGroupUint32Criteria.prototype.operator;
@@ -23,10 +23,3 @@ API.Client.CatalogsProductGroupUint32Criteria.prototype.operator;
  */
 API.Client.CatalogsProductGroupUint32Criteria.prototype.value;
 
-/** @enum {string} */
-API.Client.CatalogsProductGroupUint32Criteria.OperatorEnum = { 
-  GREATER_THAN: 'GREATER_THAN',
-  GREATER_THAN_OR_EQUALS: 'GREATER_THAN_OR_EQUALS',
-  LESS_THAN: 'LESS_THAN',
-  LESS_THAN_OR_EQUALS: 'LESS_THAN_OR_EQUALS',
-}

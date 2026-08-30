@@ -71,11 +71,11 @@ boards_user_follows/list_args(_S) ->
 %% follow_user/update
 %%==============================================================================
 
-follow_user/update(Username, OpenapiFollowUserRequest) ->
-  openapi_api:follow_user/update(Username, OpenapiFollowUserRequest).
+follow_user/update(Username, OpenapiFollowUserCreate) ->
+  openapi_api:follow_user/update(Username, OpenapiFollowUserCreate).
 
 follow_user/update_args(_S) ->
-  [binary(), openapi_follow_user_request:openapi_follow_user_request()].
+  [binary(), openapi_follow_user_create:openapi_follow_user_create()].
 
 %%==============================================================================
 %% followers/list
@@ -125,7 +125,7 @@ user_account/analytics/top_pins(StartDate, EndDate, SortBy) ->
   openapi_api:user_account/analytics/top_pins(StartDate, EndDate, SortBy).
 
 user_account/analytics/top_pins_args(_S) ->
-  [date(), date(), binary()].
+  [date(), date(), openapi_top_pins_sort_by].
 
 %%==============================================================================
 %% user_account/analytics/top_video_pins
@@ -135,7 +135,7 @@ user_account/analytics/top_video_pins(StartDate, EndDate, SortBy) ->
   openapi_api:user_account/analytics/top_video_pins(StartDate, EndDate, SortBy).
 
 user_account/analytics/top_video_pins_args(_S) ->
-  [date(), date(), binary()].
+  [date(), date(), openapi_top_video_pins_sort_by].
 
 %%==============================================================================
 %% user_account/followed_interests
@@ -181,11 +181,11 @@ user_websites/get_args(_S) ->
 %% verify_website/update
 %%==============================================================================
 
-verify_website/update(OpenapiUserWebsiteVerifyRequest) ->
-  openapi_api:verify_website/update(OpenapiUserWebsiteVerifyRequest).
+verify_website/update(OpenapiUserWebsiteCreate) ->
+  openapi_api:verify_website/update(OpenapiUserWebsiteCreate).
 
 verify_website/update_args(_S) ->
-  [openapi_user_website_verify_request:openapi_user_website_verify_request()].
+  [openapi_user_website_create:openapi_user_website_create()].
 
 %%==============================================================================
 %% website_verification/get

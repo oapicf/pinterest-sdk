@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**GENDER** | GENDER | long NOT NULL |  | [**CatalogsProductGroupMultipleGenderCriteria**](.md) |  |  [foreignkey]
+**GENDER** | GENDER | long NOT NULL |  | [**CatalogsProductGroupMultipleGenderCriteria**](CatalogsProductGroupMultipleGenderCriteria.md) |  |  [foreignkey]
 
 
 

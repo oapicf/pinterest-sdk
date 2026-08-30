@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdAccounts** | Pointer to [**[]BusinessMemberAssetsSummaryAdAccountsInner**](BusinessMemberAssetsSummaryAdAccountsInner.md) | List of ad account IDs and respective permission levels. | [optional] 
-**Profiles** | Pointer to [**[]BusinessMemberAssetsSummaryProfilesInner**](BusinessMemberAssetsSummaryProfilesInner.md) | List of profile IDs and respective permission levels. | [optional] 
+**AdAccounts** | Pointer to [**[]AssetIdWithPermissions**](AssetIdWithPermissions.md) | List of ad account IDs and respective permission levels. | [optional] 
+**Profiles** | Pointer to [**[]AssetIdWithPermissions**](AssetIdWithPermissions.md) | List of profile IDs and respective permission levels. | [optional] 
 
 ## Methods
 
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAdAccounts
 
-`func (o *BusinessMemberAssetsSummary) GetAdAccounts() []BusinessMemberAssetsSummaryAdAccountsInner`
+`func (o *BusinessMemberAssetsSummary) GetAdAccounts() []AssetIdWithPermissions`
 
 GetAdAccounts returns the AdAccounts field if non-nil, zero value otherwise.
 
 ### GetAdAccountsOk
 
-`func (o *BusinessMemberAssetsSummary) GetAdAccountsOk() (*[]BusinessMemberAssetsSummaryAdAccountsInner, bool)`
+`func (o *BusinessMemberAssetsSummary) GetAdAccountsOk() (*[]AssetIdWithPermissions, bool)`
 
 GetAdAccountsOk returns a tuple with the AdAccounts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAdAccounts
 
-`func (o *BusinessMemberAssetsSummary) SetAdAccounts(v []BusinessMemberAssetsSummaryAdAccountsInner)`
+`func (o *BusinessMemberAssetsSummary) SetAdAccounts(v []AssetIdWithPermissions)`
 
 SetAdAccounts sets AdAccounts field to given value.
 
@@ -53,20 +53,20 @@ HasAdAccounts returns a boolean if a field has been set.
 
 ### GetProfiles
 
-`func (o *BusinessMemberAssetsSummary) GetProfiles() []BusinessMemberAssetsSummaryProfilesInner`
+`func (o *BusinessMemberAssetsSummary) GetProfiles() []AssetIdWithPermissions`
 
 GetProfiles returns the Profiles field if non-nil, zero value otherwise.
 
 ### GetProfilesOk
 
-`func (o *BusinessMemberAssetsSummary) GetProfilesOk() (*[]BusinessMemberAssetsSummaryProfilesInner, bool)`
+`func (o *BusinessMemberAssetsSummary) GetProfilesOk() (*[]AssetIdWithPermissions, bool)`
 
 GetProfilesOk returns a tuple with the Profiles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProfiles
 
-`func (o *BusinessMemberAssetsSummary) SetProfiles(v []BusinessMemberAssetsSummaryProfilesInner)`
+`func (o *BusinessMemberAssetsSummary) SetProfiles(v []AssetIdWithPermissions)`
 
 SetProfiles sets Profiles field to given value.
 

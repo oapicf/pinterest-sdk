@@ -60,11 +60,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setImages(ImageSize  images);
-	/*! \brief Get 
+	/*! \brief Get Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
 	 */
 	std::string getItemType();
 
-	/*! \brief Set 
+	/*! \brief Set Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
 	 */
 	void setItemType(std::string  item_type);
 	/*! \brief Get 

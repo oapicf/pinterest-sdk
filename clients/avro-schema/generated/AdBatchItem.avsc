@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdBatchItem",
+  "fields": [
+    {
+      "name": "data",
+      "type": ["null", "model.Ad"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "exceptions",
+      "type": ["null", "model.PinterestLibError"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

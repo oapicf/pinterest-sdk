@@ -52,14 +52,14 @@ public:
 
 	/*! \brief Set Catalog Feed id pertaining to the catalog product group filter.
 	 */
-	void setFeedId(std::string  feed_id);
+	void setFeedId(std::string feed_id);
 	/*! \brief Get 
 	 */
 	CatalogsProductGroupFilters getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsProductGroupFilters  filters);
+	void setFilters(CatalogsProductGroupFilters filters);
 
 
     private:

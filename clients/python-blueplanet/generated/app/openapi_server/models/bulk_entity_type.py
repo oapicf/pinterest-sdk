@@ -25,6 +25,7 @@ class BulkEntityType(Model):
     KEYWORD = 'KEYWORD'
     LABEL = 'LABEL'
     SCHEDULE = 'SCHEDULE'
+    ENTITY_HISTORY = 'ENTITY_HISTORY'
 
     def __init__(self):  # noqa: E501
         """BulkEntityType - a model defined in Swagger

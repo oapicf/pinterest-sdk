@@ -8,7 +8,7 @@ Name | Type
 ------------ | -------------
 `id` | string
 `relatedTermCount` | number
-`relatedTermsList` | [Array&lt;RelatedTermsRelatedTermsListInner&gt;](RelatedTermsRelatedTermsListInner.md)
+`relatedTermsList` | [Array&lt;RelatedTermsRelatedTermsListItems&gt;](RelatedTermsRelatedTermsListItems.md)
 
 ## Example
 

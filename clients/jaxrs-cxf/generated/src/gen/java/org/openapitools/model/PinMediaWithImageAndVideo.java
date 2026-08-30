@@ -25,7 +25,7 @@ public class PinMediaWithImageAndVideo  {
 
   @Valid
 
-  private List<PinMediaMetadata> items = new ArrayList<>();
+  private List<@Valid PinMediaMetadata> items = new ArrayList<>();
 
 public enum MediaTypeEnum {
 
@@ -67,15 +67,15 @@ MULTIPLE_MIXED(String.valueOf("multiple_mixed"));
    * @return items
   **/
   @JsonProperty("items")
-  public List<PinMediaMetadata> getItems() {
+  public List<@Valid PinMediaMetadata> getItems() {
     return items;
   }
 
-  public void setItems(List<PinMediaMetadata> items) {
+  public void setItems(List<@Valid PinMediaMetadata> items) {
     this.items = items;
   }
 
-  public PinMediaWithImageAndVideo items(List<PinMediaMetadata> items) {
+  public PinMediaWithImageAndVideo items(List<@Valid PinMediaMetadata> items) {
     this.items = items;
     return this;
   }
@@ -141,10 +141,7 @@ MULTIPLE_MIXED(String.valueOf("multiple_mixed"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

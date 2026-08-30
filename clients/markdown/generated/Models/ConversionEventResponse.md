@@ -7,6 +7,7 @@
 | **conversion\_event** | [**ConversionTagType**](ConversionTagType.md) |  | [optional] [default to null] |
 | **conversion\_tag\_id** | **String** | Id of the tag. | [optional] [default to null] |
 | **created\_time** | **Integer** | Creation date in epoch format. | [optional] [default to null] |
+| **reporting\_conversion\_event** | **String** | For advertiser-defined events, the reporting event label shown in optimization UIs. | [optional] [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

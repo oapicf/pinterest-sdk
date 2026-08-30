@@ -107,7 +107,7 @@ CatalogsCreativeAssetsBatchItem::getAttributes()
 }
 
 void
-CatalogsCreativeAssetsBatchItem::setAttributes(CatalogsUpdatableCreativeAssetsAttributes  attributes)
+CatalogsCreativeAssetsBatchItem::setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes)
 {
 	this->attributes = attributes;
 }
@@ -119,7 +119,7 @@ CatalogsCreativeAssetsBatchItem::getCreativeAssetsId()
 }
 
 void
-CatalogsCreativeAssetsBatchItem::setCreativeAssetsId(std::string  creative_assets_id)
+CatalogsCreativeAssetsBatchItem::setCreativeAssetsId(std::string creative_assets_id)
 {
 	this->creative_assets_id = creative_assets_id;
 }
@@ -131,7 +131,7 @@ CatalogsCreativeAssetsBatchItem::getOperation()
 }
 
 void
-CatalogsCreativeAssetsBatchItem::setOperation(std::string  operation)
+CatalogsCreativeAssetsBatchItem::setOperation(std::string operation)
 {
 	this->operation = operation;
 }

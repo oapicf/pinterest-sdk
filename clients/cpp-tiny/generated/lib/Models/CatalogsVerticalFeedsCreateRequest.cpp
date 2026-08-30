@@ -7,17 +7,17 @@ using namespace Tiny;
 CatalogsVerticalFeedsCreateRequest::CatalogsVerticalFeedsCreateRequest()
 {
 	catalog_id = std::string();
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
 	credentials = CatalogsFeedCredentials();
 	default_availability = ProductAvailabilityType();
 	default_country = Country();
 	default_currency = NullableCurrency();
-	default_locale = CatalogsFeedsCreateRequest_default_locale();
+	default_locale = CatalogsCreativeAssetsFeedsCreateRequest_default_locale();
 	format = CatalogsFormat();
 	location = std::string();
 	name = std::string();
 	preferred_processing_schedule = CatalogsFeedProcessingSchedule();
-	status = std::string();
+	status = null;
 }
 
 CatalogsVerticalFeedsCreateRequest::CatalogsVerticalFeedsCreateRequest(std::string jsonString)
@@ -56,9 +56,8 @@ CatalogsVerticalFeedsCreateRequest::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -127,7 +126,7 @@ CatalogsVerticalFeedsCreateRequest::fromJson(std::string jsonObj)
 
 
 
-        CatalogsFeedsCreateRequest_default_locale* obj = &default_locale;
+        CatalogsCreativeAssetsFeedsCreateRequest_default_locale* obj = &default_locale;
 		obj->fromJson(value.dump());
 
     }
@@ -219,8 +218,8 @@ CatalogsVerticalFeedsCreateRequest::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -304,19 +303,19 @@ CatalogsVerticalFeedsCreateRequest::getCatalogId()
 }
 
 void
-CatalogsVerticalFeedsCreateRequest::setCatalogId(std::string  catalog_id)
+CatalogsVerticalFeedsCreateRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
 
-CatalogsType
+std::string
 CatalogsVerticalFeedsCreateRequest::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsVerticalFeedsCreateRequest::setCatalogType(CatalogsType  catalog_type)
+CatalogsVerticalFeedsCreateRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -328,7 +327,7 @@ CatalogsVerticalFeedsCreateRequest::getCredentials()
 }
 
 void
-CatalogsVerticalFeedsCreateRequest::setCredentials(CatalogsFeedCredentials  credentials)
+CatalogsVerticalFeedsCreateRequest::setCredentials(CatalogsFeedCredentials credentials)
 {
 	this->credentials = credentials;
 }
@@ -340,7 +339,7 @@ CatalogsVerticalFeedsCreateRequest::getDefaultAvailability()
 }
 
 void
-CatalogsVerticalFeedsCreateRequest::setDefaultAvailability(ProductAvailabilityType  default_availability)
+CatalogsVerticalFeedsCreateRequest::setDefaultAvailability(ProductAvailabilityType default_availability)
 {
 	this->default_availability = default_availability;
 }
@@ -352,7 +351,7 @@ CatalogsVerticalFeedsCreateRequest::getDefaultCountry()
 }
 
 void
-CatalogsVerticalFeedsCreateRequest::setDefaultCountry(Country  default_country)
+CatalogsVerticalFeedsCreateRequest::setDefaultCountry(Country default_country)
 {
 	this->default_country = default_country;
 }
@@ -364,19 +363,19 @@ CatalogsVerticalFeedsCreateRequest::getDefaultCurrency()
 }
 
 void
-CatalogsVerticalFeedsCreateRequest::setDefaultCurrency(NullableCurrency  default_currency)
+CatalogsVerticalFeedsCreateRequest::setDefaultCurrency(NullableCurrency default_currency)
 {
 	this->default_currency = default_currency;
 }
 
-CatalogsFeedsCreateRequest_default_locale
+CatalogsCreativeAssetsFeedsCreateRequest_default_locale
 CatalogsVerticalFeedsCreateRequest::getDefaultLocale()
 {
 	return default_locale;
 }
 
 void
-CatalogsVerticalFeedsCreateRequest::setDefaultLocale(CatalogsFeedsCreateRequest_default_locale  default_locale)
+CatalogsVerticalFeedsCreateRequest::setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequest_default_locale default_locale)
 {
 	this->default_locale = default_locale;
 }
@@ -388,7 +387,7 @@ CatalogsVerticalFeedsCreateRequest::getFormat()
 }
 
 void
-CatalogsVerticalFeedsCreateRequest::setFormat(CatalogsFormat  format)
+CatalogsVerticalFeedsCreateRequest::setFormat(CatalogsFormat format)
 {
 	this->format = format;
 }
@@ -400,7 +399,7 @@ CatalogsVerticalFeedsCreateRequest::getLocation()
 }
 
 void
-CatalogsVerticalFeedsCreateRequest::setLocation(std::string  location)
+CatalogsVerticalFeedsCreateRequest::setLocation(std::string location)
 {
 	this->location = location;
 }
@@ -412,7 +411,7 @@ CatalogsVerticalFeedsCreateRequest::getName()
 }
 
 void
-CatalogsVerticalFeedsCreateRequest::setName(std::string  name)
+CatalogsVerticalFeedsCreateRequest::setName(std::string name)
 {
 	this->name = name;
 }
@@ -424,7 +423,7 @@ CatalogsVerticalFeedsCreateRequest::getPreferredProcessingSchedule()
 }
 
 void
-CatalogsVerticalFeedsCreateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule)
+CatalogsVerticalFeedsCreateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferred_processing_schedule)
 {
 	this->preferred_processing_schedule = preferred_processing_schedule;
 }
@@ -436,7 +435,7 @@ CatalogsVerticalFeedsCreateRequest::getStatus()
 }
 
 void
-CatalogsVerticalFeedsCreateRequest::setStatus(CatalogsStatus  status)
+CatalogsVerticalFeedsCreateRequest::setStatus(CatalogsStatus status)
 {
 	this->status = status;
 }

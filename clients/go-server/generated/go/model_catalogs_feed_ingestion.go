@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,35 +14,106 @@ package openapi
 
 import (
 	"time"
+	"encoding/json"
+	"fmt"
 )
 
 
 
 type CatalogsFeedIngestion struct {
 
+	// Timestamp of the feed ingestion.
 	CreatedAt time.Time `json:"created_at"`
 
-	FeedId string `json:"feed_id"`
+	// Catalog Feed id pertaining to the feed ingestion.
+	FeedId string `json:"feed_id" validate:"regexp=^\\d+$"`
 
-	Id string `json:"id"`
+	// Unique identifier of a feed ingestion.
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
+	// Status of the feed ingestion.
 	Status CatalogsFeedProcessingStatus `json:"status"`
 }
-
-// AssertCatalogsFeedIngestionRequired checks if the required fields are not zero-ed
-func AssertCatalogsFeedIngestionRequired(obj CatalogsFeedIngestion) error {
-	elements := map[string]interface{}{
-		"created_at": obj.CreatedAt,
-		"feed_id": obj.FeedId,
-		"id": obj.Id,
-		"status": obj.Status,
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsFeedIngestion
+func (o *CatalogsFeedIngestion) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"created_at",
+		"feed_id",
+		"id",
+		"status",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"created_at": false,
+		"feed_id": false,
+		"id": false,
+		"status": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"created_at": {},
+		"feed_id": {},
+		"id": {},
+		"status": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsFeedIngestion
+
+	if value, exists := allProperties["created_at"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreatedAt); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["feed_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.FeedId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["status"]; exists {
+		if err = json.Unmarshal(value, &decoded.Status); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsFeedIngestionRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertCatalogsFeedIngestionRequired(obj CatalogsFeedIngestion) error {
 	return nil
 }
 

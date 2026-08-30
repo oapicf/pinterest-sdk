@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,18 +14,8 @@ package openapi
 
 
 
+// InviteResponse - A user's username or email OR a partner id that caused the error.
 type InviteResponse struct {
-
-	// Unique identifier of the invite/request.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-
-	InviteData BaseInviteDataResponseInviteData `json:"invite_data,omitempty"`
-
-	// Indicates whether the invite/request was received.
-	IsReceivedInvite bool `json:"is_received_invite,omitempty"`
-
-	// Metadata for the member/partner that was sent the invite/request.
-	User BusinessAccessUserSummary `json:"user,omitempty"`
 
 	AssetsSummary *InviteAssetsSummary `json:"assets_summary,omitempty"`
 
@@ -33,43 +23,67 @@ type InviteResponse struct {
 	BusinessRoles []string `json:"business_roles,omitempty"`
 
 	// Metadata for the business that created the invite/request.
-	CreatedByBusiness *map[string]interface{} `json:"created_by_business,omitempty"`
+	CreatedByBusiness BusinessAccessUserSummary `json:"created_by_business,omitempty"`
 
 	// Metadata for the user that created the invite/request.
-	CreatedByUser *map[string]interface{} `json:"created_by_user,omitempty"`
+	CreatedByUser BusinessAccessUserSummary `json:"created_by_user,omitempty"`
 
 	// The time the invite/request was created. Returned in milliseconds.
 	CreatedTime int32 `json:"created_time,omitempty"`
+
+	// Unique identifier of the invite/request.
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
+
+	InviteData InviteDataResponse `json:"invite_data,omitempty"`
+
+	// Indicates whether the invite/request was received.
+	IsReceivedInvite bool `json:"is_received_invite,omitempty"`
+
+	// Metadata for the member/partner that was sent the invite/request.
+	User BusinessAccessUserSummary `json:"user,omitempty"`
 }
 
-// AssertInviteResponseRequired checks if the required fields are not zero-ed
+// AssertInviteResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertInviteResponseRequired(obj InviteResponse) error {
-	if err := AssertBaseInviteDataResponseInviteDataRequired(obj.InviteData); err != nil {
-		return err
-	}
-	if err := AssertBusinessAccessUserSummaryRequired(obj.User); err != nil {
-		return err
-	}
 	if obj.AssetsSummary != nil {
 		if err := AssertInviteAssetsSummaryRequired(*obj.AssetsSummary); err != nil {
 			return err
 		}
+	}
+	if err := AssertBusinessAccessUserSummaryRequired(obj.CreatedByBusiness); err != nil {
+		return err
+	}
+	if err := AssertBusinessAccessUserSummaryRequired(obj.CreatedByUser); err != nil {
+		return err
+	}
+	if err := AssertInviteDataResponseRequired(obj.InviteData); err != nil {
+		return err
+	}
+	if err := AssertBusinessAccessUserSummaryRequired(obj.User); err != nil {
+		return err
 	}
 	return nil
 }
 
 // AssertInviteResponseConstraints checks if the values respects the defined constraints
 func AssertInviteResponseConstraints(obj InviteResponse) error {
-	if err := AssertBaseInviteDataResponseInviteDataConstraints(obj.InviteData); err != nil {
-		return err
-	}
-	if err := AssertBusinessAccessUserSummaryConstraints(obj.User); err != nil {
-		return err
-	}
     if obj.AssetsSummary != nil {
      	if err := AssertInviteAssetsSummaryConstraints(*obj.AssetsSummary); err != nil {
      		return err
      	}
     }
+	if err := AssertBusinessAccessUserSummaryConstraints(obj.CreatedByBusiness); err != nil {
+		return err
+	}
+	if err := AssertBusinessAccessUserSummaryConstraints(obj.CreatedByUser); err != nil {
+		return err
+	}
+	if err := AssertInviteDataResponseConstraints(obj.InviteData); err != nil {
+		return err
+	}
+	if err := AssertBusinessAccessUserSummaryConstraints(obj.User); err != nil {
+		return err
+	}
 	return nil
 }

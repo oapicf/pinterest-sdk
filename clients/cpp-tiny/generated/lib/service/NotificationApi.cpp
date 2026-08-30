@@ -10,7 +10,7 @@ using namespace Tiny;
         NotificationApi::
         notification_post(
             
-            Notification_post_request notificationPostRequest
+            NotificationPostRequest notificationPostRequest
             
         )
         {

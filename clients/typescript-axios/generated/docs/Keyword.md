@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bid** | **number** | &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. | [optional] [default to undefined]
-**match_type** | [**MatchTypeResponse**](MatchTypeResponse.md) |  | [default to undefined]
-**value** | **string** | Keyword value (120 chars max). | [default to undefined]
 **archived** | **boolean** |  | [optional] [default to undefined]
-**id** | **string** | Keyword ID . | [optional] [default to undefined]
-**parent_id** | **string** | Keyword parent entity ID (advertiser, campaign, ad group). | [optional] [default to undefined]
-**parent_type** | **string** | Parent entity type | [optional] [default to undefined]
-**type** | **string** | Always keyword | [optional] [default to undefined]
+**bid** | **number** | **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. | [optional] [default to undefined]
+**id** | **string** | Keyword ID . | [default to undefined]
+**match_type** | [**MatchType**](MatchType.md) | Keyword [match type](/docs/api-features/targeting-overview/) | [default to undefined]
+**parent_id** | **string** | Keyword parent entity ID (advertiser, campaign, ad group). | [readonly] [default to undefined]
+**parent_type** | **string** | Parent entity type (advertiser, campaign, ad group). | [optional] [readonly] [default to undefined]
+**type** | **string** | Always keyword | [optional] [readonly] [default to undefined]
+**value** | **string** | Keyword value (120 chars max). | [default to undefined]
 
 ## Example
 
@@ -20,14 +20,14 @@ Name | Type | Description | Notes
 import { Keyword } from './api';
 
 const instance: Keyword = {
-    bid,
-    match_type,
-    value,
     archived,
+    bid,
     id,
+    match_type,
     parent_id,
     parent_type,
     type,
+    value,
 };
 ```
 

@@ -3,7 +3,7 @@ package org.openapitools.model;
 
 
 /**
- * Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.
+ * Label type values.
  */
 public enum LabelType {
   
@@ -28,7 +28,7 @@ public enum LabelType {
         return b;
       }
     }
-    return null;
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
 }

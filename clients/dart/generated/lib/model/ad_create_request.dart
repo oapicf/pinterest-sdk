@@ -26,15 +26,16 @@ class AdCreateRequest {
     this.disclosureUrl,
     this.gridClickType,
     this.iosDeepLink,
+    this.isCarting,
     this.isPinDeleted,
     this.isRemovable,
     this.leadFormId,
     this.name,
+    required this.pinId,
     this.quizPinData,
     this.status,
     this.trackingUrls,
     this.viewTrackingUrl,
-    required this.pinId,
   });
 
   /// ID of the ad group that contains the ad.
@@ -72,6 +73,15 @@ class AdCreateRequest {
   /// Deep link URL for iOS devices.
   String? iosDeepLink;
 
+  /// Is the ad a carting/WTB ad?
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isCarting;
+
   /// Is original pin deleted?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -96,8 +106,11 @@ class AdCreateRequest {
   /// Name of the ad - 255 chars max.
   String? name;
 
+  /// Pin ID.
+  String pinId;
+
   /// Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-  QuizPinData? quizPinData;
+  Object? quizPinData;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -107,13 +120,10 @@ class AdCreateRequest {
   ///
   EntityStatus? status;
 
-  TrackingUrls? trackingUrls;
+  Object? trackingUrls;
 
   /// Tracking URL for ad impressions.
   String? viewTrackingUrl;
-
-  /// Pin ID.
-  String pinId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AdCreateRequest &&
@@ -130,15 +140,16 @@ class AdCreateRequest {
     other.disclosureUrl == disclosureUrl &&
     other.gridClickType == gridClickType &&
     other.iosDeepLink == iosDeepLink &&
+    other.isCarting == isCarting &&
     other.isPinDeleted == isPinDeleted &&
     other.isRemovable == isRemovable &&
     other.leadFormId == leadFormId &&
     other.name == name &&
+    other.pinId == pinId &&
     other.quizPinData == quizPinData &&
     other.status == status &&
     other.trackingUrls == trackingUrls &&
-    other.viewTrackingUrl == viewTrackingUrl &&
-    other.pinId == pinId;
+    other.viewTrackingUrl == viewTrackingUrl;
 
   @override
   int get hashCode =>
@@ -156,18 +167,19 @@ class AdCreateRequest {
     (disclosureUrl == null ? 0 : disclosureUrl!.hashCode) +
     (gridClickType == null ? 0 : gridClickType!.hashCode) +
     (iosDeepLink == null ? 0 : iosDeepLink!.hashCode) +
+    (isCarting == null ? 0 : isCarting!.hashCode) +
     (isPinDeleted == null ? 0 : isPinDeleted!.hashCode) +
     (isRemovable == null ? 0 : isRemovable!.hashCode) +
     (leadFormId == null ? 0 : leadFormId!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
+    (pinId.hashCode) +
     (quizPinData == null ? 0 : quizPinData!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (trackingUrls == null ? 0 : trackingUrls!.hashCode) +
-    (viewTrackingUrl == null ? 0 : viewTrackingUrl!.hashCode) +
-    (pinId.hashCode);
+    (viewTrackingUrl == null ? 0 : viewTrackingUrl!.hashCode);
 
   @override
-  String toString() => 'AdCreateRequest[adGroupId=$adGroupId, androidDeepLink=$androidDeepLink, carouselAndroidDeepLinks=$carouselAndroidDeepLinks, carouselDestinationUrls=$carouselDestinationUrls, carouselIosDeepLinks=$carouselIosDeepLinks, clickTrackingUrl=$clickTrackingUrl, creativeType=$creativeType, customizableCtaType=$customizableCtaType, destinationUrl=$destinationUrl, disclosureType=$disclosureType, disclosureUrl=$disclosureUrl, gridClickType=$gridClickType, iosDeepLink=$iosDeepLink, isPinDeleted=$isPinDeleted, isRemovable=$isRemovable, leadFormId=$leadFormId, name=$name, quizPinData=$quizPinData, status=$status, trackingUrls=$trackingUrls, viewTrackingUrl=$viewTrackingUrl, pinId=$pinId]';
+  String toString() => 'AdCreateRequest[adGroupId=$adGroupId, androidDeepLink=$androidDeepLink, carouselAndroidDeepLinks=$carouselAndroidDeepLinks, carouselDestinationUrls=$carouselDestinationUrls, carouselIosDeepLinks=$carouselIosDeepLinks, clickTrackingUrl=$clickTrackingUrl, creativeType=$creativeType, customizableCtaType=$customizableCtaType, destinationUrl=$destinationUrl, disclosureType=$disclosureType, disclosureUrl=$disclosureUrl, gridClickType=$gridClickType, iosDeepLink=$iosDeepLink, isCarting=$isCarting, isPinDeleted=$isPinDeleted, isRemovable=$isRemovable, leadFormId=$leadFormId, name=$name, pinId=$pinId, quizPinData=$quizPinData, status=$status, trackingUrls=$trackingUrls, viewTrackingUrl=$viewTrackingUrl]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -228,6 +240,11 @@ class AdCreateRequest {
     } else {
       json[r'ios_deep_link'] = null;
     }
+    if (this.isCarting != null) {
+      json[r'is_carting'] = this.isCarting;
+    } else {
+      json[r'is_carting'] = null;
+    }
     if (this.isPinDeleted != null) {
       json[r'is_pin_deleted'] = this.isPinDeleted;
     } else {
@@ -248,6 +265,7 @@ class AdCreateRequest {
     } else {
       json[r'name'] = null;
     }
+      json[r'pin_id'] = this.pinId;
     if (this.quizPinData != null) {
       json[r'quiz_pin_data'] = this.quizPinData;
     } else {
@@ -268,7 +286,6 @@ class AdCreateRequest {
     } else {
       json[r'view_tracking_url'] = null;
     }
-      json[r'pin_id'] = this.pinId;
     return json;
   }
 
@@ -283,10 +300,12 @@ class AdCreateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AdCreateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AdCreateRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'ad_group_id'), 'Required key "AdCreateRequest[ad_group_id]" is missing from JSON.');
+        assert(json[r'ad_group_id'] != null, 'Required key "AdCreateRequest[ad_group_id]" has a null value in JSON.');
+        assert(json.containsKey(r'creative_type'), 'Required key "AdCreateRequest[creative_type]" is missing from JSON.');
+        assert(json[r'creative_type'] != null, 'Required key "AdCreateRequest[creative_type]" has a null value in JSON.');
+        assert(json.containsKey(r'pin_id'), 'Required key "AdCreateRequest[pin_id]" is missing from JSON.');
+        assert(json[r'pin_id'] != null, 'Required key "AdCreateRequest[pin_id]" has a null value in JSON.');
         return true;
       }());
 
@@ -310,15 +329,16 @@ class AdCreateRequest {
         disclosureUrl: mapValueOfType<String>(json, r'disclosure_url'),
         gridClickType: GridClickType.fromJson(json[r'grid_click_type']),
         iosDeepLink: mapValueOfType<String>(json, r'ios_deep_link'),
+        isCarting: mapValueOfType<bool>(json, r'is_carting'),
         isPinDeleted: mapValueOfType<bool>(json, r'is_pin_deleted'),
         isRemovable: mapValueOfType<bool>(json, r'is_removable'),
         leadFormId: mapValueOfType<String>(json, r'lead_form_id'),
         name: mapValueOfType<String>(json, r'name'),
-        quizPinData: QuizPinData.fromJson(json[r'quiz_pin_data']),
-        status: EntityStatus.fromJson(json[r'status']),
-        trackingUrls: TrackingUrls.fromJson(json[r'tracking_urls']),
-        viewTrackingUrl: mapValueOfType<String>(json, r'view_tracking_url'),
         pinId: mapValueOfType<String>(json, r'pin_id')!,
+        quizPinData: mapValueOfType<Object>(json, r'quiz_pin_data'),
+        status: EntityStatus.fromJson(json[r'status']),
+        trackingUrls: mapValueOfType<Object>(json, r'tracking_urls'),
+        viewTrackingUrl: mapValueOfType<String>(json, r'view_tracking_url'),
       );
     }
     return null;

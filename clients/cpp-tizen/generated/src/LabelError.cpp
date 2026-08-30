@@ -23,7 +23,7 @@ LabelError::~LabelError()
 void
 LabelError::__init()
 {
-	//data = new Label();
+	//data = new LabelErrorData();
 	//new std::list()std::list> error_messages;
 }
 
@@ -53,11 +53,11 @@ LabelError::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("Label")) {
-			jsonToValue(&data, node, "Label", "Label");
+		if (isprimitive("LabelErrorData")) {
+			jsonToValue(&data, node, "LabelErrorData", "LabelErrorData");
 		} else {
 			
-			Label* obj = static_cast<Label*> (&data);
+			LabelErrorData* obj = static_cast<LabelErrorData*> (&data);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -96,13 +96,13 @@ LabelError::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("Label")) {
-		Label obj = getData();
-		node = converttoJson(&obj, "Label", "");
+	if (isprimitive("LabelErrorData")) {
+		LabelErrorData obj = getData();
+		node = converttoJson(&obj, "LabelErrorData", "");
 	}
 	else {
 		
-		Label obj = static_cast<Label> (getData());
+		LabelErrorData obj = static_cast<LabelErrorData> (getData());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -133,14 +133,14 @@ LabelError::toJson()
 	return ret;
 }
 
-Label
+LabelErrorData
 LabelError::getData()
 {
 	return data;
 }
 
 void
-LabelError::setData(Label  data)
+LabelError::setData(LabelErrorData  data)
 {
 	this->data = data;
 }

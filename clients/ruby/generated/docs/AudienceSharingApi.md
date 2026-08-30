@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## ad_accounts_audiences_shared_accounts_list
 
-> <AdAccountsAudiencesSharedAccountsList200Response> ad_accounts_audiences_shared_accounts_list(ad_account_id, audience_id, account_type, opts)
+> <AdAccountsAudiencesSharedAccountsList200Response> ad_accounts_audiences_shared_accounts_list(audience_id, account_type, ad_account_id, opts)
 
 List accounts with access to an audience owned by an ad account
 
@@ -36,17 +36,17 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::AudienceSharingApi.new
-ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 audience_id = 'audience_id_example' # String | Unique identifier of the audience to use to filter the results.
 account_type = PinterestSdkClient::AudienceAccountType::AD_ACCOUNT # AudienceAccountType | Filter accounts by account type.
+ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  bookmark: 'bookmark_example' # String | Cursor used to fetch the next page of items
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
   # List accounts with access to an audience owned by an ad account
-  result = api_instance.ad_accounts_audiences_shared_accounts_list(ad_account_id, audience_id, account_type, opts)
+  result = api_instance.ad_accounts_audiences_shared_accounts_list(audience_id, account_type, ad_account_id, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudienceSharingApi->ad_accounts_audiences_shared_accounts_list: #{e}"
@@ -57,12 +57,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AdAccountsAudiencesSharedAccountsList200Response>, Integer, Hash)> ad_accounts_audiences_shared_accounts_list_with_http_info(ad_account_id, audience_id, account_type, opts)
+> <Array(<AdAccountsAudiencesSharedAccountsList200Response>, Integer, Hash)> ad_accounts_audiences_shared_accounts_list_with_http_info(audience_id, account_type, ad_account_id, opts)
 
 ```ruby
 begin
   # List accounts with access to an audience owned by an ad account
-  data, status_code, headers = api_instance.ad_accounts_audiences_shared_accounts_list_with_http_info(ad_account_id, audience_id, account_type, opts)
+  data, status_code, headers = api_instance.ad_accounts_audiences_shared_accounts_list_with_http_info(audience_id, account_type, ad_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AdAccountsAudiencesSharedAccountsList200Response>
@@ -75,11 +75,11 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **audience_id** | **String** | Unique identifier of the audience to use to filter the results. |  |
-| **account_type** | [**AudienceAccountType**](.md) | Filter accounts by account type. | [default to &#39;AD_ACCOUNT&#39;] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **account_type** | [**AudienceAccountType**](.md) | Filter accounts by account type. |  |
+| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -115,12 +115,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::AudienceSharingApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
 audience_id = 'audience_id_example' # String | Unique identifier of the audience to use to filter the results.
 account_type = PinterestSdkClient::AudienceAccountType::AD_ACCOUNT # AudienceAccountType | Filter accounts by account type.
 opts = {
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  bookmark: 'bookmark_example' # String | Cursor used to fetch the next page of items
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -156,9 +156,9 @@ end
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
 | **audience_id** | **String** | Unique identifier of the audience to use to filter the results. |  |
-| **account_type** | [**AudienceAccountType**](.md) | Filter accounts by account type. | [default to &#39;AD_ACCOUNT&#39;] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **account_type** | [**AudienceAccountType**](.md) | Filter accounts by account type. |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -176,7 +176,7 @@ end
 
 ## shared_audiences_for_business_list
 
-> <AudiencesList200Response> shared_audiences_for_business_list(business_id, opts)
+> <SharedAudiencesForBusinessList200Response> shared_audiences_for_business_list(business_id, opts)
 
 List received audiences for a business
 
@@ -194,11 +194,11 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::AudienceSharingApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
 opts = {
+  order: PinterestSdkClient::Order::ASCENDING, # Order | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  order: 'ASCENDING', # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -214,7 +214,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AudiencesList200Response>, Integer, Hash)> shared_audiences_for_business_list_with_http_info(business_id, opts)
+> <Array(<SharedAudiencesForBusinessList200Response>, Integer, Hash)> shared_audiences_for_business_list_with_http_info(business_id, opts)
 
 ```ruby
 begin
@@ -222,7 +222,7 @@ begin
   data, status_code, headers = api_instance.shared_audiences_for_business_list_with_http_info(business_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <AudiencesList200Response>
+  p data # => <SharedAudiencesForBusinessList200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudienceSharingApi->shared_audiences_for_business_list_with_http_info: #{e}"
 end
@@ -233,13 +233,13 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
+| **order** | [**Order**](.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **order** | **String** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
-[**AudiencesList200Response**](AudiencesList200Response.md)
+[**SharedAudiencesForBusinessList200Response**](SharedAudiencesForBusinessList200Response.md)
 
 ### Authorization
 
@@ -253,11 +253,11 @@ end
 
 ## update_ad_account_to_ad_account_shared_audience
 
-> <SharedAudienceResponse> update_ad_account_to_ad_account_shared_audience(ad_account_id, shared_audience)
+> <AdAccountToAdAccountSharedAudience> update_ad_account_to_ad_account_shared_audience(ad_account_id, ad_account_to_ad_account_shared_audience_update_with_required_body)
 
 Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Examples
 
@@ -272,11 +272,11 @@ end
 
 api_instance = PinterestSdkClient::AudienceSharingApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-shared_audience = PinterestSdkClient::SharedAudience.new({audience_id: '2542621871096', operation_type: PinterestSdkClient::OperationType::SHARE, recipient_account_ids: ['recipient_account_ids_example']}) # SharedAudience | 
+ad_account_to_ad_account_shared_audience_update_with_required_body = PinterestSdkClient::AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.new({audience_id: '2542621871096', operation_type: PinterestSdkClient::OperationType::SHARE, recipient_account_ids: ['recipient_account_ids_example']}) # AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody | 
 
 begin
   # Update audience sharing between ad accounts
-  result = api_instance.update_ad_account_to_ad_account_shared_audience(ad_account_id, shared_audience)
+  result = api_instance.update_ad_account_to_ad_account_shared_audience(ad_account_id, ad_account_to_ad_account_shared_audience_update_with_required_body)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudienceSharingApi->update_ad_account_to_ad_account_shared_audience: #{e}"
@@ -287,15 +287,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SharedAudienceResponse>, Integer, Hash)> update_ad_account_to_ad_account_shared_audience_with_http_info(ad_account_id, shared_audience)
+> <Array(<AdAccountToAdAccountSharedAudience>, Integer, Hash)> update_ad_account_to_ad_account_shared_audience_with_http_info(ad_account_id, ad_account_to_ad_account_shared_audience_update_with_required_body)
 
 ```ruby
 begin
   # Update audience sharing between ad accounts
-  data, status_code, headers = api_instance.update_ad_account_to_ad_account_shared_audience_with_http_info(ad_account_id, shared_audience)
+  data, status_code, headers = api_instance.update_ad_account_to_ad_account_shared_audience_with_http_info(ad_account_id, ad_account_to_ad_account_shared_audience_update_with_required_body)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <SharedAudienceResponse>
+  p data # => <AdAccountToAdAccountSharedAudience>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudienceSharingApi->update_ad_account_to_ad_account_shared_audience_with_http_info: #{e}"
 end
@@ -306,11 +306,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **shared_audience** | [**SharedAudience**](SharedAudience.md) |  |  |
+| **ad_account_to_ad_account_shared_audience_update_with_required_body** | [**AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md) |  |  |
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**AdAccountToAdAccountSharedAudience**](AdAccountToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -324,11 +324,11 @@ end
 
 ## update_ad_account_to_business_shared_audience
 
-> <BusinessSharedAudienceResponse> update_ad_account_to_business_shared_audience(ad_account_id, business_shared_audience)
+> <AdAccountToBusinessSharedAudience> update_ad_account_to_business_shared_audience(ad_account_id, ad_account_to_business_shared_audience_update_with_required_body)
 
 Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Examples
 
@@ -343,11 +343,11 @@ end
 
 api_instance = PinterestSdkClient::AudienceSharingApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-business_shared_audience = PinterestSdkClient::BusinessSharedAudience.new({audience_id: '2542621871096', operation_type: PinterestSdkClient::OperationType::SHARE, recipient_business_ids: ['recipient_business_ids_example']}) # BusinessSharedAudience | 
+ad_account_to_business_shared_audience_update_with_required_body = PinterestSdkClient::AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.new({audience_id: '2542621871096', operation_type: PinterestSdkClient::OperationType::SHARE, recipient_business_ids: ['recipient_business_ids_example']}) # AdAccountToBusinessSharedAudienceUpdateWithRequiredBody | 
 
 begin
   # Update audience sharing from an ad account to businesses
-  result = api_instance.update_ad_account_to_business_shared_audience(ad_account_id, business_shared_audience)
+  result = api_instance.update_ad_account_to_business_shared_audience(ad_account_id, ad_account_to_business_shared_audience_update_with_required_body)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudienceSharingApi->update_ad_account_to_business_shared_audience: #{e}"
@@ -358,15 +358,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BusinessSharedAudienceResponse>, Integer, Hash)> update_ad_account_to_business_shared_audience_with_http_info(ad_account_id, business_shared_audience)
+> <Array(<AdAccountToBusinessSharedAudience>, Integer, Hash)> update_ad_account_to_business_shared_audience_with_http_info(ad_account_id, ad_account_to_business_shared_audience_update_with_required_body)
 
 ```ruby
 begin
   # Update audience sharing from an ad account to businesses
-  data, status_code, headers = api_instance.update_ad_account_to_business_shared_audience_with_http_info(ad_account_id, business_shared_audience)
+  data, status_code, headers = api_instance.update_ad_account_to_business_shared_audience_with_http_info(ad_account_id, ad_account_to_business_shared_audience_update_with_required_body)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <BusinessSharedAudienceResponse>
+  p data # => <AdAccountToBusinessSharedAudience>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudienceSharingApi->update_ad_account_to_business_shared_audience_with_http_info: #{e}"
 end
@@ -377,11 +377,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **business_shared_audience** | [**BusinessSharedAudience**](BusinessSharedAudience.md) |  |  |
+| **ad_account_to_business_shared_audience_update_with_required_body** | [**AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md) |  |  |
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**AdAccountToBusinessSharedAudience**](AdAccountToBusinessSharedAudience.md)
 
 ### Authorization
 
@@ -395,11 +395,11 @@ end
 
 ## update_business_to_ad_account_shared_audience
 
-> <SharedAudienceResponse> update_business_to_ad_account_shared_audience(business_id, shared_audience)
+> <BusinessToAdAccountSharedAudience> update_business_to_ad_account_shared_audience(business_id, business_to_ad_account_shared_audience_update_with_required_body)
 
 Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Examples
 
@@ -413,12 +413,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::AudienceSharingApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-shared_audience = PinterestSdkClient::SharedAudience.new({audience_id: '2542621871096', operation_type: PinterestSdkClient::OperationType::SHARE, recipient_account_ids: ['recipient_account_ids_example']}) # SharedAudience | 
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+business_to_ad_account_shared_audience_update_with_required_body = PinterestSdkClient::BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.new({audience_id: '2542621871096', operation_type: PinterestSdkClient::OperationType::SHARE, recipient_account_ids: ['recipient_account_ids_example']}) # BusinessToAdAccountSharedAudienceUpdateWithRequiredBody | 
 
 begin
   # Update audience sharing from a business to ad accounts
-  result = api_instance.update_business_to_ad_account_shared_audience(business_id, shared_audience)
+  result = api_instance.update_business_to_ad_account_shared_audience(business_id, business_to_ad_account_shared_audience_update_with_required_body)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudienceSharingApi->update_business_to_ad_account_shared_audience: #{e}"
@@ -429,15 +429,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SharedAudienceResponse>, Integer, Hash)> update_business_to_ad_account_shared_audience_with_http_info(business_id, shared_audience)
+> <Array(<BusinessToAdAccountSharedAudience>, Integer, Hash)> update_business_to_ad_account_shared_audience_with_http_info(business_id, business_to_ad_account_shared_audience_update_with_required_body)
 
 ```ruby
 begin
   # Update audience sharing from a business to ad accounts
-  data, status_code, headers = api_instance.update_business_to_ad_account_shared_audience_with_http_info(business_id, shared_audience)
+  data, status_code, headers = api_instance.update_business_to_ad_account_shared_audience_with_http_info(business_id, business_to_ad_account_shared_audience_update_with_required_body)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <SharedAudienceResponse>
+  p data # => <BusinessToAdAccountSharedAudience>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudienceSharingApi->update_business_to_ad_account_shared_audience_with_http_info: #{e}"
 end
@@ -448,11 +448,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
-| **shared_audience** | [**SharedAudience**](SharedAudience.md) |  |  |
+| **business_to_ad_account_shared_audience_update_with_required_body** | [**BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md) |  |  |
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**BusinessToAdAccountSharedAudience**](BusinessToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -466,11 +466,11 @@ end
 
 ## update_business_to_business_shared_audience
 
-> <BusinessSharedAudienceResponse> update_business_to_business_shared_audience(business_id, business_shared_audience)
+> <BusinessToBusinessSharedAudience> update_business_to_business_shared_audience(business_id, business_to_business_shared_audience_update_with_required_body)
 
 Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Examples
 
@@ -484,12 +484,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::AudienceSharingApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-business_shared_audience = PinterestSdkClient::BusinessSharedAudience.new({audience_id: '2542621871096', operation_type: PinterestSdkClient::OperationType::SHARE, recipient_business_ids: ['recipient_business_ids_example']}) # BusinessSharedAudience | 
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+business_to_business_shared_audience_update_with_required_body = PinterestSdkClient::BusinessToBusinessSharedAudienceUpdateWithRequiredBody.new({audience_id: '2542621871096', operation_type: PinterestSdkClient::OperationType::SHARE, recipient_business_ids: ['recipient_business_ids_example']}) # BusinessToBusinessSharedAudienceUpdateWithRequiredBody | 
 
 begin
   # Update audience sharing between businesses
-  result = api_instance.update_business_to_business_shared_audience(business_id, business_shared_audience)
+  result = api_instance.update_business_to_business_shared_audience(business_id, business_to_business_shared_audience_update_with_required_body)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudienceSharingApi->update_business_to_business_shared_audience: #{e}"
@@ -500,15 +500,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BusinessSharedAudienceResponse>, Integer, Hash)> update_business_to_business_shared_audience_with_http_info(business_id, business_shared_audience)
+> <Array(<BusinessToBusinessSharedAudience>, Integer, Hash)> update_business_to_business_shared_audience_with_http_info(business_id, business_to_business_shared_audience_update_with_required_body)
 
 ```ruby
 begin
   # Update audience sharing between businesses
-  data, status_code, headers = api_instance.update_business_to_business_shared_audience_with_http_info(business_id, business_shared_audience)
+  data, status_code, headers = api_instance.update_business_to_business_shared_audience_with_http_info(business_id, business_to_business_shared_audience_update_with_required_body)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <BusinessSharedAudienceResponse>
+  p data # => <BusinessToBusinessSharedAudience>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudienceSharingApi->update_business_to_business_shared_audience_with_http_info: #{e}"
 end
@@ -519,11 +519,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
-| **business_shared_audience** | [**BusinessSharedAudience**](BusinessSharedAudience.md) |  |  |
+| **business_to_business_shared_audience_update_with_required_body** | [**BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md) |  |  |
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**BusinessToBusinessSharedAudience**](BusinessToBusinessSharedAudience.md)
 
 ### Authorization
 

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **invites** | [**Array&lt;AuthRespondInvitesBodyInvitesInner&gt;**](AuthRespondInvitesBodyInvitesInner.md) |  |  |
+| **invites** | [**Array&lt;AuthRespondInvitesBodyItem&gt;**](AuthRespondInvitesBodyItem.md) |  |  |
 
 ## Example
 

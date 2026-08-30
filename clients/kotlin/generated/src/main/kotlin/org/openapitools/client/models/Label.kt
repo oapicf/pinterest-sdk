@@ -8,15 +8,23 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.LabelStatus
-import org.openapitools.client.models.LabelType
+import org.openapitools.client.models.NullableLabelStatus
+import org.openapitools.client.models.NullableLabelType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -26,10 +34,8 @@ import com.squareup.moshi.JsonClass
  *
  * @param id Label ID.
  * @param labelType 
- * @param parentId Label parent entity ID.
- * @param parentType Label parent entity type.
+ * @param `value` Label name. 100-character limit.
  * @param status 
- * @param `value` Label name.
  */
 
 
@@ -37,37 +43,20 @@ data class Label (
 
     /* Label ID. */
     @Json(name = "id")
-    val id: kotlin.String? = null,
+    val id: kotlin.String,
 
     @Json(name = "label_type")
-    val labelType: LabelType? = null,
+    val labelType: NullableLabelType?,
 
-    /* Label parent entity ID. */
-    @Json(name = "parent_id")
-    val parentId: kotlin.String? = null,
-
-    /* Label parent entity type. */
-    @Json(name = "parent_type")
-    val parentType: Label.ParentType? = null,
+    /* Label name. 100-character limit. */
+    @Json(name = "value")
+    val `value`: kotlin.String,
 
     @Json(name = "status")
-    val status: LabelStatus? = null,
-
-    /* Label name. */
-    @Json(name = "value")
-    val `value`: kotlin.String? = null
+    val status: NullableLabelStatus? = null
 
 ) {
 
-    /**
-     * Label parent entity type.
-     *
-     * Values: CAMPAIGN
-     */
-    @JsonClass(generateAdapter = false)
-    enum class ParentType(val value: kotlin.String) {
-        @Json(name = "CAMPAIGN") CAMPAIGN("CAMPAIGN");
-    }
 
 }
 

@@ -7,10 +7,10 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open ConversionEventsApiHandlerParams
 open ConversionEventsApiServiceInterface
 open ConversionEventsApiServiceImplementation
-open OpenAPI.Model.ConversionApiResponse
 open OpenAPI.Model.ConversionEvents
+open OpenAPI.Model.ConversionEventsCreate
 open OpenAPI.Model.DetailedError
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 
 module ConversionEventsApiHandler =
 
@@ -40,6 +40,8 @@ module ConversionEventsApiHandler =
                             setStatusCode 401 >=> json resolved.content
                       | EventsCreateStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
+                      | EventsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
                       | EventsCreateStatusCode422 resolved ->
                             setStatusCode 422 >=> json resolved.content
                       | EventsCreateStatusCode429 resolved ->

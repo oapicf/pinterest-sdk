@@ -44,7 +44,6 @@ public class BoardSectionsList200Response   {
 
 
   /**
-   * Board sections
    **/
   public BoardSectionsList200Response items(List<@Valid BoardSection> items) {
     this.items = items;
@@ -52,7 +51,7 @@ public class BoardSectionsList200Response   {
   }
 
   
-  @ApiModelProperty(required = true, value = "Board sections")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   @NotNull
   public List<@Valid BoardSection> getItems() {
@@ -106,10 +105,7 @@ public class BoardSectionsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -20,7 +20,7 @@ typedef struct item_validation_event_t item_validation_event_t;
 
 typedef struct item_validation_event_t {
     char *attribute; // string
-    int code; //numeric
+    int *code; //numeric
     char *message; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -28,7 +28,7 @@ typedef struct item_validation_event_t {
 
 __attribute__((deprecated)) item_validation_event_t *item_validation_event_create(
     char *attribute,
-    int code,
+    int *code,
     char *message
 );
 

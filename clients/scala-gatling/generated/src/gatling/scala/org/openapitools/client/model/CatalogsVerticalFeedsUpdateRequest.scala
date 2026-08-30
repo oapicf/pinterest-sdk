@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsVerticalFeedsUpdateRequest (
-    _catalogType: CatalogsType,
+    _catalogType: String,
     _credentials: Option[CatalogsFeedCredentials],
     _defaultAvailability: Option[ProductAvailabilityType],
     _defaultCurrency: Option[NullableCurrency],

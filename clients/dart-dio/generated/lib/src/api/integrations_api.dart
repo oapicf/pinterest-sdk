@@ -9,15 +9,15 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/error.dart';
-import 'package:openapi/src/model/integration_logs_request.dart';
+import 'package:openapi/src/model/integration_logs_invalid_log_response.dart';
+import 'package:openapi/src/model/integration_logs_request_create.dart';
 import 'package:openapi/src/model/integration_logs_success_response.dart';
 import 'package:openapi/src/model/integration_metadata.dart';
+import 'package:openapi/src/model/integration_metadata_create.dart';
+import 'package:openapi/src/model/integration_metadata_update.dart';
 import 'package:openapi/src/model/integration_record.dart';
-import 'package:openapi/src/model/integration_request.dart';
-import 'package:openapi/src/model/integration_request_patch.dart';
 import 'package:openapi/src/model/integrations_get_list200_response.dart';
-import 'package:openapi/src/model/integrations_logs_post400_response.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
 
 class IntegrationsApi {
 
@@ -39,9 +39,9 @@ class IntegrationsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [IntegrationMetadata] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> integrationsCommerceDel({ 
+  Future<Response<IntegrationMetadata>> integrationsCommerceDel({ 
     required String externalBusinessId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -76,7 +76,35 @@ class IntegrationsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    IntegrationMetadata? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(IntegrationMetadata),
+      ) as IntegrationMetadata;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<IntegrationMetadata>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// Get commerce integration
@@ -164,7 +192,7 @@ class IntegrationsApi {
   ///
   /// Parameters:
   /// * [externalBusinessId] - External business ID for the integration.
-  /// * [integrationRequestPatch] - Parameters to get create/update the Integration Metadata
+  /// * [integrationMetadataUpdate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -176,7 +204,7 @@ class IntegrationsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<IntegrationMetadata>> integrationsCommercePatch({ 
     required String externalBusinessId,
-    required IntegrationRequestPatch integrationRequestPatch,
+    required IntegrationMetadataUpdate integrationMetadataUpdate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -206,8 +234,8 @@ class IntegrationsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(IntegrationRequestPatch);
-      _bodyData = _serializers.serialize(integrationRequestPatch, specifiedType: _type);
+      const _type = FullType(IntegrationMetadataUpdate);
+      _bodyData = _serializers.serialize(integrationMetadataUpdate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -265,7 +293,7 @@ class IntegrationsApi {
   /// Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
   ///
   /// Parameters:
-  /// * [integrationRequest] - Parameters to get create/update the Integration Metadata
+  /// * [integrationMetadataCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -276,7 +304,7 @@ class IntegrationsApi {
   /// Returns a [Future] containing a [Response] with a [IntegrationMetadata] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<IntegrationMetadata>> integrationsCommercePost({ 
-    required IntegrationRequest integrationRequest,
+    required IntegrationMetadataCreate integrationMetadataCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -306,8 +334,8 @@ class IntegrationsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(IntegrationRequest);
-      _bodyData = _serializers.serialize(integrationRequest, specifiedType: _type);
+      const _type = FullType(IntegrationMetadataCreate);
+      _bodyData = _serializers.serialize(integrationMetadataCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -365,7 +393,7 @@ class IntegrationsApi {
   /// Get integration metadata by ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
   ///
   /// Parameters:
-  /// * [id] - Integration ID.
+  /// * [id] - Integration record ID.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -446,7 +474,7 @@ class IntegrationsApi {
   ///
   /// Parameters:
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -533,7 +561,7 @@ class IntegrationsApi {
   /// This endpoint receives batched logs from integration applications on partner platforms. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
   ///
   /// Parameters:
-  /// * [integrationLogsRequest] - Ingest log information from external integration application.
+  /// * [integrationLogsRequestCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -544,7 +572,7 @@ class IntegrationsApi {
   /// Returns a [Future] containing a [Response] with a [IntegrationLogsSuccessResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<IntegrationLogsSuccessResponse>> integrationsLogsPost({ 
-    required IntegrationLogsRequest integrationLogsRequest,
+    required IntegrationLogsRequestCreate integrationLogsRequestCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -574,8 +602,8 @@ class IntegrationsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(IntegrationLogsRequest);
-      _bodyData = _serializers.serialize(integrationLogsRequest, specifiedType: _type);
+      const _type = FullType(IntegrationLogsRequestCreate);
+      _bodyData = _serializers.serialize(integrationLogsRequestCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

@@ -9,11 +9,11 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/catalogs_items.dart';
 import 'package:openapi/src/model/catalogs_items_batch.dart';
+import 'package:openapi/src/model/catalogs_items_batch_post_request.dart';
 import 'package:openapi/src/model/catalogs_items_request.dart';
-import 'package:openapi/src/model/error.dart';
-import 'package:openapi/src/model/items_batch_post_request.dart';
+import 'package:openapi/src/model/items_post200_response.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
 
 class CatalogItemsApi {
 
@@ -24,7 +24,7 @@ class CatalogItemsApi {
   const CatalogItemsApi(this._dio, this._serializers);
 
   /// Get item batch status
-  /// Get a single catalogs items batch owned by the \&quot;operating user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.
+  /// Get a single catalogs items batch owned by the \&quot;operating user_account\&quot;. [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
   ///
   /// Parameters:
   /// * [batchId] - Id of a catalogs items batch to fetch
@@ -114,10 +114,10 @@ class CatalogItemsApi {
   }
 
   /// Operate on item batch
-  /// This endpoint supports multiple operations on a set of one or more catalog items owned by the \&quot;operation user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
+  /// This endpoint supports multiple operations on a set of one or more catalog items owned by the \&quot;operation user_account\&quot;. [See detailed documentation here.](/docs/work-with-catalogs/modify-items-in-batch/) - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
   ///
   /// Parameters:
-  /// * [itemsBatchPostRequest] - Request object used to create catalogs items in a batch
+  /// * [catalogsItemsBatchPostRequest] 
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -129,7 +129,7 @@ class CatalogItemsApi {
   /// Returns a [Future] containing a [Response] with a [CatalogsItemsBatch] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<CatalogsItemsBatch>> itemsBatchPost({ 
-    required ItemsBatchPostRequest itemsBatchPostRequest,
+    required CatalogsItemsBatchPostRequest catalogsItemsBatchPostRequest,
     String? adAccountId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -167,8 +167,8 @@ class CatalogItemsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ItemsBatchPostRequest);
-      _bodyData = _serializers.serialize(itemsBatchPostRequest, specifiedType: _type);
+      const _type = FullType(CatalogsItemsBatchPostRequest);
+      _bodyData = _serializers.serialize(catalogsItemsBatchPostRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -225,10 +225,10 @@ class CatalogItemsApi {
   }
 
   /// Get catalogs items (POST)
-  /// Get the items of the catalog owned by the \&quot;operation user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+  /// Get the items of the catalog owned by the \&quot;operation user_account\&quot;. [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
   ///
   /// Parameters:
-  /// * [catalogsItemsRequest] - Request object used to get catalogs items
+  /// * [catalogsItemsRequest] 
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -237,9 +237,9 @@ class CatalogItemsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [CatalogsItems] as data
+  /// Returns a [Future] containing a [Response] with a [ItemsPost200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CatalogsItems>> itemsPost({ 
+  Future<Response<ItemsPost200Response>> itemsPost({ 
     required CatalogsItemsRequest catalogsItemsRequest,
     String? adAccountId,
     CancelToken? cancelToken,
@@ -301,14 +301,14 @@ class CatalogItemsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    CatalogsItems? _responseData;
+    ItemsPost200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(CatalogsItems),
-      ) as CatalogsItems;
+        specifiedType: const FullType(ItemsPost200Response),
+      ) as ItemsPost200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -320,7 +320,7 @@ class CatalogItemsApi {
       );
     }
 
-    return Response<CatalogsItems>(
+    return Response<ItemsPost200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

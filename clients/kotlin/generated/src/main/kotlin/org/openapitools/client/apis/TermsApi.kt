@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,7 +27,7 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
 import org.openapitools.client.models.RelatedTerms
 
 import com.squareup.moshi.Json
@@ -42,14 +50,14 @@ open class TermsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * GET /terms/related
      * List related terms
-     * Get a list of terms logically related to each input term. &lt;p/&gt; Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc.
+     * Get a list of terms logically related to each input term.  Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc.
      * @param terms List of input terms.
      * @return RelatedTerms
      * @throws IllegalStateException If the request is not correctly configured
@@ -81,7 +89,7 @@ open class TermsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     /**
      * GET /terms/related
      * List related terms
-     * Get a list of terms logically related to each input term. &lt;p/&gt; Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc.
+     * Get a list of terms logically related to each input term.  Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc.
      * @param terms List of input terms.
      * @return ApiResponse<RelatedTerms?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -125,7 +133,7 @@ open class TermsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     /**
      * GET /terms/suggested
      * List suggested terms
-     * Get popular search terms that begin with your input term. &lt;p/&gt; Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; and &#39;sportswear&#39;, but not &#39;motor sports&#39; since the phrase does not begin with the given term.
+     * Get popular search terms that begin with your input term.  Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; and &#39;sportswear&#39;, but not &#39;motor sports&#39; since the phrase does not begin with the given term.
      * @param term Input term.
      * @param limit Max suggested terms to return. (optional, default to 4)
      * @return kotlin.collections.List<kotlin.String>
@@ -158,7 +166,7 @@ open class TermsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     /**
      * GET /terms/suggested
      * List suggested terms
-     * Get popular search terms that begin with your input term. &lt;p/&gt; Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; and &#39;sportswear&#39;, but not &#39;motor sports&#39; since the phrase does not begin with the given term.
+     * Get popular search terms that begin with your input term.  Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; and &#39;sportswear&#39;, but not &#39;motor sports&#39; since the phrase does not begin with the given term.
      * @param term Input term.
      * @param limit Max suggested terms to return. (optional, default to 4)
      * @return ApiResponse<kotlin.collections.List<kotlin.String>?>

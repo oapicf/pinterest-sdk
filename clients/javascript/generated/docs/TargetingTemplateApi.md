@@ -12,11 +12,11 @@ Method | HTTP request | Description
 
 ## targetingTemplateCreate
 
-> TargetingTemplateGetResponseData targetingTemplateCreate(adAccountId, targetingTemplateCreate)
+> TargetingTemplate targetingTemplateCreate(adAccountId, targetingTemplateCreate)
 
 Create targeting templates
 
-&lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
+Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 
 ### Example
 
@@ -29,7 +29,7 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.TargetingTemplateApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let targetingTemplateCreate = new PinterestSdk.TargetingTemplateCreate(); // TargetingTemplateCreate | targeting template creation entity
+let targetingTemplateCreate = new PinterestSdk.TargetingTemplateCreate(); // TargetingTemplateCreate | 
 apiInstance.targetingTemplateCreate(adAccountId, targetingTemplateCreate, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -45,11 +45,11 @@ apiInstance.targetingTemplateCreate(adAccountId, targetingTemplateCreate, (error
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **targetingTemplateCreate** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md)| targeting template creation entity | 
+ **targetingTemplateCreate** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md)|  | 
 
 ### Return type
 
-[**TargetingTemplateGetResponseData**](TargetingTemplateGetResponseData.md)
+[**TargetingTemplate**](TargetingTemplate.md)
 
 ### Authorization
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 List targeting templates
 
-Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
+Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;
 
 ### Example
 
@@ -84,11 +84,11 @@ client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.TargetingTemplateApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let opts = {
-  'order': "ASCENDING", // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
+  'pageSize': 25, // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  'order': new PinterestSdk.PinterestLibPaginationOrder(), // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
   'includeSizing': false, // Boolean | Include audience sizing in result or not
-  'searchQuery': "gaming", // String | Search keyword for targeting templates
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  'bookmark': "bookmark_example" // String | Cursor used to fetch the next page of items
+  'searchQuery': "searchQuery_example" // String | Search query. Can contain pin description keywords or comma-separated pin IDs.
 };
 apiInstance.targetingTemplateList(adAccountId, opts, (error, data, response) => {
   if (error) {
@@ -105,11 +105,11 @@ apiInstance.targetingTemplateList(adAccountId, opts, (error, data, response) => 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **includeSizing** | **Boolean**| Include audience sizing in result or not | [optional] [default to false]
- **searchQuery** | **String**| Search keyword for targeting templates | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **includeSizing** | **Boolean**| Include audience sizing in result or not | [optional] [default to false]
+ **searchQuery** | **String**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] 
 
 ### Return type
 
@@ -127,11 +127,11 @@ Name | Type | Description  | Notes
 
 ## targetingTemplateUpdate
 
-> targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest)
+> targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequestReadOrUpdate)
 
 Update targeting templates
 
-&lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
+Update the targeting template given advertiser ID and targeting template ID
 
 ### Example
 
@@ -144,8 +144,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.TargetingTemplateApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let targetingTemplateUpdateRequest = new PinterestSdk.TargetingTemplateUpdateRequest(); // TargetingTemplateUpdateRequest | Operation type and targeting template ID
-apiInstance.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest, (error, data, response) => {
+let targetingTemplateUpdateRequestReadOrUpdate = new PinterestSdk.TargetingTemplateUpdateRequestReadOrUpdate(); // TargetingTemplateUpdateRequestReadOrUpdate | 
+apiInstance.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequestReadOrUpdate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -160,7 +160,7 @@ apiInstance.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest,
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **targetingTemplateUpdateRequest** | [**TargetingTemplateUpdateRequest**](TargetingTemplateUpdateRequest.md)| Operation type and targeting template ID | 
+ **targetingTemplateUpdateRequestReadOrUpdate** | [**TargetingTemplateUpdateRequestReadOrUpdate**](TargetingTemplateUpdateRequestReadOrUpdate.md)|  | 
 
 ### Return type
 

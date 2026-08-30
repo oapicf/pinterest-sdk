@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignPlanningConversionRate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignPlanningConversionRate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CampaignPlanningConversionAttribution = openapi_server.resourceTypes.CampaignPlanningConversionAttribution
+  CampaignPlanningConversionEvent = openapi_server.resourceTypes.CampaignPlanningConversionEvent
+}
+resourceTypes {
+
+  CampaignPlanningConversionRate {
+    title = CampaignPlanningConversionRate
+    description = CampaignPlanningConversionRate
+    derivedFrom = Root
+    properties {
+        attribution_windows {
+          type = CampaignPlanningConversionAttribution
+          description = ""
+          optional = true
+        }
+        conversion_event {
+          type = CampaignPlanningConversionEvent
+          description = ""
+          optional = true
+        }
+        conversion_rate {
+          type =  integer
+          description = "Conversion rate estimate. Used to translate impressions into conversions for oCPM ads."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignPlanningConversionRate {
+    title = CampaignPlanningConversionRate
+    description = CampaignPlanningConversionRate
+    implements = openapi_server.resourceTypes.CampaignPlanningConversionRate
+
+  }
+}

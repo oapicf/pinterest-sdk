@@ -2,7 +2,7 @@
 /*
  * TargetingTemplateAudienceSizing.h
  *
- * Gets an audience size estimate for a set of given targeting spec data. &lt;p&gt;Returns:&lt;/p&gt; An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. 
+ * Gets an audience size estimate for a set of given targeting spec data. **Returns:** An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate.
  */
 
 #ifndef TINY_CPP_CLIENT_TargetingTemplateAudienceSizing_H_
@@ -12,12 +12,12 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "TargetingTemplateAudienceSizing_reach_estimate.h"
+#include "TargetingTemplateAudienceSizingReachEstimate.h"
 
 namespace Tiny {
 
 
-/*! \brief Gets an audience size estimate for a set of given targeting spec data. <p>Returns:</p> An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. 
+/*! \brief Gets an audience size estimate for a set of given targeting spec data. **Returns:** An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate.
  *
  *  \ingroup Models
  *
@@ -48,15 +48,15 @@ public:
 
 	/*! \brief Get 
 	 */
-	TargetingTemplateAudienceSizing_reach_estimate getReachEstimate();
+	TargetingTemplateAudienceSizingReachEstimate getReachEstimate();
 
 	/*! \brief Set 
 	 */
-	void setReachEstimate(TargetingTemplateAudienceSizing_reach_estimate  reach_estimate);
+	void setReachEstimate(TargetingTemplateAudienceSizingReachEstimate reach_estimate);
 
 
     private:
-    TargetingTemplateAudienceSizing_reach_estimate reach_estimate;
+    TargetingTemplateAudienceSizingReachEstimate reach_estimate;
 };
 }
 

@@ -12,8 +12,7 @@ API.Client.BoardsListPins200Response = function() {}
 API.Client.BoardsListPins200Response.prototype.bookmark;
 
 /**
- * Pins
- * @type {!Array<!API.Client.Pin>}
+ * @type {!Array<!API.Client.PinRead>}
  * @export
  */
 API.Client.BoardsListPins200Response.prototype.items;

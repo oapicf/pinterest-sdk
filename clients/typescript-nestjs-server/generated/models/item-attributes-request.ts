@@ -1,0 +1,436 @@
+import { UpdatableItemAttributesGtin } from './updatable-item-attributes-gtin';
+import { CatalogsAiContentDisclosure } from './catalogs-ai-content-disclosure';
+import { ItemAttributesRequestImageLink } from './item-attributes-request-image-link';
+
+
+export interface ItemAttributesRequest { 
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_0_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_0_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_10_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_10_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_11_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_11_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_12_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_12_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_13_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_13_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_14_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_14_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_15_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_15_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_16_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_16_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_17_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_17_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_18_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_18_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_19_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_19_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_1_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_1_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_2_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_2_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_3_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_3_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_4_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_4_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_5_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_5_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_6_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_6_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_7_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_7_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_8_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_8_tag?: string | null;
+  /**
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_image_9_link?: string | null;
+  /**
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+   */
+  ad_image_9_tag?: string | null;
+  /**
+   * Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking. Must begin with http:// or https://.
+   */
+  ad_link?: string | null;
+  /**
+   * Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_video_0_link?: string | null;
+  /**
+   * Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
+   */
+  ad_video_0_tag?: string | null;
+  /**
+   * Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_video_1_link?: string | null;
+  /**
+   * Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
+   */
+  ad_video_1_tag?: string | null;
+  /**
+   * Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+   */
+  ad_video_2_link?: string | null;
+  /**
+   * Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
+   */
+  ad_video_2_tag?: string | null;
+  /**
+   * <= 2000 characters The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.
+   */
+  additional_image_link?: Array<string> | null;
+  /**
+   * Set this attribute to TRUE if you\'re submitting items that are considered \"adult\". These will not be shown on Pinterest.
+   */
+  adult?: boolean | null;
+  /**
+   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): \'newborn\', \'infant\', \'toddler\', \'kids\', or \'adult\'.
+   */
+  age_group?: string | null;
+  /**
+   * AI content disclosures for individual assets (image_link, additional_image_link, or video_link) on this item. Each entry declares which disclosure types apply to a single asset URL.
+   */
+  ai_disclosures?: Array<CatalogsAiContentDisclosure>;
+  /**
+   * The deep link to the product on the Android app.
+   */
+  android_deep_link?: string;
+  /**
+   * The availability of the product. Must be one of the following values (upper or lowercased): \'in stock\', \'out of stock\', \'preorder\'.
+   */
+  availability?: string;
+  /**
+   * Average reviews for the item. Can be a number from 1-5.
+   */
+  average_review_rating?: number | null;
+  /**
+   * The brand of the product.
+   */
+  brand?: string | null;
+  /**
+   * This attribute is not supported anymore.
+   * @deprecated
+   */
+  checkout_enabled?: boolean | null;
+  /**
+   * The primary color of the product.
+   */
+  color?: string | null;
+  /**
+   * The condition of the product. Must be one of the following values (upper or lowercased): \'new\', \'used\', or \'refurbished\'.
+   */
+  condition?: string | null;
+  /**
+   * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
+   */
+  custom_label_0?: string | null;
+  /**
+   * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
+   */
+  custom_label_1?: string | null;
+  /**
+   * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
+   */
+  custom_label_2?: string | null;
+  /**
+   * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
+   */
+  custom_label_3?: string | null;
+  /**
+   * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
+   */
+  custom_label_4?: string | null;
+  /**
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   */
+  custom_number_0?: number | null;
+  /**
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   */
+  custom_number_1?: number | null;
+  /**
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   */
+  custom_number_2?: number | null;
+  /**
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   */
+  custom_number_3?: number | null;
+  /**
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   */
+  custom_number_4?: number | null;
+  /**
+   * <= 10000 characters. The description of the product.
+   */
+  description?: string;
+  /**
+   * The item is free to ship.
+   */
+  free_shipping_label?: boolean | null;
+  /**
+   * The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
+   */
+  free_shipping_limit?: string | null;
+  /**
+   * The gender associated with the product. Must be one of the following values (upper or lowercased): \'male\', \'female\', or \'unisex\'.
+   */
+  gender?: string | null;
+  /**
+   * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+   */
+  google_product_category?: string | null;
+  gtin?: UpdatableItemAttributesGtin | null;
+  /**
+   * <= 127 characters. The user-created unique ID that represents the product. Only Unicode characters are accepted.
+   * @deprecated
+   */
+  id?: string;
+  image_link?: ItemAttributesRequestImageLink;
+  /**
+   * Installment price of the product. Expected format: <payment_count>:<payment_amount> <currency>
+   */
+  installment_price?: string | null;
+  /**
+   * The deep link to the product on the iOS app.
+   */
+  ios_deep_link?: string;
+  /**
+   * <= 127 characters. The parent ID of the product.
+   */
+  item_group_id?: string | null;
+  /**
+   * The millisecond timestamp when the item was lastly modified by the merchant.
+   */
+  last_updated_time?: number | null;
+  /**
+   * <= 511 characters. The landing page for the product.
+   */
+  link?: string;
+  /**
+   * The material used to make the product.
+   */
+  material?: string | null;
+  /**
+   * The minimum advertised price of the product. It supports the following formats: \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.
+   */
+  min_ad_price?: string | null;
+  /**
+   * The mobile-optimized version of your landing page. Must begin with http:// or https://.
+   */
+  mobile_link?: string | null;
+  /**
+   * Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.
+   */
+  mpn?: string | null;
+  /**
+   * The number of ratings for the item.
+   */
+  number_of_ratings?: number | null;
+  /**
+   * The number of reviews available for the item.
+   */
+  number_of_reviews?: number | null;
+  /**
+   * The description of the pattern used for the product.
+   */
+  pattern?: string | null;
+  /**
+   * The price of the product. It supports the following formats: \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.
+   */
+  price?: string;
+  /**
+   * <= 1000 characters. The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by \" > \".
+   */
+  product_type?: string | null;
+  /**
+   * A unique identifier referencing the promotion associated with this catalog item.
+   */
+  promotion_id?: string | null;
+  /**
+   * The discounted price of the product. The sale_price must be lower than the price. It supports the following formats: \"14.99 USD\", \"14.99USD\" and \"14.99\".
+   */
+  sale_price?: string | null;
+  /**
+   * Sale price effective date. Expected format: <start_date>/<end_date> (ISO 8601 format)
+   */
+  sale_price_effective_date?: string | null;
+  /**
+   * By default, product pins created from a catalog are able to be saved by Pinners. If you want to disable the save pin feature, set this attribute to true. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature.
+   */
+  save_pin_disabled?: boolean;
+  /**
+   * Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.
+   */
+  shipping?: string | null;
+  /**
+   * The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
+   */
+  shipping_height?: string | null;
+  /**
+   * The weight of the product. Ensure there is a space between the numeric string and the metric.
+   */
+  shipping_weight?: string | null;
+  /**
+   * The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
+   */
+  shipping_width?: string | null;
+  /**
+   * The size of the product.
+   */
+  size?: string | null;
+  /**
+   * Indicates the country\'s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): \'US\', \'UK\', \'EU\', \'DE\', \'FR\', \'JP\', \'CN\', \'IT\', \'BR\', \'MEX\', or \'AU\'.
+   */
+  size_system?: string | null;
+  /**
+   * Additional description for the size. Must be one of the following values (upper or lowercased): \'regular\', \'petite\', \'plus\', \'big_and_tall\', or \'maternity\'.
+   */
+  size_type?: string | null;
+  /**
+   * Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
+   */
+  tax?: string | null;
+  /**
+   * <= 500 characters. The name of the product.
+   */
+  title?: string;
+  /**
+   * Unit pricing base measure of the product. Expected format: <base_measure> <unit_type>
+   */
+  unit_pricing_base_measure?: string | null;
+  /**
+   * Unit pricing total measure of the product. Expected format: <total_units> <unit_type>
+   */
+  unit_pricing_measure?: string | null;
+  /**
+   * Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
+   */
+  variant_names?: Array<string> | null;
+  /**
+   * Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
+   */
+  variant_values?: Array<string> | null;
+  /**
+   * <= 2,000 characters Hosted link to the product video. File types for linked videos must be .mp4, .mov or .m4v. File size cannot exceed 2GB.
+   */
+  video_link?: string | null;
+}
+

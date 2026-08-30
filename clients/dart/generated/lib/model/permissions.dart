@@ -10,48 +10,40 @@
 
 part of openapi.api;
 
+/// Permission levels available on a business asset.
+enum Permissions {
+  ADMIN._(r'ADMIN'),
+  ANALYST._(r'ANALYST'),
+  FINANCE_MANAGER._(r'FINANCE_MANAGER'),
+  FINANCE_EDIT._(r'FINANCE_EDIT'),
+  FINANCE_VIEW._(r'FINANCE_VIEW'),
+  AUDIENCE_MANAGER._(r'AUDIENCE_MANAGER'),
+  CAMPAIGN_MANAGER._(r'CAMPAIGN_MANAGER'),
+  CATALOGS_MANAGER._(r'CATALOGS_MANAGER'),
+  CATALOGS_VIEWER._(r'CATALOGS_VIEWER'),
+  PROFILE_PUBLISHER._(r'PROFILE_PUBLISHER'),
+  CONSUMER_USER._(r'CONSUMER_USER'),
+  BIZ_PINNER_LIST_SHARER._(r'BIZ_PINNER_LIST_SHARER'),
+  ;
 
-class Permissions {
-  /// Instantiate a new enum with the provided [value].
-  const Permissions._(this.value);
+  /// Instantiate a new enum with the provided value.
+  const Permissions._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const ADMIN = Permissions._(r'ADMIN');
-  static const ANALYST = Permissions._(r'ANALYST');
-  static const FINANCE_MANAGER = Permissions._(r'FINANCE_MANAGER');
-  static const FINANCE_EDIT = Permissions._(r'FINANCE_EDIT');
-  static const FINANCE_VIEW = Permissions._(r'FINANCE_VIEW');
-  static const AUDIENCE_MANAGER = Permissions._(r'AUDIENCE_MANAGER');
-  static const CAMPAIGN_MANAGER = Permissions._(r'CAMPAIGN_MANAGER');
-  static const CATALOGS_MANAGER = Permissions._(r'CATALOGS_MANAGER');
-  static const CATALOGS_VIEWER = Permissions._(r'CATALOGS_VIEWER');
-  static const PROFILE_PUBLISHER = Permissions._(r'PROFILE_PUBLISHER');
-  static const CONSUMER_USER = Permissions._(r'CONSUMER_USER');
-
-  /// List of all possible values in this [enum][Permissions].
-  static const values = <Permissions>[
-    ADMIN,
-    ANALYST,
-    FINANCE_MANAGER,
-    FINANCE_EDIT,
-    FINANCE_VIEW,
-    AUDIENCE_MANAGER,
-    CAMPAIGN_MANAGER,
-    CATALOGS_MANAGER,
-    CATALOGS_VIEWER,
-    PROFILE_PUBLISHER,
-    CONSUMER_USER,
-  ];
-
+  /// Returns the instance of [Permissions] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static Permissions? fromJson(dynamic value) => PermissionsTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [Permissions]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<Permissions> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Permissions>[];
     if (json is List && json.isNotEmpty) {
@@ -73,9 +65,11 @@ class PermissionsTypeTransformer {
 
   const PermissionsTypeTransformer._();
 
-  String encode(Permissions data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(Permissions data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a Permissions.
+  /// Returns the instance of [Permissions] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -84,6 +78,9 @@ class PermissionsTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   Permissions? decode(dynamic data, {bool allowNull = true}) {
+    if (data is Permissions) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'ADMIN': return Permissions.ADMIN;
@@ -97,6 +94,7 @@ class PermissionsTypeTransformer {
         case r'CATALOGS_VIEWER': return Permissions.CATALOGS_VIEWER;
         case r'PROFILE_PUBLISHER': return Permissions.PROFILE_PUBLISHER;
         case r'CONSUMER_USER': return Permissions.CONSUMER_USER;
+        case r'BIZ_PINNER_LIST_SHARER': return Permissions.BIZ_PINNER_LIST_SHARER;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -106,7 +104,7 @@ class PermissionsTypeTransformer {
     return null;
   }
 
-  /// Singleton [PermissionsTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static PermissionsTypeTransformer? _instance;
 }
 

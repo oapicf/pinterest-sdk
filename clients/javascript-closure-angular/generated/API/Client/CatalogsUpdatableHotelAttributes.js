@@ -6,6 +6,7 @@ goog.provide('API.Client.CatalogsUpdatableHotelAttributes');
 API.Client.CatalogsUpdatableHotelAttributes = function() {}
 
 /**
+ * Hotel address
  * @type {!API.Client.CatalogsHotelAddress}
  * @export
  */
@@ -75,6 +76,7 @@ API.Client.CatalogsUpdatableHotelAttributes.prototype.customLabel4;
 API.Client.CatalogsUpdatableHotelAttributes.prototype.description;
 
 /**
+ * If specified, you must provide all properties
  * @type {!API.Client.CatalogsHotelGuestRatings}
  * @export
  */

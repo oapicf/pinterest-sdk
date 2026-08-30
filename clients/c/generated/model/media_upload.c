@@ -15,12 +15,12 @@ static media_upload_t *media_upload_create_internal(
     if (!media_upload_local_var) {
         return NULL;
     }
+    memset(media_upload_local_var, 0, sizeof(media_upload_t));
+    media_upload_local_var->_library_owned = 1;
     media_upload_local_var->media_id = media_id;
     media_upload_local_var->media_type = media_type;
     media_upload_local_var->upload_parameters = upload_parameters;
     media_upload_local_var->upload_url = upload_url;
-
-    media_upload_local_var->_library_owned = 1;
     return media_upload_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) media_upload_t *media_upload_create(
     media_upload_parameters_t *upload_parameters,
     char *upload_url
     ) {
-    return media_upload_create_internal (
+    media_upload_t *result = media_upload_create_internal (
         media_id,
         media_type,
         upload_parameters,
         upload_url
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void media_upload_free(media_upload_t *media_upload) {
@@ -124,11 +127,15 @@ media_upload_t *media_upload_parseFromJSON(cJSON *media_uploadJSON){
 
     media_upload_t *media_upload_local_var = NULL;
 
+    char *media_id_local_str = NULL;
+
     // define the local variable for media_upload->media_type
     media_upload_type_t *media_type_local_nonprim = NULL;
 
     // define the local variable for media_upload->upload_parameters
     media_upload_parameters_t *upload_parameters_local_nonprim = NULL;
+
+    char *upload_url_local_str = NULL;
 
     // media_upload->media_id
     cJSON *media_id = cJSON_GetObjectItemCaseSensitive(media_uploadJSON, "media_id");
@@ -179,15 +186,26 @@ media_upload_t *media_upload_parseFromJSON(cJSON *media_uploadJSON){
     }
 
 
+    if (media_id && !cJSON_IsNull(media_id)) media_id_local_str = strdup(media_id->valuestring);
+    if (upload_url && !cJSON_IsNull(upload_url)) upload_url_local_str = strdup(upload_url->valuestring);
+
     media_upload_local_var = media_upload_create_internal (
-        strdup(media_id->valuestring),
+        media_id_local_str,
         media_type_local_nonprim,
         upload_parameters ? upload_parameters_local_nonprim : NULL,
-        upload_url && !cJSON_IsNull(upload_url) ? strdup(upload_url->valuestring) : NULL
+        upload_url_local_str
         );
+
+    if (!media_upload_local_var) {
+        goto end;
+    }
 
     return media_upload_local_var;
 end:
+    if (media_id_local_str) {
+        free(media_id_local_str);
+        media_id_local_str = NULL;
+    }
     if (media_type_local_nonprim) {
         media_upload_type_free(media_type_local_nonprim);
         media_type_local_nonprim = NULL;
@@ -195,6 +213,10 @@ end:
     if (upload_parameters_local_nonprim) {
         media_upload_parameters_free(upload_parameters_local_nonprim);
         upload_parameters_local_nonprim = NULL;
+    }
+    if (upload_url_local_str) {
+        free(upload_url_local_str);
+        upload_url_local_str = NULL;
     }
     return NULL;
 

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **accesses** | [**Array&lt;DeletePartnerAssetAccessBodyAccessesInner&gt;**](DeletePartnerAssetAccessBodyAccessesInner.md) |  |  |
+| **accesses** | [**Array&lt;DeletePartnerAssetAccessItem&gt;**](DeletePartnerAssetAccessItem.md) | List of partner asset accesses to delete. |  |
 
 ## Example
 

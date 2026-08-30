@@ -27,7 +27,7 @@ class CatalogsItemsUpdateBatchRequest {
   /// We recommend using the CatalogsLocale values.
   LanguageEnum language;
 
-  BatchOperation operation;
+  CatalogsItemsUpdateBatchRequestOperationEnum operation;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CatalogsItemsUpdateBatchRequest &&
@@ -67,10 +67,14 @@ class CatalogsItemsUpdateBatchRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsItemsUpdateBatchRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsItemsUpdateBatchRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'country'), 'Required key "CatalogsItemsUpdateBatchRequest[country]" is missing from JSON.');
+        assert(json[r'country'] != null, 'Required key "CatalogsItemsUpdateBatchRequest[country]" has a null value in JSON.');
+        assert(json.containsKey(r'items'), 'Required key "CatalogsItemsUpdateBatchRequest[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "CatalogsItemsUpdateBatchRequest[items]" has a null value in JSON.');
+        assert(json.containsKey(r'language'), 'Required key "CatalogsItemsUpdateBatchRequest[language]" is missing from JSON.');
+        assert(json[r'language'] != null, 'Required key "CatalogsItemsUpdateBatchRequest[language]" has a null value in JSON.');
+        assert(json.containsKey(r'operation'), 'Required key "CatalogsItemsUpdateBatchRequest[operation]" is missing from JSON.');
+        assert(json[r'operation'] != null, 'Required key "CatalogsItemsUpdateBatchRequest[operation]" has a null value in JSON.');
         return true;
       }());
 
@@ -78,7 +82,7 @@ class CatalogsItemsUpdateBatchRequest {
         country: Country.fromJson(json[r'country'])!,
         items: ItemUpdateBatchRecord.listFromJson(json[r'items']),
         language: LanguageEnum.fromJson(json[r'language'])!,
-        operation: BatchOperation.fromJson(json[r'operation'])!,
+        operation: CatalogsItemsUpdateBatchRequestOperationEnum.fromJson(json[r'operation'])!,
       );
     }
     return null;
@@ -132,4 +136,80 @@ class CatalogsItemsUpdateBatchRequest {
     'operation',
   };
 }
+
+
+enum CatalogsItemsUpdateBatchRequestOperationEnum {
+  UPDATE._(r'UPDATE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsItemsUpdateBatchRequestOperationEnum._(this._value);
+
+  /// The underlying value of this enum member.
+  final String _value;
+
+  @override
+  String toString() => _value;
+
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
+
+  /// Returns the instance of [CatalogsItemsUpdateBatchRequestOperationEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
+  static CatalogsItemsUpdateBatchRequestOperationEnum? fromJson(dynamic value) => CatalogsItemsUpdateBatchRequestOperationEnumTypeTransformer().decode(value);
+
+  /// Returns a [List] containing instances of [CatalogsItemsUpdateBatchRequestOperationEnum]
+  /// that were successfully decoded from the passed [JSON][json].
+  static List<CatalogsItemsUpdateBatchRequestOperationEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CatalogsItemsUpdateBatchRequestOperationEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CatalogsItemsUpdateBatchRequestOperationEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CatalogsItemsUpdateBatchRequestOperationEnum] to String,
+/// and [decode] dynamic data back to [CatalogsItemsUpdateBatchRequestOperationEnum].
+class CatalogsItemsUpdateBatchRequestOperationEnumTypeTransformer {
+  factory CatalogsItemsUpdateBatchRequestOperationEnumTypeTransformer() => _instance ??= const CatalogsItemsUpdateBatchRequestOperationEnumTypeTransformer._();
+
+  const CatalogsItemsUpdateBatchRequestOperationEnumTypeTransformer._();
+
+  String encode(CatalogsItemsUpdateBatchRequestOperationEnum data) => data._value;
+
+  /// Returns the instance of [CatalogsItemsUpdateBatchRequestOperationEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CatalogsItemsUpdateBatchRequestOperationEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsItemsUpdateBatchRequestOperationEnum) {
+      return data;
+    }
+    if (data != null) {
+      switch (data) {
+        case r'UPDATE': return CatalogsItemsUpdateBatchRequestOperationEnum.UPDATE;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// The singleton instance of this transformer.
+  static CatalogsItemsUpdateBatchRequestOperationEnumTypeTransformer? _instance;
+}
+
 

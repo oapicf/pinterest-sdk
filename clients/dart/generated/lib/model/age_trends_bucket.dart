@@ -11,39 +11,34 @@
 part of openapi.api;
 
 
-class AgeTrendsBucket {
-  /// Instantiate a new enum with the provided [value].
-  const AgeTrendsBucket._(this.value);
+enum AgeTrendsBucket {
+  n1824._(r'18-24'),
+  n2534._(r'25-34'),
+  n3544._(r'35-44'),
+  n4549._(r'45-49'),
+  n5054._(r'50-54'),
+  n5564._(r'55-64'),
+  n65plus._(r'65+'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const AgeTrendsBucket._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const n1824 = AgeTrendsBucket._(r'18-24');
-  static const n2534 = AgeTrendsBucket._(r'25-34');
-  static const n3544 = AgeTrendsBucket._(r'35-44');
-  static const n4549 = AgeTrendsBucket._(r'45-49');
-  static const n5054 = AgeTrendsBucket._(r'50-54');
-  static const n5564 = AgeTrendsBucket._(r'55-64');
-  static const n65plus = AgeTrendsBucket._(r'65+');
-
-  /// List of all possible values in this [enum][AgeTrendsBucket].
-  static const values = <AgeTrendsBucket>[
-    n1824,
-    n2534,
-    n3544,
-    n4549,
-    n5054,
-    n5564,
-    n65plus,
-  ];
-
+  /// Returns the instance of [AgeTrendsBucket] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static AgeTrendsBucket? fromJson(dynamic value) => AgeTrendsBucketTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [AgeTrendsBucket]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<AgeTrendsBucket> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <AgeTrendsBucket>[];
     if (json is List && json.isNotEmpty) {
@@ -65,9 +60,11 @@ class AgeTrendsBucketTypeTransformer {
 
   const AgeTrendsBucketTypeTransformer._();
 
-  String encode(AgeTrendsBucket data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(AgeTrendsBucket data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a AgeTrendsBucket.
+  /// Returns the instance of [AgeTrendsBucket] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -76,6 +73,9 @@ class AgeTrendsBucketTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   AgeTrendsBucket? decode(dynamic data, {bool allowNull = true}) {
+    if (data is AgeTrendsBucket) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'18-24': return AgeTrendsBucket.n1824;
@@ -94,7 +94,7 @@ class AgeTrendsBucketTypeTransformer {
     return null;
   }
 
-  /// Singleton [AgeTrendsBucketTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static AgeTrendsBucketTypeTransformer? _instance;
 }
 

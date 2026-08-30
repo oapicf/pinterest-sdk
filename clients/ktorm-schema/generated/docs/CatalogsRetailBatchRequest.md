@@ -7,21 +7,21 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **catalogType** | catalog_type | text NOT NULL |  | [**catalog_type**](#CatalogType) |  | 
 **country** | country | long NOT NULL |  | [**Country**](Country.md) |  |  [foreignkey]
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;CatalogsRetailBatchRequestItemsInner&gt;**](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;CatalogsRetailBatchRequestItemsItems&gt;**](CatalogsRetailBatchRequestItemsItems.md) | Array with catalogs item operations | 
 **language** | language | text NOT NULL |  | [**language**](#Language) | We recommend using the CatalogsLocale values. | 
 **catalogId** | catalog_id | text |  | **kotlin.String** | Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog |  [optional]
 
 
 
 
-# **Table `CatalogsRetailBatchRequestCatalogsRetailBatchRequestItemsInner`**
-(mapped from: CatalogsRetailBatchRequestCatalogsRetailBatchRequestItemsInner)
+# **Table `CatalogsRetailBatchRequestCatalogsRetailBatchRequestItemsItems`**
+(mapped from: CatalogsRetailBatchRequestCatalogsRetailBatchRequestItemsItems)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 catalogsRetailBatchRequest | catalogsRetailBatchRequest | long | | kotlin.Long | Primary Key | *one*
-catalogsRetailBatchRequestItemsInner | catalogsRetailBatchRequestItemsInner | long | | kotlin.Long | Foreign Key | *many*
+catalogsRetailBatchRequestItemsItems | catalogsRetailBatchRequestItemsItems | long | | kotlin.Long | Foreign Key | *many*
 
 
 

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -20,7 +28,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Determines the displayed promotion text along with what parameters (if any) are needed to complete the template. This list is not finalized, and will be updated as new types are supported.
+ * Determines the displayed promotion text along with what parameters (if any) are needed to complete the template.
  *
  * Values: VARIABLE,SITEWIDE,CHECKOUT,SAVE_X_ON_Y,BUY_X_GET_Y,SPEND_X_SAVE_Y,FREE_SHIPPING,FREE_SHIPPING_MINIMUM,FREE_SHIPPING_WITH_DISCOUNT,SITEWIDE_IN_STORES,EXTRA_PERCENT_OFF,GIFT_WITH_PURCHASE,GIFT_WITH_PURCHASE_MINIMUM,FIXED,PERCENT_OFF_CLEARANCE,X_OFF_Y,GIFT_WITH_FIRST_PURCHASE,BUY_X_GET_ONE_FREE,CASH_BACK,POINTS_ON_ALL_PURCHASES,BONUS,POINTS_WITH_PURCHASE,CUSTOM
  */
@@ -117,7 +125,7 @@ enum class PromotionType(val value: kotlin.String) {
          */
         fun decode(data: kotlin.Any?): PromotionType? = data?.let {
           val normalizedData = "$it".lowercase()
-          values().firstOrNull { value ->
+          entries.firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()
           }
         }

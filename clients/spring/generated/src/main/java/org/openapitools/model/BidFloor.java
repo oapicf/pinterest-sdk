@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -10,24 +11,26 @@ import java.util.List;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * BidFloor
+ * Bid floor request and response model.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "BidFloor", description = "Bid floor request and response model.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BidFloor {
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<Integer> bidFloors = new ArrayList<>();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private String type = "bidfloor";
 
   public BidFloor bidFloors(List<Integer> bidFloors) {
@@ -48,12 +51,13 @@ public class BidFloor {
    * @return bidFloors
    */
   
-  @Schema(name = "bid_floors", example = "[100000,200000]", description = "A list of bid floors in micro currency. For example, [100000, 200000]", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "bid_floors", accessMode = Schema.AccessMode.READ_ONLY, example = "[100000,200000]", description = "A list of bid floors in micro currency. For example, [100000, 200000]", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bid_floors")
   public List<Integer> getBidFloors() {
     return bidFloors;
   }
 
+  @JsonProperty("bid_floors")
   public void setBidFloors(List<Integer> bidFloors) {
     this.bidFloors = bidFloors;
   }
@@ -64,16 +68,17 @@ public class BidFloor {
   }
 
   /**
-   * Always the string 'bidfloor'
+   * Always the string 'bidfloor'.
    * @return type
    */
   
-  @Schema(name = "type", example = "bidfloor", description = "Always the string 'bidfloor'", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "type", accessMode = Schema.AccessMode.READ_ONLY, example = "bidfloor", description = "Always the string 'bidfloor'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
   public String getType() {
     return type;
   }
 
+  @JsonProperty("type")
   public void setType(String type) {
     this.type = type;
   }
@@ -110,11 +115,8 @@ public class BidFloor {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

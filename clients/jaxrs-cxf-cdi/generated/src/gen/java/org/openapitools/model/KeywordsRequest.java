@@ -60,7 +60,7 @@ public class KeywordsRequest   {
   }
 
   
-  @ApiModelProperty(example = "383791336903426391", required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
+  @ApiModelProperty(required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
   @JsonProperty("parent_id")
   @NotNull
  @Pattern(regexp="^((AG)|C)?\\d+$")  public String getParentId() {
@@ -106,10 +106,7 @@ public class KeywordsRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

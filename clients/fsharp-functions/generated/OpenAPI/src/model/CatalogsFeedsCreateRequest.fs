@@ -3,9 +3,9 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
 open OpenAPI.Model.CatalogsFeedCredentials
 open OpenAPI.Model.CatalogsFeedProcessingSchedule
-open OpenAPI.Model.CatalogsFeedsCreateRequestDefaultLocale
 open OpenAPI.Model.CatalogsFormat
 open OpenAPI.Model.CatalogsStatus
 open OpenAPI.Model.Country
@@ -27,7 +27,7 @@ module CatalogsFeedsCreateRequest =
     [<JsonProperty(PropertyName = "default_currency")>]
     DefaultCurrency : NullableCurrency;
     [<JsonProperty(PropertyName = "default_locale")>]
-    DefaultLocale : CatalogsFeedsCreateRequestDefaultLocale;
+    DefaultLocale : CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
     [<JsonProperty(PropertyName = "format")>]
     Format : CatalogsFormat;
     [<JsonProperty(PropertyName = "location")>]

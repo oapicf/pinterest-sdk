@@ -1,7 +1,7 @@
 /*
  * TargetingTemplateCreate.h
  *
- * 
+ * Resource create operation model.
  */
 
 #ifndef _TargetingTemplateCreate_H_
@@ -10,7 +10,7 @@
 
 #include <string>
 #include "PlacementGroupType.h"
-#include "TargetingSpec.h"
+#include "TargetingSpecOptimal.h"
 #include "TargetingTemplateKeyword.h"
 #include "TrackingUrls.h"
 #include <list>
@@ -25,7 +25,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief Resource create operation model.
  *
  *  \ingroup Models
  *
@@ -50,11 +50,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+	/*! \brief Get Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).
 	 */
 	bool getAutoTargetingEnabled();
 
-	/*! \brief Set Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+	/*! \brief Set Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).
 	 */
 	void setAutoTargetingEnabled(bool  auto_targeting_enabled);
 	/*! \brief Get 
@@ -64,11 +64,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setKeywords(std::list <TargetingTemplateKeyword> keywords);
-	/*! \brief Get Name of targeting template.
+	/*! \brief Get targeting template name
 	 */
 	std::string getName();
 
-	/*! \brief Set Name of targeting template.
+	/*! \brief Set targeting template name
 	 */
 	void setName(std::string  name);
 	/*! \brief Get 
@@ -78,13 +78,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setPlacementGroup(PlacementGroupType  placement_group);
-	/*! \brief Get 
+	/*! \brief Get targeting profile attributes
 	 */
-	TargetingSpec getTargetingAttributes();
+	TargetingSpecOptimal getTargetingAttributes();
 
-	/*! \brief Set 
+	/*! \brief Set targeting profile attributes
 	 */
-	void setTargetingAttributes(TargetingSpec  targeting_attributes);
+	void setTargetingAttributes(TargetingSpecOptimal  targeting_attributes);
 	/*! \brief Get 
 	 */
 	TrackingUrls getTrackingUrls();
@@ -98,7 +98,7 @@ private:
 	std::list <TargetingTemplateKeyword>keywords;
 	std::string name;
 	PlacementGroupType placement_group;
-	TargetingSpec targeting_attributes;
+	TargetingSpecOptimal targeting_attributes;
 	TrackingUrls tracking_urls;
 	void __init();
 	void __cleanup();

@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "NullableOptimizationGoalMetadata",
+  "fields": [
+    {
+      "name": "conversion_tag_v3_goal_metadata",
+      "type": ["null", "model.ConversionTagV3GoalMetadata"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "frequency_goal_metadata",
+      "type": ["null", "model.FrequencyGoalMetadata"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "scrollup_goal_metadata",
+      "type": ["null", "model.ScrollupGoalMetadata"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

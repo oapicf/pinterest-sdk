@@ -19,7 +19,6 @@ API.Client.AnalyticsDailyMetrics.prototype.dataStatus;
 API.Client.AnalyticsDailyMetrics.prototype.date;
 
 /**
- * The metric name and daily value for each requested metric
  * @type {!Object<!string, number>}
  * @export
  */

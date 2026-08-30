@@ -1,14 +1,14 @@
 #' Create a new BidFloor
 #'
 #' @description
-#' BidFloor Class
+#' Bid floor request and response model.
 #'
 #' @docType class
 #' @title BidFloor
 #' @description BidFloor Class
 #' @format An \code{R6Class} generator object
 #' @field bid_floors A list of bid floors in micro currency. For example, [100000, 200000] list(integer) [optional]
-#' @field type Always the string 'bidfloor' character [optional]
+#' @field type Always the string 'bidfloor'. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,7 +22,7 @@ BidFloor <- R6::R6Class(
     #' Initialize a new BidFloor class.
     #'
     #' @param bid_floors A list of bid floors in micro currency. For example, [100000, 200000]
-    #' @param type Always the string 'bidfloor'. Default to "bidfloor".
+    #' @param type Always the string 'bidfloor'.. Default to "bidfloor".
     #' @param ... Other optional arguments.
     initialize = function(`bid_floors` = NULL, `type` = "bidfloor", ...) {
       if (!is.null(`bid_floors`)) {

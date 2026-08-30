@@ -9,8 +9,9 @@ Name | Type | Description | Notes
 **engagement_type** | [**ProductCategoriesEngagementType**](ProductCategoriesEngagementType.md) | Engagement type | 
 **pct_change_mom** | **int** | Month-over-month change percentage | 
 **percent_relative_volume** | **int** | Relative volume percentage | 
+**pinterest_product_category_id** | **int** | Pinterest Product Category Id | 
 **product_category** | **str** | Product Category Name | 
-**verticals** | [**List[VerticalProductCategory]**](VerticalProductCategory.md) | Vertical name associated with the product category | [optional] 
+**verticals** | **List[str]** | Vertical name associated with the product category | [optional] 
 
 ## Example
 

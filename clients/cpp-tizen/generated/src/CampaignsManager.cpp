@@ -96,7 +96,7 @@ static bool adPinsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* er
 }
 
 static bool adPinsAnalyticsHelper(char * accessToken,
-	std::string adAccountId, std::string campaignId, std::list<std::string> pinIds, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
+	std::string campaignId, std::list<std::string> pinIds, Date startDate, Date endDate, std::list<ReportingColumnSync> columns, Granularity granularity, std::string adAccountId, long long clickWindowDays, long long engagementWindowDays, long long viewWindowDays, std::string conversionReportTime, 
 	void(* handler)(std::list<AdPinAnalytics>, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -132,8 +132,8 @@ static bool adPinsAnalyticsHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("end_date", itemAtq));
 
 	for (std::list
-	<std::string>::iterator queryIter = columns.begin(); queryIter != columns.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<ReportingColumnSync>::iterator queryIter = columns.begin(); queryIter != columns.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "ReportingColumnSync");
 		queryParams.insert(pair<string, string>("columns", itemAt));
 	}
 	
@@ -142,21 +142,21 @@ static bool adPinsAnalyticsHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("granularity", itemAtq));
 
 
-	itemAtq = stringify(&clickWindowDays, "int");
+	itemAtq = stringify(&clickWindowDays, "long long");
 	queryParams.insert(pair<string, string>("click_window_days", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("click_window_days");
 	}
 
 
-	itemAtq = stringify(&engagementWindowDays, "int");
+	itemAtq = stringify(&engagementWindowDays, "long long");
 	queryParams.insert(pair<string, string>("engagement_window_days", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("engagement_window_days");
 	}
 
 
-	itemAtq = stringify(&viewWindowDays, "int");
+	itemAtq = stringify(&viewWindowDays, "long long");
 	queryParams.insert(pair<string, string>("view_window_days", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("view_window_days");
@@ -229,22 +229,22 @@ static bool adPinsAnalyticsHelper(char * accessToken,
 
 
 bool CampaignsManager::adPinsAnalyticsAsync(char * accessToken,
-	std::string adAccountId, std::string campaignId, std::list<std::string> pinIds, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
+	std::string campaignId, std::list<std::string> pinIds, Date startDate, Date endDate, std::list<ReportingColumnSync> columns, Granularity granularity, std::string adAccountId, long long clickWindowDays, long long engagementWindowDays, long long viewWindowDays, std::string conversionReportTime, 
 	void(* handler)(std::list<AdPinAnalytics>, Error, void* )
 	, void* userData)
 {
 	return adPinsAnalyticsHelper(accessToken,
-	adAccountId, campaignId, pinIds, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, 
+	campaignId, pinIds, startDate, endDate, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, 
 	handler, userData, true);
 }
 
 bool CampaignsManager::adPinsAnalyticsSync(char * accessToken,
-	std::string adAccountId, std::string campaignId, std::list<std::string> pinIds, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
+	std::string campaignId, std::list<std::string> pinIds, Date startDate, Date endDate, std::list<ReportingColumnSync> columns, Granularity granularity, std::string adAccountId, long long clickWindowDays, long long engagementWindowDays, long long viewWindowDays, std::string conversionReportTime, 
 	void(* handler)(std::list<AdPinAnalytics>, Error, void* )
 	, void* userData)
 {
 	return adPinsAnalyticsHelper(accessToken,
-	adAccountId, campaignId, pinIds, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, 
+	campaignId, pinIds, startDate, endDate, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, 
 	handler, userData, false);
 }
 
@@ -289,6 +289,31 @@ static bool campaignTargetingAnalyticsGetProcessor(MemoryStruct_s p_chunk, long 
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -309,7 +334,7 @@ static bool campaignTargetingAnalyticsGetProcessor(MemoryStruct_s p_chunk, long 
 }
 
 static bool campaignTargetingAnalyticsGetHelper(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, Date startDate, Date endDate, std::list<AdsAnalyticsCampaignTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, 
+	std::string adAccountId, std::list<std::string> campaignIds, Date startDate, Date endDate, std::list<AdsAnalyticsCampaignTargetingType> targetingTypes, std::list<ReportingColumnSync> columns, Granularity granularity, long long clickWindowDays, long long engagementWindowDays, long long viewWindowDays, std::string conversionReportTime, std::list<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, 
 	void(* handler)(MetricsResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -347,8 +372,8 @@ static bool campaignTargetingAnalyticsGetHelper(char * accessToken,
 	}
 	
 	for (std::list
-	<std::string>::iterator queryIter = columns.begin(); queryIter != columns.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<ReportingColumnSync>::iterator queryIter = columns.begin(); queryIter != columns.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "ReportingColumnSync");
 		queryParams.insert(pair<string, string>("columns", itemAt));
 	}
 	
@@ -357,21 +382,21 @@ static bool campaignTargetingAnalyticsGetHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("granularity", itemAtq));
 
 
-	itemAtq = stringify(&clickWindowDays, "int");
+	itemAtq = stringify(&clickWindowDays, "long long");
 	queryParams.insert(pair<string, string>("click_window_days", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("click_window_days");
 	}
 
 
-	itemAtq = stringify(&engagementWindowDays, "int");
+	itemAtq = stringify(&engagementWindowDays, "long long");
 	queryParams.insert(pair<string, string>("engagement_window_days", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("engagement_window_days");
 	}
 
 
-	itemAtq = stringify(&viewWindowDays, "int");
+	itemAtq = stringify(&viewWindowDays, "long long");
 	queryParams.insert(pair<string, string>("view_window_days", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("view_window_days");
@@ -460,7 +485,7 @@ static bool campaignTargetingAnalyticsGetHelper(char * accessToken,
 
 
 bool CampaignsManager::campaignTargetingAnalyticsGetAsync(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, Date startDate, Date endDate, std::list<AdsAnalyticsCampaignTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, 
+	std::string adAccountId, std::list<std::string> campaignIds, Date startDate, Date endDate, std::list<AdsAnalyticsCampaignTargetingType> targetingTypes, std::list<ReportingColumnSync> columns, Granularity granularity, long long clickWindowDays, long long engagementWindowDays, long long viewWindowDays, std::string conversionReportTime, std::list<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, 
 	void(* handler)(MetricsResponse, Error, void* )
 	, void* userData)
 {
@@ -470,7 +495,7 @@ bool CampaignsManager::campaignTargetingAnalyticsGetAsync(char * accessToken,
 }
 
 bool CampaignsManager::campaignTargetingAnalyticsGetSync(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, Date startDate, Date endDate, std::list<AdsAnalyticsCampaignTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, 
+	std::string adAccountId, std::list<std::string> campaignIds, Date startDate, Date endDate, std::list<AdsAnalyticsCampaignTargetingType> targetingTypes, std::list<ReportingColumnSync> columns, Granularity granularity, long long clickWindowDays, long long engagementWindowDays, long long viewWindowDays, std::string conversionReportTime, std::list<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, 
 	void(* handler)(MetricsResponse, Error, void* )
 	, void* userData)
 {
@@ -482,13 +507,13 @@ bool CampaignsManager::campaignTargetingAnalyticsGetSync(char * accessToken,
 static bool campaignsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::list<CampaignsAnalyticsResponse_inner>, Error, void* )
-	= reinterpret_cast<void(*)(std::list<CampaignsAnalyticsResponse_inner>, Error, void* )> (voidHandler);
+	void(* handler)(std::list<CampaignsAnalyticsMetrics>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<CampaignsAnalyticsMetrics>, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
-	std::list<CampaignsAnalyticsResponse_inner> out;
+	std::list<CampaignsAnalyticsMetrics> out;
 	
 
 	if (code >= 200 && code < 300) {
@@ -502,7 +527,7 @@ static bool campaignsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char*
 		for(guint i = 0; i < length; i++){
 			JsonNode* myJson = json_array_get_element (jsonarray, i);
 			char * singlenodestr = json_to_string(myJson, false);
-			CampaignsAnalyticsResponse_inner singlemodel;
+			CampaignsAnalyticsMetrics singlemodel;
 			singlemodel.fromJson(singlenodestr);
 			out.push_front(singlemodel);
 			g_free(static_cast<gpointer>(singlenodestr));
@@ -527,8 +552,8 @@ static bool campaignsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char*
 }
 
 static bool campaignsAnalyticsHelper(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> campaignIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, bool aggregateReportRows, ReportingTimeZone reportingTimezone, 
-	void(* handler)(std::list<CampaignsAnalyticsResponse_inner>, Error, void* )
+	Date startDate, Date endDate, std::list<std::string> campaignIds, std::list<ReportingColumnSync> columns, Granularity granularity, std::string adAccountId, long long clickWindowDays, long long engagementWindowDays, long long viewWindowDays, std::string conversionReportTime, bool aggregateReportRows, ReportingTimeZone reportingTimezone, 
+	void(* handler)(std::list<CampaignsAnalyticsMetrics>, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -559,8 +584,8 @@ static bool campaignsAnalyticsHelper(char * accessToken,
 	}
 	
 	for (std::list
-	<std::string>::iterator queryIter = columns.begin(); queryIter != columns.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<ReportingColumnSync>::iterator queryIter = columns.begin(); queryIter != columns.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "ReportingColumnSync");
 		queryParams.insert(pair<string, string>("columns", itemAt));
 	}
 	
@@ -569,21 +594,21 @@ static bool campaignsAnalyticsHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("granularity", itemAtq));
 
 
-	itemAtq = stringify(&clickWindowDays, "int");
+	itemAtq = stringify(&clickWindowDays, "long long");
 	queryParams.insert(pair<string, string>("click_window_days", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("click_window_days");
 	}
 
 
-	itemAtq = stringify(&engagementWindowDays, "int");
+	itemAtq = stringify(&engagementWindowDays, "long long");
 	queryParams.insert(pair<string, string>("engagement_window_days", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("engagement_window_days");
 	}
 
 
-	itemAtq = stringify(&viewWindowDays, "int");
+	itemAtq = stringify(&viewWindowDays, "long long");
 	queryParams.insert(pair<string, string>("view_window_days", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("view_window_days");
@@ -670,36 +695,36 @@ static bool campaignsAnalyticsHelper(char * accessToken,
 
 
 bool CampaignsManager::campaignsAnalyticsAsync(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> campaignIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, bool aggregateReportRows, ReportingTimeZone reportingTimezone, 
-	void(* handler)(std::list<CampaignsAnalyticsResponse_inner>, Error, void* )
+	Date startDate, Date endDate, std::list<std::string> campaignIds, std::list<ReportingColumnSync> columns, Granularity granularity, std::string adAccountId, long long clickWindowDays, long long engagementWindowDays, long long viewWindowDays, std::string conversionReportTime, bool aggregateReportRows, ReportingTimeZone reportingTimezone, 
+	void(* handler)(std::list<CampaignsAnalyticsMetrics>, Error, void* )
 	, void* userData)
 {
 	return campaignsAnalyticsHelper(accessToken,
-	adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone, 
+	startDate, endDate, campaignIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone, 
 	handler, userData, true);
 }
 
 bool CampaignsManager::campaignsAnalyticsSync(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> campaignIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, bool aggregateReportRows, ReportingTimeZone reportingTimezone, 
-	void(* handler)(std::list<CampaignsAnalyticsResponse_inner>, Error, void* )
+	Date startDate, Date endDate, std::list<std::string> campaignIds, std::list<ReportingColumnSync> columns, Granularity granularity, std::string adAccountId, long long clickWindowDays, long long engagementWindowDays, long long viewWindowDays, std::string conversionReportTime, bool aggregateReportRows, ReportingTimeZone reportingTimezone, 
+	void(* handler)(std::list<CampaignsAnalyticsMetrics>, Error, void* )
 	, void* userData)
 {
 	return campaignsAnalyticsHelper(accessToken,
-	adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone, 
+	startDate, endDate, campaignIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone, 
 	handler, userData, false);
 }
 
 static bool campaignsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(CampaignCreateResponse, Error, void* )
-	= reinterpret_cast<void(*)(CampaignCreateResponse, Error, void* )> (voidHandler);
+	void(* handler)(CampaignBatchWriteResponseModel, Error, void* )
+	= reinterpret_cast<void(*)(CampaignBatchWriteResponseModel, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	CampaignCreateResponse out;
+	CampaignBatchWriteResponseModel out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -707,18 +732,43 @@ static bool campaignsCreateProcessor(MemoryStruct_s p_chunk, long code, char* er
 
 
 
-		if (isprimitive("CampaignCreateResponse")) {
+		if (isprimitive("CampaignBatchWriteResponseModel")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "CampaignCreateResponse", "CampaignCreateResponse");
+			jsonToValue(&out, pJson, "CampaignBatchWriteResponseModel", "CampaignBatchWriteResponseModel");
 			json_node_free(pJson);
 
-			if ("CampaignCreateResponse" == "std::string") {
+			if ("CampaignBatchWriteResponseModel" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -750,8 +800,8 @@ static bool campaignsCreateProcessor(MemoryStruct_s p_chunk, long code, char* er
 }
 
 static bool campaignsCreateHelper(char * accessToken,
-	std::string adAccountId, std::list<CampaignCreateRequest> campaignCreateRequest, 
-	void(* handler)(CampaignCreateResponse, Error, void* )
+	std::string adAccountId, std::list<CampaignCreateItem> campaignCreateItem, 
+	void(* handler)(CampaignBatchWriteResponseModel, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -771,14 +821,14 @@ static bool campaignsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 	//TODO: Map Container
-	if (isprimitive("CampaignCreateRequest")) {
-		node = converttoJson(&campaignCreateRequest, "CampaignCreateRequest", "array");
+	if (isprimitive("CampaignCreateItem")) {
+		node = converttoJson(&campaignCreateItem, "CampaignCreateItem", "array");
 	} else {
 		node = json_node_alloc();
 		json_array = json_array_new();
 		for (std::list
-			<CampaignCreateRequest>::iterator bodyIter = campaignCreateRequest.begin(); bodyIter != campaignCreateRequest.end(); ++bodyIter) {
-			CampaignCreateRequest itemAt = (*bodyIter);
+			<CampaignCreateItem>::iterator bodyIter = campaignCreateItem.begin(); bodyIter != campaignCreateItem.end(); ++bodyIter) {
+			CampaignCreateItem itemAt = (*bodyIter);
 			char *jsonStr =  itemAt.toJson();
 			JsonNode *node_temp = json_from_string(jsonStr, NULL);
 			g_free(static_cast<gpointer>(jsonStr));
@@ -852,36 +902,36 @@ static bool campaignsCreateHelper(char * accessToken,
 
 
 bool CampaignsManager::campaignsCreateAsync(char * accessToken,
-	std::string adAccountId, std::list<CampaignCreateRequest> campaignCreateRequest, 
-	void(* handler)(CampaignCreateResponse, Error, void* )
+	std::string adAccountId, std::list<CampaignCreateItem> campaignCreateItem, 
+	void(* handler)(CampaignBatchWriteResponseModel, Error, void* )
 	, void* userData)
 {
 	return campaignsCreateHelper(accessToken,
-	adAccountId, campaignCreateRequest, 
+	adAccountId, campaignCreateItem, 
 	handler, userData, true);
 }
 
 bool CampaignsManager::campaignsCreateSync(char * accessToken,
-	std::string adAccountId, std::list<CampaignCreateRequest> campaignCreateRequest, 
-	void(* handler)(CampaignCreateResponse, Error, void* )
+	std::string adAccountId, std::list<CampaignCreateItem> campaignCreateItem, 
+	void(* handler)(CampaignBatchWriteResponseModel, Error, void* )
 	, void* userData)
 {
 	return campaignsCreateHelper(accessToken,
-	adAccountId, campaignCreateRequest, 
+	adAccountId, campaignCreateItem, 
 	handler, userData, false);
 }
 
 static bool campaignsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(CampaignResponse, Error, void* )
-	= reinterpret_cast<void(*)(CampaignResponse, Error, void* )> (voidHandler);
+	void(* handler)(Campaign, Error, void* )
+	= reinterpret_cast<void(*)(Campaign, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	CampaignResponse out;
+	Campaign out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -889,18 +939,43 @@ static bool campaignsGetProcessor(MemoryStruct_s p_chunk, long code, char* error
 
 
 
-		if (isprimitive("CampaignResponse")) {
+		if (isprimitive("Campaign")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "CampaignResponse", "CampaignResponse");
+			jsonToValue(&out, pJson, "Campaign", "Campaign");
 			json_node_free(pJson);
 
-			if ("CampaignResponse" == "std::string") {
+			if ("Campaign" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -932,8 +1007,8 @@ static bool campaignsGetProcessor(MemoryStruct_s p_chunk, long code, char* error
 }
 
 static bool campaignsGetHelper(char * accessToken,
-	std::string adAccountId, std::string campaignId, 
-	void(* handler)(CampaignResponse, Error, void* )
+	std::string campaignId, std::string adAccountId, 
+	void(* handler)(Campaign, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -956,18 +1031,18 @@ static bool campaignsGetHelper(char * accessToken,
 	string url("/ad_accounts/{ad_account_id}/campaigns/{campaign_id}");
 	int pos;
 
-	string s_adAccountId("{");
-	s_adAccountId.append("ad_account_id");
-	s_adAccountId.append("}");
-	pos = url.find(s_adAccountId);
-	url.erase(pos, s_adAccountId.length());
-	url.insert(pos, stringify(&adAccountId, "std::string"));
 	string s_campaignId("{");
 	s_campaignId.append("campaign_id");
 	s_campaignId.append("}");
 	pos = url.find(s_campaignId);
 	url.erase(pos, s_campaignId.length());
 	url.insert(pos, stringify(&campaignId, "std::string"));
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -1015,22 +1090,22 @@ static bool campaignsGetHelper(char * accessToken,
 
 
 bool CampaignsManager::campaignsGetAsync(char * accessToken,
-	std::string adAccountId, std::string campaignId, 
-	void(* handler)(CampaignResponse, Error, void* )
+	std::string campaignId, std::string adAccountId, 
+	void(* handler)(Campaign, Error, void* )
 	, void* userData)
 {
 	return campaignsGetHelper(accessToken,
-	adAccountId, campaignId, 
+	campaignId, adAccountId, 
 	handler, userData, true);
 }
 
 bool CampaignsManager::campaignsGetSync(char * accessToken,
-	std::string adAccountId, std::string campaignId, 
-	void(* handler)(CampaignResponse, Error, void* )
+	std::string campaignId, std::string adAccountId, 
+	void(* handler)(Campaign, Error, void* )
 	, void* userData)
 {
 	return campaignsGetHelper(accessToken,
-	adAccountId, campaignId, 
+	campaignId, adAccountId, 
 	handler, userData, false);
 }
 
@@ -1080,6 +1155,26 @@ static bool campaignsListProcessor(MemoryStruct_s p_chunk, long code, char* erro
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1100,7 +1195,7 @@ static bool campaignsListProcessor(MemoryStruct_s p_chunk, long code, char* erro
 }
 
 static bool campaignsListHelper(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> entityStatuses, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, std::list<std::string> campaignIds, std::list<EntityStatus> entityStatuses, 
 	void(* handler)(Campaigns_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1117,6 +1212,27 @@ static bool campaignsListHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&bookmark, "std::string");
+	queryParams.insert(pair<string, string>("bookmark", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
+	}
+
+
+	itemAtq = stringify(&order, "Pinterest.Lib.PaginationOrder");
+	queryParams.insert(pair<string, string>("order", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("order");
+	}
+
 	for (std::list
 	<std::string>::iterator queryIter = campaignIds.begin(); queryIter != campaignIds.end(); ++queryIter) {
 		string itemAt = stringify(&(*queryIter), "std::string");
@@ -1127,35 +1243,14 @@ static bool campaignsListHelper(char * accessToken,
 	}
 	
 	for (std::list
-	<std::string>::iterator queryIter = entityStatuses.begin(); queryIter != entityStatuses.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<EntityStatus>::iterator queryIter = entityStatuses.begin(); queryIter != entityStatuses.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "EntityStatus");
 		if( itemAt.empty()){
 			continue;
 		}
 		queryParams.insert(pair<string, string>("entityStatuses", itemAt));
 	}
 	
-
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&order, "std::string");
-	queryParams.insert(pair<string, string>("order", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("order");
-	}
-
-
-	itemAtq = stringify(&bookmark, "std::string");
-	queryParams.insert(pair<string, string>("bookmark", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("bookmark");
-	}
-
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -1216,36 +1311,36 @@ static bool campaignsListHelper(char * accessToken,
 
 
 bool CampaignsManager::campaignsListAsync(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> entityStatuses, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, std::list<std::string> campaignIds, std::list<EntityStatus> entityStatuses, 
 	void(* handler)(Campaigns_list_200_response, Error, void* )
 	, void* userData)
 {
 	return campaignsListHelper(accessToken,
-	adAccountId, campaignIds, entityStatuses, pageSize, order, bookmark, 
+	adAccountId, bookmark, pageSize, order, campaignIds, entityStatuses, 
 	handler, userData, true);
 }
 
 bool CampaignsManager::campaignsListSync(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> entityStatuses, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, std::list<std::string> campaignIds, std::list<EntityStatus> entityStatuses, 
 	void(* handler)(Campaigns_list_200_response, Error, void* )
 	, void* userData)
 {
 	return campaignsListHelper(accessToken,
-	adAccountId, campaignIds, entityStatuses, pageSize, order, bookmark, 
+	adAccountId, bookmark, pageSize, order, campaignIds, entityStatuses, 
 	handler, userData, false);
 }
 
 static bool campaignsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(CampaignUpdateResponse, Error, void* )
-	= reinterpret_cast<void(*)(CampaignUpdateResponse, Error, void* )> (voidHandler);
+	void(* handler)(CampaignBatchWriteResponseModel, Error, void* )
+	= reinterpret_cast<void(*)(CampaignBatchWriteResponseModel, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	CampaignUpdateResponse out;
+	CampaignBatchWriteResponseModel out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1253,18 +1348,43 @@ static bool campaignsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* er
 
 
 
-		if (isprimitive("CampaignUpdateResponse")) {
+		if (isprimitive("CampaignBatchWriteResponseModel")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "CampaignUpdateResponse", "CampaignUpdateResponse");
+			jsonToValue(&out, pJson, "CampaignBatchWriteResponseModel", "CampaignBatchWriteResponseModel");
 			json_node_free(pJson);
 
-			if ("CampaignUpdateResponse" == "std::string") {
+			if ("CampaignBatchWriteResponseModel" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1296,8 +1416,8 @@ static bool campaignsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* er
 }
 
 static bool campaignsUpdateHelper(char * accessToken,
-	std::string adAccountId, std::list<CampaignUpdateRequest> campaignUpdateRequest, 
-	void(* handler)(CampaignUpdateResponse, Error, void* )
+	std::string adAccountId, std::list<CampaignBatchUpdateItem> campaignBatchUpdateItem, 
+	void(* handler)(CampaignBatchWriteResponseModel, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1317,14 +1437,14 @@ static bool campaignsUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 	//TODO: Map Container
-	if (isprimitive("CampaignUpdateRequest")) {
-		node = converttoJson(&campaignUpdateRequest, "CampaignUpdateRequest", "array");
+	if (isprimitive("CampaignBatchUpdateItem")) {
+		node = converttoJson(&campaignBatchUpdateItem, "CampaignBatchUpdateItem", "array");
 	} else {
 		node = json_node_alloc();
 		json_array = json_array_new();
 		for (std::list
-			<CampaignUpdateRequest>::iterator bodyIter = campaignUpdateRequest.begin(); bodyIter != campaignUpdateRequest.end(); ++bodyIter) {
-			CampaignUpdateRequest itemAt = (*bodyIter);
+			<CampaignBatchUpdateItem>::iterator bodyIter = campaignBatchUpdateItem.begin(); bodyIter != campaignBatchUpdateItem.end(); ++bodyIter) {
+			CampaignBatchUpdateItem itemAt = (*bodyIter);
 			char *jsonStr =  itemAt.toJson();
 			JsonNode *node_temp = json_from_string(jsonStr, NULL);
 			g_free(static_cast<gpointer>(jsonStr));
@@ -1398,22 +1518,234 @@ static bool campaignsUpdateHelper(char * accessToken,
 
 
 bool CampaignsManager::campaignsUpdateAsync(char * accessToken,
-	std::string adAccountId, std::list<CampaignUpdateRequest> campaignUpdateRequest, 
-	void(* handler)(CampaignUpdateResponse, Error, void* )
+	std::string adAccountId, std::list<CampaignBatchUpdateItem> campaignBatchUpdateItem, 
+	void(* handler)(CampaignBatchWriteResponseModel, Error, void* )
 	, void* userData)
 {
 	return campaignsUpdateHelper(accessToken,
-	adAccountId, campaignUpdateRequest, 
+	adAccountId, campaignBatchUpdateItem, 
 	handler, userData, true);
 }
 
 bool CampaignsManager::campaignsUpdateSync(char * accessToken,
-	std::string adAccountId, std::list<CampaignUpdateRequest> campaignUpdateRequest, 
-	void(* handler)(CampaignUpdateResponse, Error, void* )
+	std::string adAccountId, std::list<CampaignBatchUpdateItem> campaignBatchUpdateItem, 
+	void(* handler)(CampaignBatchWriteResponseModel, Error, void* )
 	, void* userData)
 {
 	return campaignsUpdateHelper(accessToken,
-	adAccountId, campaignUpdateRequest, 
+	adAccountId, campaignBatchUpdateItem, 
+	handler, userData, false);
+}
+
+static bool getCampaignDeliveryEstimatesProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(CampaignDeliveryEstimatesResponse, Error, void* )
+	= reinterpret_cast<void(*)(CampaignDeliveryEstimatesResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	CampaignDeliveryEstimatesResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("CampaignDeliveryEstimatesResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "CampaignDeliveryEstimatesResponse", "CampaignDeliveryEstimatesResponse");
+			json_node_free(pJson);
+
+			if ("CampaignDeliveryEstimatesResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool getCampaignDeliveryEstimatesHelper(char * accessToken,
+	std::string adAccountId, std::list<CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign, 
+	void(* handler)(CampaignDeliveryEstimatesResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+	//TODO: Map Container
+	if (isprimitive("CampaignDeliveryEstimatesCampaign")) {
+		node = converttoJson(&campaignDeliveryEstimatesCampaign, "CampaignDeliveryEstimatesCampaign", "array");
+	} else {
+		node = json_node_alloc();
+		json_array = json_array_new();
+		for (std::list
+			<CampaignDeliveryEstimatesCampaign>::iterator bodyIter = campaignDeliveryEstimatesCampaign.begin(); bodyIter != campaignDeliveryEstimatesCampaign.end(); ++bodyIter) {
+			CampaignDeliveryEstimatesCampaign itemAt = (*bodyIter);
+			char *jsonStr =  itemAt.toJson();
+			JsonNode *node_temp = json_from_string(jsonStr, NULL);
+			g_free(static_cast<gpointer>(jsonStr));
+			json_array_add_element(json_array, node_temp);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+	}
+	
+
+
+
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/ad_accounts/{ad_account_id}/campaigns/delivery_estimates");
+	int pos;
+
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(CampaignsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = getCampaignDeliveryEstimatesProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (CampaignsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), getCampaignDeliveryEstimatesProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __CampaignsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool CampaignsManager::getCampaignDeliveryEstimatesAsync(char * accessToken,
+	std::string adAccountId, std::list<CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign, 
+	void(* handler)(CampaignDeliveryEstimatesResponse, Error, void* )
+	, void* userData)
+{
+	return getCampaignDeliveryEstimatesHelper(accessToken,
+	adAccountId, campaignDeliveryEstimatesCampaign, 
+	handler, userData, true);
+}
+
+bool CampaignsManager::getCampaignDeliveryEstimatesSync(char * accessToken,
+	std::string adAccountId, std::list<CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign, 
+	void(* handler)(CampaignDeliveryEstimatesResponse, Error, void* )
+	, void* userData)
+{
+	return getCampaignDeliveryEstimatesHelper(accessToken,
+	adAccountId, campaignDeliveryEstimatesCampaign, 
 	handler, userData, false);
 }
 

@@ -9,9 +9,9 @@
 
 (def auth-definitions
   {"pinterest_oauth2" {:type :oauth2}
+   "client_credentials" {:type :oauth2}
    "conversion_token" {:type :basic}
-   "basic" {:type :basic}
-   "client_credentials" {:type :oauth2}})
+   "basic" {:type :basic}})
 
 (def default-api-context
   "Default API context."
@@ -21,9 +21,9 @@
    :decode-models   false
    :debug           false
    :auths           {"pinterest_oauth2" nil
+                     "client_credentials" nil
                      "conversion_token" nil
-                     "basic" nil
-                     "client_credentials" nil}})
+                     "basic" nil}})
 
 (def ^:dynamic *api-context*
   "Dynamic API context to be applied in API calls."

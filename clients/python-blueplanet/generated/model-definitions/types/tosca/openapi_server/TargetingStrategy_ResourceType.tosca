@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TargetingStrategy"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TargetingStrategy"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  TargetingStrategy {
+    title = TargetingStrategy
+    description = TargetingStrategy
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  TargetingStrategy {
+    title = TargetingStrategy
+    description = TargetingStrategy
+    implements = openapi_server.resourceTypes.TargetingStrategy
+
+  }
+}

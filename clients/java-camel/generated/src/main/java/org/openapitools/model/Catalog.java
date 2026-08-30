@@ -10,33 +10,33 @@ import org.openapitools.model.CatalogsType;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Catalog entity
  */
 
 @Schema(name = "Catalog", description = "Catalog entity")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Catalog {
+
+  private CatalogsType catalogType;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private Date createdAt;
 
   private String id;
 
+  private String name;
+
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private Date updatedAt;
-
-  private CatalogsType catalogType;
-
-  private JsonNullable<String> name = JsonNullable.<String>undefined();
 
   public Catalog() {
     super();
@@ -45,12 +45,32 @@ public class Catalog {
   /**
    * Constructor with only required parameters
    */
-  public Catalog(Date createdAt, String id, Date updatedAt, CatalogsType catalogType, String name) {
+  public Catalog(CatalogsType catalogType, Date createdAt, String id, String name, Date updatedAt) {
+    this.catalogType = catalogType;
     this.createdAt = createdAt;
     this.id = id;
+    this.name = name;
     this.updatedAt = updatedAt;
+  }
+
+  public Catalog catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
-    this.name = JsonNullable.of(name);
+    return this;
+  }
+
+  /**
+   * Get catalogType
+   * @return catalogType
+   */
+  @NotNull @Valid 
+  @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("catalog_type")
+  public CatalogsType getCatalogType() {
+    return catalogType;
+  }
+
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
   public Catalog createdAt(Date createdAt) {
@@ -62,8 +82,8 @@ public class Catalog {
    * Get createdAt
    * @return createdAt
    */
-  @NotNull @Valid 
-  @Schema(name = "created_at", example = "2022-03-14T15:15:22Z", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Valid 
+  @Schema(name = "created_at", accessMode = Schema.AccessMode.READ_ONLY, example = "2022-03-14T15:15:22Z", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("created_at")
   public Date getCreatedAt() {
     return createdAt;
@@ -93,48 +113,8 @@ public class Catalog {
     this.id = id;
   }
 
-  public Catalog updatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-  /**
-   * Get updatedAt
-   * @return updatedAt
-   */
-  @NotNull @Valid 
-  @Schema(name = "updated_at", example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("updated_at")
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  public Catalog catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-  /**
-   * Get catalogType
-   * @return catalogType
-   */
-  @NotNull @Valid 
-  @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
   public Catalog name(String name) {
-    this.name = JsonNullable.of(name);
+    this.name = name;
     return this;
   }
 
@@ -145,12 +125,32 @@ public class Catalog {
   @NotNull 
   @Schema(name = "name", description = "A human-friendly name associated to a catalog entity.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
-  public JsonNullable<String> getName() {
+  public String getName() {
     return name;
   }
 
-  public void setName(JsonNullable<String> name) {
+  public void setName(String name) {
     this.name = name;
+  }
+
+  public Catalog updatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+  /**
+   * Get updatedAt
+   * @return updatedAt
+   */
+  @Valid 
+  @Schema(name = "updated_at", accessMode = Schema.AccessMode.READ_ONLY, example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("updated_at")
+  public Date getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
   @Override
@@ -162,27 +162,27 @@ public class Catalog {
       return false;
     }
     Catalog catalog = (Catalog) o;
-    return Objects.equals(this.createdAt, catalog.createdAt) &&
+    return Objects.equals(this.catalogType, catalog.catalogType) &&
+        Objects.equals(this.createdAt, catalog.createdAt) &&
         Objects.equals(this.id, catalog.id) &&
-        Objects.equals(this.updatedAt, catalog.updatedAt) &&
-        Objects.equals(this.catalogType, catalog.catalogType) &&
-        Objects.equals(this.name, catalog.name);
+        Objects.equals(this.name, catalog.name) &&
+        Objects.equals(this.updatedAt, catalog.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, catalogType, name);
+    return Objects.hash(catalogType, createdAt, id, name, updatedAt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Catalog {\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -192,10 +192,7 @@ public class Catalog {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

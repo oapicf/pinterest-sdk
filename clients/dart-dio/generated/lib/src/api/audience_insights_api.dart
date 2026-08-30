@@ -9,10 +9,10 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/audience_definition_response.dart';
 import 'package:openapi/src/model/audience_insight_type.dart';
-import 'package:openapi/src/model/audience_insights_response.dart';
-import 'package:openapi/src/model/error.dart';
+import 'package:openapi/src/model/audience_insights.dart';
+import 'package:openapi/src/model/audience_insights_scope_and_type_get200_response.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
 
 class AudienceInsightsApi {
 
@@ -23,7 +23,7 @@ class AudienceInsightsApi {
   const AudienceInsightsApi(this._dio, this._serializers);
 
   /// Get audience insights
-  /// Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
+  /// Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
@@ -35,9 +35,9 @@ class AudienceInsightsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AudienceInsightsResponse] as data
+  /// Returns a [Future] containing a [Response] with a [AudienceInsights] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AudienceInsightsResponse>> audienceInsightsGet({ 
+  Future<Response<AudienceInsights>> audienceInsightsGet({ 
     required String adAccountId,
     required AudienceInsightType audienceInsightType,
     CancelToken? cancelToken,
@@ -81,14 +81,14 @@ class AudienceInsightsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AudienceInsightsResponse? _responseData;
+    AudienceInsights? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(AudienceInsightsResponse),
-      ) as AudienceInsightsResponse;
+        specifiedType: const FullType(AudienceInsights),
+      ) as AudienceInsights;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -100,7 +100,7 @@ class AudienceInsightsApi {
       );
     }
 
-    return Response<AudienceInsightsResponse>(
+    return Response<AudienceInsights>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -124,9 +124,9 @@ class AudienceInsightsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AudienceDefinitionResponse] as data
+  /// Returns a [Future] containing a [Response] with a [AudienceInsightsScopeAndTypeGet200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AudienceDefinitionResponse>> audienceInsightsScopeAndTypeGet({ 
+  Future<Response<AudienceInsightsScopeAndTypeGet200Response>> audienceInsightsScopeAndTypeGet({ 
     required String adAccountId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -164,14 +164,14 @@ class AudienceInsightsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AudienceDefinitionResponse? _responseData;
+    AudienceInsightsScopeAndTypeGet200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(AudienceDefinitionResponse),
-      ) as AudienceDefinitionResponse;
+        specifiedType: const FullType(AudienceInsightsScopeAndTypeGet200Response),
+      ) as AudienceInsightsScopeAndTypeGet200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -183,7 +183,7 @@ class AudienceInsightsApi {
       );
     }
 
-    return Response<AudienceDefinitionResponse>(
+    return Response<AudienceInsightsScopeAndTypeGet200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

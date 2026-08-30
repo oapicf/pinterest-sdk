@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/audience_account_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -28,7 +28,7 @@ abstract class SharedAudienceAccount implements Built<SharedAudienceAccount, Sha
 
   /// account type
   @BuiltValueField(wireName: r'account_type')
-  SharedAudienceAccountAccountTypeEnum get accountType;
+  AudienceAccountType get accountType;
   // enum accountTypeEnum {  AD_ACCOUNT,  BUSINESS_ACCOUNT,  };
 
   /// Epoch timestamp in seconds for the shared audience event
@@ -71,7 +71,7 @@ class _$SharedAudienceAccountSerializer implements PrimitiveSerializer<SharedAud
     yield r'account_type';
     yield serializers.serialize(
       object.accountType,
-      specifiedType: const FullType(SharedAudienceAccountAccountTypeEnum),
+      specifiedType: const FullType(AudienceAccountType),
     );
     yield r'shared_on_timestamp';
     yield serializers.serialize(
@@ -118,8 +118,8 @@ class _$SharedAudienceAccountSerializer implements PrimitiveSerializer<SharedAud
         case r'account_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(SharedAudienceAccountAccountTypeEnum),
-          ) as SharedAudienceAccountAccountTypeEnum;
+            specifiedType: const FullType(AudienceAccountType),
+          ) as AudienceAccountType;
           result.accountType = valueDes;
           break;
         case r'shared_on_timestamp':
@@ -156,22 +156,5 @@ class _$SharedAudienceAccountSerializer implements PrimitiveSerializer<SharedAud
     );
     return result.build();
   }
-}
-
-class SharedAudienceAccountAccountTypeEnum extends EnumClass {
-
-  /// account type
-  @BuiltValueEnumConst(wireName: r'AD_ACCOUNT')
-  static const SharedAudienceAccountAccountTypeEnum AD_ACCOUNT = _$sharedAudienceAccountAccountTypeEnum_AD_ACCOUNT;
-  /// account type
-  @BuiltValueEnumConst(wireName: r'BUSINESS_ACCOUNT')
-  static const SharedAudienceAccountAccountTypeEnum BUSINESS_ACCOUNT = _$sharedAudienceAccountAccountTypeEnum_BUSINESS_ACCOUNT;
-
-  static Serializer<SharedAudienceAccountAccountTypeEnum> get serializer => _$sharedAudienceAccountAccountTypeEnumSerializer;
-
-  const SharedAudienceAccountAccountTypeEnum._(String name): super(name);
-
-  static BuiltSet<SharedAudienceAccountAccountTypeEnum> get values => _$sharedAudienceAccountAccountTypeEnumValues;
-  static SharedAudienceAccountAccountTypeEnum valueOf(String name) => _$sharedAudienceAccountAccountTypeEnumValueOf(name);
 }
 

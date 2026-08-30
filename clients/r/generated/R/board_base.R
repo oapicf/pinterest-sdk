@@ -177,7 +177,7 @@ BoardBase <- R6::R6Class(
       }
       if (!is.null(self$`media`)) {
         BoardBaseObject[["media"]] <-
-          self$`media`$toSimpleType()
+          self$extractSimpleType(self$`media`)
       }
       if (!is.null(self$`name`)) {
         BoardBaseObject[["name"]] <-
@@ -185,13 +185,36 @@ BoardBase <- R6::R6Class(
       }
       if (!is.null(self$`owner`)) {
         BoardBaseObject[["owner"]] <-
-          self$`owner`$toSimpleType()
+          self$extractSimpleType(self$`owner`)
       }
       if (!is.null(self$`pin_count`)) {
         BoardBaseObject[["pin_count"]] <-
           self$`pin_count`
       }
       return(BoardBaseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

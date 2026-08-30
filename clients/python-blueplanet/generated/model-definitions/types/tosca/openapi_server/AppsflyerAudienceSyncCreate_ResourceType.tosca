@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AppsflyerAudienceSyncCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AppsflyerAudienceSyncCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AppsflyerAudienceSyncCreate {
+    title = AppsflyerAudienceSyncCreate
+    description = AppsflyerAudienceSyncCreate
+    derivedFrom = Root
+    properties {
+        container_id {
+          type =  string
+          description = "The container ID of the audience"
+          optional = true
+        }
+        url_adid_sha256 {
+          type =  string
+          description = "The pre-signed URL for SHA256 hashed GAID/IDFA file"
+          optional = false
+        }
+        url_email_sha256 {
+          type =  string
+          description = "The pre-signed URL for SHA256 hashed email file"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AppsflyerAudienceSyncCreate {
+    title = AppsflyerAudienceSyncCreate
+    description = AppsflyerAudienceSyncCreate
+    implements = openapi_server.resourceTypes.AppsflyerAudienceSyncCreate
+
+  }
+}

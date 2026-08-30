@@ -1,7 +1,7 @@
 /*
  * permissions.h
  *
- * 
+ * Permission levels available on a business asset.
  */
 
 #ifndef _permissions_H_
@@ -18,7 +18,7 @@ typedef struct permissions_t permissions_t;
 
 // Enum  for permissions
 
-typedef enum { pinterest_rest_api_permissions__NULL = 0, pinterest_rest_api_permissions__ADMIN, pinterest_rest_api_permissions__ANALYST, pinterest_rest_api_permissions__FINANCE_MANAGER, pinterest_rest_api_permissions__FINANCE_EDIT, pinterest_rest_api_permissions__FINANCE_VIEW, pinterest_rest_api_permissions__AUDIENCE_MANAGER, pinterest_rest_api_permissions__CAMPAIGN_MANAGER, pinterest_rest_api_permissions__CATALOGS_MANAGER, pinterest_rest_api_permissions__CATALOGS_VIEWER, pinterest_rest_api_permissions__PROFILE_PUBLISHER, pinterest_rest_api_permissions__CONSUMER_USER } pinterest_rest_api_permissions__e;
+typedef enum { pinterest_rest_api_permissions__NULL = 0, pinterest_rest_api_permissions__ADMIN, pinterest_rest_api_permissions__ANALYST, pinterest_rest_api_permissions__FINANCE_MANAGER, pinterest_rest_api_permissions__FINANCE_EDIT, pinterest_rest_api_permissions__FINANCE_VIEW, pinterest_rest_api_permissions__AUDIENCE_MANAGER, pinterest_rest_api_permissions__CAMPAIGN_MANAGER, pinterest_rest_api_permissions__CATALOGS_MANAGER, pinterest_rest_api_permissions__CATALOGS_VIEWER, pinterest_rest_api_permissions__PROFILE_PUBLISHER, pinterest_rest_api_permissions__CONSUMER_USER, pinterest_rest_api_permissions__BIZ_PINNER_LIST_SHARER } pinterest_rest_api_permissions__e;
 
 char* permissions_permissions_ToString(pinterest_rest_api_permissions__e permissions);
 

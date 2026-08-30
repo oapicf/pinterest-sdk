@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
@@ -30,7 +29,7 @@ public class TargetingTemplateAudienceSizingReachEstimate   {
   }
 
   
-  @ApiModelProperty(example = "63492000", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("estimate")
   public Long getEstimate() {
     return estimate;
@@ -48,7 +47,7 @@ public class TargetingTemplateAudienceSizingReachEstimate   {
   }
 
   
-  @ApiModelProperty(example = "47619000", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("lower_bound")
   public Long getLowerBound() {
     return lowerBound;
@@ -66,7 +65,7 @@ public class TargetingTemplateAudienceSizingReachEstimate   {
   }
 
   
-  @ApiModelProperty(example = "79365000", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("upper_bound")
   public Long getUpperBound() {
     return upperBound;
@@ -113,10 +112,7 @@ public class TargetingTemplateAudienceSizingReachEstimate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

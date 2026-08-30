@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cUSTOMNUMBER3** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**cUSTOMNUMBER3** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
 
 

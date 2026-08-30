@@ -1,11 +1,11 @@
 /*
- * Catalogs_hotel_filter_values_map.h
+ * CatalogsHotelFilterValuesMap.h
  *
  * A map of filter attributes to their available values.
  */
 
-#ifndef _Catalogs_hotel_filter_values_map_H_
-#define _Catalogs_hotel_filter_values_map_H_
+#ifndef _CatalogsHotelFilterValuesMap_H_
+#define _CatalogsHotelFilterValuesMap_H_
 
 
 #include <string>
@@ -27,16 +27,16 @@ namespace ArtikCloud {
  *
  */
 
-class Catalogs_hotel_filter_values_map : public Object {
+class CatalogsHotelFilterValuesMap : public Object {
 public:
 	/*! \brief Constructor.
 	 */
-	Catalogs_hotel_filter_values_map();
-	Catalogs_hotel_filter_values_map(char* str);
+	CatalogsHotelFilterValuesMap();
+	CatalogsHotelFilterValuesMap(char* str);
 
 	/*! \brief Destructor.
 	 */
-	virtual ~Catalogs_hotel_filter_values_map();
+	virtual ~CatalogsHotelFilterValuesMap();
 
 	/*! \brief Retrieve a string JSON representation of this class.
 	 */
@@ -103,4 +103,4 @@ private:
 }
 }
 
-#endif /* _Catalogs_hotel_filter_values_map_H_ */
+#endif /* _CatalogsHotelFilterValuesMap_H_ */

@@ -44,8 +44,9 @@ class ApiClient {
     Object? body,
     Map<String, String> headerParams,
     Map<String, String> formParams,
-    String? contentType,
-  ) async {
+    String? contentType, {
+    Future<void>? abortTrigger,
+  }) async {
     await authentication?.applyToParams(queryParams, headerParams);
 
     headerParams.addAll(_defaultHeaderMap);
@@ -63,7 +64,7 @@ class ApiClient {
         body is MultipartFile && (contentType == null ||
         !contentType.toLowerCase().startsWith('multipart/form-data'))
       ) {
-        final request = StreamedRequest(method, uri);
+        final request = AbortableStreamedRequest(method, uri, abortTrigger: abortTrigger);
         request.headers.addAll(headerParams);
         request.contentLength = body.length;
         body.finalize().listen(
@@ -78,7 +79,7 @@ class ApiClient {
       }
 
       if (body is MultipartRequest) {
-        final request = MultipartRequest(method, uri);
+        final request = AbortableMultipartRequest(method, uri, abortTrigger: abortTrigger);
         request.fields.addAll(body.fields);
         request.files.addAll(body.files);
         request.headers.addAll(body.headers);
@@ -92,14 +93,19 @@ class ApiClient {
         : await serializeAsync(body);
       final nullableHeaderParams = headerParams.isEmpty ? null : headerParams;
 
-      switch(method) {
-        case 'POST': return await _client.post(uri, headers: nullableHeaderParams, body: msgBody,);
-        case 'PUT': return await _client.put(uri, headers: nullableHeaderParams, body: msgBody,);
-        case 'DELETE': return await _client.delete(uri, headers: nullableHeaderParams, body: msgBody,);
-        case 'PATCH': return await _client.patch(uri, headers: nullableHeaderParams, body: msgBody,);
-        case 'HEAD': return await _client.head(uri, headers: nullableHeaderParams,);
-        case 'GET': return await _client.get(uri, headers: nullableHeaderParams,);
+      final request = AbortableRequest(method, uri, abortTrigger: abortTrigger);
+      if (nullableHeaderParams != null) {
+        request.headers.addAll(nullableHeaderParams);
       }
+      if (msgBody is String && msgBody.isNotEmpty) {
+        request.body = msgBody;
+      } else if (msgBody is List<int> && msgBody.isNotEmpty) {
+        request.bodyBytes = msgBody;
+      } else if (msgBody is Map<String, String>) {
+        request.bodyFields = msgBody;
+      }
+      final response = await _client.send(request);
+      return Response.fromStream(response);
     } on SocketException catch (error, trace) {
       throw ApiException.withInner(
         HttpStatus.badRequest,
@@ -136,11 +142,6 @@ class ApiClient {
         trace,
       );
     }
-
-    throw ApiException(
-      HttpStatus.badRequest,
-      'Invalid HTTP operation: $method $path',
-    );
   }
 
   Future<dynamic> deserializeAsync(String value, String targetType, {bool growable = false,}) async =>
@@ -184,88 +185,142 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'Account':
           return Account.fromJson(value);
+        case 'AccountTemplate':
+          return AccountTemplate.fromJson(value);
         case 'ActionType':
           return ActionTypeTypeTransformer().decode(value);
+        case 'Ad':
+          return Ad.fromJson(value);
         case 'AdAccount':
           return AdAccount.fromJson(value);
-        case 'AdAccountAnalyticsResponseInner':
-          return AdAccountAnalyticsResponseInner.fromJson(value);
+        case 'AdAccountAnalyticsItems':
+          return AdAccountAnalyticsItems.fromJson(value);
+        case 'AdAccountCountriesGet200Response':
+          return AdAccountCountriesGet200Response.fromJson(value);
         case 'AdAccountCreate':
           return AdAccountCreate.fromJson(value);
-        case 'AdAccountCreateSubscriptionRequest':
-          return AdAccountCreateSubscriptionRequest.fromJson(value);
-        case 'AdAccountCreateSubscriptionRequestPartnerMetadata':
-          return AdAccountCreateSubscriptionRequestPartnerMetadata.fromJson(value);
-        case 'AdAccountCreateSubscriptionResponse':
-          return AdAccountCreateSubscriptionResponse.fromJson(value);
-        case 'AdAccountGetSubscriptionResponse':
-          return AdAccountGetSubscriptionResponse.fromJson(value);
+        case 'AdAccountEntityType':
+          return AdAccountEntityTypeTypeTransformer().decode(value);
         case 'AdAccountOwner':
           return AdAccountOwner.fromJson(value);
+        case 'AdAccountToAdAccountSharedAudience':
+          return AdAccountToAdAccountSharedAudience.fromJson(value);
+        case 'AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody':
+          return AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.fromJson(value);
+        case 'AdAccountToBusinessSharedAudience':
+          return AdAccountToBusinessSharedAudience.fromJson(value);
+        case 'AdAccountToBusinessSharedAudienceUpdateWithRequiredBody':
+          return AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.fromJson(value);
+        case 'AdAccountsAudience':
+          return AdAccountsAudience.fromJson(value);
+        case 'AdAccountsAudienceCreate':
+          return AdAccountsAudienceCreate.fromJson(value);
+        case 'AdAccountsAudienceRule':
+          return AdAccountsAudienceRule.fromJson(value);
+        case 'AdAccountsAudienceUpdate':
+          return AdAccountsAudienceUpdate.fromJson(value);
         case 'AdAccountsAudiencesSharedAccountsList200Response':
           return AdAccountsAudiencesSharedAccountsList200Response.fromJson(value);
-        case 'AdAccountsCountryResponse':
-          return AdAccountsCountryResponse.fromJson(value);
-        case 'AdAccountsCountryResponseData':
-          return AdAccountsCountryResponseData.fromJson(value);
+        case 'AdAccountsCountry':
+          return AdAccountsCountry.fromJson(value);
         case 'AdAccountsList200Response':
           return AdAccountsList200Response.fromJson(value);
         case 'AdAccountsSubscriptionsGetList200Response':
           return AdAccountsSubscriptionsGetList200Response.fromJson(value);
-        case 'AdArrayResponse':
-          return AdArrayResponse.fromJson(value);
-        case 'AdArrayResponseElement':
-          return AdArrayResponseElement.fromJson(value);
-        case 'AdCommon':
-          return AdCommon.fromJson(value);
-        case 'AdCountry':
-          return AdCountryTypeTransformer().decode(value);
+        case 'AdAdsAnalyticsAsyncTargetingTypes':
+          return AdAdsAnalyticsAsyncTargetingTypesTypeTransformer().decode(value);
+        case 'AdBatchItem':
+          return AdBatchItem.fromJson(value);
+        case 'AdBatchUpdate':
+          return AdBatchUpdate.fromJson(value);
+        case 'AdBatchWriteResponseModel':
+          return AdBatchWriteResponseModel.fromJson(value);
+        case 'AdCollectionsHeaderType':
+          return AdCollectionsHeaderTypeTypeTransformer().decode(value);
+        case 'AdCreate':
+          return AdCreate.fromJson(value);
         case 'AdCreateRequest':
           return AdCreateRequest.fromJson(value);
-        case 'AdGroupArrayResponse':
-          return AdGroupArrayResponse.fromJson(value);
-        case 'AdGroupArrayResponseElement':
-          return AdGroupArrayResponseElement.fromJson(value);
-        case 'AdGroupAudienceSizingRequest':
-          return AdGroupAudienceSizingRequest.fromJson(value);
-        case 'AdGroupAudienceSizingRequestKeywordsInner':
-          return AdGroupAudienceSizingRequestKeywordsInner.fromJson(value);
-        case 'AdGroupAudienceSizingResponse':
-          return AdGroupAudienceSizingResponse.fromJson(value);
-        case 'AdGroupCommon':
-          return AdGroupCommon.fromJson(value);
+        case 'AdDisapprovalReasons':
+          return AdDisapprovalReasonsTypeTransformer().decode(value);
+        case 'AdGroup':
+          return AdGroup.fromJson(value);
+        case 'AdGroupAudienceSizing':
+          return AdGroupAudienceSizing.fromJson(value);
+        case 'AdGroupAudienceSizingCreate':
+          return AdGroupAudienceSizingCreate.fromJson(value);
+        case 'AdGroupAudienceSizingCreativeTypes':
+          return AdGroupAudienceSizingCreativeTypesTypeTransformer().decode(value);
+        case 'AdGroupAudienceSizingKeyword':
+          return AdGroupAudienceSizingKeyword.fromJson(value);
+        case 'AdGroupBase':
+          return AdGroupBase.fromJson(value);
+        case 'AdGroupCreate':
+          return AdGroupCreate.fromJson(value);
+        case 'AdGroupCreateCreate':
+          return AdGroupCreateCreate.fromJson(value);
         case 'AdGroupCreateRequest':
           return AdGroupCreateRequest.fromJson(value);
-        case 'AdGroupIdFilter':
-          return AdGroupIdFilter.fromJson(value);
-        case 'AdGroupResponse':
-          return AdGroupResponse.fromJson(value);
+        case 'AdGroupCreateRequestAllOf1':
+          return AdGroupCreateRequestAllOf1.fromJson(value);
+        case 'AdGroupDeliveryEstimates':
+          return AdGroupDeliveryEstimates.fromJson(value);
+        case 'AdGroupDeliveryEstimatesKeywordsItems':
+          return AdGroupDeliveryEstimatesKeywordsItems.fromJson(value);
         case 'AdGroupSummaryStatus':
           return AdGroupSummaryStatusTypeTransformer().decode(value);
+        case 'AdGroupTrackingURLs':
+          return AdGroupTrackingURLs.fromJson(value);
+        case 'AdGroupUpdate':
+          return AdGroupUpdate.fromJson(value);
+        case 'AdGroupUpdateBatchUpdate':
+          return AdGroupUpdateBatchUpdate.fromJson(value);
         case 'AdGroupUpdateRequest':
           return AdGroupUpdateRequest.fromJson(value);
-        case 'AdGroupsAnalyticsResponseInner':
-          return AdGroupsAnalyticsResponseInner.fromJson(value);
+        case 'AdGroupUpdateRequestAllOf1':
+          return AdGroupUpdateRequestAllOf1.fromJson(value);
+        case 'AdGroupsAnalyticsMetrics':
+          return AdGroupsAnalyticsMetrics.fromJson(value);
+        case 'AdGroupsCreate200Response':
+          return AdGroupsCreate200Response.fromJson(value);
+        case 'AdGroupsCreate200ResponseItemsInner':
+          return AdGroupsCreate200ResponseItemsInner.fromJson(value);
         case 'AdGroupsList200Response':
           return AdGroupsList200Response.fromJson(value);
         case 'AdPinAnalytics':
           return AdPinAnalytics.fromJson(value);
-        case 'AdPinId':
-          return AdPinId.fromJson(value);
-        case 'AdPreviewCreateFromImage':
-          return AdPreviewCreateFromImage.fromJson(value);
-        case 'AdPreviewCreateFromPin':
-          return AdPreviewCreateFromPin.fromJson(value);
+        case 'AdPinPreviewCreativeType':
+          return AdPinPreviewCreativeTypeTypeTransformer().decode(value);
         case 'AdPreviewRequest':
           return AdPreviewRequest.fromJson(value);
         case 'AdPreviewShopping':
           return AdPreviewShopping.fromJson(value);
+        case 'AdPreviewSourceImage':
+          return AdPreviewSourceImage.fromJson(value);
+        case 'AdPreviewSourcePinId':
+          return AdPreviewSourcePinId.fromJson(value);
         case 'AdPreviewURLResponse':
           return AdPreviewURLResponse.fromJson(value);
-        case 'AdResponse':
-          return AdResponse.fromJson(value);
+        case 'AdReviewStatus':
+          return AdReviewStatusTypeTransformer().decode(value);
+        case 'AdShoppingPreviewCreativeType':
+          return AdShoppingPreviewCreativeTypeTypeTransformer().decode(value);
         case 'AdUpdateRequest':
           return AdUpdateRequest.fromJson(value);
+        case 'AdUpdateRequestAllOf1':
+          return AdUpdateRequestAllOf1.fromJson(value);
+        case 'AdeColumnType':
+          return AdeColumnTypeTypeTransformer().decode(value);
+        case 'AdgroupPlacementGroupType':
+          return AdgroupPlacementGroupTypeTypeTransformer().decode(value);
+        case 'AdgroupTrackingFeatureType':
+          return AdgroupTrackingFeatureTypeTypeTransformer().decode(value);
+        case 'AdgroupTrackingFeatures':
+          return AdgroupTrackingFeatures.fromJson(value);
+        case 'AdsAnalytics':
+          return AdsAnalytics.fromJson(value);
+        case 'AdsAnalyticsAccountTargetingType':
+          return AdsAnalyticsAccountTargetingTypeTypeTransformer().decode(value);
         case 'AdsAnalyticsAdGroupTargetingType':
           return AdsAnalyticsAdGroupTargetingTypeTypeTransformer().decode(value);
         case 'AdsAnalyticsAdTargetingType':
@@ -274,8 +329,6 @@ class ApiClient {
           return AdsAnalyticsCampaignTargetingTypeTypeTransformer().decode(value);
         case 'AdsAnalyticsCreateAsyncRequest':
           return AdsAnalyticsCreateAsyncRequest.fromJson(value);
-        case 'AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics':
-          return AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics.fromJson(value);
         case 'AdsAnalyticsCreateAsyncResponse':
           return AdsAnalyticsCreateAsyncResponse.fromJson(value);
         case 'AdsAnalyticsFilterColumn':
@@ -286,16 +339,14 @@ class ApiClient {
           return AdsAnalyticsGetAsyncResponse.fromJson(value);
         case 'AdsAnalyticsMetricsFilter':
           return AdsAnalyticsMetricsFilter.fromJson(value);
-        case 'AdsAnalyticsResponseInner':
-          return AdsAnalyticsResponseInner.fromJson(value);
-        case 'AdsAnalyticsTargetingType':
-          return AdsAnalyticsTargetingTypeTypeTransformer().decode(value);
+        case 'AdsCreditDiscountType':
+          return AdsCreditDiscountTypeTypeTransformer().decode(value);
         case 'AdsCreditDiscountsResponse':
           return AdsCreditDiscountsResponse.fromJson(value);
-        case 'AdsCreditRedeemRequest':
-          return AdsCreditRedeemRequest.fromJson(value);
-        case 'AdsCreditRedeemResponse':
-          return AdsCreditRedeemResponse.fromJson(value);
+        case 'AdsCreditRedeem':
+          return AdsCreditRedeem.fromJson(value);
+        case 'AdsCreditRedeemCreate':
+          return AdsCreditRedeemCreate.fromJson(value);
         case 'AdsCreditsDiscountsGet200Response':
           return AdsCreditsDiscountsGet200Response.fromJson(value);
         case 'AdsList200Response':
@@ -306,8 +357,6 @@ class ApiClient {
           return AdvancedAuctionItem.fromJson(value);
         case 'AdvancedAuctionItems':
           return AdvancedAuctionItems.fromJson(value);
-        case 'AdvancedAuctionItemsGetRecord':
-          return AdvancedAuctionItemsGetRecord.fromJson(value);
         case 'AdvancedAuctionItemsGetRequest':
           return AdvancedAuctionItemsGetRequest.fromJson(value);
         case 'AdvancedAuctionItemsSubmitDeleteRecord':
@@ -320,112 +369,194 @@ class ApiClient {
           return AdvancedAuctionItemsSubmitUpsertRecord.fromJson(value);
         case 'AdvancedAuctionKey':
           return AdvancedAuctionKey.fromJson(value);
-        case 'AdvancedAuctionOperation':
-          return AdvancedAuctionOperationTypeTransformer().decode(value);
         case 'AdvancedAuctionOperationError':
           return AdvancedAuctionOperationError.fromJson(value);
         case 'AdvancedAuctionProcessedItems':
           return AdvancedAuctionProcessedItems.fromJson(value);
         case 'AdvertiserDefinedEvent':
           return AdvertiserDefinedEvent.fromJson(value);
-        case 'AdvertiserDefinedEventsResponse':
-          return AdvertiserDefinedEventsResponse.fromJson(value);
+        case 'AdvertiserDefinedEventInput':
+          return AdvertiserDefinedEventInput.fromJson(value);
+        case 'AdvertiserDefinedEventMappingType':
+          return AdvertiserDefinedEventMappingTypeTypeTransformer().decode(value);
+        case 'AdvertiserDefinedEventProcessingRecord':
+          return AdvertiserDefinedEventProcessingRecord.fromJson(value);
+        case 'AdvertiserDefinedEventsCreate200Response':
+          return AdvertiserDefinedEventsCreate200Response.fromJson(value);
+        case 'AdvertiserDefinedEventsCreateRequest':
+          return AdvertiserDefinedEventsCreateRequest.fromJson(value);
+        case 'AdvertiserDefinedEventsGet200Response':
+          return AdvertiserDefinedEventsGet200Response.fromJson(value);
+        case 'AgeBucketMultipliers':
+          return AgeBucketMultipliers.fromJson(value);
         case 'AgeTrendsBucket':
           return AgeTrendsBucketTypeTransformer().decode(value);
-        case 'AllOf':
-          return AllOf.fromJson(value);
+        case 'AggregatedPinComment':
+          return AggregatedPinComment.fromJson(value);
+        case 'AiDisclosureItem':
+          return AiDisclosureItemTypeTransformer().decode(value);
+        case 'AiDisclosures':
+          return AiDisclosures.fromJson(value);
+        case 'AiDisclosuresUpdate':
+          return AiDisclosuresUpdate.fromJson(value);
         case 'AmazonConnectRequest':
           return AmazonConnectRequest.fromJson(value);
+        case 'AmazonConnectResponse':
+          return AmazonConnectResponse.fromJson(value);
         case 'AnalyticsDailyMetrics':
           return AnalyticsDailyMetrics.fromJson(value);
         case 'AnalyticsMetricsResponse':
           return AnalyticsMetricsResponse.fromJson(value);
-        case 'AnyOf':
-          return AnyOf.fromJson(value);
         case 'AppTypeMultipliers':
           return AppTypeMultipliers.fromJson(value);
+        case 'AppsflyerAudience':
+          return AppsflyerAudience.fromJson(value);
+        case 'AppsflyerAudienceCreate':
+          return AppsflyerAudienceCreate.fromJson(value);
+        case 'AppsflyerAudienceSyncCreate':
+          return AppsflyerAudienceSyncCreate.fromJson(value);
+        case 'AppsflyerPlatform':
+          return AppsflyerPlatformTypeTransformer().decode(value);
+        case 'AssetAccessRequestError':
+          return AssetAccessRequestError.fromJson(value);
         case 'AssetGroupBinding':
           return AssetGroupBinding.fromJson(value);
+        case 'AssetGroupDeleteError':
+          return AssetGroupDeleteError.fromJson(value);
+        case 'AssetGroupDeletion':
+          return AssetGroupDeletion.fromJson(value);
+        case 'AssetGroupDeletionDelete':
+          return AssetGroupDeletionDelete.fromJson(value);
+        case 'AssetGroupInput':
+          return AssetGroupInput.fromJson(value);
+        case 'AssetGroupInputCreate':
+          return AssetGroupInputCreate.fromJson(value);
+        case 'AssetGroupModification':
+          return AssetGroupModification.fromJson(value);
+        case 'AssetGroupModificationReadOrUpdate':
+          return AssetGroupModificationReadOrUpdate.fromJson(value);
         case 'AssetGroupType':
           return AssetGroupTypeTypeTransformer().decode(value);
+        case 'AssetGroupUpdateError':
+          return AssetGroupUpdateError.fromJson(value);
+        case 'AssetGroupUpdateItemReadOrUpdateItem':
+          return AssetGroupUpdateItemReadOrUpdateItem.fromJson(value);
         case 'AssetIdPermissions':
           return AssetIdPermissions.fromJson(value);
+        case 'AssetIdWithPermissions':
+          return AssetIdWithPermissions.fromJson(value);
+        case 'AssetPermissionType':
+          return AssetPermissionTypeTypeTransformer().decode(value);
+        case 'AssetSearchBy':
+          return AssetSearchByTypeTransformer().decode(value);
+        case 'AssetSortBy':
+          return AssetSortByTypeTransformer().decode(value);
+        case 'AssetTypeResponse':
+          return AssetTypeResponseTypeTransformer().decode(value);
+        case 'AttributionActionType':
+          return AttributionActionTypeTypeTransformer().decode(value);
+        case 'AttributionMatchType':
+          return AttributionMatchTypeTypeTransformer().decode(value);
+        case 'AttributionModel':
+          return AttributionModelTypeTransformer().decode(value);
+        case 'AttributionScope':
+          return AttributionScopeTypeTransformer().decode(value);
+        case 'AttributionWindows':
+          return AttributionWindows.fromJson(value);
         case 'Audience':
           return Audience.fromJson(value);
         case 'AudienceAccountType':
           return AudienceAccountTypeTypeTransformer().decode(value);
         case 'AudienceCategory':
           return AudienceCategory.fromJson(value);
-        case 'AudienceCommon':
-          return AudienceCommon.fromJson(value);
-        case 'AudienceCreateRequest':
-          return AudienceCreateRequest.fromJson(value);
         case 'AudienceDefinition':
           return AudienceDefinition.fromJson(value);
-        case 'AudienceDefinitionResponse':
-          return AudienceDefinitionResponse.fromJson(value);
-        case 'AudienceDefinitionScope':
-          return AudienceDefinitionScope.fromJson(value);
-        case 'AudienceDefinitionType':
-          return AudienceDefinitionType.fromJson(value);
         case 'AudienceDemographicValue':
           return AudienceDemographicValue.fromJson(value);
         case 'AudienceDemographics':
           return AudienceDemographics.fromJson(value);
-        case 'AudienceInsightCategoryArrayResponse':
-          return AudienceInsightCategoryArrayResponse.fromJson(value);
-        case 'AudienceInsightCategoryCommon':
-          return AudienceInsightCategoryCommon.fromJson(value);
         case 'AudienceInsightType':
           return AudienceInsightTypeTypeTransformer().decode(value);
-        case 'AudienceInsightsResponse':
-          return AudienceInsightsResponse.fromJson(value);
+        case 'AudienceInsights':
+          return AudienceInsights.fromJson(value);
+        case 'AudienceInsightsScopeAndTypeGet200Response':
+          return AudienceInsightsScopeAndTypeGet200Response.fromJson(value);
+        case 'AudienceObjectiveType':
+          return AudienceObjectiveTypeTypeTransformer().decode(value);
+        case 'AudienceOwnershipType':
+          return AudienceOwnershipTypeTypeTransformer().decode(value);
         case 'AudienceRule':
           return AudienceRule.fromJson(value);
-        case 'AudienceShareType':
-          return AudienceShareTypeTypeTransformer().decode(value);
+        case 'AudienceStatus':
+          return AudienceStatusTypeTransformer().decode(value);
         case 'AudienceSubcategory':
           return AudienceSubcategory.fromJson(value);
         case 'AudienceType':
           return AudienceTypeTypeTransformer().decode(value);
         case 'AudienceUpdateOperationType':
           return AudienceUpdateOperationTypeTypeTransformer().decode(value);
-        case 'AudienceUpdateRequest':
-          return AudienceUpdateRequest.fromJson(value);
         case 'AudiencesList200Response':
           return AudiencesList200Response.fromJson(value);
+        case 'AuthRespondInviteAction':
+          return AuthRespondInviteAction.fromJson(value);
         case 'AuthRespondInvitesBody':
           return AuthRespondInvitesBody.fromJson(value);
-        case 'AuthRespondInvitesBodyInvitesInner':
-          return AuthRespondInvitesBodyInvitesInner.fromJson(value);
-        case 'AuthRespondInvitesBodyInvitesInnerAction':
-          return AuthRespondInvitesBodyInvitesInnerAction.fromJson(value);
+        case 'AuthRespondInvitesBodyItem':
+          return AuthRespondInvitesBodyItem.fromJson(value);
         case 'AvailabilityFilter':
           return AvailabilityFilter.fromJson(value);
+        case 'BaseBusinessAssets':
+          return BaseBusinessAssets.fromJson(value);
         case 'BaseInviteDataResponse':
           return BaseInviteDataResponse.fromJson(value);
-        case 'BaseInviteDataResponseInviteData':
-          return BaseInviteDataResponseInviteData.fromJson(value);
-        case 'BatchOperation':
-          return BatchOperationTypeTransformer().decode(value);
+        case 'BasePreferredMediaType':
+          return BasePreferredMediaTypeTypeTransformer().decode(value);
         case 'BatchOperationStatus':
           return BatchOperationStatusTypeTransformer().decode(value);
         case 'BidFloor':
           return BidFloor.fromJson(value);
-        case 'BidFloorRequest':
-          return BidFloorRequest.fromJson(value);
+        case 'BidFloorCreate':
+          return BidFloorCreate.fromJson(value);
+        case 'BidFloorObjectiveType':
+          return BidFloorObjectiveTypeTypeTransformer().decode(value);
         case 'BidFloorSpec':
           return BidFloorSpec.fromJson(value);
+        case 'BidOptionsAgeBucketMultipliers':
+          return BidOptionsAgeBucketMultipliers.fromJson(value);
+        case 'BidOptionsAppTypeMultipliers':
+          return BidOptionsAppTypeMultipliers.fromJson(value);
+        case 'BidOptionsAudienceMultipliers':
+          return BidOptionsAudienceMultipliers.fromJson(value);
+        case 'BidOptionsGenderMultipliers':
+          return BidOptionsGenderMultipliers.fromJson(value);
+        case 'BidOptionsPlacementMultipliers':
+          return BidOptionsPlacementMultipliers.fromJson(value);
+        case 'BidStrategyType':
+          return BidStrategyTypeTypeTransformer().decode(value);
+        case 'BillingInvoice':
+          return BillingInvoice.fromJson(value);
+        case 'BillingInvoiceDocumentType':
+          return BillingInvoiceDocumentTypeTypeTransformer().decode(value);
         case 'BillingInvoiceDownloadResponse':
           return BillingInvoiceDownloadResponse.fromJson(value);
-        case 'BillingInvoiceResponse':
-          return BillingInvoiceResponse.fromJson(value);
+        case 'BillingInvoiceSortField':
+          return BillingInvoiceSortFieldTypeTransformer().decode(value);
+        case 'BillingInvoiceStatus':
+          return BillingInvoiceStatusTypeTransformer().decode(value);
         case 'BillingInvoicesGet200Response':
           return BillingInvoicesGet200Response.fromJson(value);
+        case 'BillingProfileCardType':
+          return BillingProfileCardTypeTypeTransformer().decode(value);
+        case 'BillingProfilePaymentMethodBrand':
+          return BillingProfilePaymentMethodBrandTypeTransformer().decode(value);
+        case 'BillingProfileStatus':
+          return BillingProfileStatusTypeTransformer().decode(value);
         case 'BillingProfilesGet200Response':
           return BillingProfilesGet200Response.fromJson(value);
         case 'BillingProfilesResponse':
           return BillingProfilesResponse.fromJson(value);
+        case 'BillingType':
+          return BillingTypeTypeTransformer().decode(value);
         case 'Board':
           return Board.fromJson(value);
         case 'BoardBase':
@@ -442,6 +573,10 @@ class ApiClient {
           return BoardPrivacyFilterTypeTransformer().decode(value);
         case 'BoardSection':
           return BoardSection.fromJson(value);
+        case 'BoardSectionCreate':
+          return BoardSectionCreate.fromJson(value);
+        case 'BoardSectionUpdateWithRequiredBody':
+          return BoardSectionUpdateWithRequiredBody.fromJson(value);
         case 'BoardSectionsList200Response':
           return BoardSectionsList200Response.fromJson(value);
         case 'BoardUpdatePrivacy':
@@ -454,134 +589,226 @@ class ApiClient {
           return BoardsList200Response.fromJson(value);
         case 'BoardsListPins200Response':
           return BoardsListPins200Response.fromJson(value);
-        case 'BoardsUserFollowsList200Response':
-          return BoardsUserFollowsList200Response.fromJson(value);
-        case 'BookClosedResponse':
-          return BookClosedResponse.fromJson(value);
-        case 'BrandAccountsCreate200Response':
-          return BrandAccountsCreate200Response.fromJson(value);
-        case 'BrandAccountsCreateRequest':
-          return BrandAccountsCreateRequest.fromJson(value);
-        case 'BrandAccountsUpdateRequest':
-          return BrandAccountsUpdateRequest.fromJson(value);
+        case 'BookClosed':
+          return BookClosed.fromJson(value);
+        case 'BrandAccount':
+          return BrandAccount.fromJson(value);
+        case 'BrandAccountCreate':
+          return BrandAccountCreate.fromJson(value);
+        case 'BrandAccountProfileImage':
+          return BrandAccountProfileImage.fromJson(value);
+        case 'BrandAccountProfileImageUpdate':
+          return BrandAccountProfileImageUpdate.fromJson(value);
+        case 'BrandAccountUpdate':
+          return BrandAccountUpdate.fromJson(value);
         case 'BrandFilter':
           return BrandFilter.fromJson(value);
+        case 'BudgetDurationType':
+          return BudgetDurationTypeTypeTransformer().decode(value);
         case 'BudgetType':
           return BudgetTypeTypeTransformer().decode(value);
-        case 'BulkDownloadRequest':
-          return BulkDownloadRequest.fromJson(value);
-        case 'BulkDownloadRequestCampaignFilter':
-          return BulkDownloadRequestCampaignFilter.fromJson(value);
-        case 'BulkDownloadResponse':
-          return BulkDownloadResponse.fromJson(value);
+        case 'BulkCampaignDeliveryEstimatesItem':
+          return BulkCampaignDeliveryEstimatesItem.fromJson(value);
+        case 'BulkCampaignDeliveryEstimatesResponse':
+          return BulkCampaignDeliveryEstimatesResponse.fromJson(value);
+        case 'BulkDownload':
+          return BulkDownload.fromJson(value);
+        case 'BulkDownloadCampaignFilter':
+          return BulkDownloadCampaignFilter.fromJson(value);
+        case 'BulkDownloadCreate':
+          return BulkDownloadCreate.fromJson(value);
         case 'BulkEntityType':
           return BulkEntityTypeTypeTransformer().decode(value);
+        case 'BulkJobData':
+          return BulkJobData.fromJson(value);
         case 'BulkOutputFormat':
           return BulkOutputFormatTypeTransformer().decode(value);
         case 'BulkReportingJobStatus':
           return BulkReportingJobStatusTypeTransformer().decode(value);
+        case 'BulkRequestStatus':
+          return BulkRequestStatusTypeTransformer().decode(value);
         case 'BulkUpsertRequest':
           return BulkUpsertRequest.fromJson(value);
         case 'BulkUpsertRequestCreate':
           return BulkUpsertRequestCreate.fromJson(value);
+        case 'BulkUpsertRequestCreateCatalogProductGroupsItems':
+          return BulkUpsertRequestCreateCatalogProductGroupsItems.fromJson(value);
         case 'BulkUpsertRequestUpdate':
           return BulkUpsertRequestUpdate.fromJson(value);
+        case 'BulkUpsertRequestUpdateCatalogProductGroupsItems':
+          return BulkUpsertRequestUpdateCatalogProductGroupsItems.fromJson(value);
         case 'BulkUpsertResponse':
           return BulkUpsertResponse.fromJson(value);
-        case 'BulkUpsertStatus':
-          return BulkUpsertStatusTypeTransformer().decode(value);
-        case 'BulkUpsertStatusResponse':
-          return BulkUpsertStatusResponse.fromJson(value);
-        case 'BusinessAccessError':
-          return BusinessAccessError.fromJson(value);
         case 'BusinessAccessRole':
           return BusinessAccessRoleTypeTransformer().decode(value);
         case 'BusinessAccessUserSummary':
           return BusinessAccessUserSummary.fromJson(value);
         case 'BusinessAssetMembersGet200Response':
           return BusinessAssetMembersGet200Response.fromJson(value);
-        case 'BusinessAssetPartnersGet200Response':
-          return BusinessAssetPartnersGet200Response.fromJson(value);
+        case 'BusinessAssets':
+          return BusinessAssets.fromJson(value);
         case 'BusinessAssetsGet200Response':
           return BusinessAssetsGet200Response.fromJson(value);
-        case 'BusinessMemberAssetsGet200Response':
-          return BusinessMemberAssetsGet200Response.fromJson(value);
+        case 'BusinessMemberAssetsGetResponse':
+          return BusinessMemberAssetsGetResponse.fromJson(value);
         case 'BusinessMemberAssetsSummary':
           return BusinessMemberAssetsSummary.fromJson(value);
-        case 'BusinessMemberAssetsSummaryAdAccountsInner':
-          return BusinessMemberAssetsSummaryAdAccountsInner.fromJson(value);
-        case 'BusinessMemberAssetsSummaryProfilesInner':
-          return BusinessMemberAssetsSummaryProfilesInner.fromJson(value);
-        case 'BusinessMembersAssetAccessDeleteRequest':
-          return BusinessMembersAssetAccessDeleteRequest.fromJson(value);
-        case 'BusinessMembersAssetAccessDeleteRequestAccessesInner':
-          return BusinessMembersAssetAccessDeleteRequestAccessesInner.fromJson(value);
+        case 'BusinessMemberSortBy':
+          return BusinessMemberSortByTypeTransformer().decode(value);
+        case 'BusinessMembersAssetAccessDeleteBody':
+          return BusinessMembersAssetAccessDeleteBody.fromJson(value);
+        case 'BusinessMembershipMember':
+          return BusinessMembershipMember.fromJson(value);
         case 'BusinessPartnerAssetAccessGet200Response':
           return BusinessPartnerAssetAccessGet200Response.fromJson(value);
-        case 'BusinessRole':
-          return BusinessRoleTypeTransformer().decode(value);
-        case 'BusinessRoleCheckMode':
-          return BusinessRoleCheckModeTypeTransformer().decode(value);
+        case 'BusinessRoleForInvite':
+          return BusinessRoleForInviteTypeTransformer().decode(value);
         case 'BusinessRoleForMembers':
           return BusinessRoleForMembersTypeTransformer().decode(value);
-        case 'BusinessSharedAudience':
-          return BusinessSharedAudience.fromJson(value);
-        case 'BusinessSharedAudienceResponse':
-          return BusinessSharedAudienceResponse.fromJson(value);
+        case 'BusinessSearchBy':
+          return BusinessSearchByTypeTransformer().decode(value);
+        case 'BusinessToAdAccountSharedAudience':
+          return BusinessToAdAccountSharedAudience.fromJson(value);
+        case 'BusinessToAdAccountSharedAudienceUpdateWithRequiredBody':
+          return BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.fromJson(value);
+        case 'BusinessToBusinessSharedAudience':
+          return BusinessToBusinessSharedAudience.fromJson(value);
+        case 'BusinessToBusinessSharedAudienceUpdateWithRequiredBody':
+          return BusinessToBusinessSharedAudienceUpdateWithRequiredBody.fromJson(value);
+        case 'Campaign':
+          return Campaign.fromJson(value);
+        case 'CampaignAdPreview':
+          return CampaignAdPreview.fromJson(value);
+        case 'CampaignAdPreviewCreate':
+          return CampaignAdPreviewCreate.fromJson(value);
+        case 'CampaignAdPreviewCreate200ResponseInner':
+          return CampaignAdPreviewCreate200ResponseInner.fromJson(value);
+        case 'CampaignAdPreviewCreate200ResponseInnerData':
+          return CampaignAdPreviewCreate200ResponseInnerData.fromJson(value);
+        case 'CampaignAdPreviewCreate200ResponseInnerDataOneOf':
+          return CampaignAdPreviewCreate200ResponseInnerDataOneOf.fromJson(value);
+        case 'CampaignAdPreviewDelete200ResponseInner':
+          return CampaignAdPreviewDelete200ResponseInner.fromJson(value);
+        case 'CampaignAdPreviewDelete200ResponseInnerStatus':
+          return CampaignAdPreviewDelete200ResponseInnerStatus.fromJson(value);
         case 'CampaignAudienceMultipliers':
           return CampaignAudienceMultipliers.fromJson(value);
+        case 'CampaignBatchItem':
+          return CampaignBatchItem.fromJson(value);
+        case 'CampaignBatchResponseData':
+          return CampaignBatchResponseData.fromJson(value);
+        case 'CampaignBatchUpdateItem':
+          return CampaignBatchUpdateItem.fromJson(value);
+        case 'CampaignBatchWriteResponseModel':
+          return CampaignBatchWriteResponseModel.fromJson(value);
         case 'CampaignBidOptions':
           return CampaignBidOptions.fromJson(value);
         case 'CampaignBidOptionsCreate':
           return CampaignBidOptionsCreate.fromJson(value);
         case 'CampaignBidOptionsUpdate':
           return CampaignBidOptionsUpdate.fromJson(value);
-        case 'CampaignCommon':
-          return CampaignCommon.fromJson(value);
-        case 'CampaignCreateCommon':
-          return CampaignCreateCommon.fromJson(value);
+        case 'CampaignBidOptionsUpdateMaskItems':
+          return CampaignBidOptionsUpdateMaskItemsTypeTransformer().decode(value);
+        case 'CampaignCreateItem':
+          return CampaignCreateItem.fromJson(value);
         case 'CampaignCreateRequest':
           return CampaignCreateRequest.fromJson(value);
-        case 'CampaignCreateResponse':
-          return CampaignCreateResponse.fromJson(value);
-        case 'CampaignCreateResponseData':
-          return CampaignCreateResponseData.fromJson(value);
-        case 'CampaignCreateResponseItem':
-          return CampaignCreateResponseItem.fromJson(value);
-        case 'CampaignId':
-          return CampaignId.fromJson(value);
-        case 'CampaignIdFilter':
-          return CampaignIdFilter.fromJson(value);
-        case 'CampaignObjectivesFilter':
-          return CampaignObjectivesFilter.fromJson(value);
-        case 'CampaignResponse':
-          return CampaignResponse.fromJson(value);
+        case 'CampaignCreateRequestAllOf1':
+          return CampaignCreateRequestAllOf1.fromJson(value);
+        case 'CampaignDeliveryEstimatesCampaign':
+          return CampaignDeliveryEstimatesCampaign.fromJson(value);
+        case 'CampaignDeliveryEstimatesDerivedMetrics':
+          return CampaignDeliveryEstimatesDerivedMetrics.fromJson(value);
+        case 'CampaignDeliveryEstimatesResponse':
+          return CampaignDeliveryEstimatesResponse.fromJson(value);
+        case 'CampaignObjectiveType':
+          return CampaignObjectiveTypeTypeTransformer().decode(value);
+        case 'CampaignPlanningAdGroupAudienceSize':
+          return CampaignPlanningAdGroupAudienceSize.fromJson(value);
+        case 'CampaignPlanningBudgetRecommendation':
+          return CampaignPlanningBudgetRecommendation.fromJson(value);
+        case 'CampaignPlanningBudgetRecommendationPoint':
+          return CampaignPlanningBudgetRecommendationPoint.fromJson(value);
+        case 'CampaignPlanningConfidenceLevelAlert':
+          return CampaignPlanningConfidenceLevelAlert.fromJson(value);
+        case 'CampaignPlanningConfidenceLevelAlertReason':
+          return CampaignPlanningConfidenceLevelAlertReasonTypeTransformer().decode(value);
+        case 'CampaignPlanningConfidenceLevelAlertSeverity':
+          return CampaignPlanningConfidenceLevelAlertSeverityTypeTransformer().decode(value);
+        case 'CampaignPlanningConversionAttribution':
+          return CampaignPlanningConversionAttribution.fromJson(value);
+        case 'CampaignPlanningConversionAttributionWindowDays':
+          return CampaignPlanningConversionAttributionWindowDaysTypeTransformer().decode(value);
+        case 'CampaignPlanningConversionEvent':
+          return CampaignPlanningConversionEventTypeTransformer().decode(value);
+        case 'CampaignPlanningConversionRate':
+          return CampaignPlanningConversionRate.fromJson(value);
+        case 'CampaignPlanningCurveEstimate':
+          return CampaignPlanningCurveEstimate.fromJson(value);
+        case 'CampaignPlanningEstimationType':
+          return CampaignPlanningEstimationTypeTypeTransformer().decode(value);
+        case 'CampaignPlanningExperimentBudgetRecommendation':
+          return CampaignPlanningExperimentBudgetRecommendation.fromJson(value);
+        case 'CampaignPlanningPointEstimate':
+          return CampaignPlanningPointEstimate.fromJson(value);
+        case 'CampaignPlanningResponseError':
+          return CampaignPlanningResponseError.fromJson(value);
+        case 'CampaignPlanningResponseErrorCode':
+          return CampaignPlanningResponseErrorCodeTypeTransformer().decode(value);
         case 'CampaignSummaryStatus':
           return CampaignSummaryStatusTypeTransformer().decode(value);
         case 'CampaignUpdateRequest':
           return CampaignUpdateRequest.fromJson(value);
-        case 'CampaignUpdateResponse':
-          return CampaignUpdateResponse.fromJson(value);
-        case 'CampaignsAnalyticsResponseInner':
-          return CampaignsAnalyticsResponseInner.fromJson(value);
+        case 'CampaignUpdateRequestAllOf2':
+          return CampaignUpdateRequestAllOf2.fromJson(value);
+        case 'CampaignsAnalyticsMetrics':
+          return CampaignsAnalyticsMetrics.fromJson(value);
         case 'CampaignsList200Response':
           return CampaignsList200Response.fromJson(value);
-        case 'CancelInvitesBody':
-          return CancelInvitesBody.fromJson(value);
+        case 'CancelInviteException':
+          return CancelInviteException.fromJson(value);
+        case 'CancelInviteResult':
+          return CancelInviteResult.fromJson(value);
+        case 'CancelInviteResultItem':
+          return CancelInviteResultItem.fromJson(value);
+        case 'CancelInviteResultUser':
+          return CancelInviteResultUser.fromJson(value);
+        case 'CancelInvitesRequest':
+          return CancelInvitesRequest.fromJson(value);
+        case 'CancelInvitesResponse':
+          return CancelInvitesResponse.fromJson(value);
         case 'CarouselSlot':
           return CarouselSlot.fromJson(value);
+        case 'CartingProduct':
+          return CartingProduct.fromJson(value);
+        case 'CartingRetailer':
+          return CartingRetailer.fromJson(value);
         case 'Catalog':
           return Catalog.fromJson(value);
+        case 'CatalogBinding':
+          return CatalogBinding.fromJson(value);
+        case 'CatalogCreate':
+          return CatalogCreate.fromJson(value);
+        case 'CatalogUpdate':
+          return CatalogUpdate.fromJson(value);
+        case 'CatalogsAiContentDisclosure':
+          return CatalogsAiContentDisclosure.fromJson(value);
+        case 'CatalogsAiContentDisclosureLabel':
+          return CatalogsAiContentDisclosureLabelTypeTransformer().decode(value);
         case 'CatalogsAvailableFilterValues':
           return CatalogsAvailableFilterValues.fromJson(value);
+        case 'CatalogsBaseFilterKeys':
+          return CatalogsBaseFilterKeys.fromJson(value);
+        case 'CatalogsBaseFiltersAllOf':
+          return CatalogsBaseFiltersAllOf.fromJson(value);
+        case 'CatalogsBaseFiltersAnyOf':
+          return CatalogsBaseFiltersAnyOf.fromJson(value);
         case 'CatalogsCreateCreativeAssetsItem':
           return CatalogsCreateCreativeAssetsItem.fromJson(value);
         case 'CatalogsCreateHotelItem':
           return CatalogsCreateHotelItem.fromJson(value);
         case 'CatalogsCreateReportResponse':
           return CatalogsCreateReportResponse.fromJson(value);
-        case 'CatalogsCreateRequest':
-          return CatalogsCreateRequest.fromJson(value);
         case 'CatalogsCreateRetailItem':
           return CatalogsCreateRetailItem.fromJson(value);
         case 'CatalogsCreativeAssetsAttributes':
@@ -596,6 +823,8 @@ class ApiClient {
           return CatalogsCreativeAssetsFeed.fromJson(value);
         case 'CatalogsCreativeAssetsFeedsCreateRequest':
           return CatalogsCreativeAssetsFeedsCreateRequest.fromJson(value);
+        case 'CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale':
+          return CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.fromJson(value);
         case 'CatalogsCreativeAssetsFeedsUpdateRequest':
           return CatalogsCreativeAssetsFeedsUpdateRequest.fromJson(value);
         case 'CatalogsCreativeAssetsFilterValuesMap':
@@ -606,8 +835,6 @@ class ApiClient {
           return CatalogsCreativeAssetsItemResponse.fromJson(value);
         case 'CatalogsCreativeAssetsItemsBatch':
           return CatalogsCreativeAssetsItemsBatch.fromJson(value);
-        case 'CatalogsCreativeAssetsItemsFilter':
-          return CatalogsCreativeAssetsItemsFilter.fromJson(value);
         case 'CatalogsCreativeAssetsItemsPostFilter':
           return CatalogsCreativeAssetsItemsPostFilter.fromJson(value);
         case 'CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest':
@@ -632,8 +859,6 @@ class ApiClient {
           return CatalogsCreativeAssetsProductGroupUpdateRequest.fromJson(value);
         case 'CatalogsCreativeAssetsProductMetadata':
           return CatalogsCreativeAssetsProductMetadata.fromJson(value);
-        case 'CatalogsDbItem':
-          return CatalogsDbItem.fromJson(value);
         case 'CatalogsDeleteCreativeAssetsItem':
           return CatalogsDeleteCreativeAssetsItem.fromJson(value);
         case 'CatalogsDeleteHotelItem':
@@ -642,6 +867,8 @@ class ApiClient {
           return CatalogsDeleteRetailItem.fromJson(value);
         case 'CatalogsFeed':
           return CatalogsFeed.fromJson(value);
+        case 'CatalogsFeedCreateRequestSchema':
+          return CatalogsFeedCreateRequestSchema.fromJson(value);
         case 'CatalogsFeedCredentials':
           return CatalogsFeedCredentials.fromJson(value);
         case 'CatalogsFeedIngestion':
@@ -658,10 +885,14 @@ class ApiClient {
           return CatalogsFeedProcessingResult.fromJson(value);
         case 'CatalogsFeedProcessingSchedule':
           return CatalogsFeedProcessingSchedule.fromJson(value);
+        case 'CatalogsFeedProcessingScheduleTimezone':
+          return CatalogsFeedProcessingScheduleTimezoneTypeTransformer().decode(value);
         case 'CatalogsFeedProcessingStatus':
           return CatalogsFeedProcessingStatusTypeTransformer().decode(value);
         case 'CatalogsFeedProductCounts':
           return CatalogsFeedProductCounts.fromJson(value);
+        case 'CatalogsFeedUpdateRequestSchema':
+          return CatalogsFeedUpdateRequestSchema.fromJson(value);
         case 'CatalogsFeedValidationDetails':
           return CatalogsFeedValidationDetails.fromJson(value);
         case 'CatalogsFeedValidationErrors':
@@ -672,8 +903,6 @@ class ApiClient {
           return CatalogsFeedVideoCounts.fromJson(value);
         case 'CatalogsFeedsCreateRequest':
           return CatalogsFeedsCreateRequest.fromJson(value);
-        case 'CatalogsFeedsCreateRequestDefaultLocale':
-          return CatalogsFeedsCreateRequestDefaultLocale.fromJson(value);
         case 'CatalogsFeedsUpdateRequest':
           return CatalogsFeedsUpdateRequest.fromJson(value);
         case 'CatalogsFormat':
@@ -682,8 +911,6 @@ class ApiClient {
           return CatalogsHotelAddress.fromJson(value);
         case 'CatalogsHotelAttributes':
           return CatalogsHotelAttributes.fromJson(value);
-        case 'CatalogsHotelAttributesAllOfMainImage':
-          return CatalogsHotelAttributesAllOfMainImage.fromJson(value);
         case 'CatalogsHotelAvailableFilterValues':
           return CatalogsHotelAvailableFilterValues.fromJson(value);
         case 'CatalogsHotelBatchItem':
@@ -706,12 +933,12 @@ class ApiClient {
           return CatalogsHotelItemResponse.fromJson(value);
         case 'CatalogsHotelItemsBatch':
           return CatalogsHotelItemsBatch.fromJson(value);
-        case 'CatalogsHotelItemsFilter':
-          return CatalogsHotelItemsFilter.fromJson(value);
         case 'CatalogsHotelItemsPostFilter':
           return CatalogsHotelItemsPostFilter.fromJson(value);
         case 'CatalogsHotelListProductsByCatalogBasedFilterRequest':
           return CatalogsHotelListProductsByCatalogBasedFilterRequest.fromJson(value);
+        case 'CatalogsHotelMainImage':
+          return CatalogsHotelMainImage.fromJson(value);
         case 'CatalogsHotelProduct':
           return CatalogsHotelProduct.fromJson(value);
         case 'CatalogsHotelProductGroup':
@@ -752,10 +979,10 @@ class ApiClient {
           return CatalogsItemValidationIssues.fromJson(value);
         case 'CatalogsItemValidationWarnings':
           return CatalogsItemValidationWarnings.fromJson(value);
-        case 'CatalogsItems':
-          return CatalogsItems.fromJson(value);
         case 'CatalogsItemsBatch':
           return CatalogsItemsBatch.fromJson(value);
+        case 'CatalogsItemsBatchPostRequest':
+          return CatalogsItemsBatchPostRequest.fromJson(value);
         case 'CatalogsItemsBatchRequest':
           return CatalogsItemsBatchRequest.fromJson(value);
         case 'CatalogsItemsCreateBatchRequest':
@@ -764,8 +991,6 @@ class ApiClient {
           return CatalogsItemsDeleteBatchRequest.fromJson(value);
         case 'CatalogsItemsDeleteDiscontinuedBatchRequest':
           return CatalogsItemsDeleteDiscontinuedBatchRequest.fromJson(value);
-        case 'CatalogsItemsFilters':
-          return CatalogsItemsFilters.fromJson(value);
         case 'CatalogsItemsPostFilters':
           return CatalogsItemsPostFilters.fromJson(value);
         case 'CatalogsItemsRequest':
@@ -780,6 +1005,16 @@ class ApiClient {
           return CatalogsListProductsByFeedBasedFilter.fromJson(value);
         case 'CatalogsListProductsByFilterRequest':
           return CatalogsListProductsByFilterRequest.fromJson(value);
+        case 'CatalogsLocalStoresCreate200ResponseInner':
+          return CatalogsLocalStoresCreate200ResponseInner.fromJson(value);
+        case 'CatalogsLocalStoresCreate200ResponseInnerData':
+          return CatalogsLocalStoresCreate200ResponseInnerData.fromJson(value);
+        case 'CatalogsLocalStoresCreate200ResponseInnerDataOneOf':
+          return CatalogsLocalStoresCreate200ResponseInnerDataOneOf.fromJson(value);
+        case 'CatalogsLocalStoresDelete200ResponseInner':
+          return CatalogsLocalStoresDelete200ResponseInner.fromJson(value);
+        case 'CatalogsLocalStoresList200Response':
+          return CatalogsLocalStoresList200Response.fromJson(value);
         case 'CatalogsLocale':
           return CatalogsLocaleTypeTransformer().decode(value);
         case 'CatalogsProduct':
@@ -800,12 +1035,18 @@ class ApiClient {
           return CatalogsProductGroupFiltersAnyOf.fromJson(value);
         case 'CatalogsProductGroupFiltersRequest':
           return CatalogsProductGroupFiltersRequest.fromJson(value);
+        case 'CatalogsProductGroupFiltersRequestAnyOfItems0':
+          return CatalogsProductGroupFiltersRequestAnyOfItems0.fromJson(value);
+        case 'CatalogsProductGroupFiltersRequestAnyOfItems1':
+          return CatalogsProductGroupFiltersRequestAnyOfItems1.fromJson(value);
         case 'CatalogsProductGroupMultipleCountriesCriteria':
           return CatalogsProductGroupMultipleCountriesCriteria.fromJson(value);
         case 'CatalogsProductGroupMultipleGenderCriteria':
           return CatalogsProductGroupMultipleGenderCriteria.fromJson(value);
         case 'CatalogsProductGroupMultipleMediaTypesCriteria':
           return CatalogsProductGroupMultipleMediaTypesCriteria.fromJson(value);
+        case 'CatalogsProductGroupMultiplePinterestProductCategoryCriteria':
+          return CatalogsProductGroupMultiplePinterestProductCategoryCriteria.fromJson(value);
         case 'CatalogsProductGroupMultipleStringCriteria':
           return CatalogsProductGroupMultipleStringCriteria.fromJson(value);
         case 'CatalogsProductGroupMultipleStringListCriteria':
@@ -814,8 +1055,6 @@ class ApiClient {
           return CatalogsProductGroupPinsList200Response.fromJson(value);
         case 'CatalogsProductGroupPricingCriteria':
           return CatalogsProductGroupPricingCriteria.fromJson(value);
-        case 'CatalogsProductGroupPricingCurrencyCriteria':
-          return CatalogsProductGroupPricingCurrencyCriteria.fromJson(value);
         case 'CatalogsProductGroupProductCountsVertical':
           return CatalogsProductGroupProductCountsVertical.fromJson(value);
         case 'CatalogsProductGroupStatus':
@@ -824,16 +1063,20 @@ class ApiClient {
           return CatalogsProductGroupTypeTypeTransformer().decode(value);
         case 'CatalogsProductGroupUint32Criteria':
           return CatalogsProductGroupUint32Criteria.fromJson(value);
+        case 'CatalogsProductGroupUpdateManyRequestItemsOneOfItems0':
+          return CatalogsProductGroupUpdateManyRequestItemsOneOfItems0.fromJson(value);
         case 'CatalogsProductGroupUpdateRequest':
           return CatalogsProductGroupUpdateRequest.fromJson(value);
+        case 'CatalogsProductGroupsCreateManyRequestItems':
+          return CatalogsProductGroupsCreateManyRequestItems.fromJson(value);
+        case 'CatalogsProductGroupsCreateRequestSchema':
+          return CatalogsProductGroupsCreateRequestSchema.fromJson(value);
         case 'CatalogsProductGroupsList200Response':
           return CatalogsProductGroupsList200Response.fromJson(value);
-        case 'CatalogsProductGroupsUpdateRequest':
-          return CatalogsProductGroupsUpdateRequest.fromJson(value);
+        case 'CatalogsProductGroupsUpdateRequestSchema':
+          return CatalogsProductGroupsUpdateRequestSchema.fromJson(value);
         case 'CatalogsReport':
           return CatalogsReport.fromJson(value);
-        case 'CatalogsReportAllItemsFilter':
-          return CatalogsReportAllItemsFilter.fromJson(value);
         case 'CatalogsReportDistributionIssueFilter':
           return CatalogsReportDistributionIssueFilter.fromJson(value);
         case 'CatalogsReportDistributionStats':
@@ -846,12 +1089,14 @@ class ApiClient {
           return CatalogsReportParameters.fromJson(value);
         case 'CatalogsReportStats':
           return CatalogsReportStats.fromJson(value);
+        case 'CatalogsReportStatsParameters':
+          return CatalogsReportStatsParameters.fromJson(value);
         case 'CatalogsRetailAvailableFilterValues':
           return CatalogsRetailAvailableFilterValues.fromJson(value);
         case 'CatalogsRetailBatchRequest':
           return CatalogsRetailBatchRequest.fromJson(value);
-        case 'CatalogsRetailBatchRequestItemsInner':
-          return CatalogsRetailBatchRequestItemsInner.fromJson(value);
+        case 'CatalogsRetailBatchRequestItemsItems':
+          return CatalogsRetailBatchRequestItemsItems.fromJson(value);
         case 'CatalogsRetailFeed':
           return CatalogsRetailFeed.fromJson(value);
         case 'CatalogsRetailFeedsCreateRequest':
@@ -866,8 +1111,6 @@ class ApiClient {
           return CatalogsRetailItemResponse.fromJson(value);
         case 'CatalogsRetailItemsBatch':
           return CatalogsRetailItemsBatch.fromJson(value);
-        case 'CatalogsRetailItemsFilter':
-          return CatalogsRetailItemsFilter.fromJson(value);
         case 'CatalogsRetailItemsPostFilter':
           return CatalogsRetailItemsPostFilter.fromJson(value);
         case 'CatalogsRetailListProductsByCatalogBasedFilterRequest':
@@ -884,10 +1127,16 @@ class ApiClient {
           return CatalogsRetailProductGroupUpdateRequest.fromJson(value);
         case 'CatalogsRetailProductMetadata':
           return CatalogsRetailProductMetadata.fromJson(value);
+        case 'CatalogsRetailReportAllItemsFilter':
+          return CatalogsRetailReportAllItemsFilter.fromJson(value);
         case 'CatalogsRetailReportParameters':
           return CatalogsRetailReportParameters.fromJson(value);
+        case 'CatalogsRetailReportParametersReport':
+          return CatalogsRetailReportParametersReport.fromJson(value);
         case 'CatalogsRetailReportStatsParameters':
           return CatalogsRetailReportStatsParameters.fromJson(value);
+        case 'CatalogsRetailReportStatsParametersReport':
+          return CatalogsRetailReportStatsParametersReport.fromJson(value);
         case 'CatalogsStatus':
           return CatalogsStatusTypeTransformer().decode(value);
         case 'CatalogsType':
@@ -922,42 +1171,78 @@ class ApiClient {
           return CatalogsVerticalProductGroupUpdateRequest.fromJson(value);
         case 'CatalogsVerticalsListProductsByCatalogBasedFilterRequest':
           return CatalogsVerticalsListProductsByCatalogBasedFilterRequest.fromJson(value);
+        case 'ChangeHistoryDataType':
+          return ChangeHistoryDataTypeTypeTransformer().decode(value);
+        case 'ChangeHistoryOperationType':
+          return ChangeHistoryOperationTypeTypeTransformer().decode(value);
+        case 'CollectionsHeaderType':
+          return CollectionsHeaderTypeTypeTransformer().decode(value);
         case 'ConditionFilter':
           return ConditionFilter.fromJson(value);
         case 'ContentType':
           return ContentTypeTypeTransformer().decode(value);
-        case 'ConversionAccessTokenResponse':
-          return ConversionAccessTokenResponse.fromJson(value);
-        case 'ConversionApiResponse':
-          return ConversionApiResponse.fromJson(value);
-        case 'ConversionApiResponseEventsInner':
-          return ConversionApiResponseEventsInner.fromJson(value);
+        case 'ConversionAccessToken':
+          return ConversionAccessToken.fromJson(value);
+        case 'ConversionApiResponseEventsItems':
+          return ConversionApiResponseEventsItems.fromJson(value);
         case 'ConversionAttributionWindowDays':
           return ConversionAttributionWindowDaysTypeTransformer().decode(value);
+        case 'ConversionDeletionRequest':
+          return ConversionDeletionRequest.fromJson(value);
+        case 'ConversionDeletionRequestCreate':
+          return ConversionDeletionRequestCreate.fromJson(value);
+        case 'ConversionDeletionRequestEPIKTargets':
+          return ConversionDeletionRequestEPIKTargets.fromJson(value);
+        case 'ConversionDeletionRequestList200Response':
+          return ConversionDeletionRequestList200Response.fromJson(value);
+        case 'ConversionDeletionRequestStatus':
+          return ConversionDeletionRequestStatusTypeTransformer().decode(value);
+        case 'ConversionDeletionRequestTargets':
+          return ConversionDeletionRequestTargets.fromJson(value);
+        case 'ConversionDeletionRequestUserEmailTargets':
+          return ConversionDeletionRequestUserEmailTargets.fromJson(value);
+        case 'ConversionEvent':
+          return ConversionEventTypeTransformer().decode(value);
         case 'ConversionEventAppInfo':
           return ConversionEventAppInfo.fromJson(value);
         case 'ConversionEventDeviceInfo':
           return ConversionEventDeviceInfo.fromJson(value);
+        case 'ConversionEventIngestionSource':
+          return ConversionEventIngestionSourceTypeTransformer().decode(value);
         case 'ConversionEventResponse':
           return ConversionEventResponse.fromJson(value);
         case 'ConversionEvents':
           return ConversionEvents.fromJson(value);
-        case 'ConversionEventsDataInner':
-          return ConversionEventsDataInner.fromJson(value);
-        case 'ConversionEventsDataInnerCustomData':
-          return ConversionEventsDataInnerCustomData.fromJson(value);
-        case 'ConversionEventsDataInnerCustomDataContentsInner':
-          return ConversionEventsDataInnerCustomDataContentsInner.fromJson(value);
-        case 'ConversionEventsUserData':
-          return ConversionEventsUserData.fromJson(value);
+        case 'ConversionEventsCreate':
+          return ConversionEventsCreate.fromJson(value);
+        case 'ConversionEventsDataItems':
+          return ConversionEventsDataItems.fromJson(value);
+        case 'ConversionEventsDataItemsCustomData':
+          return ConversionEventsDataItemsCustomData.fromJson(value);
+        case 'ConversionEventsDataItemsCustomDataContentsItems':
+          return ConversionEventsDataItemsCustomDataContentsItems.fromJson(value);
         case 'ConversionEventsUserDataProperties':
           return ConversionEventsUserDataProperties.fromJson(value);
         case 'ConversionHealthSelectionItem':
           return ConversionHealthSelectionItem.fromJson(value);
-        case 'ConversionMSOTEvents':
-          return ConversionMSOTEvents.fromJson(value);
-        case 'ConversionProductReportRequest':
-          return ConversionProductReportRequest.fromJson(value);
+        case 'ConversionLearningModeType':
+          return ConversionLearningModeTypeTypeTransformer().decode(value);
+        case 'ConversionMSOTEventsCreate':
+          return ConversionMSOTEventsCreate.fromJson(value);
+        case 'ConversionObjectiveType':
+          return ConversionObjectiveTypeTypeTransformer().decode(value);
+        case 'ConversionProductAttributionType':
+          return ConversionProductAttributionTypeTypeTransformer().decode(value);
+        case 'ConversionProductReport':
+          return ConversionProductReport.fromJson(value);
+        case 'ConversionProductReportBreakdownType':
+          return ConversionProductReportBreakdownTypeTypeTransformer().decode(value);
+        case 'ConversionProductReportCreate':
+          return ConversionProductReportCreate.fromJson(value);
+        case 'ConversionProductReportGranularity':
+          return ConversionProductReportGranularityTypeTransformer().decode(value);
+        case 'ConversionProductReportLevel':
+          return ConversionProductReportLevelTypeTransformer().decode(value);
         case 'ConversionProductReportingColumn':
           return ConversionProductReportingColumnTypeTransformer().decode(value);
         case 'ConversionReportAttributionType':
@@ -972,12 +1257,14 @@ class ApiClient {
           return ConversionTagConfigs.fromJson(value);
         case 'ConversionTagCreate':
           return ConversionTagCreate.fromJson(value);
-        case 'ConversionTagListResponse':
-          return ConversionTagListResponse.fromJson(value);
         case 'ConversionTagResponse':
           return ConversionTagResponse.fromJson(value);
         case 'ConversionTagType':
           return ConversionTagTypeTypeTransformer().decode(value);
+        case 'ConversionTagTypeOptimal':
+          return ConversionTagTypeOptimalTypeTransformer().decode(value);
+        case 'ConversionTagV3GoalMetadata':
+          return ConversionTagV3GoalMetadata.fromJson(value);
         case 'ConversionTagsList200Response':
           return ConversionTagsList200Response.fromJson(value);
         case 'Country':
@@ -986,34 +1273,20 @@ class ApiClient {
           return CountryFilter.fromJson(value);
         case 'CreateAssetAccessRequestBody':
           return CreateAssetAccessRequestBody.fromJson(value);
-        case 'CreateAssetAccessRequestBodyAssetRequestsInner':
-          return CreateAssetAccessRequestBodyAssetRequestsInner.fromJson(value);
-        case 'CreateAssetAccessRequestErrorMessageInner':
-          return CreateAssetAccessRequestErrorMessageInner.fromJson(value);
+        case 'CreateAssetAccessRequestItem':
+          return CreateAssetAccessRequestItem.fromJson(value);
         case 'CreateAssetAccessRequestResponse':
           return CreateAssetAccessRequestResponse.fromJson(value);
-        case 'CreateAssetGroupBody':
-          return CreateAssetGroupBody.fromJson(value);
-        case 'CreateAssetGroupResponse':
-          return CreateAssetGroupResponse.fromJson(value);
         case 'CreateAssetInvitesRequest':
           return CreateAssetInvitesRequest.fromJson(value);
         case 'CreateAssetInvitesRequestItem':
           return CreateAssetInvitesRequestItem.fromJson(value);
         case 'CreateInvitesResultsResponseArray':
           return CreateInvitesResultsResponseArray.fromJson(value);
-        case 'CreateInvitesResultsResponseArrayItemsInner':
-          return CreateInvitesResultsResponseArrayItemsInner.fromJson(value);
-        case 'CreateInvitesResultsResponseArrayItemsInnerInvite':
-          return CreateInvitesResultsResponseArrayItemsInnerInvite.fromJson(value);
-        case 'CreateMMMReportRequest':
-          return CreateMMMReportRequest.fromJson(value);
-        case 'CreateMMMReportResponse':
-          return CreateMMMReportResponse.fromJson(value);
-        case 'CreateMMMReportResponseData':
-          return CreateMMMReportResponseData.fromJson(value);
         case 'CreateMembershipOrPartnershipInvitesBody':
           return CreateMembershipOrPartnershipInvitesBody.fromJson(value);
+        case 'CreationSource':
+          return CreationSourceTypeTransformer().decode(value);
         case 'CreativeAssetsIdFilter':
           return CreativeAssetsIdFilter.fromJson(value);
         case 'CreativeAssetsProcessingRecord':
@@ -1026,6 +1299,8 @@ class ApiClient {
           return CurrencyTypeTransformer().decode(value);
         case 'CurrencyFilter':
           return CurrencyFilter.fromJson(value);
+        case 'CustomConversionEventMetrics':
+          return CustomConversionEventMetrics.fromJson(value);
         case 'CustomLabel0Filter':
           return CustomLabel0Filter.fromJson(value);
         case 'CustomLabel1Filter':
@@ -1048,74 +1323,104 @@ class ApiClient {
           return CustomNumber4Filter.fromJson(value);
         case 'CustomerList':
           return CustomerList.fromJson(value);
-        case 'CustomerListRequest':
-          return CustomerListRequest.fromJson(value);
-        case 'CustomerListUpdateRequest':
-          return CustomerListUpdateRequest.fromJson(value);
+        case 'CustomerListCreate':
+          return CustomerListCreate.fromJson(value);
+        case 'CustomerListRecordRow':
+          return CustomerListRecordRow.fromJson(value);
+        case 'CustomerListStatus':
+          return CustomerListStatusTypeTransformer().decode(value);
+        case 'CustomerListUpdateWithRequiredBody':
+          return CustomerListUpdateWithRequiredBody.fromJson(value);
         case 'CustomerListUpload':
           return CustomerListUpload.fromJson(value);
         case 'CustomerListUploadCreateRequest':
           return CustomerListUploadCreateRequest.fromJson(value);
         case 'CustomerListUploadCreateResponse':
           return CustomerListUploadCreateResponse.fromJson(value);
-        case 'CustomerListUploadResponse':
-          return CustomerListUploadResponse.fromJson(value);
         case 'CustomerListsList200Response':
           return CustomerListsList200Response.fromJson(value);
+        case 'CustomerSegment':
+          return CustomerSegment.fromJson(value);
+        case 'CustomerSegmentCreate':
+          return CustomerSegmentCreate.fromJson(value);
+        case 'CustomerSegmentList200Response':
+          return CustomerSegmentList200Response.fromJson(value);
+        case 'CustomerSegmentUpdateRequestUpdateWithRequiredBody':
+          return CustomerSegmentUpdateRequestUpdateWithRequiredBody.fromJson(value);
         case 'CustomizableCTAType':
           return CustomizableCTATypeTypeTransformer().decode(value);
         case 'DataOutputFormat':
           return DataOutputFormatTypeTransformer().decode(value);
         case 'DataStatus':
           return DataStatusTypeTransformer().decode(value);
-        case 'DeleteAssetGroupBody':
-          return DeleteAssetGroupBody.fromJson(value);
-        case 'DeleteAssetGroupResponse':
-          return DeleteAssetGroupResponse.fromJson(value);
-        case 'DeleteAssetGroupResponseExceptionsInner':
-          return DeleteAssetGroupResponseExceptionsInner.fromJson(value);
-        case 'DeleteInvitesResultsResponseArray':
-          return DeleteInvitesResultsResponseArray.fromJson(value);
-        case 'DeleteInvitesResultsResponseArrayItemsInner':
-          return DeleteInvitesResultsResponseArrayItemsInner.fromJson(value);
-        case 'DeleteInvitesResultsResponseArrayItemsInnerException':
-          return DeleteInvitesResultsResponseArrayItemsInnerException.fromJson(value);
+        case 'DeleteBusinessMembership200Response':
+          return DeleteBusinessMembership200Response.fromJson(value);
+        case 'DeleteBusinessMembershipBody':
+          return DeleteBusinessMembershipBody.fromJson(value);
+        case 'DeleteBusinessMembershipMember':
+          return DeleteBusinessMembershipMember.fromJson(value);
+        case 'DeleteBusinessPartners':
+          return DeleteBusinessPartners.fromJson(value);
+        case 'DeleteBusinessPartnersDelete':
+          return DeleteBusinessPartnersDelete.fromJson(value);
         case 'DeleteMemberAccessResult':
           return DeleteMemberAccessResult.fromJson(value);
         case 'DeleteMemberAccessResultsResponseArray':
           return DeleteMemberAccessResultsResponseArray.fromJson(value);
+        case 'DeleteMemberAssetAccessItem':
+          return DeleteMemberAssetAccessItem.fromJson(value);
         case 'DeletePartnerAssetAccessBody':
           return DeletePartnerAssetAccessBody.fromJson(value);
-        case 'DeletePartnerAssetAccessBodyAccessesInner':
-          return DeletePartnerAssetAccessBodyAccessesInner.fromJson(value);
-        case 'DeletePartnerAssetsResult':
-          return DeletePartnerAssetsResult.fromJson(value);
-        case 'DeletePartnerAssetsResultsResponseArray':
-          return DeletePartnerAssetsResultsResponseArray.fromJson(value);
-        case 'DeletePartnersRequest':
-          return DeletePartnersRequest.fromJson(value);
-        case 'DeletePartnersResponse':
-          return DeletePartnersResponse.fromJson(value);
-        case 'DeletedMembersResponse':
-          return DeletedMembersResponse.fromJson(value);
-        case 'DeliveryMetricsResponse':
-          return DeliveryMetricsResponse.fromJson(value);
-        case 'DeliveryMetricsResponseItemsInner':
-          return DeliveryMetricsResponseItemsInner.fromJson(value);
+        case 'DeletePartnerAssetAccessItem':
+          return DeletePartnerAssetAccessItem.fromJson(value);
+        case 'DeletePartnerAssetAccessResult':
+          return DeletePartnerAssetAccessResult.fromJson(value);
+        case 'DeletePartnerAssetAccessResultsResponseArray':
+          return DeletePartnerAssetAccessResultsResponseArray.fromJson(value);
+        case 'DeliveryEstimateObjectiveType':
+          return DeliveryEstimateObjectiveTypeTypeTransformer().decode(value);
+        case 'DeliveryMetricsGet200Response':
+          return DeliveryMetricsGet200Response.fromJson(value);
+        case 'DeliveryMetricsResponseItemsItems':
+          return DeliveryMetricsResponseItemsItems.fromJson(value);
         case 'DetailedError':
           return DetailedError.fromJson(value);
         case 'DisclosureType':
           return DisclosureTypeTypeTransformer().decode(value);
+        case 'DiscountStatus':
+          return DiscountStatusTypeTransformer().decode(value);
+        case 'DynamicTitlesDownloadCSV':
+          return DynamicTitlesDownloadCSV.fromJson(value);
+        case 'DynamicTitlesGetStatus':
+          return DynamicTitlesGetStatus.fromJson(value);
+        case 'DynamicTitlesProcessCSV':
+          return DynamicTitlesProcessCSV.fromJson(value);
+        case 'DynamicTitlesProcessCSVCreate':
+          return DynamicTitlesProcessCSVCreate.fromJson(value);
+        case 'DynamicTitlesProcessCSVError':
+          return DynamicTitlesProcessCSVError.fromJson(value);
+        case 'DynamicTitlesUploadURL':
+          return DynamicTitlesUploadURL.fromJson(value);
         case 'EnhancedMatchStatusType':
           return EnhancedMatchStatusTypeTypeTransformer().decode(value);
+        case 'EntityDataChangeHistory':
+          return EntityDataChangeHistory.fromJson(value);
+        case 'EntityHistory':
+          return EntityHistory.fromJson(value);
+        case 'EntityLabel':
+          return EntityLabel.fromJson(value);
+        case 'EntityLabelError':
+          return EntityLabelError.fromJson(value);
+        case 'EntityLabelStatus':
+          return EntityLabelStatusTypeTransformer().decode(value);
         case 'EntityStatus':
           return EntityStatusTypeTransformer().decode(value);
-        case 'Error':
-          return Error.fromJson(value);
         case 'ErrorDetail':
           return ErrorDetail.fromJson(value);
         case 'EventData':
           return EventData.fromJson(value);
+        case 'EventProcessingStatus':
+          return EventProcessingStatusTypeTransformer().decode(value);
         case 'EventQualityScore':
           return EventQualityScore.fromJson(value);
         case 'Exception':
@@ -1124,16 +1429,26 @@ class ApiClient {
           return FeaturedTrend.fromJson(value);
         case 'FeedProcessingResultsList200Response':
           return FeedProcessingResultsList200Response.fromJson(value);
-        case 'FeedsCreateRequest':
-          return FeedsCreateRequest.fromJson(value);
         case 'FeedsList200Response':
           return FeedsList200Response.fromJson(value);
-        case 'FeedsUpdateRequest':
-          return FeedsUpdateRequest.fromJson(value);
-        case 'FollowUserRequest':
-          return FollowUserRequest.fromJson(value);
+        case 'FilterOperatorType':
+          return FilterOperatorTypeTypeTransformer().decode(value);
+        case 'FollowUser':
+          return FollowUser.fromJson(value);
+        case 'FollowUserCreate':
+          return FollowUserCreate.fromJson(value);
         case 'FollowersList200Response':
           return FollowersList200Response.fromJson(value);
+        case 'FormFactor':
+          return FormFactorTypeTransformer().decode(value);
+        case 'FreqBidMultiplierTimeWindow':
+          return FreqBidMultiplierTimeWindowTypeTransformer().decode(value);
+        case 'FrequencyGoalMetadata':
+          return FrequencyGoalMetadata.fromJson(value);
+        case 'FrequencyGoalMetadataTimerange':
+          return FrequencyGoalMetadataTimerangeTypeTransformer().decode(value);
+        case 'FrequencyMultipliers':
+          return FrequencyMultipliers.fromJson(value);
         case 'Gender':
           return GenderTypeTransformer().decode(value);
         case 'GenderBucket':
@@ -1142,28 +1457,12 @@ class ApiClient {
           return GenderDemographics.fromJson(value);
         case 'GenderFilter':
           return GenderFilter.fromJson(value);
-        case 'GetAudiencesOrderBy':
-          return GetAudiencesOrderByTypeTransformer().decode(value);
-        case 'GetBusinessAssetTypeResponse':
-          return GetBusinessAssetTypeResponseTypeTransformer().decode(value);
-        case 'GetBusinessAssetsResponse':
-          return GetBusinessAssetsResponse.fromJson(value);
-        case 'GetBusinessAssetsResponseCatalogInfo':
-          return GetBusinessAssetsResponseCatalogInfo.fromJson(value);
+        case 'GenderMultipliers':
+          return GenderMultipliers.fromJson(value);
         case 'GetBusinessEmployers200Response':
           return GetBusinessEmployers200Response.fromJson(value);
-        case 'GetBusinessMembers200Response':
-          return GetBusinessMembers200Response.fromJson(value);
-        case 'GetBusinessPartners200Response':
-          return GetBusinessPartners200Response.fromJson(value);
         case 'GetInvites200Response':
           return GetInvites200Response.fromJson(value);
-        case 'GetMMMReportResponse':
-          return GetMMMReportResponse.fromJson(value);
-        case 'GetMMMReportResponseData':
-          return GetMMMReportResponseData.fromJson(value);
-        case 'GetPartnerAssetsResponse':
-          return GetPartnerAssetsResponse.fromJson(value);
         case 'GoogleProductCategory0Filter':
           return GoogleProductCategory0Filter.fromJson(value);
         case 'GoogleProductCategory1Filter':
@@ -1186,14 +1485,22 @@ class ApiClient {
           return HotelIdFilter.fromJson(value);
         case 'HotelProcessingRecord':
           return HotelProcessingRecord.fromJson(value);
-        case 'ImageBase64':
-          return ImageBase64.fromJson(value);
+        case 'HttpMethod':
+          return HttpMethodTypeTransformer().decode(value);
         case 'ImageDetails':
           return ImageDetails.fromJson(value);
         case 'ImageMetadata':
           return ImageMetadata.fromJson(value);
         case 'ImageSize':
           return ImageSize.fromJson(value);
+        case 'IneligibleProductTagErrorItem':
+          return IneligibleProductTagErrorItem.fromJson(value);
+        case 'IneligibleProductTagReason':
+          return IneligibleProductTagReasonTypeTransformer().decode(value);
+        case 'IneligibleProductTagsErrorDetails':
+          return IneligibleProductTagsErrorDetails.fromJson(value);
+        case 'IngestionSource':
+          return IngestionSourceTypeTransformer().decode(value);
         case 'IngestionSourceOptions':
           return IngestionSourceOptionsTypeTransformer().decode(value);
         case 'InnerProductCategoriesMetricsHighlights':
@@ -1204,40 +1511,48 @@ class ApiClient {
           return IntegrationLogClientError.fromJson(value);
         case 'IntegrationLogClientRequest':
           return IntegrationLogClientRequest.fromJson(value);
+        case 'IntegrationLogEventType':
+          return IntegrationLogEventTypeTypeTransformer().decode(value);
+        case 'IntegrationLogLevel':
+          return IntegrationLogLevelTypeTransformer().decode(value);
         case 'IntegrationLogsInvalidLogResponse':
           return IntegrationLogsInvalidLogResponse.fromJson(value);
-        case 'IntegrationLogsInvalidLogResponseRejectedLogsInner':
-          return IntegrationLogsInvalidLogResponseRejectedLogsInner.fromJson(value);
-        case 'IntegrationLogsRequest':
-          return IntegrationLogsRequest.fromJson(value);
+        case 'IntegrationLogsInvalidLogResponseRejectedLogsItems':
+          return IntegrationLogsInvalidLogResponseRejectedLogsItems.fromJson(value);
+        case 'IntegrationLogsRequestCreate':
+          return IntegrationLogsRequestCreate.fromJson(value);
         case 'IntegrationLogsSuccessResponse':
           return IntegrationLogsSuccessResponse.fromJson(value);
         case 'IntegrationMetadata':
           return IntegrationMetadata.fromJson(value);
+        case 'IntegrationMetadataCreate':
+          return IntegrationMetadataCreate.fromJson(value);
+        case 'IntegrationMetadataUpdate':
+          return IntegrationMetadataUpdate.fromJson(value);
         case 'IntegrationRecord':
           return IntegrationRecord.fromJson(value);
-        case 'IntegrationRequest':
-          return IntegrationRequest.fromJson(value);
-        case 'IntegrationRequestPatch':
-          return IntegrationRequestPatch.fromJson(value);
         case 'IntegrationsGetList200Response':
           return IntegrationsGetList200Response.fromJson(value);
-        case 'IntegrationsLogsPost400Response':
-          return IntegrationsLogsPost400Response.fromJson(value);
+        case 'IntendedPromotionType':
+          return IntendedPromotionTypeTypeTransformer().decode(value);
         case 'Interest':
           return Interest.fromJson(value);
         case 'InterestsEnum':
           return InterestsEnumTypeTransformer().decode(value);
+        case 'InviteActionResultItem':
+          return InviteActionResultItem.fromJson(value);
         case 'InviteAssetsSummary':
           return InviteAssetsSummary.fromJson(value);
-        case 'InviteAssetsSummaryAdAccountsInner':
-          return InviteAssetsSummaryAdAccountsInner.fromJson(value);
-        case 'InviteAssetsSummaryProfilesInner':
-          return InviteAssetsSummaryProfilesInner.fromJson(value);
+        case 'InviteAssetsSummaryItem':
+          return InviteAssetsSummaryItem.fromJson(value);
         case 'InviteBusinessRoleBinding':
           return InviteBusinessRoleBinding.fromJson(value);
+        case 'InviteDataResponse':
+          return InviteDataResponse.fromJson(value);
         case 'InviteExceptionResponse':
           return InviteExceptionResponse.fromJson(value);
+        case 'InviteFilterStatus':
+          return InviteFilterStatusTypeTransformer().decode(value);
         case 'InviteResponse':
           return InviteResponse.fromJson(value);
         case 'InviteStatus':
@@ -1248,10 +1563,10 @@ class ApiClient {
           return ItemAttributes.fromJson(value);
         case 'ItemAttributesRequest':
           return ItemAttributesRequest.fromJson(value);
-        case 'ItemAttributesRequestAllOfImageLink':
-          return ItemAttributesRequestAllOfImageLink.fromJson(value);
-        case 'ItemBatchRecord':
-          return ItemBatchRecord.fromJson(value);
+        case 'ItemAttributesRequestImageLink':
+          return ItemAttributesRequestImageLink.fromJson(value);
+        case 'ItemAvailability':
+          return ItemAvailabilityTypeTransformer().decode(value);
         case 'ItemCreateBatchRecord':
           return ItemCreateBatchRecord.fromJson(value);
         case 'ItemDeleteBatchRecord':
@@ -1262,124 +1577,176 @@ class ApiClient {
           return ItemGroupIdFilter.fromJson(value);
         case 'ItemIdFilter':
           return ItemIdFilter.fromJson(value);
+        case 'ItemIdStoreCodePair':
+          return ItemIdStoreCodePair.fromJson(value);
         case 'ItemProcessingRecord':
           return ItemProcessingRecord.fromJson(value);
         case 'ItemProcessingStatus':
           return ItemProcessingStatusTypeTransformer().decode(value);
         case 'ItemResponse':
           return ItemResponse.fromJson(value);
-        case 'ItemResponseOneOf':
-          return ItemResponseOneOf.fromJson(value);
-        case 'ItemResponseOneOf1':
-          return ItemResponseOneOf1.fromJson(value);
         case 'ItemUpdateBatchRecord':
           return ItemUpdateBatchRecord.fromJson(value);
         case 'ItemUpsertBatchRecord':
           return ItemUpsertBatchRecord.fromJson(value);
         case 'ItemValidationEvent':
           return ItemValidationEvent.fromJson(value);
-        case 'ItemsBatchPostRequest':
-          return ItemsBatchPostRequest.fromJson(value);
         case 'ItemsIssuesList200Response':
           return ItemsIssuesList200Response.fromJson(value);
+        case 'ItemsPost200Response':
+          return ItemsPost200Response.fromJson(value);
         case 'Keyword':
           return Keyword.fromJson(value);
+        case 'KeywordCreateItem':
+          return KeywordCreateItem.fromJson(value);
         case 'KeywordError':
           return KeywordError.fromJson(value);
+        case 'KeywordInfo':
+          return KeywordInfo.fromJson(value);
         case 'KeywordMetrics':
           return KeywordMetrics.fromJson(value);
         case 'KeywordMetricsResponse':
           return KeywordMetricsResponse.fromJson(value);
-        case 'KeywordUpdate':
-          return KeywordUpdate.fromJson(value);
-        case 'KeywordUpdateBody':
-          return KeywordUpdateBody.fromJson(value);
+        case 'KeywordUpdateGenerated':
+          return KeywordUpdateGenerated.fromJson(value);
+        case 'KeywordUpdateItem':
+          return KeywordUpdateItem.fromJson(value);
+        case 'Keywords':
+          return Keywords.fromJson(value);
         case 'KeywordsCommon':
           return KeywordsCommon.fromJson(value);
+        case 'KeywordsCreate':
+          return KeywordsCreate.fromJson(value);
         case 'KeywordsGet200Response':
           return KeywordsGet200Response.fromJson(value);
         case 'KeywordsMetricsArrayResponse':
           return KeywordsMetricsArrayResponse.fromJson(value);
         case 'KeywordsRequest':
           return KeywordsRequest.fromJson(value);
-        case 'KeywordsResponse':
-          return KeywordsResponse.fromJson(value);
+        case 'KeywordsUpdate':
+          return KeywordsUpdate.fromJson(value);
         case 'Label':
           return Label.fromJson(value);
+        case 'LabelBulkCreateRequest':
+          return LabelBulkCreateRequest.fromJson(value);
         case 'LabelBulkUpdateRequest':
           return LabelBulkUpdateRequest.fromJson(value);
+        case 'LabelCreateItem':
+          return LabelCreateItem.fromJson(value);
         case 'LabelCreateRequest':
           return LabelCreateRequest.fromJson(value);
-        case 'LabelCreateRequestLabelsInner':
-          return LabelCreateRequestLabelsInner.fromJson(value);
         case 'LabelError':
           return LabelError.fromJson(value);
+        case 'LabelErrorData':
+          return LabelErrorData.fromJson(value);
         case 'LabelParentType':
           return LabelParentTypeTypeTransformer().decode(value);
         case 'LabelStatus':
           return LabelStatusTypeTransformer().decode(value);
+        case 'LabelStatusBulkUpdate':
+          return LabelStatusBulkUpdateTypeTransformer().decode(value);
         case 'LabelType':
           return LabelTypeTypeTransformer().decode(value);
+        case 'LabelUpdateItem':
+          return LabelUpdateItem.fromJson(value);
         case 'LabelUpdateRequest':
           return LabelUpdateRequest.fromJson(value);
-        case 'LabelUpdateRequestLabelsInner':
-          return LabelUpdateRequestLabelsInner.fromJson(value);
+        case 'LabeledEntities':
+          return LabeledEntities.fromJson(value);
+        case 'LabeledEntitiesCreate':
+          return LabeledEntitiesCreate.fromJson(value);
         case 'LabelsList200Response':
           return LabelsList200Response.fromJson(value);
         case 'LabelsResponse':
           return LabelsResponse.fromJson(value);
         case 'Language':
           return LanguageTypeTransformer().decode(value);
-        case 'LeadFormArrayResponse':
-          return LeadFormArrayResponse.fromJson(value);
-        case 'LeadFormArrayResponseItemsInner':
-          return LeadFormArrayResponseItemsInner.fromJson(value);
-        case 'LeadFormCommon':
-          return LeadFormCommon.fromJson(value);
-        case 'LeadFormCommonPolicyLinksInner':
-          return LeadFormCommonPolicyLinksInner.fromJson(value);
-        case 'LeadFormCreateRequest':
-          return LeadFormCreateRequest.fromJson(value);
+        case 'LeadForm':
+          return LeadForm.fromJson(value);
+        case 'LeadFormBatchUpdate':
+          return LeadFormBatchUpdate.fromJson(value);
+        case 'LeadFormCreate':
+          return LeadFormCreate.fromJson(value);
+        case 'LeadFormPolicyLink':
+          return LeadFormPolicyLink.fromJson(value);
         case 'LeadFormQuestion':
           return LeadFormQuestion.fromJson(value);
         case 'LeadFormQuestionFieldType':
           return LeadFormQuestionFieldTypeTypeTransformer().decode(value);
         case 'LeadFormQuestionType':
           return LeadFormQuestionTypeTypeTransformer().decode(value);
-        case 'LeadFormResponse':
-          return LeadFormResponse.fromJson(value);
         case 'LeadFormStatus':
           return LeadFormStatusTypeTransformer().decode(value);
-        case 'LeadFormTestRequest':
-          return LeadFormTestRequest.fromJson(value);
-        case 'LeadFormTestResponse':
-          return LeadFormTestResponse.fromJson(value);
-        case 'LeadFormUpdateRequest':
-          return LeadFormUpdateRequest.fromJson(value);
+        case 'LeadFormTest':
+          return LeadFormTest.fromJson(value);
+        case 'LeadFormTestCreate':
+          return LeadFormTestCreate.fromJson(value);
+        case 'LeadFormsCreate200Response':
+          return LeadFormsCreate200Response.fromJson(value);
+        case 'LeadFormsCreate200ResponseItemsInner':
+          return LeadFormsCreate200ResponseItemsInner.fromJson(value);
         case 'LeadFormsList200Response':
           return LeadFormsList200Response.fromJson(value);
         case 'LeadSubscription':
           return LeadSubscription.fromJson(value);
+        case 'LeadSubscriptionCreate':
+          return LeadSubscriptionCreate.fromJson(value);
+        case 'LeadSubscriptionPostParams':
+          return LeadSubscriptionPostParams.fromJson(value);
         case 'LeadSubscriptionPostParamsCreate':
           return LeadSubscriptionPostParamsCreate.fromJson(value);
-        case 'LeadSubscriptionPostParamsCreateAllOfPartnerMetadata':
-          return LeadSubscriptionPostParamsCreateAllOfPartnerMetadata.fromJson(value);
-        case 'LeadsExportCreateRequest':
-          return LeadsExportCreateRequest.fromJson(value);
-        case 'LeadsExportCreateResponse':
-          return LeadsExportCreateResponse.fromJson(value);
         case 'LeadsExportResponseData':
           return LeadsExportResponseData.fromJson(value);
         case 'LeadsExportStatus':
           return LeadsExportStatusTypeTransformer().decode(value);
+        case 'LeadsExports':
+          return LeadsExports.fromJson(value);
+        case 'LeadsExportsCreate':
+          return LeadsExportsCreate.fromJson(value);
         case 'LineItem':
           return LineItem.fromJson(value);
+        case 'LinkFilter':
+          return LinkFilter.fromJson(value);
         case 'LinkedBusiness':
           return LinkedBusiness.fromJson(value);
-        case 'LocalStoreUpdate':
-          return LocalStoreUpdate.fromJson(value);
+        case 'LocalInventoryCreateOperation':
+          return LocalInventoryCreateOperation.fromJson(value);
+        case 'LocalInventoryDeleteOperation':
+          return LocalInventoryDeleteOperation.fromJson(value);
+        case 'LocalInventoryItemResponse':
+          return LocalInventoryItemResponse.fromJson(value);
+        case 'LocalInventoryItemsBatch':
+          return LocalInventoryItemsBatch.fromJson(value);
+        case 'LocalInventoryItemsBatchCreate':
+          return LocalInventoryItemsBatchCreate.fromJson(value);
+        case 'LocalInventoryItemsGet':
+          return LocalInventoryItemsGet.fromJson(value);
+        case 'LocalInventoryItemsGetCreate':
+          return LocalInventoryItemsGetCreate.fromJson(value);
+        case 'LocalInventoryOperation':
+          return LocalInventoryOperation.fromJson(value);
+        case 'LocalInventoryOperationResult':
+          return LocalInventoryOperationResult.fromJson(value);
+        case 'LocalInventoryUpdateOperation':
+          return LocalInventoryUpdateOperation.fromJson(value);
+        case 'LocalInventoryUpsertOperation':
+          return LocalInventoryUpsertOperation.fromJson(value);
+        case 'LocalStore':
+          return LocalStore.fromJson(value);
+        case 'LocalStoreBatchUpdate':
+          return LocalStoreBatchUpdate.fromJson(value);
+        case 'LocalStoreCreate':
+          return LocalStoreCreate.fromJson(value);
         case 'LookbackPeriodOptions':
           return LookbackPeriodOptionsTypeTransformer().decode(value);
+        case 'MMMReport':
+          return MMMReport.fromJson(value);
+        case 'MMMReportCreate':
+          return MMMReportCreate.fromJson(value);
+        case 'MMMReportGranularity':
+          return MMMReportGranularityTypeTransformer().decode(value);
+        case 'MMMReportLevel':
+          return MMMReportLevelTypeTransformer().decode(value);
         case 'MMMReportingColumn':
           return MMMReportingColumnTypeTransformer().decode(value);
         case 'MMMReportingTargetingType':
@@ -1410,24 +1777,28 @@ class ApiClient {
           return MediaUploadTypeTypeTransformer().decode(value);
         case 'MemberBusinessRole':
           return MemberBusinessRoleTypeTransformer().decode(value);
-        case 'MembersToDeleteBody':
-          return MembersToDeleteBody.fromJson(value);
-        case 'MembersToDeleteBodyMembersInner':
-          return MembersToDeleteBodyMembersInner.fromJson(value);
         case 'MetricsReportingLevel':
           return MetricsReportingLevelTypeTransformer().decode(value);
+        case 'MetricsReportingTemplateType':
+          return MetricsReportingTemplateTypeTypeTransformer().decode(value);
         case 'MetricsResponse':
           return MetricsResponse.fromJson(value);
+        case 'MetricsResponseDataItems':
+          return MetricsResponseDataItems.fromJson(value);
         case 'MinPriceFilter':
           return MinPriceFilter.fromJson(value);
-        case 'MultipleProductGroupsInner':
-          return MultipleProductGroupsInner.fromJson(value);
+        case 'MobileAppPlatform':
+          return MobileAppPlatformTypeTransformer().decode(value);
+        case 'MsotEventName':
+          return MsotEventNameTypeTransformer().decode(value);
+        case 'MultiPinsAnalyticsMetricTypesItem':
+          return MultiPinsAnalyticsMetricTypesItemTypeTransformer().decode(value);
+        case 'NetworkType':
+          return NetworkTypeTypeTransformer().decode(value);
         case 'NonDraftEntityStatus':
           return NonDraftEntityStatusTypeTransformer().decode(value);
         case 'NonNullableCatalogsCurrency':
           return NonNullableCatalogsCurrencyTypeTransformer().decode(value);
-        case 'NonNullableProductAvailabilityType':
-          return NonNullableProductAvailabilityTypeTypeTransformer().decode(value);
         case 'NotificationPostRequest':
           return NotificationPostRequest.fromJson(value);
         case 'NotificationResponse':
@@ -1436,76 +1807,76 @@ class ApiClient {
           return NullableCatalogsItemFieldTypeTypeTransformer().decode(value);
         case 'NullableCurrency':
           return NullableCurrencyTypeTransformer().decode(value);
-        case 'OauthAccessTokenRequestClientCredentials':
-          return OauthAccessTokenRequestClientCredentials.fromJson(value);
-        case 'OauthAccessTokenRequestCode':
-          return OauthAccessTokenRequestCode.fromJson(value);
-        case 'OauthAccessTokenRequestRefresh':
-          return OauthAccessTokenRequestRefresh.fromJson(value);
-        case 'OauthAccessTokenResponse':
-          return OauthAccessTokenResponse.fromJson(value);
-        case 'OauthAccessTokenResponseClientCredentials':
-          return OauthAccessTokenResponseClientCredentials.fromJson(value);
-        case 'OauthAccessTokenResponseCode':
-          return OauthAccessTokenResponseCode.fromJson(value);
-        case 'OauthAccessTokenResponseIntegrationRefresh':
-          return OauthAccessTokenResponseIntegrationRefresh.fromJson(value);
-        case 'OauthAccessTokenResponseRefresh':
-          return OauthAccessTokenResponseRefresh.fromJson(value);
+        case 'NullableEntityStatus':
+          return NullableEntityStatusTypeTransformer().decode(value);
+        case 'NullableLabelStatus':
+          return NullableLabelStatusTypeTransformer().decode(value);
+        case 'NullableLabelType':
+          return NullableLabelTypeTypeTransformer().decode(value);
+        case 'NullableOptimizationGoalMetadata':
+          return NullableOptimizationGoalMetadata.fromJson(value);
+        case 'NullablePartnerType':
+          return NullablePartnerTypeTypeTransformer().decode(value);
+        case 'NullalbleMatchType':
+          return NullalbleMatchTypeTypeTransformer().decode(value);
+        case 'NumericFilterOperatorType':
+          return NumericFilterOperatorTypeTypeTransformer().decode(value);
+        case 'OauthAccessToken':
+          return OauthAccessToken.fromJson(value);
         case 'ObjectiveType':
           return ObjectiveTypeTypeTransformer().decode(value);
         case 'OperationType':
           return OperationTypeTypeTransformer().decode(value);
         case 'OptimizationGoalMetadata':
           return OptimizationGoalMetadata.fromJson(value);
-        case 'OptimizationGoalMetadataConversionTagV3GoalMetadata':
-          return OptimizationGoalMetadataConversionTagV3GoalMetadata.fromJson(value);
-        case 'OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows':
-          return OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows.fromJson(value);
-        case 'OptimizationGoalMetadataFrequencyGoalMetadata':
-          return OptimizationGoalMetadataFrequencyGoalMetadata.fromJson(value);
-        case 'OptimizationGoalMetadataScrollupGoalMetadata':
-          return OptimizationGoalMetadataScrollupGoalMetadata.fromJson(value);
+        case 'OptimizationType':
+          return OptimizationTypeTypeTransformer().decode(value);
+        case 'Order':
+          return OrderTypeTransformer().decode(value);
         case 'OrderLine':
           return OrderLine.fromJson(value);
-        case 'OrderLineError':
-          return OrderLineError.fromJson(value);
+        case 'OrderLineMutationError':
+          return OrderLineMutationError.fromJson(value);
+        case 'OrderLineMutationResponse':
+          return OrderLineMutationResponse.fromJson(value);
+        case 'OrderLineMutationResult':
+          return OrderLineMutationResult.fromJson(value);
         case 'OrderLinePaidType':
           return OrderLinePaidTypeTypeTransformer().decode(value);
-        case 'OrderLineResponse':
-          return OrderLineResponse.fromJson(value);
-        case 'OrderLineSingleResponse':
-          return OrderLineSingleResponse.fromJson(value);
         case 'OrderLineStatus':
           return OrderLineStatusTypeTransformer().decode(value);
-        case 'OrderLines':
-          return OrderLines.fromJson(value);
-        case 'OrderLinesArrayResponse':
-          return OrderLinesArrayResponse.fromJson(value);
         case 'OrderLinesList200Response':
           return OrderLinesList200Response.fromJson(value);
+        case 'OsFamily':
+          return OsFamilyTypeTransformer().decode(value);
         case 'OverallStatusOptions':
           return OverallStatusOptionsTypeTransformer().decode(value);
         case 'PacingDeliveryType':
           return PacingDeliveryTypeTypeTransformer().decode(value);
         case 'PageVisitConversionTagsGet200Response':
           return PageVisitConversionTagsGet200Response.fromJson(value);
-        case 'Paginated':
-          return Paginated.fromJson(value);
+        case 'PartnerMetadata':
+          return PartnerMetadata.fromJson(value);
         case 'PartnerType':
           return PartnerTypeTypeTransformer().decode(value);
+        case 'PerformancePlusCampaignSettings':
+          return PerformancePlusCampaignSettings.fromJson(value);
         case 'Permissions':
           return PermissionsTypeTransformer().decode(value);
         case 'PermissionsWithOwner':
           return PermissionsWithOwnerTypeTransformer().decode(value);
         case 'Pin':
           return Pin.fromJson(value);
+        case 'PinAnalyticsDailyMetrics':
+          return PinAnalyticsDailyMetrics.fromJson(value);
         case 'PinAnalyticsMetricsResponse':
           return PinAnalyticsMetricsResponse.fromJson(value);
-        case 'PinAnalyticsMetricsResponseDailyMetricsInner':
-          return PinAnalyticsMetricsResponseDailyMetricsInner.fromJson(value);
+        case 'PinBase':
+          return PinBase.fromJson(value);
         case 'PinCreate':
           return PinCreate.fromJson(value);
+        case 'PinFilter':
+          return PinFilterTypeTransformer().decode(value);
         case 'PinMedia':
           return PinMedia.fromJson(value);
         case 'PinMediaMetadata':
@@ -1540,26 +1911,48 @@ class ApiClient {
           return PinMediaWithVideos.fromJson(value);
         case 'PinPromotionSummaryStatus':
           return PinPromotionSummaryStatusTypeTransformer().decode(value);
+        case 'PinRead':
+          return PinRead.fromJson(value);
+        case 'PinType':
+          return PinTypeTypeTransformer().decode(value);
         case 'PinUpdate':
           return PinUpdate.fromJson(value);
+        case 'PinnerListType':
+          return PinnerListTypeTypeTransformer().decode(value);
         case 'PinsList200Response':
           return PinsList200Response.fromJson(value);
-        case 'PinsSaveRequest':
-          return PinsSaveRequest.fromJson(value);
+        case 'PinsSaveRequestCreate':
+          return PinsSaveRequestCreate.fromJson(value);
+        case 'PinterestLibBatchItemException':
+          return PinterestLibBatchItemException.fromJson(value);
         case 'PinterestLibError':
           return PinterestLibError.fromJson(value);
         case 'PinterestLibPaginationOrder':
           return PinterestLibPaginationOrderTypeTransformer().decode(value);
         case 'PinterestLibStatus204':
           return PinterestLibStatus204.fromJson(value);
+        case 'PinterestProductCategoriesFilter':
+          return PinterestProductCategoriesFilter.fromJson(value);
         case 'PlacementGroupType':
           return PlacementGroupTypeTypeTransformer().decode(value);
         case 'PlacementMultipliers':
           return PlacementMultipliers.fromJson(value);
+        case 'PlacementTrafficType':
+          return PlacementTrafficTypeTypeTransformer().decode(value);
+        case 'PlacementType':
+          return PlacementTypeTypeTransformer().decode(value);
         case 'PredictedTimeSeries':
           return PredictedTimeSeries.fromJson(value);
+        case 'PreferredMediaType':
+          return PreferredMediaTypeTypeTransformer().decode(value);
         case 'PriceFilter':
           return PriceFilter.fromJson(value);
+        case 'PriceFilterPrice':
+          return PriceFilterPrice.fromJson(value);
+        case 'PrimarySort':
+          return PrimarySortTypeTransformer().decode(value);
+        case 'ProductAvailability':
+          return ProductAvailabilityTypeTransformer().decode(value);
         case 'ProductAvailabilityType':
           return ProductAvailabilityTypeTypeTransformer().decode(value);
         case 'ProductCategoriesDemographic':
@@ -1576,24 +1969,42 @@ class ApiClient {
           return ProductCategoryEnumTypeTransformer().decode(value);
         case 'ProductCategoryRegion':
           return ProductCategoryRegionTypeTransformer().decode(value);
-        case 'ProductGroupAnalyticsResponseInner':
-          return ProductGroupAnalyticsResponseInner.fromJson(value);
+        case 'ProductCondition':
+          return ProductConditionTypeTransformer().decode(value);
+        case 'ProductGroupAnalyticsItems':
+          return ProductGroupAnalyticsItems.fromJson(value);
         case 'ProductGroupPromotion':
           return ProductGroupPromotion.fromJson(value);
         case 'ProductGroupPromotionCreateRequest':
           return ProductGroupPromotionCreateRequest.fromJson(value);
-        case 'ProductGroupPromotionResponse':
-          return ProductGroupPromotionResponse.fromJson(value);
+        case 'ProductGroupPromotionCustomizableCTAType':
+          return ProductGroupPromotionCustomizableCTATypeTypeTransformer().decode(value);
         case 'ProductGroupPromotionResponseItem':
           return ProductGroupPromotionResponseItem.fromJson(value);
         case 'ProductGroupPromotionUpdateRequest':
           return ProductGroupPromotionUpdateRequest.fromJson(value);
+        case 'ProductGroupPromotions':
+          return ProductGroupPromotions.fromJson(value);
+        case 'ProductGroupPromotionsCreate':
+          return ProductGroupPromotionsCreate.fromJson(value);
         case 'ProductGroupPromotionsList200Response':
           return ProductGroupPromotionsList200Response.fromJson(value);
+        case 'ProductGroupPromotionsUpdateWithRequiredBody':
+          return ProductGroupPromotionsUpdateWithRequiredBody.fromJson(value);
         case 'ProductGroupReferenceFilter':
           return ProductGroupReferenceFilter.fromJson(value);
         case 'ProductGroupSummaryStatus':
           return ProductGroupSummaryStatusTypeTransformer().decode(value);
+        case 'ProductTagItem':
+          return ProductTagItem.fromJson(value);
+        case 'ProductTagsBulkAddRequest':
+          return ProductTagsBulkAddRequest.fromJson(value);
+        case 'ProductTagsBulkDeleteRequest':
+          return ProductTagsBulkDeleteRequest.fromJson(value);
+        case 'ProductTagsError':
+          return ProductTagsError.fromJson(value);
+        case 'ProductTagsResponse':
+          return ProductTagsResponse.fromJson(value);
         case 'ProductType0Filter':
           return ProductType0Filter.fromJson(value);
         case 'ProductType1Filter':
@@ -1604,30 +2015,42 @@ class ApiClient {
           return ProductType3Filter.fromJson(value);
         case 'ProductType4Filter':
           return ProductType4Filter.fromJson(value);
+        case 'Promotion':
+          return Promotion.fromJson(value);
+        case 'PromotionApplicationLevel':
+          return PromotionApplicationLevelTypeTransformer().decode(value);
         case 'PromotionArrayElement':
           return PromotionArrayElement.fromJson(value);
-        case 'PromotionCommon':
-          return PromotionCommon.fromJson(value);
-        case 'PromotionCreateRequest':
-          return PromotionCreateRequest.fromJson(value);
-        case 'PromotionResponse':
-          return PromotionResponse.fromJson(value);
+        case 'PromotionBatchUpdate':
+          return PromotionBatchUpdate.fromJson(value);
+        case 'PromotionCreate':
+          return PromotionCreate.fromJson(value);
         case 'PromotionTemplateValue':
           return PromotionTemplateValue.fromJson(value);
         case 'PromotionType':
           return PromotionTypeTypeTransformer().decode(value);
-        case 'PromotionUpdateRequest':
-          return PromotionUpdateRequest.fromJson(value);
         case 'PromotionsList200Response':
           return PromotionsList200Response.fromJson(value);
         case 'PromotionsResponse':
           return PromotionsResponse.fromJson(value);
+        case 'PublicTargetingType':
+          return PublicTargetingTypeTypeTransformer().decode(value);
         case 'QualityComponentDetails':
           return QualityComponentDetails.fromJson(value);
         case 'QualityComponentIssue':
           return QualityComponentIssue.fromJson(value);
         case 'QualityComponents':
           return QualityComponents.fromJson(value);
+        case 'QueryLabelEntityStatusesItems':
+          return QueryLabelEntityStatusesItemsTypeTransformer().decode(value);
+        case 'QueryLabelTypesItems':
+          return QueryLabelTypesItemsTypeTransformer().decode(value);
+        case 'QuerymetrictypesItems':
+          return QuerymetrictypesItemsTypeTransformer().decode(value);
+        case 'QuerypinanalyticsmetrictypesItems':
+          return QuerypinanalyticsmetrictypesItemsTypeTransformer().decode(value);
+        case 'QueryvideopinmetrictypesItems':
+          return QueryvideopinmetrictypesItemsTypeTransformer().decode(value);
         case 'QuizPinData':
           return QuizPinData.fromJson(value);
         case 'QuizPinOption':
@@ -1640,78 +2063,142 @@ class ApiClient {
           return RecordCounts.fromJson(value);
         case 'RelatedTerms':
           return RelatedTerms.fromJson(value);
-        case 'RelatedTermsRelatedTermsListInner':
-          return RelatedTermsRelatedTermsListInner.fromJson(value);
+        case 'RelatedTermsRelatedTermsListItems':
+          return RelatedTermsRelatedTermsListItems.fromJson(value);
+        case 'ReportType':
+          return ReportTypeTypeTransformer().decode(value);
+        case 'ReportingColumn':
+          return ReportingColumnTypeTransformer().decode(value);
         case 'ReportingColumnAsync':
           return ReportingColumnAsyncTypeTransformer().decode(value);
+        case 'ReportingColumnSync':
+          return ReportingColumnSyncTypeTransformer().decode(value);
         case 'ReportingTimeZone':
           return ReportingTimeZoneTypeTransformer().decode(value);
         case 'ReportsStats200Response':
           return ReportsStats200Response.fromJson(value);
-        case 'ReportsStatsParametersParameter':
-          return ReportsStatsParametersParameter.fromJson(value);
+        case 'RespondToInviteResultItem':
+          return RespondToInviteResultItem.fromJson(value);
         case 'RespondToInvitesResponseArray':
           return RespondToInvitesResponseArray.fromJson(value);
-        case 'RespondToInvitesResponseArrayItemsInner':
-          return RespondToInvitesResponseArrayItemsInner.fromJson(value);
+        case 'RetailLocalInventoryItemAttributes':
+          return RetailLocalInventoryItemAttributes.fromJson(value);
+        case 'RetailLocalInventoryItemAttributesOptional':
+          return RetailLocalInventoryItemAttributesOptional.fromJson(value);
         case 'Role':
           return RoleTypeTransformer().decode(value);
         case 'S3FilePart':
           return S3FilePart.fromJson(value);
         case 'S3MultipartUploadData':
           return S3MultipartUploadData.fromJson(value);
+        case 'SSIOAccount':
+          return SSIOAccount.fromJson(value);
         case 'SSIOAccountAddress':
           return SSIOAccountAddress.fromJson(value);
         case 'SSIOAccountItem':
           return SSIOAccountItem.fromJson(value);
         case 'SSIOAccountPMPName':
           return SSIOAccountPMPName.fromJson(value);
-        case 'SSIOAccountResponse':
-          return SSIOAccountResponse.fromJson(value);
-        case 'SSIOCreateInsertionOrderRequest':
-          return SSIOCreateInsertionOrderRequest.fromJson(value);
-        case 'SSIOCreateInsertionOrderResponse':
-          return SSIOCreateInsertionOrderResponse.fromJson(value);
-        case 'SSIOEditInsertionOrderRequest':
-          return SSIOEditInsertionOrderRequest.fromJson(value);
-        case 'SSIOEditInsertionOrderResponse':
-          return SSIOEditInsertionOrderResponse.fromJson(value);
-        case 'SSIOInsertionOrderCommon':
-          return SSIOInsertionOrderCommon.fromJson(value);
+        case 'SSIOInsertionOrder':
+          return SSIOInsertionOrder.fromJson(value);
+        case 'SSIOInsertionOrderCreate':
+          return SSIOInsertionOrderCreate.fromJson(value);
         case 'SSIOInsertionOrderStatus':
           return SSIOInsertionOrderStatus.fromJson(value);
         case 'SSIOInsertionOrderStatusResponse':
           return SSIOInsertionOrderStatusResponse.fromJson(value);
+        case 'SSIOInsertionOrderUpdate':
+          return SSIOInsertionOrderUpdate.fromJson(value);
         case 'SSIOOrderLine':
           return SSIOOrderLine.fromJson(value);
+        case 'SSIOOrderLineType':
+          return SSIOOrderLineTypeTypeTransformer().decode(value);
+        case 'Schedule':
+          return Schedule.fromJson(value);
+        case 'ScheduleAction':
+          return ScheduleActionTypeTransformer().decode(value);
+        case 'ScheduleAgeBucketMultipliers':
+          return ScheduleAgeBucketMultipliers.fromJson(value);
+        case 'ScheduleAppTypeMultipliers':
+          return ScheduleAppTypeMultipliers.fromJson(value);
+        case 'ScheduleAudienceMultipliers':
+          return ScheduleAudienceMultipliers.fromJson(value);
+        case 'ScheduleBatchUpdate':
+          return ScheduleBatchUpdate.fromJson(value);
+        case 'ScheduleBidMultipliers':
+          return ScheduleBidMultipliers.fromJson(value);
+        case 'ScheduleBidOptions':
+          return ScheduleBidOptions.fromJson(value);
+        case 'ScheduleBidOptionsGenderMultipliers':
+          return ScheduleBidOptionsGenderMultipliers.fromJson(value);
+        case 'ScheduleBidOptionsPlacementMultipliers':
+          return ScheduleBidOptionsPlacementMultipliers.fromJson(value);
+        case 'ScheduleCommonDeltaValue':
+          return ScheduleCommonDeltaValue.fromJson(value);
+        case 'ScheduleCreate':
+          return ScheduleCreate.fromJson(value);
+        case 'ScheduleCreateRequest':
+          return ScheduleCreateRequest.fromJson(value);
+        case 'ScheduleCreateRequestAllOf1':
+          return ScheduleCreateRequestAllOf1.fromJson(value);
+        case 'ScheduleDeltaValue':
+          return ScheduleDeltaValue.fromJson(value);
+        case 'ScheduleGenderMultipliers':
+          return ScheduleGenderMultipliers.fromJson(value);
+        case 'SchedulePlacementMultipliers':
+          return SchedulePlacementMultipliers.fromJson(value);
+        case 'ScheduleStatus':
+          return ScheduleStatusTypeTransformer().decode(value);
+        case 'ScheduleType':
+          return ScheduleTypeTypeTransformer().decode(value);
+        case 'ScheduleUpdateRequest':
+          return ScheduleUpdateRequest.fromJson(value);
+        case 'ScheduleUpdateRequestAllOf1':
+          return ScheduleUpdateRequestAllOf1.fromJson(value);
+        case 'SchedulesCreate200ResponseInner':
+          return SchedulesCreate200ResponseInner.fromJson(value);
+        case 'SchedulesCreate200ResponseInnerData':
+          return SchedulesCreate200ResponseInnerData.fromJson(value);
+        case 'SchedulesCreate200ResponseInnerDataOneOf':
+          return SchedulesCreate200ResponseInnerDataOneOf.fromJson(value);
+        case 'SchedulesList200Response':
+          return SchedulesList200Response.fromJson(value);
+        case 'ScrollupGoalMetadata':
+          return ScrollupGoalMetadata.fromJson(value);
         case 'SearchPartnerPins200Response':
           return SearchPartnerPins200Response.fromJson(value);
-        case 'SearchUserBoardsGet200Response':
-          return SearchUserBoardsGet200Response.fromJson(value);
-        case 'SearchUserPinsList200Response':
-          return SearchUserPinsList200Response.fromJson(value);
-        case 'SharedAudience':
-          return SharedAudience.fromJson(value);
         case 'SharedAudienceAccount':
           return SharedAudienceAccount.fromJson(value);
-        case 'SharedAudienceCommon':
-          return SharedAudienceCommon.fromJson(value);
-        case 'SharedAudienceResponse':
-          return SharedAudienceResponse.fromJson(value);
-        case 'SharedAudienceResponseCommon':
-          return SharedAudienceResponseCommon.fromJson(value);
-        case 'SingleInterestTargetingOptionResponse':
-          return SingleInterestTargetingOptionResponse.fromJson(value);
+        case 'SharedAudiencesForBusinessList200Response':
+          return SharedAudiencesForBusinessList200Response.fromJson(value);
+        case 'SingleInterestTargetingOption':
+          return SingleInterestTargetingOption.fromJson(value);
         case 'SourcePlatformOptions':
           return SourcePlatformOptionsTypeTransformer().decode(value);
         case 'SsioInsertionOrdersStatusGetByAdAccount200Response':
           return SsioInsertionOrdersStatusGetByAdAccount200Response.fromJson(value);
         case 'SsioOrderLinesGetByAdAccount200Response':
           return SsioOrderLinesGetByAdAccount200Response.fromJson(value);
+        case 'StandardPinMetricTypes':
+          return StandardPinMetricTypesTypeTransformer().decode(value);
+        case 'StoreMetadata':
+          return StoreMetadata.fromJson(value);
         case 'SummaryPin':
           return SummaryPin.fromJson(value);
-        case 'SystemUserUpdateRequest':
-          return SystemUserUpdateRequest.fromJson(value);
+        case 'SummaryStatus':
+          return SummaryStatusTypeTransformer().decode(value);
+        case 'SupplementalItemBatchOperationStatus':
+          return SupplementalItemBatchOperationStatusTypeTransformer().decode(value);
+        case 'SupplementalItemProcessingStatus':
+          return SupplementalItemProcessingStatusTypeTransformer().decode(value);
+        case 'SupplementalItemValidationEvent':
+          return SupplementalItemValidationEvent.fromJson(value);
+        case 'SupplementalItemsBatchResponse':
+          return SupplementalItemsBatchResponse.fromJson(value);
+        case 'SupplementalOperationResult':
+          return SupplementalOperationResult.fromJson(value);
+        case 'SystemUserUpdateWithRequiredBody':
+          return SystemUserUpdateWithRequiredBody.fromJson(value);
         case 'TargetingAdvertiserCountry':
           return TargetingAdvertiserCountryTypeTransformer().decode(value);
         case 'TargetingSpec':
@@ -1722,72 +2209,98 @@ class ApiClient {
           return TargetingSpecAppTypeTypeTransformer().decode(value);
         case 'TargetingSpecGender':
           return TargetingSpecGenderTypeTransformer().decode(value);
+        case 'TargetingSpecListOperation':
+          return TargetingSpecListOperationTypeTransformer().decode(value);
         case 'TargetingSpecOperationAgeBucket':
           return TargetingSpecOperationAgeBucket.fromJson(value);
         case 'TargetingSpecOperationAppType':
           return TargetingSpecOperationAppType.fromJson(value);
+        case 'TargetingSpecOperationAudienceExclude':
+          return TargetingSpecOperationAudienceExclude.fromJson(value);
+        case 'TargetingSpecOperationAudienceInclude':
+          return TargetingSpecOperationAudienceInclude.fromJson(value);
         case 'TargetingSpecOperationGender':
           return TargetingSpecOperationGender.fromJson(value);
-        case 'TargetingSpecOperationList':
-          return TargetingSpecOperationList.fromJson(value);
-        case 'TargetingSpecOperationMinMaxAge':
-          return TargetingSpecOperationMinMaxAge.fromJson(value);
+        case 'TargetingSpecOperationGeo':
+          return TargetingSpecOperationGeo.fromJson(value);
+        case 'TargetingSpecOperationGeoExclude':
+          return TargetingSpecOperationGeoExclude.fromJson(value);
+        case 'TargetingSpecOperationInterest':
+          return TargetingSpecOperationInterest.fromJson(value);
+        case 'TargetingSpecOperationLocale':
+          return TargetingSpecOperationLocale.fromJson(value);
+        case 'TargetingSpecOperationLocation':
+          return TargetingSpecOperationLocation.fromJson(value);
+        case 'TargetingSpecOperationLocationExclude':
+          return TargetingSpecOperationLocationExclude.fromJson(value);
+        case 'TargetingSpecOperationMaximumAge':
+          return TargetingSpecOperationMaximumAge.fromJson(value);
+        case 'TargetingSpecOperationMinimumAge':
+          return TargetingSpecOperationMinimumAge.fromJson(value);
         case 'TargetingSpecOperationShoppingRetargeting':
           return TargetingSpecOperationShoppingRetargeting.fromJson(value);
-        case 'TargetingSpecOperationString':
-          return TargetingSpecOperationString.fromJson(value);
+        case 'TargetingSpecOperations':
+          return TargetingSpecOperations.fromJson(value);
+        case 'TargetingSpecOptimal':
+          return TargetingSpecOptimal.fromJson(value);
         case 'TargetingSpecShoppingRetargeting':
           return TargetingSpecShoppingRetargeting.fromJson(value);
+        case 'TargetingSpecTargetingStrategyItems':
+          return TargetingSpecTargetingStrategyItemsTypeTransformer().decode(value);
+        case 'TargetingStrategy':
+          return TargetingStrategyTypeTransformer().decode(value);
+        case 'TargetingTemplate':
+          return TargetingTemplate.fromJson(value);
         case 'TargetingTemplateAudienceSizing':
           return TargetingTemplateAudienceSizing.fromJson(value);
         case 'TargetingTemplateAudienceSizingReachEstimate':
           return TargetingTemplateAudienceSizingReachEstimate.fromJson(value);
-        case 'TargetingTemplateCommon':
-          return TargetingTemplateCommon.fromJson(value);
         case 'TargetingTemplateCreate':
           return TargetingTemplateCreate.fromJson(value);
-        case 'TargetingTemplateGetResponseData':
-          return TargetingTemplateGetResponseData.fromJson(value);
         case 'TargetingTemplateKeyword':
           return TargetingTemplateKeyword.fromJson(value);
         case 'TargetingTemplateList200Response':
           return TargetingTemplateList200Response.fromJson(value);
-        case 'TargetingTemplateResponseData':
-          return TargetingTemplateResponseData.fromJson(value);
-        case 'TargetingTemplateUpdateRequest':
-          return TargetingTemplateUpdateRequest.fromJson(value);
-        case 'TargetingTypeFilter':
-          return TargetingTypeFilter.fromJson(value);
+        case 'TargetingTemplateStatus':
+          return TargetingTemplateStatusTypeTransformer().decode(value);
+        case 'TargetingTemplateUpdateRequestReadOrUpdate':
+          return TargetingTemplateUpdateRequestReadOrUpdate.fromJson(value);
         case 'TemplateBasedReport':
           return TemplateBasedReport.fromJson(value);
-        case 'TemplateResponse':
-          return TemplateResponse.fromJson(value);
-        case 'TemplateResponseDateRange':
-          return TemplateResponseDateRange.fromJson(value);
-        case 'TemplateResponseDateRangeAbsoluteDateRange':
-          return TemplateResponseDateRangeAbsoluteDateRange.fromJson(value);
-        case 'TemplateResponseDateRangeDynamicDateRange':
-          return TemplateResponseDateRangeDynamicDateRange.fromJson(value);
-        case 'TemplateResponseDateRangeRelativeDateRange':
-          return TemplateResponseDateRangeRelativeDateRange.fromJson(value);
+        case 'TemplateBasedReportCreate':
+          return TemplateBasedReportCreate.fromJson(value);
         case 'TemplatesList200Response':
           return TemplatesList200Response.fromJson(value);
         case 'TermsOfService':
           return TermsOfService.fromJson(value);
+        case 'TieBreakerType':
+          return TieBreakerTypeTypeTransformer().decode(value);
         case 'TimeSeries':
           return TimeSeries.fromJson(value);
         case 'TitleKeywordsFilter':
           return TitleKeywordsFilter.fromJson(value);
+        case 'TokenGrantType':
+          return TokenGrantTypeTypeTransformer().decode(value);
+        case 'TokenTypeHint':
+          return TokenTypeHintTypeTransformer().decode(value);
         case 'TopPinsAnalyticsResponse':
           return TopPinsAnalyticsResponse.fromJson(value);
         case 'TopPinsAnalyticsResponseDateAvailability':
           return TopPinsAnalyticsResponseDateAvailability.fromJson(value);
-        case 'TopPinsAnalyticsResponsePinsInner':
-          return TopPinsAnalyticsResponsePinsInner.fromJson(value);
+        case 'TopPinsAnalyticsResponsePinsItems':
+          return TopPinsAnalyticsResponsePinsItems.fromJson(value);
+        case 'TopPinsSortBy':
+          return TopPinsSortByTypeTransformer().decode(value);
         case 'TopVideoPinsAnalyticsResponse':
           return TopVideoPinsAnalyticsResponse.fromJson(value);
-        case 'TopVideoPinsAnalyticsResponsePinsInner':
-          return TopVideoPinsAnalyticsResponsePinsInner.fromJson(value);
+        case 'TopVideoPinsAnalyticsResponseDateAvailability':
+          return TopVideoPinsAnalyticsResponseDateAvailability.fromJson(value);
+        case 'TopVideoPinsAnalyticsResponsePinsItems':
+          return TopVideoPinsAnalyticsResponsePinsItems.fromJson(value);
+        case 'TopVideoPinsSortBy':
+          return TopVideoPinsSortByTypeTransformer().decode(value);
+        case 'TotalCountByEntityStatus':
+          return TotalCountByEntityStatus.fromJson(value);
         case 'TrackingUrls':
           return TrackingUrls.fromJson(value);
         case 'TrendType':
@@ -1796,10 +2309,6 @@ class ApiClient {
           return TrendingKeyword.fromJson(value);
         case 'TrendingKeywordDemographics':
           return TrendingKeywordDemographics.fromJson(value);
-        case 'TrendingKeywordDemographicsAgeDistribution':
-          return TrendingKeywordDemographicsAgeDistribution.fromJson(value);
-        case 'TrendingKeywordDemographicsGenderDistribution':
-          return TrendingKeywordDemographicsGenderDistribution.fromJson(value);
         case 'TrendingKeywordsResponse':
           return TrendingKeywordsResponse.fromJson(value);
         case 'TrendingPin':
@@ -1808,76 +2317,70 @@ class ApiClient {
           return TrendingProductCategory.fromJson(value);
         case 'TrendingTopic':
           return TrendingTopic.fromJson(value);
+        case 'TrendsAgeBucket':
+          return TrendsAgeBucketTypeTransformer().decode(value);
+        case 'TrendsAgeDistribution':
+          return TrendsAgeDistribution.fromJson(value);
+        case 'TrendsEditorial':
+          return TrendsEditorial.fromJson(value);
+        case 'TrendsGender':
+          return TrendsGenderTypeTransformer().decode(value);
+        case 'TrendsGenderDistribution':
+          return TrendsGenderDistribution.fromJson(value);
+        case 'TrendsGenderFilter':
+          return TrendsGenderFilterTypeTransformer().decode(value);
+        case 'TrendsL1Interest':
+          return TrendsL1InterestTypeTransformer().decode(value);
         case 'TrendsSupportedRegion':
           return TrendsSupportedRegionTypeTransformer().decode(value);
         case 'UpdatableItemAttributes':
           return UpdatableItemAttributes.fromJson(value);
         case 'UpdatableItemAttributesGtin':
           return UpdatableItemAttributesGtin.fromJson(value);
-        case 'UpdateAssetGroupBody':
-          return UpdateAssetGroupBody.fromJson(value);
-        case 'UpdateAssetGroupBodyAssetGroupsToUpdateInner':
-          return UpdateAssetGroupBodyAssetGroupsToUpdateInner.fromJson(value);
-        case 'UpdateAssetGroupResponse':
-          return UpdateAssetGroupResponse.fromJson(value);
-        case 'UpdateAssetGroupResponseExceptionsInner':
-          return UpdateAssetGroupResponseExceptionsInner.fromJson(value);
+        case 'UpdateBusinessMembershipsResponse':
+          return UpdateBusinessMembershipsResponse.fromJson(value);
         case 'UpdateInvitesResultsResponseArray':
           return UpdateInvitesResultsResponseArray.fromJson(value);
-        case 'UpdateInvitesResultsResponseArrayItemsInner':
-          return UpdateInvitesResultsResponseArrayItemsInner.fromJson(value);
         case 'UpdateMaskBidOptionField':
           return UpdateMaskBidOptionFieldTypeTransformer().decode(value);
         case 'UpdateMaskFieldType':
           return UpdateMaskFieldTypeTypeTransformer().decode(value);
         case 'UpdateMemberAssetAccessBody':
           return UpdateMemberAssetAccessBody.fromJson(value);
-        case 'UpdateMemberAssetAccessBodyAccessesInner':
-          return UpdateMemberAssetAccessBodyAccessesInner.fromJson(value);
+        case 'UpdateMemberAssetAccessItem':
+          return UpdateMemberAssetAccessItem.fromJson(value);
+        case 'UpdateMemberAssetResultItem':
+          return UpdateMemberAssetResultItem.fromJson(value);
         case 'UpdateMemberAssetsResultsResponseArray':
           return UpdateMemberAssetsResultsResponseArray.fromJson(value);
-        case 'UpdateMemberAssetsResultsResponseArrayItemsInner':
-          return UpdateMemberAssetsResultsResponseArrayItemsInner.fromJson(value);
-        case 'UpdateMemberBusinessRoleBody':
-          return UpdateMemberBusinessRoleBody.fromJson(value);
-        case 'UpdateMemberResult':
-          return UpdateMemberResult.fromJson(value);
-        case 'UpdateMemberResultsResponseArray':
-          return UpdateMemberResultsResponseArray.fromJson(value);
         case 'UpdatePartnerAssetAccessBody':
           return UpdatePartnerAssetAccessBody.fromJson(value);
-        case 'UpdatePartnerAssetAccessBodyAccessesInner':
-          return UpdatePartnerAssetAccessBodyAccessesInner.fromJson(value);
+        case 'UpdatePartnerAssetAccessItem':
+          return UpdatePartnerAssetAccessItem.fromJson(value);
         case 'UpdatePartnerAssetsResult':
           return UpdatePartnerAssetsResult.fromJson(value);
         case 'UpdatePartnerAssetsResultsResponseArray':
           return UpdatePartnerAssetsResultsResponseArray.fromJson(value);
-        case 'UpdatePartnerResultsResponseArray':
-          return UpdatePartnerResultsResponseArray.fromJson(value);
-        case 'UpdatePartnerResultsResponseArrayItemsInner':
-          return UpdatePartnerResultsResponseArrayItemsInner.fromJson(value);
         case 'UserAccountFollowedInterests200Response':
           return UserAccountFollowedInterests200Response.fromJson(value);
+        case 'UserAccountType':
+          return UserAccountTypeTypeTransformer().decode(value);
         case 'UserBusinessRoleBinding':
           return UserBusinessRoleBinding.fromJson(value);
         case 'UserFollowingFeedType':
           return UserFollowingFeedTypeTypeTransformer().decode(value);
-        case 'UserFollowingGet200Response':
-          return UserFollowingGet200Response.fromJson(value);
         case 'UserListOperationType':
           return UserListOperationTypeTypeTransformer().decode(value);
         case 'UserListType':
           return UserListTypeTypeTransformer().decode(value);
         case 'UserSingleAssetBinding':
           return UserSingleAssetBinding.fromJson(value);
-        case 'UserSummary':
-          return UserSummary.fromJson(value);
-        case 'UserWebsiteSummary':
-          return UserWebsiteSummary.fromJson(value);
-        case 'UserWebsiteVerificationCode':
-          return UserWebsiteVerificationCode.fromJson(value);
-        case 'UserWebsiteVerifyRequest':
-          return UserWebsiteVerifyRequest.fromJson(value);
+        case 'UserWebsite':
+          return UserWebsite.fromJson(value);
+        case 'UserWebsiteCreate':
+          return UserWebsiteCreate.fromJson(value);
+        case 'UserWebsiteVerification':
+          return UserWebsiteVerification.fromJson(value);
         case 'UserWebsitesGet200Response':
           return UserWebsitesGet200Response.fromJson(value);
         case 'UsersForIndividualAssetResponse':
@@ -1886,6 +2389,12 @@ class ApiClient {
           return VerticalProductCategoryTypeTransformer().decode(value);
         case 'VideoMetadataWithItemType':
           return VideoMetadataWithItemType.fromJson(value);
+        case 'VideoPinMetricTypes':
+          return VideoPinMetricTypesTypeTransformer().decode(value);
+        case 'WebsiteVerificationMethod':
+          return WebsiteVerificationMethodTypeTransformer().decode(value);
+        case 'WorkloadState':
+          return WorkloadStateTypeTransformer().decode(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

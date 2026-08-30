@@ -54,21 +54,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setField(AdsAnalyticsFilterColumn  field);
+	void setField(AdsAnalyticsFilterColumn field);
 	/*! \brief Get 
 	 */
 	AdsAnalyticsFilterOperator getROperator();
 
 	/*! \brief Set 
 	 */
-	void setROperator(AdsAnalyticsFilterOperator  r_operator);
+	void setROperator(AdsAnalyticsFilterOperator r_operator);
 	/*! \brief Get List of values for filtering
 	 */
 	std::list<long> getValues();
 
 	/*! \brief Set List of values for filtering
 	 */
-	void setValues(std::list <long> values);
+	void setValues(std::list<long> values);
 
 
     private:

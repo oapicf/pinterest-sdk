@@ -5,24 +5,24 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.CustomerList
-import model.CustomerListRequest
-import model.CustomerListUpdateRequest
+import model.CustomerListCreate
+import model.CustomerListUpdateWithRequiredBody
 import model.CustomerListsList200Response
 import model.Error
+import model.PaginationOrder
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class CustomerListsApiController @Inject()(cc: ControllerComponents, api: CustomerListsApi) extends AbstractController(cc) {
   /**
     * POST /v5/ad_accounts/:adAccountId/customer_lists
-    * @param adAccountId Unique identifier of an ad account.
     */
   def customerListsCreate(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): CustomerList = {
-      val customerListRequest = request.body.asJson.map(_.as[CustomerListRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "customerListRequest")
+      val customerListCreate = request.body.asJson.map(_.as[CustomerListCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "customerListCreate")
       }
-      api.customerListsCreate(adAccountId, customerListRequest)
+      api.customerListsCreate(adAccountId, customerListCreate)
     }
 
     val result = executeApi()
@@ -32,8 +32,7 @@ class CustomerListsApiController @Inject()(cc: ControllerComponents, api: Custom
 
   /**
     * GET /v5/ad_accounts/:adAccountId/customer_lists/:customerListId
-    * @param adAccountId Unique identifier of an ad account.
-    * @param customerListId Unique identifier of a customer list
+    * @param customerListId Customer list ID.
     */
   def customerListsGet(adAccountId: String, customerListId: String): Action[AnyContent] = Action { request =>
     def executeApi(): CustomerList = {
@@ -46,19 +45,22 @@ class CustomerListsApiController @Inject()(cc: ControllerComponents, api: Custom
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/customer_lists?pageSize=[value]&order=[value]&bookmark=[value]
-    * @param adAccountId Unique identifier of an ad account.
+    * GET /v5/ad_accounts/:adAccountId/customer_lists?bookmark=[value]&pageSize=[value]&order=[value]&excludeNca=[value]
     */
   def customerListsList(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): CustomerListsList200Response = {
+      val bookmark = request.getQueryString("bookmark")
+        
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
       val order = request.getQueryString("order")
+        .map(value => )
         
-      val bookmark = request.getQueryString("bookmark")
+      val excludeNca = request.getQueryString("exclude_nca")
+        .map(value => value.toBoolean)
         
-      api.customerListsList(adAccountId, pageSize, order, bookmark)
+      api.customerListsList(adAccountId, bookmark, pageSize, order, excludeNca)
     }
 
     val result = executeApi()
@@ -68,15 +70,14 @@ class CustomerListsApiController @Inject()(cc: ControllerComponents, api: Custom
 
   /**
     * PATCH /v5/ad_accounts/:adAccountId/customer_lists/:customerListId
-    * @param adAccountId Unique identifier of an ad account.
-    * @param customerListId Unique identifier of a customer list
+    * @param customerListId Customer list ID.
     */
   def customerListsUpdate(adAccountId: String, customerListId: String): Action[AnyContent] = Action { request =>
     def executeApi(): CustomerList = {
-      val customerListUpdateRequest = request.body.asJson.map(_.as[CustomerListUpdateRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "customerListUpdateRequest")
+      val customerListUpdateWithRequiredBody = request.body.asJson.map(_.as[CustomerListUpdateWithRequiredBody]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "customerListUpdateWithRequiredBody")
       }
-      api.customerListsUpdate(adAccountId, customerListId, customerListUpdateRequest)
+      api.customerListsUpdate(adAccountId, customerListId, customerListUpdateWithRequiredBody)
     }
 
     val result = executeApi()

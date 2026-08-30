@@ -5,13 +5,10 @@
 -export_type([openapi_label_create_request/0]).
 
 -type openapi_label_create_request() ::
-    #{ 'labels' := list(),
-       'parent_id' := binary()
+    #{ 'labels' := list()
      }.
 
-encode(#{ 'labels' := Labels,
-          'parent_id' := ParentId
+encode(#{ 'labels' := Labels
         }) ->
-    #{ 'labels' => Labels,
-       'parent_id' => ParentId
+    #{ 'labels' => Labels
      }.

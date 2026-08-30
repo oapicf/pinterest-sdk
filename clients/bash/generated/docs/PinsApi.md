@@ -19,18 +19,18 @@ Method | HTTP request | Description
 
 Get multiple Pin analytics
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account.
 - The maximum number of pins supported in a single request is 100.
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:
 
 - For Pins on public or protected boards: Admin, Analyst.
 - For Pins on secret boards: Admin.
 
-If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+If Pin was created before '2023-03-20' lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 
 ### Example
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
  **pinIds** | [**array[string]**](string.md) | List of Pin IDs. | [default to null]
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [default to null]
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
- **metricTypes** | [**array[string]**](string.md) | Pin metric types to get data for. | [default to null]
+ **metricTypes** | [**array[MultiPinsAnalyticsMetricTypesItem]**](MultiPinsAnalyticsMetricTypesItem.md) | Pin metric types to get data for. | [default to null]
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [optional] [default to ALL]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
@@ -73,12 +73,12 @@ Get Pin analytics
 Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account.
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:
 
 - For Pins on public or protected boards: Admin, Analyst.
 - For Pins on secret boards: Admin.
 
-If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+If Pin was created before '2023-03-20' lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 
 ### Example
 
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
  **pinId** | **string** | Unique identifier of a Pin. | [default to null]
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [default to null]
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
- **metricTypes** | [**array[string]**](string.md) | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>. | [default to null]
+ **metricTypes** | [**array[QuerypinanalyticsmetrictypesItems]**](QuerypinanalyticsmetrictypesItems.md) | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before '2023-03-20', Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than 'NO_SPLIT'. | [default to null]
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [optional] [default to ALL]
  **splitField** | **string** | How to split the data into groups. Not including this param means data won't be split. | [optional] [default to NO_SPLIT]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+[**Pin**](Pin.md)
 
 ### Authorization
 
@@ -264,7 +264,7 @@ Get a list of the Pins owned by the \"operation user_account\".
 ### Example
 
 ```bash
- pinsList  pin_filter=value  pin_metrics=value  include_protected_pins=value  pin_type=value  Specify as:  creative_types=value1 creative_types=value2 creative_types=...  ad_account_id=value  bookmark=value  page_size=value
+ pinsList  pin_filter=value  pin_metrics=value  include_protected_pins=value  pin_type=value  Specify as:  creative_types=value1 creative_types=value2 creative_types=...  ad_account_id=value  domain=value  Specify as:  domains=value1 domains=value2 domains=...  include_product_tag_obj=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -272,16 +272,21 @@ Get a list of the Pins owned by the \"operation user_account\".
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pinFilter** | **string** | The filter to apply to the pins | [optional] [default to null]
+ **pinFilter** | [**PinFilter**](.md) | The filter to apply to the pins | [optional] [default to null]
  **pinMetrics** | **boolean** | Specify whether to return 90d and lifetime Pin metrics. Total comments
 and total reactions are only available with lifetime Pin metrics. If Pin was
 created before '2023-03-20' lifetime metrics will only be available
 for Video and Idea Pin formats. Lifetime metrics are available for all Pin
 formats since then. | [optional] [default to false]
  **includeProtectedPins** | **boolean** | Whether to include protected pins in the results | [optional] [default to false]
- **pinType** | **string** | The type of pins to return, currently only enabled for private pins | [optional] [default to null]
+ **pinType** | [**PinType**](.md) | The type of pins to return, currently only enabled for private pins | [optional] [default to null]
  **creativeTypes** | [**array[CreativeType]**](CreativeType.md) | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
+ **domain** | **string** | Only return pins with links that match the exact domain. Domain should not include 'www.' prefix. For example, 'pinterest.com' is a valid domain, but 'www.pinterest.com' is not (will not match any pins). | [optional] [default to null]
+ **domains** | [**array[string]**](string.md) | Only return pins with links whose domain matches any value in the list.
+Values are joined comma-separated on the wire
+(e.g. '?domains=instagram.com,jcpenney.com'). | [optional] [default to null]
+ **includeProductTagObj** | **boolean** | Include product tag objects in the response with their associated links. | [optional] [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
  **pageSize** | **integer** | Maximum number of items to include in a single page.
 See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
@@ -308,7 +313,7 @@ Save Pin
 
 Save a Pin on a board or board section owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:
 
 - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.
 - For Pins on secret boards: Owner, Admin.
@@ -328,7 +333,7 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinId** | **string** | Unique identifier of a Pin. | [default to null]
- **pinsSaveRequest** | [**PinsSaveRequest**](PinsSaveRequest.md) | Request object used to save an existing pin |
+ **pinsSaveRequestCreate** | [**PinsSaveRequestCreate**](PinsSaveRequestCreate.md) |  |
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type

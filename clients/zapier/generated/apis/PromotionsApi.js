@@ -1,8 +1,9 @@
 const samples = require('../samples/PromotionsApi');
-const Error = require('../models/Error');
-const PromotionCreateRequest = require('../models/PromotionCreateRequest');
-const PromotionResponse = require('../models/PromotionResponse');
-const PromotionUpdateRequest = require('../models/PromotionUpdateRequest');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
+const Pinterest.Lib.PaginationOrder = require('../models/Pinterest.Lib.PaginationOrder');
+const Promotion = require('../models/Promotion');
+const PromotionBatchUpdate = require('../models/PromotionBatchUpdate');
+const PromotionCreate = require('../models/PromotionCreate');
 const PromotionsResponse = require('../models/PromotionsResponse');
 const promotions_list_200_response = require('../models/promotions_list_200_response');
 const utils = require('../utils/utils');
@@ -25,8 +26,8 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'PromotionCreateRequest',
-                    label: 'List of promotions to create, size limit [1, 30].',
+                    key: 'PromotionCreate',
+                    label: '',
                     type: 'string',
                 }
             ],
@@ -45,7 +46,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...PromotionCreateRequest.mapping(bundle),
+                        ...PromotionCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -68,19 +69,20 @@ module.exports = {
         operation: {
             inputFields: [
                 {
+                    key: 'promotion_id',
+                    label: 'Promotion ID',
+                    type: 'string',
+                    required: true,
+                },
+                {
                     key: 'ad_account_id',
                     label: 'Unique identifier of an ad account.',
                     type: 'string',
                     required: true,
                 },
-                {
-                    key: 'promotion_id',
-                    label: 'Unique identifier of a promotion',
-                    type: 'string',
-                    required: true,
-                },
             ],
             outputFields: [
+                ...Promotion.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -102,7 +104,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: { data: {} }
+            sample: samples['PromotionSample']
         }
     },
     promotions/get: {
@@ -116,20 +118,20 @@ module.exports = {
         operation: {
             inputFields: [
                 {
+                    key: 'promotion_id',
+                    label: 'Promotion ID',
+                    type: 'string',
+                    required: true,
+                },
+                {
                     key: 'ad_account_id',
                     label: 'Unique identifier of an ad account.',
                     type: 'string',
                     required: true,
                 },
-                {
-                    key: 'promotion_id',
-                    label: 'Unique identifier of a promotion',
-                    type: 'string',
-                    required: true,
-                },
             ],
             outputFields: [
-                ...PromotionResponse.fields('', false),
+                ...Promotion.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -151,7 +153,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['PromotionResponseSample']
+            sample: samples['PromotionSample']
         }
     },
     promotions/list: {
@@ -171,24 +173,16 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
-                },
-                {
-                    key: 'order',
-                    label: 'The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.',
-                    type: 'string',
-                    choices: [
-                        'ASCENDING',
-                        'DESCENDING',
-                    ],
-                },
-                {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
                     type: 'string',
                 },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
+                },
+                ....fields(),
             ],
             outputFields: [
                 ...promotions_list_200_response.fields('', false),
@@ -203,9 +197,9 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
+                        'bookmark': bundle.inputData?.['bookmark'],
                         'page_size': bundle.inputData?.['page_size'],
                         'order': bundle.inputData?.['order'],
-                        'bookmark': bundle.inputData?.['bookmark'],
                     },
                     body: {
                     },
@@ -236,8 +230,8 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'PromotionUpdateRequest',
-                    label: 'List of promotions to create, size limit [1, 30].',
+                    key: 'PromotionBatchUpdate',
+                    label: '',
                     type: 'string',
                 }
             ],
@@ -256,7 +250,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...PromotionUpdateRequest.mapping(bundle),
+                        ...PromotionBatchUpdate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {

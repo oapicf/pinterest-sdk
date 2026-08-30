@@ -12,7 +12,7 @@
 #' @field description  character [optional]
 #' @field filters  \link{CatalogsProductGroupFiltersRequest} [optional]
 #' @field locale  \link{CatalogsLocale} [optional]
-#' @field name  character [optional]
+#' @field name Name of catalog product group character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -34,7 +34,7 @@ CatalogsRetailProductGroupUpdateRequest <- R6::R6Class(
     #' @param description description
     #' @param filters filters
     #' @param locale locale
-    #' @param name name
+    #' @param name Name of catalog product group
     #' @param ... Other optional arguments.
     initialize = function(`catalog_type` = NULL, `country` = NULL, `description` = NULL, `filters` = NULL, `locale` = NULL, `name` = NULL, ...) {
       if (!is.null(`catalog_type`)) {
@@ -115,7 +115,7 @@ CatalogsRetailProductGroupUpdateRequest <- R6::R6Class(
       }
       if (!is.null(self$`country`)) {
         CatalogsRetailProductGroupUpdateRequestObject[["country"]] <-
-          self$`country`$toSimpleType()
+          self$extractSimpleType(self$`country`)
       }
       if (!is.null(self$`description`)) {
         CatalogsRetailProductGroupUpdateRequestObject[["description"]] <-
@@ -123,17 +123,40 @@ CatalogsRetailProductGroupUpdateRequest <- R6::R6Class(
       }
       if (!is.null(self$`filters`)) {
         CatalogsRetailProductGroupUpdateRequestObject[["filters"]] <-
-          self$`filters`$toSimpleType()
+          self$extractSimpleType(self$`filters`)
       }
       if (!is.null(self$`locale`)) {
         CatalogsRetailProductGroupUpdateRequestObject[["locale"]] <-
-          self$`locale`$toSimpleType()
+          self$extractSimpleType(self$`locale`)
       }
       if (!is.null(self$`name`)) {
         CatalogsRetailProductGroupUpdateRequestObject[["name"]] <-
           self$`name`
       }
       return(CatalogsRetailProductGroupUpdateRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

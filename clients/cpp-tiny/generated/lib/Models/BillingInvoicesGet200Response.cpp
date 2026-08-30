@@ -7,7 +7,7 @@ using namespace Tiny;
 Billing_invoices_get_200_response::Billing_invoices_get_200_response()
 {
 	bookmark = std::string();
-	items = std::list<BillingInvoiceResponse>();
+	items = std::list<BillingInvoice>();
 }
 
 Billing_invoices_get_200_response::Billing_invoices_get_200_response(std::string jsonString)
@@ -45,8 +45,8 @@ Billing_invoices_get_200_response::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<BillingInvoiceResponse> items_list;
-        BillingInvoiceResponse element;
+        std::list<BillingInvoice> items_list;
+        BillingInvoice element;
         for(auto& var : value.array_range())
         {
 
@@ -78,12 +78,12 @@ Billing_invoices_get_200_response::toJson()
 
 
 
-    std::list<BillingInvoiceResponse> items_list = getItems();
+    std::list<BillingInvoice> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        BillingInvoiceResponse obj = var;
+        BillingInvoice obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -102,19 +102,19 @@ Billing_invoices_get_200_response::getBookmark()
 }
 
 void
-Billing_invoices_get_200_response::setBookmark(std::string  bookmark)
+Billing_invoices_get_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
 
-std::list<BillingInvoiceResponse>
+std::list<BillingInvoice>
 Billing_invoices_get_200_response::getItems()
 {
 	return items;
 }
 
 void
-Billing_invoices_get_200_response::setItems(std::list <BillingInvoiceResponse> items)
+Billing_invoices_get_200_response::setItems(std::list<BillingInvoice> items)
 {
 	this->items = items;
 }

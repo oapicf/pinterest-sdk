@@ -1,11 +1,12 @@
 # Org.OpenAPITools.Model.CatalogsCreativeAssetsItemResponse
-Object describing a hotel record
+Object describing a creative assets item record
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | **CatalogsType** |  | 
+**CatalogType** | **string** |  | 
+**ItemResponseKind** | **string** | Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload. | 
 **Attributes** | [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] 
 **CreativeAssetsId** | **string** | The catalog creative assets id in the merchant namespace | [optional] 
 **Pins** | [**List&lt;Pin&gt;**](Pin.md) | The pins mapped to the item | [optional] 

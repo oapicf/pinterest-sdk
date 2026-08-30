@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Invite statuses used for filters.",
+  "name": "InviteFilterStatus",
+  "symbols": [
+    "PENDING",
+    "EXPIRED"
+  ]
+}

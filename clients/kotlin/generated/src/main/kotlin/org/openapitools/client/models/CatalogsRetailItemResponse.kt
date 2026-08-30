@@ -8,14 +8,21 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.ItemAttributes
 import org.openapitools.client.models.Pin
 
@@ -26,6 +33,7 @@ import com.squareup.moshi.JsonClass
  * Object describing a retail item record
  *
  * @param catalogType 
+ * @param itemResponseKind Discriminator literal identifying this leaf inside an `ItemResponse` payload.
  * @param attributes 
  * @param itemId The catalog retail item id in the merchant namespace
  * @param pins The pins mapped to the item
@@ -35,7 +43,11 @@ import com.squareup.moshi.JsonClass
 data class CatalogsRetailItemResponse (
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
+    val catalogType: CatalogsRetailItemResponse.CatalogType,
+
+    /* Discriminator literal identifying this leaf inside an `ItemResponse` payload. */
+    @Json(name = "item_response_kind")
+    val itemResponseKind: CatalogsRetailItemResponse.ItemResponseKind,
 
     @Json(name = "attributes")
     val attributes: ItemAttributes? = null,
@@ -50,6 +62,24 @@ data class CatalogsRetailItemResponse (
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: RETAIL
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "RETAIL") RETAIL("RETAIL");
+    }
+    /**
+     * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+     *
+     * Values: retail_item
+     */
+    @JsonClass(generateAdapter = false)
+    enum class ItemResponseKind(val value: kotlin.String) {
+        @Json(name = "retail_item") retail_item("retail_item");
+    }
 
 }
 

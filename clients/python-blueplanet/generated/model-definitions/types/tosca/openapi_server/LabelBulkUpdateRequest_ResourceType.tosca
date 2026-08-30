@@ -7,6 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  LabelStatusBulkUpdate = openapi_server.resourceTypes.LabelStatusBulkUpdate
 }
 resourceTypes {
 
@@ -20,16 +21,15 @@ resourceTypes {
           description = "Label ID."
           optional = true
         }
-        status {
+        parent_id {
           type =  string
-          description = "Set status to &#x60;ARCHIVED&#x60; to remove the label from the parent entity."
-          enum = ["ARCHIVED"]
-          optional = false
+          description = "Unique identifier of the asset you are labelling. Currently, you can only label campaigns."
+          optional = true
         }
-        value {
-          type =  string
-          description = "&lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; value field will be deprecated. Label name. 100-character limit."
-          optional = false
+        status {
+          type = LabelStatusBulkUpdate
+          description = ""
+          optional = true
         }
     }
   }

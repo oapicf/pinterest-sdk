@@ -4,7 +4,7 @@ package org.openapitools.client.model
 
 case class TargetingSpecOperationGender (
     _field: String,
-    _operation: String,
+    _operation: TargetingSpecListOperation,
     _values: List[TargetingSpecGender]
 )
 object TargetingSpecOperationGender {

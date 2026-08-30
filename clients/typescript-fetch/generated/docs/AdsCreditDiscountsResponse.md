@@ -10,7 +10,7 @@ Name | Type
 `advertiserId` | string
 `discountCurrency` | string
 `discountInMicroCurrency` | number
-`discountType` | string
+`discountType` | [AdsCreditDiscountType](AdsCreditDiscountType.md)
 `remainingDiscountInMicroCurrency` | number
 `title` | string
 

@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsRetailFeedsUpdateRequest::CatalogsRetailFeedsUpdateRequest()
 {
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
 	credentials = CatalogsFeedCredentials();
 	default_availability = ProductAvailabilityType();
 	default_currency = NullableCurrency();
@@ -40,9 +40,8 @@ CatalogsRetailFeedsUpdateRequest::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -168,8 +167,8 @@ CatalogsRetailFeedsUpdateRequest::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -232,14 +231,14 @@ CatalogsRetailFeedsUpdateRequest::toJson()
 
 }
 
-CatalogsType
+std::string
 CatalogsRetailFeedsUpdateRequest::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsRetailFeedsUpdateRequest::setCatalogType(CatalogsType  catalog_type)
+CatalogsRetailFeedsUpdateRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -251,7 +250,7 @@ CatalogsRetailFeedsUpdateRequest::getCredentials()
 }
 
 void
-CatalogsRetailFeedsUpdateRequest::setCredentials(CatalogsFeedCredentials  credentials)
+CatalogsRetailFeedsUpdateRequest::setCredentials(CatalogsFeedCredentials credentials)
 {
 	this->credentials = credentials;
 }
@@ -263,7 +262,7 @@ CatalogsRetailFeedsUpdateRequest::getDefaultAvailability()
 }
 
 void
-CatalogsRetailFeedsUpdateRequest::setDefaultAvailability(ProductAvailabilityType  default_availability)
+CatalogsRetailFeedsUpdateRequest::setDefaultAvailability(ProductAvailabilityType default_availability)
 {
 	this->default_availability = default_availability;
 }
@@ -275,7 +274,7 @@ CatalogsRetailFeedsUpdateRequest::getDefaultCurrency()
 }
 
 void
-CatalogsRetailFeedsUpdateRequest::setDefaultCurrency(NullableCurrency  default_currency)
+CatalogsRetailFeedsUpdateRequest::setDefaultCurrency(NullableCurrency default_currency)
 {
 	this->default_currency = default_currency;
 }
@@ -287,7 +286,7 @@ CatalogsRetailFeedsUpdateRequest::getFormat()
 }
 
 void
-CatalogsRetailFeedsUpdateRequest::setFormat(CatalogsFormat  format)
+CatalogsRetailFeedsUpdateRequest::setFormat(CatalogsFormat format)
 {
 	this->format = format;
 }
@@ -299,7 +298,7 @@ CatalogsRetailFeedsUpdateRequest::getLocation()
 }
 
 void
-CatalogsRetailFeedsUpdateRequest::setLocation(std::string  location)
+CatalogsRetailFeedsUpdateRequest::setLocation(std::string location)
 {
 	this->location = location;
 }
@@ -311,7 +310,7 @@ CatalogsRetailFeedsUpdateRequest::getName()
 }
 
 void
-CatalogsRetailFeedsUpdateRequest::setName(std::string  name)
+CatalogsRetailFeedsUpdateRequest::setName(std::string name)
 {
 	this->name = name;
 }
@@ -323,7 +322,7 @@ CatalogsRetailFeedsUpdateRequest::getPreferredProcessingSchedule()
 }
 
 void
-CatalogsRetailFeedsUpdateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule)
+CatalogsRetailFeedsUpdateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferred_processing_schedule)
 {
 	this->preferred_processing_schedule = preferred_processing_schedule;
 }
@@ -335,7 +334,7 @@ CatalogsRetailFeedsUpdateRequest::getStatus()
 }
 
 void
-CatalogsRetailFeedsUpdateRequest::setStatus(CatalogsStatus  status)
+CatalogsRetailFeedsUpdateRequest::setStatus(CatalogsStatus status)
 {
 	this->status = status;
 }

@@ -8,27 +8,26 @@
  * Do not edit the class manually.
  */
 import { HotelProcessingRecord } from './hotelProcessingRecord';
-import { CatalogsType } from './catalogsType';
 import { BatchOperationStatus } from './batchOperationStatus';
 
 
 /**
- * Object describing the catalogs hotel items batch
+ * Object describing the catalogs hotel items batch. If specified, you must provide all properties.
  */
 export interface CatalogsHotelItemsBatch { 
     /**
      * Id of the catalogs items batch
      */
     batch_id?: string;
-    catalog_type: CatalogsType;
+    catalog_type: CatalogsHotelItemsBatch.CatalogTypeEnum;
     /**
      * Date and time (UTC) of the batch completion: YYYY-MM-DD\'T\'hh:mm:ss
      */
-    readonly completed_time?: string | null;
+    completed_time?: string | null;
     /**
      * Date and time (UTC) of the batch creation: YYYY-MM-DD\'T\'hh:mm:ss
      */
-    readonly created_time?: string;
+    created_time?: string;
     /**
      * Array with the catalogs items processing records part of the catalogs items batch
      */
@@ -36,6 +35,10 @@ export interface CatalogsHotelItemsBatch {
     status?: BatchOperationStatus;
 }
 export namespace CatalogsHotelItemsBatch {
+    export const CatalogTypeEnum = {
+        Hotel: 'HOTEL'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

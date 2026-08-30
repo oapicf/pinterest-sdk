@@ -3,7 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/lead_subscription_post_params_create_all_of_partner_metadata.dart';
+import 'package:openapi/src/model/lead_subscription_create.dart';
+import 'package:openapi/src/model/partner_metadata.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -15,24 +16,17 @@ part 'lead_subscription_post_params_create.g.dart';
 /// * [leadFormId] - Lead form ID.
 /// * [webhookUrl] - Standard HTTPS webhook URL.
 /// * [partnerAccessToken] - Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
-/// * [partnerMetadata] 
+/// * [partnerMetadata] - Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
 /// * [partnerRefreshToken] - Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
 @BuiltValue()
-abstract class LeadSubscriptionPostParamsCreate implements Built<LeadSubscriptionPostParamsCreate, LeadSubscriptionPostParamsCreateBuilder> {
-  /// Lead form ID.
-  @BuiltValueField(wireName: r'lead_form_id')
-  String? get leadFormId;
-
-  /// Standard HTTPS webhook URL.
-  @BuiltValueField(wireName: r'webhook_url')
-  String get webhookUrl;
-
+abstract class LeadSubscriptionPostParamsCreate implements LeadSubscriptionCreate, Built<LeadSubscriptionPostParamsCreate, LeadSubscriptionPostParamsCreateBuilder> {
   /// Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
   @BuiltValueField(wireName: r'partner_access_token')
   String? get partnerAccessToken;
 
+  /// Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
   @BuiltValueField(wireName: r'partner_metadata')
-  LeadSubscriptionPostParamsCreateAllOfPartnerMetadata? get partnerMetadata;
+  PartnerMetadata? get partnerMetadata;
 
   /// Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
   @BuiltValueField(wireName: r'partner_refresh_token')
@@ -61,6 +55,13 @@ class _$LeadSubscriptionPostParamsCreateSerializer implements PrimitiveSerialize
     LeadSubscriptionPostParamsCreate object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.partnerMetadata != null) {
+      yield r'partner_metadata';
+      yield serializers.serialize(
+        object.partnerMetadata,
+        specifiedType: const FullType(PartnerMetadata),
+      );
+    }
     if (object.leadFormId != null) {
       yield r'lead_form_id';
       yield serializers.serialize(
@@ -68,23 +69,11 @@ class _$LeadSubscriptionPostParamsCreateSerializer implements PrimitiveSerialize
         specifiedType: const FullType(String),
       );
     }
-    yield r'webhook_url';
-    yield serializers.serialize(
-      object.webhookUrl,
-      specifiedType: const FullType(String),
-    );
     if (object.partnerAccessToken != null) {
       yield r'partner_access_token';
       yield serializers.serialize(
         object.partnerAccessToken,
         specifiedType: const FullType(String),
-      );
-    }
-    if (object.partnerMetadata != null) {
-      yield r'partner_metadata';
-      yield serializers.serialize(
-        object.partnerMetadata,
-        specifiedType: const FullType(LeadSubscriptionPostParamsCreateAllOfPartnerMetadata),
       );
     }
     if (object.partnerRefreshToken != null) {
@@ -94,6 +83,11 @@ class _$LeadSubscriptionPostParamsCreateSerializer implements PrimitiveSerialize
         specifiedType: const FullType(String),
       );
     }
+    yield r'webhook_url';
+    yield serializers.serialize(
+      object.webhookUrl,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override
@@ -117,12 +111,37 @@ class _$LeadSubscriptionPostParamsCreateSerializer implements PrimitiveSerialize
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'partner_metadata':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(PartnerMetadata),
+          ) as PartnerMetadata?;
+          if (valueDes == null) continue;
+          result.partnerMetadata.replace(valueDes);
+          break;
         case r'lead_form_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.leadFormId = valueDes;
+          break;
+        case r'partner_access_token':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.partnerAccessToken = valueDes;
+          break;
+        case r'partner_refresh_token':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.partnerRefreshToken = valueDes;
           break;
         case r'webhook_url':
           final valueDes = serializers.deserialize(
@@ -130,27 +149,6 @@ class _$LeadSubscriptionPostParamsCreateSerializer implements PrimitiveSerialize
             specifiedType: const FullType(String),
           ) as String;
           result.webhookUrl = valueDes;
-          break;
-        case r'partner_access_token':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.partnerAccessToken = valueDes;
-          break;
-        case r'partner_metadata':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(LeadSubscriptionPostParamsCreateAllOfPartnerMetadata),
-          ) as LeadSubscriptionPostParamsCreateAllOfPartnerMetadata;
-          result.partnerMetadata.replace(valueDes);
-          break;
-        case r'partner_refresh_token':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.partnerRefreshToken = valueDes;
           break;
         default:
           unhandled.add(key);

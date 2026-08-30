@@ -20,7 +20,7 @@ typedef struct title_keywords_filter_t title_keywords_filter_t;
 
 
 typedef struct title_keywords_filter_t {
-    catalogs_product_group_multiple_string_criteria_t *title_keywords; //object
+    struct catalogs_product_group_multiple_string_criteria_t *title_keywords; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } title_keywords_filter_t;

@@ -5,9 +5,9 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
-#include "../model/error.h"
 #include "../model/notification_post_request.h"
 #include "../model/notification_response.h"
+#include "../model/pinterest_lib_error.h"
 
 
 // Receive notifications from external partners.

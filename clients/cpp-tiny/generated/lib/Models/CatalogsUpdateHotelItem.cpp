@@ -107,7 +107,7 @@ CatalogsUpdateHotelItem::getAttributes()
 }
 
 void
-CatalogsUpdateHotelItem::setAttributes(CatalogsUpdatableHotelAttributes  attributes)
+CatalogsUpdateHotelItem::setAttributes(CatalogsUpdatableHotelAttributes attributes)
 {
 	this->attributes = attributes;
 }
@@ -119,7 +119,7 @@ CatalogsUpdateHotelItem::getHotelId()
 }
 
 void
-CatalogsUpdateHotelItem::setHotelId(std::string  hotel_id)
+CatalogsUpdateHotelItem::setHotelId(std::string hotel_id)
 {
 	this->hotel_id = hotel_id;
 }
@@ -131,7 +131,7 @@ CatalogsUpdateHotelItem::getOperation()
 }
 
 void
-CatalogsUpdateHotelItem::setOperation(std::string  operation)
+CatalogsUpdateHotelItem::setOperation(std::string operation)
 {
 	this->operation = operation;
 }

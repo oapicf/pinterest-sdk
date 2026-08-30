@@ -5,31 +5,31 @@
 -export_type([openapi_keyword/0]).
 
 -type openapi_keyword() ::
-    #{ 'bid' => integer(),
-       'match_type' := openapi_match_type_response:openapi_match_type_response(),
-       'value' := binary(),
-       'archived' => boolean(),
-       'id' => binary(),
-       'parent_id' => binary(),
+    #{ 'archived' => boolean(),
+       'bid' => integer(),
+       'id' := binary(),
+       'match_type' := openapi_match_type:openapi_match_type(),
+       'parent_id' := binary(),
        'parent_type' => binary(),
-       'type' => binary()
+       'type' => binary(),
+       'value' := binary()
      }.
 
-encode(#{ 'bid' := Bid,
-          'match_type' := MatchType,
-          'value' := Value,
-          'archived' := Archived,
+encode(#{ 'archived' := Archived,
+          'bid' := Bid,
           'id' := Id,
+          'match_type' := MatchType,
           'parent_id' := ParentId,
           'parent_type' := ParentType,
-          'type' := Type
+          'type' := Type,
+          'value' := Value
         }) ->
-    #{ 'bid' => Bid,
-       'match_type' => MatchType,
-       'value' => Value,
-       'archived' => Archived,
+    #{ 'archived' => Archived,
+       'bid' => Bid,
        'id' => Id,
+       'match_type' => MatchType,
        'parent_id' => ParentId,
        'parent_type' => ParentType,
-       'type' => Type
+       'type' => Type,
+       'value' => Value
      }.

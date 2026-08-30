@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  AdGroupResponse = openapi_server.resourceTypes.AdGroupResponse
+  AdGroup = openapi_server.resourceTypes.AdGroup
 }
 resourceTypes {
 
@@ -23,7 +23,7 @@ resourceTypes {
         }
         items {
           type = array
-          items.type = AdGroupResponse
+          items.type = AdGroup
           description = ""
           optional = true
         }

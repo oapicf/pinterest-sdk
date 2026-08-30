@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,12 +20,14 @@ import (
 // checks if the CatalogsCreativeAssetsItemResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CatalogsCreativeAssetsItemResponse{}
 
-// CatalogsCreativeAssetsItemResponse Object describing a hotel record
+// CatalogsCreativeAssetsItemResponse Object describing a creative assets item record
 type CatalogsCreativeAssetsItemResponse struct {
 	Attributes *CatalogsCreativeAssetsAttributes `json:"attributes,omitempty"`
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 	// The catalog creative assets id in the merchant namespace
 	CreativeAssetsId *string `json:"creative_assets_id,omitempty"`
+	// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	ItemResponseKind string `json:"item_response_kind"`
 	// The pins mapped to the item
 	Pins []Pin `json:"pins,omitempty"`
 }
@@ -36,9 +38,10 @@ type _CatalogsCreativeAssetsItemResponse CatalogsCreativeAssetsItemResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsCreativeAssetsItemResponse(catalogType CatalogsType) *CatalogsCreativeAssetsItemResponse {
+func NewCatalogsCreativeAssetsItemResponse(catalogType string, itemResponseKind string) *CatalogsCreativeAssetsItemResponse {
 	this := CatalogsCreativeAssetsItemResponse{}
 	this.CatalogType = catalogType
+	this.ItemResponseKind = itemResponseKind
 	return &this
 }
 
@@ -83,9 +86,9 @@ func (o *CatalogsCreativeAssetsItemResponse) SetAttributes(v CatalogsCreativeAss
 }
 
 // GetCatalogType returns the CatalogType field value
-func (o *CatalogsCreativeAssetsItemResponse) GetCatalogType() CatalogsType {
+func (o *CatalogsCreativeAssetsItemResponse) GetCatalogType() string {
 	if o == nil {
-		var ret CatalogsType
+		var ret string
 		return ret
 	}
 
@@ -94,7 +97,7 @@ func (o *CatalogsCreativeAssetsItemResponse) GetCatalogType() CatalogsType {
 
 // GetCatalogTypeOk returns a tuple with the CatalogType field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsItemResponse) GetCatalogTypeOk() (*CatalogsType, bool) {
+func (o *CatalogsCreativeAssetsItemResponse) GetCatalogTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -102,7 +105,7 @@ func (o *CatalogsCreativeAssetsItemResponse) GetCatalogTypeOk() (*CatalogsType, 
 }
 
 // SetCatalogType sets field value
-func (o *CatalogsCreativeAssetsItemResponse) SetCatalogType(v CatalogsType) {
+func (o *CatalogsCreativeAssetsItemResponse) SetCatalogType(v string) {
 	o.CatalogType = v
 }
 
@@ -136,6 +139,30 @@ func (o *CatalogsCreativeAssetsItemResponse) HasCreativeAssetsId() bool {
 // SetCreativeAssetsId gets a reference to the given string and assigns it to the CreativeAssetsId field.
 func (o *CatalogsCreativeAssetsItemResponse) SetCreativeAssetsId(v string) {
 	o.CreativeAssetsId = &v
+}
+
+// GetItemResponseKind returns the ItemResponseKind field value
+func (o *CatalogsCreativeAssetsItemResponse) GetItemResponseKind() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ItemResponseKind
+}
+
+// GetItemResponseKindOk returns a tuple with the ItemResponseKind field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreativeAssetsItemResponse) GetItemResponseKindOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ItemResponseKind, true
+}
+
+// SetItemResponseKind sets field value
+func (o *CatalogsCreativeAssetsItemResponse) SetItemResponseKind(v string) {
+	o.ItemResponseKind = v
 }
 
 // GetPins returns the Pins field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -188,6 +215,7 @@ func (o CatalogsCreativeAssetsItemResponse) ToMap() (map[string]interface{}, err
 	if !IsNil(o.CreativeAssetsId) {
 		toSerialize["creative_assets_id"] = o.CreativeAssetsId
 	}
+	toSerialize["item_response_kind"] = o.ItemResponseKind
 	if o.Pins != nil {
 		toSerialize["pins"] = o.Pins
 	}
@@ -200,6 +228,7 @@ func (o *CatalogsCreativeAssetsItemResponse) UnmarshalJSON(data []byte) (err err
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"catalog_type",
+		"item_response_kind",
 	}
 
 	allProperties := make(map[string]interface{})

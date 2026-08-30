@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdGroupResponse;
+import org.openapitools.model.AdGroup;
 
 @Canonical
 class AdGroupsList200Response {
     
     String bookmark
     
-    List<AdGroupResponse> items = new ArrayList<>()
+    List<AdGroup> items = new ArrayList<>()
 }

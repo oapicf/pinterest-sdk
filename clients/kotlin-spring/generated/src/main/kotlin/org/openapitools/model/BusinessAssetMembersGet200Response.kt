@@ -16,16 +16,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param items List of members with permissions to the asset.
+ * @param items 
  * @param bookmark 
  */
 data class BusinessAssetMembersGet200Response(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "List of members with permissions to the asset.")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("items")
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<UserSingleAssetBinding>,
 
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @param:JsonProperty("bookmark")
     @get:JsonProperty("bookmark") val bookmark: kotlin.String? = null
 ) {
 

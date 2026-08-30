@@ -85,7 +85,7 @@ S3FilePart::getPartNumber()
 }
 
 void
-S3FilePart::setPartNumber(int  part_number)
+S3FilePart::setPartNumber(int part_number)
 {
 	this->part_number = part_number;
 }
@@ -97,7 +97,7 @@ S3FilePart::getPresignedUrl()
 }
 
 void
-S3FilePart::setPresignedUrl(std::string  presigned_url)
+S3FilePart::setPresignedUrl(std::string presigned_url)
 {
 	this->presigned_url = presigned_url;
 }

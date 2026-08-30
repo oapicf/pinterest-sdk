@@ -47,15 +47,13 @@ class AvailabilityFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AvailabilityFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AvailabilityFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'AVAILABILITY'), 'Required key "AvailabilityFilter[AVAILABILITY]" is missing from JSON.');
+        assert(json[r'AVAILABILITY'] != null, 'Required key "AvailabilityFilter[AVAILABILITY]" has a null value in JSON.');
         return true;
       }());
 
       return AvailabilityFilter(
-        AVAILABILITY: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'AVAILABILITY')!,
+        AVAILABILITY: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'AVAILABILITY'])!,
       );
     }
     return null;

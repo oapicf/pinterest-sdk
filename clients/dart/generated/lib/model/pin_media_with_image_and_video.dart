@@ -53,10 +53,8 @@ class PinMediaWithImageAndVideo {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PinMediaWithImageAndVideo[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PinMediaWithImageAndVideo[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'media_type'), 'Required key "PinMediaWithImageAndVideo[media_type]" is missing from JSON.');
+        assert(json[r'media_type'] != null, 'Required key "PinMediaWithImageAndVideo[media_type]" has a null value in JSON.');
         return true;
       }());
 
@@ -115,27 +113,28 @@ class PinMediaWithImageAndVideo {
 }
 
 
-class PinMediaWithImageAndVideoMediaTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const PinMediaWithImageAndVideoMediaTypeEnum._(this.value);
+enum PinMediaWithImageAndVideoMediaTypeEnum {
+  multipleMixed._(r'multiple_mixed'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const PinMediaWithImageAndVideoMediaTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const multipleMixed = PinMediaWithImageAndVideoMediaTypeEnum._(r'multiple_mixed');
-
-  /// List of all possible values in this [enum][PinMediaWithImageAndVideoMediaTypeEnum].
-  static const values = <PinMediaWithImageAndVideoMediaTypeEnum>[
-    multipleMixed,
-  ];
-
+  /// Returns the instance of [PinMediaWithImageAndVideoMediaTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static PinMediaWithImageAndVideoMediaTypeEnum? fromJson(dynamic value) => PinMediaWithImageAndVideoMediaTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [PinMediaWithImageAndVideoMediaTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<PinMediaWithImageAndVideoMediaTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PinMediaWithImageAndVideoMediaTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -157,9 +156,10 @@ class PinMediaWithImageAndVideoMediaTypeEnumTypeTransformer {
 
   const PinMediaWithImageAndVideoMediaTypeEnumTypeTransformer._();
 
-  String encode(PinMediaWithImageAndVideoMediaTypeEnum data) => data.value;
+  String encode(PinMediaWithImageAndVideoMediaTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a PinMediaWithImageAndVideoMediaTypeEnum.
+  /// Returns the instance of [PinMediaWithImageAndVideoMediaTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -168,6 +168,9 @@ class PinMediaWithImageAndVideoMediaTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   PinMediaWithImageAndVideoMediaTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is PinMediaWithImageAndVideoMediaTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'multiple_mixed': return PinMediaWithImageAndVideoMediaTypeEnum.multipleMixed;
@@ -180,7 +183,7 @@ class PinMediaWithImageAndVideoMediaTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [PinMediaWithImageAndVideoMediaTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static PinMediaWithImageAndVideoMediaTypeEnumTypeTransformer? _instance;
 }
 

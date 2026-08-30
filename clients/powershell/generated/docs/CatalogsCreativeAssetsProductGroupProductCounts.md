@@ -3,7 +3,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AppLinks** | **Decimal** |  | 
 **CatalogType** | **String** |  | 
+**Images** | **Decimal** |  | 
 **Total** | **Decimal** |  | 
 **Videos** | **Decimal** |  | 
 
@@ -11,7 +13,9 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CatalogsCreativeAssetsProductGroupProductCounts = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsProductGroupProductCounts  -CatalogType null `
+$CatalogsCreativeAssetsProductGroupProductCounts = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsProductGroupProductCounts  -AppLinks null `
+ -CatalogType null `
+ -Images null `
  -Total null `
  -Videos null
 ```

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,37 +14,26 @@ package openapi
 
 
 
-// ConversionEvents - A list of events (one or more) encapsulated by a data object.
+// ConversionEvents - Conversion events.
 type ConversionEvents struct {
 
-	Data []ConversionEventsDataInner `json:"data"`
+	// Specific messages for each event received. The order will match the order in which the events were received in the request.
+	Events []ConversionApiResponseEventsItems `json:"events"`
+
+	// Number of events that were successfully processed from the events.
+	NumEventsProcessed int32 `json:"num_events_processed"`
+
+	// Total number of events received in the request.
+	NumEventsReceived int32 `json:"num_events_received"`
 }
 
-// AssertConversionEventsRequired checks if the required fields are not zero-ed
+// AssertConversionEventsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertConversionEventsRequired(obj ConversionEvents) error {
-	elements := map[string]interface{}{
-		"data": obj.Data,
-	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
-		}
-	}
-
-	for _, el := range obj.Data {
-		if err := AssertConversionEventsDataInnerRequired(el); err != nil {
-			return err
-		}
-	}
 	return nil
 }
 
 // AssertConversionEventsConstraints checks if the values respects the defined constraints
 func AssertConversionEventsConstraints(obj ConversionEvents) error {
-	for _, el := range obj.Data {
-		if err := AssertConversionEventsDataInnerConstraints(el); err != nil {
-			return err
-		}
-	}
 	return nil
 }

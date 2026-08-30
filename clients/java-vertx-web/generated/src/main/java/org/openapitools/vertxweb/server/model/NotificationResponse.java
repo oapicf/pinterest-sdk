@@ -7,27 +7,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class NotificationResponse   {
   
-  private Boolean success;
-  private Integer receivedAt;
   private String errorMsg;
+  private Integer receivedAt;
+  private Boolean success;
 
   public NotificationResponse () {
 
   }
 
-  public NotificationResponse (Boolean success, Integer receivedAt, String errorMsg) {
-    this.success = success;
-    this.receivedAt = receivedAt;
+  public NotificationResponse (String errorMsg, Integer receivedAt, Boolean success) {
     this.errorMsg = errorMsg;
+    this.receivedAt = receivedAt;
+    this.success = success;
   }
 
     
-  @JsonProperty("success")
-  public Boolean getSuccess() {
-    return success;
+  @JsonProperty("error_msg")
+  public String getErrorMsg() {
+    return errorMsg;
   }
-  public void setSuccess(Boolean success) {
-    this.success = success;
+  public void setErrorMsg(String errorMsg) {
+    this.errorMsg = errorMsg;
   }
 
     
@@ -40,12 +40,12 @@ public class NotificationResponse   {
   }
 
     
-  @JsonProperty("error_msg")
-  public String getErrorMsg() {
-    return errorMsg;
+  @JsonProperty("success")
+  public Boolean getSuccess() {
+    return success;
   }
-  public void setErrorMsg(String errorMsg) {
-    this.errorMsg = errorMsg;
+  public void setSuccess(Boolean success) {
+    this.success = success;
   }
 
 
@@ -58,14 +58,14 @@ public class NotificationResponse   {
       return false;
     }
     NotificationResponse notificationResponse = (NotificationResponse) o;
-    return Objects.equals(success, notificationResponse.success) &&
+    return Objects.equals(errorMsg, notificationResponse.errorMsg) &&
         Objects.equals(receivedAt, notificationResponse.receivedAt) &&
-        Objects.equals(errorMsg, notificationResponse.errorMsg);
+        Objects.equals(success, notificationResponse.success);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, receivedAt, errorMsg);
+    return Objects.hash(errorMsg, receivedAt, success);
   }
 
   @Override
@@ -73,9 +73,9 @@ public class NotificationResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotificationResponse {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
-    sb.append("    receivedAt: ").append(toIndentedString(receivedAt)).append("\n");
     sb.append("    errorMsg: ").append(toIndentedString(errorMsg)).append("\n");
+    sb.append("    receivedAt: ").append(toIndentedString(receivedAt)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -85,9 +85,6 @@ public class NotificationResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

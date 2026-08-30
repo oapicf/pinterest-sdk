@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**exceptions** | [**Array&lt;CreateAssetAccessRequestErrorMessageInner&gt;**](CreateAssetAccessRequestErrorMessageInner.md) | A list of errors associated with the asset access requests. Will be returned if there is an error. | [optional] [default to undefined]
-**invites** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
+**exceptions** | [**Array&lt;AssetAccessRequestError&gt;**](AssetAccessRequestError.md) | A list of errors associated with the asset access requests. Will be returned if there is an error. | [optional] [default to undefined]
+**invites** | **{ [key: string]: string; }** | An object mapping each partner id to the asset access request id. Only one request id is returned per partner. | [optional] [default to undefined]
 
 ## Example
 

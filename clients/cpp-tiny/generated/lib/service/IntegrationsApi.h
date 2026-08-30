@@ -8,15 +8,15 @@
 #include "Helpers.h"
 #include <list>
 
-#include "Error.h"
-#include "IntegrationLogsRequest.h"
+#include "IntegrationLogsInvalidLogResponse.h"
+#include "IntegrationLogsRequestCreate.h"
 #include "IntegrationLogsSuccessResponse.h"
 #include "IntegrationMetadata.h"
+#include "IntegrationMetadataCreate.h"
+#include "IntegrationMetadataUpdate.h"
 #include "IntegrationRecord.h"
-#include "IntegrationRequest.h"
-#include "IntegrationRequestPatch.h"
 #include "Integrations_get_list_200_response.h"
-#include "Integrations_logs_post_400_response.h"
+#include "Pinterest.Lib.Error.h"
 
 namespace Tiny {
 
@@ -29,7 +29,7 @@ class IntegrationsApi : public Service {
 public:
     IntegrationsApi() = default;
 
-    virtual ~IntegrationsApi() = default;
+    virtual ~IntegrationsApi();
 
     /**
     * Delete commerce integration.
@@ -38,7 +38,7 @@ public:
     * \param externalBusinessId External business ID for the integration. *Required*
     */
     Response<
-            String
+                IntegrationMetadata
         >
     integrationsCommerce_del(
             
@@ -64,7 +64,7 @@ public:
     *
     * Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
     * \param externalBusinessId External business ID for the integration. *Required*
-    * \param integrationRequestPatch Parameters to get create/update the Integration Metadata *Required*
+    * \param integrationMetadataUpdate  *Required*
     */
     Response<
                 IntegrationMetadata
@@ -74,42 +74,42 @@ public:
             std::string externalBusinessId
             , 
             
-            IntegrationRequestPatch integrationRequestPatch
+            IntegrationMetadataUpdate integrationMetadataUpdate
             
     );
     /**
     * Create commerce integration.
     *
     * Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
-    * \param integrationRequest Parameters to get create/update the Integration Metadata *Required*
+    * \param integrationMetadataCreate  *Required*
     */
     Response<
                 IntegrationMetadata
         >
     integrationsCommerce_post(
             
-            IntegrationRequest integrationRequest
+            IntegrationMetadataCreate integrationMetadataCreate
             
     );
     /**
     * Receives batched logs from integration applications..
     *
     * This endpoint receives batched logs from integration applications on partner platforms. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
-    * \param integrationLogsRequest Ingest log information from external integration application. *Required*
+    * \param integrationLogsRequestCreate  *Required*
     */
     Response<
                 IntegrationLogsSuccessResponse
         >
     integrationsLogs_post(
             
-            IntegrationLogsRequest integrationLogsRequest
+            IntegrationLogsRequestCreate integrationLogsRequestCreate
             
     );
     /**
     * Get integration metadata.
     *
     * Get integration metadata by ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
-    * \param id Integration ID. *Required*
+    * \param id Integration record ID. *Required*
     */
     Response<
                 IntegrationRecord
@@ -124,7 +124,7 @@ public:
     *
     * Get integration metadata list. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
     * \param bookmark Cursor used to fetch the next page of items
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
                 Integrations_get_list_200_response

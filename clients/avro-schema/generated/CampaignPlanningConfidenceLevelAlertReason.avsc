@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Reason for a confidence level alert on delivery estimates.",
+  "name": "CampaignPlanningConfidenceLevelAlertReason",
+  "symbols": [
+    "UNKNOWN",
+    "OTHER",
+    "ADVERTISER_HAS_NO_RECENT_CAMPAIGNS",
+    "ADVERTISER_HAS_NO_RECENT_CONVERSIONS"
+  ]
+}

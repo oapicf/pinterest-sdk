@@ -11,7 +11,7 @@
 -type openapi_shared_audience_account() ::
   [ {'account_id', binary() }
   | {'account_name', binary() }
-  | {'account_type', binary() }
+  | {'account_type', openapi_audience_account_type:openapi_audience_account_type() }
   | {'shared_on_timestamp', integer() }
   ].
 
@@ -22,7 +22,7 @@ openapi_shared_audience_account() ->
 openapi_shared_audience_account(Fields) ->
   Default = [ {'account_id', binary() }
             , {'account_name', binary() }
-            , {'account_type', elements([<<"AD_ACCOUNT">>, <<"BUSINESS_ACCOUNT">>]) }
+            , {'account_type', openapi_audience_account_type:openapi_audience_account_type() }
             , {'shared_on_timestamp', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

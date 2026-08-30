@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,8 @@ var _ MappedNullable = &PlacementMultipliers{}
 
 // PlacementMultipliers This represents a mapping from placement to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified placement in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. All placement multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
 type PlacementMultipliers struct {
-	PLACEMENT *string `json:"PLACEMENT,omitempty"`
+	// Placement type identifier.
+	PLACEMENT *PlacementType `json:"PLACEMENT,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,9 +45,9 @@ func NewPlacementMultipliersWithDefaults() *PlacementMultipliers {
 }
 
 // GetPLACEMENT returns the PLACEMENT field value if set, zero value otherwise.
-func (o *PlacementMultipliers) GetPLACEMENT() string {
+func (o *PlacementMultipliers) GetPLACEMENT() PlacementType {
 	if o == nil || IsNil(o.PLACEMENT) {
-		var ret string
+		var ret PlacementType
 		return ret
 	}
 	return *o.PLACEMENT
@@ -54,7 +55,7 @@ func (o *PlacementMultipliers) GetPLACEMENT() string {
 
 // GetPLACEMENTOk returns a tuple with the PLACEMENT field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PlacementMultipliers) GetPLACEMENTOk() (*string, bool) {
+func (o *PlacementMultipliers) GetPLACEMENTOk() (*PlacementType, bool) {
 	if o == nil || IsNil(o.PLACEMENT) {
 		return nil, false
 	}
@@ -70,8 +71,8 @@ func (o *PlacementMultipliers) HasPLACEMENT() bool {
 	return false
 }
 
-// SetPLACEMENT gets a reference to the given string and assigns it to the PLACEMENT field.
-func (o *PlacementMultipliers) SetPLACEMENT(v string) {
+// SetPLACEMENT gets a reference to the given PlacementType and assigns it to the PLACEMENT field.
+func (o *PlacementMultipliers) SetPLACEMENT(v PlacementType) {
 	o.PLACEMENT = &v
 }
 

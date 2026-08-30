@@ -8,15 +8,28 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.AgeBucketMultipliers
 import org.openapitools.client.models.AppTypeMultipliers
 import org.openapitools.client.models.CampaignAudienceMultipliers
+import org.openapitools.client.models.CampaignBidOptionsUpdateMaskItems
+import org.openapitools.client.models.FreqBidMultiplierTimeWindow
+import org.openapitools.client.models.FrequencyMultipliers
+import org.openapitools.client.models.GenderMultipliers
 import org.openapitools.client.models.PlacementMultipliers
 
 import com.squareup.moshi.Json
@@ -25,43 +38,53 @@ import com.squareup.moshi.JsonClass
 /**
  * Object describing an update to the campaign level bid multipliers.
  *
- * @param updateMask List of fields to update, only the fields in the list will be updated.
- * @param appTypeMultipliers 
- * @param audienceMultipliers 
- * @param placementMultipliers 
+ * @param updateMask List of fields to update. Only the fields in the list will be updated.
+ * @param ageBucketMultipliers Age bucket multipliers for bid adjustments.
+ * @param appTypeMultipliers App type multipliers for bid adjustments.
+ * @param audienceMultipliers Audience multipliers for bid adjustments.
+ * @param freqBidMultiplierTimeWindow The time window for frequency bid multipliers.
+ * @param frequencyMultipliers Frequency multipliers for bid adjustments.
+ * @param genderMultipliers Gender multipliers for bid adjustments.
+ * @param placementMultipliers Placement multipliers for bid adjustments.
  */
 
 
 data class CampaignBidOptionsUpdate (
 
-    /* List of fields to update, only the fields in the list will be updated. */
+    /* List of fields to update. Only the fields in the list will be updated. */
     @Json(name = "update_mask")
-    val updateMask: kotlin.collections.List<CampaignBidOptionsUpdate.UpdateMask>,
+    val updateMask: kotlin.collections.List<CampaignBidOptionsUpdateMaskItems>,
 
+    /* Age bucket multipliers for bid adjustments. */
+    @Json(name = "age_bucket_multipliers")
+    val ageBucketMultipliers: AgeBucketMultipliers? = null,
+
+    /* App type multipliers for bid adjustments. */
     @Json(name = "app_type_multipliers")
     val appTypeMultipliers: AppTypeMultipliers? = null,
 
+    /* Audience multipliers for bid adjustments. */
     @Json(name = "audience_multipliers")
     val audienceMultipliers: CampaignAudienceMultipliers? = null,
 
+    /* The time window for frequency bid multipliers. */
+    @Json(name = "freq_bid_multiplier_time_window")
+    val freqBidMultiplierTimeWindow: FreqBidMultiplierTimeWindow? = null,
+
+    /* Frequency multipliers for bid adjustments. */
+    @Json(name = "frequency_multipliers")
+    val frequencyMultipliers: FrequencyMultipliers? = null,
+
+    /* Gender multipliers for bid adjustments. */
+    @Json(name = "gender_multipliers")
+    val genderMultipliers: GenderMultipliers? = null,
+
+    /* Placement multipliers for bid adjustments. */
     @Json(name = "placement_multipliers")
     val placementMultipliers: PlacementMultipliers? = null
 
 ) {
 
-    /**
-     * List of fields to update, only the fields in the list will be updated.
-     *
-     * Values: AUDIENCE,APP_TYPE,PLACEMENT,GENDER,AGE_BUCKET
-     */
-    @JsonClass(generateAdapter = false)
-    enum class UpdateMask(val value: kotlin.String) {
-        @Json(name = "AUDIENCE") AUDIENCE("AUDIENCE"),
-        @Json(name = "APP_TYPE") APP_TYPE("APP_TYPE"),
-        @Json(name = "PLACEMENT") PLACEMENT("PLACEMENT"),
-        @Json(name = "GENDER") GENDER("GENDER"),
-        @Json(name = "AGE_BUCKET") AGE_BUCKET("AGE_BUCKET");
-    }
 
 }
 

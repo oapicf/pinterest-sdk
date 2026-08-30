@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingSpecOperationGeo",
+  "fields": [
+    {
+      "name": "field",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationGeo_field",
+        "symbols": [
+          "GEO"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": "model.TargetingSpecListOperation",
+      "doc": ""
+    },
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": ""
+    }
+  ]
+
+}

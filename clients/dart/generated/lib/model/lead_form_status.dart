@@ -11,29 +11,29 @@
 part of openapi.api;
 
 /// Status of the lead form
-class LeadFormStatus {
-  /// Instantiate a new enum with the provided [value].
-  const LeadFormStatus._(this.value);
+enum LeadFormStatus {
+  DRAFT._(r'DRAFT'),
+  ACTIVE._(r'ACTIVE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const LeadFormStatus._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const DRAFT = LeadFormStatus._(r'DRAFT');
-  static const ACTIVE = LeadFormStatus._(r'ACTIVE');
-
-  /// List of all possible values in this [enum][LeadFormStatus].
-  static const values = <LeadFormStatus>[
-    DRAFT,
-    ACTIVE,
-  ];
-
+  /// Returns the instance of [LeadFormStatus] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static LeadFormStatus? fromJson(dynamic value) => LeadFormStatusTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [LeadFormStatus]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<LeadFormStatus> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <LeadFormStatus>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class LeadFormStatusTypeTransformer {
 
   const LeadFormStatusTypeTransformer._();
 
-  String encode(LeadFormStatus data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(LeadFormStatus data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a LeadFormStatus.
+  /// Returns the instance of [LeadFormStatus] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class LeadFormStatusTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   LeadFormStatus? decode(dynamic data, {bool allowNull = true}) {
+    if (data is LeadFormStatus) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'DRAFT': return LeadFormStatus.DRAFT;
@@ -79,7 +84,7 @@ class LeadFormStatusTypeTransformer {
     return null;
   }
 
-  /// Singleton [LeadFormStatusTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static LeadFormStatusTypeTransformer? _instance;
 }
 

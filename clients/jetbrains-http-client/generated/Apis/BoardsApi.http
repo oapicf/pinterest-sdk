@@ -1,0 +1,87 @@
+## BoardsApi
+
+### Create board section
+## Create board section
+POST https://api.pinterest.com/v5/boards/{{board_id}}/sections?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "id": "<string>",
+ "name": "<string>"
+}
+
+
+### Delete board section
+## Delete board section
+DELETE https://api.pinterest.com/v5/boards/{{board_id}}/sections/{{section_id}}?adAccountId={{adAccountId}}
+Accept: application/json
+
+### List board sections
+## List board sections
+GET https://api.pinterest.com/v5/boards/{{board_id}}/sections?adAccountId={{adAccountId}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### List Pins on board section
+## List Pins on board section
+GET https://api.pinterest.com/v5/boards/{{board_id}}/sections/{{section_id}}/pins?adAccountId={{adAccountId}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Update board section
+## Update board section
+PATCH https://api.pinterest.com/v5/boards/{{board_id}}/sections/{{section_id}}?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "id": "<string>",
+ "name": "<string>"
+}
+
+
+### Create board
+## Create board
+POST https://api.pinterest.com/v5/boards?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "description": "<string>",
+ "is_ads_only": "<string>",
+ "name": "<string>",
+ "privacy": "<string>"
+}
+
+
+### Delete board
+## Delete board
+DELETE https://api.pinterest.com/v5/boards/{{board_id}}?adAccountId={{adAccountId}}
+Accept: application/json
+
+### Get board
+## Get board
+GET https://api.pinterest.com/v5/boards/{{board_id}}?adAccountId={{adAccountId}}
+Accept: application/json
+
+### List boards
+## List boards
+GET https://api.pinterest.com/v5/boards?adAccountId={{adAccountId}}&privacy={{privacy}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### List Pins on board
+## List Pins on board
+GET https://api.pinterest.com/v5/boards/{{board_id}}/pins?creativeTypes={{creativeTypes}}&adAccountId={{adAccountId}}&pinMetrics={{pinMetrics}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Update board
+## Update board
+PATCH https://api.pinterest.com/v5/boards/{{board_id}}?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "description": "<string>",
+ "name": "<string>",
+ "privacy": "<string>"
+}
+

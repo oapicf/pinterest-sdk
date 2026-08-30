@@ -29,5 +29,7 @@ The class is defined in **[Permissions.java](../../src/main/java/org/openapitool
 
 * `CONSUMER_USER` (value: `"CONSUMER_USER"`)
 
+* `BIZ_PINNER_LIST_SHARER` (value: `"BIZ_PINNER_LIST_SHARER"`)
+
 
 

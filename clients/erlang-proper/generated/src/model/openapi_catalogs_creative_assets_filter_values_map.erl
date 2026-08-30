@@ -21,7 +21,7 @@
   | {'google_product_category_4', list(binary()) }
   | {'google_product_category_5', list(binary()) }
   | {'google_product_category_6', list(binary()) }
-  | {'media_type', list(binary()) }
+  | {'media_type', list(openapi_media_type:openapi_media_type()) }
   ].
 
 
@@ -41,7 +41,7 @@ openapi_catalogs_creative_assets_filter_values_map(Fields) ->
             , {'google_product_category_4', list(binary()) }
             , {'google_product_category_5', list(binary()) }
             , {'google_product_category_6', list(binary()) }
-            , {'media_type', list(binary()) }
+            , {'media_type', list(openapi_media_type:openapi_media_type()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

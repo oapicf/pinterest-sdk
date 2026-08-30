@@ -7,13 +7,13 @@ import 'package:openapi/src/model/catalogs_feed_credentials.dart';
 import 'package:openapi/src/model/catalogs_feed_processing_schedule.dart';
 import 'package:openapi/src/model/catalogs_retail_feed.dart';
 import 'package:openapi/src/model/nullable_currency.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/country.dart';
 import 'package:openapi/src/model/product_availability_type.dart';
 import 'package:openapi/src/model/catalogs_status.dart';
 import 'package:openapi/src/model/catalogs_format.dart';
 import 'package:openapi/src/model/catalogs_hotel_feed.dart';
 import 'package:openapi/src/model/catalogs_creative_assets_feed.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -23,20 +23,20 @@ part 'catalogs_feed.g.dart';
 /// Catalogs Feed object
 ///
 /// Properties:
-/// * [createdAt] 
-/// * [id] 
-/// * [updatedAt] 
 /// * [catalogType] 
+/// * [createdAt] 
 /// * [credentials] 
 /// * [defaultAvailability] 
 /// * [defaultCountry] 
 /// * [defaultCurrency] 
 /// * [defaultLocale] - The locale used within a feed for product descriptions.
 /// * [format] 
+/// * [id] - ID of the feed entity.
 /// * [location] - The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
 /// * [name] - A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
 /// * [preferredProcessingSchedule] 
 /// * [status] 
+/// * [updatedAt] 
 /// * [catalogId] - Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
 @BuiltValue()
 abstract class CatalogsFeed implements Built<CatalogsFeed, CatalogsFeedBuilder> {
@@ -158,5 +158,18 @@ class _$CatalogsFeedSerializer implements PrimitiveSerializer<CatalogsFeed> {
     result.oneOf = OneOfDynamic(typeIndex: oneOfTypes.indexOf(oneOfType), types: oneOfTypes, value: oneOfResult);
     return result.build();
   }
+}
+
+class CatalogsFeedCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')
+  static const CatalogsFeedCatalogTypeEnum CREATIVE_ASSETS = _$catalogsFeedCatalogTypeEnum_CREATIVE_ASSETS;
+
+  static Serializer<CatalogsFeedCatalogTypeEnum> get serializer => _$catalogsFeedCatalogTypeEnumSerializer;
+
+  const CatalogsFeedCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsFeedCatalogTypeEnum> get values => _$catalogsFeedCatalogTypeEnumValues;
+  static CatalogsFeedCatalogTypeEnum valueOf(String name) => _$catalogsFeedCatalogTypeEnumValueOf(name);
 }
 

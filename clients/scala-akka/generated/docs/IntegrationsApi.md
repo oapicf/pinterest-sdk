@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## integrationsCommerceDel
 
-> integrationsCommerceDel(integrationsCommerceDelRequest): ApiRequest[Unit]
+> integrationsCommerceDel(integrationsCommerceDelRequest): ApiRequest[IntegrationMetadata]
 
 Delete commerce integration
 
@@ -33,6 +33,7 @@ Delete commerce integration metadata for the given external business ID. Note: I
 
 ```scala
 // Import classes:
+import 
 import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
@@ -58,6 +59,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling IntegrationsApi#integrationsCommerceDel")
@@ -82,8 +84,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**IntegrationMetadata**](IntegrationMetadata.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -97,8 +99,14 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Commerce Integration deleted successfully |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## integrationsCommerceGet
@@ -179,10 +187,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **409** | Can&#39;t access this integration metadata. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## integrationsCommercePatch
@@ -217,9 +228,9 @@ object Example extends App {
     val apiInstance = IntegrationsApi("https://api.pinterest.com/v5")
     val externalBusinessId: String = externalBusinessId_example // String | External business ID for the integration.
 
-    val integrationRequestPatch: IntegrationRequestPatch =  // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
+    val integrationMetadataUpdate: IntegrationMetadataUpdate =  // IntegrationMetadataUpdate | 
     
-    val request = apiInstance.integrationsCommercePatch(externalBusinessId, integrationRequestPatch)
+    val request = apiInstance.integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -248,7 +259,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalBusinessId** | **String**| External business ID for the integration. |
- **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata |
+ **integrationMetadataUpdate** | [**IntegrationMetadataUpdate**](IntegrationMetadataUpdate.md)|  |
 
 ### Return type
 
@@ -267,10 +278,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **409** | Can&#39;t access this integration metadata. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## integrationsCommercePost
@@ -303,9 +317,9 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = IntegrationsApi("https://api.pinterest.com/v5")
-    val integrationRequest: IntegrationRequest =  // IntegrationRequest | Parameters to get create/update the Integration Metadata
+    val integrationMetadataCreate: IntegrationMetadataCreate =  // IntegrationMetadataCreate | 
     
-    val request = apiInstance.integrationsCommercePost(integrationRequest)
+    val request = apiInstance.integrationsCommercePost(integrationMetadataCreate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -333,7 +347,7 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata |
+ **integrationMetadataCreate** | [**IntegrationMetadataCreate**](IntegrationMetadataCreate.md)|  |
 
 ### Return type
 
@@ -352,10 +366,14 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **409** | Can&#39;t access this integration metadata. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## integrationsGetById
@@ -387,7 +405,7 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = IntegrationsApi("https://api.pinterest.com/v5")
-    val id: String = id_example // String | Integration ID.
+    val id: String = id_example // String | Integration record ID.
     
     val request = apiInstance.integrationsGetById(id)
     val response = apiInvoker.execute(request)
@@ -417,7 +435,7 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Integration ID. |
+ **id** | **String**| Integration record ID. |
 
 ### Return type
 
@@ -436,9 +454,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## integrationsGetList
@@ -472,7 +494,7 @@ object Example extends App {
     val apiInstance = IntegrationsApi("https://api.pinterest.com/v5")
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
     val request = apiInstance.integrationsGetList(bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -503,7 +525,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -522,8 +544,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## integrationsLogsPost
@@ -557,9 +584,9 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = IntegrationsApi("https://api.pinterest.com/v5")
-    val integrationLogsRequest: IntegrationLogsRequest =  // IntegrationLogsRequest | Ingest log information from external integration application.
+    val integrationLogsRequestCreate: IntegrationLogsRequestCreate =  // IntegrationLogsRequestCreate | 
     
-    val request = apiInstance.integrationsLogsPost(integrationLogsRequest)
+    val request = apiInstance.integrationsLogsPost(integrationLogsRequestCreate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -587,7 +614,7 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationLogsRequest** | [**IntegrationLogsRequest**](IntegrationLogsRequest.md)| Ingest log information from external integration application. |
+ **integrationLogsRequestCreate** | [**IntegrationLogsRequestCreate**](IntegrationLogsRequestCreate.md)|  |
 
 ### Return type
 
@@ -606,7 +633,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success. |  -  |
-| **400** | Bad request. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The server could not understand the request due to invalid syntax. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

@@ -13,10 +13,10 @@ static bulk_upsert_request_t *bulk_upsert_request_create_internal(
     if (!bulk_upsert_request_local_var) {
         return NULL;
     }
+    memset(bulk_upsert_request_local_var, 0, sizeof(bulk_upsert_request_t));
+    bulk_upsert_request_local_var->_library_owned = 1;
     bulk_upsert_request_local_var->create = create;
     bulk_upsert_request_local_var->update = update;
-
-    bulk_upsert_request_local_var->_library_owned = 1;
     return bulk_upsert_request_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) bulk_upsert_request_t *bulk_upsert_request_create(
     bulk_upsert_request_create_t *create,
     bulk_upsert_request_update_t *update
     ) {
-    return bulk_upsert_request_create_internal (
+    bulk_upsert_request_t *result = bulk_upsert_request_create_internal (
         create,
         update
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void bulk_upsert_request_free(bulk_upsert_request_t *bulk_upsert_request) {
@@ -115,10 +118,15 @@ bulk_upsert_request_t *bulk_upsert_request_parseFromJSON(cJSON *bulk_upsert_requ
     }
 
 
+
     bulk_upsert_request_local_var = bulk_upsert_request_create_internal (
         create ? create_local_nonprim : NULL,
         update ? update_local_nonprim : NULL
         );
+
+    if (!bulk_upsert_request_local_var) {
+        goto end;
+    }
 
     return bulk_upsert_request_local_var;
 end:

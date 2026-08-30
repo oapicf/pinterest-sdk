@@ -7,7 +7,7 @@
 #' @title PromotionArrayElement
 #' @description PromotionArrayElement Class
 #' @format An \code{R6Class} generator object
-#' @field data  \link{PromotionResponse} [optional]
+#' @field data  \link{Promotion} [optional]
 #' @field exception  \link{Exception} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -68,13 +68,36 @@ PromotionArrayElement <- R6::R6Class(
       PromotionArrayElementObject <- list()
       if (!is.null(self$`data`)) {
         PromotionArrayElementObject[["data"]] <-
-          self$`data`$toSimpleType()
+          self$extractSimpleType(self$`data`)
       }
       if (!is.null(self$`exception`)) {
         PromotionArrayElementObject[["exception"]] <-
-          self$`exception`$toSimpleType()
+          self$extractSimpleType(self$`exception`)
       }
       return(PromotionArrayElementObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -85,7 +108,7 @@ PromotionArrayElement <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`data`)) {
-        `data_object` <- PromotionResponse$new()
+        `data_object` <- Promotion$new()
         `data_object`$fromJSON(jsonlite::toJSON(this_object$`data`, auto_unbox = TRUE, digits = NA))
         self$`data` <- `data_object`
       }
@@ -115,7 +138,7 @@ PromotionArrayElement <- R6::R6Class(
     #' @return the instance of PromotionArrayElement
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`data` <- PromotionResponse$new()$fromJSON(jsonlite::toJSON(this_object$`data`, auto_unbox = TRUE, digits = NA))
+      self$`data` <- Promotion$new()$fromJSON(jsonlite::toJSON(this_object$`data`, auto_unbox = TRUE, digits = NA))
       self$`exception` <- Exception$new()$fromJSON(jsonlite::toJSON(this_object$`exception`, auto_unbox = TRUE, digits = NA))
       self
     },

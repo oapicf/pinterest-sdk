@@ -40,7 +40,7 @@ export interface BoardWithUpdatePrivacy {
      */
     readonly media?: BoardMedia;
     /**
-     *      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+     *     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
      */
     name: string;
     readonly owner?: BoardOwner;

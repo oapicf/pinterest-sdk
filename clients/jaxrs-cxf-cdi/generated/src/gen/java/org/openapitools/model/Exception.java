@@ -20,7 +20,6 @@ public class Exception   {
   private String message;
 
   /**
-   * Exception error code.
    **/
   public Exception code(Integer code) {
     this.code = code;
@@ -28,7 +27,7 @@ public class Exception   {
   }
 
   
-  @ApiModelProperty(example = "2", value = "Exception error code.")
+  @ApiModelProperty(example = "2", value = "")
   @JsonProperty("code")
   public Integer getCode() {
     return code;
@@ -39,7 +38,6 @@ public class Exception   {
 
 
   /**
-   * Exception message.
    **/
   public Exception message(String message) {
     this.message = message;
@@ -47,8 +45,9 @@ public class Exception   {
   }
 
   
-  @ApiModelProperty(example = "Advertiser not found.", value = "Exception message.")
+  @ApiModelProperty(example = "Advertiser not found.", required = true, value = "")
   @JsonProperty("message")
+  @NotNull
   public String getMessage() {
     return message;
   }
@@ -92,10 +91,7 @@ public class Exception   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

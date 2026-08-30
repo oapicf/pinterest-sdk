@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BusinessMembersAssetAccessDeleteBody"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BusinessMembersAssetAccessDeleteBody"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  DeleteMemberAssetAccessItem = openapi_server.resourceTypes.DeleteMemberAssetAccessItem
+}
+resourceTypes {
+
+  BusinessMembersAssetAccessDeleteBody {
+    title = BusinessMembersAssetAccessDeleteBody
+    description = BusinessMembersAssetAccessDeleteBody
+    derivedFrom = Root
+    properties {
+        accesses {
+          type = array
+          items.type = DeleteMemberAssetAccessItem
+          description = "List of members asset access to be deleted"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BusinessMembersAssetAccessDeleteBody {
+    title = BusinessMembersAssetAccessDeleteBody
+    description = BusinessMembersAssetAccessDeleteBody
+    implements = openapi_server.resourceTypes.BusinessMembersAssetAccessDeleteBody
+
+  }
+}

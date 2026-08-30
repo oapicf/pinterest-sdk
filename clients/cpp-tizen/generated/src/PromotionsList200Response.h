@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "PromotionResponse.h"
+#include "Promotion.h"
 #include <list>
 #include "Object.h"
 
@@ -56,15 +56,15 @@ public:
 	void setBookmark(std::string  bookmark);
 	/*! \brief Get 
 	 */
-	std::list<PromotionResponse> getItems();
+	std::list<Promotion> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <PromotionResponse> items);
+	void setItems(std::list <Promotion> items);
 
 private:
 	std::string bookmark;
-	std::list <PromotionResponse>items;
+	std::list <Promotion>items;
 	void __init();
 	void __cleanup();
 

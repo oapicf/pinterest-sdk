@@ -51,14 +51,14 @@ public:
 
 	/*! \brief Set The owning account's user ID.
 	 */
-	void setId(std::string  id);
+	void setId(std::string id);
 	/*! \brief Get Public username for the user account
 	 */
 	std::string getUsername();
 
 	/*! \brief Set Public username for the user account
 	 */
-	void setUsername(std::string  username);
+	void setUsername(std::string username);
 
 
     private:

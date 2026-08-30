@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Exceptions** | Pointer to [**[]CreateAssetAccessRequestErrorMessageInner**](CreateAssetAccessRequestErrorMessageInner.md) | A list of errors associated with the asset access requests. Will be returned if there is an error. | [optional] 
-**Invites** | Pointer to **map[string]string** |  | [optional] 
+**Exceptions** | Pointer to [**[]AssetAccessRequestError**](AssetAccessRequestError.md) | A list of errors associated with the asset access requests. Will be returned if there is an error. | [optional] 
+**Invites** | Pointer to **map[string]string** | An object mapping each partner id to the asset access request id. Only one request id is returned per partner. | [optional] 
 
 ## Methods
 
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetExceptions
 
-`func (o *CreateAssetAccessRequestResponse) GetExceptions() []CreateAssetAccessRequestErrorMessageInner`
+`func (o *CreateAssetAccessRequestResponse) GetExceptions() []AssetAccessRequestError`
 
 GetExceptions returns the Exceptions field if non-nil, zero value otherwise.
 
 ### GetExceptionsOk
 
-`func (o *CreateAssetAccessRequestResponse) GetExceptionsOk() (*[]CreateAssetAccessRequestErrorMessageInner, bool)`
+`func (o *CreateAssetAccessRequestResponse) GetExceptionsOk() (*[]AssetAccessRequestError, bool)`
 
 GetExceptionsOk returns a tuple with the Exceptions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExceptions
 
-`func (o *CreateAssetAccessRequestResponse) SetExceptions(v []CreateAssetAccessRequestErrorMessageInner)`
+`func (o *CreateAssetAccessRequestResponse) SetExceptions(v []AssetAccessRequestError)`
 
 SetExceptions sets Exceptions field to given value.
 
@@ -51,16 +51,6 @@ SetExceptions sets Exceptions field to given value.
 
 HasExceptions returns a boolean if a field has been set.
 
-### SetExceptionsNil
-
-`func (o *CreateAssetAccessRequestResponse) SetExceptionsNil(b bool)`
-
- SetExceptionsNil sets the value for Exceptions to be an explicit nil
-
-### UnsetExceptions
-`func (o *CreateAssetAccessRequestResponse) UnsetExceptions()`
-
-UnsetExceptions ensures that no value is present for Exceptions, not even an explicit nil
 ### GetInvites
 
 `func (o *CreateAssetAccessRequestResponse) GetInvites() map[string]string`
@@ -86,16 +76,6 @@ SetInvites sets Invites field to given value.
 
 HasInvites returns a boolean if a field has been set.
 
-### SetInvitesNil
-
-`func (o *CreateAssetAccessRequestResponse) SetInvitesNil(b bool)`
-
- SetInvitesNil sets the value for Invites to be an explicit nil
-
-### UnsetInvites
-`func (o *CreateAssetAccessRequestResponse) UnsetInvites()`
-
-UnsetInvites ensures that no value is present for Invites, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

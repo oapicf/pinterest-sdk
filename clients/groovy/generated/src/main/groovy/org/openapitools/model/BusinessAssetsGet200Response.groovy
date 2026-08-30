@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.GetBusinessAssetsResponse;
+import org.openapitools.model.BusinessAssets;
 
 @Canonical
 class BusinessAssetsGet200Response {
     
     String bookmark
-    /* List of assets the requesting business has access to. */
-    List<GetBusinessAssetsResponse> items = new ArrayList<>()
+    
+    List<BusinessAssets> items = new ArrayList<>()
 }

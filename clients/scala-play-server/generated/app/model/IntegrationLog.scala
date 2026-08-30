@@ -11,16 +11,16 @@ import play.api.libs.json._
   * @param message Explanation of the event that occured.
   * @param platformVersionNumber Version number of the platform the integration application is running on.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class IntegrationLog(
   advertiserId: Option[String],
   appVersionNumber: Option[String],
   clientTimestamp: Int,
   error: Option[IntegrationLogClientError],
-  eventType: IntegrationLog.EventType.Value,
+  eventType: IntegrationLogEventType,
   externalBusinessId: Option[String],
   feedProfileId: Option[String],
-  logLevel: IntegrationLog.LogLevel.Value,
+  logLevel: IntegrationLogLevel,
   merchantId: Option[String],
   message: Option[String],
   platformVersionNumber: Option[String],
@@ -30,24 +30,5 @@ case class IntegrationLog(
 
 object IntegrationLog {
   implicit lazy val integrationLogJsonFormat: Format[IntegrationLog] = Json.format[IntegrationLog]
-
-  // noinspection TypeAnnotation
-  object EventType extends Enumeration {
-    val APP = Value("APP")
-    val API = Value("API")
-
-    type EventType = Value
-    implicit lazy val EventTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
-
-  // noinspection TypeAnnotation
-  object LogLevel extends Enumeration {
-    val INFO = Value("INFO")
-    val WARN = Value("WARN")
-    val ERROR = Value("ERROR")
-
-    type LogLevel = Value
-    implicit lazy val LogLevelJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
 }
 

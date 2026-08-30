@@ -71,10 +71,16 @@ class EventQualityScore {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "EventQualityScore[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "EventQualityScore[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'ingestion_source'), 'Required key "EventQualityScore[ingestion_source]" is missing from JSON.');
+        assert(json[r'ingestion_source'] != null, 'Required key "EventQualityScore[ingestion_source]" has a null value in JSON.');
+        assert(json.containsKey(r'lookback_period'), 'Required key "EventQualityScore[lookback_period]" is missing from JSON.');
+        assert(json[r'lookback_period'] != null, 'Required key "EventQualityScore[lookback_period]" has a null value in JSON.');
+        assert(json.containsKey(r'overall_status'), 'Required key "EventQualityScore[overall_status]" is missing from JSON.');
+        assert(json[r'overall_status'] != null, 'Required key "EventQualityScore[overall_status]" has a null value in JSON.');
+        assert(json.containsKey(r'quality_components'), 'Required key "EventQualityScore[quality_components]" is missing from JSON.');
+        assert(json[r'quality_components'] != null, 'Required key "EventQualityScore[quality_components]" has a null value in JSON.');
+        assert(json.containsKey(r'source_platform'), 'Required key "EventQualityScore[source_platform]" is missing from JSON.');
+        assert(json[r'source_platform'] != null, 'Required key "EventQualityScore[source_platform]" has a null value in JSON.');
         return true;
       }());
 

@@ -33,11 +33,11 @@ Method | HTTP request | Description
 
 ## assetGroupCreate
 
-> assetGroupCreate(assetGroupCreateRequest): ApiRequest[CreateAssetGroupResponse]
+> assetGroupCreate(assetGroupCreateRequest): ApiRequest[AssetGroupInput]
 
 Create a new asset group.
 
-Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 
 ### Example
 
@@ -61,11 +61,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessAssetsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val createAssetGroupBody: CreateAssetGroupBody =  // CreateAssetGroupBody | 
+    val assetGroupInputCreate: AssetGroupInputCreate =  // AssetGroupInputCreate | 
     
-    val request = apiInstance.assetGroupCreate(businessId, createAssetGroupBody)
+    val request = apiInstance.assetGroupCreate(businessId, assetGroupInputCreate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -94,11 +94,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
- **createAssetGroupBody** | [**CreateAssetGroupBody**](CreateAssetGroupBody.md)|  |
+ **assetGroupInputCreate** | [**AssetGroupInputCreate**](AssetGroupInputCreate.md)|  |
 
 ### Return type
 
-ApiRequest[[**CreateAssetGroupResponse**](CreateAssetGroupResponse.md)]
+ApiRequest[[**AssetGroupInput**](AssetGroupInput.md)]
 
 
 ### Authorization
@@ -113,14 +113,19 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## assetGroupDelete
 
-> assetGroupDelete(assetGroupDeleteRequest): ApiRequest[DeleteAssetGroupResponse]
+> assetGroupDelete(assetGroupDeleteRequest): ApiRequest[AssetGroupDeletion]
 
 Delete asset groups.
 
@@ -148,11 +153,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessAssetsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val deleteAssetGroupBody: DeleteAssetGroupBody =  // DeleteAssetGroupBody | 
+    val assetGroupDeletionDelete: AssetGroupDeletionDelete =  // AssetGroupDeletionDelete | 
     
-    val request = apiInstance.assetGroupDelete(businessId, deleteAssetGroupBody)
+    val request = apiInstance.assetGroupDelete(businessId, assetGroupDeletionDelete)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -181,11 +186,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
- **deleteAssetGroupBody** | [**DeleteAssetGroupBody**](DeleteAssetGroupBody.md)|  |
+ **assetGroupDeletionDelete** | [**AssetGroupDeletionDelete**](AssetGroupDeletionDelete.md)|  |
 
 ### Return type
 
-ApiRequest[[**DeleteAssetGroupResponse**](DeleteAssetGroupResponse.md)]
+ApiRequest[[**AssetGroupDeletion**](AssetGroupDeletion.md)]
 
 
 ### Authorization
@@ -200,14 +205,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## assetGroupUpdate
 
-> assetGroupUpdate(assetGroupUpdateRequest): ApiRequest[UpdateAssetGroupResponse]
+> assetGroupUpdate(assetGroupUpdateRequest): ApiRequest[AssetGroupModification]
 
 Update asset groups.
 
@@ -235,11 +239,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessAssetsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val updateAssetGroupBody: UpdateAssetGroupBody =  // UpdateAssetGroupBody | 
+    val assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate =  // AssetGroupModificationReadOrUpdate | 
     
-    val request = apiInstance.assetGroupUpdate(businessId, updateAssetGroupBody)
+    val request = apiInstance.assetGroupUpdate(businessId, assetGroupModificationReadOrUpdate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -268,11 +272,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
- **updateAssetGroupBody** | [**UpdateAssetGroupBody**](UpdateAssetGroupBody.md)|  |
+ **assetGroupModificationReadOrUpdate** | [**AssetGroupModificationReadOrUpdate**](AssetGroupModificationReadOrUpdate.md)|  |
 
 ### Return type
 
-ApiRequest[[**UpdateAssetGroupResponse**](UpdateAssetGroupResponse.md)]
+ApiRequest[[**AssetGroupModification**](AssetGroupModification.md)]
 
 
 ### Authorization
@@ -287,9 +291,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## businessAssetMembersGet
@@ -321,19 +329,19 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessAssetsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val assetId: String = 729090764583391194 // String | Unique identifier of a business asset.
+    val assetId: String = assetId_example // String | Unique identifier of a business asset.
+
+    val startIndex: Int = 56 // Int | An index to start fetching the results from. Only the results starting from this index will be returned.
 
     val fetchSystemUsers: Boolean = true // Boolean | Fetches system users if True. Fetches regular user employees if False.
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-
-    val startIndex: Int = 0 // Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex)
+    val request = apiInstance.businessAssetMembersGet(businessId, assetId, startIndex, fetchSystemUsers, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -363,10 +371,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
  **assetId** | **String**| Unique identifier of a business asset. |
+ **startIndex** | **Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional]
  **fetchSystemUsers** | **Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
- **startIndex** | **Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -385,13 +393,18 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Sucess |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## businessAssetPartnersGet
 
-> businessAssetPartnersGet(businessAssetPartnersGetRequest): ApiRequest[BusinessAssetPartnersGet200Response]
+> businessAssetPartnersGet(businessAssetPartnersGetRequest): ApiRequest[BusinessAssetMembersGet200Response]
 
 Get partners with access to asset
 
@@ -418,15 +431,15 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessAssetsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val assetId: String = 729090764583391194 // String | Unique identifier of a business asset.
+    val assetId: String = assetId_example // String | Unique identifier of a business asset.
 
-    val startIndex: Int = 0 // Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+    val startIndex: Int = 56 // Int | An index to start fetching the results from. Only the results starting from this index will be returned.
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
     val request = apiInstance.businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -460,11 +473,11 @@ Name | Type | Description  | Notes
  **assetId** | **String**| Unique identifier of a business asset. |
  **startIndex** | **Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
-ApiRequest[[**BusinessAssetPartnersGet200Response**](BusinessAssetPartnersGet200Response.md)]
+ApiRequest[[**BusinessAssetMembersGet200Response**](BusinessAssetMembersGet200Response.md)]
 
 
 ### Authorization
@@ -479,8 +492,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Sucess |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## businessAssetsGet
@@ -513,21 +531,21 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessAssetsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
     val permissions: Seq[PermissionsWithOwner] =  // Seq[PermissionsWithOwner] | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.
 
-    val childAssetId: String = 549764894835 // String | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
+    val childAssetId: String = childAssetId_example // String | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
 
-    val assetGroupId: String = 7078106104032 // String | An asset group unique identifier. Used to fetch assets contained within the specified asset group.
+    val assetGroupId: String = assetGroupId_example // String | An asset group unique identifier. Used to fetch assets contained within the specified asset group.
 
-    val assetType: String = AD_ACCOUNT // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
+    val assetType: String = assetType_example // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
 
-    val startIndex: Int = 0 // Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+    val startIndex: Int = 56 // Int | An index to start fetching the results from. Only the results starting from this index will be returned.
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
     val request = apiInstance.businessAssetsGet(businessId, permissions, childAssetId, assetGroupId, assetType, startIndex, bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -564,7 +582,7 @@ Name | Type | Description  | Notes
  **assetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER]
  **startIndex** | **Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -583,13 +601,18 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## businessMemberAssetsGet
 
-> businessMemberAssetsGet(businessMemberAssetsGetRequest): ApiRequest[BusinessMemberAssetsGet200Response]
+> businessMemberAssetsGet(businessMemberAssetsGetRequest): ApiRequest[BusinessMemberAssetsGetResponse]
 
 Get assets assigned to a member
 
@@ -599,6 +622,10 @@ Get assets on which you assigned asset permissions to the given member. Can be u
 
 ```scala
 // Import classes:
+import 
+import 
+import 
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -616,19 +643,31 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessAssetsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val memberId: String = 729090764583391194 // String | The member id to fetch assets for.
+    val memberId: String = memberId_example // String | The member id to fetch assets for.
 
-    val assetType: String = AD_ACCOUNT // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
+    val assetType: String = assetType_example // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
 
-    val startIndex: Int = 0 // Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+    val startIndex: Int = 56 // Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+
+    val sortBy: AssetSortBy =  // AssetSortBy | The field to sort member assets by
+
+    val sortAscending: Boolean = true // Boolean | Sort assets in ascending order
+
+    val searchBy: AssetSearchBy =  // AssetSearchBy | The field to search member assets by
+
+    val searchValue: String = searchValue_example // String | The value to search for
+
+    val assetPermissionType: AssetPermissionType =  // AssetPermissionType | The type of asset permission to filter by
+
+    val adAccountStatuses: Seq[NonDraftEntityStatus] =  // Seq[NonDraftEntityStatus] | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, bookmark, pageSize)
+    val request = apiInstance.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, assetPermissionType, adAccountStatuses, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -658,14 +697,20 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
  **memberId** | **String**| The member id to fetch assets for. |
- **assetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER]
+ **assetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER, CONVERSION_TAG]
  **startIndex** | **Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional]
+ **sortBy** | [**AssetSortBy**](.md)| The field to sort member assets by | [optional] [enum: NAME, ID, PERMISSIONS]
+ **sortAscending** | **Boolean**| Sort assets in ascending order | [optional]
+ **searchBy** | [**AssetSearchBy**](.md)| The field to search member assets by | [optional] [enum: NAME, ID, NAME_OR_ID, OWNER_NAME, NAME_OR_OWNER]
+ **searchValue** | **String**| The value to search for | [optional]
+ **assetPermissionType** | [**AssetPermissionType**](.md)| The type of asset permission to filter by | [optional] [enum: AGGREGATED_PERMISSION, DIRECT_PERMISSION]
+ **adAccountStatuses** | [**Seq[NonDraftEntityStatus]**](NonDraftEntityStatus.md)| A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
-ApiRequest[[**BusinessMemberAssetsGet200Response**](BusinessMemberAssetsGet200Response.md)]
+ApiRequest[[**BusinessMemberAssetsGetResponse**](BusinessMemberAssetsGetResponse.md)]
 
 
 ### Authorization
@@ -680,8 +725,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## businessMembersAssetAccessDelete
@@ -714,11 +764,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessAssetsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest =  // BusinessMembersAssetAccessDeleteRequest | List member assset permissions to delete.
+    val businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody =  // BusinessMembersAssetAccessDeleteBody | 
     
-    val request = apiInstance.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest)
+    val request = apiInstance.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteBody)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -747,7 +797,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
- **businessMembersAssetAccessDeleteRequest** | [**BusinessMembersAssetAccessDeleteRequest**](BusinessMembersAssetAccessDeleteRequest.md)| List member assset permissions to delete. |
+ **businessMembersAssetAccessDeleteBody** | [**BusinessMembersAssetAccessDeleteBody**](BusinessMembersAssetAccessDeleteBody.md)|  |
 
 ### Return type
 
@@ -766,8 +816,8 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## businessMembersAssetAccessUpdate
@@ -776,7 +826,7 @@ No authorization required
 
 Assign/Update member asset permissions
 
-Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 
 ### Example
 
@@ -800,9 +850,9 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessAssetsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val updateMemberAssetAccessBody: UpdateMemberAssetAccessBody =  // UpdateMemberAssetAccessBody | List of member asset permissions to create or update.
+    val updateMemberAssetAccessBody: UpdateMemberAssetAccessBody =  // UpdateMemberAssetAccessBody | 
     
     val request = apiInstance.businessMembersAssetAccessUpdate(businessId, updateMemberAssetAccessBody)
     val response = apiInvoker.execute(request)
@@ -833,7 +883,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
- **updateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md)| List of member asset permissions to create or update. |
+ **updateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md)|  |
 
 ### Return type
 
@@ -852,8 +902,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## businessPartnerAssetAccessGet
@@ -868,6 +923,7 @@ Can be used to get the business assets your partner has granted you access to or
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import 
@@ -886,21 +942,29 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessAssetsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val partnerId: String = 729090764583391194 // String | The partner id to be bound to the Business
+    val partnerId: String = partnerId_example // String | The partner id to be bound to the Business
 
-    val partnerType: PartnerType = INTERNAL // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+    val partnerType: String = partnerType_example // String | Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
 
-    val assetType: String = AD_ACCOUNT // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
+    val assetType: String = assetType_example // String | A resource type to filter the assets by. Only assets of the specified type will be returned.
 
-    val startIndex: Int = 0 // Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+    val startIndex: Int = 56 // Int | An index to start fetching the results from. Only the results starting from this index will be returned.
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val sortBy: AssetSortBy =  // AssetSortBy | The field to sort member assets by
+
+    val sortAscending: Boolean = true // Boolean | Sort assets in ascending order
+
+    val searchBy: AssetSearchBy =  // AssetSearchBy | The field to search member assets by
+
+    val searchValue: String = searchValue_example // String | The value to search for
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark)
+    val request = apiInstance.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -930,11 +994,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
  **partnerId** | **String**| The partner id to be bound to the Business |
- **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [enum: INTERNAL, EXTERNAL]
- **assetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER]
+ **partnerType** | **String**| Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [enum: INTERNAL, EXTERNAL]
+ **assetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, PINNER_LIST, CONVERSION_TAG, CATALOG, CONSUMER, CONVERSION_SEGMENT]
  **startIndex** | **Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **sortBy** | [**AssetSortBy**](.md)| The field to sort member assets by | [optional] [enum: NAME, ID, PERMISSIONS]
+ **sortAscending** | **Boolean**| Sort assets in ascending order | [optional]
+ **searchBy** | [**AssetSearchBy**](.md)| The field to search member assets by | [optional] [enum: NAME, ID, NAME_OR_ID, OWNER_NAME, NAME_OR_OWNER]
+ **searchValue** | **String**| The value to search for | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -953,13 +1021,18 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## deletePartnerAssetAccessHandlerImpl
 
-> deletePartnerAssetAccessHandlerImpl(deletePartnerAssetAccessHandlerImplRequest): ApiRequest[DeletePartnerAssetsResultsResponseArray]
+> deletePartnerAssetAccessHandlerImpl(deletePartnerAssetAccessHandlerImplRequest): ApiRequest[DeletePartnerAssetAccessResultsResponseArray]
 
 Delete partner access to asset
 
@@ -987,7 +1060,7 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessAssetsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
     val deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody =  // DeletePartnerAssetAccessBody | 
     
@@ -1024,7 +1097,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-ApiRequest[[**DeletePartnerAssetsResultsResponseArray**](DeletePartnerAssetsResultsResponseArray.md)]
+ApiRequest[[**DeletePartnerAssetAccessResultsResponseArray**](DeletePartnerAssetAccessResultsResponseArray.md)]
 
 
 ### Authorization
@@ -1039,8 +1112,8 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## updatePartnerAssetAccessHandlerImpl
@@ -1073,9 +1146,9 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessAssetsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody =  // UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+    val updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody =  // UpdatePartnerAssetAccessBody | 
     
     val request = apiInstance.updatePartnerAssetAccessHandlerImpl(businessId, updatePartnerAssetAccessBody)
     val response = apiInvoker.execute(request)
@@ -1106,7 +1179,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
- **updatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md)| A list of assets and permissions to assign to your partners. |
+ **updatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md)|  |
 
 ### Return type
 
@@ -1125,6 +1198,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

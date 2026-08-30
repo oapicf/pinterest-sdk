@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**PromotionResponse**](PromotionResponse.md) |  |  [optional]
+**data** | [**Promotion**](Promotion.md) |  |  [optional]
 **exception** | [**Exception**](Exception.md) |  |  [optional]
 
 

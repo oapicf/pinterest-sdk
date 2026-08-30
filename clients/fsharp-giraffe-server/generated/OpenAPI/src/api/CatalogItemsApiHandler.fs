@@ -7,11 +7,11 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open CatalogItemsApiHandlerParams
 open CatalogItemsApiServiceInterface
 open CatalogItemsApiServiceImplementation
-open OpenAPI.Model.CatalogsItems
 open OpenAPI.Model.CatalogsItemsBatch
+open OpenAPI.Model.CatalogsItemsBatchPostRequest
 open OpenAPI.Model.CatalogsItemsRequest
-open OpenAPI.Model.Error
-open OpenAPI.Model.ItemsBatchPostRequest
+open OpenAPI.Model.ItemsPost200Response
+open OpenAPI.Model.PinterestLibError
 
 module CatalogItemsApiHandler =
 
@@ -33,14 +33,16 @@ module CatalogItemsApiHandler =
           return! (match result with
                       | ItemsBatchGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | ItemsBatchGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
                       | ItemsBatchGetStatusCode401 resolved ->
                             setStatusCode 401 >=> json resolved.content
                       | ItemsBatchGetStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
                       | ItemsBatchGetStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
-                      | ItemsBatchGetStatusCode405 resolved ->
-                            setStatusCode 405 >=> json resolved.content
+                      | ItemsBatchGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | ItemsBatchGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -69,6 +71,10 @@ module CatalogItemsApiHandler =
                             setStatusCode 401 >=> json resolved.content
                       | ItemsBatchPostStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
+                      | ItemsBatchPostStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | ItemsBatchPostStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | ItemsBatchPostDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -97,6 +103,10 @@ module CatalogItemsApiHandler =
                             setStatusCode 401 >=> json resolved.content
                       | ItemsPostStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
+                      | ItemsPostStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | ItemsPostStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | ItemsPostDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

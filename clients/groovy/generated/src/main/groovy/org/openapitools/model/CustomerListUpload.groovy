@@ -9,6 +9,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ErrorDetail;
 import org.openapitools.model.RecordCounts;
 import org.openapitools.model.UserListOperationType;
+import org.openapitools.model.WorkloadState;
 
 @Canonical
 class CustomerListUpload {
@@ -24,39 +25,10 @@ class CustomerListUpload {
     String id
     
     UserListOperationType operation
-    
+    /* Record processing counts */
     RecordCounts recordCounts
-
-    enum StateEnum {
     
-        NOT_STARTED("NOT_STARTED"),
-        
-        RUNNING("RUNNING"),
-        
-        PAUSED("PAUSED"),
-        
-        SUCCEEDED("SUCCEEDED"),
-        
-        FAILED("FAILED")
-    
-        private final String value
-    
-        StateEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
-    /* Workload processing state */
-    StateEnum state
+    WorkloadState state
     /* Customer List Upload updated_time. Epoch (seconds). */
     Integer updatedTime
 }

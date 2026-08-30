@@ -11,6 +11,7 @@
 #' @field currency  \link{Currency} [optional]
 #' @field name Ad account name. character [optional]
 #' @field owner_user_id Advertiser's owning user ID. character [optional]
+#' @field time_zone The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ AdAccountCreate <- R6::R6Class(
     `currency` = NULL,
     `name` = NULL,
     `owner_user_id` = NULL,
+    `time_zone` = NULL,
 
     #' @description
     #' Initialize a new AdAccountCreate class.
@@ -29,8 +31,9 @@ AdAccountCreate <- R6::R6Class(
     #' @param currency currency
     #' @param name Ad account name.
     #' @param owner_user_id Advertiser's owning user ID.
+    #' @param time_zone The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
     #' @param ... Other optional arguments.
-    initialize = function(`country` = NULL, `currency` = NULL, `name` = NULL, `owner_user_id` = NULL, ...) {
+    initialize = function(`country` = NULL, `currency` = NULL, `name` = NULL, `owner_user_id` = NULL, `time_zone` = NULL, ...) {
       if (!is.null(`country`)) {
         if (!(`country` %in% c())) {
           stop(paste("Error! \"", `country`, "\" cannot be assigned to `country`. Must be .", sep = ""))
@@ -56,6 +59,12 @@ AdAccountCreate <- R6::R6Class(
           stop(paste("Error! Invalid data for `owner_user_id`. Must be a string:", `owner_user_id`))
         }
         self$`owner_user_id` <- `owner_user_id`
+      }
+      if (!is.null(`time_zone`)) {
+        if (!(is.character(`time_zone`) && length(`time_zone`) == 1)) {
+          stop(paste("Error! Invalid data for `time_zone`. Must be a string:", `time_zone`))
+        }
+        self$`time_zone` <- `time_zone`
       }
     },
 
@@ -92,11 +101,11 @@ AdAccountCreate <- R6::R6Class(
       AdAccountCreateObject <- list()
       if (!is.null(self$`country`)) {
         AdAccountCreateObject[["country"]] <-
-          self$`country`$toSimpleType()
+          self$extractSimpleType(self$`country`)
       }
       if (!is.null(self$`currency`)) {
         AdAccountCreateObject[["currency"]] <-
-          self$`currency`$toSimpleType()
+          self$extractSimpleType(self$`currency`)
       }
       if (!is.null(self$`name`)) {
         AdAccountCreateObject[["name"]] <-
@@ -106,7 +115,34 @@ AdAccountCreate <- R6::R6Class(
         AdAccountCreateObject[["owner_user_id"]] <-
           self$`owner_user_id`
       }
+      if (!is.null(self$`time_zone`)) {
+        AdAccountCreateObject[["time_zone"]] <-
+          self$`time_zone`
+      }
       return(AdAccountCreateObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -131,6 +167,9 @@ AdAccountCreate <- R6::R6Class(
       }
       if (!is.null(this_object$`owner_user_id`)) {
         self$`owner_user_id` <- this_object$`owner_user_id`
+      }
+      if (!is.null(this_object$`time_zone`)) {
+        self$`time_zone` <- this_object$`time_zone`
       }
       self
     },
@@ -157,6 +196,7 @@ AdAccountCreate <- R6::R6Class(
       self$`currency` <- Currency$new()$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
       self$`name` <- this_object$`name`
       self$`owner_user_id` <- this_object$`owner_user_id`
+      self$`time_zone` <- this_object$`time_zone`
       self
     },
 

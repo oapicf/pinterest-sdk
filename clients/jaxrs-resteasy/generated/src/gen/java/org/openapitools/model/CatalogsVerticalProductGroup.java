@@ -21,7 +21,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsProductGroup.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelProductGroup.class, name = "HOTEL"),
@@ -65,10 +65,10 @@ public class CatalogsVerticalProductGroup   {
   private Integer updatedAt;
 
   /**
-   * Catalog id pertaining to the creative assets product group.
+   * Catalog ID pertaining to the product group.
    **/
   
-  @ApiModelProperty(required = true, value = "Catalog id pertaining to the creative assets product group.")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog ID pertaining to the product group.")
   @JsonProperty("catalog_id")
   @NotNull
  @Pattern(regexp="^\\d+$")  public String getCatalogId() {
@@ -157,10 +157,10 @@ public class CatalogsVerticalProductGroup   {
   }
 
   /**
-   * ID of the creative assets product group.
+   * ID of the catalog product group.
    **/
   
-  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the creative assets product group.")
+  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the catalog product group.")
   @JsonProperty("id")
   @NotNull
  @Pattern(regexp="^\\d+$")  public String getId() {
@@ -196,10 +196,10 @@ public class CatalogsVerticalProductGroup   {
   }
 
   /**
-   * Name of creative assets product group
+   * Name of catalog product group
    **/
   
-  @ApiModelProperty(example = "Most Popular", value = "Name of creative assets product group")
+  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -307,10 +307,7 @@ public class CatalogsVerticalProductGroup   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

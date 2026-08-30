@@ -1,7 +1,7 @@
 {
   "namespace": "model",
   "type": "enum",
-  "doc": "Summary status for campaign",
+  "doc": "",
   "name": "CampaignSummaryStatus",
   "symbols": [
     "RUNNING",

@@ -8,11 +8,26 @@
 
 const Controller = require('./Controller');
 const service = require('../services/ConversionsService');
+const advertiser_defined_events/create = async (request, response) => {
+  await Controller.handleRequest(request, response, service.advertiser_defined_events/create);
+};
+
+const advertiser_defined_events/delete = async (request, response) => {
+  await Controller.handleRequest(request, response, service.advertiser_defined_events/delete);
+};
+
 const advertiser_defined_events/get = async (request, response) => {
   await Controller.handleRequest(request, response, service.advertiser_defined_events/get);
 };
 
+const advertiser_defined_events/update = async (request, response) => {
+  await Controller.handleRequest(request, response, service.advertiser_defined_events/update);
+};
+
 
 module.exports = {
+  advertiser_defined_events/create,
+  advertiser_defined_events/delete,
   advertiser_defined_events/get,
+  advertiser_defined_events/update,
 };

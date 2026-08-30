@@ -48,7 +48,7 @@ CurrencyFilter::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupCurrencyCriteria")) {
-			jsonToValue(&cURRENCY, node, "CatalogsProductGroupCurrencyCriteria", "");
+			jsonToValue(&cURRENCY, node, "CatalogsProductGroupCurrencyCriteria", "CatalogsProductGroupCurrencyCriteria");
 		} else {
 			
 			CatalogsProductGroupCurrencyCriteria* obj = static_cast<CatalogsProductGroupCurrencyCriteria*> (&cURRENCY);

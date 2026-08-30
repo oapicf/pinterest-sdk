@@ -148,7 +148,7 @@ QuizPinResult::getAndroidDeepLink()
 }
 
 void
-QuizPinResult::setAndroidDeepLink(std::string  android_deep_link)
+QuizPinResult::setAndroidDeepLink(std::string android_deep_link)
 {
 	this->android_deep_link = android_deep_link;
 }
@@ -160,7 +160,7 @@ QuizPinResult::getDestinationUrl()
 }
 
 void
-QuizPinResult::setDestinationUrl(std::string  destination_url)
+QuizPinResult::setDestinationUrl(std::string destination_url)
 {
 	this->destination_url = destination_url;
 }
@@ -172,7 +172,7 @@ QuizPinResult::getIosDeepLink()
 }
 
 void
-QuizPinResult::setIosDeepLink(std::string  ios_deep_link)
+QuizPinResult::setIosDeepLink(std::string ios_deep_link)
 {
 	this->ios_deep_link = ios_deep_link;
 }
@@ -184,7 +184,7 @@ QuizPinResult::getOrganicPinId()
 }
 
 void
-QuizPinResult::setOrganicPinId(std::string  organic_pin_id)
+QuizPinResult::setOrganicPinId(std::string organic_pin_id)
 {
 	this->organic_pin_id = organic_pin_id;
 }
@@ -196,7 +196,7 @@ QuizPinResult::getResultId()
 }
 
 void
-QuizPinResult::setResultId(long  result_id)
+QuizPinResult::setResultId(long result_id)
 {
 	this->result_id = result_id;
 }

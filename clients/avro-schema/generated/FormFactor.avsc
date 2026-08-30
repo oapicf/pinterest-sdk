@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Device form factor",
+  "name": "FormFactor",
+  "symbols": [
+    "desktop",
+    "laptop",
+    "cellphone",
+    "tablet",
+    "smartwatch",
+    "tv",
+    "vr",
+    "console",
+    "other"
+  ]
+}

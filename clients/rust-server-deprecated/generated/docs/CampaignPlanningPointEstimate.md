@@ -1,0 +1,14 @@
+# CampaignPlanningPointEstimate
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**budget** | **i32** | The budget value of the point. | 
+**double_y** | **swagger::Nullable<f64>** | Y value as a decimal. | 
+**max_y** | **i32** | The maximum Y value of the point. | 
+**min_y** | **i32** | The minimum Y value of the point. | 
+**y** | **i32** | The expected Y value of the point. | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

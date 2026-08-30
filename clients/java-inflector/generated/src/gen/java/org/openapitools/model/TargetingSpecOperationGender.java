@@ -10,12 +10,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.TargetingSpecGender;
+import org.openapitools.model.TargetingSpecListOperation;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingSpecOperationGender   {
   /**
    * Gets or Sets field
@@ -49,44 +50,11 @@ public class TargetingSpecOperationGender   {
   @JsonProperty("field")
   private FieldEnum field;
 
-  /**
-   * Gets or Sets operation
-   */
-  public enum OperationEnum {
-    SET("SET"),
-    
-    ADD("ADD"),
-    
-    REMOVE("REMOVE");
-
-    private String value;
-
-    OperationEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OperationEnum fromValue(String text) {
-      for (OperationEnum b : OperationEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
   @JsonProperty("operation")
-  private OperationEnum operation;
+  private TargetingSpecListOperation operation;
 
   @JsonProperty("values")
-  private List<TargetingSpecGender> values = ;
+  private List<TargetingSpecGender> values = new ArrayList<>();
 
   /**
    **/
@@ -107,7 +75,7 @@ public class TargetingSpecOperationGender   {
 
   /**
    **/
-  public TargetingSpecOperationGender operation(OperationEnum operation) {
+  public TargetingSpecOperationGender operation(TargetingSpecListOperation operation) {
     this.operation = operation;
     return this;
   }
@@ -115,10 +83,10 @@ public class TargetingSpecOperationGender   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operation")
-  public OperationEnum getOperation() {
+  public TargetingSpecListOperation getOperation() {
     return operation;
   }
-  public void setOperation(OperationEnum operation) {
+  public void setOperation(TargetingSpecListOperation operation) {
     this.operation = operation;
   }
 
@@ -176,10 +144,7 @@ public class TargetingSpecOperationGender   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

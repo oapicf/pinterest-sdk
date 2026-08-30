@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,8 +23,7 @@ type QuizPinData struct {
 	Questions []QuizPinQuestion `json:"questions,omitempty"`
 	Results []QuizPinResult `json:"results,omitempty"`
 	TieBreakerCustomResult NullableQuizPinResult `json:"tie_breaker_custom_result,omitempty"`
-	// Quiz ad tie breaker type, default is RANDOM
-	TieBreakerType *string `json:"tie_breaker_type,omitempty"`
+	TieBreakerType *TieBreakerType `json:"tie_breaker_type,omitempty"`
 }
 
 // NewQuizPinData instantiates a new QuizPinData object
@@ -151,9 +150,9 @@ func (o *QuizPinData) UnsetTieBreakerCustomResult() {
 }
 
 // GetTieBreakerType returns the TieBreakerType field value if set, zero value otherwise.
-func (o *QuizPinData) GetTieBreakerType() string {
+func (o *QuizPinData) GetTieBreakerType() TieBreakerType {
 	if o == nil || IsNil(o.TieBreakerType) {
-		var ret string
+		var ret TieBreakerType
 		return ret
 	}
 	return *o.TieBreakerType
@@ -161,7 +160,7 @@ func (o *QuizPinData) GetTieBreakerType() string {
 
 // GetTieBreakerTypeOk returns a tuple with the TieBreakerType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *QuizPinData) GetTieBreakerTypeOk() (*string, bool) {
+func (o *QuizPinData) GetTieBreakerTypeOk() (*TieBreakerType, bool) {
 	if o == nil || IsNil(o.TieBreakerType) {
 		return nil, false
 	}
@@ -177,8 +176,8 @@ func (o *QuizPinData) HasTieBreakerType() bool {
 	return false
 }
 
-// SetTieBreakerType gets a reference to the given string and assigns it to the TieBreakerType field.
-func (o *QuizPinData) SetTieBreakerType(v string) {
+// SetTieBreakerType gets a reference to the given TieBreakerType and assigns it to the TieBreakerType field.
+func (o *QuizPinData) SetTieBreakerType(v TieBreakerType) {
 	o.TieBreakerType = &v
 }
 

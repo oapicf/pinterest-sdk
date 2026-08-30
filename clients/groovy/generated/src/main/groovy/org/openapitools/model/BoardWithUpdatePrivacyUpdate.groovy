@@ -10,7 +10,7 @@ import org.openapitools.model.BoardUpdatePrivacy;
 class BoardWithUpdatePrivacyUpdate {
     
     String description
-    /*      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". */
+    /*     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". */
     String name
     
     BoardUpdatePrivacy privacy

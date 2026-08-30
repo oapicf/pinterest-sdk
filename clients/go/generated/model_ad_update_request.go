@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,12 @@ var _ MappedNullable = &AdUpdateRequest{}
 
 // AdUpdateRequest struct for AdUpdateRequest
 type AdUpdateRequest struct {
+	// The ID of this ad.
+	Id string `json:"id" validate:"regexp=^\\d+$"`
+	// Pin ID. This field may only be updated for draft ads.
+	PinId NullableString `json:"pin_id,omitempty" validate:"regexp=^\\d+$"`
 	// ID of the ad group that contains the ad.
-	AdGroupId *string `json:"ad_group_id,omitempty" validate:"regexp=^(AG)?\\\\d+$"`
+	AdGroupId *string `json:"ad_group_id,omitempty" validate:"regexp=^(AG)?\\d+$"`
 	// Deep link URL for Android devices.
 	AndroidDeepLink NullableString `json:"android_deep_link,omitempty"`
 	// Comma-separated deep links for the carousel pin on Android.
@@ -44,24 +48,22 @@ type AdUpdateRequest struct {
 	GridClickType NullableGridClickType `json:"grid_click_type,omitempty"`
 	// Deep link URL for iOS devices.
 	IosDeepLink NullableString `json:"ios_deep_link,omitempty"`
+	// Is the ad a carting/WTB ad?
+	IsCarting *bool `json:"is_carting,omitempty"`
 	// Is original pin deleted?
 	IsPinDeleted *bool `json:"is_pin_deleted,omitempty"`
 	// Is pin repinnable?
 	IsRemovable *bool `json:"is_removable,omitempty"`
 	// Lead form ID for lead ad generation.
-	LeadFormId NullableString `json:"lead_form_id,omitempty" validate:"regexp=^(AG)?\\\\d+$"`
+	LeadFormId NullableString `json:"lead_form_id,omitempty" validate:"regexp=^(AG)?\\d+$"`
 	// Name of the ad - 255 chars max.
 	Name NullableString `json:"name,omitempty"`
 	// Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-	QuizPinData NullableQuizPinData `json:"quiz_pin_data,omitempty"`
+	QuizPinData map[string]interface{} `json:"quiz_pin_data,omitempty"`
 	Status *EntityStatus `json:"status,omitempty"`
-	TrackingUrls NullableTrackingUrls `json:"tracking_urls,omitempty"`
+	TrackingUrls map[string]interface{} `json:"tracking_urls,omitempty"`
 	// Tracking URL for ad impressions.
 	ViewTrackingUrl NullableString `json:"view_tracking_url,omitempty"`
-	// The ID of this ad.
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
-	// Pin ID. This field may only be updated for draft ads.
-	PinId NullableString `json:"pin_id,omitempty" validate:"regexp=^\\\\d+$"`
 }
 
 type _AdUpdateRequest AdUpdateRequest
@@ -82,6 +84,72 @@ func NewAdUpdateRequest(id string) *AdUpdateRequest {
 func NewAdUpdateRequestWithDefaults() *AdUpdateRequest {
 	this := AdUpdateRequest{}
 	return &this
+}
+
+// GetId returns the Id field value
+func (o *AdUpdateRequest) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *AdUpdateRequest) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *AdUpdateRequest) SetId(v string) {
+	o.Id = v
+}
+
+// GetPinId returns the PinId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdUpdateRequest) GetPinId() string {
+	if o == nil || IsNil(o.PinId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PinId.Get()
+}
+
+// GetPinIdOk returns a tuple with the PinId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdUpdateRequest) GetPinIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PinId.Get(), o.PinId.IsSet()
+}
+
+// HasPinId returns a boolean if a field has been set.
+func (o *AdUpdateRequest) HasPinId() bool {
+	if o != nil && o.PinId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPinId gets a reference to the given NullableString and assigns it to the PinId field.
+func (o *AdUpdateRequest) SetPinId(v string) {
+	o.PinId.Set(&v)
+}
+// SetPinIdNil sets the value for PinId to be an explicit nil
+func (o *AdUpdateRequest) SetPinIdNil() {
+	o.PinId.Set(nil)
+}
+
+// UnsetPinId ensures that no value is present for PinId, not even an explicit nil
+func (o *AdUpdateRequest) UnsetPinId() {
+	o.PinId.Unset()
 }
 
 // GetAdGroupId returns the AdGroupId field value if set, zero value otherwise.
@@ -583,6 +651,38 @@ func (o *AdUpdateRequest) UnsetIosDeepLink() {
 	o.IosDeepLink.Unset()
 }
 
+// GetIsCarting returns the IsCarting field value if set, zero value otherwise.
+func (o *AdUpdateRequest) GetIsCarting() bool {
+	if o == nil || IsNil(o.IsCarting) {
+		var ret bool
+		return ret
+	}
+	return *o.IsCarting
+}
+
+// GetIsCartingOk returns a tuple with the IsCarting field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdUpdateRequest) GetIsCartingOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsCarting) {
+		return nil, false
+	}
+	return o.IsCarting, true
+}
+
+// HasIsCarting returns a boolean if a field has been set.
+func (o *AdUpdateRequest) HasIsCarting() bool {
+	if o != nil && !IsNil(o.IsCarting) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsCarting gets a reference to the given bool and assigns it to the IsCarting field.
+func (o *AdUpdateRequest) SetIsCarting(v bool) {
+	o.IsCarting = &v
+}
+
 // GetIsPinDeleted returns the IsPinDeleted field value if set, zero value otherwise.
 func (o *AdUpdateRequest) GetIsPinDeleted() bool {
 	if o == nil || IsNil(o.IsPinDeleted) {
@@ -732,45 +832,36 @@ func (o *AdUpdateRequest) UnsetName() {
 }
 
 // GetQuizPinData returns the QuizPinData field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdUpdateRequest) GetQuizPinData() QuizPinData {
-	if o == nil || IsNil(o.QuizPinData.Get()) {
-		var ret QuizPinData
+func (o *AdUpdateRequest) GetQuizPinData() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.QuizPinData.Get()
+	return o.QuizPinData
 }
 
 // GetQuizPinDataOk returns a tuple with the QuizPinData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdUpdateRequest) GetQuizPinDataOk() (*QuizPinData, bool) {
-	if o == nil {
-		return nil, false
+func (o *AdUpdateRequest) GetQuizPinDataOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.QuizPinData) {
+		return map[string]interface{}{}, false
 	}
-	return o.QuizPinData.Get(), o.QuizPinData.IsSet()
+	return o.QuizPinData, true
 }
 
 // HasQuizPinData returns a boolean if a field has been set.
 func (o *AdUpdateRequest) HasQuizPinData() bool {
-	if o != nil && o.QuizPinData.IsSet() {
+	if o != nil && !IsNil(o.QuizPinData) {
 		return true
 	}
 
 	return false
 }
 
-// SetQuizPinData gets a reference to the given NullableQuizPinData and assigns it to the QuizPinData field.
-func (o *AdUpdateRequest) SetQuizPinData(v QuizPinData) {
-	o.QuizPinData.Set(&v)
-}
-// SetQuizPinDataNil sets the value for QuizPinData to be an explicit nil
-func (o *AdUpdateRequest) SetQuizPinDataNil() {
-	o.QuizPinData.Set(nil)
-}
-
-// UnsetQuizPinData ensures that no value is present for QuizPinData, not even an explicit nil
-func (o *AdUpdateRequest) UnsetQuizPinData() {
-	o.QuizPinData.Unset()
+// SetQuizPinData gets a reference to the given map[string]interface{} and assigns it to the QuizPinData field.
+func (o *AdUpdateRequest) SetQuizPinData(v map[string]interface{}) {
+	o.QuizPinData = v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -806,45 +897,36 @@ func (o *AdUpdateRequest) SetStatus(v EntityStatus) {
 }
 
 // GetTrackingUrls returns the TrackingUrls field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdUpdateRequest) GetTrackingUrls() TrackingUrls {
-	if o == nil || IsNil(o.TrackingUrls.Get()) {
-		var ret TrackingUrls
+func (o *AdUpdateRequest) GetTrackingUrls() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.TrackingUrls.Get()
+	return o.TrackingUrls
 }
 
 // GetTrackingUrlsOk returns a tuple with the TrackingUrls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdUpdateRequest) GetTrackingUrlsOk() (*TrackingUrls, bool) {
-	if o == nil {
-		return nil, false
+func (o *AdUpdateRequest) GetTrackingUrlsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.TrackingUrls) {
+		return map[string]interface{}{}, false
 	}
-	return o.TrackingUrls.Get(), o.TrackingUrls.IsSet()
+	return o.TrackingUrls, true
 }
 
 // HasTrackingUrls returns a boolean if a field has been set.
 func (o *AdUpdateRequest) HasTrackingUrls() bool {
-	if o != nil && o.TrackingUrls.IsSet() {
+	if o != nil && !IsNil(o.TrackingUrls) {
 		return true
 	}
 
 	return false
 }
 
-// SetTrackingUrls gets a reference to the given NullableTrackingUrls and assigns it to the TrackingUrls field.
-func (o *AdUpdateRequest) SetTrackingUrls(v TrackingUrls) {
-	o.TrackingUrls.Set(&v)
-}
-// SetTrackingUrlsNil sets the value for TrackingUrls to be an explicit nil
-func (o *AdUpdateRequest) SetTrackingUrlsNil() {
-	o.TrackingUrls.Set(nil)
-}
-
-// UnsetTrackingUrls ensures that no value is present for TrackingUrls, not even an explicit nil
-func (o *AdUpdateRequest) UnsetTrackingUrls() {
-	o.TrackingUrls.Unset()
+// SetTrackingUrls gets a reference to the given map[string]interface{} and assigns it to the TrackingUrls field.
+func (o *AdUpdateRequest) SetTrackingUrls(v map[string]interface{}) {
+	o.TrackingUrls = v
 }
 
 // GetViewTrackingUrl returns the ViewTrackingUrl field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -889,72 +971,6 @@ func (o *AdUpdateRequest) UnsetViewTrackingUrl() {
 	o.ViewTrackingUrl.Unset()
 }
 
-// GetId returns the Id field value
-func (o *AdUpdateRequest) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *AdUpdateRequest) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *AdUpdateRequest) SetId(v string) {
-	o.Id = v
-}
-
-// GetPinId returns the PinId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdUpdateRequest) GetPinId() string {
-	if o == nil || IsNil(o.PinId.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.PinId.Get()
-}
-
-// GetPinIdOk returns a tuple with the PinId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdUpdateRequest) GetPinIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.PinId.Get(), o.PinId.IsSet()
-}
-
-// HasPinId returns a boolean if a field has been set.
-func (o *AdUpdateRequest) HasPinId() bool {
-	if o != nil && o.PinId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPinId gets a reference to the given NullableString and assigns it to the PinId field.
-func (o *AdUpdateRequest) SetPinId(v string) {
-	o.PinId.Set(&v)
-}
-// SetPinIdNil sets the value for PinId to be an explicit nil
-func (o *AdUpdateRequest) SetPinIdNil() {
-	o.PinId.Set(nil)
-}
-
-// UnsetPinId ensures that no value is present for PinId, not even an explicit nil
-func (o *AdUpdateRequest) UnsetPinId() {
-	o.PinId.Unset()
-}
-
 func (o AdUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -965,6 +981,10 @@ func (o AdUpdateRequest) MarshalJSON() ([]byte, error) {
 
 func (o AdUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	if o.PinId.IsSet() {
+		toSerialize["pin_id"] = o.PinId.Get()
+	}
 	if !IsNil(o.AdGroupId) {
 		toSerialize["ad_group_id"] = o.AdGroupId
 	}
@@ -1004,6 +1024,9 @@ func (o AdUpdateRequest) ToMap() (map[string]interface{}, error) {
 	if o.IosDeepLink.IsSet() {
 		toSerialize["ios_deep_link"] = o.IosDeepLink.Get()
 	}
+	if !IsNil(o.IsCarting) {
+		toSerialize["is_carting"] = o.IsCarting
+	}
 	if !IsNil(o.IsPinDeleted) {
 		toSerialize["is_pin_deleted"] = o.IsPinDeleted
 	}
@@ -1016,21 +1039,17 @@ func (o AdUpdateRequest) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if o.QuizPinData.IsSet() {
-		toSerialize["quiz_pin_data"] = o.QuizPinData.Get()
+	if o.QuizPinData != nil {
+		toSerialize["quiz_pin_data"] = o.QuizPinData
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.TrackingUrls.IsSet() {
-		toSerialize["tracking_urls"] = o.TrackingUrls.Get()
+	if o.TrackingUrls != nil {
+		toSerialize["tracking_urls"] = o.TrackingUrls
 	}
 	if o.ViewTrackingUrl.IsSet() {
 		toSerialize["view_tracking_url"] = o.ViewTrackingUrl.Get()
-	}
-	toSerialize["id"] = o.Id
-	if o.PinId.IsSet() {
-		toSerialize["pin_id"] = o.PinId.Get()
 	}
 	return toSerialize, nil
 }

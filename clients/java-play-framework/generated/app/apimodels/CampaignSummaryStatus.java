@@ -6,7 +6,7 @@ import javax.validation.*;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Summary status for campaign
+ * Gets or Sets CampaignSummaryStatus
  */
 public enum CampaignSummaryStatus {
   

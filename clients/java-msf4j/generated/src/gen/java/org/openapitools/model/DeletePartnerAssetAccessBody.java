@@ -8,36 +8,37 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.DeletePartnerAssetAccessBodyAccessesInner;
+import org.openapitools.model.DeletePartnerAssetAccessItem;
 
 /**
- * DeletePartnerAssetAccessBody
+ * An object with a list of partner asset accesses to delete.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "An object with a list of partner asset accesses to delete.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class DeletePartnerAssetAccessBody   {
   @JsonProperty("accesses")
-  private List<@Valid DeletePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+  private List<@Valid DeletePartnerAssetAccessItem> accesses = new ArrayList<>();
 
-  public DeletePartnerAssetAccessBody accesses(List<@Valid DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public DeletePartnerAssetAccessBody accesses(List<@Valid DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
 
-  public DeletePartnerAssetAccessBody addAccessesItem(DeletePartnerAssetAccessBodyAccessesInner accessesItem) {
+  public DeletePartnerAssetAccessBody addAccessesItem(DeletePartnerAssetAccessItem accessesItem) {
     this.accesses.add(accessesItem);
     return this;
   }
 
    /**
-   * Get accesses
+   * List of partner asset accesses to delete.
    * @return accesses
   **/
-  @ApiModelProperty(required = true, value = "")
-  public List<@Valid DeletePartnerAssetAccessBodyAccessesInner> getAccesses() {
+  @ApiModelProperty(required = true, value = "List of partner asset accesses to delete.")
+  public List<@Valid DeletePartnerAssetAccessItem> getAccesses() {
     return accesses;
   }
 
-  public void setAccesses(List<@Valid DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<@Valid DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
@@ -74,10 +75,7 @@ public class DeletePartnerAssetAccessBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

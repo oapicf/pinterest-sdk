@@ -5,24 +5,32 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
-// ItemResponse - Object describing an item record or error
+
+// ItemResponse - Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).
 type ItemResponse struct {
-
-	CatalogType CatalogsType `json:"catalog_type"`
 
 	Attributes CatalogsCreativeAssetsAttributes `json:"attributes,omitempty"`
 
+	CatalogType string `json:"catalog_type"`
+
 	// The catalog item id in the merchant namespace
 	ItemId string `json:"item_id,omitempty"`
+
+	// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	ItemResponseKind string `json:"item_response_kind"`
 
 	// The pins mapped to the item
 	Pins *[]Pin `json:"pins,omitempty"`
@@ -36,11 +44,109 @@ type ItemResponse struct {
 	// Array with the errors for the item id requested
 	Errors []ItemValidationEvent `json:"errors"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into ItemResponse
+func (o *ItemResponse) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"catalog_type",
+		"item_response_kind",
+		"errors",
+	}
 
-// AssertItemResponseRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"catalog_type": false,
+		"item_response_kind": false,
+		"errors": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"attributes": {},
+		"catalog_type": {},
+		"item_id": {},
+		"item_response_kind": {},
+		"pins": {},
+		"hotel_id": {},
+		"creative_assets_id": {},
+		"errors": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded ItemResponse
+
+	if value, exists := allProperties["attributes"]; exists {
+		if err = json.Unmarshal(value, &decoded.Attributes); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["catalog_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["item_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.ItemId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["item_response_kind"]; exists {
+		if err = json.Unmarshal(value, &decoded.ItemResponseKind); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["pins"]; exists {
+		if err = json.Unmarshal(value, &decoded.Pins); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["hotel_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.HotelId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["creative_assets_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreativeAssetsId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["errors"]; exists {
+		if err = json.Unmarshal(value, &decoded.Errors); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertItemResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertItemResponseRequired(obj ItemResponse) error {
 	elements := map[string]interface{}{
-		"catalog_type": obj.CatalogType,
 		"errors": obj.Errors,
 	}
 	for name, el := range elements {

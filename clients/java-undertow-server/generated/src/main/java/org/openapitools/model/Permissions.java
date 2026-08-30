@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -11,13 +11,17 @@
 package org.openapitools.model;
 
 import java.util.Objects;
+import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 
 
+/**
+ * Permission levels available on a business asset.
+ */
 
 /**
- * Gets or Sets Permissions
+ * Permission levels available on a business asset.
  */
 public enum Permissions {
     
@@ -41,7 +45,9 @@ public enum Permissions {
         
         PROFILE_PUBLISHER("PROFILE_PUBLISHER"),
         
-        CONSUMER_USER("CONSUMER_USER");
+        CONSUMER_USER("CONSUMER_USER"),
+        
+        BIZ_PINNER_LIST_SHARER("BIZ_PINNER_LIST_SHARER");
 
 private String value;
 

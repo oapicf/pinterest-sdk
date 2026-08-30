@@ -9,7 +9,7 @@
        'advertiser_id' => binary(),
        'discountCurrency' => binary(),
        'discountInMicroCurrency' => integer(),
-       'discountType' => binary(),
+       'discountType' => openapi_ads_credit_discount_type:openapi_ads_credit_discount_type(),
        'remainingDiscountInMicroCurrency' => integer(),
        'title' => binary()
      }.

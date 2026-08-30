@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **String** | Description of the trending topic | 
-**percent_growth_mom** | **i32** | Month-over-month growth percentage | 
+**id** | **String** | Unique identifier for the trending topic | 
+**percent_growth_mom** | Option<**i32**> | Month-over-month growth percentage | [optional]
 **pins** | [**Vec<models::TrendingPin>**](TrendingPin.md) | Array of pin images related to this trend (up to 6) | 
 **related_interests** | **Vec<String>** | List of related interest categories | 
 **related_searches** | **Vec<String>** | List of related search terms | 

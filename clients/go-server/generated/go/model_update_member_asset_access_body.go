@@ -5,22 +5,81 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
-// UpdateMemberAssetAccessBody - An object with a list of all the new accesses.
+
+// UpdateMemberAssetAccessBody - An object with a list of all the new member asset accesses.
 type UpdateMemberAssetAccessBody struct {
 
-	Accesses []UpdateMemberAssetAccessBodyAccessesInner `json:"accesses"`
+	// List of member asset accesses to assign or update.
+	Accesses []UpdateMemberAssetAccessItem `json:"accesses"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into UpdateMemberAssetAccessBody
+func (o *UpdateMemberAssetAccessBody) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"accesses",
+	}
+
+	requiredNullableProperties := map[string]bool{
+		"accesses": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"accesses": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded UpdateMemberAssetAccessBody
+
+	if value, exists := allProperties["accesses"]; exists {
+		if err = json.Unmarshal(value, &decoded.Accesses); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
 }
 
-// AssertUpdateMemberAssetAccessBodyRequired checks if the required fields are not zero-ed
+// AssertUpdateMemberAssetAccessBodyRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertUpdateMemberAssetAccessBodyRequired(obj UpdateMemberAssetAccessBody) error {
 	elements := map[string]interface{}{
 		"accesses": obj.Accesses,
@@ -32,7 +91,7 @@ func AssertUpdateMemberAssetAccessBodyRequired(obj UpdateMemberAssetAccessBody) 
 	}
 
 	for _, el := range obj.Accesses {
-		if err := AssertUpdateMemberAssetAccessBodyAccessesInnerRequired(el); err != nil {
+		if err := AssertUpdateMemberAssetAccessItemRequired(el); err != nil {
 			return err
 		}
 	}
@@ -42,7 +101,7 @@ func AssertUpdateMemberAssetAccessBodyRequired(obj UpdateMemberAssetAccessBody) 
 // AssertUpdateMemberAssetAccessBodyConstraints checks if the values respects the defined constraints
 func AssertUpdateMemberAssetAccessBodyConstraints(obj UpdateMemberAssetAccessBody) error {
 	for _, el := range obj.Accesses {
-		if err := AssertUpdateMemberAssetAccessBodyAccessesInnerConstraints(el); err != nil {
+		if err := AssertUpdateMemberAssetAccessItemConstraints(el); err != nil {
 			return err
 		}
 	}

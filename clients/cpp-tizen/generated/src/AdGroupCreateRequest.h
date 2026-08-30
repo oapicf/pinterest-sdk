@@ -10,13 +10,12 @@
 
 #include <string>
 #include "ActionType.h"
+#include "BidStrategyType.h"
 #include "BudgetType.h"
 #include "EntityStatus.h"
-#include "OptimizationGoalMetadata.h"
 #include "PacingDeliveryType.h"
 #include "PlacementGroupType.h"
 #include "TargetingSpec.h"
-#include "TrackingUrls.h"
 #include <list>
 #include "Object.h"
 
@@ -61,6 +60,27 @@ public:
 	/*! \brief Set Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
 	 */
 	void setAutoTargetingEnabled(bool  auto_targeting_enabled);
+	/*! \brief Get <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+	 */
+	long long getBidMultiplier();
+
+	/*! \brief Set <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+	 */
+	void setBidMultiplier(long long  bid_multiplier);
+	/*! \brief Get 
+	 */
+	BudgetType getBudgetType();
+
+	/*! \brief Set 
+	 */
+	void setBudgetType(BudgetType  budget_type);
+	/*! \brief Get 
+	 */
+	PacingDeliveryType getPacingDeliveryType();
+
+	/*! \brief Set 
+	 */
+	void setPacingDeliveryType(PacingDeliveryType  pacing_delivery_type);
 	/*! \brief Get Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
 	 */
 	int getBidInMicroCurrency();
@@ -68,13 +88,13 @@ public:
 	/*! \brief Set Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
 	 */
 	void setBidInMicroCurrency(int  bid_in_micro_currency);
-	/*! \brief Get Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
+	/*! \brief Get 
 	 */
-	std::string getBidStrategyType();
+	BidStrategyType getBidStrategyType();
 
-	/*! \brief Set Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
+	/*! \brief Set 
 	 */
-	void setBidStrategyType(std::string  bid_strategy_type);
+	void setBidStrategyType(BidStrategyType  bid_strategy_type);
 	/*! \brief Get 
 	 */
 	ActionType getBillableEvent();
@@ -89,13 +109,6 @@ public:
 	/*! \brief Set Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
 	 */
 	void setBudgetInMicroCurrency(int  budget_in_micro_currency);
-	/*! \brief Get 
-	 */
-	BudgetType getBudgetType();
-
-	/*! \brief Set 
-	 */
-	void setBudgetType(BudgetType  budget_type);
 	/*! \brief Get Campaign ID of the ad group.
 	 */
 	std::string getCampaignId();
@@ -133,18 +146,11 @@ public:
 	void setName(std::string  name);
 	/*! \brief Get Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
 	 */
-	OptimizationGoalMetadata getOptimizationGoalMetadata();
+	std::string getOptimizationGoalMetadata();
 
 	/*! \brief Set Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
 	 */
-	void setOptimizationGoalMetadata(OptimizationGoalMetadata  optimization_goal_metadata);
-	/*! \brief Get 
-	 */
-	PacingDeliveryType getPacingDeliveryType();
-
-	/*! \brief Set 
-	 */
-	void setPacingDeliveryType(PacingDeliveryType  pacing_delivery_type);
+	void setOptimizationGoalMetadata(std::string  optimization_goal_metadata);
 	/*! \brief Get <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
 	 */
 	PlacementGroupType getPlacementGroup();
@@ -166,6 +172,13 @@ public:
 	/*! \brief Set Promotion ID. To clear this field, set to null.
 	 */
 	void setPromotionId(std::string  promotion_id);
+	/*! \brief Get Promotion IDs list. To clear this field, set to an empty array [].
+	 */
+	std::list<std::string> getPromotionIds();
+
+	/*! \brief Set Promotion IDs list. To clear this field, set to an empty array [].
+	 */
+	void setPromotionIds(std::list <std::string> promotion_ids);
 	/*! \brief Get Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
 	 */
 	int getStartTime();
@@ -194,44 +207,38 @@ public:
 	/*! \brief Set Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
 	 */
 	void setTargetingTemplateIds(std::list <std::string> targeting_template_ids);
-	/*! \brief Get Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+	/*! \brief Get Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
 	 */
-	TrackingUrls getTrackingUrls();
+	std::string getTrackingUrls();
 
-	/*! \brief Set Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+	/*! \brief Set Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
 	 */
-	void setTrackingUrls(TrackingUrls  tracking_urls);
-	/*! \brief Get <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
-	 */
-	long long getBidMultiplier();
-
-	/*! \brief Set <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
-	 */
-	void setBidMultiplier(long long  bid_multiplier);
+	void setTrackingUrls(std::string  tracking_urls);
 
 private:
 	bool auto_targeting_enabled;
+	long long bid_multiplier;
+	BudgetType budget_type;
+	PacingDeliveryType pacing_delivery_type;
 	int bid_in_micro_currency;
-	std::string bid_strategy_type;
+	BidStrategyType bid_strategy_type;
 	ActionType billable_event;
 	int budget_in_micro_currency;
-	BudgetType budget_type;
 	std::string campaign_id;
 	int end_time;
 	bool is_creative_optimization;
 	int lifetime_frequency_cap;
 	std::string name;
-	OptimizationGoalMetadata optimization_goal_metadata;
-	PacingDeliveryType pacing_delivery_type;
+	std::string optimization_goal_metadata;
 	PlacementGroupType placement_group;
 	std::string promotion_application_level;
 	std::string promotion_id;
+	std::list <std::string>promotion_ids;
 	int start_time;
 	EntityStatus status;
 	TargetingSpec targeting_spec;
 	std::list <std::string>targeting_template_ids;
-	TrackingUrls tracking_urls;
-	long long bid_multiplier;
+	std::string tracking_urls;
 	void __init();
 	void __cleanup();
 

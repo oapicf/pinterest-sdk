@@ -7,9 +7,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { BasePreferredMediaType } from './basePreferredMediaType';
 import { CustomizableCTAType } from './customizableCTAType';
+import { AdShoppingPreviewCreativeType } from './adShoppingPreviewCreativeType';
 
 
+/**
+ * Ad preview from a catalog product group (shopping).
+ */
 export interface AdPreviewShopping { 
     /**
      * Catalog Product Group Id.
@@ -18,7 +23,7 @@ export interface AdPreviewShopping {
     /**
      * Ad format of the shopping ad preview.
      */
-    creative_type: AdPreviewShopping.CreativeTypeEnum;
+    creative_type: AdShoppingPreviewCreativeType;
     /**
      * Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE`
      */
@@ -46,25 +51,17 @@ export interface AdPreviewShopping {
     /**
      * Preferred media type.
      */
-    preferred_media_type?: AdPreviewShopping.PreferredMediaTypeEnum;
+    preferred_media_type?: BasePreferredMediaType;
+    /**
+     * Include promotion data in preview when available on catalog item. Defaults to false.
+     */
+    show_promotion?: boolean;
     /**
      * Multi video template tag, image_tag and video_tag are mutual exclusive.
      */
     video_tag?: string;
 }
 export namespace AdPreviewShopping {
-    export const CreativeTypeEnum = {
-        Shopping: 'SHOPPING',
-        Carousel: 'CAROUSEL',
-        Collection: 'COLLECTION',
-        Regular: 'REGULAR'
-    } as const;
-    export type CreativeTypeEnum = typeof CreativeTypeEnum[keyof typeof CreativeTypeEnum];
-    export const PreferredMediaTypeEnum = {
-        Video: 'VIDEO',
-        Image: 'IMAGE'
-    } as const;
-    export type PreferredMediaTypeEnum = typeof PreferredMediaTypeEnum[keyof typeof PreferredMediaTypeEnum];
 }
 
 

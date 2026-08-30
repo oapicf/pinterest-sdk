@@ -17,14 +17,14 @@ static catalogs_hotel_filter_values_map_t *catalogs_hotel_filter_values_map_crea
     if (!catalogs_hotel_filter_values_map_local_var) {
         return NULL;
     }
+    memset(catalogs_hotel_filter_values_map_local_var, 0, sizeof(catalogs_hotel_filter_values_map_t));
+    catalogs_hotel_filter_values_map_local_var->_library_owned = 1;
     catalogs_hotel_filter_values_map_local_var->brand = brand;
     catalogs_hotel_filter_values_map_local_var->custom_label_0 = custom_label_0;
     catalogs_hotel_filter_values_map_local_var->custom_label_1 = custom_label_1;
     catalogs_hotel_filter_values_map_local_var->custom_label_2 = custom_label_2;
     catalogs_hotel_filter_values_map_local_var->custom_label_3 = custom_label_3;
     catalogs_hotel_filter_values_map_local_var->custom_label_4 = custom_label_4;
-
-    catalogs_hotel_filter_values_map_local_var->_library_owned = 1;
     return catalogs_hotel_filter_values_map_local_var;
 }
 
@@ -36,7 +36,7 @@ __attribute__((deprecated)) catalogs_hotel_filter_values_map_t *catalogs_hotel_f
     list_t *custom_label_3,
     list_t *custom_label_4
     ) {
-    return catalogs_hotel_filter_values_map_create_internal (
+    catalogs_hotel_filter_values_map_t *result = catalogs_hotel_filter_values_map_create_internal (
         brand,
         custom_label_0,
         custom_label_1,
@@ -44,6 +44,9 @@ __attribute__((deprecated)) catalogs_hotel_filter_values_map_t *catalogs_hotel_f
         custom_label_3,
         custom_label_4
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_hotel_filter_values_map_free(catalogs_hotel_filter_values_map_t *catalogs_hotel_filter_values_map) {
@@ -367,6 +370,7 @@ catalogs_hotel_filter_values_map_t *catalogs_hotel_filter_values_map_parseFromJS
     }
 
 
+
     catalogs_hotel_filter_values_map_local_var = catalogs_hotel_filter_values_map_create_internal (
         brand ? brandList : NULL,
         custom_label_0 ? custom_label_0List : NULL,
@@ -375,6 +379,10 @@ catalogs_hotel_filter_values_map_t *catalogs_hotel_filter_values_map_parseFromJS
         custom_label_3 ? custom_label_3List : NULL,
         custom_label_4 ? custom_label_4List : NULL
         );
+
+    if (!catalogs_hotel_filter_values_map_local_var) {
+        goto end;
+    }
 
     return catalogs_hotel_filter_values_map_local_var;
 end:

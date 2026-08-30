@@ -9,12 +9,12 @@
 #include "../model/conversion_tag.h"
 #include "../model/conversion_tag_create.h"
 #include "../model/conversion_tags_list_200_response.h"
-#include "../model/error.h"
 #include "../model/page_visit_conversion_tags_get_200_response.h"
 #include "../model/pinterest_lib_error.h"
+#include "../model/pinterest_lib_pagination_order.h"
 
-// Enum ORDER for ConversionTagsAPI_pageVisitConversionTagsGet
-typedef enum  { pinterest_rest_api_pageVisitConversionTagsGet_ORDER_NULL = 0, pinterest_rest_api_pageVisitConversionTagsGet_ORDER_ASCENDING, pinterest_rest_api_pageVisitConversionTagsGet_ORDER_DESCENDING } pinterest_rest_api_pageVisitConversionTagsGet_order_e;
+// Enum  for ConversionTagsAPI_pageVisitConversionTagsGet
+typedef enum  { pinterest_rest_api_pageVisitConversionTagsGet__NULL = 0, pinterest_rest_api_pageVisitConversionTagsGet__ASCENDING, pinterest_rest_api_pageVisitConversionTagsGet__DESCENDING } pinterest_rest_api_pageVisitConversionTagsGet_order_e;
 
 
 // Create conversion tag
@@ -54,6 +54,6 @@ ConversionTagsAPI_ocpmEligibleConversionTagsGet(apiClient_t *apiClient, char *ad
 // Get all page visit conversion tag events for an ad account.
 //
 page_visit_conversion_tags_get_200_response_t*
-ConversionTagsAPI_pageVisitConversionTagsGet(apiClient_t *apiClient, char *ad_account_id, int *page_size, pinterest_rest_api_pageVisitConversionTagsGet_order_e order, char *bookmark);
+ConversionTagsAPI_pageVisitConversionTagsGet(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_lib_pagination_order_e order);
 
 

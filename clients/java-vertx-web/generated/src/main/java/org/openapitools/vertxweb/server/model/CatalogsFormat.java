@@ -17,7 +17,9 @@ public enum CatalogsFormat {
   
   CSV("CSV"),
   
-  XML("XML");
+  XML("XML"),
+  
+  INTEGRATION("INTEGRATION");
 
   private String value;
 

@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 
 ### Example
 ```perl
@@ -32,10 +32,10 @@ my $api_instance = WWW::OpenAPIClient::SearchApi->new(
 );
 
 my $term = "term_example"; # string | Search term to look up pins.
-my $country_code = US; # string | Two letter country code (ISO 3166-1 alpha-2)
+my $country_code = "country_code_example"; # string | Two letter country code (ISO 3166-1 alpha-2)
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
 my $locale = "locale_example"; # string | Search locale.
-my $limit = 4; # int | Max search result size
+my $limit = 10; # int | Max search result size
 
 eval {
     my $result = $api_instance->search_partner_pins(term => $term, country_code => $country_code, bookmark => $bookmark, locale => $locale, limit => $limit);
@@ -72,11 +72,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_user_boards_get**
-> SearchUserBoardsGet200Response search_user_boards_get(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, query => $query)
+> BoardsList200Response search_user_boards_get(ad_account_id => $ad_account_id, query => $query, bookmark => $bookmark, page_size => $page_size)
 
 Search user's boards
 
-Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 ```perl
@@ -91,12 +91,12 @@ my $api_instance = WWW::OpenAPIClient::SearchApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 my $query = "query_example"; # string | Search query. Can contain pin description keywords or comma-separated pin IDs.
+my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
-    my $result = $api_instance->search_user_boards_get(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, query => $query);
+    my $result = $api_instance->search_user_boards_get(ad_account_id => $ad_account_id, query => $query, bookmark => $bookmark, page_size => $page_size);
     print Dumper($result);
 };
 if ($@) {
@@ -109,13 +109,13 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
- **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **query** | **string**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] 
+ **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**SearchUserBoardsGet200Response**](SearchUserBoardsGet200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -129,11 +129,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_user_pins_list**
-> SearchUserPinsList200Response search_user_pins_list(query => $query, ad_account_id => $ad_account_id, bookmark => $bookmark)
+> PinsList200Response search_user_pins_list(query => $query, ad_account_id => $ad_account_id, bookmark => $bookmark)
 
 Search user's Pins
 
-Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 ```perl
@@ -145,7 +145,7 @@ my $api_instance = WWW::OpenAPIClient::SearchApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $query = Plants; # string | Search query. Can contain pin description keywords or comma-separated pin IDs.
+my $query = "query_example"; # string | Search query. Can contain pin description keywords or comma-separated pin IDs.
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
 
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
+[**PinsList200Response**](PinsList200Response.md)
 
 ### Authorization
 

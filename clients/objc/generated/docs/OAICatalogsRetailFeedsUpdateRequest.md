@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**OAICatalogsType***](OAICatalogsType.md) |  | 
+**catalogType** | **NSString*** |  | 
 **credentials** | [**OAICatalogsFeedCredentials***](OAICatalogsFeedCredentials.md) |  | [optional] 
 **defaultAvailability** | [**OAIProductAvailabilityType***](OAIProductAvailabilityType.md) |  | [optional] 
 **defaultCurrency** | [**OAINullableCurrency***](OAINullableCurrency.md) |  | [optional] 

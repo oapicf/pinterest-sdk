@@ -16,11 +16,12 @@ import javax.validation.Valid;
 /**
  * OrderLine
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class OrderLine   {
   @JsonProperty("ad_account_id")
-  
+  @NotNull
+
   private String adAccountId;
 
   @JsonProperty("budget")
@@ -28,13 +29,19 @@ public class OrderLine   {
 
   private BigDecimal budget;
 
+  @JsonProperty("campaign_ids")
+  @NotNull
+
+  private List<String> campaignIds = new ArrayList<>();
+
   @JsonProperty("end_time")
   @Valid
 
   private BigDecimal endTime;
 
   @JsonProperty("id")
-  @Pattern(regexp="^\\d+$")
+  @NotNull
+@Pattern(regexp="^\\d+$")
 
   private String id;
 
@@ -62,18 +69,15 @@ public class OrderLine   {
   private BigDecimal startTime;
 
   @JsonProperty("status")
-  @Valid
+  @NotNull
+@Valid
 
   private OrderLineStatus status;
 
   @JsonProperty("type")
-  
-  private String type;
-
-  @JsonProperty("campaign_ids")
   @NotNull
 
-  private List<String> campaignIds = new ArrayList<>();
+  private String type;
 
   public OrderLine adAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
@@ -107,6 +111,31 @@ public class OrderLine   {
 
   public void setBudget(BigDecimal budget) {
     this.budget = budget;
+  }
+
+  public OrderLine campaignIds(List<String> campaignIds) {
+    this.campaignIds = campaignIds;
+    return this;
+  }
+
+  public OrderLine addCampaignIdsItem(String campaignIdsItem) {
+    if (this.campaignIds == null) {
+      this.campaignIds = new ArrayList<>();
+    }
+    this.campaignIds.add(campaignIdsItem);
+    return this;
+  }
+
+   /**
+   * Associated List of campaign IDs.
+   * @return campaignIds
+  **/
+  public List<String> getCampaignIds() {
+    return campaignIds;
+  }
+
+  public void setCampaignIds(List<String> campaignIds) {
+    this.campaignIds = campaignIds;
   }
 
   public OrderLine endTime(BigDecimal endTime) {
@@ -262,31 +291,6 @@ public class OrderLine   {
     this.type = type;
   }
 
-  public OrderLine campaignIds(List<String> campaignIds) {
-    this.campaignIds = campaignIds;
-    return this;
-  }
-
-  public OrderLine addCampaignIdsItem(String campaignIdsItem) {
-    if (this.campaignIds == null) {
-      this.campaignIds = new ArrayList<>();
-    }
-    this.campaignIds.add(campaignIdsItem);
-    return this;
-  }
-
-   /**
-   * Associated List of campaign IDs.
-   * @return campaignIds
-  **/
-  public List<String> getCampaignIds() {
-    return campaignIds;
-  }
-
-  public void setCampaignIds(List<String> campaignIds) {
-    this.campaignIds = campaignIds;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -299,6 +303,7 @@ public class OrderLine   {
     OrderLine orderLine = (OrderLine) o;
     return Objects.equals(adAccountId, orderLine.adAccountId) &&
         Objects.equals(budget, orderLine.budget) &&
+        Objects.equals(campaignIds, orderLine.campaignIds) &&
         Objects.equals(endTime, orderLine.endTime) &&
         Objects.equals(id, orderLine.id) &&
         Objects.equals(name, orderLine.name) &&
@@ -307,13 +312,12 @@ public class OrderLine   {
         Objects.equals(purchaseOrderId, orderLine.purchaseOrderId) &&
         Objects.equals(startTime, orderLine.startTime) &&
         Objects.equals(status, orderLine.status) &&
-        Objects.equals(type, orderLine.type) &&
-        Objects.equals(campaignIds, orderLine.campaignIds);
+        Objects.equals(type, orderLine.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, budget, endTime, id, name, paidBudget, paidType, purchaseOrderId, startTime, status, type, campaignIds);
+    return Objects.hash(adAccountId, budget, campaignIds, endTime, id, name, paidBudget, paidType, purchaseOrderId, startTime, status, type);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -324,6 +328,7 @@ public class OrderLine   {
     
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -333,7 +338,6 @@ public class OrderLine   {
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -343,10 +347,7 @@ public class OrderLine   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -67,11 +67,11 @@ Cancel membership/partnership invites and/or requests.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
- **cancelInvitesBody** | [**CancelInvitesBody**](CancelInvitesBody.md) | A list with invite ids |
+ **cancelInvitesRequest** | [**CancelInvitesRequest**](CancelInvitesRequest.md) |  |
 
 ### Return type
 
-[**DeleteInvitesResultsResponseArray**](DeleteInvitesResultsResponseArray.md)
+[**CancelInvitesResponse**](CancelInvitesResponse.md)
 
 ### Authorization
 
@@ -117,7 +117,7 @@ To learn more about permission levels, visit https://help.pinterest.com/en/busin
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
- **createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md) | A list of invites/requests together with the asset permissions to be assigned to the invite/request. |
+ **createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md) |  |
 
 ### Return type
 
@@ -166,7 +166,7 @@ Create batch invites or requests. Can create batch invites or requests as descri
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
- **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md) | An object with the properties: invite_type, partners, members, business_role |
+ **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md) |  |
 
 ### Return type
 
@@ -203,10 +203,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
  **isMember** | **boolean** | A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional] [default to true]
- **inviteStatus** | [**array[string]**](string.md) | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] [default to null]
+ **inviteStatus** | [**array[InviteFilterStatus]**](InviteFilterStatus.md) | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] [default to null]
  **inviteType** | [**InviteType**](.md) | Invite type to filter invites by. Only invites of the specified type will be returned. | [optional] [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

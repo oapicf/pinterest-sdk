@@ -6,14 +6,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * AdPinAnalytics
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class AdPinAnalytics extends HashMap<String, Object>  {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class AdPinAnalytics   {
   @JsonProperty("DATE")
   private Date DATE;
 
@@ -67,20 +65,19 @@ public class AdPinAnalytics extends HashMap<String, Object>  {
     }
     AdPinAnalytics adPinAnalytics = (AdPinAnalytics) o;
     return Objects.equals(this.DATE, adPinAnalytics.DATE) &&
-        Objects.equals(this.PIN_ID, adPinAnalytics.PIN_ID) &&
-        super.equals(o);
+        Objects.equals(this.PIN_ID, adPinAnalytics.PIN_ID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(DATE, PIN_ID, super.hashCode());
+    return Objects.hash(DATE, PIN_ID);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdPinAnalytics {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    DATE: ").append(toIndentedString(DATE)).append("\n");
     sb.append("    PIN_ID: ").append(toIndentedString(PIN_ID)).append("\n");
     sb.append("}");
@@ -92,10 +89,7 @@ public class AdPinAnalytics extends HashMap<String, Object>  {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

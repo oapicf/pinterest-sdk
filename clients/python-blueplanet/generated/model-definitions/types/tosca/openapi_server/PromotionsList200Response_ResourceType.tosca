@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  PromotionResponse = openapi_server.resourceTypes.PromotionResponse
+  Promotion = openapi_server.resourceTypes.Promotion
 }
 resourceTypes {
 
@@ -23,7 +23,7 @@ resourceTypes {
         }
         items {
           type = array
-          items.type = PromotionResponse
+          items.type = Promotion
           description = ""
           optional = true
         }

@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.FilterOperatorType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -18,46 +19,15 @@ import java.util.Objects;
 
 public class CatalogsProductGroupFilterOperatorTypeCriteria   {
   
+  private FilterOperatorType filterOperatorType;
 
-public enum FilterOperatorTypeEnum {
-
-    @JsonProperty("IS") IS(String.valueOf("IS")), @JsonProperty("CONTAINS") CONTAINS(String.valueOf("CONTAINS"));
-
-
-    private String value;
-
-    FilterOperatorTypeEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static FilterOperatorTypeEnum fromValue(String value) {
-        for (FilterOperatorTypeEnum b : FilterOperatorTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private FilterOperatorTypeEnum filterOperatorType = FilterOperatorTypeEnum.IS;
-
-  private Boolean negated = false;
+  private Boolean negated;
 
   private List<String> values = new ArrayList<>();
 
   /**
    **/
-  public CatalogsProductGroupFilterOperatorTypeCriteria filterOperatorType(FilterOperatorTypeEnum filterOperatorType) {
+  public CatalogsProductGroupFilterOperatorTypeCriteria filterOperatorType(FilterOperatorType filterOperatorType) {
     this.filterOperatorType = filterOperatorType;
     return this;
   }
@@ -65,10 +35,10 @@ public enum FilterOperatorTypeEnum {
   
   @ApiModelProperty(value = "")
   @JsonProperty("filter_operator_type")
-  public FilterOperatorTypeEnum getFilterOperatorType() {
+  public FilterOperatorType getFilterOperatorType() {
     return filterOperatorType;
   }
-  public void setFilterOperatorType(FilterOperatorTypeEnum filterOperatorType) {
+  public void setFilterOperatorType(FilterOperatorType filterOperatorType) {
     this.filterOperatorType = filterOperatorType;
   }
 
@@ -155,10 +125,7 @@ public enum FilterOperatorTypeEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

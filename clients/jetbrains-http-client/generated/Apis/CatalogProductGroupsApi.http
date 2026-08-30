@@ -1,0 +1,75 @@
+## CatalogProductGroupsApi
+
+### List products by product group
+## List products by product group
+GET https://api.pinterest.com/v5/catalogs/product_groups/{{product_group_id}}/products?adAccountId={{adAccountId}}&pinMetrics={{pinMetrics}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Create product group
+## Create product group
+POST https://api.pinterest.com/v5/catalogs/product_groups?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Create product groups
+## Create product groups
+POST https://api.pinterest.com/v5/catalogs/product_groups/multiple?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Delete product group
+## Delete product group
+DELETE https://api.pinterest.com/v5/catalogs/product_groups/{{product_group_id}}?adAccountId={{adAccountId}}
+Accept: application/json
+
+### Delete product groups
+## Delete product groups
+DELETE https://api.pinterest.com/v5/catalogs/product_groups/multiple?id={{id}}&adAccountId={{adAccountId}}
+Accept: application/json
+
+### Get product group
+## Get product group
+GET https://api.pinterest.com/v5/catalogs/product_groups/{{product_group_id}}?adAccountId={{adAccountId}}
+Accept: application/json
+
+### List product groups
+## List product groups
+GET https://api.pinterest.com/v5/catalogs/product_groups?id={{id}}&feedId={{feedId}}&catalogId={{catalogId}}&adAccountId={{adAccountId}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Get product counts
+## Get product counts
+GET https://api.pinterest.com/v5/catalogs/product_groups/{{product_group_id}}/product_counts?adAccountId={{adAccountId}}
+Accept: application/json
+
+### Update single product group
+## Update single product group
+PATCH https://api.pinterest.com/v5/catalogs/product_groups/{{product_group_id}}?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### List products by filter
+## List products by filter
+POST https://api.pinterest.com/v5/catalogs/products/get_by_product_group_filters?bookmark={{bookmark}}&pageSize={{pageSize}}&adAccountId={{adAccountId}}&pinMetrics={{pinMetrics}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+

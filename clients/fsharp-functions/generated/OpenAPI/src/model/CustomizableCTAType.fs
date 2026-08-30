@@ -31,12 +31,14 @@ module CustomizableCTAType =
   let DOWNLOADEnum = "DOWNLOAD"
   let EXPLOREMOREEnum = "EXPLORE_MORE"
   let FINDALOCATIONEnum = "FIND_A_LOCATION"
+  let FINDRETAILERSEnum = "FIND_RETAILERS"
   let GETDEALEnum = "GET_DEAL"
   let GETRECIPEEnum = "GET_RECIPE"
   let GETSHOWTIMESEnum = "GET_SHOWTIMES"
   let ONSALEEnum = "ON_SALE"
   let PLAYGAMEEnum = "PLAY_GAME"
   let TRYITEnum = "TRY_IT"
+  let TAKEAPEEKEnum = "TAKE_A_PEEK"
   type CustomizableCTAType = string
 
   //#endregion

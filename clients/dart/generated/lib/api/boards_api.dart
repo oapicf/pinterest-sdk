@@ -27,18 +27,17 @@ class BoardsApi {
   /// * [String] boardId (required):
   ///   Unique identifier of a board.
   ///
-  /// * [BoardSection] boardSection (required):
-  ///   Create a board section.
+  /// * [BoardSectionCreate] boardSectionCreate (required):
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> boardSectionsCreateWithHttpInfo(String boardId, BoardSection boardSection, { String? adAccountId, }) async {
+  Future<Response> boardSectionsCreateWithHttpInfo(String boardId, BoardSectionCreate boardSectionCreate, { String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/boards/{board_id}/sections'
       .replaceAll('{board_id}', boardId);
 
     // ignore: prefer_final_locals
-    Object? postBody = boardSection;
+    Object? postBody = boardSectionCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -59,6 +58,7 @@ class BoardsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -71,13 +71,12 @@ class BoardsApi {
   /// * [String] boardId (required):
   ///   Unique identifier of a board.
   ///
-  /// * [BoardSection] boardSection (required):
-  ///   Create a board section.
+  /// * [BoardSectionCreate] boardSectionCreate (required):
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<BoardSection?> boardSectionsCreate(String boardId, BoardSection boardSection, { String? adAccountId, }) async {
-    final response = await boardSectionsCreateWithHttpInfo(boardId, boardSection,  adAccountId: adAccountId, );
+  Future<BoardSection?> boardSectionsCreate(String boardId, BoardSectionCreate boardSectionCreate, { String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await boardSectionsCreateWithHttpInfo(boardId, boardSectionCreate, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -107,7 +106,7 @@ class BoardsApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> boardSectionsDeleteWithHttpInfo(String boardId, String sectionId, { String? adAccountId, }) async {
+  Future<Response> boardSectionsDeleteWithHttpInfo(String boardId, String sectionId, { String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/boards/{board_id}/sections/{section_id}'
       .replaceAll('{board_id}', boardId)
@@ -135,6 +134,7 @@ class BoardsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -152,11 +152,19 @@ class BoardsApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<void> boardSectionsDelete(String boardId, String sectionId, { String? adAccountId, }) async {
-    final response = await boardSectionsDeleteWithHttpInfo(boardId, sectionId,  adAccountId: adAccountId, );
+  Future<BoardSection?> boardSectionsDelete(String boardId, String sectionId, { String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await boardSectionsDeleteWithHttpInfo(boardId, sectionId, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BoardSection',) as BoardSection;
+    
+    }
+    return null;
   }
 
   /// List board sections
@@ -177,8 +185,8 @@ class BoardsApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<Response> boardSectionsListWithHttpInfo(String boardId, { String? adAccountId, String? bookmark, int? pageSize, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> boardSectionsListWithHttpInfo(String boardId, { String? adAccountId, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/boards/{board_id}/sections'
       .replaceAll('{board_id}', boardId);
@@ -211,6 +219,7 @@ class BoardsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -230,9 +239,9 @@ class BoardsApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<BoardSectionsList200Response?> boardSectionsList(String boardId, { String? adAccountId, String? bookmark, int? pageSize, }) async {
-    final response = await boardSectionsListWithHttpInfo(boardId,  adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<BoardSectionsList200Response?> boardSectionsList(String boardId, { String? adAccountId, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await boardSectionsListWithHttpInfo(boardId, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -267,8 +276,8 @@ class BoardsApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<Response> boardSectionsListPinsWithHttpInfo(String boardId, String sectionId, { String? adAccountId, String? bookmark, int? pageSize, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> boardSectionsListPinsWithHttpInfo(String boardId, String sectionId, { String? adAccountId, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/boards/{board_id}/sections/{section_id}/pins'
       .replaceAll('{board_id}', boardId)
@@ -302,6 +311,7 @@ class BoardsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -324,9 +334,9 @@ class BoardsApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<BoardsListPins200Response?> boardSectionsListPins(String boardId, String sectionId, { String? adAccountId, String? bookmark, int? pageSize, }) async {
-    final response = await boardSectionsListPinsWithHttpInfo(boardId, sectionId,  adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<BoardsListPins200Response?> boardSectionsListPins(String boardId, String sectionId, { String? adAccountId, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await boardSectionsListPinsWithHttpInfo(boardId, sectionId, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -354,19 +364,18 @@ class BoardsApi {
   /// * [String] sectionId (required):
   ///   Unique identifier of a board section.
   ///
-  /// * [BoardSection] boardSection (required):
-  ///   Update a board section.
+  /// * [BoardSectionUpdateWithRequiredBody] boardSectionUpdateWithRequiredBody (required):
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> boardSectionsUpdateWithHttpInfo(String boardId, String sectionId, BoardSection boardSection, { String? adAccountId, }) async {
+  Future<Response> boardSectionsUpdateWithHttpInfo(String boardId, String sectionId, BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody, { String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/boards/{board_id}/sections/{section_id}'
       .replaceAll('{board_id}', boardId)
       .replaceAll('{section_id}', sectionId);
 
     // ignore: prefer_final_locals
-    Object? postBody = boardSection;
+    Object? postBody = boardSectionUpdateWithRequiredBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -387,6 +396,7 @@ class BoardsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -402,13 +412,12 @@ class BoardsApi {
   /// * [String] sectionId (required):
   ///   Unique identifier of a board section.
   ///
-  /// * [BoardSection] boardSection (required):
-  ///   Update a board section.
+  /// * [BoardSectionUpdateWithRequiredBody] boardSectionUpdateWithRequiredBody (required):
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<BoardSection?> boardSectionsUpdate(String boardId, String sectionId, BoardSection boardSection, { String? adAccountId, }) async {
-    final response = await boardSectionsUpdateWithHttpInfo(boardId, sectionId, boardSection,  adAccountId: adAccountId, );
+  Future<BoardSection?> boardSectionsUpdate(String boardId, String sectionId, BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody, { String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await boardSectionsUpdateWithHttpInfo(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -434,7 +443,7 @@ class BoardsApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> boardsCreateWithHttpInfo(BoardCreate boardCreate, { String? adAccountId, }) async {
+  Future<Response> boardsCreateWithHttpInfo(BoardCreate boardCreate, { String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/boards';
 
@@ -460,6 +469,7 @@ class BoardsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -473,8 +483,8 @@ class BoardsApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Board?> boardsCreate(BoardCreate boardCreate, { String? adAccountId, }) async {
-    final response = await boardsCreateWithHttpInfo(boardCreate,  adAccountId: adAccountId, );
+  Future<Board?> boardsCreate(BoardCreate boardCreate, { String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await boardsCreateWithHttpInfo(boardCreate, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -500,7 +510,7 @@ class BoardsApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> boardsDeleteWithHttpInfo(String boardId, { String? adAccountId, }) async {
+  Future<Response> boardsDeleteWithHttpInfo(String boardId, { String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/boards/{board_id}'
       .replaceAll('{board_id}', boardId);
@@ -527,6 +537,7 @@ class BoardsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -540,11 +551,19 @@ class BoardsApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<void> boardsDelete(String boardId, { String? adAccountId, }) async {
-    final response = await boardsDeleteWithHttpInfo(boardId,  adAccountId: adAccountId, );
+  Future<Board?> boardsDelete(String boardId, { String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await boardsDeleteWithHttpInfo(boardId, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Board',) as Board;
+    
+    }
+    return null;
   }
 
   /// Get board
@@ -559,7 +578,7 @@ class BoardsApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> boardsGetWithHttpInfo(String boardId, { String? adAccountId, }) async {
+  Future<Response> boardsGetWithHttpInfo(String boardId, { String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/boards/{board_id}'
       .replaceAll('{board_id}', boardId);
@@ -586,6 +605,7 @@ class BoardsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -599,8 +619,8 @@ class BoardsApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Board?> boardsGet(String boardId, { String? adAccountId, }) async {
-    final response = await boardsGetWithHttpInfo(boardId,  adAccountId: adAccountId, );
+  Future<Board?> boardsGet(String boardId, { String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await boardsGetWithHttpInfo(boardId, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -633,7 +653,7 @@ class BoardsApi {
   ///
   /// * [int] pageSize:
   ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
-  Future<Response> boardsListWithHttpInfo({ String? adAccountId, BoardPrivacyFilter? privacy, String? bookmark, int? pageSize, }) async {
+  Future<Response> boardsListWithHttpInfo({ String? adAccountId, BoardPrivacyFilter? privacy, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/boards';
 
@@ -668,6 +688,7 @@ class BoardsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -688,8 +709,8 @@ class BoardsApi {
   ///
   /// * [int] pageSize:
   ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
-  Future<BoardsList200Response?> boardsList({ String? adAccountId, BoardPrivacyFilter? privacy, String? bookmark, int? pageSize, }) async {
-    final response = await boardsListWithHttpInfo( adAccountId: adAccountId, privacy: privacy, bookmark: bookmark, pageSize: pageSize, );
+  Future<BoardsList200Response?> boardsList({ String? adAccountId, BoardPrivacyFilter? privacy, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await boardsListWithHttpInfo(adAccountId: adAccountId, privacy: privacy, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -714,12 +735,6 @@ class BoardsApi {
   /// * [String] boardId (required):
   ///   Unique identifier of a board.
   ///
-  /// * [String] bookmark:
-  ///   Cursor used to fetch the next page of items
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
   /// * [List<CreativeType>] creativeTypes:
   ///   Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
   ///
@@ -728,7 +743,13 @@ class BoardsApi {
   ///
   /// * [bool] pinMetrics:
   ///   Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-  Future<Response> boardsListPinsWithHttpInfo(String boardId, { String? bookmark, int? pageSize, List<CreativeType>? creativeTypes, String? adAccountId, bool? pinMetrics, }) async {
+  ///
+  /// * [String] bookmark:
+  ///   Cursor used to fetch the next page of items
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> boardsListPinsWithHttpInfo(String boardId, { List<CreativeType>? creativeTypes, String? adAccountId, bool? pinMetrics, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/boards/{board_id}/pins'
       .replaceAll('{board_id}', boardId);
@@ -740,12 +761,6 @@ class BoardsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (bookmark != null) {
-      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
-    }
-    if (pageSize != null) {
-      queryParams.addAll(_queryParams('', 'page_size', pageSize));
-    }
     if (creativeTypes != null) {
       queryParams.addAll(_queryParams('multi', 'creative_types', creativeTypes));
     }
@@ -754,6 +769,12 @@ class BoardsApi {
     }
     if (pinMetrics != null) {
       queryParams.addAll(_queryParams('', 'pin_metrics', pinMetrics));
+    }
+    if (bookmark != null) {
+      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
+    if (pageSize != null) {
+      queryParams.addAll(_queryParams('', 'page_size', pageSize));
     }
 
     const contentTypes = <String>[];
@@ -767,6 +788,7 @@ class BoardsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -779,12 +801,6 @@ class BoardsApi {
   /// * [String] boardId (required):
   ///   Unique identifier of a board.
   ///
-  /// * [String] bookmark:
-  ///   Cursor used to fetch the next page of items
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
   /// * [List<CreativeType>] creativeTypes:
   ///   Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
   ///
@@ -793,8 +809,14 @@ class BoardsApi {
   ///
   /// * [bool] pinMetrics:
   ///   Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-  Future<BoardsListPins200Response?> boardsListPins(String boardId, { String? bookmark, int? pageSize, List<CreativeType>? creativeTypes, String? adAccountId, bool? pinMetrics, }) async {
-    final response = await boardsListPinsWithHttpInfo(boardId,  bookmark: bookmark, pageSize: pageSize, creativeTypes: creativeTypes, adAccountId: adAccountId, pinMetrics: pinMetrics, );
+  ///
+  /// * [String] bookmark:
+  ///   Cursor used to fetch the next page of items
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<BoardsListPins200Response?> boardsListPins(String boardId, { List<CreativeType>? creativeTypes, String? adAccountId, bool? pinMetrics, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await boardsListPinsWithHttpInfo(boardId, creativeTypes: creativeTypes, adAccountId: adAccountId, pinMetrics: pinMetrics, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -822,7 +844,7 @@ class BoardsApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> boardsUpdateWithHttpInfo(String boardId, BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate, { String? adAccountId, }) async {
+  Future<Response> boardsUpdateWithHttpInfo(String boardId, BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate, { String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/boards/{board_id}'
       .replaceAll('{board_id}', boardId);
@@ -849,6 +871,7 @@ class BoardsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -864,8 +887,8 @@ class BoardsApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<BoardWithUpdatePrivacy?> boardsUpdate(String boardId, BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate, { String? adAccountId, }) async {
-    final response = await boardsUpdateWithHttpInfo(boardId, boardWithUpdatePrivacyUpdate,  adAccountId: adAccountId, );
+  Future<BoardWithUpdatePrivacy?> boardsUpdate(String boardId, BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate, { String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await boardsUpdateWithHttpInfo(boardId, boardWithUpdatePrivacyUpdate, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

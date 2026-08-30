@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **items** | [**kotlin.collections.List&lt;LeadFormResponse&gt;**](LeadFormResponse.md) |  |  |
+| **items** | [**kotlin.collections.List&lt;LeadForm&gt;**](LeadForm.md) |  |  |
 | **bookmark** | **kotlin.String** |  |  [optional] |
 
 

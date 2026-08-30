@@ -8,70 +8,32 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.model.TargetingSpecAppType;
 
 /**
  * This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
  */
 @ApiModel(description = "This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AppTypeMultipliers extends HashMap<String, Double>  {
-  /**
-   * Gets or Sets APP_TYPE
-   */
-  public enum APPTYPEEnum {
-    ANDROID_MOBILE("android_mobile"),
-    
-    ANDROID_TABLET("android_tablet"),
-    
-    IPAD("ipad"),
-    
-    IPHONE("iphone"),
-    
-    WEB("web"),
-    
-    WEB_MOBILE("web_mobile");
-
-    private String value;
-
-    APPTYPEEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static APPTYPEEnum fromValue(String text) {
-      for (APPTYPEEnum b : APPTYPEEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
   @JsonProperty("APP_TYPE")
-  private APPTYPEEnum APP_TYPE;
+  private TargetingSpecAppType APP_TYPE;
 
-  public AppTypeMultipliers APP_TYPE(APPTYPEEnum APP_TYPE) {
+  public AppTypeMultipliers APP_TYPE(TargetingSpecAppType APP_TYPE) {
     this.APP_TYPE = APP_TYPE;
     return this;
   }
 
    /**
-   * Get APP_TYPE
+   * App type identifier.
    * @return APP_TYPE
   **/
-  @ApiModelProperty(value = "")
-  public APPTYPEEnum getAPPTYPE() {
+  @ApiModelProperty(value = "App type identifier.")
+  public TargetingSpecAppType getAPPTYPE() {
     return APP_TYPE;
   }
 
-  public void setAPPTYPE(APPTYPEEnum APP_TYPE) {
+  public void setAPPTYPE(TargetingSpecAppType APP_TYPE) {
     this.APP_TYPE = APP_TYPE;
   }
 
@@ -109,10 +71,7 @@ public class AppTypeMultipliers extends HashMap<String, Double>  {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

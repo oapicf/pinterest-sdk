@@ -5,28 +5,12 @@ Protected Class Label
 		#tag Note
 			Label ID.
 		#tag EndNote
-		id As Xoson.O.OptionalString
+		id As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		label_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Label parent entity ID.
-		#tag EndNote
-		parent_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Label parent entity type.
-		#tag EndNote
-		parent_type As Xoson.O.OptionalString
+		label_type As String
 	#tag EndProperty
 
 
@@ -37,30 +21,13 @@ Protected Class Label
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Label name.
+			Label name. 100-character limit.
 		#tag EndNote
-		value As Xoson.O.OptionalString
+		value As String
 	#tag EndProperty
 
 
-    #tag Enum, Name = Parent_typeEnum, Type = Integer, Flags = &h0
-        
-        Campaign
-        
-    #tag EndEnum
 
-
-	#tag Method, Flags = &h0
-		Shared Function Parent_typeEnumToString(value As Parent_typeEnum) As String
-		  Select Case value
-		    
-		    Case Parent_typeEnum.Campaign
-		      Return "CAMPAIGN"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -109,15 +76,7 @@ Protected Class Label
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="LabelType"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="parent_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
+			Type="NullableLabelType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -125,7 +84,7 @@ Protected Class Label
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="LabelStatus"
+			Type="NullableLabelStatus"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

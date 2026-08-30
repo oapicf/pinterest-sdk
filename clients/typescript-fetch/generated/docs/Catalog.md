@@ -7,11 +7,11 @@ Catalog entity
 
 Name | Type
 ------------ | -------------
+`catalogType` | [CatalogsType](CatalogsType.md)
 `createdAt` | Date
 `id` | string
-`updatedAt` | Date
-`catalogType` | [CatalogsType](CatalogsType.md)
 `name` | string
+`updatedAt` | Date
 
 ## Example
 
@@ -20,11 +20,11 @@ import type { Catalog } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "catalogType": null,
   "createdAt": 2022-03-14T15:15:22Z,
   "id": 864344156814050986,
-  "updatedAt": 2022-03-14T15:16:34Z,
-  "catalogType": null,
   "name": null,
+  "updatedAt": 2022-03-14T15:16:34Z,
 } satisfies Catalog
 
 console.log(example)

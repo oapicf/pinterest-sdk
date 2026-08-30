@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface LeadAdsApi  {
-    Future<ApiResponse<Void>> adAccountsSubscriptionsDelById(String adAccountId, String subscriptionId);
+    Future<ApiResponse<LeadSubscription>> adAccountsSubscriptionsDelById(String adAccountId, String subscriptionId);
     Future<ApiResponse<LeadSubscription>> adAccountsSubscriptionsGetById(String adAccountId, String subscriptionId);
     Future<ApiResponse<AdAccountsSubscriptionsGetList200Response>> adAccountsSubscriptionsGetList(String adAccountId, String bookmark, Integer pageSize);
     Future<ApiResponse<LeadSubscription>> adAccountsSubscriptionsPost(String adAccountId, LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate);

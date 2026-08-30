@@ -9,28 +9,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.BaseInviteDataResponseInviteData;
 import org.openapitools.model.BusinessAccessUserSummary;
 import org.openapitools.model.InviteAssetsSummary;
+import org.openapitools.model.InviteDataResponse;
 
 
 
+/**
+ * A user&#39;s username or email OR a partner id that caused the error.
+ **/
 
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "A user's username or email OR a partner id that caused the error.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class InviteResponse   {
-  @JsonProperty("id")
-  private String id;
-
-  @JsonProperty("invite_data")
-  private BaseInviteDataResponseInviteData inviteData;
-
-  @JsonProperty("is_received_invite")
-  private Boolean isReceivedInvite;
-
-  @JsonProperty("user")
-  private BusinessAccessUserSummary user;
-
   @JsonProperty("assets_summary")
   private InviteAssetsSummary assetsSummary;
 
@@ -38,84 +29,25 @@ public class InviteResponse   {
   private List<String> businessRoles = null;
 
   @JsonProperty("created_by_business")
-  private Object createdByBusiness;
+  private BusinessAccessUserSummary createdByBusiness;
 
   @JsonProperty("created_by_user")
-  private Object createdByUser;
+  private BusinessAccessUserSummary createdByUser;
 
   @JsonProperty("created_time")
   private Integer createdTime;
 
-  /**
-   * Unique identifier of the invite/request.
-   **/
-  public InviteResponse id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the invite/request.")
   @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
+  private String id;
 
-  /**
-   **/
-  public InviteResponse inviteData(BaseInviteDataResponseInviteData inviteData) {
-    this.inviteData = inviteData;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
   @JsonProperty("invite_data")
-  public BaseInviteDataResponseInviteData getInviteData() {
-    return inviteData;
-  }
-  public void setInviteData(BaseInviteDataResponseInviteData inviteData) {
-    this.inviteData = inviteData;
-  }
+  private InviteDataResponse inviteData;
 
-  /**
-   * Indicates whether the invite/request was received.
-   **/
-  public InviteResponse isReceivedInvite(Boolean isReceivedInvite) {
-    this.isReceivedInvite = isReceivedInvite;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Indicates whether the invite/request was received.")
   @JsonProperty("is_received_invite")
-  public Boolean getIsReceivedInvite() {
-    return isReceivedInvite;
-  }
-  public void setIsReceivedInvite(Boolean isReceivedInvite) {
-    this.isReceivedInvite = isReceivedInvite;
-  }
+  private Boolean isReceivedInvite;
 
-  /**
-   * Metadata for the member/partner that was sent the invite/request.
-   **/
-  public InviteResponse user(BusinessAccessUserSummary user) {
-    this.user = user;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Metadata for the member/partner that was sent the invite/request.")
   @JsonProperty("user")
-  public BusinessAccessUserSummary getUser() {
-    return user;
-  }
-  public void setUser(BusinessAccessUserSummary user) {
-    this.user = user;
-  }
+  private BusinessAccessUserSummary user;
 
   /**
    **/
@@ -155,7 +87,7 @@ public class InviteResponse   {
   /**
    * Metadata for the business that created the invite/request.
    **/
-  public InviteResponse createdByBusiness(Object createdByBusiness) {
+  public InviteResponse createdByBusiness(BusinessAccessUserSummary createdByBusiness) {
     this.createdByBusiness = createdByBusiness;
     return this;
   }
@@ -163,17 +95,17 @@ public class InviteResponse   {
   
   @ApiModelProperty(value = "Metadata for the business that created the invite/request.")
   @JsonProperty("created_by_business")
-  public Object getCreatedByBusiness() {
+  public BusinessAccessUserSummary getCreatedByBusiness() {
     return createdByBusiness;
   }
-  public void setCreatedByBusiness(Object createdByBusiness) {
+  public void setCreatedByBusiness(BusinessAccessUserSummary createdByBusiness) {
     this.createdByBusiness = createdByBusiness;
   }
 
   /**
    * Metadata for the user that created the invite/request.
    **/
-  public InviteResponse createdByUser(Object createdByUser) {
+  public InviteResponse createdByUser(BusinessAccessUserSummary createdByUser) {
     this.createdByUser = createdByUser;
     return this;
   }
@@ -181,10 +113,10 @@ public class InviteResponse   {
   
   @ApiModelProperty(value = "Metadata for the user that created the invite/request.")
   @JsonProperty("created_by_user")
-  public Object getCreatedByUser() {
+  public BusinessAccessUserSummary getCreatedByUser() {
     return createdByUser;
   }
-  public void setCreatedByUser(Object createdByUser) {
+  public void setCreatedByUser(BusinessAccessUserSummary createdByUser) {
     this.createdByUser = createdByUser;
   }
 
@@ -206,6 +138,77 @@ public class InviteResponse   {
     this.createdTime = createdTime;
   }
 
+  /**
+   * Unique identifier of the invite/request.
+   **/
+  public InviteResponse id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the invite/request.")
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   **/
+  public InviteResponse inviteData(InviteDataResponse inviteData) {
+    this.inviteData = inviteData;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("invite_data")
+  public InviteDataResponse getInviteData() {
+    return inviteData;
+  }
+  public void setInviteData(InviteDataResponse inviteData) {
+    this.inviteData = inviteData;
+  }
+
+  /**
+   * Indicates whether the invite/request was received.
+   **/
+  public InviteResponse isReceivedInvite(Boolean isReceivedInvite) {
+    this.isReceivedInvite = isReceivedInvite;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Indicates whether the invite/request was received.")
+  @JsonProperty("is_received_invite")
+  public Boolean getIsReceivedInvite() {
+    return isReceivedInvite;
+  }
+  public void setIsReceivedInvite(Boolean isReceivedInvite) {
+    this.isReceivedInvite = isReceivedInvite;
+  }
+
+  /**
+   * Metadata for the member/partner that was sent the invite/request.
+   **/
+  public InviteResponse user(BusinessAccessUserSummary user) {
+    this.user = user;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Metadata for the member/partner that was sent the invite/request.")
+  @JsonProperty("user")
+  public BusinessAccessUserSummary getUser() {
+    return user;
+  }
+  public void setUser(BusinessAccessUserSummary user) {
+    this.user = user;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -216,20 +219,20 @@ public class InviteResponse   {
       return false;
     }
     InviteResponse inviteResponse = (InviteResponse) o;
-    return Objects.equals(id, inviteResponse.id) &&
-        Objects.equals(inviteData, inviteResponse.inviteData) &&
-        Objects.equals(isReceivedInvite, inviteResponse.isReceivedInvite) &&
-        Objects.equals(user, inviteResponse.user) &&
-        Objects.equals(assetsSummary, inviteResponse.assetsSummary) &&
+    return Objects.equals(assetsSummary, inviteResponse.assetsSummary) &&
         Objects.equals(businessRoles, inviteResponse.businessRoles) &&
         Objects.equals(createdByBusiness, inviteResponse.createdByBusiness) &&
         Objects.equals(createdByUser, inviteResponse.createdByUser) &&
-        Objects.equals(createdTime, inviteResponse.createdTime);
+        Objects.equals(createdTime, inviteResponse.createdTime) &&
+        Objects.equals(id, inviteResponse.id) &&
+        Objects.equals(inviteData, inviteResponse.inviteData) &&
+        Objects.equals(isReceivedInvite, inviteResponse.isReceivedInvite) &&
+        Objects.equals(user, inviteResponse.user);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, inviteData, isReceivedInvite, user, assetsSummary, businessRoles, createdByBusiness, createdByUser, createdTime);
+    return Objects.hash(assetsSummary, businessRoles, createdByBusiness, createdByUser, createdTime, id, inviteData, isReceivedInvite, user);
   }
 
   @Override
@@ -237,15 +240,15 @@ public class InviteResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InviteResponse {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
-    sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("    assetsSummary: ").append(toIndentedString(assetsSummary)).append("\n");
     sb.append("    businessRoles: ").append(toIndentedString(businessRoles)).append("\n");
     sb.append("    createdByBusiness: ").append(toIndentedString(createdByBusiness)).append("\n");
     sb.append("    createdByUser: ").append(toIndentedString(createdByUser)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
+    sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
+    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -255,10 +258,7 @@ public class InviteResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

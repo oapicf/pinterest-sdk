@@ -9,9 +9,6 @@
  */
 
 
-/**
- * If specified, you must provide all properties
- */
 export interface CatalogsHotelGuestRatings { 
     /**
      * Max value for the hotel rating score.

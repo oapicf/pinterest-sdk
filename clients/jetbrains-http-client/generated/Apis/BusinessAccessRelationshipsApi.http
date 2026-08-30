@@ -1,0 +1,93 @@
+## BusinessAccessRelationshipsApi
+
+### Create a Brand Account
+## Create a Brand Account
+POST https://api.pinterest.com/v5/business_access/business_hierarchy/{{business_hierarchy_id}}/brand_accounts
+Content-Type: application/json
+Accept: application/json
+
+{
+ "about": "<string>",
+ "country": "<string>",
+ "name": "<string>",
+ "profile_image": "<string>",
+ "username": "<string>",
+ "website": "<string>"
+}
+
+
+### Update a Brand Account
+## Update a Brand Account
+PATCH https://api.pinterest.com/v5/business_access/business_hierarchy/{{business_hierarchy_id}}/brand_accounts/{{brand_account_id}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "about": "<string>",
+ "country": "<string>",
+ "name": "<string>",
+ "profile_image": "<string>",
+ "username": "<string>",
+ "website": "<string>"
+}
+
+
+### Terminate business memberships
+## Terminate business memberships
+DELETE https://api.pinterest.com/v5/businesses/{{business_id}}/members
+Content-Type: application/json
+Accept: application/json
+
+{
+ "members": "<string>"
+}
+
+
+### Terminate business partnerships
+## Terminate business partnerships
+DELETE https://api.pinterest.com/v5/businesses/{{business_id}}/partners
+Content-Type: application/json
+Accept: application/json
+
+{
+ "partner_ids": "<string>",
+ "partner_type": "<string>"
+}
+
+
+### List business employers for user
+## List business employers for user
+GET https://api.pinterest.com/v5/businesses/employers?assetsSummary={{assetsSummary}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Get business members
+## Get business members
+GET https://api.pinterest.com/v5/businesses/{{business_id}}/members?fetchSystemUsers={{fetchSystemUsers}}&assetsSummary={{assetsSummary}}&businessRoles={{businessRoles}}&memberIds={{memberIds}}&startIndex={{startIndex}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Get business partners
+## Get business partners
+GET https://api.pinterest.com/v5/businesses/{{business_id}}/partners?assetsSummary={{assetsSummary}}&partnerType={{partnerType}}&partnerIds={{partnerIds}}&startIndex={{startIndex}}&sortAscending={{sortAscending}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Update a system user information.
+## Update a system user information.
+PATCH https://api.pinterest.com/v5/businesses/{{business_id}}/system_users/{{system_user_id}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "name": "<string>"
+}
+
+
+### Update member&#39;s business role
+## Update member&#39;s business role
+PATCH https://api.pinterest.com/v5/businesses/{{business_id}}/members
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+

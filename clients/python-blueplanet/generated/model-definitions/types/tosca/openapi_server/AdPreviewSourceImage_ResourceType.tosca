@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdPreviewSourceImage"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdPreviewSourceImage"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdPreviewSourceImage {
+    title = AdPreviewSourceImage
+    description = AdPreviewSourceImage
+    derivedFrom = Root
+    properties {
+        image_url {
+          type =  string
+          description = "Image URL."
+          optional = true
+        }
+        promotion_id {
+          type =  string
+          description = "Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion."
+          optional = false
+        }
+        title {
+          type =  string
+          description = "Title displayed below ad."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdPreviewSourceImage {
+    title = AdPreviewSourceImage
+    description = AdPreviewSourceImage
+    implements = openapi_server.resourceTypes.AdPreviewSourceImage
+
+  }
+}

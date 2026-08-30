@@ -4,7 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.prokarma.pkmst.model.CatalogsRetailBatchRequestItemsInner;
+import com.prokarma.pkmst.model.CatalogsRetailBatchRequestItemsItems;
 import com.prokarma.pkmst.model.Country;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -21,7 +21,7 @@ import java.util.List;
  */
 @ApiModel(description = "A request object that can have multiple operations on a single retail batch")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailBatchRequest   {
   @JsonProperty("catalog_id")
   private String catalogId;
@@ -63,7 +63,7 @@ public class CatalogsRetailBatchRequest   {
 
   @JsonProperty("items")
   
-  private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
+  private List<CatalogsRetailBatchRequestItemsItems> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -247,7 +247,7 @@ public class CatalogsRetailBatchRequest   {
     
     NL2("NL"),
     
-    NO("NO"),
+    FALSE("false"),
     
     PL("PL"),
     
@@ -363,12 +363,12 @@ public class CatalogsRetailBatchRequest   {
     this.country = country;
   }
 
-  public CatalogsRetailBatchRequest items(List<CatalogsRetailBatchRequestItemsInner> items) {
+  public CatalogsRetailBatchRequest items(List<CatalogsRetailBatchRequestItemsItems> items) {
     this.items = items;
     return this;
   }
 
-  public CatalogsRetailBatchRequest addItemsItem(CatalogsRetailBatchRequestItemsInner itemsItem) {
+  public CatalogsRetailBatchRequest addItemsItem(CatalogsRetailBatchRequestItemsItems itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -381,11 +381,11 @@ public class CatalogsRetailBatchRequest   {
    * @return items
    */
   @ApiModelProperty(required = true, value = "Array with catalogs item operations")
-  public List<CatalogsRetailBatchRequestItemsInner> getItems() {
+  public List<CatalogsRetailBatchRequestItemsItems> getItems() {
     return items;
   }
 
-  public void setItems(List<CatalogsRetailBatchRequestItemsInner> items) {
+  public void setItems(List<CatalogsRetailBatchRequestItemsItems> items) {
     this.items = items;
   }
 
@@ -448,10 +448,7 @@ public class CatalogsRetailBatchRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

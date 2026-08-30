@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a id="Invoke-OauthConversionToken"></a>
 # **Invoke-OauthConversionToken**
-> ConversionAccessTokenResponse Invoke-OauthConversionToken<br>
+> ConversionAccessToken Invoke-OauthConversionToken<br>
 
 Generate OAuth access token for conversion API
 
@@ -39,7 +39,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ConversionAccessTokenResponse**](ConversionAccessTokenResponse.md) (PSCustomObject)
+[**ConversionAccessToken**](ConversionAccessToken.md) (PSCustomObject)
 
 ### Authorization
 
@@ -54,12 +54,17 @@ This endpoint does not need any parameter.
 
 <a id="Invoke-OauthToken"></a>
 # **Invoke-OauthToken**
-> OauthAccessTokenResponse Invoke-OauthToken<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-GrantType] <String><br>
+> OauthAccessToken Invoke-OauthToken<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-GrantType] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Code] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ContinuousRefresh] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RedirectUri] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RefreshToken] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Scope] <String><br>
 
 Generate OAuth access token
 
-Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
+Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
 
 ### Example
 ```powershell
@@ -69,11 +74,16 @@ $Configuration = Get-Configuration
 $Configuration.Username = "YOUR_USERNAME"
 $Configuration.Password = "YOUR_PASSWORD"
 
-$GrantType = "authorization_code" # String | 
+$GrantType = "authorization_code" # TokenGrantType | 
+$Code = "MyCode" # String |  (optional)
+$ContinuousRefresh = "MyContinuousRefresh" # String |   If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. (optional)
+$RedirectUri = "MyRedirectUri" # String |  (optional)
+$RefreshToken = "MyRefreshToken" # String |  (optional)
+$Scope = "MyScope" # String |  (optional)
 
 # Generate OAuth access token
 try {
-    $Result = Invoke-OauthToken -GrantType $GrantType
+    $Result = Invoke-OauthToken -GrantType $GrantType -Code $Code -ContinuousRefresh $ContinuousRefresh -RedirectUri $RedirectUri -RefreshToken $RefreshToken -Scope $Scope
 } catch {
     Write-Host ("Exception occurred when calling Invoke-OauthToken: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -84,11 +94,16 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **GrantType** | **String**|  | 
+ **GrantType** | [**TokenGrantType**](TokenGrantType.md)|  | 
+ **Code** | **String**|  | [optional] 
+ **ContinuousRefresh** | **String**|   If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. | [optional] 
+ **RedirectUri** | **String**|  | [optional] 
+ **RefreshToken** | **String**|  | [optional] 
+ **Scope** | **String**|  | [optional] 
 
 ### Return type
 
-[**OauthAccessTokenResponse**](OauthAccessTokenResponse.md) (PSCustomObject)
+[**OauthAccessToken**](OauthAccessToken.md) (PSCustomObject)
 
 ### Authorization
 
@@ -105,7 +120,7 @@ Name | Type | Description  | Notes
 # **Invoke-TokenRevoke**
 > void Invoke-TokenRevoke<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Token] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-TokenTypeHint] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-TokenTypeHint] <PSCustomObject><br>
 
 Revoke a token
 
@@ -120,7 +135,7 @@ $Configuration.Username = "YOUR_USERNAME"
 $Configuration.Password = "YOUR_PASSWORD"
 
 $Token = "MyToken" # String | The token to revoke.
-$TokenTypeHint = "access_token" # String | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. (optional)
+$TokenTypeHint = "access_token" # TokenTypeHint | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. (optional)
 
 # Revoke a token
 try {
@@ -136,7 +151,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Token** | **String**| The token to revoke. | 
- **TokenTypeHint** | **String**| The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional] 
+ **TokenTypeHint** | [**TokenTypeHint**](TokenTypeHint.md)| The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional] 
 
 ### Return type
 

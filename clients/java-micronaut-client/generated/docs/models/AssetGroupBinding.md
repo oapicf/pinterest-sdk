@@ -8,17 +8,17 @@ The class is defined in **[AssetGroupBinding.java](../../src/main/java/org/opena
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**adAccountsIds** | `List&lt;String&gt;` | A list of ad account IDs under the asset group |  [optional property]
-**assetGroupDescription** | `String` | Asset group description |  [optional property]
-**assetGroupName** | `String` | Asset Group name |  [optional property]
-**assetGroupTypes** | `List&lt;String&gt;` | Asset group types |  [optional property]
-**catalogsIds** | `List&lt;String&gt;` | A list of catalog IDs under asset group |  [optional property]
-**createdBy** | [`BusinessAccessUserSummary`](BusinessAccessUserSummary.md) | The data of the user that created the asset group. |  [optional property]
-**createdTime** | `Integer` | The creation time of the asset group |  [optional property]
-**id** | `String` | Asset Group ID. |  [optional property]
-**owner** | [`BusinessAccessUserSummary`](BusinessAccessUserSummary.md) | The data of the business that owns the asset group. |  [optional property]
-**profilesIds** | `List&lt;String&gt;` | A list of profile IDs under asset group |  [optional property]
-**updatedTime** | `Integer` | The last update time of the asset group |  [optional property]
+**adAccountsIds** | `List&lt;String&gt;` | A list of ad account IDs under the asset group | 
+**assetGroupDescription** | `String` | Asset group description | 
+**assetGroupName** | `String` | Asset Group name | 
+**assetGroupTypes** | `List&lt;String&gt;` | Asset group types | 
+**catalogsIds** | `List&lt;String&gt;` | A list of catalog IDs under asset group | 
+**createdBy** | [`BusinessAccessUserSummary`](BusinessAccessUserSummary.md) | The data of the user that created the asset group. | 
+**createdTime** | `Integer` | The creation time of the asset group | 
+**id** | `String` | Asset Group ID. | 
+**owner** | [`BusinessAccessUserSummary`](BusinessAccessUserSummary.md) | The data of the business that owns the asset group. | 
+**profilesIds** | `List&lt;String&gt;` | A list of profile IDs under asset group | 
+**updatedTime** | `Integer` | The last update time of the asset group | 
 
 
 

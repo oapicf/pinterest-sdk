@@ -56,7 +56,7 @@ public class MediaUpload   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "video", required = true, value = "")
   @JsonProperty("media_type")
   @NotNull
   public MediaUploadType getMediaType() {
@@ -144,10 +144,7 @@ public class MediaUpload   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

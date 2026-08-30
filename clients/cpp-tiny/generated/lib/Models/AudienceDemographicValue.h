@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set Unique key for demographic item
 	 */
-	void setKey(std::string  key);
+	void setKey(std::string key);
 	/*! \brief Get Display name for demographic
 	 */
 	std::string getName();
 
 	/*! \brief Set Display name for demographic
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 	/*! \brief Get Value of demographic item as a percent of total audience
 	 */
 	long getRatio();
 
 	/*! \brief Set Value of demographic item as a percent of total audience
 	 */
-	void setRatio(long  ratio);
+	void setRatio(long ratio);
 
 
     private:

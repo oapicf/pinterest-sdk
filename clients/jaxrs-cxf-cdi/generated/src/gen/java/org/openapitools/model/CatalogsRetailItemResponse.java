@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemAttributes;
 import org.openapitools.model.Pin;
 import javax.validation.constraints.*;
@@ -27,9 +26,73 @@ public class CatalogsRetailItemResponse   {
   
   private ItemAttributes attributes;
 
-  private CatalogsType catalogType;
+
+public enum CatalogTypeEnum {
+
+    @JsonProperty("RETAIL") RETAIL(String.valueOf("RETAIL"));
+
+
+    private String value;
+
+    CatalogTypeEnum(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private CatalogTypeEnum catalogType;
 
   private String itemId;
+
+
+public enum ItemResponseKindEnum {
+
+    @JsonProperty("retail_item") RETAIL_ITEM(String.valueOf("retail_item"));
+
+
+    private String value;
+
+    ItemResponseKindEnum(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static ItemResponseKindEnum fromValue(String value) {
+        for (ItemResponseKindEnum b : ItemResponseKindEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private ItemResponseKindEnum itemResponseKind;
 
   private List<@Valid Pin> pins;
 
@@ -53,7 +116,7 @@ public class CatalogsRetailItemResponse   {
 
   /**
    **/
-  public CatalogsRetailItemResponse catalogType(CatalogsType catalogType) {
+  public CatalogsRetailItemResponse catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -62,10 +125,10 @@ public class CatalogsRetailItemResponse   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
   @NotNull
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -86,6 +149,26 @@ public class CatalogsRetailItemResponse   {
   }
   public void setItemId(String itemId) {
     this.itemId = itemId;
+  }
+
+
+  /**
+   * Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload.
+   **/
+  public CatalogsRetailItemResponse itemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Discriminator literal identifying this leaf inside an `ItemResponse` payload.")
+  @JsonProperty("item_response_kind")
+  @NotNull
+  public ItemResponseKindEnum getItemResponseKind() {
+    return itemResponseKind;
+  }
+  public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
   }
 
 
@@ -129,12 +212,13 @@ public class CatalogsRetailItemResponse   {
     return Objects.equals(this.attributes, catalogsRetailItemResponse.attributes) &&
         Objects.equals(this.catalogType, catalogsRetailItemResponse.catalogType) &&
         Objects.equals(this.itemId, catalogsRetailItemResponse.itemId) &&
+        Objects.equals(this.itemResponseKind, catalogsRetailItemResponse.itemResponseKind) &&
         Objects.equals(this.pins, catalogsRetailItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, catalogType, itemId, pins);
+    return Objects.hash(attributes, catalogType, itemId, itemResponseKind, pins);
   }
 
   @Override
@@ -145,6 +229,7 @@ public class CatalogsRetailItemResponse   {
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -155,10 +240,7 @@ public class CatalogsRetailItemResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

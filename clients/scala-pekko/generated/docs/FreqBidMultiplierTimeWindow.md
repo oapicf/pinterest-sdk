@@ -1,0 +1,9 @@
+
+
+# FreqBidMultiplierTimeWindow
+
+## Enum
+
+
+
+

@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CreateMembershipOrPartnershipInvitesBody::CreateMembershipOrPartnershipInvitesBody()
 {
-	business_role = std::string();
+	business_role = null;
 	invite_type = InviteType();
 	members = std::list<std::string>();
 	partners = std::list<std::string>();
@@ -35,8 +35,9 @@ CreateMembershipOrPartnershipInvitesBody::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&business_role, value, "std::string");
 
+        BusinessRoleForInvite* obj = &business_role;
+		obj->fromJson(value.dump());
 
     }
 
@@ -110,8 +111,8 @@ CreateMembershipOrPartnershipInvitesBody::toJson()
 
 
 
-    object["business_role"] = getBusinessRole();
 
+	object["business_role"] = getBusinessRole().toJson();
 
 
 
@@ -157,14 +158,14 @@ CreateMembershipOrPartnershipInvitesBody::toJson()
 
 }
 
-std::string
+BusinessRoleForInvite
 CreateMembershipOrPartnershipInvitesBody::getBusinessRole()
 {
 	return business_role;
 }
 
 void
-CreateMembershipOrPartnershipInvitesBody::setBusinessRole(std::string  business_role)
+CreateMembershipOrPartnershipInvitesBody::setBusinessRole(BusinessRoleForInvite business_role)
 {
 	this->business_role = business_role;
 }
@@ -176,7 +177,7 @@ CreateMembershipOrPartnershipInvitesBody::getInviteType()
 }
 
 void
-CreateMembershipOrPartnershipInvitesBody::setInviteType(InviteType  invite_type)
+CreateMembershipOrPartnershipInvitesBody::setInviteType(InviteType invite_type)
 {
 	this->invite_type = invite_type;
 }
@@ -188,7 +189,7 @@ CreateMembershipOrPartnershipInvitesBody::getMembers()
 }
 
 void
-CreateMembershipOrPartnershipInvitesBody::setMembers(std::list <std::string> members)
+CreateMembershipOrPartnershipInvitesBody::setMembers(std::list<std::string> members)
 {
 	this->members = members;
 }
@@ -200,7 +201,7 @@ CreateMembershipOrPartnershipInvitesBody::getPartners()
 }
 
 void
-CreateMembershipOrPartnershipInvitesBody::setPartners(std::list <std::string> partners)
+CreateMembershipOrPartnershipInvitesBody::setPartners(std::list<std::string> partners)
 {
 	this->partners = partners;
 }

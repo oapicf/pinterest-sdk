@@ -2,90 +2,124 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsFeedValidationErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedValidationErrors {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADULT_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADWORDS_FORMAT_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AVAILABILITY_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer BLOCKLISTED_IMAGE_SIGNATURE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer DELIMITER_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer DESCRIPTION_MISSING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer DUPLICATE_PRODUCTS;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ENCODING_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer FEED_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer FEED_TOO_SMALL;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer FETCH_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer FETCH_INACTIVE_FEED_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_LINK_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_LINK_MISSING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer INTERNAL_SERVICE_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer INVALID_DOMAIN;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ITEMID_MISSING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer LINK_FORMAT_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer LINK_LENGTH_TOO_LONG;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer LIST_PRICE_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer MALFORMED_XML;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer NO_VERIFIED_DOMAIN;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PARSE_LINE_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PINJOIN_CONTENT_UNSAFE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PRICE_CANNOT_BE_DETERMINED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PRICE_MISSING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PRODUCT_LINK_MISSING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PRODUCT_PRICE_INVALID;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer REQUIRED_COLUMNS_MISSING;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer TITLE_MISSING;
 
   public CatalogsFeedValidationErrors ADULT_INVALID(@Nullable Integer ADULT_INVALID) {
@@ -104,6 +138,7 @@ public class CatalogsFeedValidationErrors {
     return ADULT_INVALID;
   }
 
+  @JsonProperty("ADULT_INVALID")
   public void setADULTINVALID(@Nullable Integer ADULT_INVALID) {
     this.ADULT_INVALID = ADULT_INVALID;
   }
@@ -124,6 +159,7 @@ public class CatalogsFeedValidationErrors {
     return ADWORDS_FORMAT_INVALID;
   }
 
+  @JsonProperty("ADWORDS_FORMAT_INVALID")
   public void setADWORDSFORMATINVALID(@Nullable Integer ADWORDS_FORMAT_INVALID) {
     this.ADWORDS_FORMAT_INVALID = ADWORDS_FORMAT_INVALID;
   }
@@ -144,6 +180,7 @@ public class CatalogsFeedValidationErrors {
     return AVAILABILITY_INVALID;
   }
 
+  @JsonProperty("AVAILABILITY_INVALID")
   public void setAVAILABILITYINVALID(@Nullable Integer AVAILABILITY_INVALID) {
     this.AVAILABILITY_INVALID = AVAILABILITY_INVALID;
   }
@@ -164,6 +201,7 @@ public class CatalogsFeedValidationErrors {
     return BLOCKLISTED_IMAGE_SIGNATURE;
   }
 
+  @JsonProperty("BLOCKLISTED_IMAGE_SIGNATURE")
   public void setBLOCKLISTEDIMAGESIGNATURE(@Nullable Integer BLOCKLISTED_IMAGE_SIGNATURE) {
     this.BLOCKLISTED_IMAGE_SIGNATURE = BLOCKLISTED_IMAGE_SIGNATURE;
   }
@@ -184,6 +222,7 @@ public class CatalogsFeedValidationErrors {
     return DELIMITER_ERROR;
   }
 
+  @JsonProperty("DELIMITER_ERROR")
   public void setDELIMITERERROR(@Nullable Integer DELIMITER_ERROR) {
     this.DELIMITER_ERROR = DELIMITER_ERROR;
   }
@@ -204,6 +243,7 @@ public class CatalogsFeedValidationErrors {
     return DESCRIPTION_MISSING;
   }
 
+  @JsonProperty("DESCRIPTION_MISSING")
   public void setDESCRIPTIONMISSING(@Nullable Integer DESCRIPTION_MISSING) {
     this.DESCRIPTION_MISSING = DESCRIPTION_MISSING;
   }
@@ -224,6 +264,7 @@ public class CatalogsFeedValidationErrors {
     return DUPLICATE_PRODUCTS;
   }
 
+  @JsonProperty("DUPLICATE_PRODUCTS")
   public void setDUPLICATEPRODUCTS(@Nullable Integer DUPLICATE_PRODUCTS) {
     this.DUPLICATE_PRODUCTS = DUPLICATE_PRODUCTS;
   }
@@ -244,6 +285,7 @@ public class CatalogsFeedValidationErrors {
     return ENCODING_ERROR;
   }
 
+  @JsonProperty("ENCODING_ERROR")
   public void setENCODINGERROR(@Nullable Integer ENCODING_ERROR) {
     this.ENCODING_ERROR = ENCODING_ERROR;
   }
@@ -264,6 +306,7 @@ public class CatalogsFeedValidationErrors {
     return FEED_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("FEED_LENGTH_TOO_LONG")
   public void setFEEDLENGTHTOOLONG(@Nullable Integer FEED_LENGTH_TOO_LONG) {
     this.FEED_LENGTH_TOO_LONG = FEED_LENGTH_TOO_LONG;
   }
@@ -284,6 +327,7 @@ public class CatalogsFeedValidationErrors {
     return FEED_TOO_SMALL;
   }
 
+  @JsonProperty("FEED_TOO_SMALL")
   public void setFEEDTOOSMALL(@Nullable Integer FEED_TOO_SMALL) {
     this.FEED_TOO_SMALL = FEED_TOO_SMALL;
   }
@@ -304,6 +348,7 @@ public class CatalogsFeedValidationErrors {
     return FETCH_ERROR;
   }
 
+  @JsonProperty("FETCH_ERROR")
   public void setFETCHERROR(@Nullable Integer FETCH_ERROR) {
     this.FETCH_ERROR = FETCH_ERROR;
   }
@@ -314,16 +359,17 @@ public class CatalogsFeedValidationErrors {
   }
 
   /**
-   * Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+   * Your feed wasn't ingested because it hasn't changed in the previous 90 days.
    * @return FETCH_INACTIVE_FEED_ERROR
    */
   
-  @Schema(name = "FETCH_INACTIVE_FEED_ERROR", description = "Your feed wasn't ingested because it hasn’t changed in the previous 90 days.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "FETCH_INACTIVE_FEED_ERROR", description = "Your feed wasn't ingested because it hasn't changed in the previous 90 days.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("FETCH_INACTIVE_FEED_ERROR")
   public @Nullable Integer getFETCHINACTIVEFEEDERROR() {
     return FETCH_INACTIVE_FEED_ERROR;
   }
 
+  @JsonProperty("FETCH_INACTIVE_FEED_ERROR")
   public void setFETCHINACTIVEFEEDERROR(@Nullable Integer FETCH_INACTIVE_FEED_ERROR) {
     this.FETCH_INACTIVE_FEED_ERROR = FETCH_INACTIVE_FEED_ERROR;
   }
@@ -344,6 +390,7 @@ public class CatalogsFeedValidationErrors {
     return IMAGE_LINK_INVALID;
   }
 
+  @JsonProperty("IMAGE_LINK_INVALID")
   public void setIMAGELINKINVALID(@Nullable Integer IMAGE_LINK_INVALID) {
     this.IMAGE_LINK_INVALID = IMAGE_LINK_INVALID;
   }
@@ -364,6 +411,7 @@ public class CatalogsFeedValidationErrors {
     return IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("IMAGE_LINK_LENGTH_TOO_LONG")
   public void setIMAGELINKLENGTHTOOLONG(@Nullable Integer IMAGE_LINK_LENGTH_TOO_LONG) {
     this.IMAGE_LINK_LENGTH_TOO_LONG = IMAGE_LINK_LENGTH_TOO_LONG;
   }
@@ -384,6 +432,7 @@ public class CatalogsFeedValidationErrors {
     return IMAGE_LINK_MISSING;
   }
 
+  @JsonProperty("IMAGE_LINK_MISSING")
   public void setIMAGELINKMISSING(@Nullable Integer IMAGE_LINK_MISSING) {
     this.IMAGE_LINK_MISSING = IMAGE_LINK_MISSING;
   }
@@ -404,6 +453,7 @@ public class CatalogsFeedValidationErrors {
     return INTERNAL_SERVICE_ERROR;
   }
 
+  @JsonProperty("INTERNAL_SERVICE_ERROR")
   public void setINTERNALSERVICEERROR(@Nullable Integer INTERNAL_SERVICE_ERROR) {
     this.INTERNAL_SERVICE_ERROR = INTERNAL_SERVICE_ERROR;
   }
@@ -424,6 +474,7 @@ public class CatalogsFeedValidationErrors {
     return INVALID_DOMAIN;
   }
 
+  @JsonProperty("INVALID_DOMAIN")
   public void setINVALIDDOMAIN(@Nullable Integer INVALID_DOMAIN) {
     this.INVALID_DOMAIN = INVALID_DOMAIN;
   }
@@ -444,6 +495,7 @@ public class CatalogsFeedValidationErrors {
     return ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
   }
 
+  @JsonProperty("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE")
   public void setITEMMAINIMAGEDOWNLOADFAILURE(@Nullable Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE = ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
   }
@@ -464,6 +516,7 @@ public class CatalogsFeedValidationErrors {
     return ITEMID_MISSING;
   }
 
+  @JsonProperty("ITEMID_MISSING")
   public void setITEMIDMISSING(@Nullable Integer ITEMID_MISSING) {
     this.ITEMID_MISSING = ITEMID_MISSING;
   }
@@ -484,6 +537,7 @@ public class CatalogsFeedValidationErrors {
     return LINK_FORMAT_INVALID;
   }
 
+  @JsonProperty("LINK_FORMAT_INVALID")
   public void setLINKFORMATINVALID(@Nullable Integer LINK_FORMAT_INVALID) {
     this.LINK_FORMAT_INVALID = LINK_FORMAT_INVALID;
   }
@@ -504,6 +558,7 @@ public class CatalogsFeedValidationErrors {
     return LINK_LENGTH_TOO_LONG;
   }
 
+  @JsonProperty("LINK_LENGTH_TOO_LONG")
   public void setLINKLENGTHTOOLONG(@Nullable Integer LINK_LENGTH_TOO_LONG) {
     this.LINK_LENGTH_TOO_LONG = LINK_LENGTH_TOO_LONG;
   }
@@ -524,6 +579,7 @@ public class CatalogsFeedValidationErrors {
     return LIST_PRICE_INVALID;
   }
 
+  @JsonProperty("LIST_PRICE_INVALID")
   public void setLISTPRICEINVALID(@Nullable Integer LIST_PRICE_INVALID) {
     this.LIST_PRICE_INVALID = LIST_PRICE_INVALID;
   }
@@ -544,6 +600,7 @@ public class CatalogsFeedValidationErrors {
     return MALFORMED_XML;
   }
 
+  @JsonProperty("MALFORMED_XML")
   public void setMALFORMEDXML(@Nullable Integer MALFORMED_XML) {
     this.MALFORMED_XML = MALFORMED_XML;
   }
@@ -564,6 +621,7 @@ public class CatalogsFeedValidationErrors {
     return MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
   }
 
+  @JsonProperty("MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED")
   public void setMAXITEMSPERITEMGROUPEXCEEDED(@Nullable Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED) {
     this.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
   }
@@ -584,6 +642,7 @@ public class CatalogsFeedValidationErrors {
     return NO_VERIFIED_DOMAIN;
   }
 
+  @JsonProperty("NO_VERIFIED_DOMAIN")
   public void setNOVERIFIEDDOMAIN(@Nullable Integer NO_VERIFIED_DOMAIN) {
     this.NO_VERIFIED_DOMAIN = NO_VERIFIED_DOMAIN;
   }
@@ -604,6 +663,7 @@ public class CatalogsFeedValidationErrors {
     return PARSE_LINE_ERROR;
   }
 
+  @JsonProperty("PARSE_LINE_ERROR")
   public void setPARSELINEERROR(@Nullable Integer PARSE_LINE_ERROR) {
     this.PARSE_LINE_ERROR = PARSE_LINE_ERROR;
   }
@@ -624,6 +684,7 @@ public class CatalogsFeedValidationErrors {
     return PINJOIN_CONTENT_UNSAFE;
   }
 
+  @JsonProperty("PINJOIN_CONTENT_UNSAFE")
   public void setPINJOINCONTENTUNSAFE(@Nullable Integer PINJOIN_CONTENT_UNSAFE) {
     this.PINJOIN_CONTENT_UNSAFE = PINJOIN_CONTENT_UNSAFE;
   }
@@ -644,6 +705,7 @@ public class CatalogsFeedValidationErrors {
     return PRICE_CANNOT_BE_DETERMINED;
   }
 
+  @JsonProperty("PRICE_CANNOT_BE_DETERMINED")
   public void setPRICECANNOTBEDETERMINED(@Nullable Integer PRICE_CANNOT_BE_DETERMINED) {
     this.PRICE_CANNOT_BE_DETERMINED = PRICE_CANNOT_BE_DETERMINED;
   }
@@ -664,6 +726,7 @@ public class CatalogsFeedValidationErrors {
     return PRICE_MISSING;
   }
 
+  @JsonProperty("PRICE_MISSING")
   public void setPRICEMISSING(@Nullable Integer PRICE_MISSING) {
     this.PRICE_MISSING = PRICE_MISSING;
   }
@@ -684,6 +747,7 @@ public class CatalogsFeedValidationErrors {
     return PRODUCT_LINK_MISSING;
   }
 
+  @JsonProperty("PRODUCT_LINK_MISSING")
   public void setPRODUCTLINKMISSING(@Nullable Integer PRODUCT_LINK_MISSING) {
     this.PRODUCT_LINK_MISSING = PRODUCT_LINK_MISSING;
   }
@@ -704,6 +768,7 @@ public class CatalogsFeedValidationErrors {
     return PRODUCT_PRICE_INVALID;
   }
 
+  @JsonProperty("PRODUCT_PRICE_INVALID")
   public void setPRODUCTPRICEINVALID(@Nullable Integer PRODUCT_PRICE_INVALID) {
     this.PRODUCT_PRICE_INVALID = PRODUCT_PRICE_INVALID;
   }
@@ -724,6 +789,7 @@ public class CatalogsFeedValidationErrors {
     return REQUIRED_COLUMNS_MISSING;
   }
 
+  @JsonProperty("REQUIRED_COLUMNS_MISSING")
   public void setREQUIREDCOLUMNSMISSING(@Nullable Integer REQUIRED_COLUMNS_MISSING) {
     this.REQUIRED_COLUMNS_MISSING = REQUIRED_COLUMNS_MISSING;
   }
@@ -744,6 +810,7 @@ public class CatalogsFeedValidationErrors {
     return TITLE_MISSING;
   }
 
+  @JsonProperty("TITLE_MISSING")
   public void setTITLEMISSING(@Nullable Integer TITLE_MISSING) {
     this.TITLE_MISSING = TITLE_MISSING;
   }
@@ -842,11 +909,8 @@ public class CatalogsFeedValidationErrors {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

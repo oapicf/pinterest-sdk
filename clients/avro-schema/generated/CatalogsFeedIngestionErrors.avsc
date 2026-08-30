@@ -48,13 +48,7 @@
     },
     {
       "name": "LARGE_PRODUCT_COUNT_DECREASE",
-      "type": ["null", {
-        "type": "enum",
-        "name": "CatalogsFeedIngestionErrors_LARGEUnderscorePRODUCTUnderscoreCOUNTUnderscoreDECREASE",
-        "symbols": [
-          "_1"
-        ]
-      }],
+      "type": ["null", "int"],
       "doc": "The product count has decreased by more than 99% compared to the last successful ingestion.",
       "default": null
     },

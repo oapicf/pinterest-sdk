@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **character** |  | [optional] 
-**items** | [**array[CampaignResponse]**](CampaignResponse.md) |  | 
+**items** | [**array[Campaign]**](Campaign.md) |  | 
 
 

@@ -10,6 +10,7 @@
 
 #include <string>
 #include "TargetingSpecGender.h"
+#include "TargetingSpecListOperation.h"
 #include <list>
 #include "Object.h"
 
@@ -56,11 +57,11 @@ public:
 	void setField(std::string  field);
 	/*! \brief Get 
 	 */
-	std::string getOperation();
+	TargetingSpecListOperation getOperation();
 
 	/*! \brief Set 
 	 */
-	void setOperation(std::string  operation);
+	void setOperation(TargetingSpecListOperation  operation);
 	/*! \brief Get 
 	 */
 	std::list<TargetingSpecGender> getValues();
@@ -71,7 +72,7 @@ public:
 
 private:
 	std::string field;
-	std::string operation;
+	TargetingSpecListOperation operation;
 	std::list <TargetingSpecGender>values;
 	void __init();
 	void __cleanup();

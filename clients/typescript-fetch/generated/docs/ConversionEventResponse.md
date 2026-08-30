@@ -10,6 +10,7 @@ Name | Type
 `conversionEvent` | [ConversionTagType](ConversionTagType.md)
 `conversionTagId` | string
 `createdTime` | number
+`reportingConversionEvent` | string
 
 ## Example
 
@@ -22,6 +23,7 @@ const example = {
   "conversionEvent": null,
   "conversionTagId": 2614324385652,
   "createdTime": 1564768710,
+  "reportingConversionEvent": GET_QUOTE,
 } satisfies ConversionEventResponse
 
 console.log(example)

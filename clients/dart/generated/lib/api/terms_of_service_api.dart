@@ -32,7 +32,7 @@ class TermsOfServiceApi {
   ///
   /// * [String] tosType:
   ///   Request type.
-  Future<Response> termsOfServiceGetWithHttpInfo(String adAccountId, { bool? includeHtml, String? tosType, }) async {
+  Future<Response> termsOfServiceGetWithHttpInfo(String adAccountId, { bool? includeHtml, String? tosType, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/terms_of_service'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -62,6 +62,7 @@ class TermsOfServiceApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -79,8 +80,8 @@ class TermsOfServiceApi {
   ///
   /// * [String] tosType:
   ///   Request type.
-  Future<TermsOfService?> termsOfServiceGet(String adAccountId, { bool? includeHtml, String? tosType, }) async {
-    final response = await termsOfServiceGetWithHttpInfo(adAccountId,  includeHtml: includeHtml, tosType: tosType, );
+  Future<TermsOfService?> termsOfServiceGet(String adAccountId, { bool? includeHtml, String? tosType, Future<void>? abortTrigger, }) async {
+    final response = await termsOfServiceGetWithHttpInfo(adAccountId, includeHtml: includeHtml, tosType: tosType, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -106,7 +106,7 @@ AudienceDemographicValue::getKey()
 }
 
 void
-AudienceDemographicValue::setKey(std::string  key)
+AudienceDemographicValue::setKey(std::string key)
 {
 	this->key = key;
 }
@@ -118,7 +118,7 @@ AudienceDemographicValue::getName()
 }
 
 void
-AudienceDemographicValue::setName(std::string  name)
+AudienceDemographicValue::setName(std::string name)
 {
 	this->name = name;
 }
@@ -130,7 +130,7 @@ AudienceDemographicValue::getRatio()
 }
 
 void
-AudienceDemographicValue::setRatio(long  ratio)
+AudienceDemographicValue::setRatio(long ratio)
 {
 	this->ratio = ratio;
 }

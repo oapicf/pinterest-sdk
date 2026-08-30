@@ -12,22 +12,24 @@ static integration_record_t *integration_record_create_internal(
     char *connected_merchant_id,
     char *connected_tag_id,
     char *connected_user_id,
-    int created_time,
+    int *created_time,
     char *external_business_id,
     char *id,
     char *partner_access_token,
-    int partner_access_token_expiry,
+    int *partner_access_token_expiry,
     char *partner_metadata,
     char *partner_primary_email,
     char *partner_refresh_token,
-    int partner_refresh_token_expiry,
+    int *partner_refresh_token_expiry,
     char *scopes,
-    int updated_time
+    int *updated_time
     ) {
     integration_record_t *integration_record_local_var = malloc(sizeof(integration_record_t));
     if (!integration_record_local_var) {
         return NULL;
     }
+    memset(integration_record_local_var, 0, sizeof(integration_record_t));
+    integration_record_local_var->_library_owned = 1;
     integration_record_local_var->additional_id_1 = additional_id_1;
     integration_record_local_var->connected_advertiser_id = connected_advertiser_id;
     integration_record_local_var->connected_lba_id = connected_lba_id;
@@ -45,8 +47,6 @@ static integration_record_t *integration_record_create_internal(
     integration_record_local_var->partner_refresh_token_expiry = partner_refresh_token_expiry;
     integration_record_local_var->scopes = scopes;
     integration_record_local_var->updated_time = updated_time;
-
-    integration_record_local_var->_library_owned = 1;
     return integration_record_local_var;
 }
 
@@ -57,37 +57,64 @@ __attribute__((deprecated)) integration_record_t *integration_record_create(
     char *connected_merchant_id,
     char *connected_tag_id,
     char *connected_user_id,
-    int created_time,
+    int *created_time,
     char *external_business_id,
     char *id,
     char *partner_access_token,
-    int partner_access_token_expiry,
+    int *partner_access_token_expiry,
     char *partner_metadata,
     char *partner_primary_email,
     char *partner_refresh_token,
-    int partner_refresh_token_expiry,
+    int *partner_refresh_token_expiry,
     char *scopes,
-    int updated_time
+    int *updated_time
     ) {
-    return integration_record_create_internal (
+    int *created_time_copy = NULL;
+    if (created_time) {
+        created_time_copy = malloc(sizeof(int));
+        if (created_time_copy) *created_time_copy = *created_time;
+    }
+    int *partner_access_token_expiry_copy = NULL;
+    if (partner_access_token_expiry) {
+        partner_access_token_expiry_copy = malloc(sizeof(int));
+        if (partner_access_token_expiry_copy) *partner_access_token_expiry_copy = *partner_access_token_expiry;
+    }
+    int *partner_refresh_token_expiry_copy = NULL;
+    if (partner_refresh_token_expiry) {
+        partner_refresh_token_expiry_copy = malloc(sizeof(int));
+        if (partner_refresh_token_expiry_copy) *partner_refresh_token_expiry_copy = *partner_refresh_token_expiry;
+    }
+    int *updated_time_copy = NULL;
+    if (updated_time) {
+        updated_time_copy = malloc(sizeof(int));
+        if (updated_time_copy) *updated_time_copy = *updated_time;
+    }
+    integration_record_t *result = integration_record_create_internal (
         additional_id_1,
         connected_advertiser_id,
         connected_lba_id,
         connected_merchant_id,
         connected_tag_id,
         connected_user_id,
-        created_time,
+        created_time_copy,
         external_business_id,
         id,
         partner_access_token,
-        partner_access_token_expiry,
+        partner_access_token_expiry_copy,
         partner_metadata,
         partner_primary_email,
         partner_refresh_token,
-        partner_refresh_token_expiry,
+        partner_refresh_token_expiry_copy,
         scopes,
-        updated_time
+        updated_time_copy
         );
+    if (!result) {
+        free(created_time_copy);
+        free(partner_access_token_expiry_copy);
+        free(partner_refresh_token_expiry_copy);
+        free(updated_time_copy);
+    }
+    return result;
 }
 
 void integration_record_free(integration_record_t *integration_record) {
@@ -123,6 +150,10 @@ void integration_record_free(integration_record_t *integration_record) {
         free(integration_record->connected_user_id);
         integration_record->connected_user_id = NULL;
     }
+    if (integration_record->created_time) {
+        free(integration_record->created_time);
+        integration_record->created_time = NULL;
+    }
     if (integration_record->external_business_id) {
         free(integration_record->external_business_id);
         integration_record->external_business_id = NULL;
@@ -134,6 +165,10 @@ void integration_record_free(integration_record_t *integration_record) {
     if (integration_record->partner_access_token) {
         free(integration_record->partner_access_token);
         integration_record->partner_access_token = NULL;
+    }
+    if (integration_record->partner_access_token_expiry) {
+        free(integration_record->partner_access_token_expiry);
+        integration_record->partner_access_token_expiry = NULL;
     }
     if (integration_record->partner_metadata) {
         free(integration_record->partner_metadata);
@@ -147,9 +182,17 @@ void integration_record_free(integration_record_t *integration_record) {
         free(integration_record->partner_refresh_token);
         integration_record->partner_refresh_token = NULL;
     }
+    if (integration_record->partner_refresh_token_expiry) {
+        free(integration_record->partner_refresh_token_expiry);
+        integration_record->partner_refresh_token_expiry = NULL;
+    }
     if (integration_record->scopes) {
         free(integration_record->scopes);
         integration_record->scopes = NULL;
+    }
+    if (integration_record->updated_time) {
+        free(integration_record->updated_time);
+        integration_record->updated_time = NULL;
     }
     free(integration_record);
 }
@@ -207,7 +250,7 @@ cJSON *integration_record_convertToJSON(integration_record_t *integration_record
 
     // integration_record->created_time
     if(integration_record->created_time) {
-    if(cJSON_AddNumberToObject(item, "created_time", integration_record->created_time) == NULL) {
+    if(cJSON_AddNumberToObject(item, "created_time", *integration_record->created_time) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -222,10 +265,11 @@ cJSON *integration_record_convertToJSON(integration_record_t *integration_record
 
 
     // integration_record->id
-    if(integration_record->id) {
+    if (!integration_record->id) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "id", integration_record->id) == NULL) {
     goto fail; //String
-    }
     }
 
 
@@ -239,7 +283,7 @@ cJSON *integration_record_convertToJSON(integration_record_t *integration_record
 
     // integration_record->partner_access_token_expiry
     if(integration_record->partner_access_token_expiry) {
-    if(cJSON_AddNumberToObject(item, "partner_access_token_expiry", integration_record->partner_access_token_expiry) == NULL) {
+    if(cJSON_AddNumberToObject(item, "partner_access_token_expiry", *integration_record->partner_access_token_expiry) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -271,7 +315,7 @@ cJSON *integration_record_convertToJSON(integration_record_t *integration_record
 
     // integration_record->partner_refresh_token_expiry
     if(integration_record->partner_refresh_token_expiry) {
-    if(cJSON_AddNumberToObject(item, "partner_refresh_token_expiry", integration_record->partner_refresh_token_expiry) == NULL) {
+    if(cJSON_AddNumberToObject(item, "partner_refresh_token_expiry", *integration_record->partner_refresh_token_expiry) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -287,7 +331,7 @@ cJSON *integration_record_convertToJSON(integration_record_t *integration_record
 
     // integration_record->updated_time
     if(integration_record->updated_time) {
-    if(cJSON_AddNumberToObject(item, "updated_time", integration_record->updated_time) == NULL) {
+    if(cJSON_AddNumberToObject(item, "updated_time", *integration_record->updated_time) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -303,6 +347,44 @@ fail:
 integration_record_t *integration_record_parseFromJSON(cJSON *integration_recordJSON){
 
     integration_record_t *integration_record_local_var = NULL;
+
+    char *additional_id_1_local_str = NULL;
+
+    char *connected_advertiser_id_local_str = NULL;
+
+    char *connected_lba_id_local_str = NULL;
+
+    char *connected_merchant_id_local_str = NULL;
+
+    char *connected_tag_id_local_str = NULL;
+
+    char *connected_user_id_local_str = NULL;
+
+    // define the local variable for integration_record->created_time
+    int *created_time_local_var = NULL;
+
+    char *external_business_id_local_str = NULL;
+
+    char *id_local_str = NULL;
+
+    char *partner_access_token_local_str = NULL;
+
+    // define the local variable for integration_record->partner_access_token_expiry
+    int *partner_access_token_expiry_local_var = NULL;
+
+    char *partner_metadata_local_str = NULL;
+
+    char *partner_primary_email_local_str = NULL;
+
+    char *partner_refresh_token_local_str = NULL;
+
+    // define the local variable for integration_record->partner_refresh_token_expiry
+    int *partner_refresh_token_expiry_local_var = NULL;
+
+    char *scopes_local_str = NULL;
+
+    // define the local variable for integration_record->updated_time
+    int *updated_time_local_var = NULL;
 
     // integration_record->additional_id_1
     cJSON *additional_id_1 = cJSON_GetObjectItemCaseSensitive(integration_recordJSON, "additional_id_1");
@@ -386,6 +468,12 @@ integration_record_t *integration_record_parseFromJSON(cJSON *integration_record
     {
     goto end; //Numeric
     }
+    created_time_local_var = malloc(sizeof(int));
+    if(!created_time_local_var)
+    {
+        goto end;
+    }
+    *created_time_local_var = created_time->valuedouble;
     }
 
     // integration_record->external_business_id
@@ -405,11 +493,14 @@ integration_record_t *integration_record_parseFromJSON(cJSON *integration_record
     if (cJSON_IsNull(id)) {
         id = NULL;
     }
-    if (id) { 
-    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    if (!id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(id))
     {
     goto end; //String
-    }
     }
 
     // integration_record->partner_access_token
@@ -434,6 +525,12 @@ integration_record_t *integration_record_parseFromJSON(cJSON *integration_record
     {
     goto end; //Numeric
     }
+    partner_access_token_expiry_local_var = malloc(sizeof(int));
+    if(!partner_access_token_expiry_local_var)
+    {
+        goto end;
+    }
+    *partner_access_token_expiry_local_var = partner_access_token_expiry->valuedouble;
     }
 
     // integration_record->partner_metadata
@@ -482,6 +579,12 @@ integration_record_t *integration_record_parseFromJSON(cJSON *integration_record
     {
     goto end; //Numeric
     }
+    partner_refresh_token_expiry_local_var = malloc(sizeof(int));
+    if(!partner_refresh_token_expiry_local_var)
+    {
+        goto end;
+    }
+    *partner_refresh_token_expiry_local_var = partner_refresh_token_expiry->valuedouble;
     }
 
     // integration_record->scopes
@@ -506,31 +609,123 @@ integration_record_t *integration_record_parseFromJSON(cJSON *integration_record
     {
     goto end; //Numeric
     }
+    updated_time_local_var = malloc(sizeof(int));
+    if(!updated_time_local_var)
+    {
+        goto end;
+    }
+    *updated_time_local_var = updated_time->valuedouble;
     }
 
 
+    if (additional_id_1 && !cJSON_IsNull(additional_id_1)) additional_id_1_local_str = strdup(additional_id_1->valuestring);
+    if (connected_advertiser_id && !cJSON_IsNull(connected_advertiser_id)) connected_advertiser_id_local_str = strdup(connected_advertiser_id->valuestring);
+    if (connected_lba_id && !cJSON_IsNull(connected_lba_id)) connected_lba_id_local_str = strdup(connected_lba_id->valuestring);
+    if (connected_merchant_id && !cJSON_IsNull(connected_merchant_id)) connected_merchant_id_local_str = strdup(connected_merchant_id->valuestring);
+    if (connected_tag_id && !cJSON_IsNull(connected_tag_id)) connected_tag_id_local_str = strdup(connected_tag_id->valuestring);
+    if (connected_user_id && !cJSON_IsNull(connected_user_id)) connected_user_id_local_str = strdup(connected_user_id->valuestring);
+    if (external_business_id && !cJSON_IsNull(external_business_id)) external_business_id_local_str = strdup(external_business_id->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (partner_access_token && !cJSON_IsNull(partner_access_token)) partner_access_token_local_str = strdup(partner_access_token->valuestring);
+    if (partner_metadata && !cJSON_IsNull(partner_metadata)) partner_metadata_local_str = strdup(partner_metadata->valuestring);
+    if (partner_primary_email && !cJSON_IsNull(partner_primary_email)) partner_primary_email_local_str = strdup(partner_primary_email->valuestring);
+    if (partner_refresh_token && !cJSON_IsNull(partner_refresh_token)) partner_refresh_token_local_str = strdup(partner_refresh_token->valuestring);
+    if (scopes && !cJSON_IsNull(scopes)) scopes_local_str = strdup(scopes->valuestring);
+
     integration_record_local_var = integration_record_create_internal (
-        additional_id_1 && !cJSON_IsNull(additional_id_1) ? strdup(additional_id_1->valuestring) : NULL,
-        connected_advertiser_id && !cJSON_IsNull(connected_advertiser_id) ? strdup(connected_advertiser_id->valuestring) : NULL,
-        connected_lba_id && !cJSON_IsNull(connected_lba_id) ? strdup(connected_lba_id->valuestring) : NULL,
-        connected_merchant_id && !cJSON_IsNull(connected_merchant_id) ? strdup(connected_merchant_id->valuestring) : NULL,
-        connected_tag_id && !cJSON_IsNull(connected_tag_id) ? strdup(connected_tag_id->valuestring) : NULL,
-        connected_user_id && !cJSON_IsNull(connected_user_id) ? strdup(connected_user_id->valuestring) : NULL,
-        created_time ? created_time->valuedouble : 0,
-        external_business_id && !cJSON_IsNull(external_business_id) ? strdup(external_business_id->valuestring) : NULL,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        partner_access_token && !cJSON_IsNull(partner_access_token) ? strdup(partner_access_token->valuestring) : NULL,
-        partner_access_token_expiry ? partner_access_token_expiry->valuedouble : 0,
-        partner_metadata && !cJSON_IsNull(partner_metadata) ? strdup(partner_metadata->valuestring) : NULL,
-        partner_primary_email && !cJSON_IsNull(partner_primary_email) ? strdup(partner_primary_email->valuestring) : NULL,
-        partner_refresh_token && !cJSON_IsNull(partner_refresh_token) ? strdup(partner_refresh_token->valuestring) : NULL,
-        partner_refresh_token_expiry ? partner_refresh_token_expiry->valuedouble : 0,
-        scopes && !cJSON_IsNull(scopes) ? strdup(scopes->valuestring) : NULL,
-        updated_time ? updated_time->valuedouble : 0
+        additional_id_1_local_str,
+        connected_advertiser_id_local_str,
+        connected_lba_id_local_str,
+        connected_merchant_id_local_str,
+        connected_tag_id_local_str,
+        connected_user_id_local_str,
+        created_time_local_var,
+        external_business_id_local_str,
+        id_local_str,
+        partner_access_token_local_str,
+        partner_access_token_expiry_local_var,
+        partner_metadata_local_str,
+        partner_primary_email_local_str,
+        partner_refresh_token_local_str,
+        partner_refresh_token_expiry_local_var,
+        scopes_local_str,
+        updated_time_local_var
         );
+
+    if (!integration_record_local_var) {
+        goto end;
+    }
 
     return integration_record_local_var;
 end:
+    if (additional_id_1_local_str) {
+        free(additional_id_1_local_str);
+        additional_id_1_local_str = NULL;
+    }
+    if (connected_advertiser_id_local_str) {
+        free(connected_advertiser_id_local_str);
+        connected_advertiser_id_local_str = NULL;
+    }
+    if (connected_lba_id_local_str) {
+        free(connected_lba_id_local_str);
+        connected_lba_id_local_str = NULL;
+    }
+    if (connected_merchant_id_local_str) {
+        free(connected_merchant_id_local_str);
+        connected_merchant_id_local_str = NULL;
+    }
+    if (connected_tag_id_local_str) {
+        free(connected_tag_id_local_str);
+        connected_tag_id_local_str = NULL;
+    }
+    if (connected_user_id_local_str) {
+        free(connected_user_id_local_str);
+        connected_user_id_local_str = NULL;
+    }
+    if (created_time_local_var) {
+        free(created_time_local_var);
+        created_time_local_var = NULL;
+    }
+    if (external_business_id_local_str) {
+        free(external_business_id_local_str);
+        external_business_id_local_str = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (partner_access_token_local_str) {
+        free(partner_access_token_local_str);
+        partner_access_token_local_str = NULL;
+    }
+    if (partner_access_token_expiry_local_var) {
+        free(partner_access_token_expiry_local_var);
+        partner_access_token_expiry_local_var = NULL;
+    }
+    if (partner_metadata_local_str) {
+        free(partner_metadata_local_str);
+        partner_metadata_local_str = NULL;
+    }
+    if (partner_primary_email_local_str) {
+        free(partner_primary_email_local_str);
+        partner_primary_email_local_str = NULL;
+    }
+    if (partner_refresh_token_local_str) {
+        free(partner_refresh_token_local_str);
+        partner_refresh_token_local_str = NULL;
+    }
+    if (partner_refresh_token_expiry_local_var) {
+        free(partner_refresh_token_expiry_local_var);
+        partner_refresh_token_expiry_local_var = NULL;
+    }
+    if (scopes_local_str) {
+        free(scopes_local_str);
+        scopes_local_str = NULL;
+    }
+    if (updated_time_local_var) {
+        free(updated_time_local_var);
+        updated_time_local_var = NULL;
+    }
     return NULL;
 
 }

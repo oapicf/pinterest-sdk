@@ -6,7 +6,7 @@ using namespace Tiny;
 
 AdvancedAuctionItems::AdvancedAuctionItems()
 {
-	catalog_id = std::string();
+	catalog_id = null;
 	items = std::list<AdvancedAuctionItem>();
 }
 
@@ -102,7 +102,7 @@ AdvancedAuctionItems::getCatalogId()
 }
 
 void
-AdvancedAuctionItems::setCatalogId(std::string  catalog_id)
+AdvancedAuctionItems::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -114,7 +114,7 @@ AdvancedAuctionItems::getItems()
 }
 
 void
-AdvancedAuctionItems::setItems(std::list <AdvancedAuctionItem> items)
+AdvancedAuctionItems::setItems(std::list<AdvancedAuctionItem> items)
 {
 	this->items = items;
 }

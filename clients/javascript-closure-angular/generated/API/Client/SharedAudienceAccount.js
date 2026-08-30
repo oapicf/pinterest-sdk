@@ -21,7 +21,7 @@ API.Client.SharedAudienceAccount.prototype.accountName;
 
 /**
  * account type
- * @type {!string}
+ * @type {!API.Client.AudienceAccountType}
  * @export
  */
 API.Client.SharedAudienceAccount.prototype.accountType;
@@ -33,8 +33,3 @@ API.Client.SharedAudienceAccount.prototype.accountType;
  */
 API.Client.SharedAudienceAccount.prototype.sharedOnTimestamp;
 
-/** @enum {string} */
-API.Client.SharedAudienceAccount.AccountTypeEnum = { 
-  AD_ACCOUNT: 'AD_ACCOUNT',
-  BUSINESS_ACCOUNT: 'BUSINESS_ACCOUNT',
-}

@@ -14,8 +14,10 @@ import TrendingTopic._
 case class TrendingTopic (
   /* Description of the trending topic */
   description: String,
+/* Unique identifier for the trending topic */
+  id: String,
 /* Month-over-month growth percentage */
-  percentGrowthMom: Integer,
+  percentGrowthMom: Option[Integer],
 /* Array of pin images related to this trend (up to 6) */
   pins: List[TrendingPin],
 /* List of related interest categories */

@@ -1,0 +1,13 @@
+# Org.OpenAPITools.Model.TopPinsAnalyticsResponsePinsItems
+Array with metrics, status, and pin id for the requested metric
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**DataStatus** | [**Dictionary&lt;string, DataStatus&gt;**](DataStatus.md) |  | [optional] 
+**Metrics** | **Dictionary&lt;string, decimal&gt;** |  | [optional] 
+**PinId** | **string** | The pin id | [optional] 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
+

@@ -13,7 +13,7 @@
 //
 // Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 //
-void
+lead_subscription_t*
 LeadAdsAPI_adAccountsSubscriptionsDelById(apiClient_t *apiClient, char *ad_account_id, char *subscription_id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -70,6 +70,10 @@ LeadAdsAPI_adAccountsSubscriptionsDelById(apiClient_t *apiClient, char *ad_accou
                     "DELETE");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 204) {
     //    printf("%s\n","Resource deleted successfully.");
     //}
@@ -97,8 +101,18 @@ LeadAdsAPI_adAccountsSubscriptionsDelById(apiClient_t *apiClient, char *ad_accou
     //if (apiClient->response_code == 0) {
     //    printf("%s\n","An unexpected error response.");
     //}
-    //No return type
-end:
+    //nonprimitive not container
+    lead_subscription_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *LeadAdsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = lead_subscription_parseFromJSON(LeadAdsAPIlocalVarJSON);
+        cJSON_Delete(LeadAdsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -112,6 +126,10 @@ end:
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
     free(localVarToReplace_subscription_id);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 

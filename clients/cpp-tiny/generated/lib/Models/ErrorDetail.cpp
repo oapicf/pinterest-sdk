@@ -106,7 +106,7 @@ ErrorDetail::getCount()
 }
 
 void
-ErrorDetail::setCount(int  count)
+ErrorDetail::setCount(int count)
 {
 	this->count = count;
 }
@@ -118,7 +118,7 @@ ErrorDetail::getErrorCode()
 }
 
 void
-ErrorDetail::setErrorCode(int  error_code)
+ErrorDetail::setErrorCode(int error_code)
 {
 	this->error_code = error_code;
 }
@@ -130,7 +130,7 @@ ErrorDetail::getMessage()
 }
 
 void
-ErrorDetail::setMessage(std::string  message)
+ErrorDetail::setMessage(std::string message)
 {
 	this->message = message;
 }

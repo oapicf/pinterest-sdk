@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BookClosed"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BookClosed"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BookClosed {
+    title = BookClosed
+    description = BookClosed
+    derivedFrom = Root
+    properties {
+        conversion_metrics_ready {
+          type =  boolean
+          description = "Are conversion metrics ready?"
+          optional = true
+        }
+        non_conversion_metrics_ready {
+          type =  boolean
+          description = "Are non-conversion metrics ready?"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BookClosed {
+    title = BookClosed
+    description = BookClosed
+    implements = openapi_server.resourceTypes.BookClosed
+
+  }
+}

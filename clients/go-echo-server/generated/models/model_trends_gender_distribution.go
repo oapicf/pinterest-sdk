@@ -1,0 +1,7 @@
+package models
+
+// TrendsGenderDistribution - This represents a mapping from gender to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.
+type TrendsGenderDistribution struct {
+
+	GenderDistribution TrendsGender `json:"gender_distribution,omitempty"`
+}

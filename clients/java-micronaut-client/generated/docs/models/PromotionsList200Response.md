@@ -9,7 +9,7 @@ The class is defined in **[PromotionsList200Response.java](../../src/main/java/o
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;PromotionResponse&gt;`](PromotionResponse.md) |  | 
+**items** | [`List&lt;Promotion&gt;`](Promotion.md) |  | 
 
 
 

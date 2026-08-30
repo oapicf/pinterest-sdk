@@ -7,7 +7,7 @@ API.Client.LabelUpdateRequest = function() {}
 
 /**
  * Labels that you are applying to the campaign.
- * @type {!Array<!API.Client.LabelUpdateRequest_labels_inner>}
+ * @type {!Array<!API.Client.LabelUpdateItem>}
  * @export
  */
 API.Client.LabelUpdateRequest.prototype.labels;

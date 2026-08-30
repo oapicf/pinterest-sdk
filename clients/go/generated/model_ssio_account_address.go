@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,7 +18,7 @@ import (
 // checks if the SSIOAccountAddress type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SSIOAccountAddress{}
 
-// SSIOAccountAddress struct for SSIOAccountAddress
+// SSIOAccountAddress Salesforce address information.
 type SSIOAccountAddress struct {
 	// Salesforce id for address
 	AddressId *string `json:"address_id,omitempty"`

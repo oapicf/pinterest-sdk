@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | **catalogs_type_t \*** |  | 
 **catalog_id** | **char \*** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
+**catalog_type** | **pinterest_rest_api_catalogs_items_post_filters_CATALOGTYPE_e** |  | 
 **item_ids** | **list_t \*** |  | 
 **hotel_ids** | **list_t \*** |  | 
 **creative_assets_ids** | **list_t \*** |  | 

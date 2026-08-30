@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,24 +18,24 @@ import (
 // checks if the InviteResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &InviteResponse{}
 
-// InviteResponse struct for InviteResponse
+// InviteResponse A user's username or email OR a partner id that caused the error.
 type InviteResponse struct {
-	// Unique identifier of the invite/request.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-	InviteData *BaseInviteDataResponseInviteData `json:"invite_data,omitempty"`
-	// Indicates whether the invite/request was received.
-	IsReceivedInvite *bool `json:"is_received_invite,omitempty"`
-	// Metadata for the member/partner that was sent the invite/request.
-	User *BusinessAccessUserSummary `json:"user,omitempty"`
 	AssetsSummary NullableInviteAssetsSummary `json:"assets_summary,omitempty"`
 	// The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
 	BusinessRoles []string `json:"business_roles,omitempty"`
 	// Metadata for the business that created the invite/request.
-	CreatedByBusiness map[string]interface{} `json:"created_by_business,omitempty"`
+	CreatedByBusiness *BusinessAccessUserSummary `json:"created_by_business,omitempty"`
 	// Metadata for the user that created the invite/request.
-	CreatedByUser map[string]interface{} `json:"created_by_user,omitempty"`
+	CreatedByUser *BusinessAccessUserSummary `json:"created_by_user,omitempty"`
 	// The time the invite/request was created. Returned in milliseconds.
 	CreatedTime *int32 `json:"created_time,omitempty"`
+	// Unique identifier of the invite/request.
+	Id *string `json:"id,omitempty" validate:"regexp=^\\d+$"`
+	InviteData *InviteDataResponse `json:"invite_data,omitempty"`
+	// Indicates whether the invite/request was received.
+	IsReceivedInvite *bool `json:"is_received_invite,omitempty"`
+	// Metadata for the member/partner that was sent the invite/request.
+	User *BusinessAccessUserSummary `json:"user,omitempty"`
 }
 
 // NewInviteResponse instantiates a new InviteResponse object
@@ -53,134 +53,6 @@ func NewInviteResponse() *InviteResponse {
 func NewInviteResponseWithDefaults() *InviteResponse {
 	this := InviteResponse{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *InviteResponse) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InviteResponse) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *InviteResponse) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *InviteResponse) SetId(v string) {
-	o.Id = &v
-}
-
-// GetInviteData returns the InviteData field value if set, zero value otherwise.
-func (o *InviteResponse) GetInviteData() BaseInviteDataResponseInviteData {
-	if o == nil || IsNil(o.InviteData) {
-		var ret BaseInviteDataResponseInviteData
-		return ret
-	}
-	return *o.InviteData
-}
-
-// GetInviteDataOk returns a tuple with the InviteData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InviteResponse) GetInviteDataOk() (*BaseInviteDataResponseInviteData, bool) {
-	if o == nil || IsNil(o.InviteData) {
-		return nil, false
-	}
-	return o.InviteData, true
-}
-
-// HasInviteData returns a boolean if a field has been set.
-func (o *InviteResponse) HasInviteData() bool {
-	if o != nil && !IsNil(o.InviteData) {
-		return true
-	}
-
-	return false
-}
-
-// SetInviteData gets a reference to the given BaseInviteDataResponseInviteData and assigns it to the InviteData field.
-func (o *InviteResponse) SetInviteData(v BaseInviteDataResponseInviteData) {
-	o.InviteData = &v
-}
-
-// GetIsReceivedInvite returns the IsReceivedInvite field value if set, zero value otherwise.
-func (o *InviteResponse) GetIsReceivedInvite() bool {
-	if o == nil || IsNil(o.IsReceivedInvite) {
-		var ret bool
-		return ret
-	}
-	return *o.IsReceivedInvite
-}
-
-// GetIsReceivedInviteOk returns a tuple with the IsReceivedInvite field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InviteResponse) GetIsReceivedInviteOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsReceivedInvite) {
-		return nil, false
-	}
-	return o.IsReceivedInvite, true
-}
-
-// HasIsReceivedInvite returns a boolean if a field has been set.
-func (o *InviteResponse) HasIsReceivedInvite() bool {
-	if o != nil && !IsNil(o.IsReceivedInvite) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsReceivedInvite gets a reference to the given bool and assigns it to the IsReceivedInvite field.
-func (o *InviteResponse) SetIsReceivedInvite(v bool) {
-	o.IsReceivedInvite = &v
-}
-
-// GetUser returns the User field value if set, zero value otherwise.
-func (o *InviteResponse) GetUser() BusinessAccessUserSummary {
-	if o == nil || IsNil(o.User) {
-		var ret BusinessAccessUserSummary
-		return ret
-	}
-	return *o.User
-}
-
-// GetUserOk returns a tuple with the User field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InviteResponse) GetUserOk() (*BusinessAccessUserSummary, bool) {
-	if o == nil || IsNil(o.User) {
-		return nil, false
-	}
-	return o.User, true
-}
-
-// HasUser returns a boolean if a field has been set.
-func (o *InviteResponse) HasUser() bool {
-	if o != nil && !IsNil(o.User) {
-		return true
-	}
-
-	return false
-}
-
-// SetUser gets a reference to the given BusinessAccessUserSummary and assigns it to the User field.
-func (o *InviteResponse) SetUser(v BusinessAccessUserSummary) {
-	o.User = &v
 }
 
 // GetAssetsSummary returns the AssetsSummary field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -257,21 +129,20 @@ func (o *InviteResponse) SetBusinessRoles(v []string) {
 	o.BusinessRoles = v
 }
 
-// GetCreatedByBusiness returns the CreatedByBusiness field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *InviteResponse) GetCreatedByBusiness() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
+// GetCreatedByBusiness returns the CreatedByBusiness field value if set, zero value otherwise.
+func (o *InviteResponse) GetCreatedByBusiness() BusinessAccessUserSummary {
+	if o == nil || IsNil(o.CreatedByBusiness) {
+		var ret BusinessAccessUserSummary
 		return ret
 	}
-	return o.CreatedByBusiness
+	return *o.CreatedByBusiness
 }
 
 // GetCreatedByBusinessOk returns a tuple with the CreatedByBusiness field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InviteResponse) GetCreatedByBusinessOk() (map[string]interface{}, bool) {
+func (o *InviteResponse) GetCreatedByBusinessOk() (*BusinessAccessUserSummary, bool) {
 	if o == nil || IsNil(o.CreatedByBusiness) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.CreatedByBusiness, true
 }
@@ -285,26 +156,25 @@ func (o *InviteResponse) HasCreatedByBusiness() bool {
 	return false
 }
 
-// SetCreatedByBusiness gets a reference to the given map[string]interface{} and assigns it to the CreatedByBusiness field.
-func (o *InviteResponse) SetCreatedByBusiness(v map[string]interface{}) {
-	o.CreatedByBusiness = v
+// SetCreatedByBusiness gets a reference to the given BusinessAccessUserSummary and assigns it to the CreatedByBusiness field.
+func (o *InviteResponse) SetCreatedByBusiness(v BusinessAccessUserSummary) {
+	o.CreatedByBusiness = &v
 }
 
-// GetCreatedByUser returns the CreatedByUser field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *InviteResponse) GetCreatedByUser() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
+// GetCreatedByUser returns the CreatedByUser field value if set, zero value otherwise.
+func (o *InviteResponse) GetCreatedByUser() BusinessAccessUserSummary {
+	if o == nil || IsNil(o.CreatedByUser) {
+		var ret BusinessAccessUserSummary
 		return ret
 	}
-	return o.CreatedByUser
+	return *o.CreatedByUser
 }
 
 // GetCreatedByUserOk returns a tuple with the CreatedByUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InviteResponse) GetCreatedByUserOk() (map[string]interface{}, bool) {
+func (o *InviteResponse) GetCreatedByUserOk() (*BusinessAccessUserSummary, bool) {
 	if o == nil || IsNil(o.CreatedByUser) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.CreatedByUser, true
 }
@@ -318,9 +188,9 @@ func (o *InviteResponse) HasCreatedByUser() bool {
 	return false
 }
 
-// SetCreatedByUser gets a reference to the given map[string]interface{} and assigns it to the CreatedByUser field.
-func (o *InviteResponse) SetCreatedByUser(v map[string]interface{}) {
-	o.CreatedByUser = v
+// SetCreatedByUser gets a reference to the given BusinessAccessUserSummary and assigns it to the CreatedByUser field.
+func (o *InviteResponse) SetCreatedByUser(v BusinessAccessUserSummary) {
+	o.CreatedByUser = &v
 }
 
 // GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
@@ -355,6 +225,134 @@ func (o *InviteResponse) SetCreatedTime(v int32) {
 	o.CreatedTime = &v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *InviteResponse) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InviteResponse) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *InviteResponse) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *InviteResponse) SetId(v string) {
+	o.Id = &v
+}
+
+// GetInviteData returns the InviteData field value if set, zero value otherwise.
+func (o *InviteResponse) GetInviteData() InviteDataResponse {
+	if o == nil || IsNil(o.InviteData) {
+		var ret InviteDataResponse
+		return ret
+	}
+	return *o.InviteData
+}
+
+// GetInviteDataOk returns a tuple with the InviteData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InviteResponse) GetInviteDataOk() (*InviteDataResponse, bool) {
+	if o == nil || IsNil(o.InviteData) {
+		return nil, false
+	}
+	return o.InviteData, true
+}
+
+// HasInviteData returns a boolean if a field has been set.
+func (o *InviteResponse) HasInviteData() bool {
+	if o != nil && !IsNil(o.InviteData) {
+		return true
+	}
+
+	return false
+}
+
+// SetInviteData gets a reference to the given InviteDataResponse and assigns it to the InviteData field.
+func (o *InviteResponse) SetInviteData(v InviteDataResponse) {
+	o.InviteData = &v
+}
+
+// GetIsReceivedInvite returns the IsReceivedInvite field value if set, zero value otherwise.
+func (o *InviteResponse) GetIsReceivedInvite() bool {
+	if o == nil || IsNil(o.IsReceivedInvite) {
+		var ret bool
+		return ret
+	}
+	return *o.IsReceivedInvite
+}
+
+// GetIsReceivedInviteOk returns a tuple with the IsReceivedInvite field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InviteResponse) GetIsReceivedInviteOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsReceivedInvite) {
+		return nil, false
+	}
+	return o.IsReceivedInvite, true
+}
+
+// HasIsReceivedInvite returns a boolean if a field has been set.
+func (o *InviteResponse) HasIsReceivedInvite() bool {
+	if o != nil && !IsNil(o.IsReceivedInvite) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsReceivedInvite gets a reference to the given bool and assigns it to the IsReceivedInvite field.
+func (o *InviteResponse) SetIsReceivedInvite(v bool) {
+	o.IsReceivedInvite = &v
+}
+
+// GetUser returns the User field value if set, zero value otherwise.
+func (o *InviteResponse) GetUser() BusinessAccessUserSummary {
+	if o == nil || IsNil(o.User) {
+		var ret BusinessAccessUserSummary
+		return ret
+	}
+	return *o.User
+}
+
+// GetUserOk returns a tuple with the User field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InviteResponse) GetUserOk() (*BusinessAccessUserSummary, bool) {
+	if o == nil || IsNil(o.User) {
+		return nil, false
+	}
+	return o.User, true
+}
+
+// HasUser returns a boolean if a field has been set.
+func (o *InviteResponse) HasUser() bool {
+	if o != nil && !IsNil(o.User) {
+		return true
+	}
+
+	return false
+}
+
+// SetUser gets a reference to the given BusinessAccessUserSummary and assigns it to the User field.
+func (o *InviteResponse) SetUser(v BusinessAccessUserSummary) {
+	o.User = &v
+}
+
 func (o InviteResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -365,6 +363,21 @@ func (o InviteResponse) MarshalJSON() ([]byte, error) {
 
 func (o InviteResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AssetsSummary.IsSet() {
+		toSerialize["assets_summary"] = o.AssetsSummary.Get()
+	}
+	if !IsNil(o.BusinessRoles) {
+		toSerialize["business_roles"] = o.BusinessRoles
+	}
+	if !IsNil(o.CreatedByBusiness) {
+		toSerialize["created_by_business"] = o.CreatedByBusiness
+	}
+	if !IsNil(o.CreatedByUser) {
+		toSerialize["created_by_user"] = o.CreatedByUser
+	}
+	if !IsNil(o.CreatedTime) {
+		toSerialize["created_time"] = o.CreatedTime
+	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
@@ -376,21 +389,6 @@ func (o InviteResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
-	}
-	if o.AssetsSummary.IsSet() {
-		toSerialize["assets_summary"] = o.AssetsSummary.Get()
-	}
-	if !IsNil(o.BusinessRoles) {
-		toSerialize["business_roles"] = o.BusinessRoles
-	}
-	if o.CreatedByBusiness != nil {
-		toSerialize["created_by_business"] = o.CreatedByBusiness
-	}
-	if o.CreatedByUser != nil {
-		toSerialize["created_by_user"] = o.CreatedByUser
-	}
-	if !IsNil(o.CreatedTime) {
-		toSerialize["created_time"] = o.CreatedTime
 	}
 	return toSerialize, nil
 }

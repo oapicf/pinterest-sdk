@@ -9,18 +9,20 @@ static ad_account_create_t *ad_account_create_create_internal(
     pinterest_rest_api_country__e country,
     pinterest_rest_api_currency__e currency,
     char *name,
-    char *owner_user_id
+    char *owner_user_id,
+    char *time_zone
     ) {
     ad_account_create_t *ad_account_create_local_var = malloc(sizeof(ad_account_create_t));
     if (!ad_account_create_local_var) {
         return NULL;
     }
+    memset(ad_account_create_local_var, 0, sizeof(ad_account_create_t));
+    ad_account_create_local_var->_library_owned = 1;
     ad_account_create_local_var->country = country;
     ad_account_create_local_var->currency = currency;
     ad_account_create_local_var->name = name;
     ad_account_create_local_var->owner_user_id = owner_user_id;
-
-    ad_account_create_local_var->_library_owned = 1;
+    ad_account_create_local_var->time_zone = time_zone;
     return ad_account_create_local_var;
 }
 
@@ -28,14 +30,19 @@ __attribute__((deprecated)) ad_account_create_t *ad_account_create_create(
     pinterest_rest_api_country__e country,
     pinterest_rest_api_currency__e currency,
     char *name,
-    char *owner_user_id
+    char *owner_user_id,
+    char *time_zone
     ) {
-    return ad_account_create_create_internal (
+    ad_account_create_t *result = ad_account_create_create_internal (
         country,
         currency,
         name,
-        owner_user_id
+        owner_user_id,
+        time_zone
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ad_account_create_free(ad_account_create_t *ad_account_create) {
@@ -54,6 +61,10 @@ void ad_account_create_free(ad_account_create_t *ad_account_create) {
     if (ad_account_create->owner_user_id) {
         free(ad_account_create->owner_user_id);
         ad_account_create->owner_user_id = NULL;
+    }
+    if (ad_account_create->time_zone) {
+        free(ad_account_create->time_zone);
+        ad_account_create->time_zone = NULL;
     }
     free(ad_account_create);
 }
@@ -102,6 +113,14 @@ cJSON *ad_account_create_convertToJSON(ad_account_create_t *ad_account_create) {
     }
     }
 
+
+    // ad_account_create->time_zone
+    if(ad_account_create->time_zone) {
+    if(cJSON_AddStringToObject(item, "time_zone", ad_account_create->time_zone) == NULL) {
+    goto fail; //String
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -119,6 +138,12 @@ ad_account_create_t *ad_account_create_parseFromJSON(cJSON *ad_account_createJSO
 
     // define the local variable for ad_account_create->currency
     pinterest_rest_api_currency__e currency_local_nonprim = 0;
+
+    char *name_local_str = NULL;
+
+    char *owner_user_id_local_str = NULL;
+
+    char *time_zone_local_str = NULL;
 
     // ad_account_create->country
     cJSON *country = cJSON_GetObjectItemCaseSensitive(ad_account_createJSON, "country");
@@ -162,13 +187,34 @@ ad_account_create_t *ad_account_create_parseFromJSON(cJSON *ad_account_createJSO
     }
     }
 
+    // ad_account_create->time_zone
+    cJSON *time_zone = cJSON_GetObjectItemCaseSensitive(ad_account_createJSON, "time_zone");
+    if (cJSON_IsNull(time_zone)) {
+        time_zone = NULL;
+    }
+    if (time_zone) { 
+    if(!cJSON_IsString(time_zone) && !cJSON_IsNull(time_zone))
+    {
+    goto end; //String
+    }
+    }
+
+
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (owner_user_id && !cJSON_IsNull(owner_user_id)) owner_user_id_local_str = strdup(owner_user_id->valuestring);
+    if (time_zone && !cJSON_IsNull(time_zone)) time_zone_local_str = strdup(time_zone->valuestring);
 
     ad_account_create_local_var = ad_account_create_create_internal (
         country ? country_local_nonprim : 0,
         currency ? currency_local_nonprim : 0,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        owner_user_id && !cJSON_IsNull(owner_user_id) ? strdup(owner_user_id->valuestring) : NULL
+        name_local_str,
+        owner_user_id_local_str,
+        time_zone_local_str
         );
+
+    if (!ad_account_create_local_var) {
+        goto end;
+    }
 
     return ad_account_create_local_var;
 end:
@@ -177,6 +223,18 @@ end:
     }
     if (currency_local_nonprim) {
         currency_local_nonprim = 0;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (owner_user_id_local_str) {
+        free(owner_user_id_local_str);
+        owner_user_id_local_str = NULL;
+    }
+    if (time_zone_local_str) {
+        free(time_zone_local_str);
+        time_zone_local_str = NULL;
     }
     return NULL;
 

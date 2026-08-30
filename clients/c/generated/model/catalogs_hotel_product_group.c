@@ -25,18 +25,20 @@ pinterest_rest_api_catalogs_hotel_product_group_CATALOGTYPE_e catalogs_hotel_pro
 static catalogs_hotel_product_group_t *catalogs_hotel_product_group_create_internal(
     char *catalog_id,
     pinterest_rest_api_catalogs_hotel_product_group_CATALOGTYPE_e catalog_type,
-    int created_at,
+    int *created_at,
     char *description,
     catalogs_hotel_product_group_filters_t *filters,
     char *id,
     char *name,
     pinterest_rest_api_catalogs_hotel_product_group_type__e type,
-    int updated_at
+    int *updated_at
     ) {
     catalogs_hotel_product_group_t *catalogs_hotel_product_group_local_var = malloc(sizeof(catalogs_hotel_product_group_t));
     if (!catalogs_hotel_product_group_local_var) {
         return NULL;
     }
+    memset(catalogs_hotel_product_group_local_var, 0, sizeof(catalogs_hotel_product_group_t));
+    catalogs_hotel_product_group_local_var->_library_owned = 1;
     catalogs_hotel_product_group_local_var->catalog_id = catalog_id;
     catalogs_hotel_product_group_local_var->catalog_type = catalog_type;
     catalogs_hotel_product_group_local_var->created_at = created_at;
@@ -46,33 +48,46 @@ static catalogs_hotel_product_group_t *catalogs_hotel_product_group_create_inter
     catalogs_hotel_product_group_local_var->name = name;
     catalogs_hotel_product_group_local_var->type = type;
     catalogs_hotel_product_group_local_var->updated_at = updated_at;
-
-    catalogs_hotel_product_group_local_var->_library_owned = 1;
     return catalogs_hotel_product_group_local_var;
 }
 
 __attribute__((deprecated)) catalogs_hotel_product_group_t *catalogs_hotel_product_group_create(
     char *catalog_id,
     pinterest_rest_api_catalogs_hotel_product_group_CATALOGTYPE_e catalog_type,
-    int created_at,
+    int *created_at,
     char *description,
     catalogs_hotel_product_group_filters_t *filters,
     char *id,
     char *name,
     pinterest_rest_api_catalogs_hotel_product_group_type__e type,
-    int updated_at
+    int *updated_at
     ) {
-    return catalogs_hotel_product_group_create_internal (
+    int *created_at_copy = NULL;
+    if (created_at) {
+        created_at_copy = malloc(sizeof(int));
+        if (created_at_copy) *created_at_copy = *created_at;
+    }
+    int *updated_at_copy = NULL;
+    if (updated_at) {
+        updated_at_copy = malloc(sizeof(int));
+        if (updated_at_copy) *updated_at_copy = *updated_at;
+    }
+    catalogs_hotel_product_group_t *result = catalogs_hotel_product_group_create_internal (
         catalog_id,
         catalog_type,
-        created_at,
+        created_at_copy,
         description,
         filters,
         id,
         name,
         type,
-        updated_at
+        updated_at_copy
         );
+    if (!result) {
+        free(created_at_copy);
+        free(updated_at_copy);
+    }
+    return result;
 }
 
 void catalogs_hotel_product_group_free(catalogs_hotel_product_group_t *catalogs_hotel_product_group) {
@@ -87,6 +102,10 @@ void catalogs_hotel_product_group_free(catalogs_hotel_product_group_t *catalogs_
     if (catalogs_hotel_product_group->catalog_id) {
         free(catalogs_hotel_product_group->catalog_id);
         catalogs_hotel_product_group->catalog_id = NULL;
+    }
+    if (catalogs_hotel_product_group->created_at) {
+        free(catalogs_hotel_product_group->created_at);
+        catalogs_hotel_product_group->created_at = NULL;
     }
     if (catalogs_hotel_product_group->description) {
         free(catalogs_hotel_product_group->description);
@@ -103,6 +122,10 @@ void catalogs_hotel_product_group_free(catalogs_hotel_product_group_t *catalogs_
     if (catalogs_hotel_product_group->name) {
         free(catalogs_hotel_product_group->name);
         catalogs_hotel_product_group->name = NULL;
+    }
+    if (catalogs_hotel_product_group->updated_at) {
+        free(catalogs_hotel_product_group->updated_at);
+        catalogs_hotel_product_group->updated_at = NULL;
     }
     free(catalogs_hotel_product_group);
 }
@@ -131,7 +154,7 @@ cJSON *catalogs_hotel_product_group_convertToJSON(catalogs_hotel_product_group_t
 
     // catalogs_hotel_product_group->created_at
     if(catalogs_hotel_product_group->created_at) {
-    if(cJSON_AddNumberToObject(item, "created_at", catalogs_hotel_product_group->created_at) == NULL) {
+    if(cJSON_AddNumberToObject(item, "created_at", *catalogs_hotel_product_group->created_at) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -192,7 +215,7 @@ cJSON *catalogs_hotel_product_group_convertToJSON(catalogs_hotel_product_group_t
 
     // catalogs_hotel_product_group->updated_at
     if(catalogs_hotel_product_group->updated_at) {
-    if(cJSON_AddNumberToObject(item, "updated_at", catalogs_hotel_product_group->updated_at) == NULL) {
+    if(cJSON_AddNumberToObject(item, "updated_at", *catalogs_hotel_product_group->updated_at) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -209,11 +232,25 @@ catalogs_hotel_product_group_t *catalogs_hotel_product_group_parseFromJSON(cJSON
 
     catalogs_hotel_product_group_t *catalogs_hotel_product_group_local_var = NULL;
 
+    char *catalog_id_local_str = NULL;
+
+    // define the local variable for catalogs_hotel_product_group->created_at
+    int *created_at_local_var = NULL;
+
+    char *description_local_str = NULL;
+
     // define the local variable for catalogs_hotel_product_group->filters
     catalogs_hotel_product_group_filters_t *filters_local_nonprim = NULL;
 
+    char *id_local_str = NULL;
+
+    char *name_local_str = NULL;
+
     // define the local variable for catalogs_hotel_product_group->type
     pinterest_rest_api_catalogs_hotel_product_group_type__e type_local_nonprim = 0;
+
+    // define the local variable for catalogs_hotel_product_group->updated_at
+    int *updated_at_local_var = NULL;
 
     // catalogs_hotel_product_group->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_product_groupJSON, "catalog_id");
@@ -257,6 +294,12 @@ catalogs_hotel_product_group_t *catalogs_hotel_product_group_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    created_at_local_var = malloc(sizeof(int));
+    if(!created_at_local_var)
+    {
+        goto end;
+    }
+    *created_at_local_var = created_at->valuedouble;
     }
 
     // catalogs_hotel_product_group->description
@@ -332,29 +375,68 @@ catalogs_hotel_product_group_t *catalogs_hotel_product_group_parseFromJSON(cJSON
     {
     goto end; //Numeric
     }
+    updated_at_local_var = malloc(sizeof(int));
+    if(!updated_at_local_var)
+    {
+        goto end;
+    }
+    *updated_at_local_var = updated_at->valuedouble;
     }
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     catalogs_hotel_product_group_local_var = catalogs_hotel_product_group_create_internal (
-        strdup(catalog_id->valuestring),
+        catalog_id_local_str,
         catalog_typeVariable,
-        created_at ? created_at->valuedouble : 0,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        created_at_local_var,
+        description_local_str,
         filters_local_nonprim,
-        strdup(id->valuestring),
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
+        id_local_str,
+        name_local_str,
         type_local_nonprim,
-        updated_at ? updated_at->valuedouble : 0
+        updated_at_local_var
         );
+
+    if (!catalogs_hotel_product_group_local_var) {
+        goto end;
+    }
 
     return catalogs_hotel_product_group_local_var;
 end:
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
+    }
+    if (created_at_local_var) {
+        free(created_at_local_var);
+        created_at_local_var = NULL;
+    }
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
     if (filters_local_nonprim) {
         catalogs_hotel_product_group_filters_free(filters_local_nonprim);
         filters_local_nonprim = NULL;
     }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
     if (type_local_nonprim) {
         type_local_nonprim = 0;
+    }
+    if (updated_at_local_var) {
+        free(updated_at_local_var);
+        updated_at_local_var = NULL;
     }
     return NULL;
 

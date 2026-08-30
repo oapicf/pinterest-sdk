@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.UserWebsiteSummary;
+import org.openapitools.model.UserWebsite;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -23,7 +23,7 @@ public class UserWebsitesGet200Response   {
   
   private String bookmark;
 
-  private List<@Valid UserWebsiteSummary> items = new ArrayList<>();
+  private List<@Valid UserWebsite> items = new ArrayList<>();
 
   /**
    **/
@@ -45,7 +45,7 @@ public class UserWebsitesGet200Response   {
 
   /**
    **/
-  public UserWebsitesGet200Response items(List<@Valid UserWebsiteSummary> items) {
+  public UserWebsitesGet200Response items(List<@Valid UserWebsite> items) {
     this.items = items;
     return this;
   }
@@ -54,14 +54,14 @@ public class UserWebsitesGet200Response   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   @NotNull
-  public List<@Valid UserWebsiteSummary> getItems() {
+  public List<@Valid UserWebsite> getItems() {
     return items;
   }
-  public void setItems(List<@Valid UserWebsiteSummary> items) {
+  public void setItems(List<@Valid UserWebsite> items) {
     this.items = items;
   }
 
-  public UserWebsitesGet200Response addItemsItem(UserWebsiteSummary itemsItem) {
+  public UserWebsitesGet200Response addItemsItem(UserWebsite itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -105,10 +105,7 @@ public class UserWebsitesGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

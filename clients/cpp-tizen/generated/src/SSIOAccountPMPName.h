@@ -1,7 +1,7 @@
 /*
  * SSIOAccountPMPName.h
  *
- * 
+ * Pinterest marketing partner name.
  */
 
 #ifndef _SSIOAccountPMPName_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief Pinterest marketing partner name.
  *
  *  \ingroup Models
  *

@@ -15,16 +15,18 @@ module AdvancedAuctionItemsSubmitUpsertRecord =
 
   [<CLIMutable>]
   type AdvancedAuctionItemsSubmitUpsertRecord = {
+    [<JsonProperty(PropertyName = "bid_options")>]
+    BidOptions : AdvancedAuctionBidOptions;
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
+    [<JsonProperty(PropertyName = "errors")>]
+    Errors : AdvancedAuctionOperationError[];
     [<JsonProperty(PropertyName = "item_id")>]
     ItemId : string;
     [<JsonProperty(PropertyName = "language")>]
     Language : Language;
-    [<JsonProperty(PropertyName = "bid_options")>]
-    BidOptions : AdvancedAuctionBidOptions;
-    [<JsonProperty(PropertyName = "errors")>]
-    Errors : AdvancedAuctionOperationError[];
+    [<JsonProperty(PropertyName = "operation")>]
+    Operation : string;
     [<JsonProperty(PropertyName = "update_mask")>]
     UpdateMask : UpdateMaskBidOptionField[];
   }

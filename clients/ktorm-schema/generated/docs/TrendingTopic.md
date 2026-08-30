@@ -6,12 +6,13 @@
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **description** | description | text NOT NULL |  | **kotlin.String** | Description of the trending topic | 
-**percentGrowthMom** | percent_growth_mom | int NOT NULL |  | **kotlin.Int** | Month-over-month growth percentage | 
+**id** | id | text NOT NULL PRIMARY KEY |  | **kotlin.String** | Unique identifier for the trending topic | 
 **pins** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;TrendingPin&gt;**](TrendingPin.md) | Array of pin images related to this trend (up to 6) | 
 **relatedInterests** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** | List of related interest categories | 
 **relatedSearches** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** | List of related search terms | 
 **timeSeries** | time_series | blob NOT NULL |  | [**kotlin.collections.Map&lt;kotlin.String, java.math.BigDecimal&gt;**](java.math.BigDecimal.md) | Time series data showing trend values over time, with dates as keys and values as numeric | 
 **title** | title | text NOT NULL |  | **kotlin.String** | Title of the trending topic | 
+**percentGrowthMom** | percent_growth_mom | int |  | **kotlin.Int** | Month-over-month growth percentage |  [optional]
 
 
 
@@ -46,6 +47,7 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 trendingTopic | trendingTopic | long | | kotlin.Long | Primary Key | *one*
 relatedSearches | relatedSearches | text | | kotlin.String | Foreign Key | *many*
+
 
 
 

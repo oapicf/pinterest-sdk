@@ -17,11 +17,12 @@ typedef struct bulk_upsert_request_update_t bulk_upsert_request_update_t;
 
 #include "ad_group_update_request.h"
 #include "ad_update_request.h"
+#include "bulk_upsert_request_update_catalog_product_groups_items.h"
 #include "campaign_update_request.h"
-#include "catalogs_product_groups_update_request.h"
-#include "keyword_update.h"
+#include "keyword_update_generated.h"
 #include "label_bulk_update_request.h"
 #include "product_group_promotion_update_request.h"
+#include "schedule_update_request.h"
 
 
 
@@ -33,6 +34,7 @@ typedef struct bulk_upsert_request_update_t {
     list_t *keywords; //nonprimitive container
     list_t *labels; //nonprimitive container
     list_t *product_groups; //nonprimitive container
+    list_t *schedules; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } bulk_upsert_request_update_t;
@@ -44,7 +46,8 @@ __attribute__((deprecated)) bulk_upsert_request_update_t *bulk_upsert_request_up
     list_t *catalog_product_groups,
     list_t *keywords,
     list_t *labels,
-    list_t *product_groups
+    list_t *product_groups,
+    list_t *schedules
 );
 
 void bulk_upsert_request_update_free(bulk_upsert_request_update_t *bulk_upsert_request_update);

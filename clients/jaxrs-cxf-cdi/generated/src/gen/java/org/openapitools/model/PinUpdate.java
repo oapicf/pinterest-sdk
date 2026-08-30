@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AiDisclosuresUpdate;
 import org.openapitools.model.CarouselSlot;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -23,6 +24,8 @@ import java.util.Objects;
 @ApiModel(description = "Resource create or update operation model.")
 public class PinUpdate   {
   
+  private AiDisclosuresUpdate aiDisclosures;
+
   private String altText;
 
   private String boardId;
@@ -36,6 +39,25 @@ public class PinUpdate   {
   private String link;
 
   private String title;
+
+  /**
+   * AI disclosure declarations the creator has made about this Pin.
+   **/
+  public PinUpdate aiDisclosures(AiDisclosuresUpdate aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "AI disclosure declarations the creator has made about this Pin.")
+  @JsonProperty("ai_disclosures")
+  public AiDisclosuresUpdate getAiDisclosures() {
+    return aiDisclosures;
+  }
+  public void setAiDisclosures(AiDisclosuresUpdate aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+  }
+
 
   /**
    **/
@@ -184,7 +206,8 @@ public class PinUpdate   {
       return false;
     }
     PinUpdate pinUpdate = (PinUpdate) o;
-    return Objects.equals(this.altText, pinUpdate.altText) &&
+    return Objects.equals(this.aiDisclosures, pinUpdate.aiDisclosures) &&
+        Objects.equals(this.altText, pinUpdate.altText) &&
         Objects.equals(this.boardId, pinUpdate.boardId) &&
         Objects.equals(this.boardSectionId, pinUpdate.boardSectionId) &&
         Objects.equals(this.carouselSlots, pinUpdate.carouselSlots) &&
@@ -195,7 +218,7 @@ public class PinUpdate   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(altText, boardId, boardSectionId, carouselSlots, description, link, title);
+    return Objects.hash(aiDisclosures, altText, boardId, boardSectionId, carouselSlots, description, link, title);
   }
 
   @Override
@@ -203,6 +226,7 @@ public class PinUpdate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinUpdate {\n");
     
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
@@ -219,10 +243,7 @@ public class PinUpdate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

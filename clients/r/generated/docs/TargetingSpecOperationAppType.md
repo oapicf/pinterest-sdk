@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **field** | **character** |  | [Enum: [APPTYPE]] 
-**operation** | **character** |  | [Enum: [SET, ADD, REMOVE]] 
+**operation** | [**TargetingSpecListOperation**](TargetingSpecListOperation.md) |  | [Enum: ] 
 **values** | [**array[TargetingSpecAppType]**](TargetingSpecAppType.md) |  | 
 
 

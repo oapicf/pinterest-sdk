@@ -5,30 +5,30 @@
 #include "Helpers.h"
 
 
-#include "TopPinsAnalyticsResponse_date_availability.h"
+#include "TopPinsAnalyticsResponseDateAvailability.h"
 
 using namespace std;
 using namespace Tizen::ArtikCloud;
 
-TopPinsAnalyticsResponse_date_availability::TopPinsAnalyticsResponse_date_availability()
+TopPinsAnalyticsResponseDateAvailability::TopPinsAnalyticsResponseDateAvailability()
 {
 	//__init();
 }
 
-TopPinsAnalyticsResponse_date_availability::~TopPinsAnalyticsResponse_date_availability()
+TopPinsAnalyticsResponseDateAvailability::~TopPinsAnalyticsResponseDateAvailability()
 {
 	//__cleanup();
 }
 
 void
-TopPinsAnalyticsResponse_date_availability::__init()
+TopPinsAnalyticsResponseDateAvailability::__init()
 {
 	//is_realtime = bool(false);
 	//latest_available_timestamp = double(0);
 }
 
 void
-TopPinsAnalyticsResponse_date_availability::__cleanup()
+TopPinsAnalyticsResponseDateAvailability::__cleanup()
 {
 	//if(is_realtime != NULL) {
 	//
@@ -44,7 +44,7 @@ TopPinsAnalyticsResponse_date_availability::__cleanup()
 }
 
 void
-TopPinsAnalyticsResponse_date_availability::fromJson(char* jsonStr)
+TopPinsAnalyticsResponseDateAvailability::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
@@ -75,13 +75,13 @@ TopPinsAnalyticsResponse_date_availability::fromJson(char* jsonStr)
 	}
 }
 
-TopPinsAnalyticsResponse_date_availability::TopPinsAnalyticsResponse_date_availability(char* json)
+TopPinsAnalyticsResponseDateAvailability::TopPinsAnalyticsResponseDateAvailability(char* json)
 {
 	this->fromJson(json);
 }
 
 char*
-TopPinsAnalyticsResponse_date_availability::toJson()
+TopPinsAnalyticsResponseDateAvailability::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
@@ -117,25 +117,25 @@ TopPinsAnalyticsResponse_date_availability::toJson()
 }
 
 bool
-TopPinsAnalyticsResponse_date_availability::getIsRealtime()
+TopPinsAnalyticsResponseDateAvailability::getIsRealtime()
 {
 	return is_realtime;
 }
 
 void
-TopPinsAnalyticsResponse_date_availability::setIsRealtime(bool  is_realtime)
+TopPinsAnalyticsResponseDateAvailability::setIsRealtime(bool  is_realtime)
 {
 	this->is_realtime = is_realtime;
 }
 
 long long
-TopPinsAnalyticsResponse_date_availability::getLatestAvailableTimestamp()
+TopPinsAnalyticsResponseDateAvailability::getLatestAvailableTimestamp()
 {
 	return latest_available_timestamp;
 }
 
 void
-TopPinsAnalyticsResponse_date_availability::setLatestAvailableTimestamp(long long  latest_available_timestamp)
+TopPinsAnalyticsResponseDateAvailability::setLatestAvailableTimestamp(long long  latest_available_timestamp)
 {
 	this->latest_available_timestamp = latest_available_timestamp;
 }

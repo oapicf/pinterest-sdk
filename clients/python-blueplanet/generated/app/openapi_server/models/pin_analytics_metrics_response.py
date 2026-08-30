@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.pin_analytics_metrics_response_daily_metrics_inner import PinAnalyticsMetricsResponseDailyMetricsInner  # noqa: F401,E501
+from app.openapi_server.models.pin_analytics_daily_metrics import PinAnalyticsDailyMetrics  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,18 +16,18 @@ class PinAnalyticsMetricsResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, daily_metrics: List[PinAnalyticsMetricsResponseDailyMetricsInner]=None, lifetime_metrics: Dict[str, int]=None, summary_metrics: Dict[str, float]=None):  # noqa: E501
+    def __init__(self, daily_metrics: List[PinAnalyticsDailyMetrics]=None, lifetime_metrics: Dict[str, int]=None, summary_metrics: Dict[str, float]=None):  # noqa: E501
         """PinAnalyticsMetricsResponse - a model defined in Swagger
 
         :param daily_metrics: The daily_metrics of this PinAnalyticsMetricsResponse.  # noqa: E501
-        :type daily_metrics: List[PinAnalyticsMetricsResponseDailyMetricsInner]
+        :type daily_metrics: List[PinAnalyticsDailyMetrics]
         :param lifetime_metrics: The lifetime_metrics of this PinAnalyticsMetricsResponse.  # noqa: E501
         :type lifetime_metrics: Dict[str, int]
         :param summary_metrics: The summary_metrics of this PinAnalyticsMetricsResponse.  # noqa: E501
         :type summary_metrics: Dict[str, float]
         """
         self.swagger_types = {
-            'daily_metrics': List[PinAnalyticsMetricsResponseDailyMetricsInner],
+            'daily_metrics': List[PinAnalyticsDailyMetrics],
             'lifetime_metrics': Dict[str, int],
             'summary_metrics': Dict[str, float]
         }
@@ -54,24 +54,24 @@ class PinAnalyticsMetricsResponse(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def daily_metrics(self) -> List[PinAnalyticsMetricsResponseDailyMetricsInner]:
+    def daily_metrics(self) -> List[PinAnalyticsDailyMetrics]:
         """Gets the daily_metrics of this PinAnalyticsMetricsResponse.
 
         Array with the requested daily metric records  # noqa: E501
 
         :return: The daily_metrics of this PinAnalyticsMetricsResponse.
-        :rtype: List[PinAnalyticsMetricsResponseDailyMetricsInner]
+        :rtype: List[PinAnalyticsDailyMetrics]
         """
         return self._daily_metrics
 
     @daily_metrics.setter
-    def daily_metrics(self, daily_metrics: List[PinAnalyticsMetricsResponseDailyMetricsInner]):
+    def daily_metrics(self, daily_metrics: List[PinAnalyticsDailyMetrics]):
         """Sets the daily_metrics of this PinAnalyticsMetricsResponse.
 
         Array with the requested daily metric records  # noqa: E501
 
         :param daily_metrics: The daily_metrics of this PinAnalyticsMetricsResponse.
-        :type daily_metrics: List[PinAnalyticsMetricsResponseDailyMetricsInner]
+        :type daily_metrics: List[PinAnalyticsDailyMetrics]
         """
 
         self._daily_metrics = daily_metrics

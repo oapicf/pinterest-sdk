@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FilterOperatorType** | **String** |  | [optional] [default to "IS"]
-**Negated** | **Boolean** |  | [optional] [default to $false]
+**FilterOperatorType** | [**FilterOperatorType**](FilterOperatorType.md) |  | [optional] 
+**Negated** | **Boolean** |  | [optional] 
 **Values** | **String[]** |  | 
 
 ## Examples

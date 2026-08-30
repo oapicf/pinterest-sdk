@@ -1,15 +1,15 @@
 #tag Class
 Protected Class AudienceSharingApi
 	#tag Method, Flags = &h0
-		Sub AdAccountsAudiencesSharedAccountsList(, adAccountId As String, audienceId As String, accountType As OpenAPIClient.Models.AudienceAccountType, Optional pageSize As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString)
+		Sub AdAccountsAudiencesSharedAccountsList(, audienceId As String, accountType As OpenAPIClient.Models.AudienceAccountType, adAccountId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation ad_accounts_audiences_shared_accounts/list
 		  // List accounts with access to an audience owned by an ad account
 		  // - 
-		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter audienceId: (query) Unique identifier of the audience to use to filter the results. 
 		  // - parameter accountType: (query) Filter accounts by account type. 
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes AudienceSharingApiCallbackHandler.AdAccountsAudiencesSharedAccountsListCallback(AdAccountsAudiencesSharedAccountsList200Response) on completion. 
 		  //
@@ -33,9 +33,9 @@ Protected Class AudienceSharingApi
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("account_type") + "=" + EncodeURLComponent(Xoson.toJSON(accountType))
 		  
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
-		  
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
 		  
@@ -150,15 +150,15 @@ Protected Class AudienceSharingApi
 
 
 	#tag Method, Flags = &h0
-		Sub BusinessAccountAudiencesSharedAccountsList(, businessId As String, audienceId As String, accountType As OpenAPIClient.Models.AudienceAccountType, Optional pageSize As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString)
+		Sub BusinessAccountAudiencesSharedAccountsList(, businessId As String, audienceId As String, accountType As OpenAPIClient.Models.AudienceAccountType, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation business_account_audiences_shared_accounts/list
 		  // List accounts with access to an audience owned by a business
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
 		  // - parameter audienceId: (query) Unique identifier of the audience to use to filter the results. 
 		  // - parameter accountType: (query) Filter accounts by account type. 
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes AudienceSharingApiCallbackHandler.BusinessAccountAudiencesSharedAccountsListCallback(AdAccountsAudiencesSharedAccountsList200Response) on completion. 
 		  //
@@ -179,9 +179,9 @@ Protected Class AudienceSharingApi
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("account_type") + "=" + EncodeURLComponent(Xoson.toJSON(accountType))
 		  
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
-		  
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
 		  
@@ -295,16 +295,16 @@ Protected Class AudienceSharingApi
 
 
 	#tag Method, Flags = &h0
-		Sub SharedAudiencesForBusinessList(, businessId As String, Optional bookmark As Xoson.O.OptionalString, order As OrderEnum_SharedAudiencesForBusinessList, Optional pageSize As Xoson.O.OptionalInteger)
+		Sub SharedAudiencesForBusinessList(, businessId As String, order As OpenAPIClient.Models.OrderOptional, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation shared_audiences_for_business/list
 		  // List received audiences for a business
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
+		  // - parameter order: (query) The order in which to sort the items returned: &quot;ASCENDING&quot; or &quot;DESCENDING&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Nil)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
-		  // Invokes AudienceSharingApiCallbackHandler.SharedAudiencesForBusinessListCallback(AudiencesList200Response) on completion. 
+		  // Invokes AudienceSharingApiCallbackHandler.SharedAudiencesForBusinessListCallback(SharedAudiencesForBusinessList200Response) on completion. 
 		  //
 		  // - GET /businesses/{business_id}/audiences
 		  // - Get a list of received audiences for the given business.
@@ -319,9 +319,9 @@ Protected Class AudienceSharingApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  If order <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("order") + "=" + EncodeURLComponent(Xoson.toJSON(order))
 		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("order") + "=" + EncodeURLComponent(OrderEnum_SharedAudiencesForBusinessListToString(order))
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
@@ -351,7 +351,7 @@ Protected Class AudienceSharingApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function SharedAudiencesForBusinessListPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AudiencesList200Response) As Boolean
+		Private Function SharedAudiencesForBusinessListPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.SharedAudiencesForBusinessList200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -359,7 +359,7 @@ Protected Class AudienceSharingApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.AudiencesList200Response
+			  outData = New OpenAPIClient.Models.SharedAudiencesForBusinessList200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -412,7 +412,7 @@ Protected Class AudienceSharingApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.AudiencesList200Response
+		  Dim data As OpenAPIClient.Models.SharedAudiencesForBusinessList200Response
 		  CallbackHandler.SharedAudiencesForBusinessListCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -426,7 +426,7 @@ Protected Class AudienceSharingApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.AudiencesList200Response
+		  Dim data As OpenAPIClient.Models.SharedAudiencesForBusinessList200Response
 		  Call SharedAudiencesForBusinessListPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.SharedAudiencesForBusinessListCallback(error, data)
@@ -435,32 +435,19 @@ Protected Class AudienceSharingApi
 
 
 
-	#tag Method, Flags = &h21
-		Private Function OrderEnum_SharedAudiencesForBusinessListToString(value As OrderEnum_SharedAudiencesForBusinessList) As String
-		  Select Case value
-		    
-		    Case OrderEnum_SharedAudiencesForBusinessList.Ascending
-		      Return "ASCENDING"
-		    Case OrderEnum_SharedAudiencesForBusinessList.Descending
-		      Return "DESCENDING"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub UpdateAdAccountToAdAccountSharedAudience(, adAccountId As String, sharedAudience As OpenAPIClient.Models.SharedAudience)
+		Sub UpdateAdAccountToAdAccountSharedAudience(, adAccountId As String, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody As OpenAPIClient.Models.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
 		  // Operation update_ad_account_to_ad_account_shared_audience
 		  // Update audience sharing between ad accounts
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter sharedAudience: (body)  
+		  // - parameter adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: (body)  
 		  //
-		  // Invokes AudienceSharingApiCallbackHandler.UpdateAdAccountToAdAccountSharedAudienceCallback(SharedAudienceResponse) on completion. 
+		  // Invokes AudienceSharingApiCallbackHandler.UpdateAdAccountToAdAccountSharedAudienceCallback(AdAccountToAdAccountSharedAudience) on completion. 
 		  //
 		  // - PATCH /ad_accounts/{ad_account_id}/audiences/ad_accounts/shared
-		  // - From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+		  // - From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -470,7 +457,7 @@ Protected Class AudienceSharingApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(sharedAudience), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(adAccountToAdAccountSharedAudienceUpdateWithRequiredBody), "application/json")
 		  
 		  
 		  
@@ -497,7 +484,7 @@ Protected Class AudienceSharingApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function UpdateAdAccountToAdAccountSharedAudiencePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.SharedAudienceResponse) As Boolean
+		Private Function UpdateAdAccountToAdAccountSharedAudiencePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AdAccountToAdAccountSharedAudience) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -505,7 +492,7 @@ Protected Class AudienceSharingApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.SharedAudienceResponse
+			  outData = New OpenAPIClient.Models.AdAccountToAdAccountSharedAudience
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -558,7 +545,7 @@ Protected Class AudienceSharingApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.SharedAudienceResponse
+		  Dim data As OpenAPIClient.Models.AdAccountToAdAccountSharedAudience
 		  CallbackHandler.UpdateAdAccountToAdAccountSharedAudienceCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -572,7 +559,7 @@ Protected Class AudienceSharingApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.SharedAudienceResponse
+		  Dim data As OpenAPIClient.Models.AdAccountToAdAccountSharedAudience
 		  Call UpdateAdAccountToAdAccountSharedAudiencePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.UpdateAdAccountToAdAccountSharedAudienceCallback(error, data)
@@ -583,17 +570,17 @@ Protected Class AudienceSharingApi
 
 
 	#tag Method, Flags = &h0
-		Sub UpdateAdAccountToBusinessSharedAudience(, adAccountId As String, businessSharedAudience As OpenAPIClient.Models.BusinessSharedAudience)
+		Sub UpdateAdAccountToBusinessSharedAudience(, adAccountId As String, adAccountToBusinessSharedAudienceUpdateWithRequiredBody As OpenAPIClient.Models.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody)
 		  // Operation update_ad_account_to_business_shared_audience
 		  // Update audience sharing from an ad account to businesses
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter businessSharedAudience: (body)  
+		  // - parameter adAccountToBusinessSharedAudienceUpdateWithRequiredBody: (body)  
 		  //
-		  // Invokes AudienceSharingApiCallbackHandler.UpdateAdAccountToBusinessSharedAudienceCallback(BusinessSharedAudienceResponse) on completion. 
+		  // Invokes AudienceSharingApiCallbackHandler.UpdateAdAccountToBusinessSharedAudienceCallback(AdAccountToBusinessSharedAudience) on completion. 
 		  //
 		  // - PATCH /ad_accounts/{ad_account_id}/audiences/businesses/shared
-		  // - From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+		  // - From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -603,7 +590,7 @@ Protected Class AudienceSharingApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(businessSharedAudience), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(adAccountToBusinessSharedAudienceUpdateWithRequiredBody), "application/json")
 		  
 		  
 		  
@@ -630,7 +617,7 @@ Protected Class AudienceSharingApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function UpdateAdAccountToBusinessSharedAudiencePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BusinessSharedAudienceResponse) As Boolean
+		Private Function UpdateAdAccountToBusinessSharedAudiencePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AdAccountToBusinessSharedAudience) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -638,7 +625,7 @@ Protected Class AudienceSharingApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.BusinessSharedAudienceResponse
+			  outData = New OpenAPIClient.Models.AdAccountToBusinessSharedAudience
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -691,7 +678,7 @@ Protected Class AudienceSharingApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.BusinessSharedAudienceResponse
+		  Dim data As OpenAPIClient.Models.AdAccountToBusinessSharedAudience
 		  CallbackHandler.UpdateAdAccountToBusinessSharedAudienceCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -705,7 +692,7 @@ Protected Class AudienceSharingApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.BusinessSharedAudienceResponse
+		  Dim data As OpenAPIClient.Models.AdAccountToBusinessSharedAudience
 		  Call UpdateAdAccountToBusinessSharedAudiencePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.UpdateAdAccountToBusinessSharedAudienceCallback(error, data)
@@ -716,17 +703,17 @@ Protected Class AudienceSharingApi
 
 
 	#tag Method, Flags = &h0
-		Sub UpdateBusinessToAdAccountSharedAudience(, businessId As String, sharedAudience As OpenAPIClient.Models.SharedAudience)
+		Sub UpdateBusinessToAdAccountSharedAudience(, businessId As String, businessToAdAccountSharedAudienceUpdateWithRequiredBody As OpenAPIClient.Models.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody)
 		  // Operation update_business_to_ad_account_shared_audience
 		  // Update audience sharing from a business to ad accounts
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
-		  // - parameter sharedAudience: (body)  
+		  // - parameter businessToAdAccountSharedAudienceUpdateWithRequiredBody: (body)  
 		  //
-		  // Invokes AudienceSharingApiCallbackHandler.UpdateBusinessToAdAccountSharedAudienceCallback(SharedAudienceResponse) on completion. 
+		  // Invokes AudienceSharingApiCallbackHandler.UpdateBusinessToAdAccountSharedAudienceCallback(BusinessToAdAccountSharedAudience) on completion. 
 		  //
 		  // - PATCH /businesses/{business_id}/audiences/ad_accounts/shared
-		  // - From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+		  // - From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -736,7 +723,7 @@ Protected Class AudienceSharingApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(sharedAudience), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(businessToAdAccountSharedAudienceUpdateWithRequiredBody), "application/json")
 		  
 		  
 		  
@@ -763,7 +750,7 @@ Protected Class AudienceSharingApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function UpdateBusinessToAdAccountSharedAudiencePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.SharedAudienceResponse) As Boolean
+		Private Function UpdateBusinessToAdAccountSharedAudiencePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BusinessToAdAccountSharedAudience) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -771,7 +758,7 @@ Protected Class AudienceSharingApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.SharedAudienceResponse
+			  outData = New OpenAPIClient.Models.BusinessToAdAccountSharedAudience
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -824,7 +811,7 @@ Protected Class AudienceSharingApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.SharedAudienceResponse
+		  Dim data As OpenAPIClient.Models.BusinessToAdAccountSharedAudience
 		  CallbackHandler.UpdateBusinessToAdAccountSharedAudienceCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -838,7 +825,7 @@ Protected Class AudienceSharingApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.SharedAudienceResponse
+		  Dim data As OpenAPIClient.Models.BusinessToAdAccountSharedAudience
 		  Call UpdateBusinessToAdAccountSharedAudiencePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.UpdateBusinessToAdAccountSharedAudienceCallback(error, data)
@@ -849,17 +836,17 @@ Protected Class AudienceSharingApi
 
 
 	#tag Method, Flags = &h0
-		Sub UpdateBusinessToBusinessSharedAudience(, businessId As String, businessSharedAudience As OpenAPIClient.Models.BusinessSharedAudience)
+		Sub UpdateBusinessToBusinessSharedAudience(, businessId As String, businessToBusinessSharedAudienceUpdateWithRequiredBody As OpenAPIClient.Models.BusinessToBusinessSharedAudienceUpdateWithRequiredBody)
 		  // Operation update_business_to_business_shared_audience
 		  // Update audience sharing between businesses
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
-		  // - parameter businessSharedAudience: (body)  
+		  // - parameter businessToBusinessSharedAudienceUpdateWithRequiredBody: (body)  
 		  //
-		  // Invokes AudienceSharingApiCallbackHandler.UpdateBusinessToBusinessSharedAudienceCallback(BusinessSharedAudienceResponse) on completion. 
+		  // Invokes AudienceSharingApiCallbackHandler.UpdateBusinessToBusinessSharedAudienceCallback(BusinessToBusinessSharedAudience) on completion. 
 		  //
 		  // - PATCH /businesses/{business_id}/audiences/businesses/shared
-		  // - From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+		  // - From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -869,7 +856,7 @@ Protected Class AudienceSharingApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(businessSharedAudience), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(businessToBusinessSharedAudienceUpdateWithRequiredBody), "application/json")
 		  
 		  
 		  
@@ -896,7 +883,7 @@ Protected Class AudienceSharingApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function UpdateBusinessToBusinessSharedAudiencePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BusinessSharedAudienceResponse) As Boolean
+		Private Function UpdateBusinessToBusinessSharedAudiencePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BusinessToBusinessSharedAudience) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -904,7 +891,7 @@ Protected Class AudienceSharingApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.BusinessSharedAudienceResponse
+			  outData = New OpenAPIClient.Models.BusinessToBusinessSharedAudience
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -957,7 +944,7 @@ Protected Class AudienceSharingApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.BusinessSharedAudienceResponse
+		  Dim data As OpenAPIClient.Models.BusinessToBusinessSharedAudience
 		  CallbackHandler.UpdateBusinessToBusinessSharedAudienceCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -971,7 +958,7 @@ Protected Class AudienceSharingApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.BusinessSharedAudienceResponse
+		  Dim data As OpenAPIClient.Models.BusinessToBusinessSharedAudience
 		  Call UpdateBusinessToBusinessSharedAudiencePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.UpdateBusinessToBusinessSharedAudienceCallback(error, data)
@@ -1056,13 +1043,6 @@ Protected Class AudienceSharingApi
 	#tag Property, Flags = &h0
 		UseHTTPS As Boolean = true
 	#tag EndProperty
-
-	#tag Enum, Name = OrderEnum_SharedAudiencesForBusinessList, Type = Integer, Flags = &h0
-		
-        Ascending
-        Descending
-		
-	#tag EndEnum
 
 
 	#tag ViewBehavior

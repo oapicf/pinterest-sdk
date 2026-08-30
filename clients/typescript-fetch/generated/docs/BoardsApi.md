@@ -20,7 +20,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## boardSectionsCreate
 
-> BoardSection boardSectionsCreate(boardId, boardSection, adAccountId)
+> BoardSection boardSectionsCreate(boardId, boardSectionCreate, adAccountId)
 
 Create board section
 
@@ -46,8 +46,8 @@ async function example() {
   const body = {
     // string | Unique identifier of a board.
     boardId: boardId_example,
-    // BoardSection | Create a board section.
-    boardSection: ...,
+    // BoardSectionCreate
+    boardSectionCreate: ...,
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
   } satisfies BoardSectionsCreateRequest;
@@ -70,7 +70,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **boardId** | `string` | Unique identifier of a board. | [Defaults to `undefined`] |
-| **boardSection** | [BoardSection](BoardSection.md) | Create a board section. | |
+| **boardSectionCreate** | [BoardSectionCreate](BoardSectionCreate.md) |  | |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
@@ -90,19 +90,21 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | response |  -  |
-| **400** | Invalid board section parameters. |  -  |
-| **403** | Not authorized to create board sections. |  -  |
-| **409** | Could not get exclusive access to the board to create a new section. |  -  |
-| **500** | Could not create a new board section. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## boardSectionsDelete
 
-> boardSectionsDelete(boardId, sectionId, adAccountId)
+> BoardSection boardSectionsDelete(boardId, sectionId, adAccountId)
 
 Delete board section
 
@@ -157,7 +159,7 @@ example().catch(console.error);
 
 ### Return type
 
-`void` (Empty response body)
+[**BoardSection**](BoardSection.md)
 
 ### Authorization
 
@@ -172,11 +174,14 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Board section deleted successfully |  -  |
-| **403** | Not authorized to delete board section. |  -  |
-| **404** | Board section not found. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -215,7 +220,7 @@ async function example() {
     adAccountId: adAccountId_example,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
   } satisfies BoardSectionsListRequest;
 
@@ -239,7 +244,7 @@ example().catch(console.error);
 | **boardId** | `string` | Unique identifier of a board. | [Defaults to `undefined`] |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -258,8 +263,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -300,7 +310,7 @@ async function example() {
     adAccountId: adAccountId_example,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
   } satisfies BoardSectionsListPinsRequest;
 
@@ -325,7 +335,7 @@ example().catch(console.error);
 | **sectionId** | `string` | Unique identifier of a board section. | [Defaults to `undefined`] |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -344,18 +354,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **403** | Not authorized to access Pins on board section. |  -  |
-| **404** | Board or section not found. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## boardSectionsUpdate
 
-> BoardSection boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId)
+> BoardSection boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId)
 
 Update board section
 
@@ -383,8 +395,8 @@ async function example() {
     boardId: boardId_example,
     // string | Unique identifier of a board section.
     sectionId: sectionId_example,
-    // BoardSection | Update a board section.
-    boardSection: ...,
+    // BoardSectionUpdateWithRequiredBody
+    boardSectionUpdateWithRequiredBody: ...,
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
   } satisfies BoardSectionsUpdateRequest;
@@ -408,7 +420,7 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **boardId** | `string` | Unique identifier of a board. | [Defaults to `undefined`] |
 | **sectionId** | `string` | Unique identifier of a board section. | [Defaults to `undefined`] |
-| **boardSection** | [BoardSection](BoardSection.md) | Update a board section. | |
+| **boardSectionUpdateWithRequiredBody** | [BoardSectionUpdateWithRequiredBody](BoardSectionUpdateWithRequiredBody.md) |  | |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
@@ -428,11 +440,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **400** | Invalid board section parameters. |  -  |
-| **403** | Not authorized to update board section. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -522,7 +536,7 @@ example().catch(console.error);
 
 ## boardsDelete
 
-> boardsDelete(boardId, adAccountId)
+> Board boardsDelete(boardId, adAccountId)
 
 Delete board
 
@@ -574,7 +588,7 @@ example().catch(console.error);
 
 ### Return type
 
-`void` (Empty response body)
+[**Board**](Board.md)
 
 ### Authorization
 
@@ -589,6 +603,7 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
 | **204** | Resource deleted successfully. |  -  |
 | **400** | The request could not be understood by the server due to unexpected data. |  -  |
 | **401** | Authentication is required and has either failed or not been provided. |  -  |
@@ -772,7 +787,7 @@ example().catch(console.error);
 
 ## boardsListPins
 
-> BoardsListPins200Response boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics)
+> BoardsListPins200Response boardsListPins(boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize)
 
 List Pins on board
 
@@ -800,16 +815,16 @@ async function example() {
   const body = {
     // string | Unique identifier of a board.
     boardId: boardId_example,
-    // string | Cursor used to fetch the next page of items (optional)
-    bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
-    pageSize: 56,
     // Array<CreativeType> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
     creativeTypes: ...,
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
     // boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional)
     pinMetrics: true,
+    // string | Cursor used to fetch the next page of items (optional)
+    bookmark: bookmark_example,
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+    pageSize: 56,
   } satisfies BoardsListPinsRequest;
 
   try {
@@ -830,11 +845,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **boardId** | `string` | Unique identifier of a board. | [Defaults to `undefined`] |
-| **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
 | **creativeTypes** | `Array<CreativeType>` | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [Optional] |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
 | **pinMetrics** | `boolean` | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [Optional] [Defaults to `false`] |
+| **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -853,9 +868,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **404** | Board not found. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

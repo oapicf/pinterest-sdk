@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **character** |  | [optional] 
-**items** | [**array[BoardSection]**](BoardSection.md) | Board sections | 
+**items** | [**array[BoardSection]**](BoardSection.md) |  | 
 
 

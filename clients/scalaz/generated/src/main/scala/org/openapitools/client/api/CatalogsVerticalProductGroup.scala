@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import CatalogsVerticalProductGroup._
 
 case class CatalogsVerticalProductGroup (
-  /* Catalog id pertaining to the creative assets product group. */
+  /* Catalog ID pertaining to the product group. */
   catalogId: String,
 catalogType: CatalogType,
 country: Option[String],
@@ -22,12 +22,12 @@ description: Option[String],
 /* id of the catalogs feed belonging to this catalog product group */
   feedId: String,
 filters: CatalogsCreativeAssetsProductGroupFilters,
-/* ID of the creative assets product group. */
+/* ID of the catalog product group. */
   id: String,
 /* boolean indicator of whether the product group is being featured or not */
   isFeatured: Option[Boolean],
 locale: Option[String],
-/* Name of creative assets product group */
+/* Name of catalog product group */
   name: Option[String],
 status: Option[CatalogsProductGroupStatus],
 `type`: CatalogsHotelProductGroupType,

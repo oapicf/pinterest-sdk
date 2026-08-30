@@ -1,7 +1,7 @@
 /*
  * catalogs_hotel_product_group_type.h
  *
- * &lt;p&gt;Catalog hotel product group type&lt;/p&gt; &lt;p&gt;MERCHANT_CREATED: Product groups created by merchants. &lt;br&gt;ALL_LISTINGS: Includes every hotel item in your catalog.
+ * Catalog hotel product group type
  */
 
 #ifndef _catalogs_hotel_product_group_type_H_

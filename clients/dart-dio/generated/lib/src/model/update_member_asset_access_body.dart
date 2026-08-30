@@ -4,20 +4,21 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/update_member_asset_access_body_accesses_inner.dart';
+import 'package:openapi/src/model/update_member_asset_access_item.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'update_member_asset_access_body.g.dart';
 
-/// An object with a list of all the new accesses.
+/// An object with a list of all the new member asset accesses.
 ///
 /// Properties:
-/// * [accesses] 
+/// * [accesses] - List of member asset accesses to assign or update.
 @BuiltValue()
 abstract class UpdateMemberAssetAccessBody implements Built<UpdateMemberAssetAccessBody, UpdateMemberAssetAccessBodyBuilder> {
+  /// List of member asset accesses to assign or update.
   @BuiltValueField(wireName: r'accesses')
-  BuiltList<UpdateMemberAssetAccessBodyAccessesInner> get accesses;
+  BuiltList<UpdateMemberAssetAccessItem> get accesses;
 
   UpdateMemberAssetAccessBody._();
 
@@ -45,7 +46,7 @@ class _$UpdateMemberAssetAccessBodySerializer implements PrimitiveSerializer<Upd
     yield r'accesses';
     yield serializers.serialize(
       object.accesses,
-      specifiedType: const FullType(BuiltList, [FullType(UpdateMemberAssetAccessBodyAccessesInner)]),
+      specifiedType: const FullType(BuiltList, [FullType(UpdateMemberAssetAccessItem)]),
     );
   }
 
@@ -73,8 +74,8 @@ class _$UpdateMemberAssetAccessBodySerializer implements PrimitiveSerializer<Upd
         case r'accesses':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(UpdateMemberAssetAccessBodyAccessesInner)]),
-          ) as BuiltList<UpdateMemberAssetAccessBodyAccessesInner>;
+            specifiedType: const FullType(BuiltList, [FullType(UpdateMemberAssetAccessItem)]),
+          ) as BuiltList<UpdateMemberAssetAccessItem>;
           result.accesses.replace(valueDes);
           break;
         default:

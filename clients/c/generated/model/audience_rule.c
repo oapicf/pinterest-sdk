@@ -5,13 +5,13 @@
 
 
 char* audience_rule_objective_type_ToString(pinterest_rest_api_audience_rule__e objective_type) {
-    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "WEB_CONVERSION", "CATALOG_SALES", "VIDEO_COMPLETION" };
+    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "WEB_CONVERSION", "CATALOG_SALES", "VIDEO_COMPLETION", "SALES", "APP_INSTALL", "CTV_CONSIDERATION" };
     return objective_typeArray[objective_type - 1];
 }
 
 pinterest_rest_api_audience_rule__e audience_rule_objective_type_FromString(char* objective_type) {
     int stringToReturn = 0;
-    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "WEB_CONVERSION", "CATALOG_SALES", "VIDEO_COMPLETION" };
+    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "WEB_CONVERSION", "CATALOG_SALES", "VIDEO_COMPLETION", "SALES", "APP_INSTALL", "CTV_CONSIDERATION" };
     size_t sizeofArray = sizeof(objective_typeArray) / sizeof(objective_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(objective_type, objective_typeArray[stringToReturn]) == 0) {
@@ -30,16 +30,16 @@ static audience_rule_t *audience_rule_create_internal(
     char *customer_list_id,
     list_t *engagement_domain,
     char *engagement_type,
-    int engager_type,
+    int *engager_type,
     char *event,
     event_data_t *event_data,
     object_t *event_source,
     object_t *ingestion_source,
     list_t *objective_type,
-    int percentage,
+    int *percentage,
     list_t *pin_id,
-    int prefill,
-    int retention_days,
+    int *prefill,
+    int *retention_days,
     list_t *seed_id,
     list_t *url,
     char *visitor_source_id
@@ -48,6 +48,8 @@ static audience_rule_t *audience_rule_create_internal(
     if (!audience_rule_local_var) {
         return NULL;
     }
+    memset(audience_rule_local_var, 0, sizeof(audience_rule_t));
+    audience_rule_local_var->_library_owned = 1;
     audience_rule_local_var->ad_account_id = ad_account_id;
     audience_rule_local_var->ad_id = ad_id;
     audience_rule_local_var->campaign_id = campaign_id;
@@ -68,8 +70,6 @@ static audience_rule_t *audience_rule_create_internal(
     audience_rule_local_var->seed_id = seed_id;
     audience_rule_local_var->url = url;
     audience_rule_local_var->visitor_source_id = visitor_source_id;
-
-    audience_rule_local_var->_library_owned = 1;
     return audience_rule_local_var;
 }
 
@@ -81,21 +81,41 @@ __attribute__((deprecated)) audience_rule_t *audience_rule_create(
     char *customer_list_id,
     list_t *engagement_domain,
     char *engagement_type,
-    int engager_type,
+    int *engager_type,
     char *event,
     event_data_t *event_data,
     object_t *event_source,
     object_t *ingestion_source,
     list_t *objective_type,
-    int percentage,
+    int *percentage,
     list_t *pin_id,
-    int prefill,
-    int retention_days,
+    int *prefill,
+    int *retention_days,
     list_t *seed_id,
     list_t *url,
     char *visitor_source_id
     ) {
-    return audience_rule_create_internal (
+    int *engager_type_copy = NULL;
+    if (engager_type) {
+        engager_type_copy = malloc(sizeof(int));
+        if (engager_type_copy) *engager_type_copy = *engager_type;
+    }
+    int *percentage_copy = NULL;
+    if (percentage) {
+        percentage_copy = malloc(sizeof(int));
+        if (percentage_copy) *percentage_copy = *percentage;
+    }
+    int *prefill_copy = NULL;
+    if (prefill) {
+        prefill_copy = malloc(sizeof(int));
+        if (prefill_copy) *prefill_copy = *prefill;
+    }
+    int *retention_days_copy = NULL;
+    if (retention_days) {
+        retention_days_copy = malloc(sizeof(int));
+        if (retention_days_copy) *retention_days_copy = *retention_days;
+    }
+    audience_rule_t *result = audience_rule_create_internal (
         ad_account_id,
         ad_id,
         campaign_id,
@@ -103,20 +123,27 @@ __attribute__((deprecated)) audience_rule_t *audience_rule_create(
         customer_list_id,
         engagement_domain,
         engagement_type,
-        engager_type,
+        engager_type_copy,
         event,
         event_data,
         event_source,
         ingestion_source,
         objective_type,
-        percentage,
+        percentage_copy,
         pin_id,
-        prefill,
-        retention_days,
+        prefill_copy,
+        retention_days_copy,
         seed_id,
         url,
         visitor_source_id
         );
+    if (!result) {
+        free(engager_type_copy);
+        free(percentage_copy);
+        free(prefill_copy);
+        free(retention_days_copy);
+    }
+    return result;
 }
 
 void audience_rule_free(audience_rule_t *audience_rule) {
@@ -165,6 +192,10 @@ void audience_rule_free(audience_rule_t *audience_rule) {
         free(audience_rule->engagement_type);
         audience_rule->engagement_type = NULL;
     }
+    if (audience_rule->engager_type) {
+        free(audience_rule->engager_type);
+        audience_rule->engager_type = NULL;
+    }
     if (audience_rule->event) {
         free(audience_rule->event);
         audience_rule->event = NULL;
@@ -188,12 +219,24 @@ void audience_rule_free(audience_rule_t *audience_rule) {
         list_freeList(audience_rule->objective_type);
         audience_rule->objective_type = NULL;
     }
+    if (audience_rule->percentage) {
+        free(audience_rule->percentage);
+        audience_rule->percentage = NULL;
+    }
     if (audience_rule->pin_id) {
         list_ForEach(listEntry, audience_rule->pin_id) {
             free(listEntry->data);
         }
         list_freeList(audience_rule->pin_id);
         audience_rule->pin_id = NULL;
+    }
+    if (audience_rule->prefill) {
+        free(audience_rule->prefill);
+        audience_rule->prefill = NULL;
+    }
+    if (audience_rule->retention_days) {
+        free(audience_rule->retention_days);
+        audience_rule->retention_days = NULL;
     }
     if (audience_rule->seed_id) {
         list_ForEach(listEntry, audience_rule->seed_id) {
@@ -304,7 +347,7 @@ cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
 
     // audience_rule->engager_type
     if(audience_rule->engager_type) {
-    if(cJSON_AddNumberToObject(item, "engager_type", audience_rule->engager_type) == NULL) {
+    if(cJSON_AddNumberToObject(item, "engager_type", *audience_rule->engager_type) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -379,7 +422,7 @@ cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
 
     // audience_rule->percentage
     if(audience_rule->percentage) {
-    if(cJSON_AddNumberToObject(item, "percentage", audience_rule->percentage) == NULL) {
+    if(cJSON_AddNumberToObject(item, "percentage", *audience_rule->percentage) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -404,7 +447,7 @@ cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
 
     // audience_rule->prefill
     if(audience_rule->prefill) {
-    if(cJSON_AddBoolToObject(item, "prefill", audience_rule->prefill) == NULL) {
+    if(cJSON_AddBoolToObject(item, "prefill", *audience_rule->prefill) == NULL) {
     goto fail; //Bool
     }
     }
@@ -412,7 +455,7 @@ cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
 
     // audience_rule->retention_days
     if(audience_rule->retention_days) {
-    if(cJSON_AddNumberToObject(item, "retention_days", audience_rule->retention_days) == NULL) {
+    if(cJSON_AddNumberToObject(item, "retention_days", *audience_rule->retention_days) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -471,14 +514,27 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     audience_rule_t *audience_rule_local_var = NULL;
 
+    char *ad_account_id_local_str = NULL;
+
     // define the local list for audience_rule->ad_id
     list_t *ad_idList = NULL;
 
     // define the local list for audience_rule->campaign_id
     list_t *campaign_idList = NULL;
 
+    char *country_local_str = NULL;
+
+    char *customer_list_id_local_str = NULL;
+
     // define the local list for audience_rule->engagement_domain
     list_t *engagement_domainList = NULL;
+
+    char *engagement_type_local_str = NULL;
+
+    // define the local variable for audience_rule->engager_type
+    int *engager_type_local_var = NULL;
+
+    char *event_local_str = NULL;
 
     // define the local variable for audience_rule->event_data
     event_data_t *event_data_local_nonprim = NULL;
@@ -486,14 +542,25 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
     // define the local list for audience_rule->objective_type
     list_t *objective_typeList = NULL;
 
+    // define the local variable for audience_rule->percentage
+    int *percentage_local_var = NULL;
+
     // define the local list for audience_rule->pin_id
     list_t *pin_idList = NULL;
+
+    // define the local variable for audience_rule->prefill
+    int *prefill_local_var = NULL;
+
+    // define the local variable for audience_rule->retention_days
+    int *retention_days_local_var = NULL;
 
     // define the local list for audience_rule->seed_id
     list_t *seed_idList = NULL;
 
     // define the local list for audience_rule->url
     list_t *urlList = NULL;
+
+    char *visitor_source_id_local_str = NULL;
 
     // audience_rule->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "ad_account_id");
@@ -619,6 +686,12 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
     {
     goto end; //Numeric
     }
+    engager_type_local_var = malloc(sizeof(int));
+    if(!engager_type_local_var)
+    {
+        goto end;
+    }
+    *engager_type_local_var = engager_type->valuedouble;
     }
 
     // audience_rule->event
@@ -696,6 +769,12 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
     {
     goto end; //Numeric
     }
+    percentage_local_var = malloc(sizeof(int));
+    if(!percentage_local_var)
+    {
+        goto end;
+    }
+    *percentage_local_var = percentage->valuedouble;
     }
 
     // audience_rule->pin_id
@@ -730,6 +809,12 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
     {
     goto end; //Bool
     }
+    prefill_local_var = malloc(sizeof(int));
+    if(!prefill_local_var)
+    {
+        goto end;
+    }
+    *prefill_local_var = prefill->valueint;
     }
 
     // audience_rule->retention_days
@@ -742,6 +827,12 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
     {
     goto end; //Numeric
     }
+    retention_days_local_var = malloc(sizeof(int));
+    if(!retention_days_local_var)
+    {
+        goto end;
+    }
+    *retention_days_local_var = retention_days->valuedouble;
     }
 
     // audience_rule->seed_id
@@ -801,31 +892,46 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
     }
 
 
+    if (ad_account_id && !cJSON_IsNull(ad_account_id)) ad_account_id_local_str = strdup(ad_account_id->valuestring);
+    if (country && !cJSON_IsNull(country)) country_local_str = strdup(country->valuestring);
+    if (customer_list_id && !cJSON_IsNull(customer_list_id)) customer_list_id_local_str = strdup(customer_list_id->valuestring);
+    if (engagement_type && !cJSON_IsNull(engagement_type)) engagement_type_local_str = strdup(engagement_type->valuestring);
+    if (event && !cJSON_IsNull(event)) event_local_str = strdup(event->valuestring);
+    if (visitor_source_id && !cJSON_IsNull(visitor_source_id)) visitor_source_id_local_str = strdup(visitor_source_id->valuestring);
+
     audience_rule_local_var = audience_rule_create_internal (
-        ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
+        ad_account_id_local_str,
         ad_id ? ad_idList : NULL,
         campaign_id ? campaign_idList : NULL,
-        country && !cJSON_IsNull(country) ? strdup(country->valuestring) : NULL,
-        customer_list_id && !cJSON_IsNull(customer_list_id) ? strdup(customer_list_id->valuestring) : NULL,
+        country_local_str,
+        customer_list_id_local_str,
         engagement_domain ? engagement_domainList : NULL,
-        engagement_type && !cJSON_IsNull(engagement_type) ? strdup(engagement_type->valuestring) : NULL,
-        engager_type ? engager_type->valuedouble : 0,
-        event && !cJSON_IsNull(event) ? strdup(event->valuestring) : NULL,
+        engagement_type_local_str,
+        engager_type_local_var,
+        event_local_str,
         event_data ? event_data_local_nonprim : NULL,
         event_source ? event_source_local_object : NULL,
         ingestion_source ? ingestion_source_local_object : NULL,
         objective_type ? objective_typeList : NULL,
-        percentage ? percentage->valuedouble : 0,
+        percentage_local_var,
         pin_id ? pin_idList : NULL,
-        prefill ? prefill->valueint : 0,
-        retention_days ? retention_days->valuedouble : 0,
+        prefill_local_var,
+        retention_days_local_var,
         seed_id ? seed_idList : NULL,
         url ? urlList : NULL,
-        visitor_source_id && !cJSON_IsNull(visitor_source_id) ? strdup(visitor_source_id->valuestring) : NULL
+        visitor_source_id_local_str
         );
+
+    if (!audience_rule_local_var) {
+        goto end;
+    }
 
     return audience_rule_local_var;
 end:
+    if (ad_account_id_local_str) {
+        free(ad_account_id_local_str);
+        ad_account_id_local_str = NULL;
+    }
     if (ad_idList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, ad_idList) {
@@ -844,6 +950,14 @@ end:
         list_freeList(campaign_idList);
         campaign_idList = NULL;
     }
+    if (country_local_str) {
+        free(country_local_str);
+        country_local_str = NULL;
+    }
+    if (customer_list_id_local_str) {
+        free(customer_list_id_local_str);
+        customer_list_id_local_str = NULL;
+    }
     if (engagement_domainList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, engagement_domainList) {
@@ -852,6 +966,18 @@ end:
         }
         list_freeList(engagement_domainList);
         engagement_domainList = NULL;
+    }
+    if (engagement_type_local_str) {
+        free(engagement_type_local_str);
+        engagement_type_local_str = NULL;
+    }
+    if (engager_type_local_var) {
+        free(engager_type_local_var);
+        engager_type_local_var = NULL;
+    }
+    if (event_local_str) {
+        free(event_local_str);
+        event_local_str = NULL;
     }
     if (event_data_local_nonprim) {
         event_data_free(event_data_local_nonprim);
@@ -866,6 +992,10 @@ end:
         list_freeList(objective_typeList);
         objective_typeList = NULL;
     }
+    if (percentage_local_var) {
+        free(percentage_local_var);
+        percentage_local_var = NULL;
+    }
     if (pin_idList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, pin_idList) {
@@ -874,6 +1004,14 @@ end:
         }
         list_freeList(pin_idList);
         pin_idList = NULL;
+    }
+    if (prefill_local_var) {
+        free(prefill_local_var);
+        prefill_local_var = NULL;
+    }
+    if (retention_days_local_var) {
+        free(retention_days_local_var);
+        retention_days_local_var = NULL;
     }
     if (seed_idList) {
         listEntry_t *listEntry = NULL;
@@ -892,6 +1030,10 @@ end:
         }
         list_freeList(urlList);
         urlList = NULL;
+    }
+    if (visitor_source_id_local_str) {
+        free(visitor_source_id_local_str);
+        visitor_source_id_local_str = NULL;
     }
     return NULL;
 

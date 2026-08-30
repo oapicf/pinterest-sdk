@@ -1,0 +1,28 @@
+## SchedulesApi
+
+### Create schedules
+## Create schedules
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/schedules
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Get Schedules
+## Get Schedules
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/schedules?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}&scheduleStatuses={{scheduleStatuses}}&scheduleType={{scheduleType}}&entityIds={{entityIds}}
+Accept: application/json
+
+### Update schedules
+## Update schedules
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/schedules
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+

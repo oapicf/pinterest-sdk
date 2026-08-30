@@ -7,10 +7,8 @@
 Name | Type
 ------------ | -------------
 `id` | string
-`labelType` | [LabelType](LabelType.md)
-`parentId` | string
-`parentType` | string
-`status` | [LabelStatus](LabelStatus.md)
+`labelType` | [NullableLabelType](NullableLabelType.md)
+`status` | [NullableLabelStatus](NullableLabelStatus.md)
 `value` | string
 
 ## Example
@@ -22,8 +20,6 @@ import type { Label } from ''
 const example = {
   "id": 1106385754497,
   "labelType": null,
-  "parentId": 626753052072,
-  "parentType": CAMPAIGN,
   "status": null,
   "value": null,
 } satisfies Label

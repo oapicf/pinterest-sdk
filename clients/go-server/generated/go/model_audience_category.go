@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -35,7 +35,8 @@ type AudienceCategory struct {
 	Subcategories []AudienceSubcategory `json:"subcategories,omitempty"`
 }
 
-// AssertAudienceCategoryRequired checks if the required fields are not zero-ed
+// AssertAudienceCategoryRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAudienceCategoryRequired(obj AudienceCategory) error {
 	for _, el := range obj.Subcategories {
 		if err := AssertAudienceSubcategoryRequired(el); err != nil {

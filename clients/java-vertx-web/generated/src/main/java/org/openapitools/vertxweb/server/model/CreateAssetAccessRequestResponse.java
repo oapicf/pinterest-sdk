@@ -8,30 +8,29 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.CreateAssetAccessRequestErrorMessageInner;
+import org.openapitools.vertxweb.server.model.AssetAccessRequestError;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateAssetAccessRequestResponse   {
   
-  private List<CreateAssetAccessRequestErrorMessageInner> exceptions;
-  private Map<String, String> invites;
+  private List<AssetAccessRequestError> exceptions = new ArrayList<>();
+  private Map<String, String> invites = new HashMap<>();
 
   public CreateAssetAccessRequestResponse () {
 
   }
 
-  public CreateAssetAccessRequestResponse (List<CreateAssetAccessRequestErrorMessageInner> exceptions, Map<String, String> invites) {
+  public CreateAssetAccessRequestResponse (List<AssetAccessRequestError> exceptions, Map<String, String> invites) {
     this.exceptions = exceptions;
     this.invites = invites;
   }
 
     
   @JsonProperty("exceptions")
-  public List<CreateAssetAccessRequestErrorMessageInner> getExceptions() {
+  public List<AssetAccessRequestError> getExceptions() {
     return exceptions;
   }
-  public void setExceptions(List<CreateAssetAccessRequestErrorMessageInner> exceptions) {
+  public void setExceptions(List<AssetAccessRequestError> exceptions) {
     this.exceptions = exceptions;
   }
 
@@ -79,9 +78,6 @@ public class CreateAssetAccessRequestResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

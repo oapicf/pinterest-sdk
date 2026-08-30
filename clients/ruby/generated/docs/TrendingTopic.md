@@ -5,7 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **description** | **String** | Description of the trending topic |  |
-| **percent_growth_mom** | **Integer** | Month-over-month growth percentage |  |
+| **id** | **String** | Unique identifier for the trending topic |  |
+| **percent_growth_mom** | **Integer** | Month-over-month growth percentage | [optional] |
 | **pins** | [**Array&lt;TrendingPin&gt;**](TrendingPin.md) | Array of pin images related to this trend (up to 6) |  |
 | **related_interests** | **Array&lt;String&gt;** | List of related interest categories |  |
 | **related_searches** | **Array&lt;String&gt;** | List of related search terms |  |
@@ -19,6 +20,7 @@ require 'pinterest_sdk'
 
 instance = PinterestSdkClient::TrendingTopic.new(
   description: null,
+  id: null,
   percent_growth_mom: null,
   pins: null,
   related_interests: null,

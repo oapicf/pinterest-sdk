@@ -18,10 +18,10 @@ class InviteAssetsSummary {
   });
 
   /// List of ad account IDs and respective permission levels that will be assigned.
-  List<InviteAssetsSummaryAdAccountsInner> adAccounts;
+  List<InviteAssetsSummaryItem> adAccounts;
 
   /// List of profile IDs and respective permission levels that will be assigned.
-  List<InviteAssetsSummaryProfilesInner> profiles;
+  List<InviteAssetsSummaryItem> profiles;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is InviteAssetsSummary &&
@@ -55,16 +55,12 @@ class InviteAssetsSummary {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "InviteAssetsSummary[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "InviteAssetsSummary[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return InviteAssetsSummary(
-        adAccounts: InviteAssetsSummaryAdAccountsInner.listFromJson(json[r'ad_accounts']),
-        profiles: InviteAssetsSummaryProfilesInner.listFromJson(json[r'profiles']),
+        adAccounts: InviteAssetsSummaryItem.listFromJson(json[r'ad_accounts']),
+        profiles: InviteAssetsSummaryItem.listFromJson(json[r'profiles']),
       );
     }
     return null;

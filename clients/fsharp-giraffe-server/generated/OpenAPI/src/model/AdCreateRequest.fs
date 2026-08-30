@@ -7,8 +7,6 @@ open OpenAPI.Model.CustomizableCTAType
 open OpenAPI.Model.DisclosureType
 open OpenAPI.Model.EntityStatus
 open OpenAPI.Model.GridClickType
-open OpenAPI.Model.QuizPinData
-open OpenAPI.Model.TrackingUrls
 open OpenAPI.Model.string option
 
 module AdCreateRequest =
@@ -30,14 +28,15 @@ module AdCreateRequest =
     DisclosureUrl : string option;
     GridClickType : GridClickType;
     IosDeepLink : string option;
+    IsCarting : bool;
     IsPinDeleted : bool;
     IsRemovable : bool;
     LeadFormId : string option;
     Name : string option;
-    QuizPinData : QuizPinData;
-    Status : EntityStatus;
-    TrackingUrls : TrackingUrls;
-    ViewTrackingUrl : string option;
     PinId : string;
+    QuizPinData : obj;
+    Status : EntityStatus;
+    TrackingUrls : obj;
+    ViewTrackingUrl : string option;
   }
   //#endregion

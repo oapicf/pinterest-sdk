@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ScheduleAction"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ScheduleAction"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ScheduleAction {
+    title = ScheduleAction
+    description = ScheduleAction
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  ScheduleAction {
+    title = ScheduleAction
+    description = ScheduleAction
+    implements = openapi_server.resourceTypes.ScheduleAction
+
+  }
+}

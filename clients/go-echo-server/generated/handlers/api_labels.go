@@ -5,6 +5,14 @@ import (
 	"net/http"
 )
 
+// LabelsApply - Apply label to entity
+func (c *Container) LabelsApply(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
 // LabelsCreate - Create labels
 func (c *Container) LabelsCreate(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {
@@ -15,6 +23,14 @@ func (c *Container) LabelsCreate(ctx echo.Context) error {
 
 // LabelsList - List labels
 func (c *Container) LabelsList(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
+// LabelsRemove - Remove label from entities
+func (c *Container) LabelsRemove(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {
 		Message: "Hello World",
 	})

@@ -15,7 +15,7 @@
 
 typedef struct billing_invoices_get_200_response_t billing_invoices_get_200_response_t;
 
-#include "billing_invoice_response.h"
+#include "billing_invoice.h"
 
 
 

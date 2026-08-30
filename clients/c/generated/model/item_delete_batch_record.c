@@ -12,18 +12,21 @@ static item_delete_batch_record_t *item_delete_batch_record_create_internal(
     if (!item_delete_batch_record_local_var) {
         return NULL;
     }
-    item_delete_batch_record_local_var->item_id = item_id;
-
+    memset(item_delete_batch_record_local_var, 0, sizeof(item_delete_batch_record_t));
     item_delete_batch_record_local_var->_library_owned = 1;
+    item_delete_batch_record_local_var->item_id = item_id;
     return item_delete_batch_record_local_var;
 }
 
 __attribute__((deprecated)) item_delete_batch_record_t *item_delete_batch_record_create(
     char *item_id
     ) {
-    return item_delete_batch_record_create_internal (
+    item_delete_batch_record_t *result = item_delete_batch_record_create_internal (
         item_id
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void item_delete_batch_record_free(item_delete_batch_record_t *item_delete_batch_record) {
@@ -64,6 +67,8 @@ item_delete_batch_record_t *item_delete_batch_record_parseFromJSON(cJSON *item_d
 
     item_delete_batch_record_t *item_delete_batch_record_local_var = NULL;
 
+    char *item_id_local_str = NULL;
+
     // item_delete_batch_record->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_delete_batch_recordJSON, "item_id");
     if (cJSON_IsNull(item_id)) {
@@ -77,12 +82,22 @@ item_delete_batch_record_t *item_delete_batch_record_parseFromJSON(cJSON *item_d
     }
 
 
+    if (item_id && !cJSON_IsNull(item_id)) item_id_local_str = strdup(item_id->valuestring);
+
     item_delete_batch_record_local_var = item_delete_batch_record_create_internal (
-        item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL
+        item_id_local_str
         );
+
+    if (!item_delete_batch_record_local_var) {
+        goto end;
+    }
 
     return item_delete_batch_record_local_var;
 end:
+    if (item_id_local_str) {
+        free(item_id_local_str);
+        item_id_local_str = NULL;
+    }
     return NULL;
 
 }

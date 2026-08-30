@@ -7,14 +7,15 @@ Name | Type | Description | Notes
 **EngagementType** | [**ProductCategoriesEngagementType**](ProductCategoriesEngagementType.md) | Engagement type | 
 **PctChangeMom** | **int32** | Month-over-month change percentage | 
 **PercentRelativeVolume** | **int32** | Relative volume percentage | 
+**PinterestProductCategoryId** | **int32** | Pinterest Product Category Id | 
 **ProductCategory** | **string** | Product Category Name | 
-**Verticals** | Pointer to [**[]VerticalProductCategory**](VerticalProductCategory.md) | Vertical name associated with the product category | [optional] 
+**Verticals** | Pointer to **[]string** | Vertical name associated with the product category | [optional] 
 
 ## Methods
 
 ### NewTrendingProductCategory
 
-`func NewTrendingProductCategory(engagementType ProductCategoriesEngagementType, pctChangeMom int32, percentRelativeVolume int32, productCategory string, ) *TrendingProductCategory`
+`func NewTrendingProductCategory(engagementType ProductCategoriesEngagementType, pctChangeMom int32, percentRelativeVolume int32, pinterestProductCategoryId int32, productCategory string, ) *TrendingProductCategory`
 
 NewTrendingProductCategory instantiates a new TrendingProductCategory object
 This constructor will assign default values to properties that have it defined,
@@ -89,6 +90,26 @@ and a boolean to check if the value has been set.
 SetPercentRelativeVolume sets PercentRelativeVolume field to given value.
 
 
+### GetPinterestProductCategoryId
+
+`func (o *TrendingProductCategory) GetPinterestProductCategoryId() int32`
+
+GetPinterestProductCategoryId returns the PinterestProductCategoryId field if non-nil, zero value otherwise.
+
+### GetPinterestProductCategoryIdOk
+
+`func (o *TrendingProductCategory) GetPinterestProductCategoryIdOk() (*int32, bool)`
+
+GetPinterestProductCategoryIdOk returns a tuple with the PinterestProductCategoryId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPinterestProductCategoryId
+
+`func (o *TrendingProductCategory) SetPinterestProductCategoryId(v int32)`
+
+SetPinterestProductCategoryId sets PinterestProductCategoryId field to given value.
+
+
 ### GetProductCategory
 
 `func (o *TrendingProductCategory) GetProductCategory() string`
@@ -111,20 +132,20 @@ SetProductCategory sets ProductCategory field to given value.
 
 ### GetVerticals
 
-`func (o *TrendingProductCategory) GetVerticals() []VerticalProductCategory`
+`func (o *TrendingProductCategory) GetVerticals() []string`
 
 GetVerticals returns the Verticals field if non-nil, zero value otherwise.
 
 ### GetVerticalsOk
 
-`func (o *TrendingProductCategory) GetVerticalsOk() (*[]VerticalProductCategory, bool)`
+`func (o *TrendingProductCategory) GetVerticalsOk() (*[]string, bool)`
 
 GetVerticalsOk returns a tuple with the Verticals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVerticals
 
-`func (o *TrendingProductCategory) SetVerticals(v []VerticalProductCategory)`
+`func (o *TrendingProductCategory) SetVerticals(v []string)`
 
 SetVerticals sets Verticals field to given value.
 

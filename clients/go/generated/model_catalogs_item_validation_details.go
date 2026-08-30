@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,6 +22,7 @@ var _ MappedNullable = &CatalogsItemValidationDetails{}
 
 // CatalogsItemValidationDetails struct for CatalogsItemValidationDetails
 type CatalogsItemValidationDetails struct {
+	// Attribute that has a validation issue.
 	AttributeName NullableNullableCatalogsItemFieldType `json:"attribute_name"`
 	// Provided value that caused the validation issue.
 	ProvidedValue NullableString `json:"provided_value"`

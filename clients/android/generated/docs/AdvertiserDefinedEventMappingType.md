@@ -1,0 +1,10 @@
+
+
+# AdvertiserDefinedEventMappingType
+
+## Enum
+
+
+
+
+

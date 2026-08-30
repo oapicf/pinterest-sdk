@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class AvailabilityFilter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("AVAILABILITY")
     @get:JsonProperty("AVAILABILITY", required = true) val AVAILABILITY: CatalogsProductGroupMultipleStringCriteria
 ) {
 

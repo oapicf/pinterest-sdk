@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -20,16 +28,17 @@ import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.AuthRespondInvitesBody
-import org.openapitools.client.models.CancelInvitesBody
+import org.openapitools.client.models.CancelInvitesRequest
+import org.openapitools.client.models.CancelInvitesResponse
 import org.openapitools.client.models.CreateAssetAccessRequestBody
 import org.openapitools.client.models.CreateAssetAccessRequestResponse
 import org.openapitools.client.models.CreateAssetInvitesRequest
 import org.openapitools.client.models.CreateInvitesResultsResponseArray
 import org.openapitools.client.models.CreateMembershipOrPartnershipInvitesBody
-import org.openapitools.client.models.DeleteInvitesResultsResponseArray
-import org.openapitools.client.models.Error
 import org.openapitools.client.models.GetInvites200Response
+import org.openapitools.client.models.InviteFilterStatus
 import org.openapitools.client.models.InviteType
+import org.openapitools.client.models.PinterestLibError
 import org.openapitools.client.models.RespondToInvitesResponseArray
 import org.openapitools.client.models.UpdateInvitesResultsResponseArray
 
@@ -53,7 +62,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
@@ -139,8 +148,8 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * Cancel invites/requests
      * Cancel membership/partnership invites and/or requests.
      * @param businessId Unique identifier of the requesting business.
-     * @param cancelInvitesBody A list with invite ids
-     * @return DeleteInvitesResultsResponseArray
+     * @param cancelInvitesRequest 
+     * @return CancelInvitesResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -149,11 +158,11 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun cancelInvitesOrRequests(businessId: kotlin.String, cancelInvitesBody: CancelInvitesBody) : DeleteInvitesResultsResponseArray {
-        val localVarResponse = cancelInvitesOrRequestsWithHttpInfo(businessId = businessId, cancelInvitesBody = cancelInvitesBody)
+    fun cancelInvitesOrRequests(businessId: kotlin.String, cancelInvitesRequest: CancelInvitesRequest) : CancelInvitesResponse {
+        val localVarResponse = cancelInvitesOrRequestsWithHttpInfo(businessId = businessId, cancelInvitesRequest = cancelInvitesRequest)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as DeleteInvitesResultsResponseArray
+            ResponseType.Success -> (localVarResponse as Success<*>).data as CancelInvitesResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -172,17 +181,17 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * Cancel invites/requests
      * Cancel membership/partnership invites and/or requests.
      * @param businessId Unique identifier of the requesting business.
-     * @param cancelInvitesBody A list with invite ids
-     * @return ApiResponse<DeleteInvitesResultsResponseArray?>
+     * @param cancelInvitesRequest 
+     * @return ApiResponse<CancelInvitesResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun cancelInvitesOrRequestsWithHttpInfo(businessId: kotlin.String, cancelInvitesBody: CancelInvitesBody) : ApiResponse<DeleteInvitesResultsResponseArray?> {
-        val localVariableConfig = cancelInvitesOrRequestsRequestConfig(businessId = businessId, cancelInvitesBody = cancelInvitesBody)
+    fun cancelInvitesOrRequestsWithHttpInfo(businessId: kotlin.String, cancelInvitesRequest: CancelInvitesRequest) : ApiResponse<CancelInvitesResponse?> {
+        val localVariableConfig = cancelInvitesOrRequestsRequestConfig(businessId = businessId, cancelInvitesRequest = cancelInvitesRequest)
 
-        return request<CancelInvitesBody, DeleteInvitesResultsResponseArray>(
+        return request<CancelInvitesRequest, CancelInvitesResponse>(
             localVariableConfig
         )
     }
@@ -191,11 +200,11 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * To obtain the request config of the operation cancelInvitesOrRequests
      *
      * @param businessId Unique identifier of the requesting business.
-     * @param cancelInvitesBody A list with invite ids
+     * @param cancelInvitesRequest 
      * @return RequestConfig
      */
-    fun cancelInvitesOrRequestsRequestConfig(businessId: kotlin.String, cancelInvitesBody: CancelInvitesBody) : RequestConfig<CancelInvitesBody> {
-        val localVariableBody = cancelInvitesBody
+    fun cancelInvitesOrRequestsRequestConfig(businessId: kotlin.String, cancelInvitesRequest: CancelInvitesRequest) : RequestConfig<CancelInvitesRequest> {
+        val localVariableBody = cancelInvitesRequest
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -216,7 +225,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * Update invite/request with an asset permission
      * Assign asset permissions information to an existing invite/request. Can be used to: - Request access to a partner&#39;s asset. Note: This is only for when no existing partnership exists. If an existing   partnership exists, use \&quot;Create a request to access an existing partner&#39;s assets\&quot; to request access to your   partner&#39;s assets.     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot; - Invite a partner to access your business assets. Note: This is only for when there is no existing partnership.   If there is an existing partnership, use \&quot;Assign/Update partner asset permissions\&quot; to assign a partner access to   new assets.     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot; - Invite a member to access your business assets. Note: This is only for when there is no existing membership.   If there is an existing membership, use \&quot;Assign/Update member asset permissions\&quot; to assign a member access to new   assets.     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;  To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview.
      * @param businessId Unique identifier of the requesting business.
-     * @param createAssetInvitesRequest A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+     * @param createAssetInvitesRequest 
      * @return UpdateInvitesResultsResponseArray
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -249,7 +258,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * Update invite/request with an asset permission
      * Assign asset permissions information to an existing invite/request. Can be used to: - Request access to a partner&#39;s asset. Note: This is only for when no existing partnership exists. If an existing   partnership exists, use \&quot;Create a request to access an existing partner&#39;s assets\&quot; to request access to your   partner&#39;s assets.     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot; - Invite a partner to access your business assets. Note: This is only for when there is no existing partnership.   If there is an existing partnership, use \&quot;Assign/Update partner asset permissions\&quot; to assign a partner access to   new assets.     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot; - Invite a member to access your business assets. Note: This is only for when there is no existing membership.   If there is an existing membership, use \&quot;Assign/Update member asset permissions\&quot; to assign a member access to new   assets.     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;  To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview.
      * @param businessId Unique identifier of the requesting business.
-     * @param createAssetInvitesRequest A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+     * @param createAssetInvitesRequest 
      * @return ApiResponse<UpdateInvitesResultsResponseArray?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -268,7 +277,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * To obtain the request config of the operation createAssetInvites
      *
      * @param businessId Unique identifier of the requesting business.
-     * @param createAssetInvitesRequest A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+     * @param createAssetInvitesRequest 
      * @return RequestConfig
      */
     fun createAssetInvitesRequestConfig(businessId: kotlin.String, createAssetInvitesRequest: CreateAssetInvitesRequest) : RequestConfig<CreateAssetInvitesRequest> {
@@ -293,7 +302,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * Create invites or requests
      * Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;     - business_role&#x3D;\&quot;EMPLOYEE\&quot; OR business_role&#x3D;\&quot;BIZ_ADMIN\&quot; (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners
      * @param businessId Unique identifier of the requesting business.
-     * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role
+     * @param createMembershipOrPartnershipInvitesBody 
      * @return CreateInvitesResultsResponseArray
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -326,7 +335,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * Create invites or requests
      * Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;     - business_role&#x3D;\&quot;EMPLOYEE\&quot; OR business_role&#x3D;\&quot;BIZ_ADMIN\&quot; (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners
      * @param businessId Unique identifier of the requesting business.
-     * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role
+     * @param createMembershipOrPartnershipInvitesBody 
      * @return ApiResponse<CreateInvitesResultsResponseArray?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -345,7 +354,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * To obtain the request config of the operation createMembershipOrPartnershipInvites
      *
      * @param businessId Unique identifier of the requesting business.
-     * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role
+     * @param createMembershipOrPartnershipInvitesBody 
      * @return RequestConfig
      */
     fun createMembershipOrPartnershipInvitesRequestConfig(businessId: kotlin.String, createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody) : RequestConfig<CreateMembershipOrPartnershipInvitesBody> {
@@ -366,23 +375,6 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
     }
 
     /**
-     * enum for parameter inviteStatus
-     */
-     enum class InviteStatusGetInvites(val value: kotlin.String) {
-         @Json(name = "PENDING") PENDING("PENDING"),
-         @Json(name = "EXPIRED") EXPIRED("EXPIRED");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /businesses/{business_id}/invites
      * Get invites/requests
      * Get the membership/partnership invites and/or requests for the authorized user.
@@ -391,7 +383,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * @param inviteStatus A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. (optional)
      * @param inviteType Invite type to filter invites by. Only invites of the specified type will be returned. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return GetInvites200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -401,7 +393,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getInvites(businessId: kotlin.String, isMember: kotlin.Boolean? = true, inviteStatus: kotlin.collections.List<InviteStatusGetInvites>? = null, inviteType: InviteType? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : GetInvites200Response {
+    fun getInvites(businessId: kotlin.String, isMember: kotlin.Boolean? = true, inviteStatus: kotlin.collections.List<InviteFilterStatus>? = null, inviteType: InviteType? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : GetInvites200Response {
         val localVarResponse = getInvitesWithHttpInfo(businessId = businessId, isMember = isMember, inviteStatus = inviteStatus, inviteType = inviteType, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
@@ -428,14 +420,14 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * @param inviteStatus A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. (optional)
      * @param inviteType Invite type to filter invites by. Only invites of the specified type will be returned. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<GetInvites200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getInvitesWithHttpInfo(businessId: kotlin.String, isMember: kotlin.Boolean?, inviteStatus: kotlin.collections.List<InviteStatusGetInvites>?, inviteType: InviteType?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<GetInvites200Response?> {
+    fun getInvitesWithHttpInfo(businessId: kotlin.String, isMember: kotlin.Boolean?, inviteStatus: kotlin.collections.List<InviteFilterStatus>?, inviteType: InviteType?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<GetInvites200Response?> {
         val localVariableConfig = getInvitesRequestConfig(businessId = businessId, isMember = isMember, inviteStatus = inviteStatus, inviteType = inviteType, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, GetInvites200Response>(
@@ -451,10 +443,10 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * @param inviteStatus A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. (optional)
      * @param inviteType Invite type to filter invites by. Only invites of the specified type will be returned. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun getInvitesRequestConfig(businessId: kotlin.String, isMember: kotlin.Boolean?, inviteStatus: kotlin.collections.List<InviteStatusGetInvites>?, inviteType: InviteType?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
+    fun getInvitesRequestConfig(businessId: kotlin.String, isMember: kotlin.Boolean?, inviteStatus: kotlin.collections.List<InviteFilterStatus>?, inviteType: InviteType?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {

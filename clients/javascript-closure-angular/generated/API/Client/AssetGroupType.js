@@ -1,7 +1,7 @@
 goog.provide('API.Client.AssetGroupType');
 
 /**
- * Asset group type
+ * Asset group type.
  * @record
  */
 API.Client.AssetGroupType = function() {}

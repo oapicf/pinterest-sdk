@@ -3,12 +3,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **System.DateTime** |  | 
-**Id** | **String** |  | 
-**UpdatedAt** | **System.DateTime** |  | 
+**CreatedAt** | **System.DateTime** |  | [readonly] 
+**Id** | **String** | ID of the feed processing result. | 
 **IngestionDetails** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | 
 **ProductCounts** | [**CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | 
 **Status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
+**UpdatedAt** | **System.DateTime** |  | [readonly] 
 **ValidationDetails** | [**CatalogsFeedValidationDetails**](CatalogsFeedValidationDetails.md) |  | 
 **VideoCounts** | [**CatalogsFeedVideoCounts**](CatalogsFeedVideoCounts.md) |  | [optional] 
 
@@ -17,11 +17,11 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $CatalogsFeedProcessingResult = Initialize-PSOpenAPIToolsCatalogsFeedProcessingResult  -CreatedAt 2022-03-14T15:15:22Z `
- -Id null `
- -UpdatedAt 2022-03-14T15:16:34Z `
+ -Id 864344156814050986 `
  -IngestionDetails null `
  -ProductCounts null `
  -Status null `
+ -UpdatedAt 2022-03-14T15:16:34Z `
  -ValidationDetails null `
  -VideoCounts null
 ```

@@ -1,1 +1,1 @@
-metric_types,app_types,ad_account_id,start_date,end_date,pin_ids
+metric_types,pin_ids,start_date,end_date,ad_account_id,app_types

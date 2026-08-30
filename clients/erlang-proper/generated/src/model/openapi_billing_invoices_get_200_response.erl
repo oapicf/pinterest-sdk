@@ -10,7 +10,7 @@
 
 -type openapi_billing_invoices_get_200_response() ::
   [ {'bookmark', binary() }
-  | {'items', list(openapi_billing_invoice_response:openapi_billing_invoice_response()) }
+  | {'items', list(openapi_billing_invoice:openapi_billing_invoice()) }
   ].
 
 
@@ -19,7 +19,7 @@ openapi_billing_invoices_get_200_response() ->
 
 openapi_billing_invoices_get_200_response(Fields) ->
   Default = [ {'bookmark', binary() }
-            , {'items', list(openapi_billing_invoice_response:openapi_billing_invoice_response()) }
+            , {'items', list(openapi_billing_invoice:openapi_billing_invoice()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

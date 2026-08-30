@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [**CatalogsHotelAddress**](CatalogsHotelAddress.md) |  | [optional] [default to undefined]
+**address** | [**CatalogsHotelAddress**](CatalogsHotelAddress.md) | Hotel address | [optional] [default to undefined]
 **base_price** | **string** | Base price of the hotel room per night followed by the ISO currency code | [optional] [default to undefined]
 **brand** | **string** | The brand to which this hotel belongs to. | [optional] [default to undefined]
 **category** | **string** | The type of property. The category can be any type of internal description desired. | [optional] [default to undefined]
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **custom_label_3** | **string** | Custom grouping of hotels | [optional] [default to undefined]
 **custom_label_4** | **string** | Custom grouping of hotels | [optional] [default to undefined]
 **description** | **string** | Brief description of the hotel. | [optional] [default to undefined]
-**guest_ratings** | [**CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) |  | [optional] [default to undefined]
+**guest_ratings** | [**CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) | If specified, you must provide all properties | [optional] [default to undefined]
 **latitude** | **number** | Latitude of the hotel. | [optional] [default to undefined]
 **link** | **string** | Link to the product page | [optional] [default to undefined]
 **longitude** | **number** | Longitude of the hotel. | [optional] [default to undefined]

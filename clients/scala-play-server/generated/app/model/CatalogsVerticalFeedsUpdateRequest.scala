@@ -8,9 +8,9 @@ import play.api.libs.json._
   * @param name A human-friendly name associated to a given feed.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class CatalogsVerticalFeedsUpdateRequest(
-  catalogType: CatalogsType,
+  catalogType: CatalogsVerticalFeedsUpdateRequest.CatalogType.Value,
   credentials: Option[CatalogsFeedCredentials],
   defaultAvailability: Option[ProductAvailabilityType],
   defaultCurrency: Option[NullableCurrency],
@@ -46,6 +46,14 @@ object CatalogsVerticalFeedsUpdateRequest {
         newObj
       }
     )
+  }
+
+  // noinspection TypeAnnotation
+  object CatalogType extends Enumeration {
+    val CREATIVEASSETS = Value("CREATIVE_ASSETS")
+
+    type CatalogType = Value
+    implicit lazy val CatalogTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
   }
 }
 

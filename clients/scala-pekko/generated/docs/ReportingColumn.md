@@ -1,0 +1,9 @@
+
+
+# ReportingColumn
+
+## Enum
+
+
+
+

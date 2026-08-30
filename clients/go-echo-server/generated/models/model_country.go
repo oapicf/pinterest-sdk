@@ -169,7 +169,7 @@ const (
 	NG Country = "NG"
 	NI Country = "NI"
 	NL Country = "NL"
-	NO Country = "NO"
+	FALSE Country = "false"
 	NP Country = "NP"
 	NR Country = "NR"
 	NU Country = "NU"

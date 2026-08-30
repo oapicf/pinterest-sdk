@@ -16,7 +16,7 @@ import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
  **/
 
 @ApiModel(description = "Request object for updating a creative assets product group.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsProductGroupUpdateRequest   {
   /**
    * Gets or Sets catalogType
@@ -111,6 +111,7 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest   {
   }
 
   /**
+   * Name of catalog product group
    **/
   public CatalogsCreativeAssetsProductGroupUpdateRequest name(String name) {
     this.name = name;
@@ -118,7 +119,7 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -166,10 +167,7 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

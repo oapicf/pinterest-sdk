@@ -14,7 +14,7 @@ import org.openapitools.model.TargetingSpecAgeBucket;
 /**
  * TargetingSpecOperationAgeBucket
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingSpecOperationAgeBucket   {
   /**
    * Gets or Sets field
@@ -81,7 +81,7 @@ public class TargetingSpecOperationAgeBucket   {
   private OperationEnum operation;
 
   @JsonProperty("values")
-  private List<TargetingSpecAgeBucket> values = ;
+  private List<TargetingSpecAgeBucket> values = new ArrayList<>();
 
   public TargetingSpecOperationAgeBucket field(FieldEnum field) {
     this.field = field;
@@ -179,10 +179,7 @@ public class TargetingSpecOperationAgeBucket   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

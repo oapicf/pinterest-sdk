@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CUSTOM_LABEL_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
+**CUSTOM_LABEL_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
 
 ## Example
 

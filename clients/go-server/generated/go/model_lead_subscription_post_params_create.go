@@ -5,19 +5,24 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type LeadSubscriptionPostParamsCreate struct {
 
 	// Lead form ID.
-	LeadFormId string `json:"lead_form_id,omitempty" validate:"regexp=^\\\\d+$"`
+	LeadFormId string `json:"lead_form_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Standard HTTPS webhook URL.
 	WebhookUrl string `json:"webhook_url"`
@@ -25,24 +30,93 @@ type LeadSubscriptionPostParamsCreate struct {
 	// Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
 	PartnerAccessToken string `json:"partner_access_token,omitempty"`
 
-	PartnerMetadata LeadSubscriptionPostParamsCreateAllOfPartnerMetadata `json:"partner_metadata,omitempty"`
+	// Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
+	PartnerMetadata PartnerMetadata `json:"partner_metadata,omitempty"`
 
 	// Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
 	PartnerRefreshToken string `json:"partner_refresh_token,omitempty"`
 }
-
-// AssertLeadSubscriptionPostParamsCreateRequired checks if the required fields are not zero-ed
-func AssertLeadSubscriptionPostParamsCreateRequired(obj LeadSubscriptionPostParamsCreate) error {
-	elements := map[string]interface{}{
-		"webhook_url": obj.WebhookUrl,
+// UnmarshalJSON validates required property keys then unmarshals into LeadSubscriptionPostParamsCreate
+func (o *LeadSubscriptionPostParamsCreate) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"webhook_url",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"webhook_url": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"lead_form_id": {},
+		"webhook_url": {},
+		"partner_access_token": {},
+		"partner_metadata": {},
+		"partner_refresh_token": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
-	if err := AssertLeadSubscriptionPostParamsCreateAllOfPartnerMetadataRequired(obj.PartnerMetadata); err != nil {
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded LeadSubscriptionPostParamsCreate
+
+	if value, exists := allProperties["lead_form_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.LeadFormId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["webhook_url"]; exists {
+		if err = json.Unmarshal(value, &decoded.WebhookUrl); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["partner_access_token"]; exists {
+		if err = json.Unmarshal(value, &decoded.PartnerAccessToken); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["partner_metadata"]; exists {
+		if err = json.Unmarshal(value, &decoded.PartnerMetadata); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["partner_refresh_token"]; exists {
+		if err = json.Unmarshal(value, &decoded.PartnerRefreshToken); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertLeadSubscriptionPostParamsCreateRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertLeadSubscriptionPostParamsCreateRequired(obj LeadSubscriptionPostParamsCreate) error {
+	if err := AssertPartnerMetadataRequired(obj.PartnerMetadata); err != nil {
 		return err
 	}
 	return nil
@@ -50,7 +124,7 @@ func AssertLeadSubscriptionPostParamsCreateRequired(obj LeadSubscriptionPostPara
 
 // AssertLeadSubscriptionPostParamsCreateConstraints checks if the values respects the defined constraints
 func AssertLeadSubscriptionPostParamsCreateConstraints(obj LeadSubscriptionPostParamsCreate) error {
-	if err := AssertLeadSubscriptionPostParamsCreateAllOfPartnerMetadataConstraints(obj.PartnerMetadata); err != nil {
+	if err := AssertPartnerMetadataConstraints(obj.PartnerMetadata); err != nil {
 		return err
 	}
 	return nil

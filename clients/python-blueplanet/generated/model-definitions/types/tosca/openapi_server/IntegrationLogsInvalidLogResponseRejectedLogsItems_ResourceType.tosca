@@ -1,0 +1,50 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server IntegrationLogsInvalidLogResponseRejectedLogsItems"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a IntegrationLogsInvalidLogResponseRejectedLogsItems"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  IntegrationLogsInvalidLogResponseRejectedLogsItems {
+    title = IntegrationLogsInvalidLogResponseRejectedLogsItems
+    description = IntegrationLogsInvalidLogResponseRejectedLogsItems
+    derivedFrom = Root
+    properties {
+        _field {
+          type =  string
+          description = "The field name containing an invalid value."
+          optional = true
+        }
+        log_index {
+          type =  integer
+          description = "Index of the log in the batch."
+          optional = false
+        }
+        reason {
+          type =  string
+          description = "The reason the value is invalid."
+          optional = true
+        }
+        value {
+          type =  string
+          description = "The value that is invalid."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  IntegrationLogsInvalidLogResponseRejectedLogsItems {
+    title = IntegrationLogsInvalidLogResponseRejectedLogsItems
+    description = IntegrationLogsInvalidLogResponseRejectedLogsItems
+    implements = openapi_server.resourceTypes.IntegrationLogsInvalidLogResponseRejectedLogsItems
+
+  }
+}

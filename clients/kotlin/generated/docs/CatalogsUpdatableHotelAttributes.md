@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **address** | [**CatalogsHotelAddress**](CatalogsHotelAddress.md) |  |  [optional] |
+| **address** | [**CatalogsHotelAddress**](CatalogsHotelAddress.md) | Hotel address |  [optional] |
 | **basePrice** | **kotlin.String** | Base price of the hotel room per night followed by the ISO currency code |  [optional] |
 | **brand** | **kotlin.String** | The brand to which this hotel belongs to. |  [optional] |
 | **category** | **kotlin.String** | The type of property. The category can be any type of internal description desired. |  [optional] |
@@ -14,7 +14,7 @@
 | **customLabel3** | **kotlin.String** | Custom grouping of hotels |  [optional] |
 | **customLabel4** | **kotlin.String** | Custom grouping of hotels |  [optional] |
 | **description** | **kotlin.String** | Brief description of the hotel. |  [optional] |
-| **guestRatings** | [**CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) |  |  [optional] |
+| **guestRatings** | [**CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) | If specified, you must provide all properties |  [optional] |
 | **latitude** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Latitude of the hotel. |  [optional] |
 | **link** | **kotlin.String** | Link to the product page |  [optional] |
 | **longitude** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Longitude of the hotel. |  [optional] |

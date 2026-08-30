@@ -10,7 +10,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## notificationPost
 
-> NotificationResponse notificationPost(notificationPostRequest)
+> NotificationResponse notificationPost(arrayObject)
 
 Receive notifications from external partners.
 
@@ -36,8 +36,8 @@ async function example() {
   const api = new NotificationApi(config);
 
   const body = {
-    // NotificationPostRequest | notification event.
-    notificationPostRequest: ...,
+    // Array | object
+    arrayObject: ...,
   } satisfies NotificationPostOperationRequest;
 
   try {
@@ -57,7 +57,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **notificationPostRequest** | [NotificationPostRequest](NotificationPostRequest.md) | notification event. | |
+| **arrayObject** | [Array | object](Array | object.md) |  | |
 
 ### Return type
 
@@ -76,9 +76,9 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully received notification |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

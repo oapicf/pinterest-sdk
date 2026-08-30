@@ -13,10 +13,10 @@ static customer_lists_list_200_response_t *customer_lists_list_200_response_crea
     if (!customer_lists_list_200_response_local_var) {
         return NULL;
     }
+    memset(customer_lists_list_200_response_local_var, 0, sizeof(customer_lists_list_200_response_t));
+    customer_lists_list_200_response_local_var->_library_owned = 1;
     customer_lists_list_200_response_local_var->bookmark = bookmark;
     customer_lists_list_200_response_local_var->items = items;
-
-    customer_lists_list_200_response_local_var->_library_owned = 1;
     return customer_lists_list_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) customer_lists_list_200_response_t *customer_lists_l
     char *bookmark,
     list_t *items
     ) {
-    return customer_lists_list_200_response_create_internal (
+    customer_lists_list_200_response_t *result = customer_lists_list_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void customer_lists_list_200_response_free(customer_lists_list_200_response_t *customer_lists_list_200_response) {
@@ -96,6 +99,8 @@ customer_lists_list_200_response_t *customer_lists_list_200_response_parseFromJS
 
     customer_lists_list_200_response_t *customer_lists_list_200_response_local_var = NULL;
 
+    char *bookmark_local_str = NULL;
+
     // define the local list for customer_lists_list_200_response->items
     list_t *itemsList = NULL;
 
@@ -139,13 +144,23 @@ customer_lists_list_200_response_t *customer_lists_list_200_response_parseFromJS
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     customer_lists_list_200_response_local_var = customer_lists_list_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!customer_lists_list_200_response_local_var) {
+        goto end;
+    }
+
     return customer_lists_list_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {

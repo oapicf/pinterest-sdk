@@ -53,10 +53,10 @@ class CatalogsHotelAvailableFilterValues {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsHotelAvailableFilterValues[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsHotelAvailableFilterValues[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsHotelAvailableFilterValues[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsHotelAvailableFilterValues[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'filter_values'), 'Required key "CatalogsHotelAvailableFilterValues[filter_values]" is missing from JSON.');
+        assert(json[r'filter_values'] != null, 'Required key "CatalogsHotelAvailableFilterValues[filter_values]" has a null value in JSON.');
         return true;
       }());
 
@@ -116,27 +116,28 @@ class CatalogsHotelAvailableFilterValues {
 }
 
 
-class CatalogsHotelAvailableFilterValuesCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsHotelAvailableFilterValuesCatalogTypeEnum._(this.value);
+enum CatalogsHotelAvailableFilterValuesCatalogTypeEnum {
+  HOTEL._(r'HOTEL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsHotelAvailableFilterValuesCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const HOTEL = CatalogsHotelAvailableFilterValuesCatalogTypeEnum._(r'HOTEL');
-
-  /// List of all possible values in this [enum][CatalogsHotelAvailableFilterValuesCatalogTypeEnum].
-  static const values = <CatalogsHotelAvailableFilterValuesCatalogTypeEnum>[
-    HOTEL,
-  ];
-
+  /// Returns the instance of [CatalogsHotelAvailableFilterValuesCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsHotelAvailableFilterValuesCatalogTypeEnum? fromJson(dynamic value) => CatalogsHotelAvailableFilterValuesCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsHotelAvailableFilterValuesCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsHotelAvailableFilterValuesCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsHotelAvailableFilterValuesCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -158,9 +159,10 @@ class CatalogsHotelAvailableFilterValuesCatalogTypeEnumTypeTransformer {
 
   const CatalogsHotelAvailableFilterValuesCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsHotelAvailableFilterValuesCatalogTypeEnum data) => data.value;
+  String encode(CatalogsHotelAvailableFilterValuesCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsHotelAvailableFilterValuesCatalogTypeEnum.
+  /// Returns the instance of [CatalogsHotelAvailableFilterValuesCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -169,6 +171,9 @@ class CatalogsHotelAvailableFilterValuesCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsHotelAvailableFilterValuesCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsHotelAvailableFilterValuesCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'HOTEL': return CatalogsHotelAvailableFilterValuesCatalogTypeEnum.HOTEL;
@@ -181,7 +186,7 @@ class CatalogsHotelAvailableFilterValuesCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsHotelAvailableFilterValuesCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsHotelAvailableFilterValuesCatalogTypeEnumTypeTransformer? _instance;
 }
 

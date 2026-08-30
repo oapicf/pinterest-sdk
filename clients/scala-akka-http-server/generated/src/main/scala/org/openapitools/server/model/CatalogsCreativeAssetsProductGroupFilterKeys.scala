@@ -19,6 +19,7 @@ package org.openapitools.server.model
  * @param GOOGLE_PRODUCT_CATEGORY_0  for example: ''null''
  * @param MEDIA_TYPE  for example: ''null''
  * @param TITLE_KEYWORDS  for example: ''null''
+ * @param LINK  for example: ''null''
 */
 final case class CatalogsCreativeAssetsProductGroupFilterKeys (
   CREATIVE_ASSETS_ID: CatalogsProductGroupMultipleStringCriteria,
@@ -35,6 +36,7 @@ final case class CatalogsCreativeAssetsProductGroupFilterKeys (
   GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria,
   GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
   MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria,
-  TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
+  TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria,
+  LINK: CatalogsProductGroupFilterOperatorTypeCriteria
 )
 

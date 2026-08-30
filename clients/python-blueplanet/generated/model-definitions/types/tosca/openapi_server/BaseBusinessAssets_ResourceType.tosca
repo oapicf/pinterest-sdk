@@ -1,0 +1,54 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BaseBusinessAssets"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BaseBusinessAssets"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AssetGroupBinding = openapi_server.resourceTypes.AssetGroupBinding
+  AssetTypeResponse = openapi_server.resourceTypes.AssetTypeResponse
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  BaseBusinessAssets {
+    title = BaseBusinessAssets
+    description = BaseBusinessAssets
+    derivedFrom = Root
+    properties {
+        asset_group_info {
+          type = AssetGroupBinding
+          description = "An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals &#39;ASSET_GROUP&#39;."
+          optional = false
+        }
+        asset_id {
+          type =  string
+          description = "Unique identifier of a business asset."
+          optional = false
+        }
+        asset_type {
+          type = AssetTypeResponse
+          description = ""
+          optional = false
+        }
+        permissions {
+          type = array
+          items.type =  string
+          description = "Permission levels the requesting business has on an asset."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BaseBusinessAssets {
+    title = BaseBusinessAssets
+    description = BaseBusinessAssets
+    implements = openapi_server.resourceTypes.BaseBusinessAssets
+
+  }
+}

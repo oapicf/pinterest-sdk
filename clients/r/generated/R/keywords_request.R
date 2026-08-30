@@ -71,13 +71,36 @@ KeywordsRequest <- R6::R6Class(
       KeywordsRequestObject <- list()
       if (!is.null(self$`keywords`)) {
         KeywordsRequestObject[["keywords"]] <-
-          lapply(self$`keywords`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`keywords`)
       }
       if (!is.null(self$`parent_id`)) {
         KeywordsRequestObject[["parent_id"]] <-
           self$`parent_id`
       }
       return(KeywordsRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

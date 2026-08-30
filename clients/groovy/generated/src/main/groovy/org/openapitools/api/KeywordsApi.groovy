@@ -1,15 +1,18 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.Error
-import org.openapitools.model.KeywordUpdateBody
+import org.openapitools.model.Keywords
+import org.openapitools.model.KeywordsCreate
 import org.openapitools.model.KeywordsGet200Response
 import org.openapitools.model.KeywordsMetricsArrayResponse
-import org.openapitools.model.KeywordsRequest
-import org.openapitools.model.KeywordsResponse
+import org.openapitools.model.KeywordsUpdate
 import org.openapitools.model.MatchType
+import org.openapitools.model.PinterestLibError
 import org.openapitools.model.TrendType
 import org.openapitools.model.TrendingKeywordsResponse
+import org.openapitools.model.TrendsAgeBucket
+import org.openapitools.model.TrendsGenderFilter
+import org.openapitools.model.TrendsL1Interest
 import org.openapitools.model.TrendsSupportedRegion
 
 class KeywordsApi {
@@ -24,6 +27,7 @@ class KeywordsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -49,19 +53,22 @@ class KeywordsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     KeywordsMetricsArrayResponse.class )
 
     }
 
-    def keywordsCreate ( String adAccountId, KeywordsRequest keywordsRequest, Closure onSuccess, Closure onFailure)  {
+    def keywordsCreate ( String adAccountId, KeywordsCreate keywordsCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/keywords"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -69,29 +76,32 @@ class KeywordsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (keywordsRequest == null) {
-            throw new RuntimeException("missing required params keywordsRequest")
+        if (keywordsCreate == null) {
+            throw new RuntimeException("missing required params keywordsCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = keywordsRequest
+        bodyParams = keywordsCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    KeywordsResponse.class )
+                    Keywords.class )
 
     }
 
-    def keywordsGet ( String adAccountId, String campaignId, String adGroupId, List<String> adGroupIds, List<MatchType> matchTypes, Integer pageSize, String bookmark, Closure onSuccess, Closure onFailure)  {
+    def keywordsGet ( String adAccountId, String campaignId, String adGroupId, List<String> adGroupIds, List<MatchType> matchTypes, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/keywords"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -111,29 +121,32 @@ class KeywordsApi {
         if (matchTypes != null) {
             queryParams.put("match_types", matchTypes)
         }
-        if (pageSize != null) {
-            queryParams.put("page_size", pageSize)
-        }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
         }
+        if (pageSize != null) {
+            queryParams.put("page_size", pageSize)
+        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     KeywordsGet200Response.class )
 
     }
 
-    def keywordsUpdate ( String adAccountId, KeywordUpdateBody keywordUpdateBody, Closure onSuccess, Closure onFailure)  {
+    def keywordsUpdate ( String adAccountId, KeywordsUpdate keywordsUpdate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/keywords"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -141,29 +154,32 @@ class KeywordsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (keywordUpdateBody == null) {
-            throw new RuntimeException("missing required params keywordUpdateBody")
+        if (keywordsUpdate == null) {
+            throw new RuntimeException("missing required params keywordsUpdate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = keywordUpdateBody
+        bodyParams = keywordsUpdate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
-                    KeywordsResponse.class )
+                    Keywords.class )
 
     }
 
-    def trendingKeywordsList ( TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, Boolean includePrediction, Boolean includeDemographics, Closure onSuccess, Closure onFailure)  {
+    def trendingKeywordsList ( TrendsSupportedRegion region, TrendType trendType, List<TrendsL1Interest> interests, List<TrendsGenderFilter> genders, List<TrendsAgeBucket> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, Boolean includeDemographics, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/trends/keywords/${region}/top/${trend_type}"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -193,9 +209,6 @@ class KeywordsApi {
         if (limit != null) {
             queryParams.put("limit", limit)
         }
-        if (includePrediction != null) {
-            queryParams.put("include_prediction", includePrediction)
-        }
         if (includeDemographics != null) {
             queryParams.put("include_demographics", includeDemographics)
         }
@@ -203,7 +216,9 @@ class KeywordsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     TrendingKeywordsResponse.class )
 

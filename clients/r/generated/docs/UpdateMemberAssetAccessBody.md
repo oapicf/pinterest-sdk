@@ -1,10 +1,10 @@
 # openapi::UpdateMemberAssetAccessBody
 
-An object with a list of all the new accesses.
+An object with a list of all the new member asset accesses.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accesses** | [**array[UpdateMemberAssetAccessBodyAccessesInner]**](UpdateMemberAssetAccessBody_accesses_inner.md) |  | [Max. items: 50] [Min. items: 1] 
+**accesses** | [**array[UpdateMemberAssetAccessItem]**](UpdateMemberAssetAccessItem.md) | List of member asset accesses to assign or update. | [Max. items: 50] [Min. items: 1] 
 
 

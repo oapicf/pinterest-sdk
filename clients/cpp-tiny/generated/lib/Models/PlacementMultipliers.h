@@ -12,6 +12,8 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include "PlacementType.h"
+#include <map>
 
 namespace Tiny {
 
@@ -45,17 +47,17 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get 
+	/*! \brief Get Placement type identifier.
 	 */
-	std::string getPLACEMENT();
+	PlacementType getPLACEMENT();
 
-	/*! \brief Set 
+	/*! \brief Set Placement type identifier.
 	 */
-	void setPLACEMENT(std::string  pLACEMENT);
+	void setPLACEMENT(PlacementType pLACEMENT);
 
 
     private:
-    std::string pLACEMENT{};
+    PlacementType pLACEMENT;
 };
 }
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | First input term. For example, if you pass \&quot;?terms&#x3D;clothes,workout\&quot;, then id will be \&quot;clothes\&quot; | [optional] 
 **RelatedTermCount** | Pointer to **int32** | Total number of related terms returned | [optional] 
-**RelatedTermsList** | Pointer to [**[]RelatedTermsRelatedTermsListInner**](RelatedTermsRelatedTermsListInner.md) | The id of the advertiser. | [optional] 
+**RelatedTermsList** | Pointer to [**[]RelatedTermsRelatedTermsListItems**](RelatedTermsRelatedTermsListItems.md) | The id of the advertiser. | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasRelatedTermCount returns a boolean if a field has been set.
 
 ### GetRelatedTermsList
 
-`func (o *RelatedTerms) GetRelatedTermsList() []RelatedTermsRelatedTermsListInner`
+`func (o *RelatedTerms) GetRelatedTermsList() []RelatedTermsRelatedTermsListItems`
 
 GetRelatedTermsList returns the RelatedTermsList field if non-nil, zero value otherwise.
 
 ### GetRelatedTermsListOk
 
-`func (o *RelatedTerms) GetRelatedTermsListOk() (*[]RelatedTermsRelatedTermsListInner, bool)`
+`func (o *RelatedTerms) GetRelatedTermsListOk() (*[]RelatedTermsRelatedTermsListItems, bool)`
 
 GetRelatedTermsListOk returns a tuple with the RelatedTermsList field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRelatedTermsList
 
-`func (o *RelatedTerms) SetRelatedTermsList(v []RelatedTermsRelatedTermsListInner)`
+`func (o *RelatedTerms) SetRelatedTermsList(v []RelatedTermsRelatedTermsListItems)`
 
 SetRelatedTermsList sets RelatedTermsList field to given value.
 

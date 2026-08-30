@@ -1,23 +1,20 @@
 package org.openapitools.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- * Any valid JSON object
+ * Notification request body. Can be either a batch of notification objects or a single notification object.
  **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-@ApiModel(description = "Any valid JSON object")
-public class NotificationPostRequest extends HashMap<String, Object>  {
+@ApiModel(description = "Notification request body. Can be either a batch of notification objects or a single notification object.")
+public class NotificationPostRequest   {
   
 
   @Override
@@ -28,19 +25,19 @@ public class NotificationPostRequest extends HashMap<String, Object>  {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    NotificationPostRequest notificationPostRequest = (NotificationPostRequest) o;return super.equals(o);
+    NotificationPostRequest notificationPostRequest = (NotificationPostRequest) o;return true;
   }
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return 1;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotificationPostRequest {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("}");
     return sb.toString();
   }
@@ -50,10 +47,7 @@ public class NotificationPostRequest extends HashMap<String, Object>  {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

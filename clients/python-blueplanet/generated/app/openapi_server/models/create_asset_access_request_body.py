@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.create_asset_access_request_body_asset_requests_inner import CreateAssetAccessRequestBodyAssetRequestsInner  # noqa: F401,E501
+from app.openapi_server.models.create_asset_access_request_item import CreateAssetAccessRequestItem  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,14 +16,14 @@ class CreateAssetAccessRequestBody(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, asset_requests: List[CreateAssetAccessRequestBodyAssetRequestsInner]=None):  # noqa: E501
+    def __init__(self, asset_requests: List[CreateAssetAccessRequestItem]=None):  # noqa: E501
         """CreateAssetAccessRequestBody - a model defined in Swagger
 
         :param asset_requests: The asset_requests of this CreateAssetAccessRequestBody.  # noqa: E501
-        :type asset_requests: List[CreateAssetAccessRequestBodyAssetRequestsInner]
+        :type asset_requests: List[CreateAssetAccessRequestItem]
         """
         self.swagger_types = {
-            'asset_requests': List[CreateAssetAccessRequestBodyAssetRequestsInner]
+            'asset_requests': List[CreateAssetAccessRequestItem]
         }
 
         self.attribute_map = {
@@ -44,22 +44,22 @@ class CreateAssetAccessRequestBody(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def asset_requests(self) -> List[CreateAssetAccessRequestBodyAssetRequestsInner]:
+    def asset_requests(self) -> List[CreateAssetAccessRequestItem]:
         """Gets the asset_requests of this CreateAssetAccessRequestBody.
 
 
         :return: The asset_requests of this CreateAssetAccessRequestBody.
-        :rtype: List[CreateAssetAccessRequestBodyAssetRequestsInner]
+        :rtype: List[CreateAssetAccessRequestItem]
         """
         return self._asset_requests
 
     @asset_requests.setter
-    def asset_requests(self, asset_requests: List[CreateAssetAccessRequestBodyAssetRequestsInner]):
+    def asset_requests(self, asset_requests: List[CreateAssetAccessRequestItem]):
         """Sets the asset_requests of this CreateAssetAccessRequestBody.
 
 
         :param asset_requests: The asset_requests of this CreateAssetAccessRequestBody.
-        :type asset_requests: List[CreateAssetAccessRequestBodyAssetRequestsInner]
+        :type asset_requests: List[CreateAssetAccessRequestItem]
         """
         if asset_requests is None:
             raise ValueError("Invalid value for `asset_requests`, must not be `None`")  # noqa: E501

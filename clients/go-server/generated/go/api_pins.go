@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 	"reflect"
@@ -65,6 +66,12 @@ func (c *PinsAPIController) Routes() Routes {
 			"/v5/pins",
 			c.PinsCreate,
 		},
+		"MultiPinsAnalytics": Route{
+			"MultiPinsAnalytics",
+			strings.ToUpper("Get"),
+			"/v5/pins/analytics",
+			c.MultiPinsAnalytics,
+		},
 		"PinsGet": Route{
 			"PinsGet",
 			strings.ToUpper("Get"),
@@ -88,12 +95,6 @@ func (c *PinsAPIController) Routes() Routes {
 			strings.ToUpper("Get"),
 			"/v5/pins/{pin_id}/analytics",
 			c.PinsAnalytics,
-		},
-		"MultiPinsAnalytics": Route{
-			"MultiPinsAnalytics",
-			strings.ToUpper("Get"),
-			"/v5/pins/analytics",
-			c.MultiPinsAnalytics,
 		},
 		"PinsSave": Route{
 			"PinsSave",
@@ -120,6 +121,12 @@ func (c *PinsAPIController) OrderedRoutes() []Route {
 			c.PinsCreate,
 		},
 		Route{
+			"MultiPinsAnalytics",
+			strings.ToUpper("Get"),
+			"/v5/pins/analytics",
+			c.MultiPinsAnalytics,
+		},
+		Route{
 			"PinsGet",
 			strings.ToUpper("Get"),
 			"/v5/pins/{pin_id}",
@@ -144,12 +151,6 @@ func (c *PinsAPIController) OrderedRoutes() []Route {
 			c.PinsAnalytics,
 		},
 		Route{
-			"MultiPinsAnalytics",
-			strings.ToUpper("Get"),
-			"/v5/pins/analytics",
-			c.MultiPinsAnalytics,
-		},
-		Route{
 			"PinsSave",
 			strings.ToUpper("Post"),
 			"/v5/pins/{pin_id}/save",
@@ -167,9 +168,9 @@ func (c *PinsAPIController) PinsList(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	var pinFilterParam string
+	var pinFilterParam PinFilter
 	if query.Has("pin_filter") {
-		param := query.Get("pin_filter")
+		param := PinFilter(query.Get("pin_filter"))
 
 		pinFilterParam = param
 	} else {
@@ -206,9 +207,9 @@ func (c *PinsAPIController) PinsList(w http.ResponseWriter, r *http.Request) {
 		var param bool = false
 		includeProtectedPinsParam = param
 	}
-	var pinTypeParam string
+	var pinTypeParam PinType
 	if query.Has("pin_type") {
-		param := query.Get("pin_type")
+		param := PinType(query.Get("pin_type"))
 
 		pinTypeParam = param
 	} else {
@@ -231,6 +232,31 @@ func (c *PinsAPIController) PinsList(w http.ResponseWriter, r *http.Request) {
 		param := query.Get("ad_account_id")
 
 		adAccountIdParam = param
+	} else {
+	}
+	var domainParam string
+	if query.Has("domain") {
+		param := query.Get("domain")
+
+		domainParam = param
+	} else {
+	}
+	var domainsParam []string
+	if query.Has("domains") {
+		domainsParam = strings.Split(query.Get("domains"), ",")
+	}
+	var includeProductTagObjParam bool
+	if query.Has("include_product_tag_obj") {
+		param, err := parseBoolParameter(
+			query.Get("include_product_tag_obj"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "include_product_tag_obj", Err: err}, nil)
+			return
+		}
+
+		includeProductTagObjParam = param
 	} else {
 	}
 	var bookmarkParam string
@@ -258,7 +284,7 @@ func (c *PinsAPIController) PinsList(w http.ResponseWriter, r *http.Request) {
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	result, err := c.service.PinsList(r.Context(), pinFilterParam, pinMetricsParam, includeProtectedPinsParam, pinTypeParam, creativeTypesParam, adAccountIdParam, bookmarkParam, pageSizeParam)
+	result, err := c.service.PinsList(r.Context(), pinFilterParam, pinMetricsParam, includeProtectedPinsParam, pinTypeParam, creativeTypesParam, adAccountIdParam, domainParam, domainsParam, includeProductTagObjParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -279,6 +305,11 @@ func (c *PinsAPIController) PinsCreate(w http.ResponseWriter, r *http.Request) {
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&pinCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -298,6 +329,74 @@ func (c *PinsAPIController) PinsCreate(w http.ResponseWriter, r *http.Request) {
 	} else {
 	}
 	result, err := c.service.PinsCreate(r.Context(), pinCreateParam, adAccountIdParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// MultiPinsAnalytics - Get multiple Pin analytics
+func (c *PinsAPIController) MultiPinsAnalytics(w http.ResponseWriter, r *http.Request) {
+	query, err := parseQuery(r.URL.RawQuery)
+	if err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	var pinIdsParam []string
+	if query.Has("pin_ids") {
+		pinIdsParam = strings.Split(query.Get("pin_ids"), ",")
+	}
+	var startDateParam string
+	if query.Has("start_date") {
+		param := string(query.Get("start_date"))
+
+		startDateParam = param
+	} else {
+		c.errorHandler(w, r, &RequiredError{Field: "start_date"}, nil)
+		return
+	}
+	var endDateParam string
+	if query.Has("end_date") {
+		param := string(query.Get("end_date"))
+
+		endDateParam = param
+	} else {
+		c.errorHandler(w, r, &RequiredError{Field: "end_date"}, nil)
+		return
+	}
+	var metricTypesParam []MultiPinsAnalyticsMetricTypesItem
+	if query.Has("metric_types") {
+		paramSplits := strings.Split(query.Get("metric_types"), ",")
+		metricTypesParam = make([]MultiPinsAnalyticsMetricTypesItem, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewMultiPinsAnalyticsMetricTypesItemFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "metric_types", Err: err}, nil)
+				return
+			}
+			metricTypesParam = append(metricTypesParam, paramEnum)
+		}
+	}
+	var appTypesParam string
+	if query.Has("app_types") {
+		param := query.Get("app_types")
+
+		appTypesParam = param
+	} else {
+		param := "ALL"
+		appTypesParam = param
+	}
+	var adAccountIdParam string
+	if query.Has("ad_account_id") {
+		param := query.Get("ad_account_id")
+
+		adAccountIdParam = param
+	} else {
+	}
+	result, err := c.service.MultiPinsAnalytics(r.Context(), pinIdsParam, startDateParam, endDateParam, metricTypesParam, appTypesParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -400,6 +499,11 @@ func (c *PinsAPIController) PinsUpdate(w http.ResponseWriter, r *http.Request) {
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&pinUpdateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -459,9 +563,18 @@ func (c *PinsAPIController) PinsAnalytics(w http.ResponseWriter, r *http.Request
 		c.errorHandler(w, r, &RequiredError{Field: "end_date"}, nil)
 		return
 	}
-	var metricTypesParam []string
+	var metricTypesParam []QuerypinanalyticsmetrictypesItems
 	if query.Has("metric_types") {
-		metricTypesParam = strings.Split(query.Get("metric_types"), ",")
+		paramSplits := strings.Split(query.Get("metric_types"), ",")
+		metricTypesParam = make([]QuerypinanalyticsmetrictypesItems, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewQuerypinanalyticsmetrictypesItemsFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "metric_types", Err: err}, nil)
+				return
+			}
+			metricTypesParam = append(metricTypesParam, paramEnum)
+		}
 	}
 	var appTypesParam string
 	if query.Has("app_types") {
@@ -498,65 +611,6 @@ func (c *PinsAPIController) PinsAnalytics(w http.ResponseWriter, r *http.Request
 	_ = EncodeJSONResponse(result.Body, &result.Code, w)
 }
 
-// MultiPinsAnalytics - Get multiple Pin analytics
-func (c *PinsAPIController) MultiPinsAnalytics(w http.ResponseWriter, r *http.Request) {
-	query, err := parseQuery(r.URL.RawQuery)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	var pinIdsParam []string
-	if query.Has("pin_ids") {
-		pinIdsParam = strings.Split(query.Get("pin_ids"), ",")
-	}
-	var startDateParam string
-	if query.Has("start_date") {
-		param := string(query.Get("start_date"))
-
-		startDateParam = param
-	} else {
-		c.errorHandler(w, r, &RequiredError{Field: "start_date"}, nil)
-		return
-	}
-	var endDateParam string
-	if query.Has("end_date") {
-		param := string(query.Get("end_date"))
-
-		endDateParam = param
-	} else {
-		c.errorHandler(w, r, &RequiredError{Field: "end_date"}, nil)
-		return
-	}
-	var metricTypesParam []string
-	if query.Has("metric_types") {
-		metricTypesParam = strings.Split(query.Get("metric_types"), ",")
-	}
-	var appTypesParam string
-	if query.Has("app_types") {
-		param := query.Get("app_types")
-
-		appTypesParam = param
-	} else {
-		param := "ALL"
-		appTypesParam = param
-	}
-	var adAccountIdParam string
-	if query.Has("ad_account_id") {
-		param := query.Get("ad_account_id")
-
-		adAccountIdParam = param
-	} else {
-	}
-	result, err := c.service.MultiPinsAnalytics(r.Context(), pinIdsParam, startDateParam, endDateParam, metricTypesParam, appTypesParam, adAccountIdParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
 // PinsSave - Save Pin
 func (c *PinsAPIController) PinsSave(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
@@ -570,18 +624,23 @@ func (c *PinsAPIController) PinsSave(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{"pin_id"}, nil)
 		return
 	}
-	var pinsSaveRequestParam PinsSaveRequest
+	var pinsSaveRequestCreateParam PinsSaveRequestCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&pinsSaveRequestParam); err != nil {
+	if err := d.Decode(&pinsSaveRequestCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertPinsSaveRequestRequired(pinsSaveRequestParam); err != nil {
+	if err := AssertPinsSaveRequestCreateRequired(pinsSaveRequestCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertPinsSaveRequestConstraints(pinsSaveRequestParam); err != nil {
+	if err := AssertPinsSaveRequestCreateConstraints(pinsSaveRequestCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
@@ -592,7 +651,7 @@ func (c *PinsAPIController) PinsSave(w http.ResponseWriter, r *http.Request) {
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.PinsSave(r.Context(), pinIdParam, pinsSaveRequestParam, adAccountIdParam)
+	result, err := c.service.PinsSave(r.Context(), pinIdParam, pinsSaveRequestCreateParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

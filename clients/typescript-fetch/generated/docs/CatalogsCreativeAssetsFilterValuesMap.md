@@ -19,7 +19,7 @@ Name | Type
 `googleProductCategory4` | Array&lt;string&gt;
 `googleProductCategory5` | Array&lt;string&gt;
 `googleProductCategory6` | Array&lt;string&gt;
-`mediaType` | Array&lt;string&gt;
+`mediaType` | [Array&lt;MediaType&gt;](MediaType.md)
 
 ## Example
 

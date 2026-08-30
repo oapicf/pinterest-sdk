@@ -10,12 +10,12 @@ The class is defined in **[AdvancedAuctionItemsSubmitRecord.java](../../src/main
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**operation** | `AdvancedAuctionOperation` |  | 
+**bidOptions** | [`AdvancedAuctionBidOptions`](AdvancedAuctionBidOptions.md) |  | 
 **country** | `Country` |  | 
+**errors** | [`List&lt;AdvancedAuctionOperationError&gt;`](AdvancedAuctionOperationError.md) | Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. |  [optional property]
 **itemId** | `String` | The catalog retail item id in the merchant namespace | 
 **language** | `Language` |  | 
-**bidOptions** | [`AdvancedAuctionBidOptions`](AdvancedAuctionBidOptions.md) |  | 
-**errors** | [`List&lt;AdvancedAuctionOperationError&gt;`](AdvancedAuctionOperationError.md) | Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. |  [optional property]
+**operation** | [**OperationEnum**](#OperationEnum) |  | 
 **updateMask** | `List&lt;UpdateMaskBidOptionField&gt;` | The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the &#x60;bid_options&#x60; object in the body will be set to &#x60;null&#x60;. If an item bid option record is being created, fields not specified in the update mask will be initialized to &#x60;null&#x60;. | 
 
 
@@ -23,6 +23,11 @@ Name | Type | Description | Notes
 
 
 
+## OperationEnum
+
+Name | Value
+---- | -----
+DELETE | `"DELETE"`
 
 
 

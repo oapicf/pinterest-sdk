@@ -12,7 +12,6 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "AnyType.h"
 #include "Date.h"
 
 namespace Tiny {
@@ -53,14 +52,14 @@ public:
 
 	/*! \brief Set Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
 	 */
-	void setDATE(Date  dATE);
+	void setDATE(Date dATE);
 	/*! \brief Get The ID of the pin that the metric belongs to.
 	 */
 	std::string getPINID();
 
 	/*! \brief Set The ID of the pin that the metric belongs to.
 	 */
-	void setPINID(std::string  pIN_ID);
+	void setPINID(std::string pIN_ID);
 
 
     private:

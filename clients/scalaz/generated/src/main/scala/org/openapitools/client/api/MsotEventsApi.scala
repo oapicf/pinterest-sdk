@@ -21,7 +21,7 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
-import org.openapitools.client.api.ConversionMSOTEvents
+import org.openapitools.client.api.ConversionMSOTEventsCreate
 import org.openapitools.client.api.Error
 
 object MsotEventsApi {
@@ -30,7 +30,7 @@ object MsotEventsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def msotEventsCreate(host: String, adAccountId: String, conversionMSOTEvents: ConversionMSOTEvents): Task[Unit] = {
+  def msotEventsCreate(host: String, adAccountId: String, conversionMSOTEventsCreate: ConversionMSOTEventsCreate): Task[Unit] = {
     val path = "/ad_accounts/{ad_account_id}/msot/events".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
     val httpMethod = Method.POST
@@ -43,7 +43,7 @@ object MsotEventsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(conversionMSOTEvents)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(conversionMSOTEventsCreate)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
@@ -56,7 +56,7 @@ class HttpServiceMsotEventsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def msotEventsCreate(adAccountId: String, conversionMSOTEvents: ConversionMSOTEvents): Task[Unit] = {
+  def msotEventsCreate(adAccountId: String, conversionMSOTEventsCreate: ConversionMSOTEventsCreate): Task[Unit] = {
     val path = "/ad_accounts/{ad_account_id}/msot/events".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
     val httpMethod = Method.POST
@@ -69,7 +69,7 @@ class HttpServiceMsotEventsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(conversionMSOTEvents)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(conversionMSOTEventsCreate)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp

@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BatchOperationStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemProcessingRecord;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -28,24 +27,52 @@ public class CatalogsRetailItemsBatch  {
  /**
   * Id of the catalogs items batch
   */
-  @ApiModelProperty(example = "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e", value = "Id of the catalogs items batch")
+  @ApiModelProperty(example = "595953100599279259", value = "Id of the catalogs items batch")
   private String batchId;
 
+public enum CatalogTypeEnum {
+
+    @JsonProperty("RETAIL") RETAIL(String.valueOf("RETAIL"));
+
+    private String value;
+
+    CatalogTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
   @ApiModelProperty(required = true, value = "")
-  @Valid
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
  /**
   * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
   */
-  @ApiModelProperty(value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
+  @ApiModelProperty(example = "2024-01-01T20:20Z", value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSX")
   private Date completedTime;
 
  /**
   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
   */
-  @ApiModelProperty(required = true, value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.")
+  @ApiModelProperty(example = "2024-01-01T20:10:40Z", required = true, value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSX")
   private Date createdTime;
 
@@ -64,7 +91,7 @@ public class CatalogsRetailItemsBatch  {
   * @return batchId
   */
   @JsonProperty("batch_id")
-  public String getBatchId() {
+ @Pattern(regexp="^\\d+$")  public String getBatchId() {
     return batchId;
   }
 
@@ -89,21 +116,21 @@ public class CatalogsRetailItemsBatch  {
   */
   @JsonProperty("catalog_type")
   @NotNull
-  public CatalogsType getCatalogType() {
-    return catalogType;
+  public String getCatalogType() {
+    return catalogType == null ? null : catalogType.value();
   }
 
   /**
    * Sets the <code>catalogType</code> property.
    */
- public void setCatalogType(CatalogsType catalogType) {
+ public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
   /**
    * Sets the <code>catalogType</code> property.
    */
-  public CatalogsRetailItemsBatch catalogType(CatalogsType catalogType) {
+  public CatalogsRetailItemsBatch catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -119,7 +146,6 @@ public class CatalogsRetailItemsBatch  {
 
   /**
    * Sets the <code>completedTime</code> property.
-   * <br><em>N.B. <code>completedTime</code> is <b>read only</b>; client code should not call this method</em>.
    */
  public void setCompletedTime(Date completedTime) {
     this.completedTime = completedTime;
@@ -127,7 +153,6 @@ public class CatalogsRetailItemsBatch  {
 
   /**
    * Sets the <code>completedTime</code> property.
-   * <br><em>N.B. <code>completedTime</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public CatalogsRetailItemsBatch completedTime(Date completedTime) {
     this.completedTime = completedTime;
@@ -146,7 +171,6 @@ public class CatalogsRetailItemsBatch  {
 
   /**
    * Sets the <code>createdTime</code> property.
-   * <br><em>N.B. <code>createdTime</code> is <b>read only</b>; client code should not call this method</em>.
    */
  public void setCreatedTime(Date createdTime) {
     this.createdTime = createdTime;
@@ -154,7 +178,6 @@ public class CatalogsRetailItemsBatch  {
 
   /**
    * Sets the <code>createdTime</code> property.
-   * <br><em>N.B. <code>createdTime</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public CatalogsRetailItemsBatch createdTime(Date createdTime) {
     this.createdTime = createdTime;
@@ -260,10 +283,7 @@ public class CatalogsRetailItemsBatch  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

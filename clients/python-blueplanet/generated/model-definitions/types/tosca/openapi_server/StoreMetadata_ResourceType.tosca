@@ -1,0 +1,60 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server StoreMetadata"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a StoreMetadata"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  StoreMetadata {
+    title = StoreMetadata
+    description = StoreMetadata
+    derivedFrom = Root
+    properties {
+        geohash {
+          type =  string
+          description = "Geohash of the store location"
+          optional = false
+        }
+        latitude {
+          type =  integer
+          description = "Geographic latitude coordinate of the store"
+          optional = false
+        }
+        longitude {
+          type =  integer
+          description = "Geographic longitude coordinate of the store"
+          optional = false
+        }
+        store_code {
+          type =  string
+          description = "Merchant provided store code"
+          optional = true
+        }
+        store_id {
+          type =  string
+          description = "Internal store code"
+          optional = true
+        }
+        store_name {
+          type =  string
+          description = "Store name"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  StoreMetadata {
+    title = StoreMetadata
+    description = StoreMetadata
+    implements = openapi_server.resourceTypes.StoreMetadata
+
+  }
+}

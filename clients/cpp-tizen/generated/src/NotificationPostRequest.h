@@ -1,16 +1,14 @@
 /*
- * Notification_post_request.h
+ * NotificationPostRequest.h
  *
- * Any valid JSON object
+ * Notification request body. Can be either a batch of notification objects or a single notification object.
  */
 
-#ifndef _Notification_post_request_H_
-#define _Notification_post_request_H_
+#ifndef _NotificationPostRequest_H_
+#define _NotificationPostRequest_H_
 
 
 #include <string>
-#include "AnyType.h"
-#include <map>
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -22,22 +20,22 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Any valid JSON object
+/*! \brief Notification request body. Can be either a batch of notification objects or a single notification object.
  *
  *  \ingroup Models
  *
  */
 
-class Notification_post_request : public Object {
+class NotificationPostRequest : public Object {
 public:
 	/*! \brief Constructor.
 	 */
-	Notification_post_request();
-	Notification_post_request(char* str);
+	NotificationPostRequest();
+	NotificationPostRequest(char* str);
 
 	/*! \brief Destructor.
 	 */
-	virtual ~Notification_post_request();
+	virtual ~NotificationPostRequest();
 
 	/*! \brief Retrieve a string JSON representation of this class.
 	 */
@@ -56,4 +54,4 @@ private:
 }
 }
 
-#endif /* _Notification_post_request_H_ */
+#endif /* _NotificationPostRequest_H_ */

@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **items** | [**kotlin.collections.List&lt;UserSummary&gt;**](UserSummary.md) |  |  |
+| **items** | [**kotlin.collections.List&lt;FollowUser&gt;**](FollowUser.md) |  |  |
 | **bookmark** | **kotlin.String** |  |  [optional] |
 
 

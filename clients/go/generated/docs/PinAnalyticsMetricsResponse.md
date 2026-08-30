@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DailyMetrics** | Pointer to [**[]PinAnalyticsMetricsResponseDailyMetricsInner**](PinAnalyticsMetricsResponseDailyMetricsInner.md) | Array with the requested daily metric records | [optional] 
+**DailyMetrics** | Pointer to [**[]PinAnalyticsDailyMetrics**](PinAnalyticsDailyMetrics.md) | Array with the requested daily metric records | [optional] 
 **LifetimeMetrics** | Pointer to **map[string]int32** | The lifetime metric name and value. | [optional] 
 **SummaryMetrics** | Pointer to **map[string]float32** | The metric name and value over the requested period for each requested metric | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDailyMetrics
 
-`func (o *PinAnalyticsMetricsResponse) GetDailyMetrics() []PinAnalyticsMetricsResponseDailyMetricsInner`
+`func (o *PinAnalyticsMetricsResponse) GetDailyMetrics() []PinAnalyticsDailyMetrics`
 
 GetDailyMetrics returns the DailyMetrics field if non-nil, zero value otherwise.
 
 ### GetDailyMetricsOk
 
-`func (o *PinAnalyticsMetricsResponse) GetDailyMetricsOk() (*[]PinAnalyticsMetricsResponseDailyMetricsInner, bool)`
+`func (o *PinAnalyticsMetricsResponse) GetDailyMetricsOk() (*[]PinAnalyticsDailyMetrics, bool)`
 
 GetDailyMetricsOk returns a tuple with the DailyMetrics field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDailyMetrics
 
-`func (o *PinAnalyticsMetricsResponse) SetDailyMetrics(v []PinAnalyticsMetricsResponseDailyMetricsInner)`
+`func (o *PinAnalyticsMetricsResponse) SetDailyMetrics(v []PinAnalyticsDailyMetrics)`
 
 SetDailyMetrics sets DailyMetrics field to given value.
 

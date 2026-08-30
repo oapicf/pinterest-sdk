@@ -348,7 +348,7 @@ AssetGroupBinding::getAdAccountsIds()
 }
 
 void
-AssetGroupBinding::setAdAccountsIds(std::list <std::string> ad_accounts_ids)
+AssetGroupBinding::setAdAccountsIds(std::list<std::string> ad_accounts_ids)
 {
 	this->ad_accounts_ids = ad_accounts_ids;
 }
@@ -360,7 +360,7 @@ AssetGroupBinding::getAssetGroupDescription()
 }
 
 void
-AssetGroupBinding::setAssetGroupDescription(std::string  asset_group_description)
+AssetGroupBinding::setAssetGroupDescription(std::string asset_group_description)
 {
 	this->asset_group_description = asset_group_description;
 }
@@ -372,7 +372,7 @@ AssetGroupBinding::getAssetGroupName()
 }
 
 void
-AssetGroupBinding::setAssetGroupName(std::string  asset_group_name)
+AssetGroupBinding::setAssetGroupName(std::string asset_group_name)
 {
 	this->asset_group_name = asset_group_name;
 }
@@ -384,7 +384,7 @@ AssetGroupBinding::getAssetGroupTypes()
 }
 
 void
-AssetGroupBinding::setAssetGroupTypes(std::list <std::string> asset_group_types)
+AssetGroupBinding::setAssetGroupTypes(std::list<std::string> asset_group_types)
 {
 	this->asset_group_types = asset_group_types;
 }
@@ -396,7 +396,7 @@ AssetGroupBinding::getCatalogsIds()
 }
 
 void
-AssetGroupBinding::setCatalogsIds(std::list <std::string> catalogs_ids)
+AssetGroupBinding::setCatalogsIds(std::list<std::string> catalogs_ids)
 {
 	this->catalogs_ids = catalogs_ids;
 }
@@ -408,7 +408,7 @@ AssetGroupBinding::getCreatedBy()
 }
 
 void
-AssetGroupBinding::setCreatedBy(BusinessAccessUserSummary  created_by)
+AssetGroupBinding::setCreatedBy(BusinessAccessUserSummary created_by)
 {
 	this->created_by = created_by;
 }
@@ -420,7 +420,7 @@ AssetGroupBinding::getCreatedTime()
 }
 
 void
-AssetGroupBinding::setCreatedTime(int  created_time)
+AssetGroupBinding::setCreatedTime(int created_time)
 {
 	this->created_time = created_time;
 }
@@ -432,7 +432,7 @@ AssetGroupBinding::getId()
 }
 
 void
-AssetGroupBinding::setId(std::string  id)
+AssetGroupBinding::setId(std::string id)
 {
 	this->id = id;
 }
@@ -444,7 +444,7 @@ AssetGroupBinding::getOwner()
 }
 
 void
-AssetGroupBinding::setOwner(BusinessAccessUserSummary  owner)
+AssetGroupBinding::setOwner(BusinessAccessUserSummary owner)
 {
 	this->owner = owner;
 }
@@ -456,7 +456,7 @@ AssetGroupBinding::getProfilesIds()
 }
 
 void
-AssetGroupBinding::setProfilesIds(std::list <std::string> profiles_ids)
+AssetGroupBinding::setProfilesIds(std::list<std::string> profiles_ids)
 {
 	this->profiles_ids = profiles_ids;
 }
@@ -468,7 +468,7 @@ AssetGroupBinding::getUpdatedTime()
 }
 
 void
-AssetGroupBinding::setUpdatedTime(int  updated_time)
+AssetGroupBinding::setUpdatedTime(int updated_time)
 {
 	this->updated_time = updated_time;
 }

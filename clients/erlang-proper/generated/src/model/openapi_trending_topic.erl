@@ -10,6 +10,7 @@
 
 -type openapi_trending_topic() ::
   [ {'description', binary() }
+  | {'id', binary() }
   | {'percent_growth_mom', integer() }
   | {'pins', list(openapi_trending_pin:openapi_trending_pin()) }
   | {'related_interests', list(binary()) }
@@ -24,6 +25,7 @@ openapi_trending_topic() ->
 
 openapi_trending_topic(Fields) ->
   Default = [ {'description', binary() }
+            , {'id', binary() }
             , {'percent_growth_mom', integer() }
             , {'pins', list(openapi_trending_pin:openapi_trending_pin()) }
             , {'related_interests', list(binary()) }

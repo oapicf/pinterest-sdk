@@ -14,11 +14,11 @@ static audience_definition_t *audience_definition_create_internal(
     if (!audience_definition_local_var) {
         return NULL;
     }
+    memset(audience_definition_local_var, 0, sizeof(audience_definition_t));
+    audience_definition_local_var->_library_owned = 1;
     audience_definition_local_var->date = date;
     audience_definition_local_var->scope = scope;
     audience_definition_local_var->type = type;
-
-    audience_definition_local_var->_library_owned = 1;
     return audience_definition_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) audience_definition_t *audience_definition_create(
     char *scope,
     char *type
     ) {
-    return audience_definition_create_internal (
+    audience_definition_t *result = audience_definition_create_internal (
         date,
         scope,
         type
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void audience_definition_free(audience_definition_t *audience_definition) {
@@ -96,6 +99,12 @@ audience_definition_t *audience_definition_parseFromJSON(cJSON *audience_definit
 
     audience_definition_t *audience_definition_local_var = NULL;
 
+    char *date_local_str = NULL;
+
+    char *scope_local_str = NULL;
+
+    char *type_local_str = NULL;
+
     // audience_definition->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(audience_definitionJSON, "date");
     if (cJSON_IsNull(date)) {
@@ -133,14 +142,34 @@ audience_definition_t *audience_definition_parseFromJSON(cJSON *audience_definit
     }
 
 
+    if (date && !cJSON_IsNull(date)) date_local_str = strdup(date->valuestring);
+    if (scope && !cJSON_IsNull(scope)) scope_local_str = strdup(scope->valuestring);
+    if (type && !cJSON_IsNull(type)) type_local_str = strdup(type->valuestring);
+
     audience_definition_local_var = audience_definition_create_internal (
-        date && !cJSON_IsNull(date) ? strdup(date->valuestring) : NULL,
-        scope && !cJSON_IsNull(scope) ? strdup(scope->valuestring) : NULL,
-        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL
+        date_local_str,
+        scope_local_str,
+        type_local_str
         );
+
+    if (!audience_definition_local_var) {
+        goto end;
+    }
 
     return audience_definition_local_var;
 end:
+    if (date_local_str) {
+        free(date_local_str);
+        date_local_str = NULL;
+    }
+    if (scope_local_str) {
+        free(scope_local_str);
+        scope_local_str = NULL;
+    }
+    if (type_local_str) {
+        free(type_local_str);
+        type_local_str = NULL;
+    }
     return NULL;
 
 }

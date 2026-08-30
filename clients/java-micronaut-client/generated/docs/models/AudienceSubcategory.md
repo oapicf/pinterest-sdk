@@ -8,11 +8,11 @@ The class is defined in **[AudienceSubcategory.java](../../src/main/java/org/ope
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | `String` | Subinterest ID. |  [optional property]
-**index** | `BigDecimal` | Subinterest affinity index. |  [optional property]
-**key** | `String` | Interest unique key (same as ID). |  [optional property]
-**name** | `String` | Subinterest name. |  [optional property]
-**ratio** | `BigDecimal` | Subinterest&#39;s percent of category&#39;s total audience. |  [optional property]
+**id** | `String` |  |  [optional property]
+**index** | `BigDecimal` |  |  [optional property]
+**key** | `String` |  |  [optional property]
+**name** | `String` |  |  [optional property]
+**ratio** | `BigDecimal` |  |  [optional property]
 
 
 

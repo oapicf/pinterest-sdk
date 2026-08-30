@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.label_update_request_labels_inner import LabelUpdateRequestLabelsInner  # noqa: F401,E501
+from app.openapi_server.models.label_update_item import LabelUpdateItem  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,14 +16,14 @@ class LabelUpdateRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, labels: List[LabelUpdateRequestLabelsInner]=None):  # noqa: E501
+    def __init__(self, labels: List[LabelUpdateItem]=None):  # noqa: E501
         """LabelUpdateRequest - a model defined in Swagger
 
         :param labels: The labels of this LabelUpdateRequest.  # noqa: E501
-        :type labels: List[LabelUpdateRequestLabelsInner]
+        :type labels: List[LabelUpdateItem]
         """
         self.swagger_types = {
-            'labels': List[LabelUpdateRequestLabelsInner]
+            'labels': List[LabelUpdateItem]
         }
 
         self.attribute_map = {
@@ -44,24 +44,24 @@ class LabelUpdateRequest(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def labels(self) -> List[LabelUpdateRequestLabelsInner]:
+    def labels(self) -> List[LabelUpdateItem]:
         """Gets the labels of this LabelUpdateRequest.
 
         Labels that you are applying to the campaign.  # noqa: E501
 
         :return: The labels of this LabelUpdateRequest.
-        :rtype: List[LabelUpdateRequestLabelsInner]
+        :rtype: List[LabelUpdateItem]
         """
         return self._labels
 
     @labels.setter
-    def labels(self, labels: List[LabelUpdateRequestLabelsInner]):
+    def labels(self, labels: List[LabelUpdateItem]):
         """Sets the labels of this LabelUpdateRequest.
 
         Labels that you are applying to the campaign.  # noqa: E501
 
         :param labels: The labels of this LabelUpdateRequest.
-        :type labels: List[LabelUpdateRequestLabelsInner]
+        :type labels: List[LabelUpdateItem]
         """
         if labels is None:
             raise ValueError("Invalid value for `labels`, must not be `None`")  # noqa: E501

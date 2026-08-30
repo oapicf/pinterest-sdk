@@ -101,25 +101,48 @@ EventQualityScore <- R6::R6Class(
       EventQualityScoreObject <- list()
       if (!is.null(self$`ingestion_source`)) {
         EventQualityScoreObject[["ingestion_source"]] <-
-          self$`ingestion_source`$toSimpleType()
+          self$extractSimpleType(self$`ingestion_source`)
       }
       if (!is.null(self$`lookback_period`)) {
         EventQualityScoreObject[["lookback_period"]] <-
-          self$`lookback_period`$toSimpleType()
+          self$extractSimpleType(self$`lookback_period`)
       }
       if (!is.null(self$`overall_status`)) {
         EventQualityScoreObject[["overall_status"]] <-
-          self$`overall_status`$toSimpleType()
+          self$extractSimpleType(self$`overall_status`)
       }
       if (!is.null(self$`quality_components`)) {
         EventQualityScoreObject[["quality_components"]] <-
-          self$`quality_components`$toSimpleType()
+          self$extractSimpleType(self$`quality_components`)
       }
       if (!is.null(self$`source_platform`)) {
         EventQualityScoreObject[["source_platform"]] <-
-          self$`source_platform`$toSimpleType()
+          self$extractSimpleType(self$`source_platform`)
       }
       return(EventQualityScoreObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

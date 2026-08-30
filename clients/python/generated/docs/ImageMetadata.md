@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **str** |  | [optional] 
 **images** | [**ImageSize**](ImageSize.md) |  | [optional] 
-**item_type** | **str** |  | [optional] 
+**item_type** | **str** | Discriminator literal identifying this as image metadata inside a &#x60;PinMediaMetadata&#x60; payload. | 
 **link** | **str** |  | [optional] 
 **title** | **str** |  | [optional] 
 

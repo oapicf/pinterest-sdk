@@ -356,29 +356,8 @@ class CatalogsFeedValidationWarnings {
     Integer DUPLICATE_HEADERS
     /* Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date. */
     Integer EXPIRATION_DATE_INVALID
-
-    enum FETCHSAMESIGNATUREEnum {
-    
-        NUMBER_1(1)
-    
-        private final Integer value
-    
-        FETCHSAMESIGNATUREEnum(Integer value) {
-            this.value = value
-        }
-    
-        Integer getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
     /* Ingestion completed early because there are no changes to your feed since the last successful update. */
-    FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE
+    Integer FETCH_SAME_SIGNATURE
     /* Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences. */
     Integer GENDER_INVALID
     /* Some items include incorrectly formatted GTINs. */

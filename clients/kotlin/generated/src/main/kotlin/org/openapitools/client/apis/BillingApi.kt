@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,19 +27,22 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.AdsCreditRedeemRequest
-import org.openapitools.client.models.AdsCreditRedeemResponse
+import org.openapitools.client.models.AdsCreditRedeem
+import org.openapitools.client.models.AdsCreditRedeemCreate
 import org.openapitools.client.models.AdsCreditsDiscountsGet200Response
+import org.openapitools.client.models.BillingInvoiceDocumentType
 import org.openapitools.client.models.BillingInvoiceDownloadResponse
+import org.openapitools.client.models.BillingInvoiceSortField
+import org.openapitools.client.models.BillingInvoiceStatus
 import org.openapitools.client.models.BillingInvoicesGet200Response
 import org.openapitools.client.models.BillingProfilesGet200Response
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.SSIOAccountResponse
-import org.openapitools.client.models.SSIOCreateInsertionOrderRequest
-import org.openapitools.client.models.SSIOCreateInsertionOrderResponse
-import org.openapitools.client.models.SSIOEditInsertionOrderRequest
-import org.openapitools.client.models.SSIOEditInsertionOrderResponse
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
+import org.openapitools.client.models.SSIOAccount
+import org.openapitools.client.models.SSIOInsertionOrder
+import org.openapitools.client.models.SSIOInsertionOrderCreate
 import org.openapitools.client.models.SSIOInsertionOrderStatusResponse
+import org.openapitools.client.models.SSIOInsertionOrderUpdate
 import org.openapitools.client.models.SsioInsertionOrdersStatusGetByAdAccount200Response
 import org.openapitools.client.models.SsioOrderLinesGetByAdAccount200Response
 
@@ -55,17 +66,17 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * POST /ad_accounts/{ad_account_id}/ads_credit/redeem
      * Redeem ad credits
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      * @param adAccountId Unique identifier of an ad account.
-     * @param adsCreditRedeemRequest Redeem ad credits request.
-     * @return AdsCreditRedeemResponse
+     * @param adsCreditRedeemCreate 
+     * @return AdsCreditRedeem
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -74,11 +85,11 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adsCreditRedeem(adAccountId: kotlin.String, adsCreditRedeemRequest: AdsCreditRedeemRequest) : AdsCreditRedeemResponse {
-        val localVarResponse = adsCreditRedeemWithHttpInfo(adAccountId = adAccountId, adsCreditRedeemRequest = adsCreditRedeemRequest)
+    fun adsCreditRedeem(adAccountId: kotlin.String, adsCreditRedeemCreate: AdsCreditRedeemCreate) : AdsCreditRedeem {
+        val localVarResponse = adsCreditRedeemWithHttpInfo(adAccountId = adAccountId, adsCreditRedeemCreate = adsCreditRedeemCreate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as AdsCreditRedeemResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AdsCreditRedeem
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -95,19 +106,19 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * POST /ad_accounts/{ad_account_id}/ads_credit/redeem
      * Redeem ad credits
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      * @param adAccountId Unique identifier of an ad account.
-     * @param adsCreditRedeemRequest Redeem ad credits request.
-     * @return ApiResponse<AdsCreditRedeemResponse?>
+     * @param adsCreditRedeemCreate 
+     * @return ApiResponse<AdsCreditRedeem?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun adsCreditRedeemWithHttpInfo(adAccountId: kotlin.String, adsCreditRedeemRequest: AdsCreditRedeemRequest) : ApiResponse<AdsCreditRedeemResponse?> {
-        val localVariableConfig = adsCreditRedeemRequestConfig(adAccountId = adAccountId, adsCreditRedeemRequest = adsCreditRedeemRequest)
+    fun adsCreditRedeemWithHttpInfo(adAccountId: kotlin.String, adsCreditRedeemCreate: AdsCreditRedeemCreate) : ApiResponse<AdsCreditRedeem?> {
+        val localVariableConfig = adsCreditRedeemRequestConfig(adAccountId = adAccountId, adsCreditRedeemCreate = adsCreditRedeemCreate)
 
-        return request<AdsCreditRedeemRequest, AdsCreditRedeemResponse>(
+        return request<AdsCreditRedeemCreate, AdsCreditRedeem>(
             localVariableConfig
         )
     }
@@ -116,11 +127,11 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * To obtain the request config of the operation adsCreditRedeem
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param adsCreditRedeemRequest Redeem ad credits request.
+     * @param adsCreditRedeemCreate 
      * @return RequestConfig
      */
-    fun adsCreditRedeemRequestConfig(adAccountId: kotlin.String, adsCreditRedeemRequest: AdsCreditRedeemRequest) : RequestConfig<AdsCreditRedeemRequest> {
-        val localVariableBody = adsCreditRedeemRequest
+    fun adsCreditRedeemRequestConfig(adAccountId: kotlin.String, adsCreditRedeemCreate: AdsCreditRedeemCreate) : RequestConfig<AdsCreditRedeemCreate> {
+        val localVariableBody = adsCreditRedeemCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -139,10 +150,10 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/ads_credit/discounts
      * Get ads credit discounts
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return AdsCreditsDiscountsGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -173,10 +184,10 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/ads_credit/discounts
      * Get ads credit discounts
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<AdsCreditsDiscountsGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -196,7 +207,7 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      *
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun adsCreditsDiscountsGetRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -300,85 +311,14 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * enum for parameter sort
-     */
-     enum class SortBillingInvoicesGet(val value: kotlin.String) {
-         @Json(name = "DUE_DATE") DUE_DATE("DUE_DATE"),
-         @Json(name = "BILLING_PERIOD") BILLING_PERIOD("BILLING_PERIOD"),
-         @Json(name = "DOCUMENT_TYPE") DOCUMENT_TYPE("DOCUMENT_TYPE"),
-         @Json(name = "TOTAL_AMOUNT") TOTAL_AMOUNT("TOTAL_AMOUNT"),
-         @Json(name = "INVOICE_NUMBER") INVOICE_NUMBER("INVOICE_NUMBER");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
-     * enum for parameter order
-     */
-     enum class OrderBillingInvoicesGet(val value: kotlin.String) {
-         @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
-     * enum for parameter status
-     */
-     enum class StatusBillingInvoicesGet(val value: kotlin.String) {
-         @Json(name = "OPEN") OPEN("OPEN"),
-         @Json(name = "CLOSED") CLOSED("CLOSED");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
-     * enum for parameter documentType
-     */
-     enum class DocumentTypeBillingInvoicesGet(val value: kotlin.String) {
-         @Json(name = "INVOICE") INVOICE("INVOICE"),
-         @Json(name = "CREDIT_MEMO") CREDIT_MEMO("CREDIT_MEMO");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /ad_accounts/{ad_account_id}/billing_invoices
      * Get billing invoices
      * Get billing invoices in the advertiser account.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param sort Field of which to sort billing invoices (optional, default to Sort.DUE_DATE)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param sort Field of which to sort billing invoices (optional, default to BillingInvoiceSortField.DUE_DATE)
      * @param status Status of billing invoices to filter by (optional)
      * @param documentType Document type of billing invoices to filter by (optional)
      * @param startDueDate Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
@@ -392,8 +332,8 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun billingInvoicesGet(adAccountId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, sort: SortBillingInvoicesGet? = SortBillingInvoicesGet.DUE_DATE, order: OrderBillingInvoicesGet? = null, status: StatusBillingInvoicesGet? = null, documentType: DocumentTypeBillingInvoicesGet? = null, startDueDate: java.time.LocalDate? = null, endDueDate: java.time.LocalDate? = null) : BillingInvoicesGet200Response {
-        val localVarResponse = billingInvoicesGetWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, sort = sort, order = order, status = status, documentType = documentType, startDueDate = startDueDate, endDueDate = endDueDate)
+    fun billingInvoicesGet(adAccountId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, order: PinterestLibPaginationOrder? = null, sort: BillingInvoiceSortField? = BillingInvoiceSortField.DUE_DATE, status: BillingInvoiceStatus? = null, documentType: BillingInvoiceDocumentType? = null, startDueDate: java.time.LocalDate? = null, endDueDate: java.time.LocalDate? = null) : BillingInvoicesGet200Response {
+        val localVarResponse = billingInvoicesGetWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order, sort = sort, status = status, documentType = documentType, startDueDate = startDueDate, endDueDate = endDueDate)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as BillingInvoicesGet200Response
@@ -416,9 +356,9 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Get billing invoices in the advertiser account.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param sort Field of which to sort billing invoices (optional, default to Sort.DUE_DATE)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param sort Field of which to sort billing invoices (optional, default to BillingInvoiceSortField.DUE_DATE)
      * @param status Status of billing invoices to filter by (optional)
      * @param documentType Document type of billing invoices to filter by (optional)
      * @param startDueDate Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
@@ -429,8 +369,8 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun billingInvoicesGetWithHttpInfo(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, sort: SortBillingInvoicesGet?, order: OrderBillingInvoicesGet?, status: StatusBillingInvoicesGet?, documentType: DocumentTypeBillingInvoicesGet?, startDueDate: java.time.LocalDate?, endDueDate: java.time.LocalDate?) : ApiResponse<BillingInvoicesGet200Response?> {
-        val localVariableConfig = billingInvoicesGetRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, sort = sort, order = order, status = status, documentType = documentType, startDueDate = startDueDate, endDueDate = endDueDate)
+    fun billingInvoicesGetWithHttpInfo(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?, sort: BillingInvoiceSortField?, status: BillingInvoiceStatus?, documentType: BillingInvoiceDocumentType?, startDueDate: java.time.LocalDate?, endDueDate: java.time.LocalDate?) : ApiResponse<BillingInvoicesGet200Response?> {
+        val localVariableConfig = billingInvoicesGetRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order, sort = sort, status = status, documentType = documentType, startDueDate = startDueDate, endDueDate = endDueDate)
 
         return request<Unit, BillingInvoicesGet200Response>(
             localVariableConfig
@@ -442,16 +382,16 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      *
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param sort Field of which to sort billing invoices (optional, default to Sort.DUE_DATE)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param sort Field of which to sort billing invoices (optional, default to BillingInvoiceSortField.DUE_DATE)
      * @param status Status of billing invoices to filter by (optional)
      * @param documentType Document type of billing invoices to filter by (optional)
      * @param startDueDate Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
      * @param endDueDate Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
      * @return RequestConfig
      */
-    fun billingInvoicesGetRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, sort: SortBillingInvoicesGet?, order: OrderBillingInvoicesGet?, status: StatusBillingInvoicesGet?, documentType: DocumentTypeBillingInvoicesGet?, startDueDate: java.time.LocalDate?, endDueDate: java.time.LocalDate?) : RequestConfig<Unit> {
+    fun billingInvoicesGetRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?, sort: BillingInvoiceSortField?, status: BillingInvoiceStatus?, documentType: BillingInvoiceDocumentType?, startDueDate: java.time.LocalDate?, endDueDate: java.time.LocalDate?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -461,23 +401,23 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
                 }
-                if (sort != null) {
-                    put("sort", listOf(sort.value))
-                }
                 if (order != null) {
-                    put("order", listOf(order.value))
+                    put("order", listOf(order.toString()))
+                }
+                if (sort != null) {
+                    put("sort", listOf(sort.toString()))
                 }
                 if (status != null) {
-                    put("status", listOf(status.value))
+                    put("status", listOf(status.toString()))
                 }
                 if (documentType != null) {
-                    put("document_type", listOf(documentType.value))
+                    put("document_type", listOf(documentType.toString()))
                 }
                 if (startDueDate != null) {
-                    put("start_due_date", listOf(parseDateToQueryString(startDueDate)))
+                    put("start_due_date", listOf(parseDateToQueryString<java.time.LocalDate>(startDueDate)))
                 }
                 if (endDueDate != null) {
-                    put("end_due_date", listOf(parseDateToQueryString(endDueDate)))
+                    put("end_due_date", listOf(parseDateToQueryString<java.time.LocalDate>(endDueDate)))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -496,11 +436,11 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/billing_profiles
      * Get billing profiles
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      * @param adAccountId Unique identifier of an ad account.
      * @param isActive Return active billing profiles, if false return all billing profiles.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return BillingProfilesGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -531,11 +471,11 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/billing_profiles
      * Get billing profiles
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      * @param adAccountId Unique identifier of an ad account.
      * @param isActive Return active billing profiles, if false return all billing profiles.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<BillingProfilesGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -556,7 +496,7 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * @param adAccountId Unique identifier of an ad account.
      * @param isActive Return active billing profiles, if false return all billing profiles.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun billingProfilesGetRequestConfig(adAccountId: kotlin.String, isActive: kotlin.Boolean, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -587,9 +527,9 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/ssio/accounts
      * Get Salesforce account details including bill-to information.
-     * Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
-     * @return SSIOAccountResponse
+     * @return SSIOAccount
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -598,11 +538,11 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun ssioAccountsGet(adAccountId: kotlin.String) : SSIOAccountResponse {
+    fun ssioAccountsGet(adAccountId: kotlin.String) : SSIOAccount {
         val localVarResponse = ssioAccountsGetWithHttpInfo(adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as SSIOAccountResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SSIOAccount
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -619,18 +559,18 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/ssio/accounts
      * Get Salesforce account details including bill-to information.
-     * Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
-     * @return ApiResponse<SSIOAccountResponse?>
+     * @return ApiResponse<SSIOAccount?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun ssioAccountsGetWithHttpInfo(adAccountId: kotlin.String) : ApiResponse<SSIOAccountResponse?> {
+    fun ssioAccountsGetWithHttpInfo(adAccountId: kotlin.String) : ApiResponse<SSIOAccount?> {
         val localVariableConfig = ssioAccountsGetRequestConfig(adAccountId = adAccountId)
 
-        return request<Unit, SSIOAccountResponse>(
+        return request<Unit, SSIOAccount>(
             localVariableConfig
         )
     }
@@ -660,10 +600,10 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * POST /ad_accounts/{ad_account_id}/ssio/insertion_orders
      * Create insertion order through SSIO.
-     * Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
-     * @param ssIOCreateInsertionOrderRequest Order line to create.
-     * @return SSIOCreateInsertionOrderResponse
+     * @param ssIOInsertionOrderCreate 
+     * @return SSIOInsertionOrder
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -672,11 +612,11 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun ssioInsertionOrderCreate(adAccountId: kotlin.String, ssIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest) : SSIOCreateInsertionOrderResponse {
-        val localVarResponse = ssioInsertionOrderCreateWithHttpInfo(adAccountId = adAccountId, ssIOCreateInsertionOrderRequest = ssIOCreateInsertionOrderRequest)
+    fun ssioInsertionOrderCreate(adAccountId: kotlin.String, ssIOInsertionOrderCreate: SSIOInsertionOrderCreate) : SSIOInsertionOrder {
+        val localVarResponse = ssioInsertionOrderCreateWithHttpInfo(adAccountId = adAccountId, ssIOInsertionOrderCreate = ssIOInsertionOrderCreate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as SSIOCreateInsertionOrderResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SSIOInsertionOrder
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -693,19 +633,19 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * POST /ad_accounts/{ad_account_id}/ssio/insertion_orders
      * Create insertion order through SSIO.
-     * Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
-     * @param ssIOCreateInsertionOrderRequest Order line to create.
-     * @return ApiResponse<SSIOCreateInsertionOrderResponse?>
+     * @param ssIOInsertionOrderCreate 
+     * @return ApiResponse<SSIOInsertionOrder?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun ssioInsertionOrderCreateWithHttpInfo(adAccountId: kotlin.String, ssIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest) : ApiResponse<SSIOCreateInsertionOrderResponse?> {
-        val localVariableConfig = ssioInsertionOrderCreateRequestConfig(adAccountId = adAccountId, ssIOCreateInsertionOrderRequest = ssIOCreateInsertionOrderRequest)
+    fun ssioInsertionOrderCreateWithHttpInfo(adAccountId: kotlin.String, ssIOInsertionOrderCreate: SSIOInsertionOrderCreate) : ApiResponse<SSIOInsertionOrder?> {
+        val localVariableConfig = ssioInsertionOrderCreateRequestConfig(adAccountId = adAccountId, ssIOInsertionOrderCreate = ssIOInsertionOrderCreate)
 
-        return request<SSIOCreateInsertionOrderRequest, SSIOCreateInsertionOrderResponse>(
+        return request<SSIOInsertionOrderCreate, SSIOInsertionOrder>(
             localVariableConfig
         )
     }
@@ -714,11 +654,11 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * To obtain the request config of the operation ssioInsertionOrderCreate
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param ssIOCreateInsertionOrderRequest Order line to create.
+     * @param ssIOInsertionOrderCreate 
      * @return RequestConfig
      */
-    fun ssioInsertionOrderCreateRequestConfig(adAccountId: kotlin.String, ssIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest) : RequestConfig<SSIOCreateInsertionOrderRequest> {
-        val localVariableBody = ssIOCreateInsertionOrderRequest
+    fun ssioInsertionOrderCreateRequestConfig(adAccountId: kotlin.String, ssIOInsertionOrderCreate: SSIOInsertionOrderCreate) : RequestConfig<SSIOInsertionOrderCreate> {
+        val localVariableBody = ssIOInsertionOrderCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -737,10 +677,10 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * PATCH /ad_accounts/{ad_account_id}/ssio/insertion_orders
      * Edit insertion order through SSIO.
-     * Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
-     * @param ssIOEditInsertionOrderRequest Order line to create.
-     * @return SSIOEditInsertionOrderResponse
+     * @param ssIOInsertionOrderUpdate 
+     * @return SSIOInsertionOrder
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -749,11 +689,11 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun ssioInsertionOrderEdit(adAccountId: kotlin.String, ssIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest) : SSIOEditInsertionOrderResponse {
-        val localVarResponse = ssioInsertionOrderEditWithHttpInfo(adAccountId = adAccountId, ssIOEditInsertionOrderRequest = ssIOEditInsertionOrderRequest)
+    fun ssioInsertionOrderEdit(adAccountId: kotlin.String, ssIOInsertionOrderUpdate: SSIOInsertionOrderUpdate) : SSIOInsertionOrder {
+        val localVarResponse = ssioInsertionOrderEditWithHttpInfo(adAccountId = adAccountId, ssIOInsertionOrderUpdate = ssIOInsertionOrderUpdate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as SSIOEditInsertionOrderResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SSIOInsertionOrder
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -770,19 +710,19 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * PATCH /ad_accounts/{ad_account_id}/ssio/insertion_orders
      * Edit insertion order through SSIO.
-     * Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
-     * @param ssIOEditInsertionOrderRequest Order line to create.
-     * @return ApiResponse<SSIOEditInsertionOrderResponse?>
+     * @param ssIOInsertionOrderUpdate 
+     * @return ApiResponse<SSIOInsertionOrder?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun ssioInsertionOrderEditWithHttpInfo(adAccountId: kotlin.String, ssIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest) : ApiResponse<SSIOEditInsertionOrderResponse?> {
-        val localVariableConfig = ssioInsertionOrderEditRequestConfig(adAccountId = adAccountId, ssIOEditInsertionOrderRequest = ssIOEditInsertionOrderRequest)
+    fun ssioInsertionOrderEditWithHttpInfo(adAccountId: kotlin.String, ssIOInsertionOrderUpdate: SSIOInsertionOrderUpdate) : ApiResponse<SSIOInsertionOrder?> {
+        val localVariableConfig = ssioInsertionOrderEditRequestConfig(adAccountId = adAccountId, ssIOInsertionOrderUpdate = ssIOInsertionOrderUpdate)
 
-        return request<SSIOEditInsertionOrderRequest, SSIOEditInsertionOrderResponse>(
+        return request<SSIOInsertionOrderUpdate, SSIOInsertionOrder>(
             localVariableConfig
         )
     }
@@ -791,11 +731,11 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * To obtain the request config of the operation ssioInsertionOrderEdit
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param ssIOEditInsertionOrderRequest Order line to create.
+     * @param ssIOInsertionOrderUpdate 
      * @return RequestConfig
      */
-    fun ssioInsertionOrderEditRequestConfig(adAccountId: kotlin.String, ssIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest) : RequestConfig<SSIOEditInsertionOrderRequest> {
-        val localVariableBody = ssIOEditInsertionOrderRequest
+    fun ssioInsertionOrderEditRequestConfig(adAccountId: kotlin.String, ssIOInsertionOrderUpdate: SSIOInsertionOrderUpdate) : RequestConfig<SSIOInsertionOrderUpdate> {
+        val localVariableBody = ssIOInsertionOrderUpdate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -814,10 +754,10 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/ssio/insertion_orders/status
      * Get insertion order status by ad account id.
-     * Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return SsioInsertionOrdersStatusGetByAdAccount200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -848,10 +788,10 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/ssio/insertion_orders/status
      * Get insertion order status by ad account id.
-     * Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<SsioInsertionOrdersStatusGetByAdAccount200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -871,7 +811,7 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      *
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun ssioInsertionOrdersStatusGetByAdAccountRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -901,7 +841,7 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status
      * Get insertion order status by pin order id.
-     * Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
      * @param pinOrderId The pin order id associated with the ssio insertion order
      * @return SSIOInsertionOrderStatusResponse
@@ -934,7 +874,7 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status
      * Get insertion order status by pin order id.
-     * Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
      * @param pinOrderId The pin order id associated with the ssio insertion order
      * @return ApiResponse<SSIOInsertionOrderStatusResponse?>
@@ -977,11 +917,11 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/ssio/order_lines
      * Get Salesforce order lines by ad account id.
-     * Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
+     * @param pinOrderId The pin order id associated with the SSIO insertion order (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param pinOrderId The pin order id associated with the ssio insertino order (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return SsioOrderLinesGetByAdAccount200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -991,8 +931,8 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun ssioOrderLinesGetByAdAccount(adAccountId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, pinOrderId: kotlin.String? = null) : SsioOrderLinesGetByAdAccount200Response {
-        val localVarResponse = ssioOrderLinesGetByAdAccountWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, pinOrderId = pinOrderId)
+    fun ssioOrderLinesGetByAdAccount(adAccountId: kotlin.String, pinOrderId: kotlin.String? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : SsioOrderLinesGetByAdAccount200Response {
+        val localVarResponse = ssioOrderLinesGetByAdAccountWithHttpInfo(adAccountId = adAccountId, pinOrderId = pinOrderId, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as SsioOrderLinesGetByAdAccount200Response
@@ -1012,19 +952,19 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/ssio/order_lines
      * Get Salesforce order lines by ad account id.
-     * Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
+     * @param pinOrderId The pin order id associated with the SSIO insertion order (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param pinOrderId The pin order id associated with the ssio insertino order (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<SsioOrderLinesGetByAdAccount200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun ssioOrderLinesGetByAdAccountWithHttpInfo(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, pinOrderId: kotlin.String?) : ApiResponse<SsioOrderLinesGetByAdAccount200Response?> {
-        val localVariableConfig = ssioOrderLinesGetByAdAccountRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, pinOrderId = pinOrderId)
+    fun ssioOrderLinesGetByAdAccountWithHttpInfo(adAccountId: kotlin.String, pinOrderId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<SsioOrderLinesGetByAdAccount200Response?> {
+        val localVariableConfig = ssioOrderLinesGetByAdAccountRequestConfig(adAccountId = adAccountId, pinOrderId = pinOrderId, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, SsioOrderLinesGetByAdAccount200Response>(
             localVariableConfig
@@ -1035,23 +975,23 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * To obtain the request config of the operation ssioOrderLinesGetByAdAccount
      *
      * @param adAccountId Unique identifier of an ad account.
+     * @param pinOrderId The pin order id associated with the SSIO insertion order (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param pinOrderId The pin order id associated with the ssio insertino order (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun ssioOrderLinesGetByAdAccountRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, pinOrderId: kotlin.String?) : RequestConfig<Unit> {
+    fun ssioOrderLinesGetByAdAccountRequestConfig(adAccountId: kotlin.String, pinOrderId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (pinOrderId != null) {
+                    put("pin_order_id", listOf(pinOrderId.toString()))
+                }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
                 }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
-                }
-                if (pinOrderId != null) {
-                    put("pin_order_id", listOf(pinOrderId.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingSpecOperationInterest",
+  "fields": [
+    {
+      "name": "field",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationInterest_field",
+        "symbols": [
+          "INTEREST"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": "model.TargetingSpecListOperation",
+      "doc": ""
+    },
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": ""
+    }
+  ]
+
+}

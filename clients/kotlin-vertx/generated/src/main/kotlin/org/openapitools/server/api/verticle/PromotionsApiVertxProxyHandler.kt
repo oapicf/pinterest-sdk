@@ -16,10 +16,11 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.PromotionCreateRequest
-import org.openapitools.server.api.model.PromotionResponse
-import org.openapitools.server.api.model.PromotionUpdateRequest
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
+import org.openapitools.server.api.model.Promotion
+import org.openapitools.server.api.model.PromotionBatchUpdate
+import org.openapitools.server.api.model.PromotionCreate
 import org.openapitools.server.api.model.PromotionsList200Response
 import org.openapitools.server.api.model.PromotionsResponse
 
@@ -75,14 +76,14 @@ class PromotionsApiVertxProxyHandler(private val vertx: Vertx, private val servi
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val promotionCreateRequestParam = ApiHandlerUtils.searchJsonArrayInJson(params,"body")
-                    if(promotionCreateRequestParam == null){
-                         throw IllegalArgumentException("promotionCreateRequest is required")
+                    val promotionCreateParam = ApiHandlerUtils.searchJsonArrayInJson(params,"body")
+                    if(promotionCreateParam == null){
+                         throw IllegalArgumentException("promotionCreate is required")
                     }
-                    val promotionCreateRequest:kotlin.Array<PromotionCreateRequest> = Gson().fromJson(promotionCreateRequestParam.encode()
-                            , object : TypeToken<kotlin.collections.List<PromotionCreateRequest>>(){}.type)
+                    val promotionCreate:kotlin.Array<PromotionCreate> = Gson().fromJson(promotionCreateParam.encode()
+                            , object : TypeToken<kotlin.collections.List<PromotionCreate>>(){}.type)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.promotionsCreate(adAccountId,promotionCreateRequest,context)
+                        val result = service.promotionsCreate(adAccountId,promotionCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -93,16 +94,16 @@ class PromotionsApiVertxProxyHandler(private val vertx: Vertx, private val servi
         
                 "promotionsDelete" -> {
                     val params = context.params
-                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
-                    if(adAccountId == null){
-                        throw IllegalArgumentException("adAccountId is required")
-                    }
                     val promotionId = ApiHandlerUtils.searchStringInJson(params,"promotion_id")
                     if(promotionId == null){
                         throw IllegalArgumentException("promotionId is required")
                     }
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.promotionsDelete(adAccountId,promotionId,context)
+                        val result = service.promotionsDelete(promotionId,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -113,16 +114,16 @@ class PromotionsApiVertxProxyHandler(private val vertx: Vertx, private val servi
         
                 "promotionsGet" -> {
                     val params = context.params
-                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
-                    if(adAccountId == null){
-                        throw IllegalArgumentException("adAccountId is required")
-                    }
                     val promotionId = ApiHandlerUtils.searchStringInJson(params,"promotion_id")
                     if(promotionId == null){
                         throw IllegalArgumentException("promotionId is required")
                     }
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.promotionsGet(adAccountId,promotionId,context)
+                        val result = service.promotionsGet(promotionId,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -137,11 +138,12 @@ class PromotionsApiVertxProxyHandler(private val vertx: Vertx, private val servi
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val order = ApiHandlerUtils.searchStringInJson(params,"order")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
+                    val orderParam = ApiHandlerUtils.searchJsonObjectInJson(params,"order")
+                    val order = if(orderParam ==null) null else Gson().fromJson(orderParam.encode(), PinterestLibPaginationOrder::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.promotionsList(adAccountId,pageSize,order,bookmark,context)
+                        val result = service.promotionsList(adAccountId,bookmark,pageSize,order,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -156,14 +158,14 @@ class PromotionsApiVertxProxyHandler(private val vertx: Vertx, private val servi
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val promotionUpdateRequestParam = ApiHandlerUtils.searchJsonArrayInJson(params,"body")
-                    if(promotionUpdateRequestParam == null){
-                         throw IllegalArgumentException("promotionUpdateRequest is required")
+                    val promotionBatchUpdateParam = ApiHandlerUtils.searchJsonArrayInJson(params,"body")
+                    if(promotionBatchUpdateParam == null){
+                         throw IllegalArgumentException("promotionBatchUpdate is required")
                     }
-                    val promotionUpdateRequest:kotlin.Array<PromotionUpdateRequest> = Gson().fromJson(promotionUpdateRequestParam.encode()
-                            , object : TypeToken<kotlin.collections.List<PromotionUpdateRequest>>(){}.type)
+                    val promotionBatchUpdate:kotlin.Array<PromotionBatchUpdate> = Gson().fromJson(promotionBatchUpdateParam.encode()
+                            , object : TypeToken<kotlin.collections.List<PromotionBatchUpdate>>(){}.type)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.promotionsUpdate(adAccountId,promotionUpdateRequest,context)
+                        val result = service.promotionsUpdate(adAccountId,promotionBatchUpdate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

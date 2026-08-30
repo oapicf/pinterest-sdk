@@ -428,8 +428,8 @@ class CatalogsVerticalBatchRequestLanguageEnum extends EnumClass {
   @BuiltValueEnumConst(wireName: r'NL')
   static const CatalogsVerticalBatchRequestLanguageEnum NL = _$catalogsVerticalBatchRequestLanguageEnum_NL;
   /// We recommend using the CatalogsLocale values.
-  @BuiltValueEnumConst(wireName: r'NO')
-  static const CatalogsVerticalBatchRequestLanguageEnum NO = _$catalogsVerticalBatchRequestLanguageEnum_NO;
+  @BuiltValueEnumConst(wireName: r'false')
+  static const CatalogsVerticalBatchRequestLanguageEnum false_ = _$catalogsVerticalBatchRequestLanguageEnum_false_;
   /// We recommend using the CatalogsLocale values.
   @BuiltValueEnumConst(wireName: r'PL')
   static const CatalogsVerticalBatchRequestLanguageEnum PL = _$catalogsVerticalBatchRequestLanguageEnum_PL;

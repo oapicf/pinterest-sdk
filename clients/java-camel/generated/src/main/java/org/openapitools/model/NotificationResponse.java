@@ -2,70 +2,31 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * NotificationResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class NotificationResponse {
-
-  private Boolean success;
-
-  private Integer receivedAt;
 
   private String errorMsg;
 
-  public NotificationResponse success(Boolean success) {
-    this.success = success;
-    return this;
-  }
+  private Integer receivedAt;
 
-  /**
-   * Returns true if the notification accepted.
-   * @return success
-   */
-  
-  @Schema(name = "success", example = "false", description = "Returns true if the notification accepted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("success")
-  public Boolean getSuccess() {
-    return success;
-  }
-
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
-
-  public NotificationResponse receivedAt(Integer receivedAt) {
-    this.receivedAt = receivedAt;
-    return this;
-  }
-
-  /**
-   * Received time. Unix timestamp in seconds.
-   * @return receivedAt
-   */
-  
-  @Schema(name = "received_at", example = "1677003860", description = "Received time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("received_at")
-  public Integer getReceivedAt() {
-    return receivedAt;
-  }
-
-  public void setReceivedAt(Integer receivedAt) {
-    this.receivedAt = receivedAt;
-  }
+  private Boolean success;
 
   public NotificationResponse errorMsg(String errorMsg) {
     this.errorMsg = errorMsg;
@@ -87,6 +48,46 @@ public class NotificationResponse {
     this.errorMsg = errorMsg;
   }
 
+  public NotificationResponse receivedAt(Integer receivedAt) {
+    this.receivedAt = receivedAt;
+    return this;
+  }
+
+  /**
+   * Received time. Unix timestamp in seconds.
+   * @return receivedAt
+   */
+  
+  @Schema(name = "received_at", description = "Received time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("received_at")
+  public Integer getReceivedAt() {
+    return receivedAt;
+  }
+
+  public void setReceivedAt(Integer receivedAt) {
+    this.receivedAt = receivedAt;
+  }
+
+  public NotificationResponse success(Boolean success) {
+    this.success = success;
+    return this;
+  }
+
+  /**
+   * Returns true if the notification accepted.
+   * @return success
+   */
+  
+  @Schema(name = "success", description = "Returns true if the notification accepted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("success")
+  public Boolean getSuccess() {
+    return success;
+  }
+
+  public void setSuccess(Boolean success) {
+    this.success = success;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -96,23 +97,23 @@ public class NotificationResponse {
       return false;
     }
     NotificationResponse notificationResponse = (NotificationResponse) o;
-    return Objects.equals(this.success, notificationResponse.success) &&
+    return Objects.equals(this.errorMsg, notificationResponse.errorMsg) &&
         Objects.equals(this.receivedAt, notificationResponse.receivedAt) &&
-        Objects.equals(this.errorMsg, notificationResponse.errorMsg);
+        Objects.equals(this.success, notificationResponse.success);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, receivedAt, errorMsg);
+    return Objects.hash(errorMsg, receivedAt, success);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotificationResponse {\n");
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
-    sb.append("    receivedAt: ").append(toIndentedString(receivedAt)).append("\n");
     sb.append("    errorMsg: ").append(toIndentedString(errorMsg)).append("\n");
+    sb.append("    receivedAt: ").append(toIndentedString(receivedAt)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -122,10 +123,7 @@ public class NotificationResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

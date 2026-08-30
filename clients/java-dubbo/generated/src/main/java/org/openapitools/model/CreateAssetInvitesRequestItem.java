@@ -1,0 +1,110 @@
+package org.openapitools.model;
+
+import org.openapitools.model.InviteType;
+import org.openapitools.model.Permissions;
+import java.util.*;
+import java.util.Objects;
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.annotation.Generated;
+import java.time.*;
+import java.math.*;
+@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.24.0")
+
+/**
+ * Object declaring an asset role update to an invite.
+ */
+public class CreateAssetInvitesRequestItem implements Serializable {
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.
+   */
+  @JsonProperty("asset_id_to_permissions")
+  private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
+
+  /**
+   * Unique identifier of an invite.
+   */
+  @JsonProperty("invite_id")
+  private String inviteId;
+
+  @JsonProperty("invite_type")
+  private InviteType inviteType;
+
+  /**
+   * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.
+   * @return assetIdToPermissions
+   */
+  public Map<String, List<Permissions>> getAssetIdToPermissions() {
+    return assetIdToPermissions;
+  }
+
+  public void setAssetIdToPermissions(Map<String, List<Permissions>> assetIdToPermissions) {
+    this.assetIdToPermissions = assetIdToPermissions;
+  }
+
+  /**
+   * Unique identifier of an invite.
+   * @return inviteId
+   */
+  public String getInviteId() {
+    return inviteId;
+  }
+
+  public void setInviteId(String inviteId) {
+    this.inviteId = inviteId;
+  }
+
+  /**
+   * 
+   * @return inviteType
+   */
+  public InviteType getInviteType() {
+    return inviteType;
+  }
+
+  public void setInviteType(InviteType inviteType) {
+    this.inviteType = inviteType;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    CreateAssetInvitesRequestItem createAssetInvitesRequestItem = (CreateAssetInvitesRequestItem) o;
+    return Objects.equals(this.assetIdToPermissions, createAssetInvitesRequestItem.assetIdToPermissions) &&
+        Objects.equals(this.inviteId, createAssetInvitesRequestItem.inviteId) &&
+        Objects.equals(this.inviteType, createAssetInvitesRequestItem.inviteType);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(assetIdToPermissions, inviteId, inviteType);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CreateAssetInvitesRequestItem {\n");
+    
+    sb.append("    assetIdToPermissions: ").append(toIndentedString(assetIdToPermissions)).append("\n");
+    sb.append("    inviteId: ").append(toIndentedString(inviteId)).append("\n");
+    sb.append("    inviteType: ").append(toIndentedString(inviteType)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}

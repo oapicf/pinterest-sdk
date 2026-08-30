@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `bookmark` | string
-`items` | [Array&lt;TemplateResponse&gt;](TemplateResponse.md)
+`items` | [Array&lt;AccountTemplate&gt;](AccountTemplate.md)
 
 ## Example
 

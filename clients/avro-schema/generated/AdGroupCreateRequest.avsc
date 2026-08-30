@@ -11,6 +11,24 @@
       "default": null
     },
     {
+      "name": "bid_multiplier",
+      "type": ["null", "double"],
+      "doc": "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.",
+      "default": null
+    },
+    {
+      "name": "budget_type",
+      "type": ["null", "model.BudgetType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "pacing_delivery_type",
+      "type": ["null", "model.PacingDeliveryType"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "bid_in_micro_currency",
       "type": ["null", "int"],
       "doc": "Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.",
@@ -18,16 +36,8 @@
     },
     {
       "name": "bid_strategy_type",
-      "type": ["null", {
-        "type": "enum",
-        "name": "AdGroupCreateRequest_bidUnderscorestrategyUnderscoretype",
-        "symbols": [
-          "AUTOMATIC_BID",
-          "MAX_BID",
-          "TARGET_AVG"
-        ]
-      }],
-      "doc": "Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".",
+      "type": ["null", "model.BidStrategyType"],
+      "doc": "",
       "default": null
     },
     {
@@ -40,12 +50,6 @@
       "type": ["null", "int"],
       "doc": "Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.",
       "default": null
-    },
-    {
-      "name": "budget_type",
-      "type": ["model.BudgetType", "null"],
-      "doc": "",
-      "default": BudgetType.DAILY
     },
     {
       "name": "campaign_id",
@@ -77,15 +81,9 @@
     },
     {
       "name": "optimization_goal_metadata",
-      "type": ["null", "model.OptimizationGoalMetadata"],
+      "type": ["null", "model.object"],
       "doc": "Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.",
       "default": null
-    },
-    {
-      "name": "pacing_delivery_type",
-      "type": ["model.PacingDeliveryType", "null"],
-      "doc": "",
-      "default": PacingDeliveryType.STANDARD
     },
     {
       "name": "placement_group",
@@ -112,6 +110,15 @@
       "type": ["string", "null"],
       "doc": "Promotion ID. To clear this field, set to null.",
       "default": "0"
+    },
+    {
+      "name": "promotion_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Promotion IDs list. To clear this field, set to an empty array [].",
+      "default": null
     },
     {
       "name": "start_time",
@@ -142,14 +149,8 @@
     },
     {
       "name": "tracking_urls",
-      "type": ["null", "model.TrackingUrls"],
-      "doc": "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.",
-      "default": null
-    },
-    {
-      "name": "bid_multiplier",
-      "type": ["null", "double"],
-      "doc": "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.",
+      "type": ["null", "model.object"],
+      "doc": "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.",
       "default": null
     }
   ]

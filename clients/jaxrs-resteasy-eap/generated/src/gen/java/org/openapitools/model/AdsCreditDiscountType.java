@@ -1,0 +1,29 @@
+package org.openapitools.model;
+
+import java.util.Objects;
+import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonValue;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+public enum AdsCreditDiscountType {
+  COUPON,
+  CREDIT,
+  COUPON_APPLIED,
+  CREDIT_APPLIED,
+  MARKETING_OFFER_CREDIT,
+  MARKETING_OFFER_CREDIT_APPLIED,
+  GOODWILL_CREDIT,
+  GOODWILL_CREDIT_APPLIED,
+  INTERNAL_CREDIT,
+  INTERNAL_CREDIT_APPLIED,
+  PREPAID_CREDIT,
+  PREPAID_CREDIT_APPLIED,
+  SALES_INCENTIVE_CREDIT,
+  SALES_INCENTIVE_CREDIT_APPLIED,
+  CREDIT_EXPIRED,
+  FUTURE_CREDIT,
+  REFERRAL_CREDIT,
+  INVOICE_SALES_INCENTIVE_CREDIT,
+  INVOICE_SALES_INCENTIVE_CREDIT_APPLIED,
+  PREPAID_CREDIT_REFUND;
+}

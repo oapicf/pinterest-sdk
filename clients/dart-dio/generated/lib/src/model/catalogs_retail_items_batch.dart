@@ -6,7 +6,6 @@
 import 'package:openapi/src/model/batch_operation_status.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/item_processing_record.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -28,8 +27,8 @@ abstract class CatalogsRetailItemsBatch implements Built<CatalogsRetailItemsBatc
   String? get batchId;
 
   @BuiltValueField(wireName: r'catalog_type')
-  CatalogsType get catalogType;
-  // enum catalogTypeEnum {  RETAIL,  HOTEL,  CREATIVE_ASSETS,  };
+  CatalogsRetailItemsBatchCatalogTypeEnum get catalogType;
+  // enum catalogTypeEnum {  RETAIL,  };
 
   /// Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
   @BuiltValueField(wireName: r'completed_time')
@@ -80,7 +79,7 @@ class _$CatalogsRetailItemsBatchSerializer implements PrimitiveSerializer<Catalo
     yield r'catalog_type';
     yield serializers.serialize(
       object.catalogType,
-      specifiedType: const FullType(CatalogsType),
+      specifiedType: const FullType(CatalogsRetailItemsBatchCatalogTypeEnum),
     );
     if (object.completedTime != null) {
       yield r'completed_time';
@@ -134,15 +133,16 @@ class _$CatalogsRetailItemsBatchSerializer implements PrimitiveSerializer<Catalo
         case r'batch_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.batchId = valueDes;
           break;
         case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsType),
-          ) as CatalogsType;
+            specifiedType: const FullType(CatalogsRetailItemsBatchCatalogTypeEnum),
+          ) as CatalogsRetailItemsBatchCatalogTypeEnum;
           result.catalogType = valueDes;
           break;
         case r'completed_time':
@@ -164,15 +164,17 @@ class _$CatalogsRetailItemsBatchSerializer implements PrimitiveSerializer<Catalo
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ItemProcessingRecord)]),
-          ) as BuiltList<ItemProcessingRecord>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(ItemProcessingRecord)]),
+          ) as BuiltList<ItemProcessingRecord>?;
+          if (valueDes == null) continue;
           result.items.replace(valueDes);
           break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BatchOperationStatus),
-          ) as BatchOperationStatus;
+            specifiedType: const FullType.nullable(BatchOperationStatus),
+          ) as BatchOperationStatus?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         default:
@@ -202,5 +204,18 @@ class _$CatalogsRetailItemsBatchSerializer implements PrimitiveSerializer<Catalo
     );
     return result.build();
   }
+}
+
+class CatalogsRetailItemsBatchCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'RETAIL')
+  static const CatalogsRetailItemsBatchCatalogTypeEnum RETAIL = _$catalogsRetailItemsBatchCatalogTypeEnum_RETAIL;
+
+  static Serializer<CatalogsRetailItemsBatchCatalogTypeEnum> get serializer => _$catalogsRetailItemsBatchCatalogTypeEnumSerializer;
+
+  const CatalogsRetailItemsBatchCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsRetailItemsBatchCatalogTypeEnum> get values => _$catalogsRetailItemsBatchCatalogTypeEnumValues;
+  static CatalogsRetailItemsBatchCatalogTypeEnum valueOf(String name) => _$catalogsRetailItemsBatchCatalogTypeEnumValueOf(name);
 }
 

@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"altText": @"alt_text", @"boardId": @"board_id", @"boardSectionId": @"board_section_id", @"_description": @"description", @"dominantColor": @"dominant_color", @"link": @"link", @"mediaSource": @"media_source", @"parentPinId": @"parent_pin_id", @"sponsorId": @"sponsor_id", @"title": @"title" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"aiDisclosures": @"ai_disclosures", @"altText": @"alt_text", @"boardId": @"board_id", @"boardSectionId": @"board_section_id", @"_description": @"description", @"dominantColor": @"dominant_color", @"link": @"link", @"mediaSource": @"media_source", @"parentPinId": @"parent_pin_id", @"sponsorId": @"sponsor_id", @"title": @"title" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"altText", @"boardId", @"boardSectionId", @"_description", @"dominantColor", @"link", @"mediaSource", @"parentPinId", @"sponsorId", @"title"];
+  NSArray *optionalProperties = @[@"aiDisclosures", @"altText", @"boardId", @"boardSectionId", @"_description", @"dominantColor", @"link", @"mediaSource", @"parentPinId", @"sponsorId", @"title"];
   return [optionalProperties containsObject:propertyName];
 }
 

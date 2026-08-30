@@ -29,38 +29,7 @@ public class CatalogsFeedIngestionErrors   {
 
   private Integer IMAGE_MALFORMED_URL;
 
-
-public enum LARGEPRODUCTCOUNTDECREASEEnum {
-
-    @JsonProperty("1") NUMBER_1(Integer.valueOf(1));
-
-
-    private Integer value;
-
-    LARGEPRODUCTCOUNTDECREASEEnum(Integer v) {
-        value = v;
-    }
-
-    public Integer value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static LARGEPRODUCTCOUNTDECREASEEnum fromValue(Integer value) {
-        for (LARGEPRODUCTCOUNTDECREASEEnum b : LARGEPRODUCTCOUNTDECREASEEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE;
+  private Integer LARGE_PRODUCT_COUNT_DECREASE;
 
   private Integer LINE_LEVEL_INTERNAL_ERROR;
 
@@ -200,7 +169,7 @@ public enum LARGEPRODUCTCOUNTDECREASEEnum {
   /**
    * The product count has decreased by more than 99% compared to the last successful ingestion.
    **/
-  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(Integer LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
     return this;
   }
@@ -208,10 +177,10 @@ public enum LARGEPRODUCTCOUNTDECREASEEnum {
   
   @ApiModelProperty(value = "The product count has decreased by more than 99% compared to the last successful ingestion.")
   @JsonProperty("LARGE_PRODUCT_COUNT_DECREASE")
-  public LARGEPRODUCTCOUNTDECREASEEnum getLARGEPRODUCTCOUNTDECREASE() {
+  public Integer getLARGEPRODUCTCOUNTDECREASE() {
     return LARGE_PRODUCT_COUNT_DECREASE;
   }
-  public void setLARGEPRODUCTCOUNTDECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  public void setLARGEPRODUCTCOUNTDECREASE(Integer LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
   }
 
@@ -284,10 +253,7 @@ public enum LARGEPRODUCTCOUNTDECREASEEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

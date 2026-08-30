@@ -1,0 +1,44 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server Keywords"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a Keywords"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Keyword = openapi_server.resourceTypes.Keyword
+  KeywordError = openapi_server.resourceTypes.KeywordError
+}
+resourceTypes {
+
+  Keywords {
+    title = Keywords
+    description = Keywords
+    derivedFrom = Root
+    properties {
+        errors {
+          type = array
+          items.type = KeywordError
+          description = "Keyword error"
+          optional = true
+        }
+        keywords {
+          type = array
+          items.type = Keyword
+          description = "Keywords"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  Keywords {
+    title = Keywords
+    description = Keywords
+    implements = openapi_server.resourceTypes.Keywords
+
+  }
+}

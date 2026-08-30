@@ -15,7 +15,7 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `adAccountsSubscriptionsDelById()`
 
 ```php
-adAccountsSubscriptionsDelById($ad_account_id, $subscription_id)
+adAccountsSubscriptionsDelById($ad_account_id, $subscription_id): \OpenAPI\Client\Model\LeadSubscription
 ```
 
 Delete lead ads subscription
@@ -43,7 +43,8 @@ $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad
 $subscription_id = 'subscription_id_example'; // string | Unique identifier of a subscription.
 
 try {
-    $apiInstance->adAccountsSubscriptionsDelById($ad_account_id, $subscription_id);
+    $result = $apiInstance->adAccountsSubscriptionsDelById($ad_account_id, $subscription_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadAdsApi->adAccountsSubscriptionsDelById: ', $e->getMessage(), PHP_EOL;
 }
@@ -58,7 +59,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\OpenAPI\Client\Model\LeadSubscription**](../Model/LeadSubscription.md)
 
 ### Authorization
 

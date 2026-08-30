@@ -29,7 +29,7 @@ class CatalogsVerticalProductGroup {
     this.updatedAt,
   });
 
-  /// Catalog id pertaining to the creative assets product group.
+  /// Catalog ID pertaining to the product group.
   String catalogId;
 
   CatalogsVerticalProductGroupCatalogTypeEnum catalogType;
@@ -52,7 +52,7 @@ class CatalogsVerticalProductGroup {
 
   CatalogsCreativeAssetsProductGroupFilters filters;
 
-  /// ID of the creative assets product group.
+  /// ID of the catalog product group.
   String id;
 
   /// boolean indicator of whether the product group is being featured or not
@@ -66,7 +66,7 @@ class CatalogsVerticalProductGroup {
 
   String? locale;
 
-  /// Name of creative assets product group
+  /// Name of catalog product group
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -198,10 +198,17 @@ class CatalogsVerticalProductGroup {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsVerticalProductGroup[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsVerticalProductGroup[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_id'), 'Required key "CatalogsVerticalProductGroup[catalog_id]" is missing from JSON.');
+        assert(json[r'catalog_id'] != null, 'Required key "CatalogsVerticalProductGroup[catalog_id]" has a null value in JSON.');
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsVerticalProductGroup[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsVerticalProductGroup[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'feed_id'), 'Required key "CatalogsVerticalProductGroup[feed_id]" is missing from JSON.');
+        assert(json.containsKey(r'filters'), 'Required key "CatalogsVerticalProductGroup[filters]" is missing from JSON.');
+        assert(json[r'filters'] != null, 'Required key "CatalogsVerticalProductGroup[filters]" has a null value in JSON.');
+        assert(json.containsKey(r'id'), 'Required key "CatalogsVerticalProductGroup[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "CatalogsVerticalProductGroup[id]" has a null value in JSON.');
+        assert(json.containsKey(r'type'), 'Required key "CatalogsVerticalProductGroup[type]" is missing from JSON.');
+        assert(json[r'type'] != null, 'Required key "CatalogsVerticalProductGroup[type]" has a null value in JSON.');
         return true;
       }());
 
@@ -277,27 +284,28 @@ class CatalogsVerticalProductGroup {
 }
 
 
-class CatalogsVerticalProductGroupCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsVerticalProductGroupCatalogTypeEnum._(this.value);
+enum CatalogsVerticalProductGroupCatalogTypeEnum {
+  CREATIVE_ASSETS._(r'CREATIVE_ASSETS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsVerticalProductGroupCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CREATIVE_ASSETS = CatalogsVerticalProductGroupCatalogTypeEnum._(r'CREATIVE_ASSETS');
-
-  /// List of all possible values in this [enum][CatalogsVerticalProductGroupCatalogTypeEnum].
-  static const values = <CatalogsVerticalProductGroupCatalogTypeEnum>[
-    CREATIVE_ASSETS,
-  ];
-
+  /// Returns the instance of [CatalogsVerticalProductGroupCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsVerticalProductGroupCatalogTypeEnum? fromJson(dynamic value) => CatalogsVerticalProductGroupCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsVerticalProductGroupCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsVerticalProductGroupCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsVerticalProductGroupCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -319,9 +327,10 @@ class CatalogsVerticalProductGroupCatalogTypeEnumTypeTransformer {
 
   const CatalogsVerticalProductGroupCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsVerticalProductGroupCatalogTypeEnum data) => data.value;
+  String encode(CatalogsVerticalProductGroupCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsVerticalProductGroupCatalogTypeEnum.
+  /// Returns the instance of [CatalogsVerticalProductGroupCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -330,6 +339,9 @@ class CatalogsVerticalProductGroupCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsVerticalProductGroupCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsVerticalProductGroupCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CREATIVE_ASSETS': return CatalogsVerticalProductGroupCatalogTypeEnum.CREATIVE_ASSETS;
@@ -342,7 +354,7 @@ class CatalogsVerticalProductGroupCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsVerticalProductGroupCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsVerticalProductGroupCatalogTypeEnumTypeTransformer? _instance;
 }
 

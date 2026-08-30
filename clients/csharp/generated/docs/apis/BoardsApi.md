@@ -18,7 +18,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="boardsectionscreate"></a>
 # **BoardSectionsCreate**
-> BoardSection BoardSectionsCreate (string boardId, BoardSection boardSection, string adAccountId = null)
+> BoardSection BoardSectionsCreate (string boardId, BoardSectionCreate boardSectionCreate, string adAccountId = null)
 
 Create board section
 
@@ -30,7 +30,7 @@ Create a board section on a board owned by the \"operation user_account\" - or o
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **boardId** | **string** | Unique identifier of a board. |  |
-| **boardSection** | [**BoardSection**](BoardSection.md) | Create a board section. |  |
+| **boardSectionCreate** | [**BoardSectionCreate**](BoardSectionCreate.md) |  |  |
 | **adAccountId** | **string** | Unique identifier of an ad account. | [optional]  |
 
 ### Return type
@@ -50,18 +50,20 @@ Create a board section on a board owned by the \"operation user_account\" - or o
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | response |  -  |
-| **400** | Invalid board section parameters. |  -  |
-| **403** | Not authorized to create board sections. |  -  |
-| **409** | Could not get exclusive access to the board to create a new section. |  -  |
-| **500** | Could not create a new board section. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="boardsectionsdelete"></a>
 # **BoardSectionsDelete**
-> void BoardSectionsDelete (string boardId, string sectionId, string adAccountId = null)
+> BoardSection BoardSectionsDelete (string boardId, string sectionId, string adAccountId = null)
 
 Delete board section
 
@@ -78,7 +80,7 @@ Delete a board section on a board owned by the \"operation user_account\" - or o
 
 ### Return type
 
-void (empty response body)
+[**BoardSection**](BoardSection.md)
 
 ### Authorization
 
@@ -93,11 +95,14 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Board section deleted successfully |  -  |
-| **403** | Not authorized to delete board section. |  -  |
-| **404** | Board section not found. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -117,7 +122,7 @@ Get a list of all board sections from a board owned by the \"operation user_acco
 | **boardId** | **string** | Unique identifier of a board. |  |
 | **adAccountId** | **string** | Unique identifier of an ad account. | [optional]  |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -136,8 +141,13 @@ Get a list of all board sections from a board owned by the \"operation user_acco
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -158,7 +168,7 @@ Get a list of the Pins on a board section of a board owned by the \"operation us
 | **sectionId** | **string** | Unique identifier of a board section. |  |
 | **adAccountId** | **string** | Unique identifier of an ad account. | [optional]  |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -177,17 +187,19 @@ Get a list of the Pins on a board section of a board owned by the \"operation us
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **403** | Not authorized to access Pins on board section. |  -  |
-| **404** | Board or section not found. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="boardsectionsupdate"></a>
 # **BoardSectionsUpdate**
-> BoardSection BoardSectionsUpdate (string boardId, string sectionId, BoardSection boardSection, string adAccountId = null)
+> BoardSection BoardSectionsUpdate (string boardId, string sectionId, BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody, string adAccountId = null)
 
 Update board section
 
@@ -200,7 +212,7 @@ Update a board section on a board owned by the \"operation user_account\" - or o
 |------|------|-------------|-------|
 | **boardId** | **string** | Unique identifier of a board. |  |
 | **sectionId** | **string** | Unique identifier of a board section. |  |
-| **boardSection** | [**BoardSection**](BoardSection.md) | Update a board section. |  |
+| **boardSectionUpdateWithRequiredBody** | [**BoardSectionUpdateWithRequiredBody**](BoardSectionUpdateWithRequiredBody.md) |  |  |
 | **adAccountId** | **string** | Unique identifier of an ad account. | [optional]  |
 
 ### Return type
@@ -220,11 +232,13 @@ Update a board section on a board owned by the \"operation user_account\" - or o
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **400** | Invalid board section parameters. |  -  |
-| **403** | Not authorized to update board section. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -274,7 +288,7 @@ Create a board owned by the \"operation user_account\". Optional: Business Acces
 
 <a id="boardsdelete"></a>
 # **BoardsDelete**
-> void BoardsDelete (string boardId, string adAccountId = null)
+> Board BoardsDelete (string boardId, string adAccountId = null)
 
 Delete board
 
@@ -290,7 +304,7 @@ Delete a board owned by the \"operation user_account\". * Optional: Business Acc
 
 ### Return type
 
-void (empty response body)
+[**Board**](Board.md)
 
 ### Authorization
 
@@ -305,6 +319,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
 | **204** | Resource deleted successfully. |  -  |
 | **400** | The request could not be understood by the server due to unexpected data. |  -  |
 | **401** | Authentication is required and has either failed or not been provided. |  -  |
@@ -405,7 +420,7 @@ Get a list of the boards owned by the \"operation user_account\" + group boards 
 
 <a id="boardslistpins"></a>
 # **BoardsListPins**
-> BoardsListPins200Response BoardsListPins (string boardId, string bookmark = null, int pageSize = null, List<CreativeType> creativeTypes = null, string adAccountId = null, bool pinMetrics = null)
+> BoardsListPins200Response BoardsListPins (string boardId, List<CreativeType> creativeTypes = null, string adAccountId = null, bool pinMetrics = null, string bookmark = null, int pageSize = null)
 
 List Pins on board
 
@@ -417,11 +432,11 @@ Get a list of the Pins on a board owned by the \"operation user_account\" - or o
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **boardId** | **string** | Unique identifier of a board. |  |
-| **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **creativeTypes** | [**List&lt;CreativeType&gt;**](CreativeType.md) | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional]  |
 | **adAccountId** | **string** | Unique identifier of an ad account. | [optional]  |
 | **pinMetrics** | **bool** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
+| **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -440,9 +455,13 @@ Get a list of the Pins on a board owned by the \"operation user_account\" - or o
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **404** | Board not found. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

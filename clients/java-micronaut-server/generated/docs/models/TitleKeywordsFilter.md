@@ -8,7 +8,7 @@ The class is defined in **[TitleKeywordsFilter.java](../../src/main/java/org/ope
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TITLE_KEYWORDS** | `CatalogsProductGroupMultipleStringCriteria` |  | 
+**TITLE_KEYWORDS** | [`CatalogsProductGroupMultipleStringCriteria`](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 
 

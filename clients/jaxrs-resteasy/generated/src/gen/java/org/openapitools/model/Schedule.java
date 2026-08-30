@@ -1,0 +1,223 @@
+package org.openapitools.model;
+
+import java.util.Objects;
+import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.AdAccountEntityType;
+import org.openapitools.model.ScheduleAction;
+import org.openapitools.model.ScheduleDeltaValue;
+import org.openapitools.model.ScheduleStatus;
+import org.openapitools.model.ScheduleType;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+import io.swagger.annotations.*;
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class Schedule   {
+  
+  private ScheduleDeltaValue deltaValue;
+  private Integer endTimestamp;
+  private String entityId;
+  private AdAccountEntityType entityType;
+  private String name;
+  private ScheduleAction scheduleAction;
+  private String scheduleId;
+  private ScheduleStatus scheduleStatus;
+  private ScheduleType scheduleType;
+  private Integer startTimestamp;
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("delta_value")
+  @Valid
+  public ScheduleDeltaValue getDeltaValue() {
+    return deltaValue;
+  }
+  public void setDeltaValue(ScheduleDeltaValue deltaValue) {
+    this.deltaValue = deltaValue;
+  }
+
+  /**
+   * Schedule end time. Unix timestamp in seconds.
+   **/
+  
+  @ApiModelProperty(value = "Schedule end time. Unix timestamp in seconds.")
+  @JsonProperty("end_timestamp")
+  public Integer getEndTimestamp() {
+    return endTimestamp;
+  }
+  public void setEndTimestamp(Integer endTimestamp) {
+    this.endTimestamp = endTimestamp;
+  }
+
+  /**
+   * entity ID.
+   **/
+  
+  @ApiModelProperty(required = true, value = "entity ID.")
+  @JsonProperty("entity_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getEntityId() {
+    return entityId;
+  }
+  public void setEntityId(String entityId) {
+    this.entityId = entityId;
+  }
+
+  /**
+   * Specify the entity_type to get summary information
+   **/
+  
+  @ApiModelProperty(value = "Specify the entity_type to get summary information")
+  @JsonProperty("entity_type")
+  @Valid
+  public AdAccountEntityType getEntityType() {
+    return entityType;
+  }
+  public void setEntityType(AdAccountEntityType entityType) {
+    this.entityType = entityType;
+  }
+
+  /**
+   * Schedule name.
+   **/
+  
+  @ApiModelProperty(value = "Schedule name.")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * The schedule action.
+   **/
+  
+  @ApiModelProperty(value = "The schedule action.")
+  @JsonProperty("schedule_action")
+  @Valid
+  public ScheduleAction getScheduleAction() {
+    return scheduleAction;
+  }
+  public void setScheduleAction(ScheduleAction scheduleAction) {
+    this.scheduleAction = scheduleAction;
+  }
+
+  /**
+   * Schedule ID.
+   **/
+  
+  @ApiModelProperty(required = true, value = "Schedule ID.")
+  @JsonProperty("schedule_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getScheduleId() {
+    return scheduleId;
+  }
+  public void setScheduleId(String scheduleId) {
+    this.scheduleId = scheduleId;
+  }
+
+  /**
+   * Schedule status.
+   **/
+  
+  @ApiModelProperty(value = "Schedule status.")
+  @JsonProperty("schedule_status")
+  @Valid
+  public ScheduleStatus getScheduleStatus() {
+    return scheduleStatus;
+  }
+  public void setScheduleStatus(ScheduleStatus scheduleStatus) {
+    this.scheduleStatus = scheduleStatus;
+  }
+
+  /**
+   * The schedule type.
+   **/
+  
+  @ApiModelProperty(value = "The schedule type.")
+  @JsonProperty("schedule_type")
+  @Valid
+  public ScheduleType getScheduleType() {
+    return scheduleType;
+  }
+  public void setScheduleType(ScheduleType scheduleType) {
+    this.scheduleType = scheduleType;
+  }
+
+  /**
+   * Schedule start time. Unix timestamp in seconds.
+   **/
+  
+  @ApiModelProperty(value = "Schedule start time. Unix timestamp in seconds.")
+  @JsonProperty("start_timestamp")
+  public Integer getStartTimestamp() {
+    return startTimestamp;
+  }
+  public void setStartTimestamp(Integer startTimestamp) {
+    this.startTimestamp = startTimestamp;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Schedule schedule = (Schedule) o;
+    return Objects.equals(this.deltaValue, schedule.deltaValue) &&
+        Objects.equals(this.endTimestamp, schedule.endTimestamp) &&
+        Objects.equals(this.entityId, schedule.entityId) &&
+        Objects.equals(this.entityType, schedule.entityType) &&
+        Objects.equals(this.name, schedule.name) &&
+        Objects.equals(this.scheduleAction, schedule.scheduleAction) &&
+        Objects.equals(this.scheduleId, schedule.scheduleId) &&
+        Objects.equals(this.scheduleStatus, schedule.scheduleStatus) &&
+        Objects.equals(this.scheduleType, schedule.scheduleType) &&
+        Objects.equals(this.startTimestamp, schedule.startTimestamp);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(deltaValue, endTimestamp, entityId, entityType, name, scheduleAction, scheduleId, scheduleStatus, scheduleType, startTimestamp);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class Schedule {\n");
+    
+    sb.append("    deltaValue: ").append(toIndentedString(deltaValue)).append("\n");
+    sb.append("    endTimestamp: ").append(toIndentedString(endTimestamp)).append("\n");
+    sb.append("    entityId: ").append(toIndentedString(entityId)).append("\n");
+    sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    scheduleAction: ").append(toIndentedString(scheduleAction)).append("\n");
+    sb.append("    scheduleId: ").append(toIndentedString(scheduleId)).append("\n");
+    sb.append("    scheduleStatus: ").append(toIndentedString(scheduleStatus)).append("\n");
+    sb.append("    scheduleType: ").append(toIndentedString(scheduleType)).append("\n");
+    sb.append("    startTimestamp: ").append(toIndentedString(startTimestamp)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

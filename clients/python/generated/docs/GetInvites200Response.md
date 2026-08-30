@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[InviteResponse]**](InviteResponse.md) | List of invite and request data. | 
+**items** | [**List[InviteResponse]**](InviteResponse.md) |  | 
 
 ## Example
 

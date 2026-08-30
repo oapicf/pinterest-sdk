@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Duration** | **Decimal** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
 **Height** | **Int32** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 **VideoUrl** | **String** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**VideoUrlHls** | **String** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] 
 **Width** | **Int32** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 **Items** | [**PinMediaMetadata[]**](PinMediaMetadata.md) |  | [optional] 
 
@@ -22,6 +23,7 @@ $PinMedia = Initialize-PSOpenAPIToolsPinMedia  -Images null `
  -Duration null `
  -Height null `
  -VideoUrl null `
+ -VideoUrlHls null `
  -Width null `
  -Items null
 ```

@@ -56,35 +56,35 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setIngestionSource(IngestionSourceOptions  ingestion_source);
+	void setIngestionSource(IngestionSourceOptions ingestion_source);
 	/*! \brief Get 
 	 */
 	LookbackPeriodOptions getLookbackPeriod();
 
 	/*! \brief Set 
 	 */
-	void setLookbackPeriod(LookbackPeriodOptions  lookback_period);
+	void setLookbackPeriod(LookbackPeriodOptions lookback_period);
 	/*! \brief Get 
 	 */
 	OverallStatusOptions getOverallStatus();
 
 	/*! \brief Set 
 	 */
-	void setOverallStatus(OverallStatusOptions  overall_status);
+	void setOverallStatus(OverallStatusOptions overall_status);
 	/*! \brief Get 
 	 */
 	QualityComponents getQualityComponents();
 
 	/*! \brief Set 
 	 */
-	void setQualityComponents(QualityComponents  quality_components);
+	void setQualityComponents(QualityComponents quality_components);
 	/*! \brief Get 
 	 */
 	SourcePlatformOptions getSourcePlatform();
 
 	/*! \brief Set 
 	 */
-	void setSourcePlatform(SourcePlatformOptions  source_platform);
+	void setSourcePlatform(SourcePlatformOptions source_platform);
 
 
     private:

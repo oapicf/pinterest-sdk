@@ -5,13 +5,13 @@
 
 
 char* create_asset_invites_request_item_inner_ToString(pinterest_rest_api_create_asset_invites_request_item_INNER_e inner) {
-    char *innerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "CONSUMER_USER" };
+    char *innerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "CONSUMER_USER", "BIZ_PINNER_LIST_SHARER" };
     return innerArray[inner - 1];
 }
 
 pinterest_rest_api_create_asset_invites_request_item_INNER_e create_asset_invites_request_item_inner_FromString(char* inner) {
     int stringToReturn = 0;
-    char *innerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "CONSUMER_USER" };
+    char *innerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "CONSUMER_USER", "BIZ_PINNER_LIST_SHARER" };
     size_t sizeofArray = sizeof(innerArray) / sizeof(innerArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(inner, innerArray[stringToReturn]) == 0) {
@@ -31,11 +31,11 @@ static create_asset_invites_request_item_t *create_asset_invites_request_item_cr
     if (!create_asset_invites_request_item_local_var) {
         return NULL;
     }
+    memset(create_asset_invites_request_item_local_var, 0, sizeof(create_asset_invites_request_item_t));
+    create_asset_invites_request_item_local_var->_library_owned = 1;
     create_asset_invites_request_item_local_var->asset_id_to_permissions = asset_id_to_permissions;
     create_asset_invites_request_item_local_var->invite_id = invite_id;
     create_asset_invites_request_item_local_var->invite_type = invite_type;
-
-    create_asset_invites_request_item_local_var->_library_owned = 1;
     return create_asset_invites_request_item_local_var;
 }
 
@@ -44,11 +44,14 @@ __attribute__((deprecated)) create_asset_invites_request_item_t *create_asset_in
     char *invite_id,
     pinterest_rest_api_invite_type__e invite_type
     ) {
-    return create_asset_invites_request_item_create_internal (
+    create_asset_invites_request_item_t *result = create_asset_invites_request_item_create_internal (
         asset_id_to_permissions,
         invite_id,
         invite_type
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void create_asset_invites_request_item_free(create_asset_invites_request_item_t *create_asset_invites_request_item) {
@@ -134,6 +137,8 @@ create_asset_invites_request_item_t *create_asset_invites_request_item_parseFrom
     // define the local map for create_asset_invites_request_item->asset_id_to_permissions
     list_t *asset_id_to_permissionsList = NULL;
 
+    char *invite_id_local_str = NULL;
+
     // define the local variable for create_asset_invites_request_item->invite_type
     pinterest_rest_api_invite_type__e invite_type_local_nonprim = 0;
 
@@ -191,11 +196,17 @@ create_asset_invites_request_item_t *create_asset_invites_request_item_parseFrom
     invite_type_local_nonprim = invite_type_parseFromJSON(invite_type); //custom
 
 
+    if (invite_id && !cJSON_IsNull(invite_id)) invite_id_local_str = strdup(invite_id->valuestring);
+
     create_asset_invites_request_item_local_var = create_asset_invites_request_item_create_internal (
         asset_id_to_permissionsList,
-        strdup(invite_id->valuestring),
+        invite_id_local_str,
         invite_type_local_nonprim
         );
+
+    if (!create_asset_invites_request_item_local_var) {
+        goto end;
+    }
 
     return create_asset_invites_request_item_local_var;
 end:
@@ -210,6 +221,10 @@ end:
         }
         list_freeList(asset_id_to_permissionsList);
         asset_id_to_permissionsList = NULL;
+    }
+    if (invite_id_local_str) {
+        free(invite_id_local_str);
+        invite_id_local_str = NULL;
     }
     if (invite_type_local_nonprim) {
         invite_type_local_nonprim = 0;

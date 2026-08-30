@@ -1,7 +1,7 @@
 package org.openapitools.model;
 
 import org.openapitools.model.Exception;
-import org.openapitools.model.PromotionResponse;
+import org.openapitools.model.Promotion;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -12,7 +12,7 @@ public class PromotionArrayElement  {
   
   @ApiModelProperty(value = "")
 
-  private PromotionResponse data;
+  private Promotion data;
 
   @ApiModelProperty(value = "")
 
@@ -22,15 +22,15 @@ public class PromotionArrayElement  {
    * @return data
   **/
   @JsonProperty("data")
-  public PromotionResponse getData() {
+  public Promotion getData() {
     return data;
   }
 
-  public void setData(PromotionResponse data) {
+  public void setData(Promotion data) {
     this.data = data;
   }
 
-  public PromotionArrayElement data(PromotionResponse data) {
+  public PromotionArrayElement data(Promotion data) {
     this.data = data;
     return this;
   }
@@ -87,10 +87,7 @@ public class PromotionArrayElement  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

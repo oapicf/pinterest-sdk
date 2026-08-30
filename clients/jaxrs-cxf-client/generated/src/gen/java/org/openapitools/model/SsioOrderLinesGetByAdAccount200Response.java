@@ -17,10 +17,7 @@ public class SsioOrderLinesGetByAdAccount200Response  {
 
   private String bookmark;
 
- /**
-  * SSIO order lines by ad acount id
-  */
-  @ApiModelProperty(required = true, value = "SSIO order lines by ad acount id")
+  @ApiModelProperty(required = true, value = "")
 
   private List<SSIOOrderLine> items = new ArrayList<>();
  /**
@@ -42,7 +39,7 @@ public class SsioOrderLinesGetByAdAccount200Response  {
   }
 
  /**
-   * SSIO order lines by ad acount id
+   * Get items
    * @return items
   **/
   @JsonProperty("items")
@@ -98,10 +95,7 @@ public class SsioOrderLinesGetByAdAccount200Response  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

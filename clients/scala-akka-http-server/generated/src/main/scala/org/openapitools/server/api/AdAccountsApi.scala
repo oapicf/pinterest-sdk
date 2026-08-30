@@ -9,22 +9,24 @@ import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
 import org.openapitools.server.model.AdAccount
-import org.openapitools.server.model.AdAccountAnalyticsResponseInner
+import org.openapitools.server.model.AdAccountAnalyticsItems
 import org.openapitools.server.model.AdAccountCreate
 import org.openapitools.server.model.AdAccountsList200Response
+import org.openapitools.server.model.AdsAnalyticsAccountTargetingType
 import org.openapitools.server.model.AdsAnalyticsCreateAsyncRequest
 import org.openapitools.server.model.AdsAnalyticsCreateAsyncResponse
 import org.openapitools.server.model.AdsAnalyticsGetAsyncResponse
-import org.openapitools.server.model.AdsAnalyticsTargetingType
-import org.openapitools.server.model.ConversionProductReportRequest
+import org.openapitools.server.model.ConversionProductReport
+import org.openapitools.server.model.ConversionProductReportCreate
 import org.openapitools.server.model.ConversionReportAttributionType
-import org.openapitools.server.model.CreateMMMReportRequest
-import org.openapitools.server.model.CreateMMMReportResponse
 import org.openapitools.server.model.Error
-import org.openapitools.server.model.GetMMMReportResponse
 import org.openapitools.server.model.Granularity
 import java.time.LocalDate
+import org.openapitools.server.model.MMMReport
+import org.openapitools.server.model.MMMReportCreate
 import org.openapitools.server.model.MetricsResponse
+import org.openapitools.server.model.PaginationOrder
+import org.openapitools.server.model.ReportingColumnSync
 import org.openapitools.server.model.ReportingTimeZone
 import org.openapitools.server.model.TemplateBasedReport
 import org.openapitools.server.model.TemplatesList200Response
@@ -42,14 +44,14 @@ class AdAccountsApi(
   lazy val route: Route =
     path("ad_accounts" / adAccountIdPattern / "analytics") { (adAccountId) => 
       get { 
-        parameters("start_date".as[String], "end_date".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION"), "reporting_timezone".as[String].?) { (startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone) => 
-            adAccountsService.adAccountAnalytics(adAccountId = adAccountId, startDate = startDate, endDate = endDate, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, reportingTimezone = reportingTimezone)
+        parameters("start_date".as[String], "end_date".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Double].?(30), "engagement_window_days".as[Double].?(30), "view_window_days".as[Double].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION"), "reporting_timezone".as[String].?) { (startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone) => 
+            adAccountsService.adAccountAnalytics(startDate = startDate, endDate = endDate, columns = columns, granularity = granularity, adAccountId = adAccountId, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, reportingTimezone = reportingTimezone)
         }
       }
     } ~
     path("ad_accounts" / adAccountIdPattern / "targeting_analytics") { (adAccountId) => 
       get { 
-        parameters("start_date".as[String], "end_date".as[String], "targeting_types".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION"), "attribution_types".as[String].?, "reporting_timezone".as[String].?) { (startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone) => 
+        parameters("start_date".as[String], "end_date".as[String], "targeting_types".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Double].?(30), "engagement_window_days".as[Double].?(30), "view_window_days".as[Double].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION"), "attribution_types".as[String].?, "reporting_timezone".as[String].?) { (startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone) => 
             adAccountsService.adAccountTargetingAnalyticsGet(adAccountId = adAccountId, startDate = startDate, endDate = endDate, targetingTypes = targetingTypes, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, attributionTypes = attributionTypes, reportingTimezone = reportingTimezone)
         }
       }
@@ -75,15 +77,15 @@ class AdAccountsApi(
     } ~
     path("ad_accounts" / adAccountIdPattern / "reports" / "brand_category_sku") { (adAccountId) => 
       post {  
-            entity(as[ConversionProductReportRequest]){ conversionProductReportRequest =>
-              adAccountsService.analyticsCreateConversionProductReport(adAccountId = adAccountId, conversionProductReportRequest = conversionProductReportRequest)
+            entity(as[ConversionProductReportCreate]){ conversionProductReportCreate =>
+              adAccountsService.analyticsCreateConversionProductReport(adAccountId = adAccountId, conversionProductReportCreate = conversionProductReportCreate)
             }
       }
     } ~
     path("ad_accounts" / adAccountIdPattern / "mmm_reports") { (adAccountId) => 
       post {  
-            entity(as[CreateMMMReportRequest]){ createMMMReportRequest =>
-              adAccountsService.analyticsCreateMmmReport(adAccountId = adAccountId, createMMMReportRequest = createMMMReportRequest)
+            entity(as[MMMReportCreate]){ mMMReportCreate =>
+              adAccountsService.analyticsCreateMmmReport(adAccountId = adAccountId, mMMReportCreate = mMMReportCreate)
             }
       }
     } ~
@@ -129,8 +131,8 @@ class AdAccountsApi(
     } ~
     path("ad_accounts" / adAccountIdPattern / "templates") { (adAccountId) => 
       get { 
-        parameters("page_size".as[Int].?(25), "order".as[String].?, "bookmark".as[String].?) { (pageSize, order, bookmark) => 
-            adAccountsService.templatesList(adAccountId = adAccountId, pageSize = pageSize, order = order, bookmark = bookmark)
+        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "order".as[String].?) { (bookmark, pageSize, order) => 
+            adAccountsService.templatesList(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order)
         }
       }
     }
@@ -138,34 +140,61 @@ class AdAccountsApi(
 
 object AdAccountsApiPatterns {
 
-    val adAccountIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
+    val adAccountIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
 }
 
 trait AdAccountsApiService {
 
-  def adAccountAnalytics200(responseAdAccountAnalyticsResponseInnerarray: Seq[AdAccountAnalyticsResponseInner])(implicit toEntityMarshallerAdAccountAnalyticsResponseInnerarray: ToEntityMarshaller[Seq[AdAccountAnalyticsResponseInner]]): Route =
-    complete((200, responseAdAccountAnalyticsResponseInnerarray))
+  def adAccountAnalytics200(responseAdAccountAnalyticsItemsarray: Seq[AdAccountAnalyticsItems])(implicit toEntityMarshallerAdAccountAnalyticsItemsarray: ToEntityMarshaller[Seq[AdAccountAnalyticsItems]]): Route =
+    complete((200, responseAdAccountAnalyticsItemsarray))
   def adAccountAnalytics400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def adAccountAnalytics401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def adAccountAnalytics403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def adAccountAnalytics404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def adAccountAnalytics429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def adAccountAnalyticsDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: Seq[AdAccountAnalyticsResponseInner]
-   * Code: 400, Message: Invalid ad account analytics parameters., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: Seq[AdAccountAnalyticsItems]
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def adAccountAnalytics(adAccountId: String, startDate: String, endDate: String, columns: String, granularity: String, clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String, reportingTimezone: Option[String])
-      (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerAdAccountAnalyticsResponseInnerarray: ToEntityMarshaller[Seq[AdAccountAnalyticsResponseInner]]): Route
+  def adAccountAnalytics(startDate: String, endDate: String, columns: String, granularity: String, adAccountId: String, clickWindowDays: Double, engagementWindowDays: Double, viewWindowDays: Double, conversionReportTime: String, reportingTimezone: Option[String])
+      (implicit toEntityMarshallerAdAccountAnalyticsItemsarray: ToEntityMarshaller[Seq[AdAccountAnalyticsItems]], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def adAccountTargetingAnalyticsGet200(responseMetricsResponse: MetricsResponse)(implicit toEntityMarshallerMetricsResponse: ToEntityMarshaller[MetricsResponse]): Route =
     complete((200, responseMetricsResponse))
+  def adAccountTargetingAnalyticsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def adAccountTargetingAnalyticsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def adAccountTargetingAnalyticsGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def adAccountTargetingAnalyticsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def adAccountTargetingAnalyticsGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def adAccountTargetingAnalyticsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: MetricsResponse
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: MetricsResponse
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def adAccountTargetingAnalyticsGet(adAccountId: String, startDate: String, endDate: String, targetingTypes: String, columns: String, granularity: String, clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String, attributionTypes: Option[String], reportingTimezone: Option[String])
+  def adAccountTargetingAnalyticsGet(adAccountId: String, startDate: String, endDate: String, targetingTypes: String, columns: String, granularity: String, clickWindowDays: Double, engagementWindowDays: Double, viewWindowDays: Double, conversionReportTime: String, attributionTypes: Option[String], reportingTimezone: Option[String])
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerMetricsResponse: ToEntityMarshaller[MetricsResponse]): Route
 
   def adAccountsCreate200(responseAdAccount: AdAccount)(implicit toEntityMarshallerAdAccount: ToEntityMarshaller[AdAccount]): Route =
@@ -249,44 +278,86 @@ trait AdAccountsApiService {
   def adAccountsList(includeSharedAccounts: Boolean, bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerAdAccountsList200Response: ToEntityMarshaller[AdAccountsList200Response]): Route
 
-  def analyticsCreateConversionProductReport200(responseAdsAnalyticsCreateAsyncResponse: AdsAnalyticsCreateAsyncResponse)(implicit toEntityMarshallerAdsAnalyticsCreateAsyncResponse: ToEntityMarshaller[AdsAnalyticsCreateAsyncResponse]): Route =
-    complete((200, responseAdsAnalyticsCreateAsyncResponse))
+  def analyticsCreateConversionProductReport200(responseConversionProductReport: ConversionProductReport)(implicit toEntityMarshallerConversionProductReport: ToEntityMarshaller[ConversionProductReport]): Route =
+    complete((200, responseConversionProductReport))
+  def analyticsCreateConversionProductReport201(responseConversionProductReport: ConversionProductReport)(implicit toEntityMarshallerConversionProductReport: ToEntityMarshaller[ConversionProductReport]): Route =
+    complete((201, responseConversionProductReport))
   def analyticsCreateConversionProductReport400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def analyticsCreateConversionProductReport401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def analyticsCreateConversionProductReport403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def analyticsCreateConversionProductReport404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def analyticsCreateConversionProductReport429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def analyticsCreateConversionProductReportDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: AdsAnalyticsCreateAsyncResponse
-   * Code: 400, Message: Invalid ad account ads analytics brand, category, SKU parameters, DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: ConversionProductReport
+   * Code: 201, Message: Resource create operation completed successfully., DataType: ConversionProductReport
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def analyticsCreateConversionProductReport(adAccountId: String, conversionProductReportRequest: ConversionProductReportRequest)
-      (implicit toEntityMarshallerAdsAnalyticsCreateAsyncResponse: ToEntityMarshaller[AdsAnalyticsCreateAsyncResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def analyticsCreateConversionProductReport(adAccountId: String, conversionProductReportCreate: ConversionProductReportCreate)
+      (implicit toEntityMarshallerConversionProductReport: ToEntityMarshaller[ConversionProductReport], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def analyticsCreateMmmReport200(responseCreateMMMReportResponse: CreateMMMReportResponse)(implicit toEntityMarshallerCreateMMMReportResponse: ToEntityMarshaller[CreateMMMReportResponse]): Route =
-    complete((200, responseCreateMMMReportResponse))
+  def analyticsCreateMmmReport200(responseMMMReport: MMMReport)(implicit toEntityMarshallerMMMReport: ToEntityMarshaller[MMMReport]): Route =
+    complete((200, responseMMMReport))
+  def analyticsCreateMmmReport201(responseMMMReport: MMMReport)(implicit toEntityMarshallerMMMReport: ToEntityMarshaller[MMMReport]): Route =
+    complete((201, responseMMMReport))
   def analyticsCreateMmmReport400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def analyticsCreateMmmReport401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def analyticsCreateMmmReport403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def analyticsCreateMmmReport404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def analyticsCreateMmmReport429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def analyticsCreateMmmReportDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: CreateMMMReportResponse
-   * Code: 400, Message: Invalid ad account ads analytics mmm parameters, DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: MMMReport
+   * Code: 201, Message: Resource create operation completed successfully., DataType: MMMReport
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def analyticsCreateMmmReport(adAccountId: String, createMMMReportRequest: CreateMMMReportRequest)
-      (implicit toEntityMarshallerCreateMMMReportResponse: ToEntityMarshaller[CreateMMMReportResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def analyticsCreateMmmReport(adAccountId: String, mMMReportCreate: MMMReportCreate)
+      (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerMMMReport: ToEntityMarshaller[MMMReport]): Route
 
   def analyticsCreateReport200(responseAdsAnalyticsCreateAsyncResponse: AdsAnalyticsCreateAsyncResponse)(implicit toEntityMarshallerAdsAnalyticsCreateAsyncResponse: ToEntityMarshaller[AdsAnalyticsCreateAsyncResponse]): Route =
     complete((200, responseAdsAnalyticsCreateAsyncResponse))
   def analyticsCreateReport400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def analyticsCreateReport401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def analyticsCreateReport403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def analyticsCreateReport404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def analyticsCreateReport429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def analyticsCreateReportDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: AdsAnalyticsCreateAsyncResponse
-   * Code: 400, Message: Invalid ad account ads analytics parameters., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: AdsAnalyticsCreateAsyncResponse
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def analyticsCreateReport(adAccountId: String, adsAnalyticsCreateAsyncRequest: AdsAnalyticsCreateAsyncRequest)
       (implicit toEntityMarshallerAdsAnalyticsCreateAsyncResponse: ToEntityMarshaller[AdsAnalyticsCreateAsyncResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
@@ -320,44 +391,80 @@ trait AdAccountsApiService {
   def analyticsCreateTemplateReport(adAccountId: String, templateId: String, startDate: Option[String], endDate: Option[String], granularity: Option[String])
       (implicit toEntityMarshallerTemplateBasedReport: ToEntityMarshaller[TemplateBasedReport], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def analyticsGetConversionProductReport200(responseAdsAnalyticsGetAsyncResponse: AdsAnalyticsGetAsyncResponse)(implicit toEntityMarshallerAdsAnalyticsGetAsyncResponse: ToEntityMarshaller[AdsAnalyticsGetAsyncResponse]): Route =
-    complete((200, responseAdsAnalyticsGetAsyncResponse))
+  def analyticsGetConversionProductReport200(responseConversionProductReport: ConversionProductReport)(implicit toEntityMarshallerConversionProductReport: ToEntityMarshaller[ConversionProductReport]): Route =
+    complete((200, responseConversionProductReport))
   def analyticsGetConversionProductReport400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def analyticsGetConversionProductReport401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def analyticsGetConversionProductReport403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def analyticsGetConversionProductReport404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def analyticsGetConversionProductReport429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def analyticsGetConversionProductReportDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: AdsAnalyticsGetAsyncResponse
-   * Code: 400, Message: Invalid ad account ads analytics parameters., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: ConversionProductReport
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def analyticsGetConversionProductReport(adAccountId: String, token: String)
-      (implicit toEntityMarshallerAdsAnalyticsGetAsyncResponse: ToEntityMarshaller[AdsAnalyticsGetAsyncResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerConversionProductReport: ToEntityMarshaller[ConversionProductReport], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def analyticsGetMmmReport200(responseGetMMMReportResponse: GetMMMReportResponse)(implicit toEntityMarshallerGetMMMReportResponse: ToEntityMarshaller[GetMMMReportResponse]): Route =
-    complete((200, responseGetMMMReportResponse))
+  def analyticsGetMmmReport200(responseMMMReport: MMMReport)(implicit toEntityMarshallerMMMReport: ToEntityMarshaller[MMMReport]): Route =
+    complete((200, responseMMMReport))
   def analyticsGetMmmReport400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def analyticsGetMmmReport401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def analyticsGetMmmReport403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def analyticsGetMmmReport404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def analyticsGetMmmReport429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def analyticsGetMmmReportDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: GetMMMReportResponse
-   * Code: 400, Message: Invalid ad account ads analytics parameters., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: MMMReport
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def analyticsGetMmmReport(adAccountId: String, token: String)
-      (implicit toEntityMarshallerGetMMMReportResponse: ToEntityMarshaller[GetMMMReportResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerMMMReport: ToEntityMarshaller[MMMReport]): Route
 
   def analyticsGetReport200(responseAdsAnalyticsGetAsyncResponse: AdsAnalyticsGetAsyncResponse)(implicit toEntityMarshallerAdsAnalyticsGetAsyncResponse: ToEntityMarshaller[AdsAnalyticsGetAsyncResponse]): Route =
     complete((200, responseAdsAnalyticsGetAsyncResponse))
   def analyticsGetReport400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def analyticsGetReport401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def analyticsGetReport403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def analyticsGetReport404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def analyticsGetReport429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def analyticsGetReportDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: AdsAnalyticsGetAsyncResponse
-   * Code: 400, Message: Invalid ad account ads analytics parameters., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: AdsAnalyticsGetAsyncResponse
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def analyticsGetReport(adAccountId: String, token: String)
       (implicit toEntityMarshallerAdsAnalyticsGetAsyncResponse: ToEntityMarshaller[AdsAnalyticsGetAsyncResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
@@ -366,12 +473,24 @@ trait AdAccountsApiService {
     complete((200, responseString))
   def sandboxDelete400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def sandboxDelete401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def sandboxDelete403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def sandboxDelete404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def sandboxDelete429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def sandboxDeleteDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: OK, DataType: String
-   * Code: 400, Message: Invalid ad account id., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: String
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def sandboxDelete(adAccountId: String)
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route
@@ -380,38 +499,50 @@ trait AdAccountsApiService {
     complete((200, responseTemplatesList200Response))
   def templatesList400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def templatesList401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def templatesList403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def templatesList404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def templatesList429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def templatesListDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: TemplatesList200Response
-   * Code: 400, Message: Invalid ad account template parameters., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: TemplatesList200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def templatesList(adAccountId: String, pageSize: Int, order: Option[String], bookmark: Option[String])
+  def templatesList(adAccountId: String, bookmark: Option[String], pageSize: Int, order: Option[String])
       (implicit toEntityMarshallerTemplatesList200Response: ToEntityMarshaller[TemplatesList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }
 
 trait AdAccountsApiMarshaller {
-  implicit def fromEntityUnmarshallerCreateMMMReportRequest: FromEntityUnmarshaller[CreateMMMReportRequest]
+  implicit def fromEntityUnmarshallerMMMReportCreate: FromEntityUnmarshaller[MMMReportCreate]
+
+  implicit def fromEntityUnmarshallerConversionProductReportCreate: FromEntityUnmarshaller[ConversionProductReportCreate]
 
   implicit def fromEntityUnmarshallerAdsAnalyticsCreateAsyncRequest: FromEntityUnmarshaller[AdsAnalyticsCreateAsyncRequest]
 
   implicit def fromEntityUnmarshallerAdAccountCreate: FromEntityUnmarshaller[AdAccountCreate]
 
-  implicit def fromEntityUnmarshallerConversionProductReportRequest: FromEntityUnmarshaller[ConversionProductReportRequest]
 
 
+  implicit def toEntityMarshallerConversionProductReport: ToEntityMarshaller[ConversionProductReport]
 
-  implicit def toEntityMarshallerGetMMMReportResponse: ToEntityMarshaller[GetMMMReportResponse]
+  implicit def toEntityMarshallerAdAccountAnalyticsItemsarray: ToEntityMarshaller[Seq[AdAccountAnalyticsItems]]
 
   implicit def toEntityMarshallerTemplateBasedReport: ToEntityMarshaller[TemplateBasedReport]
 
   implicit def toEntityMarshallerAdsAnalyticsGetAsyncResponse: ToEntityMarshaller[AdsAnalyticsGetAsyncResponse]
 
   implicit def toEntityMarshallerAdAccount: ToEntityMarshaller[AdAccount]
-
-  implicit def toEntityMarshallerCreateMMMReportResponse: ToEntityMarshaller[CreateMMMReportResponse]
 
   implicit def toEntityMarshallerTemplatesList200Response: ToEntityMarshaller[TemplatesList200Response]
 
@@ -421,9 +552,9 @@ trait AdAccountsApiMarshaller {
 
   implicit def toEntityMarshallerMetricsResponse: ToEntityMarshaller[MetricsResponse]
 
-  implicit def toEntityMarshallerAdAccountAnalyticsResponseInnerarray: ToEntityMarshaller[Seq[AdAccountAnalyticsResponseInner]]
-
   implicit def toEntityMarshallerAdAccountsList200Response: ToEntityMarshaller[AdAccountsList200Response]
+
+  implicit def toEntityMarshallerMMMReport: ToEntityMarshaller[MMMReport]
 
 }
 

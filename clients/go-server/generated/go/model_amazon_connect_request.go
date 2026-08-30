@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -36,22 +41,104 @@ type AmazonConnectRequest struct {
 	OneTimePasscode string `json:"one_time_passcode,omitempty"`
 
 	// The Pinterest user id for Amazon-initiated linking requests
-	PinterestUserId string `json:"pinterest_user_id,omitempty" validate:"regexp=^\\\\d+$"`
+	PinterestUserId string `json:"pinterest_user_id,omitempty" validate:"regexp=^\\d+$"`
 }
-
-// AssertAmazonConnectRequestRequired checks if the required fields are not zero-ed
-func AssertAmazonConnectRequestRequired(obj AmazonConnectRequest) error {
-	elements := map[string]interface{}{
-		"amazon_storefront_name": obj.AmazonStorefrontName,
-		"amazon_storefront_url": obj.AmazonStorefrontUrl,
-		"is_amazon_account_linked": obj.IsAmazonAccountLinked,
+// UnmarshalJSON validates required property keys then unmarshals into AmazonConnectRequest
+func (o *AmazonConnectRequest) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"amazon_storefront_name",
+		"amazon_storefront_url",
+		"is_amazon_account_linked",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"amazon_storefront_name": false,
+		"amazon_storefront_url": false,
+		"is_amazon_account_linked": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"amazon_storefront_id": {},
+		"amazon_storefront_name": {},
+		"amazon_storefront_url": {},
+		"amazon_user_id": {},
+		"is_amazon_account_linked": {},
+		"one_time_passcode": {},
+		"pinterest_user_id": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded AmazonConnectRequest
+
+	if value, exists := allProperties["amazon_storefront_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.AmazonStorefrontId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["amazon_storefront_name"]; exists {
+		if err = json.Unmarshal(value, &decoded.AmazonStorefrontName); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["amazon_storefront_url"]; exists {
+		if err = json.Unmarshal(value, &decoded.AmazonStorefrontUrl); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["amazon_user_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.AmazonUserId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["is_amazon_account_linked"]; exists {
+		if err = json.Unmarshal(value, &decoded.IsAmazonAccountLinked); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["one_time_passcode"]; exists {
+		if err = json.Unmarshal(value, &decoded.OneTimePasscode); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["pinterest_user_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.PinterestUserId); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertAmazonConnectRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertAmazonConnectRequestRequired(obj AmazonConnectRequest) error {
 	return nil
 }
 

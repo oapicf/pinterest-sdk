@@ -8,20 +8,29 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.AdCreateRequest
 import org.openapitools.client.models.AdGroupCreateRequest
+import org.openapitools.client.models.BulkUpsertRequestCreateCatalogProductGroupsItems
 import org.openapitools.client.models.CampaignCreateRequest
 import org.openapitools.client.models.KeywordsRequest
-import org.openapitools.client.models.LabelCreateRequest
-import org.openapitools.client.models.MultipleProductGroupsInner
+import org.openapitools.client.models.LabelBulkCreateRequest
 import org.openapitools.client.models.ProductGroupPromotionCreateRequest
+import org.openapitools.client.models.ScheduleCreateRequest
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -36,6 +45,7 @@ import com.squareup.moshi.JsonClass
  * @param keywords 
  * @param labels 
  * @param productGroups 
+ * @param schedules 
  */
 
 
@@ -51,16 +61,19 @@ data class BulkUpsertRequestCreate (
     val campaigns: kotlin.collections.List<CampaignCreateRequest>? = null,
 
     @Json(name = "catalog_product_groups")
-    val catalogProductGroups: kotlin.collections.List<MultipleProductGroupsInner>? = null,
+    val catalogProductGroups: kotlin.collections.List<BulkUpsertRequestCreateCatalogProductGroupsItems>? = null,
 
     @Json(name = "keywords")
     val keywords: kotlin.collections.List<KeywordsRequest>? = null,
 
     @Json(name = "labels")
-    val labels: kotlin.collections.List<LabelCreateRequest>? = null,
+    val labels: kotlin.collections.List<LabelBulkCreateRequest>? = null,
 
     @Json(name = "product_groups")
-    val productGroups: kotlin.collections.List<ProductGroupPromotionCreateRequest>? = null
+    val productGroups: kotlin.collections.List<ProductGroupPromotionCreateRequest>? = null,
+
+    @Json(name = "schedules")
+    val schedules: kotlin.collections.List<ScheduleCreateRequest>? = null
 
 ) {
 

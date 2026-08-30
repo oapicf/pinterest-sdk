@@ -1,21 +1,19 @@
 namespace OpenAPI
 
-open OpenAPI.Model.BrandAccountsCreate200Response
-open OpenAPI.Model.BrandAccountsCreateRequest
-open OpenAPI.Model.BrandAccountsUpdateRequest
-open OpenAPI.Model.DeletePartnersRequest
-open OpenAPI.Model.DeletePartnersResponse
-open OpenAPI.Model.DeletedMembersResponse
-open OpenAPI.Model.Error
+open OpenAPI.Model.BrandAccount
+open OpenAPI.Model.BrandAccountCreate
+open OpenAPI.Model.BrandAccountUpdate
+open OpenAPI.Model.BusinessMembershipMember
+open OpenAPI.Model.DeleteBusinessMembership200Response
+open OpenAPI.Model.DeleteBusinessMembershipBody
+open OpenAPI.Model.DeleteBusinessPartners
+open OpenAPI.Model.DeleteBusinessPartnersDelete
 open OpenAPI.Model.GetBusinessEmployers200Response
-open OpenAPI.Model.GetBusinessMembers200Response
-open OpenAPI.Model.GetBusinessPartners200Response
 open OpenAPI.Model.MemberBusinessRole
-open OpenAPI.Model.MembersToDeleteBody
 open OpenAPI.Model.PartnerType
-open OpenAPI.Model.SystemUserUpdateRequest
-open OpenAPI.Model.UpdateMemberBusinessRoleBody
-open OpenAPI.Model.UpdateMemberResultsResponseArray
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.SystemUserUpdateWithRequiredBody
+open OpenAPI.Model.UpdateBusinessMembershipsResponse
 open System.Collections.Generic
 open System
 
@@ -30,25 +28,50 @@ module BusinessAccessRelationshipsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type BrandAccountsCreateBodyParams = BrandAccountsCreateRequest
+    type BrandAccountsCreateBodyParams = BrandAccountCreate
     //#endregion
 
 
     type BrandAccountsCreateStatusCode200Response = {
-      content:BrandAccountsCreate200Response;
+      content:BrandAccount;
+      
+    }
+
+    type BrandAccountsCreateStatusCode201Response = {
+      content:BrandAccount;
       
     }
 
     type BrandAccountsCreateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type BrandAccountsCreateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BrandAccountsCreateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BrandAccountsCreateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BrandAccountsCreateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type BrandAccountsCreateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type BrandAccountsCreateResult = BrandAccountsCreateStatusCode200 of BrandAccountsCreateStatusCode200Response|BrandAccountsCreateStatusCode400 of BrandAccountsCreateStatusCode400Response|BrandAccountsCreateDefaultStatusCode of BrandAccountsCreateDefaultStatusCodeResponse
+    type BrandAccountsCreateResult = BrandAccountsCreateStatusCode200 of BrandAccountsCreateStatusCode200Response|BrandAccountsCreateStatusCode201 of BrandAccountsCreateStatusCode201Response|BrandAccountsCreateStatusCode400 of BrandAccountsCreateStatusCode400Response|BrandAccountsCreateStatusCode401 of BrandAccountsCreateStatusCode401Response|BrandAccountsCreateStatusCode403 of BrandAccountsCreateStatusCode403Response|BrandAccountsCreateStatusCode404 of BrandAccountsCreateStatusCode404Response|BrandAccountsCreateStatusCode429 of BrandAccountsCreateStatusCode429Response|BrandAccountsCreateDefaultStatusCode of BrandAccountsCreateDefaultStatusCodeResponse
 
     type BrandAccountsCreateArgs = {
       pathParams:BrandAccountsCreatePathParams;
@@ -57,55 +80,55 @@ module BusinessAccessRelationshipsApiHandlerParams =
     //#region Path parameters
     [<CLIMutable>]
     type BrandAccountsUpdatePathParams = {
-      businessHierarchyId : string ;
-    //#endregion
       brandAccountId : string ;
+    //#endregion
+      businessHierarchyId : string ;
     }
     //#endregion
 
     //#region Body parameters
     [<CLIMutable>]
-    type BrandAccountsUpdateBodyParams = BrandAccountsUpdateRequest
+    type BrandAccountsUpdateBodyParams = BrandAccountUpdate
     //#endregion
 
 
     type BrandAccountsUpdateStatusCode200Response = {
-      content:BrandAccountsCreate200Response;
+      content:BrandAccount;
       
     }
 
     type BrandAccountsUpdateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type BrandAccountsUpdateStatusCode401Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type BrandAccountsUpdateStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type BrandAccountsUpdateStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type BrandAccountsUpdateStatusCode409Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type BrandAccountsUpdateStatusCode429Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type BrandAccountsUpdateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
     type BrandAccountsUpdateResult = BrandAccountsUpdateStatusCode200 of BrandAccountsUpdateStatusCode200Response|BrandAccountsUpdateStatusCode400 of BrandAccountsUpdateStatusCode400Response|BrandAccountsUpdateStatusCode401 of BrandAccountsUpdateStatusCode401Response|BrandAccountsUpdateStatusCode403 of BrandAccountsUpdateStatusCode403Response|BrandAccountsUpdateStatusCode404 of BrandAccountsUpdateStatusCode404Response|BrandAccountsUpdateStatusCode409 of BrandAccountsUpdateStatusCode409Response|BrandAccountsUpdateStatusCode429 of BrandAccountsUpdateStatusCode429Response|BrandAccountsUpdateDefaultStatusCode of BrandAccountsUpdateDefaultStatusCodeResponse
@@ -123,17 +146,17 @@ module BusinessAccessRelationshipsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type DeleteBusinessMembershipBodyParams = MembersToDeleteBody
+    type DeleteBusinessMembershipBodyParams = DeleteBusinessMembershipBody
     //#endregion
 
 
     type DeleteBusinessMembershipStatusCode200Response = {
-      content:DeletedMembersResponse;
+      content:DeleteBusinessMembership200Response;
       
     }
 
     type DeleteBusinessMembershipDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
     type DeleteBusinessMembershipResult = DeleteBusinessMembershipStatusCode200 of DeleteBusinessMembershipStatusCode200Response|DeleteBusinessMembershipDefaultStatusCode of DeleteBusinessMembershipDefaultStatusCodeResponse
@@ -151,22 +174,22 @@ module BusinessAccessRelationshipsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type DeleteBusinessPartnersBodyParams = DeletePartnersRequest
+    type DeleteBusinessPartnersBodyParams = DeleteBusinessPartnersDelete
     //#endregion
 
 
     type DeleteBusinessPartnersStatusCode200Response = {
-      content:DeletePartnersResponse;
+      content:DeleteBusinessPartners;
       
     }
 
     type DeleteBusinessPartnersStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type DeleteBusinessPartnersDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
     type DeleteBusinessPartnersResult = DeleteBusinessPartnersStatusCode200 of DeleteBusinessPartnersStatusCode200Response|DeleteBusinessPartnersStatusCode404 of DeleteBusinessPartnersStatusCode404Response|DeleteBusinessPartnersDefaultStatusCode of DeleteBusinessPartnersDefaultStatusCodeResponse
@@ -179,10 +202,13 @@ module BusinessAccessRelationshipsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type GetBusinessEmployersQueryParams = {
-      pageSize : int option;
+      assetsSummary : bool option;
 
 
       bookmark : string option;
+
+
+      pageSize : int option;
 
     }
     //#endregion
@@ -193,11 +219,36 @@ module BusinessAccessRelationshipsApiHandlerParams =
       
     }
 
-    type GetBusinessEmployersDefaultStatusCodeResponse = {
-      content:Error;
+    type GetBusinessEmployersStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type GetBusinessEmployersResult = GetBusinessEmployersStatusCode200 of GetBusinessEmployersStatusCode200Response|GetBusinessEmployersDefaultStatusCode of GetBusinessEmployersDefaultStatusCodeResponse
+
+    type GetBusinessEmployersStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetBusinessEmployersStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetBusinessEmployersStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetBusinessEmployersStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetBusinessEmployersDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type GetBusinessEmployersResult = GetBusinessEmployersStatusCode200 of GetBusinessEmployersStatusCode200Response|GetBusinessEmployersStatusCode400 of GetBusinessEmployersStatusCode400Response|GetBusinessEmployersStatusCode401 of GetBusinessEmployersStatusCode401Response|GetBusinessEmployersStatusCode403 of GetBusinessEmployersStatusCode403Response|GetBusinessEmployersStatusCode404 of GetBusinessEmployersStatusCode404Response|GetBusinessEmployersStatusCode429 of GetBusinessEmployersStatusCode429Response|GetBusinessEmployersDefaultStatusCode of GetBusinessEmployersDefaultStatusCodeResponse
 
     type GetBusinessEmployersArgs = {
       queryParams:Result<GetBusinessEmployersQueryParams,string>;
@@ -237,15 +288,40 @@ module BusinessAccessRelationshipsApiHandlerParams =
 
 
     type GetBusinessMembersStatusCode200Response = {
-      content:GetBusinessMembers200Response;
+      content:GetBusinessEmployers200Response;
+      
+    }
+
+    type GetBusinessMembersStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetBusinessMembersStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetBusinessMembersStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetBusinessMembersStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetBusinessMembersStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type GetBusinessMembersDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type GetBusinessMembersResult = GetBusinessMembersStatusCode200 of GetBusinessMembersStatusCode200Response|GetBusinessMembersDefaultStatusCode of GetBusinessMembersDefaultStatusCodeResponse
+    type GetBusinessMembersResult = GetBusinessMembersStatusCode200 of GetBusinessMembersStatusCode200Response|GetBusinessMembersStatusCode400 of GetBusinessMembersStatusCode400Response|GetBusinessMembersStatusCode401 of GetBusinessMembersStatusCode401Response|GetBusinessMembersStatusCode403 of GetBusinessMembersStatusCode403Response|GetBusinessMembersStatusCode404 of GetBusinessMembersStatusCode404Response|GetBusinessMembersStatusCode429 of GetBusinessMembersStatusCode429Response|GetBusinessMembersDefaultStatusCode of GetBusinessMembersDefaultStatusCodeResponse
 
     type GetBusinessMembersArgs = {
       pathParams:GetBusinessMembersPathParams;
@@ -273,25 +349,53 @@ module BusinessAccessRelationshipsApiHandlerParams =
       startIndex : int option;
 
 
-      pageSize : int option;
+      sortAscending : bool option;
 
 
       bookmark : string option;
+
+
+      pageSize : int option;
 
     }
     //#endregion
 
 
     type GetBusinessPartnersStatusCode200Response = {
-      content:GetBusinessPartners200Response;
+      content:GetBusinessEmployers200Response;
+      
+    }
+
+    type GetBusinessPartnersStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetBusinessPartnersStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetBusinessPartnersStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetBusinessPartnersStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetBusinessPartnersStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type GetBusinessPartnersDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type GetBusinessPartnersResult = GetBusinessPartnersStatusCode200 of GetBusinessPartnersStatusCode200Response|GetBusinessPartnersDefaultStatusCode of GetBusinessPartnersDefaultStatusCodeResponse
+    type GetBusinessPartnersResult = GetBusinessPartnersStatusCode200 of GetBusinessPartnersStatusCode200Response|GetBusinessPartnersStatusCode400 of GetBusinessPartnersStatusCode400Response|GetBusinessPartnersStatusCode401 of GetBusinessPartnersStatusCode401Response|GetBusinessPartnersStatusCode403 of GetBusinessPartnersStatusCode403Response|GetBusinessPartnersStatusCode404 of GetBusinessPartnersStatusCode404Response|GetBusinessPartnersStatusCode429 of GetBusinessPartnersStatusCode429Response|GetBusinessPartnersDefaultStatusCode of GetBusinessPartnersDefaultStatusCodeResponse
 
     type GetBusinessPartnersArgs = {
       pathParams:GetBusinessPartnersPathParams;
@@ -308,7 +412,7 @@ module BusinessAccessRelationshipsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type SystemUserUpdateBodyParams = SystemUserUpdateRequest
+    type SystemUserUpdateBodyParams = SystemUserUpdateWithRequiredBody
     //#endregion
 
 
@@ -318,15 +422,35 @@ module BusinessAccessRelationshipsApiHandlerParams =
     }
 
     type SystemUserUpdateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type SystemUserUpdateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type SystemUserUpdateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type SystemUserUpdateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type SystemUserUpdateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type SystemUserUpdateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type SystemUserUpdateResult = SystemUserUpdateStatusCode200 of SystemUserUpdateStatusCode200Response|SystemUserUpdateStatusCode400 of SystemUserUpdateStatusCode400Response|SystemUserUpdateDefaultStatusCode of SystemUserUpdateDefaultStatusCodeResponse
+    type SystemUserUpdateResult = SystemUserUpdateStatusCode200 of SystemUserUpdateStatusCode200Response|SystemUserUpdateStatusCode400 of SystemUserUpdateStatusCode400Response|SystemUserUpdateStatusCode401 of SystemUserUpdateStatusCode401Response|SystemUserUpdateStatusCode403 of SystemUserUpdateStatusCode403Response|SystemUserUpdateStatusCode404 of SystemUserUpdateStatusCode404Response|SystemUserUpdateStatusCode429 of SystemUserUpdateStatusCode429Response|SystemUserUpdateDefaultStatusCode of SystemUserUpdateDefaultStatusCodeResponse
 
     type SystemUserUpdateArgs = {
       pathParams:SystemUserUpdatePathParams;
@@ -341,20 +465,45 @@ module BusinessAccessRelationshipsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type UpdateBusinessMembershipsBodyParams = UpdateMemberBusinessRoleBody[]
+    type UpdateBusinessMembershipsBodyParams = BusinessMembershipMember[]
     //#endregion
 
 
     type UpdateBusinessMembershipsStatusCode200Response = {
-      content:UpdateMemberResultsResponseArray;
+      content:UpdateBusinessMembershipsResponse;
+      
+    }
+
+    type UpdateBusinessMembershipsStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateBusinessMembershipsStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateBusinessMembershipsStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateBusinessMembershipsStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateBusinessMembershipsStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type UpdateBusinessMembershipsDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type UpdateBusinessMembershipsResult = UpdateBusinessMembershipsStatusCode200 of UpdateBusinessMembershipsStatusCode200Response|UpdateBusinessMembershipsDefaultStatusCode of UpdateBusinessMembershipsDefaultStatusCodeResponse
+    type UpdateBusinessMembershipsResult = UpdateBusinessMembershipsStatusCode200 of UpdateBusinessMembershipsStatusCode200Response|UpdateBusinessMembershipsStatusCode400 of UpdateBusinessMembershipsStatusCode400Response|UpdateBusinessMembershipsStatusCode401 of UpdateBusinessMembershipsStatusCode401Response|UpdateBusinessMembershipsStatusCode403 of UpdateBusinessMembershipsStatusCode403Response|UpdateBusinessMembershipsStatusCode404 of UpdateBusinessMembershipsStatusCode404Response|UpdateBusinessMembershipsStatusCode429 of UpdateBusinessMembershipsStatusCode429Response|UpdateBusinessMembershipsDefaultStatusCode of UpdateBusinessMembershipsDefaultStatusCodeResponse
 
     type UpdateBusinessMembershipsArgs = {
       pathParams:UpdateBusinessMembershipsPathParams;

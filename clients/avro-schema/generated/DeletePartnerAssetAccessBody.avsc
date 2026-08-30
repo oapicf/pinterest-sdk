@@ -1,16 +1,16 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "",
+  "doc": "An object with a list of partner asset accesses to delete.",
   "name": "DeletePartnerAssetAccessBody",
   "fields": [
     {
       "name": "accesses",
       "type": {
         "type": "array",
-        "items": "model.DeletePartnerAssetAccessBodyAccessesInner"
+        "items": "model.DeletePartnerAssetAccessItem"
       },
-      "doc": ""
+      "doc": "List of partner asset accesses to delete."
     }
   ]
 

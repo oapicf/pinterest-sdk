@@ -99,6 +99,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setPermissions(std::list <BusinessAccessRole> permissions);
+	/*! \brief Get The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
+	 */
+	std::string getTimeZone();
+
+	/*! \brief Set The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
+	 */
+	void setTimeZone(std::string  time_zone);
 	/*! \brief Get 
 	 */
 	int getUpdatedTime();
@@ -115,6 +122,7 @@ private:
 	std::string name;
 	AdAccountOwner owner;
 	std::list <BusinessAccessRole>permissions;
+	std::string time_zone;
 	int updated_time;
 	void __init();
 	void __cleanup();

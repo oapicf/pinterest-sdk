@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:openapi/src/model/item_validation_event.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -17,11 +16,12 @@ part 'catalogs_creative_assets_item_error_response.g.dart';
 /// * [catalogType] 
 /// * [creativeAssetsId] - The catalog creative assets id in the merchant namespace
 /// * [errors] - Array with the errors for the item id requested
+/// * [itemResponseKind] - Discriminator literal identifying this leaf inside an `ItemResponse` payload.
 @BuiltValue()
 abstract class CatalogsCreativeAssetsItemErrorResponse implements Built<CatalogsCreativeAssetsItemErrorResponse, CatalogsCreativeAssetsItemErrorResponseBuilder> {
   @BuiltValueField(wireName: r'catalog_type')
-  CatalogsType get catalogType;
-  // enum catalogTypeEnum {  RETAIL,  HOTEL,  CREATIVE_ASSETS,  };
+  CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum get catalogType;
+  // enum catalogTypeEnum {  CREATIVE_ASSETS,  };
 
   /// The catalog creative assets id in the merchant namespace
   @BuiltValueField(wireName: r'creative_assets_id')
@@ -30,6 +30,11 @@ abstract class CatalogsCreativeAssetsItemErrorResponse implements Built<Catalogs
   /// Array with the errors for the item id requested
   @BuiltValueField(wireName: r'errors')
   BuiltList<ItemValidationEvent> get errors;
+
+  /// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+  @BuiltValueField(wireName: r'item_response_kind')
+  CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum get itemResponseKind;
+  // enum itemResponseKindEnum {  creative_assets_item_error,  };
 
   CatalogsCreativeAssetsItemErrorResponse._();
 
@@ -57,7 +62,7 @@ class _$CatalogsCreativeAssetsItemErrorResponseSerializer implements PrimitiveSe
     yield r'catalog_type';
     yield serializers.serialize(
       object.catalogType,
-      specifiedType: const FullType(CatalogsType),
+      specifiedType: const FullType(CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum),
     );
     if (object.creativeAssetsId != null) {
       yield r'creative_assets_id';
@@ -70,6 +75,11 @@ class _$CatalogsCreativeAssetsItemErrorResponseSerializer implements PrimitiveSe
     yield serializers.serialize(
       object.errors,
       specifiedType: const FullType(BuiltList, [FullType(ItemValidationEvent)]),
+    );
+    yield r'item_response_kind';
+    yield serializers.serialize(
+      object.itemResponseKind,
+      specifiedType: const FullType(CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum),
     );
   }
 
@@ -97,15 +107,16 @@ class _$CatalogsCreativeAssetsItemErrorResponseSerializer implements PrimitiveSe
         case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsType),
-          ) as CatalogsType;
+            specifiedType: const FullType(CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum),
+          ) as CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum;
           result.catalogType = valueDes;
           break;
         case r'creative_assets_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.creativeAssetsId = valueDes;
           break;
         case r'errors':
@@ -114,6 +125,13 @@ class _$CatalogsCreativeAssetsItemErrorResponseSerializer implements PrimitiveSe
             specifiedType: const FullType(BuiltList, [FullType(ItemValidationEvent)]),
           ) as BuiltList<ItemValidationEvent>;
           result.errors.replace(valueDes);
+          break;
+        case r'item_response_kind':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum),
+          ) as CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum;
+          result.itemResponseKind = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -142,5 +160,32 @@ class _$CatalogsCreativeAssetsItemErrorResponseSerializer implements PrimitiveSe
     );
     return result.build();
   }
+}
+
+class CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')
+  static const CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum CREATIVE_ASSETS = _$catalogsCreativeAssetsItemErrorResponseCatalogTypeEnum_CREATIVE_ASSETS;
+
+  static Serializer<CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum> get serializer => _$catalogsCreativeAssetsItemErrorResponseCatalogTypeEnumSerializer;
+
+  const CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum> get values => _$catalogsCreativeAssetsItemErrorResponseCatalogTypeEnumValues;
+  static CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum valueOf(String name) => _$catalogsCreativeAssetsItemErrorResponseCatalogTypeEnumValueOf(name);
+}
+
+class CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum extends EnumClass {
+
+  /// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+  @BuiltValueEnumConst(wireName: r'creative_assets_item_error')
+  static const CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum creativeAssetsItemError = _$catalogsCreativeAssetsItemErrorResponseItemResponseKindEnum_creativeAssetsItemError;
+
+  static Serializer<CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum> get serializer => _$catalogsCreativeAssetsItemErrorResponseItemResponseKindEnumSerializer;
+
+  const CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum> get values => _$catalogsCreativeAssetsItemErrorResponseItemResponseKindEnumValues;
+  static CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum valueOf(String name) => _$catalogsCreativeAssetsItemErrorResponseItemResponseKindEnumValueOf(name);
 }
 

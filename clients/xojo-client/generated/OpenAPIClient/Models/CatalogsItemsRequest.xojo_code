@@ -110,7 +110,7 @@ Protected Class CatalogsItemsRequest
         Nb
         Ne
         Nl2
-        No
+        Escapedfalse
         Pl
         Pt
         Ro
@@ -314,8 +314,8 @@ Protected Class CatalogsItemsRequest
 		      Return "NE"
 		    Case LanguageEnum.Nl2
 		      Return "NL"
-		    Case LanguageEnum.No
-		      Return "NO"
+		    Case LanguageEnum.Escapedfalse
+		      Return "false"
 		    Case LanguageEnum.Pl
 		      Return "PL"
 		    Case LanguageEnum.Pt

@@ -7,7 +7,7 @@ using namespace Tiny;
 Business_partner_asset_access_get_200_response::Business_partner_asset_access_get_200_response()
 {
 	bookmark = std::string();
-	items = std::list<GetPartnerAssetsResponse>();
+	items = std::list<BaseBusinessAssets>();
 }
 
 Business_partner_asset_access_get_200_response::Business_partner_asset_access_get_200_response(std::string jsonString)
@@ -45,8 +45,8 @@ Business_partner_asset_access_get_200_response::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<GetPartnerAssetsResponse> items_list;
-        GetPartnerAssetsResponse element;
+        std::list<BaseBusinessAssets> items_list;
+        BaseBusinessAssets element;
         for(auto& var : value.array_range())
         {
 
@@ -78,12 +78,12 @@ Business_partner_asset_access_get_200_response::toJson()
 
 
 
-    std::list<GetPartnerAssetsResponse> items_list = getItems();
+    std::list<BaseBusinessAssets> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        GetPartnerAssetsResponse obj = var;
+        BaseBusinessAssets obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -102,19 +102,19 @@ Business_partner_asset_access_get_200_response::getBookmark()
 }
 
 void
-Business_partner_asset_access_get_200_response::setBookmark(std::string  bookmark)
+Business_partner_asset_access_get_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
 
-std::list<GetPartnerAssetsResponse>
+std::list<BaseBusinessAssets>
 Business_partner_asset_access_get_200_response::getItems()
 {
 	return items;
 }
 
 void
-Business_partner_asset_access_get_200_response::setItems(std::list <GetPartnerAssetsResponse> items)
+Business_partner_asset_access_get_200_response::setItems(std::list<BaseBusinessAssets> items)
 {
 	this->items = items;
 }

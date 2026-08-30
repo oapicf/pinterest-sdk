@@ -1,5 +1,5 @@
 
-# Table `CatalogsHotelReportParameters_report`
+# Table `CatalogsHotelReportParametersReport`
 (mapped from: CatalogsHotelReportParametersReport)
 
 ## Properties

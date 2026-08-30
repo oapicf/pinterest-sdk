@@ -9,7 +9,7 @@ The class is defined in **[SsioInsertionOrdersStatusGetByAdAccount200Response.ja
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;SSIOInsertionOrderStatus&gt;`](SSIOInsertionOrderStatus.md) | Insertion orders status by ad acount id | 
+**items** | [`List&lt;SSIOInsertionOrderStatus&gt;`](SSIOInsertionOrderStatus.md) |  | 
 
 
 

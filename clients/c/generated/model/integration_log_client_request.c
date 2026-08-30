@@ -4,63 +4,55 @@
 #include "integration_log_client_request.h"
 
 
-char* integration_log_client_request_method_ToString(pinterest_rest_api_integration_log_client_request_METHOD_e method) {
-    char* methodArray[] =  { "NULL", "GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH" };
-    return methodArray[method];
-}
-
-pinterest_rest_api_integration_log_client_request_METHOD_e integration_log_client_request_method_FromString(char* method){
-    int stringToReturn = 0;
-    char *methodArray[] =  { "NULL", "GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH" };
-    size_t sizeofArray = sizeof(methodArray) / sizeof(methodArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(method, methodArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static integration_log_client_request_t *integration_log_client_request_create_internal(
     char *host,
-    pinterest_rest_api_integration_log_client_request_METHOD_e method,
+    pinterest_rest_api_http_method__e method,
     char *path,
     list_t* request_headers,
     list_t* response_headers,
-    int response_status_code
+    int *response_status_code
     ) {
     integration_log_client_request_t *integration_log_client_request_local_var = malloc(sizeof(integration_log_client_request_t));
     if (!integration_log_client_request_local_var) {
         return NULL;
     }
+    memset(integration_log_client_request_local_var, 0, sizeof(integration_log_client_request_t));
+    integration_log_client_request_local_var->_library_owned = 1;
     integration_log_client_request_local_var->host = host;
     integration_log_client_request_local_var->method = method;
     integration_log_client_request_local_var->path = path;
     integration_log_client_request_local_var->request_headers = request_headers;
     integration_log_client_request_local_var->response_headers = response_headers;
     integration_log_client_request_local_var->response_status_code = response_status_code;
-
-    integration_log_client_request_local_var->_library_owned = 1;
     return integration_log_client_request_local_var;
 }
 
 __attribute__((deprecated)) integration_log_client_request_t *integration_log_client_request_create(
     char *host,
-    pinterest_rest_api_integration_log_client_request_METHOD_e method,
+    pinterest_rest_api_http_method__e method,
     char *path,
     list_t* request_headers,
     list_t* response_headers,
-    int response_status_code
+    int *response_status_code
     ) {
-    return integration_log_client_request_create_internal (
+    int *response_status_code_copy = NULL;
+    if (response_status_code) {
+        response_status_code_copy = malloc(sizeof(int));
+        if (response_status_code_copy) *response_status_code_copy = *response_status_code;
+    }
+    integration_log_client_request_t *result = integration_log_client_request_create_internal (
         host,
         method,
         path,
         request_headers,
         response_headers,
-        response_status_code
+        response_status_code_copy
         );
+    if (!result) {
+        free(response_status_code_copy);
+    }
+    return result;
 }
 
 void integration_log_client_request_free(integration_log_client_request_t *integration_log_client_request) {
@@ -100,6 +92,10 @@ void integration_log_client_request_free(integration_log_client_request_t *integ
         list_freeList(integration_log_client_request->response_headers);
         integration_log_client_request->response_headers = NULL;
     }
+    if (integration_log_client_request->response_status_code) {
+        free(integration_log_client_request->response_status_code);
+        integration_log_client_request->response_status_code = NULL;
+    }
     free(integration_log_client_request);
 }
 
@@ -116,12 +112,16 @@ cJSON *integration_log_client_request_convertToJSON(integration_log_client_reque
 
 
     // integration_log_client_request->method
-    if (pinterest_rest_api_integration_log_client_request_METHOD_NULL == integration_log_client_request->method) {
+    if (pinterest_rest_api_http_method__NULL == integration_log_client_request->method) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "method", integration_log_client_request_method_ToString(integration_log_client_request->method)) == NULL)
-    {
-    goto fail; //Enum
+    cJSON *method_local_JSON = http_method_convertToJSON(integration_log_client_request->method);
+    if(method_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "method", method_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
 
 
@@ -176,7 +176,7 @@ cJSON *integration_log_client_request_convertToJSON(integration_log_client_reque
 
     // integration_log_client_request->response_status_code
     if(integration_log_client_request->response_status_code) {
-    if(cJSON_AddNumberToObject(item, "response_status_code", integration_log_client_request->response_status_code) == NULL) {
+    if(cJSON_AddNumberToObject(item, "response_status_code", *integration_log_client_request->response_status_code) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -193,11 +193,21 @@ integration_log_client_request_t *integration_log_client_request_parseFromJSON(c
 
     integration_log_client_request_t *integration_log_client_request_local_var = NULL;
 
+    char *host_local_str = NULL;
+
+    // define the local variable for integration_log_client_request->method
+    pinterest_rest_api_http_method__e method_local_nonprim = 0;
+
+    char *path_local_str = NULL;
+
     // define the local map for integration_log_client_request->request_headers
     list_t *request_headersList = NULL;
 
     // define the local map for integration_log_client_request->response_headers
     list_t *response_headersList = NULL;
+
+    // define the local variable for integration_log_client_request->response_status_code
+    int *response_status_code_local_var = NULL;
 
     // integration_log_client_request->host
     cJSON *host = cJSON_GetObjectItemCaseSensitive(integration_log_client_requestJSON, "host");
@@ -223,13 +233,8 @@ integration_log_client_request_t *integration_log_client_request_parseFromJSON(c
         goto end;
     }
 
-    pinterest_rest_api_integration_log_client_request_METHOD_e methodVariable;
     
-    if(!cJSON_IsString(method))
-    {
-    goto end; //Enum
-    }
-    methodVariable = integration_log_client_request_method_FromString(method->valuestring);
+    method_local_nonprim = http_method_parseFromJSON(method); //custom
 
     // integration_log_client_request->path
     cJSON *path = cJSON_GetObjectItemCaseSensitive(integration_log_client_requestJSON, "path");
@@ -312,20 +317,44 @@ integration_log_client_request_t *integration_log_client_request_parseFromJSON(c
     {
     goto end; //Numeric
     }
+    response_status_code_local_var = malloc(sizeof(int));
+    if(!response_status_code_local_var)
+    {
+        goto end;
+    }
+    *response_status_code_local_var = response_status_code->valuedouble;
     }
 
 
+    if (host && !cJSON_IsNull(host)) host_local_str = strdup(host->valuestring);
+    if (path && !cJSON_IsNull(path)) path_local_str = strdup(path->valuestring);
+
     integration_log_client_request_local_var = integration_log_client_request_create_internal (
-        strdup(host->valuestring),
-        methodVariable,
-        strdup(path->valuestring),
+        host_local_str,
+        method_local_nonprim,
+        path_local_str,
         request_headers ? request_headersList : NULL,
         response_headers ? response_headersList : NULL,
-        response_status_code ? response_status_code->valuedouble : 0
+        response_status_code_local_var
         );
+
+    if (!integration_log_client_request_local_var) {
+        goto end;
+    }
 
     return integration_log_client_request_local_var;
 end:
+    if (host_local_str) {
+        free(host_local_str);
+        host_local_str = NULL;
+    }
+    if (method_local_nonprim) {
+        method_local_nonprim = 0;
+    }
+    if (path_local_str) {
+        free(path_local_str);
+        path_local_str = NULL;
+    }
     if (request_headersList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, request_headersList) {
@@ -353,6 +382,10 @@ end:
         }
         list_freeList(response_headersList);
         response_headersList = NULL;
+    }
+    if (response_status_code_local_var) {
+        free(response_status_code_local_var);
+        response_status_code_local_var = NULL;
     }
     return NULL;
 

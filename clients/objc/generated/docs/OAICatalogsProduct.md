@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**OAICatalogsType***](OAICatalogsType.md) |  | 
+**catalogType** | **NSString*** |  | 
 **metadata** | [**OAICatalogsCreativeAssetsProductMetadata***](OAICatalogsCreativeAssetsProductMetadata.md) |  | 
 **pin** | [**OAIPin***](OAIPin.md) |  | 
 

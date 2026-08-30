@@ -8,7 +8,7 @@ SharedAudienceAccount::SharedAudienceAccount()
 {
 	account_id = std::string();
 	account_name = std::string();
-	account_type = std::string();
+	account_type = null;
 	shared_on_timestamp = int(0);
 }
 
@@ -61,8 +61,9 @@ SharedAudienceAccount::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&account_type, value, "std::string");
 
+        AudienceAccountType* obj = &account_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -105,8 +106,8 @@ SharedAudienceAccount::toJson()
 
 
 
-    object["account_type"] = getAccountType();
 
+	object["account_type"] = getAccountType().toJson();
 
 
 
@@ -127,7 +128,7 @@ SharedAudienceAccount::getAccountId()
 }
 
 void
-SharedAudienceAccount::setAccountId(std::string  account_id)
+SharedAudienceAccount::setAccountId(std::string account_id)
 {
 	this->account_id = account_id;
 }
@@ -139,19 +140,19 @@ SharedAudienceAccount::getAccountName()
 }
 
 void
-SharedAudienceAccount::setAccountName(std::string  account_name)
+SharedAudienceAccount::setAccountName(std::string account_name)
 {
 	this->account_name = account_name;
 }
 
-std::string
+AudienceAccountType
 SharedAudienceAccount::getAccountType()
 {
 	return account_type;
 }
 
 void
-SharedAudienceAccount::setAccountType(std::string  account_type)
+SharedAudienceAccount::setAccountType(AudienceAccountType account_type)
 {
 	this->account_type = account_type;
 }
@@ -163,7 +164,7 @@ SharedAudienceAccount::getSharedOnTimestamp()
 }
 
 void
-SharedAudienceAccount::setSharedOnTimestamp(int  shared_on_timestamp)
+SharedAudienceAccount::setSharedOnTimestamp(int shared_on_timestamp)
 {
 	this->shared_on_timestamp = shared_on_timestamp;
 }

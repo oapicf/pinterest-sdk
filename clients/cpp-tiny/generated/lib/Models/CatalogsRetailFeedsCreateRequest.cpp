@@ -7,17 +7,17 @@ using namespace Tiny;
 CatalogsRetailFeedsCreateRequest::CatalogsRetailFeedsCreateRequest()
 {
 	catalog_id = std::string();
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
 	credentials = CatalogsFeedCredentials();
 	default_availability = ProductAvailabilityType();
 	default_country = Country();
 	default_currency = NullableCurrency();
-	default_locale = CatalogsFeedsCreateRequest_default_locale();
+	default_locale = CatalogsCreativeAssetsFeedsCreateRequest_default_locale();
 	format = CatalogsFormat();
 	location = std::string();
 	name = std::string();
 	preferred_processing_schedule = CatalogsFeedProcessingSchedule();
-	status = std::string();
+	status = null;
 }
 
 CatalogsRetailFeedsCreateRequest::CatalogsRetailFeedsCreateRequest(std::string jsonString)
@@ -56,9 +56,8 @@ CatalogsRetailFeedsCreateRequest::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -127,7 +126,7 @@ CatalogsRetailFeedsCreateRequest::fromJson(std::string jsonObj)
 
 
 
-        CatalogsFeedsCreateRequest_default_locale* obj = &default_locale;
+        CatalogsCreativeAssetsFeedsCreateRequest_default_locale* obj = &default_locale;
 		obj->fromJson(value.dump());
 
     }
@@ -219,8 +218,8 @@ CatalogsRetailFeedsCreateRequest::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -304,19 +303,19 @@ CatalogsRetailFeedsCreateRequest::getCatalogId()
 }
 
 void
-CatalogsRetailFeedsCreateRequest::setCatalogId(std::string  catalog_id)
+CatalogsRetailFeedsCreateRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
 
-CatalogsType
+std::string
 CatalogsRetailFeedsCreateRequest::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsRetailFeedsCreateRequest::setCatalogType(CatalogsType  catalog_type)
+CatalogsRetailFeedsCreateRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -328,7 +327,7 @@ CatalogsRetailFeedsCreateRequest::getCredentials()
 }
 
 void
-CatalogsRetailFeedsCreateRequest::setCredentials(CatalogsFeedCredentials  credentials)
+CatalogsRetailFeedsCreateRequest::setCredentials(CatalogsFeedCredentials credentials)
 {
 	this->credentials = credentials;
 }
@@ -340,7 +339,7 @@ CatalogsRetailFeedsCreateRequest::getDefaultAvailability()
 }
 
 void
-CatalogsRetailFeedsCreateRequest::setDefaultAvailability(ProductAvailabilityType  default_availability)
+CatalogsRetailFeedsCreateRequest::setDefaultAvailability(ProductAvailabilityType default_availability)
 {
 	this->default_availability = default_availability;
 }
@@ -352,7 +351,7 @@ CatalogsRetailFeedsCreateRequest::getDefaultCountry()
 }
 
 void
-CatalogsRetailFeedsCreateRequest::setDefaultCountry(Country  default_country)
+CatalogsRetailFeedsCreateRequest::setDefaultCountry(Country default_country)
 {
 	this->default_country = default_country;
 }
@@ -364,19 +363,19 @@ CatalogsRetailFeedsCreateRequest::getDefaultCurrency()
 }
 
 void
-CatalogsRetailFeedsCreateRequest::setDefaultCurrency(NullableCurrency  default_currency)
+CatalogsRetailFeedsCreateRequest::setDefaultCurrency(NullableCurrency default_currency)
 {
 	this->default_currency = default_currency;
 }
 
-CatalogsFeedsCreateRequest_default_locale
+CatalogsCreativeAssetsFeedsCreateRequest_default_locale
 CatalogsRetailFeedsCreateRequest::getDefaultLocale()
 {
 	return default_locale;
 }
 
 void
-CatalogsRetailFeedsCreateRequest::setDefaultLocale(CatalogsFeedsCreateRequest_default_locale  default_locale)
+CatalogsRetailFeedsCreateRequest::setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequest_default_locale default_locale)
 {
 	this->default_locale = default_locale;
 }
@@ -388,7 +387,7 @@ CatalogsRetailFeedsCreateRequest::getFormat()
 }
 
 void
-CatalogsRetailFeedsCreateRequest::setFormat(CatalogsFormat  format)
+CatalogsRetailFeedsCreateRequest::setFormat(CatalogsFormat format)
 {
 	this->format = format;
 }
@@ -400,7 +399,7 @@ CatalogsRetailFeedsCreateRequest::getLocation()
 }
 
 void
-CatalogsRetailFeedsCreateRequest::setLocation(std::string  location)
+CatalogsRetailFeedsCreateRequest::setLocation(std::string location)
 {
 	this->location = location;
 }
@@ -412,7 +411,7 @@ CatalogsRetailFeedsCreateRequest::getName()
 }
 
 void
-CatalogsRetailFeedsCreateRequest::setName(std::string  name)
+CatalogsRetailFeedsCreateRequest::setName(std::string name)
 {
 	this->name = name;
 }
@@ -424,7 +423,7 @@ CatalogsRetailFeedsCreateRequest::getPreferredProcessingSchedule()
 }
 
 void
-CatalogsRetailFeedsCreateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule)
+CatalogsRetailFeedsCreateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferred_processing_schedule)
 {
 	this->preferred_processing_schedule = preferred_processing_schedule;
 }
@@ -436,7 +435,7 @@ CatalogsRetailFeedsCreateRequest::getStatus()
 }
 
 void
-CatalogsRetailFeedsCreateRequest::setStatus(CatalogsStatus  status)
+CatalogsRetailFeedsCreateRequest::setStatus(CatalogsStatus status)
 {
 	this->status = status;
 }

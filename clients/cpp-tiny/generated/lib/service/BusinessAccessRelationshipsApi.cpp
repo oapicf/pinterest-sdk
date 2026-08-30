@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            Brand_accounts_create_200_response
+            BrandAccount
         >
         BusinessAccessRelationshipsApi::
         brandAccounts_create(
@@ -13,7 +13,7 @@ using namespace Tiny;
             std::string businessHierarchyId
             , 
             
-            Brand_accounts_create_request brandAccountsCreateRequest
+            BrandAccountCreate brandAccountCreate
             
         )
         {
@@ -42,11 +42,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | brandAccountsCreateRequest
+            // Body     | brandAccountCreate
 
 
 
-            payload = brandAccountsCreateRequest.toJson().dump();
+            payload = brandAccountCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -57,30 +57,30 @@ using namespace Tiny;
 
 
 
-            Brand_accounts_create_200_response obj(output_string);
+            BrandAccount obj(output_string);
 
 
-            Response<Brand_accounts_create_200_response> response(obj, httpCode);
+            Response<BrandAccount> response(obj, httpCode);
             return response;
         }
 
         Response<
-            Brand_accounts_create_200_response
+            BrandAccount
         >
         BusinessAccessRelationshipsApi::
         brandAccounts_update(
             
-            std::string businessHierarchyId
-            , 
-            
             std::string brandAccountId
             , 
             
-            Brand_accounts_update_request brandAccountsUpdateRequest
+            std::string businessHierarchyId
+            , 
+            
+            BrandAccountUpdate brandAccountUpdate
             
         )
         {
-            std::string url = basepath + "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}"; //businessHierarchyId brandAccountId 
+            std::string url = basepath + "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}"; //brandAccountId businessHierarchyId 
 
 
             // Headers  | 
@@ -92,14 +92,6 @@ using namespace Tiny;
 
 
 
-                std::string s_businessHierarchyId("{");
-                s_businessHierarchyId.append("business_hierarchy_id");
-                s_businessHierarchyId.append("}");
-
-                int pos = url.find(s_businessHierarchyId);
-
-                url.erase(pos, s_businessHierarchyId.length());
-                url.insert(pos, stringify(businessHierarchyId));
                 std::string s_brandAccountId("{");
                 s_brandAccountId.append("brand_account_id");
                 s_brandAccountId.append("}");
@@ -108,16 +100,24 @@ using namespace Tiny;
 
                 url.erase(pos, s_brandAccountId.length());
                 url.insert(pos, stringify(brandAccountId));
+                std::string s_businessHierarchyId("{");
+                s_businessHierarchyId.append("business_hierarchy_id");
+                s_businessHierarchyId.append("}");
+
+                int pos = url.find(s_businessHierarchyId);
+
+                url.erase(pos, s_businessHierarchyId.length());
+                url.insert(pos, stringify(businessHierarchyId));
 
 
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | brandAccountsUpdateRequest
+            // Body     | brandAccountUpdate
 
 
 
-            payload = brandAccountsUpdateRequest.toJson().dump();
+            payload = brandAccountUpdate.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -128,15 +128,15 @@ using namespace Tiny;
 
 
 
-            Brand_accounts_create_200_response obj(output_string);
+            BrandAccount obj(output_string);
 
 
-            Response<Brand_accounts_create_200_response> response(obj, httpCode);
+            Response<BrandAccount> response(obj, httpCode);
             return response;
         }
 
         Response<
-            DeletedMembersResponse
+            Delete_business_membership_200_response
         >
         BusinessAccessRelationshipsApi::
         deleteBusinessMembership(
@@ -144,7 +144,7 @@ using namespace Tiny;
             std::string businessId
             , 
             
-            MembersToDeleteBody membersToDeleteBody
+            DeleteBusinessMembershipBody deleteBusinessMembershipBody
             
         )
         {
@@ -173,11 +173,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | DELETE
-            // Body     | membersToDeleteBody
+            // Body     | deleteBusinessMembershipBody
 
 
 
-            payload = membersToDeleteBody.toJson().dump();
+            payload = deleteBusinessMembershipBody.toJson().dump();
 
             int httpCode = sendRequest(url, "DELETE", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -188,15 +188,15 @@ using namespace Tiny;
 
 
 
-            DeletedMembersResponse obj(output_string);
+            Delete_business_membership_200_response obj(output_string);
 
 
-            Response<DeletedMembersResponse> response(obj, httpCode);
+            Response<Delete_business_membership_200_response> response(obj, httpCode);
             return response;
         }
 
         Response<
-            DeletePartnersResponse
+            DeleteBusinessPartners
         >
         BusinessAccessRelationshipsApi::
         deleteBusinessPartners(
@@ -204,7 +204,7 @@ using namespace Tiny;
             std::string businessId
             , 
             
-            DeletePartnersRequest deletePartnersRequest
+            DeleteBusinessPartnersDelete deleteBusinessPartnersDelete
             
         )
         {
@@ -233,11 +233,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | DELETE
-            // Body     | deletePartnersRequest
+            // Body     | deleteBusinessPartnersDelete
 
 
 
-            payload = deletePartnersRequest.toJson().dump();
+            payload = deleteBusinessPartnersDelete.toJson().dump();
 
             int httpCode = sendRequest(url, "DELETE", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -248,10 +248,10 @@ using namespace Tiny;
 
 
 
-            DeletePartnersResponse obj(output_string);
+            DeleteBusinessPartners obj(output_string);
 
 
-            Response<DeletePartnersResponse> response(obj, httpCode);
+            Response<DeleteBusinessPartners> response(obj, httpCode);
             return response;
         }
 
@@ -261,10 +261,13 @@ using namespace Tiny;
         BusinessAccessRelationshipsApi::
         get_businessEmployers(
             
-            int pageSize
+            bool assetsSummary
             , 
             
             std::string bookmark
+            , 
+            
+            int pageSize
             
         )
         {
@@ -273,9 +276,10 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | pageSize bookmark 
-            addQueryParam("page_size",pageSize);
+            // Query    | assetsSummary bookmark pageSize 
+            addQueryParam("assets_summary",assetsSummary);
             addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
 
             // Form     | 
 
@@ -304,7 +308,7 @@ using namespace Tiny;
         }
 
         Response<
-            Get_business_members_200_response
+            Get_business_employers_200_response
         >
         BusinessAccessRelationshipsApi::
         get_businessMembers(
@@ -377,15 +381,15 @@ using namespace Tiny;
 
 
 
-            Get_business_members_200_response obj(output_string);
+            Get_business_employers_200_response obj(output_string);
 
 
-            Response<Get_business_members_200_response> response(obj, httpCode);
+            Response<Get_business_employers_200_response> response(obj, httpCode);
             return response;
         }
 
         Response<
-            Get_business_partners_200_response
+            Get_business_employers_200_response
         >
         BusinessAccessRelationshipsApi::
         get_businessPartners(
@@ -405,10 +409,13 @@ using namespace Tiny;
             int startIndex
             , 
             
-            int pageSize
+            bool sortAscending
             , 
             
             std::string bookmark
+            , 
+            
+            int pageSize
             
         )
         {
@@ -417,13 +424,14 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | assetsSummary partnerType partnerIds startIndex pageSize bookmark 
+            // Query    | assetsSummary partnerType partnerIds startIndex sortAscending bookmark pageSize 
             addQueryParam("assets_summary",assetsSummary);
             addQueryParam("partner_type",partnerType);
             addQueryParam("partner_ids",partnerIds);
             addQueryParam("start_index",startIndex);
-            addQueryParam("page_size",pageSize);
+            addQueryParam("sort_ascending",sortAscending);
             addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
 
             // Form     | 
 
@@ -452,10 +460,10 @@ using namespace Tiny;
 
 
 
-            Get_business_partners_200_response obj(output_string);
+            Get_business_employers_200_response obj(output_string);
 
 
-            Response<Get_business_partners_200_response> response(obj, httpCode);
+            Response<Get_business_employers_200_response> response(obj, httpCode);
             return response;
         }
 
@@ -471,7 +479,7 @@ using namespace Tiny;
             std::string systemUserId
             , 
             
-            System_user_update_request systemUserUpdateRequest
+            SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody
             
         )
         {
@@ -508,11 +516,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | systemUserUpdateRequest
+            // Body     | systemUserUpdateWithRequiredBody
 
 
 
-            payload = systemUserUpdateRequest.toJson().dump();
+            payload = systemUserUpdateWithRequiredBody.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -526,14 +534,14 @@ using namespace Tiny;
         }
 
         Response<
-            UpdateMemberResultsResponseArray
+            UpdateBusinessMembershipsResponse
         >
         BusinessAccessRelationshipsApi::
         update_businessMemberships(
             
             std::string businessId
             , 
-            std::list<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody
+            std::list<BusinessMembershipMember> businessMembershipMember
             
             
         )
@@ -563,11 +571,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | updateMemberBusinessRoleBody
+            // Body     | businessMembershipMember
 
 
             bourne::json tmp_arr = bourne::json::array();
-            for(auto& var : updateMemberBusinessRoleBody)
+            for(auto& var : businessMembershipMember)
             {
                 auto tmp = var.toJson();
                 tmp_arr.append(tmp);
@@ -585,10 +593,10 @@ using namespace Tiny;
 
 
 
-            UpdateMemberResultsResponseArray obj(output_string);
+            UpdateBusinessMembershipsResponse obj(output_string);
 
 
-            Response<UpdateMemberResultsResponseArray> response(obj, httpCode);
+            Response<UpdateBusinessMembershipsResponse> response(obj, httpCode);
             return response;
         }
 

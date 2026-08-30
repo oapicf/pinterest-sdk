@@ -5,6 +5,6 @@ This represents a mapping from placement to a bid price adjustment.  Multiplier 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PLACEMENT** | **character** |  | [optional] [Enum: [SEARCH, BROWSE, RELATED_PINS]] 
+**PLACEMENT** | [**PlacementType**](PlacementType.md) | Placement type identifier. | [optional] [Enum: ] 
 
 

@@ -1,25 +1,26 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.BulkDownloadRequest
-import org.openapitools.model.BulkDownloadResponse
+import org.openapitools.model.BulkDownload
+import org.openapitools.model.BulkDownloadCreate
+import org.openapitools.model.BulkJobData
 import org.openapitools.model.BulkUpsertRequest
 import org.openapitools.model.BulkUpsertResponse
-import org.openapitools.model.BulkUpsertStatusResponse
-import org.openapitools.model.Error
+import org.openapitools.model.PinterestLibError
 
 class BulkApi {
     String basePath = "https://api.pinterest.com/v5"
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def bulkDownloadCreate ( String adAccountId, BulkDownloadRequest bulkDownloadRequest, Closure onSuccess, Closure onFailure)  {
+    def bulkDownloadCreate ( String adAccountId, BulkDownloadCreate bulkDownloadCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/bulk/download"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -27,19 +28,21 @@ class BulkApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (bulkDownloadRequest == null) {
-            throw new RuntimeException("missing required params bulkDownloadRequest")
+        if (bulkDownloadCreate == null) {
+            throw new RuntimeException("missing required params bulkDownloadCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = bulkDownloadRequest
+        bodyParams = bulkDownloadCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    BulkDownloadResponse.class )
+                    BulkDownload.class )
 
     }
 
@@ -50,6 +53,7 @@ class BulkApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -68,9 +72,11 @@ class BulkApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    BulkUpsertStatusResponse.class )
+                    BulkJobData.class )
 
     }
 
@@ -81,6 +87,7 @@ class BulkApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -98,7 +105,9 @@ class BulkApi {
         bodyParams = bulkUpsertRequest
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     BulkUpsertResponse.class )
 

@@ -4,7 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.prokarma.pkmst.model.AdGroupResponse;
+import com.prokarma.pkmst.model.AdGroup;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -20,14 +20,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * AdGroupsList200Response
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdGroupsList200Response   {
   @JsonProperty("bookmark")
   private String bookmark;
 
   @JsonProperty("items")
   
-  private List<AdGroupResponse> items = new ArrayList<>();
+  private List<AdGroup> items = new ArrayList<>();
 
   public AdGroupsList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -47,12 +47,12 @@ public class AdGroupsList200Response   {
     this.bookmark = bookmark;
   }
 
-  public AdGroupsList200Response items(List<AdGroupResponse> items) {
+  public AdGroupsList200Response items(List<AdGroup> items) {
     this.items = items;
     return this;
   }
 
-  public AdGroupsList200Response addItemsItem(AdGroupResponse itemsItem) {
+  public AdGroupsList200Response addItemsItem(AdGroup itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -65,11 +65,11 @@ public class AdGroupsList200Response   {
    * @return items
    */
   @ApiModelProperty(required = true, value = "")
-  public List<AdGroupResponse> getItems() {
+  public List<AdGroup> getItems() {
     return items;
   }
 
-  public void setItems(List<AdGroupResponse> items) {
+  public void setItems(List<AdGroup> items) {
     this.items = items;
   }
 
@@ -108,10 +108,7 @@ public class AdGroupsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

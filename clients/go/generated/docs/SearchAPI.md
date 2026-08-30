@@ -32,10 +32,10 @@ import (
 
 func main() {
 	term := "term_example" // string | Search term to look up pins.
-	countryCode := "US" // string | Two letter country code (ISO 3166-1 alpha-2)
+	countryCode := "countryCode_example" // string | Two letter country code (ISO 3166-1 alpha-2)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
 	locale := "locale_example" // string | Search locale. (optional)
-	limit := int32(4) // int32 | Max search result size (optional) (default to 10)
+	limit := int32(56) // int32 | Max search result size (optional) (default to 10)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## SearchUserBoardsGet
 
-> SearchUserBoardsGet200Response SearchUserBoardsGet(ctx).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Query(query).Execute()
+> BoardsList200Response SearchUserBoardsGet(ctx).AdAccountId(adAccountId).Query(query).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 Search user's boards
 
@@ -106,18 +106,18 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
-	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 	query := "query_example" // string | Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
+	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SearchAPI.SearchUserBoardsGet(context.Background()).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Query(query).Execute()
+	resp, r, err := apiClient.SearchAPI.SearchUserBoardsGet(context.Background()).AdAccountId(adAccountId).Query(query).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchUserBoardsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SearchUserBoardsGet`: SearchUserBoardsGet200Response
+	// response from `SearchUserBoardsGet`: BoardsList200Response
 	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchUserBoardsGet`: %v\n", resp)
 }
 ```
@@ -134,13 +134,13 @@ Other parameters are passed through a pointer to a apiSearchUserBoardsGetRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | 
- **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **query** | **string** | Search query. Can contain pin description keywords or comma-separated pin IDs. | 
+ **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
-[**SearchUserBoardsGet200Response**](SearchUserBoardsGet200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## SearchUserPinsList
 
-> SearchUserPinsList200Response SearchUserPinsList(ctx).Query(query).AdAccountId(adAccountId).Bookmark(bookmark).Execute()
+> PinsList200Response SearchUserPinsList(ctx).Query(query).AdAccountId(adAccountId).Bookmark(bookmark).Execute()
 
 Search user's Pins
 
@@ -177,7 +177,7 @@ import (
 )
 
 func main() {
-	query := "Plants" // string | Search query. Can contain pin description keywords or comma-separated pin IDs.
+	query := "query_example" // string | Search query. Can contain pin description keywords or comma-separated pin IDs.
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
 
@@ -188,7 +188,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchUserPinsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SearchUserPinsList`: SearchUserPinsList200Response
+	// response from `SearchUserPinsList`: PinsList200Response
 	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchUserPinsList`: %v\n", resp)
 }
 ```
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
+[**PinsList200Response**](PinsList200Response.md)
 
 ### Authorization
 

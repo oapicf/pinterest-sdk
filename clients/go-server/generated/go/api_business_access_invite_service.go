@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -37,50 +37,52 @@ func (s *BusinessAccessInviteAPIService) RespondBusinessAccessInvites(ctx contex
 	// TODO: Uncomment the next line to return response Response(200, RespondToInvitesResponseArray{}) or use other options such as http.Ok ...
 	// return Response(200, RespondToInvitesResponseArray{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("RespondBusinessAccessInvites method not implemented")
 }
 
-// CreateAssetInvites - Update invite/request with an asset permission
-func (s *BusinessAccessInviteAPIService) CreateAssetInvites(ctx context.Context, businessId string, createAssetInvitesRequest CreateAssetInvitesRequest) (ImplResponse, error) {
-	// TODO - update CreateAssetInvites with the required logic for this service method.
-	// Add api_business_access_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, UpdateInvitesResultsResponseArray{}) or use other options such as http.Ok ...
-	// return Response(200, UpdateInvitesResultsResponseArray{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("CreateAssetInvites method not implemented")
-}
-
-// AssetAccessRequestsCreate - Create a request to access an existing partner&#39;s assets.
-func (s *BusinessAccessInviteAPIService) AssetAccessRequestsCreate(ctx context.Context, businessId string, createAssetAccessRequestBody CreateAssetAccessRequestBody) (ImplResponse, error) {
-	// TODO - update AssetAccessRequestsCreate with the required logic for this service method.
-	// Add api_business_access_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, CreateAssetAccessRequestResponse{}) or use other options such as http.Ok ...
-	// return Response(200, CreateAssetAccessRequestResponse{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("AssetAccessRequestsCreate method not implemented")
-}
-
 // GetInvites - Get invites/requests
-func (s *BusinessAccessInviteAPIService) GetInvites(ctx context.Context, businessId string, isMember bool, inviteStatus []string, inviteType InviteType, bookmark string, pageSize int32) (ImplResponse, error) {
+func (s *BusinessAccessInviteAPIService) GetInvites(ctx context.Context, businessId string, isMember bool, inviteStatus []InviteFilterStatus, inviteType InviteType, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update GetInvites with the required logic for this service method.
 	// Add api_business_access_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, GetInvites200Response{}) or use other options such as http.Ok ...
 	// return Response(200, GetInvites200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("GetInvites method not implemented")
 }
@@ -93,22 +95,104 @@ func (s *BusinessAccessInviteAPIService) CreateMembershipOrPartnershipInvites(ct
 	// TODO: Uncomment the next line to return response Response(200, CreateInvitesResultsResponseArray{}) or use other options such as http.Ok ...
 	// return Response(200, CreateInvitesResultsResponseArray{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, CreateInvitesResultsResponseArray{}) or use other options such as http.Ok ...
+	// return Response(201, CreateInvitesResultsResponseArray{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("CreateMembershipOrPartnershipInvites method not implemented")
 }
 
 // CancelInvitesOrRequests - Cancel invites/requests
-func (s *BusinessAccessInviteAPIService) CancelInvitesOrRequests(ctx context.Context, businessId string, cancelInvitesBody CancelInvitesBody) (ImplResponse, error) {
+func (s *BusinessAccessInviteAPIService) CancelInvitesOrRequests(ctx context.Context, businessId string, cancelInvitesRequest CancelInvitesRequest) (ImplResponse, error) {
 	// TODO - update CancelInvitesOrRequests with the required logic for this service method.
 	// Add api_business_access_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, DeleteInvitesResultsResponseArray{}) or use other options such as http.Ok ...
-	// return Response(200, DeleteInvitesResultsResponseArray{}), nil
+	// TODO: Uncomment the next line to return response Response(200, CancelInvitesResponse{}) or use other options such as http.Ok ...
+	// return Response(200, CancelInvitesResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("CancelInvitesOrRequests method not implemented")
+}
+
+// CreateAssetInvites - Update invite/request with an asset permission
+func (s *BusinessAccessInviteAPIService) CreateAssetInvites(ctx context.Context, businessId string, createAssetInvitesRequest CreateAssetInvitesRequest) (ImplResponse, error) {
+	// TODO - update CreateAssetInvites with the required logic for this service method.
+	// Add api_business_access_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, UpdateInvitesResultsResponseArray{}) or use other options such as http.Ok ...
+	// return Response(200, UpdateInvitesResultsResponseArray{}), nil
+
+	// TODO: Uncomment the next line to return response Response(201, UpdateInvitesResultsResponseArray{}) or use other options such as http.Ok ...
+	// return Response(201, UpdateInvitesResultsResponseArray{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("CreateAssetInvites method not implemented")
+}
+
+// AssetAccessRequestsCreate - Create a request to access an existing partner&#39;s assets.
+func (s *BusinessAccessInviteAPIService) AssetAccessRequestsCreate(ctx context.Context, businessId string, createAssetAccessRequestBody CreateAssetAccessRequestBody) (ImplResponse, error) {
+	// TODO - update AssetAccessRequestsCreate with the required logic for this service method.
+	// Add api_business_access_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, CreateAssetAccessRequestResponse{}) or use other options such as http.Ok ...
+	// return Response(200, CreateAssetAccessRequestResponse{}), nil
+
+	// TODO: Uncomment the next line to return response Response(201, CreateAssetAccessRequestResponse{}) or use other options such as http.Ok ...
+	// return Response(201, CreateAssetAccessRequestResponse{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("AssetAccessRequestsCreate method not implemented")
 }

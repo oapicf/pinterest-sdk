@@ -5,7 +5,7 @@
   <h2><a name="feedProcessingResults/list"></a>feedProcessingResults/list</h2>
   <hr>
   <p></p>
-  <p>Fetch a feed processing results owned by the \&quot;operation user_account\&quot;. Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;</p>
+  <p>Fetch a feed processing results owned by the \&quot;operation user_account\&quot;. Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/catalogs/feeds/{feed_id}/processing_results</code>
   <h3 class="section">HTTP Method</h3>
@@ -23,7 +23,18 @@
       <span class="param-name">feed_id</span>
       <span class="param-type">String</span>
       
-      <p class="param-description">Unique identifier of a feed</p>
+      <p class="param-description">Unique identifier of a feed.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
       </li>
       <li class="parameter">
       
@@ -45,24 +56,13 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
-      </li>
-      <li class="parameter">
-      
-      <span class="param-in">Query: </span>
-      
-      
-      
-      <span class="param-name">ad_account_id</span>
-      <span class="param-type">String</span>
-      
-      <p class="param-description">Unique identifier of an ad account.</p>
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
       </li>
   </ul>
   <h2><a name="feeds/create"></a>feeds/create</h2>
   <hr>
   <p></p>
-  <p>Create a new feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</p>
+  <p>Create a new feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/catalogs/feeds</code>
   <h3 class="section">HTTP Method</h3>
@@ -77,10 +77,10 @@
       
       
       <span class="param-in">Body: </span>
-      <span class="param-name">FeedsCreateRequest</span>
-      <span class="param-type">FeedsCreateRequest(FeedsCreateRequest)</span>
+      <span class="param-name">CatalogsFeedCreateRequestSchema</span>
+      <span class="param-type">CatalogsFeedCreateRequestSchema(CatalogsFeedCreateRequestSchema)</span>
       
-      <p class="param-description">Request object used to created a feed.</p>
+      <p class="param-description"></p>
       </li>
       <li class="parameter">
       
@@ -97,13 +97,13 @@
   <h2><a name="feeds/delete"></a>feeds/delete</h2>
   <hr>
   <p></p>
-  <p>Delete a feed owned by the \&quot;operating user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.</p>
+  <p>Delete a feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/catalogs/feeds/{feed_id}</code>
   <h3 class="section">HTTP Method</h3>
   <code>DELETE</code>
   <h3 class="section">Response Type</h3>
-  <div class="model" data-model=""><a href=""></a></div>
+  <div class="model" data-model="CatalogsFeed"><a href="">CatalogsFeed</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
       <li class="parameter">
@@ -115,7 +115,7 @@
       <span class="param-name">feed_id</span>
       <span class="param-type">String</span>
       
-      <p class="param-description">Unique identifier of a feed</p>
+      <p class="param-description">Unique identifier of a feed.</p>
       </li>
       <li class="parameter">
       
@@ -132,7 +132,7 @@
   <h2><a name="feeds/get"></a>feeds/get</h2>
   <hr>
   <p></p>
-  <p>Get a single feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.</p>
+  <p>Get a single feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/catalogs/feeds/{feed_id}</code>
   <h3 class="section">HTTP Method</h3>
@@ -150,7 +150,7 @@
       <span class="param-name">feed_id</span>
       <span class="param-type">String</span>
       
-      <p class="param-description">Unique identifier of a feed</p>
+      <p class="param-description">Unique identifier of a feed.</p>
       </li>
       <li class="parameter">
       
@@ -167,7 +167,7 @@
   <h2><a name="feeds/ingest"></a>feeds/ingest</h2>
   <hr>
   <p></p>
-  <p>Ingest items for a given feed owned by the \&quot;operation user_account\&quot;.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.</p>
+  <p>Ingest items for a given feed owned by the \&quot;operation user_account\&quot;.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/catalogs/feeds/{feed_id}/ingest</code>
   <h3 class="section">HTTP Method</h3>
@@ -185,7 +185,7 @@
       <span class="param-name">feed_id</span>
       <span class="param-type">String</span>
       
-      <p class="param-description">Unique identifier of a feed</p>
+      <p class="param-description">Unique identifier of a feed.</p>
       </li>
       <li class="parameter">
       
@@ -202,7 +202,7 @@
   <h2><a name="feeds/list"></a>feeds/list</h2>
   <hr>
   <p></p>
-  <p>Fetch feeds owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.</p>
+  <p>Fetch feeds owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/catalogs/feeds</code>
   <h3 class="section">HTTP Method</h3>
@@ -211,28 +211,6 @@
   <div class="model" data-model="feeds_list_200_response"><a href="">feeds_list_200_response</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
-      <li class="parameter">
-      
-      <span class="param-in">Query: </span>
-      
-      
-      
-      <span class="param-name">bookmark</span>
-      <span class="param-type">String</span>
-      
-      <p class="param-description">Cursor used to fetch the next page of items</p>
-      </li>
-      <li class="parameter">
-      
-      <span class="param-in">Query: </span>
-      
-      
-      
-      <span class="param-name">page_size</span>
-      <span class="param-type">Integer</span>
-      
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
-      </li>
       <li class="parameter">
       
       <span class="param-in">Query: </span>
@@ -255,76 +233,6 @@
       
       <p class="param-description">Unique identifier of an ad account.</p>
       </li>
-  </ul>
-  <h2><a name="feeds/update"></a>feeds/update</h2>
-  <hr>
-  <p></p>
-  <p>Update a feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</p>
-  <h3 class="section">URL</h3>
-  <code>https://api.pinterest.com/v5/catalogs/feeds/{feed_id}</code>
-  <h3 class="section">HTTP Method</h3>
-  <code>PATCH</code>
-  <h3 class="section">Response Type</h3>
-  <div class="model" data-model="CatalogsFeed"><a href="">CatalogsFeed</a></div>
-  <h3 class="section">Parameters</h3>
-  <ul>
-      <li class="parameter">
-      
-      
-      <span class="param-in">Path: </span>
-      
-      
-      <span class="param-name">feed_id</span>
-      <span class="param-type">String</span>
-      
-      <p class="param-description">Unique identifier of a feed</p>
-      </li>
-      <li class="parameter">
-      
-      
-      
-      
-      <span class="param-in">Body: </span>
-      <span class="param-name">FeedsUpdateRequest</span>
-      <span class="param-type">FeedsUpdateRequest(FeedsUpdateRequest)</span>
-      
-      <p class="param-description">Request object used to update a feed.</p>
-      </li>
-      <li class="parameter">
-      
-      <span class="param-in">Query: </span>
-      
-      
-      
-      <span class="param-name">ad_account_id</span>
-      <span class="param-type">String</span>
-      
-      <p class="param-description">Unique identifier of an ad account.</p>
-      </li>
-  </ul>
-  <h2><a name="itemsIssues/list"></a>itemsIssues/list</h2>
-  <hr>
-  <p></p>
-  <p>List item validation issues for a given feed processing result owned by the \&quot;operation user_account\&quot;. Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters &#39;item_numbers&#39; and &#39;item_validation_issue&#39; cannot be used simultaneously until it is implemented in some release in the future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to &lt;a href&#x3D;&#39;/docs/api/v5/#operation/reports/create&#39;&gt;Build catalogs report&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api/v5/#operation/reports/get&#39;&gt;Get catalogs report&lt;/a&gt; endpoints. Moreover, they support multiple types of catalogs.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;</p>
-  <h3 class="section">URL</h3>
-  <code>https://api.pinterest.com/v5/catalogs/processing_results/{processing_result_id}/item_issues</code>
-  <h3 class="section">HTTP Method</h3>
-  <code>GET</code>
-  <h3 class="section">Response Type</h3>
-  <div class="model" data-model="items_issues_list_200_response"><a href="">items_issues_list_200_response</a></div>
-  <h3 class="section">Parameters</h3>
-  <ul>
-      <li class="parameter">
-      
-      
-      <span class="param-in">Path: </span>
-      
-      
-      <span class="param-name">processing_result_id</span>
-      <span class="param-type">String</span>
-      
-      <p class="param-description">Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).</p>
-      </li>
       <li class="parameter">
       
       <span class="param-in">Query: </span>
@@ -345,7 +253,77 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
+      </li>
+  </ul>
+  <h2><a name="feeds/update"></a>feeds/update</h2>
+  <hr>
+  <p></p>
+  <p>Update a feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/catalogs/feeds/{feed_id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PATCH</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="CatalogsFeed"><a href="">CatalogsFeed</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">feed_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of a feed.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">CatalogsFeedUpdateRequestSchema</span>
+      <span class="param-type">CatalogsFeedUpdateRequestSchema(CatalogsFeedUpdateRequestSchema)</span>
+      
+      <p class="param-description"></p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+  </ul>
+  <h2><a name="itemsIssues/list"></a>itemsIssues/list</h2>
+  <hr>
+  <p></p>
+  <p>List item validation issues for a given feed processing result owned by the \&quot;operation user_account\&quot;. Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters &#39;item_numbers&#39; and &#39;item_validation_issue&#39; cannot be used simultaneously until it is implemented in some release in the future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to [Build catalogs report](/docs/api/v5/#operation/reports/create) and [Get catalogs report](/docs/api/v5/#operation/reports/get) endpoints. Moreover, they support multiple types of catalogs.  [Learn more](/docs/api-features/shopping-overview/)</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/catalogs/processing_results/{processing_result_id}/item_issues</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="items_issues_list_200_response"><a href="">items_issues_list_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">processing_result_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).</p>
       </li>
       <li class="parameter">
       
@@ -379,6 +357,28 @@
       <span class="param-type">String</span>
       
       <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">bookmark</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page_size</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
       </li>
   </ul>
 </div>

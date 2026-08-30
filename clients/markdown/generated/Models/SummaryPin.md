@@ -5,7 +5,7 @@
 |------------ | ------------- | ------------- | -------------|
 | **alt\_text** | **String** |  | [optional] [default to null] |
 | **description** | **String** |  | [optional] [default to null] |
-| **id** | **String** |  | [optional] [default to null] |
+| **id** | **String** |  | [default to null] |
 | **link** | **String** |  | [optional] [default to null] |
 | **media** | [**PinMedia**](PinMedia.md) |  | [optional] [default to null] |
 | **title** | **String** |  | [optional] [default to null] |

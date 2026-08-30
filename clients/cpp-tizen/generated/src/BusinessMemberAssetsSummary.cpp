@@ -55,12 +55,12 @@ BusinessMemberAssetsSummary::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<BusinessMemberAssetsSummary_ad_accounts_inner> new_list;
-			BusinessMemberAssetsSummary_ad_accounts_inner inst;
+			list<AssetIdWithPermissions> new_list;
+			AssetIdWithPermissions inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("BusinessMemberAssetsSummary_ad_accounts_inner")) {
-					jsonToValue(&inst, temp_json, "BusinessMemberAssetsSummary_ad_accounts_inner", "");
+				if (isprimitive("AssetIdWithPermissions")) {
+					jsonToValue(&inst, temp_json, "AssetIdWithPermissions", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -79,12 +79,12 @@ BusinessMemberAssetsSummary::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<BusinessMemberAssetsSummary_profiles_inner> new_list;
-			BusinessMemberAssetsSummary_profiles_inner inst;
+			list<AssetIdWithPermissions> new_list;
+			AssetIdWithPermissions inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("BusinessMemberAssetsSummary_profiles_inner")) {
-					jsonToValue(&inst, temp_json, "BusinessMemberAssetsSummary_profiles_inner", "");
+				if (isprimitive("AssetIdWithPermissions")) {
+					jsonToValue(&inst, temp_json, "AssetIdWithPermissions", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -108,18 +108,18 @@ BusinessMemberAssetsSummary::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("BusinessMemberAssetsSummary_ad_accounts_inner")) {
-		list<BusinessMemberAssetsSummary_ad_accounts_inner> new_list = static_cast<list <BusinessMemberAssetsSummary_ad_accounts_inner> > (getAdAccounts());
-		node = converttoJson(&new_list, "BusinessMemberAssetsSummary_ad_accounts_inner", "array");
+	if (isprimitive("AssetIdWithPermissions")) {
+		list<AssetIdWithPermissions> new_list = static_cast<list <AssetIdWithPermissions> > (getAdAccounts());
+		node = converttoJson(&new_list, "AssetIdWithPermissions", "array");
 	} else {
 		node = json_node_alloc();
-		list<BusinessMemberAssetsSummary_ad_accounts_inner> new_list = static_cast<list <BusinessMemberAssetsSummary_ad_accounts_inner> > (getAdAccounts());
+		list<AssetIdWithPermissions> new_list = static_cast<list <AssetIdWithPermissions> > (getAdAccounts());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<BusinessMemberAssetsSummary_ad_accounts_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<AssetIdWithPermissions>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			BusinessMemberAssetsSummary_ad_accounts_inner obj = *it;
+			AssetIdWithPermissions obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -133,18 +133,18 @@ BusinessMemberAssetsSummary::toJson()
 	
 	const gchar *ad_accountsKey = "ad_accounts";
 	json_object_set_member(pJsonObject, ad_accountsKey, node);
-	if (isprimitive("BusinessMemberAssetsSummary_profiles_inner")) {
-		list<BusinessMemberAssetsSummary_profiles_inner> new_list = static_cast<list <BusinessMemberAssetsSummary_profiles_inner> > (getProfiles());
-		node = converttoJson(&new_list, "BusinessMemberAssetsSummary_profiles_inner", "array");
+	if (isprimitive("AssetIdWithPermissions")) {
+		list<AssetIdWithPermissions> new_list = static_cast<list <AssetIdWithPermissions> > (getProfiles());
+		node = converttoJson(&new_list, "AssetIdWithPermissions", "array");
 	} else {
 		node = json_node_alloc();
-		list<BusinessMemberAssetsSummary_profiles_inner> new_list = static_cast<list <BusinessMemberAssetsSummary_profiles_inner> > (getProfiles());
+		list<AssetIdWithPermissions> new_list = static_cast<list <AssetIdWithPermissions> > (getProfiles());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<BusinessMemberAssetsSummary_profiles_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<AssetIdWithPermissions>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			BusinessMemberAssetsSummary_profiles_inner obj = *it;
+			AssetIdWithPermissions obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -166,26 +166,26 @@ BusinessMemberAssetsSummary::toJson()
 	return ret;
 }
 
-std::list<BusinessMemberAssetsSummary_ad_accounts_inner>
+std::list<AssetIdWithPermissions>
 BusinessMemberAssetsSummary::getAdAccounts()
 {
 	return ad_accounts;
 }
 
 void
-BusinessMemberAssetsSummary::setAdAccounts(std::list <BusinessMemberAssetsSummary_ad_accounts_inner> ad_accounts)
+BusinessMemberAssetsSummary::setAdAccounts(std::list <AssetIdWithPermissions> ad_accounts)
 {
 	this->ad_accounts = ad_accounts;
 }
 
-std::list<BusinessMemberAssetsSummary_profiles_inner>
+std::list<AssetIdWithPermissions>
 BusinessMemberAssetsSummary::getProfiles()
 {
 	return profiles;
 }
 
 void
-BusinessMemberAssetsSummary::setProfiles(std::list <BusinessMemberAssetsSummary_profiles_inner> profiles)
+BusinessMemberAssetsSummary::setProfiles(std::list <AssetIdWithPermissions> profiles)
 {
 	this->profiles = profiles;
 }

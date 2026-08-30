@@ -1,7 +1,7 @@
 /*
  * ReportingTimeZone.h
  *
- * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/) Specify the timezone to be applied for the reporting.
+ * Specify the timezone to be applied for the reporting.
  */
 
 #ifndef _ReportingTimeZone_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief [Closed beta](/docs/getting-started/using-beta-and-restricted-features/) Specify the timezone to be applied for the reporting.
+/*! \brief Specify the timezone to be applied for the reporting.
  *
  *  \ingroup Models
  *

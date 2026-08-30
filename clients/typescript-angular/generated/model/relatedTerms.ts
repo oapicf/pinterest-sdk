@@ -7,7 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { RelatedTermsRelatedTermsListInner } from './relatedTermsRelatedTermsListInner';
+import { RelatedTermsRelatedTermsListItems } from './relatedTermsRelatedTermsListItems';
 
 
 export interface RelatedTerms { 
@@ -22,6 +22,6 @@ export interface RelatedTerms {
     /**
      * The id of the advertiser.
      */
-    related_terms_list?: Array<RelatedTermsRelatedTermsListInner>;
+    related_terms_list?: Array<RelatedTermsRelatedTermsListItems>;
 }
 

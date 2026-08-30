@@ -1,0 +1,10 @@
+# OAIProductGroupPromotions
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**items** | [**NSArray&lt;OAIProductGroupPromotionResponseItem&gt;***](OAIProductGroupPromotionResponseItem.md) | Response-only: created or updated product group promotions, or exceptions. | [optional] [readonly] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

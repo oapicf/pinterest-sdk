@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Search pins by a given search term
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 
 ### Example
 ```kotlin
@@ -25,10 +25,10 @@ Search pins by a given search term
 
 val apiInstance = SearchApi()
 val term : kotlin.String = term_example // kotlin.String | Search term to look up pins.
-val countryCode : kotlin.String = US // kotlin.String | Two letter country code (ISO 3166-1 alpha-2)
+val countryCode : kotlin.String = countryCode_example // kotlin.String | Two letter country code (ISO 3166-1 alpha-2)
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
 val locale : kotlin.String = locale_example // kotlin.String | Search locale.
-val limit : kotlin.Int = 4 // kotlin.Int | Max search result size
+val limit : kotlin.Int = 56 // kotlin.Int | Max search result size
 try {
     val result : SearchPartnerPins200Response = apiInstance.searchPartnerPins(term, countryCode, bookmark, locale, limit)
     println(result)
@@ -57,8 +57,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -67,11 +73,11 @@ Configure pinterest_oauth2:
 
 <a id="searchUserBoardsGet"></a>
 # **searchUserBoardsGet**
-> SearchUserBoardsGet200Response searchUserBoardsGet(adAccountId, bookmark, pageSize, query)
+> BoardsList200Response searchUserBoardsGet(adAccountId, query, bookmark, pageSize)
 
 Search user&#39;s boards
 
-Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 ```kotlin
@@ -81,11 +87,11 @@ Search for boards for the \&quot;operation user_account\&quot;. This includes bo
 
 val apiInstance = SearchApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 val query : kotlin.String = query_example // kotlin.String | Search query. Can contain pin description keywords or comma-separated pin IDs.
+val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    val result : SearchUserBoardsGet200Response = apiInstance.searchUserBoardsGet(adAccountId, bookmark, pageSize, query)
+    val result : BoardsList200Response = apiInstance.searchUserBoardsGet(adAccountId, query, bookmark, pageSize)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling SearchApi#searchUserBoardsGet")
@@ -98,23 +104,35 @@ try {
 
 ### Parameters
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
+| **query** | **kotlin.String**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **query** | **kotlin.String**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**SearchUserBoardsGet200Response**](SearchUserBoardsGet200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -123,11 +141,11 @@ Configure client_credentials:
 
 <a id="searchUserPinsList"></a>
 # **searchUserPinsList**
-> SearchUserPinsList200Response searchUserPinsList(query, adAccountId, bookmark)
+> PinsList200Response searchUserPinsList(query, adAccountId, bookmark)
 
 Search user&#39;s Pins
 
-Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 ```kotlin
@@ -136,11 +154,11 @@ Search for pins for the \&quot;operation user_account\&quot;. - By default, the 
 //import org.openapitools.client.models.*
 
 val apiInstance = SearchApi()
-val query : kotlin.String = Plants // kotlin.String | Search query. Can contain pin description keywords or comma-separated pin IDs.
+val query : kotlin.String = query_example // kotlin.String | Search query. Can contain pin description keywords or comma-separated pin IDs.
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
 try {
-    val result : SearchUserPinsList200Response = apiInstance.searchUserPinsList(query, adAccountId, bookmark)
+    val result : PinsList200Response = apiInstance.searchUserPinsList(query, adAccountId, bookmark)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling SearchApi#searchUserPinsList")
@@ -160,13 +178,19 @@ try {
 
 ### Return type
 
-[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
+[**PinsList200Response**](PinsList200Response.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

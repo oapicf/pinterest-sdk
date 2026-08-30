@@ -25,7 +25,7 @@ const (
 	JP TargetingAdvertiserCountry = "JP"
 	KR TargetingAdvertiserCountry = "KR"
 	SG TargetingAdvertiserCountry = "SG"
-	NO TargetingAdvertiserCountry = "NO"
+	FALSE TargetingAdvertiserCountry = "false"
 	DK TargetingAdvertiserCountry = "DK"
 	FI TargetingAdvertiserCountry = "FI"
 	CY TargetingAdvertiserCountry = "CY"

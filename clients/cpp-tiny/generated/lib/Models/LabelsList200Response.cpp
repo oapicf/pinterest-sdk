@@ -7,7 +7,7 @@ using namespace Tiny;
 Labels_list_200_response::Labels_list_200_response()
 {
 	bookmark = std::string();
-	items = std::list<LabelsResponse>();
+	items = std::list<Label>();
 }
 
 Labels_list_200_response::Labels_list_200_response(std::string jsonString)
@@ -45,8 +45,8 @@ Labels_list_200_response::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<LabelsResponse> items_list;
-        LabelsResponse element;
+        std::list<Label> items_list;
+        Label element;
         for(auto& var : value.array_range())
         {
 
@@ -78,12 +78,12 @@ Labels_list_200_response::toJson()
 
 
 
-    std::list<LabelsResponse> items_list = getItems();
+    std::list<Label> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        LabelsResponse obj = var;
+        Label obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -102,19 +102,19 @@ Labels_list_200_response::getBookmark()
 }
 
 void
-Labels_list_200_response::setBookmark(std::string  bookmark)
+Labels_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
 
-std::list<LabelsResponse>
+std::list<Label>
 Labels_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Labels_list_200_response::setItems(std::list <LabelsResponse> items)
+Labels_list_200_response::setItems(std::list<Label> items)
 {
 	this->items = items;
 }

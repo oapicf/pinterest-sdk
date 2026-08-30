@@ -2,8 +2,6 @@ package org.openapitools.server.model
 
 
 /**
- * If specified, you must provide all properties
- *
  * @param maxScore Max value for the hotel rating score. for example: ''null''
  * @param numberOfReviewers Total number of people who have rated this hotel. for example: ''null''
  * @param ratingSystem System you use for guest reviews. for example: ''null''

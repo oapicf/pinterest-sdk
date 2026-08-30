@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::TopPinsAnalyticsResponseDateAvailability.new(
-  is_realtime: false,
-  latest_available_timestamp: 1649116799000
+  is_realtime: null,
+  latest_available_timestamp: null
 )
 ```
 

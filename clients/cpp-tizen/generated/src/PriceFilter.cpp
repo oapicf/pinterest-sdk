@@ -23,7 +23,7 @@ PriceFilter::~PriceFilter()
 void
 PriceFilter::__init()
 {
-	//pRICE = new Catalogs_product_group_pricing_currency_criteria();
+	//pRICE = new PriceFilterPrice();
 }
 
 void
@@ -47,11 +47,11 @@ PriceFilter::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("Catalogs_product_group_pricing_currency_criteria")) {
-			jsonToValue(&pRICE, node, "Catalogs_product_group_pricing_currency_criteria", "Catalogs_product_group_pricing_currency_criteria");
+		if (isprimitive("PriceFilterPrice")) {
+			jsonToValue(&pRICE, node, "PriceFilterPrice", "PriceFilterPrice");
 		} else {
 			
-			Catalogs_product_group_pricing_currency_criteria* obj = static_cast<Catalogs_product_group_pricing_currency_criteria*> (&pRICE);
+			PriceFilterPrice* obj = static_cast<PriceFilterPrice*> (&pRICE);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -68,13 +68,13 @@ PriceFilter::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("Catalogs_product_group_pricing_currency_criteria")) {
-		Catalogs_product_group_pricing_currency_criteria obj = getPRICE();
-		node = converttoJson(&obj, "Catalogs_product_group_pricing_currency_criteria", "");
+	if (isprimitive("PriceFilterPrice")) {
+		PriceFilterPrice obj = getPRICE();
+		node = converttoJson(&obj, "PriceFilterPrice", "");
 	}
 	else {
 		
-		Catalogs_product_group_pricing_currency_criteria obj = static_cast<Catalogs_product_group_pricing_currency_criteria> (getPRICE());
+		PriceFilterPrice obj = static_cast<PriceFilterPrice> (getPRICE());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -90,14 +90,14 @@ PriceFilter::toJson()
 	return ret;
 }
 
-Catalogs_product_group_pricing_currency_criteria
+PriceFilterPrice
 PriceFilter::getPRICE()
 {
 	return pRICE;
 }
 
 void
-PriceFilter::setPRICE(Catalogs_product_group_pricing_currency_criteria  pRICE)
+PriceFilter::setPRICE(PriceFilterPrice  pRICE)
 {
 	this->pRICE = pRICE;
 }

@@ -8,7 +8,7 @@
 #' @description BusinessAssetMembersGet200Response Class
 #' @format An \code{R6Class} generator object
 #' @field bookmark  character [optional]
-#' @field items List of members with permissions to the asset. list(\link{UserSingleAssetBinding})
+#' @field items  list(\link{UserSingleAssetBinding})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,7 +21,7 @@ BusinessAssetMembersGet200Response <- R6::R6Class(
     #' @description
     #' Initialize a new BusinessAssetMembersGet200Response class.
     #'
-    #' @param items List of members with permissions to the asset.
+    #' @param items items
     #' @param bookmark bookmark
     #' @param ... Other optional arguments.
     initialize = function(`items`, `bookmark` = NULL, ...) {
@@ -75,9 +75,32 @@ BusinessAssetMembersGet200Response <- R6::R6Class(
       }
       if (!is.null(self$`items`)) {
         BusinessAssetMembersGet200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`items`)
       }
       return(BusinessAssetMembersGet200ResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

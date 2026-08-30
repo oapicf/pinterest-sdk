@@ -1,9 +1,9 @@
 namespace OpenAPI
 
+open OpenAPI.Model.CustomerListUpload
 open OpenAPI.Model.CustomerListUploadCreateRequest
 open OpenAPI.Model.CustomerListUploadCreateResponse
-open OpenAPI.Model.CustomerListUploadResponse
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 open System.Collections.Generic
 open System
 
@@ -29,11 +29,36 @@ module CustomerListUploadsApiHandlerParams =
       
     }
 
-    type CustomerListUploadsCreateDefaultStatusCodeResponse = {
-      content:Error;
+    type CustomerListUploadsCreateStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type CustomerListUploadsCreateResult = CustomerListUploadsCreateStatusCode200 of CustomerListUploadsCreateStatusCode200Response|CustomerListUploadsCreateDefaultStatusCode of CustomerListUploadsCreateDefaultStatusCodeResponse
+
+    type CustomerListUploadsCreateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CustomerListUploadsCreateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CustomerListUploadsCreateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CustomerListUploadsCreateStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CustomerListUploadsCreateDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type CustomerListUploadsCreateResult = CustomerListUploadsCreateStatusCode200 of CustomerListUploadsCreateStatusCode200Response|CustomerListUploadsCreateStatusCode400 of CustomerListUploadsCreateStatusCode400Response|CustomerListUploadsCreateStatusCode401 of CustomerListUploadsCreateStatusCode401Response|CustomerListUploadsCreateStatusCode403 of CustomerListUploadsCreateStatusCode403Response|CustomerListUploadsCreateStatusCode404 of CustomerListUploadsCreateStatusCode404Response|CustomerListUploadsCreateStatusCode429 of CustomerListUploadsCreateStatusCode429Response|CustomerListUploadsCreateDefaultStatusCode of CustomerListUploadsCreateDefaultStatusCodeResponse
 
     type CustomerListUploadsCreateArgs = {
       pathParams:CustomerListUploadsCreatePathParams;
@@ -52,15 +77,40 @@ module CustomerListUploadsApiHandlerParams =
 
 
     type CustomerListUploadsGetStatusCode200Response = {
-      content:CustomerListUploadResponse;
+      content:CustomerListUpload;
+      
+    }
+
+    type CustomerListUploadsGetStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CustomerListUploadsGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CustomerListUploadsGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CustomerListUploadsGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CustomerListUploadsGetStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type CustomerListUploadsGetDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type CustomerListUploadsGetResult = CustomerListUploadsGetStatusCode200 of CustomerListUploadsGetStatusCode200Response|CustomerListUploadsGetDefaultStatusCode of CustomerListUploadsGetDefaultStatusCodeResponse
+    type CustomerListUploadsGetResult = CustomerListUploadsGetStatusCode200 of CustomerListUploadsGetStatusCode200Response|CustomerListUploadsGetStatusCode400 of CustomerListUploadsGetStatusCode400Response|CustomerListUploadsGetStatusCode401 of CustomerListUploadsGetStatusCode401Response|CustomerListUploadsGetStatusCode403 of CustomerListUploadsGetStatusCode403Response|CustomerListUploadsGetStatusCode404 of CustomerListUploadsGetStatusCode404Response|CustomerListUploadsGetStatusCode429 of CustomerListUploadsGetStatusCode429Response|CustomerListUploadsGetDefaultStatusCode of CustomerListUploadsGetDefaultStatusCodeResponse
 
     type CustomerListUploadsGetArgs = {
       pathParams:CustomerListUploadsGetPathParams;
@@ -78,15 +128,40 @@ module CustomerListUploadsApiHandlerParams =
 
 
     type CustomerListUploadsRunStatusCode200Response = {
-      content:CustomerListUploadResponse;
+      content:CustomerListUpload;
+      
+    }
+
+    type CustomerListUploadsRunStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CustomerListUploadsRunStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CustomerListUploadsRunStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CustomerListUploadsRunStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CustomerListUploadsRunStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type CustomerListUploadsRunDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type CustomerListUploadsRunResult = CustomerListUploadsRunStatusCode200 of CustomerListUploadsRunStatusCode200Response|CustomerListUploadsRunDefaultStatusCode of CustomerListUploadsRunDefaultStatusCodeResponse
+    type CustomerListUploadsRunResult = CustomerListUploadsRunStatusCode200 of CustomerListUploadsRunStatusCode200Response|CustomerListUploadsRunStatusCode400 of CustomerListUploadsRunStatusCode400Response|CustomerListUploadsRunStatusCode401 of CustomerListUploadsRunStatusCode401Response|CustomerListUploadsRunStatusCode403 of CustomerListUploadsRunStatusCode403Response|CustomerListUploadsRunStatusCode404 of CustomerListUploadsRunStatusCode404Response|CustomerListUploadsRunStatusCode429 of CustomerListUploadsRunStatusCode429Response|CustomerListUploadsRunDefaultStatusCode of CustomerListUploadsRunDefaultStatusCodeResponse
 
     type CustomerListUploadsRunArgs = {
       pathParams:CustomerListUploadsRunPathParams;

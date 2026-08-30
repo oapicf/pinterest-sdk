@@ -8,10 +8,11 @@
 #include "Helpers.h"
 #include <list>
 
-#include "Error.h"
-#include "PromotionCreateRequest.h"
-#include "PromotionResponse.h"
-#include "PromotionUpdateRequest.h"
+#include "Pinterest.Lib.Error.h"
+#include "Pinterest.Lib.PaginationOrder.h"
+#include "Promotion.h"
+#include "PromotionBatchUpdate.h"
+#include "PromotionCreate.h"
 #include "PromotionsResponse.h"
 #include "Promotions_list_200_response.h"
 
@@ -26,14 +27,14 @@ class PromotionsApi : public Service {
 public:
     PromotionsApi() = default;
 
-    virtual ~PromotionsApi() = default;
+    virtual ~PromotionsApi();
 
     /**
     * Create promotions.
     *
     * Create multiple new promotions.
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param promotionCreateRequest List of promotions to create, size limit [1, 30]. *Required*
+    * \param promotionCreate  *Required*
     */
     Response<
                 PromotionsResponse
@@ -42,7 +43,7 @@ public:
             
             std::string adAccountId
             , 
-            std::list<PromotionCreateRequest> promotionCreateRequest
+            std::list<PromotionCreate> promotionCreate
             
             
     );
@@ -50,36 +51,36 @@ public:
     * Delete promotion by id.
     *
     * Delete a promotion within Pinterest.
+    * \param promotionId Promotion ID *Required*
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param promotionId Unique identifier of a promotion *Required*
     */
     Response<
-            String
+                Promotion
         >
     promotions_delete(
             
-            std::string adAccountId
+            std::string promotionId
             , 
             
-            std::string promotionId
+            std::string adAccountId
             
     );
     /**
     * Get promotion by id.
     *
     * Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
+    * \param promotionId Promotion ID *Required*
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param promotionId Unique identifier of a promotion *Required*
     */
     Response<
-                PromotionResponse
+                Promotion
         >
     promotions_get(
             
-            std::string adAccountId
+            std::string promotionId
             , 
             
-            std::string promotionId
+            std::string adAccountId
             
     );
     /**
@@ -87,9 +88,9 @@ public:
     *
     * Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
     * \param bookmark Cursor used to fetch the next page of items
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+    * \param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
     */
     Response<
                 Promotions_list_200_response
@@ -99,13 +100,13 @@ public:
             std::string adAccountId
             , 
             
+            std::string bookmark
+            , 
+            
             int pageSize
             , 
             
-            std::string order
-            , 
-            
-            std::string bookmark
+            Pinterest.Lib.PaginationOrder order
             
     );
     /**
@@ -113,7 +114,7 @@ public:
     *
     * Update multiple promotions.
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param promotionUpdateRequest List of promotions to create, size limit [1, 30]. *Required*
+    * \param promotionBatchUpdate  *Required*
     */
     Response<
                 PromotionsResponse
@@ -122,7 +123,7 @@ public:
             
             std::string adAccountId
             , 
-            std::list<PromotionUpdateRequest> promotionUpdateRequest
+            std::list<PromotionBatchUpdate> promotionBatchUpdate
             
             
     );

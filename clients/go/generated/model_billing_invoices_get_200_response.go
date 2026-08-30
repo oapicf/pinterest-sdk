@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &BillingInvoicesGet200Response{}
 // BillingInvoicesGet200Response struct for BillingInvoicesGet200Response
 type BillingInvoicesGet200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	Items []BillingInvoiceResponse `json:"items"`
+	Items []BillingInvoice `json:"items"`
 }
 
 type _BillingInvoicesGet200Response BillingInvoicesGet200Response
@@ -32,7 +32,7 @@ type _BillingInvoicesGet200Response BillingInvoicesGet200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBillingInvoicesGet200Response(items []BillingInvoiceResponse) *BillingInvoicesGet200Response {
+func NewBillingInvoicesGet200Response(items []BillingInvoice) *BillingInvoicesGet200Response {
 	this := BillingInvoicesGet200Response{}
 	this.Items = items
 	return &this
@@ -89,9 +89,9 @@ func (o *BillingInvoicesGet200Response) UnsetBookmark() {
 }
 
 // GetItems returns the Items field value
-func (o *BillingInvoicesGet200Response) GetItems() []BillingInvoiceResponse {
+func (o *BillingInvoicesGet200Response) GetItems() []BillingInvoice {
 	if o == nil {
-		var ret []BillingInvoiceResponse
+		var ret []BillingInvoice
 		return ret
 	}
 
@@ -100,7 +100,7 @@ func (o *BillingInvoicesGet200Response) GetItems() []BillingInvoiceResponse {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *BillingInvoicesGet200Response) GetItemsOk() ([]BillingInvoiceResponse, bool) {
+func (o *BillingInvoicesGet200Response) GetItemsOk() ([]BillingInvoice, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *BillingInvoicesGet200Response) GetItemsOk() ([]BillingInvoiceResponse, 
 }
 
 // SetItems sets field value
-func (o *BillingInvoicesGet200Response) SetItems(v []BillingInvoiceResponse) {
+func (o *BillingInvoicesGet200Response) SetItems(v []BillingInvoice) {
 	o.Items = v
 }
 

@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  LabelUpdateRequestLabelsInner = openapi_server.resourceTypes.LabelUpdateRequestLabelsInner
+  LabelUpdateItem = openapi_server.resourceTypes.LabelUpdateItem
 }
 resourceTypes {
 
@@ -18,7 +18,7 @@ resourceTypes {
     properties {
         labels {
           type = array
-          items.type = LabelUpdateRequestLabelsInner
+          items.type = LabelUpdateItem
           description = "Labels that you are applying to the campaign."
           optional = true
         }

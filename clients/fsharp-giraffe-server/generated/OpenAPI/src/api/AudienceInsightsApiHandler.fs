@@ -7,10 +7,10 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open AudienceInsightsApiHandlerParams
 open AudienceInsightsApiServiceInterface
 open AudienceInsightsApiServiceImplementation
-open OpenAPI.Model.AudienceDefinitionResponse
 open OpenAPI.Model.AudienceInsightType
-open OpenAPI.Model.AudienceInsightsResponse
-open OpenAPI.Model.Error
+open OpenAPI.Model.AudienceInsights
+open OpenAPI.Model.AudienceInsightsScopeAndTypeGet200Response
+open OpenAPI.Model.PinterestLibError
 
 module AudienceInsightsApiHandler =
 
@@ -32,6 +32,16 @@ module AudienceInsightsApiHandler =
           return! (match result with
                       | AudienceInsightsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AudienceInsightsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AudienceInsightsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AudienceInsightsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AudienceInsightsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AudienceInsightsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AudienceInsightsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -51,6 +61,16 @@ module AudienceInsightsApiHandler =
           return! (match result with
                       | AudienceInsightsScopeAndTypeGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AudienceInsightsScopeAndTypeGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AudienceInsightsScopeAndTypeGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AudienceInsightsScopeAndTypeGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AudienceInsightsScopeAndTypeGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AudienceInsightsScopeAndTypeGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AudienceInsightsScopeAndTypeGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

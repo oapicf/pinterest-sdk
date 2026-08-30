@@ -1,14 +1,14 @@
 #' Create a new TrendingKeywordDemographics
 #'
 #' @description
-#' A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. <br /> For each dimension: <br />   - Key: The category (e.g., \"female\", \"18-24\"). <br />   - Value: The proportion of search volume (e.g., 0.12 for 12%). <br />     Values less than 0.05 are set to 0.04 for privacy. <br />     The sum for all categories in a dimension will approximately equal 1. <br />     Only applicable when `include_demographics` query parameter is set to `true`.
+#' A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. For each dimension: Key: The category (e.g., \"female\", \"18-24\"). Value: The proportion of search volume (e.g., 0.12 for 12%). Values less than 0.05 are set to 0.04 for privacy. The sum for all categories in a dimension will approximately equal 1. Only applicable when `include_demographics` query parameter is set to `true`.
 #'
 #' @docType class
 #' @title TrendingKeywordDemographics
 #' @description TrendingKeywordDemographics Class
 #' @format An \code{R6Class} generator object
-#' @field age_distribution  \link{TrendingKeywordDemographicsAgeDistribution} [optional]
-#' @field gender_distribution  \link{TrendingKeywordDemographicsGenderDistribution} [optional]
+#' @field age_distribution  \link{TrendsAgeDistribution} [optional]
+#' @field gender_distribution  \link{TrendsGenderDistribution} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -68,13 +68,36 @@ TrendingKeywordDemographics <- R6::R6Class(
       TrendingKeywordDemographicsObject <- list()
       if (!is.null(self$`age_distribution`)) {
         TrendingKeywordDemographicsObject[["age_distribution"]] <-
-          self$`age_distribution`$toSimpleType()
+          self$extractSimpleType(self$`age_distribution`)
       }
       if (!is.null(self$`gender_distribution`)) {
         TrendingKeywordDemographicsObject[["gender_distribution"]] <-
-          self$`gender_distribution`$toSimpleType()
+          self$extractSimpleType(self$`gender_distribution`)
       }
       return(TrendingKeywordDemographicsObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -85,12 +108,12 @@ TrendingKeywordDemographics <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`age_distribution`)) {
-        `age_distribution_object` <- TrendingKeywordDemographicsAgeDistribution$new()
+        `age_distribution_object` <- TrendsAgeDistribution$new()
         `age_distribution_object`$fromJSON(jsonlite::toJSON(this_object$`age_distribution`, auto_unbox = TRUE, digits = NA))
         self$`age_distribution` <- `age_distribution_object`
       }
       if (!is.null(this_object$`gender_distribution`)) {
-        `gender_distribution_object` <- TrendingKeywordDemographicsGenderDistribution$new()
+        `gender_distribution_object` <- TrendsGenderDistribution$new()
         `gender_distribution_object`$fromJSON(jsonlite::toJSON(this_object$`gender_distribution`, auto_unbox = TRUE, digits = NA))
         self$`gender_distribution` <- `gender_distribution_object`
       }
@@ -115,8 +138,8 @@ TrendingKeywordDemographics <- R6::R6Class(
     #' @return the instance of TrendingKeywordDemographics
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`age_distribution` <- TrendingKeywordDemographicsAgeDistribution$new()$fromJSON(jsonlite::toJSON(this_object$`age_distribution`, auto_unbox = TRUE, digits = NA))
-      self$`gender_distribution` <- TrendingKeywordDemographicsGenderDistribution$new()$fromJSON(jsonlite::toJSON(this_object$`gender_distribution`, auto_unbox = TRUE, digits = NA))
+      self$`age_distribution` <- TrendsAgeDistribution$new()$fromJSON(jsonlite::toJSON(this_object$`age_distribution`, auto_unbox = TRUE, digits = NA))
+      self$`gender_distribution` <- TrendsGenderDistribution$new()$fromJSON(jsonlite::toJSON(this_object$`gender_distribution`, auto_unbox = TRUE, digits = NA))
       self
     },
 

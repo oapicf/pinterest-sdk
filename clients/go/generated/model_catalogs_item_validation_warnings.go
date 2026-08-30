@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,211 +20,417 @@ var _ MappedNullable = &CatalogsItemValidationWarnings{}
 
 // CatalogsItemValidationWarnings struct for CatalogsItemValidationWarnings
 type CatalogsItemValidationWarnings struct {
+	// ad_image_0_link is duplicated with another ad image link.
 	ADIMAGE0LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_0_LINK_DUPLICATED,omitempty"`
+	// Ad image link 0 length is too long. The maximum length is 2047 characters.
 	ADIMAGE0LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_0_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 0 is required because an image tag was provided.
 	ADIMAGE0LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_0_LINK_REQUIRED,omitempty"`
+	// Ad image link 0 format is unsupported.
 	ADIMAGE0LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_0_LINK_WARNING,omitempty"`
+	// ad_image_0_tag is duplicated with another ad image tag.
 	ADIMAGE0TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_0_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 0 length is too long. The maximum length is 511 characters.
 	ADIMAGE0TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_0_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 0 is required because an image link was provided.
 	ADIMAGE0TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_0_TAG_REQUIRED,omitempty"`
+	// ad_image_10_link is duplicated with another ad image link.
 	ADIMAGE10LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_10_LINK_DUPLICATED,omitempty"`
+	// Ad image link 10 length is too long. The maximum length is 2047 characters.
 	ADIMAGE10LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_10_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 10 is required because an image tag was provided.
 	ADIMAGE10LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_10_LINK_REQUIRED,omitempty"`
+	// Ad image link 10 format is unsupported.
 	ADIMAGE10LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_10_LINK_WARNING,omitempty"`
+	// ad_image_10_tag is duplicated with another ad image tag.
 	ADIMAGE10TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_10_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 10 length is too long. The maximum length is 511 characters.
 	ADIMAGE10TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_10_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 10 is required because an image link was provided.
 	ADIMAGE10TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_10_TAG_REQUIRED,omitempty"`
+	// ad_image_11_link is duplicated with another ad image link.
 	ADIMAGE11LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_11_LINK_DUPLICATED,omitempty"`
+	// Ad image link 11 length is too long. The maximum length is 2047 characters.
 	ADIMAGE11LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_11_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 11 is required because an image tag was provided.
 	ADIMAGE11LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_11_LINK_REQUIRED,omitempty"`
+	// Ad image link 11 format is unsupported.
 	ADIMAGE11LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_11_LINK_WARNING,omitempty"`
+	// ad_image_11_tag is duplicated with another ad image tag.
 	ADIMAGE11TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_11_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 11 length is too long. The maximum length is 511 characters.
 	ADIMAGE11TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_11_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 11 is required because an image link was provided.
 	ADIMAGE11TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_11_TAG_REQUIRED,omitempty"`
+	// ad_image_12_link is duplicated with another ad image link.
 	ADIMAGE12LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_12_LINK_DUPLICATED,omitempty"`
+	// Ad image link 12 length is too long. The maximum length is 2047 characters.
 	ADIMAGE12LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_12_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 12 is required because an image tag was provided.
 	ADIMAGE12LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_12_LINK_REQUIRED,omitempty"`
+	// Ad image link 12 format is unsupported.
 	ADIMAGE12LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_12_LINK_WARNING,omitempty"`
+	// ad_image_12_tag is duplicated with another ad image tag.
 	ADIMAGE12TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_12_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 12 length is too long. The maximum length is 511 characters.
 	ADIMAGE12TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_12_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 12 is required because an image link was provided.
 	ADIMAGE12TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_12_TAG_REQUIRED,omitempty"`
+	// ad_image_13_link is duplicated with another ad image link.
 	ADIMAGE13LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_13_LINK_DUPLICATED,omitempty"`
+	// Ad image link 13 length is too long. The maximum length is 2047 characters.
 	ADIMAGE13LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_13_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 13 is required because an image tag was provided.
 	ADIMAGE13LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_13_LINK_REQUIRED,omitempty"`
+	// Ad image link 13 format is unsupported.
 	ADIMAGE13LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_13_LINK_WARNING,omitempty"`
+	// ad_image_13_tag is duplicated with another ad image tag.
 	ADIMAGE13TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_13_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 13 length is too long. The maximum length is 511 characters.
 	ADIMAGE13TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_13_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 13 is required because an image link was provided.
 	ADIMAGE13TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_13_TAG_REQUIRED,omitempty"`
+	// ad_image_14_link is duplicated with another ad image link.
 	ADIMAGE14LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_14_LINK_DUPLICATED,omitempty"`
+	// Ad image link 14 length is too long. The maximum length is 2047 characters.
 	ADIMAGE14LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_14_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 14 is required because an image tag was provided.
 	ADIMAGE14LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_14_LINK_REQUIRED,omitempty"`
+	// Ad image link 14 format is unsupported.
 	ADIMAGE14LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_14_LINK_WARNING,omitempty"`
+	// ad_image_14_tag is duplicated with another ad image tag.
 	ADIMAGE14TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_14_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 14 length is too long. The maximum length is 511 characters.
 	ADIMAGE14TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_14_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 14 is required because an image link was provided.
 	ADIMAGE14TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_14_TAG_REQUIRED,omitempty"`
+	// ad_image_15_link is duplicated with another ad image link.
 	ADIMAGE15LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_15_LINK_DUPLICATED,omitempty"`
+	// Ad image link 15 length is too long. The maximum length is 2047 characters.
 	ADIMAGE15LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_15_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 15 is required because an image tag was provided.
 	ADIMAGE15LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_15_LINK_REQUIRED,omitempty"`
+	// Ad image link 15 format is unsupported.
 	ADIMAGE15LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_15_LINK_WARNING,omitempty"`
+	// ad_image_15_tag is duplicated with another ad image tag.
 	ADIMAGE15TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_15_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 15 length is too long. The maximum length is 511 characters.
 	ADIMAGE15TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_15_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 15 is required because an image link was provided.
 	ADIMAGE15TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_15_TAG_REQUIRED,omitempty"`
+	// ad_image_16_link is duplicated with another ad image link.
 	ADIMAGE16LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_16_LINK_DUPLICATED,omitempty"`
+	// Ad image link 16 length is too long. The maximum length is 2047 characters.
 	ADIMAGE16LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_16_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 16 is required because an image tag was provided.
 	ADIMAGE16LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_16_LINK_REQUIRED,omitempty"`
+	// Ad image link 16 format is unsupported.
 	ADIMAGE16LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_16_LINK_WARNING,omitempty"`
+	// ad_image_16_tag is duplicated with another ad image tag.
 	ADIMAGE16TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_16_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 16 length is too long. The maximum length is 511 characters.
 	ADIMAGE16TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_16_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 16 is required because an image link was provided.
 	ADIMAGE16TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_16_TAG_REQUIRED,omitempty"`
+	// ad_image_17_link is duplicated with another ad image link.
 	ADIMAGE17LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_17_LINK_DUPLICATED,omitempty"`
+	// Ad image link 17 length is too long. The maximum length is 2047 characters.
 	ADIMAGE17LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_17_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 17 is required because an image tag was provided.
 	ADIMAGE17LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_17_LINK_REQUIRED,omitempty"`
+	// Ad image link 17 format is unsupported.
 	ADIMAGE17LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_17_LINK_WARNING,omitempty"`
+	// ad_image_17_tag is duplicated with another ad image tag.
 	ADIMAGE17TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_17_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 17 length is too long. The maximum length is 511 characters.
 	ADIMAGE17TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_17_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 17 is required because an image link was provided.
 	ADIMAGE17TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_17_TAG_REQUIRED,omitempty"`
+	// ad_image_18_link is duplicated with another ad image link.
 	ADIMAGE18LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_18_LINK_DUPLICATED,omitempty"`
+	// Ad image link 18 length is too long. The maximum length is 2047 characters.
 	ADIMAGE18LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_18_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 18 is required because an image tag was provided.
 	ADIMAGE18LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_18_LINK_REQUIRED,omitempty"`
+	// Ad image link 18 format is unsupported.
 	ADIMAGE18LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_18_LINK_WARNING,omitempty"`
+	// ad_image_18_tag is duplicated with another ad image tag.
 	ADIMAGE18TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_18_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 18 length is too long. The maximum length is 511 characters.
 	ADIMAGE18TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_18_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 18 is required because an image link was provided.
 	ADIMAGE18TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_18_TAG_REQUIRED,omitempty"`
+	// ad_image_19_link is duplicated with another ad image link.
 	ADIMAGE19LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_19_LINK_DUPLICATED,omitempty"`
+	// Ad image link 19 length is too long. The maximum length is 2047 characters.
 	ADIMAGE19LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_19_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 19 is required because an image tag was provided.
 	ADIMAGE19LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_19_LINK_REQUIRED,omitempty"`
+	// Ad image link 19 format is unsupported.
 	ADIMAGE19LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_19_LINK_WARNING,omitempty"`
+	// ad_image_19_tag is duplicated with another ad image tag.
 	ADIMAGE19TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_19_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 19 length is too long. The maximum length is 511 characters.
 	ADIMAGE19TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_19_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 19 is required because an image link was provided.
 	ADIMAGE19TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_19_TAG_REQUIRED,omitempty"`
+	// ad_image_1_link is duplicated with another ad image link.
 	ADIMAGE1LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_1_LINK_DUPLICATED,omitempty"`
+	// Ad image link 1 length is too long. The maximum length is 2047 characters.
 	ADIMAGE1LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_1_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 1 is required because an image tag was provided.
 	ADIMAGE1LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_1_LINK_REQUIRED,omitempty"`
+	// Ad image link 1 format is unsupported.
 	ADIMAGE1LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_1_LINK_WARNING,omitempty"`
+	// ad_image_1_tag is duplicated with another ad image tag.
 	ADIMAGE1TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_1_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 1 length is too long. The maximum length is 511 characters.
 	ADIMAGE1TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_1_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 1 is required because an image link was provided.
 	ADIMAGE1TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_1_TAG_REQUIRED,omitempty"`
+	// ad_image_2_link is duplicated with another ad image link.
 	ADIMAGE2LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_2_LINK_DUPLICATED,omitempty"`
+	// Ad image link 2 length is too long. The maximum length is 2047 characters.
 	ADIMAGE2LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_2_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 2 is required because an image tag was provided.
 	ADIMAGE2LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_2_LINK_REQUIRED,omitempty"`
+	// Ad image link 2 format is unsupported.
 	ADIMAGE2LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_2_LINK_WARNING,omitempty"`
+	// ad_image_2_tag is duplicated with another ad image tag.
 	ADIMAGE2TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_2_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 2 length is too long. The maximum length is 511 characters.
 	ADIMAGE2TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_2_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 2 is required because an image link was provided.
 	ADIMAGE2TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_2_TAG_REQUIRED,omitempty"`
+	// ad_image_3_link is duplicated with another ad image link.
 	ADIMAGE3LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_3_LINK_DUPLICATED,omitempty"`
+	// Ad image link 3 length is too long. The maximum length is 2047 characters.
 	ADIMAGE3LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_3_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 3 is required because an image tag was provided.
 	ADIMAGE3LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_3_LINK_REQUIRED,omitempty"`
+	// Ad image link 3 format is unsupported.
 	ADIMAGE3LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_3_LINK_WARNING,omitempty"`
+	// ad_image_3_tag is duplicated with another ad image tag.
 	ADIMAGE3TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_3_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 3 length is too long. The maximum length is 511 characters.
 	ADIMAGE3TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_3_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 3 is required because an image link was provided.
 	ADIMAGE3TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_3_TAG_REQUIRED,omitempty"`
+	// ad_image_4_link is duplicated with another ad image link.
 	ADIMAGE4LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_4_LINK_DUPLICATED,omitempty"`
+	// Ad image link 4 length is too long. The maximum length is 2047 characters.
 	ADIMAGE4LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_4_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 4 is required because an image tag was provided.
 	ADIMAGE4LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_4_LINK_REQUIRED,omitempty"`
+	// Ad image link 4 format is unsupported.
 	ADIMAGE4LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_4_LINK_WARNING,omitempty"`
+	// ad_image_4_tag is duplicated with another ad image tag.
 	ADIMAGE4TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_4_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 4 length is too long. The maximum length is 511 characters.
 	ADIMAGE4TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_4_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 4 is required because an image link was provided.
 	ADIMAGE4TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_4_TAG_REQUIRED,omitempty"`
+	// ad_image_5_link is duplicated with another ad image link.
 	ADIMAGE5LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_5_LINK_DUPLICATED,omitempty"`
+	// Ad image link 5 length is too long. The maximum length is 2047 characters.
 	ADIMAGE5LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_5_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 5 is required because an image tag was provided.
 	ADIMAGE5LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_5_LINK_REQUIRED,omitempty"`
+	// Ad image link 5 format is unsupported.
 	ADIMAGE5LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_5_LINK_WARNING,omitempty"`
+	// ad_image_5_tag is duplicated with another ad image tag.
 	ADIMAGE5TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_5_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 5 length is too long. The maximum length is 511 characters.
 	ADIMAGE5TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_5_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 5 is required because an image link was provided.
 	ADIMAGE5TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_5_TAG_REQUIRED,omitempty"`
+	// ad_image_6_link is duplicated with another ad image link.
 	ADIMAGE6LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_6_LINK_DUPLICATED,omitempty"`
+	// Ad image link 6 length is too long. The maximum length is 2047 characters.
 	ADIMAGE6LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_6_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 6 is required because an image tag was provided.
 	ADIMAGE6LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_6_LINK_REQUIRED,omitempty"`
+	// Ad image link 6 format is unsupported.
 	ADIMAGE6LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_6_LINK_WARNING,omitempty"`
+	// ad_image_6_tag is duplicated with another ad image tag.
 	ADIMAGE6TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_6_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 6 length is too long. The maximum length is 511 characters.
 	ADIMAGE6TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_6_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 6 is required because an image link was provided.
 	ADIMAGE6TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_6_TAG_REQUIRED,omitempty"`
+	// ad_image_7_link is duplicated with another ad image link.
 	ADIMAGE7LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_7_LINK_DUPLICATED,omitempty"`
+	// Ad image link 7 length is too long. The maximum length is 2047 characters.
 	ADIMAGE7LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_7_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 7 is required because an image tag was provided.
 	ADIMAGE7LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_7_LINK_REQUIRED,omitempty"`
+	// Ad image link 7 format is unsupported.
 	ADIMAGE7LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_7_LINK_WARNING,omitempty"`
+	// ad_image_7_tag is duplicated with another ad image tag.
 	ADIMAGE7TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_7_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 7 length is too long. The maximum length is 511 characters.
 	ADIMAGE7TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_7_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 7 is required because an image link was provided.
 	ADIMAGE7TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_7_TAG_REQUIRED,omitempty"`
+	// ad_image_8_link is duplicated with another ad image link.
 	ADIMAGE8LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_8_LINK_DUPLICATED,omitempty"`
+	// Ad image link 8 length is too long. The maximum length is 2047 characters.
 	ADIMAGE8LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_8_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 8 is required because an image tag was provided.
 	ADIMAGE8LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_8_LINK_REQUIRED,omitempty"`
+	// Ad image link 8 format is unsupported.
 	ADIMAGE8LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_8_LINK_WARNING,omitempty"`
+	// ad_image_8_tag is duplicated with another ad image tag.
 	ADIMAGE8TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_8_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 8 length is too long. The maximum length is 511 characters.
 	ADIMAGE8TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_8_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 8 is required because an image link was provided.
 	ADIMAGE8TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_8_TAG_REQUIRED,omitempty"`
+	// ad_image_9_link is duplicated with another ad image link.
 	ADIMAGE9LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_9_LINK_DUPLICATED,omitempty"`
+	// Ad image link 9 length is too long. The maximum length is 2047 characters.
 	ADIMAGE9LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_9_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 9 is required because an image tag was provided.
 	ADIMAGE9LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_9_LINK_REQUIRED,omitempty"`
+	// Ad image link 9 format is unsupported.
 	ADIMAGE9LINKWARNING *CatalogsItemValidationDetails `json:"AD_IMAGE_9_LINK_WARNING,omitempty"`
+	// ad_image_9_tag is duplicated with another ad image tag.
 	ADIMAGE9TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_IMAGE_9_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 9 length is too long. The maximum length is 511 characters.
 	ADIMAGE9TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_IMAGE_9_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 9 is required because an image link was provided.
 	ADIMAGE9TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_IMAGE_9_TAG_REQUIRED,omitempty"`
+	// Item has an ad link that is formatted incorrectly.
 	AD_LINK_FORMAT_WARNING *CatalogsItemValidationDetails `json:"AD_LINK_FORMAT_WARNING,omitempty"`
+	// Item has an ad link URL that is duplicate of the link URL.
 	AD_LINK_SAME_AS_LINK *CatalogsItemValidationDetails `json:"AD_LINK_SAME_AS_LINK,omitempty"`
+	// ad_video_0_link is duplicated with another ad video link.
 	ADVIDEO0LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_VIDEO_0_LINK_DUPLICATED,omitempty"`
+	// ad_video_0_link length is too long. The maximum length is 511 characters.
 	ADVIDEO0LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_VIDEO_0_LINK_LENGTH_TOO_LONG,omitempty"`
+	// ad_video_0_link is required for this item because ad_video_0_tag was provided.
 	ADVIDEO0LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_VIDEO_0_LINK_REQUIRED,omitempty"`
+	// ad_video_0_link is formatted incorrectly and will not be published with your items.
 	ADVIDEO0LINKWARNING *CatalogsItemValidationDetails `json:"AD_VIDEO_0_LINK_WARNING,omitempty"`
+	// ad_video_0_tag is duplicated with another ad video tag.
 	ADVIDEO0TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_VIDEO_0_TAG_DUPLICATED,omitempty"`
+	// ad_video_0_tag length is too long. The maximum length is 511 characters.
 	ADVIDEO0TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_VIDEO_0_TAG_LENGTH_TOO_LONG,omitempty"`
+	// ad_video_0_tag is required because ad_video_0_link was provided.
 	ADVIDEO0TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_VIDEO_0_TAG_REQUIRED,omitempty"`
+	// ad_video_1_link is duplicated with another ad video link.
 	ADVIDEO1LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_VIDEO_1_LINK_DUPLICATED,omitempty"`
+	// ad_video_1_link length is too long. The maximum length is 511 characters.
 	ADVIDEO1LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_VIDEO_1_LINK_LENGTH_TOO_LONG,omitempty"`
+	// ad_video_1_link is required for this item because ad_video_1_tag was provided.
 	ADVIDEO1LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_VIDEO_1_LINK_REQUIRED,omitempty"`
+	// ad_video_1_link is formatted incorrectly and will not be published with your items.
 	ADVIDEO1LINKWARNING *CatalogsItemValidationDetails `json:"AD_VIDEO_1_LINK_WARNING,omitempty"`
+	// ad_video_1_tag is duplicated with another ad video tag.
 	ADVIDEO1TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_VIDEO_1_TAG_DUPLICATED,omitempty"`
+	// ad_video_1_tag length is too long. The maximum length is 511 characters.
 	ADVIDEO1TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_VIDEO_1_TAG_LENGTH_TOO_LONG,omitempty"`
+	// ad_video_1_tag is required because ad_video_1_link was provided.
 	ADVIDEO1TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_VIDEO_1_TAG_REQUIRED,omitempty"`
+	// ad_video_2_link is duplicated with another ad video link.
 	ADVIDEO2LINKDUPLICATED *CatalogsItemValidationDetails `json:"AD_VIDEO_2_LINK_DUPLICATED,omitempty"`
+	// ad_video_2_link length is too long. The maximum length is 511 characters.
 	ADVIDEO2LINKLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_VIDEO_2_LINK_LENGTH_TOO_LONG,omitempty"`
+	// ad_video_2_link is required for this item because ad_video_2_tag was provided.
 	ADVIDEO2LINKREQUIRED *CatalogsItemValidationDetails `json:"AD_VIDEO_2_LINK_REQUIRED,omitempty"`
+	// ad_video_2_link is formatted incorrectly and will not be published with your items.
 	ADVIDEO2LINKWARNING *CatalogsItemValidationDetails `json:"AD_VIDEO_2_LINK_WARNING,omitempty"`
+	// ad_video_2_tag is duplicated with another ad video tag.
 	ADVIDEO2TAGDUPLICATED *CatalogsItemValidationDetails `json:"AD_VIDEO_2_TAG_DUPLICATED,omitempty"`
+	// ad_video_2_tag length is too long. The maximum length is 511 characters.
 	ADVIDEO2TAGLENGTHTOOLONG *CatalogsItemValidationDetails `json:"AD_VIDEO_2_TAG_LENGTH_TOO_LONG,omitempty"`
+	// ad_video_2_tag is required because ad_video_2_link was provided.
 	ADVIDEO2TAGREQUIRED *CatalogsItemValidationDetails `json:"AD_VIDEO_2_TAG_REQUIRED,omitempty"`
+	// Item has an additional_image_link URL that contains too many characters, so the item will not be published.
 	ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG *CatalogsItemValidationDetails `json:"ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Item has additional_image_link URLs that are formatted incorrectly and will not be published with your items.
 	ADDITIONAL_IMAGE_LINK_WARNING *CatalogsItemValidationDetails `json:"ADDITIONAL_IMAGE_LINK_WARNING,omitempty"`
+	// Item has an adwords_redirect link that is formatted incorrectly.
 	ADWORDS_FORMAT_WARNING *CatalogsItemValidationDetails `json:"ADWORDS_FORMAT_WARNING,omitempty"`
+	// Item has an adwords_redirect URL that is duplicate of the link URL.
 	ADWORDS_SAME_AS_LINK *CatalogsItemValidationDetails `json:"ADWORDS_SAME_AS_LINK,omitempty"`
+	// Item has an age group value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
 	AGE_GROUP_INVALID *CatalogsItemValidationDetails `json:"AGE_GROUP_INVALID,omitempty"`
+	// Item includes an invalid android_deep_link.
 	ANDROID_DEEP_LINK_INVALID *CatalogsItemValidationDetails `json:"ANDROID_DEEP_LINK_INVALID,omitempty"`
+	// Item has an availability_date value that is formatted incorrectly, this item will be published without an availability date.
 	AVAILABILITY_DATE_INVALID *CatalogsItemValidationDetails `json:"AVAILABILITY_DATE_INVALID,omitempty"`
+	// Item includes a currency that doesn't match the usual currency for the location where the product is sold or shipped.
 	COUNTRY_DOES_NOT_MAP_TO_CURRENCY *CatalogsItemValidationDetails `json:"COUNTRY_DOES_NOT_MAP_TO_CURRENCY,omitempty"`
+	// Item has a custom_label value that is too long, this item will be published without that custom label.
 	CUSTOM_LABEL_LENGTH_TOO_LONG *CatalogsItemValidationDetails `json:"CUSTOM_LABEL_LENGTH_TOO_LONG,omitempty"`
+	// The description for this item was truncated because it contains too many characters.
 	DESCRIPTION_LENGTH_TOO_LONG *CatalogsItemValidationDetails `json:"DESCRIPTION_LENGTH_TOO_LONG,omitempty"`
+	// Item has an expiration_date value that is formatted incorrectly, this item will be published without an expiration date.
 	EXPIRATION_DATE_INVALID *CatalogsItemValidationDetails `json:"EXPIRATION_DATE_INVALID,omitempty"`
+	// Item has a gender value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
 	GENDER_INVALID *CatalogsItemValidationDetails `json:"GENDER_INVALID,omitempty"`
+	// Item has a GTIN value that is formatted incorrectly.
 	GTIN_INVALID *CatalogsItemValidationDetails `json:"GTIN_INVALID,omitempty"`
+	// Item has an image_link URL that is formatted incorrectly and will not be published.
 	IMAGE_LINK_WARNING *CatalogsItemValidationDetails `json:"IMAGE_LINK_WARNING,omitempty"`
+	// Item includes an invalid ios_deep_link value.
 	IOS_DEEP_LINK_INVALID *CatalogsItemValidationDetails `json:"IOS_DEEP_LINK_INVALID,omitempty"`
+	// Item has an is_bundle value that is formatted incorrectly, this item will be published without being bundled with other products.
 	IS_BUNDLE_INVALID *CatalogsItemValidationDetails `json:"IS_BUNDLE_INVALID,omitempty"`
+	// Item includes additional_image_links that can't be found.
 	ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE *CatalogsItemValidationDetails `json:"ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE,omitempty"`
+	// Item has an invalid product link which contains invalid UTM tracking paramaters.
 	LINK_FORMAT_WARNING *CatalogsItemValidationDetails `json:"LINK_FORMAT_WARNING,omitempty"`
+	// Item includes a min_ad_price value that is formatted incorrectly.
 	MIN_AD_PRICE_INVALID *CatalogsItemValidationDetails `json:"MIN_AD_PRICE_INVALID,omitempty"`
+	// Item has a MPN value that is formatted incorrectly.
 	MPN_INVALID *CatalogsItemValidationDetails `json:"MPN_INVALID,omitempty"`
+	// Item has an invalid multipack value.
 	MULTIPACK_INVALID *CatalogsItemValidationDetails `json:"MULTIPACK_INVALID,omitempty"`
+	// Item includes a condition value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
 	OPTIONAL_CONDITION_INVALID *CatalogsItemValidationDetails `json:"OPTIONAL_CONDITION_INVALID,omitempty"`
+	// Item is missing condition value, which may limit visibility in recommendations, search results and shopping experiences.
 	OPTIONAL_CONDITION_MISSING *CatalogsItemValidationDetails `json:"OPTIONAL_CONDITION_MISSING,omitempty"`
+	// Item includes a google_product_category value that is not formatted correctly according to the GPC taxonomy.
 	OPTIONAL_PRODUCT_CATEGORY_INVALID *CatalogsItemValidationDetails `json:"OPTIONAL_PRODUCT_CATEGORY_INVALID,omitempty"`
+	// Item is missing google_product_category.
 	OPTIONAL_PRODUCT_CATEGORY_MISSING *CatalogsItemValidationDetails `json:"OPTIONAL_PRODUCT_CATEGORY_MISSING,omitempty"`
+	// Item only has 1 or 2 levels of google_product_category value, which may limit visibility in recommendations, search results and shopping experiences.
 	PRODUCT_CATEGORY_DEPTH_WARNING *CatalogsItemValidationDetails `json:"PRODUCT_CATEGORY_DEPTH_WARNING,omitempty"`
+	// Item has a product_type value that is too long, this item will be published without that product type.
 	PRODUCT_TYPE_LENGTH_TOO_LONG *CatalogsItemValidationDetails `json:"PRODUCT_TYPE_LENGTH_TOO_LONG,omitempty"`
+	// Item has a sale_price_effective_date value that is formatted incorrectly, this item will be published without a sale date.
 	SALE_DATE_INVALID *CatalogsItemValidationDetails `json:"SALE_DATE_INVALID,omitempty"`
+	// Item has an incorrectly formatted sales price.
 	SALES_PRICE_INVALID *CatalogsItemValidationDetails `json:"SALES_PRICE_INVALID,omitempty"`
+	// Item has a sale price value that is higher than the original price of the item.
 	SALES_PRICE_TOO_HIGH *CatalogsItemValidationDetails `json:"SALES_PRICE_TOO_HIGH,omitempty"`
+	// Item has a sale price value that is discounted very low compared to the price.
 	SALES_PRICE_TOO_LOW *CatalogsItemValidationDetails `json:"SALES_PRICE_TOO_LOW,omitempty"`
+	// Item has an incorrectly formatted shipping_height value. The value must first contain a numeric value then a valid dimension unit type.
 	SHIPPING_HEIGHT_INVALID *CatalogsItemValidationDetails `json:"SHIPPING_HEIGHT_INVALID,omitempty"`
+	// Item has a shipping value that is formatted incorrectly.
 	SHIPPING_INVALID *CatalogsItemValidationDetails `json:"SHIPPING_INVALID,omitempty"`
+	// Item has an invalid shipping_weight value.
 	SHIPPING_WEIGHT_INVALID *CatalogsItemValidationDetails `json:"SHIPPING_WEIGHT_INVALID,omitempty"`
+	// Item has an incorrectly formatted shipping_width value. The value must first contain a numeric value then a valid dimension unit type.
 	SHIPPING_WIDTH_INVALID *CatalogsItemValidationDetails `json:"SHIPPING_WIDTH_INVALID,omitempty"`
+	// Some items have size system values which are not one of the supported size systems.
 	SIZE_SYSTEM_INVALID *CatalogsItemValidationDetails `json:"SIZE_SYSTEM_INVALID,omitempty"`
+	// Item has a size type value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
 	SIZE_TYPE_INVALID *CatalogsItemValidationDetails `json:"SIZE_TYPE_INVALID,omitempty"`
+	// Item has a tax value that is formatted incorrectly.
 	TAX_INVALID *CatalogsItemValidationDetails `json:"TAX_INVALID,omitempty"`
+	// The title for the item was truncated because it contains too many characters.
 	TITLE_LENGTH_TOO_LONG *CatalogsItemValidationDetails `json:"TITLE_LENGTH_TOO_LONG,omitempty"`
+	// Item has a additional_image_link value that exceed the limit for additional images, this item will be published without some of your images.
 	TOO_MANY_ADDITIONAL_IMAGE_LINKS *CatalogsItemValidationDetails `json:"TOO_MANY_ADDITIONAL_IMAGE_LINKS,omitempty"`
+	// Item includes an utm_source value that is formatted incorrectly and has been automatically corrected.
 	UTM_SOURCE_AUTO_CORRECTED *CatalogsItemValidationDetails `json:"UTM_SOURCE_AUTO_CORRECTED,omitempty"`
+	// A video is required in the item when ad_video fields are provided.
 	VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED *CatalogsItemValidationDetails `json:"VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED,omitempty"`
+	// Item has a weight_unit value that is formatted incorrectly, this item will be published without a weight unit.
 	WEIGHT_UNIT_INVALID *CatalogsItemValidationDetails `json:"WEIGHT_UNIT_INVALID,omitempty"`
 }
 

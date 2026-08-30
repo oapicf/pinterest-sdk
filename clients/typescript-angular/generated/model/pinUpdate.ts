@@ -8,12 +8,17 @@
  * Do not edit the class manually.
  */
 import { CarouselSlot } from './carouselSlot';
+import { AiDisclosuresUpdate } from './aiDisclosuresUpdate';
 
 
 /**
  * Resource create or update operation model.
  */
 export interface PinUpdate { 
+    /**
+     * AI disclosure declarations the creator has made about this Pin.
+     */
+    ai_disclosures?: AiDisclosuresUpdate;
     alt_text?: string | null;
     /**
      * The board to which this Pin belongs.

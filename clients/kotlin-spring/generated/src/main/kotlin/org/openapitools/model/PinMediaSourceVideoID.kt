@@ -2,9 +2,15 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.ContentType
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -29,29 +35,46 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class PinMediaSourceVideoID(
 
     @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("media_id")
     @get:JsonProperty("media_id", required = true) val mediaId: kotlin.String,
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("source_type", required = true) val sourceType: PinMediaSourceVideoID.SourceType,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("source_type")
+    @get:JsonProperty("source_type", required = true) override val sourceType: PinMediaSourceVideoID.SourceType = kotlin.String.video_id,
 
     @field:Valid
-    @Schema(example = "null", description = "Content type for cover image Base64.")
+    @Schema(description = "Content type for cover image Base64.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("cover_image_content_type")
     @get:JsonProperty("cover_image_content_type") val coverImageContentType: ContentType? = null,
 
-    @Schema(example = "null", description = "Cover image Base64.")
+    @Schema(description = "Cover image Base64.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("cover_image_data")
     @get:JsonProperty("cover_image_data") val coverImageData: kotlin.String? = null,
 
     @get:Min(value=0)
-    @Schema(example = "null", description = "Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.")
+    @Schema(description = "Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("cover_image_key_frame_time")
     @get:JsonProperty("cover_image_key_frame_time") val coverImageKeyFrameTime: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Cover image URL.")
+    @Schema(description = "Cover image URL.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("cover_image_url")
     @get:JsonProperty("cover_image_url") val coverImageUrl: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
+    @Schema(description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("is_standard")
     @get:JsonProperty("is_standard") val isStandard: kotlin.Boolean? = true
-) {
+) : PinMediaSource {
 
     /**
     * 
@@ -66,7 +89,7 @@ data class PinMediaSourceVideoID(
             @JsonCreator
             fun forValue(value: kotlin.String): SourceType {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaSourceVideoID'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'SourceType'")
             }
         }
     }

@@ -2,30 +2,32 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.Gender;
+import org.openapitools.model.MediaType;
+import org.openapitools.model.ProductAvailability;
+import org.openapitools.model.ProductCondition;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * A map of filter attributes to their available values.
  */
 
-@Schema(name = "catalogs_retail_filter_values_map", description = "A map of filter attributes to their available values.")
-@JsonTypeName("catalogs_retail_filter_values_map")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "CatalogsRetailFilterValuesMap", description = "A map of filter attributes to their available values.")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailFilterValuesMap {
 
   @Valid
@@ -34,90 +36,14 @@ public class CatalogsRetailFilterValuesMap {
   @Valid
   private List<String> adVideoTags = new ArrayList<>();
 
-  /**
-   * Gets or Sets availability
-   */
-  public enum AvailabilityEnum {
-    IN_STOCK("IN_STOCK"),
-    
-    OUT_OF_STOCK("OUT_OF_STOCK"),
-    
-    PREORDER("PREORDER"),
-    
-    UNAVAILABLE("UNAVAILABLE");
-
-    private final String value;
-
-    AvailabilityEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static AvailabilityEnum fromValue(String value) {
-      for (AvailabilityEnum b : AvailabilityEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @Valid
-  private List<AvailabilityEnum> availability = new ArrayList<>();
+  private List<ProductAvailability> availability = new ArrayList<>();
 
   @Valid
   private List<String> brand = new ArrayList<>();
 
-  /**
-   * Gets or Sets condition
-   */
-  public enum ConditionEnum {
-    NEW("NEW"),
-    
-    USED("USED"),
-    
-    REFURBISHED("REFURBISHED");
-
-    private final String value;
-
-    ConditionEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ConditionEnum fromValue(String value) {
-      for (ConditionEnum b : ConditionEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @Valid
-  private List<ConditionEnum> condition = new ArrayList<>();
+  private List<ProductCondition> condition = new ArrayList<>();
 
   @Valid
   private List<String> customLabel0 = new ArrayList<>();
@@ -134,45 +60,8 @@ public class CatalogsRetailFilterValuesMap {
   @Valid
   private List<String> customLabel4 = new ArrayList<>();
 
-  /**
-   * Gets or Sets gender
-   */
-  public enum GenderEnum {
-    FEMALE("FEMALE"),
-    
-    MALE("MALE"),
-    
-    UNISEX("UNISEX");
-
-    private final String value;
-
-    GenderEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static GenderEnum fromValue(String value) {
-      for (GenderEnum b : GenderEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @Valid
-  private List<GenderEnum> gender = new ArrayList<>();
+  private List<Gender> gender = new ArrayList<>();
 
   @Valid
   private List<String> googleProductCategory0 = new ArrayList<>();
@@ -195,43 +84,8 @@ public class CatalogsRetailFilterValuesMap {
   @Valid
   private List<String> googleProductCategory6 = new ArrayList<>();
 
-  /**
-   * Gets or Sets mediaType
-   */
-  public enum MediaTypeEnum {
-    IMAGE("IMAGE"),
-    
-    VIDEO("VIDEO");
-
-    private final String value;
-
-    MediaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static MediaTypeEnum fromValue(String value) {
-      for (MediaTypeEnum b : MediaTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @Valid
-  private List<MediaTypeEnum> mediaType = new ArrayList<>();
+  private List<MediaType> mediaType = new ArrayList<>();
 
   @Valid
   private List<String> productType0 = new ArrayList<>();
@@ -304,12 +158,12 @@ public class CatalogsRetailFilterValuesMap {
     this.adVideoTags = adVideoTags;
   }
 
-  public CatalogsRetailFilterValuesMap availability(List<AvailabilityEnum> availability) {
+  public CatalogsRetailFilterValuesMap availability(List<ProductAvailability> availability) {
     this.availability = availability;
     return this;
   }
 
-  public CatalogsRetailFilterValuesMap addAvailabilityItem(AvailabilityEnum availabilityItem) {
+  public CatalogsRetailFilterValuesMap addAvailabilityItem(ProductAvailability availabilityItem) {
     if (this.availability == null) {
       this.availability = new ArrayList<>();
     }
@@ -321,14 +175,14 @@ public class CatalogsRetailFilterValuesMap {
    * Get availability
    * @return availability
    */
-  
+  @Valid 
   @Schema(name = "availability", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("availability")
-  public List<AvailabilityEnum> getAvailability() {
+  public List<ProductAvailability> getAvailability() {
     return availability;
   }
 
-  public void setAvailability(List<AvailabilityEnum> availability) {
+  public void setAvailability(List<ProductAvailability> availability) {
     this.availability = availability;
   }
 
@@ -360,12 +214,12 @@ public class CatalogsRetailFilterValuesMap {
     this.brand = brand;
   }
 
-  public CatalogsRetailFilterValuesMap condition(List<ConditionEnum> condition) {
+  public CatalogsRetailFilterValuesMap condition(List<ProductCondition> condition) {
     this.condition = condition;
     return this;
   }
 
-  public CatalogsRetailFilterValuesMap addConditionItem(ConditionEnum conditionItem) {
+  public CatalogsRetailFilterValuesMap addConditionItem(ProductCondition conditionItem) {
     if (this.condition == null) {
       this.condition = new ArrayList<>();
     }
@@ -377,14 +231,14 @@ public class CatalogsRetailFilterValuesMap {
    * Get condition
    * @return condition
    */
-  
+  @Valid 
   @Schema(name = "condition", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("condition")
-  public List<ConditionEnum> getCondition() {
+  public List<ProductCondition> getCondition() {
     return condition;
   }
 
-  public void setCondition(List<ConditionEnum> condition) {
+  public void setCondition(List<ProductCondition> condition) {
     this.condition = condition;
   }
 
@@ -528,12 +382,12 @@ public class CatalogsRetailFilterValuesMap {
     this.customLabel4 = customLabel4;
   }
 
-  public CatalogsRetailFilterValuesMap gender(List<GenderEnum> gender) {
+  public CatalogsRetailFilterValuesMap gender(List<Gender> gender) {
     this.gender = gender;
     return this;
   }
 
-  public CatalogsRetailFilterValuesMap addGenderItem(GenderEnum genderItem) {
+  public CatalogsRetailFilterValuesMap addGenderItem(Gender genderItem) {
     if (this.gender == null) {
       this.gender = new ArrayList<>();
     }
@@ -545,14 +399,14 @@ public class CatalogsRetailFilterValuesMap {
    * Get gender
    * @return gender
    */
-  
+  @Valid 
   @Schema(name = "gender", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("gender")
-  public List<GenderEnum> getGender() {
+  public List<Gender> getGender() {
     return gender;
   }
 
-  public void setGender(List<GenderEnum> gender) {
+  public void setGender(List<Gender> gender) {
     this.gender = gender;
   }
 
@@ -752,12 +606,12 @@ public class CatalogsRetailFilterValuesMap {
     this.googleProductCategory6 = googleProductCategory6;
   }
 
-  public CatalogsRetailFilterValuesMap mediaType(List<MediaTypeEnum> mediaType) {
+  public CatalogsRetailFilterValuesMap mediaType(List<MediaType> mediaType) {
     this.mediaType = mediaType;
     return this;
   }
 
-  public CatalogsRetailFilterValuesMap addMediaTypeItem(MediaTypeEnum mediaTypeItem) {
+  public CatalogsRetailFilterValuesMap addMediaTypeItem(MediaType mediaTypeItem) {
     if (this.mediaType == null) {
       this.mediaType = new ArrayList<>();
     }
@@ -769,14 +623,14 @@ public class CatalogsRetailFilterValuesMap {
    * Get mediaType
    * @return mediaType
    */
-  
+  @Valid 
   @Schema(name = "media_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_type")
-  public List<MediaTypeEnum> getMediaType() {
+  public List<MediaType> getMediaType() {
     return mediaType;
   }
 
-  public void setMediaType(List<MediaTypeEnum> mediaType) {
+  public void setMediaType(List<MediaType> mediaType) {
     this.mediaType = mediaType;
   }
 
@@ -997,10 +851,7 @@ public class CatalogsRetailFilterValuesMap {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

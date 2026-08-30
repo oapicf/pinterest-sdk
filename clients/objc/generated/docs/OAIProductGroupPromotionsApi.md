@@ -14,8 +14,8 @@ Method | HTTP request | Description
 # **productGroupPromotionsCreate**
 ```objc
 -(NSURLSessionTask*) productGroupPromotionsCreateWithAdAccountId: (NSString*) adAccountId
-    productGroupPromotionCreateRequest: (OAIProductGroupPromotionCreateRequest*) productGroupPromotionCreateRequest
-        completionHandler: (void (^)(OAIProductGroupPromotionResponse* output, NSError* error)) handler;
+    productGroupPromotionsCreate: (OAIProductGroupPromotionsCreate*) productGroupPromotionsCreate
+        completionHandler: (void (^)(OAIProductGroupPromotions* output, NSError* error)) handler;
 ```
 
 Create product group promotions
@@ -31,14 +31,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAIProductGroupPromotionCreateRequest* productGroupPromotionCreateRequest = [[OAIProductGroupPromotionCreateRequest alloc] init]; // List of Product Group Promotions to create, size limit [1, 30].
+OAIProductGroupPromotionsCreate* productGroupPromotionsCreate = [[OAIProductGroupPromotionsCreate alloc] init]; // 
 
 OAIProductGroupPromotionsApi*apiInstance = [[OAIProductGroupPromotionsApi alloc] init];
 
 // Create product group promotions
 [apiInstance productGroupPromotionsCreateWithAdAccountId:adAccountId
-              productGroupPromotionCreateRequest:productGroupPromotionCreateRequest
-          completionHandler: ^(OAIProductGroupPromotionResponse* output, NSError* error) {
+              productGroupPromotionsCreate:productGroupPromotionsCreate
+          completionHandler: ^(OAIProductGroupPromotions* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -53,11 +53,11 @@ OAIProductGroupPromotionsApi*apiInstance = [[OAIProductGroupPromotionsApi alloc]
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **productGroupPromotionCreateRequest** | [**OAIProductGroupPromotionCreateRequest***](OAIProductGroupPromotionCreateRequest.md)| List of Product Group Promotions to create, size limit [1, 30]. | 
+ **productGroupPromotionsCreate** | [**OAIProductGroupPromotionsCreate***](OAIProductGroupPromotionsCreate.md)|  | 
 
 ### Return type
 
-[**OAIProductGroupPromotionResponse***](OAIProductGroupPromotionResponse.md)
+[**OAIProductGroupPromotions***](OAIProductGroupPromotions.md)
 
 ### Authorization
 
@@ -132,18 +132,18 @@ Name | Type | Description  | Notes
 # **productGroupPromotionsList**
 ```objc
 -(NSURLSessionTask*) productGroupPromotionsListWithAdAccountId: (NSString*) adAccountId
-    productGroupPromotionIds: (NSArray<NSString*>*) productGroupPromotionIds
-    entityStatuses: (NSArray<NSString*>*) entityStatuses
-    adGroupId: (NSString*) adGroupId
-    pageSize: (NSNumber*) pageSize
-    order: (NSString*) order
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    order: (OAIPinterestLibPaginationOrder) order
+    productGroupPromotionIds: (NSArray<NSString*>*) productGroupPromotionIds
+    entityStatuses: (NSArray<OAIEntityStatus>*) entityStatuses
+    adGroupId: (NSString*) adGroupId
         completionHandler: (void (^)(OAIProductGroupPromotionsList200Response* output, NSError* error)) handler;
 ```
 
 Get product group promotions
 
-List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  <b>Note:</b> ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
+List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  **Note:** ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
 
 ### Example
 ```objc
@@ -154,23 +154,23 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSArray<NSString*>* productGroupPromotionIds = @[@"productGroupPromotionIds_example"]; // List of Product group promotion Ids. (optional)
-NSArray<NSString*>* entityStatuses = @[@"entityStatuses_example"]; // Entity status (optional)
-NSString* adGroupId = 123123123; // Ad group Id. (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSString* order = ASCENDING; // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
+OAIPinterestLibPaginationOrder order = [[OAIPinterestLibPaginationOrder alloc] init]; // The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+NSArray<NSString*>* productGroupPromotionIds = @[@"productGroupPromotionIds_example"]; // List of Product group promotion Ids. (optional)
+NSArray<OAIEntityStatus>* entityStatuses = @[[[OAIEntityStatus alloc] init]]; // Entity status (optional)
+NSString* adGroupId = @"adGroupId_example"; // Ad group Id. (optional)
 
 OAIProductGroupPromotionsApi*apiInstance = [[OAIProductGroupPromotionsApi alloc] init];
 
 // Get product group promotions
 [apiInstance productGroupPromotionsListWithAdAccountId:adAccountId
+              bookmark:bookmark
+              pageSize:pageSize
+              order:order
               productGroupPromotionIds:productGroupPromotionIds
               entityStatuses:entityStatuses
               adGroupId:adGroupId
-              pageSize:pageSize
-              order:order
-              bookmark:bookmark
           completionHandler: ^(OAIProductGroupPromotionsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -186,12 +186,12 @@ OAIProductGroupPromotionsApi*apiInstance = [[OAIProductGroupPromotionsApi alloc]
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **productGroupPromotionIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Product group promotion Ids. | [optional] 
- **entityStatuses** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Entity status | [optional] 
- **adGroupId** | **NSString***| Ad group Id. | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **order** | **NSString***| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
+ **order** | [**OAIPinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **productGroupPromotionIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Product group promotion Ids. | [optional] 
+ **entityStatuses** | [**NSArray&lt;OAIEntityStatus&gt;***](OAIEntityStatus*.md)| Entity status | [optional] 
+ **adGroupId** | **NSString***| Ad group Id. | [optional] 
 
 ### Return type
 
@@ -211,8 +211,8 @@ Name | Type | Description  | Notes
 # **productGroupPromotionsUpdate**
 ```objc
 -(NSURLSessionTask*) productGroupPromotionsUpdateWithAdAccountId: (NSString*) adAccountId
-    productGroupPromotionUpdateRequest: (OAIProductGroupPromotionUpdateRequest*) productGroupPromotionUpdateRequest
-        completionHandler: (void (^)(OAIProductGroupPromotionResponse* output, NSError* error)) handler;
+    productGroupPromotionsUpdateWithRequiredBody: (OAIProductGroupPromotionsUpdateWithRequiredBody*) productGroupPromotionsUpdateWithRequiredBody
+        completionHandler: (void (^)(OAIProductGroupPromotions* output, NSError* error)) handler;
 ```
 
 Update product group promotions
@@ -228,14 +228,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAIProductGroupPromotionUpdateRequest* productGroupPromotionUpdateRequest = [[OAIProductGroupPromotionUpdateRequest alloc] init]; // Parameters to update Product group promotions
+OAIProductGroupPromotionsUpdateWithRequiredBody* productGroupPromotionsUpdateWithRequiredBody = [[OAIProductGroupPromotionsUpdateWithRequiredBody alloc] init]; // 
 
 OAIProductGroupPromotionsApi*apiInstance = [[OAIProductGroupPromotionsApi alloc] init];
 
 // Update product group promotions
 [apiInstance productGroupPromotionsUpdateWithAdAccountId:adAccountId
-              productGroupPromotionUpdateRequest:productGroupPromotionUpdateRequest
-          completionHandler: ^(OAIProductGroupPromotionResponse* output, NSError* error) {
+              productGroupPromotionsUpdateWithRequiredBody:productGroupPromotionsUpdateWithRequiredBody
+          completionHandler: ^(OAIProductGroupPromotions* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -250,11 +250,11 @@ OAIProductGroupPromotionsApi*apiInstance = [[OAIProductGroupPromotionsApi alloc]
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **productGroupPromotionUpdateRequest** | [**OAIProductGroupPromotionUpdateRequest***](OAIProductGroupPromotionUpdateRequest.md)| Parameters to update Product group promotions | 
+ **productGroupPromotionsUpdateWithRequiredBody** | [**OAIProductGroupPromotionsUpdateWithRequiredBody***](OAIProductGroupPromotionsUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**OAIProductGroupPromotionResponse***](OAIProductGroupPromotionResponse.md)
+[**OAIProductGroupPromotions***](OAIProductGroupPromotions.md)
 
 ### Authorization
 
@@ -269,23 +269,23 @@ Name | Type | Description  | Notes
 
 # **productGroupsAnalytics**
 ```objc
--(NSURLSessionTask*) productGroupsAnalyticsWithAdAccountId: (NSString*) adAccountId
-    startDate: (NSDate*) startDate
+-(NSURLSessionTask*) productGroupsAnalyticsWithStartDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
     productGroupIds: (NSArray<NSString*>*) productGroupIds
-    columns: (NSArray<NSString*>*) columns
+    columns: (NSArray<OAIReportingColumnSync>*) columns
     granularity: (OAIGranularity) granularity
+    adAccountId: (NSString*) adAccountId
     clickWindowDays: (NSNumber*) clickWindowDays
     engagementWindowDays: (NSNumber*) engagementWindowDays
     viewWindowDays: (NSNumber*) viewWindowDays
     conversionReportTime: (NSString*) conversionReportTime
     reportingTimezone: (OAIReportingTimeZone) reportingTimezone
-        completionHandler: (void (^)(NSArray<OAIProductGroupAnalyticsResponseInner>* output, NSError* error)) handler;
+        completionHandler: (void (^)(NSArray<OAIProductGroupAnalyticsItems>* output, NSError* error)) handler;
 ```
 
 Get product group analytics
 
-Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+Get analytics for the specified product groups in the specified `ad_account_id`, filtered by the specified options.  - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 ```objc
@@ -298,33 +298,33 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSDate* startDate = @"2013-10-20T19:20:30+01:00"; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 NSDate* endDate = @"2013-10-20T19:20:30+01:00"; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
 NSArray<NSString*>* productGroupIds = @[@"productGroupIds_example"]; // List of Product group Ids to use to filter the results.
-NSArray<NSString*>* columns = @[@"columns_example"]; // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-OAIGranularity granularity = DAY; // TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-NSNumber* clickWindowDays = 1; // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to @30)
-NSNumber* engagementWindowDays = @30; // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to @30)
+NSArray<OAIReportingColumnSync>* columns = @[[[OAIReportingColumnSync alloc] init]]; // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+OAIGranularity granularity = [[OAIGranularity alloc] init]; //   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
+NSNumber* clickWindowDays = @30; // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to @30)
+NSNumber* engagementWindowDays = @30; // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional) (default to @30)
 NSNumber* viewWindowDays = @1; // Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to @1)
-NSString* conversionReportTime = TIME_OF_AD_ACTION; // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to @"TIME_OF_AD_ACTION")
+NSString* conversionReportTime = @"TIME_OF_AD_ACTION"; // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to @"TIME_OF_AD_ACTION")
 OAIReportingTimeZone reportingTimezone = [[OAIReportingTimeZone alloc] init]; // Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 OAIProductGroupPromotionsApi*apiInstance = [[OAIProductGroupPromotionsApi alloc] init];
 
 // Get product group analytics
-[apiInstance productGroupsAnalyticsWithAdAccountId:adAccountId
-              startDate:startDate
+[apiInstance productGroupsAnalyticsWithStartDate:startDate
               endDate:endDate
               productGroupIds:productGroupIds
               columns:columns
               granularity:granularity
+              adAccountId:adAccountId
               clickWindowDays:clickWindowDays
               engagementWindowDays:engagementWindowDays
               viewWindowDays:viewWindowDays
               conversionReportTime:conversionReportTime
               reportingTimezone:reportingTimezone
-          completionHandler: ^(NSArray<OAIProductGroupAnalyticsResponseInner>* output, NSError* error) {
+          completionHandler: ^(NSArray<OAIProductGroupAnalyticsItems>* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -338,21 +338,21 @@ OAIProductGroupPromotionsApi*apiInstance = [[OAIProductGroupPromotionsApi alloc]
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **startDate** | **NSDate***| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **NSDate***| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
  **productGroupIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Product group Ids to use to filter the results. | 
- **columns** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
- **granularity** | [**OAIGranularity**](.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
+ **columns** | [**NSArray&lt;OAIReportingColumnSync&gt;***](OAIReportingColumnSync*.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | 
+ **granularity** | [**OAIGranularity**](.md)|   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | 
+ **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **clickWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to @30]
- **engagementWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to @30]
+ **engagementWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional] [default to @30]
  **viewWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to @1]
  **conversionReportTime** | **NSString***| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to @&quot;TIME_OF_AD_ACTION&quot;]
  **reportingTimezone** | [**OAIReportingTimeZone**](.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] 
 
 ### Return type
 
-[**NSArray<OAIProductGroupAnalyticsResponseInner>***](OAIProductGroupAnalyticsResponseInner.md)
+[**NSArray<OAIProductGroupAnalyticsItems>***](OAIProductGroupAnalyticsItems.md)
 
 ### Authorization
 

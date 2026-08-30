@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -23,100 +31,123 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param ADULT_INVALID 
- * @param ADWORDS_FORMAT_INVALID 
- * @param AVAILABILITY_INVALID 
- * @param BLOCKLISTED_IMAGE_SIGNATURE 
- * @param DESCRIPTION_MISSING 
- * @param DUPLICATE_PRODUCTS 
- * @param IMAGE_LINK_INVALID 
- * @param IMAGE_LINK_LENGTH_TOO_LONG 
- * @param IMAGE_LINK_MISSING 
- * @param INVALID_DOMAIN 
- * @param ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE 
- * @param ITEMID_MISSING 
- * @param LINK_FORMAT_INVALID 
- * @param LINK_LENGTH_TOO_LONG 
- * @param LIST_PRICE_INVALID 
- * @param MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED 
- * @param PARSE_LINE_ERROR 
- * @param PINJOIN_CONTENT_UNSAFE 
- * @param PRICE_CANNOT_BE_DETERMINED 
- * @param PRICE_MISSING 
- * @param PRODUCT_LINK_MISSING 
- * @param PRODUCT_PRICE_INVALID 
- * @param TITLE_MISSING 
+ * @param ADULT_INVALID Item has an invalid adult value.
+ * @param ADWORDS_FORMAT_INVALID Adword link contains too many characters.
+ * @param AVAILABILITY_INVALID Item is missing availability value in its product metadata, this item will not be published.
+ * @param BLOCKLISTED_IMAGE_SIGNATURE Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.
+ * @param DESCRIPTION_MISSING Item is missing description in its product metadata, this item will not be published.
+ * @param DUPLICATE_PRODUCTS This product is duplicated. The duplicate entry will not be published.
+ * @param IMAGE_LINK_INVALID Image link is invalid.
+ * @param IMAGE_LINK_LENGTH_TOO_LONG Item has image_link URL that contains too many characters, so the item will not be published.
+ * @param IMAGE_LINK_MISSING Item is missing an image link URL in its product metadata, this item will not be published.
+ * @param INVALID_DOMAIN Product link value doesn't match the verified domain associated with this account.
+ * @param ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE Main image can't be found.
+ * @param ITEMID_MISSING Item is missing item id in its product metadata, this item will not be published.
+ * @param LINK_FORMAT_INVALID Link is invalid.
+ * @param LINK_LENGTH_TOO_LONG Product link contains too many characters, this item will not be published.
+ * @param LIST_PRICE_INVALID Item has a list price formatting error, this item will not be published.
+ * @param MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED Item exceed the maximum number of items per item group, this item will not be published.
+ * @param PARSE_LINE_ERROR Item contains formating errors.
+ * @param PINJOIN_CONTENT_UNSAFE Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.
+ * @param PRICE_CANNOT_BE_DETERMINED Item price cannot be determined because the price, list price, and sale price are all different.
+ * @param PRICE_MISSING Product is missing a price, this item will not be published.
+ * @param PRODUCT_LINK_MISSING Item is missing a link URL in its product metadata, this item will not be published.
+ * @param PRODUCT_PRICE_INVALID Item has a price formatting error in its product metadata, this item will not be published.
+ * @param TITLE_MISSING Item is missing title in its product metadata, this item will not be published.
  */
 
 
 data class CatalogsItemValidationErrors (
 
+    /* Item has an invalid adult value. */
     @Json(name = "ADULT_INVALID")
     val ADULT_INVALID: CatalogsItemValidationDetails? = null,
 
+    /* Adword link contains too many characters. */
     @Json(name = "ADWORDS_FORMAT_INVALID")
     val ADWORDS_FORMAT_INVALID: CatalogsItemValidationDetails? = null,
 
+    /* Item is missing availability value in its product metadata, this item will not be published. */
     @Json(name = "AVAILABILITY_INVALID")
     val AVAILABILITY_INVALID: CatalogsItemValidationDetails? = null,
 
+    /* Item will not be published because it doesn't meet Pinterest's Merchant Guidelines. */
     @Json(name = "BLOCKLISTED_IMAGE_SIGNATURE")
     val BLOCKLISTED_IMAGE_SIGNATURE: CatalogsItemValidationDetails? = null,
 
+    /* Item is missing description in its product metadata, this item will not be published. */
     @Json(name = "DESCRIPTION_MISSING")
     val DESCRIPTION_MISSING: CatalogsItemValidationDetails? = null,
 
+    /* This product is duplicated. The duplicate entry will not be published. */
     @Json(name = "DUPLICATE_PRODUCTS")
     val DUPLICATE_PRODUCTS: CatalogsItemValidationDetails? = null,
 
+    /* Image link is invalid. */
     @Json(name = "IMAGE_LINK_INVALID")
     val IMAGE_LINK_INVALID: CatalogsItemValidationDetails? = null,
 
+    /* Item has image_link URL that contains too many characters, so the item will not be published. */
     @Json(name = "IMAGE_LINK_LENGTH_TOO_LONG")
     val IMAGE_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = null,
 
+    /* Item is missing an image link URL in its product metadata, this item will not be published. */
     @Json(name = "IMAGE_LINK_MISSING")
     val IMAGE_LINK_MISSING: CatalogsItemValidationDetails? = null,
 
+    /* Product link value doesn't match the verified domain associated with this account. */
     @Json(name = "INVALID_DOMAIN")
     val INVALID_DOMAIN: CatalogsItemValidationDetails? = null,
 
+    /* Main image can't be found. */
     @Json(name = "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE")
     val ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE: CatalogsItemValidationDetails? = null,
 
+    /* Item is missing item id in its product metadata, this item will not be published. */
     @Json(name = "ITEMID_MISSING")
     val ITEMID_MISSING: CatalogsItemValidationDetails? = null,
 
+    /* Link is invalid. */
     @Json(name = "LINK_FORMAT_INVALID")
     val LINK_FORMAT_INVALID: CatalogsItemValidationDetails? = null,
 
+    /* Product link contains too many characters, this item will not be published. */
     @Json(name = "LINK_LENGTH_TOO_LONG")
     val LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = null,
 
+    /* Item has a list price formatting error, this item will not be published. */
     @Json(name = "LIST_PRICE_INVALID")
     val LIST_PRICE_INVALID: CatalogsItemValidationDetails? = null,
 
+    /* Item exceed the maximum number of items per item group, this item will not be published. */
     @Json(name = "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED")
     val MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED: CatalogsItemValidationDetails? = null,
 
+    /* Item contains formating errors. */
     @Json(name = "PARSE_LINE_ERROR")
     val PARSE_LINE_ERROR: CatalogsItemValidationDetails? = null,
 
+    /* Item will not be published because it doesn't meet Pinterest's Merchant Guidelines. */
     @Json(name = "PINJOIN_CONTENT_UNSAFE")
     val PINJOIN_CONTENT_UNSAFE: CatalogsItemValidationDetails? = null,
 
+    /* Item price cannot be determined because the price, list price, and sale price are all different. */
     @Json(name = "PRICE_CANNOT_BE_DETERMINED")
     val PRICE_CANNOT_BE_DETERMINED: CatalogsItemValidationDetails? = null,
 
+    /* Product is missing a price, this item will not be published. */
     @Json(name = "PRICE_MISSING")
     val PRICE_MISSING: CatalogsItemValidationDetails? = null,
 
+    /* Item is missing a link URL in its product metadata, this item will not be published. */
     @Json(name = "PRODUCT_LINK_MISSING")
     val PRODUCT_LINK_MISSING: CatalogsItemValidationDetails? = null,
 
+    /* Item has a price formatting error in its product metadata, this item will not be published. */
     @Json(name = "PRODUCT_PRICE_INVALID")
     val PRODUCT_PRICE_INVALID: CatalogsItemValidationDetails? = null,
 
+    /* Item is missing title in its product metadata, this item will not be published. */
     @Json(name = "TITLE_MISSING")
     val TITLE_MISSING: CatalogsItemValidationDetails? = null
 

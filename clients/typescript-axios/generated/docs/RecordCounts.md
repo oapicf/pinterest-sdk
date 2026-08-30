@@ -1,6 +1,5 @@
 # RecordCounts
 
-Record processing counts
 
 ## Properties
 

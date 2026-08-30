@@ -51,63 +51,63 @@ public:
 
 	/*! \brief Set App ID in Google Play Store, AppStore or other stores.
 	 */
-	void setAppId(std::string  app_id);
+	void setAppId(std::string app_id);
 	/*! \brief Get Name of the app. Primarily used for Mobile Apps.
 	 */
 	std::string getAppName();
 
 	/*! \brief Set Name of the app. Primarily used for Mobile Apps.
 	 */
-	void setAppName(std::string  app_name);
+	void setAppName(std::string app_name);
 	/*! \brief Get App package name
 	 */
 	std::string getAppPackageName();
 
 	/*! \brief Set App package name
 	 */
-	void setAppPackageName(std::string  app_package_name);
+	void setAppPackageName(std::string app_package_name);
 	/*! \brief Get The name of the app distributor or store from which the app was installed. Some options: Samsung Galaxy Store, Google Play Store, Amazon Store, Apple App Store, F-Droid, Aptoide, Obtanium, Huawei AppGallery, Xiaomi Mi GetApps
 	 */
 	std::string getAppStore();
 
 	/*! \brief Set The name of the app distributor or store from which the app was installed. Some options: Samsung Galaxy Store, Google Play Store, Amazon Store, Apple App Store, F-Droid, Aptoide, Obtanium, Huawei AppGallery, Xiaomi Mi GetApps
 	 */
-	void setAppStore(std::string  app_store);
+	void setAppStore(std::string app_store);
 	/*! \brief Get App version. Primarily used for mobile apps
 	 */
 	std::string getAppVersion();
 
 	/*! \brief Set App version. Primarily used for mobile apps
 	 */
-	void setAppVersion(std::string  app_version);
+	void setAppVersion(std::string app_version);
 	/*! \brief Get App install time. Unix timestamp in seconds
 	 */
 	int getInstallTime();
 
 	/*! \brief Set App install time. Unix timestamp in seconds
 	 */
-	void setInstallTime(int  install_time);
+	void setInstallTime(int install_time);
 	/*! \brief Get User Agent request header. Primarily used for Web events
 	 */
 	std::string getUserAgent();
 
 	/*! \brief Set User Agent request header. Primarily used for Web events
 	 */
-	void setUserAgent(std::string  user_agent);
+	void setUserAgent(std::string user_agent);
 	/*! \brief Get Inner height of the window or viewport.
 	 */
 	int getWindowHeight();
 
 	/*! \brief Set Inner height of the window or viewport.
 	 */
-	void setWindowHeight(int  window_height);
+	void setWindowHeight(int window_height);
 	/*! \brief Get Inner width of the window or viewport.
 	 */
 	int getWindowWidth();
 
 	/*! \brief Set Inner width of the window or viewport.
 	 */
-	void setWindowWidth(int  window_width);
+	void setWindowWidth(int window_width);
 
 
     private:

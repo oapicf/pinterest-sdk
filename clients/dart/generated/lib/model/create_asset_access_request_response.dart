@@ -18,9 +18,10 @@ class CreateAssetAccessRequestResponse {
   });
 
   /// A list of errors associated with the asset access requests. Will be returned if there is an error.
-  List<CreateAssetAccessRequestErrorMessageInner>? exceptions;
+  List<AssetAccessRequestError> exceptions;
 
-  Map<String, String>? invites;
+  /// An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
+  Map<String, String> invites;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateAssetAccessRequestResponse &&
@@ -30,24 +31,16 @@ class CreateAssetAccessRequestResponse {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (exceptions == null ? 0 : exceptions!.hashCode) +
-    (invites == null ? 0 : invites!.hashCode);
+    (exceptions.hashCode) +
+    (invites.hashCode);
 
   @override
   String toString() => 'CreateAssetAccessRequestResponse[exceptions=$exceptions, invites=$invites]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.exceptions != null) {
       json[r'exceptions'] = this.exceptions;
-    } else {
-      json[r'exceptions'] = null;
-    }
-    if (this.invites != null) {
       json[r'invites'] = this.invites;
-    } else {
-      json[r'invites'] = null;
-    }
     return json;
   }
 
@@ -62,15 +55,11 @@ class CreateAssetAccessRequestResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CreateAssetAccessRequestResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CreateAssetAccessRequestResponse[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return CreateAssetAccessRequestResponse(
-        exceptions: CreateAssetAccessRequestErrorMessageInner.listFromJson(json[r'exceptions']),
+        exceptions: AssetAccessRequestError.listFromJson(json[r'exceptions']),
         invites: mapCastOfType<String, String>(json, r'invites') ?? const {},
       );
     }

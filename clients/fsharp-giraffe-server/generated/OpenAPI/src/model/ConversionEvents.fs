@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.ConversionEventsDataInner
+open OpenAPI.Model.ConversionApiResponseEventsItems
 
 module ConversionEvents =
 
@@ -10,6 +10,8 @@ module ConversionEvents =
 
 
   type ConversionEvents = {
-    Data : ConversionEventsDataInner[];
+    Events : ConversionApiResponseEventsItems[];
+    NumEventsProcessed : int;
+    NumEventsReceived : int;
   }
   //#endregion

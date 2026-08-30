@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **field** | **string** |  | [default to undefined]
-**operation** | **string** |  | [default to undefined]
+**operation** | [**TargetingSpecListOperation**](TargetingSpecListOperation.md) |  | [default to undefined]
 **values** | [**Array&lt;TargetingSpecAppType&gt;**](TargetingSpecAppType.md) |  | [default to undefined]
 
 ## Example

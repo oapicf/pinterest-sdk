@@ -1,10 +1,12 @@
 package controllers;
 
-import apimodels.Audience;
-import apimodels.AudienceCreateRequest;
-import apimodels.AudienceUpdateRequest;
+import apimodels.AdAccountsAudience;
+import apimodels.AdAccountsAudienceCreate;
+import apimodels.AdAccountsAudienceUpdate;
+import apimodels.AudienceOwnershipType;
 import apimodels.AudiencesList200Response;
-import apimodels.Error;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -31,12 +33,12 @@ public abstract class AudiencesApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result audiencesCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AudienceCreateRequest audienceCreateRequest) throws Exception {
+    public Result audiencesCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdAccountsAudienceCreate adAccountsAudienceCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        Audience obj = audiencesCreate(request, adAccountId, audienceCreateRequest);
+        AdAccountsAudience obj = audiencesCreate(request, adAccountId, adAccountsAudienceCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -48,14 +50,14 @@ public abstract class AudiencesApiControllerImpInterface {
 
     }
 
-    public abstract Audience audiencesCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AudienceCreateRequest audienceCreateRequest) throws Exception;
+    public abstract AdAccountsAudience audiencesCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdAccountsAudienceCreate adAccountsAudienceCreate) throws Exception;
 
-    public Result audiencesGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId) throws Exception {
+    public Result audiencesGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String audienceId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        Audience obj = audiencesGet(request, adAccountId, audienceId);
+        AdAccountsAudience obj = audiencesGet(request, audienceId, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -67,14 +69,14 @@ public abstract class AudiencesApiControllerImpInterface {
 
     }
 
-    public abstract Audience audiencesGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId) throws Exception;
+    public abstract AdAccountsAudience audiencesGet(Http.Request request,  @Pattern(regexp="^\\d+$")String audienceId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result audiencesListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark, String order,  @Min(1) @Max(250)Integer pageSize, String ownershipType) throws Exception {
+    public Result audiencesListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order, AudienceOwnershipType ownershipType, Boolean excludeNca) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        AudiencesList200Response obj = audiencesList(request, adAccountId, bookmark, order, pageSize, ownershipType);
+        AudiencesList200Response obj = audiencesList(request, adAccountId, bookmark, pageSize, order, ownershipType, excludeNca);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -86,14 +88,14 @@ public abstract class AudiencesApiControllerImpInterface {
 
     }
 
-    public abstract AudiencesList200Response audiencesList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark, String order,  @Min(1) @Max(250)Integer pageSize, String ownershipType) throws Exception;
+    public abstract AudiencesList200Response audiencesList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order, AudienceOwnershipType ownershipType, Boolean excludeNca) throws Exception;
 
-    public Result audiencesUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, AudienceUpdateRequest audienceUpdateRequest) throws Exception {
+    public Result audiencesUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String audienceId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdAccountsAudienceUpdate adAccountsAudienceUpdate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        Audience obj = audiencesUpdate(request, adAccountId, audienceId, audienceUpdateRequest);
+        AdAccountsAudience obj = audiencesUpdate(request, audienceId, adAccountId, adAccountsAudienceUpdate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -105,6 +107,6 @@ public abstract class AudiencesApiControllerImpInterface {
 
     }
 
-    public abstract Audience audiencesUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, AudienceUpdateRequest audienceUpdateRequest) throws Exception;
+    public abstract AdAccountsAudience audiencesUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String audienceId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdAccountsAudienceUpdate adAccountsAudienceUpdate) throws Exception;
 
 }

@@ -18,7 +18,7 @@ class CatalogsApi {
 
   /// List available filter values
   ///
-  /// Get the available filter attributes and values associated with a given feed or catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - <code>country</code>, <code>language</code>, and <code>feed_id</code> are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+  /// Get the available filter attributes and values associated with a given feed or catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - `country`, `language`, and `feed_id` are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -38,7 +38,7 @@ class CatalogsApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> catalogsAvailableFilterValuesWithHttpInfo(String catalogId, { String? feedId, Country? country, CatalogsLocale? language, String? adAccountId, }) async {
+  Future<Response> catalogsAvailableFilterValuesWithHttpInfo(String catalogId, { String? feedId, Country? country, CatalogsLocale? language, String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/catalogs/available_filter_values';
 
@@ -74,12 +74,13 @@ class CatalogsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// List available filter values
   ///
-  /// Get the available filter attributes and values associated with a given feed or catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - <code>country</code>, <code>language</code>, and <code>feed_id</code> are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+  /// Get the available filter attributes and values associated with a given feed or catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - `country`, `language`, and `feed_id` are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
   ///
   /// Parameters:
   ///
@@ -97,8 +98,8 @@ class CatalogsApi {
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<CatalogsAvailableFilterValues?> catalogsAvailableFilterValues(String catalogId, { String? feedId, Country? country, CatalogsLocale? language, String? adAccountId, }) async {
-    final response = await catalogsAvailableFilterValuesWithHttpInfo(catalogId,  feedId: feedId, country: country, language: language, adAccountId: adAccountId, );
+  Future<CatalogsAvailableFilterValues?> catalogsAvailableFilterValues(String catalogId, { String? feedId, Country? country, CatalogsLocale? language, String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await catalogsAvailableFilterValuesWithHttpInfo(catalogId, feedId: feedId, country: country, language: language, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -114,23 +115,22 @@ class CatalogsApi {
 
   /// Create catalog
   ///
-  /// Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+  /// Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [CatalogsCreateRequest] catalogsCreateRequest (required):
-  ///   Request object used to created a feed.
+  /// * [CatalogCreate] catalogCreate (required):
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Response> catalogsCreateWithHttpInfo(CatalogsCreateRequest catalogsCreateRequest, { String? adAccountId, }) async {
+  Future<Response> catalogsCreateWithHttpInfo(CatalogCreate catalogCreate, { String? adAccountId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/catalogs';
 
     // ignore: prefer_final_locals
-    Object? postBody = catalogsCreateRequest;
+    Object? postBody = catalogCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -151,22 +151,22 @@ class CatalogsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Create catalog
   ///
-  /// Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+  /// Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
   ///
   /// Parameters:
   ///
-  /// * [CatalogsCreateRequest] catalogsCreateRequest (required):
-  ///   Request object used to created a feed.
+  /// * [CatalogCreate] catalogCreate (required):
   ///
   /// * [String] adAccountId:
   ///   Unique identifier of an ad account.
-  Future<Catalog?> catalogsCreate(CatalogsCreateRequest catalogsCreateRequest, { String? adAccountId, }) async {
-    final response = await catalogsCreateWithHttpInfo(catalogsCreateRequest,  adAccountId: adAccountId, );
+  Future<Catalog?> catalogsCreate(CatalogCreate catalogCreate, { String? adAccountId, Future<void>? abortTrigger, }) async {
+    final response = await catalogsCreateWithHttpInfo(catalogCreate, adAccountId: adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -182,21 +182,21 @@ class CatalogsApi {
 
   /// List catalogs
   ///
-  /// Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+  /// Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
+  /// * [String] adAccountId:
+  ///   Unique identifier of an ad account.
+  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] adAccountId:
-  ///   Unique identifier of an ad account.
-  Future<Response> catalogsListWithHttpInfo({ String? bookmark, int? pageSize, String? adAccountId, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> catalogsListWithHttpInfo({ String? adAccountId, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/catalogs';
 
@@ -207,14 +207,14 @@ class CatalogsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (adAccountId != null) {
+      queryParams.addAll(_queryParams('', 'ad_account_id', adAccountId));
+    }
     if (bookmark != null) {
       queryParams.addAll(_queryParams('', 'bookmark', bookmark));
     }
     if (pageSize != null) {
       queryParams.addAll(_queryParams('', 'page_size', pageSize));
-    }
-    if (adAccountId != null) {
-      queryParams.addAll(_queryParams('', 'ad_account_id', adAccountId));
     }
 
     const contentTypes = <String>[];
@@ -228,25 +228,26 @@ class CatalogsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// List catalogs
   ///
-  /// Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+  /// Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
   ///
   /// Parameters:
+  ///
+  /// * [String] adAccountId:
+  ///   Unique identifier of an ad account.
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] adAccountId:
-  ///   Unique identifier of an ad account.
-  Future<CatalogsList200Response?> catalogsList({ String? bookmark, int? pageSize, String? adAccountId, }) async {
-    final response = await catalogsListWithHttpInfo( bookmark: bookmark, pageSize: pageSize, adAccountId: adAccountId, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<CatalogsList200Response?> catalogsList({ String? adAccountId, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await catalogsListWithHttpInfo(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

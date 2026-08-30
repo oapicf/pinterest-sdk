@@ -52,14 +52,14 @@ public:
 
 	/*! \brief Set Keyword name, e.g., \"keyword\":\"fashion outfits\"
 	 */
-	void setKeyword(std::string  keyword);
+	void setKeyword(std::string keyword);
 	/*! \brief Get 
 	 */
 	KeywordMetrics getMetrics();
 
 	/*! \brief Set 
 	 */
-	void setMetrics(KeywordMetrics  metrics);
+	void setMetrics(KeywordMetrics metrics);
 
 
     private:

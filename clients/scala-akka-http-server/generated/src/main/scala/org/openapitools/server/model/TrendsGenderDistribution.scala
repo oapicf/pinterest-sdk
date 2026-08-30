@@ -1,0 +1,14 @@
+package org.openapitools.server.model
+
+
+/**
+ * = TrendsGenderDistribution =
+ *
+ * This represents a mapping from gender to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.
+ *
+ * @param genderDistribution  for example: ''null''
+*/
+final case class TrendsGenderDistribution (
+  genderDistribution: Option[TrendsGender] = None
+)
+

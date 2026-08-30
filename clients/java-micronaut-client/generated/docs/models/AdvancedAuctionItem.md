@@ -8,10 +8,10 @@ The class is defined in **[AdvancedAuctionItem.java](../../src/main/java/org/ope
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**bidOptions** | [`AdvancedAuctionBidOptions`](AdvancedAuctionBidOptions.md) |  | 
 **country** | `Country` |  | 
 **itemId** | `String` | The catalog retail item id in the merchant namespace | 
 **language** | `Language` |  | 
-**bidOptions** | [`AdvancedAuctionBidOptions`](AdvancedAuctionBidOptions.md) |  | 
 
 
 

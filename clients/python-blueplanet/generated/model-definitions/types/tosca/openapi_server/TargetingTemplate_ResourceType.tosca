@@ -1,0 +1,103 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TargetingTemplate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TargetingTemplate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  PlacementGroupType = openapi_server.resourceTypes.PlacementGroupType
+  TargetingSpecOptimal = openapi_server.resourceTypes.TargetingSpecOptimal
+  TargetingTemplateAudienceSizing = openapi_server.resourceTypes.TargetingTemplateAudienceSizing
+  TargetingTemplateKeyword = openapi_server.resourceTypes.TargetingTemplateKeyword
+  TargetingTemplateStatus = openapi_server.resourceTypes.TargetingTemplateStatus
+  TrackingUrls = openapi_server.resourceTypes.TrackingUrls
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  TargetingTemplate {
+    title = TargetingTemplate
+    description = TargetingTemplate
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = "The ID of the advertiser that this targeting template belongs to."
+          optional = false
+        }
+        auto_targeting_enabled {
+          type =  boolean
+          description = "Enable auto-targeting for ad group. Also known as [\&quot;expanded targeting\&quot;](https://help.pinterest.com/en/business/article/expanded-targeting)."
+          optional = false
+        }
+        created_time {
+          type =  integer
+          description = "Targeting template created time. Unix timestamp in seconds."
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Targeting template ID."
+          optional = false
+        }
+        keywords {
+          type = array
+          items.type = TargetingTemplateKeyword
+          description = ""
+          optional = false
+        }
+        name {
+          type =  string
+          description = "targeting template name"
+          optional = true
+        }
+        placement_group {
+          type = PlacementGroupType
+          description = ""
+          optional = false
+        }
+        sizing {
+          type = TargetingTemplateAudienceSizing
+          description = ""
+          optional = false
+        }
+        status {
+          type = TargetingTemplateStatus
+          description = "Indicate targeting template is active or Deleted"
+          optional = false
+        }
+        targeting_attributes {
+          type = TargetingSpecOptimal
+          description = "targeting profile attributes"
+          optional = true
+        }
+        tracking_urls {
+          type = TrackingUrls
+          description = ""
+          optional = false
+        }
+        updated_time {
+          type =  integer
+          description = "Targeting template updated time.Unix timestamp in seconds."
+          optional = false
+        }
+        valid {
+          type =  boolean
+          description = "Inform if the targeting template is valid (ex. would be false if has revoked audience)"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TargetingTemplate {
+    title = TargetingTemplate
+    description = TargetingTemplate
+    implements = openapi_server.resourceTypes.TargetingTemplate
+
+  }
+}

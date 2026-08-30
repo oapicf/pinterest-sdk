@@ -17,7 +17,8 @@ country: Option[Country],
 description: Option[String],
 filters: Option[CatalogsCreativeAssetsProductGroupFilters],
 locale: Option[CatalogsLocale],
-name: Option[String])
+/* Name of catalog product group */
+  name: Option[String])
 
 object CatalogsVerticalProductGroupUpdateRequest {
   import DateTimeCodecs._

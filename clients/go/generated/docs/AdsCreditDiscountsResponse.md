@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Active** | Pointer to **bool** | True if the offer code is currently active. | [optional] 
 **AdvertiserId** | Pointer to **string** | Advertiser ID the offer was applied to. | [optional] 
 **DiscountCurrency** | Pointer to **NullableString** | Currency value for the discount. | [optional] 
-**DiscountInMicroCurrency** | Pointer to **NullableFloat32** | The discount applied in the offer’s currency value. | [optional] 
-**DiscountType** | Pointer to **NullableString** | The type of discount of this credit | [optional] 
+**DiscountInMicroCurrency** | Pointer to **NullableFloat32** | The discount applied in the offer&#39;s currency value. | [optional] 
+**DiscountType** | Pointer to [**NullableAdsCreditDiscountType**](AdsCreditDiscountType.md) | The type of discount of this credit | [optional] 
 **RemainingDiscountInMicroCurrency** | Pointer to **NullableFloat32** | The credits left to spend. | [optional] 
 **Title** | Pointer to **NullableString** | Human readable title of the offer code. | [optional] 
 
@@ -153,20 +153,20 @@ HasDiscountInMicroCurrency returns a boolean if a field has been set.
 UnsetDiscountInMicroCurrency ensures that no value is present for DiscountInMicroCurrency, not even an explicit nil
 ### GetDiscountType
 
-`func (o *AdsCreditDiscountsResponse) GetDiscountType() string`
+`func (o *AdsCreditDiscountsResponse) GetDiscountType() AdsCreditDiscountType`
 
 GetDiscountType returns the DiscountType field if non-nil, zero value otherwise.
 
 ### GetDiscountTypeOk
 
-`func (o *AdsCreditDiscountsResponse) GetDiscountTypeOk() (*string, bool)`
+`func (o *AdsCreditDiscountsResponse) GetDiscountTypeOk() (*AdsCreditDiscountType, bool)`
 
 GetDiscountTypeOk returns a tuple with the DiscountType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscountType
 
-`func (o *AdsCreditDiscountsResponse) SetDiscountType(v string)`
+`func (o *AdsCreditDiscountsResponse) SetDiscountType(v AdsCreditDiscountType)`
 
 SetDiscountType sets DiscountType field to given value.
 

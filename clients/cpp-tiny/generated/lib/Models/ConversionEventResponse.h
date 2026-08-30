@@ -52,28 +52,35 @@ public:
 
 	/*! \brief Set Id of the ad account.
 	 */
-	void setAdAccountId(std::string  ad_account_id);
+	void setAdAccountId(std::string ad_account_id);
 	/*! \brief Get 
 	 */
 	ConversionTagType getConversionEvent();
 
 	/*! \brief Set 
 	 */
-	void setConversionEvent(ConversionTagType  conversion_event);
+	void setConversionEvent(ConversionTagType conversion_event);
 	/*! \brief Get Id of the tag.
 	 */
 	std::string getConversionTagId();
 
 	/*! \brief Set Id of the tag.
 	 */
-	void setConversionTagId(std::string  conversion_tag_id);
+	void setConversionTagId(std::string conversion_tag_id);
 	/*! \brief Get Creation date in epoch format.
 	 */
 	int getCreatedTime();
 
 	/*! \brief Set Creation date in epoch format.
 	 */
-	void setCreatedTime(int  created_time);
+	void setCreatedTime(int created_time);
+	/*! \brief Get For advertiser-defined events, the reporting event label shown in optimization UIs.
+	 */
+	std::string getReportingConversionEvent();
+
+	/*! \brief Set For advertiser-defined events, the reporting event label shown in optimization UIs.
+	 */
+	void setReportingConversionEvent(std::string reporting_conversion_event);
 
 
     private:
@@ -81,6 +88,7 @@ public:
     ConversionTagType conversion_event;
     std::string conversion_tag_id{};
     int created_time{};
+    std::string reporting_conversion_event{};
 };
 }
 

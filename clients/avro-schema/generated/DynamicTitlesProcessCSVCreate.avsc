@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "DynamicTitlesProcessCSVCreate",
+  "fields": [
+    {
+      "name": "request_id",
+      "type": "string",
+      "doc": "The request_id returned from the GET uploads endpoint."
+    }
+  ]
+
+}

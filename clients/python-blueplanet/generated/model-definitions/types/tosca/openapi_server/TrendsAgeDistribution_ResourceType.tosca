@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TrendsAgeDistribution"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TrendsAgeDistribution"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TrendsAgeBucket = openapi_server.resourceTypes.TrendsAgeBucket
+}
+resourceTypes {
+
+  TrendsAgeDistribution {
+    title = TrendsAgeDistribution
+    description = TrendsAgeDistribution
+    derivedFrom = Root
+    properties {
+        age_distribution {
+          type = TrendsAgeBucket
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TrendsAgeDistribution {
+    title = TrendsAgeDistribution
+    description = TrendsAgeDistribution
+    implements = openapi_server.resourceTypes.TrendsAgeDistribution
+
+  }
+}

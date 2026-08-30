@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[UserWebsiteSummary]**](UserWebsiteSummary.md) |  | 
+**items** | [**List[UserWebsite]**](UserWebsite.md) |  | 
 
 ## Example
 

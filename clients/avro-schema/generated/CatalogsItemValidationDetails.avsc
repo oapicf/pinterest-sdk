@@ -7,7 +7,7 @@
     {
       "name": "attribute_name",
       "type": "model.NullableCatalogsItemFieldType",
-      "doc": ""
+      "doc": "Attribute that has a validation issue."
     },
     {
       "name": "provided_value",

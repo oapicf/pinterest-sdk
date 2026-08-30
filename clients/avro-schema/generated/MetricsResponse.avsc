@@ -8,7 +8,7 @@
       "name": "data",
       "type": ["null", {
         "type": "array",
-        "items": "model.object"
+        "items": "model.MetricsResponseDataItems"
       }],
       "doc": "",
       "default": null

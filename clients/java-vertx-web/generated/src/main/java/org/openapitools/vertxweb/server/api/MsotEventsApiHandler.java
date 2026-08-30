@@ -1,7 +1,7 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.ConversionMSOTEvents;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.ConversionMSOTEventsCreate;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -44,12 +44,12 @@ public class MsotEventsApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        ConversionMSOTEvents conversionMSOTEvents = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ConversionMSOTEvents>(){}) : null;
+        ConversionMSOTEventsCreate conversionMSOTEventsCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ConversionMSOTEventsCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter conversionMSOTEvents is {}", conversionMSOTEvents);
+        logger.debug("Parameter conversionMSOTEventsCreate is {}", conversionMSOTEventsCreate);
 
-        api.msotEventsCreate(adAccountId, conversionMSOTEvents)
+        api.msotEventsCreate(adAccountId, conversionMSOTEventsCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

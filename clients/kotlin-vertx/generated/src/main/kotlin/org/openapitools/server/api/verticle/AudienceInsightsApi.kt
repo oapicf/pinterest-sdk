@@ -1,9 +1,9 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.AudienceDefinitionResponse
 import org.openapitools.server.api.model.AudienceInsightType
-import org.openapitools.server.api.model.AudienceInsightsResponse
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.AudienceInsights
+import org.openapitools.server.api.model.AudienceInsightsScopeAndTypeGet200Response
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -22,10 +22,10 @@ interface AudienceInsightsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* audienceInsightsGet
      * Get audience insights */
-    suspend fun audienceInsightsGet(adAccountId:kotlin.String?,audienceInsightType:AudienceInsightType?,context:OperationRequest):Response<AudienceInsightsResponse>
+    suspend fun audienceInsightsGet(adAccountId:kotlin.String?,audienceInsightType:AudienceInsightType?,context:OperationRequest):Response<AudienceInsights>
     /* audienceInsightsScopeAndTypeGet
      * Get audience insights scope and type */
-    suspend fun audienceInsightsScopeAndTypeGet(adAccountId:kotlin.String?,context:OperationRequest):Response<AudienceDefinitionResponse>
+    suspend fun audienceInsightsScopeAndTypeGet(adAccountId:kotlin.String?,context:OperationRequest):Response<AudienceInsightsScopeAndTypeGet200Response>
     companion object {
         const val address = "AudienceInsightsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

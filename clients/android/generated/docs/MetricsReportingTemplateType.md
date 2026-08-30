@@ -1,0 +1,10 @@
+
+
+# MetricsReportingTemplateType
+
+## Enum
+
+
+
+
+

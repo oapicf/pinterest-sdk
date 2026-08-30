@@ -4,7 +4,7 @@ type TargetingSpecOperationAppType struct {
 
 	Field string `json:"field"`
 
-	Operation string `json:"operation"`
+	Operation TargetingSpecListOperation `json:"operation"`
 
-	Values *[]TargetingSpecAppType `json:"values"`
+	Values []TargetingSpecAppType `json:"values"`
 }

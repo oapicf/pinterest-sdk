@@ -1,1 +1,1 @@
-start_due_date,end_due_date,bookmark,page_size,status,sort,document_type,order
+document_type,start_due_date,sort,bookmark,page_size,end_due_date,order,status

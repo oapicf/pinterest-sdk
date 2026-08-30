@@ -3,12 +3,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **String** | Label ID. | [optional] 
-**LabelType** | [**LabelType**](LabelType.md) |  | [optional] 
-**ParentId** | **String** | Label parent entity ID. | [optional] 
-**ParentType** | **String** | Label parent entity type. | [optional] 
-**Status** | [**LabelStatus**](LabelStatus.md) |  | [optional] 
-**Value** | **String** | Label name. | [optional] 
+**Id** | **String** | Label ID. | 
+**LabelType** | [**NullableLabelType**](NullableLabelType.md) |  | 
+**Status** | [**NullableLabelStatus**](NullableLabelStatus.md) |  | [optional] 
+**Value** | **String** | Label name. 100-character limit. | 
 
 ## Examples
 
@@ -16,8 +14,6 @@ Name | Type | Description | Notes
 ```powershell
 $Label = Initialize-PSOpenAPIToolsLabel  -Id 1106385754497 `
  -LabelType null `
- -ParentId 626753052072 `
- -ParentType CAMPAIGN `
  -Status null `
  -Value null
 ```

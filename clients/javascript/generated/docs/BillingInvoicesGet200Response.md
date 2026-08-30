@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  | [optional] 
-**items** | [**[BillingInvoiceResponse]**](BillingInvoiceResponse.md) |  | 
+**items** | [**[BillingInvoice]**](BillingInvoice.md) |  | 
 
 

@@ -124,7 +124,7 @@ UsersForIndividualAssetResponse::getAssetId()
 }
 
 void
-UsersForIndividualAssetResponse::setAssetId(std::string  asset_id)
+UsersForIndividualAssetResponse::setAssetId(std::string asset_id)
 {
 	this->asset_id = asset_id;
 }
@@ -136,7 +136,7 @@ UsersForIndividualAssetResponse::getMemberId()
 }
 
 void
-UsersForIndividualAssetResponse::setMemberId(std::string  member_id)
+UsersForIndividualAssetResponse::setMemberId(std::string member_id)
 {
 	this->member_id = member_id;
 }
@@ -148,7 +148,7 @@ UsersForIndividualAssetResponse::getPermissions()
 }
 
 void
-UsersForIndividualAssetResponse::setPermissions(std::list <std::string> permissions)
+UsersForIndividualAssetResponse::setPermissions(std::list<std::string> permissions)
 {
 	this->permissions = permissions;
 }

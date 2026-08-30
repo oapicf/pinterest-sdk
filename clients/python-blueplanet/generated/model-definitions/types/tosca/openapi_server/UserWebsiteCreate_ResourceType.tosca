@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UserWebsiteCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UserWebsiteCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  WebsiteVerificationMethod = openapi_server.resourceTypes.WebsiteVerificationMethod
+}
+resourceTypes {
+
+  UserWebsiteCreate {
+    title = UserWebsiteCreate
+    description = UserWebsiteCreate
+    derivedFrom = Root
+    properties {
+        verification_method {
+          type = WebsiteVerificationMethod
+          description = "Method used to verify website ownership."
+          optional = false
+        }
+        website {
+          type =  string
+          description = "Website with path or domain only"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UserWebsiteCreate {
+    title = UserWebsiteCreate
+    description = UserWebsiteCreate
+    implements = openapi_server.resourceTypes.UserWebsiteCreate
+
+  }
+}

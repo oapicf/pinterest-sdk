@@ -10,7 +10,7 @@
 
 -type openapi_user_websites_get_200_response() ::
   [ {'bookmark', binary() }
-  | {'items', list(openapi_user_website_summary:openapi_user_website_summary()) }
+  | {'items', list(openapi_user_website:openapi_user_website()) }
   ].
 
 
@@ -19,7 +19,7 @@ openapi_user_websites_get_200_response() ->
 
 openapi_user_websites_get_200_response(Fields) ->
   Default = [ {'bookmark', binary() }
-            , {'items', list(openapi_user_website_summary:openapi_user_website_summary()) }
+            , {'items', list(openapi_user_website:openapi_user_website()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

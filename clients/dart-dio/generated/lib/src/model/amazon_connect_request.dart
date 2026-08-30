@@ -140,8 +140,9 @@ class _$AmazonConnectRequestSerializer implements PrimitiveSerializer<AmazonConn
         case r'amazon_storefront_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.amazonStorefrontId = valueDes;
           break;
         case r'amazon_storefront_name':
@@ -161,8 +162,9 @@ class _$AmazonConnectRequestSerializer implements PrimitiveSerializer<AmazonConn
         case r'amazon_user_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.amazonUserId = valueDes;
           break;
         case r'is_amazon_account_linked':
@@ -175,15 +177,17 @@ class _$AmazonConnectRequestSerializer implements PrimitiveSerializer<AmazonConn
         case r'one_time_passcode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.oneTimePasscode = valueDes;
           break;
         case r'pinterest_user_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.pinterestUserId = valueDes;
           break;
         default:

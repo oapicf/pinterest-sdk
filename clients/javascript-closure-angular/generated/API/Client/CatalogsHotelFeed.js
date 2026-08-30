@@ -7,24 +7,6 @@ goog.provide('API.Client.CatalogsHotelFeed');
 API.Client.CatalogsHotelFeed = function() {}
 
 /**
- * @type {!Date}
- * @export
- */
-API.Client.CatalogsHotelFeed.prototype.createdAt;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.CatalogsHotelFeed.prototype.id;
-
-/**
- * @type {!Date}
- * @export
- */
-API.Client.CatalogsHotelFeed.prototype.updatedAt;
-
-/**
  * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  * @type {!string}
  * @export
@@ -32,10 +14,16 @@ API.Client.CatalogsHotelFeed.prototype.updatedAt;
 API.Client.CatalogsHotelFeed.prototype.catalogId;
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsHotelFeed.prototype.catalogType;
+
+/**
+ * @type {!Date}
+ * @export
+ */
+API.Client.CatalogsHotelFeed.prototype.createdAt;
 
 /**
  * @type {!API.Client.CatalogsFeedCredentials}
@@ -63,6 +51,13 @@ API.Client.CatalogsHotelFeed.prototype.defaultLocale;
 API.Client.CatalogsHotelFeed.prototype.format;
 
 /**
+ * ID of the feed entity.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelFeed.prototype.id;
+
+/**
  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
  * @type {!string}
  * @export
@@ -88,3 +83,13 @@ API.Client.CatalogsHotelFeed.prototype.preferredProcessingSchedule;
  */
 API.Client.CatalogsHotelFeed.prototype.status;
 
+/**
+ * @type {!Date}
+ * @export
+ */
+API.Client.CatalogsHotelFeed.prototype.updatedAt;
+
+/** @enum {string} */
+API.Client.CatalogsHotelFeed.CatalogTypeEnum = { 
+  HOTEL: 'HOTEL',
+}

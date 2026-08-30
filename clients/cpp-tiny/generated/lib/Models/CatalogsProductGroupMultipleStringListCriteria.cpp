@@ -103,7 +103,7 @@ CatalogsProductGroupMultipleStringListCriteria::isNegated()
 }
 
 void
-CatalogsProductGroupMultipleStringListCriteria::setNegated(bool  negated)
+CatalogsProductGroupMultipleStringListCriteria::setNegated(bool negated)
 {
 	this->negated = negated;
 }
@@ -115,7 +115,7 @@ CatalogsProductGroupMultipleStringListCriteria::getValues()
 }
 
 void
-CatalogsProductGroupMultipleStringListCriteria::setValues(std::list <std::list> values)
+CatalogsProductGroupMultipleStringListCriteria::setValues(std::list<std::list> values)
 {
 	this->values = values;
 }

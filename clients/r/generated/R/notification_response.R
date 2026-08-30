@@ -7,32 +7,32 @@
 #' @title NotificationResponse
 #' @description NotificationResponse Class
 #' @format An \code{R6Class} generator object
-#' @field success Returns true if the notification accepted. character [optional]
-#' @field received_at Received time. Unix timestamp in seconds. integer [optional]
 #' @field error_msg error message when success is false character [optional]
+#' @field received_at Received time. Unix timestamp in seconds. integer [optional]
+#' @field success Returns true if the notification accepted. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 NotificationResponse <- R6::R6Class(
   "NotificationResponse",
   public = list(
-    `success` = NULL,
-    `received_at` = NULL,
     `error_msg` = NULL,
+    `received_at` = NULL,
+    `success` = NULL,
 
     #' @description
     #' Initialize a new NotificationResponse class.
     #'
-    #' @param success Returns true if the notification accepted.
-    #' @param received_at Received time. Unix timestamp in seconds.
     #' @param error_msg error message when success is false
+    #' @param received_at Received time. Unix timestamp in seconds.
+    #' @param success Returns true if the notification accepted.
     #' @param ... Other optional arguments.
-    initialize = function(`success` = NULL, `received_at` = NULL, `error_msg` = NULL, ...) {
-      if (!is.null(`success`)) {
-        if (!(is.logical(`success`) && length(`success`) == 1)) {
-          stop(paste("Error! Invalid data for `success`. Must be a boolean:", `success`))
+    initialize = function(`error_msg` = NULL, `received_at` = NULL, `success` = NULL, ...) {
+      if (!is.null(`error_msg`)) {
+        if (!(is.character(`error_msg`) && length(`error_msg`) == 1)) {
+          stop(paste("Error! Invalid data for `error_msg`. Must be a string:", `error_msg`))
         }
-        self$`success` <- `success`
+        self$`error_msg` <- `error_msg`
       }
       if (!is.null(`received_at`)) {
         if (!(is.numeric(`received_at`) && length(`received_at`) == 1)) {
@@ -40,11 +40,11 @@ NotificationResponse <- R6::R6Class(
         }
         self$`received_at` <- `received_at`
       }
-      if (!is.null(`error_msg`)) {
-        if (!(is.character(`error_msg`) && length(`error_msg`) == 1)) {
-          stop(paste("Error! Invalid data for `error_msg`. Must be a string:", `error_msg`))
+      if (!is.null(`success`)) {
+        if (!(is.logical(`success`) && length(`success`) == 1)) {
+          stop(paste("Error! Invalid data for `success`. Must be a boolean:", `success`))
         }
-        self$`error_msg` <- `error_msg`
+        self$`success` <- `success`
       }
     },
 
@@ -79,17 +79,17 @@ NotificationResponse <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       NotificationResponseObject <- list()
-      if (!is.null(self$`success`)) {
-        NotificationResponseObject[["success"]] <-
-          self$`success`
+      if (!is.null(self$`error_msg`)) {
+        NotificationResponseObject[["error_msg"]] <-
+          self$`error_msg`
       }
       if (!is.null(self$`received_at`)) {
         NotificationResponseObject[["received_at"]] <-
           self$`received_at`
       }
-      if (!is.null(self$`error_msg`)) {
-        NotificationResponseObject[["error_msg"]] <-
-          self$`error_msg`
+      if (!is.null(self$`success`)) {
+        NotificationResponseObject[["success"]] <-
+          self$`success`
       }
       return(NotificationResponseObject)
     },
@@ -101,14 +101,14 @@ NotificationResponse <- R6::R6Class(
     #' @return the instance of NotificationResponse
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`success`)) {
-        self$`success` <- this_object$`success`
+      if (!is.null(this_object$`error_msg`)) {
+        self$`error_msg` <- this_object$`error_msg`
       }
       if (!is.null(this_object$`received_at`)) {
         self$`received_at` <- this_object$`received_at`
       }
-      if (!is.null(this_object$`error_msg`)) {
-        self$`error_msg` <- this_object$`error_msg`
+      if (!is.null(this_object$`success`)) {
+        self$`success` <- this_object$`success`
       }
       self
     },
@@ -131,9 +131,9 @@ NotificationResponse <- R6::R6Class(
     #' @return the instance of NotificationResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`success` <- this_object$`success`
-      self$`received_at` <- this_object$`received_at`
       self$`error_msg` <- this_object$`error_msg`
+      self$`received_at` <- this_object$`received_at`
+      self$`success` <- this_object$`success`
       self
     },
 

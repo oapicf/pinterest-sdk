@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -24,7 +24,7 @@ import java.math.BigDecimal;
  */
 
 @ApiModel(description = "Integration metadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationMetadata   {
   
   private String additionalId1;
@@ -162,6 +162,7 @@ public class IntegrationMetadata   {
   }
 
   /**
+   * External business ID for the integration.
    */
   public IntegrationMetadata externalBusinessId(String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
@@ -169,7 +170,7 @@ public class IntegrationMetadata   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "External business ID for the integration.")
   @JsonProperty("external_business_id")
   public String getExternalBusinessId() {
     return externalBusinessId;
@@ -339,10 +340,7 @@ public class IntegrationMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

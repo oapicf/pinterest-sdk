@@ -102,7 +102,7 @@ CatalogsProductGroupMultipleCountriesCriteria::isNegated()
 }
 
 void
-CatalogsProductGroupMultipleCountriesCriteria::setNegated(bool  negated)
+CatalogsProductGroupMultipleCountriesCriteria::setNegated(bool negated)
 {
 	this->negated = negated;
 }
@@ -114,7 +114,7 @@ CatalogsProductGroupMultipleCountriesCriteria::getValues()
 }
 
 void
-CatalogsProductGroupMultipleCountriesCriteria::setValues(std::list <Country> values)
+CatalogsProductGroupMultipleCountriesCriteria::setValues(std::list<Country> values)
 {
 	this->values = values;
 }

@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UserWebsite"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UserWebsite"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  UserWebsite {
+    title = UserWebsite
+    description = UserWebsite
+    derivedFrom = Root
+    properties {
+        status {
+          type =  string
+          description = "Status of the verification process"
+          optional = false
+        }
+        verified_at {
+          type =  string
+          description = "UTC timestamp when the verification happened - sometimes missing"
+          optional = false
+        }
+        website {
+          type =  string
+          description = "Website with path or domain only"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UserWebsite {
+    title = UserWebsite
+    description = UserWebsite
+    implements = openapi_server.resourceTypes.UserWebsite
+
+  }
+}

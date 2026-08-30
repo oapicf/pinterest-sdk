@@ -1,0 +1,59 @@
+## CampaignsApi
+
+### Get pins analytics
+## Get pins analytics
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/pins/analytics?campaignId={{campaignId}}&pinIds={{pinIds}}&startDate={{startDate}}&endDate={{endDate}}&columns={{columns}}&granularity={{granularity}}&clickWindowDays={{clickWindowDays}}&engagementWindowDays={{engagementWindowDays}}&viewWindowDays={{viewWindowDays}}&conversionReportTime={{conversionReportTime}}
+Accept: application/json
+
+### Get targeting analytics for campaigns
+## Get targeting analytics for campaigns
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/campaigns/targeting_analytics?campaignIds={{campaignIds}}&startDate={{startDate}}&endDate={{endDate}}&targetingTypes={{targetingTypes}}&columns={{columns}}&granularity={{granularity}}&clickWindowDays={{clickWindowDays}}&engagementWindowDays={{engagementWindowDays}}&viewWindowDays={{viewWindowDays}}&conversionReportTime={{conversionReportTime}}&attributionTypes={{attributionTypes}}&reportingTimezone={{reportingTimezone}}
+Accept: application/json
+
+### Get campaign analytics
+## Get campaign analytics
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/campaigns/analytics?startDate={{startDate}}&endDate={{endDate}}&campaignIds={{campaignIds}}&columns={{columns}}&granularity={{granularity}}&clickWindowDays={{clickWindowDays}}&engagementWindowDays={{engagementWindowDays}}&viewWindowDays={{viewWindowDays}}&conversionReportTime={{conversionReportTime}}&aggregateReportRows={{aggregateReportRows}}&reportingTimezone={{reportingTimezone}}
+Accept: application/json
+
+### Create campaigns
+## Create campaigns
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/campaigns
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Get campaign
+## Get campaign
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/campaigns/{{campaign_id}}
+Accept: application/json
+
+### List campaigns
+## List campaigns
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/campaigns?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}&campaignIds={{campaignIds}}&entityStatuses={{entityStatuses}}
+Accept: application/json
+
+### Update campaigns
+## Update campaigns
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/campaigns
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Get campaign delivery estimates
+## Get campaign delivery estimates
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/campaigns/delivery_estimates
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+

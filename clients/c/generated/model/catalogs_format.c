@@ -5,13 +5,13 @@
 
 
 char* catalogs_format_catalogs_format_ToString(pinterest_rest_api_catalogs_format__e catalogs_format) {
-    char *catalogs_formatArray[] =  { "NULL", "TSV", "CSV", "XML" };
+    char *catalogs_formatArray[] =  { "NULL", "TSV", "CSV", "XML", "INTEGRATION" };
     return catalogs_formatArray[catalogs_format];
 }
 
 pinterest_rest_api_catalogs_format__e catalogs_format_catalogs_format_FromString(char* catalogs_format) {
     int stringToReturn = 0;
-    char *catalogs_formatArray[] =  { "NULL", "TSV", "CSV", "XML" };
+    char *catalogs_formatArray[] =  { "NULL", "TSV", "CSV", "XML", "INTEGRATION" };
     size_t sizeofArray = sizeof(catalogs_formatArray) / sizeof(catalogs_formatArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(catalogs_format, catalogs_formatArray[stringToReturn]) == 0) {

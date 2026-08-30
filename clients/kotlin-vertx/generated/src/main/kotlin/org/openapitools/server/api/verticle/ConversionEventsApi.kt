@@ -1,9 +1,9 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.ConversionApiResponse
 import org.openapitools.server.api.model.ConversionEvents
+import org.openapitools.server.api.model.ConversionEventsCreate
 import org.openapitools.server.api.model.DetailedError
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -22,7 +22,7 @@ interface ConversionEventsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* eventsCreate
      * Send conversions */
-    suspend fun eventsCreate(adAccountId:kotlin.String?,conversionEvents:ConversionEvents?,test:kotlin.Boolean?,context:OperationRequest):Response<ConversionApiResponse>
+    suspend fun eventsCreate(adAccountId:kotlin.String?,conversionEventsCreate:ConversionEventsCreate?,test:kotlin.Boolean?,context:OperationRequest):Response<ConversionEvents>
     companion object {
         const val address = "ConversionEventsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

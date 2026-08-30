@@ -11,14 +11,14 @@ The class is defined in **[IntegrationRecord.java](../../src/main/java/org/opena
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **additionalId1** | `String` |  |  [optional property]
-**connectedAdvertiserId** | `String` |  |  [optional property] [readonly property]
+**connectedAdvertiserId** | `String` |  |  [optional property]
 **connectedLbaId** | `String` |  |  [optional property]
 **connectedMerchantId** | `String` |  |  [optional property]
 **connectedTagId** | `String` |  |  [optional property]
-**connectedUserId** | `String` |  |  [optional property] [readonly property]
+**connectedUserId** | `String` |  |  [optional property]
 **createdTime** | `Integer` |  |  [optional property]
 **externalBusinessId** | `String` |  |  [optional property]
-**id** | `String` |  |  [optional property]
+**id** | `String` | Integration record ID. |  [readonly property]
 **partnerAccessToken** | `String` |  |  [optional property]
 **partnerAccessTokenExpiry** | `Integer` |  |  [optional property]
 **partnerMetadata** | `String` |  |  [optional property]

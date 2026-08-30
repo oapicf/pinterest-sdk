@@ -5,11 +5,13 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
-#include "Audience.h"
-#include "AudienceCreateRequest.h"
-#include "AudienceUpdateRequest.h"
+#include "AdAccountsAudience.h"
+#include "AdAccountsAudienceCreate.h"
+#include "AdAccountsAudienceUpdate.h"
+#include "AudienceOwnershipType.h"
 #include "Audiences_list_200_response.h"
-#include "Error.h"
+#include "Pinterest.Lib.Error.h"
+#include "Pinterest.Lib.PaginationOrder.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -30,59 +32,59 @@ public:
 
 /*! \brief Create audience. *Synchronous*
  *
- * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+ * Create a new audience for the ad account.
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param audienceCreateRequest List of ads to create, size limit [1, 30] *Required*
+ * \param adAccountsAudienceCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool audiencesCreateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<AudienceCreateRequest> audienceCreateRequest, 
-	void(* handler)(Audience, Error, void* )
+	std::string adAccountId, std::shared_ptr<AdAccountsAudienceCreate> adAccountsAudienceCreate, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData);
 
 /*! \brief Create audience. *Asynchronous*
  *
- * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+ * Create a new audience for the ad account.
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param audienceCreateRequest List of ads to create, size limit [1, 30] *Required*
+ * \param adAccountsAudienceCreate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool audiencesCreateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<AudienceCreateRequest> audienceCreateRequest, 
-	void(* handler)(Audience, Error, void* )
+	std::string adAccountId, std::shared_ptr<AdAccountsAudienceCreate> adAccountsAudienceCreate, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData);
 
 
 /*! \brief Get audience. *Synchronous*
  *
  * Get a specific audience given the audience ID.
+ * \param audienceId Audience ID. *Required*
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param audienceId Unique identifier of an audience *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool audiencesGetSync(char * accessToken,
-	std::string adAccountId, std::string audienceId, 
-	void(* handler)(Audience, Error, void* )
+	std::string audienceId, std::string adAccountId, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData);
 
 /*! \brief Get audience. *Asynchronous*
  *
  * Get a specific audience given the audience ID.
+ * \param audienceId Audience ID. *Required*
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param audienceId Unique identifier of an audience *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool audiencesGetAsync(char * accessToken,
-	std::string adAccountId, std::string audienceId, 
-	void(* handler)(Audience, Error, void* )
+	std::string audienceId, std::string adAccountId, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData);
 
 
@@ -91,15 +93,16 @@ bool audiencesGetAsync(char * accessToken,
  * Get list of audiences for the ad account.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bookmark Cursor used to fetch the next page of items
- * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
- * \param ownershipType Filter audiences by ownership type.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+ * \param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+ * \param ownershipType 
+ * \param excludeNca When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool audiencesListSync(char * accessToken,
-	std::string adAccountId, std::string bookmark, std::string order, int pageSize, std::string ownershipType, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, AudienceOwnershipType ownershipType, bool excludeNca, 
 	void(* handler)(Audiences_list_200_response, Error, void* )
 	, void* userData);
 
@@ -108,47 +111,48 @@ bool audiencesListSync(char * accessToken,
  * Get list of audiences for the ad account.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bookmark Cursor used to fetch the next page of items
- * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
- * \param ownershipType Filter audiences by ownership type.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+ * \param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+ * \param ownershipType 
+ * \param excludeNca When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool audiencesListAsync(char * accessToken,
-	std::string adAccountId, std::string bookmark, std::string order, int pageSize, std::string ownershipType, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, AudienceOwnershipType ownershipType, bool excludeNca, 
 	void(* handler)(Audiences_list_200_response, Error, void* )
 	, void* userData);
 
 
 /*! \brief Update audience. *Synchronous*
  *
- * Update (edit or remove) an existing targeting audience.
+ * Update an existing audience for the ad account.
+ * \param audienceId Audience ID. *Required*
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param audienceId Unique identifier of an audience *Required*
- * \param audienceUpdateRequest The audience to be updated. *Required*
+ * \param adAccountsAudienceUpdate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool audiencesUpdateSync(char * accessToken,
-	std::string adAccountId, std::string audienceId, std::shared_ptr<AudienceUpdateRequest> audienceUpdateRequest, 
-	void(* handler)(Audience, Error, void* )
+	std::string audienceId, std::string adAccountId, std::shared_ptr<AdAccountsAudienceUpdate> adAccountsAudienceUpdate, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData);
 
 /*! \brief Update audience. *Asynchronous*
  *
- * Update (edit or remove) an existing targeting audience.
+ * Update an existing audience for the ad account.
+ * \param audienceId Audience ID. *Required*
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param audienceId Unique identifier of an audience *Required*
- * \param audienceUpdateRequest The audience to be updated. *Required*
+ * \param adAccountsAudienceUpdate  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool audiencesUpdateAsync(char * accessToken,
-	std::string adAccountId, std::string audienceId, std::shared_ptr<AudienceUpdateRequest> audienceUpdateRequest, 
-	void(* handler)(Audience, Error, void* )
+	std::string audienceId, std::string adAccountId, std::shared_ptr<AdAccountsAudienceUpdate> adAccountsAudienceUpdate, 
+	void(* handler)(AdAccountsAudience, Error, void* )
 	, void* userData);
 
 

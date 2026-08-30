@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ad_accounts_ids** | **Array&lt;string&gt;** | A list of ad account IDs under the asset group | [optional] [default to undefined]
-**asset_group_description** | **string** | Asset group description | [optional] [default to undefined]
-**asset_group_name** | **string** | Asset Group name | [optional] [default to undefined]
-**asset_group_types** | **Array&lt;string&gt;** | Asset group types | [optional] [default to undefined]
-**catalogs_ids** | **Array&lt;string&gt;** | A list of catalog IDs under asset group | [optional] [default to undefined]
-**created_by** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the user that created the asset group. | [optional] [default to undefined]
-**created_time** | **number** | The creation time of the asset group | [optional] [default to undefined]
-**id** | **string** | Asset Group ID. | [optional] [default to undefined]
-**owner** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the business that owns the asset group. | [optional] [default to undefined]
-**profiles_ids** | **Array&lt;string&gt;** | A list of profile IDs under asset group | [optional] [default to undefined]
-**updated_time** | **number** | The last update time of the asset group | [optional] [default to undefined]
+**ad_accounts_ids** | **Array&lt;string&gt;** | A list of ad account IDs under the asset group | [default to undefined]
+**asset_group_description** | **string** | Asset group description | [default to undefined]
+**asset_group_name** | **string** | Asset Group name | [default to undefined]
+**asset_group_types** | **Array&lt;string&gt;** | Asset group types | [default to undefined]
+**catalogs_ids** | **Array&lt;string&gt;** | A list of catalog IDs under asset group | [default to undefined]
+**created_by** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the user that created the asset group. | [default to undefined]
+**created_time** | **number** | The creation time of the asset group | [default to undefined]
+**id** | **string** | Asset Group ID. | [default to undefined]
+**owner** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the business that owns the asset group. | [default to undefined]
+**profiles_ids** | **Array&lt;string&gt;** | A list of profile IDs under asset group | [default to undefined]
+**updated_time** | **number** | The last update time of the asset group | [default to undefined]
 
 ## Example
 

@@ -6,7 +6,7 @@ using namespace Tiny;
 
 UpdateMemberAssetsResultsResponseArray::UpdateMemberAssetsResultsResponseArray()
 {
-	items = std::list<UpdateMemberAssetsResultsResponseArray_items_inner>();
+	items = std::list<UpdateMemberAssetResultItem>();
 }
 
 UpdateMemberAssetsResultsResponseArray::UpdateMemberAssetsResultsResponseArray(std::string jsonString)
@@ -31,8 +31,8 @@ UpdateMemberAssetsResultsResponseArray::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<UpdateMemberAssetsResultsResponseArray_items_inner> items_list;
-        UpdateMemberAssetsResultsResponseArray_items_inner element;
+        std::list<UpdateMemberAssetResultItem> items_list;
+        UpdateMemberAssetResultItem element;
         for(auto& var : value.array_range())
         {
 
@@ -57,12 +57,12 @@ UpdateMemberAssetsResultsResponseArray::toJson()
 
 
 
-    std::list<UpdateMemberAssetsResultsResponseArray_items_inner> items_list = getItems();
+    std::list<UpdateMemberAssetResultItem> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        UpdateMemberAssetsResultsResponseArray_items_inner obj = var;
+        UpdateMemberAssetResultItem obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -74,14 +74,14 @@ UpdateMemberAssetsResultsResponseArray::toJson()
 
 }
 
-std::list<UpdateMemberAssetsResultsResponseArray_items_inner>
+std::list<UpdateMemberAssetResultItem>
 UpdateMemberAssetsResultsResponseArray::getItems()
 {
 	return items;
 }
 
 void
-UpdateMemberAssetsResultsResponseArray::setItems(std::list <UpdateMemberAssetsResultsResponseArray_items_inner> items)
+UpdateMemberAssetsResultsResponseArray::setItems(std::list<UpdateMemberAssetResultItem> items)
 {
 	this->items = items;
 }

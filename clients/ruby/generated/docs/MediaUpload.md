@@ -16,7 +16,7 @@ require 'pinterest_sdk'
 
 instance = PinterestSdkClient::MediaUpload.new(
   media_id: 12345,
-  media_type: null,
+  media_type: video,
   upload_parameters: null,
   upload_url: https://pinterest-media-upload.s3-accelerate.amazonaws.com/
 )

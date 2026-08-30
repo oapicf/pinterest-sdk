@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BillingType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BillingType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BillingType {
+    title = BillingType
+    description = BillingType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  BillingType {
+    title = BillingType
+    description = BillingType
+    implements = openapi_server.resourceTypes.BillingType
+
+  }
+}

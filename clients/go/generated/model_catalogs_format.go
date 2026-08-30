@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,6 +24,7 @@ const (
 	TSV CatalogsFormat = "TSV"
 	CSV CatalogsFormat = "CSV"
 	XML CatalogsFormat = "XML"
+	INTEGRATION CatalogsFormat = "INTEGRATION"
 )
 
 // All allowed values of CatalogsFormat enum
@@ -31,6 +32,7 @@ var AllowedCatalogsFormatEnumValues = []CatalogsFormat{
 	"TSV",
 	"CSV",
 	"XML",
+	"INTEGRATION",
 }
 
 func (v *CatalogsFormat) UnmarshalJSON(src []byte) error {

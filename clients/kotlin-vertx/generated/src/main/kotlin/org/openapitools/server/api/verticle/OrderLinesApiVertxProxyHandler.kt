@@ -16,9 +16,10 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.OrderLine
 import org.openapitools.server.api.model.OrderLinesList200Response
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
 
 class OrderLinesApiVertxProxyHandler(private val vertx: Vertx, private val service: OrderLinesApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -68,16 +69,16 @@ class OrderLinesApiVertxProxyHandler(private val vertx: Vertx, private val servi
         
                 "orderLinesGet" -> {
                     val params = context.params
-                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
-                    if(adAccountId == null){
-                        throw IllegalArgumentException("adAccountId is required")
-                    }
                     val orderLineId = ApiHandlerUtils.searchStringInJson(params,"order_line_id")
                     if(orderLineId == null){
                         throw IllegalArgumentException("orderLineId is required")
                     }
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.orderLinesGet(adAccountId,orderLineId,context)
+                        val result = service.orderLinesGet(orderLineId,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -92,11 +93,12 @@ class OrderLinesApiVertxProxyHandler(private val vertx: Vertx, private val servi
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val order = ApiHandlerUtils.searchStringInJson(params,"order")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
+                    val orderParam = ApiHandlerUtils.searchJsonObjectInJson(params,"order")
+                    val order = if(orderParam ==null) null else Gson().fromJson(orderParam.encode(), PinterestLibPaginationOrder::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.orderLinesList(adAccountId,pageSize,order,bookmark,context)
+                        val result = service.orderLinesList(adAccountId,bookmark,pageSize,order,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

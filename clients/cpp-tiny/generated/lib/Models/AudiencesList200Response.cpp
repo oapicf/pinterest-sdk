@@ -7,7 +7,7 @@ using namespace Tiny;
 Audiences_list_200_response::Audiences_list_200_response()
 {
 	bookmark = std::string();
-	items = std::list<Audience>();
+	items = std::list<AdAccountsAudience>();
 }
 
 Audiences_list_200_response::Audiences_list_200_response(std::string jsonString)
@@ -45,8 +45,8 @@ Audiences_list_200_response::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<Audience> items_list;
-        Audience element;
+        std::list<AdAccountsAudience> items_list;
+        AdAccountsAudience element;
         for(auto& var : value.array_range())
         {
 
@@ -78,12 +78,12 @@ Audiences_list_200_response::toJson()
 
 
 
-    std::list<Audience> items_list = getItems();
+    std::list<AdAccountsAudience> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        Audience obj = var;
+        AdAccountsAudience obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -102,19 +102,19 @@ Audiences_list_200_response::getBookmark()
 }
 
 void
-Audiences_list_200_response::setBookmark(std::string  bookmark)
+Audiences_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
 
-std::list<Audience>
+std::list<AdAccountsAudience>
 Audiences_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Audiences_list_200_response::setItems(std::list <Audience> items)
+Audiences_list_200_response::setItems(std::list<AdAccountsAudience> items)
 {
 	this->items = items;
 }

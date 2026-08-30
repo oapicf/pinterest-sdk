@@ -24,7 +24,7 @@ void
 CatalogsProductGroupUint32Criteria::__init()
 {
 	//negated = bool(false);
-	//r_operator = std::string();
+	//r_operator = new NumericFilterOperatorType();
 	//value = int(0);
 }
 
@@ -70,9 +70,12 @@ CatalogsProductGroupUint32Criteria::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&r_operator, node, "std::string", "");
+		if (isprimitive("NumericFilterOperatorType")) {
+			jsonToValue(&r_operator, node, "NumericFilterOperatorType", "NumericFilterOperatorType");
 		} else {
+			
+			NumericFilterOperatorType* obj = static_cast<NumericFilterOperatorType*> (&r_operator);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -108,11 +111,16 @@ CatalogsProductGroupUint32Criteria::toJson()
 	}
 	const gchar *negatedKey = "negated";
 	json_object_set_member(pJsonObject, negatedKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getROperator();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("NumericFilterOperatorType")) {
+		NumericFilterOperatorType obj = getROperator();
+		node = converttoJson(&obj, "NumericFilterOperatorType", "");
 	}
 	else {
+		
+		NumericFilterOperatorType obj = static_cast<NumericFilterOperatorType> (getROperator());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *r_operatorKey = "operator";
@@ -146,14 +154,14 @@ CatalogsProductGroupUint32Criteria::setNegated(bool  negated)
 	this->negated = negated;
 }
 
-std::string
+NumericFilterOperatorType
 CatalogsProductGroupUint32Criteria::getROperator()
 {
 	return r_operator;
 }
 
 void
-CatalogsProductGroupUint32Criteria::setROperator(std::string  r_operator)
+CatalogsProductGroupUint32Criteria::setROperator(NumericFilterOperatorType  r_operator)
 {
 	this->r_operator = r_operator;
 }

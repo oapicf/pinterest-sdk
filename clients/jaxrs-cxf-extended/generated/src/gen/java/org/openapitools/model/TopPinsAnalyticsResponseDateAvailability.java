@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.math.BigDecimal;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -12,10 +11,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TopPinsAnalyticsResponseDateAvailability  {
   
-  @ApiModelProperty(example = "false", value = "")
+  @ApiModelProperty(value = "")
   private Boolean isRealtime;
 
-  @ApiModelProperty(example = "1649116799000", value = "")
+  @ApiModelProperty(value = "")
   @Valid
   private BigDecimal latestAvailableTimestamp;
  /**
@@ -101,10 +100,7 @@ public class TopPinsAnalyticsResponseDateAvailability  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

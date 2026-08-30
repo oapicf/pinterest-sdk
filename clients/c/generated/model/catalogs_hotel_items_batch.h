@@ -1,7 +1,7 @@
 /*
  * catalogs_hotel_items_batch.h
  *
- * Object describing the catalogs hotel items batch
+ * Object describing the catalogs hotel items batch. If specified, you must provide all properties.
  */
 
 #ifndef _catalogs_hotel_items_batch_H_
@@ -16,14 +16,21 @@
 typedef struct catalogs_hotel_items_batch_t catalogs_hotel_items_batch_t;
 
 #include "batch_operation_status.h"
-#include "catalogs_type.h"
 #include "hotel_processing_record.h"
+
+// Enum CATALOGTYPE for catalogs_hotel_items_batch
+
+typedef enum  { pinterest_rest_api_catalogs_hotel_items_batch_CATALOGTYPE_NULL = 0, pinterest_rest_api_catalogs_hotel_items_batch_CATALOGTYPE_HOTEL } pinterest_rest_api_catalogs_hotel_items_batch_CATALOGTYPE_e;
+
+char* catalogs_hotel_items_batch_catalog_type_ToString(pinterest_rest_api_catalogs_hotel_items_batch_CATALOGTYPE_e catalog_type);
+
+pinterest_rest_api_catalogs_hotel_items_batch_CATALOGTYPE_e catalogs_hotel_items_batch_catalog_type_FromString(char* catalog_type);
 
 
 
 typedef struct catalogs_hotel_items_batch_t {
     char *batch_id; // string
-    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
+    pinterest_rest_api_catalogs_hotel_items_batch_CATALOGTYPE_e catalog_type; //enum
     char *completed_time; //date time
     char *created_time; //date time
     list_t *items; //nonprimitive container
@@ -34,7 +41,7 @@ typedef struct catalogs_hotel_items_batch_t {
 
 __attribute__((deprecated)) catalogs_hotel_items_batch_t *catalogs_hotel_items_batch_create(
     char *batch_id,
-    pinterest_rest_api_catalogs_type__e catalog_type,
+    pinterest_rest_api_catalogs_hotel_items_batch_CATALOGTYPE_e catalog_type,
     char *completed_time,
     char *created_time,
     list_t *items,

@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** |  | [optional] |
-| **items** | [**Array&lt;Audience&gt;**](Audience.md) |  |  |
+| **items** | [**Array&lt;AdAccountsAudience&gt;**](AdAccountsAudience.md) |  |  |
 
 ## Example
 

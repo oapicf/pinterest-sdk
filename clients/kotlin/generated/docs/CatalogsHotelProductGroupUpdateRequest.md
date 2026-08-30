@@ -7,7 +7,7 @@
 | **catalogType** | [**inline**](#CatalogType) |  |  [optional] |
 | **description** | **kotlin.String** |  |  [optional] |
 | **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  |  [optional] |
-| **name** | **kotlin.String** |  |  [optional] |
+| **name** | **kotlin.String** | Name of catalog product group |  [optional] |
 
 
 <a id="CatalogType"></a>

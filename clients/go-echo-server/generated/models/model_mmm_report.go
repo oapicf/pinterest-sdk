@@ -1,0 +1,16 @@
+package models
+
+type MmmReport struct {
+
+	Message string `json:"message,omitempty"`
+
+	ReportStatus BulkReportingJobStatus `json:"report_status,omitempty"`
+
+	Size float32 `json:"size,omitempty"`
+
+	Status string `json:"status,omitempty"`
+
+	Token string `json:"token,omitempty"`
+
+	Url string `json:"url,omitempty"`
+}

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -19,17 +19,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.TargetingTemplateGetResponseData;
+import org.openapitools.model.TargetingTemplate;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingTemplateList200Response   {
   
   private String bookmark;
-  private List<TargetingTemplateGetResponseData> items = new ArrayList<>();
+  private List<TargetingTemplate> items = new ArrayList<>();
 
   /**
    */
@@ -50,7 +50,7 @@ public class TargetingTemplateList200Response   {
 
   /**
    */
-  public TargetingTemplateList200Response items(List<TargetingTemplateGetResponseData> items) {
+  public TargetingTemplateList200Response items(List<TargetingTemplate> items) {
     this.items = items;
     return this;
   }
@@ -58,10 +58,10 @@ public class TargetingTemplateList200Response   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
-  public List<TargetingTemplateGetResponseData> getItems() {
+  public List<TargetingTemplate> getItems() {
     return items;
   }
-  public void setItems(List<TargetingTemplateGetResponseData> items) {
+  public void setItems(List<TargetingTemplate> items) {
     this.items = items;
   }
 
@@ -100,10 +100,7 @@ public class TargetingTemplateList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

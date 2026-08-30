@@ -3,9 +3,10 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/top_pins_sort_by.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/top_pins_analytics_response_pins_inner.dart';
 import 'package:openapi/src/model/top_pins_analytics_response_date_availability.dart';
+import 'package:openapi/src/model/top_pins_analytics_response_pins_items.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -23,10 +24,10 @@ abstract class TopPinsAnalyticsResponse implements Built<TopPinsAnalyticsRespons
   TopPinsAnalyticsResponseDateAvailability? get dateAvailability;
 
   @BuiltValueField(wireName: r'pins')
-  BuiltList<TopPinsAnalyticsResponsePinsInner>? get pins;
+  BuiltList<TopPinsAnalyticsResponsePinsItems>? get pins;
 
   @BuiltValueField(wireName: r'sort_by')
-  TopPinsAnalyticsResponseSortByEnum? get sortBy;
+  TopPinsSortBy? get sortBy;
   // enum sortByEnum {  ENGAGEMENT,  SAVE,  IMPRESSION,  OUTBOUND_CLICK,  PIN_CLICK,  };
 
   TopPinsAnalyticsResponse._();
@@ -63,14 +64,14 @@ class _$TopPinsAnalyticsResponseSerializer implements PrimitiveSerializer<TopPin
       yield r'pins';
       yield serializers.serialize(
         object.pins,
-        specifiedType: const FullType(BuiltList, [FullType(TopPinsAnalyticsResponsePinsInner)]),
+        specifiedType: const FullType(BuiltList, [FullType(TopPinsAnalyticsResponsePinsItems)]),
       );
     }
     if (object.sortBy != null) {
       yield r'sort_by';
       yield serializers.serialize(
         object.sortBy,
-        specifiedType: const FullType(TopPinsAnalyticsResponseSortByEnum),
+        specifiedType: const FullType(TopPinsSortBy),
       );
     }
   }
@@ -99,22 +100,25 @@ class _$TopPinsAnalyticsResponseSerializer implements PrimitiveSerializer<TopPin
         case r'date_availability':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(TopPinsAnalyticsResponseDateAvailability),
-          ) as TopPinsAnalyticsResponseDateAvailability;
+            specifiedType: const FullType.nullable(TopPinsAnalyticsResponseDateAvailability),
+          ) as TopPinsAnalyticsResponseDateAvailability?;
+          if (valueDes == null) continue;
           result.dateAvailability.replace(valueDes);
           break;
         case r'pins':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(TopPinsAnalyticsResponsePinsInner)]),
-          ) as BuiltList<TopPinsAnalyticsResponsePinsInner>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(TopPinsAnalyticsResponsePinsItems)]),
+          ) as BuiltList<TopPinsAnalyticsResponsePinsItems>?;
+          if (valueDes == null) continue;
           result.pins.replace(valueDes);
           break;
         case r'sort_by':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(TopPinsAnalyticsResponseSortByEnum),
-          ) as TopPinsAnalyticsResponseSortByEnum;
+            specifiedType: const FullType.nullable(TopPinsSortBy),
+          ) as TopPinsSortBy?;
+          if (valueDes == null) continue;
           result.sortBy = valueDes;
           break;
         default:
@@ -144,26 +148,5 @@ class _$TopPinsAnalyticsResponseSerializer implements PrimitiveSerializer<TopPin
     );
     return result.build();
   }
-}
-
-class TopPinsAnalyticsResponseSortByEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'ENGAGEMENT')
-  static const TopPinsAnalyticsResponseSortByEnum ENGAGEMENT = _$topPinsAnalyticsResponseSortByEnum_ENGAGEMENT;
-  @BuiltValueEnumConst(wireName: r'SAVE')
-  static const TopPinsAnalyticsResponseSortByEnum SAVE = _$topPinsAnalyticsResponseSortByEnum_SAVE;
-  @BuiltValueEnumConst(wireName: r'IMPRESSION')
-  static const TopPinsAnalyticsResponseSortByEnum IMPRESSION = _$topPinsAnalyticsResponseSortByEnum_IMPRESSION;
-  @BuiltValueEnumConst(wireName: r'OUTBOUND_CLICK')
-  static const TopPinsAnalyticsResponseSortByEnum OUTBOUND_CLICK = _$topPinsAnalyticsResponseSortByEnum_OUTBOUND_CLICK;
-  @BuiltValueEnumConst(wireName: r'PIN_CLICK')
-  static const TopPinsAnalyticsResponseSortByEnum PIN_CLICK = _$topPinsAnalyticsResponseSortByEnum_PIN_CLICK;
-
-  static Serializer<TopPinsAnalyticsResponseSortByEnum> get serializer => _$topPinsAnalyticsResponseSortByEnumSerializer;
-
-  const TopPinsAnalyticsResponseSortByEnum._(String name): super(name);
-
-  static BuiltSet<TopPinsAnalyticsResponseSortByEnum> get values => _$topPinsAnalyticsResponseSortByEnumValues;
-  static TopPinsAnalyticsResponseSortByEnum valueOf(String name) => _$topPinsAnalyticsResponseSortByEnumValueOf(name);
 }
 

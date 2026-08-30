@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MediaUploadCreate = Initialize-PSOpenAPIToolsMediaUploadCreate  -MediaType null
+$MediaUploadCreate = Initialize-PSOpenAPIToolsMediaUploadCreate  -MediaType video
 ```
 
 - Convert the resource to JSON

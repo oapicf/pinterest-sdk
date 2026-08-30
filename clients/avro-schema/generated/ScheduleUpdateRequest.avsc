@@ -1,0 +1,68 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ScheduleUpdateRequest",
+  "fields": [
+    {
+      "name": "entity_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "entity_type",
+      "type": ["null", "string"],
+      "doc": "Entity type",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "Schedule ID."
+    },
+    {
+      "name": "delta_value",
+      "type": ["null", "model.ScheduleCommonDeltaValue"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "end_timestamp",
+      "type": ["null", "int"],
+      "doc": "Schedule end time. Unix timestamp in seconds.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "schedule_action",
+      "type": ["null", "model.ScheduleAction"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "schedule_status",
+      "type": ["null", "model.ScheduleStatus"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "schedule_type",
+      "type": ["null", "model.ScheduleType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "start_timestamp",
+      "type": ["null", "int"],
+      "doc": "Schedule start time. Unix timestamp in seconds.",
+      "default": null
+    }
+  ]
+
+}

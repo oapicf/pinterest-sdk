@@ -1,0 +1,42 @@
+package org.openapitools.model;
+
+import java.util.Objects;
+import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+
+/**
+ * Method used to verify website ownership.
+ */
+public enum WebsiteVerificationMethod {
+  
+  FILENAME("FILENAME"),
+  
+  METATAG("METATAG"),
+  
+  DNSTXT("DNSTXT");
+
+  private String value;
+
+  WebsiteVerificationMethod(String value) {
+    this.value = value;
+  }
+
+  @Override
+  @JsonValue
+  public String toString() {
+    return String.valueOf(value);
+  }
+
+  @JsonCreator
+  public static WebsiteVerificationMethod fromValue(String text) {
+    for (WebsiteVerificationMethod b : WebsiteVerificationMethod.values()) {
+      if (String.valueOf(b.value).equals(text)) {
+        return b;
+      }
+    }
+    throw new IllegalArgumentException("Unexpected value '" + text + "'");
+  }
+}
+

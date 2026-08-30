@@ -54,11 +54,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
-	/*! \brief Get List of invite and request data.
+	/*! \brief Get 
 	 */
 	std::list<InviteResponse> getItems();
 
-	/*! \brief Set List of invite and request data.
+	/*! \brief Set 
 	 */
 	void setItems(std::list <InviteResponse> items);
 

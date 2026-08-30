@@ -10,12 +10,12 @@ import javax.validation.Valid;
 /**
  * A currency filter. This filter cannot be negated
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsProductGroupCurrencyCriteria   {
   @JsonProperty("negated")
   
-  private Boolean negated = false;
+  private Boolean negated;
 
   @JsonProperty("values")
   @NotNull
@@ -93,10 +93,7 @@ public class CatalogsProductGroupCurrencyCriteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

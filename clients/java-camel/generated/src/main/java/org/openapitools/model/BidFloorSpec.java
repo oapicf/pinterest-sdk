@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -9,26 +10,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ActionType;
+import org.openapitools.model.BidFloorObjectiveType;
 import org.openapitools.model.Country;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.Currency;
-import org.openapitools.model.ObjectiveType;
 import org.openapitools.model.OptimizationGoalMetadata;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * BidFloorSpec
+ * Bid floor specification for a given campaign configuration.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "BidFloorSpec", description = "Bid floor specification for a given campaign configuration.")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BidFloorSpec {
 
   private ActionType billableEvent;
@@ -40,7 +42,7 @@ public class BidFloorSpec {
 
   private Currency currency;
 
-  private ObjectiveType objectiveType;
+  private BidFloorObjectiveType objectiveType;
 
   private OptimizationGoalMetadata optimizationGoalMetadata;
 
@@ -62,11 +64,11 @@ public class BidFloorSpec {
   }
 
   /**
-   * Get billableEvent
+   * Ad group billable event type.
    * @return billableEvent
    */
   @NotNull @Valid 
-  @Schema(name = "billable_event", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "billable_event", description = "Ad group billable event type.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("billable_event")
   public ActionType getBillableEvent() {
     return billableEvent;
@@ -90,11 +92,11 @@ public class BidFloorSpec {
   }
 
   /**
-   * Get countries
+   * List of ISO 3166-1 alpha-2 country codes.
    * @return countries
    */
   @Valid 
-  @Schema(name = "countries", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "countries", description = "List of ISO 3166-1 alpha-2 country codes.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("countries")
   public List<Country> getCountries() {
     return countries;
@@ -110,11 +112,11 @@ public class BidFloorSpec {
   }
 
   /**
-   * Get creativeType
+   * Creative type for the bid floor request.
    * @return creativeType
    */
   @Valid 
-  @Schema(name = "creative_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "creative_type", description = "Creative type for the bid floor request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_type")
   public CreativeType getCreativeType() {
     return creativeType;
@@ -130,11 +132,11 @@ public class BidFloorSpec {
   }
 
   /**
-   * Get currency
+   * Currency for the bid floor value.
    * @return currency
    */
   @NotNull @Valid 
-  @Schema(name = "currency", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "currency", description = "Currency for the bid floor value.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("currency")
   public Currency getCurrency() {
     return currency;
@@ -144,23 +146,23 @@ public class BidFloorSpec {
     this.currency = currency;
   }
 
-  public BidFloorSpec objectiveType(ObjectiveType objectiveType) {
+  public BidFloorSpec objectiveType(BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
     return this;
   }
 
   /**
-   * Get objectiveType
+   * Campaign objective type.
    * @return objectiveType
    */
   @Valid 
-  @Schema(name = "objective_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "objective_type", description = "Campaign objective type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("objective_type")
-  public ObjectiveType getObjectiveType() {
+  public BidFloorObjectiveType getObjectiveType() {
     return objectiveType;
   }
 
-  public void setObjectiveType(ObjectiveType objectiveType) {
+  public void setObjectiveType(BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
   }
 
@@ -170,11 +172,11 @@ public class BidFloorSpec {
   }
 
   /**
-   * Get optimizationGoalMetadata
+   * Optimization goal metadata.
    * @return optimizationGoalMetadata
    */
   @Valid 
-  @Schema(name = "optimization_goal_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "optimization_goal_metadata", description = "Optimization goal metadata.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("optimization_goal_metadata")
   public OptimizationGoalMetadata getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
@@ -225,10 +227,7 @@ public class BidFloorSpec {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

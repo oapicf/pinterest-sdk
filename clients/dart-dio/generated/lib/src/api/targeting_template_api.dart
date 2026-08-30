@@ -9,11 +9,12 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/error.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
+import 'package:openapi/src/model/pinterest_lib_pagination_order.dart';
+import 'package:openapi/src/model/targeting_template.dart';
 import 'package:openapi/src/model/targeting_template_create.dart';
-import 'package:openapi/src/model/targeting_template_get_response_data.dart';
 import 'package:openapi/src/model/targeting_template_list200_response.dart';
-import 'package:openapi/src/model/targeting_template_update_request.dart';
+import 'package:openapi/src/model/targeting_template_update_request_read_or_update.dart';
 
 class TargetingTemplateApi {
 
@@ -24,11 +25,11 @@ class TargetingTemplateApi {
   const TargetingTemplateApi(this._dio, this._serializers);
 
   /// Create targeting templates
-  /// &lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
+  /// Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [targetingTemplateCreate] - targeting template creation entity
+  /// * [targetingTemplateCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -36,9 +37,9 @@ class TargetingTemplateApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [TargetingTemplateGetResponseData] as data
+  /// Returns a [Future] containing a [Response] with a [TargetingTemplate] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<TargetingTemplateGetResponseData>> targetingTemplateCreate({ 
+  Future<Response<TargetingTemplate>> targetingTemplateCreate({ 
     required String adAccountId,
     required TargetingTemplateCreate targetingTemplateCreate,
     CancelToken? cancelToken,
@@ -94,14 +95,14 @@ class TargetingTemplateApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    TargetingTemplateGetResponseData? _responseData;
+    TargetingTemplate? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(TargetingTemplateGetResponseData),
-      ) as TargetingTemplateGetResponseData;
+        specifiedType: const FullType(TargetingTemplate),
+      ) as TargetingTemplate;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -113,7 +114,7 @@ class TargetingTemplateApi {
       );
     }
 
-    return Response<TargetingTemplateGetResponseData>(
+    return Response<TargetingTemplate>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -126,15 +127,15 @@ class TargetingTemplateApi {
   }
 
   /// List targeting templates
-  /// Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
+  /// Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [order] - The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  /// * [includeSizing] - Include audience sizing in result or not
-  /// * [searchQuery] - Search keyword for targeting templates
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   /// * [bookmark] - Cursor used to fetch the next page of items
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  /// * [order] - The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  /// * [includeSizing] - Include audience sizing in result or not
+  /// * [searchQuery] - Search query. Can contain pin description keywords or comma-separated pin IDs.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -146,11 +147,11 @@ class TargetingTemplateApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<TargetingTemplateList200Response>> targetingTemplateList({ 
     required String adAccountId,
-    String? order,
+    String? bookmark,
+    int? pageSize = 25,
+    PinterestLibPaginationOrder? order,
     bool? includeSizing = false,
     String? searchQuery,
-    int? pageSize = 25,
-    String? bookmark,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -180,11 +181,11 @@ class TargetingTemplateApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (order != null) r'order': encodeQueryParameter(_serializers, order, const FullType(String)),
+      if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
+      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
+      if (order != null) r'order': encodeQueryParameter(_serializers, order, const FullType(PinterestLibPaginationOrder)),
       if (includeSizing != null) r'include_sizing': encodeQueryParameter(_serializers, includeSizing, const FullType(bool)),
       if (searchQuery != null) r'search_query': encodeQueryParameter(_serializers, searchQuery, const FullType(String)),
-      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-      if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -228,11 +229,11 @@ class TargetingTemplateApi {
   }
 
   /// Update targeting templates
-  /// &lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
+  /// Update the targeting template given advertiser ID and targeting template ID
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [targetingTemplateUpdateRequest] - Operation type and targeting template ID
+  /// * [targetingTemplateUpdateRequestReadOrUpdate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -244,7 +245,7 @@ class TargetingTemplateApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<void>> targetingTemplateUpdate({ 
     required String adAccountId,
-    required TargetingTemplateUpdateRequest targetingTemplateUpdateRequest,
+    required TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -274,8 +275,8 @@ class TargetingTemplateApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(TargetingTemplateUpdateRequest);
-      _bodyData = _serializers.serialize(targetingTemplateUpdateRequest, specifiedType: _type);
+      const _type = FullType(TargetingTemplateUpdateRequestReadOrUpdate);
+      _bodyData = _serializers.serialize(targetingTemplateUpdateRequestReadOrUpdate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

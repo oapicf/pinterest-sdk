@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const UserAccountType = require('../models/UserAccountType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -11,16 +12,11 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}account_type`,
-                label: `Type of account - [${labelPrefix}account_type]`,
-                type: 'string',
-                choices: [
-                    'PINNER',
-                    'BUSINESS',
-                ],
+                ...UserAccountType.fields(`${keyPrefix}account_type`, isInput),
             },
             {
                 key: `${keyPrefix}board_count`,
-                label: `User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. - [${labelPrefix}board_count]`,
+                label: `  User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. - [${labelPrefix}board_count]`,
                 type: 'integer',
             },
             {

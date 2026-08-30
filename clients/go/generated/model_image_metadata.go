@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ImageMetadata type satisfies the MappedNullable interface at compile time
@@ -22,17 +24,21 @@ var _ MappedNullable = &ImageMetadata{}
 type ImageMetadata struct {
 	Description NullableString `json:"description,omitempty"`
 	Images *ImageSize `json:"images,omitempty"`
-	ItemType *string `json:"item_type,omitempty"`
+	// Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
+	ItemType string `json:"item_type"`
 	Link NullableString `json:"link,omitempty"`
 	Title NullableString `json:"title,omitempty"`
 }
+
+type _ImageMetadata ImageMetadata
 
 // NewImageMetadata instantiates a new ImageMetadata object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImageMetadata() *ImageMetadata {
+func NewImageMetadata(itemType string) *ImageMetadata {
 	this := ImageMetadata{}
+	this.ItemType = itemType
 	return &this
 }
 
@@ -118,36 +124,28 @@ func (o *ImageMetadata) SetImages(v ImageSize) {
 	o.Images = &v
 }
 
-// GetItemType returns the ItemType field value if set, zero value otherwise.
+// GetItemType returns the ItemType field value
 func (o *ImageMetadata) GetItemType() string {
-	if o == nil || IsNil(o.ItemType) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ItemType
+
+	return o.ItemType
 }
 
-// GetItemTypeOk returns a tuple with the ItemType field value if set, nil otherwise
+// GetItemTypeOk returns a tuple with the ItemType field value
 // and a boolean to check if the value has been set.
 func (o *ImageMetadata) GetItemTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ItemType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ItemType, true
+	return &o.ItemType, true
 }
 
-// HasItemType returns a boolean if a field has been set.
-func (o *ImageMetadata) HasItemType() bool {
-	if o != nil && !IsNil(o.ItemType) {
-		return true
-	}
-
-	return false
-}
-
-// SetItemType gets a reference to the given string and assigns it to the ItemType field.
+// SetItemType sets field value
 func (o *ImageMetadata) SetItemType(v string) {
-	o.ItemType = &v
+	o.ItemType = v
 }
 
 // GetLink returns the Link field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -250,9 +248,7 @@ func (o ImageMetadata) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Images) {
 		toSerialize["images"] = o.Images
 	}
-	if !IsNil(o.ItemType) {
-		toSerialize["item_type"] = o.ItemType
-	}
+	toSerialize["item_type"] = o.ItemType
 	if o.Link.IsSet() {
 		toSerialize["link"] = o.Link.Get()
 	}
@@ -260,6 +256,43 @@ func (o ImageMetadata) ToMap() (map[string]interface{}, error) {
 		toSerialize["title"] = o.Title.Get()
 	}
 	return toSerialize, nil
+}
+
+func (o *ImageMetadata) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"item_type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varImageMetadata := _ImageMetadata{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varImageMetadata)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ImageMetadata(varImageMetadata)
+
+	return err
 }
 
 type NullableImageMetadata struct {

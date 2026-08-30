@@ -50,6 +50,7 @@ class CatalogsRetailProductGroupUpdateRequest {
   ///
   CatalogsLocale? locale;
 
+  /// Name of catalog product group
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -126,10 +127,6 @@ class CatalogsRetailProductGroupUpdateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsRetailProductGroupUpdateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsRetailProductGroupUpdateRequest[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -191,27 +188,28 @@ class CatalogsRetailProductGroupUpdateRequest {
 }
 
 /// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-class CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum._(this.value);
+enum CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum {
+  RETAIL._(r'RETAIL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const RETAIL = CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum._(r'RETAIL');
-
-  /// List of all possible values in this [enum][CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum].
-  static const values = <CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum>[
-    RETAIL,
-  ];
-
+  /// Returns the instance of [CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum? fromJson(dynamic value) => CatalogsRetailProductGroupUpdateRequestCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -233,9 +231,10 @@ class CatalogsRetailProductGroupUpdateRequestCatalogTypeEnumTypeTransformer {
 
   const CatalogsRetailProductGroupUpdateRequestCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum data) => data.value;
+  String encode(CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum.
+  /// Returns the instance of [CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -244,6 +243,9 @@ class CatalogsRetailProductGroupUpdateRequestCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'RETAIL': return CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum.RETAIL;
@@ -256,7 +258,7 @@ class CatalogsRetailProductGroupUpdateRequestCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsRetailProductGroupUpdateRequestCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsRetailProductGroupUpdateRequestCatalogTypeEnumTypeTransformer? _instance;
 }
 

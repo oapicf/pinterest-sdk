@@ -8,7 +8,7 @@ module.exports = {
             {
                 key: `${keyPrefix}items`,
                 label: `[${labelPrefix}items]`,
-                children: .fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
+                children: UpdatePartnerAssetsResult.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
             },
         ]
     },

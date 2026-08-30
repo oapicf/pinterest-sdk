@@ -159,57 +159,65 @@ class _$CatalogsReportDistributionStatsSerializer implements PrimitiveSerializer
         case r'catalog_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.catalogId = valueDes;
           break;
         case r'code':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.code = valueDes;
           break;
         case r'code_label':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.codeLabel = valueDes;
           break;
         case r'ineligible_for_ads':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.ineligibleForAds = valueDes;
           break;
         case r'ineligible_for_organic':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.ineligibleForOrganic = valueDes;
           break;
         case r'message':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.message = valueDes;
           break;
         case r'occurrences':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.occurrences = valueDes;
           break;
         case r'report_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsReportDistributionStatsReportTypeEnum),
-          ) as CatalogsReportDistributionStatsReportTypeEnum;
+            specifiedType: const FullType.nullable(CatalogsReportDistributionStatsReportTypeEnum),
+          ) as CatalogsReportDistributionStatsReportTypeEnum?;
+          if (valueDes == null) continue;
           result.reportType = valueDes;
           break;
         default:

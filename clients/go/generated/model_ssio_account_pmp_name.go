@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,7 +18,7 @@ import (
 // checks if the SSIOAccountPMPName type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SSIOAccountPMPName{}
 
-// SSIOAccountPMPName struct for SSIOAccountPMPName
+// SSIOAccountPMPName Pinterest marketing partner name.
 type SSIOAccountPMPName struct {
 	// Salesforce id for PMP
 	Id *string `json:"id,omitempty"`

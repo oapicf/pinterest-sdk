@@ -17,27 +17,27 @@ resourceTypes {
     properties {
         id {
           type =  string
-          description = "Subinterest ID."
+          description = ""
           optional = false
         }
         index {
           type =  
-          description = "Subinterest affinity index."
+          description = ""
           optional = false
         }
         key {
           type =  string
-          description = "Interest unique key (same as ID)."
+          description = ""
           optional = false
         }
         name {
           type =  string
-          description = "Subinterest name."
+          description = ""
           optional = false
         }
         ratio {
           type =  
-          description = "Subinterest&#39;s percent of category&#39;s total audience."
+          description = ""
           optional = false
         }
     }

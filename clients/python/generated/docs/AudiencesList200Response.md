@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[Audience]**](Audience.md) |  | 
+**items** | [**List[AdAccountsAudience]**](AdAccountsAudience.md) |  | 
 
 ## Example
 

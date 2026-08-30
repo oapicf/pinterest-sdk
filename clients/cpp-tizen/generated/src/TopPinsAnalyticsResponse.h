@@ -9,8 +9,9 @@
 
 
 #include <string>
-#include "TopPinsAnalyticsResponse_date_availability.h"
-#include "TopPinsAnalyticsResponse_pins_inner.h"
+#include "TopPinsAnalyticsResponseDateAvailability.h"
+#include "TopPinsAnalyticsResponsePinsItems.h"
+#include "TopPinsSortBy.h"
 #include <list>
 #include "Object.h"
 
@@ -50,30 +51,30 @@ public:
 
 	/*! \brief Get 
 	 */
-	TopPinsAnalyticsResponse_date_availability getDateAvailability();
+	TopPinsAnalyticsResponseDateAvailability getDateAvailability();
 
 	/*! \brief Set 
 	 */
-	void setDateAvailability(TopPinsAnalyticsResponse_date_availability  date_availability);
+	void setDateAvailability(TopPinsAnalyticsResponseDateAvailability  date_availability);
 	/*! \brief Get 
 	 */
-	std::list<TopPinsAnalyticsResponse_pins_inner> getPins();
+	std::list<TopPinsAnalyticsResponsePinsItems> getPins();
 
 	/*! \brief Set 
 	 */
-	void setPins(std::list <TopPinsAnalyticsResponse_pins_inner> pins);
+	void setPins(std::list <TopPinsAnalyticsResponsePinsItems> pins);
 	/*! \brief Get 
 	 */
-	std::string getSortBy();
+	TopPinsSortBy getSortBy();
 
 	/*! \brief Set 
 	 */
-	void setSortBy(std::string  sort_by);
+	void setSortBy(TopPinsSortBy  sort_by);
 
 private:
-	TopPinsAnalyticsResponse_date_availability date_availability;
-	std::list <TopPinsAnalyticsResponse_pins_inner>pins;
-	std::string sort_by;
+	TopPinsAnalyticsResponseDateAvailability date_availability;
+	std::list <TopPinsAnalyticsResponsePinsItems>pins;
+	TopPinsSortBy sort_by;
 	void __init();
 	void __cleanup();
 

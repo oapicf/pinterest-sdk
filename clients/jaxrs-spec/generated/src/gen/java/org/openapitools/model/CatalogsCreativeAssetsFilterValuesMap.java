@@ -1,11 +1,11 @@
 package org.openapitools.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.MediaType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,8 +21,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * A map of filter attributes to their available values.
  **/
 @ApiModel(description = "A map of filter attributes to their available values.")
-@JsonTypeName("catalogs_creative_assets_filter_values_map")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@JsonTypeName("CatalogsCreativeAssetsFilterValuesMap")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsFilterValuesMap   {
   private @Valid List<String> customLabel0 = new ArrayList<>();
   private @Valid List<String> customLabel1 = new ArrayList<>();
@@ -36,54 +36,7 @@ public class CatalogsCreativeAssetsFilterValuesMap   {
   private @Valid List<String> googleProductCategory4 = new ArrayList<>();
   private @Valid List<String> googleProductCategory5 = new ArrayList<>();
   private @Valid List<String> googleProductCategory6 = new ArrayList<>();
-  public enum MediaTypeEnum {
-
-    IMAGE(String.valueOf("IMAGE")), VIDEO(String.valueOf("VIDEO"));
-
-
-    private String value;
-
-    MediaTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static MediaTypeEnum fromString(String s) {
-        for (MediaTypeEnum b : MediaTypeEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static MediaTypeEnum fromValue(String value) {
-        for (MediaTypeEnum b : MediaTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private @Valid List<MediaTypeEnum> mediaType = new ArrayList<>();
+  private @Valid List<MediaType> mediaType = new ArrayList<>();
 
   public CatalogsCreativeAssetsFilterValuesMap() {
   }
@@ -510,7 +463,7 @@ public class CatalogsCreativeAssetsFilterValuesMap   {
   }
   /**
    **/
-  public CatalogsCreativeAssetsFilterValuesMap mediaType(List<MediaTypeEnum> mediaType) {
+  public CatalogsCreativeAssetsFilterValuesMap mediaType(List<MediaType> mediaType) {
     this.mediaType = mediaType;
     return this;
   }
@@ -518,16 +471,16 @@ public class CatalogsCreativeAssetsFilterValuesMap   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media_type")
-  public List<MediaTypeEnum> getMediaType() {
+  public List<MediaType> getMediaType() {
     return mediaType;
   }
 
   @JsonProperty("media_type")
-  public void setMediaType(List<MediaTypeEnum> mediaType) {
+  public void setMediaType(List<MediaType> mediaType) {
     this.mediaType = mediaType;
   }
 
-  public CatalogsCreativeAssetsFilterValuesMap addMediaTypeItem(MediaTypeEnum mediaTypeItem) {
+  public CatalogsCreativeAssetsFilterValuesMap addMediaTypeItem(MediaType mediaTypeItem) {
     if (this.mediaType == null) {
       this.mediaType = new ArrayList<>();
     }
@@ -536,7 +489,7 @@ public class CatalogsCreativeAssetsFilterValuesMap   {
     return this;
   }
 
-  public CatalogsCreativeAssetsFilterValuesMap removeMediaTypeItem(MediaTypeEnum mediaTypeItem) {
+  public CatalogsCreativeAssetsFilterValuesMap removeMediaTypeItem(MediaType mediaTypeItem) {
     if (mediaTypeItem != null && this.mediaType != null) {
       this.mediaType.remove(mediaTypeItem);
     }
@@ -600,12 +553,8 @@ public class CatalogsCreativeAssetsFilterValuesMap   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

@@ -9,17 +9,17 @@
 
 (def asset-group-binding-data
   {
-   (ds/opt :ad_accounts_ids) (s/coll-of string?)
-   (ds/opt :asset_group_description) string?
-   (ds/opt :asset_group_name) string?
-   (ds/opt :asset_group_types) (s/coll-of string?)
-   (ds/opt :catalogs_ids) (s/coll-of string?)
-   (ds/opt :created_by) business-access-user-summary-spec
-   (ds/opt :created_time) int?
-   (ds/opt :id) string?
-   (ds/opt :owner) business-access-user-summary-spec
-   (ds/opt :profiles_ids) (s/coll-of string?)
-   (ds/opt :updated_time) int?
+   (ds/req :ad_accounts_ids) (s/coll-of string?)
+   (ds/req :asset_group_description) string?
+   (ds/req :asset_group_name) string?
+   (ds/req :asset_group_types) (s/coll-of string?)
+   (ds/req :catalogs_ids) (s/coll-of string?)
+   (ds/req :created_by) business-access-user-summary-spec
+   (ds/req :created_time) int?
+   (ds/req :id) string?
+   (ds/req :owner) business-access-user-summary-spec
+   (ds/req :profiles_ids) (s/coll-of string?)
+   (ds/req :updated_time) int?
    })
 
 (def asset-group-binding-spec

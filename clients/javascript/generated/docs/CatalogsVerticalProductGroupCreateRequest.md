@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
+**catalogId** | **String** | Catalog ID pertaining to the product group. | 
 **catalogType** | **String** |  | 
 **country** | [**Country**](Country.md) |  | [optional] 
 **description** | **String** |  | [optional] 

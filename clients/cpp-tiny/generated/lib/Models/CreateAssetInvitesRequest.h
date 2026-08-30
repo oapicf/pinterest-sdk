@@ -53,7 +53,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setInvites(std::list <CreateAssetInvitesRequestItem> invites);
+	void setInvites(std::list<CreateAssetInvitesRequestItem> invites);
 
 
     private:

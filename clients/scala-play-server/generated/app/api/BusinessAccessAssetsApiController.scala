@@ -4,30 +4,32 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
+import model.AssetGroupDeletion
+import model.AssetGroupDeletionDelete
+import model.AssetGroupInput
+import model.AssetGroupInputCreate
+import model.AssetGroupModification
+import model.AssetGroupModificationReadOrUpdate
+import model.AssetPermissionType
+import model.AssetSearchBy
+import model.AssetSortBy
 import model.BusinessAssetMembersGet200Response
-import model.BusinessAssetPartnersGet200Response
 import model.BusinessAssetsGet200Response
-import model.BusinessMemberAssetsGet200Response
-import model.BusinessMembersAssetAccessDeleteRequest
+import model.BusinessMemberAssetsGetResponse
+import model.BusinessMembersAssetAccessDeleteBody
 import model.BusinessPartnerAssetAccessGet200Response
-import model.CreateAssetGroupBody
-import model.CreateAssetGroupResponse
-import model.DeleteAssetGroupBody
-import model.DeleteAssetGroupResponse
 import model.DeleteMemberAccessResultsResponseArray
 import model.DeletePartnerAssetAccessBody
-import model.DeletePartnerAssetsResultsResponseArray
+import model.DeletePartnerAssetAccessResultsResponseArray
 import model.Error
-import model.PartnerType
+import model.NonDraftEntityStatus
 import model.PermissionsWithOwner
-import model.UpdateAssetGroupBody
-import model.UpdateAssetGroupResponse
 import model.UpdateMemberAssetAccessBody
 import model.UpdateMemberAssetsResultsResponseArray
 import model.UpdatePartnerAssetAccessBody
 import model.UpdatePartnerAssetsResultsResponseArray
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class BusinessAccessAssetsApiController @Inject()(cc: ControllerComponents, api: BusinessAccessAssetsApi) extends AbstractController(cc) {
   /**
@@ -35,11 +37,11 @@ class BusinessAccessAssetsApiController @Inject()(cc: ControllerComponents, api:
     * @param businessId Unique identifier of the requesting business.
     */
   def assetGroupCreate(businessId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): CreateAssetGroupResponse = {
-      val createAssetGroupBody = request.body.asJson.map(_.as[CreateAssetGroupBody]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "createAssetGroupBody")
+    def executeApi(): AssetGroupInput = {
+      val assetGroupInputCreate = request.body.asJson.map(_.as[AssetGroupInputCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "assetGroupInputCreate")
       }
-      api.assetGroupCreate(businessId, createAssetGroupBody)
+      api.assetGroupCreate(businessId, assetGroupInputCreate)
     }
 
     val result = executeApi()
@@ -52,11 +54,11 @@ class BusinessAccessAssetsApiController @Inject()(cc: ControllerComponents, api:
     * @param businessId Unique identifier of the requesting business.
     */
   def assetGroupDelete(businessId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): DeleteAssetGroupResponse = {
-      val deleteAssetGroupBody = request.body.asJson.map(_.as[DeleteAssetGroupBody]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "deleteAssetGroupBody")
+    def executeApi(): AssetGroupDeletion = {
+      val assetGroupDeletionDelete = request.body.asJson.map(_.as[AssetGroupDeletionDelete]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "assetGroupDeletionDelete")
       }
-      api.assetGroupDelete(businessId, deleteAssetGroupBody)
+      api.assetGroupDelete(businessId, assetGroupDeletionDelete)
     }
 
     val result = executeApi()
@@ -69,11 +71,11 @@ class BusinessAccessAssetsApiController @Inject()(cc: ControllerComponents, api:
     * @param businessId Unique identifier of the requesting business.
     */
   def assetGroupUpdate(businessId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): UpdateAssetGroupResponse = {
-      val updateAssetGroupBody = request.body.asJson.map(_.as[UpdateAssetGroupBody]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "updateAssetGroupBody")
+    def executeApi(): AssetGroupModification = {
+      val assetGroupModificationReadOrUpdate = request.body.asJson.map(_.as[AssetGroupModificationReadOrUpdate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "assetGroupModificationReadOrUpdate")
       }
-      api.assetGroupUpdate(businessId, updateAssetGroupBody)
+      api.assetGroupUpdate(businessId, assetGroupModificationReadOrUpdate)
     }
 
     val result = executeApi()
@@ -82,12 +84,15 @@ class BusinessAccessAssetsApiController @Inject()(cc: ControllerComponents, api:
   }
 
   /**
-    * GET /v5/businesses/:businessId/assets/:assetId/members?fetchSystemUsers=[value]&bookmark=[value]&pageSize=[value]&startIndex=[value]
+    * GET /v5/businesses/:businessId/assets/:assetId/members?startIndex=[value]&fetchSystemUsers=[value]&bookmark=[value]&pageSize=[value]
     * @param businessId Unique identifier of the requesting business.
     * @param assetId Unique identifier of a business asset.
     */
   def businessAssetMembersGet(businessId: String, assetId: String): Action[AnyContent] = Action { request =>
     def executeApi(): BusinessAssetMembersGet200Response = {
+      val startIndex = request.getQueryString("start_index")
+        .map(value => value.toInt)
+        
       val fetchSystemUsers = request.getQueryString("fetch_system_users")
         .map(value => value.toBoolean)
         
@@ -96,10 +101,7 @@ class BusinessAccessAssetsApiController @Inject()(cc: ControllerComponents, api:
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val startIndex = request.getQueryString("start_index")
-        .map(value => value.toInt)
-        
-      api.businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex)
+      api.businessAssetMembersGet(businessId, assetId, startIndex, fetchSystemUsers, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -113,7 +115,7 @@ class BusinessAccessAssetsApiController @Inject()(cc: ControllerComponents, api:
     * @param assetId Unique identifier of a business asset.
     */
   def businessAssetPartnersGet(businessId: String, assetId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): BusinessAssetPartnersGet200Response = {
+    def executeApi(): BusinessAssetMembersGet200Response = {
       val startIndex = request.getQueryString("start_index")
         .map(value => value.toInt)
         
@@ -163,23 +165,41 @@ class BusinessAccessAssetsApiController @Inject()(cc: ControllerComponents, api:
   }
 
   /**
-    * GET /v5/businesses/:businessId/members/:memberId/assets?assetType=[value]&startIndex=[value]&bookmark=[value]&pageSize=[value]
+    * GET /v5/businesses/:businessId/members/:memberId/assets?assetType=[value]&startIndex=[value]&sortBy=[value]&sortAscending=[value]&searchBy=[value]&searchValue=[value]&assetPermissionType=[value]&adAccountStatuses=[value]&bookmark=[value]&pageSize=[value]
     * @param businessId Unique identifier of the requesting business.
     * @param memberId The member id to fetch assets for.
     */
   def businessMemberAssetsGet(businessId: String, memberId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): BusinessMemberAssetsGet200Response = {
+    def executeApi(): BusinessMemberAssetsGetResponse = {
       val assetType = request.getQueryString("asset_type")
         
       val startIndex = request.getQueryString("start_index")
         .map(value => value.toInt)
+        
+      val sortBy = request.getQueryString("sort_by")
+        .map(value => )
+        
+      val sortAscending = request.getQueryString("sort_ascending")
+        .map(value => value.toBoolean)
+        
+      val searchBy = request.getQueryString("search_by")
+        .map(value => )
+        
+      val searchValue = request.getQueryString("search_value")
+        
+      val assetPermissionType = request.getQueryString("asset_permission_type")
+        .map(value => )
+        
+      val adAccountStatuses = request.queryString.get("ad_account_statuses")
+        .map(_.toList)
+        .map(_.map(value => )
         
       val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      api.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, bookmark, pageSize)
+      api.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, assetPermissionType, adAccountStatuses, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -193,10 +213,10 @@ class BusinessAccessAssetsApiController @Inject()(cc: ControllerComponents, api:
     */
   def businessMembersAssetAccessDelete(businessId: String): Action[AnyContent] = Action { request =>
     def executeApi(): DeleteMemberAccessResultsResponseArray = {
-      val businessMembersAssetAccessDeleteRequest = request.body.asJson.map(_.as[BusinessMembersAssetAccessDeleteRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "businessMembersAssetAccessDeleteRequest")
+      val businessMembersAssetAccessDeleteBody = request.body.asJson.map(_.as[BusinessMembersAssetAccessDeleteBody]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "businessMembersAssetAccessDeleteBody")
       }
-      api.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest)
+      api.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteBody)
     }
 
     val result = executeApi()
@@ -222,26 +242,36 @@ class BusinessAccessAssetsApiController @Inject()(cc: ControllerComponents, api:
   }
 
   /**
-    * GET /v5/businesses/:businessId/partners/:partnerId/assets?partnerType=[value]&assetType=[value]&startIndex=[value]&pageSize=[value]&bookmark=[value]
+    * GET /v5/businesses/:businessId/partners/:partnerId/assets?partnerType=[value]&assetType=[value]&startIndex=[value]&sortBy=[value]&sortAscending=[value]&searchBy=[value]&searchValue=[value]&bookmark=[value]&pageSize=[value]
     * @param businessId Unique identifier of the requesting business.
     * @param partnerId The partner id to be bound to the Business
     */
   def businessPartnerAssetAccessGet(businessId: String, partnerId: String): Action[AnyContent] = Action { request =>
     def executeApi(): BusinessPartnerAssetAccessGet200Response = {
       val partnerType = request.getQueryString("partner_type")
-        .map(value => )
         
       val assetType = request.getQueryString("asset_type")
         
       val startIndex = request.getQueryString("start_index")
         .map(value => value.toInt)
         
-      val pageSize = request.getQueryString("page_size")
-        .map(value => value.toInt)
+      val sortBy = request.getQueryString("sort_by")
+        .map(value => )
+        
+      val sortAscending = request.getQueryString("sort_ascending")
+        .map(value => value.toBoolean)
+        
+      val searchBy = request.getQueryString("search_by")
+        .map(value => )
+        
+      val searchValue = request.getQueryString("search_value")
         
       val bookmark = request.getQueryString("bookmark")
         
-      api.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark)
+      val pageSize = request.getQueryString("page_size")
+        .map(value => value.toInt)
+        
+      api.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -254,7 +284,7 @@ class BusinessAccessAssetsApiController @Inject()(cc: ControllerComponents, api:
     * @param businessId Unique identifier of the requesting business.
     */
   def deletePartnerAssetAccessHandlerImpl(businessId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): DeletePartnerAssetsResultsResponseArray = {
+    def executeApi(): DeletePartnerAssetAccessResultsResponseArray = {
       val deletePartnerAssetAccessBody = request.body.asJson.map(_.as[DeletePartnerAssetAccessBody]).getOrElse {
         throw new OpenApiExceptions.MissingRequiredParameterException("body", "deletePartnerAssetAccessBody")
       }

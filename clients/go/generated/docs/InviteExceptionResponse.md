@@ -138,16 +138,6 @@ SetUsersOrPartnerIds sets UsersOrPartnerIds field to given value.
 
 HasUsersOrPartnerIds returns a boolean if a field has been set.
 
-### SetUsersOrPartnerIdsNil
-
-`func (o *InviteExceptionResponse) SetUsersOrPartnerIdsNil(b bool)`
-
- SetUsersOrPartnerIdsNil sets the value for UsersOrPartnerIds to be an explicit nil
-
-### UnsetUsersOrPartnerIds
-`func (o *InviteExceptionResponse) UnsetUsersOrPartnerIds()`
-
-UnsetUsersOrPartnerIds ensures that no value is present for UsersOrPartnerIds, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

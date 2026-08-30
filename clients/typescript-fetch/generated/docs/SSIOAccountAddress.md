@@ -1,6 +1,7 @@
 
 # SSIOAccountAddress
 
+Salesforce address information.
 
 ## Properties
 

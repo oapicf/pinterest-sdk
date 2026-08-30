@@ -11,37 +11,33 @@
 part of openapi.api;
 
 
-class ConversionAttributionWindowDays {
-  /// Instantiate a new enum with the provided [value].
-  const ConversionAttributionWindowDays._(this.value);
+enum ConversionAttributionWindowDays {
+  n0._('0'),
+  n1._('1'),
+  n7._('7'),
+  n14._('14'),
+  n30._('30'),
+  n60._('60'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const ConversionAttributionWindowDays._(this._value);
 
   /// The underlying value of this enum member.
-  final int value;
+  final num _value;
 
   @override
-  String toString() => value.toString();
+  String toString() => _value.toString();
 
-  int toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  num toJson() => _value;
 
-  static const number0 = ConversionAttributionWindowDays._(0);
-  static const number1 = ConversionAttributionWindowDays._(1);
-  static const number7 = ConversionAttributionWindowDays._(7);
-  static const number14 = ConversionAttributionWindowDays._(14);
-  static const number30 = ConversionAttributionWindowDays._(30);
-  static const number60 = ConversionAttributionWindowDays._(60);
-
-  /// List of all possible values in this [enum][ConversionAttributionWindowDays].
-  static const values = <ConversionAttributionWindowDays>[
-    number0,
-    number1,
-    number7,
-    number14,
-    number30,
-    number60,
-  ];
-
+  /// Returns the instance of [ConversionAttributionWindowDays] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static ConversionAttributionWindowDays? fromJson(dynamic value) => ConversionAttributionWindowDaysTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [ConversionAttributionWindowDays]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<ConversionAttributionWindowDays> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ConversionAttributionWindowDays>[];
     if (json is List && json.isNotEmpty) {
@@ -56,16 +52,18 @@ class ConversionAttributionWindowDays {
   }
 }
 
-/// Transformation class that can [encode] an instance of [ConversionAttributionWindowDays] to int,
+/// Transformation class that can [encode] an instance of [ConversionAttributionWindowDays] to num,
 /// and [decode] dynamic data back to [ConversionAttributionWindowDays].
 class ConversionAttributionWindowDaysTypeTransformer {
   factory ConversionAttributionWindowDaysTypeTransformer() => _instance ??= const ConversionAttributionWindowDaysTypeTransformer._();
 
   const ConversionAttributionWindowDaysTypeTransformer._();
 
-  int encode(ConversionAttributionWindowDays data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  num encode(ConversionAttributionWindowDays data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a ConversionAttributionWindowDays.
+  /// Returns the instance of [ConversionAttributionWindowDays] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -74,14 +72,17 @@ class ConversionAttributionWindowDaysTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   ConversionAttributionWindowDays? decode(dynamic data, {bool allowNull = true}) {
+    if (data is ConversionAttributionWindowDays) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
-        case 0: return ConversionAttributionWindowDays.number0;
-        case 1: return ConversionAttributionWindowDays.number1;
-        case 7: return ConversionAttributionWindowDays.number7;
-        case 14: return ConversionAttributionWindowDays.number14;
-        case 30: return ConversionAttributionWindowDays.number30;
-        case 60: return ConversionAttributionWindowDays.number60;
+        case '0': return ConversionAttributionWindowDays.n0;
+        case '1': return ConversionAttributionWindowDays.n1;
+        case '7': return ConversionAttributionWindowDays.n7;
+        case '14': return ConversionAttributionWindowDays.n14;
+        case '30': return ConversionAttributionWindowDays.n30;
+        case '60': return ConversionAttributionWindowDays.n60;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -91,7 +92,7 @@ class ConversionAttributionWindowDaysTypeTransformer {
     return null;
   }
 
-  /// Singleton [ConversionAttributionWindowDaysTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static ConversionAttributionWindowDaysTypeTransformer? _instance;
 }
 

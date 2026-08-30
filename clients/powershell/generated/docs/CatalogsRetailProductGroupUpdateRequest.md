@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Description** | **String** |  | [optional] 
 **Filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | [optional] 
 **Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
-**Name** | **String** |  | [optional] 
+**Name** | **String** | Name of catalog product group | [optional] 
 
 ## Examples
 
@@ -19,7 +19,7 @@ $CatalogsRetailProductGroupUpdateRequest = Initialize-PSOpenAPIToolsCatalogsReta
  -Description null `
  -Filters null `
  -Locale null `
- -Name null
+ -Name Most Popular
 ```
 
 - Convert the resource to JSON

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **google_product_category_4** | **List[str]** |  | [optional] 
 **google_product_category_5** | **List[str]** |  | [optional] 
 **google_product_category_6** | **List[str]** |  | [optional] 
-**media_type** | **List[str]** |  | [optional] 
+**media_type** | [**List[MediaType]**](MediaType.md) |  | [optional] 
 
 ## Example
 

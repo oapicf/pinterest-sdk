@@ -13,31 +13,27 @@ part of openapi.api;
 class CatalogsHotelFeed {
   /// Returns a new [CatalogsHotelFeed] instance.
   CatalogsHotelFeed({
-    required this.createdAt,
-    required this.id,
-    required this.updatedAt,
     required this.catalogId,
     required this.catalogType,
-    required this.credentials,
-    required this.defaultCurrency,
+    required this.createdAt,
+    this.credentials,
+    this.defaultCurrency,
     required this.defaultLocale,
     required this.format,
+    required this.id,
     required this.location,
     required this.name,
-    required this.preferredProcessingSchedule,
+    this.preferredProcessingSchedule,
     required this.status,
+    required this.updatedAt,
   });
-
-  DateTime createdAt;
-
-  String id;
-
-  DateTime updatedAt;
 
   /// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
   String? catalogId;
 
-  CatalogsType catalogType;
+  CatalogsHotelFeedCatalogTypeEnum catalogType;
+
+  DateTime createdAt;
 
   CatalogsFeedCredentials? credentials;
 
@@ -47,6 +43,9 @@ class CatalogsHotelFeed {
   String defaultLocale;
 
   CatalogsFormat format;
+
+  /// ID of the feed entity.
+  String id;
 
   /// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
   String location;
@@ -58,53 +57,53 @@ class CatalogsHotelFeed {
 
   CatalogsStatus status;
 
+  DateTime updatedAt;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CatalogsHotelFeed &&
-    other.createdAt == createdAt &&
-    other.id == id &&
-    other.updatedAt == updatedAt &&
     other.catalogId == catalogId &&
     other.catalogType == catalogType &&
+    other.createdAt == createdAt &&
     other.credentials == credentials &&
     other.defaultCurrency == defaultCurrency &&
     other.defaultLocale == defaultLocale &&
     other.format == format &&
+    other.id == id &&
     other.location == location &&
     other.name == name &&
     other.preferredProcessingSchedule == preferredProcessingSchedule &&
-    other.status == status;
+    other.status == status &&
+    other.updatedAt == updatedAt;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (createdAt.hashCode) +
-    (id.hashCode) +
-    (updatedAt.hashCode) +
     (catalogId == null ? 0 : catalogId!.hashCode) +
     (catalogType.hashCode) +
+    (createdAt.hashCode) +
     (credentials == null ? 0 : credentials!.hashCode) +
     (defaultCurrency == null ? 0 : defaultCurrency!.hashCode) +
     (defaultLocale.hashCode) +
     (format.hashCode) +
+    (id.hashCode) +
     (location.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (preferredProcessingSchedule == null ? 0 : preferredProcessingSchedule!.hashCode) +
-    (status.hashCode);
+    (status.hashCode) +
+    (updatedAt.hashCode);
 
   @override
-  String toString() => 'CatalogsHotelFeed[createdAt=$createdAt, id=$id, updatedAt=$updatedAt, catalogId=$catalogId, catalogType=$catalogType, credentials=$credentials, defaultCurrency=$defaultCurrency, defaultLocale=$defaultLocale, format=$format, location=$location, name=$name, preferredProcessingSchedule=$preferredProcessingSchedule, status=$status]';
+  String toString() => 'CatalogsHotelFeed[catalogId=$catalogId, catalogType=$catalogType, createdAt=$createdAt, credentials=$credentials, defaultCurrency=$defaultCurrency, defaultLocale=$defaultLocale, format=$format, id=$id, location=$location, name=$name, preferredProcessingSchedule=$preferredProcessingSchedule, status=$status, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
-      json[r'id'] = this.id;
-      json[r'updated_at'] = this.updatedAt.toUtc().toIso8601String();
     if (this.catalogId != null) {
       json[r'catalog_id'] = this.catalogId;
     } else {
       json[r'catalog_id'] = null;
     }
       json[r'catalog_type'] = this.catalogType;
+      json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
     if (this.credentials != null) {
       json[r'credentials'] = this.credentials;
     } else {
@@ -117,6 +116,7 @@ class CatalogsHotelFeed {
     }
       json[r'default_locale'] = this.defaultLocale;
       json[r'format'] = this.format;
+      json[r'id'] = this.id;
       json[r'location'] = this.location;
     if (this.name != null) {
       json[r'name'] = this.name;
@@ -129,6 +129,7 @@ class CatalogsHotelFeed {
       json[r'preferred_processing_schedule'] = null;
     }
       json[r'status'] = this.status;
+      json[r'updated_at'] = this.updatedAt.toUtc().toIso8601String();
     return json;
   }
 
@@ -143,27 +144,41 @@ class CatalogsHotelFeed {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsHotelFeed[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsHotelFeed[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_id'), 'Required key "CatalogsHotelFeed[catalog_id]" is missing from JSON.');
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsHotelFeed[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsHotelFeed[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'created_at'), 'Required key "CatalogsHotelFeed[created_at]" is missing from JSON.');
+        assert(json[r'created_at'] != null, 'Required key "CatalogsHotelFeed[created_at]" has a null value in JSON.');
+        assert(json.containsKey(r'default_locale'), 'Required key "CatalogsHotelFeed[default_locale]" is missing from JSON.');
+        assert(json[r'default_locale'] != null, 'Required key "CatalogsHotelFeed[default_locale]" has a null value in JSON.');
+        assert(json.containsKey(r'format'), 'Required key "CatalogsHotelFeed[format]" is missing from JSON.');
+        assert(json[r'format'] != null, 'Required key "CatalogsHotelFeed[format]" has a null value in JSON.');
+        assert(json.containsKey(r'id'), 'Required key "CatalogsHotelFeed[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "CatalogsHotelFeed[id]" has a null value in JSON.');
+        assert(json.containsKey(r'location'), 'Required key "CatalogsHotelFeed[location]" is missing from JSON.');
+        assert(json[r'location'] != null, 'Required key "CatalogsHotelFeed[location]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "CatalogsHotelFeed[name]" is missing from JSON.');
+        assert(json.containsKey(r'status'), 'Required key "CatalogsHotelFeed[status]" is missing from JSON.');
+        assert(json[r'status'] != null, 'Required key "CatalogsHotelFeed[status]" has a null value in JSON.');
+        assert(json.containsKey(r'updated_at'), 'Required key "CatalogsHotelFeed[updated_at]" is missing from JSON.');
+        assert(json[r'updated_at'] != null, 'Required key "CatalogsHotelFeed[updated_at]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsHotelFeed(
-        createdAt: mapDateTime(json, r'created_at', r'')!,
-        id: mapValueOfType<String>(json, r'id')!,
-        updatedAt: mapDateTime(json, r'updated_at', r'')!,
         catalogId: mapValueOfType<String>(json, r'catalog_id'),
-        catalogType: CatalogsType.fromJson(json[r'catalog_type'])!,
+        catalogType: CatalogsHotelFeedCatalogTypeEnum.fromJson(json[r'catalog_type'])!,
+        createdAt: mapDateTime(json, r'created_at', r'')!,
         credentials: CatalogsFeedCredentials.fromJson(json[r'credentials']),
         defaultCurrency: NullableCurrency.fromJson(json[r'default_currency']),
         defaultLocale: mapValueOfType<String>(json, r'default_locale')!,
         format: CatalogsFormat.fromJson(json[r'format'])!,
+        id: mapValueOfType<String>(json, r'id')!,
         location: mapValueOfType<String>(json, r'location')!,
         name: mapValueOfType<String>(json, r'name'),
         preferredProcessingSchedule: CatalogsFeedProcessingSchedule.fromJson(json[r'preferred_processing_schedule']),
         status: CatalogsStatus.fromJson(json[r'status'])!,
+        updatedAt: mapDateTime(json, r'updated_at', r'')!,
       );
     }
     return null;
@@ -211,19 +226,92 @@ class CatalogsHotelFeed {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'created_at',
-    'id',
-    'updated_at',
     'catalog_id',
     'catalog_type',
-    'credentials',
-    'default_currency',
+    'created_at',
     'default_locale',
     'format',
+    'id',
     'location',
     'name',
-    'preferred_processing_schedule',
     'status',
+    'updated_at',
   };
 }
+
+
+enum CatalogsHotelFeedCatalogTypeEnum {
+  HOTEL._(r'HOTEL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsHotelFeedCatalogTypeEnum._(this._value);
+
+  /// The underlying value of this enum member.
+  final String _value;
+
+  @override
+  String toString() => _value;
+
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
+
+  /// Returns the instance of [CatalogsHotelFeedCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
+  static CatalogsHotelFeedCatalogTypeEnum? fromJson(dynamic value) => CatalogsHotelFeedCatalogTypeEnumTypeTransformer().decode(value);
+
+  /// Returns a [List] containing instances of [CatalogsHotelFeedCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
+  static List<CatalogsHotelFeedCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CatalogsHotelFeedCatalogTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CatalogsHotelFeedCatalogTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CatalogsHotelFeedCatalogTypeEnum] to String,
+/// and [decode] dynamic data back to [CatalogsHotelFeedCatalogTypeEnum].
+class CatalogsHotelFeedCatalogTypeEnumTypeTransformer {
+  factory CatalogsHotelFeedCatalogTypeEnumTypeTransformer() => _instance ??= const CatalogsHotelFeedCatalogTypeEnumTypeTransformer._();
+
+  const CatalogsHotelFeedCatalogTypeEnumTypeTransformer._();
+
+  String encode(CatalogsHotelFeedCatalogTypeEnum data) => data._value;
+
+  /// Returns the instance of [CatalogsHotelFeedCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CatalogsHotelFeedCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsHotelFeedCatalogTypeEnum) {
+      return data;
+    }
+    if (data != null) {
+      switch (data) {
+        case r'HOTEL': return CatalogsHotelFeedCatalogTypeEnum.HOTEL;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// The singleton instance of this transformer.
+  static CatalogsHotelFeedCatalogTypeEnumTypeTransformer? _instance;
+}
+
 

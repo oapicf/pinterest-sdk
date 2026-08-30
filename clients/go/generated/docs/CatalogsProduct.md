@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CatalogType** | **string** |  | 
 **Metadata** | [**CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  | 
 **Pin** | [**Pin**](Pin.md) |  | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsProduct
 
-`func NewCatalogsProduct(catalogType CatalogsType, metadata CatalogsCreativeAssetsProductMetadata, pin Pin, ) *CatalogsProduct`
+`func NewCatalogsProduct(catalogType string, metadata CatalogsCreativeAssetsProductMetadata, pin Pin, ) *CatalogsProduct`
 
 NewCatalogsProduct instantiates a new CatalogsProduct object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCatalogType
 
-`func (o *CatalogsProduct) GetCatalogType() CatalogsType`
+`func (o *CatalogsProduct) GetCatalogType() string`
 
 GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
 ### GetCatalogTypeOk
 
-`func (o *CatalogsProduct) GetCatalogTypeOk() (*CatalogsType, bool)`
+`func (o *CatalogsProduct) GetCatalogTypeOk() (*string, bool)`
 
 GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogType
 
-`func (o *CatalogsProduct) SetCatalogType(v CatalogsType)`
+`func (o *CatalogsProduct) SetCatalogType(v string)`
 
 SetCatalogType sets CatalogType field to given value.
 

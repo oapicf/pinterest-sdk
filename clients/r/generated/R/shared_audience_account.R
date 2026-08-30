@@ -9,7 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field account_id Account ID (ad account or business ID). character
 #' @field account_name Account name. character
-#' @field account_type account type character
+#' @field account_type account type \link{AudienceAccountType}
 #' @field shared_on_timestamp Epoch timestamp in seconds for the shared audience event integer
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -44,12 +44,10 @@ SharedAudienceAccount <- R6::R6Class(
         self$`account_name` <- `account_name`
       }
       if (!missing(`account_type`)) {
-        if (!(`account_type` %in% c("AD_ACCOUNT", "BUSINESS_ACCOUNT"))) {
-          stop(paste("Error! \"", `account_type`, "\" cannot be assigned to `account_type`. Must be \"AD_ACCOUNT\", \"BUSINESS_ACCOUNT\".", sep = ""))
+        if (!(`account_type` %in% c())) {
+          stop(paste("Error! \"", `account_type`, "\" cannot be assigned to `account_type`. Must be .", sep = ""))
         }
-        if (!(is.character(`account_type`) && length(`account_type`) == 1)) {
-          stop(paste("Error! Invalid data for `account_type`. Must be a string:", `account_type`))
-        }
+        stopifnot(R6::is.R6(`account_type`))
         self$`account_type` <- `account_type`
       }
       if (!missing(`shared_on_timestamp`)) {
@@ -101,13 +99,36 @@ SharedAudienceAccount <- R6::R6Class(
       }
       if (!is.null(self$`account_type`)) {
         SharedAudienceAccountObject[["account_type"]] <-
-          self$`account_type`
+          self$extractSimpleType(self$`account_type`)
       }
       if (!is.null(self$`shared_on_timestamp`)) {
         SharedAudienceAccountObject[["shared_on_timestamp"]] <-
           self$`shared_on_timestamp`
       }
       return(SharedAudienceAccountObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -124,10 +145,9 @@ SharedAudienceAccount <- R6::R6Class(
         self$`account_name` <- this_object$`account_name`
       }
       if (!is.null(this_object$`account_type`)) {
-        if (!is.null(this_object$`account_type`) && !(this_object$`account_type` %in% c("AD_ACCOUNT", "BUSINESS_ACCOUNT"))) {
-          stop(paste("Error! \"", this_object$`account_type`, "\" cannot be assigned to `account_type`. Must be \"AD_ACCOUNT\", \"BUSINESS_ACCOUNT\".", sep = ""))
-        }
-        self$`account_type` <- this_object$`account_type`
+        `account_type_object` <- AudienceAccountType$new()
+        `account_type_object`$fromJSON(jsonlite::toJSON(this_object$`account_type`, auto_unbox = TRUE, digits = NA))
+        self$`account_type` <- `account_type_object`
       }
       if (!is.null(this_object$`shared_on_timestamp`)) {
         self$`shared_on_timestamp` <- this_object$`shared_on_timestamp`
@@ -155,10 +175,7 @@ SharedAudienceAccount <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`account_id` <- this_object$`account_id`
       self$`account_name` <- this_object$`account_name`
-      if (!is.null(this_object$`account_type`) && !(this_object$`account_type` %in% c("AD_ACCOUNT", "BUSINESS_ACCOUNT"))) {
-        stop(paste("Error! \"", this_object$`account_type`, "\" cannot be assigned to `account_type`. Must be \"AD_ACCOUNT\", \"BUSINESS_ACCOUNT\".", sep = ""))
-      }
-      self$`account_type` <- this_object$`account_type`
+      self$`account_type` <- AudienceAccountType$new()$fromJSON(jsonlite::toJSON(this_object$`account_type`, auto_unbox = TRUE, digits = NA))
       self$`shared_on_timestamp` <- this_object$`shared_on_timestamp`
       self
     },
@@ -187,9 +204,7 @@ SharedAudienceAccount <- R6::R6Class(
       }
       # check the required field `account_type`
       if (!is.null(input_json$`account_type`)) {
-        if (!(is.character(input_json$`account_type`) && length(input_json$`account_type`) == 1)) {
-          stop(paste("Error! Invalid data for `account_type`. Must be a string:", input_json$`account_type`))
-        }
+        stopifnot(R6::is.R6(input_json$`account_type`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for SharedAudienceAccount: the required field `account_type` is missing."))
       }

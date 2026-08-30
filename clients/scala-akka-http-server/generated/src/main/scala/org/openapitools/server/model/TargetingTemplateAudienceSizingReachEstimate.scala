@@ -2,9 +2,9 @@ package org.openapitools.server.model
 
 
 /**
- * @param estimate  for example: ''63492000''
- * @param lowerBound  for example: ''47619000''
- * @param upperBound  for example: ''79365000''
+ * @param estimate  for example: ''null''
+ * @param lowerBound  for example: ''null''
+ * @param upperBound  for example: ''null''
 */
 final case class TargetingTemplateAudienceSizingReachEstimate (
   estimate: Option[Long] = None,

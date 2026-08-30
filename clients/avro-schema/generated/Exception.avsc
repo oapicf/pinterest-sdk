@@ -7,14 +7,13 @@
     {
       "name": "code",
       "type": ["null", "int"],
-      "doc": "Exception error code.",
+      "doc": "",
       "default": null
     },
     {
       "name": "message",
-      "type": ["null", "string"],
-      "doc": "Exception message.",
-      "default": null
+      "type": "string",
+      "doc": ""
     }
   ]
 

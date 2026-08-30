@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** |  | [optional] |
-| **items** | [**Array&lt;BillingInvoiceResponse&gt;**](BillingInvoiceResponse.md) |  |  |
+| **items** | [**Array&lt;BillingInvoice&gt;**](BillingInvoice.md) |  |  |
 
 ## Example
 

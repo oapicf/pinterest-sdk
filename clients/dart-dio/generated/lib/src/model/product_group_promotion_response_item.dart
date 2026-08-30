@@ -58,7 +58,7 @@ class _$ProductGroupPromotionResponseItemSerializer implements PrimitiveSerializ
       yield r'exceptions';
       yield serializers.serialize(
         object.exceptions,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(Exception)]),
+        specifiedType: const FullType(BuiltList, [FullType(Exception)]),
       );
     }
   }
@@ -87,8 +87,9 @@ class _$ProductGroupPromotionResponseItemSerializer implements PrimitiveSerializ
         case r'data':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ProductGroupPromotion),
-          ) as ProductGroupPromotion;
+            specifiedType: const FullType.nullable(ProductGroupPromotion),
+          ) as ProductGroupPromotion?;
+          if (valueDes == null) continue;
           result.data.replace(valueDes);
           break;
         case r'exceptions':

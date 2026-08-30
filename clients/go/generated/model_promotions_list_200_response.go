@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &PromotionsList200Response{}
 // PromotionsList200Response struct for PromotionsList200Response
 type PromotionsList200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	Items []PromotionResponse `json:"items"`
+	Items []Promotion `json:"items"`
 }
 
 type _PromotionsList200Response PromotionsList200Response
@@ -32,7 +32,7 @@ type _PromotionsList200Response PromotionsList200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPromotionsList200Response(items []PromotionResponse) *PromotionsList200Response {
+func NewPromotionsList200Response(items []Promotion) *PromotionsList200Response {
 	this := PromotionsList200Response{}
 	this.Items = items
 	return &this
@@ -89,9 +89,9 @@ func (o *PromotionsList200Response) UnsetBookmark() {
 }
 
 // GetItems returns the Items field value
-func (o *PromotionsList200Response) GetItems() []PromotionResponse {
+func (o *PromotionsList200Response) GetItems() []Promotion {
 	if o == nil {
-		var ret []PromotionResponse
+		var ret []Promotion
 		return ret
 	}
 
@@ -100,7 +100,7 @@ func (o *PromotionsList200Response) GetItems() []PromotionResponse {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *PromotionsList200Response) GetItemsOk() ([]PromotionResponse, bool) {
+func (o *PromotionsList200Response) GetItemsOk() ([]Promotion, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *PromotionsList200Response) GetItemsOk() ([]PromotionResponse, bool) {
 }
 
 // SetItems sets field value
-func (o *PromotionsList200Response) SetItems(v []PromotionResponse) {
+func (o *PromotionsList200Response) SetItems(v []Promotion) {
 	o.Items = v
 }
 

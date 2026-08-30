@@ -1,0 +1,32 @@
+/*
+ * campaign_planning_estimation_type.h
+ *
+ * Estimation type for campaign planning estimated curve
+ */
+
+#ifndef _campaign_planning_estimation_type_H_
+#define _campaign_planning_estimation_type_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct campaign_planning_estimation_type_t campaign_planning_estimation_type_t;
+
+
+// Enum  for campaign_planning_estimation_type
+
+typedef enum { pinterest_rest_api_campaign_planning_estimation_type__NULL = 0, pinterest_rest_api_campaign_planning_estimation_type__IMPRESSION, pinterest_rest_api_campaign_planning_estimation_type__CLICK, pinterest_rest_api_campaign_planning_estimation_type__CONVERSION, pinterest_rest_api_campaign_planning_estimation_type__WEEKLY_FREQUENCY, pinterest_rest_api_campaign_planning_estimation_type__WEEKLY_REACH, pinterest_rest_api_campaign_planning_estimation_type__LIFETIME_FREQUENCY, pinterest_rest_api_campaign_planning_estimation_type__LIFETIME_REACH, pinterest_rest_api_campaign_planning_estimation_type__CPM, pinterest_rest_api_campaign_planning_estimation_type__CPC, pinterest_rest_api_campaign_planning_estimation_type__CPA } pinterest_rest_api_campaign_planning_estimation_type__e;
+
+char* campaign_planning_estimation_type_campaign_planning_estimation_type_ToString(pinterest_rest_api_campaign_planning_estimation_type__e campaign_planning_estimation_type);
+
+pinterest_rest_api_campaign_planning_estimation_type__e campaign_planning_estimation_type_campaign_planning_estimation_type_FromString(char* campaign_planning_estimation_type);
+
+cJSON *campaign_planning_estimation_type_convertToJSON(pinterest_rest_api_campaign_planning_estimation_type__e campaign_planning_estimation_type);
+
+pinterest_rest_api_campaign_planning_estimation_type__e campaign_planning_estimation_type_parseFromJSON(cJSON *campaign_planning_estimation_typeJSON);
+
+#endif /* _campaign_planning_estimation_type_H_ */
+

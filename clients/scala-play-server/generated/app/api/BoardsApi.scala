@@ -5,6 +5,8 @@ import model.Board
 import model.BoardCreate
 import model.BoardPrivacyFilter
 import model.BoardSection
+import model.BoardSectionCreate
+import model.BoardSectionUpdateWithRequiredBody
 import model.BoardSectionsList200Response
 import model.BoardWithUpdatePrivacy
 import model.BoardWithUpdatePrivacyUpdate
@@ -13,16 +15,15 @@ import model.BoardsListPins200Response
 import model.CreativeType
 import model.Error
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 trait BoardsApi {
   /**
     * Create board section
     * Create a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
     * @param boardId Unique identifier of a board.
-    * @param boardSection Create a board section.
     * @param adAccountId Unique identifier of an ad account.
     */
-  def boardSectionsCreate(boardId: String, boardSection: BoardSection, adAccountId: Option[String]): BoardSection
+  def boardSectionsCreate(boardId: String, boardSectionCreate: BoardSectionCreate, adAccountId: Option[String]): BoardSection
 
   /**
     * Delete board section
@@ -31,7 +32,7 @@ trait BoardsApi {
     * @param sectionId Unique identifier of a board section.
     * @param adAccountId Unique identifier of an ad account.
     */
-  def boardSectionsDelete(boardId: String, sectionId: String, adAccountId: Option[String]): Unit
+  def boardSectionsDelete(boardId: String, sectionId: String, adAccountId: Option[String]): BoardSection
 
   /**
     * List board sections
@@ -39,7 +40,7 @@ trait BoardsApi {
     * @param boardId Unique identifier of a board.
     * @param adAccountId Unique identifier of an ad account.
     * @param bookmark Cursor used to fetch the next page of items
-    * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+    * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
   def boardSectionsList(boardId: String, adAccountId: Option[String], bookmark: Option[String], pageSize: Option[Int]): BoardSectionsList200Response
 
@@ -50,7 +51,7 @@ trait BoardsApi {
     * @param sectionId Unique identifier of a board section.
     * @param adAccountId Unique identifier of an ad account.
     * @param bookmark Cursor used to fetch the next page of items
-    * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+    * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
   def boardSectionsListPins(boardId: String, sectionId: String, adAccountId: Option[String], bookmark: Option[String], pageSize: Option[Int]): BoardsListPins200Response
 
@@ -59,10 +60,9 @@ trait BoardsApi {
     * Update a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
     * @param boardId Unique identifier of a board.
     * @param sectionId Unique identifier of a board section.
-    * @param boardSection Update a board section.
     * @param adAccountId Unique identifier of an ad account.
     */
-  def boardSectionsUpdate(boardId: String, sectionId: String, boardSection: BoardSection, adAccountId: Option[String]): BoardSection
+  def boardSectionsUpdate(boardId: String, sectionId: String, boardSectionUpdateWithRequiredBody: BoardSectionUpdateWithRequiredBody, adAccountId: Option[String]): BoardSection
 
   /**
     * Create board
@@ -76,7 +76,7 @@ trait BoardsApi {
     * Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
     * @param adAccountId Unique identifier of an ad account.
     */
-  def boardsDelete(boardId: String, adAccountId: Option[String]): Unit
+  def boardsDelete(boardId: String, adAccountId: Option[String]): Board
 
   /**
     * Get board
@@ -99,13 +99,13 @@ trait BoardsApi {
     * List Pins on board
     * Get a list of the Pins on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
     * @param boardId Unique identifier of a board.
-    * @param bookmark Cursor used to fetch the next page of items
-    * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
     * @param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
     * @param adAccountId Unique identifier of an ad account.
     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+    * @param bookmark Cursor used to fetch the next page of items
+    * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
-  def boardsListPins(boardId: String, bookmark: Option[String], pageSize: Option[Int], creativeTypes: Option[List[CreativeType]], adAccountId: Option[String], pinMetrics: Option[Boolean]): BoardsListPins200Response
+  def boardsListPins(boardId: String, creativeTypes: Option[List[CreativeType]], adAccountId: Option[String], pinMetrics: Option[Boolean], bookmark: Option[String], pageSize: Option[Int]): BoardsListPins200Response
 
   /**
     * Update board

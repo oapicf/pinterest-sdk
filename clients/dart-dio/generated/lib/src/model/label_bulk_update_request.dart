@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/label_status_bulk_update.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,22 +13,21 @@ part 'label_bulk_update_request.g.dart';
 ///
 /// Properties:
 /// * [id] - Label ID.
-/// * [status] - Set status to `ARCHIVED` to remove the label from the parent entity.
-/// * [value] - </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
+/// * [parentId] - Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
+/// * [status] 
 @BuiltValue()
 abstract class LabelBulkUpdateRequest implements Built<LabelBulkUpdateRequest, LabelBulkUpdateRequestBuilder> {
   /// Label ID.
   @BuiltValueField(wireName: r'id')
   String get id;
 
-  /// Set status to `ARCHIVED` to remove the label from the parent entity.
-  @BuiltValueField(wireName: r'status')
-  LabelBulkUpdateRequestStatusEnum? get status;
-  // enum statusEnum {  ARCHIVED,  };
+  /// Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
+  @BuiltValueField(wireName: r'parent_id')
+  String get parentId;
 
-  /// </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
-  @BuiltValueField(wireName: r'value')
-  String? get value;
+  @BuiltValueField(wireName: r'status')
+  LabelStatusBulkUpdate get status;
+  // enum statusEnum {  ARCHIVED,  };
 
   LabelBulkUpdateRequest._();
 
@@ -58,20 +57,16 @@ class _$LabelBulkUpdateRequestSerializer implements PrimitiveSerializer<LabelBul
       object.id,
       specifiedType: const FullType(String),
     );
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(LabelBulkUpdateRequestStatusEnum),
-      );
-    }
-    if (object.value != null) {
-      yield r'value';
-      yield serializers.serialize(
-        object.value,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'parent_id';
+    yield serializers.serialize(
+      object.parentId,
+      specifiedType: const FullType(String),
+    );
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(LabelStatusBulkUpdate),
+    );
   }
 
   @override
@@ -102,19 +97,19 @@ class _$LabelBulkUpdateRequestSerializer implements PrimitiveSerializer<LabelBul
           ) as String;
           result.id = valueDes;
           break;
-        case r'status':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(LabelBulkUpdateRequestStatusEnum),
-          ) as LabelBulkUpdateRequestStatusEnum;
-          result.status = valueDes;
-          break;
-        case r'value':
+        case r'parent_id':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.value = valueDes;
+          result.parentId = valueDes;
+          break;
+        case r'status':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(LabelStatusBulkUpdate),
+          ) as LabelStatusBulkUpdate;
+          result.status = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -143,19 +138,5 @@ class _$LabelBulkUpdateRequestSerializer implements PrimitiveSerializer<LabelBul
     );
     return result.build();
   }
-}
-
-class LabelBulkUpdateRequestStatusEnum extends EnumClass {
-
-  /// Set status to `ARCHIVED` to remove the label from the parent entity.
-  @BuiltValueEnumConst(wireName: r'ARCHIVED')
-  static const LabelBulkUpdateRequestStatusEnum ARCHIVED = _$labelBulkUpdateRequestStatusEnum_ARCHIVED;
-
-  static Serializer<LabelBulkUpdateRequestStatusEnum> get serializer => _$labelBulkUpdateRequestStatusEnumSerializer;
-
-  const LabelBulkUpdateRequestStatusEnum._(String name): super(name);
-
-  static BuiltSet<LabelBulkUpdateRequestStatusEnum> get values => _$labelBulkUpdateRequestStatusEnumValues;
-  static LabelBulkUpdateRequestStatusEnum valueOf(String name) => _$labelBulkUpdateRequestStatusEnumValueOf(name);
 }
 

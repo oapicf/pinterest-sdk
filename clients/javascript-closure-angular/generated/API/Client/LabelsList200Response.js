@@ -12,7 +12,7 @@ API.Client.LabelsList200Response = function() {}
 API.Client.LabelsList200Response.prototype.bookmark;
 
 /**
- * @type {!Array<!API.Client.LabelsResponse>}
+ * @type {!Array<!API.Client.Label>}
  * @export
  */
 API.Client.LabelsList200Response.prototype.items;

@@ -6,7 +6,7 @@
 
 -type openapi_exception() ::
     #{ 'code' => integer(),
-       'message' => binary()
+       'message' := binary()
      }.
 
 encode(#{ 'code' := Code,

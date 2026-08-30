@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **BoardSectionsCreate**
-> BoardSection BoardSectionsCreate(board_id, board_section, ad_account_id = var.ad_account_id)
+> BoardSection BoardSectionsCreate(board_id, board_section_create, ad_account_id = var.ad_account_id)
 
 Create board section
 
@@ -32,15 +32,15 @@ library(openapi)
 #
 # prepare function argument(s)
 var_board_id <- "board_id_example" # character | Unique identifier of a board.
-var_board_section <- BoardSection$new("name_example", "id_example") # BoardSection | Create a board section.
+var_board_section_create <- BoardSectionCreate$new("name_example", "id_example") # BoardSectionCreate | 
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- BoardsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BoardSectionsCreate(var_board_id, var_board_section, ad_account_id = var_ad_account_iddata_file = "result.txt")
-result <- api_instance$BoardSectionsCreate(var_board_id, var_board_section, ad_account_id = var_ad_account_id)
+# result <- api_instance$BoardSectionsCreate(var_board_id, var_board_section_create, ad_account_id = var_ad_account_iddata_file = "result.txt")
+result <- api_instance$BoardSectionsCreate(var_board_id, var_board_section_create, ad_account_id = var_ad_account_id)
 dput(result)
 ```
 
@@ -49,7 +49,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **board_id** | **character**| Unique identifier of a board. | 
- **board_section** | [**BoardSection**](BoardSection.md)| Create a board section. | 
+ **board_section_create** | [**BoardSectionCreate**](BoardSectionCreate.md)|  | 
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -68,15 +68,17 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | response |  -  |
-| **400** | Invalid board section parameters. |  -  |
-| **403** | Not authorized to create board sections. |  -  |
-| **409** | Could not get exclusive access to the board to create a new section. |  -  |
-| **500** | Could not create a new board section. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BoardSectionsDelete**
-> BoardSectionsDelete(board_id, section_id, ad_account_id = var.ad_account_id)
+> BoardSection BoardSectionsDelete(board_id, section_id, ad_account_id = var.ad_account_id)
 
 Delete board section
 
@@ -96,7 +98,10 @@ var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of 
 api_instance <- BoardsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
-api_instance$BoardSectionsDelete(var_board_id, var_section_id, ad_account_id = var_ad_account_id)
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$BoardSectionsDelete(var_board_id, var_section_id, ad_account_id = var_ad_account_iddata_file = "result.txt")
+result <- api_instance$BoardSectionsDelete(var_board_id, var_section_id, ad_account_id = var_ad_account_id)
+dput(result)
 ```
 
 ### Parameters
@@ -109,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**BoardSection**](BoardSection.md)
 
 ### Authorization
 
@@ -123,11 +128,14 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Board section deleted successfully |  -  |
-| **403** | Not authorized to delete board section. |  -  |
-| **404** | Board section not found. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BoardSectionsList**
 > BoardSectionsList200Response BoardSectionsList(board_id, ad_account_id = var.ad_account_id, bookmark = var.bookmark, page_size = 25)
@@ -146,7 +154,7 @@ library(openapi)
 var_board_id <- "board_id_example" # character | Unique identifier of a board.
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BoardsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -166,7 +174,7 @@ Name | Type | Description  | Notes
  **board_id** | **character**| Unique identifier of a board. | 
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -184,8 +192,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BoardSectionsListPins**
 > BoardsListPins200Response BoardSectionsListPins(board_id, section_id, ad_account_id = var.ad_account_id, bookmark = var.bookmark, page_size = 25)
@@ -205,7 +218,7 @@ var_board_id <- "board_id_example" # character | Unique identifier of a board.
 var_section_id <- "section_id_example" # character | Unique identifier of a board section.
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BoardsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -226,7 +239,7 @@ Name | Type | Description  | Notes
  **section_id** | **character**| Unique identifier of a board section. | 
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -244,14 +257,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **403** | Not authorized to access Pins on board section. |  -  |
-| **404** | Board or section not found. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BoardSectionsUpdate**
-> BoardSection BoardSectionsUpdate(board_id, section_id, board_section, ad_account_id = var.ad_account_id)
+> BoardSection BoardSectionsUpdate(board_id, section_id, board_section_update_with_required_body, ad_account_id = var.ad_account_id)
 
 Update board section
 
@@ -266,15 +281,15 @@ library(openapi)
 # prepare function argument(s)
 var_board_id <- "board_id_example" # character | Unique identifier of a board.
 var_section_id <- "section_id_example" # character | Unique identifier of a board section.
-var_board_section <- BoardSection$new("name_example", "id_example") # BoardSection | Update a board section.
+var_board_section_update_with_required_body <- BoardSectionUpdateWithRequiredBody$new("name_example", "id_example") # BoardSectionUpdateWithRequiredBody | 
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- BoardsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BoardSectionsUpdate(var_board_id, var_section_id, var_board_section, ad_account_id = var_ad_account_iddata_file = "result.txt")
-result <- api_instance$BoardSectionsUpdate(var_board_id, var_section_id, var_board_section, ad_account_id = var_ad_account_id)
+# result <- api_instance$BoardSectionsUpdate(var_board_id, var_section_id, var_board_section_update_with_required_body, ad_account_id = var_ad_account_iddata_file = "result.txt")
+result <- api_instance$BoardSectionsUpdate(var_board_id, var_section_id, var_board_section_update_with_required_body, ad_account_id = var_ad_account_id)
 dput(result)
 ```
 
@@ -284,7 +299,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **board_id** | **character**| Unique identifier of a board. | 
  **section_id** | **character**| Unique identifier of a board section. | 
- **board_section** | [**BoardSection**](BoardSection.md)| Update a board section. | 
+ **board_section_update_with_required_body** | [**BoardSectionUpdateWithRequiredBody**](BoardSectionUpdateWithRequiredBody.md)|  | 
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -303,11 +318,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **400** | Invalid board section parameters. |  -  |
-| **403** | Not authorized to update board section. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BoardsCreate**
 > Board BoardsCreate(board_create, ad_account_id = var.ad_account_id)
@@ -370,7 +387,7 @@ Name | Type | Description  | Notes
 | **0** | An unexpected error response. |  -  |
 
 # **BoardsDelete**
-> BoardsDelete(board_id, ad_account_id = var.ad_account_id)
+> Board BoardsDelete(board_id, ad_account_id = var.ad_account_id)
 
 Delete board
 
@@ -389,7 +406,10 @@ var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of 
 api_instance <- BoardsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
-api_instance$BoardsDelete(var_board_id, ad_account_id = var_ad_account_id)
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$BoardsDelete(var_board_id, ad_account_id = var_ad_account_iddata_file = "result.txt")
+result <- api_instance$BoardsDelete(var_board_id, ad_account_id = var_ad_account_id)
+dput(result)
 ```
 
 ### Parameters
@@ -401,7 +421,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Board**](Board.md)
 
 ### Authorization
 
@@ -415,6 +435,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
 | **204** | Resource deleted successfully. |  -  |
 | **400** | The request could not be understood by the server due to unexpected data. |  -  |
 | **401** | Authentication is required and has either failed or not been provided. |  -  |
@@ -546,7 +567,7 @@ Name | Type | Description  | Notes
 | **0** | An unexpected error response. |  -  |
 
 # **BoardsListPins**
-> BoardsListPins200Response BoardsListPins(board_id, bookmark = var.bookmark, page_size = 25, creative_types = var.creative_types, ad_account_id = var.ad_account_id, pin_metrics = FALSE)
+> BoardsListPins200Response BoardsListPins(board_id, creative_types = var.creative_types, ad_account_id = var.ad_account_id, pin_metrics = FALSE, bookmark = var.bookmark, page_size = 25)
 
 List Pins on board
 
@@ -560,11 +581,11 @@ library(openapi)
 #
 # prepare function argument(s)
 var_board_id <- "board_id_example" # character | Unique identifier of a board.
-var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 var_creative_types <- c(CreativeType$new()) # array[CreativeType] | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (Optional)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 var_pin_metrics <- FALSE # character | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (Optional)
+var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BoardsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -572,8 +593,8 @@ api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # Configure OAuth2 access token for authorization: client_credentials
 # api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BoardsListPins(var_board_id, bookmark = var_bookmark, page_size = var_page_size, creative_types = var_creative_types, ad_account_id = var_ad_account_id, pin_metrics = var_pin_metricsdata_file = "result.txt")
-result <- api_instance$BoardsListPins(var_board_id, bookmark = var_bookmark, page_size = var_page_size, creative_types = var_creative_types, ad_account_id = var_ad_account_id, pin_metrics = var_pin_metrics)
+# result <- api_instance$BoardsListPins(var_board_id, creative_types = var_creative_types, ad_account_id = var_ad_account_id, pin_metrics = var_pin_metrics, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$BoardsListPins(var_board_id, creative_types = var_creative_types, ad_account_id = var_ad_account_id, pin_metrics = var_pin_metrics, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -582,11 +603,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **board_id** | **character**| Unique identifier of a board. | 
- **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **creative_types** | list( [**CreativeType**](CreativeType.md) )| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
  **pin_metrics** | **character**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to FALSE]
+ **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -604,9 +625,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **404** | Board not found. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BoardsUpdate**
 > BoardWithUpdatePrivacy BoardsUpdate(board_id, board_with_update_privacy_update, ad_account_id = var.ad_account_id)

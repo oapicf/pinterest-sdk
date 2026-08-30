@@ -31,11 +31,11 @@ static catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_f
     if (!catalogs_report_feed_ingestion_filter_local_var) {
         return NULL;
     }
+    memset(catalogs_report_feed_ingestion_filter_local_var, 0, sizeof(catalogs_report_feed_ingestion_filter_t));
+    catalogs_report_feed_ingestion_filter_local_var->_library_owned = 1;
     catalogs_report_feed_ingestion_filter_local_var->feed_id = feed_id;
     catalogs_report_feed_ingestion_filter_local_var->processing_result_id = processing_result_id;
     catalogs_report_feed_ingestion_filter_local_var->report_type = report_type;
-
-    catalogs_report_feed_ingestion_filter_local_var->_library_owned = 1;
     return catalogs_report_feed_ingestion_filter_local_var;
 }
 
@@ -44,11 +44,14 @@ __attribute__((deprecated)) catalogs_report_feed_ingestion_filter_t *catalogs_re
     char *processing_result_id,
     pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_e report_type
     ) {
-    return catalogs_report_feed_ingestion_filter_create_internal (
+    catalogs_report_feed_ingestion_filter_t *result = catalogs_report_feed_ingestion_filter_create_internal (
         feed_id,
         processing_result_id,
         report_type
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_report_feed_ingestion_filter_free(catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter) {
@@ -112,6 +115,10 @@ catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_p
 
     catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_local_var = NULL;
 
+    char *feed_id_local_str = NULL;
+
+    char *processing_result_id_local_str = NULL;
+
     // catalogs_report_feed_ingestion_filter->feed_id
     cJSON *feed_id = cJSON_GetObjectItemCaseSensitive(catalogs_report_feed_ingestion_filterJSON, "feed_id");
     if (cJSON_IsNull(feed_id)) {
@@ -157,14 +164,29 @@ catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_p
     report_typeVariable = catalogs_report_feed_ingestion_filter_report_type_FromString(report_type->valuestring);
 
 
+    if (feed_id && !cJSON_IsNull(feed_id)) feed_id_local_str = strdup(feed_id->valuestring);
+    if (processing_result_id && !cJSON_IsNull(processing_result_id)) processing_result_id_local_str = strdup(processing_result_id->valuestring);
+
     catalogs_report_feed_ingestion_filter_local_var = catalogs_report_feed_ingestion_filter_create_internal (
-        strdup(feed_id->valuestring),
-        processing_result_id && !cJSON_IsNull(processing_result_id) ? strdup(processing_result_id->valuestring) : NULL,
+        feed_id_local_str,
+        processing_result_id_local_str,
         report_typeVariable
         );
 
+    if (!catalogs_report_feed_ingestion_filter_local_var) {
+        goto end;
+    }
+
     return catalogs_report_feed_ingestion_filter_local_var;
 end:
+    if (feed_id_local_str) {
+        free(feed_id_local_str);
+        feed_id_local_str = NULL;
+    }
+    if (processing_result_id_local_str) {
+        free(processing_result_id_local_str);
+        processing_result_id_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -20,10 +20,10 @@
       <span class="param-in">Path: </span>
       
       
-      <span class="param-name">ad_account_id</span>
+      <span class="param-name">order_line_id</span>
       <span class="param-type">String</span>
       
-      <p class="param-description">Unique identifier of an ad account.</p>
+      <p class="param-description">Order line ID.</p>
       </li>
       <li class="parameter">
       
@@ -31,10 +31,10 @@
       <span class="param-in">Path: </span>
       
       
-      <span class="param-name">order_line_id</span>
+      <span class="param-name">ad_account_id</span>
       <span class="param-type">String</span>
       
-      <p class="param-description">Unique identifier of an order line.</p>
+      <p class="param-description">Unique identifier of an ad account.</p>
       </li>
   </ul>
   <h2><a name="orderLines/list"></a>orderLines/list</h2>
@@ -66,10 +66,21 @@
       
       
       
+      <span class="param-name">bookmark</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
       </li>
       <li class="parameter">
       
@@ -78,20 +89,9 @@
       
       
       <span class="param-name">order</span>
-      <span class="param-type">String</span>
+      <span class="param-type">PinterestLibPaginationOrder</span>
       
-      <p class="param-description">The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.</p>
-      </li>
-      <li class="parameter">
-      
-      <span class="param-in">Query: </span>
-      
-      
-      
-      <span class="param-name">bookmark</span>
-      <span class="param-type">String</span>
-      
-      <p class="param-description">Cursor used to fetch the next page of items</p>
+      <p class="param-description">The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.</p>
       </li>
   </ul>
 </div>

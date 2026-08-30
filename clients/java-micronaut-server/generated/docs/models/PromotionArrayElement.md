@@ -8,7 +8,7 @@ The class is defined in **[PromotionArrayElement.java](../../src/main/java/org/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [`PromotionResponse`](PromotionResponse.md) |  |  [optional property]
+**data** | [`Promotion`](Promotion.md) |  |  [optional property]
 **exception** | [`Exception`](Exception.md) |  |  [optional property]
 
 

@@ -12,8 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "InviteAssetsSummary_ad_accounts_inner.h"
-#include "InviteAssetsSummary_profiles_inner.h"
+#include "InviteAssetsSummaryItem.h"
 #include <list>
 
 namespace Tiny {
@@ -50,23 +49,23 @@ public:
 
 	/*! \brief Get List of ad account IDs and respective permission levels that will be assigned.
 	 */
-	std::list<InviteAssetsSummary_ad_accounts_inner> getAdAccounts();
+	std::list<InviteAssetsSummaryItem> getAdAccounts();
 
 	/*! \brief Set List of ad account IDs and respective permission levels that will be assigned.
 	 */
-	void setAdAccounts(std::list <InviteAssetsSummary_ad_accounts_inner> ad_accounts);
+	void setAdAccounts(std::list<InviteAssetsSummaryItem> ad_accounts);
 	/*! \brief Get List of profile IDs and respective permission levels that will be assigned.
 	 */
-	std::list<InviteAssetsSummary_profiles_inner> getProfiles();
+	std::list<InviteAssetsSummaryItem> getProfiles();
 
 	/*! \brief Set List of profile IDs and respective permission levels that will be assigned.
 	 */
-	void setProfiles(std::list <InviteAssetsSummary_profiles_inner> profiles);
+	void setProfiles(std::list<InviteAssetsSummaryItem> profiles);
 
 
     private:
-    std::list<InviteAssetsSummary_ad_accounts_inner> ad_accounts;
-    std::list<InviteAssetsSummary_profiles_inner> profiles;
+    std::list<InviteAssetsSummaryItem> ad_accounts;
+    std::list<InviteAssetsSummaryItem> profiles;
 };
 }
 

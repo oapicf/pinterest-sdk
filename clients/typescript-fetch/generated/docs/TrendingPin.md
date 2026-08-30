@@ -7,9 +7,11 @@ Pin image data for trending topics
 
 Name | Type
 ------------ | -------------
+`color` | string
 `height` | number
 `id` | string
 `src` | string
+`verticalOffset` | number
 `width` | number
 
 ## Example
@@ -19,9 +21,11 @@ import type { TrendingPin } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "color": null,
   "height": null,
   "id": null,
   "src": null,
+  "verticalOffset": null,
   "width": null,
 } satisfies TrendingPin
 

@@ -9,7 +9,7 @@ LeadSubscriptionPostParamsCreate::LeadSubscriptionPostParamsCreate()
 	lead_form_id = std::string();
 	webhook_url = std::string();
 	partner_access_token = std::string();
-	partner_metadata = LeadSubscriptionPostParamsCreate_allOf_partner_metadata();
+	partner_metadata = null;
 	partner_refresh_token = std::string();
 }
 
@@ -76,7 +76,7 @@ LeadSubscriptionPostParamsCreate::fromJson(std::string jsonObj)
 
 
 
-        LeadSubscriptionPostParamsCreate_allOf_partner_metadata* obj = &partner_metadata;
+        PartnerMetadata* obj = &partner_metadata;
 		obj->fromJson(value.dump());
 
     }
@@ -149,7 +149,7 @@ LeadSubscriptionPostParamsCreate::getLeadFormId()
 }
 
 void
-LeadSubscriptionPostParamsCreate::setLeadFormId(std::string  lead_form_id)
+LeadSubscriptionPostParamsCreate::setLeadFormId(std::string lead_form_id)
 {
 	this->lead_form_id = lead_form_id;
 }
@@ -161,7 +161,7 @@ LeadSubscriptionPostParamsCreate::getWebhookUrl()
 }
 
 void
-LeadSubscriptionPostParamsCreate::setWebhookUrl(std::string  webhook_url)
+LeadSubscriptionPostParamsCreate::setWebhookUrl(std::string webhook_url)
 {
 	this->webhook_url = webhook_url;
 }
@@ -173,19 +173,19 @@ LeadSubscriptionPostParamsCreate::getPartnerAccessToken()
 }
 
 void
-LeadSubscriptionPostParamsCreate::setPartnerAccessToken(std::string  partner_access_token)
+LeadSubscriptionPostParamsCreate::setPartnerAccessToken(std::string partner_access_token)
 {
 	this->partner_access_token = partner_access_token;
 }
 
-LeadSubscriptionPostParamsCreate_allOf_partner_metadata
+PartnerMetadata
 LeadSubscriptionPostParamsCreate::getPartnerMetadata()
 {
 	return partner_metadata;
 }
 
 void
-LeadSubscriptionPostParamsCreate::setPartnerMetadata(LeadSubscriptionPostParamsCreate_allOf_partner_metadata  partner_metadata)
+LeadSubscriptionPostParamsCreate::setPartnerMetadata(PartnerMetadata partner_metadata)
 {
 	this->partner_metadata = partner_metadata;
 }
@@ -197,7 +197,7 @@ LeadSubscriptionPostParamsCreate::getPartnerRefreshToken()
 }
 
 void
-LeadSubscriptionPostParamsCreate::setPartnerRefreshToken(std::string  partner_refresh_token)
+LeadSubscriptionPostParamsCreate::setPartnerRefreshToken(std::string partner_refresh_token)
 {
 	this->partner_refresh_token = partner_refresh_token;
 }

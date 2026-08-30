@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.UpdateMemberAssetAccessBodyAccessesInner;
+import org.openapitools.model.UpdateMemberAssetAccessItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -18,44 +18,45 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
- * An object with a list of all the new accesses.
+ * An object with a list of all the new member asset accesses.
  **/
-@ApiModel(description = "An object with a list of all the new accesses.")
+@ApiModel(description = "An object with a list of all the new member asset accesses.")
 @JsonTypeName("UpdateMemberAssetAccessBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UpdateMemberAssetAccessBody   {
-  private @Valid List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+  private @Valid List<@Valid UpdateMemberAssetAccessItem> accesses = new ArrayList<>();
 
   public UpdateMemberAssetAccessBody() {
   }
 
   @JsonCreator
   public UpdateMemberAssetAccessBody(
-    @JsonProperty(required = true, value = "accesses") List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses
+    @JsonProperty(required = true, value = "accesses") List<@Valid UpdateMemberAssetAccessItem> accesses
   ) {
     this.accesses = accesses;
   }
 
   /**
+   * List of member asset accesses to assign or update.
    **/
-  public UpdateMemberAssetAccessBody accesses(List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+  public UpdateMemberAssetAccessBody accesses(List<@Valid UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "List of member asset accesses to assign or update.")
   @JsonProperty(required = true, value = "accesses")
-  @NotNull @Valid  @Size(min=1,max=50)public List<@Valid UpdateMemberAssetAccessBodyAccessesInner> getAccesses() {
+  @NotNull @Valid  @Size(min=1,max=50)public List<@Valid UpdateMemberAssetAccessItem> getAccesses() {
     return accesses;
   }
 
   @JsonProperty(required = true, value = "accesses")
-  public void setAccesses(List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<@Valid UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
-  public UpdateMemberAssetAccessBody addAccessesItem(UpdateMemberAssetAccessBodyAccessesInner accessesItem) {
+  public UpdateMemberAssetAccessBody addAccessesItem(UpdateMemberAssetAccessItem accessesItem) {
     if (this.accesses == null) {
       this.accesses = new ArrayList<>();
     }
@@ -64,7 +65,7 @@ public class UpdateMemberAssetAccessBody   {
     return this;
   }
 
-  public UpdateMemberAssetAccessBody removeAccessesItem(UpdateMemberAssetAccessBodyAccessesInner accessesItem) {
+  public UpdateMemberAssetAccessBody removeAccessesItem(UpdateMemberAssetAccessItem accessesItem) {
     if (accessesItem != null && this.accesses != null) {
       this.accesses.remove(accessesItem);
     }
@@ -104,12 +105,8 @@ public class UpdateMemberAssetAccessBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

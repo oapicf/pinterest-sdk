@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `bookmark` | string
-`items` | [Array&lt;Pin&gt;](Pin.md)
+`items` | [Array&lt;PinRead&gt;](PinRead.md)
 
 ## Example
 

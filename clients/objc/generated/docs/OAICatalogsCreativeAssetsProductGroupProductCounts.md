@@ -3,7 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**appLinks** | **NSNumber*** |  | 
 **catalogType** | **NSString*** |  | 
+**images** | **NSNumber*** |  | 
 **total** | **NSNumber*** |  | 
 **videos** | **NSNumber*** |  | 
 

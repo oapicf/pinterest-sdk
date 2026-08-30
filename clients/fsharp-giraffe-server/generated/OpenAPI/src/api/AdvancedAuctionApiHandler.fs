@@ -11,7 +11,7 @@ open OpenAPI.Model.AdvancedAuctionItems
 open OpenAPI.Model.AdvancedAuctionItemsGetRequest
 open OpenAPI.Model.AdvancedAuctionItemsSubmitRequest
 open OpenAPI.Model.AdvancedAuctionProcessedItems
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 
 module AdvancedAuctionApiHandler =
 
@@ -41,6 +41,10 @@ module AdvancedAuctionApiHandler =
                             setStatusCode 401 >=> json resolved.content
                       | AdvancedAuctionItemsGetPostStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
+                      | AdvancedAuctionItemsGetPostStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AdvancedAuctionItemsGetPostStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdvancedAuctionItemsGetPostStatusCode500 resolved ->
                             setStatusCode 500 >=> json resolved.content
                       | AdvancedAuctionItemsGetPostDefaultStatusCode resolved ->
@@ -73,6 +77,10 @@ module AdvancedAuctionApiHandler =
                             setStatusCode 401 >=> json resolved.content
                       | AdvancedAuctionItemsSubmitPostStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
+                      | AdvancedAuctionItemsSubmitPostStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AdvancedAuctionItemsSubmitPostStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdvancedAuctionItemsSubmitPostStatusCode500 resolved ->
                             setStatusCode 500 >=> json resolved.content
                       | AdvancedAuctionItemsSubmitPostDefaultStatusCode resolved ->

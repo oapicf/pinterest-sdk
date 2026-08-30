@@ -9,21 +9,61 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsAttributes;
-import org.openapitools.vertxweb.server.model.CatalogsType;
-import org.openapitools.vertxweb.server.model.ItemResponseOneOf;
-import org.openapitools.vertxweb.server.model.ItemResponseOneOf1;
+import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsItemErrorResponse;
+import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsItemResponse;
+import org.openapitools.vertxweb.server.model.CatalogsHotelItemErrorResponse;
+import org.openapitools.vertxweb.server.model.CatalogsHotelItemResponse;
+import org.openapitools.vertxweb.server.model.CatalogsRetailItemErrorResponse;
+import org.openapitools.vertxweb.server.model.CatalogsRetailItemResponse;
 import org.openapitools.vertxweb.server.model.ItemValidationEvent;
 import org.openapitools.vertxweb.server.model.Pin;
 
 /**
- * Object describing an item record or error
+ * Object describing an item record or error. Discriminated by &#x60;item_response_kind&#x60; (one unique value per leaf).
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ItemResponse   {
   
-  private CatalogsType catalogType;
   private CatalogsCreativeAssetsAttributes attributes;
+
+
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private String itemId;
+
+
+  public enum ItemResponseKindEnum {
+    CREATIVE_ASSETS_ITEM_ERROR("creative_assets_item_error");
+
+    private String value;
+
+    ItemResponseKindEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private ItemResponseKindEnum itemResponseKind;
   private List<Pin> pins;
   private String hotelId;
   private String creativeAssetsId;
@@ -33,23 +73,15 @@ public class ItemResponse   {
 
   }
 
-  public ItemResponse (CatalogsType catalogType, CatalogsCreativeAssetsAttributes attributes, String itemId, List<Pin> pins, String hotelId, String creativeAssetsId, List<ItemValidationEvent> errors) {
-    this.catalogType = catalogType;
+  public ItemResponse (CatalogsCreativeAssetsAttributes attributes, CatalogTypeEnum catalogType, String itemId, ItemResponseKindEnum itemResponseKind, List<Pin> pins, String hotelId, String creativeAssetsId, List<ItemValidationEvent> errors) {
     this.attributes = attributes;
+    this.catalogType = catalogType;
     this.itemId = itemId;
+    this.itemResponseKind = itemResponseKind;
     this.pins = pins;
     this.hotelId = hotelId;
     this.creativeAssetsId = creativeAssetsId;
     this.errors = errors;
-  }
-
-    
-  @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
   }
 
     
@@ -62,12 +94,30 @@ public class ItemResponse   {
   }
 
     
+  @JsonProperty("catalog_type")
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
+  }
+
+    
   @JsonProperty("item_id")
   public String getItemId() {
     return itemId;
   }
   public void setItemId(String itemId) {
     this.itemId = itemId;
+  }
+
+    
+  @JsonProperty("item_response_kind")
+  public ItemResponseKindEnum getItemResponseKind() {
+    return itemResponseKind;
+  }
+  public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
   }
 
     
@@ -116,9 +166,10 @@ public class ItemResponse   {
       return false;
     }
     ItemResponse itemResponse = (ItemResponse) o;
-    return Objects.equals(catalogType, itemResponse.catalogType) &&
-        Objects.equals(attributes, itemResponse.attributes) &&
+    return Objects.equals(attributes, itemResponse.attributes) &&
+        Objects.equals(catalogType, itemResponse.catalogType) &&
         Objects.equals(itemId, itemResponse.itemId) &&
+        Objects.equals(itemResponseKind, itemResponse.itemResponseKind) &&
         Objects.equals(pins, itemResponse.pins) &&
         Objects.equals(hotelId, itemResponse.hotelId) &&
         Objects.equals(creativeAssetsId, itemResponse.creativeAssetsId) &&
@@ -127,7 +178,7 @@ public class ItemResponse   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, attributes, itemId, pins, hotelId, creativeAssetsId, errors);
+    return Objects.hash(attributes, catalogType, itemId, itemResponseKind, pins, hotelId, creativeAssetsId, errors);
   }
 
   @Override
@@ -135,9 +186,10 @@ public class ItemResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemResponse {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
@@ -151,9 +203,6 @@ public class ItemResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

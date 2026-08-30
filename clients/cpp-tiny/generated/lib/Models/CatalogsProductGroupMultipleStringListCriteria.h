@@ -52,14 +52,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setNegated(bool  negated);
+	void setNegated(bool negated);
 	/*! \brief Get 
 	 */
 	std::list<std::list> getValues();
 
 	/*! \brief Set 
 	 */
-	void setValues(std::list <std::list> values);
+	void setValues(std::list<std::list> values);
 
 
     private:

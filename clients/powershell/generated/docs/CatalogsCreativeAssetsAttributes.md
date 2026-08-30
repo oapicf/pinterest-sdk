@@ -14,7 +14,8 @@ Name | Type | Description | Notes
 **IosDeepLink** | **String** | IOS deep link to the creative assets page. | [optional] 
 **Link** | **String** | Link to the creative assets page. | [optional] 
 **Title** | **String** | The name of the creative assets. | [optional] 
-**Visibility** | **String** | Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. | [optional] 
+**Visibility** | **String** | Visibility of the creative assets. Must be one of the following values (upper or lowercase): &#39;visible&#39;, &#39;hidden&#39;. | [optional] 
+**AiDisclosures** | [**CatalogsAiContentDisclosure[]**](CatalogsAiContentDisclosure.md) | AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL. | [optional] 
 **ImageLink** | **String** | The creative assets image. | [optional] 
 **VideoLink** | **String** | The creative assets video. | [optional] 
 
@@ -34,6 +35,7 @@ $CatalogsCreativeAssetsAttributes = Initialize-PSOpenAPIToolsCatalogsCreativeAss
  -Link null `
  -Title null `
  -Visibility null `
+ -AiDisclosures [{&quot;url&quot;:&quot;https://scene.example.com/image/image_v2.jpg&quot;,&quot;disclosure&quot;:[&quot;ai_modified&quot;]}] `
  -ImageLink https://scene.example.com/image/image_v2.jpg `
  -VideoLink https://scene.example.com/image/image_v2.mp4
 ```

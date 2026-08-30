@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `bookmark` | string
-`items` | [Array&lt;LeadFormResponse&gt;](LeadFormResponse.md)
+`items` | [Array&lt;LeadForm&gt;](LeadForm.md)
 
 ## Example
 

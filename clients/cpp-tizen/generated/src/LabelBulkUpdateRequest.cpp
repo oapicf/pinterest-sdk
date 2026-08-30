@@ -24,8 +24,8 @@ void
 LabelBulkUpdateRequest::__init()
 {
 	//id = std::string();
-	//status = std::string();
-	//value = std::string();
+	//parent_id = std::string();
+	//status = new LabelStatusBulkUpdate();
 }
 
 void
@@ -36,15 +36,15 @@ LabelBulkUpdateRequest::__cleanup()
 	//delete id;
 	//id = NULL;
 	//}
+	//if(parent_id != NULL) {
+	//
+	//delete parent_id;
+	//parent_id = NULL;
+	//}
 	//if(status != NULL) {
 	//
 	//delete status;
 	//status = NULL;
-	//}
-	//if(value != NULL) {
-	//
-	//delete value;
-	//value = NULL;
 	//}
 	//
 }
@@ -65,25 +65,28 @@ LabelBulkUpdateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *parent_idKey = "parent_id";
+	node = json_object_get_member(pJsonObject, parent_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&parent_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *statusKey = "status";
 	node = json_object_get_member(pJsonObject, statusKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&status, node, "std::string", "");
+		if (isprimitive("LabelStatusBulkUpdate")) {
+			jsonToValue(&status, node, "LabelStatusBulkUpdate", "LabelStatusBulkUpdate");
 		} else {
 			
-		}
-	}
-	const gchar *valueKey = "value";
-	node = json_object_get_member(pJsonObject, valueKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&value, node, "std::string", "");
-		} else {
+			LabelStatusBulkUpdate* obj = static_cast<LabelStatusBulkUpdate*> (&status);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -109,23 +112,28 @@ LabelBulkUpdateRequest::toJson()
 	const gchar *idKey = "id";
 	json_object_set_member(pJsonObject, idKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getStatus();
+		std::string obj = getParentId();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
+		
+	}
+	const gchar *parent_idKey = "parent_id";
+	json_object_set_member(pJsonObject, parent_idKey, node);
+	if (isprimitive("LabelStatusBulkUpdate")) {
+		LabelStatusBulkUpdate obj = getStatus();
+		node = converttoJson(&obj, "LabelStatusBulkUpdate", "");
+	}
+	else {
+		
+		LabelStatusBulkUpdate obj = static_cast<LabelStatusBulkUpdate> (getStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getValue();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *valueKey = "value";
-	json_object_set_member(pJsonObject, valueKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -147,27 +155,27 @@ LabelBulkUpdateRequest::setId(std::string  id)
 }
 
 std::string
+LabelBulkUpdateRequest::getParentId()
+{
+	return parent_id;
+}
+
+void
+LabelBulkUpdateRequest::setParentId(std::string  parent_id)
+{
+	this->parent_id = parent_id;
+}
+
+LabelStatusBulkUpdate
 LabelBulkUpdateRequest::getStatus()
 {
 	return status;
 }
 
 void
-LabelBulkUpdateRequest::setStatus(std::string  status)
+LabelBulkUpdateRequest::setStatus(LabelStatusBulkUpdate  status)
 {
 	this->status = status;
-}
-
-std::string
-LabelBulkUpdateRequest::getValue()
-{
-	return value;
-}
-
-void
-LabelBulkUpdateRequest::setValue(std::string  value)
-{
-	this->value = value;
 }
 
 

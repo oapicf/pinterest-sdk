@@ -7,6 +7,7 @@ using namespace Tiny;
 TrendingTopic::TrendingTopic()
 {
 	description = std::string();
+	id = std::string();
 	percent_growth_mom = int(0);
 	pins = std::list<TrendingPin>();
 	related_interests = std::list<std::string>();
@@ -39,6 +40,19 @@ TrendingTopic::fromJson(std::string jsonObj)
 
 
         jsonToValue(&description, value, "std::string");
+
+
+    }
+
+    const char *idKey = "id";
+
+    if(object.has_key(idKey))
+    {
+        bourne::json value = object[idKey];
+
+
+
+        jsonToValue(&id, value, "std::string");
 
 
     }
@@ -163,6 +177,13 @@ TrendingTopic::toJson()
 
 
 
+    object["id"] = getId();
+
+
+
+
+
+
     object["percent_growth_mom"] = getPercentGrowthMom();
 
 
@@ -235,9 +256,21 @@ TrendingTopic::getDescription()
 }
 
 void
-TrendingTopic::setDescription(std::string  description)
+TrendingTopic::setDescription(std::string description)
 {
 	this->description = description;
+}
+
+std::string
+TrendingTopic::getId()
+{
+	return id;
+}
+
+void
+TrendingTopic::setId(std::string id)
+{
+	this->id = id;
 }
 
 int
@@ -247,7 +280,7 @@ TrendingTopic::getPercentGrowthMom()
 }
 
 void
-TrendingTopic::setPercentGrowthMom(int  percent_growth_mom)
+TrendingTopic::setPercentGrowthMom(int percent_growth_mom)
 {
 	this->percent_growth_mom = percent_growth_mom;
 }
@@ -259,7 +292,7 @@ TrendingTopic::getPins()
 }
 
 void
-TrendingTopic::setPins(std::list <TrendingPin> pins)
+TrendingTopic::setPins(std::list<TrendingPin> pins)
 {
 	this->pins = pins;
 }
@@ -271,7 +304,7 @@ TrendingTopic::getRelatedInterests()
 }
 
 void
-TrendingTopic::setRelatedInterests(std::list <std::string> related_interests)
+TrendingTopic::setRelatedInterests(std::list<std::string> related_interests)
 {
 	this->related_interests = related_interests;
 }
@@ -283,19 +316,19 @@ TrendingTopic::getRelatedSearches()
 }
 
 void
-TrendingTopic::setRelatedSearches(std::list <std::string> related_searches)
+TrendingTopic::setRelatedSearches(std::list<std::string> related_searches)
 {
 	this->related_searches = related_searches;
 }
 
-Map<string, string>
+std::map<std::string, long>
 TrendingTopic::getTimeSeries()
 {
 	return time_series;
 }
 
 void
-TrendingTopic::setTimeSeries(Map <string, string> time_series)
+TrendingTopic::setTimeSeries(std::map<std::string, long> time_series)
 {
 	this->time_series = time_series;
 }
@@ -307,7 +340,7 @@ TrendingTopic::getTitle()
 }
 
 void
-TrendingTopic::setTitle(std::string  title)
+TrendingTopic::setTitle(std::string title)
 {
 	this->title = title;
 }

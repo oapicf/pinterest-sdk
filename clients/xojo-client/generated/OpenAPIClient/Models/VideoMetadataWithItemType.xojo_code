@@ -23,7 +23,10 @@ Protected Class VideoMetadataWithItemType
 
 
 	#tag Property, Flags = &h0
-		item_type As Xoson.O.OptionalString
+		#tag Note
+			Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
+		#tag EndNote
+		item_type As String
 	#tag EndProperty
 
 
@@ -37,13 +40,38 @@ Protected Class VideoMetadataWithItemType
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Video url (HLS).  **Note:** This field is limited and not available to all apps.
+		#tag EndNote
+		video_url_hls As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Width (in pixels). Field maybe null after creation due to video processing time.
 		#tag EndNote
 		width As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
+    #tag Enum, Name = Item_typeEnum, Type = Integer, Flags = &h0
+        
+        Video
+        
+    #tag EndEnum
 
+
+	#tag Method, Flags = &h0
+		Shared Function Item_typeEnumToString(value As Item_typeEnum) As String
+		  Select Case value
+		    
+		    Case Item_typeEnum.Video
+		      Return "video"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -104,7 +132,7 @@ Protected Class VideoMetadataWithItemType
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="item_type"
+			Name="video_url"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -112,7 +140,7 @@ Protected Class VideoMetadataWithItemType
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="video_url"
+			Name="video_url_hls"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

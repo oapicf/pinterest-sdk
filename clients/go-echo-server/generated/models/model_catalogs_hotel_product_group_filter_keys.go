@@ -2,7 +2,7 @@ package models
 
 type CatalogsHotelProductGroupFilterKeys struct {
 
-	PRICE CatalogsProductGroupPricingCurrencyCriteria `json:"PRICE"`
+	PRICE PriceFilterPrice `json:"PRICE"`
 
 	HOTEL_ID CatalogsProductGroupMultipleStringCriteria `json:"HOTEL_ID"`
 

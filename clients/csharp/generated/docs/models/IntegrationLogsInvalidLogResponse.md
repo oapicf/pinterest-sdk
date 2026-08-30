@@ -5,7 +5,7 @@ Schema describing the response when a log has invalid fields.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RejectedLogs** | [**List&lt;IntegrationLogsInvalidLogResponseRejectedLogsInner&gt;**](IntegrationLogsInvalidLogResponseRejectedLogsInner.md) |  | [optional] 
+**RejectedLogs** | [**List&lt;IntegrationLogsInvalidLogResponseRejectedLogsItems&gt;**](IntegrationLogsInvalidLogResponseRejectedLogsItems.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

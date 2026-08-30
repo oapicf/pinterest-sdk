@@ -23,7 +23,7 @@ openapi_image_metadata() ->
 openapi_image_metadata(Fields) ->
   Default = [ {'description', binary() }
             , {'images', openapi_image_size:openapi_image_size() }
-            , {'item_type', binary() }
+            , {'item_type', elements([<<"image">>]) }
             , {'link', binary() }
             , {'title', binary() }
             ],

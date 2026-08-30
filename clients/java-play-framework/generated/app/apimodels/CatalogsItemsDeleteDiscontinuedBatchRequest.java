@@ -1,6 +1,5 @@
 package apimodels;
 
-import apimodels.BatchOperation;
 import apimodels.Country;
 import apimodels.ItemDeleteDiscontinuedBatchRecord;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ import javax.validation.Valid;
 /**
  * Request object to discontinue catalogs items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
   @JsonProperty("country")
@@ -212,7 +211,7 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
     
     NL2("NL"),
     
-    NO("NO"),
+    FALSE("false"),
     
     PL("PL"),
     
@@ -276,11 +275,39 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
 
   private LanguageEnum language;
 
+  /**
+   * Gets or Sets operation
+   */
+  public enum OperationEnum {
+    DELETE_DISCONTINUED("DELETE_DISCONTINUED");
+
+    private final String value;
+
+    OperationEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static OperationEnum fromValue(String value) {
+      for (OperationEnum b : OperationEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
   @JsonProperty("operation")
   @NotNull
-@Valid
 
-  private BatchOperation operation;
+  private OperationEnum operation;
 
   public CatalogsItemsDeleteDiscontinuedBatchRequest country(Country country) {
     this.country = country;
@@ -341,7 +368,7 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
     this.language = language;
   }
 
-  public CatalogsItemsDeleteDiscontinuedBatchRequest operation(BatchOperation operation) {
+  public CatalogsItemsDeleteDiscontinuedBatchRequest operation(OperationEnum operation) {
     this.operation = operation;
     return this;
   }
@@ -350,11 +377,11 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
    * Get operation
    * @return operation
   **/
-  public BatchOperation getOperation() {
+  public OperationEnum getOperation() {
     return operation;
   }
 
-  public void setOperation(BatchOperation operation) {
+  public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
 
@@ -398,10 +425,7 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

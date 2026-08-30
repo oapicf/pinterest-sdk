@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -25,14 +33,17 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param bidOptions 
  * @param country 
  * @param itemId The catalog retail item id in the merchant namespace
  * @param language 
- * @param bidOptions 
  */
 
 
 data class AdvancedAuctionItem (
+
+    @Json(name = "bid_options")
+    val bidOptions: AdvancedAuctionBidOptions,
 
     @Json(name = "country")
     val country: Country,
@@ -42,10 +53,7 @@ data class AdvancedAuctionItem (
     val itemId: kotlin.String,
 
     @Json(name = "language")
-    val language: Language,
-
-    @Json(name = "bid_options")
-    val bidOptions: AdvancedAuctionBidOptions
+    val language: Language
 
 ) {
 

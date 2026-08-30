@@ -48,7 +48,7 @@ MaxPriceFilter::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupPricingCriteria")) {
-			jsonToValue(&mAX_PRICE, node, "CatalogsProductGroupPricingCriteria", "");
+			jsonToValue(&mAX_PRICE, node, "CatalogsProductGroupPricingCriteria", "CatalogsProductGroupPricingCriteria");
 		} else {
 			
 			CatalogsProductGroupPricingCriteria* obj = static_cast<CatalogsProductGroupPricingCriteria*> (&mAX_PRICE);

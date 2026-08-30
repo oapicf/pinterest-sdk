@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -92,8 +92,8 @@ func NewAdsAnalyticsAdTargetingTypeFromValue(v string) (AdsAnalyticsAdTargetingT
 }
 
 
-
-// AssertAdsAnalyticsAdTargetingTypeRequired checks if the required fields are not zero-ed
+// AssertAdsAnalyticsAdTargetingTypeRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAdsAnalyticsAdTargetingTypeRequired(obj AdsAnalyticsAdTargetingType) error {
 	return nil
 }

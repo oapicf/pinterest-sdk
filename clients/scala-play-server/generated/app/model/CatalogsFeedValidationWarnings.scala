@@ -216,7 +216,7 @@ import play.api.libs.json._
   * @param VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED A video is required in the item when ad_video fields are provided.
   * @param WEIGHT_UNIT_INVALID Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class CatalogsFeedValidationWarnings(
   AD_IMAGE_0_LINK_DUPLICATED: Option[Int],
   AD_IMAGE_0_LINK_LENGTH_TOO_LONG: Option[Int],
@@ -393,7 +393,7 @@ case class CatalogsFeedValidationWarnings(
   DESCRIPTION_LENGTH_TOO_LONG: Option[Int],
   DUPLICATE_HEADERS: Option[Int],
   EXPIRATION_DATE_INVALID: Option[Int],
-  FETCH_SAME_SIGNATURE: Option[CatalogsFeedValidationWarnings.FETCHSAMESIGNATURE.Value],
+  FETCH_SAME_SIGNATURE: Option[Int],
   GENDER_INVALID: Option[Int],
   GTIN_INVALID: Option[Int],
   IMAGE_LINK_WARNING: Option[Int],
@@ -433,13 +433,5 @@ case class CatalogsFeedValidationWarnings(
 
 object CatalogsFeedValidationWarnings {
   implicit lazy val catalogsFeedValidationWarningsJsonFormat: Format[CatalogsFeedValidationWarnings] = Json.format[CatalogsFeedValidationWarnings]
-
-  // noinspection TypeAnnotation
-  object FETCHSAMESIGNATURE extends Enumeration {
-    val _1 = Value("1")
-
-    type FETCHSAMESIGNATURE = Value
-    implicit lazy val FETCHSAMESIGNATUREJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
 }
 

@@ -11,7 +11,7 @@ MyApp.add_route('GET', '/v5/integrations/{id}', {
   "parameters" => [
     {
       "name" => "id",
-      "description" => "Integration ID.",
+      "description" => "Integration record ID.",
       "dataType" => "String",
       "paramType" => "path",
     },
@@ -40,7 +40,7 @@ MyApp.add_route('GET', '/v5/integrations', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -58,7 +58,7 @@ MyApp.add_route('DELETE', '/v5/integrations/commerce/{external_business_id}', {
   "resourcePath" => "/Integrations",
   "summary" => "Delete commerce integration",
   "nickname" => "integrations_commerce/del",
-  "responseClass" => "void",
+  "responseClass" => "IntegrationMetadata",
   "endpoint" => "/integrations/commerce/{external_business_id}",
   "notes" => "Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.",
   "parameters" => [
@@ -114,8 +114,8 @@ MyApp.add_route('PATCH', '/v5/integrations/commerce/{external_business_id}', {
     },
     {
       "name" => "body",
-      "description" => "Parameters to get create/update the Integration Metadata",
-      "dataType" => "IntegrationRequestPatch",
+      "description" => "",
+      "dataType" => "IntegrationMetadataUpdate",
       "paramType" => "body",
     }
     ]}) do
@@ -136,8 +136,8 @@ MyApp.add_route('POST', '/v5/integrations/commerce', {
   "parameters" => [
     {
       "name" => "body",
-      "description" => "Parameters to get create/update the Integration Metadata",
-      "dataType" => "IntegrationRequest",
+      "description" => "",
+      "dataType" => "IntegrationMetadataCreate",
       "paramType" => "body",
     }
     ]}) do
@@ -158,8 +158,8 @@ MyApp.add_route('POST', '/v5/integrations/logs', {
   "parameters" => [
     {
       "name" => "body",
-      "description" => "Ingest log information from external integration application.",
-      "dataType" => "IntegrationLogsRequest",
+      "description" => "",
+      "dataType" => "IntegrationLogsRequestCreate",
       "paramType" => "body",
     }
     ]}) do

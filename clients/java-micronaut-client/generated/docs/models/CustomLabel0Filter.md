@@ -8,7 +8,7 @@ The class is defined in **[CustomLabel0Filter.java](../../src/main/java/org/open
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CUSTOM_LABEL_0** | `CatalogsProductGroupFilterOperatorTypeCriteria` |  | 
+**CUSTOM_LABEL_0** | [`CatalogsProductGroupFilterOperatorTypeCriteria`](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
 
 
 

@@ -1,7 +1,7 @@
 #tag Interface
 Protected Interface IntegrationsApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub IntegrationsCommerceDelCallback(status As OpenAPIClient.OpenAPIClientException)
+		Sub IntegrationsCommerceDelCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.IntegrationMetadata)
 		  
 		End Sub
 	#tag EndMethod

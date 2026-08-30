@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "FollowUser",
+  "fields": [
+    {
+      "name": "type",
+      "type": ["null", "string"],
+      "doc": "Always 'user'",
+      "default": null
+    },
+    {
+      "name": "username",
+      "type": ["null", "string"],
+      "doc": "Username",
+      "default": null
+    }
+  ]
+
+}

@@ -2,31 +2,35 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Counts of total, ingested, and not ingested videos in the feed file. The counts may not appear early in the process.
  */
 
 @Schema(name = "CatalogsFeedVideoCounts", description = "Counts of total, ingested, and not ingested videos in the feed file. The counts may not appear early in the process.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedVideoCounts {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ingestedVideos;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer notIngestedVideos;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer totalVideos;
 
   public CatalogsFeedVideoCounts ingestedVideos(@Nullable Integer ingestedVideos) {
@@ -45,6 +49,7 @@ public class CatalogsFeedVideoCounts {
     return ingestedVideos;
   }
 
+  @JsonProperty("ingested_videos")
   public void setIngestedVideos(@Nullable Integer ingestedVideos) {
     this.ingestedVideos = ingestedVideos;
   }
@@ -65,6 +70,7 @@ public class CatalogsFeedVideoCounts {
     return notIngestedVideos;
   }
 
+  @JsonProperty("not_ingested_videos")
   public void setNotIngestedVideos(@Nullable Integer notIngestedVideos) {
     this.notIngestedVideos = notIngestedVideos;
   }
@@ -85,6 +91,7 @@ public class CatalogsFeedVideoCounts {
     return totalVideos;
   }
 
+  @JsonProperty("total_videos")
   public void setTotalVideos(@Nullable Integer totalVideos) {
     this.totalVideos = totalVideos;
   }
@@ -123,11 +130,8 @@ public class CatalogsFeedVideoCounts {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

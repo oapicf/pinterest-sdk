@@ -86,7 +86,7 @@ CatalogsListProductsByFeedBasedFilter::getFeedId()
 }
 
 void
-CatalogsListProductsByFeedBasedFilter::setFeedId(std::string  feed_id)
+CatalogsListProductsByFeedBasedFilter::setFeedId(std::string feed_id)
 {
 	this->feed_id = feed_id;
 }
@@ -98,7 +98,7 @@ CatalogsListProductsByFeedBasedFilter::getFilters()
 }
 
 void
-CatalogsListProductsByFeedBasedFilter::setFilters(CatalogsProductGroupFilters  filters)
+CatalogsListProductsByFeedBasedFilter::setFilters(CatalogsProductGroupFilters filters)
 {
 	this->filters = filters;
 }

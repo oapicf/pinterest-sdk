@@ -65,7 +65,10 @@ HOTEL(String.valueOf("HOTEL"));
 
   private CatalogsHotelProductGroupFilters filters;
 
-  @ApiModelProperty(value = "")
+ /**
+  * Name of catalog product group
+  */
+  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
 
   private String name;
  /**
@@ -126,7 +129,7 @@ HOTEL(String.valueOf("HOTEL"));
   }
 
  /**
-   * Get name
+   * Name of catalog product group
    * @return name
   **/
   @JsonProperty("name")
@@ -181,10 +184,7 @@ HOTEL(String.valueOf("HOTEL"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

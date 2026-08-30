@@ -15,4 +15,6 @@ class ConversionEventResponse {
     String conversionTagId
     /* Creation date in epoch format. */
     Integer createdTime
+    /* For advertiser-defined events, the reporting event label shown in optimization UIs. */
+    String reportingConversionEvent
 }

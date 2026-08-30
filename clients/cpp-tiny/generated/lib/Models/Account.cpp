@@ -7,7 +7,7 @@ using namespace Tiny;
 Account::Account()
 {
 	about = std::string();
-	account_type = std::string();
+	account_type = null;
 	board_count = int(0);
 	business_name = std::string();
 	follower_count = int(0);
@@ -56,8 +56,9 @@ Account::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&account_type, value, "std::string");
 
+        UserAccountType* obj = &account_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -210,8 +211,8 @@ Account::toJson()
 
 
 
-    object["account_type"] = getAccountType();
 
+	object["account_type"] = getAccountType().toJson();
 
 
 
@@ -295,19 +296,19 @@ Account::getAbout()
 }
 
 void
-Account::setAbout(std::string  about)
+Account::setAbout(std::string about)
 {
 	this->about = about;
 }
 
-std::string
+UserAccountType
 Account::getAccountType()
 {
 	return account_type;
 }
 
 void
-Account::setAccountType(std::string  account_type)
+Account::setAccountType(UserAccountType account_type)
 {
 	this->account_type = account_type;
 }
@@ -319,7 +320,7 @@ Account::getBoardCount()
 }
 
 void
-Account::setBoardCount(int  board_count)
+Account::setBoardCount(int board_count)
 {
 	this->board_count = board_count;
 }
@@ -331,7 +332,7 @@ Account::getBusinessName()
 }
 
 void
-Account::setBusinessName(std::string  business_name)
+Account::setBusinessName(std::string business_name)
 {
 	this->business_name = business_name;
 }
@@ -343,7 +344,7 @@ Account::getFollowerCount()
 }
 
 void
-Account::setFollowerCount(int  follower_count)
+Account::setFollowerCount(int follower_count)
 {
 	this->follower_count = follower_count;
 }
@@ -355,7 +356,7 @@ Account::getFollowingCount()
 }
 
 void
-Account::setFollowingCount(int  following_count)
+Account::setFollowingCount(int following_count)
 {
 	this->following_count = following_count;
 }
@@ -367,7 +368,7 @@ Account::getId()
 }
 
 void
-Account::setId(std::string  id)
+Account::setId(std::string id)
 {
 	this->id = id;
 }
@@ -379,7 +380,7 @@ Account::getMonthlyViews()
 }
 
 void
-Account::setMonthlyViews(int  monthly_views)
+Account::setMonthlyViews(int monthly_views)
 {
 	this->monthly_views = monthly_views;
 }
@@ -391,7 +392,7 @@ Account::getPinCount()
 }
 
 void
-Account::setPinCount(int  pin_count)
+Account::setPinCount(int pin_count)
 {
 	this->pin_count = pin_count;
 }
@@ -403,7 +404,7 @@ Account::getProfileImage()
 }
 
 void
-Account::setProfileImage(std::string  profile_image)
+Account::setProfileImage(std::string profile_image)
 {
 	this->profile_image = profile_image;
 }
@@ -415,7 +416,7 @@ Account::getUsername()
 }
 
 void
-Account::setUsername(std::string  username)
+Account::setUsername(std::string username)
 {
 	this->username = username;
 }
@@ -427,7 +428,7 @@ Account::getWebsiteUrl()
 }
 
 void
-Account::setWebsiteUrl(std::string  website_url)
+Account::setWebsiteUrl(std::string website_url)
 {
 	this->website_url = website_url;
 }

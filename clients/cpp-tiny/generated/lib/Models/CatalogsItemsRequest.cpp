@@ -108,7 +108,7 @@ CatalogsItemsRequest::getCountry()
 }
 
 void
-CatalogsItemsRequest::setCountry(Country  country)
+CatalogsItemsRequest::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -120,7 +120,7 @@ CatalogsItemsRequest::getFilters()
 }
 
 void
-CatalogsItemsRequest::setFilters(CatalogsItemsPostFilters  filters)
+CatalogsItemsRequest::setFilters(CatalogsItemsPostFilters filters)
 {
 	this->filters = filters;
 }
@@ -132,7 +132,7 @@ CatalogsItemsRequest::getLanguage()
 }
 
 void
-CatalogsItemsRequest::setLanguage(std::string  language)
+CatalogsItemsRequest::setLanguage(std::string language)
 {
 	this->language = language;
 }

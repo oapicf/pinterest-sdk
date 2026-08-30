@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | Subinterest ID. | [optional] 
-**index** | **float** | Subinterest affinity index. | [optional] 
-**key** | **str** | Interest unique key (same as ID). | [optional] 
-**name** | **str** | Subinterest name. | [optional] 
-**ratio** | **float** | Subinterest&#39;s percent of category&#39;s total audience. | [optional] 
+**id** | **str** |  | [optional] 
+**index** | **float** |  | [optional] 
+**key** | **str** |  | [optional] 
+**name** | **str** |  | [optional] 
+**ratio** | **float** |  | [optional] 
 
 ## Example
 

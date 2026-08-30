@@ -9,9 +9,12 @@
 -export_type([openapi_ad_group_update_request/0]).
 
 -type openapi_ad_group_update_request() ::
-  [ {'auto_targeting_enabled', boolean() }
+  [ {'bid_multiplier', integer() }
+  | {'id', binary() }
+  | {'targeting_spec_operations', list(openapi_targeting_spec_operations:openapi_targeting_spec_operations()) }
+  | {'auto_targeting_enabled', boolean() }
   | {'bid_in_micro_currency', integer() }
-  | {'bid_strategy_type', binary() }
+  | {'bid_strategy_type', openapi_bid_strategy_type:openapi_bid_strategy_type() }
   | {'billable_event', openapi_action_type:openapi_action_type() }
   | {'budget_in_micro_currency', integer() }
   | {'budget_type', openapi_budget_type:openapi_budget_type() }
@@ -20,18 +23,17 @@
   | {'is_creative_optimization', boolean() }
   | {'lifetime_frequency_cap', integer() }
   | {'name', binary() }
-  | {'optimization_goal_metadata', openapi_optimization_goal_metadata:openapi_optimization_goal_metadata() }
+  | {'optimization_goal_metadata', map() }
   | {'pacing_delivery_type', openapi_pacing_delivery_type:openapi_pacing_delivery_type() }
   | {'placement_group', openapi_placement_group_type:openapi_placement_group_type() }
   | {'promotion_application_level', binary() }
   | {'promotion_id', binary() }
+  | {'promotion_ids', list(binary()) }
   | {'start_time', integer() }
   | {'status', openapi_entity_status:openapi_entity_status() }
   | {'targeting_spec', openapi_targeting_spec:openapi_targeting_spec() }
   | {'targeting_template_ids', list(binary()) }
-  | {'tracking_urls', openapi_tracking_urls:openapi_tracking_urls() }
-  | {'bid_multiplier', integer() }
-  | {'id', binary() }
+  | {'tracking_urls', map() }
   ].
 
 
@@ -39,9 +41,12 @@ openapi_ad_group_update_request() ->
     openapi_ad_group_update_request([]).
 
 openapi_ad_group_update_request(Fields) ->
-  Default = [ {'auto_targeting_enabled', boolean() }
+  Default = [ {'bid_multiplier', integer() }
+            , {'id', binary() }
+            , {'targeting_spec_operations', list(openapi_targeting_spec_operations:openapi_targeting_spec_operations()) }
+            , {'auto_targeting_enabled', boolean() }
             , {'bid_in_micro_currency', integer() }
-            , {'bid_strategy_type', elements([<<"AUTOMATIC_BID">>, <<"MAX_BID">>, <<"TARGET_AVG">>, <<"">>]) }
+            , {'bid_strategy_type', openapi_bid_strategy_type:openapi_bid_strategy_type() }
             , {'billable_event', openapi_action_type:openapi_action_type() }
             , {'budget_in_micro_currency', integer() }
             , {'budget_type', openapi_budget_type:openapi_budget_type() }
@@ -50,18 +55,17 @@ openapi_ad_group_update_request(Fields) ->
             , {'is_creative_optimization', boolean() }
             , {'lifetime_frequency_cap', integer() }
             , {'name', binary() }
-            , {'optimization_goal_metadata', openapi_optimization_goal_metadata:openapi_optimization_goal_metadata() }
+            , {'optimization_goal_metadata', map() }
             , {'pacing_delivery_type', openapi_pacing_delivery_type:openapi_pacing_delivery_type() }
             , {'placement_group', openapi_placement_group_type:openapi_placement_group_type() }
             , {'promotion_application_level', elements([<<"NONE">>, <<"ITEM">>, <<"AD_GROUP">>, <<"">>]) }
             , {'promotion_id', binary() }
+            , {'promotion_ids', list(binary()) }
             , {'start_time', integer() }
             , {'status', openapi_entity_status:openapi_entity_status() }
             , {'targeting_spec', openapi_targeting_spec:openapi_targeting_spec() }
             , {'targeting_template_ids', list(binary()) }
-            , {'tracking_urls', openapi_tracking_urls:openapi_tracking_urls() }
-            , {'bid_multiplier', integer() }
-            , {'id', binary() }
+            , {'tracking_urls', map() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

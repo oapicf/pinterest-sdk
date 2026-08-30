@@ -8,6 +8,14 @@ Protected Class AdvancedAuctionItemsSubmitDeleteRecord
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+		#tag EndNote
+		errors() As OpenAPIClient.Models.AdvancedAuctionOperationError
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			The catalog retail item id in the merchant namespace
 		#tag EndNote
 		item_id As String
@@ -20,14 +28,28 @@ Protected Class AdvancedAuctionItemsSubmitDeleteRecord
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
-		#tag EndNote
-		errors() As OpenAPIClient.Models.AdvancedAuctionOperationError
+		operation As String
 	#tag EndProperty
 
 
+    #tag Enum, Name = OperationEnum, Type = Integer, Flags = &h0
+        
+        Delete
+        
+    #tag EndEnum
 
+
+	#tag Method, Flags = &h0
+		Shared Function OperationEnumToString(value As OperationEnum) As String
+		  Select Case value
+		    
+		    Case OperationEnum.Delete
+		      Return "DELETE"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -72,6 +94,14 @@ Protected Class AdvancedAuctionItemsSubmitDeleteRecord
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="errors"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AdvancedAuctionOperationError"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="item_id"
 			Visible=false
 			Group="Behavior"
@@ -85,14 +115,6 @@ Protected Class AdvancedAuctionItemsSubmitDeleteRecord
 			Group="Behavior"
 			InitialValue=""
 			Type="Language"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="errors"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="AdvancedAuctionOperationError"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

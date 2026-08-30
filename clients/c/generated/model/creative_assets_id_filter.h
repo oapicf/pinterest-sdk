@@ -20,7 +20,7 @@ typedef struct creative_assets_id_filter_t creative_assets_id_filter_t;
 
 
 typedef struct creative_assets_id_filter_t {
-    catalogs_product_group_multiple_string_criteria_t *creative_assets_id; //object
+    struct catalogs_product_group_multiple_string_criteria_t *creative_assets_id; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } creative_assets_id_filter_t;

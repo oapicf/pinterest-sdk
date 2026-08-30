@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -23,10 +23,12 @@ type CatalogsCreativeAssetsProductGroupUpdateRequest struct {
 
 	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters,omitempty"`
 
+	// Name of catalog product group
 	Name string `json:"name,omitempty"`
 }
 
-// AssertCatalogsCreativeAssetsProductGroupUpdateRequestRequired checks if the required fields are not zero-ed
+// AssertCatalogsCreativeAssetsProductGroupUpdateRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsCreativeAssetsProductGroupUpdateRequestRequired(obj CatalogsCreativeAssetsProductGroupUpdateRequest) error {
 	if err := AssertCatalogsCreativeAssetsProductGroupFiltersRequired(obj.Filters); err != nil {
 		return err

@@ -1,0 +1,43 @@
+namespace OpenAPI.Model
+
+open System
+open System.Collections.Generic
+open Newtonsoft.Json
+open OpenAPI.Model.LeadFormPolicyLink
+open OpenAPI.Model.LeadFormQuestion
+open OpenAPI.Model.LeadFormStatus
+open OpenAPI.Model.string option
+
+module LeadForm =
+
+  //#region LeadForm
+
+  [<CLIMutable>]
+  type LeadForm = {
+    [<JsonProperty(PropertyName = "ad_account_id")>]
+    AdAccountId : string;
+    [<JsonProperty(PropertyName = "completion_message")>]
+    CompletionMessage : string option;
+    [<JsonProperty(PropertyName = "created_time")>]
+    CreatedTime : int;
+    [<JsonProperty(PropertyName = "disclosure_language")>]
+    DisclosureLanguage : string option;
+    [<JsonProperty(PropertyName = "has_accepted_terms")>]
+    HasAcceptedTerms : bool;
+    [<JsonProperty(PropertyName = "id")>]
+    Id : string;
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string option;
+    [<JsonProperty(PropertyName = "policy_links")>]
+    PolicyLinks : LeadFormPolicyLink[];
+    [<JsonProperty(PropertyName = "privacy_policy_link")>]
+    PrivacyPolicyLink : string option;
+    [<JsonProperty(PropertyName = "questions")>]
+    Questions : LeadFormQuestion[];
+    [<JsonProperty(PropertyName = "status")>]
+    Status : LeadFormStatus;
+    [<JsonProperty(PropertyName = "updated_time")>]
+    UpdatedTime : int;
+  }
+
+  //#endregion

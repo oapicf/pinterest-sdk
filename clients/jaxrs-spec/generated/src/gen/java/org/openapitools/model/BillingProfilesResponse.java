@@ -2,6 +2,10 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.BillingProfileCardType;
+import org.openapitools.model.BillingProfilePaymentMethodBrand;
+import org.openapitools.model.BillingProfileStatus;
+import org.openapitools.model.BillingType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -16,202 +20,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("BillingProfilesResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BillingProfilesResponse   {
   private String advertiserId;
-  public enum BillingTypeEnum {
-
-    CREDIT_CARD(String.valueOf("CREDIT_CARD")), INVOICE(String.valueOf("INVOICE")), INTERNAL(String.valueOf("INTERNAL")), RECURRING(String.valueOf("RECURRING")), PREPAID(String.valueOf("PREPAID"));
-
-
-    private String value;
-
-    BillingTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static BillingTypeEnum fromString(String s) {
-        for (BillingTypeEnum b : BillingTypeEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static BillingTypeEnum fromValue(String value) {
-        for (BillingTypeEnum b : BillingTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private BillingTypeEnum billingType;
-  public enum CardTypeEnum {
-
-    UNKNOWN(String.valueOf("UNKNOWN")), VISA(String.valueOf("VISA")), MASTERCARD(String.valueOf("MASTERCARD")), AMERICAN_EXPRESS(String.valueOf("AMERICAN_EXPRESS")), DISCOVER(String.valueOf("DISCOVER")), ELO(String.valueOf("ELO"));
-
-
-    private String value;
-
-    CardTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static CardTypeEnum fromString(String s) {
-        for (CardTypeEnum b : CardTypeEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static CardTypeEnum fromValue(String value) {
-        for (CardTypeEnum b : CardTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private CardTypeEnum cardType;
+  private BillingType billingType;
+  private BillingProfileCardType cardType;
   private String id;
-  public enum PaymentMethodBrandEnum {
-
-    UNKNOWN(String.valueOf("UNKNOWN")), VISA(String.valueOf("VISA")), MASTERCARD(String.valueOf("MASTERCARD")), AMERICAN_EXPRESS(String.valueOf("AMERICAN_EXPRESS")), DISCOVER(String.valueOf("DISCOVER")), SOFORT(String.valueOf("SOFORT")), DINERS_CLUB(String.valueOf("DINERS_CLUB")), ELO(String.valueOf("ELO")), CARTE_BANCAIRE(String.valueOf("CARTE_BANCAIRE"));
-
-
-    private String value;
-
-    PaymentMethodBrandEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static PaymentMethodBrandEnum fromString(String s) {
-        for (PaymentMethodBrandEnum b : PaymentMethodBrandEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static PaymentMethodBrandEnum fromValue(String value) {
-        for (PaymentMethodBrandEnum b : PaymentMethodBrandEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private PaymentMethodBrandEnum paymentMethodBrand;
-  public enum StatusEnum {
-
-    UNSPECIFIED(String.valueOf("UNSPECIFIED")), VALID(String.valueOf("VALID")), INVALID(String.valueOf("INVALID")), PENDING(String.valueOf("PENDING")), DELETED(String.valueOf("DELETED")), SECONDARY(String.valueOf("SECONDARY")), PENDING_SECONDARY(String.valueOf("PENDING_SECONDARY"));
-
-
-    private String value;
-
-    StatusEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static StatusEnum fromString(String s) {
-        for (StatusEnum b : StatusEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String value) {
-        for (StatusEnum b : StatusEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private StatusEnum status;
+  private BillingProfilePaymentMethodBrand paymentMethodBrand;
+  private BillingProfileStatus status;
 
   public BillingProfilesResponse() {
   }
@@ -239,7 +55,7 @@ public class BillingProfilesResponse   {
   /**
    * Billing type of the advertiser
    **/
-  public BillingProfilesResponse billingType(BillingTypeEnum billingType) {
+  public BillingProfilesResponse billingType(BillingType billingType) {
     this.billingType = billingType;
     return this;
   }
@@ -247,19 +63,19 @@ public class BillingProfilesResponse   {
   
   @ApiModelProperty(example = "CREDIT_CARD", value = "Billing type of the advertiser")
   @JsonProperty("billing_type")
-  public BillingTypeEnum getBillingType() {
+  public BillingType getBillingType() {
     return billingType;
   }
 
   @JsonProperty("billing_type")
-  public void setBillingType(BillingTypeEnum billingType) {
+  public void setBillingType(BillingType billingType) {
     this.billingType = billingType;
   }
 
   /**
    * Type of the card.
    **/
-  public BillingProfilesResponse cardType(CardTypeEnum cardType) {
+  public BillingProfilesResponse cardType(BillingProfileCardType cardType) {
     this.cardType = cardType;
     return this;
   }
@@ -267,12 +83,12 @@ public class BillingProfilesResponse   {
   
   @ApiModelProperty(example = "VISA", value = "Type of the card.")
   @JsonProperty("card_type")
-  public CardTypeEnum getCardType() {
+  public BillingProfileCardType getCardType() {
     return cardType;
   }
 
   @JsonProperty("card_type")
-  public void setCardType(CardTypeEnum cardType) {
+  public void setCardType(BillingProfileCardType cardType) {
     this.cardType = cardType;
   }
 
@@ -299,7 +115,7 @@ public class BillingProfilesResponse   {
   /**
    * Brand of the payment method.
    **/
-  public BillingProfilesResponse paymentMethodBrand(PaymentMethodBrandEnum paymentMethodBrand) {
+  public BillingProfilesResponse paymentMethodBrand(BillingProfilePaymentMethodBrand paymentMethodBrand) {
     this.paymentMethodBrand = paymentMethodBrand;
     return this;
   }
@@ -307,19 +123,19 @@ public class BillingProfilesResponse   {
   
   @ApiModelProperty(example = "VISA", value = "Brand of the payment method.")
   @JsonProperty("payment_method_brand")
-  public PaymentMethodBrandEnum getPaymentMethodBrand() {
+  public BillingProfilePaymentMethodBrand getPaymentMethodBrand() {
     return paymentMethodBrand;
   }
 
   @JsonProperty("payment_method_brand")
-  public void setPaymentMethodBrand(PaymentMethodBrandEnum paymentMethodBrand) {
+  public void setPaymentMethodBrand(BillingProfilePaymentMethodBrand paymentMethodBrand) {
     this.paymentMethodBrand = paymentMethodBrand;
   }
 
   /**
    * Status of the billing.
    **/
-  public BillingProfilesResponse status(StatusEnum status) {
+  public BillingProfilesResponse status(BillingProfileStatus status) {
     this.status = status;
     return this;
   }
@@ -327,12 +143,12 @@ public class BillingProfilesResponse   {
   
   @ApiModelProperty(example = "INVALID", value = "Status of the billing.")
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  public BillingProfileStatus getStatus() {
     return status;
   }
 
   @JsonProperty("status")
-  public void setStatus(StatusEnum status) {
+  public void setStatus(BillingProfileStatus status) {
     this.status = status;
   }
 
@@ -379,12 +195,8 @@ public class BillingProfilesResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

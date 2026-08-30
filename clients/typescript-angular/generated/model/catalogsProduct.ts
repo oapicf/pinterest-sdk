@@ -12,15 +12,10 @@ import { CatalogsRetailProduct } from './catalogsRetailProduct';
 import { Pin } from './pin';
 import { CatalogsCreativeAssetsProduct } from './catalogsCreativeAssetsProduct';
 import { CatalogsHotelProduct } from './catalogsHotelProduct';
-import { CatalogsType } from './catalogsType';
 
 
-/**
- * Catalogs product for all verticals
- */
 /**
  * @type CatalogsProduct
- * Catalogs product for all verticals
  * @export
  */
 export type CatalogsProduct = CatalogsCreativeAssetsProduct | CatalogsHotelProduct | CatalogsRetailProduct;

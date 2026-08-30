@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The source of conversion events ingestion",
+  "name": "ConversionEventIngestionSource",
+  "symbols": [
+    "TAG",
+    "MMP",
+    "FILE_UPLOAD",
+    "CONVERSIONS_API",
+    "NATIVE"
+  ]
+}

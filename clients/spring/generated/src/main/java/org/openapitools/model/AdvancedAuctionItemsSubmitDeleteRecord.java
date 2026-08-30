@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -17,32 +18,65 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Object describing an item bid option deletion operation
  */
 
 @Schema(name = "AdvancedAuctionItemsSubmitDeleteRecord", description = "Object describing an item bid option deletion operation")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdvancedAuctionItemsSubmitDeleteRecord implements AdvancedAuctionItemsSubmitRecord {
 
   private Country country;
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<@Valid AdvancedAuctionOperationError> errors = new ArrayList<>();
 
   private String itemId;
 
   private Language language;
 
-  @Valid
-  private List<@Valid AdvancedAuctionOperationError> errors = new ArrayList<>();
+  /**
+   * Gets or Sets operation
+   */
+  public enum OperationEnum {
+    DELETE("DELETE");
 
-  private AdvancedAuctionOperation operation;
+    private final String value;
+
+    OperationEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static OperationEnum fromValue(String value) {
+      for (OperationEnum b : OperationEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private OperationEnum operation;
 
   public AdvancedAuctionItemsSubmitDeleteRecord() {
     super();
@@ -51,7 +85,7 @@ public class AdvancedAuctionItemsSubmitDeleteRecord implements AdvancedAuctionIt
   /**
    * Constructor with only required parameters
    */
-  public AdvancedAuctionItemsSubmitDeleteRecord(Country country, String itemId, Language language) {
+  public AdvancedAuctionItemsSubmitDeleteRecord(Country country, String itemId, Language language, OperationEnum operation) {
     this.country = country;
     this.itemId = itemId;
     this.language = language;
@@ -74,48 +108,9 @@ public class AdvancedAuctionItemsSubmitDeleteRecord implements AdvancedAuctionIt
     return country;
   }
 
+  @JsonProperty("country")
   public void setCountry(Country country) {
     this.country = country;
-  }
-
-  public AdvancedAuctionItemsSubmitDeleteRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-  /**
-   * The catalog retail item id in the merchant namespace
-   * @return itemId
-   */
-  @NotNull 
-  @Schema(name = "item_id", example = "DS0294-M", description = "The catalog retail item id in the merchant namespace", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
-
-  public AdvancedAuctionItemsSubmitDeleteRecord language(Language language) {
-    this.language = language;
-    return this;
-  }
-
-  /**
-   * Get language
-   * @return language
-   */
-  @NotNull @Valid 
-  @Schema(name = "language", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("language")
-  public Language getLanguage() {
-    return language;
-  }
-
-  public void setLanguage(Language language) {
-    this.language = language;
   }
 
   public AdvancedAuctionItemsSubmitDeleteRecord errors(List<@Valid AdvancedAuctionOperationError> errors) {
@@ -142,11 +137,54 @@ public class AdvancedAuctionItemsSubmitDeleteRecord implements AdvancedAuctionIt
     return errors;
   }
 
+  @JsonProperty("errors")
   public void setErrors(List<@Valid AdvancedAuctionOperationError> errors) {
     this.errors = errors;
   }
 
-  public AdvancedAuctionItemsSubmitDeleteRecord operation(AdvancedAuctionOperation operation) {
+  public AdvancedAuctionItemsSubmitDeleteRecord itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+  /**
+   * The catalog retail item id in the merchant namespace
+   * @return itemId
+   */
+  @NotNull 
+  @Schema(name = "item_id", example = "DS0294-M", description = "The catalog retail item id in the merchant namespace", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+
+  @JsonProperty("item_id")
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
+  public AdvancedAuctionItemsSubmitDeleteRecord language(Language language) {
+    this.language = language;
+    return this;
+  }
+
+  /**
+   * Get language
+   * @return language
+   */
+  @NotNull @Valid 
+  @Schema(name = "language", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("language")
+  public Language getLanguage() {
+    return language;
+  }
+
+  @JsonProperty("language")
+  public void setLanguage(Language language) {
+    this.language = language;
+  }
+
+  public AdvancedAuctionItemsSubmitDeleteRecord operation(OperationEnum operation) {
     this.operation = operation;
     return this;
   }
@@ -155,14 +193,15 @@ public class AdvancedAuctionItemsSubmitDeleteRecord implements AdvancedAuctionIt
    * Get operation
    * @return operation
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "operation", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("operation")
-  public AdvancedAuctionOperation getOperation() {
+  public OperationEnum getOperation() {
     return operation;
   }
 
-  public void setOperation(AdvancedAuctionOperation operation) {
+  @JsonProperty("operation")
+  public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
 
@@ -176,15 +215,15 @@ public class AdvancedAuctionItemsSubmitDeleteRecord implements AdvancedAuctionIt
     }
     AdvancedAuctionItemsSubmitDeleteRecord advancedAuctionItemsSubmitDeleteRecord = (AdvancedAuctionItemsSubmitDeleteRecord) o;
     return Objects.equals(this.country, advancedAuctionItemsSubmitDeleteRecord.country) &&
+        Objects.equals(this.errors, advancedAuctionItemsSubmitDeleteRecord.errors) &&
         Objects.equals(this.itemId, advancedAuctionItemsSubmitDeleteRecord.itemId) &&
         Objects.equals(this.language, advancedAuctionItemsSubmitDeleteRecord.language) &&
-        Objects.equals(this.errors, advancedAuctionItemsSubmitDeleteRecord.errors) &&
         Objects.equals(this.operation, advancedAuctionItemsSubmitDeleteRecord.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, itemId, language, errors, operation);
+    return Objects.hash(country, errors, itemId, language, operation);
   }
 
   @Override
@@ -192,9 +231,9 @@ public class AdvancedAuctionItemsSubmitDeleteRecord implements AdvancedAuctionIt
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItemsSubmitDeleteRecord {\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -204,11 +243,8 @@ public class AdvancedAuctionItemsSubmitDeleteRecord implements AdvancedAuctionIt
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsVerticalBatchRequest::CatalogsVerticalBatchRequest()
 {
-	catalog_id = std::string();
+	catalog_id = null;
 	catalog_type = std::string();
 	country = Country();
 	items = std::list<CatalogsCreativeAssetsBatchItem>();
@@ -166,7 +166,7 @@ CatalogsVerticalBatchRequest::getCatalogId()
 }
 
 void
-CatalogsVerticalBatchRequest::setCatalogId(std::string  catalog_id)
+CatalogsVerticalBatchRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -178,7 +178,7 @@ CatalogsVerticalBatchRequest::getCatalogType()
 }
 
 void
-CatalogsVerticalBatchRequest::setCatalogType(std::string  catalog_type)
+CatalogsVerticalBatchRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -190,7 +190,7 @@ CatalogsVerticalBatchRequest::getCountry()
 }
 
 void
-CatalogsVerticalBatchRequest::setCountry(Country  country)
+CatalogsVerticalBatchRequest::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -202,7 +202,7 @@ CatalogsVerticalBatchRequest::getItems()
 }
 
 void
-CatalogsVerticalBatchRequest::setItems(std::list <CatalogsCreativeAssetsBatchItem> items)
+CatalogsVerticalBatchRequest::setItems(std::list<CatalogsCreativeAssetsBatchItem> items)
 {
 	this->items = items;
 }
@@ -214,7 +214,7 @@ CatalogsVerticalBatchRequest::getLanguage()
 }
 
 void
-CatalogsVerticalBatchRequest::setLanguage(std::string  language)
+CatalogsVerticalBatchRequest::setLanguage(std::string language)
 {
 	this->language = language;
 }

@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **datetime** |  | 
-**id** | **str** |  | 
-**updated_at** | **datetime** |  | 
+**created_at** | **datetime** |  | [readonly] 
+**id** | **str** | ID of the feed processing result. | 
 **ingestion_details** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | 
 **product_counts** | [**CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | 
 **status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
+**updated_at** | **datetime** |  | [readonly] 
 **validation_details** | [**CatalogsFeedValidationDetails**](CatalogsFeedValidationDetails.md) |  | 
 **video_counts** | [**CatalogsFeedVideoCounts**](CatalogsFeedVideoCounts.md) |  | [optional] 
 

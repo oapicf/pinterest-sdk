@@ -13,8 +13,6 @@ import org.openapitools.vertxweb.server.model.CustomizableCTAType;
 import org.openapitools.vertxweb.server.model.DisclosureType;
 import org.openapitools.vertxweb.server.model.EntityStatus;
 import org.openapitools.vertxweb.server.model.GridClickType;
-import org.openapitools.vertxweb.server.model.QuizPinData;
-import org.openapitools.vertxweb.server.model.TrackingUrls;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdCreateRequest   {
@@ -32,21 +30,22 @@ public class AdCreateRequest   {
   private String disclosureUrl;
   private GridClickType gridClickType;
   private String iosDeepLink;
+  private Boolean isCarting;
   private Boolean isPinDeleted;
   private Boolean isRemovable;
   private String leadFormId;
   private String name;
-  private QuizPinData quizPinData;
-  private EntityStatus status;
-  private TrackingUrls trackingUrls;
-  private String viewTrackingUrl;
   private String pinId;
+  private Object quizPinData;
+  private EntityStatus status;
+  private Object trackingUrls;
+  private String viewTrackingUrl;
 
   public AdCreateRequest () {
 
   }
 
-  public AdCreateRequest (String adGroupId, String androidDeepLink, List<String> carouselAndroidDeepLinks, List<String> carouselDestinationUrls, List<String> carouselIosDeepLinks, String clickTrackingUrl, CreativeType creativeType, CustomizableCTAType customizableCtaType, String destinationUrl, DisclosureType disclosureType, String disclosureUrl, GridClickType gridClickType, String iosDeepLink, Boolean isPinDeleted, Boolean isRemovable, String leadFormId, String name, QuizPinData quizPinData, EntityStatus status, TrackingUrls trackingUrls, String viewTrackingUrl, String pinId) {
+  public AdCreateRequest (String adGroupId, String androidDeepLink, List<String> carouselAndroidDeepLinks, List<String> carouselDestinationUrls, List<String> carouselIosDeepLinks, String clickTrackingUrl, CreativeType creativeType, CustomizableCTAType customizableCtaType, String destinationUrl, DisclosureType disclosureType, String disclosureUrl, GridClickType gridClickType, String iosDeepLink, Boolean isCarting, Boolean isPinDeleted, Boolean isRemovable, String leadFormId, String name, String pinId, Object quizPinData, EntityStatus status, Object trackingUrls, String viewTrackingUrl) {
     this.adGroupId = adGroupId;
     this.androidDeepLink = androidDeepLink;
     this.carouselAndroidDeepLinks = carouselAndroidDeepLinks;
@@ -60,15 +59,16 @@ public class AdCreateRequest   {
     this.disclosureUrl = disclosureUrl;
     this.gridClickType = gridClickType;
     this.iosDeepLink = iosDeepLink;
+    this.isCarting = isCarting;
     this.isPinDeleted = isPinDeleted;
     this.isRemovable = isRemovable;
     this.leadFormId = leadFormId;
     this.name = name;
+    this.pinId = pinId;
     this.quizPinData = quizPinData;
     this.status = status;
     this.trackingUrls = trackingUrls;
     this.viewTrackingUrl = viewTrackingUrl;
-    this.pinId = pinId;
   }
 
     
@@ -189,6 +189,15 @@ public class AdCreateRequest   {
   }
 
     
+  @JsonProperty("is_carting")
+  public Boolean getIsCarting() {
+    return isCarting;
+  }
+  public void setIsCarting(Boolean isCarting) {
+    this.isCarting = isCarting;
+  }
+
+    
   @JsonProperty("is_pin_deleted")
   public Boolean getIsPinDeleted() {
     return isPinDeleted;
@@ -225,11 +234,20 @@ public class AdCreateRequest   {
   }
 
     
+  @JsonProperty("pin_id")
+  public String getPinId() {
+    return pinId;
+  }
+  public void setPinId(String pinId) {
+    this.pinId = pinId;
+  }
+
+    
   @JsonProperty("quiz_pin_data")
-  public QuizPinData getQuizPinData() {
+  public Object getQuizPinData() {
     return quizPinData;
   }
-  public void setQuizPinData(QuizPinData quizPinData) {
+  public void setQuizPinData(Object quizPinData) {
     this.quizPinData = quizPinData;
   }
 
@@ -244,10 +262,10 @@ public class AdCreateRequest   {
 
     
   @JsonProperty("tracking_urls")
-  public TrackingUrls getTrackingUrls() {
+  public Object getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
+  public void setTrackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -258,15 +276,6 @@ public class AdCreateRequest   {
   }
   public void setViewTrackingUrl(String viewTrackingUrl) {
     this.viewTrackingUrl = viewTrackingUrl;
-  }
-
-    
-  @JsonProperty("pin_id")
-  public String getPinId() {
-    return pinId;
-  }
-  public void setPinId(String pinId) {
-    this.pinId = pinId;
   }
 
 
@@ -292,20 +301,21 @@ public class AdCreateRequest   {
         Objects.equals(disclosureUrl, adCreateRequest.disclosureUrl) &&
         Objects.equals(gridClickType, adCreateRequest.gridClickType) &&
         Objects.equals(iosDeepLink, adCreateRequest.iosDeepLink) &&
+        Objects.equals(isCarting, adCreateRequest.isCarting) &&
         Objects.equals(isPinDeleted, adCreateRequest.isPinDeleted) &&
         Objects.equals(isRemovable, adCreateRequest.isRemovable) &&
         Objects.equals(leadFormId, adCreateRequest.leadFormId) &&
         Objects.equals(name, adCreateRequest.name) &&
+        Objects.equals(pinId, adCreateRequest.pinId) &&
         Objects.equals(quizPinData, adCreateRequest.quizPinData) &&
         Objects.equals(status, adCreateRequest.status) &&
         Objects.equals(trackingUrls, adCreateRequest.trackingUrls) &&
-        Objects.equals(viewTrackingUrl, adCreateRequest.viewTrackingUrl) &&
-        Objects.equals(pinId, adCreateRequest.pinId);
+        Objects.equals(viewTrackingUrl, adCreateRequest.viewTrackingUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroupId, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, creativeType, customizableCtaType, destinationUrl, disclosureType, disclosureUrl, gridClickType, iosDeepLink, isPinDeleted, isRemovable, leadFormId, name, quizPinData, status, trackingUrls, viewTrackingUrl, pinId);
+    return Objects.hash(adGroupId, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, creativeType, customizableCtaType, destinationUrl, disclosureType, disclosureUrl, gridClickType, iosDeepLink, isCarting, isPinDeleted, isRemovable, leadFormId, name, pinId, quizPinData, status, trackingUrls, viewTrackingUrl);
   }
 
   @Override
@@ -326,15 +336,16 @@ public class AdCreateRequest   {
     sb.append("    disclosureUrl: ").append(toIndentedString(disclosureUrl)).append("\n");
     sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");
     sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
+    sb.append("    isCarting: ").append(toIndentedString(isCarting)).append("\n");
     sb.append("    isPinDeleted: ").append(toIndentedString(isPinDeleted)).append("\n");
     sb.append("    isRemovable: ").append(toIndentedString(isRemovable)).append("\n");
     sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("    quizPinData: ").append(toIndentedString(quizPinData)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    viewTrackingUrl: ").append(toIndentedString(viewTrackingUrl)).append("\n");
-    sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -344,9 +355,6 @@ public class AdCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

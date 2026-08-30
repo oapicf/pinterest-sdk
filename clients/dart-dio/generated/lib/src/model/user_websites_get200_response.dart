@@ -3,9 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/user_website_summary.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
+import 'package:openapi/src/model/user_website.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,7 +16,13 @@ part 'user_websites_get200_response.g.dart';
 /// * [bookmark] 
 /// * [items] 
 @BuiltValue()
-abstract class UserWebsitesGet200Response implements Paginated, Built<UserWebsitesGet200Response, UserWebsitesGet200ResponseBuilder> {
+abstract class UserWebsitesGet200Response implements Built<UserWebsitesGet200Response, UserWebsitesGet200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<UserWebsite> get items;
+
   UserWebsitesGet200Response._();
 
   factory UserWebsitesGet200Response([void updates(UserWebsitesGet200ResponseBuilder b)]) = _$UserWebsitesGet200Response;
@@ -51,7 +56,7 @@ class _$UserWebsitesGet200ResponseSerializer implements PrimitiveSerializer<User
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(UserWebsite)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$UserWebsitesGet200ResponseSerializer implements PrimitiveSerializer<User
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(UserWebsite)]),
+          ) as BuiltList<UserWebsite>;
           result.items.replace(valueDes);
           break;
         default:

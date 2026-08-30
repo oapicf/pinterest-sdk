@@ -5,7 +5,7 @@
             [pinterest-rest-api.specs.product-availability-type :refer :all]
             [pinterest-rest-api.specs.country :refer :all]
             [pinterest-rest-api.specs.nullable-currency :refer :all]
-            [pinterest-rest-api.specs.catalogs-feeds-create-request-default-locale :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-feeds-create-request-default-locale :refer :all]
             [pinterest-rest-api.specs.catalogs-format :refer :all]
             [pinterest-rest-api.specs.catalogs-feed-processing-schedule :refer :all]
             [pinterest-rest-api.specs.catalogs-status :refer :all]
@@ -19,7 +19,7 @@
    (ds/opt :default_availability) product-availability-type-spec
    (ds/opt :default_country) country-spec
    (ds/opt :default_currency) nullable-currency-spec
-   (ds/opt :default_locale) catalogs-feeds-create-request-default-locale-spec
+   (ds/opt :default_locale) catalogs-creative-assets-feeds-create-request-default-locale-spec
    (ds/req :format) catalogs-format-spec
    (ds/req :location) string?
    (ds/req :name) string?

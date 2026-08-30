@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// BulkEntityType Refers ads entity type. Schedule enum is only applicable to beta users
+// BulkEntityType Refers ads entity type.
 type BulkEntityType string
 
 // List of BulkEntityType
@@ -28,6 +28,7 @@ const (
 	KEYWORD BulkEntityType = "KEYWORD"
 	LABEL BulkEntityType = "LABEL"
 	SCHEDULE BulkEntityType = "SCHEDULE"
+	ENTITY_HISTORY BulkEntityType = "ENTITY_HISTORY"
 )
 
 // All allowed values of BulkEntityType enum
@@ -39,6 +40,7 @@ var AllowedBulkEntityTypeEnumValues = []BulkEntityType{
 	"KEYWORD",
 	"LABEL",
 	"SCHEDULE",
+	"ENTITY_HISTORY",
 }
 
 func (v *BulkEntityType) UnmarshalJSON(src []byte) error {

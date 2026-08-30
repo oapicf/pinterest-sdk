@@ -1,7 +1,7 @@
-goog.provide('API.Client.notification_post_request');
+goog.provide('API.Client.NotificationPostRequest');
 
 /**
- * Any valid JSON object
+ * Notification request body. Can be either a batch of notification objects or a single notification object.
  * @record
  */
 API.Client.NotificationPostRequest = function() {}

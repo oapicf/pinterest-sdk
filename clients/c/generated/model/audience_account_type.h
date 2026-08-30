@@ -1,7 +1,7 @@
 /*
  * audience_account_type.h
  *
- * 
+ * Account type filter for audience sharing.
  */
 
 #ifndef _audience_account_type_H_

@@ -22,11 +22,11 @@ services:
 ```
 
 ## **audiencesCreate**
-> OpenAPI\Server\Model\Audience audiencesCreate($adAccountId, $audienceCreateRequest)
+> OpenAPI\Server\Model\AdAccountsAudience audiencesCreate($adAccountId, $adAccountsAudienceCreate)
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+Create a new audience for the ad account.
 
 ### Example Implementation
 ```php
@@ -53,7 +53,7 @@ class AudiencesApi implements AudiencesApiInterface
     /**
      * Implementation of AudiencesApiInterface#audiencesCreate
      */
-    public function audiencesCreate(string $adAccountId, AudienceCreateRequest $audienceCreateRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function audiencesCreate(string $adAccountId, AdAccountsAudienceCreate $adAccountsAudienceCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -67,11 +67,11 @@ class AudiencesApi implements AudiencesApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **audienceCreateRequest** | [**OpenAPI\Server\Model\AudienceCreateRequest**](../Model/AudienceCreateRequest.md)| List of ads to create, size limit [1, 30] |
+ **adAccountsAudienceCreate** | [**OpenAPI\Server\Model\AdAccountsAudienceCreate**](../Model/AdAccountsAudienceCreate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\Audience**](../Model/Audience.md)
+[**OpenAPI\Server\Model\AdAccountsAudience**](../Model/AdAccountsAudience.md)
 
 ### Authorization
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **audiencesGet**
-> OpenAPI\Server\Model\Audience audiencesGet($adAccountId, $audienceId)
+> OpenAPI\Server\Model\AdAccountsAudience audiencesGet($audienceId, $adAccountId)
 
 Get audience
 
@@ -124,7 +124,7 @@ class AudiencesApi implements AudiencesApiInterface
     /**
      * Implementation of AudiencesApiInterface#audiencesGet
      */
-    public function audiencesGet(string $adAccountId, string $audienceId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function audiencesGet(string $audienceId, string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -137,12 +137,12 @@ class AudiencesApi implements AudiencesApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audienceId** | **string**| Audience ID. |
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **audienceId** | **string**| Unique identifier of an audience |
 
 ### Return type
 
-[**OpenAPI\Server\Model\Audience**](../Model/Audience.md)
+[**OpenAPI\Server\Model\AdAccountsAudience**](../Model/AdAccountsAudience.md)
 
 ### Authorization
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **audiencesList**
-> OpenAPI\Server\Model\AudiencesList200Response audiencesList($adAccountId, $bookmark, $order, $pageSize, $ownershipType)
+> OpenAPI\Server\Model\AudiencesList200Response audiencesList($adAccountId, $bookmark, $pageSize, $order, $ownershipType, $excludeNca)
 
 List audiences
 
@@ -195,7 +195,7 @@ class AudiencesApi implements AudiencesApiInterface
     /**
      * Implementation of AudiencesApiInterface#audiencesList
      */
-    public function audiencesList(string $adAccountId, ?string $bookmark, ?string $order, int $pageSize, string $ownershipType, int &$responseCode, array &$responseHeaders): array|object|null
+    public function audiencesList(string $adAccountId, ?string $bookmark, int $pageSize, ?PinterestLibPaginationOrder $order, ?AudienceOwnershipType $ownershipType, bool $excludeNca, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -210,9 +210,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **ownershipType** | **string**| Filter audiences by ownership type. | [optional] [default to &#39;OWNED&#39;]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](../Model/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]
+ **ownershipType** | [**AudienceOwnershipType**](../Model/.md)|  | [optional]
+ **excludeNca** | **bool**| When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [optional] [default to false]
 
 ### Return type
 
@@ -230,11 +231,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **audiencesUpdate**
-> OpenAPI\Server\Model\Audience audiencesUpdate($adAccountId, $audienceId, $audienceUpdateRequest)
+> OpenAPI\Server\Model\AdAccountsAudience audiencesUpdate($audienceId, $adAccountId, $adAccountsAudienceUpdate)
 
 Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 ### Example Implementation
 ```php
@@ -261,7 +262,7 @@ class AudiencesApi implements AudiencesApiInterface
     /**
      * Implementation of AudiencesApiInterface#audiencesUpdate
      */
-    public function audiencesUpdate(string $adAccountId, string $audienceId, AudienceUpdateRequest $audienceUpdateRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function audiencesUpdate(string $audienceId, string $adAccountId, AdAccountsAudienceUpdate $adAccountsAudienceUpdate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -274,13 +275,13 @@ class AudiencesApi implements AudiencesApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audienceId** | **string**| Audience ID. |
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **audienceId** | **string**| Unique identifier of an audience |
- **audienceUpdateRequest** | [**OpenAPI\Server\Model\AudienceUpdateRequest**](../Model/AudienceUpdateRequest.md)| The audience to be updated. |
+ **adAccountsAudienceUpdate** | [**OpenAPI\Server\Model\AdAccountsAudienceUpdate**](../Model/AdAccountsAudienceUpdate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\Audience**](../Model/Audience.md)
+[**OpenAPI\Server\Model\AdAccountsAudience**](../Model/AdAccountsAudience.md)
 
 ### Authorization
 

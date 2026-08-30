@@ -21,10 +21,15 @@ resourceTypes {
           description = "Description of the trending topic"
           optional = true
         }
+        id {
+          type =  string
+          description = "Unique identifier for the trending topic"
+          optional = true
+        }
         percent_growth_mom {
           type =  integer
           description = "Month-over-month growth percentage"
-          optional = true
+          optional = false
         }
         pins {
           type = array

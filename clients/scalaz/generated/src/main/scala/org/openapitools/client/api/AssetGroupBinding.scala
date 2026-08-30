@@ -13,27 +13,27 @@ import AssetGroupBinding._
 
 case class AssetGroupBinding (
   /* A list of ad account IDs under the asset group */
-  adAccountsIds: Option[List[String]],
+  adAccountsIds: List[String],
 /* Asset group description */
-  assetGroupDescription: Option[String],
+  assetGroupDescription: String,
 /* Asset Group name */
-  assetGroupName: Option[String],
+  assetGroupName: String,
 /* Asset group types */
-  assetGroupTypes: Option[List[String]],
+  assetGroupTypes: List[String],
 /* A list of catalog IDs under asset group */
-  catalogsIds: Option[List[String]],
+  catalogsIds: List[String],
 /* The data of the user that created the asset group. */
-  createdBy: Option[BusinessAccessUserSummary],
+  createdBy: BusinessAccessUserSummary,
 /* The creation time of the asset group */
-  createdTime: Option[Integer],
+  createdTime: Integer,
 /* Asset Group ID. */
-  id: Option[String],
+  id: String,
 /* The data of the business that owns the asset group. */
-  owner: Option[BusinessAccessUserSummary],
+  owner: BusinessAccessUserSummary,
 /* A list of profile IDs under asset group */
-  profilesIds: Option[List[String]],
+  profilesIds: List[String],
 /* The last update time of the asset group */
-  updatedTime: Option[Integer])
+  updatedTime: Integer)
 
 object AssetGroupBinding {
   import DateTimeCodecs._

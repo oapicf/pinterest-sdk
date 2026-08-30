@@ -17,35 +17,33 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { BrandAccountsCreate200Response } from '../model/brandAccountsCreate200Response';
+import { BrandAccount } from '../model/brandAccount';
 // @ts-ignore
-import { BrandAccountsCreateRequest } from '../model/brandAccountsCreateRequest';
+import { BrandAccountCreate } from '../model/brandAccountCreate';
 // @ts-ignore
-import { BrandAccountsUpdateRequest } from '../model/brandAccountsUpdateRequest';
+import { BrandAccountUpdate } from '../model/brandAccountUpdate';
 // @ts-ignore
-import { DeletePartnersRequest } from '../model/deletePartnersRequest';
+import { BusinessMembershipMember } from '../model/businessMembershipMember';
 // @ts-ignore
-import { DeletePartnersResponse } from '../model/deletePartnersResponse';
+import { DeleteBusinessMembership200Response } from '../model/deleteBusinessMembership200Response';
 // @ts-ignore
-import { DeletedMembersResponse } from '../model/deletedMembersResponse';
+import { DeleteBusinessMembershipBody } from '../model/deleteBusinessMembershipBody';
+// @ts-ignore
+import { DeleteBusinessPartners } from '../model/deleteBusinessPartners';
+// @ts-ignore
+import { DeleteBusinessPartnersDelete } from '../model/deleteBusinessPartnersDelete';
 // @ts-ignore
 import { GetBusinessEmployers200Response } from '../model/getBusinessEmployers200Response';
 // @ts-ignore
-import { GetBusinessMembers200Response } from '../model/getBusinessMembers200Response';
-// @ts-ignore
-import { GetBusinessPartners200Response } from '../model/getBusinessPartners200Response';
-// @ts-ignore
 import { MemberBusinessRole } from '../model/memberBusinessRole';
-// @ts-ignore
-import { MembersToDeleteBody } from '../model/membersToDeleteBody';
 // @ts-ignore
 import { PartnerType } from '../model/partnerType';
 // @ts-ignore
-import { SystemUserUpdateRequest } from '../model/systemUserUpdateRequest';
+import { PinterestLibError } from '../model/pinterestLibError';
 // @ts-ignore
-import { UpdateMemberBusinessRoleBody } from '../model/updateMemberBusinessRoleBody';
+import { SystemUserUpdateWithRequiredBody } from '../model/systemUserUpdateWithRequiredBody';
 // @ts-ignore
-import { UpdateMemberResultsResponseArray } from '../model/updateMemberResultsResponseArray';
+import { UpdateBusinessMembershipsResponse } from '../model/updateBusinessMembershipsResponse';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -68,20 +66,20 @@ export class BusinessAccessRelationshipsService extends BaseService {
      * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
      * @endpoint post /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts
      * @param businessHierarchyId business hierarchy node id
-     * @param brandAccountsCreateRequest 
+     * @param brandAccountCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public brandAccountsCreate(businessHierarchyId: string, brandAccountsCreateRequest: BrandAccountsCreateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BrandAccountsCreate200Response>;
-    public brandAccountsCreate(businessHierarchyId: string, brandAccountsCreateRequest: BrandAccountsCreateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BrandAccountsCreate200Response>>;
-    public brandAccountsCreate(businessHierarchyId: string, brandAccountsCreateRequest: BrandAccountsCreateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BrandAccountsCreate200Response>>;
-    public brandAccountsCreate(businessHierarchyId: string, brandAccountsCreateRequest: BrandAccountsCreateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public brandAccountsCreate(businessHierarchyId: string, brandAccountCreate: BrandAccountCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BrandAccount>;
+    public brandAccountsCreate(businessHierarchyId: string, brandAccountCreate: BrandAccountCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BrandAccount>>;
+    public brandAccountsCreate(businessHierarchyId: string, brandAccountCreate: BrandAccountCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BrandAccount>>;
+    public brandAccountsCreate(businessHierarchyId: string, brandAccountCreate: BrandAccountCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessHierarchyId === null || businessHierarchyId === undefined) {
             throw new Error('Required parameter businessHierarchyId was null or undefined when calling brandAccountsCreate.');
         }
-        if (brandAccountsCreateRequest === null || brandAccountsCreateRequest === undefined) {
-            throw new Error('Required parameter brandAccountsCreateRequest was null or undefined when calling brandAccountsCreate.');
+        if (brandAccountCreate === null || brandAccountCreate === undefined) {
+            throw new Error('Required parameter brandAccountCreate was null or undefined when calling brandAccountsCreate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -123,10 +121,10 @@ export class BusinessAccessRelationshipsService extends BaseService {
 
         let localVarPath = `/business_access/business_hierarchy/${this.configuration.encodeParam({name: "businessHierarchyId", value: businessHierarchyId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/brand_accounts`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<BrandAccountsCreate200Response>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<BrandAccount>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: brandAccountsCreateRequest,
+                body: brandAccountCreate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -141,25 +139,25 @@ export class BusinessAccessRelationshipsService extends BaseService {
      * Update a Brand Account
      * Update an existing Brand Account
      * @endpoint patch /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}
+     * @param brandAccountId 
      * @param businessHierarchyId business hierarchy node id
-     * @param brandAccountId Unique identifier of a brand account.
-     * @param brandAccountsUpdateRequest 
+     * @param brandAccountUpdate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public brandAccountsUpdate(businessHierarchyId: string, brandAccountId: string, brandAccountsUpdateRequest: BrandAccountsUpdateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BrandAccountsCreate200Response>;
-    public brandAccountsUpdate(businessHierarchyId: string, brandAccountId: string, brandAccountsUpdateRequest: BrandAccountsUpdateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BrandAccountsCreate200Response>>;
-    public brandAccountsUpdate(businessHierarchyId: string, brandAccountId: string, brandAccountsUpdateRequest: BrandAccountsUpdateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BrandAccountsCreate200Response>>;
-    public brandAccountsUpdate(businessHierarchyId: string, brandAccountId: string, brandAccountsUpdateRequest: BrandAccountsUpdateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (businessHierarchyId === null || businessHierarchyId === undefined) {
-            throw new Error('Required parameter businessHierarchyId was null or undefined when calling brandAccountsUpdate.');
-        }
+    public brandAccountsUpdate(brandAccountId: string, businessHierarchyId: string, brandAccountUpdate: BrandAccountUpdate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BrandAccount>;
+    public brandAccountsUpdate(brandAccountId: string, businessHierarchyId: string, brandAccountUpdate: BrandAccountUpdate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BrandAccount>>;
+    public brandAccountsUpdate(brandAccountId: string, businessHierarchyId: string, brandAccountUpdate: BrandAccountUpdate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BrandAccount>>;
+    public brandAccountsUpdate(brandAccountId: string, businessHierarchyId: string, brandAccountUpdate: BrandAccountUpdate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (brandAccountId === null || brandAccountId === undefined) {
             throw new Error('Required parameter brandAccountId was null or undefined when calling brandAccountsUpdate.');
         }
-        if (brandAccountsUpdateRequest === null || brandAccountsUpdateRequest === undefined) {
-            throw new Error('Required parameter brandAccountsUpdateRequest was null or undefined when calling brandAccountsUpdate.');
+        if (businessHierarchyId === null || businessHierarchyId === undefined) {
+            throw new Error('Required parameter businessHierarchyId was null or undefined when calling brandAccountsUpdate.');
+        }
+        if (brandAccountUpdate === null || brandAccountUpdate === undefined) {
+            throw new Error('Required parameter brandAccountUpdate was null or undefined when calling brandAccountsUpdate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -201,10 +199,10 @@ export class BusinessAccessRelationshipsService extends BaseService {
 
         let localVarPath = `/business_access/business_hierarchy/${this.configuration.encodeParam({name: "businessHierarchyId", value: businessHierarchyId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/brand_accounts/${this.configuration.encodeParam({name: "brandAccountId", value: brandAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<BrandAccountsCreate200Response>('patch', `${basePath}${localVarPath}`,
+        return this.httpClient.request<BrandAccount>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: brandAccountsUpdateRequest,
+                body: brandAccountUpdate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -220,20 +218,20 @@ export class BusinessAccessRelationshipsService extends BaseService {
      * Terminate memberships between the specified members and your business.
      * @endpoint delete /businesses/{business_id}/members
      * @param businessId Business id
-     * @param membersToDeleteBody List of members with role to delete.
+     * @param deleteBusinessMembershipBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public deleteBusinessMembership(businessId: string, membersToDeleteBody: MembersToDeleteBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeletedMembersResponse>;
-    public deleteBusinessMembership(businessId: string, membersToDeleteBody: MembersToDeleteBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeletedMembersResponse>>;
-    public deleteBusinessMembership(businessId: string, membersToDeleteBody: MembersToDeleteBody, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DeletedMembersResponse>>;
-    public deleteBusinessMembership(businessId: string, membersToDeleteBody: MembersToDeleteBody, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public deleteBusinessMembership(businessId: string, deleteBusinessMembershipBody: DeleteBusinessMembershipBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeleteBusinessMembership200Response>;
+    public deleteBusinessMembership(businessId: string, deleteBusinessMembershipBody: DeleteBusinessMembershipBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeleteBusinessMembership200Response>>;
+    public deleteBusinessMembership(businessId: string, deleteBusinessMembershipBody: DeleteBusinessMembershipBody, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DeleteBusinessMembership200Response>>;
+    public deleteBusinessMembership(businessId: string, deleteBusinessMembershipBody: DeleteBusinessMembershipBody, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling deleteBusinessMembership.');
         }
-        if (membersToDeleteBody === null || membersToDeleteBody === undefined) {
-            throw new Error('Required parameter membersToDeleteBody was null or undefined when calling deleteBusinessMembership.');
+        if (deleteBusinessMembershipBody === null || deleteBusinessMembershipBody === undefined) {
+            throw new Error('Required parameter deleteBusinessMembershipBody was null or undefined when calling deleteBusinessMembership.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -275,10 +273,10 @@ export class BusinessAccessRelationshipsService extends BaseService {
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/members`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<DeletedMembersResponse>('delete', `${basePath}${localVarPath}`,
+        return this.httpClient.request<DeleteBusinessMembership200Response>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: membersToDeleteBody,
+                body: deleteBusinessMembershipBody,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -294,20 +292,20 @@ export class BusinessAccessRelationshipsService extends BaseService {
      * Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
      * @endpoint delete /businesses/{business_id}/partners
      * @param businessId Unique identifier of the requesting business.
-     * @param deletePartnersRequest An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete. 
+     * @param deleteBusinessPartnersDelete 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public deleteBusinessPartners(businessId: string, deletePartnersRequest: DeletePartnersRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeletePartnersResponse>;
-    public deleteBusinessPartners(businessId: string, deletePartnersRequest: DeletePartnersRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeletePartnersResponse>>;
-    public deleteBusinessPartners(businessId: string, deletePartnersRequest: DeletePartnersRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DeletePartnersResponse>>;
-    public deleteBusinessPartners(businessId: string, deletePartnersRequest: DeletePartnersRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public deleteBusinessPartners(businessId: string, deleteBusinessPartnersDelete: DeleteBusinessPartnersDelete, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeleteBusinessPartners>;
+    public deleteBusinessPartners(businessId: string, deleteBusinessPartnersDelete: DeleteBusinessPartnersDelete, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeleteBusinessPartners>>;
+    public deleteBusinessPartners(businessId: string, deleteBusinessPartnersDelete: DeleteBusinessPartnersDelete, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DeleteBusinessPartners>>;
+    public deleteBusinessPartners(businessId: string, deleteBusinessPartnersDelete: DeleteBusinessPartnersDelete, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling deleteBusinessPartners.');
         }
-        if (deletePartnersRequest === null || deletePartnersRequest === undefined) {
-            throw new Error('Required parameter deletePartnersRequest was null or undefined when calling deleteBusinessPartners.');
+        if (deleteBusinessPartnersDelete === null || deleteBusinessPartnersDelete === undefined) {
+            throw new Error('Required parameter deleteBusinessPartnersDelete was null or undefined when calling deleteBusinessPartners.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -349,10 +347,10 @@ export class BusinessAccessRelationshipsService extends BaseService {
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/partners`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<DeletePartnersResponse>('delete', `${basePath}${localVarPath}`,
+        return this.httpClient.request<DeleteBusinessPartners>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: deletePartnersRequest,
+                body: deleteBusinessPartnersDelete,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -367,23 +365,24 @@ export class BusinessAccessRelationshipsService extends BaseService {
      * List business employers for user
      * Get all of the viewing user\&#39;s business employers.
      * @endpoint get /businesses/employers
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param assetsSummary Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
      * @param bookmark Cursor used to fetch the next page of items
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public getBusinessEmployers(pageSize?: number, bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetBusinessEmployers200Response>;
-    public getBusinessEmployers(pageSize?: number, bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetBusinessEmployers200Response>>;
-    public getBusinessEmployers(pageSize?: number, bookmark?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetBusinessEmployers200Response>>;
-    public getBusinessEmployers(pageSize?: number, bookmark?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public getBusinessEmployers(assetsSummary?: boolean, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetBusinessEmployers200Response>;
+    public getBusinessEmployers(assetsSummary?: boolean, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetBusinessEmployers200Response>>;
+    public getBusinessEmployers(assetsSummary?: boolean, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetBusinessEmployers200Response>>;
+    public getBusinessEmployers(assetsSummary?: boolean, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
-            'page_size',
-            <any>pageSize,
+            'assets_summary',
+            <any>assetsSummary,
             QueryParamStyle.Form,
             true,
         );
@@ -393,6 +392,15 @@ export class BusinessAccessRelationshipsService extends BaseService {
             localVarQueryParameters,
             'bookmark',
             <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
             QueryParamStyle.Form,
             true,
         );
@@ -453,14 +461,14 @@ export class BusinessAccessRelationshipsService extends BaseService {
      * @param memberIds A list of business members ids separated by comma.
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public getBusinessMembers(businessId: string, fetchSystemUsers?: boolean, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetBusinessMembers200Response>;
-    public getBusinessMembers(businessId: string, fetchSystemUsers?: boolean, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetBusinessMembers200Response>>;
-    public getBusinessMembers(businessId: string, fetchSystemUsers?: boolean, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetBusinessMembers200Response>>;
+    public getBusinessMembers(businessId: string, fetchSystemUsers?: boolean, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetBusinessEmployers200Response>;
+    public getBusinessMembers(businessId: string, fetchSystemUsers?: boolean, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetBusinessEmployers200Response>>;
+    public getBusinessMembers(businessId: string, fetchSystemUsers?: boolean, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetBusinessEmployers200Response>>;
     public getBusinessMembers(businessId: string, fetchSystemUsers?: boolean, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling getBusinessMembers.');
@@ -561,7 +569,7 @@ export class BusinessAccessRelationshipsService extends BaseService {
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/members`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<GetBusinessMembers200Response>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<GetBusinessEmployers200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters.toHttpParams(),
@@ -581,19 +589,20 @@ export class BusinessAccessRelationshipsService extends BaseService {
      * @endpoint get /businesses/{business_id}/partners
      * @param businessId Unique identifier of the requesting business.
      * @param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
-     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner\&#39;s business asset.
+     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner\&#39;s business asset.
      * @param partnerIds A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param sortAscending Sort ascending.
      * @param bookmark Cursor used to fetch the next page of items
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, pageSize?: number, bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetBusinessPartners200Response>;
-    public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, pageSize?: number, bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetBusinessPartners200Response>>;
-    public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, pageSize?: number, bookmark?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetBusinessPartners200Response>>;
-    public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, pageSize?: number, bookmark?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, sortAscending?: boolean, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetBusinessEmployers200Response>;
+    public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, sortAscending?: boolean, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetBusinessEmployers200Response>>;
+    public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, sortAscending?: boolean, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetBusinessEmployers200Response>>;
+    public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, sortAscending?: boolean, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling getBusinessPartners.');
         }
@@ -638,8 +647,8 @@ export class BusinessAccessRelationshipsService extends BaseService {
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
-            'page_size',
-            <any>pageSize,
+            'sort_ascending',
+            <any>sortAscending,
             QueryParamStyle.Form,
             true,
         );
@@ -649,6 +658,15 @@ export class BusinessAccessRelationshipsService extends BaseService {
             localVarQueryParameters,
             'bookmark',
             <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
             QueryParamStyle.Form,
             true,
         );
@@ -684,7 +702,7 @@ export class BusinessAccessRelationshipsService extends BaseService {
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/partners`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<GetBusinessPartners200Response>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<GetBusinessEmployers200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters.toHttpParams(),
@@ -704,23 +722,23 @@ export class BusinessAccessRelationshipsService extends BaseService {
      * @endpoint patch /businesses/{business_id}/system_users/{system_user_id}
      * @param businessId Unique identifier of the requesting business.
      * @param systemUserId Unique identifier of a system user.
-     * @param systemUserUpdateRequest 
+     * @param systemUserUpdateWithRequiredBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public systemUserUpdate(businessId: string, systemUserId: string, systemUserUpdateRequest: SystemUserUpdateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public systemUserUpdate(businessId: string, systemUserId: string, systemUserUpdateRequest: SystemUserUpdateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public systemUserUpdate(businessId: string, systemUserId: string, systemUserUpdateRequest: SystemUserUpdateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public systemUserUpdate(businessId: string, systemUserId: string, systemUserUpdateRequest: SystemUserUpdateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public systemUserUpdate(businessId: string, systemUserId: string, systemUserUpdateWithRequiredBody: SystemUserUpdateWithRequiredBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public systemUserUpdate(businessId: string, systemUserId: string, systemUserUpdateWithRequiredBody: SystemUserUpdateWithRequiredBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public systemUserUpdate(businessId: string, systemUserId: string, systemUserUpdateWithRequiredBody: SystemUserUpdateWithRequiredBody, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public systemUserUpdate(businessId: string, systemUserId: string, systemUserUpdateWithRequiredBody: SystemUserUpdateWithRequiredBody, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling systemUserUpdate.');
         }
         if (systemUserId === null || systemUserId === undefined) {
             throw new Error('Required parameter systemUserId was null or undefined when calling systemUserUpdate.');
         }
-        if (systemUserUpdateRequest === null || systemUserUpdateRequest === undefined) {
-            throw new Error('Required parameter systemUserUpdateRequest was null or undefined when calling systemUserUpdate.');
+        if (systemUserUpdateWithRequiredBody === null || systemUserUpdateWithRequiredBody === undefined) {
+            throw new Error('Required parameter systemUserUpdateWithRequiredBody was null or undefined when calling systemUserUpdate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -765,7 +783,7 @@ export class BusinessAccessRelationshipsService extends BaseService {
         return this.httpClient.request<any>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: systemUserUpdateRequest,
+                body: systemUserUpdateWithRequiredBody,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -781,20 +799,20 @@ export class BusinessAccessRelationshipsService extends BaseService {
      * Update a member\&#39;s business role within the business.
      * @endpoint patch /businesses/{business_id}/members
      * @param businessId Business id
-     * @param updateMemberBusinessRoleBody List of objects with the member id and the business_role.
+     * @param businessMembershipMember 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public updateBusinessMemberships(businessId: string, updateMemberBusinessRoleBody: Array<UpdateMemberBusinessRoleBody>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<UpdateMemberResultsResponseArray>;
-    public updateBusinessMemberships(businessId: string, updateMemberBusinessRoleBody: Array<UpdateMemberBusinessRoleBody>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<UpdateMemberResultsResponseArray>>;
-    public updateBusinessMemberships(businessId: string, updateMemberBusinessRoleBody: Array<UpdateMemberBusinessRoleBody>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<UpdateMemberResultsResponseArray>>;
-    public updateBusinessMemberships(businessId: string, updateMemberBusinessRoleBody: Array<UpdateMemberBusinessRoleBody>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public updateBusinessMemberships(businessId: string, businessMembershipMember: Array<BusinessMembershipMember>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<UpdateBusinessMembershipsResponse>;
+    public updateBusinessMemberships(businessId: string, businessMembershipMember: Array<BusinessMembershipMember>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<UpdateBusinessMembershipsResponse>>;
+    public updateBusinessMemberships(businessId: string, businessMembershipMember: Array<BusinessMembershipMember>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<UpdateBusinessMembershipsResponse>>;
+    public updateBusinessMemberships(businessId: string, businessMembershipMember: Array<BusinessMembershipMember>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling updateBusinessMemberships.');
         }
-        if (updateMemberBusinessRoleBody === null || updateMemberBusinessRoleBody === undefined) {
-            throw new Error('Required parameter updateMemberBusinessRoleBody was null or undefined when calling updateBusinessMemberships.');
+        if (businessMembershipMember === null || businessMembershipMember === undefined) {
+            throw new Error('Required parameter businessMembershipMember was null or undefined when calling updateBusinessMemberships.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -836,10 +854,10 @@ export class BusinessAccessRelationshipsService extends BaseService {
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/members`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<UpdateMemberResultsResponseArray>('patch', `${basePath}${localVarPath}`,
+        return this.httpClient.request<UpdateBusinessMembershipsResponse>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: updateMemberBusinessRoleBody,
+                body: businessMembershipMember,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,

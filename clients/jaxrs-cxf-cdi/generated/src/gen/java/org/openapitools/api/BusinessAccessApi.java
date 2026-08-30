@@ -1,9 +1,9 @@
 package org.openapitools.api;
 
-import org.openapitools.model.BrandAccountsCreate200Response;
-import org.openapitools.model.BrandAccountsCreateRequest;
-import org.openapitools.model.BrandAccountsUpdateRequest;
-import org.openapitools.model.Error;
+import org.openapitools.model.BrandAccount;
+import org.openapitools.model.BrandAccountCreate;
+import org.openapitools.model.BrandAccountUpdate;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.api.BusinessAccessApiService;
 
 import javax.ws.rs.*;
@@ -30,7 +30,7 @@ import javax.validation.Valid;
 @Api
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-31T04:54:28.741368951Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-08-30T09:54:04.171825690Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 
 public class BusinessAccessApi  {
 
@@ -43,38 +43,43 @@ public class BusinessAccessApi  {
     
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create a Brand Account", notes = "Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.", response = BrandAccountsCreate200Response.class, authorizations = {
+    @ApiOperation(value = "Create a Brand Account", notes = "Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.", response = BrandAccount.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "biz_access:read", description = "See business access data"),
             @AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data") })
          }, tags={ "business_access_relationships" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BrandAccountsCreate200Response.class),
-        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response brandAccountsCreate( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)@ApiParam(value = "business hierarchy node id",required=true) @PathParam("business_hierarchy_id") String businessHierarchyId, @ApiParam(value = "" ,required=true) BrandAccountsCreateRequest brandAccountsCreateRequest) {
-        return delegate.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BrandAccount.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = BrandAccount.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response brandAccountsCreate( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)@ApiParam(value = "business hierarchy node id",required=true) @PathParam("business_hierarchy_id") String businessHierarchyId, @ApiParam(value = "" ,required=true) BrandAccountCreate brandAccountCreate) {
+        return delegate.brandAccountsCreate(businessHierarchyId, brandAccountCreate, securityContext);
     }
 
     @PATCH
     @Path("/{brand_account_id}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update a Brand Account", notes = "Update an existing Brand Account", response = BrandAccountsCreate200Response.class, authorizations = {
+    @ApiOperation(value = "Update a Brand Account", notes = "Update an existing Brand Account", response = BrandAccount.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "biz_access:read", description = "See business access data"),
             @AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data") })
          }, tags={ "business_access_relationships" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BrandAccountsCreate200Response.class),
-        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
-        @ApiResponse(code = 401, message = "Not authenticated to update Brand Account", response = Error.class),
-        @ApiResponse(code = 403, message = "Not authorized to update Brand Account", response = Error.class),
-        @ApiResponse(code = 404, message = "Brand account not found", response = Error.class),
-        @ApiResponse(code = 409, message = "This account is not a brand account.", response = Error.class),
-        @ApiResponse(code = 429, message = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response brandAccountsUpdate( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)@ApiParam(value = "business hierarchy node id",required=true) @PathParam("business_hierarchy_id") String businessHierarchyId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)@ApiParam(value = "Unique identifier of a brand account.",required=true) @PathParam("brand_account_id") String brandAccountId, @ApiParam(value = "" ,required=true) BrandAccountsUpdateRequest brandAccountsUpdateRequest) {
-        return delegate.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BrandAccount.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 409, message = "The request could not be processed because of a conflict in the current state of the resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response brandAccountsUpdate(@ApiParam(value = "",required=true) @PathParam("brand_account_id") String brandAccountId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)@ApiParam(value = "business hierarchy node id",required=true) @PathParam("business_hierarchy_id") String businessHierarchyId, @ApiParam(value = "" ,required=true) BrandAccountUpdate brandAccountUpdate) {
+        return delegate.brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate, securityContext);
     }
 }

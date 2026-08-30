@@ -21,7 +21,7 @@ class IntegrationRecord {
     this.connectedUserId,
     this.createdTime,
     this.externalBusinessId,
-    this.id,
+    required this.id,
     this.partnerAccessToken,
     this.partnerAccessTokenExpiry,
     this.partnerMetadata,
@@ -60,13 +60,8 @@ class IntegrationRecord {
 
   String? externalBusinessId;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? id;
+  /// Integration record ID.
+  String id;
 
   String? partnerAccessToken;
 
@@ -121,7 +116,7 @@ class IntegrationRecord {
     (connectedUserId == null ? 0 : connectedUserId!.hashCode) +
     (createdTime == null ? 0 : createdTime!.hashCode) +
     (externalBusinessId == null ? 0 : externalBusinessId!.hashCode) +
-    (id == null ? 0 : id!.hashCode) +
+    (id.hashCode) +
     (partnerAccessToken == null ? 0 : partnerAccessToken!.hashCode) +
     (partnerAccessTokenExpiry == null ? 0 : partnerAccessTokenExpiry!.hashCode) +
     (partnerMetadata == null ? 0 : partnerMetadata!.hashCode) +
@@ -176,11 +171,7 @@ class IntegrationRecord {
     } else {
       json[r'external_business_id'] = null;
     }
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
     if (this.partnerAccessToken != null) {
       json[r'partner_access_token'] = this.partnerAccessToken;
     } else {
@@ -235,10 +226,8 @@ class IntegrationRecord {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "IntegrationRecord[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "IntegrationRecord[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'id'), 'Required key "IntegrationRecord[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "IntegrationRecord[id]" has a null value in JSON.');
         return true;
       }());
 
@@ -251,7 +240,7 @@ class IntegrationRecord {
         connectedUserId: mapValueOfType<String>(json, r'connected_user_id'),
         createdTime: mapValueOfType<int>(json, r'created_time'),
         externalBusinessId: mapValueOfType<String>(json, r'external_business_id'),
-        id: mapValueOfType<String>(json, r'id'),
+        id: mapValueOfType<String>(json, r'id')!,
         partnerAccessToken: mapValueOfType<String>(json, r'partner_access_token'),
         partnerAccessTokenExpiry: mapValueOfType<int>(json, r'partner_access_token_expiry'),
         partnerMetadata: mapValueOfType<String>(json, r'partner_metadata'),
@@ -307,6 +296,7 @@ class IntegrationRecord {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
   };
 }
 

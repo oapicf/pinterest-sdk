@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set The number of ingested products that are in stock.
 	 */
-	void setINSTOCK(int  iN_STOCK);
+	void setINSTOCK(int iN_STOCK);
 	/*! \brief Get The number of ingested products that are in out of stock.
 	 */
 	int getOUTOFSTOCK();
 
 	/*! \brief Set The number of ingested products that are in out of stock.
 	 */
-	void setOUTOFSTOCK(int  oUT_OF_STOCK);
+	void setOUTOFSTOCK(int oUT_OF_STOCK);
 	/*! \brief Get The number of ingested products that are in preorder.
 	 */
 	int getPREORDER();
 
 	/*! \brief Set The number of ingested products that are in preorder.
 	 */
-	void setPREORDER(int  pREORDER);
+	void setPREORDER(int pREORDER);
 
 
     private:

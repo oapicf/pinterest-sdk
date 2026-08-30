@@ -17,7 +17,7 @@ def ad_accounts_subscriptions_del_by_id(ad_account_id, subscription_id):  # noqa
     :param subscription_id: Unique identifier of a subscription.
     :type subscription_id: str
 
-    :rtype: None
+    :rtype: LeadSubscription
     """
     return 'do some magic!'
 

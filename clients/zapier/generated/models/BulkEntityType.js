@@ -3,7 +3,7 @@ const utils = require('../utils/utils');
 module.exports = {
         fields: (key) => (
             {
-                label: `Refers ads entity type. Schedule enum is only applicable to beta users - [${key.replaceAll('__', '.')}]`,
+                label: `Refers ads entity type. - [${key.replaceAll('__', '.')}]`,
                 choices: [
                     'CAMPAIGN',
                     'AD_GROUP',
@@ -12,6 +12,7 @@ module.exports = {
                     'KEYWORD',
                     'LABEL',
                     'SCHEDULE',
+                    'ENTITY_HISTORY',
                 ],
             }
         )

@@ -1,0 +1,101 @@
+package com.prokarma.pkmst.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.prokarma.pkmst.model.Ad;
+import com.prokarma.pkmst.model.PinterestLibError;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+/**
+ * Response class to be returned by Api
+ * @author pkmst
+ *
+ */
+/**
+ * AdBatchItem
+ */
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class AdBatchItem   {
+  @JsonProperty("data")
+  private Ad data;
+
+  @JsonProperty("exceptions")
+  private PinterestLibError exceptions;
+
+  public AdBatchItem data(Ad data) {
+    this.data = data;
+    return this;
+  }
+
+  /**
+   * Get data
+   * @return data
+   */
+  @ApiModelProperty(value = "")
+  public Ad getData() {
+    return data;
+  }
+
+  public void setData(Ad data) {
+    this.data = data;
+  }
+
+  public AdBatchItem exceptions(PinterestLibError exceptions) {
+    this.exceptions = exceptions;
+    return this;
+  }
+
+  /**
+   * Get exceptions
+   * @return exceptions
+   */
+  @ApiModelProperty(value = "")
+  public PinterestLibError getExceptions() {
+    return exceptions;
+  }
+
+  public void setExceptions(PinterestLibError exceptions) {
+    this.exceptions = exceptions;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AdBatchItem adBatchItem = (AdBatchItem) o;
+    return Objects.equals(this.data, adBatchItem.data) &&
+        Objects.equals(this.exceptions, adBatchItem.exceptions);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(data, exceptions);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class AdBatchItem {\n");
+    
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

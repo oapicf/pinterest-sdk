@@ -12,7 +12,7 @@ API.Client.AdGroupsList200Response = function() {}
 API.Client.AdGroupsList200Response.prototype.bookmark;
 
 /**
- * @type {!Array<!API.Client.AdGroupResponse>}
+ * @type {!Array<!API.Client.AdGroup>}
  * @export
  */
 API.Client.AdGroupsList200Response.prototype.items;

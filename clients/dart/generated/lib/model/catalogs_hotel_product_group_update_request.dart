@@ -31,6 +31,7 @@ class CatalogsHotelProductGroupUpdateRequest {
   ///
   CatalogsHotelProductGroupFilters? filters;
 
+  /// Name of catalog product group
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -93,10 +94,6 @@ class CatalogsHotelProductGroupUpdateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsHotelProductGroupUpdateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsHotelProductGroupUpdateRequest[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -156,27 +153,28 @@ class CatalogsHotelProductGroupUpdateRequest {
 }
 
 
-class CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum._(this.value);
+enum CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum {
+  HOTEL._(r'HOTEL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const HOTEL = CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum._(r'HOTEL');
-
-  /// List of all possible values in this [enum][CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum].
-  static const values = <CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum>[
-    HOTEL,
-  ];
-
+  /// Returns the instance of [CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum? fromJson(dynamic value) => CatalogsHotelProductGroupUpdateRequestCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -198,9 +196,10 @@ class CatalogsHotelProductGroupUpdateRequestCatalogTypeEnumTypeTransformer {
 
   const CatalogsHotelProductGroupUpdateRequestCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum data) => data.value;
+  String encode(CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum.
+  /// Returns the instance of [CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -209,6 +208,9 @@ class CatalogsHotelProductGroupUpdateRequestCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'HOTEL': return CatalogsHotelProductGroupUpdateRequestCatalogTypeEnum.HOTEL;
@@ -221,7 +223,7 @@ class CatalogsHotelProductGroupUpdateRequestCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsHotelProductGroupUpdateRequestCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsHotelProductGroupUpdateRequestCatalogTypeEnumTypeTransformer? _instance;
 }
 

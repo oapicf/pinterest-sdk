@@ -66,7 +66,6 @@ class AudienceSubcategory(Model):
     def id(self) -> str:
         """Gets the id of this AudienceSubcategory.
 
-        Subinterest ID.  # noqa: E501
 
         :return: The id of this AudienceSubcategory.
         :rtype: str
@@ -77,7 +76,6 @@ class AudienceSubcategory(Model):
     def id(self, id: str):
         """Sets the id of this AudienceSubcategory.
 
-        Subinterest ID.  # noqa: E501
 
         :param id: The id of this AudienceSubcategory.
         :type id: str
@@ -89,7 +87,6 @@ class AudienceSubcategory(Model):
     def index(self) -> float:
         """Gets the index of this AudienceSubcategory.
 
-        Subinterest affinity index.  # noqa: E501
 
         :return: The index of this AudienceSubcategory.
         :rtype: float
@@ -100,7 +97,6 @@ class AudienceSubcategory(Model):
     def index(self, index: float):
         """Sets the index of this AudienceSubcategory.
 
-        Subinterest affinity index.  # noqa: E501
 
         :param index: The index of this AudienceSubcategory.
         :type index: float
@@ -112,7 +108,6 @@ class AudienceSubcategory(Model):
     def key(self) -> str:
         """Gets the key of this AudienceSubcategory.
 
-        Interest unique key (same as ID).  # noqa: E501
 
         :return: The key of this AudienceSubcategory.
         :rtype: str
@@ -123,7 +118,6 @@ class AudienceSubcategory(Model):
     def key(self, key: str):
         """Sets the key of this AudienceSubcategory.
 
-        Interest unique key (same as ID).  # noqa: E501
 
         :param key: The key of this AudienceSubcategory.
         :type key: str
@@ -135,7 +129,6 @@ class AudienceSubcategory(Model):
     def name(self) -> str:
         """Gets the name of this AudienceSubcategory.
 
-        Subinterest name.  # noqa: E501
 
         :return: The name of this AudienceSubcategory.
         :rtype: str
@@ -146,7 +139,6 @@ class AudienceSubcategory(Model):
     def name(self, name: str):
         """Sets the name of this AudienceSubcategory.
 
-        Subinterest name.  # noqa: E501
 
         :param name: The name of this AudienceSubcategory.
         :type name: str
@@ -158,7 +150,6 @@ class AudienceSubcategory(Model):
     def ratio(self) -> float:
         """Gets the ratio of this AudienceSubcategory.
 
-        Subinterest's percent of category's total audience.  # noqa: E501
 
         :return: The ratio of this AudienceSubcategory.
         :rtype: float
@@ -169,7 +160,6 @@ class AudienceSubcategory(Model):
     def ratio(self, ratio: float):
         """Sets the ratio of this AudienceSubcategory.
 
-        Subinterest's percent of category's total audience.  # noqa: E501
 
         :param ratio: The ratio of this AudienceSubcategory.
         :type ratio: float

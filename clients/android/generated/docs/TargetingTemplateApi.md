@@ -12,11 +12,11 @@ Method | HTTP request | Description
 
 ## targetingTemplateCreate
 
-> TargetingTemplateGetResponseData targetingTemplateCreate(adAccountId, targetingTemplateCreate)
+> TargetingTemplate targetingTemplateCreate(adAccountId, targetingTemplateCreate)
 
 Create targeting templates
 
-&lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
+Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 
 ### Example
 
@@ -26,9 +26,9 @@ Create targeting templates
 
 TargetingTemplateApi apiInstance = new TargetingTemplateApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-TargetingTemplateCreate targetingTemplateCreate = new TargetingTemplateCreate(); // TargetingTemplateCreate | targeting template creation entity
+TargetingTemplateCreate targetingTemplateCreate = new TargetingTemplateCreate(); // TargetingTemplateCreate | 
 try {
-    TargetingTemplateGetResponseData result = apiInstance.targetingTemplateCreate(adAccountId, targetingTemplateCreate);
+    TargetingTemplate result = apiInstance.targetingTemplateCreate(adAccountId, targetingTemplateCreate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TargetingTemplateApi#targetingTemplateCreate");
@@ -42,11 +42,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **targetingTemplateCreate** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md)| targeting template creation entity |
+ **targetingTemplateCreate** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md)|  |
 
 ### Return type
 
-[**TargetingTemplateGetResponseData**](TargetingTemplateGetResponseData.md)
+[**TargetingTemplate**](TargetingTemplate.md)
 
 ### Authorization
 
@@ -60,11 +60,11 @@ Name | Type | Description  | Notes
 
 ## targetingTemplateList
 
-> TargetingTemplateList200Response targetingTemplateList(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark)
+> TargetingTemplateList200Response targetingTemplateList(adAccountId, bookmark, pageSize, order, includeSizing, searchQuery)
 
 List targeting templates
 
-Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
+Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;
 
 ### Example
 
@@ -74,13 +74,13 @@ Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id
 
 TargetingTemplateApi apiInstance = new TargetingTemplateApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-String order = ASCENDING; // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-Boolean includeSizing = false; // Boolean | Include audience sizing in result or not
-String searchQuery = gaming; // String | Search keyword for targeting templates
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 String bookmark = null; // String | Cursor used to fetch the next page of items
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+PinterestLibPaginationOrder order = null; // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+Boolean includeSizing = false; // Boolean | Include audience sizing in result or not
+String searchQuery = null; // String | Search query. Can contain pin description keywords or comma-separated pin IDs.
 try {
-    TargetingTemplateList200Response result = apiInstance.targetingTemplateList(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark);
+    TargetingTemplateList200Response result = apiInstance.targetingTemplateList(adAccountId, bookmark, pageSize, order, includeSizing, searchQuery);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TargetingTemplateApi#targetingTemplateList");
@@ -94,11 +94,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING]
- **includeSizing** | **Boolean**| Include audience sizing in result or not | [optional] [default to false]
- **searchQuery** | **String**| Search keyword for targeting templates | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING]
+ **includeSizing** | **Boolean**| Include audience sizing in result or not | [optional] [default to false]
+ **searchQuery** | **String**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] [default to null]
 
 ### Return type
 
@@ -116,11 +116,11 @@ Name | Type | Description  | Notes
 
 ## targetingTemplateUpdate
 
-> targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest)
+> targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequestReadOrUpdate)
 
 Update targeting templates
 
-&lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
+Update the targeting template given advertiser ID and targeting template ID
 
 ### Example
 
@@ -130,9 +130,9 @@ Update targeting templates
 
 TargetingTemplateApi apiInstance = new TargetingTemplateApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-TargetingTemplateUpdateRequest targetingTemplateUpdateRequest = new TargetingTemplateUpdateRequest(); // TargetingTemplateUpdateRequest | Operation type and targeting template ID
+TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate = new TargetingTemplateUpdateRequestReadOrUpdate(); // TargetingTemplateUpdateRequestReadOrUpdate | 
 try {
-    apiInstance.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest);
+    apiInstance.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequestReadOrUpdate);
 } catch (ApiException e) {
     System.err.println("Exception when calling TargetingTemplateApi#targetingTemplateUpdate");
     e.printStackTrace();
@@ -145,7 +145,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **targetingTemplateUpdateRequest** | [**TargetingTemplateUpdateRequest**](TargetingTemplateUpdateRequest.md)| Operation type and targeting template ID |
+ **targetingTemplateUpdateRequestReadOrUpdate** | [**TargetingTemplateUpdateRequestReadOrUpdate**](TargetingTemplateUpdateRequestReadOrUpdate.md)|  |
 
 ### Return type
 

@@ -1,0 +1,37 @@
+
+<h2>SupplementalOperationResult</h2>
+<ul class="parameter">
+  <li class="param-required-false">errors : List
+    <br/>Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">itemUnderscoreid : String
+    <br/>Catalog item id in the merchant namespace
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">status : SupplementalItemProcessingStatus
+    <br/>Status of the item processing record
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">storeUnderscorecode : String
+    <br/>Store code for the local inventory item
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">supplementalUnderscoretype : String
+    <br/>
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>LOCAL_INVENTORY</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">warnings : List
+    <br/>Array with the validation warnings for the item processing record
+  </li>
+</ul>

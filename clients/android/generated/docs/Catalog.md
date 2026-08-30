@@ -6,11 +6,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | [**Date**](Date.md) |  | 
-**id** | **String** | ID of the catalog entity. | 
-**updatedAt** | [**Date**](Date.md) |  | 
 **catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**createdAt** | [**Date**](Date.md) |  |  [readonly]
+**id** | **String** | ID of the catalog entity. | 
 **name** | **String** | A human-friendly name associated to a catalog entity. | 
+**updatedAt** | [**Date**](Date.md) |  |  [readonly]
 
 
 

@@ -7,7 +7,7 @@ using namespace Tiny;
 TargetingSpecOperationAppType::TargetingSpecOperationAppType()
 {
 	field = std::string();
-	operation = std::string();
+	operation = TargetingSpecListOperation();
 	values = std::list<TargetingSpecAppType>();
 }
 
@@ -47,8 +47,9 @@ TargetingSpecOperationAppType::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&operation, value, "std::string");
 
+        TargetingSpecListOperation* obj = &operation;
+		obj->fromJson(value.dump());
 
     }
 
@@ -93,8 +94,8 @@ TargetingSpecOperationAppType::toJson()
 
 
 
-    object["operation"] = getOperation();
 
+	object["operation"] = getOperation().toJson();
 
 
 
@@ -123,19 +124,19 @@ TargetingSpecOperationAppType::getField()
 }
 
 void
-TargetingSpecOperationAppType::setField(std::string  field)
+TargetingSpecOperationAppType::setField(std::string field)
 {
 	this->field = field;
 }
 
-std::string
+TargetingSpecListOperation
 TargetingSpecOperationAppType::getOperation()
 {
 	return operation;
 }
 
 void
-TargetingSpecOperationAppType::setOperation(std::string  operation)
+TargetingSpecOperationAppType::setOperation(TargetingSpecListOperation operation)
 {
 	this->operation = operation;
 }
@@ -147,7 +148,7 @@ TargetingSpecOperationAppType::getValues()
 }
 
 void
-TargetingSpecOperationAppType::setValues(std::list <TargetingSpecAppType> values)
+TargetingSpecOperationAppType::setValues(std::list<TargetingSpecAppType> values)
 {
 	this->values = values;
 }

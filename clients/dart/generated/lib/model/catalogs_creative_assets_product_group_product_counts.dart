@@ -13,12 +13,20 @@ part of openapi.api;
 class CatalogsCreativeAssetsProductGroupProductCounts {
   /// Returns a new [CatalogsCreativeAssetsProductGroupProductCounts] instance.
   CatalogsCreativeAssetsProductGroupProductCounts({
+    required this.appLinks,
     required this.catalogType,
+    required this.images,
     required this.total,
     required this.videos,
   });
 
+  /// Minimum value: 0
+  num appLinks;
+
   CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum catalogType;
+
+  /// Minimum value: 0
+  num images;
 
   /// Minimum value: 0
   num total;
@@ -28,23 +36,29 @@ class CatalogsCreativeAssetsProductGroupProductCounts {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CatalogsCreativeAssetsProductGroupProductCounts &&
+    other.appLinks == appLinks &&
     other.catalogType == catalogType &&
+    other.images == images &&
     other.total == total &&
     other.videos == videos;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (appLinks.hashCode) +
     (catalogType.hashCode) +
+    (images.hashCode) +
     (total.hashCode) +
     (videos.hashCode);
 
   @override
-  String toString() => 'CatalogsCreativeAssetsProductGroupProductCounts[catalogType=$catalogType, total=$total, videos=$videos]';
+  String toString() => 'CatalogsCreativeAssetsProductGroupProductCounts[appLinks=$appLinks, catalogType=$catalogType, images=$images, total=$total, videos=$videos]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+      json[r'app_links'] = this.appLinks;
       json[r'catalog_type'] = this.catalogType;
+      json[r'images'] = this.images;
       json[r'total'] = this.total;
       json[r'videos'] = this.videos;
     return json;
@@ -61,15 +75,23 @@ class CatalogsCreativeAssetsProductGroupProductCounts {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsCreativeAssetsProductGroupProductCounts[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsCreativeAssetsProductGroupProductCounts[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'app_links'), 'Required key "CatalogsCreativeAssetsProductGroupProductCounts[app_links]" is missing from JSON.');
+        assert(json[r'app_links'] != null, 'Required key "CatalogsCreativeAssetsProductGroupProductCounts[app_links]" has a null value in JSON.');
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsCreativeAssetsProductGroupProductCounts[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsCreativeAssetsProductGroupProductCounts[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'images'), 'Required key "CatalogsCreativeAssetsProductGroupProductCounts[images]" is missing from JSON.');
+        assert(json[r'images'] != null, 'Required key "CatalogsCreativeAssetsProductGroupProductCounts[images]" has a null value in JSON.');
+        assert(json.containsKey(r'total'), 'Required key "CatalogsCreativeAssetsProductGroupProductCounts[total]" is missing from JSON.');
+        assert(json[r'total'] != null, 'Required key "CatalogsCreativeAssetsProductGroupProductCounts[total]" has a null value in JSON.');
+        assert(json.containsKey(r'videos'), 'Required key "CatalogsCreativeAssetsProductGroupProductCounts[videos]" is missing from JSON.');
+        assert(json[r'videos'] != null, 'Required key "CatalogsCreativeAssetsProductGroupProductCounts[videos]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsCreativeAssetsProductGroupProductCounts(
+        appLinks: num.parse('${json[r'app_links']}'),
         catalogType: CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum.fromJson(json[r'catalog_type'])!,
+        images: num.parse('${json[r'images']}'),
         total: num.parse('${json[r'total']}'),
         videos: num.parse('${json[r'videos']}'),
       );
@@ -119,34 +141,37 @@ class CatalogsCreativeAssetsProductGroupProductCounts {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'app_links',
     'catalog_type',
+    'images',
     'total',
     'videos',
   };
 }
 
 
-class CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum._(this.value);
+enum CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum {
+  CREATIVE_ASSETS._(r'CREATIVE_ASSETS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CREATIVE_ASSETS = CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum._(r'CREATIVE_ASSETS');
-
-  /// List of all possible values in this [enum][CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum].
-  static const values = <CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum>[
-    CREATIVE_ASSETS,
-  ];
-
+  /// Returns the instance of [CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum? fromJson(dynamic value) => CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -168,9 +193,10 @@ class CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnumTypeTransfor
 
   const CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum data) => data.value;
+  String encode(CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum.
+  /// Returns the instance of [CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -179,6 +205,9 @@ class CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnumTypeTransfor
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CREATIVE_ASSETS': return CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum.CREATIVE_ASSETS;
@@ -191,7 +220,7 @@ class CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnumTypeTransfor
     return null;
   }
 
-  /// Singleton [CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnumTypeTransformer? _instance;
 }
 

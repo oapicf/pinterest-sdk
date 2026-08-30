@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 
 ### Examples
 
@@ -30,11 +30,11 @@ end
 
 api_instance = PinterestSdkClient::SearchApi.new
 term = 'term_example' # String | Search term to look up pins.
-country_code = 'US' # String | Two letter country code (ISO 3166-1 alpha-2)
+country_code = 'country_code_example' # String | Two letter country code (ISO 3166-1 alpha-2)
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
   locale: 'locale_example', # String | Search locale.
-  limit: 4 # Integer | Max search result size
+  limit: 56 # Integer | Max search result size
 }
 
 begin
@@ -90,11 +90,11 @@ end
 
 ## search_user_boards_get
 
-> <SearchUserBoardsGet200Response> search_user_boards_get(opts)
+> <BoardsList200Response> search_user_boards_get(opts)
 
 Search user's boards
 
-Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Examples
 
@@ -113,9 +113,9 @@ end
 api_instance = PinterestSdkClient::SearchApi.new
 opts = {
   ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
+  query: 'query_example', # String | Search query. Can contain pin description keywords or comma-separated pin IDs.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  query: 'query_example' # String | Search query. Can contain pin description keywords or comma-separated pin IDs.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -131,7 +131,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SearchUserBoardsGet200Response>, Integer, Hash)> search_user_boards_get_with_http_info(opts)
+> <Array(<BoardsList200Response>, Integer, Hash)> search_user_boards_get_with_http_info(opts)
 
 ```ruby
 begin
@@ -139,7 +139,7 @@ begin
   data, status_code, headers = api_instance.search_user_boards_get_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <SearchUserBoardsGet200Response>
+  p data # => <BoardsList200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling SearchApi->search_user_boards_get_with_http_info: #{e}"
 end
@@ -150,13 +150,13 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
-| **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 | **query** | **String** | Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] |
+| **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
-[**SearchUserBoardsGet200Response**](SearchUserBoardsGet200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -170,11 +170,11 @@ end
 
 ## search_user_pins_list
 
-> <SearchUserPinsList200Response> search_user_pins_list(query, opts)
+> <PinsList200Response> search_user_pins_list(query, opts)
 
 Search user's Pins
 
-Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Examples
 
@@ -188,7 +188,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::SearchApi.new
-query = 'Plants' # String | Search query. Can contain pin description keywords or comma-separated pin IDs.
+query = 'query_example' # String | Search query. Can contain pin description keywords or comma-separated pin IDs.
 opts = {
   ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
   bookmark: 'bookmark_example' # String | Cursor used to fetch the next page of items
@@ -207,7 +207,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SearchUserPinsList200Response>, Integer, Hash)> search_user_pins_list_with_http_info(query, opts)
+> <Array(<PinsList200Response>, Integer, Hash)> search_user_pins_list_with_http_info(query, opts)
 
 ```ruby
 begin
@@ -215,7 +215,7 @@ begin
   data, status_code, headers = api_instance.search_user_pins_list_with_http_info(query, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <SearchUserPinsList200Response>
+  p data # => <PinsList200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling SearchApi->search_user_pins_list_with_http_info: #{e}"
 end
@@ -231,7 +231,7 @@ end
 
 ### Return type
 
-[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
+[**PinsList200Response**](PinsList200Response.md)
 
 ### Authorization
 

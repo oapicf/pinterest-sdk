@@ -15,12 +15,12 @@ static ssio_account_address_t *ssio_account_address_create_internal(
     if (!ssio_account_address_local_var) {
         return NULL;
     }
+    memset(ssio_account_address_local_var, 0, sizeof(ssio_account_address_t));
+    ssio_account_address_local_var->_library_owned = 1;
     ssio_account_address_local_var->address_id = address_id;
     ssio_account_address_local_var->display = display;
     ssio_account_address_local_var->order_legal_entity = order_legal_entity;
     ssio_account_address_local_var->purpose = purpose;
-
-    ssio_account_address_local_var->_library_owned = 1;
     return ssio_account_address_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) ssio_account_address_t *ssio_account_address_create(
     char *order_legal_entity,
     char *purpose
     ) {
-    return ssio_account_address_create_internal (
+    ssio_account_address_t *result = ssio_account_address_create_internal (
         address_id,
         display,
         order_legal_entity,
         purpose
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ssio_account_address_free(ssio_account_address_t *ssio_account_address) {
@@ -112,6 +115,14 @@ ssio_account_address_t *ssio_account_address_parseFromJSON(cJSON *ssio_account_a
 
     ssio_account_address_t *ssio_account_address_local_var = NULL;
 
+    char *address_id_local_str = NULL;
+
+    char *display_local_str = NULL;
+
+    char *order_legal_entity_local_str = NULL;
+
+    char *purpose_local_str = NULL;
+
     // ssio_account_address->address_id
     cJSON *address_id = cJSON_GetObjectItemCaseSensitive(ssio_account_addressJSON, "address_id");
     if (cJSON_IsNull(address_id)) {
@@ -161,15 +172,40 @@ ssio_account_address_t *ssio_account_address_parseFromJSON(cJSON *ssio_account_a
     }
 
 
+    if (address_id && !cJSON_IsNull(address_id)) address_id_local_str = strdup(address_id->valuestring);
+    if (display && !cJSON_IsNull(display)) display_local_str = strdup(display->valuestring);
+    if (order_legal_entity && !cJSON_IsNull(order_legal_entity)) order_legal_entity_local_str = strdup(order_legal_entity->valuestring);
+    if (purpose && !cJSON_IsNull(purpose)) purpose_local_str = strdup(purpose->valuestring);
+
     ssio_account_address_local_var = ssio_account_address_create_internal (
-        address_id && !cJSON_IsNull(address_id) ? strdup(address_id->valuestring) : NULL,
-        display && !cJSON_IsNull(display) ? strdup(display->valuestring) : NULL,
-        order_legal_entity && !cJSON_IsNull(order_legal_entity) ? strdup(order_legal_entity->valuestring) : NULL,
-        purpose && !cJSON_IsNull(purpose) ? strdup(purpose->valuestring) : NULL
+        address_id_local_str,
+        display_local_str,
+        order_legal_entity_local_str,
+        purpose_local_str
         );
+
+    if (!ssio_account_address_local_var) {
+        goto end;
+    }
 
     return ssio_account_address_local_var;
 end:
+    if (address_id_local_str) {
+        free(address_id_local_str);
+        address_id_local_str = NULL;
+    }
+    if (display_local_str) {
+        free(display_local_str);
+        display_local_str = NULL;
+    }
+    if (order_legal_entity_local_str) {
+        free(order_legal_entity_local_str);
+        order_legal_entity_local_str = NULL;
+    }
+    if (purpose_local_str) {
+        free(purpose_local_str);
+        purpose_local_str = NULL;
+    }
     return NULL;
 
 }

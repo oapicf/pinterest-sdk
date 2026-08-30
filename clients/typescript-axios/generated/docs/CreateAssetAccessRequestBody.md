@@ -6,7 +6,7 @@ An object containing a list of all the asset access requests
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**asset_requests** | [**Array&lt;CreateAssetAccessRequestBodyAssetRequestsInner&gt;**](CreateAssetAccessRequestBodyAssetRequestsInner.md) |  | [default to undefined]
+**asset_requests** | [**Array&lt;CreateAssetAccessRequestItem&gt;**](CreateAssetAccessRequestItem.md) |  | [default to undefined]
 
 ## Example
 

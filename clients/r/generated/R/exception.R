@@ -7,8 +7,8 @@
 #' @title Exception
 #' @description Exception Class
 #' @format An \code{R6Class} generator object
-#' @field code Exception error code. integer [optional]
-#' @field message Exception message. character [optional]
+#' @field code  integer [optional]
+#' @field message  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,21 +21,21 @@ Exception <- R6::R6Class(
     #' @description
     #' Initialize a new Exception class.
     #'
-    #' @param code Exception error code.
-    #' @param message Exception message.
+    #' @param message message
+    #' @param code code
     #' @param ... Other optional arguments.
-    initialize = function(`code` = NULL, `message` = NULL, ...) {
+    initialize = function(`message`, `code` = NULL, ...) {
+      if (!missing(`message`)) {
+        if (!(is.character(`message`) && length(`message`) == 1)) {
+          stop(paste("Error! Invalid data for `message`. Must be a string:", `message`))
+        }
+        self$`message` <- `message`
+      }
       if (!is.null(`code`)) {
         if (!(is.numeric(`code`) && length(`code`) == 1)) {
           stop(paste("Error! Invalid data for `code`. Must be an integer:", `code`))
         }
         self$`code` <- `code`
-      }
-      if (!is.null(`message`)) {
-        if (!(is.character(`message`) && length(`message`) == 1)) {
-          stop(paste("Error! Invalid data for `message`. Must be a string:", `message`))
-        }
-        self$`message` <- `message`
       }
     },
 
@@ -126,6 +126,14 @@ Exception <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `message`
+      if (!is.null(input_json$`message`)) {
+        if (!(is.character(input_json$`message`) && length(input_json$`message`) == 1)) {
+          stop(paste("Error! Invalid data for `message`. Must be a string:", input_json$`message`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Exception: the required field `message` is missing."))
+      }
     },
 
     #' @description
@@ -141,6 +149,11 @@ Exception <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `message` is null
+      if (is.null(self$`message`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -150,6 +163,11 @@ Exception <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `message` is null
+      if (is.null(self$`message`)) {
+        invalid_fields["message"] <- "Non-nullable required field `message` cannot be null."
+      }
+
       invalid_fields
     },
 

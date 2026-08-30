@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **gender** | [**CatalogsProductGroupMultipleGenderCriteria**](.md) |  |  |
+| **gender** | [**CatalogsProductGroupMultipleGenderCriteria**](CatalogsProductGroupMultipleGenderCriteria.md) |  |  |
 
 ## Example
 

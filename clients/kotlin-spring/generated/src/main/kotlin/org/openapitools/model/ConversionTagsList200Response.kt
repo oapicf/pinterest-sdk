@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class ConversionTagsList200Response(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("items")
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<ConversionTag>
 ) {
 

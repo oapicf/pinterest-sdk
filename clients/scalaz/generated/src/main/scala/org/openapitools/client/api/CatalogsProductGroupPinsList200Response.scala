@@ -13,8 +13,7 @@ import CatalogsProductGroupPinsList200Response._
 
 case class CatalogsProductGroupPinsList200Response (
   bookmark: Option[String],
-/* Pins */
-  items: List[CatalogsProduct])
+items: List[CatalogsProduct])
 
 object CatalogsProductGroupPinsList200Response {
   import DateTimeCodecs._

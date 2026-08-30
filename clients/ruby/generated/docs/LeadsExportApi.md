@@ -10,11 +10,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## leads_export_create
 
-> <LeadsExportCreateResponse> leads_export_create(ad_account_id, leads_export_create_request)
+> <LeadsExports> leads_export_create(ad_account_id, leads_exports_create)
 
 Create a request to export leads collected from a lead ad
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a `leads_export_id` token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Examples
 
@@ -29,11 +29,11 @@ end
 
 api_instance = PinterestSdkClient::LeadsExportApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-leads_export_create_request = PinterestSdkClient::LeadsExportCreateRequest.new({ad_id: '687201361754', end_date: '2020-12-20', start_date: '2020-12-20'}) # LeadsExportCreateRequest | 
+leads_exports_create = PinterestSdkClient::LeadsExportsCreate.new({ad_id: '687201361754', end_date: '2020-12-20', start_date: '2020-12-20'}) # LeadsExportsCreate | 
 
 begin
   # Create a request to export leads collected from a lead ad
-  result = api_instance.leads_export_create(ad_account_id, leads_export_create_request)
+  result = api_instance.leads_export_create(ad_account_id, leads_exports_create)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling LeadsExportApi->leads_export_create: #{e}"
@@ -44,15 +44,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<LeadsExportCreateResponse>, Integer, Hash)> leads_export_create_with_http_info(ad_account_id, leads_export_create_request)
+> <Array(<LeadsExports>, Integer, Hash)> leads_export_create_with_http_info(ad_account_id, leads_exports_create)
 
 ```ruby
 begin
   # Create a request to export leads collected from a lead ad
-  data, status_code, headers = api_instance.leads_export_create_with_http_info(ad_account_id, leads_export_create_request)
+  data, status_code, headers = api_instance.leads_export_create_with_http_info(ad_account_id, leads_exports_create)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <LeadsExportCreateResponse>
+  p data # => <LeadsExports>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling LeadsExportApi->leads_export_create_with_http_info: #{e}"
 end
@@ -63,11 +63,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **leads_export_create_request** | [**LeadsExportCreateRequest**](LeadsExportCreateRequest.md) |  |  |
+| **leads_exports_create** | [**LeadsExportsCreate**](LeadsExportsCreate.md) |  |  |
 
 ### Return type
 
-[**LeadsExportCreateResponse**](LeadsExportCreateResponse.md)
+[**LeadsExports**](LeadsExports.md)
 
 ### Authorization
 
@@ -85,7 +85,7 @@ end
 
 Get the lead export from the lead export create call
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Examples
 
@@ -100,7 +100,7 @@ end
 
 api_instance = PinterestSdkClient::LeadsExportApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-leads_export_id = '123755885175' # String | lead_export_id token returned from the create a lead export endpoint
+leads_export_id = 'leads_export_id_example' # String | lead_export_id token returned from the create a lead export endpoint
 
 begin
   # Get the lead export from the lead export create call

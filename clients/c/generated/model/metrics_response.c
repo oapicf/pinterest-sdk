@@ -12,18 +12,21 @@ static metrics_response_t *metrics_response_create_internal(
     if (!metrics_response_local_var) {
         return NULL;
     }
-    metrics_response_local_var->data = data;
-
+    memset(metrics_response_local_var, 0, sizeof(metrics_response_t));
     metrics_response_local_var->_library_owned = 1;
+    metrics_response_local_var->data = data;
     return metrics_response_local_var;
 }
 
 __attribute__((deprecated)) metrics_response_t *metrics_response_create(
     list_t *data
     ) {
-    return metrics_response_create_internal (
+    metrics_response_t *result = metrics_response_create_internal (
         data
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void metrics_response_free(metrics_response_t *metrics_response) {
@@ -37,7 +40,7 @@ void metrics_response_free(metrics_response_t *metrics_response) {
     listEntry_t *listEntry;
     if (metrics_response->data) {
         list_ForEach(listEntry, metrics_response->data) {
-            object_free(listEntry->data);
+            metrics_response_data_items_free(listEntry->data);
         }
         list_freeList(metrics_response->data);
         metrics_response->data = NULL;
@@ -58,7 +61,7 @@ cJSON *metrics_response_convertToJSON(metrics_response_t *metrics_response) {
     listEntry_t *dataListEntry;
     if (metrics_response->data) {
     list_ForEach(dataListEntry, metrics_response->data) {
-    cJSON *itemLocal = object_convertToJSON(dataListEntry->data);
+    cJSON *itemLocal = metrics_response_data_items_convertToJSON(dataListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -100,23 +103,28 @@ metrics_response_t *metrics_response_parseFromJSON(cJSON *metrics_responseJSON){
         if(!cJSON_IsObject(data_local_nonprimitive)){
             goto end;
         }
-        object_t *dataItem = object_parseFromJSON(data_local_nonprimitive);
+        metrics_response_data_items_t *dataItem = metrics_response_data_items_parseFromJSON(data_local_nonprimitive);
 
         list_addElement(dataList, dataItem);
     }
     }
 
 
+
     metrics_response_local_var = metrics_response_create_internal (
         data ? dataList : NULL
         );
+
+    if (!metrics_response_local_var) {
+        goto end;
+    }
 
     return metrics_response_local_var;
 end:
     if (dataList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, dataList) {
-            object_free(listEntry->data);
+            metrics_response_data_items_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(dataList);

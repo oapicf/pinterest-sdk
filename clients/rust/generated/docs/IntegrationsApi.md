@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## integrations_commerce_slash_del
 
-> integrations_commerce_slash_del(external_business_id)
+> models::IntegrationMetadata integrations_commerce_slash_del(external_business_id)
 Delete commerce integration
 
 Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
@@ -30,7 +30,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::IntegrationMetadata**](IntegrationMetadata.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Required | Notes
 
 ## integrations_commerce_slash_patch
 
-> models::IntegrationMetadata integrations_commerce_slash_patch(external_business_id, integration_request_patch)
+> models::IntegrationMetadata integrations_commerce_slash_patch(external_business_id, integration_metadata_update)
 Update commerce integration
 
 Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
@@ -87,7 +87,7 @@ Update commerce integration metadata for the given external business ID. Note: I
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **external_business_id** | **String** | External business ID for the integration. | [required] |
-**integration_request_patch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata | [required] |
+**integration_metadata_update** | [**IntegrationMetadataUpdate**](IntegrationMetadataUpdate.md) |  | [required] |
 
 ### Return type
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Required | Notes
 
 ## integrations_commerce_slash_post
 
-> models::IntegrationMetadata integrations_commerce_slash_post(integration_request)
+> models::IntegrationMetadata integrations_commerce_slash_post(integration_metadata_create)
 Create commerce integration
 
 Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
@@ -117,7 +117,7 @@ Create commerce integration metadata to link an external business ID with a Pint
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**integration_request** | [**IntegrationRequest**](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata | [required] |
+**integration_metadata_create** | [**IntegrationMetadataCreate**](IntegrationMetadataCreate.md) |  | [required] |
 
 ### Return type
 
@@ -137,7 +137,7 @@ Name | Type | Description  | Required | Notes
 
 ## integrations_logs_slash_post
 
-> models::IntegrationLogsSuccessResponse integrations_logs_slash_post(integration_logs_request)
+> models::IntegrationLogsSuccessResponse integrations_logs_slash_post(integration_logs_request_create)
 Receives batched logs from integration applications.
 
 This endpoint receives batched logs from integration applications on partner platforms. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
@@ -147,7 +147,7 @@ This endpoint receives batched logs from integration applications on partner pla
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**integration_logs_request** | [**IntegrationLogsRequest**](IntegrationLogsRequest.md) | Ingest log information from external integration application. | [required] |
+**integration_logs_request_create** | [**IntegrationLogsRequestCreate**](IntegrationLogsRequestCreate.md) |  | [required] |
 
 ### Return type
 
@@ -177,7 +177,7 @@ Get integration metadata by ID. Note: If you're interested in joining the beta, 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **String** | Integration ID. | [required] |
+**id** | **String** | Integration record ID. | [required] |
 
 ### Return type
 
@@ -208,7 +208,7 @@ Get integration metadata list. Note: If you're interested in joining the beta, p
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
 ### Return type
 

@@ -1,16 +1,19 @@
 package controllers;
 
 import apimodels.CreativeType;
-import apimodels.Error;
 import java.time.LocalDate;
 import java.util.Map;
+import apimodels.MultiPinsAnalyticsMetricTypesItem;
 import apimodels.Pin;
 import apimodels.PinAnalyticsMetricsResponse;
 import apimodels.PinCreate;
+import apimodels.PinFilter;
+import apimodels.PinType;
 import apimodels.PinUpdate;
 import apimodels.PinsList200Response;
-import apimodels.PinsSaveRequest;
+import apimodels.PinsSaveRequestCreate;
 import apimodels.PinterestLibError;
+import apimodels.QuerypinanalyticsmetrictypesItems;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -34,7 +37,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PinsApiController extends Controller {
     private final PinsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -87,7 +90,7 @@ public class PinsApiController extends Controller {
             throw new IllegalArgumentException("'metric_types' parameter is required");
         }
         List<String> metricTypesList = OpenAPIUtils.parametersToList("csv", metricTypesArray);
-        List<String> metricTypes = new ArrayList<>();
+        List<MultiPinsAnalyticsMetricTypesItem> metricTypes = new ArrayList<>();
         for (String curParam : metricTypesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -132,7 +135,7 @@ public class PinsApiController extends Controller {
             throw new IllegalArgumentException("'metric_types' parameter is required");
         }
         List<String> metricTypesList = OpenAPIUtils.parametersToList("csv", metricTypesArray);
-        List<String> metricTypes = new ArrayList<>();
+        List<QuerypinanalyticsmetrictypesItems> metricTypes = new ArrayList<>();
         for (String curParam : metricTypesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -212,7 +215,7 @@ public class PinsApiController extends Controller {
     @ApiAction
     public Result pinsList(Http.Request request) throws Exception {
         String valuepinFilter = request.getQueryString("pin_filter");
-        String pinFilter;
+        PinFilter pinFilter;
         if (valuepinFilter != null) {
             pinFilter = valuepinFilter;
         } else {
@@ -233,7 +236,7 @@ public class PinsApiController extends Controller {
             includeProtectedPins = false;
         }
         String valuepinType = request.getQueryString("pin_type");
-        String pinType;
+        PinType pinType;
         if (valuepinType != null) {
             pinType = valuepinType;
         } else {
@@ -255,6 +258,29 @@ public class PinsApiController extends Controller {
         } else {
             adAccountId = null;
         }
+        String valuedomain = request.getQueryString("domain");
+        String domain;
+        if (valuedomain != null) {
+            domain = valuedomain;
+        } else {
+            domain = null;
+        }
+        String[] domainsArray = request.queryString().get("domains");
+        List<String> domainsList = OpenAPIUtils.parametersToList("multi", domainsArray);
+        List<String> domains = new ArrayList<>();
+        for (String curParam : domainsList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                domains.add(curParam);
+            }
+        }
+        String valueincludeProductTagObj = request.getQueryString("include_product_tag_obj");
+        Boolean includeProductTagObj;
+        if (valueincludeProductTagObj != null) {
+            includeProductTagObj = Boolean.valueOf(valueincludeProductTagObj);
+        } else {
+            includeProductTagObj = null;
+        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -269,20 +295,20 @@ public class PinsApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        return imp.pinsListHttp(request, pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize);
+        return imp.pinsListHttp(request, pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, domain, domains, includeProductTagObj, bookmark, pageSize);
     }
 
     @ApiAction
     public Result pinsSave(Http.Request request, String pinId) throws Exception {
-        JsonNode nodepinsSaveRequest = request.body().asJson();
-        PinsSaveRequest pinsSaveRequest;
-        if (nodepinsSaveRequest != null) {
-            pinsSaveRequest = mapper.readValue(nodepinsSaveRequest.toString(), PinsSaveRequest.class);
+        JsonNode nodepinsSaveRequestCreate = request.body().asJson();
+        PinsSaveRequestCreate pinsSaveRequestCreate;
+        if (nodepinsSaveRequestCreate != null) {
+            pinsSaveRequestCreate = mapper.readValue(nodepinsSaveRequestCreate.toString(), PinsSaveRequestCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(pinsSaveRequest);
+                OpenAPIUtils.validate(pinsSaveRequestCreate);
             }
         } else {
-            throw new IllegalArgumentException("'PinsSaveRequest' parameter is required");
+            throw new IllegalArgumentException("'PinsSaveRequestCreate' parameter is required");
         }
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
@@ -291,7 +317,7 @@ public class PinsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.pinsSaveHttp(request, pinId, pinsSaveRequest, adAccountId);
+        return imp.pinsSaveHttp(request, pinId, pinsSaveRequestCreate, adAccountId);
     }
 
     @ApiAction

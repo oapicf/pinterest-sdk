@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -10,26 +11,26 @@ import java.util.List;
 import org.openapitools.model.AdvancedAuctionItem;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Response object containing item bid options
  */
 
 @Schema(name = "AdvancedAuctionItems", description = "Response object containing item bid options")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdvancedAuctionItems {
 
   private String catalogId;
 
   @Valid
-  private List<AdvancedAuctionItem> items = new ArrayList<>();
+  private List<@Valid AdvancedAuctionItem> items = new ArrayList<>();
 
   public AdvancedAuctionItems catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -51,7 +52,7 @@ public class AdvancedAuctionItems {
     this.catalogId = catalogId;
   }
 
-  public AdvancedAuctionItems items(List<AdvancedAuctionItem> items) {
+  public AdvancedAuctionItems items(List<@Valid AdvancedAuctionItem> items) {
     this.items = items;
     return this;
   }
@@ -71,11 +72,11 @@ public class AdvancedAuctionItems {
   @Valid 
   @Schema(name = "items", description = "Array with item bid options", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")
-  public List<AdvancedAuctionItem> getItems() {
+  public List<@Valid AdvancedAuctionItem> getItems() {
     return items;
   }
 
-  public void setItems(List<AdvancedAuctionItem> items) {
+  public void setItems(List<@Valid AdvancedAuctionItem> items) {
     this.items = items;
   }
 
@@ -112,10 +113,7 @@ public class AdvancedAuctionItems {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

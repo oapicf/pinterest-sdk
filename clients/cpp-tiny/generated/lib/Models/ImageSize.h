@@ -52,28 +52,28 @@ public:
 
 	/*! \brief Set 
 	 */
-	void set1200x(ImageDetails  1200x);
+	void set1200x(ImageDetails 1200x);
 	/*! \brief Get 
 	 */
 	ImageDetails get150x150();
 
 	/*! \brief Set 
 	 */
-	void set150x150(ImageDetails  150x150);
+	void set150x150(ImageDetails 150x150);
 	/*! \brief Get 
 	 */
 	ImageDetails get400x300();
 
 	/*! \brief Set 
 	 */
-	void set400x300(ImageDetails  400x300);
+	void set400x300(ImageDetails 400x300);
 	/*! \brief Get 
 	 */
 	ImageDetails get600x();
 
 	/*! \brief Set 
 	 */
-	void set600x(ImageDetails  600x);
+	void set600x(ImageDetails 600x);
 
 
     private:

@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AltText** | **String** |  | [optional] 
 **Description** | **String** |  | [optional] 
-**Id** | **String** |  | [optional] 
+**Id** | **String** |  | 
 **Link** | **String** |  | [optional] 
 **Media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **Title** | **String** |  | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 $SummaryPin = Initialize-PSOpenAPIToolsSummaryPin  -AltText null `
  -Description null `
  -Id null `
- -Link https://www.pinterest.com/ `
+ -Link null `
  -Media null `
  -Title null
 ```

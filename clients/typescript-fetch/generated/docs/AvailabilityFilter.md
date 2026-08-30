@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`aVAILABILITY` | [CatalogsProductGroupMultipleStringCriteria](.md)
+`aVAILABILITY` | [CatalogsProductGroupMultipleStringCriteria](CatalogsProductGroupMultipleStringCriteria.md)
 
 ## Example
 

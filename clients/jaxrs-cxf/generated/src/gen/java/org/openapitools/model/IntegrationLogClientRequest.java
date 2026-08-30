@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.model.HttpMethod;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -26,41 +27,11 @@ public class IntegrationLogClientRequest  {
 
   private String host;
 
-public enum MethodEnum {
-
-GET(String.valueOf("GET")), HEAD(String.valueOf("HEAD")), POST(String.valueOf("POST")), PUT(String.valueOf("PUT")), DELETE(String.valueOf("DELETE")), CONNECT(String.valueOf("CONNECT")), OPTIONS(String.valueOf("OPTIONS")), TRACE(String.valueOf("TRACE")), PATCH(String.valueOf("PATCH"));
-
-
-    private String value;
-
-    MethodEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static MethodEnum fromValue(String value) {
-        for (MethodEnum b : MethodEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
   @ApiModelProperty(required = true, value = "")
 
-  private MethodEnum method;
+  @Valid
+
+  private HttpMethod method;
 
  /**
   * HTTP request path.
@@ -111,18 +82,15 @@ GET(String.valueOf("GET")), HEAD(String.valueOf("HEAD")), POST(String.valueOf("P
   **/
   @JsonProperty("method")
   @NotNull
-  public String getMethod() {
-    if (method == null) {
-      return null;
-    }
-    return method.value();
+  public HttpMethod getMethod() {
+    return method;
   }
 
-  public void setMethod(MethodEnum method) {
+  public void setMethod(HttpMethod method) {
     this.method = method;
   }
 
-  public IntegrationLogClientRequest method(MethodEnum method) {
+  public IntegrationLogClientRequest method(HttpMethod method) {
     this.method = method;
     return this;
   }
@@ -252,10 +220,7 @@ GET(String.valueOf("GET")), HEAD(String.valueOf("HEAD")), POST(String.valueOf("P
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

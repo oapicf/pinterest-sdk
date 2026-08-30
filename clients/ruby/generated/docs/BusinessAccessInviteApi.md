@@ -32,8 +32,8 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessInviteApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-create_asset_access_request_body = PinterestSdkClient::CreateAssetAccessRequestBody.new({asset_requests: [PinterestSdkClient::CreateAssetAccessRequestBodyAssetRequestsInner.new({asset_id_to_permissions: { key: [PinterestSdkClient::Permissions::ADMIN]}, partner_id: '809944451643622187'})]}) # CreateAssetAccessRequestBody | 
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+create_asset_access_request_body = PinterestSdkClient::CreateAssetAccessRequestBody.new({asset_requests: [PinterestSdkClient::CreateAssetAccessRequestItem.new({asset_id_to_permissions: { key: [PinterestSdkClient::Permissions::ADMIN]}, partner_id: 'partner_id_example'})]}) # CreateAssetAccessRequestBody | 
 
 begin
   # Create a request to access an existing partner's assets.
@@ -85,7 +85,7 @@ end
 
 ## cancel_invites_or_requests
 
-> <DeleteInvitesResultsResponseArray> cancel_invites_or_requests(business_id, cancel_invites_body)
+> <CancelInvitesResponse> cancel_invites_or_requests(business_id, cancel_invites_request)
 
 Cancel invites/requests
 
@@ -103,12 +103,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessInviteApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-cancel_invites_body = PinterestSdkClient::CancelInvitesBody.new({invite_ids: ["1234567890123456789", "1122334455667788991"]}) # CancelInvitesBody | A list with invite ids
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+cancel_invites_request = PinterestSdkClient::CancelInvitesRequest.new({invite_ids: ['invite_ids_example']}) # CancelInvitesRequest | 
 
 begin
   # Cancel invites/requests
-  result = api_instance.cancel_invites_or_requests(business_id, cancel_invites_body)
+  result = api_instance.cancel_invites_or_requests(business_id, cancel_invites_request)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessInviteApi->cancel_invites_or_requests: #{e}"
@@ -119,15 +119,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DeleteInvitesResultsResponseArray>, Integer, Hash)> cancel_invites_or_requests_with_http_info(business_id, cancel_invites_body)
+> <Array(<CancelInvitesResponse>, Integer, Hash)> cancel_invites_or_requests_with_http_info(business_id, cancel_invites_request)
 
 ```ruby
 begin
   # Cancel invites/requests
-  data, status_code, headers = api_instance.cancel_invites_or_requests_with_http_info(business_id, cancel_invites_body)
+  data, status_code, headers = api_instance.cancel_invites_or_requests_with_http_info(business_id, cancel_invites_request)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DeleteInvitesResultsResponseArray>
+  p data # => <CancelInvitesResponse>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessInviteApi->cancel_invites_or_requests_with_http_info: #{e}"
 end
@@ -138,11 +138,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
-| **cancel_invites_body** | [**CancelInvitesBody**](CancelInvitesBody.md) | A list with invite ids |  |
+| **cancel_invites_request** | [**CancelInvitesRequest**](CancelInvitesRequest.md) |  |  |
 
 ### Return type
 
-[**DeleteInvitesResultsResponseArray**](DeleteInvitesResultsResponseArray.md)
+[**CancelInvitesResponse**](CancelInvitesResponse.md)
 
 ### Authorization
 
@@ -174,8 +174,8 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessInviteApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-create_asset_invites_request = PinterestSdkClient::CreateAssetInvitesRequest.new({invites: [PinterestSdkClient::CreateAssetInvitesRequestItem.new({asset_id_to_permissions: { key: [PinterestSdkClient::Permissions::ADMIN]}, invite_id: '1234567890123', invite_type: PinterestSdkClient::InviteType::MEMBER_INVITE})]}) # CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+create_asset_invites_request = PinterestSdkClient::CreateAssetInvitesRequest.new({invites: [PinterestSdkClient::CreateAssetInvitesRequestItem.new({asset_id_to_permissions: { key: [PinterestSdkClient::Permissions::ADMIN]}, invite_id: '1234567890123', invite_type: PinterestSdkClient::InviteType::MEMBER_INVITE})]}) # CreateAssetInvitesRequest | 
 
 begin
   # Update invite/request with an asset permission
@@ -209,7 +209,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
-| **create_asset_invites_request** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md) | A list of invites/requests together with the asset permissions to be assigned to the invite/request.  |  |
+| **create_asset_invites_request** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md) |  |  |
 
 ### Return type
 
@@ -245,8 +245,8 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessInviteApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-create_membership_or_partnership_invites_body = PinterestSdkClient::CreateMembershipOrPartnershipInvitesBody.new({business_role: 'EMPLOYEE', invite_type: PinterestSdkClient::InviteType::MEMBER_INVITE}) # CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+create_membership_or_partnership_invites_body = PinterestSdkClient::CreateMembershipOrPartnershipInvitesBody.new({business_role: PinterestSdkClient::BusinessRoleForInvite::EMPLOYEE, invite_type: PinterestSdkClient::InviteType::MEMBER_INVITE}) # CreateMembershipOrPartnershipInvitesBody | 
 
 begin
   # Create invites or requests
@@ -280,7 +280,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
-| **create_membership_or_partnership_invites_body** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md) | An object with the properties: invite_type, partners, members, business_role |  |
+| **create_membership_or_partnership_invites_body** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md) |  |  |
 
 ### Return type
 
@@ -316,13 +316,13 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessInviteApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
 opts = {
   is_member: true, # Boolean | A boolean field to indicate whether the invite is to create a partnership or a membership.
-  invite_status: ['PENDING'], # Array<String> | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
+  invite_status: [PinterestSdkClient::InviteFilterStatus::PENDING], # Array<InviteFilterStatus> | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
   invite_type: PinterestSdkClient::InviteType::MEMBER_INVITE, # InviteType | Invite type to filter invites by. Only invites of the specified type will be returned.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -358,10 +358,10 @@ end
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
 | **is_member** | **Boolean** | A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional][default to true] |
-| **invite_status** | [**Array&lt;String&gt;**](String.md) | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] |
+| **invite_status** | [**Array&lt;InviteFilterStatus&gt;**](InviteFilterStatus.md) | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] |
 | **invite_type** | [**InviteType**](.md) | Invite type to filter invites by. Only invites of the specified type will be returned. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -397,7 +397,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessInviteApi.new
-auth_respond_invites_body = PinterestSdkClient::AuthRespondInvitesBody.new({invites: [PinterestSdkClient::AuthRespondInvitesBodyInvitesInner.new({action: PinterestSdkClient::AuthRespondInvitesBodyInvitesInnerAction.new({accept_invite: false}), invite_id: 'invite_id_example'})]}) # AuthRespondInvitesBody | 
+auth_respond_invites_body = PinterestSdkClient::AuthRespondInvitesBody.new({invites: [PinterestSdkClient::AuthRespondInvitesBodyItem.new({action: PinterestSdkClient::AuthRespondInviteAction.new({accept_invite: false}), invite_id: 'invite_id_example'})]}) # AuthRespondInvitesBody | 
 
 begin
   # Accept or decline an invite/request

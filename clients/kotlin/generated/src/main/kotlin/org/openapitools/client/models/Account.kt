@@ -8,23 +8,32 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.UserAccountType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * 
+ * User account model containing properties related to a user's account.
  *
  * @param about Profile about description.
  * @param accountType Type of account
- * @param boardCount User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+ * @param boardCount   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
  * @param businessName 
  * @param followerCount User account follower count.
  * @param followingCount User account following count.
@@ -45,9 +54,9 @@ data class Account (
 
     /* Type of account */
     @Json(name = "account_type")
-    val accountType: Account.AccountType? = null,
+    val accountType: UserAccountType? = null,
 
-    /* User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. */
+    /*   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. */
     @Json(name = "board_count")
     val boardCount: kotlin.Int? = null,
 
@@ -85,16 +94,6 @@ data class Account (
 
 ) {
 
-    /**
-     * Type of account
-     *
-     * Values: PINNER,BUSINESS
-     */
-    @JsonClass(generateAdapter = false)
-    enum class AccountType(val value: kotlin.String) {
-        @Json(name = "PINNER") PINNER("PINNER"),
-        @Json(name = "BUSINESS") BUSINESS("BUSINESS");
-    }
 
 }
 

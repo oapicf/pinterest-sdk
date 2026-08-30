@@ -51,7 +51,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setRequestId(std::string  request_id);
+	void setRequestId(std::string request_id);
 
 
     private:

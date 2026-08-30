@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  | [optional] 
-**items** | [**[CatalogsProduct]**](CatalogsProduct.md) | Pins | 
+**items** | [**[CatalogsProduct]**](CatalogsProduct.md) |  | 
 
 

@@ -4,20 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Label ID. | [optional] 
-**labelType** | [**LabelType**](LabelType.md) |  | [optional] 
-**parentId** | **String** | Label parent entity ID. | [optional] 
-**parentType** | **String** | Label parent entity type. | [optional] 
-**status** | [**LabelStatus**](LabelStatus.md) |  | [optional] 
-**value** | **String** | Label name. | [optional] 
-
-
-
-## Enum: ParentTypeEnum
-
-
-* `CAMPAIGN` (value: `"CAMPAIGN"`)
-
-
+**id** | **String** | Label ID. | 
+**labelType** | [**NullableLabelType**](NullableLabelType.md) |  | 
+**status** | [**NullableLabelStatus**](NullableLabelStatus.md) |  | [optional] 
+**value** | **String** | Label name. 100-character limit. | 
 
 

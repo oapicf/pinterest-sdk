@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "LeadSubscriptionPostParamsCreate_allOf_partner_metadata.h"
+#include "PartnerMetadata.h"
 
 namespace Tiny {
 
@@ -52,42 +52,42 @@ public:
 
 	/*! \brief Set Lead form ID.
 	 */
-	void setLeadFormId(std::string  lead_form_id);
+	void setLeadFormId(std::string lead_form_id);
 	/*! \brief Get Standard HTTPS webhook URL.
 	 */
 	std::string getWebhookUrl();
 
 	/*! \brief Set Standard HTTPS webhook URL.
 	 */
-	void setWebhookUrl(std::string  webhook_url);
+	void setWebhookUrl(std::string webhook_url);
 	/*! \brief Get Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
 	 */
 	std::string getPartnerAccessToken();
 
 	/*! \brief Set Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
 	 */
-	void setPartnerAccessToken(std::string  partner_access_token);
-	/*! \brief Get 
+	void setPartnerAccessToken(std::string partner_access_token);
+	/*! \brief Get Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
 	 */
-	LeadSubscriptionPostParamsCreate_allOf_partner_metadata getPartnerMetadata();
+	PartnerMetadata getPartnerMetadata();
 
-	/*! \brief Set 
+	/*! \brief Set Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
 	 */
-	void setPartnerMetadata(LeadSubscriptionPostParamsCreate_allOf_partner_metadata  partner_metadata);
+	void setPartnerMetadata(PartnerMetadata partner_metadata);
 	/*! \brief Get Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
 	 */
 	std::string getPartnerRefreshToken();
 
 	/*! \brief Set Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
 	 */
-	void setPartnerRefreshToken(std::string  partner_refresh_token);
+	void setPartnerRefreshToken(std::string partner_refresh_token);
 
 
     private:
     std::string lead_form_id{};
     std::string webhook_url{};
     std::string partner_access_token{};
-    LeadSubscriptionPostParamsCreate_allOf_partner_metadata partner_metadata;
+    PartnerMetadata partner_metadata;
     std::string partner_refresh_token{};
 };
 }

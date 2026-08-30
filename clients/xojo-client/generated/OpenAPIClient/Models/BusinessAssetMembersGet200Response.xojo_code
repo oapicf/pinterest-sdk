@@ -7,9 +7,6 @@ Protected Class BusinessAssetMembersGet200Response
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			List of members with permissions to the asset.
-		#tag EndNote
 		items() As OpenAPIClient.Models.UserSingleAssetBinding
 	#tag EndProperty
 

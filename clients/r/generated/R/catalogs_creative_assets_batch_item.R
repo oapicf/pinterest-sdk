@@ -15,13 +15,13 @@ CatalogsCreativeAssetsBatchItem <- R6::R6Class(
     actual_instance = NULL,
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
-    #' @field any_of  a list of object types defined in the anyOf schema.
-    any_of = list("CatalogsCreateCreativeAssetsItem", "CatalogsDeleteCreativeAssetsItem", "CatalogsUpdateCreativeAssetsItem", "CatalogsUpsertCreativeAssetsItem"),
+    #' @field one_of  a list of types defined in the oneOf schema.
+    one_of = list("CatalogsCreateCreativeAssetsItem", "CatalogsDeleteCreativeAssetsItem", "CatalogsUpdateCreativeAssetsItem", "CatalogsUpsertCreativeAssetsItem"),
 
     #' @description
     #' Initialize a new CatalogsCreativeAssetsBatchItem.
     #'
-    #' @param instance an instance of the object defined in the anyOf schemas: "CatalogsCreateCreativeAssetsItem", "CatalogsDeleteCreativeAssetsItem", "CatalogsUpdateCreativeAssetsItem", "CatalogsUpsertCreativeAssetsItem"
+    #' @param instance an instance of the object defined in the oneOf schemas: "CatalogsCreateCreativeAssetsItem", "CatalogsDeleteCreativeAssetsItem", "CatalogsUpdateCreativeAssetsItem", "CatalogsUpsertCreativeAssetsItem"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -38,14 +38,14 @@ CatalogsCreativeAssetsBatchItem <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "CatalogsUpsertCreativeAssetsItem"
       } else {
-        stop(paste("Failed to initialize CatalogsCreativeAssetsBatchItem with anyOf schemas CatalogsCreateCreativeAssetsItem, CatalogsDeleteCreativeAssetsItem, CatalogsUpdateCreativeAssetsItem, CatalogsUpsertCreativeAssetsItem. Provided class name: ",
+        stop(paste("Failed to initialize CatalogsCreativeAssetsBatchItem with oneOf schemas CatalogsCreateCreativeAssetsItem, CatalogsDeleteCreativeAssetsItem, CatalogsUpdateCreativeAssetsItem, CatalogsUpsertCreativeAssetsItem. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
 
     #' @description
     #' Deserialize JSON string into an instance of CatalogsCreativeAssetsBatchItem.
-    #' An alias to the method `fromJSON`.
+    #' An alias to the method `fromJSON` .
     #'
     #' @param input The input JSON.
     #'
@@ -61,14 +61,18 @@ CatalogsCreativeAssetsBatchItem <- R6::R6Class(
     #'
     #' @return An instance of CatalogsCreativeAssetsBatchItem.
     fromJSON = function(input) {
+      matched <- 0 # match counter
+      matched_schemas <- list() #names of matched schemas
       error_messages <- list()
+      instance <- NULL
 
       `CatalogsCreateCreativeAssetsItem_result` <- tryCatch({
           `CatalogsCreateCreativeAssetsItem`$public_methods$validateJSON(input)
           `CatalogsCreateCreativeAssetsItem_instance` <- `CatalogsCreateCreativeAssetsItem`$new()
-          self$actual_instance <- `CatalogsCreateCreativeAssetsItem_instance`$fromJSON(input)
-          self$actual_type <- "CatalogsCreateCreativeAssetsItem"
-          return(self)
+          instance <- `CatalogsCreateCreativeAssetsItem_instance`$fromJSON(input)
+          instance_type <- "CatalogsCreateCreativeAssetsItem"
+          matched_schemas <- append(matched_schemas, "CatalogsCreateCreativeAssetsItem")
+          matched <- matched + 1
         },
         error = function(err) err
       )
@@ -80,9 +84,10 @@ CatalogsCreativeAssetsBatchItem <- R6::R6Class(
       `CatalogsUpsertCreativeAssetsItem_result` <- tryCatch({
           `CatalogsUpsertCreativeAssetsItem`$public_methods$validateJSON(input)
           `CatalogsUpsertCreativeAssetsItem_instance` <- `CatalogsUpsertCreativeAssetsItem`$new()
-          self$actual_instance <- `CatalogsUpsertCreativeAssetsItem_instance`$fromJSON(input)
-          self$actual_type <- "CatalogsUpsertCreativeAssetsItem"
-          return(self)
+          instance <- `CatalogsUpsertCreativeAssetsItem_instance`$fromJSON(input)
+          instance_type <- "CatalogsUpsertCreativeAssetsItem"
+          matched_schemas <- append(matched_schemas, "CatalogsUpsertCreativeAssetsItem")
+          matched <- matched + 1
         },
         error = function(err) err
       )
@@ -94,9 +99,10 @@ CatalogsCreativeAssetsBatchItem <- R6::R6Class(
       `CatalogsUpdateCreativeAssetsItem_result` <- tryCatch({
           `CatalogsUpdateCreativeAssetsItem`$public_methods$validateJSON(input)
           `CatalogsUpdateCreativeAssetsItem_instance` <- `CatalogsUpdateCreativeAssetsItem`$new()
-          self$actual_instance <- `CatalogsUpdateCreativeAssetsItem_instance`$fromJSON(input)
-          self$actual_type <- "CatalogsUpdateCreativeAssetsItem"
-          return(self)
+          instance <- `CatalogsUpdateCreativeAssetsItem_instance`$fromJSON(input)
+          instance_type <- "CatalogsUpdateCreativeAssetsItem"
+          matched_schemas <- append(matched_schemas, "CatalogsUpdateCreativeAssetsItem")
+          matched <- matched + 1
         },
         error = function(err) err
       )
@@ -108,9 +114,10 @@ CatalogsCreativeAssetsBatchItem <- R6::R6Class(
       `CatalogsDeleteCreativeAssetsItem_result` <- tryCatch({
           `CatalogsDeleteCreativeAssetsItem`$public_methods$validateJSON(input)
           `CatalogsDeleteCreativeAssetsItem_instance` <- `CatalogsDeleteCreativeAssetsItem`$new()
-          self$actual_instance <- `CatalogsDeleteCreativeAssetsItem_instance`$fromJSON(input)
-          self$actual_type <- "CatalogsDeleteCreativeAssetsItem"
-          return(self)
+          instance <- `CatalogsDeleteCreativeAssetsItem_instance`$fromJSON(input)
+          instance_type <- "CatalogsDeleteCreativeAssetsItem"
+          matched_schemas <- append(matched_schemas, "CatalogsDeleteCreativeAssetsItem")
+          matched <- matched + 1
         },
         error = function(err) err
       )
@@ -119,9 +126,36 @@ CatalogsCreativeAssetsBatchItem <- R6::R6Class(
         error_messages <- append(error_messages, `CatalogsDeleteCreativeAssetsItem_result`["message"])
       }
 
-      # no match
-      stop(paste("No match found when deserializing the input into CatalogsCreativeAssetsBatchItem with anyOf schemas CatalogsCreateCreativeAssetsItem, CatalogsDeleteCreativeAssetsItem, CatalogsUpdateCreativeAssetsItem, CatalogsUpsertCreativeAssetsItem. Details: >>",
-                 paste(error_messages, collapse = " >> ")))
+      if (matched == 1) {
+        # successfully match exactly 1 schema specified in oneOf
+        self$actual_instance <- instance
+        self$actual_type <- instance_type
+      } else if (matched > 1) {
+        # more than 1 match
+        stop(paste("Multiple matches found when deserializing the input into CatalogsCreativeAssetsBatchItem with oneOf schemas CatalogsCreateCreativeAssetsItem, CatalogsDeleteCreativeAssetsItem, CatalogsUpdateCreativeAssetsItem, CatalogsUpsertCreativeAssetsItem. Matched schemas: ",
+                   paste(matched_schemas, collapse = ", ")))
+      } else {
+        # no match
+        stop(paste("No match found when deserializing the input into CatalogsCreativeAssetsBatchItem with oneOf schemas CatalogsCreateCreativeAssetsItem, CatalogsDeleteCreativeAssetsItem, CatalogsUpdateCreativeAssetsItem, CatalogsUpsertCreativeAssetsItem. Details: >>",
+                   paste(error_messages, collapse = " >> ")))
+      }
+
+      self
+    },
+
+    #' @description
+    #' Serialize CatalogsCreativeAssetsBatchItem to JSON string.
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
+    #' @return JSON string representation of the CatalogsCreativeAssetsBatchItem.
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      if (!is.null(self$actual_instance)) {
+        json <- jsonlite::toJSON(simple, auto_unbox = TRUE, ...)
+        return(as.character(jsonlite::minify(json)))
+      } else {
+        return(NULL)
+      }
     },
 
     #' @description
@@ -139,18 +173,8 @@ CatalogsCreativeAssetsBatchItem <- R6::R6Class(
       if (!is.null(self$actual_instance)) {
         return(self$actual_instance$toSimpleType())
       } else {
-        NULL
+        return(NULL)
       }
-    },
-
-    #' @description
-    #' Serialize CatalogsCreativeAssetsBatchItem to JSON string.
-    #'
-    #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return JSON string representation of the CatalogsCreativeAssetsBatchItem.
-    toJSONString = function(...) {
-      json <- jsonlite::toJSON(self$toSimpleType(), auto_unbox = TRUE, ...)
-      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description
@@ -179,7 +203,7 @@ CatalogsCreativeAssetsBatchItem <- R6::R6Class(
       jsoncontent <- c(
         sprintf('"actual_instance": %s', if (is.null(self$actual_instance)) NULL else self$actual_instance$toJSONString()),
         sprintf('"actual_type": "%s"', self$actual_type),
-        sprintf('"any_of": "%s"', paste(unlist(self$any_of), collapse = ", "))
+        sprintf('"one_of": "%s"', paste(unlist(self$one_of), collapse = ", "))
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
       as.character(jsonlite::prettify(paste("{", jsoncontent, "}", sep = "")))

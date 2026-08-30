@@ -34,7 +34,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 

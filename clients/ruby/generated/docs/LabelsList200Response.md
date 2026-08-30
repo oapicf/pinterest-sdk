@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** |  | [optional] |
-| **items** | [**Array&lt;LabelsResponse&gt;**](LabelsResponse.md) |  |  |
+| **items** | [**Array&lt;Label&gt;**](Label.md) |  |  |
 
 ## Example
 

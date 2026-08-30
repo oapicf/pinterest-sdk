@@ -1,7 +1,7 @@
 /*
  * Account.h
  *
- * 
+ * User account model containing properties related to a user&#39;s account.
  */
 
 #ifndef _Account_H_
@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "UserAccountType.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -20,7 +21,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief User account model containing properties related to a user's account.
  *
  *  \ingroup Models
  *
@@ -54,16 +55,16 @@ public:
 	void setAbout(std::string  about);
 	/*! \brief Get Type of account
 	 */
-	std::string getAccountType();
+	UserAccountType getAccountType();
 
 	/*! \brief Set Type of account
 	 */
-	void setAccountType(std::string  account_type);
-	/*! \brief Get User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+	void setAccountType(UserAccountType  account_type);
+	/*! \brief Get   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
 	 */
 	int getBoardCount();
 
-	/*! \brief Set User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+	/*! \brief Set   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
 	 */
 	void setBoardCount(int  board_count);
 	/*! \brief Get 
@@ -132,7 +133,7 @@ public:
 
 private:
 	std::string about;
-	std::string account_type;
+	UserAccountType account_type;
 	int board_count;
 	std::string business_name;
 	int follower_count;

@@ -19,8 +19,7 @@ class CreateMembershipOrPartnershipInvitesBody {
     this.partners = const [],
   });
 
-  /// The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-  CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum businessRole;
+  BusinessRoleForInvite businessRole;
 
   InviteType inviteType;
 
@@ -68,15 +67,15 @@ class CreateMembershipOrPartnershipInvitesBody {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CreateMembershipOrPartnershipInvitesBody[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CreateMembershipOrPartnershipInvitesBody[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'business_role'), 'Required key "CreateMembershipOrPartnershipInvitesBody[business_role]" is missing from JSON.');
+        assert(json[r'business_role'] != null, 'Required key "CreateMembershipOrPartnershipInvitesBody[business_role]" has a null value in JSON.');
+        assert(json.containsKey(r'invite_type'), 'Required key "CreateMembershipOrPartnershipInvitesBody[invite_type]" is missing from JSON.');
+        assert(json[r'invite_type'] != null, 'Required key "CreateMembershipOrPartnershipInvitesBody[invite_type]" has a null value in JSON.');
         return true;
       }());
 
       return CreateMembershipOrPartnershipInvitesBody(
-        businessRole: CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum.fromJson(json[r'business_role'])!,
+        businessRole: BusinessRoleForInvite.fromJson(json[r'business_role'])!,
         inviteType: InviteType.fromJson(json[r'invite_type'])!,
         members: json[r'members'] is Iterable
             ? (json[r'members'] as Iterable).cast<String>().toList(growable: false)
@@ -135,81 +134,4 @@ class CreateMembershipOrPartnershipInvitesBody {
     'invite_type',
   };
 }
-
-/// The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-class CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const EMPLOYEE = CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum._(r'EMPLOYEE');
-  static const BIZ_ADMIN = CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum._(r'BIZ_ADMIN');
-  static const PARTNER = CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum._(r'PARTNER');
-
-  /// List of all possible values in this [enum][CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum].
-  static const values = <CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum>[
-    EMPLOYEE,
-    BIZ_ADMIN,
-    PARTNER,
-  ];
-
-  static CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum? fromJson(dynamic value) => CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnumTypeTransformer().decode(value);
-
-  static List<CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum] to String,
-/// and [decode] dynamic data back to [CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum].
-class CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnumTypeTransformer {
-  factory CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnumTypeTransformer() => _instance ??= const CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnumTypeTransformer._();
-
-  const CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnumTypeTransformer._();
-
-  String encode(CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'EMPLOYEE': return CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum.EMPLOYEE;
-        case r'BIZ_ADMIN': return CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum.BIZ_ADMIN;
-        case r'PARTNER': return CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum.PARTNER;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnumTypeTransformer] instance.
-  static CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnumTypeTransformer? _instance;
-}
-
 

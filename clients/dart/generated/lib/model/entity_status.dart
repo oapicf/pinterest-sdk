@@ -11,35 +11,32 @@
 part of openapi.api;
 
 /// Entity status
-class EntityStatus {
-  /// Instantiate a new enum with the provided [value].
-  const EntityStatus._(this.value);
+enum EntityStatus {
+  ACTIVE._(r'ACTIVE'),
+  PAUSED._(r'PAUSED'),
+  ARCHIVED._(r'ARCHIVED'),
+  DRAFT._(r'DRAFT'),
+  DELETED_DRAFT._(r'DELETED_DRAFT'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const EntityStatus._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const ACTIVE = EntityStatus._(r'ACTIVE');
-  static const PAUSED = EntityStatus._(r'PAUSED');
-  static const ARCHIVED = EntityStatus._(r'ARCHIVED');
-  static const DRAFT = EntityStatus._(r'DRAFT');
-  static const DELETED_DRAFT = EntityStatus._(r'DELETED_DRAFT');
-
-  /// List of all possible values in this [enum][EntityStatus].
-  static const values = <EntityStatus>[
-    ACTIVE,
-    PAUSED,
-    ARCHIVED,
-    DRAFT,
-    DELETED_DRAFT,
-  ];
-
+  /// Returns the instance of [EntityStatus] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static EntityStatus? fromJson(dynamic value) => EntityStatusTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [EntityStatus]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<EntityStatus> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <EntityStatus>[];
     if (json is List && json.isNotEmpty) {
@@ -61,9 +58,11 @@ class EntityStatusTypeTransformer {
 
   const EntityStatusTypeTransformer._();
 
-  String encode(EntityStatus data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(EntityStatus data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a EntityStatus.
+  /// Returns the instance of [EntityStatus] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -72,6 +71,9 @@ class EntityStatusTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   EntityStatus? decode(dynamic data, {bool allowNull = true}) {
+    if (data is EntityStatus) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'ACTIVE': return EntityStatus.ACTIVE;
@@ -88,7 +90,7 @@ class EntityStatusTypeTransformer {
     return null;
   }
 
-  /// Singleton [EntityStatusTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static EntityStatusTypeTransformer? _instance;
 }
 

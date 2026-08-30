@@ -46,7 +46,7 @@ class ReportingColumnAsync extends EnumClass {
   static const ReportingColumnAsync OUTBOUND_CTR = _$OUTBOUND_CTR;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'OUTBOUND_CTR_1')
-  static const ReportingColumnAsync oUTBOUNDCTR1 = _$oUTBOUNDCTR1;
+  static const ReportingColumnAsync OUTBOUND_CTR_1 = _$OUTBOUND_CTR_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'COST_PER_OUTBOUND_CLICK')
   static const ReportingColumnAsync COST_PER_OUTBOUND_CLICK = _$COST_PER_OUTBOUND_CLICK;
@@ -76,10 +76,10 @@ class ReportingColumnAsync extends EnumClass {
   static const ReportingColumnAsync TOTAL_ENGAGEMENT = _$TOTAL_ENGAGEMENT;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'ENGAGEMENT_1')
-  static const ReportingColumnAsync eNGAGEMENT1 = _$eNGAGEMENT1;
+  static const ReportingColumnAsync ENGAGEMENT_1 = _$ENGAGEMENT_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'ENGAGEMENT_2')
-  static const ReportingColumnAsync eNGAGEMENT2 = _$eNGAGEMENT2;
+  static const ReportingColumnAsync ENGAGEMENT_2 = _$ENGAGEMENT_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'ECPE_IN_DOLLAR')
   static const ReportingColumnAsync ECPE_IN_DOLLAR = _$ECPE_IN_DOLLAR;
@@ -97,7 +97,10 @@ class ReportingColumnAsync extends EnumClass {
   static const ReportingColumnAsync REPIN_RATE = _$REPIN_RATE;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'CTR_2')
-  static const ReportingColumnAsync cTR2 = _$cTR2;
+  static const ReportingColumnAsync CTR_2 = _$CTR_2;
+  /// Reporting columns
+  @BuiltValueEnumConst(wireName: r'CAMPAIGN')
+  static const ReportingColumnAsync CAMPAIGN = _$CAMPAIGN;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'CAMPAIGN_ID')
   static const ReportingColumnAsync CAMPAIGN_ID = _$CAMPAIGN_ID;
@@ -202,34 +205,52 @@ class ReportingColumnAsync extends EnumClass {
   static const ReportingColumnAsync ORDER_LINE_NAME = _$ORDER_LINE_NAME;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'CLICKTHROUGH_1')
-  static const ReportingColumnAsync cLICKTHROUGH1 = _$cLICKTHROUGH1;
+  static const ReportingColumnAsync CLICKTHROUGH_1 = _$CLICKTHROUGH_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'REPIN_1')
-  static const ReportingColumnAsync rEPIN1 = _$rEPIN1;
+  static const ReportingColumnAsync REPIN_1 = _$REPIN_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'IMPRESSION_1')
-  static const ReportingColumnAsync iMPRESSION1 = _$iMPRESSION1;
+  static const ReportingColumnAsync IMPRESSION_1 = _$IMPRESSION_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'IMPRESSION_1_GROSS')
-  static const ReportingColumnAsync iMPRESSION1GROSS = _$iMPRESSION1GROSS;
+  static const ReportingColumnAsync IMPRESSION_1_GROSS = _$IMPRESSION_1_GROSS;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'CLICKTHROUGH_1_GROSS')
-  static const ReportingColumnAsync cLICKTHROUGH1GROSS = _$cLICKTHROUGH1GROSS;
+  static const ReportingColumnAsync CLICKTHROUGH_1_GROSS = _$CLICKTHROUGH_1_GROSS;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'OUTBOUND_CLICK_1')
-  static const ReportingColumnAsync oUTBOUNDCLICK1 = _$oUTBOUNDCLICK1;
+  static const ReportingColumnAsync OUTBOUND_CLICK_1 = _$OUTBOUND_CLICK_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'CLICKTHROUGH_2')
-  static const ReportingColumnAsync cLICKTHROUGH2 = _$cLICKTHROUGH2;
+  static const ReportingColumnAsync CLICKTHROUGH_2 = _$CLICKTHROUGH_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'REPIN_2')
-  static const ReportingColumnAsync rEPIN2 = _$rEPIN2;
+  static const ReportingColumnAsync REPIN_2 = _$REPIN_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'IMPRESSION_2')
-  static const ReportingColumnAsync iMPRESSION2 = _$iMPRESSION2;
+  static const ReportingColumnAsync IMPRESSION_2 = _$IMPRESSION_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'OUTBOUND_CLICK_2')
-  static const ReportingColumnAsync oUTBOUNDCLICK2 = _$oUTBOUNDCLICK2;
+  static const ReportingColumnAsync OUTBOUND_CLICK_2 = _$OUTBOUND_CLICK_2;
+  /// Reporting columns
+  @BuiltValueEnumConst(wireName: r'COLLECTION_PIN_ITEM_IMPRESSION_1')
+  static const ReportingColumnAsync COLLECTION_PIN_ITEM_IMPRESSION_1 = _$COLLECTION_PIN_ITEM_IMPRESSION_1;
+  /// Reporting columns
+  @BuiltValueEnumConst(wireName: r'COLLECTION_PIN_ITEM_IMPRESSION_2')
+  static const ReportingColumnAsync COLLECTION_PIN_ITEM_IMPRESSION_2 = _$COLLECTION_PIN_ITEM_IMPRESSION_2;
+  /// Reporting columns
+  @BuiltValueEnumConst(wireName: r'TOTAL_COLLECTION_PIN_ITEM_IMPRESSION')
+  static const ReportingColumnAsync TOTAL_COLLECTION_PIN_ITEM_IMPRESSION = _$TOTAL_COLLECTION_PIN_ITEM_IMPRESSION;
+  /// Reporting columns
+  @BuiltValueEnumConst(wireName: r'COLLECTION_PIN_ITEM_CLICKTHROUGH_1')
+  static const ReportingColumnAsync COLLECTION_PIN_ITEM_CLICKTHROUGH_1 = _$COLLECTION_PIN_ITEM_CLICKTHROUGH_1;
+  /// Reporting columns
+  @BuiltValueEnumConst(wireName: r'COLLECTION_PIN_ITEM_CLICKTHROUGH_2')
+  static const ReportingColumnAsync COLLECTION_PIN_ITEM_CLICKTHROUGH_2 = _$COLLECTION_PIN_ITEM_CLICKTHROUGH_2;
+  /// Reporting columns
+  @BuiltValueEnumConst(wireName: r'TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH')
+  static const ReportingColumnAsync TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH = _$TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'TOTAL_CLICKTHROUGH')
   static const ReportingColumnAsync TOTAL_CLICKTHROUGH = _$TOTAL_CLICKTHROUGH;
@@ -247,7 +268,7 @@ class ReportingColumnAsync extends EnumClass {
   static const ReportingColumnAsync COST_PER_OUTBOUND_CLICK_IN_DOLLAR = _$COST_PER_OUTBOUND_CLICK_IN_DOLLAR;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1')
-  static const ReportingColumnAsync cOSTPEROUTBOUNDCLICKINDOLLAR1 = _$cOSTPEROUTBOUNDCLICKINDOLLAR1;
+  static const ReportingColumnAsync COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1 = _$COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'TOTAL_ENGAGEMENT_PAGE_VISIT')
   static const ReportingColumnAsync TOTAL_ENGAGEMENT_PAGE_VISIT = _$TOTAL_ENGAGEMENT_PAGE_VISIT;
@@ -550,13 +571,13 @@ class ReportingColumnAsync extends EnumClass {
   static const ReportingColumnAsync TOTAL_WEB_SESSIONS = _$TOTAL_WEB_SESSIONS;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'WEB_SESSIONS_1')
-  static const ReportingColumnAsync wEBSESSIONS1 = _$wEBSESSIONS1;
+  static const ReportingColumnAsync WEB_SESSIONS_1 = _$WEB_SESSIONS_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'WEB_SESSIONS_2')
-  static const ReportingColumnAsync wEBSESSIONS2 = _$wEBSESSIONS2;
+  static const ReportingColumnAsync WEB_SESSIONS_2 = _$WEB_SESSIONS_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'ONSITE_CHECKOUTS_1')
-  static const ReportingColumnAsync oNSITECHECKOUTS1 = _$oNSITECHECKOUTS1;
+  static const ReportingColumnAsync ONSITE_CHECKOUTS_1 = _$ONSITE_CHECKOUTS_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'PIN_PROMOTION_NAME')
   static const ReportingColumnAsync PIN_PROMOTION_NAME = _$PIN_PROMOTION_NAME;
@@ -575,6 +596,9 @@ class ReportingColumnAsync extends EnumClass {
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'CAMPAIGN_BUDGET_OPTIMIZATION')
   static const ReportingColumnAsync CAMPAIGN_BUDGET_OPTIMIZATION = _$CAMPAIGN_BUDGET_OPTIMIZATION;
+  /// Reporting columns
+  @BuiltValueEnumConst(wireName: r'IS_CATALOG_CREATIVE_CAMPAIGN')
+  static const ReportingColumnAsync IS_CATALOG_CREATIVE_CAMPAIGN = _$IS_CATALOG_CREATIVE_CAMPAIGN;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'IS_PREMIERE_CAMPAIGN')
   static const ReportingColumnAsync IS_PREMIERE_CAMPAIGN = _$IS_PREMIERE_CAMPAIGN;
@@ -964,58 +988,58 @@ class ReportingColumnAsync extends EnumClass {
   static const ReportingColumnAsync PRODUCT_GROUP_AD_VIDEO_TAG = _$PRODUCT_GROUP_AD_VIDEO_TAG;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_3SEC_VIEWS_1')
-  static const ReportingColumnAsync vIDEO3SECVIEWS1 = _$vIDEO3SECVIEWS1;
+  static const ReportingColumnAsync VIDEO_3SEC_VIEWS_1 = _$VIDEO_3SEC_VIEWS_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_15SEC_UNIQUE_VIEWS_1')
-  static const ReportingColumnAsync vIDEO15SECUNIQUEVIEWS1 = _$vIDEO15SECUNIQUEVIEWS1;
+  static const ReportingColumnAsync VIDEO_15SEC_UNIQUE_VIEWS_1 = _$VIDEO_15SEC_UNIQUE_VIEWS_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_P100_COMPLETE_1')
-  static const ReportingColumnAsync vIDEOP100COMPLETE1 = _$vIDEOP100COMPLETE1;
+  static const ReportingColumnAsync VIDEO_P100_COMPLETE_1 = _$VIDEO_P100_COMPLETE_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_P0_COMBINED_1')
-  static const ReportingColumnAsync vIDEOP0COMBINED1 = _$vIDEOP0COMBINED1;
+  static const ReportingColumnAsync VIDEO_P0_COMBINED_1 = _$VIDEO_P0_COMBINED_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_P25_COMBINED_1')
-  static const ReportingColumnAsync vIDEOP25COMBINED1 = _$vIDEOP25COMBINED1;
+  static const ReportingColumnAsync VIDEO_P25_COMBINED_1 = _$VIDEO_P25_COMBINED_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_P50_COMBINED_1')
-  static const ReportingColumnAsync vIDEOP50COMBINED1 = _$vIDEOP50COMBINED1;
+  static const ReportingColumnAsync VIDEO_P50_COMBINED_1 = _$VIDEO_P50_COMBINED_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_P75_COMBINED_1')
-  static const ReportingColumnAsync vIDEOP75COMBINED1 = _$vIDEOP75COMBINED1;
+  static const ReportingColumnAsync VIDEO_P75_COMBINED_1 = _$VIDEO_P75_COMBINED_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_P95_COMBINED_1')
-  static const ReportingColumnAsync vIDEOP95COMBINED1 = _$vIDEOP95COMBINED1;
+  static const ReportingColumnAsync VIDEO_P95_COMBINED_1 = _$VIDEO_P95_COMBINED_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_MRC_VIEWS_1')
-  static const ReportingColumnAsync vIDEOMRCVIEWS1 = _$vIDEOMRCVIEWS1;
+  static const ReportingColumnAsync VIDEO_MRC_VIEWS_1 = _$VIDEO_MRC_VIEWS_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_3SEC_VIEWS_2')
-  static const ReportingColumnAsync vIDEO3SECVIEWS2 = _$vIDEO3SECVIEWS2;
+  static const ReportingColumnAsync VIDEO_3SEC_VIEWS_2 = _$VIDEO_3SEC_VIEWS_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_15SEC_UNIQUE_VIEWS_2')
-  static const ReportingColumnAsync vIDEO15SECUNIQUEVIEWS2 = _$vIDEO15SECUNIQUEVIEWS2;
+  static const ReportingColumnAsync VIDEO_15SEC_UNIQUE_VIEWS_2 = _$VIDEO_15SEC_UNIQUE_VIEWS_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_P100_COMPLETE_2')
-  static const ReportingColumnAsync vIDEOP100COMPLETE2 = _$vIDEOP100COMPLETE2;
+  static const ReportingColumnAsync VIDEO_P100_COMPLETE_2 = _$VIDEO_P100_COMPLETE_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_P0_COMBINED_2')
-  static const ReportingColumnAsync vIDEOP0COMBINED2 = _$vIDEOP0COMBINED2;
+  static const ReportingColumnAsync VIDEO_P0_COMBINED_2 = _$VIDEO_P0_COMBINED_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_P25_COMBINED_2')
-  static const ReportingColumnAsync vIDEOP25COMBINED2 = _$vIDEOP25COMBINED2;
+  static const ReportingColumnAsync VIDEO_P25_COMBINED_2 = _$VIDEO_P25_COMBINED_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_P50_COMBINED_2')
-  static const ReportingColumnAsync vIDEOP50COMBINED2 = _$vIDEOP50COMBINED2;
+  static const ReportingColumnAsync VIDEO_P50_COMBINED_2 = _$VIDEO_P50_COMBINED_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_P75_COMBINED_2')
-  static const ReportingColumnAsync vIDEOP75COMBINED2 = _$vIDEOP75COMBINED2;
+  static const ReportingColumnAsync VIDEO_P75_COMBINED_2 = _$VIDEO_P75_COMBINED_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_P95_COMBINED_2')
-  static const ReportingColumnAsync vIDEOP95COMBINED2 = _$vIDEOP95COMBINED2;
+  static const ReportingColumnAsync VIDEO_P95_COMBINED_2 = _$VIDEO_P95_COMBINED_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_MRC_VIEWS_2')
-  static const ReportingColumnAsync vIDEOMRCVIEWS2 = _$vIDEOMRCVIEWS2;
+  static const ReportingColumnAsync VIDEO_MRC_VIEWS_2 = _$VIDEO_MRC_VIEWS_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'PAID_VIDEO_VIEWABLE_RATE')
   static const ReportingColumnAsync PAID_VIDEO_VIEWABLE_RATE = _$PAID_VIDEO_VIEWABLE_RATE;
@@ -1039,43 +1063,43 @@ class ReportingColumnAsync extends EnumClass {
   static const ReportingColumnAsync ECPCV_IN_DOLLAR = _$ECPCV_IN_DOLLAR;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'CPCV_P95_IN_MICRO_DOLLAR')
-  static const ReportingColumnAsync cPCVP95INMICRODOLLAR = _$cPCVP95INMICRODOLLAR;
+  static const ReportingColumnAsync CPCV_P95_IN_MICRO_DOLLAR = _$CPCV_P95_IN_MICRO_DOLLAR;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'ECPCV_P95_IN_DOLLAR')
-  static const ReportingColumnAsync eCPCVP95INDOLLAR = _$eCPCVP95INDOLLAR;
+  static const ReportingColumnAsync ECPCV_P95_IN_DOLLAR = _$ECPCV_P95_IN_DOLLAR;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'TOTAL_VIDEO_3SEC_VIEWS')
-  static const ReportingColumnAsync tOTALVIDEO3SECVIEWS = _$tOTALVIDEO3SECVIEWS;
+  static const ReportingColumnAsync TOTAL_VIDEO_3SEC_VIEWS = _$TOTAL_VIDEO_3SEC_VIEWS;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS')
-  static const ReportingColumnAsync tOTALVIDEO15SECUNIQUEVIEWS = _$tOTALVIDEO15SECUNIQUEVIEWS;
+  static const ReportingColumnAsync TOTAL_VIDEO_15SEC_UNIQUE_VIEWS = _$TOTAL_VIDEO_15SEC_UNIQUE_VIEWS;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'TOTAL_VIDEO_P100_COMPLETE')
-  static const ReportingColumnAsync tOTALVIDEOP100COMPLETE = _$tOTALVIDEOP100COMPLETE;
+  static const ReportingColumnAsync TOTAL_VIDEO_P100_COMPLETE = _$TOTAL_VIDEO_P100_COMPLETE;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'TOTAL_VIDEO_P0_COMBINED')
-  static const ReportingColumnAsync tOTALVIDEOP0COMBINED = _$tOTALVIDEOP0COMBINED;
+  static const ReportingColumnAsync TOTAL_VIDEO_P0_COMBINED = _$TOTAL_VIDEO_P0_COMBINED;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'TOTAL_VIDEO_P25_COMBINED')
-  static const ReportingColumnAsync tOTALVIDEOP25COMBINED = _$tOTALVIDEOP25COMBINED;
+  static const ReportingColumnAsync TOTAL_VIDEO_P25_COMBINED = _$TOTAL_VIDEO_P25_COMBINED;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'TOTAL_VIDEO_P50_COMBINED')
-  static const ReportingColumnAsync tOTALVIDEOP50COMBINED = _$tOTALVIDEOP50COMBINED;
+  static const ReportingColumnAsync TOTAL_VIDEO_P50_COMBINED = _$TOTAL_VIDEO_P50_COMBINED;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'TOTAL_VIDEO_P75_COMBINED')
-  static const ReportingColumnAsync tOTALVIDEOP75COMBINED = _$tOTALVIDEOP75COMBINED;
+  static const ReportingColumnAsync TOTAL_VIDEO_P75_COMBINED = _$TOTAL_VIDEO_P75_COMBINED;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'TOTAL_VIDEO_P95_COMBINED')
-  static const ReportingColumnAsync tOTALVIDEOP95COMBINED = _$tOTALVIDEOP95COMBINED;
+  static const ReportingColumnAsync TOTAL_VIDEO_P95_COMBINED = _$TOTAL_VIDEO_P95_COMBINED;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'TOTAL_VIDEO_MRC_VIEWS')
   static const ReportingColumnAsync TOTAL_VIDEO_MRC_VIEWS = _$TOTAL_VIDEO_MRC_VIEWS;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_AVG_WATCHTIME_IN_SECOND_1')
-  static const ReportingColumnAsync vIDEOAVGWATCHTIMEINSECOND1 = _$vIDEOAVGWATCHTIMEINSECOND1;
+  static const ReportingColumnAsync VIDEO_AVG_WATCHTIME_IN_SECOND_1 = _$VIDEO_AVG_WATCHTIME_IN_SECOND_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'VIDEO_AVG_WATCHTIME_IN_SECOND_2')
-  static const ReportingColumnAsync vIDEOAVGWATCHTIMEINSECOND2 = _$vIDEOAVGWATCHTIMEINSECOND2;
+  static const ReportingColumnAsync VIDEO_AVG_WATCHTIME_IN_SECOND_2 = _$VIDEO_AVG_WATCHTIME_IN_SECOND_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND')
   static const ReportingColumnAsync TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND = _$TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND;
@@ -1735,16 +1759,16 @@ class ReportingColumnAsync extends EnumClass {
   static const ReportingColumnAsync TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE = _$TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'IDEA_PIN_PAGE_FORWARD_1')
-  static const ReportingColumnAsync iDEAPINPAGEFORWARD1 = _$iDEAPINPAGEFORWARD1;
+  static const ReportingColumnAsync IDEA_PIN_PAGE_FORWARD_1 = _$IDEA_PIN_PAGE_FORWARD_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'IDEA_PIN_PAGE_FORWARD_2')
-  static const ReportingColumnAsync iDEAPINPAGEFORWARD2 = _$iDEAPINPAGEFORWARD2;
+  static const ReportingColumnAsync IDEA_PIN_PAGE_FORWARD_2 = _$IDEA_PIN_PAGE_FORWARD_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'IDEA_PIN_PAGE_BACKWARD_1')
-  static const ReportingColumnAsync iDEAPINPAGEBACKWARD1 = _$iDEAPINPAGEBACKWARD1;
+  static const ReportingColumnAsync IDEA_PIN_PAGE_BACKWARD_1 = _$IDEA_PIN_PAGE_BACKWARD_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'IDEA_PIN_PAGE_BACKWARD_2')
-  static const ReportingColumnAsync iDEAPINPAGEBACKWARD2 = _$iDEAPINPAGEBACKWARD2;
+  static const ReportingColumnAsync IDEA_PIN_PAGE_BACKWARD_2 = _$IDEA_PIN_PAGE_BACKWARD_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'TOTAL_IDEA_PIN_PAGE_FORWARD')
   static const ReportingColumnAsync TOTAL_IDEA_PIN_PAGE_FORWARD = _$TOTAL_IDEA_PIN_PAGE_FORWARD;
@@ -1753,10 +1777,10 @@ class ReportingColumnAsync extends EnumClass {
   static const ReportingColumnAsync TOTAL_IDEA_PIN_PAGE_BACKWARD = _$TOTAL_IDEA_PIN_PAGE_BACKWARD;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'IDEA_PIN_PRODUCT_TAG_VISIT_1')
-  static const ReportingColumnAsync iDEAPINPRODUCTTAGVISIT1 = _$iDEAPINPRODUCTTAGVISIT1;
+  static const ReportingColumnAsync IDEA_PIN_PRODUCT_TAG_VISIT_1 = _$IDEA_PIN_PRODUCT_TAG_VISIT_1;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'IDEA_PIN_PRODUCT_TAG_VISIT_2')
-  static const ReportingColumnAsync iDEAPINPRODUCTTAGVISIT2 = _$iDEAPINPRODUCTTAGVISIT2;
+  static const ReportingColumnAsync IDEA_PIN_PRODUCT_TAG_VISIT_2 = _$IDEA_PIN_PRODUCT_TAG_VISIT_2;
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT')
   static const ReportingColumnAsync TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT = _$TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT;
@@ -1850,6 +1874,21 @@ class ReportingColumnAsync extends EnumClass {
   /// Reporting columns
   @BuiltValueEnumConst(wireName: r'STANDARD_AD_FEED_ITEM_ID')
   static const ReportingColumnAsync STANDARD_AD_FEED_ITEM_ID = _$STANDARD_AD_FEED_ITEM_ID;
+  /// Reporting columns
+  @BuiltValueEnumConst(wireName: r'SPEND_ORDER_LINE_ID')
+  static const ReportingColumnAsync SPEND_ORDER_LINE_ID = _$SPEND_ORDER_LINE_ID;
+  /// Reporting columns
+  @BuiltValueEnumConst(wireName: r'INAPP_SKAN_APP_INSTALL')
+  static const ReportingColumnAsync INAPP_SKAN_APP_INSTALL = _$INAPP_SKAN_APP_INSTALL;
+  /// Reporting columns
+  @BuiltValueEnumConst(wireName: r'INAPP_SKAN_ASSISTED_APP_INSTALL')
+  static const ReportingColumnAsync INAPP_SKAN_ASSISTED_APP_INSTALL = _$INAPP_SKAN_ASSISTED_APP_INSTALL;
+  /// Reporting columns
+  @BuiltValueEnumConst(wireName: r'INAPP_SKAN_APP_INSTALL_COST_PER_ACTION')
+  static const ReportingColumnAsync INAPP_SKAN_APP_INSTALL_COST_PER_ACTION = _$INAPP_SKAN_APP_INSTALL_COST_PER_ACTION;
+  /// Reporting columns
+  @BuiltValueEnumConst(wireName: r'INAPP_SKAN_APP_INSTALL_CONVERSION_RATE')
+  static const ReportingColumnAsync INAPP_SKAN_APP_INSTALL_CONVERSION_RATE = _$INAPP_SKAN_APP_INSTALL_CONVERSION_RATE;
 
   static Serializer<ReportingColumnAsync> get serializer => _$reportingColumnAsyncSerializer;
 

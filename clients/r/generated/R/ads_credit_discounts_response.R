@@ -10,8 +10,8 @@
 #' @field active True if the offer code is currently active. character [optional]
 #' @field advertiser_id Advertiser ID the offer was applied to. character [optional]
 #' @field discountCurrency Currency value for the discount. character [optional]
-#' @field discountInMicroCurrency The discount applied in the offer’s currency value. numeric [optional]
-#' @field discountType The type of discount of this credit character [optional]
+#' @field discountInMicroCurrency The discount applied in the offer's currency value. numeric [optional]
+#' @field discountType The type of discount of this credit \link{AdsCreditDiscountType} [optional]
 #' @field remainingDiscountInMicroCurrency The credits left to spend. numeric [optional]
 #' @field title Human readable title of the offer code. character [optional]
 #' @importFrom R6 R6Class
@@ -34,7 +34,7 @@ AdsCreditDiscountsResponse <- R6::R6Class(
     #' @param active True if the offer code is currently active.
     #' @param advertiser_id Advertiser ID the offer was applied to.
     #' @param discountCurrency Currency value for the discount.
-    #' @param discountInMicroCurrency The discount applied in the offer’s currency value.
+    #' @param discountInMicroCurrency The discount applied in the offer's currency value.
     #' @param discountType The type of discount of this credit
     #' @param remainingDiscountInMicroCurrency The credits left to spend.
     #' @param title Human readable title of the offer code.
@@ -62,12 +62,10 @@ AdsCreditDiscountsResponse <- R6::R6Class(
         self$`discountInMicroCurrency` <- `discountInMicroCurrency`
       }
       if (!is.null(`discountType`)) {
-        if (!(`discountType` %in% c("COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND"))) {
-          stop(paste("Error! \"", `discountType`, "\" cannot be assigned to `discountType`. Must be \"COUPON\", \"CREDIT\", \"COUPON_APPLIED\", \"CREDIT_APPLIED\", \"MARKETING_OFFER_CREDIT\", \"MARKETING_OFFER_CREDIT_APPLIED\", \"GOODWILL_CREDIT\", \"GOODWILL_CREDIT_APPLIED\", \"INTERNAL_CREDIT\", \"INTERNAL_CREDIT_APPLIED\", \"PREPAID_CREDIT\", \"PREPAID_CREDIT_APPLIED\", \"SALES_INCENTIVE_CREDIT\", \"SALES_INCENTIVE_CREDIT_APPLIED\", \"CREDIT_EXPIRED\", \"FUTURE_CREDIT\", \"REFERRAL_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT_APPLIED\", \"PREPAID_CREDIT_REFUND\".", sep = ""))
+        if (!(`discountType` %in% c())) {
+          stop(paste("Error! \"", `discountType`, "\" cannot be assigned to `discountType`. Must be .", sep = ""))
         }
-        if (!(is.character(`discountType`) && length(`discountType`) == 1)) {
-          stop(paste("Error! Invalid data for `discountType`. Must be a string:", `discountType`))
-        }
+        stopifnot(R6::is.R6(`discountType`))
         self$`discountType` <- `discountType`
       }
       if (!is.null(`remainingDiscountInMicroCurrency`)) {
@@ -130,7 +128,7 @@ AdsCreditDiscountsResponse <- R6::R6Class(
       }
       if (!is.null(self$`discountType`)) {
         AdsCreditDiscountsResponseObject[["discountType"]] <-
-          self$`discountType`
+          self$extractSimpleType(self$`discountType`)
       }
       if (!is.null(self$`remainingDiscountInMicroCurrency`)) {
         AdsCreditDiscountsResponseObject[["remainingDiscountInMicroCurrency"]] <-
@@ -141,6 +139,29 @@ AdsCreditDiscountsResponse <- R6::R6Class(
           self$`title`
       }
       return(AdsCreditDiscountsResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -163,10 +184,9 @@ AdsCreditDiscountsResponse <- R6::R6Class(
         self$`discountInMicroCurrency` <- this_object$`discountInMicroCurrency`
       }
       if (!is.null(this_object$`discountType`)) {
-        if (!is.null(this_object$`discountType`) && !(this_object$`discountType` %in% c("COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND"))) {
-          stop(paste("Error! \"", this_object$`discountType`, "\" cannot be assigned to `discountType`. Must be \"COUPON\", \"CREDIT\", \"COUPON_APPLIED\", \"CREDIT_APPLIED\", \"MARKETING_OFFER_CREDIT\", \"MARKETING_OFFER_CREDIT_APPLIED\", \"GOODWILL_CREDIT\", \"GOODWILL_CREDIT_APPLIED\", \"INTERNAL_CREDIT\", \"INTERNAL_CREDIT_APPLIED\", \"PREPAID_CREDIT\", \"PREPAID_CREDIT_APPLIED\", \"SALES_INCENTIVE_CREDIT\", \"SALES_INCENTIVE_CREDIT_APPLIED\", \"CREDIT_EXPIRED\", \"FUTURE_CREDIT\", \"REFERRAL_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT_APPLIED\", \"PREPAID_CREDIT_REFUND\".", sep = ""))
-        }
-        self$`discountType` <- this_object$`discountType`
+        `discounttype_object` <- AdsCreditDiscountType$new()
+        `discounttype_object`$fromJSON(jsonlite::toJSON(this_object$`discountType`, auto_unbox = TRUE, digits = NA))
+        self$`discountType` <- `discounttype_object`
       }
       if (!is.null(this_object$`remainingDiscountInMicroCurrency`)) {
         self$`remainingDiscountInMicroCurrency` <- this_object$`remainingDiscountInMicroCurrency`
@@ -199,10 +219,7 @@ AdsCreditDiscountsResponse <- R6::R6Class(
       self$`advertiser_id` <- this_object$`advertiser_id`
       self$`discountCurrency` <- this_object$`discountCurrency`
       self$`discountInMicroCurrency` <- this_object$`discountInMicroCurrency`
-      if (!is.null(this_object$`discountType`) && !(this_object$`discountType` %in% c("COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND"))) {
-        stop(paste("Error! \"", this_object$`discountType`, "\" cannot be assigned to `discountType`. Must be \"COUPON\", \"CREDIT\", \"COUPON_APPLIED\", \"CREDIT_APPLIED\", \"MARKETING_OFFER_CREDIT\", \"MARKETING_OFFER_CREDIT_APPLIED\", \"GOODWILL_CREDIT\", \"GOODWILL_CREDIT_APPLIED\", \"INTERNAL_CREDIT\", \"INTERNAL_CREDIT_APPLIED\", \"PREPAID_CREDIT\", \"PREPAID_CREDIT_APPLIED\", \"SALES_INCENTIVE_CREDIT\", \"SALES_INCENTIVE_CREDIT_APPLIED\", \"CREDIT_EXPIRED\", \"FUTURE_CREDIT\", \"REFERRAL_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT_APPLIED\", \"PREPAID_CREDIT_REFUND\".", sep = ""))
-      }
-      self$`discountType` <- this_object$`discountType`
+      self$`discountType` <- AdsCreditDiscountType$new()$fromJSON(jsonlite::toJSON(this_object$`discountType`, auto_unbox = TRUE, digits = NA))
       self$`remainingDiscountInMicroCurrency` <- this_object$`remainingDiscountInMicroCurrency`
       self$`title` <- this_object$`title`
       self

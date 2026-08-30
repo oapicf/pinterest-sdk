@@ -3,7 +3,6 @@
             [spec-tools.data-spec :as ds]
             [pinterest-rest-api.specs.country :refer :all]
             [pinterest-rest-api.specs.item-update-batch-record :refer :all]
-            [pinterest-rest-api.specs.batch-operation :refer :all]
             )
   (:import (java.io File)))
 
@@ -13,7 +12,7 @@
    (ds/req :country) country-spec
    (ds/req :items) (s/coll-of item-update-batch-record-spec)
    (ds/req :language) string?
-   (ds/req :operation) batch-operation-spec
+   (ds/req :operation) string?
    })
 
 (def catalogs-items-update-batch-request-spec

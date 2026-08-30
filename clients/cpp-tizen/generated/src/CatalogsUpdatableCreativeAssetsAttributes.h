@@ -122,11 +122,11 @@ public:
 	/*! \brief Set The name of the creative assets.
 	 */
 	void setTitle(std::string  title);
-	/*! \brief Get Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+	/*! \brief Get Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
 	 */
 	std::string getVisibility();
 
-	/*! \brief Set Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+	/*! \brief Set Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
 	 */
 	void setVisibility(std::string  visibility);
 

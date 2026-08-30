@@ -106,7 +106,7 @@ RecordCounts::getInvalid()
 }
 
 void
-RecordCounts::setInvalid(int  invalid)
+RecordCounts::setInvalid(int invalid)
 {
 	this->invalid = invalid;
 }
@@ -118,7 +118,7 @@ RecordCounts::getProcessed()
 }
 
 void
-RecordCounts::setProcessed(int  processed)
+RecordCounts::setProcessed(int processed)
 {
 	this->processed = processed;
 }
@@ -130,7 +130,7 @@ RecordCounts::getValid()
 }
 
 void
-RecordCounts::setValid(int  valid)
+RecordCounts::setValid(int valid)
 {
 	this->valid = valid;
 }

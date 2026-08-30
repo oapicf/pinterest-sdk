@@ -1,12 +1,12 @@
 
-# Table `TrendingKeyword_demographics`
+# Table `TrendingKeywordDemographics`
 (mapped from: TrendingKeywordDemographics)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**ageDistribution** | age_distribution | long |  | [**TrendingKeywordDemographicsAgeDistribution**](TrendingKeywordDemographicsAgeDistribution.md) |  |  [optional] [foreignkey]
-**genderDistribution** | gender_distribution | long |  | [**TrendingKeywordDemographicsGenderDistribution**](TrendingKeywordDemographicsGenderDistribution.md) |  |  [optional] [foreignkey]
+**ageDistribution** | age_distribution | long |  | [**TrendsAgeDistribution**](TrendsAgeDistribution.md) |  |  [optional] [foreignkey]
+**genderDistribution** | gender_distribution | long |  | [**TrendsGenderDistribution**](TrendsGenderDistribution.md) |  |  [optional] [foreignkey]
 
 
 

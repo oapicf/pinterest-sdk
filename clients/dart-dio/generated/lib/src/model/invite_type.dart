@@ -11,13 +11,13 @@ part 'invite_type.g.dart';
 
 class InviteType extends EnumClass {
 
-  /// The type of invite. <br>'MEMBER_INVITE' is to invite a member to access your business assets. <br>'PARTNER INVITE' is to invite a partner to access your business assets. <br>'PARTNER_REQUEST' is to request access a partner's business assets.
+  /// The type of invite. MEMBER_INVITE invites a member to access your business assets. PARTNER_INVITE invites a partner to access your business assets. PARTNER_REQUEST requests access to a partner's business assets.
   @BuiltValueEnumConst(wireName: r'MEMBER_INVITE')
   static const InviteType MEMBER_INVITE = _$MEMBER_INVITE;
-  /// The type of invite. <br>'MEMBER_INVITE' is to invite a member to access your business assets. <br>'PARTNER INVITE' is to invite a partner to access your business assets. <br>'PARTNER_REQUEST' is to request access a partner's business assets.
+  /// The type of invite. MEMBER_INVITE invites a member to access your business assets. PARTNER_INVITE invites a partner to access your business assets. PARTNER_REQUEST requests access to a partner's business assets.
   @BuiltValueEnumConst(wireName: r'PARTNER_INVITE')
   static const InviteType PARTNER_INVITE = _$PARTNER_INVITE;
-  /// The type of invite. <br>'MEMBER_INVITE' is to invite a member to access your business assets. <br>'PARTNER INVITE' is to invite a partner to access your business assets. <br>'PARTNER_REQUEST' is to request access a partner's business assets.
+  /// The type of invite. MEMBER_INVITE invites a member to access your business assets. PARTNER_INVITE invites a partner to access your business assets. PARTNER_REQUEST requests access to a partner's business assets.
   @BuiltValueEnumConst(wireName: r'PARTNER_REQUEST')
   static const InviteType PARTNER_REQUEST = _$PARTNER_REQUEST;
 

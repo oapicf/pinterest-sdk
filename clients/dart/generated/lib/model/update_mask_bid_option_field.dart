@@ -11,31 +11,30 @@
 part of openapi.api;
 
 /// bid option field to apply operation updates to
-class UpdateMaskBidOptionField {
-  /// Instantiate a new enum with the provided [value].
-  const UpdateMaskBidOptionField._(this.value);
+enum UpdateMaskBidOptionField {
+  BID._(r'BID'),
+  APP_TYPE_BID_MULTIPLIER_SET._(r'APP_TYPE_BID_MULTIPLIER_SET'),
+  PLACEMENT_BID_MULTIPLIER_SET._(r'PLACEMENT_BID_MULTIPLIER_SET'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const UpdateMaskBidOptionField._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const BID = UpdateMaskBidOptionField._(r'BID');
-  static const APP_TYPE_BID_MULTIPLIER_SET = UpdateMaskBidOptionField._(r'APP_TYPE_BID_MULTIPLIER_SET');
-  static const PLACEMENT_BID_MULTIPLIER_SET = UpdateMaskBidOptionField._(r'PLACEMENT_BID_MULTIPLIER_SET');
-
-  /// List of all possible values in this [enum][UpdateMaskBidOptionField].
-  static const values = <UpdateMaskBidOptionField>[
-    BID,
-    APP_TYPE_BID_MULTIPLIER_SET,
-    PLACEMENT_BID_MULTIPLIER_SET,
-  ];
-
+  /// Returns the instance of [UpdateMaskBidOptionField] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static UpdateMaskBidOptionField? fromJson(dynamic value) => UpdateMaskBidOptionFieldTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [UpdateMaskBidOptionField]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<UpdateMaskBidOptionField> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <UpdateMaskBidOptionField>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class UpdateMaskBidOptionFieldTypeTransformer {
 
   const UpdateMaskBidOptionFieldTypeTransformer._();
 
-  String encode(UpdateMaskBidOptionField data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(UpdateMaskBidOptionField data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a UpdateMaskBidOptionField.
+  /// Returns the instance of [UpdateMaskBidOptionField] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class UpdateMaskBidOptionFieldTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   UpdateMaskBidOptionField? decode(dynamic data, {bool allowNull = true}) {
+    if (data is UpdateMaskBidOptionField) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'BID': return UpdateMaskBidOptionField.BID;
@@ -82,7 +86,7 @@ class UpdateMaskBidOptionFieldTypeTransformer {
     return null;
   }
 
-  /// Singleton [UpdateMaskBidOptionFieldTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static UpdateMaskBidOptionFieldTypeTransformer? _instance;
 }
 

@@ -31,7 +31,7 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessInviteApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
 let createAssetAccessRequestBody = new PinterestSdk.CreateAssetAccessRequestBody(); // CreateAssetAccessRequestBody | 
 apiInstance.assetAccessRequestsCreate(businessId, createAssetAccessRequestBody, (error, data, response) => {
   if (error) {
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ## cancelInvitesOrRequests
 
-> DeleteInvitesResultsResponseArray cancelInvitesOrRequests(businessId, cancelInvitesBody)
+> CancelInvitesResponse cancelInvitesOrRequests(businessId, cancelInvitesRequest)
 
 Cancel invites/requests
 
@@ -82,9 +82,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessInviteApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let cancelInvitesBody = new PinterestSdk.CancelInvitesBody(); // CancelInvitesBody | A list with invite ids
-apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesBody, (error, data, response) => {
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let cancelInvitesRequest = new PinterestSdk.CancelInvitesRequest(); // CancelInvitesRequest | 
+apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -99,11 +99,11 @@ apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesBody, (error, data,
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
- **cancelInvitesBody** | [**CancelInvitesBody**](CancelInvitesBody.md)| A list with invite ids | 
+ **cancelInvitesRequest** | [**CancelInvitesRequest**](CancelInvitesRequest.md)|  | 
 
 ### Return type
 
-[**DeleteInvitesResultsResponseArray**](DeleteInvitesResultsResponseArray.md)
+[**CancelInvitesResponse**](CancelInvitesResponse.md)
 
 ### Authorization
 
@@ -133,8 +133,8 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessInviteApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let createAssetInvitesRequest = new PinterestSdk.CreateAssetInvitesRequest(); // CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let createAssetInvitesRequest = new PinterestSdk.CreateAssetInvitesRequest(); // CreateAssetInvitesRequest | 
 apiInstance.createAssetInvites(businessId, createAssetInvitesRequest, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -150,7 +150,7 @@ apiInstance.createAssetInvites(businessId, createAssetInvitesRequest, (error, da
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
- **createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md)| A list of invites/requests together with the asset permissions to be assigned to the invite/request.  | 
+ **createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md)|  | 
 
 ### Return type
 
@@ -184,8 +184,8 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessInviteApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let createMembershipOrPartnershipInvitesBody = new PinterestSdk.CreateMembershipOrPartnershipInvitesBody(); // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let createMembershipOrPartnershipInvitesBody = new PinterestSdk.CreateMembershipOrPartnershipInvitesBody(); // CreateMembershipOrPartnershipInvitesBody | 
 apiInstance.createMembershipOrPartnershipInvites(businessId, createMembershipOrPartnershipInvitesBody, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -201,7 +201,7 @@ apiInstance.createMembershipOrPartnershipInvites(businessId, createMembershipOrP
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
- **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | 
+ **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)|  | 
 
 ### Return type
 
@@ -235,13 +235,13 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessInviteApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
 let opts = {
   'isMember': true, // Boolean | A boolean field to indicate whether the invite is to create a partnership or a membership.
-  'inviteStatus': ["PENDING"], // [String] | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
+  'inviteStatus': [new PinterestSdk.InviteFilterStatus()], // [InviteFilterStatus] | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
   'inviteType': new PinterestSdk.InviteType(), // InviteType | Invite type to filter invites by. Only invites of the specified type will be returned.
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.getInvites(businessId, opts, (error, data, response) => {
   if (error) {
@@ -259,10 +259,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
  **isMember** | **Boolean**| A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional] [default to true]
- **inviteStatus** | [**[String]**](String.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] 
+ **inviteStatus** | [**[InviteFilterStatus]**](InviteFilterStatus.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] 
  **inviteType** | [**InviteType**](.md)| Invite type to filter invites by. Only invites of the specified type will be returned. | [optional] 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

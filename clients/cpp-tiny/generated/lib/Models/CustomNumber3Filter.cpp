@@ -65,7 +65,7 @@ CustomNumber3Filter::getCUSTOMNUMBER3()
 }
 
 void
-CustomNumber3Filter::setCUSTOMNUMBER3(CatalogsProductGroupUint32Criteria  cUSTOM_NUMBER_3)
+CustomNumber3Filter::setCUSTOMNUMBER3(CatalogsProductGroupUint32Criteria cUSTOM_NUMBER_3)
 {
 	this->cUSTOM_NUMBER_3 = cUSTOM_NUMBER_3;
 }

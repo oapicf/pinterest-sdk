@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## CustomerListsCreate
 
-> CustomerList CustomerListsCreate(ctx, adAccountId).CustomerListRequest(customerListRequest).Execute()
+> CustomerList CustomerListsCreate(ctx, adAccountId).CustomerListCreate(customerListCreate).Execute()
 
 Create customer lists
 
@@ -32,12 +32,12 @@ import (
 )
 
 func main() {
-	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	customerListRequest := *openapiclient.NewCustomerListRequest("The Glengarry Glen Ross leads", "email1@pinterest.com,email2@pinterest.com,..<more records>") // CustomerListRequest | Parameters to get Customer lists info
+	adAccountId := "adAccountId_example" // string | 
+	customerListCreate := *openapiclient.NewCustomerListCreate("The Glengarry Glen Ross leads") // CustomerListCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerListsAPI.CustomerListsCreate(context.Background(), adAccountId).CustomerListRequest(customerListRequest).Execute()
+	resp, r, err := apiClient.CustomerListsAPI.CustomerListsCreate(context.Background(), adAccountId).CustomerListCreate(customerListCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerListsAPI.CustomerListsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -53,7 +53,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**adAccountId** | **string** | Unique identifier of an ad account. | 
+**adAccountId** | **string** |  | 
 
 ### Other Parameters
 
@@ -63,7 +63,7 @@ Other parameters are passed through a pointer to a apiCustomerListsCreateRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **customerListRequest** | [**CustomerListRequest**](CustomerListRequest.md) | Parameters to get Customer lists info | 
+ **customerListCreate** | [**CustomerListCreate**](CustomerListCreate.md) |  | 
 
 ### Return type
 
@@ -104,8 +104,8 @@ import (
 )
 
 func main() {
-	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	customerListId := "customerListId_example" // string | Unique identifier of a customer list
+	adAccountId := "adAccountId_example" // string | 
+	customerListId := "customerListId_example" // string | Customer list ID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -125,8 +125,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**adAccountId** | **string** | Unique identifier of an ad account. | 
-**customerListId** | **string** | Unique identifier of a customer list | 
+**adAccountId** | **string** |  | 
+**customerListId** | **string** | Customer list ID. | 
 
 ### Other Parameters
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## CustomerListsList
 
-> CustomerListsList200Response CustomerListsList(ctx, adAccountId).PageSize(pageSize).Order(order).Bookmark(bookmark).Execute()
+> CustomerListsList200Response CustomerListsList(ctx, adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).ExcludeNca(excludeNca).Execute()
 
 Get customer lists
 
@@ -177,14 +177,15 @@ import (
 )
 
 func main() {
-	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-	order := "ASCENDING" // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+	adAccountId := "adAccountId_example" // string | 
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+	order := openapiclient.Pinterest.Lib.PaginationOrder("ASCENDING") // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+	excludeNca := true // bool | When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all). (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerListsAPI.CustomerListsList(context.Background(), adAccountId).PageSize(pageSize).Order(order).Bookmark(bookmark).Execute()
+	resp, r, err := apiClient.CustomerListsAPI.CustomerListsList(context.Background(), adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).ExcludeNca(excludeNca).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerListsAPI.CustomerListsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -200,7 +201,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**adAccountId** | **string** | Unique identifier of an ad account. | 
+**adAccountId** | **string** |  | 
 
 ### Other Parameters
 
@@ -210,9 +211,10 @@ Other parameters are passed through a pointer to a apiCustomerListsListRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | 
+ **excludeNca** | **bool** | When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all). | [default to false]
 
 ### Return type
 
@@ -234,7 +236,7 @@ Name | Type | Description  | Notes
 
 ## CustomerListsUpdate
 
-> CustomerList CustomerListsUpdate(ctx, adAccountId, customerListId).CustomerListUpdateRequest(customerListUpdateRequest).Execute()
+> CustomerList CustomerListsUpdate(ctx, adAccountId, customerListId).CustomerListUpdateWithRequiredBody(customerListUpdateWithRequiredBody).Execute()
 
 Update customer list
 
@@ -253,13 +255,13 @@ import (
 )
 
 func main() {
-	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	customerListId := "customerListId_example" // string | Unique identifier of a customer list
-	customerListUpdateRequest := *openapiclient.NewCustomerListUpdateRequest(openapiclient.UserListOperationType("ADD"), "email2@pinterest.com,email6@pinterest.com,") // CustomerListUpdateRequest | 
+	adAccountId := "adAccountId_example" // string | 
+	customerListId := "customerListId_example" // string | Customer list ID.
+	customerListUpdateWithRequiredBody := *openapiclient.NewCustomerListUpdateWithRequiredBody(openapiclient.UserListOperationType("ADD")) // CustomerListUpdateWithRequiredBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerListsAPI.CustomerListsUpdate(context.Background(), adAccountId, customerListId).CustomerListUpdateRequest(customerListUpdateRequest).Execute()
+	resp, r, err := apiClient.CustomerListsAPI.CustomerListsUpdate(context.Background(), adAccountId, customerListId).CustomerListUpdateWithRequiredBody(customerListUpdateWithRequiredBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerListsAPI.CustomerListsUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -275,8 +277,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**adAccountId** | **string** | Unique identifier of an ad account. | 
-**customerListId** | **string** | Unique identifier of a customer list | 
+**adAccountId** | **string** |  | 
+**customerListId** | **string** | Customer list ID. | 
 
 ### Other Parameters
 
@@ -287,7 +289,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **customerListUpdateRequest** | [**CustomerListUpdateRequest**](CustomerListUpdateRequest.md) |  | 
+ **customerListUpdateWithRequiredBody** | [**CustomerListUpdateWithRequiredBody**](CustomerListUpdateWithRequiredBody.md) |  | 
 
 ### Return type
 

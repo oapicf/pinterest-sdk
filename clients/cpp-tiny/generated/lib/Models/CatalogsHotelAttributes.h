@@ -12,9 +12,10 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include "CatalogsAiContentDisclosure.h"
 #include "CatalogsHotelAddress.h"
-#include "CatalogsHotelAttributes_allOf_main_image.h"
 #include "CatalogsHotelGuestRatings.h"
+#include "CatalogsHotelMainImage.h"
 #include <list>
 
 namespace Tiny {
@@ -49,139 +50,146 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get 
+	/*! \brief Get Hotel address
 	 */
 	CatalogsHotelAddress getAddress();
 
-	/*! \brief Set 
+	/*! \brief Set Hotel address
 	 */
-	void setAddress(CatalogsHotelAddress  address);
+	void setAddress(CatalogsHotelAddress address);
 	/*! \brief Get Base price of the hotel room per night followed by the ISO currency code
 	 */
 	std::string getBasePrice();
 
 	/*! \brief Set Base price of the hotel room per night followed by the ISO currency code
 	 */
-	void setBasePrice(std::string  base_price);
+	void setBasePrice(std::string base_price);
 	/*! \brief Get The brand to which this hotel belongs to.
 	 */
 	std::string getBrand();
 
 	/*! \brief Set The brand to which this hotel belongs to.
 	 */
-	void setBrand(std::string  brand);
+	void setBrand(std::string brand);
 	/*! \brief Get The type of property. The category can be any type of internal description desired.
 	 */
 	std::string getCategory();
 
 	/*! \brief Set The type of property. The category can be any type of internal description desired.
 	 */
-	void setCategory(std::string  category);
+	void setCategory(std::string category);
 	/*! \brief Get Custom grouping of hotels
 	 */
 	std::string getCustomLabel0();
 
 	/*! \brief Set Custom grouping of hotels
 	 */
-	void setCustomLabel0(std::string  custom_label_0);
+	void setCustomLabel0(std::string custom_label_0);
 	/*! \brief Get Custom grouping of hotels
 	 */
 	std::string getCustomLabel1();
 
 	/*! \brief Set Custom grouping of hotels
 	 */
-	void setCustomLabel1(std::string  custom_label_1);
+	void setCustomLabel1(std::string custom_label_1);
 	/*! \brief Get Custom grouping of hotels
 	 */
 	std::string getCustomLabel2();
 
 	/*! \brief Set Custom grouping of hotels
 	 */
-	void setCustomLabel2(std::string  custom_label_2);
+	void setCustomLabel2(std::string custom_label_2);
 	/*! \brief Get Custom grouping of hotels
 	 */
 	std::string getCustomLabel3();
 
 	/*! \brief Set Custom grouping of hotels
 	 */
-	void setCustomLabel3(std::string  custom_label_3);
+	void setCustomLabel3(std::string custom_label_3);
 	/*! \brief Get Custom grouping of hotels
 	 */
 	std::string getCustomLabel4();
 
 	/*! \brief Set Custom grouping of hotels
 	 */
-	void setCustomLabel4(std::string  custom_label_4);
+	void setCustomLabel4(std::string custom_label_4);
 	/*! \brief Get Brief description of the hotel.
 	 */
 	std::string getDescription();
 
 	/*! \brief Set Brief description of the hotel.
 	 */
-	void setDescription(std::string  description);
-	/*! \brief Get 
+	void setDescription(std::string description);
+	/*! \brief Get If specified, you must provide all properties
 	 */
 	CatalogsHotelGuestRatings getGuestRatings();
 
-	/*! \brief Set 
+	/*! \brief Set If specified, you must provide all properties
 	 */
-	void setGuestRatings(CatalogsHotelGuestRatings  guest_ratings);
+	void setGuestRatings(CatalogsHotelGuestRatings guest_ratings);
 	/*! \brief Get Latitude of the hotel.
 	 */
 	long getLatitude();
 
 	/*! \brief Set Latitude of the hotel.
 	 */
-	void setLatitude(long  latitude);
+	void setLatitude(long latitude);
 	/*! \brief Get Link to the product page
 	 */
 	std::string getLink();
 
 	/*! \brief Set Link to the product page
 	 */
-	void setLink(std::string  link);
+	void setLink(std::string link);
 	/*! \brief Get Longitude of the hotel.
 	 */
 	long getLongitude();
 
 	/*! \brief Set Longitude of the hotel.
 	 */
-	void setLongitude(long  longitude);
+	void setLongitude(long longitude);
 	/*! \brief Get The hotel's name.
 	 */
 	std::string getName();
 
 	/*! \brief Set The hotel's name.
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 	/*! \brief Get A list of neighborhoods where the hotel is located
 	 */
 	std::list<std::string> getNeighborhood();
 
 	/*! \brief Set A list of neighborhoods where the hotel is located
 	 */
-	void setNeighborhood(std::list <std::string> neighborhood);
+	void setNeighborhood(std::list<std::string> neighborhood);
 	/*! \brief Get Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
 	 */
 	std::string getSalePrice();
 
 	/*! \brief Set Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
 	 */
-	void setSalePrice(std::string  sale_price);
-	/*! \brief Get <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+	void setSalePrice(std::string sale_price);
+	/*! \brief Get <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
 	 */
 	std::list<std::string> getAdditionalImageLink();
 
-	/*! \brief Set <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+	/*! \brief Set <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
 	 */
-	void setAdditionalImageLink(std::list <std::string> additional_image_link);
-	/*! \brief Get 
+	void setAdditionalImageLink(std::list<std::string> additional_image_link);
+	/*! \brief Get AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
 	 */
-	CatalogsHotelAttributes_allOf_main_image getMainImage();
+	std::list<CatalogsAiContentDisclosure> getAiDisclosures();
 
-	/*! \brief Set 
+	/*! \brief Set AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
 	 */
-	void setMainImage(CatalogsHotelAttributes_allOf_main_image  main_image);
+	void setAiDisclosures(std::list<CatalogsAiContentDisclosure> ai_disclosures);
+	/*! \brief Get The main hotel image
+	 */
+	CatalogsHotelMainImage getMainImage();
+
+	/*! \brief Set The main hotel image
+	 */
+	void setMainImage(CatalogsHotelMainImage main_image);
 
 
     private:
@@ -203,7 +211,8 @@ public:
     std::list<std::string> neighborhood;
     std::string sale_price{};
     std::list<std::string> additional_image_link;
-    CatalogsHotelAttributes_allOf_main_image main_image;
+    std::list<CatalogsAiContentDisclosure> ai_disclosures;
+    CatalogsHotelMainImage main_image;
 };
 }
 

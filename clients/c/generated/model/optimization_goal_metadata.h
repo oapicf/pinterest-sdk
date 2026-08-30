@@ -15,24 +15,24 @@
 
 typedef struct optimization_goal_metadata_t optimization_goal_metadata_t;
 
-#include "optimization_goal_metadata_conversion_tag_v3_goal_metadata.h"
-#include "optimization_goal_metadata_frequency_goal_metadata.h"
-#include "optimization_goal_metadata_scrollup_goal_metadata.h"
+#include "conversion_tag_v3_goal_metadata.h"
+#include "frequency_goal_metadata.h"
+#include "scrollup_goal_metadata.h"
 
 
 
 typedef struct optimization_goal_metadata_t {
-    struct optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *conversion_tag_v3_goal_metadata; //model
-    struct optimization_goal_metadata_frequency_goal_metadata_t *frequency_goal_metadata; //model
-    struct optimization_goal_metadata_scrollup_goal_metadata_t *scrollup_goal_metadata; //model
+    struct conversion_tag_v3_goal_metadata_t *conversion_tag_v3_goal_metadata; //model
+    struct frequency_goal_metadata_t *frequency_goal_metadata; //model
+    struct scrollup_goal_metadata_t *scrollup_goal_metadata; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } optimization_goal_metadata_t;
 
 __attribute__((deprecated)) optimization_goal_metadata_t *optimization_goal_metadata_create(
-    optimization_goal_metadata_conversion_tag_v3_goal_metadata_t *conversion_tag_v3_goal_metadata,
-    optimization_goal_metadata_frequency_goal_metadata_t *frequency_goal_metadata,
-    optimization_goal_metadata_scrollup_goal_metadata_t *scrollup_goal_metadata
+    conversion_tag_v3_goal_metadata_t *conversion_tag_v3_goal_metadata,
+    frequency_goal_metadata_t *frequency_goal_metadata,
+    scrollup_goal_metadata_t *scrollup_goal_metadata
 );
 
 void optimization_goal_metadata_free(optimization_goal_metadata_t *optimization_goal_metadata);

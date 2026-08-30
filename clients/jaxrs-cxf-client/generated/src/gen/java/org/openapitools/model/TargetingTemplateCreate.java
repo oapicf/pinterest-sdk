@@ -5,32 +5,37 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.PlacementGroupType;
-import org.openapitools.model.TargetingSpec;
+import org.openapitools.model.TargetingSpecOptimal;
 import org.openapitools.model.TargetingTemplateKeyword;
 import org.openapitools.model.TrackingUrls;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Resource create operation model.
+ */
+@ApiModel(description="Resource create operation model.")
 
 public class TargetingTemplateCreate  {
   
  /**
-  * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  * Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).
   */
-  @ApiModelProperty(value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
+  @ApiModelProperty(value = "Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).")
 
   private Boolean autoTargetingEnabled = true;
 
-  @ApiModelProperty(example = "[{value=cats, match_type=EXACT_NEGATIVE}]", value = "")
+  @ApiModelProperty(value = "")
 
   private List<TargetingTemplateKeyword> keywords = new ArrayList<>();
 
  /**
-  * Name of targeting template.
+  * targeting template name
   */
-  @ApiModelProperty(example = "Gaming", required = true, value = "Name of targeting template.")
+  @ApiModelProperty(required = true, value = "targeting template name")
 
   private String name;
 
@@ -38,15 +43,18 @@ public class TargetingTemplateCreate  {
 
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
-  @ApiModelProperty(required = true, value = "")
+ /**
+  * targeting profile attributes
+  */
+  @ApiModelProperty(required = true, value = "targeting profile attributes")
 
-  private TargetingSpec targetingAttributes;
+  private TargetingSpecOptimal targetingAttributes;
 
   @ApiModelProperty(value = "")
 
   private TrackingUrls trackingUrls;
  /**
-   * Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.
+   * Enable auto-targeting for ad group. Also known as [\&quot;expanded targeting\&quot;](https://help.pinterest.com/en/business/article/expanded-targeting).
    * @return autoTargetingEnabled
   **/
   @JsonProperty("auto_targeting_enabled")
@@ -87,7 +95,7 @@ public class TargetingTemplateCreate  {
   }
 
  /**
-   * Name of targeting template.
+   * targeting template name
    * @return name
   **/
   @JsonProperty("name")
@@ -123,19 +131,19 @@ public class TargetingTemplateCreate  {
   }
 
  /**
-   * Get targetingAttributes
+   * targeting profile attributes
    * @return targetingAttributes
   **/
   @JsonProperty("targeting_attributes")
-  public TargetingSpec getTargetingAttributes() {
+  public TargetingSpecOptimal getTargetingAttributes() {
     return targetingAttributes;
   }
 
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+  public void setTargetingAttributes(TargetingSpecOptimal targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
   }
 
-  public TargetingTemplateCreate targetingAttributes(TargetingSpec targetingAttributes) {
+  public TargetingTemplateCreate targetingAttributes(TargetingSpecOptimal targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
     return this;
   }
@@ -200,10 +208,7 @@ public class TargetingTemplateCreate  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

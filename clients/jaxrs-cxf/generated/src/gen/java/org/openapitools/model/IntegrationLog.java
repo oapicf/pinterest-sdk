@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.IntegrationLogClientError;
 import org.openapitools.model.IntegrationLogClientRequest;
+import org.openapitools.model.IntegrationLogEventType;
+import org.openapitools.model.IntegrationLogLevel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -44,44 +46,14 @@ public class IntegrationLog  {
 
   private IntegrationLogClientError error;
 
-public enum EventTypeEnum {
-
-APP(String.valueOf("APP")), API(String.valueOf("API"));
-
-
-    private String value;
-
-    EventTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static EventTypeEnum fromValue(String value) {
-        for (EventTypeEnum b : EventTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
   * Log event type
   */
   @ApiModelProperty(required = true, value = "Log event type")
 
-  private EventTypeEnum eventType;
+  @Valid
+
+  private IntegrationLogEventType eventType;
 
   @ApiModelProperty(value = "")
 
@@ -91,44 +63,14 @@ APP(String.valueOf("APP")), API(String.valueOf("API"));
 
   private String feedProfileId;
 
-public enum LogLevelEnum {
-
-INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
-
-
-    private String value;
-
-    LogLevelEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static LogLevelEnum fromValue(String value) {
-        for (LogLevelEnum b : LogLevelEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
   * Log level type
   */
   @ApiModelProperty(required = true, value = "Log level type")
 
-  private LogLevelEnum logLevel;
+  @Valid
+
+  private IntegrationLogLevel logLevel;
 
   @ApiModelProperty(value = "")
 
@@ -236,18 +178,15 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
   **/
   @JsonProperty("event_type")
   @NotNull
-  public String getEventType() {
-    if (eventType == null) {
-      return null;
-    }
-    return eventType.value();
+  public IntegrationLogEventType getEventType() {
+    return eventType;
   }
 
-  public void setEventType(EventTypeEnum eventType) {
+  public void setEventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
   }
 
-  public IntegrationLog eventType(EventTypeEnum eventType) {
+  public IntegrationLog eventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -294,18 +233,15 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
   **/
   @JsonProperty("log_level")
   @NotNull
-  public String getLogLevel() {
-    if (logLevel == null) {
-      return null;
-    }
-    return logLevel.value();
+  public IntegrationLogLevel getLogLevel() {
+    return logLevel;
   }
 
-  public void setLogLevel(LogLevelEnum logLevel) {
+  public void setLogLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
   }
 
-  public IntegrationLog logLevel(LogLevelEnum logLevel) {
+  public IntegrationLog logLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
     return this;
   }
@@ -456,10 +392,7 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -102,7 +102,7 @@ Catalogs_list_200_response::getBookmark()
 }
 
 void
-Catalogs_list_200_response::setBookmark(std::string  bookmark)
+Catalogs_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Catalogs_list_200_response::getItems()
 }
 
 void
-Catalogs_list_200_response::setItems(std::list <Catalog> items)
+Catalogs_list_200_response::setItems(std::list<Catalog> items)
 {
 	this->items = items;
 }

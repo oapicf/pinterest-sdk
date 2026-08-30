@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &PriceFilter{}
 
 // PriceFilter struct for PriceFilter
 type PriceFilter struct {
-	PRICE CatalogsProductGroupPricingCurrencyCriteria `json:"PRICE"`
+	PRICE PriceFilterPrice `json:"PRICE"`
 }
 
 type _PriceFilter PriceFilter
@@ -31,7 +31,7 @@ type _PriceFilter PriceFilter
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPriceFilter(pRICE CatalogsProductGroupPricingCurrencyCriteria) *PriceFilter {
+func NewPriceFilter(pRICE PriceFilterPrice) *PriceFilter {
 	this := PriceFilter{}
 	this.PRICE = pRICE
 	return &this
@@ -46,9 +46,9 @@ func NewPriceFilterWithDefaults() *PriceFilter {
 }
 
 // GetPRICE returns the PRICE field value
-func (o *PriceFilter) GetPRICE() CatalogsProductGroupPricingCurrencyCriteria {
+func (o *PriceFilter) GetPRICE() PriceFilterPrice {
 	if o == nil {
-		var ret CatalogsProductGroupPricingCurrencyCriteria
+		var ret PriceFilterPrice
 		return ret
 	}
 
@@ -57,7 +57,7 @@ func (o *PriceFilter) GetPRICE() CatalogsProductGroupPricingCurrencyCriteria {
 
 // GetPRICEOk returns a tuple with the PRICE field value
 // and a boolean to check if the value has been set.
-func (o *PriceFilter) GetPRICEOk() (*CatalogsProductGroupPricingCurrencyCriteria, bool) {
+func (o *PriceFilter) GetPRICEOk() (*PriceFilterPrice, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *PriceFilter) GetPRICEOk() (*CatalogsProductGroupPricingCurrencyCriteria
 }
 
 // SetPRICE sets field value
-func (o *PriceFilter) SetPRICE(v CatalogsProductGroupPricingCurrencyCriteria) {
+func (o *PriceFilter) SetPRICE(v PriceFilterPrice) {
 	o.PRICE = v
 }
 

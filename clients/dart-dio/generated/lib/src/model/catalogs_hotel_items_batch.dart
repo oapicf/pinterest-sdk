@@ -6,13 +6,12 @@
 import 'package:openapi/src/model/batch_operation_status.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/hotel_processing_record.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'catalogs_hotel_items_batch.g.dart';
 
-/// Object describing the catalogs hotel items batch
+/// Object describing the catalogs hotel items batch. If specified, you must provide all properties.
 ///
 /// Properties:
 /// * [batchId] - Id of the catalogs items batch
@@ -28,8 +27,8 @@ abstract class CatalogsHotelItemsBatch implements Built<CatalogsHotelItemsBatch,
   String? get batchId;
 
   @BuiltValueField(wireName: r'catalog_type')
-  CatalogsType get catalogType;
-  // enum catalogTypeEnum {  RETAIL,  HOTEL,  CREATIVE_ASSETS,  };
+  CatalogsHotelItemsBatchCatalogTypeEnum get catalogType;
+  // enum catalogTypeEnum {  HOTEL,  };
 
   /// Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
   @BuiltValueField(wireName: r'completed_time')
@@ -80,7 +79,7 @@ class _$CatalogsHotelItemsBatchSerializer implements PrimitiveSerializer<Catalog
     yield r'catalog_type';
     yield serializers.serialize(
       object.catalogType,
-      specifiedType: const FullType(CatalogsType),
+      specifiedType: const FullType(CatalogsHotelItemsBatchCatalogTypeEnum),
     );
     if (object.completedTime != null) {
       yield r'completed_time';
@@ -136,15 +135,16 @@ class _$CatalogsHotelItemsBatchSerializer implements PrimitiveSerializer<Catalog
         case r'batch_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.batchId = valueDes;
           break;
         case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsType),
-          ) as CatalogsType;
+            specifiedType: const FullType(CatalogsHotelItemsBatchCatalogTypeEnum),
+          ) as CatalogsHotelItemsBatchCatalogTypeEnum;
           result.catalogType = valueDes;
           break;
         case r'completed_time':
@@ -158,22 +158,25 @@ class _$CatalogsHotelItemsBatchSerializer implements PrimitiveSerializer<Catalog
         case r'created_time':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
+            specifiedType: const FullType.nullable(DateTime),
+          ) as DateTime?;
+          if (valueDes == null) continue;
           result.createdTime = valueDes;
           break;
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(HotelProcessingRecord)]),
-          ) as BuiltList<HotelProcessingRecord>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(HotelProcessingRecord)]),
+          ) as BuiltList<HotelProcessingRecord>?;
+          if (valueDes == null) continue;
           result.items.replace(valueDes);
           break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BatchOperationStatus),
-          ) as BatchOperationStatus;
+            specifiedType: const FullType.nullable(BatchOperationStatus),
+          ) as BatchOperationStatus?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         default:
@@ -203,5 +206,18 @@ class _$CatalogsHotelItemsBatchSerializer implements PrimitiveSerializer<Catalog
     );
     return result.build();
   }
+}
+
+class CatalogsHotelItemsBatchCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'HOTEL')
+  static const CatalogsHotelItemsBatchCatalogTypeEnum HOTEL = _$catalogsHotelItemsBatchCatalogTypeEnum_HOTEL;
+
+  static Serializer<CatalogsHotelItemsBatchCatalogTypeEnum> get serializer => _$catalogsHotelItemsBatchCatalogTypeEnumSerializer;
+
+  const CatalogsHotelItemsBatchCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsHotelItemsBatchCatalogTypeEnum> get values => _$catalogsHotelItemsBatchCatalogTypeEnumValues;
+  static CatalogsHotelItemsBatchCatalogTypeEnum valueOf(String name) => _$catalogsHotelItemsBatchCatalogTypeEnumValueOf(name);
 }
 

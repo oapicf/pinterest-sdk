@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.LabelCreateRequestLabelsInner;
+import apimodels.LabelCreateItem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,27 +13,21 @@ import javax.validation.Valid;
 /**
  * LabelCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class LabelCreateRequest   {
   @JsonProperty("labels")
   @NotNull
 @Valid
 
-  private List<@Valid LabelCreateRequestLabelsInner> labels = new ArrayList<>();
+  private List<@Valid LabelCreateItem> labels = new ArrayList<>();
 
-  @JsonProperty("parent_id")
-  @NotNull
-@Pattern(regexp="^[C]?\\d+$")
-
-  private String parentId;
-
-  public LabelCreateRequest labels(List<@Valid LabelCreateRequestLabelsInner> labels) {
+  public LabelCreateRequest labels(List<@Valid LabelCreateItem> labels) {
     this.labels = labels;
     return this;
   }
 
-  public LabelCreateRequest addLabelsItem(LabelCreateRequestLabelsInner labelsItem) {
+  public LabelCreateRequest addLabelsItem(LabelCreateItem labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -45,29 +39,12 @@ public class LabelCreateRequest   {
    * Labels that you are applying to the campaign.
    * @return labels
   **/
-  public List<@Valid LabelCreateRequestLabelsInner> getLabels() {
+  public List<@Valid LabelCreateItem> getLabels() {
     return labels;
   }
 
-  public void setLabels(List<@Valid LabelCreateRequestLabelsInner> labels) {
+  public void setLabels(List<@Valid LabelCreateItem> labels) {
     this.labels = labels;
-  }
-
-  public LabelCreateRequest parentId(String parentId) {
-    this.parentId = parentId;
-    return this;
-  }
-
-   /**
-   * Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
-   * @return parentId
-  **/
-  public String getParentId() {
-    return parentId;
-  }
-
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
   }
 
 
@@ -80,13 +57,12 @@ public class LabelCreateRequest   {
       return false;
     }
     LabelCreateRequest labelCreateRequest = (LabelCreateRequest) o;
-    return Objects.equals(labels, labelCreateRequest.labels) &&
-        Objects.equals(parentId, labelCreateRequest.parentId);
+    return Objects.equals(labels, labelCreateRequest.labels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(labels, parentId);
+    return Objects.hash(labels);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -96,7 +72,6 @@ public class LabelCreateRequest   {
     sb.append("class LabelCreateRequest {\n");
     
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -106,10 +81,7 @@ public class LabelCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

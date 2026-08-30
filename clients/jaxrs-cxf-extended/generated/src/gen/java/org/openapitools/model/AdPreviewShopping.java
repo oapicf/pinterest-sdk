@@ -3,6 +3,8 @@ package org.openapitools.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AdShoppingPreviewCreativeType;
+import org.openapitools.model.BasePreferredMediaType;
 import org.openapitools.model.CustomizableCTAType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -12,6 +14,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
+/**
+ * Ad preview from a catalog product group (shopping).
+ */
+@ApiModel(description="Ad preview from a catalog product group (shopping).")
+
 public class AdPreviewShopping  {
   
  /**
@@ -20,43 +27,12 @@ public class AdPreviewShopping  {
   @ApiModelProperty(example = "123456789", required = true, value = "Catalog Product Group Id.")
   private String catalogProductGroupId;
 
-public enum CreativeTypeEnum {
-
-    @JsonProperty("SHOPPING") SHOPPING(String.valueOf("SHOPPING")),
-    @JsonProperty("CAROUSEL") CAROUSEL(String.valueOf("CAROUSEL")),
-    @JsonProperty("COLLECTION") COLLECTION(String.valueOf("COLLECTION")),
-    @JsonProperty("REGULAR") REGULAR(String.valueOf("REGULAR"));
-
-    private String value;
-
-    CreativeTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static CreativeTypeEnum fromValue(String value) {
-        for (CreativeTypeEnum b : CreativeTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
   * Ad format of the shopping ad preview.
   */
   @ApiModelProperty(example = "SHOPPING", required = true, value = "Ad format of the shopping ad preview.")
-  private CreativeTypeEnum creativeType;
+  @Valid
+  private AdShoppingPreviewCreativeType creativeType;
 
  /**
   * Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE`
@@ -95,41 +71,18 @@ public enum CreativeTypeEnum {
   @ApiModelProperty(example = "111111111", value = "Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING.")
   private String itemId;
 
-public enum PreferredMediaTypeEnum {
-
-    @JsonProperty("VIDEO") VIDEO(String.valueOf("VIDEO")),
-    @JsonProperty("IMAGE") IMAGE(String.valueOf("IMAGE"));
-
-    private String value;
-
-    PreferredMediaTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static PreferredMediaTypeEnum fromValue(String value) {
-        for (PreferredMediaTypeEnum b : PreferredMediaTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
   * Preferred media type.
   */
   @ApiModelProperty(example = "IMAGE", value = "Preferred media type.")
-  private PreferredMediaTypeEnum preferredMediaType;
+  @Valid
+  private BasePreferredMediaType preferredMediaType;
+
+ /**
+  * Include promotion data in preview when available on catalog item. Defaults to false.
+  */
+  @ApiModelProperty(value = "Include promotion data in preview when available on catalog item. Defaults to false.")
+  private Boolean showPromotion;
 
  /**
   * Multi video template tag, image_tag and video_tag are mutual exclusive.
@@ -167,21 +120,21 @@ public enum PreferredMediaTypeEnum {
   */
   @JsonProperty("creative_type")
   @NotNull
-  public String getCreativeType() {
-    return creativeType == null ? null : creativeType.value();
+  public AdShoppingPreviewCreativeType getCreativeType() {
+    return creativeType;
   }
 
   /**
    * Sets the <code>creativeType</code> property.
    */
- public void setCreativeType(CreativeTypeEnum creativeType) {
+ public void setCreativeType(AdShoppingPreviewCreativeType creativeType) {
     this.creativeType = creativeType;
   }
 
   /**
    * Sets the <code>creativeType</code> property.
    */
-  public AdPreviewShopping creativeType(CreativeTypeEnum creativeType) {
+  public AdPreviewShopping creativeType(AdShoppingPreviewCreativeType creativeType) {
     this.creativeType = creativeType;
     return this;
   }
@@ -335,22 +288,46 @@ public enum PreferredMediaTypeEnum {
   * @return preferredMediaType
   */
   @JsonProperty("preferred_media_type")
-  public String getPreferredMediaType() {
-    return preferredMediaType == null ? null : preferredMediaType.value();
+  public BasePreferredMediaType getPreferredMediaType() {
+    return preferredMediaType;
   }
 
   /**
    * Sets the <code>preferredMediaType</code> property.
    */
- public void setPreferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+ public void setPreferredMediaType(BasePreferredMediaType preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
   }
 
   /**
    * Sets the <code>preferredMediaType</code> property.
    */
-  public AdPreviewShopping preferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+  public AdPreviewShopping preferredMediaType(BasePreferredMediaType preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
+    return this;
+  }
+
+ /**
+  * Include promotion data in preview when available on catalog item. Defaults to false.
+  * @return showPromotion
+  */
+  @JsonProperty("show_promotion")
+  public Boolean getShowPromotion() {
+    return showPromotion;
+  }
+
+  /**
+   * Sets the <code>showPromotion</code> property.
+   */
+ public void setShowPromotion(Boolean showPromotion) {
+    this.showPromotion = showPromotion;
+  }
+
+  /**
+   * Sets the <code>showPromotion</code> property.
+   */
+  public AdPreviewShopping showPromotion(Boolean showPromotion) {
+    this.showPromotion = showPromotion;
     return this;
   }
 
@@ -397,12 +374,13 @@ public enum PreferredMediaTypeEnum {
         Objects.equals(this.imageTag, adPreviewShopping.imageTag) &&
         Objects.equals(this.itemId, adPreviewShopping.itemId) &&
         Objects.equals(this.preferredMediaType, adPreviewShopping.preferredMediaType) &&
+        Objects.equals(this.showPromotion, adPreviewShopping.showPromotion) &&
         Objects.equals(this.videoTag, adPreviewShopping.videoTag);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogProductGroupId, creativeType, customizableCtaType, heroImageTitle, heroImageUrl, heroPinId, imageTag, itemId, preferredMediaType, videoTag);
+    return Objects.hash(catalogProductGroupId, creativeType, customizableCtaType, heroImageTitle, heroImageUrl, heroPinId, imageTag, itemId, preferredMediaType, showPromotion, videoTag);
   }
 
   @Override
@@ -419,6 +397,7 @@ public enum PreferredMediaTypeEnum {
     sb.append("    imageTag: ").append(toIndentedString(imageTag)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    preferredMediaType: ").append(toIndentedString(preferredMediaType)).append("\n");
+    sb.append("    showPromotion: ").append(toIndentedString(showPromotion)).append("\n");
     sb.append("    videoTag: ").append(toIndentedString(videoTag)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -429,10 +408,7 @@ public enum PreferredMediaTypeEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

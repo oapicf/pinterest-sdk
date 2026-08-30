@@ -12,7 +12,9 @@ module CatalogsCreativeAssetsProductGroupProductCounts =
   //#endregion
 
   type CatalogsCreativeAssetsProductGroupProductCounts = {
+    AppLinks : decimal;
     CatalogType : CatalogTypeEnum;
+    Images : decimal;
     Total : decimal;
     Videos : decimal;
   }

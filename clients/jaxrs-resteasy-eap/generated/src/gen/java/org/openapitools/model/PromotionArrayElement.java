@@ -7,15 +7,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.model.Exception;
-import org.openapitools.model.PromotionResponse;
+import org.openapitools.model.Promotion;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PromotionArrayElement   {
   
-  private PromotionResponse data;
+  private Promotion data;
   private Exception exception;
 
   /**
@@ -23,10 +23,10 @@ public class PromotionArrayElement   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("data")
-  public PromotionResponse getData() {
+  public Promotion getData() {
     return data;
   }
-  public void setData(PromotionResponse data) {
+  public void setData(Promotion data) {
     this.data = data;
   }
 
@@ -77,10 +77,7 @@ public class PromotionArrayElement   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

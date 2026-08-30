@@ -7,8 +7,8 @@ Ad accounts and profiles the business member/partner has access to.
 
 Name | Type
 ------------ | -------------
-`adAccounts` | [Array&lt;BusinessMemberAssetsSummaryAdAccountsInner&gt;](BusinessMemberAssetsSummaryAdAccountsInner.md)
-`profiles` | [Array&lt;BusinessMemberAssetsSummaryProfilesInner&gt;](BusinessMemberAssetsSummaryProfilesInner.md)
+`adAccounts` | [Array&lt;AssetIdWithPermissions&gt;](AssetIdWithPermissions.md)
+`profiles` | [Array&lt;AssetIdWithPermissions&gt;](AssetIdWithPermissions.md)
 
 ## Example
 

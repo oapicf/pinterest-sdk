@@ -4,13 +4,13 @@ import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.TrendingKeywordDemographicsAgeDistribution;
-import org.openapitools.model.TrendingKeywordDemographicsGenderDistribution;
+import org.openapitools.model.TrendsAgeDistribution;
+import org.openapitools.model.TrendsGenderDistribution;
 
 @Canonical
 class TrendingKeywordDemographics {
     
-    TrendingKeywordDemographicsAgeDistribution ageDistribution
+    TrendsAgeDistribution ageDistribution
     
-    TrendingKeywordDemographicsGenderDistribution genderDistribution
+    TrendsGenderDistribution genderDistribution
 }

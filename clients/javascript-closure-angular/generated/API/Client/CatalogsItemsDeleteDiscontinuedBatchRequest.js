@@ -27,7 +27,7 @@ API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest.prototype.items;
 API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest.prototype.language;
 
 /**
- * @type {!API.Client.BatchOperation}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest.prototype.operation;
@@ -123,7 +123,7 @@ API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest.LanguageEnum = {
   NB: 'NB',
   NE: 'NE',
   NL: 'NL',
-  NO: 'NO',
+  false: 'false',
   PL: 'PL',
   PT: 'PT',
   RO: 'RO',
@@ -141,4 +141,8 @@ API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest.LanguageEnum = {
   TR: 'TR',
   XX: 'XX',
   ZH: 'ZH',
+}
+/** @enum {string} */
+API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest.OperationEnum = { 
+  DELETE_DISCONTINUED: 'DELETE_DISCONTINUED',
 }

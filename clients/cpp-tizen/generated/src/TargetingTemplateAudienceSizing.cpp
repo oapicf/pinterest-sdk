@@ -23,7 +23,7 @@ TargetingTemplateAudienceSizing::~TargetingTemplateAudienceSizing()
 void
 TargetingTemplateAudienceSizing::__init()
 {
-	//reach_estimate = new TargetingTemplateAudienceSizing_reach_estimate();
+	//reach_estimate = new TargetingTemplateAudienceSizingReachEstimate();
 }
 
 void
@@ -47,11 +47,11 @@ TargetingTemplateAudienceSizing::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("TargetingTemplateAudienceSizing_reach_estimate")) {
-			jsonToValue(&reach_estimate, node, "TargetingTemplateAudienceSizing_reach_estimate", "TargetingTemplateAudienceSizing_reach_estimate");
+		if (isprimitive("TargetingTemplateAudienceSizingReachEstimate")) {
+			jsonToValue(&reach_estimate, node, "TargetingTemplateAudienceSizingReachEstimate", "TargetingTemplateAudienceSizingReachEstimate");
 		} else {
 			
-			TargetingTemplateAudienceSizing_reach_estimate* obj = static_cast<TargetingTemplateAudienceSizing_reach_estimate*> (&reach_estimate);
+			TargetingTemplateAudienceSizingReachEstimate* obj = static_cast<TargetingTemplateAudienceSizingReachEstimate*> (&reach_estimate);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -68,13 +68,13 @@ TargetingTemplateAudienceSizing::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("TargetingTemplateAudienceSizing_reach_estimate")) {
-		TargetingTemplateAudienceSizing_reach_estimate obj = getReachEstimate();
-		node = converttoJson(&obj, "TargetingTemplateAudienceSizing_reach_estimate", "");
+	if (isprimitive("TargetingTemplateAudienceSizingReachEstimate")) {
+		TargetingTemplateAudienceSizingReachEstimate obj = getReachEstimate();
+		node = converttoJson(&obj, "TargetingTemplateAudienceSizingReachEstimate", "");
 	}
 	else {
 		
-		TargetingTemplateAudienceSizing_reach_estimate obj = static_cast<TargetingTemplateAudienceSizing_reach_estimate> (getReachEstimate());
+		TargetingTemplateAudienceSizingReachEstimate obj = static_cast<TargetingTemplateAudienceSizingReachEstimate> (getReachEstimate());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -90,14 +90,14 @@ TargetingTemplateAudienceSizing::toJson()
 	return ret;
 }
 
-TargetingTemplateAudienceSizing_reach_estimate
+TargetingTemplateAudienceSizingReachEstimate
 TargetingTemplateAudienceSizing::getReachEstimate()
 {
 	return reach_estimate;
 }
 
 void
-TargetingTemplateAudienceSizing::setReachEstimate(TargetingTemplateAudienceSizing_reach_estimate  reach_estimate)
+TargetingTemplateAudienceSizing::setReachEstimate(TargetingTemplateAudienceSizingReachEstimate  reach_estimate)
 {
 	this->reach_estimate = reach_estimate;
 }

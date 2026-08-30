@@ -3,19 +3,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BidOptions** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | 
 **Country** | [**Country**](Country.md) |  | 
 **ItemId** | **String** | The catalog retail item id in the merchant namespace | 
 **Language** | [**Language**](Language.md) |  | 
-**BidOptions** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AdvancedAuctionItem = Initialize-PSOpenAPIToolsAdvancedAuctionItem  -Country null `
+$AdvancedAuctionItem = Initialize-PSOpenAPIToolsAdvancedAuctionItem  -BidOptions null `
+ -Country null `
  -ItemId DS0294-M `
- -Language null `
- -BidOptions null
+ -Language null
 ```
 
 - Convert the resource to JSON

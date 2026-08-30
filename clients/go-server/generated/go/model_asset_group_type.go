@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ import (
 )
 
 
-// AssetGroupType : Asset group type
+// AssetGroupType : Asset group type.
 type AssetGroupType string
 
 // List of AssetGroupType
@@ -62,8 +62,8 @@ func NewAssetGroupTypeFromValue(v string) (AssetGroupType, error) {
 }
 
 
-
-// AssertAssetGroupTypeRequired checks if the required fields are not zero-ed
+// AssertAssetGroupTypeRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAssetGroupTypeRequired(obj AssetGroupType) error {
 	return nil
 }

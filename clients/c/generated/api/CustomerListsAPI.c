@@ -8,19 +8,19 @@
 #define MAX_BUFFER_LENGTH 4096
 #define MAX_NUMBER_LENGTH_LONG 21
 
-// Functions for enum ORDER for CustomerListsAPI_customerListsList
+// Functions for enum  for CustomerListsAPI_customerListsList
 
-static char* customerListsList_ORDER_ToString(pinterest_rest_api_customerListsList_order_e ORDER){
-    char *ORDERArray[] =  { "NULL", "ASCENDING", "DESCENDING" };
-    return ORDERArray[ORDER];
+static char* customerListsList__ToString(pinterest_rest_api_customerListsList_order_e ){
+    char *Array[] =  { "NULL", "ASCENDING", "DESCENDING" };
+    return Array[];
 }
 
-static pinterest_rest_api_customerListsList_order_e customerListsList_ORDER_FromString(char* ORDER){
+static pinterest_rest_api_customerListsList_order_e customerListsList__FromString(char* ){
     int stringToReturn = 0;
-    char *ORDERArray[] =  { "NULL", "ASCENDING", "DESCENDING" };
-    size_t sizeofArray = sizeof(ORDERArray) / sizeof(ORDERArray[0]);
+    char *Array[] =  { "NULL", "ASCENDING", "DESCENDING" };
+    size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
     while(stringToReturn < sizeofArray) {
-        if(strcmp(ORDER, ORDERArray[stringToReturn]) == 0) {
+        if(strcmp(, Array[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -29,32 +29,23 @@ static pinterest_rest_api_customerListsList_order_e customerListsList_ORDER_From
 }
 
 /*
-// Function customerListsList_ORDER_convertToJSON is not currently used,
+// Function customerListsList__convertToJSON is not currently used,
 // since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
 //
-static cJSON *customerListsList_ORDER_convertToJSON(pinterest_rest_api_customerListsList_order_e ORDER) {
+static cJSON *customerListsList__convertToJSON(pinterest_rest_api_customerListsList_order_e ) {
     cJSON *item = cJSON_CreateObject();
-    if(cJSON_AddStringToObject(item, "order", customerListsList_ORDER_ToString(ORDER)) == NULL) {
-        goto fail;
-    }
     return item;
     fail:
     cJSON_Delete(item);
     return NULL;
 }
 
-// Function customerListsList_ORDER_parseFromJSON is not currently used,
+// Function customerListsList__parseFromJSON is not currently used,
 // since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
 //
-static pinterest_rest_api_customerListsList_order_e customerListsList_ORDER_parseFromJSON(cJSON* ORDERJSON) {
-    pinterest_rest_api_customerListsList_order_e ORDERVariable = 0;
-    cJSON *ORDERVar = cJSON_GetObjectItemCaseSensitive(ORDERJSON, "order");
-    if(!cJSON_IsString(ORDERVar) || (ORDERVar->valuestring == NULL))
-    {
-        goto end;
-    }
-    ORDERVariable = customerListsList_ORDER_FromString(ORDERVar->valuestring);
-    return ORDERVariable;
+static pinterest_rest_api_customerListsList_order_e customerListsList__parseFromJSON(cJSON* JSON) {
+    pinterest_rest_api_customerListsList_order_e Variable = 0;
+    return Variable;
 end:
     return 0;
 }
@@ -63,10 +54,10 @@ end:
 
 // Create customer lists
 //
-// <p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the <a href=\"https://developer.pinterest.com/docs/api/v5/audiences-create\" target=\"blank\">create audience endpoint</a>.</p>
+// Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
 //
 customer_list_t*
-CustomerListsAPI_customerListsCreate(apiClient_t *apiClient, char *ad_account_id, customer_list_request_t *customer_list_request)
+CustomerListsAPI_customerListsCreate(apiClient_t *apiClient, char *ad_account_id, customer_list_create_t *customer_list_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -99,12 +90,12 @@ CustomerListsAPI_customerListsCreate(apiClient_t *apiClient, char *ad_account_id
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_customer_list_request = NULL;
-    if (customer_list_request != NULL)
+    cJSON *localVarSingleItemJSON_customer_list_create = NULL;
+    if (customer_list_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_customer_list_request = customer_list_request_convertToJSON(customer_list_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_customer_list_request);
+        localVarSingleItemJSON_customer_list_create = customer_list_create_convertToJSON(customer_list_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_customer_list_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -122,11 +113,35 @@ CustomerListsAPI_customerListsCreate(apiClient_t *apiClient, char *ad_account_id
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     customer_list_t *elementToReturn = NULL;
@@ -152,9 +167,9 @@ CustomerListsAPI_customerListsCreate(apiClient_t *apiClient, char *ad_account_id
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarSingleItemJSON_customer_list_request) {
-        cJSON_Delete(localVarSingleItemJSON_customer_list_request);
-        localVarSingleItemJSON_customer_list_request = NULL;
+    if (localVarSingleItemJSON_customer_list_create) {
+        cJSON_Delete(localVarSingleItemJSON_customer_list_create);
+        localVarSingleItemJSON_customer_list_create = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -226,11 +241,31 @@ CustomerListsAPI_customerListsGet(apiClient_t *apiClient, char *ad_account_id, c
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     customer_list_t *elementToReturn = NULL;
@@ -266,10 +301,10 @@ end:
 
 // Get customer lists
 //
-// <p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+// Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 //
 customer_lists_list_200_response_t*
-CustomerListsAPI_customerListsList(apiClient_t *apiClient, char *ad_account_id, int *page_size, pinterest_rest_api_customerListsList_order_e order, char *bookmark)
+CustomerListsAPI_customerListsList(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_lib_pagination_order_e order, int *exclude_nca)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -302,6 +337,18 @@ CustomerListsAPI_customerListsList(apiClient_t *apiClient, char *ad_account_id, 
 
 
     // query parameters
+    char *keyQuery_bookmark = NULL;
+    char * valueQuery_bookmark = NULL;
+    keyValuePair_t *keyPairQuery_bookmark = 0;
+    if (bookmark)
+    {
+        keyQuery_bookmark = strdup("bookmark");
+        valueQuery_bookmark = strdup((bookmark));
+        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
+        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
+    }
+
+    // query parameters
     char *keyQuery_page_size = NULL;
     char * valueQuery_page_size = NULL;
     keyValuePair_t *keyPairQuery_page_size = 0;
@@ -316,27 +363,28 @@ CustomerListsAPI_customerListsList(apiClient_t *apiClient, char *ad_account_id, 
 
     // query parameters
     char *keyQuery_order = NULL;
-    pinterest_rest_api_customerListsList_order_e valueQuery_order ;
+    pinterest_lib_pagination_order_e valueQuery_order ;
     keyValuePair_t *keyPairQuery_order = 0;
     if (order)
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(customerListsList_ORDER_ToString(
-        valueQuery_order)));
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(customerListsList__ToString(
+        &valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
     }
 
     // query parameters
-    char *keyQuery_bookmark = NULL;
-    char * valueQuery_bookmark = NULL;
-    keyValuePair_t *keyPairQuery_bookmark = 0;
-    if (bookmark)
+    char *keyQuery_exclude_nca = NULL;
+    char * valueQuery_exclude_nca = NULL;
+    keyValuePair_t *keyPairQuery_exclude_nca = 0;
+    if (exclude_nca)
     {
-        keyQuery_bookmark = strdup("bookmark");
-        valueQuery_bookmark = strdup((bookmark));
-        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
-        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
+        keyQuery_exclude_nca = strdup("exclude_nca");
+        valueQuery_exclude_nca = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_exclude_nca, MAX_NUMBER_LENGTH, "%d", *exclude_nca);
+        keyPairQuery_exclude_nca = keyValuePair_create(keyQuery_exclude_nca, valueQuery_exclude_nca);
+        list_addElement(localVarQueryParameters,keyPairQuery_exclude_nca);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
@@ -352,11 +400,31 @@ CustomerListsAPI_customerListsList(apiClient_t *apiClient, char *ad_account_id, 
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     customer_lists_list_200_response_t *elementToReturn = NULL;
@@ -382,6 +450,18 @@ CustomerListsAPI_customerListsList(apiClient_t *apiClient, char *ad_account_id, 
     
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
+    if(keyQuery_bookmark){
+        free(keyQuery_bookmark);
+        keyQuery_bookmark = NULL;
+    }
+    if(valueQuery_bookmark){
+        free(valueQuery_bookmark);
+        valueQuery_bookmark = NULL;
+    }
+    if(keyPairQuery_bookmark){
+        keyValuePair_free(keyPairQuery_bookmark);
+        keyPairQuery_bookmark = NULL;
+    }
     if(keyQuery_page_size){
         free(keyQuery_page_size);
         keyQuery_page_size = NULL;
@@ -402,17 +482,17 @@ CustomerListsAPI_customerListsList(apiClient_t *apiClient, char *ad_account_id, 
         keyValuePair_free(keyPairQuery_order);
         keyPairQuery_order = NULL;
     }
-    if(keyQuery_bookmark){
-        free(keyQuery_bookmark);
-        keyQuery_bookmark = NULL;
+    if(keyQuery_exclude_nca){
+        free(keyQuery_exclude_nca);
+        keyQuery_exclude_nca = NULL;
     }
-    if(valueQuery_bookmark){
-        free(valueQuery_bookmark);
-        valueQuery_bookmark = NULL;
+    if(valueQuery_exclude_nca){
+        free(valueQuery_exclude_nca);
+        valueQuery_exclude_nca = NULL;
     }
-    if(keyPairQuery_bookmark){
-        keyValuePair_free(keyPairQuery_bookmark);
-        keyPairQuery_bookmark = NULL;
+    if(keyPairQuery_exclude_nca){
+        keyValuePair_free(keyPairQuery_exclude_nca);
+        keyPairQuery_exclude_nca = NULL;
     }
     return elementToReturn;
 end:
@@ -423,10 +503,10 @@ end:
 
 // Update customer list
 //
-// <p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+// Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \"CUSTOMER_LIST\" audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 //
 customer_list_t*
-CustomerListsAPI_customerListsUpdate(apiClient_t *apiClient, char *ad_account_id, char *customer_list_id, customer_list_update_request_t *customer_list_update_request)
+CustomerListsAPI_customerListsUpdate(apiClient_t *apiClient, char *ad_account_id, char *customer_list_id, customer_list_update_with_required_body_t *customer_list_update_with_required_body)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -471,12 +551,12 @@ CustomerListsAPI_customerListsUpdate(apiClient_t *apiClient, char *ad_account_id
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_customer_list_update_request = NULL;
-    if (customer_list_update_request != NULL)
+    cJSON *localVarSingleItemJSON_customer_list_update_with_required_body = NULL;
+    if (customer_list_update_with_required_body != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_customer_list_update_request = customer_list_update_request_convertToJSON(customer_list_update_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_customer_list_update_request);
+        localVarSingleItemJSON_customer_list_update_with_required_body = customer_list_update_with_required_body_convertToJSON(customer_list_update_with_required_body);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_customer_list_update_with_required_body);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -494,11 +574,31 @@ CustomerListsAPI_customerListsUpdate(apiClient_t *apiClient, char *ad_account_id
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     customer_list_t *elementToReturn = NULL;
@@ -525,9 +625,9 @@ CustomerListsAPI_customerListsUpdate(apiClient_t *apiClient, char *ad_account_id
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
     free(localVarToReplace_customer_list_id);
-    if (localVarSingleItemJSON_customer_list_update_request) {
-        cJSON_Delete(localVarSingleItemJSON_customer_list_update_request);
-        localVarSingleItemJSON_customer_list_update_request = NULL;
+    if (localVarSingleItemJSON_customer_list_update_with_required_body) {
+        cJSON_Delete(localVarSingleItemJSON_customer_list_update_with_required_body);
+        localVarSingleItemJSON_customer_list_update_with_required_body = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;

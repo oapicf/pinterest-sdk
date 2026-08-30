@@ -12,7 +12,6 @@ API.Client.GetBusinessEmployers200Response = function() {}
 API.Client.GetBusinessEmployers200Response.prototype.bookmark;
 
 /**
- * List of employers.
  * @type {!Array<!API.Client.UserBusinessRoleBinding>}
  * @export
  */

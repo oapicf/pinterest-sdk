@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.RelatedTermsRelatedTermsListInner;
+import org.openapitools.model.RelatedTermsRelatedTermsListItems;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -35,7 +35,7 @@ public class RelatedTerms  {
 
   @Valid
 
-  private List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>();
+  private List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList = new ArrayList<>();
  /**
    * First input term. For example, if you pass \&quot;?terms&#x3D;clothes,workout\&quot;, then id will be \&quot;clothes\&quot;
    * @return id
@@ -77,20 +77,20 @@ public class RelatedTerms  {
    * @return relatedTermsList
   **/
   @JsonProperty("related_terms_list")
-  public List<@Valid RelatedTermsRelatedTermsListInner> getRelatedTermsList() {
+  public List<@Valid RelatedTermsRelatedTermsListItems> getRelatedTermsList() {
     return relatedTermsList;
   }
 
-  public void setRelatedTermsList(List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList) {
+  public void setRelatedTermsList(List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList) {
     this.relatedTermsList = relatedTermsList;
   }
 
-  public RelatedTerms relatedTermsList(List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList) {
+  public RelatedTerms relatedTermsList(List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList) {
     this.relatedTermsList = relatedTermsList;
     return this;
   }
 
-  public RelatedTerms addRelatedTermsListItem(RelatedTermsRelatedTermsListInner relatedTermsListItem) {
+  public RelatedTerms addRelatedTermsListItem(RelatedTermsRelatedTermsListItems relatedTermsListItem) {
     this.relatedTermsList.add(relatedTermsListItem);
     return this;
   }
@@ -131,10 +131,7 @@ public class RelatedTerms  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

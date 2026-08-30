@@ -34,6 +34,8 @@ disclosureType: Option[DisclosureType],
 gridClickType: Option[GridClickType],
 /* Deep link URL for iOS devices. */
   iosDeepLink: Option[String],
+/* Is the ad a carting/WTB ad? */
+  isCarting: Option[Boolean],
 /* Is original pin deleted? */
   isPinDeleted: Option[Boolean],
 /* Is pin repinnable? */
@@ -42,14 +44,14 @@ gridClickType: Option[GridClickType],
   leadFormId: Option[String],
 /* Name of the ad - 255 chars max. */
   name: Option[String],
-/* Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. */
-  quizPinData: Option[QuizPinData],
-status: Option[EntityStatus],
-trackingUrls: Option[TrackingUrls],
-/* Tracking URL for ad impressions. */
-  viewTrackingUrl: Option[String],
 /* Pin ID. */
-  pinId: String)
+  pinId: String,
+/* Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. */
+  quizPinData: Option[Any],
+status: Option[EntityStatus],
+trackingUrls: Option[Any],
+/* Tracking URL for ad impressions. */
+  viewTrackingUrl: Option[String])
 
 object AdCreateRequest {
   import DateTimeCodecs._

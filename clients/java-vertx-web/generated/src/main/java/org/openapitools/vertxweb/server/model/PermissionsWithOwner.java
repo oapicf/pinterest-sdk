@@ -2,11 +2,14 @@ package org.openapitools.vertxweb.server.model;
 
 import java.util.Objects;
 
+/**
+ * Permission levels including the OWNER role.
+ **/
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets PermissionsWithOwner
+ * Permission levels including the OWNER role.
  */
 public enum PermissionsWithOwner {
   

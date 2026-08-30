@@ -21,7 +21,7 @@ typedef struct audience_demographic_value_t audience_demographic_value_t;
 typedef struct audience_demographic_value_t {
     char *key; // string
     char *name; // string
-    double ratio; //numeric
+    double *ratio; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } audience_demographic_value_t;
@@ -29,7 +29,7 @@ typedef struct audience_demographic_value_t {
 __attribute__((deprecated)) audience_demographic_value_t *audience_demographic_value_create(
     char *key,
     char *name,
-    double ratio
+    double *ratio
 );
 
 void audience_demographic_value_free(audience_demographic_value_t *audience_demographic_value);

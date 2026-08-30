@@ -7,7 +7,7 @@
 
 static product_category_details_t *product_category_details_create_internal(
     product_categories_demographic_t *demographics,
-    int has_prediction,
+    int *has_prediction,
     product_categories_metrics_highlights_t *metrics_highlights,
     list_t* predicted_time_series,
     pinterest_rest_api_product_category_enum__e product_category,
@@ -18,6 +18,8 @@ static product_category_details_t *product_category_details_create_internal(
     if (!product_category_details_local_var) {
         return NULL;
     }
+    memset(product_category_details_local_var, 0, sizeof(product_category_details_t));
+    product_category_details_local_var->_library_owned = 1;
     product_category_details_local_var->demographics = demographics;
     product_category_details_local_var->has_prediction = has_prediction;
     product_category_details_local_var->metrics_highlights = metrics_highlights;
@@ -25,29 +27,36 @@ static product_category_details_t *product_category_details_create_internal(
     product_category_details_local_var->product_category = product_category;
     product_category_details_local_var->related_searches = related_searches;
     product_category_details_local_var->time_series = time_series;
-
-    product_category_details_local_var->_library_owned = 1;
     return product_category_details_local_var;
 }
 
 __attribute__((deprecated)) product_category_details_t *product_category_details_create(
     product_categories_demographic_t *demographics,
-    int has_prediction,
+    int *has_prediction,
     product_categories_metrics_highlights_t *metrics_highlights,
     list_t* predicted_time_series,
     pinterest_rest_api_product_category_enum__e product_category,
     list_t *related_searches,
     list_t* time_series
     ) {
-    return product_category_details_create_internal (
+    int *has_prediction_copy = NULL;
+    if (has_prediction) {
+        has_prediction_copy = malloc(sizeof(int));
+        if (has_prediction_copy) *has_prediction_copy = *has_prediction;
+    }
+    product_category_details_t *result = product_category_details_create_internal (
         demographics,
-        has_prediction,
+        has_prediction_copy,
         metrics_highlights,
         predicted_time_series,
         product_category,
         related_searches,
         time_series
         );
+    if (!result) {
+        free(has_prediction_copy);
+    }
+    return result;
 }
 
 void product_category_details_free(product_category_details_t *product_category_details) {
@@ -62,6 +71,10 @@ void product_category_details_free(product_category_details_t *product_category_
     if (product_category_details->demographics) {
         product_categories_demographic_free(product_category_details->demographics);
         product_category_details->demographics = NULL;
+    }
+    if (product_category_details->has_prediction) {
+        free(product_category_details->has_prediction);
+        product_category_details->has_prediction = NULL;
     }
     if (product_category_details->metrics_highlights) {
         product_categories_metrics_highlights_free(product_category_details->metrics_highlights);
@@ -117,7 +130,7 @@ cJSON *product_category_details_convertToJSON(product_category_details_t *produc
     if (!product_category_details->has_prediction) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "has_prediction", product_category_details->has_prediction) == NULL) {
+    if(cJSON_AddBoolToObject(item, "has_prediction", *product_category_details->has_prediction) == NULL) {
     goto fail; //Bool
     }
 
@@ -220,6 +233,9 @@ product_category_details_t *product_category_details_parseFromJSON(cJSON *produc
     // define the local variable for product_category_details->demographics
     product_categories_demographic_t *demographics_local_nonprim = NULL;
 
+    // define the local variable for product_category_details->has_prediction
+    int *has_prediction_local_var = NULL;
+
     // define the local variable for product_category_details->metrics_highlights
     product_categories_metrics_highlights_t *metrics_highlights_local_nonprim = NULL;
 
@@ -258,6 +274,12 @@ product_category_details_t *product_category_details_parseFromJSON(cJSON *produc
     {
     goto end; //Bool
     }
+    has_prediction_local_var = malloc(sizeof(int));
+    if(!has_prediction_local_var)
+    {
+        goto end;
+    }
+    *has_prediction_local_var = has_prediction->valueint;
 
     // product_category_details->metrics_highlights
     cJSON *metrics_highlights = cJSON_GetObjectItemCaseSensitive(product_category_detailsJSON, "metrics_highlights");
@@ -359,9 +381,10 @@ product_category_details_t *product_category_details_parseFromJSON(cJSON *produc
     }
 
 
+
     product_category_details_local_var = product_category_details_create_internal (
         demographics ? demographics_local_nonprim : NULL,
-        has_prediction->valueint,
+        has_prediction_local_var,
         metrics_highlights ? metrics_highlights_local_nonprim : NULL,
         predicted_time_series ? predicted_time_seriesList : NULL,
         product_category_local_nonprim,
@@ -369,11 +392,19 @@ product_category_details_t *product_category_details_parseFromJSON(cJSON *produc
         time_series ? time_seriesList : NULL
         );
 
+    if (!product_category_details_local_var) {
+        goto end;
+    }
+
     return product_category_details_local_var;
 end:
     if (demographics_local_nonprim) {
         product_categories_demographic_free(demographics_local_nonprim);
         demographics_local_nonprim = NULL;
+    }
+    if (has_prediction_local_var) {
+        free(has_prediction_local_var);
+        has_prediction_local_var = NULL;
     }
     if (metrics_highlights_local_nonprim) {
         product_categories_metrics_highlights_free(metrics_highlights_local_nonprim);

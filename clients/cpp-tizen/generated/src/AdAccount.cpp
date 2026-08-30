@@ -30,6 +30,7 @@ AdAccount::__init()
 	//name = std::string();
 	//owner = null;
 	//new std::list()std::list> permissions;
+	//time_zone = std::string();
 	//updated_time = int(0);
 }
 
@@ -70,6 +71,11 @@ AdAccount::__cleanup()
 	//permissions.RemoveAll(true);
 	//delete permissions;
 	//permissions = NULL;
+	//}
+	//if(time_zone != NULL) {
+	//
+	//delete time_zone;
+	//time_zone = NULL;
 	//}
 	//if(updated_time != NULL) {
 	//
@@ -182,6 +188,17 @@ AdAccount::fromJson(char* jsonStr)
 			permissions = new_list;
 		}
 		
+	}
+	const gchar *time_zoneKey = "time_zone";
+	node = json_object_get_member(pJsonObject, time_zoneKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&time_zone, node, "std::string", "");
+		} else {
+			
+		}
 	}
 	const gchar *updated_timeKey = "updated_time";
 	node = json_object_get_member(pJsonObject, updated_timeKey);
@@ -300,6 +317,15 @@ AdAccount::toJson()
 	
 	const gchar *permissionsKey = "permissions";
 	json_object_set_member(pJsonObject, permissionsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getTimeZone();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *time_zoneKey = "time_zone";
+	json_object_set_member(pJsonObject, time_zoneKey, node);
 	if (isprimitive("int")) {
 		int obj = getUpdatedTime();
 		node = converttoJson(&obj, "int", "");
@@ -399,6 +425,18 @@ void
 AdAccount::setPermissions(std::list <BusinessAccessRole> permissions)
 {
 	this->permissions = permissions;
+}
+
+std::string
+AdAccount::getTimeZone()
+{
+	return time_zone;
+}
+
+void
+AdAccount::setTimeZone(std::string  time_zone)
+{
+	this->time_zone = time_zone;
 }
 
 int

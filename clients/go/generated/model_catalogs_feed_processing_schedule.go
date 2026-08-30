@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,7 +25,7 @@ type CatalogsFeedProcessingSchedule struct {
 	// A time in format HH:MM with leading 0 (zero)
 	Time string `json:"time" validate:"regexp=^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"`
 	// The timezone considered for the processing schedule time.
-	Timezone NullableString `json:"timezone"`
+	Timezone NullableCatalogsFeedProcessingScheduleTimezone `json:"timezone"`
 }
 
 type _CatalogsFeedProcessingSchedule CatalogsFeedProcessingSchedule
@@ -34,7 +34,7 @@ type _CatalogsFeedProcessingSchedule CatalogsFeedProcessingSchedule
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsFeedProcessingSchedule(time string, timezone NullableString) *CatalogsFeedProcessingSchedule {
+func NewCatalogsFeedProcessingSchedule(time string, timezone NullableCatalogsFeedProcessingScheduleTimezone) *CatalogsFeedProcessingSchedule {
 	this := CatalogsFeedProcessingSchedule{}
 	this.Time = time
 	this.Timezone = timezone
@@ -74,10 +74,10 @@ func (o *CatalogsFeedProcessingSchedule) SetTime(v string) {
 }
 
 // GetTimezone returns the Timezone field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *CatalogsFeedProcessingSchedule) GetTimezone() string {
+// If the value is explicit nil, the zero value for CatalogsFeedProcessingScheduleTimezone will be returned
+func (o *CatalogsFeedProcessingSchedule) GetTimezone() CatalogsFeedProcessingScheduleTimezone {
 	if o == nil || o.Timezone.Get() == nil {
-		var ret string
+		var ret CatalogsFeedProcessingScheduleTimezone
 		return ret
 	}
 
@@ -87,7 +87,7 @@ func (o *CatalogsFeedProcessingSchedule) GetTimezone() string {
 // GetTimezoneOk returns a tuple with the Timezone field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsFeedProcessingSchedule) GetTimezoneOk() (*string, bool) {
+func (o *CatalogsFeedProcessingSchedule) GetTimezoneOk() (*CatalogsFeedProcessingScheduleTimezone, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -95,7 +95,7 @@ func (o *CatalogsFeedProcessingSchedule) GetTimezoneOk() (*string, bool) {
 }
 
 // SetTimezone sets field value
-func (o *CatalogsFeedProcessingSchedule) SetTimezone(v string) {
+func (o *CatalogsFeedProcessingSchedule) SetTimezone(v CatalogsFeedProcessingScheduleTimezone) {
 	o.Timezone.Set(&v)
 }
 

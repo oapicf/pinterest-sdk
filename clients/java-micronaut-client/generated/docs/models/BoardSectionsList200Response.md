@@ -9,7 +9,7 @@ The class is defined in **[BoardSectionsList200Response.java](../../src/main/jav
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;BoardSection&gt;`](BoardSection.md) | Board sections | 
+**items** | [`List&lt;BoardSection&gt;`](BoardSection.md) |  | 
 
 
 

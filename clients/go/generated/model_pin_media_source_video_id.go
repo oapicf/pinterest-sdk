@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -32,7 +32,7 @@ type PinMediaSourceVideoID struct {
 	CoverImageUrl *string `json:"cover_image_url,omitempty"`
 	// Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
 	IsStandard *bool `json:"is_standard,omitempty"`
-	MediaId string `json:"media_id" validate:"regexp=^\\\\d+$"`
+	MediaId string `json:"media_id" validate:"regexp=^\\d+$"`
 	SourceType string `json:"source_type"`
 }
 

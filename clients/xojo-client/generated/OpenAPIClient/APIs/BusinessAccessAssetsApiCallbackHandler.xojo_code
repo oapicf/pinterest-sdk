@@ -1,19 +1,19 @@
 #tag Interface
 Protected Interface BusinessAccessAssetsApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub AssetGroupCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CreateAssetGroupResponse)
+		Sub AssetGroupCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AssetGroupInput)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AssetGroupDeleteCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.DeleteAssetGroupResponse)
+		Sub AssetGroupDeleteCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AssetGroupDeletion)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AssetGroupUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.UpdateAssetGroupResponse)
+		Sub AssetGroupUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AssetGroupModification)
 		  
 		End Sub
 	#tag EndMethod
@@ -25,7 +25,7 @@ Protected Interface BusinessAccessAssetsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub BusinessAssetPartnersGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BusinessAssetPartnersGet200Response)
+		Sub BusinessAssetPartnersGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BusinessAssetMembersGet200Response)
 		  
 		End Sub
 	#tag EndMethod
@@ -37,7 +37,7 @@ Protected Interface BusinessAccessAssetsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub BusinessMemberAssetsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BusinessMemberAssetsGet200Response)
+		Sub BusinessMemberAssetsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BusinessMemberAssetsGetResponse)
 		  
 		End Sub
 	#tag EndMethod
@@ -61,7 +61,7 @@ Protected Interface BusinessAccessAssetsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub DeletePartnerAssetAccessHandlerImplCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.DeletePartnerAssetsResultsResponseArray)
+		Sub DeletePartnerAssetAccessHandlerImplCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.DeletePartnerAssetAccessResultsResponseArray)
 		  
 		End Sub
 	#tag EndMethod

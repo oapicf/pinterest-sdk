@@ -8,7 +8,7 @@
       "name": "items",
       "type": ["null", {
         "type": "array",
-        "items": "model.UpdateMemberAssetsResultsResponseArrayItemsInner"
+        "items": "model.UpdateMemberAssetResultItem"
       }],
       "doc": "List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.",
       "default": null

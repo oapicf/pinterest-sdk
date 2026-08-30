@@ -1,9 +1,9 @@
 package controllers;
 
-import apimodels.ConversionApiResponse;
 import apimodels.ConversionEvents;
+import apimodels.ConversionEventsCreate;
 import apimodels.DetailedError;
-import apimodels.Error;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -30,12 +30,12 @@ public abstract class ConversionEventsApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result eventsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionEvents conversionEvents, Boolean test) throws Exception {
+    public Result eventsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionEventsCreate conversionEventsCreate, Boolean test) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        ConversionApiResponse obj = eventsCreate(request, adAccountId, conversionEvents, test);
+        ConversionEvents obj = eventsCreate(request, adAccountId, conversionEventsCreate, test);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -47,6 +47,6 @@ public abstract class ConversionEventsApiControllerImpInterface {
 
     }
 
-    public abstract ConversionApiResponse eventsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionEvents conversionEvents, Boolean test) throws Exception;
+    public abstract ConversionEvents eventsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionEventsCreate conversionEventsCreate, Boolean test) throws Exception;
 
 }

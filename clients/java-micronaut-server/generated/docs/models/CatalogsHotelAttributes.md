@@ -8,7 +8,7 @@ The class is defined in **[CatalogsHotelAttributes.java](../../src/main/java/org
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [`CatalogsHotelAddress`](CatalogsHotelAddress.md) |  |  [optional property]
+**address** | [`CatalogsHotelAddress`](CatalogsHotelAddress.md) | Hotel address |  [optional property]
 **basePrice** | `String` | Base price of the hotel room per night followed by the ISO currency code |  [optional property]
 **brand** | `String` | The brand to which this hotel belongs to. |  [optional property]
 **category** | `String` | The type of property. The category can be any type of internal description desired. |  [optional property]
@@ -18,15 +18,17 @@ Name | Type | Description | Notes
 **customLabel3** | `String` | Custom grouping of hotels |  [optional property]
 **customLabel4** | `String` | Custom grouping of hotels |  [optional property]
 **description** | `String` | Brief description of the hotel. |  [optional property]
-**guestRatings** | [`CatalogsHotelGuestRatings`](CatalogsHotelGuestRatings.md) |  |  [optional property]
+**guestRatings** | [`CatalogsHotelGuestRatings`](CatalogsHotelGuestRatings.md) | If specified, you must provide all properties |  [optional property]
 **latitude** | `BigDecimal` | Latitude of the hotel. |  [optional property]
 **link** | `String` | Link to the product page |  [optional property]
 **longitude** | `BigDecimal` | Longitude of the hotel. |  [optional property]
 **name** | `String` | The hotel&#39;s name. |  [optional property]
 **neighborhood** | `List&lt;String&gt;` | A list of neighborhoods where the hotel is located |  [optional property]
 **salePrice** | `String` | Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. |  [optional property]
-**additionalImageLink** | `List&lt;String&gt;` | &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.&lt;/p&gt; |  [optional property]
-**mainImage** | [`CatalogsHotelAttributesAllOfMainImage`](CatalogsHotelAttributesAllOfMainImage.md) |  |  [optional property]
+**additionalImageLink** | `List&lt;String&gt;` | &lt;&#x3D; 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://. |  [optional property]
+**aiDisclosures** | [`List&lt;CatalogsAiContentDisclosure&gt;`](CatalogsAiContentDisclosure.md) | AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL. |  [optional property]
+**mainImage** | [`CatalogsHotelMainImage`](CatalogsHotelMainImage.md) | The main hotel image |  [optional property]
+
 
 
 

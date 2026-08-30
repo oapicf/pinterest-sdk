@@ -14,8 +14,10 @@
     clippy::too_many_arguments
 )]
 
+extern crate futures_util;
+
 pub const BASE_PATH: &str = "/v5";
-pub const API_VERSION: &str = "5.23.0";
+pub const API_VERSION: &str = "5.28.0";
 
 #[cfg(feature = "server")]
 pub mod server;

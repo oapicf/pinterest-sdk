@@ -4,14 +4,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **additionalUnderscoreidUnderscore1** | **string** |  | [optional] [default to null]
-**connectedUnderscoreadvertiserUnderscoreid** | **string** |  | [optional] [readonly] [default to null]
+**connectedUnderscoreadvertiserUnderscoreid** | **string** |  | [optional] [default to null]
 **connectedUnderscorelbaUnderscoreid** | **string** |  | [optional] [default to null]
 **connectedUnderscoremerchantUnderscoreid** | **string** |  | [optional] [default to null]
 **connectedUnderscoretagUnderscoreid** | **string** |  | [optional] [default to null]
-**connectedUnderscoreuserUnderscoreid** | **string** |  | [optional] [readonly] [default to null]
+**connectedUnderscoreuserUnderscoreid** | **string** |  | [optional] [default to null]
 **createdUnderscoretime** | **integer** |  | [optional] [default to null]
 **externalUnderscorebusinessUnderscoreid** | **string** |  | [optional] [default to null]
-**id** | **string** |  | [optional] [default to null]
+**id** | **string** |  | [readonly] [default to null]
 **partnerUnderscoreaccessUnderscoretoken** | **string** |  | [optional] [default to null]
 **partnerUnderscoreaccessUnderscoretokenUnderscoreexpiry** | **integer** |  | [optional] [default to null]
 **partnerUnderscoremetadata** | **string** |  | [optional] [default to null]

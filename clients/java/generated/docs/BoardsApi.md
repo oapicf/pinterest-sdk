@@ -19,7 +19,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="boardSectionsCreate"></a>
 # **boardSectionsCreate**
-> BoardSection boardSectionsCreate(boardId, boardSection, adAccountId)
+> BoardSection boardSectionsCreate(boardId, boardSectionCreate, adAccountId)
 
 Create board section
 
@@ -46,10 +46,10 @@ public class Example {
 
     BoardsApi apiInstance = new BoardsApi(defaultClient);
     String boardId = "boardId_example"; // String | Unique identifier of a board.
-    BoardSection boardSection = new BoardSection(); // BoardSection | Create a board section.
+    BoardSectionCreate boardSectionCreate = new BoardSectionCreate(); // BoardSectionCreate | 
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
-      BoardSection result = apiInstance.boardSectionsCreate(boardId, boardSection, adAccountId);
+      BoardSection result = apiInstance.boardSectionsCreate(boardId, boardSectionCreate, adAccountId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BoardsApi#boardSectionsCreate");
@@ -67,7 +67,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **boardId** | **String**| Unique identifier of a board. | |
-| **boardSection** | [**BoardSection**](BoardSection.md)| Create a board section. | |
+| **boardSectionCreate** | [**BoardSectionCreate**](BoardSectionCreate.md)|  | |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -86,16 +86,18 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | response |  -  |
-| **400** | Invalid board section parameters. |  -  |
-| **403** | Not authorized to create board sections. |  -  |
-| **409** | Could not get exclusive access to the board to create a new section. |  -  |
-| **500** | Could not create a new board section. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="boardSectionsDelete"></a>
 # **boardSectionsDelete**
-> boardSectionsDelete(boardId, sectionId, adAccountId)
+> BoardSection boardSectionsDelete(boardId, sectionId, adAccountId)
 
 Delete board section
 
@@ -125,7 +127,8 @@ public class Example {
     String sectionId = "sectionId_example"; // String | Unique identifier of a board section.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
-      apiInstance.boardSectionsDelete(boardId, sectionId, adAccountId);
+      BoardSection result = apiInstance.boardSectionsDelete(boardId, sectionId, adAccountId);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BoardsApi#boardSectionsDelete");
       System.err.println("Status code: " + e.getCode());
@@ -147,7 +150,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**BoardSection**](BoardSection.md)
 
 ### Authorization
 
@@ -161,11 +164,14 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Board section deleted successfully |  -  |
-| **403** | Not authorized to delete board section. |  -  |
-| **404** | Board section not found. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="boardSectionsList"></a>
 # **boardSectionsList**
@@ -202,7 +208,7 @@ public class Example {
     String boardId = "boardId_example"; // String | Unique identifier of a board.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
       BoardSectionsList200Response result = apiInstance.boardSectionsList(boardId, adAccountId, bookmark, pageSize);
       System.out.println(result);
@@ -224,7 +230,7 @@ public class Example {
 | **boardId** | **String**| Unique identifier of a board. | |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -242,8 +248,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="boardSectionsListPins"></a>
 # **boardSectionsListPins**
@@ -281,7 +292,7 @@ public class Example {
     String sectionId = "sectionId_example"; // String | Unique identifier of a board section.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
       BoardsListPins200Response result = apiInstance.boardSectionsListPins(boardId, sectionId, adAccountId, bookmark, pageSize);
       System.out.println(result);
@@ -304,7 +315,7 @@ public class Example {
 | **sectionId** | **String**| Unique identifier of a board section. | |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -322,15 +333,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **403** | Not authorized to access Pins on board section. |  -  |
-| **404** | Board or section not found. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="boardSectionsUpdate"></a>
 # **boardSectionsUpdate**
-> BoardSection boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId)
+> BoardSection boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId)
 
 Update board section
 
@@ -358,10 +371,10 @@ public class Example {
     BoardsApi apiInstance = new BoardsApi(defaultClient);
     String boardId = "boardId_example"; // String | Unique identifier of a board.
     String sectionId = "sectionId_example"; // String | Unique identifier of a board section.
-    BoardSection boardSection = new BoardSection(); // BoardSection | Update a board section.
+    BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody = new BoardSectionUpdateWithRequiredBody(); // BoardSectionUpdateWithRequiredBody | 
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
-      BoardSection result = apiInstance.boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId);
+      BoardSection result = apiInstance.boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BoardsApi#boardSectionsUpdate");
@@ -380,7 +393,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **boardId** | **String**| Unique identifier of a board. | |
 | **sectionId** | **String**| Unique identifier of a board section. | |
-| **boardSection** | [**BoardSection**](BoardSection.md)| Update a board section. | |
+| **boardSectionUpdateWithRequiredBody** | [**BoardSectionUpdateWithRequiredBody**](BoardSectionUpdateWithRequiredBody.md)|  | |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -399,11 +412,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **400** | Invalid board section parameters. |  -  |
-| **403** | Not authorized to update board section. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="boardsCreate"></a>
 # **boardsCreate**
@@ -487,7 +502,7 @@ public class Example {
 
 <a id="boardsDelete"></a>
 # **boardsDelete**
-> boardsDelete(boardId, adAccountId)
+> Board boardsDelete(boardId, adAccountId)
 
 Delete board
 
@@ -516,7 +531,8 @@ public class Example {
     String boardId = "boardId_example"; // String | 
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
-      apiInstance.boardsDelete(boardId, adAccountId);
+      Board result = apiInstance.boardsDelete(boardId, adAccountId);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BoardsApi#boardsDelete");
       System.err.println("Status code: " + e.getCode());
@@ -537,7 +553,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**Board**](Board.md)
 
 ### Authorization
 
@@ -551,6 +567,7 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
 | **204** | Resource deleted successfully. |  -  |
 | **400** | The request could not be understood by the server due to unexpected data. |  -  |
 | **401** | Authentication is required and has either failed or not been provided. |  -  |
@@ -723,7 +740,7 @@ public class Example {
 
 <a id="boardsListPins"></a>
 # **boardsListPins**
-> BoardsListPins200Response boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics)
+> BoardsListPins200Response boardsListPins(boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize)
 
 List Pins on board
 
@@ -754,13 +771,13 @@ public class Example {
 
     BoardsApi apiInstance = new BoardsApi(defaultClient);
     String boardId = "boardId_example"; // String | Unique identifier of a board.
-    String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     List<CreativeType> creativeTypes = Arrays.asList(); // List<CreativeType> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     Boolean pinMetrics = false; // Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+    String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
-      BoardsListPins200Response result = apiInstance.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics);
+      BoardsListPins200Response result = apiInstance.boardsListPins(boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BoardsApi#boardsListPins");
@@ -778,11 +795,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **boardId** | **String**| Unique identifier of a board. | |
-| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **creativeTypes** | [**List&lt;CreativeType&gt;**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 | **pinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
+| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -800,9 +817,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **404** | Board not found. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="boardsUpdate"></a>
 # **boardsUpdate**

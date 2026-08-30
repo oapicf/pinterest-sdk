@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -29,11 +29,11 @@ type IntegrationLog struct {
 	ClientTimestamp int32 `json:"client_timestamp"`
 	Error *IntegrationLogClientError `json:"error,omitempty"`
 	// Log event type
-	EventType string `json:"event_type"`
+	EventType IntegrationLogEventType `json:"event_type"`
 	ExternalBusinessId NullableString `json:"external_business_id,omitempty"`
 	FeedProfileId NullableString `json:"feed_profile_id,omitempty"`
 	// Log level type
-	LogLevel string `json:"log_level"`
+	LogLevel IntegrationLogLevel `json:"log_level"`
 	MerchantId NullableString `json:"merchant_id,omitempty"`
 	// Explanation of the event that occured.
 	Message *string `json:"message,omitempty"`
@@ -49,7 +49,7 @@ type _IntegrationLog IntegrationLog
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIntegrationLog(clientTimestamp int32, eventType string, logLevel string) *IntegrationLog {
+func NewIntegrationLog(clientTimestamp int32, eventType IntegrationLogEventType, logLevel IntegrationLogLevel) *IntegrationLog {
 	this := IntegrationLog{}
 	this.ClientTimestamp = clientTimestamp
 	this.EventType = eventType
@@ -196,9 +196,9 @@ func (o *IntegrationLog) SetError(v IntegrationLogClientError) {
 }
 
 // GetEventType returns the EventType field value
-func (o *IntegrationLog) GetEventType() string {
+func (o *IntegrationLog) GetEventType() IntegrationLogEventType {
 	if o == nil {
-		var ret string
+		var ret IntegrationLogEventType
 		return ret
 	}
 
@@ -207,7 +207,7 @@ func (o *IntegrationLog) GetEventType() string {
 
 // GetEventTypeOk returns a tuple with the EventType field value
 // and a boolean to check if the value has been set.
-func (o *IntegrationLog) GetEventTypeOk() (*string, bool) {
+func (o *IntegrationLog) GetEventTypeOk() (*IntegrationLogEventType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -215,7 +215,7 @@ func (o *IntegrationLog) GetEventTypeOk() (*string, bool) {
 }
 
 // SetEventType sets field value
-func (o *IntegrationLog) SetEventType(v string) {
+func (o *IntegrationLog) SetEventType(v IntegrationLogEventType) {
 	o.EventType = v
 }
 
@@ -304,9 +304,9 @@ func (o *IntegrationLog) UnsetFeedProfileId() {
 }
 
 // GetLogLevel returns the LogLevel field value
-func (o *IntegrationLog) GetLogLevel() string {
+func (o *IntegrationLog) GetLogLevel() IntegrationLogLevel {
 	if o == nil {
-		var ret string
+		var ret IntegrationLogLevel
 		return ret
 	}
 
@@ -315,7 +315,7 @@ func (o *IntegrationLog) GetLogLevel() string {
 
 // GetLogLevelOk returns a tuple with the LogLevel field value
 // and a boolean to check if the value has been set.
-func (o *IntegrationLog) GetLogLevelOk() (*string, bool) {
+func (o *IntegrationLog) GetLogLevelOk() (*IntegrationLogLevel, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -323,7 +323,7 @@ func (o *IntegrationLog) GetLogLevelOk() (*string, bool) {
 }
 
 // SetLogLevel sets field value
-func (o *IntegrationLog) SetLogLevel(v string) {
+func (o *IntegrationLog) SetLogLevel(v IntegrationLogLevel) {
 	o.LogLevel = v
 }
 

@@ -10,9 +10,9 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |[**audiencesUpdate**](#audiencesupdate) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience|
 
 # **audiencesCreate**
-> Audience audiencesCreate(audienceCreateRequest)
+> AdAccountsAudience audiencesCreate(adAccountsAudienceCreate)
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+Create a new audience for the ad account.
 
 ### Example
 
@@ -20,18 +20,18 @@ Create an audience you can use in targeting for specific ad groups. Targeting co
 import {
     AudiencesApi,
     Configuration,
-    AudienceCreateRequest
+    AdAccountsAudienceCreate
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new AudiencesApi(configuration);
 
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let audienceCreateRequest: AudienceCreateRequest; //List of ads to create, size limit [1, 30]
+let adAccountsAudienceCreate: AdAccountsAudienceCreate; //
 
 const { status, data } = await apiInstance.audiencesCreate(
     adAccountId,
-    audienceCreateRequest
+    adAccountsAudienceCreate
 );
 ```
 
@@ -39,13 +39,13 @@ const { status, data } = await apiInstance.audiencesCreate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **audienceCreateRequest** | **AudienceCreateRequest**| List of ads to create, size limit [1, 30] | |
+| **adAccountsAudienceCreate** | **AdAccountsAudienceCreate**|  | |
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 
 
 ### Return type
 
-**Audience**
+**AdAccountsAudience**
 
 ### Authorization
 
@@ -60,13 +60,19 @@ const { status, data } = await apiInstance.audiencesCreate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**201** | Resource create operation completed successfully. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **audiencesGet**
-> Audience audiencesGet()
+> AdAccountsAudience audiencesGet()
 
 Get a specific audience given the audience ID.
 
@@ -81,12 +87,12 @@ import {
 const configuration = new Configuration();
 const apiInstance = new AudiencesApi(configuration);
 
+let audienceId: string; //Audience ID. (default to undefined)
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let audienceId: string; //Unique identifier of an audience (default to undefined)
 
 const { status, data } = await apiInstance.audiencesGet(
-    adAccountId,
-    audienceId
+    audienceId,
+    adAccountId
 );
 ```
 
@@ -94,13 +100,13 @@ const { status, data } = await apiInstance.audiencesGet(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
+| **audienceId** | [**string**] | Audience ID. | defaults to undefined|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
-| **audienceId** | [**string**] | Unique identifier of an audience | defaults to undefined|
 
 
 ### Return type
 
-**Audience**
+**AdAccountsAudience**
 
 ### Authorization
 
@@ -115,9 +121,13 @@ const { status, data } = await apiInstance.audiencesGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**404** | Audience not found. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -139,16 +149,18 @@ const apiInstance = new AudiencesApi(configuration);
 
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
-let order: 'ASCENDING' | 'DESCENDING'; //The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional) (default to undefined)
-let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
-let ownershipType: 'OWNED' | 'RECEIVED'; //Filter audiences by ownership type. (optional) (default to 'OWNED')
+let pageSize: number; //Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+let order: PinterestLibPaginationOrder; //The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional) (default to undefined)
+let ownershipType: AudienceOwnershipType; // (optional) (default to undefined)
+let excludeNca: boolean; //When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). (optional) (default to false)
 
 const { status, data } = await apiInstance.audiencesList(
     adAccountId,
     bookmark,
-    order,
     pageSize,
-    ownershipType
+    order,
+    ownershipType,
+    excludeNca
 );
 ```
 
@@ -158,9 +170,10 @@ const { status, data } = await apiInstance.audiencesList(
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
-| **order** | [**&#39;ASCENDING&#39; | &#39;DESCENDING&#39;**]**Array<&#39;ASCENDING&#39; &#124; &#39;DESCENDING&#39;>** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | (optional) defaults to undefined|
-| **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
-| **ownershipType** | [**&#39;OWNED&#39; | &#39;RECEIVED&#39;**]**Array<&#39;OWNED&#39; &#124; &#39;RECEIVED&#39;>** | Filter audiences by ownership type. | (optional) defaults to 'OWNED'|
+| **pageSize** | [**number**] | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | (optional) defaults to 25|
+| **order** | **PinterestLibPaginationOrder** | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | (optional) defaults to undefined|
+| **ownershipType** | **AudienceOwnershipType** |  | (optional) defaults to undefined|
+| **excludeNca** | [**boolean**] | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | (optional) defaults to false|
 
 
 ### Return type
@@ -180,16 +193,20 @@ const { status, data } = await apiInstance.audiencesList(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**400** | Invalid ad account audience parameters. |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **audiencesUpdate**
-> Audience audiencesUpdate(audienceUpdateRequest)
+> AdAccountsAudience audiencesUpdate(adAccountsAudienceUpdate)
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 ### Example
 
@@ -197,20 +214,20 @@ Update (edit or remove) an existing targeting audience.
 import {
     AudiencesApi,
     Configuration,
-    AudienceUpdateRequest
+    AdAccountsAudienceUpdate
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new AudiencesApi(configuration);
 
+let audienceId: string; //Audience ID. (default to undefined)
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let audienceId: string; //Unique identifier of an audience (default to undefined)
-let audienceUpdateRequest: AudienceUpdateRequest; //The audience to be updated.
+let adAccountsAudienceUpdate: AdAccountsAudienceUpdate; //
 
 const { status, data } = await apiInstance.audiencesUpdate(
-    adAccountId,
     audienceId,
-    audienceUpdateRequest
+    adAccountId,
+    adAccountsAudienceUpdate
 );
 ```
 
@@ -218,14 +235,14 @@ const { status, data } = await apiInstance.audiencesUpdate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **audienceUpdateRequest** | **AudienceUpdateRequest**| The audience to be updated. | |
+| **adAccountsAudienceUpdate** | **AdAccountsAudienceUpdate**|  | |
+| **audienceId** | [**string**] | Audience ID. | defaults to undefined|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
-| **audienceId** | [**string**] | Unique identifier of an audience | defaults to undefined|
 
 
 ### Return type
 
-**Audience**
+**AdAccountsAudience**
 
 ### Authorization
 
@@ -240,8 +257,13 @@ const { status, data } = await apiInstance.audiencesUpdate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

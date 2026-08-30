@@ -7,7 +7,6 @@ open OpenAPI.Model.BrandFilter
 open OpenAPI.Model.CatalogsProductGroupFilterOperatorTypeCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleCountriesCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleStringCriteria
-open OpenAPI.Model.CatalogsProductGroupPricingCurrencyCriteria
 open OpenAPI.Model.CountryFilter
 open OpenAPI.Model.CustomLabel0Filter
 open OpenAPI.Model.CustomLabel1Filter
@@ -16,6 +15,7 @@ open OpenAPI.Model.CustomLabel3Filter
 open OpenAPI.Model.CustomLabel4Filter
 open OpenAPI.Model.HotelIdFilter
 open OpenAPI.Model.PriceFilter
+open OpenAPI.Model.PriceFilterPrice
 open OpenAPI.Model.TitleKeywordsFilter
 
 module CatalogsHotelProductGroupFilterKeys =
@@ -25,7 +25,7 @@ module CatalogsHotelProductGroupFilterKeys =
   [<CLIMutable>]
   type CatalogsHotelProductGroupFilterKeys = {
     [<JsonProperty(PropertyName = "PRICE")>]
-    PRICE : CatalogsProductGroupPricingCurrencyCriteria;
+    PRICE : PriceFilterPrice;
     [<JsonProperty(PropertyName = "HOTEL_ID")>]
     HOTEL_ID : CatalogsProductGroupMultipleStringCriteria;
     [<JsonProperty(PropertyName = "BRAND")>]

@@ -10,22 +10,21 @@ The class is defined in **[CampaignBidOptionsUpdate.java](../../src/main/java/or
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**appTypeMultipliers** | `AppTypeMultipliers` |  |  [optional property]
-**audienceMultipliers** | `CampaignAudienceMultipliers` |  |  [optional property]
-**placementMultipliers** | `PlacementMultipliers` |  |  [optional property]
-**updateMask** | [**List&lt;UpdateMaskEnum&gt;**](#List&lt;UpdateMaskEnum&gt;) | List of fields to update, only the fields in the list will be updated. | 
+**ageBucketMultipliers** | `AgeBucketMultipliers` | Age bucket multipliers for bid adjustments. |  [optional property]
+**appTypeMultipliers** | `AppTypeMultipliers` | App type multipliers for bid adjustments. |  [optional property]
+**audienceMultipliers** | `CampaignAudienceMultipliers` | Audience multipliers for bid adjustments. |  [optional property]
+**freqBidMultiplierTimeWindow** | `FreqBidMultiplierTimeWindow` | The time window for frequency bid multipliers. |  [optional property]
+**frequencyMultipliers** | `FrequencyMultipliers` | Frequency multipliers for bid adjustments. |  [optional property]
+**genderMultipliers** | `GenderMultipliers` | Gender multipliers for bid adjustments. |  [optional property]
+**placementMultipliers** | `PlacementMultipliers` | Placement multipliers for bid adjustments. |  [optional property]
+**updateMask** | `List&lt;CampaignBidOptionsUpdateMaskItems&gt;` | List of fields to update. Only the fields in the list will be updated. | 
 
 
 
 
-## List&lt;UpdateMaskEnum&gt;
 
-Name | Value
----- | -----
-AUDIENCE | `"AUDIENCE"`
-APP_TYPE | `"APP_TYPE"`
-PLACEMENT | `"PLACEMENT"`
-GENDER | `"GENDER"`
-AGE_BUCKET | `"AGE_BUCKET"`
+
+
+
 
 

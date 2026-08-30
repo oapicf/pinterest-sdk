@@ -7,27 +7,28 @@ using namespace Tiny;
 AdGroupCreateRequest::AdGroupCreateRequest()
 {
 	auto_targeting_enabled = bool(false);
+	bid_multiplier = float(0);
+	budget_type = BudgetType();
+	pacing_delivery_type = PacingDeliveryType();
 	bid_in_micro_currency = int(0);
-	bid_strategy_type = std::string();
+	bid_strategy_type = BidStrategyType();
 	billable_event = ActionType();
 	budget_in_micro_currency = int(0);
-	budget_type = std::string();
 	campaign_id = std::string();
 	end_time = int(0);
 	is_creative_optimization = bool(false);
 	lifetime_frequency_cap = int(0);
 	name = std::string();
 	optimization_goal_metadata = null;
-	pacing_delivery_type = std::string();
-	placement_group = std::string();
+	placement_group = null;
 	promotion_application_level = std::string();
 	promotion_id = std::string();
+	promotion_ids = std::list<std::string>();
 	start_time = int(0);
-	status = std::string();
+	status = null;
 	targeting_spec = TargetingSpec();
 	targeting_template_ids = std::list<std::string>();
 	tracking_urls = null;
-	bid_multiplier = float(0);
 }
 
 AdGroupCreateRequest::AdGroupCreateRequest(std::string jsonString)
@@ -58,6 +59,47 @@ AdGroupCreateRequest::fromJson(std::string jsonObj)
 
     }
 
+    const char *bid_multiplierKey = "bid_multiplier";
+
+    if(object.has_key(bid_multiplierKey))
+    {
+        bourne::json value = object[bid_multiplierKey];
+
+
+
+        jsonToValue(&bid_multiplier, value, "long");
+
+
+    }
+
+    const char *budget_typeKey = "budget_type";
+
+    if(object.has_key(budget_typeKey))
+    {
+        bourne::json value = object[budget_typeKey];
+
+
+
+
+        BudgetType* obj = &budget_type;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *pacing_delivery_typeKey = "pacing_delivery_type";
+
+    if(object.has_key(pacing_delivery_typeKey))
+    {
+        bourne::json value = object[pacing_delivery_typeKey];
+
+
+
+
+        PacingDeliveryType* obj = &pacing_delivery_type;
+		obj->fromJson(value.dump());
+
+    }
+
     const char *bid_in_micro_currencyKey = "bid_in_micro_currency";
 
     if(object.has_key(bid_in_micro_currencyKey))
@@ -79,8 +121,9 @@ AdGroupCreateRequest::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&bid_strategy_type, value, "std::string");
 
+        BidStrategyType* obj = &bid_strategy_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -108,20 +151,6 @@ AdGroupCreateRequest::fromJson(std::string jsonObj)
 
         jsonToValue(&budget_in_micro_currency, value, "int");
 
-
-    }
-
-    const char *budget_typeKey = "budget_type";
-
-    if(object.has_key(budget_typeKey))
-    {
-        bourne::json value = object[budget_typeKey];
-
-
-
-
-        BudgetType* obj = &budget_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -199,21 +228,7 @@ AdGroupCreateRequest::fromJson(std::string jsonObj)
 
 
 
-        OptimizationGoalMetadata* obj = &optimization_goal_metadata;
-		obj->fromJson(value.dump());
-
-    }
-
-    const char *pacing_delivery_typeKey = "pacing_delivery_type";
-
-    if(object.has_key(pacing_delivery_typeKey))
-    {
-        bourne::json value = object[pacing_delivery_typeKey];
-
-
-
-
-        PacingDeliveryType* obj = &pacing_delivery_type;
+        Object* obj = &optimization_goal_metadata;
 		obj->fromJson(value.dump());
 
     }
@@ -254,6 +269,28 @@ AdGroupCreateRequest::fromJson(std::string jsonObj)
 
 
         jsonToValue(&promotion_id, value, "std::string");
+
+
+    }
+
+    const char *promotion_idsKey = "promotion_ids";
+
+    if(object.has_key(promotion_idsKey))
+    {
+        bourne::json value = object[promotion_idsKey];
+
+
+        std::list<std::string> promotion_ids_list;
+        std::string element;
+        for(auto& var : value.array_range())
+        {
+
+            jsonToValue(&element, var, "std::string");
+
+
+            promotion_ids_list.push_back(element);
+        }
+        promotion_ids = promotion_ids_list;
 
 
     }
@@ -330,21 +367,8 @@ AdGroupCreateRequest::fromJson(std::string jsonObj)
 
 
 
-        TrackingUrls* obj = &tracking_urls;
+        Object* obj = &tracking_urls;
 		obj->fromJson(value.dump());
-
-    }
-
-    const char *bid_multiplierKey = "bid_multiplier";
-
-    if(object.has_key(bid_multiplierKey))
-    {
-        bourne::json value = object[bid_multiplierKey];
-
-
-
-        jsonToValue(&bid_multiplier, value, "long");
-
 
     }
 
@@ -367,6 +391,27 @@ AdGroupCreateRequest::toJson()
 
 
 
+    object["bid_multiplier"] = getBidMultiplier();
+
+
+
+
+
+
+
+	object["budget_type"] = getBudgetType().toJson();
+
+
+
+
+
+
+	object["pacing_delivery_type"] = getPacingDeliveryType().toJson();
+
+
+
+
+
     object["bid_in_micro_currency"] = getBidInMicroCurrency();
 
 
@@ -374,8 +419,8 @@ AdGroupCreateRequest::toJson()
 
 
 
-    object["bid_strategy_type"] = getBidStrategyType();
 
+	object["bid_strategy_type"] = getBidStrategyType().toJson();
 
 
 
@@ -390,13 +435,6 @@ AdGroupCreateRequest::toJson()
 
     object["budget_in_micro_currency"] = getBudgetInMicroCurrency();
 
-
-
-
-
-
-
-	object["budget_type"] = getBudgetType().toJson();
 
 
 
@@ -445,13 +483,6 @@ AdGroupCreateRequest::toJson()
 
 
 
-	object["pacing_delivery_type"] = getPacingDeliveryType().toJson();
-
-
-
-
-
-
 	object["placement_group"] = getPlacementGroup().toJson();
 
 
@@ -466,6 +497,22 @@ AdGroupCreateRequest::toJson()
 
 
     object["promotion_id"] = getPromotionId();
+
+
+
+
+
+    std::list<std::string> promotion_ids_list = getPromotionIds();
+    bourne::json promotion_ids_arr = bourne::json::array();
+
+    for(auto& var : promotion_ids_list)
+    {
+        promotion_ids_arr.append(var);
+    }
+    object["promotion_ids"] = promotion_ids_arr;
+
+
+
 
 
 
@@ -513,13 +560,6 @@ AdGroupCreateRequest::toJson()
 	object["tracking_urls"] = getTrackingUrls().toJson();
 
 
-
-
-
-    object["bid_multiplier"] = getBidMultiplier();
-
-
-
     return object;
 
 }
@@ -531,9 +571,45 @@ AdGroupCreateRequest::isAutoTargetingEnabled()
 }
 
 void
-AdGroupCreateRequest::setAutoTargetingEnabled(bool  auto_targeting_enabled)
+AdGroupCreateRequest::setAutoTargetingEnabled(bool auto_targeting_enabled)
 {
 	this->auto_targeting_enabled = auto_targeting_enabled;
+}
+
+long
+AdGroupCreateRequest::getBidMultiplier()
+{
+	return bid_multiplier;
+}
+
+void
+AdGroupCreateRequest::setBidMultiplier(long bid_multiplier)
+{
+	this->bid_multiplier = bid_multiplier;
+}
+
+BudgetType
+AdGroupCreateRequest::getBudgetType()
+{
+	return budget_type;
+}
+
+void
+AdGroupCreateRequest::setBudgetType(BudgetType budget_type)
+{
+	this->budget_type = budget_type;
+}
+
+PacingDeliveryType
+AdGroupCreateRequest::getPacingDeliveryType()
+{
+	return pacing_delivery_type;
+}
+
+void
+AdGroupCreateRequest::setPacingDeliveryType(PacingDeliveryType pacing_delivery_type)
+{
+	this->pacing_delivery_type = pacing_delivery_type;
 }
 
 int
@@ -543,19 +619,19 @@ AdGroupCreateRequest::getBidInMicroCurrency()
 }
 
 void
-AdGroupCreateRequest::setBidInMicroCurrency(int  bid_in_micro_currency)
+AdGroupCreateRequest::setBidInMicroCurrency(int bid_in_micro_currency)
 {
 	this->bid_in_micro_currency = bid_in_micro_currency;
 }
 
-std::string
+BidStrategyType
 AdGroupCreateRequest::getBidStrategyType()
 {
 	return bid_strategy_type;
 }
 
 void
-AdGroupCreateRequest::setBidStrategyType(std::string  bid_strategy_type)
+AdGroupCreateRequest::setBidStrategyType(BidStrategyType bid_strategy_type)
 {
 	this->bid_strategy_type = bid_strategy_type;
 }
@@ -567,7 +643,7 @@ AdGroupCreateRequest::getBillableEvent()
 }
 
 void
-AdGroupCreateRequest::setBillableEvent(ActionType  billable_event)
+AdGroupCreateRequest::setBillableEvent(ActionType billable_event)
 {
 	this->billable_event = billable_event;
 }
@@ -579,21 +655,9 @@ AdGroupCreateRequest::getBudgetInMicroCurrency()
 }
 
 void
-AdGroupCreateRequest::setBudgetInMicroCurrency(int  budget_in_micro_currency)
+AdGroupCreateRequest::setBudgetInMicroCurrency(int budget_in_micro_currency)
 {
 	this->budget_in_micro_currency = budget_in_micro_currency;
-}
-
-BudgetType
-AdGroupCreateRequest::getBudgetType()
-{
-	return budget_type;
-}
-
-void
-AdGroupCreateRequest::setBudgetType(BudgetType  budget_type)
-{
-	this->budget_type = budget_type;
 }
 
 std::string
@@ -603,7 +667,7 @@ AdGroupCreateRequest::getCampaignId()
 }
 
 void
-AdGroupCreateRequest::setCampaignId(std::string  campaign_id)
+AdGroupCreateRequest::setCampaignId(std::string campaign_id)
 {
 	this->campaign_id = campaign_id;
 }
@@ -615,7 +679,7 @@ AdGroupCreateRequest::getEndTime()
 }
 
 void
-AdGroupCreateRequest::setEndTime(int  end_time)
+AdGroupCreateRequest::setEndTime(int end_time)
 {
 	this->end_time = end_time;
 }
@@ -627,7 +691,7 @@ AdGroupCreateRequest::isIsCreativeOptimization()
 }
 
 void
-AdGroupCreateRequest::setIsCreativeOptimization(bool  is_creative_optimization)
+AdGroupCreateRequest::setIsCreativeOptimization(bool is_creative_optimization)
 {
 	this->is_creative_optimization = is_creative_optimization;
 }
@@ -639,7 +703,7 @@ AdGroupCreateRequest::getLifetimeFrequencyCap()
 }
 
 void
-AdGroupCreateRequest::setLifetimeFrequencyCap(int  lifetime_frequency_cap)
+AdGroupCreateRequest::setLifetimeFrequencyCap(int lifetime_frequency_cap)
 {
 	this->lifetime_frequency_cap = lifetime_frequency_cap;
 }
@@ -651,33 +715,21 @@ AdGroupCreateRequest::getName()
 }
 
 void
-AdGroupCreateRequest::setName(std::string  name)
+AdGroupCreateRequest::setName(std::string name)
 {
 	this->name = name;
 }
 
-OptimizationGoalMetadata
+Object
 AdGroupCreateRequest::getOptimizationGoalMetadata()
 {
 	return optimization_goal_metadata;
 }
 
 void
-AdGroupCreateRequest::setOptimizationGoalMetadata(OptimizationGoalMetadata  optimization_goal_metadata)
+AdGroupCreateRequest::setOptimizationGoalMetadata(Object optimization_goal_metadata)
 {
 	this->optimization_goal_metadata = optimization_goal_metadata;
-}
-
-PacingDeliveryType
-AdGroupCreateRequest::getPacingDeliveryType()
-{
-	return pacing_delivery_type;
-}
-
-void
-AdGroupCreateRequest::setPacingDeliveryType(PacingDeliveryType  pacing_delivery_type)
-{
-	this->pacing_delivery_type = pacing_delivery_type;
 }
 
 PlacementGroupType
@@ -687,7 +739,7 @@ AdGroupCreateRequest::getPlacementGroup()
 }
 
 void
-AdGroupCreateRequest::setPlacementGroup(PlacementGroupType  placement_group)
+AdGroupCreateRequest::setPlacementGroup(PlacementGroupType placement_group)
 {
 	this->placement_group = placement_group;
 }
@@ -699,7 +751,7 @@ AdGroupCreateRequest::getPromotionApplicationLevel()
 }
 
 void
-AdGroupCreateRequest::setPromotionApplicationLevel(std::string  promotion_application_level)
+AdGroupCreateRequest::setPromotionApplicationLevel(std::string promotion_application_level)
 {
 	this->promotion_application_level = promotion_application_level;
 }
@@ -711,9 +763,21 @@ AdGroupCreateRequest::getPromotionId()
 }
 
 void
-AdGroupCreateRequest::setPromotionId(std::string  promotion_id)
+AdGroupCreateRequest::setPromotionId(std::string promotion_id)
 {
 	this->promotion_id = promotion_id;
+}
+
+std::list<std::string>
+AdGroupCreateRequest::getPromotionIds()
+{
+	return promotion_ids;
+}
+
+void
+AdGroupCreateRequest::setPromotionIds(std::list<std::string> promotion_ids)
+{
+	this->promotion_ids = promotion_ids;
 }
 
 int
@@ -723,7 +787,7 @@ AdGroupCreateRequest::getStartTime()
 }
 
 void
-AdGroupCreateRequest::setStartTime(int  start_time)
+AdGroupCreateRequest::setStartTime(int start_time)
 {
 	this->start_time = start_time;
 }
@@ -735,7 +799,7 @@ AdGroupCreateRequest::getStatus()
 }
 
 void
-AdGroupCreateRequest::setStatus(EntityStatus  status)
+AdGroupCreateRequest::setStatus(EntityStatus status)
 {
 	this->status = status;
 }
@@ -747,7 +811,7 @@ AdGroupCreateRequest::getTargetingSpec()
 }
 
 void
-AdGroupCreateRequest::setTargetingSpec(TargetingSpec  targeting_spec)
+AdGroupCreateRequest::setTargetingSpec(TargetingSpec targeting_spec)
 {
 	this->targeting_spec = targeting_spec;
 }
@@ -759,33 +823,21 @@ AdGroupCreateRequest::getTargetingTemplateIds()
 }
 
 void
-AdGroupCreateRequest::setTargetingTemplateIds(std::list <std::string> targeting_template_ids)
+AdGroupCreateRequest::setTargetingTemplateIds(std::list<std::string> targeting_template_ids)
 {
 	this->targeting_template_ids = targeting_template_ids;
 }
 
-TrackingUrls
+Object
 AdGroupCreateRequest::getTrackingUrls()
 {
 	return tracking_urls;
 }
 
 void
-AdGroupCreateRequest::setTrackingUrls(TrackingUrls  tracking_urls)
+AdGroupCreateRequest::setTrackingUrls(Object tracking_urls)
 {
 	this->tracking_urls = tracking_urls;
-}
-
-long
-AdGroupCreateRequest::getBidMultiplier()
-{
-	return bid_multiplier;
-}
-
-void
-AdGroupCreateRequest::setBidMultiplier(long  bid_multiplier)
-{
-	this->bid_multiplier = bid_multiplier;
 }
 
 

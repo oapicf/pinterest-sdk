@@ -12,9 +12,9 @@ import 'package:openapi/src/api_util.dart';
 import 'package:openapi/src/model/catalogs_create_report_response.dart';
 import 'package:openapi/src/model/catalogs_report.dart';
 import 'package:openapi/src/model/catalogs_report_parameters.dart';
-import 'package:openapi/src/model/error.dart';
+import 'package:openapi/src/model/catalogs_report_stats_parameters.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
 import 'package:openapi/src/model/reports_stats200_response.dart';
-import 'package:openapi/src/model/reports_stats_parameters_parameter.dart';
 
 class CatalogReportsApi {
 
@@ -25,10 +25,10 @@ class CatalogReportsApi {
   const CatalogReportsApi(this._dio, this._serializers);
 
   /// Build catalogs report
-  /// Async request to create a report of the catalog owned by the \&quot;operation user_account\&quot;. This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the All Items report type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+  /// Async request to create a report of the catalog owned by the \&quot;operation user_account\&quot;. This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: The All Items report is limited to 25 million items per catalog.
   ///
   /// Parameters:
-  /// * [catalogsReportParameters] - Request object to asynchronously create a report.
+  /// * [catalogsReportParameters] 
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -133,10 +133,10 @@ class CatalogReportsApi {
   }
 
   /// Get catalogs report
-  /// This returns a URL to a report given a token returned from &lt;a href&#x3D;&#39;/docs/api/v5/#operation/reports/create&#39;&gt;Build catalogs report&lt;/a&gt;. You can use the URL to download the report. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.
+  /// This returns a URL to a report given a token returned from [Build catalogs report](/docs/api/v5/#operation/reports/create). You can use the URL to download the report. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
   ///
   /// Parameters:
-  /// * [token] - Token returned from async build report call
+  /// * [token] - Token returned from the post request creation call
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -221,13 +221,13 @@ class CatalogReportsApi {
   }
 
   /// List report stats
-  /// List aggregated numbers of issues for a catalog owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.
+  /// List aggregated numbers of issues for a catalog owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
   ///
   /// Parameters:
   /// * [parameters] - Contains the parameters for report identification.
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   /// * [bookmark] - Cursor used to fetch the next page of items
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -238,10 +238,10 @@ class CatalogReportsApi {
   /// Returns a [Future] containing a [Response] with a [ReportsStats200Response] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<ReportsStats200Response>> reportsStats({ 
-    required ReportsStatsParametersParameter parameters,
+    required CatalogsReportStatsParameters parameters,
     String? adAccountId,
-    int? pageSize = 25,
     String? bookmark,
+    int? pageSize = 25,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -269,9 +269,9 @@ class CatalogReportsApi {
 
     final _queryParameters = <String, dynamic>{
       if (adAccountId != null) r'ad_account_id': encodeQueryParameter(_serializers, adAccountId, const FullType(String)),
-      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
+      r'parameters': encodeQueryParameter(_serializers, parameters, const FullType(CatalogsReportStatsParameters)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
-      r'parameters': encodeQueryParameter(_serializers, parameters, const FullType(ReportsStatsParametersParameter)),
+      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(

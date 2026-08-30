@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**negated** | **boolean** |  | [optional] [default to false]
-**operator** | **string** |  | [default to undefined]
+**negated** | **boolean** |  | [optional] [default to undefined]
+**operator** | [**NumericFilterOperatorType**](NumericFilterOperatorType.md) |  | [default to undefined]
 **value** | **number** |  | [default to undefined]
 
 ## Example

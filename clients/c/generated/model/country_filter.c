@@ -12,18 +12,21 @@ static country_filter_t *country_filter_create_internal(
     if (!country_filter_local_var) {
         return NULL;
     }
-    country_filter_local_var->country = country;
-
+    memset(country_filter_local_var, 0, sizeof(country_filter_t));
     country_filter_local_var->_library_owned = 1;
+    country_filter_local_var->country = country;
     return country_filter_local_var;
 }
 
 __attribute__((deprecated)) country_filter_t *country_filter_create(
     catalogs_product_group_multiple_countries_criteria_t *country
     ) {
-    return country_filter_create_internal (
+    country_filter_t *result = country_filter_create_internal (
         country
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void country_filter_free(country_filter_t *country_filter) {
@@ -36,7 +39,7 @@ void country_filter_free(country_filter_t *country_filter) {
     }
     listEntry_t *listEntry;
     if (country_filter->country) {
-        object_free(country_filter->country);
+        catalogs_product_group_multiple_countries_criteria_free(country_filter->country);
         country_filter->country = NULL;
     }
     free(country_filter);
@@ -49,11 +52,11 @@ cJSON *country_filter_convertToJSON(country_filter_t *country_filter) {
     if (!country_filter->country) {
         goto fail;
     }
-    cJSON *country_object = object_convertToJSON(country_filter->country);
-    if(country_object == NULL) {
+    cJSON *country_local_JSON = catalogs_product_group_multiple_countries_criteria_convertToJSON(country_filter->country);
+    if(country_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "COUNTRY", country_object);
+    cJSON_AddItemToObject(item, "COUNTRY", country_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -70,6 +73,9 @@ country_filter_t *country_filter_parseFromJSON(cJSON *country_filterJSON){
 
     country_filter_t *country_filter_local_var = NULL;
 
+    // define the local variable for country_filter->country
+    catalogs_product_group_multiple_countries_criteria_t *country_local_nonprim = NULL;
+
     // country_filter->country
     cJSON *country = cJSON_GetObjectItemCaseSensitive(country_filterJSON, "COUNTRY");
     if (cJSON_IsNull(country)) {
@@ -79,17 +85,25 @@ country_filter_t *country_filter_parseFromJSON(cJSON *country_filterJSON){
         goto end;
     }
 
-    object_t *country_local_object = NULL;
     
-    country_local_object = object_parseFromJSON(country); //object
+    country_local_nonprim = catalogs_product_group_multiple_countries_criteria_parseFromJSON(country); //nonprimitive
+
 
 
     country_filter_local_var = country_filter_create_internal (
-        country_local_object
+        country_local_nonprim
         );
+
+    if (!country_filter_local_var) {
+        goto end;
+    }
 
     return country_filter_local_var;
 end:
+    if (country_local_nonprim) {
+        catalogs_product_group_multiple_countries_criteria_free(country_local_nonprim);
+        country_local_nonprim = NULL;
+    }
     return NULL;
 
 }

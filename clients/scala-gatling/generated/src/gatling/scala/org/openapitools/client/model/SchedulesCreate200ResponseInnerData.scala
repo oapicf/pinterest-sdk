@@ -1,0 +1,35 @@
+
+package org.openapitools.client.model
+
+
+case class SchedulesCreate200ResponseInnerData (
+    _deltaValue: Option[ScheduleDeltaValue],
+    /* Schedule end time. Unix timestamp in seconds. */
+    _endTimestamp: Option[Integer],
+    /* entity ID. */
+    _entityId: String,
+    /* Specify the entity_type to get summary information */
+    _entityType: Option[AdAccountEntityType],
+    /* Schedule name. */
+    _name: Option[String],
+    /* The schedule action. */
+    _scheduleAction: Option[ScheduleAction],
+    /* Schedule ID. */
+    _scheduleId: String,
+    /* Schedule status. */
+    _scheduleStatus: Option[ScheduleStatus],
+    /* The schedule type. */
+    _scheduleType: Option[ScheduleType],
+    /* Schedule start time. Unix timestamp in seconds. */
+    _startTimestamp: Option[Integer],
+    _id: String,
+    _exceptions: Error
+)
+object SchedulesCreate200ResponseInnerData {
+    def toStringBody(var_deltaValue: Object, var_endTimestamp: Object, var_entityId: Object, var_entityType: Object, var_name: Object, var_scheduleAction: Object, var_scheduleId: Object, var_scheduleStatus: Object, var_scheduleType: Object, var_startTimestamp: Object, var_id: Object, var_exceptions: Object) =
+        s"""
+        | {
+        | "deltaValue":$var_deltaValue,"endTimestamp":$var_endTimestamp,"entityId":$var_entityId,"entityType":$var_entityType,"name":$var_name,"scheduleAction":$var_scheduleAction,"scheduleId":$var_scheduleId,"scheduleStatus":$var_scheduleStatus,"scheduleType":$var_scheduleType,"startTimestamp":$var_startTimestamp,"id":$var_id,"exceptions":$var_exceptions
+        | }
+        """.stripMargin
+}

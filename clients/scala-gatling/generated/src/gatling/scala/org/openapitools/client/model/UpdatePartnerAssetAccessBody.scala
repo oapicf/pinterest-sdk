@@ -3,7 +3,8 @@ package org.openapitools.client.model
 
 
 case class UpdatePartnerAssetAccessBody (
-    _accesses: List[UpdatePartnerAssetAccessBodyAccessesInner]
+    /* List of partner asset accesses to assign or update. */
+    _accesses: List[UpdatePartnerAssetAccessItem]
 )
 object UpdatePartnerAssetAccessBody {
     def toStringBody(var_accesses: Object) =

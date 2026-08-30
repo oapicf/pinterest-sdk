@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -23,24 +31,28 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param createdAt 
- * @param feedId 
- * @param id 
- * @param status 
+ * @param createdAt Timestamp of the feed ingestion.
+ * @param feedId Catalog Feed id pertaining to the feed ingestion.
+ * @param id Unique identifier of a feed ingestion.
+ * @param status Status of the feed ingestion.
  */
 
 
 data class CatalogsFeedIngestion (
 
+    /* Timestamp of the feed ingestion. */
     @Json(name = "created_at")
     val createdAt: java.time.OffsetDateTime,
 
+    /* Catalog Feed id pertaining to the feed ingestion. */
     @Json(name = "feed_id")
     val feedId: kotlin.String,
 
+    /* Unique identifier of a feed ingestion. */
     @Json(name = "id")
     val id: kotlin.String,
 
+    /* Status of the feed ingestion. */
     @Json(name = "status")
     val status: CatalogsFeedProcessingStatus
 

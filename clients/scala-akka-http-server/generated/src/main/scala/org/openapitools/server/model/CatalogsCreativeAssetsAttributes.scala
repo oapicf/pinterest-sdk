@@ -13,7 +13,8 @@ package org.openapitools.server.model
  * @param iosDeepLink IOS deep link to the creative assets page. for example: ''null''
  * @param link Link to the creative assets page. for example: ''null''
  * @param title The name of the creative assets. for example: ''null''
- * @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. for example: ''null''
+ * @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'. for example: ''null''
+ * @param aiDisclosures AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL. for example: ''[{"url":"https://scene.example.com/image/image_v2.jpg","disclosure":["ai_modified"]}]''
  * @param imageLink The creative assets image. for example: ''https://scene.example.com/image/image_v2.jpg''
  * @param videoLink The creative assets video. for example: ''https://scene.example.com/image/image_v2.mp4''
 */
@@ -30,6 +31,7 @@ final case class CatalogsCreativeAssetsAttributes (
   link: Option[String] = None,
   title: Option[String] = None,
   visibility: Option[String] = None,
+  aiDisclosures: Option[Seq[CatalogsAiContentDisclosure]] = None,
   imageLink: Option[String] = None,
   videoLink: Option[String] = None
 )

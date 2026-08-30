@@ -10,9 +10,8 @@
 
 #include <string>
 #include "CatalogsHotelReportParameters.h"
-#include "CatalogsHotelReportParameters_report.h"
+#include "CatalogsHotelReportParametersReport.h"
 #include "CatalogsRetailReportParameters.h"
-#include "CatalogsType.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -51,22 +50,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
-	CatalogsHotelReportParameters_report getReport();
+	CatalogsHotelReportParametersReport getReport();
 
 	/*! \brief Set 
 	 */
-	void setReport(CatalogsHotelReportParameters_report  report);
+	void setReport(CatalogsHotelReportParametersReport  report);
 
 private:
-	CatalogsType catalog_type;
-	CatalogsHotelReportParameters_report report;
+	std::string catalog_type;
+	CatalogsHotelReportParametersReport report;
 	void __init();
 	void __cleanup();
 

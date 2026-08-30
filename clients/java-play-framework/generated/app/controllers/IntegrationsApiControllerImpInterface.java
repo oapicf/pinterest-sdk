@@ -1,14 +1,14 @@
 package controllers;
 
-import apimodels.Error;
-import apimodels.IntegrationLogsRequest;
+import apimodels.IntegrationLogsInvalidLogResponse;
+import apimodels.IntegrationLogsRequestCreate;
 import apimodels.IntegrationLogsSuccessResponse;
 import apimodels.IntegrationMetadata;
+import apimodels.IntegrationMetadataCreate;
+import apimodels.IntegrationMetadataUpdate;
 import apimodels.IntegrationRecord;
-import apimodels.IntegrationRequest;
-import apimodels.IntegrationRequestPatch;
 import apimodels.IntegrationsGetList200Response;
-import apimodels.IntegrationsLogsPost400Response;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -40,12 +40,19 @@ public abstract class IntegrationsApiControllerImpInterface {
             return unauthorized();
         }
 
-        integrationsCommerceDel(request, externalBusinessId);
-        return ok();
+        IntegrationMetadata obj = integrationsCommerceDel(request, externalBusinessId);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
 
     }
 
-    public abstract void integrationsCommerceDel(Http.Request request, String externalBusinessId) throws Exception;
+    public abstract IntegrationMetadata integrationsCommerceDel(Http.Request request, String externalBusinessId) throws Exception;
 
     public Result integrationsCommerceGetHttp(Http.Request request, String externalBusinessId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -66,12 +73,12 @@ public abstract class IntegrationsApiControllerImpInterface {
 
     public abstract IntegrationMetadata integrationsCommerceGet(Http.Request request, String externalBusinessId) throws Exception;
 
-    public Result integrationsCommercePatchHttp(Http.Request request, String externalBusinessId, IntegrationRequestPatch integrationRequestPatch) throws Exception {
+    public Result integrationsCommercePatchHttp(Http.Request request, String externalBusinessId, IntegrationMetadataUpdate integrationMetadataUpdate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        IntegrationMetadata obj = integrationsCommercePatch(request, externalBusinessId, integrationRequestPatch);
+        IntegrationMetadata obj = integrationsCommercePatch(request, externalBusinessId, integrationMetadataUpdate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -83,14 +90,14 @@ public abstract class IntegrationsApiControllerImpInterface {
 
     }
 
-    public abstract IntegrationMetadata integrationsCommercePatch(Http.Request request, String externalBusinessId, IntegrationRequestPatch integrationRequestPatch) throws Exception;
+    public abstract IntegrationMetadata integrationsCommercePatch(Http.Request request, String externalBusinessId, IntegrationMetadataUpdate integrationMetadataUpdate) throws Exception;
 
-    public Result integrationsCommercePostHttp(Http.Request request, IntegrationRequest integrationRequest) throws Exception {
+    public Result integrationsCommercePostHttp(Http.Request request, IntegrationMetadataCreate integrationMetadataCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        IntegrationMetadata obj = integrationsCommercePost(request, integrationRequest);
+        IntegrationMetadata obj = integrationsCommercePost(request, integrationMetadataCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -102,9 +109,9 @@ public abstract class IntegrationsApiControllerImpInterface {
 
     }
 
-    public abstract IntegrationMetadata integrationsCommercePost(Http.Request request, IntegrationRequest integrationRequest) throws Exception;
+    public abstract IntegrationMetadata integrationsCommercePost(Http.Request request, IntegrationMetadataCreate integrationMetadataCreate) throws Exception;
 
-    public Result integrationsGetByIdHttp(Http.Request request, String id) throws Exception {
+    public Result integrationsGetByIdHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String id) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
@@ -121,7 +128,7 @@ public abstract class IntegrationsApiControllerImpInterface {
 
     }
 
-    public abstract IntegrationRecord integrationsGetById(Http.Request request, String id) throws Exception;
+    public abstract IntegrationRecord integrationsGetById(Http.Request request,  @Pattern(regexp="^\\d+$")String id) throws Exception;
 
     public Result integrationsGetListHttp(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -142,12 +149,12 @@ public abstract class IntegrationsApiControllerImpInterface {
 
     public abstract IntegrationsGetList200Response integrationsGetList(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result integrationsLogsPostHttp(Http.Request request, IntegrationLogsRequest integrationLogsRequest) throws Exception {
+    public Result integrationsLogsPostHttp(Http.Request request, IntegrationLogsRequestCreate integrationLogsRequestCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        IntegrationLogsSuccessResponse obj = integrationsLogsPost(request, integrationLogsRequest);
+        IntegrationLogsSuccessResponse obj = integrationsLogsPost(request, integrationLogsRequestCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -159,6 +166,6 @@ public abstract class IntegrationsApiControllerImpInterface {
 
     }
 
-    public abstract IntegrationLogsSuccessResponse integrationsLogsPost(Http.Request request, IntegrationLogsRequest integrationLogsRequest) throws Exception;
+    public abstract IntegrationLogsSuccessResponse integrationsLogsPost(Http.Request request, IntegrationLogsRequestCreate integrationLogsRequestCreate) throws Exception;
 
 }

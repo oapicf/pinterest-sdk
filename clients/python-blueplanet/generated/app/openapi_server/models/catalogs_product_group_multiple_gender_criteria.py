@@ -16,7 +16,7 @@ class CatalogsProductGroupMultipleGenderCriteria(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, negated: bool=False, values: List[Gender]=None):  # noqa: E501
+    def __init__(self, negated: bool=None, values: List[Gender]=None):  # noqa: E501
         """CatalogsProductGroupMultipleGenderCriteria - a model defined in Swagger
 
         :param negated: The negated of this CatalogsProductGroupMultipleGenderCriteria.  # noqa: E501

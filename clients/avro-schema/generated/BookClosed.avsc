@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BookClosed",
+  "fields": [
+    {
+      "name": "conversion_metrics_ready",
+      "type": "boolean",
+      "doc": "Are conversion metrics ready?"
+    },
+    {
+      "name": "non_conversion_metrics_ready",
+      "type": "boolean",
+      "doc": "Are non-conversion metrics ready?"
+    }
+  ]
+
+}

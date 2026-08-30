@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ import (
 )
 
 
-// GridClickType : Where a user is taken after clicking on an ad in grid. </p><strong>Note:</strong>  This parameter is read-only and is set to DIRECT_TO_DESTINATION by default for direct links supported ads.  grid_click_type values provided will be ignored.
+// GridClickType : Where a user is taken after clicking on an ad in grid.  **Note:**  This parameter is read-only and is set to `DIRECT_TO_DESTINATION` by default for direct links supported ads. `grid_click_type` values provided will be ignored.
 type GridClickType string
 
 // List of GridClickType
@@ -56,8 +56,8 @@ func NewGridClickTypeFromValue(v string) (GridClickType, error) {
 }
 
 
-
-// AssertGridClickTypeRequired checks if the required fields are not zero-ed
+// AssertGridClickTypeRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertGridClickTypeRequired(obj GridClickType) error {
 	return nil
 }

@@ -1,12 +1,18 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "Catalogs product for all verticals",
+  "doc": "",
   "name": "CatalogsProduct",
   "fields": [
     {
       "name": "catalog_type",
-      "type": "model.CatalogsType",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsProduct_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
       "doc": ""
     },
     {

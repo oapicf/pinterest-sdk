@@ -1,8 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.OrderLine;
 import org.openapitools.vertxweb.server.model.OrderLinesList200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PinterestLibPaginationOrder;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -44,13 +45,13 @@ public class OrderLinesApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
-        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         String orderLineId = requestParameters.pathParameter("order_line_id") != null ? requestParameters.pathParameter("order_line_id").getString() : null;
+        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter orderLineId is {}", orderLineId);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.orderLinesGet(adAccountId, orderLineId)
+        api.orderLinesGet(orderLineId, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -69,16 +70,16 @@ public class OrderLinesApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
-        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
-        String order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getString() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
+        PinterestLibPaginationOrder order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getPinterestLibPaginationOrder() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter order is {}", order);
-        logger.debug("Parameter bookmark is {}", bookmark);
 
-        api.orderLinesList(adAccountId, pageSize, order, bookmark)
+        api.orderLinesList(adAccountId, bookmark, pageSize, order)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

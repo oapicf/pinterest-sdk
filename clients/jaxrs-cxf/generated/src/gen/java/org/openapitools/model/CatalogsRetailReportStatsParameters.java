@@ -2,7 +2,7 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.openapitools.model.CatalogsHotelReportStatsParametersReport;
+import org.openapitools.model.CatalogsRetailReportStatsParametersReport;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -58,7 +58,7 @@ RETAIL(String.valueOf("RETAIL"));
 
   @Valid
 
-  private CatalogsHotelReportStatsParametersReport report;
+  private CatalogsRetailReportStatsParametersReport report;
  /**
    * Get catalogType
    * @return catalogType
@@ -87,15 +87,15 @@ RETAIL(String.valueOf("RETAIL"));
   **/
   @JsonProperty("report")
   @NotNull
-  public CatalogsHotelReportStatsParametersReport getReport() {
+  public CatalogsRetailReportStatsParametersReport getReport() {
     return report;
   }
 
-  public void setReport(CatalogsHotelReportStatsParametersReport report) {
+  public void setReport(CatalogsRetailReportStatsParametersReport report) {
     this.report = report;
   }
 
-  public CatalogsRetailReportStatsParameters report(CatalogsHotelReportStatsParametersReport report) {
+  public CatalogsRetailReportStatsParameters report(CatalogsRetailReportStatsParametersReport report) {
     this.report = report;
     return this;
   }
@@ -134,10 +134,7 @@ RETAIL(String.valueOf("RETAIL"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

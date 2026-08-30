@@ -5,11 +5,11 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.Error
-import model.LeadsExportCreateRequest
-import model.LeadsExportCreateResponse
 import model.LeadsExportResponseData
+import model.LeadsExports
+import model.LeadsExportsCreate
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class LeadsExportApiController @Inject()(cc: ControllerComponents, api: LeadsExportApi) extends AbstractController(cc) {
   /**
@@ -17,11 +17,11 @@ class LeadsExportApiController @Inject()(cc: ControllerComponents, api: LeadsExp
     * @param adAccountId Unique identifier of an ad account.
     */
   def leadsExportCreate(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): LeadsExportCreateResponse = {
-      val leadsExportCreateRequest = request.body.asJson.map(_.as[LeadsExportCreateRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "leadsExportCreateRequest")
+    def executeApi(): LeadsExports = {
+      val leadsExportsCreate = request.body.asJson.map(_.as[LeadsExportsCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "leadsExportsCreate")
       }
-      api.leadsExportCreate(adAccountId, leadsExportCreateRequest)
+      api.leadsExportCreate(adAccountId, leadsExportsCreate)
     }
 
     val result = executeApi()

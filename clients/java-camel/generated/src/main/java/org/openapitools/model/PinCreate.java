@@ -2,29 +2,33 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AiDisclosures;
 import org.openapitools.model.PinMediaSource;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Resource create operation model.
  */
 
 @Schema(name = "PinCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PinCreate {
+
+  private AiDisclosures aiDisclosures;
 
   private JsonNullable<@Size(max = 500) String> altText = JsonNullable.<String>undefined();
 
@@ -45,6 +49,26 @@ public class PinCreate {
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> sponsorId = JsonNullable.<String>undefined();
 
   private JsonNullable<@Size(max = 100) String> title = JsonNullable.<String>undefined();
+
+  public PinCreate aiDisclosures(AiDisclosures aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+    return this;
+  }
+
+  /**
+   * AI disclosure declarations the creator has made about this Pin.
+   * @return aiDisclosures
+   */
+  @Valid 
+  @Schema(name = "ai_disclosures", description = "AI disclosure declarations the creator has made about this Pin.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("ai_disclosures")
+  public AiDisclosures getAiDisclosures() {
+    return aiDisclosures;
+  }
+
+  public void setAiDisclosures(AiDisclosures aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+  }
 
   public PinCreate altText(String altText) {
     this.altText = JsonNullable.of(altText);
@@ -255,7 +279,8 @@ public class PinCreate {
       return false;
     }
     PinCreate pinCreate = (PinCreate) o;
-    return equalsNullable(this.altText, pinCreate.altText) &&
+    return Objects.equals(this.aiDisclosures, pinCreate.aiDisclosures) &&
+        equalsNullable(this.altText, pinCreate.altText) &&
         Objects.equals(this.boardId, pinCreate.boardId) &&
         equalsNullable(this.boardSectionId, pinCreate.boardSectionId) &&
         equalsNullable(this.description, pinCreate.description) &&
@@ -273,7 +298,7 @@ public class PinCreate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(altText), boardId, hashCodeNullable(boardSectionId), hashCodeNullable(description), hashCodeNullable(dominantColor), hashCodeNullable(link), mediaSource, hashCodeNullable(parentPinId), hashCodeNullable(sponsorId), hashCodeNullable(title));
+    return Objects.hash(aiDisclosures, hashCodeNullable(altText), boardId, hashCodeNullable(boardSectionId), hashCodeNullable(description), hashCodeNullable(dominantColor), hashCodeNullable(link), mediaSource, hashCodeNullable(parentPinId), hashCodeNullable(sponsorId), hashCodeNullable(title));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -287,6 +312,7 @@ public class PinCreate {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinCreate {\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
@@ -306,10 +332,7 @@ public class PinCreate {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

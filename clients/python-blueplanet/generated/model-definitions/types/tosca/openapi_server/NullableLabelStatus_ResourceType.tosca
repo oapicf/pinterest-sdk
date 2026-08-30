@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server NullableLabelStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a NullableLabelStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  NullableLabelStatus {
+    title = NullableLabelStatus
+    description = NullableLabelStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  NullableLabelStatus {
+    title = NullableLabelStatus
+    description = NullableLabelStatus
+    implements = openapi_server.resourceTypes.NullableLabelStatus
+
+  }
+}

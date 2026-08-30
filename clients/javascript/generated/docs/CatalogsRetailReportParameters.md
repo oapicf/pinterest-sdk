@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogType** | **String** |  | 
-**report** | [**CatalogsHotelReportParametersReport**](CatalogsHotelReportParametersReport.md) |  | 
+**report** | [**CatalogsRetailReportParametersReport**](CatalogsRetailReportParametersReport.md) |  | 
 
 
 

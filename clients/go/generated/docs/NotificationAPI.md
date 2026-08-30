@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-	notificationPostRequest := openapiclient.notification_post_request{ArrayOfMapmapOfStringAny: new([]map[string]interface{})} // NotificationPostRequest | notification event.
+	notificationPostRequest := openapiclient.NotificationPostRequest{ArrayOfMapmapOfStringAny: new([]map[string]interface{})} // NotificationPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -54,7 +54,7 @@ Other parameters are passed through a pointer to a apiNotificationPostRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md) | notification event. | 
+ **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md) |  | 
 
 ### Return type
 

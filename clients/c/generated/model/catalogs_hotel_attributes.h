@@ -15,9 +15,10 @@
 
 typedef struct catalogs_hotel_attributes_t catalogs_hotel_attributes_t;
 
+#include "catalogs_ai_content_disclosure.h"
 #include "catalogs_hotel_address.h"
-#include "catalogs_hotel_attributes_all_of_main_image.h"
 #include "catalogs_hotel_guest_ratings.h"
+#include "catalogs_hotel_main_image.h"
 
 
 
@@ -33,14 +34,15 @@ typedef struct catalogs_hotel_attributes_t {
     char *custom_label_4; // string
     char *description; // string
     struct catalogs_hotel_guest_ratings_t *guest_ratings; //model
-    double latitude; //numeric
+    double *latitude; //numeric
     char *link; // string
-    double longitude; //numeric
+    double *longitude; //numeric
     char *name; // string
     list_t *neighborhood; //primitive container
     char *sale_price; // string
     list_t *additional_image_link; //primitive container
-    struct catalogs_hotel_attributes_all_of_main_image_t *main_image; //model
+    list_t *ai_disclosures; //nonprimitive container
+    struct catalogs_hotel_main_image_t *main_image; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_attributes_t;
@@ -57,14 +59,15 @@ __attribute__((deprecated)) catalogs_hotel_attributes_t *catalogs_hotel_attribut
     char *custom_label_4,
     char *description,
     catalogs_hotel_guest_ratings_t *guest_ratings,
-    double latitude,
+    double *latitude,
     char *link,
-    double longitude,
+    double *longitude,
     char *name,
     list_t *neighborhood,
     char *sale_price,
     list_t *additional_image_link,
-    catalogs_hotel_attributes_all_of_main_image_t *main_image
+    list_t *ai_disclosures,
+    catalogs_hotel_main_image_t *main_image
 );
 
 void catalogs_hotel_attributes_free(catalogs_hotel_attributes_t *catalogs_hotel_attributes);

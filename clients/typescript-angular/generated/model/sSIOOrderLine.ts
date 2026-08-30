@@ -10,17 +10,20 @@
 import { Currency } from './currency';
 
 
+/**
+ * A Salesforce SSIO order line.
+ */
 export interface SSIOOrderLine { 
     /**
      * The SFDC id for the terms
      */
     accepted_terms_id?: string | null;
     /**
-     * The UTC timestamp (to the nearest sec) of when terms were accepted
+     * The UTC timestamp (to the nearest second) when terms were accepted.
      */
     accepted_terms_time?: string | null;
     /**
-     * Ads manager OrderLineId
+     * Ads manager order line id
      */
     ads_manager_order_line_id?: string | null;
     /**
@@ -28,7 +31,7 @@ export interface SSIOOrderLine {
      */
     agency_link?: string | null;
     /**
-     * Bill To Company name
+     * Bill-to company name
      */
     bill_to_company_name?: string | null;
     /**
@@ -44,7 +47,7 @@ export interface SSIOOrderLine {
      */
     billing_contact_lastname?: string | null;
     /**
-     * If Budget order line, the budget amount.
+     * If budget order line, the budget amount.
      */
     budget_amount?: number | null;
     currency_info?: Currency;
@@ -53,7 +56,7 @@ export interface SSIOOrderLine {
      */
     end_date?: string | null;
     /**
-     * If Ongoing (perpetual) order line, the estimated monthly spend
+     * If ongoing (perpetual) order line, the estimated monthly spend.
      */
     estimated_monthly_spend?: number | null;
     /**
@@ -65,11 +68,11 @@ export interface SSIOOrderLine {
      */
     media_contact_email?: string | null;
     /**
-     * Billing contact first name
+     * Billing media contact first name
      */
     media_contact_firstname?: string | null;
     /**
-     * Billing contact first name
+     * Billing media contact last name
      */
     media_contact_lastname?: string | null;
     /**
@@ -85,11 +88,11 @@ export interface SSIOOrderLine {
      */
     pmp_name?: string | null;
     /**
-     * The po number
+     * The PO number
      */
     po_number?: string | null;
     /**
-     * OrderLineId in SFDC
+     * Order line id in SFDC
      */
     salesforce_order_line_id?: string | null;
     /**

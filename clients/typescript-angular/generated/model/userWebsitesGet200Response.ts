@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { UserWebsiteSummary } from './userWebsiteSummary';
+import { UserWebsite } from './userWebsite';
 
 
 export interface UserWebsitesGet200Response { 
     bookmark?: string | null;
-    items: Array<UserWebsiteSummary>;
+    items: Array<UserWebsite>;
 }
 

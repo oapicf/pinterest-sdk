@@ -8,7 +8,7 @@
 #' @description PromotionsList200Response Class
 #' @format An \code{R6Class} generator object
 #' @field bookmark  character [optional]
-#' @field items  list(\link{PromotionResponse})
+#' @field items  list(\link{Promotion})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -75,9 +75,32 @@ PromotionsList200Response <- R6::R6Class(
       }
       if (!is.null(self$`items`)) {
         PromotionsList200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`items`)
       }
       return(PromotionsList200ResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -91,7 +114,7 @@ PromotionsList200Response <- R6::R6Class(
         self$`bookmark` <- this_object$`bookmark`
       }
       if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[PromotionResponse]", loadNamespace("openapi"))
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[Promotion]", loadNamespace("openapi"))
       }
       self
     },
@@ -115,7 +138,7 @@ PromotionsList200Response <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`bookmark` <- this_object$`bookmark`
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[PromotionResponse]", loadNamespace("openapi"))
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[Promotion]", loadNamespace("openapi"))
       self
     },
 

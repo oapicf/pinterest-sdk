@@ -4,10 +4,10 @@ import apimodels.ConversionEventResponse;
 import apimodels.ConversionTag;
 import apimodels.ConversionTagCreate;
 import apimodels.ConversionTagsList200Response;
-import apimodels.Error;
 import java.util.Map;
 import apimodels.PageVisitConversionTagsGet200Response;
 import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
 
 import play.mvc.Http;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionTagsApiControllerImp extends ConversionTagsApiControllerImpInterface {
     @Override
     public ConversionTag conversionTagsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionTagCreate conversionTagCreate) throws Exception {
@@ -45,7 +45,7 @@ public class ConversionTagsApiControllerImp extends ConversionTagsApiControllerI
     }
 
     @Override
-    public PageVisitConversionTagsGet200Response pageVisitConversionTagsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception {
+    public PageVisitConversionTagsGet200Response pageVisitConversionTagsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order) throws Exception {
         //Do your magic!!!
         return new PageVisitConversionTagsGet200Response();
     }

@@ -5,46 +5,46 @@
 #include "Helpers.h"
 
 
-#include "UpdatableItemAttributes_gtin.h"
+#include "UpdatableItemAttributesGtin.h"
 
 using namespace std;
 using namespace Tizen::ArtikCloud;
 
-UpdatableItemAttributes_gtin::UpdatableItemAttributes_gtin()
+UpdatableItemAttributesGtin::UpdatableItemAttributesGtin()
 {
 	//__init();
 }
 
-UpdatableItemAttributes_gtin::~UpdatableItemAttributes_gtin()
+UpdatableItemAttributesGtin::~UpdatableItemAttributesGtin()
 {
 	//__cleanup();
 }
 
 void
-UpdatableItemAttributes_gtin::__init()
+UpdatableItemAttributesGtin::__init()
 {
 }
 
 void
-UpdatableItemAttributes_gtin::__cleanup()
+UpdatableItemAttributesGtin::__cleanup()
 {
 	//
 }
 
 void
-UpdatableItemAttributes_gtin::fromJson(char* jsonStr)
+UpdatableItemAttributesGtin::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
 }
 
-UpdatableItemAttributes_gtin::UpdatableItemAttributes_gtin(char* json)
+UpdatableItemAttributesGtin::UpdatableItemAttributesGtin(char* json)
 {
 	this->fromJson(json);
 }
 
 char*
-UpdatableItemAttributes_gtin::toJson()
+UpdatableItemAttributesGtin::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;

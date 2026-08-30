@@ -49,12 +49,12 @@ UpdateMemberAssetAccessBody::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<UpdateMemberAssetAccessBody_accesses_inner> new_list;
-			UpdateMemberAssetAccessBody_accesses_inner inst;
+			list<UpdateMemberAssetAccessItem> new_list;
+			UpdateMemberAssetAccessItem inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("UpdateMemberAssetAccessBody_accesses_inner")) {
-					jsonToValue(&inst, temp_json, "UpdateMemberAssetAccessBody_accesses_inner", "");
+				if (isprimitive("UpdateMemberAssetAccessItem")) {
+					jsonToValue(&inst, temp_json, "UpdateMemberAssetAccessItem", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -78,18 +78,18 @@ UpdateMemberAssetAccessBody::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("UpdateMemberAssetAccessBody_accesses_inner")) {
-		list<UpdateMemberAssetAccessBody_accesses_inner> new_list = static_cast<list <UpdateMemberAssetAccessBody_accesses_inner> > (getAccesses());
-		node = converttoJson(&new_list, "UpdateMemberAssetAccessBody_accesses_inner", "array");
+	if (isprimitive("UpdateMemberAssetAccessItem")) {
+		list<UpdateMemberAssetAccessItem> new_list = static_cast<list <UpdateMemberAssetAccessItem> > (getAccesses());
+		node = converttoJson(&new_list, "UpdateMemberAssetAccessItem", "array");
 	} else {
 		node = json_node_alloc();
-		list<UpdateMemberAssetAccessBody_accesses_inner> new_list = static_cast<list <UpdateMemberAssetAccessBody_accesses_inner> > (getAccesses());
+		list<UpdateMemberAssetAccessItem> new_list = static_cast<list <UpdateMemberAssetAccessItem> > (getAccesses());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<UpdateMemberAssetAccessBody_accesses_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<UpdateMemberAssetAccessItem>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			UpdateMemberAssetAccessBody_accesses_inner obj = *it;
+			UpdateMemberAssetAccessItem obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -111,14 +111,14 @@ UpdateMemberAssetAccessBody::toJson()
 	return ret;
 }
 
-std::list<UpdateMemberAssetAccessBody_accesses_inner>
+std::list<UpdateMemberAssetAccessItem>
 UpdateMemberAssetAccessBody::getAccesses()
 {
 	return accesses;
 }
 
 void
-UpdateMemberAssetAccessBody::setAccesses(std::list <UpdateMemberAssetAccessBody_accesses_inner> accesses)
+UpdateMemberAssetAccessBody::setAccesses(std::list <UpdateMemberAssetAccessItem> accesses)
 {
 	this->accesses = accesses;
 }

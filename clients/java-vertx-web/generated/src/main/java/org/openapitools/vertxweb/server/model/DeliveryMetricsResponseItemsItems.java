@@ -1,0 +1,123 @@
+package org.openapitools.vertxweb.server.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class DeliveryMetricsResponseItemsItems   {
+  
+
+
+  public enum CategoryEnum {
+    ADS("ADS"),
+    ORGANIC("ORGANIC");
+
+    private String value;
+
+    CategoryEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CategoryEnum category;
+  private String definition;
+  private String displayName;
+  private String name;
+
+  public DeliveryMetricsResponseItemsItems () {
+
+  }
+
+  public DeliveryMetricsResponseItemsItems (CategoryEnum category, String definition, String displayName, String name) {
+    this.category = category;
+    this.definition = definition;
+    this.displayName = displayName;
+    this.name = name;
+  }
+
+    
+  @JsonProperty("category")
+  public CategoryEnum getCategory() {
+    return category;
+  }
+  public void setCategory(CategoryEnum category) {
+    this.category = category;
+  }
+
+    
+  @JsonProperty("definition")
+  public String getDefinition() {
+    return definition;
+  }
+  public void setDefinition(String definition) {
+    this.definition = definition;
+  }
+
+    
+  @JsonProperty("display_name")
+  public String getDisplayName() {
+    return displayName;
+  }
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    DeliveryMetricsResponseItemsItems deliveryMetricsResponseItemsItems = (DeliveryMetricsResponseItemsItems) o;
+    return Objects.equals(category, deliveryMetricsResponseItemsItems.category) &&
+        Objects.equals(definition, deliveryMetricsResponseItemsItems.definition) &&
+        Objects.equals(displayName, deliveryMetricsResponseItemsItems.displayName) &&
+        Objects.equals(name, deliveryMetricsResponseItemsItems.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(category, definition, displayName, name);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class DeliveryMetricsResponseItemsItems {\n");
+    
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    definition: ").append(toIndentedString(definition)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}

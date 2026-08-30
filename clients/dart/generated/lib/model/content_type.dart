@@ -11,29 +11,29 @@
 part of openapi.api;
 
 
-class ContentType {
-  /// Instantiate a new enum with the provided [value].
-  const ContentType._(this.value);
+enum ContentType {
+  imageSlashJpeg._(r'image/jpeg'),
+  imageSlashPng._(r'image/png'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const ContentType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const imageSlashJpeg = ContentType._(r'image/jpeg');
-  static const imageSlashPng = ContentType._(r'image/png');
-
-  /// List of all possible values in this [enum][ContentType].
-  static const values = <ContentType>[
-    imageSlashJpeg,
-    imageSlashPng,
-  ];
-
+  /// Returns the instance of [ContentType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static ContentType? fromJson(dynamic value) => ContentTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [ContentType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<ContentType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ContentType>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class ContentTypeTypeTransformer {
 
   const ContentTypeTypeTransformer._();
 
-  String encode(ContentType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(ContentType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a ContentType.
+  /// Returns the instance of [ContentType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class ContentTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   ContentType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is ContentType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'image/jpeg': return ContentType.imageSlashJpeg;
@@ -79,7 +84,7 @@ class ContentTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [ContentTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static ContentTypeTypeTransformer? _instance;
 }
 

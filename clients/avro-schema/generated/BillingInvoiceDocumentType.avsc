@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The type of a billing invoice document.",
+  "name": "BillingInvoiceDocumentType",
+  "symbols": [
+    "INVOICE",
+    "CREDIT_MEMO"
+  ]
+}

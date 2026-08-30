@@ -24,14 +24,14 @@ List products by product group
 Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
 ```bash
- catalogsProductGroupPinsList product_group_id=value  bookmark=value  page_size=value  ad_account_id=value  pin_metrics=value
+ catalogsProductGroupPinsList product_group_id=value  ad_account_id=value  pin_metrics=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -40,14 +40,15 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **productGroupId** | **string** | Unique identifier of a product group | [default to null]
- **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
  **pinMetrics** | **boolean** | Specify whether to return 90d and lifetime Pin metrics. Total comments
 and total reactions are only available with lifetime Pin metrics. If Pin was
 created before '2023-03-20' lifetime metrics will only be available
 for Video and Idea Pin formats. Lifetime metrics are available for all Pin
 formats since then. | [optional] [default to false]
+ **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -55,7 +56,7 @@ formats since then. | [optional] [default to false]
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -72,9 +73,9 @@ Create product group
 Create product group to use in Catalogs owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option.
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
 If you require access, please reach out to your partner manager.
@@ -90,7 +91,7 @@ If you require access, please reach out to your partner manager.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **multipleProductGroupsInner** | [**MultipleProductGroupsInner**](MultipleProductGroupsInner.md) | Request object used to create a single catalogs product groups. |
+ **catalogsProductGroupsCreateRequestSchema** | [**CatalogsProductGroupsCreateRequestSchema**](CatalogsProductGroupsCreateRequestSchema.md) |  |
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -116,9 +117,9 @@ Create product groups
 Create product group to use in Catalogs owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
 If you require access, please reach out to your partner manager.
@@ -134,7 +135,7 @@ If you require access, please reach out to your partner manager.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **multipleProductGroupsInner** | [**array[MultipleProductGroupsInner]**](MultipleProductGroupsInner.md) | Request object used to create one or more catalogs product groups. |
+ **catalogsProductGroupsCreateManyRequestItems** | [**array[CatalogsProductGroupsCreateManyRequestItems]**](CatalogsProductGroupsCreateManyRequestItems.md) |  |
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -160,9 +161,9 @@ Delete product group
 Delete a product group owned by the \"operation user_account\" from being in use in Catalogs.
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
@@ -180,7 +181,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+[**CatalogsVerticalProductGroup**](CatalogsVerticalProductGroup.md)
 
 ### Authorization
 
@@ -201,9 +202,9 @@ Delete product groups
 Delete product groups owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
@@ -239,12 +240,12 @@ Name | Type | Description  | Notes
 
 Get product group
 
-Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\".
+Get a single product group for a given Catalogs Product Group Id owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
@@ -283,14 +284,14 @@ List product groups
 Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
 ```bash
- catalogsProductGroupsList  Specify as:  id="value1,value2,..."  feed_id=value  catalog_id=value  bookmark=value  page_size=value  ad_account_id=value
+ catalogsProductGroupsList  Specify as:  id="value1,value2,..."  feed_id=value  catalog_id=value  ad_account_id=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -301,9 +302,10 @@ Name | Type | Description  | Notes
  **id** | [**array[integer]**](integer.md) | Comma-separated list of product group ids | [optional] [default to null]
  **feedId** | **string** | Filter entities for a given feed_id. If not given, all feeds are considered. | [optional] [default to null]
  **catalogId** | **string** | Filter entities for a given catalog_id. If not given, all catalogs are considered. | [optional] [default to null]
- **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
+ **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -328,9 +330,9 @@ Get product counts
 Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
@@ -369,9 +371,9 @@ Update single product group
 Update product group owned by the \"operation user_account\" to use in Catalogs.
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option.
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
 If you require access, please reach out to your partner manager.
@@ -388,7 +390,7 @@ If you require access, please reach out to your partner manager.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **productGroupId** | **string** | Unique identifier of a product group | [default to null]
- **catalogsProductGroupsUpdateRequest** | [**CatalogsProductGroupsUpdateRequest**](CatalogsProductGroupsUpdateRequest.md) | Request object used to Update a catalogs product group. |
+ **catalogsProductGroupsUpdateRequestSchema** | [**CatalogsProductGroupsUpdateRequestSchema**](CatalogsProductGroupsUpdateRequestSchema.md) |  |
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -415,11 +417,11 @@ List products Pins owned by the \"operation user_account\" that meet the criteri
 - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent.
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an 'ad_account_id' (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 Note: This endpoint only supports RETAIL catalog at the moment.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 
@@ -432,9 +434,10 @@ Note: This endpoint only supports RETAIL catalog at the moment.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogsListProductsByFilterRequest** | [**CatalogsListProductsByFilterRequest**](CatalogsListProductsByFilterRequest.md) | Object holding a group of filters for a catalog product group |
+ **catalogsListProductsByFilterRequest** | [**CatalogsListProductsByFilterRequest**](CatalogsListProductsByFilterRequest.md) |  |
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
  **pinMetrics** | **boolean** | Specify whether to return 90d and lifetime Pin metrics. Total comments
 and total reactions are only available with lifetime Pin metrics. If Pin was

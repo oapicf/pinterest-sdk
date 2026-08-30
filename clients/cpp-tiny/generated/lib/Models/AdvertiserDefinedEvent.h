@@ -2,7 +2,7 @@
 /*
  * AdvertiserDefinedEvent.h
  *
- * 
+ * Advertiser defined event
  */
 
 #ifndef TINY_CPP_CLIENT_AdvertiserDefinedEvent_H_
@@ -12,11 +12,12 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include "ConversionTagTypeOptimal.h"
 
 namespace Tiny {
 
 
-/*! \brief 
+/*! \brief Advertiser defined event
  *
  *  \ingroup Models
  *
@@ -45,25 +46,25 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get raw string name of the event, usually logged as raw_event_name in our dataset
+	/*! \brief Get Standard type mapped to ADE for optimization
+	 */
+	ConversionTagTypeOptimal getMappedConversionType();
+
+	/*! \brief Set Standard type mapped to ADE for optimization
+	 */
+	void setMappedConversionType(ConversionTagTypeOptimal mapped_conversion_type);
+	/*! \brief Get Raw string name of the event, usually logged as raw_event_name in our dataset
 	 */
 	std::string getName();
 
-	/*! \brief Set raw string name of the event, usually logged as raw_event_name in our dataset
+	/*! \brief Set Raw string name of the event, usually logged as raw_event_name in our dataset
 	 */
-	void setName(std::string  name);
-	/*! \brief Get standard type mapped to ADE for optimization
-	 */
-	std::string getMappedConversionType();
-
-	/*! \brief Set standard type mapped to ADE for optimization
-	 */
-	void setMappedConversionType(std::string  mapped_conversion_type);
+	void setName(std::string name);
 
 
     private:
+    ConversionTagTypeOptimal mapped_conversion_type;
     std::string name{};
-    std::string mapped_conversion_type{};
 };
 }
 

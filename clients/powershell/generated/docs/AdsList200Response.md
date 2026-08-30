@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | **String** |  | [optional] 
-**Items** | [**AdResponse[]**](AdResponse.md) |  | 
+**Items** | [**Ad[]**](Ad.md) |  | 
 
 ## Examples
 

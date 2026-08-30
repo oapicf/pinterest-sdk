@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,13 +18,14 @@ package openapi
 type DeleteMemberAccessResult struct {
 
 	// Unique identifier of the business asset.
-	AssetId string `json:"asset_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AssetId string `json:"asset_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Unique identifier of the business member.
-	MemberId string `json:"member_id,omitempty" validate:"regexp=^\\\\d+$"`
+	MemberId string `json:"member_id,omitempty" validate:"regexp=^\\d+$"`
 }
 
-// AssertDeleteMemberAccessResultRequired checks if the required fields are not zero-ed
+// AssertDeleteMemberAccessResultRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertDeleteMemberAccessResultRequired(obj DeleteMemberAccessResult) error {
 	return nil
 }

@@ -5,22 +5,28 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
+
+// AdPreviewShopping - Ad preview from a catalog product group (shopping).
 type AdPreviewShopping struct {
 
 	// Catalog Product Group Id.
-	CatalogProductGroupId string `json:"catalog_product_group_id" validate:"regexp=^\\\\d+$"`
+	CatalogProductGroupId string `json:"catalog_product_group_id" validate:"regexp=^\\d+$"`
 
 	// Ad format of the shopping ad preview.
-	CreativeType string `json:"creative_type"`
+	CreativeType AdShoppingPreviewCreativeType `json:"creative_type"`
 
 	// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE`
 	CustomizableCtaType *CustomizableCtaType `json:"customizable_cta_type,omitempty"`
@@ -32,7 +38,7 @@ type AdPreviewShopping struct {
 	HeroImageUrl string `json:"hero_image_url,omitempty"`
 
 	// Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required.
-	HeroPinId string `json:"hero_pin_id,omitempty" validate:"regexp=^\\\\d+$"`
+	HeroPinId string `json:"hero_pin_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Multi image template tag.
 	ImageTag string `json:"image_tag,omitempty"`
@@ -41,24 +47,132 @@ type AdPreviewShopping struct {
 	ItemId string `json:"item_id,omitempty"`
 
 	// Preferred media type.
-	PreferredMediaType string `json:"preferred_media_type,omitempty"`
+	PreferredMediaType BasePreferredMediaType `json:"preferred_media_type,omitempty"`
+
+	// Include promotion data in preview when available on catalog item. Defaults to false.
+	ShowPromotion bool `json:"show_promotion,omitempty"`
 
 	// Multi video template tag, image_tag and video_tag are mutual exclusive.
 	VideoTag string `json:"video_tag,omitempty"`
 }
-
-// AssertAdPreviewShoppingRequired checks if the required fields are not zero-ed
-func AssertAdPreviewShoppingRequired(obj AdPreviewShopping) error {
-	elements := map[string]interface{}{
-		"catalog_product_group_id": obj.CatalogProductGroupId,
-		"creative_type": obj.CreativeType,
+// UnmarshalJSON validates required property keys then unmarshals into AdPreviewShopping
+func (o *AdPreviewShopping) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"catalog_product_group_id",
+		"creative_type",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"catalog_product_group_id": false,
+		"creative_type": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"catalog_product_group_id": {},
+		"creative_type": {},
+		"customizable_cta_type": {},
+		"hero_image_title": {},
+		"hero_image_url": {},
+		"hero_pin_id": {},
+		"image_tag": {},
+		"item_id": {},
+		"preferred_media_type": {},
+		"show_promotion": {},
+		"video_tag": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded AdPreviewShopping
+
+	if value, exists := allProperties["catalog_product_group_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogProductGroupId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["creative_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreativeType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["customizable_cta_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CustomizableCtaType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["hero_image_title"]; exists {
+		if err = json.Unmarshal(value, &decoded.HeroImageTitle); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["hero_image_url"]; exists {
+		if err = json.Unmarshal(value, &decoded.HeroImageUrl); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["hero_pin_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.HeroPinId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["image_tag"]; exists {
+		if err = json.Unmarshal(value, &decoded.ImageTag); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["item_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.ItemId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["preferred_media_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.PreferredMediaType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["show_promotion"]; exists {
+		if err = json.Unmarshal(value, &decoded.ShowPromotion); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["video_tag"]; exists {
+		if err = json.Unmarshal(value, &decoded.VideoTag); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertAdPreviewShoppingRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertAdPreviewShoppingRequired(obj AdPreviewShopping) error {
 	return nil
 }
 

@@ -10,8 +10,8 @@
 
 -type openapi_label_bulk_update_request() ::
   [ {'id', binary() }
-  | {'status', binary() }
-  | {'value', binary() }
+  | {'parent_id', binary() }
+  | {'status', openapi_label_status_bulk_update:openapi_label_status_bulk_update() }
   ].
 
 
@@ -20,8 +20,8 @@ openapi_label_bulk_update_request() ->
 
 openapi_label_bulk_update_request(Fields) ->
   Default = [ {'id', binary() }
-            , {'status', elements([<<"ARCHIVED">>]) }
-            , {'value', binary() }
+            , {'parent_id', binary() }
+            , {'status', openapi_label_status_bulk_update:openapi_label_status_bulk_update() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

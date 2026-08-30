@@ -17,63 +17,63 @@ Method | HTTP request | Description
 
 <a name="BrandAccountsCreate"></a>
 # **BrandAccountsCreate**
-> BrandAccountsCreate200Response BrandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest)
+> BrandAccount BrandAccountsCreate(businessHierarchyId, brandAccountCreate)
 
 Create a Brand Account
 
 Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
 <a name="BrandAccountsUpdate"></a>
 # **BrandAccountsUpdate**
-> BrandAccountsCreate200Response BrandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest)
+> BrandAccount BrandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate)
 
 Update a Brand Account
 
 Update an existing Brand Account
 <a name="DeleteBusinessMembership"></a>
 # **DeleteBusinessMembership**
-> DeletedMembersResponse DeleteBusinessMembership(businessId, membersToDeleteBody)
+> DeleteBusinessMembership200Response DeleteBusinessMembership(businessId, deleteBusinessMembershipBody)
 
 Terminate business memberships
 
 Terminate memberships between the specified members and your business.
 <a name="DeleteBusinessPartners"></a>
 # **DeleteBusinessPartners**
-> DeletePartnersResponse DeleteBusinessPartners(businessId, deletePartnersRequest)
+> DeleteBusinessPartners DeleteBusinessPartners(businessId, deleteBusinessPartnersDelete)
 
 Terminate business partnerships
 
 Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
 <a name="GetBusinessEmployers"></a>
 # **GetBusinessEmployers**
-> GetBusinessEmployers200Response GetBusinessEmployers(pageSize, bookmark)
+> GetBusinessEmployers200Response GetBusinessEmployers(assetsSummary, bookmark, pageSize)
 
 List business employers for user
 
 Get all of the viewing user&#39;s business employers.
 <a name="GetBusinessMembers"></a>
 # **GetBusinessMembers**
-> GetBusinessMembers200Response GetBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
+> GetBusinessEmployers200Response GetBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
 
 Get business members
 
 Get all members of the specified business. The return response will include the member&#39;s business_role and assets they have access to if assets_summary&#x3D;TRUE
 <a name="GetBusinessPartners"></a>
 # **GetBusinessPartners**
-> GetBusinessPartners200Response GetBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark)
+> GetBusinessEmployers200Response GetBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, sortAscending, bookmark, pageSize)
 
 Get business partners
 
 Get all partners of the specified business.  If the assets_summary&#x3D;TRUE and: - partner_type&#x3D;INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type&#x3D;EXTERNAL, the business assets returned are your partner&#39;s business assets the partner has granted you   access to.
 <a name="SystemUserUpdate"></a>
 # **SystemUserUpdate**
-> SystemUserUpdate(businessId, systemUserId, systemUserUpdateRequest)
+> SystemUserUpdate(businessId, systemUserId, systemUserUpdateWithRequiredBody)
 
 Update a system user information.
 
 Update a system user information such as name.
 <a name="UpdateBusinessMemberships"></a>
 # **UpdateBusinessMemberships**
-> UpdateMemberResultsResponseArray UpdateBusinessMemberships(businessId, updateMemberBusinessRoleBody)
+> UpdateBusinessMembershipsResponse UpdateBusinessMemberships(businessId, businessMembershipMember)
 
 Update member&#39;s business role
 

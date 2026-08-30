@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Type of an attributed action.",
+  "name": "AttributionActionType",
+  "symbols": [
+    "view",
+    "click"
+  ]
+}

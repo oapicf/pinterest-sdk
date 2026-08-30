@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **app_type** | **String** |  | [optional] |
+| **app_type** | [**TargetingSpecAppType**](TargetingSpecAppType.md) | App type identifier. | [optional] |
 
 ## Example
 

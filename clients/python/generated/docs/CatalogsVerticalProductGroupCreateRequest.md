@@ -6,7 +6,7 @@ Request object for creating a catalog based product group.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **str** | Catalog id pertaining to the creative assets product group. | 
+**catalog_id** | **str** | Catalog ID pertaining to the product group. | 
 **catalog_type** | **str** |  | 
 **country** | [**Country**](Country.md) |  | [optional] 
 **description** | **str** |  | [optional] 

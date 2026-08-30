@@ -6,9 +6,11 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.ad_preview_create_from_image import AdPreviewCreateFromImage  # noqa: F401,E501
-from app.openapi_server.models.ad_preview_create_from_pin import AdPreviewCreateFromPin  # noqa: F401,E501
 from app.openapi_server.models.ad_preview_shopping import AdPreviewShopping  # noqa: F401,E501
+from app.openapi_server.models.ad_preview_source_image import AdPreviewSourceImage  # noqa: F401,E501
+from app.openapi_server.models.ad_preview_source_pin_id import AdPreviewSourcePinId  # noqa: F401,E501
+from app.openapi_server.models.ad_shopping_preview_creative_type import AdShoppingPreviewCreativeType  # noqa: F401,E501
+from app.openapi_server.models.base_preferred_media_type import BasePreferredMediaType  # noqa: F401,E501
 from app.openapi_server.models.customizable_cta_type import CustomizableCTAType  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
@@ -20,19 +22,21 @@ class AdPreviewRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, image_url: str=None, title: str=None, pin_id: str=None, catalog_product_group_id: str=None, creative_type: str=None, customizable_cta_type: CustomizableCTAType=None, hero_image_title: str=None, hero_image_url: str=None, hero_pin_id: str=None, image_tag: str=None, item_id: str=None, preferred_media_type: str=None, video_tag: str=None):  # noqa: E501
+    def __init__(self, image_url: str=None, promotion_id: str=None, title: str=None, creative_type: AdShoppingPreviewCreativeType=None, pin_id: str=None, catalog_product_group_id: str=None, customizable_cta_type: CustomizableCTAType=None, hero_image_title: str=None, hero_image_url: str=None, hero_pin_id: str=None, image_tag: str=None, item_id: str=None, preferred_media_type: BasePreferredMediaType=None, show_promotion: bool=None, video_tag: str=None):  # noqa: E501
         """AdPreviewRequest - a model defined in Swagger
 
         :param image_url: The image_url of this AdPreviewRequest.  # noqa: E501
         :type image_url: str
+        :param promotion_id: The promotion_id of this AdPreviewRequest.  # noqa: E501
+        :type promotion_id: str
         :param title: The title of this AdPreviewRequest.  # noqa: E501
         :type title: str
+        :param creative_type: The creative_type of this AdPreviewRequest.  # noqa: E501
+        :type creative_type: AdShoppingPreviewCreativeType
         :param pin_id: The pin_id of this AdPreviewRequest.  # noqa: E501
         :type pin_id: str
         :param catalog_product_group_id: The catalog_product_group_id of this AdPreviewRequest.  # noqa: E501
         :type catalog_product_group_id: str
-        :param creative_type: The creative_type of this AdPreviewRequest.  # noqa: E501
-        :type creative_type: str
         :param customizable_cta_type: The customizable_cta_type of this AdPreviewRequest.  # noqa: E501
         :type customizable_cta_type: CustomizableCTAType
         :param hero_image_title: The hero_image_title of this AdPreviewRequest.  # noqa: E501
@@ -46,32 +50,37 @@ class AdPreviewRequest(Model):
         :param item_id: The item_id of this AdPreviewRequest.  # noqa: E501
         :type item_id: str
         :param preferred_media_type: The preferred_media_type of this AdPreviewRequest.  # noqa: E501
-        :type preferred_media_type: str
+        :type preferred_media_type: BasePreferredMediaType
+        :param show_promotion: The show_promotion of this AdPreviewRequest.  # noqa: E501
+        :type show_promotion: bool
         :param video_tag: The video_tag of this AdPreviewRequest.  # noqa: E501
         :type video_tag: str
         """
         self.swagger_types = {
             'image_url': str,
+            'promotion_id': str,
             'title': str,
+            'creative_type': AdShoppingPreviewCreativeType,
             'pin_id': str,
             'catalog_product_group_id': str,
-            'creative_type': str,
             'customizable_cta_type': CustomizableCTAType,
             'hero_image_title': str,
             'hero_image_url': str,
             'hero_pin_id': str,
             'image_tag': str,
             'item_id': str,
-            'preferred_media_type': str,
+            'preferred_media_type': BasePreferredMediaType,
+            'show_promotion': bool,
             'video_tag': str
         }
 
         self.attribute_map = {
             'image_url': 'image_url',
+            'promotion_id': 'promotion_id',
             'title': 'title',
+            'creative_type': 'creative_type',
             'pin_id': 'pin_id',
             'catalog_product_group_id': 'catalog_product_group_id',
-            'creative_type': 'creative_type',
             'customizable_cta_type': 'customizable_cta_type',
             'hero_image_title': 'hero_image_title',
             'hero_image_url': 'hero_image_url',
@@ -79,14 +88,16 @@ class AdPreviewRequest(Model):
             'image_tag': 'image_tag',
             'item_id': 'item_id',
             'preferred_media_type': 'preferred_media_type',
+            'show_promotion': 'show_promotion',
             'video_tag': 'video_tag'
         }
 
         self._image_url = image_url
+        self._promotion_id = promotion_id
         self._title = title
+        self._creative_type = creative_type
         self._pin_id = pin_id
         self._catalog_product_group_id = catalog_product_group_id
-        self._creative_type = creative_type
         self._customizable_cta_type = customizable_cta_type
         self._hero_image_title = hero_image_title
         self._hero_image_url = hero_image_url
@@ -94,6 +105,7 @@ class AdPreviewRequest(Model):
         self._image_tag = image_tag
         self._item_id = item_id
         self._preferred_media_type = preferred_media_type
+        self._show_promotion = show_promotion
         self._video_tag = video_tag
 
     @classmethod
@@ -133,6 +145,31 @@ class AdPreviewRequest(Model):
         self._image_url = image_url
 
     @property
+    def promotion_id(self) -> str:
+        """Gets the promotion_id of this AdPreviewRequest.
+
+        Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.  # noqa: E501
+
+        :return: The promotion_id of this AdPreviewRequest.
+        :rtype: str
+        """
+        return self._promotion_id
+
+    @promotion_id.setter
+    def promotion_id(self, promotion_id: str):
+        """Sets the promotion_id of this AdPreviewRequest.
+
+        Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.  # noqa: E501
+
+        :param promotion_id: The promotion_id of this AdPreviewRequest.
+        :type promotion_id: str
+        """
+        if promotion_id is not None and not re.search(r'^\d+$', promotion_id):  # noqa: E501
+            raise ValueError("Invalid value for `promotion_id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
+
+        self._promotion_id = promotion_id
+
+    @property
     def title(self) -> str:
         """Gets the title of this AdPreviewRequest.
 
@@ -156,6 +193,31 @@ class AdPreviewRequest(Model):
             raise ValueError("Invalid value for `title`, must not be `None`")  # noqa: E501
 
         self._title = title
+
+    @property
+    def creative_type(self) -> AdShoppingPreviewCreativeType:
+        """Gets the creative_type of this AdPreviewRequest.
+
+        Ad format of the shopping ad preview.  # noqa: E501
+
+        :return: The creative_type of this AdPreviewRequest.
+        :rtype: AdShoppingPreviewCreativeType
+        """
+        return self._creative_type
+
+    @creative_type.setter
+    def creative_type(self, creative_type: AdShoppingPreviewCreativeType):
+        """Sets the creative_type of this AdPreviewRequest.
+
+        Ad format of the shopping ad preview.  # noqa: E501
+
+        :param creative_type: The creative_type of this AdPreviewRequest.
+        :type creative_type: AdShoppingPreviewCreativeType
+        """
+        if creative_type is None:
+            raise ValueError("Invalid value for `creative_type`, must not be `None`")  # noqa: E501
+
+        self._creative_type = creative_type
 
     @property
     def pin_id(self) -> str:
@@ -208,35 +270,6 @@ class AdPreviewRequest(Model):
             raise ValueError("Invalid value for `catalog_product_group_id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
         self._catalog_product_group_id = catalog_product_group_id
-
-    @property
-    def creative_type(self) -> str:
-        """Gets the creative_type of this AdPreviewRequest.
-
-        Ad format of the shopping ad preview.  # noqa: E501
-
-        :return: The creative_type of this AdPreviewRequest.
-        :rtype: str
-        """
-        return self._creative_type
-
-    @creative_type.setter
-    def creative_type(self, creative_type: str):
-        """Sets the creative_type of this AdPreviewRequest.
-
-        Ad format of the shopping ad preview.  # noqa: E501
-
-        :param creative_type: The creative_type of this AdPreviewRequest.
-        :type creative_type: str
-        """
-        allowed_values = ["SHOPPING", "CAROUSEL", "COLLECTION", "REGULAR"]  # noqa: E501
-        if creative_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `creative_type` ({0}), must be one of {1}"
-                .format(creative_type, allowed_values)
-            )
-
-        self._creative_type = creative_type
 
     @property
     def customizable_cta_type(self) -> CustomizableCTAType:
@@ -379,33 +412,50 @@ class AdPreviewRequest(Model):
         self._item_id = item_id
 
     @property
-    def preferred_media_type(self) -> str:
+    def preferred_media_type(self) -> BasePreferredMediaType:
         """Gets the preferred_media_type of this AdPreviewRequest.
 
         Preferred media type.  # noqa: E501
 
         :return: The preferred_media_type of this AdPreviewRequest.
-        :rtype: str
+        :rtype: BasePreferredMediaType
         """
         return self._preferred_media_type
 
     @preferred_media_type.setter
-    def preferred_media_type(self, preferred_media_type: str):
+    def preferred_media_type(self, preferred_media_type: BasePreferredMediaType):
         """Sets the preferred_media_type of this AdPreviewRequest.
 
         Preferred media type.  # noqa: E501
 
         :param preferred_media_type: The preferred_media_type of this AdPreviewRequest.
-        :type preferred_media_type: str
+        :type preferred_media_type: BasePreferredMediaType
         """
-        allowed_values = ["VIDEO", "IMAGE"]  # noqa: E501
-        if preferred_media_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `preferred_media_type` ({0}), must be one of {1}"
-                .format(preferred_media_type, allowed_values)
-            )
 
         self._preferred_media_type = preferred_media_type
+
+    @property
+    def show_promotion(self) -> bool:
+        """Gets the show_promotion of this AdPreviewRequest.
+
+        Include promotion data in preview when available on catalog item. Defaults to false.  # noqa: E501
+
+        :return: The show_promotion of this AdPreviewRequest.
+        :rtype: bool
+        """
+        return self._show_promotion
+
+    @show_promotion.setter
+    def show_promotion(self, show_promotion: bool):
+        """Sets the show_promotion of this AdPreviewRequest.
+
+        Include promotion data in preview when available on catalog item. Defaults to false.  # noqa: E501
+
+        :param show_promotion: The show_promotion of this AdPreviewRequest.
+        :type show_promotion: bool
+        """
+
+        self._show_promotion = show_promotion
 
     @property
     def video_tag(self) -> str:

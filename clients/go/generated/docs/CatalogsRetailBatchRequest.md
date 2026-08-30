@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **CatalogId** | Pointer to **string** | Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog | [optional] 
 **CatalogType** | **string** |  | 
 **Country** | [**Country**](Country.md) |  | 
-**Items** | [**[]CatalogsRetailBatchRequestItemsInner**](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations | 
+**Items** | [**[]CatalogsRetailBatchRequestItemsItems**](CatalogsRetailBatchRequestItemsItems.md) | Array with catalogs item operations | 
 **Language** | **string** | We recommend using the CatalogsLocale values. | 
 
 ## Methods
 
 ### NewCatalogsRetailBatchRequest
 
-`func NewCatalogsRetailBatchRequest(catalogType string, country Country, items []CatalogsRetailBatchRequestItemsInner, language string, ) *CatalogsRetailBatchRequest`
+`func NewCatalogsRetailBatchRequest(catalogType string, country Country, items []CatalogsRetailBatchRequestItemsItems, language string, ) *CatalogsRetailBatchRequest`
 
 NewCatalogsRetailBatchRequest instantiates a new CatalogsRetailBatchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -96,20 +96,20 @@ SetCountry sets Country field to given value.
 
 ### GetItems
 
-`func (o *CatalogsRetailBatchRequest) GetItems() []CatalogsRetailBatchRequestItemsInner`
+`func (o *CatalogsRetailBatchRequest) GetItems() []CatalogsRetailBatchRequestItemsItems`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *CatalogsRetailBatchRequest) GetItemsOk() (*[]CatalogsRetailBatchRequestItemsInner, bool)`
+`func (o *CatalogsRetailBatchRequest) GetItemsOk() (*[]CatalogsRetailBatchRequestItemsItems, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *CatalogsRetailBatchRequest) SetItems(v []CatalogsRetailBatchRequestItemsInner)`
+`func (o *CatalogsRetailBatchRequest) SetItems(v []CatalogsRetailBatchRequestItemsItems)`
 
 SetItems sets Items field to given value.
 

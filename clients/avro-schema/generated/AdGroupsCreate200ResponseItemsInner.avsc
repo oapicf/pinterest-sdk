@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdGroupsCreate200ResponseItemsInner",
+  "fields": [
+    {
+      "name": "data",
+      "type": ["null", "model.AdGroup"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "exceptions",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.PinterestLibBatchItemException"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

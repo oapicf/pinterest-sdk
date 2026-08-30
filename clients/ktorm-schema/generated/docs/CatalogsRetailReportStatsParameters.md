@@ -6,7 +6,7 @@
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **catalogType** | catalog_type | text NOT NULL |  | [**catalog_type**](#CatalogType) |  | 
-**report** | report | long NOT NULL |  | [**CatalogsHotelReportStatsParametersReport**](CatalogsHotelReportStatsParametersReport.md) |  |  [foreignkey]
+**report** | report | long NOT NULL |  | [**CatalogsRetailReportStatsParametersReport**](CatalogsRetailReportStatsParametersReport.md) |  |  [foreignkey]
 
 
 

@@ -13,36 +13,36 @@ Method | HTTP request | Description
 
 <a name="LeadFormGet"></a>
 # **LeadFormGet**
-> LeadFormResponse LeadFormGet(adAccountId, leadFormId)
+> LeadForm LeadFormGet(leadFormId, adAccountId)
 
 Get lead form by id
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 <a name="LeadFormTestCreate"></a>
 # **LeadFormTestCreate**
-> LeadFormTestResponse LeadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest)
+> LeadFormTest LeadFormTestCreate(adAccountId, leadFormId, leadFormTestCreate)
 
 Create lead form test data
 
 Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
 <a name="LeadFormsCreate"></a>
 # **LeadFormsCreate**
-> LeadFormArrayResponse LeadFormsCreate(adAccountId, leadFormCreateRequest)
+> LeadFormsCreate200Response LeadFormsCreate(adAccountId, leadFormCreate)
 
 Create lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form&#39;s description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 <a name="LeadFormsList"></a>
 # **LeadFormsList**
-> LeadFormsList200Response LeadFormsList(adAccountId, pageSize, order, bookmark)
+> LeadFormsList200Response LeadFormsList(adAccountId, bookmark, pageSize, order)
 
 List lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  List lead forms associated with an ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 <a name="LeadFormsUpdate"></a>
 # **LeadFormsUpdate**
-> LeadFormArrayResponse LeadFormsUpdate(adAccountId, leadFormUpdateRequest)
+> LeadFormsCreate200Response LeadFormsUpdate(adAccountId, leadFormBatchUpdate)
 
 Update lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).

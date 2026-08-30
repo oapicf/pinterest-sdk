@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -64,7 +64,7 @@ const (
 	NB Language = "NB"
 	NE Language = "NE"
 	NL Language = "NL"
-	NO Language = "NO"
+	FALSE Language = "false"
 	PL Language = "PL"
 	PT Language = "PT"
 	RO Language = "RO"
@@ -129,7 +129,7 @@ var AllowedLanguageEnumValues = []Language{
 	"NB",
 	"NE",
 	"NL",
-	"NO",
+	"false",
 	"PL",
 	"PT",
 	"RO",

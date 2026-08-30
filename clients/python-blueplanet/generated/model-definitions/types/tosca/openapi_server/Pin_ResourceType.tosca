@@ -7,6 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  AiDisclosures = openapi_server.resourceTypes.AiDisclosures
   BoardOwner = openapi_server.resourceTypes.BoardOwner
   CreativeType = openapi_server.resourceTypes.CreativeType
   PinMedia = openapi_server.resourceTypes.PinMedia
@@ -19,9 +20,9 @@ resourceTypes {
     description = Pin
     derivedFrom = Root
     properties {
-        alt_text {
-          type =  string
-          description = ""
+        ai_disclosures {
+          type = AiDisclosures
+          description = "AI disclosure declarations the creator has made about this Pin."
           optional = false
         }
         board_id {
@@ -49,11 +50,6 @@ resourceTypes {
           description = ""
           optional = false
         }
-        description {
-          type =  string
-          description = ""
-          optional = false
-        }
         dominant_color {
           type =  string
           description = "Dominant pin color. Hex number, e.g. &#x60;#6E7874&#x60;."
@@ -74,14 +70,14 @@ resourceTypes {
           description = "Whether the \&quot;operation user_account\&quot; is the Pin owner."
           optional = false
         }
+        is_product {
+          type =  boolean
+          description = "Whether the Pin is a product Pin."
+          optional = false
+        }
         is_standard {
           type =  boolean
           description = "Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information."
-          optional = false
-        }
-        link {
-          type =  string
-          description = ""
           optional = false
         }
         media {
@@ -97,6 +93,21 @@ resourceTypes {
         pin_metrics {
           type =  
           description = "Pin metrics with associated time intervals if any."
+          optional = false
+        }
+        alt_text {
+          type =  string
+          description = ""
+          optional = false
+        }
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        link {
+          type =  string
+          description = ""
           optional = false
         }
         title {

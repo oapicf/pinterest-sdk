@@ -21,7 +21,8 @@ typedef struct trending_topic_t trending_topic_t;
 
 typedef struct trending_topic_t {
     char *description; // string
-    int percent_growth_mom; //numeric
+    char *id; // string
+    int *percent_growth_mom; //numeric
     list_t *pins; //nonprimitive container
     list_t *related_interests; //primitive container
     list_t *related_searches; //primitive container
@@ -33,7 +34,8 @@ typedef struct trending_topic_t {
 
 __attribute__((deprecated)) trending_topic_t *trending_topic_create(
     char *description,
-    int percent_growth_mom,
+    char *id,
+    int *percent_growth_mom,
     list_t *pins,
     list_t *related_interests,
     list_t *related_searches,

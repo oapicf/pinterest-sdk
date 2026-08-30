@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PRODUCTGROUP** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**PRODUCTGROUP** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 ## Examples
 

@@ -66,12 +66,12 @@ Business_assets_get_200_response::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<GetBusinessAssetsResponse> new_list;
-			GetBusinessAssetsResponse inst;
+			list<BusinessAssets> new_list;
+			BusinessAssets inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("GetBusinessAssetsResponse")) {
-					jsonToValue(&inst, temp_json, "GetBusinessAssetsResponse", "");
+				if (isprimitive("BusinessAssets")) {
+					jsonToValue(&inst, temp_json, "BusinessAssets", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ Business_assets_get_200_response::toJson()
 	}
 	const gchar *bookmarkKey = "bookmark";
 	json_object_set_member(pJsonObject, bookmarkKey, node);
-	if (isprimitive("GetBusinessAssetsResponse")) {
-		list<GetBusinessAssetsResponse> new_list = static_cast<list <GetBusinessAssetsResponse> > (getItems());
-		node = converttoJson(&new_list, "GetBusinessAssetsResponse", "array");
+	if (isprimitive("BusinessAssets")) {
+		list<BusinessAssets> new_list = static_cast<list <BusinessAssets> > (getItems());
+		node = converttoJson(&new_list, "BusinessAssets", "array");
 	} else {
 		node = json_node_alloc();
-		list<GetBusinessAssetsResponse> new_list = static_cast<list <GetBusinessAssetsResponse> > (getItems());
+		list<BusinessAssets> new_list = static_cast<list <BusinessAssets> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<GetBusinessAssetsResponse>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<BusinessAssets>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			GetBusinessAssetsResponse obj = *it;
+			BusinessAssets obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ Business_assets_get_200_response::setBookmark(std::string  bookmark)
 	this->bookmark = bookmark;
 }
 
-std::list<GetBusinessAssetsResponse>
+std::list<BusinessAssets>
 Business_assets_get_200_response::getItems()
 {
 	return items;
 }
 
 void
-Business_assets_get_200_response::setItems(std::list <GetBusinessAssetsResponse> items)
+Business_assets_get_200_response::setItems(std::list <BusinessAssets> items)
 {
 	this->items = items;
 }

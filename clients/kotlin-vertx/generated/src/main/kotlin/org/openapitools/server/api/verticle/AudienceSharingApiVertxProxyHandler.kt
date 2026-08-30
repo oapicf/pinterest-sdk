@@ -16,14 +16,19 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
+import org.openapitools.server.api.model.AdAccountToAdAccountSharedAudience
+import org.openapitools.server.api.model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+import org.openapitools.server.api.model.AdAccountToBusinessSharedAudience
+import org.openapitools.server.api.model.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
 import org.openapitools.server.api.model.AdAccountsAudiencesSharedAccountsList200Response
 import org.openapitools.server.api.model.AudienceAccountType
-import org.openapitools.server.api.model.AudiencesList200Response
-import org.openapitools.server.api.model.BusinessSharedAudience
-import org.openapitools.server.api.model.BusinessSharedAudienceResponse
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.SharedAudience
-import org.openapitools.server.api.model.SharedAudienceResponse
+import org.openapitools.server.api.model.BusinessToAdAccountSharedAudience
+import org.openapitools.server.api.model.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+import org.openapitools.server.api.model.BusinessToBusinessSharedAudience
+import org.openapitools.server.api.model.BusinessToBusinessSharedAudienceUpdateWithRequiredBody
+import org.openapitools.server.api.model.Order
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.SharedAudiencesForBusinessList200Response
 
 class AudienceSharingApiVertxProxyHandler(private val vertx: Vertx, private val service: AudienceSharingApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -73,10 +78,6 @@ class AudienceSharingApiVertxProxyHandler(private val vertx: Vertx, private val 
         
                 "adAccountsAudiencesSharedAccountsList" -> {
                     val params = context.params
-                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
-                    if(adAccountId == null){
-                        throw IllegalArgumentException("adAccountId is required")
-                    }
                     val audienceId = ApiHandlerUtils.searchStringInJson(params,"audience_id")
                     if(audienceId == null){
                         throw IllegalArgumentException("audienceId is required")
@@ -86,10 +87,14 @@ class AudienceSharingApiVertxProxyHandler(private val vertx: Vertx, private val 
                         throw IllegalArgumentException("accountType is required")
                     }
                     val accountType = Gson().fromJson(accountTypeParam.encode(), AudienceAccountType::class.java)
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.adAccountsAudiencesSharedAccountsList(adAccountId,audienceId,accountType,pageSize,bookmark,context)
+                        val result = service.adAccountsAudiencesSharedAccountsList(audienceId,accountType,adAccountId,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -113,10 +118,10 @@ class AudienceSharingApiVertxProxyHandler(private val vertx: Vertx, private val 
                         throw IllegalArgumentException("accountType is required")
                     }
                     val accountType = Gson().fromJson(accountTypeParam.encode(), AudienceAccountType::class.java)
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.businessAccountAudiencesSharedAccountsList(businessId,audienceId,accountType,pageSize,bookmark,context)
+                        val result = service.businessAccountAudiencesSharedAccountsList(businessId,audienceId,accountType,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -131,11 +136,12 @@ class AudienceSharingApiVertxProxyHandler(private val vertx: Vertx, private val 
                     if(businessId == null){
                         throw IllegalArgumentException("businessId is required")
                     }
+                    val orderParam = ApiHandlerUtils.searchJsonObjectInJson(params,"order")
+                    val order = if(orderParam ==null) null else Gson().fromJson(orderParam.encode(), Order::class.java)
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
-                    val order = ApiHandlerUtils.searchStringInJson(params,"order")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.sharedAudiencesForBusinessList(businessId,bookmark,order,pageSize,context)
+                        val result = service.sharedAudiencesForBusinessList(businessId,order,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -150,13 +156,13 @@ class AudienceSharingApiVertxProxyHandler(private val vertx: Vertx, private val 
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val sharedAudienceParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (sharedAudienceParam == null) {
-                        throw IllegalArgumentException("sharedAudience is required")
+                    val adAccountToAdAccountSharedAudienceUpdateWithRequiredBodyParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (adAccountToAdAccountSharedAudienceUpdateWithRequiredBodyParam == null) {
+                        throw IllegalArgumentException("adAccountToAdAccountSharedAudienceUpdateWithRequiredBody is required")
                     }
-                    val sharedAudience = Gson().fromJson(sharedAudienceParam.encode(), SharedAudience::class.java)
+                    val adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = Gson().fromJson(adAccountToAdAccountSharedAudienceUpdateWithRequiredBodyParam.encode(), AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.updateAdAccountToAdAccountSharedAudience(adAccountId,sharedAudience,context)
+                        val result = service.updateAdAccountToAdAccountSharedAudience(adAccountId,adAccountToAdAccountSharedAudienceUpdateWithRequiredBody,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -171,13 +177,13 @@ class AudienceSharingApiVertxProxyHandler(private val vertx: Vertx, private val 
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val businessSharedAudienceParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (businessSharedAudienceParam == null) {
-                        throw IllegalArgumentException("businessSharedAudience is required")
+                    val adAccountToBusinessSharedAudienceUpdateWithRequiredBodyParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (adAccountToBusinessSharedAudienceUpdateWithRequiredBodyParam == null) {
+                        throw IllegalArgumentException("adAccountToBusinessSharedAudienceUpdateWithRequiredBody is required")
                     }
-                    val businessSharedAudience = Gson().fromJson(businessSharedAudienceParam.encode(), BusinessSharedAudience::class.java)
+                    val adAccountToBusinessSharedAudienceUpdateWithRequiredBody = Gson().fromJson(adAccountToBusinessSharedAudienceUpdateWithRequiredBodyParam.encode(), AdAccountToBusinessSharedAudienceUpdateWithRequiredBody::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.updateAdAccountToBusinessSharedAudience(adAccountId,businessSharedAudience,context)
+                        val result = service.updateAdAccountToBusinessSharedAudience(adAccountId,adAccountToBusinessSharedAudienceUpdateWithRequiredBody,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -192,13 +198,13 @@ class AudienceSharingApiVertxProxyHandler(private val vertx: Vertx, private val 
                     if(businessId == null){
                         throw IllegalArgumentException("businessId is required")
                     }
-                    val sharedAudienceParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (sharedAudienceParam == null) {
-                        throw IllegalArgumentException("sharedAudience is required")
+                    val businessToAdAccountSharedAudienceUpdateWithRequiredBodyParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (businessToAdAccountSharedAudienceUpdateWithRequiredBodyParam == null) {
+                        throw IllegalArgumentException("businessToAdAccountSharedAudienceUpdateWithRequiredBody is required")
                     }
-                    val sharedAudience = Gson().fromJson(sharedAudienceParam.encode(), SharedAudience::class.java)
+                    val businessToAdAccountSharedAudienceUpdateWithRequiredBody = Gson().fromJson(businessToAdAccountSharedAudienceUpdateWithRequiredBodyParam.encode(), BusinessToAdAccountSharedAudienceUpdateWithRequiredBody::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.updateBusinessToAdAccountSharedAudience(businessId,sharedAudience,context)
+                        val result = service.updateBusinessToAdAccountSharedAudience(businessId,businessToAdAccountSharedAudienceUpdateWithRequiredBody,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -213,13 +219,13 @@ class AudienceSharingApiVertxProxyHandler(private val vertx: Vertx, private val 
                     if(businessId == null){
                         throw IllegalArgumentException("businessId is required")
                     }
-                    val businessSharedAudienceParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (businessSharedAudienceParam == null) {
-                        throw IllegalArgumentException("businessSharedAudience is required")
+                    val businessToBusinessSharedAudienceUpdateWithRequiredBodyParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (businessToBusinessSharedAudienceUpdateWithRequiredBodyParam == null) {
+                        throw IllegalArgumentException("businessToBusinessSharedAudienceUpdateWithRequiredBody is required")
                     }
-                    val businessSharedAudience = Gson().fromJson(businessSharedAudienceParam.encode(), BusinessSharedAudience::class.java)
+                    val businessToBusinessSharedAudienceUpdateWithRequiredBody = Gson().fromJson(businessToBusinessSharedAudienceUpdateWithRequiredBodyParam.encode(), BusinessToBusinessSharedAudienceUpdateWithRequiredBody::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.updateBusinessToBusinessSharedAudience(businessId,businessSharedAudience,context)
+                        val result = service.updateBusinessToBusinessSharedAudience(businessId,businessToBusinessSharedAudienceUpdateWithRequiredBody,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

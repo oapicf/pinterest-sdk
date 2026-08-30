@@ -1,7 +1,7 @@
 /*
  * permissions_with_owner.h
  *
- * 
+ * Permission levels including the OWNER role.
  */
 
 #ifndef _permissions_with_owner_H_

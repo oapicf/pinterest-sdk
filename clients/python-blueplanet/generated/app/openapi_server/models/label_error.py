@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.label import Label  # noqa: F401,E501
+from app.openapi_server.models.label_error_data import LabelErrorData  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,16 +16,16 @@ class LabelError(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, data: Label=None, error_messages: List[str]=None):  # noqa: E501
+    def __init__(self, data: LabelErrorData=None, error_messages: List[str]=None):  # noqa: E501
         """LabelError - a model defined in Swagger
 
         :param data: The data of this LabelError.  # noqa: E501
-        :type data: Label
+        :type data: LabelErrorData
         :param error_messages: The error_messages of this LabelError.  # noqa: E501
         :type error_messages: List[str]
         """
         self.swagger_types = {
-            'data': Label,
+            'data': LabelErrorData,
             'error_messages': List[str]
         }
 
@@ -49,22 +49,22 @@ class LabelError(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def data(self) -> Label:
+    def data(self) -> LabelErrorData:
         """Gets the data of this LabelError.
 
 
         :return: The data of this LabelError.
-        :rtype: Label
+        :rtype: LabelErrorData
         """
         return self._data
 
     @data.setter
-    def data(self, data: Label):
+    def data(self, data: LabelErrorData):
         """Sets the data of this LabelError.
 
 
         :param data: The data of this LabelError.
-        :type data: Label
+        :type data: LabelErrorData
         """
 
         self._data = data

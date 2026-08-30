@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **assetUnderscoreid** | **string** |  | [optional] [default to null]
-**assetUnderscoretype** | **string** |  | [optional] [default to null]
+**assetUnderscoretype** | [**AssetTypeResponse**](AssetTypeResponse.md) |  | [optional] [default to null]
 **partnerUnderscoreid** | **string** |  | [optional] [default to null]
 **permissions** | **array[string]** |  | [optional] [default to null]
 

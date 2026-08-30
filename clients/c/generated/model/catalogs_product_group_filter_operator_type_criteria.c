@@ -4,51 +4,43 @@
 #include "catalogs_product_group_filter_operator_type_criteria.h"
 
 
-char* catalogs_product_group_filter_operator_type_criteria_filter_operator_type_ToString(pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e filter_operator_type) {
-    char* filter_operator_typeArray[] =  { "NULL", "IS", "CONTAINS" };
-    return filter_operator_typeArray[filter_operator_type];
-}
-
-pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e catalogs_product_group_filter_operator_type_criteria_filter_operator_type_FromString(char* filter_operator_type){
-    int stringToReturn = 0;
-    char *filter_operator_typeArray[] =  { "NULL", "IS", "CONTAINS" };
-    size_t sizeofArray = sizeof(filter_operator_typeArray) / sizeof(filter_operator_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(filter_operator_type, filter_operator_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static catalogs_product_group_filter_operator_type_criteria_t *catalogs_product_group_filter_operator_type_criteria_create_internal(
-    pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e filter_operator_type,
-    int negated,
+    pinterest_rest_api_filter_operator_type__e filter_operator_type,
+    int *negated,
     list_t *values
     ) {
     catalogs_product_group_filter_operator_type_criteria_t *catalogs_product_group_filter_operator_type_criteria_local_var = malloc(sizeof(catalogs_product_group_filter_operator_type_criteria_t));
     if (!catalogs_product_group_filter_operator_type_criteria_local_var) {
         return NULL;
     }
+    memset(catalogs_product_group_filter_operator_type_criteria_local_var, 0, sizeof(catalogs_product_group_filter_operator_type_criteria_t));
+    catalogs_product_group_filter_operator_type_criteria_local_var->_library_owned = 1;
     catalogs_product_group_filter_operator_type_criteria_local_var->filter_operator_type = filter_operator_type;
     catalogs_product_group_filter_operator_type_criteria_local_var->negated = negated;
     catalogs_product_group_filter_operator_type_criteria_local_var->values = values;
-
-    catalogs_product_group_filter_operator_type_criteria_local_var->_library_owned = 1;
     return catalogs_product_group_filter_operator_type_criteria_local_var;
 }
 
 __attribute__((deprecated)) catalogs_product_group_filter_operator_type_criteria_t *catalogs_product_group_filter_operator_type_criteria_create(
-    pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e filter_operator_type,
-    int negated,
+    pinterest_rest_api_filter_operator_type__e filter_operator_type,
+    int *negated,
     list_t *values
     ) {
-    return catalogs_product_group_filter_operator_type_criteria_create_internal (
+    int *negated_copy = NULL;
+    if (negated) {
+        negated_copy = malloc(sizeof(int));
+        if (negated_copy) *negated_copy = *negated;
+    }
+    catalogs_product_group_filter_operator_type_criteria_t *result = catalogs_product_group_filter_operator_type_criteria_create_internal (
         filter_operator_type,
-        negated,
+        negated_copy,
         values
         );
+    if (!result) {
+        free(negated_copy);
+    }
+    return result;
 }
 
 void catalogs_product_group_filter_operator_type_criteria_free(catalogs_product_group_filter_operator_type_criteria_t *catalogs_product_group_filter_operator_type_criteria) {
@@ -60,6 +52,10 @@ void catalogs_product_group_filter_operator_type_criteria_free(catalogs_product_
         return ;
     }
     listEntry_t *listEntry;
+    if (catalogs_product_group_filter_operator_type_criteria->negated) {
+        free(catalogs_product_group_filter_operator_type_criteria->negated);
+        catalogs_product_group_filter_operator_type_criteria->negated = NULL;
+    }
     if (catalogs_product_group_filter_operator_type_criteria->values) {
         list_ForEach(listEntry, catalogs_product_group_filter_operator_type_criteria->values) {
             free(listEntry->data);
@@ -74,17 +70,21 @@ cJSON *catalogs_product_group_filter_operator_type_criteria_convertToJSON(catalo
     cJSON *item = cJSON_CreateObject();
 
     // catalogs_product_group_filter_operator_type_criteria->filter_operator_type
-    if(catalogs_product_group_filter_operator_type_criteria->filter_operator_type != pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "filter_operator_type", catalogs_product_group_filter_operator_type_criteria_filter_operator_type_ToString(catalogs_product_group_filter_operator_type_criteria->filter_operator_type)) == NULL)
-    {
-    goto fail; //Enum
+    if(catalogs_product_group_filter_operator_type_criteria->filter_operator_type != pinterest_rest_api_filter_operator_type__NULL) {
+    cJSON *filter_operator_type_local_JSON = filter_operator_type_convertToJSON(catalogs_product_group_filter_operator_type_criteria->filter_operator_type);
+    if(filter_operator_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "filter_operator_type", filter_operator_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
 
     // catalogs_product_group_filter_operator_type_criteria->negated
     if(catalogs_product_group_filter_operator_type_criteria->negated) {
-    if(cJSON_AddBoolToObject(item, "negated", catalogs_product_group_filter_operator_type_criteria->negated) == NULL) {
+    if(cJSON_AddBoolToObject(item, "negated", *catalogs_product_group_filter_operator_type_criteria->negated) == NULL) {
     goto fail; //Bool
     }
     }
@@ -119,6 +119,12 @@ catalogs_product_group_filter_operator_type_criteria_t *catalogs_product_group_f
 
     catalogs_product_group_filter_operator_type_criteria_t *catalogs_product_group_filter_operator_type_criteria_local_var = NULL;
 
+    // define the local variable for catalogs_product_group_filter_operator_type_criteria->filter_operator_type
+    pinterest_rest_api_filter_operator_type__e filter_operator_type_local_nonprim = 0;
+
+    // define the local variable for catalogs_product_group_filter_operator_type_criteria->negated
+    int *negated_local_var = NULL;
+
     // define the local list for catalogs_product_group_filter_operator_type_criteria->values
     list_t *valuesList = NULL;
 
@@ -127,13 +133,8 @@ catalogs_product_group_filter_operator_type_criteria_t *catalogs_product_group_f
     if (cJSON_IsNull(filter_operator_type)) {
         filter_operator_type = NULL;
     }
-    pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e filter_operator_typeVariable;
     if (filter_operator_type) { 
-    if(!cJSON_IsString(filter_operator_type))
-    {
-    goto end; //Enum
-    }
-    filter_operator_typeVariable = catalogs_product_group_filter_operator_type_criteria_filter_operator_type_FromString(filter_operator_type->valuestring);
+    filter_operator_type_local_nonprim = filter_operator_type_parseFromJSON(filter_operator_type); //custom
     }
 
     // catalogs_product_group_filter_operator_type_criteria->negated
@@ -146,6 +147,12 @@ catalogs_product_group_filter_operator_type_criteria_t *catalogs_product_group_f
     {
     goto end; //Bool
     }
+    negated_local_var = malloc(sizeof(int));
+    if(!negated_local_var)
+    {
+        goto end;
+    }
+    *negated_local_var = negated->valueint;
     }
 
     // catalogs_product_group_filter_operator_type_criteria->values
@@ -174,14 +181,26 @@ catalogs_product_group_filter_operator_type_criteria_t *catalogs_product_group_f
     }
 
 
+
     catalogs_product_group_filter_operator_type_criteria_local_var = catalogs_product_group_filter_operator_type_criteria_create_internal (
-        filter_operator_type ? filter_operator_typeVariable : pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_NULL,
-        negated ? negated->valueint : 0,
+        filter_operator_type ? filter_operator_type_local_nonprim : 0,
+        negated_local_var,
         valuesList
         );
 
+    if (!catalogs_product_group_filter_operator_type_criteria_local_var) {
+        goto end;
+    }
+
     return catalogs_product_group_filter_operator_type_criteria_local_var;
 end:
+    if (filter_operator_type_local_nonprim) {
+        filter_operator_type_local_nonprim = 0;
+    }
+    if (negated_local_var) {
+        free(negated_local_var);
+        negated_local_var = NULL;
+    }
     if (valuesList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, valuesList) {

@@ -19,19 +19,19 @@ import io.swagger.v3.oas.annotations.media.Schema
 * 
 * Values: _0,_1,_7,_14,_30,_60
 */
-enum class ConversionAttributionWindowDays(@get:JsonValue val value: kotlin.Int) {
+enum class ConversionAttributionWindowDays(@get:JsonValue val value: java.math.BigDecimal) {
 
-    _0(0),
-    _1(1),
-    _7(7),
-    _14(14),
-    _30(30),
-    _60(60);
+    _0("0"),
+    _1("1"),
+    _7("7"),
+    _14("14"),
+    _30("30"),
+    _60("60");
 
     companion object {
         @JvmStatic
         @JsonCreator
-        fun forValue(value: kotlin.Int): ConversionAttributionWindowDays {
+        fun forValue(value: java.math.BigDecimal): ConversionAttributionWindowDays {
                 return values().firstOrNull{it -> it.value == value}
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionAttributionWindowDays'")
         }

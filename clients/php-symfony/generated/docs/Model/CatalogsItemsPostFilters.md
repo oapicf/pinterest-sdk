@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**OpenAPI\Server\Model\CatalogsType**](CatalogsType.md) |  | 
 **catalogId** | **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
+**catalogType** | **string** |  | 
 **itemIds** | **string** |  | 
 **hotelIds** | **string** |  | 
 **creativeAssetsIds** | **string** |  | 

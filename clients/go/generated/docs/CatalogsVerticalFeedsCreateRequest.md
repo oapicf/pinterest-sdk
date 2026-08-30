@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogId** | Pointer to **string** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. | [optional] 
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CatalogId** | Pointer to **string** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. | [optional] 
+**CatalogType** | **string** |  | 
 **Credentials** | Pointer to [**NullableCatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
 **DefaultAvailability** | Pointer to [**NullableProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
 **DefaultCountry** | [**Country**](Country.md) |  | 
 **DefaultCurrency** | Pointer to [**NullableNullableCurrency**](NullableCurrency.md) |  | [optional] 
-**DefaultLocale** | [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequestDefaultLocale.md) |  | 
+**DefaultLocale** | [**CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale**](CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.md) |  | 
 **Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
 **Location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
 **Name** | **string** | A human-friendly name associated to a given feed. | 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsVerticalFeedsCreateRequest
 
-`func NewCatalogsVerticalFeedsCreateRequest(catalogType CatalogsType, defaultCountry Country, defaultLocale CatalogsFeedsCreateRequestDefaultLocale, format CatalogsFormat, location string, name string, ) *CatalogsVerticalFeedsCreateRequest`
+`func NewCatalogsVerticalFeedsCreateRequest(catalogType string, defaultCountry Country, defaultLocale CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale, format CatalogsFormat, location string, name string, ) *CatalogsVerticalFeedsCreateRequest`
 
 NewCatalogsVerticalFeedsCreateRequest instantiates a new CatalogsVerticalFeedsCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ HasCatalogId returns a boolean if a field has been set.
 
 ### GetCatalogType
 
-`func (o *CatalogsVerticalFeedsCreateRequest) GetCatalogType() CatalogsType`
+`func (o *CatalogsVerticalFeedsCreateRequest) GetCatalogType() string`
 
 GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
 ### GetCatalogTypeOk
 
-`func (o *CatalogsVerticalFeedsCreateRequest) GetCatalogTypeOk() (*CatalogsType, bool)`
+`func (o *CatalogsVerticalFeedsCreateRequest) GetCatalogTypeOk() (*string, bool)`
 
 GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogType
 
-`func (o *CatalogsVerticalFeedsCreateRequest) SetCatalogType(v CatalogsType)`
+`func (o *CatalogsVerticalFeedsCreateRequest) SetCatalogType(v string)`
 
 SetCatalogType sets CatalogType field to given value.
 
@@ -208,20 +208,20 @@ HasDefaultCurrency returns a boolean if a field has been set.
 UnsetDefaultCurrency ensures that no value is present for DefaultCurrency, not even an explicit nil
 ### GetDefaultLocale
 
-`func (o *CatalogsVerticalFeedsCreateRequest) GetDefaultLocale() CatalogsFeedsCreateRequestDefaultLocale`
+`func (o *CatalogsVerticalFeedsCreateRequest) GetDefaultLocale() CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale`
 
 GetDefaultLocale returns the DefaultLocale field if non-nil, zero value otherwise.
 
 ### GetDefaultLocaleOk
 
-`func (o *CatalogsVerticalFeedsCreateRequest) GetDefaultLocaleOk() (*CatalogsFeedsCreateRequestDefaultLocale, bool)`
+`func (o *CatalogsVerticalFeedsCreateRequest) GetDefaultLocaleOk() (*CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale, bool)`
 
 GetDefaultLocaleOk returns a tuple with the DefaultLocale field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefaultLocale
 
-`func (o *CatalogsVerticalFeedsCreateRequest) SetDefaultLocale(v CatalogsFeedsCreateRequestDefaultLocale)`
+`func (o *CatalogsVerticalFeedsCreateRequest) SetDefaultLocale(v CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale)`
 
 SetDefaultLocale sets DefaultLocale field to given value.
 

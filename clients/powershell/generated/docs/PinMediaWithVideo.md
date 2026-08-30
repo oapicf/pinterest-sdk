@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Images** | [**ImageSize**](ImageSize.md) |  | [optional] 
 **MediaType** | **String** |  | 
 **VideoUrl** | **String** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**VideoUrlHls** | **String** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] 
 **Width** | **Int32** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 ## Examples
@@ -21,6 +22,7 @@ $PinMediaWithVideo = Initialize-PSOpenAPIToolsPinMediaWithVideo  -CoverImageUrl 
  -Images null `
  -MediaType null `
  -VideoUrl null `
+ -VideoUrlHls null `
  -Width null
 ```
 

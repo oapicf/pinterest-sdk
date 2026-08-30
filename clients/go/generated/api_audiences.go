@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,26 +28,22 @@ type ApiAudiencesCreateRequest struct {
 	ctx context.Context
 	ApiService *AudiencesAPIService
 	adAccountId string
-	audienceCreateRequest *AudienceCreateRequest
+	adAccountsAudienceCreate *AdAccountsAudienceCreate
 }
 
-// List of ads to create, size limit [1, 30]
-func (r ApiAudiencesCreateRequest) AudienceCreateRequest(audienceCreateRequest AudienceCreateRequest) ApiAudiencesCreateRequest {
-	r.audienceCreateRequest = &audienceCreateRequest
+func (r ApiAudiencesCreateRequest) AdAccountsAudienceCreate(adAccountsAudienceCreate AdAccountsAudienceCreate) ApiAudiencesCreateRequest {
+	r.adAccountsAudienceCreate = &adAccountsAudienceCreate
 	return r
 }
 
-func (r ApiAudiencesCreateRequest) Execute() (*Audience, *http.Response, error) {
+func (r ApiAudiencesCreateRequest) Execute() (*AdAccountsAudience, *http.Response, error) {
 	return r.ApiService.AudiencesCreateExecute(r)
 }
 
 /*
 AudiencesCreate Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with
-the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude
-specific `audience_ids` when you create an ad group. <p/>
-Learn about <a href="/docs/work-with-targets-and-audiences/create-audiences/" target="_blank">creating different kinds of audiences</a>.
+Create a new audience for the ad account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -62,13 +58,13 @@ func (a *AudiencesAPIService) AudiencesCreate(ctx context.Context, adAccountId s
 }
 
 // Execute executes the request
-//  @return Audience
-func (a *AudiencesAPIService) AudiencesCreateExecute(r ApiAudiencesCreateRequest) (*Audience, *http.Response, error) {
+//  @return AdAccountsAudience
+func (a *AudiencesAPIService) AudiencesCreateExecute(r ApiAudiencesCreateRequest) (*AdAccountsAudience, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Audience
+		localVarReturnValue  *AdAccountsAudience
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AudiencesAPIService.AudiencesCreate")
@@ -85,8 +81,8 @@ func (a *AudiencesAPIService) AudiencesCreateExecute(r ApiAudiencesCreateRequest
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.audienceCreateRequest == nil {
-		return localVarReturnValue, nil, reportError("audienceCreateRequest is required and must be specified")
+	if r.adAccountsAudienceCreate == nil {
+		return localVarReturnValue, nil, reportError("adAccountsAudienceCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -107,7 +103,7 @@ func (a *AudiencesAPIService) AudiencesCreateExecute(r ApiAudiencesCreateRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.audienceCreateRequest
+	localVarPostBody = r.adAccountsAudienceCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -130,7 +126,62 @@ func (a *AudiencesAPIService) AudiencesCreateExecute(r ApiAudiencesCreateRequest
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -156,11 +207,11 @@ func (a *AudiencesAPIService) AudiencesCreateExecute(r ApiAudiencesCreateRequest
 type ApiAudiencesGetRequest struct {
 	ctx context.Context
 	ApiService *AudiencesAPIService
-	adAccountId string
 	audienceId string
+	adAccountId string
 }
 
-func (r ApiAudiencesGetRequest) Execute() (*Audience, *http.Response, error) {
+func (r ApiAudiencesGetRequest) Execute() (*AdAccountsAudience, *http.Response, error) {
 	return r.ApiService.AudiencesGetExecute(r)
 }
 
@@ -170,27 +221,27 @@ AudiencesGet Get audience
 Get a specific audience given the audience ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param audienceId Audience ID.
  @param adAccountId Unique identifier of an ad account.
- @param audienceId Unique identifier of an audience
  @return ApiAudiencesGetRequest
 */
-func (a *AudiencesAPIService) AudiencesGet(ctx context.Context, adAccountId string, audienceId string) ApiAudiencesGetRequest {
+func (a *AudiencesAPIService) AudiencesGet(ctx context.Context, audienceId string, adAccountId string) ApiAudiencesGetRequest {
 	return ApiAudiencesGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		adAccountId: adAccountId,
 		audienceId: audienceId,
+		adAccountId: adAccountId,
 	}
 }
 
 // Execute executes the request
-//  @return Audience
-func (a *AudiencesAPIService) AudiencesGetExecute(r ApiAudiencesGetRequest) (*Audience, *http.Response, error) {
+//  @return AdAccountsAudience
+func (a *AudiencesAPIService) AudiencesGetExecute(r ApiAudiencesGetRequest) (*AdAccountsAudience, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Audience
+		localVarReturnValue  *AdAccountsAudience
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AudiencesAPIService.AudiencesGet")
@@ -199,17 +250,14 @@ func (a *AudiencesAPIService) AudiencesGetExecute(r ApiAudiencesGetRequest) (*Au
 	}
 
 	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/audiences/{audience_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"audience_id"+"}", url.PathEscape(parameterValueToString(r.audienceId, "audienceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
-	}
-	if strlen(r.audienceId) > 18 {
-		return localVarReturnValue, nil, reportError("audienceId must have less than 18 elements")
 	}
 
 	// to determine the Content-Type header
@@ -251,8 +299,8 @@ func (a *AudiencesAPIService) AudiencesGetExecute(r ApiAudiencesGetRequest) (*Au
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -262,7 +310,51 @@ func (a *AudiencesAPIService) AudiencesGetExecute(r ApiAudiencesGetRequest) (*Au
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -290,9 +382,10 @@ type ApiAudiencesListRequest struct {
 	ApiService *AudiencesAPIService
 	adAccountId string
 	bookmark *string
-	order *string
 	pageSize *int32
-	ownershipType *string
+	order *PinterestLibPaginationOrder
+	ownershipType *AudienceOwnershipType
+	excludeNca *bool
 }
 
 // Cursor used to fetch the next page of items
@@ -301,21 +394,26 @@ func (r ApiAudiencesListRequest) Bookmark(bookmark string) ApiAudiencesListReque
 	return r
 }
 
-// The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
-func (r ApiAudiencesListRequest) Order(order string) ApiAudiencesListRequest {
-	r.order = &order
-	return r
-}
-
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiAudiencesListRequest) PageSize(pageSize int32) ApiAudiencesListRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
-// Filter audiences by ownership type.
-func (r ApiAudiencesListRequest) OwnershipType(ownershipType string) ApiAudiencesListRequest {
+// The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
+func (r ApiAudiencesListRequest) Order(order PinterestLibPaginationOrder) ApiAudiencesListRequest {
+	r.order = &order
+	return r
+}
+
+func (r ApiAudiencesListRequest) OwnershipType(ownershipType AudienceOwnershipType) ApiAudiencesListRequest {
 	r.ownershipType = &ownershipType
+	return r
+}
+
+// When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
+func (r ApiAudiencesListRequest) ExcludeNca(excludeNca bool) ApiAudiencesListRequest {
+	r.excludeNca = &excludeNca
 	return r
 }
 
@@ -368,22 +466,25 @@ func (a *AudiencesAPIService) AudiencesListExecute(r ApiAudiencesListRequest) (*
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
-	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
-	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
+	}
+	if r.order != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	if r.ownershipType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ownership_type", r.ownershipType, "form", "")
+	}
+	if r.excludeNca != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude_nca", r.excludeNca, "form", "")
 	} else {
-        var defaultValue string = "OWNED"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "ownership_type", defaultValue, "form", "")
-        r.ownershipType = &defaultValue
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude_nca", defaultValue, "form", "")
+		r.excludeNca = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -425,7 +526,7 @@ func (a *AudiencesAPIService) AudiencesListExecute(r ApiAudiencesListRequest) (*
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -435,7 +536,51 @@ func (a *AudiencesAPIService) AudiencesListExecute(r ApiAudiencesListRequest) (*
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -461,48 +606,47 @@ func (a *AudiencesAPIService) AudiencesListExecute(r ApiAudiencesListRequest) (*
 type ApiAudiencesUpdateRequest struct {
 	ctx context.Context
 	ApiService *AudiencesAPIService
-	adAccountId string
 	audienceId string
-	audienceUpdateRequest *AudienceUpdateRequest
+	adAccountId string
+	adAccountsAudienceUpdate *AdAccountsAudienceUpdate
 }
 
-// The audience to be updated.
-func (r ApiAudiencesUpdateRequest) AudienceUpdateRequest(audienceUpdateRequest AudienceUpdateRequest) ApiAudiencesUpdateRequest {
-	r.audienceUpdateRequest = &audienceUpdateRequest
+func (r ApiAudiencesUpdateRequest) AdAccountsAudienceUpdate(adAccountsAudienceUpdate AdAccountsAudienceUpdate) ApiAudiencesUpdateRequest {
+	r.adAccountsAudienceUpdate = &adAccountsAudienceUpdate
 	return r
 }
 
-func (r ApiAudiencesUpdateRequest) Execute() (*Audience, *http.Response, error) {
+func (r ApiAudiencesUpdateRequest) Execute() (*AdAccountsAudience, *http.Response, error) {
 	return r.ApiService.AudiencesUpdateExecute(r)
 }
 
 /*
 AudiencesUpdate Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param audienceId Audience ID.
  @param adAccountId Unique identifier of an ad account.
- @param audienceId Unique identifier of an audience
  @return ApiAudiencesUpdateRequest
 */
-func (a *AudiencesAPIService) AudiencesUpdate(ctx context.Context, adAccountId string, audienceId string) ApiAudiencesUpdateRequest {
+func (a *AudiencesAPIService) AudiencesUpdate(ctx context.Context, audienceId string, adAccountId string) ApiAudiencesUpdateRequest {
 	return ApiAudiencesUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
-		adAccountId: adAccountId,
 		audienceId: audienceId,
+		adAccountId: adAccountId,
 	}
 }
 
 // Execute executes the request
-//  @return Audience
-func (a *AudiencesAPIService) AudiencesUpdateExecute(r ApiAudiencesUpdateRequest) (*Audience, *http.Response, error) {
+//  @return AdAccountsAudience
+func (a *AudiencesAPIService) AudiencesUpdateExecute(r ApiAudiencesUpdateRequest) (*AdAccountsAudience, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Audience
+		localVarReturnValue  *AdAccountsAudience
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AudiencesAPIService.AudiencesUpdate")
@@ -511,8 +655,8 @@ func (a *AudiencesAPIService) AudiencesUpdateExecute(r ApiAudiencesUpdateRequest
 	}
 
 	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/audiences/{audience_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"audience_id"+"}", url.PathEscape(parameterValueToString(r.audienceId, "audienceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -520,11 +664,8 @@ func (a *AudiencesAPIService) AudiencesUpdateExecute(r ApiAudiencesUpdateRequest
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if strlen(r.audienceId) > 18 {
-		return localVarReturnValue, nil, reportError("audienceId must have less than 18 elements")
-	}
-	if r.audienceUpdateRequest == nil {
-		return localVarReturnValue, nil, reportError("audienceUpdateRequest is required and must be specified")
+	if r.adAccountsAudienceUpdate == nil {
+		return localVarReturnValue, nil, reportError("adAccountsAudienceUpdate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -545,7 +686,7 @@ func (a *AudiencesAPIService) AudiencesUpdateExecute(r ApiAudiencesUpdateRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.audienceUpdateRequest
+	localVarPostBody = r.adAccountsAudienceUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -568,7 +709,62 @@ func (a *AudiencesAPIService) AudiencesUpdateExecute(r ApiAudiencesUpdateRequest
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

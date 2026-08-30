@@ -14,22 +14,22 @@ Method | HTTP request | Description
 
 ## lead_form_slash_get
 
-> models::LeadFormResponse lead_form_slash_get(ad_account_id, lead_form_id)
+> models::LeadForm lead_form_slash_get(lead_form_id, ad_account_id)
 Get lead form by id
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**lead_form_id** | **String** | The ID of this lead form | [required] |
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**lead_form_id** | **String** | Unique identifier of a lead form. | [required] |
 
 ### Return type
 
-[**models::LeadFormResponse**](LeadFormResponse.md)
+[**models::LeadForm**](LeadForm.md)
 
 ### Authorization
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Required | Notes
 
 ## lead_form_test_slash_create
 
-> models::LeadFormTestResponse lead_form_test_slash_create(ad_account_id, lead_form_id, lead_form_test_request)
+> models::LeadFormTest lead_form_test_slash_create(ad_account_id, lead_form_id, lead_form_test_create)
 Create lead form test data
 
 Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
@@ -55,13 +55,13 @@ Create lead form test data based on the list of answers provided as part of the 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
+**ad_account_id** | **String** |  | [required] |
 **lead_form_id** | **String** | Unique identifier of a lead form. | [required] |
-**lead_form_test_request** | [**LeadFormTestRequest**](LeadFormTestRequest.md) | Subscription to create. | [required] |
+**lead_form_test_create** | [**LeadFormTestCreate**](LeadFormTestCreate.md) |  | [required] |
 
 ### Return type
 
-[**models::LeadFormTestResponse**](LeadFormTestResponse.md)
+[**models::LeadFormTest**](LeadFormTest.md)
 
 ### Authorization
 
@@ -77,10 +77,10 @@ Name | Type | Description  | Required | Notes
 
 ## lead_forms_slash_create
 
-> models::LeadFormArrayResponse lead_forms_slash_create(ad_account_id, lead_form_create_request)
+> models::LeadFormsCreate200Response lead_forms_slash_create(ad_account_id, lead_form_create)
 Create lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Parameters
 
@@ -88,11 +88,11 @@ Create lead forms
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**lead_form_create_request** | [**Vec<models::LeadFormCreateRequest>**](LeadFormCreateRequest.md) | List of lead forms to create, size limit [1, 30]. | [required] |
+**lead_form_create** | [**Vec<models::LeadFormCreate>**](LeadFormCreate.md) |  | [required] |
 
 ### Return type
 
-[**models::LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**models::LeadFormsCreate200Response**](lead_forms_create_200_response.md)
 
 ### Authorization
 
@@ -108,10 +108,10 @@ Name | Type | Description  | Required | Notes
 
 ## lead_forms_slash_list
 
-> models::LeadFormsList200Response lead_forms_slash_list(ad_account_id, page_size, order, bookmark)
+> models::LeadFormsList200Response lead_forms_slash_list(ad_account_id, bookmark, page_size, order)
 List lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Parameters
 
@@ -119,9 +119,9 @@ List lead forms
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
-**order** | Option<**String**> | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. |  |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
+**order** | Option<[**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md)> | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. |  |
 
 ### Return type
 
@@ -141,10 +141,10 @@ Name | Type | Description  | Required | Notes
 
 ## lead_forms_slash_update
 
-> models::LeadFormArrayResponse lead_forms_slash_update(ad_account_id, lead_form_update_request)
+> models::LeadFormsCreate200Response lead_forms_slash_update(ad_account_id, lead_form_batch_update)
 Update lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Parameters
 
@@ -152,11 +152,11 @@ Update lead forms
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**lead_form_update_request** | [**Vec<models::LeadFormUpdateRequest>**](LeadFormUpdateRequest.md) | List of lead forms to update, size limit [1, 30]. | [required] |
+**lead_form_batch_update** | [**Vec<models::LeadFormBatchUpdate>**](LeadFormBatchUpdate.md) |  | [required] |
 
 ### Return type
 
-[**models::LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**models::LeadFormsCreate200Response**](lead_forms_create_200_response.md)
 
 ### Authorization
 

@@ -16,7 +16,7 @@ case class ConversionEventDeviceInfo (
     /* External storage size in GB */
     _externalStorageSize: Option[Integer],
     /* Device form factor */
-    _formFactor: Option[String],
+    _formFactor: Option[FormFactor],
     /* Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release */
     _kernelVersion: Option[String],
     /* List of user installed languages. ISO 639-1 format */
@@ -26,9 +26,9 @@ case class ConversionEventDeviceInfo (
     /* Device model name */
     _model: Option[String],
     /* Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities() */
-    _networkType: Option[String],
+    _networkType: Option[NetworkType],
     /* OS Family */
-    _osFamily: Option[String],
+    _osFamily: Option[OsFamily],
     /* Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch */
     _osName: Option[String],
     /* Marketing name for the release version iOS: Dawn Android: Baklava MacOS: Sequoia Ubuntu Linux: Plucky Puffin */

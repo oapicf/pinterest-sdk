@@ -9,8 +9,8 @@
  */
 import { CountryFilter } from './countryFilter';
 import { CustomLabel4Filter } from './customLabel4Filter';
+import { PriceFilterPrice } from './priceFilterPrice';
 import { BrandFilter } from './brandFilter';
-import { CatalogsProductGroupPricingCurrencyCriteria } from './catalogsProductGroupPricingCurrencyCriteria';
 import { HotelIdFilter } from './hotelIdFilter';
 import { CustomLabel3Filter } from './customLabel3Filter';
 import { CustomLabel1Filter } from './customLabel1Filter';
@@ -24,7 +24,7 @@ import { CatalogsProductGroupFilterOperatorTypeCriteria } from './catalogsProduc
 
 
 export interface CatalogsHotelProductGroupFilterKeys { 
-    PRICE: CatalogsProductGroupPricingCurrencyCriteria;
+    PRICE: PriceFilterPrice;
     HOTEL_ID: CatalogsProductGroupMultipleStringCriteria;
     BRAND: CatalogsProductGroupMultipleStringCriteria;
     CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria;

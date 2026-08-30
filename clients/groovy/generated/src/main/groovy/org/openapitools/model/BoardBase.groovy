@@ -25,7 +25,7 @@ class BoardBase {
     Boolean isAdsOnly = false
     /* Board media. */
     BoardMedia media
-    /*      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". */
+    /*     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". */
     String name
     
     BoardOwner owner

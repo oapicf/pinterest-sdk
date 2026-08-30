@@ -7,7 +7,7 @@ Protected Class PromotionsList200Response
 
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.PromotionResponse
+		items() As OpenAPIClient.Models.Promotion
 	#tag EndProperty
 
 
@@ -60,7 +60,7 @@ Protected Class PromotionsList200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="PromotionResponse"
+			Type="Promotion"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

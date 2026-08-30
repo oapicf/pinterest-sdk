@@ -1,0 +1,14 @@
+package models
+
+// AdPreviewSourceImage - Ad preview source from an image URL.
+type AdPreviewSourceImage struct {
+
+	// Image URL.
+	ImageUrl string `json:"image_url"`
+
+	// Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.
+	PromotionId string `json:"promotion_id,omitempty" validate:"regexp=^\\d+$"`
+
+	// Title displayed below ad.
+	Title string `json:"title"`
+}

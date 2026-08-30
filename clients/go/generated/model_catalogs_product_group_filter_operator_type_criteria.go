@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &CatalogsProductGroupFilterOperatorTypeCriteria{}
 
 // CatalogsProductGroupFilterOperatorTypeCriteria struct for CatalogsProductGroupFilterOperatorTypeCriteria
 type CatalogsProductGroupFilterOperatorTypeCriteria struct {
-	FilterOperatorType *string `json:"filter_operator_type,omitempty"`
+	FilterOperatorType *FilterOperatorType `json:"filter_operator_type,omitempty"`
 	Negated *bool `json:"negated,omitempty"`
 	Values []string `json:"values"`
 }
@@ -35,10 +35,6 @@ type _CatalogsProductGroupFilterOperatorTypeCriteria CatalogsProductGroupFilterO
 // will change when the set of required properties is changed
 func NewCatalogsProductGroupFilterOperatorTypeCriteria(values []string) *CatalogsProductGroupFilterOperatorTypeCriteria {
 	this := CatalogsProductGroupFilterOperatorTypeCriteria{}
-	var filterOperatorType string = "IS"
-	this.FilterOperatorType = &filterOperatorType
-	var negated bool = false
-	this.Negated = &negated
 	this.Values = values
 	return &this
 }
@@ -48,17 +44,13 @@ func NewCatalogsProductGroupFilterOperatorTypeCriteria(values []string) *Catalog
 // but it doesn't guarantee that properties required by API are set
 func NewCatalogsProductGroupFilterOperatorTypeCriteriaWithDefaults() *CatalogsProductGroupFilterOperatorTypeCriteria {
 	this := CatalogsProductGroupFilterOperatorTypeCriteria{}
-	var filterOperatorType string = "IS"
-	this.FilterOperatorType = &filterOperatorType
-	var negated bool = false
-	this.Negated = &negated
 	return &this
 }
 
 // GetFilterOperatorType returns the FilterOperatorType field value if set, zero value otherwise.
-func (o *CatalogsProductGroupFilterOperatorTypeCriteria) GetFilterOperatorType() string {
+func (o *CatalogsProductGroupFilterOperatorTypeCriteria) GetFilterOperatorType() FilterOperatorType {
 	if o == nil || IsNil(o.FilterOperatorType) {
-		var ret string
+		var ret FilterOperatorType
 		return ret
 	}
 	return *o.FilterOperatorType
@@ -66,7 +58,7 @@ func (o *CatalogsProductGroupFilterOperatorTypeCriteria) GetFilterOperatorType()
 
 // GetFilterOperatorTypeOk returns a tuple with the FilterOperatorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupFilterOperatorTypeCriteria) GetFilterOperatorTypeOk() (*string, bool) {
+func (o *CatalogsProductGroupFilterOperatorTypeCriteria) GetFilterOperatorTypeOk() (*FilterOperatorType, bool) {
 	if o == nil || IsNil(o.FilterOperatorType) {
 		return nil, false
 	}
@@ -82,8 +74,8 @@ func (o *CatalogsProductGroupFilterOperatorTypeCriteria) HasFilterOperatorType()
 	return false
 }
 
-// SetFilterOperatorType gets a reference to the given string and assigns it to the FilterOperatorType field.
-func (o *CatalogsProductGroupFilterOperatorTypeCriteria) SetFilterOperatorType(v string) {
+// SetFilterOperatorType gets a reference to the given FilterOperatorType and assigns it to the FilterOperatorType field.
+func (o *CatalogsProductGroupFilterOperatorTypeCriteria) SetFilterOperatorType(v FilterOperatorType) {
 	o.FilterOperatorType = &v
 }
 

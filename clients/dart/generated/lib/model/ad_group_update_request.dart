@@ -13,6 +13,9 @@ part of openapi.api;
 class AdGroupUpdateRequest {
   /// Returns a new [AdGroupUpdateRequest] instance.
   AdGroupUpdateRequest({
+    this.bidMultiplier,
+    required this.id,
+    this.targetingSpecOperations = const [],
     this.autoTargetingEnabled,
     this.bidInMicroCurrency,
     this.bidStrategyType,
@@ -29,14 +32,31 @@ class AdGroupUpdateRequest {
     this.placementGroup,
     this.promotionApplicationLevel,
     this.promotionId = '0',
+    this.promotionIds = const [],
     this.startTime,
     this.status,
     this.targetingSpec,
     this.targetingTemplateIds = const [],
     this.trackingUrls,
-    this.bidMultiplier,
-    required this.id,
   });
+
+  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+  ///
+  /// Minimum value: 0
+  /// Maximum value: 10
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? bidMultiplier;
+
+  /// Ad group ID.
+  String id;
+
+  /// <div>Targeting spec operations define modifications to apply to the targeting spec.</div> <br /> <div><strong>NOTE:</strong> The <code>targeting_spec</code> and <code>targeting_spec_operations</code> cannot be sent at the same time.</div> <br /> <div>The supported operations are:</div> <ul> <li><code>SET</code>: sets the field with the given values. If value is set to <code>null</code>, the field will be removed.</li> <li><code>ADD</code>: adds the given values to the field.</li> <li><code>REMOVE</code>: removes the given values from the field.</li> </ul> <div>Note the following:</div> <ul> <li>Same items are not added and removed at the same time.</li> <li>For a given field, only <code>ADD</code>/<code>REMOVE</code> or <code>SET</code> operations are allowed, not a mix of them.</li> <li>Only one SET operation is allowed for a given field.</li> <li>The <code>AGE_BUCKET</code>, <code>MAXIMUM_AGE</code>, <code>MINIMUM_AGE</code> and <code>SHOPPING_RETARGETING</code> fields only support the <code>SET</code> operation.</li> </ul>
+  List<TargetingSpecOperations> targetingSpecOperations;
 
   /// Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
   bool? autoTargetingEnabled;
@@ -44,8 +64,7 @@ class AdGroupUpdateRequest {
   /// Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
   int? bidInMicroCurrency;
 
-  /// Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
-  AdGroupUpdateRequestBidStrategyTypeEnum? bidStrategyType;
+  BidStrategyType? bidStrategyType;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -100,7 +119,7 @@ class AdGroupUpdateRequest {
   String? name;
 
   /// Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
-  OptimizationGoalMetadata? optimizationGoalMetadata;
+  Object? optimizationGoalMetadata;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -125,6 +144,9 @@ class AdGroupUpdateRequest {
   /// Promotion ID. To clear this field, set to null.
   String? promotionId;
 
+  /// Promotion IDs list. To clear this field, set to an empty array [].
+  List<String> promotionIds;
+
   /// Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
   int? startTime;
 
@@ -148,26 +170,14 @@ class AdGroupUpdateRequest {
   /// Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
   List<String>? targetingTemplateIds;
 
-  /// Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
-  TrackingUrls? trackingUrls;
-
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
-  ///
-  /// Minimum value: 0
-  /// Maximum value: 10
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? bidMultiplier;
-
-  /// Ad group ID.
-  String id;
+  /// Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+  Object? trackingUrls;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AdGroupUpdateRequest &&
+    other.bidMultiplier == bidMultiplier &&
+    other.id == id &&
+    _deepEquality.equals(other.targetingSpecOperations, targetingSpecOperations) &&
     other.autoTargetingEnabled == autoTargetingEnabled &&
     other.bidInMicroCurrency == bidInMicroCurrency &&
     other.bidStrategyType == bidStrategyType &&
@@ -184,17 +194,19 @@ class AdGroupUpdateRequest {
     other.placementGroup == placementGroup &&
     other.promotionApplicationLevel == promotionApplicationLevel &&
     other.promotionId == promotionId &&
+    _deepEquality.equals(other.promotionIds, promotionIds) &&
     other.startTime == startTime &&
     other.status == status &&
     other.targetingSpec == targetingSpec &&
     _deepEquality.equals(other.targetingTemplateIds, targetingTemplateIds) &&
-    other.trackingUrls == trackingUrls &&
-    other.bidMultiplier == bidMultiplier &&
-    other.id == id;
+    other.trackingUrls == trackingUrls;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (bidMultiplier == null ? 0 : bidMultiplier!.hashCode) +
+    (id.hashCode) +
+    (targetingSpecOperations.hashCode) +
     (autoTargetingEnabled == null ? 0 : autoTargetingEnabled!.hashCode) +
     (bidInMicroCurrency == null ? 0 : bidInMicroCurrency!.hashCode) +
     (bidStrategyType == null ? 0 : bidStrategyType!.hashCode) +
@@ -211,19 +223,25 @@ class AdGroupUpdateRequest {
     (placementGroup == null ? 0 : placementGroup!.hashCode) +
     (promotionApplicationLevel == null ? 0 : promotionApplicationLevel!.hashCode) +
     (promotionId == null ? 0 : promotionId!.hashCode) +
+    (promotionIds.hashCode) +
     (startTime == null ? 0 : startTime!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (targetingSpec == null ? 0 : targetingSpec!.hashCode) +
     (targetingTemplateIds == null ? 0 : targetingTemplateIds!.hashCode) +
-    (trackingUrls == null ? 0 : trackingUrls!.hashCode) +
-    (bidMultiplier == null ? 0 : bidMultiplier!.hashCode) +
-    (id.hashCode);
+    (trackingUrls == null ? 0 : trackingUrls!.hashCode);
 
   @override
-  String toString() => 'AdGroupUpdateRequest[autoTargetingEnabled=$autoTargetingEnabled, bidInMicroCurrency=$bidInMicroCurrency, bidStrategyType=$bidStrategyType, billableEvent=$billableEvent, budgetInMicroCurrency=$budgetInMicroCurrency, budgetType=$budgetType, campaignId=$campaignId, endTime=$endTime, isCreativeOptimization=$isCreativeOptimization, lifetimeFrequencyCap=$lifetimeFrequencyCap, name=$name, optimizationGoalMetadata=$optimizationGoalMetadata, pacingDeliveryType=$pacingDeliveryType, placementGroup=$placementGroup, promotionApplicationLevel=$promotionApplicationLevel, promotionId=$promotionId, startTime=$startTime, status=$status, targetingSpec=$targetingSpec, targetingTemplateIds=$targetingTemplateIds, trackingUrls=$trackingUrls, bidMultiplier=$bidMultiplier, id=$id]';
+  String toString() => 'AdGroupUpdateRequest[bidMultiplier=$bidMultiplier, id=$id, targetingSpecOperations=$targetingSpecOperations, autoTargetingEnabled=$autoTargetingEnabled, bidInMicroCurrency=$bidInMicroCurrency, bidStrategyType=$bidStrategyType, billableEvent=$billableEvent, budgetInMicroCurrency=$budgetInMicroCurrency, budgetType=$budgetType, campaignId=$campaignId, endTime=$endTime, isCreativeOptimization=$isCreativeOptimization, lifetimeFrequencyCap=$lifetimeFrequencyCap, name=$name, optimizationGoalMetadata=$optimizationGoalMetadata, pacingDeliveryType=$pacingDeliveryType, placementGroup=$placementGroup, promotionApplicationLevel=$promotionApplicationLevel, promotionId=$promotionId, promotionIds=$promotionIds, startTime=$startTime, status=$status, targetingSpec=$targetingSpec, targetingTemplateIds=$targetingTemplateIds, trackingUrls=$trackingUrls]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.bidMultiplier != null) {
+      json[r'bid_multiplier'] = this.bidMultiplier;
+    } else {
+      json[r'bid_multiplier'] = null;
+    }
+      json[r'id'] = this.id;
+      json[r'targeting_spec_operations'] = this.targetingSpecOperations;
     if (this.autoTargetingEnabled != null) {
       json[r'auto_targeting_enabled'] = this.autoTargetingEnabled;
     } else {
@@ -304,6 +322,7 @@ class AdGroupUpdateRequest {
     } else {
       json[r'promotion_id'] = null;
     }
+      json[r'promotion_ids'] = this.promotionIds;
     if (this.startTime != null) {
       json[r'start_time'] = this.startTime;
     } else {
@@ -329,12 +348,6 @@ class AdGroupUpdateRequest {
     } else {
       json[r'tracking_urls'] = null;
     }
-    if (this.bidMultiplier != null) {
-      json[r'bid_multiplier'] = this.bidMultiplier;
-    } else {
-      json[r'bid_multiplier'] = null;
-    }
-      json[r'id'] = this.id;
     return json;
   }
 
@@ -349,17 +362,18 @@ class AdGroupUpdateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AdGroupUpdateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AdGroupUpdateRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'id'), 'Required key "AdGroupUpdateRequest[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "AdGroupUpdateRequest[id]" has a null value in JSON.');
         return true;
       }());
 
       return AdGroupUpdateRequest(
+        bidMultiplier: num.parse('${json[r'bid_multiplier']}'),
+        id: mapValueOfType<String>(json, r'id')!,
+        targetingSpecOperations: TargetingSpecOperations.listFromJson(json[r'targeting_spec_operations']),
         autoTargetingEnabled: mapValueOfType<bool>(json, r'auto_targeting_enabled'),
         bidInMicroCurrency: mapValueOfType<int>(json, r'bid_in_micro_currency'),
-        bidStrategyType: AdGroupUpdateRequestBidStrategyTypeEnum.fromJson(json[r'bid_strategy_type']),
+        bidStrategyType: BidStrategyType.fromJson(json[r'bid_strategy_type']),
         billableEvent: ActionType.fromJson(json[r'billable_event']),
         budgetInMicroCurrency: mapValueOfType<int>(json, r'budget_in_micro_currency'),
         budgetType: BudgetType.fromJson(json[r'budget_type']),
@@ -368,20 +382,21 @@ class AdGroupUpdateRequest {
         isCreativeOptimization: mapValueOfType<bool>(json, r'is_creative_optimization'),
         lifetimeFrequencyCap: mapValueOfType<int>(json, r'lifetime_frequency_cap'),
         name: mapValueOfType<String>(json, r'name'),
-        optimizationGoalMetadata: OptimizationGoalMetadata.fromJson(json[r'optimization_goal_metadata']),
+        optimizationGoalMetadata: mapValueOfType<Object>(json, r'optimization_goal_metadata'),
         pacingDeliveryType: PacingDeliveryType.fromJson(json[r'pacing_delivery_type']),
         placementGroup: PlacementGroupType.fromJson(json[r'placement_group']),
         promotionApplicationLevel: AdGroupUpdateRequestPromotionApplicationLevelEnum.fromJson(json[r'promotion_application_level']),
         promotionId: mapValueOfType<String>(json, r'promotion_id') ?? '0',
+        promotionIds: json[r'promotion_ids'] is Iterable
+            ? (json[r'promotion_ids'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         startTime: mapValueOfType<int>(json, r'start_time'),
         status: EntityStatus.fromJson(json[r'status']),
         targetingSpec: TargetingSpec.fromJson(json[r'targeting_spec']),
         targetingTemplateIds: json[r'targeting_template_ids'] is Iterable
             ? (json[r'targeting_template_ids'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        trackingUrls: TrackingUrls.fromJson(json[r'tracking_urls']),
-        bidMultiplier: num.parse('${json[r'bid_multiplier']}'),
-        id: mapValueOfType<String>(json, r'id')!,
+        trackingUrls: mapValueOfType<Object>(json, r'tracking_urls'),
       );
     }
     return null;
@@ -433,109 +448,31 @@ class AdGroupUpdateRequest {
   };
 }
 
-/// Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
-class AdGroupUpdateRequestBidStrategyTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const AdGroupUpdateRequestBidStrategyTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const AUTOMATIC_BID = AdGroupUpdateRequestBidStrategyTypeEnum._(r'AUTOMATIC_BID');
-  static const MAX_BID = AdGroupUpdateRequestBidStrategyTypeEnum._(r'MAX_BID');
-  static const TARGET_AVG = AdGroupUpdateRequestBidStrategyTypeEnum._(r'TARGET_AVG');
-
-  /// List of all possible values in this [enum][AdGroupUpdateRequestBidStrategyTypeEnum].
-  static const values = <AdGroupUpdateRequestBidStrategyTypeEnum>[
-    AUTOMATIC_BID,
-    MAX_BID,
-    TARGET_AVG,
-  ];
-
-  static AdGroupUpdateRequestBidStrategyTypeEnum? fromJson(dynamic value) => AdGroupUpdateRequestBidStrategyTypeEnumTypeTransformer().decode(value);
-
-  static List<AdGroupUpdateRequestBidStrategyTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <AdGroupUpdateRequestBidStrategyTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = AdGroupUpdateRequestBidStrategyTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [AdGroupUpdateRequestBidStrategyTypeEnum] to String,
-/// and [decode] dynamic data back to [AdGroupUpdateRequestBidStrategyTypeEnum].
-class AdGroupUpdateRequestBidStrategyTypeEnumTypeTransformer {
-  factory AdGroupUpdateRequestBidStrategyTypeEnumTypeTransformer() => _instance ??= const AdGroupUpdateRequestBidStrategyTypeEnumTypeTransformer._();
-
-  const AdGroupUpdateRequestBidStrategyTypeEnumTypeTransformer._();
-
-  String encode(AdGroupUpdateRequestBidStrategyTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a AdGroupUpdateRequestBidStrategyTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  AdGroupUpdateRequestBidStrategyTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'AUTOMATIC_BID': return AdGroupUpdateRequestBidStrategyTypeEnum.AUTOMATIC_BID;
-        case r'MAX_BID': return AdGroupUpdateRequestBidStrategyTypeEnum.MAX_BID;
-        case r'TARGET_AVG': return AdGroupUpdateRequestBidStrategyTypeEnum.TARGET_AVG;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [AdGroupUpdateRequestBidStrategyTypeEnumTypeTransformer] instance.
-  static AdGroupUpdateRequestBidStrategyTypeEnumTypeTransformer? _instance;
-}
-
-
 /// Specify if the promotion is applied at ad group or item level
-class AdGroupUpdateRequestPromotionApplicationLevelEnum {
-  /// Instantiate a new enum with the provided [value].
-  const AdGroupUpdateRequestPromotionApplicationLevelEnum._(this.value);
+enum AdGroupUpdateRequestPromotionApplicationLevelEnum {
+  NONE._(r'NONE'),
+  ITEM._(r'ITEM'),
+  AD_GROUP._(r'AD_GROUP'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const AdGroupUpdateRequestPromotionApplicationLevelEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const NONE = AdGroupUpdateRequestPromotionApplicationLevelEnum._(r'NONE');
-  static const ITEM = AdGroupUpdateRequestPromotionApplicationLevelEnum._(r'ITEM');
-  static const AD_GROUP = AdGroupUpdateRequestPromotionApplicationLevelEnum._(r'AD_GROUP');
-
-  /// List of all possible values in this [enum][AdGroupUpdateRequestPromotionApplicationLevelEnum].
-  static const values = <AdGroupUpdateRequestPromotionApplicationLevelEnum>[
-    NONE,
-    ITEM,
-    AD_GROUP,
-  ];
-
+  /// Returns the instance of [AdGroupUpdateRequestPromotionApplicationLevelEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static AdGroupUpdateRequestPromotionApplicationLevelEnum? fromJson(dynamic value) => AdGroupUpdateRequestPromotionApplicationLevelEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [AdGroupUpdateRequestPromotionApplicationLevelEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<AdGroupUpdateRequestPromotionApplicationLevelEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <AdGroupUpdateRequestPromotionApplicationLevelEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -557,9 +494,10 @@ class AdGroupUpdateRequestPromotionApplicationLevelEnumTypeTransformer {
 
   const AdGroupUpdateRequestPromotionApplicationLevelEnumTypeTransformer._();
 
-  String encode(AdGroupUpdateRequestPromotionApplicationLevelEnum data) => data.value;
+  String encode(AdGroupUpdateRequestPromotionApplicationLevelEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a AdGroupUpdateRequestPromotionApplicationLevelEnum.
+  /// Returns the instance of [AdGroupUpdateRequestPromotionApplicationLevelEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -568,6 +506,9 @@ class AdGroupUpdateRequestPromotionApplicationLevelEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   AdGroupUpdateRequestPromotionApplicationLevelEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is AdGroupUpdateRequestPromotionApplicationLevelEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'NONE': return AdGroupUpdateRequestPromotionApplicationLevelEnum.NONE;
@@ -582,7 +523,7 @@ class AdGroupUpdateRequestPromotionApplicationLevelEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [AdGroupUpdateRequestPromotionApplicationLevelEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static AdGroupUpdateRequestPromotionApplicationLevelEnumTypeTransformer? _instance;
 }
 

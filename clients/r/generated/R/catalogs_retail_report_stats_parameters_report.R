@@ -1,0 +1,196 @@
+#' @docType class
+#' @title CatalogsRetailReportStatsParametersReport
+#'
+#' @description CatalogsRetailReportStatsParametersReport Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @importFrom R6 R6Class
+#' @importFrom jsonlite fromJSON toJSON
+#' @export
+CatalogsRetailReportStatsParametersReport <- R6::R6Class(
+  "CatalogsRetailReportStatsParametersReport",
+  public = list(
+    #' @field actual_instance the object stored in this instance.
+    actual_instance = NULL,
+    #' @field actual_type the type of the object stored in this instance.
+    actual_type = NULL,
+    #' @field one_of  a list of types defined in the oneOf schema.
+    one_of = list("CatalogsReportDistributionIssueFilter", "CatalogsReportFeedIngestionFilter"),
+
+    #' @description
+    #' Initialize a new CatalogsRetailReportStatsParametersReport.
+    #'
+    #' @param instance an instance of the object defined in the oneOf schemas: "CatalogsReportDistributionIssueFilter", "CatalogsReportFeedIngestionFilter"
+    initialize = function(instance = NULL) {
+      if (is.null(instance)) {
+        # do nothing
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsReportDistributionIssueFilter") {
+        self$actual_instance <- instance
+        self$actual_type <- "CatalogsReportDistributionIssueFilter"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsReportFeedIngestionFilter") {
+        self$actual_instance <- instance
+        self$actual_type <- "CatalogsReportFeedIngestionFilter"
+      } else {
+        stop(paste("Failed to initialize CatalogsRetailReportStatsParametersReport with oneOf schemas CatalogsReportDistributionIssueFilter, CatalogsReportFeedIngestionFilter. Provided class name: ",
+                   get(class(instance)[[1]], pos = -1)$classname))
+      }
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of CatalogsRetailReportStatsParametersReport.
+    #' An alias to the method `fromJSON` .
+    #'
+    #' @param input The input JSON.
+    #'
+    #' @return An instance of CatalogsRetailReportStatsParametersReport.
+    fromJSONString = function(input) {
+      self$fromJSON(input)
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of CatalogsRetailReportStatsParametersReport.
+    #'
+    #' @param input The input JSON.
+    #'
+    #' @return An instance of CatalogsRetailReportStatsParametersReport.
+    fromJSON = function(input) {
+      matched <- 0 # match counter
+      matched_schemas <- list() #names of matched schemas
+      error_messages <- list()
+      instance <- NULL
+
+      `CatalogsReportFeedIngestionFilter_result` <- tryCatch({
+          `CatalogsReportFeedIngestionFilter`$public_methods$validateJSON(input)
+          `CatalogsReportFeedIngestionFilter_instance` <- `CatalogsReportFeedIngestionFilter`$new()
+          instance <- `CatalogsReportFeedIngestionFilter_instance`$fromJSON(input)
+          instance_type <- "CatalogsReportFeedIngestionFilter"
+          matched_schemas <- append(matched_schemas, "CatalogsReportFeedIngestionFilter")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CatalogsReportFeedIngestionFilter_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsReportFeedIngestionFilter_result`["message"])
+      }
+
+      `CatalogsReportDistributionIssueFilter_result` <- tryCatch({
+          `CatalogsReportDistributionIssueFilter`$public_methods$validateJSON(input)
+          `CatalogsReportDistributionIssueFilter_instance` <- `CatalogsReportDistributionIssueFilter`$new()
+          instance <- `CatalogsReportDistributionIssueFilter_instance`$fromJSON(input)
+          instance_type <- "CatalogsReportDistributionIssueFilter"
+          matched_schemas <- append(matched_schemas, "CatalogsReportDistributionIssueFilter")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CatalogsReportDistributionIssueFilter_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsReportDistributionIssueFilter_result`["message"])
+      }
+
+      if (matched == 1) {
+        # successfully match exactly 1 schema specified in oneOf
+        self$actual_instance <- instance
+        self$actual_type <- instance_type
+      } else if (matched > 1) {
+        # more than 1 match
+        stop(paste("Multiple matches found when deserializing the input into CatalogsRetailReportStatsParametersReport with oneOf schemas CatalogsReportDistributionIssueFilter, CatalogsReportFeedIngestionFilter. Matched schemas: ",
+                   paste(matched_schemas, collapse = ", ")))
+      } else {
+        # no match
+        stop(paste("No match found when deserializing the input into CatalogsRetailReportStatsParametersReport with oneOf schemas CatalogsReportDistributionIssueFilter, CatalogsReportFeedIngestionFilter. Details: >>",
+                   paste(error_messages, collapse = " >> ")))
+      }
+
+      self
+    },
+
+    #' @description
+    #' Serialize CatalogsRetailReportStatsParametersReport to JSON string.
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
+    #' @return JSON string representation of the CatalogsRetailReportStatsParametersReport.
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      if (!is.null(self$actual_instance)) {
+        json <- jsonlite::toJSON(simple, auto_unbox = TRUE, ...)
+        return(as.character(jsonlite::minify(json)))
+      } else {
+        return(NULL)
+      }
+    },
+
+    #' @description
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
+    toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CatalogsRetailReportStatsParametersReport to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
+      if (!is.null(self$actual_instance)) {
+        return(self$actual_instance$toSimpleType())
+      } else {
+        return(NULL)
+      }
+    },
+
+    #' @description
+    #' Validate the input JSON with respect to CatalogsRetailReportStatsParametersReport and
+    #' throw exception if invalid.
+    #'
+    #' @param input The input JSON.
+    validateJSON = function(input) {
+      # backup current values
+      actual_instance_bak <- self$actual_instance
+      actual_type_bak <- self$actual_type
+
+      # if it's not valid, an error will be thrown
+      self$fromJSON(input)
+
+      # no error thrown, restore old values
+      self$actual_instance <- actual_instance_bak
+      self$actual_type <- actual_type_bak
+    },
+
+    #' @description
+    #' Returns the string representation of the instance.
+    #'
+    #' @return The string representation of the instance.
+    toString = function() {
+      jsoncontent <- c(
+        sprintf('"actual_instance": %s', if (is.null(self$actual_instance)) NULL else self$actual_instance$toJSONString()),
+        sprintf('"actual_type": "%s"', self$actual_type),
+        sprintf('"one_of": "%s"', paste(unlist(self$one_of), collapse = ", "))
+      )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      as.character(jsonlite::prettify(paste("{", jsoncontent, "}", sep = "")))
+    },
+
+    #' @description
+    #' Print the object
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
+)
+## Uncomment below to unlock the class to allow modifications of the method or field
+#CatalogsRetailReportStatsParametersReport$unlock()
+#
+## Below is an example to define the print function
+#CatalogsRetailReportStatsParametersReport$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#CatalogsRetailReportStatsParametersReport$lock()
+

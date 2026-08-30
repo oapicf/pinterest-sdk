@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
 import 'package:openapi/src/model/keyword.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -17,7 +16,13 @@ part 'keywords_get200_response.g.dart';
 /// * [bookmark] 
 /// * [items] 
 @BuiltValue()
-abstract class KeywordsGet200Response implements Paginated, Built<KeywordsGet200Response, KeywordsGet200ResponseBuilder> {
+abstract class KeywordsGet200Response implements Built<KeywordsGet200Response, KeywordsGet200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<Keyword> get items;
+
   KeywordsGet200Response._();
 
   factory KeywordsGet200Response([void updates(KeywordsGet200ResponseBuilder b)]) = _$KeywordsGet200Response;
@@ -51,7 +56,7 @@ class _$KeywordsGet200ResponseSerializer implements PrimitiveSerializer<Keywords
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(Keyword)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$KeywordsGet200ResponseSerializer implements PrimitiveSerializer<Keywords
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(Keyword)]),
+          ) as BuiltList<Keyword>;
           result.items.replace(valueDes);
           break;
         default:

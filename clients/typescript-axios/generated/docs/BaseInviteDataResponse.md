@@ -1,12 +1,13 @@
 # BaseInviteDataResponse
 
+Common invite/request data returned by the business access endpoints.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Unique identifier of the invite/request. | [optional] [default to undefined]
-**invite_data** | [**BaseInviteDataResponseInviteData**](BaseInviteDataResponseInviteData.md) |  | [optional] [default to undefined]
+**invite_data** | [**InviteDataResponse**](InviteDataResponse.md) |  | [optional] [default to undefined]
 **is_received_invite** | **boolean** | Indicates whether the invite/request was received. | [optional] [default to undefined]
 **user** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | Metadata for the member/partner that was sent the invite/request. | [optional] [default to undefined]
 

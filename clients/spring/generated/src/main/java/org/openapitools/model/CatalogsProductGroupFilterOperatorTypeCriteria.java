@@ -2,70 +2,38 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.FilterOperatorType;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsProductGroupFilterOperatorTypeCriteria
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupFilterOperatorTypeCriteria {
 
-  /**
-   * Gets or Sets filterOperatorType
-   */
-  public enum FilterOperatorTypeEnum {
-    IS("IS"),
-    
-    CONTAINS("CONTAINS");
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable FilterOperatorType filterOperatorType;
 
-    private final String value;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable Boolean negated;
 
-    FilterOperatorTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FilterOperatorTypeEnum fromValue(String value) {
-      for (FilterOperatorTypeEnum b : FilterOperatorTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private FilterOperatorTypeEnum filterOperatorType = FilterOperatorTypeEnum.IS;
-
-  private Boolean negated = false;
-
-  @Valid
   private List<String> values = new ArrayList<>();
 
   public CatalogsProductGroupFilterOperatorTypeCriteria() {
@@ -79,7 +47,7 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria {
     this.values = values;
   }
 
-  public CatalogsProductGroupFilterOperatorTypeCriteria filterOperatorType(FilterOperatorTypeEnum filterOperatorType) {
+  public CatalogsProductGroupFilterOperatorTypeCriteria filterOperatorType(@Nullable FilterOperatorType filterOperatorType) {
     this.filterOperatorType = filterOperatorType;
     return this;
   }
@@ -88,18 +56,19 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria {
    * Get filterOperatorType
    * @return filterOperatorType
    */
-  
+  @Valid 
   @Schema(name = "filter_operator_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("filter_operator_type")
-  public FilterOperatorTypeEnum getFilterOperatorType() {
+  public @Nullable FilterOperatorType getFilterOperatorType() {
     return filterOperatorType;
   }
 
-  public void setFilterOperatorType(FilterOperatorTypeEnum filterOperatorType) {
+  @JsonProperty("filter_operator_type")
+  public void setFilterOperatorType(@Nullable FilterOperatorType filterOperatorType) {
     this.filterOperatorType = filterOperatorType;
   }
 
-  public CatalogsProductGroupFilterOperatorTypeCriteria negated(Boolean negated) {
+  public CatalogsProductGroupFilterOperatorTypeCriteria negated(@Nullable Boolean negated) {
     this.negated = negated;
     return this;
   }
@@ -111,11 +80,12 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria {
   
   @Schema(name = "negated", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("negated")
-  public Boolean getNegated() {
+  public @Nullable Boolean getNegated() {
     return negated;
   }
 
-  public void setNegated(Boolean negated) {
+  @JsonProperty("negated")
+  public void setNegated(@Nullable Boolean negated) {
     this.negated = negated;
   }
 
@@ -143,6 +113,7 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria {
     return values;
   }
 
+  @JsonProperty("values")
   public void setValues(List<String> values) {
     this.values = values;
   }
@@ -181,11 +152,8 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

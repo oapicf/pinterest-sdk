@@ -18,6 +18,7 @@
    (ds/opt :name) string?
    (ds/opt :owner) ad-account-owner-spec
    (ds/opt :permissions) (s/coll-of business-access-role-spec)
+   (ds/opt :time_zone) string?
    (ds/opt :updated_time) int?
    })
 

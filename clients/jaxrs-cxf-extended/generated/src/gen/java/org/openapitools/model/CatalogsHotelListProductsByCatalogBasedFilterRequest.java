@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsHotelListProductsByCatalogBasedFilterRequest  {
   
  /**
-  * Catalog id pertaining to the hotel product group.
+  * Catalog ID pertaining to the product group.
   */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog ID pertaining to the product group.")
   private String catalogId;
 
 public enum CatalogTypeEnum {
@@ -60,7 +60,7 @@ public enum CatalogTypeEnum {
   @Valid
   private CatalogsHotelProductGroupFilters filters;
  /**
-  * Catalog id pertaining to the hotel product group.
+  * Catalog ID pertaining to the product group.
   * @return catalogId
   */
   @JsonProperty("catalog_id")
@@ -171,10 +171,7 @@ public enum CatalogTypeEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

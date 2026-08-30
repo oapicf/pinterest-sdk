@@ -24,7 +24,7 @@ class CatalogsRetailFeedsUpdateRequest {
     this.status,
   });
 
-  CatalogsType catalogType;
+  CatalogsRetailFeedsUpdateRequestCatalogTypeEnum catalogType;
 
   CatalogsFeedCredentials? credentials;
 
@@ -153,15 +153,13 @@ class CatalogsRetailFeedsUpdateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsRetailFeedsUpdateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsRetailFeedsUpdateRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsRetailFeedsUpdateRequest[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsRetailFeedsUpdateRequest[catalog_type]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsRetailFeedsUpdateRequest(
-        catalogType: CatalogsType.fromJson(json[r'catalog_type'])!,
+        catalogType: CatalogsRetailFeedsUpdateRequestCatalogTypeEnum.fromJson(json[r'catalog_type'])!,
         credentials: CatalogsFeedCredentials.fromJson(json[r'credentials']),
         defaultAvailability: ProductAvailabilityType.fromJson(json[r'default_availability']),
         defaultCurrency: NullableCurrency.fromJson(json[r'default_currency']),
@@ -220,4 +218,80 @@ class CatalogsRetailFeedsUpdateRequest {
     'catalog_type',
   };
 }
+
+
+enum CatalogsRetailFeedsUpdateRequestCatalogTypeEnum {
+  RETAIL._(r'RETAIL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsRetailFeedsUpdateRequestCatalogTypeEnum._(this._value);
+
+  /// The underlying value of this enum member.
+  final String _value;
+
+  @override
+  String toString() => _value;
+
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
+
+  /// Returns the instance of [CatalogsRetailFeedsUpdateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
+  static CatalogsRetailFeedsUpdateRequestCatalogTypeEnum? fromJson(dynamic value) => CatalogsRetailFeedsUpdateRequestCatalogTypeEnumTypeTransformer().decode(value);
+
+  /// Returns a [List] containing instances of [CatalogsRetailFeedsUpdateRequestCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
+  static List<CatalogsRetailFeedsUpdateRequestCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CatalogsRetailFeedsUpdateRequestCatalogTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CatalogsRetailFeedsUpdateRequestCatalogTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CatalogsRetailFeedsUpdateRequestCatalogTypeEnum] to String,
+/// and [decode] dynamic data back to [CatalogsRetailFeedsUpdateRequestCatalogTypeEnum].
+class CatalogsRetailFeedsUpdateRequestCatalogTypeEnumTypeTransformer {
+  factory CatalogsRetailFeedsUpdateRequestCatalogTypeEnumTypeTransformer() => _instance ??= const CatalogsRetailFeedsUpdateRequestCatalogTypeEnumTypeTransformer._();
+
+  const CatalogsRetailFeedsUpdateRequestCatalogTypeEnumTypeTransformer._();
+
+  String encode(CatalogsRetailFeedsUpdateRequestCatalogTypeEnum data) => data._value;
+
+  /// Returns the instance of [CatalogsRetailFeedsUpdateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CatalogsRetailFeedsUpdateRequestCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsRetailFeedsUpdateRequestCatalogTypeEnum) {
+      return data;
+    }
+    if (data != null) {
+      switch (data) {
+        case r'RETAIL': return CatalogsRetailFeedsUpdateRequestCatalogTypeEnum.RETAIL;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// The singleton instance of this transformer.
+  static CatalogsRetailFeedsUpdateRequestCatalogTypeEnumTypeTransformer? _instance;
+}
+
 

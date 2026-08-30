@@ -9,10 +9,10 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/conversion_api_response.dart';
 import 'package:openapi/src/model/conversion_events.dart';
+import 'package:openapi/src/model/conversion_events_create.dart';
 import 'package:openapi/src/model/detailed_error.dart';
-import 'package:openapi/src/model/error.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
 
 class ConversionEventsApi {
 
@@ -23,11 +23,11 @@ class ConversionEventsApi {
   const ConversionEventsApi(this._dio, this._serializers);
 
   /// Send conversions
-  /// The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their &lt;code&gt;ad_account_id&lt;/code&gt;. The request body should be a JSON object. - This endpoint requires an &lt;code&gt;access_token&lt;/code&gt; be generated through Ads Manager. Review the &lt;a href&#x3D;\&quot;/docs/api-features/conversion-overview/\&quot;&gt;Conversions Guide&lt;/a&gt; for more details. (Note that the authorization header required is &lt;code&gt;Authorization: Bearer &amp;lt;access_token&amp;gt;&lt;/code&gt;). - The token&#39;s &lt;code&gt;user_account&lt;/code&gt; must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)
+  /// The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their &#x60;ad_account_id&#x60;. The request body should be a JSON object. - This endpoint requires an &#x60;access_token&#x60; be generated through Ads Manager. Review the [Conversions Guide](/docs/api-features/conversion-overview/) for more details. (Note that the authorization header required is &#x60;Authorization: Bearer &lt;access_token&gt;&#x60;). - The token&#39;s &#x60;user_account&#x60; must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [conversionEvents] - Conversion events.
+  /// * [conversionEventsCreate] 
   /// * [test] - Include query param ?test=true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -36,11 +36,11 @@ class ConversionEventsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ConversionApiResponse] as data
+  /// Returns a [Future] containing a [Response] with a [ConversionEvents] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ConversionApiResponse>> eventsCreate({ 
+  Future<Response<ConversionEvents>> eventsCreate({ 
     required String adAccountId,
-    required ConversionEvents conversionEvents,
+    required ConversionEventsCreate conversionEventsCreate,
     bool? test,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -62,7 +62,7 @@ class ConversionEventsApi {
             'name': 'pinterest_oauth2',
           },{
             'type': 'http',
-            'scheme': 'bearer',
+            'scheme': 'Bearer',
             'name': 'conversion_token',
           },
         ],
@@ -79,8 +79,8 @@ class ConversionEventsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ConversionEvents);
-      _bodyData = _serializers.serialize(conversionEvents, specifiedType: _type);
+      const _type = FullType(ConversionEventsCreate);
+      _bodyData = _serializers.serialize(conversionEventsCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -105,14 +105,14 @@ class ConversionEventsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ConversionApiResponse? _responseData;
+    ConversionEvents? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ConversionApiResponse),
-      ) as ConversionApiResponse;
+        specifiedType: const FullType(ConversionEvents),
+      ) as ConversionEvents;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -124,7 +124,7 @@ class ConversionEventsApi {
       );
     }
 
-    return Response<ConversionApiResponse>(
+    return Response<ConversionEvents>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

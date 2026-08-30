@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -44,10 +44,10 @@ func (r ApiItemsBatchGetRequest) Execute() (*CatalogsItemsBatch, *http.Response,
 /*
 ItemsBatchGet Get item batch status
 
-Get a single catalogs items batch owned by the "operating user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
+Get a single catalogs items batch owned by the "operating user_account". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch)
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param batchId Id of a catalogs items batch to fetch
@@ -125,8 +125,19 @@ func (a *CatalogItemsAPIService) ItemsBatchGetExecute(r ApiItemsBatchGetRequest)
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -137,7 +148,7 @@ func (a *CatalogItemsAPIService) ItemsBatchGetExecute(r ApiItemsBatchGetRequest)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -148,7 +159,7 @@ func (a *CatalogItemsAPIService) ItemsBatchGetExecute(r ApiItemsBatchGetRequest)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -158,8 +169,8 @@ func (a *CatalogItemsAPIService) ItemsBatchGetExecute(r ApiItemsBatchGetRequest)
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 405 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -169,7 +180,7 @@ func (a *CatalogItemsAPIService) ItemsBatchGetExecute(r ApiItemsBatchGetRequest)
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -195,13 +206,12 @@ func (a *CatalogItemsAPIService) ItemsBatchGetExecute(r ApiItemsBatchGetRequest)
 type ApiItemsBatchPostRequest struct {
 	ctx context.Context
 	ApiService *CatalogItemsAPIService
-	itemsBatchPostRequest *ItemsBatchPostRequest
+	catalogsItemsBatchPostRequest *CatalogsItemsBatchPostRequest
 	adAccountId *string
 }
 
-// Request object used to create catalogs items in a batch
-func (r ApiItemsBatchPostRequest) ItemsBatchPostRequest(itemsBatchPostRequest ItemsBatchPostRequest) ApiItemsBatchPostRequest {
-	r.itemsBatchPostRequest = &itemsBatchPostRequest
+func (r ApiItemsBatchPostRequest) CatalogsItemsBatchPostRequest(catalogsItemsBatchPostRequest CatalogsItemsBatchPostRequest) ApiItemsBatchPostRequest {
+	r.catalogsItemsBatchPostRequest = &catalogsItemsBatchPostRequest
 	return r
 }
 
@@ -218,10 +228,10 @@ func (r ApiItemsBatchPostRequest) Execute() (*CatalogsItemsBatch, *http.Response
 /*
 ItemsBatchPost Operate on item batch
 
-This endpoint supports multiple operations on a set of one or more catalog items owned by the "operation user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
+This endpoint supports multiple operations on a set of one or more catalog items owned by the "operation user_account". [See detailed documentation here.](/docs/work-with-catalogs/modify-items-in-batch/)
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 Note:
 - Access to the Creative Assets catalog type is restricted to a specific group of users.
@@ -258,8 +268,8 @@ func (a *CatalogItemsAPIService) ItemsBatchPostExecute(r ApiItemsBatchPostReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.itemsBatchPostRequest == nil {
-		return localVarReturnValue, nil, reportError("itemsBatchPostRequest is required and must be specified")
+	if r.catalogsItemsBatchPostRequest == nil {
+		return localVarReturnValue, nil, reportError("catalogsItemsBatchPostRequest is required and must be specified")
 	}
 
 	if r.adAccountId != nil {
@@ -283,7 +293,7 @@ func (a *CatalogItemsAPIService) ItemsBatchPostExecute(r ApiItemsBatchPostReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.itemsBatchPostRequest
+	localVarPostBody = r.catalogsItemsBatchPostRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -307,7 +317,7 @@ func (a *CatalogItemsAPIService) ItemsBatchPostExecute(r ApiItemsBatchPostReques
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -318,7 +328,7 @@ func (a *CatalogItemsAPIService) ItemsBatchPostExecute(r ApiItemsBatchPostReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -329,7 +339,7 @@ func (a *CatalogItemsAPIService) ItemsBatchPostExecute(r ApiItemsBatchPostReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -339,7 +349,29 @@ func (a *CatalogItemsAPIService) ItemsBatchPostExecute(r ApiItemsBatchPostReques
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -369,7 +401,6 @@ type ApiItemsPostRequest struct {
 	adAccountId *string
 }
 
-// Request object used to get catalogs items
 func (r ApiItemsPostRequest) CatalogsItemsRequest(catalogsItemsRequest CatalogsItemsRequest) ApiItemsPostRequest {
 	r.catalogsItemsRequest = &catalogsItemsRequest
 	return r
@@ -381,17 +412,17 @@ func (r ApiItemsPostRequest) AdAccountId(adAccountId string) ApiItemsPostRequest
 	return r
 }
 
-func (r ApiItemsPostRequest) Execute() (*CatalogsItems, *http.Response, error) {
+func (r ApiItemsPostRequest) Execute() (*ItemsPost200Response, *http.Response, error) {
 	return r.ApiService.ItemsPostExecute(r)
 }
 
 /*
 ItemsPost Get catalogs items (POST)
 
-Get the items of the catalog owned by the "operation user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
+Get the items of the catalog owned by the "operation user_account". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch)
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
 If you require access, please reach out to your partner manager.
@@ -407,13 +438,13 @@ func (a *CatalogItemsAPIService) ItemsPost(ctx context.Context) ApiItemsPostRequ
 }
 
 // Execute executes the request
-//  @return CatalogsItems
-func (a *CatalogItemsAPIService) ItemsPostExecute(r ApiItemsPostRequest) (*CatalogsItems, *http.Response, error) {
+//  @return ItemsPost200Response
+func (a *CatalogItemsAPIService) ItemsPostExecute(r ApiItemsPostRequest) (*ItemsPost200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CatalogsItems
+		localVarReturnValue  *ItemsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogItemsAPIService.ItemsPost")
@@ -475,7 +506,7 @@ func (a *CatalogItemsAPIService) ItemsPostExecute(r ApiItemsPostRequest) (*Catal
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -486,7 +517,7 @@ func (a *CatalogItemsAPIService) ItemsPostExecute(r ApiItemsPostRequest) (*Catal
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -497,7 +528,7 @@ func (a *CatalogItemsAPIService) ItemsPostExecute(r ApiItemsPostRequest) (*Catal
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -507,7 +538,29 @@ func (a *CatalogItemsAPIService) ItemsPostExecute(r ApiItemsPostRequest) (*Catal
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

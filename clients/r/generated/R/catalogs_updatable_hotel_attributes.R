@@ -7,7 +7,7 @@
 #' @title CatalogsUpdatableHotelAttributes
 #' @description CatalogsUpdatableHotelAttributes Class
 #' @format An \code{R6Class} generator object
-#' @field address  \link{CatalogsHotelAddress} [optional]
+#' @field address Hotel address \link{CatalogsHotelAddress} [optional]
 #' @field base_price Base price of the hotel room per night followed by the ISO currency code character [optional]
 #' @field brand The brand to which this hotel belongs to. character [optional]
 #' @field category The type of property. The category can be any type of internal description desired. character [optional]
@@ -17,7 +17,7 @@
 #' @field custom_label_3 Custom grouping of hotels character [optional]
 #' @field custom_label_4 Custom grouping of hotels character [optional]
 #' @field description Brief description of the hotel. character [optional]
-#' @field guest_ratings  \link{CatalogsHotelGuestRatings} [optional]
+#' @field guest_ratings If specified, you must provide all properties \link{CatalogsHotelGuestRatings} [optional]
 #' @field latitude Latitude of the hotel. numeric [optional]
 #' @field link Link to the product page character [optional]
 #' @field longitude Longitude of the hotel. numeric [optional]
@@ -51,7 +51,7 @@ CatalogsUpdatableHotelAttributes <- R6::R6Class(
     #' @description
     #' Initialize a new CatalogsUpdatableHotelAttributes class.
     #'
-    #' @param address address
+    #' @param address Hotel address
     #' @param base_price Base price of the hotel room per night followed by the ISO currency code
     #' @param brand The brand to which this hotel belongs to.
     #' @param category The type of property. The category can be any type of internal description desired.
@@ -61,7 +61,7 @@ CatalogsUpdatableHotelAttributes <- R6::R6Class(
     #' @param custom_label_3 Custom grouping of hotels
     #' @param custom_label_4 Custom grouping of hotels
     #' @param description Brief description of the hotel.
-    #' @param guest_ratings guest_ratings
+    #' @param guest_ratings If specified, you must provide all properties
     #' @param latitude Latitude of the hotel.
     #' @param link Link to the product page
     #' @param longitude Longitude of the hotel.
@@ -196,7 +196,7 @@ CatalogsUpdatableHotelAttributes <- R6::R6Class(
       CatalogsUpdatableHotelAttributesObject <- list()
       if (!is.null(self$`address`)) {
         CatalogsUpdatableHotelAttributesObject[["address"]] <-
-          self$`address`$toSimpleType()
+          self$extractSimpleType(self$`address`)
       }
       if (!is.null(self$`base_price`)) {
         CatalogsUpdatableHotelAttributesObject[["base_price"]] <-
@@ -236,7 +236,7 @@ CatalogsUpdatableHotelAttributes <- R6::R6Class(
       }
       if (!is.null(self$`guest_ratings`)) {
         CatalogsUpdatableHotelAttributesObject[["guest_ratings"]] <-
-          self$`guest_ratings`$toSimpleType()
+          self$extractSimpleType(self$`guest_ratings`)
       }
       if (!is.null(self$`latitude`)) {
         CatalogsUpdatableHotelAttributesObject[["latitude"]] <-
@@ -263,6 +263,29 @@ CatalogsUpdatableHotelAttributes <- R6::R6Class(
           self$`sale_price`
       }
       return(CatalogsUpdatableHotelAttributesObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

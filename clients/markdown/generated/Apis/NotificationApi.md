@@ -9,7 +9,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a name="notification/post"></a>
 # **notification/post**
-> NotificationResponse notification/post(notification\_post\_request)
+> NotificationResponse notification/post(NotificationPostRequest)
 
 Receive notifications from external partners.
 
@@ -19,7 +19,7 @@ Receive notifications from external partners.
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **notification\_post\_request** | [**notification_post_request**](../Models/notification_post_request.md)| notification event. | |
+| **NotificationPostRequest** | [**NotificationPostRequest**](../Models/NotificationPostRequest.md)|  | |
 
 ### Return type
 

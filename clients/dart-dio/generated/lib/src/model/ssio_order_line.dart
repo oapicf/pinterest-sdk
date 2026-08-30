@@ -10,30 +10,30 @@ import 'package:built_value/serializer.dart';
 
 part 'ssio_order_line.g.dart';
 
-/// SSIOOrderLine
+/// A Salesforce SSIO order line.
 ///
 /// Properties:
 /// * [acceptedTermsId] - The SFDC id for the terms
-/// * [acceptedTermsTime] - The UTC timestamp (to the nearest sec) of when terms were accepted
-/// * [adsManagerOrderLineId] - Ads manager OrderLineId
+/// * [acceptedTermsTime] - The UTC timestamp (to the nearest second) when terms were accepted.
+/// * [adsManagerOrderLineId] - Ads manager order line id
 /// * [agencyLink] - Agency link
-/// * [billToCompanyName] - Bill To Company name
+/// * [billToCompanyName] - Bill-to company name
 /// * [billingContactEmail] - Billing contact email
 /// * [billingContactFirstname] - Billing contact first name
 /// * [billingContactLastname] - Billing contact last name
-/// * [budgetAmount] - If Budget order line, the budget amount.
+/// * [budgetAmount] - If budget order line, the budget amount.
 /// * [currencyInfo] 
 /// * [endDate] - End date of the order line.
-/// * [estimatedMonthlySpend] - If Ongoing (perpetual) order line, the estimated monthly spend
+/// * [estimatedMonthlySpend] - If ongoing (perpetual) order line, the estimated monthly spend.
 /// * [lastModifiedDateTime] - Last modified date.
 /// * [mediaContactEmail] - Billing media email
-/// * [mediaContactFirstname] - Billing contact first name
-/// * [mediaContactLastname] - Billing contact first name
+/// * [mediaContactFirstname] - Billing media contact first name
+/// * [mediaContactLastname] - Billing media contact last name
 /// * [orderName] - The order name
 /// * [pinOrderId] - The pin order id associated with the order line in SFDC
 /// * [pmpName] - The Pinterest marketing partner name
-/// * [poNumber] - The po number
-/// * [salesforceOrderLineId] - OrderLineId in SFDC
+/// * [poNumber] - The PO number
+/// * [salesforceOrderLineId] - Order line id in SFDC
 /// * [startDate] - Start date of the order line.
 @BuiltValue()
 abstract class SSIOOrderLine implements Built<SSIOOrderLine, SSIOOrderLineBuilder> {
@@ -41,11 +41,11 @@ abstract class SSIOOrderLine implements Built<SSIOOrderLine, SSIOOrderLineBuilde
   @BuiltValueField(wireName: r'accepted_terms_id')
   String? get acceptedTermsId;
 
-  /// The UTC timestamp (to the nearest sec) of when terms were accepted
+  /// The UTC timestamp (to the nearest second) when terms were accepted.
   @BuiltValueField(wireName: r'accepted_terms_time')
   String? get acceptedTermsTime;
 
-  /// Ads manager OrderLineId
+  /// Ads manager order line id
   @BuiltValueField(wireName: r'ads_manager_order_line_id')
   String? get adsManagerOrderLineId;
 
@@ -53,7 +53,7 @@ abstract class SSIOOrderLine implements Built<SSIOOrderLine, SSIOOrderLineBuilde
   @BuiltValueField(wireName: r'agency_link')
   String? get agencyLink;
 
-  /// Bill To Company name
+  /// Bill-to company name
   @BuiltValueField(wireName: r'bill_to_company_name')
   String? get billToCompanyName;
 
@@ -69,7 +69,7 @@ abstract class SSIOOrderLine implements Built<SSIOOrderLine, SSIOOrderLineBuilde
   @BuiltValueField(wireName: r'billing_contact_lastname')
   String? get billingContactLastname;
 
-  /// If Budget order line, the budget amount.
+  /// If budget order line, the budget amount.
   @BuiltValueField(wireName: r'budget_amount')
   num? get budgetAmount;
 
@@ -81,7 +81,7 @@ abstract class SSIOOrderLine implements Built<SSIOOrderLine, SSIOOrderLineBuilde
   @BuiltValueField(wireName: r'end_date')
   Date? get endDate;
 
-  /// If Ongoing (perpetual) order line, the estimated monthly spend
+  /// If ongoing (perpetual) order line, the estimated monthly spend.
   @BuiltValueField(wireName: r'estimated_monthly_spend')
   num? get estimatedMonthlySpend;
 
@@ -93,11 +93,11 @@ abstract class SSIOOrderLine implements Built<SSIOOrderLine, SSIOOrderLineBuilde
   @BuiltValueField(wireName: r'media_contact_email')
   String? get mediaContactEmail;
 
-  /// Billing contact first name
+  /// Billing media contact first name
   @BuiltValueField(wireName: r'media_contact_firstname')
   String? get mediaContactFirstname;
 
-  /// Billing contact first name
+  /// Billing media contact last name
   @BuiltValueField(wireName: r'media_contact_lastname')
   String? get mediaContactLastname;
 
@@ -113,11 +113,11 @@ abstract class SSIOOrderLine implements Built<SSIOOrderLine, SSIOOrderLineBuilde
   @BuiltValueField(wireName: r'pmp_name')
   String? get pmpName;
 
-  /// The po number
+  /// The PO number
   @BuiltValueField(wireName: r'po_number')
   String? get poNumber;
 
-  /// OrderLineId in SFDC
+  /// Order line id in SFDC
   @BuiltValueField(wireName: r'salesforce_order_line_id')
   String? get salesforceOrderLineId;
 
@@ -400,8 +400,9 @@ class _$SSIOOrderLineSerializer implements PrimitiveSerializer<SSIOOrderLine> {
         case r'currency_info':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(Currency),
-          ) as Currency;
+            specifiedType: const FullType.nullable(Currency),
+          ) as Currency?;
+          if (valueDes == null) continue;
           result.currencyInfo = valueDes;
           break;
         case r'end_date':

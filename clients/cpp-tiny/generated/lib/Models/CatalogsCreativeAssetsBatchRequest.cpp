@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsCreativeAssetsBatchRequest::CatalogsCreativeAssetsBatchRequest()
 {
-	catalog_id = std::string();
+	catalog_id = null;
 	catalog_type = std::string();
 	country = Country();
 	items = std::list<CatalogsCreativeAssetsBatchItem>();
@@ -166,7 +166,7 @@ CatalogsCreativeAssetsBatchRequest::getCatalogId()
 }
 
 void
-CatalogsCreativeAssetsBatchRequest::setCatalogId(std::string  catalog_id)
+CatalogsCreativeAssetsBatchRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -178,7 +178,7 @@ CatalogsCreativeAssetsBatchRequest::getCatalogType()
 }
 
 void
-CatalogsCreativeAssetsBatchRequest::setCatalogType(std::string  catalog_type)
+CatalogsCreativeAssetsBatchRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -190,7 +190,7 @@ CatalogsCreativeAssetsBatchRequest::getCountry()
 }
 
 void
-CatalogsCreativeAssetsBatchRequest::setCountry(Country  country)
+CatalogsCreativeAssetsBatchRequest::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -202,7 +202,7 @@ CatalogsCreativeAssetsBatchRequest::getItems()
 }
 
 void
-CatalogsCreativeAssetsBatchRequest::setItems(std::list <CatalogsCreativeAssetsBatchItem> items)
+CatalogsCreativeAssetsBatchRequest::setItems(std::list<CatalogsCreativeAssetsBatchItem> items)
 {
 	this->items = items;
 }
@@ -214,7 +214,7 @@ CatalogsCreativeAssetsBatchRequest::getLanguage()
 }
 
 void
-CatalogsCreativeAssetsBatchRequest::setLanguage(std::string  language)
+CatalogsCreativeAssetsBatchRequest::setLanguage(std::string language)
 {
 	this->language = language;
 }

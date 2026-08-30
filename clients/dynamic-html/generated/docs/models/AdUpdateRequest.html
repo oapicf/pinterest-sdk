@@ -1,6 +1,16 @@
 
 <h2>AdUpdateRequest</h2>
 <ul class="parameter">
+  <li class="param-required-true">id : String
+    <br/>The ID of this ad.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">pinUnderscoreid : String
+    <br/>Pin ID. This field may only be updated for draft ads.
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-false">adUnderscoregroupUnderscoreid : String
     <br/>ID of the ad group that contains the ad.
   </li>
@@ -66,6 +76,11 @@
   </li>
 </ul>
 <ul class="parameter">
+  <li class="param-required-false">isUnderscorecarting : Boolean
+    <br/>Is the ad a carting/WTB ad?
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-false">isUnderscorepinUnderscoredeleted : Boolean
     <br/>Is original pin deleted?
   </li>
@@ -86,7 +101,7 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">quizUnderscorepinUnderscoredata : QuizPinData
+  <li class="param-required-false">quizUnderscorepinUnderscoredata : Object
     <br/>Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
   </li>
 </ul>
@@ -96,22 +111,12 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">trackingUnderscoreurls : TrackingUrls
+  <li class="param-required-false">trackingUnderscoreurls : Object
     <br/>
   </li>
 </ul>
 <ul class="parameter">
   <li class="param-required-false">viewUnderscoretrackingUnderscoreurl : String
     <br/>Tracking URL for ad impressions.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">id : String
-    <br/>The ID of this ad.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">pinUnderscoreid : String
-    <br/>Pin ID. This field may only be updated for draft ads.
   </li>
 </ul>

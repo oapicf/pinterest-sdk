@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.RespondToInvitesResponseArrayItemsInner;
+import org.openapitools.model.RespondToInviteResultItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,26 +21,26 @@ public class RespondToInvitesResponseArray  {
 
   @Valid
 
-  private List<@Valid RespondToInvitesResponseArrayItemsInner> items = new ArrayList<>();
+  private List<@Valid RespondToInviteResultItem> items = new ArrayList<>();
  /**
    * List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.
    * @return items
   **/
   @JsonProperty("items")
-  public List<@Valid RespondToInvitesResponseArrayItemsInner> getItems() {
+  public List<@Valid RespondToInviteResultItem> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid RespondToInvitesResponseArrayItemsInner> items) {
+  public void setItems(List<@Valid RespondToInviteResultItem> items) {
     this.items = items;
   }
 
-  public RespondToInvitesResponseArray items(List<@Valid RespondToInvitesResponseArrayItemsInner> items) {
+  public RespondToInvitesResponseArray items(List<@Valid RespondToInviteResultItem> items) {
     this.items = items;
     return this;
   }
 
-  public RespondToInvitesResponseArray addItemsItem(RespondToInvitesResponseArrayItemsInner itemsItem) {
+  public RespondToInvitesResponseArray addItemsItem(RespondToInviteResultItem itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -77,10 +77,7 @@ public class RespondToInvitesResponseArray  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -20,23 +20,22 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CreateAssetAccessRequestErrorMessageInner;
+import org.openapitools.model.AssetAccessRequestError;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CreateAssetAccessRequestResponse   {
   
-  private List<CreateAssetAccessRequestErrorMessageInner> exceptions;
-  private Map<String, String> invites;
+  private List<AssetAccessRequestError> exceptions = new ArrayList<>();
+  private Map<String, String> invites = new HashMap<>();
 
   /**
    * A list of errors associated with the asset access requests. Will be returned if there is an error.
    */
-  public CreateAssetAccessRequestResponse exceptions(List<CreateAssetAccessRequestErrorMessageInner> exceptions) {
+  public CreateAssetAccessRequestResponse exceptions(List<AssetAccessRequestError> exceptions) {
     this.exceptions = exceptions;
     return this;
   }
@@ -44,14 +43,15 @@ public class CreateAssetAccessRequestResponse   {
   
   @ApiModelProperty(value = "A list of errors associated with the asset access requests. Will be returned if there is an error.")
   @JsonProperty("exceptions")
-  public List<CreateAssetAccessRequestErrorMessageInner> getExceptions() {
+  public List<AssetAccessRequestError> getExceptions() {
     return exceptions;
   }
-  public void setExceptions(List<CreateAssetAccessRequestErrorMessageInner> exceptions) {
+  public void setExceptions(List<AssetAccessRequestError> exceptions) {
     this.exceptions = exceptions;
   }
 
   /**
+   * An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
    */
   public CreateAssetAccessRequestResponse invites(Map<String, String> invites) {
     this.invites = invites;
@@ -59,7 +59,7 @@ public class CreateAssetAccessRequestResponse   {
   }
 
   
-  @ApiModelProperty(example = "{\"766456567741825556\":\"5349280584552211583\",\"733242520489967216\":\"5349280584552211845\"}", value = "")
+  @ApiModelProperty(example = "{\"766456567741825556\":\"5349280584552211583\",\"733242520489967216\":\"5349280584552211845\"}", value = "An object mapping each partner id to the asset access request id. Only one request id is returned per partner.")
   @JsonProperty("invites")
   public Map<String, String> getInvites() {
     return invites;
@@ -103,10 +103,7 @@ public class CreateAssetAccessRequestResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

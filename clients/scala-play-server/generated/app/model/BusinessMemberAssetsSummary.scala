@@ -7,10 +7,10 @@ import play.api.libs.json._
   * @param adAccounts List of ad account IDs and respective permission levels.
   * @param profiles List of profile IDs and respective permission levels.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class BusinessMemberAssetsSummary(
-  adAccounts: Option[List[BusinessMemberAssetsSummaryAdAccountsInner]],
-  profiles: Option[List[BusinessMemberAssetsSummaryProfilesInner]]
+  adAccounts: Option[List[AssetIdWithPermissions]],
+  profiles: Option[List[AssetIdWithPermissions]]
 )
 
 object BusinessMemberAssetsSummary {

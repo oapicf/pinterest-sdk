@@ -8,16 +8,10 @@ The class is defined in **[CatalogsProductGroupFilterOperatorTypeCriteria.java](
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filterOperatorType** | [**FilterOperatorTypeEnum**](#FilterOperatorTypeEnum) |  |  [optional property]
+**filterOperatorType** | `FilterOperatorType` |  |  [optional property]
 **negated** | `Boolean` |  |  [optional property]
 **values** | `List&lt;String&gt;` |  | 
 
-## FilterOperatorTypeEnum
-
-Name | Value
----- | -----
-IS | `"IS"`
-CONTAINS | `"CONTAINS"`
 
 
 

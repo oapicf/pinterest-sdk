@@ -51,14 +51,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	long getTotal();
 
 	/*! \brief Set 
 	 */
-	void setTotal(long  total);
+	void setTotal(long total);
 
 
     private:

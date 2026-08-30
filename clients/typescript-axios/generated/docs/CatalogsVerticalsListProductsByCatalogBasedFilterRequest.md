@@ -6,7 +6,7 @@ Request object to list products for a given catalog_id and product group filter.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **string** | Catalog id pertaining to the creative assets product group. | [default to undefined]
+**catalog_id** | **string** | Catalog ID pertaining to the product group. | [default to undefined]
 **catalog_type** | **string** |  | [default to undefined]
 **country** | [**Country**](Country.md) |  | [default to undefined]
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [default to undefined]

@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.UpdateMemberAssetAccessBodyAccessesInner;
+import org.openapitools.model.UpdateMemberAssetAccessItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -13,36 +13,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 /**
- * An object with a list of all the new accesses.
+ * An object with a list of all the new member asset accesses.
  */
-@ApiModel(description="An object with a list of all the new accesses.")
+@ApiModel(description="An object with a list of all the new member asset accesses.")
 
 public class UpdateMemberAssetAccessBody  {
   
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
  /**
-  * Get accesses
+  * List of member asset accesses to assign or update.
+  */
+  @ApiModelProperty(required = true, value = "List of member asset accesses to assign or update.")
+  @Valid
+  private List<@Valid UpdateMemberAssetAccessItem> accesses = new ArrayList<>();
+ /**
+  * List of member asset accesses to assign or update.
   * @return accesses
   */
   @JsonProperty("accesses")
   @NotNull
- @Size(min=1,max=50)  public List<@Valid UpdateMemberAssetAccessBodyAccessesInner> getAccesses() {
+ @Size(min=1,max=50)  public List<@Valid UpdateMemberAssetAccessItem> getAccesses() {
     return accesses;
   }
 
   /**
    * Sets the <code>accesses</code> property.
    */
- public void setAccesses(List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+ public void setAccesses(List<@Valid UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
   /**
    * Sets the <code>accesses</code> property.
    */
-  public UpdateMemberAssetAccessBody accesses(List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+  public UpdateMemberAssetAccessBody accesses(List<@Valid UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
@@ -50,7 +53,7 @@ public class UpdateMemberAssetAccessBody  {
   /**
    * Adds a new item to the <code>accesses</code> list.
    */
-  public UpdateMemberAssetAccessBody addAccessesItem(UpdateMemberAssetAccessBodyAccessesInner accessesItem) {
+  public UpdateMemberAssetAccessBody addAccessesItem(UpdateMemberAssetAccessItem accessesItem) {
     this.accesses.add(accessesItem);
     return this;
   }
@@ -88,10 +91,7 @@ public class UpdateMemberAssetAccessBody  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

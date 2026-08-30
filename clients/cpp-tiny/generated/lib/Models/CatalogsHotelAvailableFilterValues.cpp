@@ -7,7 +7,7 @@ using namespace Tiny;
 CatalogsHotelAvailableFilterValues::CatalogsHotelAvailableFilterValues()
 {
 	catalog_type = std::string();
-	filter_values = Catalogs_hotel_filter_values_map();
+	filter_values = CatalogsHotelFilterValuesMap();
 }
 
 CatalogsHotelAvailableFilterValues::CatalogsHotelAvailableFilterValues(std::string jsonString)
@@ -47,7 +47,7 @@ CatalogsHotelAvailableFilterValues::fromJson(std::string jsonObj)
 
 
 
-        Catalogs_hotel_filter_values_map* obj = &filter_values;
+        CatalogsHotelFilterValuesMap* obj = &filter_values;
 		obj->fromJson(value.dump());
 
     }
@@ -86,19 +86,19 @@ CatalogsHotelAvailableFilterValues::getCatalogType()
 }
 
 void
-CatalogsHotelAvailableFilterValues::setCatalogType(std::string  catalog_type)
+CatalogsHotelAvailableFilterValues::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
 
-Catalogs_hotel_filter_values_map
+CatalogsHotelFilterValuesMap
 CatalogsHotelAvailableFilterValues::getFilterValues()
 {
 	return filter_values;
 }
 
 void
-CatalogsHotelAvailableFilterValues::setFilterValues(Catalogs_hotel_filter_values_map  filter_values)
+CatalogsHotelAvailableFilterValues::setFilterValues(CatalogsHotelFilterValuesMap filter_values)
 {
 	this->filter_values = filter_values;
 }

@@ -20,7 +20,7 @@ class CatalogsHotelProductGroupCreateRequest {
     required this.name,
   });
 
-  /// Catalog id pertaining to the hotel product group.
+  /// Catalog ID pertaining to the product group.
   String catalogId;
 
   CatalogsHotelProductGroupCreateRequestCatalogTypeEnum catalogType;
@@ -76,10 +76,14 @@ class CatalogsHotelProductGroupCreateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsHotelProductGroupCreateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsHotelProductGroupCreateRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_id'), 'Required key "CatalogsHotelProductGroupCreateRequest[catalog_id]" is missing from JSON.');
+        assert(json[r'catalog_id'] != null, 'Required key "CatalogsHotelProductGroupCreateRequest[catalog_id]" has a null value in JSON.');
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsHotelProductGroupCreateRequest[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsHotelProductGroupCreateRequest[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'filters'), 'Required key "CatalogsHotelProductGroupCreateRequest[filters]" is missing from JSON.');
+        assert(json[r'filters'] != null, 'Required key "CatalogsHotelProductGroupCreateRequest[filters]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "CatalogsHotelProductGroupCreateRequest[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "CatalogsHotelProductGroupCreateRequest[name]" has a null value in JSON.');
         return true;
       }());
 
@@ -144,27 +148,28 @@ class CatalogsHotelProductGroupCreateRequest {
 }
 
 
-class CatalogsHotelProductGroupCreateRequestCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsHotelProductGroupCreateRequestCatalogTypeEnum._(this.value);
+enum CatalogsHotelProductGroupCreateRequestCatalogTypeEnum {
+  HOTEL._(r'HOTEL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsHotelProductGroupCreateRequestCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const HOTEL = CatalogsHotelProductGroupCreateRequestCatalogTypeEnum._(r'HOTEL');
-
-  /// List of all possible values in this [enum][CatalogsHotelProductGroupCreateRequestCatalogTypeEnum].
-  static const values = <CatalogsHotelProductGroupCreateRequestCatalogTypeEnum>[
-    HOTEL,
-  ];
-
+  /// Returns the instance of [CatalogsHotelProductGroupCreateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsHotelProductGroupCreateRequestCatalogTypeEnum? fromJson(dynamic value) => CatalogsHotelProductGroupCreateRequestCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsHotelProductGroupCreateRequestCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsHotelProductGroupCreateRequestCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsHotelProductGroupCreateRequestCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -186,9 +191,10 @@ class CatalogsHotelProductGroupCreateRequestCatalogTypeEnumTypeTransformer {
 
   const CatalogsHotelProductGroupCreateRequestCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsHotelProductGroupCreateRequestCatalogTypeEnum data) => data.value;
+  String encode(CatalogsHotelProductGroupCreateRequestCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsHotelProductGroupCreateRequestCatalogTypeEnum.
+  /// Returns the instance of [CatalogsHotelProductGroupCreateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -197,6 +203,9 @@ class CatalogsHotelProductGroupCreateRequestCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsHotelProductGroupCreateRequestCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsHotelProductGroupCreateRequestCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'HOTEL': return CatalogsHotelProductGroupCreateRequestCatalogTypeEnum.HOTEL;
@@ -209,7 +218,7 @@ class CatalogsHotelProductGroupCreateRequestCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsHotelProductGroupCreateRequestCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsHotelProductGroupCreateRequestCatalogTypeEnumTypeTransformer? _instance;
 }
 

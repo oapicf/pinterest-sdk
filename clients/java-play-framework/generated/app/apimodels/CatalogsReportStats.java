@@ -14,15 +14,34 @@ import javax.validation.Valid;
 /**
  * Diagnostics aggregated numbers
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsReportStats   {
+  @JsonProperty("catalog_id")
+  @Pattern(regexp="^\\d+$")
+
+  private String catalogId;
+
+  @JsonProperty("code")
+  
+  private Integer code;
+
+  @JsonProperty("code_label")
+  
+  private String codeLabel;
+
+  @JsonProperty("message")
+  
+  private String message;
+
+  @JsonProperty("occurrences")
+  
+  private Integer occurrences;
+
   /**
    * Gets or Sets reportType
    */
   public enum ReportTypeEnum {
-    FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
-    
     DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
 
     private final String value;
@@ -49,30 +68,8 @@ public class CatalogsReportStats   {
   }
 
   @JsonProperty("report_type")
-  @NotNull
-
+  
   private ReportTypeEnum reportType;
-
-  @JsonProperty("catalog_id")
-  @Pattern(regexp="^\\d+$")
-
-  private String catalogId;
-
-  @JsonProperty("code")
-  
-  private Integer code;
-
-  @JsonProperty("code_label")
-  
-  private String codeLabel;
-
-  @JsonProperty("message")
-  
-  private String message;
-
-  @JsonProperty("occurrences")
-  
-  private Integer occurrences;
 
   /**
    * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
@@ -116,23 +113,6 @@ public class CatalogsReportStats   {
   @JsonProperty("ineligible_for_organic")
   
   private Boolean ineligibleForOrganic;
-
-  public CatalogsReportStats reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-   /**
-   * Get reportType
-   * @return reportType
-  **/
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   public CatalogsReportStats catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -219,6 +199,23 @@ public class CatalogsReportStats   {
     this.occurrences = occurrences;
   }
 
+  public CatalogsReportStats reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+   /**
+   * Get reportType
+   * @return reportType
+  **/
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
   public CatalogsReportStats severity(SeverityEnum severity) {
     this.severity = severity;
     return this;
@@ -280,12 +277,12 @@ public class CatalogsReportStats   {
       return false;
     }
     CatalogsReportStats catalogsReportStats = (CatalogsReportStats) o;
-    return Objects.equals(reportType, catalogsReportStats.reportType) &&
-        Objects.equals(catalogId, catalogsReportStats.catalogId) &&
+    return Objects.equals(catalogId, catalogsReportStats.catalogId) &&
         Objects.equals(code, catalogsReportStats.code) &&
         Objects.equals(codeLabel, catalogsReportStats.codeLabel) &&
         Objects.equals(message, catalogsReportStats.message) &&
         Objects.equals(occurrences, catalogsReportStats.occurrences) &&
+        Objects.equals(reportType, catalogsReportStats.reportType) &&
         Objects.equals(severity, catalogsReportStats.severity) &&
         Objects.equals(ineligibleForAds, catalogsReportStats.ineligibleForAds) &&
         Objects.equals(ineligibleForOrganic, catalogsReportStats.ineligibleForOrganic);
@@ -293,7 +290,7 @@ public class CatalogsReportStats   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, severity, ineligibleForAds, ineligibleForOrganic);
+    return Objects.hash(catalogId, code, codeLabel, message, occurrences, reportType, severity, ineligibleForAds, ineligibleForOrganic);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -302,12 +299,12 @@ public class CatalogsReportStats   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("    ineligibleForAds: ").append(toIndentedString(ineligibleForAds)).append("\n");
     sb.append("    ineligibleForOrganic: ").append(toIndentedString(ineligibleForOrganic)).append("\n");
@@ -320,10 +317,7 @@ public class CatalogsReportStats   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

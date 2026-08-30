@@ -5,7 +5,7 @@ Request object for updating a feed.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | **CatalogsType** |  | 
+**CatalogType** | **string** |  | 
 **Credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
 **DefaultAvailability** | **ProductAvailabilityType** |  | [optional] 
 **DefaultCurrency** | **NullableCurrency** |  | [optional] 

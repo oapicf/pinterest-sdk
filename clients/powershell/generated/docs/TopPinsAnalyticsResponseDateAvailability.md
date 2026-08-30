@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TopPinsAnalyticsResponseDateAvailability = Initialize-PSOpenAPIToolsTopPinsAnalyticsResponseDateAvailability  -IsRealtime false `
- -LatestAvailableTimestamp 1649116799000
+$TopPinsAnalyticsResponseDateAvailability = Initialize-PSOpenAPIToolsTopPinsAnalyticsResponseDateAvailability  -IsRealtime null `
+ -LatestAvailableTimestamp null
 ```
 
 - Convert the resource to JSON

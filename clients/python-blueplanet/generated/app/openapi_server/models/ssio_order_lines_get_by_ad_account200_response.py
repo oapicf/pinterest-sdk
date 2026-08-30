@@ -73,7 +73,6 @@ class SsioOrderLinesGetByAdAccount200Response(Model):
     def items(self) -> List[SSIOOrderLine]:
         """Gets the items of this SsioOrderLinesGetByAdAccount200Response.
 
-        SSIO order lines by ad acount id  # noqa: E501
 
         :return: The items of this SsioOrderLinesGetByAdAccount200Response.
         :rtype: List[SSIOOrderLine]
@@ -84,7 +83,6 @@ class SsioOrderLinesGetByAdAccount200Response(Model):
     def items(self, items: List[SSIOOrderLine]):
         """Sets the items of this SsioOrderLinesGetByAdAccount200Response.
 
-        SSIO order lines by ad acount id  # noqa: E501
 
         :param items: The items of this SsioOrderLinesGetByAdAccount200Response.
         :type items: List[SSIOOrderLine]

@@ -92,14 +92,14 @@ CreateAssetInvitesRequestItem::toJson()
 
 }
 
-Map<string, string>
+std::map<std::string, std::list>
 CreateAssetInvitesRequestItem::getAssetIdToPermissions()
 {
 	return asset_id_to_permissions;
 }
 
 void
-CreateAssetInvitesRequestItem::setAssetIdToPermissions(Map <string, string> asset_id_to_permissions)
+CreateAssetInvitesRequestItem::setAssetIdToPermissions(std::map<std::string, std::list> asset_id_to_permissions)
 {
 	this->asset_id_to_permissions = asset_id_to_permissions;
 }
@@ -111,7 +111,7 @@ CreateAssetInvitesRequestItem::getInviteId()
 }
 
 void
-CreateAssetInvitesRequestItem::setInviteId(std::string  invite_id)
+CreateAssetInvitesRequestItem::setInviteId(std::string invite_id)
 {
 	this->invite_id = invite_id;
 }
@@ -123,7 +123,7 @@ CreateAssetInvitesRequestItem::getInviteType()
 }
 
 void
-CreateAssetInvitesRequestItem::setInviteType(InviteType  invite_type)
+CreateAssetInvitesRequestItem::setInviteType(InviteType invite_type)
 {
 	this->invite_type = invite_type;
 }

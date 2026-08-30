@@ -106,7 +106,7 @@ ImageDetails::getHeight()
 }
 
 void
-ImageDetails::setHeight(int  height)
+ImageDetails::setHeight(int height)
 {
 	this->height = height;
 }
@@ -118,7 +118,7 @@ ImageDetails::getUrl()
 }
 
 void
-ImageDetails::setUrl(std::string  url)
+ImageDetails::setUrl(std::string url)
 {
 	this->url = url;
 }
@@ -130,7 +130,7 @@ ImageDetails::getWidth()
 }
 
 void
-ImageDetails::setWidth(int  width)
+ImageDetails::setWidth(int width)
 {
 	this->width = width;
 }

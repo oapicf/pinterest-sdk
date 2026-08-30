@@ -31,11 +31,11 @@ static catalogs_retail_items_post_filter_t *catalogs_retail_items_post_filter_cr
     if (!catalogs_retail_items_post_filter_local_var) {
         return NULL;
     }
+    memset(catalogs_retail_items_post_filter_local_var, 0, sizeof(catalogs_retail_items_post_filter_t));
+    catalogs_retail_items_post_filter_local_var->_library_owned = 1;
     catalogs_retail_items_post_filter_local_var->catalog_id = catalog_id;
     catalogs_retail_items_post_filter_local_var->catalog_type = catalog_type;
     catalogs_retail_items_post_filter_local_var->item_ids = item_ids;
-
-    catalogs_retail_items_post_filter_local_var->_library_owned = 1;
     return catalogs_retail_items_post_filter_local_var;
 }
 
@@ -44,11 +44,14 @@ __attribute__((deprecated)) catalogs_retail_items_post_filter_t *catalogs_retail
     pinterest_rest_api_catalogs_retail_items_post_filter_CATALOGTYPE_e catalog_type,
     list_t *item_ids
     ) {
-    return catalogs_retail_items_post_filter_create_internal (
+    catalogs_retail_items_post_filter_t *result = catalogs_retail_items_post_filter_create_internal (
         catalog_id,
         catalog_type,
         item_ids
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_retail_items_post_filter_free(catalogs_retail_items_post_filter_t *catalogs_retail_items_post_filter) {
@@ -124,6 +127,8 @@ catalogs_retail_items_post_filter_t *catalogs_retail_items_post_filter_parseFrom
 
     catalogs_retail_items_post_filter_t *catalogs_retail_items_post_filter_local_var = NULL;
 
+    char *catalog_id_local_str = NULL;
+
     // define the local list for catalogs_retail_items_post_filter->item_ids
     list_t *item_idsList = NULL;
 
@@ -182,14 +187,24 @@ catalogs_retail_items_post_filter_t *catalogs_retail_items_post_filter_parseFrom
     }
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+
     catalogs_retail_items_post_filter_local_var = catalogs_retail_items_post_filter_create_internal (
-        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
+        catalog_id_local_str,
         catalog_typeVariable,
         item_idsList
         );
 
+    if (!catalogs_retail_items_post_filter_local_var) {
+        goto end;
+    }
+
     return catalogs_retail_items_post_filter_local_var;
 end:
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
+    }
     if (item_idsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, item_idsList) {

@@ -10,7 +10,7 @@
 
 
 /**
- * Asset group type
+ * Asset group type.
  */
 export const AssetGroupType = {
     Brand: 'BRAND',

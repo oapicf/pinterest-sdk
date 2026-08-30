@@ -7,7 +7,7 @@ goog.provide('API.Client.CatalogsHotelFeedsUpdateRequest');
 API.Client.CatalogsHotelFeedsUpdateRequest = function() {}
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsHotelFeedsUpdateRequest.prototype.catalogType;
@@ -56,3 +56,7 @@ API.Client.CatalogsHotelFeedsUpdateRequest.prototype.preferredProcessingSchedule
  */
 API.Client.CatalogsHotelFeedsUpdateRequest.prototype.status;
 
+/** @enum {string} */
+API.Client.CatalogsHotelFeedsUpdateRequest.CatalogTypeEnum = { 
+  HOTEL: 'HOTEL',
+}

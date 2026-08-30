@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdAccounts** | [**BusinessMemberAssetsSummaryAdAccountsInner[]**](BusinessMemberAssetsSummaryAdAccountsInner.md) | List of ad account IDs and respective permission levels. | [optional] 
-**Profiles** | [**BusinessMemberAssetsSummaryProfilesInner[]**](BusinessMemberAssetsSummaryProfilesInner.md) | List of profile IDs and respective permission levels. | [optional] 
+**AdAccounts** | [**AssetIdWithPermissions[]**](AssetIdWithPermissions.md) | List of ad account IDs and respective permission levels. | [optional] 
+**Profiles** | [**AssetIdWithPermissions[]**](AssetIdWithPermissions.md) | List of profile IDs and respective permission levels. | [optional] 
 
 ## Examples
 

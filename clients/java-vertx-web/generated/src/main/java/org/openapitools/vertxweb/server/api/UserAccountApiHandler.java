@@ -2,21 +2,25 @@ package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.Account;
 import org.openapitools.vertxweb.server.model.AnalyticsMetricsResponse;
-import org.openapitools.vertxweb.server.model.BoardsUserFollowsList200Response;
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.FollowUserRequest;
+import java.math.BigDecimal;
+import org.openapitools.vertxweb.server.model.BoardsList200Response;
+import org.openapitools.vertxweb.server.model.FollowUser;
+import org.openapitools.vertxweb.server.model.FollowUserCreate;
 import org.openapitools.vertxweb.server.model.FollowersList200Response;
 import org.openapitools.vertxweb.server.model.LinkedBusiness;
 import java.time.LocalDate;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.QuerymetrictypesItems;
+import org.openapitools.vertxweb.server.model.QueryvideopinmetrictypesItems;
 import org.openapitools.vertxweb.server.model.TopPinsAnalyticsResponse;
+import org.openapitools.vertxweb.server.model.TopPinsSortBy;
 import org.openapitools.vertxweb.server.model.TopVideoPinsAnalyticsResponse;
+import org.openapitools.vertxweb.server.model.TopVideoPinsSortBy;
 import org.openapitools.vertxweb.server.model.UserAccountFollowedInterests200Response;
 import org.openapitools.vertxweb.server.model.UserFollowingFeedType;
-import org.openapitools.vertxweb.server.model.UserFollowingGet200Response;
-import org.openapitools.vertxweb.server.model.UserSummary;
-import org.openapitools.vertxweb.server.model.UserWebsiteSummary;
-import org.openapitools.vertxweb.server.model.UserWebsiteVerificationCode;
-import org.openapitools.vertxweb.server.model.UserWebsiteVerifyRequest;
+import org.openapitools.vertxweb.server.model.UserWebsite;
+import org.openapitools.vertxweb.server.model.UserWebsiteCreate;
+import org.openapitools.vertxweb.server.model.UserWebsiteVerification;
 import org.openapitools.vertxweb.server.model.UserWebsitesGet200Response;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -71,17 +75,17 @@ public class UserAccountApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+        Boolean explicitFollowing = requestParameters.queryParameter("explicit_following") != null ? requestParameters.queryParameter("explicit_following").getBoolean() : false;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
-        Boolean explicitFollowing = requestParameters.queryParameter("explicit_following") != null ? requestParameters.queryParameter("explicit_following").getBoolean() : false;
-        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter explicitFollowing is {}", explicitFollowing);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
-        logger.debug("Parameter explicitFollowing is {}", explicitFollowing);
-        logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.boardsUserFollowsList(bookmark, pageSize, explicitFollowing, adAccountId)
+        api.boardsUserFollowsList(adAccountId, explicitFollowing, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -101,12 +105,12 @@ public class UserAccountApiHandler {
 
         String username = requestParameters.pathParameter("username") != null ? requestParameters.pathParameter("username").getString() : null;
         RequestParameter body = requestParameters.body();
-        FollowUserRequest followUserRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<FollowUserRequest>(){}) : null;
+        FollowUserCreate followUserCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<FollowUserCreate>(){}) : null;
 
         logger.debug("Parameter username is {}", username);
-        logger.debug("Parameter followUserRequest is {}", followUserRequest);
+        logger.debug("Parameter followUserCreate is {}", followUserCreate);
 
-        api.followUserUpdate(username, followUserRequest)
+        api.followUserUpdate(username, followUserCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -197,7 +201,7 @@ public class UserAccountApiHandler {
         String appTypes = requestParameters.queryParameter("app_types") != null ? requestParameters.queryParameter("app_types").getString() : "ALL";
         String contentType = requestParameters.queryParameter("content_type") != null ? requestParameters.queryParameter("content_type").getString() : "ALL";
         String source = requestParameters.queryParameter("source") != null ? requestParameters.queryParameter("source").getString() : "ALL";
-        List<String> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<String>>(){}) : null;
+        List<QuerymetrictypesItems> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<QuerymetrictypesItems>>(){}) : null;
         String splitField = requestParameters.queryParameter("split_field") != null ? requestParameters.queryParameter("split_field").getString() : "NO_SPLIT";
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
@@ -232,15 +236,15 @@ public class UserAccountApiHandler {
 
         LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
         LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
-        String sortBy = requestParameters.queryParameter("sort_by") != null ? requestParameters.queryParameter("sort_by").getString() : null;
+        TopPinsSortBy sortBy = requestParameters.queryParameter("sort_by") != null ? requestParameters.queryParameter("sort_by").getTopPinsSortBy() : null;
         String fromClaimedContent = requestParameters.queryParameter("from_claimed_content") != null ? requestParameters.queryParameter("from_claimed_content").getString() : "BOTH";
         String pinFormat = requestParameters.queryParameter("pin_format") != null ? requestParameters.queryParameter("pin_format").getString() : "ALL";
         String appTypes = requestParameters.queryParameter("app_types") != null ? requestParameters.queryParameter("app_types").getString() : "ALL";
         String contentType = requestParameters.queryParameter("content_type") != null ? requestParameters.queryParameter("content_type").getString() : "ALL";
         String source = requestParameters.queryParameter("source") != null ? requestParameters.queryParameter("source").getString() : "ALL";
-        List<String> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<String>>(){}) : null;
+        List<QuerymetrictypesItems> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<QuerymetrictypesItems>>(){}) : null;
         Integer numOfPins = requestParameters.queryParameter("num_of_pins") != null ? requestParameters.queryParameter("num_of_pins").getInteger() : 10;
-        Integer createdInLastNDays = requestParameters.queryParameter("created_in_last_n_days") != null ? requestParameters.queryParameter("created_in_last_n_days").getInteger() : null;
+        BigDecimal createdInLastNDays = requestParameters.queryParameter("created_in_last_n_days") != null ? requestParameters.queryParameter("created_in_last_n_days").getBigDecimal() : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter startDate is {}", startDate);
@@ -276,15 +280,15 @@ public class UserAccountApiHandler {
 
         LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
         LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
-        String sortBy = requestParameters.queryParameter("sort_by") != null ? requestParameters.queryParameter("sort_by").getString() : null;
+        TopVideoPinsSortBy sortBy = requestParameters.queryParameter("sort_by") != null ? requestParameters.queryParameter("sort_by").getTopVideoPinsSortBy() : null;
         String fromClaimedContent = requestParameters.queryParameter("from_claimed_content") != null ? requestParameters.queryParameter("from_claimed_content").getString() : "BOTH";
         String pinFormat = requestParameters.queryParameter("pin_format") != null ? requestParameters.queryParameter("pin_format").getString() : "ALL";
         String appTypes = requestParameters.queryParameter("app_types") != null ? requestParameters.queryParameter("app_types").getString() : "ALL";
         String contentType = requestParameters.queryParameter("content_type") != null ? requestParameters.queryParameter("content_type").getString() : "ALL";
         String source = requestParameters.queryParameter("source") != null ? requestParameters.queryParameter("source").getString() : "ALL";
-        List<String> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<String>>(){}) : null;
+        List<QueryvideopinmetrictypesItems> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<QueryvideopinmetrictypesItems>>(){}) : null;
         Integer numOfPins = requestParameters.queryParameter("num_of_pins") != null ? requestParameters.queryParameter("num_of_pins").getInteger() : 10;
-        Integer createdInLastNDays = requestParameters.queryParameter("created_in_last_n_days") != null ? requestParameters.queryParameter("created_in_last_n_days").getInteger() : null;
+        BigDecimal createdInLastNDays = requestParameters.queryParameter("created_in_last_n_days") != null ? requestParameters.queryParameter("created_in_last_n_days").getBigDecimal() : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter startDate is {}", startDate);
@@ -366,19 +370,19 @@ public class UserAccountApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+        Boolean explicitFollowing = requestParameters.queryParameter("explicit_following") != null ? requestParameters.queryParameter("explicit_following").getBoolean() : false;
+        UserFollowingFeedType feedType = requestParameters.queryParameter("feed_type") != null ? requestParameters.queryParameter("feed_type").getUserFollowingFeedType() : ;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
-        UserFollowingFeedType feedType = requestParameters.queryParameter("feed_type") != null ? requestParameters.queryParameter("feed_type").getUserFollowingFeedType() : ALL;
-        Boolean explicitFollowing = requestParameters.queryParameter("explicit_following") != null ? requestParameters.queryParameter("explicit_following").getBoolean() : false;
-        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter explicitFollowing is {}", explicitFollowing);
+        logger.debug("Parameter feedType is {}", feedType);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
-        logger.debug("Parameter feedType is {}", feedType);
-        logger.debug("Parameter explicitFollowing is {}", explicitFollowing);
-        logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.userFollowingGet(bookmark, pageSize, feedType, explicitFollowing, adAccountId)
+        api.userFollowingGet(adAccountId, explicitFollowing, feedType, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -421,13 +425,13 @@ public class UserAccountApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         RequestParameter body = requestParameters.body();
-        UserWebsiteVerifyRequest userWebsiteVerifyRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<UserWebsiteVerifyRequest>(){}) : null;
+        UserWebsiteCreate userWebsiteCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<UserWebsiteCreate>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter userWebsiteVerifyRequest is {}", userWebsiteVerifyRequest);
+        logger.debug("Parameter userWebsiteCreate is {}", userWebsiteCreate);
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
+        api.verifyWebsiteUpdate(userWebsiteCreate, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

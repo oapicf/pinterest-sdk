@@ -1,0 +1,53 @@
+## CatalogFeedsApi
+
+### List feed processing results
+## List feed processing results
+GET https://api.pinterest.com/v5/catalogs/feeds/{{feed_id}}/processing_results?adAccountId={{adAccountId}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Create feed
+## Create feed
+POST https://api.pinterest.com/v5/catalogs/feeds?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Delete feed
+## Delete feed
+DELETE https://api.pinterest.com/v5/catalogs/feeds/{{feed_id}}?adAccountId={{adAccountId}}
+Accept: application/json
+
+### Get feed
+## Get feed
+GET https://api.pinterest.com/v5/catalogs/feeds/{{feed_id}}?adAccountId={{adAccountId}}
+Accept: application/json
+
+### Ingest feed items
+## Ingest feed items
+POST https://api.pinterest.com/v5/catalogs/feeds/{{feed_id}}/ingest?adAccountId={{adAccountId}}
+Accept: application/json
+
+### List feeds
+## List feeds
+GET https://api.pinterest.com/v5/catalogs/feeds?catalogId={{catalogId}}&adAccountId={{adAccountId}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Update feed
+## Update feed
+PATCH https://api.pinterest.com/v5/catalogs/feeds/{{feed_id}}?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### List item issues
+## List item issues
+GET https://api.pinterest.com/v5/catalogs/processing_results/{{processing_result_id}}/item_issues?itemNumbers={{itemNumbers}}&itemValidationIssue={{itemValidationIssue}}&adAccountId={{adAccountId}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json

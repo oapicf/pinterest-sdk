@@ -8,8 +8,9 @@ Name | Type | Description | Notes
 **cover_image_url** | **str** |  | [optional] 
 **duration** | **float** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
 **height** | **int** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
-**item_type** | **str** |  | [optional] 
+**item_type** | **str** | Discriminator literal identifying this as video metadata inside a &#x60;PinMediaMetadata&#x60; payload. | 
 **video_url** | **str** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**video_url_hls** | **str** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] 
 **width** | **int** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 ## Example

@@ -13,11 +13,20 @@ part of openapi.api;
 class AdvertiserDefinedEvent {
   /// Returns a new [AdvertiserDefinedEvent] instance.
   AdvertiserDefinedEvent({
-    this.name,
     this.mappedConversionType,
+    this.name,
   });
 
-  /// raw string name of the event, usually logged as raw_event_name in our dataset
+  /// Standard type mapped to ADE for optimization
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ConversionTagTypeOptimal? mappedConversionType;
+
+  /// Raw string name of the event, usually logged as raw_event_name in our dataset
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -26,34 +35,31 @@ class AdvertiserDefinedEvent {
   ///
   String? name;
 
-  /// standard type mapped to ADE for optimization
-  MappedConversionTypeEnum? mappedConversionType;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is AdvertiserDefinedEvent &&
-    other.name == name &&
-    other.mappedConversionType == mappedConversionType;
+    other.mappedConversionType == mappedConversionType &&
+    other.name == name;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (name == null ? 0 : name!.hashCode) +
-    (mappedConversionType == null ? 0 : mappedConversionType!.hashCode);
+    (mappedConversionType == null ? 0 : mappedConversionType!.hashCode) +
+    (name == null ? 0 : name!.hashCode);
 
   @override
-  String toString() => 'AdvertiserDefinedEvent[name=$name, mappedConversionType=$mappedConversionType]';
+  String toString() => 'AdvertiserDefinedEvent[mappedConversionType=$mappedConversionType, name=$name]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.name != null) {
-      json[r'name'] = this.name;
-    } else {
-      json[r'name'] = null;
-    }
     if (this.mappedConversionType != null) {
       json[r'mapped_conversion_type'] = this.mappedConversionType;
     } else {
       json[r'mapped_conversion_type'] = null;
+    }
+    if (this.name != null) {
+      json[r'name'] = this.name;
+    } else {
+      json[r'name'] = null;
     }
     return json;
   }
@@ -69,16 +75,12 @@ class AdvertiserDefinedEvent {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AdvertiserDefinedEvent[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AdvertiserDefinedEvent[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return AdvertiserDefinedEvent(
+        mappedConversionType: ConversionTagTypeOptimal.fromJson(json[r'mapped_conversion_type']),
         name: mapValueOfType<String>(json, r'name'),
-        mappedConversionType: MappedConversionTypeEnum.fromJson(json[r'mapped_conversion_type']),
       );
     }
     return null;

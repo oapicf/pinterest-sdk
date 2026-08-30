@@ -3,11 +3,12 @@ package controllers;
 import apimodels.CatalogsListProductsByFilterRequest;
 import apimodels.CatalogsProductGroupPinsList200Response;
 import apimodels.CatalogsProductGroupProductCountsVertical;
+import apimodels.CatalogsProductGroupsCreateManyRequestItems;
+import apimodels.CatalogsProductGroupsCreateRequestSchema;
 import apimodels.CatalogsProductGroupsList200Response;
-import apimodels.CatalogsProductGroupsUpdateRequest;
+import apimodels.CatalogsProductGroupsUpdateRequestSchema;
 import apimodels.CatalogsVerticalProductGroup;
-import apimodels.Error;
-import apimodels.MultipleProductGroupsInner;
+import apimodels.PinterestLibError;
 
 import play.mvc.Http;
 import java.util.List;
@@ -18,29 +19,30 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogProductGroupsApiControllerImp extends CatalogProductGroupsApiControllerImpInterface {
     @Override
-    public CatalogsProductGroupPinsList200Response catalogsProductGroupPinsList(Http.Request request,  @Pattern(regexp="^\\d+$")String productGroupId, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics) throws Exception {
+    public CatalogsProductGroupPinsList200Response catalogsProductGroupPinsList(Http.Request request,  @Pattern(regexp="^\\d+$")String productGroupId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new CatalogsProductGroupPinsList200Response();
     }
 
     @Override
-    public CatalogsVerticalProductGroup catalogsProductGroupsCreate(Http.Request request, MultipleProductGroupsInner multipleProductGroupsInner,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public CatalogsVerticalProductGroup catalogsProductGroupsCreate(Http.Request request, CatalogsProductGroupsCreateRequestSchema catalogsProductGroupsCreateRequestSchema,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
         return new CatalogsVerticalProductGroup();
     }
 
     @Override
-    public List<String> catalogsProductGroupsCreateMany(Http.Request request, List<MultipleProductGroupsInner> multipleProductGroupsInner,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public List<String> catalogsProductGroupsCreateMany(Http.Request request, List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
         return new ArrayList<String>();
     }
 
     @Override
-    public void catalogsProductGroupsDelete(Http.Request request,  @Pattern(regexp="^\\d+$")String productGroupId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public CatalogsVerticalProductGroup catalogsProductGroupsDelete(Http.Request request,  @Pattern(regexp="^\\d+$")String productGroupId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
+        return new CatalogsVerticalProductGroup();
     }
 
     @Override
@@ -55,7 +57,7 @@ public class CatalogProductGroupsApiControllerImp extends CatalogProductGroupsAp
     }
 
     @Override
-    public CatalogsProductGroupsList200Response catalogsProductGroupsList(Http.Request request,  @Size(min=1,max=1000)List<Integer> id,  @Pattern(regexp="^\\d+$")String feedId,  @Pattern(regexp="^\\d+$")String catalogId, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public CatalogsProductGroupsList200Response catalogsProductGroupsList(Http.Request request,  @Size(min=1,max=1000)List<Integer> id,  @Pattern(regexp="^\\d+$")String feedId,  @Pattern(regexp="^\\d+$")String catalogId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new CatalogsProductGroupsList200Response();
     }
@@ -67,7 +69,7 @@ public class CatalogProductGroupsApiControllerImp extends CatalogProductGroupsAp
     }
 
     @Override
-    public CatalogsVerticalProductGroup catalogsProductGroupsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String productGroupId, CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public CatalogsVerticalProductGroup catalogsProductGroupsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String productGroupId, CatalogsProductGroupsUpdateRequestSchema catalogsProductGroupsUpdateRequestSchema,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
         return new CatalogsVerticalProductGroup();
     }

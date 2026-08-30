@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**availability** | availability | long NOT NULL |  | [**NonNullableProductAvailabilityType**](NonNullableProductAvailabilityType.md) |  |  [foreignkey]
+**availability** | availability | long NOT NULL |  | [**ProductAvailability**](ProductAvailability.md) |  |  [foreignkey]
 **currency** | currency | long NOT NULL |  | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  |  [foreignkey]
 **itemGroupId** | item_group_id | text NOT NULL |  | **kotlin.String** | The parent ID of the product. | 
 **itemId** | item_id | text NOT NULL |  | **kotlin.String** | The user-created unique ID that represents the product. | 

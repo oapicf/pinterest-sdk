@@ -6,9 +6,10 @@ using namespace Tiny;
 
 CatalogsRetailItemErrorResponse::CatalogsRetailItemErrorResponse()
 {
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
 	errors = std::list<ItemValidationEvent>();
 	item_id = std::string();
+	item_response_kind = std::string();
 }
 
 CatalogsRetailItemErrorResponse::CatalogsRetailItemErrorResponse(std::string jsonString)
@@ -34,9 +35,8 @@ CatalogsRetailItemErrorResponse::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -75,6 +75,19 @@ CatalogsRetailItemErrorResponse::fromJson(std::string jsonObj)
 
     }
 
+    const char *item_response_kindKey = "item_response_kind";
+
+    if(object.has_key(item_response_kindKey))
+    {
+        bourne::json value = object[item_response_kindKey];
+
+
+
+        jsonToValue(&item_response_kind, value, "std::string");
+
+
+    }
+
 
 }
 
@@ -87,8 +100,8 @@ CatalogsRetailItemErrorResponse::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -113,18 +126,25 @@ CatalogsRetailItemErrorResponse::toJson()
 
 
 
+
+
+
+    object["item_response_kind"] = getItemResponseKind();
+
+
+
     return object;
 
 }
 
-CatalogsType
+std::string
 CatalogsRetailItemErrorResponse::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsRetailItemErrorResponse::setCatalogType(CatalogsType  catalog_type)
+CatalogsRetailItemErrorResponse::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -136,7 +156,7 @@ CatalogsRetailItemErrorResponse::getErrors()
 }
 
 void
-CatalogsRetailItemErrorResponse::setErrors(std::list <ItemValidationEvent> errors)
+CatalogsRetailItemErrorResponse::setErrors(std::list<ItemValidationEvent> errors)
 {
 	this->errors = errors;
 }
@@ -148,9 +168,21 @@ CatalogsRetailItemErrorResponse::getItemId()
 }
 
 void
-CatalogsRetailItemErrorResponse::setItemId(std::string  item_id)
+CatalogsRetailItemErrorResponse::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
+}
+
+std::string
+CatalogsRetailItemErrorResponse::getItemResponseKind()
+{
+	return item_response_kind;
+}
+
+void
+CatalogsRetailItemErrorResponse::setItemResponseKind(std::string item_response_kind)
+{
+	this->item_response_kind = item_response_kind;
 }
 
 

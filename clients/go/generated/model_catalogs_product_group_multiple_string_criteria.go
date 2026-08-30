@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -34,8 +34,6 @@ type _CatalogsProductGroupMultipleStringCriteria CatalogsProductGroupMultipleStr
 // will change when the set of required properties is changed
 func NewCatalogsProductGroupMultipleStringCriteria(values []string) *CatalogsProductGroupMultipleStringCriteria {
 	this := CatalogsProductGroupMultipleStringCriteria{}
-	var negated bool = false
-	this.Negated = &negated
 	this.Values = values
 	return &this
 }
@@ -45,8 +43,6 @@ func NewCatalogsProductGroupMultipleStringCriteria(values []string) *CatalogsPro
 // but it doesn't guarantee that properties required by API are set
 func NewCatalogsProductGroupMultipleStringCriteriaWithDefaults() *CatalogsProductGroupMultipleStringCriteria {
 	this := CatalogsProductGroupMultipleStringCriteria{}
-	var negated bool = false
-	this.Negated = &negated
 	return &this
 }
 

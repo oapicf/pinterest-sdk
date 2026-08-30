@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;AdGroupResponse&gt;**](AdGroupResponse.md) |  | [default to undefined]
+**items** | [**Array&lt;AdGroup&gt;**](AdGroup.md) |  | [default to undefined]
 
 ## Example
 

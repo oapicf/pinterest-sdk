@@ -21,12 +21,21 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}item_type`,
-                label: `[${labelPrefix}item_type]`,
+                label: `Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload. - [${labelPrefix}item_type]`,
+                required: true,
                 type: 'string',
+                choices: [
+                    'video',
+                ],
             },
             {
                 key: `${keyPrefix}video_url`,
                 label: `Video url (720p).  **Note:** This field is limited and not available to all apps. - [${labelPrefix}video_url]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}video_url_hls`,
+                label: `Video url (HLS).  **Note:** This field is limited and not available to all apps. - [${labelPrefix}video_url_hls]`,
                 type: 'string',
             },
             {
@@ -44,6 +53,7 @@ module.exports = {
             'height': bundle.inputData?.[`${keyPrefix}height`],
             'item_type': bundle.inputData?.[`${keyPrefix}item_type`],
             'video_url': bundle.inputData?.[`${keyPrefix}video_url`],
+            'video_url_hls': bundle.inputData?.[`${keyPrefix}video_url_hls`],
             'width': bundle.inputData?.[`${keyPrefix}width`],
         }
     },

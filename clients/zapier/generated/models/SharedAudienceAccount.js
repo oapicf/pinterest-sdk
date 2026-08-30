@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const AudienceAccountType = require('../models/AudienceAccountType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -18,13 +19,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}account_type`,
-                label: `account type - [${labelPrefix}account_type]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'AD_ACCOUNT',
-                    'BUSINESS_ACCOUNT',
-                ],
+                ...AudienceAccountType.fields(`${keyPrefix}account_type`, isInput),
             },
             {
                 key: `${keyPrefix}shared_on_timestamp`,

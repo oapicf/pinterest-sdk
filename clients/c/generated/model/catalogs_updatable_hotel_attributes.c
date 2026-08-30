@@ -17,9 +17,9 @@ static catalogs_updatable_hotel_attributes_t *catalogs_updatable_hotel_attribute
     char *custom_label_4,
     char *description,
     catalogs_hotel_guest_ratings_t *guest_ratings,
-    double latitude,
+    double *latitude,
     char *link,
-    double longitude,
+    double *longitude,
     char *name,
     list_t *neighborhood,
     char *sale_price
@@ -28,6 +28,8 @@ static catalogs_updatable_hotel_attributes_t *catalogs_updatable_hotel_attribute
     if (!catalogs_updatable_hotel_attributes_local_var) {
         return NULL;
     }
+    memset(catalogs_updatable_hotel_attributes_local_var, 0, sizeof(catalogs_updatable_hotel_attributes_t));
+    catalogs_updatable_hotel_attributes_local_var->_library_owned = 1;
     catalogs_updatable_hotel_attributes_local_var->address = address;
     catalogs_updatable_hotel_attributes_local_var->base_price = base_price;
     catalogs_updatable_hotel_attributes_local_var->brand = brand;
@@ -45,8 +47,6 @@ static catalogs_updatable_hotel_attributes_t *catalogs_updatable_hotel_attribute
     catalogs_updatable_hotel_attributes_local_var->name = name;
     catalogs_updatable_hotel_attributes_local_var->neighborhood = neighborhood;
     catalogs_updatable_hotel_attributes_local_var->sale_price = sale_price;
-
-    catalogs_updatable_hotel_attributes_local_var->_library_owned = 1;
     return catalogs_updatable_hotel_attributes_local_var;
 }
 
@@ -62,14 +62,24 @@ __attribute__((deprecated)) catalogs_updatable_hotel_attributes_t *catalogs_upda
     char *custom_label_4,
     char *description,
     catalogs_hotel_guest_ratings_t *guest_ratings,
-    double latitude,
+    double *latitude,
     char *link,
-    double longitude,
+    double *longitude,
     char *name,
     list_t *neighborhood,
     char *sale_price
     ) {
-    return catalogs_updatable_hotel_attributes_create_internal (
+    double *latitude_copy = NULL;
+    if (latitude) {
+        latitude_copy = malloc(sizeof(double));
+        if (latitude_copy) *latitude_copy = *latitude;
+    }
+    double *longitude_copy = NULL;
+    if (longitude) {
+        longitude_copy = malloc(sizeof(double));
+        if (longitude_copy) *longitude_copy = *longitude;
+    }
+    catalogs_updatable_hotel_attributes_t *result = catalogs_updatable_hotel_attributes_create_internal (
         address,
         base_price,
         brand,
@@ -81,13 +91,18 @@ __attribute__((deprecated)) catalogs_updatable_hotel_attributes_t *catalogs_upda
         custom_label_4,
         description,
         guest_ratings,
-        latitude,
+        latitude_copy,
         link,
-        longitude,
+        longitude_copy,
         name,
         neighborhood,
         sale_price
         );
+    if (!result) {
+        free(latitude_copy);
+        free(longitude_copy);
+    }
+    return result;
 }
 
 void catalogs_updatable_hotel_attributes_free(catalogs_updatable_hotel_attributes_t *catalogs_updatable_hotel_attributes) {
@@ -143,9 +158,17 @@ void catalogs_updatable_hotel_attributes_free(catalogs_updatable_hotel_attribute
         catalogs_hotel_guest_ratings_free(catalogs_updatable_hotel_attributes->guest_ratings);
         catalogs_updatable_hotel_attributes->guest_ratings = NULL;
     }
+    if (catalogs_updatable_hotel_attributes->latitude) {
+        free(catalogs_updatable_hotel_attributes->latitude);
+        catalogs_updatable_hotel_attributes->latitude = NULL;
+    }
     if (catalogs_updatable_hotel_attributes->link) {
         free(catalogs_updatable_hotel_attributes->link);
         catalogs_updatable_hotel_attributes->link = NULL;
+    }
+    if (catalogs_updatable_hotel_attributes->longitude) {
+        free(catalogs_updatable_hotel_attributes->longitude);
+        catalogs_updatable_hotel_attributes->longitude = NULL;
     }
     if (catalogs_updatable_hotel_attributes->name) {
         free(catalogs_updatable_hotel_attributes->name);
@@ -268,7 +291,7 @@ cJSON *catalogs_updatable_hotel_attributes_convertToJSON(catalogs_updatable_hote
 
     // catalogs_updatable_hotel_attributes->latitude
     if(catalogs_updatable_hotel_attributes->latitude) {
-    if(cJSON_AddNumberToObject(item, "latitude", catalogs_updatable_hotel_attributes->latitude) == NULL) {
+    if(cJSON_AddNumberToObject(item, "latitude", *catalogs_updatable_hotel_attributes->latitude) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -284,7 +307,7 @@ cJSON *catalogs_updatable_hotel_attributes_convertToJSON(catalogs_updatable_hote
 
     // catalogs_updatable_hotel_attributes->longitude
     if(catalogs_updatable_hotel_attributes->longitude) {
-    if(cJSON_AddNumberToObject(item, "longitude", catalogs_updatable_hotel_attributes->longitude) == NULL) {
+    if(cJSON_AddNumberToObject(item, "longitude", *catalogs_updatable_hotel_attributes->longitude) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -337,11 +360,41 @@ catalogs_updatable_hotel_attributes_t *catalogs_updatable_hotel_attributes_parse
     // define the local variable for catalogs_updatable_hotel_attributes->address
     catalogs_hotel_address_t *address_local_nonprim = NULL;
 
+    char *base_price_local_str = NULL;
+
+    char *brand_local_str = NULL;
+
+    char *category_local_str = NULL;
+
+    char *custom_label_0_local_str = NULL;
+
+    char *custom_label_1_local_str = NULL;
+
+    char *custom_label_2_local_str = NULL;
+
+    char *custom_label_3_local_str = NULL;
+
+    char *custom_label_4_local_str = NULL;
+
+    char *description_local_str = NULL;
+
     // define the local variable for catalogs_updatable_hotel_attributes->guest_ratings
     catalogs_hotel_guest_ratings_t *guest_ratings_local_nonprim = NULL;
 
+    // define the local variable for catalogs_updatable_hotel_attributes->latitude
+    double *latitude_local_var = NULL;
+
+    char *link_local_str = NULL;
+
+    // define the local variable for catalogs_updatable_hotel_attributes->longitude
+    double *longitude_local_var = NULL;
+
+    char *name_local_str = NULL;
+
     // define the local list for catalogs_updatable_hotel_attributes->neighborhood
     list_t *neighborhoodList = NULL;
+
+    char *sale_price_local_str = NULL;
 
     // catalogs_updatable_hotel_attributes->address
     cJSON *address = cJSON_GetObjectItemCaseSensitive(catalogs_updatable_hotel_attributesJSON, "address");
@@ -479,6 +532,12 @@ catalogs_updatable_hotel_attributes_t *catalogs_updatable_hotel_attributes_parse
     {
     goto end; //Numeric
     }
+    latitude_local_var = malloc(sizeof(double));
+    if(!latitude_local_var)
+    {
+        goto end;
+    }
+    *latitude_local_var = latitude->valuedouble;
     }
 
     // catalogs_updatable_hotel_attributes->link
@@ -503,6 +562,12 @@ catalogs_updatable_hotel_attributes_t *catalogs_updatable_hotel_attributes_parse
     {
     goto end; //Numeric
     }
+    longitude_local_var = malloc(sizeof(double));
+    if(!longitude_local_var)
+    {
+        goto end;
+    }
+    *longitude_local_var = longitude->valuedouble;
     }
 
     // catalogs_updatable_hotel_attributes->name
@@ -552,25 +617,42 @@ catalogs_updatable_hotel_attributes_t *catalogs_updatable_hotel_attributes_parse
     }
 
 
+    if (base_price && !cJSON_IsNull(base_price)) base_price_local_str = strdup(base_price->valuestring);
+    if (brand && !cJSON_IsNull(brand)) brand_local_str = strdup(brand->valuestring);
+    if (category && !cJSON_IsNull(category)) category_local_str = strdup(category->valuestring);
+    if (custom_label_0 && !cJSON_IsNull(custom_label_0)) custom_label_0_local_str = strdup(custom_label_0->valuestring);
+    if (custom_label_1 && !cJSON_IsNull(custom_label_1)) custom_label_1_local_str = strdup(custom_label_1->valuestring);
+    if (custom_label_2 && !cJSON_IsNull(custom_label_2)) custom_label_2_local_str = strdup(custom_label_2->valuestring);
+    if (custom_label_3 && !cJSON_IsNull(custom_label_3)) custom_label_3_local_str = strdup(custom_label_3->valuestring);
+    if (custom_label_4 && !cJSON_IsNull(custom_label_4)) custom_label_4_local_str = strdup(custom_label_4->valuestring);
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (link && !cJSON_IsNull(link)) link_local_str = strdup(link->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (sale_price && !cJSON_IsNull(sale_price)) sale_price_local_str = strdup(sale_price->valuestring);
+
     catalogs_updatable_hotel_attributes_local_var = catalogs_updatable_hotel_attributes_create_internal (
         address ? address_local_nonprim : NULL,
-        base_price && !cJSON_IsNull(base_price) ? strdup(base_price->valuestring) : NULL,
-        brand && !cJSON_IsNull(brand) ? strdup(brand->valuestring) : NULL,
-        category && !cJSON_IsNull(category) ? strdup(category->valuestring) : NULL,
-        custom_label_0 && !cJSON_IsNull(custom_label_0) ? strdup(custom_label_0->valuestring) : NULL,
-        custom_label_1 && !cJSON_IsNull(custom_label_1) ? strdup(custom_label_1->valuestring) : NULL,
-        custom_label_2 && !cJSON_IsNull(custom_label_2) ? strdup(custom_label_2->valuestring) : NULL,
-        custom_label_3 && !cJSON_IsNull(custom_label_3) ? strdup(custom_label_3->valuestring) : NULL,
-        custom_label_4 && !cJSON_IsNull(custom_label_4) ? strdup(custom_label_4->valuestring) : NULL,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        base_price_local_str,
+        brand_local_str,
+        category_local_str,
+        custom_label_0_local_str,
+        custom_label_1_local_str,
+        custom_label_2_local_str,
+        custom_label_3_local_str,
+        custom_label_4_local_str,
+        description_local_str,
         guest_ratings ? guest_ratings_local_nonprim : NULL,
-        latitude ? latitude->valuedouble : 0,
-        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
-        longitude ? longitude->valuedouble : 0,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
+        latitude_local_var,
+        link_local_str,
+        longitude_local_var,
+        name_local_str,
         neighborhood ? neighborhoodList : NULL,
-        sale_price && !cJSON_IsNull(sale_price) ? strdup(sale_price->valuestring) : NULL
+        sale_price_local_str
         );
+
+    if (!catalogs_updatable_hotel_attributes_local_var) {
+        goto end;
+    }
 
     return catalogs_updatable_hotel_attributes_local_var;
 end:
@@ -578,9 +660,61 @@ end:
         catalogs_hotel_address_free(address_local_nonprim);
         address_local_nonprim = NULL;
     }
+    if (base_price_local_str) {
+        free(base_price_local_str);
+        base_price_local_str = NULL;
+    }
+    if (brand_local_str) {
+        free(brand_local_str);
+        brand_local_str = NULL;
+    }
+    if (category_local_str) {
+        free(category_local_str);
+        category_local_str = NULL;
+    }
+    if (custom_label_0_local_str) {
+        free(custom_label_0_local_str);
+        custom_label_0_local_str = NULL;
+    }
+    if (custom_label_1_local_str) {
+        free(custom_label_1_local_str);
+        custom_label_1_local_str = NULL;
+    }
+    if (custom_label_2_local_str) {
+        free(custom_label_2_local_str);
+        custom_label_2_local_str = NULL;
+    }
+    if (custom_label_3_local_str) {
+        free(custom_label_3_local_str);
+        custom_label_3_local_str = NULL;
+    }
+    if (custom_label_4_local_str) {
+        free(custom_label_4_local_str);
+        custom_label_4_local_str = NULL;
+    }
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
     if (guest_ratings_local_nonprim) {
         catalogs_hotel_guest_ratings_free(guest_ratings_local_nonprim);
         guest_ratings_local_nonprim = NULL;
+    }
+    if (latitude_local_var) {
+        free(latitude_local_var);
+        latitude_local_var = NULL;
+    }
+    if (link_local_str) {
+        free(link_local_str);
+        link_local_str = NULL;
+    }
+    if (longitude_local_var) {
+        free(longitude_local_var);
+        longitude_local_var = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
     }
     if (neighborhoodList) {
         listEntry_t *listEntry = NULL;
@@ -590,6 +724,10 @@ end:
         }
         list_freeList(neighborhoodList);
         neighborhoodList = NULL;
+    }
+    if (sale_price_local_str) {
+        free(sale_price_local_str);
+        sale_price_local_str = NULL;
     }
     return NULL;
 

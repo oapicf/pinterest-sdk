@@ -46,62 +46,62 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get Catalog id pertaining to the creative assets product group.
+	/*! \brief Get Catalog ID pertaining to the product group.
 	 */
 	std::string getCatalogId();
 
-	/*! \brief Set Catalog id pertaining to the creative assets product group.
+	/*! \brief Set Catalog ID pertaining to the product group.
 	 */
-	void setCatalogId(std::string  catalog_id);
+	void setCatalogId(std::string catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get Unix timestamp in seconds of when catalog product group was created.
 	 */
 	int getCreatedAt();
 
 	/*! \brief Set Unix timestamp in seconds of when catalog product group was created.
 	 */
-	void setCreatedAt(int  created_at);
+	void setCreatedAt(int created_at);
 	/*! \brief Get 
 	 */
 	std::string getDescription();
 
 	/*! \brief Set 
 	 */
-	void setDescription(std::string  description);
+	void setDescription(std::string description);
 	/*! \brief Get 
 	 */
 	CatalogsCreativeAssetsProductGroupFilters getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
-	/*! \brief Get ID of the creative assets product group.
+	void setFilters(CatalogsCreativeAssetsProductGroupFilters filters);
+	/*! \brief Get ID of the catalog product group.
 	 */
 	std::string getId();
 
-	/*! \brief Set ID of the creative assets product group.
+	/*! \brief Set ID of the catalog product group.
 	 */
-	void setId(std::string  id);
-	/*! \brief Get Name of creative assets product group
+	void setId(std::string id);
+	/*! \brief Get Name of catalog product group
 	 */
 	std::string getName();
 
-	/*! \brief Set Name of creative assets product group
+	/*! \brief Set Name of catalog product group
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 	/*! \brief Get Unix timestamp in seconds of last time catalog product group was updated.
 	 */
 	int getUpdatedAt();
 
 	/*! \brief Set Unix timestamp in seconds of last time catalog product group was updated.
 	 */
-	void setUpdatedAt(int  updated_at);
+	void setUpdatedAt(int updated_at);
 
 
     private:

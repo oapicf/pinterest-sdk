@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            Audience
+            AdAccountsAudience
         >
         AudiencesApi::
         audiences_create(
@@ -13,7 +13,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            AudienceCreateRequest audienceCreateRequest
+            AdAccountsAudienceCreate adAccountsAudienceCreate
             
         )
         {
@@ -42,11 +42,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | audienceCreateRequest
+            // Body     | adAccountsAudienceCreate
 
 
 
-            payload = audienceCreateRequest.toJson().dump();
+            payload = adAccountsAudienceCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -57,27 +57,27 @@ using namespace Tiny;
 
 
 
-            Audience obj(output_string);
+            AdAccountsAudience obj(output_string);
 
 
-            Response<Audience> response(obj, httpCode);
+            Response<AdAccountsAudience> response(obj, httpCode);
             return response;
         }
 
         Response<
-            Audience
+            AdAccountsAudience
         >
         AudiencesApi::
         audiences_get(
             
-            std::string adAccountId
+            std::string audienceId
             , 
             
-            std::string audienceId
+            std::string adAccountId
             
         )
         {
-            std::string url = basepath + "/ad_accounts/{ad_account_id}/audiences/{audience_id}"; //adAccountId audienceId 
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/audiences/{audience_id}"; //audienceId adAccountId 
 
 
             // Headers  | 
@@ -88,14 +88,6 @@ using namespace Tiny;
 
 
 
-                std::string s_adAccountId("{");
-                s_adAccountId.append("ad_account_id");
-                s_adAccountId.append("}");
-
-                int pos = url.find(s_adAccountId);
-
-                url.erase(pos, s_adAccountId.length());
-                url.insert(pos, stringify(adAccountId));
                 std::string s_audienceId("{");
                 s_audienceId.append("audience_id");
                 s_audienceId.append("}");
@@ -104,6 +96,14 @@ using namespace Tiny;
 
                 url.erase(pos, s_audienceId.length());
                 url.insert(pos, stringify(audienceId));
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
 
 
             std::string payload = "";
@@ -119,10 +119,10 @@ using namespace Tiny;
 
 
 
-            Audience obj(output_string);
+            AdAccountsAudience obj(output_string);
 
 
-            Response<Audience> response(obj, httpCode);
+            Response<AdAccountsAudience> response(obj, httpCode);
             return response;
         }
 
@@ -138,13 +138,16 @@ using namespace Tiny;
             std::string bookmark
             , 
             
-            std::string order
-            , 
-            
             int pageSize
             , 
             
-            std::string ownershipType
+            Pinterest.Lib.PaginationOrder order
+            , 
+            
+            AudienceOwnershipType ownershipType
+            , 
+            
+            bool excludeNca
             
         )
         {
@@ -153,11 +156,12 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | bookmark order pageSize ownershipType 
+            // Query    | bookmark pageSize order ownershipType excludeNca 
             addQueryParam("bookmark",bookmark);
-            addQueryParam("order",order);
             addQueryParam("page_size",pageSize);
+            addQueryParam("order",order);
             addQueryParam("ownership_type",ownershipType);
+            addQueryParam("exclude_nca",excludeNca);
 
             // Form     | 
 
@@ -194,22 +198,22 @@ using namespace Tiny;
         }
 
         Response<
-            Audience
+            AdAccountsAudience
         >
         AudiencesApi::
         audiences_update(
             
-            std::string adAccountId
-            , 
-            
             std::string audienceId
             , 
             
-            AudienceUpdateRequest audienceUpdateRequest
+            std::string adAccountId
+            , 
+            
+            AdAccountsAudienceUpdate adAccountsAudienceUpdate
             
         )
         {
-            std::string url = basepath + "/ad_accounts/{ad_account_id}/audiences/{audience_id}"; //adAccountId audienceId 
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/audiences/{audience_id}"; //audienceId adAccountId 
 
 
             // Headers  | 
@@ -221,14 +225,6 @@ using namespace Tiny;
 
 
 
-                std::string s_adAccountId("{");
-                s_adAccountId.append("ad_account_id");
-                s_adAccountId.append("}");
-
-                int pos = url.find(s_adAccountId);
-
-                url.erase(pos, s_adAccountId.length());
-                url.insert(pos, stringify(adAccountId));
                 std::string s_audienceId("{");
                 s_audienceId.append("audience_id");
                 s_audienceId.append("}");
@@ -237,16 +233,24 @@ using namespace Tiny;
 
                 url.erase(pos, s_audienceId.length());
                 url.insert(pos, stringify(audienceId));
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
 
 
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | audienceUpdateRequest
+            // Body     | adAccountsAudienceUpdate
 
 
 
-            payload = audienceUpdateRequest.toJson().dump();
+            payload = adAccountsAudienceUpdate.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -257,10 +261,10 @@ using namespace Tiny;
 
 
 
-            Audience obj(output_string);
+            AdAccountsAudience obj(output_string);
 
 
-            Response<Audience> response(obj, httpCode);
+            Response<AdAccountsAudience> response(obj, httpCode);
             return response;
         }
 

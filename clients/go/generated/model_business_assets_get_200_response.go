@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,8 +23,7 @@ var _ MappedNullable = &BusinessAssetsGet200Response{}
 // BusinessAssetsGet200Response struct for BusinessAssetsGet200Response
 type BusinessAssetsGet200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	// List of assets the requesting business has access to.
-	Items []GetBusinessAssetsResponse `json:"items"`
+	Items []BusinessAssets `json:"items"`
 }
 
 type _BusinessAssetsGet200Response BusinessAssetsGet200Response
@@ -33,7 +32,7 @@ type _BusinessAssetsGet200Response BusinessAssetsGet200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBusinessAssetsGet200Response(items []GetBusinessAssetsResponse) *BusinessAssetsGet200Response {
+func NewBusinessAssetsGet200Response(items []BusinessAssets) *BusinessAssetsGet200Response {
 	this := BusinessAssetsGet200Response{}
 	this.Items = items
 	return &this
@@ -90,9 +89,9 @@ func (o *BusinessAssetsGet200Response) UnsetBookmark() {
 }
 
 // GetItems returns the Items field value
-func (o *BusinessAssetsGet200Response) GetItems() []GetBusinessAssetsResponse {
+func (o *BusinessAssetsGet200Response) GetItems() []BusinessAssets {
 	if o == nil {
-		var ret []GetBusinessAssetsResponse
+		var ret []BusinessAssets
 		return ret
 	}
 
@@ -101,7 +100,7 @@ func (o *BusinessAssetsGet200Response) GetItems() []GetBusinessAssetsResponse {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *BusinessAssetsGet200Response) GetItemsOk() ([]GetBusinessAssetsResponse, bool) {
+func (o *BusinessAssetsGet200Response) GetItemsOk() ([]BusinessAssets, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -109,7 +108,7 @@ func (o *BusinessAssetsGet200Response) GetItemsOk() ([]GetBusinessAssetsResponse
 }
 
 // SetItems sets field value
-func (o *BusinessAssetsGet200Response) SetItems(v []GetBusinessAssetsResponse) {
+func (o *BusinessAssetsGet200Response) SetItems(v []BusinessAssets) {
 	o.Items = v
 }
 

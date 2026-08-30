@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Ad event type used for attribution.",
+  "name": "AttributionScope",
+  "symbols": [
+    "view",
+    "engagement",
+    "click"
+  ]
+}

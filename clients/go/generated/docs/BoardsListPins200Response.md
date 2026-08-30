@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]Pin**](Pin.md) | Pins | 
+**Items** | [**[]PinRead**](PinRead.md) |  | 
 
 ## Methods
 
 ### NewBoardsListPins200Response
 
-`func NewBoardsListPins200Response(items []Pin, ) *BoardsListPins200Response`
+`func NewBoardsListPins200Response(items []PinRead, ) *BoardsListPins200Response`
 
 NewBoardsListPins200Response instantiates a new BoardsListPins200Response object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ HasBookmark returns a boolean if a field has been set.
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
 ### GetItems
 
-`func (o *BoardsListPins200Response) GetItems() []Pin`
+`func (o *BoardsListPins200Response) GetItems() []PinRead`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *BoardsListPins200Response) GetItemsOk() (*[]Pin, bool)`
+`func (o *BoardsListPins200Response) GetItemsOk() (*[]PinRead, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *BoardsListPins200Response) SetItems(v []Pin)`
+`func (o *BoardsListPins200Response) SetItems(v []PinRead)`
 
 SetItems sets Items field to given value.
 

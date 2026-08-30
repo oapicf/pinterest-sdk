@@ -16,12 +16,12 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.BulkDownloadRequest
-import org.openapitools.server.api.model.BulkDownloadResponse
+import org.openapitools.server.api.model.BulkDownload
+import org.openapitools.server.api.model.BulkDownloadCreate
+import org.openapitools.server.api.model.BulkJobData
 import org.openapitools.server.api.model.BulkUpsertRequest
 import org.openapitools.server.api.model.BulkUpsertResponse
-import org.openapitools.server.api.model.BulkUpsertStatusResponse
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
 
 class BulkApiVertxProxyHandler(private val vertx: Vertx, private val service: BulkApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -75,13 +75,13 @@ class BulkApiVertxProxyHandler(private val vertx: Vertx, private val service: Bu
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val bulkDownloadRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (bulkDownloadRequestParam == null) {
-                        throw IllegalArgumentException("bulkDownloadRequest is required")
+                    val bulkDownloadCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (bulkDownloadCreateParam == null) {
+                        throw IllegalArgumentException("bulkDownloadCreate is required")
                     }
-                    val bulkDownloadRequest = Gson().fromJson(bulkDownloadRequestParam.encode(), BulkDownloadRequest::class.java)
+                    val bulkDownloadCreate = Gson().fromJson(bulkDownloadCreateParam.encode(), BulkDownloadCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.bulkDownloadCreate(adAccountId,bulkDownloadRequest,context)
+                        val result = service.bulkDownloadCreate(adAccountId,bulkDownloadCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

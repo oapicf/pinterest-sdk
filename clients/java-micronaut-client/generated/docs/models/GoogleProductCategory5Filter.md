@@ -8,7 +8,7 @@ The class is defined in **[GoogleProductCategory5Filter.java](../../src/main/jav
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GOOGLE_PRODUCT_CATEGORY_5** | `CatalogsProductGroupMultipleStringListCriteria` |  | 
+**GOOGLE_PRODUCT_CATEGORY_5** | [`CatalogsProductGroupMultipleStringListCriteria`](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
 
 
 

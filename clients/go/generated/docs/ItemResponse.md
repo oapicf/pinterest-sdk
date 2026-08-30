@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **Attributes** | Pointer to [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] 
+**CatalogType** | **string** |  | 
 **ItemId** | Pointer to **string** | The catalog item id in the merchant namespace | [optional] 
+**ItemResponseKind** | **string** | Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload. | 
 **Pins** | Pointer to [**[]Pin**](Pin.md) | The pins mapped to the item | [optional] 
 **HotelId** | Pointer to **string** | The catalog hotel id in the merchant namespace | [optional] 
 **CreativeAssetsId** | Pointer to **string** | The catalog creative assets id in the merchant namespace | [optional] 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewItemResponse
 
-`func NewItemResponse(catalogType CatalogsType, errors []ItemValidationEvent, ) *ItemResponse`
+`func NewItemResponse(catalogType string, itemResponseKind string, errors []ItemValidationEvent, ) *ItemResponse`
 
 NewItemResponse instantiates a new ItemResponse object
 This constructor will assign default values to properties that have it defined,
@@ -30,26 +31,6 @@ will change when the set of required properties is changed
 NewItemResponseWithDefaults instantiates a new ItemResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCatalogType
-
-`func (o *ItemResponse) GetCatalogType() CatalogsType`
-
-GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
-
-### GetCatalogTypeOk
-
-`func (o *ItemResponse) GetCatalogTypeOk() (*CatalogsType, bool)`
-
-GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogType
-
-`func (o *ItemResponse) SetCatalogType(v CatalogsType)`
-
-SetCatalogType sets CatalogType field to given value.
-
 
 ### GetAttributes
 
@@ -76,6 +57,26 @@ SetAttributes sets Attributes field to given value.
 
 HasAttributes returns a boolean if a field has been set.
 
+### GetCatalogType
+
+`func (o *ItemResponse) GetCatalogType() string`
+
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
+
+### GetCatalogTypeOk
+
+`func (o *ItemResponse) GetCatalogTypeOk() (*string, bool)`
+
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogType
+
+`func (o *ItemResponse) SetCatalogType(v string)`
+
+SetCatalogType sets CatalogType field to given value.
+
+
 ### GetItemId
 
 `func (o *ItemResponse) GetItemId() string`
@@ -100,6 +101,26 @@ SetItemId sets ItemId field to given value.
 `func (o *ItemResponse) HasItemId() bool`
 
 HasItemId returns a boolean if a field has been set.
+
+### GetItemResponseKind
+
+`func (o *ItemResponse) GetItemResponseKind() string`
+
+GetItemResponseKind returns the ItemResponseKind field if non-nil, zero value otherwise.
+
+### GetItemResponseKindOk
+
+`func (o *ItemResponse) GetItemResponseKindOk() (*string, bool)`
+
+GetItemResponseKindOk returns a tuple with the ItemResponseKind field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemResponseKind
+
+`func (o *ItemResponse) SetItemResponseKind(v string)`
+
+SetItemResponseKind sets ItemResponseKind field to given value.
+
 
 ### GetPins
 

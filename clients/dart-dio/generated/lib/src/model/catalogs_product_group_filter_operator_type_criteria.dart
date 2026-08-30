@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/filter_operator_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -18,7 +19,7 @@ part 'catalogs_product_group_filter_operator_type_criteria.g.dart';
 @BuiltValue()
 abstract class CatalogsProductGroupFilterOperatorTypeCriteria implements Built<CatalogsProductGroupFilterOperatorTypeCriteria, CatalogsProductGroupFilterOperatorTypeCriteriaBuilder> {
   @BuiltValueField(wireName: r'filter_operator_type')
-  CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum? get filterOperatorType;
+  FilterOperatorType? get filterOperatorType;
   // enum filterOperatorTypeEnum {  IS,  CONTAINS,  };
 
   @BuiltValueField(wireName: r'negated')
@@ -32,9 +33,7 @@ abstract class CatalogsProductGroupFilterOperatorTypeCriteria implements Built<C
   factory CatalogsProductGroupFilterOperatorTypeCriteria([void updates(CatalogsProductGroupFilterOperatorTypeCriteriaBuilder b)]) = _$CatalogsProductGroupFilterOperatorTypeCriteria;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CatalogsProductGroupFilterOperatorTypeCriteriaBuilder b) => b
-      ..filterOperatorType = CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum.valueOf('IS')
-      ..negated = false;
+  static void _defaults(CatalogsProductGroupFilterOperatorTypeCriteriaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<CatalogsProductGroupFilterOperatorTypeCriteria> get serializer => _$CatalogsProductGroupFilterOperatorTypeCriteriaSerializer();
@@ -56,7 +55,7 @@ class _$CatalogsProductGroupFilterOperatorTypeCriteriaSerializer implements Prim
       yield r'filter_operator_type';
       yield serializers.serialize(
         object.filterOperatorType,
-        specifiedType: const FullType(CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum),
+        specifiedType: const FullType(FilterOperatorType),
       );
     }
     if (object.negated != null) {
@@ -97,15 +96,17 @@ class _$CatalogsProductGroupFilterOperatorTypeCriteriaSerializer implements Prim
         case r'filter_operator_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum),
-          ) as CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum;
+            specifiedType: const FullType.nullable(FilterOperatorType),
+          ) as FilterOperatorType?;
+          if (valueDes == null) continue;
           result.filterOperatorType = valueDes;
           break;
         case r'negated':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.negated = valueDes;
           break;
         case r'values':
@@ -142,20 +143,5 @@ class _$CatalogsProductGroupFilterOperatorTypeCriteriaSerializer implements Prim
     );
     return result.build();
   }
-}
-
-class CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'IS')
-  static const CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum IS = _$catalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum_IS;
-  @BuiltValueEnumConst(wireName: r'CONTAINS')
-  static const CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum CONTAINS = _$catalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum_CONTAINS;
-
-  static Serializer<CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum> get serializer => _$catalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnumSerializer;
-
-  const CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum._(String name): super(name);
-
-  static BuiltSet<CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum> get values => _$catalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnumValues;
-  static CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum valueOf(String name) => _$catalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnumValueOf(name);
 }
 

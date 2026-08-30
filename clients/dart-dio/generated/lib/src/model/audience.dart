@@ -4,6 +4,8 @@
 
 // ignore_for_file: unused_element
 import 'package:openapi/src/model/audience_rule.dart';
+import 'package:openapi/src/model/pinner_list_type.dart';
+import 'package:openapi/src/model/audience_status.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,11 +15,12 @@ part 'audience.g.dart';
 ///
 /// Properties:
 /// * [adAccountId] - Ad account ID.
-/// * [audienceType] - <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+/// * [audienceType] - [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
 /// * [createdByCompanyName] - The company that created this audience.
 /// * [createdTimestamp] - Creation time. Unix timestamp in seconds.
 /// * [description] - Audience description.
 /// * [id] - Audience ID.
+/// * [isNca] - Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
 /// * [name] - Audience name.
 /// * [rule] 
 /// * [size] - Audience size.
@@ -30,9 +33,10 @@ abstract class Audience implements Built<Audience, AudienceBuilder> {
   @BuiltValueField(wireName: r'ad_account_id')
   String? get adAccountId;
 
-  /// <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+  /// [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
   @BuiltValueField(wireName: r'audience_type')
-  String? get audienceType;
+  PinnerListType? get audienceType;
+  // enum audienceTypeEnum {  CUSTOMER_LIST,  VISITOR,  ENGAGEMENT,  LOOKALIKE,  ACTALIKE,  PERSONA,  };
 
   /// The company that created this audience.
   @BuiltValueField(wireName: r'created_by_company_name')
@@ -50,6 +54,10 @@ abstract class Audience implements Built<Audience, AudienceBuilder> {
   @BuiltValueField(wireName: r'id')
   String? get id;
 
+  /// Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+  @BuiltValueField(wireName: r'is_nca')
+  bool? get isNca;
+
   /// Audience name.
   @BuiltValueField(wireName: r'name')
   String? get name;
@@ -63,7 +71,8 @@ abstract class Audience implements Built<Audience, AudienceBuilder> {
 
   /// Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
   @BuiltValueField(wireName: r'status')
-  String? get status;
+  AudienceStatus? get status;
+  // enum statusEnum {  INITIALIZING,  READY,  TOO_SMALL,  ELIGIBLE,  PERSONAS_INELIGIBLE_SIZE,  PERSONAS_INITIALIZING,  };
 
   /// Always \"audience\".
   @BuiltValueField(wireName: r'type')
@@ -107,7 +116,7 @@ class _$AudienceSerializer implements PrimitiveSerializer<Audience> {
       yield r'audience_type';
       yield serializers.serialize(
         object.audienceType,
-        specifiedType: const FullType(String),
+        specifiedType: const FullType(PinnerListType),
       );
     }
     if (object.createdByCompanyName != null) {
@@ -138,6 +147,13 @@ class _$AudienceSerializer implements PrimitiveSerializer<Audience> {
         specifiedType: const FullType(String),
       );
     }
+    if (object.isNca != null) {
+      yield r'is_nca';
+      yield serializers.serialize(
+        object.isNca,
+        specifiedType: const FullType(bool),
+      );
+    }
     if (object.name != null) {
       yield r'name';
       yield serializers.serialize(
@@ -163,7 +179,7 @@ class _$AudienceSerializer implements PrimitiveSerializer<Audience> {
       yield r'status';
       yield serializers.serialize(
         object.status,
-        specifiedType: const FullType(String),
+        specifiedType: const FullType(AudienceStatus),
       );
     }
     if (object.type != null) {
@@ -206,15 +222,17 @@ class _$AudienceSerializer implements PrimitiveSerializer<Audience> {
         case r'ad_account_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.adAccountId = valueDes;
           break;
         case r'audience_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(PinnerListType),
+          ) as PinnerListType?;
+          if (valueDes == null) continue;
           result.audienceType = valueDes;
           break;
         case r'created_by_company_name':
@@ -244,22 +262,33 @@ class _$AudienceSerializer implements PrimitiveSerializer<Audience> {
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
+          break;
+        case r'is_nca':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
+          result.isNca = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         case r'rule':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(AudienceRule),
-          ) as AudienceRule;
+            specifiedType: const FullType.nullable(AudienceRule),
+          ) as AudienceRule?;
+          if (valueDes == null) continue;
           result.rule.replace(valueDes);
           break;
         case r'size':
@@ -273,15 +302,17 @@ class _$AudienceSerializer implements PrimitiveSerializer<Audience> {
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(AudienceStatus),
+          ) as AudienceStatus?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         case r'type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.type = valueDes;
           break;
         case r'updated_timestamp':

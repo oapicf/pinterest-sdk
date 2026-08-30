@@ -21,13 +21,13 @@ Method | HTTP request | Description
 # **assetGroupCreate**
 ```objc
 -(NSURLSessionTask*) assetGroupCreateWithBusinessId: (NSString*) businessId
-    createAssetGroupBody: (OAICreateAssetGroupBody*) createAssetGroupBody
-        completionHandler: (void (^)(OAICreateAssetGroupResponse* output, NSError* error)) handler;
+    assetGroupInputCreate: (OAIAssetGroupInputCreate*) assetGroupInputCreate
+        completionHandler: (void (^)(OAIAssetGroupInput* output, NSError* error)) handler;
 ```
 
 Create a new asset group.
 
-Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 
 ### Example
 ```objc
@@ -37,15 +37,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-OAICreateAssetGroupBody* createAssetGroupBody = [[OAICreateAssetGroupBody alloc] init]; // 
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+OAIAssetGroupInputCreate* assetGroupInputCreate = [[OAIAssetGroupInputCreate alloc] init]; // 
 
 OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] init];
 
 // Create a new asset group.
 [apiInstance assetGroupCreateWithBusinessId:businessId
-              createAssetGroupBody:createAssetGroupBody
-          completionHandler: ^(OAICreateAssetGroupResponse* output, NSError* error) {
+              assetGroupInputCreate:assetGroupInputCreate
+          completionHandler: ^(OAIAssetGroupInput* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -60,11 +60,11 @@ OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] ini
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
- **createAssetGroupBody** | [**OAICreateAssetGroupBody***](OAICreateAssetGroupBody.md)|  | 
+ **assetGroupInputCreate** | [**OAIAssetGroupInputCreate***](OAIAssetGroupInputCreate.md)|  | 
 
 ### Return type
 
-[**OAICreateAssetGroupResponse***](OAICreateAssetGroupResponse.md)
+[**OAIAssetGroupInput***](OAIAssetGroupInput.md)
 
 ### Authorization
 
@@ -80,8 +80,8 @@ Name | Type | Description  | Notes
 # **assetGroupDelete**
 ```objc
 -(NSURLSessionTask*) assetGroupDeleteWithBusinessId: (NSString*) businessId
-    deleteAssetGroupBody: (OAIDeleteAssetGroupBody*) deleteAssetGroupBody
-        completionHandler: (void (^)(OAIDeleteAssetGroupResponse* output, NSError* error)) handler;
+    assetGroupDeletionDelete: (OAIAssetGroupDeletionDelete*) assetGroupDeletionDelete
+        completionHandler: (void (^)(OAIAssetGroupDeletion* output, NSError* error)) handler;
 ```
 
 Delete asset groups.
@@ -96,15 +96,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-OAIDeleteAssetGroupBody* deleteAssetGroupBody = [[OAIDeleteAssetGroupBody alloc] init]; // 
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+OAIAssetGroupDeletionDelete* assetGroupDeletionDelete = [[OAIAssetGroupDeletionDelete alloc] init]; // 
 
 OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] init];
 
 // Delete asset groups.
 [apiInstance assetGroupDeleteWithBusinessId:businessId
-              deleteAssetGroupBody:deleteAssetGroupBody
-          completionHandler: ^(OAIDeleteAssetGroupResponse* output, NSError* error) {
+              assetGroupDeletionDelete:assetGroupDeletionDelete
+          completionHandler: ^(OAIAssetGroupDeletion* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -119,11 +119,11 @@ OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] ini
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
- **deleteAssetGroupBody** | [**OAIDeleteAssetGroupBody***](OAIDeleteAssetGroupBody.md)|  | 
+ **assetGroupDeletionDelete** | [**OAIAssetGroupDeletionDelete***](OAIAssetGroupDeletionDelete.md)|  | 
 
 ### Return type
 
-[**OAIDeleteAssetGroupResponse***](OAIDeleteAssetGroupResponse.md)
+[**OAIAssetGroupDeletion***](OAIAssetGroupDeletion.md)
 
 ### Authorization
 
@@ -139,8 +139,8 @@ Name | Type | Description  | Notes
 # **assetGroupUpdate**
 ```objc
 -(NSURLSessionTask*) assetGroupUpdateWithBusinessId: (NSString*) businessId
-    updateAssetGroupBody: (OAIUpdateAssetGroupBody*) updateAssetGroupBody
-        completionHandler: (void (^)(OAIUpdateAssetGroupResponse* output, NSError* error)) handler;
+    assetGroupModificationReadOrUpdate: (OAIAssetGroupModificationReadOrUpdate*) assetGroupModificationReadOrUpdate
+        completionHandler: (void (^)(OAIAssetGroupModification* output, NSError* error)) handler;
 ```
 
 Update asset groups.
@@ -155,15 +155,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-OAIUpdateAssetGroupBody* updateAssetGroupBody = [[OAIUpdateAssetGroupBody alloc] init]; // 
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+OAIAssetGroupModificationReadOrUpdate* assetGroupModificationReadOrUpdate = [[OAIAssetGroupModificationReadOrUpdate alloc] init]; // 
 
 OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] init];
 
 // Update asset groups.
 [apiInstance assetGroupUpdateWithBusinessId:businessId
-              updateAssetGroupBody:updateAssetGroupBody
-          completionHandler: ^(OAIUpdateAssetGroupResponse* output, NSError* error) {
+              assetGroupModificationReadOrUpdate:assetGroupModificationReadOrUpdate
+          completionHandler: ^(OAIAssetGroupModification* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -178,11 +178,11 @@ OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] ini
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
- **updateAssetGroupBody** | [**OAIUpdateAssetGroupBody***](OAIUpdateAssetGroupBody.md)|  | 
+ **assetGroupModificationReadOrUpdate** | [**OAIAssetGroupModificationReadOrUpdate***](OAIAssetGroupModificationReadOrUpdate.md)|  | 
 
 ### Return type
 
-[**OAIUpdateAssetGroupResponse***](OAIUpdateAssetGroupResponse.md)
+[**OAIAssetGroupModification***](OAIAssetGroupModification.md)
 
 ### Authorization
 
@@ -199,10 +199,10 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) businessAssetMembersGetWithBusinessId: (NSString*) businessId
     assetId: (NSString*) assetId
+    startIndex: (NSNumber*) startIndex
     fetchSystemUsers: (NSNumber*) fetchSystemUsers
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    startIndex: (NSNumber*) startIndex
         completionHandler: (void (^)(OAIBusinessAssetMembersGet200Response* output, NSError* error)) handler;
 ```
 
@@ -218,22 +218,22 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-NSString* assetId = 729090764583391194; // Unique identifier of a business asset.
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+NSString* assetId = @"assetId_example"; // Unique identifier of a business asset.
+NSNumber* startIndex = @0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
 NSNumber* fetchSystemUsers = @(NO); // Fetches system users if True. Fetches regular user employees if False. (optional) (default to @(NO))
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSNumber* startIndex = 0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] init];
 
 // Get members with access to asset
 [apiInstance businessAssetMembersGetWithBusinessId:businessId
               assetId:assetId
+              startIndex:startIndex
               fetchSystemUsers:fetchSystemUsers
               bookmark:bookmark
               pageSize:pageSize
-              startIndex:startIndex
           completionHandler: ^(OAIBusinessAssetMembersGet200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -250,10 +250,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
  **assetId** | **NSString***| Unique identifier of a business asset. | 
+ **startIndex** | **NSNumber***| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to @0]
  **fetchSystemUsers** | **NSNumber***| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to @(NO)]
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **startIndex** | **NSNumber***| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to @0]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
     startIndex: (NSNumber*) startIndex
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-        completionHandler: (void (^)(OAIBusinessAssetPartnersGet200Response* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIBusinessAssetMembersGet200Response* output, NSError* error)) handler;
 ```
 
 Get partners with access to asset
@@ -292,11 +292,11 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-NSString* assetId = 729090764583391194; // Unique identifier of a business asset.
-NSNumber* startIndex = 0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+NSString* assetId = @"assetId_example"; // Unique identifier of a business asset.
+NSNumber* startIndex = @0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] init];
 
@@ -306,7 +306,7 @@ OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] ini
               startIndex:startIndex
               bookmark:bookmark
               pageSize:pageSize
-          completionHandler: ^(OAIBusinessAssetPartnersGet200Response* output, NSError* error) {
+          completionHandler: ^(OAIBusinessAssetMembersGet200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -324,11 +324,11 @@ Name | Type | Description  | Notes
  **assetId** | **NSString***| Unique identifier of a business asset. | 
  **startIndex** | **NSNumber***| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to @0]
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
-[**OAIBusinessAssetPartnersGet200Response***](OAIBusinessAssetPartnersGet200Response.md)
+[**OAIBusinessAssetMembersGet200Response***](OAIBusinessAssetMembersGet200Response.md)
 
 ### Authorization
 
@@ -366,14 +366,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
 NSArray<OAIPermissionsWithOwner>* permissions = @[[[OAIPermissionsWithOwner alloc] init]]; // A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. (optional)
-NSString* childAssetId = 549764894835; // A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (optional)
-NSString* assetGroupId = 7078106104032; // An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional)
-NSString* assetType = AD_ACCOUNT; // A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to @"AD_ACCOUNT")
-NSNumber* startIndex = 0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
+NSString* childAssetId = @"childAssetId_example"; // A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (optional)
+NSString* assetGroupId = @"assetGroupId_example"; // An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional)
+NSString* assetType = @"AD_ACCOUNT"; // A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to @"AD_ACCOUNT")
+NSNumber* startIndex = @0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] init];
 
@@ -407,7 +407,7 @@ Name | Type | Description  | Notes
  **assetType** | **NSString***| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to @&quot;AD_ACCOUNT&quot;]
  **startIndex** | **NSNumber***| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to @0]
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -430,9 +430,15 @@ Name | Type | Description  | Notes
     memberId: (NSString*) memberId
     assetType: (NSString*) assetType
     startIndex: (NSNumber*) startIndex
+    sortBy: (OAIAssetSortBy) sortBy
+    sortAscending: (NSNumber*) sortAscending
+    searchBy: (OAIAssetSearchBy) searchBy
+    searchValue: (NSString*) searchValue
+    assetPermissionType: (OAIAssetPermissionType) assetPermissionType
+    adAccountStatuses: (NSArray<OAINonDraftEntityStatus>*) adAccountStatuses
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-        completionHandler: (void (^)(OAIBusinessMemberAssetsGet200Response* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIBusinessMemberAssetsGetResponse* output, NSError* error)) handler;
 ```
 
 Get assets assigned to a member
@@ -447,12 +453,18 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-NSString* memberId = 729090764583391194; // The member id to fetch assets for.
-NSString* assetType = AD_ACCOUNT; // A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to @"AD_ACCOUNT")
-NSNumber* startIndex = 0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+NSString* memberId = @"memberId_example"; // The member id to fetch assets for.
+NSString* assetType = @"AD_ACCOUNT"; // A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to @"AD_ACCOUNT")
+NSNumber* startIndex = @0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
+OAIAssetSortBy sortBy = [[OAIAssetSortBy alloc] init]; // The field to sort member assets by (optional)
+NSNumber* sortAscending = @(YES); // Sort assets in ascending order (optional) (default to @(YES))
+OAIAssetSearchBy searchBy = [[OAIAssetSearchBy alloc] init]; // The field to search member assets by (optional)
+NSString* searchValue = @"searchValue_example"; // The value to search for (optional)
+OAIAssetPermissionType assetPermissionType = [[OAIAssetPermissionType alloc] init]; // The type of asset permission to filter by (optional)
+NSArray<OAINonDraftEntityStatus>* adAccountStatuses = @[[[OAINonDraftEntityStatus alloc] init]]; // A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] init];
 
@@ -461,9 +473,15 @@ OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] ini
               memberId:memberId
               assetType:assetType
               startIndex:startIndex
+              sortBy:sortBy
+              sortAscending:sortAscending
+              searchBy:searchBy
+              searchValue:searchValue
+              assetPermissionType:assetPermissionType
+              adAccountStatuses:adAccountStatuses
               bookmark:bookmark
               pageSize:pageSize
-          completionHandler: ^(OAIBusinessMemberAssetsGet200Response* output, NSError* error) {
+          completionHandler: ^(OAIBusinessMemberAssetsGetResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -481,12 +499,18 @@ Name | Type | Description  | Notes
  **memberId** | **NSString***| The member id to fetch assets for. | 
  **assetType** | **NSString***| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to @&quot;AD_ACCOUNT&quot;]
  **startIndex** | **NSNumber***| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to @0]
+ **sortBy** | [**OAIAssetSortBy**](.md)| The field to sort member assets by | [optional] 
+ **sortAscending** | **NSNumber***| Sort assets in ascending order | [optional] [default to @(YES)]
+ **searchBy** | [**OAIAssetSearchBy**](.md)| The field to search member assets by | [optional] 
+ **searchValue** | **NSString***| The value to search for | [optional] 
+ **assetPermissionType** | [**OAIAssetPermissionType**](.md)| The type of asset permission to filter by | [optional] 
+ **adAccountStatuses** | [**NSArray&lt;OAINonDraftEntityStatus&gt;***](OAINonDraftEntityStatus*.md)| A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
-[**OAIBusinessMemberAssetsGet200Response***](OAIBusinessMemberAssetsGet200Response.md)
+[**OAIBusinessMemberAssetsGetResponse***](OAIBusinessMemberAssetsGetResponse.md)
 
 ### Authorization
 
@@ -502,7 +526,7 @@ Name | Type | Description  | Notes
 # **businessMembersAssetAccessDelete**
 ```objc
 -(NSURLSessionTask*) businessMembersAssetAccessDeleteWithBusinessId: (NSString*) businessId
-    businessMembersAssetAccessDeleteRequest: (OAIBusinessMembersAssetAccessDeleteRequest*) businessMembersAssetAccessDeleteRequest
+    businessMembersAssetAccessDeleteBody: (OAIBusinessMembersAssetAccessDeleteBody*) businessMembersAssetAccessDeleteBody
         completionHandler: (void (^)(OAIDeleteMemberAccessResultsResponseArray* output, NSError* error)) handler;
 ```
 
@@ -518,14 +542,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-OAIBusinessMembersAssetAccessDeleteRequest* businessMembersAssetAccessDeleteRequest = [[OAIBusinessMembersAssetAccessDeleteRequest alloc] init]; // List member assset permissions to delete.
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+OAIBusinessMembersAssetAccessDeleteBody* businessMembersAssetAccessDeleteBody = [[OAIBusinessMembersAssetAccessDeleteBody alloc] init]; // 
 
 OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] init];
 
 // Delete member access to asset
 [apiInstance businessMembersAssetAccessDeleteWithBusinessId:businessId
-              businessMembersAssetAccessDeleteRequest:businessMembersAssetAccessDeleteRequest
+              businessMembersAssetAccessDeleteBody:businessMembersAssetAccessDeleteBody
           completionHandler: ^(OAIDeleteMemberAccessResultsResponseArray* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -541,7 +565,7 @@ OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] ini
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
- **businessMembersAssetAccessDeleteRequest** | [**OAIBusinessMembersAssetAccessDeleteRequest***](OAIBusinessMembersAssetAccessDeleteRequest.md)| List member assset permissions to delete. | 
+ **businessMembersAssetAccessDeleteBody** | [**OAIBusinessMembersAssetAccessDeleteBody***](OAIBusinessMembersAssetAccessDeleteBody.md)|  | 
 
 ### Return type
 
@@ -567,7 +591,7 @@ Name | Type | Description  | Notes
 
 Assign/Update member asset permissions
 
-Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 
 ### Example
 ```objc
@@ -577,8 +601,8 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-OAIUpdateMemberAssetAccessBody* updateMemberAssetAccessBody = [[OAIUpdateMemberAssetAccessBody alloc] init]; // List of member asset permissions to create or update.
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+OAIUpdateMemberAssetAccessBody* updateMemberAssetAccessBody = [[OAIUpdateMemberAssetAccessBody alloc] init]; // 
 
 OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] init];
 
@@ -600,7 +624,7 @@ OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] ini
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
- **updateMemberAssetAccessBody** | [**OAIUpdateMemberAssetAccessBody***](OAIUpdateMemberAssetAccessBody.md)| List of member asset permissions to create or update. | 
+ **updateMemberAssetAccessBody** | [**OAIUpdateMemberAssetAccessBody***](OAIUpdateMemberAssetAccessBody.md)|  | 
 
 ### Return type
 
@@ -621,11 +645,15 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) businessPartnerAssetAccessGetWithBusinessId: (NSString*) businessId
     partnerId: (NSString*) partnerId
-    partnerType: (OAIPartnerType*) partnerType
+    partnerType: (NSString*) partnerType
     assetType: (NSString*) assetType
     startIndex: (NSNumber*) startIndex
-    pageSize: (NSNumber*) pageSize
+    sortBy: (OAIAssetSortBy) sortBy
+    sortAscending: (NSNumber*) sortAscending
+    searchBy: (OAIAssetSearchBy) searchBy
+    searchValue: (NSString*) searchValue
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
         completionHandler: (void (^)(OAIBusinessPartnerAssetAccessGet200Response* output, NSError* error)) handler;
 ```
 
@@ -641,13 +669,17 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-NSString* partnerId = 729090764583391194; // The partner id to be bound to the Business
-OAIPartnerType* partnerType = INTERNAL; // Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
-NSString* assetType = AD_ACCOUNT; // A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to @"AD_ACCOUNT")
-NSNumber* startIndex = 0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+NSString* partnerId = @"partnerId_example"; // The partner id to be bound to the Business
+NSString* partnerType = @"INTERNAL"; // Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional) (default to @"INTERNAL")
+NSString* assetType = @"AD_ACCOUNT"; // A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to @"AD_ACCOUNT")
+NSNumber* startIndex = @0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to @0)
+OAIAssetSortBy sortBy = [[OAIAssetSortBy alloc] init]; // The field to sort member assets by (optional)
+NSNumber* sortAscending = @(YES); // Sort assets in ascending order (optional) (default to @(YES))
+OAIAssetSearchBy searchBy = [[OAIAssetSearchBy alloc] init]; // The field to search member assets by (optional)
+NSString* searchValue = @"searchValue_example"; // The value to search for (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] init];
 
@@ -657,8 +689,12 @@ OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] ini
               partnerType:partnerType
               assetType:assetType
               startIndex:startIndex
-              pageSize:pageSize
+              sortBy:sortBy
+              sortAscending:sortAscending
+              searchBy:searchBy
+              searchValue:searchValue
               bookmark:bookmark
+              pageSize:pageSize
           completionHandler: ^(OAIBusinessPartnerAssetAccessGet200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -675,11 +711,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
  **partnerId** | **NSString***| The partner id to be bound to the Business | 
- **partnerType** | [**OAIPartnerType***](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
+ **partnerType** | **NSString***| Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to @&quot;INTERNAL&quot;]
  **assetType** | **NSString***| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to @&quot;AD_ACCOUNT&quot;]
  **startIndex** | **NSNumber***| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to @0]
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **sortBy** | [**OAIAssetSortBy**](.md)| The field to sort member assets by | [optional] 
+ **sortAscending** | **NSNumber***| Sort assets in ascending order | [optional] [default to @(YES)]
+ **searchBy** | [**OAIAssetSearchBy**](.md)| The field to search member assets by | [optional] 
+ **searchValue** | **NSString***| The value to search for | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -700,7 +740,7 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) deletePartnerAssetAccessHandlerImplWithBusinessId: (NSString*) businessId
     deletePartnerAssetAccessBody: (OAIDeletePartnerAssetAccessBody*) deletePartnerAssetAccessBody
-        completionHandler: (void (^)(OAIDeletePartnerAssetsResultsResponseArray* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIDeletePartnerAssetAccessResultsResponseArray* output, NSError* error)) handler;
 ```
 
 Delete partner access to asset
@@ -715,7 +755,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
 OAIDeletePartnerAssetAccessBody* deletePartnerAssetAccessBody = [[OAIDeletePartnerAssetAccessBody alloc] init]; // 
 
 OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] init];
@@ -723,7 +763,7 @@ OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] ini
 // Delete partner access to asset
 [apiInstance deletePartnerAssetAccessHandlerImplWithBusinessId:businessId
               deletePartnerAssetAccessBody:deletePartnerAssetAccessBody
-          completionHandler: ^(OAIDeletePartnerAssetsResultsResponseArray* output, NSError* error) {
+          completionHandler: ^(OAIDeletePartnerAssetAccessResultsResponseArray* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -742,7 +782,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIDeletePartnerAssetsResultsResponseArray***](OAIDeletePartnerAssetsResultsResponseArray.md)
+[**OAIDeletePartnerAssetAccessResultsResponseArray***](OAIDeletePartnerAssetAccessResultsResponseArray.md)
 
 ### Authorization
 
@@ -774,8 +814,8 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* businessId = 729090764583391194; // Unique identifier of the requesting business.
-OAIUpdatePartnerAssetAccessBody* updatePartnerAssetAccessBody = [[OAIUpdatePartnerAssetAccessBody alloc] init]; // A list of assets and permissions to assign to your partners.
+NSString* businessId = @"businessId_example"; // Unique identifier of the requesting business.
+OAIUpdatePartnerAssetAccessBody* updatePartnerAssetAccessBody = [[OAIUpdatePartnerAssetAccessBody alloc] init]; // 
 
 OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] init];
 
@@ -797,7 +837,7 @@ OAIBusinessAccessAssetsApi*apiInstance = [[OAIBusinessAccessAssetsApi alloc] ini
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **NSString***| Unique identifier of the requesting business. | 
- **updatePartnerAssetAccessBody** | [**OAIUpdatePartnerAssetAccessBody***](OAIUpdatePartnerAssetAccessBody.md)| A list of assets and permissions to assign to your partners. | 
+ **updatePartnerAssetAccessBody** | [**OAIUpdatePartnerAssetAccessBody***](OAIUpdatePartnerAssetAccessBody.md)|  | 
 
 ### Return type
 

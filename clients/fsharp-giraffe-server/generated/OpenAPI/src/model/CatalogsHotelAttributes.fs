@@ -2,9 +2,10 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.CatalogsAiContentDisclosure
 open OpenAPI.Model.CatalogsHotelAddress
-open OpenAPI.Model.CatalogsHotelAttributesAllOfMainImage
 open OpenAPI.Model.CatalogsHotelGuestRatings
+open OpenAPI.Model.CatalogsHotelMainImage
 open OpenAPI.Model.decimal option
 open OpenAPI.Model.string option
 
@@ -32,6 +33,7 @@ module CatalogsHotelAttributes =
     Neighborhood : string[];
     SalePrice : string option;
     AdditionalImageLink : string[];
-    MainImage : CatalogsHotelAttributesAllOfMainImage;
+    AiDisclosures : CatalogsAiContentDisclosure[];
+    MainImage : CatalogsHotelMainImage;
   }
   //#endregion

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -21,17 +29,21 @@ import okhttp3.HttpUrl
 
 import org.openapitools.client.models.AdPinAnalytics
 import org.openapitools.client.models.AdsAnalyticsCampaignTargetingType
-import org.openapitools.client.models.CampaignCreateRequest
-import org.openapitools.client.models.CampaignCreateResponse
-import org.openapitools.client.models.CampaignResponse
-import org.openapitools.client.models.CampaignUpdateRequest
-import org.openapitools.client.models.CampaignUpdateResponse
-import org.openapitools.client.models.CampaignsAnalyticsResponseInner
+import org.openapitools.client.models.Campaign
+import org.openapitools.client.models.CampaignBatchUpdateItem
+import org.openapitools.client.models.CampaignBatchWriteResponseModel
+import org.openapitools.client.models.CampaignCreateItem
+import org.openapitools.client.models.CampaignDeliveryEstimatesCampaign
+import org.openapitools.client.models.CampaignDeliveryEstimatesResponse
+import org.openapitools.client.models.CampaignsAnalyticsMetrics
 import org.openapitools.client.models.CampaignsList200Response
 import org.openapitools.client.models.ConversionReportAttributionType
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.Granularity
 import org.openapitools.client.models.MetricsResponse
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
+import org.openapitools.client.models.ReportingColumnSync
 import org.openapitools.client.models.ReportingTimeZone
 
 import com.squareup.moshi.Json
@@ -54,210 +66,20 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
-     * enum for parameter columns
-     */
-     enum class ColumnsAdPinsAnalytics(val value: kotlin.String) {
-         @Json(name = "SPEND_IN_MICRO_DOLLAR") SPEND_IN_MICRO_DOLLAR("SPEND_IN_MICRO_DOLLAR"),
-         @Json(name = "PAID_IMPRESSION") PAID_IMPRESSION("PAID_IMPRESSION"),
-         @Json(name = "SPEND_IN_DOLLAR") SPEND_IN_DOLLAR("SPEND_IN_DOLLAR"),
-         @Json(name = "CPC_IN_MICRO_DOLLAR") CPC_IN_MICRO_DOLLAR("CPC_IN_MICRO_DOLLAR"),
-         @Json(name = "ECPC_IN_MICRO_DOLLAR") ECPC_IN_MICRO_DOLLAR("ECPC_IN_MICRO_DOLLAR"),
-         @Json(name = "ECPC_IN_DOLLAR") ECPC_IN_DOLLAR("ECPC_IN_DOLLAR"),
-         @Json(name = "CTR") CTR("CTR"),
-         @Json(name = "ECTR") ECTR("ECTR"),
-         @Json(name = "OUTBOUND_CTR_1") OUTBOUND_CTR_1("OUTBOUND_CTR_1"),
-         @Json(name = "CAMPAIGN_NAME") CAMPAIGN_NAME("CAMPAIGN_NAME"),
-         @Json(name = "CAMPAIGN_BRAND_LABEL") CAMPAIGN_BRAND_LABEL("CAMPAIGN_BRAND_LABEL"),
-         @Json(name = "PIN_ID") PIN_ID("PIN_ID"),
-         @Json(name = "TOTAL_ENGAGEMENT") TOTAL_ENGAGEMENT("TOTAL_ENGAGEMENT"),
-         @Json(name = "ENGAGEMENT_1") ENGAGEMENT_1("ENGAGEMENT_1"),
-         @Json(name = "ENGAGEMENT_2") ENGAGEMENT_2("ENGAGEMENT_2"),
-         @Json(name = "ECPE_IN_DOLLAR") ECPE_IN_DOLLAR("ECPE_IN_DOLLAR"),
-         @Json(name = "ENGAGEMENT_RATE") ENGAGEMENT_RATE("ENGAGEMENT_RATE"),
-         @Json(name = "EENGAGEMENT_RATE") EENGAGEMENT_RATE("EENGAGEMENT_RATE"),
-         @Json(name = "ECPM_IN_MICRO_DOLLAR") ECPM_IN_MICRO_DOLLAR("ECPM_IN_MICRO_DOLLAR"),
-         @Json(name = "REPIN_RATE") REPIN_RATE("REPIN_RATE"),
-         @Json(name = "CTR_2") CTR_2("CTR_2"),
-         @Json(name = "CAMPAIGN_ID") CAMPAIGN_ID("CAMPAIGN_ID"),
-         @Json(name = "ADVERTISER_ID") ADVERTISER_ID("ADVERTISER_ID"),
-         @Json(name = "AD_ACCOUNT_ID") AD_ACCOUNT_ID("AD_ACCOUNT_ID"),
-         @Json(name = "PIN_PROMOTION_ID") PIN_PROMOTION_ID("PIN_PROMOTION_ID"),
-         @Json(name = "AD_ID") AD_ID("AD_ID"),
-         @Json(name = "AD_GROUP_ID") AD_GROUP_ID("AD_GROUP_ID"),
-         @Json(name = "CAMPAIGN_ENTITY_STATUS") CAMPAIGN_ENTITY_STATUS("CAMPAIGN_ENTITY_STATUS"),
-         @Json(name = "CAMPAIGN_OBJECTIVE_TYPE") CAMPAIGN_OBJECTIVE_TYPE("CAMPAIGN_OBJECTIVE_TYPE"),
-         @Json(name = "CPM_IN_MICRO_DOLLAR") CPM_IN_MICRO_DOLLAR("CPM_IN_MICRO_DOLLAR"),
-         @Json(name = "CPM_IN_DOLLAR") CPM_IN_DOLLAR("CPM_IN_DOLLAR"),
-         @Json(name = "AD_GROUP_NAME") AD_GROUP_NAME("AD_GROUP_NAME"),
-         @Json(name = "AD_GROUP_BUDGET_TYPE") AD_GROUP_BUDGET_TYPE("AD_GROUP_BUDGET_TYPE"),
-         @Json(name = "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY") AD_GROUP_BUDGET_IN_LOCAL_CURRENCY("AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"),
-         @Json(name = "AD_GROUP_ENTITY_STATUS") AD_GROUP_ENTITY_STATUS("AD_GROUP_ENTITY_STATUS"),
-         @Json(name = "AD_GROUP_BID_MULTIPLIER") AD_GROUP_BID_MULTIPLIER("AD_GROUP_BID_MULTIPLIER"),
-         @Json(name = "PROMO_ID") PROMO_ID("PROMO_ID"),
-         @Json(name = "PROMO_NAME") PROMO_NAME("PROMO_NAME"),
-         @Json(name = "ORDER_LINE_ID") ORDER_LINE_ID("ORDER_LINE_ID"),
-         @Json(name = "ORDER_LINE_NAME") ORDER_LINE_NAME("ORDER_LINE_NAME"),
-         @Json(name = "CLICKTHROUGH_1") CLICKTHROUGH_1("CLICKTHROUGH_1"),
-         @Json(name = "REPIN_1") REPIN_1("REPIN_1"),
-         @Json(name = "IMPRESSION_1") IMPRESSION_1("IMPRESSION_1"),
-         @Json(name = "IMPRESSION_1_GROSS") IMPRESSION_1_GROSS("IMPRESSION_1_GROSS"),
-         @Json(name = "CLICKTHROUGH_1_GROSS") CLICKTHROUGH_1_GROSS("CLICKTHROUGH_1_GROSS"),
-         @Json(name = "OUTBOUND_CLICK_1") OUTBOUND_CLICK_1("OUTBOUND_CLICK_1"),
-         @Json(name = "CLICKTHROUGH_2") CLICKTHROUGH_2("CLICKTHROUGH_2"),
-         @Json(name = "REPIN_2") REPIN_2("REPIN_2"),
-         @Json(name = "IMPRESSION_2") IMPRESSION_2("IMPRESSION_2"),
-         @Json(name = "OUTBOUND_CLICK_2") OUTBOUND_CLICK_2("OUTBOUND_CLICK_2"),
-         @Json(name = "TOTAL_CLICKTHROUGH") TOTAL_CLICKTHROUGH("TOTAL_CLICKTHROUGH"),
-         @Json(name = "TOTAL_IMPRESSION") TOTAL_IMPRESSION("TOTAL_IMPRESSION"),
-         @Json(name = "TOTAL_IMPRESSION_USER") TOTAL_IMPRESSION_USER("TOTAL_IMPRESSION_USER"),
-         @Json(name = "TOTAL_IMPRESSION_FREQUENCY") TOTAL_IMPRESSION_FREQUENCY("TOTAL_IMPRESSION_FREQUENCY"),
-         @Json(name = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR") COST_PER_OUTBOUND_CLICK_IN_DOLLAR("COST_PER_OUTBOUND_CLICK_IN_DOLLAR"),
-         @Json(name = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1") COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1("COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"),
-         @Json(name = "TOTAL_ENGAGEMENT_SIGNUP") TOTAL_ENGAGEMENT_SIGNUP("TOTAL_ENGAGEMENT_SIGNUP"),
-         @Json(name = "TOTAL_ENGAGEMENT_CHECKOUT") TOTAL_ENGAGEMENT_CHECKOUT("TOTAL_ENGAGEMENT_CHECKOUT"),
-         @Json(name = "TOTAL_ENGAGEMENT_LEAD") TOTAL_ENGAGEMENT_LEAD("TOTAL_ENGAGEMENT_LEAD"),
-         @Json(name = "TOTAL_CLICK_SIGNUP") TOTAL_CLICK_SIGNUP("TOTAL_CLICK_SIGNUP"),
-         @Json(name = "TOTAL_CLICK_CHECKOUT") TOTAL_CLICK_CHECKOUT("TOTAL_CLICK_CHECKOUT"),
-         @Json(name = "TOTAL_CLICK_ADD_TO_CART") TOTAL_CLICK_ADD_TO_CART("TOTAL_CLICK_ADD_TO_CART"),
-         @Json(name = "TOTAL_CLICK_LEAD") TOTAL_CLICK_LEAD("TOTAL_CLICK_LEAD"),
-         @Json(name = "TOTAL_VIEW_SIGNUP") TOTAL_VIEW_SIGNUP("TOTAL_VIEW_SIGNUP"),
-         @Json(name = "TOTAL_VIEW_CHECKOUT") TOTAL_VIEW_CHECKOUT("TOTAL_VIEW_CHECKOUT"),
-         @Json(name = "TOTAL_VIEW_ADD_TO_CART") TOTAL_VIEW_ADD_TO_CART("TOTAL_VIEW_ADD_TO_CART"),
-         @Json(name = "TOTAL_VIEW_LEAD") TOTAL_VIEW_LEAD("TOTAL_VIEW_LEAD"),
-         @Json(name = "TOTAL_CONVERSIONS") TOTAL_CONVERSIONS("TOTAL_CONVERSIONS"),
-         @Json(name = "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR") TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR("TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR") TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR("TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR") TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR("TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_WEB_SESSIONS") TOTAL_WEB_SESSIONS("TOTAL_WEB_SESSIONS"),
-         @Json(name = "WEB_SESSIONS_1") WEB_SESSIONS_1("WEB_SESSIONS_1"),
-         @Json(name = "WEB_SESSIONS_2") WEB_SESSIONS_2("WEB_SESSIONS_2"),
-         @Json(name = "AD_NAME") AD_NAME("AD_NAME"),
-         @Json(name = "CAMPAIGN_LIFETIME_SPEND_CAP") CAMPAIGN_LIFETIME_SPEND_CAP("CAMPAIGN_LIFETIME_SPEND_CAP"),
-         @Json(name = "AD_GROUP_OPTIMIZATION") AD_GROUP_OPTIMIZATION("AD_GROUP_OPTIMIZATION"),
-         @Json(name = "CAMPAIGN_DAILY_SPEND_CAP") CAMPAIGN_DAILY_SPEND_CAP("CAMPAIGN_DAILY_SPEND_CAP"),
-         @Json(name = "CAMPAIGN_BUDGET_OPTIMIZATION") CAMPAIGN_BUDGET_OPTIMIZATION("CAMPAIGN_BUDGET_OPTIMIZATION"),
-         @Json(name = "IS_PREMIERE_CAMPAIGN") IS_PREMIERE_CAMPAIGN("IS_PREMIERE_CAMPAIGN"),
-         @Json(name = "TOTAL_PAGE_VISIT") TOTAL_PAGE_VISIT("TOTAL_PAGE_VISIT"),
-         @Json(name = "TOTAL_SIGNUP") TOTAL_SIGNUP("TOTAL_SIGNUP"),
-         @Json(name = "TOTAL_CHECKOUT") TOTAL_CHECKOUT("TOTAL_CHECKOUT"),
-         @Json(name = "TOTAL_CUSTOM") TOTAL_CUSTOM("TOTAL_CUSTOM"),
-         @Json(name = "TOTAL_LEAD") TOTAL_LEAD("TOTAL_LEAD"),
-         @Json(name = "TOTAL_ADD_TO_WISHLIST") TOTAL_ADD_TO_WISHLIST("TOTAL_ADD_TO_WISHLIST"),
-         @Json(name = "TOTAL_SUBSCRIBE") TOTAL_SUBSCRIBE("TOTAL_SUBSCRIBE"),
-         @Json(name = "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR") TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR("TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR") TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR("TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "PAGE_VISIT_COST_PER_ACTION") PAGE_VISIT_COST_PER_ACTION("PAGE_VISIT_COST_PER_ACTION"),
-         @Json(name = "PAGE_VISIT_ROAS") PAGE_VISIT_ROAS("PAGE_VISIT_ROAS"),
-         @Json(name = "CHECKOUT_ROAS") CHECKOUT_ROAS("CHECKOUT_ROAS"),
-         @Json(name = "CUSTOM_ROAS") CUSTOM_ROAS("CUSTOM_ROAS"),
-         @Json(name = "PRODUCT_GROUP_AD_IMAGE_TAG") PRODUCT_GROUP_AD_IMAGE_TAG("PRODUCT_GROUP_AD_IMAGE_TAG"),
-         @Json(name = "PRODUCT_GROUP_AD_VIDEO_TAG") PRODUCT_GROUP_AD_VIDEO_TAG("PRODUCT_GROUP_AD_VIDEO_TAG"),
-         @Json(name = "VIDEO_3SEC_VIEWS_1") VIDEO_3SEC_VIEWS_1("VIDEO_3SEC_VIEWS_1"),
-         @Json(name = "VIDEO_15SEC_UNIQUE_VIEWS_1") VIDEO_15SEC_UNIQUE_VIEWS_1("VIDEO_15SEC_UNIQUE_VIEWS_1"),
-         @Json(name = "VIDEO_MRC_VIEWS_1") VIDEO_MRC_VIEWS_1("VIDEO_MRC_VIEWS_1"),
-         @Json(name = "VIDEO_3SEC_VIEWS_2") VIDEO_3SEC_VIEWS_2("VIDEO_3SEC_VIEWS_2"),
-         @Json(name = "VIDEO_15SEC_UNIQUE_VIEWS_2") VIDEO_15SEC_UNIQUE_VIEWS_2("VIDEO_15SEC_UNIQUE_VIEWS_2"),
-         @Json(name = "VIDEO_P100_COMPLETE_2") VIDEO_P100_COMPLETE_2("VIDEO_P100_COMPLETE_2"),
-         @Json(name = "VIDEO_P0_COMBINED_2") VIDEO_P0_COMBINED_2("VIDEO_P0_COMBINED_2"),
-         @Json(name = "VIDEO_P25_COMBINED_2") VIDEO_P25_COMBINED_2("VIDEO_P25_COMBINED_2"),
-         @Json(name = "VIDEO_P50_COMBINED_2") VIDEO_P50_COMBINED_2("VIDEO_P50_COMBINED_2"),
-         @Json(name = "VIDEO_P75_COMBINED_2") VIDEO_P75_COMBINED_2("VIDEO_P75_COMBINED_2"),
-         @Json(name = "VIDEO_P95_COMBINED_2") VIDEO_P95_COMBINED_2("VIDEO_P95_COMBINED_2"),
-         @Json(name = "VIDEO_MRC_VIEWS_2") VIDEO_MRC_VIEWS_2("VIDEO_MRC_VIEWS_2"),
-         @Json(name = "PAID_VIDEO_VIEWABLE_RATE") PAID_VIDEO_VIEWABLE_RATE("PAID_VIDEO_VIEWABLE_RATE"),
-         @Json(name = "VIDEO_LENGTH") VIDEO_LENGTH("VIDEO_LENGTH"),
-         @Json(name = "VIDEO_SPEND_IN_DOLLAR") VIDEO_SPEND_IN_DOLLAR("VIDEO_SPEND_IN_DOLLAR"),
-         @Json(name = "ECPV_IN_DOLLAR") ECPV_IN_DOLLAR("ECPV_IN_DOLLAR"),
-         @Json(name = "ECPCV_IN_DOLLAR") ECPCV_IN_DOLLAR("ECPCV_IN_DOLLAR"),
-         @Json(name = "ECPCV_P95_IN_DOLLAR") ECPCV_P95_IN_DOLLAR("ECPCV_P95_IN_DOLLAR"),
-         @Json(name = "TOTAL_VIDEO_3SEC_VIEWS") TOTAL_VIDEO_3SEC_VIEWS("TOTAL_VIDEO_3SEC_VIEWS"),
-         @Json(name = "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS") TOTAL_VIDEO_15SEC_UNIQUE_VIEWS("TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"),
-         @Json(name = "TOTAL_VIDEO_P100_COMPLETE") TOTAL_VIDEO_P100_COMPLETE("TOTAL_VIDEO_P100_COMPLETE"),
-         @Json(name = "TOTAL_VIDEO_P0_COMBINED") TOTAL_VIDEO_P0_COMBINED("TOTAL_VIDEO_P0_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_P25_COMBINED") TOTAL_VIDEO_P25_COMBINED("TOTAL_VIDEO_P25_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_P50_COMBINED") TOTAL_VIDEO_P50_COMBINED("TOTAL_VIDEO_P50_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_P75_COMBINED") TOTAL_VIDEO_P75_COMBINED("TOTAL_VIDEO_P75_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_P95_COMBINED") TOTAL_VIDEO_P95_COMBINED("TOTAL_VIDEO_P95_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_MRC_VIEWS") TOTAL_VIDEO_MRC_VIEWS("TOTAL_VIDEO_MRC_VIEWS"),
-         @Json(name = "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND") TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND("TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND"),
-         @Json(name = "TOTAL_REPIN_RATE") TOTAL_REPIN_RATE("TOTAL_REPIN_RATE"),
-         @Json(name = "WEB_CHECKOUT_COST_PER_ACTION") WEB_CHECKOUT_COST_PER_ACTION("WEB_CHECKOUT_COST_PER_ACTION"),
-         @Json(name = "WEB_CHECKOUT_ROAS") WEB_CHECKOUT_ROAS("WEB_CHECKOUT_ROAS"),
-         @Json(name = "TOTAL_WEB_CHECKOUT") TOTAL_WEB_CHECKOUT("TOTAL_WEB_CHECKOUT"),
-         @Json(name = "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_WEB_CLICK_CHECKOUT") TOTAL_WEB_CLICK_CHECKOUT("TOTAL_WEB_CLICK_CHECKOUT"),
-         @Json(name = "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_WEB_ENGAGEMENT_CHECKOUT") TOTAL_WEB_ENGAGEMENT_CHECKOUT("TOTAL_WEB_ENGAGEMENT_CHECKOUT"),
-         @Json(name = "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_WEB_VIEW_CHECKOUT") TOTAL_WEB_VIEW_CHECKOUT("TOTAL_WEB_VIEW_CHECKOUT"),
-         @Json(name = "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "INAPP_CHECKOUT_COST_PER_ACTION") INAPP_CHECKOUT_COST_PER_ACTION("INAPP_CHECKOUT_COST_PER_ACTION"),
-         @Json(name = "TOTAL_OFFLINE_CHECKOUT") TOTAL_OFFLINE_CHECKOUT("TOTAL_OFFLINE_CHECKOUT"),
-         @Json(name = "TOTAL_APP_INSTALL_CONVERSION_RATE") TOTAL_APP_INSTALL_CONVERSION_RATE("TOTAL_APP_INSTALL_CONVERSION_RATE"),
-         @Json(name = "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE") TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE("TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"),
-         @Json(name = "IDEA_PIN_PRODUCT_TAG_VISIT_1") IDEA_PIN_PRODUCT_TAG_VISIT_1("IDEA_PIN_PRODUCT_TAG_VISIT_1"),
-         @Json(name = "IDEA_PIN_PRODUCT_TAG_VISIT_2") IDEA_PIN_PRODUCT_TAG_VISIT_2("IDEA_PIN_PRODUCT_TAG_VISIT_2"),
-         @Json(name = "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT") TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT("TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT"),
-         @Json(name = "LEADS") LEADS("LEADS"),
-         @Json(name = "COST_PER_LEAD") COST_PER_LEAD("COST_PER_LEAD"),
-         @Json(name = "QUIZ_COMPLETED") QUIZ_COMPLETED("QUIZ_COMPLETED"),
-         @Json(name = "QUIZ_PIN_RESULT_OPEN") QUIZ_PIN_RESULT_OPEN("QUIZ_PIN_RESULT_OPEN"),
-         @Json(name = "QUIZ_COMPLETION_RATE") QUIZ_COMPLETION_RATE("QUIZ_COMPLETION_RATE"),
-         @Json(name = "SHOWCASE_PIN_CLICKTHROUGH") SHOWCASE_PIN_CLICKTHROUGH("SHOWCASE_PIN_CLICKTHROUGH"),
-         @Json(name = "SHOWCASE_SUBPAGE_CLICKTHROUGH") SHOWCASE_SUBPAGE_CLICKTHROUGH("SHOWCASE_SUBPAGE_CLICKTHROUGH"),
-         @Json(name = "SHOWCASE_SUBPIN_CLICKTHROUGH") SHOWCASE_SUBPIN_CLICKTHROUGH("SHOWCASE_SUBPIN_CLICKTHROUGH"),
-         @Json(name = "SHOWCASE_SUBPAGE_IMPRESSION") SHOWCASE_SUBPAGE_IMPRESSION("SHOWCASE_SUBPAGE_IMPRESSION"),
-         @Json(name = "SHOWCASE_SUBPIN_IMPRESSION") SHOWCASE_SUBPIN_IMPRESSION("SHOWCASE_SUBPIN_IMPRESSION"),
-         @Json(name = "SHOWCASE_SUBPAGE_SWIPE_LEFT") SHOWCASE_SUBPAGE_SWIPE_LEFT("SHOWCASE_SUBPAGE_SWIPE_LEFT"),
-         @Json(name = "SHOWCASE_SUBPAGE_SWIPE_RIGHT") SHOWCASE_SUBPAGE_SWIPE_RIGHT("SHOWCASE_SUBPAGE_SWIPE_RIGHT"),
-         @Json(name = "SHOWCASE_SUBPIN_SWIPE_LEFT") SHOWCASE_SUBPIN_SWIPE_LEFT("SHOWCASE_SUBPIN_SWIPE_LEFT"),
-         @Json(name = "SHOWCASE_SUBPIN_SWIPE_RIGHT") SHOWCASE_SUBPIN_SWIPE_RIGHT("SHOWCASE_SUBPIN_SWIPE_RIGHT"),
-         @Json(name = "SHOWCASE_SUBPAGE_REPIN") SHOWCASE_SUBPAGE_REPIN("SHOWCASE_SUBPAGE_REPIN"),
-         @Json(name = "SHOWCASE_SUBPIN_REPIN") SHOWCASE_SUBPIN_REPIN("SHOWCASE_SUBPIN_REPIN"),
-         @Json(name = "SHOWCASE_SUBPAGE_CLOSEUP") SHOWCASE_SUBPAGE_CLOSEUP("SHOWCASE_SUBPAGE_CLOSEUP"),
-         @Json(name = "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD") SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD("SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD"),
-         @Json(name = "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD") SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD("SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD"),
-         @Json(name = "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION") SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION("SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION"),
-         @Json(name = "TOTAL_CHECKOUT_CONVERSION_RATE") TOTAL_CHECKOUT_CONVERSION_RATE("TOTAL_CHECKOUT_CONVERSION_RATE"),
-         @Json(name = "TOTAL_VIEW_CATEGORY_CONVERSION_RATE") TOTAL_VIEW_CATEGORY_CONVERSION_RATE("TOTAL_VIEW_CATEGORY_CONVERSION_RATE"),
-         @Json(name = "TOTAL_ADD_TO_CART_CONVERSION_RATE") TOTAL_ADD_TO_CART_CONVERSION_RATE("TOTAL_ADD_TO_CART_CONVERSION_RATE"),
-         @Json(name = "TOTAL_SIGNUP_CONVERSION_RATE") TOTAL_SIGNUP_CONVERSION_RATE("TOTAL_SIGNUP_CONVERSION_RATE"),
-         @Json(name = "TOTAL_PAGE_VISIT_CONVERSION_RATE") TOTAL_PAGE_VISIT_CONVERSION_RATE("TOTAL_PAGE_VISIT_CONVERSION_RATE"),
-         @Json(name = "TOTAL_LEAD_CONVERSION_RATE") TOTAL_LEAD_CONVERSION_RATE("TOTAL_LEAD_CONVERSION_RATE"),
-         @Json(name = "TOTAL_SEARCH_CONVERSION_RATE") TOTAL_SEARCH_CONVERSION_RATE("TOTAL_SEARCH_CONVERSION_RATE"),
-         @Json(name = "TOTAL_WATCH_VIDEO_CONVERSION_RATE") TOTAL_WATCH_VIDEO_CONVERSION_RATE("TOTAL_WATCH_VIDEO_CONVERSION_RATE"),
-         @Json(name = "TOTAL_UNKNOWN_CONVERSION_RATE") TOTAL_UNKNOWN_CONVERSION_RATE("TOTAL_UNKNOWN_CONVERSION_RATE"),
-         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * enum for parameter clickWindowDays
      */
-     enum class ClickWindowDaysAdPinsAnalytics(val value: kotlin.Int) {
-         @Json(name = "0") _0(0),
-         @Json(name = "1") _1(1),
-         @Json(name = "7") _7(7),
-         @Json(name = "14") _14(14),
-         @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60);
+     enum class ClickWindowDaysAdPinsAnalytics(val value: java.math.BigDecimal) {
+         @Json(name = ""0"") _0("0"),
+         @Json(name = ""1"") _1("1"),
+         @Json(name = ""7"") _7("7"),
+         @Json(name = ""14"") _14("14"),
+         @Json(name = ""30"") _30("30"),
+         @Json(name = ""60"") _60("60");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -272,13 +94,13 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * enum for parameter engagementWindowDays
      */
-     enum class EngagementWindowDaysAdPinsAnalytics(val value: kotlin.Int) {
-         @Json(name = "0") _0(0),
-         @Json(name = "1") _1(1),
-         @Json(name = "7") _7(7),
-         @Json(name = "14") _14(14),
-         @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60);
+     enum class EngagementWindowDaysAdPinsAnalytics(val value: java.math.BigDecimal) {
+         @Json(name = ""0"") _0("0"),
+         @Json(name = ""1"") _1("1"),
+         @Json(name = ""7"") _7("7"),
+         @Json(name = ""14"") _14("14"),
+         @Json(name = ""30"") _30("30"),
+         @Json(name = ""60"") _60("60");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -293,13 +115,13 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * enum for parameter viewWindowDays
      */
-     enum class ViewWindowDaysAdPinsAnalytics(val value: kotlin.Int) {
-         @Json(name = "0") _0(0),
-         @Json(name = "1") _1(1),
-         @Json(name = "7") _7(7),
-         @Json(name = "14") _14(14),
-         @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60);
+     enum class ViewWindowDaysAdPinsAnalytics(val value: java.math.BigDecimal) {
+         @Json(name = ""0"") _0("0"),
+         @Json(name = ""1"") _1("1"),
+         @Json(name = ""7"") _7("7"),
+         @Json(name = ""14"") _14("14"),
+         @Json(name = ""30"") _30("30"),
+         @Json(name = ""60"") _60("60");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -331,16 +153,16 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /ad_accounts/{ad_account_id}/pins/analytics
      * Get pins analytics
-     * Get analytics for the pins given a campaign and pins in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
+     * Get analytics for the pins given a campaign and pins in the specified &#x60;ad_account_id&#x60;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignId Campaign Id to use to filter the results.
      * @param pinIds List of Pin IDs.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
-     * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+     * @param granularity   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ClickWindowDays._30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to EngagementWindowDays._30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional, default to EngagementWindowDays._30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ViewWindowDays._1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to ConversionReportTime.TIME_OF_AD_ACTION)
      * @return kotlin.collections.List<AdPinAnalytics>
@@ -352,7 +174,7 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adPinsAnalytics(adAccountId: kotlin.String, campaignId: kotlin.String, pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, columns: kotlin.collections.List<ColumnsAdPinsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdPinsAnalytics? = ClickWindowDaysAdPinsAnalytics._30, engagementWindowDays: EngagementWindowDaysAdPinsAnalytics? = EngagementWindowDaysAdPinsAnalytics._30, viewWindowDays: ViewWindowDaysAdPinsAnalytics? = ViewWindowDaysAdPinsAnalytics._1, conversionReportTime: ConversionReportTimeAdPinsAnalytics? = ConversionReportTimeAdPinsAnalytics.TIME_OF_AD_ACTION) : kotlin.collections.List<AdPinAnalytics> {
+    fun adPinsAnalytics(adAccountId: kotlin.String, campaignId: kotlin.String, pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, columns: kotlin.collections.List<ReportingColumnSync>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdPinsAnalytics? = java.math.BigDecimal("ClickWindowDays._30"), engagementWindowDays: EngagementWindowDaysAdPinsAnalytics? = java.math.BigDecimal("EngagementWindowDays._30"), viewWindowDays: ViewWindowDaysAdPinsAnalytics? = java.math.BigDecimal("ViewWindowDays._1"), conversionReportTime: ConversionReportTimeAdPinsAnalytics? = ConversionReportTimeAdPinsAnalytics.TIME_OF_AD_ACTION) : kotlin.collections.List<AdPinAnalytics> {
         val localVarResponse = adPinsAnalyticsWithHttpInfo(adAccountId = adAccountId, campaignId = campaignId, pinIds = pinIds, startDate = startDate, endDate = endDate, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime)
 
         return when (localVarResponse.responseType) {
@@ -373,16 +195,16 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /ad_accounts/{ad_account_id}/pins/analytics
      * Get pins analytics
-     * Get analytics for the pins given a campaign and pins in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
+     * Get analytics for the pins given a campaign and pins in the specified &#x60;ad_account_id&#x60;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignId Campaign Id to use to filter the results.
      * @param pinIds List of Pin IDs.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
-     * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+     * @param granularity   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ClickWindowDays._30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to EngagementWindowDays._30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional, default to EngagementWindowDays._30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ViewWindowDays._1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to ConversionReportTime.TIME_OF_AD_ACTION)
      * @return ApiResponse<kotlin.collections.List<AdPinAnalytics>?>
@@ -391,7 +213,7 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun adPinsAnalyticsWithHttpInfo(adAccountId: kotlin.String, campaignId: kotlin.String, pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, columns: kotlin.collections.List<ColumnsAdPinsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdPinsAnalytics?, engagementWindowDays: EngagementWindowDaysAdPinsAnalytics?, viewWindowDays: ViewWindowDaysAdPinsAnalytics?, conversionReportTime: ConversionReportTimeAdPinsAnalytics?) : ApiResponse<kotlin.collections.List<AdPinAnalytics>?> {
+    fun adPinsAnalyticsWithHttpInfo(adAccountId: kotlin.String, campaignId: kotlin.String, pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, columns: kotlin.collections.List<ReportingColumnSync>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdPinsAnalytics?, engagementWindowDays: EngagementWindowDaysAdPinsAnalytics?, viewWindowDays: ViewWindowDaysAdPinsAnalytics?, conversionReportTime: ConversionReportTimeAdPinsAnalytics?) : ApiResponse<kotlin.collections.List<AdPinAnalytics>?> {
         val localVariableConfig = adPinsAnalyticsRequestConfig(adAccountId = adAccountId, campaignId = campaignId, pinIds = pinIds, startDate = startDate, endDate = endDate, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime)
 
         return request<Unit, kotlin.collections.List<AdPinAnalytics>>(
@@ -407,22 +229,22 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * @param pinIds List of Pin IDs.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
-     * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+     * @param granularity   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ClickWindowDays._30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to EngagementWindowDays._30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional, default to EngagementWindowDays._30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ViewWindowDays._1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to ConversionReportTime.TIME_OF_AD_ACTION)
      * @return RequestConfig
      */
-    fun adPinsAnalyticsRequestConfig(adAccountId: kotlin.String, campaignId: kotlin.String, pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, columns: kotlin.collections.List<ColumnsAdPinsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdPinsAnalytics?, engagementWindowDays: EngagementWindowDaysAdPinsAnalytics?, viewWindowDays: ViewWindowDaysAdPinsAnalytics?, conversionReportTime: ConversionReportTimeAdPinsAnalytics?) : RequestConfig<Unit> {
+    fun adPinsAnalyticsRequestConfig(adAccountId: kotlin.String, campaignId: kotlin.String, pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, columns: kotlin.collections.List<ReportingColumnSync>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdPinsAnalytics?, engagementWindowDays: EngagementWindowDaysAdPinsAnalytics?, viewWindowDays: ViewWindowDaysAdPinsAnalytics?, conversionReportTime: ConversionReportTimeAdPinsAnalytics?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 put("campaign_id", listOf(campaignId.toString()))
                 put("pin_ids", toMultiValue(pinIds.toList(), "multi"))
-                put("start_date", listOf(parseDateToQueryString(startDate)))
-                put("end_date", listOf(parseDateToQueryString(endDate)))
+                put("start_date", listOf(parseDateToQueryString<java.time.LocalDate>(startDate)))
+                put("end_date", listOf(parseDateToQueryString<java.time.LocalDate>(endDate)))
                 put("columns", toMultiValue(columns.toList(), "csv"))
                 put("granularity", listOf(granularity.toString()))
                 if (clickWindowDays != null) {
@@ -452,205 +274,15 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * enum for parameter columns
-     */
-     enum class ColumnsCampaignTargetingAnalyticsGet(val value: kotlin.String) {
-         @Json(name = "SPEND_IN_MICRO_DOLLAR") SPEND_IN_MICRO_DOLLAR("SPEND_IN_MICRO_DOLLAR"),
-         @Json(name = "PAID_IMPRESSION") PAID_IMPRESSION("PAID_IMPRESSION"),
-         @Json(name = "SPEND_IN_DOLLAR") SPEND_IN_DOLLAR("SPEND_IN_DOLLAR"),
-         @Json(name = "CPC_IN_MICRO_DOLLAR") CPC_IN_MICRO_DOLLAR("CPC_IN_MICRO_DOLLAR"),
-         @Json(name = "ECPC_IN_MICRO_DOLLAR") ECPC_IN_MICRO_DOLLAR("ECPC_IN_MICRO_DOLLAR"),
-         @Json(name = "ECPC_IN_DOLLAR") ECPC_IN_DOLLAR("ECPC_IN_DOLLAR"),
-         @Json(name = "CTR") CTR("CTR"),
-         @Json(name = "ECTR") ECTR("ECTR"),
-         @Json(name = "OUTBOUND_CTR_1") OUTBOUND_CTR_1("OUTBOUND_CTR_1"),
-         @Json(name = "CAMPAIGN_NAME") CAMPAIGN_NAME("CAMPAIGN_NAME"),
-         @Json(name = "CAMPAIGN_BRAND_LABEL") CAMPAIGN_BRAND_LABEL("CAMPAIGN_BRAND_LABEL"),
-         @Json(name = "PIN_ID") PIN_ID("PIN_ID"),
-         @Json(name = "TOTAL_ENGAGEMENT") TOTAL_ENGAGEMENT("TOTAL_ENGAGEMENT"),
-         @Json(name = "ENGAGEMENT_1") ENGAGEMENT_1("ENGAGEMENT_1"),
-         @Json(name = "ENGAGEMENT_2") ENGAGEMENT_2("ENGAGEMENT_2"),
-         @Json(name = "ECPE_IN_DOLLAR") ECPE_IN_DOLLAR("ECPE_IN_DOLLAR"),
-         @Json(name = "ENGAGEMENT_RATE") ENGAGEMENT_RATE("ENGAGEMENT_RATE"),
-         @Json(name = "EENGAGEMENT_RATE") EENGAGEMENT_RATE("EENGAGEMENT_RATE"),
-         @Json(name = "ECPM_IN_MICRO_DOLLAR") ECPM_IN_MICRO_DOLLAR("ECPM_IN_MICRO_DOLLAR"),
-         @Json(name = "REPIN_RATE") REPIN_RATE("REPIN_RATE"),
-         @Json(name = "CTR_2") CTR_2("CTR_2"),
-         @Json(name = "CAMPAIGN_ID") CAMPAIGN_ID("CAMPAIGN_ID"),
-         @Json(name = "ADVERTISER_ID") ADVERTISER_ID("ADVERTISER_ID"),
-         @Json(name = "AD_ACCOUNT_ID") AD_ACCOUNT_ID("AD_ACCOUNT_ID"),
-         @Json(name = "PIN_PROMOTION_ID") PIN_PROMOTION_ID("PIN_PROMOTION_ID"),
-         @Json(name = "AD_ID") AD_ID("AD_ID"),
-         @Json(name = "AD_GROUP_ID") AD_GROUP_ID("AD_GROUP_ID"),
-         @Json(name = "CAMPAIGN_ENTITY_STATUS") CAMPAIGN_ENTITY_STATUS("CAMPAIGN_ENTITY_STATUS"),
-         @Json(name = "CAMPAIGN_OBJECTIVE_TYPE") CAMPAIGN_OBJECTIVE_TYPE("CAMPAIGN_OBJECTIVE_TYPE"),
-         @Json(name = "CPM_IN_MICRO_DOLLAR") CPM_IN_MICRO_DOLLAR("CPM_IN_MICRO_DOLLAR"),
-         @Json(name = "CPM_IN_DOLLAR") CPM_IN_DOLLAR("CPM_IN_DOLLAR"),
-         @Json(name = "AD_GROUP_NAME") AD_GROUP_NAME("AD_GROUP_NAME"),
-         @Json(name = "AD_GROUP_BUDGET_TYPE") AD_GROUP_BUDGET_TYPE("AD_GROUP_BUDGET_TYPE"),
-         @Json(name = "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY") AD_GROUP_BUDGET_IN_LOCAL_CURRENCY("AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"),
-         @Json(name = "AD_GROUP_ENTITY_STATUS") AD_GROUP_ENTITY_STATUS("AD_GROUP_ENTITY_STATUS"),
-         @Json(name = "AD_GROUP_BID_MULTIPLIER") AD_GROUP_BID_MULTIPLIER("AD_GROUP_BID_MULTIPLIER"),
-         @Json(name = "PROMO_ID") PROMO_ID("PROMO_ID"),
-         @Json(name = "PROMO_NAME") PROMO_NAME("PROMO_NAME"),
-         @Json(name = "ORDER_LINE_ID") ORDER_LINE_ID("ORDER_LINE_ID"),
-         @Json(name = "ORDER_LINE_NAME") ORDER_LINE_NAME("ORDER_LINE_NAME"),
-         @Json(name = "CLICKTHROUGH_1") CLICKTHROUGH_1("CLICKTHROUGH_1"),
-         @Json(name = "REPIN_1") REPIN_1("REPIN_1"),
-         @Json(name = "IMPRESSION_1") IMPRESSION_1("IMPRESSION_1"),
-         @Json(name = "IMPRESSION_1_GROSS") IMPRESSION_1_GROSS("IMPRESSION_1_GROSS"),
-         @Json(name = "CLICKTHROUGH_1_GROSS") CLICKTHROUGH_1_GROSS("CLICKTHROUGH_1_GROSS"),
-         @Json(name = "OUTBOUND_CLICK_1") OUTBOUND_CLICK_1("OUTBOUND_CLICK_1"),
-         @Json(name = "CLICKTHROUGH_2") CLICKTHROUGH_2("CLICKTHROUGH_2"),
-         @Json(name = "REPIN_2") REPIN_2("REPIN_2"),
-         @Json(name = "IMPRESSION_2") IMPRESSION_2("IMPRESSION_2"),
-         @Json(name = "OUTBOUND_CLICK_2") OUTBOUND_CLICK_2("OUTBOUND_CLICK_2"),
-         @Json(name = "TOTAL_CLICKTHROUGH") TOTAL_CLICKTHROUGH("TOTAL_CLICKTHROUGH"),
-         @Json(name = "TOTAL_IMPRESSION") TOTAL_IMPRESSION("TOTAL_IMPRESSION"),
-         @Json(name = "TOTAL_IMPRESSION_USER") TOTAL_IMPRESSION_USER("TOTAL_IMPRESSION_USER"),
-         @Json(name = "TOTAL_IMPRESSION_FREQUENCY") TOTAL_IMPRESSION_FREQUENCY("TOTAL_IMPRESSION_FREQUENCY"),
-         @Json(name = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR") COST_PER_OUTBOUND_CLICK_IN_DOLLAR("COST_PER_OUTBOUND_CLICK_IN_DOLLAR"),
-         @Json(name = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1") COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1("COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"),
-         @Json(name = "TOTAL_ENGAGEMENT_SIGNUP") TOTAL_ENGAGEMENT_SIGNUP("TOTAL_ENGAGEMENT_SIGNUP"),
-         @Json(name = "TOTAL_ENGAGEMENT_CHECKOUT") TOTAL_ENGAGEMENT_CHECKOUT("TOTAL_ENGAGEMENT_CHECKOUT"),
-         @Json(name = "TOTAL_ENGAGEMENT_LEAD") TOTAL_ENGAGEMENT_LEAD("TOTAL_ENGAGEMENT_LEAD"),
-         @Json(name = "TOTAL_CLICK_SIGNUP") TOTAL_CLICK_SIGNUP("TOTAL_CLICK_SIGNUP"),
-         @Json(name = "TOTAL_CLICK_CHECKOUT") TOTAL_CLICK_CHECKOUT("TOTAL_CLICK_CHECKOUT"),
-         @Json(name = "TOTAL_CLICK_ADD_TO_CART") TOTAL_CLICK_ADD_TO_CART("TOTAL_CLICK_ADD_TO_CART"),
-         @Json(name = "TOTAL_CLICK_LEAD") TOTAL_CLICK_LEAD("TOTAL_CLICK_LEAD"),
-         @Json(name = "TOTAL_VIEW_SIGNUP") TOTAL_VIEW_SIGNUP("TOTAL_VIEW_SIGNUP"),
-         @Json(name = "TOTAL_VIEW_CHECKOUT") TOTAL_VIEW_CHECKOUT("TOTAL_VIEW_CHECKOUT"),
-         @Json(name = "TOTAL_VIEW_ADD_TO_CART") TOTAL_VIEW_ADD_TO_CART("TOTAL_VIEW_ADD_TO_CART"),
-         @Json(name = "TOTAL_VIEW_LEAD") TOTAL_VIEW_LEAD("TOTAL_VIEW_LEAD"),
-         @Json(name = "TOTAL_CONVERSIONS") TOTAL_CONVERSIONS("TOTAL_CONVERSIONS"),
-         @Json(name = "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR") TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR("TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR") TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR("TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR") TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR("TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_WEB_SESSIONS") TOTAL_WEB_SESSIONS("TOTAL_WEB_SESSIONS"),
-         @Json(name = "WEB_SESSIONS_1") WEB_SESSIONS_1("WEB_SESSIONS_1"),
-         @Json(name = "WEB_SESSIONS_2") WEB_SESSIONS_2("WEB_SESSIONS_2"),
-         @Json(name = "AD_NAME") AD_NAME("AD_NAME"),
-         @Json(name = "CAMPAIGN_LIFETIME_SPEND_CAP") CAMPAIGN_LIFETIME_SPEND_CAP("CAMPAIGN_LIFETIME_SPEND_CAP"),
-         @Json(name = "AD_GROUP_OPTIMIZATION") AD_GROUP_OPTIMIZATION("AD_GROUP_OPTIMIZATION"),
-         @Json(name = "CAMPAIGN_DAILY_SPEND_CAP") CAMPAIGN_DAILY_SPEND_CAP("CAMPAIGN_DAILY_SPEND_CAP"),
-         @Json(name = "CAMPAIGN_BUDGET_OPTIMIZATION") CAMPAIGN_BUDGET_OPTIMIZATION("CAMPAIGN_BUDGET_OPTIMIZATION"),
-         @Json(name = "IS_PREMIERE_CAMPAIGN") IS_PREMIERE_CAMPAIGN("IS_PREMIERE_CAMPAIGN"),
-         @Json(name = "TOTAL_PAGE_VISIT") TOTAL_PAGE_VISIT("TOTAL_PAGE_VISIT"),
-         @Json(name = "TOTAL_SIGNUP") TOTAL_SIGNUP("TOTAL_SIGNUP"),
-         @Json(name = "TOTAL_CHECKOUT") TOTAL_CHECKOUT("TOTAL_CHECKOUT"),
-         @Json(name = "TOTAL_CUSTOM") TOTAL_CUSTOM("TOTAL_CUSTOM"),
-         @Json(name = "TOTAL_LEAD") TOTAL_LEAD("TOTAL_LEAD"),
-         @Json(name = "TOTAL_ADD_TO_WISHLIST") TOTAL_ADD_TO_WISHLIST("TOTAL_ADD_TO_WISHLIST"),
-         @Json(name = "TOTAL_SUBSCRIBE") TOTAL_SUBSCRIBE("TOTAL_SUBSCRIBE"),
-         @Json(name = "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR") TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR("TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR") TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR("TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "PAGE_VISIT_COST_PER_ACTION") PAGE_VISIT_COST_PER_ACTION("PAGE_VISIT_COST_PER_ACTION"),
-         @Json(name = "PAGE_VISIT_ROAS") PAGE_VISIT_ROAS("PAGE_VISIT_ROAS"),
-         @Json(name = "CHECKOUT_ROAS") CHECKOUT_ROAS("CHECKOUT_ROAS"),
-         @Json(name = "CUSTOM_ROAS") CUSTOM_ROAS("CUSTOM_ROAS"),
-         @Json(name = "PRODUCT_GROUP_AD_IMAGE_TAG") PRODUCT_GROUP_AD_IMAGE_TAG("PRODUCT_GROUP_AD_IMAGE_TAG"),
-         @Json(name = "PRODUCT_GROUP_AD_VIDEO_TAG") PRODUCT_GROUP_AD_VIDEO_TAG("PRODUCT_GROUP_AD_VIDEO_TAG"),
-         @Json(name = "VIDEO_3SEC_VIEWS_1") VIDEO_3SEC_VIEWS_1("VIDEO_3SEC_VIEWS_1"),
-         @Json(name = "VIDEO_15SEC_UNIQUE_VIEWS_1") VIDEO_15SEC_UNIQUE_VIEWS_1("VIDEO_15SEC_UNIQUE_VIEWS_1"),
-         @Json(name = "VIDEO_MRC_VIEWS_1") VIDEO_MRC_VIEWS_1("VIDEO_MRC_VIEWS_1"),
-         @Json(name = "VIDEO_3SEC_VIEWS_2") VIDEO_3SEC_VIEWS_2("VIDEO_3SEC_VIEWS_2"),
-         @Json(name = "VIDEO_15SEC_UNIQUE_VIEWS_2") VIDEO_15SEC_UNIQUE_VIEWS_2("VIDEO_15SEC_UNIQUE_VIEWS_2"),
-         @Json(name = "VIDEO_P100_COMPLETE_2") VIDEO_P100_COMPLETE_2("VIDEO_P100_COMPLETE_2"),
-         @Json(name = "VIDEO_P0_COMBINED_2") VIDEO_P0_COMBINED_2("VIDEO_P0_COMBINED_2"),
-         @Json(name = "VIDEO_P25_COMBINED_2") VIDEO_P25_COMBINED_2("VIDEO_P25_COMBINED_2"),
-         @Json(name = "VIDEO_P50_COMBINED_2") VIDEO_P50_COMBINED_2("VIDEO_P50_COMBINED_2"),
-         @Json(name = "VIDEO_P75_COMBINED_2") VIDEO_P75_COMBINED_2("VIDEO_P75_COMBINED_2"),
-         @Json(name = "VIDEO_P95_COMBINED_2") VIDEO_P95_COMBINED_2("VIDEO_P95_COMBINED_2"),
-         @Json(name = "VIDEO_MRC_VIEWS_2") VIDEO_MRC_VIEWS_2("VIDEO_MRC_VIEWS_2"),
-         @Json(name = "PAID_VIDEO_VIEWABLE_RATE") PAID_VIDEO_VIEWABLE_RATE("PAID_VIDEO_VIEWABLE_RATE"),
-         @Json(name = "VIDEO_LENGTH") VIDEO_LENGTH("VIDEO_LENGTH"),
-         @Json(name = "VIDEO_SPEND_IN_DOLLAR") VIDEO_SPEND_IN_DOLLAR("VIDEO_SPEND_IN_DOLLAR"),
-         @Json(name = "ECPV_IN_DOLLAR") ECPV_IN_DOLLAR("ECPV_IN_DOLLAR"),
-         @Json(name = "ECPCV_IN_DOLLAR") ECPCV_IN_DOLLAR("ECPCV_IN_DOLLAR"),
-         @Json(name = "ECPCV_P95_IN_DOLLAR") ECPCV_P95_IN_DOLLAR("ECPCV_P95_IN_DOLLAR"),
-         @Json(name = "TOTAL_VIDEO_3SEC_VIEWS") TOTAL_VIDEO_3SEC_VIEWS("TOTAL_VIDEO_3SEC_VIEWS"),
-         @Json(name = "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS") TOTAL_VIDEO_15SEC_UNIQUE_VIEWS("TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"),
-         @Json(name = "TOTAL_VIDEO_P100_COMPLETE") TOTAL_VIDEO_P100_COMPLETE("TOTAL_VIDEO_P100_COMPLETE"),
-         @Json(name = "TOTAL_VIDEO_P0_COMBINED") TOTAL_VIDEO_P0_COMBINED("TOTAL_VIDEO_P0_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_P25_COMBINED") TOTAL_VIDEO_P25_COMBINED("TOTAL_VIDEO_P25_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_P50_COMBINED") TOTAL_VIDEO_P50_COMBINED("TOTAL_VIDEO_P50_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_P75_COMBINED") TOTAL_VIDEO_P75_COMBINED("TOTAL_VIDEO_P75_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_P95_COMBINED") TOTAL_VIDEO_P95_COMBINED("TOTAL_VIDEO_P95_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_MRC_VIEWS") TOTAL_VIDEO_MRC_VIEWS("TOTAL_VIDEO_MRC_VIEWS"),
-         @Json(name = "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND") TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND("TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND"),
-         @Json(name = "TOTAL_REPIN_RATE") TOTAL_REPIN_RATE("TOTAL_REPIN_RATE"),
-         @Json(name = "WEB_CHECKOUT_COST_PER_ACTION") WEB_CHECKOUT_COST_PER_ACTION("WEB_CHECKOUT_COST_PER_ACTION"),
-         @Json(name = "WEB_CHECKOUT_ROAS") WEB_CHECKOUT_ROAS("WEB_CHECKOUT_ROAS"),
-         @Json(name = "TOTAL_WEB_CHECKOUT") TOTAL_WEB_CHECKOUT("TOTAL_WEB_CHECKOUT"),
-         @Json(name = "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_WEB_CLICK_CHECKOUT") TOTAL_WEB_CLICK_CHECKOUT("TOTAL_WEB_CLICK_CHECKOUT"),
-         @Json(name = "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_WEB_ENGAGEMENT_CHECKOUT") TOTAL_WEB_ENGAGEMENT_CHECKOUT("TOTAL_WEB_ENGAGEMENT_CHECKOUT"),
-         @Json(name = "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_WEB_VIEW_CHECKOUT") TOTAL_WEB_VIEW_CHECKOUT("TOTAL_WEB_VIEW_CHECKOUT"),
-         @Json(name = "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "INAPP_CHECKOUT_COST_PER_ACTION") INAPP_CHECKOUT_COST_PER_ACTION("INAPP_CHECKOUT_COST_PER_ACTION"),
-         @Json(name = "TOTAL_OFFLINE_CHECKOUT") TOTAL_OFFLINE_CHECKOUT("TOTAL_OFFLINE_CHECKOUT"),
-         @Json(name = "TOTAL_APP_INSTALL_CONVERSION_RATE") TOTAL_APP_INSTALL_CONVERSION_RATE("TOTAL_APP_INSTALL_CONVERSION_RATE"),
-         @Json(name = "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE") TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE("TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"),
-         @Json(name = "IDEA_PIN_PRODUCT_TAG_VISIT_1") IDEA_PIN_PRODUCT_TAG_VISIT_1("IDEA_PIN_PRODUCT_TAG_VISIT_1"),
-         @Json(name = "IDEA_PIN_PRODUCT_TAG_VISIT_2") IDEA_PIN_PRODUCT_TAG_VISIT_2("IDEA_PIN_PRODUCT_TAG_VISIT_2"),
-         @Json(name = "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT") TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT("TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT"),
-         @Json(name = "LEADS") LEADS("LEADS"),
-         @Json(name = "COST_PER_LEAD") COST_PER_LEAD("COST_PER_LEAD"),
-         @Json(name = "QUIZ_COMPLETED") QUIZ_COMPLETED("QUIZ_COMPLETED"),
-         @Json(name = "QUIZ_PIN_RESULT_OPEN") QUIZ_PIN_RESULT_OPEN("QUIZ_PIN_RESULT_OPEN"),
-         @Json(name = "QUIZ_COMPLETION_RATE") QUIZ_COMPLETION_RATE("QUIZ_COMPLETION_RATE"),
-         @Json(name = "SHOWCASE_PIN_CLICKTHROUGH") SHOWCASE_PIN_CLICKTHROUGH("SHOWCASE_PIN_CLICKTHROUGH"),
-         @Json(name = "SHOWCASE_SUBPAGE_CLICKTHROUGH") SHOWCASE_SUBPAGE_CLICKTHROUGH("SHOWCASE_SUBPAGE_CLICKTHROUGH"),
-         @Json(name = "SHOWCASE_SUBPIN_CLICKTHROUGH") SHOWCASE_SUBPIN_CLICKTHROUGH("SHOWCASE_SUBPIN_CLICKTHROUGH"),
-         @Json(name = "SHOWCASE_SUBPAGE_IMPRESSION") SHOWCASE_SUBPAGE_IMPRESSION("SHOWCASE_SUBPAGE_IMPRESSION"),
-         @Json(name = "SHOWCASE_SUBPIN_IMPRESSION") SHOWCASE_SUBPIN_IMPRESSION("SHOWCASE_SUBPIN_IMPRESSION"),
-         @Json(name = "SHOWCASE_SUBPAGE_SWIPE_LEFT") SHOWCASE_SUBPAGE_SWIPE_LEFT("SHOWCASE_SUBPAGE_SWIPE_LEFT"),
-         @Json(name = "SHOWCASE_SUBPAGE_SWIPE_RIGHT") SHOWCASE_SUBPAGE_SWIPE_RIGHT("SHOWCASE_SUBPAGE_SWIPE_RIGHT"),
-         @Json(name = "SHOWCASE_SUBPIN_SWIPE_LEFT") SHOWCASE_SUBPIN_SWIPE_LEFT("SHOWCASE_SUBPIN_SWIPE_LEFT"),
-         @Json(name = "SHOWCASE_SUBPIN_SWIPE_RIGHT") SHOWCASE_SUBPIN_SWIPE_RIGHT("SHOWCASE_SUBPIN_SWIPE_RIGHT"),
-         @Json(name = "SHOWCASE_SUBPAGE_REPIN") SHOWCASE_SUBPAGE_REPIN("SHOWCASE_SUBPAGE_REPIN"),
-         @Json(name = "SHOWCASE_SUBPIN_REPIN") SHOWCASE_SUBPIN_REPIN("SHOWCASE_SUBPIN_REPIN"),
-         @Json(name = "SHOWCASE_SUBPAGE_CLOSEUP") SHOWCASE_SUBPAGE_CLOSEUP("SHOWCASE_SUBPAGE_CLOSEUP"),
-         @Json(name = "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD") SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD("SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD"),
-         @Json(name = "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD") SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD("SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD"),
-         @Json(name = "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION") SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION("SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION"),
-         @Json(name = "TOTAL_CHECKOUT_CONVERSION_RATE") TOTAL_CHECKOUT_CONVERSION_RATE("TOTAL_CHECKOUT_CONVERSION_RATE"),
-         @Json(name = "TOTAL_VIEW_CATEGORY_CONVERSION_RATE") TOTAL_VIEW_CATEGORY_CONVERSION_RATE("TOTAL_VIEW_CATEGORY_CONVERSION_RATE"),
-         @Json(name = "TOTAL_ADD_TO_CART_CONVERSION_RATE") TOTAL_ADD_TO_CART_CONVERSION_RATE("TOTAL_ADD_TO_CART_CONVERSION_RATE"),
-         @Json(name = "TOTAL_SIGNUP_CONVERSION_RATE") TOTAL_SIGNUP_CONVERSION_RATE("TOTAL_SIGNUP_CONVERSION_RATE"),
-         @Json(name = "TOTAL_PAGE_VISIT_CONVERSION_RATE") TOTAL_PAGE_VISIT_CONVERSION_RATE("TOTAL_PAGE_VISIT_CONVERSION_RATE"),
-         @Json(name = "TOTAL_LEAD_CONVERSION_RATE") TOTAL_LEAD_CONVERSION_RATE("TOTAL_LEAD_CONVERSION_RATE"),
-         @Json(name = "TOTAL_SEARCH_CONVERSION_RATE") TOTAL_SEARCH_CONVERSION_RATE("TOTAL_SEARCH_CONVERSION_RATE"),
-         @Json(name = "TOTAL_WATCH_VIDEO_CONVERSION_RATE") TOTAL_WATCH_VIDEO_CONVERSION_RATE("TOTAL_WATCH_VIDEO_CONVERSION_RATE"),
-         @Json(name = "TOTAL_UNKNOWN_CONVERSION_RATE") TOTAL_UNKNOWN_CONVERSION_RATE("TOTAL_UNKNOWN_CONVERSION_RATE"),
-         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * enum for parameter clickWindowDays
      */
-     enum class ClickWindowDaysCampaignTargetingAnalyticsGet(val value: kotlin.Int) {
-         @Json(name = "0") _0(0),
-         @Json(name = "1") _1(1),
-         @Json(name = "7") _7(7),
-         @Json(name = "14") _14(14),
-         @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60);
+     enum class ClickWindowDaysCampaignTargetingAnalyticsGet(val value: java.math.BigDecimal) {
+         @Json(name = ""0"") _0("0"),
+         @Json(name = ""1"") _1("1"),
+         @Json(name = ""7"") _7("7"),
+         @Json(name = ""14"") _14("14"),
+         @Json(name = ""30"") _30("30"),
+         @Json(name = ""60"") _60("60");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -665,13 +297,13 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * enum for parameter engagementWindowDays
      */
-     enum class EngagementWindowDaysCampaignTargetingAnalyticsGet(val value: kotlin.Int) {
-         @Json(name = "0") _0(0),
-         @Json(name = "1") _1(1),
-         @Json(name = "7") _7(7),
-         @Json(name = "14") _14(14),
-         @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60);
+     enum class EngagementWindowDaysCampaignTargetingAnalyticsGet(val value: java.math.BigDecimal) {
+         @Json(name = ""0"") _0("0"),
+         @Json(name = ""1"") _1("1"),
+         @Json(name = ""7"") _7("7"),
+         @Json(name = ""14"") _14("14"),
+         @Json(name = ""30"") _30("30"),
+         @Json(name = ""60"") _60("60");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -686,13 +318,13 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * enum for parameter viewWindowDays
      */
-     enum class ViewWindowDaysCampaignTargetingAnalyticsGet(val value: kotlin.Int) {
-         @Json(name = "0") _0(0),
-         @Json(name = "1") _1(1),
-         @Json(name = "7") _7(7),
-         @Json(name = "14") _14(14),
-         @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60);
+     enum class ViewWindowDaysCampaignTargetingAnalyticsGet(val value: java.math.BigDecimal) {
+         @Json(name = ""0"") _0("0"),
+         @Json(name = ""1"") _1("1"),
+         @Json(name = ""7"") _7("7"),
+         @Json(name = ""14"") _14("14"),
+         @Json(name = ""30"") _30("30"),
+         @Json(name = ""60"") _60("60");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -724,16 +356,16 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /ad_accounts/{ad_account_id}/campaigns/targeting_analytics
      * Get targeting analytics for campaigns
-     * Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+     * Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;).  * The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignIds List of Campaign Ids to use to filter the results.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
-     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
-     * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
+     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+     * @param granularity   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ClickWindowDays._30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to EngagementWindowDays._30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional, default to EngagementWindowDays._30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ViewWindowDays._1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to ConversionReportTime.TIME_OF_AD_ACTION)
      * @param attributionTypes List of types of attribution for the conversion report (optional)
@@ -747,7 +379,7 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun campaignTargetingAnalyticsGet(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsCampaignTargetingType>, columns: kotlin.collections.List<ColumnsCampaignTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignTargetingAnalyticsGet? = ClickWindowDaysCampaignTargetingAnalyticsGet._30, engagementWindowDays: EngagementWindowDaysCampaignTargetingAnalyticsGet? = EngagementWindowDaysCampaignTargetingAnalyticsGet._30, viewWindowDays: ViewWindowDaysCampaignTargetingAnalyticsGet? = ViewWindowDaysCampaignTargetingAnalyticsGet._1, conversionReportTime: ConversionReportTimeCampaignTargetingAnalyticsGet? = ConversionReportTimeCampaignTargetingAnalyticsGet.TIME_OF_AD_ACTION, attributionTypes: kotlin.collections.List<ConversionReportAttributionType>? = null, reportingTimezone: ReportingTimeZone? = null) : MetricsResponse {
+    fun campaignTargetingAnalyticsGet(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsCampaignTargetingType>, columns: kotlin.collections.List<ReportingColumnSync>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignTargetingAnalyticsGet? = java.math.BigDecimal("ClickWindowDays._30"), engagementWindowDays: EngagementWindowDaysCampaignTargetingAnalyticsGet? = java.math.BigDecimal("EngagementWindowDays._30"), viewWindowDays: ViewWindowDaysCampaignTargetingAnalyticsGet? = java.math.BigDecimal("ViewWindowDays._1"), conversionReportTime: ConversionReportTimeCampaignTargetingAnalyticsGet? = ConversionReportTimeCampaignTargetingAnalyticsGet.TIME_OF_AD_ACTION, attributionTypes: kotlin.collections.List<ConversionReportAttributionType>? = null, reportingTimezone: ReportingTimeZone? = null) : MetricsResponse {
         val localVarResponse = campaignTargetingAnalyticsGetWithHttpInfo(adAccountId = adAccountId, campaignIds = campaignIds, startDate = startDate, endDate = endDate, targetingTypes = targetingTypes, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, attributionTypes = attributionTypes, reportingTimezone = reportingTimezone)
 
         return when (localVarResponse.responseType) {
@@ -768,16 +400,16 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /ad_accounts/{ad_account_id}/campaigns/targeting_analytics
      * Get targeting analytics for campaigns
-     * Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+     * Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;).  * The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignIds List of Campaign Ids to use to filter the results.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
-     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
-     * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
+     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+     * @param granularity   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ClickWindowDays._30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to EngagementWindowDays._30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional, default to EngagementWindowDays._30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ViewWindowDays._1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to ConversionReportTime.TIME_OF_AD_ACTION)
      * @param attributionTypes List of types of attribution for the conversion report (optional)
@@ -788,7 +420,7 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun campaignTargetingAnalyticsGetWithHttpInfo(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsCampaignTargetingType>, columns: kotlin.collections.List<ColumnsCampaignTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignTargetingAnalyticsGet?, engagementWindowDays: EngagementWindowDaysCampaignTargetingAnalyticsGet?, viewWindowDays: ViewWindowDaysCampaignTargetingAnalyticsGet?, conversionReportTime: ConversionReportTimeCampaignTargetingAnalyticsGet?, attributionTypes: kotlin.collections.List<ConversionReportAttributionType>?, reportingTimezone: ReportingTimeZone?) : ApiResponse<MetricsResponse?> {
+    fun campaignTargetingAnalyticsGetWithHttpInfo(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsCampaignTargetingType>, columns: kotlin.collections.List<ReportingColumnSync>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignTargetingAnalyticsGet?, engagementWindowDays: EngagementWindowDaysCampaignTargetingAnalyticsGet?, viewWindowDays: ViewWindowDaysCampaignTargetingAnalyticsGet?, conversionReportTime: ConversionReportTimeCampaignTargetingAnalyticsGet?, attributionTypes: kotlin.collections.List<ConversionReportAttributionType>?, reportingTimezone: ReportingTimeZone?) : ApiResponse<MetricsResponse?> {
         val localVariableConfig = campaignTargetingAnalyticsGetRequestConfig(adAccountId = adAccountId, campaignIds = campaignIds, startDate = startDate, endDate = endDate, targetingTypes = targetingTypes, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, attributionTypes = attributionTypes, reportingTimezone = reportingTimezone)
 
         return request<Unit, MetricsResponse>(
@@ -803,24 +435,24 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * @param campaignIds List of Campaign Ids to use to filter the results.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
-     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
-     * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
+     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+     * @param granularity   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ClickWindowDays._30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to EngagementWindowDays._30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional, default to EngagementWindowDays._30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ViewWindowDays._1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to ConversionReportTime.TIME_OF_AD_ACTION)
      * @param attributionTypes List of types of attribution for the conversion report (optional)
      * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      * @return RequestConfig
      */
-    fun campaignTargetingAnalyticsGetRequestConfig(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsCampaignTargetingType>, columns: kotlin.collections.List<ColumnsCampaignTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignTargetingAnalyticsGet?, engagementWindowDays: EngagementWindowDaysCampaignTargetingAnalyticsGet?, viewWindowDays: ViewWindowDaysCampaignTargetingAnalyticsGet?, conversionReportTime: ConversionReportTimeCampaignTargetingAnalyticsGet?, attributionTypes: kotlin.collections.List<ConversionReportAttributionType>?, reportingTimezone: ReportingTimeZone?) : RequestConfig<Unit> {
+    fun campaignTargetingAnalyticsGetRequestConfig(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsCampaignTargetingType>, columns: kotlin.collections.List<ReportingColumnSync>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignTargetingAnalyticsGet?, engagementWindowDays: EngagementWindowDaysCampaignTargetingAnalyticsGet?, viewWindowDays: ViewWindowDaysCampaignTargetingAnalyticsGet?, conversionReportTime: ConversionReportTimeCampaignTargetingAnalyticsGet?, attributionTypes: kotlin.collections.List<ConversionReportAttributionType>?, reportingTimezone: ReportingTimeZone?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 put("campaign_ids", toMultiValue(campaignIds.toList(), "multi"))
-                put("start_date", listOf(parseDateToQueryString(startDate)))
-                put("end_date", listOf(parseDateToQueryString(endDate)))
+                put("start_date", listOf(parseDateToQueryString<java.time.LocalDate>(startDate)))
+                put("end_date", listOf(parseDateToQueryString<java.time.LocalDate>(endDate)))
                 put("targeting_types", toMultiValue(targetingTypes.toList(), "csv"))
                 put("columns", toMultiValue(columns.toList(), "csv"))
                 put("granularity", listOf(granularity.toString()))
@@ -857,205 +489,15 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * enum for parameter columns
-     */
-     enum class ColumnsCampaignsAnalytics(val value: kotlin.String) {
-         @Json(name = "SPEND_IN_MICRO_DOLLAR") SPEND_IN_MICRO_DOLLAR("SPEND_IN_MICRO_DOLLAR"),
-         @Json(name = "PAID_IMPRESSION") PAID_IMPRESSION("PAID_IMPRESSION"),
-         @Json(name = "SPEND_IN_DOLLAR") SPEND_IN_DOLLAR("SPEND_IN_DOLLAR"),
-         @Json(name = "CPC_IN_MICRO_DOLLAR") CPC_IN_MICRO_DOLLAR("CPC_IN_MICRO_DOLLAR"),
-         @Json(name = "ECPC_IN_MICRO_DOLLAR") ECPC_IN_MICRO_DOLLAR("ECPC_IN_MICRO_DOLLAR"),
-         @Json(name = "ECPC_IN_DOLLAR") ECPC_IN_DOLLAR("ECPC_IN_DOLLAR"),
-         @Json(name = "CTR") CTR("CTR"),
-         @Json(name = "ECTR") ECTR("ECTR"),
-         @Json(name = "OUTBOUND_CTR_1") OUTBOUND_CTR_1("OUTBOUND_CTR_1"),
-         @Json(name = "CAMPAIGN_NAME") CAMPAIGN_NAME("CAMPAIGN_NAME"),
-         @Json(name = "CAMPAIGN_BRAND_LABEL") CAMPAIGN_BRAND_LABEL("CAMPAIGN_BRAND_LABEL"),
-         @Json(name = "PIN_ID") PIN_ID("PIN_ID"),
-         @Json(name = "TOTAL_ENGAGEMENT") TOTAL_ENGAGEMENT("TOTAL_ENGAGEMENT"),
-         @Json(name = "ENGAGEMENT_1") ENGAGEMENT_1("ENGAGEMENT_1"),
-         @Json(name = "ENGAGEMENT_2") ENGAGEMENT_2("ENGAGEMENT_2"),
-         @Json(name = "ECPE_IN_DOLLAR") ECPE_IN_DOLLAR("ECPE_IN_DOLLAR"),
-         @Json(name = "ENGAGEMENT_RATE") ENGAGEMENT_RATE("ENGAGEMENT_RATE"),
-         @Json(name = "EENGAGEMENT_RATE") EENGAGEMENT_RATE("EENGAGEMENT_RATE"),
-         @Json(name = "ECPM_IN_MICRO_DOLLAR") ECPM_IN_MICRO_DOLLAR("ECPM_IN_MICRO_DOLLAR"),
-         @Json(name = "REPIN_RATE") REPIN_RATE("REPIN_RATE"),
-         @Json(name = "CTR_2") CTR_2("CTR_2"),
-         @Json(name = "CAMPAIGN_ID") CAMPAIGN_ID("CAMPAIGN_ID"),
-         @Json(name = "ADVERTISER_ID") ADVERTISER_ID("ADVERTISER_ID"),
-         @Json(name = "AD_ACCOUNT_ID") AD_ACCOUNT_ID("AD_ACCOUNT_ID"),
-         @Json(name = "PIN_PROMOTION_ID") PIN_PROMOTION_ID("PIN_PROMOTION_ID"),
-         @Json(name = "AD_ID") AD_ID("AD_ID"),
-         @Json(name = "AD_GROUP_ID") AD_GROUP_ID("AD_GROUP_ID"),
-         @Json(name = "CAMPAIGN_ENTITY_STATUS") CAMPAIGN_ENTITY_STATUS("CAMPAIGN_ENTITY_STATUS"),
-         @Json(name = "CAMPAIGN_OBJECTIVE_TYPE") CAMPAIGN_OBJECTIVE_TYPE("CAMPAIGN_OBJECTIVE_TYPE"),
-         @Json(name = "CPM_IN_MICRO_DOLLAR") CPM_IN_MICRO_DOLLAR("CPM_IN_MICRO_DOLLAR"),
-         @Json(name = "CPM_IN_DOLLAR") CPM_IN_DOLLAR("CPM_IN_DOLLAR"),
-         @Json(name = "AD_GROUP_NAME") AD_GROUP_NAME("AD_GROUP_NAME"),
-         @Json(name = "AD_GROUP_BUDGET_TYPE") AD_GROUP_BUDGET_TYPE("AD_GROUP_BUDGET_TYPE"),
-         @Json(name = "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY") AD_GROUP_BUDGET_IN_LOCAL_CURRENCY("AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"),
-         @Json(name = "AD_GROUP_ENTITY_STATUS") AD_GROUP_ENTITY_STATUS("AD_GROUP_ENTITY_STATUS"),
-         @Json(name = "AD_GROUP_BID_MULTIPLIER") AD_GROUP_BID_MULTIPLIER("AD_GROUP_BID_MULTIPLIER"),
-         @Json(name = "PROMO_ID") PROMO_ID("PROMO_ID"),
-         @Json(name = "PROMO_NAME") PROMO_NAME("PROMO_NAME"),
-         @Json(name = "ORDER_LINE_ID") ORDER_LINE_ID("ORDER_LINE_ID"),
-         @Json(name = "ORDER_LINE_NAME") ORDER_LINE_NAME("ORDER_LINE_NAME"),
-         @Json(name = "CLICKTHROUGH_1") CLICKTHROUGH_1("CLICKTHROUGH_1"),
-         @Json(name = "REPIN_1") REPIN_1("REPIN_1"),
-         @Json(name = "IMPRESSION_1") IMPRESSION_1("IMPRESSION_1"),
-         @Json(name = "IMPRESSION_1_GROSS") IMPRESSION_1_GROSS("IMPRESSION_1_GROSS"),
-         @Json(name = "CLICKTHROUGH_1_GROSS") CLICKTHROUGH_1_GROSS("CLICKTHROUGH_1_GROSS"),
-         @Json(name = "OUTBOUND_CLICK_1") OUTBOUND_CLICK_1("OUTBOUND_CLICK_1"),
-         @Json(name = "CLICKTHROUGH_2") CLICKTHROUGH_2("CLICKTHROUGH_2"),
-         @Json(name = "REPIN_2") REPIN_2("REPIN_2"),
-         @Json(name = "IMPRESSION_2") IMPRESSION_2("IMPRESSION_2"),
-         @Json(name = "OUTBOUND_CLICK_2") OUTBOUND_CLICK_2("OUTBOUND_CLICK_2"),
-         @Json(name = "TOTAL_CLICKTHROUGH") TOTAL_CLICKTHROUGH("TOTAL_CLICKTHROUGH"),
-         @Json(name = "TOTAL_IMPRESSION") TOTAL_IMPRESSION("TOTAL_IMPRESSION"),
-         @Json(name = "TOTAL_IMPRESSION_USER") TOTAL_IMPRESSION_USER("TOTAL_IMPRESSION_USER"),
-         @Json(name = "TOTAL_IMPRESSION_FREQUENCY") TOTAL_IMPRESSION_FREQUENCY("TOTAL_IMPRESSION_FREQUENCY"),
-         @Json(name = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR") COST_PER_OUTBOUND_CLICK_IN_DOLLAR("COST_PER_OUTBOUND_CLICK_IN_DOLLAR"),
-         @Json(name = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1") COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1("COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"),
-         @Json(name = "TOTAL_ENGAGEMENT_SIGNUP") TOTAL_ENGAGEMENT_SIGNUP("TOTAL_ENGAGEMENT_SIGNUP"),
-         @Json(name = "TOTAL_ENGAGEMENT_CHECKOUT") TOTAL_ENGAGEMENT_CHECKOUT("TOTAL_ENGAGEMENT_CHECKOUT"),
-         @Json(name = "TOTAL_ENGAGEMENT_LEAD") TOTAL_ENGAGEMENT_LEAD("TOTAL_ENGAGEMENT_LEAD"),
-         @Json(name = "TOTAL_CLICK_SIGNUP") TOTAL_CLICK_SIGNUP("TOTAL_CLICK_SIGNUP"),
-         @Json(name = "TOTAL_CLICK_CHECKOUT") TOTAL_CLICK_CHECKOUT("TOTAL_CLICK_CHECKOUT"),
-         @Json(name = "TOTAL_CLICK_ADD_TO_CART") TOTAL_CLICK_ADD_TO_CART("TOTAL_CLICK_ADD_TO_CART"),
-         @Json(name = "TOTAL_CLICK_LEAD") TOTAL_CLICK_LEAD("TOTAL_CLICK_LEAD"),
-         @Json(name = "TOTAL_VIEW_SIGNUP") TOTAL_VIEW_SIGNUP("TOTAL_VIEW_SIGNUP"),
-         @Json(name = "TOTAL_VIEW_CHECKOUT") TOTAL_VIEW_CHECKOUT("TOTAL_VIEW_CHECKOUT"),
-         @Json(name = "TOTAL_VIEW_ADD_TO_CART") TOTAL_VIEW_ADD_TO_CART("TOTAL_VIEW_ADD_TO_CART"),
-         @Json(name = "TOTAL_VIEW_LEAD") TOTAL_VIEW_LEAD("TOTAL_VIEW_LEAD"),
-         @Json(name = "TOTAL_CONVERSIONS") TOTAL_CONVERSIONS("TOTAL_CONVERSIONS"),
-         @Json(name = "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR") TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR("TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR") TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR("TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR") TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR("TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_WEB_SESSIONS") TOTAL_WEB_SESSIONS("TOTAL_WEB_SESSIONS"),
-         @Json(name = "WEB_SESSIONS_1") WEB_SESSIONS_1("WEB_SESSIONS_1"),
-         @Json(name = "WEB_SESSIONS_2") WEB_SESSIONS_2("WEB_SESSIONS_2"),
-         @Json(name = "AD_NAME") AD_NAME("AD_NAME"),
-         @Json(name = "CAMPAIGN_LIFETIME_SPEND_CAP") CAMPAIGN_LIFETIME_SPEND_CAP("CAMPAIGN_LIFETIME_SPEND_CAP"),
-         @Json(name = "AD_GROUP_OPTIMIZATION") AD_GROUP_OPTIMIZATION("AD_GROUP_OPTIMIZATION"),
-         @Json(name = "CAMPAIGN_DAILY_SPEND_CAP") CAMPAIGN_DAILY_SPEND_CAP("CAMPAIGN_DAILY_SPEND_CAP"),
-         @Json(name = "CAMPAIGN_BUDGET_OPTIMIZATION") CAMPAIGN_BUDGET_OPTIMIZATION("CAMPAIGN_BUDGET_OPTIMIZATION"),
-         @Json(name = "IS_PREMIERE_CAMPAIGN") IS_PREMIERE_CAMPAIGN("IS_PREMIERE_CAMPAIGN"),
-         @Json(name = "TOTAL_PAGE_VISIT") TOTAL_PAGE_VISIT("TOTAL_PAGE_VISIT"),
-         @Json(name = "TOTAL_SIGNUP") TOTAL_SIGNUP("TOTAL_SIGNUP"),
-         @Json(name = "TOTAL_CHECKOUT") TOTAL_CHECKOUT("TOTAL_CHECKOUT"),
-         @Json(name = "TOTAL_CUSTOM") TOTAL_CUSTOM("TOTAL_CUSTOM"),
-         @Json(name = "TOTAL_LEAD") TOTAL_LEAD("TOTAL_LEAD"),
-         @Json(name = "TOTAL_ADD_TO_WISHLIST") TOTAL_ADD_TO_WISHLIST("TOTAL_ADD_TO_WISHLIST"),
-         @Json(name = "TOTAL_SUBSCRIBE") TOTAL_SUBSCRIBE("TOTAL_SUBSCRIBE"),
-         @Json(name = "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR") TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR("TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR") TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR("TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "PAGE_VISIT_COST_PER_ACTION") PAGE_VISIT_COST_PER_ACTION("PAGE_VISIT_COST_PER_ACTION"),
-         @Json(name = "PAGE_VISIT_ROAS") PAGE_VISIT_ROAS("PAGE_VISIT_ROAS"),
-         @Json(name = "CHECKOUT_ROAS") CHECKOUT_ROAS("CHECKOUT_ROAS"),
-         @Json(name = "CUSTOM_ROAS") CUSTOM_ROAS("CUSTOM_ROAS"),
-         @Json(name = "PRODUCT_GROUP_AD_IMAGE_TAG") PRODUCT_GROUP_AD_IMAGE_TAG("PRODUCT_GROUP_AD_IMAGE_TAG"),
-         @Json(name = "PRODUCT_GROUP_AD_VIDEO_TAG") PRODUCT_GROUP_AD_VIDEO_TAG("PRODUCT_GROUP_AD_VIDEO_TAG"),
-         @Json(name = "VIDEO_3SEC_VIEWS_1") VIDEO_3SEC_VIEWS_1("VIDEO_3SEC_VIEWS_1"),
-         @Json(name = "VIDEO_15SEC_UNIQUE_VIEWS_1") VIDEO_15SEC_UNIQUE_VIEWS_1("VIDEO_15SEC_UNIQUE_VIEWS_1"),
-         @Json(name = "VIDEO_MRC_VIEWS_1") VIDEO_MRC_VIEWS_1("VIDEO_MRC_VIEWS_1"),
-         @Json(name = "VIDEO_3SEC_VIEWS_2") VIDEO_3SEC_VIEWS_2("VIDEO_3SEC_VIEWS_2"),
-         @Json(name = "VIDEO_15SEC_UNIQUE_VIEWS_2") VIDEO_15SEC_UNIQUE_VIEWS_2("VIDEO_15SEC_UNIQUE_VIEWS_2"),
-         @Json(name = "VIDEO_P100_COMPLETE_2") VIDEO_P100_COMPLETE_2("VIDEO_P100_COMPLETE_2"),
-         @Json(name = "VIDEO_P0_COMBINED_2") VIDEO_P0_COMBINED_2("VIDEO_P0_COMBINED_2"),
-         @Json(name = "VIDEO_P25_COMBINED_2") VIDEO_P25_COMBINED_2("VIDEO_P25_COMBINED_2"),
-         @Json(name = "VIDEO_P50_COMBINED_2") VIDEO_P50_COMBINED_2("VIDEO_P50_COMBINED_2"),
-         @Json(name = "VIDEO_P75_COMBINED_2") VIDEO_P75_COMBINED_2("VIDEO_P75_COMBINED_2"),
-         @Json(name = "VIDEO_P95_COMBINED_2") VIDEO_P95_COMBINED_2("VIDEO_P95_COMBINED_2"),
-         @Json(name = "VIDEO_MRC_VIEWS_2") VIDEO_MRC_VIEWS_2("VIDEO_MRC_VIEWS_2"),
-         @Json(name = "PAID_VIDEO_VIEWABLE_RATE") PAID_VIDEO_VIEWABLE_RATE("PAID_VIDEO_VIEWABLE_RATE"),
-         @Json(name = "VIDEO_LENGTH") VIDEO_LENGTH("VIDEO_LENGTH"),
-         @Json(name = "VIDEO_SPEND_IN_DOLLAR") VIDEO_SPEND_IN_DOLLAR("VIDEO_SPEND_IN_DOLLAR"),
-         @Json(name = "ECPV_IN_DOLLAR") ECPV_IN_DOLLAR("ECPV_IN_DOLLAR"),
-         @Json(name = "ECPCV_IN_DOLLAR") ECPCV_IN_DOLLAR("ECPCV_IN_DOLLAR"),
-         @Json(name = "ECPCV_P95_IN_DOLLAR") ECPCV_P95_IN_DOLLAR("ECPCV_P95_IN_DOLLAR"),
-         @Json(name = "TOTAL_VIDEO_3SEC_VIEWS") TOTAL_VIDEO_3SEC_VIEWS("TOTAL_VIDEO_3SEC_VIEWS"),
-         @Json(name = "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS") TOTAL_VIDEO_15SEC_UNIQUE_VIEWS("TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"),
-         @Json(name = "TOTAL_VIDEO_P100_COMPLETE") TOTAL_VIDEO_P100_COMPLETE("TOTAL_VIDEO_P100_COMPLETE"),
-         @Json(name = "TOTAL_VIDEO_P0_COMBINED") TOTAL_VIDEO_P0_COMBINED("TOTAL_VIDEO_P0_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_P25_COMBINED") TOTAL_VIDEO_P25_COMBINED("TOTAL_VIDEO_P25_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_P50_COMBINED") TOTAL_VIDEO_P50_COMBINED("TOTAL_VIDEO_P50_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_P75_COMBINED") TOTAL_VIDEO_P75_COMBINED("TOTAL_VIDEO_P75_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_P95_COMBINED") TOTAL_VIDEO_P95_COMBINED("TOTAL_VIDEO_P95_COMBINED"),
-         @Json(name = "TOTAL_VIDEO_MRC_VIEWS") TOTAL_VIDEO_MRC_VIEWS("TOTAL_VIDEO_MRC_VIEWS"),
-         @Json(name = "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND") TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND("TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND"),
-         @Json(name = "TOTAL_REPIN_RATE") TOTAL_REPIN_RATE("TOTAL_REPIN_RATE"),
-         @Json(name = "WEB_CHECKOUT_COST_PER_ACTION") WEB_CHECKOUT_COST_PER_ACTION("WEB_CHECKOUT_COST_PER_ACTION"),
-         @Json(name = "WEB_CHECKOUT_ROAS") WEB_CHECKOUT_ROAS("WEB_CHECKOUT_ROAS"),
-         @Json(name = "TOTAL_WEB_CHECKOUT") TOTAL_WEB_CHECKOUT("TOTAL_WEB_CHECKOUT"),
-         @Json(name = "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_WEB_CLICK_CHECKOUT") TOTAL_WEB_CLICK_CHECKOUT("TOTAL_WEB_CLICK_CHECKOUT"),
-         @Json(name = "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_WEB_ENGAGEMENT_CHECKOUT") TOTAL_WEB_ENGAGEMENT_CHECKOUT("TOTAL_WEB_ENGAGEMENT_CHECKOUT"),
-         @Json(name = "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "TOTAL_WEB_VIEW_CHECKOUT") TOTAL_WEB_VIEW_CHECKOUT("TOTAL_WEB_VIEW_CHECKOUT"),
-         @Json(name = "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR") TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
-         @Json(name = "INAPP_CHECKOUT_COST_PER_ACTION") INAPP_CHECKOUT_COST_PER_ACTION("INAPP_CHECKOUT_COST_PER_ACTION"),
-         @Json(name = "TOTAL_OFFLINE_CHECKOUT") TOTAL_OFFLINE_CHECKOUT("TOTAL_OFFLINE_CHECKOUT"),
-         @Json(name = "TOTAL_APP_INSTALL_CONVERSION_RATE") TOTAL_APP_INSTALL_CONVERSION_RATE("TOTAL_APP_INSTALL_CONVERSION_RATE"),
-         @Json(name = "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE") TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE("TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"),
-         @Json(name = "IDEA_PIN_PRODUCT_TAG_VISIT_1") IDEA_PIN_PRODUCT_TAG_VISIT_1("IDEA_PIN_PRODUCT_TAG_VISIT_1"),
-         @Json(name = "IDEA_PIN_PRODUCT_TAG_VISIT_2") IDEA_PIN_PRODUCT_TAG_VISIT_2("IDEA_PIN_PRODUCT_TAG_VISIT_2"),
-         @Json(name = "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT") TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT("TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT"),
-         @Json(name = "LEADS") LEADS("LEADS"),
-         @Json(name = "COST_PER_LEAD") COST_PER_LEAD("COST_PER_LEAD"),
-         @Json(name = "QUIZ_COMPLETED") QUIZ_COMPLETED("QUIZ_COMPLETED"),
-         @Json(name = "QUIZ_PIN_RESULT_OPEN") QUIZ_PIN_RESULT_OPEN("QUIZ_PIN_RESULT_OPEN"),
-         @Json(name = "QUIZ_COMPLETION_RATE") QUIZ_COMPLETION_RATE("QUIZ_COMPLETION_RATE"),
-         @Json(name = "SHOWCASE_PIN_CLICKTHROUGH") SHOWCASE_PIN_CLICKTHROUGH("SHOWCASE_PIN_CLICKTHROUGH"),
-         @Json(name = "SHOWCASE_SUBPAGE_CLICKTHROUGH") SHOWCASE_SUBPAGE_CLICKTHROUGH("SHOWCASE_SUBPAGE_CLICKTHROUGH"),
-         @Json(name = "SHOWCASE_SUBPIN_CLICKTHROUGH") SHOWCASE_SUBPIN_CLICKTHROUGH("SHOWCASE_SUBPIN_CLICKTHROUGH"),
-         @Json(name = "SHOWCASE_SUBPAGE_IMPRESSION") SHOWCASE_SUBPAGE_IMPRESSION("SHOWCASE_SUBPAGE_IMPRESSION"),
-         @Json(name = "SHOWCASE_SUBPIN_IMPRESSION") SHOWCASE_SUBPIN_IMPRESSION("SHOWCASE_SUBPIN_IMPRESSION"),
-         @Json(name = "SHOWCASE_SUBPAGE_SWIPE_LEFT") SHOWCASE_SUBPAGE_SWIPE_LEFT("SHOWCASE_SUBPAGE_SWIPE_LEFT"),
-         @Json(name = "SHOWCASE_SUBPAGE_SWIPE_RIGHT") SHOWCASE_SUBPAGE_SWIPE_RIGHT("SHOWCASE_SUBPAGE_SWIPE_RIGHT"),
-         @Json(name = "SHOWCASE_SUBPIN_SWIPE_LEFT") SHOWCASE_SUBPIN_SWIPE_LEFT("SHOWCASE_SUBPIN_SWIPE_LEFT"),
-         @Json(name = "SHOWCASE_SUBPIN_SWIPE_RIGHT") SHOWCASE_SUBPIN_SWIPE_RIGHT("SHOWCASE_SUBPIN_SWIPE_RIGHT"),
-         @Json(name = "SHOWCASE_SUBPAGE_REPIN") SHOWCASE_SUBPAGE_REPIN("SHOWCASE_SUBPAGE_REPIN"),
-         @Json(name = "SHOWCASE_SUBPIN_REPIN") SHOWCASE_SUBPIN_REPIN("SHOWCASE_SUBPIN_REPIN"),
-         @Json(name = "SHOWCASE_SUBPAGE_CLOSEUP") SHOWCASE_SUBPAGE_CLOSEUP("SHOWCASE_SUBPAGE_CLOSEUP"),
-         @Json(name = "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD") SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD("SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD"),
-         @Json(name = "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD") SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD("SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD"),
-         @Json(name = "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION") SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION("SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION"),
-         @Json(name = "TOTAL_CHECKOUT_CONVERSION_RATE") TOTAL_CHECKOUT_CONVERSION_RATE("TOTAL_CHECKOUT_CONVERSION_RATE"),
-         @Json(name = "TOTAL_VIEW_CATEGORY_CONVERSION_RATE") TOTAL_VIEW_CATEGORY_CONVERSION_RATE("TOTAL_VIEW_CATEGORY_CONVERSION_RATE"),
-         @Json(name = "TOTAL_ADD_TO_CART_CONVERSION_RATE") TOTAL_ADD_TO_CART_CONVERSION_RATE("TOTAL_ADD_TO_CART_CONVERSION_RATE"),
-         @Json(name = "TOTAL_SIGNUP_CONVERSION_RATE") TOTAL_SIGNUP_CONVERSION_RATE("TOTAL_SIGNUP_CONVERSION_RATE"),
-         @Json(name = "TOTAL_PAGE_VISIT_CONVERSION_RATE") TOTAL_PAGE_VISIT_CONVERSION_RATE("TOTAL_PAGE_VISIT_CONVERSION_RATE"),
-         @Json(name = "TOTAL_LEAD_CONVERSION_RATE") TOTAL_LEAD_CONVERSION_RATE("TOTAL_LEAD_CONVERSION_RATE"),
-         @Json(name = "TOTAL_SEARCH_CONVERSION_RATE") TOTAL_SEARCH_CONVERSION_RATE("TOTAL_SEARCH_CONVERSION_RATE"),
-         @Json(name = "TOTAL_WATCH_VIDEO_CONVERSION_RATE") TOTAL_WATCH_VIDEO_CONVERSION_RATE("TOTAL_WATCH_VIDEO_CONVERSION_RATE"),
-         @Json(name = "TOTAL_UNKNOWN_CONVERSION_RATE") TOTAL_UNKNOWN_CONVERSION_RATE("TOTAL_UNKNOWN_CONVERSION_RATE"),
-         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * enum for parameter clickWindowDays
      */
-     enum class ClickWindowDaysCampaignsAnalytics(val value: kotlin.Int) {
-         @Json(name = "0") _0(0),
-         @Json(name = "1") _1(1),
-         @Json(name = "7") _7(7),
-         @Json(name = "14") _14(14),
-         @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60);
+     enum class ClickWindowDaysCampaignsAnalytics(val value: java.math.BigDecimal) {
+         @Json(name = ""0"") _0("0"),
+         @Json(name = ""1"") _1("1"),
+         @Json(name = ""7"") _7("7"),
+         @Json(name = ""14"") _14("14"),
+         @Json(name = ""30"") _30("30"),
+         @Json(name = ""60"") _60("60");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -1070,13 +512,13 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * enum for parameter engagementWindowDays
      */
-     enum class EngagementWindowDaysCampaignsAnalytics(val value: kotlin.Int) {
-         @Json(name = "0") _0(0),
-         @Json(name = "1") _1(1),
-         @Json(name = "7") _7(7),
-         @Json(name = "14") _14(14),
-         @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60);
+     enum class EngagementWindowDaysCampaignsAnalytics(val value: java.math.BigDecimal) {
+         @Json(name = ""0"") _0("0"),
+         @Json(name = ""1"") _1("1"),
+         @Json(name = ""7"") _7("7"),
+         @Json(name = ""14"") _14("14"),
+         @Json(name = ""30"") _30("30"),
+         @Json(name = ""60"") _60("60");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -1091,13 +533,13 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * enum for parameter viewWindowDays
      */
-     enum class ViewWindowDaysCampaignsAnalytics(val value: kotlin.Int) {
-         @Json(name = "0") _0(0),
-         @Json(name = "1") _1(1),
-         @Json(name = "7") _7(7),
-         @Json(name = "14") _14(14),
-         @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60);
+     enum class ViewWindowDaysCampaignsAnalytics(val value: java.math.BigDecimal) {
+         @Json(name = ""0"") _0("0"),
+         @Json(name = ""1"") _1("1"),
+         @Json(name = ""7"") _7("7"),
+         @Json(name = ""14"") _14("14"),
+         @Json(name = ""30"") _30("30"),
+         @Json(name = ""60"") _60("60");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -1129,20 +571,20 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /ad_accounts/{ad_account_id}/campaigns/analytics
      * Get campaign analytics
-     * Get analytics for the specified campaigns in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+     * Get analytics for the specified campaigns in the specified &#x60;ad_account_id&#x60;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * @param adAccountId Unique identifier of an ad account.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param campaignIds List of Campaign Ids to use to filter the results.
-     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
-     * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+     * @param granularity   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ClickWindowDays._30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to EngagementWindowDays._30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional, default to EngagementWindowDays._30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ViewWindowDays._1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to ConversionReportTime.TIME_OF_AD_ACTION)
      * @param aggregateReportRows Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users. (optional, default to false)
      * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
-     * @return kotlin.collections.List<CampaignsAnalyticsResponseInner>
+     * @return kotlin.collections.List<CampaignsAnalyticsMetrics>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -1151,11 +593,11 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun campaignsAnalytics(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, campaignIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ColumnsCampaignsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignsAnalytics? = ClickWindowDaysCampaignsAnalytics._30, engagementWindowDays: EngagementWindowDaysCampaignsAnalytics? = EngagementWindowDaysCampaignsAnalytics._30, viewWindowDays: ViewWindowDaysCampaignsAnalytics? = ViewWindowDaysCampaignsAnalytics._1, conversionReportTime: ConversionReportTimeCampaignsAnalytics? = ConversionReportTimeCampaignsAnalytics.TIME_OF_AD_ACTION, aggregateReportRows: kotlin.Boolean? = false, reportingTimezone: ReportingTimeZone? = null) : kotlin.collections.List<CampaignsAnalyticsResponseInner> {
+    fun campaignsAnalytics(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, campaignIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ReportingColumnSync>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignsAnalytics? = java.math.BigDecimal("ClickWindowDays._30"), engagementWindowDays: EngagementWindowDaysCampaignsAnalytics? = java.math.BigDecimal("EngagementWindowDays._30"), viewWindowDays: ViewWindowDaysCampaignsAnalytics? = java.math.BigDecimal("ViewWindowDays._1"), conversionReportTime: ConversionReportTimeCampaignsAnalytics? = ConversionReportTimeCampaignsAnalytics.TIME_OF_AD_ACTION, aggregateReportRows: kotlin.Boolean? = false, reportingTimezone: ReportingTimeZone? = null) : kotlin.collections.List<CampaignsAnalyticsMetrics> {
         val localVarResponse = campaignsAnalyticsWithHttpInfo(adAccountId = adAccountId, startDate = startDate, endDate = endDate, campaignIds = campaignIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, aggregateReportRows = aggregateReportRows, reportingTimezone = reportingTimezone)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<CampaignsAnalyticsResponseInner>
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<CampaignsAnalyticsMetrics>
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1172,29 +614,29 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /ad_accounts/{ad_account_id}/campaigns/analytics
      * Get campaign analytics
-     * Get analytics for the specified campaigns in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+     * Get analytics for the specified campaigns in the specified &#x60;ad_account_id&#x60;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      * @param adAccountId Unique identifier of an ad account.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param campaignIds List of Campaign Ids to use to filter the results.
-     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
-     * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+     * @param granularity   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ClickWindowDays._30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to EngagementWindowDays._30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional, default to EngagementWindowDays._30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ViewWindowDays._1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to ConversionReportTime.TIME_OF_AD_ACTION)
      * @param aggregateReportRows Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users. (optional, default to false)
      * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
-     * @return ApiResponse<kotlin.collections.List<CampaignsAnalyticsResponseInner>?>
+     * @return ApiResponse<kotlin.collections.List<CampaignsAnalyticsMetrics>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun campaignsAnalyticsWithHttpInfo(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, campaignIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ColumnsCampaignsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignsAnalytics?, engagementWindowDays: EngagementWindowDaysCampaignsAnalytics?, viewWindowDays: ViewWindowDaysCampaignsAnalytics?, conversionReportTime: ConversionReportTimeCampaignsAnalytics?, aggregateReportRows: kotlin.Boolean?, reportingTimezone: ReportingTimeZone?) : ApiResponse<kotlin.collections.List<CampaignsAnalyticsResponseInner>?> {
+    fun campaignsAnalyticsWithHttpInfo(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, campaignIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ReportingColumnSync>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignsAnalytics?, engagementWindowDays: EngagementWindowDaysCampaignsAnalytics?, viewWindowDays: ViewWindowDaysCampaignsAnalytics?, conversionReportTime: ConversionReportTimeCampaignsAnalytics?, aggregateReportRows: kotlin.Boolean?, reportingTimezone: ReportingTimeZone?) : ApiResponse<kotlin.collections.List<CampaignsAnalyticsMetrics>?> {
         val localVariableConfig = campaignsAnalyticsRequestConfig(adAccountId = adAccountId, startDate = startDate, endDate = endDate, campaignIds = campaignIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, aggregateReportRows = aggregateReportRows, reportingTimezone = reportingTimezone)
 
-        return request<Unit, kotlin.collections.List<CampaignsAnalyticsResponseInner>>(
+        return request<Unit, kotlin.collections.List<CampaignsAnalyticsMetrics>>(
             localVariableConfig
         )
     }
@@ -1206,22 +648,22 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param campaignIds List of Campaign Ids to use to filter the results.
-     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
-     * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+     * @param granularity   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ClickWindowDays._30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to EngagementWindowDays._30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional, default to EngagementWindowDays._30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ViewWindowDays._1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to ConversionReportTime.TIME_OF_AD_ACTION)
      * @param aggregateReportRows Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users. (optional, default to false)
      * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      * @return RequestConfig
      */
-    fun campaignsAnalyticsRequestConfig(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, campaignIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ColumnsCampaignsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignsAnalytics?, engagementWindowDays: EngagementWindowDaysCampaignsAnalytics?, viewWindowDays: ViewWindowDaysCampaignsAnalytics?, conversionReportTime: ConversionReportTimeCampaignsAnalytics?, aggregateReportRows: kotlin.Boolean?, reportingTimezone: ReportingTimeZone?) : RequestConfig<Unit> {
+    fun campaignsAnalyticsRequestConfig(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, campaignIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ReportingColumnSync>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignsAnalytics?, engagementWindowDays: EngagementWindowDaysCampaignsAnalytics?, viewWindowDays: ViewWindowDaysCampaignsAnalytics?, conversionReportTime: ConversionReportTimeCampaignsAnalytics?, aggregateReportRows: kotlin.Boolean?, reportingTimezone: ReportingTimeZone?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                put("start_date", listOf(parseDateToQueryString(startDate)))
-                put("end_date", listOf(parseDateToQueryString(endDate)))
+                put("start_date", listOf(parseDateToQueryString<java.time.LocalDate>(startDate)))
+                put("end_date", listOf(parseDateToQueryString<java.time.LocalDate>(endDate)))
                 put("campaign_ids", toMultiValue(campaignIds.toList(), "multi"))
                 put("columns", toMultiValue(columns.toList(), "csv"))
                 put("granularity", listOf(granularity.toString()))
@@ -1260,10 +702,10 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * POST /ad_accounts/{ad_account_id}/campaigns
      * Create campaigns
-     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-your-campaign/\&quot;&gt;Set up your campaign&lt;/a&gt;. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt; - The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
+     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads.  For more, see [Set up your campaign](https://help.pinterest.com/en/business/article/set-up-your-campaign/).  **Note:** - The values for &#x60;lifetime_spend_cap&#x60; and &#x60;daily_spend_cap&#x60; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile (e.g. USD).  Microcurrency is used to track very small transactions, based on the currency set in the advertiser&#39;s profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser&#39;s profile.  **Equivalency equations**, using dollars as an example currency:  - $1 &#x3D; 1,000,000 microdollars - 1 microdollar &#x3D; $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000
      * @param adAccountId Unique identifier of an ad account.
-     * @param campaignCreateRequest Array of campaigns.
-     * @return CampaignCreateResponse
+     * @param campaignCreateItem 
+     * @return CampaignBatchWriteResponseModel
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -1272,11 +714,11 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun campaignsCreate(adAccountId: kotlin.String, campaignCreateRequest: kotlin.collections.List<CampaignCreateRequest>) : CampaignCreateResponse {
-        val localVarResponse = campaignsCreateWithHttpInfo(adAccountId = adAccountId, campaignCreateRequest = campaignCreateRequest)
+    fun campaignsCreate(adAccountId: kotlin.String, campaignCreateItem: kotlin.collections.List<CampaignCreateItem>) : CampaignBatchWriteResponseModel {
+        val localVarResponse = campaignsCreateWithHttpInfo(adAccountId = adAccountId, campaignCreateItem = campaignCreateItem)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as CampaignCreateResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as CampaignBatchWriteResponseModel
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1293,19 +735,19 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * POST /ad_accounts/{ad_account_id}/campaigns
      * Create campaigns
-     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-your-campaign/\&quot;&gt;Set up your campaign&lt;/a&gt;. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt; - The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
+     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads.  For more, see [Set up your campaign](https://help.pinterest.com/en/business/article/set-up-your-campaign/).  **Note:** - The values for &#x60;lifetime_spend_cap&#x60; and &#x60;daily_spend_cap&#x60; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile (e.g. USD).  Microcurrency is used to track very small transactions, based on the currency set in the advertiser&#39;s profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser&#39;s profile.  **Equivalency equations**, using dollars as an example currency:  - $1 &#x3D; 1,000,000 microdollars - 1 microdollar &#x3D; $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000
      * @param adAccountId Unique identifier of an ad account.
-     * @param campaignCreateRequest Array of campaigns.
-     * @return ApiResponse<CampaignCreateResponse?>
+     * @param campaignCreateItem 
+     * @return ApiResponse<CampaignBatchWriteResponseModel?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun campaignsCreateWithHttpInfo(adAccountId: kotlin.String, campaignCreateRequest: kotlin.collections.List<CampaignCreateRequest>) : ApiResponse<CampaignCreateResponse?> {
-        val localVariableConfig = campaignsCreateRequestConfig(adAccountId = adAccountId, campaignCreateRequest = campaignCreateRequest)
+    fun campaignsCreateWithHttpInfo(adAccountId: kotlin.String, campaignCreateItem: kotlin.collections.List<CampaignCreateItem>) : ApiResponse<CampaignBatchWriteResponseModel?> {
+        val localVariableConfig = campaignsCreateRequestConfig(adAccountId = adAccountId, campaignCreateItem = campaignCreateItem)
 
-        return request<kotlin.collections.List<CampaignCreateRequest>, CampaignCreateResponse>(
+        return request<kotlin.collections.List<CampaignCreateItem>, CampaignBatchWriteResponseModel>(
             localVariableConfig
         )
     }
@@ -1314,11 +756,11 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * To obtain the request config of the operation campaignsCreate
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param campaignCreateRequest Array of campaigns.
+     * @param campaignCreateItem 
      * @return RequestConfig
      */
-    fun campaignsCreateRequestConfig(adAccountId: kotlin.String, campaignCreateRequest: kotlin.collections.List<CampaignCreateRequest>) : RequestConfig<kotlin.collections.List<CampaignCreateRequest>> {
-        val localVariableBody = campaignCreateRequest
+    fun campaignsCreateRequestConfig(adAccountId: kotlin.String, campaignCreateItem: kotlin.collections.List<CampaignCreateItem>) : RequestConfig<kotlin.collections.List<CampaignCreateItem>> {
+        val localVariableBody = campaignCreateItem
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -1338,9 +780,9 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * GET /ad_accounts/{ad_account_id}/campaigns/{campaign_id}
      * Get campaign
      * Get a specific campaign given the campaign ID.
-     * @param adAccountId Unique identifier of an ad account.
      * @param campaignId Campaign ID, must be associated with the ad account ID provided in the path.
-     * @return CampaignResponse
+     * @param adAccountId Unique identifier of an ad account.
+     * @return Campaign
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -1349,11 +791,11 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun campaignsGet(adAccountId: kotlin.String, campaignId: kotlin.String) : CampaignResponse {
-        val localVarResponse = campaignsGetWithHttpInfo(adAccountId = adAccountId, campaignId = campaignId)
+    fun campaignsGet(campaignId: kotlin.String, adAccountId: kotlin.String) : Campaign {
+        val localVarResponse = campaignsGetWithHttpInfo(campaignId = campaignId, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as CampaignResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as Campaign
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1371,18 +813,18 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * GET /ad_accounts/{ad_account_id}/campaigns/{campaign_id}
      * Get campaign
      * Get a specific campaign given the campaign ID.
-     * @param adAccountId Unique identifier of an ad account.
      * @param campaignId Campaign ID, must be associated with the ad account ID provided in the path.
-     * @return ApiResponse<CampaignResponse?>
+     * @param adAccountId Unique identifier of an ad account.
+     * @return ApiResponse<Campaign?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun campaignsGetWithHttpInfo(adAccountId: kotlin.String, campaignId: kotlin.String) : ApiResponse<CampaignResponse?> {
-        val localVariableConfig = campaignsGetRequestConfig(adAccountId = adAccountId, campaignId = campaignId)
+    fun campaignsGetWithHttpInfo(campaignId: kotlin.String, adAccountId: kotlin.String) : ApiResponse<Campaign?> {
+        val localVariableConfig = campaignsGetRequestConfig(campaignId = campaignId, adAccountId = adAccountId)
 
-        return request<Unit, CampaignResponse>(
+        return request<Unit, Campaign>(
             localVariableConfig
         )
     }
@@ -1390,11 +832,11 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * To obtain the request config of the operation campaignsGet
      *
-     * @param adAccountId Unique identifier of an ad account.
      * @param campaignId Campaign ID, must be associated with the ad account ID provided in the path.
+     * @param adAccountId Unique identifier of an ad account.
      * @return RequestConfig
      */
-    fun campaignsGetRequestConfig(adAccountId: kotlin.String, campaignId: kotlin.String) : RequestConfig<Unit> {
+    fun campaignsGetRequestConfig(campaignId: kotlin.String, adAccountId: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -1402,7 +844,7 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/ad_accounts/{ad_account_id}/campaigns/{campaign_id}".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())).replace("{"+"campaign_id"+"}", encodeURIComponent(campaignId.toString())),
+            path = "/ad_accounts/{ad_account_id}/campaigns/{campaign_id}".replace("{"+"campaign_id"+"}", encodeURIComponent(campaignId.toString())).replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -1411,52 +853,15 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * enum for parameter entityStatuses
-     */
-     enum class EntityStatusesCampaignsList(val value: kotlin.String) {
-         @Json(name = "ACTIVE") ACTIVE("ACTIVE"),
-         @Json(name = "PAUSED") PAUSED("PAUSED"),
-         @Json(name = "ARCHIVED") ARCHIVED("ARCHIVED"),
-         @Json(name = "DRAFT") DRAFT("DRAFT"),
-         @Json(name = "DELETED_DRAFT") DELETED_DRAFT("DELETED_DRAFT");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
-     * enum for parameter order
-     */
-     enum class OrderCampaignsList(val value: kotlin.String) {
-         @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /ad_accounts/{ad_account_id}/campaigns
      * List campaigns
-     * Get a list of the campaigns in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.
+     * Get a list of the campaigns in the specified &#x60;ad_account_id&#x60;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
      * @param adAccountId Unique identifier of an ad account.
-     * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
-     * @param entityStatuses Entity status (optional, default to kotlin.collections.List<EntityStatuses>.arrayListOfLeft_ParenthesisEntityStatusesPeriodACTIVECommaEntityStatusesPeriodPAUSEDRight_Parenthesis)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
+     * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatus.ACTIVE,EntityStatus.PAUSED))
      * @return CampaignsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1466,8 +871,8 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun campaignsList(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>? = null, entityStatuses: kotlin.collections.List<EntityStatusesCampaignsList>? = EntityStatusesCampaignsList.arrayListOfLeft_ParenthesisEntityStatusesPeriodACTIVECommaEntityStatusesPeriodPAUSEDRight_Parenthesis, pageSize: kotlin.Int? = 25, order: OrderCampaignsList? = null, bookmark: kotlin.String? = null) : CampaignsList200Response {
-        val localVarResponse = campaignsListWithHttpInfo(adAccountId = adAccountId, campaignIds = campaignIds, entityStatuses = entityStatuses, pageSize = pageSize, order = order, bookmark = bookmark)
+    fun campaignsList(adAccountId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, order: PinterestLibPaginationOrder? = null, campaignIds: kotlin.collections.List<kotlin.String>? = null, entityStatuses: kotlin.collections.List<EntityStatus>? = arrayListOf(EntityStatus.ACTIVE,EntityStatus.PAUSED)) : CampaignsList200Response {
+        val localVarResponse = campaignsListWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order, campaignIds = campaignIds, entityStatuses = entityStatuses)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as CampaignsList200Response
@@ -1487,21 +892,21 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /ad_accounts/{ad_account_id}/campaigns
      * List campaigns
-     * Get a list of the campaigns in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.
+     * Get a list of the campaigns in the specified &#x60;ad_account_id&#x60;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
      * @param adAccountId Unique identifier of an ad account.
-     * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
-     * @param entityStatuses Entity status (optional, default to kotlin.collections.List<EntityStatuses>.arrayListOfLeft_ParenthesisEntityStatusesPeriodACTIVECommaEntityStatusesPeriodPAUSEDRight_Parenthesis)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
+     * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatus.ACTIVE,EntityStatus.PAUSED))
      * @return ApiResponse<CampaignsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun campaignsListWithHttpInfo(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>?, entityStatuses: kotlin.collections.List<EntityStatusesCampaignsList>?, pageSize: kotlin.Int?, order: OrderCampaignsList?, bookmark: kotlin.String?) : ApiResponse<CampaignsList200Response?> {
-        val localVariableConfig = campaignsListRequestConfig(adAccountId = adAccountId, campaignIds = campaignIds, entityStatuses = entityStatuses, pageSize = pageSize, order = order, bookmark = bookmark)
+    fun campaignsListWithHttpInfo(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?, campaignIds: kotlin.collections.List<kotlin.String>?, entityStatuses: kotlin.collections.List<EntityStatus>?) : ApiResponse<CampaignsList200Response?> {
+        val localVariableConfig = campaignsListRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order, campaignIds = campaignIds, entityStatuses = entityStatuses)
 
         return request<Unit, CampaignsList200Response>(
             localVariableConfig
@@ -1512,31 +917,31 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * To obtain the request config of the operation campaignsList
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
-     * @param entityStatuses Entity status (optional, default to kotlin.collections.List<EntityStatuses>.arrayListOfLeft_ParenthesisEntityStatusesPeriodACTIVECommaEntityStatusesPeriodPAUSEDRight_Parenthesis)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
+     * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatus.ACTIVE,EntityStatus.PAUSED))
      * @return RequestConfig
      */
-    fun campaignsListRequestConfig(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>?, entityStatuses: kotlin.collections.List<EntityStatusesCampaignsList>?, pageSize: kotlin.Int?, order: OrderCampaignsList?, bookmark: kotlin.String?) : RequestConfig<Unit> {
+    fun campaignsListRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?, campaignIds: kotlin.collections.List<kotlin.String>?, entityStatuses: kotlin.collections.List<EntityStatus>?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (campaignIds != null) {
-                    put("campaign_ids", toMultiValue(campaignIds.toList(), "multi"))
-                }
-                if (entityStatuses != null) {
-                    put("entity_statuses", toMultiValue(entityStatuses.toList(), "multi"))
+                if (bookmark != null) {
+                    put("bookmark", listOf(bookmark.toString()))
                 }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
                 }
                 if (order != null) {
-                    put("order", listOf(order.value))
+                    put("order", listOf(order.toString()))
                 }
-                if (bookmark != null) {
-                    put("bookmark", listOf(bookmark.toString()))
+                if (campaignIds != null) {
+                    put("campaign_ids", toMultiValue(campaignIds.toList(), "multi"))
+                }
+                if (entityStatuses != null) {
+                    put("entity_statuses", toMultiValue(entityStatuses.toList(), "multi"))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -1555,10 +960,10 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * PATCH /ad_accounts/{ad_account_id}/campaigns
      * Update campaigns
-     * &lt;p&gt;Update multiple ad campaigns based on campaign_ids. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/p&gt; - &lt;p&gt;The values for &#x60;lifetime_spend_cap&#x60; and &#x60;daily_spend_cap&#x60; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser&#39;s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser&#39;s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
+     * Update multiple ad campaigns based on campaign_ids.  **Note:** - The values for &#x60;lifetime_spend_cap&#x60; and &#x60;daily_spend_cap&#x60; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile (e.g. USD).  Microcurrency is used to track very small transactions, based on the currency set in the advertiser&#39;s profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser&#39;s profile.  **Equivalency equations**, using dollars as an example currency:  - $1 &#x3D; 1,000,000 microdollars - 1 microdollar &#x3D; $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000
      * @param adAccountId Unique identifier of an ad account.
-     * @param campaignUpdateRequest Array of campaigns.
-     * @return CampaignUpdateResponse
+     * @param campaignBatchUpdateItem 
+     * @return CampaignBatchWriteResponseModel
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -1567,11 +972,11 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun campaignsUpdate(adAccountId: kotlin.String, campaignUpdateRequest: kotlin.collections.List<CampaignUpdateRequest>) : CampaignUpdateResponse {
-        val localVarResponse = campaignsUpdateWithHttpInfo(adAccountId = adAccountId, campaignUpdateRequest = campaignUpdateRequest)
+    fun campaignsUpdate(adAccountId: kotlin.String, campaignBatchUpdateItem: kotlin.collections.List<CampaignBatchUpdateItem>) : CampaignBatchWriteResponseModel {
+        val localVarResponse = campaignsUpdateWithHttpInfo(adAccountId = adAccountId, campaignBatchUpdateItem = campaignBatchUpdateItem)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as CampaignUpdateResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as CampaignBatchWriteResponseModel
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1588,19 +993,19 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * PATCH /ad_accounts/{ad_account_id}/campaigns
      * Update campaigns
-     * &lt;p&gt;Update multiple ad campaigns based on campaign_ids. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/p&gt; - &lt;p&gt;The values for &#x60;lifetime_spend_cap&#x60; and &#x60;daily_spend_cap&#x60; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser&#39;s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser&#39;s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
+     * Update multiple ad campaigns based on campaign_ids.  **Note:** - The values for &#x60;lifetime_spend_cap&#x60; and &#x60;daily_spend_cap&#x60; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile (e.g. USD).  Microcurrency is used to track very small transactions, based on the currency set in the advertiser&#39;s profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser&#39;s profile.  **Equivalency equations**, using dollars as an example currency:  - $1 &#x3D; 1,000,000 microdollars - 1 microdollar &#x3D; $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000
      * @param adAccountId Unique identifier of an ad account.
-     * @param campaignUpdateRequest Array of campaigns.
-     * @return ApiResponse<CampaignUpdateResponse?>
+     * @param campaignBatchUpdateItem 
+     * @return ApiResponse<CampaignBatchWriteResponseModel?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun campaignsUpdateWithHttpInfo(adAccountId: kotlin.String, campaignUpdateRequest: kotlin.collections.List<CampaignUpdateRequest>) : ApiResponse<CampaignUpdateResponse?> {
-        val localVariableConfig = campaignsUpdateRequestConfig(adAccountId = adAccountId, campaignUpdateRequest = campaignUpdateRequest)
+    fun campaignsUpdateWithHttpInfo(adAccountId: kotlin.String, campaignBatchUpdateItem: kotlin.collections.List<CampaignBatchUpdateItem>) : ApiResponse<CampaignBatchWriteResponseModel?> {
+        val localVariableConfig = campaignsUpdateRequestConfig(adAccountId = adAccountId, campaignBatchUpdateItem = campaignBatchUpdateItem)
 
-        return request<kotlin.collections.List<CampaignUpdateRequest>, CampaignUpdateResponse>(
+        return request<kotlin.collections.List<CampaignBatchUpdateItem>, CampaignBatchWriteResponseModel>(
             localVariableConfig
         )
     }
@@ -1609,11 +1014,11 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * To obtain the request config of the operation campaignsUpdate
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param campaignUpdateRequest Array of campaigns.
+     * @param campaignBatchUpdateItem 
      * @return RequestConfig
      */
-    fun campaignsUpdateRequestConfig(adAccountId: kotlin.String, campaignUpdateRequest: kotlin.collections.List<CampaignUpdateRequest>) : RequestConfig<kotlin.collections.List<CampaignUpdateRequest>> {
-        val localVariableBody = campaignUpdateRequest
+    fun campaignsUpdateRequestConfig(adAccountId: kotlin.String, campaignBatchUpdateItem: kotlin.collections.List<CampaignBatchUpdateItem>) : RequestConfig<kotlin.collections.List<CampaignBatchUpdateItem>> {
+        val localVariableBody = campaignBatchUpdateItem
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -1622,6 +1027,83 @@ open class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.
         return RequestConfig(
             method = RequestMethod.PATCH,
             path = "/ad_accounts/{ad_account_id}/campaigns".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /ad_accounts/{ad_account_id}/campaigns/delivery_estimates
+     * Get campaign delivery estimates
+     * Get delivery estimates for an ads campaign  **This endpoint is currently in beta and is not available to all apps [Learn more](/docs/new/about-beta-access/).**
+     * @param adAccountId Unique identifier of an ad account.
+     * @param campaignDeliveryEstimatesCampaign 
+     * @return CampaignDeliveryEstimatesResponse
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun getCampaignDeliveryEstimates(adAccountId: kotlin.String, campaignDeliveryEstimatesCampaign: kotlin.collections.List<CampaignDeliveryEstimatesCampaign>) : CampaignDeliveryEstimatesResponse {
+        val localVarResponse = getCampaignDeliveryEstimatesWithHttpInfo(adAccountId = adAccountId, campaignDeliveryEstimatesCampaign = campaignDeliveryEstimatesCampaign)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as CampaignDeliveryEstimatesResponse
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /ad_accounts/{ad_account_id}/campaigns/delivery_estimates
+     * Get campaign delivery estimates
+     * Get delivery estimates for an ads campaign  **This endpoint is currently in beta and is not available to all apps [Learn more](/docs/new/about-beta-access/).**
+     * @param adAccountId Unique identifier of an ad account.
+     * @param campaignDeliveryEstimatesCampaign 
+     * @return ApiResponse<CampaignDeliveryEstimatesResponse?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun getCampaignDeliveryEstimatesWithHttpInfo(adAccountId: kotlin.String, campaignDeliveryEstimatesCampaign: kotlin.collections.List<CampaignDeliveryEstimatesCampaign>) : ApiResponse<CampaignDeliveryEstimatesResponse?> {
+        val localVariableConfig = getCampaignDeliveryEstimatesRequestConfig(adAccountId = adAccountId, campaignDeliveryEstimatesCampaign = campaignDeliveryEstimatesCampaign)
+
+        return request<kotlin.collections.List<CampaignDeliveryEstimatesCampaign>, CampaignDeliveryEstimatesResponse>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getCampaignDeliveryEstimates
+     *
+     * @param adAccountId Unique identifier of an ad account.
+     * @param campaignDeliveryEstimatesCampaign 
+     * @return RequestConfig
+     */
+    fun getCampaignDeliveryEstimatesRequestConfig(adAccountId: kotlin.String, campaignDeliveryEstimatesCampaign: kotlin.collections.List<CampaignDeliveryEstimatesCampaign>) : RequestConfig<kotlin.collections.List<CampaignDeliveryEstimatesCampaign>> {
+        val localVariableBody = campaignDeliveryEstimatesCampaign
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/ad_accounts/{ad_account_id}/campaigns/delivery_estimates".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

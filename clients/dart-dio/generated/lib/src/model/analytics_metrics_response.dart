@@ -88,15 +88,17 @@ class _$AnalyticsMetricsResponseSerializer implements PrimitiveSerializer<Analyt
         case r'daily_metrics':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AnalyticsDailyMetrics)]),
-          ) as BuiltList<AnalyticsDailyMetrics>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(AnalyticsDailyMetrics)]),
+          ) as BuiltList<AnalyticsDailyMetrics>?;
+          if (valueDes == null) continue;
           result.dailyMetrics.replace(valueDes);
           break;
         case r'summary_metrics':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(num)]),
-          ) as BuiltMap<String, num>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(num)]),
+          ) as BuiltMap<String, num>?;
+          if (valueDes == null) continue;
           result.summaryMetrics.replace(valueDes);
           break;
         default:

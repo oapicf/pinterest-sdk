@@ -11,35 +11,32 @@
 part of openapi.api;
 
 /// Keyword match type
-class MatchType {
-  /// Instantiate a new enum with the provided [value].
-  const MatchType._(this.value);
+enum MatchType {
+  BROAD._(r'BROAD'),
+  PHRASE._(r'PHRASE'),
+  EXACT._(r'EXACT'),
+  EXACT_NEGATIVE._(r'EXACT_NEGATIVE'),
+  PHRASE_NEGATIVE._(r'PHRASE_NEGATIVE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const MatchType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const BROAD = MatchType._(r'BROAD');
-  static const PHRASE = MatchType._(r'PHRASE');
-  static const EXACT = MatchType._(r'EXACT');
-  static const EXACT_NEGATIVE = MatchType._(r'EXACT_NEGATIVE');
-  static const PHRASE_NEGATIVE = MatchType._(r'PHRASE_NEGATIVE');
-
-  /// List of all possible values in this [enum][MatchType].
-  static const values = <MatchType>[
-    BROAD,
-    PHRASE,
-    EXACT,
-    EXACT_NEGATIVE,
-    PHRASE_NEGATIVE,
-  ];
-
+  /// Returns the instance of [MatchType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static MatchType? fromJson(dynamic value) => MatchTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [MatchType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<MatchType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <MatchType>[];
     if (json is List && json.isNotEmpty) {
@@ -61,9 +58,11 @@ class MatchTypeTypeTransformer {
 
   const MatchTypeTypeTransformer._();
 
-  String encode(MatchType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(MatchType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a MatchType.
+  /// Returns the instance of [MatchType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -72,6 +71,9 @@ class MatchTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   MatchType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is MatchType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'BROAD': return MatchType.BROAD;
@@ -88,7 +90,7 @@ class MatchTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [MatchTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static MatchTypeTypeTransformer? _instance;
 }
 

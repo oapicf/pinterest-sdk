@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -20,14 +20,13 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Exception   {
   
   private Integer code;
   private String message;
 
   /**
-   * Exception error code.
    */
   public Exception code(Integer code) {
     this.code = code;
@@ -35,7 +34,7 @@ public class Exception   {
   }
 
   
-  @ApiModelProperty(example = "2", value = "Exception error code.")
+  @ApiModelProperty(example = "2", value = "")
   @JsonProperty("code")
   public Integer getCode() {
     return code;
@@ -45,7 +44,6 @@ public class Exception   {
   }
 
   /**
-   * Exception message.
    */
   public Exception message(String message) {
     this.message = message;
@@ -53,7 +51,7 @@ public class Exception   {
   }
 
   
-  @ApiModelProperty(example = "Advertiser not found.", value = "Exception message.")
+  @ApiModelProperty(example = "Advertiser not found.", required = true, value = "")
   @JsonProperty("message")
   public String getMessage() {
     return message;
@@ -97,10 +95,7 @@ public class Exception   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

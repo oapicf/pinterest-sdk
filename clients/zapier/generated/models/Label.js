@@ -1,6 +1,6 @@
 const utils = require('../utils/utils');
-const LabelStatus = require('../models/LabelStatus');
-const LabelType = require('../models/LabelType');
+const NullableLabelStatus = require('../models/NullableLabelStatus');
+const NullableLabelType = require('../models/NullableLabelType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -9,32 +9,21 @@ module.exports = {
             {
                 key: `${keyPrefix}id`,
                 label: `Label ID. - [${labelPrefix}id]`,
+                required: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}label_type`,
-                ...LabelType.fields(`${keyPrefix}label_type`, isInput),
-            },
-            {
-                key: `${keyPrefix}parent_id`,
-                label: `Label parent entity ID. - [${labelPrefix}parent_id]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}parent_type`,
-                label: `Label parent entity type. - [${labelPrefix}parent_type]`,
-                type: 'string',
-                choices: [
-                    'CAMPAIGN',
-                ],
+                ...NullableLabelType.fields(`${keyPrefix}label_type`, isInput),
             },
             {
                 key: `${keyPrefix}status`,
-                ...LabelStatus.fields(`${keyPrefix}status`, isInput),
+                ...NullableLabelStatus.fields(`${keyPrefix}status`, isInput),
             },
             {
                 key: `${keyPrefix}value`,
-                label: `Label name. - [${labelPrefix}value]`,
+                label: `Label name. 100-character limit. - [${labelPrefix}value]`,
+                required: true,
                 type: 'string',
             },
         ]
@@ -44,8 +33,6 @@ module.exports = {
         return {
             'id': bundle.inputData?.[`${keyPrefix}id`],
             'label_type': bundle.inputData?.[`${keyPrefix}label_type`],
-            'parent_id': bundle.inputData?.[`${keyPrefix}parent_id`],
-            'parent_type': bundle.inputData?.[`${keyPrefix}parent_type`],
             'status': bundle.inputData?.[`${keyPrefix}status`],
             'value': bundle.inputData?.[`${keyPrefix}value`],
         }

@@ -53,21 +53,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	CatalogsHotelProductMetadata getMetadata();
 
 	/*! \brief Set 
 	 */
-	void setMetadata(CatalogsHotelProductMetadata  metadata);
+	void setMetadata(CatalogsHotelProductMetadata metadata);
 	/*! \brief Get 
 	 */
 	Pin getPin();
 
 	/*! \brief Set 
 	 */
-	void setPin(Pin  pin);
+	void setPin(Pin pin);
 
 
     private:

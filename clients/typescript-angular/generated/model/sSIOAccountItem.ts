@@ -10,6 +10,9 @@
 import { SSIOAccountAddress } from './sSIOAccountAddress';
 
 
+/**
+ * Salesforce account item with billing and terms information.
+ */
 export interface SSIOAccountItem { 
     /**
      * Address information that is associated with this account.

@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  | [optional] [default to null]
-**items** | [**UserSingleAssetBinding**](UserSingleAssetBinding.md) | List of members with permissions to the asset. | [default to null]
+**items** | [**UserSingleAssetBinding**](UserSingleAssetBinding.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

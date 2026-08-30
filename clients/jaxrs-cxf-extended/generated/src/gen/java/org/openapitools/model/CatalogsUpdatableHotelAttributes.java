@@ -17,7 +17,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsUpdatableHotelAttributes  {
   
-  @ApiModelProperty(value = "")
+ /**
+  * Hotel address
+  */
+  @ApiModelProperty(value = "Hotel address")
   @Valid
   private CatalogsHotelAddress address;
 
@@ -75,7 +78,10 @@ public class CatalogsUpdatableHotelAttributes  {
   @ApiModelProperty(value = "Brief description of the hotel.")
   private String description;
 
-  @ApiModelProperty(value = "")
+ /**
+  * If specified, you must provide all properties
+  */
+  @ApiModelProperty(value = "If specified, you must provide all properties")
   @Valid
   private CatalogsHotelGuestRatings guestRatings;
 
@@ -117,7 +123,7 @@ public class CatalogsUpdatableHotelAttributes  {
   @ApiModelProperty(example = "90 USD", value = "Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.")
   private String salePrice;
  /**
-  * Get address
+  * Hotel address
   * @return address
   */
   @JsonProperty("address")
@@ -357,7 +363,7 @@ public class CatalogsUpdatableHotelAttributes  {
   }
 
  /**
-  * Get guestRatings
+  * If specified, you must provide all properties
   * @return guestRatings
   */
   @JsonProperty("guest_ratings")
@@ -597,10 +603,7 @@ public class CatalogsUpdatableHotelAttributes  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

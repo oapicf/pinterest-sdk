@@ -3,6 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.MediaType;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -64,39 +65,9 @@ public class CatalogsCreativeAssetsFilterValuesMap  {
 
   private List<String> googleProductCategory6 = new ArrayList<>();
 
-public enum MediaTypeEnum {
-
-IMAGE(String.valueOf("IMAGE")), VIDEO(String.valueOf("VIDEO"));
-
-
-    private String value;
-
-    MediaTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static MediaTypeEnum fromValue(String value) {
-        for (MediaTypeEnum b : MediaTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
   @ApiModelProperty(value = "")
 
-  private List<MediaTypeEnum> mediaType = new ArrayList<>();
+  private List<MediaType> mediaType = new ArrayList<>();
  /**
    * Get customLabel0
    * @return customLabel0
@@ -378,20 +349,20 @@ IMAGE(String.valueOf("IMAGE")), VIDEO(String.valueOf("VIDEO"));
    * @return mediaType
   **/
   @JsonProperty("media_type")
-  public List<MediaTypeEnum> getMediaType() {
+  public List<MediaType> getMediaType() {
     return mediaType;
   }
 
-  public void setMediaType(List<MediaTypeEnum> mediaType) {
+  public void setMediaType(List<MediaType> mediaType) {
     this.mediaType = mediaType;
   }
 
-  public CatalogsCreativeAssetsFilterValuesMap mediaType(List<MediaTypeEnum> mediaType) {
+  public CatalogsCreativeAssetsFilterValuesMap mediaType(List<MediaType> mediaType) {
     this.mediaType = mediaType;
     return this;
   }
 
-  public CatalogsCreativeAssetsFilterValuesMap addMediaTypeItem(MediaTypeEnum mediaTypeItem) {
+  public CatalogsCreativeAssetsFilterValuesMap addMediaTypeItem(MediaType mediaTypeItem) {
     this.mediaType.add(mediaTypeItem);
     return this;
   }
@@ -452,10 +423,7 @@ IMAGE(String.valueOf("IMAGE")), VIDEO(String.valueOf("VIDEO"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

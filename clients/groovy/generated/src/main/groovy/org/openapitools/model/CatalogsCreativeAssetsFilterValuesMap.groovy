@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.openapitools.model.MediaType;
 
 @Canonical
 class CatalogsCreativeAssetsFilterValuesMap {
@@ -32,29 +33,6 @@ class CatalogsCreativeAssetsFilterValuesMap {
     List<String> googleProductCategory5 = new ArrayList<>()
     
     List<String> googleProductCategory6 = new ArrayList<>()
-
-    enum MediaTypeEnum {
     
-        IMAGE("IMAGE"),
-        
-        VIDEO("VIDEO")
-    
-        private final String value
-    
-        MediaTypeEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
-    
-    List<MediaTypeEnum> mediaType = new ArrayList<>()
+    List<MediaType> mediaType = new ArrayList<>()
 }

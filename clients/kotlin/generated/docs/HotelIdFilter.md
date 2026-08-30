@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **HOTEL_ID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
+| **HOTEL_ID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |  |
 
 
 

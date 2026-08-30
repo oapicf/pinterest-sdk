@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **CatalogType** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Filters** | Pointer to [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** | Name of catalog product group | [optional] 
 
 ## Methods
 

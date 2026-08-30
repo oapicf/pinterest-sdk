@@ -51,14 +51,14 @@ static gpointer __BusinessAccessAssetsManagerthreadFunc(gpointer data)
 static bool assetGroupCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(CreateAssetGroupResponse, Error, void* )
-	= reinterpret_cast<void(*)(CreateAssetGroupResponse, Error, void* )> (voidHandler);
+	void(* handler)(AssetGroupInput, Error, void* )
+	= reinterpret_cast<void(*)(AssetGroupInput, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	CreateAssetGroupResponse out;
+	AssetGroupInput out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,43 @@ static bool assetGroupCreateProcessor(MemoryStruct_s p_chunk, long code, char* e
 
 
 
-		if (isprimitive("CreateAssetGroupResponse")) {
+		if (isprimitive("AssetGroupInput")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "CreateAssetGroupResponse", "CreateAssetGroupResponse");
+			jsonToValue(&out, pJson, "AssetGroupInput", "AssetGroupInput");
 			json_node_free(pJson);
 
-			if ("CreateAssetGroupResponse" == "std::string") {
+			if ("AssetGroupInput" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -114,8 +139,8 @@ static bool assetGroupCreateProcessor(MemoryStruct_s p_chunk, long code, char* e
 }
 
 static bool assetGroupCreateHelper(char * accessToken,
-	std::string businessId, std::shared_ptr<CreateAssetGroupBody> createAssetGroupBody, 
-	void(* handler)(CreateAssetGroupResponse, Error, void* )
+	std::string businessId, std::shared_ptr<AssetGroupInputCreate> assetGroupInputCreate, 
+	void(* handler)(AssetGroupInput, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -135,11 +160,11 @@ static bool assetGroupCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("CreateAssetGroupBody")) {
-		node = converttoJson(&createAssetGroupBody, "CreateAssetGroupBody", "");
+	if (isprimitive("AssetGroupInputCreate")) {
+		node = converttoJson(&assetGroupInputCreate, "AssetGroupInputCreate", "");
 	}
 	
-	char *jsonStr =  createAssetGroupBody.toJson();
+	char *jsonStr =  assetGroupInputCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -204,36 +229,36 @@ static bool assetGroupCreateHelper(char * accessToken,
 
 
 bool BusinessAccessAssetsManager::assetGroupCreateAsync(char * accessToken,
-	std::string businessId, std::shared_ptr<CreateAssetGroupBody> createAssetGroupBody, 
-	void(* handler)(CreateAssetGroupResponse, Error, void* )
+	std::string businessId, std::shared_ptr<AssetGroupInputCreate> assetGroupInputCreate, 
+	void(* handler)(AssetGroupInput, Error, void* )
 	, void* userData)
 {
 	return assetGroupCreateHelper(accessToken,
-	businessId, createAssetGroupBody, 
+	businessId, assetGroupInputCreate, 
 	handler, userData, true);
 }
 
 bool BusinessAccessAssetsManager::assetGroupCreateSync(char * accessToken,
-	std::string businessId, std::shared_ptr<CreateAssetGroupBody> createAssetGroupBody, 
-	void(* handler)(CreateAssetGroupResponse, Error, void* )
+	std::string businessId, std::shared_ptr<AssetGroupInputCreate> assetGroupInputCreate, 
+	void(* handler)(AssetGroupInput, Error, void* )
 	, void* userData)
 {
 	return assetGroupCreateHelper(accessToken,
-	businessId, createAssetGroupBody, 
+	businessId, assetGroupInputCreate, 
 	handler, userData, false);
 }
 
 static bool assetGroupDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(DeleteAssetGroupResponse, Error, void* )
-	= reinterpret_cast<void(*)(DeleteAssetGroupResponse, Error, void* )> (voidHandler);
+	void(* handler)(AssetGroupDeletion, Error, void* )
+	= reinterpret_cast<void(*)(AssetGroupDeletion, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	DeleteAssetGroupResponse out;
+	AssetGroupDeletion out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -241,23 +266,18 @@ static bool assetGroupDeleteProcessor(MemoryStruct_s p_chunk, long code, char* e
 
 
 
-		if (isprimitive("DeleteAssetGroupResponse")) {
+		if (isprimitive("AssetGroupDeletion")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "DeleteAssetGroupResponse", "DeleteAssetGroupResponse");
+			jsonToValue(&out, pJson, "AssetGroupDeletion", "AssetGroupDeletion");
 			json_node_free(pJson);
 
-			if ("DeleteAssetGroupResponse" == "std::string") {
+			if ("AssetGroupDeletion" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -289,8 +309,8 @@ static bool assetGroupDeleteProcessor(MemoryStruct_s p_chunk, long code, char* e
 }
 
 static bool assetGroupDeleteHelper(char * accessToken,
-	std::string businessId, std::shared_ptr<DeleteAssetGroupBody> deleteAssetGroupBody, 
-	void(* handler)(DeleteAssetGroupResponse, Error, void* )
+	std::string businessId, std::shared_ptr<AssetGroupDeletionDelete> assetGroupDeletionDelete, 
+	void(* handler)(AssetGroupDeletion, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -310,11 +330,11 @@ static bool assetGroupDeleteHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("DeleteAssetGroupBody")) {
-		node = converttoJson(&deleteAssetGroupBody, "DeleteAssetGroupBody", "");
+	if (isprimitive("AssetGroupDeletionDelete")) {
+		node = converttoJson(&assetGroupDeletionDelete, "AssetGroupDeletionDelete", "");
 	}
 	
-	char *jsonStr =  deleteAssetGroupBody.toJson();
+	char *jsonStr =  assetGroupDeletionDelete.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -379,36 +399,36 @@ static bool assetGroupDeleteHelper(char * accessToken,
 
 
 bool BusinessAccessAssetsManager::assetGroupDeleteAsync(char * accessToken,
-	std::string businessId, std::shared_ptr<DeleteAssetGroupBody> deleteAssetGroupBody, 
-	void(* handler)(DeleteAssetGroupResponse, Error, void* )
+	std::string businessId, std::shared_ptr<AssetGroupDeletionDelete> assetGroupDeletionDelete, 
+	void(* handler)(AssetGroupDeletion, Error, void* )
 	, void* userData)
 {
 	return assetGroupDeleteHelper(accessToken,
-	businessId, deleteAssetGroupBody, 
+	businessId, assetGroupDeletionDelete, 
 	handler, userData, true);
 }
 
 bool BusinessAccessAssetsManager::assetGroupDeleteSync(char * accessToken,
-	std::string businessId, std::shared_ptr<DeleteAssetGroupBody> deleteAssetGroupBody, 
-	void(* handler)(DeleteAssetGroupResponse, Error, void* )
+	std::string businessId, std::shared_ptr<AssetGroupDeletionDelete> assetGroupDeletionDelete, 
+	void(* handler)(AssetGroupDeletion, Error, void* )
 	, void* userData)
 {
 	return assetGroupDeleteHelper(accessToken,
-	businessId, deleteAssetGroupBody, 
+	businessId, assetGroupDeletionDelete, 
 	handler, userData, false);
 }
 
 static bool assetGroupUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(UpdateAssetGroupResponse, Error, void* )
-	= reinterpret_cast<void(*)(UpdateAssetGroupResponse, Error, void* )> (voidHandler);
+	void(* handler)(AssetGroupModification, Error, void* )
+	= reinterpret_cast<void(*)(AssetGroupModification, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	UpdateAssetGroupResponse out;
+	AssetGroupModification out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -416,18 +436,38 @@ static bool assetGroupUpdateProcessor(MemoryStruct_s p_chunk, long code, char* e
 
 
 
-		if (isprimitive("UpdateAssetGroupResponse")) {
+		if (isprimitive("AssetGroupModification")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "UpdateAssetGroupResponse", "UpdateAssetGroupResponse");
+			jsonToValue(&out, pJson, "AssetGroupModification", "AssetGroupModification");
 			json_node_free(pJson);
 
-			if ("UpdateAssetGroupResponse" == "std::string") {
+			if ("AssetGroupModification" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -464,8 +504,8 @@ static bool assetGroupUpdateProcessor(MemoryStruct_s p_chunk, long code, char* e
 }
 
 static bool assetGroupUpdateHelper(char * accessToken,
-	std::string businessId, std::shared_ptr<UpdateAssetGroupBody> updateAssetGroupBody, 
-	void(* handler)(UpdateAssetGroupResponse, Error, void* )
+	std::string businessId, std::shared_ptr<AssetGroupModificationReadOrUpdate> assetGroupModificationReadOrUpdate, 
+	void(* handler)(AssetGroupModification, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -485,11 +525,11 @@ static bool assetGroupUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("UpdateAssetGroupBody")) {
-		node = converttoJson(&updateAssetGroupBody, "UpdateAssetGroupBody", "");
+	if (isprimitive("AssetGroupModificationReadOrUpdate")) {
+		node = converttoJson(&assetGroupModificationReadOrUpdate, "AssetGroupModificationReadOrUpdate", "");
 	}
 	
-	char *jsonStr =  updateAssetGroupBody.toJson();
+	char *jsonStr =  assetGroupModificationReadOrUpdate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -554,22 +594,22 @@ static bool assetGroupUpdateHelper(char * accessToken,
 
 
 bool BusinessAccessAssetsManager::assetGroupUpdateAsync(char * accessToken,
-	std::string businessId, std::shared_ptr<UpdateAssetGroupBody> updateAssetGroupBody, 
-	void(* handler)(UpdateAssetGroupResponse, Error, void* )
+	std::string businessId, std::shared_ptr<AssetGroupModificationReadOrUpdate> assetGroupModificationReadOrUpdate, 
+	void(* handler)(AssetGroupModification, Error, void* )
 	, void* userData)
 {
 	return assetGroupUpdateHelper(accessToken,
-	businessId, updateAssetGroupBody, 
+	businessId, assetGroupModificationReadOrUpdate, 
 	handler, userData, true);
 }
 
 bool BusinessAccessAssetsManager::assetGroupUpdateSync(char * accessToken,
-	std::string businessId, std::shared_ptr<UpdateAssetGroupBody> updateAssetGroupBody, 
-	void(* handler)(UpdateAssetGroupResponse, Error, void* )
+	std::string businessId, std::shared_ptr<AssetGroupModificationReadOrUpdate> assetGroupModificationReadOrUpdate, 
+	void(* handler)(AssetGroupModification, Error, void* )
 	, void* userData)
 {
 	return assetGroupUpdateHelper(accessToken,
-	businessId, updateAssetGroupBody, 
+	businessId, assetGroupModificationReadOrUpdate, 
 	handler, userData, false);
 }
 
@@ -614,6 +654,31 @@ static bool businessAssetMembersGetProcessor(MemoryStruct_s p_chunk, long code, 
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -634,7 +699,7 @@ static bool businessAssetMembersGetProcessor(MemoryStruct_s p_chunk, long code, 
 }
 
 static bool businessAssetMembersGetHelper(char * accessToken,
-	std::string businessId, std::string assetId, bool fetchSystemUsers, std::string bookmark, int pageSize, int startIndex, 
+	std::string businessId, std::string assetId, int startIndex, bool fetchSystemUsers, std::string bookmark, int pageSize, 
 	void(* handler)(Business_asset_members_get_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -651,6 +716,13 @@ static bool businessAssetMembersGetHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&startIndex, "int");
+	queryParams.insert(pair<string, string>("start_index", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("start_index");
+	}
+
 
 	itemAtq = stringify(&fetchSystemUsers, "bool");
 	queryParams.insert(pair<string, string>("fetch_system_users", itemAtq));
@@ -670,13 +742,6 @@ static bool businessAssetMembersGetHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&startIndex, "int");
-	queryParams.insert(pair<string, string>("start_index", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("start_index");
 	}
 
 	string mBody = "";
@@ -745,36 +810,36 @@ static bool businessAssetMembersGetHelper(char * accessToken,
 
 
 bool BusinessAccessAssetsManager::businessAssetMembersGetAsync(char * accessToken,
-	std::string businessId, std::string assetId, bool fetchSystemUsers, std::string bookmark, int pageSize, int startIndex, 
+	std::string businessId, std::string assetId, int startIndex, bool fetchSystemUsers, std::string bookmark, int pageSize, 
 	void(* handler)(Business_asset_members_get_200_response, Error, void* )
 	, void* userData)
 {
 	return businessAssetMembersGetHelper(accessToken,
-	businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex, 
+	businessId, assetId, startIndex, fetchSystemUsers, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool BusinessAccessAssetsManager::businessAssetMembersGetSync(char * accessToken,
-	std::string businessId, std::string assetId, bool fetchSystemUsers, std::string bookmark, int pageSize, int startIndex, 
+	std::string businessId, std::string assetId, int startIndex, bool fetchSystemUsers, std::string bookmark, int pageSize, 
 	void(* handler)(Business_asset_members_get_200_response, Error, void* )
 	, void* userData)
 {
 	return businessAssetMembersGetHelper(accessToken,
-	businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex, 
+	businessId, assetId, startIndex, fetchSystemUsers, bookmark, pageSize, 
 	handler, userData, false);
 }
 
 static bool businessAssetPartnersGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Business_asset_partners_get_200_response, Error, void* )
-	= reinterpret_cast<void(*)(Business_asset_partners_get_200_response, Error, void* )> (voidHandler);
+	void(* handler)(Business_asset_members_get_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Business_asset_members_get_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Business_asset_partners_get_200_response out;
+	Business_asset_members_get_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -782,18 +847,43 @@ static bool businessAssetPartnersGetProcessor(MemoryStruct_s p_chunk, long code,
 
 
 
-		if (isprimitive("Business_asset_partners_get_200_response")) {
+		if (isprimitive("Business_asset_members_get_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Business_asset_partners_get_200_response", "Business_asset_partners_get_200_response");
+			jsonToValue(&out, pJson, "Business_asset_members_get_200_response", "Business_asset_members_get_200_response");
 			json_node_free(pJson);
 
-			if ("Business_asset_partners_get_200_response" == "std::string") {
+			if ("Business_asset_members_get_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -826,7 +916,7 @@ static bool businessAssetPartnersGetProcessor(MemoryStruct_s p_chunk, long code,
 
 static bool businessAssetPartnersGetHelper(char * accessToken,
 	std::string businessId, std::string assetId, int startIndex, std::string bookmark, int pageSize, 
-	void(* handler)(Business_asset_partners_get_200_response, Error, void* )
+	void(* handler)(Business_asset_members_get_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -930,7 +1020,7 @@ static bool businessAssetPartnersGetHelper(char * accessToken,
 
 bool BusinessAccessAssetsManager::businessAssetPartnersGetAsync(char * accessToken,
 	std::string businessId, std::string assetId, int startIndex, std::string bookmark, int pageSize, 
-	void(* handler)(Business_asset_partners_get_200_response, Error, void* )
+	void(* handler)(Business_asset_members_get_200_response, Error, void* )
 	, void* userData)
 {
 	return businessAssetPartnersGetHelper(accessToken,
@@ -940,7 +1030,7 @@ bool BusinessAccessAssetsManager::businessAssetPartnersGetAsync(char * accessTok
 
 bool BusinessAccessAssetsManager::businessAssetPartnersGetSync(char * accessToken,
 	std::string businessId, std::string assetId, int startIndex, std::string bookmark, int pageSize, 
-	void(* handler)(Business_asset_partners_get_200_response, Error, void* )
+	void(* handler)(Business_asset_members_get_200_response, Error, void* )
 	, void* userData)
 {
 	return businessAssetPartnersGetHelper(accessToken,
@@ -978,6 +1068,31 @@ static bool businessAssetsGetProcessor(MemoryStruct_s p_chunk, long code, char* 
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1159,14 +1274,14 @@ bool BusinessAccessAssetsManager::businessAssetsGetSync(char * accessToken,
 static bool businessMemberAssetsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Business_member_assets_get_200_response, Error, void* )
-	= reinterpret_cast<void(*)(Business_member_assets_get_200_response, Error, void* )> (voidHandler);
+	void(* handler)(BusinessMemberAssetsGetResponse, Error, void* )
+	= reinterpret_cast<void(*)(BusinessMemberAssetsGetResponse, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Business_member_assets_get_200_response out;
+	BusinessMemberAssetsGetResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1174,18 +1289,43 @@ static bool businessMemberAssetsGetProcessor(MemoryStruct_s p_chunk, long code, 
 
 
 
-		if (isprimitive("Business_member_assets_get_200_response")) {
+		if (isprimitive("BusinessMemberAssetsGetResponse")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Business_member_assets_get_200_response", "Business_member_assets_get_200_response");
+			jsonToValue(&out, pJson, "BusinessMemberAssetsGetResponse", "BusinessMemberAssetsGetResponse");
 			json_node_free(pJson);
 
-			if ("Business_member_assets_get_200_response" == "std::string") {
+			if ("BusinessMemberAssetsGetResponse" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1217,8 +1357,8 @@ static bool businessMemberAssetsGetProcessor(MemoryStruct_s p_chunk, long code, 
 }
 
 static bool businessMemberAssetsGetHelper(char * accessToken,
-	std::string businessId, std::string memberId, std::string assetType, int startIndex, std::string bookmark, int pageSize, 
-	void(* handler)(Business_member_assets_get_200_response, Error, void* )
+	std::string businessId, std::string memberId, std::string assetType, int startIndex, AssetSortBy sortBy, bool sortAscending, AssetSearchBy searchBy, std::string searchValue, AssetPermissionType assetPermissionType, std::list<NonDraftEntityStatus> adAccountStatuses, std::string bookmark, int pageSize, 
+	void(* handler)(BusinessMemberAssetsGetResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1248,6 +1388,50 @@ static bool businessMemberAssetsGetHelper(char * accessToken,
 		queryParams.erase("start_index");
 	}
 
+
+	itemAtq = stringify(&sortBy, "AssetSortBy");
+	queryParams.insert(pair<string, string>("sort_by", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("sort_by");
+	}
+
+
+	itemAtq = stringify(&sortAscending, "bool");
+	queryParams.insert(pair<string, string>("sort_ascending", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("sort_ascending");
+	}
+
+
+	itemAtq = stringify(&searchBy, "AssetSearchBy");
+	queryParams.insert(pair<string, string>("search_by", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("search_by");
+	}
+
+
+	itemAtq = stringify(&searchValue, "std::string");
+	queryParams.insert(pair<string, string>("search_value", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("search_value");
+	}
+
+
+	itemAtq = stringify(&assetPermissionType, "AssetPermissionType");
+	queryParams.insert(pair<string, string>("asset_permission_type", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("asset_permission_type");
+	}
+
+	for (std::list
+	<NonDraftEntityStatus>::iterator queryIter = adAccountStatuses.begin(); queryIter != adAccountStatuses.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "NonDraftEntityStatus");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("adAccountStatuses", itemAt));
+	}
+	
 
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
@@ -1328,22 +1512,22 @@ static bool businessMemberAssetsGetHelper(char * accessToken,
 
 
 bool BusinessAccessAssetsManager::businessMemberAssetsGetAsync(char * accessToken,
-	std::string businessId, std::string memberId, std::string assetType, int startIndex, std::string bookmark, int pageSize, 
-	void(* handler)(Business_member_assets_get_200_response, Error, void* )
+	std::string businessId, std::string memberId, std::string assetType, int startIndex, AssetSortBy sortBy, bool sortAscending, AssetSearchBy searchBy, std::string searchValue, AssetPermissionType assetPermissionType, std::list<NonDraftEntityStatus> adAccountStatuses, std::string bookmark, int pageSize, 
+	void(* handler)(BusinessMemberAssetsGetResponse, Error, void* )
 	, void* userData)
 {
 	return businessMemberAssetsGetHelper(accessToken,
-	businessId, memberId, assetType, startIndex, bookmark, pageSize, 
+	businessId, memberId, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, assetPermissionType, adAccountStatuses, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool BusinessAccessAssetsManager::businessMemberAssetsGetSync(char * accessToken,
-	std::string businessId, std::string memberId, std::string assetType, int startIndex, std::string bookmark, int pageSize, 
-	void(* handler)(Business_member_assets_get_200_response, Error, void* )
+	std::string businessId, std::string memberId, std::string assetType, int startIndex, AssetSortBy sortBy, bool sortAscending, AssetSearchBy searchBy, std::string searchValue, AssetPermissionType assetPermissionType, std::list<NonDraftEntityStatus> adAccountStatuses, std::string bookmark, int pageSize, 
+	void(* handler)(BusinessMemberAssetsGetResponse, Error, void* )
 	, void* userData)
 {
 	return businessMemberAssetsGetHelper(accessToken,
-	businessId, memberId, assetType, startIndex, bookmark, pageSize, 
+	businessId, memberId, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, assetPermissionType, adAccountStatuses, bookmark, pageSize, 
 	handler, userData, false);
 }
 
@@ -1408,7 +1592,7 @@ static bool businessMembersAssetAccessDeleteProcessor(MemoryStruct_s p_chunk, lo
 }
 
 static bool businessMembersAssetAccessDeleteHelper(char * accessToken,
-	std::string businessId, std::shared_ptr<Business_members_asset_access_delete_request> businessMembersAssetAccessDeleteRequest, 
+	std::string businessId, std::shared_ptr<BusinessMembersAssetAccessDeleteBody> businessMembersAssetAccessDeleteBody, 
 	void(* handler)(DeleteMemberAccessResultsResponseArray, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1429,11 +1613,11 @@ static bool businessMembersAssetAccessDeleteHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("Business_members_asset_access_delete_request")) {
-		node = converttoJson(&businessMembersAssetAccessDeleteRequest, "Business_members_asset_access_delete_request", "");
+	if (isprimitive("BusinessMembersAssetAccessDeleteBody")) {
+		node = converttoJson(&businessMembersAssetAccessDeleteBody, "BusinessMembersAssetAccessDeleteBody", "");
 	}
 	
-	char *jsonStr =  businessMembersAssetAccessDeleteRequest.toJson();
+	char *jsonStr =  businessMembersAssetAccessDeleteBody.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -1498,22 +1682,22 @@ static bool businessMembersAssetAccessDeleteHelper(char * accessToken,
 
 
 bool BusinessAccessAssetsManager::businessMembersAssetAccessDeleteAsync(char * accessToken,
-	std::string businessId, std::shared_ptr<Business_members_asset_access_delete_request> businessMembersAssetAccessDeleteRequest, 
+	std::string businessId, std::shared_ptr<BusinessMembersAssetAccessDeleteBody> businessMembersAssetAccessDeleteBody, 
 	void(* handler)(DeleteMemberAccessResultsResponseArray, Error, void* )
 	, void* userData)
 {
 	return businessMembersAssetAccessDeleteHelper(accessToken,
-	businessId, businessMembersAssetAccessDeleteRequest, 
+	businessId, businessMembersAssetAccessDeleteBody, 
 	handler, userData, true);
 }
 
 bool BusinessAccessAssetsManager::businessMembersAssetAccessDeleteSync(char * accessToken,
-	std::string businessId, std::shared_ptr<Business_members_asset_access_delete_request> businessMembersAssetAccessDeleteRequest, 
+	std::string businessId, std::shared_ptr<BusinessMembersAssetAccessDeleteBody> businessMembersAssetAccessDeleteBody, 
 	void(* handler)(DeleteMemberAccessResultsResponseArray, Error, void* )
 	, void* userData)
 {
 	return businessMembersAssetAccessDeleteHelper(accessToken,
-	businessId, businessMembersAssetAccessDeleteRequest, 
+	businessId, businessMembersAssetAccessDeleteBody, 
 	handler, userData, false);
 }
 
@@ -1547,6 +1731,31 @@ static bool businessMembersAssetAccessUpdateProcessor(MemoryStruct_s p_chunk, lo
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1728,6 +1937,31 @@ static bool businessPartnerAssetAccessGetProcessor(MemoryStruct_s p_chunk, long 
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1748,7 +1982,7 @@ static bool businessPartnerAssetAccessGetProcessor(MemoryStruct_s p_chunk, long 
 }
 
 static bool businessPartnerAssetAccessGetHelper(char * accessToken,
-	std::string businessId, std::string partnerId, PartnerType partnerType, std::string assetType, int startIndex, int pageSize, std::string bookmark, 
+	std::string businessId, std::string partnerId, std::string partnerType, std::string assetType, int startIndex, AssetSortBy sortBy, bool sortAscending, AssetSearchBy searchBy, std::string searchValue, std::string bookmark, int pageSize, 
 	void(* handler)(Business_partner_asset_access_get_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1766,7 +2000,7 @@ static bool businessPartnerAssetAccessGetHelper(char * accessToken,
 	string itemAtq;
 	
 
-	itemAtq = stringify(&partnerType, "PartnerType");
+	itemAtq = stringify(&partnerType, "std::string");
 	queryParams.insert(pair<string, string>("partner_type", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("partner_type");
@@ -1787,10 +2021,31 @@ static bool businessPartnerAssetAccessGetHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	itemAtq = stringify(&sortBy, "AssetSortBy");
+	queryParams.insert(pair<string, string>("sort_by", itemAtq));
 	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
+		queryParams.erase("sort_by");
+	}
+
+
+	itemAtq = stringify(&sortAscending, "bool");
+	queryParams.insert(pair<string, string>("sort_ascending", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("sort_ascending");
+	}
+
+
+	itemAtq = stringify(&searchBy, "AssetSearchBy");
+	queryParams.insert(pair<string, string>("search_by", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("search_by");
+	}
+
+
+	itemAtq = stringify(&searchValue, "std::string");
+	queryParams.insert(pair<string, string>("search_value", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("search_value");
 	}
 
 
@@ -1798,6 +2053,13 @@ static bool businessPartnerAssetAccessGetHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
 	}
 
 	string mBody = "";
@@ -1866,36 +2128,36 @@ static bool businessPartnerAssetAccessGetHelper(char * accessToken,
 
 
 bool BusinessAccessAssetsManager::businessPartnerAssetAccessGetAsync(char * accessToken,
-	std::string businessId, std::string partnerId, PartnerType partnerType, std::string assetType, int startIndex, int pageSize, std::string bookmark, 
+	std::string businessId, std::string partnerId, std::string partnerType, std::string assetType, int startIndex, AssetSortBy sortBy, bool sortAscending, AssetSearchBy searchBy, std::string searchValue, std::string bookmark, int pageSize, 
 	void(* handler)(Business_partner_asset_access_get_200_response, Error, void* )
 	, void* userData)
 {
 	return businessPartnerAssetAccessGetHelper(accessToken,
-	businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark, 
+	businessId, partnerId, partnerType, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool BusinessAccessAssetsManager::businessPartnerAssetAccessGetSync(char * accessToken,
-	std::string businessId, std::string partnerId, PartnerType partnerType, std::string assetType, int startIndex, int pageSize, std::string bookmark, 
+	std::string businessId, std::string partnerId, std::string partnerType, std::string assetType, int startIndex, AssetSortBy sortBy, bool sortAscending, AssetSearchBy searchBy, std::string searchValue, std::string bookmark, int pageSize, 
 	void(* handler)(Business_partner_asset_access_get_200_response, Error, void* )
 	, void* userData)
 {
 	return businessPartnerAssetAccessGetHelper(accessToken,
-	businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark, 
+	businessId, partnerId, partnerType, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, bookmark, pageSize, 
 	handler, userData, false);
 }
 
 static bool deletePartnerAssetAccessHandlerImplProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(DeletePartnerAssetsResultsResponseArray, Error, void* )
-	= reinterpret_cast<void(*)(DeletePartnerAssetsResultsResponseArray, Error, void* )> (voidHandler);
+	void(* handler)(DeletePartnerAssetAccessResultsResponseArray, Error, void* )
+	= reinterpret_cast<void(*)(DeletePartnerAssetAccessResultsResponseArray, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	DeletePartnerAssetsResultsResponseArray out;
+	DeletePartnerAssetAccessResultsResponseArray out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1903,12 +2165,12 @@ static bool deletePartnerAssetAccessHandlerImplProcessor(MemoryStruct_s p_chunk,
 
 
 
-		if (isprimitive("DeletePartnerAssetsResultsResponseArray")) {
+		if (isprimitive("DeletePartnerAssetAccessResultsResponseArray")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "DeletePartnerAssetsResultsResponseArray", "DeletePartnerAssetsResultsResponseArray");
+			jsonToValue(&out, pJson, "DeletePartnerAssetAccessResultsResponseArray", "DeletePartnerAssetAccessResultsResponseArray");
 			json_node_free(pJson);
 
-			if ("DeletePartnerAssetsResultsResponseArray" == "std::string") {
+			if ("DeletePartnerAssetAccessResultsResponseArray" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -1947,7 +2209,7 @@ static bool deletePartnerAssetAccessHandlerImplProcessor(MemoryStruct_s p_chunk,
 
 static bool deletePartnerAssetAccessHandlerImplHelper(char * accessToken,
 	std::string businessId, std::shared_ptr<DeletePartnerAssetAccessBody> deletePartnerAssetAccessBody, 
-	void(* handler)(DeletePartnerAssetsResultsResponseArray, Error, void* )
+	void(* handler)(DeletePartnerAssetAccessResultsResponseArray, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -2037,7 +2299,7 @@ static bool deletePartnerAssetAccessHandlerImplHelper(char * accessToken,
 
 bool BusinessAccessAssetsManager::deletePartnerAssetAccessHandlerImplAsync(char * accessToken,
 	std::string businessId, std::shared_ptr<DeletePartnerAssetAccessBody> deletePartnerAssetAccessBody, 
-	void(* handler)(DeletePartnerAssetsResultsResponseArray, Error, void* )
+	void(* handler)(DeletePartnerAssetAccessResultsResponseArray, Error, void* )
 	, void* userData)
 {
 	return deletePartnerAssetAccessHandlerImplHelper(accessToken,
@@ -2047,7 +2309,7 @@ bool BusinessAccessAssetsManager::deletePartnerAssetAccessHandlerImplAsync(char 
 
 bool BusinessAccessAssetsManager::deletePartnerAssetAccessHandlerImplSync(char * accessToken,
 	std::string businessId, std::shared_ptr<DeletePartnerAssetAccessBody> deletePartnerAssetAccessBody, 
-	void(* handler)(DeletePartnerAssetsResultsResponseArray, Error, void* )
+	void(* handler)(DeletePartnerAssetAccessResultsResponseArray, Error, void* )
 	, void* userData)
 {
 	return deletePartnerAssetAccessHandlerImplHelper(accessToken,
@@ -2085,6 +2347,31 @@ static bool updatePartnerAssetAccessHandlerImplProcessor(MemoryStruct_s p_chunk,
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();

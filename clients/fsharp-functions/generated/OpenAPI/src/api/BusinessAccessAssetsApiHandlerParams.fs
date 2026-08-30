@@ -1,23 +1,25 @@
 namespace OpenAPI
 
+open OpenAPI.Model.AssetGroupDeletion
+open OpenAPI.Model.AssetGroupDeletionDelete
+open OpenAPI.Model.AssetGroupInput
+open OpenAPI.Model.AssetGroupInputCreate
+open OpenAPI.Model.AssetGroupModification
+open OpenAPI.Model.AssetGroupModificationReadOrUpdate
+open OpenAPI.Model.AssetPermissionType
+open OpenAPI.Model.AssetSearchBy
+open OpenAPI.Model.AssetSortBy
 open OpenAPI.Model.BusinessAssetMembersGet200Response
-open OpenAPI.Model.BusinessAssetPartnersGet200Response
 open OpenAPI.Model.BusinessAssetsGet200Response
-open OpenAPI.Model.BusinessMemberAssetsGet200Response
-open OpenAPI.Model.BusinessMembersAssetAccessDeleteRequest
+open OpenAPI.Model.BusinessMemberAssetsGetResponse
+open OpenAPI.Model.BusinessMembersAssetAccessDeleteBody
 open OpenAPI.Model.BusinessPartnerAssetAccessGet200Response
-open OpenAPI.Model.CreateAssetGroupBody
-open OpenAPI.Model.CreateAssetGroupResponse
-open OpenAPI.Model.DeleteAssetGroupBody
-open OpenAPI.Model.DeleteAssetGroupResponse
 open OpenAPI.Model.DeleteMemberAccessResultsResponseArray
 open OpenAPI.Model.DeletePartnerAssetAccessBody
-open OpenAPI.Model.DeletePartnerAssetsResultsResponseArray
-open OpenAPI.Model.Error
-open OpenAPI.Model.PartnerType
+open OpenAPI.Model.DeletePartnerAssetAccessResultsResponseArray
+open OpenAPI.Model.NonDraftEntityStatus
 open OpenAPI.Model.PermissionsWithOwner
-open OpenAPI.Model.UpdateAssetGroupBody
-open OpenAPI.Model.UpdateAssetGroupResponse
+open OpenAPI.Model.PinterestLibError
 open OpenAPI.Model.UpdateMemberAssetAccessBody
 open OpenAPI.Model.UpdateMemberAssetsResultsResponseArray
 open OpenAPI.Model.UpdatePartnerAssetAccessBody
@@ -36,25 +38,50 @@ module BusinessAccessAssetsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type AssetGroupCreateBodyParams = CreateAssetGroupBody
+    type AssetGroupCreateBodyParams = AssetGroupInputCreate
     //#endregion
 
 
     type AssetGroupCreateStatusCode200Response = {
-      content:CreateAssetGroupResponse;
+      content:AssetGroupInput;
+      
+    }
+
+    type AssetGroupCreateStatusCode201Response = {
+      content:AssetGroupInput;
       
     }
 
     type AssetGroupCreateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AssetGroupCreateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AssetGroupCreateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AssetGroupCreateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AssetGroupCreateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AssetGroupCreateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AssetGroupCreateResult = AssetGroupCreateStatusCode200 of AssetGroupCreateStatusCode200Response|AssetGroupCreateStatusCode400 of AssetGroupCreateStatusCode400Response|AssetGroupCreateDefaultStatusCode of AssetGroupCreateDefaultStatusCodeResponse
+    type AssetGroupCreateResult = AssetGroupCreateStatusCode200 of AssetGroupCreateStatusCode200Response|AssetGroupCreateStatusCode201 of AssetGroupCreateStatusCode201Response|AssetGroupCreateStatusCode400 of AssetGroupCreateStatusCode400Response|AssetGroupCreateStatusCode401 of AssetGroupCreateStatusCode401Response|AssetGroupCreateStatusCode403 of AssetGroupCreateStatusCode403Response|AssetGroupCreateStatusCode404 of AssetGroupCreateStatusCode404Response|AssetGroupCreateStatusCode429 of AssetGroupCreateStatusCode429Response|AssetGroupCreateDefaultStatusCode of AssetGroupCreateDefaultStatusCodeResponse
 
     type AssetGroupCreateArgs = {
       pathParams:AssetGroupCreatePathParams;
@@ -69,25 +96,20 @@ module BusinessAccessAssetsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type AssetGroupDeleteBodyParams = DeleteAssetGroupBody
+    type AssetGroupDeleteBodyParams = AssetGroupDeletionDelete
     //#endregion
 
 
     type AssetGroupDeleteStatusCode200Response = {
-      content:DeleteAssetGroupResponse;
-      
-    }
-
-    type AssetGroupDeleteStatusCode400Response = {
-      content:Error;
+      content:AssetGroupDeletion;
       
     }
 
     type AssetGroupDeleteDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AssetGroupDeleteResult = AssetGroupDeleteStatusCode200 of AssetGroupDeleteStatusCode200Response|AssetGroupDeleteStatusCode400 of AssetGroupDeleteStatusCode400Response|AssetGroupDeleteDefaultStatusCode of AssetGroupDeleteDefaultStatusCodeResponse
+    type AssetGroupDeleteResult = AssetGroupDeleteStatusCode200 of AssetGroupDeleteStatusCode200Response|AssetGroupDeleteDefaultStatusCode of AssetGroupDeleteDefaultStatusCodeResponse
 
     type AssetGroupDeleteArgs = {
       pathParams:AssetGroupDeletePathParams;
@@ -102,25 +124,45 @@ module BusinessAccessAssetsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type AssetGroupUpdateBodyParams = UpdateAssetGroupBody
+    type AssetGroupUpdateBodyParams = AssetGroupModificationReadOrUpdate
     //#endregion
 
 
     type AssetGroupUpdateStatusCode200Response = {
-      content:UpdateAssetGroupResponse;
+      content:AssetGroupModification;
       
     }
 
     type AssetGroupUpdateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AssetGroupUpdateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AssetGroupUpdateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AssetGroupUpdateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AssetGroupUpdateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AssetGroupUpdateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AssetGroupUpdateResult = AssetGroupUpdateStatusCode200 of AssetGroupUpdateStatusCode200Response|AssetGroupUpdateStatusCode400 of AssetGroupUpdateStatusCode400Response|AssetGroupUpdateDefaultStatusCode of AssetGroupUpdateDefaultStatusCodeResponse
+    type AssetGroupUpdateResult = AssetGroupUpdateStatusCode200 of AssetGroupUpdateStatusCode200Response|AssetGroupUpdateStatusCode400 of AssetGroupUpdateStatusCode400Response|AssetGroupUpdateStatusCode401 of AssetGroupUpdateStatusCode401Response|AssetGroupUpdateStatusCode403 of AssetGroupUpdateStatusCode403Response|AssetGroupUpdateStatusCode404 of AssetGroupUpdateStatusCode404Response|AssetGroupUpdateStatusCode429 of AssetGroupUpdateStatusCode429Response|AssetGroupUpdateDefaultStatusCode of AssetGroupUpdateDefaultStatusCodeResponse
 
     type AssetGroupUpdateArgs = {
       pathParams:AssetGroupUpdatePathParams;
@@ -138,6 +180,9 @@ module BusinessAccessAssetsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type BusinessAssetMembersGetQueryParams = {
+      startIndex : int option;
+
+
       fetchSystemUsers : bool option;
 
 
@@ -145,9 +190,6 @@ module BusinessAccessAssetsApiHandlerParams =
 
 
       pageSize : int option;
-
-
-      startIndex : int option;
 
     }
     //#endregion
@@ -158,11 +200,36 @@ module BusinessAccessAssetsApiHandlerParams =
       
     }
 
-    type BusinessAssetMembersGetDefaultStatusCodeResponse = {
-      content:Error;
+    type BusinessAssetMembersGetStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type BusinessAssetMembersGetResult = BusinessAssetMembersGetStatusCode200 of BusinessAssetMembersGetStatusCode200Response|BusinessAssetMembersGetDefaultStatusCode of BusinessAssetMembersGetDefaultStatusCodeResponse
+
+    type BusinessAssetMembersGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAssetMembersGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAssetMembersGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAssetMembersGetStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAssetMembersGetDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type BusinessAssetMembersGetResult = BusinessAssetMembersGetStatusCode200 of BusinessAssetMembersGetStatusCode200Response|BusinessAssetMembersGetStatusCode400 of BusinessAssetMembersGetStatusCode400Response|BusinessAssetMembersGetStatusCode401 of BusinessAssetMembersGetStatusCode401Response|BusinessAssetMembersGetStatusCode403 of BusinessAssetMembersGetStatusCode403Response|BusinessAssetMembersGetStatusCode404 of BusinessAssetMembersGetStatusCode404Response|BusinessAssetMembersGetStatusCode429 of BusinessAssetMembersGetStatusCode429Response|BusinessAssetMembersGetDefaultStatusCode of BusinessAssetMembersGetDefaultStatusCodeResponse
 
     type BusinessAssetMembersGetArgs = {
       pathParams:BusinessAssetMembersGetPathParams;
@@ -193,15 +260,40 @@ module BusinessAccessAssetsApiHandlerParams =
 
 
     type BusinessAssetPartnersGetStatusCode200Response = {
-      content:BusinessAssetPartnersGet200Response;
+      content:BusinessAssetMembersGet200Response;
+      
+    }
+
+    type BusinessAssetPartnersGetStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAssetPartnersGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAssetPartnersGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAssetPartnersGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAssetPartnersGetStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type BusinessAssetPartnersGetDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type BusinessAssetPartnersGetResult = BusinessAssetPartnersGetStatusCode200 of BusinessAssetPartnersGetStatusCode200Response|BusinessAssetPartnersGetDefaultStatusCode of BusinessAssetPartnersGetDefaultStatusCodeResponse
+    type BusinessAssetPartnersGetResult = BusinessAssetPartnersGetStatusCode200 of BusinessAssetPartnersGetStatusCode200Response|BusinessAssetPartnersGetStatusCode400 of BusinessAssetPartnersGetStatusCode400Response|BusinessAssetPartnersGetStatusCode401 of BusinessAssetPartnersGetStatusCode401Response|BusinessAssetPartnersGetStatusCode403 of BusinessAssetPartnersGetStatusCode403Response|BusinessAssetPartnersGetStatusCode404 of BusinessAssetPartnersGetStatusCode404Response|BusinessAssetPartnersGetStatusCode429 of BusinessAssetPartnersGetStatusCode429Response|BusinessAssetPartnersGetDefaultStatusCode of BusinessAssetPartnersGetDefaultStatusCodeResponse
 
     type BusinessAssetPartnersGetArgs = {
       pathParams:BusinessAssetPartnersGetPathParams;
@@ -246,11 +338,36 @@ module BusinessAccessAssetsApiHandlerParams =
       
     }
 
-    type BusinessAssetsGetDefaultStatusCodeResponse = {
-      content:Error;
+    type BusinessAssetsGetStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type BusinessAssetsGetResult = BusinessAssetsGetStatusCode200 of BusinessAssetsGetStatusCode200Response|BusinessAssetsGetDefaultStatusCode of BusinessAssetsGetDefaultStatusCodeResponse
+
+    type BusinessAssetsGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAssetsGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAssetsGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAssetsGetStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAssetsGetDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type BusinessAssetsGetResult = BusinessAssetsGetStatusCode200 of BusinessAssetsGetStatusCode200Response|BusinessAssetsGetStatusCode400 of BusinessAssetsGetStatusCode400Response|BusinessAssetsGetStatusCode401 of BusinessAssetsGetStatusCode401Response|BusinessAssetsGetStatusCode403 of BusinessAssetsGetStatusCode403Response|BusinessAssetsGetStatusCode404 of BusinessAssetsGetStatusCode404Response|BusinessAssetsGetStatusCode429 of BusinessAssetsGetStatusCode429Response|BusinessAssetsGetDefaultStatusCode of BusinessAssetsGetDefaultStatusCodeResponse
 
     type BusinessAssetsGetArgs = {
       pathParams:BusinessAssetsGetPathParams;
@@ -274,6 +391,24 @@ module BusinessAccessAssetsApiHandlerParams =
       startIndex : int option;
 
 
+      sortBy : AssetSortBy option;
+
+
+      sortAscending : bool option;
+
+
+      searchBy : AssetSearchBy option;
+
+
+      searchValue : string option;
+
+
+      assetPermissionType : AssetPermissionType option;
+
+
+      adAccountStatuses : NonDraftEntityStatus[] option;
+
+
       bookmark : string option;
 
 
@@ -284,15 +419,40 @@ module BusinessAccessAssetsApiHandlerParams =
 
 
     type BusinessMemberAssetsGetStatusCode200Response = {
-      content:BusinessMemberAssetsGet200Response;
+      content:BusinessMemberAssetsGetResponse;
+      
+    }
+
+    type BusinessMemberAssetsGetStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessMemberAssetsGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessMemberAssetsGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessMemberAssetsGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessMemberAssetsGetStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type BusinessMemberAssetsGetDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type BusinessMemberAssetsGetResult = BusinessMemberAssetsGetStatusCode200 of BusinessMemberAssetsGetStatusCode200Response|BusinessMemberAssetsGetDefaultStatusCode of BusinessMemberAssetsGetDefaultStatusCodeResponse
+    type BusinessMemberAssetsGetResult = BusinessMemberAssetsGetStatusCode200 of BusinessMemberAssetsGetStatusCode200Response|BusinessMemberAssetsGetStatusCode400 of BusinessMemberAssetsGetStatusCode400Response|BusinessMemberAssetsGetStatusCode401 of BusinessMemberAssetsGetStatusCode401Response|BusinessMemberAssetsGetStatusCode403 of BusinessMemberAssetsGetStatusCode403Response|BusinessMemberAssetsGetStatusCode404 of BusinessMemberAssetsGetStatusCode404Response|BusinessMemberAssetsGetStatusCode429 of BusinessMemberAssetsGetStatusCode429Response|BusinessMemberAssetsGetDefaultStatusCode of BusinessMemberAssetsGetDefaultStatusCodeResponse
 
     type BusinessMemberAssetsGetArgs = {
       pathParams:BusinessMemberAssetsGetPathParams;
@@ -307,7 +467,7 @@ module BusinessAccessAssetsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type BusinessMembersAssetAccessDeleteBodyParams = BusinessMembersAssetAccessDeleteRequest
+    type BusinessMembersAssetAccessDeleteBodyParams = BusinessMembersAssetAccessDeleteBody
     //#endregion
 
 
@@ -317,7 +477,7 @@ module BusinessAccessAssetsApiHandlerParams =
     }
 
     type BusinessMembersAssetAccessDeleteDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
     type BusinessMembersAssetAccessDeleteResult = BusinessMembersAssetAccessDeleteStatusCode200 of BusinessMembersAssetAccessDeleteStatusCode200Response|BusinessMembersAssetAccessDeleteDefaultStatusCode of BusinessMembersAssetAccessDeleteDefaultStatusCodeResponse
@@ -344,11 +504,36 @@ module BusinessAccessAssetsApiHandlerParams =
       
     }
 
-    type BusinessMembersAssetAccessUpdateDefaultStatusCodeResponse = {
-      content:Error;
+    type BusinessMembersAssetAccessUpdateStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type BusinessMembersAssetAccessUpdateResult = BusinessMembersAssetAccessUpdateStatusCode200 of BusinessMembersAssetAccessUpdateStatusCode200Response|BusinessMembersAssetAccessUpdateDefaultStatusCode of BusinessMembersAssetAccessUpdateDefaultStatusCodeResponse
+
+    type BusinessMembersAssetAccessUpdateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessMembersAssetAccessUpdateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessMembersAssetAccessUpdateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessMembersAssetAccessUpdateStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessMembersAssetAccessUpdateDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type BusinessMembersAssetAccessUpdateResult = BusinessMembersAssetAccessUpdateStatusCode200 of BusinessMembersAssetAccessUpdateStatusCode200Response|BusinessMembersAssetAccessUpdateStatusCode400 of BusinessMembersAssetAccessUpdateStatusCode400Response|BusinessMembersAssetAccessUpdateStatusCode401 of BusinessMembersAssetAccessUpdateStatusCode401Response|BusinessMembersAssetAccessUpdateStatusCode403 of BusinessMembersAssetAccessUpdateStatusCode403Response|BusinessMembersAssetAccessUpdateStatusCode404 of BusinessMembersAssetAccessUpdateStatusCode404Response|BusinessMembersAssetAccessUpdateStatusCode429 of BusinessMembersAssetAccessUpdateStatusCode429Response|BusinessMembersAssetAccessUpdateDefaultStatusCode of BusinessMembersAssetAccessUpdateDefaultStatusCodeResponse
 
     type BusinessMembersAssetAccessUpdateArgs = {
       pathParams:BusinessMembersAssetAccessUpdatePathParams;
@@ -366,7 +551,7 @@ module BusinessAccessAssetsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type BusinessPartnerAssetAccessGetQueryParams = {
-      partnerType : PartnerType option;
+      partnerType : string option;
 
 
       assetType : string option;
@@ -375,10 +560,22 @@ module BusinessAccessAssetsApiHandlerParams =
       startIndex : int option;
 
 
-      pageSize : int option;
+      sortBy : AssetSortBy option;
+
+
+      sortAscending : bool option;
+
+
+      searchBy : AssetSearchBy option;
+
+
+      searchValue : string option;
 
 
       bookmark : string option;
+
+
+      pageSize : int option;
 
     }
     //#endregion
@@ -389,11 +586,36 @@ module BusinessAccessAssetsApiHandlerParams =
       
     }
 
-    type BusinessPartnerAssetAccessGetDefaultStatusCodeResponse = {
-      content:Error;
+    type BusinessPartnerAssetAccessGetStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type BusinessPartnerAssetAccessGetResult = BusinessPartnerAssetAccessGetStatusCode200 of BusinessPartnerAssetAccessGetStatusCode200Response|BusinessPartnerAssetAccessGetDefaultStatusCode of BusinessPartnerAssetAccessGetDefaultStatusCodeResponse
+
+    type BusinessPartnerAssetAccessGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessPartnerAssetAccessGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessPartnerAssetAccessGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessPartnerAssetAccessGetStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessPartnerAssetAccessGetDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type BusinessPartnerAssetAccessGetResult = BusinessPartnerAssetAccessGetStatusCode200 of BusinessPartnerAssetAccessGetStatusCode200Response|BusinessPartnerAssetAccessGetStatusCode400 of BusinessPartnerAssetAccessGetStatusCode400Response|BusinessPartnerAssetAccessGetStatusCode401 of BusinessPartnerAssetAccessGetStatusCode401Response|BusinessPartnerAssetAccessGetStatusCode403 of BusinessPartnerAssetAccessGetStatusCode403Response|BusinessPartnerAssetAccessGetStatusCode404 of BusinessPartnerAssetAccessGetStatusCode404Response|BusinessPartnerAssetAccessGetStatusCode429 of BusinessPartnerAssetAccessGetStatusCode429Response|BusinessPartnerAssetAccessGetDefaultStatusCode of BusinessPartnerAssetAccessGetDefaultStatusCodeResponse
 
     type BusinessPartnerAssetAccessGetArgs = {
       pathParams:BusinessPartnerAssetAccessGetPathParams;
@@ -413,12 +635,12 @@ module BusinessAccessAssetsApiHandlerParams =
 
 
     type DeletePartnerAssetAccessHandlerImplStatusCode200Response = {
-      content:DeletePartnerAssetsResultsResponseArray;
+      content:DeletePartnerAssetAccessResultsResponseArray;
       
     }
 
     type DeletePartnerAssetAccessHandlerImplDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
     type DeletePartnerAssetAccessHandlerImplResult = DeletePartnerAssetAccessHandlerImplStatusCode200 of DeletePartnerAssetAccessHandlerImplStatusCode200Response|DeletePartnerAssetAccessHandlerImplDefaultStatusCode of DeletePartnerAssetAccessHandlerImplDefaultStatusCodeResponse
@@ -445,11 +667,36 @@ module BusinessAccessAssetsApiHandlerParams =
       
     }
 
-    type UpdatePartnerAssetAccessHandlerImplDefaultStatusCodeResponse = {
-      content:Error;
+    type UpdatePartnerAssetAccessHandlerImplStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type UpdatePartnerAssetAccessHandlerImplResult = UpdatePartnerAssetAccessHandlerImplStatusCode200 of UpdatePartnerAssetAccessHandlerImplStatusCode200Response|UpdatePartnerAssetAccessHandlerImplDefaultStatusCode of UpdatePartnerAssetAccessHandlerImplDefaultStatusCodeResponse
+
+    type UpdatePartnerAssetAccessHandlerImplStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdatePartnerAssetAccessHandlerImplStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdatePartnerAssetAccessHandlerImplStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdatePartnerAssetAccessHandlerImplStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdatePartnerAssetAccessHandlerImplDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type UpdatePartnerAssetAccessHandlerImplResult = UpdatePartnerAssetAccessHandlerImplStatusCode200 of UpdatePartnerAssetAccessHandlerImplStatusCode200Response|UpdatePartnerAssetAccessHandlerImplStatusCode400 of UpdatePartnerAssetAccessHandlerImplStatusCode400Response|UpdatePartnerAssetAccessHandlerImplStatusCode401 of UpdatePartnerAssetAccessHandlerImplStatusCode401Response|UpdatePartnerAssetAccessHandlerImplStatusCode403 of UpdatePartnerAssetAccessHandlerImplStatusCode403Response|UpdatePartnerAssetAccessHandlerImplStatusCode404 of UpdatePartnerAssetAccessHandlerImplStatusCode404Response|UpdatePartnerAssetAccessHandlerImplStatusCode429 of UpdatePartnerAssetAccessHandlerImplStatusCode429Response|UpdatePartnerAssetAccessHandlerImplDefaultStatusCode of UpdatePartnerAssetAccessHandlerImplDefaultStatusCodeResponse
 
     type UpdatePartnerAssetAccessHandlerImplArgs = {
       pathParams:UpdatePartnerAssetAccessHandlerImplPathParams;

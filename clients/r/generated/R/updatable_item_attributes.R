@@ -7,107 +7,107 @@
 #' @title UpdatableItemAttributes
 #' @description UpdatableItemAttributes Class
 #' @format An \code{R6Class} generator object
-#' @field ad_image_0_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_0_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_10_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_10_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_11_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_11_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_12_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_12_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_13_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_13_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_14_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_14_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_15_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_15_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_16_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_16_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_17_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_17_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_18_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_18_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_19_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_19_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_1_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_1_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_2_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_2_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_3_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_3_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_4_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_4_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_5_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_5_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_6_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_6_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_7_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_7_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_8_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_8_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_image_9_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_image_9_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> character [optional]
-#' @field ad_link Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://. character [optional]
-#' @field ad_video_0_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_video_0_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p> character [optional]
-#' @field ad_video_1_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_video_1_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p> character [optional]
-#' @field ad_video_2_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> character [optional]
-#' @field ad_video_2_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p> character [optional]
-#' @field adult Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest. character [optional]
-#' @field age_group The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. character [optional]
+#' @field ad_image_0_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_0_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_10_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_10_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_11_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_11_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_12_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_12_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_13_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_13_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_14_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_14_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_15_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_15_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_16_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_16_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_17_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_17_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_18_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_18_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_19_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_19_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_1_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_1_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_2_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_2_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_3_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_3_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_4_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_4_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_5_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_5_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_6_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_6_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_7_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_7_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_8_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_8_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_image_9_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_image_9_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute. character [optional]
+#' @field ad_link Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking. Must begin with http:// or https://. character [optional]
+#' @field ad_video_0_link Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_video_0_tag Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute. character [optional]
+#' @field ad_video_1_link Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_video_1_tag Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute. character [optional]
+#' @field ad_video_2_link Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https:// character [optional]
+#' @field ad_video_2_tag Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute. character [optional]
+#' @field adult Set this attribute to TRUE if you're submitting items that are considered \"adult\". These will not be shown on Pinterest. character [optional]
+#' @field age_group The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): 'newborn', 'infant', 'toddler', 'kids', or 'adult'. character [optional]
 #' @field android_deep_link The deep link to the product on the Android app. character [optional]
-#' @field availability The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’. character [optional]
+#' @field availability The availability of the product. Must be one of the following values (upper or lowercased): 'in stock', 'out of stock', 'preorder'. character [optional]
 #' @field average_review_rating Average reviews for the item. Can be a number from 1-5. numeric [optional]
 #' @field brand The brand of the product. character [optional]
 #' @field checkout_enabled This attribute is not supported anymore. character [optional]
 #' @field color The primary color of the product. character [optional]
-#' @field condition The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’. character [optional]
-#' @field custom_label_0 <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p> character [optional]
-#' @field custom_label_1 <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p> character [optional]
-#' @field custom_label_2 <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p> character [optional]
-#' @field custom_label_3 <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p> character [optional]
-#' @field custom_label_4 <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p> character [optional]
-#' @field custom_number_0 an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. integer [optional]
-#' @field custom_number_1 an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. integer [optional]
-#' @field custom_number_2 an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. integer [optional]
-#' @field custom_number_3 an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. integer [optional]
-#' @field custom_number_4 an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. integer [optional]
-#' @field description <p><= 10000 characters</p> <p>The description of the product.</p> character [optional]
+#' @field condition The condition of the product. Must be one of the following values (upper or lowercased): 'new', 'used', or 'refurbished'. character [optional]
+#' @field custom_label_0 <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products. character [optional]
+#' @field custom_label_1 <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products. character [optional]
+#' @field custom_label_2 <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products. character [optional]
+#' @field custom_label_3 <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products. character [optional]
+#' @field custom_label_4 <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products. character [optional]
+#' @field custom_number_0 An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. integer [optional]
+#' @field custom_number_1 An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. integer [optional]
+#' @field custom_number_2 An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. integer [optional]
+#' @field custom_number_3 An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. integer [optional]
+#' @field custom_number_4 An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. integer [optional]
+#' @field description <= 10000 characters. The description of the product. character [optional]
 #' @field free_shipping_label The item is free to ship. character [optional]
 #' @field free_shipping_limit The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered. character [optional]
-#' @field gender The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’. character [optional]
+#' @field gender The gender associated with the product. Must be one of the following values (upper or lowercased): 'male', 'female', or 'unisex'. character [optional]
 #' @field google_product_category The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. character [optional]
 #' @field gtin  \link{UpdatableItemAttributesGtin} [optional]
-#' @field id <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p> character [optional]
-#' @field installment_price Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: <payment_count>:<payment_amount> <currency> character [optional]
+#' @field id <= 127 characters. The user-created unique ID that represents the product. Only Unicode characters are accepted. character [optional]
+#' @field installment_price Installment price of the product. Expected format: <payment_count>:<payment_amount> <currency> character [optional]
 #' @field ios_deep_link The deep link to the product on the iOS app. character [optional]
-#' @field item_group_id <p><= 127 characters</p> <p>The parent ID of the product.</p> character [optional]
+#' @field item_group_id <= 127 characters. The parent ID of the product. character [optional]
 #' @field last_updated_time The millisecond timestamp when the item was lastly modified by the merchant. integer [optional]
-#' @field link <p><= 511 characters</p> <p>The landing page for the product.</p> character [optional]
+#' @field link <= 511 characters. The landing page for the product. character [optional]
 #' @field material The material used to make the product. character [optional]
-#' @field min_ad_price The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars. character [optional]
+#' @field min_ad_price The minimum advertised price of the product. It supports the following formats: \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars. character [optional]
 #' @field mobile_link The mobile-optimized version of your landing page. Must begin with http:// or https://. character [optional]
 #' @field mpn Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer. character [optional]
 #' @field number_of_ratings The number of ratings for the item. integer [optional]
 #' @field number_of_reviews The number of reviews available for the item. integer [optional]
 #' @field pattern The description of the pattern used for the product. character [optional]
-#' @field price The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars. character [optional]
-#' @field product_type <p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p> character [optional]
+#' @field price The price of the product. It supports the following formats: \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars. character [optional]
+#' @field product_type <= 1000 characters. The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by \" > \". character [optional]
 #' @field promotion_id A unique identifier referencing the promotion associated with this catalog item. character [optional]
-#' @field sale_price The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars. character [optional]
+#' @field sale_price The discounted price of the product. The sale_price must be lower than the price. It supports the following formats: \"14.99 USD\", \"14.99USD\" and \"14.99\". character [optional]
 #' @field sale_price_effective_date Sale price effective date. Expected format: <start_date>/<end_date> (ISO 8601 format) character [optional]
 #' @field shipping Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required. character [optional]
 #' @field shipping_height The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric. character [optional]
 #' @field shipping_weight The weight of the product. Ensure there is a space between the numeric string and the metric. character [optional]
 #' @field shipping_width The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric. character [optional]
 #' @field size The size of the product. character [optional]
-#' @field size_system Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’. character [optional]
-#' @field size_type Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’. character [optional]
+#' @field size_system Indicates the country's sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): 'US', 'UK', 'EU', 'DE', 'FR', 'JP', 'CN', 'IT', 'BR', 'MEX', or 'AU'. character [optional]
+#' @field size_type Additional description for the size. Must be one of the following values (upper or lowercased): 'regular', 'petite', 'plus', 'big_and_tall', or 'maternity'. character [optional]
 #' @field tax Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required. character [optional]
-#' @field title <p><= 500 characters</p> <p>The name of the product.</p> character [optional]
-#' @field unit_pricing_base_measure Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <base_measure> <unit_type> character [optional]
-#' @field unit_pricing_measure Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <total_units> <unit_type> character [optional]
+#' @field title <= 500 characters. The name of the product. character [optional]
+#' @field unit_pricing_base_measure Unit pricing base measure of the product. Expected format: <base_measure> <unit_type> character [optional]
+#' @field unit_pricing_measure Unit pricing total measure of the product. Expected format: <total_units> <unit_type> character [optional]
 #' @field variant_names Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. list(character) [optional]
 #' @field variant_values Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names. list(character) [optional]
 #' @importFrom R6 R6Class
@@ -223,107 +223,107 @@ UpdatableItemAttributes <- R6::R6Class(
     #' @description
     #' Initialize a new UpdatableItemAttributes class.
     #'
-    #' @param ad_image_0_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_0_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_10_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_10_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_11_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_11_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_12_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_12_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_13_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_13_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_14_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_14_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_15_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_15_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_16_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_16_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_17_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_17_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_18_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_18_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_19_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_19_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_1_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_1_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_2_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_2_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_3_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_3_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_4_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_4_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_5_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_5_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_6_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_6_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_7_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_7_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_8_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_8_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_image_9_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_image_9_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
-    #' @param ad_link Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
-    #' @param ad_video_0_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_video_0_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
-    #' @param ad_video_1_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_video_1_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
-    #' @param ad_video_2_link <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
-    #' @param ad_video_2_tag <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
-    #' @param adult Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
-    #' @param age_group The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+    #' @param ad_image_0_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_0_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_10_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_10_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_11_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_11_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_12_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_12_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_13_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_13_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_14_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_14_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_15_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_15_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_16_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_16_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_17_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_17_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_18_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_18_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_19_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_19_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_1_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_1_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_2_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_2_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_3_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_3_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_4_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_4_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_5_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_5_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_6_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_6_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_7_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_7_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_8_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_8_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_image_9_link Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_image_9_tag Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
+    #' @param ad_link Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking. Must begin with http:// or https://.
+    #' @param ad_video_0_link Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_video_0_tag Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
+    #' @param ad_video_1_link Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_video_1_tag Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
+    #' @param ad_video_2_link Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
+    #' @param ad_video_2_tag Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
+    #' @param adult Set this attribute to TRUE if you're submitting items that are considered \"adult\". These will not be shown on Pinterest.
+    #' @param age_group The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): 'newborn', 'infant', 'toddler', 'kids', or 'adult'.
     #' @param android_deep_link The deep link to the product on the Android app.
-    #' @param availability The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+    #' @param availability The availability of the product. Must be one of the following values (upper or lowercased): 'in stock', 'out of stock', 'preorder'.
     #' @param average_review_rating Average reviews for the item. Can be a number from 1-5.
     #' @param brand The brand of the product.
     #' @param checkout_enabled This attribute is not supported anymore.
     #' @param color The primary color of the product.
-    #' @param condition The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.
-    #' @param custom_label_0 <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
-    #' @param custom_label_1 <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
-    #' @param custom_label_2 <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
-    #' @param custom_label_3 <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
-    #' @param custom_label_4 <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
-    #' @param custom_number_0 an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
-    #' @param custom_number_1 an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
-    #' @param custom_number_2 an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
-    #' @param custom_number_3 an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
-    #' @param custom_number_4 an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
-    #' @param description <p><= 10000 characters</p> <p>The description of the product.</p>
+    #' @param condition The condition of the product. Must be one of the following values (upper or lowercased): 'new', 'used', or 'refurbished'.
+    #' @param custom_label_0 <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
+    #' @param custom_label_1 <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
+    #' @param custom_label_2 <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
+    #' @param custom_label_3 <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
+    #' @param custom_label_4 <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
+    #' @param custom_number_0 An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+    #' @param custom_number_1 An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+    #' @param custom_number_2 An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+    #' @param custom_number_3 An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+    #' @param custom_number_4 An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+    #' @param description <= 10000 characters. The description of the product.
     #' @param free_shipping_label The item is free to ship.
     #' @param free_shipping_limit The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
-    #' @param gender The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+    #' @param gender The gender associated with the product. Must be one of the following values (upper or lowercased): 'male', 'female', or 'unisex'.
     #' @param google_product_category The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
     #' @param gtin gtin
-    #' @param id <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
-    #' @param installment_price Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: <payment_count>:<payment_amount> <currency>
+    #' @param id <= 127 characters. The user-created unique ID that represents the product. Only Unicode characters are accepted.
+    #' @param installment_price Installment price of the product. Expected format: <payment_count>:<payment_amount> <currency>
     #' @param ios_deep_link The deep link to the product on the iOS app.
-    #' @param item_group_id <p><= 127 characters</p> <p>The parent ID of the product.</p>
+    #' @param item_group_id <= 127 characters. The parent ID of the product.
     #' @param last_updated_time The millisecond timestamp when the item was lastly modified by the merchant.
-    #' @param link <p><= 511 characters</p> <p>The landing page for the product.</p>
+    #' @param link <= 511 characters. The landing page for the product.
     #' @param material The material used to make the product.
-    #' @param min_ad_price The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.
+    #' @param min_ad_price The minimum advertised price of the product. It supports the following formats: \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.
     #' @param mobile_link The mobile-optimized version of your landing page. Must begin with http:// or https://.
     #' @param mpn Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.
     #' @param number_of_ratings The number of ratings for the item.
     #' @param number_of_reviews The number of reviews available for the item.
     #' @param pattern The description of the pattern used for the product.
-    #' @param price The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.
-    #' @param product_type <p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>
+    #' @param price The price of the product. It supports the following formats: \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.
+    #' @param product_type <= 1000 characters. The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by \" > \".
     #' @param promotion_id A unique identifier referencing the promotion associated with this catalog item.
-    #' @param sale_price The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.
+    #' @param sale_price The discounted price of the product. The sale_price must be lower than the price. It supports the following formats: \"14.99 USD\", \"14.99USD\" and \"14.99\".
     #' @param sale_price_effective_date Sale price effective date. Expected format: <start_date>/<end_date> (ISO 8601 format)
     #' @param shipping Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.
     #' @param shipping_height The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
     #' @param shipping_weight The weight of the product. Ensure there is a space between the numeric string and the metric.
     #' @param shipping_width The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
     #' @param size The size of the product.
-    #' @param size_system Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
-    #' @param size_type Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+    #' @param size_system Indicates the country's sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): 'US', 'UK', 'EU', 'DE', 'FR', 'JP', 'CN', 'IT', 'BR', 'MEX', or 'AU'.
+    #' @param size_type Additional description for the size. Must be one of the following values (upper or lowercased): 'regular', 'petite', 'plus', 'big_and_tall', or 'maternity'.
     #' @param tax Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
-    #' @param title <p><= 500 characters</p> <p>The name of the product.</p>
-    #' @param unit_pricing_base_measure Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <base_measure> <unit_type>
-    #' @param unit_pricing_measure Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <total_units> <unit_type>
+    #' @param title <= 500 characters. The name of the product.
+    #' @param unit_pricing_base_measure Unit pricing base measure of the product. Expected format: <base_measure> <unit_type>
+    #' @param unit_pricing_measure Unit pricing total measure of the product. Expected format: <total_units> <unit_type>
     #' @param variant_names Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
     #' @param variant_values Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
     #' @param ... Other optional arguments.
@@ -1258,7 +1258,7 @@ UpdatableItemAttributes <- R6::R6Class(
       }
       if (!is.null(self$`gtin`)) {
         UpdatableItemAttributesObject[["gtin"]] <-
-          self$`gtin`$toSimpleType()
+          self$extractSimpleType(self$`gtin`)
       }
       if (!is.null(self$`id`)) {
         UpdatableItemAttributesObject[["id"]] <-
@@ -1385,6 +1385,29 @@ UpdatableItemAttributes <- R6::R6Class(
           self$`variant_values`
       }
       return(UpdatableItemAttributesObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -1853,6 +1876,190 @@ UpdatableItemAttributes <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      if (nchar(self$`ad_image_0_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_0_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_10_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_10_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_11_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_11_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_12_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_12_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_13_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_13_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_14_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_14_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_15_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_15_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_16_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_16_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_17_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_17_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_18_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_18_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_19_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_19_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_1_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_1_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_2_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_2_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_3_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_3_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_4_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_4_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_5_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_5_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_6_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_6_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_7_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_7_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_8_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_8_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_9_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_image_9_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_video_0_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_video_0_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_video_1_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_video_1_tag`) > 511) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_video_2_link`) > 2000) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`ad_video_2_tag`) > 511) {
+        return(FALSE)
+      }
+
       if (nchar(self$`custom_label_0`) > 511) {
         return(FALSE)
       }
@@ -1882,6 +2089,190 @@ UpdatableItemAttributes <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      if (nchar(self$`ad_image_0_link`) > 2000) {
+        invalid_fields["ad_image_0_link"] <- "Invalid length for `ad_image_0_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_0_tag`) > 511) {
+        invalid_fields["ad_image_0_tag"] <- "Invalid length for `ad_image_0_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_10_link`) > 2000) {
+        invalid_fields["ad_image_10_link"] <- "Invalid length for `ad_image_10_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_10_tag`) > 511) {
+        invalid_fields["ad_image_10_tag"] <- "Invalid length for `ad_image_10_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_11_link`) > 2000) {
+        invalid_fields["ad_image_11_link"] <- "Invalid length for `ad_image_11_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_11_tag`) > 511) {
+        invalid_fields["ad_image_11_tag"] <- "Invalid length for `ad_image_11_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_12_link`) > 2000) {
+        invalid_fields["ad_image_12_link"] <- "Invalid length for `ad_image_12_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_12_tag`) > 511) {
+        invalid_fields["ad_image_12_tag"] <- "Invalid length for `ad_image_12_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_13_link`) > 2000) {
+        invalid_fields["ad_image_13_link"] <- "Invalid length for `ad_image_13_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_13_tag`) > 511) {
+        invalid_fields["ad_image_13_tag"] <- "Invalid length for `ad_image_13_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_14_link`) > 2000) {
+        invalid_fields["ad_image_14_link"] <- "Invalid length for `ad_image_14_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_14_tag`) > 511) {
+        invalid_fields["ad_image_14_tag"] <- "Invalid length for `ad_image_14_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_15_link`) > 2000) {
+        invalid_fields["ad_image_15_link"] <- "Invalid length for `ad_image_15_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_15_tag`) > 511) {
+        invalid_fields["ad_image_15_tag"] <- "Invalid length for `ad_image_15_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_16_link`) > 2000) {
+        invalid_fields["ad_image_16_link"] <- "Invalid length for `ad_image_16_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_16_tag`) > 511) {
+        invalid_fields["ad_image_16_tag"] <- "Invalid length for `ad_image_16_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_17_link`) > 2000) {
+        invalid_fields["ad_image_17_link"] <- "Invalid length for `ad_image_17_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_17_tag`) > 511) {
+        invalid_fields["ad_image_17_tag"] <- "Invalid length for `ad_image_17_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_18_link`) > 2000) {
+        invalid_fields["ad_image_18_link"] <- "Invalid length for `ad_image_18_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_18_tag`) > 511) {
+        invalid_fields["ad_image_18_tag"] <- "Invalid length for `ad_image_18_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_19_link`) > 2000) {
+        invalid_fields["ad_image_19_link"] <- "Invalid length for `ad_image_19_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_19_tag`) > 511) {
+        invalid_fields["ad_image_19_tag"] <- "Invalid length for `ad_image_19_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_1_link`) > 2000) {
+        invalid_fields["ad_image_1_link"] <- "Invalid length for `ad_image_1_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_1_tag`) > 511) {
+        invalid_fields["ad_image_1_tag"] <- "Invalid length for `ad_image_1_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_2_link`) > 2000) {
+        invalid_fields["ad_image_2_link"] <- "Invalid length for `ad_image_2_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_2_tag`) > 511) {
+        invalid_fields["ad_image_2_tag"] <- "Invalid length for `ad_image_2_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_3_link`) > 2000) {
+        invalid_fields["ad_image_3_link"] <- "Invalid length for `ad_image_3_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_3_tag`) > 511) {
+        invalid_fields["ad_image_3_tag"] <- "Invalid length for `ad_image_3_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_4_link`) > 2000) {
+        invalid_fields["ad_image_4_link"] <- "Invalid length for `ad_image_4_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_4_tag`) > 511) {
+        invalid_fields["ad_image_4_tag"] <- "Invalid length for `ad_image_4_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_5_link`) > 2000) {
+        invalid_fields["ad_image_5_link"] <- "Invalid length for `ad_image_5_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_5_tag`) > 511) {
+        invalid_fields["ad_image_5_tag"] <- "Invalid length for `ad_image_5_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_6_link`) > 2000) {
+        invalid_fields["ad_image_6_link"] <- "Invalid length for `ad_image_6_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_6_tag`) > 511) {
+        invalid_fields["ad_image_6_tag"] <- "Invalid length for `ad_image_6_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_7_link`) > 2000) {
+        invalid_fields["ad_image_7_link"] <- "Invalid length for `ad_image_7_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_7_tag`) > 511) {
+        invalid_fields["ad_image_7_tag"] <- "Invalid length for `ad_image_7_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_8_link`) > 2000) {
+        invalid_fields["ad_image_8_link"] <- "Invalid length for `ad_image_8_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_8_tag`) > 511) {
+        invalid_fields["ad_image_8_tag"] <- "Invalid length for `ad_image_8_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_image_9_link`) > 2000) {
+        invalid_fields["ad_image_9_link"] <- "Invalid length for `ad_image_9_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_image_9_tag`) > 511) {
+        invalid_fields["ad_image_9_tag"] <- "Invalid length for `ad_image_9_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_video_0_link`) > 2000) {
+        invalid_fields["ad_video_0_link"] <- "Invalid length for `ad_video_0_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_video_0_tag`) > 511) {
+        invalid_fields["ad_video_0_tag"] <- "Invalid length for `ad_video_0_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_video_1_link`) > 2000) {
+        invalid_fields["ad_video_1_link"] <- "Invalid length for `ad_video_1_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_video_1_tag`) > 511) {
+        invalid_fields["ad_video_1_tag"] <- "Invalid length for `ad_video_1_tag`, must be smaller than or equal to 511."
+      }
+
+      if (nchar(self$`ad_video_2_link`) > 2000) {
+        invalid_fields["ad_video_2_link"] <- "Invalid length for `ad_video_2_link`, must be smaller than or equal to 2000."
+      }
+
+      if (nchar(self$`ad_video_2_tag`) > 511) {
+        invalid_fields["ad_video_2_tag"] <- "Invalid length for `ad_video_2_tag`, must be smaller than or equal to 511."
+      }
+
       if (nchar(self$`custom_label_0`) > 511) {
         invalid_fields["custom_label_0"] <- "Invalid length for `custom_label_0`, must be smaller than or equal to 511."
       }

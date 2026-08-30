@@ -5,7 +5,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**orderLinesGet**](OrderLinesApiInterface.md#orderLinesGet) | **GET** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line
-[**orderLinesList**](OrderLinesApiInterface.md#orderLinesList) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines
+[**orderLinesList**](OrderLinesApiInterface.md#orderLinesList) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines.
 
 
 ## Service Declaration
@@ -20,7 +20,7 @@ services:
 ```
 
 ## **orderLinesGet**
-> OpenAPI\Server\Model\OrderLine orderLinesGet($adAccountId, $orderLineId)
+> OpenAPI\Server\Model\OrderLine orderLinesGet($orderLineId, $adAccountId)
 
 Get order line
 
@@ -51,7 +51,7 @@ class OrderLinesApi implements OrderLinesApiInterface
     /**
      * Implementation of OrderLinesApiInterface#orderLinesGet
      */
-    public function orderLinesGet(string $adAccountId, string $orderLineId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function orderLinesGet(string $orderLineId, string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -64,8 +64,8 @@ class OrderLinesApi implements OrderLinesApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **orderLineId** | **string**| Order line ID. |
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **orderLineId** | **string**| Unique identifier of an order line. |
 
 ### Return type
 
@@ -83,9 +83,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **orderLinesList**
-> OpenAPI\Server\Model\OrderLinesList200Response orderLinesList($adAccountId, $pageSize, $order, $bookmark)
+> OpenAPI\Server\Model\OrderLinesList200Response orderLinesList($adAccountId, $bookmark, $pageSize, $order)
 
-Get order lines
+Get order lines.
 
 List existing order lines associated with an ad account.
 
@@ -114,7 +114,7 @@ class OrderLinesApi implements OrderLinesApiInterface
     /**
      * Implementation of OrderLinesApiInterface#orderLinesList
      */
-    public function orderLinesList(string $adAccountId, int $pageSize, ?string $order, ?string $bookmark, int &$responseCode, array &$responseHeaders): array|object|null
+    public function orderLinesList(string $adAccountId, ?string $bookmark, int $pageSize, ?PinterestLibPaginationOrder $order, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -128,9 +128,9 @@ class OrderLinesApi implements OrderLinesApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](../Model/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]
 
 ### Return type
 

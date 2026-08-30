@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Collections ad header type",
+  "name": "CollectionsHeaderType",
+  "symbols": [
+    "SHOP_THIS_COLLECTION",
+    "EXPLORE_THIS_COLLECTION",
+    "NO_HEADER",
+    "ON_SALE",
+    "GET_DEAL"
+  ]
+}

@@ -8,7 +8,7 @@
     #{ 'questions' => list(),
        'results' => list(),
        'tie_breaker_custom_result' => openapi_quiz_pin_result:openapi_quiz_pin_result(),
-       'tie_breaker_type' => binary()
+       'tie_breaker_type' => openapi_tie_breaker_type:openapi_tie_breaker_type()
      }.
 
 encode(#{ 'questions' := Questions,

@@ -8,7 +8,7 @@ case class CatalogsItemsDeleteDiscontinuedBatchRequest (
     _items: List[ItemDeleteDiscontinuedBatchRecord],
     /* We recommend using the CatalogsLocale values. */
     _language: String,
-    _operation: BatchOperation
+    _operation: String
 )
 object CatalogsItemsDeleteDiscontinuedBatchRequest {
     def toStringBody(var_country: Object, var_items: Object, var_language: Object, var_operation: Object) =

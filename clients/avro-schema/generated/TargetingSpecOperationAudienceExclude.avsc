@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingSpecOperationAudienceExclude",
+  "fields": [
+    {
+      "name": "field",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationAudienceExclude_field",
+        "symbols": [
+          "AUDIENCE_EXCLUDE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": "model.TargetingSpecListOperation",
+      "doc": ""
+    },
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": ""
+    }
+  ]
+
+}

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &CatalogsHotelBatchRequest{}
 // CatalogsHotelBatchRequest Request object to update catalogs hotel items
 type CatalogsHotelBatchRequest struct {
 	// Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\d+$"`
 	CatalogType string `json:"catalog_type"`
 	Country Country `json:"country"`
 	// Array with catalogs item operations

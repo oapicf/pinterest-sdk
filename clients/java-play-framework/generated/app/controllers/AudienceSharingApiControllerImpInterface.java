@@ -1,13 +1,18 @@
 package controllers;
 
+import apimodels.AdAccountToAdAccountSharedAudience;
+import apimodels.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody;
+import apimodels.AdAccountToBusinessSharedAudience;
+import apimodels.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody;
 import apimodels.AdAccountsAudiencesSharedAccountsList200Response;
 import apimodels.AudienceAccountType;
-import apimodels.AudiencesList200Response;
-import apimodels.BusinessSharedAudience;
-import apimodels.BusinessSharedAudienceResponse;
-import apimodels.Error;
-import apimodels.SharedAudience;
-import apimodels.SharedAudienceResponse;
+import apimodels.BusinessToAdAccountSharedAudience;
+import apimodels.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody;
+import apimodels.BusinessToBusinessSharedAudience;
+import apimodels.BusinessToBusinessSharedAudienceUpdateWithRequiredBody;
+import apimodels.Order;
+import apimodels.PinterestLibError;
+import apimodels.SharedAudiencesForBusinessList200Response;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -34,12 +39,12 @@ public abstract class AudienceSharingApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result adAccountsAudiencesSharedAccountsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, @NotNull AudienceAccountType accountType,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception {
+    public Result adAccountsAudiencesSharedAccountsListHttp(Http.Request request, @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, @NotNull AudienceAccountType accountType,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        AdAccountsAudiencesSharedAccountsList200Response obj = adAccountsAudiencesSharedAccountsList(request, adAccountId, audienceId, accountType, pageSize, bookmark);
+        AdAccountsAudiencesSharedAccountsList200Response obj = adAccountsAudiencesSharedAccountsList(request, audienceId, accountType, adAccountId, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -51,14 +56,14 @@ public abstract class AudienceSharingApiControllerImpInterface {
 
     }
 
-    public abstract AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, @NotNull AudienceAccountType accountType,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception;
+    public abstract AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(Http.Request request, @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, @NotNull AudienceAccountType accountType,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result businessAccountAudiencesSharedAccountsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, @NotNull AudienceAccountType accountType,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception {
+    public Result businessAccountAudiencesSharedAccountsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, @NotNull AudienceAccountType accountType, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        AdAccountsAudiencesSharedAccountsList200Response obj = businessAccountAudiencesSharedAccountsList(request, businessId, audienceId, accountType, pageSize, bookmark);
+        AdAccountsAudiencesSharedAccountsList200Response obj = businessAccountAudiencesSharedAccountsList(request, businessId, audienceId, accountType, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -70,14 +75,14 @@ public abstract class AudienceSharingApiControllerImpInterface {
 
     }
 
-    public abstract AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, @NotNull AudienceAccountType accountType,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception;
+    public abstract AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, @NotNull AudienceAccountType accountType, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result sharedAudiencesForBusinessListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, String bookmark, String order,  @Min(1) @Max(250)Integer pageSize) throws Exception {
+    public Result sharedAudiencesForBusinessListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Order order, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        AudiencesList200Response obj = sharedAudiencesForBusinessList(request, businessId, bookmark, order, pageSize);
+        SharedAudiencesForBusinessList200Response obj = sharedAudiencesForBusinessList(request, businessId, order, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -89,14 +94,14 @@ public abstract class AudienceSharingApiControllerImpInterface {
 
     }
 
-    public abstract AudiencesList200Response sharedAudiencesForBusinessList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, String bookmark, String order,  @Min(1) @Max(250)Integer pageSize) throws Exception;
+    public abstract SharedAudiencesForBusinessList200Response sharedAudiencesForBusinessList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Order order, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result updateAdAccountToAdAccountSharedAudienceHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SharedAudience sharedAudience) throws Exception {
+    public Result updateAdAccountToAdAccountSharedAudienceHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        SharedAudienceResponse obj = updateAdAccountToAdAccountSharedAudience(request, adAccountId, sharedAudience);
+        AdAccountToAdAccountSharedAudience obj = updateAdAccountToAdAccountSharedAudience(request, adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -108,14 +113,14 @@ public abstract class AudienceSharingApiControllerImpInterface {
 
     }
 
-    public abstract SharedAudienceResponse updateAdAccountToAdAccountSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SharedAudience sharedAudience) throws Exception;
+    public abstract AdAccountToAdAccountSharedAudience updateAdAccountToAdAccountSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody) throws Exception;
 
-    public Result updateAdAccountToBusinessSharedAudienceHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BusinessSharedAudience businessSharedAudience) throws Exception {
+    public Result updateAdAccountToBusinessSharedAudienceHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        BusinessSharedAudienceResponse obj = updateAdAccountToBusinessSharedAudience(request, adAccountId, businessSharedAudience);
+        AdAccountToBusinessSharedAudience obj = updateAdAccountToBusinessSharedAudience(request, adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -127,14 +132,14 @@ public abstract class AudienceSharingApiControllerImpInterface {
 
     }
 
-    public abstract BusinessSharedAudienceResponse updateAdAccountToBusinessSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BusinessSharedAudience businessSharedAudience) throws Exception;
+    public abstract AdAccountToBusinessSharedAudience updateAdAccountToBusinessSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody) throws Exception;
 
-    public Result updateBusinessToAdAccountSharedAudienceHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, SharedAudience sharedAudience) throws Exception {
+    public Result updateBusinessToAdAccountSharedAudienceHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        SharedAudienceResponse obj = updateBusinessToAdAccountSharedAudience(request, businessId, sharedAudience);
+        BusinessToAdAccountSharedAudience obj = updateBusinessToAdAccountSharedAudience(request, businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -146,14 +151,14 @@ public abstract class AudienceSharingApiControllerImpInterface {
 
     }
 
-    public abstract SharedAudienceResponse updateBusinessToAdAccountSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, SharedAudience sharedAudience) throws Exception;
+    public abstract BusinessToAdAccountSharedAudience updateBusinessToAdAccountSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody) throws Exception;
 
-    public Result updateBusinessToBusinessSharedAudienceHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, BusinessSharedAudience businessSharedAudience) throws Exception {
+    public Result updateBusinessToBusinessSharedAudienceHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        BusinessSharedAudienceResponse obj = updateBusinessToBusinessSharedAudience(request, businessId, businessSharedAudience);
+        BusinessToBusinessSharedAudience obj = updateBusinessToBusinessSharedAudience(request, businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -165,6 +170,6 @@ public abstract class AudienceSharingApiControllerImpInterface {
 
     }
 
-    public abstract BusinessSharedAudienceResponse updateBusinessToBusinessSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, BusinessSharedAudience businessSharedAudience) throws Exception;
+    public abstract BusinessToBusinessSharedAudience updateBusinessToBusinessSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody) throws Exception;
 
 }

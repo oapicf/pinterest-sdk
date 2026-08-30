@@ -1,7 +1,7 @@
 /*
  * CatalogsHotelGuestRatings.h
  *
- * If specified, you must provide all properties
+ * 
  */
 
 #ifndef _CatalogsHotelGuestRatings_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief If specified, you must provide all properties
+/*! \brief 
  *
  *  \ingroup Models
  *

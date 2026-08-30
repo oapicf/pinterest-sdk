@@ -11,79 +11,54 @@
 part of openapi.api;
 
 /// Currency Codes from ISO 4217
-class Currency {
-  /// Instantiate a new enum with the provided [value].
-  const Currency._(this.value);
+enum Currency {
+  UNK._(r'UNK'),
+  USD._(r'USD'),
+  GBP._(r'GBP'),
+  CAD._(r'CAD'),
+  EUR._(r'EUR'),
+  AUD._(r'AUD'),
+  NZD._(r'NZD'),
+  SEK._(r'SEK'),
+  ILS._(r'ILS'),
+  CHF._(r'CHF'),
+  HKD._(r'HKD'),
+  JPY._(r'JPY'),
+  SGD._(r'SGD'),
+  KRW._(r'KRW'),
+  NOK._(r'NOK'),
+  DKK._(r'DKK'),
+  PLN._(r'PLN'),
+  RON._(r'RON'),
+  HUF._(r'HUF'),
+  CZK._(r'CZK'),
+  BRL._(r'BRL'),
+  MXN._(r'MXN'),
+  ARS._(r'ARS'),
+  CLP._(r'CLP'),
+  COP._(r'COP'),
+  INR._(r'INR'),
+  TRY._(r'TRY'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const Currency._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const UNK = Currency._(r'UNK');
-  static const USD = Currency._(r'USD');
-  static const GBP = Currency._(r'GBP');
-  static const CAD = Currency._(r'CAD');
-  static const EUR = Currency._(r'EUR');
-  static const AUD = Currency._(r'AUD');
-  static const NZD = Currency._(r'NZD');
-  static const SEK = Currency._(r'SEK');
-  static const ILS = Currency._(r'ILS');
-  static const CHF = Currency._(r'CHF');
-  static const HKD = Currency._(r'HKD');
-  static const JPY = Currency._(r'JPY');
-  static const SGD = Currency._(r'SGD');
-  static const KRW = Currency._(r'KRW');
-  static const NOK = Currency._(r'NOK');
-  static const DKK = Currency._(r'DKK');
-  static const PLN = Currency._(r'PLN');
-  static const RON = Currency._(r'RON');
-  static const HUF = Currency._(r'HUF');
-  static const CZK = Currency._(r'CZK');
-  static const BRL = Currency._(r'BRL');
-  static const MXN = Currency._(r'MXN');
-  static const ARS = Currency._(r'ARS');
-  static const CLP = Currency._(r'CLP');
-  static const COP = Currency._(r'COP');
-  static const INR = Currency._(r'INR');
-  static const TRY = Currency._(r'TRY');
-
-  /// List of all possible values in this [enum][Currency].
-  static const values = <Currency>[
-    UNK,
-    USD,
-    GBP,
-    CAD,
-    EUR,
-    AUD,
-    NZD,
-    SEK,
-    ILS,
-    CHF,
-    HKD,
-    JPY,
-    SGD,
-    KRW,
-    NOK,
-    DKK,
-    PLN,
-    RON,
-    HUF,
-    CZK,
-    BRL,
-    MXN,
-    ARS,
-    CLP,
-    COP,
-    INR,
-    TRY,
-  ];
-
+  /// Returns the instance of [Currency] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static Currency? fromJson(dynamic value) => CurrencyTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [Currency]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<Currency> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Currency>[];
     if (json is List && json.isNotEmpty) {
@@ -105,9 +80,11 @@ class CurrencyTypeTransformer {
 
   const CurrencyTypeTransformer._();
 
-  String encode(Currency data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(Currency data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a Currency.
+  /// Returns the instance of [Currency] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -116,6 +93,9 @@ class CurrencyTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   Currency? decode(dynamic data, {bool allowNull = true}) {
+    if (data is Currency) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'UNK': return Currency.UNK;
@@ -154,7 +134,7 @@ class CurrencyTypeTransformer {
     return null;
   }
 
-  /// Singleton [CurrencyTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CurrencyTypeTransformer? _instance;
 }
 

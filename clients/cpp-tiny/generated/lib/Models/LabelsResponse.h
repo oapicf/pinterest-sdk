@@ -54,14 +54,14 @@ public:
 
 	/*! \brief Set Labels that were not successfully applied.
 	 */
-	void setErrors(std::list <LabelError> errors);
+	void setErrors(std::list<LabelError> errors);
 	/*! \brief Get 
 	 */
 	std::list<Label> getLabels();
 
 	/*! \brief Set 
 	 */
-	void setLabels(std::list <Label> labels);
+	void setLabels(std::list<Label> labels);
 
 
     private:

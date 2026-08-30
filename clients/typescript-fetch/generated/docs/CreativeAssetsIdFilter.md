@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`cREATIVEASSETSID` | [CatalogsProductGroupMultipleStringCriteria](.md)
+`cREATIVEASSETSID` | [CatalogsProductGroupMultipleStringCriteria](CatalogsProductGroupMultipleStringCriteria.md)
 
 ## Example
 

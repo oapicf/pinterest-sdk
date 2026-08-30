@@ -1,6 +1,7 @@
 
 # BidFloorSpec
 
+Bid floor specification for a given campaign configuration.
 
 ## Properties
 
@@ -10,7 +11,7 @@ Name | Type
 `countries` | [Array&lt;Country&gt;](Country.md)
 `creativeType` | [CreativeType](CreativeType.md)
 `currency` | [Currency](Currency.md)
-`objectiveType` | [ObjectiveType](ObjectiveType.md)
+`objectiveType` | [BidFloorObjectiveType](BidFloorObjectiveType.md)
 `optimizationGoalMetadata` | [OptimizationGoalMetadata](OptimizationGoalMetadata.md)
 
 ## Example

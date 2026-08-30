@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.BillingInvoiceResponse;
+import apimodels.BillingInvoice;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 /**
  * BillingInvoicesGet200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class BillingInvoicesGet200Response   {
   @JsonProperty("bookmark")
@@ -26,7 +26,7 @@ public class BillingInvoicesGet200Response   {
   @NotNull
 @Valid
 
-  private List<@Valid BillingInvoiceResponse> items = new ArrayList<>();
+  private List<@Valid BillingInvoice> items = new ArrayList<>();
 
   public BillingInvoicesGet200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -45,12 +45,12 @@ public class BillingInvoicesGet200Response   {
     this.bookmark = bookmark;
   }
 
-  public BillingInvoicesGet200Response items(List<@Valid BillingInvoiceResponse> items) {
+  public BillingInvoicesGet200Response items(List<@Valid BillingInvoice> items) {
     this.items = items;
     return this;
   }
 
-  public BillingInvoicesGet200Response addItemsItem(BillingInvoiceResponse itemsItem) {
+  public BillingInvoicesGet200Response addItemsItem(BillingInvoice itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -62,11 +62,11 @@ public class BillingInvoicesGet200Response   {
    * Get items
    * @return items
   **/
-  public List<@Valid BillingInvoiceResponse> getItems() {
+  public List<@Valid BillingInvoice> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid BillingInvoiceResponse> items) {
+  public void setItems(List<@Valid BillingInvoice> items) {
     this.items = items;
   }
 
@@ -106,10 +106,7 @@ public class BillingInvoicesGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -22,7 +22,7 @@ class CatalogsVerticalProductGroupCreateRequest {
     required this.name,
   });
 
-  /// Catalog id pertaining to the creative assets product group.
+  /// Catalog ID pertaining to the product group.
   String catalogId;
 
   CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum catalogType;
@@ -108,10 +108,14 @@ class CatalogsVerticalProductGroupCreateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsVerticalProductGroupCreateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsVerticalProductGroupCreateRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_id'), 'Required key "CatalogsVerticalProductGroupCreateRequest[catalog_id]" is missing from JSON.');
+        assert(json[r'catalog_id'] != null, 'Required key "CatalogsVerticalProductGroupCreateRequest[catalog_id]" has a null value in JSON.');
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsVerticalProductGroupCreateRequest[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsVerticalProductGroupCreateRequest[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'filters'), 'Required key "CatalogsVerticalProductGroupCreateRequest[filters]" is missing from JSON.');
+        assert(json[r'filters'] != null, 'Required key "CatalogsVerticalProductGroupCreateRequest[filters]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "CatalogsVerticalProductGroupCreateRequest[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "CatalogsVerticalProductGroupCreateRequest[name]" has a null value in JSON.');
         return true;
       }());
 
@@ -178,27 +182,28 @@ class CatalogsVerticalProductGroupCreateRequest {
 }
 
 
-class CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum._(this.value);
+enum CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum {
+  CREATIVE_ASSETS._(r'CREATIVE_ASSETS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CREATIVE_ASSETS = CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum._(r'CREATIVE_ASSETS');
-
-  /// List of all possible values in this [enum][CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum].
-  static const values = <CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum>[
-    CREATIVE_ASSETS,
-  ];
-
+  /// Returns the instance of [CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum? fromJson(dynamic value) => CatalogsVerticalProductGroupCreateRequestCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -220,9 +225,10 @@ class CatalogsVerticalProductGroupCreateRequestCatalogTypeEnumTypeTransformer {
 
   const CatalogsVerticalProductGroupCreateRequestCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum data) => data.value;
+  String encode(CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum.
+  /// Returns the instance of [CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -231,6 +237,9 @@ class CatalogsVerticalProductGroupCreateRequestCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CREATIVE_ASSETS': return CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum.CREATIVE_ASSETS;
@@ -243,7 +252,7 @@ class CatalogsVerticalProductGroupCreateRequestCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsVerticalProductGroupCreateRequestCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsVerticalProductGroupCreateRequestCatalogTypeEnumTypeTransformer? _instance;
 }
 

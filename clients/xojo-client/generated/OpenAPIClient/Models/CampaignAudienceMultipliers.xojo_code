@@ -2,6 +2,9 @@
 Protected Class CampaignAudienceMultipliers
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Audience ID for the multiplier.
+		#tag EndNote
 		AUDIENCE_ID As Xoson.O.OptionalString
 	#tag EndProperty
 

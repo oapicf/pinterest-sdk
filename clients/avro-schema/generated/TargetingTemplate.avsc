@@ -1,0 +1,88 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingTemplate",
+  "fields": [
+    {
+      "name": "ad_account_id",
+      "type": ["null", "string"],
+      "doc": "The ID of the advertiser that this targeting template belongs to.",
+      "default": null
+    },
+    {
+      "name": "auto_targeting_enabled",
+      "type": ["boolean", "null"],
+      "doc": "Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).",
+      "default": true
+    },
+    {
+      "name": "created_time",
+      "type": ["null", "int"],
+      "doc": "Targeting template created time. Unix timestamp in seconds.",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Targeting template ID.",
+      "default": null
+    },
+    {
+      "name": "keywords",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.TargetingTemplateKeyword"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "targeting template name"
+    },
+    {
+      "name": "placement_group",
+      "type": ["null", "model.PlacementGroupType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "sizing",
+      "type": ["null", "model.TargetingTemplateAudienceSizing"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.TargetingTemplateStatus"],
+      "doc": "Indicate targeting template is active or Deleted",
+      "default": null
+    },
+    {
+      "name": "targeting_attributes",
+      "type": "model.TargetingSpecOptimal",
+      "doc": "targeting profile attributes"
+    },
+    {
+      "name": "tracking_urls",
+      "type": ["null", "model.TrackingUrls"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "updated_time",
+      "type": ["null", "int"],
+      "doc": "Targeting template updated time.Unix timestamp in seconds.",
+      "default": null
+    },
+    {
+      "name": "valid",
+      "type": ["null", "boolean"],
+      "doc": "Inform if the targeting template is valid (ex. would be false if has revoked audience)",
+      "default": null
+    }
+  ]
+
+}

@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -9,122 +10,62 @@ import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.IntegrationLogClientError;
 import org.openapitools.model.IntegrationLogClientRequest;
+import org.openapitools.model.IntegrationLogEventType;
+import org.openapitools.model.IntegrationLogLevel;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Schema for log sent from an integration application.
  */
 
 @Schema(name = "IntegrationLog", description = "Schema for log sent from an integration application.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationLog {
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 128) String> advertiserId = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String appVersionNumber;
 
   private Integer clientTimestamp;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable IntegrationLogClientError error;
 
-  /**
-   * Log event type
-   */
-  public enum EventTypeEnum {
-    APP("APP"),
-    
-    API("API");
+  private IntegrationLogEventType eventType;
 
-    private final String value;
-
-    EventTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static EventTypeEnum fromValue(String value) {
-      for (EventTypeEnum b : EventTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private EventTypeEnum eventType;
-
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2048) String> externalBusinessId = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 128) String> feedProfileId = JsonNullable.<String>undefined();
 
-  /**
-   * Log level type
-   */
-  public enum LogLevelEnum {
-    INFO("INFO"),
-    
-    WARN("WARN"),
-    
-    ERROR("ERROR");
+  private IntegrationLogLevel logLevel;
 
-    private final String value;
-
-    LogLevelEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static LogLevelEnum fromValue(String value) {
-      for (LogLevelEnum b : LogLevelEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private LogLevelEnum logLevel;
-
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 128) String> merchantId = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String message;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String platformVersionNumber;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable IntegrationLogClientRequest request;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 128) String> tagId = JsonNullable.<String>undefined();
 
   public IntegrationLog() {
@@ -134,7 +75,7 @@ public class IntegrationLog {
   /**
    * Constructor with only required parameters
    */
-  public IntegrationLog(Integer clientTimestamp, EventTypeEnum eventType, LogLevelEnum logLevel) {
+  public IntegrationLog(Integer clientTimestamp, IntegrationLogEventType eventType, IntegrationLogLevel logLevel) {
     this.clientTimestamp = clientTimestamp;
     this.eventType = eventType;
     this.logLevel = logLevel;
@@ -176,6 +117,7 @@ public class IntegrationLog {
     return appVersionNumber;
   }
 
+  @JsonProperty("app_version_number")
   public void setAppVersionNumber(@Nullable String appVersionNumber) {
     this.appVersionNumber = appVersionNumber;
   }
@@ -196,6 +138,7 @@ public class IntegrationLog {
     return clientTimestamp;
   }
 
+  @JsonProperty("client_timestamp")
   public void setClientTimestamp(Integer clientTimestamp) {
     this.clientTimestamp = clientTimestamp;
   }
@@ -216,11 +159,12 @@ public class IntegrationLog {
     return error;
   }
 
+  @JsonProperty("error")
   public void setError(@Nullable IntegrationLogClientError error) {
     this.error = error;
   }
 
-  public IntegrationLog eventType(EventTypeEnum eventType) {
+  public IntegrationLog eventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -229,14 +173,15 @@ public class IntegrationLog {
    * Log event type
    * @return eventType
    */
-  @NotNull 
+  @NotNull @Valid 
   @Schema(name = "event_type", description = "Log event type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("event_type")
-  public EventTypeEnum getEventType() {
+  public IntegrationLogEventType getEventType() {
     return eventType;
   }
 
-  public void setEventType(EventTypeEnum eventType) {
+  @JsonProperty("event_type")
+  public void setEventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
   }
 
@@ -280,7 +225,7 @@ public class IntegrationLog {
     this.feedProfileId = feedProfileId;
   }
 
-  public IntegrationLog logLevel(LogLevelEnum logLevel) {
+  public IntegrationLog logLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
     return this;
   }
@@ -289,14 +234,15 @@ public class IntegrationLog {
    * Log level type
    * @return logLevel
    */
-  @NotNull 
+  @NotNull @Valid 
   @Schema(name = "log_level", description = "Log level type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("log_level")
-  public LogLevelEnum getLogLevel() {
+  public IntegrationLogLevel getLogLevel() {
     return logLevel;
   }
 
-  public void setLogLevel(LogLevelEnum logLevel) {
+  @JsonProperty("log_level")
+  public void setLogLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
   }
 
@@ -336,6 +282,7 @@ public class IntegrationLog {
     return message;
   }
 
+  @JsonProperty("message")
   public void setMessage(@Nullable String message) {
     this.message = message;
   }
@@ -356,6 +303,7 @@ public class IntegrationLog {
     return platformVersionNumber;
   }
 
+  @JsonProperty("platform_version_number")
   public void setPlatformVersionNumber(@Nullable String platformVersionNumber) {
     this.platformVersionNumber = platformVersionNumber;
   }
@@ -376,6 +324,7 @@ public class IntegrationLog {
     return request;
   }
 
+  @JsonProperty("request")
   public void setRequest(@Nullable IntegrationLogClientRequest request) {
     this.request = request;
   }
@@ -465,11 +414,8 @@ public class IntegrationLog {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

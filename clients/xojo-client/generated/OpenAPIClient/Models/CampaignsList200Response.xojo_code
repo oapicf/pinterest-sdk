@@ -7,7 +7,7 @@ Protected Class CampaignsList200Response
 
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.CampaignResponse
+		items() As OpenAPIClient.Models.Campaign
 	#tag EndProperty
 
 
@@ -60,7 +60,7 @@ Protected Class CampaignsList200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CampaignResponse"
+			Type="Campaign"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

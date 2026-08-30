@@ -2,77 +2,82 @@
 Protected Class CatalogsCreativeAssetsProductGroupFilterKeys
 
 	#tag Property, Flags = &h0
-		CREATIVE_ASSETS_ID As CatalogsProductGroupMultipleStringCriteria
+		CREATIVE_ASSETS_ID As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_0 As CatalogsProductGroupFilterOperatorTypeCriteria
+		CUSTOM_LABEL_0 As OpenAPIClient.Models.CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_1 As CatalogsProductGroupFilterOperatorTypeCriteria
+		CUSTOM_LABEL_1 As OpenAPIClient.Models.CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_2 As CatalogsProductGroupFilterOperatorTypeCriteria
+		CUSTOM_LABEL_2 As OpenAPIClient.Models.CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_3 As CatalogsProductGroupFilterOperatorTypeCriteria
+		CUSTOM_LABEL_3 As OpenAPIClient.Models.CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_4 As CatalogsProductGroupFilterOperatorTypeCriteria
+		CUSTOM_LABEL_4 As OpenAPIClient.Models.CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		GOOGLE_PRODUCT_CATEGORY_6 As CatalogsProductGroupMultipleStringListCriteria
+		GOOGLE_PRODUCT_CATEGORY_6 As OpenAPIClient.Models.CatalogsProductGroupMultipleStringListCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		GOOGLE_PRODUCT_CATEGORY_5 As CatalogsProductGroupMultipleStringListCriteria
+		GOOGLE_PRODUCT_CATEGORY_5 As OpenAPIClient.Models.CatalogsProductGroupMultipleStringListCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		GOOGLE_PRODUCT_CATEGORY_4 As CatalogsProductGroupMultipleStringListCriteria
+		GOOGLE_PRODUCT_CATEGORY_4 As OpenAPIClient.Models.CatalogsProductGroupMultipleStringListCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		GOOGLE_PRODUCT_CATEGORY_3 As CatalogsProductGroupMultipleStringListCriteria
+		GOOGLE_PRODUCT_CATEGORY_3 As OpenAPIClient.Models.CatalogsProductGroupMultipleStringListCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		GOOGLE_PRODUCT_CATEGORY_2 As CatalogsProductGroupMultipleStringListCriteria
+		GOOGLE_PRODUCT_CATEGORY_2 As OpenAPIClient.Models.CatalogsProductGroupMultipleStringListCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		GOOGLE_PRODUCT_CATEGORY_1 As CatalogsProductGroupMultipleStringListCriteria
+		GOOGLE_PRODUCT_CATEGORY_1 As OpenAPIClient.Models.CatalogsProductGroupMultipleStringListCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		GOOGLE_PRODUCT_CATEGORY_0 As CatalogsProductGroupMultipleStringListCriteria
+		GOOGLE_PRODUCT_CATEGORY_0 As OpenAPIClient.Models.CatalogsProductGroupMultipleStringListCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		MEDIA_TYPE As CatalogsProductGroupMultipleMediaTypesCriteria
+		MEDIA_TYPE As OpenAPIClient.Models.CatalogsProductGroupMultipleMediaTypesCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		TITLE_KEYWORDS As CatalogsProductGroupMultipleStringCriteria
+		TITLE_KEYWORDS As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		LINK As OpenAPIClient.Models.CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
@@ -230,6 +235,14 @@ Protected Class CatalogsCreativeAssetsProductGroupFilterKeys
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsProductGroupMultipleStringCriteria"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LINK"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsProductGroupFilterOperatorTypeCriteria"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

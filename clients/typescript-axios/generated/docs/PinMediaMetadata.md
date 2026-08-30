@@ -1,5 +1,6 @@
 # PinMediaMetadata
 
+Per-item entry inside `PinMedia.items` for mixed image/video pins. Discriminated by `item_type`.
 
 ## Properties
 
@@ -7,13 +8,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **string** |  | [optional] [default to undefined]
 **images** | [**ImageSize**](ImageSize.md) |  | [optional] [default to undefined]
-**item_type** | **string** |  | [optional] [default to undefined]
+**item_type** | **string** | Discriminator literal identifying this as video metadata inside a &#x60;PinMediaMetadata&#x60; payload. | [default to undefined]
 **link** | **string** |  | [optional] [default to undefined]
 **title** | **string** |  | [optional] [default to undefined]
 **cover_image_url** | **string** |  | [optional] [default to undefined]
 **duration** | **number** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] [default to undefined]
 **height** | **number** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] [default to undefined]
 **video_url** | **string** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] [default to undefined]
+**video_url_hls** | **string** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] [default to undefined]
 **width** | **number** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] [default to undefined]
 
 ## Example
@@ -31,6 +33,7 @@ const instance: PinMediaMetadata = {
     duration,
     height,
     video_url,
+    video_url_hls,
     width,
 };
 ```

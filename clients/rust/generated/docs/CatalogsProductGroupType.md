@@ -13,6 +13,7 @@
 | NewArrivals | NEW_ARRIVALS |
 | ShopifyCollections | SHOPIFY_COLLECTIONS |
 | I2Pc | I2PC |
+| CatalogExpansion | CATALOG_EXPANSION |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

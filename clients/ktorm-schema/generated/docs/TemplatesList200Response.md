@@ -5,18 +5,18 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;TemplateResponse&gt;**](TemplateResponse.md) |  | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AccountTemplate&gt;**](AccountTemplate.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 
-# **Table `TemplatesList200ResponseTemplateResponse`**
-(mapped from: TemplatesList200ResponseTemplateResponse)
+# **Table `TemplatesList200ResponseAccountTemplate`**
+(mapped from: TemplatesList200ResponseAccountTemplate)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 templatesList200Response | templatesList200Response | long | | kotlin.Long | Primary Key | *one*
-templateResponse | templateResponse | long | | kotlin.Long | Foreign Key | *many*
+accountTemplate | accountTemplate | long | | kotlin.Long | Foreign Key | *many*
 
 
 

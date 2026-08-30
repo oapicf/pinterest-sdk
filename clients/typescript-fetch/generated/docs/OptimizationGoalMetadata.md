@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`conversionTagV3GoalMetadata` | [OptimizationGoalMetadataConversionTagV3GoalMetadata](OptimizationGoalMetadataConversionTagV3GoalMetadata.md)
-`frequencyGoalMetadata` | [OptimizationGoalMetadataFrequencyGoalMetadata](OptimizationGoalMetadataFrequencyGoalMetadata.md)
-`scrollupGoalMetadata` | [OptimizationGoalMetadataScrollupGoalMetadata](OptimizationGoalMetadataScrollupGoalMetadata.md)
+`conversionTagV3GoalMetadata` | [ConversionTagV3GoalMetadata](ConversionTagV3GoalMetadata.md)
+`frequencyGoalMetadata` | [FrequencyGoalMetadata](FrequencyGoalMetadata.md)
+`scrollupGoalMetadata` | [ScrollupGoalMetadata](ScrollupGoalMetadata.md)
 
 ## Example
 

@@ -3,6 +3,7 @@ package org.openapitools.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -11,7 +12,7 @@ import org.openapitools.model.ImageSize;
 /**
  * ImageMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ImageMetadata   {
   @JsonProperty("description")
   private String description;
@@ -19,8 +20,37 @@ public class ImageMetadata   {
   @JsonProperty("images")
   private ImageSize images;
 
+  /**
+   * Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
+   */
+  public enum ItemTypeEnum {
+    IMAGE("image");
+
+    private String value;
+
+    ItemTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ItemTypeEnum fromValue(String text) {
+      for (ItemTypeEnum b : ItemTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
   @JsonProperty("item_type")
-  private String itemType;
+  private ItemTypeEnum itemType;
 
   @JsonProperty("link")
   private String link;
@@ -64,21 +94,21 @@ public class ImageMetadata   {
     this.images = images;
   }
 
-  public ImageMetadata itemType(String itemType) {
+  public ImageMetadata itemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
     return this;
   }
 
    /**
-   * Get itemType
+   * Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
    * @return itemType
   **/
-  @ApiModelProperty(value = "")
-  public String getItemType() {
+  @ApiModelProperty(required = true, value = "Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.")
+  public ItemTypeEnum getItemType() {
     return itemType;
   }
 
-  public void setItemType(String itemType) {
+  public void setItemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
   }
 
@@ -159,10 +189,7 @@ public class ImageMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

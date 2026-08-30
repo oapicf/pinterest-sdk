@@ -9,7 +9,7 @@ import org.openapitools.model.CatalogsHotelProductGroupType;
 
 @Canonical
 class CatalogsHotelProductGroup {
-    /* Catalog id pertaining to the hotel product group. */
+    /* Catalog ID pertaining to the product group. */
     String catalogId
 
     enum CatalogTypeEnum {
@@ -40,9 +40,9 @@ class CatalogsHotelProductGroup {
     String description
     
     CatalogsHotelProductGroupFilters filters
-    /* ID of the hotel product group. */
+    /* ID of the catalog product group. */
     String id
-    /* Name of hotel product group */
+    /* Name of catalog product group */
     String name
     
     CatalogsHotelProductGroupType type

@@ -2,8 +2,8 @@ package models
 
 type CatalogsHotelProductGroup struct {
 
-	// Catalog id pertaining to the hotel product group.
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	// Catalog ID pertaining to the product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\d+$"`
 
 	CatalogType string `json:"catalog_type"`
 
@@ -14,10 +14,10 @@ type CatalogsHotelProductGroup struct {
 
 	Filters CatalogsHotelProductGroupFilters `json:"filters"`
 
-	// ID of the hotel product group.
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	// ID of the catalog product group.
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
-	// Name of hotel product group
+	// Name of catalog product group
 	Name string `json:"name,omitempty"`
 
 	Type CatalogsHotelProductGroupType `json:"type"`

@@ -56,19 +56,37 @@ class LabelsApiSimulation extends Simulation {
     }
 
     // Setup all the operations per second for the test to ultimately be generated from configs
+    val labelsApplyPerSecond = config.getDouble("performance.operationsPerSecond.labelsApply") * rateMultiplier * instanceMultiplier
     val labelsCreatePerSecond = config.getDouble("performance.operationsPerSecond.labelsCreate") * rateMultiplier * instanceMultiplier
     val labelsListPerSecond = config.getDouble("performance.operationsPerSecond.labelsList") * rateMultiplier * instanceMultiplier
+    val labelsRemovePerSecond = config.getDouble("performance.operationsPerSecond.labelsRemove") * rateMultiplier * instanceMultiplier
     val labelsUpdatePerSecond = config.getDouble("performance.operationsPerSecond.labelsUpdate") * rateMultiplier * instanceMultiplier
 
     val scenarioBuilders: mutable.MutableList[PopulationBuilder] = new mutable.MutableList[PopulationBuilder]()
 
     // Set up CSV feeders
+    val labels/applyPATHFeeder = csv(userDataDirectory + File.separator + "labelsApply-pathParams.csv").random
     val labels/createPATHFeeder = csv(userDataDirectory + File.separator + "labelsCreate-pathParams.csv").random
     val labels/listQUERYFeeder = csv(userDataDirectory + File.separator + "labelsList-queryParams.csv").random
     val labels/listPATHFeeder = csv(userDataDirectory + File.separator + "labelsList-pathParams.csv").random
+    val labels/removePATHFeeder = csv(userDataDirectory + File.separator + "labelsRemove-pathParams.csv").random
     val labels/updatePATHFeeder = csv(userDataDirectory + File.separator + "labelsUpdate-pathParams.csv").random
 
     // Setup all scenarios
+
+    
+    val scnlabelsApply = scenario("labelsApplySimulation")
+        .feed(labels/applyPATHFeeder)
+        .exec(http("labelsApply")
+        .httpRequest("POST","/ad_accounts/${ad_account_id}/labels/${label_id}/apply")
+)
+
+    // Run scnlabelsApply with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnlabelsApply.inject(
+        rampUsersPerSec(1) to(labelsApplyPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(labelsApplyPerSecond) during(durationSeconds),
+        rampUsersPerSec(labelsApplyPerSecond) to(1) during(rampDownSeconds)
+    )
 
     
     val scnlabelsCreate = scenario("labelsCreateSimulation")
@@ -90,12 +108,12 @@ class LabelsApiSimulation extends Simulation {
         .feed(labels/listPATHFeeder)
         .exec(http("labelsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/labels")
-        .queryParam("label_types","${label_types}")
-        .queryParam("campaign_ids","${campaign_ids}")
         .queryParam("entity_statuses","${entity_statuses}")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("page_size","${page_size}")
+        .queryParam("campaign_ids","${campaign_ids}")
         .queryParam("label_ids","${label_ids}")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("label_types","${label_types}")
+        .queryParam("page_size","${page_size}")
 )
 
     // Run scnlabelsList with warm up and reach a constant rate for entire duration
@@ -103,6 +121,20 @@ class LabelsApiSimulation extends Simulation {
         rampUsersPerSec(1) to(labelsListPerSecond) during(rampUpSeconds),
         constantUsersPerSec(labelsListPerSecond) during(durationSeconds),
         rampUsersPerSec(labelsListPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnlabelsRemove = scenario("labelsRemoveSimulation")
+        .feed(labels/removePATHFeeder)
+        .exec(http("labelsRemove")
+        .httpRequest("POST","/ad_accounts/${ad_account_id}/labels/${label_id}/remove")
+)
+
+    // Run scnlabelsRemove with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnlabelsRemove.inject(
+        rampUsersPerSec(1) to(labelsRemovePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(labelsRemovePerSecond) during(durationSeconds),
+        rampUsersPerSec(labelsRemovePerSecond) to(1) during(rampDownSeconds)
     )
 
     

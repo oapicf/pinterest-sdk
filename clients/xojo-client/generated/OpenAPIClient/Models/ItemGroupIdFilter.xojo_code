@@ -2,7 +2,7 @@
 Protected Class ItemGroupIdFilter
 
 	#tag Property, Flags = &h0
-		ITEM_GROUP_ID As CatalogsProductGroupMultipleStringCriteria
+		ITEM_GROUP_ID As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 

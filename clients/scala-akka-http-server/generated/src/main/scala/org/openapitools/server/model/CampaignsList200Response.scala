@@ -7,6 +7,6 @@ package org.openapitools.server.model
 */
 final case class CampaignsList200Response (
   bookmark: Option[String] = None,
-  items: Seq[CampaignResponse]
+  items: Seq[Campaign]
 )
 

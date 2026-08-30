@@ -1,0 +1,52 @@
+package com.prokarma.pkmst.model;
+
+import java.util.Objects;
+import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonValue;
+/**
+ * Response class to be returned by Api
+ * @author pkmst
+ *
+ */
+import com.fasterxml.jackson.annotation.JsonCreator;
+
+/**
+ * Audience processing status
+ */
+public enum AudienceStatus {
+  
+  INITIALIZING("INITIALIZING"),
+  
+  READY("READY"),
+  
+  TOO_SMALL("TOO_SMALL"),
+  
+  ELIGIBLE("ELIGIBLE"),
+  
+  PERSONAS_INELIGIBLE_SIZE("PERSONAS_INELIGIBLE_SIZE"),
+  
+  PERSONAS_INITIALIZING("PERSONAS_INITIALIZING");
+
+  private String value;
+
+  AudienceStatus(String value) {
+    this.value = value;
+  }
+
+  @Override
+  @JsonValue
+  public String toString() {
+    return String.valueOf(value);
+  }
+
+  @JsonCreator
+  public static AudienceStatus fromValue(String text) {
+    for (AudienceStatus b : AudienceStatus.values()) {
+      if (String.valueOf(b.value).equals(text)) {
+        return b;
+      }
+    }
+    throw new IllegalArgumentException("Unexpected value '" + text + "'");
+  }
+}
+

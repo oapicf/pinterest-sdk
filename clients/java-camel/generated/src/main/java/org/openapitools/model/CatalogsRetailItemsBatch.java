@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -11,7 +12,6 @@ import java.util.Date;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BatchOperationStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemProcessingRecord;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.util.NoSuchElementException;
@@ -20,25 +20,58 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Object describing the catalogs retail items batch
  */
 
 @Schema(name = "CatalogsRetailItemsBatch", description = "Object describing the catalogs retail items batch")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailItemsBatch implements CatalogsItemsBatch {
 
   private String batchId;
 
-  private CatalogsType catalogType;
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    RETAIL("RETAIL");
+
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private JsonNullable<Date> completedTime = JsonNullable.<Date>undefined();
@@ -58,7 +91,7 @@ public class CatalogsRetailItemsBatch implements CatalogsItemsBatch {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailItemsBatch(CatalogsType catalogType, Date createdTime) {
+  public CatalogsRetailItemsBatch(CatalogTypeEnum catalogType, Date createdTime) {
     this.catalogType = catalogType;
     this.createdTime = JsonNullable.of(createdTime);
   }
@@ -72,8 +105,8 @@ public class CatalogsRetailItemsBatch implements CatalogsItemsBatch {
    * Id of the catalogs items batch
    * @return batchId
    */
-  
-  @Schema(name = "batch_id", example = "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e", description = "Id of the catalogs items batch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "batch_id", example = "595953100599279259", description = "Id of the catalogs items batch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("batch_id")
   public String getBatchId() {
     return batchId;
@@ -83,7 +116,7 @@ public class CatalogsRetailItemsBatch implements CatalogsItemsBatch {
     this.batchId = batchId;
   }
 
-  public CatalogsRetailItemsBatch catalogType(CatalogsType catalogType) {
+  public CatalogsRetailItemsBatch catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -92,14 +125,14 @@ public class CatalogsRetailItemsBatch implements CatalogsItemsBatch {
    * Get catalogType
    * @return catalogType
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -113,7 +146,7 @@ public class CatalogsRetailItemsBatch implements CatalogsItemsBatch {
    * @return completedTime
    */
   @Valid 
-  @Schema(name = "completed_time", accessMode = Schema.AccessMode.READ_ONLY, description = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "completed_time", example = "2024-01-01T20:20Z", description = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("completed_time")
   public JsonNullable<Date> getCompletedTime() {
     return completedTime;
@@ -132,8 +165,8 @@ public class CatalogsRetailItemsBatch implements CatalogsItemsBatch {
    * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
    * @return createdTime
    */
-  @Valid 
-  @Schema(name = "created_time", accessMode = Schema.AccessMode.READ_ONLY, description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "created_time", example = "2024-01-01T20:10:40Z", description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("created_time")
   public JsonNullable<Date> getCreatedTime() {
     return createdTime;
@@ -243,10 +276,7 @@ public class CatalogsRetailItemsBatch implements CatalogsItemsBatch {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

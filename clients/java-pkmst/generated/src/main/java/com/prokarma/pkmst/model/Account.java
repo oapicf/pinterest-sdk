@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.prokarma.pkmst.model.UserAccountType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -13,47 +14,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
  *
  */
 /**
- * Account
+ * User account model containing properties related to a user&#39;s account.
  */
+@ApiModel(description = "User account model containing properties related to a user's account.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Account   {
   @JsonProperty("about")
   private String about;
 
-  /**
-   * Type of account
-   */
-  public enum AccountTypeEnum {
-    PINNER("PINNER"),
-    
-    BUSINESS("BUSINESS");
-
-    private String value;
-
-    AccountTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static AccountTypeEnum fromValue(String text) {
-      for (AccountTypeEnum b : AccountTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
   @JsonProperty("account_type")
-  private AccountTypeEnum accountType;
+  private UserAccountType accountType;
 
   @JsonProperty("board_count")
   private Integer boardCount;
@@ -103,7 +74,7 @@ public class Account   {
     this.about = about;
   }
 
-  public Account accountType(AccountTypeEnum accountType) {
+  public Account accountType(UserAccountType accountType) {
     this.accountType = accountType;
     return this;
   }
@@ -113,11 +84,11 @@ public class Account   {
    * @return accountType
    */
   @ApiModelProperty(value = "Type of account")
-  public AccountTypeEnum getAccountType() {
+  public UserAccountType getAccountType() {
     return accountType;
   }
 
-  public void setAccountType(AccountTypeEnum accountType) {
+  public void setAccountType(UserAccountType accountType) {
     this.accountType = accountType;
   }
 
@@ -127,10 +98,10 @@ public class Account   {
   }
 
   /**
-   * User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+   *   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
    * @return boardCount
    */
-  @ApiModelProperty(example = "14", readOnly = true, value = "User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.")
+  @ApiModelProperty(example = "14", readOnly = true, value = "  User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.")
   public Integer getBoardCount() {
     return boardCount;
   }
@@ -356,10 +327,7 @@ public class Account   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

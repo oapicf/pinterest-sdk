@@ -5,34 +5,32 @@
   "name": "CatalogsFeed",
   "fields": [
     {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsFeed_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
+      "doc": ""
+    },
+    {
       "name": "created_at",
       "type": "string",
       "doc": ""
     },
     {
-      "name": "id",
-      "type": "string",
-      "doc": ""
-    },
-    {
-      "name": "updated_at",
-      "type": "string",
-      "doc": ""
-    },
-    {
-      "name": "catalog_type",
-      "type": "model.CatalogsType",
-      "doc": ""
-    },
-    {
       "name": "credentials",
-      "type": "model.CatalogsFeedCredentials",
-      "doc": ""
+      "type": ["null", "model.CatalogsFeedCredentials"],
+      "doc": "",
+      "default": null
     },
     {
       "name": "default_availability",
-      "type": "model.ProductAvailabilityType",
-      "doc": ""
+      "type": ["null", "model.ProductAvailabilityType"],
+      "doc": "",
+      "default": null
     },
     {
       "name": "default_country",
@@ -41,8 +39,9 @@
     },
     {
       "name": "default_currency",
-      "type": "model.NullableCurrency",
-      "doc": ""
+      "type": ["null", "model.NullableCurrency"],
+      "doc": "",
+      "default": null
     },
     {
       "name": "default_locale",
@@ -53,6 +52,11 @@
       "name": "format",
       "type": "model.CatalogsFormat",
       "doc": ""
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "ID of the feed entity."
     },
     {
       "name": "location",
@@ -66,12 +70,18 @@
     },
     {
       "name": "preferred_processing_schedule",
-      "type": "model.CatalogsFeedProcessingSchedule",
-      "doc": ""
+      "type": ["null", "model.CatalogsFeedProcessingSchedule"],
+      "doc": "",
+      "default": null
     },
     {
       "name": "status",
       "type": "model.CatalogsStatus",
+      "doc": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "string",
       "doc": ""
     },
     {

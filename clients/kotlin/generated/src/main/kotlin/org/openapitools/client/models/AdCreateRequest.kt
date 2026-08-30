@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -20,8 +28,6 @@ import org.openapitools.client.models.CustomizableCTAType
 import org.openapitools.client.models.DisclosureType
 import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.GridClickType
-import org.openapitools.client.models.QuizPinData
-import org.openapitools.client.models.TrackingUrls
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -43,6 +49,7 @@ import com.squareup.moshi.JsonClass
  * @param disclosureUrl URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
  * @param gridClickType 
  * @param iosDeepLink Deep link URL for iOS devices.
+ * @param isCarting Is the ad a carting/WTB ad?
  * @param isPinDeleted Is original pin deleted?
  * @param isRemovable Is pin repinnable?
  * @param leadFormId Lead form ID for lead ad generation.
@@ -108,6 +115,10 @@ data class AdCreateRequest (
     @Json(name = "ios_deep_link")
     val iosDeepLink: kotlin.String? = null,
 
+    /* Is the ad a carting/WTB ad? */
+    @Json(name = "is_carting")
+    val isCarting: kotlin.Boolean? = null,
+
     /* Is original pin deleted? */
     @Json(name = "is_pin_deleted")
     val isPinDeleted: kotlin.Boolean? = null,
@@ -126,13 +137,13 @@ data class AdCreateRequest (
 
     /* Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. */
     @Json(name = "quiz_pin_data")
-    val quizPinData: QuizPinData? = null,
+    val quizPinData: kotlin.Any? = null,
 
     @Json(name = "status")
     val status: EntityStatus? = null,
 
     @Json(name = "tracking_urls")
-    val trackingUrls: TrackingUrls? = null,
+    val trackingUrls: kotlin.Any? = null,
 
     /* Tracking URL for ad impressions. */
     @Json(name = "view_tracking_url")

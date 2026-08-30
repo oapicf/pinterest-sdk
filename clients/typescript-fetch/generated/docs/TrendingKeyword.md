@@ -23,11 +23,11 @@ import type { TrendingKeyword } from ''
 // TODO: Update the object below with actual values
 const example = {
   "demographics": null,
-  "hasPrediction": false,
-  "keyword": couples halloween costumes,
-  "pctGrowthMom": 400,
-  "pctGrowthWow": 50,
-  "pctGrowthYoy": -5,
+  "hasPrediction": null,
+  "keyword": null,
+  "pctGrowthMom": null,
+  "pctGrowthWow": null,
+  "pctGrowthYoy": null,
   "predictedTimeSeries": null,
   "timeSeries": null,
 } satisfies TrendingKeyword

@@ -6,8 +6,7 @@ case class QuizPinData (
     _questions: Option[List[QuizPinQuestion]],
     _results: Option[List[QuizPinResult]],
     _tieBreakerCustomResult: Option[QuizPinResult],
-    /* Quiz ad tie breaker type, default is RANDOM */
-    _tieBreakerType: Option[String]
+    _tieBreakerType: Option[TieBreakerType]
 )
 object QuizPinData {
     def toStringBody(var_questions: Object, var_results: Object, var_tieBreakerCustomResult: Object, var_tieBreakerType: Object) =

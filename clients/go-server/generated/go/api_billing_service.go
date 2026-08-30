@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -36,58 +36,57 @@ func (s *BillingAPIService) AdsCreditsDiscountsGet(ctx context.Context, adAccoun
 	// TODO: Uncomment the next line to return response Response(200, AdsCreditsDiscountsGet200Response{}) or use other options such as http.Ok ...
 	// return Response(200, AdsCreditsDiscountsGet200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AdsCreditsDiscountsGet method not implemented")
 }
 
 // AdsCreditRedeem - Redeem ad credits
-func (s *BillingAPIService) AdsCreditRedeem(ctx context.Context, adAccountId string, adsCreditRedeemRequest AdsCreditRedeemRequest) (ImplResponse, error) {
+func (s *BillingAPIService) AdsCreditRedeem(ctx context.Context, adAccountId string, adsCreditRedeemCreate AdsCreditRedeemCreate) (ImplResponse, error) {
 	// TODO - update AdsCreditRedeem with the required logic for this service method.
 	// Add api_billing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, AdsCreditRedeemResponse{}) or use other options such as http.Ok ...
-	// return Response(200, AdsCreditRedeemResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, AdsCreditRedeem{}) or use other options such as http.Ok ...
+	// return Response(200, AdsCreditRedeem{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, AdsCreditRedeem{}) or use other options such as http.Ok ...
+	// return Response(201, AdsCreditRedeem{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AdsCreditRedeem method not implemented")
-}
-
-// BillingProfilesGet - Get billing profiles
-func (s *BillingAPIService) BillingProfilesGet(ctx context.Context, adAccountId string, isActive bool, bookmark string, pageSize int32) (ImplResponse, error) {
-	// TODO - update BillingProfilesGet with the required logic for this service method.
-	// Add api_billing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, BillingProfilesGet200Response{}) or use other options such as http.Ok ...
-	// return Response(200, BillingProfilesGet200Response{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("BillingProfilesGet method not implemented")
-}
-
-// BillingInvoicesGet - Get billing invoices
-func (s *BillingAPIService) BillingInvoicesGet(ctx context.Context, adAccountId string, bookmark string, pageSize int32, sort string, order string, status string, documentType string, startDueDate string, endDueDate string) (ImplResponse, error) {
-	// TODO - update BillingInvoicesGet with the required logic for this service method.
-	// Add api_billing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, BillingInvoicesGet200Response{}) or use other options such as http.Ok ...
-	// return Response(200, BillingInvoicesGet200Response{}), nil
-
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("BillingInvoicesGet method not implemented")
 }
 
 // BillingInvoiceDownloadGet - Get download url for a billing invoice
@@ -98,13 +97,83 @@ func (s *BillingAPIService) BillingInvoiceDownloadGet(ctx context.Context, adAcc
 	// TODO: Uncomment the next line to return response Response(200, BillingInvoiceDownloadResponse{}) or use other options such as http.Ok ...
 	// return Response(200, BillingInvoiceDownloadResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BillingInvoiceDownloadGet method not implemented")
+}
+
+// BillingInvoicesGet - Get billing invoices
+func (s *BillingAPIService) BillingInvoicesGet(ctx context.Context, adAccountId string, bookmark string, pageSize int32, order PinterestLibPaginationOrder, sort BillingInvoiceSortField, status BillingInvoiceStatus, documentType BillingInvoiceDocumentType, startDueDate string, endDueDate string) (ImplResponse, error) {
+	// TODO - update BillingInvoicesGet with the required logic for this service method.
+	// Add api_billing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, BillingInvoicesGet200Response{}) or use other options such as http.Ok ...
+	// return Response(200, BillingInvoicesGet200Response{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("BillingInvoicesGet method not implemented")
+}
+
+// BillingProfilesGet - Get billing profiles
+func (s *BillingAPIService) BillingProfilesGet(ctx context.Context, isActive bool, adAccountId string, bookmark string, pageSize int32) (ImplResponse, error) {
+	// TODO - update BillingProfilesGet with the required logic for this service method.
+	// Add api_billing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, BillingProfilesGet200Response{}) or use other options such as http.Ok ...
+	// return Response(200, BillingProfilesGet200Response{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("BillingProfilesGet method not implemented")
 }
 
 // SsioAccountsGet - Get Salesforce account details including bill-to information.
@@ -112,48 +181,87 @@ func (s *BillingAPIService) SsioAccountsGet(ctx context.Context, adAccountId str
 	// TODO - update SsioAccountsGet with the required logic for this service method.
 	// Add api_billing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, SsioAccountResponse{}) or use other options such as http.Ok ...
-	// return Response(200, SsioAccountResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, SsioAccount{}) or use other options such as http.Ok ...
+	// return Response(200, SsioAccount{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("SsioAccountsGet method not implemented")
 }
 
 // SsioInsertionOrderCreate - Create insertion order through SSIO.
-func (s *BillingAPIService) SsioInsertionOrderCreate(ctx context.Context, adAccountId string, ssioCreateInsertionOrderRequest SsioCreateInsertionOrderRequest) (ImplResponse, error) {
+func (s *BillingAPIService) SsioInsertionOrderCreate(ctx context.Context, adAccountId string, ssioInsertionOrderCreate SsioInsertionOrderCreate) (ImplResponse, error) {
 	// TODO - update SsioInsertionOrderCreate with the required logic for this service method.
 	// Add api_billing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, SsioCreateInsertionOrderResponse{}) or use other options such as http.Ok ...
-	// return Response(200, SsioCreateInsertionOrderResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, SsioInsertionOrder{}) or use other options such as http.Ok ...
+	// return Response(200, SsioInsertionOrder{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, SsioInsertionOrder{}) or use other options such as http.Ok ...
+	// return Response(201, SsioInsertionOrder{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("SsioInsertionOrderCreate method not implemented")
 }
 
 // SsioInsertionOrderEdit - Edit insertion order through SSIO.
-func (s *BillingAPIService) SsioInsertionOrderEdit(ctx context.Context, adAccountId string, ssioEditInsertionOrderRequest SsioEditInsertionOrderRequest) (ImplResponse, error) {
+func (s *BillingAPIService) SsioInsertionOrderEdit(ctx context.Context, adAccountId string, ssioInsertionOrderUpdate SsioInsertionOrderUpdate) (ImplResponse, error) {
 	// TODO - update SsioInsertionOrderEdit with the required logic for this service method.
 	// Add api_billing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, SsioEditInsertionOrderResponse{}) or use other options such as http.Ok ...
-	// return Response(200, SsioEditInsertionOrderResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, SsioInsertionOrder{}) or use other options such as http.Ok ...
+	// return Response(200, SsioInsertionOrder{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("SsioInsertionOrderEdit method not implemented")
 }
@@ -166,11 +274,23 @@ func (s *BillingAPIService) SsioInsertionOrdersStatusGetByAdAccount(ctx context.
 	// TODO: Uncomment the next line to return response Response(200, SsioInsertionOrdersStatusGetByAdAccount200Response{}) or use other options such as http.Ok ...
 	// return Response(200, SsioInsertionOrdersStatusGetByAdAccount200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("SsioInsertionOrdersStatusGetByAdAccount method not implemented")
 }
@@ -183,28 +303,52 @@ func (s *BillingAPIService) SsioInsertionOrdersStatusGetByPinOrderId(ctx context
 	// TODO: Uncomment the next line to return response Response(200, SsioInsertionOrderStatusResponse{}) or use other options such as http.Ok ...
 	// return Response(200, SsioInsertionOrderStatusResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("SsioInsertionOrdersStatusGetByPinOrderId method not implemented")
 }
 
 // SsioOrderLinesGetByAdAccount - Get Salesforce order lines by ad account id.
-func (s *BillingAPIService) SsioOrderLinesGetByAdAccount(ctx context.Context, adAccountId string, bookmark string, pageSize int32, pinOrderId string) (ImplResponse, error) {
+func (s *BillingAPIService) SsioOrderLinesGetByAdAccount(ctx context.Context, adAccountId string, pinOrderId string, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update SsioOrderLinesGetByAdAccount with the required logic for this service method.
 	// Add api_billing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, SsioOrderLinesGetByAdAccount200Response{}) or use other options such as http.Ok ...
 	// return Response(200, SsioOrderLinesGetByAdAccount200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("SsioOrderLinesGetByAdAccount method not implemented")
 }

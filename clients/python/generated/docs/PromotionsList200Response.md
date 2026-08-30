@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[PromotionResponse]**](PromotionResponse.md) |  | 
+**items** | [**List[Promotion]**](Promotion.md) |  | 
 
 ## Example
 

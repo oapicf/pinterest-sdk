@@ -6,7 +6,7 @@ case class AdvancedAuctionItemsGetRequest (
     /* Catalog id pertaining to the retail item */
     _catalogId: String,
     /* A list of retail catalog items to fetch bid options for */
-    _items: List[AdvancedAuctionItemsGetRecord]
+    _items: List[AdvancedAuctionKey]
 )
 object AdvancedAuctionItemsGetRequest {
     def toStringBody(var_catalogId: Object, var_items: Object) =

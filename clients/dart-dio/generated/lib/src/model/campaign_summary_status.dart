@@ -11,28 +11,20 @@ part 'campaign_summary_status.g.dart';
 
 class CampaignSummaryStatus extends EnumClass {
 
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'RUNNING')
   static const CampaignSummaryStatus RUNNING = _$RUNNING;
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'PAUSED')
   static const CampaignSummaryStatus PAUSED = _$PAUSED;
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'NOT_STARTED')
   static const CampaignSummaryStatus NOT_STARTED = _$NOT_STARTED;
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'COMPLETED')
   static const CampaignSummaryStatus COMPLETED = _$COMPLETED;
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'ADVERTISER_DISABLED')
   static const CampaignSummaryStatus ADVERTISER_DISABLED = _$ADVERTISER_DISABLED;
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'ARCHIVED')
   static const CampaignSummaryStatus ARCHIVED = _$ARCHIVED;
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'DRAFT')
   static const CampaignSummaryStatus DRAFT = _$DRAFT;
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'DELETED_DRAFT')
   static const CampaignSummaryStatus DELETED_DRAFT = _$DELETED_DRAFT;
 

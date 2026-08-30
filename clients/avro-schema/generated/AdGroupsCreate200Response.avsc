@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdGroupsCreate200Response",
+  "fields": [
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.AdGroupsCreate200ResponseItemsInner"
+      },
+      "doc": ""
+    }
+  ]
+
+}

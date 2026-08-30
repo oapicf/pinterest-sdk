@@ -15,22 +15,29 @@
 
 typedef struct catalogs_hotel_feeds_create_request_t catalogs_hotel_feeds_create_request_t;
 
+#include "catalogs_creative_assets_feeds_create_request_default_locale.h"
 #include "catalogs_feed_credentials.h"
 #include "catalogs_feed_processing_schedule.h"
-#include "catalogs_feeds_create_request_default_locale.h"
 #include "catalogs_format.h"
 #include "catalogs_status.h"
-#include "catalogs_type.h"
 #include "nullable_currency.h"
+
+// Enum CATALOGTYPE for catalogs_hotel_feeds_create_request
+
+typedef enum  { pinterest_rest_api_catalogs_hotel_feeds_create_request_CATALOGTYPE_NULL = 0, pinterest_rest_api_catalogs_hotel_feeds_create_request_CATALOGTYPE_HOTEL } pinterest_rest_api_catalogs_hotel_feeds_create_request_CATALOGTYPE_e;
+
+char* catalogs_hotel_feeds_create_request_catalog_type_ToString(pinterest_rest_api_catalogs_hotel_feeds_create_request_CATALOGTYPE_e catalog_type);
+
+pinterest_rest_api_catalogs_hotel_feeds_create_request_CATALOGTYPE_e catalogs_hotel_feeds_create_request_catalog_type_FromString(char* catalog_type);
 
 
 
 typedef struct catalogs_hotel_feeds_create_request_t {
     char *catalog_id; // string
-    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
+    pinterest_rest_api_catalogs_hotel_feeds_create_request_CATALOGTYPE_e catalog_type; //enum
     struct catalogs_feed_credentials_t *credentials; //model
     pinterest_rest_api_nullable_currency__e default_currency; //referenced enum
-    struct catalogs_feeds_create_request_default_locale_t *default_locale; //model
+    struct catalogs_creative_assets_feeds_create_request_default_locale_t *default_locale; //model
     pinterest_rest_api_catalogs_format__e format; //referenced enum
     char *location; // string
     char *name; // string
@@ -42,10 +49,10 @@ typedef struct catalogs_hotel_feeds_create_request_t {
 
 __attribute__((deprecated)) catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_create(
     char *catalog_id,
-    pinterest_rest_api_catalogs_type__e catalog_type,
+    pinterest_rest_api_catalogs_hotel_feeds_create_request_CATALOGTYPE_e catalog_type,
     catalogs_feed_credentials_t *credentials,
     pinterest_rest_api_nullable_currency__e default_currency,
-    catalogs_feeds_create_request_default_locale_t *default_locale,
+    catalogs_creative_assets_feeds_create_request_default_locale_t *default_locale,
     pinterest_rest_api_catalogs_format__e format,
     char *location,
     char *name,

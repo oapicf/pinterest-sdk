@@ -16,6 +16,7 @@
   | {'name', binary() }
   | {'owner', openapi_ad_account_owner:openapi_ad_account_owner() }
   | {'permissions', list(openapi_business_access_role:openapi_business_access_role()) }
+  | {'time_zone', binary() }
   | {'updated_time', integer() }
   ].
 
@@ -31,6 +32,7 @@ openapi_ad_account(Fields) ->
             , {'name', binary() }
             , {'owner', openapi_ad_account_owner:openapi_ad_account_owner() }
             , {'permissions', list(openapi_business_access_role:openapi_business_access_role()) }
+            , {'time_zone', binary() }
             , {'updated_time', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

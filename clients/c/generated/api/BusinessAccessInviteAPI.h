@@ -6,16 +6,17 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/auth_respond_invites_body.h"
-#include "../model/cancel_invites_body.h"
+#include "../model/cancel_invites_request.h"
+#include "../model/cancel_invites_response.h"
 #include "../model/create_asset_access_request_body.h"
 #include "../model/create_asset_access_request_response.h"
 #include "../model/create_asset_invites_request.h"
 #include "../model/create_invites_results_response_array.h"
 #include "../model/create_membership_or_partnership_invites_body.h"
-#include "../model/delete_invites_results_response_array.h"
-#include "../model/error.h"
 #include "../model/get_invites_200_response.h"
+#include "../model/invite_filter_status.h"
 #include "../model/invite_type.h"
+#include "../model/pinterest_lib_error.h"
 #include "../model/respond_to_invites_response_array.h"
 #include "../model/update_invites_results_response_array.h"
 
@@ -38,8 +39,8 @@ BusinessAccessInviteAPI_assetAccessRequestsCreate(apiClient_t *apiClient, char *
 //
 // Cancel membership/partnership invites and/or requests.
 //
-delete_invites_results_response_array_t*
-BusinessAccessInviteAPI_cancelInvitesOrRequests(apiClient_t *apiClient, char *business_id, cancel_invites_body_t *cancel_invites_body);
+cancel_invites_response_t*
+BusinessAccessInviteAPI_cancelInvitesOrRequests(apiClient_t *apiClient, char *business_id, cancel_invites_request_t *cancel_invites_request);
 
 
 // Update invite/request with an asset permission

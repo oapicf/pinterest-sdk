@@ -7,14 +7,9 @@ goog.provide('API.Client.PlacementMultipliers');
 API.Client.PlacementMultipliers = function() {}
 
 /**
- * @type {!string}
+ * Placement type identifier.
+ * @type {!API.Client.PlacementType}
  * @export
  */
 API.Client.PlacementMultipliers.prototype.PLACEMENT;
 
-/** @enum {string} */
-API.Client.PlacementMultipliers.PLACEMENTEnum = { 
-  SEARCH: 'SEARCH',
-  BROWSE: 'BROWSE',
-  RELATED_PINS: 'RELATED_PINS',
-}

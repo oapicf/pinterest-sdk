@@ -1,1 +1,1 @@
-interests,include_demographics,include_keywords,normalize_against_group,limit,include_prediction,genders,ages
+include_demographics,normalize_against_group,ages,include_keywords,interests,limit,genders

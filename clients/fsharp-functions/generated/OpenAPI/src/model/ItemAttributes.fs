@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.CatalogsAiContentDisclosure
 open OpenAPI.Model.UpdatableItemAttributesGtin
 open OpenAPI.Model.bool option
 open OpenAPI.Model.decimal option
@@ -223,6 +224,8 @@ module ItemAttributes =
     VariantValues : string[];
     [<JsonProperty(PropertyName = "additional_image_link")>]
     AdditionalImageLink : string[];
+    [<JsonProperty(PropertyName = "ai_disclosures")>]
+    AiDisclosures : CatalogsAiContentDisclosure[];
     [<JsonProperty(PropertyName = "image_link")>]
     ImageLink : string[];
     [<JsonProperty(PropertyName = "video_link")>]

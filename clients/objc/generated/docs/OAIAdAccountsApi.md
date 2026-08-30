@@ -22,22 +22,22 @@ Method | HTTP request | Description
 
 # **adAccountAnalytics**
 ```objc
--(NSURLSessionTask*) adAccountAnalyticsWithAdAccountId: (NSString*) adAccountId
-    startDate: (NSDate*) startDate
+-(NSURLSessionTask*) adAccountAnalyticsWithStartDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    columns: (NSArray<NSString*>*) columns
+    columns: (NSArray<OAIReportingColumnSync>*) columns
     granularity: (OAIGranularity) granularity
+    adAccountId: (NSString*) adAccountId
     clickWindowDays: (NSNumber*) clickWindowDays
     engagementWindowDays: (NSNumber*) engagementWindowDays
     viewWindowDays: (NSNumber*) viewWindowDays
     conversionReportTime: (NSString*) conversionReportTime
     reportingTimezone: (OAIReportingTimeZone) reportingTimezone
-        completionHandler: (void (^)(NSArray<OAIAdAccountAnalyticsResponseInner>* output, NSError* error)) handler;
+        completionHandler: (void (^)(NSArray<OAIAdAccountAnalyticsItems>* output, NSError* error)) handler;
 ```
 
 Get ad account analytics
 
-Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
+  Get analytics for the specified `ad_account_id`, filtered by the specified options.    - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.    - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.    - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
 
 ### Example
 ```objc
@@ -50,31 +50,31 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSDate* startDate = @"2013-10-20T19:20:30+01:00"; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 NSDate* endDate = @"2013-10-20T19:20:30+01:00"; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-NSArray<NSString*>* columns = @[@"columns_example"]; // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-OAIGranularity granularity = DAY; // TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-NSNumber* clickWindowDays = 1; // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to @30)
-NSNumber* engagementWindowDays = @30; // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to @30)
+NSArray<OAIReportingColumnSync>* columns = @[[[OAIReportingColumnSync alloc] init]]; // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+OAIGranularity granularity = [[OAIGranularity alloc] init]; //   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
+NSNumber* clickWindowDays = @30; // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to @30)
+NSNumber* engagementWindowDays = @30; // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional) (default to @30)
 NSNumber* viewWindowDays = @1; // Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to @1)
-NSString* conversionReportTime = TIME_OF_AD_ACTION; // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to @"TIME_OF_AD_ACTION")
+NSString* conversionReportTime = @"TIME_OF_AD_ACTION"; // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to @"TIME_OF_AD_ACTION")
 OAIReportingTimeZone reportingTimezone = [[OAIReportingTimeZone alloc] init]; // Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 OAIAdAccountsApi*apiInstance = [[OAIAdAccountsApi alloc] init];
 
 // Get ad account analytics
-[apiInstance adAccountAnalyticsWithAdAccountId:adAccountId
-              startDate:startDate
+[apiInstance adAccountAnalyticsWithStartDate:startDate
               endDate:endDate
               columns:columns
               granularity:granularity
+              adAccountId:adAccountId
               clickWindowDays:clickWindowDays
               engagementWindowDays:engagementWindowDays
               viewWindowDays:viewWindowDays
               conversionReportTime:conversionReportTime
               reportingTimezone:reportingTimezone
-          completionHandler: ^(NSArray<OAIAdAccountAnalyticsResponseInner>* output, NSError* error) {
+          completionHandler: ^(NSArray<OAIAdAccountAnalyticsItems>* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -88,20 +88,20 @@ OAIAdAccountsApi*apiInstance = [[OAIAdAccountsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **startDate** | **NSDate***| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **NSDate***| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **columns** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
- **granularity** | [**OAIGranularity**](.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
+ **columns** | [**NSArray&lt;OAIReportingColumnSync&gt;***](OAIReportingColumnSync*.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | 
+ **granularity** | [**OAIGranularity**](.md)|   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | 
+ **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **clickWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to @30]
- **engagementWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to @30]
+ **engagementWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional] [default to @30]
  **viewWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to @1]
  **conversionReportTime** | **NSString***| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to @&quot;TIME_OF_AD_ACTION&quot;]
  **reportingTimezone** | [**OAIReportingTimeZone**](.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] 
 
 ### Return type
 
-[**NSArray<OAIAdAccountAnalyticsResponseInner>***](OAIAdAccountAnalyticsResponseInner.md)
+[**NSArray<OAIAdAccountAnalyticsItems>***](OAIAdAccountAnalyticsItems.md)
 
 ### Authorization
 
@@ -119,8 +119,8 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) adAccountTargetingAnalyticsGetWithAdAccountId: (NSString*) adAccountId
     startDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    targetingTypes: (NSArray<OAIAdsAnalyticsTargetingType>*) targetingTypes
-    columns: (NSArray<NSString*>*) columns
+    targetingTypes: (NSArray<OAIAdsAnalyticsAccountTargetingType>*) targetingTypes
+    columns: (NSArray<OAIReportingColumnSync>*) columns
     granularity: (OAIGranularity) granularity
     clickWindowDays: (NSNumber*) clickWindowDays
     engagementWindowDays: (NSNumber*) engagementWindowDays
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 Get targeting analytics for an ad account
 
-Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/>  * The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 ```objc
@@ -149,13 +149,13 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSDate* startDate = @"2013-10-20T19:20:30+01:00"; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 NSDate* endDate = @"2013-10-20T19:20:30+01:00"; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-NSArray<OAIAdsAnalyticsTargetingType>* targetingTypes = @[[[OAIAdsAnalyticsTargetingType alloc] init]]; // Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-NSArray<NSString*>* columns = @[@"columns_example"]; // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-OAIGranularity granularity = DAY; // TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-NSNumber* clickWindowDays = 1; // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to @30)
-NSNumber* engagementWindowDays = @30; // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to @30)
+NSArray<OAIAdsAnalyticsAccountTargetingType>* targetingTypes = @[[[OAIAdsAnalyticsAccountTargetingType alloc] init]]; // Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+NSArray<OAIReportingColumnSync>* columns = @[[[OAIReportingColumnSync alloc] init]]; // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+OAIGranularity granularity = [[OAIGranularity alloc] init]; //   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+NSNumber* clickWindowDays = @30; // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to @30)
+NSNumber* engagementWindowDays = @30; // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional) (default to @30)
 NSNumber* viewWindowDays = @1; // Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to @1)
-NSString* conversionReportTime = TIME_OF_AD_ACTION; // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to @"TIME_OF_AD_ACTION")
+NSString* conversionReportTime = @"TIME_OF_AD_ACTION"; // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to @"TIME_OF_AD_ACTION")
 NSArray<OAIConversionReportAttributionType>* attributionTypes = @[[[OAIConversionReportAttributionType alloc] init]]; // List of types of attribution for the conversion report (optional)
 OAIReportingTimeZone reportingTimezone = [[OAIReportingTimeZone alloc] init]; // Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
@@ -191,11 +191,11 @@ Name | Type | Description  | Notes
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **startDate** | **NSDate***| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **NSDate***| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **targetingTypes** | [**NSArray&lt;OAIAdsAnalyticsTargetingType&gt;***](OAIAdsAnalyticsTargetingType*.md)| Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | 
- **columns** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
- **granularity** | [**OAIGranularity**](.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
+ **targetingTypes** | [**NSArray&lt;OAIAdsAnalyticsAccountTargetingType&gt;***](OAIAdsAnalyticsAccountTargetingType*.md)| Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | 
+ **columns** | [**NSArray&lt;OAIReportingColumnSync&gt;***](OAIReportingColumnSync*.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | 
+ **granularity** | [**OAIGranularity**](.md)|   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | 
  **clickWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to @30]
- **engagementWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to @30]
+ **engagementWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional] [default to @30]
  **viewWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to @1]
  **conversionReportTime** | **NSString***| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to @&quot;TIME_OF_AD_ACTION&quot;]
  **attributionTypes** | [**NSArray&lt;OAIConversionReportAttributionType&gt;***](OAIConversionReportAttributionType*.md)| List of types of attribution for the conversion report | [optional] 
@@ -398,13 +398,13 @@ Name | Type | Description  | Notes
 # **analyticsCreateConversionProductReport**
 ```objc
 -(NSURLSessionTask*) analyticsCreateConversionProductReportWithAdAccountId: (NSString*) adAccountId
-    conversionProductReportRequest: (OAIConversionProductReportRequest*) conversionProductReportRequest
-        completionHandler: (void (^)(OAIAdsAnalyticsCreateAsyncResponse* output, NSError* error)) handler;
+    conversionProductReportCreate: (OAIConversionProductReportCreate*) conversionProductReportCreate
+        completionHandler: (void (^)(OAIConversionProductReport* output, NSError* error)) handler;
 ```
 
 Create a request for a brand, category, SKU report
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
+  [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
 
 ### Example
 ```objc
@@ -415,14 +415,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAIConversionProductReportRequest* conversionProductReportRequest = [[OAIConversionProductReportRequest alloc] init]; // 
+OAIConversionProductReportCreate* conversionProductReportCreate = [[OAIConversionProductReportCreate alloc] init]; // 
 
 OAIAdAccountsApi*apiInstance = [[OAIAdAccountsApi alloc] init];
 
 // Create a request for a brand, category, SKU report
 [apiInstance analyticsCreateConversionProductReportWithAdAccountId:adAccountId
-              conversionProductReportRequest:conversionProductReportRequest
-          completionHandler: ^(OAIAdsAnalyticsCreateAsyncResponse* output, NSError* error) {
+              conversionProductReportCreate:conversionProductReportCreate
+          completionHandler: ^(OAIConversionProductReport* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -437,11 +437,11 @@ OAIAdAccountsApi*apiInstance = [[OAIAdAccountsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **conversionProductReportRequest** | [**OAIConversionProductReportRequest***](OAIConversionProductReportRequest.md)|  | 
+ **conversionProductReportCreate** | [**OAIConversionProductReportCreate***](OAIConversionProductReportCreate.md)|  | 
 
 ### Return type
 
-[**OAIAdsAnalyticsCreateAsyncResponse***](OAIAdsAnalyticsCreateAsyncResponse.md)
+[**OAIConversionProductReport***](OAIConversionProductReport.md)
 
 ### Authorization
 
@@ -457,13 +457,13 @@ Name | Type | Description  | Notes
 # **analyticsCreateMmmReport**
 ```objc
 -(NSURLSessionTask*) analyticsCreateMmmReportWithAdAccountId: (NSString*) adAccountId
-    createMMMReportRequest: (OAICreateMMMReportRequest*) createMMMReportRequest
-        completionHandler: (void (^)(OAICreateMMMReportResponse* output, NSError* error)) handler;
+    mMMReportCreate: (OAIMMMReportCreate*) mMMReportCreate
+        completionHandler: (void (^)(OAIMMMReport* output, NSError* error)) handler;
 ```
 
 Create a request for a Marketing Mix Modeling (MMM) report
 
-This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it's in beta release.
+    This creates an asynchronous mmm report based on the given request.     It returns a token that you can use to download the report when it is     ready. NOTE: An additional limit of 5 queries per minute per advertiser     applies to this endpoint while it's in beta release.     For the ADVERTISER_PAID_SPEND_IN_DOLLAR,     ADVERTISER_PAID_ECPC_IN_DOLLAR, and ADVERTISER_PAID_ECPM_IN_DOLLAR     columns: if you receive bonus media, this value still includes that spend, and it will     need to be removed manually with support from your Pinterest account team for a     fully netted value. Over time, we'll also subtract bonus media and other incentives as     data becomes available. Production and other non-media fees are excluded.
 
 ### Example
 ```objc
@@ -473,15 +473,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAICreateMMMReportRequest* createMMMReportRequest = [[OAICreateMMMReportRequest alloc] init]; // 
+NSString* adAccountId = @"adAccountId_example"; // 
+OAIMMMReportCreate* mMMReportCreate = [[OAIMMMReportCreate alloc] init]; // 
 
 OAIAdAccountsApi*apiInstance = [[OAIAdAccountsApi alloc] init];
 
 // Create a request for a Marketing Mix Modeling (MMM) report
 [apiInstance analyticsCreateMmmReportWithAdAccountId:adAccountId
-              createMMMReportRequest:createMMMReportRequest
-          completionHandler: ^(OAICreateMMMReportResponse* output, NSError* error) {
+              mMMReportCreate:mMMReportCreate
+          completionHandler: ^(OAIMMMReport* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -495,12 +495,12 @@ OAIAdAccountsApi*apiInstance = [[OAIAdAccountsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **createMMMReportRequest** | [**OAICreateMMMReportRequest***](OAICreateMMMReportRequest.md)|  | 
+ **adAccountId** | **NSString***|  | 
+ **mMMReportCreate** | [**OAIMMMReportCreate***](OAIMMMReportCreate.md)|  | 
 
 ### Return type
 
-[**OAICreateMMMReportResponse***](OAICreateMMMReportResponse.md)
+[**OAIMMMReport***](OAIMMMReport.md)
 
 ### Authorization
 
@@ -522,7 +522,7 @@ Name | Type | Description  | Notes
 
 Create async request for an account analytics report
 
-This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
+  This returns a token that you can use to download the report when it is ready.   Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters.   - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days.   - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.   - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days.   - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
 
 ### Example
 ```objc
@@ -584,7 +584,7 @@ Name | Type | Description  | Notes
 
 Create async request for an analytics report using a template
 
-   This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
+  This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
 
 ### Example
 ```objc
@@ -598,7 +598,7 @@ NSString* adAccountId = @"adAccountId_example"; //
 NSString* templateId = @"templateId_example"; // Unique identifier of a template.
 NSDate* startDate = @"2013-10-20T19:20:30+01:00"; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today. (optional)
 NSDate* endDate = @"2013-10-20T19:20:30+01:00"; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date. (optional)
-OAIGranularity granularity = [[OAIGranularity alloc] init]; //    TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly (optional)
+OAIGranularity granularity = [[OAIGranularity alloc] init]; //   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly (optional)
 
 OAIAdAccountsApi*apiInstance = [[OAIAdAccountsApi alloc] init];
 
@@ -626,7 +626,7 @@ Name | Type | Description  | Notes
  **templateId** | **NSString***| Unique identifier of a template. | 
  **startDate** | **NSDate***| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today. | [optional] 
  **endDate** | **NSDate***| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date. | [optional] 
- **granularity** | [**OAIGranularity**](.md)|    TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly | [optional] 
+ **granularity** | [**OAIGranularity**](.md)|   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | [optional] 
 
 ### Return type
 
@@ -647,12 +647,12 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) analyticsGetConversionProductReportWithAdAccountId: (NSString*) adAccountId
     token: (NSString*) token
-        completionHandler: (void (^)(OAIAdsAnalyticsGetAsyncResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIConversionProductReport* output, NSError* error)) handler;
 ```
 
 Get advertiser brand, category, SKU report
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
+  [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
 
 ### Example
 ```objc
@@ -670,7 +670,7 @@ OAIAdAccountsApi*apiInstance = [[OAIAdAccountsApi alloc] init];
 // Get advertiser brand, category, SKU report
 [apiInstance analyticsGetConversionProductReportWithAdAccountId:adAccountId
               token:token
-          completionHandler: ^(OAIAdsAnalyticsGetAsyncResponse* output, NSError* error) {
+          completionHandler: ^(OAIConversionProductReport* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -689,7 +689,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIAdsAnalyticsGetAsyncResponse***](OAIAdsAnalyticsGetAsyncResponse.md)
+[**OAIConversionProductReport***](OAIConversionProductReport.md)
 
 ### Authorization
 
@@ -706,12 +706,12 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) analyticsGetMmmReportWithAdAccountId: (NSString*) adAccountId
     token: (NSString*) token
-        completionHandler: (void (^)(OAIGetMMMReportResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIMMMReport* output, NSError* error)) handler;
 ```
 
 Get advertiser Marketing Mix Modeling (MMM) report.
 
-Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the create mmm report endpoint.
+    Get an mmm report for an ad account. This returns a URL to an     mmm metrics report given a token returned from the create mmm report endpoint.
 
 ### Example
 ```objc
@@ -721,7 +721,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
+NSString* adAccountId = @"adAccountId_example"; // 
 NSString* token = @"token_example"; // Token returned from the post request creation call
 
 OAIAdAccountsApi*apiInstance = [[OAIAdAccountsApi alloc] init];
@@ -729,7 +729,7 @@ OAIAdAccountsApi*apiInstance = [[OAIAdAccountsApi alloc] init];
 // Get advertiser Marketing Mix Modeling (MMM) report.
 [apiInstance analyticsGetMmmReportWithAdAccountId:adAccountId
               token:token
-          completionHandler: ^(OAIGetMMMReportResponse* output, NSError* error) {
+          completionHandler: ^(OAIMMMReport* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -743,12 +743,12 @@ OAIAdAccountsApi*apiInstance = [[OAIAdAccountsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
+ **adAccountId** | **NSString***|  | 
  **token** | **NSString***| Token returned from the post request creation call | 
 
 ### Return type
 
-[**OAIGetMMMReportResponse***](OAIGetMMMReportResponse.md)
+[**OAIMMMReport***](OAIMMMReport.md)
 
 ### Authorization
 
@@ -770,7 +770,7 @@ Name | Type | Description  | Notes
 
 Get the account analytics report created by the async call
 
-This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+  This returns a URL to an analytics report given a token returned from the post request report creation call.   You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour.   - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
 
 ### Example
 ```objc
@@ -878,9 +878,9 @@ Name | Type | Description  | Notes
 # **templatesList**
 ```objc
 -(NSURLSessionTask*) templatesListWithAdAccountId: (NSString*) adAccountId
-    pageSize: (NSNumber*) pageSize
-    order: (NSString*) order
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    order: (OAIPinterestLibPaginationOrder) order
         completionHandler: (void (^)(OAITemplatesList200Response* output, NSError* error)) handler;
 ```
 
@@ -897,17 +897,17 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSString* order = ASCENDING; // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
+OAIPinterestLibPaginationOrder order = [[OAIPinterestLibPaginationOrder alloc] init]; // The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 OAIAdAccountsApi*apiInstance = [[OAIAdAccountsApi alloc] init];
 
 // List templates
 [apiInstance templatesListWithAdAccountId:adAccountId
+              bookmark:bookmark
               pageSize:pageSize
               order:order
-              bookmark:bookmark
           completionHandler: ^(OAITemplatesList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -923,9 +923,9 @@ OAIAdAccountsApi*apiInstance = [[OAIAdAccountsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **order** | **NSString***| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
+ **order** | [**OAIPinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 

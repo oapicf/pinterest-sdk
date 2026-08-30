@@ -15,31 +15,31 @@ class NotificationResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, success: bool=None, received_at: int=None, error_msg: str=None):  # noqa: E501
+    def __init__(self, error_msg: str=None, received_at: int=None, success: bool=None):  # noqa: E501
         """NotificationResponse - a model defined in Swagger
 
-        :param success: The success of this NotificationResponse.  # noqa: E501
-        :type success: bool
-        :param received_at: The received_at of this NotificationResponse.  # noqa: E501
-        :type received_at: int
         :param error_msg: The error_msg of this NotificationResponse.  # noqa: E501
         :type error_msg: str
+        :param received_at: The received_at of this NotificationResponse.  # noqa: E501
+        :type received_at: int
+        :param success: The success of this NotificationResponse.  # noqa: E501
+        :type success: bool
         """
         self.swagger_types = {
-            'success': bool,
+            'error_msg': str,
             'received_at': int,
-            'error_msg': str
+            'success': bool
         }
 
         self.attribute_map = {
-            'success': 'success',
+            'error_msg': 'error_msg',
             'received_at': 'received_at',
-            'error_msg': 'error_msg'
+            'success': 'success'
         }
 
-        self._success = success
-        self._received_at = received_at
         self._error_msg = error_msg
+        self._received_at = received_at
+        self._success = success
 
     @classmethod
     def from_dict(cls, dikt) -> 'NotificationResponse':
@@ -53,27 +53,27 @@ class NotificationResponse(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def success(self) -> bool:
-        """Gets the success of this NotificationResponse.
+    def error_msg(self) -> str:
+        """Gets the error_msg of this NotificationResponse.
 
-        Returns true if the notification accepted.  # noqa: E501
+        error message when success is false  # noqa: E501
 
-        :return: The success of this NotificationResponse.
-        :rtype: bool
+        :return: The error_msg of this NotificationResponse.
+        :rtype: str
         """
-        return self._success
+        return self._error_msg
 
-    @success.setter
-    def success(self, success: bool):
-        """Sets the success of this NotificationResponse.
+    @error_msg.setter
+    def error_msg(self, error_msg: str):
+        """Sets the error_msg of this NotificationResponse.
 
-        Returns true if the notification accepted.  # noqa: E501
+        error message when success is false  # noqa: E501
 
-        :param success: The success of this NotificationResponse.
-        :type success: bool
+        :param error_msg: The error_msg of this NotificationResponse.
+        :type error_msg: str
         """
 
-        self._success = success
+        self._error_msg = error_msg
 
     @property
     def received_at(self) -> int:
@@ -99,24 +99,24 @@ class NotificationResponse(Model):
         self._received_at = received_at
 
     @property
-    def error_msg(self) -> str:
-        """Gets the error_msg of this NotificationResponse.
+    def success(self) -> bool:
+        """Gets the success of this NotificationResponse.
 
-        error message when success is false  # noqa: E501
+        Returns true if the notification accepted.  # noqa: E501
 
-        :return: The error_msg of this NotificationResponse.
-        :rtype: str
+        :return: The success of this NotificationResponse.
+        :rtype: bool
         """
-        return self._error_msg
+        return self._success
 
-    @error_msg.setter
-    def error_msg(self, error_msg: str):
-        """Sets the error_msg of this NotificationResponse.
+    @success.setter
+    def success(self, success: bool):
+        """Sets the success of this NotificationResponse.
 
-        error message when success is false  # noqa: E501
+        Returns true if the notification accepted.  # noqa: E501
 
-        :param error_msg: The error_msg of this NotificationResponse.
-        :type error_msg: str
+        :param success: The success of this NotificationResponse.
+        :type success: bool
         """
 
-        self._error_msg = error_msg
+        self._success = success

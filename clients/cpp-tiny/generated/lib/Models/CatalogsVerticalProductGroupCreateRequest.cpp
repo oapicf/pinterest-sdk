@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsVerticalProductGroupCreateRequest::CatalogsVerticalProductGroupCreateRequest()
 {
-	catalog_id = std::string();
+	catalog_id = null;
 	catalog_type = std::string();
 	country = Country();
 	description = std::string();
@@ -193,7 +193,7 @@ CatalogsVerticalProductGroupCreateRequest::getCatalogId()
 }
 
 void
-CatalogsVerticalProductGroupCreateRequest::setCatalogId(std::string  catalog_id)
+CatalogsVerticalProductGroupCreateRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -205,7 +205,7 @@ CatalogsVerticalProductGroupCreateRequest::getCatalogType()
 }
 
 void
-CatalogsVerticalProductGroupCreateRequest::setCatalogType(std::string  catalog_type)
+CatalogsVerticalProductGroupCreateRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -217,7 +217,7 @@ CatalogsVerticalProductGroupCreateRequest::getCountry()
 }
 
 void
-CatalogsVerticalProductGroupCreateRequest::setCountry(Country  country)
+CatalogsVerticalProductGroupCreateRequest::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -229,7 +229,7 @@ CatalogsVerticalProductGroupCreateRequest::getDescription()
 }
 
 void
-CatalogsVerticalProductGroupCreateRequest::setDescription(std::string  description)
+CatalogsVerticalProductGroupCreateRequest::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -241,7 +241,7 @@ CatalogsVerticalProductGroupCreateRequest::getFilters()
 }
 
 void
-CatalogsVerticalProductGroupCreateRequest::setFilters(CatalogsCreativeAssetsProductGroupFilters  filters)
+CatalogsVerticalProductGroupCreateRequest::setFilters(CatalogsCreativeAssetsProductGroupFilters filters)
 {
 	this->filters = filters;
 }
@@ -253,7 +253,7 @@ CatalogsVerticalProductGroupCreateRequest::getLocale()
 }
 
 void
-CatalogsVerticalProductGroupCreateRequest::setLocale(CatalogsLocale  locale)
+CatalogsVerticalProductGroupCreateRequest::setLocale(CatalogsLocale locale)
 {
 	this->locale = locale;
 }
@@ -265,7 +265,7 @@ CatalogsVerticalProductGroupCreateRequest::getName()
 }
 
 void
-CatalogsVerticalProductGroupCreateRequest::setName(std::string  name)
+CatalogsVerticalProductGroupCreateRequest::setName(std::string name)
 {
 	this->name = name;
 }

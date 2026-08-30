@@ -13,56 +13,52 @@ part of openapi.api;
 class Catalog {
   /// Returns a new [Catalog] instance.
   Catalog({
+    required this.catalogType,
     required this.createdAt,
     required this.id,
-    required this.updatedAt,
-    required this.catalogType,
     required this.name,
+    required this.updatedAt,
   });
+
+  CatalogsType catalogType;
 
   DateTime createdAt;
 
   /// ID of the catalog entity.
   String id;
 
-  DateTime updatedAt;
-
-  CatalogsType catalogType;
-
   /// A human-friendly name associated to a catalog entity.
-  String? name;
+  String name;
+
+  DateTime updatedAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Catalog &&
+    other.catalogType == catalogType &&
     other.createdAt == createdAt &&
     other.id == id &&
-    other.updatedAt == updatedAt &&
-    other.catalogType == catalogType &&
-    other.name == name;
+    other.name == name &&
+    other.updatedAt == updatedAt;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (catalogType.hashCode) +
     (createdAt.hashCode) +
     (id.hashCode) +
-    (updatedAt.hashCode) +
-    (catalogType.hashCode) +
-    (name == null ? 0 : name!.hashCode);
+    (name.hashCode) +
+    (updatedAt.hashCode);
 
   @override
-  String toString() => 'Catalog[createdAt=$createdAt, id=$id, updatedAt=$updatedAt, catalogType=$catalogType, name=$name]';
+  String toString() => 'Catalog[catalogType=$catalogType, createdAt=$createdAt, id=$id, name=$name, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+      json[r'catalog_type'] = this.catalogType;
       json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
       json[r'id'] = this.id;
-      json[r'updated_at'] = this.updatedAt.toUtc().toIso8601String();
-      json[r'catalog_type'] = this.catalogType;
-    if (this.name != null) {
       json[r'name'] = this.name;
-    } else {
-      json[r'name'] = null;
-    }
+      json[r'updated_at'] = this.updatedAt.toUtc().toIso8601String();
     return json;
   }
 
@@ -77,19 +73,25 @@ class Catalog {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Catalog[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Catalog[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "Catalog[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "Catalog[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'created_at'), 'Required key "Catalog[created_at]" is missing from JSON.');
+        assert(json[r'created_at'] != null, 'Required key "Catalog[created_at]" has a null value in JSON.');
+        assert(json.containsKey(r'id'), 'Required key "Catalog[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "Catalog[id]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "Catalog[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "Catalog[name]" has a null value in JSON.');
+        assert(json.containsKey(r'updated_at'), 'Required key "Catalog[updated_at]" is missing from JSON.');
+        assert(json[r'updated_at'] != null, 'Required key "Catalog[updated_at]" has a null value in JSON.');
         return true;
       }());
 
       return Catalog(
+        catalogType: CatalogsType.fromJson(json[r'catalog_type'])!,
         createdAt: mapDateTime(json, r'created_at', r'')!,
         id: mapValueOfType<String>(json, r'id')!,
+        name: mapValueOfType<String>(json, r'name')!,
         updatedAt: mapDateTime(json, r'updated_at', r'')!,
-        catalogType: CatalogsType.fromJson(json[r'catalog_type'])!,
-        name: mapValueOfType<String>(json, r'name'),
       );
     }
     return null;
@@ -137,11 +139,11 @@ class Catalog {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'catalog_type',
     'created_at',
     'id',
-    'updated_at',
-    'catalog_type',
     'name',
+    'updated_at',
   };
 }
 

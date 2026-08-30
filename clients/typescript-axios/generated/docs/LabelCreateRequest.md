@@ -5,8 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**labels** | [**Array&lt;LabelCreateRequestLabelsInner&gt;**](LabelCreateRequestLabelsInner.md) | Labels that you are applying to the campaign. | [default to undefined]
-**parent_id** | **string** | Unique identifier of the asset you are labelling. Currently, you can only label campaigns. | [default to undefined]
+**labels** | [**Array&lt;LabelCreateItem&gt;**](LabelCreateItem.md) | Labels that you are applying to the campaign. | [default to undefined]
 
 ## Example
 
@@ -15,7 +14,6 @@ import { LabelCreateRequest } from './api';
 
 const instance: LabelCreateRequest = {
     labels,
-    parent_id,
 };
 ```
 

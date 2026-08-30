@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Label ID. | 
-**status** | **str** | Set status to &#x60;ARCHIVED&#x60; to remove the label from the parent entity. | [optional] 
-**value** | **str** | &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; value field will be deprecated. Label name. 100-character limit. | [optional] 
+**parent_id** | **str** | Unique identifier of the asset you are labelling. Currently, you can only label campaigns. | 
+**status** | [**LabelStatusBulkUpdate**](LabelStatusBulkUpdate.md) |  | 
 
 ## Example
 

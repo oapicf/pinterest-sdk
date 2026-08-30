@@ -12,6 +12,11 @@ module.exports = {
                 ...Country.fields(`${keyPrefix}country`, isInput),
             },
             {
+                key: `${keyPrefix}errors`,
+                label: `[${labelPrefix}errors]`,
+                children: AdvancedAuctionOperationError.fields(`${keyPrefix}errors${!isInput ? '[]' : ''}`, isInput, true), 
+            },
+            {
                 key: `${keyPrefix}item_id`,
                 label: `The catalog retail item id in the merchant namespace - [${labelPrefix}item_id]`,
                 required: true,
@@ -22,9 +27,13 @@ module.exports = {
                 ...Language.fields(`${keyPrefix}language`, isInput),
             },
             {
-                key: `${keyPrefix}errors`,
-                label: `[${labelPrefix}errors]`,
-                children: AdvancedAuctionOperationError.fields(`${keyPrefix}errors${!isInput ? '[]' : ''}`, isInput, true), 
+                key: `${keyPrefix}operation`,
+                label: `[${labelPrefix}operation]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'DELETE',
+                ],
             },
         ]
     },
@@ -32,9 +41,10 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'country': bundle.inputData?.[`${keyPrefix}country`],
+            'errors': utils.childMapping(bundle.inputData?.[`${keyPrefix}errors`], `${keyPrefix}errors`, AdvancedAuctionOperationError),
             'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'language': bundle.inputData?.[`${keyPrefix}language`],
-            'errors': utils.childMapping(bundle.inputData?.[`${keyPrefix}errors`], `${keyPrefix}errors`, AdvancedAuctionOperationError),
+            'operation': bundle.inputData?.[`${keyPrefix}operation`],
         }
     },
 }

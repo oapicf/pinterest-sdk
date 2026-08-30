@@ -1,0 +1,25 @@
+# UpdateMemberAssetAccessItem
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AssetId** | **String** | Id of the asset to update. | 
+**MemberId** | **String** | Unique identifier of the member on which to perform the update | 
+**Permissions** | [**Permissions[]**](Permissions.md) | A non-empty array of permissions to assign to the member. | 
+
+## Examples
+
+- Prepare the resource
+```powershell
+$UpdateMemberAssetAccessItem = Initialize-PSOpenAPIToolsUpdateMemberAssetAccessItem  -AssetId null `
+ -MemberId null `
+ -Permissions null
+```
+
+- Convert the resource to JSON
+```powershell
+$UpdateMemberAssetAccessItem | ConvertTo-JSON
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

@@ -1,0 +1,31 @@
+# TopPinsAnalyticsResponsePinsItems
+
+Array with metrics, status, and pin id for the requested metric
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**data_status** | [**Dict[str, DataStatus]**](DataStatus.md) |  | [optional] 
+**metrics** | **Dict[str, float]** |  | [optional] 
+**pin_id** | **str** | The pin id | [optional] 
+
+## Example
+
+```python
+from openapi_client.models.top_pins_analytics_response_pins_items import TopPinsAnalyticsResponsePinsItems
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of TopPinsAnalyticsResponsePinsItems from a JSON string
+top_pins_analytics_response_pins_items_instance = TopPinsAnalyticsResponsePinsItems.from_json(json)
+# print the JSON string representation of the object
+print TopPinsAnalyticsResponsePinsItems.to_json()
+
+# convert the object into a dict
+top_pins_analytics_response_pins_items_dict = top_pins_analytics_response_pins_items_instance.to_dict()
+# create an instance of TopPinsAnalyticsResponsePinsItems from a dict
+top_pins_analytics_response_pins_items_from_dict = TopPinsAnalyticsResponsePinsItems.from_dict(top_pins_analytics_response_pins_items_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

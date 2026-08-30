@@ -19,12 +19,12 @@ import java.util.Objects;
 
 public class UpdatePartnerAssetsResultsResponseArray   {
   
-  private List<UpdatePartnerAssetsResult> items = new ArrayList<>();
+  private List<@Valid UpdatePartnerAssetsResult> items = new ArrayList<>();
 
   /**
    * List of assigned/updated partner asset access.
    **/
-  public UpdatePartnerAssetsResultsResponseArray items(List<UpdatePartnerAssetsResult> items) {
+  public UpdatePartnerAssetsResultsResponseArray items(List<@Valid UpdatePartnerAssetsResult> items) {
     this.items = items;
     return this;
   }
@@ -32,10 +32,10 @@ public class UpdatePartnerAssetsResultsResponseArray   {
   
   @ApiModelProperty(value = "List of assigned/updated partner asset access.")
   @JsonProperty("items")
-  public List<UpdatePartnerAssetsResult> getItems() {
+  public List<@Valid UpdatePartnerAssetsResult> getItems() {
     return items;
   }
-  public void setItems(List<UpdatePartnerAssetsResult> items) {
+  public void setItems(List<@Valid UpdatePartnerAssetsResult> items) {
     this.items = items;
   }
 
@@ -81,10 +81,7 @@ public class UpdatePartnerAssetsResultsResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

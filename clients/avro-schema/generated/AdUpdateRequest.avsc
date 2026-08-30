@@ -5,6 +5,17 @@
   "name": "AdUpdateRequest",
   "fields": [
     {
+      "name": "id",
+      "type": "string",
+      "doc": "The ID of this ad."
+    },
+    {
+      "name": "pin_id",
+      "type": ["null", "string"],
+      "doc": "Pin ID. This field may only be updated for draft ads.",
+      "default": null
+    },
+    {
       "name": "ad_group_id",
       "type": ["null", "string"],
       "doc": "ID of the ad group that contains the ad.",
@@ -92,6 +103,12 @@
       "default": null
     },
     {
+      "name": "is_carting",
+      "type": ["null", "boolean"],
+      "doc": "Is the ad a carting/WTB ad?",
+      "default": null
+    },
+    {
       "name": "is_pin_deleted",
       "type": ["null", "boolean"],
       "doc": "Is original pin deleted?",
@@ -117,7 +134,7 @@
     },
     {
       "name": "quiz_pin_data",
-      "type": ["null", "model.QuizPinData"],
+      "type": ["null", "model.object"],
       "doc": "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.",
       "default": null
     },
@@ -129,7 +146,7 @@
     },
     {
       "name": "tracking_urls",
-      "type": ["null", "model.TrackingUrls"],
+      "type": ["null", "model.object"],
       "doc": "",
       "default": null
     },
@@ -137,17 +154,6 @@
       "name": "view_tracking_url",
       "type": ["null", "string"],
       "doc": "Tracking URL for ad impressions.",
-      "default": null
-    },
-    {
-      "name": "id",
-      "type": "string",
-      "doc": "The ID of this ad."
-    },
-    {
-      "name": "pin_id",
-      "type": ["null", "string"],
-      "doc": "Pin ID. This field may only be updated for draft ads.",
       "default": null
     }
   ]

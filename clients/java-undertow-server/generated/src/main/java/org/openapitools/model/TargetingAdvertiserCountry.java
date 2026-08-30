@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -67,7 +67,7 @@ public enum TargetingAdvertiserCountry {
         
         SG("SG"),
         
-        NO("NO"),
+        FALSE("false"),
         
         DK("DK"),
         

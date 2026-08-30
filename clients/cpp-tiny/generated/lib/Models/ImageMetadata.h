@@ -52,35 +52,35 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setDescription(std::string  description);
+	void setDescription(std::string description);
 	/*! \brief Get 
 	 */
 	ImageSize getImages();
 
 	/*! \brief Set 
 	 */
-	void setImages(ImageSize  images);
-	/*! \brief Get 
+	void setImages(ImageSize images);
+	/*! \brief Get Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
 	 */
 	std::string getItemType();
 
-	/*! \brief Set 
+	/*! \brief Set Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
 	 */
-	void setItemType(std::string  item_type);
+	void setItemType(std::string item_type);
 	/*! \brief Get 
 	 */
 	std::string getLink();
 
 	/*! \brief Set 
 	 */
-	void setLink(std::string  link);
+	void setLink(std::string link);
 	/*! \brief Get 
 	 */
 	std::string getTitle();
 
 	/*! \brief Set 
 	 */
-	void setTitle(std::string  title);
+	void setTitle(std::string title);
 
 
     private:

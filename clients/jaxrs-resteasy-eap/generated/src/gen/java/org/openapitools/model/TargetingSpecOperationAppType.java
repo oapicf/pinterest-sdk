@@ -11,11 +11,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.TargetingSpecAppType;
+import org.openapitools.model.TargetingSpecListOperation;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingSpecOperationAppType   {
   
 
@@ -38,31 +39,8 @@ public class TargetingSpecOperationAppType   {
   }
 
   private FieldEnum field;
-
-  /**
-   * Gets or Sets operation
-   */
-  public enum OperationEnum {
-    SET("SET"),
-
-        ADD("ADD"),
-
-        REMOVE("REMOVE");
-    private String value;
-
-    OperationEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private OperationEnum operation;
-  private List<TargetingSpecAppType> values;
+  private TargetingSpecListOperation operation;
+  private List<TargetingSpecAppType> values = new ArrayList<>();
 
   /**
    **/
@@ -83,10 +61,10 @@ public class TargetingSpecOperationAppType   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operation")
   @NotNull
-  public OperationEnum getOperation() {
+  public TargetingSpecListOperation getOperation() {
     return operation;
   }
-  public void setOperation(OperationEnum operation) {
+  public void setOperation(TargetingSpecListOperation operation) {
     this.operation = operation;
   }
 
@@ -140,10 +118,7 @@ public class TargetingSpecOperationAppType   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

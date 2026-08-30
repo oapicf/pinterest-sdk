@@ -13,9 +13,9 @@
 #include "bourne/json.hpp"
 #include "Helpers.h"
 #include "CatalogsCreativeAssetsAvailableFilterValues.h"
+#include "CatalogsCreativeAssetsFilterValuesMap.h"
 #include "CatalogsHotelAvailableFilterValues.h"
 #include "CatalogsRetailAvailableFilterValues.h"
-#include "Catalogs_creative_assets_filter_values_map.h"
 
 namespace Tiny {
 
@@ -55,19 +55,19 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
-	Catalogs_creative_assets_filter_values_map getFilterValues();
+	CatalogsCreativeAssetsFilterValuesMap getFilterValues();
 
 	/*! \brief Set 
 	 */
-	void setFilterValues(Catalogs_creative_assets_filter_values_map  filter_values);
+	void setFilterValues(CatalogsCreativeAssetsFilterValuesMap filter_values);
 
 
     private:
     std::string catalog_type{};
-    Catalogs_creative_assets_filter_values_map filter_values;
+    CatalogsCreativeAssetsFilterValuesMap filter_values;
 };
 }
 

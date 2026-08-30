@@ -14,7 +14,7 @@ import java.math.BigDecimal;
  **/
 
 @ApiModel(description = "Integration metadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationMetadata   {
   @JsonProperty("additional_id_1")
   private String additionalId1;
@@ -178,6 +178,7 @@ public class IntegrationMetadata   {
   }
 
   /**
+   * External business ID for the integration.
    **/
   public IntegrationMetadata externalBusinessId(String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
@@ -185,7 +186,7 @@ public class IntegrationMetadata   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "External business ID for the integration.")
   @JsonProperty("external_business_id")
   public String getExternalBusinessId() {
     return externalBusinessId;
@@ -355,10 +356,7 @@ public class IntegrationMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

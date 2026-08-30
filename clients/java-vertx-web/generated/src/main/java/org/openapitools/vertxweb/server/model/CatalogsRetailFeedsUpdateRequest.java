@@ -9,7 +9,6 @@ import org.openapitools.vertxweb.server.model.CatalogsFeedCredentials;
 import org.openapitools.vertxweb.server.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.vertxweb.server.model.CatalogsFormat;
 import org.openapitools.vertxweb.server.model.CatalogsStatus;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 import org.openapitools.vertxweb.server.model.NullableCurrency;
 import org.openapitools.vertxweb.server.model.ProductAvailabilityType;
 
@@ -19,7 +18,25 @@ import org.openapitools.vertxweb.server.model.ProductAvailabilityType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsRetailFeedsUpdateRequest   {
   
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    RETAIL("RETAIL");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private CatalogsFeedCredentials credentials;
   private ProductAvailabilityType defaultAvailability;
   private NullableCurrency defaultCurrency;
@@ -33,7 +50,7 @@ public class CatalogsRetailFeedsUpdateRequest   {
 
   }
 
-  public CatalogsRetailFeedsUpdateRequest (CatalogsType catalogType, CatalogsFeedCredentials credentials, ProductAvailabilityType defaultAvailability, NullableCurrency defaultCurrency, CatalogsFormat format, String location, String name, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status) {
+  public CatalogsRetailFeedsUpdateRequest (CatalogTypeEnum catalogType, CatalogsFeedCredentials credentials, ProductAvailabilityType defaultAvailability, NullableCurrency defaultCurrency, CatalogsFormat format, String location, String name, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status) {
     this.catalogType = catalogType;
     this.credentials = credentials;
     this.defaultAvailability = defaultAvailability;
@@ -47,10 +64,10 @@ public class CatalogsRetailFeedsUpdateRequest   {
 
     
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -175,9 +192,6 @@ public class CatalogsRetailFeedsUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

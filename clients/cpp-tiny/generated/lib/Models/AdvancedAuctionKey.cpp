@@ -108,7 +108,7 @@ AdvancedAuctionKey::getCountry()
 }
 
 void
-AdvancedAuctionKey::setCountry(Country  country)
+AdvancedAuctionKey::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -120,7 +120,7 @@ AdvancedAuctionKey::getItemId()
 }
 
 void
-AdvancedAuctionKey::setItemId(std::string  item_id)
+AdvancedAuctionKey::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
 }
@@ -132,7 +132,7 @@ AdvancedAuctionKey::getLanguage()
 }
 
 void
-AdvancedAuctionKey::setLanguage(Language  language)
+AdvancedAuctionKey::setLanguage(Language language)
 {
 	this->language = language;
 }

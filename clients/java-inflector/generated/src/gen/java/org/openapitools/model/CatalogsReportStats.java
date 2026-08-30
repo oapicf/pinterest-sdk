@@ -19,14 +19,27 @@ import org.openapitools.model.CatalogsReportFeedIngestionStats;
  **/
 
 @ApiModel(description = "Diagnostics aggregated numbers")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsReportStats   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
+  @JsonProperty("code")
+  private Integer code;
+
+  @JsonProperty("code_label")
+  private String codeLabel;
+
+  @JsonProperty("message")
+  private String message;
+
+  @JsonProperty("occurrences")
+  private Integer occurrences;
+
   /**
    * Gets or Sets reportType
    */
   public enum ReportTypeEnum {
-    FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
-    
     DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
 
     private String value;
@@ -54,21 +67,6 @@ public class CatalogsReportStats   {
 
   @JsonProperty("report_type")
   private ReportTypeEnum reportType;
-
-  @JsonProperty("catalog_id")
-  private String catalogId;
-
-  @JsonProperty("code")
-  private Integer code;
-
-  @JsonProperty("code_label")
-  private String codeLabel;
-
-  @JsonProperty("message")
-  private String message;
-
-  @JsonProperty("occurrences")
-  private Integer occurrences;
 
   /**
    * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
@@ -109,23 +107,6 @@ public class CatalogsReportStats   {
 
   @JsonProperty("ineligible_for_organic")
   private Boolean ineligibleForOrganic;
-
-  /**
-   **/
-  public CatalogsReportStats reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   /**
    * ID of the catalog entity.
@@ -218,6 +199,23 @@ public class CatalogsReportStats   {
   }
 
   /**
+   **/
+  public CatalogsReportStats reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+  /**
    * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
    **/
   public CatalogsReportStats severity(SeverityEnum severity) {
@@ -281,12 +279,12 @@ public class CatalogsReportStats   {
       return false;
     }
     CatalogsReportStats catalogsReportStats = (CatalogsReportStats) o;
-    return Objects.equals(reportType, catalogsReportStats.reportType) &&
-        Objects.equals(catalogId, catalogsReportStats.catalogId) &&
+    return Objects.equals(catalogId, catalogsReportStats.catalogId) &&
         Objects.equals(code, catalogsReportStats.code) &&
         Objects.equals(codeLabel, catalogsReportStats.codeLabel) &&
         Objects.equals(message, catalogsReportStats.message) &&
         Objects.equals(occurrences, catalogsReportStats.occurrences) &&
+        Objects.equals(reportType, catalogsReportStats.reportType) &&
         Objects.equals(severity, catalogsReportStats.severity) &&
         Objects.equals(ineligibleForAds, catalogsReportStats.ineligibleForAds) &&
         Objects.equals(ineligibleForOrganic, catalogsReportStats.ineligibleForOrganic);
@@ -294,7 +292,7 @@ public class CatalogsReportStats   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, severity, ineligibleForAds, ineligibleForOrganic);
+    return Objects.hash(catalogId, code, codeLabel, message, occurrences, reportType, severity, ineligibleForAds, ineligibleForOrganic);
   }
 
   @Override
@@ -302,12 +300,12 @@ public class CatalogsReportStats   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("    ineligibleForAds: ").append(toIndentedString(ineligibleForAds)).append("\n");
     sb.append("    ineligibleForOrganic: ").append(toIndentedString(ineligibleForOrganic)).append("\n");
@@ -320,10 +318,7 @@ public class CatalogsReportStats   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

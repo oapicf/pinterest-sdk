@@ -5,24 +5,26 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ImageUrl** | **string** | Image URL. | 
+**PromotionId** | Pointer to **string** | Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion. | [optional] 
 **Title** | **string** | Title displayed below ad. | 
+**CreativeType** | [**AdShoppingPreviewCreativeType**](AdShoppingPreviewCreativeType.md) | Ad format of the shopping ad preview. | 
 **PinId** | **string** | Pin ID. | 
 **CatalogProductGroupId** | **string** | Catalog Product Group Id. | 
-**CreativeType** | **string** | Ad format of the shopping ad preview. | 
 **CustomizableCtaType** | Pointer to [**NullableCustomizableCTAType**](CustomizableCTAType.md) | Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are &#x60;SHOP_NOW&#x60;, &#x60;BOOK_NOW&#x60;, &#x60;ON_SALE&#x60;, &#x60;GET_DEAL&#x60;, &#x60;BUY_ONLINE_PICKUP_IN_STORE&#x60; | [optional] 
 **HeroImageTitle** | Pointer to **string** | Title displayed below ad. | [optional] 
 **HeroImageUrl** | Pointer to **string** | Hero image URL. | [optional] 
 **HeroPinId** | Pointer to **string** | Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required. | [optional] 
 **ImageTag** | Pointer to **string** | Multi image template tag. | [optional] 
 **ItemId** | Pointer to **string** | Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING. | [optional] 
-**PreferredMediaType** | Pointer to **string** | Preferred media type. | [optional] 
+**PreferredMediaType** | Pointer to [**BasePreferredMediaType**](BasePreferredMediaType.md) | Preferred media type. | [optional] 
+**ShowPromotion** | Pointer to **bool** | Include promotion data in preview when available on catalog item. Defaults to false. | [optional] 
 **VideoTag** | Pointer to **string** | Multi video template tag, image_tag and video_tag are mutual exclusive. | [optional] 
 
 ## Methods
 
 ### NewAdPreviewRequest
 
-`func NewAdPreviewRequest(imageUrl string, title string, pinId string, catalogProductGroupId string, creativeType string, ) *AdPreviewRequest`
+`func NewAdPreviewRequest(imageUrl string, title string, creativeType AdShoppingPreviewCreativeType, pinId string, catalogProductGroupId string, ) *AdPreviewRequest`
 
 NewAdPreviewRequest instantiates a new AdPreviewRequest object
 This constructor will assign default values to properties that have it defined,
@@ -57,6 +59,31 @@ and a boolean to check if the value has been set.
 SetImageUrl sets ImageUrl field to given value.
 
 
+### GetPromotionId
+
+`func (o *AdPreviewRequest) GetPromotionId() string`
+
+GetPromotionId returns the PromotionId field if non-nil, zero value otherwise.
+
+### GetPromotionIdOk
+
+`func (o *AdPreviewRequest) GetPromotionIdOk() (*string, bool)`
+
+GetPromotionIdOk returns a tuple with the PromotionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPromotionId
+
+`func (o *AdPreviewRequest) SetPromotionId(v string)`
+
+SetPromotionId sets PromotionId field to given value.
+
+### HasPromotionId
+
+`func (o *AdPreviewRequest) HasPromotionId() bool`
+
+HasPromotionId returns a boolean if a field has been set.
+
 ### GetTitle
 
 `func (o *AdPreviewRequest) GetTitle() string`
@@ -75,6 +102,26 @@ and a boolean to check if the value has been set.
 `func (o *AdPreviewRequest) SetTitle(v string)`
 
 SetTitle sets Title field to given value.
+
+
+### GetCreativeType
+
+`func (o *AdPreviewRequest) GetCreativeType() AdShoppingPreviewCreativeType`
+
+GetCreativeType returns the CreativeType field if non-nil, zero value otherwise.
+
+### GetCreativeTypeOk
+
+`func (o *AdPreviewRequest) GetCreativeTypeOk() (*AdShoppingPreviewCreativeType, bool)`
+
+GetCreativeTypeOk returns a tuple with the CreativeType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreativeType
+
+`func (o *AdPreviewRequest) SetCreativeType(v AdShoppingPreviewCreativeType)`
+
+SetCreativeType sets CreativeType field to given value.
 
 
 ### GetPinId
@@ -115,26 +162,6 @@ and a boolean to check if the value has been set.
 `func (o *AdPreviewRequest) SetCatalogProductGroupId(v string)`
 
 SetCatalogProductGroupId sets CatalogProductGroupId field to given value.
-
-
-### GetCreativeType
-
-`func (o *AdPreviewRequest) GetCreativeType() string`
-
-GetCreativeType returns the CreativeType field if non-nil, zero value otherwise.
-
-### GetCreativeTypeOk
-
-`func (o *AdPreviewRequest) GetCreativeTypeOk() (*string, bool)`
-
-GetCreativeTypeOk returns a tuple with the CreativeType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreativeType
-
-`func (o *AdPreviewRequest) SetCreativeType(v string)`
-
-SetCreativeType sets CreativeType field to given value.
 
 
 ### GetCustomizableCtaType
@@ -299,20 +326,20 @@ HasItemId returns a boolean if a field has been set.
 
 ### GetPreferredMediaType
 
-`func (o *AdPreviewRequest) GetPreferredMediaType() string`
+`func (o *AdPreviewRequest) GetPreferredMediaType() BasePreferredMediaType`
 
 GetPreferredMediaType returns the PreferredMediaType field if non-nil, zero value otherwise.
 
 ### GetPreferredMediaTypeOk
 
-`func (o *AdPreviewRequest) GetPreferredMediaTypeOk() (*string, bool)`
+`func (o *AdPreviewRequest) GetPreferredMediaTypeOk() (*BasePreferredMediaType, bool)`
 
 GetPreferredMediaTypeOk returns a tuple with the PreferredMediaType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPreferredMediaType
 
-`func (o *AdPreviewRequest) SetPreferredMediaType(v string)`
+`func (o *AdPreviewRequest) SetPreferredMediaType(v BasePreferredMediaType)`
 
 SetPreferredMediaType sets PreferredMediaType field to given value.
 
@@ -321,6 +348,31 @@ SetPreferredMediaType sets PreferredMediaType field to given value.
 `func (o *AdPreviewRequest) HasPreferredMediaType() bool`
 
 HasPreferredMediaType returns a boolean if a field has been set.
+
+### GetShowPromotion
+
+`func (o *AdPreviewRequest) GetShowPromotion() bool`
+
+GetShowPromotion returns the ShowPromotion field if non-nil, zero value otherwise.
+
+### GetShowPromotionOk
+
+`func (o *AdPreviewRequest) GetShowPromotionOk() (*bool, bool)`
+
+GetShowPromotionOk returns a tuple with the ShowPromotion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShowPromotion
+
+`func (o *AdPreviewRequest) SetShowPromotion(v bool)`
+
+SetShowPromotion sets ShowPromotion field to given value.
+
+### HasShowPromotion
+
+`func (o *AdPreviewRequest) HasShowPromotion() bool`
+
+HasShowPromotion returns a boolean if a field has been set.
 
 ### GetVideoTag
 

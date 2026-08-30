@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**conversion_tag_v3_goal_metadata** | [**OptimizationGoalMetadataConversionTagV3GoalMetadata**](OptimizationGoalMetadataConversionTagV3GoalMetadata.md) |  | [optional] [default to undefined]
-**frequency_goal_metadata** | [**OptimizationGoalMetadataFrequencyGoalMetadata**](OptimizationGoalMetadataFrequencyGoalMetadata.md) |  | [optional] [default to undefined]
-**scrollup_goal_metadata** | [**OptimizationGoalMetadataScrollupGoalMetadata**](OptimizationGoalMetadataScrollupGoalMetadata.md) |  | [optional] [default to undefined]
+**conversion_tag_v3_goal_metadata** | [**ConversionTagV3GoalMetadata**](ConversionTagV3GoalMetadata.md) |  | [optional] [default to undefined]
+**frequency_goal_metadata** | [**FrequencyGoalMetadata**](FrequencyGoalMetadata.md) |  | [optional] [default to undefined]
+**scrollup_goal_metadata** | [**ScrollupGoalMetadata**](ScrollupGoalMetadata.md) |  | [optional] [default to undefined]
 
 ## Example
 

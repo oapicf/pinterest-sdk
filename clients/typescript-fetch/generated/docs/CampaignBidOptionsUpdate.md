@@ -7,10 +7,14 @@ Object describing an update to the campaign level bid multipliers.
 
 Name | Type
 ------------ | -------------
+`ageBucketMultipliers` | [AgeBucketMultipliers](AgeBucketMultipliers.md)
 `appTypeMultipliers` | [AppTypeMultipliers](AppTypeMultipliers.md)
 `audienceMultipliers` | [CampaignAudienceMultipliers](CampaignAudienceMultipliers.md)
+`freqBidMultiplierTimeWindow` | [FreqBidMultiplierTimeWindow](FreqBidMultiplierTimeWindow.md)
+`frequencyMultipliers` | [FrequencyMultipliers](FrequencyMultipliers.md)
+`genderMultipliers` | [GenderMultipliers](GenderMultipliers.md)
 `placementMultipliers` | [PlacementMultipliers](PlacementMultipliers.md)
-`updateMask` | Array&lt;string&gt;
+`updateMask` | [Array&lt;CampaignBidOptionsUpdateMaskItems&gt;](CampaignBidOptionsUpdateMaskItems.md)
 
 ## Example
 
@@ -19,8 +23,12 @@ import type { CampaignBidOptionsUpdate } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "ageBucketMultipliers": null,
   "appTypeMultipliers": null,
   "audienceMultipliers": null,
+  "freqBidMultiplierTimeWindow": null,
+  "frequencyMultipliers": null,
+  "genderMultipliers": null,
   "placementMultipliers": null,
   "updateMask": null,
 } satisfies CampaignBidOptionsUpdate

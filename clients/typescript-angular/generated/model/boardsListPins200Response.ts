@@ -7,14 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Pin } from './pin';
+import { PinRead } from './pinRead';
 
 
 export interface BoardsListPins200Response { 
     bookmark?: string | null;
-    /**
-     * Pins
-     */
-    items: Array<Pin>;
+    items: Array<PinRead>;
 }
 

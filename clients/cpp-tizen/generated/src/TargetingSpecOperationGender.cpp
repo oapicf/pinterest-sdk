@@ -24,7 +24,7 @@ void
 TargetingSpecOperationGender::__init()
 {
 	//field = std::string();
-	//operation = std::string();
+	//operation = new TargetingSpecListOperation();
 	//new std::list()std::list> values;
 }
 
@@ -70,9 +70,12 @@ TargetingSpecOperationGender::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&operation, node, "std::string", "");
+		if (isprimitive("TargetingSpecListOperation")) {
+			jsonToValue(&operation, node, "TargetingSpecListOperation", "TargetingSpecListOperation");
 		} else {
+			
+			TargetingSpecListOperation* obj = static_cast<TargetingSpecListOperation*> (&operation);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -121,11 +124,16 @@ TargetingSpecOperationGender::toJson()
 	}
 	const gchar *fieldKey = "field";
 	json_object_set_member(pJsonObject, fieldKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getOperation();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("TargetingSpecListOperation")) {
+		TargetingSpecListOperation obj = getOperation();
+		node = converttoJson(&obj, "TargetingSpecListOperation", "");
 	}
 	else {
+		
+		TargetingSpecListOperation obj = static_cast<TargetingSpecListOperation> (getOperation());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *operationKey = "operation";
@@ -175,14 +183,14 @@ TargetingSpecOperationGender::setField(std::string  field)
 	this->field = field;
 }
 
-std::string
+TargetingSpecListOperation
 TargetingSpecOperationGender::getOperation()
 {
 	return operation;
 }
 
 void
-TargetingSpecOperationGender::setOperation(std::string  operation)
+TargetingSpecOperationGender::setOperation(TargetingSpecListOperation  operation)
 {
 	this->operation = operation;
 }

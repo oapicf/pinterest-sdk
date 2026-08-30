@@ -8,11 +8,11 @@
 
 %% @doc Generate OAuth access token for conversion API
 %% Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
--spec oauth/conversion_token(ctx:ctx()) -> {ok, openapi_conversion_access_token_response:openapi_conversion_access_token_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec oauth/conversion_token(ctx:ctx()) -> {ok, openapi_conversion_access_token:openapi_conversion_access_token(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 oauth/conversion_token(Ctx) ->
     oauth/conversion_token(Ctx, #{}).
 
--spec oauth/conversion_token(ctx:ctx(), maps:map()) -> {ok, openapi_conversion_access_token_response:openapi_conversion_access_token_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec oauth/conversion_token(ctx:ctx(), maps:map()) -> {ok, openapi_conversion_access_token:openapi_conversion_access_token(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 oauth/conversion_token(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -28,12 +28,12 @@ oauth/conversion_token(Ctx, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Generate OAuth access token
-%% Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
--spec oauth/token(ctx:ctx(), binary()) -> {ok, openapi_oauth_access_token_response:openapi_oauth_access_token_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+%% Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
+-spec oauth/token(ctx:ctx(), openapi_token_grant_type:openapi_token_grant_type()) -> {ok, openapi_oauth_access_token:openapi_oauth_access_token(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 oauth/token(Ctx, GrantType) ->
     oauth/token(Ctx, GrantType, #{}).
 
--spec oauth/token(ctx:ctx(), binary(), maps:map()) -> {ok, openapi_oauth_access_token_response:openapi_oauth_access_token_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec oauth/token(ctx:ctx(), openapi_token_grant_type:openapi_token_grant_type(), maps:map()) -> {ok, openapi_oauth_access_token:openapi_oauth_access_token(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 oauth/token(Ctx, GrantType, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -42,7 +42,7 @@ oauth/token(Ctx, GrantType, Optional) ->
     Path = [?BASE_URL, "/oauth/token"],
     QS = [],
     Headers = [],
-    Body1 = {form, [{<<"grant_type">>, GrantType}]++openapi_utils:optional_params([], _OptionalParams)},
+    Body1 = {form, [{<<"grant_type">>, GrantType}]++openapi_utils:optional_params(['code', 'continuous_refresh', 'redirect_uri', 'refresh_token', 'scope'], _OptionalParams)},
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/x-www-form-urlencoded">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 

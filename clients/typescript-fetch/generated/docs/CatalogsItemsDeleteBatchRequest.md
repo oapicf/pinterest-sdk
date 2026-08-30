@@ -10,7 +10,7 @@ Name | Type
 `country` | [Country](Country.md)
 `items` | [Array&lt;ItemDeleteBatchRecord&gt;](ItemDeleteBatchRecord.md)
 `language` | string
-`operation` | [BatchOperation](BatchOperation.md)
+`operation` | string
 
 ## Example
 

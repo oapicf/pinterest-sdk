@@ -11,10 +11,10 @@
 
 // Send Measurement Source Of Truth (MSOT) attributed conversion events
 //
-// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong> <br> <p>Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their <code>ad_account_id</code>. The request body should be a JSON object.</p> - These events will NOT be used in Reporting.
+// **This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their `ad_account_id`. The request body should be a JSON object.  - These events will not be used in Reporting.
 //
 void
-MsotEventsAPI_msotEventsCreate(apiClient_t *apiClient, char *ad_account_id, conversion_msot_events_t *conversion_msot_events)
+MsotEventsAPI_msotEventsCreate(apiClient_t *apiClient, char *ad_account_id, conversion_msot_events_create_t *conversion_msot_events_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -47,12 +47,12 @@ MsotEventsAPI_msotEventsCreate(apiClient_t *apiClient, char *ad_account_id, conv
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_conversion_msot_events = NULL;
-    if (conversion_msot_events != NULL)
+    cJSON *localVarSingleItemJSON_conversion_msot_events_create = NULL;
+    if (conversion_msot_events_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_conversion_msot_events = conversion_msot_events_convertToJSON(conversion_msot_events);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_conversion_msot_events);
+        localVarSingleItemJSON_conversion_msot_events_create = conversion_msot_events_create_convertToJSON(conversion_msot_events_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_conversion_msot_events_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -70,27 +70,35 @@ MsotEventsAPI_msotEventsCreate(apiClient_t *apiClient, char *ad_account_id, conv
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","The request was invalid");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Not authorized to send MSOT conversion events");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Unauthorized access");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 429) {
-    //    printf("%s\n","This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.");
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected errors");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //No return type
 end:
@@ -106,9 +114,9 @@ end:
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarSingleItemJSON_conversion_msot_events) {
-        cJSON_Delete(localVarSingleItemJSON_conversion_msot_events);
-        localVarSingleItemJSON_conversion_msot_events = NULL;
+    if (localVarSingleItemJSON_conversion_msot_events_create) {
+        cJSON_Delete(localVarSingleItemJSON_conversion_msot_events_create);
+        localVarSingleItemJSON_conversion_msot_events_create = NULL;
     }
     free(localVarBodyParameters);
 

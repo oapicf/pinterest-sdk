@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { BillingInvoiceResponse } from './billingInvoiceResponse';
+import { BillingInvoice } from './billingInvoice';
 
 
 export interface BillingInvoicesGet200Response { 
     bookmark?: string | null;
-    items: Array<BillingInvoiceResponse>;
+    items: Array<BillingInvoice>;
 }
 

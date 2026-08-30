@@ -43,11 +43,11 @@ class AdsCreditDiscountsResponse {
   /// Currency value for the discount.
   String? discountCurrency;
 
-  /// The discount applied in the offer’s currency value.
+  /// The discount applied in the offer's currency value.
   num? discountInMicroCurrency;
 
   /// The type of discount of this credit
-  AdsCreditDiscountsResponseDiscountTypeEnum? discountType;
+  AdsCreditDiscountType? discountType;
 
   /// The credits left to spend.
   num? remainingDiscountInMicroCurrency;
@@ -130,10 +130,6 @@ class AdsCreditDiscountsResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AdsCreditDiscountsResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AdsCreditDiscountsResponse[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -144,7 +140,7 @@ class AdsCreditDiscountsResponse {
         discountInMicroCurrency: json[r'discountInMicroCurrency'] == null
             ? null
             : num.parse('${json[r'discountInMicroCurrency']}'),
-        discountType: AdsCreditDiscountsResponseDiscountTypeEnum.fromJson(json[r'discountType']),
+        discountType: AdsCreditDiscountType.fromJson(json[r'discountType']),
         remainingDiscountInMicroCurrency: json[r'remainingDiscountInMicroCurrency'] == null
             ? null
             : num.parse('${json[r'remainingDiscountInMicroCurrency']}'),
@@ -198,132 +194,4 @@ class AdsCreditDiscountsResponse {
   static const requiredKeys = <String>{
   };
 }
-
-/// The type of discount of this credit
-class AdsCreditDiscountsResponseDiscountTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const AdsCreditDiscountsResponseDiscountTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const COUPON = AdsCreditDiscountsResponseDiscountTypeEnum._(r'COUPON');
-  static const CREDIT = AdsCreditDiscountsResponseDiscountTypeEnum._(r'CREDIT');
-  static const COUPON_APPLIED = AdsCreditDiscountsResponseDiscountTypeEnum._(r'COUPON_APPLIED');
-  static const CREDIT_APPLIED = AdsCreditDiscountsResponseDiscountTypeEnum._(r'CREDIT_APPLIED');
-  static const MARKETING_OFFER_CREDIT = AdsCreditDiscountsResponseDiscountTypeEnum._(r'MARKETING_OFFER_CREDIT');
-  static const MARKETING_OFFER_CREDIT_APPLIED = AdsCreditDiscountsResponseDiscountTypeEnum._(r'MARKETING_OFFER_CREDIT_APPLIED');
-  static const GOODWILL_CREDIT = AdsCreditDiscountsResponseDiscountTypeEnum._(r'GOODWILL_CREDIT');
-  static const GOODWILL_CREDIT_APPLIED = AdsCreditDiscountsResponseDiscountTypeEnum._(r'GOODWILL_CREDIT_APPLIED');
-  static const INTERNAL_CREDIT = AdsCreditDiscountsResponseDiscountTypeEnum._(r'INTERNAL_CREDIT');
-  static const INTERNAL_CREDIT_APPLIED = AdsCreditDiscountsResponseDiscountTypeEnum._(r'INTERNAL_CREDIT_APPLIED');
-  static const PREPAID_CREDIT = AdsCreditDiscountsResponseDiscountTypeEnum._(r'PREPAID_CREDIT');
-  static const PREPAID_CREDIT_APPLIED = AdsCreditDiscountsResponseDiscountTypeEnum._(r'PREPAID_CREDIT_APPLIED');
-  static const SALES_INCENTIVE_CREDIT = AdsCreditDiscountsResponseDiscountTypeEnum._(r'SALES_INCENTIVE_CREDIT');
-  static const SALES_INCENTIVE_CREDIT_APPLIED = AdsCreditDiscountsResponseDiscountTypeEnum._(r'SALES_INCENTIVE_CREDIT_APPLIED');
-  static const CREDIT_EXPIRED = AdsCreditDiscountsResponseDiscountTypeEnum._(r'CREDIT_EXPIRED');
-  static const FUTURE_CREDIT = AdsCreditDiscountsResponseDiscountTypeEnum._(r'FUTURE_CREDIT');
-  static const REFERRAL_CREDIT = AdsCreditDiscountsResponseDiscountTypeEnum._(r'REFERRAL_CREDIT');
-  static const INVOICE_SALES_INCENTIVE_CREDIT = AdsCreditDiscountsResponseDiscountTypeEnum._(r'INVOICE_SALES_INCENTIVE_CREDIT');
-  static const INVOICE_SALES_INCENTIVE_CREDIT_APPLIED = AdsCreditDiscountsResponseDiscountTypeEnum._(r'INVOICE_SALES_INCENTIVE_CREDIT_APPLIED');
-  static const PREPAID_CREDIT_REFUND = AdsCreditDiscountsResponseDiscountTypeEnum._(r'PREPAID_CREDIT_REFUND');
-
-  /// List of all possible values in this [enum][AdsCreditDiscountsResponseDiscountTypeEnum].
-  static const values = <AdsCreditDiscountsResponseDiscountTypeEnum>[
-    COUPON,
-    CREDIT,
-    COUPON_APPLIED,
-    CREDIT_APPLIED,
-    MARKETING_OFFER_CREDIT,
-    MARKETING_OFFER_CREDIT_APPLIED,
-    GOODWILL_CREDIT,
-    GOODWILL_CREDIT_APPLIED,
-    INTERNAL_CREDIT,
-    INTERNAL_CREDIT_APPLIED,
-    PREPAID_CREDIT,
-    PREPAID_CREDIT_APPLIED,
-    SALES_INCENTIVE_CREDIT,
-    SALES_INCENTIVE_CREDIT_APPLIED,
-    CREDIT_EXPIRED,
-    FUTURE_CREDIT,
-    REFERRAL_CREDIT,
-    INVOICE_SALES_INCENTIVE_CREDIT,
-    INVOICE_SALES_INCENTIVE_CREDIT_APPLIED,
-    PREPAID_CREDIT_REFUND,
-  ];
-
-  static AdsCreditDiscountsResponseDiscountTypeEnum? fromJson(dynamic value) => AdsCreditDiscountsResponseDiscountTypeEnumTypeTransformer().decode(value);
-
-  static List<AdsCreditDiscountsResponseDiscountTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <AdsCreditDiscountsResponseDiscountTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = AdsCreditDiscountsResponseDiscountTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [AdsCreditDiscountsResponseDiscountTypeEnum] to String,
-/// and [decode] dynamic data back to [AdsCreditDiscountsResponseDiscountTypeEnum].
-class AdsCreditDiscountsResponseDiscountTypeEnumTypeTransformer {
-  factory AdsCreditDiscountsResponseDiscountTypeEnumTypeTransformer() => _instance ??= const AdsCreditDiscountsResponseDiscountTypeEnumTypeTransformer._();
-
-  const AdsCreditDiscountsResponseDiscountTypeEnumTypeTransformer._();
-
-  String encode(AdsCreditDiscountsResponseDiscountTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a AdsCreditDiscountsResponseDiscountTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  AdsCreditDiscountsResponseDiscountTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'COUPON': return AdsCreditDiscountsResponseDiscountTypeEnum.COUPON;
-        case r'CREDIT': return AdsCreditDiscountsResponseDiscountTypeEnum.CREDIT;
-        case r'COUPON_APPLIED': return AdsCreditDiscountsResponseDiscountTypeEnum.COUPON_APPLIED;
-        case r'CREDIT_APPLIED': return AdsCreditDiscountsResponseDiscountTypeEnum.CREDIT_APPLIED;
-        case r'MARKETING_OFFER_CREDIT': return AdsCreditDiscountsResponseDiscountTypeEnum.MARKETING_OFFER_CREDIT;
-        case r'MARKETING_OFFER_CREDIT_APPLIED': return AdsCreditDiscountsResponseDiscountTypeEnum.MARKETING_OFFER_CREDIT_APPLIED;
-        case r'GOODWILL_CREDIT': return AdsCreditDiscountsResponseDiscountTypeEnum.GOODWILL_CREDIT;
-        case r'GOODWILL_CREDIT_APPLIED': return AdsCreditDiscountsResponseDiscountTypeEnum.GOODWILL_CREDIT_APPLIED;
-        case r'INTERNAL_CREDIT': return AdsCreditDiscountsResponseDiscountTypeEnum.INTERNAL_CREDIT;
-        case r'INTERNAL_CREDIT_APPLIED': return AdsCreditDiscountsResponseDiscountTypeEnum.INTERNAL_CREDIT_APPLIED;
-        case r'PREPAID_CREDIT': return AdsCreditDiscountsResponseDiscountTypeEnum.PREPAID_CREDIT;
-        case r'PREPAID_CREDIT_APPLIED': return AdsCreditDiscountsResponseDiscountTypeEnum.PREPAID_CREDIT_APPLIED;
-        case r'SALES_INCENTIVE_CREDIT': return AdsCreditDiscountsResponseDiscountTypeEnum.SALES_INCENTIVE_CREDIT;
-        case r'SALES_INCENTIVE_CREDIT_APPLIED': return AdsCreditDiscountsResponseDiscountTypeEnum.SALES_INCENTIVE_CREDIT_APPLIED;
-        case r'CREDIT_EXPIRED': return AdsCreditDiscountsResponseDiscountTypeEnum.CREDIT_EXPIRED;
-        case r'FUTURE_CREDIT': return AdsCreditDiscountsResponseDiscountTypeEnum.FUTURE_CREDIT;
-        case r'REFERRAL_CREDIT': return AdsCreditDiscountsResponseDiscountTypeEnum.REFERRAL_CREDIT;
-        case r'INVOICE_SALES_INCENTIVE_CREDIT': return AdsCreditDiscountsResponseDiscountTypeEnum.INVOICE_SALES_INCENTIVE_CREDIT;
-        case r'INVOICE_SALES_INCENTIVE_CREDIT_APPLIED': return AdsCreditDiscountsResponseDiscountTypeEnum.INVOICE_SALES_INCENTIVE_CREDIT_APPLIED;
-        case r'PREPAID_CREDIT_REFUND': return AdsCreditDiscountsResponseDiscountTypeEnum.PREPAID_CREDIT_REFUND;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [AdsCreditDiscountsResponseDiscountTypeEnumTypeTransformer] instance.
-  static AdsCreditDiscountsResponseDiscountTypeEnumTypeTransformer? _instance;
-}
-
 

@@ -1,14 +1,14 @@
 #' Create a new BaseInviteDataResponse
 #'
 #' @description
-#' BaseInviteDataResponse Class
+#' Common invite/request data returned by the business access endpoints.
 #'
 #' @docType class
 #' @title BaseInviteDataResponse
 #' @description BaseInviteDataResponse Class
 #' @format An \code{R6Class} generator object
 #' @field id Unique identifier of the invite/request. character [optional]
-#' @field invite_data  \link{BaseInviteDataResponseInviteData} [optional]
+#' @field invite_data  \link{InviteDataResponse} [optional]
 #' @field is_received_invite Indicates whether the invite/request was received. character [optional]
 #' @field user Metadata for the member/partner that was sent the invite/request. \link{BusinessAccessUserSummary} [optional]
 #' @importFrom R6 R6Class
@@ -90,7 +90,7 @@ BaseInviteDataResponse <- R6::R6Class(
       }
       if (!is.null(self$`invite_data`)) {
         BaseInviteDataResponseObject[["invite_data"]] <-
-          self$`invite_data`$toSimpleType()
+          self$extractSimpleType(self$`invite_data`)
       }
       if (!is.null(self$`is_received_invite`)) {
         BaseInviteDataResponseObject[["is_received_invite"]] <-
@@ -98,9 +98,32 @@ BaseInviteDataResponse <- R6::R6Class(
       }
       if (!is.null(self$`user`)) {
         BaseInviteDataResponseObject[["user"]] <-
-          self$`user`$toSimpleType()
+          self$extractSimpleType(self$`user`)
       }
       return(BaseInviteDataResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -114,7 +137,7 @@ BaseInviteDataResponse <- R6::R6Class(
         self$`id` <- this_object$`id`
       }
       if (!is.null(this_object$`invite_data`)) {
-        `invite_data_object` <- BaseInviteDataResponseInviteData$new()
+        `invite_data_object` <- InviteDataResponse$new()
         `invite_data_object`$fromJSON(jsonlite::toJSON(this_object$`invite_data`, auto_unbox = TRUE, digits = NA))
         self$`invite_data` <- `invite_data_object`
       }
@@ -148,7 +171,7 @@ BaseInviteDataResponse <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
-      self$`invite_data` <- BaseInviteDataResponseInviteData$new()$fromJSON(jsonlite::toJSON(this_object$`invite_data`, auto_unbox = TRUE, digits = NA))
+      self$`invite_data` <- InviteDataResponse$new()$fromJSON(jsonlite::toJSON(this_object$`invite_data`, auto_unbox = TRUE, digits = NA))
       self$`is_received_invite` <- this_object$`is_received_invite`
       self$`user` <- BusinessAccessUserSummary$new()$fromJSON(jsonlite::toJSON(this_object$`user`, auto_unbox = TRUE, digits = NA))
       self

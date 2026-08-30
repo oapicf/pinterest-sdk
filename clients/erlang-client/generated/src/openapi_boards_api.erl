@@ -16,12 +16,12 @@
 
 %% @doc Create board section
 %% Create a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
--spec board_sections/create(ctx:ctx(), binary(), openapi_board_section:openapi_board_section()) -> {ok, openapi_board_section:openapi_board_section(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-board_sections/create(Ctx, BoardId, OpenapiBoardSection) ->
-    board_sections/create(Ctx, BoardId, OpenapiBoardSection, #{}).
+-spec board_sections/create(ctx:ctx(), binary(), openapi_board_section_create:openapi_board_section_create()) -> {ok, openapi_board_section:openapi_board_section(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+board_sections/create(Ctx, BoardId, OpenapiBoardSectionCreate) ->
+    board_sections/create(Ctx, BoardId, OpenapiBoardSectionCreate, #{}).
 
--spec board_sections/create(ctx:ctx(), binary(), openapi_board_section:openapi_board_section(), maps:map()) -> {ok, openapi_board_section:openapi_board_section(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-board_sections/create(Ctx, BoardId, OpenapiBoardSection, Optional) ->
+-spec board_sections/create(ctx:ctx(), binary(), openapi_board_section_create:openapi_board_section_create(), maps:map()) -> {ok, openapi_board_section:openapi_board_section(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+board_sections/create(Ctx, BoardId, OpenapiBoardSectionCreate, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -29,7 +29,7 @@ board_sections/create(Ctx, BoardId, OpenapiBoardSection, Optional) ->
     Path = [?BASE_URL, "/boards/", BoardId, "/sections"],
     QS = lists:flatten([])++openapi_utils:optional_params(['ad_account_id'], _OptionalParams),
     Headers = [],
-    Body1 = OpenapiBoardSection,
+    Body1 = OpenapiBoardSectionCreate,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
@@ -37,11 +37,11 @@ board_sections/create(Ctx, BoardId, OpenapiBoardSection, Optional) ->
 
 %% @doc Delete board section
 %% Delete a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
--spec board_sections/delete(ctx:ctx(), binary(), binary()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec board_sections/delete(ctx:ctx(), binary(), binary()) -> {ok, openapi_board_section:openapi_board_section(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 board_sections/delete(Ctx, BoardId, SectionId) ->
     board_sections/delete(Ctx, BoardId, SectionId, #{}).
 
--spec board_sections/delete(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec board_sections/delete(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_board_section:openapi_board_section(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 board_sections/delete(Ctx, BoardId, SectionId, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -100,12 +100,12 @@ board_sections/list_pins(Ctx, BoardId, SectionId, Optional) ->
 
 %% @doc Update board section
 %% Update a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
--spec board_sections/update(ctx:ctx(), binary(), binary(), openapi_board_section:openapi_board_section()) -> {ok, openapi_board_section:openapi_board_section(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-board_sections/update(Ctx, BoardId, SectionId, OpenapiBoardSection) ->
-    board_sections/update(Ctx, BoardId, SectionId, OpenapiBoardSection, #{}).
+-spec board_sections/update(ctx:ctx(), binary(), binary(), openapi_board_section_update_with_required_body:openapi_board_section_update_with_required_body()) -> {ok, openapi_board_section:openapi_board_section(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+board_sections/update(Ctx, BoardId, SectionId, OpenapiBoardSectionUpdateWithRequiredBody) ->
+    board_sections/update(Ctx, BoardId, SectionId, OpenapiBoardSectionUpdateWithRequiredBody, #{}).
 
--spec board_sections/update(ctx:ctx(), binary(), binary(), openapi_board_section:openapi_board_section(), maps:map()) -> {ok, openapi_board_section:openapi_board_section(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-board_sections/update(Ctx, BoardId, SectionId, OpenapiBoardSection, Optional) ->
+-spec board_sections/update(ctx:ctx(), binary(), binary(), openapi_board_section_update_with_required_body:openapi_board_section_update_with_required_body(), maps:map()) -> {ok, openapi_board_section:openapi_board_section(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+board_sections/update(Ctx, BoardId, SectionId, OpenapiBoardSectionUpdateWithRequiredBody, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -113,7 +113,7 @@ board_sections/update(Ctx, BoardId, SectionId, OpenapiBoardSection, Optional) ->
     Path = [?BASE_URL, "/boards/", BoardId, "/sections/", SectionId, ""],
     QS = lists:flatten([])++openapi_utils:optional_params(['ad_account_id'], _OptionalParams),
     Headers = [],
-    Body1 = OpenapiBoardSection,
+    Body1 = OpenapiBoardSectionUpdateWithRequiredBody,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
@@ -142,11 +142,11 @@ boards/create(Ctx, OpenapiBoardCreate, Optional) ->
 
 %% @doc Delete board
 %% Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
--spec boards/delete(ctx:ctx(), binary()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec boards/delete(ctx:ctx(), binary()) -> {ok, openapi_board:openapi_board(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 boards/delete(Ctx, BoardId) ->
     boards/delete(Ctx, BoardId, #{}).
 
--spec boards/delete(ctx:ctx(), binary(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec boards/delete(ctx:ctx(), binary(), maps:map()) -> {ok, openapi_board:openapi_board(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 boards/delete(Ctx, BoardId, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -216,7 +216,7 @@ boards/list_pins(Ctx, BoardId, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/boards/", BoardId, "/pins"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['bookmark', 'page_size', 'creative_types', 'ad_account_id', 'pin_metrics'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['creative_types', 'ad_account_id', 'pin_metrics', 'bookmark', 'page_size'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),

@@ -1,9 +1,11 @@
 #import "OAIOauthApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIConversionAccessTokenResponse.h"
-#import "OAIError.h"
-#import "OAIOauthAccessTokenResponse.h"
+#import "OAIConversionAccessToken.h"
+#import "OAIOauthAccessToken.h"
+#import "OAIPinterestLibError.h"
+#import "OAITokenGrantType.h"
+#import "OAITokenTypeHint.h"
 
 
 @interface OAIOauthApi ()
@@ -54,10 +56,10 @@ NSInteger kOAIOauthApiMissingParamErrorCode = 234513;
 ///
 /// Generate OAuth access token for conversion API
 /// Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
-///  @returns OAIConversionAccessTokenResponse*
+///  @returns OAIConversionAccessToken*
 ///
 -(NSURLSessionTask*) oauthConversionTokenWithCompletionHandler: 
-    (void (^)(OAIConversionAccessTokenResponse* output, NSError* error)) handler {
+    (void (^)(OAIConversionAccessToken* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/oauth/conversion_token"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -95,23 +97,38 @@ NSInteger kOAIOauthApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIConversionAccessTokenResponse*"
+                              responseType: @"OAIConversionAccessToken*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIConversionAccessTokenResponse*)data, error);
+                                    handler((OAIConversionAccessToken*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Generate OAuth access token
-/// Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
+/// Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
 ///  @param grantType  
 ///
-///  @returns OAIOauthAccessTokenResponse*
+///  @param code  (optional)
 ///
--(NSURLSessionTask*) oauthTokenWithGrantType: (NSString*) grantType
-    completionHandler: (void (^)(OAIOauthAccessTokenResponse* output, NSError* error)) handler {
+///  @param continuousRefresh   If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. (optional)
+///
+///  @param redirectUri  (optional)
+///
+///  @param refreshToken  (optional)
+///
+///  @param scope  (optional)
+///
+///  @returns OAIOauthAccessToken*
+///
+-(NSURLSessionTask*) oauthTokenWithGrantType: (OAITokenGrantType*) grantType
+    code: (NSString*) code
+    continuousRefresh: (NSString*) continuousRefresh
+    redirectUri: (NSString*) redirectUri
+    refreshToken: (NSString*) refreshToken
+    scope: (NSString*) scope
+    completionHandler: (void (^)(OAIOauthAccessToken* output, NSError* error)) handler {
     // verify the required parameter 'grantType' is set
     if (grantType == nil) {
         NSParameterAssert(grantType);
@@ -148,8 +165,23 @@ NSInteger kOAIOauthApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    if (code) {
+        formParams[@"code"] = code;
+    }
+    if (continuousRefresh) {
+        formParams[@"continuous_refresh"] = continuousRefresh;
+    }
     if (grantType) {
         formParams[@"grant_type"] = grantType;
+    }
+    if (redirectUri) {
+        formParams[@"redirect_uri"] = redirectUri;
+    }
+    if (refreshToken) {
+        formParams[@"refresh_token"] = refreshToken;
+    }
+    if (scope) {
+        formParams[@"scope"] = scope;
     }
 
     return [self.apiClient requestWithPath: resourcePath
@@ -163,10 +195,10 @@ NSInteger kOAIOauthApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIOauthAccessTokenResponse*"
+                              responseType: @"OAIOauthAccessToken*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIOauthAccessTokenResponse*)data, error);
+                                    handler((OAIOauthAccessToken*)data, error);
                                 }
                             }];
 }
@@ -181,7 +213,7 @@ NSInteger kOAIOauthApiMissingParamErrorCode = 234513;
 ///  @returns void
 ///
 -(NSURLSessionTask*) tokenRevokeWithToken: (NSString*) token
-    tokenTypeHint: (NSString*) tokenTypeHint
+    tokenTypeHint: (OAITokenTypeHint*) tokenTypeHint
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'token' is set
     if (token == nil) {

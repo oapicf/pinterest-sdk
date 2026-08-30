@@ -13,11 +13,12 @@
   | {'created_time', integer() }
   | {'exceptions', map() }
   | {'id', binary() }
+  | {'is_nca', boolean() }
   | {'name', binary() }
   | {'num_batches', integer() }
   | {'num_removed_user_records', integer() }
   | {'num_uploaded_user_records', integer() }
-  | {'status', binary() }
+  | {'status', openapi_customer_list_status:openapi_customer_list_status() }
   | {'type', binary() }
   | {'updated_time', integer() }
   ].
@@ -31,11 +32,12 @@ openapi_customer_list(Fields) ->
             , {'created_time', integer() }
             , {'exceptions', map() }
             , {'id', binary() }
+            , {'is_nca', boolean() }
             , {'name', binary() }
             , {'num_batches', integer() }
             , {'num_removed_user_records', integer() }
             , {'num_uploaded_user_records', integer() }
-            , {'status', elements([<<"PROCESSING">>, <<"READY">>, <<"TOO_SMALL">>, <<"UPLOADING">>]) }
+            , {'status', openapi_customer_list_status:openapi_customer_list_status() }
             , {'type', binary() }
             , {'updated_time', integer() }
             ],

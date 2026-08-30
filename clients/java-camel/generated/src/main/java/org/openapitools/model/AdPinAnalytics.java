@@ -2,29 +2,26 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
-import java.util.Map;
-import java.util.HashMap;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 /**
  * AdPinAnalytics
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdPinAnalytics {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -82,43 +79,6 @@ public class AdPinAnalytics {
   public void setPINID(String PIN_ID) {
     this.PIN_ID = PIN_ID;
   }
-    /**
-    * A container for additional, undeclared properties.
-    * This is a holder for any undeclared properties as specified with
-    * the 'additionalProperties' keyword in the OAS document.
-    */
-    private Map<String, Object> additionalProperties;
-
-    /**
-    * Set the additional (undeclared) property with the specified name and value.
-    * If the property does not already exist, create it otherwise replace it.
-    */
-    @JsonAnySetter
-    public AdPinAnalytics putAdditionalProperty(String key, Object value) {
-        if (this.additionalProperties == null) {
-            this.additionalProperties = new HashMap<String, Object>();
-        }
-        this.additionalProperties.put(key, value);
-        return this;
-    }
-
-    /**
-    * Return the additional (undeclared) property.
-    */
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return additionalProperties;
-    }
-
-    /**
-    * Return the additional (undeclared) property with the specified name.
-    */
-    public Object getAdditionalProperty(String key) {
-        if (this.additionalProperties == null) {
-            return null;
-        }
-        return this.additionalProperties.get(key);
-    }
 
   @Override
   public boolean equals(Object o) {
@@ -130,13 +90,12 @@ public class AdPinAnalytics {
     }
     AdPinAnalytics adPinAnalytics = (AdPinAnalytics) o;
     return Objects.equals(this.DATE, adPinAnalytics.DATE) &&
-        Objects.equals(this.PIN_ID, adPinAnalytics.PIN_ID) &&
-    Objects.equals(this.additionalProperties, adPinAnalytics.additionalProperties);
+        Objects.equals(this.PIN_ID, adPinAnalytics.PIN_ID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(DATE, PIN_ID, additionalProperties);
+    return Objects.hash(DATE, PIN_ID);
   }
 
   @Override
@@ -145,8 +104,6 @@ public class AdPinAnalytics {
     sb.append("class AdPinAnalytics {\n");
     sb.append("    DATE: ").append(toIndentedString(DATE)).append("\n");
     sb.append("    PIN_ID: ").append(toIndentedString(PIN_ID)).append("\n");
-    
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -156,10 +113,7 @@ public class AdPinAnalytics {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

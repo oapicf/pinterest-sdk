@@ -8,52 +8,66 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.ActionType
+import org.openapitools.client.models.BidFloorObjectiveType
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.CreativeType
 import org.openapitools.client.models.Currency
-import org.openapitools.client.models.ObjectiveType
 import org.openapitools.client.models.OptimizationGoalMetadata
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * 
+ * Bid floor specification for a given campaign configuration.
  *
- * @param billableEvent 
- * @param currency 
- * @param countries 
- * @param creativeType 
- * @param objectiveType 
- * @param optimizationGoalMetadata 
+ * @param billableEvent Ad group billable event type.
+ * @param currency Currency for the bid floor value.
+ * @param countries List of ISO 3166-1 alpha-2 country codes.
+ * @param creativeType Creative type for the bid floor request.
+ * @param objectiveType Campaign objective type.
+ * @param optimizationGoalMetadata Optimization goal metadata.
  */
 
 
 data class BidFloorSpec (
 
+    /* Ad group billable event type. */
     @Json(name = "billable_event")
     val billableEvent: ActionType,
 
+    /* Currency for the bid floor value. */
     @Json(name = "currency")
     val currency: Currency,
 
+    /* List of ISO 3166-1 alpha-2 country codes. */
     @Json(name = "countries")
     val countries: kotlin.collections.List<Country>? = null,
 
+    /* Creative type for the bid floor request. */
     @Json(name = "creative_type")
     val creativeType: CreativeType? = null,
 
+    /* Campaign objective type. */
     @Json(name = "objective_type")
-    val objectiveType: ObjectiveType? = null,
+    val objectiveType: BidFloorObjectiveType? = null,
 
+    /* Optimization goal metadata. */
     @Json(name = "optimization_goal_metadata")
     val optimizationGoalMetadata: OptimizationGoalMetadata? = null
 

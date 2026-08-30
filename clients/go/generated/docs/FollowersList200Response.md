@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]UserSummary**](UserSummary.md) |  | 
+**Items** | [**[]FollowUser**](FollowUser.md) |  | 
 
 ## Methods
 
 ### NewFollowersList200Response
 
-`func NewFollowersList200Response(items []UserSummary, ) *FollowersList200Response`
+`func NewFollowersList200Response(items []FollowUser, ) *FollowersList200Response`
 
 NewFollowersList200Response instantiates a new FollowersList200Response object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ HasBookmark returns a boolean if a field has been set.
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
 ### GetItems
 
-`func (o *FollowersList200Response) GetItems() []UserSummary`
+`func (o *FollowersList200Response) GetItems() []FollowUser`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *FollowersList200Response) GetItemsOk() (*[]UserSummary, bool)`
+`func (o *FollowersList200Response) GetItemsOk() (*[]FollowUser, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *FollowersList200Response) SetItems(v []UserSummary)`
+`func (o *FollowersList200Response) SetItems(v []FollowUser)`
 
 SetItems sets Items field to given value.
 

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -20,9 +28,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Intended result of the campaign.  You can only update objectives for draft campaigns. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter. 
+ * Advertiser campaign objective type. You can only update objectives for draft campaigns. `CTV_CONSIDERATION` is in BETA. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter.
  *
- * Values: AWARENESS,CONSIDERATION,WEB_CONVERSION,CATALOG_SALES,VIDEO_COMPLETION
+ * Values: AWARENESS,CONSIDERATION,WEB_CONVERSION,CATALOG_SALES,VIDEO_COMPLETION,SALES,APP_INSTALL,CTV_CONSIDERATION
  */
 
 @JsonClass(generateAdapter = false)
@@ -41,7 +49,16 @@ enum class ObjectiveType(val value: kotlin.String) {
     CATALOG_SALES("CATALOG_SALES"),
 
     @Json(name = "VIDEO_COMPLETION")
-    VIDEO_COMPLETION("VIDEO_COMPLETION");
+    VIDEO_COMPLETION("VIDEO_COMPLETION"),
+
+    @Json(name = "SALES")
+    SALES("SALES"),
+
+    @Json(name = "APP_INSTALL")
+    APP_INSTALL("APP_INSTALL"),
+
+    @Json(name = "CTV_CONSIDERATION")
+    CTV_CONSIDERATION("CTV_CONSIDERATION");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -63,7 +80,7 @@ enum class ObjectiveType(val value: kotlin.String) {
          */
         fun decode(data: kotlin.Any?): ObjectiveType? = data?.let {
           val normalizedData = "$it".lowercase()
-          values().firstOrNull { value ->
+          entries.firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()
           }
         }

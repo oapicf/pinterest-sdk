@@ -1,6 +1,5 @@
 # CampaignSummaryStatus
 
-Summary status for campaign
 
 ## Enum
 

@@ -1,0 +1,32 @@
+/*
+ * campaign_planning_response_error_code.h
+ *
+ * Error code returned for a campaign planning estimate failure.
+ */
+
+#ifndef _campaign_planning_response_error_code_H_
+#define _campaign_planning_response_error_code_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct campaign_planning_response_error_code_t campaign_planning_response_error_code_t;
+
+
+// Enum  for campaign_planning_response_error_code
+
+typedef enum { pinterest_rest_api_campaign_planning_response_error_code__NULL = 0, pinterest_rest_api_campaign_planning_response_error_code__SERVER_ERROR, pinterest_rest_api_campaign_planning_response_error_code__AUDIENCE_LIST_MISSING, pinterest_rest_api_campaign_planning_response_error_code__INVALID_REQUEST, pinterest_rest_api_campaign_planning_response_error_code__PRODUCT_GROUP_MISSING } pinterest_rest_api_campaign_planning_response_error_code__e;
+
+char* campaign_planning_response_error_code_campaign_planning_response_error_code_ToString(pinterest_rest_api_campaign_planning_response_error_code__e campaign_planning_response_error_code);
+
+pinterest_rest_api_campaign_planning_response_error_code__e campaign_planning_response_error_code_campaign_planning_response_error_code_FromString(char* campaign_planning_response_error_code);
+
+cJSON *campaign_planning_response_error_code_convertToJSON(pinterest_rest_api_campaign_planning_response_error_code__e campaign_planning_response_error_code);
+
+pinterest_rest_api_campaign_planning_response_error_code__e campaign_planning_response_error_code_parseFromJSON(cJSON *campaign_planning_response_error_codeJSON);
+
+#endif /* _campaign_planning_response_error_code_H_ */
+

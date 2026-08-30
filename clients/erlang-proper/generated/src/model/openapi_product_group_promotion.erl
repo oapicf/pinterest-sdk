@@ -13,19 +13,20 @@
   | {'bid_in_micro_currency', integer() }
   | {'catalog_product_group_id', binary() }
   | {'catalog_product_group_name', binary() }
-  | {'collections_header_type', binary() }
+  | {'collections_header_type', openapi_collections_header_type:openapi_collections_header_type() }
   | {'collections_hero_destination_url', binary() }
   | {'collections_hero_pin_id', binary() }
   | {'creative_type', openapi_creative_type:openapi_creative_type() }
-  | {'customizable_cta_type', binary() }
+  | {'customizable_cta_type', openapi_product_group_promotion_customizable_cta_type:openapi_product_group_promotion_customizable_cta_type() }
   | {'definition', binary() }
   | {'grid_click_type', openapi_grid_click_type:openapi_grid_click_type() }
   | {'id', binary() }
   | {'included', boolean() }
   | {'is_generate_background', boolean() }
+  | {'is_image_auto_resizing', boolean() }
   | {'is_mdl', boolean() }
   | {'parent_id', binary() }
-  | {'preferred_media_type', binary() }
+  | {'preferred_media_type', openapi_preferred_media_type:openapi_preferred_media_type() }
   | {'relative_definition', binary() }
   | {'selected_image_tag', binary() }
   | {'selected_video_tag', binary() }
@@ -44,19 +45,20 @@ openapi_product_group_promotion(Fields) ->
             , {'bid_in_micro_currency', integer() }
             , {'catalog_product_group_id', binary() }
             , {'catalog_product_group_name', binary() }
-            , {'collections_header_type', elements([<<"SHOP_THIS_COLLECTION">>, <<"EXPLORE_THIS_COLLECTION">>, <<"NO_HEADER">>, <<"ON_SALE">>, <<"GET_DEAL">>, <<"">>]) }
+            , {'collections_header_type', openapi_collections_header_type:openapi_collections_header_type() }
             , {'collections_hero_destination_url', binary() }
             , {'collections_hero_pin_id', binary() }
             , {'creative_type', openapi_creative_type:openapi_creative_type() }
-            , {'customizable_cta_type', elements([<<"SHOP_NOW">>, <<"BOOK_NOW">>, <<"ON_SALE">>, <<"GET_DEAL">>, <<"BUY_ONLINE_PICKUP_IN_STORE">>, <<"">>]) }
+            , {'customizable_cta_type', openapi_product_group_promotion_customizable_cta_type:openapi_product_group_promotion_customizable_cta_type() }
             , {'definition', binary() }
             , {'grid_click_type', openapi_grid_click_type:openapi_grid_click_type() }
             , {'id', binary() }
             , {'included', boolean() }
             , {'is_generate_background', boolean() }
+            , {'is_image_auto_resizing', boolean() }
             , {'is_mdl', boolean() }
             , {'parent_id', binary() }
-            , {'preferred_media_type', elements([<<"VIDEO">>, <<"IMAGE">>, <<"">>]) }
+            , {'preferred_media_type', openapi_preferred_media_type:openapi_preferred_media_type() }
             , {'relative_definition', binary() }
             , {'selected_image_tag', binary() }
             , {'selected_video_tag', binary() }

@@ -56,5 +56,5 @@ class TargetingSpecOperationShoppingRetargeting {
     
     OperationEnum operation
     
-    List<TargetingSpecShoppingRetargeting> values
+    List<TargetingSpecShoppingRetargeting> values = new ArrayList<>()
 }

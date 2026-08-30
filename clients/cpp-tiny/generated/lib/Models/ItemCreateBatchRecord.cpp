@@ -86,7 +86,7 @@ ItemCreateBatchRecord::getAttributes()
 }
 
 void
-ItemCreateBatchRecord::setAttributes(ItemAttributesRequest  attributes)
+ItemCreateBatchRecord::setAttributes(ItemAttributesRequest attributes)
 {
 	this->attributes = attributes;
 }
@@ -98,7 +98,7 @@ ItemCreateBatchRecord::getItemId()
 }
 
 void
-ItemCreateBatchRecord::setItemId(std::string  item_id)
+ItemCreateBatchRecord::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
 }

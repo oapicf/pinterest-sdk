@@ -11,31 +11,30 @@
 part of openapi.api;
 
 /// The status of the item processing record
-class ItemProcessingStatus {
-  /// Instantiate a new enum with the provided [value].
-  const ItemProcessingStatus._(this.value);
+enum ItemProcessingStatus {
+  SUCCESS._(r'SUCCESS'),
+  FAILURE._(r'FAILURE'),
+  PROCESSING._(r'PROCESSING'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const ItemProcessingStatus._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const SUCCESS = ItemProcessingStatus._(r'SUCCESS');
-  static const FAILURE = ItemProcessingStatus._(r'FAILURE');
-  static const PROCESSING = ItemProcessingStatus._(r'PROCESSING');
-
-  /// List of all possible values in this [enum][ItemProcessingStatus].
-  static const values = <ItemProcessingStatus>[
-    SUCCESS,
-    FAILURE,
-    PROCESSING,
-  ];
-
+  /// Returns the instance of [ItemProcessingStatus] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static ItemProcessingStatus? fromJson(dynamic value) => ItemProcessingStatusTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [ItemProcessingStatus]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<ItemProcessingStatus> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ItemProcessingStatus>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class ItemProcessingStatusTypeTransformer {
 
   const ItemProcessingStatusTypeTransformer._();
 
-  String encode(ItemProcessingStatus data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(ItemProcessingStatus data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a ItemProcessingStatus.
+  /// Returns the instance of [ItemProcessingStatus] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class ItemProcessingStatusTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   ItemProcessingStatus? decode(dynamic data, {bool allowNull = true}) {
+    if (data is ItemProcessingStatus) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'SUCCESS': return ItemProcessingStatus.SUCCESS;
@@ -82,7 +86,7 @@ class ItemProcessingStatusTypeTransformer {
     return null;
   }
 
-  /// Singleton [ItemProcessingStatusTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static ItemProcessingStatusTypeTransformer? _instance;
 }
 

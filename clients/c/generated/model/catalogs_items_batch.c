@@ -4,10 +4,27 @@
 #include "catalogs_items_batch.h"
 
 
+char* catalogs_items_batch_catalog_type_ToString(pinterest_rest_api_catalogs_items_batch_CATALOGTYPE_e catalog_type) {
+    char* catalog_typeArray[] =  { "NULL", "CREATIVE_ASSETS" };
+    return catalog_typeArray[catalog_type];
+}
+
+pinterest_rest_api_catalogs_items_batch_CATALOGTYPE_e catalogs_items_batch_catalog_type_FromString(char* catalog_type){
+    int stringToReturn = 0;
+    char *catalog_typeArray[] =  { "NULL", "CREATIVE_ASSETS" };
+    size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 static catalogs_items_batch_t *catalogs_items_batch_create_internal(
-    pinterest_rest_api_catalogs_type__e catalog_type,
     char *batch_id,
+    pinterest_rest_api_catalogs_items_batch_CATALOGTYPE_e catalog_type,
     char *completed_time,
     char *created_time,
     list_t *items,
@@ -17,33 +34,36 @@ static catalogs_items_batch_t *catalogs_items_batch_create_internal(
     if (!catalogs_items_batch_local_var) {
         return NULL;
     }
-    catalogs_items_batch_local_var->catalog_type = catalog_type;
+    memset(catalogs_items_batch_local_var, 0, sizeof(catalogs_items_batch_t));
+    catalogs_items_batch_local_var->_library_owned = 1;
     catalogs_items_batch_local_var->batch_id = batch_id;
+    catalogs_items_batch_local_var->catalog_type = catalog_type;
     catalogs_items_batch_local_var->completed_time = completed_time;
     catalogs_items_batch_local_var->created_time = created_time;
     catalogs_items_batch_local_var->items = items;
     catalogs_items_batch_local_var->status = status;
-
-    catalogs_items_batch_local_var->_library_owned = 1;
     return catalogs_items_batch_local_var;
 }
 
 __attribute__((deprecated)) catalogs_items_batch_t *catalogs_items_batch_create(
-    pinterest_rest_api_catalogs_type__e catalog_type,
     char *batch_id,
+    pinterest_rest_api_catalogs_items_batch_CATALOGTYPE_e catalog_type,
     char *completed_time,
     char *created_time,
     list_t *items,
     pinterest_rest_api_batch_operation_status__e status
     ) {
-    return catalogs_items_batch_create_internal (
-        catalog_type,
+    catalogs_items_batch_t *result = catalogs_items_batch_create_internal (
         batch_id,
+        catalog_type,
         completed_time,
         created_time,
         items,
         status
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_items_batch_free(catalogs_items_batch_t *catalogs_items_batch) {
@@ -80,25 +100,21 @@ void catalogs_items_batch_free(catalogs_items_batch_t *catalogs_items_batch) {
 cJSON *catalogs_items_batch_convertToJSON(catalogs_items_batch_t *catalogs_items_batch) {
     cJSON *item = cJSON_CreateObject();
 
-    // catalogs_items_batch->catalog_type
-    if (pinterest_rest_api_catalogs_type__NULL == catalogs_items_batch->catalog_type) {
-        goto fail;
-    }
-    cJSON *catalog_type_local_JSON = catalogs_type_convertToJSON(catalogs_items_batch->catalog_type);
-    if(catalog_type_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "catalog_type", catalog_type_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
-    }
-
-
     // catalogs_items_batch->batch_id
     if(catalogs_items_batch->batch_id) {
     if(cJSON_AddStringToObject(item, "batch_id", catalogs_items_batch->batch_id) == NULL) {
     goto fail; //String
     }
+    }
+
+
+    // catalogs_items_batch->catalog_type
+    if (pinterest_rest_api_catalogs_items_batch_CATALOGTYPE_NULL == catalogs_items_batch->catalog_type) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "catalog_type", catalogs_items_batch_catalog_type_ToString(catalogs_items_batch->catalog_type)) == NULL)
+    {
+    goto fail; //Enum
     }
 
 
@@ -163,26 +179,17 @@ catalogs_items_batch_t *catalogs_items_batch_parseFromJSON(cJSON *catalogs_items
 
     catalogs_items_batch_t *catalogs_items_batch_local_var = NULL;
 
-    // define the local variable for catalogs_items_batch->catalog_type
-    pinterest_rest_api_catalogs_type__e catalog_type_local_nonprim = 0;
+    char *batch_id_local_str = NULL;
+
+    char *completed_time_local_str = NULL;
+
+    char *created_time_local_str = NULL;
 
     // define the local list for catalogs_items_batch->items
     list_t *itemsList = NULL;
 
     // define the local variable for catalogs_items_batch->status
     pinterest_rest_api_batch_operation_status__e status_local_nonprim = 0;
-
-    // catalogs_items_batch->catalog_type
-    cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_items_batchJSON, "catalog_type");
-    if (cJSON_IsNull(catalog_type)) {
-        catalog_type = NULL;
-    }
-    if (!catalog_type) {
-        goto end;
-    }
-
-    
-    catalog_type_local_nonprim = catalogs_type_parseFromJSON(catalog_type); //custom
 
     // catalogs_items_batch->batch_id
     cJSON *batch_id = cJSON_GetObjectItemCaseSensitive(catalogs_items_batchJSON, "batch_id");
@@ -195,6 +202,23 @@ catalogs_items_batch_t *catalogs_items_batch_parseFromJSON(cJSON *catalogs_items
     goto end; //String
     }
     }
+
+    // catalogs_items_batch->catalog_type
+    cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_items_batchJSON, "catalog_type");
+    if (cJSON_IsNull(catalog_type)) {
+        catalog_type = NULL;
+    }
+    if (!catalog_type) {
+        goto end;
+    }
+
+    pinterest_rest_api_catalogs_items_batch_CATALOGTYPE_e catalog_typeVariable;
+    
+    if(!cJSON_IsString(catalog_type))
+    {
+    goto end; //Enum
+    }
+    catalog_typeVariable = catalogs_items_batch_catalog_type_FromString(catalog_type->valuestring);
 
     // catalogs_items_batch->completed_time
     cJSON *completed_time = cJSON_GetObjectItemCaseSensitive(catalogs_items_batchJSON, "completed_time");
@@ -257,19 +281,36 @@ catalogs_items_batch_t *catalogs_items_batch_parseFromJSON(cJSON *catalogs_items
     }
 
 
+    if (batch_id && !cJSON_IsNull(batch_id)) batch_id_local_str = strdup(batch_id->valuestring);
+    if (completed_time && !cJSON_IsNull(completed_time)) completed_time_local_str = strdup(completed_time->valuestring);
+    if (created_time && !cJSON_IsNull(created_time)) created_time_local_str = strdup(created_time->valuestring);
+
     catalogs_items_batch_local_var = catalogs_items_batch_create_internal (
-        catalog_type_local_nonprim,
-        batch_id && !cJSON_IsNull(batch_id) ? strdup(batch_id->valuestring) : NULL,
-        completed_time && !cJSON_IsNull(completed_time) ? strdup(completed_time->valuestring) : NULL,
-        strdup(created_time->valuestring),
+        batch_id_local_str,
+        catalog_typeVariable,
+        completed_time_local_str,
+        created_time_local_str,
         items ? itemsList : NULL,
         status ? status_local_nonprim : 0
         );
 
+    if (!catalogs_items_batch_local_var) {
+        goto end;
+    }
+
     return catalogs_items_batch_local_var;
 end:
-    if (catalog_type_local_nonprim) {
-        catalog_type_local_nonprim = 0;
+    if (batch_id_local_str) {
+        free(batch_id_local_str);
+        batch_id_local_str = NULL;
+    }
+    if (completed_time_local_str) {
+        free(completed_time_local_str);
+        completed_time_local_str = NULL;
+    }
+    if (created_time_local_str) {
+        free(created_time_local_str);
+        created_time_local_str = NULL;
     }
     if (itemsList) {
         listEntry_t *listEntry = NULL;

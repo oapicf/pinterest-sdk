@@ -20,17 +20,17 @@ typedef struct quality_component_details_t quality_component_details_t;
 
 
 typedef struct quality_component_details_t {
-    double coverage; //numeric
+    double *coverage; //numeric
     list_t *issues; //nonprimitive container
-    double overlap; //numeric
+    double *overlap; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } quality_component_details_t;
 
 __attribute__((deprecated)) quality_component_details_t *quality_component_details_create(
-    double coverage,
+    double *coverage,
     list_t *issues,
-    double overlap
+    double *overlap
 );
 
 void quality_component_details_free(quality_component_details_t *quality_component_details);

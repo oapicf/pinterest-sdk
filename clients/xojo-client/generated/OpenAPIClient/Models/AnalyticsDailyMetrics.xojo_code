@@ -15,9 +15,6 @@ Protected Class AnalyticsDailyMetrics
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			The metric name and daily value for each requested metric
-		#tag EndNote
 		metrics As Dictionary
 	#tag EndProperty
 

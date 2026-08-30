@@ -5,9 +5,9 @@
             [pinterest-rest-api.specs.customizable-cta-type :refer :all]
             [pinterest-rest-api.specs.disclosure-type :refer :all]
             [pinterest-rest-api.specs.grid-click-type :refer :all]
-            [pinterest-rest-api.specs.quiz-pin-data :refer :all]
+            [pinterest-rest-api.specs. :refer :all]
             [pinterest-rest-api.specs.entity-status :refer :all]
-            [pinterest-rest-api.specs.tracking-urls :refer :all]
+            [pinterest-rest-api.specs. :refer :all]
             )
   (:import (java.io File)))
 
@@ -27,15 +27,16 @@
    (ds/opt :disclosure_url) string?
    (ds/opt :grid_click_type) grid-click-type-spec
    (ds/opt :ios_deep_link) string?
+   (ds/opt :is_carting) boolean?
    (ds/opt :is_pin_deleted) boolean?
    (ds/opt :is_removable) boolean?
    (ds/opt :lead_form_id) string?
    (ds/opt :name) string?
-   (ds/opt :quiz_pin_data) quiz-pin-data-spec
-   (ds/opt :status) entity-status-spec
-   (ds/opt :tracking_urls) tracking-urls-spec
-   (ds/opt :view_tracking_url) string?
    (ds/req :pin_id) string?
+   (ds/opt :quiz_pin_data) any?
+   (ds/opt :status) entity-status-spec
+   (ds/opt :tracking_urls) any?
+   (ds/opt :view_tracking_url) string?
    })
 
 (def ad-create-request-spec

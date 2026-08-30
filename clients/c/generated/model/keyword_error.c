@@ -13,10 +13,10 @@ static keyword_error_t *keyword_error_create_internal(
     if (!keyword_error_local_var) {
         return NULL;
     }
+    memset(keyword_error_local_var, 0, sizeof(keyword_error_t));
+    keyword_error_local_var->_library_owned = 1;
     keyword_error_local_var->data = data;
     keyword_error_local_var->error_messages = error_messages;
-
-    keyword_error_local_var->_library_owned = 1;
     return keyword_error_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) keyword_error_t *keyword_error_create(
     keyword_t *data,
     list_t *error_messages
     ) {
-    return keyword_error_create_internal (
+    keyword_error_t *result = keyword_error_create_internal (
         data,
         error_messages
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void keyword_error_free(keyword_error_t *keyword_error) {
@@ -135,10 +138,15 @@ keyword_error_t *keyword_error_parseFromJSON(cJSON *keyword_errorJSON){
     }
 
 
+
     keyword_error_local_var = keyword_error_create_internal (
         data ? data_local_nonprim : NULL,
         error_messages ? error_messagesList : NULL
         );
+
+    if (!keyword_error_local_var) {
+        goto end;
+    }
 
     return keyword_error_local_var;
 end:

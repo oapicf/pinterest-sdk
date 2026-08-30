@@ -15,7 +15,7 @@
 
 typedef struct promotions_list_200_response_t promotions_list_200_response_t;
 
-#include "promotion_response.h"
+#include "promotion.h"
 
 
 

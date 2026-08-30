@@ -3,9 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [***CatalogsType**](CatalogsType.md) |  | [default to null]
 **attributes** | [***CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] [default to null]
+**catalogType** | **String!** |  | [default to null]
 **itemId** | **String!** | The catalog item id in the merchant namespace | [optional] [default to null]
+**itemResponseKind** | **String!** | Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload. | [default to null]
 **pins** | [**Pin**](Pin.md) | The pins mapped to the item | [optional] [default to null]
 **hotelId** | **String!** | The catalog hotel id in the merchant namespace | [optional] [default to null]
 **creativeAssetsId** | **String!** | The catalog creative assets id in the merchant namespace | [optional] [default to null]

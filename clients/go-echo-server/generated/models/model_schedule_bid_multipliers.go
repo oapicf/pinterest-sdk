@@ -1,0 +1,15 @@
+package models
+
+// ScheduleBidMultipliers - The value of the bid changes. This must be provided when the schedule type is CAMPAIGN_BID_MULTIPLIERS.
+type ScheduleBidMultipliers struct {
+
+	AgeBucketMultipliers BidOptionsAgeBucketMultipliers `json:"age_bucket_multipliers,omitempty"`
+
+	AppTypeMultipliers BidOptionsAppTypeMultipliers `json:"app_type_multipliers,omitempty"`
+
+	AudienceMultipliers []BidOptionsAudienceMultipliers `json:"audience_multipliers,omitempty"`
+
+	GenderMultipliers BidOptionsGenderMultipliers `json:"gender_multipliers,omitempty"`
+
+	PlacementMultipliers BidOptionsPlacementMultipliers `json:"placement_multipliers,omitempty"`
+}

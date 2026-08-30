@@ -8,7 +8,7 @@ The class is defined in **[CatalogsProductGroupFiltersAnyOf.java](../../src/main
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**anyOf** | `List&lt;CatalogsProductGroupFilterKeys&gt;` |  | 
+**anyOf** | [`List&lt;CatalogsProductGroupFilterKeys&gt;`](CatalogsProductGroupFilterKeys.md) |  | 
 
 
 

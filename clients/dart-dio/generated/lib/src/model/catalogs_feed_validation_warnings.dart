@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -12,169 +11,169 @@ part 'catalogs_feed_validation_warnings.g.dart';
 /// CatalogsFeedValidationWarnings
 ///
 /// Properties:
-/// * [aDIMAGE0LINKDUPLICATED] - ad_image_0_link is duplicated with another ad image link.
-/// * [aDIMAGE0LINKLENGTHTOOLONG] - Ad image link 0 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE0LINKREQUIRED] - Ad image link 0 is required because an image tag was provided.
-/// * [aDIMAGE0LINKWARNING] - Ad image link 0 format is unsupported.
-/// * [aDIMAGE0TAGDUPLICATED] - ad_image_0_tag is duplicated with another ad image tag.
-/// * [aDIMAGE0TAGLENGTHTOOLONG] - Ad image tag 0 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE0TAGREQUIRED] - Ad image tag 0 is required because an image link was provided.
-/// * [aDIMAGE10LINKDUPLICATED] - ad_image_10_link is duplicated with another ad image link.
-/// * [aDIMAGE10LINKLENGTHTOOLONG] - Ad image link 10 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE10LINKREQUIRED] - Ad image link 10 is required because an image tag was provided.
-/// * [aDIMAGE10LINKWARNING] - Ad image link 10 format is unsupported.
-/// * [aDIMAGE10TAGDUPLICATED] - ad_image_10_tag is duplicated with another ad image tag.
-/// * [aDIMAGE10TAGLENGTHTOOLONG] - Ad image tag 10 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE10TAGREQUIRED] - Ad image tag 10 is required because an image link was provided.
-/// * [aDIMAGE11LINKDUPLICATED] - ad_image_11_link is duplicated with another ad image link.
-/// * [aDIMAGE11LINKLENGTHTOOLONG] - Ad image link 11 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE11LINKREQUIRED] - Ad image link 11 is required because an image tag was provided.
-/// * [aDIMAGE11LINKWARNING] - Ad image link 11 format is unsupported.
-/// * [aDIMAGE11TAGDUPLICATED] - ad_image_11_tag is duplicated with another ad image tag.
-/// * [aDIMAGE11TAGLENGTHTOOLONG] - Ad image tag 11 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE11TAGREQUIRED] - Ad image tag 11 is required because an image link was provided.
-/// * [aDIMAGE12LINKDUPLICATED] - ad_image_12_link is duplicated with another ad image link.
-/// * [aDIMAGE12LINKLENGTHTOOLONG] - Ad image link 12 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE12LINKREQUIRED] - Ad image link 12 is required because an image tag was provided.
-/// * [aDIMAGE12LINKWARNING] - Ad image link 12 format is unsupported.
-/// * [aDIMAGE12TAGDUPLICATED] - ad_image_12_tag is duplicated with another ad image tag.
-/// * [aDIMAGE12TAGLENGTHTOOLONG] - Ad image tag 12 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE12TAGREQUIRED] - Ad image tag 12 is required because an image link was provided.
-/// * [aDIMAGE13LINKDUPLICATED] - ad_image_13_link is duplicated with another ad image link.
-/// * [aDIMAGE13LINKLENGTHTOOLONG] - Ad image link 13 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE13LINKREQUIRED] - Ad image link 13 is required because an image tag was provided.
-/// * [aDIMAGE13LINKWARNING] - Ad image link 13 format is unsupported.
-/// * [aDIMAGE13TAGDUPLICATED] - ad_image_13_tag is duplicated with another ad image tag.
-/// * [aDIMAGE13TAGLENGTHTOOLONG] - Ad image tag 13 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE13TAGREQUIRED] - Ad image tag 13 is required because an image link was provided.
-/// * [aDIMAGE14LINKDUPLICATED] - ad_image_14_link is duplicated with another ad image link.
-/// * [aDIMAGE14LINKLENGTHTOOLONG] - Ad image link 14 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE14LINKREQUIRED] - Ad image link 14 is required because an image tag was provided.
-/// * [aDIMAGE14LINKWARNING] - Ad image link 14 format is unsupported.
-/// * [aDIMAGE14TAGDUPLICATED] - ad_image_14_tag is duplicated with another ad image tag.
-/// * [aDIMAGE14TAGLENGTHTOOLONG] - Ad image tag 14 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE14TAGREQUIRED] - Ad image tag 14 is required because an image link was provided.
-/// * [aDIMAGE15LINKDUPLICATED] - ad_image_15_link is duplicated with another ad image link.
-/// * [aDIMAGE15LINKLENGTHTOOLONG] - Ad image link 15 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE15LINKREQUIRED] - Ad image link 15 is required because an image tag was provided.
-/// * [aDIMAGE15LINKWARNING] - Ad image link 15 format is unsupported.
-/// * [aDIMAGE15TAGDUPLICATED] - ad_image_15_tag is duplicated with another ad image tag.
-/// * [aDIMAGE15TAGLENGTHTOOLONG] - Ad image tag 15 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE15TAGREQUIRED] - Ad image tag 15 is required because an image link was provided.
-/// * [aDIMAGE16LINKDUPLICATED] - ad_image_16_link is duplicated with another ad image link.
-/// * [aDIMAGE16LINKLENGTHTOOLONG] - Ad image link 16 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE16LINKREQUIRED] - Ad image link 16 is required because an image tag was provided.
-/// * [aDIMAGE16LINKWARNING] - Ad image link 16 format is unsupported.
-/// * [aDIMAGE16TAGDUPLICATED] - ad_image_16_tag is duplicated with another ad image tag.
-/// * [aDIMAGE16TAGLENGTHTOOLONG] - Ad image tag 16 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE16TAGREQUIRED] - Ad image tag 16 is required because an image link was provided.
-/// * [aDIMAGE17LINKDUPLICATED] - ad_image_17_link is duplicated with another ad image link.
-/// * [aDIMAGE17LINKLENGTHTOOLONG] - Ad image link 17 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE17LINKREQUIRED] - Ad image link 17 is required because an image tag was provided.
-/// * [aDIMAGE17LINKWARNING] - Ad image link 17 format is unsupported.
-/// * [aDIMAGE17TAGDUPLICATED] - ad_image_17_tag is duplicated with another ad image tag.
-/// * [aDIMAGE17TAGLENGTHTOOLONG] - Ad image tag 17 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE17TAGREQUIRED] - Ad image tag 17 is required because an image link was provided.
-/// * [aDIMAGE18LINKDUPLICATED] - ad_image_18_link is duplicated with another ad image link.
-/// * [aDIMAGE18LINKLENGTHTOOLONG] - Ad image link 18 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE18LINKREQUIRED] - Ad image link 18 is required because an image tag was provided.
-/// * [aDIMAGE18LINKWARNING] - Ad image link 18 format is unsupported.
-/// * [aDIMAGE18TAGDUPLICATED] - ad_image_18_tag is duplicated with another ad image tag.
-/// * [aDIMAGE18TAGLENGTHTOOLONG] - Ad image tag 18 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE18TAGREQUIRED] - Ad image tag 18 is required because an image link was provided.
-/// * [aDIMAGE19LINKDUPLICATED] - ad_image_19_link is duplicated with another ad image link.
-/// * [aDIMAGE19LINKLENGTHTOOLONG] - Ad image link 19 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE19LINKREQUIRED] - Ad image link 19 is required because an image tag was provided.
-/// * [aDIMAGE19LINKWARNING] - Ad image link 19 format is unsupported.
-/// * [aDIMAGE19TAGDUPLICATED] - ad_image_19_tag is duplicated with another ad image tag.
-/// * [aDIMAGE19TAGLENGTHTOOLONG] - Ad image tag 19 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE19TAGREQUIRED] - Ad image tag 19 is required because an image link was provided.
-/// * [aDIMAGE1LINKDUPLICATED] - ad_image_1_link is duplicated with another ad image link.
-/// * [aDIMAGE1LINKLENGTHTOOLONG] - Ad image link 1 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE1LINKREQUIRED] - Ad image link 1 is required because an image tag was provided.
-/// * [aDIMAGE1LINKWARNING] - Ad image link 1 format is unsupported.
-/// * [aDIMAGE1TAGDUPLICATED] - ad_image_1_tag is duplicated with another ad image tag.
-/// * [aDIMAGE1TAGLENGTHTOOLONG] - Ad image tag 1 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE1TAGREQUIRED] - Ad image tag 1 is required because an image link was provided.
-/// * [aDIMAGE2LINKDUPLICATED] - ad_image_2_link is duplicated with another ad image link.
-/// * [aDIMAGE2LINKLENGTHTOOLONG] - Ad image link 2 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE2LINKREQUIRED] - Ad image link 2 is required because an image tag was provided.
-/// * [aDIMAGE2LINKWARNING] - Ad image link 2 format is unsupported.
-/// * [aDIMAGE2TAGDUPLICATED] - ad_image_2_tag is duplicated with another ad image tag.
-/// * [aDIMAGE2TAGLENGTHTOOLONG] - Ad image tag 2 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE2TAGREQUIRED] - Ad image tag 2 is required because an image link was provided.
-/// * [aDIMAGE3LINKDUPLICATED] - ad_image_3_link is duplicated with another ad image link.
-/// * [aDIMAGE3LINKLENGTHTOOLONG] - Ad image link 3 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE3LINKREQUIRED] - Ad image link 3 is required because an image tag was provided.
-/// * [aDIMAGE3LINKWARNING] - Ad image link 3 format is unsupported.
-/// * [aDIMAGE3TAGDUPLICATED] - ad_image_3_tag is duplicated with another ad image tag.
-/// * [aDIMAGE3TAGLENGTHTOOLONG] - Ad image tag 3 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE3TAGREQUIRED] - Ad image tag 3 is required because an image link was provided.
-/// * [aDIMAGE4LINKDUPLICATED] - ad_image_4_link is duplicated with another ad image link.
-/// * [aDIMAGE4LINKLENGTHTOOLONG] - Ad image link 4 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE4LINKREQUIRED] - Ad image link 4 is required because an image tag was provided.
-/// * [aDIMAGE4LINKWARNING] - Ad image link 4 format is unsupported.
-/// * [aDIMAGE4TAGDUPLICATED] - ad_image_4_tag is duplicated with another ad image tag.
-/// * [aDIMAGE4TAGLENGTHTOOLONG] - Ad image tag 4 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE4TAGREQUIRED] - Ad image tag 4 is required because an image link was provided.
-/// * [aDIMAGE5LINKDUPLICATED] - ad_image_5_link is duplicated with another ad image link.
-/// * [aDIMAGE5LINKLENGTHTOOLONG] - Ad image link 5 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE5LINKREQUIRED] - Ad image link 5 is required because an image tag was provided.
-/// * [aDIMAGE5LINKWARNING] - Ad image link 5 format is unsupported.
-/// * [aDIMAGE5TAGDUPLICATED] - ad_image_5_tag is duplicated with another ad image tag.
-/// * [aDIMAGE5TAGLENGTHTOOLONG] - Ad image tag 5 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE5TAGREQUIRED] - Ad image tag 5 is required because an image link was provided.
-/// * [aDIMAGE6LINKDUPLICATED] - ad_image_6_link is duplicated with another ad image link.
-/// * [aDIMAGE6LINKLENGTHTOOLONG] - Ad image link 6 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE6LINKREQUIRED] - Ad image link 6 is required because an image tag was provided.
-/// * [aDIMAGE6LINKWARNING] - Ad image link 6 format is unsupported.
-/// * [aDIMAGE6TAGDUPLICATED] - ad_image_6_tag is duplicated with another ad image tag.
-/// * [aDIMAGE6TAGLENGTHTOOLONG] - Ad image tag 6 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE6TAGREQUIRED] - Ad image tag 6 is required because an image link was provided.
-/// * [aDIMAGE7LINKDUPLICATED] - ad_image_7_link is duplicated with another ad image link.
-/// * [aDIMAGE7LINKLENGTHTOOLONG] - Ad image link 7 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE7LINKREQUIRED] - Ad image link 7 is required because an image tag was provided.
-/// * [aDIMAGE7LINKWARNING] - Ad image link 7 format is unsupported.
-/// * [aDIMAGE7TAGDUPLICATED] - ad_image_7_tag is duplicated with another ad image tag.
-/// * [aDIMAGE7TAGLENGTHTOOLONG] - Ad image tag 7 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE7TAGREQUIRED] - Ad image tag 7 is required because an image link was provided.
-/// * [aDIMAGE8LINKDUPLICATED] - ad_image_8_link is duplicated with another ad image link.
-/// * [aDIMAGE8LINKLENGTHTOOLONG] - Ad image link 8 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE8LINKREQUIRED] - Ad image link 8 is required because an image tag was provided.
-/// * [aDIMAGE8LINKWARNING] - Ad image link 8 format is unsupported.
-/// * [aDIMAGE8TAGDUPLICATED] - ad_image_8_tag is duplicated with another ad image tag.
-/// * [aDIMAGE8TAGLENGTHTOOLONG] - Ad image tag 8 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE8TAGREQUIRED] - Ad image tag 8 is required because an image link was provided.
-/// * [aDIMAGE9LINKDUPLICATED] - ad_image_9_link is duplicated with another ad image link.
-/// * [aDIMAGE9LINKLENGTHTOOLONG] - Ad image link 9 length is too long. The maximum length is 2047 characters.
-/// * [aDIMAGE9LINKREQUIRED] - Ad image link 9 is required because an image tag was provided.
-/// * [aDIMAGE9LINKWARNING] - Ad image link 9 format is unsupported.
-/// * [aDIMAGE9TAGDUPLICATED] - ad_image_9_tag is duplicated with another ad image tag.
-/// * [aDIMAGE9TAGLENGTHTOOLONG] - Ad image tag 9 length is too long. The maximum length is 511 characters.
-/// * [aDIMAGE9TAGREQUIRED] - Ad image tag 9 is required because an image link was provided.
+/// * [AD_IMAGE_0_LINK_DUPLICATED] - ad_image_0_link is duplicated with another ad image link.
+/// * [AD_IMAGE_0_LINK_LENGTH_TOO_LONG] - Ad image link 0 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_0_LINK_REQUIRED] - Ad image link 0 is required because an image tag was provided.
+/// * [AD_IMAGE_0_LINK_WARNING] - Ad image link 0 format is unsupported.
+/// * [AD_IMAGE_0_TAG_DUPLICATED] - ad_image_0_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_0_TAG_LENGTH_TOO_LONG] - Ad image tag 0 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_0_TAG_REQUIRED] - Ad image tag 0 is required because an image link was provided.
+/// * [AD_IMAGE_10_LINK_DUPLICATED] - ad_image_10_link is duplicated with another ad image link.
+/// * [AD_IMAGE_10_LINK_LENGTH_TOO_LONG] - Ad image link 10 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_10_LINK_REQUIRED] - Ad image link 10 is required because an image tag was provided.
+/// * [AD_IMAGE_10_LINK_WARNING] - Ad image link 10 format is unsupported.
+/// * [AD_IMAGE_10_TAG_DUPLICATED] - ad_image_10_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_10_TAG_LENGTH_TOO_LONG] - Ad image tag 10 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_10_TAG_REQUIRED] - Ad image tag 10 is required because an image link was provided.
+/// * [AD_IMAGE_11_LINK_DUPLICATED] - ad_image_11_link is duplicated with another ad image link.
+/// * [AD_IMAGE_11_LINK_LENGTH_TOO_LONG] - Ad image link 11 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_11_LINK_REQUIRED] - Ad image link 11 is required because an image tag was provided.
+/// * [AD_IMAGE_11_LINK_WARNING] - Ad image link 11 format is unsupported.
+/// * [AD_IMAGE_11_TAG_DUPLICATED] - ad_image_11_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_11_TAG_LENGTH_TOO_LONG] - Ad image tag 11 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_11_TAG_REQUIRED] - Ad image tag 11 is required because an image link was provided.
+/// * [AD_IMAGE_12_LINK_DUPLICATED] - ad_image_12_link is duplicated with another ad image link.
+/// * [AD_IMAGE_12_LINK_LENGTH_TOO_LONG] - Ad image link 12 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_12_LINK_REQUIRED] - Ad image link 12 is required because an image tag was provided.
+/// * [AD_IMAGE_12_LINK_WARNING] - Ad image link 12 format is unsupported.
+/// * [AD_IMAGE_12_TAG_DUPLICATED] - ad_image_12_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_12_TAG_LENGTH_TOO_LONG] - Ad image tag 12 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_12_TAG_REQUIRED] - Ad image tag 12 is required because an image link was provided.
+/// * [AD_IMAGE_13_LINK_DUPLICATED] - ad_image_13_link is duplicated with another ad image link.
+/// * [AD_IMAGE_13_LINK_LENGTH_TOO_LONG] - Ad image link 13 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_13_LINK_REQUIRED] - Ad image link 13 is required because an image tag was provided.
+/// * [AD_IMAGE_13_LINK_WARNING] - Ad image link 13 format is unsupported.
+/// * [AD_IMAGE_13_TAG_DUPLICATED] - ad_image_13_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_13_TAG_LENGTH_TOO_LONG] - Ad image tag 13 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_13_TAG_REQUIRED] - Ad image tag 13 is required because an image link was provided.
+/// * [AD_IMAGE_14_LINK_DUPLICATED] - ad_image_14_link is duplicated with another ad image link.
+/// * [AD_IMAGE_14_LINK_LENGTH_TOO_LONG] - Ad image link 14 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_14_LINK_REQUIRED] - Ad image link 14 is required because an image tag was provided.
+/// * [AD_IMAGE_14_LINK_WARNING] - Ad image link 14 format is unsupported.
+/// * [AD_IMAGE_14_TAG_DUPLICATED] - ad_image_14_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_14_TAG_LENGTH_TOO_LONG] - Ad image tag 14 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_14_TAG_REQUIRED] - Ad image tag 14 is required because an image link was provided.
+/// * [AD_IMAGE_15_LINK_DUPLICATED] - ad_image_15_link is duplicated with another ad image link.
+/// * [AD_IMAGE_15_LINK_LENGTH_TOO_LONG] - Ad image link 15 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_15_LINK_REQUIRED] - Ad image link 15 is required because an image tag was provided.
+/// * [AD_IMAGE_15_LINK_WARNING] - Ad image link 15 format is unsupported.
+/// * [AD_IMAGE_15_TAG_DUPLICATED] - ad_image_15_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_15_TAG_LENGTH_TOO_LONG] - Ad image tag 15 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_15_TAG_REQUIRED] - Ad image tag 15 is required because an image link was provided.
+/// * [AD_IMAGE_16_LINK_DUPLICATED] - ad_image_16_link is duplicated with another ad image link.
+/// * [AD_IMAGE_16_LINK_LENGTH_TOO_LONG] - Ad image link 16 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_16_LINK_REQUIRED] - Ad image link 16 is required because an image tag was provided.
+/// * [AD_IMAGE_16_LINK_WARNING] - Ad image link 16 format is unsupported.
+/// * [AD_IMAGE_16_TAG_DUPLICATED] - ad_image_16_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_16_TAG_LENGTH_TOO_LONG] - Ad image tag 16 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_16_TAG_REQUIRED] - Ad image tag 16 is required because an image link was provided.
+/// * [AD_IMAGE_17_LINK_DUPLICATED] - ad_image_17_link is duplicated with another ad image link.
+/// * [AD_IMAGE_17_LINK_LENGTH_TOO_LONG] - Ad image link 17 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_17_LINK_REQUIRED] - Ad image link 17 is required because an image tag was provided.
+/// * [AD_IMAGE_17_LINK_WARNING] - Ad image link 17 format is unsupported.
+/// * [AD_IMAGE_17_TAG_DUPLICATED] - ad_image_17_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_17_TAG_LENGTH_TOO_LONG] - Ad image tag 17 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_17_TAG_REQUIRED] - Ad image tag 17 is required because an image link was provided.
+/// * [AD_IMAGE_18_LINK_DUPLICATED] - ad_image_18_link is duplicated with another ad image link.
+/// * [AD_IMAGE_18_LINK_LENGTH_TOO_LONG] - Ad image link 18 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_18_LINK_REQUIRED] - Ad image link 18 is required because an image tag was provided.
+/// * [AD_IMAGE_18_LINK_WARNING] - Ad image link 18 format is unsupported.
+/// * [AD_IMAGE_18_TAG_DUPLICATED] - ad_image_18_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_18_TAG_LENGTH_TOO_LONG] - Ad image tag 18 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_18_TAG_REQUIRED] - Ad image tag 18 is required because an image link was provided.
+/// * [AD_IMAGE_19_LINK_DUPLICATED] - ad_image_19_link is duplicated with another ad image link.
+/// * [AD_IMAGE_19_LINK_LENGTH_TOO_LONG] - Ad image link 19 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_19_LINK_REQUIRED] - Ad image link 19 is required because an image tag was provided.
+/// * [AD_IMAGE_19_LINK_WARNING] - Ad image link 19 format is unsupported.
+/// * [AD_IMAGE_19_TAG_DUPLICATED] - ad_image_19_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_19_TAG_LENGTH_TOO_LONG] - Ad image tag 19 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_19_TAG_REQUIRED] - Ad image tag 19 is required because an image link was provided.
+/// * [AD_IMAGE_1_LINK_DUPLICATED] - ad_image_1_link is duplicated with another ad image link.
+/// * [AD_IMAGE_1_LINK_LENGTH_TOO_LONG] - Ad image link 1 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_1_LINK_REQUIRED] - Ad image link 1 is required because an image tag was provided.
+/// * [AD_IMAGE_1_LINK_WARNING] - Ad image link 1 format is unsupported.
+/// * [AD_IMAGE_1_TAG_DUPLICATED] - ad_image_1_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_1_TAG_LENGTH_TOO_LONG] - Ad image tag 1 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_1_TAG_REQUIRED] - Ad image tag 1 is required because an image link was provided.
+/// * [AD_IMAGE_2_LINK_DUPLICATED] - ad_image_2_link is duplicated with another ad image link.
+/// * [AD_IMAGE_2_LINK_LENGTH_TOO_LONG] - Ad image link 2 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_2_LINK_REQUIRED] - Ad image link 2 is required because an image tag was provided.
+/// * [AD_IMAGE_2_LINK_WARNING] - Ad image link 2 format is unsupported.
+/// * [AD_IMAGE_2_TAG_DUPLICATED] - ad_image_2_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_2_TAG_LENGTH_TOO_LONG] - Ad image tag 2 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_2_TAG_REQUIRED] - Ad image tag 2 is required because an image link was provided.
+/// * [AD_IMAGE_3_LINK_DUPLICATED] - ad_image_3_link is duplicated with another ad image link.
+/// * [AD_IMAGE_3_LINK_LENGTH_TOO_LONG] - Ad image link 3 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_3_LINK_REQUIRED] - Ad image link 3 is required because an image tag was provided.
+/// * [AD_IMAGE_3_LINK_WARNING] - Ad image link 3 format is unsupported.
+/// * [AD_IMAGE_3_TAG_DUPLICATED] - ad_image_3_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_3_TAG_LENGTH_TOO_LONG] - Ad image tag 3 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_3_TAG_REQUIRED] - Ad image tag 3 is required because an image link was provided.
+/// * [AD_IMAGE_4_LINK_DUPLICATED] - ad_image_4_link is duplicated with another ad image link.
+/// * [AD_IMAGE_4_LINK_LENGTH_TOO_LONG] - Ad image link 4 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_4_LINK_REQUIRED] - Ad image link 4 is required because an image tag was provided.
+/// * [AD_IMAGE_4_LINK_WARNING] - Ad image link 4 format is unsupported.
+/// * [AD_IMAGE_4_TAG_DUPLICATED] - ad_image_4_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_4_TAG_LENGTH_TOO_LONG] - Ad image tag 4 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_4_TAG_REQUIRED] - Ad image tag 4 is required because an image link was provided.
+/// * [AD_IMAGE_5_LINK_DUPLICATED] - ad_image_5_link is duplicated with another ad image link.
+/// * [AD_IMAGE_5_LINK_LENGTH_TOO_LONG] - Ad image link 5 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_5_LINK_REQUIRED] - Ad image link 5 is required because an image tag was provided.
+/// * [AD_IMAGE_5_LINK_WARNING] - Ad image link 5 format is unsupported.
+/// * [AD_IMAGE_5_TAG_DUPLICATED] - ad_image_5_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_5_TAG_LENGTH_TOO_LONG] - Ad image tag 5 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_5_TAG_REQUIRED] - Ad image tag 5 is required because an image link was provided.
+/// * [AD_IMAGE_6_LINK_DUPLICATED] - ad_image_6_link is duplicated with another ad image link.
+/// * [AD_IMAGE_6_LINK_LENGTH_TOO_LONG] - Ad image link 6 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_6_LINK_REQUIRED] - Ad image link 6 is required because an image tag was provided.
+/// * [AD_IMAGE_6_LINK_WARNING] - Ad image link 6 format is unsupported.
+/// * [AD_IMAGE_6_TAG_DUPLICATED] - ad_image_6_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_6_TAG_LENGTH_TOO_LONG] - Ad image tag 6 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_6_TAG_REQUIRED] - Ad image tag 6 is required because an image link was provided.
+/// * [AD_IMAGE_7_LINK_DUPLICATED] - ad_image_7_link is duplicated with another ad image link.
+/// * [AD_IMAGE_7_LINK_LENGTH_TOO_LONG] - Ad image link 7 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_7_LINK_REQUIRED] - Ad image link 7 is required because an image tag was provided.
+/// * [AD_IMAGE_7_LINK_WARNING] - Ad image link 7 format is unsupported.
+/// * [AD_IMAGE_7_TAG_DUPLICATED] - ad_image_7_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_7_TAG_LENGTH_TOO_LONG] - Ad image tag 7 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_7_TAG_REQUIRED] - Ad image tag 7 is required because an image link was provided.
+/// * [AD_IMAGE_8_LINK_DUPLICATED] - ad_image_8_link is duplicated with another ad image link.
+/// * [AD_IMAGE_8_LINK_LENGTH_TOO_LONG] - Ad image link 8 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_8_LINK_REQUIRED] - Ad image link 8 is required because an image tag was provided.
+/// * [AD_IMAGE_8_LINK_WARNING] - Ad image link 8 format is unsupported.
+/// * [AD_IMAGE_8_TAG_DUPLICATED] - ad_image_8_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_8_TAG_LENGTH_TOO_LONG] - Ad image tag 8 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_8_TAG_REQUIRED] - Ad image tag 8 is required because an image link was provided.
+/// * [AD_IMAGE_9_LINK_DUPLICATED] - ad_image_9_link is duplicated with another ad image link.
+/// * [AD_IMAGE_9_LINK_LENGTH_TOO_LONG] - Ad image link 9 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_9_LINK_REQUIRED] - Ad image link 9 is required because an image tag was provided.
+/// * [AD_IMAGE_9_LINK_WARNING] - Ad image link 9 format is unsupported.
+/// * [AD_IMAGE_9_TAG_DUPLICATED] - ad_image_9_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_9_TAG_LENGTH_TOO_LONG] - Ad image tag 9 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_9_TAG_REQUIRED] - Ad image tag 9 is required because an image link was provided.
 /// * [AD_LINK_FORMAT_WARNING] - Some items have ad links that are formatted incorrectly.
 /// * [AD_LINK_SAME_AS_LINK] - Some items have ad link URLs that are duplicates of the link URLs for those items.
-/// * [aDVIDEO0LINKDUPLICATED] - ad_video_0_link is duplicated with another ad video link.
-/// * [aDVIDEO0LINKLENGTHTOOLONG] - ad_video_0_link length is too long. The maximum length is 511 characters.
-/// * [aDVIDEO0LINKREQUIRED] - ad_video_0_link is required for this item because ad_video_0_tag was provided.
-/// * [aDVIDEO0LINKWARNING] - ad_video_0_link is formatted incorrectly and will not be published with your items.
-/// * [aDVIDEO0TAGDUPLICATED] - ad_video_0_tag is duplicated with another ad video tag.
-/// * [aDVIDEO0TAGLENGTHTOOLONG] - ad_video_0_tag length is too long. The maximum length is 511 characters.
-/// * [aDVIDEO0TAGREQUIRED] - ad_video_0_tag is required because ad_video_0_link was provided.
-/// * [aDVIDEO1LINKDUPLICATED] - ad_video_1_link is duplicated with another ad video link.
-/// * [aDVIDEO1LINKLENGTHTOOLONG] - ad_video_1_link length is too long. The maximum length is 511 characters.
-/// * [aDVIDEO1LINKREQUIRED] - ad_video_1_link is required for this item because ad_video_1_tag was provided.
-/// * [aDVIDEO1LINKWARNING] - ad_video_1_link is formatted incorrectly and will not be published with your items.
-/// * [aDVIDEO1TAGDUPLICATED] - ad_video_1_tag is duplicated with another ad video tag.
-/// * [aDVIDEO1TAGLENGTHTOOLONG] - ad_video_1_tag length is too long. The maximum length is 511 characters.
-/// * [aDVIDEO1TAGREQUIRED] - ad_video_1_tag is required because ad_video_1_link was provided.
-/// * [aDVIDEO2LINKDUPLICATED] - ad_video_2_link is duplicated with another ad video link.
-/// * [aDVIDEO2LINKLENGTHTOOLONG] - ad_video_2_link length is too long. The maximum length is 511 characters.
-/// * [aDVIDEO2LINKREQUIRED] - ad_video_2_link is required for this item because ad_video_2_tag was provided.
-/// * [aDVIDEO2LINKWARNING] - ad_video_2_link is formatted incorrectly and will not be published with your items.
-/// * [aDVIDEO2TAGDUPLICATED] - ad_video_2_tag is duplicated with another ad video tag.
-/// * [aDVIDEO2TAGLENGTHTOOLONG] - ad_video_2_tag length is too long. The maximum length is 511 characters.
-/// * [aDVIDEO2TAGREQUIRED] - ad_video_2_tag is required because ad_video_2_link was provided.
+/// * [AD_VIDEO_0_LINK_DUPLICATED] - ad_video_0_link is duplicated with another ad video link.
+/// * [AD_VIDEO_0_LINK_LENGTH_TOO_LONG] - ad_video_0_link length is too long. The maximum length is 511 characters.
+/// * [AD_VIDEO_0_LINK_REQUIRED] - ad_video_0_link is required for this item because ad_video_0_tag was provided.
+/// * [AD_VIDEO_0_LINK_WARNING] - ad_video_0_link is formatted incorrectly and will not be published with your items.
+/// * [AD_VIDEO_0_TAG_DUPLICATED] - ad_video_0_tag is duplicated with another ad video tag.
+/// * [AD_VIDEO_0_TAG_LENGTH_TOO_LONG] - ad_video_0_tag length is too long. The maximum length is 511 characters.
+/// * [AD_VIDEO_0_TAG_REQUIRED] - ad_video_0_tag is required because ad_video_0_link was provided.
+/// * [AD_VIDEO_1_LINK_DUPLICATED] - ad_video_1_link is duplicated with another ad video link.
+/// * [AD_VIDEO_1_LINK_LENGTH_TOO_LONG] - ad_video_1_link length is too long. The maximum length is 511 characters.
+/// * [AD_VIDEO_1_LINK_REQUIRED] - ad_video_1_link is required for this item because ad_video_1_tag was provided.
+/// * [AD_VIDEO_1_LINK_WARNING] - ad_video_1_link is formatted incorrectly and will not be published with your items.
+/// * [AD_VIDEO_1_TAG_DUPLICATED] - ad_video_1_tag is duplicated with another ad video tag.
+/// * [AD_VIDEO_1_TAG_LENGTH_TOO_LONG] - ad_video_1_tag length is too long. The maximum length is 511 characters.
+/// * [AD_VIDEO_1_TAG_REQUIRED] - ad_video_1_tag is required because ad_video_1_link was provided.
+/// * [AD_VIDEO_2_LINK_DUPLICATED] - ad_video_2_link is duplicated with another ad video link.
+/// * [AD_VIDEO_2_LINK_LENGTH_TOO_LONG] - ad_video_2_link length is too long. The maximum length is 511 characters.
+/// * [AD_VIDEO_2_LINK_REQUIRED] - ad_video_2_link is required for this item because ad_video_2_tag was provided.
+/// * [AD_VIDEO_2_LINK_WARNING] - ad_video_2_link is formatted incorrectly and will not be published with your items.
+/// * [AD_VIDEO_2_TAG_DUPLICATED] - ad_video_2_tag is duplicated with another ad video tag.
+/// * [AD_VIDEO_2_TAG_LENGTH_TOO_LONG] - ad_video_2_tag length is too long. The maximum length is 511 characters.
+/// * [AD_VIDEO_2_TAG_REQUIRED] - ad_video_2_tag is required because ad_video_2_link was provided.
 /// * [ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG] - Some items have additional_image_link URLs that contain too many characters, so those items will not be published.
 /// * [ADDITIONAL_IMAGE_LINK_WARNING] - Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.
 /// * [ADWORDS_FORMAT_WARNING] - Some items have adwords_redirect links that are formatted incorrectly.
@@ -227,563 +226,563 @@ part 'catalogs_feed_validation_warnings.g.dart';
 abstract class CatalogsFeedValidationWarnings implements Built<CatalogsFeedValidationWarnings, CatalogsFeedValidationWarningsBuilder> {
   /// ad_image_0_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_0_LINK_DUPLICATED')
-  int? get aDIMAGE0LINKDUPLICATED;
+  int? get AD_IMAGE_0_LINK_DUPLICATED;
 
   /// Ad image link 0 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_0_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE0LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 0 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_0_LINK_REQUIRED')
-  int? get aDIMAGE0LINKREQUIRED;
+  int? get AD_IMAGE_0_LINK_REQUIRED;
 
   /// Ad image link 0 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_0_LINK_WARNING')
-  int? get aDIMAGE0LINKWARNING;
+  int? get AD_IMAGE_0_LINK_WARNING;
 
   /// ad_image_0_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_0_TAG_DUPLICATED')
-  int? get aDIMAGE0TAGDUPLICATED;
+  int? get AD_IMAGE_0_TAG_DUPLICATED;
 
   /// Ad image tag 0 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_0_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE0TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_0_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 0 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_0_TAG_REQUIRED')
-  int? get aDIMAGE0TAGREQUIRED;
+  int? get AD_IMAGE_0_TAG_REQUIRED;
 
   /// ad_image_10_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_10_LINK_DUPLICATED')
-  int? get aDIMAGE10LINKDUPLICATED;
+  int? get AD_IMAGE_10_LINK_DUPLICATED;
 
   /// Ad image link 10 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_10_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE10LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_10_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 10 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_10_LINK_REQUIRED')
-  int? get aDIMAGE10LINKREQUIRED;
+  int? get AD_IMAGE_10_LINK_REQUIRED;
 
   /// Ad image link 10 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_10_LINK_WARNING')
-  int? get aDIMAGE10LINKWARNING;
+  int? get AD_IMAGE_10_LINK_WARNING;
 
   /// ad_image_10_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_10_TAG_DUPLICATED')
-  int? get aDIMAGE10TAGDUPLICATED;
+  int? get AD_IMAGE_10_TAG_DUPLICATED;
 
   /// Ad image tag 10 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_10_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE10TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_10_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 10 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_10_TAG_REQUIRED')
-  int? get aDIMAGE10TAGREQUIRED;
+  int? get AD_IMAGE_10_TAG_REQUIRED;
 
   /// ad_image_11_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_11_LINK_DUPLICATED')
-  int? get aDIMAGE11LINKDUPLICATED;
+  int? get AD_IMAGE_11_LINK_DUPLICATED;
 
   /// Ad image link 11 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_11_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE11LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_11_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 11 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_11_LINK_REQUIRED')
-  int? get aDIMAGE11LINKREQUIRED;
+  int? get AD_IMAGE_11_LINK_REQUIRED;
 
   /// Ad image link 11 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_11_LINK_WARNING')
-  int? get aDIMAGE11LINKWARNING;
+  int? get AD_IMAGE_11_LINK_WARNING;
 
   /// ad_image_11_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_11_TAG_DUPLICATED')
-  int? get aDIMAGE11TAGDUPLICATED;
+  int? get AD_IMAGE_11_TAG_DUPLICATED;
 
   /// Ad image tag 11 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_11_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE11TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_11_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 11 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_11_TAG_REQUIRED')
-  int? get aDIMAGE11TAGREQUIRED;
+  int? get AD_IMAGE_11_TAG_REQUIRED;
 
   /// ad_image_12_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_12_LINK_DUPLICATED')
-  int? get aDIMAGE12LINKDUPLICATED;
+  int? get AD_IMAGE_12_LINK_DUPLICATED;
 
   /// Ad image link 12 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_12_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE12LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_12_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 12 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_12_LINK_REQUIRED')
-  int? get aDIMAGE12LINKREQUIRED;
+  int? get AD_IMAGE_12_LINK_REQUIRED;
 
   /// Ad image link 12 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_12_LINK_WARNING')
-  int? get aDIMAGE12LINKWARNING;
+  int? get AD_IMAGE_12_LINK_WARNING;
 
   /// ad_image_12_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_12_TAG_DUPLICATED')
-  int? get aDIMAGE12TAGDUPLICATED;
+  int? get AD_IMAGE_12_TAG_DUPLICATED;
 
   /// Ad image tag 12 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_12_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE12TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_12_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 12 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_12_TAG_REQUIRED')
-  int? get aDIMAGE12TAGREQUIRED;
+  int? get AD_IMAGE_12_TAG_REQUIRED;
 
   /// ad_image_13_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_13_LINK_DUPLICATED')
-  int? get aDIMAGE13LINKDUPLICATED;
+  int? get AD_IMAGE_13_LINK_DUPLICATED;
 
   /// Ad image link 13 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_13_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE13LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_13_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 13 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_13_LINK_REQUIRED')
-  int? get aDIMAGE13LINKREQUIRED;
+  int? get AD_IMAGE_13_LINK_REQUIRED;
 
   /// Ad image link 13 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_13_LINK_WARNING')
-  int? get aDIMAGE13LINKWARNING;
+  int? get AD_IMAGE_13_LINK_WARNING;
 
   /// ad_image_13_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_13_TAG_DUPLICATED')
-  int? get aDIMAGE13TAGDUPLICATED;
+  int? get AD_IMAGE_13_TAG_DUPLICATED;
 
   /// Ad image tag 13 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_13_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE13TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_13_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 13 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_13_TAG_REQUIRED')
-  int? get aDIMAGE13TAGREQUIRED;
+  int? get AD_IMAGE_13_TAG_REQUIRED;
 
   /// ad_image_14_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_14_LINK_DUPLICATED')
-  int? get aDIMAGE14LINKDUPLICATED;
+  int? get AD_IMAGE_14_LINK_DUPLICATED;
 
   /// Ad image link 14 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_14_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE14LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_14_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 14 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_14_LINK_REQUIRED')
-  int? get aDIMAGE14LINKREQUIRED;
+  int? get AD_IMAGE_14_LINK_REQUIRED;
 
   /// Ad image link 14 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_14_LINK_WARNING')
-  int? get aDIMAGE14LINKWARNING;
+  int? get AD_IMAGE_14_LINK_WARNING;
 
   /// ad_image_14_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_14_TAG_DUPLICATED')
-  int? get aDIMAGE14TAGDUPLICATED;
+  int? get AD_IMAGE_14_TAG_DUPLICATED;
 
   /// Ad image tag 14 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_14_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE14TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_14_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 14 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_14_TAG_REQUIRED')
-  int? get aDIMAGE14TAGREQUIRED;
+  int? get AD_IMAGE_14_TAG_REQUIRED;
 
   /// ad_image_15_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_15_LINK_DUPLICATED')
-  int? get aDIMAGE15LINKDUPLICATED;
+  int? get AD_IMAGE_15_LINK_DUPLICATED;
 
   /// Ad image link 15 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_15_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE15LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_15_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 15 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_15_LINK_REQUIRED')
-  int? get aDIMAGE15LINKREQUIRED;
+  int? get AD_IMAGE_15_LINK_REQUIRED;
 
   /// Ad image link 15 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_15_LINK_WARNING')
-  int? get aDIMAGE15LINKWARNING;
+  int? get AD_IMAGE_15_LINK_WARNING;
 
   /// ad_image_15_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_15_TAG_DUPLICATED')
-  int? get aDIMAGE15TAGDUPLICATED;
+  int? get AD_IMAGE_15_TAG_DUPLICATED;
 
   /// Ad image tag 15 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_15_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE15TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_15_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 15 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_15_TAG_REQUIRED')
-  int? get aDIMAGE15TAGREQUIRED;
+  int? get AD_IMAGE_15_TAG_REQUIRED;
 
   /// ad_image_16_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_16_LINK_DUPLICATED')
-  int? get aDIMAGE16LINKDUPLICATED;
+  int? get AD_IMAGE_16_LINK_DUPLICATED;
 
   /// Ad image link 16 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_16_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE16LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_16_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 16 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_16_LINK_REQUIRED')
-  int? get aDIMAGE16LINKREQUIRED;
+  int? get AD_IMAGE_16_LINK_REQUIRED;
 
   /// Ad image link 16 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_16_LINK_WARNING')
-  int? get aDIMAGE16LINKWARNING;
+  int? get AD_IMAGE_16_LINK_WARNING;
 
   /// ad_image_16_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_16_TAG_DUPLICATED')
-  int? get aDIMAGE16TAGDUPLICATED;
+  int? get AD_IMAGE_16_TAG_DUPLICATED;
 
   /// Ad image tag 16 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_16_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE16TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_16_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 16 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_16_TAG_REQUIRED')
-  int? get aDIMAGE16TAGREQUIRED;
+  int? get AD_IMAGE_16_TAG_REQUIRED;
 
   /// ad_image_17_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_17_LINK_DUPLICATED')
-  int? get aDIMAGE17LINKDUPLICATED;
+  int? get AD_IMAGE_17_LINK_DUPLICATED;
 
   /// Ad image link 17 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_17_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE17LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_17_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 17 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_17_LINK_REQUIRED')
-  int? get aDIMAGE17LINKREQUIRED;
+  int? get AD_IMAGE_17_LINK_REQUIRED;
 
   /// Ad image link 17 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_17_LINK_WARNING')
-  int? get aDIMAGE17LINKWARNING;
+  int? get AD_IMAGE_17_LINK_WARNING;
 
   /// ad_image_17_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_17_TAG_DUPLICATED')
-  int? get aDIMAGE17TAGDUPLICATED;
+  int? get AD_IMAGE_17_TAG_DUPLICATED;
 
   /// Ad image tag 17 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_17_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE17TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_17_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 17 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_17_TAG_REQUIRED')
-  int? get aDIMAGE17TAGREQUIRED;
+  int? get AD_IMAGE_17_TAG_REQUIRED;
 
   /// ad_image_18_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_18_LINK_DUPLICATED')
-  int? get aDIMAGE18LINKDUPLICATED;
+  int? get AD_IMAGE_18_LINK_DUPLICATED;
 
   /// Ad image link 18 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_18_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE18LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_18_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 18 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_18_LINK_REQUIRED')
-  int? get aDIMAGE18LINKREQUIRED;
+  int? get AD_IMAGE_18_LINK_REQUIRED;
 
   /// Ad image link 18 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_18_LINK_WARNING')
-  int? get aDIMAGE18LINKWARNING;
+  int? get AD_IMAGE_18_LINK_WARNING;
 
   /// ad_image_18_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_18_TAG_DUPLICATED')
-  int? get aDIMAGE18TAGDUPLICATED;
+  int? get AD_IMAGE_18_TAG_DUPLICATED;
 
   /// Ad image tag 18 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_18_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE18TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_18_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 18 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_18_TAG_REQUIRED')
-  int? get aDIMAGE18TAGREQUIRED;
+  int? get AD_IMAGE_18_TAG_REQUIRED;
 
   /// ad_image_19_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_19_LINK_DUPLICATED')
-  int? get aDIMAGE19LINKDUPLICATED;
+  int? get AD_IMAGE_19_LINK_DUPLICATED;
 
   /// Ad image link 19 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_19_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE19LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_19_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 19 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_19_LINK_REQUIRED')
-  int? get aDIMAGE19LINKREQUIRED;
+  int? get AD_IMAGE_19_LINK_REQUIRED;
 
   /// Ad image link 19 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_19_LINK_WARNING')
-  int? get aDIMAGE19LINKWARNING;
+  int? get AD_IMAGE_19_LINK_WARNING;
 
   /// ad_image_19_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_19_TAG_DUPLICATED')
-  int? get aDIMAGE19TAGDUPLICATED;
+  int? get AD_IMAGE_19_TAG_DUPLICATED;
 
   /// Ad image tag 19 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_19_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE19TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_19_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 19 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_19_TAG_REQUIRED')
-  int? get aDIMAGE19TAGREQUIRED;
+  int? get AD_IMAGE_19_TAG_REQUIRED;
 
   /// ad_image_1_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_1_LINK_DUPLICATED')
-  int? get aDIMAGE1LINKDUPLICATED;
+  int? get AD_IMAGE_1_LINK_DUPLICATED;
 
   /// Ad image link 1 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_1_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE1LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_1_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 1 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_1_LINK_REQUIRED')
-  int? get aDIMAGE1LINKREQUIRED;
+  int? get AD_IMAGE_1_LINK_REQUIRED;
 
   /// Ad image link 1 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_1_LINK_WARNING')
-  int? get aDIMAGE1LINKWARNING;
+  int? get AD_IMAGE_1_LINK_WARNING;
 
   /// ad_image_1_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_1_TAG_DUPLICATED')
-  int? get aDIMAGE1TAGDUPLICATED;
+  int? get AD_IMAGE_1_TAG_DUPLICATED;
 
   /// Ad image tag 1 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_1_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE1TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_1_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 1 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_1_TAG_REQUIRED')
-  int? get aDIMAGE1TAGREQUIRED;
+  int? get AD_IMAGE_1_TAG_REQUIRED;
 
   /// ad_image_2_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_2_LINK_DUPLICATED')
-  int? get aDIMAGE2LINKDUPLICATED;
+  int? get AD_IMAGE_2_LINK_DUPLICATED;
 
   /// Ad image link 2 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_2_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE2LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_2_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 2 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_2_LINK_REQUIRED')
-  int? get aDIMAGE2LINKREQUIRED;
+  int? get AD_IMAGE_2_LINK_REQUIRED;
 
   /// Ad image link 2 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_2_LINK_WARNING')
-  int? get aDIMAGE2LINKWARNING;
+  int? get AD_IMAGE_2_LINK_WARNING;
 
   /// ad_image_2_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_2_TAG_DUPLICATED')
-  int? get aDIMAGE2TAGDUPLICATED;
+  int? get AD_IMAGE_2_TAG_DUPLICATED;
 
   /// Ad image tag 2 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_2_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE2TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_2_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 2 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_2_TAG_REQUIRED')
-  int? get aDIMAGE2TAGREQUIRED;
+  int? get AD_IMAGE_2_TAG_REQUIRED;
 
   /// ad_image_3_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_3_LINK_DUPLICATED')
-  int? get aDIMAGE3LINKDUPLICATED;
+  int? get AD_IMAGE_3_LINK_DUPLICATED;
 
   /// Ad image link 3 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_3_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE3LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_3_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 3 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_3_LINK_REQUIRED')
-  int? get aDIMAGE3LINKREQUIRED;
+  int? get AD_IMAGE_3_LINK_REQUIRED;
 
   /// Ad image link 3 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_3_LINK_WARNING')
-  int? get aDIMAGE3LINKWARNING;
+  int? get AD_IMAGE_3_LINK_WARNING;
 
   /// ad_image_3_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_3_TAG_DUPLICATED')
-  int? get aDIMAGE3TAGDUPLICATED;
+  int? get AD_IMAGE_3_TAG_DUPLICATED;
 
   /// Ad image tag 3 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_3_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE3TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_3_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 3 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_3_TAG_REQUIRED')
-  int? get aDIMAGE3TAGREQUIRED;
+  int? get AD_IMAGE_3_TAG_REQUIRED;
 
   /// ad_image_4_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_4_LINK_DUPLICATED')
-  int? get aDIMAGE4LINKDUPLICATED;
+  int? get AD_IMAGE_4_LINK_DUPLICATED;
 
   /// Ad image link 4 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_4_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE4LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_4_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 4 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_4_LINK_REQUIRED')
-  int? get aDIMAGE4LINKREQUIRED;
+  int? get AD_IMAGE_4_LINK_REQUIRED;
 
   /// Ad image link 4 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_4_LINK_WARNING')
-  int? get aDIMAGE4LINKWARNING;
+  int? get AD_IMAGE_4_LINK_WARNING;
 
   /// ad_image_4_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_4_TAG_DUPLICATED')
-  int? get aDIMAGE4TAGDUPLICATED;
+  int? get AD_IMAGE_4_TAG_DUPLICATED;
 
   /// Ad image tag 4 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_4_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE4TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_4_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 4 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_4_TAG_REQUIRED')
-  int? get aDIMAGE4TAGREQUIRED;
+  int? get AD_IMAGE_4_TAG_REQUIRED;
 
   /// ad_image_5_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_5_LINK_DUPLICATED')
-  int? get aDIMAGE5LINKDUPLICATED;
+  int? get AD_IMAGE_5_LINK_DUPLICATED;
 
   /// Ad image link 5 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_5_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE5LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_5_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 5 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_5_LINK_REQUIRED')
-  int? get aDIMAGE5LINKREQUIRED;
+  int? get AD_IMAGE_5_LINK_REQUIRED;
 
   /// Ad image link 5 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_5_LINK_WARNING')
-  int? get aDIMAGE5LINKWARNING;
+  int? get AD_IMAGE_5_LINK_WARNING;
 
   /// ad_image_5_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_5_TAG_DUPLICATED')
-  int? get aDIMAGE5TAGDUPLICATED;
+  int? get AD_IMAGE_5_TAG_DUPLICATED;
 
   /// Ad image tag 5 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_5_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE5TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_5_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 5 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_5_TAG_REQUIRED')
-  int? get aDIMAGE5TAGREQUIRED;
+  int? get AD_IMAGE_5_TAG_REQUIRED;
 
   /// ad_image_6_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_6_LINK_DUPLICATED')
-  int? get aDIMAGE6LINKDUPLICATED;
+  int? get AD_IMAGE_6_LINK_DUPLICATED;
 
   /// Ad image link 6 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_6_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE6LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_6_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 6 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_6_LINK_REQUIRED')
-  int? get aDIMAGE6LINKREQUIRED;
+  int? get AD_IMAGE_6_LINK_REQUIRED;
 
   /// Ad image link 6 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_6_LINK_WARNING')
-  int? get aDIMAGE6LINKWARNING;
+  int? get AD_IMAGE_6_LINK_WARNING;
 
   /// ad_image_6_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_6_TAG_DUPLICATED')
-  int? get aDIMAGE6TAGDUPLICATED;
+  int? get AD_IMAGE_6_TAG_DUPLICATED;
 
   /// Ad image tag 6 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_6_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE6TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_6_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 6 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_6_TAG_REQUIRED')
-  int? get aDIMAGE6TAGREQUIRED;
+  int? get AD_IMAGE_6_TAG_REQUIRED;
 
   /// ad_image_7_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_7_LINK_DUPLICATED')
-  int? get aDIMAGE7LINKDUPLICATED;
+  int? get AD_IMAGE_7_LINK_DUPLICATED;
 
   /// Ad image link 7 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_7_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE7LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_7_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 7 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_7_LINK_REQUIRED')
-  int? get aDIMAGE7LINKREQUIRED;
+  int? get AD_IMAGE_7_LINK_REQUIRED;
 
   /// Ad image link 7 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_7_LINK_WARNING')
-  int? get aDIMAGE7LINKWARNING;
+  int? get AD_IMAGE_7_LINK_WARNING;
 
   /// ad_image_7_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_7_TAG_DUPLICATED')
-  int? get aDIMAGE7TAGDUPLICATED;
+  int? get AD_IMAGE_7_TAG_DUPLICATED;
 
   /// Ad image tag 7 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_7_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE7TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_7_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 7 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_7_TAG_REQUIRED')
-  int? get aDIMAGE7TAGREQUIRED;
+  int? get AD_IMAGE_7_TAG_REQUIRED;
 
   /// ad_image_8_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_8_LINK_DUPLICATED')
-  int? get aDIMAGE8LINKDUPLICATED;
+  int? get AD_IMAGE_8_LINK_DUPLICATED;
 
   /// Ad image link 8 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_8_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE8LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_8_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 8 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_8_LINK_REQUIRED')
-  int? get aDIMAGE8LINKREQUIRED;
+  int? get AD_IMAGE_8_LINK_REQUIRED;
 
   /// Ad image link 8 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_8_LINK_WARNING')
-  int? get aDIMAGE8LINKWARNING;
+  int? get AD_IMAGE_8_LINK_WARNING;
 
   /// ad_image_8_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_8_TAG_DUPLICATED')
-  int? get aDIMAGE8TAGDUPLICATED;
+  int? get AD_IMAGE_8_TAG_DUPLICATED;
 
   /// Ad image tag 8 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_8_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE8TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_8_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 8 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_8_TAG_REQUIRED')
-  int? get aDIMAGE8TAGREQUIRED;
+  int? get AD_IMAGE_8_TAG_REQUIRED;
 
   /// ad_image_9_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_9_LINK_DUPLICATED')
-  int? get aDIMAGE9LINKDUPLICATED;
+  int? get AD_IMAGE_9_LINK_DUPLICATED;
 
   /// Ad image link 9 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_9_LINK_LENGTH_TOO_LONG')
-  int? get aDIMAGE9LINKLENGTHTOOLONG;
+  int? get AD_IMAGE_9_LINK_LENGTH_TOO_LONG;
 
   /// Ad image link 9 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_9_LINK_REQUIRED')
-  int? get aDIMAGE9LINKREQUIRED;
+  int? get AD_IMAGE_9_LINK_REQUIRED;
 
   /// Ad image link 9 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_9_LINK_WARNING')
-  int? get aDIMAGE9LINKWARNING;
+  int? get AD_IMAGE_9_LINK_WARNING;
 
   /// ad_image_9_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_9_TAG_DUPLICATED')
-  int? get aDIMAGE9TAGDUPLICATED;
+  int? get AD_IMAGE_9_TAG_DUPLICATED;
 
   /// Ad image tag 9 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_9_TAG_LENGTH_TOO_LONG')
-  int? get aDIMAGE9TAGLENGTHTOOLONG;
+  int? get AD_IMAGE_9_TAG_LENGTH_TOO_LONG;
 
   /// Ad image tag 9 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_9_TAG_REQUIRED')
-  int? get aDIMAGE9TAGREQUIRED;
+  int? get AD_IMAGE_9_TAG_REQUIRED;
 
   /// Some items have ad links that are formatted incorrectly.
   @BuiltValueField(wireName: r'AD_LINK_FORMAT_WARNING')
@@ -795,87 +794,87 @@ abstract class CatalogsFeedValidationWarnings implements Built<CatalogsFeedValid
 
   /// ad_video_0_link is duplicated with another ad video link.
   @BuiltValueField(wireName: r'AD_VIDEO_0_LINK_DUPLICATED')
-  int? get aDVIDEO0LINKDUPLICATED;
+  int? get AD_VIDEO_0_LINK_DUPLICATED;
 
   /// ad_video_0_link length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_VIDEO_0_LINK_LENGTH_TOO_LONG')
-  int? get aDVIDEO0LINKLENGTHTOOLONG;
+  int? get AD_VIDEO_0_LINK_LENGTH_TOO_LONG;
 
   /// ad_video_0_link is required for this item because ad_video_0_tag was provided.
   @BuiltValueField(wireName: r'AD_VIDEO_0_LINK_REQUIRED')
-  int? get aDVIDEO0LINKREQUIRED;
+  int? get AD_VIDEO_0_LINK_REQUIRED;
 
   /// ad_video_0_link is formatted incorrectly and will not be published with your items.
   @BuiltValueField(wireName: r'AD_VIDEO_0_LINK_WARNING')
-  int? get aDVIDEO0LINKWARNING;
+  int? get AD_VIDEO_0_LINK_WARNING;
 
   /// ad_video_0_tag is duplicated with another ad video tag.
   @BuiltValueField(wireName: r'AD_VIDEO_0_TAG_DUPLICATED')
-  int? get aDVIDEO0TAGDUPLICATED;
+  int? get AD_VIDEO_0_TAG_DUPLICATED;
 
   /// ad_video_0_tag length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_VIDEO_0_TAG_LENGTH_TOO_LONG')
-  int? get aDVIDEO0TAGLENGTHTOOLONG;
+  int? get AD_VIDEO_0_TAG_LENGTH_TOO_LONG;
 
   /// ad_video_0_tag is required because ad_video_0_link was provided.
   @BuiltValueField(wireName: r'AD_VIDEO_0_TAG_REQUIRED')
-  int? get aDVIDEO0TAGREQUIRED;
+  int? get AD_VIDEO_0_TAG_REQUIRED;
 
   /// ad_video_1_link is duplicated with another ad video link.
   @BuiltValueField(wireName: r'AD_VIDEO_1_LINK_DUPLICATED')
-  int? get aDVIDEO1LINKDUPLICATED;
+  int? get AD_VIDEO_1_LINK_DUPLICATED;
 
   /// ad_video_1_link length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_VIDEO_1_LINK_LENGTH_TOO_LONG')
-  int? get aDVIDEO1LINKLENGTHTOOLONG;
+  int? get AD_VIDEO_1_LINK_LENGTH_TOO_LONG;
 
   /// ad_video_1_link is required for this item because ad_video_1_tag was provided.
   @BuiltValueField(wireName: r'AD_VIDEO_1_LINK_REQUIRED')
-  int? get aDVIDEO1LINKREQUIRED;
+  int? get AD_VIDEO_1_LINK_REQUIRED;
 
   /// ad_video_1_link is formatted incorrectly and will not be published with your items.
   @BuiltValueField(wireName: r'AD_VIDEO_1_LINK_WARNING')
-  int? get aDVIDEO1LINKWARNING;
+  int? get AD_VIDEO_1_LINK_WARNING;
 
   /// ad_video_1_tag is duplicated with another ad video tag.
   @BuiltValueField(wireName: r'AD_VIDEO_1_TAG_DUPLICATED')
-  int? get aDVIDEO1TAGDUPLICATED;
+  int? get AD_VIDEO_1_TAG_DUPLICATED;
 
   /// ad_video_1_tag length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_VIDEO_1_TAG_LENGTH_TOO_LONG')
-  int? get aDVIDEO1TAGLENGTHTOOLONG;
+  int? get AD_VIDEO_1_TAG_LENGTH_TOO_LONG;
 
   /// ad_video_1_tag is required because ad_video_1_link was provided.
   @BuiltValueField(wireName: r'AD_VIDEO_1_TAG_REQUIRED')
-  int? get aDVIDEO1TAGREQUIRED;
+  int? get AD_VIDEO_1_TAG_REQUIRED;
 
   /// ad_video_2_link is duplicated with another ad video link.
   @BuiltValueField(wireName: r'AD_VIDEO_2_LINK_DUPLICATED')
-  int? get aDVIDEO2LINKDUPLICATED;
+  int? get AD_VIDEO_2_LINK_DUPLICATED;
 
   /// ad_video_2_link length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_VIDEO_2_LINK_LENGTH_TOO_LONG')
-  int? get aDVIDEO2LINKLENGTHTOOLONG;
+  int? get AD_VIDEO_2_LINK_LENGTH_TOO_LONG;
 
   /// ad_video_2_link is required for this item because ad_video_2_tag was provided.
   @BuiltValueField(wireName: r'AD_VIDEO_2_LINK_REQUIRED')
-  int? get aDVIDEO2LINKREQUIRED;
+  int? get AD_VIDEO_2_LINK_REQUIRED;
 
   /// ad_video_2_link is formatted incorrectly and will not be published with your items.
   @BuiltValueField(wireName: r'AD_VIDEO_2_LINK_WARNING')
-  int? get aDVIDEO2LINKWARNING;
+  int? get AD_VIDEO_2_LINK_WARNING;
 
   /// ad_video_2_tag is duplicated with another ad video tag.
   @BuiltValueField(wireName: r'AD_VIDEO_2_TAG_DUPLICATED')
-  int? get aDVIDEO2TAGDUPLICATED;
+  int? get AD_VIDEO_2_TAG_DUPLICATED;
 
   /// ad_video_2_tag length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_VIDEO_2_TAG_LENGTH_TOO_LONG')
-  int? get aDVIDEO2TAGLENGTHTOOLONG;
+  int? get AD_VIDEO_2_TAG_LENGTH_TOO_LONG;
 
   /// ad_video_2_tag is required because ad_video_2_link was provided.
   @BuiltValueField(wireName: r'AD_VIDEO_2_TAG_REQUIRED')
-  int? get aDVIDEO2TAGREQUIRED;
+  int? get AD_VIDEO_2_TAG_REQUIRED;
 
   /// Some items have additional_image_link URLs that contain too many characters, so those items will not be published.
   @BuiltValueField(wireName: r'ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG')
@@ -927,8 +926,7 @@ abstract class CatalogsFeedValidationWarnings implements Built<CatalogsFeedValid
 
   /// Ingestion completed early because there are no changes to your feed since the last successful update.
   @BuiltValueField(wireName: r'FETCH_SAME_SIGNATURE')
-  CatalogsFeedValidationWarningsFETCH_SAME_SIGNATUREEnum? get FETCH_SAME_SIGNATURE;
-  // enum FETCH_SAME_SIGNATUREEnum {  1,  };
+  int? get FETCH_SAME_SIGNATURE;
 
   /// Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
   @BuiltValueField(wireName: r'GENDER_INVALID')
@@ -1093,983 +1091,983 @@ class _$CatalogsFeedValidationWarningsSerializer implements PrimitiveSerializer<
     CatalogsFeedValidationWarnings object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.aDIMAGE0LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_0_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_0_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE0LINKDUPLICATED,
+        object.AD_IMAGE_0_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE0LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_0_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_0_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE0LINKLENGTHTOOLONG,
+        object.AD_IMAGE_0_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE0LINKREQUIRED != null) {
+    if (object.AD_IMAGE_0_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_0_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE0LINKREQUIRED,
+        object.AD_IMAGE_0_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE0LINKWARNING != null) {
+    if (object.AD_IMAGE_0_LINK_WARNING != null) {
       yield r'AD_IMAGE_0_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE0LINKWARNING,
+        object.AD_IMAGE_0_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE0TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_0_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_0_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE0TAGDUPLICATED,
+        object.AD_IMAGE_0_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE0TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_0_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_0_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE0TAGLENGTHTOOLONG,
+        object.AD_IMAGE_0_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE0TAGREQUIRED != null) {
+    if (object.AD_IMAGE_0_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_0_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE0TAGREQUIRED,
+        object.AD_IMAGE_0_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE10LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_10_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_10_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE10LINKDUPLICATED,
+        object.AD_IMAGE_10_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE10LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_10_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_10_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE10LINKLENGTHTOOLONG,
+        object.AD_IMAGE_10_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE10LINKREQUIRED != null) {
+    if (object.AD_IMAGE_10_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_10_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE10LINKREQUIRED,
+        object.AD_IMAGE_10_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE10LINKWARNING != null) {
+    if (object.AD_IMAGE_10_LINK_WARNING != null) {
       yield r'AD_IMAGE_10_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE10LINKWARNING,
+        object.AD_IMAGE_10_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE10TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_10_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_10_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE10TAGDUPLICATED,
+        object.AD_IMAGE_10_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE10TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_10_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_10_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE10TAGLENGTHTOOLONG,
+        object.AD_IMAGE_10_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE10TAGREQUIRED != null) {
+    if (object.AD_IMAGE_10_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_10_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE10TAGREQUIRED,
+        object.AD_IMAGE_10_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE11LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_11_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_11_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE11LINKDUPLICATED,
+        object.AD_IMAGE_11_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE11LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_11_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_11_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE11LINKLENGTHTOOLONG,
+        object.AD_IMAGE_11_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE11LINKREQUIRED != null) {
+    if (object.AD_IMAGE_11_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_11_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE11LINKREQUIRED,
+        object.AD_IMAGE_11_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE11LINKWARNING != null) {
+    if (object.AD_IMAGE_11_LINK_WARNING != null) {
       yield r'AD_IMAGE_11_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE11LINKWARNING,
+        object.AD_IMAGE_11_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE11TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_11_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_11_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE11TAGDUPLICATED,
+        object.AD_IMAGE_11_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE11TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_11_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_11_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE11TAGLENGTHTOOLONG,
+        object.AD_IMAGE_11_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE11TAGREQUIRED != null) {
+    if (object.AD_IMAGE_11_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_11_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE11TAGREQUIRED,
+        object.AD_IMAGE_11_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE12LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_12_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_12_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE12LINKDUPLICATED,
+        object.AD_IMAGE_12_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE12LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_12_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_12_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE12LINKLENGTHTOOLONG,
+        object.AD_IMAGE_12_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE12LINKREQUIRED != null) {
+    if (object.AD_IMAGE_12_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_12_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE12LINKREQUIRED,
+        object.AD_IMAGE_12_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE12LINKWARNING != null) {
+    if (object.AD_IMAGE_12_LINK_WARNING != null) {
       yield r'AD_IMAGE_12_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE12LINKWARNING,
+        object.AD_IMAGE_12_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE12TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_12_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_12_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE12TAGDUPLICATED,
+        object.AD_IMAGE_12_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE12TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_12_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_12_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE12TAGLENGTHTOOLONG,
+        object.AD_IMAGE_12_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE12TAGREQUIRED != null) {
+    if (object.AD_IMAGE_12_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_12_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE12TAGREQUIRED,
+        object.AD_IMAGE_12_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE13LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_13_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_13_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE13LINKDUPLICATED,
+        object.AD_IMAGE_13_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE13LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_13_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_13_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE13LINKLENGTHTOOLONG,
+        object.AD_IMAGE_13_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE13LINKREQUIRED != null) {
+    if (object.AD_IMAGE_13_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_13_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE13LINKREQUIRED,
+        object.AD_IMAGE_13_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE13LINKWARNING != null) {
+    if (object.AD_IMAGE_13_LINK_WARNING != null) {
       yield r'AD_IMAGE_13_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE13LINKWARNING,
+        object.AD_IMAGE_13_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE13TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_13_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_13_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE13TAGDUPLICATED,
+        object.AD_IMAGE_13_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE13TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_13_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_13_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE13TAGLENGTHTOOLONG,
+        object.AD_IMAGE_13_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE13TAGREQUIRED != null) {
+    if (object.AD_IMAGE_13_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_13_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE13TAGREQUIRED,
+        object.AD_IMAGE_13_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE14LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_14_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_14_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE14LINKDUPLICATED,
+        object.AD_IMAGE_14_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE14LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_14_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_14_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE14LINKLENGTHTOOLONG,
+        object.AD_IMAGE_14_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE14LINKREQUIRED != null) {
+    if (object.AD_IMAGE_14_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_14_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE14LINKREQUIRED,
+        object.AD_IMAGE_14_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE14LINKWARNING != null) {
+    if (object.AD_IMAGE_14_LINK_WARNING != null) {
       yield r'AD_IMAGE_14_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE14LINKWARNING,
+        object.AD_IMAGE_14_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE14TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_14_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_14_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE14TAGDUPLICATED,
+        object.AD_IMAGE_14_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE14TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_14_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_14_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE14TAGLENGTHTOOLONG,
+        object.AD_IMAGE_14_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE14TAGREQUIRED != null) {
+    if (object.AD_IMAGE_14_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_14_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE14TAGREQUIRED,
+        object.AD_IMAGE_14_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE15LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_15_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_15_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE15LINKDUPLICATED,
+        object.AD_IMAGE_15_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE15LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_15_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_15_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE15LINKLENGTHTOOLONG,
+        object.AD_IMAGE_15_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE15LINKREQUIRED != null) {
+    if (object.AD_IMAGE_15_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_15_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE15LINKREQUIRED,
+        object.AD_IMAGE_15_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE15LINKWARNING != null) {
+    if (object.AD_IMAGE_15_LINK_WARNING != null) {
       yield r'AD_IMAGE_15_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE15LINKWARNING,
+        object.AD_IMAGE_15_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE15TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_15_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_15_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE15TAGDUPLICATED,
+        object.AD_IMAGE_15_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE15TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_15_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_15_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE15TAGLENGTHTOOLONG,
+        object.AD_IMAGE_15_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE15TAGREQUIRED != null) {
+    if (object.AD_IMAGE_15_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_15_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE15TAGREQUIRED,
+        object.AD_IMAGE_15_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE16LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_16_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_16_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE16LINKDUPLICATED,
+        object.AD_IMAGE_16_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE16LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_16_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_16_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE16LINKLENGTHTOOLONG,
+        object.AD_IMAGE_16_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE16LINKREQUIRED != null) {
+    if (object.AD_IMAGE_16_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_16_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE16LINKREQUIRED,
+        object.AD_IMAGE_16_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE16LINKWARNING != null) {
+    if (object.AD_IMAGE_16_LINK_WARNING != null) {
       yield r'AD_IMAGE_16_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE16LINKWARNING,
+        object.AD_IMAGE_16_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE16TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_16_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_16_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE16TAGDUPLICATED,
+        object.AD_IMAGE_16_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE16TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_16_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_16_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE16TAGLENGTHTOOLONG,
+        object.AD_IMAGE_16_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE16TAGREQUIRED != null) {
+    if (object.AD_IMAGE_16_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_16_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE16TAGREQUIRED,
+        object.AD_IMAGE_16_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE17LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_17_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_17_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE17LINKDUPLICATED,
+        object.AD_IMAGE_17_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE17LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_17_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_17_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE17LINKLENGTHTOOLONG,
+        object.AD_IMAGE_17_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE17LINKREQUIRED != null) {
+    if (object.AD_IMAGE_17_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_17_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE17LINKREQUIRED,
+        object.AD_IMAGE_17_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE17LINKWARNING != null) {
+    if (object.AD_IMAGE_17_LINK_WARNING != null) {
       yield r'AD_IMAGE_17_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE17LINKWARNING,
+        object.AD_IMAGE_17_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE17TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_17_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_17_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE17TAGDUPLICATED,
+        object.AD_IMAGE_17_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE17TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_17_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_17_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE17TAGLENGTHTOOLONG,
+        object.AD_IMAGE_17_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE17TAGREQUIRED != null) {
+    if (object.AD_IMAGE_17_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_17_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE17TAGREQUIRED,
+        object.AD_IMAGE_17_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE18LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_18_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_18_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE18LINKDUPLICATED,
+        object.AD_IMAGE_18_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE18LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_18_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_18_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE18LINKLENGTHTOOLONG,
+        object.AD_IMAGE_18_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE18LINKREQUIRED != null) {
+    if (object.AD_IMAGE_18_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_18_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE18LINKREQUIRED,
+        object.AD_IMAGE_18_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE18LINKWARNING != null) {
+    if (object.AD_IMAGE_18_LINK_WARNING != null) {
       yield r'AD_IMAGE_18_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE18LINKWARNING,
+        object.AD_IMAGE_18_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE18TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_18_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_18_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE18TAGDUPLICATED,
+        object.AD_IMAGE_18_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE18TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_18_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_18_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE18TAGLENGTHTOOLONG,
+        object.AD_IMAGE_18_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE18TAGREQUIRED != null) {
+    if (object.AD_IMAGE_18_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_18_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE18TAGREQUIRED,
+        object.AD_IMAGE_18_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE19LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_19_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_19_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE19LINKDUPLICATED,
+        object.AD_IMAGE_19_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE19LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_19_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_19_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE19LINKLENGTHTOOLONG,
+        object.AD_IMAGE_19_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE19LINKREQUIRED != null) {
+    if (object.AD_IMAGE_19_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_19_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE19LINKREQUIRED,
+        object.AD_IMAGE_19_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE19LINKWARNING != null) {
+    if (object.AD_IMAGE_19_LINK_WARNING != null) {
       yield r'AD_IMAGE_19_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE19LINKWARNING,
+        object.AD_IMAGE_19_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE19TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_19_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_19_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE19TAGDUPLICATED,
+        object.AD_IMAGE_19_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE19TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_19_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_19_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE19TAGLENGTHTOOLONG,
+        object.AD_IMAGE_19_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE19TAGREQUIRED != null) {
+    if (object.AD_IMAGE_19_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_19_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE19TAGREQUIRED,
+        object.AD_IMAGE_19_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE1LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_1_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_1_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE1LINKDUPLICATED,
+        object.AD_IMAGE_1_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE1LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_1_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_1_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE1LINKLENGTHTOOLONG,
+        object.AD_IMAGE_1_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE1LINKREQUIRED != null) {
+    if (object.AD_IMAGE_1_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_1_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE1LINKREQUIRED,
+        object.AD_IMAGE_1_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE1LINKWARNING != null) {
+    if (object.AD_IMAGE_1_LINK_WARNING != null) {
       yield r'AD_IMAGE_1_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE1LINKWARNING,
+        object.AD_IMAGE_1_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE1TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_1_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_1_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE1TAGDUPLICATED,
+        object.AD_IMAGE_1_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE1TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_1_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_1_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE1TAGLENGTHTOOLONG,
+        object.AD_IMAGE_1_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE1TAGREQUIRED != null) {
+    if (object.AD_IMAGE_1_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_1_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE1TAGREQUIRED,
+        object.AD_IMAGE_1_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE2LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_2_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_2_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE2LINKDUPLICATED,
+        object.AD_IMAGE_2_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE2LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_2_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_2_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE2LINKLENGTHTOOLONG,
+        object.AD_IMAGE_2_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE2LINKREQUIRED != null) {
+    if (object.AD_IMAGE_2_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_2_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE2LINKREQUIRED,
+        object.AD_IMAGE_2_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE2LINKWARNING != null) {
+    if (object.AD_IMAGE_2_LINK_WARNING != null) {
       yield r'AD_IMAGE_2_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE2LINKWARNING,
+        object.AD_IMAGE_2_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE2TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_2_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_2_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE2TAGDUPLICATED,
+        object.AD_IMAGE_2_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE2TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_2_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_2_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE2TAGLENGTHTOOLONG,
+        object.AD_IMAGE_2_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE2TAGREQUIRED != null) {
+    if (object.AD_IMAGE_2_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_2_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE2TAGREQUIRED,
+        object.AD_IMAGE_2_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE3LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_3_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_3_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE3LINKDUPLICATED,
+        object.AD_IMAGE_3_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE3LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_3_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_3_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE3LINKLENGTHTOOLONG,
+        object.AD_IMAGE_3_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE3LINKREQUIRED != null) {
+    if (object.AD_IMAGE_3_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_3_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE3LINKREQUIRED,
+        object.AD_IMAGE_3_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE3LINKWARNING != null) {
+    if (object.AD_IMAGE_3_LINK_WARNING != null) {
       yield r'AD_IMAGE_3_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE3LINKWARNING,
+        object.AD_IMAGE_3_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE3TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_3_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_3_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE3TAGDUPLICATED,
+        object.AD_IMAGE_3_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE3TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_3_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_3_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE3TAGLENGTHTOOLONG,
+        object.AD_IMAGE_3_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE3TAGREQUIRED != null) {
+    if (object.AD_IMAGE_3_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_3_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE3TAGREQUIRED,
+        object.AD_IMAGE_3_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE4LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_4_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_4_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE4LINKDUPLICATED,
+        object.AD_IMAGE_4_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE4LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_4_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_4_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE4LINKLENGTHTOOLONG,
+        object.AD_IMAGE_4_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE4LINKREQUIRED != null) {
+    if (object.AD_IMAGE_4_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_4_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE4LINKREQUIRED,
+        object.AD_IMAGE_4_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE4LINKWARNING != null) {
+    if (object.AD_IMAGE_4_LINK_WARNING != null) {
       yield r'AD_IMAGE_4_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE4LINKWARNING,
+        object.AD_IMAGE_4_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE4TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_4_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_4_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE4TAGDUPLICATED,
+        object.AD_IMAGE_4_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE4TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_4_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_4_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE4TAGLENGTHTOOLONG,
+        object.AD_IMAGE_4_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE4TAGREQUIRED != null) {
+    if (object.AD_IMAGE_4_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_4_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE4TAGREQUIRED,
+        object.AD_IMAGE_4_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE5LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_5_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_5_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE5LINKDUPLICATED,
+        object.AD_IMAGE_5_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE5LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_5_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_5_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE5LINKLENGTHTOOLONG,
+        object.AD_IMAGE_5_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE5LINKREQUIRED != null) {
+    if (object.AD_IMAGE_5_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_5_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE5LINKREQUIRED,
+        object.AD_IMAGE_5_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE5LINKWARNING != null) {
+    if (object.AD_IMAGE_5_LINK_WARNING != null) {
       yield r'AD_IMAGE_5_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE5LINKWARNING,
+        object.AD_IMAGE_5_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE5TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_5_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_5_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE5TAGDUPLICATED,
+        object.AD_IMAGE_5_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE5TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_5_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_5_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE5TAGLENGTHTOOLONG,
+        object.AD_IMAGE_5_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE5TAGREQUIRED != null) {
+    if (object.AD_IMAGE_5_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_5_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE5TAGREQUIRED,
+        object.AD_IMAGE_5_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE6LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_6_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_6_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE6LINKDUPLICATED,
+        object.AD_IMAGE_6_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE6LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_6_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_6_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE6LINKLENGTHTOOLONG,
+        object.AD_IMAGE_6_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE6LINKREQUIRED != null) {
+    if (object.AD_IMAGE_6_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_6_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE6LINKREQUIRED,
+        object.AD_IMAGE_6_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE6LINKWARNING != null) {
+    if (object.AD_IMAGE_6_LINK_WARNING != null) {
       yield r'AD_IMAGE_6_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE6LINKWARNING,
+        object.AD_IMAGE_6_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE6TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_6_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_6_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE6TAGDUPLICATED,
+        object.AD_IMAGE_6_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE6TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_6_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_6_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE6TAGLENGTHTOOLONG,
+        object.AD_IMAGE_6_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE6TAGREQUIRED != null) {
+    if (object.AD_IMAGE_6_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_6_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE6TAGREQUIRED,
+        object.AD_IMAGE_6_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE7LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_7_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_7_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE7LINKDUPLICATED,
+        object.AD_IMAGE_7_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE7LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_7_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_7_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE7LINKLENGTHTOOLONG,
+        object.AD_IMAGE_7_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE7LINKREQUIRED != null) {
+    if (object.AD_IMAGE_7_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_7_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE7LINKREQUIRED,
+        object.AD_IMAGE_7_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE7LINKWARNING != null) {
+    if (object.AD_IMAGE_7_LINK_WARNING != null) {
       yield r'AD_IMAGE_7_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE7LINKWARNING,
+        object.AD_IMAGE_7_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE7TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_7_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_7_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE7TAGDUPLICATED,
+        object.AD_IMAGE_7_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE7TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_7_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_7_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE7TAGLENGTHTOOLONG,
+        object.AD_IMAGE_7_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE7TAGREQUIRED != null) {
+    if (object.AD_IMAGE_7_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_7_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE7TAGREQUIRED,
+        object.AD_IMAGE_7_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE8LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_8_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_8_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE8LINKDUPLICATED,
+        object.AD_IMAGE_8_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE8LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_8_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_8_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE8LINKLENGTHTOOLONG,
+        object.AD_IMAGE_8_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE8LINKREQUIRED != null) {
+    if (object.AD_IMAGE_8_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_8_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE8LINKREQUIRED,
+        object.AD_IMAGE_8_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE8LINKWARNING != null) {
+    if (object.AD_IMAGE_8_LINK_WARNING != null) {
       yield r'AD_IMAGE_8_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE8LINKWARNING,
+        object.AD_IMAGE_8_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE8TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_8_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_8_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE8TAGDUPLICATED,
+        object.AD_IMAGE_8_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE8TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_8_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_8_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE8TAGLENGTHTOOLONG,
+        object.AD_IMAGE_8_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE8TAGREQUIRED != null) {
+    if (object.AD_IMAGE_8_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_8_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE8TAGREQUIRED,
+        object.AD_IMAGE_8_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE9LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_9_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_9_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE9LINKDUPLICATED,
+        object.AD_IMAGE_9_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE9LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_9_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_9_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE9LINKLENGTHTOOLONG,
+        object.AD_IMAGE_9_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE9LINKREQUIRED != null) {
+    if (object.AD_IMAGE_9_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_9_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE9LINKREQUIRED,
+        object.AD_IMAGE_9_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE9LINKWARNING != null) {
+    if (object.AD_IMAGE_9_LINK_WARNING != null) {
       yield r'AD_IMAGE_9_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE9LINKWARNING,
+        object.AD_IMAGE_9_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE9TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_9_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_9_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE9TAGDUPLICATED,
+        object.AD_IMAGE_9_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE9TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_9_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_9_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE9TAGLENGTHTOOLONG,
+        object.AD_IMAGE_9_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGE9TAGREQUIRED != null) {
+    if (object.AD_IMAGE_9_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_9_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE9TAGREQUIRED,
+        object.AD_IMAGE_9_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
@@ -2087,150 +2085,150 @@ class _$CatalogsFeedValidationWarningsSerializer implements PrimitiveSerializer<
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO0LINKDUPLICATED != null) {
+    if (object.AD_VIDEO_0_LINK_DUPLICATED != null) {
       yield r'AD_VIDEO_0_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDVIDEO0LINKDUPLICATED,
+        object.AD_VIDEO_0_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO0LINKLENGTHTOOLONG != null) {
+    if (object.AD_VIDEO_0_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_VIDEO_0_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDVIDEO0LINKLENGTHTOOLONG,
+        object.AD_VIDEO_0_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO0LINKREQUIRED != null) {
+    if (object.AD_VIDEO_0_LINK_REQUIRED != null) {
       yield r'AD_VIDEO_0_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDVIDEO0LINKREQUIRED,
+        object.AD_VIDEO_0_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO0LINKWARNING != null) {
+    if (object.AD_VIDEO_0_LINK_WARNING != null) {
       yield r'AD_VIDEO_0_LINK_WARNING';
       yield serializers.serialize(
-        object.aDVIDEO0LINKWARNING,
+        object.AD_VIDEO_0_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO0TAGDUPLICATED != null) {
+    if (object.AD_VIDEO_0_TAG_DUPLICATED != null) {
       yield r'AD_VIDEO_0_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDVIDEO0TAGDUPLICATED,
+        object.AD_VIDEO_0_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO0TAGLENGTHTOOLONG != null) {
+    if (object.AD_VIDEO_0_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_VIDEO_0_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDVIDEO0TAGLENGTHTOOLONG,
+        object.AD_VIDEO_0_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO0TAGREQUIRED != null) {
+    if (object.AD_VIDEO_0_TAG_REQUIRED != null) {
       yield r'AD_VIDEO_0_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDVIDEO0TAGREQUIRED,
+        object.AD_VIDEO_0_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO1LINKDUPLICATED != null) {
+    if (object.AD_VIDEO_1_LINK_DUPLICATED != null) {
       yield r'AD_VIDEO_1_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDVIDEO1LINKDUPLICATED,
+        object.AD_VIDEO_1_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO1LINKLENGTHTOOLONG != null) {
+    if (object.AD_VIDEO_1_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_VIDEO_1_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDVIDEO1LINKLENGTHTOOLONG,
+        object.AD_VIDEO_1_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO1LINKREQUIRED != null) {
+    if (object.AD_VIDEO_1_LINK_REQUIRED != null) {
       yield r'AD_VIDEO_1_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDVIDEO1LINKREQUIRED,
+        object.AD_VIDEO_1_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO1LINKWARNING != null) {
+    if (object.AD_VIDEO_1_LINK_WARNING != null) {
       yield r'AD_VIDEO_1_LINK_WARNING';
       yield serializers.serialize(
-        object.aDVIDEO1LINKWARNING,
+        object.AD_VIDEO_1_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO1TAGDUPLICATED != null) {
+    if (object.AD_VIDEO_1_TAG_DUPLICATED != null) {
       yield r'AD_VIDEO_1_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDVIDEO1TAGDUPLICATED,
+        object.AD_VIDEO_1_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO1TAGLENGTHTOOLONG != null) {
+    if (object.AD_VIDEO_1_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_VIDEO_1_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDVIDEO1TAGLENGTHTOOLONG,
+        object.AD_VIDEO_1_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO1TAGREQUIRED != null) {
+    if (object.AD_VIDEO_1_TAG_REQUIRED != null) {
       yield r'AD_VIDEO_1_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDVIDEO1TAGREQUIRED,
+        object.AD_VIDEO_1_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO2LINKDUPLICATED != null) {
+    if (object.AD_VIDEO_2_LINK_DUPLICATED != null) {
       yield r'AD_VIDEO_2_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDVIDEO2LINKDUPLICATED,
+        object.AD_VIDEO_2_LINK_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO2LINKLENGTHTOOLONG != null) {
+    if (object.AD_VIDEO_2_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_VIDEO_2_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDVIDEO2LINKLENGTHTOOLONG,
+        object.AD_VIDEO_2_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO2LINKREQUIRED != null) {
+    if (object.AD_VIDEO_2_LINK_REQUIRED != null) {
       yield r'AD_VIDEO_2_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDVIDEO2LINKREQUIRED,
+        object.AD_VIDEO_2_LINK_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO2LINKWARNING != null) {
+    if (object.AD_VIDEO_2_LINK_WARNING != null) {
       yield r'AD_VIDEO_2_LINK_WARNING';
       yield serializers.serialize(
-        object.aDVIDEO2LINKWARNING,
+        object.AD_VIDEO_2_LINK_WARNING,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO2TAGDUPLICATED != null) {
+    if (object.AD_VIDEO_2_TAG_DUPLICATED != null) {
       yield r'AD_VIDEO_2_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDVIDEO2TAGDUPLICATED,
+        object.AD_VIDEO_2_TAG_DUPLICATED,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO2TAGLENGTHTOOLONG != null) {
+    if (object.AD_VIDEO_2_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_VIDEO_2_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDVIDEO2TAGLENGTHTOOLONG,
+        object.AD_VIDEO_2_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEO2TAGREQUIRED != null) {
+    if (object.AD_VIDEO_2_TAG_REQUIRED != null) {
       yield r'AD_VIDEO_2_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDVIDEO2TAGREQUIRED,
+        object.AD_VIDEO_2_TAG_REQUIRED,
         specifiedType: const FullType(int),
       );
     }
@@ -2322,7 +2320,7 @@ class _$CatalogsFeedValidationWarningsSerializer implements PrimitiveSerializer<
       yield r'FETCH_SAME_SIGNATURE';
       yield serializers.serialize(
         object.FETCH_SAME_SIGNATURE,
-        specifiedType: const FullType(CatalogsFeedValidationWarningsFETCH_SAME_SIGNATUREEnum),
+        specifiedType: const FullType(int),
       );
     }
     if (object.GENDER_INVALID != null) {
@@ -2596,1478 +2594,1689 @@ class _$CatalogsFeedValidationWarningsSerializer implements PrimitiveSerializer<
         case r'AD_IMAGE_0_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE0LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_0_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_0_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE0LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_0_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_0_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE0LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_0_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_0_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE0LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_0_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_0_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE0TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_0_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_0_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE0TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_0_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_0_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE0TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_0_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_10_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE10LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_10_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_10_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE10LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_10_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_10_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE10LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_10_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_10_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE10LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_10_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_10_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE10TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_10_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_10_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE10TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_10_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_10_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE10TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_10_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_11_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE11LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_11_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_11_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE11LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_11_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_11_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE11LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_11_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_11_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE11LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_11_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_11_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE11TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_11_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_11_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE11TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_11_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_11_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE11TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_11_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_12_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE12LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_12_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_12_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE12LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_12_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_12_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE12LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_12_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_12_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE12LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_12_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_12_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE12TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_12_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_12_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE12TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_12_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_12_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE12TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_12_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_13_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE13LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_13_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_13_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE13LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_13_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_13_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE13LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_13_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_13_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE13LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_13_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_13_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE13TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_13_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_13_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE13TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_13_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_13_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE13TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_13_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_14_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE14LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_14_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_14_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE14LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_14_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_14_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE14LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_14_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_14_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE14LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_14_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_14_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE14TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_14_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_14_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE14TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_14_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_14_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE14TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_14_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_15_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE15LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_15_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_15_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE15LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_15_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_15_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE15LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_15_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_15_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE15LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_15_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_15_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE15TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_15_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_15_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE15TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_15_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_15_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE15TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_15_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_16_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE16LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_16_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_16_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE16LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_16_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_16_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE16LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_16_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_16_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE16LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_16_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_16_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE16TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_16_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_16_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE16TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_16_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_16_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE16TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_16_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_17_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE17LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_17_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_17_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE17LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_17_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_17_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE17LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_17_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_17_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE17LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_17_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_17_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE17TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_17_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_17_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE17TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_17_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_17_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE17TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_17_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_18_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE18LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_18_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_18_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE18LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_18_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_18_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE18LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_18_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_18_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE18LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_18_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_18_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE18TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_18_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_18_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE18TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_18_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_18_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE18TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_18_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_19_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE19LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_19_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_19_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE19LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_19_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_19_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE19LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_19_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_19_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE19LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_19_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_19_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE19TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_19_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_19_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE19TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_19_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_19_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE19TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_19_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_1_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE1LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_1_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_1_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE1LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_1_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_1_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE1LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_1_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_1_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE1LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_1_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_1_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE1TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_1_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_1_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE1TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_1_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_1_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE1TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_1_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_2_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE2LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_2_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_2_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE2LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_2_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_2_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE2LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_2_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_2_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE2LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_2_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_2_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE2TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_2_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_2_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE2TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_2_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_2_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE2TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_2_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_3_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE3LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_3_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_3_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE3LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_3_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_3_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE3LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_3_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_3_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE3LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_3_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_3_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE3TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_3_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_3_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE3TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_3_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_3_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE3TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_3_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_4_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE4LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_4_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_4_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE4LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_4_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_4_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE4LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_4_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_4_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE4LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_4_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_4_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE4TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_4_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_4_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE4TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_4_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_4_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE4TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_4_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_5_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE5LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_5_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_5_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE5LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_5_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_5_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE5LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_5_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_5_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE5LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_5_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_5_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE5TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_5_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_5_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE5TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_5_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_5_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE5TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_5_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_6_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE6LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_6_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_6_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE6LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_6_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_6_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE6LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_6_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_6_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE6LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_6_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_6_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE6TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_6_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_6_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE6TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_6_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_6_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE6TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_6_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_7_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE7LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_7_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_7_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE7LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_7_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_7_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE7LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_7_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_7_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE7LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_7_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_7_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE7TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_7_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_7_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE7TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_7_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_7_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE7TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_7_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_8_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE8LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_8_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_8_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE8LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_8_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_8_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE8LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_8_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_8_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE8LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_8_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_8_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE8TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_8_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_8_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE8TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_8_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_8_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE8TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_8_TAG_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_9_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE9LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_9_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_9_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE9LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_9_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_9_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE9LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_9_LINK_REQUIRED = valueDes;
           break;
         case r'AD_IMAGE_9_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE9LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_9_LINK_WARNING = valueDes;
           break;
         case r'AD_IMAGE_9_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE9TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_9_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_IMAGE_9_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE9TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_9_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_IMAGE_9_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGE9TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_9_TAG_REQUIRED = valueDes;
           break;
         case r'AD_LINK_FORMAT_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_LINK_FORMAT_WARNING = valueDes;
           break;
         case r'AD_LINK_SAME_AS_LINK':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_LINK_SAME_AS_LINK = valueDes;
           break;
         case r'AD_VIDEO_0_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO0LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_0_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_VIDEO_0_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO0LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_0_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_VIDEO_0_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO0LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_0_LINK_REQUIRED = valueDes;
           break;
         case r'AD_VIDEO_0_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO0LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_0_LINK_WARNING = valueDes;
           break;
         case r'AD_VIDEO_0_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO0TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_0_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_VIDEO_0_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO0TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_0_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_VIDEO_0_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO0TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_0_TAG_REQUIRED = valueDes;
           break;
         case r'AD_VIDEO_1_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO1LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_1_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_VIDEO_1_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO1LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_1_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_VIDEO_1_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO1LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_1_LINK_REQUIRED = valueDes;
           break;
         case r'AD_VIDEO_1_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO1LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_1_LINK_WARNING = valueDes;
           break;
         case r'AD_VIDEO_1_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO1TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_1_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_VIDEO_1_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO1TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_1_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_VIDEO_1_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO1TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_1_TAG_REQUIRED = valueDes;
           break;
         case r'AD_VIDEO_2_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO2LINKDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_2_LINK_DUPLICATED = valueDes;
           break;
         case r'AD_VIDEO_2_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO2LINKLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_2_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_VIDEO_2_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO2LINKREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_2_LINK_REQUIRED = valueDes;
           break;
         case r'AD_VIDEO_2_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO2LINKWARNING = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_2_LINK_WARNING = valueDes;
           break;
         case r'AD_VIDEO_2_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO2TAGDUPLICATED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_2_TAG_DUPLICATED = valueDes;
           break;
         case r'AD_VIDEO_2_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO2TAGLENGTHTOOLONG = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_2_TAG_LENGTH_TOO_LONG = valueDes;
           break;
         case r'AD_VIDEO_2_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEO2TAGREQUIRED = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_2_TAG_REQUIRED = valueDes;
           break;
         case r'ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'ADDITIONAL_IMAGE_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ADDITIONAL_IMAGE_LINK_WARNING = valueDes;
           break;
         case r'ADWORDS_FORMAT_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ADWORDS_FORMAT_WARNING = valueDes;
           break;
         case r'ADWORDS_SAME_AS_LINK':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ADWORDS_SAME_AS_LINK = valueDes;
           break;
         case r'AGE_GROUP_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AGE_GROUP_INVALID = valueDes;
           break;
         case r'ANDROID_DEEP_LINK_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ANDROID_DEEP_LINK_INVALID = valueDes;
           break;
         case r'AVAILABILITY_DATE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AVAILABILITY_DATE_INVALID = valueDes;
           break;
         case r'COUNTRY_DOES_NOT_MAP_TO_CURRENCY':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.COUNTRY_DOES_NOT_MAP_TO_CURRENCY = valueDes;
           break;
         case r'CUSTOM_LABEL_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.CUSTOM_LABEL_LENGTH_TOO_LONG = valueDes;
           break;
         case r'DESCRIPTION_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.DESCRIPTION_LENGTH_TOO_LONG = valueDes;
           break;
         case r'DUPLICATE_HEADERS':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.DUPLICATE_HEADERS = valueDes;
           break;
         case r'EXPIRATION_DATE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.EXPIRATION_DATE_INVALID = valueDes;
           break;
         case r'FETCH_SAME_SIGNATURE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsFeedValidationWarningsFETCH_SAME_SIGNATUREEnum),
-          ) as CatalogsFeedValidationWarningsFETCH_SAME_SIGNATUREEnum;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.FETCH_SAME_SIGNATURE = valueDes;
           break;
         case r'GENDER_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.GENDER_INVALID = valueDes;
           break;
         case r'GTIN_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.GTIN_INVALID = valueDes;
           break;
         case r'IMAGE_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.IMAGE_LINK_WARNING = valueDes;
           break;
         case r'INCONSISTENT_CURRENCY_VALUES':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.INCONSISTENT_CURRENCY_VALUES = valueDes;
           break;
         case r'INDEXED_PRODUCT_COUNT_LARGE_DELTA':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.INDEXED_PRODUCT_COUNT_LARGE_DELTA = valueDes;
           break;
         case r'IOS_DEEP_LINK_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.IOS_DEEP_LINK_INVALID = valueDes;
           break;
         case r'IS_BUNDLE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.IS_BUNDLE_INVALID = valueDes;
           break;
         case r'ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = valueDes;
           break;
         case r'LINK_FORMAT_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.LINK_FORMAT_WARNING = valueDes;
           break;
         case r'MIN_AD_PRICE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.MIN_AD_PRICE_INVALID = valueDes;
           break;
         case r'MPN_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.MPN_INVALID = valueDes;
           break;
         case r'MULTIPACK_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.MULTIPACK_INVALID = valueDes;
           break;
         case r'OPTIONAL_CONDITION_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.OPTIONAL_CONDITION_INVALID = valueDes;
           break;
         case r'OPTIONAL_CONDITION_MISSING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.OPTIONAL_CONDITION_MISSING = valueDes;
           break;
         case r'OPTIONAL_PRODUCT_CATEGORY_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.OPTIONAL_PRODUCT_CATEGORY_INVALID = valueDes;
           break;
         case r'OPTIONAL_PRODUCT_CATEGORY_MISSING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.OPTIONAL_PRODUCT_CATEGORY_MISSING = valueDes;
           break;
         case r'PRODUCT_CATEGORY_DEPTH_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.PRODUCT_CATEGORY_DEPTH_WARNING = valueDes;
           break;
         case r'PRODUCT_TYPE_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.PRODUCT_TYPE_LENGTH_TOO_LONG = valueDes;
           break;
         case r'SALE_DATE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.SALE_DATE_INVALID = valueDes;
           break;
         case r'SALES_PRICE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.SALES_PRICE_INVALID = valueDes;
           break;
         case r'SALES_PRICE_TOO_HIGH':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.SALES_PRICE_TOO_HIGH = valueDes;
           break;
         case r'SALES_PRICE_TOO_LOW':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.SALES_PRICE_TOO_LOW = valueDes;
           break;
         case r'SHIPPING_HEIGHT_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.SHIPPING_HEIGHT_INVALID = valueDes;
           break;
         case r'SHIPPING_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.SHIPPING_INVALID = valueDes;
           break;
         case r'SHIPPING_WEIGHT_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.SHIPPING_WEIGHT_INVALID = valueDes;
           break;
         case r'SHIPPING_WIDTH_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.SHIPPING_WIDTH_INVALID = valueDes;
           break;
         case r'SIZE_SYSTEM_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.SIZE_SYSTEM_INVALID = valueDes;
           break;
         case r'SIZE_TYPE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.SIZE_TYPE_INVALID = valueDes;
           break;
         case r'TAX_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.TAX_INVALID = valueDes;
           break;
         case r'TITLE_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.TITLE_LENGTH_TOO_LONG = valueDes;
           break;
         case r'TOO_MANY_ADDITIONAL_IMAGE_LINKS':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.TOO_MANY_ADDITIONAL_IMAGE_LINKS = valueDes;
           break;
         case r'UPDATED_TIME_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.UPDATED_TIME_INVALID = valueDes;
           break;
         case r'UTM_SOURCE_AUTO_CORRECTED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.UTM_SOURCE_AUTO_CORRECTED = valueDes;
           break;
         case r'VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED = valueDes;
           break;
         case r'WEIGHT_UNIT_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.WEIGHT_UNIT_INVALID = valueDes;
           break;
         default:
@@ -4097,19 +4306,5 @@ class _$CatalogsFeedValidationWarningsSerializer implements PrimitiveSerializer<
     );
     return result.build();
   }
-}
-
-class CatalogsFeedValidationWarningsFETCH_SAME_SIGNATUREEnum extends EnumClass {
-
-  /// Ingestion completed early because there are no changes to your feed since the last successful update.
-  @BuiltValueEnumConst(wireNumber: 1)
-  static const CatalogsFeedValidationWarningsFETCH_SAME_SIGNATUREEnum number1 = _$catalogsFeedValidationWarningsFETCHSAMESIGNATUREEnum_number1;
-
-  static Serializer<CatalogsFeedValidationWarningsFETCH_SAME_SIGNATUREEnum> get serializer => _$catalogsFeedValidationWarningsFETCHSAMESIGNATUREEnumSerializer;
-
-  const CatalogsFeedValidationWarningsFETCH_SAME_SIGNATUREEnum._(String name): super(name);
-
-  static BuiltSet<CatalogsFeedValidationWarningsFETCH_SAME_SIGNATUREEnum> get values => _$catalogsFeedValidationWarningsFETCHSAMESIGNATUREEnumValues;
-  static CatalogsFeedValidationWarningsFETCH_SAME_SIGNATUREEnum valueOf(String name) => _$catalogsFeedValidationWarningsFETCHSAMESIGNATUREEnumValueOf(name);
 }
 

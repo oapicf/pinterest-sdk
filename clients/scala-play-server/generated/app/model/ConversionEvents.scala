@@ -3,11 +3,16 @@ package model
 import play.api.libs.json._
 
 /**
-  * A list of events (one or more) encapsulated by a data object.
+  * Conversion events.
+  * @param events Specific messages for each event received. The order will match the order in which the events were received in the request.
+  * @param numEventsProcessed Number of events that were successfully processed from the events.
+  * @param numEventsReceived Total number of events received in the request.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class ConversionEvents(
-  data: List[ConversionEventsDataInner]
+  events: List[ConversionApiResponseEventsItems],
+  numEventsProcessed: Int,
+  numEventsReceived: Int
 )
 
 object ConversionEvents {

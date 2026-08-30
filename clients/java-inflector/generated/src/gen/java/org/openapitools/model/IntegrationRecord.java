@@ -14,7 +14,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 
 @ApiModel(description = "Integration record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationRecord   {
   @JsonProperty("additional_id_1")
   private String additionalId1;
@@ -204,6 +204,7 @@ public class IntegrationRecord   {
   }
 
   /**
+   * Integration record ID.
    **/
   public IntegrationRecord id(String id) {
     this.id = id;
@@ -211,7 +212,7 @@ public class IntegrationRecord   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "Integration record ID.")
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -421,10 +422,7 @@ public class IntegrationRecord   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

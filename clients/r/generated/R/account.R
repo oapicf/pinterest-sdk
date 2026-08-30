@@ -1,15 +1,15 @@
 #' Create a new Account
 #'
 #' @description
-#' Account Class
+#' User account model containing properties related to a user's account.
 #'
 #' @docType class
 #' @title Account
 #' @description Account Class
 #' @format An \code{R6Class} generator object
 #' @field about Profile about description. character [optional]
-#' @field account_type Type of account character [optional]
-#' @field board_count User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. integer [optional]
+#' @field account_type Type of account \link{UserAccountType} [optional]
+#' @field board_count User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. integer [optional]
 #' @field business_name  character [optional]
 #' @field follower_count User account follower count. integer [optional]
 #' @field following_count User account following count. integer [optional]
@@ -43,7 +43,7 @@ Account <- R6::R6Class(
     #'
     #' @param about Profile about description.
     #' @param account_type Type of account
-    #' @param board_count User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+    #' @param board_count User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
     #' @param business_name business_name
     #' @param follower_count User account follower count.
     #' @param following_count User account following count.
@@ -62,12 +62,10 @@ Account <- R6::R6Class(
         self$`about` <- `about`
       }
       if (!is.null(`account_type`)) {
-        if (!(`account_type` %in% c("PINNER", "BUSINESS"))) {
-          stop(paste("Error! \"", `account_type`, "\" cannot be assigned to `account_type`. Must be \"PINNER\", \"BUSINESS\".", sep = ""))
+        if (!(`account_type` %in% c())) {
+          stop(paste("Error! \"", `account_type`, "\" cannot be assigned to `account_type`. Must be .", sep = ""))
         }
-        if (!(is.character(`account_type`) && length(`account_type`) == 1)) {
-          stop(paste("Error! Invalid data for `account_type`. Must be a string:", `account_type`))
-        }
+        stopifnot(R6::is.R6(`account_type`))
         self$`account_type` <- `account_type`
       }
       if (!is.null(`board_count`)) {
@@ -169,7 +167,7 @@ Account <- R6::R6Class(
       }
       if (!is.null(self$`account_type`)) {
         AccountObject[["account_type"]] <-
-          self$`account_type`
+          self$extractSimpleType(self$`account_type`)
       }
       if (!is.null(self$`board_count`)) {
         AccountObject[["board_count"]] <-
@@ -214,6 +212,29 @@ Account <- R6::R6Class(
       return(AccountObject)
     },
 
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
+    },
+
     #' @description
     #' Deserialize JSON string into an instance of Account
     #'
@@ -225,10 +246,9 @@ Account <- R6::R6Class(
         self$`about` <- this_object$`about`
       }
       if (!is.null(this_object$`account_type`)) {
-        if (!is.null(this_object$`account_type`) && !(this_object$`account_type` %in% c("PINNER", "BUSINESS"))) {
-          stop(paste("Error! \"", this_object$`account_type`, "\" cannot be assigned to `account_type`. Must be \"PINNER\", \"BUSINESS\".", sep = ""))
-        }
-        self$`account_type` <- this_object$`account_type`
+        `account_type_object` <- UserAccountType$new()
+        `account_type_object`$fromJSON(jsonlite::toJSON(this_object$`account_type`, auto_unbox = TRUE, digits = NA))
+        self$`account_type` <- `account_type_object`
       }
       if (!is.null(this_object$`board_count`)) {
         self$`board_count` <- this_object$`board_count`
@@ -282,10 +302,7 @@ Account <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`about` <- this_object$`about`
-      if (!is.null(this_object$`account_type`) && !(this_object$`account_type` %in% c("PINNER", "BUSINESS"))) {
-        stop(paste("Error! \"", this_object$`account_type`, "\" cannot be assigned to `account_type`. Must be \"PINNER\", \"BUSINESS\".", sep = ""))
-      }
-      self$`account_type` <- this_object$`account_type`
+      self$`account_type` <- UserAccountType$new()$fromJSON(jsonlite::toJSON(this_object$`account_type`, auto_unbox = TRUE, digits = NA))
       self$`board_count` <- this_object$`board_count`
       self$`business_name` <- this_object$`business_name`
       self$`follower_count` <- this_object$`follower_count`

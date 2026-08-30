@@ -13,10 +13,10 @@ static product_categories_demographic_t *product_categories_demographic_create_i
     if (!product_categories_demographic_local_var) {
         return NULL;
     }
+    memset(product_categories_demographic_local_var, 0, sizeof(product_categories_demographic_t));
+    product_categories_demographic_local_var->_library_owned = 1;
     product_categories_demographic_local_var->age = age;
     product_categories_demographic_local_var->gender = gender;
-
-    product_categories_demographic_local_var->_library_owned = 1;
     return product_categories_demographic_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) product_categories_demographic_t *product_categories
     list_t* age,
     gender_demographics_t *gender
     ) {
-    return product_categories_demographic_create_internal (
+    product_categories_demographic_t *result = product_categories_demographic_create_internal (
         age,
         gender
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void product_categories_demographic_free(product_categories_demographic_t *product_categories_demographic) {
@@ -155,10 +158,15 @@ product_categories_demographic_t *product_categories_demographic_parseFromJSON(c
     gender_local_nonprim = gender_demographics_parseFromJSON(gender); //nonprimitive
 
 
+
     product_categories_demographic_local_var = product_categories_demographic_create_internal (
         ageList,
         gender_local_nonprim
         );
+
+    if (!product_categories_demographic_local_var) {
+        goto end;
+    }
 
     return product_categories_demographic_local_var;
 end:

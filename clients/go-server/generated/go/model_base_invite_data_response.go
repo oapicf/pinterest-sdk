@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,12 +14,13 @@ package openapi
 
 
 
+// BaseInviteDataResponse - Common invite/request data returned by the business access endpoints.
 type BaseInviteDataResponse struct {
 
 	// Unique identifier of the invite/request.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 
-	InviteData BaseInviteDataResponseInviteData `json:"invite_data,omitempty"`
+	InviteData InviteDataResponse `json:"invite_data,omitempty"`
 
 	// Indicates whether the invite/request was received.
 	IsReceivedInvite bool `json:"is_received_invite,omitempty"`
@@ -28,9 +29,10 @@ type BaseInviteDataResponse struct {
 	User BusinessAccessUserSummary `json:"user,omitempty"`
 }
 
-// AssertBaseInviteDataResponseRequired checks if the required fields are not zero-ed
+// AssertBaseInviteDataResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertBaseInviteDataResponseRequired(obj BaseInviteDataResponse) error {
-	if err := AssertBaseInviteDataResponseInviteDataRequired(obj.InviteData); err != nil {
+	if err := AssertInviteDataResponseRequired(obj.InviteData); err != nil {
 		return err
 	}
 	if err := AssertBusinessAccessUserSummaryRequired(obj.User); err != nil {
@@ -41,7 +43,7 @@ func AssertBaseInviteDataResponseRequired(obj BaseInviteDataResponse) error {
 
 // AssertBaseInviteDataResponseConstraints checks if the values respects the defined constraints
 func AssertBaseInviteDataResponseConstraints(obj BaseInviteDataResponse) error {
-	if err := AssertBaseInviteDataResponseInviteDataConstraints(obj.InviteData); err != nil {
+	if err := AssertInviteDataResponseConstraints(obj.InviteData); err != nil {
 		return err
 	}
 	if err := AssertBusinessAccessUserSummaryConstraints(obj.User); err != nil {

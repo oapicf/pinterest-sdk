@@ -1,7 +1,7 @@
 package apimodels;
 
 import apimodels.PlacementGroupType;
-import apimodels.TargetingSpec;
+import apimodels.TargetingSpecOptimal;
 import apimodels.TargetingTemplateKeyword;
 import apimodels.TrackingUrls;
 import java.util.ArrayList;
@@ -15,9 +15,9 @@ import java.util.Objects;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 /**
- * TargetingTemplateCreate
+ * Resource create operation model.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class TargetingTemplateCreate   {
   @JsonProperty("auto_targeting_enabled")
@@ -43,7 +43,7 @@ public class TargetingTemplateCreate   {
   @NotNull
 @Valid
 
-  private TargetingSpec targetingAttributes;
+  private TargetingSpecOptimal targetingAttributes;
 
   @JsonProperty("tracking_urls")
   @Valid
@@ -56,7 +56,7 @@ public class TargetingTemplateCreate   {
   }
 
    /**
-   * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+   * Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).
    * @return autoTargetingEnabled
   **/
   public Boolean getAutoTargetingEnabled() {
@@ -98,7 +98,7 @@ public class TargetingTemplateCreate   {
   }
 
    /**
-   * Name of targeting template.
+   * targeting template name
    * @return name
   **/
   public String getName() {
@@ -126,20 +126,20 @@ public class TargetingTemplateCreate   {
     this.placementGroup = placementGroup;
   }
 
-  public TargetingTemplateCreate targetingAttributes(TargetingSpec targetingAttributes) {
+  public TargetingTemplateCreate targetingAttributes(TargetingSpecOptimal targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
     return this;
   }
 
    /**
-   * Get targetingAttributes
+   * targeting profile attributes
    * @return targetingAttributes
   **/
-  public TargetingSpec getTargetingAttributes() {
+  public TargetingSpecOptimal getTargetingAttributes() {
     return targetingAttributes;
   }
 
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+  public void setTargetingAttributes(TargetingSpecOptimal targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
   }
 
@@ -204,10 +204,7 @@ public class TargetingTemplateCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

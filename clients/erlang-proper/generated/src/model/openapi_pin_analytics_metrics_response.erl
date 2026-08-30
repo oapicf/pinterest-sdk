@@ -9,7 +9,7 @@
 -export_type([openapi_pin_analytics_metrics_response/0]).
 
 -type openapi_pin_analytics_metrics_response() ::
-  [ {'daily_metrics', list(openapi_pin_analytics_metrics_response_daily_metrics_inner:openapi_pin_analytics_metrics_response_daily_metrics_inner()) }
+  [ {'daily_metrics', list(openapi_pin_analytics_daily_metrics:openapi_pin_analytics_daily_metrics()) }
   | {'lifetime_metrics', map() }
   | {'summary_metrics', map() }
   ].
@@ -19,7 +19,7 @@ openapi_pin_analytics_metrics_response() ->
     openapi_pin_analytics_metrics_response([]).
 
 openapi_pin_analytics_metrics_response(Fields) ->
-  Default = [ {'daily_metrics', list(openapi_pin_analytics_metrics_response_daily_metrics_inner:openapi_pin_analytics_metrics_response_daily_metrics_inner()) }
+  Default = [ {'daily_metrics', list(openapi_pin_analytics_daily_metrics:openapi_pin_analytics_daily_metrics()) }
             , {'lifetime_metrics', map() }
             , {'summary_metrics', map() }
             ],

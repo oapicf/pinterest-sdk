@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Values** | **List&lt;string&gt;** |  | 
-**FilterOperatorType** | **string** |  | [optional] [default to FilterOperatorTypeEnum.IS]
-**Negated** | **bool** |  | [optional] [default to false]
+**FilterOperatorType** | **FilterOperatorType** |  | [optional] 
+**Negated** | **bool** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## adAccountsSubscriptionsDelById
 
-> adAccountsSubscriptionsDelById(adAccountId, subscriptionId)
+> LeadSubscription adAccountsSubscriptionsDelById(adAccountId, subscriptionId)
 
 Delete lead ads subscription
 
@@ -35,7 +35,7 @@ apiInstance.adAccountsSubscriptionsDelById(adAccountId, subscriptionId, (error, 
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 

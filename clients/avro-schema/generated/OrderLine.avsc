@@ -6,15 +6,22 @@
   "fields": [
     {
       "name": "ad_account_id",
-      "type": ["null", "string"],
-      "doc": "Ad account ID.",
-      "default": null
+      "type": "string",
+      "doc": "Ad account ID."
     },
     {
       "name": "budget",
       "type": ["null", "double"],
       "doc": "Order line budget in micro currency.",
       "default": null
+    },
+    {
+      "name": "campaign_ids",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "Associated List of campaign IDs."
     },
     {
       "name": "end_time",
@@ -24,9 +31,8 @@
     },
     {
       "name": "id",
-      "type": ["null", "string"],
-      "doc": "Order line ID.",
-      "default": null
+      "type": "string",
+      "doc": "Order line ID."
     },
     {
       "name": "name",
@@ -60,23 +66,13 @@
     },
     {
       "name": "status",
-      "type": ["null", "model.OrderLineStatus"],
-      "doc": "Order line status.",
-      "default": null
+      "type": "model.OrderLineStatus",
+      "doc": "Order line status."
     },
     {
       "name": "type",
-      "type": ["null", "string"],
-      "doc": "Always \"orderline\".",
-      "default": null
-    },
-    {
-      "name": "campaign_ids",
-      "type": {
-        "type": "array",
-        "items": "string"
-      },
-      "doc": "Associated List of campaign IDs."
+      "type": "string",
+      "doc": "Always \"orderline\"."
     }
   ]
 

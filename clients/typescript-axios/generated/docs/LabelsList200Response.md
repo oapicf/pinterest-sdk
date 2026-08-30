@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;LabelsResponse&gt;**](LabelsResponse.md) |  | [default to undefined]
+**items** | [**Array&lt;Label&gt;**](Label.md) |  | [default to undefined]
 
 ## Example
 

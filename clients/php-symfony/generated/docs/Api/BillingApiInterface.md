@@ -29,11 +29,11 @@ services:
 ```
 
 ## **adsCreditRedeem**
-> OpenAPI\Server\Model\AdsCreditRedeemResponse adsCreditRedeem($adAccountId, $adsCreditRedeemRequest)
+> OpenAPI\Server\Model\AdsCreditRedeem adsCreditRedeem($adAccountId, $adsCreditRedeemCreate)
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example Implementation
 ```php
@@ -60,7 +60,7 @@ class BillingApi implements BillingApiInterface
     /**
      * Implementation of BillingApiInterface#adsCreditRedeem
      */
-    public function adsCreditRedeem(string $adAccountId, AdsCreditRedeemRequest $adsCreditRedeemRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function adsCreditRedeem(string $adAccountId, AdsCreditRedeemCreate $adsCreditRedeemCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -74,11 +74,11 @@ class BillingApi implements BillingApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **adsCreditRedeemRequest** | [**OpenAPI\Server\Model\AdsCreditRedeemRequest**](../Model/AdsCreditRedeemRequest.md)| Redeem ad credits request. |
+ **adsCreditRedeemCreate** | [**OpenAPI\Server\Model\AdsCreditRedeemCreate**](../Model/AdsCreditRedeemCreate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\AdsCreditRedeemResponse**](../Model/AdsCreditRedeemResponse.md)
+[**OpenAPI\Server\Model\AdsCreditRedeem**](../Model/AdsCreditRedeem.md)
 
 ### Authorization
 
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example Implementation
 ```php
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **billingInvoicesGet**
-> OpenAPI\Server\Model\BillingInvoicesGet200Response billingInvoicesGet($adAccountId, $bookmark, $pageSize, $sort, $order, $status, $documentType, $startDueDate, $endDueDate)
+> OpenAPI\Server\Model\BillingInvoicesGet200Response billingInvoicesGet($adAccountId, $bookmark, $pageSize, $order, $sort, $status, $documentType, $startDueDate, $endDueDate)
 
 Get billing invoices
 
@@ -250,7 +250,7 @@ class BillingApi implements BillingApiInterface
     /**
      * Implementation of BillingApiInterface#billingInvoicesGet
      */
-    public function billingInvoicesGet(string $adAccountId, ?string $bookmark, int $pageSize, string $sort, ?string $order, ?string $status, ?string $documentType, ?\DateTime $startDueDate, ?\DateTime $endDueDate, int &$responseCode, array &$responseHeaders): array|object|null
+    public function billingInvoicesGet(string $adAccountId, ?string $bookmark, int $pageSize, ?PinterestLibPaginationOrder $order, ?BillingInvoiceSortField $sort, ?BillingInvoiceStatus $status, ?BillingInvoiceDocumentType $documentType, ?\DateTime $startDueDate, ?\DateTime $endDueDate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -265,11 +265,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **sort** | **string**| Field of which to sort billing invoices | [optional] [default to &#39;DUE_DATE&#39;]
- **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]
- **status** | **string**| Status of billing invoices to filter by | [optional]
- **documentType** | **string**| Document type of billing invoices to filter by | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](../Model/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]
+ **sort** | [**BillingInvoiceSortField**](../Model/.md)| Field of which to sort billing invoices | [optional]
+ **status** | [**BillingInvoiceStatus**](../Model/.md)| Status of billing invoices to filter by | [optional]
+ **documentType** | [**BillingInvoiceDocumentType**](../Model/.md)| Document type of billing invoices to filter by | [optional]
  **startDueDate** | **\DateTime**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional]
  **endDueDate** | **\DateTime**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional]
 
@@ -289,11 +289,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **billingProfilesGet**
-> OpenAPI\Server\Model\BillingProfilesGet200Response billingProfilesGet($adAccountId, $isActive, $bookmark, $pageSize)
+> OpenAPI\Server\Model\BillingProfilesGet200Response billingProfilesGet($isActive, $adAccountId, $bookmark, $pageSize)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example Implementation
 ```php
@@ -320,7 +320,7 @@ class BillingApi implements BillingApiInterface
     /**
      * Implementation of BillingApiInterface#billingProfilesGet
      */
-    public function billingProfilesGet(string $adAccountId, bool $isActive, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
+    public function billingProfilesGet(bool $isActive, string $adAccountId, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -333,10 +333,10 @@ class BillingApi implements BillingApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **string**| Unique identifier of an ad account. |
  **isActive** | **bool**| Return active billing profiles, if false return all billing profiles. |
+ **adAccountId** | **string**| Unique identifier of an ad account. |
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -354,11 +354,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **ssioAccountsGet**
-> OpenAPI\Server\Model\SSIOAccountResponse ssioAccountsGet($adAccountId)
+> OpenAPI\Server\Model\SSIOAccount ssioAccountsGet($adAccountId)
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example Implementation
 ```php
@@ -402,7 +402,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OpenAPI\Server\Model\SSIOAccountResponse**](../Model/SSIOAccountResponse.md)
+[**OpenAPI\Server\Model\SSIOAccount**](../Model/SSIOAccount.md)
 
 ### Authorization
 
@@ -416,11 +416,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **ssioInsertionOrderCreate**
-> OpenAPI\Server\Model\SSIOCreateInsertionOrderResponse ssioInsertionOrderCreate($adAccountId, $sSIOCreateInsertionOrderRequest)
+> OpenAPI\Server\Model\SSIOInsertionOrder ssioInsertionOrderCreate($adAccountId, $sSIOInsertionOrderCreate)
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example Implementation
 ```php
@@ -447,7 +447,7 @@ class BillingApi implements BillingApiInterface
     /**
      * Implementation of BillingApiInterface#ssioInsertionOrderCreate
      */
-    public function ssioInsertionOrderCreate(string $adAccountId, SSIOCreateInsertionOrderRequest $sSIOCreateInsertionOrderRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function ssioInsertionOrderCreate(string $adAccountId, SSIOInsertionOrderCreate $sSIOInsertionOrderCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -461,11 +461,11 @@ class BillingApi implements BillingApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **sSIOCreateInsertionOrderRequest** | [**OpenAPI\Server\Model\SSIOCreateInsertionOrderRequest**](../Model/SSIOCreateInsertionOrderRequest.md)| Order line to create. |
+ **sSIOInsertionOrderCreate** | [**OpenAPI\Server\Model\SSIOInsertionOrderCreate**](../Model/SSIOInsertionOrderCreate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\SSIOCreateInsertionOrderResponse**](../Model/SSIOCreateInsertionOrderResponse.md)
+[**OpenAPI\Server\Model\SSIOInsertionOrder**](../Model/SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -479,11 +479,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **ssioInsertionOrderEdit**
-> OpenAPI\Server\Model\SSIOEditInsertionOrderResponse ssioInsertionOrderEdit($adAccountId, $sSIOEditInsertionOrderRequest)
+> OpenAPI\Server\Model\SSIOInsertionOrder ssioInsertionOrderEdit($adAccountId, $sSIOInsertionOrderUpdate)
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example Implementation
 ```php
@@ -510,7 +510,7 @@ class BillingApi implements BillingApiInterface
     /**
      * Implementation of BillingApiInterface#ssioInsertionOrderEdit
      */
-    public function ssioInsertionOrderEdit(string $adAccountId, SSIOEditInsertionOrderRequest $sSIOEditInsertionOrderRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function ssioInsertionOrderEdit(string $adAccountId, SSIOInsertionOrderUpdate $sSIOInsertionOrderUpdate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -524,11 +524,11 @@ class BillingApi implements BillingApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **sSIOEditInsertionOrderRequest** | [**OpenAPI\Server\Model\SSIOEditInsertionOrderRequest**](../Model/SSIOEditInsertionOrderRequest.md)| Order line to create. |
+ **sSIOInsertionOrderUpdate** | [**OpenAPI\Server\Model\SSIOInsertionOrderUpdate**](../Model/SSIOInsertionOrderUpdate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\SSIOEditInsertionOrderResponse**](../Model/SSIOEditInsertionOrderResponse.md)
+[**OpenAPI\Server\Model\SSIOInsertionOrder**](../Model/SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -546,7 +546,7 @@ Name | Type | Description  | Notes
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example Implementation
 ```php
@@ -588,7 +588,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -610,7 +610,7 @@ Name | Type | Description  | Notes
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example Implementation
 ```php
@@ -669,11 +669,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **ssioOrderLinesGetByAdAccount**
-> OpenAPI\Server\Model\SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount($adAccountId, $bookmark, $pageSize, $pinOrderId)
+> OpenAPI\Server\Model\SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount($adAccountId, $pinOrderId, $bookmark, $pageSize)
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example Implementation
 ```php
@@ -700,7 +700,7 @@ class BillingApi implements BillingApiInterface
     /**
      * Implementation of BillingApiInterface#ssioOrderLinesGetByAdAccount
      */
-    public function ssioOrderLinesGetByAdAccount(string $adAccountId, ?string $bookmark, int $pageSize, ?string $pinOrderId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function ssioOrderLinesGetByAdAccount(string $adAccountId, ?string $pinOrderId, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -714,9 +714,9 @@ class BillingApi implements BillingApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
+ **pinOrderId** | **string**| The pin order id associated with the SSIO insertion order | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **pinOrderId** | **string**| The pin order id associated with the ssio insertino order | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

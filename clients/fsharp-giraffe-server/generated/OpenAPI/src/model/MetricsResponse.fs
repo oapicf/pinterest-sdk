@@ -2,6 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.MetricsResponseDataItems
 
 module MetricsResponse =
 
@@ -9,6 +10,6 @@ module MetricsResponse =
 
 
   type MetricsResponse = {
-    Data : obj[];
+    Data : MetricsResponseDataItems[];
   }
   //#endregion

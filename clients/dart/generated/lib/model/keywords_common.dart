@@ -69,10 +69,9 @@ class KeywordsCommon {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "KeywordsCommon[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "KeywordsCommon[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'match_type'), 'Required key "KeywordsCommon[match_type]" is missing from JSON.');
+        assert(json.containsKey(r'value'), 'Required key "KeywordsCommon[value]" is missing from JSON.');
+        assert(json[r'value'] != null, 'Required key "KeywordsCommon[value]" has a null value in JSON.');
         return true;
       }());
 

@@ -22,15 +22,16 @@
   | {'disclosure_url', binary() }
   | {'grid_click_type', openapi_grid_click_type:openapi_grid_click_type() }
   | {'ios_deep_link', binary() }
+  | {'is_carting', boolean() }
   | {'is_pin_deleted', boolean() }
   | {'is_removable', boolean() }
   | {'lead_form_id', binary() }
   | {'name', binary() }
-  | {'quiz_pin_data', openapi_quiz_pin_data:openapi_quiz_pin_data() }
-  | {'status', openapi_entity_status:openapi_entity_status() }
-  | {'tracking_urls', openapi_tracking_urls:openapi_tracking_urls() }
-  | {'view_tracking_url', binary() }
   | {'pin_id', binary() }
+  | {'quiz_pin_data', map() }
+  | {'status', openapi_entity_status:openapi_entity_status() }
+  | {'tracking_urls', map() }
+  | {'view_tracking_url', binary() }
   ].
 
 
@@ -51,15 +52,16 @@ openapi_ad_create_request(Fields) ->
             , {'disclosure_url', binary() }
             , {'grid_click_type', openapi_grid_click_type:openapi_grid_click_type() }
             , {'ios_deep_link', binary() }
+            , {'is_carting', boolean() }
             , {'is_pin_deleted', boolean() }
             , {'is_removable', boolean() }
             , {'lead_form_id', binary() }
             , {'name', binary() }
-            , {'quiz_pin_data', openapi_quiz_pin_data:openapi_quiz_pin_data() }
-            , {'status', openapi_entity_status:openapi_entity_status() }
-            , {'tracking_urls', openapi_tracking_urls:openapi_tracking_urls() }
-            , {'view_tracking_url', binary() }
             , {'pin_id', binary() }
+            , {'quiz_pin_data', map() }
+            , {'status', openapi_entity_status:openapi_entity_status() }
+            , {'tracking_urls', map() }
+            , {'view_tracking_url', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

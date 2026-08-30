@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set ID of the ad group the product group belongs to.
 	 */
-	void setAdGroupId(std::string  ad_group_id);
+	void setAdGroupId(std::string ad_group_id);
 	/*! \brief Get 
 	 */
 	std::list<ProductGroupPromotion> getProductGroupPromotion();
 
 	/*! \brief Set 
 	 */
-	void setProductGroupPromotion(std::list <ProductGroupPromotion> product_group_promotion);
+	void setProductGroupPromotion(std::list<ProductGroupPromotion> product_group_promotion);
 
 
     private:

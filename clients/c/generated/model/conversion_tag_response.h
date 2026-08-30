@@ -26,7 +26,7 @@ typedef struct conversion_tag_response_t {
     struct conversion_tag_configs_t *configs; //model
     enhanced_match_status_type_t *enhanced_match_status; // custom
     char *id; // string
-    double last_fired_time_ms; //numeric
+    double *last_fired_time_ms; //numeric
     char *name; // string
     char *version; // string
     char *ad_account_id; // string
@@ -40,7 +40,7 @@ __attribute__((deprecated)) conversion_tag_response_t *conversion_tag_response_c
     conversion_tag_configs_t *configs,
     enhanced_match_status_type_t *enhanced_match_status,
     char *id,
-    double last_fired_time_ms,
+    double *last_fired_time_ms,
     char *name,
     char *version,
     char *ad_account_id,

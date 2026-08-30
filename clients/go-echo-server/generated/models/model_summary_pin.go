@@ -7,7 +7,7 @@ type SummaryPin struct {
 
 	Description *string `json:"description,omitempty"`
 
-	Id string `json:"id,omitempty"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
 	Link *string `json:"link,omitempty"`
 

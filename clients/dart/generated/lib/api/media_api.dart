@@ -25,7 +25,7 @@ class MediaApi {
   /// Parameters:
   ///
   /// * [MediaUploadCreate] mediaUploadCreate (required):
-  Future<Response> mediaCreateWithHttpInfo(MediaUploadCreate mediaUploadCreate,) async {
+  Future<Response> mediaCreateWithHttpInfo(MediaUploadCreate mediaUploadCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/media';
 
@@ -47,6 +47,7 @@ class MediaApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -57,8 +58,8 @@ class MediaApi {
   /// Parameters:
   ///
   /// * [MediaUploadCreate] mediaUploadCreate (required):
-  Future<MediaUpload?> mediaCreate(MediaUploadCreate mediaUploadCreate,) async {
-    final response = await mediaCreateWithHttpInfo(mediaUploadCreate,);
+  Future<MediaUpload?> mediaCreate(MediaUploadCreate mediaUploadCreate, { Future<void>? abortTrigger, }) async {
+    final response = await mediaCreateWithHttpInfo(mediaUploadCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -82,7 +83,7 @@ class MediaApi {
   ///
   /// * [String] mediaId (required):
   ///   Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
-  Future<Response> mediaGetWithHttpInfo(String mediaId,) async {
+  Future<Response> mediaGetWithHttpInfo(String mediaId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/media/{media_id}'
       .replaceAll('{media_id}', mediaId);
@@ -105,6 +106,7 @@ class MediaApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -116,8 +118,8 @@ class MediaApi {
   ///
   /// * [String] mediaId (required):
   ///   Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
-  Future<Media?> mediaGet(String mediaId,) async {
-    final response = await mediaGetWithHttpInfo(mediaId,);
+  Future<Media?> mediaGet(String mediaId, { Future<void>? abortTrigger, }) async {
+    final response = await mediaGetWithHttpInfo(mediaId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -144,7 +146,7 @@ class MediaApi {
   ///
   /// * [int] pageSize:
   ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
-  Future<Response> mediaListWithHttpInfo({ String? bookmark, int? pageSize, }) async {
+  Future<Response> mediaListWithHttpInfo({ String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/media';
 
@@ -173,6 +175,7 @@ class MediaApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -187,8 +190,8 @@ class MediaApi {
   ///
   /// * [int] pageSize:
   ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
-  Future<MediaList200Response?> mediaList({ String? bookmark, int? pageSize, }) async {
-    final response = await mediaListWithHttpInfo( bookmark: bookmark, pageSize: pageSize, );
+  Future<MediaList200Response?> mediaList({ String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await mediaListWithHttpInfo(bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **character** | Catalog id pertaining to the retail product group. | [Pattern: ^\\d+$] 
+**catalog_id** | **character** | Catalog ID pertaining to the product group. | [Pattern: ^\\d+$] 
 **catalog_type** | **character** |  | [Enum: [RETAIL]] 
 **country** | **character** |  | [optional] 
 **created_at** | **integer** | Unix timestamp in seconds of when catalog product group was created. | [optional] 

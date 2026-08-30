@@ -7,11 +7,11 @@ using namespace Tiny;
 BillingProfilesResponse::BillingProfilesResponse()
 {
 	advertiser_id = std::string();
-	billing_type = std::string();
-	card_type = std::string();
+	billing_type = null;
+	card_type = null;
 	id = std::string();
-	payment_method_brand = std::string();
-	status = std::string();
+	payment_method_brand = null;
+	status = null;
 }
 
 BillingProfilesResponse::BillingProfilesResponse(std::string jsonString)
@@ -50,8 +50,9 @@ BillingProfilesResponse::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&billing_type, value, "std::string");
 
+        BillingType* obj = &billing_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -63,8 +64,9 @@ BillingProfilesResponse::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&card_type, value, "std::string");
 
+        BillingProfileCardType* obj = &card_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -89,8 +91,9 @@ BillingProfilesResponse::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&payment_method_brand, value, "std::string");
 
+        BillingProfilePaymentMethodBrand* obj = &payment_method_brand;
+		obj->fromJson(value.dump());
 
     }
 
@@ -102,8 +105,9 @@ BillingProfilesResponse::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&status, value, "std::string");
 
+        BillingProfileStatus* obj = &status;
+		obj->fromJson(value.dump());
 
     }
 
@@ -126,15 +130,15 @@ BillingProfilesResponse::toJson()
 
 
 
-    object["billing_type"] = getBillingType();
+
+	object["billing_type"] = getBillingType().toJson();
 
 
 
 
 
 
-    object["card_type"] = getCardType();
-
+	object["card_type"] = getCardType().toJson();
 
 
 
@@ -147,15 +151,15 @@ BillingProfilesResponse::toJson()
 
 
 
-    object["payment_method_brand"] = getPaymentMethodBrand();
+
+	object["payment_method_brand"] = getPaymentMethodBrand().toJson();
 
 
 
 
 
 
-    object["status"] = getStatus();
-
+	object["status"] = getStatus().toJson();
 
 
     return object;
@@ -169,31 +173,31 @@ BillingProfilesResponse::getAdvertiserId()
 }
 
 void
-BillingProfilesResponse::setAdvertiserId(std::string  advertiser_id)
+BillingProfilesResponse::setAdvertiserId(std::string advertiser_id)
 {
 	this->advertiser_id = advertiser_id;
 }
 
-std::string
+BillingType
 BillingProfilesResponse::getBillingType()
 {
 	return billing_type;
 }
 
 void
-BillingProfilesResponse::setBillingType(std::string  billing_type)
+BillingProfilesResponse::setBillingType(BillingType billing_type)
 {
 	this->billing_type = billing_type;
 }
 
-std::string
+BillingProfileCardType
 BillingProfilesResponse::getCardType()
 {
 	return card_type;
 }
 
 void
-BillingProfilesResponse::setCardType(std::string  card_type)
+BillingProfilesResponse::setCardType(BillingProfileCardType card_type)
 {
 	this->card_type = card_type;
 }
@@ -205,31 +209,31 @@ BillingProfilesResponse::getId()
 }
 
 void
-BillingProfilesResponse::setId(std::string  id)
+BillingProfilesResponse::setId(std::string id)
 {
 	this->id = id;
 }
 
-std::string
+BillingProfilePaymentMethodBrand
 BillingProfilesResponse::getPaymentMethodBrand()
 {
 	return payment_method_brand;
 }
 
 void
-BillingProfilesResponse::setPaymentMethodBrand(std::string  payment_method_brand)
+BillingProfilesResponse::setPaymentMethodBrand(BillingProfilePaymentMethodBrand payment_method_brand)
 {
 	this->payment_method_brand = payment_method_brand;
 }
 
-std::string
+BillingProfileStatus
 BillingProfilesResponse::getStatus()
 {
 	return status;
 }
 
 void
-BillingProfilesResponse::setStatus(std::string  status)
+BillingProfilesResponse::setStatus(BillingProfileStatus status)
 {
 	this->status = status;
 }

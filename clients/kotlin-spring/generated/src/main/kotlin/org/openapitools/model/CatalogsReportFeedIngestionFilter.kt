@@ -2,8 +2,14 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -24,16 +30,21 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsReportFeedIngestionFilter(
 
     @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "null", required = true, description = "ID of the feed entity.")
+    @Schema(required = true, description = "ID of the feed entity.")
+    @param:JsonProperty("feed_id")
     @get:JsonProperty("feed_id", required = true) val feedId: kotlin.String,
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("report_type", required = true) val reportType: CatalogsReportFeedIngestionFilter.ReportType,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("report_type")
+    @get:JsonProperty("report_type", required = true) override val reportType: CatalogsReportFeedIngestionFilter.ReportType = kotlin.String.FEED_INGESTION_ISSUES,
 
     @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "null", description = "Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.")
+    @Schema(description = "Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("processing_result_id")
     @get:JsonProperty("processing_result_id") val processingResultId: kotlin.String? = null
-) {
+) : CatalogsHotelReportParametersReport, CatalogsHotelReportStatsParametersReport, CatalogsRetailReportParametersReport, CatalogsRetailReportStatsParametersReport {
 
     /**
     * 
@@ -48,7 +59,7 @@ data class CatalogsReportFeedIngestionFilter(
             @JsonCreator
             fun forValue(value: kotlin.String): ReportType {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsReportFeedIngestionFilter'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ReportType'")
             }
         }
     }

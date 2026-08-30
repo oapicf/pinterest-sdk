@@ -2,31 +2,35 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AiDisclosuresUpdate;
 import org.openapitools.model.CarouselSlot;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Resource create or update operation model.
  */
 
 @Schema(name = "PinUpdate", description = "Resource create or update operation model.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PinUpdate {
+
+  private AiDisclosuresUpdate aiDisclosures;
 
   private JsonNullable<@Size(max = 500) String> altText = JsonNullable.<String>undefined();
 
@@ -42,6 +46,26 @@ public class PinUpdate {
   private JsonNullable<@Size(max = 2048) String> link = JsonNullable.<String>undefined();
 
   private JsonNullable<@Size(max = 100) String> title = JsonNullable.<String>undefined();
+
+  public PinUpdate aiDisclosures(AiDisclosuresUpdate aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+    return this;
+  }
+
+  /**
+   * AI disclosure declarations the creator has made about this Pin.
+   * @return aiDisclosures
+   */
+  @Valid 
+  @Schema(name = "ai_disclosures", description = "AI disclosure declarations the creator has made about this Pin.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("ai_disclosures")
+  public AiDisclosuresUpdate getAiDisclosures() {
+    return aiDisclosures;
+  }
+
+  public void setAiDisclosures(AiDisclosuresUpdate aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+  }
 
   public PinUpdate altText(String altText) {
     this.altText = JsonNullable.of(altText);
@@ -200,7 +224,8 @@ public class PinUpdate {
       return false;
     }
     PinUpdate pinUpdate = (PinUpdate) o;
-    return equalsNullable(this.altText, pinUpdate.altText) &&
+    return Objects.equals(this.aiDisclosures, pinUpdate.aiDisclosures) &&
+        equalsNullable(this.altText, pinUpdate.altText) &&
         Objects.equals(this.boardId, pinUpdate.boardId) &&
         equalsNullable(this.boardSectionId, pinUpdate.boardSectionId) &&
         Objects.equals(this.carouselSlots, pinUpdate.carouselSlots) &&
@@ -215,7 +240,7 @@ public class PinUpdate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(altText), boardId, hashCodeNullable(boardSectionId), carouselSlots, hashCodeNullable(description), hashCodeNullable(link), hashCodeNullable(title));
+    return Objects.hash(aiDisclosures, hashCodeNullable(altText), boardId, hashCodeNullable(boardSectionId), carouselSlots, hashCodeNullable(description), hashCodeNullable(link), hashCodeNullable(title));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -229,6 +254,7 @@ public class PinUpdate {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinUpdate {\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
@@ -245,10 +271,7 @@ public class PinUpdate {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

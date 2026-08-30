@@ -3,13 +3,13 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 
 /**
- * Refers ads entity type. Schedule enum is only applicable to beta users
+ * Refers ads entity type.
  **/
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Refers ads entity type. Schedule enum is only applicable to beta users
+ * Refers ads entity type.
  */
 public enum BulkEntityType {
   
@@ -25,7 +25,9 @@ public enum BulkEntityType {
   
   LABEL("LABEL"),
   
-  SCHEDULE("SCHEDULE");
+  SCHEDULE("SCHEDULE"),
+  
+  ENTITY_HISTORY("ENTITY_HISTORY");
 
   private String value;
 

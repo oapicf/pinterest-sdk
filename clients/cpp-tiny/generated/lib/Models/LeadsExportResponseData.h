@@ -52,14 +52,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setDownloadUrl(std::string  download_url);
+	void setDownloadUrl(std::string download_url);
 	/*! \brief Get 
 	 */
 	LeadsExportStatus getExportStatus();
 
 	/*! \brief Set 
 	 */
-	void setExportStatus(LeadsExportStatus  export_status);
+	void setExportStatus(LeadsExportStatus export_status);
 
 
     private:

@@ -6,7 +6,7 @@ Request object to list products for a given hotel catalog_id and product group f
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **str** | Catalog id pertaining to the hotel product group. | 
+**catalog_id** | **str** | Catalog ID pertaining to the product group. | 
 **catalog_type** | **str** |  | 
 **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
 

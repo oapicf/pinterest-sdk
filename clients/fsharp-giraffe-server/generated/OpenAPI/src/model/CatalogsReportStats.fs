@@ -10,19 +10,19 @@ module CatalogsReportStats =
   //#region CatalogsReportStats
 
   //#region enums
-  type ReportTypeEnum = FEEDINGESTIONISSUESEnum of string  |  DISTRIBUTIONISSUESEnum of string  
+  type ReportTypeEnum = DISTRIBUTIONISSUESEnum of string  
   //#endregion
   //#region enums
   type SeverityEnum = WARNEnum of string  |  ERROREnum of string  
   //#endregion
 
   type CatalogsReportStats = {
-    ReportType : ReportTypeEnum;
     CatalogId : string;
     Code : int;
     CodeLabel : string;
     Message : string;
     Occurrences : int;
+    ReportType : ReportTypeEnum;
     Severity : SeverityEnum;
     IneligibleForAds : bool;
     IneligibleForOrganic : bool;

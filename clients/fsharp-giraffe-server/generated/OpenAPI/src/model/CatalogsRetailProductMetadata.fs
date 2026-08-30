@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open OpenAPI.Model.NonNullableCatalogsCurrency
-open OpenAPI.Model.NonNullableProductAvailabilityType
+open OpenAPI.Model.ProductAvailability
 open OpenAPI.Model.decimal option
 open OpenAPI.Model.string option
 
@@ -13,7 +13,7 @@ module CatalogsRetailProductMetadata =
 
 
   type CatalogsRetailProductMetadata = {
-    Availability : NonNullableProductAvailabilityType;
+    Availability : ProductAvailability;
     Currency : NonNullableCatalogsCurrency;
     ItemGroupId : string option;
     ItemId : string;

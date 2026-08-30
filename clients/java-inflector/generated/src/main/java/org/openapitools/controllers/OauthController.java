@@ -10,11 +10,13 @@ import java.util.List;
 
 import org.openapitools.model.*;
 
-import org.openapitools.model.ConversionAccessTokenResponse;
-import org.openapitools.model.Error;
-import org.openapitools.model.OauthAccessTokenResponse;
+import org.openapitools.model.ConversionAccessToken;
+import org.openapitools.model.OauthAccessToken;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.TokenGrantType;
+import org.openapitools.model.TokenTypeHint;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class OauthController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map
@@ -29,13 +31,13 @@ public class OauthController  {
   */
 
   /*
-    public ResponseContext oauthToken(RequestContext request , String grantType) {
+    public ResponseContext oauthToken(RequestContext request , TokenGrantType grantType, String code, String continuousRefresh, String redirectUri, String refreshToken, String scope) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext tokenRevoke(RequestContext request , String token, String tokenTypeHint) {
+    public ResponseContext tokenRevoke(RequestContext request , String token, TokenTypeHint tokenTypeHint) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

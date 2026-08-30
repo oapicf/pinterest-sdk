@@ -1,10 +1,10 @@
 
 
-#include "Catalogs_creative_assets_filter_values_map.h"
+#include "CatalogsCreativeAssetsFilterValuesMap.h"
 
 using namespace Tiny;
 
-Catalogs_creative_assets_filter_values_map::Catalogs_creative_assets_filter_values_map()
+CatalogsCreativeAssetsFilterValuesMap::CatalogsCreativeAssetsFilterValuesMap()
 {
 	custom_label_0 = std::list<std::string>();
 	custom_label_1 = std::list<std::string>();
@@ -18,21 +18,21 @@ Catalogs_creative_assets_filter_values_map::Catalogs_creative_assets_filter_valu
 	google_product_category_4 = std::list<std::string>();
 	google_product_category_5 = std::list<std::string>();
 	google_product_category_6 = std::list<std::string>();
-	media_type = std::list<std::string>();
+	media_type = std::list<MediaType>();
 }
 
-Catalogs_creative_assets_filter_values_map::Catalogs_creative_assets_filter_values_map(std::string jsonString)
+CatalogsCreativeAssetsFilterValuesMap::CatalogsCreativeAssetsFilterValuesMap(std::string jsonString)
 {
 	this->fromJson(jsonString);
 }
 
-Catalogs_creative_assets_filter_values_map::~Catalogs_creative_assets_filter_values_map()
+CatalogsCreativeAssetsFilterValuesMap::~CatalogsCreativeAssetsFilterValuesMap()
 {
 
 }
 
 void
-Catalogs_creative_assets_filter_values_map::fromJson(std::string jsonObj)
+CatalogsCreativeAssetsFilterValuesMap::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
@@ -307,13 +307,13 @@ Catalogs_creative_assets_filter_values_map::fromJson(std::string jsonObj)
         bourne::json value = object[media_typeKey];
 
 
-        std::list<std::string> media_type_list;
-        std::string element;
+        std::list<MediaType> media_type_list;
+        MediaType element;
         for(auto& var : value.array_range())
         {
 
-            jsonToValue(&element, var, "std::string");
 
+            element.fromJson(var.dump());
 
             media_type_list.push_back(element);
         }
@@ -326,7 +326,7 @@ Catalogs_creative_assets_filter_values_map::fromJson(std::string jsonObj)
 }
 
 bourne::json
-Catalogs_creative_assets_filter_values_map::toJson()
+CatalogsCreativeAssetsFilterValuesMap::toJson()
 {
     bourne::json object = bourne::json::object();
 
@@ -525,16 +525,15 @@ Catalogs_creative_assets_filter_values_map::toJson()
 
 
 
-    std::list<std::string> media_type_list = getMediaType();
+    std::list<MediaType> media_type_list = getMediaType();
     bourne::json media_type_arr = bourne::json::array();
 
     for(auto& var : media_type_list)
     {
-        media_type_arr.append(var);
+        MediaType obj = var;
+        media_type_arr.append(obj.toJson());
     }
     object["media_type"] = media_type_arr;
-
-
 
 
 
@@ -544,157 +543,157 @@ Catalogs_creative_assets_filter_values_map::toJson()
 }
 
 std::list<std::string>
-Catalogs_creative_assets_filter_values_map::getCustomLabel0()
+CatalogsCreativeAssetsFilterValuesMap::getCustomLabel0()
 {
 	return custom_label_0;
 }
 
 void
-Catalogs_creative_assets_filter_values_map::setCustomLabel0(std::list <std::string> custom_label_0)
+CatalogsCreativeAssetsFilterValuesMap::setCustomLabel0(std::list<std::string> custom_label_0)
 {
 	this->custom_label_0 = custom_label_0;
 }
 
 std::list<std::string>
-Catalogs_creative_assets_filter_values_map::getCustomLabel1()
+CatalogsCreativeAssetsFilterValuesMap::getCustomLabel1()
 {
 	return custom_label_1;
 }
 
 void
-Catalogs_creative_assets_filter_values_map::setCustomLabel1(std::list <std::string> custom_label_1)
+CatalogsCreativeAssetsFilterValuesMap::setCustomLabel1(std::list<std::string> custom_label_1)
 {
 	this->custom_label_1 = custom_label_1;
 }
 
 std::list<std::string>
-Catalogs_creative_assets_filter_values_map::getCustomLabel2()
+CatalogsCreativeAssetsFilterValuesMap::getCustomLabel2()
 {
 	return custom_label_2;
 }
 
 void
-Catalogs_creative_assets_filter_values_map::setCustomLabel2(std::list <std::string> custom_label_2)
+CatalogsCreativeAssetsFilterValuesMap::setCustomLabel2(std::list<std::string> custom_label_2)
 {
 	this->custom_label_2 = custom_label_2;
 }
 
 std::list<std::string>
-Catalogs_creative_assets_filter_values_map::getCustomLabel3()
+CatalogsCreativeAssetsFilterValuesMap::getCustomLabel3()
 {
 	return custom_label_3;
 }
 
 void
-Catalogs_creative_assets_filter_values_map::setCustomLabel3(std::list <std::string> custom_label_3)
+CatalogsCreativeAssetsFilterValuesMap::setCustomLabel3(std::list<std::string> custom_label_3)
 {
 	this->custom_label_3 = custom_label_3;
 }
 
 std::list<std::string>
-Catalogs_creative_assets_filter_values_map::getCustomLabel4()
+CatalogsCreativeAssetsFilterValuesMap::getCustomLabel4()
 {
 	return custom_label_4;
 }
 
 void
-Catalogs_creative_assets_filter_values_map::setCustomLabel4(std::list <std::string> custom_label_4)
+CatalogsCreativeAssetsFilterValuesMap::setCustomLabel4(std::list<std::string> custom_label_4)
 {
 	this->custom_label_4 = custom_label_4;
 }
 
 std::list<std::string>
-Catalogs_creative_assets_filter_values_map::getGoogleProductCategory0()
+CatalogsCreativeAssetsFilterValuesMap::getGoogleProductCategory0()
 {
 	return google_product_category_0;
 }
 
 void
-Catalogs_creative_assets_filter_values_map::setGoogleProductCategory0(std::list <std::string> google_product_category_0)
+CatalogsCreativeAssetsFilterValuesMap::setGoogleProductCategory0(std::list<std::string> google_product_category_0)
 {
 	this->google_product_category_0 = google_product_category_0;
 }
 
 std::list<std::string>
-Catalogs_creative_assets_filter_values_map::getGoogleProductCategory1()
+CatalogsCreativeAssetsFilterValuesMap::getGoogleProductCategory1()
 {
 	return google_product_category_1;
 }
 
 void
-Catalogs_creative_assets_filter_values_map::setGoogleProductCategory1(std::list <std::string> google_product_category_1)
+CatalogsCreativeAssetsFilterValuesMap::setGoogleProductCategory1(std::list<std::string> google_product_category_1)
 {
 	this->google_product_category_1 = google_product_category_1;
 }
 
 std::list<std::string>
-Catalogs_creative_assets_filter_values_map::getGoogleProductCategory2()
+CatalogsCreativeAssetsFilterValuesMap::getGoogleProductCategory2()
 {
 	return google_product_category_2;
 }
 
 void
-Catalogs_creative_assets_filter_values_map::setGoogleProductCategory2(std::list <std::string> google_product_category_2)
+CatalogsCreativeAssetsFilterValuesMap::setGoogleProductCategory2(std::list<std::string> google_product_category_2)
 {
 	this->google_product_category_2 = google_product_category_2;
 }
 
 std::list<std::string>
-Catalogs_creative_assets_filter_values_map::getGoogleProductCategory3()
+CatalogsCreativeAssetsFilterValuesMap::getGoogleProductCategory3()
 {
 	return google_product_category_3;
 }
 
 void
-Catalogs_creative_assets_filter_values_map::setGoogleProductCategory3(std::list <std::string> google_product_category_3)
+CatalogsCreativeAssetsFilterValuesMap::setGoogleProductCategory3(std::list<std::string> google_product_category_3)
 {
 	this->google_product_category_3 = google_product_category_3;
 }
 
 std::list<std::string>
-Catalogs_creative_assets_filter_values_map::getGoogleProductCategory4()
+CatalogsCreativeAssetsFilterValuesMap::getGoogleProductCategory4()
 {
 	return google_product_category_4;
 }
 
 void
-Catalogs_creative_assets_filter_values_map::setGoogleProductCategory4(std::list <std::string> google_product_category_4)
+CatalogsCreativeAssetsFilterValuesMap::setGoogleProductCategory4(std::list<std::string> google_product_category_4)
 {
 	this->google_product_category_4 = google_product_category_4;
 }
 
 std::list<std::string>
-Catalogs_creative_assets_filter_values_map::getGoogleProductCategory5()
+CatalogsCreativeAssetsFilterValuesMap::getGoogleProductCategory5()
 {
 	return google_product_category_5;
 }
 
 void
-Catalogs_creative_assets_filter_values_map::setGoogleProductCategory5(std::list <std::string> google_product_category_5)
+CatalogsCreativeAssetsFilterValuesMap::setGoogleProductCategory5(std::list<std::string> google_product_category_5)
 {
 	this->google_product_category_5 = google_product_category_5;
 }
 
 std::list<std::string>
-Catalogs_creative_assets_filter_values_map::getGoogleProductCategory6()
+CatalogsCreativeAssetsFilterValuesMap::getGoogleProductCategory6()
 {
 	return google_product_category_6;
 }
 
 void
-Catalogs_creative_assets_filter_values_map::setGoogleProductCategory6(std::list <std::string> google_product_category_6)
+CatalogsCreativeAssetsFilterValuesMap::setGoogleProductCategory6(std::list<std::string> google_product_category_6)
 {
 	this->google_product_category_6 = google_product_category_6;
 }
 
-std::list<std::string>
-Catalogs_creative_assets_filter_values_map::getMediaType()
+std::list<MediaType>
+CatalogsCreativeAssetsFilterValuesMap::getMediaType()
 {
 	return media_type;
 }
 
 void
-Catalogs_creative_assets_filter_values_map::setMediaType(std::list <std::string> media_type)
+CatalogsCreativeAssetsFilterValuesMap::setMediaType(std::list<MediaType> media_type)
 {
 	this->media_type = media_type;
 }

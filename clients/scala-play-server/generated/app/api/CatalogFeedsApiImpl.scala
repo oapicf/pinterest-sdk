@@ -1,24 +1,24 @@
 package api
 
 import model.CatalogsFeed
+import model.CatalogsFeedCreateRequestSchema
 import model.CatalogsFeedIngestion
+import model.CatalogsFeedUpdateRequestSchema
 import model.CatalogsItemValidationIssue
 import model.Error
 import model.FeedProcessingResultsList200Response
-import model.FeedsCreateRequest
 import model.FeedsList200Response
-import model.FeedsUpdateRequest
 import model.ItemsIssuesList200Response
 
 /**
   * Provides a default implementation for [[CatalogFeedsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class CatalogFeedsApiImpl extends CatalogFeedsApi {
   /**
     * @inheritdoc
     */
-  override def feedProcessingResultsList(feedId: String, bookmark: Option[String], pageSize: Option[Int], adAccountId: Option[String]): FeedProcessingResultsList200Response = {
+  override def feedProcessingResultsList(feedId: String, adAccountId: Option[String], bookmark: Option[String], pageSize: Option[Int]): FeedProcessingResultsList200Response = {
     // TODO: Implement better logic
 
     FeedProcessingResultsList200Response(None, List.empty[CatalogsFeedProcessingResult])
@@ -27,19 +27,19 @@ class CatalogFeedsApiImpl extends CatalogFeedsApi {
   /**
     * @inheritdoc
     */
-  override def feedsCreate(feedsCreateRequest: FeedsCreateRequest, adAccountId: Option[String]): CatalogsFeed = {
+  override def feedsCreate(catalogsFeedCreateRequestSchema: CatalogsFeedCreateRequestSchema, adAccountId: Option[String]): CatalogsFeed = {
     // TODO: Implement better logic
 
-    CatalogsFeed(OffsetDateTime.now, "", OffsetDateTime.now, CatalogsType(), CatalogsFeedCredentials("", ""), ProductAvailabilityType(), Country(), NullableCurrency(), "", CatalogsFormat(), "", "", CatalogsFeedProcessingSchedule("", ""), CatalogsStatus(), "", Map.empty)
+    CatalogsFeed("", OffsetDateTime.now, None, None, Country(), None, "", CatalogsFormat(), "", "", "", None, CatalogsStatus(), OffsetDateTime.now, "", Map.empty)
   }
 
   /**
     * @inheritdoc
     */
-  override def feedsDelete(feedId: String, adAccountId: Option[String]): Unit = {
+  override def feedsDelete(feedId: String, adAccountId: Option[String]): CatalogsFeed = {
     // TODO: Implement better logic
 
-    
+    CatalogsFeed("", OffsetDateTime.now, None, None, Country(), None, "", CatalogsFormat(), "", "", "", None, CatalogsStatus(), OffsetDateTime.now, "", Map.empty)
   }
 
   /**
@@ -48,7 +48,7 @@ class CatalogFeedsApiImpl extends CatalogFeedsApi {
   override def feedsGet(feedId: String, adAccountId: Option[String]): CatalogsFeed = {
     // TODO: Implement better logic
 
-    CatalogsFeed(OffsetDateTime.now, "", OffsetDateTime.now, CatalogsType(), CatalogsFeedCredentials("", ""), ProductAvailabilityType(), Country(), NullableCurrency(), "", CatalogsFormat(), "", "", CatalogsFeedProcessingSchedule("", ""), CatalogsStatus(), "", Map.empty)
+    CatalogsFeed("", OffsetDateTime.now, None, None, Country(), None, "", CatalogsFormat(), "", "", "", None, CatalogsStatus(), OffsetDateTime.now, "", Map.empty)
   }
 
   /**
@@ -63,7 +63,7 @@ class CatalogFeedsApiImpl extends CatalogFeedsApi {
   /**
     * @inheritdoc
     */
-  override def feedsList(bookmark: Option[String], pageSize: Option[Int], catalogId: Option[String], adAccountId: Option[String]): FeedsList200Response = {
+  override def feedsList(catalogId: Option[String], adAccountId: Option[String], bookmark: Option[String], pageSize: Option[Int]): FeedsList200Response = {
     // TODO: Implement better logic
 
     FeedsList200Response(None, List.empty[CatalogsFeed])
@@ -72,16 +72,16 @@ class CatalogFeedsApiImpl extends CatalogFeedsApi {
   /**
     * @inheritdoc
     */
-  override def feedsUpdate(feedId: String, feedsUpdateRequest: FeedsUpdateRequest, adAccountId: Option[String]): CatalogsFeed = {
+  override def feedsUpdate(feedId: String, catalogsFeedUpdateRequestSchema: CatalogsFeedUpdateRequestSchema, adAccountId: Option[String]): CatalogsFeed = {
     // TODO: Implement better logic
 
-    CatalogsFeed(OffsetDateTime.now, "", OffsetDateTime.now, CatalogsType(), CatalogsFeedCredentials("", ""), ProductAvailabilityType(), Country(), NullableCurrency(), "", CatalogsFormat(), "", "", CatalogsFeedProcessingSchedule("", ""), CatalogsStatus(), "", Map.empty)
+    CatalogsFeed("", OffsetDateTime.now, None, None, Country(), None, "", CatalogsFormat(), "", "", "", None, CatalogsStatus(), OffsetDateTime.now, "", Map.empty)
   }
 
   /**
     * @inheritdoc
     */
-  override def itemsIssuesList(processingResultId: String, bookmark: Option[String], pageSize: Option[Int], itemNumbers: Option[List[Int]], itemValidationIssue: Option[CatalogsItemValidationIssue], adAccountId: Option[String]): ItemsIssuesList200Response = {
+  override def itemsIssuesList(processingResultId: String, itemNumbers: Option[List[Int]], itemValidationIssue: Option[CatalogsItemValidationIssue], adAccountId: Option[String], bookmark: Option[String], pageSize: Option[Int]): ItemsIssuesList200Response = {
     // TODO: Implement better logic
 
     ItemsIssuesList200Response(None, List.empty[CatalogsItemValidationIssues])

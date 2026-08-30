@@ -1,5 +1,5 @@
 package models
-
+// Permissions : Permission levels available on a business asset.
 type Permissions string
 
 // List of Permissions
@@ -15,4 +15,5 @@ const (
 	CATALOGS_VIEWER Permissions = "CATALOGS_VIEWER"
 	PROFILE_PUBLISHER Permissions = "PROFILE_PUBLISHER"
 	CONSUMER_USER Permissions = "CONSUMER_USER"
+	BIZ_PINNER_LIST_SHARER Permissions = "BIZ_PINNER_LIST_SHARER"
 )

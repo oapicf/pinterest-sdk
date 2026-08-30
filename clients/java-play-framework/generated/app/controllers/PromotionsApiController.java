@@ -1,9 +1,10 @@
 package controllers;
 
-import apimodels.Error;
-import apimodels.PromotionCreateRequest;
-import apimodels.PromotionResponse;
-import apimodels.PromotionUpdateRequest;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.Promotion;
+import apimodels.PromotionBatchUpdate;
+import apimodels.PromotionCreate;
 import apimodels.PromotionsList200Response;
 import apimodels.PromotionsResponse;
 
@@ -29,7 +30,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PromotionsApiController extends Controller {
     private final PromotionsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -44,33 +45,40 @@ public class PromotionsApiController extends Controller {
 
     @ApiAction
     public Result promotionsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodepromotionCreateRequest = request.body().asJson();
-        List<@Valid PromotionCreateRequest> promotionCreateRequest;
-        if (nodepromotionCreateRequest != null) {
-            promotionCreateRequest = mapper.readValue(nodepromotionCreateRequest.toString(), new TypeReference<List<@Valid PromotionCreateRequest>>(){});
+        JsonNode nodepromotionCreate = request.body().asJson();
+        List<@Valid PromotionCreate> promotionCreate;
+        if (nodepromotionCreate != null) {
+            promotionCreate = mapper.readValue(nodepromotionCreate.toString(), new TypeReference<List<@Valid PromotionCreate>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
-                for (PromotionCreateRequest curItem : promotionCreateRequest) {
+                for (PromotionCreate curItem : promotionCreate) {
                     OpenAPIUtils.validate(curItem);
                 }
             }
         } else {
-            throw new IllegalArgumentException("'PromotionCreateRequest' parameter is required");
+            throw new IllegalArgumentException("'PromotionCreate' parameter is required");
         }
-        return imp.promotionsCreateHttp(request, adAccountId, promotionCreateRequest);
+        return imp.promotionsCreateHttp(request, adAccountId, promotionCreate);
     }
 
     @ApiAction
-    public Result promotionsDelete(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String promotionId) throws Exception {
-        return imp.promotionsDeleteHttp(request, adAccountId, promotionId);
+    public Result promotionsDelete(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String promotionId, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        return imp.promotionsDeleteHttp(request, promotionId, adAccountId);
     }
 
     @ApiAction
-    public Result promotionsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String promotionId) throws Exception {
-        return imp.promotionsGetHttp(request, adAccountId, promotionId);
+    public Result promotionsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String promotionId, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        return imp.promotionsGetHttp(request, promotionId, adAccountId);
     }
 
     @ApiAction
     public Result promotionsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
         String valuepageSize = request.getQueryString("page_size");
         Integer pageSize;
         if (valuepageSize != null) {
@@ -79,37 +87,30 @@ public class PromotionsApiController extends Controller {
             pageSize = 25;
         }
         String valueorder = request.getQueryString("order");
-        String order;
+        PinterestLibPaginationOrder order;
         if (valueorder != null) {
             order = valueorder;
         } else {
             order = null;
         }
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
-        } else {
-            bookmark = null;
-        }
-        return imp.promotionsListHttp(request, adAccountId, pageSize, order, bookmark);
+        return imp.promotionsListHttp(request, adAccountId, bookmark, pageSize, order);
     }
 
     @ApiAction
     public Result promotionsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodepromotionUpdateRequest = request.body().asJson();
-        List<@Valid PromotionUpdateRequest> promotionUpdateRequest;
-        if (nodepromotionUpdateRequest != null) {
-            promotionUpdateRequest = mapper.readValue(nodepromotionUpdateRequest.toString(), new TypeReference<List<@Valid PromotionUpdateRequest>>(){});
+        JsonNode nodepromotionBatchUpdate = request.body().asJson();
+        List<@Valid PromotionBatchUpdate> promotionBatchUpdate;
+        if (nodepromotionBatchUpdate != null) {
+            promotionBatchUpdate = mapper.readValue(nodepromotionBatchUpdate.toString(), new TypeReference<List<@Valid PromotionBatchUpdate>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
-                for (PromotionUpdateRequest curItem : promotionUpdateRequest) {
+                for (PromotionBatchUpdate curItem : promotionBatchUpdate) {
                     OpenAPIUtils.validate(curItem);
                 }
             }
         } else {
-            throw new IllegalArgumentException("'PromotionUpdateRequest' parameter is required");
+            throw new IllegalArgumentException("'PromotionBatchUpdate' parameter is required");
         }
-        return imp.promotionsUpdateHttp(request, adAccountId, promotionUpdateRequest);
+        return imp.promotionsUpdateHttp(request, adAccountId, promotionBatchUpdate);
     }
 
 }

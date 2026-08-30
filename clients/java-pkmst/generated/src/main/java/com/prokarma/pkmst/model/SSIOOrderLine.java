@@ -16,10 +16,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
  *
  */
 /**
- * SSIOOrderLine
+ * A Salesforce SSIO order line.
  */
+@ApiModel(description = "A Salesforce SSIO order line.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SSIOOrderLine   {
   @JsonProperty("accepted_terms_id")
   private String acceptedTermsId;
@@ -111,10 +112,10 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * The UTC timestamp (to the nearest sec) of when terms were accepted
+   * The UTC timestamp (to the nearest second) when terms were accepted.
    * @return acceptedTermsTime
    */
-  @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "The UTC timestamp (to the nearest sec) of when terms were accepted")
+  @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "The UTC timestamp (to the nearest second) when terms were accepted.")
   public String getAcceptedTermsTime() {
     return acceptedTermsTime;
   }
@@ -129,10 +130,10 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * Ads manager OrderLineId
+   * Ads manager order line id
    * @return adsManagerOrderLineId
    */
-  @ApiModelProperty(value = "Ads manager OrderLineId")
+  @ApiModelProperty(value = "Ads manager order line id")
   public String getAdsManagerOrderLineId() {
     return adsManagerOrderLineId;
   }
@@ -165,10 +166,10 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * Bill To Company name
+   * Bill-to company name
    * @return billToCompanyName
    */
-  @ApiModelProperty(example = "Home Depot Inc.", value = "Bill To Company name")
+  @ApiModelProperty(example = "Home Depot Inc.", value = "Bill-to company name")
   public String getBillToCompanyName() {
     return billToCompanyName;
   }
@@ -237,10 +238,10 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * If Budget order line, the budget amount.
+   * If budget order line, the budget amount.
    * @return budgetAmount
    */
-  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
+  @ApiModelProperty(example = "5000000", value = "If budget order line, the budget amount.")
   public BigDecimal getBudgetAmount() {
     return budgetAmount;
   }
@@ -276,7 +277,7 @@ public class SSIOOrderLine   {
    * End date of the order line.
    * @return endDate
    */
-  @ApiModelProperty(example = "2020-10-05", value = "End date of the order line.")
+  @ApiModelProperty(value = "End date of the order line.")
   public LocalDate getEndDate() {
     return endDate;
   }
@@ -291,10 +292,10 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * If Ongoing (perpetual) order line, the estimated monthly spend
+   * If ongoing (perpetual) order line, the estimated monthly spend.
    * @return estimatedMonthlySpend
    */
-  @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
+  @ApiModelProperty(value = "If ongoing (perpetual) order line, the estimated monthly spend.")
   public BigDecimal getEstimatedMonthlySpend() {
     return estimatedMonthlySpend;
   }
@@ -345,10 +346,10 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * Billing contact first name
+   * Billing media contact first name
    * @return mediaContactFirstname
    */
-  @ApiModelProperty(example = "John", value = "Billing contact first name")
+  @ApiModelProperty(example = "John", value = "Billing media contact first name")
   public String getMediaContactFirstname() {
     return mediaContactFirstname;
   }
@@ -363,10 +364,10 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * Billing contact first name
+   * Billing media contact last name
    * @return mediaContactLastname
    */
-  @ApiModelProperty(example = "Doe", value = "Billing contact first name")
+  @ApiModelProperty(example = "Doe", value = "Billing media contact last name")
   public String getMediaContactLastname() {
     return mediaContactLastname;
   }
@@ -435,10 +436,10 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * The po number
+   * The PO number
    * @return poNumber
    */
-  @ApiModelProperty(value = "The po number")
+  @ApiModelProperty(value = "The PO number")
   public String getPoNumber() {
     return poNumber;
   }
@@ -453,10 +454,10 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * OrderLineId in SFDC
+   * Order line id in SFDC
    * @return salesforceOrderLineId
    */
-  @ApiModelProperty(value = "OrderLineId in SFDC")
+  @ApiModelProperty(value = "Order line id in SFDC")
   public String getSalesforceOrderLineId() {
     return salesforceOrderLineId;
   }
@@ -474,7 +475,7 @@ public class SSIOOrderLine   {
    * Start date of the order line.
    * @return startDate
    */
-  @ApiModelProperty(example = "2018-03-01", value = "Start date of the order line.")
+  @ApiModelProperty(value = "Start date of the order line.")
   public LocalDate getStartDate() {
     return startDate;
   }
@@ -558,10 +559,7 @@ public class SSIOOrderLine   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

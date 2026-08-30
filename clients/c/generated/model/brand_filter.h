@@ -20,7 +20,7 @@ typedef struct brand_filter_t brand_filter_t;
 
 
 typedef struct brand_filter_t {
-    catalogs_product_group_multiple_string_criteria_t *brand; //object
+    struct catalogs_product_group_multiple_string_criteria_t *brand; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } brand_filter_t;

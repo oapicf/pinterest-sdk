@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **negated** | **Boolean** |  |  [optional]
-**values** | [**List&lt;List&lt;String&gt;&gt;**](List.md) |  | 
+**values** | [**List&lt;List&gt;**](List.md) |  | 
 
 
 

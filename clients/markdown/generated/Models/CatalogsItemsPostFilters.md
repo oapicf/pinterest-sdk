@@ -3,8 +3,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **catalog\_type** | [**CatalogsType**](CatalogsType.md) |  | [default to null] |
 | **catalog\_id** | **String** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] [default to null] |
+| **catalog\_type** | **String** |  | [default to null] |
 | **item\_ids** | **List** |  | [default to null] |
 | **hotel\_ids** | **List** |  | [default to null] |
 | **creative\_assets\_ids** | **List** |  | [default to null] |

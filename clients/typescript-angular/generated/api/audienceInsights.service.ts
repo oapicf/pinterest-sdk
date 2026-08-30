@@ -17,11 +17,13 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { AudienceDefinitionResponse } from '../model/audienceDefinitionResponse';
-// @ts-ignore
 import { AudienceInsightType } from '../model/audienceInsightType';
 // @ts-ignore
-import { AudienceInsightsResponse } from '../model/audienceInsightsResponse';
+import { AudienceInsights } from '../model/audienceInsights';
+// @ts-ignore
+import { AudienceInsightsScopeAndTypeGet200Response } from '../model/audienceInsightsScopeAndTypeGet200Response';
+// @ts-ignore
+import { PinterestLibError } from '../model/pinterestLibError';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -41,7 +43,7 @@ export class AudienceInsightsService extends BaseService {
 
     /**
      * Get audience insights
-     * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account\&#39;s engaged audience on Pinterest, the ad account\&#39;s total audience on Pinterest and Pinterest\&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
+     * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account\&#39;s engaged audience on Pinterest, the ad account\&#39;s total audience on Pinterest and Pinterest\&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
      * @endpoint get /ad_accounts/{ad_account_id}/audience_insights
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceInsightType Type of audience insights.
@@ -49,9 +51,9 @@ export class AudienceInsightsService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public audienceInsightsGet(adAccountId: string, audienceInsightType: AudienceInsightType, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AudienceInsightsResponse>;
-    public audienceInsightsGet(adAccountId: string, audienceInsightType: AudienceInsightType, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AudienceInsightsResponse>>;
-    public audienceInsightsGet(adAccountId: string, audienceInsightType: AudienceInsightType, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AudienceInsightsResponse>>;
+    public audienceInsightsGet(adAccountId: string, audienceInsightType: AudienceInsightType, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AudienceInsights>;
+    public audienceInsightsGet(adAccountId: string, audienceInsightType: AudienceInsightType, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AudienceInsights>>;
+    public audienceInsightsGet(adAccountId: string, audienceInsightType: AudienceInsightType, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AudienceInsights>>;
     public audienceInsightsGet(adAccountId: string, audienceInsightType: AudienceInsightType, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling audienceInsightsGet.');
@@ -104,7 +106,7 @@ export class AudienceInsightsService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/audience_insights`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<AudienceInsightsResponse>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<AudienceInsights>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters.toHttpParams(),
@@ -127,9 +129,9 @@ export class AudienceInsightsService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public audienceInsightsScopeAndTypeGet(adAccountId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AudienceDefinitionResponse>;
-    public audienceInsightsScopeAndTypeGet(adAccountId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AudienceDefinitionResponse>>;
-    public audienceInsightsScopeAndTypeGet(adAccountId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AudienceDefinitionResponse>>;
+    public audienceInsightsScopeAndTypeGet(adAccountId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AudienceInsightsScopeAndTypeGet200Response>;
+    public audienceInsightsScopeAndTypeGet(adAccountId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AudienceInsightsScopeAndTypeGet200Response>>;
+    public audienceInsightsScopeAndTypeGet(adAccountId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AudienceInsightsScopeAndTypeGet200Response>>;
     public audienceInsightsScopeAndTypeGet(adAccountId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling audienceInsightsScopeAndTypeGet.');
@@ -168,7 +170,7 @@ export class AudienceInsightsService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/insights/audiences`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<AudienceDefinitionResponse>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<AudienceInsightsScopeAndTypeGet200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,

@@ -11,9 +11,10 @@ import java.util.List;
 import org.openapitools.model.SSIOAccountAddress;
 
 /**
- * SSIOAccountItem
+ * Salesforce account item with billing and terms information.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "Salesforce account item with billing and terms information.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SSIOAccountItem   {
   @JsonProperty("addresses")
   private List<@Valid SSIOAccountAddress> addresses = null;
@@ -149,7 +150,7 @@ public class SSIOAccountItem   {
    * Salesforce text for Rest of the World Terms and Conditions
    * @return rowTerms
   **/
-  @ApiModelProperty(example = "The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", value = "Salesforce text for Rest of the World Terms and Conditions")
+  @ApiModelProperty(example = "  The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", value = "Salesforce text for Rest of the World Terms and Conditions")
   public String getRowTerms() {
     return rowTerms;
   }
@@ -261,10 +262,7 @@ public class SSIOAccountItem   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

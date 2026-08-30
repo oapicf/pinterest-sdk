@@ -183,13 +183,13 @@ end:
 // Functions for enum GENDERS for KeywordsAPI_trendingKeywordsList
 
 static char* trendingKeywordsList_GENDERS_ToString(pinterest_rest_api_trendingKeywordsList_genders_e GENDERS){
-    char *GENDERSArray[] =  { "NULL", "female", "male", "unknown" };
+    char *GENDERSArray[] =  { "NULL", "male", "female", "unknown" };
     return GENDERSArray[GENDERS];
 }
 
 static pinterest_rest_api_trendingKeywordsList_genders_e trendingKeywordsList_GENDERS_FromString(char* GENDERS){
     int stringToReturn = 0;
-    char *GENDERSArray[] =  { "NULL", "female", "male", "unknown" };
+    char *GENDERSArray[] =  { "NULL", "male", "female", "unknown" };
     size_t sizeofArray = sizeof(GENDERSArray) / sizeof(GENDERSArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(GENDERS, GENDERSArray[stringToReturn]) == 0) {
@@ -269,7 +269,7 @@ end:
 
 // Get country's keyword metrics
 //
-// See keyword metrics for a specified country, aggregated across all of Pinterest. (Definitions are available from the \"Get delivery metrics definitions\" <a href=\"/docs/api/v5/#operation/delivery_metrics/get\">API endpoint</a>).
+//   See keyword metrics for a specified country, aggregated across all of Pinterest.   (Definitions are available from the \"Get delivery metrics definitions\"   [API endpoint](/docs/api/v5/#operation/delivery_metrics/get)).
 //
 keywords_metrics_array_response_t*
 KeywordsAPI_countryKeywordsMetricsGet(apiClient_t *apiClient, char *ad_account_id, char *country_code, list_t *keywords)
@@ -335,11 +335,31 @@ KeywordsAPI_countryKeywordsMetricsGet(apiClient_t *apiClient, char *ad_account_i
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     keywords_metrics_array_response_t *elementToReturn = NULL;
@@ -386,10 +406,10 @@ end:
 
 // Create keywords
 //
-// <p>Create keywords for following entity types(advertiser, campaign, ad group or ad).</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a  target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul> <p><b>Rate limit</b>: <a href=\"/docs/reference/rate-limits/\">WRITE</a>.</p>
+//   Create keywords for the following entity types (advertiser, campaign, ad group, or ad). For more information, see [Keyword targeting](https://help.pinterest.com/en/business/article/keyword-targeting).    **Notes:**   - Advertisers and campaigns can only be assigned keywords with excluding (`_NEGATIVE`).   - All keyword match types are available for ad groups.    For more information on match types, see [match type enums](/docs/api-features/targeting-overview/).    **Returns:**   - A successful call returns an object containing an array of new keyword objects and an empty `errors` object array.   - An unsuccessful call returns an empty keywords array, and instead, inserts the entire object with nulled/negated properties into the `errors` object array:     ```json     {       \"keywords\": [],       \"errors\": [         {           \"data\": {             \"archived\": null,             \"match_type\": \"EXACT\",             \"parent_type\": null,             \"value\": \"foobar\",             \"parent_id\": null,             \"type\": \"keyword\",             \"id\": null           },           \"error_messages\": [             \"Advertisers and Campaigns only accept excluded targeting attributes.\"           ]         }       ]     }
 //
-keywords_response_t*
-KeywordsAPI_keywordsCreate(apiClient_t *apiClient, char *ad_account_id, keywords_request_t *keywords_request)
+keywords_t*
+KeywordsAPI_keywordsCreate(apiClient_t *apiClient, char *ad_account_id, keywords_create_t *keywords_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -422,12 +442,12 @@ KeywordsAPI_keywordsCreate(apiClient_t *apiClient, char *ad_account_id, keywords
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_keywords_request = NULL;
-    if (keywords_request != NULL)
+    cJSON *localVarSingleItemJSON_keywords_create = NULL;
+    if (keywords_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_keywords_request = keywords_request_convertToJSON(keywords_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_keywords_request);
+        localVarSingleItemJSON_keywords_create = keywords_create_convertToJSON(keywords_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_keywords_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -445,17 +465,41 @@ KeywordsAPI_keywordsCreate(apiClient_t *apiClient, char *ad_account_id, keywords
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    keywords_response_t *elementToReturn = NULL;
+    keywords_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *KeywordsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = keywords_response_parseFromJSON(KeywordsAPIlocalVarJSON);
+        elementToReturn = keywords_parseFromJSON(KeywordsAPIlocalVarJSON);
         cJSON_Delete(KeywordsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -475,9 +519,9 @@ KeywordsAPI_keywordsCreate(apiClient_t *apiClient, char *ad_account_id, keywords
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarSingleItemJSON_keywords_request) {
-        cJSON_Delete(localVarSingleItemJSON_keywords_request);
-        localVarSingleItemJSON_keywords_request = NULL;
+    if (localVarSingleItemJSON_keywords_create) {
+        cJSON_Delete(localVarSingleItemJSON_keywords_create);
+        localVarSingleItemJSON_keywords_create = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -489,10 +533,10 @@ end:
 
 // Get keywords
 //
-// <p>Get a list of keywords based on the filters provided. If no filter is provided, it will default to the ad_account_id filter, which means it will only return keywords that specifically have parent_id set to the ad_account_id. Note: Keywords can have ad_account_ids, campaign_ids, and ad_group_ids set as their parent_ids. Keywords created through Ads Manager will have their parent_id set to an ad_group_id, not ad_account_id.</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul>
+//     Get a list of keywords based on the filters provided. If no filter is provided, it will default to the `ad_account_id` filter, which means it will only return keywords that specifically have `parent_id` set to the `ad_account_id`. Note: Keywords can have `ad_account_ids`, `campaign_ids`, and `ad_group_ids` set as their `parent_ids`. Keywords created through Ads Manager will have their `parent_id` set to an `ad_group_id`, not `ad_account_id`.      For more information, see [Keyword targeting](https://help.pinterest.com/en/business/article/keyword-targeting).      **Notes:**     - Advertisers and campaigns can only be assigned keywords with excluding (`_NEGATIVE`).     - All keyword match types are available for ad groups.      For more information on match types, see [match type enums](/docs/api-features/targeting-overview/).      **Returns:**     - A successful call returns an object containing an array of new keyword objects and an empty `errors` object array.     - An unsuccessful call returns an empty keywords array, and instead, inserts the entire object with nulled/negated properties into the `errors` object array:       ```json       {         \"keywords\": [],         \"errors\": [           {             \"data\": {               \"archived\": null,               \"match_type\": \"EXACT\",               \"parent_type\": null,               \"value\": \"foobar\",               \"parent_id\": null,               \"type\": \"keyword\",               \"id\": null             },             \"error_messages\": [               \"Advertisers and Campaigns only accept excluded targeting attributes.\"             ]           }         ]       }
 //
 keywords_get_200_response_t*
-KeywordsAPI_keywordsGet(apiClient_t *apiClient, char *ad_account_id, char *campaign_id, char *ad_group_id, list_t *ad_group_ids, list_t *match_types, int *page_size, char *bookmark)
+KeywordsAPI_keywordsGet(apiClient_t *apiClient, char *ad_account_id, char *campaign_id, char *ad_group_id, list_t *ad_group_ids, list_t *match_types, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -561,6 +605,18 @@ KeywordsAPI_keywordsGet(apiClient_t *apiClient, char *ad_account_id, char *campa
     }
 
     // query parameters
+    char *keyQuery_bookmark = NULL;
+    char * valueQuery_bookmark = NULL;
+    keyValuePair_t *keyPairQuery_bookmark = 0;
+    if (bookmark)
+    {
+        keyQuery_bookmark = strdup("bookmark");
+        valueQuery_bookmark = strdup((bookmark));
+        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
+        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
+    }
+
+    // query parameters
     char *keyQuery_page_size = NULL;
     char * valueQuery_page_size = NULL;
     keyValuePair_t *keyPairQuery_page_size = 0;
@@ -571,18 +627,6 @@ KeywordsAPI_keywordsGet(apiClient_t *apiClient, char *ad_account_id, char *campa
         snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
         keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
         list_addElement(localVarQueryParameters,keyPairQuery_page_size);
-    }
-
-    // query parameters
-    char *keyQuery_bookmark = NULL;
-    char * valueQuery_bookmark = NULL;
-    keyValuePair_t *keyPairQuery_bookmark = 0;
-    if (bookmark)
-    {
-        keyQuery_bookmark = strdup("bookmark");
-        valueQuery_bookmark = strdup((bookmark));
-        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
-        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
@@ -598,11 +642,31 @@ KeywordsAPI_keywordsGet(apiClient_t *apiClient, char *ad_account_id, char *campa
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     keywords_get_200_response_t *elementToReturn = NULL;
@@ -652,18 +716,6 @@ KeywordsAPI_keywordsGet(apiClient_t *apiClient, char *ad_account_id, char *campa
         keyValuePair_free(keyPairQuery_ad_group_id);
         keyPairQuery_ad_group_id = NULL;
     }
-    if(keyQuery_page_size){
-        free(keyQuery_page_size);
-        keyQuery_page_size = NULL;
-    }
-    if(valueQuery_page_size){
-        free(valueQuery_page_size);
-        valueQuery_page_size = NULL;
-    }
-    if(keyPairQuery_page_size){
-        keyValuePair_free(keyPairQuery_page_size);
-        keyPairQuery_page_size = NULL;
-    }
     if(keyQuery_bookmark){
         free(keyQuery_bookmark);
         keyQuery_bookmark = NULL;
@@ -676,6 +728,18 @@ KeywordsAPI_keywordsGet(apiClient_t *apiClient, char *ad_account_id, char *campa
         keyValuePair_free(keyPairQuery_bookmark);
         keyPairQuery_bookmark = NULL;
     }
+    if(keyQuery_page_size){
+        free(keyQuery_page_size);
+        keyQuery_page_size = NULL;
+    }
+    if(valueQuery_page_size){
+        free(valueQuery_page_size);
+        valueQuery_page_size = NULL;
+    }
+    if(keyPairQuery_page_size){
+        keyValuePair_free(keyPairQuery_page_size);
+        keyPairQuery_page_size = NULL;
+    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -685,10 +749,10 @@ end:
 
 // Update keywords
 //
-// <p>Update one or more keywords' bid and archived fields.</p> <p>Archiving a keyword effectively deletes it - keywords no longer receive metrics and no longer visible within the parent entity's keywords list.</p>
+//   Update one or more keywords' bid and archived fields. Archiving   a keyword effectively deletes it - keywords no longer receive metrics and   are no longer visible within the parent entity's keywords list.
 //
-keywords_response_t*
-KeywordsAPI_keywordsUpdate(apiClient_t *apiClient, char *ad_account_id, keyword_update_body_t *keyword_update_body)
+keywords_t*
+KeywordsAPI_keywordsUpdate(apiClient_t *apiClient, char *ad_account_id, keywords_update_t *keywords_update)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -721,12 +785,12 @@ KeywordsAPI_keywordsUpdate(apiClient_t *apiClient, char *ad_account_id, keyword_
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_keyword_update_body = NULL;
-    if (keyword_update_body != NULL)
+    cJSON *localVarSingleItemJSON_keywords_update = NULL;
+    if (keywords_update != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_keyword_update_body = keyword_update_body_convertToJSON(keyword_update_body);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_keyword_update_body);
+        localVarSingleItemJSON_keywords_update = keywords_update_convertToJSON(keywords_update);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_keywords_update);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -744,17 +808,37 @@ KeywordsAPI_keywordsUpdate(apiClient_t *apiClient, char *ad_account_id, keyword_
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    keywords_response_t *elementToReturn = NULL;
+    keywords_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *KeywordsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = keywords_response_parseFromJSON(KeywordsAPIlocalVarJSON);
+        elementToReturn = keywords_parseFromJSON(KeywordsAPIlocalVarJSON);
         cJSON_Delete(KeywordsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -774,9 +858,9 @@ KeywordsAPI_keywordsUpdate(apiClient_t *apiClient, char *ad_account_id, keyword_
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarSingleItemJSON_keyword_update_body) {
-        cJSON_Delete(localVarSingleItemJSON_keyword_update_body);
-        localVarSingleItemJSON_keyword_update_body = NULL;
+    if (localVarSingleItemJSON_keywords_update) {
+        cJSON_Delete(localVarSingleItemJSON_keywords_update);
+        localVarSingleItemJSON_keywords_update = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -788,10 +872,10 @@ end:
 
 // List trending keywords
 //
-// <p>Get the top trending search keywords among the Pinterest user audience.</p> <p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p> <p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p> <p>For an interactive way to explore this data, please visit <a href=\"https://trends.pinterest.com\">trends.pinterest.com</a>. 
+// Get the top trending search keywords among the Pinterest user audience.  Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.  Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.  For an interactive way to explore this data, please visit [trends.pinterest.com](https://trends.pinterest.com).
 //
 trending_keywords_response_t*
-KeywordsAPI_trendingKeywordsList(apiClient_t *apiClient, trends_supported_region_e region, trend_type_e trend_type, list_t *interests, list_t *genders, list_t *ages, list_t *include_keywords, int *normalize_against_group, int *limit, int *include_prediction, int *include_demographics)
+KeywordsAPI_trendingKeywordsList(apiClient_t *apiClient, trends_supported_region_e region, trend_type_e trend_type, list_t *interests, list_t *genders, list_t *ages, list_t *include_keywords, int *normalize_against_group, int *limit, int *include_demographics)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -868,19 +952,6 @@ KeywordsAPI_trendingKeywordsList(apiClient_t *apiClient, trends_supported_region
     }
 
     // query parameters
-    char *keyQuery_include_prediction = NULL;
-    char * valueQuery_include_prediction = NULL;
-    keyValuePair_t *keyPairQuery_include_prediction = 0;
-    if (include_prediction)
-    {
-        keyQuery_include_prediction = strdup("include_prediction");
-        valueQuery_include_prediction = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_include_prediction, MAX_NUMBER_LENGTH, "%d", *include_prediction);
-        keyPairQuery_include_prediction = keyValuePair_create(keyQuery_include_prediction, valueQuery_include_prediction);
-        list_addElement(localVarQueryParameters,keyPairQuery_include_prediction);
-    }
-
-    // query parameters
     char *keyQuery_include_demographics = NULL;
     char * valueQuery_include_demographics = NULL;
     keyValuePair_t *keyPairQuery_include_demographics = 0;
@@ -906,15 +977,31 @@ KeywordsAPI_trendingKeywordsList(apiClient_t *apiClient, trends_supported_region
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid trending keywords request parameters");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     trending_keywords_response_t *elementToReturn = NULL;
@@ -964,18 +1051,6 @@ KeywordsAPI_trendingKeywordsList(apiClient_t *apiClient, trends_supported_region
     if(keyPairQuery_limit){
         keyValuePair_free(keyPairQuery_limit);
         keyPairQuery_limit = NULL;
-    }
-    if(keyQuery_include_prediction){
-        free(keyQuery_include_prediction);
-        keyQuery_include_prediction = NULL;
-    }
-    if(valueQuery_include_prediction){
-        free(valueQuery_include_prediction);
-        valueQuery_include_prediction = NULL;
-    }
-    if(keyPairQuery_include_prediction){
-        keyValuePair_free(keyPairQuery_include_prediction);
-        keyPairQuery_include_prediction = NULL;
     }
     if(keyQuery_include_demographics){
         free(keyQuery_include_demographics);

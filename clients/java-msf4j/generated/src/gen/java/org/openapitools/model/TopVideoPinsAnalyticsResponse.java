@@ -9,69 +9,25 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.TopPinsAnalyticsResponseDateAvailability;
-import org.openapitools.model.TopVideoPinsAnalyticsResponsePinsInner;
+import org.openapitools.model.TopVideoPinsAnalyticsResponseDateAvailability;
+import org.openapitools.model.TopVideoPinsAnalyticsResponsePinsItems;
+import org.openapitools.model.TopVideoPinsSortBy;
 
 /**
  * TopVideoPinsAnalyticsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TopVideoPinsAnalyticsResponse   {
   @JsonProperty("date_availability")
-  private TopPinsAnalyticsResponseDateAvailability dateAvailability;
+  private TopVideoPinsAnalyticsResponseDateAvailability dateAvailability;
 
   @JsonProperty("pins")
-  private List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins = null;
-
-  /**
-   * Gets or Sets sortBy
-   */
-  public enum SortByEnum {
-    SAVE("SAVE"),
-    
-    IMPRESSION("IMPRESSION"),
-    
-    OUTBOUND_CLICK("OUTBOUND_CLICK"),
-    
-    VIDEO_MRC_VIEW("VIDEO_MRC_VIEW"),
-    
-    VIDEO_AVG_WATCH_TIME("VIDEO_AVG_WATCH_TIME"),
-    
-    VIDEO_V50_WATCH_TIME("VIDEO_V50_WATCH_TIME"),
-    
-    QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
-    
-    VIDEO_10_S_VIEW("VIDEO_10S_VIEW"),
-    
-    VIDEO_START("VIDEO_START");
-
-    private String value;
-
-    SortByEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SortByEnum fromValue(String text) {
-      for (SortByEnum b : SortByEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
+  private List<@Valid TopVideoPinsAnalyticsResponsePinsItems> pins = null;
 
   @JsonProperty("sort_by")
-  private SortByEnum sortBy;
+  private TopVideoPinsSortBy sortBy;
 
-  public TopVideoPinsAnalyticsResponse dateAvailability(TopPinsAnalyticsResponseDateAvailability dateAvailability) {
+  public TopVideoPinsAnalyticsResponse dateAvailability(TopVideoPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;
     return this;
   }
@@ -81,20 +37,20 @@ public class TopVideoPinsAnalyticsResponse   {
    * @return dateAvailability
   **/
   @ApiModelProperty(value = "")
-  public TopPinsAnalyticsResponseDateAvailability getDateAvailability() {
+  public TopVideoPinsAnalyticsResponseDateAvailability getDateAvailability() {
     return dateAvailability;
   }
 
-  public void setDateAvailability(TopPinsAnalyticsResponseDateAvailability dateAvailability) {
+  public void setDateAvailability(TopVideoPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;
   }
 
-  public TopVideoPinsAnalyticsResponse pins(List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins) {
+  public TopVideoPinsAnalyticsResponse pins(List<@Valid TopVideoPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
     return this;
   }
 
-  public TopVideoPinsAnalyticsResponse addPinsItem(TopVideoPinsAnalyticsResponsePinsInner pinsItem) {
+  public TopVideoPinsAnalyticsResponse addPinsItem(TopVideoPinsAnalyticsResponsePinsItems pinsItem) {
     if (this.pins == null) {
       this.pins = new ArrayList<>();
     }
@@ -107,15 +63,15 @@ public class TopVideoPinsAnalyticsResponse   {
    * @return pins
   **/
   @ApiModelProperty(value = "")
-  public List<@Valid TopVideoPinsAnalyticsResponsePinsInner> getPins() {
+  public List<@Valid TopVideoPinsAnalyticsResponsePinsItems> getPins() {
     return pins;
   }
 
-  public void setPins(List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins) {
+  public void setPins(List<@Valid TopVideoPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
   }
 
-  public TopVideoPinsAnalyticsResponse sortBy(SortByEnum sortBy) {
+  public TopVideoPinsAnalyticsResponse sortBy(TopVideoPinsSortBy sortBy) {
     this.sortBy = sortBy;
     return this;
   }
@@ -124,12 +80,12 @@ public class TopVideoPinsAnalyticsResponse   {
    * Get sortBy
    * @return sortBy
   **/
-  @ApiModelProperty(example = "IMPRESSION", value = "")
-  public SortByEnum getSortBy() {
+  @ApiModelProperty(value = "")
+  public TopVideoPinsSortBy getSortBy() {
     return sortBy;
   }
 
-  public void setSortBy(SortByEnum sortBy) {
+  public void setSortBy(TopVideoPinsSortBy sortBy) {
     this.sortBy = sortBy;
   }
 
@@ -170,10 +126,7 @@ public class TopVideoPinsAnalyticsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

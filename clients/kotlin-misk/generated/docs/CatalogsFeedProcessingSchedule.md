@@ -1,0 +1,11 @@
+
+# CatalogsFeedProcessingSchedule
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**time** | **kotlin.String** | A time in format HH:MM with leading 0 (zero) | 
+**timezone** | [**CatalogsFeedProcessingScheduleTimezone**](CatalogsFeedProcessingScheduleTimezone.md) | The timezone considered for the processing schedule time. | 
+
+
+

@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Status of a single event in the response.",
+  "name": "EventProcessingStatus",
+  "symbols": [
+    "failed",
+    "processed"
+  ]
+}

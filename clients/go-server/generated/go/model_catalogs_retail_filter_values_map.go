@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -21,11 +21,11 @@ type CatalogsRetailFilterValuesMap struct {
 
 	AdVideoTags []string `json:"ad_video_tags,omitempty"`
 
-	Availability []string `json:"availability,omitempty"`
+	Availability []ProductAvailability `json:"availability,omitempty"`
 
 	Brand []string `json:"brand,omitempty"`
 
-	Condition []string `json:"condition,omitempty"`
+	Condition []ProductCondition `json:"condition,omitempty"`
 
 	CustomLabel0 []string `json:"custom_label_0,omitempty"`
 
@@ -37,7 +37,7 @@ type CatalogsRetailFilterValuesMap struct {
 
 	CustomLabel4 []string `json:"custom_label_4,omitempty"`
 
-	Gender []string `json:"gender,omitempty"`
+	Gender []Gender `json:"gender,omitempty"`
 
 	GoogleProductCategory0 []string `json:"google_product_category_0,omitempty"`
 
@@ -53,7 +53,7 @@ type CatalogsRetailFilterValuesMap struct {
 
 	GoogleProductCategory6 []string `json:"google_product_category_6,omitempty"`
 
-	MediaType []string `json:"media_type,omitempty"`
+	MediaType []MediaType `json:"media_type,omitempty"`
 
 	ProductType0 []string `json:"product_type_0,omitempty"`
 
@@ -66,7 +66,8 @@ type CatalogsRetailFilterValuesMap struct {
 	ProductType4 []string `json:"product_type_4,omitempty"`
 }
 
-// AssertCatalogsRetailFilterValuesMapRequired checks if the required fields are not zero-ed
+// AssertCatalogsRetailFilterValuesMapRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsRetailFilterValuesMapRequired(obj CatalogsRetailFilterValuesMap) error {
 	return nil
 }

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,13 +18,13 @@ import (
 // checks if the Account type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Account{}
 
-// Account struct for Account
+// Account User account model containing properties related to a user's account.
 type Account struct {
 	// Profile about description.
 	About *string `json:"about,omitempty"`
 	// Type of account
-	AccountType *string `json:"account_type,omitempty"`
-	// User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+	AccountType *UserAccountType `json:"account_type,omitempty"`
+	//   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
 	BoardCount NullableInt32 `json:"board_count,omitempty"`
 	BusinessName NullableString `json:"business_name,omitempty"`
 	// User account follower count.
@@ -32,7 +32,7 @@ type Account struct {
 	// User account following count.
 	FollowingCount NullableInt32 `json:"following_count,omitempty"`
 	// User account ID.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 	// User account monthly views.
 	MonthlyViews NullableInt32 `json:"monthly_views,omitempty"`
 	// User account pin count. This includes both created and saved pins.
@@ -92,9 +92,9 @@ func (o *Account) SetAbout(v string) {
 }
 
 // GetAccountType returns the AccountType field value if set, zero value otherwise.
-func (o *Account) GetAccountType() string {
+func (o *Account) GetAccountType() UserAccountType {
 	if o == nil || IsNil(o.AccountType) {
-		var ret string
+		var ret UserAccountType
 		return ret
 	}
 	return *o.AccountType
@@ -102,7 +102,7 @@ func (o *Account) GetAccountType() string {
 
 // GetAccountTypeOk returns a tuple with the AccountType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Account) GetAccountTypeOk() (*string, bool) {
+func (o *Account) GetAccountTypeOk() (*UserAccountType, bool) {
 	if o == nil || IsNil(o.AccountType) {
 		return nil, false
 	}
@@ -118,8 +118,8 @@ func (o *Account) HasAccountType() bool {
 	return false
 }
 
-// SetAccountType gets a reference to the given string and assigns it to the AccountType field.
-func (o *Account) SetAccountType(v string) {
+// SetAccountType gets a reference to the given UserAccountType and assigns it to the AccountType field.
+func (o *Account) SetAccountType(v UserAccountType) {
 	o.AccountType = &v
 }
 

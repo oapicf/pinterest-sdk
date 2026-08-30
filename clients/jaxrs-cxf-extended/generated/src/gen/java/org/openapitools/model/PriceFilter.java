@@ -1,6 +1,6 @@
 package org.openapitools.model;
 
-import org.openapitools.model.CatalogsProductGroupPricingCurrencyCriteria;
+import org.openapitools.model.PriceFilterPrice;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -13,28 +13,28 @@ public class PriceFilter  {
   
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private CatalogsProductGroupPricingCurrencyCriteria PRICE;
+  private PriceFilterPrice PRICE;
  /**
   * Get PRICE
   * @return PRICE
   */
   @JsonProperty("PRICE")
   @NotNull
-  public CatalogsProductGroupPricingCurrencyCriteria getPRICE() {
+  public PriceFilterPrice getPRICE() {
     return PRICE;
   }
 
   /**
    * Sets the <code>PRICE</code> property.
    */
- public void setPRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+ public void setPRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
   }
 
   /**
    * Sets the <code>PRICE</code> property.
    */
-  public PriceFilter PRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public PriceFilter PRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
     return this;
   }
@@ -72,10 +72,7 @@ public class PriceFilter  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

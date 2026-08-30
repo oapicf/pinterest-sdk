@@ -51,14 +51,14 @@ static gpointer __BulkManagerthreadFunc(gpointer data)
 static bool bulkDownloadCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(BulkDownloadResponse, Error, void* )
-	= reinterpret_cast<void(*)(BulkDownloadResponse, Error, void* )> (voidHandler);
+	void(* handler)(BulkDownload, Error, void* )
+	= reinterpret_cast<void(*)(BulkDownload, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	BulkDownloadResponse out;
+	BulkDownload out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,48 @@ static bool bulkDownloadCreateProcessor(MemoryStruct_s p_chunk, long code, char*
 
 
 
-		if (isprimitive("BulkDownloadResponse")) {
+		if (isprimitive("BulkDownload")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "BulkDownloadResponse", "BulkDownloadResponse");
+			jsonToValue(&out, pJson, "BulkDownload", "BulkDownload");
 			json_node_free(pJson);
 
-			if ("BulkDownloadResponse" == "std::string") {
+			if ("BulkDownload" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -109,8 +139,8 @@ static bool bulkDownloadCreateProcessor(MemoryStruct_s p_chunk, long code, char*
 }
 
 static bool bulkDownloadCreateHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<BulkDownloadRequest> bulkDownloadRequest, 
-	void(* handler)(BulkDownloadResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<BulkDownloadCreate> bulkDownloadCreate, 
+	void(* handler)(BulkDownload, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -130,11 +160,11 @@ static bool bulkDownloadCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("BulkDownloadRequest")) {
-		node = converttoJson(&bulkDownloadRequest, "BulkDownloadRequest", "");
+	if (isprimitive("BulkDownloadCreate")) {
+		node = converttoJson(&bulkDownloadCreate, "BulkDownloadCreate", "");
 	}
 	
-	char *jsonStr =  bulkDownloadRequest.toJson();
+	char *jsonStr =  bulkDownloadCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -199,36 +229,36 @@ static bool bulkDownloadCreateHelper(char * accessToken,
 
 
 bool BulkManager::bulkDownloadCreateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<BulkDownloadRequest> bulkDownloadRequest, 
-	void(* handler)(BulkDownloadResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<BulkDownloadCreate> bulkDownloadCreate, 
+	void(* handler)(BulkDownload, Error, void* )
 	, void* userData)
 {
 	return bulkDownloadCreateHelper(accessToken,
-	adAccountId, bulkDownloadRequest, 
+	adAccountId, bulkDownloadCreate, 
 	handler, userData, true);
 }
 
 bool BulkManager::bulkDownloadCreateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<BulkDownloadRequest> bulkDownloadRequest, 
-	void(* handler)(BulkDownloadResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<BulkDownloadCreate> bulkDownloadCreate, 
+	void(* handler)(BulkDownload, Error, void* )
 	, void* userData)
 {
 	return bulkDownloadCreateHelper(accessToken,
-	adAccountId, bulkDownloadRequest, 
+	adAccountId, bulkDownloadCreate, 
 	handler, userData, false);
 }
 
 static bool bulkRequestGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(BulkUpsertStatusResponse, Error, void* )
-	= reinterpret_cast<void(*)(BulkUpsertStatusResponse, Error, void* )> (voidHandler);
+	void(* handler)(BulkJobData, Error, void* )
+	= reinterpret_cast<void(*)(BulkJobData, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	BulkUpsertStatusResponse out;
+	BulkJobData out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -236,18 +266,43 @@ static bool bulkRequestGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 
 
 
-		if (isprimitive("BulkUpsertStatusResponse")) {
+		if (isprimitive("BulkJobData")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "BulkUpsertStatusResponse", "BulkUpsertStatusResponse");
+			jsonToValue(&out, pJson, "BulkJobData", "BulkJobData");
 			json_node_free(pJson);
 
-			if ("BulkUpsertStatusResponse" == "std::string") {
+			if ("BulkJobData" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -280,7 +335,7 @@ static bool bulkRequestGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 
 static bool bulkRequestGetHelper(char * accessToken,
 	std::string adAccountId, std::string bulkRequestId, bool includeDetails, 
-	void(* handler)(BulkUpsertStatusResponse, Error, void* )
+	void(* handler)(BulkJobData, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -370,7 +425,7 @@ static bool bulkRequestGetHelper(char * accessToken,
 
 bool BulkManager::bulkRequestGetAsync(char * accessToken,
 	std::string adAccountId, std::string bulkRequestId, bool includeDetails, 
-	void(* handler)(BulkUpsertStatusResponse, Error, void* )
+	void(* handler)(BulkJobData, Error, void* )
 	, void* userData)
 {
 	return bulkRequestGetHelper(accessToken,
@@ -380,7 +435,7 @@ bool BulkManager::bulkRequestGetAsync(char * accessToken,
 
 bool BulkManager::bulkRequestGetSync(char * accessToken,
 	std::string adAccountId, std::string bulkRequestId, bool includeDetails, 
-	void(* handler)(BulkUpsertStatusResponse, Error, void* )
+	void(* handler)(BulkJobData, Error, void* )
 	, void* userData)
 {
 	return bulkRequestGetHelper(accessToken,

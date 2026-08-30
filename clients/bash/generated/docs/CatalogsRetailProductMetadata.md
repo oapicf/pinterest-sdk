@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**availability** | [**NonNullableProductAvailabilityType**](NonNullableProductAvailabilityType.md) |  | [default to null]
+**availability** | [**ProductAvailability**](ProductAvailability.md) |  | [default to null]
 **currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | [default to null]
 **itemUnderscoregroupUnderscoreid** | **string** |  | [default to null]
 **itemUnderscoreid** | **string** |  | [default to null]

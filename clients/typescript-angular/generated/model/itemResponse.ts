@@ -7,21 +7,24 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ItemResponseOneOf1 } from './itemResponseOneOf1';
+import { CatalogsRetailItemResponse } from './catalogsRetailItemResponse';
+import { CatalogsCreativeAssetsItemErrorResponse } from './catalogsCreativeAssetsItemErrorResponse';
+import { CatalogsHotelItemResponse } from './catalogsHotelItemResponse';
 import { Pin } from './pin';
+import { CatalogsCreativeAssetsItemResponse } from './catalogsCreativeAssetsItemResponse';
 import { ItemValidationEvent } from './itemValidationEvent';
-import { CatalogsType } from './catalogsType';
+import { CatalogsHotelItemErrorResponse } from './catalogsHotelItemErrorResponse';
 import { CatalogsCreativeAssetsAttributes } from './catalogsCreativeAssetsAttributes';
-import { ItemResponseOneOf } from './itemResponseOneOf';
+import { CatalogsRetailItemErrorResponse } from './catalogsRetailItemErrorResponse';
 
 
 /**
- * Object describing an item record or error
+ * Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).
  */
 /**
  * @type ItemResponse
- * Object describing an item record or error
+ * Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).
  * @export
  */
-export type ItemResponse = ItemResponseOneOf | ItemResponseOneOf1;
+export type ItemResponse = CatalogsCreativeAssetsItemErrorResponse | CatalogsCreativeAssetsItemResponse | CatalogsHotelItemErrorResponse | CatalogsHotelItemResponse | CatalogsRetailItemErrorResponse | CatalogsRetailItemResponse;
 

@@ -8,7 +8,7 @@
     #{ 'lead_form_id' => binary(),
        'webhook_url' := binary(),
        'partner_access_token' => binary(),
-       'partner_metadata' => openapi_lead_subscription_post_params_create_all_of_partner_metadata:openapi_lead_subscription_post_params_create_all_of_partner_metadata(),
+       'partner_metadata' => openapi_partner_metadata:openapi_partner_metadata(),
        'partner_refresh_token' => binary()
      }.
 

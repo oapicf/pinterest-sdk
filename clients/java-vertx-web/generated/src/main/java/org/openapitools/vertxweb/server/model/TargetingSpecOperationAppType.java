@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.vertxweb.server.model.TargetingSpecAppType;
+import org.openapitools.vertxweb.server.model.TargetingSpecListOperation;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TargetingSpecOperationAppType   {
@@ -31,34 +32,14 @@ public class TargetingSpecOperationAppType   {
   }
 
   private FieldEnum field;
-
-
-  public enum OperationEnum {
-    SET("SET"),
-    ADD("ADD"),
-    REMOVE("REMOVE");
-
-    private String value;
-
-    OperationEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private OperationEnum operation;
-  private List<TargetingSpecAppType> values;
+  private TargetingSpecListOperation operation;
+  private List<TargetingSpecAppType> values = new ArrayList<>();
 
   public TargetingSpecOperationAppType () {
 
   }
 
-  public TargetingSpecOperationAppType (FieldEnum field, OperationEnum operation, List<TargetingSpecAppType> values) {
+  public TargetingSpecOperationAppType (FieldEnum field, TargetingSpecListOperation operation, List<TargetingSpecAppType> values) {
     this.field = field;
     this.operation = operation;
     this.values = values;
@@ -75,10 +56,10 @@ public class TargetingSpecOperationAppType   {
 
     
   @JsonProperty("operation")
-  public OperationEnum getOperation() {
+  public TargetingSpecListOperation getOperation() {
     return operation;
   }
-  public void setOperation(OperationEnum operation) {
+  public void setOperation(TargetingSpecListOperation operation) {
     this.operation = operation;
   }
 
@@ -128,9 +109,6 @@ public class TargetingSpecOperationAppType   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

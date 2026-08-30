@@ -6,8 +6,11 @@ type TrendingTopic struct {
 	// Description of the trending topic
 	Description string `json:"description"`
 
+	// Unique identifier for the trending topic
+	Id string `json:"id"`
+
 	// Month-over-month growth percentage
-	PercentGrowthMom int32 `json:"percent_growth_mom"`
+	PercentGrowthMom int32 `json:"percent_growth_mom,omitempty"`
 
 	// Array of pin images related to this trend (up to 6)
 	Pins []TrendingPin `json:"pins"`

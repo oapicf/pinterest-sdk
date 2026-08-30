@@ -11,23 +11,24 @@ import 'package:dio/dio.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/api_util.dart';
 import 'package:openapi/src/model/ad_account.dart';
-import 'package:openapi/src/model/ad_account_analytics_response_inner.dart';
+import 'package:openapi/src/model/ad_account_analytics_items.dart';
 import 'package:openapi/src/model/ad_account_create.dart';
 import 'package:openapi/src/model/ad_accounts_list200_response.dart';
+import 'package:openapi/src/model/ads_analytics_account_targeting_type.dart';
 import 'package:openapi/src/model/ads_analytics_create_async_request.dart';
 import 'package:openapi/src/model/ads_analytics_create_async_response.dart';
 import 'package:openapi/src/model/ads_analytics_get_async_response.dart';
-import 'package:openapi/src/model/ads_analytics_targeting_type.dart';
-import 'package:openapi/src/model/conversion_product_report_request.dart';
+import 'package:openapi/src/model/conversion_product_report.dart';
+import 'package:openapi/src/model/conversion_product_report_create.dart';
 import 'package:openapi/src/model/conversion_report_attribution_type.dart';
-import 'package:openapi/src/model/create_mmm_report_request.dart';
-import 'package:openapi/src/model/create_mmm_report_response.dart';
 import 'package:openapi/src/model/date.dart';
-import 'package:openapi/src/model/error.dart';
-import 'package:openapi/src/model/get_mmm_report_response.dart';
 import 'package:openapi/src/model/granularity.dart';
 import 'package:openapi/src/model/metrics_response.dart';
+import 'package:openapi/src/model/mmm_report.dart';
+import 'package:openapi/src/model/mmm_report_create.dart';
 import 'package:openapi/src/model/pinterest_lib_error.dart';
+import 'package:openapi/src/model/pinterest_lib_pagination_order.dart';
+import 'package:openapi/src/model/reporting_column_sync.dart';
 import 'package:openapi/src/model/reporting_time_zone.dart';
 import 'package:openapi/src/model/template_based_report.dart';
 import 'package:openapi/src/model/templates_list200_response.dart';
@@ -41,16 +42,16 @@ class AdAccountsApi {
   const AdAccountsApi(this._dio, this._serializers);
 
   /// Get ad account analytics
-  /// Get analytics for the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
+  ///   Get analytics for the specified &#x60;ad_account_id&#x60;, filtered by the specified options.    - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.    - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.    - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
   ///
   /// Parameters:
-  /// * [adAccountId] - Unique identifier of an ad account.
   /// * [startDate] - Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   /// * [endDate] - Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-  /// * [columns] - Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-  /// * [granularity] - TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+  /// * [columns] - Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+  /// * [granularity] -   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+  /// * [adAccountId] - Unique identifier of an ad account.
   /// * [clickWindowDays] - Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-  /// * [engagementWindowDays] - Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
+  /// * [engagementWindowDays] - Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
   /// * [viewWindowDays] - Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
   /// * [conversionReportTime] - The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
   /// * [reportingTimezone] - Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
@@ -61,17 +62,17 @@ class AdAccountsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<AdAccountAnalyticsResponseInner>] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<AdAccountAnalyticsItems>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<AdAccountAnalyticsResponseInner>>> adAccountAnalytics({ 
-    required String adAccountId,
+  Future<Response<BuiltList<AdAccountAnalyticsItems>>> adAccountAnalytics({ 
     required Date startDate,
     required Date endDate,
-    required BuiltList<String> columns,
+    required BuiltList<ReportingColumnSync> columns,
     required Granularity granularity,
-    int? clickWindowDays = 30,
-    int? engagementWindowDays = 30,
-    int? viewWindowDays = 1,
+    required String adAccountId,
+    num? clickWindowDays = 30,
+    num? engagementWindowDays = 30,
+    num? viewWindowDays = 1,
     String? conversionReportTime = 'TIME_OF_AD_ACTION',
     ReportingTimeZone? reportingTimezone,
     CancelToken? cancelToken,
@@ -105,11 +106,11 @@ class AdAccountsApi {
     final _queryParameters = <String, dynamic>{
       r'start_date': encodeQueryParameter(_serializers, startDate, const FullType(Date)),
       r'end_date': encodeQueryParameter(_serializers, endDate, const FullType(Date)),
-      r'columns': encodeCollectionQueryParameter<String>(_serializers, columns, const FullType(BuiltList, [FullType(String)]), format: ListFormat.csv,),
+      r'columns': encodeCollectionQueryParameter<ReportingColumnSync>(_serializers, columns, const FullType(BuiltList, [FullType(ReportingColumnSync)]), format: ListFormat.csv,),
       r'granularity': encodeQueryParameter(_serializers, granularity, const FullType(Granularity)),
-      if (clickWindowDays != null) r'click_window_days': encodeQueryParameter(_serializers, clickWindowDays, const FullType(int)),
-      if (engagementWindowDays != null) r'engagement_window_days': encodeQueryParameter(_serializers, engagementWindowDays, const FullType(int)),
-      if (viewWindowDays != null) r'view_window_days': encodeQueryParameter(_serializers, viewWindowDays, const FullType(int)),
+      if (clickWindowDays != null) r'click_window_days': encodeQueryParameter(_serializers, clickWindowDays, const FullType(num)),
+      if (engagementWindowDays != null) r'engagement_window_days': encodeQueryParameter(_serializers, engagementWindowDays, const FullType(num)),
+      if (viewWindowDays != null) r'view_window_days': encodeQueryParameter(_serializers, viewWindowDays, const FullType(num)),
       if (conversionReportTime != null) r'conversion_report_time': encodeQueryParameter(_serializers, conversionReportTime, const FullType(String)),
       if (reportingTimezone != null) r'reporting_timezone': encodeQueryParameter(_serializers, reportingTimezone, const FullType(ReportingTimeZone)),
     };
@@ -123,14 +124,14 @@ class AdAccountsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<AdAccountAnalyticsResponseInner>? _responseData;
+    BuiltList<AdAccountAnalyticsItems>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(AdAccountAnalyticsResponseInner)]),
-      ) as BuiltList<AdAccountAnalyticsResponseInner>;
+        specifiedType: const FullType(BuiltList, [FullType(AdAccountAnalyticsItems)]),
+      ) as BuiltList<AdAccountAnalyticsItems>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -142,7 +143,7 @@ class AdAccountsApi {
       );
     }
 
-    return Response<BuiltList<AdAccountAnalyticsResponseInner>>(
+    return Response<BuiltList<AdAccountAnalyticsItems>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -155,17 +156,17 @@ class AdAccountsApi {
   }
 
   /// Get targeting analytics for an ad account
-  /// Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+  /// Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt;  * The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [startDate] - Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   /// * [endDate] - Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-  /// * [targetingTypes] - Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-  /// * [columns] - Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-  /// * [granularity] - TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+  /// * [targetingTypes] - Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+  /// * [columns] - Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+  /// * [granularity] -   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
   /// * [clickWindowDays] - Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-  /// * [engagementWindowDays] - Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
+  /// * [engagementWindowDays] - Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
   /// * [viewWindowDays] - Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
   /// * [conversionReportTime] - The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
   /// * [attributionTypes] - List of types of attribution for the conversion report
@@ -183,12 +184,12 @@ class AdAccountsApi {
     required String adAccountId,
     required Date startDate,
     required Date endDate,
-    required BuiltList<AdsAnalyticsTargetingType> targetingTypes,
-    required BuiltList<String> columns,
+    required BuiltList<AdsAnalyticsAccountTargetingType> targetingTypes,
+    required BuiltList<ReportingColumnSync> columns,
     required Granularity granularity,
-    int? clickWindowDays = 30,
-    int? engagementWindowDays = 30,
-    int? viewWindowDays = 1,
+    num? clickWindowDays = 30,
+    num? engagementWindowDays = 30,
+    num? viewWindowDays = 1,
     String? conversionReportTime = 'TIME_OF_AD_ACTION',
     BuiltList<ConversionReportAttributionType>? attributionTypes,
     ReportingTimeZone? reportingTimezone,
@@ -223,12 +224,12 @@ class AdAccountsApi {
     final _queryParameters = <String, dynamic>{
       r'start_date': encodeQueryParameter(_serializers, startDate, const FullType(Date)),
       r'end_date': encodeQueryParameter(_serializers, endDate, const FullType(Date)),
-      r'targeting_types': encodeCollectionQueryParameter<AdsAnalyticsTargetingType>(_serializers, targetingTypes, const FullType(BuiltList, [FullType(AdsAnalyticsTargetingType)]), format: ListFormat.csv,),
-      r'columns': encodeCollectionQueryParameter<String>(_serializers, columns, const FullType(BuiltList, [FullType(String)]), format: ListFormat.csv,),
+      r'targeting_types': encodeCollectionQueryParameter<AdsAnalyticsAccountTargetingType>(_serializers, targetingTypes, const FullType(BuiltList, [FullType(AdsAnalyticsAccountTargetingType)]), format: ListFormat.csv,),
+      r'columns': encodeCollectionQueryParameter<ReportingColumnSync>(_serializers, columns, const FullType(BuiltList, [FullType(ReportingColumnSync)]), format: ListFormat.csv,),
       r'granularity': encodeQueryParameter(_serializers, granularity, const FullType(Granularity)),
-      if (clickWindowDays != null) r'click_window_days': encodeQueryParameter(_serializers, clickWindowDays, const FullType(int)),
-      if (engagementWindowDays != null) r'engagement_window_days': encodeQueryParameter(_serializers, engagementWindowDays, const FullType(int)),
-      if (viewWindowDays != null) r'view_window_days': encodeQueryParameter(_serializers, viewWindowDays, const FullType(int)),
+      if (clickWindowDays != null) r'click_window_days': encodeQueryParameter(_serializers, clickWindowDays, const FullType(num)),
+      if (engagementWindowDays != null) r'engagement_window_days': encodeQueryParameter(_serializers, engagementWindowDays, const FullType(num)),
+      if (viewWindowDays != null) r'view_window_days': encodeQueryParameter(_serializers, viewWindowDays, const FullType(num)),
       if (conversionReportTime != null) r'conversion_report_time': encodeQueryParameter(_serializers, conversionReportTime, const FullType(String)),
       if (attributionTypes != null) r'attribution_types': encodeCollectionQueryParameter<ConversionReportAttributionType>(_serializers, attributionTypes, const FullType(BuiltList, [FullType(ConversionReportAttributionType)]), format: ListFormat.csv,),
       if (reportingTimezone != null) r'reporting_timezone': encodeQueryParameter(_serializers, reportingTimezone, const FullType(ReportingTimeZone)),
@@ -552,11 +553,11 @@ class AdAccountsApi {
   }
 
   /// Create a request for a brand, category, SKU report
-  /// &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
+  ///   [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [conversionProductReportRequest] 
+  /// * [conversionProductReportCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -564,11 +565,11 @@ class AdAccountsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AdsAnalyticsCreateAsyncResponse] as data
+  /// Returns a [Future] containing a [Response] with a [ConversionProductReport] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AdsAnalyticsCreateAsyncResponse>> analyticsCreateConversionProductReport({ 
+  Future<Response<ConversionProductReport>> analyticsCreateConversionProductReport({ 
     required String adAccountId,
-    required ConversionProductReportRequest conversionProductReportRequest,
+    required ConversionProductReportCreate conversionProductReportCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -598,8 +599,8 @@ class AdAccountsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ConversionProductReportRequest);
-      _bodyData = _serializers.serialize(conversionProductReportRequest, specifiedType: _type);
+      const _type = FullType(ConversionProductReportCreate);
+      _bodyData = _serializers.serialize(conversionProductReportCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -622,14 +623,14 @@ class AdAccountsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AdsAnalyticsCreateAsyncResponse? _responseData;
+    ConversionProductReport? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(AdsAnalyticsCreateAsyncResponse),
-      ) as AdsAnalyticsCreateAsyncResponse;
+        specifiedType: const FullType(ConversionProductReport),
+      ) as ConversionProductReport;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -641,7 +642,7 @@ class AdAccountsApi {
       );
     }
 
-    return Response<AdsAnalyticsCreateAsyncResponse>(
+    return Response<ConversionProductReport>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -654,11 +655,11 @@ class AdAccountsApi {
   }
 
   /// Create a request for a Marketing Mix Modeling (MMM) report
-  /// This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it&#39;s in beta release.
+  ///     This creates an asynchronous mmm report based on the given request.     It returns a token that you can use to download the report when it is     ready. NOTE: An additional limit of 5 queries per minute per advertiser     applies to this endpoint while it&#39;s in beta release.     For the ADVERTISER_PAID_SPEND_IN_DOLLAR,     ADVERTISER_PAID_ECPC_IN_DOLLAR, and ADVERTISER_PAID_ECPM_IN_DOLLAR     columns: if you receive bonus media, this value still includes that spend, and it will     need to be removed manually with support from your Pinterest account team for a     fully netted value. Over time, we&#39;ll also subtract bonus media and other incentives as     data becomes available. Production and other non-media fees are excluded.
   ///
   /// Parameters:
-  /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [createMMMReportRequest] 
+  /// * [adAccountId] 
+  /// * [mMMReportCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -666,11 +667,11 @@ class AdAccountsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [CreateMMMReportResponse] as data
+  /// Returns a [Future] containing a [Response] with a [MMMReport] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CreateMMMReportResponse>> analyticsCreateMmmReport({ 
+  Future<Response<MMMReport>> analyticsCreateMmmReport({ 
     required String adAccountId,
-    required CreateMMMReportRequest createMMMReportRequest,
+    required MMMReportCreate mMMReportCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -700,8 +701,8 @@ class AdAccountsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CreateMMMReportRequest);
-      _bodyData = _serializers.serialize(createMMMReportRequest, specifiedType: _type);
+      const _type = FullType(MMMReportCreate);
+      _bodyData = _serializers.serialize(mMMReportCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -724,14 +725,14 @@ class AdAccountsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    CreateMMMReportResponse? _responseData;
+    MMMReport? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(CreateMMMReportResponse),
-      ) as CreateMMMReportResponse;
+        specifiedType: const FullType(MMMReport),
+      ) as MMMReport;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -743,7 +744,7 @@ class AdAccountsApi {
       );
     }
 
-    return Response<CreateMMMReportResponse>(
+    return Response<MMMReport>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -756,7 +757,7 @@ class AdAccountsApi {
   }
 
   /// Create async request for an account analytics report
-  /// This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
+  ///   This returns a token that you can use to download the report when it is ready.   Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters.   - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days.   - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.   - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days.   - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
@@ -858,14 +859,14 @@ class AdAccountsApi {
   }
 
   /// Create async request for an analytics report using a template
-  ///    This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
+  ///   This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
   ///
   /// Parameters:
   /// * [adAccountId] 
   /// * [templateId] - Unique identifier of a template.
   /// * [startDate] - Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today.
   /// * [endDate] - Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date.
-  /// * [granularity] -    TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly
+  /// * [granularity] -   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -953,7 +954,7 @@ class AdAccountsApi {
   }
 
   /// Get advertiser brand, category, SKU report
-  /// &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
+  ///   [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
@@ -965,9 +966,9 @@ class AdAccountsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AdsAnalyticsGetAsyncResponse] as data
+  /// Returns a [Future] containing a [Response] with a [ConversionProductReport] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AdsAnalyticsGetAsyncResponse>> analyticsGetConversionProductReport({ 
+  Future<Response<ConversionProductReport>> analyticsGetConversionProductReport({ 
     required String adAccountId,
     required String token,
     CancelToken? cancelToken,
@@ -1008,14 +1009,14 @@ class AdAccountsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AdsAnalyticsGetAsyncResponse? _responseData;
+    ConversionProductReport? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(AdsAnalyticsGetAsyncResponse),
-      ) as AdsAnalyticsGetAsyncResponse;
+        specifiedType: const FullType(ConversionProductReport),
+      ) as ConversionProductReport;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -1027,7 +1028,7 @@ class AdAccountsApi {
       );
     }
 
-    return Response<AdsAnalyticsGetAsyncResponse>(
+    return Response<ConversionProductReport>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -1040,10 +1041,10 @@ class AdAccountsApi {
   }
 
   /// Get advertiser Marketing Mix Modeling (MMM) report.
-  /// Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the create mmm report endpoint.
+  ///     Get an mmm report for an ad account. This returns a URL to an     mmm metrics report given a token returned from the create mmm report endpoint.
   ///
   /// Parameters:
-  /// * [adAccountId] - Unique identifier of an ad account.
+  /// * [adAccountId] 
   /// * [token] - Token returned from the post request creation call
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -1052,9 +1053,9 @@ class AdAccountsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GetMMMReportResponse] as data
+  /// Returns a [Future] containing a [Response] with a [MMMReport] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GetMMMReportResponse>> analyticsGetMmmReport({ 
+  Future<Response<MMMReport>> analyticsGetMmmReport({ 
     required String adAccountId,
     required String token,
     CancelToken? cancelToken,
@@ -1095,14 +1096,14 @@ class AdAccountsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    GetMMMReportResponse? _responseData;
+    MMMReport? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(GetMMMReportResponse),
-      ) as GetMMMReportResponse;
+        specifiedType: const FullType(MMMReport),
+      ) as MMMReport;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -1114,7 +1115,7 @@ class AdAccountsApi {
       );
     }
 
-    return Response<GetMMMReportResponse>(
+    return Response<MMMReport>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -1127,7 +1128,7 @@ class AdAccountsApi {
   }
 
   /// Get the account analytics report created by the async call
-  /// This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.
+  ///   This returns a URL to an analytics report given a token returned from the post request report creation call.   You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour.   - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
@@ -1295,9 +1296,9 @@ class AdAccountsApi {
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  /// * [order] - The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
   /// * [bookmark] - Cursor used to fetch the next page of items
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  /// * [order] - The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1309,9 +1310,9 @@ class AdAccountsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<TemplatesList200Response>> templatesList({ 
     required String adAccountId,
-    int? pageSize = 25,
-    String? order,
     String? bookmark,
+    int? pageSize = 25,
+    PinterestLibPaginationOrder? order,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1338,9 +1339,9 @@ class AdAccountsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-      if (order != null) r'order': encodeQueryParameter(_serializers, order, const FullType(String)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
+      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
+      if (order != null) r'order': encodeQueryParameter(_serializers, order, const FullType(PinterestLibPaginationOrder)),
     };
 
     final _response = await _dio.request<Object>(

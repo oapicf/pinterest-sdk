@@ -14,7 +14,7 @@ require 'pinterest_sdk'
 PinterestSdkClient::NotificationPostRequest.openapi_one_of
 # =>
 # [
-#   :'Array<Hash<String, Object>>',
+#   :'Array<Object>',
 #   :'Object'
 # ]
 ```
@@ -29,7 +29,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'pinterest_sdk'
 
 PinterestSdkClient::NotificationPostRequest.build(data)
-# => #<Array<Hash<String, Object>>:0x00007fdd4aab02a0>
+# => #<Array<Object>:0x00007fdd4aab02a0>
 
 PinterestSdkClient::NotificationPostRequest.build(data_that_doesnt_match)
 # => nil
@@ -43,7 +43,7 @@ PinterestSdkClient::NotificationPostRequest.build(data_that_doesnt_match)
 
 #### Return type
 
-- `Array<Hash<String, Object>>`
+- `Array<Object>`
 - `Object`
 - `nil` (if no type matches)
 

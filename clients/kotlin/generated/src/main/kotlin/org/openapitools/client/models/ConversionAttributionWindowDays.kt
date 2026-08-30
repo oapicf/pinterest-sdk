@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -26,25 +34,25 @@ import com.squareup.moshi.JsonClass
  */
 
 @JsonClass(generateAdapter = false)
-enum class ConversionAttributionWindowDays(val value: kotlin.Int) {
+enum class ConversionAttributionWindowDays(val value: java.math.BigDecimal) {
 
     @Json(name = "0")
-    _0(0),
+    _0("0"),
 
     @Json(name = "1")
-    _1(1),
+    _1("1"),
 
     @Json(name = "7")
-    _7(7),
+    _7("7"),
 
     @Json(name = "14")
-    _14(14),
+    _14("14"),
 
     @Json(name = "30")
-    _30(30),
+    _30("30"),
 
     @Json(name = "60")
-    _60(60);
+    _60("60");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -66,7 +74,7 @@ enum class ConversionAttributionWindowDays(val value: kotlin.Int) {
          */
         fun decode(data: kotlin.Any?): ConversionAttributionWindowDays? = data?.let {
           val normalizedData = "$it".lowercase()
-          values().firstOrNull { value ->
+          entries.firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()
           }
         }

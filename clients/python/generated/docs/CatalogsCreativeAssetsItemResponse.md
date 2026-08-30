@@ -1,14 +1,15 @@
 # CatalogsCreativeAssetsItemResponse
 
-Object describing a hotel record
+Object describing a creative assets item record
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attributes** | [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] 
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | 
+**catalog_type** | **str** |  | 
 **creative_assets_id** | **str** | The catalog creative assets id in the merchant namespace | [optional] 
+**item_response_kind** | **str** | Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload. | 
 **pins** | [**List[Pin]**](Pin.md) | The pins mapped to the item | [optional] 
 
 ## Example

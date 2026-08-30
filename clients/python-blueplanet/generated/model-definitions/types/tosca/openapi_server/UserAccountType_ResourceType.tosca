@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UserAccountType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UserAccountType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  UserAccountType {
+    title = UserAccountType
+    description = UserAccountType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  UserAccountType {
+    title = UserAccountType
+    description = UserAccountType
+    implements = openapi_server.resourceTypes.UserAccountType
+
+  }
+}

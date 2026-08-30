@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -20,14 +28,17 @@ import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.CreativeType
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.MultiPinsAnalyticsMetricTypesItem
 import org.openapitools.client.models.Pin
 import org.openapitools.client.models.PinAnalyticsMetricsResponse
 import org.openapitools.client.models.PinCreate
+import org.openapitools.client.models.PinFilter
+import org.openapitools.client.models.PinType
 import org.openapitools.client.models.PinUpdate
 import org.openapitools.client.models.PinsList200Response
-import org.openapitools.client.models.PinsSaveRequest
+import org.openapitools.client.models.PinsSaveRequestCreate
 import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.QuerypinanalyticsmetrictypesItems
 
 import com.squareup.moshi.Json
 
@@ -49,39 +60,9 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
-
-    /**
-     * enum for parameter metricTypes
-     */
-     enum class MetricTypesMultiPinsAnalytics(val value: kotlin.String) {
-         @Json(name = "IMPRESSION") IMPRESSION("IMPRESSION"),
-         @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK"),
-         @Json(name = "PIN_CLICK") PIN_CLICK("PIN_CLICK"),
-         @Json(name = "SAVE") SAVE("SAVE"),
-         @Json(name = "SAVE_RATE") SAVE_RATE("SAVE_RATE"),
-         @Json(name = "TOTAL_COMMENTS") TOTAL_COMMENTS("TOTAL_COMMENTS"),
-         @Json(name = "TOTAL_REACTIONS") TOTAL_REACTIONS("TOTAL_REACTIONS"),
-         @Json(name = "USER_FOLLOW") USER_FOLLOW("USER_FOLLOW"),
-         @Json(name = "PROFILE_VISIT") PROFILE_VISIT("PROFILE_VISIT"),
-         @Json(name = "VIDEO_MRC_VIEW") VIDEO_MRC_VIEW("VIDEO_MRC_VIEW"),
-         @Json(name = "VIDEO_10S_VIEW") VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
-         @Json(name = "QUARTILE_95_PERCENT_VIEW") QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
-         @Json(name = "VIDEO_V50_WATCH_TIME") VIDEO_V50_WATCH_TIME("VIDEO_V50_WATCH_TIME"),
-         @Json(name = "VIDEO_START") VIDEO_START("VIDEO_START"),
-         @Json(name = "VIDEO_AVG_WATCH_TIME") VIDEO_AVG_WATCH_TIME("VIDEO_AVG_WATCH_TIME");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
 
     /**
      * enum for parameter appTypes
@@ -105,7 +86,7 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * GET /pins/analytics
      * Get multiple Pin analytics
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get analytics for multiple pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get analytics for multiple pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      * @param pinIds List of Pin IDs.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
@@ -121,7 +102,7 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun multiPinsAnalytics(pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MetricTypesMultiPinsAnalytics>, appTypes: AppTypesMultiPinsAnalytics? = AppTypesMultiPinsAnalytics.ALL, adAccountId: kotlin.String? = null) : kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>> {
+    fun multiPinsAnalytics(pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MultiPinsAnalyticsMetricTypesItem>, appTypes: AppTypesMultiPinsAnalytics? = AppTypesMultiPinsAnalytics.ALL, adAccountId: kotlin.String? = null) : kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>> {
         val localVarResponse = multiPinsAnalyticsWithHttpInfo(pinIds = pinIds, startDate = startDate, endDate = endDate, metricTypes = metricTypes, appTypes = appTypes, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
@@ -142,7 +123,7 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * GET /pins/analytics
      * Get multiple Pin analytics
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get analytics for multiple pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get analytics for multiple pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      * @param pinIds List of Pin IDs.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
@@ -155,7 +136,7 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun multiPinsAnalyticsWithHttpInfo(pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MetricTypesMultiPinsAnalytics>, appTypes: AppTypesMultiPinsAnalytics?, adAccountId: kotlin.String?) : ApiResponse<kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>?> {
+    fun multiPinsAnalyticsWithHttpInfo(pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MultiPinsAnalyticsMetricTypesItem>, appTypes: AppTypesMultiPinsAnalytics?, adAccountId: kotlin.String?) : ApiResponse<kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>?> {
         val localVariableConfig = multiPinsAnalyticsRequestConfig(pinIds = pinIds, startDate = startDate, endDate = endDate, metricTypes = metricTypes, appTypes = appTypes, adAccountId = adAccountId)
 
         return request<Unit, kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>>(
@@ -174,13 +155,13 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun multiPinsAnalyticsRequestConfig(pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MetricTypesMultiPinsAnalytics>, appTypes: AppTypesMultiPinsAnalytics?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
+    fun multiPinsAnalyticsRequestConfig(pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MultiPinsAnalyticsMetricTypesItem>, appTypes: AppTypesMultiPinsAnalytics?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 put("pin_ids", toMultiValue(pinIds.toList(), "multi"))
-                put("start_date", listOf(parseDateToQueryString(startDate)))
-                put("end_date", listOf(parseDateToQueryString(endDate)))
+                put("start_date", listOf(parseDateToQueryString<java.time.LocalDate>(startDate)))
+                put("end_date", listOf(parseDateToQueryString<java.time.LocalDate>(endDate)))
                 if (appTypes != null) {
                     put("app_types", listOf(appTypes.value))
                 }
@@ -201,36 +182,6 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
             body = localVariableBody
         )
     }
-
-    /**
-     * enum for parameter metricTypes
-     */
-     enum class MetricTypesPinsAnalytics(val value: kotlin.String) {
-         @Json(name = "IMPRESSION") IMPRESSION("IMPRESSION"),
-         @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK"),
-         @Json(name = "PIN_CLICK") PIN_CLICK("PIN_CLICK"),
-         @Json(name = "SAVE") SAVE("SAVE"),
-         @Json(name = "SAVE_RATE") SAVE_RATE("SAVE_RATE"),
-         @Json(name = "TOTAL_COMMENTS") TOTAL_COMMENTS("TOTAL_COMMENTS"),
-         @Json(name = "TOTAL_REACTIONS") TOTAL_REACTIONS("TOTAL_REACTIONS"),
-         @Json(name = "USER_FOLLOW") USER_FOLLOW("USER_FOLLOW"),
-         @Json(name = "PROFILE_VISIT") PROFILE_VISIT("PROFILE_VISIT"),
-         @Json(name = "VIDEO_MRC_VIEW") VIDEO_MRC_VIEW("VIDEO_MRC_VIEW"),
-         @Json(name = "VIDEO_10S_VIEW") VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
-         @Json(name = "QUARTILE_95_PERCENT_VIEW") QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
-         @Json(name = "VIDEO_V50_WATCH_TIME") VIDEO_V50_WATCH_TIME("VIDEO_V50_WATCH_TIME"),
-         @Json(name = "VIDEO_START") VIDEO_START("VIDEO_START"),
-         @Json(name = "VIDEO_AVG_WATCH_TIME") VIDEO_AVG_WATCH_TIME("VIDEO_AVG_WATCH_TIME");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
 
     /**
      * enum for parameter appTypes
@@ -271,11 +222,11 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * GET /pins/{pin_id}/analytics
      * Get Pin analytics
-     * Get analytics for a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * Get analytics for a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      * @param pinId Unique identifier of a Pin.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.
+     * @param metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &#x60;2023-03-20&#x60;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &#x60;NO_SPLIT&#x60;.
      * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to SplitField.NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
@@ -288,7 +239,7 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun pinsAnalytics(pinId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MetricTypesPinsAnalytics>, appTypes: AppTypesPinsAnalytics? = AppTypesPinsAnalytics.ALL, splitField: SplitFieldPinsAnalytics? = SplitFieldPinsAnalytics.NO_SPLIT, adAccountId: kotlin.String? = null) : kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse> {
+    fun pinsAnalytics(pinId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<QuerypinanalyticsmetrictypesItems>, appTypes: AppTypesPinsAnalytics? = AppTypesPinsAnalytics.ALL, splitField: SplitFieldPinsAnalytics? = SplitFieldPinsAnalytics.NO_SPLIT, adAccountId: kotlin.String? = null) : kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse> {
         val localVarResponse = pinsAnalyticsWithHttpInfo(pinId = pinId, startDate = startDate, endDate = endDate, metricTypes = metricTypes, appTypes = appTypes, splitField = splitField, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
@@ -309,11 +260,11 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * GET /pins/{pin_id}/analytics
      * Get Pin analytics
-     * Get analytics for a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * Get analytics for a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      * @param pinId Unique identifier of a Pin.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.
+     * @param metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &#x60;2023-03-20&#x60;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &#x60;NO_SPLIT&#x60;.
      * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to SplitField.NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
@@ -323,7 +274,7 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun pinsAnalyticsWithHttpInfo(pinId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MetricTypesPinsAnalytics>, appTypes: AppTypesPinsAnalytics?, splitField: SplitFieldPinsAnalytics?, adAccountId: kotlin.String?) : ApiResponse<kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>?> {
+    fun pinsAnalyticsWithHttpInfo(pinId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<QuerypinanalyticsmetrictypesItems>, appTypes: AppTypesPinsAnalytics?, splitField: SplitFieldPinsAnalytics?, adAccountId: kotlin.String?) : ApiResponse<kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>?> {
         val localVariableConfig = pinsAnalyticsRequestConfig(pinId = pinId, startDate = startDate, endDate = endDate, metricTypes = metricTypes, appTypes = appTypes, splitField = splitField, adAccountId = adAccountId)
 
         return request<Unit, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>(
@@ -337,18 +288,18 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * @param pinId Unique identifier of a Pin.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.
+     * @param metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &#x60;2023-03-20&#x60;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &#x60;NO_SPLIT&#x60;.
      * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to SplitField.NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun pinsAnalyticsRequestConfig(pinId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MetricTypesPinsAnalytics>, appTypes: AppTypesPinsAnalytics?, splitField: SplitFieldPinsAnalytics?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
+    fun pinsAnalyticsRequestConfig(pinId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<QuerypinanalyticsmetrictypesItems>, appTypes: AppTypesPinsAnalytics?, splitField: SplitFieldPinsAnalytics?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                put("start_date", listOf(parseDateToQueryString(startDate)))
-                put("end_date", listOf(parseDateToQueryString(endDate)))
+                put("start_date", listOf(parseDateToQueryString<java.time.LocalDate>(startDate)))
+                put("end_date", listOf(parseDateToQueryString<java.time.LocalDate>(endDate)))
                 if (appTypes != null) {
                     put("app_types", listOf(appTypes.value))
                 }
@@ -376,7 +327,7 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * POST /pins
      * Create Pin
-     *   Create a Pin on a board or board section owned by the \&quot;operation user_account\&quot;.   Note: If the current \&quot;operation user_account\&quot; (defined by the access token) has access to another user&#39;s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account&#39;s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id&#x3D;12345&amp;...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called &#39;curated content&#39;, please use our [Save button](/docs/web-features/add-ons-overview/) instead. For more tips on creating fresh content for Pinterest, review our [Content App Solutions Guide](/docs/api-features/content-overview/).  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-image-pins)** about image Pin creation.
+     *  Create a Pin on a board or board section owned by the \&quot;operation user_account\&quot;.   Note: If the current \&quot;operation user_account\&quot; (defined by the access token) has access to another user&#39;s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account&#39;s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id&#x3D;12345&amp;...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called &#39;curated content&#39;, please use our [Save button](/docs/web-features/add-ons-overview/) instead. For more tips on creating fresh content for Pinterest, review our [Content App Solutions Guide](/docs/api-features/content-overview/).  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-image-pins)** about image Pin creation.
      * @param pinCreate 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return Pin
@@ -409,7 +360,7 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * POST /pins
      * Create Pin
-     *   Create a Pin on a board or board section owned by the \&quot;operation user_account\&quot;.   Note: If the current \&quot;operation user_account\&quot; (defined by the access token) has access to another user&#39;s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account&#39;s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id&#x3D;12345&amp;...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called &#39;curated content&#39;, please use our [Save button](/docs/web-features/add-ons-overview/) instead. For more tips on creating fresh content for Pinterest, review our [Content App Solutions Guide](/docs/api-features/content-overview/).  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-image-pins)** about image Pin creation.
+     *  Create a Pin on a board or board section owned by the \&quot;operation user_account\&quot;.   Note: If the current \&quot;operation user_account\&quot; (defined by the access token) has access to another user&#39;s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account&#39;s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id&#x3D;12345&amp;...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called &#39;curated content&#39;, please use our [Save button](/docs/web-features/add-ons-overview/) instead. For more tips on creating fresh content for Pinterest, review our [Content App Solutions Guide](/docs/api-features/content-overview/).  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-image-pins)** about image Pin creation.
      * @param pinCreate 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<Pin?>
@@ -458,22 +409,23 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * DELETE /pins/{pin_id}
      * Delete Pin
-     *    Delete a Pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account.   - By default, the \&quot;operation user_account\&quot; is the token user_account.    Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
+     *   Delete a Pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account.   - By default, the \&quot;operation user_account\&quot; is the token user_account.    Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
      * @param pinId 
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return void
+     * @return Pin
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun pinsDelete(pinId: kotlin.String, adAccountId: kotlin.String? = null) : Unit {
+    fun pinsDelete(pinId: kotlin.String, adAccountId: kotlin.String? = null) : Pin {
         val localVarResponse = pinsDeleteWithHttpInfo(pinId = pinId, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as Pin
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -490,18 +442,19 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * DELETE /pins/{pin_id}
      * Delete Pin
-     *    Delete a Pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account.   - By default, the \&quot;operation user_account\&quot; is the token user_account.    Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
+     *   Delete a Pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account.   - By default, the \&quot;operation user_account\&quot; is the token user_account.    Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
      * @param pinId 
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<Pin?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun pinsDeleteWithHttpInfo(pinId: kotlin.String, adAccountId: kotlin.String?) : ApiResponse<Unit?> {
+    fun pinsDeleteWithHttpInfo(pinId: kotlin.String, adAccountId: kotlin.String?) : ApiResponse<Pin?> {
         val localVariableConfig = pinsDeleteRequestConfig(pinId = pinId, adAccountId = adAccountId)
 
-        return request<Unit, Unit>(
+        return request<Unit, Pin>(
             localVariableConfig
         )
     }
@@ -537,7 +490,7 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * GET /pins/{pin_id}
      * Get Pin
-     *    Get a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account.   - By default, the \&quot;operation user_account\&quot; is the token user_account.    Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
+     *   Get a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account.   - By default, the \&quot;operation user_account\&quot; is the token user_account.    Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
      * @param pinId 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
@@ -571,7 +524,7 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * GET /pins/{pin_id}
      * Get Pin
-     *    Get a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account.   - By default, the \&quot;operation user_account\&quot; is the token user_account.    Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
+     *   Get a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account.   - By default, the \&quot;operation user_account\&quot; is the token user_account.    Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
      * @param pinId 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
@@ -622,49 +575,18 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
-     * enum for parameter pinFilter
-     */
-     enum class PinFilterPinsList(val value: kotlin.String) {
-         @Json(name = "exclude_native") exclude_native("exclude_native"),
-         @Json(name = "exclude_repins") exclude_repins("exclude_repins"),
-         @Json(name = "has_been_promoted") has_been_promoted("has_been_promoted");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
-     * enum for parameter pinType
-     */
-     enum class PinTypePinsList(val value: kotlin.String) {
-         @Json(name = "PRIVATE") PRIVATE("PRIVATE");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /pins
      * List Pins
-     *      Get a list of the Pins owned by the \&quot;operation user_account\&quot;.     - By default, the \&quot;operation user_account\&quot; is the token user_account.     - All Pins owned by the \&quot;operation user_account\&quot; are included, regardless of who owns the board they are on.      Optional: Business Access: Specify an &#x60;ad_account_id&#x60; to use the owner of that ad_account as the \&quot;operation user_account\&quot;.      Disclaimer: There are known performance issues when filtering by field &#x60;creative_type&#x60; and including protected pins.     If your request is timing out in this scenario, we encourage you to use [GET List Pins on Board](/docs/api/v5/#operation/boards/list_pins).
+     *     Get a list of the Pins owned by the \&quot;operation user_account\&quot;.     - By default, the \&quot;operation user_account\&quot; is the token user_account.     - All Pins owned by the \&quot;operation user_account\&quot; are included, regardless of who owns the board they are on.      Optional: Business Access: Specify an &#x60;ad_account_id&#x60; to use the owner of that ad_account as the \&quot;operation user_account\&quot;.      Disclaimer: There are known performance issues when filtering by field &#x60;creative_type&#x60; and including protected pins.     If your request is timing out in this scenario, we encourage you to use [GET List Pins on Board](/docs/api/v5/#operation/boards/list_pins).
      * @param pinFilter The filter to apply to the pins (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      * @param includeProtectedPins Whether to include protected pins in the results (optional, default to false)
      * @param pinType The type of pins to return, currently only enabled for private pins (optional)
      * @param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param domain Only return pins with links that match the exact domain. Domain should not include &#39;www.&#39; prefix. For example, &#39;pinterest.com&#39; is a valid domain, but &#39;www.pinterest.com&#39; is not (will not match any pins). (optional)
+     * @param domains Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. &#x60;?domains&#x3D;instagram.com,jcpenney.com&#x60;). (optional)
+     * @param includeProductTagObj Include product tag objects in the response with their associated links. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return PinsList200Response
@@ -676,8 +598,8 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun pinsList(pinFilter: PinFilterPinsList? = null, pinMetrics: kotlin.Boolean? = false, includeProtectedPins: kotlin.Boolean? = false, pinType: PinTypePinsList? = null, creativeTypes: kotlin.collections.List<CreativeType>? = null, adAccountId: kotlin.String? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : PinsList200Response {
-        val localVarResponse = pinsListWithHttpInfo(pinFilter = pinFilter, pinMetrics = pinMetrics, includeProtectedPins = includeProtectedPins, pinType = pinType, creativeTypes = creativeTypes, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
+    fun pinsList(pinFilter: PinFilter? = null, pinMetrics: kotlin.Boolean? = false, includeProtectedPins: kotlin.Boolean? = false, pinType: PinType? = null, creativeTypes: kotlin.collections.List<CreativeType>? = null, adAccountId: kotlin.String? = null, domain: kotlin.String? = null, domains: kotlin.collections.List<kotlin.String>? = null, includeProductTagObj: kotlin.Boolean? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : PinsList200Response {
+        val localVarResponse = pinsListWithHttpInfo(pinFilter = pinFilter, pinMetrics = pinMetrics, includeProtectedPins = includeProtectedPins, pinType = pinType, creativeTypes = creativeTypes, adAccountId = adAccountId, domain = domain, domains = domains, includeProductTagObj = includeProductTagObj, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as PinsList200Response
@@ -697,13 +619,16 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * GET /pins
      * List Pins
-     *      Get a list of the Pins owned by the \&quot;operation user_account\&quot;.     - By default, the \&quot;operation user_account\&quot; is the token user_account.     - All Pins owned by the \&quot;operation user_account\&quot; are included, regardless of who owns the board they are on.      Optional: Business Access: Specify an &#x60;ad_account_id&#x60; to use the owner of that ad_account as the \&quot;operation user_account\&quot;.      Disclaimer: There are known performance issues when filtering by field &#x60;creative_type&#x60; and including protected pins.     If your request is timing out in this scenario, we encourage you to use [GET List Pins on Board](/docs/api/v5/#operation/boards/list_pins).
+     *     Get a list of the Pins owned by the \&quot;operation user_account\&quot;.     - By default, the \&quot;operation user_account\&quot; is the token user_account.     - All Pins owned by the \&quot;operation user_account\&quot; are included, regardless of who owns the board they are on.      Optional: Business Access: Specify an &#x60;ad_account_id&#x60; to use the owner of that ad_account as the \&quot;operation user_account\&quot;.      Disclaimer: There are known performance issues when filtering by field &#x60;creative_type&#x60; and including protected pins.     If your request is timing out in this scenario, we encourage you to use [GET List Pins on Board](/docs/api/v5/#operation/boards/list_pins).
      * @param pinFilter The filter to apply to the pins (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      * @param includeProtectedPins Whether to include protected pins in the results (optional, default to false)
      * @param pinType The type of pins to return, currently only enabled for private pins (optional)
      * @param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param domain Only return pins with links that match the exact domain. Domain should not include &#39;www.&#39; prefix. For example, &#39;pinterest.com&#39; is a valid domain, but &#39;www.pinterest.com&#39; is not (will not match any pins). (optional)
+     * @param domains Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. &#x60;?domains&#x3D;instagram.com,jcpenney.com&#x60;). (optional)
+     * @param includeProductTagObj Include product tag objects in the response with their associated links. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<PinsList200Response?>
@@ -712,8 +637,8 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun pinsListWithHttpInfo(pinFilter: PinFilterPinsList?, pinMetrics: kotlin.Boolean?, includeProtectedPins: kotlin.Boolean?, pinType: PinTypePinsList?, creativeTypes: kotlin.collections.List<CreativeType>?, adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<PinsList200Response?> {
-        val localVariableConfig = pinsListRequestConfig(pinFilter = pinFilter, pinMetrics = pinMetrics, includeProtectedPins = includeProtectedPins, pinType = pinType, creativeTypes = creativeTypes, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
+    fun pinsListWithHttpInfo(pinFilter: PinFilter?, pinMetrics: kotlin.Boolean?, includeProtectedPins: kotlin.Boolean?, pinType: PinType?, creativeTypes: kotlin.collections.List<CreativeType>?, adAccountId: kotlin.String?, domain: kotlin.String?, domains: kotlin.collections.List<kotlin.String>?, includeProductTagObj: kotlin.Boolean?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<PinsList200Response?> {
+        val localVariableConfig = pinsListRequestConfig(pinFilter = pinFilter, pinMetrics = pinMetrics, includeProtectedPins = includeProtectedPins, pinType = pinType, creativeTypes = creativeTypes, adAccountId = adAccountId, domain = domain, domains = domains, includeProductTagObj = includeProductTagObj, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, PinsList200Response>(
             localVariableConfig
@@ -729,16 +654,19 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * @param pinType The type of pins to return, currently only enabled for private pins (optional)
      * @param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param domain Only return pins with links that match the exact domain. Domain should not include &#39;www.&#39; prefix. For example, &#39;pinterest.com&#39; is a valid domain, but &#39;www.pinterest.com&#39; is not (will not match any pins). (optional)
+     * @param domains Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. &#x60;?domains&#x3D;instagram.com,jcpenney.com&#x60;). (optional)
+     * @param includeProductTagObj Include product tag objects in the response with their associated links. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun pinsListRequestConfig(pinFilter: PinFilterPinsList?, pinMetrics: kotlin.Boolean?, includeProtectedPins: kotlin.Boolean?, pinType: PinTypePinsList?, creativeTypes: kotlin.collections.List<CreativeType>?, adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
+    fun pinsListRequestConfig(pinFilter: PinFilter?, pinMetrics: kotlin.Boolean?, includeProtectedPins: kotlin.Boolean?, pinType: PinType?, creativeTypes: kotlin.collections.List<CreativeType>?, adAccountId: kotlin.String?, domain: kotlin.String?, domains: kotlin.collections.List<kotlin.String>?, includeProductTagObj: kotlin.Boolean?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (pinFilter != null) {
-                    put("pin_filter", listOf(pinFilter.value))
+                    put("pin_filter", listOf(pinFilter.toString()))
                 }
                 if (pinMetrics != null) {
                     put("pin_metrics", listOf(pinMetrics.toString()))
@@ -747,13 +675,22 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
                     put("include_protected_pins", listOf(includeProtectedPins.toString()))
                 }
                 if (pinType != null) {
-                    put("pin_type", listOf(pinType.value))
+                    put("pin_type", listOf(pinType.toString()))
                 }
                 if (creativeTypes != null) {
                     put("creative_types", toMultiValue(creativeTypes.toList(), "multi"))
                 }
                 if (adAccountId != null) {
                     put("ad_account_id", listOf(adAccountId.toString()))
+                }
+                if (domain != null) {
+                    put("domain", listOf(domain.toString()))
+                }
+                if (domains != null) {
+                    put("domains", toMultiValue(domains.toList(), "multi"))
+                }
+                if (includeProductTagObj != null) {
+                    put("include_product_tag_obj", listOf(includeProductTagObj.toString()))
                 }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
@@ -778,9 +715,9 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * POST /pins/{pin_id}/save
      * Save Pin
-     * Save a Pin on a board or board section owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account. Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  - Any Pin type can be saved: image Pin, video Pin, Idea Pin, product Pin, etc. - Any public Pin can be saved given a pin ID.
+     * Save a Pin on a board or board section owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account. Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  - Any Pin type can be saved: image Pin, video Pin, Idea Pin, product Pin, etc. - Any public Pin can be saved given a pin ID.
      * @param pinId Unique identifier of a Pin.
-     * @param pinsSaveRequest Request object used to save an existing pin
+     * @param pinsSaveRequestCreate 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return Pin
      * @throws IllegalStateException If the request is not correctly configured
@@ -791,8 +728,8 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun pinsSave(pinId: kotlin.String, pinsSaveRequest: PinsSaveRequest, adAccountId: kotlin.String? = null) : Pin {
-        val localVarResponse = pinsSaveWithHttpInfo(pinId = pinId, pinsSaveRequest = pinsSaveRequest, adAccountId = adAccountId)
+    fun pinsSave(pinId: kotlin.String, pinsSaveRequestCreate: PinsSaveRequestCreate, adAccountId: kotlin.String? = null) : Pin {
+        val localVarResponse = pinsSaveWithHttpInfo(pinId = pinId, pinsSaveRequestCreate = pinsSaveRequestCreate, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as Pin
@@ -812,9 +749,9 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * POST /pins/{pin_id}/save
      * Save Pin
-     * Save a Pin on a board or board section owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account. Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  - Any Pin type can be saved: image Pin, video Pin, Idea Pin, product Pin, etc. - Any public Pin can be saved given a pin ID.
+     * Save a Pin on a board or board section owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account. Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  - Any Pin type can be saved: image Pin, video Pin, Idea Pin, product Pin, etc. - Any public Pin can be saved given a pin ID.
      * @param pinId Unique identifier of a Pin.
-     * @param pinsSaveRequest Request object used to save an existing pin
+     * @param pinsSaveRequestCreate 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<Pin?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -822,10 +759,10 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun pinsSaveWithHttpInfo(pinId: kotlin.String, pinsSaveRequest: PinsSaveRequest, adAccountId: kotlin.String?) : ApiResponse<Pin?> {
-        val localVariableConfig = pinsSaveRequestConfig(pinId = pinId, pinsSaveRequest = pinsSaveRequest, adAccountId = adAccountId)
+    fun pinsSaveWithHttpInfo(pinId: kotlin.String, pinsSaveRequestCreate: PinsSaveRequestCreate, adAccountId: kotlin.String?) : ApiResponse<Pin?> {
+        val localVariableConfig = pinsSaveRequestConfig(pinId = pinId, pinsSaveRequestCreate = pinsSaveRequestCreate, adAccountId = adAccountId)
 
-        return request<PinsSaveRequest, Pin>(
+        return request<PinsSaveRequestCreate, Pin>(
             localVariableConfig
         )
     }
@@ -834,12 +771,12 @@ open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * To obtain the request config of the operation pinsSave
      *
      * @param pinId Unique identifier of a Pin.
-     * @param pinsSaveRequest Request object used to save an existing pin
+     * @param pinsSaveRequestCreate 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun pinsSaveRequestConfig(pinId: kotlin.String, pinsSaveRequest: PinsSaveRequest, adAccountId: kotlin.String?) : RequestConfig<PinsSaveRequest> {
-        val localVariableBody = pinsSaveRequest
+    fun pinsSaveRequestConfig(pinId: kotlin.String, pinsSaveRequestCreate: PinsSaveRequestCreate, adAccountId: kotlin.String?) : RequestConfig<PinsSaveRequestCreate> {
+        val localVariableBody = pinsSaveRequestCreate
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (adAccountId != null) {

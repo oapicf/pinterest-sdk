@@ -6,7 +6,13 @@
   "fields": [
     {
       "name": "catalog_type",
-      "type": "model.CatalogsType",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsHotelFeedsUpdateRequest_catalogUnderscoretype",
+        "symbols": [
+          "HOTEL"
+        ]
+      },
       "doc": ""
     },
     {

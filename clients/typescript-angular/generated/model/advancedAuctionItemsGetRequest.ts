@@ -7,7 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AdvancedAuctionItemsGetRecord } from './advancedAuctionItemsGetRecord';
+import { AdvancedAuctionKey } from './advancedAuctionKey';
 
 
 /**
@@ -21,6 +21,6 @@ export interface AdvancedAuctionItemsGetRequest {
     /**
      * A list of retail catalog items to fetch bid options for
      */
-    items: Array<AdvancedAuctionItemsGetRecord>;
+    items: Array<AdvancedAuctionKey>;
 }
 

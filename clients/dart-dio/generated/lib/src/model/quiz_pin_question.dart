@@ -97,22 +97,25 @@ class _$QuizPinQuestionSerializer implements PrimitiveSerializer<QuizPinQuestion
         case r'options':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType.nullable(QuizPinOption)]),
-          ) as BuiltList<QuizPinOption?>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType.nullable(QuizPinOption)]),
+          ) as BuiltList<QuizPinOption?>?;
+          if (valueDes == null) continue;
           result.options.replace(valueDes);
           break;
         case r'question_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.questionId = valueDes;
           break;
         case r'question_text':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.questionText = valueDes;
           break;
         default:

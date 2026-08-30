@@ -1,8 +1,9 @@
 (ns pinterest-rest-api.specs.item-attributes-request
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
+            [pinterest-rest-api.specs.catalogs-ai-content-disclosure :refer :all]
             [pinterest-rest-api.specs.updatable-item-attributes-gtin :refer :all]
-            [pinterest-rest-api.specs.item-attributes-request-all-of-image-link :refer :all]
+            [pinterest-rest-api.specs.item-attributes-request-image-link :refer :all]
             )
   (:import (java.io File)))
 
@@ -56,8 +57,10 @@
    (ds/opt :ad_video_1_tag) string?
    (ds/opt :ad_video_2_link) string?
    (ds/opt :ad_video_2_tag) string?
+   (ds/opt :additional_image_link) (s/coll-of string?)
    (ds/opt :adult) boolean?
    (ds/opt :age_group) string?
+   (ds/opt :ai_disclosures) (s/coll-of catalogs-ai-content-disclosure-spec)
    (ds/opt :android_deep_link) string?
    (ds/opt :availability) string?
    (ds/opt :average_review_rating) float?
@@ -82,6 +85,7 @@
    (ds/opt :google_product_category) string?
    (ds/opt :gtin) updatable-item-attributes-gtin-spec
    (ds/opt :id) string?
+   (ds/opt :image_link) item-attributes-request-image-link-spec
    (ds/opt :installment_price) string?
    (ds/opt :ios_deep_link) string?
    (ds/opt :item_group_id) string?
@@ -99,6 +103,7 @@
    (ds/opt :promotion_id) string?
    (ds/opt :sale_price) string?
    (ds/opt :sale_price_effective_date) string?
+   (ds/opt :save_pin_disabled) boolean?
    (ds/opt :shipping) string?
    (ds/opt :shipping_height) string?
    (ds/opt :shipping_weight) string?
@@ -112,9 +117,6 @@
    (ds/opt :unit_pricing_measure) string?
    (ds/opt :variant_names) (s/coll-of string?)
    (ds/opt :variant_values) (s/coll-of string?)
-   (ds/opt :additional_image_link) (s/coll-of string?)
-   (ds/opt :image_link) item-attributes-request-all-of-image-link-spec
-   (ds/opt :save_pin_disabled) boolean?
    (ds/opt :video_link) string?
    })
 

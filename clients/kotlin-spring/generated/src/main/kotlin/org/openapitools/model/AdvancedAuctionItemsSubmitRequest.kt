@@ -23,11 +23,13 @@ data class AdvancedAuctionItemsSubmitRequest(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Catalog id pertaining to all items")
+    @param:JsonProperty("catalog_id")
     @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String,
 
     @field:Valid
     @get:Size(min=1,max=10000) 
-    @Schema(example = "null", required = true, description = "Array of item bid option operations")
+    @Schema(required = true, description = "Array of item bid option operations")
+    @param:JsonProperty("items")
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<AdvancedAuctionItemsSubmitRecord>
 ) {
 

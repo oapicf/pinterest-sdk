@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 	"reflect"
@@ -77,17 +78,17 @@ func (c *AdGroupsAPIController) Routes() Routes {
 			"/v5/ad_accounts/{ad_account_id}/ad_groups/analytics",
 			c.AdGroupsAnalytics,
 		},
-		"AdGroupsTargetingAnalyticsGet": Route{
-			"AdGroupsTargetingAnalyticsGet",
-			strings.ToUpper("Get"),
-			"/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics",
-			c.AdGroupsTargetingAnalyticsGet,
-		},
 		"AdGroupsAudienceSizing": Route{
 			"AdGroupsAudienceSizing",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/ad_groups/audience_sizing",
 			c.AdGroupsAudienceSizing,
+		},
+		"AdGroupsTargetingAnalyticsGet": Route{
+			"AdGroupsTargetingAnalyticsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics",
+			c.AdGroupsTargetingAnalyticsGet,
 		},
 		"AdGroupsGet": Route{
 			"AdGroupsGet",
@@ -95,11 +96,41 @@ func (c *AdGroupsAPIController) Routes() Routes {
 			"/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}",
 			c.AdGroupsGet,
 		},
+		"AdGroupsDynamicTitlesProcessCsv": Route{
+			"AdGroupsDynamicTitlesProcessCsv",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles",
+			c.AdGroupsDynamicTitlesProcessCsv,
+		},
+		"AdGroupsDynamicTitlesDownloadCsv": Route{
+			"AdGroupsDynamicTitlesDownloadCsv",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/csv",
+			c.AdGroupsDynamicTitlesDownloadCsv,
+		},
+		"AdGroupsDynamicTitlesGetStatus": Route{
+			"AdGroupsDynamicTitlesGetStatus",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/status",
+			c.AdGroupsDynamicTitlesGetStatus,
+		},
+		"AdGroupsDynamicTitlesGetUploadUrl": Route{
+			"AdGroupsDynamicTitlesGetUploadUrl",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/uploads",
+			c.AdGroupsDynamicTitlesGetUploadUrl,
+		},
 		"AdGroupsBidFloorGet": Route{
 			"AdGroupsBidFloorGet",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/bid_floor",
 			c.AdGroupsBidFloorGet,
+		},
+		"GetAdGroupsByPromotionIdsList": Route{
+			"GetAdGroupsByPromotionIdsList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/promotion_applied_entities",
+			c.GetAdGroupsByPromotionIdsList,
 		},
 	}
 }
@@ -132,16 +163,16 @@ func (c *AdGroupsAPIController) OrderedRoutes() []Route {
 			c.AdGroupsAnalytics,
 		},
 		Route{
-			"AdGroupsTargetingAnalyticsGet",
-			strings.ToUpper("Get"),
-			"/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics",
-			c.AdGroupsTargetingAnalyticsGet,
-		},
-		Route{
 			"AdGroupsAudienceSizing",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/ad_groups/audience_sizing",
 			c.AdGroupsAudienceSizing,
+		},
+		Route{
+			"AdGroupsTargetingAnalyticsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics",
+			c.AdGroupsTargetingAnalyticsGet,
 		},
 		Route{
 			"AdGroupsGet",
@@ -150,10 +181,40 @@ func (c *AdGroupsAPIController) OrderedRoutes() []Route {
 			c.AdGroupsGet,
 		},
 		Route{
+			"AdGroupsDynamicTitlesProcessCsv",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles",
+			c.AdGroupsDynamicTitlesProcessCsv,
+		},
+		Route{
+			"AdGroupsDynamicTitlesDownloadCsv",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/csv",
+			c.AdGroupsDynamicTitlesDownloadCsv,
+		},
+		Route{
+			"AdGroupsDynamicTitlesGetStatus",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/status",
+			c.AdGroupsDynamicTitlesGetStatus,
+		},
+		Route{
+			"AdGroupsDynamicTitlesGetUploadUrl",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/uploads",
+			c.AdGroupsDynamicTitlesGetUploadUrl,
+		},
+		Route{
 			"AdGroupsBidFloorGet",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/bid_floor",
 			c.AdGroupsBidFloorGet,
+		},
+		Route{
+			"GetAdGroupsByPromotionIdsList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/promotion_applied_entities",
+			c.GetAdGroupsByPromotionIdsList,
 		},
 	}
 }
@@ -173,17 +234,12 @@ func (c *AdGroupsAPIController) AdGroupsList(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var campaignIdsParam []string
-	if query.Has("campaign_ids") {
-		campaignIdsParam = strings.Split(query.Get("campaign_ids"), ",")
-	}
-	var adGroupIdsParam []string
-	if query.Has("ad_group_ids") {
-		adGroupIdsParam = strings.Split(query.Get("ad_group_ids"), ",")
-	}
-	var entityStatusesParam []string
-	if query.Has("entity_statuses") {
-		entityStatusesParam = strings.Split(query.Get("entity_statuses"), ",")
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
 	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
@@ -203,19 +259,33 @@ func (c *AdGroupsAPIController) AdGroupsList(w http.ResponseWriter, r *http.Requ
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var orderParam string
+	var orderParam PinterestLibPaginationOrder
 	if query.Has("order") {
-		param := query.Get("order")
+		param := PinterestLibPaginationOrder(query.Get("order"))
 
 		orderParam = param
 	} else {
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
+	var campaignIdsParam []string
+	if query.Has("campaign_ids") {
+		campaignIdsParam = strings.Split(query.Get("campaign_ids"), ",")
+	}
+	var adGroupIdsParam []string
+	if query.Has("ad_group_ids") {
+		adGroupIdsParam = strings.Split(query.Get("ad_group_ids"), ",")
+	}
+	var entityStatusesParam []EntityStatus
+	if query.Has("entity_statuses") {
+		paramSplits := strings.Split(query.Get("entity_statuses"), ",")
+		entityStatusesParam = make([]EntityStatus, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewEntityStatusFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "entity_statuses", Err: err}, nil)
+				return
+			}
+			entityStatusesParam = append(entityStatusesParam, paramEnum)
+		}
 	}
 	var translateInterestsToNamesParam bool
 	if query.Has("translate_interests_to_names") {
@@ -233,7 +303,7 @@ func (c *AdGroupsAPIController) AdGroupsList(w http.ResponseWriter, r *http.Requ
 		var param bool = false
 		translateInterestsToNamesParam = param
 	}
-	result, err := c.service.AdGroupsList(r.Context(), adAccountIdParam, campaignIdsParam, adGroupIdsParam, entityStatusesParam, pageSizeParam, orderParam, bookmarkParam, translateInterestsToNamesParam)
+	result, err := c.service.AdGroupsList(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, orderParam, campaignIdsParam, adGroupIdsParam, entityStatusesParam, translateInterestsToNamesParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -251,20 +321,25 @@ func (c *AdGroupsAPIController) AdGroupsCreate(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var adGroupCreateRequestParam []AdGroupCreateRequest
+	var adGroupCreateCreateParam []AdGroupCreateCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&adGroupCreateRequestParam); err != nil {
+	if err := d.Decode(&adGroupCreateCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	for _, el := range adGroupCreateRequestParam {
-		if err := AssertAdGroupCreateRequestRequired(el); err != nil {
+	for _, el := range adGroupCreateCreateParam {
+		if err := AssertAdGroupCreateCreateRequired(el); err != nil {
 			c.errorHandler(w, r, err, nil)
 			return
 		}
 	}
-	result, err := c.service.AdGroupsCreate(r.Context(), adAccountIdParam, adGroupCreateRequestParam)
+	result, err := c.service.AdGroupsCreate(r.Context(), adAccountIdParam, adGroupCreateCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -282,20 +357,25 @@ func (c *AdGroupsAPIController) AdGroupsUpdate(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var adGroupUpdateRequestParam []AdGroupUpdateRequest
+	var adGroupUpdateBatchUpdateParam []AdGroupUpdateBatchUpdate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&adGroupUpdateRequestParam); err != nil {
+	if err := d.Decode(&adGroupUpdateBatchUpdateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	for _, el := range adGroupUpdateRequestParam {
-		if err := AssertAdGroupUpdateRequestRequired(el); err != nil {
+	for _, el := range adGroupUpdateBatchUpdateParam {
+		if err := AssertAdGroupUpdateBatchUpdateRequired(el); err != nil {
 			c.errorHandler(w, r, err, nil)
 			return
 		}
 	}
-	result, err := c.service.AdGroupsUpdate(r.Context(), adAccountIdParam, adGroupUpdateRequestParam)
+	result, err := c.service.AdGroupsUpdate(r.Context(), adAccountIdParam, adGroupUpdateBatchUpdateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -311,11 +391,6 @@ func (c *AdGroupsAPIController) AdGroupsAnalytics(w http.ResponseWriter, r *http
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
 	var startDateParam string
@@ -340,9 +415,18 @@ func (c *AdGroupsAPIController) AdGroupsAnalytics(w http.ResponseWriter, r *http
 	if query.Has("ad_group_ids") {
 		adGroupIdsParam = strings.Split(query.Get("ad_group_ids"), ",")
 	}
-	var columnsParam []string
+	var columnsParam []ReportingColumnSync
 	if query.Has("columns") {
-		columnsParam = strings.Split(query.Get("columns"), ",")
+		paramSplits := strings.Split(query.Get("columns"), ",")
+		columnsParam = make([]ReportingColumnSync, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewReportingColumnSyncFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "columns", Err: err}, nil)
+				return
+			}
+			columnsParam = append(columnsParam, paramEnum)
+		}
 	}
 	var granularityParam Granularity
 	if query.Has("granularity") {
@@ -353,11 +437,16 @@ func (c *AdGroupsAPIController) AdGroupsAnalytics(w http.ResponseWriter, r *http
 		c.errorHandler(w, r, &RequiredError{Field: "granularity"}, nil)
 		return
 	}
-	var clickWindowDaysParam int32
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var clickWindowDaysParam float32
 	if query.Has("click_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("click_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "click_window_days", Err: err}, nil)
@@ -366,14 +455,14 @@ func (c *AdGroupsAPIController) AdGroupsAnalytics(w http.ResponseWriter, r *http
 
 		clickWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		clickWindowDaysParam = param
 	}
-	var engagementWindowDaysParam int32
+	var engagementWindowDaysParam float32
 	if query.Has("engagement_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("engagement_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "engagement_window_days", Err: err}, nil)
@@ -382,14 +471,14 @@ func (c *AdGroupsAPIController) AdGroupsAnalytics(w http.ResponseWriter, r *http
 
 		engagementWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		engagementWindowDaysParam = param
 	}
-	var viewWindowDaysParam int32
+	var viewWindowDaysParam float32
 	if query.Has("view_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("view_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "view_window_days", Err: err}, nil)
@@ -398,7 +487,7 @@ func (c *AdGroupsAPIController) AdGroupsAnalytics(w http.ResponseWriter, r *http
 
 		viewWindowDaysParam = param
 	} else {
-		var param int32 = 1
+		var param float32 = 1
 		viewWindowDaysParam = param
 	}
 	var conversionReportTimeParam string
@@ -433,7 +522,45 @@ func (c *AdGroupsAPIController) AdGroupsAnalytics(w http.ResponseWriter, r *http
 		reportingTimezoneParam = param
 	} else {
 	}
-	result, err := c.service.AdGroupsAnalytics(r.Context(), adAccountIdParam, startDateParam, endDateParam, adGroupIdsParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, aggregateReportRowsParam, reportingTimezoneParam)
+	result, err := c.service.AdGroupsAnalytics(r.Context(), startDateParam, endDateParam, adGroupIdsParam, columnsParam, granularityParam, adAccountIdParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, aggregateReportRowsParam, reportingTimezoneParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// AdGroupsAudienceSizing - Get audience sizing
+func (c *AdGroupsAPIController) AdGroupsAudienceSizing(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var adGroupAudienceSizingCreateParam AdGroupAudienceSizingCreate
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&adGroupAudienceSizingCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertAdGroupAudienceSizingCreateRequired(adGroupAudienceSizingCreateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertAdGroupAudienceSizingCreateConstraints(adGroupAudienceSizingCreateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.AdGroupsAudienceSizing(r.Context(), adAccountIdParam, adGroupAudienceSizingCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -491,9 +618,18 @@ func (c *AdGroupsAPIController) AdGroupsTargetingAnalyticsGet(w http.ResponseWri
 			targetingTypesParam = append(targetingTypesParam, paramEnum)
 		}
 	}
-	var columnsParam []string
+	var columnsParam []ReportingColumnSync
 	if query.Has("columns") {
-		columnsParam = strings.Split(query.Get("columns"), ",")
+		paramSplits := strings.Split(query.Get("columns"), ",")
+		columnsParam = make([]ReportingColumnSync, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewReportingColumnSyncFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "columns", Err: err}, nil)
+				return
+			}
+			columnsParam = append(columnsParam, paramEnum)
+		}
 	}
 	var granularityParam Granularity
 	if query.Has("granularity") {
@@ -504,11 +640,11 @@ func (c *AdGroupsAPIController) AdGroupsTargetingAnalyticsGet(w http.ResponseWri
 		c.errorHandler(w, r, &RequiredError{Field: "granularity"}, nil)
 		return
 	}
-	var clickWindowDaysParam int32
+	var clickWindowDaysParam float32
 	if query.Has("click_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("click_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "click_window_days", Err: err}, nil)
@@ -517,14 +653,14 @@ func (c *AdGroupsAPIController) AdGroupsTargetingAnalyticsGet(w http.ResponseWri
 
 		clickWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		clickWindowDaysParam = param
 	}
-	var engagementWindowDaysParam int32
+	var engagementWindowDaysParam float32
 	if query.Has("engagement_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("engagement_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "engagement_window_days", Err: err}, nil)
@@ -533,14 +669,14 @@ func (c *AdGroupsAPIController) AdGroupsTargetingAnalyticsGet(w http.ResponseWri
 
 		engagementWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		engagementWindowDaysParam = param
 	}
-	var viewWindowDaysParam int32
+	var viewWindowDaysParam float32
 	if query.Has("view_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("view_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "view_window_days", Err: err}, nil)
@@ -549,7 +685,7 @@ func (c *AdGroupsAPIController) AdGroupsTargetingAnalyticsGet(w http.ResponseWri
 
 		viewWindowDaysParam = param
 	} else {
-		var param int32 = 1
+		var param float32 = 1
 		viewWindowDaysParam = param
 	}
 	var conversionReportTimeParam string
@@ -581,40 +717,25 @@ func (c *AdGroupsAPIController) AdGroupsTargetingAnalyticsGet(w http.ResponseWri
 		reportingTimezoneParam = param
 	} else {
 	}
-	result, err := c.service.AdGroupsTargetingAnalyticsGet(r.Context(), adAccountIdParam, adGroupIdsParam, startDateParam, endDateParam, targetingTypesParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, attributionTypesParam, reportingTimezoneParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
+	var sortColumnsParam []string
+	if query.Has("sort_columns") {
+		sortColumnsParam = strings.Split(query.Get("sort_columns"), ",")
 	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
+	var sortAscendingParam bool
+	if query.Has("sort_ascending") {
+		param, err := parseBoolParameter(
+			query.Get("sort_ascending"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "sort_ascending", Err: err}, nil)
+			return
+		}
 
-// AdGroupsAudienceSizing - Get audience sizing
-func (c *AdGroupsAPIController) AdGroupsAudienceSizing(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
-		return
+		sortAscendingParam = param
+	} else {
 	}
-	var adGroupAudienceSizingRequestParam AdGroupAudienceSizingRequest
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&adGroupAudienceSizingRequestParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertAdGroupAudienceSizingRequestRequired(adGroupAudienceSizingRequestParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertAdGroupAudienceSizingRequestConstraints(adGroupAudienceSizingRequestParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.AdGroupsAudienceSizing(r.Context(), adAccountIdParam, adGroupAudienceSizingRequestParam)
+	result, err := c.service.AdGroupsTargetingAnalyticsGet(r.Context(), adAccountIdParam, adGroupIdsParam, startDateParam, endDateParam, targetingTypesParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, attributionTypesParam, reportingTimezoneParam, sortColumnsParam, sortAscendingParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -627,6 +748,29 @@ func (c *AdGroupsAPIController) AdGroupsAudienceSizing(w http.ResponseWriter, r 
 // AdGroupsGet - Get ad group
 func (c *AdGroupsAPIController) AdGroupsGet(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
+	adGroupIdParam := params["ad_group_id"]
+	if adGroupIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_group_id"}, nil)
+		return
+	}
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	result, err := c.service.AdGroupsGet(r.Context(), adGroupIdParam, adAccountIdParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// AdGroupsDynamicTitlesProcessCsv - Process dynamic titles CSV
+func (c *AdGroupsAPIController) AdGroupsDynamicTitlesProcessCsv(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
 	adAccountIdParam := params["ad_account_id"]
 	if adAccountIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
@@ -637,7 +781,96 @@ func (c *AdGroupsAPIController) AdGroupsGet(w http.ResponseWriter, r *http.Reque
 		c.errorHandler(w, r, &RequiredError{"ad_group_id"}, nil)
 		return
 	}
-	result, err := c.service.AdGroupsGet(r.Context(), adAccountIdParam, adGroupIdParam)
+	var dynamicTitlesProcessCsvCreateParam DynamicTitlesProcessCsvCreate
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&dynamicTitlesProcessCsvCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertDynamicTitlesProcessCsvCreateRequired(dynamicTitlesProcessCsvCreateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertDynamicTitlesProcessCsvCreateConstraints(dynamicTitlesProcessCsvCreateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.AdGroupsDynamicTitlesProcessCsv(r.Context(), adAccountIdParam, adGroupIdParam, dynamicTitlesProcessCsvCreateParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// AdGroupsDynamicTitlesDownloadCsv - Get dynamic titles CSV download URL
+func (c *AdGroupsAPIController) AdGroupsDynamicTitlesDownloadCsv(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	adGroupIdParam := params["ad_group_id"]
+	if adGroupIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_group_id"}, nil)
+		return
+	}
+	result, err := c.service.AdGroupsDynamicTitlesDownloadCsv(r.Context(), adAccountIdParam, adGroupIdParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// AdGroupsDynamicTitlesGetStatus - Get dynamic titles status
+func (c *AdGroupsAPIController) AdGroupsDynamicTitlesGetStatus(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	adGroupIdParam := params["ad_group_id"]
+	if adGroupIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_group_id"}, nil)
+		return
+	}
+	result, err := c.service.AdGroupsDynamicTitlesGetStatus(r.Context(), adAccountIdParam, adGroupIdParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// AdGroupsDynamicTitlesGetUploadUrl - Get dynamic titles upload URL
+func (c *AdGroupsAPIController) AdGroupsDynamicTitlesGetUploadUrl(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	adGroupIdParam := params["ad_group_id"]
+	if adGroupIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_group_id"}, nil)
+		return
+	}
+	result, err := c.service.AdGroupsDynamicTitlesGetUploadUrl(r.Context(), adAccountIdParam, adGroupIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -655,22 +888,86 @@ func (c *AdGroupsAPIController) AdGroupsBidFloorGet(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var bidFloorRequestParam BidFloorRequest
+	var bidFloorCreateParam BidFloorCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&bidFloorRequestParam); err != nil {
+	if err := d.Decode(&bidFloorCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertBidFloorRequestRequired(bidFloorRequestParam); err != nil {
+	if err := AssertBidFloorCreateRequired(bidFloorCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertBidFloorRequestConstraints(bidFloorRequestParam); err != nil {
+	if err := AssertBidFloorCreateConstraints(bidFloorCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.AdGroupsBidFloorGet(r.Context(), adAccountIdParam, bidFloorRequestParam)
+	result, err := c.service.AdGroupsBidFloorGet(r.Context(), adAccountIdParam, bidFloorCreateParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// GetAdGroupsByPromotionIdsList - List of ad groups using promotions IDs.
+func (c *AdGroupsAPIController) GetAdGroupsByPromotionIdsList(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	query, err := parseQuery(r.URL.RawQuery)
+	if err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var promotionIdsParam []string
+	if query.Has("promotion_ids") {
+		promotionIdsParam = strings.Split(query.Get("promotion_ids"), ",")
+	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
+	var pageSizeParam int32
+	if query.Has("page_size") {
+		param, err := parseNumericParameter[int32](
+			query.Get("page_size"),
+			WithParse[int32](parseInt32),
+			WithMinimum[int32](1),
+			WithMaximum[int32](250),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
+			return
+		}
+
+		pageSizeParam = param
+	} else {
+		var param int32 = 25
+		pageSizeParam = param
+	}
+	var orderParam PinterestLibPaginationOrder
+	if query.Has("order") {
+		param := PinterestLibPaginationOrder(query.Get("order"))
+
+		orderParam = param
+	} else {
+	}
+	result, err := c.service.GetAdGroupsByPromotionIdsList(r.Context(), adAccountIdParam, promotionIdsParam, bookmarkParam, pageSizeParam, orderParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

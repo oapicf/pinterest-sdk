@@ -12,9 +12,9 @@
     },
     {
       "name": "negated",
-      "type": ["boolean", "null"],
+      "type": ["null", "boolean"],
       "doc": "",
-      "default": false
+      "default": null
     },
     {
       "name": "values",

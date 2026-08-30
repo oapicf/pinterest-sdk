@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.AudienceAccountType
 
 module SharedAudienceAccount =
 
@@ -15,7 +16,7 @@ module SharedAudienceAccount =
     [<JsonProperty(PropertyName = "account_name")>]
     AccountName : string;
     [<JsonProperty(PropertyName = "account_type")>]
-    AccountType : string;
+    AccountType : AudienceAccountType;
     [<JsonProperty(PropertyName = "shared_on_timestamp")>]
     SharedOnTimestamp : int;
   }

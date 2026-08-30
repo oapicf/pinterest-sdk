@@ -12,20 +12,48 @@ import java.util.Date;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BatchOperationStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.CreativeAssetsProcessingRecord;
 
 /**
  * Object describing the catalogs creative assets items batch
  */
 @ApiModel(description = "Object describing the catalogs creative assets items batch")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsItemsBatch   {
   @JsonProperty("batch_id")
   private String batchId;
 
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String text) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("completed_time")
   private Date completedTime;
@@ -48,7 +76,7 @@ public class CatalogsCreativeAssetsItemsBatch   {
    * Id of the catalogs items batch
    * @return batchId
   **/
-  @ApiModelProperty(example = "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e", value = "Id of the catalogs items batch")
+  @ApiModelProperty(example = "595953100599279259", value = "Id of the catalogs items batch")
   public String getBatchId() {
     return batchId;
   }
@@ -57,7 +85,7 @@ public class CatalogsCreativeAssetsItemsBatch   {
     this.batchId = batchId;
   }
 
-  public CatalogsCreativeAssetsItemsBatch catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsItemsBatch catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -67,30 +95,48 @@ public class CatalogsCreativeAssetsItemsBatch   {
    * @return catalogType
   **/
   @ApiModelProperty(required = true, value = "")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
+  }
+
+  public CatalogsCreativeAssetsItemsBatch completedTime(Date completedTime) {
+    this.completedTime = completedTime;
+    return this;
   }
 
    /**
    * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
    * @return completedTime
   **/
-  @ApiModelProperty(value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
+  @ApiModelProperty(example = "2024-01-01T20:20Z", value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
   public Date getCompletedTime() {
     return completedTime;
+  }
+
+  public void setCompletedTime(Date completedTime) {
+    this.completedTime = completedTime;
+  }
+
+  public CatalogsCreativeAssetsItemsBatch createdTime(Date createdTime) {
+    this.createdTime = createdTime;
+    return this;
   }
 
    /**
    * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
    * @return createdTime
   **/
-  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
+  @ApiModelProperty(example = "2024-01-01T20:10:40Z", value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
   public Date getCreatedTime() {
     return createdTime;
+  }
+
+  public void setCreatedTime(Date createdTime) {
+    this.createdTime = createdTime;
   }
 
   public CatalogsCreativeAssetsItemsBatch items(List<@Valid CreativeAssetsProcessingRecord> items) {
@@ -180,10 +226,7 @@ public class CatalogsCreativeAssetsItemsBatch   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

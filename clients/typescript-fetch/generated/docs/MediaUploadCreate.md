@@ -16,7 +16,7 @@ import type { MediaUploadCreate } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "mediaType": null,
+  "mediaType": video,
 } satisfies MediaUploadCreate
 
 console.log(example)

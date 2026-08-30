@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.UserSummary
+import org.openapitools.model.FollowUser
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -22,10 +22,12 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class FollowersList200Response(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<UserSummary>,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("items")
+    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<FollowUser>,
 
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @param:JsonProperty("bookmark")
     @get:JsonProperty("bookmark") val bookmark: kotlin.String? = null
 ) {
 

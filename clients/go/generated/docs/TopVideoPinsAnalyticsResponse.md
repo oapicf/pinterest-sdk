@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DateAvailability** | Pointer to [**TopPinsAnalyticsResponseDateAvailability**](TopPinsAnalyticsResponseDateAvailability.md) |  | [optional] 
-**Pins** | Pointer to [**[]TopVideoPinsAnalyticsResponsePinsInner**](TopVideoPinsAnalyticsResponsePinsInner.md) |  | [optional] 
-**SortBy** | Pointer to **string** |  | [optional] 
+**DateAvailability** | Pointer to [**TopVideoPinsAnalyticsResponseDateAvailability**](TopVideoPinsAnalyticsResponseDateAvailability.md) |  | [optional] 
+**Pins** | Pointer to [**[]TopVideoPinsAnalyticsResponsePinsItems**](TopVideoPinsAnalyticsResponsePinsItems.md) |  | [optional] 
+**SortBy** | Pointer to [**TopVideoPinsSortBy**](TopVideoPinsSortBy.md) |  | [optional] 
 
 ## Methods
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDateAvailability
 
-`func (o *TopVideoPinsAnalyticsResponse) GetDateAvailability() TopPinsAnalyticsResponseDateAvailability`
+`func (o *TopVideoPinsAnalyticsResponse) GetDateAvailability() TopVideoPinsAnalyticsResponseDateAvailability`
 
 GetDateAvailability returns the DateAvailability field if non-nil, zero value otherwise.
 
 ### GetDateAvailabilityOk
 
-`func (o *TopVideoPinsAnalyticsResponse) GetDateAvailabilityOk() (*TopPinsAnalyticsResponseDateAvailability, bool)`
+`func (o *TopVideoPinsAnalyticsResponse) GetDateAvailabilityOk() (*TopVideoPinsAnalyticsResponseDateAvailability, bool)`
 
 GetDateAvailabilityOk returns a tuple with the DateAvailability field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDateAvailability
 
-`func (o *TopVideoPinsAnalyticsResponse) SetDateAvailability(v TopPinsAnalyticsResponseDateAvailability)`
+`func (o *TopVideoPinsAnalyticsResponse) SetDateAvailability(v TopVideoPinsAnalyticsResponseDateAvailability)`
 
 SetDateAvailability sets DateAvailability field to given value.
 
@@ -54,20 +54,20 @@ HasDateAvailability returns a boolean if a field has been set.
 
 ### GetPins
 
-`func (o *TopVideoPinsAnalyticsResponse) GetPins() []TopVideoPinsAnalyticsResponsePinsInner`
+`func (o *TopVideoPinsAnalyticsResponse) GetPins() []TopVideoPinsAnalyticsResponsePinsItems`
 
 GetPins returns the Pins field if non-nil, zero value otherwise.
 
 ### GetPinsOk
 
-`func (o *TopVideoPinsAnalyticsResponse) GetPinsOk() (*[]TopVideoPinsAnalyticsResponsePinsInner, bool)`
+`func (o *TopVideoPinsAnalyticsResponse) GetPinsOk() (*[]TopVideoPinsAnalyticsResponsePinsItems, bool)`
 
 GetPinsOk returns a tuple with the Pins field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPins
 
-`func (o *TopVideoPinsAnalyticsResponse) SetPins(v []TopVideoPinsAnalyticsResponsePinsInner)`
+`func (o *TopVideoPinsAnalyticsResponse) SetPins(v []TopVideoPinsAnalyticsResponsePinsItems)`
 
 SetPins sets Pins field to given value.
 
@@ -79,20 +79,20 @@ HasPins returns a boolean if a field has been set.
 
 ### GetSortBy
 
-`func (o *TopVideoPinsAnalyticsResponse) GetSortBy() string`
+`func (o *TopVideoPinsAnalyticsResponse) GetSortBy() TopVideoPinsSortBy`
 
 GetSortBy returns the SortBy field if non-nil, zero value otherwise.
 
 ### GetSortByOk
 
-`func (o *TopVideoPinsAnalyticsResponse) GetSortByOk() (*string, bool)`
+`func (o *TopVideoPinsAnalyticsResponse) GetSortByOk() (*TopVideoPinsSortBy, bool)`
 
 GetSortByOk returns a tuple with the SortBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSortBy
 
-`func (o *TopVideoPinsAnalyticsResponse) SetSortBy(v string)`
+`func (o *TopVideoPinsAnalyticsResponse) SetSortBy(v TopVideoPinsSortBy)`
 
 SetSortBy sets SortBy field to given value.
 

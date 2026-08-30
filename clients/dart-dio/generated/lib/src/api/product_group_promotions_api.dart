@@ -11,14 +11,17 @@ import 'package:dio/dio.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/api_util.dart';
 import 'package:openapi/src/model/date.dart';
-import 'package:openapi/src/model/error.dart';
+import 'package:openapi/src/model/entity_status.dart';
 import 'package:openapi/src/model/granularity.dart';
-import 'package:openapi/src/model/product_group_analytics_response_inner.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
+import 'package:openapi/src/model/pinterest_lib_pagination_order.dart';
+import 'package:openapi/src/model/product_group_analytics_items.dart';
 import 'package:openapi/src/model/product_group_promotion.dart';
-import 'package:openapi/src/model/product_group_promotion_create_request.dart';
-import 'package:openapi/src/model/product_group_promotion_response.dart';
-import 'package:openapi/src/model/product_group_promotion_update_request.dart';
+import 'package:openapi/src/model/product_group_promotions.dart';
+import 'package:openapi/src/model/product_group_promotions_create.dart';
 import 'package:openapi/src/model/product_group_promotions_list200_response.dart';
+import 'package:openapi/src/model/product_group_promotions_update_with_required_body.dart';
+import 'package:openapi/src/model/reporting_column_sync.dart';
 import 'package:openapi/src/model/reporting_time_zone.dart';
 
 class ProductGroupPromotionsApi {
@@ -34,7 +37,7 @@ class ProductGroupPromotionsApi {
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [productGroupPromotionCreateRequest] - List of Product Group Promotions to create, size limit [1, 30].
+  /// * [productGroupPromotionsCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -42,11 +45,11 @@ class ProductGroupPromotionsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ProductGroupPromotionResponse] as data
+  /// Returns a [Future] containing a [Response] with a [ProductGroupPromotions] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ProductGroupPromotionResponse>> productGroupPromotionsCreate({ 
+  Future<Response<ProductGroupPromotions>> productGroupPromotionsCreate({ 
     required String adAccountId,
-    required ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest,
+    required ProductGroupPromotionsCreate productGroupPromotionsCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -76,8 +79,8 @@ class ProductGroupPromotionsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ProductGroupPromotionCreateRequest);
-      _bodyData = _serializers.serialize(productGroupPromotionCreateRequest, specifiedType: _type);
+      const _type = FullType(ProductGroupPromotionsCreate);
+      _bodyData = _serializers.serialize(productGroupPromotionsCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -100,14 +103,14 @@ class ProductGroupPromotionsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ProductGroupPromotionResponse? _responseData;
+    ProductGroupPromotions? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ProductGroupPromotionResponse),
-      ) as ProductGroupPromotionResponse;
+        specifiedType: const FullType(ProductGroupPromotions),
+      ) as ProductGroupPromotions;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -119,7 +122,7 @@ class ProductGroupPromotionsApi {
       );
     }
 
-    return Response<ProductGroupPromotionResponse>(
+    return Response<ProductGroupPromotions>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -214,16 +217,16 @@ class ProductGroupPromotionsApi {
   }
 
   /// Get product group promotions
-  /// List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  &lt;b&gt;Note:&lt;/b&gt; ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
+  /// List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  **Note:** ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
+  /// * [bookmark] - Cursor used to fetch the next page of items
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  /// * [order] - The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
   /// * [productGroupPromotionIds] - List of Product group promotion Ids.
   /// * [entityStatuses] - Entity status
   /// * [adGroupId] - Ad group Id.
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  /// * [order] - The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  /// * [bookmark] - Cursor used to fetch the next page of items
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -235,12 +238,12 @@ class ProductGroupPromotionsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<ProductGroupPromotionsList200Response>> productGroupPromotionsList({ 
     required String adAccountId,
-    BuiltList<String>? productGroupPromotionIds,
-    BuiltList<String>? entityStatuses,
-    String? adGroupId,
-    int? pageSize = 25,
-    String? order,
     String? bookmark,
+    int? pageSize = 25,
+    PinterestLibPaginationOrder? order,
+    BuiltList<String>? productGroupPromotionIds,
+    BuiltList<EntityStatus>? entityStatuses,
+    String? adGroupId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -267,12 +270,12 @@ class ProductGroupPromotionsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (productGroupPromotionIds != null) r'product_group_promotion_ids': encodeCollectionQueryParameter<String>(_serializers, productGroupPromotionIds, const FullType(BuiltList, [FullType(String)]), format: ListFormat.multi,),
-      if (entityStatuses != null) r'entity_statuses': encodeCollectionQueryParameter<String>(_serializers, entityStatuses, const FullType(BuiltList, [FullType(String)]), format: ListFormat.multi,),
-      if (adGroupId != null) r'ad_group_id': encodeQueryParameter(_serializers, adGroupId, const FullType(String)),
-      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-      if (order != null) r'order': encodeQueryParameter(_serializers, order, const FullType(String)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
+      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
+      if (order != null) r'order': encodeQueryParameter(_serializers, order, const FullType(PinterestLibPaginationOrder)),
+      if (productGroupPromotionIds != null) r'product_group_promotion_ids': encodeCollectionQueryParameter<String>(_serializers, productGroupPromotionIds, const FullType(BuiltList, [FullType(String)]), format: ListFormat.multi,),
+      if (entityStatuses != null) r'entity_statuses': encodeCollectionQueryParameter<EntityStatus>(_serializers, entityStatuses, const FullType(BuiltList, [FullType(EntityStatus)]), format: ListFormat.multi,),
+      if (adGroupId != null) r'ad_group_id': encodeQueryParameter(_serializers, adGroupId, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -320,7 +323,7 @@ class ProductGroupPromotionsApi {
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [productGroupPromotionUpdateRequest] - Parameters to update Product group promotions
+  /// * [productGroupPromotionsUpdateWithRequiredBody] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -328,11 +331,11 @@ class ProductGroupPromotionsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ProductGroupPromotionResponse] as data
+  /// Returns a [Future] containing a [Response] with a [ProductGroupPromotions] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ProductGroupPromotionResponse>> productGroupPromotionsUpdate({ 
+  Future<Response<ProductGroupPromotions>> productGroupPromotionsUpdate({ 
     required String adAccountId,
-    required ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest,
+    required ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -362,8 +365,8 @@ class ProductGroupPromotionsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ProductGroupPromotionUpdateRequest);
-      _bodyData = _serializers.serialize(productGroupPromotionUpdateRequest, specifiedType: _type);
+      const _type = FullType(ProductGroupPromotionsUpdateWithRequiredBody);
+      _bodyData = _serializers.serialize(productGroupPromotionsUpdateWithRequiredBody, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -386,14 +389,14 @@ class ProductGroupPromotionsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ProductGroupPromotionResponse? _responseData;
+    ProductGroupPromotions? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ProductGroupPromotionResponse),
-      ) as ProductGroupPromotionResponse;
+        specifiedType: const FullType(ProductGroupPromotions),
+      ) as ProductGroupPromotions;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -405,7 +408,7 @@ class ProductGroupPromotionsApi {
       );
     }
 
-    return Response<ProductGroupPromotionResponse>(
+    return Response<ProductGroupPromotions>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -418,17 +421,17 @@ class ProductGroupPromotionsApi {
   }
 
   /// Get product group analytics
-  /// Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+  /// Get analytics for the specified product groups in the specified &#x60;ad_account_id&#x60;, filtered by the specified options.  - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
   ///
   /// Parameters:
-  /// * [adAccountId] - Unique identifier of an ad account.
   /// * [startDate] - Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   /// * [endDate] - Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
   /// * [productGroupIds] - List of Product group Ids to use to filter the results.
-  /// * [columns] - Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-  /// * [granularity] - TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+  /// * [columns] - Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+  /// * [granularity] -   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+  /// * [adAccountId] - Unique identifier of an ad account.
   /// * [clickWindowDays] - Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-  /// * [engagementWindowDays] - Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
+  /// * [engagementWindowDays] - Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
   /// * [viewWindowDays] - Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
   /// * [conversionReportTime] - The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
   /// * [reportingTimezone] - Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
@@ -439,18 +442,18 @@ class ProductGroupPromotionsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<ProductGroupAnalyticsResponseInner>] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<ProductGroupAnalyticsItems>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<ProductGroupAnalyticsResponseInner>>> productGroupsAnalytics({ 
-    required String adAccountId,
+  Future<Response<BuiltList<ProductGroupAnalyticsItems>>> productGroupsAnalytics({ 
     required Date startDate,
     required Date endDate,
     required BuiltList<String> productGroupIds,
-    required BuiltList<String> columns,
+    required BuiltList<ReportingColumnSync> columns,
     required Granularity granularity,
-    int? clickWindowDays = 30,
-    int? engagementWindowDays = 30,
-    int? viewWindowDays = 1,
+    required String adAccountId,
+    num? clickWindowDays = 30,
+    num? engagementWindowDays = 30,
+    num? viewWindowDays = 1,
     String? conversionReportTime = 'TIME_OF_AD_ACTION',
     ReportingTimeZone? reportingTimezone,
     CancelToken? cancelToken,
@@ -485,11 +488,11 @@ class ProductGroupPromotionsApi {
       r'start_date': encodeQueryParameter(_serializers, startDate, const FullType(Date)),
       r'end_date': encodeQueryParameter(_serializers, endDate, const FullType(Date)),
       r'product_group_ids': encodeCollectionQueryParameter<String>(_serializers, productGroupIds, const FullType(BuiltList, [FullType(String)]), format: ListFormat.multi,),
-      r'columns': encodeCollectionQueryParameter<String>(_serializers, columns, const FullType(BuiltList, [FullType(String)]), format: ListFormat.csv,),
+      r'columns': encodeCollectionQueryParameter<ReportingColumnSync>(_serializers, columns, const FullType(BuiltList, [FullType(ReportingColumnSync)]), format: ListFormat.csv,),
       r'granularity': encodeQueryParameter(_serializers, granularity, const FullType(Granularity)),
-      if (clickWindowDays != null) r'click_window_days': encodeQueryParameter(_serializers, clickWindowDays, const FullType(int)),
-      if (engagementWindowDays != null) r'engagement_window_days': encodeQueryParameter(_serializers, engagementWindowDays, const FullType(int)),
-      if (viewWindowDays != null) r'view_window_days': encodeQueryParameter(_serializers, viewWindowDays, const FullType(int)),
+      if (clickWindowDays != null) r'click_window_days': encodeQueryParameter(_serializers, clickWindowDays, const FullType(num)),
+      if (engagementWindowDays != null) r'engagement_window_days': encodeQueryParameter(_serializers, engagementWindowDays, const FullType(num)),
+      if (viewWindowDays != null) r'view_window_days': encodeQueryParameter(_serializers, viewWindowDays, const FullType(num)),
       if (conversionReportTime != null) r'conversion_report_time': encodeQueryParameter(_serializers, conversionReportTime, const FullType(String)),
       if (reportingTimezone != null) r'reporting_timezone': encodeQueryParameter(_serializers, reportingTimezone, const FullType(ReportingTimeZone)),
     };
@@ -503,14 +506,14 @@ class ProductGroupPromotionsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<ProductGroupAnalyticsResponseInner>? _responseData;
+    BuiltList<ProductGroupAnalyticsItems>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(ProductGroupAnalyticsResponseInner)]),
-      ) as BuiltList<ProductGroupAnalyticsResponseInner>;
+        specifiedType: const FullType(BuiltList, [FullType(ProductGroupAnalyticsItems)]),
+      ) as BuiltList<ProductGroupAnalyticsItems>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -522,7 +525,7 @@ class ProductGroupPromotionsApi {
       );
     }
 
-    return Response<BuiltList<ProductGroupAnalyticsResponseInner>>(
+    return Response<BuiltList<ProductGroupAnalyticsItems>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

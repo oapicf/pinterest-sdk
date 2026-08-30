@@ -12,34 +12,13 @@
     },
     {
       "name": "billing_type",
-      "type": ["null", {
-        "type": "enum",
-        "name": "BillingProfilesResponse_billingUnderscoretype",
-        "symbols": [
-          "CREDIT_CARD",
-          "INVOICE",
-          "INTERNAL",
-          "RECURRING",
-          "PREPAID"
-        ]
-      }],
+      "type": ["null", "model.BillingType"],
       "doc": "Billing type of the advertiser",
       "default": null
     },
     {
       "name": "card_type",
-      "type": ["null", {
-        "type": "enum",
-        "name": "BillingProfilesResponse_cardUnderscoretype",
-        "symbols": [
-          "UNKNOWN",
-          "VISA",
-          "MASTERCARD",
-          "AMERICAN_EXPRESS",
-          "DISCOVER",
-          "ELO"
-        ]
-      }],
+      "type": ["null", "model.BillingProfileCardType"],
       "doc": "Type of the card.",
       "default": null
     },
@@ -51,39 +30,13 @@
     },
     {
       "name": "payment_method_brand",
-      "type": ["null", {
-        "type": "enum",
-        "name": "BillingProfilesResponse_paymentUnderscoremethodUnderscorebrand",
-        "symbols": [
-          "UNKNOWN",
-          "VISA",
-          "MASTERCARD",
-          "AMERICAN_EXPRESS",
-          "DISCOVER",
-          "SOFORT",
-          "DINERS_CLUB",
-          "ELO",
-          "CARTE_BANCAIRE"
-        ]
-      }],
+      "type": ["null", "model.BillingProfilePaymentMethodBrand"],
       "doc": "Brand of the payment method.",
       "default": null
     },
     {
       "name": "status",
-      "type": ["null", {
-        "type": "enum",
-        "name": "BillingProfilesResponse_status",
-        "symbols": [
-          "UNSPECIFIED",
-          "VALID",
-          "INVALID",
-          "PENDING",
-          "DELETED",
-          "SECONDARY",
-          "PENDING_SECONDARY"
-        ]
-      }],
+      "type": ["null", "model.BillingProfileStatus"],
       "doc": "Status of the billing.",
       "default": null
     }

@@ -40,6 +40,10 @@ module MsotEventsApiHandlers =
           let content = resolved.content
           let responseContentType = "text/plain"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | MsotEventsCreateStatusCode201 resolved ->
+          let content = resolved.content
+          let responseContentType = "text/plain"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(201))
       | MsotEventsCreateStatusCode400 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
@@ -52,6 +56,10 @@ module MsotEventsApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | MsotEventsCreateStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
       | MsotEventsCreateStatusCode429 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"

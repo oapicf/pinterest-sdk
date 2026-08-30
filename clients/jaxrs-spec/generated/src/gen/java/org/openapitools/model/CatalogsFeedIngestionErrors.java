@@ -16,7 +16,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsFeedIngestionErrors")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedIngestionErrors   {
   private Integer ACCOUNT_FLAGGED;
   private Integer FETCH_GOOGLE_SHEET_NOT_SHARED;
@@ -25,54 +25,7 @@ public class CatalogsFeedIngestionErrors   {
   private Integer IMAGE_INVALID_FILE;
   private Integer IMAGE_LEVEL_INTERNAL_ERROR;
   private Integer IMAGE_MALFORMED_URL;
-  public enum LARGEPRODUCTCOUNTDECREASEEnum {
-
-    NUMBER_1(Integer.valueOf(1));
-
-
-    private Integer value;
-
-    LARGEPRODUCTCOUNTDECREASEEnum (Integer v) {
-        value = v;
-    }
-
-    public Integer value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into Integer, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static LARGEPRODUCTCOUNTDECREASEEnum fromString(String s) {
-        for (LARGEPRODUCTCOUNTDECREASEEnum b : LARGEPRODUCTCOUNTDECREASEEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static LARGEPRODUCTCOUNTDECREASEEnum fromValue(Integer value) {
-        for (LARGEPRODUCTCOUNTDECREASEEnum b : LARGEPRODUCTCOUNTDECREASEEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE;
+  private Integer LARGE_PRODUCT_COUNT_DECREASE;
   private Integer LINE_LEVEL_INTERNAL_ERROR;
 
   public CatalogsFeedIngestionErrors() {
@@ -221,7 +174,7 @@ public class CatalogsFeedIngestionErrors   {
   /**
    * The product count has decreased by more than 99% compared to the last successful ingestion.
    **/
-  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(Integer LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
     return this;
   }
@@ -229,12 +182,12 @@ public class CatalogsFeedIngestionErrors   {
   
   @ApiModelProperty(value = "The product count has decreased by more than 99% compared to the last successful ingestion.")
   @JsonProperty("LARGE_PRODUCT_COUNT_DECREASE")
-  public LARGEPRODUCTCOUNTDECREASEEnum getLARGEPRODUCTCOUNTDECREASE() {
+  public Integer getLARGEPRODUCTCOUNTDECREASE() {
     return LARGE_PRODUCT_COUNT_DECREASE;
   }
 
   @JsonProperty("LARGE_PRODUCT_COUNT_DECREASE")
-  public void setLARGEPRODUCTCOUNTDECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  public void setLARGEPRODUCTCOUNTDECREASE(Integer LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
   }
 
@@ -307,12 +260,8 @@ public class CatalogsFeedIngestionErrors   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

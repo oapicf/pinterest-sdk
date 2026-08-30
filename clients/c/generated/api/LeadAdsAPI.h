@@ -15,7 +15,7 @@
 //
 // Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 //
-void
+lead_subscription_t*
 LeadAdsAPI_adAccountsSubscriptionsDelById(apiClient_t *apiClient, char *ad_account_id, char *subscription_id);
 
 

@@ -9,7 +9,7 @@
 -export_type([openapi_create_asset_access_request_response/0]).
 
 -type openapi_create_asset_access_request_response() ::
-  [ {'exceptions', list(openapi_create_asset_access_request_error_message_inner:openapi_create_asset_access_request_error_message_inner()) }
+  [ {'exceptions', list(openapi_asset_access_request_error:openapi_asset_access_request_error()) }
   | {'invites', map() }
   ].
 
@@ -18,7 +18,7 @@ openapi_create_asset_access_request_response() ->
     openapi_create_asset_access_request_response([]).
 
 openapi_create_asset_access_request_response(Fields) ->
-  Default = [ {'exceptions', list(openapi_create_asset_access_request_error_message_inner:openapi_create_asset_access_request_error_message_inner()) }
+  Default = [ {'exceptions', list(openapi_asset_access_request_error:openapi_asset_access_request_error()) }
             , {'invites', map() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

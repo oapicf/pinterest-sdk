@@ -2,7 +2,7 @@
 /*
  * SSIOAccountAddress.h
  *
- * 
+ * Salesforce address information.
  */
 
 #ifndef TINY_CPP_CLIENT_SSIOAccountAddress_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief 
+/*! \brief Salesforce address information.
  *
  *  \ingroup Models
  *
@@ -51,28 +51,28 @@ public:
 
 	/*! \brief Set Salesforce id for address
 	 */
-	void setAddressId(std::string  address_id);
+	void setAddressId(std::string address_id);
 	/*! \brief Get Address display
 	 */
 	std::string getDisplay();
 
 	/*! \brief Set Address display
 	 */
-	void setDisplay(std::string  display);
+	void setDisplay(std::string display);
 	/*! \brief Get Legal entity for this insertion order
 	 */
 	std::string getOrderLegalEntity();
 
 	/*! \brief Set Legal entity for this insertion order
 	 */
-	void setOrderLegalEntity(std::string  order_legal_entity);
+	void setOrderLegalEntity(std::string order_legal_entity);
 	/*! \brief Get Purpose for which the address is used, usually Billing or Businness
 	 */
 	std::string getPurpose();
 
 	/*! \brief Set Purpose for which the address is used, usually Billing or Businness
 	 */
-	void setPurpose(std::string  purpose);
+	void setPurpose(std::string purpose);
 
 
     private:

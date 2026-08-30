@@ -9,7 +9,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |[**tokenRevoke**](#tokenrevoke) | **POST** /oauth/token/revoke | Revoke a token|
 
 # **oauthConversionToken**
-> ConversionAccessTokenResponse oauthConversionToken()
+> ConversionAccessToken oauthConversionToken()
 
 Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
 
@@ -33,7 +33,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-**ConversionAccessTokenResponse**
+**ConversionAccessToken**
 
 ### Authorization
 
@@ -48,15 +48,20 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | response |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **oauthToken**
-> OauthAccessTokenResponse oauthToken()
+> OauthAccessToken oauthToken()
 
-Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href=\'/docs/getting-started/set-up-authentication-and-authorization/\' target=\'blank\'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href=\'/docs/developer-tools/token-debugger/\' target=\'blank\'>Token Debugger</a> to validate and inspect your access token.
+Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
 
 ### Example
 
@@ -69,10 +74,20 @@ import {
 const configuration = new Configuration();
 const apiInstance = new OauthApi(configuration);
 
-let grantType: string; // (default to undefined)
+let grantType: TokenGrantType; // (default to undefined)
+let code: string; // (optional) (default to undefined)
+let continuousRefresh: string; //  If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. (optional) (default to undefined)
+let redirectUri: string; // (optional) (default to undefined)
+let refreshToken: string; // (optional) (default to undefined)
+let scope: string; // (optional) (default to undefined)
 
 const { status, data } = await apiInstance.oauthToken(
-    grantType
+    grantType,
+    code,
+    continuousRefresh,
+    redirectUri,
+    refreshToken,
+    scope
 );
 ```
 
@@ -80,12 +95,17 @@ const { status, data } = await apiInstance.oauthToken(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **grantType** | [**string**]**Array<&#39;authorization_code&#39; &#124; &#39;refresh_token&#39; &#124; &#39;client_credentials&#39;>** |  | defaults to undefined|
+| **grantType** | **TokenGrantType** |  | defaults to undefined|
+| **code** | [**string**] |  | (optional) defaults to undefined|
+| **continuousRefresh** | [**string**] |   If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. | (optional) defaults to undefined|
+| **redirectUri** | [**string**] |  | (optional) defaults to undefined|
+| **refreshToken** | [**string**] |  | (optional) defaults to undefined|
+| **scope** | [**string**] |  | (optional) defaults to undefined|
 
 
 ### Return type
 
-**OauthAccessTokenResponse**
+**OauthAccessToken**
 
 ### Authorization
 
@@ -100,8 +120,14 @@ const { status, data } = await apiInstance.oauthToken(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | response |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**201** | Resource create operation completed successfully. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -122,7 +148,7 @@ const configuration = new Configuration();
 const apiInstance = new OauthApi(configuration);
 
 let token: string; //The token to revoke. (default to undefined)
-let tokenTypeHint: string; //The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. (optional) (default to undefined)
+let tokenTypeHint: TokenTypeHint; //The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.tokenRevoke(
     token,
@@ -135,7 +161,7 @@ const { status, data } = await apiInstance.tokenRevoke(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **token** | [**string**] | The token to revoke. | defaults to undefined|
-| **tokenTypeHint** | [**string**]**Array<&#39;access_token&#39; &#124; &#39;refresh_token&#39;>** | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | (optional) defaults to undefined|
+| **tokenTypeHint** | **TokenTypeHint** | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -155,10 +181,10 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Successful token revocation. No content is returned. |  -  |
-|**401** | Client authentication error. |  -  |
-|**403** | Client is not allowed to revoke token. |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

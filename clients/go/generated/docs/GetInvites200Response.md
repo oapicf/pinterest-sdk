@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]InviteResponse**](InviteResponse.md) | List of invite and request data. | 
+**Items** | [**[]InviteResponse**](InviteResponse.md) |  | 
 
 ## Methods
 

@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setPRODUCTTYPE1(CatalogsProductGroupMultipleStringListCriteria  pRODUCT_TYPE_1);
+	void setPRODUCTTYPE1(CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_1);
 
 
     private:

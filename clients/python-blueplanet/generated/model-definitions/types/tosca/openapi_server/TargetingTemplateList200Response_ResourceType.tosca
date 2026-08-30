@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  TargetingTemplateGetResponseData = openapi_server.resourceTypes.TargetingTemplateGetResponseData
+  TargetingTemplate = openapi_server.resourceTypes.TargetingTemplate
 }
 resourceTypes {
 
@@ -23,7 +23,7 @@ resourceTypes {
         }
         items {
           type = array
-          items.type = TargetingTemplateGetResponseData
+          items.type = TargetingTemplate
           description = ""
           optional = true
         }

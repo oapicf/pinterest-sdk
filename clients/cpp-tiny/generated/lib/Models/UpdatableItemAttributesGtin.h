@@ -1,12 +1,12 @@
 
 /*
- * UpdatableItemAttributes_gtin.h
+ * UpdatableItemAttributesGtin.h
  *
  * The unique universal product identifier.
  */
 
-#ifndef TINY_CPP_CLIENT_UpdatableItemAttributes_gtin_H_
-#define TINY_CPP_CLIENT_UpdatableItemAttributes_gtin_H_
+#ifndef TINY_CPP_CLIENT_UpdatableItemAttributesGtin_H_
+#define TINY_CPP_CLIENT_UpdatableItemAttributesGtin_H_
 
 
 #include <string>
@@ -22,18 +22,18 @@ namespace Tiny {
  *
  */
 
-class UpdatableItemAttributes_gtin{
+class UpdatableItemAttributesGtin{
 public:
 
     /*! \brief Constructor.
 	 */
-    UpdatableItemAttributes_gtin();
-    UpdatableItemAttributes_gtin(std::string jsonString);
+    UpdatableItemAttributesGtin();
+    UpdatableItemAttributesGtin(std::string jsonString);
 
 
     /*! \brief Destructor.
 	 */
-    virtual ~UpdatableItemAttributes_gtin();
+    virtual ~UpdatableItemAttributesGtin();
 
 
     /*! \brief Retrieve a bourne JSON representation of this class.
@@ -51,4 +51,4 @@ public:
 };
 }
 
-#endif /* TINY_CPP_CLIENT_UpdatableItemAttributes_gtin_H_ */
+#endif /* TINY_CPP_CLIENT_UpdatableItemAttributesGtin_H_ */

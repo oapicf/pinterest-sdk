@@ -8,7 +8,7 @@ Request object used to get bid options values for a batch of retail catalog item
 Name | Type
 ------------ | -------------
 `catalogId` | string
-`items` | [Array&lt;AdvancedAuctionItemsGetRecord&gt;](AdvancedAuctionItemsGetRecord.md)
+`items` | [Array&lt;AdvancedAuctionKey&gt;](AdvancedAuctionKey.md)
 
 ## Example
 

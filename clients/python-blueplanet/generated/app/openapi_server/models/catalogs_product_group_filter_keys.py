@@ -6,48 +6,17 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.availability_filter import AvailabilityFilter  # noqa: F401,E501
-from app.openapi_server.models.brand_filter import BrandFilter  # noqa: F401,E501
+from app.openapi_server.models.catalogs_base_filter_keys import CatalogsBaseFilterKeys  # noqa: F401,E501
 from app.openapi_server.models.catalogs_product_group_currency_criteria import CatalogsProductGroupCurrencyCriteria  # noqa: F401,E501
 from app.openapi_server.models.catalogs_product_group_filter_operator_type_criteria import CatalogsProductGroupFilterOperatorTypeCriteria  # noqa: F401,E501
 from app.openapi_server.models.catalogs_product_group_multiple_gender_criteria import CatalogsProductGroupMultipleGenderCriteria  # noqa: F401,E501
 from app.openapi_server.models.catalogs_product_group_multiple_media_types_criteria import CatalogsProductGroupMultipleMediaTypesCriteria  # noqa: F401,E501
+from app.openapi_server.models.catalogs_product_group_multiple_pinterest_product_category_criteria import CatalogsProductGroupMultiplePinterestProductCategoryCriteria  # noqa: F401,E501
 from app.openapi_server.models.catalogs_product_group_multiple_string_criteria import CatalogsProductGroupMultipleStringCriteria  # noqa: F401,E501
 from app.openapi_server.models.catalogs_product_group_multiple_string_list_criteria import CatalogsProductGroupMultipleStringListCriteria  # noqa: F401,E501
 from app.openapi_server.models.catalogs_product_group_pricing_criteria import CatalogsProductGroupPricingCriteria  # noqa: F401,E501
 from app.openapi_server.models.catalogs_product_group_uint32_criteria import CatalogsProductGroupUint32Criteria  # noqa: F401,E501
-from app.openapi_server.models.condition_filter import ConditionFilter  # noqa: F401,E501
-from app.openapi_server.models.currency_filter import CurrencyFilter  # noqa: F401,E501
-from app.openapi_server.models.custom_label0_filter import CustomLabel0Filter  # noqa: F401,E501
-from app.openapi_server.models.custom_label1_filter import CustomLabel1Filter  # noqa: F401,E501
-from app.openapi_server.models.custom_label2_filter import CustomLabel2Filter  # noqa: F401,E501
-from app.openapi_server.models.custom_label3_filter import CustomLabel3Filter  # noqa: F401,E501
-from app.openapi_server.models.custom_label4_filter import CustomLabel4Filter  # noqa: F401,E501
-from app.openapi_server.models.custom_number0_filter import CustomNumber0Filter  # noqa: F401,E501
-from app.openapi_server.models.custom_number1_filter import CustomNumber1Filter  # noqa: F401,E501
-from app.openapi_server.models.custom_number2_filter import CustomNumber2Filter  # noqa: F401,E501
-from app.openapi_server.models.custom_number3_filter import CustomNumber3Filter  # noqa: F401,E501
-from app.openapi_server.models.custom_number4_filter import CustomNumber4Filter  # noqa: F401,E501
-from app.openapi_server.models.gender_filter import GenderFilter  # noqa: F401,E501
-from app.openapi_server.models.google_product_category0_filter import GoogleProductCategory0Filter  # noqa: F401,E501
-from app.openapi_server.models.google_product_category1_filter import GoogleProductCategory1Filter  # noqa: F401,E501
-from app.openapi_server.models.google_product_category2_filter import GoogleProductCategory2Filter  # noqa: F401,E501
-from app.openapi_server.models.google_product_category3_filter import GoogleProductCategory3Filter  # noqa: F401,E501
-from app.openapi_server.models.google_product_category4_filter import GoogleProductCategory4Filter  # noqa: F401,E501
-from app.openapi_server.models.google_product_category5_filter import GoogleProductCategory5Filter  # noqa: F401,E501
-from app.openapi_server.models.google_product_category6_filter import GoogleProductCategory6Filter  # noqa: F401,E501
-from app.openapi_server.models.item_group_id_filter import ItemGroupIdFilter  # noqa: F401,E501
-from app.openapi_server.models.item_id_filter import ItemIdFilter  # noqa: F401,E501
-from app.openapi_server.models.max_price_filter import MaxPriceFilter  # noqa: F401,E501
-from app.openapi_server.models.media_type_filter import MediaTypeFilter  # noqa: F401,E501
-from app.openapi_server.models.min_price_filter import MinPriceFilter  # noqa: F401,E501
 from app.openapi_server.models.product_group_reference_filter import ProductGroupReferenceFilter  # noqa: F401,E501
-from app.openapi_server.models.product_type0_filter import ProductType0Filter  # noqa: F401,E501
-from app.openapi_server.models.product_type1_filter import ProductType1Filter  # noqa: F401,E501
-from app.openapi_server.models.product_type2_filter import ProductType2Filter  # noqa: F401,E501
-from app.openapi_server.models.product_type3_filter import ProductType3Filter  # noqa: F401,E501
-from app.openapi_server.models.product_type4_filter import ProductType4Filter  # noqa: F401,E501
-from app.openapi_server.models.title_keywords_filter import TitleKeywordsFilter  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -57,7 +26,7 @@ class CatalogsProductGroupFilterKeys(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, min_price: CatalogsProductGroupPricingCriteria=None, max_price: CatalogsProductGroupPricingCriteria=None, currency: CatalogsProductGroupCurrencyCriteria=None, item_id: CatalogsProductGroupMultipleStringCriteria=None, availability: CatalogsProductGroupMultipleStringCriteria=None, brand: CatalogsProductGroupMultipleStringCriteria=None, condition: CatalogsProductGroupMultipleStringCriteria=None, custom_label_0: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_1: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_2: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_3: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_4: CatalogsProductGroupFilterOperatorTypeCriteria=None, item_group_id: CatalogsProductGroupMultipleStringCriteria=None, gender: CatalogsProductGroupMultipleGenderCriteria=None, media_type: CatalogsProductGroupMultipleMediaTypesCriteria=None, product_type_4: CatalogsProductGroupMultipleStringListCriteria=None, product_type_3: CatalogsProductGroupMultipleStringListCriteria=None, product_type_2: CatalogsProductGroupMultipleStringListCriteria=None, product_type_1: CatalogsProductGroupMultipleStringListCriteria=None, product_type_0: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_6: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_5: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_4: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_3: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_2: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_1: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_0: CatalogsProductGroupMultipleStringListCriteria=None, product_group: CatalogsProductGroupMultipleStringCriteria=None, custom_number_0: CatalogsProductGroupUint32Criteria=None, custom_number_1: CatalogsProductGroupUint32Criteria=None, custom_number_2: CatalogsProductGroupUint32Criteria=None, custom_number_3: CatalogsProductGroupUint32Criteria=None, custom_number_4: CatalogsProductGroupUint32Criteria=None, title_keywords: CatalogsProductGroupMultipleStringCriteria=None):  # noqa: E501
+    def __init__(self, min_price: CatalogsProductGroupPricingCriteria=None, max_price: CatalogsProductGroupPricingCriteria=None, currency: CatalogsProductGroupCurrencyCriteria=None, item_id: CatalogsProductGroupMultipleStringCriteria=None, availability: CatalogsProductGroupMultipleStringCriteria=None, brand: CatalogsProductGroupMultipleStringCriteria=None, condition: CatalogsProductGroupMultipleStringCriteria=None, custom_label_0: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_1: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_2: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_3: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_4: CatalogsProductGroupFilterOperatorTypeCriteria=None, item_group_id: CatalogsProductGroupMultipleStringCriteria=None, gender: CatalogsProductGroupMultipleGenderCriteria=None, media_type: CatalogsProductGroupMultipleMediaTypesCriteria=None, product_type_4: CatalogsProductGroupMultipleStringListCriteria=None, product_type_3: CatalogsProductGroupMultipleStringListCriteria=None, product_type_2: CatalogsProductGroupMultipleStringListCriteria=None, product_type_1: CatalogsProductGroupMultipleStringListCriteria=None, product_type_0: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_6: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_5: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_4: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_3: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_2: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_1: CatalogsProductGroupMultipleStringListCriteria=None, google_product_category_0: CatalogsProductGroupMultipleStringListCriteria=None, custom_number_0: CatalogsProductGroupUint32Criteria=None, custom_number_1: CatalogsProductGroupUint32Criteria=None, custom_number_2: CatalogsProductGroupUint32Criteria=None, custom_number_3: CatalogsProductGroupUint32Criteria=None, custom_number_4: CatalogsProductGroupUint32Criteria=None, title_keywords: CatalogsProductGroupMultipleStringCriteria=None, pinterest_product_categories: CatalogsProductGroupMultiplePinterestProductCategoryCriteria=None, product_group: CatalogsProductGroupMultipleStringCriteria=None):  # noqa: E501
         """CatalogsProductGroupFilterKeys - a model defined in Swagger
 
         :param min_price: The min_price of this CatalogsProductGroupFilterKeys.  # noqa: E501
@@ -114,8 +83,6 @@ class CatalogsProductGroupFilterKeys(Model):
         :type google_product_category_1: CatalogsProductGroupMultipleStringListCriteria
         :param google_product_category_0: The google_product_category_0 of this CatalogsProductGroupFilterKeys.  # noqa: E501
         :type google_product_category_0: CatalogsProductGroupMultipleStringListCriteria
-        :param product_group: The product_group of this CatalogsProductGroupFilterKeys.  # noqa: E501
-        :type product_group: CatalogsProductGroupMultipleStringCriteria
         :param custom_number_0: The custom_number_0 of this CatalogsProductGroupFilterKeys.  # noqa: E501
         :type custom_number_0: CatalogsProductGroupUint32Criteria
         :param custom_number_1: The custom_number_1 of this CatalogsProductGroupFilterKeys.  # noqa: E501
@@ -128,6 +95,10 @@ class CatalogsProductGroupFilterKeys(Model):
         :type custom_number_4: CatalogsProductGroupUint32Criteria
         :param title_keywords: The title_keywords of this CatalogsProductGroupFilterKeys.  # noqa: E501
         :type title_keywords: CatalogsProductGroupMultipleStringCriteria
+        :param pinterest_product_categories: The pinterest_product_categories of this CatalogsProductGroupFilterKeys.  # noqa: E501
+        :type pinterest_product_categories: CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+        :param product_group: The product_group of this CatalogsProductGroupFilterKeys.  # noqa: E501
+        :type product_group: CatalogsProductGroupMultipleStringCriteria
         """
         self.swagger_types = {
             'min_price': CatalogsProductGroupPricingCriteria,
@@ -157,13 +128,14 @@ class CatalogsProductGroupFilterKeys(Model):
             'google_product_category_2': CatalogsProductGroupMultipleStringListCriteria,
             'google_product_category_1': CatalogsProductGroupMultipleStringListCriteria,
             'google_product_category_0': CatalogsProductGroupMultipleStringListCriteria,
-            'product_group': CatalogsProductGroupMultipleStringCriteria,
             'custom_number_0': CatalogsProductGroupUint32Criteria,
             'custom_number_1': CatalogsProductGroupUint32Criteria,
             'custom_number_2': CatalogsProductGroupUint32Criteria,
             'custom_number_3': CatalogsProductGroupUint32Criteria,
             'custom_number_4': CatalogsProductGroupUint32Criteria,
-            'title_keywords': CatalogsProductGroupMultipleStringCriteria
+            'title_keywords': CatalogsProductGroupMultipleStringCriteria,
+            'pinterest_product_categories': CatalogsProductGroupMultiplePinterestProductCategoryCriteria,
+            'product_group': CatalogsProductGroupMultipleStringCriteria
         }
 
         self.attribute_map = {
@@ -194,13 +166,14 @@ class CatalogsProductGroupFilterKeys(Model):
             'google_product_category_2': 'GOOGLE_PRODUCT_CATEGORY_2',
             'google_product_category_1': 'GOOGLE_PRODUCT_CATEGORY_1',
             'google_product_category_0': 'GOOGLE_PRODUCT_CATEGORY_0',
-            'product_group': 'PRODUCT_GROUP',
             'custom_number_0': 'CUSTOM_NUMBER_0',
             'custom_number_1': 'CUSTOM_NUMBER_1',
             'custom_number_2': 'CUSTOM_NUMBER_2',
             'custom_number_3': 'CUSTOM_NUMBER_3',
             'custom_number_4': 'CUSTOM_NUMBER_4',
-            'title_keywords': 'TITLE_KEYWORDS'
+            'title_keywords': 'TITLE_KEYWORDS',
+            'pinterest_product_categories': 'PINTEREST_PRODUCT_CATEGORIES',
+            'product_group': 'PRODUCT_GROUP'
         }
 
         self._min_price = min_price
@@ -230,13 +203,14 @@ class CatalogsProductGroupFilterKeys(Model):
         self._google_product_category_2 = google_product_category_2
         self._google_product_category_1 = google_product_category_1
         self._google_product_category_0 = google_product_category_0
-        self._product_group = product_group
         self._custom_number_0 = custom_number_0
         self._custom_number_1 = custom_number_1
         self._custom_number_2 = custom_number_2
         self._custom_number_3 = custom_number_3
         self._custom_number_4 = custom_number_4
         self._title_keywords = title_keywords
+        self._pinterest_product_categories = pinterest_product_categories
+        self._product_group = product_group
 
     @classmethod
     def from_dict(cls, dikt) -> 'CatalogsProductGroupFilterKeys':
@@ -871,29 +845,6 @@ class CatalogsProductGroupFilterKeys(Model):
         self._google_product_category_0 = google_product_category_0
 
     @property
-    def product_group(self) -> CatalogsProductGroupMultipleStringCriteria:
-        """Gets the product_group of this CatalogsProductGroupFilterKeys.
-
-
-        :return: The product_group of this CatalogsProductGroupFilterKeys.
-        :rtype: CatalogsProductGroupMultipleStringCriteria
-        """
-        return self._product_group
-
-    @product_group.setter
-    def product_group(self, product_group: CatalogsProductGroupMultipleStringCriteria):
-        """Sets the product_group of this CatalogsProductGroupFilterKeys.
-
-
-        :param product_group: The product_group of this CatalogsProductGroupFilterKeys.
-        :type product_group: CatalogsProductGroupMultipleStringCriteria
-        """
-        if product_group is None:
-            raise ValueError("Invalid value for `product_group`, must not be `None`")  # noqa: E501
-
-        self._product_group = product_group
-
-    @property
     def custom_number_0(self) -> CatalogsProductGroupUint32Criteria:
         """Gets the custom_number_0 of this CatalogsProductGroupFilterKeys.
 
@@ -1030,3 +981,49 @@ class CatalogsProductGroupFilterKeys(Model):
             raise ValueError("Invalid value for `title_keywords`, must not be `None`")  # noqa: E501
 
         self._title_keywords = title_keywords
+
+    @property
+    def pinterest_product_categories(self) -> CatalogsProductGroupMultiplePinterestProductCategoryCriteria:
+        """Gets the pinterest_product_categories of this CatalogsProductGroupFilterKeys.
+
+
+        :return: The pinterest_product_categories of this CatalogsProductGroupFilterKeys.
+        :rtype: CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+        """
+        return self._pinterest_product_categories
+
+    @pinterest_product_categories.setter
+    def pinterest_product_categories(self, pinterest_product_categories: CatalogsProductGroupMultiplePinterestProductCategoryCriteria):
+        """Sets the pinterest_product_categories of this CatalogsProductGroupFilterKeys.
+
+
+        :param pinterest_product_categories: The pinterest_product_categories of this CatalogsProductGroupFilterKeys.
+        :type pinterest_product_categories: CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+        """
+        if pinterest_product_categories is None:
+            raise ValueError("Invalid value for `pinterest_product_categories`, must not be `None`")  # noqa: E501
+
+        self._pinterest_product_categories = pinterest_product_categories
+
+    @property
+    def product_group(self) -> CatalogsProductGroupMultipleStringCriteria:
+        """Gets the product_group of this CatalogsProductGroupFilterKeys.
+
+
+        :return: The product_group of this CatalogsProductGroupFilterKeys.
+        :rtype: CatalogsProductGroupMultipleStringCriteria
+        """
+        return self._product_group
+
+    @product_group.setter
+    def product_group(self, product_group: CatalogsProductGroupMultipleStringCriteria):
+        """Sets the product_group of this CatalogsProductGroupFilterKeys.
+
+
+        :param product_group: The product_group of this CatalogsProductGroupFilterKeys.
+        :type product_group: CatalogsProductGroupMultipleStringCriteria
+        """
+        if product_group is None:
+            raise ValueError("Invalid value for `product_group`, must not be `None`")  # noqa: E501
+
+        self._product_group = product_group

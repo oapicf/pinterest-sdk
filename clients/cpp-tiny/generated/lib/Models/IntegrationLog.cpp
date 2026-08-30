@@ -10,10 +10,10 @@ IntegrationLog::IntegrationLog()
 	app_version_number = std::string();
 	client_timestamp = int(0);
 	error = IntegrationLogClientError();
-	event_type = std::string();
+	event_type = null;
 	external_business_id = std::string();
 	feed_profile_id = std::string();
-	log_level = std::string();
+	log_level = null;
 	merchant_id = std::string();
 	message = std::string();
 	platform_version_number = std::string();
@@ -97,8 +97,9 @@ IntegrationLog::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&event_type, value, "std::string");
 
+        IntegrationLogEventType* obj = &event_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -136,8 +137,9 @@ IntegrationLog::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&log_level, value, "std::string");
 
+        IntegrationLogLevel* obj = &log_level;
+		obj->fromJson(value.dump());
 
     }
 
@@ -247,8 +249,8 @@ IntegrationLog::toJson()
 
 
 
-    object["event_type"] = getEventType();
 
+	object["event_type"] = getEventType().toJson();
 
 
 
@@ -268,8 +270,8 @@ IntegrationLog::toJson()
 
 
 
-    object["log_level"] = getLogLevel();
 
+	object["log_level"] = getLogLevel().toJson();
 
 
 
@@ -318,7 +320,7 @@ IntegrationLog::getAdvertiserId()
 }
 
 void
-IntegrationLog::setAdvertiserId(std::string  advertiser_id)
+IntegrationLog::setAdvertiserId(std::string advertiser_id)
 {
 	this->advertiser_id = advertiser_id;
 }
@@ -330,7 +332,7 @@ IntegrationLog::getAppVersionNumber()
 }
 
 void
-IntegrationLog::setAppVersionNumber(std::string  app_version_number)
+IntegrationLog::setAppVersionNumber(std::string app_version_number)
 {
 	this->app_version_number = app_version_number;
 }
@@ -342,7 +344,7 @@ IntegrationLog::getClientTimestamp()
 }
 
 void
-IntegrationLog::setClientTimestamp(int  client_timestamp)
+IntegrationLog::setClientTimestamp(int client_timestamp)
 {
 	this->client_timestamp = client_timestamp;
 }
@@ -354,19 +356,19 @@ IntegrationLog::getError()
 }
 
 void
-IntegrationLog::setError(IntegrationLogClientError  error)
+IntegrationLog::setError(IntegrationLogClientError error)
 {
 	this->error = error;
 }
 
-std::string
+IntegrationLogEventType
 IntegrationLog::getEventType()
 {
 	return event_type;
 }
 
 void
-IntegrationLog::setEventType(std::string  event_type)
+IntegrationLog::setEventType(IntegrationLogEventType event_type)
 {
 	this->event_type = event_type;
 }
@@ -378,7 +380,7 @@ IntegrationLog::getExternalBusinessId()
 }
 
 void
-IntegrationLog::setExternalBusinessId(std::string  external_business_id)
+IntegrationLog::setExternalBusinessId(std::string external_business_id)
 {
 	this->external_business_id = external_business_id;
 }
@@ -390,19 +392,19 @@ IntegrationLog::getFeedProfileId()
 }
 
 void
-IntegrationLog::setFeedProfileId(std::string  feed_profile_id)
+IntegrationLog::setFeedProfileId(std::string feed_profile_id)
 {
 	this->feed_profile_id = feed_profile_id;
 }
 
-std::string
+IntegrationLogLevel
 IntegrationLog::getLogLevel()
 {
 	return log_level;
 }
 
 void
-IntegrationLog::setLogLevel(std::string  log_level)
+IntegrationLog::setLogLevel(IntegrationLogLevel log_level)
 {
 	this->log_level = log_level;
 }
@@ -414,7 +416,7 @@ IntegrationLog::getMerchantId()
 }
 
 void
-IntegrationLog::setMerchantId(std::string  merchant_id)
+IntegrationLog::setMerchantId(std::string merchant_id)
 {
 	this->merchant_id = merchant_id;
 }
@@ -426,7 +428,7 @@ IntegrationLog::getMessage()
 }
 
 void
-IntegrationLog::setMessage(std::string  message)
+IntegrationLog::setMessage(std::string message)
 {
 	this->message = message;
 }
@@ -438,7 +440,7 @@ IntegrationLog::getPlatformVersionNumber()
 }
 
 void
-IntegrationLog::setPlatformVersionNumber(std::string  platform_version_number)
+IntegrationLog::setPlatformVersionNumber(std::string platform_version_number)
 {
 	this->platform_version_number = platform_version_number;
 }
@@ -450,7 +452,7 @@ IntegrationLog::getRequest()
 }
 
 void
-IntegrationLog::setRequest(IntegrationLogClientRequest  request)
+IntegrationLog::setRequest(IntegrationLogClientRequest request)
 {
 	this->request = request;
 }
@@ -462,7 +464,7 @@ IntegrationLog::getTagId()
 }
 
 void
-IntegrationLog::setTagId(std::string  tag_id)
+IntegrationLog::setTagId(std::string tag_id)
 {
 	this->tag_id = tag_id;
 }

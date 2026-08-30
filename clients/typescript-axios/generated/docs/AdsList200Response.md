@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;AdResponse&gt;**](AdResponse.md) |  | [default to undefined]
+**items** | [**Array&lt;Ad&gt;**](Ad.md) |  | [default to undefined]
 
 ## Example
 

@@ -10,7 +10,7 @@
 
 #include <string>
 #include "Exception.h"
-#include "PromotionResponse.h"
+#include "Promotion.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -49,11 +49,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	PromotionResponse getData();
+	Promotion getData();
 
 	/*! \brief Set 
 	 */
-	void setData(PromotionResponse  data);
+	void setData(Promotion  data);
 	/*! \brief Get 
 	 */
 	Exception getException();
@@ -63,7 +63,7 @@ public:
 	void setException(Exception  exception);
 
 private:
-	PromotionResponse data;
+	Promotion data;
 	Exception exception;
 	void __init();
 	void __cleanup();

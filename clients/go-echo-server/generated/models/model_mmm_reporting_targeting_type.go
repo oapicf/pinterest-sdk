@@ -9,4 +9,6 @@ const (
 	CREATIVE_TYPE MmmReportingTargetingType = "CREATIVE_TYPE"
 	GENDER MmmReportingTargetingType = "GENDER"
 	LOCATION MmmReportingTargetingType = "LOCATION"
+	PLACEMENT MmmReportingTargetingType = "PLACEMENT"
+	AUDIENCE_INCLUDE MmmReportingTargetingType = "AUDIENCE_INCLUDE"
 )

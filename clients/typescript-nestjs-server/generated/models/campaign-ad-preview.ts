@@ -1,0 +1,52 @@
+
+
+/**
+ * Campaign ad preview record.
+ */
+export interface CampaignAdPreview { 
+  /**
+   * Advertiser ID for this preview.
+   */
+  readonly ad_account_id: string;
+  /**
+   * Ad group ID to create a preview record for.
+   */
+  ad_group_id: string;
+  /**
+   * Client ID that created preview.
+   */
+  readonly client_id?: number;
+  /**
+   * Unix timestamp in milliseconds for preview expiration.
+   */
+  readonly expires_at: number;
+  /**
+   * Whether preview link is active.
+   */
+  readonly is_active: boolean;
+  /**
+   * Pin ID for pin promotion preview.
+   */
+  readonly pin_id?: number;
+  /**
+   * Pin promotion ID for this preview.
+   */
+  readonly pin_promotion_id?: number;
+  /**
+   * Promoted product group ID for catalog previews.
+   */
+  readonly promoted_product_group_id?: number;
+  /**
+   * Campaign ad preview URL.
+   */
+  readonly url: string;
+  /**
+   * User ID that created preview.
+   */
+  readonly user_id: number;
+  /**
+   * Pin promotion preview key.
+   */
+  readonly uuid: string;
+}
+

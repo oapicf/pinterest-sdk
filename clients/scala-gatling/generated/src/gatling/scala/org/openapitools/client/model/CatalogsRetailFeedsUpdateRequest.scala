@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsRetailFeedsUpdateRequest (
-    _catalogType: CatalogsType,
+    _catalogType: String,
     _credentials: Option[CatalogsFeedCredentials],
     _defaultAvailability: Option[ProductAvailabilityType],
     _defaultCurrency: Option[NullableCurrency],

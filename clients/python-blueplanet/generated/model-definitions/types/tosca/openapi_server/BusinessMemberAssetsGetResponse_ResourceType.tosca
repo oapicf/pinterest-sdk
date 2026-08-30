@@ -1,0 +1,53 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BusinessMemberAssetsGetResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BusinessMemberAssetsGetResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AssetIdPermissions = openapi_server.resourceTypes.AssetIdPermissions
+  TotalCountByEntityStatus = openapi_server.resourceTypes.TotalCountByEntityStatus
+}
+resourceTypes {
+
+  BusinessMemberAssetsGetResponse {
+    title = BusinessMemberAssetsGetResponse
+    description = BusinessMemberAssetsGetResponse
+    derivedFrom = Root
+    properties {
+        bookmark {
+          type =  string
+          description = ""
+          optional = false
+        }
+        items {
+          type = array
+          items.type = AssetIdPermissions
+          description = ""
+          optional = true
+        }
+        total_data_count {
+          type =  integer
+          description = "Total number of assets matching the query"
+          optional = true
+        }
+        total_data_count_by_status {
+          type = TotalCountByEntityStatus
+          description = "Breakdown of asset counts by entity status (ad accounts only)"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BusinessMemberAssetsGetResponse {
+    title = BusinessMemberAssetsGetResponse
+    description = BusinessMemberAssetsGetResponse
+    implements = openapi_server.resourceTypes.BusinessMemberAssetsGetResponse
+
+  }
+}

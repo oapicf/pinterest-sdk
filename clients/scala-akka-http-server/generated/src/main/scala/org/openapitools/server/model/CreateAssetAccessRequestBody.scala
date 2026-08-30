@@ -7,6 +7,6 @@ package org.openapitools.server.model
  * @param assetRequests  for example: ''null''
 */
 final case class CreateAssetAccessRequestBody (
-  assetRequests: Seq[CreateAssetAccessRequestBodyAssetRequestsInner]
+  assetRequests: Seq[CreateAssetAccessRequestItem]
 )
 

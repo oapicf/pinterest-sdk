@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,13 +14,14 @@ package openapi
 
 
 
-// TargetingTemplateAudienceSizing - Gets an audience size estimate for a set of given targeting spec data. <p>Returns:</p> An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. 
+// TargetingTemplateAudienceSizing - Gets an audience size estimate for a set of given targeting spec data. **Returns:** An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate.
 type TargetingTemplateAudienceSizing struct {
 
 	ReachEstimate TargetingTemplateAudienceSizingReachEstimate `json:"reach_estimate,omitempty"`
 }
 
-// AssertTargetingTemplateAudienceSizingRequired checks if the required fields are not zero-ed
+// AssertTargetingTemplateAudienceSizingRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertTargetingTemplateAudienceSizingRequired(obj TargetingTemplateAudienceSizing) error {
 	if err := AssertTargetingTemplateAudienceSizingReachEstimateRequired(obj.ReachEstimate); err != nil {
 		return err

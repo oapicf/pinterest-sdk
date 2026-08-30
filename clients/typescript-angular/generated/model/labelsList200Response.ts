@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { LabelsResponse } from './labelsResponse';
+import { Label } from './label';
 
 
 export interface LabelsList200Response { 
     bookmark?: string | null;
-    items: Array<LabelsResponse>;
+    items: Array<Label>;
 }
 

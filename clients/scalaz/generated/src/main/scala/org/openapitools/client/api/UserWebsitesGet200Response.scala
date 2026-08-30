@@ -13,7 +13,7 @@ import UserWebsitesGet200Response._
 
 case class UserWebsitesGet200Response (
   bookmark: Option[String],
-items: List[UserWebsiteSummary])
+items: List[UserWebsite])
 
 object UserWebsitesGet200Response {
   import DateTimeCodecs._

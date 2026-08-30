@@ -17,7 +17,13 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { AdvertiserDefinedEventsResponse } from '../model/advertiserDefinedEventsResponse';
+import { AdvertiserDefinedEventsCreate200Response } from '../model/advertiserDefinedEventsCreate200Response';
+// @ts-ignore
+import { AdvertiserDefinedEventsCreateRequest } from '../model/advertiserDefinedEventsCreateRequest';
+// @ts-ignore
+import { AdvertiserDefinedEventsGet200Response } from '../model/advertiserDefinedEventsGet200Response';
+// @ts-ignore
+import { PinterestLibError } from '../model/pinterestLibError';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -36,17 +42,173 @@ export class ConversionsService extends BaseService {
     }
 
     /**
+     * Create advertiser defined events
+     * Map advertiser defined events to standard events for the given ad account.
+     * @endpoint post /ad_accounts/{ad_account_id}/advertiser_defined_events
+     * @param adAccountId Unique identifier of an ad account.
+     * @param advertiserDefinedEventsCreateRequest 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param options additional options
+     */
+    public advertiserDefinedEventsCreate(adAccountId: string, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdvertiserDefinedEventsCreate200Response>;
+    public advertiserDefinedEventsCreate(adAccountId: string, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdvertiserDefinedEventsCreate200Response>>;
+    public advertiserDefinedEventsCreate(adAccountId: string, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AdvertiserDefinedEventsCreate200Response>>;
+    public advertiserDefinedEventsCreate(adAccountId: string, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (adAccountId === null || adAccountId === undefined) {
+            throw new Error('Required parameter adAccountId was null or undefined when calling advertiserDefinedEventsCreate.');
+        }
+        if (advertiserDefinedEventsCreateRequest === null || advertiserDefinedEventsCreateRequest === undefined) {
+            throw new Error('Required parameter advertiserDefinedEventsCreateRequest was null or undefined when calling advertiserDefinedEventsCreate.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        // authentication (client_credentials) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
+
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/advertiser_defined_events`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<AdvertiserDefinedEventsCreate200Response>('post', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: advertiserDefinedEventsCreateRequest,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Delete advertiser defined events
+     * Untrack advertiser defined events for the given ad account.
+     * @endpoint delete /ad_accounts/{ad_account_id}/advertiser_defined_events
+     * @param adAccountId Unique identifier of an ad account.
+     * @param eventNames List of event names to delete
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param options additional options
+     */
+    public advertiserDefinedEventsDelete(adAccountId: string, eventNames: Array<string>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdvertiserDefinedEventsCreate200Response>;
+    public advertiserDefinedEventsDelete(adAccountId: string, eventNames: Array<string>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdvertiserDefinedEventsCreate200Response>>;
+    public advertiserDefinedEventsDelete(adAccountId: string, eventNames: Array<string>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AdvertiserDefinedEventsCreate200Response>>;
+    public advertiserDefinedEventsDelete(adAccountId: string, eventNames: Array<string>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (adAccountId === null || adAccountId === undefined) {
+            throw new Error('Required parameter adAccountId was null or undefined when calling advertiserDefinedEventsDelete.');
+        }
+        if (eventNames === null || eventNames === undefined) {
+            throw new Error('Required parameter eventNames was null or undefined when calling advertiserDefinedEventsDelete.');
+        }
+
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'event_names',
+            <any>eventNames,
+            QueryParamStyle.Form,
+            false,
+        );
+
+
+        let localVarHeaders = this.defaultHeaders;
+
+        // authentication (client_credentials) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
+
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/advertiser_defined_events`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<AdvertiserDefinedEventsCreate200Response>('delete', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                params: localVarQueryParameters.toHttpParams(),
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * Get advertiser defined events
-     * &lt;p&gt;Get advertiser defined events for the given ad account.&lt;/p&gt;
+     * Get advertiser defined events for the given ad account.
      * @endpoint get /ad_accounts/{ad_account_id}/advertiser_defined_events
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public advertiserDefinedEventsGet(adAccountId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdvertiserDefinedEventsResponse>;
-    public advertiserDefinedEventsGet(adAccountId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdvertiserDefinedEventsResponse>>;
-    public advertiserDefinedEventsGet(adAccountId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AdvertiserDefinedEventsResponse>>;
+    public advertiserDefinedEventsGet(adAccountId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdvertiserDefinedEventsGet200Response>;
+    public advertiserDefinedEventsGet(adAccountId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdvertiserDefinedEventsGet200Response>>;
+    public advertiserDefinedEventsGet(adAccountId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AdvertiserDefinedEventsGet200Response>>;
     public advertiserDefinedEventsGet(adAccountId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling advertiserDefinedEventsGet.');
@@ -85,9 +247,86 @@ export class ConversionsService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/advertiser_defined_events`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<AdvertiserDefinedEventsResponse>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<AdvertiserDefinedEventsGet200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Update advertiser defined events
+     * Update advertiser defined event names or mappings for the given ad account.
+     * @endpoint patch /ad_accounts/{ad_account_id}/advertiser_defined_events
+     * @param adAccountId Unique identifier of an ad account.
+     * @param advertiserDefinedEventsCreateRequest 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param options additional options
+     */
+    public advertiserDefinedEventsUpdate(adAccountId: string, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdvertiserDefinedEventsCreate200Response>;
+    public advertiserDefinedEventsUpdate(adAccountId: string, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdvertiserDefinedEventsCreate200Response>>;
+    public advertiserDefinedEventsUpdate(adAccountId: string, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AdvertiserDefinedEventsCreate200Response>>;
+    public advertiserDefinedEventsUpdate(adAccountId: string, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (adAccountId === null || adAccountId === undefined) {
+            throw new Error('Required parameter adAccountId was null or undefined when calling advertiserDefinedEventsUpdate.');
+        }
+        if (advertiserDefinedEventsCreateRequest === null || advertiserDefinedEventsCreateRequest === undefined) {
+            throw new Error('Required parameter advertiserDefinedEventsCreateRequest was null or undefined when calling advertiserDefinedEventsUpdate.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        // authentication (client_credentials) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
+
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/advertiser_defined_events`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<AdvertiserDefinedEventsCreate200Response>('patch', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: advertiserDefinedEventsCreateRequest,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,

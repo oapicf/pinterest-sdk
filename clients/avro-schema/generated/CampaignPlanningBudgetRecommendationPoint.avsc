@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A point estimation containing the estimate data and estimation type for a budget recommendation.",
+  "name": "CampaignPlanningBudgetRecommendationPoint",
+  "fields": [
+    {
+      "name": "estimation_type",
+      "type": ["null", "model.CampaignPlanningEstimationType"],
+      "doc": "Estimation type for this point.",
+      "default": null
+    },
+    {
+      "name": "point_estimate",
+      "type": ["null", "model.CampaignPlanningPointEstimate"],
+      "doc": "Point estimate data.",
+      "default": null
+    }
+  ]
+
+}

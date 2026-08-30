@@ -1,8 +1,8 @@
 package apimodels;
 
-import apimodels.OptimizationGoalMetadataConversionTagV3GoalMetadata;
-import apimodels.OptimizationGoalMetadataFrequencyGoalMetadata;
-import apimodels.OptimizationGoalMetadataScrollupGoalMetadata;
+import apimodels.ConversionTagV3GoalMetadata;
+import apimodels.FrequencyGoalMetadata;
+import apimodels.ScrollupGoalMetadata;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -12,25 +12,25 @@ import javax.validation.Valid;
 /**
  * OptimizationGoalMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class OptimizationGoalMetadata   {
   @JsonProperty("conversion_tag_v3_goal_metadata")
   @Valid
 
-  private OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
+  private ConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
 
   @JsonProperty("frequency_goal_metadata")
   @Valid
 
-  private OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata;
+  private FrequencyGoalMetadata frequencyGoalMetadata;
 
   @JsonProperty("scrollup_goal_metadata")
   @Valid
 
-  private OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata;
+  private ScrollupGoalMetadata scrollupGoalMetadata;
 
-  public OptimizationGoalMetadata conversionTagV3GoalMetadata(OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
+  public OptimizationGoalMetadata conversionTagV3GoalMetadata(ConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
     this.conversionTagV3GoalMetadata = conversionTagV3GoalMetadata;
     return this;
   }
@@ -39,15 +39,15 @@ public class OptimizationGoalMetadata   {
    * Get conversionTagV3GoalMetadata
    * @return conversionTagV3GoalMetadata
   **/
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata getConversionTagV3GoalMetadata() {
+  public ConversionTagV3GoalMetadata getConversionTagV3GoalMetadata() {
     return conversionTagV3GoalMetadata;
   }
 
-  public void setConversionTagV3GoalMetadata(OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
+  public void setConversionTagV3GoalMetadata(ConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
     this.conversionTagV3GoalMetadata = conversionTagV3GoalMetadata;
   }
 
-  public OptimizationGoalMetadata frequencyGoalMetadata(OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata) {
+  public OptimizationGoalMetadata frequencyGoalMetadata(FrequencyGoalMetadata frequencyGoalMetadata) {
     this.frequencyGoalMetadata = frequencyGoalMetadata;
     return this;
   }
@@ -56,15 +56,15 @@ public class OptimizationGoalMetadata   {
    * Get frequencyGoalMetadata
    * @return frequencyGoalMetadata
   **/
-  public OptimizationGoalMetadataFrequencyGoalMetadata getFrequencyGoalMetadata() {
+  public FrequencyGoalMetadata getFrequencyGoalMetadata() {
     return frequencyGoalMetadata;
   }
 
-  public void setFrequencyGoalMetadata(OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata) {
+  public void setFrequencyGoalMetadata(FrequencyGoalMetadata frequencyGoalMetadata) {
     this.frequencyGoalMetadata = frequencyGoalMetadata;
   }
 
-  public OptimizationGoalMetadata scrollupGoalMetadata(OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata) {
+  public OptimizationGoalMetadata scrollupGoalMetadata(ScrollupGoalMetadata scrollupGoalMetadata) {
     this.scrollupGoalMetadata = scrollupGoalMetadata;
     return this;
   }
@@ -73,11 +73,11 @@ public class OptimizationGoalMetadata   {
    * Get scrollupGoalMetadata
    * @return scrollupGoalMetadata
   **/
-  public OptimizationGoalMetadataScrollupGoalMetadata getScrollupGoalMetadata() {
+  public ScrollupGoalMetadata getScrollupGoalMetadata() {
     return scrollupGoalMetadata;
   }
 
-  public void setScrollupGoalMetadata(OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata) {
+  public void setScrollupGoalMetadata(ScrollupGoalMetadata scrollupGoalMetadata) {
     this.scrollupGoalMetadata = scrollupGoalMetadata;
   }
 
@@ -119,10 +119,7 @@ public class OptimizationGoalMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -7,7 +7,7 @@ using namespace Tiny;
 CatalogsHotelReportStatsParameters::CatalogsHotelReportStatsParameters()
 {
 	catalog_type = std::string();
-	report = CatalogsHotelReportStatsParameters_report();
+	report = CatalogsHotelReportStatsParametersReport();
 }
 
 CatalogsHotelReportStatsParameters::CatalogsHotelReportStatsParameters(std::string jsonString)
@@ -47,7 +47,7 @@ CatalogsHotelReportStatsParameters::fromJson(std::string jsonObj)
 
 
 
-        CatalogsHotelReportStatsParameters_report* obj = &report;
+        CatalogsHotelReportStatsParametersReport* obj = &report;
 		obj->fromJson(value.dump());
 
     }
@@ -86,19 +86,19 @@ CatalogsHotelReportStatsParameters::getCatalogType()
 }
 
 void
-CatalogsHotelReportStatsParameters::setCatalogType(std::string  catalog_type)
+CatalogsHotelReportStatsParameters::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
 
-CatalogsHotelReportStatsParameters_report
+CatalogsHotelReportStatsParametersReport
 CatalogsHotelReportStatsParameters::getReport()
 {
 	return report;
 }
 
 void
-CatalogsHotelReportStatsParameters::setReport(CatalogsHotelReportStatsParameters_report  report)
+CatalogsHotelReportStatsParameters::setReport(CatalogsHotelReportStatsParametersReport report)
 {
 	this->report = report;
 }

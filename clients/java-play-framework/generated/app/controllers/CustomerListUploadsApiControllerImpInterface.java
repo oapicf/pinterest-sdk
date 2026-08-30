@@ -1,9 +1,9 @@
 package controllers;
 
+import apimodels.CustomerListUpload;
 import apimodels.CustomerListUploadCreateRequest;
 import apimodels.CustomerListUploadCreateResponse;
-import apimodels.CustomerListUploadResponse;
-import apimodels.Error;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -49,12 +49,12 @@ public abstract class CustomerListUploadsApiControllerImpInterface {
 
     public abstract CustomerListUploadCreateResponse customerListUploadsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId, CustomerListUploadCreateRequest customerListUploadCreateRequest) throws Exception;
 
-    public Result customerListUploadsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListUploadId) throws Exception {
+    public Result customerListUploadsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId,  @Pattern(regexp="^\\d+$")String customerListUploadId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        CustomerListUploadResponse obj = customerListUploadsGet(request, adAccountId, customerListId, customerListUploadId);
+        CustomerListUpload obj = customerListUploadsGet(request, adAccountId, customerListId, customerListUploadId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -66,14 +66,14 @@ public abstract class CustomerListUploadsApiControllerImpInterface {
 
     }
 
-    public abstract CustomerListUploadResponse customerListUploadsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListUploadId) throws Exception;
+    public abstract CustomerListUpload customerListUploadsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId,  @Pattern(regexp="^\\d+$")String customerListUploadId) throws Exception;
 
-    public Result customerListUploadsRunHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListUploadId) throws Exception {
+    public Result customerListUploadsRunHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId,  @Pattern(regexp="^\\d+$")String customerListUploadId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        CustomerListUploadResponse obj = customerListUploadsRun(request, adAccountId, customerListId, customerListUploadId);
+        CustomerListUpload obj = customerListUploadsRun(request, adAccountId, customerListId, customerListUploadId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -85,6 +85,6 @@ public abstract class CustomerListUploadsApiControllerImpInterface {
 
     }
 
-    public abstract CustomerListUploadResponse customerListUploadsRun(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListUploadId) throws Exception;
+    public abstract CustomerListUpload customerListUploadsRun(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId,  @Pattern(regexp="^\\d+$")String customerListUploadId) throws Exception;
 
 }

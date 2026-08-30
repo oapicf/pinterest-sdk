@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -98,7 +98,6 @@ func (o *TargetingSpecOperationAgeBucket) SetOperation(v string) {
 }
 
 // GetValues returns the Values field value
-// If the value is explicit nil, the zero value for []TargetingSpecAgeBucket will be returned
 func (o *TargetingSpecOperationAgeBucket) GetValues() []TargetingSpecAgeBucket {
 	if o == nil {
 		var ret []TargetingSpecAgeBucket
@@ -110,9 +109,8 @@ func (o *TargetingSpecOperationAgeBucket) GetValues() []TargetingSpecAgeBucket {
 
 // GetValuesOk returns a tuple with the Values field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TargetingSpecOperationAgeBucket) GetValuesOk() ([]TargetingSpecAgeBucket, bool) {
-	if o == nil || IsNil(o.Values) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Values, true
@@ -135,9 +133,7 @@ func (o TargetingSpecOperationAgeBucket) ToMap() (map[string]interface{}, error)
 	toSerialize := map[string]interface{}{}
 	toSerialize["field"] = o.Field
 	toSerialize["operation"] = o.Operation
-	if o.Values != nil {
-		toSerialize["values"] = o.Values
-	}
+	toSerialize["values"] = o.Values
 	return toSerialize, nil
 }
 

@@ -3,9 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/user_summary.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
+import 'package:openapi/src/model/follow_user.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,7 +16,13 @@ part 'followers_list200_response.g.dart';
 /// * [bookmark] 
 /// * [items] 
 @BuiltValue()
-abstract class FollowersList200Response implements Paginated, Built<FollowersList200Response, FollowersList200ResponseBuilder> {
+abstract class FollowersList200Response implements Built<FollowersList200Response, FollowersList200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<FollowUser> get items;
+
   FollowersList200Response._();
 
   factory FollowersList200Response([void updates(FollowersList200ResponseBuilder b)]) = _$FollowersList200Response;
@@ -51,7 +56,7 @@ class _$FollowersList200ResponseSerializer implements PrimitiveSerializer<Follow
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(FollowUser)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$FollowersList200ResponseSerializer implements PrimitiveSerializer<Follow
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(FollowUser)]),
+          ) as BuiltList<FollowUser>;
           result.items.replace(valueDes);
           break;
         default:

@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 **DefaultAvailability** | **ProductAvailabilityType** |  | [optional] 
 **DefaultCountry** | **Country** |  | [optional] 
 **DefaultCurrency** | **NullableCurrency** |  | [optional] 
-**DefaultLocale** | [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequestDefaultLocale.md) |  | [optional] 
+**DefaultLocale** | [**CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale**](CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.md) |  | [optional] 
 **PreferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
-**Status** | **CatalogsStatus** |  | [optional] [default to "ACTIVE"]
+**Status** | **CatalogsStatus** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

@@ -1,0 +1,9 @@
+
+
+# CampaignPlanningConfidenceLevelAlertReason
+
+## Enum
+
+
+
+

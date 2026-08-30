@@ -2,48 +2,17 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.AvailabilityFilter;
-import org.openapitools.model.BrandFilter;
+import org.openapitools.model.CatalogsBaseFilterKeys;
 import org.openapitools.model.CatalogsProductGroupCurrencyCriteria;
 import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleGenderCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleMediaTypesCriteria;
+import org.openapitools.model.CatalogsProductGroupMultiplePinterestProductCategoryCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringListCriteria;
 import org.openapitools.model.CatalogsProductGroupPricingCriteria;
 import org.openapitools.model.CatalogsProductGroupUint32Criteria;
-import org.openapitools.model.ConditionFilter;
-import org.openapitools.model.CurrencyFilter;
-import org.openapitools.model.CustomLabel0Filter;
-import org.openapitools.model.CustomLabel1Filter;
-import org.openapitools.model.CustomLabel2Filter;
-import org.openapitools.model.CustomLabel3Filter;
-import org.openapitools.model.CustomLabel4Filter;
-import org.openapitools.model.CustomNumber0Filter;
-import org.openapitools.model.CustomNumber1Filter;
-import org.openapitools.model.CustomNumber2Filter;
-import org.openapitools.model.CustomNumber3Filter;
-import org.openapitools.model.CustomNumber4Filter;
-import org.openapitools.model.GenderFilter;
-import org.openapitools.model.GoogleProductCategory0Filter;
-import org.openapitools.model.GoogleProductCategory1Filter;
-import org.openapitools.model.GoogleProductCategory2Filter;
-import org.openapitools.model.GoogleProductCategory3Filter;
-import org.openapitools.model.GoogleProductCategory4Filter;
-import org.openapitools.model.GoogleProductCategory5Filter;
-import org.openapitools.model.GoogleProductCategory6Filter;
-import org.openapitools.model.ItemGroupIdFilter;
-import org.openapitools.model.ItemIdFilter;
-import org.openapitools.model.MaxPriceFilter;
-import org.openapitools.model.MediaTypeFilter;
-import org.openapitools.model.MinPriceFilter;
 import org.openapitools.model.ProductGroupReferenceFilter;
-import org.openapitools.model.ProductType0Filter;
-import org.openapitools.model.ProductType1Filter;
-import org.openapitools.model.ProductType2Filter;
-import org.openapitools.model.ProductType3Filter;
-import org.openapitools.model.ProductType4Filter;
-import org.openapitools.model.TitleKeywordsFilter;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -58,7 +27,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsProductGroupFilterKeys")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupFilterKeys   {
   private CatalogsProductGroupPricingCriteria MIN_PRICE;
   private CatalogsProductGroupPricingCriteria MAX_PRICE;
@@ -87,13 +56,14 @@ public class CatalogsProductGroupFilterKeys   {
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_2;
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_1;
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0;
-  private CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP;
   private CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_0;
   private CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_1;
   private CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_2;
   private CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_3;
   private CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_4;
   private CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS;
+  private CatalogsProductGroupMultiplePinterestProductCategoryCriteria PINTEREST_PRODUCT_CATEGORIES;
+  private CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP;
 
   public CatalogsProductGroupFilterKeys() {
   }
@@ -127,13 +97,14 @@ public class CatalogsProductGroupFilterKeys   {
     @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_2") CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_2,
     @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_1") CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_1,
     @JsonProperty(required = true, value = "GOOGLE_PRODUCT_CATEGORY_0") CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0,
-    @JsonProperty(required = true, value = "PRODUCT_GROUP") CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP,
     @JsonProperty(required = true, value = "CUSTOM_NUMBER_0") CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_0,
     @JsonProperty(required = true, value = "CUSTOM_NUMBER_1") CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_1,
     @JsonProperty(required = true, value = "CUSTOM_NUMBER_2") CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_2,
     @JsonProperty(required = true, value = "CUSTOM_NUMBER_3") CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_3,
     @JsonProperty(required = true, value = "CUSTOM_NUMBER_4") CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_4,
-    @JsonProperty(required = true, value = "TITLE_KEYWORDS") CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS
+    @JsonProperty(required = true, value = "TITLE_KEYWORDS") CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS,
+    @JsonProperty(required = true, value = "PINTEREST_PRODUCT_CATEGORIES") CatalogsProductGroupMultiplePinterestProductCategoryCriteria PINTEREST_PRODUCT_CATEGORIES,
+    @JsonProperty(required = true, value = "PRODUCT_GROUP") CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP
   ) {
     this.MIN_PRICE = MIN_PRICE;
     this.MAX_PRICE = MAX_PRICE;
@@ -162,13 +133,14 @@ public class CatalogsProductGroupFilterKeys   {
     this.GOOGLE_PRODUCT_CATEGORY_2 = GOOGLE_PRODUCT_CATEGORY_2;
     this.GOOGLE_PRODUCT_CATEGORY_1 = GOOGLE_PRODUCT_CATEGORY_1;
     this.GOOGLE_PRODUCT_CATEGORY_0 = GOOGLE_PRODUCT_CATEGORY_0;
-    this.PRODUCT_GROUP = PRODUCT_GROUP;
     this.CUSTOM_NUMBER_0 = CUSTOM_NUMBER_0;
     this.CUSTOM_NUMBER_1 = CUSTOM_NUMBER_1;
     this.CUSTOM_NUMBER_2 = CUSTOM_NUMBER_2;
     this.CUSTOM_NUMBER_3 = CUSTOM_NUMBER_3;
     this.CUSTOM_NUMBER_4 = CUSTOM_NUMBER_4;
     this.TITLE_KEYWORDS = TITLE_KEYWORDS;
+    this.PINTEREST_PRODUCT_CATEGORIES = PINTEREST_PRODUCT_CATEGORIES;
+    this.PRODUCT_GROUP = PRODUCT_GROUP;
   }
 
   /**
@@ -686,25 +658,6 @@ public class CatalogsProductGroupFilterKeys   {
 
   /**
    **/
-  public CatalogsProductGroupFilterKeys PRODUCT_GROUP(CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP) {
-    this.PRODUCT_GROUP = PRODUCT_GROUP;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "PRODUCT_GROUP")
-  @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getPRODUCTGROUP() {
-    return PRODUCT_GROUP;
-  }
-
-  @JsonProperty(required = true, value = "PRODUCT_GROUP")
-  public void setPRODUCTGROUP(CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP) {
-    this.PRODUCT_GROUP = PRODUCT_GROUP;
-  }
-
-  /**
-   **/
   public CatalogsProductGroupFilterKeys CUSTOM_NUMBER_0(CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_0) {
     this.CUSTOM_NUMBER_0 = CUSTOM_NUMBER_0;
     return this;
@@ -817,6 +770,44 @@ public class CatalogsProductGroupFilterKeys   {
     this.TITLE_KEYWORDS = TITLE_KEYWORDS;
   }
 
+  /**
+   **/
+  public CatalogsProductGroupFilterKeys PINTEREST_PRODUCT_CATEGORIES(CatalogsProductGroupMultiplePinterestProductCategoryCriteria PINTEREST_PRODUCT_CATEGORIES) {
+    this.PINTEREST_PRODUCT_CATEGORIES = PINTEREST_PRODUCT_CATEGORIES;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "PINTEREST_PRODUCT_CATEGORIES")
+  @NotNull @Valid public CatalogsProductGroupMultiplePinterestProductCategoryCriteria getPINTERESTPRODUCTCATEGORIES() {
+    return PINTEREST_PRODUCT_CATEGORIES;
+  }
+
+  @JsonProperty(required = true, value = "PINTEREST_PRODUCT_CATEGORIES")
+  public void setPINTERESTPRODUCTCATEGORIES(CatalogsProductGroupMultiplePinterestProductCategoryCriteria PINTEREST_PRODUCT_CATEGORIES) {
+    this.PINTEREST_PRODUCT_CATEGORIES = PINTEREST_PRODUCT_CATEGORIES;
+  }
+
+  /**
+   **/
+  public CatalogsProductGroupFilterKeys PRODUCT_GROUP(CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP) {
+    this.PRODUCT_GROUP = PRODUCT_GROUP;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "PRODUCT_GROUP")
+  @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getPRODUCTGROUP() {
+    return PRODUCT_GROUP;
+  }
+
+  @JsonProperty(required = true, value = "PRODUCT_GROUP")
+  public void setPRODUCTGROUP(CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP) {
+    this.PRODUCT_GROUP = PRODUCT_GROUP;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -854,18 +845,19 @@ public class CatalogsProductGroupFilterKeys   {
         Objects.equals(this.GOOGLE_PRODUCT_CATEGORY_2, catalogsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_2) &&
         Objects.equals(this.GOOGLE_PRODUCT_CATEGORY_1, catalogsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_1) &&
         Objects.equals(this.GOOGLE_PRODUCT_CATEGORY_0, catalogsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_0) &&
-        Objects.equals(this.PRODUCT_GROUP, catalogsProductGroupFilterKeys.PRODUCT_GROUP) &&
         Objects.equals(this.CUSTOM_NUMBER_0, catalogsProductGroupFilterKeys.CUSTOM_NUMBER_0) &&
         Objects.equals(this.CUSTOM_NUMBER_1, catalogsProductGroupFilterKeys.CUSTOM_NUMBER_1) &&
         Objects.equals(this.CUSTOM_NUMBER_2, catalogsProductGroupFilterKeys.CUSTOM_NUMBER_2) &&
         Objects.equals(this.CUSTOM_NUMBER_3, catalogsProductGroupFilterKeys.CUSTOM_NUMBER_3) &&
         Objects.equals(this.CUSTOM_NUMBER_4, catalogsProductGroupFilterKeys.CUSTOM_NUMBER_4) &&
-        Objects.equals(this.TITLE_KEYWORDS, catalogsProductGroupFilterKeys.TITLE_KEYWORDS);
+        Objects.equals(this.TITLE_KEYWORDS, catalogsProductGroupFilterKeys.TITLE_KEYWORDS) &&
+        Objects.equals(this.PINTEREST_PRODUCT_CATEGORIES, catalogsProductGroupFilterKeys.PINTEREST_PRODUCT_CATEGORIES) &&
+        Objects.equals(this.PRODUCT_GROUP, catalogsProductGroupFilterKeys.PRODUCT_GROUP);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(MIN_PRICE, MAX_PRICE, CURRENCY, ITEM_ID, AVAILABILITY, BRAND, CONDITION, CUSTOM_LABEL_0, CUSTOM_LABEL_1, CUSTOM_LABEL_2, CUSTOM_LABEL_3, CUSTOM_LABEL_4, ITEM_GROUP_ID, GENDER, MEDIA_TYPE, PRODUCT_TYPE_4, PRODUCT_TYPE_3, PRODUCT_TYPE_2, PRODUCT_TYPE_1, PRODUCT_TYPE_0, GOOGLE_PRODUCT_CATEGORY_6, GOOGLE_PRODUCT_CATEGORY_5, GOOGLE_PRODUCT_CATEGORY_4, GOOGLE_PRODUCT_CATEGORY_3, GOOGLE_PRODUCT_CATEGORY_2, GOOGLE_PRODUCT_CATEGORY_1, GOOGLE_PRODUCT_CATEGORY_0, PRODUCT_GROUP, CUSTOM_NUMBER_0, CUSTOM_NUMBER_1, CUSTOM_NUMBER_2, CUSTOM_NUMBER_3, CUSTOM_NUMBER_4, TITLE_KEYWORDS);
+    return Objects.hash(MIN_PRICE, MAX_PRICE, CURRENCY, ITEM_ID, AVAILABILITY, BRAND, CONDITION, CUSTOM_LABEL_0, CUSTOM_LABEL_1, CUSTOM_LABEL_2, CUSTOM_LABEL_3, CUSTOM_LABEL_4, ITEM_GROUP_ID, GENDER, MEDIA_TYPE, PRODUCT_TYPE_4, PRODUCT_TYPE_3, PRODUCT_TYPE_2, PRODUCT_TYPE_1, PRODUCT_TYPE_0, GOOGLE_PRODUCT_CATEGORY_6, GOOGLE_PRODUCT_CATEGORY_5, GOOGLE_PRODUCT_CATEGORY_4, GOOGLE_PRODUCT_CATEGORY_3, GOOGLE_PRODUCT_CATEGORY_2, GOOGLE_PRODUCT_CATEGORY_1, GOOGLE_PRODUCT_CATEGORY_0, CUSTOM_NUMBER_0, CUSTOM_NUMBER_1, CUSTOM_NUMBER_2, CUSTOM_NUMBER_3, CUSTOM_NUMBER_4, TITLE_KEYWORDS, PINTEREST_PRODUCT_CATEGORIES, PRODUCT_GROUP);
   }
 
   @Override
@@ -900,13 +892,14 @@ public class CatalogsProductGroupFilterKeys   {
     sb.append("    GOOGLE_PRODUCT_CATEGORY_2: ").append(toIndentedString(GOOGLE_PRODUCT_CATEGORY_2)).append("\n");
     sb.append("    GOOGLE_PRODUCT_CATEGORY_1: ").append(toIndentedString(GOOGLE_PRODUCT_CATEGORY_1)).append("\n");
     sb.append("    GOOGLE_PRODUCT_CATEGORY_0: ").append(toIndentedString(GOOGLE_PRODUCT_CATEGORY_0)).append("\n");
-    sb.append("    PRODUCT_GROUP: ").append(toIndentedString(PRODUCT_GROUP)).append("\n");
     sb.append("    CUSTOM_NUMBER_0: ").append(toIndentedString(CUSTOM_NUMBER_0)).append("\n");
     sb.append("    CUSTOM_NUMBER_1: ").append(toIndentedString(CUSTOM_NUMBER_1)).append("\n");
     sb.append("    CUSTOM_NUMBER_2: ").append(toIndentedString(CUSTOM_NUMBER_2)).append("\n");
     sb.append("    CUSTOM_NUMBER_3: ").append(toIndentedString(CUSTOM_NUMBER_3)).append("\n");
     sb.append("    CUSTOM_NUMBER_4: ").append(toIndentedString(CUSTOM_NUMBER_4)).append("\n");
     sb.append("    TITLE_KEYWORDS: ").append(toIndentedString(TITLE_KEYWORDS)).append("\n");
+    sb.append("    PINTEREST_PRODUCT_CATEGORIES: ").append(toIndentedString(PINTEREST_PRODUCT_CATEGORIES)).append("\n");
+    sb.append("    PRODUCT_GROUP: ").append(toIndentedString(PRODUCT_GROUP)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -916,12 +909,8 @@ public class CatalogsProductGroupFilterKeys   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

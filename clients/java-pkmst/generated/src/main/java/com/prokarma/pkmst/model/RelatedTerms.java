@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.RelatedTermsRelatedTermsListInner;
+import com.prokarma.pkmst.model.RelatedTermsRelatedTermsListItems;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.List;
  * RelatedTerms
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class RelatedTerms   {
   @JsonProperty("id")
   private String id;
@@ -28,7 +28,7 @@ public class RelatedTerms   {
 
   @JsonProperty("related_terms_list")
   
-  private List<RelatedTermsRelatedTermsListInner> relatedTermsList = null;
+  private List<RelatedTermsRelatedTermsListItems> relatedTermsList = null;
 
   public RelatedTerms id(String id) {
     this.id = id;
@@ -66,12 +66,12 @@ public class RelatedTerms   {
     this.relatedTermCount = relatedTermCount;
   }
 
-  public RelatedTerms relatedTermsList(List<RelatedTermsRelatedTermsListInner> relatedTermsList) {
+  public RelatedTerms relatedTermsList(List<RelatedTermsRelatedTermsListItems> relatedTermsList) {
     this.relatedTermsList = relatedTermsList;
     return this;
   }
 
-  public RelatedTerms addRelatedTermsListItem(RelatedTermsRelatedTermsListInner relatedTermsListItem) {
+  public RelatedTerms addRelatedTermsListItem(RelatedTermsRelatedTermsListItems relatedTermsListItem) {
     if (this.relatedTermsList == null) {
       this.relatedTermsList = new ArrayList<>();
     }
@@ -84,11 +84,11 @@ public class RelatedTerms   {
    * @return relatedTermsList
    */
   @ApiModelProperty(value = "The id of the advertiser.")
-  public List<RelatedTermsRelatedTermsListInner> getRelatedTermsList() {
+  public List<RelatedTermsRelatedTermsListItems> getRelatedTermsList() {
     return relatedTermsList;
   }
 
-  public void setRelatedTermsList(List<RelatedTermsRelatedTermsListInner> relatedTermsList) {
+  public void setRelatedTermsList(List<RelatedTermsRelatedTermsListItems> relatedTermsList) {
     this.relatedTermsList = relatedTermsList;
   }
 
@@ -129,10 +129,7 @@ public class RelatedTerms   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

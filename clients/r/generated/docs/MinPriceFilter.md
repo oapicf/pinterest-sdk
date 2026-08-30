@@ -4,6 +4,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MIN_PRICE** | [**CatalogsProductGroupPricingCriteria**](.md) |  | 
+**MIN_PRICE** | [**CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  | 
 
 

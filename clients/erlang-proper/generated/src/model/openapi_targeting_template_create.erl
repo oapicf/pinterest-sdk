@@ -13,7 +13,7 @@
   | {'keywords', list(openapi_targeting_template_keyword:openapi_targeting_template_keyword()) }
   | {'name', binary() }
   | {'placement_group', openapi_placement_group_type:openapi_placement_group_type() }
-  | {'targeting_attributes', openapi_targeting_spec:openapi_targeting_spec() }
+  | {'targeting_attributes', openapi_targeting_spec_optimal:openapi_targeting_spec_optimal() }
   | {'tracking_urls', openapi_tracking_urls:openapi_tracking_urls() }
   ].
 
@@ -26,7 +26,7 @@ openapi_targeting_template_create(Fields) ->
             , {'keywords', list(openapi_targeting_template_keyword:openapi_targeting_template_keyword()) }
             , {'name', binary() }
             , {'placement_group', openapi_placement_group_type:openapi_placement_group_type() }
-            , {'targeting_attributes', openapi_targeting_spec:openapi_targeting_spec() }
+            , {'targeting_attributes', openapi_targeting_spec_optimal:openapi_targeting_spec_optimal() }
             , {'tracking_urls', openapi_tracking_urls:openapi_tracking_urls() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

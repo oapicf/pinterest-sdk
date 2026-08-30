@@ -2,33 +2,38 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.model.ImageDetails;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * ImageSize
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ImageSize {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ImageDetails _1200x;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ImageDetails _150x150;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ImageDetails _400x300;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ImageDetails _600x;
 
   public ImageSize _1200x(@Nullable ImageDetails _1200x) {
@@ -47,6 +52,7 @@ public class ImageSize {
     return _1200x;
   }
 
+  @JsonProperty("1200x")
   public void set1200x(@Nullable ImageDetails _1200x) {
     this._1200x = _1200x;
   }
@@ -67,6 +73,7 @@ public class ImageSize {
     return _150x150;
   }
 
+  @JsonProperty("150x150")
   public void set150x150(@Nullable ImageDetails _150x150) {
     this._150x150 = _150x150;
   }
@@ -87,6 +94,7 @@ public class ImageSize {
     return _400x300;
   }
 
+  @JsonProperty("400x300")
   public void set400x300(@Nullable ImageDetails _400x300) {
     this._400x300 = _400x300;
   }
@@ -107,6 +115,7 @@ public class ImageSize {
     return _600x;
   }
 
+  @JsonProperty("600x")
   public void set600x(@Nullable ImageDetails _600x) {
     this._600x = _600x;
   }
@@ -147,11 +156,8 @@ public class ImageSize {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

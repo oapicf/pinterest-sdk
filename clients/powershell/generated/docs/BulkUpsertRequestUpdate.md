@@ -6,10 +6,11 @@ Name | Type | Description | Notes
 **AdGroups** | [**AdGroupUpdateRequest[]**](AdGroupUpdateRequest.md) |  | [optional] 
 **Ads** | [**AdUpdateRequest[]**](AdUpdateRequest.md) |  | [optional] 
 **Campaigns** | [**CampaignUpdateRequest[]**](CampaignUpdateRequest.md) |  | [optional] 
-**CatalogProductGroups** | [**CatalogsProductGroupsUpdateRequest[]**](CatalogsProductGroupsUpdateRequest.md) |  | [optional] 
-**Keywords** | [**KeywordUpdate[]**](KeywordUpdate.md) |  | [optional] 
+**CatalogProductGroups** | [**BulkUpsertRequestUpdateCatalogProductGroupsItems[]**](BulkUpsertRequestUpdateCatalogProductGroupsItems.md) |  | [optional] 
+**Keywords** | [**KeywordUpdateGenerated[]**](KeywordUpdateGenerated.md) |  | [optional] 
 **Labels** | [**LabelBulkUpdateRequest[]**](LabelBulkUpdateRequest.md) |  | [optional] 
 **ProductGroups** | [**ProductGroupPromotionUpdateRequest[]**](ProductGroupPromotionUpdateRequest.md) |  | [optional] 
+**Schedules** | [**ScheduleUpdateRequest[]**](ScheduleUpdateRequest.md) |  | [optional] 
 
 ## Examples
 
@@ -21,7 +22,8 @@ $BulkUpsertRequestUpdate = Initialize-PSOpenAPIToolsBulkUpsertRequestUpdate  -Ad
  -CatalogProductGroups null `
  -Keywords null `
  -Labels null `
- -ProductGroups null
+ -ProductGroups null `
+ -Schedules null
 ```
 
 - Convert the resource to JSON

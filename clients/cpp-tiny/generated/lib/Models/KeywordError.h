@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setData(Keyword  data);
+	void setData(Keyword data);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getErrorMessages();
 
 	/*! \brief Set 
 	 */
-	void setErrorMessages(std::list <std::string> error_messages);
+	void setErrorMessages(std::list<std::string> error_messages);
 
 
     private:

@@ -27,12 +27,12 @@ from pydantic import Field, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from openapi_server.models.catalog import Catalog
+from openapi_server.models.catalog_create import CatalogCreate
 from openapi_server.models.catalogs_available_filter_values import CatalogsAvailableFilterValues
-from openapi_server.models.catalogs_create_request import CatalogsCreateRequest
 from openapi_server.models.catalogs_list200_response import CatalogsList200Response
 from openapi_server.models.catalogs_locale import CatalogsLocale
 from openapi_server.models.country import Country
-from openapi_server.models.error import Error
+from openapi_server.models.pinterest_lib_error import PinterestLibError
 from openapi_server.security_api import get_token_pinterest_oauth2
 
 router = APIRouter()
@@ -45,64 +45,71 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
 @router.get(
     "/catalogs",
     responses={
-        200: {"model": CatalogsList200Response, "description": "Success"},
-        400: {"model": Error, "description": "Invalid parameters."},
-        401: {"model": Error, "description": "Unauthorized access."},
-        "default": {"model": Error, "description": "Unexpected error."},
+        200: {"model": CatalogsList200Response, "description": "The request has succeeded."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
     },
     tags=["catalogs"],
     summary="List catalogs",
     response_model_by_alias=True,
 )
 async def catalogs_list(
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.")] = Query(25, description="Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.", alias="page_size", ge=1, le=250),
     ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:read"]
     ),
 ) -> CatalogsList200Response:
-    """Fetch catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;"""
+    """Fetch catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)"""
     if not BaseCatalogsApi.subclasses:
         raise HTTPException(status_code=500, detail="Not implemented")
-    return await BaseCatalogsApi.subclasses[0]().catalogs_list(bookmark, page_size, ad_account_id)
+    return await BaseCatalogsApi.subclasses[0]().catalogs_list(ad_account_id, bookmark, page_size)
 
 
 @router.post(
     "/catalogs",
     responses={
-        200: {"model": Catalog, "description": "Success"},
-        400: {"model": Error, "description": "Invalid parameters."},
-        401: {"model": Error, "description": "Unauthorized access."},
-        "default": {"model": Error, "description": "Unexpected error."},
+        200: {"model": Catalog, "description": "The request has succeeded."},
+        201: {"model": Catalog, "description": "Resource create operation completed successfully."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
     },
     tags=["catalogs"],
     summary="Create catalog",
     response_model_by_alias=True,
 )
 async def catalogs_create(
-    catalogs_create_request: Annotated[CatalogsCreateRequest, Field(description="Request object used to created a feed.")] = Body(None, description="Request object used to created a feed."),
+    catalog_create: CatalogCreate = Body(None, description=""),
     ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:write"]
     ),
 ) -> Catalog:
-    """Create a new catalog owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager."""
+    """Create a new catalog owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager."""
     if not BaseCatalogsApi.subclasses:
         raise HTTPException(status_code=500, detail="Not implemented")
-    return await BaseCatalogsApi.subclasses[0]().catalogs_create(catalogs_create_request, ad_account_id)
+    return await BaseCatalogsApi.subclasses[0]().catalogs_create(catalog_create, ad_account_id)
 
 
 @router.get(
     "/catalogs/available_filter_values",
     responses={
-        200: {"model": CatalogsAvailableFilterValues, "description": "Success"},
-        400: {"model": Error, "description": "Invalid parameters."},
-        401: {"model": Error, "description": "Unauthorized access."},
-        403: {"model": Error, "description": "Forbidden. Account not authorized to access available filter values."},
-        404: {"model": Error, "description": "Data feed not found."},
-        409: {"model": Error, "description": "Can&#39;t access this feature without an existing catalog."},
-        "default": {"model": Error, "description": "Unexpected error."},
+        200: {"model": CatalogsAvailableFilterValues, "description": "The request has succeeded."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
     },
     tags=["catalogs"],
     summary="List available filter values",
@@ -118,7 +125,7 @@ async def catalogs_available_filter_values(
         get_token_pinterest_oauth2, scopes=["catalogs:read"]
     ),
 ) -> CatalogsAvailableFilterValues:
-    """Get the available filter attributes and values associated with a given feed or catalog owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account. - &lt;code&gt;country&lt;/code&gt;, &lt;code&gt;language&lt;/code&gt;, and &lt;code&gt;feed_id&lt;/code&gt; are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;"""
+    """Get the available filter attributes and values associated with a given feed or catalog owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account. - &#x60;country&#x60;, &#x60;language&#x60;, and &#x60;feed_id&#x60; are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)"""
     if not BaseCatalogsApi.subclasses:
         raise HTTPException(status_code=500, detail="Not implemented")
     return await BaseCatalogsApi.subclasses[0]().catalogs_available_filter_values(catalog_id, feed_id, country, language, ad_account_id)

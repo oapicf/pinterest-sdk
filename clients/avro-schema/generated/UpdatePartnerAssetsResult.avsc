@@ -12,8 +12,8 @@
     },
     {
       "name": "asset_type",
-      "type": ["null", "string"],
-      "doc": "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.",
+      "type": ["null", "model.AssetTypeResponse"],
+      "doc": "",
       "default": null
     },
     {

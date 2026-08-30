@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -23,15 +31,18 @@ import com.squareup.moshi.JsonClass
 /**
  * Catalog entity
  *
+ * @param catalogType 
  * @param createdAt 
  * @param id ID of the catalog entity.
- * @param updatedAt 
- * @param catalogType 
  * @param name A human-friendly name associated to a catalog entity.
+ * @param updatedAt 
  */
 
 
 data class Catalog (
+
+    @Json(name = "catalog_type")
+    val catalogType: CatalogsType,
 
     @Json(name = "created_at")
     val createdAt: java.time.OffsetDateTime,
@@ -40,15 +51,12 @@ data class Catalog (
     @Json(name = "id")
     val id: kotlin.String,
 
-    @Json(name = "updated_at")
-    val updatedAt: java.time.OffsetDateTime,
-
-    @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
-
     /* A human-friendly name associated to a catalog entity. */
     @Json(name = "name")
-    val name: kotlin.String?
+    val name: kotlin.String,
+
+    @Json(name = "updated_at")
+    val updatedAt: java.time.OffsetDateTime
 
 ) {
 

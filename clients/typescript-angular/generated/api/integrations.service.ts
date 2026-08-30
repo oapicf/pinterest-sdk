@@ -17,21 +17,23 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { IntegrationLogsRequest } from '../model/integrationLogsRequest';
+import { IntegrationLogsInvalidLogResponse } from '../model/integrationLogsInvalidLogResponse';
+// @ts-ignore
+import { IntegrationLogsRequestCreate } from '../model/integrationLogsRequestCreate';
 // @ts-ignore
 import { IntegrationLogsSuccessResponse } from '../model/integrationLogsSuccessResponse';
 // @ts-ignore
 import { IntegrationMetadata } from '../model/integrationMetadata';
 // @ts-ignore
+import { IntegrationMetadataCreate } from '../model/integrationMetadataCreate';
+// @ts-ignore
+import { IntegrationMetadataUpdate } from '../model/integrationMetadataUpdate';
+// @ts-ignore
 import { IntegrationRecord } from '../model/integrationRecord';
-// @ts-ignore
-import { IntegrationRequest } from '../model/integrationRequest';
-// @ts-ignore
-import { IntegrationRequestPatch } from '../model/integrationRequestPatch';
 // @ts-ignore
 import { IntegrationsGetList200Response } from '../model/integrationsGetList200Response';
 // @ts-ignore
-import { IntegrationsLogsPost400Response } from '../model/integrationsLogsPost400Response';
+import { PinterestLibError } from '../model/pinterestLibError';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -58,9 +60,9 @@ export class IntegrationsService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public integrationsCommerceDel(externalBusinessId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public integrationsCommerceDel(externalBusinessId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public integrationsCommerceDel(externalBusinessId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public integrationsCommerceDel(externalBusinessId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<IntegrationMetadata>;
+    public integrationsCommerceDel(externalBusinessId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<IntegrationMetadata>>;
+    public integrationsCommerceDel(externalBusinessId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<IntegrationMetadata>>;
     public integrationsCommerceDel(externalBusinessId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (externalBusinessId === null || externalBusinessId === undefined) {
             throw new Error('Required parameter externalBusinessId was null or undefined when calling integrationsCommerceDel.');
@@ -96,7 +98,7 @@ export class IntegrationsService extends BaseService {
 
         let localVarPath = `/integrations/commerce/${this.configuration.encodeParam({name: "externalBusinessId", value: externalBusinessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('delete', `${basePath}${localVarPath}`,
+        return this.httpClient.request<IntegrationMetadata>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -174,20 +176,20 @@ export class IntegrationsService extends BaseService {
      * Update commerce integration metadata for the given external business ID. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @endpoint patch /integrations/commerce/{external_business_id}
      * @param externalBusinessId External business ID for the integration.
-     * @param integrationRequestPatch Parameters to get create/update the Integration Metadata
+     * @param integrationMetadataUpdate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public integrationsCommercePatch(externalBusinessId: string, integrationRequestPatch: IntegrationRequestPatch, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<IntegrationMetadata>;
-    public integrationsCommercePatch(externalBusinessId: string, integrationRequestPatch: IntegrationRequestPatch, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<IntegrationMetadata>>;
-    public integrationsCommercePatch(externalBusinessId: string, integrationRequestPatch: IntegrationRequestPatch, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<IntegrationMetadata>>;
-    public integrationsCommercePatch(externalBusinessId: string, integrationRequestPatch: IntegrationRequestPatch, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public integrationsCommercePatch(externalBusinessId: string, integrationMetadataUpdate: IntegrationMetadataUpdate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<IntegrationMetadata>;
+    public integrationsCommercePatch(externalBusinessId: string, integrationMetadataUpdate: IntegrationMetadataUpdate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<IntegrationMetadata>>;
+    public integrationsCommercePatch(externalBusinessId: string, integrationMetadataUpdate: IntegrationMetadataUpdate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<IntegrationMetadata>>;
+    public integrationsCommercePatch(externalBusinessId: string, integrationMetadataUpdate: IntegrationMetadataUpdate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (externalBusinessId === null || externalBusinessId === undefined) {
             throw new Error('Required parameter externalBusinessId was null or undefined when calling integrationsCommercePatch.');
         }
-        if (integrationRequestPatch === null || integrationRequestPatch === undefined) {
-            throw new Error('Required parameter integrationRequestPatch was null or undefined when calling integrationsCommercePatch.');
+        if (integrationMetadataUpdate === null || integrationMetadataUpdate === undefined) {
+            throw new Error('Required parameter integrationMetadataUpdate was null or undefined when calling integrationsCommercePatch.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -232,7 +234,7 @@ export class IntegrationsService extends BaseService {
         return this.httpClient.request<IntegrationMetadata>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: integrationRequestPatch,
+                body: integrationMetadataUpdate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -247,17 +249,17 @@ export class IntegrationsService extends BaseService {
      * Create commerce integration
      * Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @endpoint post /integrations/commerce
-     * @param integrationRequest Parameters to get create/update the Integration Metadata
+     * @param integrationMetadataCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public integrationsCommercePost(integrationRequest: IntegrationRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<IntegrationMetadata>;
-    public integrationsCommercePost(integrationRequest: IntegrationRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<IntegrationMetadata>>;
-    public integrationsCommercePost(integrationRequest: IntegrationRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<IntegrationMetadata>>;
-    public integrationsCommercePost(integrationRequest: IntegrationRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (integrationRequest === null || integrationRequest === undefined) {
-            throw new Error('Required parameter integrationRequest was null or undefined when calling integrationsCommercePost.');
+    public integrationsCommercePost(integrationMetadataCreate: IntegrationMetadataCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<IntegrationMetadata>;
+    public integrationsCommercePost(integrationMetadataCreate: IntegrationMetadataCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<IntegrationMetadata>>;
+    public integrationsCommercePost(integrationMetadataCreate: IntegrationMetadataCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<IntegrationMetadata>>;
+    public integrationsCommercePost(integrationMetadataCreate: IntegrationMetadataCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (integrationMetadataCreate === null || integrationMetadataCreate === undefined) {
+            throw new Error('Required parameter integrationMetadataCreate was null or undefined when calling integrationsCommercePost.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -302,7 +304,7 @@ export class IntegrationsService extends BaseService {
         return this.httpClient.request<IntegrationMetadata>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: integrationRequest,
+                body: integrationMetadataCreate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -317,7 +319,7 @@ export class IntegrationsService extends BaseService {
      * Get integration metadata
      * Get integration metadata by ID. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @endpoint get /integrations/{id}
-     * @param id Integration ID.
+     * @param id Integration record ID.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
@@ -378,7 +380,7 @@ export class IntegrationsService extends BaseService {
      * Get integration metadata list. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @endpoint get /integrations
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
@@ -456,17 +458,17 @@ export class IntegrationsService extends BaseService {
      * Receives batched logs from integration applications.
      * This endpoint receives batched logs from integration applications on partner platforms. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      * @endpoint post /integrations/logs
-     * @param integrationLogsRequest Ingest log information from external integration application.
+     * @param integrationLogsRequestCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<IntegrationLogsSuccessResponse>;
-    public integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<IntegrationLogsSuccessResponse>>;
-    public integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<IntegrationLogsSuccessResponse>>;
-    public integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (integrationLogsRequest === null || integrationLogsRequest === undefined) {
-            throw new Error('Required parameter integrationLogsRequest was null or undefined when calling integrationsLogsPost.');
+    public integrationsLogsPost(integrationLogsRequestCreate: IntegrationLogsRequestCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<IntegrationLogsSuccessResponse>;
+    public integrationsLogsPost(integrationLogsRequestCreate: IntegrationLogsRequestCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<IntegrationLogsSuccessResponse>>;
+    public integrationsLogsPost(integrationLogsRequestCreate: IntegrationLogsRequestCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<IntegrationLogsSuccessResponse>>;
+    public integrationsLogsPost(integrationLogsRequestCreate: IntegrationLogsRequestCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (integrationLogsRequestCreate === null || integrationLogsRequestCreate === undefined) {
+            throw new Error('Required parameter integrationLogsRequestCreate was null or undefined when calling integrationsLogsPost.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -511,7 +513,7 @@ export class IntegrationsService extends BaseService {
         return this.httpClient.request<IntegrationLogsSuccessResponse>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: integrationLogsRequest,
+                body: integrationLogsRequestCreate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,

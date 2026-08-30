@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.model.TargetingSpecAppType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,62 +20,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AppTypeMultipliers extends HashMap<String, Double> {
   
-public enum APPTYPEEnum {
-
-    @JsonProperty("android_mobile") ANDROID_MOBILE(String.valueOf("android_mobile")),
-    @JsonProperty("android_tablet") ANDROID_TABLET(String.valueOf("android_tablet")),
-    @JsonProperty("ipad") IPAD(String.valueOf("ipad")),
-    @JsonProperty("iphone") IPHONE(String.valueOf("iphone")),
-    @JsonProperty("web") WEB(String.valueOf("web")),
-    @JsonProperty("web_mobile") WEB_MOBILE(String.valueOf("web_mobile"));
-
-    private String value;
-
-    APPTYPEEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static APPTYPEEnum fromValue(String value) {
-        for (APPTYPEEnum b : APPTYPEEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  @ApiModelProperty(value = "")
-  private APPTYPEEnum APP_TYPE;
  /**
-  * Get APP_TYPE
+  * App type identifier.
+  */
+  @ApiModelProperty(value = "App type identifier.")
+  @Valid
+  private TargetingSpecAppType APP_TYPE;
+ /**
+  * App type identifier.
   * @return APP_TYPE
   */
   @JsonProperty("APP_TYPE")
-  public String getAPPTYPE() {
-    return APP_TYPE == null ? null : APP_TYPE.value();
+  public TargetingSpecAppType getAPPTYPE() {
+    return APP_TYPE;
   }
 
   /**
    * Sets the <code>APP_TYPE</code> property.
    */
- public void setAPPTYPE(APPTYPEEnum APP_TYPE) {
+ public void setAPPTYPE(TargetingSpecAppType APP_TYPE) {
     this.APP_TYPE = APP_TYPE;
   }
 
   /**
    * Sets the <code>APP_TYPE</code> property.
    */
-  public AppTypeMultipliers APP_TYPE(APPTYPEEnum APP_TYPE) {
+  public AppTypeMultipliers APP_TYPE(TargetingSpecAppType APP_TYPE) {
     this.APP_TYPE = APP_TYPE;
     return this;
   }
@@ -112,10 +83,7 @@ public enum APPTYPEEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

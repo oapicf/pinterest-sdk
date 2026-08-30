@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CreateAssetInvitesRequestItem (
-    /* An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  */
+    /* An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. */
     _assetIdToPermissions: Map[String, List[Permissions]],
     /* Unique identifier of an invite. */
     _inviteId: String,

@@ -13,10 +13,10 @@ static ssio_account_pmp_name_t *ssio_account_pmp_name_create_internal(
     if (!ssio_account_pmp_name_local_var) {
         return NULL;
     }
+    memset(ssio_account_pmp_name_local_var, 0, sizeof(ssio_account_pmp_name_t));
+    ssio_account_pmp_name_local_var->_library_owned = 1;
     ssio_account_pmp_name_local_var->id = id;
     ssio_account_pmp_name_local_var->name = name;
-
-    ssio_account_pmp_name_local_var->_library_owned = 1;
     return ssio_account_pmp_name_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) ssio_account_pmp_name_t *ssio_account_pmp_name_creat
     char *id,
     char *name
     ) {
-    return ssio_account_pmp_name_create_internal (
+    ssio_account_pmp_name_t *result = ssio_account_pmp_name_create_internal (
         id,
         name
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ssio_account_pmp_name_free(ssio_account_pmp_name_t *ssio_account_pmp_name) {
@@ -80,6 +83,10 @@ ssio_account_pmp_name_t *ssio_account_pmp_name_parseFromJSON(cJSON *ssio_account
 
     ssio_account_pmp_name_t *ssio_account_pmp_name_local_var = NULL;
 
+    char *id_local_str = NULL;
+
+    char *name_local_str = NULL;
+
     // ssio_account_pmp_name->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(ssio_account_pmp_nameJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -105,13 +112,28 @@ ssio_account_pmp_name_t *ssio_account_pmp_name_parseFromJSON(cJSON *ssio_account
     }
 
 
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     ssio_account_pmp_name_local_var = ssio_account_pmp_name_create_internal (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL
+        id_local_str,
+        name_local_str
         );
+
+    if (!ssio_account_pmp_name_local_var) {
+        goto end;
+    }
 
     return ssio_account_pmp_name_local_var;
 end:
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
     return NULL;
 
 }

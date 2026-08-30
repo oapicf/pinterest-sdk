@@ -7,4 +7,5 @@ const (
 	TSV CatalogsFormat = "TSV"
 	CSV CatalogsFormat = "CSV"
 	XML CatalogsFormat = "XML"
+	INTEGRATION CatalogsFormat = "INTEGRATION"
 )

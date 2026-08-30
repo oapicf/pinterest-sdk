@@ -96,8 +96,9 @@ class _$PinMediaSourceImageURLSerializer implements PrimitiveSerializer<PinMedia
         case r'is_standard':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.isStandard = valueDes;
           break;
         case r'source_type':

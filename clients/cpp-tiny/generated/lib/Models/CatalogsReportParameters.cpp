@@ -6,8 +6,8 @@ using namespace Tiny;
 
 CatalogsReportParameters::CatalogsReportParameters()
 {
-	catalog_type = CatalogsType();
-	report = CatalogsHotelReportParameters_report();
+	catalog_type = std::string();
+	report = CatalogsHotelReportParametersReport();
 }
 
 CatalogsReportParameters::CatalogsReportParameters(std::string jsonString)
@@ -33,9 +33,8 @@ CatalogsReportParameters::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -48,7 +47,7 @@ CatalogsReportParameters::fromJson(std::string jsonObj)
 
 
 
-        CatalogsHotelReportParameters_report* obj = &report;
+        CatalogsHotelReportParametersReport* obj = &report;
 		obj->fromJson(value.dump());
 
     }
@@ -65,8 +64,8 @@ CatalogsReportParameters::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -80,26 +79,26 @@ CatalogsReportParameters::toJson()
 
 }
 
-CatalogsType
+std::string
 CatalogsReportParameters::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsReportParameters::setCatalogType(CatalogsType  catalog_type)
+CatalogsReportParameters::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
 
-CatalogsHotelReportParameters_report
+CatalogsHotelReportParametersReport
 CatalogsReportParameters::getReport()
 {
 	return report;
 }
 
 void
-CatalogsReportParameters::setReport(CatalogsHotelReportParameters_report  report)
+CatalogsReportParameters::setReport(CatalogsHotelReportParametersReport report)
 {
 	this->report = report;
 }

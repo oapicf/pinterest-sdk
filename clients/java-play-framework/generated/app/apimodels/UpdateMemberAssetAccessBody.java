@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.UpdateMemberAssetAccessBodyAccessesInner;
+import apimodels.UpdateMemberAssetAccessItem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,9 +11,9 @@ import java.util.Objects;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 /**
- * An object with a list of all the new accesses.
+ * An object with a list of all the new member asset accesses.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class UpdateMemberAssetAccessBody   {
   @JsonProperty("accesses")
@@ -21,14 +21,14 @@ public class UpdateMemberAssetAccessBody   {
 @Size(min=1,max=50)
 @Valid
 
-  private List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+  private List<@Valid UpdateMemberAssetAccessItem> accesses = new ArrayList<>();
 
-  public UpdateMemberAssetAccessBody accesses(List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+  public UpdateMemberAssetAccessBody accesses(List<@Valid UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
 
-  public UpdateMemberAssetAccessBody addAccessesItem(UpdateMemberAssetAccessBodyAccessesInner accessesItem) {
+  public UpdateMemberAssetAccessBody addAccessesItem(UpdateMemberAssetAccessItem accessesItem) {
     if (this.accesses == null) {
       this.accesses = new ArrayList<>();
     }
@@ -37,14 +37,14 @@ public class UpdateMemberAssetAccessBody   {
   }
 
    /**
-   * Get accesses
+   * List of member asset accesses to assign or update.
    * @return accesses
   **/
-  public List<@Valid UpdateMemberAssetAccessBodyAccessesInner> getAccesses() {
+  public List<@Valid UpdateMemberAssetAccessItem> getAccesses() {
     return accesses;
   }
 
-  public void setAccesses(List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<@Valid UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
@@ -82,10 +82,7 @@ public class UpdateMemberAssetAccessBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

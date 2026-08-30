@@ -1,13 +1,14 @@
 package controllers;
 
-import apimodels.Error;
-import apimodels.LeadFormArrayResponse;
-import apimodels.LeadFormCreateRequest;
-import apimodels.LeadFormResponse;
-import apimodels.LeadFormTestRequest;
-import apimodels.LeadFormTestResponse;
-import apimodels.LeadFormUpdateRequest;
+import apimodels.LeadForm;
+import apimodels.LeadFormBatchUpdate;
+import apimodels.LeadFormCreate;
+import apimodels.LeadFormTest;
+import apimodels.LeadFormTestCreate;
+import apimodels.LeadFormsCreate200Response;
 import apimodels.LeadFormsList200Response;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -34,12 +35,12 @@ public abstract class LeadFormsApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result leadFormGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String leadFormId) throws Exception {
+    public Result leadFormGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String leadFormId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        LeadFormResponse obj = leadFormGet(request, adAccountId, leadFormId);
+        LeadForm obj = leadFormGet(request, leadFormId, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -51,14 +52,14 @@ public abstract class LeadFormsApiControllerImpInterface {
 
     }
 
-    public abstract LeadFormResponse leadFormGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String leadFormId) throws Exception;
+    public abstract LeadForm leadFormGet(Http.Request request,  @Pattern(regexp="^\\d+$")String leadFormId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result leadFormTestCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String leadFormId, LeadFormTestRequest leadFormTestRequest) throws Exception {
+    public Result leadFormTestCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String leadFormId, LeadFormTestCreate leadFormTestCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        LeadFormTestResponse obj = leadFormTestCreate(request, adAccountId, leadFormId, leadFormTestRequest);
+        LeadFormTest obj = leadFormTestCreate(request, adAccountId, leadFormId, leadFormTestCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -70,14 +71,14 @@ public abstract class LeadFormsApiControllerImpInterface {
 
     }
 
-    public abstract LeadFormTestResponse leadFormTestCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String leadFormId, LeadFormTestRequest leadFormTestRequest) throws Exception;
+    public abstract LeadFormTest leadFormTestCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String leadFormId, LeadFormTestCreate leadFormTestCreate) throws Exception;
 
-    public Result leadFormsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid LeadFormCreateRequest> leadFormCreateRequest) throws Exception {
+    public Result leadFormsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid LeadFormCreate> leadFormCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        LeadFormArrayResponse obj = leadFormsCreate(request, adAccountId, leadFormCreateRequest);
+        LeadFormsCreate200Response obj = leadFormsCreate(request, adAccountId, leadFormCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -89,14 +90,14 @@ public abstract class LeadFormsApiControllerImpInterface {
 
     }
 
-    public abstract LeadFormArrayResponse leadFormsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid LeadFormCreateRequest> leadFormCreateRequest) throws Exception;
+    public abstract LeadFormsCreate200Response leadFormsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid LeadFormCreate> leadFormCreate) throws Exception;
 
-    public Result leadFormsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception {
+    public Result leadFormsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        LeadFormsList200Response obj = leadFormsList(request, adAccountId, pageSize, order, bookmark);
+        LeadFormsList200Response obj = leadFormsList(request, adAccountId, bookmark, pageSize, order);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -108,14 +109,14 @@ public abstract class LeadFormsApiControllerImpInterface {
 
     }
 
-    public abstract LeadFormsList200Response leadFormsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception;
+    public abstract LeadFormsList200Response leadFormsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order) throws Exception;
 
-    public Result leadFormsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid LeadFormUpdateRequest> leadFormUpdateRequest) throws Exception {
+    public Result leadFormsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid LeadFormBatchUpdate> leadFormBatchUpdate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        LeadFormArrayResponse obj = leadFormsUpdate(request, adAccountId, leadFormUpdateRequest);
+        LeadFormsCreate200Response obj = leadFormsUpdate(request, adAccountId, leadFormBatchUpdate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -127,6 +128,6 @@ public abstract class LeadFormsApiControllerImpInterface {
 
     }
 
-    public abstract LeadFormArrayResponse leadFormsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid LeadFormUpdateRequest> leadFormUpdateRequest) throws Exception;
+    public abstract LeadFormsCreate200Response leadFormsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid LeadFormBatchUpdate> leadFormBatchUpdate) throws Exception;
 
 }

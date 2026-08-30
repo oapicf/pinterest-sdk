@@ -22,13 +22,13 @@ import scalaz.concurrent.Task
 import HelperCodecs._
 
 import org.openapitools.client.api.CatalogsFeed
+import org.openapitools.client.api.CatalogsFeedCreateRequestSchema
 import org.openapitools.client.api.CatalogsFeedIngestion
+import org.openapitools.client.api.CatalogsFeedUpdateRequestSchema
 import org.openapitools.client.api.CatalogsItemValidationIssue
 import org.openapitools.client.api.Error
 import org.openapitools.client.api.FeedProcessingResultsList200Response
-import org.openapitools.client.api.FeedsCreateRequest
 import org.openapitools.client.api.FeedsList200Response
-import org.openapitools.client.api.FeedsUpdateRequest
 import org.openapitools.client.api.ItemsIssuesList200Response
 
 object CatalogFeedsApi {
@@ -37,7 +37,7 @@ object CatalogFeedsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def feedProcessingResultsList(host: String, feedId: String, bookmark: String, pageSize: Integer = 25, adAccountId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], adAccountIdQuery: QueryParam[String]): Task[FeedProcessingResultsList200Response] = {
+  def feedProcessingResultsList(host: String, feedId: String, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[FeedProcessingResultsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[FeedProcessingResultsList200Response] = jsonOf[FeedProcessingResultsList200Response]
 
     val path = "/catalogs/feeds/{feed_id}/processing_results".replaceAll("\\{" + "feed_id" + "\\}",escape(feedId.toString))
@@ -47,7 +47,7 @@ object CatalogFeedsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -58,7 +58,7 @@ object CatalogFeedsApi {
     } yield resp
   }
 
-  def feedsCreate(host: String, feedsCreateRequest: FeedsCreateRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsFeed] = {
+  def feedsCreate(host: String, catalogsFeedCreateRequestSchema: CatalogsFeedCreateRequestSchema, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsFeed] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsFeed] = jsonOf[CatalogsFeed]
 
     val path = "/catalogs/feeds"
@@ -73,13 +73,15 @@ object CatalogFeedsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(feedsCreateRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsFeedCreateRequestSchema)
       resp          <- client.expect[CatalogsFeed](req)
 
     } yield resp
   }
 
-  def feedsDelete(host: String, feedId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Unit] = {
+  def feedsDelete(host: String, feedId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsFeed] = {
+    implicit val returnTypeDecoder: EntityDecoder[CatalogsFeed] = jsonOf[CatalogsFeed]
+
     val path = "/catalogs/feeds/{feed_id}".replaceAll("\\{" + "feed_id" + "\\}",escape(feedId.toString))
 
     val httpMethod = Method.DELETE
@@ -93,7 +95,7 @@ object CatalogFeedsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[CatalogsFeed](req)
 
     } yield resp
   }
@@ -140,7 +142,7 @@ object CatalogFeedsApi {
     } yield resp
   }
 
-  def feedsList(host: String, bookmark: String, pageSize: Integer = 25, catalogId: String, adAccountId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], catalogIdQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[FeedsList200Response] = {
+  def feedsList(host: String, catalogId: String, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit catalogIdQuery: QueryParam[String], adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[FeedsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[FeedsList200Response] = jsonOf[FeedsList200Response]
 
     val path = "/catalogs/feeds"
@@ -150,7 +152,7 @@ object CatalogFeedsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("catalogId", Some(catalog_idQuery.toParamString(catalog_id))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("catalogId", Some(catalog_idQuery.toParamString(catalog_id))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -161,7 +163,7 @@ object CatalogFeedsApi {
     } yield resp
   }
 
-  def feedsUpdate(host: String, feedId: String, feedsUpdateRequest: FeedsUpdateRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsFeed] = {
+  def feedsUpdate(host: String, feedId: String, catalogsFeedUpdateRequestSchema: CatalogsFeedUpdateRequestSchema, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsFeed] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsFeed] = jsonOf[CatalogsFeed]
 
     val path = "/catalogs/feeds/{feed_id}".replaceAll("\\{" + "feed_id" + "\\}",escape(feedId.toString))
@@ -176,13 +178,13 @@ object CatalogFeedsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(feedsUpdateRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsFeedUpdateRequestSchema)
       resp          <- client.expect[CatalogsFeed](req)
 
     } yield resp
   }
 
-  def itemsIssuesList(host: String, processingResultId: String, bookmark: String, pageSize: Integer = 25, itemNumbers: List[Integer] = List.empty[Integer] , itemValidationIssue: CatalogsItemValidationIssue, adAccountId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], itemNumbersQuery: QueryParam[List[Integer]], itemValidationIssueQuery: QueryParam[CatalogsItemValidationIssue], adAccountIdQuery: QueryParam[String]): Task[ItemsIssuesList200Response] = {
+  def itemsIssuesList(host: String, processingResultId: String, itemNumbers: List[Integer] = List.empty[Integer] , itemValidationIssue: CatalogsItemValidationIssue, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit itemNumbersQuery: QueryParam[List[Integer]], itemValidationIssueQuery: QueryParam[CatalogsItemValidationIssue], adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[ItemsIssuesList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[ItemsIssuesList200Response] = jsonOf[ItemsIssuesList200Response]
 
     val path = "/catalogs/processing_results/{processing_result_id}/item_issues".replaceAll("\\{" + "processing_result_id" + "\\}",escape(processingResultId.toString))
@@ -192,7 +194,7 @@ object CatalogFeedsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("itemNumbers", Some(item_numbersQuery.toParamString(item_numbers))), ("itemValidationIssue", Some(item_validation_issueQuery.toParamString(item_validation_issue))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("itemNumbers", Some(item_numbersQuery.toParamString(item_numbers))), ("itemValidationIssue", Some(item_validation_issueQuery.toParamString(item_validation_issue))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -210,7 +212,7 @@ class HttpServiceCatalogFeedsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def feedProcessingResultsList(feedId: String, bookmark: String, pageSize: Integer = 25, adAccountId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], adAccountIdQuery: QueryParam[String]): Task[FeedProcessingResultsList200Response] = {
+  def feedProcessingResultsList(feedId: String, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[FeedProcessingResultsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[FeedProcessingResultsList200Response] = jsonOf[FeedProcessingResultsList200Response]
 
     val path = "/catalogs/feeds/{feed_id}/processing_results".replaceAll("\\{" + "feed_id" + "\\}",escape(feedId.toString))
@@ -220,7 +222,7 @@ class HttpServiceCatalogFeedsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -231,7 +233,7 @@ class HttpServiceCatalogFeedsApi(service: HttpService) {
     } yield resp
   }
 
-  def feedsCreate(feedsCreateRequest: FeedsCreateRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsFeed] = {
+  def feedsCreate(catalogsFeedCreateRequestSchema: CatalogsFeedCreateRequestSchema, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsFeed] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsFeed] = jsonOf[CatalogsFeed]
 
     val path = "/catalogs/feeds"
@@ -246,13 +248,15 @@ class HttpServiceCatalogFeedsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(feedsCreateRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsFeedCreateRequestSchema)
       resp          <- client.expect[CatalogsFeed](req)
 
     } yield resp
   }
 
-  def feedsDelete(feedId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Unit] = {
+  def feedsDelete(feedId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsFeed] = {
+    implicit val returnTypeDecoder: EntityDecoder[CatalogsFeed] = jsonOf[CatalogsFeed]
+
     val path = "/catalogs/feeds/{feed_id}".replaceAll("\\{" + "feed_id" + "\\}",escape(feedId.toString))
 
     val httpMethod = Method.DELETE
@@ -266,7 +270,7 @@ class HttpServiceCatalogFeedsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[CatalogsFeed](req)
 
     } yield resp
   }
@@ -313,7 +317,7 @@ class HttpServiceCatalogFeedsApi(service: HttpService) {
     } yield resp
   }
 
-  def feedsList(bookmark: String, pageSize: Integer = 25, catalogId: String, adAccountId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], catalogIdQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[FeedsList200Response] = {
+  def feedsList(catalogId: String, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit catalogIdQuery: QueryParam[String], adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[FeedsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[FeedsList200Response] = jsonOf[FeedsList200Response]
 
     val path = "/catalogs/feeds"
@@ -323,7 +327,7 @@ class HttpServiceCatalogFeedsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("catalogId", Some(catalog_idQuery.toParamString(catalog_id))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("catalogId", Some(catalog_idQuery.toParamString(catalog_id))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -334,7 +338,7 @@ class HttpServiceCatalogFeedsApi(service: HttpService) {
     } yield resp
   }
 
-  def feedsUpdate(feedId: String, feedsUpdateRequest: FeedsUpdateRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsFeed] = {
+  def feedsUpdate(feedId: String, catalogsFeedUpdateRequestSchema: CatalogsFeedUpdateRequestSchema, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsFeed] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsFeed] = jsonOf[CatalogsFeed]
 
     val path = "/catalogs/feeds/{feed_id}".replaceAll("\\{" + "feed_id" + "\\}",escape(feedId.toString))
@@ -349,13 +353,13 @@ class HttpServiceCatalogFeedsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(feedsUpdateRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsFeedUpdateRequestSchema)
       resp          <- client.expect[CatalogsFeed](req)
 
     } yield resp
   }
 
-  def itemsIssuesList(processingResultId: String, bookmark: String, pageSize: Integer = 25, itemNumbers: List[Integer] = List.empty[Integer] , itemValidationIssue: CatalogsItemValidationIssue, adAccountId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], itemNumbersQuery: QueryParam[List[Integer]], itemValidationIssueQuery: QueryParam[CatalogsItemValidationIssue], adAccountIdQuery: QueryParam[String]): Task[ItemsIssuesList200Response] = {
+  def itemsIssuesList(processingResultId: String, itemNumbers: List[Integer] = List.empty[Integer] , itemValidationIssue: CatalogsItemValidationIssue, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit itemNumbersQuery: QueryParam[List[Integer]], itemValidationIssueQuery: QueryParam[CatalogsItemValidationIssue], adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[ItemsIssuesList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[ItemsIssuesList200Response] = jsonOf[ItemsIssuesList200Response]
 
     val path = "/catalogs/processing_results/{processing_result_id}/item_issues".replaceAll("\\{" + "processing_result_id" + "\\}",escape(processingResultId.toString))
@@ -365,7 +369,7 @@ class HttpServiceCatalogFeedsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("itemNumbers", Some(item_numbersQuery.toParamString(item_numbers))), ("itemValidationIssue", Some(item_validation_issueQuery.toParamString(item_validation_issue))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("itemNumbers", Some(item_numbersQuery.toParamString(item_numbers))), ("itemValidationIssue", Some(item_validation_issueQuery.toParamString(item_validation_issue))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

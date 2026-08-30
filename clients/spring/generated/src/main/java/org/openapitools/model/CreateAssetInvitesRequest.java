@@ -11,23 +11,22 @@ import org.openapitools.model.CreateAssetInvitesRequestItem;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Request body for updating asset roles for existing invites.
  */
 
 @Schema(name = "CreateAssetInvitesRequest", description = "Request body for updating asset roles for existing invites.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CreateAssetInvitesRequest {
 
-  @Valid
   private List<@Valid CreateAssetInvitesRequestItem> invites = new ArrayList<>();
 
   public CreateAssetInvitesRequest() {
@@ -65,6 +64,7 @@ public class CreateAssetInvitesRequest {
     return invites;
   }
 
+  @JsonProperty("invites")
   public void setInvites(List<@Valid CreateAssetInvitesRequestItem> invites) {
     this.invites = invites;
   }
@@ -99,11 +99,8 @@ public class CreateAssetInvitesRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

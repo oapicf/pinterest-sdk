@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -34,6 +34,7 @@ const (
 	COLLAGE CreativeType = "COLLAGE"
 	MAX_WIDTH_REGULAR_COLLECTION CreativeType = "MAX_WIDTH_REGULAR_COLLECTION"
 	MAX_WIDTH_VIDEO_COLLECTION CreativeType = "MAX_WIDTH_VIDEO_COLLECTION"
+	APP CreativeType = "APP"
 )
 
 // All allowed values of CreativeType enum
@@ -51,6 +52,7 @@ var AllowedCreativeTypeEnumValues = []CreativeType{
 	"COLLAGE",
 	"MAX_WIDTH_REGULAR_COLLECTION",
 	"MAX_WIDTH_VIDEO_COLLECTION",
+	"APP",
 }
 
 func (v *CreativeType) UnmarshalJSON(src []byte) error {

@@ -4,7 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **string** |  | [default to null]
-**percentUnderscoregrowthUnderscoremom** | **integer** |  | [default to null]
+**id** | **string** |  | [default to null]
+**percentUnderscoregrowthUnderscoremom** | **integer** |  | [optional] [default to null]
 **pins** | [**array[TrendingPin]**](TrendingPin.md) |  | [default to null]
 **relatedUnderscoreinterests** | **array[string]** |  | [default to null]
 **relatedUnderscoresearches** | **array[string]** |  | [default to null]

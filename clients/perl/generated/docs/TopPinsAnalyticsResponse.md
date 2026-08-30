@@ -9,8 +9,8 @@ use WWW::OpenAPIClient::Object::TopPinsAnalyticsResponse;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **date_availability** | [**TopPinsAnalyticsResponseDateAvailability**](TopPinsAnalyticsResponseDateAvailability.md) |  | [optional] 
-**pins** | [**ARRAY[TopPinsAnalyticsResponsePinsInner]**](TopPinsAnalyticsResponsePinsInner.md) |  | [optional] 
-**sort_by** | **string** |  | [optional] 
+**pins** | [**ARRAY[TopPinsAnalyticsResponsePinsItems]**](TopPinsAnalyticsResponsePinsItems.md) |  | [optional] 
+**sort_by** | [**TopPinsSortBy**](TopPinsSortBy.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

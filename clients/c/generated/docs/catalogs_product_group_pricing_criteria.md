@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **inclusion** | **int** |  | [optional] [default to true]
-**negated** | **int** |  | [optional] [default to false]
+**negated** | **int** |  | [optional] 
 **values** | **double** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

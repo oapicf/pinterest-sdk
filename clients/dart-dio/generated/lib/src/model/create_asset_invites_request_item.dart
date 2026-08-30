@@ -14,12 +14,12 @@ part 'create_asset_invites_request_item.g.dart';
 /// Object declaring an asset role update to an invite.
 ///
 /// Properties:
-/// * [assetIdToPermissions] - An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+/// * [assetIdToPermissions] - An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.
 /// * [inviteId] - Unique identifier of an invite.
 /// * [inviteType] 
 @BuiltValue()
 abstract class CreateAssetInvitesRequestItem implements Built<CreateAssetInvitesRequestItem, CreateAssetInvitesRequestItemBuilder> {
-  /// An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+  /// An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.
   @BuiltValueField(wireName: r'asset_id_to_permissions')
   BuiltMap<String, BuiltList<Permissions>> get assetIdToPermissions;
 

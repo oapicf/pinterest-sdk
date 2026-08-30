@@ -56,14 +56,51 @@ class ConversionsApiSimulation extends Simulation {
     }
 
     // Setup all the operations per second for the test to ultimately be generated from configs
+    val advertiserDefinedEventsCreatePerSecond = config.getDouble("performance.operationsPerSecond.advertiserDefinedEventsCreate") * rateMultiplier * instanceMultiplier
+    val advertiserDefinedEventsDeletePerSecond = config.getDouble("performance.operationsPerSecond.advertiserDefinedEventsDelete") * rateMultiplier * instanceMultiplier
     val advertiserDefinedEventsGetPerSecond = config.getDouble("performance.operationsPerSecond.advertiserDefinedEventsGet") * rateMultiplier * instanceMultiplier
+    val advertiserDefinedEventsUpdatePerSecond = config.getDouble("performance.operationsPerSecond.advertiserDefinedEventsUpdate") * rateMultiplier * instanceMultiplier
 
     val scenarioBuilders: mutable.MutableList[PopulationBuilder] = new mutable.MutableList[PopulationBuilder]()
 
     // Set up CSV feeders
+    val advertiser_defined_events/createPATHFeeder = csv(userDataDirectory + File.separator + "advertiserDefinedEventsCreate-pathParams.csv").random
+    val advertiser_defined_events/deleteQUERYFeeder = csv(userDataDirectory + File.separator + "advertiserDefinedEventsDelete-queryParams.csv").random
+    val advertiser_defined_events/deletePATHFeeder = csv(userDataDirectory + File.separator + "advertiserDefinedEventsDelete-pathParams.csv").random
     val advertiser_defined_events/getPATHFeeder = csv(userDataDirectory + File.separator + "advertiserDefinedEventsGet-pathParams.csv").random
+    val advertiser_defined_events/updatePATHFeeder = csv(userDataDirectory + File.separator + "advertiserDefinedEventsUpdate-pathParams.csv").random
 
     // Setup all scenarios
+
+    
+    val scnadvertiserDefinedEventsCreate = scenario("advertiserDefinedEventsCreateSimulation")
+        .feed(advertiser_defined_events/createPATHFeeder)
+        .exec(http("advertiserDefinedEventsCreate")
+        .httpRequest("POST","/ad_accounts/${ad_account_id}/advertiser_defined_events")
+)
+
+    // Run scnadvertiserDefinedEventsCreate with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnadvertiserDefinedEventsCreate.inject(
+        rampUsersPerSec(1) to(advertiserDefinedEventsCreatePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(advertiserDefinedEventsCreatePerSecond) during(durationSeconds),
+        rampUsersPerSec(advertiserDefinedEventsCreatePerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnadvertiserDefinedEventsDelete = scenario("advertiserDefinedEventsDeleteSimulation")
+        .feed(advertiser_defined_events/deleteQUERYFeeder)
+        .feed(advertiser_defined_events/deletePATHFeeder)
+        .exec(http("advertiserDefinedEventsDelete")
+        .httpRequest("DELETE","/ad_accounts/${ad_account_id}/advertiser_defined_events")
+        .queryParam("event_names","${event_names}")
+)
+
+    // Run scnadvertiserDefinedEventsDelete with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnadvertiserDefinedEventsDelete.inject(
+        rampUsersPerSec(1) to(advertiserDefinedEventsDeletePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(advertiserDefinedEventsDeletePerSecond) during(durationSeconds),
+        rampUsersPerSec(advertiserDefinedEventsDeletePerSecond) to(1) during(rampDownSeconds)
+    )
 
     
     val scnadvertiserDefinedEventsGet = scenario("advertiserDefinedEventsGetSimulation")
@@ -77,6 +114,20 @@ class ConversionsApiSimulation extends Simulation {
         rampUsersPerSec(1) to(advertiserDefinedEventsGetPerSecond) during(rampUpSeconds),
         constantUsersPerSec(advertiserDefinedEventsGetPerSecond) during(durationSeconds),
         rampUsersPerSec(advertiserDefinedEventsGetPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnadvertiserDefinedEventsUpdate = scenario("advertiserDefinedEventsUpdateSimulation")
+        .feed(advertiser_defined_events/updatePATHFeeder)
+        .exec(http("advertiserDefinedEventsUpdate")
+        .httpRequest("PATCH","/ad_accounts/${ad_account_id}/advertiser_defined_events")
+)
+
+    // Run scnadvertiserDefinedEventsUpdate with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnadvertiserDefinedEventsUpdate.inject(
+        rampUsersPerSec(1) to(advertiserDefinedEventsUpdatePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(advertiserDefinedEventsUpdatePerSecond) during(durationSeconds),
+        rampUsersPerSec(advertiserDefinedEventsUpdatePerSecond) to(1) during(rampDownSeconds)
     )
 
     setUp(

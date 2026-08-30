@@ -1,10 +1,7 @@
 package org.openapitools.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -17,12 +14,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
- * Any valid JSON object
+ * Notification request body. Can be either a batch of notification objects or a single notification object.
  **/
-@ApiModel(description = "Any valid JSON object")
-@JsonTypeName("notification_post_request")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class NotificationPostRequest extends HashMap<String, Object>  {
+@ApiModel(description = "Notification request body. Can be either a batch of notification objects or a single notification object.")
+@JsonTypeName("NotificationPostRequest")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class NotificationPostRequest   {
 
   public NotificationPostRequest() {
   }
@@ -36,19 +33,19 @@ public class NotificationPostRequest extends HashMap<String, Object>  {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return super.equals(o);
+    return true;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash();
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotificationPostRequest {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("}");
     return sb.toString();
   }
@@ -58,12 +55,8 @@ public class NotificationPostRequest extends HashMap<String, Object>  {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

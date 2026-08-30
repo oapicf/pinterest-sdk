@@ -6,7 +6,6 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/catalogs_hotel_items_post_filter.dart';
 import 'package:openapi/src/model/catalogs_creative_assets_items_post_filter.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:openapi/src/model/catalogs_retail_items_post_filter.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -17,8 +16,8 @@ part 'catalogs_items_post_filters.g.dart';
 /// CatalogsItemsPostFilters
 ///
 /// Properties:
-/// * [catalogType] 
 /// * [catalogId] - Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+/// * [catalogType] 
 /// * [itemIds] 
 /// * [hotelIds] 
 /// * [creativeAssetsIds] 
@@ -142,5 +141,18 @@ class _$CatalogsItemsPostFiltersSerializer implements PrimitiveSerializer<Catalo
     result.oneOf = OneOfDynamic(typeIndex: oneOfTypes.indexOf(oneOfType), types: oneOfTypes, value: oneOfResult);
     return result.build();
   }
+}
+
+class CatalogsItemsPostFiltersCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')
+  static const CatalogsItemsPostFiltersCatalogTypeEnum CREATIVE_ASSETS = _$catalogsItemsPostFiltersCatalogTypeEnum_CREATIVE_ASSETS;
+
+  static Serializer<CatalogsItemsPostFiltersCatalogTypeEnum> get serializer => _$catalogsItemsPostFiltersCatalogTypeEnumSerializer;
+
+  const CatalogsItemsPostFiltersCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsItemsPostFiltersCatalogTypeEnum> get values => _$catalogsItemsPostFiltersCatalogTypeEnumValues;
+  static CatalogsItemsPostFiltersCatalogTypeEnum valueOf(String name) => _$catalogsItemsPostFiltersCatalogTypeEnumValueOf(name);
 }
 

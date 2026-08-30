@@ -1,7 +1,7 @@
 #' Create a new SSIOAccountItem
 #'
 #' @description
-#' SSIOAccountItem Class
+#' Salesforce account item with billing and terms information.
 #'
 #' @docType class
 #' @title SSIOAccountItem
@@ -134,7 +134,7 @@ SSIOAccountItem <- R6::R6Class(
       SSIOAccountItemObject <- list()
       if (!is.null(self$`addresses`)) {
         SSIOAccountItemObject[["addresses"]] <-
-          lapply(self$`addresses`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`addresses`)
       }
       if (!is.null(self$`id`)) {
         SSIOAccountItemObject[["id"]] <-
@@ -169,6 +169,29 @@ SSIOAccountItem <- R6::R6Class(
           self$`us_terms_id`
       }
       return(SSIOAccountItemObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

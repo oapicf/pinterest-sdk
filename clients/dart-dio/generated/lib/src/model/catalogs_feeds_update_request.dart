@@ -40,7 +40,7 @@ abstract class CatalogsFeedsUpdateRequest implements Built<CatalogsFeedsUpdateRe
 
   @BuiltValueField(wireName: r'format')
   CatalogsFormat? get format;
-  // enum formatEnum {  TSV,  CSV,  XML,  };
+  // enum formatEnum {  TSV,  CSV,  XML,  INTEGRATION,  };
 
   /// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
   @BuiltValueField(wireName: r'location')
@@ -186,22 +186,25 @@ class _$CatalogsFeedsUpdateRequestSerializer implements PrimitiveSerializer<Cata
         case r'format':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsFormat),
-          ) as CatalogsFormat;
+            specifiedType: const FullType.nullable(CatalogsFormat),
+          ) as CatalogsFormat?;
+          if (valueDes == null) continue;
           result.format = valueDes;
           break;
         case r'location':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.location = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         case r'preferred_processing_schedule':
@@ -215,8 +218,9 @@ class _$CatalogsFeedsUpdateRequestSerializer implements PrimitiveSerializer<Cata
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsStatus),
-          ) as CatalogsStatus;
+            specifiedType: const FullType.nullable(CatalogsStatus),
+          ) as CatalogsStatus?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         default:

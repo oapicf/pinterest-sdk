@@ -7,7 +7,7 @@
 #' @title IntegrationLogsInvalidLogResponse
 #' @description IntegrationLogsInvalidLogResponse Class
 #' @format An \code{R6Class} generator object
-#' @field rejected_logs  list(\link{IntegrationLogsInvalidLogResponseRejectedLogsInner}) [optional]
+#' @field rejected_logs  list(\link{IntegrationLogsInvalidLogResponseRejectedLogsItems}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -62,9 +62,32 @@ IntegrationLogsInvalidLogResponse <- R6::R6Class(
       IntegrationLogsInvalidLogResponseObject <- list()
       if (!is.null(self$`rejected_logs`)) {
         IntegrationLogsInvalidLogResponseObject[["rejected_logs"]] <-
-          lapply(self$`rejected_logs`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`rejected_logs`)
       }
       return(IntegrationLogsInvalidLogResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -75,7 +98,7 @@ IntegrationLogsInvalidLogResponse <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`rejected_logs`)) {
-        self$`rejected_logs` <- ApiClient$new()$deserializeObj(this_object$`rejected_logs`, "array[IntegrationLogsInvalidLogResponseRejectedLogsInner]", loadNamespace("openapi"))
+        self$`rejected_logs` <- ApiClient$new()$deserializeObj(this_object$`rejected_logs`, "array[IntegrationLogsInvalidLogResponseRejectedLogsItems]", loadNamespace("openapi"))
       }
       self
     },
@@ -98,7 +121,7 @@ IntegrationLogsInvalidLogResponse <- R6::R6Class(
     #' @return the instance of IntegrationLogsInvalidLogResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`rejected_logs` <- ApiClient$new()$deserializeObj(this_object$`rejected_logs`, "array[IntegrationLogsInvalidLogResponseRejectedLogsInner]", loadNamespace("openapi"))
+      self$`rejected_logs` <- ApiClient$new()$deserializeObj(this_object$`rejected_logs`, "array[IntegrationLogsInvalidLogResponseRejectedLogsItems]", loadNamespace("openapi"))
       self
     },
 

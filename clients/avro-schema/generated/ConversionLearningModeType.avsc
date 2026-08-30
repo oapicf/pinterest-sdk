@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "oCPM learn mode.",
+  "name": "ConversionLearningModeType",
+  "symbols": [
+    "NOT_ACTIVE",
+    "ACTIVE"
+  ]
+}

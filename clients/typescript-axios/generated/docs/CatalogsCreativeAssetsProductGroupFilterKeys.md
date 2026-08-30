@@ -5,21 +5,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CREATIVE_ASSETS_ID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**GOOGLE_PRODUCT_CATEGORY_6** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**GOOGLE_PRODUCT_CATEGORY_5** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**GOOGLE_PRODUCT_CATEGORY_4** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**GOOGLE_PRODUCT_CATEGORY_3** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**GOOGLE_PRODUCT_CATEGORY_2** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**GOOGLE_PRODUCT_CATEGORY_1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**GOOGLE_PRODUCT_CATEGORY_0** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**MEDIA_TYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  | [default to undefined]
-**TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
+**CREATIVE_ASSETS_ID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_6** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_5** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_4** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_3** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_2** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_1** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_0** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**MEDIA_TYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](CatalogsProductGroupMultipleMediaTypesCriteria.md) |  | [default to undefined]
+**TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
+**LINK** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
 
 ## Example
 
@@ -42,6 +43,7 @@ const instance: CatalogsCreativeAssetsProductGroupFilterKeys = {
     GOOGLE_PRODUCT_CATEGORY_0,
     MEDIA_TYPE,
     TITLE_KEYWORDS,
+    LINK,
 };
 ```
 

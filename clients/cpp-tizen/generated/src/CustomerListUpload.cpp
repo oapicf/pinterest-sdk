@@ -23,14 +23,14 @@ CustomerListUpload::~CustomerListUpload()
 void
 CustomerListUpload::__init()
 {
-	//ad_account_id = std::string();
+	//ad_account_id = null;
 	//creation_time = int(0);
-	//customer_list_id = std::string();
+	//customer_list_id = null;
 	//new std::list()std::list> error_counts;
-	//id = std::string();
+	//id = null;
 	//operation = new UserListOperationType();
-	//record_counts = new RecordCounts();
-	//state = std::string();
+	//record_counts = null;
+	//state = null;
 	//updated_time = int(0);
 }
 
@@ -191,9 +191,12 @@ CustomerListUpload::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&state, node, "std::string", "");
+		if (isprimitive("WorkloadState")) {
+			jsonToValue(&state, node, "WorkloadState", "WorkloadState");
 		} else {
+			
+			WorkloadState* obj = static_cast<WorkloadState*> (&state);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -309,11 +312,16 @@ CustomerListUpload::toJson()
 	}
 	const gchar *record_countsKey = "record_counts";
 	json_object_set_member(pJsonObject, record_countsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getState();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("WorkloadState")) {
+		WorkloadState obj = getState();
+		node = converttoJson(&obj, "WorkloadState", "");
 	}
 	else {
+		
+		WorkloadState obj = static_cast<WorkloadState> (getState());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *stateKey = "state";
@@ -419,14 +427,14 @@ CustomerListUpload::setRecordCounts(RecordCounts  record_counts)
 	this->record_counts = record_counts;
 }
 
-std::string
+WorkloadState
 CustomerListUpload::getState()
 {
 	return state;
 }
 
 void
-CustomerListUpload::setState(std::string  state)
+CustomerListUpload::setState(WorkloadState  state)
 {
 	this->state = state;
 }

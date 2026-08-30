@@ -26,20 +26,23 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsItemsRequest(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("country")
     @get:JsonProperty("country", required = true) val country: Country,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("filters")
     @get:JsonProperty("filters", required = true) val filters: CatalogsItemsPostFilters,
 
-    @Schema(example = "null", required = true, description = "We recommend using the CatalogsLocale values.")
+    @Schema(required = true, description = "We recommend using the CatalogsLocale values.")
+    @param:JsonProperty("language")
     @get:JsonProperty("language", required = true) val language: CatalogsItemsRequest.Language
 ) {
 
     /**
     * We recommend using the CatalogsLocale values.
-    * Values: afMinusZA,arMinusSA,bgMinusBG,bnMinusIN,csMinusCZ,daMinusDK,de,elMinusGR,enMinusAU,enMinusCA,enMinusGB,enMinusIN,enMinusUS,esMinus419,esMinusAR,esMinusES,esMinusMX,fiMinusFI,fr,frMinusCA,heMinusIL,hiMinusIN,hrMinusHR,huMinusHU,idMinusID,`it`,ja,koMinusKR,msMinusMY,nbMinusNO,nl,plMinusPL,ptMinusBR,ptMinusPT,roMinusRO,ruMinusRU,skMinusSK,svMinusSE,teMinusIN,thMinusTH,tlMinusPH,tr,ukMinusUA,viMinusVN,zhMinusCN,zhMinusTW,AM,AR,AZ,BG,BN,BS,CA,CS,DA,DV,DZ,DE,EL,EN,ES,ET,FA,FI,FR,HE,HI,HR,HU,HY,ID,IN,IS,IT,IW,JA,KA,KM,KO,LO,LT,LV,MK,MN,MS,MY,NB,NE,NL,NO,PL,PT,RO,RU,SK,SL,SQ,SR,SV,TL,UK,VI,TE,TH,TR,XX,ZH
+    * Values: afMinusZA,arMinusSA,bgMinusBG,bnMinusIN,csMinusCZ,daMinusDK,de,elMinusGR,enMinusAU,enMinusCA,enMinusGB,enMinusIN,enMinusUS,esMinus419,esMinusAR,esMinusES,esMinusMX,fiMinusFI,fr,frMinusCA,heMinusIL,hiMinusIN,hrMinusHR,huMinusHU,idMinusID,`it`,ja,koMinusKR,msMinusMY,nbMinusNO,nl,plMinusPL,ptMinusBR,ptMinusPT,roMinusRO,ruMinusRU,skMinusSK,svMinusSE,teMinusIN,thMinusTH,tlMinusPH,tr,ukMinusUA,viMinusVN,zhMinusCN,zhMinusTW,AM,AR,AZ,BG,BN,BS,CA,CS,DA,DV,DZ,DE,EL,EN,ES,ET,FA,FI,FR,HE,HI,HR,HU,HY,ID,IN,IS,IT,IW,JA,KA,KM,KO,LO,LT,LV,MK,MN,MS,MY,NB,NE,NL,`false`,PL,PT,RO,RU,SK,SL,SQ,SR,SV,TL,UK,VI,TE,TH,TR,XX,ZH
     */
     enum class Language(@get:JsonValue val value: kotlin.String) {
 
@@ -132,7 +135,7 @@ data class CatalogsItemsRequest(
         NB("NB"),
         NE("NE"),
         NL("NL"),
-        NO("NO"),
+        `false`("false"),
         PL("PL"),
         PT("PT"),
         RO("RO"),
@@ -156,7 +159,7 @@ data class CatalogsItemsRequest(
             @JsonCreator
             fun forValue(value: kotlin.String): Language {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsItemsRequest'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Language'")
             }
         }
     }

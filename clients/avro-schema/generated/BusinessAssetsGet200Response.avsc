@@ -14,9 +14,9 @@
       "name": "items",
       "type": {
         "type": "array",
-        "items": "model.GetBusinessAssetsResponse"
+        "items": "model.BusinessAssets"
       },
-      "doc": "List of assets the requesting business has access to."
+      "doc": ""
     }
   ]
 

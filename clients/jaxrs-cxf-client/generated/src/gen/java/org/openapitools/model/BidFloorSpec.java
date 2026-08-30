@@ -4,44 +4,67 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ActionType;
+import org.openapitools.model.BidFloorObjectiveType;
 import org.openapitools.model.Country;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.Currency;
-import org.openapitools.model.ObjectiveType;
 import org.openapitools.model.OptimizationGoalMetadata;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Bid floor specification for a given campaign configuration.
+ */
+@ApiModel(description="Bid floor specification for a given campaign configuration.")
 
 public class BidFloorSpec  {
   
-  @ApiModelProperty(required = true, value = "")
+ /**
+  * Ad group billable event type.
+  */
+  @ApiModelProperty(required = true, value = "Ad group billable event type.")
 
   private ActionType billableEvent;
 
-  @ApiModelProperty(value = "")
+ /**
+  * List of ISO 3166-1 alpha-2 country codes.
+  */
+  @ApiModelProperty(value = "List of ISO 3166-1 alpha-2 country codes.")
 
   private List<Country> countries = new ArrayList<>();
 
-  @ApiModelProperty(value = "")
+ /**
+  * Creative type for the bid floor request.
+  */
+  @ApiModelProperty(value = "Creative type for the bid floor request.")
 
   private CreativeType creativeType;
 
-  @ApiModelProperty(required = true, value = "")
+ /**
+  * Currency for the bid floor value.
+  */
+  @ApiModelProperty(required = true, value = "Currency for the bid floor value.")
 
   private Currency currency;
 
-  @ApiModelProperty(value = "")
+ /**
+  * Campaign objective type.
+  */
+  @ApiModelProperty(value = "Campaign objective type.")
 
-  private ObjectiveType objectiveType;
+  private BidFloorObjectiveType objectiveType;
 
-  @ApiModelProperty(value = "")
+ /**
+  * Optimization goal metadata.
+  */
+  @ApiModelProperty(value = "Optimization goal metadata.")
 
   private OptimizationGoalMetadata optimizationGoalMetadata;
  /**
-   * Get billableEvent
+   * Ad group billable event type.
    * @return billableEvent
   **/
   @JsonProperty("billable_event")
@@ -59,7 +82,7 @@ public class BidFloorSpec  {
   }
 
  /**
-   * Get countries
+   * List of ISO 3166-1 alpha-2 country codes.
    * @return countries
   **/
   @JsonProperty("countries")
@@ -82,7 +105,7 @@ public class BidFloorSpec  {
   }
 
  /**
-   * Get creativeType
+   * Creative type for the bid floor request.
    * @return creativeType
   **/
   @JsonProperty("creative_type")
@@ -100,7 +123,7 @@ public class BidFloorSpec  {
   }
 
  /**
-   * Get currency
+   * Currency for the bid floor value.
    * @return currency
   **/
   @JsonProperty("currency")
@@ -118,25 +141,25 @@ public class BidFloorSpec  {
   }
 
  /**
-   * Get objectiveType
+   * Campaign objective type.
    * @return objectiveType
   **/
   @JsonProperty("objective_type")
-  public ObjectiveType getObjectiveType() {
+  public BidFloorObjectiveType getObjectiveType() {
     return objectiveType;
   }
 
-  public void setObjectiveType(ObjectiveType objectiveType) {
+  public void setObjectiveType(BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
   }
 
-  public BidFloorSpec objectiveType(ObjectiveType objectiveType) {
+  public BidFloorSpec objectiveType(BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
     return this;
   }
 
  /**
-   * Get optimizationGoalMetadata
+   * Optimization goal metadata.
    * @return optimizationGoalMetadata
   **/
   @JsonProperty("optimization_goal_metadata")
@@ -195,10 +218,7 @@ public class BidFloorSpec  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

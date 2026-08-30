@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,11 +27,13 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.Audience
-import org.openapitools.client.models.AudienceCreateRequest
-import org.openapitools.client.models.AudienceUpdateRequest
+import org.openapitools.client.models.AdAccountsAudience
+import org.openapitools.client.models.AdAccountsAudienceCreate
+import org.openapitools.client.models.AdAccountsAudienceUpdate
+import org.openapitools.client.models.AudienceOwnershipType
 import org.openapitools.client.models.AudiencesList200Response
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
 
 import com.squareup.moshi.Json
 
@@ -45,17 +55,17 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * POST /ad_accounts/{ad_account_id}/audiences
      * Create audience
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+     * Create a new audience for the ad account.
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceCreateRequest List of ads to create, size limit [1, 30]
-     * @return Audience
+     * @param adAccountsAudienceCreate 
+     * @return AdAccountsAudience
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -64,11 +74,11 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun audiencesCreate(adAccountId: kotlin.String, audienceCreateRequest: AudienceCreateRequest) : Audience {
-        val localVarResponse = audiencesCreateWithHttpInfo(adAccountId = adAccountId, audienceCreateRequest = audienceCreateRequest)
+    fun audiencesCreate(adAccountId: kotlin.String, adAccountsAudienceCreate: AdAccountsAudienceCreate) : AdAccountsAudience {
+        val localVarResponse = audiencesCreateWithHttpInfo(adAccountId = adAccountId, adAccountsAudienceCreate = adAccountsAudienceCreate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as Audience
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AdAccountsAudience
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -85,19 +95,19 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * POST /ad_accounts/{ad_account_id}/audiences
      * Create audience
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+     * Create a new audience for the ad account.
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceCreateRequest List of ads to create, size limit [1, 30]
-     * @return ApiResponse<Audience?>
+     * @param adAccountsAudienceCreate 
+     * @return ApiResponse<AdAccountsAudience?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun audiencesCreateWithHttpInfo(adAccountId: kotlin.String, audienceCreateRequest: AudienceCreateRequest) : ApiResponse<Audience?> {
-        val localVariableConfig = audiencesCreateRequestConfig(adAccountId = adAccountId, audienceCreateRequest = audienceCreateRequest)
+    fun audiencesCreateWithHttpInfo(adAccountId: kotlin.String, adAccountsAudienceCreate: AdAccountsAudienceCreate) : ApiResponse<AdAccountsAudience?> {
+        val localVariableConfig = audiencesCreateRequestConfig(adAccountId = adAccountId, adAccountsAudienceCreate = adAccountsAudienceCreate)
 
-        return request<AudienceCreateRequest, Audience>(
+        return request<AdAccountsAudienceCreate, AdAccountsAudience>(
             localVariableConfig
         )
     }
@@ -106,11 +116,11 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * To obtain the request config of the operation audiencesCreate
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceCreateRequest List of ads to create, size limit [1, 30]
+     * @param adAccountsAudienceCreate 
      * @return RequestConfig
      */
-    fun audiencesCreateRequestConfig(adAccountId: kotlin.String, audienceCreateRequest: AudienceCreateRequest) : RequestConfig<AudienceCreateRequest> {
-        val localVariableBody = audienceCreateRequest
+    fun audiencesCreateRequestConfig(adAccountId: kotlin.String, adAccountsAudienceCreate: AdAccountsAudienceCreate) : RequestConfig<AdAccountsAudienceCreate> {
+        val localVariableBody = adAccountsAudienceCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -130,9 +140,9 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * GET /ad_accounts/{ad_account_id}/audiences/{audience_id}
      * Get audience
      * Get a specific audience given the audience ID.
+     * @param audienceId Audience ID.
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceId Unique identifier of an audience
-     * @return Audience
+     * @return AdAccountsAudience
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -141,11 +151,11 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun audiencesGet(adAccountId: kotlin.String, audienceId: kotlin.String) : Audience {
-        val localVarResponse = audiencesGetWithHttpInfo(adAccountId = adAccountId, audienceId = audienceId)
+    fun audiencesGet(audienceId: kotlin.String, adAccountId: kotlin.String) : AdAccountsAudience {
+        val localVarResponse = audiencesGetWithHttpInfo(audienceId = audienceId, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as Audience
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AdAccountsAudience
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -163,18 +173,18 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * GET /ad_accounts/{ad_account_id}/audiences/{audience_id}
      * Get audience
      * Get a specific audience given the audience ID.
+     * @param audienceId Audience ID.
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceId Unique identifier of an audience
-     * @return ApiResponse<Audience?>
+     * @return ApiResponse<AdAccountsAudience?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun audiencesGetWithHttpInfo(adAccountId: kotlin.String, audienceId: kotlin.String) : ApiResponse<Audience?> {
-        val localVariableConfig = audiencesGetRequestConfig(adAccountId = adAccountId, audienceId = audienceId)
+    fun audiencesGetWithHttpInfo(audienceId: kotlin.String, adAccountId: kotlin.String) : ApiResponse<AdAccountsAudience?> {
+        val localVariableConfig = audiencesGetRequestConfig(audienceId = audienceId, adAccountId = adAccountId)
 
-        return request<Unit, Audience>(
+        return request<Unit, AdAccountsAudience>(
             localVariableConfig
         )
     }
@@ -182,11 +192,11 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * To obtain the request config of the operation audiencesGet
      *
+     * @param audienceId Audience ID.
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceId Unique identifier of an audience
      * @return RequestConfig
      */
-    fun audiencesGetRequestConfig(adAccountId: kotlin.String, audienceId: kotlin.String) : RequestConfig<Unit> {
+    fun audiencesGetRequestConfig(audienceId: kotlin.String, adAccountId: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -194,7 +204,7 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/ad_accounts/{ad_account_id}/audiences/{audience_id}".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())).replace("{"+"audience_id"+"}", encodeURIComponent(audienceId.toString())),
+            path = "/ad_accounts/{ad_account_id}/audiences/{audience_id}".replace("{"+"audience_id"+"}", encodeURIComponent(audienceId.toString())).replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -203,48 +213,15 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * enum for parameter order
-     */
-     enum class OrderAudiencesList(val value: kotlin.String) {
-         @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
-     * enum for parameter ownershipType
-     */
-     enum class OwnershipTypeAudiencesList(val value: kotlin.String) {
-         @Json(name = "OWNED") OWNED("OWNED"),
-         @Json(name = "RECEIVED") RECEIVED("RECEIVED");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /ad_accounts/{ad_account_id}/audiences
      * List audiences
      * Get list of audiences for the ad account.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param ownershipType Filter audiences by ownership type. (optional, default to OwnershipType.OWNED)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param ownershipType  (optional)
+     * @param excludeNca When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). (optional, default to false)
      * @return AudiencesList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -254,8 +231,8 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun audiencesList(adAccountId: kotlin.String, bookmark: kotlin.String? = null, order: OrderAudiencesList? = null, pageSize: kotlin.Int? = 25, ownershipType: OwnershipTypeAudiencesList? = OwnershipTypeAudiencesList.OWNED) : AudiencesList200Response {
-        val localVarResponse = audiencesListWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, order = order, pageSize = pageSize, ownershipType = ownershipType)
+    fun audiencesList(adAccountId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, order: PinterestLibPaginationOrder? = null, ownershipType: AudienceOwnershipType? = null, excludeNca: kotlin.Boolean? = false) : AudiencesList200Response {
+        val localVarResponse = audiencesListWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order, ownershipType = ownershipType, excludeNca = excludeNca)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as AudiencesList200Response
@@ -278,17 +255,18 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * Get list of audiences for the ad account.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param ownershipType Filter audiences by ownership type. (optional, default to OwnershipType.OWNED)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param ownershipType  (optional)
+     * @param excludeNca When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). (optional, default to false)
      * @return ApiResponse<AudiencesList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun audiencesListWithHttpInfo(adAccountId: kotlin.String, bookmark: kotlin.String?, order: OrderAudiencesList?, pageSize: kotlin.Int?, ownershipType: OwnershipTypeAudiencesList?) : ApiResponse<AudiencesList200Response?> {
-        val localVariableConfig = audiencesListRequestConfig(adAccountId = adAccountId, bookmark = bookmark, order = order, pageSize = pageSize, ownershipType = ownershipType)
+    fun audiencesListWithHttpInfo(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?, ownershipType: AudienceOwnershipType?, excludeNca: kotlin.Boolean?) : ApiResponse<AudiencesList200Response?> {
+        val localVariableConfig = audiencesListRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order, ownershipType = ownershipType, excludeNca = excludeNca)
 
         return request<Unit, AudiencesList200Response>(
             localVariableConfig
@@ -300,26 +278,30 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      *
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param ownershipType Filter audiences by ownership type. (optional, default to OwnershipType.OWNED)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param ownershipType  (optional)
+     * @param excludeNca When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). (optional, default to false)
      * @return RequestConfig
      */
-    fun audiencesListRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, order: OrderAudiencesList?, pageSize: kotlin.Int?, ownershipType: OwnershipTypeAudiencesList?) : RequestConfig<Unit> {
+    fun audiencesListRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?, ownershipType: AudienceOwnershipType?, excludeNca: kotlin.Boolean?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
                 }
-                if (order != null) {
-                    put("order", listOf(order.value))
-                }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
                 }
+                if (order != null) {
+                    put("order", listOf(order.toString()))
+                }
                 if (ownershipType != null) {
-                    put("ownership_type", listOf(ownershipType.value))
+                    put("ownership_type", listOf(ownershipType.toString()))
+                }
+                if (excludeNca != null) {
+                    put("exclude_nca", listOf(excludeNca.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -338,11 +320,11 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * PATCH /ad_accounts/{ad_account_id}/audiences/{audience_id}
      * Update audience
-     * Update (edit or remove) an existing targeting audience.
+     * Update an existing audience for the ad account.
+     * @param audienceId Audience ID.
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceId Unique identifier of an audience
-     * @param audienceUpdateRequest The audience to be updated.
-     * @return Audience
+     * @param adAccountsAudienceUpdate 
+     * @return AdAccountsAudience
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -351,11 +333,11 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun audiencesUpdate(adAccountId: kotlin.String, audienceId: kotlin.String, audienceUpdateRequest: AudienceUpdateRequest) : Audience {
-        val localVarResponse = audiencesUpdateWithHttpInfo(adAccountId = adAccountId, audienceId = audienceId, audienceUpdateRequest = audienceUpdateRequest)
+    fun audiencesUpdate(audienceId: kotlin.String, adAccountId: kotlin.String, adAccountsAudienceUpdate: AdAccountsAudienceUpdate) : AdAccountsAudience {
+        val localVarResponse = audiencesUpdateWithHttpInfo(audienceId = audienceId, adAccountId = adAccountId, adAccountsAudienceUpdate = adAccountsAudienceUpdate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as Audience
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AdAccountsAudience
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -372,20 +354,20 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * PATCH /ad_accounts/{ad_account_id}/audiences/{audience_id}
      * Update audience
-     * Update (edit or remove) an existing targeting audience.
+     * Update an existing audience for the ad account.
+     * @param audienceId Audience ID.
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceId Unique identifier of an audience
-     * @param audienceUpdateRequest The audience to be updated.
-     * @return ApiResponse<Audience?>
+     * @param adAccountsAudienceUpdate 
+     * @return ApiResponse<AdAccountsAudience?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun audiencesUpdateWithHttpInfo(adAccountId: kotlin.String, audienceId: kotlin.String, audienceUpdateRequest: AudienceUpdateRequest) : ApiResponse<Audience?> {
-        val localVariableConfig = audiencesUpdateRequestConfig(adAccountId = adAccountId, audienceId = audienceId, audienceUpdateRequest = audienceUpdateRequest)
+    fun audiencesUpdateWithHttpInfo(audienceId: kotlin.String, adAccountId: kotlin.String, adAccountsAudienceUpdate: AdAccountsAudienceUpdate) : ApiResponse<AdAccountsAudience?> {
+        val localVariableConfig = audiencesUpdateRequestConfig(audienceId = audienceId, adAccountId = adAccountId, adAccountsAudienceUpdate = adAccountsAudienceUpdate)
 
-        return request<AudienceUpdateRequest, Audience>(
+        return request<AdAccountsAudienceUpdate, AdAccountsAudience>(
             localVariableConfig
         )
     }
@@ -393,13 +375,13 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * To obtain the request config of the operation audiencesUpdate
      *
+     * @param audienceId Audience ID.
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceId Unique identifier of an audience
-     * @param audienceUpdateRequest The audience to be updated.
+     * @param adAccountsAudienceUpdate 
      * @return RequestConfig
      */
-    fun audiencesUpdateRequestConfig(adAccountId: kotlin.String, audienceId: kotlin.String, audienceUpdateRequest: AudienceUpdateRequest) : RequestConfig<AudienceUpdateRequest> {
-        val localVariableBody = audienceUpdateRequest
+    fun audiencesUpdateRequestConfig(audienceId: kotlin.String, adAccountId: kotlin.String, adAccountsAudienceUpdate: AdAccountsAudienceUpdate) : RequestConfig<AdAccountsAudienceUpdate> {
+        val localVariableBody = adAccountsAudienceUpdate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -407,7 +389,7 @@ open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.
 
         return RequestConfig(
             method = RequestMethod.PATCH,
-            path = "/ad_accounts/{ad_account_id}/audiences/{audience_id}".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())).replace("{"+"audience_id"+"}", encodeURIComponent(audienceId.toString())),
+            path = "/ad_accounts/{ad_account_id}/audiences/{audience_id}".replace("{"+"audience_id"+"}", encodeURIComponent(audienceId.toString())).replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

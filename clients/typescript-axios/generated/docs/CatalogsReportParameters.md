@@ -6,7 +6,7 @@ Report parameters
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [default to undefined]
+**catalog_type** | **string** |  | [default to undefined]
 **report** | [**CatalogsHotelReportParametersReport**](CatalogsHotelReportParametersReport.md) |  | [default to undefined]
 
 ## Example

@@ -7,24 +7,17 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { TopPinsSortBy } from './topPinsSortBy';
 import { TopPinsAnalyticsResponseDateAvailability } from './topPinsAnalyticsResponseDateAvailability';
-import { TopPinsAnalyticsResponsePinsInner } from './topPinsAnalyticsResponsePinsInner';
+import { TopPinsAnalyticsResponsePinsItems } from './topPinsAnalyticsResponsePinsItems';
 
 
 export interface TopPinsAnalyticsResponse { 
     date_availability?: TopPinsAnalyticsResponseDateAvailability;
-    pins?: Array<TopPinsAnalyticsResponsePinsInner>;
-    sort_by?: TopPinsAnalyticsResponse.SortByEnum;
+    pins?: Array<TopPinsAnalyticsResponsePinsItems>;
+    sort_by?: TopPinsSortBy;
 }
 export namespace TopPinsAnalyticsResponse {
-    export const SortByEnum = {
-        Engagement: 'ENGAGEMENT',
-        Save: 'SAVE',
-        Impression: 'IMPRESSION',
-        OutboundClick: 'OUTBOUND_CLICK',
-        PinClick: 'PIN_CLICK'
-    } as const;
-    export type SortByEnum = typeof SortByEnum[keyof typeof SortByEnum];
 }
 
 

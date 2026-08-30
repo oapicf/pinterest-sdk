@@ -47,7 +47,7 @@ const (
 	NB Language = "NB"
 	NE Language = "NE"
 	NL Language = "NL"
-	NO Language = "NO"
+	FALSE Language = "false"
 	PL Language = "PL"
 	PT Language = "PT"
 	RO Language = "RO"

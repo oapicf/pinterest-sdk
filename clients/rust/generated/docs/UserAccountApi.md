@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## boards_user_follows_slash_list
 
-> models::BoardsUserFollowsList200Response boards_user_follows_slash_list(bookmark, page_size, explicit_following, ad_account_id)
+> models::BoardsList200Response boards_user_follows_slash_list(ad_account_id, explicit_following, bookmark, page_size)
 List following boards
 
 Get a list of the boards a user follows. The request returns a board summary object array.
@@ -33,14 +33,14 @@ Get a list of the boards a user follows. The request returns a board summary obj
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
-**explicit_following** | Option<**bool**> | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. |  |[default to false]
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
+**explicit_following** | Option<**bool**> | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. |  |[default to false]
+**bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
 ### Return type
 
-[**models::BoardsUserFollowsList200Response**](boards_user_follows_list_200_response.md)
+[**models::BoardsList200Response**](boards_list_200_response.md)
 
 ### Authorization
 
@@ -56,10 +56,10 @@ Name | Type | Description  | Required | Notes
 
 ## follow_user_slash_update
 
-> models::UserSummary follow_user_slash_update(username, follow_user_request)
+> models::FollowUser follow_user_slash_update(username, follow_user_create)
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 
 ### Parameters
 
@@ -67,11 +67,11 @@ Follow user
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **username** | **String** | A valid username | [required] |
-**follow_user_request** | [**FollowUserRequest**](FollowUserRequest.md) | Follow a user. | [required] |
+**follow_user_create** | [**FollowUserCreate**](FollowUserCreate.md) |  | [required] |
 
 ### Return type
 
-[**models::UserSummary**](UserSummary.md)
+[**models::FollowUser**](FollowUser.md)
 
 ### Authorization
 
@@ -98,7 +98,7 @@ Get a list of your followers.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
 ### Return type
 
@@ -145,10 +145,10 @@ This endpoint does not need any parameter.
 
 ## unverify_website_slash_delete
 
-> unverify_website_slash_delete(website)
+> models::UserWebsite unverify_website_slash_delete(website)
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 ### Parameters
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -185,14 +185,14 @@ Get analytics for the \"operation user_account\" - By default, the \"operation u
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**start_date** | **String** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [required] |
-**end_date** | **String** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [required] |
+**start_date** | **chrono::NaiveDate** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [required] |
+**end_date** | **chrono::NaiveDate** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [required] |
 **from_claimed_content** | Option<**String**> | Filter on Pins that match your claimed domain. |  |[default to BOTH]
 **pin_format** | Option<**String**> | Pin formats to get data for, default is all. |  |[default to ALL]
 **app_types** | Option<**String**> | Apps or devices to get data for, default is all. |  |[default to ALL]
 **content_type** | Option<**String**> | Filter to paid or organic data. Default is all. |  |[default to ALL]
 **source** | Option<**String**> | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts |  |[default to ALL]
-**metric_types** | Option<[**Vec<String>**](String.md)> | Metric types to get data for, default is all.  |  |
+**metric_types** | Option<[**Vec<models::QuerymetrictypesItems>**](Models__QuerymetrictypesItems.md)> | Metric types to get data for, default is all. |  |
 **split_field** | Option<**String**> | How to split the data into groups. Not including this param means data won't be split. |  |[default to NO_SPLIT]
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
 
@@ -224,17 +224,17 @@ Gets analytics data about a user's top pins (limited to the top 50). - By defaul
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**start_date** | **String** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [required] |
-**end_date** | **String** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [required] |
-**sort_by** | **String** | Specify sorting order for metrics | [required] |
+**start_date** | **chrono::NaiveDate** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [required] |
+**end_date** | **chrono::NaiveDate** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [required] |
+**sort_by** | [**TopPinsSortBy**](TopPinsSortBy.md) | Specify sorting order for metrics | [required] |
 **from_claimed_content** | Option<**String**> | Filter on Pins that match your claimed domain. |  |[default to BOTH]
 **pin_format** | Option<**String**> | Pin formats to get data for, default is all. |  |[default to ALL]
 **app_types** | Option<**String**> | Apps or devices to get data for, default is all. |  |[default to ALL]
 **content_type** | Option<**String**> | Filter to paid or organic data. Default is all. |  |[default to ALL]
 **source** | Option<**String**> | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts |  |[default to ALL]
-**metric_types** | Option<[**Vec<String>**](String.md)> | Metric types to get data for, default is all.  |  |
+**metric_types** | Option<[**Vec<models::QuerymetrictypesItems>**](Models__QuerymetrictypesItems.md)> | Metric types to get data for, default is all. |  |
 **num_of_pins** | Option<**i32**> | Number of pins to include, default is 10. Max is 50. |  |[default to 10]
-**created_in_last_n_days** | Option<**i32**> | Get metrics for pins created in the last \"n\" days. |  |
+**created_in_last_n_days** | Option<**f64**> | Get metrics for pins created in the last \"n\" days. |  |
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
 
 ### Return type
@@ -265,17 +265,17 @@ Gets analytics data about a user's top video pins (limited to the top 50). - By 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**start_date** | **String** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [required] |
-**end_date** | **String** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [required] |
-**sort_by** | **String** | Specify sorting order for video metrics | [required] |
+**start_date** | **chrono::NaiveDate** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [required] |
+**end_date** | **chrono::NaiveDate** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [required] |
+**sort_by** | [**TopVideoPinsSortBy**](TopVideoPinsSortBy.md) | Specify sorting order for video metrics | [required] |
 **from_claimed_content** | Option<**String**> | Filter on Pins that match your claimed domain. |  |[default to BOTH]
 **pin_format** | Option<**String**> | Pin formats to get data for, default is all. |  |[default to ALL]
 **app_types** | Option<**String**> | Apps or devices to get data for, default is all. |  |[default to ALL]
 **content_type** | Option<**String**> | Filter to paid or organic data. Default is all. |  |[default to ALL]
 **source** | Option<**String**> | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts |  |[default to ALL]
-**metric_types** | Option<[**Vec<String>**](String.md)> | Metric types to get video data for, default is all.  |  |
+**metric_types** | Option<[**Vec<models::QueryvideopinmetrictypesItems>**](Models__QueryvideopinmetrictypesItems.md)> | Metric types to get video data for, default is all. |  |
 **num_of_pins** | Option<**i32**> | Number of pins to include, default is 10. Max is 50. |  |[default to 10]
-**created_in_last_n_days** | Option<**i32**> | Get metrics for pins created in the last \"n\" days. |  |
+**created_in_last_n_days** | Option<**f64**> | Get metrics for pins created in the last \"n\" days. |  |
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
 
 ### Return type
@@ -308,7 +308,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **username** | **String** | A valid username | [required] |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
 ### Return type
 
@@ -331,7 +331,7 @@ Name | Type | Description  | Required | Notes
 > models::Account user_account_slash_get(ad_account_id)
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 
 ### Parameters
 
@@ -358,7 +358,7 @@ Name | Type | Description  | Required | Notes
 
 ## user_following_slash_get
 
-> models::UserFollowingGet200Response user_following_slash_get(bookmark, page_size, feed_type, explicit_following, ad_account_id)
+> models::FollowersList200Response user_following_slash_get(ad_account_id, explicit_following, feed_type, bookmark, page_size)
 List following
 
 Get a list of who a certain user follows.
@@ -368,15 +368,15 @@ Get a list of who a certain user follows.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
-**feed_type** | Option<**UserFollowingFeedType**> | Thrift param specifying what type of followees will be kept. Default to include all followees. |  |
-**explicit_following** | Option<**bool**> | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. |  |[default to false]
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
+**explicit_following** | Option<**bool**> | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. |  |[default to false]
+**feed_type** | Option<[**UserFollowingFeedType**](UserFollowingFeedType.md)> | Thrift param specifying what type of followees will be kept. Default to include all followees. |  |
+**bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
 ### Return type
 
-[**models::UserFollowingGet200Response**](user_following_get_200_response.md)
+[**models::FollowersList200Response**](followers_list_200_response.md)
 
 ### Authorization
 
@@ -403,7 +403,7 @@ Get user websites, claimed or not
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
 ### Return type
 
@@ -423,7 +423,7 @@ Name | Type | Description  | Required | Notes
 
 ## verify_website_slash_update
 
-> models::UserWebsiteSummary verify_website_slash_update(user_website_verify_request, ad_account_id)
+> models::UserWebsite verify_website_slash_update(user_website_create, ad_account_id)
 Verify website
 
 Verify a website as a signed-in user.
@@ -433,12 +433,12 @@ Verify a website as a signed-in user.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**user_website_verify_request** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md) | Verify a website. | [required] |
+**user_website_create** | [**UserWebsiteCreate**](UserWebsiteCreate.md) |  | [required] |
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
 
 ### Return type
 
-[**models::UserWebsiteSummary**](UserWebsiteSummary.md)
+[**models::UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -454,7 +454,7 @@ Name | Type | Description  | Required | Notes
 
 ## website_verification_slash_get
 
-> models::UserWebsiteVerificationCode website_verification_slash_get(ad_account_id)
+> models::UserWebsiteVerification website_verification_slash_get(ad_account_id)
 Get user verification code for website claiming
 
 Get verification code for user to install on the website to claim it.
@@ -468,7 +468,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**models::UserWebsiteVerificationCode**](UserWebsiteVerificationCode.md)
+[**models::UserWebsiteVerification**](UserWebsiteVerification.md)
 
 ### Authorization
 

@@ -8,6 +8,7 @@ import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.QuizPinQuestion;
 import org.openapitools.model.QuizPinResult;
+import org.openapitools.model.TieBreakerType;
 
 @Canonical
 class QuizPinData {
@@ -17,29 +18,6 @@ class QuizPinData {
     List<QuizPinResult> results = new ArrayList<>()
     
     QuizPinResult tieBreakerCustomResult
-
-    enum TieBreakerTypeEnum {
     
-        RANDOM("RANDOM"),
-        
-        CUSTOM("CUSTOM")
-    
-        private final String value
-    
-        TieBreakerTypeEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
-    /* Quiz ad tie breaker type, default is RANDOM */
-    TieBreakerTypeEnum tieBreakerType
+    TieBreakerType tieBreakerType
 }

@@ -1,28 +1,29 @@
 
 # Pin
 
-Pin model containing properties related to a Pinterest Pin.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`altText` | string
+`aiDisclosures` | [AiDisclosures](AiDisclosures.md)
 `boardId` | string
 `boardOwner` | [BoardOwner](BoardOwner.md)
 `boardSectionId` | string
 `createdAt` | Date
 `creativeType` | [CreativeType](CreativeType.md)
-`description` | string
 `dominantColor` | string
 `hasBeenPromoted` | boolean
 `id` | string
 `isOwner` | boolean
+`isProduct` | boolean
 `isStandard` | boolean
-`link` | string
 `media` | [PinMedia](PinMedia.md)
 `parentPinId` | string
 `pinMetrics` | object
+`altText` | string
+`description` | string
+`link` | string
 `title` | string
 
 ## Example
@@ -32,22 +33,24 @@ import type { Pin } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "altText": null,
+  "aiDisclosures": null,
   "boardId": null,
   "boardOwner": null,
   "boardSectionId": null,
   "createdAt": null,
   "creativeType": null,
-  "description": null,
   "dominantColor": null,
   "hasBeenPromoted": null,
   "id": null,
   "isOwner": null,
+  "isProduct": null,
   "isStandard": null,
-  "link": null,
   "media": null,
   "parentPinId": null,
-  "pinMetrics": {"90d":{"pin_click":7,"impression":2,"clickthrough":3},"lifetime_metrics":{"pin_click":7,"impression":2,"clickthrough":3,"reaction":10,"comment":2}},
+  "pinMetrics": {90d={pin_click=7, impression=2, clickthrough=3}, lifetime_metrics={pin_click=7, impression=2, clickthrough=3, reaction=10, comment=2}},
+  "altText": null,
+  "description": null,
+  "link": null,
   "title": null,
 } satisfies Pin
 

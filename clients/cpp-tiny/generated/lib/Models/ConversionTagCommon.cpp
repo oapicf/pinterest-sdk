@@ -192,7 +192,7 @@ ConversionTagCommon::getCodeSnippet()
 }
 
 void
-ConversionTagCommon::setCodeSnippet(std::string  code_snippet)
+ConversionTagCommon::setCodeSnippet(std::string code_snippet)
 {
 	this->code_snippet = code_snippet;
 }
@@ -204,7 +204,7 @@ ConversionTagCommon::getConfigs()
 }
 
 void
-ConversionTagCommon::setConfigs(ConversionTagConfigs  configs)
+ConversionTagCommon::setConfigs(ConversionTagConfigs configs)
 {
 	this->configs = configs;
 }
@@ -216,7 +216,7 @@ ConversionTagCommon::getEnhancedMatchStatus()
 }
 
 void
-ConversionTagCommon::setEnhancedMatchStatus(EnhancedMatchStatusType  enhanced_match_status)
+ConversionTagCommon::setEnhancedMatchStatus(EnhancedMatchStatusType enhanced_match_status)
 {
 	this->enhanced_match_status = enhanced_match_status;
 }
@@ -228,7 +228,7 @@ ConversionTagCommon::getId()
 }
 
 void
-ConversionTagCommon::setId(std::string  id)
+ConversionTagCommon::setId(std::string id)
 {
 	this->id = id;
 }
@@ -240,7 +240,7 @@ ConversionTagCommon::getLastFiredTimeMs()
 }
 
 void
-ConversionTagCommon::setLastFiredTimeMs(long  last_fired_time_ms)
+ConversionTagCommon::setLastFiredTimeMs(long last_fired_time_ms)
 {
 	this->last_fired_time_ms = last_fired_time_ms;
 }
@@ -252,7 +252,7 @@ ConversionTagCommon::getName()
 }
 
 void
-ConversionTagCommon::setName(std::string  name)
+ConversionTagCommon::setName(std::string name)
 {
 	this->name = name;
 }
@@ -264,7 +264,7 @@ ConversionTagCommon::getVersion()
 }
 
 void
-ConversionTagCommon::setVersion(std::string  version)
+ConversionTagCommon::setVersion(std::string version)
 {
 	this->version = version;
 }

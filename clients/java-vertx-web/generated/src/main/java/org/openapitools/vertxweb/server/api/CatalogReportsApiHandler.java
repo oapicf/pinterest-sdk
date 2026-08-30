@@ -3,9 +3,9 @@ package org.openapitools.vertxweb.server.api;
 import org.openapitools.vertxweb.server.model.CatalogsCreateReportResponse;
 import org.openapitools.vertxweb.server.model.CatalogsReport;
 import org.openapitools.vertxweb.server.model.CatalogsReportParameters;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.CatalogsReportStatsParameters;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 import org.openapitools.vertxweb.server.model.ReportsStats200Response;
-import org.openapitools.vertxweb.server.model.ReportsStatsParametersParameter;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -97,17 +97,17 @@ public class CatalogReportsApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
-        ReportsStatsParametersParameter parameters = requestParameters.queryParameter("parameters") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("parameters").get(), new TypeReference<ReportsStatsParametersParameter>(){}) : null;
+        CatalogsReportStatsParameters parameters = requestParameters.queryParameter("parameters") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("parameters").get(), new TypeReference<CatalogsReportStatsParameters>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
-        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
 
         logger.debug("Parameter parameters is {}", parameters);
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter bookmark is {}", bookmark);
+        logger.debug("Parameter pageSize is {}", pageSize);
 
-        api.reportsStats(parameters, adAccountId, pageSize, bookmark)
+        api.reportsStats(parameters, adAccountId, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

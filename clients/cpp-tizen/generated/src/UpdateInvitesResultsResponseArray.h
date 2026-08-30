@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "UpdateInvitesResultsResponseArray_items_inner.h"
+#include "InviteActionResultItem.h"
 #include <list>
 #include "Object.h"
 
@@ -49,14 +49,14 @@ public:
 
 	/*! \brief Get List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
 	 */
-	std::list<UpdateInvitesResultsResponseArray_items_inner> getItems();
+	std::list<InviteActionResultItem> getItems();
 
 	/*! \brief Set List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
 	 */
-	void setItems(std::list <UpdateInvitesResultsResponseArray_items_inner> items);
+	void setItems(std::list <InviteActionResultItem> items);
 
 private:
-	std::list <UpdateInvitesResultsResponseArray_items_inner>items;
+	std::list <InviteActionResultItem>items;
 	void __init();
 	void __cleanup();
 

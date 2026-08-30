@@ -155,8 +155,9 @@ class _$CatalogsRetailProductGroupProductCountsSerializer implements PrimitiveSe
         case r'videos':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.videos = valueDes;
           break;
         default:

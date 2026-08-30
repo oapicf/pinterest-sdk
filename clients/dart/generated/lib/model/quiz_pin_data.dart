@@ -25,8 +25,13 @@ class QuizPinData {
 
   QuizPinResult? tieBreakerCustomResult;
 
-  /// Quiz ad tie breaker type, default is RANDOM
-  QuizPinDataTieBreakerTypeEnum? tieBreakerType;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  TieBreakerType? tieBreakerType;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is QuizPinData &&
@@ -74,10 +79,6 @@ class QuizPinData {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "QuizPinData[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "QuizPinData[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -85,7 +86,7 @@ class QuizPinData {
         questions: QuizPinQuestion.listFromJson(json[r'questions']),
         results: QuizPinResult.listFromJson(json[r'results']),
         tieBreakerCustomResult: QuizPinResult.fromJson(json[r'tie_breaker_custom_result']),
-        tieBreakerType: QuizPinDataTieBreakerTypeEnum.fromJson(json[r'tie_breaker_type']),
+        tieBreakerType: TieBreakerType.fromJson(json[r'tie_breaker_type']),
       );
     }
     return null;
@@ -135,78 +136,4 @@ class QuizPinData {
   static const requiredKeys = <String>{
   };
 }
-
-/// Quiz ad tie breaker type, default is RANDOM
-class QuizPinDataTieBreakerTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const QuizPinDataTieBreakerTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const RANDOM = QuizPinDataTieBreakerTypeEnum._(r'RANDOM');
-  static const CUSTOM = QuizPinDataTieBreakerTypeEnum._(r'CUSTOM');
-
-  /// List of all possible values in this [enum][QuizPinDataTieBreakerTypeEnum].
-  static const values = <QuizPinDataTieBreakerTypeEnum>[
-    RANDOM,
-    CUSTOM,
-  ];
-
-  static QuizPinDataTieBreakerTypeEnum? fromJson(dynamic value) => QuizPinDataTieBreakerTypeEnumTypeTransformer().decode(value);
-
-  static List<QuizPinDataTieBreakerTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <QuizPinDataTieBreakerTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = QuizPinDataTieBreakerTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [QuizPinDataTieBreakerTypeEnum] to String,
-/// and [decode] dynamic data back to [QuizPinDataTieBreakerTypeEnum].
-class QuizPinDataTieBreakerTypeEnumTypeTransformer {
-  factory QuizPinDataTieBreakerTypeEnumTypeTransformer() => _instance ??= const QuizPinDataTieBreakerTypeEnumTypeTransformer._();
-
-  const QuizPinDataTieBreakerTypeEnumTypeTransformer._();
-
-  String encode(QuizPinDataTieBreakerTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a QuizPinDataTieBreakerTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  QuizPinDataTieBreakerTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'RANDOM': return QuizPinDataTieBreakerTypeEnum.RANDOM;
-        case r'CUSTOM': return QuizPinDataTieBreakerTypeEnum.CUSTOM;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [QuizPinDataTieBreakerTypeEnumTypeTransformer] instance.
-  static QuizPinDataTieBreakerTypeEnumTypeTransformer? _instance;
-}
-
 

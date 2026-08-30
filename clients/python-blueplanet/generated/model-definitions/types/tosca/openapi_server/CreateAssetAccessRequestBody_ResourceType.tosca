@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  CreateAssetAccessRequestBodyAssetRequestsInner = openapi_server.resourceTypes.CreateAssetAccessRequestBodyAssetRequestsInner
+  CreateAssetAccessRequestItem = openapi_server.resourceTypes.CreateAssetAccessRequestItem
 }
 resourceTypes {
 
@@ -18,7 +18,7 @@ resourceTypes {
     properties {
         asset_requests {
           type = array
-          items.type = CreateAssetAccessRequestBodyAssetRequestsInner
+          items.type = CreateAssetAccessRequestItem
           description = ""
           optional = true
         }

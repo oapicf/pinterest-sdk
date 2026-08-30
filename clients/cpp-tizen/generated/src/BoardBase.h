@@ -103,11 +103,11 @@ public:
 	/*! \brief Set Board media.
 	 */
 	void setMedia(BoardMedia  media);
-	/*! \brief Get      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+	/*! \brief Get     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
 	 */
 	std::string getName();
 
-	/*! \brief Set      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+	/*! \brief Set     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
 	 */
 	void setName(std::string  name);
 	/*! \brief Get 

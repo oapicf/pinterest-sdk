@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Permission aggregation type for asset access",
+  "name": "AssetPermissionType",
+  "symbols": [
+    "AGGREGATED_PERMISSION",
+    "DIRECT_PERMISSION"
+  ]
+}

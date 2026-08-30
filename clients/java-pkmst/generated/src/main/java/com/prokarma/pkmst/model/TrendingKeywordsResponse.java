@@ -18,7 +18,7 @@ import java.util.List;
  * TrendingKeywordsResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TrendingKeywordsResponse   {
   @JsonProperty("trends")
   
@@ -38,10 +38,10 @@ public class TrendingKeywordsResponse   {
   }
 
   /**
-   * The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
+   * The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.
    * @return trends
    */
-  @ApiModelProperty(value = "The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.")
+  @ApiModelProperty(value = "The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.")
   public List<TrendingKeyword> getTrends() {
     return trends;
   }
@@ -83,10 +83,7 @@ public class TrendingKeywordsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

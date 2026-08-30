@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TrendsGenderFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TrendsGenderFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  TrendsGenderFilter {
+    title = TrendsGenderFilter
+    description = TrendsGenderFilter
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  TrendsGenderFilter {
+    title = TrendsGenderFilter
+    description = TrendsGenderFilter
+    implements = openapi_server.resourceTypes.TrendsGenderFilter
+
+  }
+}

@@ -7,6 +7,6 @@ package org.openapitools.server.model
 */
 final case class TargetingTemplateList200Response (
   bookmark: Option[String] = None,
-  items: Seq[TargetingTemplateGetResponseData]
+  items: Seq[TargetingTemplate]
 )
 

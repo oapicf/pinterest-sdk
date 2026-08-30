@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -17,70 +17,34 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdPreviewCreateFromImage;
-import org.openapitools.model.AdPreviewCreateFromPin;
 import org.openapitools.model.AdPreviewShopping;
+import org.openapitools.model.AdPreviewSourceImage;
+import org.openapitools.model.AdPreviewSourcePinId;
+import org.openapitools.model.AdShoppingPreviewCreativeType;
+import org.openapitools.model.BasePreferredMediaType;
 import org.openapitools.model.CustomizableCTAType;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdPreviewRequest   {
   
   private String imageUrl;
+  private String promotionId;
   private String title;
+  private AdShoppingPreviewCreativeType creativeType;
   private String pinId;
   private String catalogProductGroupId;
-
-
-  public enum CreativeTypeEnum {
-    SHOPPING("SHOPPING"),
-    CAROUSEL("CAROUSEL"),
-    COLLECTION("COLLECTION"),
-    REGULAR("REGULAR");
-
-    private String value;
-
-    CreativeTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private CreativeTypeEnum creativeType;
   private CustomizableCTAType customizableCtaType;
   private String heroImageTitle;
   private String heroImageUrl;
   private String heroPinId;
   private String imageTag;
   private String itemId;
-
-
-  public enum PreferredMediaTypeEnum {
-    VIDEO("VIDEO"),
-    IMAGE("IMAGE");
-
-    private String value;
-
-    PreferredMediaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private PreferredMediaTypeEnum preferredMediaType;
+  private BasePreferredMediaType preferredMediaType;
+  private Boolean showPromotion;
   private String videoTag;
 
   /**
@@ -102,6 +66,24 @@ public class AdPreviewRequest   {
   }
 
   /**
+   * Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.
+   */
+  public AdPreviewRequest promotionId(String promotionId) {
+    this.promotionId = promotionId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "7834020404549", value = "Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.")
+  @JsonProperty("promotion_id")
+  public String getPromotionId() {
+    return promotionId;
+  }
+  public void setPromotionId(String promotionId) {
+    this.promotionId = promotionId;
+  }
+
+  /**
    * Title displayed below ad.
    */
   public AdPreviewRequest title(String title) {
@@ -117,6 +99,24 @@ public class AdPreviewRequest   {
   }
   public void setTitle(String title) {
     this.title = title;
+  }
+
+  /**
+   * Ad format of the shopping ad preview.
+   */
+  public AdPreviewRequest creativeType(AdShoppingPreviewCreativeType creativeType) {
+    this.creativeType = creativeType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "SHOPPING", required = true, value = "Ad format of the shopping ad preview.")
+  @JsonProperty("creative_type")
+  public AdShoppingPreviewCreativeType getCreativeType() {
+    return creativeType;
+  }
+  public void setCreativeType(AdShoppingPreviewCreativeType creativeType) {
+    this.creativeType = creativeType;
   }
 
   /**
@@ -153,24 +153,6 @@ public class AdPreviewRequest   {
   }
   public void setCatalogProductGroupId(String catalogProductGroupId) {
     this.catalogProductGroupId = catalogProductGroupId;
-  }
-
-  /**
-   * Ad format of the shopping ad preview.
-   */
-  public AdPreviewRequest creativeType(CreativeTypeEnum creativeType) {
-    this.creativeType = creativeType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "SHOPPING", required = true, value = "Ad format of the shopping ad preview.")
-  @JsonProperty("creative_type")
-  public CreativeTypeEnum getCreativeType() {
-    return creativeType;
-  }
-  public void setCreativeType(CreativeTypeEnum creativeType) {
-    this.creativeType = creativeType;
   }
 
   /**
@@ -284,7 +266,7 @@ public class AdPreviewRequest   {
   /**
    * Preferred media type.
    */
-  public AdPreviewRequest preferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+  public AdPreviewRequest preferredMediaType(BasePreferredMediaType preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
     return this;
   }
@@ -292,11 +274,29 @@ public class AdPreviewRequest   {
   
   @ApiModelProperty(example = "IMAGE", value = "Preferred media type.")
   @JsonProperty("preferred_media_type")
-  public PreferredMediaTypeEnum getPreferredMediaType() {
+  public BasePreferredMediaType getPreferredMediaType() {
     return preferredMediaType;
   }
-  public void setPreferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+  public void setPreferredMediaType(BasePreferredMediaType preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
+  }
+
+  /**
+   * Include promotion data in preview when available on catalog item. Defaults to false.
+   */
+  public AdPreviewRequest showPromotion(Boolean showPromotion) {
+    this.showPromotion = showPromotion;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Include promotion data in preview when available on catalog item. Defaults to false.")
+  @JsonProperty("show_promotion")
+  public Boolean getShowPromotion() {
+    return showPromotion;
+  }
+  public void setShowPromotion(Boolean showPromotion) {
+    this.showPromotion = showPromotion;
   }
 
   /**
@@ -328,10 +328,11 @@ public class AdPreviewRequest   {
     }
     AdPreviewRequest adPreviewRequest = (AdPreviewRequest) o;
     return Objects.equals(imageUrl, adPreviewRequest.imageUrl) &&
+        Objects.equals(promotionId, adPreviewRequest.promotionId) &&
         Objects.equals(title, adPreviewRequest.title) &&
+        Objects.equals(creativeType, adPreviewRequest.creativeType) &&
         Objects.equals(pinId, adPreviewRequest.pinId) &&
         Objects.equals(catalogProductGroupId, adPreviewRequest.catalogProductGroupId) &&
-        Objects.equals(creativeType, adPreviewRequest.creativeType) &&
         Objects.equals(customizableCtaType, adPreviewRequest.customizableCtaType) &&
         Objects.equals(heroImageTitle, adPreviewRequest.heroImageTitle) &&
         Objects.equals(heroImageUrl, adPreviewRequest.heroImageUrl) &&
@@ -339,12 +340,13 @@ public class AdPreviewRequest   {
         Objects.equals(imageTag, adPreviewRequest.imageTag) &&
         Objects.equals(itemId, adPreviewRequest.itemId) &&
         Objects.equals(preferredMediaType, adPreviewRequest.preferredMediaType) &&
+        Objects.equals(showPromotion, adPreviewRequest.showPromotion) &&
         Objects.equals(videoTag, adPreviewRequest.videoTag);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(imageUrl, title, pinId, catalogProductGroupId, creativeType, customizableCtaType, heroImageTitle, heroImageUrl, heroPinId, imageTag, itemId, preferredMediaType, videoTag);
+    return Objects.hash(imageUrl, promotionId, title, creativeType, pinId, catalogProductGroupId, customizableCtaType, heroImageTitle, heroImageUrl, heroPinId, imageTag, itemId, preferredMediaType, showPromotion, videoTag);
   }
 
   @Override
@@ -353,10 +355,11 @@ public class AdPreviewRequest   {
     sb.append("class AdPreviewRequest {\n");
     
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
+    sb.append("    promotionId: ").append(toIndentedString(promotionId)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("    catalogProductGroupId: ").append(toIndentedString(catalogProductGroupId)).append("\n");
-    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("    customizableCtaType: ").append(toIndentedString(customizableCtaType)).append("\n");
     sb.append("    heroImageTitle: ").append(toIndentedString(heroImageTitle)).append("\n");
     sb.append("    heroImageUrl: ").append(toIndentedString(heroImageUrl)).append("\n");
@@ -364,6 +367,7 @@ public class AdPreviewRequest   {
     sb.append("    imageTag: ").append(toIndentedString(imageTag)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    preferredMediaType: ").append(toIndentedString(preferredMediaType)).append("\n");
+    sb.append("    showPromotion: ").append(toIndentedString(showPromotion)).append("\n");
     sb.append("    videoTag: ").append(toIndentedString(videoTag)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -374,10 +378,7 @@ public class AdPreviewRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -7,20 +7,23 @@
 #include "../include/binary.h"
 #include "../model/account.h"
 #include "../model/analytics_metrics_response.h"
-#include "../model/boards_user_follows_list_200_response.h"
-#include "../model/error.h"
-#include "../model/follow_user_request.h"
+#include "../model/boards_list_200_response.h"
+#include "../model/follow_user.h"
+#include "../model/follow_user_create.h"
 #include "../model/followers_list_200_response.h"
 #include "../model/linked_business.h"
+#include "../model/pinterest_lib_error.h"
+#include "../model/querymetrictypes_items.h"
+#include "../model/queryvideopinmetrictypes_items.h"
 #include "../model/top_pins_analytics_response.h"
+#include "../model/top_pins_sort_by.h"
 #include "../model/top_video_pins_analytics_response.h"
+#include "../model/top_video_pins_sort_by.h"
 #include "../model/user_account_followed_interests_200_response.h"
 #include "../model/user_following_feed_type.h"
-#include "../model/user_following_get_200_response.h"
-#include "../model/user_summary.h"
-#include "../model/user_website_summary.h"
-#include "../model/user_website_verification_code.h"
-#include "../model/user_website_verify_request.h"
+#include "../model/user_website.h"
+#include "../model/user_website_create.h"
+#include "../model/user_website_verification.h"
 #include "../model/user_websites_get_200_response.h"
 
 // Enum FROMCLAIMEDCONTENT for UserAccountAPI_userAccountAnalytics
@@ -44,8 +47,8 @@ typedef enum  { pinterest_rest_api_userAccountAnalytics_METRICTYPES_NULL = 0, pi
 // Enum SPLITFIELD for UserAccountAPI_userAccountAnalytics
 typedef enum  { pinterest_rest_api_userAccountAnalytics_SPLITFIELD_NULL = 0, pinterest_rest_api_userAccountAnalytics_SPLITFIELD_NO_SPLIT, pinterest_rest_api_userAccountAnalytics_SPLITFIELD_APP_TYPE, pinterest_rest_api_userAccountAnalytics_SPLITFIELD_OWNED_CONTENT, pinterest_rest_api_userAccountAnalytics_SPLITFIELD_SOURCE, pinterest_rest_api_userAccountAnalytics_SPLITFIELD_PIN_FORMAT } pinterest_rest_api_userAccountAnalytics_split_field_e;
 
-// Enum SORTBY for UserAccountAPI_userAccountAnalyticsTopPins
-typedef enum  { pinterest_rest_api_userAccountAnalyticsTopPins_SORTBY_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopPins_SORTBY_ENGAGEMENT, pinterest_rest_api_userAccountAnalyticsTopPins_SORTBY_IMPRESSION, pinterest_rest_api_userAccountAnalyticsTopPins_SORTBY_OUTBOUND_CLICK, pinterest_rest_api_userAccountAnalyticsTopPins_SORTBY_PIN_CLICK, pinterest_rest_api_userAccountAnalyticsTopPins_SORTBY_SAVE } pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e;
+// Enum  for UserAccountAPI_userAccountAnalyticsTopPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopPins__NULL = 0, pinterest_rest_api_userAccountAnalyticsTopPins__ENGAGEMENT, pinterest_rest_api_userAccountAnalyticsTopPins__SAVE, pinterest_rest_api_userAccountAnalyticsTopPins__IMPRESSION, pinterest_rest_api_userAccountAnalyticsTopPins__OUTBOUND_CLICK, pinterest_rest_api_userAccountAnalyticsTopPins__PIN_CLICK } pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e;
 
 // Enum FROMCLAIMEDCONTENT for UserAccountAPI_userAccountAnalyticsTopPins
 typedef enum  { pinterest_rest_api_userAccountAnalyticsTopPins_FROMCLAIMEDCONTENT_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopPins_FROMCLAIMEDCONTENT_OTHER, pinterest_rest_api_userAccountAnalyticsTopPins_FROMCLAIMEDCONTENT_CLAIMED, pinterest_rest_api_userAccountAnalyticsTopPins_FROMCLAIMEDCONTENT_BOTH } pinterest_rest_api_userAccountAnalyticsTopPins_from_claimed_content_e;
@@ -68,8 +71,8 @@ typedef enum  { pinterest_rest_api_userAccountAnalyticsTopPins_METRICTYPES_NULL 
 // Enum CREATEDINLASTNDAYS for UserAccountAPI_userAccountAnalyticsTopPins
 typedef enum  { pinterest_rest_api_userAccountAnalyticsTopPins_CREATEDINLASTNDAYS_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopPins_CREATEDINLASTNDAYS__30 } pinterest_rest_api_userAccountAnalyticsTopPins_created_in_last_n_days_e;
 
-// Enum SORTBY for UserAccountAPI_userAccountAnalyticsTopVideoPins
-typedef enum  { pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_IMPRESSION, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_SAVE, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_OUTBOUND_CLICK, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_VIDEO_MRC_VIEW, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_VIDEO_AVG_WATCH_TIME, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_VIDEO_V50_WATCH_TIME, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_QUARTILE_95_PERCENT_VIEW, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_VIDEO_10S_VIEW, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_VIDEO_START } pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e;
+// Enum  for UserAccountAPI_userAccountAnalyticsTopVideoPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopVideoPins__NULL = 0, pinterest_rest_api_userAccountAnalyticsTopVideoPins__SAVE, pinterest_rest_api_userAccountAnalyticsTopVideoPins__IMPRESSION, pinterest_rest_api_userAccountAnalyticsTopVideoPins__OUTBOUND_CLICK, pinterest_rest_api_userAccountAnalyticsTopVideoPins__VIDEO_MRC_VIEW, pinterest_rest_api_userAccountAnalyticsTopVideoPins__VIDEO_AVG_WATCH_TIME, pinterest_rest_api_userAccountAnalyticsTopVideoPins__VIDEO_V50_WATCH_TIME, pinterest_rest_api_userAccountAnalyticsTopVideoPins__QUARTILE_95_PERCENT_VIEW, pinterest_rest_api_userAccountAnalyticsTopVideoPins__VIDEO_10S_VIEW, pinterest_rest_api_userAccountAnalyticsTopVideoPins__VIDEO_START } pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e;
 
 // Enum FROMCLAIMEDCONTENT for UserAccountAPI_userAccountAnalyticsTopVideoPins
 typedef enum  { pinterest_rest_api_userAccountAnalyticsTopVideoPins_FROMCLAIMEDCONTENT_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopVideoPins_FROMCLAIMEDCONTENT_OTHER, pinterest_rest_api_userAccountAnalyticsTopVideoPins_FROMCLAIMEDCONTENT_CLAIMED, pinterest_rest_api_userAccountAnalyticsTopVideoPins_FROMCLAIMEDCONTENT_BOTH } pinterest_rest_api_userAccountAnalyticsTopVideoPins_from_claimed_content_e;
@@ -100,16 +103,16 @@ typedef enum  { pinterest_rest_api_userFollowingGet__NULL = 0, pinterest_rest_ap
 //
 // Get a list of the boards a user follows. The request returns a board summary object array.
 //
-boards_user_follows_list_200_response_t*
-UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *bookmark, int *page_size, int *explicit_following, char *ad_account_id);
+boards_list_200_response_t*
+UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *ad_account_id, int *explicit_following, char *bookmark, int *page_size);
 
 
 // Follow user
 //
-// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+// **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 //
-user_summary_t*
-UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_user_request_t *follow_user_request);
+follow_user_t*
+UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_user_create_t *follow_user_create);
 
 
 // List followers
@@ -130,9 +133,9 @@ UserAccountAPI_linkedBusinessAccountsGet(apiClient_t *apiClient);
 
 // Unverify website
 //
-// Unverifu a website verified by the signed-in user.
+// Unverify a website verified by the signed-in user.
 //
-void
+user_website_t*
 UserAccountAPI_unverifyWebsiteDelete(apiClient_t *apiClient, char *website);
 
 
@@ -149,7 +152,7 @@ UserAccountAPI_userAccountAnalytics(apiClient_t *apiClient, char start_date, cha
 // Gets analytics data about a user's top pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
 //
 top_pins_analytics_response_t*
-UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_date, char end_date, pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e sort_by, pinterest_rest_api_userAccountAnalyticsTopPins_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalyticsTopPins_pin_format_e pin_format, pinterest_rest_api_userAccountAnalyticsTopPins_app_types_e app_types, pinterest_rest_api_userAccountAnalyticsTopPins_content_type_e content_type, pinterest_rest_api_userAccountAnalyticsTopPins_source_e source, list_t *metric_types, int *num_of_pins, int *created_in_last_n_days, char *ad_account_id);
+UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_date, char end_date, top_pins_sort_by_e sort_by, pinterest_rest_api_userAccountAnalyticsTopPins_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalyticsTopPins_pin_format_e pin_format, pinterest_rest_api_userAccountAnalyticsTopPins_app_types_e app_types, pinterest_rest_api_userAccountAnalyticsTopPins_content_type_e content_type, pinterest_rest_api_userAccountAnalyticsTopPins_source_e source, list_t *metric_types, int *num_of_pins, double created_in_last_n_days, char *ad_account_id);
 
 
 // Get user account top video pins analytics
@@ -157,7 +160,7 @@ UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_da
 // Gets analytics data about a user's top video pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
 //
 top_video_pins_analytics_response_t*
-UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char start_date, char end_date, pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e sort_by, pinterest_rest_api_userAccountAnalyticsTopVideoPins_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalyticsTopVideoPins_pin_format_e pin_format, pinterest_rest_api_userAccountAnalyticsTopVideoPins_app_types_e app_types, pinterest_rest_api_userAccountAnalyticsTopVideoPins_content_type_e content_type, pinterest_rest_api_userAccountAnalyticsTopVideoPins_source_e source, list_t *metric_types, int *num_of_pins, int *created_in_last_n_days, char *ad_account_id);
+UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char start_date, char end_date, top_video_pins_sort_by_e sort_by, pinterest_rest_api_userAccountAnalyticsTopVideoPins_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalyticsTopVideoPins_pin_format_e pin_format, pinterest_rest_api_userAccountAnalyticsTopVideoPins_app_types_e app_types, pinterest_rest_api_userAccountAnalyticsTopVideoPins_content_type_e content_type, pinterest_rest_api_userAccountAnalyticsTopVideoPins_source_e source, list_t *metric_types, int *num_of_pins, double created_in_last_n_days, char *ad_account_id);
 
 
 // List following interests
@@ -170,7 +173,7 @@ UserAccountAPI_userAccountFollowedInterests(apiClient_t *apiClient, char *userna
 
 // Get user account
 //
-// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 //
 account_t*
 UserAccountAPI_userAccountGet(apiClient_t *apiClient, char *ad_account_id);
@@ -180,8 +183,8 @@ UserAccountAPI_userAccountGet(apiClient_t *apiClient, char *ad_account_id);
 //
 // Get a list of who a certain user follows.
 //
-user_following_get_200_response_t*
-UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *bookmark, int *page_size, pinterest_rest_api_userFollowingGet_feed_type_e feed_type, int *explicit_following, char *ad_account_id);
+followers_list_200_response_t*
+UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *ad_account_id, int *explicit_following, user_following_feed_type_e feed_type, char *bookmark, int *page_size);
 
 
 // Get user websites
@@ -196,15 +199,15 @@ UserAccountAPI_userWebsitesGet(apiClient_t *apiClient, char *bookmark, int *page
 //
 // Verify a website as a signed-in user.
 //
-user_website_summary_t*
-UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_request_t *user_website_verify_request, char *ad_account_id);
+user_website_t*
+UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_create_t *user_website_create, char *ad_account_id);
 
 
 // Get user verification code for website claiming
 //
 // Get verification code for user to install on the website to claim it.
 //
-user_website_verification_code_t*
+user_website_verification_t*
 UserAccountAPI_websiteVerificationGet(apiClient_t *apiClient, char *ad_account_id);
 
 

@@ -21,7 +21,7 @@ typedef struct lead_subscription_t lead_subscription_t;
 typedef struct lead_subscription_t {
     char *ad_account_id; // string
     char *api_version; // string
-    int created_time; //numeric
+    int *created_time; //numeric
     char *cryptographic_algorithm; // string
     char *cryptographic_key; // string
     char *id; // string
@@ -35,7 +35,7 @@ typedef struct lead_subscription_t {
 __attribute__((deprecated)) lead_subscription_t *lead_subscription_create(
     char *ad_account_id,
     char *api_version,
-    int created_time,
+    int *created_time,
     char *cryptographic_algorithm,
     char *cryptographic_key,
     char *id,

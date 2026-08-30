@@ -24,7 +24,7 @@ Method | HTTP request | Description
 Create a new asset group.
 
 Create a new asset group with the specified parameters.
-- An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+- An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 
 ### Example
 
@@ -38,11 +38,11 @@ Create a new asset group with the specified parameters.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
- **createAssetGroupBody** | [**CreateAssetGroupBody**](CreateAssetGroupBody.md) |  |
+ **assetGroupInputCreate** | [**AssetGroupInputCreate**](AssetGroupInputCreate.md) |  |
 
 ### Return type
 
-[**CreateAssetGroupResponse**](CreateAssetGroupResponse.md)
+[**AssetGroupInput**](AssetGroupInput.md)
 
 ### Authorization
 
@@ -74,11 +74,11 @@ Delete a batch of asset groups.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
- **deleteAssetGroupBody** | [**DeleteAssetGroupBody**](DeleteAssetGroupBody.md) |  |
+ **assetGroupDeletionDelete** | [**AssetGroupDeletionDelete**](AssetGroupDeletionDelete.md) |  |
 
 ### Return type
 
-[**DeleteAssetGroupResponse**](DeleteAssetGroupResponse.md)
+[**AssetGroupDeletion**](AssetGroupDeletion.md)
 
 ### Authorization
 
@@ -110,11 +110,11 @@ Update a batch of asset groups with the specified parameters.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
- **updateAssetGroupBody** | [**UpdateAssetGroupBody**](UpdateAssetGroupBody.md) |  |
+ **assetGroupModificationReadOrUpdate** | [**AssetGroupModificationReadOrUpdate**](AssetGroupModificationReadOrUpdate.md) |  |
 
 ### Return type
 
-[**UpdateAssetGroupResponse**](UpdateAssetGroupResponse.md)
+[**AssetGroupModification**](AssetGroupModification.md)
 
 ### Authorization
 
@@ -137,7 +137,7 @@ Get all the members the requesting business has granted access to on the given a
 ### Example
 
 ```bash
- businessAssetMembersGet business_id=value asset_id=value  fetch_system_users=value  bookmark=value  page_size=value  start_index=value
+ businessAssetMembersGet business_id=value asset_id=value  start_index=value  fetch_system_users=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -147,10 +147,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
  **assetId** | **string** | Unique identifier of a business asset. | [default to null]
+ **startIndex** | **integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **fetchSystemUsers** | **boolean** | Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
- **startIndex** | **integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -191,11 +192,12 @@ Name | Type | Description  | Notes
  **assetId** | **string** | Unique identifier of a business asset. | [default to null]
  **startIndex** | **integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BusinessAssetPartnersGet200Response**](BusinessAssetPartnersGet200Response.md)
+[**BusinessAssetMembersGet200Response**](BusinessAssetMembersGet200Response.md)
 
 ### Authorization
 
@@ -233,7 +235,8 @@ Name | Type | Description  | Notes
  **assetType** | **string** | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT]
  **startIndex** | **integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -263,7 +266,7 @@ The return response will include the permissions the member has to that asset an
 ### Example
 
 ```bash
- businessMemberAssetsGet business_id=value member_id=value  asset_type=value  start_index=value  bookmark=value  page_size=value
+ businessMemberAssetsGet business_id=value member_id=value  asset_type=value  start_index=value  sort_by=value  sort_ascending=value  search_by=value  search_value=value  asset_permission_type=value  Specify as:  ad_account_statuses=value1 ad_account_statuses=value2 ad_account_statuses=...  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -275,12 +278,19 @@ Name | Type | Description  | Notes
  **memberId** | **string** | The member id to fetch assets for. | [default to null]
  **assetType** | **string** | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT]
  **startIndex** | **integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
+ **sortBy** | [**AssetSortBy**](.md) | The field to sort member assets by | [optional] [default to null]
+ **sortAscending** | **boolean** | Sort assets in ascending order | [optional] [default to true]
+ **searchBy** | [**AssetSearchBy**](.md) | The field to search member assets by | [optional] [default to null]
+ **searchValue** | **string** | The value to search for | [optional] [default to null]
+ **assetPermissionType** | [**AssetPermissionType**](.md) | The type of asset permission to filter by | [optional] [default to null]
+ **adAccountStatuses** | [**array[NonDraftEntityStatus]**](NonDraftEntityStatus.md) | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | [optional] [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BusinessMemberAssetsGet200Response**](BusinessMemberAssetsGet200Response.md)
+[**BusinessMemberAssetsGetResponse**](BusinessMemberAssetsGetResponse.md)
 
 ### Authorization
 
@@ -312,7 +322,7 @@ Terminate multiple members' access to an asset.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
- **businessMembersAssetAccessDeleteRequest** | [**BusinessMembersAssetAccessDeleteRequest**](BusinessMembersAssetAccessDeleteRequest.md) | List member assset permissions to delete. |
+ **businessMembersAssetAccessDeleteBody** | [**BusinessMembersAssetAccessDeleteBody**](BusinessMembersAssetAccessDeleteBody.md) |  |
 
 ### Return type
 
@@ -349,7 +359,7 @@ Note: Not all listed permissions are applicable to each asset type. For example,
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
- **updateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md) | List of member asset permissions to create or update. |
+ **updateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md) |  |
 
 ### Return type
 
@@ -379,7 +389,7 @@ granted your partner access to. If you specify:
 ### Example
 
 ```bash
- businessPartnerAssetAccessGet business_id=value partner_id=value  partner_type=value  asset_type=value  start_index=value  page_size=value  bookmark=value
+ businessPartnerAssetAccessGet business_id=value partner_id=value  partner_type=value  asset_type=value  start_index=value  sort_by=value  sort_ascending=value  search_by=value  search_value=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -389,13 +399,20 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
  **partnerId** | **string** | The partner id to be bound to the Business | [default to null]
- **partnerType** | [**PartnerType**](.md) | Specifies whether to fetch internal or external (shared) partners.
-If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br>
+ **partnerType** | **string** | Specifies whether to fetch internal or external (shared) partners.
+
+If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.
+
 If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. | [optional] [default to INTERNAL]
  **assetType** | **string** | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT]
  **startIndex** | **integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **sortBy** | [**AssetSortBy**](.md) | The field to sort member assets by | [optional] [default to null]
+ **sortAscending** | **boolean** | Sort assets in ascending order | [optional] [default to true]
+ **searchBy** | [**AssetSearchBy**](.md) | The field to search member assets by | [optional] [default to null]
+ **searchValue** | **string** | The value to search for | [optional] [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -437,7 +454,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeletePartnerAssetsResultsResponseArray**](DeletePartnerAssetsResultsResponseArray.md)
+[**DeletePartnerAssetAccessResultsResponseArray**](DeletePartnerAssetAccessResultsResponseArray.md)
 
 ### Authorization
 
@@ -475,7 +492,7 @@ the type PROFILE.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
- **updatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md) | A list of assets and permissions to assign to your partners. |
+ **updatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md) |  |
 
 ### Return type
 

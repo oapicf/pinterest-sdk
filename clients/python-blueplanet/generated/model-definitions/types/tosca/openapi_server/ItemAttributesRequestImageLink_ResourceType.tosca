@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ItemAttributesRequestImageLink"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ItemAttributesRequestImageLink"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ItemAttributesRequestImageLink {
+    title = ItemAttributesRequestImageLink
+    description = ItemAttributesRequestImageLink
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  ItemAttributesRequestImageLink {
+    title = ItemAttributesRequestImageLink
+    description = ItemAttributesRequestImageLink
+    implements = openapi_server.resourceTypes.ItemAttributesRequestImageLink
+
+  }
+}

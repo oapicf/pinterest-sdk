@@ -14,12 +14,11 @@ Method | HTTP request | Description
 
 
 # **integrations_commerce_del**
-> integrations_commerce_del(external_business_id)
+> IntegrationMetadata integrations_commerce_del(external_business_id)
 
 Delete commerce integration
 
-Delete commerce integration metadata for the given external business ID.
-Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 
 ### Example
 
@@ -27,6 +26,7 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
 
 ```python
 import pinterestsdk
+from pinterestsdk.models.integration_metadata import IntegrationMetadata
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -51,7 +51,9 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
     try:
         # Delete commerce integration
-        api_instance.integrations_commerce_del(external_business_id)
+        api_response = api_instance.integrations_commerce_del(external_business_id)
+        print("The response of IntegrationsApi->integrations_commerce_del:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling IntegrationsApi->integrations_commerce_del: %s\n" % e)
 ```
@@ -67,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**IntegrationMetadata**](IntegrationMetadata.md)
 
 ### Authorization
 
@@ -82,8 +84,14 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Commerce Integration deleted successfully |  -  |
-**0** | Unexpected error. |  -  |
+**200** | The request has succeeded. |  -  |
+**204** | Resource deleted successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -92,8 +100,7 @@ void (empty response body)
 
 Get commerce integration
 
-Get commerce integration metadata associated with the given external business ID.
-Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+Get commerce integration metadata associated with the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 
 ### Example
 
@@ -159,20 +166,22 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**404** | Integration not found. |  -  |
-**409** | Can&#39;t access this integration metadata. |  -  |
-**0** | Unexpected error. |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrations_commerce_patch**
-> IntegrationMetadata integrations_commerce_patch(external_business_id, integration_request_patch)
+> IntegrationMetadata integrations_commerce_patch(external_business_id, integration_metadata_update)
 
 Update commerce integration
 
-Update commerce integration metadata for the given external business ID.
-Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 
 ### Example
 
@@ -181,7 +190,7 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
 ```python
 import pinterestsdk
 from pinterestsdk.models.integration_metadata import IntegrationMetadata
-from pinterestsdk.models.integration_request_patch import IntegrationRequestPatch
+from pinterestsdk.models.integration_metadata_update import IntegrationMetadataUpdate
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -203,11 +212,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.IntegrationsApi(api_client)
     external_business_id = 'external_business_id_example' # str | External business ID for the integration.
-    integration_request_patch = pinterestsdk.IntegrationRequestPatch() # IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
+    integration_metadata_update = pinterestsdk.IntegrationMetadataUpdate() # IntegrationMetadataUpdate | 
 
     try:
         # Update commerce integration
-        api_response = api_instance.integrations_commerce_patch(external_business_id, integration_request_patch)
+        api_response = api_instance.integrations_commerce_patch(external_business_id, integration_metadata_update)
         print("The response of IntegrationsApi->integrations_commerce_patch:\n")
         pprint(api_response)
     except Exception as e:
@@ -222,7 +231,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **external_business_id** | **str**| External business ID for the integration. | 
- **integration_request_patch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | 
+ **integration_metadata_update** | [**IntegrationMetadataUpdate**](IntegrationMetadataUpdate.md)|  | 
 
 ### Return type
 
@@ -241,20 +250,22 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**404** | Integration not found. |  -  |
-**409** | Can&#39;t access this integration metadata. |  -  |
-**0** | Unexpected error. |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrations_commerce_post**
-> IntegrationMetadata integrations_commerce_post(integration_request)
+> IntegrationMetadata integrations_commerce_post(integration_metadata_create)
 
 Create commerce integration
 
-Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account.
-Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 
 ### Example
 
@@ -263,7 +274,7 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
 ```python
 import pinterestsdk
 from pinterestsdk.models.integration_metadata import IntegrationMetadata
-from pinterestsdk.models.integration_request import IntegrationRequest
+from pinterestsdk.models.integration_metadata_create import IntegrationMetadataCreate
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -284,11 +295,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.IntegrationsApi(api_client)
-    integration_request = pinterestsdk.IntegrationRequest() # IntegrationRequest | Parameters to get create/update the Integration Metadata
+    integration_metadata_create = pinterestsdk.IntegrationMetadataCreate() # IntegrationMetadataCreate | 
 
     try:
         # Create commerce integration
-        api_response = api_instance.integrations_commerce_post(integration_request)
+        api_response = api_instance.integrations_commerce_post(integration_metadata_create)
         print("The response of IntegrationsApi->integrations_commerce_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -302,7 +313,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_request** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | 
+ **integration_metadata_create** | [**IntegrationMetadataCreate**](IntegrationMetadataCreate.md)|  | 
 
 ### Return type
 
@@ -321,10 +332,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**404** | Integration not found. |  -  |
-**409** | Can&#39;t access this integration metadata. |  -  |
-**0** | Unexpected error. |  -  |
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -363,7 +378,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.IntegrationsApi(api_client)
-    id = 'id_example' # str | Integration ID.
+    id = 'id_example' # str | Integration record ID.
 
     try:
         # Get integration metadata
@@ -381,7 +396,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Integration ID. | 
+ **id** | **str**| Integration record ID. | 
 
 ### Return type
 
@@ -400,9 +415,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**404** | Integration not found. |  -  |
-**0** | Unexpected error. |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -442,7 +461,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.IntegrationsApi(api_client)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # Get integration metadata list
@@ -461,7 +480,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -480,13 +499,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error. |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrations_logs_post**
-> IntegrationLogsSuccessResponse integrations_logs_post(integration_logs_request)
+> IntegrationLogsSuccessResponse integrations_logs_post(integration_logs_request_create)
 
 Receives batched logs from integration applications.
 
@@ -499,7 +523,7 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.integration_logs_request import IntegrationLogsRequest
+from pinterestsdk.models.integration_logs_request_create import IntegrationLogsRequestCreate
 from pinterestsdk.models.integration_logs_success_response import IntegrationLogsSuccessResponse
 from pinterestsdk.rest import ApiException
 from pprint import pprint
@@ -521,11 +545,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.IntegrationsApi(api_client)
-    integration_logs_request = pinterestsdk.IntegrationLogsRequest() # IntegrationLogsRequest | Ingest log information from external integration application.
+    integration_logs_request_create = pinterestsdk.IntegrationLogsRequestCreate() # IntegrationLogsRequestCreate | 
 
     try:
         # Receives batched logs from integration applications.
-        api_response = api_instance.integrations_logs_post(integration_logs_request)
+        api_response = api_instance.integrations_logs_post(integration_logs_request_create)
         print("The response of IntegrationsApi->integrations_logs_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -539,7 +563,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_logs_request** | [**IntegrationLogsRequest**](IntegrationLogsRequest.md)| Ingest log information from external integration application. | 
+ **integration_logs_request_create** | [**IntegrationLogsRequestCreate**](IntegrationLogsRequestCreate.md)|  | 
 
 ### Return type
 
@@ -558,9 +582,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success. |  -  |
-**400** | Bad request. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The server could not understand the request due to invalid syntax. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

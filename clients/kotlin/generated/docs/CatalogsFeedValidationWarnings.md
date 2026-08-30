@@ -179,7 +179,7 @@
 | **DESCRIPTION_LENGTH_TOO_LONG** | **kotlin.Int** | The description for some items were truncated because they contain too many characters. |  [optional] |
 | **DUPLICATE_HEADERS** | **kotlin.Int** | Your feed contains duplicate headers. |  [optional] |
 | **EXPIRATION_DATE_INVALID** | **kotlin.Int** | Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date. |  [optional] |
-| **FETCH_SAME_SIGNATURE** | [**inline**](#FETCHSAMESIGNATURE) | Ingestion completed early because there are no changes to your feed since the last successful update. |  [optional] |
+| **FETCH_SAME_SIGNATURE** | **kotlin.Int** | Ingestion completed early because there are no changes to your feed since the last successful update. |  [optional] |
 | **GENDER_INVALID** | **kotlin.Int** | Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences. |  [optional] |
 | **GTIN_INVALID** | **kotlin.Int** | Some items include incorrectly formatted GTINs. |  [optional] |
 | **IMAGE_LINK_WARNING** | **kotlin.Int** | Some items have image_link URLs that are formatted incorrectly and will not be published with those items. |  [optional] |
@@ -215,13 +215,6 @@
 | **UTM_SOURCE_AUTO_CORRECTED** | **kotlin.Int** | Some items include utm_source values that are formatted incorrectly and have been automatically corrected. |  [optional] |
 | **VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED** | **kotlin.Int** | A video is required in the item when ad_video fields are provided. |  [optional] |
 | **WEIGHT_UNIT_INVALID** | **kotlin.Int** | Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit. |  [optional] |
-
-
-<a id="FETCHSAMESIGNATURE"></a>
-## Enum: FETCH_SAME_SIGNATURE
-| Name | Value |
-| ---- | ----- |
-| FETCH_SAME_SIGNATURE | 1 |
 
 
 

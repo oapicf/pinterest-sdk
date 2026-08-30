@@ -13,10 +13,10 @@ static business_asset_members_get_200_response_t *business_asset_members_get_200
     if (!business_asset_members_get_200_response_local_var) {
         return NULL;
     }
+    memset(business_asset_members_get_200_response_local_var, 0, sizeof(business_asset_members_get_200_response_t));
+    business_asset_members_get_200_response_local_var->_library_owned = 1;
     business_asset_members_get_200_response_local_var->bookmark = bookmark;
     business_asset_members_get_200_response_local_var->items = items;
-
-    business_asset_members_get_200_response_local_var->_library_owned = 1;
     return business_asset_members_get_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) business_asset_members_get_200_response_t *business_
     char *bookmark,
     list_t *items
     ) {
-    return business_asset_members_get_200_response_create_internal (
+    business_asset_members_get_200_response_t *result = business_asset_members_get_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void business_asset_members_get_200_response_free(business_asset_members_get_200_response_t *business_asset_members_get_200_response) {
@@ -96,6 +99,8 @@ business_asset_members_get_200_response_t *business_asset_members_get_200_respon
 
     business_asset_members_get_200_response_t *business_asset_members_get_200_response_local_var = NULL;
 
+    char *bookmark_local_str = NULL;
+
     // define the local list for business_asset_members_get_200_response->items
     list_t *itemsList = NULL;
 
@@ -139,13 +144,23 @@ business_asset_members_get_200_response_t *business_asset_members_get_200_respon
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     business_asset_members_get_200_response_local_var = business_asset_members_get_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!business_asset_members_get_200_response_local_var) {
+        goto end;
+    }
+
     return business_asset_members_get_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {

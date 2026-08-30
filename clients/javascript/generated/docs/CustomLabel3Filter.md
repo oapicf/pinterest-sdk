@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cUSTOMLABEL3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**cUSTOMLABEL3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
 
 

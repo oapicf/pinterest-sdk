@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 )
@@ -79,6 +80,11 @@ func (c *NotificationAPIController) NotificationPost(w http.ResponseWriter, r *h
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&notificationPostRequestParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -90,7 +96,7 @@ func (c *NotificationAPIController) NotificationPost(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.NotificationPost(r.Context(), notificationPostRequestParam)
+	result, err := c.service.NotificationPost(r.Context(), &notificationPostRequestParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

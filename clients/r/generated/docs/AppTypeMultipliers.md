@@ -5,6 +5,6 @@ This represents a mapping from app type targeting criteria to a bid price adjust
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**APP_TYPE** | **character** |  | [optional] [Enum: [android_mobile, android_tablet, ipad, iphone, web, web_mobile]] 
+**APP_TYPE** | [**TargetingSpecAppType**](TargetingSpecAppType.md) | App type identifier. | [optional] [Enum: ] 
 
 

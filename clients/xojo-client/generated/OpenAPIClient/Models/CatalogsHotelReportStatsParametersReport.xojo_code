@@ -2,11 +2,6 @@
 Protected Class CatalogsHotelReportStatsParametersReport
 
 	#tag Property, Flags = &h0
-		report_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			ID of the feed entity.
 		#tag EndNote
@@ -23,6 +18,11 @@ Protected Class CatalogsHotelReportStatsParametersReport
 
 
 	#tag Property, Flags = &h0
+		report_type As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
 			Unique identifier of a catalog. If not given, oldest catalog will be used
 		#tag EndNote
@@ -32,7 +32,6 @@ Protected Class CatalogsHotelReportStatsParametersReport
 
     #tag Enum, Name = Report_typeEnum, Type = Integer, Flags = &h0
         
-        FeedIngestionIssues
         DistributionIssues
         
     #tag EndEnum
@@ -42,8 +41,6 @@ Protected Class CatalogsHotelReportStatsParametersReport
 		Shared Function Report_typeEnumToString(value As Report_typeEnum) As String
 		  Select Case value
 		    
-		    Case Report_typeEnum.FeedIngestionIssues
-		      Return "FEED_INGESTION_ISSUES"
 		    Case Report_typeEnum.DistributionIssues
 		      Return "DISTRIBUTION_ISSUES"
 		    

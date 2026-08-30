@@ -79,6 +79,12 @@ public enum MediaTypeEnum {
   private String videoUrl;
 
  /**
+  * Video url (HLS).  **Note:** This field is limited and not available to all apps.
+  */
+  @ApiModelProperty(value = "Video url (HLS).  **Note:** This field is limited and not available to all apps.")
+  private String videoUrlHls;
+
+ /**
   * Width (in pixels). Field maybe null after creation due to video processing time.
   */
   @ApiModelProperty(value = "Width (in pixels). Field maybe null after creation due to video processing time.")
@@ -229,6 +235,30 @@ public enum MediaTypeEnum {
   }
 
  /**
+  * Video url (HLS).  **Note:** This field is limited and not available to all apps.
+  * @return videoUrlHls
+  */
+  @JsonProperty("video_url_hls")
+  public String getVideoUrlHls() {
+    return videoUrlHls;
+  }
+
+  /**
+   * Sets the <code>videoUrlHls</code> property.
+   */
+ public void setVideoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+  }
+
+  /**
+   * Sets the <code>videoUrlHls</code> property.
+   */
+  public PinMediaWithVideo videoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+    return this;
+  }
+
+ /**
   * Width (in pixels). Field maybe null after creation due to video processing time.
   * @return width
   */
@@ -268,12 +298,13 @@ public enum MediaTypeEnum {
         Objects.equals(this.images, pinMediaWithVideo.images) &&
         Objects.equals(this.mediaType, pinMediaWithVideo.mediaType) &&
         Objects.equals(this.videoUrl, pinMediaWithVideo.videoUrl) &&
+        Objects.equals(this.videoUrlHls, pinMediaWithVideo.videoUrlHls) &&
         Objects.equals(this.width, pinMediaWithVideo.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(coverImageUrl, duration, height, images, mediaType, videoUrl, width);
+    return Objects.hash(coverImageUrl, duration, height, images, mediaType, videoUrl, videoUrlHls, width);
   }
 
   @Override
@@ -287,6 +318,7 @@ public enum MediaTypeEnum {
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    videoUrlHls: ").append(toIndentedString(videoUrlHls)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -297,10 +329,7 @@ public enum MediaTypeEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

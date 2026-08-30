@@ -99,8 +99,8 @@ end:
 //
 // Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
 //
-brand_accounts_create_200_response_t*
-BusinessAccessRelationshipsAPI_brandAccountsCreate(apiClient_t *apiClient, char *business_hierarchy_id, brand_accounts_create_request_t *brand_accounts_create_request)
+brand_account_t*
+BusinessAccessRelationshipsAPI_brandAccountsCreate(apiClient_t *apiClient, char *business_hierarchy_id, brand_account_create_t *brand_account_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -133,12 +133,12 @@ BusinessAccessRelationshipsAPI_brandAccountsCreate(apiClient_t *apiClient, char 
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_brand_accounts_create_request = NULL;
-    if (brand_accounts_create_request != NULL)
+    cJSON *localVarSingleItemJSON_brand_account_create = NULL;
+    if (brand_account_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_brand_accounts_create_request = brand_accounts_create_request_convertToJSON(brand_accounts_create_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_brand_accounts_create_request);
+        localVarSingleItemJSON_brand_account_create = brand_account_create_convertToJSON(brand_account_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_brand_account_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -156,21 +156,41 @@ BusinessAccessRelationshipsAPI_brandAccountsCreate(apiClient_t *apiClient, char 
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    brand_accounts_create_200_response_t *elementToReturn = NULL;
+    brand_account_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = brand_accounts_create_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        elementToReturn = brand_account_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
         cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -190,9 +210,9 @@ BusinessAccessRelationshipsAPI_brandAccountsCreate(apiClient_t *apiClient, char 
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_business_hierarchy_id);
-    if (localVarSingleItemJSON_brand_accounts_create_request) {
-        cJSON_Delete(localVarSingleItemJSON_brand_accounts_create_request);
-        localVarSingleItemJSON_brand_accounts_create_request = NULL;
+    if (localVarSingleItemJSON_brand_account_create) {
+        cJSON_Delete(localVarSingleItemJSON_brand_account_create);
+        localVarSingleItemJSON_brand_account_create = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -206,8 +226,8 @@ end:
 //
 // Update an existing Brand Account
 //
-brand_accounts_create_200_response_t*
-BusinessAccessRelationshipsAPI_brandAccountsUpdate(apiClient_t *apiClient, char *business_hierarchy_id, char *brand_account_id, brand_accounts_update_request_t *brand_accounts_update_request)
+brand_account_t*
+BusinessAccessRelationshipsAPI_brandAccountsUpdate(apiClient_t *apiClient, char *brand_account_id, char *business_hierarchy_id, brand_account_update_t *brand_account_update)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -223,24 +243,14 @@ BusinessAccessRelationshipsAPI_brandAccountsUpdate(apiClient_t *apiClient, char 
     // create the path
     char *localVarPath = strdup("/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}");
 
-    if(!business_hierarchy_id)
-        goto end;
     if(!brand_account_id)
         goto end;
-
-
-    // Path Params
-    long sizeOfPathParams_business_hierarchy_id = strlen(business_hierarchy_id)+3 + strlen(brand_account_id)+3 + sizeof("{ business_hierarchy_id }") - 1;
-    if(business_hierarchy_id == NULL) {
+    if(!business_hierarchy_id)
         goto end;
-    }
-    char* localVarToReplace_business_hierarchy_id = malloc(sizeOfPathParams_business_hierarchy_id);
-    sprintf(localVarToReplace_business_hierarchy_id, "{%s}", "business_hierarchy_id");
 
-    localVarPath = strReplace(localVarPath, localVarToReplace_business_hierarchy_id, business_hierarchy_id);
 
     // Path Params
-    long sizeOfPathParams_brand_account_id = strlen(business_hierarchy_id)+3 + strlen(brand_account_id)+3 + sizeof("{ brand_account_id }") - 1;
+    long sizeOfPathParams_brand_account_id = strlen(brand_account_id)+3 + strlen(business_hierarchy_id)+3 + sizeof("{ brand_account_id }") - 1;
     if(brand_account_id == NULL) {
         goto end;
     }
@@ -249,15 +259,25 @@ BusinessAccessRelationshipsAPI_brandAccountsUpdate(apiClient_t *apiClient, char 
 
     localVarPath = strReplace(localVarPath, localVarToReplace_brand_account_id, brand_account_id);
 
+    // Path Params
+    long sizeOfPathParams_business_hierarchy_id = strlen(brand_account_id)+3 + strlen(business_hierarchy_id)+3 + sizeof("{ business_hierarchy_id }") - 1;
+    if(business_hierarchy_id == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_business_hierarchy_id = malloc(sizeOfPathParams_business_hierarchy_id);
+    sprintf(localVarToReplace_business_hierarchy_id, "{%s}", "business_hierarchy_id");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_business_hierarchy_id, business_hierarchy_id);
+
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_brand_accounts_update_request = NULL;
-    if (brand_accounts_update_request != NULL)
+    cJSON *localVarSingleItemJSON_brand_account_update = NULL;
+    if (brand_account_update != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_brand_accounts_update_request = brand_accounts_update_request_convertToJSON(brand_accounts_update_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_brand_accounts_update_request);
+        localVarSingleItemJSON_brand_account_update = brand_account_update_convertToJSON(brand_account_update);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_brand_account_update);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -275,41 +295,41 @@ BusinessAccessRelationshipsAPI_brandAccountsUpdate(apiClient_t *apiClient, char 
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Not authenticated to update Brand Account");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Not authorized to update Brand Account");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Brand account not found");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 409) {
-    //    printf("%s\n","This account is not a brand account.");
+    //    printf("%s\n","The request could not be processed because of a conflict in the current state of the resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 429) {
-    //    printf("%s\n","This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.");
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    brand_accounts_create_200_response_t *elementToReturn = NULL;
+    brand_account_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = brand_accounts_create_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        elementToReturn = brand_account_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
         cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -328,11 +348,11 @@ BusinessAccessRelationshipsAPI_brandAccountsUpdate(apiClient_t *apiClient, char 
     list_freeList(localVarHeaderType);
     list_freeList(localVarContentType);
     free(localVarPath);
-    free(localVarToReplace_business_hierarchy_id);
     free(localVarToReplace_brand_account_id);
-    if (localVarSingleItemJSON_brand_accounts_update_request) {
-        cJSON_Delete(localVarSingleItemJSON_brand_accounts_update_request);
-        localVarSingleItemJSON_brand_accounts_update_request = NULL;
+    free(localVarToReplace_business_hierarchy_id);
+    if (localVarSingleItemJSON_brand_account_update) {
+        cJSON_Delete(localVarSingleItemJSON_brand_account_update);
+        localVarSingleItemJSON_brand_account_update = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -346,8 +366,8 @@ end:
 //
 // Terminate memberships between the specified members and your business.
 //
-deleted_members_response_t*
-BusinessAccessRelationshipsAPI_deleteBusinessMembership(apiClient_t *apiClient, char *business_id, members_to_delete_body_t *members_to_delete_body)
+delete_business_membership_200_response_t*
+BusinessAccessRelationshipsAPI_deleteBusinessMembership(apiClient_t *apiClient, char *business_id, delete_business_membership_body_t *delete_business_membership_body)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -380,12 +400,12 @@ BusinessAccessRelationshipsAPI_deleteBusinessMembership(apiClient_t *apiClient, 
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_members_to_delete_body = NULL;
-    if (members_to_delete_body != NULL)
+    cJSON *localVarSingleItemJSON_delete_business_membership_body = NULL;
+    if (delete_business_membership_body != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_members_to_delete_body = members_to_delete_body_convertToJSON(members_to_delete_body);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_members_to_delete_body);
+        localVarSingleItemJSON_delete_business_membership_body = delete_business_membership_body_convertToJSON(delete_business_membership_body);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_delete_business_membership_body);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -403,17 +423,17 @@ BusinessAccessRelationshipsAPI_deleteBusinessMembership(apiClient_t *apiClient, 
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    deleted_members_response_t *elementToReturn = NULL;
+    delete_business_membership_200_response_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = deleted_members_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        elementToReturn = delete_business_membership_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
         cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -433,9 +453,9 @@ BusinessAccessRelationshipsAPI_deleteBusinessMembership(apiClient_t *apiClient, 
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_business_id);
-    if (localVarSingleItemJSON_members_to_delete_body) {
-        cJSON_Delete(localVarSingleItemJSON_members_to_delete_body);
-        localVarSingleItemJSON_members_to_delete_body = NULL;
+    if (localVarSingleItemJSON_delete_business_membership_body) {
+        cJSON_Delete(localVarSingleItemJSON_delete_business_membership_body);
+        localVarSingleItemJSON_delete_business_membership_body = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -449,8 +469,8 @@ end:
 //
 // Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
 //
-delete_partners_response_t*
-BusinessAccessRelationshipsAPI_deleteBusinessPartners(apiClient_t *apiClient, char *business_id, delete_partners_request_t *delete_partners_request)
+delete_business_partners_t*
+BusinessAccessRelationshipsAPI_deleteBusinessPartners(apiClient_t *apiClient, char *business_id, delete_business_partners_delete_t *delete_business_partners_delete)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -483,12 +503,12 @@ BusinessAccessRelationshipsAPI_deleteBusinessPartners(apiClient_t *apiClient, ch
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_delete_partners_request = NULL;
-    if (delete_partners_request != NULL)
+    cJSON *localVarSingleItemJSON_delete_business_partners_delete = NULL;
+    if (delete_business_partners_delete != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_delete_partners_request = delete_partners_request_convertToJSON(delete_partners_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_delete_partners_request);
+        localVarSingleItemJSON_delete_business_partners_delete = delete_business_partners_delete_convertToJSON(delete_business_partners_delete);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_delete_business_partners_delete);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -506,21 +526,21 @@ BusinessAccessRelationshipsAPI_deleteBusinessPartners(apiClient_t *apiClient, ch
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","A supplied partner id doesn&#39;t exist");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    delete_partners_response_t *elementToReturn = NULL;
+    delete_business_partners_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = delete_partners_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        elementToReturn = delete_business_partners_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
         cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -540,9 +560,9 @@ BusinessAccessRelationshipsAPI_deleteBusinessPartners(apiClient_t *apiClient, ch
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_business_id);
-    if (localVarSingleItemJSON_delete_partners_request) {
-        cJSON_Delete(localVarSingleItemJSON_delete_partners_request);
-        localVarSingleItemJSON_delete_partners_request = NULL;
+    if (localVarSingleItemJSON_delete_business_partners_delete) {
+        cJSON_Delete(localVarSingleItemJSON_delete_business_partners_delete);
+        localVarSingleItemJSON_delete_business_partners_delete = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -557,7 +577,7 @@ end:
 // Get all of the viewing user's business employers.
 //
 get_business_employers_200_response_t*
-BusinessAccessRelationshipsAPI_getBusinessEmployers(apiClient_t *apiClient, int *page_size, char *bookmark)
+BusinessAccessRelationshipsAPI_getBusinessEmployers(apiClient_t *apiClient, int *assets_summary, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -578,16 +598,16 @@ BusinessAccessRelationshipsAPI_getBusinessEmployers(apiClient_t *apiClient, int 
 
 
     // query parameters
-    char *keyQuery_page_size = NULL;
-    char * valueQuery_page_size = NULL;
-    keyValuePair_t *keyPairQuery_page_size = 0;
-    if (page_size)
+    char *keyQuery_assets_summary = NULL;
+    char * valueQuery_assets_summary = NULL;
+    keyValuePair_t *keyPairQuery_assets_summary = 0;
+    if (assets_summary)
     {
-        keyQuery_page_size = strdup("page_size");
-        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
-        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
-        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
+        keyQuery_assets_summary = strdup("assets_summary");
+        valueQuery_assets_summary = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_assets_summary, MAX_NUMBER_LENGTH, "%d", *assets_summary);
+        keyPairQuery_assets_summary = keyValuePair_create(keyQuery_assets_summary, valueQuery_assets_summary);
+        list_addElement(localVarQueryParameters,keyPairQuery_assets_summary);
     }
 
     // query parameters
@@ -600,6 +620,19 @@ BusinessAccessRelationshipsAPI_getBusinessEmployers(apiClient_t *apiClient, int 
         valueQuery_bookmark = strdup((bookmark));
         keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
         list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
+    }
+
+    // query parameters
+    char *keyQuery_page_size = NULL;
+    char * valueQuery_page_size = NULL;
+    keyValuePair_t *keyPairQuery_page_size = 0;
+    if (page_size)
+    {
+        keyQuery_page_size = strdup("page_size");
+        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
+        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
+        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
@@ -615,11 +648,31 @@ BusinessAccessRelationshipsAPI_getBusinessEmployers(apiClient_t *apiClient, int 
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     get_business_employers_200_response_t *elementToReturn = NULL;
@@ -644,17 +697,17 @@ BusinessAccessRelationshipsAPI_getBusinessEmployers(apiClient_t *apiClient, int 
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
-    if(keyQuery_page_size){
-        free(keyQuery_page_size);
-        keyQuery_page_size = NULL;
+    if(keyQuery_assets_summary){
+        free(keyQuery_assets_summary);
+        keyQuery_assets_summary = NULL;
     }
-    if(valueQuery_page_size){
-        free(valueQuery_page_size);
-        valueQuery_page_size = NULL;
+    if(valueQuery_assets_summary){
+        free(valueQuery_assets_summary);
+        valueQuery_assets_summary = NULL;
     }
-    if(keyPairQuery_page_size){
-        keyValuePair_free(keyPairQuery_page_size);
-        keyPairQuery_page_size = NULL;
+    if(keyPairQuery_assets_summary){
+        keyValuePair_free(keyPairQuery_assets_summary);
+        keyPairQuery_assets_summary = NULL;
     }
     if(keyQuery_bookmark){
         free(keyQuery_bookmark);
@@ -668,6 +721,18 @@ BusinessAccessRelationshipsAPI_getBusinessEmployers(apiClient_t *apiClient, int 
         keyValuePair_free(keyPairQuery_bookmark);
         keyPairQuery_bookmark = NULL;
     }
+    if(keyQuery_page_size){
+        free(keyQuery_page_size);
+        keyQuery_page_size = NULL;
+    }
+    if(valueQuery_page_size){
+        free(valueQuery_page_size);
+        valueQuery_page_size = NULL;
+    }
+    if(keyPairQuery_page_size){
+        keyValuePair_free(keyPairQuery_page_size);
+        keyPairQuery_page_size = NULL;
+    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -679,7 +744,7 @@ end:
 //
 // Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
 //
-get_business_members_200_response_t*
+get_business_employers_200_response_t*
 BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *business_id, int *fetch_system_users, int *assets_summary, list_t *business_roles, char *member_ids, int *start_index, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -807,17 +872,37 @@ BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    get_business_members_200_response_t *elementToReturn = NULL;
+    get_business_employers_200_response_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = get_business_members_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        elementToReturn = get_business_employers_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
         cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -920,8 +1005,8 @@ end:
 //
 // Get all partners of the specified business.  If the assets_summary=TRUE and: - partner_type=INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type=EXTERNAL, the business assets returned are your partner's business assets the partner has granted you   access to.
 //
-get_business_partners_200_response_t*
-BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char *business_id, int *assets_summary, partner_type_e partner_type, char *partner_ids, int *start_index, int *page_size, char *bookmark)
+get_business_employers_200_response_t*
+BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char *business_id, int *assets_summary, partner_type_e partner_type, char *partner_ids, int *start_index, int *sort_ascending, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1005,16 +1090,16 @@ BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char 
     }
 
     // query parameters
-    char *keyQuery_page_size = NULL;
-    char * valueQuery_page_size = NULL;
-    keyValuePair_t *keyPairQuery_page_size = 0;
-    if (page_size)
+    char *keyQuery_sort_ascending = NULL;
+    char * valueQuery_sort_ascending = NULL;
+    keyValuePair_t *keyPairQuery_sort_ascending = 0;
+    if (sort_ascending)
     {
-        keyQuery_page_size = strdup("page_size");
-        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
-        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
-        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
+        keyQuery_sort_ascending = strdup("sort_ascending");
+        valueQuery_sort_ascending = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_sort_ascending, MAX_NUMBER_LENGTH, "%d", *sort_ascending);
+        keyPairQuery_sort_ascending = keyValuePair_create(keyQuery_sort_ascending, valueQuery_sort_ascending);
+        list_addElement(localVarQueryParameters,keyPairQuery_sort_ascending);
     }
 
     // query parameters
@@ -1027,6 +1112,19 @@ BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char 
         valueQuery_bookmark = strdup((bookmark));
         keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
         list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
+    }
+
+    // query parameters
+    char *keyQuery_page_size = NULL;
+    char * valueQuery_page_size = NULL;
+    keyValuePair_t *keyPairQuery_page_size = 0;
+    if (page_size)
+    {
+        keyQuery_page_size = strdup("page_size");
+        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
+        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
+        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
@@ -1042,17 +1140,37 @@ BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char 
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    get_business_partners_200_response_t *elementToReturn = NULL;
+    get_business_employers_200_response_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = get_business_partners_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        elementToReturn = get_business_employers_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
         cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -1116,17 +1234,17 @@ BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char 
         keyValuePair_free(keyPairQuery_start_index);
         keyPairQuery_start_index = NULL;
     }
-    if(keyQuery_page_size){
-        free(keyQuery_page_size);
-        keyQuery_page_size = NULL;
+    if(keyQuery_sort_ascending){
+        free(keyQuery_sort_ascending);
+        keyQuery_sort_ascending = NULL;
     }
-    if(valueQuery_page_size){
-        free(valueQuery_page_size);
-        valueQuery_page_size = NULL;
+    if(valueQuery_sort_ascending){
+        free(valueQuery_sort_ascending);
+        valueQuery_sort_ascending = NULL;
     }
-    if(keyPairQuery_page_size){
-        keyValuePair_free(keyPairQuery_page_size);
-        keyPairQuery_page_size = NULL;
+    if(keyPairQuery_sort_ascending){
+        keyValuePair_free(keyPairQuery_sort_ascending);
+        keyPairQuery_sort_ascending = NULL;
     }
     if(keyQuery_bookmark){
         free(keyQuery_bookmark);
@@ -1140,6 +1258,18 @@ BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char 
         keyValuePair_free(keyPairQuery_bookmark);
         keyPairQuery_bookmark = NULL;
     }
+    if(keyQuery_page_size){
+        free(keyQuery_page_size);
+        keyQuery_page_size = NULL;
+    }
+    if(valueQuery_page_size){
+        free(valueQuery_page_size);
+        valueQuery_page_size = NULL;
+    }
+    if(keyPairQuery_page_size){
+        keyValuePair_free(keyPairQuery_page_size);
+        keyPairQuery_page_size = NULL;
+    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -1152,7 +1282,7 @@ end:
 // Update a system user information such as name.
 //
 void
-BusinessAccessRelationshipsAPI_systemUserUpdate(apiClient_t *apiClient, char *business_id, char *system_user_id, system_user_update_request_t *system_user_update_request)
+BusinessAccessRelationshipsAPI_systemUserUpdate(apiClient_t *apiClient, char *business_id, char *system_user_id, system_user_update_with_required_body_t *system_user_update_with_required_body)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -1197,12 +1327,12 @@ BusinessAccessRelationshipsAPI_systemUserUpdate(apiClient_t *apiClient, char *bu
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_system_user_update_request = NULL;
-    if (system_user_update_request != NULL)
+    cJSON *localVarSingleItemJSON_system_user_update_with_required_body = NULL;
+    if (system_user_update_with_required_body != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_system_user_update_request = system_user_update_request_convertToJSON(system_user_update_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_system_user_update_request);
+        localVarSingleItemJSON_system_user_update_with_required_body = system_user_update_with_required_body_convertToJSON(system_user_update_with_required_body);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_system_user_update_with_required_body);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -1220,15 +1350,31 @@ BusinessAccessRelationshipsAPI_systemUserUpdate(apiClient_t *apiClient, char *bu
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","System user updated successfully.");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //No return type
 end:
@@ -1245,9 +1391,9 @@ end:
     free(localVarPath);
     free(localVarToReplace_business_id);
     free(localVarToReplace_system_user_id);
-    if (localVarSingleItemJSON_system_user_update_request) {
-        cJSON_Delete(localVarSingleItemJSON_system_user_update_request);
-        localVarSingleItemJSON_system_user_update_request = NULL;
+    if (localVarSingleItemJSON_system_user_update_with_required_body) {
+        cJSON_Delete(localVarSingleItemJSON_system_user_update_with_required_body);
+        localVarSingleItemJSON_system_user_update_with_required_body = NULL;
     }
     free(localVarBodyParameters);
 
@@ -1257,8 +1403,8 @@ end:
 //
 // Update a member's business role within the business.
 //
-update_member_results_response_array_t*
-BusinessAccessRelationshipsAPI_updateBusinessMemberships(apiClient_t *apiClient, char *business_id, list_t *update_member_business_role_body)
+update_business_memberships_response_t*
+BusinessAccessRelationshipsAPI_updateBusinessMemberships(apiClient_t *apiClient, char *business_id, list_t *business_membership_member)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -1292,14 +1438,14 @@ BusinessAccessRelationshipsAPI_updateBusinessMemberships(apiClient_t *apiClient,
 
     // Body Param
     //notstring
-    cJSON *localVar_update_member_business_role_body = NULL;
-    cJSON *localVarItemJSON_update_member_business_role_body = NULL;
-    cJSON *localVarSingleItemJSON_update_member_business_role_body = NULL;
-    if (update_member_business_role_body != NULL)
+    cJSON *localVar_business_membership_member = NULL;
+    cJSON *localVarItemJSON_business_membership_member = NULL;
+    cJSON *localVarSingleItemJSON_business_membership_member = NULL;
+    if (business_membership_member != NULL)
     {
-        localVarItemJSON_update_member_business_role_body = cJSON_CreateObject();
-        localVarSingleItemJSON_update_member_business_role_body = cJSON_AddArrayToObject(localVarItemJSON_update_member_business_role_body, "update_member_business_role_body");
-        if (localVarSingleItemJSON_update_member_business_role_body == NULL)
+        localVarItemJSON_business_membership_member = cJSON_CreateObject();
+        localVarSingleItemJSON_business_membership_member = cJSON_AddArrayToObject(localVarItemJSON_business_membership_member, "business_membership_member");
+        if (localVarSingleItemJSON_business_membership_member == NULL)
         {
             // nonprimitive container
 
@@ -1307,16 +1453,16 @@ BusinessAccessRelationshipsAPI_updateBusinessMemberships(apiClient_t *apiClient,
         }
     }
 
-    listEntry_t *update_member_business_role_bodyBodyListEntry;
-    list_ForEach(update_member_business_role_bodyBodyListEntry, update_member_business_role_body)
+    listEntry_t *business_membership_memberBodyListEntry;
+    list_ForEach(business_membership_memberBodyListEntry, business_membership_member)
     {
-        localVar_update_member_business_role_body = update_member_business_role_body_convertToJSON(update_member_business_role_bodyBodyListEntry->data);
-        if(localVar_update_member_business_role_body == NULL)
+        localVar_business_membership_member = business_membership_member_convertToJSON(business_membership_memberBodyListEntry->data);
+        if(localVar_business_membership_member == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_update_member_business_role_body, localVar_update_member_business_role_body);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_update_member_business_role_body);
+        cJSON_AddItemToArray(localVarSingleItemJSON_business_membership_member, localVar_business_membership_member);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_business_membership_member);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -1334,17 +1480,37 @@ BusinessAccessRelationshipsAPI_updateBusinessMemberships(apiClient_t *apiClient,
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","response");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    update_member_results_response_array_t *elementToReturn = NULL;
+    update_business_memberships_response_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = update_member_results_response_array_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        elementToReturn = update_business_memberships_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
         cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -1364,17 +1530,17 @@ BusinessAccessRelationshipsAPI_updateBusinessMemberships(apiClient_t *apiClient,
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_business_id);
-    if (localVarItemJSON_update_member_business_role_body) {
-        cJSON_Delete(localVarItemJSON_update_member_business_role_body);
-        localVarItemJSON_update_member_business_role_body = NULL;
+    if (localVarItemJSON_business_membership_member) {
+        cJSON_Delete(localVarItemJSON_business_membership_member);
+        localVarItemJSON_business_membership_member = NULL;
     }
-    if (localVarSingleItemJSON_update_member_business_role_body) {
-        cJSON_Delete(localVarSingleItemJSON_update_member_business_role_body);
-        localVarSingleItemJSON_update_member_business_role_body = NULL;
+    if (localVarSingleItemJSON_business_membership_member) {
+        cJSON_Delete(localVarSingleItemJSON_business_membership_member);
+        localVarSingleItemJSON_business_membership_member = NULL;
     }
-    if (localVar_update_member_business_role_body) {
-        cJSON_Delete(localVar_update_member_business_role_body);
-        localVar_update_member_business_role_body = NULL;
+    if (localVar_business_membership_member) {
+        cJSON_Delete(localVar_business_membership_member);
+        localVar_business_membership_member = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;

@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CustomerSegmentCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CustomerSegmentCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CustomerSegmentCreate {
+    title = CustomerSegmentCreate
+    description = CustomerSegmentCreate
+    derivedFrom = Root
+    properties {
+        audience_ids {
+          type = array
+          items.type =  string
+          description = "Audience IDs included in the customer segment."
+          optional = true
+        }
+        name {
+          type =  string
+          description = "Customer segment name."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CustomerSegmentCreate {
+    title = CustomerSegmentCreate
+    description = CustomerSegmentCreate
+    implements = openapi_server.resourceTypes.CustomerSegmentCreate
+
+  }
+}

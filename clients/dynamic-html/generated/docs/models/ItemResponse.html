@@ -1,18 +1,33 @@
 
 <h2>ItemResponse</h2>
 <ul class="parameter">
-  <li class="param-required-true">catalogUnderscoretype : CatalogsType
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
   <li class="param-required-false">attributes : CatalogsCreativeAssetsAttributes
     <br/>
   </li>
 </ul>
 <ul class="parameter">
+  <li class="param-required-true">catalogUnderscoretype : String
+    <br/>
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>CREATIVE_ASSETS</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-false">itemUnderscoreid : String
     <br/>The catalog item id in the merchant namespace
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">itemUnderscoreresponseUnderscorekind : String
+    <br/>Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>creative_assets_item_error</dd>
+        </dt>
+      </dl>
   </li>
 </ul>
 <ul class="parameter">

@@ -1,0 +1,20 @@
+
+
+/**
+ * A hotel item to be deleted
+ */
+export interface CatalogsDeleteHotelItem { 
+  /**
+   * The catalog hotel id in the merchant namespace
+   */
+  hotel_id: string;
+  operation: CatalogsDeleteHotelItem.OperationEnum;
+}
+export namespace CatalogsDeleteHotelItem {
+  export const OperationEnum = {
+    Delete: 'DELETE'
+  } as const;
+  export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
+}
+
+

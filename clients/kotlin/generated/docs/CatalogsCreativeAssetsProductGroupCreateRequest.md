@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **catalogId** | **kotlin.String** | Catalog id pertaining to the creative assets product group. |  |
+| **catalogId** | **kotlin.String** | Catalog ID pertaining to the product group. |  |
 | **catalogType** | [**inline**](#CatalogType) |  |  |
 | **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  |  |
 | **name** | **kotlin.String** |  |  |

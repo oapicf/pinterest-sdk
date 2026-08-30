@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `negated` | boolean
-`operator` | string
+`operator` | [NumericFilterOperatorType](NumericFilterOperatorType.md)
 `value` | number
 
 ## Example

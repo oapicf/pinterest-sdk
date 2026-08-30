@@ -10,12 +10,12 @@ Feature | HTTP request | Description
 
 
 # **bulk_download_create**
-> bulk_download_create (ad_account_id: STRING_32 ; bulk_download_request: BULK_DOWNLOAD_REQUEST ): detachable BULK_DOWNLOAD_RESPONSE
+> bulk_download_create (ad_account_id: STRING_32 ; bulk_download_create: BULK_DOWNLOAD_CREATE ): detachable BULK_DOWNLOAD
 
 
 Get advertiser entities in bulk
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 
 ### Parameters
@@ -23,11 +23,11 @@ Create an asynchronous report that may include information on campaigns, ad grou
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **bulk_download_request** | [**BULK_DOWNLOAD_REQUEST**](BULK_DOWNLOAD_REQUEST.md)| Parameters to get ad entities in bulk | 
+ **bulk_download_create** | [**BULK_DOWNLOAD_CREATE**](BULK_DOWNLOAD_CREATE.md)|  | 
 
 ### Return type
 
-[**BULK_DOWNLOAD_RESPONSE**](BulkDownloadResponse.md)
+[**BULK_DOWNLOAD**](BulkDownload.md)
 
 ### Authorization
 
@@ -41,12 +41,12 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **bulk_request_get**
-> bulk_request_get (ad_account_id: STRING_32 ; bulk_request_id: STRING_32 ; include_details:  detachable BOOLEAN ): detachable BULK_UPSERT_STATUS_RESPONSE
+> bulk_request_get (ad_account_id: STRING_32 ; bulk_request_id: STRING_32 ; include_details:  detachable BOOLEAN ): detachable BULK_JOB_DATA
 
 
 Download advertiser entities in bulk
 
-Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 
 ### Parameters
@@ -54,12 +54,12 @@ Get the status of a bulk request by <code>request_id</code>, along with a downlo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **bulk_request_id** | **STRING_32**| Unique identifier of a bulk upsert request. | [default to null]
- **include_details** | **BOOLEAN**| if set to True then attach the errors/details to all the requests | [optional] [default to false]
+ **bulk_request_id** | **STRING_32**| Bulk request ID that is from one of the entities bulk endpoints | [default to null]
+ **include_details** | **BOOLEAN**| If set to True then attach the errors/details to all the requests | [optional] [default to false]
 
 ### Return type
 
-[**BULK_UPSERT_STATUS_RESPONSE**](BulkUpsertStatusResponse.md)
+[**BULK_JOB_DATA**](BulkJobData.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 
 
 ### Parameters

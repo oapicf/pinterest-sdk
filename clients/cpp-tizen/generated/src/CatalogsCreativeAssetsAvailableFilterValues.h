@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "Catalogs_creative_assets_filter_values_map.h"
+#include "CatalogsCreativeAssetsFilterValuesMap.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -55,15 +55,15 @@ public:
 	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
-	Catalogs_creative_assets_filter_values_map getFilterValues();
+	CatalogsCreativeAssetsFilterValuesMap getFilterValues();
 
 	/*! \brief Set 
 	 */
-	void setFilterValues(Catalogs_creative_assets_filter_values_map  filter_values);
+	void setFilterValues(CatalogsCreativeAssetsFilterValuesMap  filter_values);
 
 private:
 	std::string catalog_type;
-	Catalogs_creative_assets_filter_values_map filter_values;
+	CatalogsCreativeAssetsFilterValuesMap filter_values;
 	void __init();
 	void __cleanup();
 

@@ -15,7 +15,7 @@
 
 typedef struct boards_list_pins_200_response_t boards_list_pins_200_response_t;
 
-#include "pin.h"
+#include "pin_read.h"
 
 
 

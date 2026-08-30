@@ -13,10 +13,10 @@ static catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_
     if (!catalogs_list_products_by_feed_based_filter_local_var) {
         return NULL;
     }
+    memset(catalogs_list_products_by_feed_based_filter_local_var, 0, sizeof(catalogs_list_products_by_feed_based_filter_t));
+    catalogs_list_products_by_feed_based_filter_local_var->_library_owned = 1;
     catalogs_list_products_by_feed_based_filter_local_var->feed_id = feed_id;
     catalogs_list_products_by_feed_based_filter_local_var->filters = filters;
-
-    catalogs_list_products_by_feed_based_filter_local_var->_library_owned = 1;
     return catalogs_list_products_by_feed_based_filter_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) catalogs_list_products_by_feed_based_filter_t *catal
     char *feed_id,
     catalogs_product_group_filters_t *filters
     ) {
-    return catalogs_list_products_by_feed_based_filter_create_internal (
+    catalogs_list_products_by_feed_based_filter_t *result = catalogs_list_products_by_feed_based_filter_create_internal (
         feed_id,
         filters
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_list_products_by_feed_based_filter_free(catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_feed_based_filter) {
@@ -87,6 +90,8 @@ catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_feed_ba
 
     catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_feed_based_filter_local_var = NULL;
 
+    char *feed_id_local_str = NULL;
+
     // define the local variable for catalogs_list_products_by_feed_based_filter->filters
     catalogs_product_group_filters_t *filters_local_nonprim = NULL;
 
@@ -118,13 +123,23 @@ catalogs_list_products_by_feed_based_filter_t *catalogs_list_products_by_feed_ba
     filters_local_nonprim = catalogs_product_group_filters_parseFromJSON(filters); //nonprimitive
 
 
+    if (feed_id && !cJSON_IsNull(feed_id)) feed_id_local_str = strdup(feed_id->valuestring);
+
     catalogs_list_products_by_feed_based_filter_local_var = catalogs_list_products_by_feed_based_filter_create_internal (
-        strdup(feed_id->valuestring),
+        feed_id_local_str,
         filters_local_nonprim
         );
 
+    if (!catalogs_list_products_by_feed_based_filter_local_var) {
+        goto end;
+    }
+
     return catalogs_list_products_by_feed_based_filter_local_var;
 end:
+    if (feed_id_local_str) {
+        free(feed_id_local_str);
+        feed_id_local_str = NULL;
+    }
     if (filters_local_nonprim) {
         catalogs_product_group_filters_free(filters_local_nonprim);
         filters_local_nonprim = NULL;

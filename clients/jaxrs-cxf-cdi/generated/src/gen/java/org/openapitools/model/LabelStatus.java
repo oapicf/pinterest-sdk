@@ -5,7 +5,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- * The new status you want to give the label, either &#x60;ACTIVE&#x60; (in use) or no longer in use (&#x60;ARCHIVED&#x60;).
+ * Label status values.
  **/
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -37,7 +37,7 @@ public enum LabelStatus {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 }
 

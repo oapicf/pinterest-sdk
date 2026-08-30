@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **ad_accounts_audiences_shared_accounts_list**
-> AdAccountsAudiencesSharedAccountsList200Response ad_accounts_audiences_shared_accounts_list(ad_account_id, audience_id, account_type, page_size=page_size, bookmark=bookmark)
+> AdAccountsAudiencesSharedAccountsList200Response ad_accounts_audiences_shared_accounts_list(audience_id, account_type, ad_account_id, bookmark=bookmark, page_size=page_size)
 
 List accounts with access to an audience owned by an ad account
 
@@ -51,15 +51,15 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AudienceSharingApi(api_client)
-    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
     audience_id = 'audience_id_example' # str | Unique identifier of the audience to use to filter the results.
-    account_type = AD_ACCOUNT # AudienceAccountType | Filter accounts by account type. (default to AD_ACCOUNT)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+    account_type = pinterestsdk.AudienceAccountType() # AudienceAccountType | Filter accounts by account type.
+    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # List accounts with access to an audience owned by an ad account
-        api_response = api_instance.ad_accounts_audiences_shared_accounts_list(ad_account_id, audience_id, account_type, page_size=page_size, bookmark=bookmark)
+        api_response = api_instance.ad_accounts_audiences_shared_accounts_list(audience_id, account_type, ad_account_id, bookmark=bookmark, page_size=page_size)
         print("The response of AudienceSharingApi->ad_accounts_audiences_shared_accounts_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -73,11 +73,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **str**| Unique identifier of an ad account. | 
  **audience_id** | **str**| Unique identifier of the audience to use to filter the results. | 
- **account_type** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [default to AD_ACCOUNT]
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **account_type** | [**AudienceAccountType**](.md)| Filter accounts by account type. | 
+ **ad_account_id** | **str**| Unique identifier of an ad account. | 
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -96,21 +96,22 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid ad account audiences shared accounts parameters. |  -  |
-**404** | Shared accounts not found. |  -  |
-**0** | Unexpected error. |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **business_account_audiences_shared_accounts_list**
-> AdAccountsAudiencesSharedAccountsList200Response business_account_audiences_shared_accounts_list(business_id, audience_id, account_type, page_size=page_size, bookmark=bookmark)
+> AdAccountsAudiencesSharedAccountsList200Response business_account_audiences_shared_accounts_list(business_id, audience_id, account_type, bookmark=bookmark, page_size=page_size)
 
 List accounts with access to an audience owned by a business
 
-List all ad accounts and/or businesses that have access to a specific audience.
-The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business.
-If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
+List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
 
 ### Example
 
@@ -140,15 +141,15 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AudienceSharingApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
     audience_id = 'audience_id_example' # str | Unique identifier of the audience to use to filter the results.
-    account_type = AD_ACCOUNT # AudienceAccountType | Filter accounts by account type. (default to AD_ACCOUNT)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+    account_type = pinterestsdk.AudienceAccountType() # AudienceAccountType | Filter accounts by account type.
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # List accounts with access to an audience owned by a business
-        api_response = api_instance.business_account_audiences_shared_accounts_list(business_id, audience_id, account_type, page_size=page_size, bookmark=bookmark)
+        api_response = api_instance.business_account_audiences_shared_accounts_list(business_id, audience_id, account_type, bookmark=bookmark, page_size=page_size)
         print("The response of AudienceSharingApi->business_account_audiences_shared_accounts_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -164,9 +165,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
  **audience_id** | **str**| Unique identifier of the audience to use to filter the results. | 
- **account_type** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [default to AD_ACCOUNT]
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **account_type** | [**AudienceAccountType**](.md)| Filter accounts by account type. | 
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -185,15 +186,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid business audiences shared accounts parameters. |  -  |
-**404** | Shared accounts not found. |  -  |
-**0** | Unexpected error. |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **shared_audiences_for_business_list**
-> AudiencesList200Response shared_audiences_for_business_list(business_id, bookmark=bookmark, order=order, page_size=page_size)
+> SharedAudiencesForBusinessList200Response shared_audiences_for_business_list(business_id, order=order, bookmark=bookmark, page_size=page_size)
 
 List received audiences for a business
 
@@ -205,7 +209,8 @@ Get a list of received audiences for the given business.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.audiences_list200_response import AudiencesList200Response
+from pinterestsdk.models.order import Order
+from pinterestsdk.models.shared_audiences_for_business_list200_response import SharedAudiencesForBusinessList200Response
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -226,14 +231,14 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AudienceSharingApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    order = pinterestsdk.Order() # Order | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
-    order = 'ASCENDING' # str | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # List received audiences for a business
-        api_response = api_instance.shared_audiences_for_business_list(business_id, bookmark=bookmark, order=order, page_size=page_size)
+        api_response = api_instance.shared_audiences_for_business_list(business_id, order=order, bookmark=bookmark, page_size=page_size)
         print("The response of AudienceSharingApi->shared_audiences_for_business_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -248,13 +253,13 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
+ **order** | [**Order**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
- **order** | **str**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**AudiencesList200Response**](AudiencesList200Response.md)
+[**SharedAudiencesForBusinessList200Response**](SharedAudiencesForBusinessList200Response.md)
 
 ### Authorization
 
@@ -269,18 +274,24 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_ad_account_to_ad_account_shared_audience**
-> SharedAudienceResponse update_ad_account_to_ad_account_shared_audience(ad_account_id, shared_audience)
+> AdAccountToAdAccountSharedAudience update_ad_account_to_ad_account_shared_audience(ad_account_id, ad_account_to_ad_account_shared_audience_update_with_required_body)
 
 Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.
+
+This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -288,8 +299,8 @@ From an ad account, share a specific audience with another ad account, or revoke
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.shared_audience import SharedAudience
-from pinterestsdk.models.shared_audience_response import SharedAudienceResponse
+from pinterestsdk.models.ad_account_to_ad_account_shared_audience import AdAccountToAdAccountSharedAudience
+from pinterestsdk.models.ad_account_to_ad_account_shared_audience_update_with_required_body import AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -311,11 +322,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AudienceSharingApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    shared_audience = pinterestsdk.SharedAudience() # SharedAudience | 
+    ad_account_to_ad_account_shared_audience_update_with_required_body = pinterestsdk.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody() # AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody | 
 
     try:
         # Update audience sharing between ad accounts
-        api_response = api_instance.update_ad_account_to_ad_account_shared_audience(ad_account_id, shared_audience)
+        api_response = api_instance.update_ad_account_to_ad_account_shared_audience(ad_account_id, ad_account_to_ad_account_shared_audience_update_with_required_body)
         print("The response of AudienceSharingApi->update_ad_account_to_ad_account_shared_audience:\n")
         pprint(api_response)
     except Exception as e:
@@ -330,11 +341,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **shared_audience** | [**SharedAudience**](SharedAudience.md)|  | 
+ **ad_account_to_ad_account_shared_audience_update_with_required_body** | [**AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**AdAccountToAdAccountSharedAudience**](AdAccountToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -349,18 +360,24 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid ad account id. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_ad_account_to_business_shared_audience**
-> BusinessSharedAudienceResponse update_ad_account_to_business_shared_audience(ad_account_id, business_shared_audience)
+> AdAccountToBusinessSharedAudience update_ad_account_to_business_shared_audience(ad_account_id, ad_account_to_business_shared_audience_update_with_required_body)
 
 Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.
+
+This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -368,8 +385,8 @@ From an ad account, share a specific audience with a business account, or revoke
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.business_shared_audience import BusinessSharedAudience
-from pinterestsdk.models.business_shared_audience_response import BusinessSharedAudienceResponse
+from pinterestsdk.models.ad_account_to_business_shared_audience import AdAccountToBusinessSharedAudience
+from pinterestsdk.models.ad_account_to_business_shared_audience_update_with_required_body import AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -391,11 +408,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AudienceSharingApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    business_shared_audience = pinterestsdk.BusinessSharedAudience() # BusinessSharedAudience | 
+    ad_account_to_business_shared_audience_update_with_required_body = pinterestsdk.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody() # AdAccountToBusinessSharedAudienceUpdateWithRequiredBody | 
 
     try:
         # Update audience sharing from an ad account to businesses
-        api_response = api_instance.update_ad_account_to_business_shared_audience(ad_account_id, business_shared_audience)
+        api_response = api_instance.update_ad_account_to_business_shared_audience(ad_account_id, ad_account_to_business_shared_audience_update_with_required_body)
         print("The response of AudienceSharingApi->update_ad_account_to_business_shared_audience:\n")
         pprint(api_response)
     except Exception as e:
@@ -410,11 +427,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **business_shared_audience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  | 
+ **ad_account_to_business_shared_audience_update_with_required_body** | [**AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**AdAccountToBusinessSharedAudience**](AdAccountToBusinessSharedAudience.md)
 
 ### Authorization
 
@@ -429,18 +446,27 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid ad account id. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_business_to_ad_account_shared_audience**
-> SharedAudienceResponse update_business_to_ad_account_shared_audience(business_id, shared_audience)
+> BusinessToAdAccountSharedAudience update_business_to_ad_account_shared_audience(business_id, business_to_ad_account_shared_audience_update_with_required_body)
 
 Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.
+
+- If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.
+- If the business is the recipient of the audience, it can share with any of its owned ad accounts.
+
+This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -448,8 +474,8 @@ From a business, share a specific audience with other ad account(s), or revoke a
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.shared_audience import SharedAudience
-from pinterestsdk.models.shared_audience_response import SharedAudienceResponse
+from pinterestsdk.models.business_to_ad_account_shared_audience import BusinessToAdAccountSharedAudience
+from pinterestsdk.models.business_to_ad_account_shared_audience_update_with_required_body import BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -470,12 +496,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AudienceSharingApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    shared_audience = pinterestsdk.SharedAudience() # SharedAudience | 
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    business_to_ad_account_shared_audience_update_with_required_body = pinterestsdk.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody() # BusinessToAdAccountSharedAudienceUpdateWithRequiredBody | 
 
     try:
         # Update audience sharing from a business to ad accounts
-        api_response = api_instance.update_business_to_ad_account_shared_audience(business_id, shared_audience)
+        api_response = api_instance.update_business_to_ad_account_shared_audience(business_id, business_to_ad_account_shared_audience_update_with_required_body)
         print("The response of AudienceSharingApi->update_business_to_ad_account_shared_audience:\n")
         pprint(api_response)
     except Exception as e:
@@ -490,11 +516,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
- **shared_audience** | [**SharedAudience**](SharedAudience.md)|  | 
+ **business_to_ad_account_shared_audience_update_with_required_body** | [**BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**BusinessToAdAccountSharedAudience**](BusinessToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -509,18 +535,24 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_business_to_business_shared_audience**
-> BusinessSharedAudienceResponse update_business_to_business_shared_audience(business_id, business_shared_audience)
+> BusinessToBusinessSharedAudience update_business_to_business_shared_audience(business_id, business_to_business_shared_audience_update_with_required_body)
 
 Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.
+
+This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -528,8 +560,8 @@ From a business, share a specific audience with another business account, or rev
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.business_shared_audience import BusinessSharedAudience
-from pinterestsdk.models.business_shared_audience_response import BusinessSharedAudienceResponse
+from pinterestsdk.models.business_to_business_shared_audience import BusinessToBusinessSharedAudience
+from pinterestsdk.models.business_to_business_shared_audience_update_with_required_body import BusinessToBusinessSharedAudienceUpdateWithRequiredBody
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -550,12 +582,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AudienceSharingApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    business_shared_audience = pinterestsdk.BusinessSharedAudience() # BusinessSharedAudience | 
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    business_to_business_shared_audience_update_with_required_body = pinterestsdk.BusinessToBusinessSharedAudienceUpdateWithRequiredBody() # BusinessToBusinessSharedAudienceUpdateWithRequiredBody | 
 
     try:
         # Update audience sharing between businesses
-        api_response = api_instance.update_business_to_business_shared_audience(business_id, business_shared_audience)
+        api_response = api_instance.update_business_to_business_shared_audience(business_id, business_to_business_shared_audience_update_with_required_body)
         print("The response of AudienceSharingApi->update_business_to_business_shared_audience:\n")
         pprint(api_response)
     except Exception as e:
@@ -570,11 +602,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
- **business_shared_audience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  | 
+ **business_to_business_shared_audience_update_with_required_body** | [**BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**BusinessToBusinessSharedAudience**](BusinessToBusinessSharedAudience.md)
 
 ### Authorization
 
@@ -589,9 +621,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

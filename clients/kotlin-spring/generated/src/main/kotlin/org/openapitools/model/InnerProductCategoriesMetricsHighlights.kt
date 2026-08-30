@@ -19,7 +19,8 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class InnerProductCategoriesMetricsHighlights(
 
-    @Schema(example = "null", required = true, description = "Month-over-month percentage change")
+    @Schema(required = true, description = "Month-over-month percentage change")
+    @param:JsonProperty("pct_change_mom")
     @get:JsonProperty("pct_change_mom", required = true) val pctChangeMom: java.math.BigDecimal
 ) {
 

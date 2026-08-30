@@ -20,9 +20,9 @@ apiClient_t *apiClient_create() {
     apiClient->response_code = 0;
     apiClient->accessToken = NULL;
     apiClient->accessToken = NULL;
+    apiClient->accessToken = NULL;
     apiClient->username = NULL;
     apiClient->password = NULL;
-    apiClient->accessToken = NULL;
 
     return apiClient;
 }
@@ -58,9 +58,9 @@ apiClient_t *apiClient_create_with_base_path(const char *basePath
     apiClient->response_code = 0;
     apiClient->accessToken = NULL;
     apiClient->accessToken = NULL;
+    apiClient->accessToken = NULL;
     apiClient->username = NULL;
     apiClient->password = NULL;
-    apiClient->accessToken = NULL;
 
     return apiClient;
 }
@@ -78,14 +78,14 @@ void apiClient_free(apiClient_t *apiClient) {
     if(apiClient->accessToken) {
         free(apiClient->accessToken);
     }
+    if(apiClient->accessToken) {
+        free(apiClient->accessToken);
+    }
     if(apiClient->username) {
         free(apiClient->username);
     }
     if(apiClient->password) {
         free(apiClient->password);
-    }
-    if(apiClient->accessToken) {
-        free(apiClient->accessToken);
     }
 
     if(apiClient->curlConfig) {
@@ -436,6 +436,13 @@ void apiClient_invoke(apiClient_t    *apiClient,
                              CURLOPT_XOAUTH2_BEARER,
                              apiClient->accessToken);
         }
+        // this would only be generated for OAuth2 authentication
+        if(apiClient->accessToken != NULL) {
+            // curl_easy_setopt(handle, CURLOPT_HTTPAUTH, CURLAUTH_BEARER);
+            curl_easy_setopt(handle,
+                             CURLOPT_XOAUTH2_BEARER,
+                             apiClient->accessToken);
+        }
         // this would only be generated for basic authentication:
         char *authenticationToken;
 
@@ -458,13 +465,6 @@ void apiClient_invoke(apiClient_t    *apiClient,
             curl_easy_setopt(handle,
                              CURLOPT_USERPWD,
                              authenticationToken);
-        }
-        // this would only be generated for OAuth2 authentication
-        if(apiClient->accessToken != NULL) {
-            // curl_easy_setopt(handle, CURLOPT_HTTPAUTH, CURLAUTH_BEARER);
-            curl_easy_setopt(handle,
-                             CURLOPT_XOAUTH2_BEARER,
-                             apiClient->accessToken);
         }
 
         if(bodyParameters != NULL) {

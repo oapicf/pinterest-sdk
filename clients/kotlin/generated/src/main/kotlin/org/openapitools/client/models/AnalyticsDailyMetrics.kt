@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -25,7 +33,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param dataStatus 
  * @param date Metrics date (UTC): YYYY-MM-DD.
- * @param metrics The metric name and daily value for each requested metric
+ * @param metrics 
  */
 
 
@@ -38,7 +46,6 @@ data class AnalyticsDailyMetrics (
     @Json(name = "date")
     val date: kotlin.String? = null,
 
-    /* The metric name and daily value for each requested metric */
     @Json(name = "metrics")
     val metrics: kotlin.collections.Map<kotlin.String, java.math.BigDecimal>? = null
 

@@ -15,7 +15,7 @@ class CatalogsProductGroupMultipleStringListCriteria(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, negated: bool=False, values: List[List[str]]=None):  # noqa: E501
+    def __init__(self, negated: bool=None, values: List[List[str]]=None):  # noqa: E501
         """CatalogsProductGroupMultipleStringListCriteria - a model defined in Swagger
 
         :param negated: The negated of this CatalogsProductGroupMultipleStringListCriteria.  # noqa: E501

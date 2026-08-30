@@ -15,9 +15,16 @@
 
 typedef struct catalogs_items_update_batch_request_t catalogs_items_update_batch_request_t;
 
-#include "batch_operation.h"
 #include "country.h"
 #include "item_update_batch_record.h"
+
+// Enum OPERATION for catalogs_items_update_batch_request
+
+typedef enum  { pinterest_rest_api_catalogs_items_update_batch_request_OPERATION_NULL = 0, pinterest_rest_api_catalogs_items_update_batch_request_OPERATION_UPDATE } pinterest_rest_api_catalogs_items_update_batch_request_OPERATION_e;
+
+char* catalogs_items_update_batch_request_operation_ToString(pinterest_rest_api_catalogs_items_update_batch_request_OPERATION_e operation);
+
+pinterest_rest_api_catalogs_items_update_batch_request_OPERATION_e catalogs_items_update_batch_request_operation_FromString(char* operation);
 
 
 
@@ -25,7 +32,7 @@ typedef struct catalogs_items_update_batch_request_t {
     pinterest_rest_api_country__e country; //referenced enum
     list_t *items; //nonprimitive container
     pinterest_rest_api_catalogs_items_update_batch_request_LANGUAGE_e language; //enum
-    pinterest_rest_api_batch_operation__e operation; //referenced enum
+    pinterest_rest_api_catalogs_items_update_batch_request_OPERATION_e operation; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_items_update_batch_request_t;
@@ -34,7 +41,7 @@ __attribute__((deprecated)) catalogs_items_update_batch_request_t *catalogs_item
     pinterest_rest_api_country__e country,
     list_t *items,
     pinterest_rest_api_catalogs_items_update_batch_request_LANGUAGE_e language,
-    pinterest_rest_api_batch_operation__e operation
+    pinterest_rest_api_catalogs_items_update_batch_request_OPERATION_e operation
 );
 
 void catalogs_items_update_batch_request_free(catalogs_items_update_batch_request_t *catalogs_items_update_batch_request);

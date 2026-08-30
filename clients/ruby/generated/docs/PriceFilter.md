@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **price** | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  |  |
+| **price** | [**PriceFilterPrice**](PriceFilterPrice.md) |  |  |
 
 ## Example
 

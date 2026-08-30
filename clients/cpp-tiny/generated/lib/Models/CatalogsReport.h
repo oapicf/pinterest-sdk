@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setReportStatus(std::string  report_status);
+	void setReportStatus(std::string report_status);
 	/*! \brief Get Size of the report in bytes
 	 */
 	long getSize();
 
 	/*! \brief Set Size of the report in bytes
 	 */
-	void setSize(long  size);
+	void setSize(long size);
 	/*! \brief Get URL to download the report
 	 */
 	std::string getUrl();
 
 	/*! \brief Set URL to download the report
 	 */
-	void setUrl(std::string  url);
+	void setUrl(std::string url);
 
 
     private:

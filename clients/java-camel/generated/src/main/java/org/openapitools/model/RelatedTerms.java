@@ -2,27 +2,28 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.RelatedTermsRelatedTermsListInner;
+import org.openapitools.model.RelatedTermsRelatedTermsListItems;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * RelatedTerms
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class RelatedTerms {
 
   private String id;
@@ -30,7 +31,7 @@ public class RelatedTerms {
   private Integer relatedTermCount;
 
   @Valid
-  private List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>();
+  private List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList = new ArrayList<>();
 
   public RelatedTerms id(String id) {
     this.id = id;
@@ -72,12 +73,12 @@ public class RelatedTerms {
     this.relatedTermCount = relatedTermCount;
   }
 
-  public RelatedTerms relatedTermsList(List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList) {
+  public RelatedTerms relatedTermsList(List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList) {
     this.relatedTermsList = relatedTermsList;
     return this;
   }
 
-  public RelatedTerms addRelatedTermsListItem(RelatedTermsRelatedTermsListInner relatedTermsListItem) {
+  public RelatedTerms addRelatedTermsListItem(RelatedTermsRelatedTermsListItems relatedTermsListItem) {
     if (this.relatedTermsList == null) {
       this.relatedTermsList = new ArrayList<>();
     }
@@ -92,11 +93,11 @@ public class RelatedTerms {
   @Valid 
   @Schema(name = "related_terms_list", description = "The id of the advertiser.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("related_terms_list")
-  public List<@Valid RelatedTermsRelatedTermsListInner> getRelatedTermsList() {
+  public List<@Valid RelatedTermsRelatedTermsListItems> getRelatedTermsList() {
     return relatedTermsList;
   }
 
-  public void setRelatedTermsList(List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList) {
+  public void setRelatedTermsList(List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList) {
     this.relatedTermsList = relatedTermsList;
   }
 
@@ -135,10 +136,7 @@ public class RelatedTerms {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

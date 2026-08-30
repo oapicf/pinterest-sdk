@@ -17,15 +17,7 @@
     },
     {
       "name": "operation",
-      "type": {
-        "type": "enum",
-        "name": "TargetingSpecOperationAppType_operation",
-        "symbols": [
-          "SET",
-          "ADD",
-          "REMOVE"
-        ]
-      },
+      "type": "model.TargetingSpecListOperation",
       "doc": ""
     },
     {

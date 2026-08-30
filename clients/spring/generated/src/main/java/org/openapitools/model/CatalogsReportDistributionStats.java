@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -11,33 +12,40 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsReportDistributionStats
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsReportDistributionStats implements CatalogsReportStats {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String catalogId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer code;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String codeLabel;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean ineligibleForAds;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean ineligibleForOrganic;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String message;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer occurrences;
 
   /**
@@ -73,6 +81,7 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
     }
   }
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ReportTypeEnum reportType;
 
   public CatalogsReportDistributionStats catalogId(@Nullable String catalogId) {
@@ -91,6 +100,7 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
     return catalogId;
   }
 
+  @JsonProperty("catalog_id")
   public void setCatalogId(@Nullable String catalogId) {
     this.catalogId = catalogId;
   }
@@ -111,6 +121,7 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
     return code;
   }
 
+  @JsonProperty("code")
   public void setCode(@Nullable Integer code) {
     this.code = code;
   }
@@ -131,6 +142,7 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
     return codeLabel;
   }
 
+  @JsonProperty("code_label")
   public void setCodeLabel(@Nullable String codeLabel) {
     this.codeLabel = codeLabel;
   }
@@ -151,6 +163,7 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
     return ineligibleForAds;
   }
 
+  @JsonProperty("ineligible_for_ads")
   public void setIneligibleForAds(@Nullable Boolean ineligibleForAds) {
     this.ineligibleForAds = ineligibleForAds;
   }
@@ -171,6 +184,7 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
     return ineligibleForOrganic;
   }
 
+  @JsonProperty("ineligible_for_organic")
   public void setIneligibleForOrganic(@Nullable Boolean ineligibleForOrganic) {
     this.ineligibleForOrganic = ineligibleForOrganic;
   }
@@ -191,6 +205,7 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
     return message;
   }
 
+  @JsonProperty("message")
   public void setMessage(@Nullable String message) {
     this.message = message;
   }
@@ -211,6 +226,7 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
     return occurrences;
   }
 
+  @JsonProperty("occurrences")
   public void setOccurrences(@Nullable Integer occurrences) {
     this.occurrences = occurrences;
   }
@@ -231,6 +247,7 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
     return reportType;
   }
 
+  @JsonProperty("report_type")
   public void setReportType(@Nullable ReportTypeEnum reportType) {
     this.reportType = reportType;
   }
@@ -279,11 +296,8 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

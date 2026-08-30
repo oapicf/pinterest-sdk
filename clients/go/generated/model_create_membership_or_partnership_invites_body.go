@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,7 @@ var _ MappedNullable = &CreateMembershipOrPartnershipInvitesBody{}
 
 // CreateMembershipOrPartnershipInvitesBody Body to be used on path to send Members or Partners Invite or Request
 type CreateMembershipOrPartnershipInvitesBody struct {
-	// The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-	BusinessRole string `json:"business_role"`
+	BusinessRole BusinessRoleForInvite `json:"business_role"`
 	InviteType InviteType `json:"invite_type"`
 	// A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
 	Members []string `json:"members,omitempty"`
@@ -37,7 +36,7 @@ type _CreateMembershipOrPartnershipInvitesBody CreateMembershipOrPartnershipInvi
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateMembershipOrPartnershipInvitesBody(businessRole string, inviteType InviteType) *CreateMembershipOrPartnershipInvitesBody {
+func NewCreateMembershipOrPartnershipInvitesBody(businessRole BusinessRoleForInvite, inviteType InviteType) *CreateMembershipOrPartnershipInvitesBody {
 	this := CreateMembershipOrPartnershipInvitesBody{}
 	this.BusinessRole = businessRole
 	this.InviteType = inviteType
@@ -53,9 +52,9 @@ func NewCreateMembershipOrPartnershipInvitesBodyWithDefaults() *CreateMembership
 }
 
 // GetBusinessRole returns the BusinessRole field value
-func (o *CreateMembershipOrPartnershipInvitesBody) GetBusinessRole() string {
+func (o *CreateMembershipOrPartnershipInvitesBody) GetBusinessRole() BusinessRoleForInvite {
 	if o == nil {
-		var ret string
+		var ret BusinessRoleForInvite
 		return ret
 	}
 
@@ -64,7 +63,7 @@ func (o *CreateMembershipOrPartnershipInvitesBody) GetBusinessRole() string {
 
 // GetBusinessRoleOk returns a tuple with the BusinessRole field value
 // and a boolean to check if the value has been set.
-func (o *CreateMembershipOrPartnershipInvitesBody) GetBusinessRoleOk() (*string, bool) {
+func (o *CreateMembershipOrPartnershipInvitesBody) GetBusinessRoleOk() (*BusinessRoleForInvite, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -72,7 +71,7 @@ func (o *CreateMembershipOrPartnershipInvitesBody) GetBusinessRoleOk() (*string,
 }
 
 // SetBusinessRole sets field value
-func (o *CreateMembershipOrPartnershipInvitesBody) SetBusinessRole(v string) {
+func (o *CreateMembershipOrPartnershipInvitesBody) SetBusinessRole(v BusinessRoleForInvite) {
 	o.BusinessRole = v
 }
 

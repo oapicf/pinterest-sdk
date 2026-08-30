@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.ai_disclosures_update import AiDisclosuresUpdate  # noqa: F401,E501
 from app.openapi_server.models.carousel_slot import CarouselSlot  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
@@ -17,9 +18,11 @@ class PinUpdate(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, alt_text: str=None, board_id: str=None, board_section_id: str=None, carousel_slots: List[CarouselSlot]=None, description: str=None, link: str=None, title: str=None):  # noqa: E501
+    def __init__(self, ai_disclosures: AiDisclosuresUpdate=None, alt_text: str=None, board_id: str=None, board_section_id: str=None, carousel_slots: List[CarouselSlot]=None, description: str=None, link: str=None, title: str=None):  # noqa: E501
         """PinUpdate - a model defined in Swagger
 
+        :param ai_disclosures: The ai_disclosures of this PinUpdate.  # noqa: E501
+        :type ai_disclosures: AiDisclosuresUpdate
         :param alt_text: The alt_text of this PinUpdate.  # noqa: E501
         :type alt_text: str
         :param board_id: The board_id of this PinUpdate.  # noqa: E501
@@ -36,6 +39,7 @@ class PinUpdate(Model):
         :type title: str
         """
         self.swagger_types = {
+            'ai_disclosures': AiDisclosuresUpdate,
             'alt_text': str,
             'board_id': str,
             'board_section_id': str,
@@ -46,6 +50,7 @@ class PinUpdate(Model):
         }
 
         self.attribute_map = {
+            'ai_disclosures': 'ai_disclosures',
             'alt_text': 'alt_text',
             'board_id': 'board_id',
             'board_section_id': 'board_section_id',
@@ -55,6 +60,7 @@ class PinUpdate(Model):
             'title': 'title'
         }
 
+        self._ai_disclosures = ai_disclosures
         self._alt_text = alt_text
         self._board_id = board_id
         self._board_section_id = board_section_id
@@ -73,6 +79,29 @@ class PinUpdate(Model):
         :rtype: PinUpdate
         """
         return util.deserialize_model(dikt, cls)
+
+    @property
+    def ai_disclosures(self) -> AiDisclosuresUpdate:
+        """Gets the ai_disclosures of this PinUpdate.
+
+        AI disclosure declarations the creator has made about this Pin.  # noqa: E501
+
+        :return: The ai_disclosures of this PinUpdate.
+        :rtype: AiDisclosuresUpdate
+        """
+        return self._ai_disclosures
+
+    @ai_disclosures.setter
+    def ai_disclosures(self, ai_disclosures: AiDisclosuresUpdate):
+        """Sets the ai_disclosures of this PinUpdate.
+
+        AI disclosure declarations the creator has made about this Pin.  # noqa: E501
+
+        :param ai_disclosures: The ai_disclosures of this PinUpdate.
+        :type ai_disclosures: AiDisclosuresUpdate
+        """
+
+        self._ai_disclosures = ai_disclosures
 
     @property
     def alt_text(self) -> str:

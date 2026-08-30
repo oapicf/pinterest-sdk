@@ -6,9 +6,9 @@ using namespace Tiny;
 
 AssetIdPermissions::AssetIdPermissions()
 {
-	asset_group_info = AssetGroupBinding();
+	asset_group_info = null;
 	asset_id = std::string();
-	asset_type = std::string();
+	asset_type = AssetTypeResponse();
 	permissions = std::list<std::string>();
 }
 
@@ -62,8 +62,9 @@ AssetIdPermissions::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&asset_type, value, "std::string");
 
+        AssetTypeResponse* obj = &asset_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -115,8 +116,8 @@ AssetIdPermissions::toJson()
 
 
 
-    object["asset_type"] = getAssetType();
 
+	object["asset_type"] = getAssetType().toJson();
 
 
 
@@ -146,7 +147,7 @@ AssetIdPermissions::getAssetGroupInfo()
 }
 
 void
-AssetIdPermissions::setAssetGroupInfo(AssetGroupBinding  asset_group_info)
+AssetIdPermissions::setAssetGroupInfo(AssetGroupBinding asset_group_info)
 {
 	this->asset_group_info = asset_group_info;
 }
@@ -158,19 +159,19 @@ AssetIdPermissions::getAssetId()
 }
 
 void
-AssetIdPermissions::setAssetId(std::string  asset_id)
+AssetIdPermissions::setAssetId(std::string asset_id)
 {
 	this->asset_id = asset_id;
 }
 
-std::string
+AssetTypeResponse
 AssetIdPermissions::getAssetType()
 {
 	return asset_type;
 }
 
 void
-AssetIdPermissions::setAssetType(std::string  asset_type)
+AssetIdPermissions::setAssetType(AssetTypeResponse asset_type)
 {
 	this->asset_type = asset_type;
 }
@@ -182,7 +183,7 @@ AssetIdPermissions::getPermissions()
 }
 
 void
-AssetIdPermissions::setPermissions(std::list <std::string> permissions)
+AssetIdPermissions::setPermissions(std::list<std::string> permissions)
 {
 	this->permissions = permissions;
 }

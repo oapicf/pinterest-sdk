@@ -15,10 +15,11 @@ import java.util.List;
  *
  */
 /**
- * SSIOAccountItem
+ * Salesforce account item with billing and terms information.
  */
+@ApiModel(description = "Salesforce account item with billing and terms information.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SSIOAccountItem   {
   @JsonProperty("addresses")
   
@@ -155,7 +156,7 @@ public class SSIOAccountItem   {
    * Salesforce text for Rest of the World Terms and Conditions
    * @return rowTerms
    */
-  @ApiModelProperty(example = "The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", value = "Salesforce text for Rest of the World Terms and Conditions")
+  @ApiModelProperty(example = "  The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", value = "Salesforce text for Rest of the World Terms and Conditions")
   public String getRowTerms() {
     return rowTerms;
   }
@@ -267,10 +268,7 @@ public class SSIOAccountItem   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

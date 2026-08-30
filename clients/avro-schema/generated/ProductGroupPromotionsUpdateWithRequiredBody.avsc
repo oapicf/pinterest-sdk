@@ -1,0 +1,22 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create or update operation model with required body fields (no OptionalProperties).",
+  "name": "ProductGroupPromotionsUpdateWithRequiredBody",
+  "fields": [
+    {
+      "name": "ad_group_id",
+      "type": "string",
+      "doc": "ID of the ad group the product group promotion belongs to."
+    },
+    {
+      "name": "product_group_promotion",
+      "type": {
+        "type": "array",
+        "items": "model.ProductGroupPromotion"
+      },
+      "doc": "List of product group promotions to create or update."
+    }
+  ]
+
+}

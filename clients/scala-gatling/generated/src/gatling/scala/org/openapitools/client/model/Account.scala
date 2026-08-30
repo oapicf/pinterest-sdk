@@ -6,8 +6,8 @@ case class Account (
     /* Profile about description. */
     _about: Option[String],
     /* Type of account */
-    _accountType: Option[String],
-    /* User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. */
+    _accountType: Option[UserAccountType],
+    /*   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. */
     _boardCount: Option[Integer],
     _businessName: Option[String],
     /* User account follower count. */

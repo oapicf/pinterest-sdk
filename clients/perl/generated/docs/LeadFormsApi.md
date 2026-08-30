@@ -17,11 +17,11 @@ Method | HTTP request | Description
 
 
 # **lead_form_get**
-> LeadFormResponse lead_form_get(ad_account_id => $ad_account_id, lead_form_id => $lead_form_id)
+> LeadForm lead_form_get(lead_form_id => $lead_form_id, ad_account_id => $ad_account_id)
 
 Get lead form by id
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```perl
@@ -33,11 +33,11 @@ my $api_instance = WWW::OpenAPIClient::LeadFormsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
+my $lead_form_id = "lead_form_id_example"; # string | The ID of this lead form
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $lead_form_id = 1234567890123; # string | Unique identifier of a lead form.
 
 eval {
-    my $result = $api_instance->lead_form_get(ad_account_id => $ad_account_id, lead_form_id => $lead_form_id);
+    my $result = $api_instance->lead_form_get(lead_form_id => $lead_form_id, ad_account_id => $ad_account_id);
     print Dumper($result);
 };
 if ($@) {
@@ -49,12 +49,12 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **lead_form_id** | **string**| The ID of this lead form | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **lead_form_id** | **string**| Unique identifier of a lead form. | 
 
 ### Return type
 
-[**LeadFormResponse**](LeadFormResponse.md)
+[**LeadForm**](LeadForm.md)
 
 ### Authorization
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **lead_form_test_create**
-> LeadFormTestResponse lead_form_test_create(ad_account_id => $ad_account_id, lead_form_id => $lead_form_id, lead_form_test_request => $lead_form_test_request)
+> LeadFormTest lead_form_test_create(ad_account_id => $ad_account_id, lead_form_id => $lead_form_id, lead_form_test_create => $lead_form_test_create)
 
 Create lead form test data
 
@@ -84,12 +84,12 @@ my $api_instance = WWW::OpenAPIClient::LeadFormsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $lead_form_id = 1234567890123; # string | Unique identifier of a lead form.
-my $lead_form_test_request = WWW::OpenAPIClient::Object::LeadFormTestRequest->new(); # LeadFormTestRequest | Subscription to create.
+my $ad_account_id = "ad_account_id_example"; # string | 
+my $lead_form_id = "lead_form_id_example"; # string | Unique identifier of a lead form.
+my $lead_form_test_create = WWW::OpenAPIClient::Object::LeadFormTestCreate->new(); # LeadFormTestCreate | 
 
 eval {
-    my $result = $api_instance->lead_form_test_create(ad_account_id => $ad_account_id, lead_form_id => $lead_form_id, lead_form_test_request => $lead_form_test_request);
+    my $result = $api_instance->lead_form_test_create(ad_account_id => $ad_account_id, lead_form_id => $lead_form_id, lead_form_test_create => $lead_form_test_create);
     print Dumper($result);
 };
 if ($@) {
@@ -101,13 +101,13 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **string**| Unique identifier of an ad account. | 
+ **ad_account_id** | **string**|  | 
  **lead_form_id** | **string**| Unique identifier of a lead form. | 
- **lead_form_test_request** | [**LeadFormTestRequest**](LeadFormTestRequest.md)| Subscription to create. | 
+ **lead_form_test_create** | [**LeadFormTestCreate**](LeadFormTestCreate.md)|  | 
 
 ### Return type
 
-[**LeadFormTestResponse**](LeadFormTestResponse.md)
+[**LeadFormTest**](LeadFormTest.md)
 
 ### Authorization
 
@@ -121,11 +121,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **lead_forms_create**
-> LeadFormArrayResponse lead_forms_create(ad_account_id => $ad_account_id, lead_form_create_request => $lead_form_create_request)
+> LeadFormsCreate200Response lead_forms_create(ad_account_id => $ad_account_id, lead_form_create => $lead_form_create)
 
 Create lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```perl
@@ -138,10 +138,10 @@ my $api_instance = WWW::OpenAPIClient::LeadFormsApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $lead_form_create_request = [WWW::OpenAPIClient::Object::ARRAY[LeadFormCreateRequest]->new()]; # ARRAY[LeadFormCreateRequest] | List of lead forms to create, size limit [1, 30].
+my $lead_form_create = [WWW::OpenAPIClient::Object::ARRAY[LeadFormCreate]->new()]; # ARRAY[LeadFormCreate] | 
 
 eval {
-    my $result = $api_instance->lead_forms_create(ad_account_id => $ad_account_id, lead_form_create_request => $lead_form_create_request);
+    my $result = $api_instance->lead_forms_create(ad_account_id => $ad_account_id, lead_form_create => $lead_form_create);
     print Dumper($result);
 };
 if ($@) {
@@ -154,11 +154,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **lead_form_create_request** | [**ARRAY[LeadFormCreateRequest]**](LeadFormCreateRequest.md)| List of lead forms to create, size limit [1, 30]. | 
+ **lead_form_create** | [**ARRAY[LeadFormCreate]**](LeadFormCreate.md)|  | 
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 
@@ -172,11 +172,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **lead_forms_list**
-> LeadFormsList200Response lead_forms_list(ad_account_id => $ad_account_id, page_size => $page_size, order => $order, bookmark => $bookmark)
+> LeadFormsList200Response lead_forms_list(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, order => $order)
 
 List lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```perl
@@ -189,12 +189,12 @@ my $api_instance = WWW::OpenAPIClient::LeadFormsApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-my $order = ASCENDING; # string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+my $order = new WWW::OpenAPIClient.PinterestLibPaginationOrder(); # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 
 eval {
-    my $result = $api_instance->lead_forms_list(ad_account_id => $ad_account_id, page_size => $page_size, order => $order, bookmark => $bookmark);
+    my $result = $api_instance->lead_forms_list(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, order => $order);
     print Dumper($result);
 };
 if ($@) {
@@ -207,9 +207,9 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 
@@ -227,11 +227,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **lead_forms_update**
-> LeadFormArrayResponse lead_forms_update(ad_account_id => $ad_account_id, lead_form_update_request => $lead_form_update_request)
+> LeadFormsCreate200Response lead_forms_update(ad_account_id => $ad_account_id, lead_form_batch_update => $lead_form_batch_update)
 
 Update lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```perl
@@ -244,10 +244,10 @@ my $api_instance = WWW::OpenAPIClient::LeadFormsApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $lead_form_update_request = [WWW::OpenAPIClient::Object::ARRAY[LeadFormUpdateRequest]->new()]; # ARRAY[LeadFormUpdateRequest] | List of lead forms to update, size limit [1, 30].
+my $lead_form_batch_update = [WWW::OpenAPIClient::Object::ARRAY[LeadFormBatchUpdate]->new()]; # ARRAY[LeadFormBatchUpdate] | 
 
 eval {
-    my $result = $api_instance->lead_forms_update(ad_account_id => $ad_account_id, lead_form_update_request => $lead_form_update_request);
+    my $result = $api_instance->lead_forms_update(ad_account_id => $ad_account_id, lead_form_batch_update => $lead_form_batch_update);
     print Dumper($result);
 };
 if ($@) {
@@ -260,11 +260,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **lead_form_update_request** | [**ARRAY[LeadFormUpdateRequest]**](LeadFormUpdateRequest.md)| List of lead forms to update, size limit [1, 30]. | 
+ **lead_form_batch_update** | [**ARRAY[LeadFormBatchUpdate]**](LeadFormBatchUpdate.md)|  | 
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 

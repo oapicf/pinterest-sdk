@@ -13,7 +13,7 @@ API.Client.CatalogsHotelItemResponse = function() {}
 API.Client.CatalogsHotelItemResponse.prototype.attributes;
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsHotelItemResponse.prototype.catalogType;
@@ -26,9 +26,24 @@ API.Client.CatalogsHotelItemResponse.prototype.catalogType;
 API.Client.CatalogsHotelItemResponse.prototype.hotelId;
 
 /**
+ * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelItemResponse.prototype.itemResponseKind;
+
+/**
  * The pins mapped to the item
  * @type {!Array<!API.Client.Pin>}
  * @export
  */
 API.Client.CatalogsHotelItemResponse.prototype.pins;
 
+/** @enum {string} */
+API.Client.CatalogsHotelItemResponse.CatalogTypeEnum = { 
+  HOTEL: 'HOTEL',
+}
+/** @enum {string} */
+API.Client.CatalogsHotelItemResponse.ItemResponseKindEnum = { 
+  hotel_item: 'hotel_item',
+}

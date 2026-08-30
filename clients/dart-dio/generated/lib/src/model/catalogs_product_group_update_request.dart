@@ -16,8 +16,8 @@ part 'catalogs_product_group_update_request.g.dart';
 /// * [filters] 
 /// * [isFeatured] - boolean indicator of whether the product group is being featured or not
 /// * [name] 
-@BuiltValue()
-abstract class CatalogsProductGroupUpdateRequest implements Built<CatalogsProductGroupUpdateRequest, CatalogsProductGroupUpdateRequestBuilder> {
+@BuiltValue(instantiable: false)
+abstract class CatalogsProductGroupUpdateRequest  {
   @BuiltValueField(wireName: r'description')
   String? get description;
 
@@ -32,20 +32,13 @@ abstract class CatalogsProductGroupUpdateRequest implements Built<CatalogsProduc
   @BuiltValueField(wireName: r'name')
   String? get name;
 
-  CatalogsProductGroupUpdateRequest._();
-
-  factory CatalogsProductGroupUpdateRequest([void updates(CatalogsProductGroupUpdateRequestBuilder b)]) = _$CatalogsProductGroupUpdateRequest;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CatalogsProductGroupUpdateRequestBuilder b) => b;
-
   @BuiltValueSerializer(custom: true)
   static Serializer<CatalogsProductGroupUpdateRequest> get serializer => _$CatalogsProductGroupUpdateRequestSerializer();
 }
 
 class _$CatalogsProductGroupUpdateRequestSerializer implements PrimitiveSerializer<CatalogsProductGroupUpdateRequest> {
   @override
-  final Iterable<Type> types = const [CatalogsProductGroupUpdateRequest, _$CatalogsProductGroupUpdateRequest];
+  final Iterable<Type> types = const [CatalogsProductGroupUpdateRequest];
 
   @override
   final String wireName = r'CatalogsProductGroupUpdateRequest';
@@ -94,6 +87,46 @@ class _$CatalogsProductGroupUpdateRequestSerializer implements PrimitiveSerializ
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
+  @override
+  CatalogsProductGroupUpdateRequest deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.deserialize(serialized, specifiedType: FullType($CatalogsProductGroupUpdateRequest)) as $CatalogsProductGroupUpdateRequest;
+  }
+}
+
+/// a concrete implementation of [CatalogsProductGroupUpdateRequest], since [CatalogsProductGroupUpdateRequest] is not instantiable
+@BuiltValue(instantiable: true)
+abstract class $CatalogsProductGroupUpdateRequest implements CatalogsProductGroupUpdateRequest, Built<$CatalogsProductGroupUpdateRequest, $CatalogsProductGroupUpdateRequestBuilder> {
+  $CatalogsProductGroupUpdateRequest._();
+
+  factory $CatalogsProductGroupUpdateRequest([void Function($CatalogsProductGroupUpdateRequestBuilder)? updates]) = _$$CatalogsProductGroupUpdateRequest;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults($CatalogsProductGroupUpdateRequestBuilder b) => b;
+
+  @BuiltValueSerializer(custom: true)
+  static Serializer<$CatalogsProductGroupUpdateRequest> get serializer => _$$CatalogsProductGroupUpdateRequestSerializer();
+}
+
+class _$$CatalogsProductGroupUpdateRequestSerializer implements PrimitiveSerializer<$CatalogsProductGroupUpdateRequest> {
+  @override
+  final Iterable<Type> types = const [$CatalogsProductGroupUpdateRequest, _$$CatalogsProductGroupUpdateRequest];
+
+  @override
+  final String wireName = r'$CatalogsProductGroupUpdateRequest';
+
+  @override
+  Object serialize(
+    Serializers serializers,
+    $CatalogsProductGroupUpdateRequest object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.serialize(object, specifiedType: FullType(CatalogsProductGroupUpdateRequest))!;
+  }
+
   void _deserializeProperties(
     Serializers serializers,
     Object serialized, {
@@ -117,22 +150,25 @@ class _$CatalogsProductGroupUpdateRequestSerializer implements PrimitiveSerializ
         case r'filters':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsProductGroupFiltersRequest),
-          ) as CatalogsProductGroupFiltersRequest;
+            specifiedType: const FullType.nullable(CatalogsProductGroupFiltersRequest),
+          ) as CatalogsProductGroupFiltersRequest?;
+          if (valueDes == null) continue;
           result.filters.replace(valueDes);
           break;
         case r'is_featured':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.isFeatured = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         default:
@@ -144,12 +180,12 @@ class _$CatalogsProductGroupUpdateRequestSerializer implements PrimitiveSerializ
   }
 
   @override
-  CatalogsProductGroupUpdateRequest deserialize(
+  $CatalogsProductGroupUpdateRequest deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = CatalogsProductGroupUpdateRequestBuilder();
+    final result = $CatalogsProductGroupUpdateRequestBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

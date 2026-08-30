@@ -7,7 +7,7 @@
 -type openapi_summary_pin() ::
     #{ 'alt_text' => binary(),
        'description' => binary(),
-       'id' => binary(),
+       'id' := binary(),
        'link' => binary(),
        'media' => openapi_pin_media:openapi_pin_media(),
        'title' => binary()

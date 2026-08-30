@@ -15,7 +15,7 @@ import { CatalogsCreativeAssetsProductGroupFilters } from './catalogsCreativeAss
  */
 export interface CatalogsCreativeAssetsProductGroupCreateRequest { 
     /**
-     * Catalog id pertaining to the creative assets product group.
+     * Catalog ID pertaining to the product group.
      */
     catalog_id: string;
     catalog_type: CatalogsCreativeAssetsProductGroupCreateRequest.CatalogTypeEnum;

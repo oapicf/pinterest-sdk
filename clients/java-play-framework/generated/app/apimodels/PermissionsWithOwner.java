@@ -6,7 +6,7 @@ import javax.validation.*;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Gets or Sets PermissionsWithOwner
+ * Permission levels including the OWNER role.
  */
 public enum PermissionsWithOwner {
   

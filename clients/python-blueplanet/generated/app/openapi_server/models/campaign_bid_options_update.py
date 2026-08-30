@@ -6,8 +6,13 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.age_bucket_multipliers import AgeBucketMultipliers  # noqa: F401,E501
 from app.openapi_server.models.app_type_multipliers import AppTypeMultipliers  # noqa: F401,E501
 from app.openapi_server.models.campaign_audience_multipliers import CampaignAudienceMultipliers  # noqa: F401,E501
+from app.openapi_server.models.campaign_bid_options_update_mask_items import CampaignBidOptionsUpdateMaskItems  # noqa: F401,E501
+from app.openapi_server.models.freq_bid_multiplier_time_window import FreqBidMultiplierTimeWindow  # noqa: F401,E501
+from app.openapi_server.models.frequency_multipliers import FrequencyMultipliers  # noqa: F401,E501
+from app.openapi_server.models.gender_multipliers import GenderMultipliers  # noqa: F401,E501
 from app.openapi_server.models.placement_multipliers import PlacementMultipliers  # noqa: F401,E501
 from openapi_server import util
 
@@ -18,34 +23,54 @@ class CampaignBidOptionsUpdate(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, app_type_multipliers: AppTypeMultipliers=None, audience_multipliers: CampaignAudienceMultipliers=None, placement_multipliers: PlacementMultipliers=None, update_mask: List[str]=None):  # noqa: E501
+    def __init__(self, age_bucket_multipliers: AgeBucketMultipliers=None, app_type_multipliers: AppTypeMultipliers=None, audience_multipliers: CampaignAudienceMultipliers=None, freq_bid_multiplier_time_window: FreqBidMultiplierTimeWindow=None, frequency_multipliers: FrequencyMultipliers=None, gender_multipliers: GenderMultipliers=None, placement_multipliers: PlacementMultipliers=None, update_mask: List[CampaignBidOptionsUpdateMaskItems]=None):  # noqa: E501
         """CampaignBidOptionsUpdate - a model defined in Swagger
 
+        :param age_bucket_multipliers: The age_bucket_multipliers of this CampaignBidOptionsUpdate.  # noqa: E501
+        :type age_bucket_multipliers: AgeBucketMultipliers
         :param app_type_multipliers: The app_type_multipliers of this CampaignBidOptionsUpdate.  # noqa: E501
         :type app_type_multipliers: AppTypeMultipliers
         :param audience_multipliers: The audience_multipliers of this CampaignBidOptionsUpdate.  # noqa: E501
         :type audience_multipliers: CampaignAudienceMultipliers
+        :param freq_bid_multiplier_time_window: The freq_bid_multiplier_time_window of this CampaignBidOptionsUpdate.  # noqa: E501
+        :type freq_bid_multiplier_time_window: FreqBidMultiplierTimeWindow
+        :param frequency_multipliers: The frequency_multipliers of this CampaignBidOptionsUpdate.  # noqa: E501
+        :type frequency_multipliers: FrequencyMultipliers
+        :param gender_multipliers: The gender_multipliers of this CampaignBidOptionsUpdate.  # noqa: E501
+        :type gender_multipliers: GenderMultipliers
         :param placement_multipliers: The placement_multipliers of this CampaignBidOptionsUpdate.  # noqa: E501
         :type placement_multipliers: PlacementMultipliers
         :param update_mask: The update_mask of this CampaignBidOptionsUpdate.  # noqa: E501
-        :type update_mask: List[str]
+        :type update_mask: List[CampaignBidOptionsUpdateMaskItems]
         """
         self.swagger_types = {
+            'age_bucket_multipliers': AgeBucketMultipliers,
             'app_type_multipliers': AppTypeMultipliers,
             'audience_multipliers': CampaignAudienceMultipliers,
+            'freq_bid_multiplier_time_window': FreqBidMultiplierTimeWindow,
+            'frequency_multipliers': FrequencyMultipliers,
+            'gender_multipliers': GenderMultipliers,
             'placement_multipliers': PlacementMultipliers,
-            'update_mask': List[str]
+            'update_mask': List[CampaignBidOptionsUpdateMaskItems]
         }
 
         self.attribute_map = {
+            'age_bucket_multipliers': 'age_bucket_multipliers',
             'app_type_multipliers': 'app_type_multipliers',
             'audience_multipliers': 'audience_multipliers',
+            'freq_bid_multiplier_time_window': 'freq_bid_multiplier_time_window',
+            'frequency_multipliers': 'frequency_multipliers',
+            'gender_multipliers': 'gender_multipliers',
             'placement_multipliers': 'placement_multipliers',
             'update_mask': 'update_mask'
         }
 
+        self._age_bucket_multipliers = age_bucket_multipliers
         self._app_type_multipliers = app_type_multipliers
         self._audience_multipliers = audience_multipliers
+        self._freq_bid_multiplier_time_window = freq_bid_multiplier_time_window
+        self._frequency_multipliers = frequency_multipliers
+        self._gender_multipliers = gender_multipliers
         self._placement_multipliers = placement_multipliers
         self._update_mask = update_mask
 
@@ -61,9 +86,33 @@ class CampaignBidOptionsUpdate(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
+    def age_bucket_multipliers(self) -> AgeBucketMultipliers:
+        """Gets the age_bucket_multipliers of this CampaignBidOptionsUpdate.
+
+        Age bucket multipliers for bid adjustments.  # noqa: E501
+
+        :return: The age_bucket_multipliers of this CampaignBidOptionsUpdate.
+        :rtype: AgeBucketMultipliers
+        """
+        return self._age_bucket_multipliers
+
+    @age_bucket_multipliers.setter
+    def age_bucket_multipliers(self, age_bucket_multipliers: AgeBucketMultipliers):
+        """Sets the age_bucket_multipliers of this CampaignBidOptionsUpdate.
+
+        Age bucket multipliers for bid adjustments.  # noqa: E501
+
+        :param age_bucket_multipliers: The age_bucket_multipliers of this CampaignBidOptionsUpdate.
+        :type age_bucket_multipliers: AgeBucketMultipliers
+        """
+
+        self._age_bucket_multipliers = age_bucket_multipliers
+
+    @property
     def app_type_multipliers(self) -> AppTypeMultipliers:
         """Gets the app_type_multipliers of this CampaignBidOptionsUpdate.
 
+        App type multipliers for bid adjustments.  # noqa: E501
 
         :return: The app_type_multipliers of this CampaignBidOptionsUpdate.
         :rtype: AppTypeMultipliers
@@ -74,6 +123,7 @@ class CampaignBidOptionsUpdate(Model):
     def app_type_multipliers(self, app_type_multipliers: AppTypeMultipliers):
         """Sets the app_type_multipliers of this CampaignBidOptionsUpdate.
 
+        App type multipliers for bid adjustments.  # noqa: E501
 
         :param app_type_multipliers: The app_type_multipliers of this CampaignBidOptionsUpdate.
         :type app_type_multipliers: AppTypeMultipliers
@@ -85,6 +135,7 @@ class CampaignBidOptionsUpdate(Model):
     def audience_multipliers(self) -> CampaignAudienceMultipliers:
         """Gets the audience_multipliers of this CampaignBidOptionsUpdate.
 
+        Audience multipliers for bid adjustments.  # noqa: E501
 
         :return: The audience_multipliers of this CampaignBidOptionsUpdate.
         :rtype: CampaignAudienceMultipliers
@@ -95,6 +146,7 @@ class CampaignBidOptionsUpdate(Model):
     def audience_multipliers(self, audience_multipliers: CampaignAudienceMultipliers):
         """Sets the audience_multipliers of this CampaignBidOptionsUpdate.
 
+        Audience multipliers for bid adjustments.  # noqa: E501
 
         :param audience_multipliers: The audience_multipliers of this CampaignBidOptionsUpdate.
         :type audience_multipliers: CampaignAudienceMultipliers
@@ -103,9 +155,79 @@ class CampaignBidOptionsUpdate(Model):
         self._audience_multipliers = audience_multipliers
 
     @property
+    def freq_bid_multiplier_time_window(self) -> FreqBidMultiplierTimeWindow:
+        """Gets the freq_bid_multiplier_time_window of this CampaignBidOptionsUpdate.
+
+        The time window for frequency bid multipliers.  # noqa: E501
+
+        :return: The freq_bid_multiplier_time_window of this CampaignBidOptionsUpdate.
+        :rtype: FreqBidMultiplierTimeWindow
+        """
+        return self._freq_bid_multiplier_time_window
+
+    @freq_bid_multiplier_time_window.setter
+    def freq_bid_multiplier_time_window(self, freq_bid_multiplier_time_window: FreqBidMultiplierTimeWindow):
+        """Sets the freq_bid_multiplier_time_window of this CampaignBidOptionsUpdate.
+
+        The time window for frequency bid multipliers.  # noqa: E501
+
+        :param freq_bid_multiplier_time_window: The freq_bid_multiplier_time_window of this CampaignBidOptionsUpdate.
+        :type freq_bid_multiplier_time_window: FreqBidMultiplierTimeWindow
+        """
+
+        self._freq_bid_multiplier_time_window = freq_bid_multiplier_time_window
+
+    @property
+    def frequency_multipliers(self) -> FrequencyMultipliers:
+        """Gets the frequency_multipliers of this CampaignBidOptionsUpdate.
+
+        Frequency multipliers for bid adjustments.  # noqa: E501
+
+        :return: The frequency_multipliers of this CampaignBidOptionsUpdate.
+        :rtype: FrequencyMultipliers
+        """
+        return self._frequency_multipliers
+
+    @frequency_multipliers.setter
+    def frequency_multipliers(self, frequency_multipliers: FrequencyMultipliers):
+        """Sets the frequency_multipliers of this CampaignBidOptionsUpdate.
+
+        Frequency multipliers for bid adjustments.  # noqa: E501
+
+        :param frequency_multipliers: The frequency_multipliers of this CampaignBidOptionsUpdate.
+        :type frequency_multipliers: FrequencyMultipliers
+        """
+
+        self._frequency_multipliers = frequency_multipliers
+
+    @property
+    def gender_multipliers(self) -> GenderMultipliers:
+        """Gets the gender_multipliers of this CampaignBidOptionsUpdate.
+
+        Gender multipliers for bid adjustments.  # noqa: E501
+
+        :return: The gender_multipliers of this CampaignBidOptionsUpdate.
+        :rtype: GenderMultipliers
+        """
+        return self._gender_multipliers
+
+    @gender_multipliers.setter
+    def gender_multipliers(self, gender_multipliers: GenderMultipliers):
+        """Sets the gender_multipliers of this CampaignBidOptionsUpdate.
+
+        Gender multipliers for bid adjustments.  # noqa: E501
+
+        :param gender_multipliers: The gender_multipliers of this CampaignBidOptionsUpdate.
+        :type gender_multipliers: GenderMultipliers
+        """
+
+        self._gender_multipliers = gender_multipliers
+
+    @property
     def placement_multipliers(self) -> PlacementMultipliers:
         """Gets the placement_multipliers of this CampaignBidOptionsUpdate.
 
+        Placement multipliers for bid adjustments.  # noqa: E501
 
         :return: The placement_multipliers of this CampaignBidOptionsUpdate.
         :rtype: PlacementMultipliers
@@ -116,6 +238,7 @@ class CampaignBidOptionsUpdate(Model):
     def placement_multipliers(self, placement_multipliers: PlacementMultipliers):
         """Sets the placement_multipliers of this CampaignBidOptionsUpdate.
 
+        Placement multipliers for bid adjustments.  # noqa: E501
 
         :param placement_multipliers: The placement_multipliers of this CampaignBidOptionsUpdate.
         :type placement_multipliers: PlacementMultipliers
@@ -124,31 +247,26 @@ class CampaignBidOptionsUpdate(Model):
         self._placement_multipliers = placement_multipliers
 
     @property
-    def update_mask(self) -> List[str]:
+    def update_mask(self) -> List[CampaignBidOptionsUpdateMaskItems]:
         """Gets the update_mask of this CampaignBidOptionsUpdate.
 
-        List of fields to update, only the fields in the list will be updated.  # noqa: E501
+        List of fields to update. Only the fields in the list will be updated.  # noqa: E501
 
         :return: The update_mask of this CampaignBidOptionsUpdate.
-        :rtype: List[str]
+        :rtype: List[CampaignBidOptionsUpdateMaskItems]
         """
         return self._update_mask
 
     @update_mask.setter
-    def update_mask(self, update_mask: List[str]):
+    def update_mask(self, update_mask: List[CampaignBidOptionsUpdateMaskItems]):
         """Sets the update_mask of this CampaignBidOptionsUpdate.
 
-        List of fields to update, only the fields in the list will be updated.  # noqa: E501
+        List of fields to update. Only the fields in the list will be updated.  # noqa: E501
 
         :param update_mask: The update_mask of this CampaignBidOptionsUpdate.
-        :type update_mask: List[str]
+        :type update_mask: List[CampaignBidOptionsUpdateMaskItems]
         """
-        allowed_values = ["AUDIENCE", "APP_TYPE", "PLACEMENT", "GENDER", "AGE_BUCKET"]  # noqa: E501
-        if not set(update_mask).issubset(set(allowed_values)):
-            raise ValueError(
-                "Invalid values for `update_mask` [{0}], must be a subset of [{1}]"  # noqa: E501
-                .format(", ".join(map(str, set(update_mask) - set(allowed_values))),  # noqa: E501
-                        ", ".join(map(str, allowed_values)))
-            )
+        if update_mask is None:
+            raise ValueError("Invalid value for `update_mask`, must not be `None`")  # noqa: E501
 
         self._update_mask = update_mask

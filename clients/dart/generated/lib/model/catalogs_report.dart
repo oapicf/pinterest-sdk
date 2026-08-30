@@ -73,10 +73,6 @@ class CatalogsReport {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsReport[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsReport[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -137,29 +133,29 @@ class CatalogsReport {
 }
 
 
-class CatalogsReportReportStatusEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsReportReportStatusEnum._(this.value);
+enum CatalogsReportReportStatusEnum {
+  FINISHED._(r'FINISHED'),
+  IN_PROGRESS._(r'IN_PROGRESS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsReportReportStatusEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const FINISHED = CatalogsReportReportStatusEnum._(r'FINISHED');
-  static const IN_PROGRESS = CatalogsReportReportStatusEnum._(r'IN_PROGRESS');
-
-  /// List of all possible values in this [enum][CatalogsReportReportStatusEnum].
-  static const values = <CatalogsReportReportStatusEnum>[
-    FINISHED,
-    IN_PROGRESS,
-  ];
-
+  /// Returns the instance of [CatalogsReportReportStatusEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsReportReportStatusEnum? fromJson(dynamic value) => CatalogsReportReportStatusEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsReportReportStatusEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsReportReportStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsReportReportStatusEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -181,9 +177,10 @@ class CatalogsReportReportStatusEnumTypeTransformer {
 
   const CatalogsReportReportStatusEnumTypeTransformer._();
 
-  String encode(CatalogsReportReportStatusEnum data) => data.value;
+  String encode(CatalogsReportReportStatusEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsReportReportStatusEnum.
+  /// Returns the instance of [CatalogsReportReportStatusEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -192,6 +189,9 @@ class CatalogsReportReportStatusEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsReportReportStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsReportReportStatusEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'FINISHED': return CatalogsReportReportStatusEnum.FINISHED;
@@ -205,7 +205,7 @@ class CatalogsReportReportStatusEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsReportReportStatusEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsReportReportStatusEnumTypeTransformer? _instance;
 }
 

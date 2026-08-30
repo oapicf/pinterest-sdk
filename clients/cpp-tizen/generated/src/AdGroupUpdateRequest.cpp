@@ -23,34 +23,51 @@ AdGroupUpdateRequest::~AdGroupUpdateRequest()
 void
 AdGroupUpdateRequest::__init()
 {
+	//bid_multiplier = double(0);
+	//id = std::string();
+	//new std::list()std::list> targeting_spec_operations;
 	//auto_targeting_enabled = bool(false);
 	//bid_in_micro_currency = int(0);
-	//bid_strategy_type = std::string();
+	//bid_strategy_type = new BidStrategyType();
 	//billable_event = new ActionType();
 	//budget_in_micro_currency = int(0);
-	//budget_type = std::string();
+	//budget_type = new BudgetType();
 	//campaign_id = std::string();
 	//end_time = int(0);
 	//is_creative_optimization = bool(false);
 	//lifetime_frequency_cap = int(0);
 	//name = std::string();
 	//optimization_goal_metadata = null;
-	//pacing_delivery_type = std::string();
-	//placement_group = std::string();
+	//pacing_delivery_type = new PacingDeliveryType();
+	//placement_group = null;
 	//promotion_application_level = std::string();
 	//promotion_id = std::string();
+	//new std::list()std::list> promotion_ids;
 	//start_time = int(0);
-	//status = std::string();
+	//status = null;
 	//targeting_spec = new TargetingSpec();
 	//new std::list()std::list> targeting_template_ids;
 	//tracking_urls = null;
-	//bid_multiplier = double(0);
-	//id = std::string();
 }
 
 void
 AdGroupUpdateRequest::__cleanup()
 {
+	//if(bid_multiplier != NULL) {
+	//
+	//delete bid_multiplier;
+	//bid_multiplier = NULL;
+	//}
+	//if(id != NULL) {
+	//
+	//delete id;
+	//id = NULL;
+	//}
+	//if(targeting_spec_operations != NULL) {
+	//targeting_spec_operations.RemoveAll(true);
+	//delete targeting_spec_operations;
+	//targeting_spec_operations = NULL;
+	//}
 	//if(auto_targeting_enabled != NULL) {
 	//
 	//delete auto_targeting_enabled;
@@ -131,6 +148,11 @@ AdGroupUpdateRequest::__cleanup()
 	//delete promotion_id;
 	//promotion_id = NULL;
 	//}
+	//if(promotion_ids != NULL) {
+	//promotion_ids.RemoveAll(true);
+	//delete promotion_ids;
+	//promotion_ids = NULL;
+	//}
 	//if(start_time != NULL) {
 	//
 	//delete start_time;
@@ -156,16 +178,6 @@ AdGroupUpdateRequest::__cleanup()
 	//delete tracking_urls;
 	//tracking_urls = NULL;
 	//}
-	//if(bid_multiplier != NULL) {
-	//
-	//delete bid_multiplier;
-	//bid_multiplier = NULL;
-	//}
-	//if(id != NULL) {
-	//
-	//delete id;
-	//id = NULL;
-	//}
 	//
 }
 
@@ -174,6 +186,55 @@ AdGroupUpdateRequest::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *bid_multiplierKey = "bid_multiplier";
+	node = json_object_get_member(pJsonObject, bid_multiplierKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&bid_multiplier, node, "long long", "");
+		} else {
+			
+			long long* obj = static_cast<long long*> (&bid_multiplier);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *targeting_spec_operationsKey = "targeting_spec_operations";
+	node = json_object_get_member(pJsonObject, targeting_spec_operationsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<TargetingSpecOperations> new_list;
+			TargetingSpecOperations inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("TargetingSpecOperations")) {
+					jsonToValue(&inst, temp_json, "TargetingSpecOperations", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			targeting_spec_operations = new_list;
+		}
+		
+	}
 	const gchar *auto_targeting_enabledKey = "auto_targeting_enabled";
 	node = json_object_get_member(pJsonObject, auto_targeting_enabledKey);
 	if (node !=NULL) {
@@ -201,9 +262,12 @@ AdGroupUpdateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&bid_strategy_type, node, "std::string", "");
+		if (isprimitive("BidStrategyType")) {
+			jsonToValue(&bid_strategy_type, node, "BidStrategyType", "BidStrategyType");
 		} else {
+			
+			BidStrategyType* obj = static_cast<BidStrategyType*> (&bid_strategy_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -306,11 +370,11 @@ AdGroupUpdateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("OptimizationGoalMetadata")) {
-			jsonToValue(&optimization_goal_metadata, node, "OptimizationGoalMetadata", "OptimizationGoalMetadata");
+		if (isprimitive("std::string")) {
+			jsonToValue(&optimization_goal_metadata, node, "std::string", "");
 		} else {
 			
-			OptimizationGoalMetadata* obj = static_cast<OptimizationGoalMetadata*> (&optimization_goal_metadata);
+			std::string* obj = static_cast<std::string*> (&optimization_goal_metadata);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -364,6 +428,28 @@ AdGroupUpdateRequest::fromJson(char* jsonStr)
 		} else {
 			
 		}
+	}
+	const gchar *promotion_idsKey = "promotion_ids";
+	node = json_object_get_member(pJsonObject, promotion_idsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			promotion_ids = new_list;
+		}
+		
 	}
 	const gchar *start_timeKey = "start_time";
 	node = json_object_get_member(pJsonObject, start_timeKey);
@@ -431,37 +517,12 @@ AdGroupUpdateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("TrackingUrls")) {
-			jsonToValue(&tracking_urls, node, "TrackingUrls", "TrackingUrls");
-		} else {
-			
-			TrackingUrls* obj = static_cast<TrackingUrls*> (&tracking_urls);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *bid_multiplierKey = "bid_multiplier";
-	node = json_object_get_member(pJsonObject, bid_multiplierKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("long long")) {
-			jsonToValue(&bid_multiplier, node, "long long", "");
-		} else {
-			
-			long long* obj = static_cast<long long*> (&bid_multiplier);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
-	if (node !=NULL) {
-	
-
 		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
+			jsonToValue(&tracking_urls, node, "std::string", "");
 		} else {
+			
+			std::string* obj = static_cast<std::string*> (&tracking_urls);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -477,6 +538,54 @@ AdGroupUpdateRequest::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("long long")) {
+		long long obj = getBidMultiplier();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+		long long obj = static_cast<long long> (getBidMultiplier());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *bid_multiplierKey = "bid_multiplier";
+	json_object_set_member(pJsonObject, bid_multiplierKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("TargetingSpecOperations")) {
+		list<TargetingSpecOperations> new_list = static_cast<list <TargetingSpecOperations> > (getTargetingSpecOperations());
+		node = converttoJson(&new_list, "TargetingSpecOperations", "array");
+	} else {
+		node = json_node_alloc();
+		list<TargetingSpecOperations> new_list = static_cast<list <TargetingSpecOperations> > (getTargetingSpecOperations());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<TargetingSpecOperations>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			TargetingSpecOperations obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *targeting_spec_operationsKey = "targeting_spec_operations";
+	json_object_set_member(pJsonObject, targeting_spec_operationsKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getAutoTargetingEnabled();
 		node = converttoJson(&obj, "bool", "");
@@ -495,11 +604,16 @@ AdGroupUpdateRequest::toJson()
 	}
 	const gchar *bid_in_micro_currencyKey = "bid_in_micro_currency";
 	json_object_set_member(pJsonObject, bid_in_micro_currencyKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getBidStrategyType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("BidStrategyType")) {
+		BidStrategyType obj = getBidStrategyType();
+		node = converttoJson(&obj, "BidStrategyType", "");
 	}
 	else {
+		
+		BidStrategyType obj = static_cast<BidStrategyType> (getBidStrategyType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *bid_strategy_typeKey = "bid_strategy_type";
@@ -586,13 +700,13 @@ AdGroupUpdateRequest::toJson()
 	}
 	const gchar *nameKey = "name";
 	json_object_set_member(pJsonObject, nameKey, node);
-	if (isprimitive("OptimizationGoalMetadata")) {
-		OptimizationGoalMetadata obj = getOptimizationGoalMetadata();
-		node = converttoJson(&obj, "OptimizationGoalMetadata", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getOptimizationGoalMetadata();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
-		OptimizationGoalMetadata obj = static_cast<OptimizationGoalMetadata> (getOptimizationGoalMetadata());
+		std::string obj = static_cast<std::string> (getOptimizationGoalMetadata());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -646,6 +760,21 @@ AdGroupUpdateRequest::toJson()
 	}
 	const gchar *promotion_idKey = "promotion_id";
 	json_object_set_member(pJsonObject, promotion_idKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getPromotionIds());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getPromotionIds());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *promotion_idsKey = "promotion_ids";
+	json_object_set_member(pJsonObject, promotion_idsKey, node);
 	if (isprimitive("int")) {
 		int obj = getStartTime();
 		node = converttoJson(&obj, "int", "");
@@ -698,13 +827,13 @@ AdGroupUpdateRequest::toJson()
 	
 	const gchar *targeting_template_idsKey = "targeting_template_ids";
 	json_object_set_member(pJsonObject, targeting_template_idsKey, node);
-	if (isprimitive("TrackingUrls")) {
-		TrackingUrls obj = getTrackingUrls();
-		node = converttoJson(&obj, "TrackingUrls", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getTrackingUrls();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
-		TrackingUrls obj = static_cast<TrackingUrls> (getTrackingUrls());
+		std::string obj = static_cast<std::string> (getTrackingUrls());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -712,35 +841,48 @@ AdGroupUpdateRequest::toJson()
 	}
 	const gchar *tracking_urlsKey = "tracking_urls";
 	json_object_set_member(pJsonObject, tracking_urlsKey, node);
-	if (isprimitive("long long")) {
-		long long obj = getBidMultiplier();
-		node = converttoJson(&obj, "long long", "");
-	}
-	else {
-		
-		long long obj = static_cast<long long> (getBidMultiplier());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *bid_multiplierKey = "bid_multiplier";
-	json_object_set_member(pJsonObject, bid_multiplierKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+long long
+AdGroupUpdateRequest::getBidMultiplier()
+{
+	return bid_multiplier;
+}
+
+void
+AdGroupUpdateRequest::setBidMultiplier(long long  bid_multiplier)
+{
+	this->bid_multiplier = bid_multiplier;
+}
+
+std::string
+AdGroupUpdateRequest::getId()
+{
+	return id;
+}
+
+void
+AdGroupUpdateRequest::setId(std::string  id)
+{
+	this->id = id;
+}
+
+std::list<TargetingSpecOperations>
+AdGroupUpdateRequest::getTargetingSpecOperations()
+{
+	return targeting_spec_operations;
+}
+
+void
+AdGroupUpdateRequest::setTargetingSpecOperations(std::list <TargetingSpecOperations> targeting_spec_operations)
+{
+	this->targeting_spec_operations = targeting_spec_operations;
 }
 
 bool
@@ -767,14 +909,14 @@ AdGroupUpdateRequest::setBidInMicroCurrency(int  bid_in_micro_currency)
 	this->bid_in_micro_currency = bid_in_micro_currency;
 }
 
-std::string
+BidStrategyType
 AdGroupUpdateRequest::getBidStrategyType()
 {
 	return bid_strategy_type;
 }
 
 void
-AdGroupUpdateRequest::setBidStrategyType(std::string  bid_strategy_type)
+AdGroupUpdateRequest::setBidStrategyType(BidStrategyType  bid_strategy_type)
 {
 	this->bid_strategy_type = bid_strategy_type;
 }
@@ -875,14 +1017,14 @@ AdGroupUpdateRequest::setName(std::string  name)
 	this->name = name;
 }
 
-OptimizationGoalMetadata
+std::string
 AdGroupUpdateRequest::getOptimizationGoalMetadata()
 {
 	return optimization_goal_metadata;
 }
 
 void
-AdGroupUpdateRequest::setOptimizationGoalMetadata(OptimizationGoalMetadata  optimization_goal_metadata)
+AdGroupUpdateRequest::setOptimizationGoalMetadata(std::string  optimization_goal_metadata)
 {
 	this->optimization_goal_metadata = optimization_goal_metadata;
 }
@@ -935,6 +1077,18 @@ AdGroupUpdateRequest::setPromotionId(std::string  promotion_id)
 	this->promotion_id = promotion_id;
 }
 
+std::list<std::string>
+AdGroupUpdateRequest::getPromotionIds()
+{
+	return promotion_ids;
+}
+
+void
+AdGroupUpdateRequest::setPromotionIds(std::list <std::string> promotion_ids)
+{
+	this->promotion_ids = promotion_ids;
+}
+
 int
 AdGroupUpdateRequest::getStartTime()
 {
@@ -983,40 +1137,16 @@ AdGroupUpdateRequest::setTargetingTemplateIds(std::list <std::string> targeting_
 	this->targeting_template_ids = targeting_template_ids;
 }
 
-TrackingUrls
+std::string
 AdGroupUpdateRequest::getTrackingUrls()
 {
 	return tracking_urls;
 }
 
 void
-AdGroupUpdateRequest::setTrackingUrls(TrackingUrls  tracking_urls)
+AdGroupUpdateRequest::setTrackingUrls(std::string  tracking_urls)
 {
 	this->tracking_urls = tracking_urls;
-}
-
-long long
-AdGroupUpdateRequest::getBidMultiplier()
-{
-	return bid_multiplier;
-}
-
-void
-AdGroupUpdateRequest::setBidMultiplier(long long  bid_multiplier)
-{
-	this->bid_multiplier = bid_multiplier;
-}
-
-std::string
-AdGroupUpdateRequest::getId()
-{
-	return id;
-}
-
-void
-AdGroupUpdateRequest::setId(std::string  id)
-{
-	this->id = id;
 }
 
 

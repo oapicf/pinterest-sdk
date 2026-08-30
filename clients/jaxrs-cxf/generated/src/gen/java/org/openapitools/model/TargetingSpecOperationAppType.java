@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.TargetingSpecAppType;
+import org.openapitools.model.TargetingSpecListOperation;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -52,47 +53,17 @@ APPTYPE(String.valueOf("APPTYPE"));
 
   private FieldEnum field;
 
-public enum OperationEnum {
-
-SET(String.valueOf("SET")), ADD(String.valueOf("ADD")), REMOVE(String.valueOf("REMOVE"));
-
-
-    private String value;
-
-    OperationEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OperationEnum fromValue(String value) {
-        for (OperationEnum b : OperationEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
   @ApiModelProperty(required = true, value = "")
 
-  private OperationEnum operation;
+  @Valid
+
+  private TargetingSpecListOperation operation;
 
   @ApiModelProperty(required = true, value = "")
 
   @Valid
 
-  private List<TargetingSpecAppType> values;
+  private List<TargetingSpecAppType> values = new ArrayList<>();
  /**
    * Get field
    * @return field
@@ -121,18 +92,15 @@ SET(String.valueOf("SET")), ADD(String.valueOf("ADD")), REMOVE(String.valueOf("R
   **/
   @JsonProperty("operation")
   @NotNull
-  public String getOperation() {
-    if (operation == null) {
-      return null;
-    }
-    return operation.value();
+  public TargetingSpecListOperation getOperation() {
+    return operation;
   }
 
-  public void setOperation(OperationEnum operation) {
+  public void setOperation(TargetingSpecListOperation operation) {
     this.operation = operation;
   }
 
-  public TargetingSpecOperationAppType operation(OperationEnum operation) {
+  public TargetingSpecOperationAppType operation(TargetingSpecListOperation operation) {
     this.operation = operation;
     return this;
   }
@@ -197,10 +165,7 @@ SET(String.valueOf("SET")), ADD(String.valueOf("ADD")), REMOVE(String.valueOf("R
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

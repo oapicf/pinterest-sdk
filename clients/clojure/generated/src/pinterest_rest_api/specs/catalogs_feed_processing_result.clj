@@ -14,10 +14,10 @@
   {
    (ds/req :created_at) inst?
    (ds/req :id) string?
-   (ds/req :updated_at) inst?
    (ds/req :ingestion_details) catalogs-feed-ingestion-details-spec
    (ds/req :product_counts) catalogs-feed-product-counts-spec
    (ds/req :status) catalogs-feed-processing-status-spec
+   (ds/req :updated_at) inst?
    (ds/req :validation_details) catalogs-feed-validation-details-spec
    (ds/opt :video_counts) catalogs-feed-video-counts-spec
    })

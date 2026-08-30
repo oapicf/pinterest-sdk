@@ -1,10 +1,12 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Audience;
-import org.openapitools.vertxweb.server.model.AudienceCreateRequest;
-import org.openapitools.vertxweb.server.model.AudienceUpdateRequest;
+import org.openapitools.vertxweb.server.model.AdAccountsAudience;
+import org.openapitools.vertxweb.server.model.AdAccountsAudienceCreate;
+import org.openapitools.vertxweb.server.model.AdAccountsAudienceUpdate;
+import org.openapitools.vertxweb.server.model.AudienceOwnershipType;
 import org.openapitools.vertxweb.server.model.AudiencesList200Response;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PinterestLibPaginationOrder;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -50,12 +52,12 @@ public class AudiencesApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        AudienceCreateRequest audienceCreateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AudienceCreateRequest>(){}) : null;
+        AdAccountsAudienceCreate adAccountsAudienceCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdAccountsAudienceCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter audienceCreateRequest is {}", audienceCreateRequest);
+        logger.debug("Parameter adAccountsAudienceCreate is {}", adAccountsAudienceCreate);
 
-        api.audiencesCreate(adAccountId, audienceCreateRequest)
+        api.audiencesCreate(adAccountId, adAccountsAudienceCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -73,13 +75,13 @@ public class AudiencesApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
-        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         String audienceId = requestParameters.pathParameter("audience_id") != null ? requestParameters.pathParameter("audience_id").getString() : null;
+        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter audienceId is {}", audienceId);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.audiencesGet(adAccountId, audienceId)
+        api.audiencesGet(audienceId, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -99,17 +101,19 @@ public class AudiencesApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
-        String order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
-        String ownershipType = requestParameters.queryParameter("ownership_type") != null ? requestParameters.queryParameter("ownership_type").getString() : "OWNED";
+        PinterestLibPaginationOrder order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getPinterestLibPaginationOrder() : null;
+        AudienceOwnershipType ownershipType = requestParameters.queryParameter("ownership_type") != null ? requestParameters.queryParameter("ownership_type").getAudienceOwnershipType() : null;
+        Boolean excludeNca = requestParameters.queryParameter("exclude_nca") != null ? requestParameters.queryParameter("exclude_nca").getBoolean() : false;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter bookmark is {}", bookmark);
-        logger.debug("Parameter order is {}", order);
         logger.debug("Parameter pageSize is {}", pageSize);
+        logger.debug("Parameter order is {}", order);
         logger.debug("Parameter ownershipType is {}", ownershipType);
+        logger.debug("Parameter excludeNca is {}", excludeNca);
 
-        api.audiencesList(adAccountId, bookmark, order, pageSize, ownershipType)
+        api.audiencesList(adAccountId, bookmark, pageSize, order, ownershipType, excludeNca)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -127,16 +131,16 @@ public class AudiencesApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
-        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         String audienceId = requestParameters.pathParameter("audience_id") != null ? requestParameters.pathParameter("audience_id").getString() : null;
+        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        AudienceUpdateRequest audienceUpdateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AudienceUpdateRequest>(){}) : null;
+        AdAccountsAudienceUpdate adAccountsAudienceUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdAccountsAudienceUpdate>(){}) : null;
 
-        logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter audienceId is {}", audienceId);
-        logger.debug("Parameter audienceUpdateRequest is {}", audienceUpdateRequest);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter adAccountsAudienceUpdate is {}", adAccountsAudienceUpdate);
 
-        api.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest)
+        api.audiencesUpdate(audienceId, adAccountId, adAccountsAudienceUpdate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

@@ -1,7 +1,9 @@
 const utils = require('../utils/utils');
-const AdPreviewCreateFromImage = require('../models/AdPreviewCreateFromImage');
-const AdPreviewCreateFromPin = require('../models/AdPreviewCreateFromPin');
 const AdPreviewShopping = require('../models/AdPreviewShopping');
+const AdPreviewSourceImage = require('../models/AdPreviewSourceImage');
+const AdPreviewSourcePinId = require('../models/AdPreviewSourcePinId');
+const AdShoppingPreviewCreativeType = require('../models/AdShoppingPreviewCreativeType');
+const BasePreferredMediaType = require('../models/BasePreferredMediaType');
 const CustomizableCTAType = require('../models/CustomizableCTAType');
 
 module.exports = {
@@ -15,10 +17,19 @@ module.exports = {
                 type: 'string',
             },
             {
+                key: `${keyPrefix}promotion_id`,
+                label: `Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion. - [${labelPrefix}promotion_id]`,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}title`,
                 label: `Title displayed below ad. - [${labelPrefix}title]`,
                 required: true,
                 type: 'string',
+            },
+            {
+                key: `${keyPrefix}creative_type`,
+                ...AdShoppingPreviewCreativeType.fields(`${keyPrefix}creative_type`, isInput),
             },
             {
                 key: `${keyPrefix}pin_id`,
@@ -31,18 +42,6 @@ module.exports = {
                 label: `Catalog Product Group Id. - [${labelPrefix}catalog_product_group_id]`,
                 required: true,
                 type: 'string',
-            },
-            {
-                key: `${keyPrefix}creative_type`,
-                label: `Ad format of the shopping ad preview. - [${labelPrefix}creative_type]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'SHOPPING',
-                    'CAROUSEL',
-                    'COLLECTION',
-                    'REGULAR',
-                ],
             },
             {
                 key: `${keyPrefix}customizable_cta_type`,
@@ -75,12 +74,12 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}preferred_media_type`,
-                label: `Preferred media type. - [${labelPrefix}preferred_media_type]`,
-                type: 'string',
-                choices: [
-                    'VIDEO',
-                    'IMAGE',
-                ],
+                ...BasePreferredMediaType.fields(`${keyPrefix}preferred_media_type`, isInput),
+            },
+            {
+                key: `${keyPrefix}show_promotion`,
+                label: `Include promotion data in preview when available on catalog item. Defaults to false. - [${labelPrefix}show_promotion]`,
+                type: 'boolean',
             },
             {
                 key: `${keyPrefix}video_tag`,
@@ -93,10 +92,11 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'image_url': bundle.inputData?.[`${keyPrefix}image_url`],
+            'promotion_id': bundle.inputData?.[`${keyPrefix}promotion_id`],
             'title': bundle.inputData?.[`${keyPrefix}title`],
+            'creative_type': bundle.inputData?.[`${keyPrefix}creative_type`],
             'pin_id': bundle.inputData?.[`${keyPrefix}pin_id`],
             'catalog_product_group_id': bundle.inputData?.[`${keyPrefix}catalog_product_group_id`],
-            'creative_type': bundle.inputData?.[`${keyPrefix}creative_type`],
             'customizable_cta_type': bundle.inputData?.[`${keyPrefix}customizable_cta_type`],
             'hero_image_title': bundle.inputData?.[`${keyPrefix}hero_image_title`],
             'hero_image_url': bundle.inputData?.[`${keyPrefix}hero_image_url`],
@@ -104,6 +104,7 @@ module.exports = {
             'image_tag': bundle.inputData?.[`${keyPrefix}image_tag`],
             'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'preferred_media_type': bundle.inputData?.[`${keyPrefix}preferred_media_type`],
+            'show_promotion': bundle.inputData?.[`${keyPrefix}show_promotion`],
             'video_tag': bundle.inputData?.[`${keyPrefix}video_tag`],
         }
     },

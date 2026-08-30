@@ -9,15 +9,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
-/**
- * If specified, you must provide all properties
- **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-@ApiModel(description = "If specified, you must provide all properties")
+
 public class CatalogsHotelGuestRatings   {
   
   private BigDecimal maxScore;
@@ -143,10 +140,7 @@ public class CatalogsHotelGuestRatings   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

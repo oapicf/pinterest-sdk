@@ -14,10 +14,9 @@ class Exception {
   /// Returns a new [Exception] instance.
   Exception({
     this.code,
-    this.message,
+    required this.message,
   });
 
-  /// Exception error code.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -26,14 +25,7 @@ class Exception {
   ///
   int? code;
 
-  /// Exception message.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? message;
+  String message;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Exception &&
@@ -44,7 +36,7 @@ class Exception {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (code == null ? 0 : code!.hashCode) +
-    (message == null ? 0 : message!.hashCode);
+    (message.hashCode);
 
   @override
   String toString() => 'Exception[code=$code, message=$message]';
@@ -56,11 +48,7 @@ class Exception {
     } else {
       json[r'code'] = null;
     }
-    if (this.message != null) {
       json[r'message'] = this.message;
-    } else {
-      json[r'message'] = null;
-    }
     return json;
   }
 
@@ -75,16 +63,14 @@ class Exception {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Exception[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Exception[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'message'), 'Required key "Exception[message]" is missing from JSON.');
+        assert(json[r'message'] != null, 'Required key "Exception[message]" has a null value in JSON.');
         return true;
       }());
 
       return Exception(
         code: mapValueOfType<int>(json, r'code'),
-        message: mapValueOfType<String>(json, r'message'),
+        message: mapValueOfType<String>(json, r'message')!,
       );
     }
     return null;
@@ -132,6 +118,7 @@ class Exception {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'message',
   };
 }
 

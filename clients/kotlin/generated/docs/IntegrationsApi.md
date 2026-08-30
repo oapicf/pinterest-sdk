@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="integrationsCommerceDel"></a>
 # **integrationsCommerceDel**
-> integrationsCommerceDel(externalBusinessId)
+> IntegrationMetadata integrationsCommerceDel(externalBusinessId)
 
 Delete commerce integration
 
@@ -30,7 +30,8 @@ Delete commerce integration metadata for the given external business ID. Note: I
 val apiInstance = IntegrationsApi()
 val externalBusinessId : kotlin.String = externalBusinessId_example // kotlin.String | External business ID for the integration.
 try {
-    apiInstance.integrationsCommerceDel(externalBusinessId)
+    val result : IntegrationMetadata = apiInstance.integrationsCommerceDel(externalBusinessId)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling IntegrationsApi#integrationsCommerceDel")
     e.printStackTrace()
@@ -47,13 +48,19 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**IntegrationMetadata**](IntegrationMetadata.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -100,8 +107,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -110,7 +123,7 @@ Configure pinterest_oauth2:
 
 <a id="integrationsCommercePatch"></a>
 # **integrationsCommercePatch**
-> IntegrationMetadata integrationsCommercePatch(externalBusinessId, integrationRequestPatch)
+> IntegrationMetadata integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate)
 
 Update commerce integration
 
@@ -124,9 +137,9 @@ Update commerce integration metadata for the given external business ID. Note: I
 
 val apiInstance = IntegrationsApi()
 val externalBusinessId : kotlin.String = externalBusinessId_example // kotlin.String | External business ID for the integration.
-val integrationRequestPatch : IntegrationRequestPatch =  // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
+val integrationMetadataUpdate : IntegrationMetadataUpdate =  // IntegrationMetadataUpdate | 
 try {
-    val result : IntegrationMetadata = apiInstance.integrationsCommercePatch(externalBusinessId, integrationRequestPatch)
+    val result : IntegrationMetadata = apiInstance.integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling IntegrationsApi#integrationsCommercePatch")
@@ -141,7 +154,7 @@ try {
 | **externalBusinessId** | **kotlin.String**| External business ID for the integration. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | |
+| **integrationMetadataUpdate** | [**IntegrationMetadataUpdate**](IntegrationMetadataUpdate.md)|  | |
 
 ### Return type
 
@@ -150,8 +163,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -160,7 +179,7 @@ Configure pinterest_oauth2:
 
 <a id="integrationsCommercePost"></a>
 # **integrationsCommercePost**
-> IntegrationMetadata integrationsCommercePost(integrationRequest)
+> IntegrationMetadata integrationsCommercePost(integrationMetadataCreate)
 
 Create commerce integration
 
@@ -173,9 +192,9 @@ Create commerce integration metadata to link an external business ID with a Pint
 //import org.openapitools.client.models.*
 
 val apiInstance = IntegrationsApi()
-val integrationRequest : IntegrationRequest =  // IntegrationRequest | Parameters to get create/update the Integration Metadata
+val integrationMetadataCreate : IntegrationMetadataCreate =  // IntegrationMetadataCreate | 
 try {
-    val result : IntegrationMetadata = apiInstance.integrationsCommercePost(integrationRequest)
+    val result : IntegrationMetadata = apiInstance.integrationsCommercePost(integrationMetadataCreate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling IntegrationsApi#integrationsCommercePost")
@@ -189,7 +208,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | |
+| **integrationMetadataCreate** | [**IntegrationMetadataCreate**](IntegrationMetadataCreate.md)|  | |
 
 ### Return type
 
@@ -198,8 +217,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -221,7 +246,7 @@ Get integration metadata by ID. Note: If you&#39;re interested in joining the be
 //import org.openapitools.client.models.*
 
 val apiInstance = IntegrationsApi()
-val id : kotlin.String = id_example // kotlin.String | Integration ID.
+val id : kotlin.String = id_example // kotlin.String | Integration record ID.
 try {
     val result : IntegrationRecord = apiInstance.integrationsGetById(id)
     println(result)
@@ -237,7 +262,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **kotlin.String**| Integration ID. | |
+| **id** | **kotlin.String**| Integration record ID. | |
 
 ### Return type
 
@@ -246,8 +271,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -270,7 +301,7 @@ Get integration metadata list. Note: If you&#39;re interested in joining the bet
 
 val apiInstance = IntegrationsApi()
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
     val result : IntegrationsGetList200Response = apiInstance.integrationsGetList(bookmark, pageSize)
     println(result)
@@ -287,7 +318,7 @@ try {
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -296,8 +327,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -306,7 +343,7 @@ Configure pinterest_oauth2:
 
 <a id="integrationsLogsPost"></a>
 # **integrationsLogsPost**
-> IntegrationLogsSuccessResponse integrationsLogsPost(integrationLogsRequest)
+> IntegrationLogsSuccessResponse integrationsLogsPost(integrationLogsRequestCreate)
 
 Receives batched logs from integration applications.
 
@@ -319,9 +356,9 @@ This endpoint receives batched logs from integration applications on partner pla
 //import org.openapitools.client.models.*
 
 val apiInstance = IntegrationsApi()
-val integrationLogsRequest : IntegrationLogsRequest =  // IntegrationLogsRequest | Ingest log information from external integration application.
+val integrationLogsRequestCreate : IntegrationLogsRequestCreate =  // IntegrationLogsRequestCreate | 
 try {
-    val result : IntegrationLogsSuccessResponse = apiInstance.integrationsLogsPost(integrationLogsRequest)
+    val result : IntegrationLogsSuccessResponse = apiInstance.integrationsLogsPost(integrationLogsRequestCreate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling IntegrationsApi#integrationsLogsPost")
@@ -335,7 +372,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **integrationLogsRequest** | [**IntegrationLogsRequest**](IntegrationLogsRequest.md)| Ingest log information from external integration application. | |
+| **integrationLogsRequestCreate** | [**IntegrationLogsRequestCreate**](IntegrationLogsRequestCreate.md)|  | |
 
 ### Return type
 
@@ -344,8 +381,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

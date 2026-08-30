@@ -1,0 +1,68 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CustomerSegment"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CustomerSegment"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TargetingTemplateStatus = openapi_server.resourceTypes.TargetingTemplateStatus
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CustomerSegment {
+    title = CustomerSegment
+    description = CustomerSegment
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = "The ID of the ad account that this customer segment belongs to."
+          optional = false
+        }
+        audience_ids {
+          type = array
+          items.type =  string
+          description = "Audience IDs included in the customer segment."
+          optional = true
+        }
+        created_time {
+          type =  integer
+          description = "Customer segment created time. Unix timestamp in seconds."
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Customer segment ID."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Customer segment name."
+          optional = true
+        }
+        status {
+          type = TargetingTemplateStatus
+          description = "Indicates whether the customer segment is active or deleted."
+          optional = false
+        }
+        updated_time {
+          type =  integer
+          description = "Customer segment updated time. Unix timestamp in seconds."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CustomerSegment {
+    title = CustomerSegment
+    description = CustomerSegment
+    implements = openapi_server.resourceTypes.CustomerSegment
+
+  }
+}

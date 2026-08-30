@@ -6,44 +6,53 @@
 
 
 static targeting_template_create_t *targeting_template_create_create_internal(
-    int auto_targeting_enabled,
+    int *auto_targeting_enabled,
     list_t *keywords,
     char *name,
     pinterest_rest_api_placement_group_type__e placement_group,
-    targeting_spec_t *targeting_attributes,
+    targeting_spec_optimal_t *targeting_attributes,
     tracking_urls_t *tracking_urls
     ) {
     targeting_template_create_t *targeting_template_create_local_var = malloc(sizeof(targeting_template_create_t));
     if (!targeting_template_create_local_var) {
         return NULL;
     }
+    memset(targeting_template_create_local_var, 0, sizeof(targeting_template_create_t));
+    targeting_template_create_local_var->_library_owned = 1;
     targeting_template_create_local_var->auto_targeting_enabled = auto_targeting_enabled;
     targeting_template_create_local_var->keywords = keywords;
     targeting_template_create_local_var->name = name;
     targeting_template_create_local_var->placement_group = placement_group;
     targeting_template_create_local_var->targeting_attributes = targeting_attributes;
     targeting_template_create_local_var->tracking_urls = tracking_urls;
-
-    targeting_template_create_local_var->_library_owned = 1;
     return targeting_template_create_local_var;
 }
 
 __attribute__((deprecated)) targeting_template_create_t *targeting_template_create_create(
-    int auto_targeting_enabled,
+    int *auto_targeting_enabled,
     list_t *keywords,
     char *name,
     pinterest_rest_api_placement_group_type__e placement_group,
-    targeting_spec_t *targeting_attributes,
+    targeting_spec_optimal_t *targeting_attributes,
     tracking_urls_t *tracking_urls
     ) {
-    return targeting_template_create_create_internal (
-        auto_targeting_enabled,
+    int *auto_targeting_enabled_copy = NULL;
+    if (auto_targeting_enabled) {
+        auto_targeting_enabled_copy = malloc(sizeof(int));
+        if (auto_targeting_enabled_copy) *auto_targeting_enabled_copy = *auto_targeting_enabled;
+    }
+    targeting_template_create_t *result = targeting_template_create_create_internal (
+        auto_targeting_enabled_copy,
         keywords,
         name,
         placement_group,
         targeting_attributes,
         tracking_urls
         );
+    if (!result) {
+        free(auto_targeting_enabled_copy);
+    }
+    return result;
 }
 
 void targeting_template_create_free(targeting_template_create_t *targeting_template_create) {
@@ -55,6 +64,10 @@ void targeting_template_create_free(targeting_template_create_t *targeting_templ
         return ;
     }
     listEntry_t *listEntry;
+    if (targeting_template_create->auto_targeting_enabled) {
+        free(targeting_template_create->auto_targeting_enabled);
+        targeting_template_create->auto_targeting_enabled = NULL;
+    }
     if (targeting_template_create->keywords) {
         list_ForEach(listEntry, targeting_template_create->keywords) {
             targeting_template_keyword_free(listEntry->data);
@@ -67,7 +80,7 @@ void targeting_template_create_free(targeting_template_create_t *targeting_templ
         targeting_template_create->name = NULL;
     }
     if (targeting_template_create->targeting_attributes) {
-        targeting_spec_free(targeting_template_create->targeting_attributes);
+        targeting_spec_optimal_free(targeting_template_create->targeting_attributes);
         targeting_template_create->targeting_attributes = NULL;
     }
     if (targeting_template_create->tracking_urls) {
@@ -82,7 +95,7 @@ cJSON *targeting_template_create_convertToJSON(targeting_template_create_t *targ
 
     // targeting_template_create->auto_targeting_enabled
     if(targeting_template_create->auto_targeting_enabled) {
-    if(cJSON_AddBoolToObject(item, "auto_targeting_enabled", targeting_template_create->auto_targeting_enabled) == NULL) {
+    if(cJSON_AddBoolToObject(item, "auto_targeting_enabled", *targeting_template_create->auto_targeting_enabled) == NULL) {
     goto fail; //Bool
     }
     }
@@ -134,7 +147,7 @@ cJSON *targeting_template_create_convertToJSON(targeting_template_create_t *targ
     if (!targeting_template_create->targeting_attributes) {
         goto fail;
     }
-    cJSON *targeting_attributes_local_JSON = targeting_spec_convertToJSON(targeting_template_create->targeting_attributes);
+    cJSON *targeting_attributes_local_JSON = targeting_spec_optimal_convertToJSON(targeting_template_create->targeting_attributes);
     if(targeting_attributes_local_JSON == NULL) {
     goto fail; //model
     }
@@ -168,14 +181,19 @@ targeting_template_create_t *targeting_template_create_parseFromJSON(cJSON *targ
 
     targeting_template_create_t *targeting_template_create_local_var = NULL;
 
+    // define the local variable for targeting_template_create->auto_targeting_enabled
+    int *auto_targeting_enabled_local_var = NULL;
+
     // define the local list for targeting_template_create->keywords
     list_t *keywordsList = NULL;
+
+    char *name_local_str = NULL;
 
     // define the local variable for targeting_template_create->placement_group
     pinterest_rest_api_placement_group_type__e placement_group_local_nonprim = 0;
 
     // define the local variable for targeting_template_create->targeting_attributes
-    targeting_spec_t *targeting_attributes_local_nonprim = NULL;
+    targeting_spec_optimal_t *targeting_attributes_local_nonprim = NULL;
 
     // define the local variable for targeting_template_create->tracking_urls
     tracking_urls_t *tracking_urls_local_nonprim = NULL;
@@ -190,6 +208,12 @@ targeting_template_create_t *targeting_template_create_parseFromJSON(cJSON *targ
     {
     goto end; //Bool
     }
+    auto_targeting_enabled_local_var = malloc(sizeof(int));
+    if(!auto_targeting_enabled_local_var)
+    {
+        goto end;
+    }
+    *auto_targeting_enabled_local_var = auto_targeting_enabled->valueint;
     }
 
     // targeting_template_create->keywords
@@ -250,7 +274,7 @@ targeting_template_create_t *targeting_template_create_parseFromJSON(cJSON *targ
     }
 
     
-    targeting_attributes_local_nonprim = targeting_spec_parseFromJSON(targeting_attributes); //nonprimitive
+    targeting_attributes_local_nonprim = targeting_spec_optimal_parseFromJSON(targeting_attributes); //nonprimitive
 
     // targeting_template_create->tracking_urls
     cJSON *tracking_urls = cJSON_GetObjectItemCaseSensitive(targeting_template_createJSON, "tracking_urls");
@@ -262,17 +286,27 @@ targeting_template_create_t *targeting_template_create_parseFromJSON(cJSON *targ
     }
 
 
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     targeting_template_create_local_var = targeting_template_create_create_internal (
-        auto_targeting_enabled ? auto_targeting_enabled->valueint : 0,
+        auto_targeting_enabled_local_var,
         keywords ? keywordsList : NULL,
-        strdup(name->valuestring),
+        name_local_str,
         placement_group ? placement_group_local_nonprim : 0,
         targeting_attributes_local_nonprim,
         tracking_urls ? tracking_urls_local_nonprim : NULL
         );
 
+    if (!targeting_template_create_local_var) {
+        goto end;
+    }
+
     return targeting_template_create_local_var;
 end:
+    if (auto_targeting_enabled_local_var) {
+        free(auto_targeting_enabled_local_var);
+        auto_targeting_enabled_local_var = NULL;
+    }
     if (keywordsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, keywordsList) {
@@ -282,11 +316,15 @@ end:
         list_freeList(keywordsList);
         keywordsList = NULL;
     }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
     if (placement_group_local_nonprim) {
         placement_group_local_nonprim = 0;
     }
     if (targeting_attributes_local_nonprim) {
-        targeting_spec_free(targeting_attributes_local_nonprim);
+        targeting_spec_optimal_free(targeting_attributes_local_nonprim);
         targeting_attributes_local_nonprim = NULL;
     }
     if (tracking_urls_local_nonprim) {

@@ -6,7 +6,7 @@ Object declaring an asset role update to an invite.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**asset_id_to_permissions** | **Dict[str, List[Permissions]]** | An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  | 
+**asset_id_to_permissions** | **Dict[str, List[Permissions]]** | An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. | 
 **invite_id** | **str** | Unique identifier of an invite. | 
 **invite_type** | [**InviteType**](InviteType.md) |  | 
 

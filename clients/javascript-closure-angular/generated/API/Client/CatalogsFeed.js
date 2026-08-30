@@ -7,28 +7,16 @@ goog.provide('API.Client.CatalogsFeed');
 API.Client.CatalogsFeed = function() {}
 
 /**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsFeed.prototype.catalogType;
+
+/**
  * @type {!Date}
  * @export
  */
 API.Client.CatalogsFeed.prototype.createdAt;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.CatalogsFeed.prototype.id;
-
-/**
- * @type {!Date}
- * @export
- */
-API.Client.CatalogsFeed.prototype.updatedAt;
-
-/**
- * @type {!API.Client.CatalogsType}
- * @export
- */
-API.Client.CatalogsFeed.prototype.catalogType;
 
 /**
  * @type {!API.Client.CatalogsFeedCredentials}
@@ -68,6 +56,13 @@ API.Client.CatalogsFeed.prototype.defaultLocale;
 API.Client.CatalogsFeed.prototype.format;
 
 /**
+ * ID of the feed entity.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsFeed.prototype.id;
+
+/**
  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
  * @type {!string}
  * @export
@@ -94,9 +89,19 @@ API.Client.CatalogsFeed.prototype.preferredProcessingSchedule;
 API.Client.CatalogsFeed.prototype.status;
 
 /**
+ * @type {!Date}
+ * @export
+ */
+API.Client.CatalogsFeed.prototype.updatedAt;
+
+/**
  * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsFeed.prototype.catalogId;
 
+/** @enum {string} */
+API.Client.CatalogsFeed.CatalogTypeEnum = { 
+  CREATIVE_ASSETS: 'CREATIVE_ASSETS',
+}

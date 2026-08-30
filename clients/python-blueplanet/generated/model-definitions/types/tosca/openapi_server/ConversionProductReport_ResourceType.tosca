@@ -1,0 +1,56 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionProductReport"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionProductReport"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BulkReportingJobStatus = openapi_server.resourceTypes.BulkReportingJobStatus
+}
+resourceTypes {
+
+  ConversionProductReport {
+    title = ConversionProductReport
+    description = ConversionProductReport
+    derivedFrom = Root
+    properties {
+        message {
+          type =  string
+          description = "Message returned from the create report request"
+          optional = false
+        }
+        report_status {
+          type = BulkReportingJobStatus
+          description = "Async report status"
+          optional = false
+        }
+        size {
+          type =  
+          description = "Size of the report in bytes"
+          optional = false
+        }
+        token {
+          type =  string
+          description = "Token returned from the create report request"
+          optional = false
+        }
+        url {
+          type =  string
+          description = "URL of the report"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionProductReport {
+    title = ConversionProductReport
+    description = ConversionProductReport
+    implements = openapi_server.resourceTypes.ConversionProductReport
+
+  }
+}

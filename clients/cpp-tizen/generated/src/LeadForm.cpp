@@ -1,0 +1,581 @@
+#include <map>
+#include <cstdlib>
+#include <glib-object.h>
+#include <json-glib/json-glib.h>
+#include "Helpers.h"
+
+
+#include "LeadForm.h"
+
+using namespace std;
+using namespace Tizen::ArtikCloud;
+
+LeadForm::LeadForm()
+{
+	//__init();
+}
+
+LeadForm::~LeadForm()
+{
+	//__cleanup();
+}
+
+void
+LeadForm::__init()
+{
+	//ad_account_id = std::string();
+	//completion_message = std::string();
+	//created_time = int(0);
+	//disclosure_language = std::string();
+	//has_accepted_terms = bool(false);
+	//id = std::string();
+	//name = std::string();
+	//new std::list()std::list> policy_links;
+	//privacy_policy_link = std::string();
+	//new std::list()std::list> questions;
+	//status = new LeadFormStatus();
+	//updated_time = int(0);
+}
+
+void
+LeadForm::__cleanup()
+{
+	//if(ad_account_id != NULL) {
+	//
+	//delete ad_account_id;
+	//ad_account_id = NULL;
+	//}
+	//if(completion_message != NULL) {
+	//
+	//delete completion_message;
+	//completion_message = NULL;
+	//}
+	//if(created_time != NULL) {
+	//
+	//delete created_time;
+	//created_time = NULL;
+	//}
+	//if(disclosure_language != NULL) {
+	//
+	//delete disclosure_language;
+	//disclosure_language = NULL;
+	//}
+	//if(has_accepted_terms != NULL) {
+	//
+	//delete has_accepted_terms;
+	//has_accepted_terms = NULL;
+	//}
+	//if(id != NULL) {
+	//
+	//delete id;
+	//id = NULL;
+	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
+	//}
+	//if(policy_links != NULL) {
+	//policy_links.RemoveAll(true);
+	//delete policy_links;
+	//policy_links = NULL;
+	//}
+	//if(privacy_policy_link != NULL) {
+	//
+	//delete privacy_policy_link;
+	//privacy_policy_link = NULL;
+	//}
+	//if(questions != NULL) {
+	//questions.RemoveAll(true);
+	//delete questions;
+	//questions = NULL;
+	//}
+	//if(status != NULL) {
+	//
+	//delete status;
+	//status = NULL;
+	//}
+	//if(updated_time != NULL) {
+	//
+	//delete updated_time;
+	//updated_time = NULL;
+	//}
+	//
+}
+
+void
+LeadForm::fromJson(char* jsonStr)
+{
+	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
+	JsonNode *node;
+	const gchar *ad_account_idKey = "ad_account_id";
+	node = json_object_get_member(pJsonObject, ad_account_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_account_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *completion_messageKey = "completion_message";
+	node = json_object_get_member(pJsonObject, completion_messageKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&completion_message, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *created_timeKey = "created_time";
+	node = json_object_get_member(pJsonObject, created_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&created_time, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *disclosure_languageKey = "disclosure_language";
+	node = json_object_get_member(pJsonObject, disclosure_languageKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&disclosure_language, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *has_accepted_termsKey = "has_accepted_terms";
+	node = json_object_get_member(pJsonObject, has_accepted_termsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&has_accepted_terms, node, "bool", "");
+		} else {
+			
+		}
+	}
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&name, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *policy_linksKey = "policy_links";
+	node = json_object_get_member(pJsonObject, policy_linksKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<LeadFormPolicyLink> new_list;
+			LeadFormPolicyLink inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("LeadFormPolicyLink")) {
+					jsonToValue(&inst, temp_json, "LeadFormPolicyLink", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			policy_links = new_list;
+		}
+		
+	}
+	const gchar *privacy_policy_linkKey = "privacy_policy_link";
+	node = json_object_get_member(pJsonObject, privacy_policy_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&privacy_policy_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *questionsKey = "questions";
+	node = json_object_get_member(pJsonObject, questionsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<LeadFormQuestion> new_list;
+			LeadFormQuestion inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("LeadFormQuestion")) {
+					jsonToValue(&inst, temp_json, "LeadFormQuestion", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			questions = new_list;
+		}
+		
+	}
+	const gchar *statusKey = "status";
+	node = json_object_get_member(pJsonObject, statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("LeadFormStatus")) {
+			jsonToValue(&status, node, "LeadFormStatus", "LeadFormStatus");
+		} else {
+			
+			LeadFormStatus* obj = static_cast<LeadFormStatus*> (&status);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *updated_timeKey = "updated_time";
+	node = json_object_get_member(pJsonObject, updated_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&updated_time, node, "int", "");
+		} else {
+			
+		}
+	}
+}
+
+LeadForm::LeadForm(char* json)
+{
+	this->fromJson(json);
+}
+
+char*
+LeadForm::toJson()
+{
+	JsonObject *pJsonObject = json_object_new();
+	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getAdAccountId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_account_idKey = "ad_account_id";
+	json_object_set_member(pJsonObject, ad_account_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCompletionMessage();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *completion_messageKey = "completion_message";
+	json_object_set_member(pJsonObject, completion_messageKey, node);
+	if (isprimitive("int")) {
+		int obj = getCreatedTime();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *created_timeKey = "created_time";
+	json_object_set_member(pJsonObject, created_timeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getDisclosureLanguage();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *disclosure_languageKey = "disclosure_language";
+	json_object_set_member(pJsonObject, disclosure_languageKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getHasAcceptedTerms();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *has_accepted_termsKey = "has_accepted_terms";
+	json_object_set_member(pJsonObject, has_accepted_termsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
+	if (isprimitive("LeadFormPolicyLink")) {
+		list<LeadFormPolicyLink> new_list = static_cast<list <LeadFormPolicyLink> > (getPolicyLinks());
+		node = converttoJson(&new_list, "LeadFormPolicyLink", "array");
+	} else {
+		node = json_node_alloc();
+		list<LeadFormPolicyLink> new_list = static_cast<list <LeadFormPolicyLink> > (getPolicyLinks());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<LeadFormPolicyLink>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			LeadFormPolicyLink obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *policy_linksKey = "policy_links";
+	json_object_set_member(pJsonObject, policy_linksKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getPrivacyPolicyLink();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *privacy_policy_linkKey = "privacy_policy_link";
+	json_object_set_member(pJsonObject, privacy_policy_linkKey, node);
+	if (isprimitive("LeadFormQuestion")) {
+		list<LeadFormQuestion> new_list = static_cast<list <LeadFormQuestion> > (getQuestions());
+		node = converttoJson(&new_list, "LeadFormQuestion", "array");
+	} else {
+		node = json_node_alloc();
+		list<LeadFormQuestion> new_list = static_cast<list <LeadFormQuestion> > (getQuestions());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<LeadFormQuestion>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			LeadFormQuestion obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *questionsKey = "questions";
+	json_object_set_member(pJsonObject, questionsKey, node);
+	if (isprimitive("LeadFormStatus")) {
+		LeadFormStatus obj = getStatus();
+		node = converttoJson(&obj, "LeadFormStatus", "");
+	}
+	else {
+		
+		LeadFormStatus obj = static_cast<LeadFormStatus> (getStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *statusKey = "status";
+	json_object_set_member(pJsonObject, statusKey, node);
+	if (isprimitive("int")) {
+		int obj = getUpdatedTime();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *updated_timeKey = "updated_time";
+	json_object_set_member(pJsonObject, updated_timeKey, node);
+	node = json_node_alloc();
+	json_node_init(node, JSON_NODE_OBJECT);
+	json_node_take_object(node, pJsonObject);
+	char * ret = json_to_string(node, false);
+	json_node_free(node);
+	return ret;
+}
+
+std::string
+LeadForm::getAdAccountId()
+{
+	return ad_account_id;
+}
+
+void
+LeadForm::setAdAccountId(std::string  ad_account_id)
+{
+	this->ad_account_id = ad_account_id;
+}
+
+std::string
+LeadForm::getCompletionMessage()
+{
+	return completion_message;
+}
+
+void
+LeadForm::setCompletionMessage(std::string  completion_message)
+{
+	this->completion_message = completion_message;
+}
+
+int
+LeadForm::getCreatedTime()
+{
+	return created_time;
+}
+
+void
+LeadForm::setCreatedTime(int  created_time)
+{
+	this->created_time = created_time;
+}
+
+std::string
+LeadForm::getDisclosureLanguage()
+{
+	return disclosure_language;
+}
+
+void
+LeadForm::setDisclosureLanguage(std::string  disclosure_language)
+{
+	this->disclosure_language = disclosure_language;
+}
+
+bool
+LeadForm::getHasAcceptedTerms()
+{
+	return has_accepted_terms;
+}
+
+void
+LeadForm::setHasAcceptedTerms(bool  has_accepted_terms)
+{
+	this->has_accepted_terms = has_accepted_terms;
+}
+
+std::string
+LeadForm::getId()
+{
+	return id;
+}
+
+void
+LeadForm::setId(std::string  id)
+{
+	this->id = id;
+}
+
+std::string
+LeadForm::getName()
+{
+	return name;
+}
+
+void
+LeadForm::setName(std::string  name)
+{
+	this->name = name;
+}
+
+std::list<LeadFormPolicyLink>
+LeadForm::getPolicyLinks()
+{
+	return policy_links;
+}
+
+void
+LeadForm::setPolicyLinks(std::list <LeadFormPolicyLink> policy_links)
+{
+	this->policy_links = policy_links;
+}
+
+std::string
+LeadForm::getPrivacyPolicyLink()
+{
+	return privacy_policy_link;
+}
+
+void
+LeadForm::setPrivacyPolicyLink(std::string  privacy_policy_link)
+{
+	this->privacy_policy_link = privacy_policy_link;
+}
+
+std::list<LeadFormQuestion>
+LeadForm::getQuestions()
+{
+	return questions;
+}
+
+void
+LeadForm::setQuestions(std::list <LeadFormQuestion> questions)
+{
+	this->questions = questions;
+}
+
+LeadFormStatus
+LeadForm::getStatus()
+{
+	return status;
+}
+
+void
+LeadForm::setStatus(LeadFormStatus  status)
+{
+	this->status = status;
+}
+
+int
+LeadForm::getUpdatedTime()
+{
+	return updated_time;
+}
+
+void
+LeadForm::setUpdatedTime(int  updated_time)
+{
+	this->updated_time = updated_time;
+}
+
+

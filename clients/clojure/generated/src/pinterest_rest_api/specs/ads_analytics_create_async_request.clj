@@ -1,59 +1,62 @@
 (ns pinterest-rest-api.specs.ads-analytics-create-async-request
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs.conversion-report-attribution-type :refer :all]
-            [pinterest-rest-api.specs.conversion-attribution-window-days :refer :all]
-            [pinterest-rest-api.specs.conversion-report-time-type :refer :all]
-            [pinterest-rest-api.specs.conversion-attribution-window-days :refer :all]
-            [pinterest-rest-api.specs.granularity :refer :all]
-            [pinterest-rest-api.specs.conversion-attribution-window-days :refer :all]
-            [pinterest-rest-api.specs.campaign-summary-status :refer :all]
-            [pinterest-rest-api.specs.objective-type :refer :all]
             [pinterest-rest-api.specs.ad-group-summary-status :refer :all]
             [pinterest-rest-api.specs.pin-promotion-summary-status :refer :all]
-            [pinterest-rest-api.specs.product-group-summary-status :refer :all]
-            [pinterest-rest-api.specs.ads-analytics-metrics-filter :refer :all]
+            [pinterest-rest-api.specs.conversion-report-attribution-type :refer :all]
+            [pinterest-rest-api.specs.campaign-objective-type :refer :all]
+            [pinterest-rest-api.specs.campaign-summary-status :refer :all]
+            [pinterest-rest-api.specs.conversion-attribution-window-days :refer :all]
             [pinterest-rest-api.specs.reporting-column-async :refer :all]
-            [pinterest-rest-api.specs.ads-analytics-create-async-request-all-of-custom-conversion-event-metrics :refer :all]
+            [pinterest-rest-api.specs.conversion-report-time-type :refer :all]
+            [pinterest-rest-api.specs.custom-conversion-event-metrics :refer :all]
+            [pinterest-rest-api.specs.conversion-attribution-window-days :refer :all]
+            [pinterest-rest-api.specs.granularity :refer :all]
             [pinterest-rest-api.specs.metrics-reporting-level :refer :all]
+            [pinterest-rest-api.specs.ads-analytics-metrics-filter :refer :all]
+            [pinterest-rest-api.specs.primary-sort :refer :all]
+            [pinterest-rest-api.specs.product-group-summary-status :refer :all]
             [pinterest-rest-api.specs.data-output-format :refer :all]
             [pinterest-rest-api.specs.reporting-time-zone :refer :all]
+            [pinterest-rest-api.specs.ad-ads-analytics-async-targeting-types :refer :all]
+            [pinterest-rest-api.specs.conversion-attribution-window-days :refer :all]
             )
   (:import (java.io File)))
 
 
 (def ads-analytics-create-async-request-data
   {
-   (ds/opt :attribution_types) (s/coll-of conversion-report-attribution-type-spec)
-   (ds/opt :click_window_days) conversion-attribution-window-days-spec
-   (ds/opt :conversion_report_time) conversion-report-time-type-spec
-   (ds/req :end_date) string?
-   (ds/opt :engagement_window_days) conversion-attribution-window-days-spec
-   (ds/req :granularity) granularity-spec
-   (ds/req :start_date) string?
-   (ds/opt :view_window_days) conversion-attribution-window-days-spec
-   (ds/opt :campaign_ids) (s/coll-of string?)
-   (ds/opt :campaign_statuses) (s/coll-of campaign-summary-status-spec)
-   (ds/opt :campaign_objective_types) (s/coll-of objective-type-spec)
-   (ds/opt :campaign_brand_label) string?
    (ds/opt :ad_group_ids) (s/coll-of string?)
    (ds/opt :ad_group_statuses) (s/coll-of ad-group-summary-status-spec)
    (ds/opt :ad_ids) (s/coll-of string?)
    (ds/opt :ad_statuses) (s/coll-of pin-promotion-summary-status-spec)
+   (ds/opt :attribution_types) (s/coll-of conversion-report-attribution-type-spec)
+   (ds/opt :campaign_brand_label) string?
+   (ds/opt :campaign_custom_label) string?
+   (ds/opt :campaign_ids) (s/coll-of string?)
+   (ds/opt :campaign_objective_types) (s/coll-of campaign-objective-type-spec)
+   (ds/opt :campaign_statuses) (s/coll-of campaign-summary-status-spec)
+   (ds/opt :click_window_days) conversion-attribution-window-days-spec
+   (ds/opt :columns) (s/coll-of reporting-column-async-spec)
+   (ds/opt :combine_targeting_types) boolean?
+   (ds/opt :conversion_report_time) conversion-report-time-type-spec
+   (ds/opt :custom_conversion_event_metrics) (s/coll-of custom-conversion-event-metrics-spec)
+   (ds/req :end_date) string?
+   (ds/opt :end_hour) int?
+   (ds/opt :engagement_window_days) conversion-attribution-window-days-spec
+   (ds/req :granularity) granularity-spec
+   (ds/opt :level) metrics-reporting-level-spec
+   (ds/opt :metrics_filters) (s/coll-of ads-analytics-metrics-filter-spec)
+   (ds/opt :primary_sort) primary-sort-spec
    (ds/opt :product_group_ids) (s/coll-of string?)
    (ds/opt :product_group_statuses) (s/coll-of product-group-summary-status-spec)
    (ds/opt :product_item_ids) (s/coll-of string?)
-   (ds/opt :targeting_types) (s/coll-of string?)
-   (ds/opt :metrics_filters) (s/coll-of ads-analytics-metrics-filter-spec)
-   (ds/req :columns) (s/coll-of reporting-column-async-spec)
-   (ds/opt :combine_targeting_types) boolean?
-   (ds/opt :custom_conversion_event_metrics) (s/coll-of ads-analytics-create-async-request-all-of-custom-conversion-event-metrics-spec)
-   (ds/opt :end_hour) int?
-   (ds/req :level) metrics-reporting-level-spec
-   (ds/opt :primary_sort) string?
    (ds/opt :report_format) data-output-format-spec
    (ds/opt :reporting_timezone) reporting-time-zone-spec
+   (ds/req :start_date) string?
    (ds/opt :start_hour) int?
+   (ds/opt :targeting_types) (s/coll-of ad-ads-analytics-async-targeting-types-spec)
+   (ds/opt :view_window_days) conversion-attribution-window-days-spec
    })
 
 (def ads-analytics-create-async-request-spec

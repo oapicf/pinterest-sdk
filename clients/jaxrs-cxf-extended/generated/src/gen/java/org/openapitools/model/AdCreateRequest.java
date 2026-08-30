@@ -11,8 +11,6 @@ import org.openapitools.model.CustomizableCTAType;
 import org.openapitools.model.DisclosureType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
-import org.openapitools.model.QuizPinData;
-import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -26,7 +24,7 @@ public class AdCreateRequest  {
  /**
   * ID of the ad group that contains the ad.
   */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the ad group that contains the ad.")
+  @ApiModelProperty(required = true, value = "ID of the ad group that contains the ad.")
   private String adGroupId;
 
  /**
@@ -94,6 +92,12 @@ public class AdCreateRequest  {
   private String iosDeepLink;
 
  /**
+  * Is the ad a carting/WTB ad?
+  */
+  @ApiModelProperty(value = "Is the ad a carting/WTB ad?")
+  private Boolean isCarting;
+
+ /**
   * Is original pin deleted?
   */
   @ApiModelProperty(example = "false", value = "Is original pin deleted?")
@@ -118,31 +122,29 @@ public class AdCreateRequest  {
   private String name;
 
  /**
+  * Pin ID.
+  */
+  @ApiModelProperty(example = "394205773611545468", required = true, value = "Pin ID.")
+  private String pinId;
+
+ /**
   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
   */
   @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
-  @Valid
-  private QuizPinData quizPinData;
+  private Object quizPinData;
 
   @ApiModelProperty(value = "")
   @Valid
   private EntityStatus status;
 
   @ApiModelProperty(value = "")
-  @Valid
-  private TrackingUrls trackingUrls;
+  private Object trackingUrls;
 
  /**
   * Tracking URL for ad impressions.
   */
   @ApiModelProperty(value = "Tracking URL for ad impressions.")
   private String viewTrackingUrl;
-
- /**
-  * Pin ID.
-  */
-  @ApiModelProperty(example = "394205773611545468", required = true, value = "Pin ID.")
-  private String pinId;
  /**
   * ID of the ad group that contains the ad.
   * @return adGroupId
@@ -482,6 +484,30 @@ public class AdCreateRequest  {
   }
 
  /**
+  * Is the ad a carting/WTB ad?
+  * @return isCarting
+  */
+  @JsonProperty("is_carting")
+  public Boolean getIsCarting() {
+    return isCarting;
+  }
+
+  /**
+   * Sets the <code>isCarting</code> property.
+   */
+ public void setIsCarting(Boolean isCarting) {
+    this.isCarting = isCarting;
+  }
+
+  /**
+   * Sets the <code>isCarting</code> property.
+   */
+  public AdCreateRequest isCarting(Boolean isCarting) {
+    this.isCarting = isCarting;
+    return this;
+  }
+
+ /**
   * Is original pin deleted?
   * @return isPinDeleted
   */
@@ -578,25 +604,50 @@ public class AdCreateRequest  {
   }
 
  /**
+  * Pin ID.
+  * @return pinId
+  */
+  @JsonProperty("pin_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getPinId() {
+    return pinId;
+  }
+
+  /**
+   * Sets the <code>pinId</code> property.
+   */
+ public void setPinId(String pinId) {
+    this.pinId = pinId;
+  }
+
+  /**
+   * Sets the <code>pinId</code> property.
+   */
+  public AdCreateRequest pinId(String pinId) {
+    this.pinId = pinId;
+    return this;
+  }
+
+ /**
   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
   * @return quizPinData
   */
   @JsonProperty("quiz_pin_data")
-  public QuizPinData getQuizPinData() {
+  public Object getQuizPinData() {
     return quizPinData;
   }
 
   /**
    * Sets the <code>quizPinData</code> property.
    */
- public void setQuizPinData(QuizPinData quizPinData) {
+ public void setQuizPinData(Object quizPinData) {
     this.quizPinData = quizPinData;
   }
 
   /**
    * Sets the <code>quizPinData</code> property.
    */
-  public AdCreateRequest quizPinData(QuizPinData quizPinData) {
+  public AdCreateRequest quizPinData(Object quizPinData) {
     this.quizPinData = quizPinData;
     return this;
   }
@@ -630,21 +681,21 @@ public class AdCreateRequest  {
   * @return trackingUrls
   */
   @JsonProperty("tracking_urls")
-  public TrackingUrls getTrackingUrls() {
+  public Object getTrackingUrls() {
     return trackingUrls;
   }
 
   /**
    * Sets the <code>trackingUrls</code> property.
    */
- public void setTrackingUrls(TrackingUrls trackingUrls) {
+ public void setTrackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
   /**
    * Sets the <code>trackingUrls</code> property.
    */
-  public AdCreateRequest trackingUrls(TrackingUrls trackingUrls) {
+  public AdCreateRequest trackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -673,31 +724,6 @@ public class AdCreateRequest  {
     return this;
   }
 
- /**
-  * Pin ID.
-  * @return pinId
-  */
-  @JsonProperty("pin_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getPinId() {
-    return pinId;
-  }
-
-  /**
-   * Sets the <code>pinId</code> property.
-   */
- public void setPinId(String pinId) {
-    this.pinId = pinId;
-  }
-
-  /**
-   * Sets the <code>pinId</code> property.
-   */
-  public AdCreateRequest pinId(String pinId) {
-    this.pinId = pinId;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -721,20 +747,21 @@ public class AdCreateRequest  {
         Objects.equals(this.disclosureUrl, adCreateRequest.disclosureUrl) &&
         Objects.equals(this.gridClickType, adCreateRequest.gridClickType) &&
         Objects.equals(this.iosDeepLink, adCreateRequest.iosDeepLink) &&
+        Objects.equals(this.isCarting, adCreateRequest.isCarting) &&
         Objects.equals(this.isPinDeleted, adCreateRequest.isPinDeleted) &&
         Objects.equals(this.isRemovable, adCreateRequest.isRemovable) &&
         Objects.equals(this.leadFormId, adCreateRequest.leadFormId) &&
         Objects.equals(this.name, adCreateRequest.name) &&
+        Objects.equals(this.pinId, adCreateRequest.pinId) &&
         Objects.equals(this.quizPinData, adCreateRequest.quizPinData) &&
         Objects.equals(this.status, adCreateRequest.status) &&
         Objects.equals(this.trackingUrls, adCreateRequest.trackingUrls) &&
-        Objects.equals(this.viewTrackingUrl, adCreateRequest.viewTrackingUrl) &&
-        Objects.equals(this.pinId, adCreateRequest.pinId);
+        Objects.equals(this.viewTrackingUrl, adCreateRequest.viewTrackingUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroupId, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, creativeType, customizableCtaType, destinationUrl, disclosureType, disclosureUrl, gridClickType, iosDeepLink, isPinDeleted, isRemovable, leadFormId, name, quizPinData, status, trackingUrls, viewTrackingUrl, pinId);
+    return Objects.hash(adGroupId, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, creativeType, customizableCtaType, destinationUrl, disclosureType, disclosureUrl, gridClickType, iosDeepLink, isCarting, isPinDeleted, isRemovable, leadFormId, name, pinId, quizPinData, status, trackingUrls, viewTrackingUrl);
   }
 
   @Override
@@ -755,15 +782,16 @@ public class AdCreateRequest  {
     sb.append("    disclosureUrl: ").append(toIndentedString(disclosureUrl)).append("\n");
     sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");
     sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
+    sb.append("    isCarting: ").append(toIndentedString(isCarting)).append("\n");
     sb.append("    isPinDeleted: ").append(toIndentedString(isPinDeleted)).append("\n");
     sb.append("    isRemovable: ").append(toIndentedString(isRemovable)).append("\n");
     sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("    quizPinData: ").append(toIndentedString(quizPinData)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    viewTrackingUrl: ").append(toIndentedString(viewTrackingUrl)).append("\n");
-    sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -773,10 +801,7 @@ public class AdCreateRequest  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,8 +23,7 @@ var _ MappedNullable = &BusinessPartnerAssetAccessGet200Response{}
 // BusinessPartnerAssetAccessGet200Response struct for BusinessPartnerAssetAccessGet200Response
 type BusinessPartnerAssetAccessGet200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	// List assets on which you granted access to your partner or assets on which your partner has granted you access.
-	Items []GetPartnerAssetsResponse `json:"items"`
+	Items []BaseBusinessAssets `json:"items"`
 }
 
 type _BusinessPartnerAssetAccessGet200Response BusinessPartnerAssetAccessGet200Response
@@ -33,7 +32,7 @@ type _BusinessPartnerAssetAccessGet200Response BusinessPartnerAssetAccessGet200R
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBusinessPartnerAssetAccessGet200Response(items []GetPartnerAssetsResponse) *BusinessPartnerAssetAccessGet200Response {
+func NewBusinessPartnerAssetAccessGet200Response(items []BaseBusinessAssets) *BusinessPartnerAssetAccessGet200Response {
 	this := BusinessPartnerAssetAccessGet200Response{}
 	this.Items = items
 	return &this
@@ -90,9 +89,9 @@ func (o *BusinessPartnerAssetAccessGet200Response) UnsetBookmark() {
 }
 
 // GetItems returns the Items field value
-func (o *BusinessPartnerAssetAccessGet200Response) GetItems() []GetPartnerAssetsResponse {
+func (o *BusinessPartnerAssetAccessGet200Response) GetItems() []BaseBusinessAssets {
 	if o == nil {
-		var ret []GetPartnerAssetsResponse
+		var ret []BaseBusinessAssets
 		return ret
 	}
 
@@ -101,7 +100,7 @@ func (o *BusinessPartnerAssetAccessGet200Response) GetItems() []GetPartnerAssets
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *BusinessPartnerAssetAccessGet200Response) GetItemsOk() ([]GetPartnerAssetsResponse, bool) {
+func (o *BusinessPartnerAssetAccessGet200Response) GetItemsOk() ([]BaseBusinessAssets, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -109,7 +108,7 @@ func (o *BusinessPartnerAssetAccessGet200Response) GetItemsOk() ([]GetPartnerAss
 }
 
 // SetItems sets field value
-func (o *BusinessPartnerAssetAccessGet200Response) SetItems(v []GetPartnerAssetsResponse) {
+func (o *BusinessPartnerAssetAccessGet200Response) SetItems(v []BaseBusinessAssets) {
 	o.Items = v
 }
 

@@ -18,7 +18,7 @@ class AudiencesApi {
 
   /// Create audience
   ///
-  /// Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+  /// Create a new audience for the ad account.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -27,15 +27,14 @@ class AudiencesApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [AudienceCreateRequest] audienceCreateRequest (required):
-  ///   List of ads to create, size limit [1, 30]
-  Future<Response> audiencesCreateWithHttpInfo(String adAccountId, AudienceCreateRequest audienceCreateRequest,) async {
+  /// * [AdAccountsAudienceCreate] adAccountsAudienceCreate (required):
+  Future<Response> audiencesCreateWithHttpInfo(String adAccountId, AdAccountsAudienceCreate adAccountsAudienceCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/audiences'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = audienceCreateRequest;
+    Object? postBody = adAccountsAudienceCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -52,22 +51,22 @@ class AudiencesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Create audience
   ///
-  /// Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+  /// Create a new audience for the ad account.
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [AudienceCreateRequest] audienceCreateRequest (required):
-  ///   List of ads to create, size limit [1, 30]
-  Future<Audience?> audiencesCreate(String adAccountId, AudienceCreateRequest audienceCreateRequest,) async {
-    final response = await audiencesCreateWithHttpInfo(adAccountId, audienceCreateRequest,);
+  /// * [AdAccountsAudienceCreate] adAccountsAudienceCreate (required):
+  Future<AdAccountsAudience?> audiencesCreate(String adAccountId, AdAccountsAudienceCreate adAccountsAudienceCreate, { Future<void>? abortTrigger, }) async {
+    final response = await audiencesCreateWithHttpInfo(adAccountId, adAccountsAudienceCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -75,7 +74,7 @@ class AudiencesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Audience',) as Audience;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdAccountsAudience',) as AdAccountsAudience;
     
     }
     return null;
@@ -89,16 +88,16 @@ class AudiencesApi {
   ///
   /// Parameters:
   ///
+  /// * [String] audienceId (required):
+  ///   Audience ID.
+  ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  ///
-  /// * [String] audienceId (required):
-  ///   Unique identifier of an audience
-  Future<Response> audiencesGetWithHttpInfo(String adAccountId, String audienceId,) async {
+  Future<Response> audiencesGetWithHttpInfo(String audienceId, String adAccountId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/audiences/{audience_id}'
-      .replaceAll('{ad_account_id}', adAccountId)
-      .replaceAll('{audience_id}', audienceId);
+      .replaceAll('{audience_id}', audienceId)
+      .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -118,6 +117,7 @@ class AudiencesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -127,13 +127,13 @@ class AudiencesApi {
   ///
   /// Parameters:
   ///
+  /// * [String] audienceId (required):
+  ///   Audience ID.
+  ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  ///
-  /// * [String] audienceId (required):
-  ///   Unique identifier of an audience
-  Future<Audience?> audiencesGet(String adAccountId, String audienceId,) async {
-    final response = await audiencesGetWithHttpInfo(adAccountId, audienceId,);
+  Future<AdAccountsAudience?> audiencesGet(String audienceId, String adAccountId, { Future<void>? abortTrigger, }) async {
+    final response = await audiencesGetWithHttpInfo(audienceId, adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -141,7 +141,7 @@ class AudiencesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Audience',) as Audience;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdAccountsAudience',) as AdAccountsAudience;
     
     }
     return null;
@@ -161,15 +161,17 @@ class AudiencesApi {
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
   ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
-  ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   ///
-  /// * [String] ownershipType:
-  ///   Filter audiences by ownership type.
-  Future<Response> audiencesListWithHttpInfo(String adAccountId, { String? bookmark, String? order, int? pageSize, String? ownershipType, }) async {
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  ///
+  /// * [AudienceOwnershipType] ownershipType:
+  ///
+  /// * [bool] excludeNca:
+  ///   When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
+  Future<Response> audiencesListWithHttpInfo(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, AudienceOwnershipType? ownershipType, bool? excludeNca, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/audiences'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -184,14 +186,17 @@ class AudiencesApi {
     if (bookmark != null) {
       queryParams.addAll(_queryParams('', 'bookmark', bookmark));
     }
-    if (order != null) {
-      queryParams.addAll(_queryParams('', 'order', order));
-    }
     if (pageSize != null) {
       queryParams.addAll(_queryParams('', 'page_size', pageSize));
     }
+    if (order != null) {
+      queryParams.addAll(_queryParams('', 'order', order));
+    }
     if (ownershipType != null) {
       queryParams.addAll(_queryParams('', 'ownership_type', ownershipType));
+    }
+    if (excludeNca != null) {
+      queryParams.addAll(_queryParams('', 'exclude_nca', excludeNca));
     }
 
     const contentTypes = <String>[];
@@ -205,6 +210,7 @@ class AudiencesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -220,16 +226,18 @@ class AudiencesApi {
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
   ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
-  ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   ///
-  /// * [String] ownershipType:
-  ///   Filter audiences by ownership type.
-  Future<AudiencesList200Response?> audiencesList(String adAccountId, { String? bookmark, String? order, int? pageSize, String? ownershipType, }) async {
-    final response = await audiencesListWithHttpInfo(adAccountId,  bookmark: bookmark, order: order, pageSize: pageSize, ownershipType: ownershipType, );
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  ///
+  /// * [AudienceOwnershipType] ownershipType:
+  ///
+  /// * [bool] excludeNca:
+  ///   When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
+  Future<AudiencesList200Response?> audiencesList(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, AudienceOwnershipType? ownershipType, bool? excludeNca, Future<void>? abortTrigger, }) async {
+    final response = await audiencesListWithHttpInfo(adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, ownershipType: ownershipType, excludeNca: excludeNca, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -245,28 +253,27 @@ class AudiencesApi {
 
   /// Update audience
   ///
-  /// Update (edit or remove) an existing targeting audience.
+  /// Update an existing audience for the ad account.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
+  /// * [String] audienceId (required):
+  ///   Audience ID.
+  ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [String] audienceId (required):
-  ///   Unique identifier of an audience
-  ///
-  /// * [AudienceUpdateRequest] audienceUpdateRequest (required):
-  ///   The audience to be updated.
-  Future<Response> audiencesUpdateWithHttpInfo(String adAccountId, String audienceId, AudienceUpdateRequest audienceUpdateRequest,) async {
+  /// * [AdAccountsAudienceUpdate] adAccountsAudienceUpdate (required):
+  Future<Response> audiencesUpdateWithHttpInfo(String audienceId, String adAccountId, AdAccountsAudienceUpdate adAccountsAudienceUpdate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/audiences/{audience_id}'
-      .replaceAll('{ad_account_id}', adAccountId)
-      .replaceAll('{audience_id}', audienceId);
+      .replaceAll('{audience_id}', audienceId)
+      .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = audienceUpdateRequest;
+    Object? postBody = adAccountsAudienceUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -283,25 +290,25 @@ class AudiencesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Update audience
   ///
-  /// Update (edit or remove) an existing targeting audience.
+  /// Update an existing audience for the ad account.
   ///
   /// Parameters:
+  ///
+  /// * [String] audienceId (required):
+  ///   Audience ID.
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [String] audienceId (required):
-  ///   Unique identifier of an audience
-  ///
-  /// * [AudienceUpdateRequest] audienceUpdateRequest (required):
-  ///   The audience to be updated.
-  Future<Audience?> audiencesUpdate(String adAccountId, String audienceId, AudienceUpdateRequest audienceUpdateRequest,) async {
-    final response = await audiencesUpdateWithHttpInfo(adAccountId, audienceId, audienceUpdateRequest,);
+  /// * [AdAccountsAudienceUpdate] adAccountsAudienceUpdate (required):
+  Future<AdAccountsAudience?> audiencesUpdate(String audienceId, String adAccountId, AdAccountsAudienceUpdate adAccountsAudienceUpdate, { Future<void>? abortTrigger, }) async {
+    final response = await audiencesUpdateWithHttpInfo(audienceId, adAccountId, adAccountsAudienceUpdate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -309,7 +316,7 @@ class AudiencesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Audience',) as Audience;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdAccountsAudience',) as AdAccountsAudience;
     
     }
     return null;

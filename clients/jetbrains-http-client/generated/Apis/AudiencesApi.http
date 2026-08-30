@@ -1,0 +1,42 @@
+## AudiencesApi
+
+### Create audience
+## Create audience
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/audiences
+Content-Type: application/json
+Accept: application/json
+
+{
+ "ad_account_id": "<string>",
+ "audience_type": "<string>",
+ "description": "<string>",
+ "name": "<string>",
+ "rule": "<string>"
+}
+
+
+### Get audience
+## Get audience
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/audiences/{{audience_id}}
+Accept: application/json
+
+### List audiences
+## List audiences
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/audiences?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}&ownershipType={{ownershipType}}&excludeNca={{excludeNca}}
+Accept: application/json
+
+### Update audience
+## Update audience
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/audiences/{{audience_id}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "ad_account_id": "<string>",
+ "audience_type": "<string>",
+ "description": "<string>",
+ "name": "<string>",
+ "operation_type": "<string>",
+ "rule": "<string>"
+}
+

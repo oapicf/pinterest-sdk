@@ -65,7 +65,7 @@ MaxPriceFilter::getMAXPRICE()
 }
 
 void
-MaxPriceFilter::setMAXPRICE(CatalogsProductGroupPricingCriteria  mAX_PRICE)
+MaxPriceFilter::setMAXPRICE(CatalogsProductGroupPricingCriteria mAX_PRICE)
 {
 	this->mAX_PRICE = mAX_PRICE;
 }

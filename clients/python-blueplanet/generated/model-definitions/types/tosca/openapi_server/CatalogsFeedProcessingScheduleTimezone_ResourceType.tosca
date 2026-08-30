@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsFeedProcessingScheduleTimezone"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsFeedProcessingScheduleTimezone"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsFeedProcessingScheduleTimezone {
+    title = CatalogsFeedProcessingScheduleTimezone
+    description = CatalogsFeedProcessingScheduleTimezone
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsFeedProcessingScheduleTimezone {
+    title = CatalogsFeedProcessingScheduleTimezone
+    description = CatalogsFeedProcessingScheduleTimezone
+    implements = openapi_server.resourceTypes.CatalogsFeedProcessingScheduleTimezone
+
+  }
+}

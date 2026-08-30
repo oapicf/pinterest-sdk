@@ -8,13 +8,33 @@ import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.NullableCurrency;
 
 @Canonical
 class CatalogsCreativeAssetsFeedsUpdateRequest {
+
+    enum CatalogTypeEnum {
     
-    CatalogsType catalogType
+        CREATIVE_ASSETS("CREATIVE_ASSETS")
+    
+        private final String value
+    
+        CatalogTypeEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    
+    CatalogTypeEnum catalogType
     
     CatalogsFeedCredentials credentials
     

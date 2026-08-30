@@ -7,72 +7,39 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.BaseInviteDataResponseInviteData;
 import org.openapitools.vertxweb.server.model.BusinessAccessUserSummary;
 import org.openapitools.vertxweb.server.model.InviteAssetsSummary;
+import org.openapitools.vertxweb.server.model.InviteDataResponse;
 
+/**
+ * A user&#39;s username or email OR a partner id that caused the error.
+ **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class InviteResponse   {
   
-  private String id;
-  private BaseInviteDataResponseInviteData inviteData;
-  private Boolean isReceivedInvite;
-  private BusinessAccessUserSummary user;
   private InviteAssetsSummary assetsSummary;
   private List<String> businessRoles = new ArrayList<>();
-  private Object createdByBusiness;
-  private Object createdByUser;
+  private BusinessAccessUserSummary createdByBusiness;
+  private BusinessAccessUserSummary createdByUser;
   private Integer createdTime;
+  private String id;
+  private InviteDataResponse inviteData;
+  private Boolean isReceivedInvite;
+  private BusinessAccessUserSummary user;
 
   public InviteResponse () {
 
   }
 
-  public InviteResponse (String id, BaseInviteDataResponseInviteData inviteData, Boolean isReceivedInvite, BusinessAccessUserSummary user, InviteAssetsSummary assetsSummary, List<String> businessRoles, Object createdByBusiness, Object createdByUser, Integer createdTime) {
-    this.id = id;
-    this.inviteData = inviteData;
-    this.isReceivedInvite = isReceivedInvite;
-    this.user = user;
+  public InviteResponse (InviteAssetsSummary assetsSummary, List<String> businessRoles, BusinessAccessUserSummary createdByBusiness, BusinessAccessUserSummary createdByUser, Integer createdTime, String id, InviteDataResponse inviteData, Boolean isReceivedInvite, BusinessAccessUserSummary user) {
     this.assetsSummary = assetsSummary;
     this.businessRoles = businessRoles;
     this.createdByBusiness = createdByBusiness;
     this.createdByUser = createdByUser;
     this.createdTime = createdTime;
-  }
-
-    
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
     this.id = id;
-  }
-
-    
-  @JsonProperty("invite_data")
-  public BaseInviteDataResponseInviteData getInviteData() {
-    return inviteData;
-  }
-  public void setInviteData(BaseInviteDataResponseInviteData inviteData) {
     this.inviteData = inviteData;
-  }
-
-    
-  @JsonProperty("is_received_invite")
-  public Boolean getIsReceivedInvite() {
-    return isReceivedInvite;
-  }
-  public void setIsReceivedInvite(Boolean isReceivedInvite) {
     this.isReceivedInvite = isReceivedInvite;
-  }
-
-    
-  @JsonProperty("user")
-  public BusinessAccessUserSummary getUser() {
-    return user;
-  }
-  public void setUser(BusinessAccessUserSummary user) {
     this.user = user;
   }
 
@@ -96,19 +63,19 @@ public class InviteResponse   {
 
     
   @JsonProperty("created_by_business")
-  public Object getCreatedByBusiness() {
+  public BusinessAccessUserSummary getCreatedByBusiness() {
     return createdByBusiness;
   }
-  public void setCreatedByBusiness(Object createdByBusiness) {
+  public void setCreatedByBusiness(BusinessAccessUserSummary createdByBusiness) {
     this.createdByBusiness = createdByBusiness;
   }
 
     
   @JsonProperty("created_by_user")
-  public Object getCreatedByUser() {
+  public BusinessAccessUserSummary getCreatedByUser() {
     return createdByUser;
   }
-  public void setCreatedByUser(Object createdByUser) {
+  public void setCreatedByUser(BusinessAccessUserSummary createdByUser) {
     this.createdByUser = createdByUser;
   }
 
@@ -121,6 +88,42 @@ public class InviteResponse   {
     this.createdTime = createdTime;
   }
 
+    
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+    
+  @JsonProperty("invite_data")
+  public InviteDataResponse getInviteData() {
+    return inviteData;
+  }
+  public void setInviteData(InviteDataResponse inviteData) {
+    this.inviteData = inviteData;
+  }
+
+    
+  @JsonProperty("is_received_invite")
+  public Boolean getIsReceivedInvite() {
+    return isReceivedInvite;
+  }
+  public void setIsReceivedInvite(Boolean isReceivedInvite) {
+    this.isReceivedInvite = isReceivedInvite;
+  }
+
+    
+  @JsonProperty("user")
+  public BusinessAccessUserSummary getUser() {
+    return user;
+  }
+  public void setUser(BusinessAccessUserSummary user) {
+    this.user = user;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -131,20 +134,20 @@ public class InviteResponse   {
       return false;
     }
     InviteResponse inviteResponse = (InviteResponse) o;
-    return Objects.equals(id, inviteResponse.id) &&
-        Objects.equals(inviteData, inviteResponse.inviteData) &&
-        Objects.equals(isReceivedInvite, inviteResponse.isReceivedInvite) &&
-        Objects.equals(user, inviteResponse.user) &&
-        Objects.equals(assetsSummary, inviteResponse.assetsSummary) &&
+    return Objects.equals(assetsSummary, inviteResponse.assetsSummary) &&
         Objects.equals(businessRoles, inviteResponse.businessRoles) &&
         Objects.equals(createdByBusiness, inviteResponse.createdByBusiness) &&
         Objects.equals(createdByUser, inviteResponse.createdByUser) &&
-        Objects.equals(createdTime, inviteResponse.createdTime);
+        Objects.equals(createdTime, inviteResponse.createdTime) &&
+        Objects.equals(id, inviteResponse.id) &&
+        Objects.equals(inviteData, inviteResponse.inviteData) &&
+        Objects.equals(isReceivedInvite, inviteResponse.isReceivedInvite) &&
+        Objects.equals(user, inviteResponse.user);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, inviteData, isReceivedInvite, user, assetsSummary, businessRoles, createdByBusiness, createdByUser, createdTime);
+    return Objects.hash(assetsSummary, businessRoles, createdByBusiness, createdByUser, createdTime, id, inviteData, isReceivedInvite, user);
   }
 
   @Override
@@ -152,15 +155,15 @@ public class InviteResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InviteResponse {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
-    sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("    assetsSummary: ").append(toIndentedString(assetsSummary)).append("\n");
     sb.append("    businessRoles: ").append(toIndentedString(businessRoles)).append("\n");
     sb.append("    createdByBusiness: ").append(toIndentedString(createdByBusiness)).append("\n");
     sb.append("    createdByUser: ").append(toIndentedString(createdByUser)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
+    sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
+    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -170,9 +173,6 @@ public class InviteResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

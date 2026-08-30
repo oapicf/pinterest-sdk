@@ -10,7 +10,7 @@
 
 -type openapi_catalogs_creative_assets_items_batch() ::
   [ {'batch_id', binary() }
-  | {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+  | {'catalog_type', binary() }
   | {'completed_time', datetime() }
   | {'created_time', datetime() }
   | {'items', list(openapi_creative_assets_processing_record:openapi_creative_assets_processing_record()) }
@@ -23,7 +23,7 @@ openapi_catalogs_creative_assets_items_batch() ->
 
 openapi_catalogs_creative_assets_items_batch(Fields) ->
   Default = [ {'batch_id', binary() }
-            , {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+            , {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
             , {'completed_time', datetime() }
             , {'created_time', datetime() }
             , {'items', list(openapi_creative_assets_processing_record:openapi_creative_assets_processing_record()) }

@@ -11,6 +11,7 @@
 #include <string>
 #include "QuizPinQuestion.h"
 #include "QuizPinResult.h"
+#include "TieBreakerType.h"
 #include <list>
 #include "Object.h"
 
@@ -69,19 +70,19 @@ public:
 	/*! \brief Set 
 	 */
 	void setTieBreakerCustomResult(QuizPinResult  tie_breaker_custom_result);
-	/*! \brief Get Quiz ad tie breaker type, default is RANDOM
+	/*! \brief Get 
 	 */
-	std::string getTieBreakerType();
+	TieBreakerType getTieBreakerType();
 
-	/*! \brief Set Quiz ad tie breaker type, default is RANDOM
+	/*! \brief Set 
 	 */
-	void setTieBreakerType(std::string  tie_breaker_type);
+	void setTieBreakerType(TieBreakerType  tie_breaker_type);
 
 private:
 	std::list <QuizPinQuestion>questions;
 	std::list <QuizPinResult>results;
 	QuizPinResult tie_breaker_custom_result;
-	std::string tie_breaker_type;
+	TieBreakerType tie_breaker_type;
 	void __init();
 	void __cleanup();
 

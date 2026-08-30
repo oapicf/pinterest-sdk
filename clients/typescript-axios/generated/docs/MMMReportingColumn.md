@@ -44,4 +44,16 @@ Marketing Mix Modeling (MMM) Reporting Columns
 
 * `SpendOrderLinePaidType` (value: `'SPEND_ORDER_LINE_PAID_TYPE'`)
 
+* `CampaignObjectiveType` (value: `'CAMPAIGN_OBJECTIVE_TYPE'`)
+
+* `PinnerListName` (value: `'PINNER_LIST_NAME'`)
+
+* `AdsCreditSpendInDollar` (value: `'ADS_CREDIT_SPEND_IN_DOLLAR'`)
+
+* `AdvertiserPaidSpendInDollar` (value: `'ADVERTISER_PAID_SPEND_IN_DOLLAR'`)
+
+* `AdvertiserPaidEcpcInDollar` (value: `'ADVERTISER_PAID_ECPC_IN_DOLLAR'`)
+
+* `AdvertiserPaidEcpmInDollar` (value: `'ADVERTISER_PAID_ECPM_IN_DOLLAR'`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

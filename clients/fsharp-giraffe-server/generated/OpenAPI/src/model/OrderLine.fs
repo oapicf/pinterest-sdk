@@ -15,6 +15,7 @@ module OrderLine =
   type OrderLine = {
     AdAccountId : string;
     Budget : decimal option;
+    CampaignIds : string[];
     EndTime : decimal option;
     Id : string;
     Name : string option;
@@ -24,6 +25,5 @@ module OrderLine =
     StartTime : decimal;
     Status : OrderLineStatus;
     Type : string;
-    CampaignIds : string[];
   }
   //#endregion

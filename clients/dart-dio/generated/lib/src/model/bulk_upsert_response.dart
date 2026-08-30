@@ -73,8 +73,9 @@ class _$BulkUpsertResponseSerializer implements PrimitiveSerializer<BulkUpsertRe
         case r'request_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.requestId = valueDes;
           break;
         default:

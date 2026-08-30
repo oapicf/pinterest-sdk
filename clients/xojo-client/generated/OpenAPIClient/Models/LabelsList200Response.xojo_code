@@ -7,7 +7,7 @@ Protected Class LabelsList200Response
 
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.LabelsResponse
+		items() As OpenAPIClient.Models.Label
 	#tag EndProperty
 
 
@@ -60,7 +60,7 @@ Protected Class LabelsList200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="LabelsResponse"
+			Type="Label"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

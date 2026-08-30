@@ -46,11 +46,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get Attribute that has a validation issue.
 	 */
 	NullableCatalogsItemFieldType getAttributeName();
 
-	/*! \brief Set 
+	/*! \brief Set Attribute that has a validation issue.
 	 */
 	void setAttributeName(NullableCatalogsItemFieldType  attribute_name);
 	/*! \brief Get Provided value that caused the validation issue.

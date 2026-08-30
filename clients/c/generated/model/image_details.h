@@ -19,17 +19,17 @@ typedef struct image_details_t image_details_t;
 
 
 typedef struct image_details_t {
-    int height; //numeric
+    int *height; //numeric
     char *url; // string
-    int width; //numeric
+    int *width; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } image_details_t;
 
 __attribute__((deprecated)) image_details_t *image_details_create(
-    int height,
+    int *height,
     char *url,
-    int width
+    int *width
 );
 
 void image_details_free(image_details_t *image_details);

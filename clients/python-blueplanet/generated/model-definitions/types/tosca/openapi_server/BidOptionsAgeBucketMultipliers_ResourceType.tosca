@@ -1,0 +1,65 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BidOptionsAgeBucketMultipliers"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BidOptionsAgeBucketMultipliers"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BidOptionsAgeBucketMultipliers {
+    title = BidOptionsAgeBucketMultipliers
+    description = BidOptionsAgeBucketMultipliers
+    derivedFrom = Root
+    properties {
+        _18_24 {
+          type =  
+          description = ""
+          optional = false
+        }
+        _25_34 {
+          type =  
+          description = ""
+          optional = false
+        }
+        _35_44 {
+          type =  
+          description = ""
+          optional = false
+        }
+        _45_49 {
+          type =  
+          description = ""
+          optional = false
+        }
+        _50_54 {
+          type =  
+          description = ""
+          optional = false
+        }
+        _55_64 {
+          type =  
+          description = ""
+          optional = false
+        }
+        _65 {
+          type =  
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BidOptionsAgeBucketMultipliers {
+    title = BidOptionsAgeBucketMultipliers
+    description = BidOptionsAgeBucketMultipliers
+    implements = openapi_server.resourceTypes.BidOptionsAgeBucketMultipliers
+
+  }
+}

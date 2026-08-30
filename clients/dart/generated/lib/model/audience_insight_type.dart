@@ -11,31 +11,30 @@
 part of openapi.api;
 
 
-class AudienceInsightType {
-  /// Instantiate a new enum with the provided [value].
-  const AudienceInsightType._(this.value);
+enum AudienceInsightType {
+  YOUR_TOTAL_AUDIENCE._(r'YOUR_TOTAL_AUDIENCE'),
+  YOUR_ENGAGED_AUDIENCE._(r'YOUR_ENGAGED_AUDIENCE'),
+  PINTEREST_TOTAL_AUDIENCE._(r'PINTEREST_TOTAL_AUDIENCE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const AudienceInsightType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const YOUR_TOTAL_AUDIENCE = AudienceInsightType._(r'YOUR_TOTAL_AUDIENCE');
-  static const YOUR_ENGAGED_AUDIENCE = AudienceInsightType._(r'YOUR_ENGAGED_AUDIENCE');
-  static const PINTEREST_TOTAL_AUDIENCE = AudienceInsightType._(r'PINTEREST_TOTAL_AUDIENCE');
-
-  /// List of all possible values in this [enum][AudienceInsightType].
-  static const values = <AudienceInsightType>[
-    YOUR_TOTAL_AUDIENCE,
-    YOUR_ENGAGED_AUDIENCE,
-    PINTEREST_TOTAL_AUDIENCE,
-  ];
-
+  /// Returns the instance of [AudienceInsightType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static AudienceInsightType? fromJson(dynamic value) => AudienceInsightTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [AudienceInsightType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<AudienceInsightType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <AudienceInsightType>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class AudienceInsightTypeTypeTransformer {
 
   const AudienceInsightTypeTypeTransformer._();
 
-  String encode(AudienceInsightType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(AudienceInsightType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a AudienceInsightType.
+  /// Returns the instance of [AudienceInsightType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class AudienceInsightTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   AudienceInsightType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is AudienceInsightType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'YOUR_TOTAL_AUDIENCE': return AudienceInsightType.YOUR_TOTAL_AUDIENCE;
@@ -82,7 +86,7 @@ class AudienceInsightTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [AudienceInsightTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static AudienceInsightTypeTypeTransformer? _instance;
 }
 

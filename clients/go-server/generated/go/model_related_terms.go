@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -23,13 +23,14 @@ type RelatedTerms struct {
 	RelatedTermCount int32 `json:"related_term_count,omitempty"`
 
 	// The id of the advertiser.
-	RelatedTermsList []RelatedTermsRelatedTermsListInner `json:"related_terms_list,omitempty"`
+	RelatedTermsList []RelatedTermsRelatedTermsListItems `json:"related_terms_list,omitempty"`
 }
 
-// AssertRelatedTermsRequired checks if the required fields are not zero-ed
+// AssertRelatedTermsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertRelatedTermsRequired(obj RelatedTerms) error {
 	for _, el := range obj.RelatedTermsList {
-		if err := AssertRelatedTermsRelatedTermsListInnerRequired(el); err != nil {
+		if err := AssertRelatedTermsRelatedTermsListItemsRequired(el); err != nil {
 			return err
 		}
 	}
@@ -39,7 +40,7 @@ func AssertRelatedTermsRequired(obj RelatedTerms) error {
 // AssertRelatedTermsConstraints checks if the values respects the defined constraints
 func AssertRelatedTermsConstraints(obj RelatedTerms) error {
 	for _, el := range obj.RelatedTermsList {
-		if err := AssertRelatedTermsRelatedTermsListInnerConstraints(el); err != nil {
+		if err := AssertRelatedTermsRelatedTermsListItemsConstraints(el); err != nil {
 			return err
 		}
 	}

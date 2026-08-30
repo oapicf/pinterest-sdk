@@ -1,0 +1,28 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Processing record for an advertiser defined event operation",
+  "name": "AdvertiserDefinedEventProcessingRecord",
+  "fields": [
+    {
+      "name": "exceptions",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "List of exception messages if the operation failed",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Name of the advertiser defined event"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "doc": "Processing status (success or failure)"
+    }
+  ]
+
+}

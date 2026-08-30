@@ -18,7 +18,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"autoTargetingEnabled": @"auto_targeting_enabled", @"bidInMicroCurrency": @"bid_in_micro_currency", @"bidStrategyType": @"bid_strategy_type", @"billableEvent": @"billable_event", @"budgetInMicroCurrency": @"budget_in_micro_currency", @"budgetType": @"budget_type", @"campaignId": @"campaign_id", @"endTime": @"end_time", @"isCreativeOptimization": @"is_creative_optimization", @"lifetimeFrequencyCap": @"lifetime_frequency_cap", @"name": @"name", @"optimizationGoalMetadata": @"optimization_goal_metadata", @"pacingDeliveryType": @"pacing_delivery_type", @"placementGroup": @"placement_group", @"promotionApplicationLevel": @"promotion_application_level", @"promotionId": @"promotion_id", @"startTime": @"start_time", @"status": @"status", @"targetingSpec": @"targeting_spec", @"targetingTemplateIds": @"targeting_template_ids", @"trackingUrls": @"tracking_urls", @"bidMultiplier": @"bid_multiplier", @"_id": @"id" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"bidMultiplier": @"bid_multiplier", @"_id": @"id", @"targetingSpecOperations": @"targeting_spec_operations", @"autoTargetingEnabled": @"auto_targeting_enabled", @"bidInMicroCurrency": @"bid_in_micro_currency", @"bidStrategyType": @"bid_strategy_type", @"billableEvent": @"billable_event", @"budgetInMicroCurrency": @"budget_in_micro_currency", @"budgetType": @"budget_type", @"campaignId": @"campaign_id", @"endTime": @"end_time", @"isCreativeOptimization": @"is_creative_optimization", @"lifetimeFrequencyCap": @"lifetime_frequency_cap", @"name": @"name", @"optimizationGoalMetadata": @"optimization_goal_metadata", @"pacingDeliveryType": @"pacing_delivery_type", @"placementGroup": @"placement_group", @"promotionApplicationLevel": @"promotion_application_level", @"promotionId": @"promotion_id", @"promotionIds": @"promotion_ids", @"startTime": @"start_time", @"status": @"status", @"targetingSpec": @"targeting_spec", @"targetingTemplateIds": @"targeting_template_ids", @"trackingUrls": @"tracking_urls" }];
 }
 
 /**
@@ -28,7 +28,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"autoTargetingEnabled", @"bidInMicroCurrency", @"bidStrategyType", @"billableEvent", @"budgetInMicroCurrency", @"budgetType", @"campaignId", @"endTime", @"isCreativeOptimization", @"lifetimeFrequencyCap", @"name", @"optimizationGoalMetadata", @"pacingDeliveryType", @"placementGroup", @"promotionApplicationLevel", @"promotionId", @"startTime", @"status", @"targetingSpec", @"targetingTemplateIds", @"trackingUrls", @"bidMultiplier", ];
+  NSArray *optionalProperties = @[@"bidMultiplier", @"targetingSpecOperations", @"autoTargetingEnabled", @"bidInMicroCurrency", @"bidStrategyType", @"billableEvent", @"budgetInMicroCurrency", @"budgetType", @"campaignId", @"endTime", @"isCreativeOptimization", @"lifetimeFrequencyCap", @"name", @"optimizationGoalMetadata", @"pacingDeliveryType", @"placementGroup", @"promotionApplicationLevel", @"promotionId", @"promotionIds", @"startTime", @"status", @"targetingSpec", @"targetingTemplateIds", @"trackingUrls"];
   return [optionalProperties containsObject:propertyName];
 }
 

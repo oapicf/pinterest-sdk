@@ -5,31 +5,16 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.vertxweb.server.model.UserAccountType;
 
+/**
+ * User account model containing properties related to a user&#39;s account.
+ **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Account   {
   
   private String about;
-
-
-  public enum AccountTypeEnum {
-    PINNER("PINNER"),
-    BUSINESS("BUSINESS");
-
-    private String value;
-
-    AccountTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private AccountTypeEnum accountType;
+  private UserAccountType accountType;
   private Integer boardCount;
   private String businessName;
   private Integer followerCount;
@@ -45,7 +30,7 @@ public class Account   {
 
   }
 
-  public Account (String about, AccountTypeEnum accountType, Integer boardCount, String businessName, Integer followerCount, Integer followingCount, String id, Integer monthlyViews, Integer pinCount, String profileImage, String username, String websiteUrl) {
+  public Account (String about, UserAccountType accountType, Integer boardCount, String businessName, Integer followerCount, Integer followingCount, String id, Integer monthlyViews, Integer pinCount, String profileImage, String username, String websiteUrl) {
     this.about = about;
     this.accountType = accountType;
     this.boardCount = boardCount;
@@ -71,10 +56,10 @@ public class Account   {
 
     
   @JsonProperty("account_type")
-  public AccountTypeEnum getAccountType() {
+  public UserAccountType getAccountType() {
     return accountType;
   }
-  public void setAccountType(AccountTypeEnum accountType) {
+  public void setAccountType(UserAccountType accountType) {
     this.accountType = accountType;
   }
 
@@ -223,9 +208,6 @@ public class Account   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

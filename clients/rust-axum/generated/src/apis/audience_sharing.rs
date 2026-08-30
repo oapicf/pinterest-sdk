@@ -1,7 +1,8 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Host};
+use axum_extra::extract::CookieJar;
 use bytes::Bytes;
+use headers::Host;
 use http::Method;
 use serde::{Deserialize, Serialize};
 
@@ -11,127 +12,231 @@ use crate::{models, types::*};
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum AdAccountsAudiencesSharedAccountsSlashListResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::AdAccountsAudiencesSharedAccountsList200Response)
     ,
-    /// Invalid ad account audiences shared accounts parameters.
-    Status400_InvalidAdAccountAudiencesSharedAccountsParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Shared accounts not found.
-    Status404_SharedAccountsNotFound
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BusinessAccountAudiencesSharedAccountsSlashListResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::AdAccountsAudiencesSharedAccountsList200Response)
     ,
-    /// Invalid business audiences shared accounts parameters.
-    Status400_InvalidBusinessAudiencesSharedAccountsParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Shared accounts not found.
-    Status404_SharedAccountsNotFound
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum SharedAudiencesForBusinessSlashListResponse {
-    /// Success
-    Status200_Success
-    (models::AudiencesList200Response)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::SharedAudiencesForBusinessList200Response)
     ,
-    /// Invalid parameters.
-    Status400_InvalidParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum UpdateAdAccountToAdAccountSharedAudienceResponse {
-    /// Success
-    Status200_Success
-    (models::SharedAudienceResponse)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::AdAccountToAdAccountSharedAudience)
     ,
-    /// Invalid ad account id.
-    Status400_InvalidAdAccountId
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum UpdateAdAccountToBusinessSharedAudienceResponse {
-    /// Success
-    Status200_Success
-    (models::BusinessSharedAudienceResponse)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::AdAccountToBusinessSharedAudience)
     ,
-    /// Invalid ad account id.
-    Status400_InvalidAdAccountId
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum UpdateBusinessToAdAccountSharedAudienceResponse {
-    /// Success
-    Status200_Success
-    (models::SharedAudienceResponse)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::BusinessToAdAccountSharedAudience)
     ,
-    /// Invalid parameters.
-    Status400_InvalidParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum UpdateBusinessToBusinessSharedAudienceResponse {
-    /// Success
-    Status200_Success
-    (models::BusinessSharedAudienceResponse)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::BusinessToBusinessSharedAudience)
     ,
-    /// Invalid parameters.
-    Status400_InvalidParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 
@@ -190,7 +295,7 @@ pub trait AudienceSharing<E: std::fmt::Debug + Send + Sync + 'static = ()>: supe
     host: &Host,
     cookies: &CookieJar,
       path_params: &models::UpdateAdAccountToAdAccountSharedAudiencePathParams,
-            body: &models::SharedAudience,
+            body: &models::AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody,
     ) -> Result<UpdateAdAccountToAdAccountSharedAudienceResponse, E>;
 
     /// Update audience sharing from an ad account to businesses.
@@ -203,7 +308,7 @@ pub trait AudienceSharing<E: std::fmt::Debug + Send + Sync + 'static = ()>: supe
     host: &Host,
     cookies: &CookieJar,
       path_params: &models::UpdateAdAccountToBusinessSharedAudiencePathParams,
-            body: &models::BusinessSharedAudience,
+            body: &models::AdAccountToBusinessSharedAudienceUpdateWithRequiredBody,
     ) -> Result<UpdateAdAccountToBusinessSharedAudienceResponse, E>;
 
     /// Update audience sharing from a business to ad accounts.
@@ -216,7 +321,7 @@ pub trait AudienceSharing<E: std::fmt::Debug + Send + Sync + 'static = ()>: supe
     host: &Host,
     cookies: &CookieJar,
       path_params: &models::UpdateBusinessToAdAccountSharedAudiencePathParams,
-            body: &models::SharedAudience,
+            body: &models::BusinessToAdAccountSharedAudienceUpdateWithRequiredBody,
     ) -> Result<UpdateBusinessToAdAccountSharedAudienceResponse, E>;
 
     /// Update audience sharing between businesses.
@@ -229,6 +334,6 @@ pub trait AudienceSharing<E: std::fmt::Debug + Send + Sync + 'static = ()>: supe
     host: &Host,
     cookies: &CookieJar,
       path_params: &models::UpdateBusinessToBusinessSharedAudiencePathParams,
-            body: &models::BusinessSharedAudience,
+            body: &models::BusinessToBusinessSharedAudienceUpdateWithRequiredBody,
     ) -> Result<UpdateBusinessToBusinessSharedAudienceResponse, E>;
 }

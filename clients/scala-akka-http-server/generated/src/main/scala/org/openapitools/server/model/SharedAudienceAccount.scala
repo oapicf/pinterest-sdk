@@ -10,7 +10,7 @@ package org.openapitools.server.model
 final case class SharedAudienceAccount (
   accountId: String,
   accountName: String,
-  accountType: String,
+  accountType: AudienceAccountType,
   sharedOnTimestamp: Int
 )
 

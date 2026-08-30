@@ -1,7 +1,7 @@
 #tag Interface
 Protected Interface LeadsExportApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub LeadsExportCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadsExportCreateResponse)
+		Sub LeadsExportCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadsExports)
 		  
 		End Sub
 	#tag EndMethod

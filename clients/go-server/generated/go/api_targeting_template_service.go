@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -29,18 +29,30 @@ func NewTargetingTemplateAPIService() *TargetingTemplateAPIService {
 }
 
 // TargetingTemplateList - List targeting templates
-func (s *TargetingTemplateAPIService) TargetingTemplateList(ctx context.Context, adAccountId string, order string, includeSizing bool, searchQuery string, pageSize int32, bookmark string) (ImplResponse, error) {
+func (s *TargetingTemplateAPIService) TargetingTemplateList(ctx context.Context, adAccountId string, bookmark string, pageSize int32, order PinterestLibPaginationOrder, includeSizing bool, searchQuery string) (ImplResponse, error) {
 	// TODO - update TargetingTemplateList with the required logic for this service method.
 	// Add api_targeting_template_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, TargetingTemplateList200Response{}) or use other options such as http.Ok ...
 	// return Response(200, TargetingTemplateList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("TargetingTemplateList method not implemented")
 }
@@ -50,31 +62,58 @@ func (s *TargetingTemplateAPIService) TargetingTemplateCreate(ctx context.Contex
 	// TODO - update TargetingTemplateCreate with the required logic for this service method.
 	// Add api_targeting_template_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, TargetingTemplateGetResponseData{}) or use other options such as http.Ok ...
-	// return Response(200, TargetingTemplateGetResponseData{}), nil
+	// TODO: Uncomment the next line to return response Response(200, TargetingTemplate{}) or use other options such as http.Ok ...
+	// return Response(200, TargetingTemplate{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, TargetingTemplate{}) or use other options such as http.Ok ...
+	// return Response(201, TargetingTemplate{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("TargetingTemplateCreate method not implemented")
 }
 
 // TargetingTemplateUpdate - Update targeting templates
-func (s *TargetingTemplateAPIService) TargetingTemplateUpdate(ctx context.Context, adAccountId string, targetingTemplateUpdateRequest TargetingTemplateUpdateRequest) (ImplResponse, error) {
+func (s *TargetingTemplateAPIService) TargetingTemplateUpdate(ctx context.Context, adAccountId string, targetingTemplateUpdateRequestReadOrUpdate TargetingTemplateUpdateRequestReadOrUpdate) (ImplResponse, error) {
 	// TODO - update TargetingTemplateUpdate with the required logic for this service method.
 	// Add api_targeting_template_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, {}) or use other options such as http.Ok ...
 	// return Response(200, nil),nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("TargetingTemplateUpdate method not implemented")
 }

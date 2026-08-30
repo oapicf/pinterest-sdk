@@ -17,15 +17,16 @@ Name | Type | Description | Notes
 **disclosure_url** | Option<**String**> | URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. | [optional]
 **grid_click_type** | Option<[**models::GridClickType**](GridClickType.md)> |  | [optional]
 **ios_deep_link** | Option<**String**> | Deep link URL for iOS devices. | [optional]
+**is_carting** | Option<**bool**> | Is the ad a carting/WTB ad? | [optional]
 **is_pin_deleted** | Option<**bool**> | Is original pin deleted? | [optional]
 **is_removable** | Option<**bool**> | Is pin repinnable? | [optional]
 **lead_form_id** | Option<**String**> | Lead form ID for lead ad generation. | [optional]
 **name** | Option<**String**> | Name of the ad - 255 chars max. | [optional]
-**quiz_pin_data** | Option<[**models::QuizPinData**](QuizPinData.md)> | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional]
-**status** | Option<[**models::EntityStatus**](EntityStatus.md)> |  | [optional]
-**tracking_urls** | Option<[**models::TrackingUrls**](TrackingUrls.md)> |  | [optional]
-**view_tracking_url** | Option<**String**> | Tracking URL for ad impressions. | [optional]
 **pin_id** | **String** | Pin ID. | 
+**quiz_pin_data** | Option<**serde_json::Value**> | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional]
+**status** | Option<[**models::EntityStatus**](EntityStatus.md)> |  | [optional]
+**tracking_urls** | Option<**serde_json::Value**> |  | [optional]
+**view_tracking_url** | Option<**String**> | Tracking URL for ad impressions. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

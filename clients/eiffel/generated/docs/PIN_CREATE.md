@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ai_disclosures** | [**AI_DISCLOSURES**](AiDisclosures.md) | AI disclosure declarations the creator has made about this Pin. | [optional] [default to null]
 **alt_text** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
 **board_id** | [**STRING_32**](STRING_32.md) | The board to which this Pin belongs. | [optional] [default to null]
 **board_section_id** | [**STRING_32**](STRING_32.md) | The board section to which this Pin belongs. | [optional] [default to null]

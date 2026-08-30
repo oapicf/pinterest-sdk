@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -14,25 +15,25 @@ import org.openapitools.model.AnalyticsDailyMetrics;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * AnalyticsMetricsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AnalyticsMetricsResponse {
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid AnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 
   public AnalyticsMetricsResponse dailyMetrics(List<@Valid AnalyticsDailyMetrics> dailyMetrics) {
@@ -59,6 +60,7 @@ public class AnalyticsMetricsResponse {
     return dailyMetrics;
   }
 
+  @JsonProperty("daily_metrics")
   public void setDailyMetrics(List<@Valid AnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
   }
@@ -87,6 +89,7 @@ public class AnalyticsMetricsResponse {
     return summaryMetrics;
   }
 
+  @JsonProperty("summary_metrics")
   public void setSummaryMetrics(Map<String, BigDecimal> summaryMetrics) {
     this.summaryMetrics = summaryMetrics;
   }
@@ -123,11 +126,8 @@ public class AnalyticsMetricsResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

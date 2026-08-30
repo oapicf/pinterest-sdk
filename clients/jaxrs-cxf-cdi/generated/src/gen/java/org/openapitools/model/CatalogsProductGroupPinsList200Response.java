@@ -44,7 +44,6 @@ public class CatalogsProductGroupPinsList200Response   {
 
 
   /**
-   * Pins
    **/
   public CatalogsProductGroupPinsList200Response items(List<@Valid CatalogsProduct> items) {
     this.items = items;
@@ -52,7 +51,7 @@ public class CatalogsProductGroupPinsList200Response   {
   }
 
   
-  @ApiModelProperty(required = true, value = "Pins")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   @NotNull
   public List<@Valid CatalogsProduct> getItems() {
@@ -106,10 +105,7 @@ public class CatalogsProductGroupPinsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

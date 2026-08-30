@@ -11,10 +11,10 @@
 
 // Get advertiser entities in bulk
 //
-// Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+// Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 //
-bulk_download_response_t*
-BulkAPI_bulkDownloadCreate(apiClient_t *apiClient, char *ad_account_id, bulk_download_request_t *bulk_download_request)
+bulk_download_t*
+BulkAPI_bulkDownloadCreate(apiClient_t *apiClient, char *ad_account_id, bulk_download_create_t *bulk_download_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -47,12 +47,12 @@ BulkAPI_bulkDownloadCreate(apiClient_t *apiClient, char *ad_account_id, bulk_dow
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_bulk_download_request = NULL;
-    if (bulk_download_request != NULL)
+    cJSON *localVarSingleItemJSON_bulk_download_create = NULL;
+    if (bulk_download_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_bulk_download_request = bulk_download_request_convertToJSON(bulk_download_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_bulk_download_request);
+        localVarSingleItemJSON_bulk_download_create = bulk_download_create_convertToJSON(bulk_download_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_bulk_download_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -70,17 +70,41 @@ BulkAPI_bulkDownloadCreate(apiClient_t *apiClient, char *ad_account_id, bulk_dow
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    bulk_download_response_t *elementToReturn = NULL;
+    bulk_download_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BulkAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = bulk_download_response_parseFromJSON(BulkAPIlocalVarJSON);
+        elementToReturn = bulk_download_parseFromJSON(BulkAPIlocalVarJSON);
         cJSON_Delete(BulkAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -100,9 +124,9 @@ BulkAPI_bulkDownloadCreate(apiClient_t *apiClient, char *ad_account_id, bulk_dow
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarSingleItemJSON_bulk_download_request) {
-        cJSON_Delete(localVarSingleItemJSON_bulk_download_request);
-        localVarSingleItemJSON_bulk_download_request = NULL;
+    if (localVarSingleItemJSON_bulk_download_create) {
+        cJSON_Delete(localVarSingleItemJSON_bulk_download_create);
+        localVarSingleItemJSON_bulk_download_create = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -114,9 +138,9 @@ end:
 
 // Download advertiser entities in bulk
 //
-// Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+// Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 //
-bulk_upsert_status_response_t*
+bulk_job_data_t*
 BulkAPI_bulkRequestGet(apiClient_t *apiClient, char *ad_account_id, char *bulk_request_id, int *include_details)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -187,17 +211,37 @@ BulkAPI_bulkRequestGet(apiClient_t *apiClient, char *ad_account_id, char *bulk_r
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    bulk_upsert_status_response_t *elementToReturn = NULL;
+    bulk_job_data_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BulkAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = bulk_upsert_status_response_parseFromJSON(BulkAPIlocalVarJSON);
+        elementToReturn = bulk_job_data_parseFromJSON(BulkAPIlocalVarJSON);
         cJSON_Delete(BulkAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -239,7 +283,7 @@ end:
 
 // Create/update ad entities in bulk
 //
-// Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+// Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 //
 bulk_upsert_response_t*
 BulkAPI_bulkUpsertCreate(apiClient_t *apiClient, char *ad_account_id, bulk_upsert_request_t *bulk_upsert_request)
@@ -298,7 +342,7 @@ BulkAPI_bulkUpsertCreate(apiClient_t *apiClient, char *ad_account_id, bulk_upser
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {

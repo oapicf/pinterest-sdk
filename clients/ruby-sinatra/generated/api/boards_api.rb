@@ -24,8 +24,8 @@ MyApp.add_route('POST', '/v5/boards/{board_id}/sections', {
     },
     {
       "name" => "body",
-      "description" => "Create a board section.",
-      "dataType" => "BoardSection",
+      "description" => "",
+      "dataType" => "BoardSectionCreate",
       "paramType" => "body",
     }
     ]}) do
@@ -40,7 +40,7 @@ MyApp.add_route('DELETE', '/v5/boards/{board_id}/sections/{section_id}', {
   "resourcePath" => "/Boards",
   "summary" => "Delete board section",
   "nickname" => "board_sections/delete",
-  "responseClass" => "void",
+  "responseClass" => "BoardSection",
   "endpoint" => "/boards/{board_id}/sections/{section_id}",
   "notes" => "Delete a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.",
   "parameters" => [
@@ -95,7 +95,7 @@ MyApp.add_route('GET', '/v5/boards/{board_id}/sections', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -139,7 +139,7 @@ MyApp.add_route('GET', '/v5/boards/{board_id}/sections/{section_id}/pins', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -194,8 +194,8 @@ MyApp.add_route('PATCH', '/v5/boards/{board_id}/sections/{section_id}', {
     },
     {
       "name" => "body",
-      "description" => "Update a board section.",
-      "dataType" => "BoardSection",
+      "description" => "",
+      "dataType" => "BoardSectionUpdateWithRequiredBody",
       "paramType" => "body",
     }
     ]}) do
@@ -239,7 +239,7 @@ MyApp.add_route('DELETE', '/v5/boards/{board_id}', {
   "resourcePath" => "/Boards",
   "summary" => "Delete board",
   "nickname" => "boards/delete",
-  "responseClass" => "void",
+  "responseClass" => "Board",
   "endpoint" => "/boards/{board_id}",
   "notes" => "Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.",
   "parameters" => [
@@ -347,21 +347,6 @@ MyApp.add_route('GET', '/v5/boards/{board_id}/pins', {
   "notes" => "Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.",
   "parameters" => [
     {
-      "name" => "bookmark",
-      "description" => "Cursor used to fetch the next page of items",
-      "dataType" => "String",
-      "allowableValues" => "",
-      "paramType" => "query",
-    },
-    {
-      "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
-      "dataType" => "Integer",
-      "allowableValues" => "",
-      "defaultValue" => "25",
-      "paramType" => "query",
-    },
-    {
       "name" => "creative_types",
       "description" => "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.",
       "dataType" => "Array<CreativeType>",
@@ -381,6 +366,21 @@ MyApp.add_route('GET', '/v5/boards/{board_id}/pins', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "defaultValue" => "false",
+      "paramType" => "query",
+    },
+    {
+      "name" => "bookmark",
+      "description" => "Cursor used to fetch the next page of items",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "page_size",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "defaultValue" => "25",
       "paramType" => "query",
     },
     {

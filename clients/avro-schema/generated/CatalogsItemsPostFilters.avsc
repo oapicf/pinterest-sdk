@@ -5,15 +5,21 @@
   "name": "CatalogsItemsPostFilters",
   "fields": [
     {
-      "name": "catalog_type",
-      "type": "model.CatalogsType",
-      "doc": ""
-    },
-    {
       "name": "catalog_id",
       "type": ["null", "string"],
       "doc": "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog",
       "default": null
+    },
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsItemsPostFilters_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
+      "doc": ""
     },
     {
       "name": "item_ids",

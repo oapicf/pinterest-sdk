@@ -20,45 +20,50 @@ class AdvancedAuctionItemsSubmitUpsertRecord(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, country: Country=None, item_id: str=None, language: Language=None, bid_options: AdvancedAuctionBidOptions=None, errors: List[AdvancedAuctionOperationError]=None, update_mask: List[UpdateMaskBidOptionField]=None):  # noqa: E501
+    def __init__(self, bid_options: AdvancedAuctionBidOptions=None, country: Country=None, errors: List[AdvancedAuctionOperationError]=None, item_id: str=None, language: Language=None, operation: str=None, update_mask: List[UpdateMaskBidOptionField]=None):  # noqa: E501
         """AdvancedAuctionItemsSubmitUpsertRecord - a model defined in Swagger
 
+        :param bid_options: The bid_options of this AdvancedAuctionItemsSubmitUpsertRecord.  # noqa: E501
+        :type bid_options: AdvancedAuctionBidOptions
         :param country: The country of this AdvancedAuctionItemsSubmitUpsertRecord.  # noqa: E501
         :type country: Country
+        :param errors: The errors of this AdvancedAuctionItemsSubmitUpsertRecord.  # noqa: E501
+        :type errors: List[AdvancedAuctionOperationError]
         :param item_id: The item_id of this AdvancedAuctionItemsSubmitUpsertRecord.  # noqa: E501
         :type item_id: str
         :param language: The language of this AdvancedAuctionItemsSubmitUpsertRecord.  # noqa: E501
         :type language: Language
-        :param bid_options: The bid_options of this AdvancedAuctionItemsSubmitUpsertRecord.  # noqa: E501
-        :type bid_options: AdvancedAuctionBidOptions
-        :param errors: The errors of this AdvancedAuctionItemsSubmitUpsertRecord.  # noqa: E501
-        :type errors: List[AdvancedAuctionOperationError]
+        :param operation: The operation of this AdvancedAuctionItemsSubmitUpsertRecord.  # noqa: E501
+        :type operation: str
         :param update_mask: The update_mask of this AdvancedAuctionItemsSubmitUpsertRecord.  # noqa: E501
         :type update_mask: List[UpdateMaskBidOptionField]
         """
         self.swagger_types = {
+            'bid_options': AdvancedAuctionBidOptions,
             'country': Country,
+            'errors': List[AdvancedAuctionOperationError],
             'item_id': str,
             'language': Language,
-            'bid_options': AdvancedAuctionBidOptions,
-            'errors': List[AdvancedAuctionOperationError],
+            'operation': str,
             'update_mask': List[UpdateMaskBidOptionField]
         }
 
         self.attribute_map = {
+            'bid_options': 'bid_options',
             'country': 'country',
+            'errors': 'errors',
             'item_id': 'item_id',
             'language': 'language',
-            'bid_options': 'bid_options',
-            'errors': 'errors',
+            'operation': 'operation',
             'update_mask': 'update_mask'
         }
 
+        self._bid_options = bid_options
         self._country = country
+        self._errors = errors
         self._item_id = item_id
         self._language = language
-        self._bid_options = bid_options
-        self._errors = errors
+        self._operation = operation
         self._update_mask = update_mask
 
     @classmethod
@@ -71,6 +76,29 @@ class AdvancedAuctionItemsSubmitUpsertRecord(Model):
         :rtype: AdvancedAuctionItemsSubmitUpsertRecord
         """
         return util.deserialize_model(dikt, cls)
+
+    @property
+    def bid_options(self) -> AdvancedAuctionBidOptions:
+        """Gets the bid_options of this AdvancedAuctionItemsSubmitUpsertRecord.
+
+
+        :return: The bid_options of this AdvancedAuctionItemsSubmitUpsertRecord.
+        :rtype: AdvancedAuctionBidOptions
+        """
+        return self._bid_options
+
+    @bid_options.setter
+    def bid_options(self, bid_options: AdvancedAuctionBidOptions):
+        """Sets the bid_options of this AdvancedAuctionItemsSubmitUpsertRecord.
+
+
+        :param bid_options: The bid_options of this AdvancedAuctionItemsSubmitUpsertRecord.
+        :type bid_options: AdvancedAuctionBidOptions
+        """
+        if bid_options is None:
+            raise ValueError("Invalid value for `bid_options`, must not be `None`")  # noqa: E501
+
+        self._bid_options = bid_options
 
     @property
     def country(self) -> Country:
@@ -94,6 +122,29 @@ class AdvancedAuctionItemsSubmitUpsertRecord(Model):
             raise ValueError("Invalid value for `country`, must not be `None`")  # noqa: E501
 
         self._country = country
+
+    @property
+    def errors(self) -> List[AdvancedAuctionOperationError]:
+        """Gets the errors of this AdvancedAuctionItemsSubmitUpsertRecord.
+
+        Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.  # noqa: E501
+
+        :return: The errors of this AdvancedAuctionItemsSubmitUpsertRecord.
+        :rtype: List[AdvancedAuctionOperationError]
+        """
+        return self._errors
+
+    @errors.setter
+    def errors(self, errors: List[AdvancedAuctionOperationError]):
+        """Sets the errors of this AdvancedAuctionItemsSubmitUpsertRecord.
+
+        Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.  # noqa: E501
+
+        :param errors: The errors of this AdvancedAuctionItemsSubmitUpsertRecord.
+        :type errors: List[AdvancedAuctionOperationError]
+        """
+
+        self._errors = errors
 
     @property
     def item_id(self) -> str:
@@ -144,50 +195,31 @@ class AdvancedAuctionItemsSubmitUpsertRecord(Model):
         self._language = language
 
     @property
-    def bid_options(self) -> AdvancedAuctionBidOptions:
-        """Gets the bid_options of this AdvancedAuctionItemsSubmitUpsertRecord.
+    def operation(self) -> str:
+        """Gets the operation of this AdvancedAuctionItemsSubmitUpsertRecord.
 
 
-        :return: The bid_options of this AdvancedAuctionItemsSubmitUpsertRecord.
-        :rtype: AdvancedAuctionBidOptions
+        :return: The operation of this AdvancedAuctionItemsSubmitUpsertRecord.
+        :rtype: str
         """
-        return self._bid_options
+        return self._operation
 
-    @bid_options.setter
-    def bid_options(self, bid_options: AdvancedAuctionBidOptions):
-        """Sets the bid_options of this AdvancedAuctionItemsSubmitUpsertRecord.
+    @operation.setter
+    def operation(self, operation: str):
+        """Sets the operation of this AdvancedAuctionItemsSubmitUpsertRecord.
 
 
-        :param bid_options: The bid_options of this AdvancedAuctionItemsSubmitUpsertRecord.
-        :type bid_options: AdvancedAuctionBidOptions
+        :param operation: The operation of this AdvancedAuctionItemsSubmitUpsertRecord.
+        :type operation: str
         """
-        if bid_options is None:
-            raise ValueError("Invalid value for `bid_options`, must not be `None`")  # noqa: E501
+        allowed_values = ["UPSERT"]  # noqa: E501
+        if operation not in allowed_values:
+            raise ValueError(
+                "Invalid value for `operation` ({0}), must be one of {1}"
+                .format(operation, allowed_values)
+            )
 
-        self._bid_options = bid_options
-
-    @property
-    def errors(self) -> List[AdvancedAuctionOperationError]:
-        """Gets the errors of this AdvancedAuctionItemsSubmitUpsertRecord.
-
-        Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.  # noqa: E501
-
-        :return: The errors of this AdvancedAuctionItemsSubmitUpsertRecord.
-        :rtype: List[AdvancedAuctionOperationError]
-        """
-        return self._errors
-
-    @errors.setter
-    def errors(self, errors: List[AdvancedAuctionOperationError]):
-        """Sets the errors of this AdvancedAuctionItemsSubmitUpsertRecord.
-
-        Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.  # noqa: E501
-
-        :param errors: The errors of this AdvancedAuctionItemsSubmitUpsertRecord.
-        :type errors: List[AdvancedAuctionOperationError]
-        """
-
-        self._errors = errors
+        self._operation = operation
 
     @property
     def update_mask(self) -> List[UpdateMaskBidOptionField]:

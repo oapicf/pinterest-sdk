@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &CatalogsRetailProductMetadata{}
 
 // CatalogsRetailProductMetadata Retail product metadata entity
 type CatalogsRetailProductMetadata struct {
-	Availability NonNullableProductAvailabilityType `json:"availability"`
+	Availability ProductAvailability `json:"availability"`
 	Currency NonNullableCatalogsCurrency `json:"currency"`
 	// The parent ID of the product.
 	ItemGroupId NullableString `json:"item_group_id"`
@@ -40,7 +40,7 @@ type _CatalogsRetailProductMetadata CatalogsRetailProductMetadata
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailProductMetadata(availability NonNullableProductAvailabilityType, currency NonNullableCatalogsCurrency, itemGroupId NullableString, itemId string, price float32, salePrice NullableFloat32) *CatalogsRetailProductMetadata {
+func NewCatalogsRetailProductMetadata(availability ProductAvailability, currency NonNullableCatalogsCurrency, itemGroupId NullableString, itemId string, price float32, salePrice NullableFloat32) *CatalogsRetailProductMetadata {
 	this := CatalogsRetailProductMetadata{}
 	this.Availability = availability
 	this.Currency = currency
@@ -60,9 +60,9 @@ func NewCatalogsRetailProductMetadataWithDefaults() *CatalogsRetailProductMetada
 }
 
 // GetAvailability returns the Availability field value
-func (o *CatalogsRetailProductMetadata) GetAvailability() NonNullableProductAvailabilityType {
+func (o *CatalogsRetailProductMetadata) GetAvailability() ProductAvailability {
 	if o == nil {
-		var ret NonNullableProductAvailabilityType
+		var ret ProductAvailability
 		return ret
 	}
 
@@ -71,7 +71,7 @@ func (o *CatalogsRetailProductMetadata) GetAvailability() NonNullableProductAvai
 
 // GetAvailabilityOk returns a tuple with the Availability field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductMetadata) GetAvailabilityOk() (*NonNullableProductAvailabilityType, bool) {
+func (o *CatalogsRetailProductMetadata) GetAvailabilityOk() (*ProductAvailability, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -79,7 +79,7 @@ func (o *CatalogsRetailProductMetadata) GetAvailabilityOk() (*NonNullableProduct
 }
 
 // SetAvailability sets field value
-func (o *CatalogsRetailProductMetadata) SetAvailability(v NonNullableProductAvailabilityType) {
+func (o *CatalogsRetailProductMetadata) SetAvailability(v ProductAvailability) {
 	o.Availability = v
 }
 

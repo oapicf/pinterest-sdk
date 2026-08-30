@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/catalogs_db_item.dart';
 import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -13,20 +12,30 @@ part 'catalog.g.dart';
 /// Catalog entity
 ///
 /// Properties:
+/// * [catalogType] 
 /// * [createdAt] 
 /// * [id] - ID of the catalog entity.
-/// * [updatedAt] 
-/// * [catalogType] 
 /// * [name] - A human-friendly name associated to a catalog entity.
+/// * [updatedAt] 
 @BuiltValue()
-abstract class Catalog implements CatalogsDbItem, Built<Catalog, CatalogBuilder> {
+abstract class Catalog implements Built<Catalog, CatalogBuilder> {
   @BuiltValueField(wireName: r'catalog_type')
   CatalogsType get catalogType;
   // enum catalogTypeEnum {  RETAIL,  HOTEL,  CREATIVE_ASSETS,  };
 
+  @BuiltValueField(wireName: r'created_at')
+  DateTime get createdAt;
+
+  /// ID of the catalog entity.
+  @BuiltValueField(wireName: r'id')
+  String get id;
+
   /// A human-friendly name associated to a catalog entity.
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
+
+  @BuiltValueField(wireName: r'updated_at')
+  DateTime get updatedAt;
 
   Catalog._();
 
@@ -51,10 +60,10 @@ class _$CatalogSerializer implements PrimitiveSerializer<Catalog> {
     Catalog object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'name';
-    yield object.name == null ? null : serializers.serialize(
-      object.name,
-      specifiedType: const FullType.nullable(String),
+    yield r'catalog_type';
+    yield serializers.serialize(
+      object.catalogType,
+      specifiedType: const FullType(CatalogsType),
     );
     yield r'created_at';
     yield serializers.serialize(
@@ -66,10 +75,10 @@ class _$CatalogSerializer implements PrimitiveSerializer<Catalog> {
       object.id,
       specifiedType: const FullType(String),
     );
-    yield r'catalog_type';
+    yield r'name';
     yield serializers.serialize(
-      object.catalogType,
-      specifiedType: const FullType(CatalogsType),
+      object.name,
+      specifiedType: const FullType(String),
     );
     yield r'updated_at';
     yield serializers.serialize(
@@ -99,13 +108,12 @@ class _$CatalogSerializer implements PrimitiveSerializer<Catalog> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'name':
+        case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.name = valueDes;
+            specifiedType: const FullType(CatalogsType),
+          ) as CatalogsType;
+          result.catalogType = valueDes;
           break;
         case r'created_at':
           final valueDes = serializers.deserialize(
@@ -121,12 +129,12 @@ class _$CatalogSerializer implements PrimitiveSerializer<Catalog> {
           ) as String;
           result.id = valueDes;
           break;
-        case r'catalog_type':
+        case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsType),
-          ) as CatalogsType;
-          result.catalogType = valueDes;
+            specifiedType: const FullType(String),
+          ) as String;
+          result.name = valueDes;
           break;
         case r'updated_at':
           final valueDes = serializers.deserialize(

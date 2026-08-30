@@ -5,13 +5,13 @@
 
 
 char* catalogs_product_group_multiple_countries_criteria_values_ToString(pinterest_rest_api_catalogs_product_group_multiple_countries_criteria__e values) {
-    char *valuesArray[] =  { "NULL", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW" };
+    char *valuesArray[] =  { "NULL", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "false", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW" };
     return valuesArray[values - 1];
 }
 
 pinterest_rest_api_catalogs_product_group_multiple_countries_criteria__e catalogs_product_group_multiple_countries_criteria_values_FromString(char* values) {
     int stringToReturn = 0;
-    char *valuesArray[] =  { "NULL", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW" };
+    char *valuesArray[] =  { "NULL", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "false", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW" };
     size_t sizeofArray = sizeof(valuesArray) / sizeof(valuesArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(values, valuesArray[stringToReturn]) == 0) {
@@ -23,28 +23,37 @@ pinterest_rest_api_catalogs_product_group_multiple_countries_criteria__e catalog
 }
 
 static catalogs_product_group_multiple_countries_criteria_t *catalogs_product_group_multiple_countries_criteria_create_internal(
-    int negated,
+    int *negated,
     list_t *values
     ) {
     catalogs_product_group_multiple_countries_criteria_t *catalogs_product_group_multiple_countries_criteria_local_var = malloc(sizeof(catalogs_product_group_multiple_countries_criteria_t));
     if (!catalogs_product_group_multiple_countries_criteria_local_var) {
         return NULL;
     }
+    memset(catalogs_product_group_multiple_countries_criteria_local_var, 0, sizeof(catalogs_product_group_multiple_countries_criteria_t));
+    catalogs_product_group_multiple_countries_criteria_local_var->_library_owned = 1;
     catalogs_product_group_multiple_countries_criteria_local_var->negated = negated;
     catalogs_product_group_multiple_countries_criteria_local_var->values = values;
-
-    catalogs_product_group_multiple_countries_criteria_local_var->_library_owned = 1;
     return catalogs_product_group_multiple_countries_criteria_local_var;
 }
 
 __attribute__((deprecated)) catalogs_product_group_multiple_countries_criteria_t *catalogs_product_group_multiple_countries_criteria_create(
-    int negated,
+    int *negated,
     list_t *values
     ) {
-    return catalogs_product_group_multiple_countries_criteria_create_internal (
-        negated,
+    int *negated_copy = NULL;
+    if (negated) {
+        negated_copy = malloc(sizeof(int));
+        if (negated_copy) *negated_copy = *negated;
+    }
+    catalogs_product_group_multiple_countries_criteria_t *result = catalogs_product_group_multiple_countries_criteria_create_internal (
+        negated_copy,
         values
         );
+    if (!result) {
+        free(negated_copy);
+    }
+    return result;
 }
 
 void catalogs_product_group_multiple_countries_criteria_free(catalogs_product_group_multiple_countries_criteria_t *catalogs_product_group_multiple_countries_criteria) {
@@ -56,6 +65,10 @@ void catalogs_product_group_multiple_countries_criteria_free(catalogs_product_gr
         return ;
     }
     listEntry_t *listEntry;
+    if (catalogs_product_group_multiple_countries_criteria->negated) {
+        free(catalogs_product_group_multiple_countries_criteria->negated);
+        catalogs_product_group_multiple_countries_criteria->negated = NULL;
+    }
     if (catalogs_product_group_multiple_countries_criteria->values) {
         list_ForEach(listEntry, catalogs_product_group_multiple_countries_criteria->values) {
             country_free(listEntry->data);
@@ -71,7 +84,7 @@ cJSON *catalogs_product_group_multiple_countries_criteria_convertToJSON(catalogs
 
     // catalogs_product_group_multiple_countries_criteria->negated
     if(catalogs_product_group_multiple_countries_criteria->negated) {
-    if(cJSON_AddBoolToObject(item, "negated", catalogs_product_group_multiple_countries_criteria->negated) == NULL) {
+    if(cJSON_AddBoolToObject(item, "negated", *catalogs_product_group_multiple_countries_criteria->negated) == NULL) {
     goto fail; //Bool
     }
     }
@@ -109,6 +122,9 @@ catalogs_product_group_multiple_countries_criteria_t *catalogs_product_group_mul
 
     catalogs_product_group_multiple_countries_criteria_t *catalogs_product_group_multiple_countries_criteria_local_var = NULL;
 
+    // define the local variable for catalogs_product_group_multiple_countries_criteria->negated
+    int *negated_local_var = NULL;
+
     // define the local list for catalogs_product_group_multiple_countries_criteria->values
     list_t *valuesList = NULL;
 
@@ -122,6 +138,12 @@ catalogs_product_group_multiple_countries_criteria_t *catalogs_product_group_mul
     {
     goto end; //Bool
     }
+    negated_local_var = malloc(sizeof(int));
+    if(!negated_local_var)
+    {
+        goto end;
+    }
+    *negated_local_var = negated->valueint;
     }
 
     // catalogs_product_group_multiple_countries_criteria->values
@@ -152,13 +174,22 @@ catalogs_product_group_multiple_countries_criteria_t *catalogs_product_group_mul
     }
 
 
+
     catalogs_product_group_multiple_countries_criteria_local_var = catalogs_product_group_multiple_countries_criteria_create_internal (
-        negated ? negated->valueint : 0,
+        negated_local_var,
         valuesList
         );
 
+    if (!catalogs_product_group_multiple_countries_criteria_local_var) {
+        goto end;
+    }
+
     return catalogs_product_group_multiple_countries_criteria_local_var;
 end:
+    if (negated_local_var) {
+        free(negated_local_var);
+        negated_local_var = NULL;
+    }
     if (valuesList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, valuesList) {

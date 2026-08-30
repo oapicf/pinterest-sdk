@@ -30,7 +30,7 @@ Get a list of the boards a user follows. The request returns a board summary obj
 ### Example
 
 ```bash
- boardsUserFollowsList  bookmark=value  page_size=value  explicit_following=value  ad_account_id=value
+ boardsUserFollowsList  ad_account_id=value  explicit_following=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -38,14 +38,16 @@ Get a list of the boards a user follows. The request returns a board summary obj
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
- **explicitFollowing** | **boolean** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
+ **explicitFollowing** | **boolean** | Whether or not to include implicit user follows, which means followees with board follows.
+When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
+ **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BoardsUserFollowsList200Response**](BoardsUserFollowsList200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -63,7 +65,7 @@ Name | Type | Description  | Notes
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 Use this request, as a signed-in user, to follow another user.
 
@@ -79,11 +81,11 @@ Use this request, as a signed-in user, to follow another user.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **string** | A valid username | [default to null]
- **followUserRequest** | [**FollowUserRequest**](FollowUserRequest.md) | Follow a user. |
+ **followUserCreate** | [**FollowUserCreate**](FollowUserCreate.md) |  |
 
 ### Return type
 
-[**UserSummary**](UserSummary.md)
+[**FollowUser**](FollowUser.md)
 
 ### Authorization
 
@@ -115,7 +117,8 @@ Get a list of your followers.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -169,7 +172,7 @@ This endpoint does not need any parameter.
 
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 ### Example
 
@@ -186,7 +189,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -227,7 +230,7 @@ Name | Type | Description  | Notes
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [optional] [default to ALL]
  **contentType** | **string** | Filter to paid or organic data. Default is all. | [optional] [default to ALL]
  **source** | **string** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL]
- **metricTypes** | [**array[string]**](string.md) | Metric types to get data for, default is all. | [optional] [default to null]
+ **metricTypes** | [**array[QuerymetrictypesItems]**](QuerymetrictypesItems.md) | Metric types to get data for, default is all. | [optional] [default to null]
  **splitField** | **string** | How to split the data into groups. Not including this param means data won't be split. | [optional] [default to NO_SPLIT]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
@@ -269,13 +272,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [default to null]
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
- **sortBy** | **string** | Specify sorting order for metrics | [default to null]
+ **sortBy** | [**TopPinsSortBy**](.md) | Specify sorting order for metrics | [default to null]
  **fromClaimedContent** | **string** | Filter on Pins that match your claimed domain. | [optional] [default to BOTH]
  **pinFormat** | **string** | Pin formats to get data for, default is all. | [optional] [default to ALL]
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [optional] [default to ALL]
  **contentType** | **string** | Filter to paid or organic data. Default is all. | [optional] [default to ALL]
  **source** | **string** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL]
- **metricTypes** | [**array[string]**](string.md) | Metric types to get data for, default is all. | [optional] [default to null]
+ **metricTypes** | [**array[QuerymetrictypesItems]**](QuerymetrictypesItems.md) | Metric types to get data for, default is all. | [optional] [default to null]
  **numOfPins** | **integer** | Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
  **createdInLastNDays** | **integer** | Get metrics for pins created in the last \"n\" days. | [optional] [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
@@ -318,13 +321,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [default to null]
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
- **sortBy** | **string** | Specify sorting order for video metrics | [default to null]
+ **sortBy** | [**TopVideoPinsSortBy**](.md) | Specify sorting order for video metrics | [default to null]
  **fromClaimedContent** | **string** | Filter on Pins that match your claimed domain. | [optional] [default to BOTH]
  **pinFormat** | **string** | Pin formats to get data for, default is all. | [optional] [default to ALL]
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [optional] [default to ALL]
  **contentType** | **string** | Filter to paid or organic data. Default is all. | [optional] [default to ALL]
  **source** | **string** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL]
- **metricTypes** | [**array[string]**](string.md) | Metric types to get video data for, default is all. | [optional] [default to null]
+ **metricTypes** | [**array[QueryvideopinmetrictypesItems]**](QueryvideopinmetrictypesItems.md) | Metric types to get video data for, default is all. | [optional] [default to null]
  **numOfPins** | **integer** | Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
  **createdInLastNDays** | **integer** | Get metrics for pins created in the last \"n\" days. | [optional] [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
@@ -364,7 +367,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **string** | A valid username | [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -389,7 +393,8 @@ Get user account
 Get account information for the \"operation user_account\"
 - By default, the \"operation user_account\" is the token user_account.
 
-If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+[Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\"
+If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 
 ### Example
 
@@ -429,7 +434,7 @@ Get a list of who a certain user follows.
 ### Example
 
 ```bash
- userFollowingGet  bookmark=value  page_size=value  feed_type=value  explicit_following=value  ad_account_id=value
+ userFollowingGet  ad_account_id=value  explicit_following=value  feed_type=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -437,15 +442,18 @@ Get a list of who a certain user follows.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
- **feedType** | **UserFollowingFeedType** | Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [default to null]
- **explicitFollowing** | **boolean** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
+ **explicitFollowing** | **boolean** | Whether or not to include implicit user follows, which means followees with board follows.
+When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
+ **feedType** | [**UserFollowingFeedType**](.md) | Thrift param specifying what type of followees will be kept.
+Default to include all followees. | [optional] [default to null]
+ **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**UserFollowingGet200Response**](UserFollowingGet200Response.md)
+[**FollowersList200Response**](FollowersList200Response.md)
 
 ### Authorization
 
@@ -477,7 +485,8 @@ Get user websites, claimed or not
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -512,12 +521,12 @@ Verify a website as a signed-in user.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md) | Verify a website. |
+ **userWebsiteCreate** | [**UserWebsiteCreate**](UserWebsiteCreate.md) |  |
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
 
-[**UserWebsiteSummary**](UserWebsiteSummary.md)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -552,7 +561,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserWebsiteVerificationCode**](UserWebsiteVerificationCode.md)
+[**UserWebsiteVerification**](UserWebsiteVerification.md)
 
 ### Authorization
 

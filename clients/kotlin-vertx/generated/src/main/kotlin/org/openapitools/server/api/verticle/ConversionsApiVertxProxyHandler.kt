@@ -16,8 +16,10 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.AdvertiserDefinedEventsResponse
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.AdvertiserDefinedEventsCreate200Response
+import org.openapitools.server.api.model.AdvertiserDefinedEventsCreateRequest
+import org.openapitools.server.api.model.AdvertiserDefinedEventsGet200Response
+import org.openapitools.server.api.model.PinterestLibError
 
 class ConversionsApiVertxProxyHandler(private val vertx: Vertx, private val service: ConversionsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -65,6 +67,49 @@ class ConversionsApiVertxProxyHandler(private val vertx: Vertx, private val serv
             val context = OperationRequest(contextSerialized)
             when (action) {
         
+                "advertiserDefinedEventsCreate" -> {
+                    val params = context.params
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
+                    val advertiserDefinedEventsCreateRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (advertiserDefinedEventsCreateRequestParam == null) {
+                        throw IllegalArgumentException("advertiserDefinedEventsCreateRequest is required")
+                    }
+                    val advertiserDefinedEventsCreateRequest = Gson().fromJson(advertiserDefinedEventsCreateRequestParam.encode(), AdvertiserDefinedEventsCreateRequest::class.java)
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.advertiserDefinedEventsCreate(adAccountId,advertiserDefinedEventsCreateRequest,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
+                }
+        
+                "advertiserDefinedEventsDelete" -> {
+                    val params = context.params
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
+                    val eventNamesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"event_names")
+                    if(eventNamesParam == null){
+                         throw IllegalArgumentException("eventNames is required")
+                    }
+                    val eventNames:kotlin.Array<kotlin.String> = Gson().fromJson(eventNamesParam.encode()
+                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.advertiserDefinedEventsDelete(adAccountId,eventNames,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
+                }
+        
                 "advertiserDefinedEventsGet" -> {
                     val params = context.params
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
@@ -73,6 +118,27 @@ class ConversionsApiVertxProxyHandler(private val vertx: Vertx, private val serv
                     }
                     GlobalScope.launch(vertx.dispatcher()){
                         val result = service.advertiserDefinedEventsGet(adAccountId,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
+                }
+        
+                "advertiserDefinedEventsUpdate" -> {
+                    val params = context.params
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
+                    val advertiserDefinedEventsCreateRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (advertiserDefinedEventsCreateRequestParam == null) {
+                        throw IllegalArgumentException("advertiserDefinedEventsCreateRequest is required")
+                    }
+                    val advertiserDefinedEventsCreateRequest = Gson().fromJson(advertiserDefinedEventsCreateRequestParam.encode(), AdvertiserDefinedEventsCreateRequest::class.java)
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.advertiserDefinedEventsUpdate(adAccountId,advertiserDefinedEventsCreateRequest,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

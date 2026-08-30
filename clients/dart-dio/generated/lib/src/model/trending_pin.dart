@@ -11,12 +11,18 @@ part 'trending_pin.g.dart';
 /// Pin image data for trending topics
 ///
 /// Properties:
+/// * [color] - Dominant color of the pin image in hex format
 /// * [height] - Height of the pin image in pixels
 /// * [id] - Unique identifier for the pin
 /// * [src] - URL of the pin image
+/// * [verticalOffset] - The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.
 /// * [width] - Width of the pin image in pixels
 @BuiltValue()
 abstract class TrendingPin implements Built<TrendingPin, TrendingPinBuilder> {
+  /// Dominant color of the pin image in hex format
+  @BuiltValueField(wireName: r'color')
+  String get color;
+
   /// Height of the pin image in pixels
   @BuiltValueField(wireName: r'height')
   int get height;
@@ -28,6 +34,10 @@ abstract class TrendingPin implements Built<TrendingPin, TrendingPinBuilder> {
   /// URL of the pin image
   @BuiltValueField(wireName: r'src')
   String get src;
+
+  /// The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.
+  @BuiltValueField(wireName: r'vertical_offset')
+  double? get verticalOffset;
 
   /// Width of the pin image in pixels
   @BuiltValueField(wireName: r'width')
@@ -56,6 +66,11 @@ class _$TrendingPinSerializer implements PrimitiveSerializer<TrendingPin> {
     TrendingPin object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    yield r'color';
+    yield serializers.serialize(
+      object.color,
+      specifiedType: const FullType(String),
+    );
     yield r'height';
     yield serializers.serialize(
       object.height,
@@ -71,6 +86,13 @@ class _$TrendingPinSerializer implements PrimitiveSerializer<TrendingPin> {
       object.src,
       specifiedType: const FullType(String),
     );
+    if (object.verticalOffset != null) {
+      yield r'vertical_offset';
+      yield serializers.serialize(
+        object.verticalOffset,
+        specifiedType: const FullType(double),
+      );
+    }
     yield r'width';
     yield serializers.serialize(
       object.width,
@@ -99,6 +121,13 @@ class _$TrendingPinSerializer implements PrimitiveSerializer<TrendingPin> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'color':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.color = valueDes;
+          break;
         case r'height':
           final valueDes = serializers.deserialize(
             value,
@@ -119,6 +148,14 @@ class _$TrendingPinSerializer implements PrimitiveSerializer<TrendingPin> {
             specifiedType: const FullType(String),
           ) as String;
           result.src = valueDes;
+          break;
+        case r'vertical_offset':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(double),
+          ) as double?;
+          if (valueDes == null) continue;
+          result.verticalOffset = valueDes;
           break;
         case r'width':
           final valueDes = serializers.deserialize(

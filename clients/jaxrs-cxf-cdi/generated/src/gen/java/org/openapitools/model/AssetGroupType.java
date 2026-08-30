@@ -5,7 +5,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- * Asset group type
+ * Asset group type.
  **/
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

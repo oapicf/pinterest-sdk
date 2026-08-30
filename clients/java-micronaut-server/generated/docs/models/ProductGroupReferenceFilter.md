@@ -8,7 +8,7 @@ The class is defined in **[ProductGroupReferenceFilter.java](../../src/main/java
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PRODUCT_GROUP** | `CatalogsProductGroupMultipleStringCriteria` |  | 
+**PRODUCT_GROUP** | [`CatalogsProductGroupMultipleStringCriteria`](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 
 

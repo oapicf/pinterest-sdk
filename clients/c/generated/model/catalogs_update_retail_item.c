@@ -49,12 +49,12 @@ static catalogs_update_retail_item_t *catalogs_update_retail_item_create_interna
     if (!catalogs_update_retail_item_local_var) {
         return NULL;
     }
+    memset(catalogs_update_retail_item_local_var, 0, sizeof(catalogs_update_retail_item_t));
+    catalogs_update_retail_item_local_var->_library_owned = 1;
     catalogs_update_retail_item_local_var->attributes = attributes;
     catalogs_update_retail_item_local_var->item_id = item_id;
     catalogs_update_retail_item_local_var->operation = operation;
     catalogs_update_retail_item_local_var->update_mask = update_mask;
-
-    catalogs_update_retail_item_local_var->_library_owned = 1;
     return catalogs_update_retail_item_local_var;
 }
 
@@ -64,12 +64,15 @@ __attribute__((deprecated)) catalogs_update_retail_item_t *catalogs_update_retai
     pinterest_rest_api_catalogs_update_retail_item_OPERATION_e operation,
     list_t *update_mask
     ) {
-    return catalogs_update_retail_item_create_internal (
+    catalogs_update_retail_item_t *result = catalogs_update_retail_item_create_internal (
         attributes,
         item_id,
         operation,
         update_mask
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_update_retail_item_free(catalogs_update_retail_item_t *catalogs_update_retail_item) {
@@ -169,6 +172,8 @@ catalogs_update_retail_item_t *catalogs_update_retail_item_parseFromJSON(cJSON *
     // define the local variable for catalogs_update_retail_item->attributes
     updatable_item_attributes_t *attributes_local_nonprim = NULL;
 
+    char *item_id_local_str = NULL;
+
     // define the local list for catalogs_update_retail_item->update_mask
     list_t *update_maskList = NULL;
 
@@ -241,18 +246,28 @@ catalogs_update_retail_item_t *catalogs_update_retail_item_parseFromJSON(cJSON *
     }
 
 
+    if (item_id && !cJSON_IsNull(item_id)) item_id_local_str = strdup(item_id->valuestring);
+
     catalogs_update_retail_item_local_var = catalogs_update_retail_item_create_internal (
         attributes_local_nonprim,
-        strdup(item_id->valuestring),
+        item_id_local_str,
         operationVariable,
         update_mask ? update_maskList : NULL
         );
+
+    if (!catalogs_update_retail_item_local_var) {
+        goto end;
+    }
 
     return catalogs_update_retail_item_local_var;
 end:
     if (attributes_local_nonprim) {
         updatable_item_attributes_free(attributes_local_nonprim);
         attributes_local_nonprim = NULL;
+    }
+    if (item_id_local_str) {
+        free(item_id_local_str);
+        item_id_local_str = NULL;
     }
     if (update_maskList) {
         listEntry_t *listEntry = NULL;

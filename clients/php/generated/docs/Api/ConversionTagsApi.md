@@ -106,7 +106,7 @@ $apiInstance = new OpenAPI\Client\Api\ConversionTagsApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$conversion_tag_id = 2617998078212; // string | Id of the conversion tag.
+$conversion_tag_id = 'conversion_tag_id_example'; // string | Id of the conversion tag.
 
 try {
     $result = $apiInstance->conversionTagsGet($ad_account_id, $conversion_tag_id);
@@ -271,7 +271,7 @@ try {
 ## `pageVisitConversionTagsGet()`
 
 ```php
-pageVisitConversionTagsGet($ad_account_id, $page_size, $order, $bookmark): \OpenAPI\Client\Model\PageVisitConversionTagsGet200Response
+pageVisitConversionTagsGet($ad_account_id, $bookmark, $page_size, $order): \OpenAPI\Client\Model\PageVisitConversionTagsGet200Response
 ```
 
 Get page visit conversion tags
@@ -299,12 +299,12 @@ $apiInstance = new OpenAPI\Client\Api\ConversionTagsApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-$order = ASCENDING; // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+$order = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\PinterestLibPaginationOrder(); // \OpenAPI\Client\Model\PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 
 try {
-    $result = $apiInstance->pageVisitConversionTagsGet($ad_account_id, $page_size, $order, $bookmark);
+    $result = $apiInstance->pageVisitConversionTagsGet($ad_account_id, $bookmark, $page_size, $order);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionTagsApi->pageVisitConversionTagsGet: ', $e->getMessage(), PHP_EOL;
@@ -316,9 +316,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | [**\OpenAPI\Client\Model\PinterestLibPaginationOrder**](../Model/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 
 ### Return type
 

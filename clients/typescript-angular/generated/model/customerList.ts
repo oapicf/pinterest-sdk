@@ -7,62 +7,60 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { CustomerListStatus } from './customerListStatus';
 
 
 export interface CustomerList { 
     /**
      * Associated ad account ID.
      */
-    ad_account_id?: string;
+    readonly ad_account_id?: string;
     /**
      * Creation time. Unix timestamp in seconds.
      */
-    created_time?: number;
+    readonly created_time?: number;
     /**
-     * Customer list errors
+     * Customer list errors.
      */
-    exceptions?: object;
+    readonly exceptions?: object;
     /**
      * Customer list ID.
      */
-    id?: string;
+    readonly id: string;
+    /**
+     * Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.
+     */
+    is_nca?: boolean;
     /**
      * Customer list name.
      */
-    name?: string;
+    name: string;
     /**
-     * Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
+     * Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.
      */
-    num_batches?: number;
+    readonly num_batches?: number;
     /**
-     * Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
+     * Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.
      */
-    num_removed_user_records?: number;
+    readonly num_removed_user_records?: number;
     /**
-     * Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
+     * Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.
      */
-    num_uploaded_user_records?: number;
+    readonly num_uploaded_user_records?: number;
     /**
-     * Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
+     * Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
      */
-    status?: CustomerList.StatusEnum;
+    readonly status?: CustomerListStatus;
     /**
-     * Always \"customerlist\".
+     * Always `customerlist`.
      */
-    type?: string;
+    readonly type?: string;
     /**
      * Last update time. Unix timestamp in seconds.
      */
-    updated_time?: number;
+    readonly updated_time?: number;
 }
 export namespace CustomerList {
-    export const StatusEnum = {
-        Processing: 'PROCESSING',
-        Ready: 'READY',
-        TooSmall: 'TOO_SMALL',
-        Uploading: 'UPLOADING'
-    } as const;
-    export type StatusEnum = typeof StatusEnum[keyof typeof StatusEnum];
 }
 
 

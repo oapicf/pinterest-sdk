@@ -25,7 +25,7 @@ services:
 
 Create customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a>  <p>Create a customer list upload request for multipart S3 upload.</p> <p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p> <p><b>Please review the <u><a href=\"/docs/api/v5/customer_lists-update/\" target=\"_blank\">update customer list endpoint</a></u> documentation for additional information.</b></p>
+Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 
 ### Example Implementation
 ```php
@@ -65,9 +65,9 @@ class CustomerListUploadsApi implements CustomerListUploadsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **string**| Unique identifier of an ad account. |
- **customerListId** | **string**| Unique identifier of a customer list |
- **customerListUploadCreateRequest** | [**OpenAPI\Server\Model\CustomerListUploadCreateRequest**](../Model/CustomerListUploadCreateRequest.md)| Parameters to create a customer list upload request |
+ **adAccountId** | **string**|  |
+ **customerListId** | **string**| Customer list ID. |
+ **customerListUploadCreateRequest** | [**OpenAPI\Server\Model\CustomerListUploadCreateRequest**](../Model/CustomerListUploadCreateRequest.md)|  |
 
 ### Return type
 
@@ -85,11 +85,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **customerListUploadsGet**
-> OpenAPI\Server\Model\CustomerListUploadResponse customerListUploadsGet($adAccountId, $customerListId, $customerListUploadId)
+> OpenAPI\Server\Model\CustomerListUpload customerListUploadsGet($adAccountId, $customerListId, $customerListUploadId)
 
 Get customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Get the metadata for a given upload by its ID.</p>
+Get the metadata for a given upload by its ID.
 
 ### Example Implementation
 ```php
@@ -129,13 +129,13 @@ class CustomerListUploadsApi implements CustomerListUploadsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **string**| Unique identifier of an ad account. |
- **customerListId** | **string**| Unique identifier of a customer list |
- **customerListUploadId** | **string**| Unique identifier of a customer list upload |
+ **adAccountId** | **string**|  |
+ **customerListId** | **string**| Customer list ID. |
+ **customerListUploadId** | **string**| Customer List Upload ID. |
 
 ### Return type
 
-[**OpenAPI\Server\Model\CustomerListUploadResponse**](../Model/CustomerListUploadResponse.md)
+[**OpenAPI\Server\Model\CustomerListUpload**](../Model/CustomerListUpload.md)
 
 ### Authorization
 
@@ -149,11 +149,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **customerListUploadsRun**
-> OpenAPI\Server\Model\CustomerListUploadResponse customerListUploadsRun($adAccountId, $customerListId, $customerListUploadId)
+> OpenAPI\Server\Model\CustomerListUpload customerListUploadsRun($adAccountId, $customerListId, $customerListUploadId)
 
 Run customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Begin processing a customer list upload.</p>
+Begin processing a customer list upload.
 
 ### Example Implementation
 ```php
@@ -193,13 +193,13 @@ class CustomerListUploadsApi implements CustomerListUploadsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **string**| Unique identifier of an ad account. |
- **customerListId** | **string**| Unique identifier of a customer list |
- **customerListUploadId** | **string**| Unique identifier of a customer list upload |
+ **adAccountId** | **string**|  |
+ **customerListId** | **string**| Customer list ID. |
+ **customerListUploadId** | **string**| Customer List Upload ID. |
 
 ### Return type
 
-[**OpenAPI\Server\Model\CustomerListUploadResponse**](../Model/CustomerListUploadResponse.md)
+[**OpenAPI\Server\Model\CustomerListUpload**](../Model/CustomerListUpload.md)
 
 ### Authorization
 

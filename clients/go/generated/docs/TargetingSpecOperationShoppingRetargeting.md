@@ -87,16 +87,6 @@ and a boolean to check if the value has been set.
 SetValues sets Values field to given value.
 
 
-### SetValuesNil
-
-`func (o *TargetingSpecOperationShoppingRetargeting) SetValuesNil(b bool)`
-
- SetValuesNil sets the value for Values to be an explicit nil
-
-### UnsetValues
-`func (o *TargetingSpecOperationShoppingRetargeting) UnsetValues()`
-
-UnsetValues ensures that no value is present for Values, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

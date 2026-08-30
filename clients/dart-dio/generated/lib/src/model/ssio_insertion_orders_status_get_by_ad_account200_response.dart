@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
 import 'package:openapi/src/model/ssio_insertion_order_status.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -15,9 +14,15 @@ part 'ssio_insertion_orders_status_get_by_ad_account200_response.g.dart';
 ///
 /// Properties:
 /// * [bookmark] 
-/// * [items] - Insertion orders status by ad acount id
+/// * [items] 
 @BuiltValue()
-abstract class SsioInsertionOrdersStatusGetByAdAccount200Response implements Paginated, Built<SsioInsertionOrdersStatusGetByAdAccount200Response, SsioInsertionOrdersStatusGetByAdAccount200ResponseBuilder> {
+abstract class SsioInsertionOrdersStatusGetByAdAccount200Response implements Built<SsioInsertionOrdersStatusGetByAdAccount200Response, SsioInsertionOrdersStatusGetByAdAccount200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<SSIOInsertionOrderStatus> get items;
+
   SsioInsertionOrdersStatusGetByAdAccount200Response._();
 
   factory SsioInsertionOrdersStatusGetByAdAccount200Response([void updates(SsioInsertionOrdersStatusGetByAdAccount200ResponseBuilder b)]) = _$SsioInsertionOrdersStatusGetByAdAccount200Response;
@@ -51,7 +56,7 @@ class _$SsioInsertionOrdersStatusGetByAdAccount200ResponseSerializer implements 
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(SSIOInsertionOrderStatus)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$SsioInsertionOrdersStatusGetByAdAccount200ResponseSerializer implements 
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(SSIOInsertionOrderStatus)]),
+          ) as BuiltList<SSIOInsertionOrderStatus>;
           result.items.replace(valueDes);
           break;
         default:

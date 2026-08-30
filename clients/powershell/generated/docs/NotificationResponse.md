@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | **Boolean** | Returns true if the notification accepted. | [optional] 
-**ReceivedAt** | **Int32** | Received time. Unix timestamp in seconds. | [optional] 
 **ErrorMsg** | **String** | error message when success is false | [optional] 
+**ReceivedAt** | **Int32** | Received time. Unix timestamp in seconds. | [optional] 
+**Success** | **Boolean** | Returns true if the notification accepted. | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$NotificationResponse = Initialize-PSOpenAPIToolsNotificationResponse  -Success false `
- -ReceivedAt 1677003860 `
- -ErrorMsg null
+$NotificationResponse = Initialize-PSOpenAPIToolsNotificationResponse  -ErrorMsg null `
+ -ReceivedAt null `
+ -Success null
 ```
 
 - Convert the resource to JSON

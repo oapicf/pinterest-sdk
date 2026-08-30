@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/image_size.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -14,7 +15,7 @@ part 'image_metadata.g.dart';
 /// Properties:
 /// * [description] 
 /// * [images] 
-/// * [itemType] 
+/// * [itemType] - Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
 /// * [link] 
 /// * [title] 
 @BuiltValue()
@@ -25,8 +26,10 @@ abstract class ImageMetadata implements Built<ImageMetadata, ImageMetadataBuilde
   @BuiltValueField(wireName: r'images')
   ImageSize? get images;
 
+  /// Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
   @BuiltValueField(wireName: r'item_type')
-  String? get itemType;
+  ImageMetadataItemTypeEnum get itemType;
+  // enum itemTypeEnum {  image,  };
 
   @BuiltValueField(wireName: r'link')
   String? get link;
@@ -71,13 +74,11 @@ class _$ImageMetadataSerializer implements PrimitiveSerializer<ImageMetadata> {
         specifiedType: const FullType(ImageSize),
       );
     }
-    if (object.itemType != null) {
-      yield r'item_type';
-      yield serializers.serialize(
-        object.itemType,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'item_type';
+    yield serializers.serialize(
+      object.itemType,
+      specifiedType: const FullType(ImageMetadataItemTypeEnum),
+    );
     if (object.link != null) {
       yield r'link';
       yield serializers.serialize(
@@ -126,15 +127,16 @@ class _$ImageMetadataSerializer implements PrimitiveSerializer<ImageMetadata> {
         case r'images':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ImageSize),
-          ) as ImageSize;
+            specifiedType: const FullType.nullable(ImageSize),
+          ) as ImageSize?;
+          if (valueDes == null) continue;
           result.images.replace(valueDes);
           break;
         case r'item_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType(ImageMetadataItemTypeEnum),
+          ) as ImageMetadataItemTypeEnum;
           result.itemType = valueDes;
           break;
         case r'link':
@@ -180,5 +182,19 @@ class _$ImageMetadataSerializer implements PrimitiveSerializer<ImageMetadata> {
     );
     return result.build();
   }
+}
+
+class ImageMetadataItemTypeEnum extends EnumClass {
+
+  /// Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
+  @BuiltValueEnumConst(wireName: r'image')
+  static const ImageMetadataItemTypeEnum image = _$imageMetadataItemTypeEnum_image;
+
+  static Serializer<ImageMetadataItemTypeEnum> get serializer => _$imageMetadataItemTypeEnumSerializer;
+
+  const ImageMetadataItemTypeEnum._(String name): super(name);
+
+  static BuiltSet<ImageMetadataItemTypeEnum> get values => _$imageMetadataItemTypeEnumValues;
+  static ImageMetadataItemTypeEnum valueOf(String name) => _$imageMetadataItemTypeEnumValueOf(name);
 }
 

@@ -95,8 +95,9 @@ class _$BoardMediaSerializer implements PrimitiveSerializer<BoardMedia> {
         case r'pin_thumbnail_urls':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.pinThumbnailUrls.replace(valueDes);
           break;
         default:

@@ -24,7 +24,7 @@ import javax.validation.Valid;
 /**
  * Pin media that can be an image, video, or a mix of both.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class PinMedia   {
   @JsonProperty("images")
@@ -83,6 +83,10 @@ public class PinMedia   {
   
   private String videoUrl;
 
+  @JsonProperty("video_url_hls")
+  
+  private String videoUrlHls;
+
   @JsonProperty("width")
   
   private Integer width;
@@ -90,7 +94,7 @@ public class PinMedia   {
   @JsonProperty("items")
   @Valid
 
-  private List<PinMediaMetadata> items = null;
+  private List<@Valid PinMediaMetadata> items = null;
 
   public PinMedia images(ImageSize images) {
     this.images = images;
@@ -194,6 +198,23 @@ public class PinMedia   {
     this.videoUrl = videoUrl;
   }
 
+  public PinMedia videoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+    return this;
+  }
+
+   /**
+   * Video url (HLS).  **Note:** This field is limited and not available to all apps.
+   * @return videoUrlHls
+  **/
+  public String getVideoUrlHls() {
+    return videoUrlHls;
+  }
+
+  public void setVideoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+  }
+
   public PinMedia width(Integer width) {
     this.width = width;
     return this;
@@ -211,7 +232,7 @@ public class PinMedia   {
     this.width = width;
   }
 
-  public PinMedia items(List<PinMediaMetadata> items) {
+  public PinMedia items(List<@Valid PinMediaMetadata> items) {
     this.items = items;
     return this;
   }
@@ -228,11 +249,11 @@ public class PinMedia   {
    * Get items
    * @return items
   **/
-  public List<PinMediaMetadata> getItems() {
+  public List<@Valid PinMediaMetadata> getItems() {
     return items;
   }
 
-  public void setItems(List<PinMediaMetadata> items) {
+  public void setItems(List<@Valid PinMediaMetadata> items) {
     this.items = items;
   }
 
@@ -252,13 +273,14 @@ public class PinMedia   {
         Objects.equals(duration, pinMedia.duration) &&
         Objects.equals(height, pinMedia.height) &&
         Objects.equals(videoUrl, pinMedia.videoUrl) &&
+        Objects.equals(videoUrlHls, pinMedia.videoUrlHls) &&
         Objects.equals(width, pinMedia.width) &&
         Objects.equals(items, pinMedia.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(images, mediaType, coverImageUrl, duration, height, videoUrl, width, items);
+    return Objects.hash(images, mediaType, coverImageUrl, duration, height, videoUrl, videoUrlHls, width, items);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -273,6 +295,7 @@ public class PinMedia   {
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    videoUrlHls: ").append(toIndentedString(videoUrlHls)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
@@ -284,10 +307,7 @@ public class PinMedia   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

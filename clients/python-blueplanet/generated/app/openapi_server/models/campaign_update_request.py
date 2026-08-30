@@ -8,8 +8,8 @@ from typing import List, Dict  # noqa: F401
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.campaign_bid_options_update import CampaignBidOptionsUpdate  # noqa: F401,E501
 from app.openapi_server.models.entity_status import EntityStatus  # noqa: F401,E501
+from app.openapi_server.models.intended_promotion_type import IntendedPromotionType  # noqa: F401,E501
 from app.openapi_server.models.objective_type import ObjectiveType  # noqa: F401,E501
-from app.openapi_server.models.tracking_urls import TrackingUrls  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -20,19 +20,35 @@ class CampaignUpdateRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, id: str=None, ad_account_id: str=None, daily_spend_cap: int=None, end_time: int=None, is_automated_campaign: bool=None, is_flexible_daily_budgets: bool=None, lifetime_spend_cap: int=None, name: str=None, order_line_id: str=None, start_time: int=None, status: EntityStatus=None, tracking_urls: TrackingUrls=None, default_ad_group_budget_in_micro_currency: int=None, is_campaign_budget_optimization: bool=None, bid_options: CampaignBidOptionsUpdate=None, is_performance_plus: bool=None, objective_type: ObjectiveType=None):  # noqa: E501
+    def __init__(self, bid_options: CampaignBidOptionsUpdate=None, intended_promotion_type: IntendedPromotionType=None, is_ltv_optimized: bool=None, is_performance_plus: bool=None, is_top_of_search: bool=None, objective_type: ObjectiveType=None, ad_account_id: str=None, daily_spend_cap: int=None, default_ad_group_budget_in_micro_currency: int=None, end_time: int=None, id: str=None, is_automated_campaign: bool=None, is_campaign_budget_optimization: bool=None, is_flexible_daily_budgets: bool=None, lifetime_spend_cap: int=None, name: str=None, order_line_id: str=None, start_time: int=None, status: EntityStatus=None, tracking_urls: object=None):  # noqa: E501
         """CampaignUpdateRequest - a model defined in Swagger
 
-        :param id: The id of this CampaignUpdateRequest.  # noqa: E501
-        :type id: str
+        :param bid_options: The bid_options of this CampaignUpdateRequest.  # noqa: E501
+        :type bid_options: CampaignBidOptionsUpdate
+        :param intended_promotion_type: The intended_promotion_type of this CampaignUpdateRequest.  # noqa: E501
+        :type intended_promotion_type: IntendedPromotionType
+        :param is_ltv_optimized: The is_ltv_optimized of this CampaignUpdateRequest.  # noqa: E501
+        :type is_ltv_optimized: bool
+        :param is_performance_plus: The is_performance_plus of this CampaignUpdateRequest.  # noqa: E501
+        :type is_performance_plus: bool
+        :param is_top_of_search: The is_top_of_search of this CampaignUpdateRequest.  # noqa: E501
+        :type is_top_of_search: bool
+        :param objective_type: The objective_type of this CampaignUpdateRequest.  # noqa: E501
+        :type objective_type: ObjectiveType
         :param ad_account_id: The ad_account_id of this CampaignUpdateRequest.  # noqa: E501
         :type ad_account_id: str
         :param daily_spend_cap: The daily_spend_cap of this CampaignUpdateRequest.  # noqa: E501
         :type daily_spend_cap: int
+        :param default_ad_group_budget_in_micro_currency: The default_ad_group_budget_in_micro_currency of this CampaignUpdateRequest.  # noqa: E501
+        :type default_ad_group_budget_in_micro_currency: int
         :param end_time: The end_time of this CampaignUpdateRequest.  # noqa: E501
         :type end_time: int
+        :param id: The id of this CampaignUpdateRequest.  # noqa: E501
+        :type id: str
         :param is_automated_campaign: The is_automated_campaign of this CampaignUpdateRequest.  # noqa: E501
         :type is_automated_campaign: bool
+        :param is_campaign_budget_optimization: The is_campaign_budget_optimization of this CampaignUpdateRequest.  # noqa: E501
+        :type is_campaign_budget_optimization: bool
         :param is_flexible_daily_budgets: The is_flexible_daily_budgets of this CampaignUpdateRequest.  # noqa: E501
         :type is_flexible_daily_budgets: bool
         :param lifetime_spend_cap: The lifetime_spend_cap of this CampaignUpdateRequest.  # noqa: E501
@@ -46,63 +62,67 @@ class CampaignUpdateRequest(Model):
         :param status: The status of this CampaignUpdateRequest.  # noqa: E501
         :type status: EntityStatus
         :param tracking_urls: The tracking_urls of this CampaignUpdateRequest.  # noqa: E501
-        :type tracking_urls: TrackingUrls
-        :param default_ad_group_budget_in_micro_currency: The default_ad_group_budget_in_micro_currency of this CampaignUpdateRequest.  # noqa: E501
-        :type default_ad_group_budget_in_micro_currency: int
-        :param is_campaign_budget_optimization: The is_campaign_budget_optimization of this CampaignUpdateRequest.  # noqa: E501
-        :type is_campaign_budget_optimization: bool
-        :param bid_options: The bid_options of this CampaignUpdateRequest.  # noqa: E501
-        :type bid_options: CampaignBidOptionsUpdate
-        :param is_performance_plus: The is_performance_plus of this CampaignUpdateRequest.  # noqa: E501
-        :type is_performance_plus: bool
-        :param objective_type: The objective_type of this CampaignUpdateRequest.  # noqa: E501
-        :type objective_type: ObjectiveType
+        :type tracking_urls: object
         """
         self.swagger_types = {
-            'id': str,
+            'bid_options': CampaignBidOptionsUpdate,
+            'intended_promotion_type': IntendedPromotionType,
+            'is_ltv_optimized': bool,
+            'is_performance_plus': bool,
+            'is_top_of_search': bool,
+            'objective_type': ObjectiveType,
             'ad_account_id': str,
             'daily_spend_cap': int,
+            'default_ad_group_budget_in_micro_currency': int,
             'end_time': int,
+            'id': str,
             'is_automated_campaign': bool,
+            'is_campaign_budget_optimization': bool,
             'is_flexible_daily_budgets': bool,
             'lifetime_spend_cap': int,
             'name': str,
             'order_line_id': str,
             'start_time': int,
             'status': EntityStatus,
-            'tracking_urls': TrackingUrls,
-            'default_ad_group_budget_in_micro_currency': int,
-            'is_campaign_budget_optimization': bool,
-            'bid_options': CampaignBidOptionsUpdate,
-            'is_performance_plus': bool,
-            'objective_type': ObjectiveType
+            'tracking_urls': object
         }
 
         self.attribute_map = {
-            'id': 'id',
+            'bid_options': 'bid_options',
+            'intended_promotion_type': 'intended_promotion_type',
+            'is_ltv_optimized': 'is_ltv_optimized',
+            'is_performance_plus': 'is_performance_plus',
+            'is_top_of_search': 'is_top_of_search',
+            'objective_type': 'objective_type',
             'ad_account_id': 'ad_account_id',
             'daily_spend_cap': 'daily_spend_cap',
+            'default_ad_group_budget_in_micro_currency': 'default_ad_group_budget_in_micro_currency',
             'end_time': 'end_time',
+            'id': 'id',
             'is_automated_campaign': 'is_automated_campaign',
+            'is_campaign_budget_optimization': 'is_campaign_budget_optimization',
             'is_flexible_daily_budgets': 'is_flexible_daily_budgets',
             'lifetime_spend_cap': 'lifetime_spend_cap',
             'name': 'name',
             'order_line_id': 'order_line_id',
             'start_time': 'start_time',
             'status': 'status',
-            'tracking_urls': 'tracking_urls',
-            'default_ad_group_budget_in_micro_currency': 'default_ad_group_budget_in_micro_currency',
-            'is_campaign_budget_optimization': 'is_campaign_budget_optimization',
-            'bid_options': 'bid_options',
-            'is_performance_plus': 'is_performance_plus',
-            'objective_type': 'objective_type'
+            'tracking_urls': 'tracking_urls'
         }
 
-        self._id = id
+        self._bid_options = bid_options
+        self._intended_promotion_type = intended_promotion_type
+        self._is_ltv_optimized = is_ltv_optimized
+        self._is_performance_plus = is_performance_plus
+        self._is_top_of_search = is_top_of_search
+        self._objective_type = objective_type
         self._ad_account_id = ad_account_id
         self._daily_spend_cap = daily_spend_cap
+        self._default_ad_group_budget_in_micro_currency = default_ad_group_budget_in_micro_currency
         self._end_time = end_time
+        self._id = id
         self._is_automated_campaign = is_automated_campaign
+        self._is_campaign_budget_optimization = is_campaign_budget_optimization
         self._is_flexible_daily_budgets = is_flexible_daily_budgets
         self._lifetime_spend_cap = lifetime_spend_cap
         self._name = name
@@ -110,11 +130,6 @@ class CampaignUpdateRequest(Model):
         self._start_time = start_time
         self._status = status
         self._tracking_urls = tracking_urls
-        self._default_ad_group_budget_in_micro_currency = default_ad_group_budget_in_micro_currency
-        self._is_campaign_budget_optimization = is_campaign_budget_optimization
-        self._bid_options = bid_options
-        self._is_performance_plus = is_performance_plus
-        self._objective_type = objective_type
 
     @classmethod
     def from_dict(cls, dikt) -> 'CampaignUpdateRequest':
@@ -128,31 +143,136 @@ class CampaignUpdateRequest(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def id(self) -> str:
-        """Gets the id of this CampaignUpdateRequest.
+    def bid_options(self) -> CampaignBidOptionsUpdate:
+        """Gets the bid_options of this CampaignUpdateRequest.
 
-        Campaign ID.  # noqa: E501
 
-        :return: The id of this CampaignUpdateRequest.
-        :rtype: str
+        :return: The bid_options of this CampaignUpdateRequest.
+        :rtype: CampaignBidOptionsUpdate
         """
-        return self._id
+        return self._bid_options
 
-    @id.setter
-    def id(self, id: str):
-        """Sets the id of this CampaignUpdateRequest.
+    @bid_options.setter
+    def bid_options(self, bid_options: CampaignBidOptionsUpdate):
+        """Sets the bid_options of this CampaignUpdateRequest.
 
-        Campaign ID.  # noqa: E501
 
-        :param id: The id of this CampaignUpdateRequest.
-        :type id: str
+        :param bid_options: The bid_options of this CampaignUpdateRequest.
+        :type bid_options: CampaignBidOptionsUpdate
         """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
-        if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
-            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
-        self._id = id
+        self._bid_options = bid_options
+
+    @property
+    def intended_promotion_type(self) -> IntendedPromotionType:
+        """Gets the intended_promotion_type of this CampaignUpdateRequest.
+
+
+        :return: The intended_promotion_type of this CampaignUpdateRequest.
+        :rtype: IntendedPromotionType
+        """
+        return self._intended_promotion_type
+
+    @intended_promotion_type.setter
+    def intended_promotion_type(self, intended_promotion_type: IntendedPromotionType):
+        """Sets the intended_promotion_type of this CampaignUpdateRequest.
+
+
+        :param intended_promotion_type: The intended_promotion_type of this CampaignUpdateRequest.
+        :type intended_promotion_type: IntendedPromotionType
+        """
+
+        self._intended_promotion_type = intended_promotion_type
+
+    @property
+    def is_ltv_optimized(self) -> bool:
+        """Gets the is_ltv_optimized of this CampaignUpdateRequest.
+
+        Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.  # noqa: E501
+
+        :return: The is_ltv_optimized of this CampaignUpdateRequest.
+        :rtype: bool
+        """
+        return self._is_ltv_optimized
+
+    @is_ltv_optimized.setter
+    def is_ltv_optimized(self, is_ltv_optimized: bool):
+        """Sets the is_ltv_optimized of this CampaignUpdateRequest.
+
+        Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.  # noqa: E501
+
+        :param is_ltv_optimized: The is_ltv_optimized of this CampaignUpdateRequest.
+        :type is_ltv_optimized: bool
+        """
+
+        self._is_ltv_optimized = is_ltv_optimized
+
+    @property
+    def is_performance_plus(self) -> bool:
+        """Gets the is_performance_plus of this CampaignUpdateRequest.
+
+        Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>. This field is immutable, except only for campaigns in draft status which may update this field.  # noqa: E501
+
+        :return: The is_performance_plus of this CampaignUpdateRequest.
+        :rtype: bool
+        """
+        return self._is_performance_plus
+
+    @is_performance_plus.setter
+    def is_performance_plus(self, is_performance_plus: bool):
+        """Sets the is_performance_plus of this CampaignUpdateRequest.
+
+        Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>. This field is immutable, except only for campaigns in draft status which may update this field.  # noqa: E501
+
+        :param is_performance_plus: The is_performance_plus of this CampaignUpdateRequest.
+        :type is_performance_plus: bool
+        """
+
+        self._is_performance_plus = is_performance_plus
+
+    @property
+    def is_top_of_search(self) -> bool:
+        """Gets the is_top_of_search of this CampaignUpdateRequest.
+
+        Enable Top Of Search for your campaign. This field is immutable, except only for campaigns in draft status which may update this field.  # noqa: E501
+
+        :return: The is_top_of_search of this CampaignUpdateRequest.
+        :rtype: bool
+        """
+        return self._is_top_of_search
+
+    @is_top_of_search.setter
+    def is_top_of_search(self, is_top_of_search: bool):
+        """Sets the is_top_of_search of this CampaignUpdateRequest.
+
+        Enable Top Of Search for your campaign. This field is immutable, except only for campaigns in draft status which may update this field.  # noqa: E501
+
+        :param is_top_of_search: The is_top_of_search of this CampaignUpdateRequest.
+        :type is_top_of_search: bool
+        """
+
+        self._is_top_of_search = is_top_of_search
+
+    @property
+    def objective_type(self) -> ObjectiveType:
+        """Gets the objective_type of this CampaignUpdateRequest.
+
+
+        :return: The objective_type of this CampaignUpdateRequest.
+        :rtype: ObjectiveType
+        """
+        return self._objective_type
+
+    @objective_type.setter
+    def objective_type(self, objective_type: ObjectiveType):
+        """Sets the objective_type of this CampaignUpdateRequest.
+
+
+        :param objective_type: The objective_type of this CampaignUpdateRequest.
+        :type objective_type: ObjectiveType
+        """
+
+        self._objective_type = objective_type
 
     @property
     def ad_account_id(self) -> str:
@@ -205,6 +325,29 @@ class CampaignUpdateRequest(Model):
         self._daily_spend_cap = daily_spend_cap
 
     @property
+    def default_ad_group_budget_in_micro_currency(self) -> int:
+        """Gets the default_ad_group_budget_in_micro_currency of this CampaignUpdateRequest.
+
+        When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.  # noqa: E501
+
+        :return: The default_ad_group_budget_in_micro_currency of this CampaignUpdateRequest.
+        :rtype: int
+        """
+        return self._default_ad_group_budget_in_micro_currency
+
+    @default_ad_group_budget_in_micro_currency.setter
+    def default_ad_group_budget_in_micro_currency(self, default_ad_group_budget_in_micro_currency: int):
+        """Sets the default_ad_group_budget_in_micro_currency of this CampaignUpdateRequest.
+
+        When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.  # noqa: E501
+
+        :param default_ad_group_budget_in_micro_currency: The default_ad_group_budget_in_micro_currency of this CampaignUpdateRequest.
+        :type default_ad_group_budget_in_micro_currency: int
+        """
+
+        self._default_ad_group_budget_in_micro_currency = default_ad_group_budget_in_micro_currency
+
+    @property
     def end_time(self) -> int:
         """Gets the end_time of this CampaignUpdateRequest.
 
@@ -228,10 +371,37 @@ class CampaignUpdateRequest(Model):
         self._end_time = end_time
 
     @property
+    def id(self) -> str:
+        """Gets the id of this CampaignUpdateRequest.
+
+        Campaign ID.  # noqa: E501
+
+        :return: The id of this CampaignUpdateRequest.
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id: str):
+        """Sets the id of this CampaignUpdateRequest.
+
+        Campaign ID.  # noqa: E501
+
+        :param id: The id of this CampaignUpdateRequest.
+        :type id: str
+        """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
+            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
+
+        self._id = id
+
+    @property
     def is_automated_campaign(self) -> bool:
         """Gets the is_automated_campaign of this CampaignUpdateRequest.
 
-        Specifies whether the campaign was created in the automated campaign flow  # noqa: E501
+        Note: This field is immutable unless the campaign is in draft status. Specifies whether the campaign was created in the automated campaign flow. When using Automated Campaigns, a daily spend cap must be set, and Pinterest Performance+ may not be used. The following objective types are supported: - CONSIDERATION - WEB\\_CONVERSION - SALES - CATALOG\\_SALES  # noqa: E501
 
         :return: The is_automated_campaign of this CampaignUpdateRequest.
         :rtype: bool
@@ -242,7 +412,7 @@ class CampaignUpdateRequest(Model):
     def is_automated_campaign(self, is_automated_campaign: bool):
         """Sets the is_automated_campaign of this CampaignUpdateRequest.
 
-        Specifies whether the campaign was created in the automated campaign flow  # noqa: E501
+        Note: This field is immutable unless the campaign is in draft status. Specifies whether the campaign was created in the automated campaign flow. When using Automated Campaigns, a daily spend cap must be set, and Pinterest Performance+ may not be used. The following objective types are supported: - CONSIDERATION - WEB\\_CONVERSION - SALES - CATALOG\\_SALES  # noqa: E501
 
         :param is_automated_campaign: The is_automated_campaign of this CampaignUpdateRequest.
         :type is_automated_campaign: bool
@@ -251,10 +421,33 @@ class CampaignUpdateRequest(Model):
         self._is_automated_campaign = is_automated_campaign
 
     @property
+    def is_campaign_budget_optimization(self) -> bool:
+        """Gets the is_campaign_budget_optimization of this CampaignUpdateRequest.
+
+        Note: This field is immutable unless the campaign is in draft status. Determines if a campaign automatically generates ad-group level budgets given a campaign budget to maximize campaign outcome. When using campaign budgets with a lifetime spend cap, the end time must be provided.  # noqa: E501
+
+        :return: The is_campaign_budget_optimization of this CampaignUpdateRequest.
+        :rtype: bool
+        """
+        return self._is_campaign_budget_optimization
+
+    @is_campaign_budget_optimization.setter
+    def is_campaign_budget_optimization(self, is_campaign_budget_optimization: bool):
+        """Sets the is_campaign_budget_optimization of this CampaignUpdateRequest.
+
+        Note: This field is immutable unless the campaign is in draft status. Determines if a campaign automatically generates ad-group level budgets given a campaign budget to maximize campaign outcome. When using campaign budgets with a lifetime spend cap, the end time must be provided.  # noqa: E501
+
+        :param is_campaign_budget_optimization: The is_campaign_budget_optimization of this CampaignUpdateRequest.
+        :type is_campaign_budget_optimization: bool
+        """
+
+        self._is_campaign_budget_optimization = is_campaign_budget_optimization
+
+    @property
     def is_flexible_daily_budgets(self) -> bool:
         """Gets the is_flexible_daily_budgets of this CampaignUpdateRequest.
 
-        Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".  # noqa: E501
+        Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\". Flexible daily budgets are only supported for campaign budget optimization with a daily spend cap, and not a lifetime spend cap.  # noqa: E501
 
         :return: The is_flexible_daily_budgets of this CampaignUpdateRequest.
         :rtype: bool
@@ -265,7 +458,7 @@ class CampaignUpdateRequest(Model):
     def is_flexible_daily_budgets(self, is_flexible_daily_budgets: bool):
         """Sets the is_flexible_daily_budgets of this CampaignUpdateRequest.
 
-        Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".  # noqa: E501
+        Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\". Flexible daily budgets are only supported for campaign budget optimization with a daily spend cap, and not a lifetime spend cap.  # noqa: E501
 
         :param is_flexible_daily_budgets: The is_flexible_daily_budgets of this CampaignUpdateRequest.
         :type is_flexible_daily_budgets: bool
@@ -389,133 +582,22 @@ class CampaignUpdateRequest(Model):
         self._status = status
 
     @property
-    def tracking_urls(self) -> TrackingUrls:
+    def tracking_urls(self) -> object:
         """Gets the tracking_urls of this CampaignUpdateRequest.
 
 
         :return: The tracking_urls of this CampaignUpdateRequest.
-        :rtype: TrackingUrls
+        :rtype: object
         """
         return self._tracking_urls
 
     @tracking_urls.setter
-    def tracking_urls(self, tracking_urls: TrackingUrls):
+    def tracking_urls(self, tracking_urls: object):
         """Sets the tracking_urls of this CampaignUpdateRequest.
 
 
         :param tracking_urls: The tracking_urls of this CampaignUpdateRequest.
-        :type tracking_urls: TrackingUrls
+        :type tracking_urls: object
         """
 
         self._tracking_urls = tracking_urls
-
-    @property
-    def default_ad_group_budget_in_micro_currency(self) -> int:
-        """Gets the default_ad_group_budget_in_micro_currency of this CampaignUpdateRequest.
-
-        When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.  # noqa: E501
-
-        :return: The default_ad_group_budget_in_micro_currency of this CampaignUpdateRequest.
-        :rtype: int
-        """
-        return self._default_ad_group_budget_in_micro_currency
-
-    @default_ad_group_budget_in_micro_currency.setter
-    def default_ad_group_budget_in_micro_currency(self, default_ad_group_budget_in_micro_currency: int):
-        """Sets the default_ad_group_budget_in_micro_currency of this CampaignUpdateRequest.
-
-        When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.  # noqa: E501
-
-        :param default_ad_group_budget_in_micro_currency: The default_ad_group_budget_in_micro_currency of this CampaignUpdateRequest.
-        :type default_ad_group_budget_in_micro_currency: int
-        """
-
-        self._default_ad_group_budget_in_micro_currency = default_ad_group_budget_in_micro_currency
-
-    @property
-    def is_campaign_budget_optimization(self) -> bool:
-        """Gets the is_campaign_budget_optimization of this CampaignUpdateRequest.
-
-        Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.  # noqa: E501
-
-        :return: The is_campaign_budget_optimization of this CampaignUpdateRequest.
-        :rtype: bool
-        """
-        return self._is_campaign_budget_optimization
-
-    @is_campaign_budget_optimization.setter
-    def is_campaign_budget_optimization(self, is_campaign_budget_optimization: bool):
-        """Sets the is_campaign_budget_optimization of this CampaignUpdateRequest.
-
-        Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.  # noqa: E501
-
-        :param is_campaign_budget_optimization: The is_campaign_budget_optimization of this CampaignUpdateRequest.
-        :type is_campaign_budget_optimization: bool
-        """
-
-        self._is_campaign_budget_optimization = is_campaign_budget_optimization
-
-    @property
-    def bid_options(self) -> CampaignBidOptionsUpdate:
-        """Gets the bid_options of this CampaignUpdateRequest.
-
-
-        :return: The bid_options of this CampaignUpdateRequest.
-        :rtype: CampaignBidOptionsUpdate
-        """
-        return self._bid_options
-
-    @bid_options.setter
-    def bid_options(self, bid_options: CampaignBidOptionsUpdate):
-        """Sets the bid_options of this CampaignUpdateRequest.
-
-
-        :param bid_options: The bid_options of this CampaignUpdateRequest.
-        :type bid_options: CampaignBidOptionsUpdate
-        """
-
-        self._bid_options = bid_options
-
-    @property
-    def is_performance_plus(self) -> bool:
-        """Gets the is_performance_plus of this CampaignUpdateRequest.
-
-        Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>. This field is immutable, except only for campaigns in draft status which may update this field.  # noqa: E501
-
-        :return: The is_performance_plus of this CampaignUpdateRequest.
-        :rtype: bool
-        """
-        return self._is_performance_plus
-
-    @is_performance_plus.setter
-    def is_performance_plus(self, is_performance_plus: bool):
-        """Sets the is_performance_plus of this CampaignUpdateRequest.
-
-        Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>. This field is immutable, except only for campaigns in draft status which may update this field.  # noqa: E501
-
-        :param is_performance_plus: The is_performance_plus of this CampaignUpdateRequest.
-        :type is_performance_plus: bool
-        """
-
-        self._is_performance_plus = is_performance_plus
-
-    @property
-    def objective_type(self) -> ObjectiveType:
-        """Gets the objective_type of this CampaignUpdateRequest.
-
-
-        :return: The objective_type of this CampaignUpdateRequest.
-        :rtype: ObjectiveType
-        """
-        return self._objective_type
-
-    @objective_type.setter
-    def objective_type(self, objective_type: ObjectiveType):
-        """Sets the objective_type of this CampaignUpdateRequest.
-
-
-        :param objective_type: The objective_type of this CampaignUpdateRequest.
-        :type objective_type: ObjectiveType
-        """
-
-        self._objective_type = objective_type

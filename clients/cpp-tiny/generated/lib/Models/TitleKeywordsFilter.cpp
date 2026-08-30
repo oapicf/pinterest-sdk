@@ -65,7 +65,7 @@ TitleKeywordsFilter::getTITLEKEYWORDS()
 }
 
 void
-TitleKeywordsFilter::setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria  tITLE_KEYWORDS)
+TitleKeywordsFilter::setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria tITLE_KEYWORDS)
 {
 	this->tITLE_KEYWORDS = tITLE_KEYWORDS;
 }

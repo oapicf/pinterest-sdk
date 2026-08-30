@@ -3,27 +3,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Bid** | **Int32** | &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. | [optional] 
-**MatchType** | [**MatchTypeResponse**](MatchTypeResponse.md) |  | 
-**Value** | **String** | Keyword value (120 chars max). | 
 **Archived** | **Boolean** |  | [optional] 
-**Id** | **String** | Keyword ID . | [optional] 
-**ParentId** | **String** | Keyword parent entity ID (advertiser, campaign, ad group). | [optional] 
-**ParentType** | **String** | Parent entity type | [optional] 
-**Type** | **String** | Always keyword | [optional] 
+**Bid** | **Int32** | **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. | [optional] 
+**Id** | **String** | Keyword ID . | 
+**MatchType** | [**MatchType**](MatchType.md) | Keyword [match type](/docs/api-features/targeting-overview/) | 
+**ParentId** | **String** | Keyword parent entity ID (advertiser, campaign, ad group). | [readonly] 
+**ParentType** | **String** | Parent entity type (advertiser, campaign, ad group). | [optional] [readonly] 
+**Type** | **String** | Always keyword | [optional] [readonly] 
+**Value** | **String** | Keyword value (120 chars max). | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$Keyword = Initialize-PSOpenAPIToolsKeyword  -Bid null `
- -MatchType null `
- -Value null `
- -Archived false `
+$Keyword = Initialize-PSOpenAPIToolsKeyword  -Archived false `
+ -Bid null `
  -Id 383791336903426391 `
+ -MatchType null `
  -ParentId 383791336903426391 `
  -ParentType campaign `
- -Type keyword
+ -Type keyword `
+ -Value null
 ```
 
 - Convert the resource to JSON

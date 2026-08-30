@@ -9,36 +9,36 @@ import javax.validation.Valid;
 /**
  * NotificationResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class NotificationResponse   {
-  @JsonProperty("success")
+  @JsonProperty("error_msg")
   
-  private Boolean success;
+  private String errorMsg;
 
   @JsonProperty("received_at")
   
   private Integer receivedAt;
 
-  @JsonProperty("error_msg")
+  @JsonProperty("success")
   
-  private String errorMsg;
+  private Boolean success;
 
-  public NotificationResponse success(Boolean success) {
-    this.success = success;
+  public NotificationResponse errorMsg(String errorMsg) {
+    this.errorMsg = errorMsg;
     return this;
   }
 
    /**
-   * Returns true if the notification accepted.
-   * @return success
+   * error message when success is false
+   * @return errorMsg
   **/
-  public Boolean getSuccess() {
-    return success;
+  public String getErrorMsg() {
+    return errorMsg;
   }
 
-  public void setSuccess(Boolean success) {
-    this.success = success;
+  public void setErrorMsg(String errorMsg) {
+    this.errorMsg = errorMsg;
   }
 
   public NotificationResponse receivedAt(Integer receivedAt) {
@@ -58,21 +58,21 @@ public class NotificationResponse   {
     this.receivedAt = receivedAt;
   }
 
-  public NotificationResponse errorMsg(String errorMsg) {
-    this.errorMsg = errorMsg;
+  public NotificationResponse success(Boolean success) {
+    this.success = success;
     return this;
   }
 
    /**
-   * error message when success is false
-   * @return errorMsg
+   * Returns true if the notification accepted.
+   * @return success
   **/
-  public String getErrorMsg() {
-    return errorMsg;
+  public Boolean getSuccess() {
+    return success;
   }
 
-  public void setErrorMsg(String errorMsg) {
-    this.errorMsg = errorMsg;
+  public void setSuccess(Boolean success) {
+    this.success = success;
   }
 
 
@@ -85,14 +85,14 @@ public class NotificationResponse   {
       return false;
     }
     NotificationResponse notificationResponse = (NotificationResponse) o;
-    return Objects.equals(success, notificationResponse.success) &&
+    return Objects.equals(errorMsg, notificationResponse.errorMsg) &&
         Objects.equals(receivedAt, notificationResponse.receivedAt) &&
-        Objects.equals(errorMsg, notificationResponse.errorMsg);
+        Objects.equals(success, notificationResponse.success);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, receivedAt, errorMsg);
+    return Objects.hash(errorMsg, receivedAt, success);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -101,9 +101,9 @@ public class NotificationResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotificationResponse {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
-    sb.append("    receivedAt: ").append(toIndentedString(receivedAt)).append("\n");
     sb.append("    errorMsg: ").append(toIndentedString(errorMsg)).append("\n");
+    sb.append("    receivedAt: ").append(toIndentedString(receivedAt)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -113,10 +113,7 @@ public class NotificationResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

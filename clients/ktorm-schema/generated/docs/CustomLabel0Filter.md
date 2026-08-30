@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**CUSTOM_LABEL_0** | CUSTOM_LABEL_0 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  [foreignkey]
+**CUSTOM_LABEL_0** | CUSTOM_LABEL_0 | long NOT NULL |  | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |  [foreignkey]
 
 
 

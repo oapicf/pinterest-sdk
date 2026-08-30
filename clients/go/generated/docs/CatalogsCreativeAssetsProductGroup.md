@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogId** | **string** | Catalog id pertaining to the creative assets product group. | 
+**CatalogId** | **string** | Catalog ID pertaining to the product group. | 
 **CatalogType** | **string** |  | 
 **CreatedAt** | Pointer to **int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**Id** | **string** | ID of the creative assets product group. | 
-**Name** | Pointer to **string** | Name of creative assets product group | [optional] 
+**Id** | **string** | ID of the catalog product group. | 
+**Name** | Pointer to **string** | Name of catalog product group | [optional] 
 **UpdatedAt** | Pointer to **int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
 
 ## Methods

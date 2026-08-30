@@ -8,14 +8,21 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CatalogsReportAllItemsFilter
 import org.openapitools.client.models.CatalogsReportDistributionIssueFilter
 import org.openapitools.client.models.CatalogsReportFeedIngestionFilter
 
@@ -38,7 +45,7 @@ interface CatalogsHotelReportParametersReport {
     @Json(name = "feed_id")
     val feedId: kotlin.String
     @Json(name = "report_type")
-    val reportType: CatalogsHotelReportParametersReport.ReportType?
+    val reportType: CatalogsHotelReportParametersReport.ReportType
     /* Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result. */
     @Json(name = "processing_result_id")
     val processingResultId: kotlin.String?
@@ -48,13 +55,11 @@ interface CatalogsHotelReportParametersReport {
     /**
      * 
      *
-     * Values: FEED_INGESTION_ISSUES,DISTRIBUTION_ISSUES,ALL_ITEMS
+     * Values: DISTRIBUTION_ISSUES
      */
     @JsonClass(generateAdapter = false)
     enum class ReportType(val value: kotlin.String) {
-        @Json(name = "FEED_INGESTION_ISSUES") FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
-        @Json(name = "DISTRIBUTION_ISSUES") DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES"),
-        @Json(name = "ALL_ITEMS") ALL_ITEMS("ALL_ITEMS");
+        @Json(name = "DISTRIBUTION_ISSUES") DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
     }
 
 }

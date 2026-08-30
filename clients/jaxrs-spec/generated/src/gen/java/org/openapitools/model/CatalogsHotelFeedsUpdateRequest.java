@@ -7,7 +7,6 @@ import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.NullableCurrency;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -25,9 +24,56 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object for updating a feed.")
 @JsonTypeName("CatalogsHotelFeedsUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelFeedsUpdateRequest   {
-  private CatalogsType catalogType;
+  public enum CatalogTypeEnum {
+
+    HOTEL(String.valueOf("HOTEL"));
+
+
+    private String value;
+
+    CatalogTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    /**
+     * Convert a String into String, as specified in the
+     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
+     */
+    public static CatalogTypeEnum fromString(String s) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            // using Objects.toString() to be safe if value type non-object type
+            // because types like 'int' etc. will be auto-boxed
+            if (java.util.Objects.toString(b.value).equals(s)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private CatalogTypeEnum catalogType;
   private CatalogsFeedCredentials credentials;
   private NullableCurrency defaultCurrency;
   private CatalogsFormat format;
@@ -41,14 +87,14 @@ public class CatalogsHotelFeedsUpdateRequest   {
 
   @JsonCreator
   public CatalogsHotelFeedsUpdateRequest(
-    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType
   ) {
     this.catalogType = catalogType;
   }
 
   /**
    **/
-  public CatalogsHotelFeedsUpdateRequest catalogType(CatalogsType catalogType) {
+  public CatalogsHotelFeedsUpdateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -56,12 +102,12 @@ public class CatalogsHotelFeedsUpdateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "catalog_type")
-  @NotNull public CatalogsType getCatalogType() {
+  @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
   @JsonProperty(required = true, value = "catalog_type")
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -247,12 +293,8 @@ public class CatalogsHotelFeedsUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

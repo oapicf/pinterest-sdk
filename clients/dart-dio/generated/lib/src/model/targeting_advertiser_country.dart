@@ -75,8 +75,8 @@ class TargetingAdvertiserCountry extends EnumClass {
   @BuiltValueEnumConst(wireName: r'SG')
   static const TargetingAdvertiserCountry SG = _$SG;
   /// Advertiser's ISO two character country code.
-  @BuiltValueEnumConst(wireName: r'NO')
-  static const TargetingAdvertiserCountry NO = _$NO;
+  @BuiltValueEnumConst(wireName: r'false')
+  static const TargetingAdvertiserCountry false_ = _$false_;
   /// Advertiser's ISO two character country code.
   @BuiltValueEnumConst(wireName: r'DK')
   static const TargetingAdvertiserCountry DK = _$DK;

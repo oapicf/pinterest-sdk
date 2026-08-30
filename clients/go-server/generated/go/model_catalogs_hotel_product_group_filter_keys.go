@@ -5,18 +5,23 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type CatalogsHotelProductGroupFilterKeys struct {
 
-	PRICE CatalogsProductGroupPricingCurrencyCriteria `json:"PRICE"`
+	PRICE PriceFilterPrice `json:"PRICE"`
 
 	HOTEL_ID CatalogsProductGroupMultipleStringCriteria `json:"HOTEL_ID"`
 
@@ -36,8 +41,133 @@ type CatalogsHotelProductGroupFilterKeys struct {
 
 	TITLE_KEYWORDS CatalogsProductGroupMultipleStringCriteria `json:"TITLE_KEYWORDS"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsHotelProductGroupFilterKeys
+func (o *CatalogsHotelProductGroupFilterKeys) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"PRICE",
+		"HOTEL_ID",
+		"BRAND",
+		"CUSTOM_LABEL_0",
+		"CUSTOM_LABEL_1",
+		"CUSTOM_LABEL_2",
+		"CUSTOM_LABEL_3",
+		"CUSTOM_LABEL_4",
+		"COUNTRY",
+		"TITLE_KEYWORDS",
+	}
 
-// AssertCatalogsHotelProductGroupFilterKeysRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"PRICE": false,
+		"HOTEL_ID": false,
+		"BRAND": false,
+		"CUSTOM_LABEL_0": false,
+		"CUSTOM_LABEL_1": false,
+		"CUSTOM_LABEL_2": false,
+		"CUSTOM_LABEL_3": false,
+		"CUSTOM_LABEL_4": false,
+		"COUNTRY": false,
+		"TITLE_KEYWORDS": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"PRICE": {},
+		"HOTEL_ID": {},
+		"BRAND": {},
+		"CUSTOM_LABEL_0": {},
+		"CUSTOM_LABEL_1": {},
+		"CUSTOM_LABEL_2": {},
+		"CUSTOM_LABEL_3": {},
+		"CUSTOM_LABEL_4": {},
+		"COUNTRY": {},
+		"TITLE_KEYWORDS": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsHotelProductGroupFilterKeys
+
+	if value, exists := allProperties["PRICE"]; exists {
+		if err = json.Unmarshal(value, &decoded.PRICE); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["HOTEL_ID"]; exists {
+		if err = json.Unmarshal(value, &decoded.HOTEL_ID); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["BRAND"]; exists {
+		if err = json.Unmarshal(value, &decoded.BRAND); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_LABEL_0"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMLABEL0); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_LABEL_1"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMLABEL1); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_LABEL_2"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMLABEL2); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_LABEL_3"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMLABEL3); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["CUSTOM_LABEL_4"]; exists {
+		if err = json.Unmarshal(value, &decoded.CUSTOMLABEL4); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["COUNTRY"]; exists {
+		if err = json.Unmarshal(value, &decoded.COUNTRY); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["TITLE_KEYWORDS"]; exists {
+		if err = json.Unmarshal(value, &decoded.TITLE_KEYWORDS); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsHotelProductGroupFilterKeysRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsHotelProductGroupFilterKeysRequired(obj CatalogsHotelProductGroupFilterKeys) error {
 	elements := map[string]interface{}{
 		"PRICE": obj.PRICE,
@@ -57,7 +187,34 @@ func AssertCatalogsHotelProductGroupFilterKeysRequired(obj CatalogsHotelProductG
 		}
 	}
 
-	if err := AssertCatalogsProductGroupPricingCurrencyCriteriaRequired(obj.PRICE); err != nil {
+	if err := AssertPriceFilterPriceRequired(obj.PRICE); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaRequired(obj.HOTEL_ID); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaRequired(obj.BRAND); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaRequired(obj.CUSTOMLABEL0); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaRequired(obj.CUSTOMLABEL1); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaRequired(obj.CUSTOMLABEL2); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaRequired(obj.CUSTOMLABEL3); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaRequired(obj.CUSTOMLABEL4); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleCountriesCriteriaRequired(obj.COUNTRY); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaRequired(obj.TITLE_KEYWORDS); err != nil {
 		return err
 	}
 	return nil
@@ -65,7 +222,34 @@ func AssertCatalogsHotelProductGroupFilterKeysRequired(obj CatalogsHotelProductG
 
 // AssertCatalogsHotelProductGroupFilterKeysConstraints checks if the values respects the defined constraints
 func AssertCatalogsHotelProductGroupFilterKeysConstraints(obj CatalogsHotelProductGroupFilterKeys) error {
-	if err := AssertCatalogsProductGroupPricingCurrencyCriteriaConstraints(obj.PRICE); err != nil {
+	if err := AssertPriceFilterPriceConstraints(obj.PRICE); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaConstraints(obj.HOTEL_ID); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaConstraints(obj.BRAND); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaConstraints(obj.CUSTOMLABEL0); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaConstraints(obj.CUSTOMLABEL1); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaConstraints(obj.CUSTOMLABEL2); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaConstraints(obj.CUSTOMLABEL3); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupFilterOperatorTypeCriteriaConstraints(obj.CUSTOMLABEL4); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleCountriesCriteriaConstraints(obj.COUNTRY); err != nil {
+		return err
+	}
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaConstraints(obj.TITLE_KEYWORDS); err != nil {
 		return err
 	}
 	return nil

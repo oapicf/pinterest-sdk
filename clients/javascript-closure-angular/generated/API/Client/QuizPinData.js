@@ -25,14 +25,8 @@ API.Client.QuizPinData.prototype.results;
 API.Client.QuizPinData.prototype.tieBreakerCustomResult;
 
 /**
- * Quiz ad tie breaker type, default is RANDOM
- * @type {!string}
+ * @type {!API.Client.TieBreakerType}
  * @export
  */
 API.Client.QuizPinData.prototype.tieBreakerType;
 
-/** @enum {string} */
-API.Client.QuizPinData.TieBreakerTypeEnum = { 
-  RANDOM: 'RANDOM',
-  CUSTOM: 'CUSTOM',
-}

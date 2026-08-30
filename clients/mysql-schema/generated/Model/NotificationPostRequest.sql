@@ -1,26 +1,26 @@
 --
 -- Pinterest REST API.
--- Prepared SQL queries for 'notification_post_request' definition.
+-- Prepared SQL queries for 'NotificationPostRequest' definition.
 --
 
 
 --
--- SELECT template for table `notification_post_request`
+-- SELECT template for table `NotificationPostRequest`
 --
-SELECT  FROM `notification_post_request` WHERE 1;
+SELECT  FROM `NotificationPostRequest` WHERE 1;
 
 --
--- INSERT template for table `notification_post_request`
+-- INSERT template for table `NotificationPostRequest`
 --
-INSERT INTO `notification_post_request`() VALUES ();
+INSERT INTO `NotificationPostRequest`() VALUES ();
 
 --
--- UPDATE template for table `notification_post_request`
+-- UPDATE template for table `NotificationPostRequest`
 --
-UPDATE `notification_post_request` SET  WHERE 1;
+UPDATE `NotificationPostRequest` SET  WHERE 1;
 
 --
--- DELETE template for table `notification_post_request`
+-- DELETE template for table `NotificationPostRequest`
 --
-DELETE FROM `notification_post_request` WHERE 0;
+DELETE FROM `NotificationPostRequest` WHERE 0;
 

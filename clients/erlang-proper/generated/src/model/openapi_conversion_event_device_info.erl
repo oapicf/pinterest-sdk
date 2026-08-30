@@ -15,13 +15,13 @@
   | {'cpu_cores', integer() }
   | {'external_storage_free_space', integer() }
   | {'external_storage_size', integer() }
-  | {'form_factor', binary() }
+  | {'form_factor', openapi_form_factor:openapi_form_factor() }
   | {'kernel_version', binary() }
   | {'languages', list(binary()) }
   | {'locale', binary() }
   | {'model', binary() }
-  | {'network_type', binary() }
-  | {'os_family', binary() }
+  | {'network_type', openapi_network_type:openapi_network_type() }
+  | {'os_family', openapi_os_family:openapi_os_family() }
   | {'os_name', binary() }
   | {'os_release_name', binary() }
   | {'os_version', binary() }
@@ -46,13 +46,13 @@ openapi_conversion_event_device_info(Fields) ->
             , {'cpu_cores', integer(0, 1152) }
             , {'external_storage_free_space', integer(0, 1048576) }
             , {'external_storage_size', integer(0, 1048576) }
-            , {'form_factor', elements([<<"desktop">>, <<"laptop">>, <<"cellphone">>, <<"tablet">>, <<"smartwatch">>, <<"tv">>, <<"vr">>, <<"console">>, <<"other">>]) }
+            , {'form_factor', openapi_form_factor:openapi_form_factor() }
             , {'kernel_version', binary() }
             , {'languages', list(binary(), 0, 100) }
             , {'locale', binary() }
             , {'model', binary() }
-            , {'network_type', elements([<<"wifi">>, <<"cellular_2g">>, <<"cellular_3g">>, <<"cellular_4g">>, <<"cellular_5g">>, <<"cellular_6g">>, <<"ethernet">>, <<"unknown">>]) }
-            , {'os_family', elements([<<"ios">>, <<"android">>, <<"macos">>, <<"windows">>, <<"linux">>, <<"bsd">>, <<"other">>]) }
+            , {'network_type', openapi_network_type:openapi_network_type() }
+            , {'os_family', openapi_os_family:openapi_os_family() }
             , {'os_name', binary() }
             , {'os_release_name', binary() }
             , {'os_version', binary() }

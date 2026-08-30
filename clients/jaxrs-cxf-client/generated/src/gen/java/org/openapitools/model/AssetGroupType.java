@@ -3,7 +3,7 @@ package org.openapitools.model;
 
 
 /**
- * Asset group type
+ * Asset group type.
  */
 public enum AssetGroupType {
   

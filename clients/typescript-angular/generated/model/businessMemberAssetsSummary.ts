@@ -7,8 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { BusinessMemberAssetsSummaryAdAccountsInner } from './businessMemberAssetsSummaryAdAccountsInner';
-import { BusinessMemberAssetsSummaryProfilesInner } from './businessMemberAssetsSummaryProfilesInner';
+import { AssetIdWithPermissions } from './assetIdWithPermissions';
 
 
 /**
@@ -18,10 +17,10 @@ export interface BusinessMemberAssetsSummary {
     /**
      * List of ad account IDs and respective permission levels.
      */
-    ad_accounts?: Array<BusinessMemberAssetsSummaryAdAccountsInner>;
+    ad_accounts?: Array<AssetIdWithPermissions>;
     /**
      * List of profile IDs and respective permission levels.
      */
-    profiles?: Array<BusinessMemberAssetsSummaryProfilesInner>;
+    profiles?: Array<AssetIdWithPermissions>;
 }
 

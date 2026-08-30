@@ -11,7 +11,7 @@ import javax.validation.Valid;
 /**
  * Resource create operation model.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class BoardCreate   {
   @JsonProperty("description")
@@ -30,7 +30,7 @@ public class BoardCreate   {
   @JsonProperty("privacy")
   @Valid
 
-  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
+  private BoardPrivacy privacy;
 
   public BoardCreate description(String description) {
     this.description = description;
@@ -72,7 +72,7 @@ public class BoardCreate   {
   }
 
    /**
-   *      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+   *     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
    * @return name
   **/
   public String getName() {
@@ -140,10 +140,7 @@ public class BoardCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

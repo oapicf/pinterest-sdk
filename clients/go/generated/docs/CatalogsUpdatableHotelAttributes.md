@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | Pointer to [**CatalogsHotelAddress**](CatalogsHotelAddress.md) |  | [optional] 
+**Address** | Pointer to [**CatalogsHotelAddress**](CatalogsHotelAddress.md) | Hotel address | [optional] 
 **BasePrice** | Pointer to **NullableString** | Base price of the hotel room per night followed by the ISO currency code | [optional] 
 **Brand** | Pointer to **NullableString** | The brand to which this hotel belongs to. | [optional] 
 **Category** | Pointer to **NullableString** | The type of property. The category can be any type of internal description desired. | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **CustomLabel3** | Pointer to **NullableString** | Custom grouping of hotels | [optional] 
 **CustomLabel4** | Pointer to **NullableString** | Custom grouping of hotels | [optional] 
 **Description** | Pointer to **NullableString** | Brief description of the hotel. | [optional] 
-**GuestRatings** | Pointer to [**CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) |  | [optional] 
+**GuestRatings** | Pointer to [**CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) | If specified, you must provide all properties | [optional] 
 **Latitude** | Pointer to **float32** | Latitude of the hotel. | [optional] 
 **Link** | Pointer to **NullableString** | Link to the product page | [optional] 
 **Longitude** | Pointer to **NullableFloat32** | Longitude of the hotel. | [optional] 

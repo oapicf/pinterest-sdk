@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -131,13 +132,6 @@ func (c *AudiencesAPIController) AudiencesList(w http.ResponseWriter, r *http.Re
 		bookmarkParam = param
 	} else {
 	}
-	var orderParam string
-	if query.Has("order") {
-		param := query.Get("order")
-
-		orderParam = param
-	} else {
-	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
 		param, err := parseNumericParameter[int32](
@@ -156,16 +150,37 @@ func (c *AudiencesAPIController) AudiencesList(w http.ResponseWriter, r *http.Re
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var ownershipTypeParam string
+	var orderParam PinterestLibPaginationOrder
+	if query.Has("order") {
+		param := PinterestLibPaginationOrder(query.Get("order"))
+
+		orderParam = param
+	} else {
+	}
+	var ownershipTypeParam AudienceOwnershipType
 	if query.Has("ownership_type") {
-		param := query.Get("ownership_type")
+		param := AudienceOwnershipType(query.Get("ownership_type"))
 
 		ownershipTypeParam = param
 	} else {
-		param := "OWNED"
-		ownershipTypeParam = param
 	}
-	result, err := c.service.AudiencesList(r.Context(), adAccountIdParam, bookmarkParam, orderParam, pageSizeParam, ownershipTypeParam)
+	var excludeNcaParam bool
+	if query.Has("exclude_nca") {
+		param, err := parseBoolParameter(
+			query.Get("exclude_nca"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "exclude_nca", Err: err}, nil)
+			return
+		}
+
+		excludeNcaParam = param
+	} else {
+		var param bool = false
+		excludeNcaParam = param
+	}
+	result, err := c.service.AudiencesList(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, orderParam, ownershipTypeParam, excludeNcaParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -183,22 +198,27 @@ func (c *AudiencesAPIController) AudiencesCreate(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var audienceCreateRequestParam AudienceCreateRequest
+	var adAccountsAudienceCreateParam AdAccountsAudienceCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&audienceCreateRequestParam); err != nil {
+	if err := d.Decode(&adAccountsAudienceCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertAudienceCreateRequestRequired(audienceCreateRequestParam); err != nil {
+	if err := AssertAdAccountsAudienceCreateRequired(adAccountsAudienceCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertAudienceCreateRequestConstraints(audienceCreateRequestParam); err != nil {
+	if err := AssertAdAccountsAudienceCreateConstraints(adAccountsAudienceCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.AudiencesCreate(r.Context(), adAccountIdParam, audienceCreateRequestParam)
+	result, err := c.service.AudiencesCreate(r.Context(), adAccountIdParam, adAccountsAudienceCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -211,17 +231,17 @@ func (c *AudiencesAPIController) AudiencesCreate(w http.ResponseWriter, r *http.
 // AudiencesGet - Get audience
 func (c *AudiencesAPIController) AudiencesGet(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
-		return
-	}
 	audienceIdParam := params["audience_id"]
 	if audienceIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"audience_id"}, nil)
 		return
 	}
-	result, err := c.service.AudiencesGet(r.Context(), adAccountIdParam, audienceIdParam)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	result, err := c.service.AudiencesGet(r.Context(), audienceIdParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -234,32 +254,37 @@ func (c *AudiencesAPIController) AudiencesGet(w http.ResponseWriter, r *http.Req
 // AudiencesUpdate - Update audience
 func (c *AudiencesAPIController) AudiencesUpdate(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
-		return
-	}
 	audienceIdParam := params["audience_id"]
 	if audienceIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"audience_id"}, nil)
 		return
 	}
-	var audienceUpdateRequestParam AudienceUpdateRequest
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var adAccountsAudienceUpdateParam AdAccountsAudienceUpdate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&audienceUpdateRequestParam); err != nil {
+	if err := d.Decode(&adAccountsAudienceUpdateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertAudienceUpdateRequestRequired(audienceUpdateRequestParam); err != nil {
+	if err := AssertAdAccountsAudienceUpdateRequired(adAccountsAudienceUpdateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertAudienceUpdateRequestConstraints(audienceUpdateRequestParam); err != nil {
+	if err := AssertAdAccountsAudienceUpdateConstraints(adAccountsAudienceUpdateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.AudiencesUpdate(r.Context(), adAccountIdParam, audienceIdParam, audienceUpdateRequestParam)
+	result, err := c.service.AudiencesUpdate(r.Context(), audienceIdParam, adAccountIdParam, adAccountsAudienceUpdateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -12,8 +12,9 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "TopPinsAnalyticsResponse_date_availability.h"
-#include "TopVideoPinsAnalyticsResponse_pins_inner.h"
+#include "TopVideoPinsAnalyticsResponseDateAvailability.h"
+#include "TopVideoPinsAnalyticsResponsePinsItems.h"
+#include "TopVideoPinsSortBy.h"
 #include <list>
 
 namespace Tiny {
@@ -50,31 +51,31 @@ public:
 
 	/*! \brief Get 
 	 */
-	TopPinsAnalyticsResponse_date_availability getDateAvailability();
+	TopVideoPinsAnalyticsResponseDateAvailability getDateAvailability();
 
 	/*! \brief Set 
 	 */
-	void setDateAvailability(TopPinsAnalyticsResponse_date_availability  date_availability);
+	void setDateAvailability(TopVideoPinsAnalyticsResponseDateAvailability date_availability);
 	/*! \brief Get 
 	 */
-	std::list<TopVideoPinsAnalyticsResponse_pins_inner> getPins();
+	std::list<TopVideoPinsAnalyticsResponsePinsItems> getPins();
 
 	/*! \brief Set 
 	 */
-	void setPins(std::list <TopVideoPinsAnalyticsResponse_pins_inner> pins);
+	void setPins(std::list<TopVideoPinsAnalyticsResponsePinsItems> pins);
 	/*! \brief Get 
 	 */
-	std::string getSortBy();
+	TopVideoPinsSortBy getSortBy();
 
 	/*! \brief Set 
 	 */
-	void setSortBy(std::string  sort_by);
+	void setSortBy(TopVideoPinsSortBy sort_by);
 
 
     private:
-    TopPinsAnalyticsResponse_date_availability date_availability;
-    std::list<TopVideoPinsAnalyticsResponse_pins_inner> pins;
-    std::string sort_by{};
+    TopVideoPinsAnalyticsResponseDateAvailability date_availability;
+    std::list<TopVideoPinsAnalyticsResponsePinsItems> pins;
+    TopVideoPinsSortBy sort_by;
 };
 }
 

@@ -9,18 +9,18 @@
 
 (def order-line-data
   {
-   (ds/opt :ad_account_id) string?
+   (ds/req :ad_account_id) string?
    (ds/opt :budget) float?
+   (ds/req :campaign_ids) (s/coll-of string?)
    (ds/opt :end_time) float?
-   (ds/opt :id) string?
+   (ds/req :id) string?
    (ds/opt :name) string?
    (ds/opt :paid_budget) float?
    (ds/opt :paid_type) order-line-paid-type-spec
    (ds/opt :purchase_order_id) string?
    (ds/opt :start_time) float?
-   (ds/opt :status) order-line-status-spec
-   (ds/opt :type) string?
-   (ds/req :campaign_ids) (s/coll-of string?)
+   (ds/req :status) order-line-status-spec
+   (ds/req :type) string?
    })
 
 (def order-line-spec

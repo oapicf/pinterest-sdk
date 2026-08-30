@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.TopPinsAnalyticsResponseDateAvailability;
-import org.openapitools.model.TopPinsAnalyticsResponsePinsInner;
+import org.openapitools.model.TopPinsAnalyticsResponsePinsItems;
+import org.openapitools.model.TopPinsSortBy;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,58 +22,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("TopPinsAnalyticsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TopPinsAnalyticsResponse   {
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
-  private @Valid List<@Valid TopPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
-  public enum SortByEnum {
-
-    ENGAGEMENT(String.valueOf("ENGAGEMENT")), SAVE(String.valueOf("SAVE")), IMPRESSION(String.valueOf("IMPRESSION")), OUTBOUND_CLICK(String.valueOf("OUTBOUND_CLICK")), PIN_CLICK(String.valueOf("PIN_CLICK"));
-
-
-    private String value;
-
-    SortByEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static SortByEnum fromString(String s) {
-        for (SortByEnum b : SortByEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static SortByEnum fromValue(String value) {
-        for (SortByEnum b : SortByEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private SortByEnum sortBy;
+  private @Valid List<@Valid TopPinsAnalyticsResponsePinsItems> pins = new ArrayList<>();
+  private TopPinsSortBy sortBy;
 
   public TopPinsAnalyticsResponse() {
   }
@@ -98,7 +52,7 @@ public class TopPinsAnalyticsResponse   {
 
   /**
    **/
-  public TopPinsAnalyticsResponse pins(List<@Valid TopPinsAnalyticsResponsePinsInner> pins) {
+  public TopPinsAnalyticsResponse pins(List<@Valid TopPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
     return this;
   }
@@ -106,16 +60,16 @@ public class TopPinsAnalyticsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("pins")
-  @Valid public List<@Valid TopPinsAnalyticsResponsePinsInner> getPins() {
+  @Valid public List<@Valid TopPinsAnalyticsResponsePinsItems> getPins() {
     return pins;
   }
 
   @JsonProperty("pins")
-  public void setPins(List<@Valid TopPinsAnalyticsResponsePinsInner> pins) {
+  public void setPins(List<@Valid TopPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
   }
 
-  public TopPinsAnalyticsResponse addPinsItem(TopPinsAnalyticsResponsePinsInner pinsItem) {
+  public TopPinsAnalyticsResponse addPinsItem(TopPinsAnalyticsResponsePinsItems pinsItem) {
     if (this.pins == null) {
       this.pins = new ArrayList<>();
     }
@@ -124,7 +78,7 @@ public class TopPinsAnalyticsResponse   {
     return this;
   }
 
-  public TopPinsAnalyticsResponse removePinsItem(TopPinsAnalyticsResponsePinsInner pinsItem) {
+  public TopPinsAnalyticsResponse removePinsItem(TopPinsAnalyticsResponsePinsItems pinsItem) {
     if (pinsItem != null && this.pins != null) {
       this.pins.remove(pinsItem);
     }
@@ -133,20 +87,20 @@ public class TopPinsAnalyticsResponse   {
   }
   /**
    **/
-  public TopPinsAnalyticsResponse sortBy(SortByEnum sortBy) {
+  public TopPinsAnalyticsResponse sortBy(TopPinsSortBy sortBy) {
     this.sortBy = sortBy;
     return this;
   }
 
   
-  @ApiModelProperty(example = "IMPRESSION", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("sort_by")
-  public SortByEnum getSortBy() {
+  public TopPinsSortBy getSortBy() {
     return sortBy;
   }
 
   @JsonProperty("sort_by")
-  public void setSortBy(SortByEnum sortBy) {
+  public void setSortBy(TopPinsSortBy sortBy) {
     this.sortBy = sortBy;
   }
 
@@ -187,12 +141,8 @@ public class TopPinsAnalyticsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

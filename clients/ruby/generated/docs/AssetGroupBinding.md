@@ -4,17 +4,17 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ad_accounts_ids** | **Array&lt;String&gt;** | A list of ad account IDs under the asset group | [optional] |
-| **asset_group_description** | **String** | Asset group description | [optional] |
-| **asset_group_name** | **String** | Asset Group name | [optional] |
-| **asset_group_types** | **Array&lt;String&gt;** | Asset group types | [optional] |
-| **catalogs_ids** | **Array&lt;String&gt;** | A list of catalog IDs under asset group | [optional] |
-| **created_by** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the user that created the asset group. | [optional] |
-| **created_time** | **Integer** | The creation time of the asset group | [optional] |
-| **id** | **String** | Asset Group ID. | [optional] |
-| **owner** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the business that owns the asset group. | [optional] |
-| **profiles_ids** | **Array&lt;String&gt;** | A list of profile IDs under asset group | [optional] |
-| **updated_time** | **Integer** | The last update time of the asset group | [optional] |
+| **ad_accounts_ids** | **Array&lt;String&gt;** | A list of ad account IDs under the asset group |  |
+| **asset_group_description** | **String** | Asset group description |  |
+| **asset_group_name** | **String** | Asset Group name |  |
+| **asset_group_types** | **Array&lt;String&gt;** | Asset group types |  |
+| **catalogs_ids** | **Array&lt;String&gt;** | A list of catalog IDs under asset group |  |
+| **created_by** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the user that created the asset group. |  |
+| **created_time** | **Integer** | The creation time of the asset group |  |
+| **id** | **String** | Asset Group ID. |  |
+| **owner** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the business that owns the asset group. |  |
+| **profiles_ids** | **Array&lt;String&gt;** | A list of profile IDs under asset group |  |
+| **updated_time** | **Integer** | The last update time of the asset group |  |
 
 ## Example
 

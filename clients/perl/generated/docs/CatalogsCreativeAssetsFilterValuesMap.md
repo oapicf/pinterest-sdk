@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **google_product_category_4** | **ARRAY[string]** |  | [optional] 
 **google_product_category_5** | **ARRAY[string]** |  | [optional] 
 **google_product_category_6** | **ARRAY[string]** |  | [optional] 
-**media_type** | **ARRAY[string]** |  | [optional] 
+**media_type** | [**ARRAY[MediaType]**](MediaType.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

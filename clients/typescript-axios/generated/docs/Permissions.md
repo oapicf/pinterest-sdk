@@ -1,5 +1,6 @@
 # Permissions
 
+Permission levels available on a business asset.
 
 ## Enum
 
@@ -24,5 +25,7 @@
 * `ProfilePublisher` (value: `'PROFILE_PUBLISHER'`)
 
 * `ConsumerUser` (value: `'CONSUMER_USER'`)
+
+* `BizPinnerListSharer` (value: `'BIZ_PINNER_LIST_SHARER'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

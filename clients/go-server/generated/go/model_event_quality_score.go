@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -27,15 +32,96 @@ type EventQualityScore struct {
 
 	SourcePlatform SourcePlatformOptions `json:"source_platform"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into EventQualityScore
+func (o *EventQualityScore) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"ingestion_source",
+		"lookback_period",
+		"overall_status",
+		"quality_components",
+		"source_platform",
+	}
 
-// AssertEventQualityScoreRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"ingestion_source": false,
+		"lookback_period": false,
+		"overall_status": false,
+		"quality_components": false,
+		"source_platform": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"ingestion_source": {},
+		"lookback_period": {},
+		"overall_status": {},
+		"quality_components": {},
+		"source_platform": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded EventQualityScore
+
+	if value, exists := allProperties["ingestion_source"]; exists {
+		if err = json.Unmarshal(value, &decoded.IngestionSource); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["lookback_period"]; exists {
+		if err = json.Unmarshal(value, &decoded.LookbackPeriod); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["overall_status"]; exists {
+		if err = json.Unmarshal(value, &decoded.OverallStatus); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["quality_components"]; exists {
+		if err = json.Unmarshal(value, &decoded.QualityComponents); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["source_platform"]; exists {
+		if err = json.Unmarshal(value, &decoded.SourcePlatform); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertEventQualityScoreRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertEventQualityScoreRequired(obj EventQualityScore) error {
 	elements := map[string]interface{}{
-		"ingestion_source": obj.IngestionSource,
-		"lookback_period": obj.LookbackPeriod,
-		"overall_status": obj.OverallStatus,
 		"quality_components": obj.QualityComponents,
-		"source_platform": obj.SourcePlatform,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

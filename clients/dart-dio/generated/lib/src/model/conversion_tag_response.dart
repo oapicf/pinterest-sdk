@@ -134,15 +134,17 @@ class _$ConversionTagResponseSerializer implements PrimitiveSerializer<Conversio
         case r'code_snippet':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.codeSnippet = valueDes;
           break;
         case r'configs':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ConversionTagConfigs),
-          ) as ConversionTagConfigs;
+            specifiedType: const FullType.nullable(ConversionTagConfigs),
+          ) as ConversionTagConfigs?;
+          if (valueDes == null) continue;
           result.configs.replace(valueDes);
           break;
         case r'enhanced_match_status':
@@ -178,22 +180,25 @@ class _$ConversionTagResponseSerializer implements PrimitiveSerializer<Conversio
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'version':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.version = valueDes;
           break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(EntityStatus),
-          ) as EntityStatus;
+            specifiedType: const FullType.nullable(EntityStatus),
+          ) as EntityStatus?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         default:

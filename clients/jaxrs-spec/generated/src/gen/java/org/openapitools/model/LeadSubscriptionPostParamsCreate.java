@@ -2,7 +2,7 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata;
+import org.openapitools.model.PartnerMetadata;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -17,12 +17,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("LeadSubscriptionPostParamsCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LeadSubscriptionPostParamsCreate   {
   private String leadFormId;
   private String webhookUrl;
   private String partnerAccessToken;
-  private LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata;
+  private PartnerMetadata partnerMetadata;
   private String partnerRefreshToken;
 
   public LeadSubscriptionPostParamsCreate() {
@@ -96,21 +96,22 @@ public class LeadSubscriptionPostParamsCreate   {
   }
 
   /**
+   * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
    **/
-  public LeadSubscriptionPostParamsCreate partnerMetadata(LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata) {
+  public LeadSubscriptionPostParamsCreate partnerMetadata(PartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.")
   @JsonProperty("partner_metadata")
-  @Valid public LeadSubscriptionPostParamsCreateAllOfPartnerMetadata getPartnerMetadata() {
+  @Valid public PartnerMetadata getPartnerMetadata() {
     return partnerMetadata;
   }
 
   @JsonProperty("partner_metadata")
-  public void setPartnerMetadata(LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata) {
+  public void setPartnerMetadata(PartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
 
@@ -175,12 +176,8 @@ public class LeadSubscriptionPostParamsCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

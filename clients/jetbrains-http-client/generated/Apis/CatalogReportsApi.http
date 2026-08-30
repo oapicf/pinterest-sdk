@@ -1,0 +1,22 @@
+## CatalogReportsApi
+
+### Build catalogs report
+## Build catalogs report
+POST https://api.pinterest.com/v5/catalogs/reports?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Get catalogs report
+## Get catalogs report
+GET https://api.pinterest.com/v5/catalogs/reports?adAccountId={{adAccountId}}&token={{token}}
+Accept: application/json
+
+### List report stats
+## List report stats
+GET https://api.pinterest.com/v5/catalogs/reports/stats?adAccountId={{adAccountId}}&parameters={{parameters}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json

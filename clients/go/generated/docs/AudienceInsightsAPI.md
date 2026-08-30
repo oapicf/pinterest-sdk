@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## AudienceInsightsGet
 
-> AudienceInsightsResponse AudienceInsightsGet(ctx, adAccountId).AudienceInsightType(audienceInsightType).Execute()
+> AudienceInsights AudienceInsightsGet(ctx, adAccountId).AudienceInsightType(audienceInsightType).Execute()
 
 Get audience insights
 
@@ -31,7 +31,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	audienceInsightType := openapiclient.AudienceInsightType("YOUR_TOTAL_AUDIENCE") // AudienceInsightType | Type of audience insights. (default to "YOUR_TOTAL_AUDIENCE")
+	audienceInsightType := openapiclient.AudienceInsightType("YOUR_TOTAL_AUDIENCE") // AudienceInsightType | Type of audience insights.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -40,7 +40,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AudienceInsightsAPI.AudienceInsightsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AudienceInsightsGet`: AudienceInsightsResponse
+	// response from `AudienceInsightsGet`: AudienceInsights
 	fmt.Fprintf(os.Stdout, "Response from `AudienceInsightsAPI.AudienceInsightsGet`: %v\n", resp)
 }
 ```
@@ -61,11 +61,11 @@ Other parameters are passed through a pointer to a apiAudienceInsightsGetRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **audienceInsightType** | [**AudienceInsightType**](AudienceInsightType.md) | Type of audience insights. | [default to &quot;YOUR_TOTAL_AUDIENCE&quot;]
+ **audienceInsightType** | [**AudienceInsightType**](AudienceInsightType.md) | Type of audience insights. | 
 
 ### Return type
 
-[**AudienceInsightsResponse**](AudienceInsightsResponse.md)
+[**AudienceInsights**](AudienceInsights.md)
 
 ### Authorization
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## AudienceInsightsScopeAndTypeGet
 
-> AudienceDefinitionResponse AudienceInsightsScopeAndTypeGet(ctx, adAccountId).Execute()
+> AudienceInsightsScopeAndTypeGet200Response AudienceInsightsScopeAndTypeGet(ctx, adAccountId).Execute()
 
 Get audience insights scope and type
 
@@ -111,7 +111,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AudienceInsightsAPI.AudienceInsightsScopeAndTypeGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AudienceInsightsScopeAndTypeGet`: AudienceDefinitionResponse
+	// response from `AudienceInsightsScopeAndTypeGet`: AudienceInsightsScopeAndTypeGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AudienceInsightsAPI.AudienceInsightsScopeAndTypeGet`: %v\n", resp)
 }
 ```
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AudienceDefinitionResponse**](AudienceDefinitionResponse.md)
+[**AudienceInsightsScopeAndTypeGet200Response**](AudienceInsightsScopeAndTypeGet200Response.md)
 
 ### Authorization
 

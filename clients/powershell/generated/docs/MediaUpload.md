@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $MediaUpload = Initialize-PSOpenAPIToolsMediaUpload  -MediaId 12345 `
- -MediaType null `
+ -MediaType video `
  -UploadParameters null `
  -UploadUrl https://pinterest-media-upload.s3-accelerate.amazonaws.com/
 ```

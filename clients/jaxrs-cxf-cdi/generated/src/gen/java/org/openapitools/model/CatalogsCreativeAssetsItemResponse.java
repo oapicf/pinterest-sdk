@@ -9,27 +9,90 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsAttributes;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Pin;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- * Object describing a hotel record
+ * Object describing a creative assets item record
  **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-@ApiModel(description = "Object describing a hotel record")
+@ApiModel(description = "Object describing a creative assets item record")
 public class CatalogsCreativeAssetsItemResponse   {
   
   private CatalogsCreativeAssetsAttributes attributes;
 
-  private CatalogsType catalogType;
+
+public enum CatalogTypeEnum {
+
+    @JsonProperty("CREATIVE_ASSETS") CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
+
+
+    private String value;
+
+    CatalogTypeEnum(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private CatalogTypeEnum catalogType;
 
   private String creativeAssetsId;
+
+
+public enum ItemResponseKindEnum {
+
+    @JsonProperty("creative_assets_item") CREATIVE_ASSETS_ITEM(String.valueOf("creative_assets_item"));
+
+
+    private String value;
+
+    ItemResponseKindEnum(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static ItemResponseKindEnum fromValue(String value) {
+        for (ItemResponseKindEnum b : ItemResponseKindEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private ItemResponseKindEnum itemResponseKind;
 
   private List<@Valid Pin> pins;
 
@@ -53,7 +116,7 @@ public class CatalogsCreativeAssetsItemResponse   {
 
   /**
    **/
-  public CatalogsCreativeAssetsItemResponse catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsItemResponse catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -62,10 +125,10 @@ public class CatalogsCreativeAssetsItemResponse   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
   @NotNull
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -86,6 +149,26 @@ public class CatalogsCreativeAssetsItemResponse   {
   }
   public void setCreativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
+  }
+
+
+  /**
+   * Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload.
+   **/
+  public CatalogsCreativeAssetsItemResponse itemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Discriminator literal identifying this leaf inside an `ItemResponse` payload.")
+  @JsonProperty("item_response_kind")
+  @NotNull
+  public ItemResponseKindEnum getItemResponseKind() {
+    return itemResponseKind;
+  }
+  public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
   }
 
 
@@ -129,12 +212,13 @@ public class CatalogsCreativeAssetsItemResponse   {
     return Objects.equals(this.attributes, catalogsCreativeAssetsItemResponse.attributes) &&
         Objects.equals(this.catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
         Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsItemResponse.creativeAssetsId) &&
+        Objects.equals(this.itemResponseKind, catalogsCreativeAssetsItemResponse.itemResponseKind) &&
         Objects.equals(this.pins, catalogsCreativeAssetsItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, catalogType, creativeAssetsId, pins);
+    return Objects.hash(attributes, catalogType, creativeAssetsId, itemResponseKind, pins);
   }
 
   @Override
@@ -145,6 +229,7 @@ public class CatalogsCreativeAssetsItemResponse   {
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -155,10 +240,7 @@ public class CatalogsCreativeAssetsItemResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

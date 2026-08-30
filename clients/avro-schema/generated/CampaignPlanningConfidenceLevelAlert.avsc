@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A confidence level alert for the delivery estimates provided in the response.",
+  "name": "CampaignPlanningConfidenceLevelAlert",
+  "fields": [
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "Human-readable context for debugging. Not intended for display to end users.",
+      "default": null
+    },
+    {
+      "name": "reason",
+      "type": ["null", "model.CampaignPlanningConfidenceLevelAlertReason"],
+      "doc": "Reason for the confidence level alert.",
+      "default": null
+    },
+    {
+      "name": "severity",
+      "type": ["null", "model.CampaignPlanningConfidenceLevelAlertSeverity"],
+      "doc": "Severity of the confidence level alert.",
+      "default": null
+    }
+  ]
+
+}

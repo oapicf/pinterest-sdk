@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsItemsPostFilters`
 --
-SELECT `catalog_type`, `catalog_id`, `item_ids`, `hotel_ids`, `creative_assets_ids` FROM `CatalogsItemsPostFilters` WHERE 1;
+SELECT `catalog_id`, `catalog_type`, `item_ids`, `hotel_ids`, `creative_assets_ids` FROM `CatalogsItemsPostFilters` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsItemsPostFilters`
 --
-INSERT INTO `CatalogsItemsPostFilters`(`catalog_type`, `catalog_id`, `item_ids`, `hotel_ids`, `creative_assets_ids`) VALUES (?, ?, ?, ?, ?);
+INSERT INTO `CatalogsItemsPostFilters`(`catalog_id`, `catalog_type`, `item_ids`, `hotel_ids`, `creative_assets_ids`) VALUES (?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsItemsPostFilters`
 --
-UPDATE `CatalogsItemsPostFilters` SET `catalog_type` = ?, `catalog_id` = ?, `item_ids` = ?, `hotel_ids` = ?, `creative_assets_ids` = ? WHERE 1;
+UPDATE `CatalogsItemsPostFilters` SET `catalog_id` = ?, `catalog_type` = ?, `item_ids` = ?, `hotel_ids` = ?, `creative_assets_ids` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsItemsPostFilters`

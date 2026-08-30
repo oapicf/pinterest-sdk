@@ -1,0 +1,45 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CampaignUpdateRequestAllOf2",
+  "fields": [
+    {
+      "name": "bid_options",
+      "type": ["null", "model.CampaignBidOptionsUpdate"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "intended_promotion_type",
+      "type": ["null", "model.IntendedPromotionType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "is_ltv_optimized",
+      "type": ["null", "boolean"],
+      "doc": "Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.",
+      "default": null
+    },
+    {
+      "name": "is_performance_plus",
+      "type": ["null", "boolean"],
+      "doc": "Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>. This field is immutable, except only for campaigns in draft status which may update this field.",
+      "default": null
+    },
+    {
+      "name": "is_top_of_search",
+      "type": ["null", "boolean"],
+      "doc": "Enable Top Of Search for your campaign. This field is immutable, except only for campaigns in draft status which may update this field.",
+      "default": null
+    },
+    {
+      "name": "objective_type",
+      "type": ["null", "model.ObjectiveType"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

@@ -1,6 +1,7 @@
 (ns pinterest-rest-api.specs.catalogs-creative-assets-filter-values-map
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
+            [pinterest-rest-api.specs.media-type :refer :all]
             )
   (:import (java.io File)))
 
@@ -19,7 +20,7 @@
    (ds/opt :google_product_category_4) (s/coll-of string?)
    (ds/opt :google_product_category_5) (s/coll-of string?)
    (ds/opt :google_product_category_6) (s/coll-of string?)
-   (ds/opt :media_type) (s/coll-of string?)
+   (ds/opt :media_type) (s/coll-of media-type-spec)
    })
 
 (def catalogs-creative-assets-filter-values-map-spec

@@ -27,11 +27,12 @@ CustomerList::__init()
 	//created_time = double(0);
 	//exceptions = null;
 	//id = std::string();
+	//is_nca = bool(false);
 	//name = std::string();
 	//num_batches = double(0);
 	//num_removed_user_records = double(0);
 	//num_uploaded_user_records = double(0);
-	//status = std::string();
+	//status = null;
 	//type = std::string();
 	//updated_time = double(0);
 }
@@ -58,6 +59,11 @@ CustomerList::__cleanup()
 	//
 	//delete id;
 	//id = NULL;
+	//}
+	//if(is_nca != NULL) {
+	//
+	//delete is_nca;
+	//is_nca = NULL;
 	//}
 	//if(name != NULL) {
 	//
@@ -152,6 +158,17 @@ CustomerList::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *is_ncaKey = "is_nca";
+	node = json_object_get_member(pJsonObject, is_ncaKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_nca, node, "bool", "");
+		} else {
+			
+		}
+	}
 	const gchar *nameKey = "name";
 	node = json_object_get_member(pJsonObject, nameKey);
 	if (node !=NULL) {
@@ -210,9 +227,12 @@ CustomerList::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&status, node, "std::string", "");
+		if (isprimitive("CustomerListStatus")) {
+			jsonToValue(&status, node, "CustomerListStatus", "CustomerListStatus");
 		} else {
+			
+			CustomerListStatus* obj = static_cast<CustomerListStatus*> (&status);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -299,6 +319,15 @@ CustomerList::toJson()
 	}
 	const gchar *idKey = "id";
 	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsNca();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_ncaKey = "is_nca";
+	json_object_set_member(pJsonObject, is_ncaKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getName();
 		node = converttoJson(&obj, "std::string", "");
@@ -350,11 +379,16 @@ CustomerList::toJson()
 	}
 	const gchar *num_uploaded_user_recordsKey = "num_uploaded_user_records";
 	json_object_set_member(pJsonObject, num_uploaded_user_recordsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getStatus();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("CustomerListStatus")) {
+		CustomerListStatus obj = getStatus();
+		node = converttoJson(&obj, "CustomerListStatus", "");
 	}
 	else {
+		
+		CustomerListStatus obj = static_cast<CustomerListStatus> (getStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *statusKey = "status";
@@ -438,6 +472,18 @@ CustomerList::setId(std::string  id)
 	this->id = id;
 }
 
+bool
+CustomerList::getIsNca()
+{
+	return is_nca;
+}
+
+void
+CustomerList::setIsNca(bool  is_nca)
+{
+	this->is_nca = is_nca;
+}
+
 std::string
 CustomerList::getName()
 {
@@ -486,14 +532,14 @@ CustomerList::setNumUploadedUserRecords(long long  num_uploaded_user_records)
 	this->num_uploaded_user_records = num_uploaded_user_records;
 }
 
-std::string
+CustomerListStatus
 CustomerList::getStatus()
 {
 	return status;
 }
 
 void
-CustomerList::setStatus(std::string  status)
+CustomerList::setStatus(CustomerListStatus  status)
 {
 	this->status = status;
 }

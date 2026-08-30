@@ -5,14 +5,14 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.Catalog
+import model.CatalogCreate
 import model.CatalogsAvailableFilterValues
-import model.CatalogsCreateRequest
 import model.CatalogsList200Response
 import model.CatalogsLocale
 import model.Country
 import model.Error
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class CatalogsApiController @Inject()(cc: ControllerComponents, api: CatalogsApi) extends AbstractController(cc) {
   /**
@@ -48,12 +48,12 @@ class CatalogsApiController @Inject()(cc: ControllerComponents, api: CatalogsApi
     */
   def catalogsCreate(): Action[AnyContent] = Action { request =>
     def executeApi(): Catalog = {
-      val catalogsCreateRequest = request.body.asJson.map(_.as[CatalogsCreateRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "catalogsCreateRequest")
+      val catalogCreate = request.body.asJson.map(_.as[CatalogCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "catalogCreate")
       }
       val adAccountId = request.getQueryString("ad_account_id")
         
-      api.catalogsCreate(catalogsCreateRequest, adAccountId)
+      api.catalogsCreate(catalogCreate, adAccountId)
     }
 
     val result = executeApi()
@@ -62,18 +62,18 @@ class CatalogsApiController @Inject()(cc: ControllerComponents, api: CatalogsApi
   }
 
   /**
-    * GET /v5/catalogs?bookmark=[value]&pageSize=[value]&adAccountId=[value]
+    * GET /v5/catalogs?adAccountId=[value]&bookmark=[value]&pageSize=[value]
     */
   def catalogsList(): Action[AnyContent] = Action { request =>
     def executeApi(): CatalogsList200Response = {
+      val adAccountId = request.getQueryString("ad_account_id")
+        
       val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val adAccountId = request.getQueryString("ad_account_id")
-        
-      api.catalogsList(bookmark, pageSize, adAccountId)
+      api.catalogsList(adAccountId, bookmark, pageSize)
     }
 
     val result = executeApi()

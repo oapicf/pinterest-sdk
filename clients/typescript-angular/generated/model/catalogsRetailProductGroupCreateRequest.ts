@@ -17,7 +17,7 @@ import { CatalogsProductGroupFiltersRequest } from './catalogsProductGroupFilter
  */
 export interface CatalogsRetailProductGroupCreateRequest { 
     /**
-     * Catalog id pertaining to the retail product group.
+     * Catalog ID pertaining to the product group.
      */
     catalog_id: string;
     /**

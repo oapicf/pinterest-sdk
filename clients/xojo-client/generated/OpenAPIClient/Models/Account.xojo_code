@@ -19,7 +19,7 @@ Protected Class Account
 
 	#tag Property, Flags = &h0
 		#tag Note
-			User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+			  User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
 		#tag EndNote
 		board_count As Xoson.O.OptionalInteger
 	#tag EndProperty
@@ -85,27 +85,7 @@ Protected Class Account
 	#tag EndProperty
 
 
-    #tag Enum, Name = Account_typeEnum, Type = Integer, Flags = &h0
-        
-        Pinner
-        Business
-        
-    #tag EndEnum
 
-
-	#tag Method, Flags = &h0
-		Shared Function Account_typeEnumToString(value As Account_typeEnum) As String
-		  Select Case value
-		    
-		    Case Account_typeEnum.Pinner
-		      Return "PINNER"
-		    Case Account_typeEnum.Business
-		      Return "BUSINESS"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -147,6 +127,14 @@ Protected Class Account
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="account_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="UserAccountType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

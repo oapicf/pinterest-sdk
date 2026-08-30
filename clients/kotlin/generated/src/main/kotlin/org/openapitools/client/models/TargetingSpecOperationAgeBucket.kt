@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -38,7 +46,7 @@ data class TargetingSpecOperationAgeBucket (
     val operation: TargetingSpecOperationAgeBucket.Operation,
 
     @Json(name = "values")
-    val propertyValues: kotlin.collections.List<TargetingSpecAgeBucket>?
+    val propertyValues: kotlin.collections.List<TargetingSpecAgeBucket>
 
 ) {
 

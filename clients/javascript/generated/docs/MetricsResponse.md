@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **[Object]** |  | [optional] 
+**data** | [**[MetricsResponseDataItems]**](MetricsResponseDataItems.md) |  | [optional] 
 
 

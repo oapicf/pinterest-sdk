@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PromotionResponse } from './promotionResponse';
+import { Promotion } from './promotion';
 
 
 export interface PromotionsList200Response { 
     bookmark?: string | null;
-    items: Array<PromotionResponse>;
+    items: Array<Promotion>;
 }
 

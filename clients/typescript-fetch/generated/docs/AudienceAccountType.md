@@ -1,6 +1,7 @@
 
 # AudienceAccountType
 
+Account type filter for audience sharing.
 
 ## Properties
 

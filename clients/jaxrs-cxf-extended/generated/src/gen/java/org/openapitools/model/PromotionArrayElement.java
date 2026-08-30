@@ -1,7 +1,7 @@
 package org.openapitools.model;
 
 import org.openapitools.model.Exception;
-import org.openapitools.model.PromotionResponse;
+import org.openapitools.model.Promotion;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -14,7 +14,7 @@ public class PromotionArrayElement  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private PromotionResponse data;
+  private Promotion data;
 
   @ApiModelProperty(value = "")
   @Valid
@@ -24,21 +24,21 @@ public class PromotionArrayElement  {
   * @return data
   */
   @JsonProperty("data")
-  public PromotionResponse getData() {
+  public Promotion getData() {
     return data;
   }
 
   /**
    * Sets the <code>data</code> property.
    */
- public void setData(PromotionResponse data) {
+ public void setData(Promotion data) {
     this.data = data;
   }
 
   /**
    * Sets the <code>data</code> property.
    */
-  public PromotionArrayElement data(PromotionResponse data) {
+  public PromotionArrayElement data(Promotion data) {
     this.data = data;
     return this;
   }
@@ -102,10 +102,7 @@ public class PromotionArrayElement  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

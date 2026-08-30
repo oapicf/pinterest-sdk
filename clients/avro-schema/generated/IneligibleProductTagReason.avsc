@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Reason why a product pin is ineligible for tagging.",
+  "name": "IneligibleProductTagReason",
+  "symbols": [
+    "PIN_MISSING",
+    "PIN_IS_PRIVATE",
+    "PRODUCT_METADATA_MISSING",
+    "PIN_NOT_FROM_VERIFIED_DOMAIN",
+    "PIN_NOT_FROM_SAME_USER_AS_HERO_PIN"
+  ]
+}

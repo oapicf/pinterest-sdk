@@ -13,10 +13,10 @@
   | {'app_version_number', binary() }
   | {'client_timestamp', integer() }
   | {'error', openapi_integration_log_client_error:openapi_integration_log_client_error() }
-  | {'event_type', binary() }
+  | {'event_type', openapi_integration_log_event_type:openapi_integration_log_event_type() }
   | {'external_business_id', binary() }
   | {'feed_profile_id', binary() }
-  | {'log_level', binary() }
+  | {'log_level', openapi_integration_log_level:openapi_integration_log_level() }
   | {'merchant_id', binary() }
   | {'message', binary() }
   | {'platform_version_number', binary() }
@@ -33,10 +33,10 @@ openapi_integration_log(Fields) ->
             , {'app_version_number', binary() }
             , {'client_timestamp', integer() }
             , {'error', openapi_integration_log_client_error:openapi_integration_log_client_error() }
-            , {'event_type', elements([<<"APP">>, <<"API">>]) }
+            , {'event_type', openapi_integration_log_event_type:openapi_integration_log_event_type() }
             , {'external_business_id', binary() }
             , {'feed_profile_id', binary() }
-            , {'log_level', elements([<<"INFO">>, <<"WARN">>, <<"ERROR">>]) }
+            , {'log_level', openapi_integration_log_level:openapi_integration_log_level() }
             , {'merchant_id', binary() }
             , {'message', binary() }
             , {'platform_version_number', binary() }

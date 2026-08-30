@@ -8,12 +8,12 @@ Request object for creating a feed.
 Name | Type
 ------------ | -------------
 `catalogId` | string
-`catalogType` | [CatalogsType](CatalogsType.md)
+`catalogType` | string
 `credentials` | [CatalogsFeedCredentials](CatalogsFeedCredentials.md)
 `defaultAvailability` | [ProductAvailabilityType](ProductAvailabilityType.md)
 `defaultCountry` | [Country](Country.md)
 `defaultCurrency` | [NullableCurrency](NullableCurrency.md)
-`defaultLocale` | [CatalogsFeedsCreateRequestDefaultLocale](CatalogsFeedsCreateRequestDefaultLocale.md)
+`defaultLocale` | [CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale](CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.md)
 `format` | [CatalogsFormat](CatalogsFormat.md)
 `location` | string
 `name` | string

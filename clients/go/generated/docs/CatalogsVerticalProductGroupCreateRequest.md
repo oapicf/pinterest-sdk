@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogId** | **string** | Catalog id pertaining to the creative assets product group. | 
+**CatalogId** | **string** | Catalog ID pertaining to the product group. | 
 **CatalogType** | **string** |  | 
 **Country** | Pointer to [**Country**](Country.md) |  | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 

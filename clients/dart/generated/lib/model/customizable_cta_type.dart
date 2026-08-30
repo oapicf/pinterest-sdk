@@ -11,83 +11,58 @@
 part of openapi.api;
 
 /// Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-class CustomizableCTAType {
-  /// Instantiate a new enum with the provided [value].
-  const CustomizableCTAType._(this.value);
+enum CustomizableCTAType {
+  GET_OFFER._(r'GET_OFFER'),
+  LEARN_MORE._(r'LEARN_MORE'),
+  ORDER_NOW._(r'ORDER_NOW'),
+  SHOP_NOW._(r'SHOP_NOW'),
+  SIGN_UP._(r'SIGN_UP'),
+  SUBSCRIBE._(r'SUBSCRIBE'),
+  BUY_NOW._(r'BUY_NOW'),
+  CONTACT_US._(r'CONTACT_US'),
+  GET_QUOTE._(r'GET_QUOTE'),
+  VISIT_SITE._(r'VISIT_SITE'),
+  APPLY_NOW._(r'APPLY_NOW'),
+  BOOK_NOW._(r'BOOK_NOW'),
+  REQUEST_DEMO._(r'REQUEST_DEMO'),
+  REGISTER_NOW._(r'REGISTER_NOW'),
+  FIND_A_DEALER._(r'FIND_A_DEALER'),
+  ADD_TO_CART._(r'ADD_TO_CART'),
+  WATCH_NOW._(r'WATCH_NOW'),
+  READ_MORE._(r'READ_MORE'),
+  BUY_TICKETS._(r'BUY_TICKETS'),
+  DONATE_NOW._(r'DONATE_NOW'),
+  DOWNLOAD._(r'DOWNLOAD'),
+  EXPLORE_MORE._(r'EXPLORE_MORE'),
+  FIND_A_LOCATION._(r'FIND_A_LOCATION'),
+  FIND_RETAILERS._(r'FIND_RETAILERS'),
+  GET_DEAL._(r'GET_DEAL'),
+  GET_RECIPE._(r'GET_RECIPE'),
+  GET_SHOWTIMES._(r'GET_SHOWTIMES'),
+  ON_SALE._(r'ON_SALE'),
+  PLAY_GAME._(r'PLAY_GAME'),
+  TRY_IT._(r'TRY_IT'),
+  TAKE_A_PEEK._(r'TAKE_A_PEEK'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CustomizableCTAType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const GET_OFFER = CustomizableCTAType._(r'GET_OFFER');
-  static const LEARN_MORE = CustomizableCTAType._(r'LEARN_MORE');
-  static const ORDER_NOW = CustomizableCTAType._(r'ORDER_NOW');
-  static const SHOP_NOW = CustomizableCTAType._(r'SHOP_NOW');
-  static const SIGN_UP = CustomizableCTAType._(r'SIGN_UP');
-  static const SUBSCRIBE = CustomizableCTAType._(r'SUBSCRIBE');
-  static const BUY_NOW = CustomizableCTAType._(r'BUY_NOW');
-  static const CONTACT_US = CustomizableCTAType._(r'CONTACT_US');
-  static const GET_QUOTE = CustomizableCTAType._(r'GET_QUOTE');
-  static const VISIT_SITE = CustomizableCTAType._(r'VISIT_SITE');
-  static const APPLY_NOW = CustomizableCTAType._(r'APPLY_NOW');
-  static const BOOK_NOW = CustomizableCTAType._(r'BOOK_NOW');
-  static const REQUEST_DEMO = CustomizableCTAType._(r'REQUEST_DEMO');
-  static const REGISTER_NOW = CustomizableCTAType._(r'REGISTER_NOW');
-  static const FIND_A_DEALER = CustomizableCTAType._(r'FIND_A_DEALER');
-  static const ADD_TO_CART = CustomizableCTAType._(r'ADD_TO_CART');
-  static const WATCH_NOW = CustomizableCTAType._(r'WATCH_NOW');
-  static const READ_MORE = CustomizableCTAType._(r'READ_MORE');
-  static const BUY_TICKETS = CustomizableCTAType._(r'BUY_TICKETS');
-  static const DONATE_NOW = CustomizableCTAType._(r'DONATE_NOW');
-  static const DOWNLOAD = CustomizableCTAType._(r'DOWNLOAD');
-  static const EXPLORE_MORE = CustomizableCTAType._(r'EXPLORE_MORE');
-  static const FIND_A_LOCATION = CustomizableCTAType._(r'FIND_A_LOCATION');
-  static const GET_DEAL = CustomizableCTAType._(r'GET_DEAL');
-  static const GET_RECIPE = CustomizableCTAType._(r'GET_RECIPE');
-  static const GET_SHOWTIMES = CustomizableCTAType._(r'GET_SHOWTIMES');
-  static const ON_SALE = CustomizableCTAType._(r'ON_SALE');
-  static const PLAY_GAME = CustomizableCTAType._(r'PLAY_GAME');
-  static const TRY_IT = CustomizableCTAType._(r'TRY_IT');
-
-  /// List of all possible values in this [enum][CustomizableCTAType].
-  static const values = <CustomizableCTAType>[
-    GET_OFFER,
-    LEARN_MORE,
-    ORDER_NOW,
-    SHOP_NOW,
-    SIGN_UP,
-    SUBSCRIBE,
-    BUY_NOW,
-    CONTACT_US,
-    GET_QUOTE,
-    VISIT_SITE,
-    APPLY_NOW,
-    BOOK_NOW,
-    REQUEST_DEMO,
-    REGISTER_NOW,
-    FIND_A_DEALER,
-    ADD_TO_CART,
-    WATCH_NOW,
-    READ_MORE,
-    BUY_TICKETS,
-    DONATE_NOW,
-    DOWNLOAD,
-    EXPLORE_MORE,
-    FIND_A_LOCATION,
-    GET_DEAL,
-    GET_RECIPE,
-    GET_SHOWTIMES,
-    ON_SALE,
-    PLAY_GAME,
-    TRY_IT,
-  ];
-
+  /// Returns the instance of [CustomizableCTAType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CustomizableCTAType? fromJson(dynamic value) => CustomizableCTATypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CustomizableCTAType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CustomizableCTAType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CustomizableCTAType>[];
     if (json is List && json.isNotEmpty) {
@@ -109,9 +84,11 @@ class CustomizableCTATypeTypeTransformer {
 
   const CustomizableCTATypeTypeTransformer._();
 
-  String encode(CustomizableCTAType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(CustomizableCTAType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CustomizableCTAType.
+  /// Returns the instance of [CustomizableCTAType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -120,6 +97,9 @@ class CustomizableCTATypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CustomizableCTAType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CustomizableCTAType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'GET_OFFER': return CustomizableCTAType.GET_OFFER;
@@ -145,12 +125,14 @@ class CustomizableCTATypeTypeTransformer {
         case r'DOWNLOAD': return CustomizableCTAType.DOWNLOAD;
         case r'EXPLORE_MORE': return CustomizableCTAType.EXPLORE_MORE;
         case r'FIND_A_LOCATION': return CustomizableCTAType.FIND_A_LOCATION;
+        case r'FIND_RETAILERS': return CustomizableCTAType.FIND_RETAILERS;
         case r'GET_DEAL': return CustomizableCTAType.GET_DEAL;
         case r'GET_RECIPE': return CustomizableCTAType.GET_RECIPE;
         case r'GET_SHOWTIMES': return CustomizableCTAType.GET_SHOWTIMES;
         case r'ON_SALE': return CustomizableCTAType.ON_SALE;
         case r'PLAY_GAME': return CustomizableCTAType.PLAY_GAME;
         case r'TRY_IT': return CustomizableCTAType.TRY_IT;
+        case r'TAKE_A_PEEK': return CustomizableCTAType.TAKE_A_PEEK;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -160,7 +142,7 @@ class CustomizableCTATypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [CustomizableCTATypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CustomizableCTATypeTypeTransformer? _instance;
 }
 

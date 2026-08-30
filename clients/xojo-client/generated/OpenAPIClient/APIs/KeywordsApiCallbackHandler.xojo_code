@@ -7,7 +7,7 @@ Protected Interface KeywordsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub KeywordsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.KeywordsResponse)
+		Sub KeywordsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Keywords)
 		  
 		End Sub
 	#tag EndMethod
@@ -19,7 +19,7 @@ Protected Interface KeywordsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub KeywordsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.KeywordsResponse)
+		Sub KeywordsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Keywords)
 		  
 		End Sub
 	#tag EndMethod

@@ -16,19 +16,19 @@
 typedef struct promotion_array_element_t promotion_array_element_t;
 
 #include "exception.h"
-#include "promotion_response.h"
+#include "promotion.h"
 
 
 
 typedef struct promotion_array_element_t {
-    struct promotion_response_t *data; //model
+    struct promotion_t *data; //model
     struct exception_t *exception; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } promotion_array_element_t;
 
 __attribute__((deprecated)) promotion_array_element_t *promotion_array_element_create(
-    promotion_response_t *data,
+    promotion_t *data,
     exception_t *exception
 );
 

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **google_product_category_4** | [**LIST [STRING_32]**](STRING_32.md) |  | [optional] [default to null]
 **google_product_category_5** | [**LIST [STRING_32]**](STRING_32.md) |  | [optional] [default to null]
 **google_product_category_6** | [**LIST [STRING_32]**](STRING_32.md) |  | [optional] [default to null]
-**media_type** | [**LIST [STRING_32]**](STRING_32.md) |  | [optional] [default to null]
+**media_type** | [**LIST [MEDIA_TYPE]**](MediaType.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

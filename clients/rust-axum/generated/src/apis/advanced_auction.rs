@@ -1,7 +1,8 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Host};
+use axum_extra::extract::CookieJar;
 use bytes::Bytes;
+use headers::Host;
 use http::Method;
 use serde::{Deserialize, Serialize};
 
@@ -11,62 +12,78 @@ use crate::{models, types::*};
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum AdvancedAuctionItemsGetSlashPostResponse {
-    /// Response containing the bid option values for the requested retail catalog items. Items that don't exist or do not have bid options set won't be present in the response.
-    Status200_ResponseContainingTheBidOptionValuesForTheRequestedRetailCatalogItems
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::AdvancedAuctionItems)
     ,
-    /// Invalid request parameters.
-    Status400_InvalidRequestParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Not authenticated to get item bid options
-    Status401_NotAuthenticatedToGetItemBidOptions
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Not authorized to get item bid options
-    Status403_NotAuthorizedToGetItemBidOptions
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Internal error
-    Status500_InternalError
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// The server encountered an unexpected condition that prevented it from fulfilling the request.
+    Status500_TheServerEncounteredAnUnexpectedConditionThatPreventedItFromFulfillingTheRequest
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum AdvancedAuctionItemsSubmitSlashPostResponse {
-    /// Response containing the results of the item bid options operations
-    Status200_ResponseContainingTheResultsOfTheItemBidOptionsOperations
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::AdvancedAuctionProcessedItems)
     ,
-    /// Response containing the results of the item bid options operations (where some/all operation results have errors)
-    Status206_ResponseContainingTheResultsOfTheItemBidOptionsOperations
+    /// Successful
+    Status206_Successful
     (models::AdvancedAuctionProcessedItems)
     ,
-    /// Invalid request parameters.
-    Status400_InvalidRequestParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Not authenticated to post item bid options
-    Status401_NotAuthenticatedToPostItemBidOptions
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Not authorized to post item bid options
-    Status403_NotAuthorizedToPostItemBidOptions
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Internal error
-    Status500_InternalError
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// The server encountered an unexpected condition that prevented it from fulfilling the request.
+    Status500_TheServerEncounteredAnUnexpectedConditionThatPreventedItFromFulfillingTheRequest
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 

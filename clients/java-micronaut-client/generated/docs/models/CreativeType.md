@@ -33,5 +33,7 @@ The class is defined in **[CreativeType.java](../../src/main/java/org/openapitoo
 
 * `MAX_WIDTH_VIDEO_COLLECTION` (value: `"MAX_WIDTH_VIDEO_COLLECTION"`)
 
+* `APP` (value: `"APP"`)
+
 
 

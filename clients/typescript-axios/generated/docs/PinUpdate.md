@@ -6,6 +6,7 @@ Resource create or update operation model.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ai_disclosures** | [**AiDisclosuresUpdate**](AiDisclosuresUpdate.md) | AI disclosure declarations the creator has made about this Pin. | [optional] [default to undefined]
 **alt_text** | **string** |  | [optional] [default to undefined]
 **board_id** | **string** | The board to which this Pin belongs. | [optional] [default to undefined]
 **board_section_id** | **string** | The board section to which this Pin belongs. | [optional] [default to undefined]
@@ -20,6 +21,7 @@ Name | Type | Description | Notes
 import { PinUpdate } from './api';
 
 const instance: PinUpdate = {
+    ai_disclosures,
     alt_text,
     board_id,
     board_section_id,

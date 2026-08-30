@@ -6,6 +6,7 @@
 
 
 static pin_update_t *pin_update_create_internal(
+    ai_disclosures_update_t *ai_disclosures,
     char *alt_text,
     char *board_id,
     char *board_section_id,
@@ -18,6 +19,9 @@ static pin_update_t *pin_update_create_internal(
     if (!pin_update_local_var) {
         return NULL;
     }
+    memset(pin_update_local_var, 0, sizeof(pin_update_t));
+    pin_update_local_var->_library_owned = 1;
+    pin_update_local_var->ai_disclosures = ai_disclosures;
     pin_update_local_var->alt_text = alt_text;
     pin_update_local_var->board_id = board_id;
     pin_update_local_var->board_section_id = board_section_id;
@@ -25,12 +29,11 @@ static pin_update_t *pin_update_create_internal(
     pin_update_local_var->description = description;
     pin_update_local_var->link = link;
     pin_update_local_var->title = title;
-
-    pin_update_local_var->_library_owned = 1;
     return pin_update_local_var;
 }
 
 __attribute__((deprecated)) pin_update_t *pin_update_create(
+    ai_disclosures_update_t *ai_disclosures,
     char *alt_text,
     char *board_id,
     char *board_section_id,
@@ -39,7 +42,8 @@ __attribute__((deprecated)) pin_update_t *pin_update_create(
     char *link,
     char *title
     ) {
-    return pin_update_create_internal (
+    pin_update_t *result = pin_update_create_internal (
+        ai_disclosures,
         alt_text,
         board_id,
         board_section_id,
@@ -48,6 +52,9 @@ __attribute__((deprecated)) pin_update_t *pin_update_create(
         link,
         title
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void pin_update_free(pin_update_t *pin_update) {
@@ -59,6 +66,10 @@ void pin_update_free(pin_update_t *pin_update) {
         return ;
     }
     listEntry_t *listEntry;
+    if (pin_update->ai_disclosures) {
+        ai_disclosures_update_free(pin_update->ai_disclosures);
+        pin_update->ai_disclosures = NULL;
+    }
     if (pin_update->alt_text) {
         free(pin_update->alt_text);
         pin_update->alt_text = NULL;
@@ -95,6 +106,19 @@ void pin_update_free(pin_update_t *pin_update) {
 
 cJSON *pin_update_convertToJSON(pin_update_t *pin_update) {
     cJSON *item = cJSON_CreateObject();
+
+    // pin_update->ai_disclosures
+    if(pin_update->ai_disclosures) {
+    cJSON *ai_disclosures_local_JSON = ai_disclosures_update_convertToJSON(pin_update->ai_disclosures);
+    if(ai_disclosures_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "ai_disclosures", ai_disclosures_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
 
     // pin_update->alt_text
     if(pin_update->alt_text) {
@@ -175,8 +199,32 @@ pin_update_t *pin_update_parseFromJSON(cJSON *pin_updateJSON){
 
     pin_update_t *pin_update_local_var = NULL;
 
+    // define the local variable for pin_update->ai_disclosures
+    ai_disclosures_update_t *ai_disclosures_local_nonprim = NULL;
+
+    char *alt_text_local_str = NULL;
+
+    char *board_id_local_str = NULL;
+
+    char *board_section_id_local_str = NULL;
+
     // define the local list for pin_update->carousel_slots
     list_t *carousel_slotsList = NULL;
+
+    char *description_local_str = NULL;
+
+    char *link_local_str = NULL;
+
+    char *title_local_str = NULL;
+
+    // pin_update->ai_disclosures
+    cJSON *ai_disclosures = cJSON_GetObjectItemCaseSensitive(pin_updateJSON, "ai_disclosures");
+    if (cJSON_IsNull(ai_disclosures)) {
+        ai_disclosures = NULL;
+    }
+    if (ai_disclosures) { 
+    ai_disclosures_local_nonprim = ai_disclosures_update_parseFromJSON(ai_disclosures); //nonprimitive
+    }
 
     // pin_update->alt_text
     cJSON *alt_text = cJSON_GetObjectItemCaseSensitive(pin_updateJSON, "alt_text");
@@ -275,18 +323,46 @@ pin_update_t *pin_update_parseFromJSON(cJSON *pin_updateJSON){
     }
 
 
+    if (alt_text && !cJSON_IsNull(alt_text)) alt_text_local_str = strdup(alt_text->valuestring);
+    if (board_id && !cJSON_IsNull(board_id)) board_id_local_str = strdup(board_id->valuestring);
+    if (board_section_id && !cJSON_IsNull(board_section_id)) board_section_id_local_str = strdup(board_section_id->valuestring);
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (link && !cJSON_IsNull(link)) link_local_str = strdup(link->valuestring);
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+
     pin_update_local_var = pin_update_create_internal (
-        alt_text && !cJSON_IsNull(alt_text) ? strdup(alt_text->valuestring) : NULL,
-        board_id && !cJSON_IsNull(board_id) ? strdup(board_id->valuestring) : NULL,
-        board_section_id && !cJSON_IsNull(board_section_id) ? strdup(board_section_id->valuestring) : NULL,
+        ai_disclosures ? ai_disclosures_local_nonprim : NULL,
+        alt_text_local_str,
+        board_id_local_str,
+        board_section_id_local_str,
         carousel_slots ? carousel_slotsList : NULL,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL
+        description_local_str,
+        link_local_str,
+        title_local_str
         );
+
+    if (!pin_update_local_var) {
+        goto end;
+    }
 
     return pin_update_local_var;
 end:
+    if (ai_disclosures_local_nonprim) {
+        ai_disclosures_update_free(ai_disclosures_local_nonprim);
+        ai_disclosures_local_nonprim = NULL;
+    }
+    if (alt_text_local_str) {
+        free(alt_text_local_str);
+        alt_text_local_str = NULL;
+    }
+    if (board_id_local_str) {
+        free(board_id_local_str);
+        board_id_local_str = NULL;
+    }
+    if (board_section_id_local_str) {
+        free(board_section_id_local_str);
+        board_section_id_local_str = NULL;
+    }
     if (carousel_slotsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, carousel_slotsList) {
@@ -295,6 +371,18 @@ end:
         }
         list_freeList(carousel_slotsList);
         carousel_slotsList = NULL;
+    }
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (link_local_str) {
+        free(link_local_str);
+        link_local_str = NULL;
+    }
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
     }
     return NULL;
 

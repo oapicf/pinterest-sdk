@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,16 +28,15 @@ type ApiBulkDownloadCreateRequest struct {
 	ctx context.Context
 	ApiService *BulkAPIService
 	adAccountId string
-	bulkDownloadRequest *BulkDownloadRequest
+	bulkDownloadCreate *BulkDownloadCreate
 }
 
-// Parameters to get ad entities in bulk
-func (r ApiBulkDownloadCreateRequest) BulkDownloadRequest(bulkDownloadRequest BulkDownloadRequest) ApiBulkDownloadCreateRequest {
-	r.bulkDownloadRequest = &bulkDownloadRequest
+func (r ApiBulkDownloadCreateRequest) BulkDownloadCreate(bulkDownloadCreate BulkDownloadCreate) ApiBulkDownloadCreateRequest {
+	r.bulkDownloadCreate = &bulkDownloadCreate
 	return r
 }
 
-func (r ApiBulkDownloadCreateRequest) Execute() (*BulkDownloadResponse, *http.Response, error) {
+func (r ApiBulkDownloadCreateRequest) Execute() (*BulkDownload, *http.Response, error) {
 	return r.ApiService.BulkDownloadCreateExecute(r)
 }
 
@@ -45,7 +44,7 @@ func (r ApiBulkDownloadCreateRequest) Execute() (*BulkDownloadResponse, *http.Re
 BulkDownloadCreate Get advertiser entities in bulk
 
 Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads,
-keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused,
+keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused,
 only active entities will return data.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -61,13 +60,13 @@ func (a *BulkAPIService) BulkDownloadCreate(ctx context.Context, adAccountId str
 }
 
 // Execute executes the request
-//  @return BulkDownloadResponse
-func (a *BulkAPIService) BulkDownloadCreateExecute(r ApiBulkDownloadCreateRequest) (*BulkDownloadResponse, *http.Response, error) {
+//  @return BulkDownload
+func (a *BulkAPIService) BulkDownloadCreateExecute(r ApiBulkDownloadCreateRequest) (*BulkDownload, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BulkDownloadResponse
+		localVarReturnValue  *BulkDownload
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BulkAPIService.BulkDownloadCreate")
@@ -84,8 +83,8 @@ func (a *BulkAPIService) BulkDownloadCreateExecute(r ApiBulkDownloadCreateReques
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.bulkDownloadRequest == nil {
-		return localVarReturnValue, nil, reportError("bulkDownloadRequest is required and must be specified")
+	if r.bulkDownloadCreate == nil {
+		return localVarReturnValue, nil, reportError("bulkDownloadCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -106,7 +105,7 @@ func (a *BulkAPIService) BulkDownloadCreateExecute(r ApiBulkDownloadCreateReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkDownloadRequest
+	localVarPostBody = r.bulkDownloadCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -129,7 +128,62 @@ func (a *BulkAPIService) BulkDownloadCreateExecute(r ApiBulkDownloadCreateReques
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -160,25 +214,25 @@ type ApiBulkRequestGetRequest struct {
 	includeDetails *bool
 }
 
-// if set to True then attach the errors/details to all the requests
+// If set to True then attach the errors/details to all the requests
 func (r ApiBulkRequestGetRequest) IncludeDetails(includeDetails bool) ApiBulkRequestGetRequest {
 	r.includeDetails = &includeDetails
 	return r
 }
 
-func (r ApiBulkRequestGetRequest) Execute() (*BulkUpsertStatusResponse, *http.Response, error) {
+func (r ApiBulkRequestGetRequest) Execute() (*BulkJobData, *http.Response, error) {
 	return r.ApiService.BulkRequestGetExecute(r)
 }
 
 /*
 BulkRequestGet Download advertiser entities in bulk
 
-Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the
-new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the
+new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
- @param bulkRequestId Unique identifier of a bulk upsert request.
+ @param bulkRequestId Bulk request ID that is from one of the entities bulk endpoints
  @return ApiBulkRequestGetRequest
 */
 func (a *BulkAPIService) BulkRequestGet(ctx context.Context, adAccountId string, bulkRequestId string) ApiBulkRequestGetRequest {
@@ -191,13 +245,13 @@ func (a *BulkAPIService) BulkRequestGet(ctx context.Context, adAccountId string,
 }
 
 // Execute executes the request
-//  @return BulkUpsertStatusResponse
-func (a *BulkAPIService) BulkRequestGetExecute(r ApiBulkRequestGetRequest) (*BulkUpsertStatusResponse, *http.Response, error) {
+//  @return BulkJobData
+func (a *BulkAPIService) BulkRequestGetExecute(r ApiBulkRequestGetRequest) (*BulkJobData, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BulkUpsertStatusResponse
+		localVarReturnValue  *BulkJobData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BulkAPIService.BulkRequestGet")
@@ -219,9 +273,9 @@ func (a *BulkAPIService) BulkRequestGetExecute(r ApiBulkRequestGetRequest) (*Bul
 	if r.includeDetails != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_details", r.includeDetails, "form", "")
 	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "include_details", defaultValue, "form", "")
-        r.includeDetails = &defaultValue
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_details", defaultValue, "form", "")
+		r.includeDetails = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -262,7 +316,62 @@ func (a *BulkAPIService) BulkRequestGetExecute(r ApiBulkRequestGetRequest) (*Bul
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -305,7 +414,7 @@ func (r ApiBulkUpsertCreateRequest) Execute() (*BulkUpsertResponse, *http.Respon
 /*
 BulkUpsertCreate Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels.
 Note that this request will be processed asynchronously; the response will include a <code>request_id</code>
 that can be used to obtain the status of the request.
 
@@ -390,7 +499,7 @@ func (a *BulkAPIService) BulkUpsertCreateExecute(r ApiBulkUpsertCreateRequest) (
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

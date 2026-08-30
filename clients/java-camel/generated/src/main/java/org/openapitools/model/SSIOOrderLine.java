@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -14,24 +15,25 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * SSIOOrderLine
+ * A Salesforce SSIO order line.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "SSIOOrderLine", description = "A Salesforce SSIO order line.")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SSIOOrderLine {
 
   private JsonNullable<String> acceptedTermsId = JsonNullable.<String>undefined();
 
-  private JsonNullable<@Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$") String> acceptedTermsTime = JsonNullable.<String>undefined();
+  private JsonNullable<@Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$") String> acceptedTermsTime = JsonNullable.<String>undefined();
 
   private JsonNullable<String> adsManagerOrderLineId = JsonNullable.<String>undefined();
 
@@ -54,7 +56,7 @@ public class SSIOOrderLine {
 
   private JsonNullable<BigDecimal> estimatedMonthlySpend = JsonNullable.<BigDecimal>undefined();
 
-  private JsonNullable<@Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$") String> lastModifiedDateTime = JsonNullable.<String>undefined();
+  private JsonNullable<@Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$") String> lastModifiedDateTime = JsonNullable.<String>undefined();
 
   private JsonNullable<String> mediaContactEmail = JsonNullable.<String>undefined();
 
@@ -101,13 +103,13 @@ public class SSIOOrderLine {
   }
 
   /**
-   * The UTC timestamp (to the nearest sec) of when terms were accepted
+   * The UTC timestamp (to the nearest second) when terms were accepted.
    * @return acceptedTermsTime
    */
-  @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$") 
-  @Schema(name = "accepted_terms_time", example = "2020-10-06T13:07:04.000Z", description = "The UTC timestamp (to the nearest sec) of when terms were accepted", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$") 
+  @Schema(name = "accepted_terms_time", example = "2020-10-06T13:07:04.000Z", description = "The UTC timestamp (to the nearest second) when terms were accepted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("accepted_terms_time")
-  public JsonNullable<@Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$") String> getAcceptedTermsTime() {
+  public JsonNullable<@Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$") String> getAcceptedTermsTime() {
     return acceptedTermsTime;
   }
 
@@ -121,11 +123,11 @@ public class SSIOOrderLine {
   }
 
   /**
-   * Ads manager OrderLineId
+   * Ads manager order line id
    * @return adsManagerOrderLineId
    */
   
-  @Schema(name = "ads_manager_order_line_id", description = "Ads manager OrderLineId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ads_manager_order_line_id", description = "Ads manager order line id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ads_manager_order_line_id")
   public JsonNullable<String> getAdsManagerOrderLineId() {
     return adsManagerOrderLineId;
@@ -161,11 +163,11 @@ public class SSIOOrderLine {
   }
 
   /**
-   * Bill To Company name
+   * Bill-to company name
    * @return billToCompanyName
    */
   
-  @Schema(name = "bill_to_company_name", example = "Home Depot Inc.", description = "Bill To Company name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "bill_to_company_name", example = "Home Depot Inc.", description = "Bill-to company name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bill_to_company_name")
   public JsonNullable<String> getBillToCompanyName() {
     return billToCompanyName;
@@ -241,11 +243,11 @@ public class SSIOOrderLine {
   }
 
   /**
-   * If Budget order line, the budget amount.
+   * If budget order line, the budget amount.
    * @return budgetAmount
    */
   @Valid 
-  @Schema(name = "budget_amount", example = "5000000", description = "If Budget order line, the budget amount.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "budget_amount", example = "5000000", description = "If budget order line, the budget amount.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("budget_amount")
   public JsonNullable<BigDecimal> getBudgetAmount() {
     return budgetAmount;
@@ -285,7 +287,7 @@ public class SSIOOrderLine {
    * @return endDate
    */
   @Valid 
-  @Schema(name = "end_date", example = "2020-10-05", description = "End date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "end_date", description = "End date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_date")
   public JsonNullable<Date> getEndDate() {
     return endDate;
@@ -301,11 +303,11 @@ public class SSIOOrderLine {
   }
 
   /**
-   * If Ongoing (perpetual) order line, the estimated monthly spend
+   * If ongoing (perpetual) order line, the estimated monthly spend.
    * @return estimatedMonthlySpend
    */
   @Valid 
-  @Schema(name = "estimated_monthly_spend", description = "If Ongoing (perpetual) order line, the estimated monthly spend", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "estimated_monthly_spend", description = "If ongoing (perpetual) order line, the estimated monthly spend.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("estimated_monthly_spend")
   public JsonNullable<BigDecimal> getEstimatedMonthlySpend() {
     return estimatedMonthlySpend;
@@ -324,10 +326,10 @@ public class SSIOOrderLine {
    * Last modified date.
    * @return lastModifiedDateTime
    */
-  @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$") 
+  @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$") 
   @Schema(name = "last_modified_date_time", example = "2020-10-06T13:07:04.000Z", description = "Last modified date.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("last_modified_date_time")
-  public JsonNullable<@Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$") String> getLastModifiedDateTime() {
+  public JsonNullable<@Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$") String> getLastModifiedDateTime() {
     return lastModifiedDateTime;
   }
 
@@ -361,11 +363,11 @@ public class SSIOOrderLine {
   }
 
   /**
-   * Billing contact first name
+   * Billing media contact first name
    * @return mediaContactFirstname
    */
   
-  @Schema(name = "media_contact_firstname", example = "John", description = "Billing contact first name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "media_contact_firstname", example = "John", description = "Billing media contact first name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_contact_firstname")
   public JsonNullable<String> getMediaContactFirstname() {
     return mediaContactFirstname;
@@ -381,11 +383,11 @@ public class SSIOOrderLine {
   }
 
   /**
-   * Billing contact first name
+   * Billing media contact last name
    * @return mediaContactLastname
    */
   
-  @Schema(name = "media_contact_lastname", example = "Doe", description = "Billing contact first name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "media_contact_lastname", example = "Doe", description = "Billing media contact last name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_contact_lastname")
   public JsonNullable<String> getMediaContactLastname() {
     return mediaContactLastname;
@@ -461,11 +463,11 @@ public class SSIOOrderLine {
   }
 
   /**
-   * The po number
+   * The PO number
    * @return poNumber
    */
   
-  @Schema(name = "po_number", description = "The po number", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "po_number", description = "The PO number", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("po_number")
   public JsonNullable<String> getPoNumber() {
     return poNumber;
@@ -481,11 +483,11 @@ public class SSIOOrderLine {
   }
 
   /**
-   * OrderLineId in SFDC
+   * Order line id in SFDC
    * @return salesforceOrderLineId
    */
   
-  @Schema(name = "salesforce_order_line_id", description = "OrderLineId in SFDC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "salesforce_order_line_id", description = "Order line id in SFDC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("salesforce_order_line_id")
   public JsonNullable<String> getSalesforceOrderLineId() {
     return salesforceOrderLineId;
@@ -505,7 +507,7 @@ public class SSIOOrderLine {
    * @return startDate
    */
   @Valid 
-  @Schema(name = "start_date", example = "2018-03-01", description = "Start date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "start_date", description = "Start date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_date")
   public JsonNullable<Date> getStartDate() {
     return startDate;
@@ -599,10 +601,7 @@ public class SSIOOrderLine {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

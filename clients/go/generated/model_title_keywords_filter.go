@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -57,11 +57,11 @@ func (o *TitleKeywordsFilter) GetTITLE_KEYWORDS() CatalogsProductGroupMultipleSt
 
 // GetTITLE_KEYWORDSOk returns a tuple with the TITLE_KEYWORDS field value
 // and a boolean to check if the value has been set.
-func (o *TitleKeywordsFilter) GetTITLE_KEYWORDSOk() (CatalogsProductGroupMultipleStringCriteria, bool) {
+func (o *TitleKeywordsFilter) GetTITLE_KEYWORDSOk() (*CatalogsProductGroupMultipleStringCriteria, bool) {
 	if o == nil {
-		return CatalogsProductGroupMultipleStringCriteria{}, false
+		return nil, false
 	}
-	return o.TITLE_KEYWORDS, true
+	return &o.TITLE_KEYWORDS, true
 }
 
 // SetTITLE_KEYWORDS sets field value

@@ -14,9 +14,9 @@
       "name": "items",
       "type": {
         "type": "array",
-        "items": "model.Pin"
+        "items": "model.PinRead"
       },
-      "doc": "Pins"
+      "doc": ""
     }
   ]
 

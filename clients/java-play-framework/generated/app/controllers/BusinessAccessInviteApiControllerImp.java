@@ -1,16 +1,17 @@
 package controllers;
 
 import apimodels.AuthRespondInvitesBody;
-import apimodels.CancelInvitesBody;
+import apimodels.CancelInvitesRequest;
+import apimodels.CancelInvitesResponse;
 import apimodels.CreateAssetAccessRequestBody;
 import apimodels.CreateAssetAccessRequestResponse;
 import apimodels.CreateAssetInvitesRequest;
 import apimodels.CreateInvitesResultsResponseArray;
 import apimodels.CreateMembershipOrPartnershipInvitesBody;
-import apimodels.DeleteInvitesResultsResponseArray;
-import apimodels.Error;
 import apimodels.GetInvites200Response;
+import apimodels.InviteFilterStatus;
 import apimodels.InviteType;
+import apimodels.PinterestLibError;
 import apimodels.RespondToInvitesResponseArray;
 import apimodels.UpdateInvitesResultsResponseArray;
 
@@ -23,7 +24,7 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessAccessInviteApiControllerImp extends BusinessAccessInviteApiControllerImpInterface {
     @Override
     public CreateAssetAccessRequestResponse assetAccessRequestsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, CreateAssetAccessRequestBody createAssetAccessRequestBody) throws Exception {
@@ -32,9 +33,9 @@ public class BusinessAccessInviteApiControllerImp extends BusinessAccessInviteAp
     }
 
     @Override
-    public DeleteInvitesResultsResponseArray cancelInvitesOrRequests(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, CancelInvitesBody cancelInvitesBody) throws Exception {
+    public CancelInvitesResponse cancelInvitesOrRequests(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, CancelInvitesRequest cancelInvitesRequest) throws Exception {
         //Do your magic!!!
-        return new DeleteInvitesResultsResponseArray();
+        return new CancelInvitesResponse();
     }
 
     @Override
@@ -50,7 +51,7 @@ public class BusinessAccessInviteApiControllerImp extends BusinessAccessInviteAp
     }
 
     @Override
-    public GetInvites200Response getInvites(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, Boolean isMember,  @Size(min=1)List<String> inviteStatus, InviteType inviteType, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
+    public GetInvites200Response getInvites(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, Boolean isMember,  @Size(min=1)List<InviteFilterStatus> inviteStatus, InviteType inviteType, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new GetInvites200Response();
     }

@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { TargetingSpecAppType } from './targetingSpecAppType';
 
 
 /**
@@ -16,18 +17,12 @@ export interface AppTypeMultipliers {
   [key: string]: number | any;
 
 
-    APP_TYPE?: AppTypeMultipliers.APPTYPEEnum;
+    /**
+     * App type identifier.
+     */
+    APP_TYPE?: TargetingSpecAppType;
 }
 export namespace AppTypeMultipliers {
-    export const APPTYPEEnum = {
-        AndroidMobile: 'android_mobile',
-        AndroidTablet: 'android_tablet',
-        Ipad: 'ipad',
-        Iphone: 'iphone',
-        Web: 'web',
-        WebMobile: 'web_mobile'
-    } as const;
-    export type APPTYPEEnum = typeof APPTYPEEnum[keyof typeof APPTYPEEnum];
 }
 
 

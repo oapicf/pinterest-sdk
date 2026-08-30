@@ -1,9 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
+import org.openapitools.vertxweb.server.model.CustomerListUpload;
 import org.openapitools.vertxweb.server.model.CustomerListUploadCreateRequest;
 import org.openapitools.vertxweb.server.model.CustomerListUploadCreateResponse;
-import org.openapitools.vertxweb.server.model.CustomerListUploadResponse;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;

@@ -1,0 +1,22 @@
+package models
+// MultiPinsAnalyticsMetricTypesItem : Pin metric type for multi-pin analytics
+type MultiPinsAnalyticsMetricTypesItem string
+
+// List of MultiPinsAnalyticsMetricTypesItem
+const (
+	IMPRESSION MultiPinsAnalyticsMetricTypesItem = "IMPRESSION"
+	OUTBOUND_CLICK MultiPinsAnalyticsMetricTypesItem = "OUTBOUND_CLICK"
+	PIN_CLICK MultiPinsAnalyticsMetricTypesItem = "PIN_CLICK"
+	SAVE MultiPinsAnalyticsMetricTypesItem = "SAVE"
+	SAVE_RATE MultiPinsAnalyticsMetricTypesItem = "SAVE_RATE"
+	TOTAL_COMMENTS MultiPinsAnalyticsMetricTypesItem = "TOTAL_COMMENTS"
+	TOTAL_REACTIONS MultiPinsAnalyticsMetricTypesItem = "TOTAL_REACTIONS"
+	USER_FOLLOW MultiPinsAnalyticsMetricTypesItem = "USER_FOLLOW"
+	PROFILE_VISIT MultiPinsAnalyticsMetricTypesItem = "PROFILE_VISIT"
+	VIDEO_MRC_VIEW MultiPinsAnalyticsMetricTypesItem = "VIDEO_MRC_VIEW"
+	VIDEO_10_S_VIEW MultiPinsAnalyticsMetricTypesItem = "VIDEO_10S_VIEW"
+	QUARTILE_95_PERCENT_VIEW MultiPinsAnalyticsMetricTypesItem = "QUARTILE_95_PERCENT_VIEW"
+	VIDEO_V50_WATCH_TIME MultiPinsAnalyticsMetricTypesItem = "VIDEO_V50_WATCH_TIME"
+	VIDEO_START MultiPinsAnalyticsMetricTypesItem = "VIDEO_START"
+	VIDEO_AVG_WATCH_TIME MultiPinsAnalyticsMetricTypesItem = "VIDEO_AVG_WATCH_TIME"
+)

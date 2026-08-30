@@ -50,39 +50,39 @@ public:
 
 	/*! \brief Get 
 	 */
+	AdvancedAuctionBidOptions getBidOptions();
+
+	/*! \brief Set 
+	 */
+	void setBidOptions(AdvancedAuctionBidOptions bid_options);
+	/*! \brief Get 
+	 */
 	Country getCountry();
 
 	/*! \brief Set 
 	 */
-	void setCountry(Country  country);
+	void setCountry(Country country);
 	/*! \brief Get The catalog retail item id in the merchant namespace
 	 */
 	std::string getItemId();
 
 	/*! \brief Set The catalog retail item id in the merchant namespace
 	 */
-	void setItemId(std::string  item_id);
+	void setItemId(std::string item_id);
 	/*! \brief Get 
 	 */
 	Language getLanguage();
 
 	/*! \brief Set 
 	 */
-	void setLanguage(Language  language);
-	/*! \brief Get 
-	 */
-	AdvancedAuctionBidOptions getBidOptions();
-
-	/*! \brief Set 
-	 */
-	void setBidOptions(AdvancedAuctionBidOptions  bid_options);
+	void setLanguage(Language language);
 
 
     private:
+    AdvancedAuctionBidOptions bid_options;
     Country country;
     std::string item_id{};
     Language language;
-    AdvancedAuctionBidOptions bid_options;
 };
 }
 

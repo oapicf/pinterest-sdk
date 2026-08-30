@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **character** |  | [optional] 
-**items** | [**array[TargetingTemplateGetResponseData]**](TargetingTemplateGetResponseData.md) |  | 
+**items** | [**array[TargetingTemplate]**](TargetingTemplate.md) |  | 
 
 

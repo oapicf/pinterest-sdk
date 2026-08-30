@@ -10,8 +10,9 @@
    (ds/opt :cover_image_url) string?
    (ds/opt :duration) float?
    (ds/opt :height) int?
-   (ds/opt :item_type) string?
+   (ds/req :item_type) string?
    (ds/opt :video_url) string?
+   (ds/opt :video_url_hls) string?
    (ds/opt :width) int?
    })
 

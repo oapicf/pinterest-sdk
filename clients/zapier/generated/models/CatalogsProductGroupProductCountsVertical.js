@@ -2,7 +2,6 @@ const utils = require('../utils/utils');
 const CatalogsCreativeAssetsProductGroupProductCounts = require('../models/CatalogsCreativeAssetsProductGroupProductCounts');
 const CatalogsHotelProductGroupProductCounts = require('../models/CatalogsHotelProductGroupProductCounts');
 const CatalogsRetailProductGroupProductCounts = require('../models/CatalogsRetailProductGroupProductCounts');
-const CatalogsType = require('../models/CatalogsType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -10,7 +9,12 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}catalog_type`,
-                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
+                label: `[${labelPrefix}catalog_type]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'CREATIVE_ASSETS',
+                ],
             },
             {
                 key: `${keyPrefix}in_stock`,
@@ -42,6 +46,18 @@ module.exports = {
                 required: true,
                 type: 'number',
             },
+            {
+                key: `${keyPrefix}app_links`,
+                label: `[${labelPrefix}app_links]`,
+                required: true,
+                type: 'number',
+            },
+            {
+                key: `${keyPrefix}images`,
+                label: `[${labelPrefix}images]`,
+                required: true,
+                type: 'number',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -53,6 +69,8 @@ module.exports = {
             'preorder': bundle.inputData?.[`${keyPrefix}preorder`],
             'total': bundle.inputData?.[`${keyPrefix}total`],
             'videos': bundle.inputData?.[`${keyPrefix}videos`],
+            'app_links': bundle.inputData?.[`${keyPrefix}app_links`],
+            'images': bundle.inputData?.[`${keyPrefix}images`],
         }
     },
 }

@@ -27,6 +27,7 @@ class ProductGroupPromotion {
     this.id,
     this.included,
     this.isGenerateBackground,
+    this.isImageAutoResizing,
     this.isMdl,
     this.parentId,
     this.preferredMediaType,
@@ -49,16 +50,33 @@ class ProductGroupPromotion {
   String? adGroupId;
 
   /// The bid in micro currency.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? bidInMicroCurrency;
 
-  /// ID of the catalogs product group that this product group promotion references
+  /// ID of the catalogs product group that this product group promotion references (required for create operations)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? catalogProductGroupId;
 
   /// Catalogs product group name
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? catalogProductGroupName;
 
-  /// Collections ad header type
-  ProductGroupPromotionCollectionsHeaderTypeEnum? collectionsHeaderType;
+  CollectionsHeaderType? collectionsHeaderType;
 
   /// Collections Hero Destination Url
   String? collectionsHeroDestinationUrl;
@@ -74,15 +92,26 @@ class ProductGroupPromotion {
   ///
   CreativeType? creativeType;
 
-  /// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-  ProductGroupPromotionCustomizableCtaTypeEnum? customizableCtaType;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ProductGroupPromotionCustomizableCTAType? customizableCtaType;
 
   /// The full product group definition path
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? definition;
 
   GridClickType? gridClickType;
 
-  /// ID of the product group promotion.
+  /// ID of the product group promotion (required for update operations).
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -92,21 +121,47 @@ class ProductGroupPromotion {
   String? id;
 
   /// True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? included;
 
   /// Enable generate backgrounds for the product group, default value is FALSE. When enabled, Pinterest will use generative AI to apply backgrounds for your product images that help drive user inspiration and engagement.
   bool? isGenerateBackground;
 
+  /// Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.
+  bool? isImageAutoResizing;
+
   /// If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? isMdl;
 
   /// The parent Product Group ID of this Product Group
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? parentId;
 
-  /// Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
-  ProductGroupPromotionPreferredMediaTypeEnum? preferredMediaType;
+  PreferredMediaType? preferredMediaType;
 
   /// The definition of the product group, relative to its parent - an attribute name/value pair
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? relativeDefinition;
 
   /// The ad image tag selected for the product group promotion.
@@ -130,6 +185,12 @@ class ProductGroupPromotion {
   EntityStatus? status;
 
   /// Tracking template for proudct group promotions. 4000 limit
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? trackingUrl;
 
   @override
@@ -148,6 +209,7 @@ class ProductGroupPromotion {
     other.id == id &&
     other.included == included &&
     other.isGenerateBackground == isGenerateBackground &&
+    other.isImageAutoResizing == isImageAutoResizing &&
     other.isMdl == isMdl &&
     other.parentId == parentId &&
     other.preferredMediaType == preferredMediaType &&
@@ -176,6 +238,7 @@ class ProductGroupPromotion {
     (id == null ? 0 : id!.hashCode) +
     (included == null ? 0 : included!.hashCode) +
     (isGenerateBackground == null ? 0 : isGenerateBackground!.hashCode) +
+    (isImageAutoResizing == null ? 0 : isImageAutoResizing!.hashCode) +
     (isMdl == null ? 0 : isMdl!.hashCode) +
     (parentId == null ? 0 : parentId!.hashCode) +
     (preferredMediaType == null ? 0 : preferredMediaType!.hashCode) +
@@ -188,7 +251,7 @@ class ProductGroupPromotion {
     (trackingUrl == null ? 0 : trackingUrl!.hashCode);
 
   @override
-  String toString() => 'ProductGroupPromotion[adGroupId=$adGroupId, bidInMicroCurrency=$bidInMicroCurrency, catalogProductGroupId=$catalogProductGroupId, catalogProductGroupName=$catalogProductGroupName, collectionsHeaderType=$collectionsHeaderType, collectionsHeroDestinationUrl=$collectionsHeroDestinationUrl, collectionsHeroPinId=$collectionsHeroPinId, creativeType=$creativeType, customizableCtaType=$customizableCtaType, definition=$definition, gridClickType=$gridClickType, id=$id, included=$included, isGenerateBackground=$isGenerateBackground, isMdl=$isMdl, parentId=$parentId, preferredMediaType=$preferredMediaType, relativeDefinition=$relativeDefinition, selectedImageTag=$selectedImageTag, selectedVideoTag=$selectedVideoTag, slideshowCollectionsDescription=$slideshowCollectionsDescription, slideshowCollectionsTitle=$slideshowCollectionsTitle, status=$status, trackingUrl=$trackingUrl]';
+  String toString() => 'ProductGroupPromotion[adGroupId=$adGroupId, bidInMicroCurrency=$bidInMicroCurrency, catalogProductGroupId=$catalogProductGroupId, catalogProductGroupName=$catalogProductGroupName, collectionsHeaderType=$collectionsHeaderType, collectionsHeroDestinationUrl=$collectionsHeroDestinationUrl, collectionsHeroPinId=$collectionsHeroPinId, creativeType=$creativeType, customizableCtaType=$customizableCtaType, definition=$definition, gridClickType=$gridClickType, id=$id, included=$included, isGenerateBackground=$isGenerateBackground, isImageAutoResizing=$isImageAutoResizing, isMdl=$isMdl, parentId=$parentId, preferredMediaType=$preferredMediaType, relativeDefinition=$relativeDefinition, selectedImageTag=$selectedImageTag, selectedVideoTag=$selectedVideoTag, slideshowCollectionsDescription=$slideshowCollectionsDescription, slideshowCollectionsTitle=$slideshowCollectionsTitle, status=$status, trackingUrl=$trackingUrl]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -262,6 +325,11 @@ class ProductGroupPromotion {
     } else {
       json[r'is_generate_background'] = null;
     }
+    if (this.isImageAutoResizing != null) {
+      json[r'is_image_auto_resizing'] = this.isImageAutoResizing;
+    } else {
+      json[r'is_image_auto_resizing'] = null;
+    }
     if (this.isMdl != null) {
       json[r'is_mdl'] = this.isMdl;
     } else {
@@ -326,10 +394,6 @@ class ProductGroupPromotion {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProductGroupPromotion[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProductGroupPromotion[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -338,19 +402,20 @@ class ProductGroupPromotion {
         bidInMicroCurrency: mapValueOfType<int>(json, r'bid_in_micro_currency'),
         catalogProductGroupId: mapValueOfType<String>(json, r'catalog_product_group_id'),
         catalogProductGroupName: mapValueOfType<String>(json, r'catalog_product_group_name'),
-        collectionsHeaderType: ProductGroupPromotionCollectionsHeaderTypeEnum.fromJson(json[r'collections_header_type']),
+        collectionsHeaderType: CollectionsHeaderType.fromJson(json[r'collections_header_type']),
         collectionsHeroDestinationUrl: mapValueOfType<String>(json, r'collections_hero_destination_url'),
         collectionsHeroPinId: mapValueOfType<String>(json, r'collections_hero_pin_id'),
         creativeType: CreativeType.fromJson(json[r'creative_type']),
-        customizableCtaType: ProductGroupPromotionCustomizableCtaTypeEnum.fromJson(json[r'customizable_cta_type']),
+        customizableCtaType: ProductGroupPromotionCustomizableCTAType.fromJson(json[r'customizable_cta_type']),
         definition: mapValueOfType<String>(json, r'definition'),
         gridClickType: GridClickType.fromJson(json[r'grid_click_type']),
         id: mapValueOfType<String>(json, r'id'),
         included: mapValueOfType<bool>(json, r'included'),
         isGenerateBackground: mapValueOfType<bool>(json, r'is_generate_background'),
+        isImageAutoResizing: mapValueOfType<bool>(json, r'is_image_auto_resizing'),
         isMdl: mapValueOfType<bool>(json, r'is_mdl'),
         parentId: mapValueOfType<String>(json, r'parent_id'),
-        preferredMediaType: ProductGroupPromotionPreferredMediaTypeEnum.fromJson(json[r'preferred_media_type']),
+        preferredMediaType: PreferredMediaType.fromJson(json[r'preferred_media_type']),
         relativeDefinition: mapValueOfType<String>(json, r'relative_definition'),
         selectedImageTag: mapValueOfType<String>(json, r'selected_image_tag'),
         selectedVideoTag: mapValueOfType<String>(json, r'selected_video_tag'),
@@ -407,244 +472,4 @@ class ProductGroupPromotion {
   static const requiredKeys = <String>{
   };
 }
-
-/// Collections ad header type
-class ProductGroupPromotionCollectionsHeaderTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ProductGroupPromotionCollectionsHeaderTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const SHOP_THIS_COLLECTION = ProductGroupPromotionCollectionsHeaderTypeEnum._(r'SHOP_THIS_COLLECTION');
-  static const EXPLORE_THIS_COLLECTION = ProductGroupPromotionCollectionsHeaderTypeEnum._(r'EXPLORE_THIS_COLLECTION');
-  static const NO_HEADER = ProductGroupPromotionCollectionsHeaderTypeEnum._(r'NO_HEADER');
-  static const ON_SALE = ProductGroupPromotionCollectionsHeaderTypeEnum._(r'ON_SALE');
-  static const GET_DEAL = ProductGroupPromotionCollectionsHeaderTypeEnum._(r'GET_DEAL');
-
-  /// List of all possible values in this [enum][ProductGroupPromotionCollectionsHeaderTypeEnum].
-  static const values = <ProductGroupPromotionCollectionsHeaderTypeEnum>[
-    SHOP_THIS_COLLECTION,
-    EXPLORE_THIS_COLLECTION,
-    NO_HEADER,
-    ON_SALE,
-    GET_DEAL,
-  ];
-
-  static ProductGroupPromotionCollectionsHeaderTypeEnum? fromJson(dynamic value) => ProductGroupPromotionCollectionsHeaderTypeEnumTypeTransformer().decode(value);
-
-  static List<ProductGroupPromotionCollectionsHeaderTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductGroupPromotionCollectionsHeaderTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ProductGroupPromotionCollectionsHeaderTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ProductGroupPromotionCollectionsHeaderTypeEnum] to String,
-/// and [decode] dynamic data back to [ProductGroupPromotionCollectionsHeaderTypeEnum].
-class ProductGroupPromotionCollectionsHeaderTypeEnumTypeTransformer {
-  factory ProductGroupPromotionCollectionsHeaderTypeEnumTypeTransformer() => _instance ??= const ProductGroupPromotionCollectionsHeaderTypeEnumTypeTransformer._();
-
-  const ProductGroupPromotionCollectionsHeaderTypeEnumTypeTransformer._();
-
-  String encode(ProductGroupPromotionCollectionsHeaderTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ProductGroupPromotionCollectionsHeaderTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ProductGroupPromotionCollectionsHeaderTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'SHOP_THIS_COLLECTION': return ProductGroupPromotionCollectionsHeaderTypeEnum.SHOP_THIS_COLLECTION;
-        case r'EXPLORE_THIS_COLLECTION': return ProductGroupPromotionCollectionsHeaderTypeEnum.EXPLORE_THIS_COLLECTION;
-        case r'NO_HEADER': return ProductGroupPromotionCollectionsHeaderTypeEnum.NO_HEADER;
-        case r'ON_SALE': return ProductGroupPromotionCollectionsHeaderTypeEnum.ON_SALE;
-        case r'GET_DEAL': return ProductGroupPromotionCollectionsHeaderTypeEnum.GET_DEAL;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ProductGroupPromotionCollectionsHeaderTypeEnumTypeTransformer] instance.
-  static ProductGroupPromotionCollectionsHeaderTypeEnumTypeTransformer? _instance;
-}
-
-
-/// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-class ProductGroupPromotionCustomizableCtaTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ProductGroupPromotionCustomizableCtaTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const SHOP_NOW = ProductGroupPromotionCustomizableCtaTypeEnum._(r'SHOP_NOW');
-  static const BOOK_NOW = ProductGroupPromotionCustomizableCtaTypeEnum._(r'BOOK_NOW');
-  static const ON_SALE = ProductGroupPromotionCustomizableCtaTypeEnum._(r'ON_SALE');
-  static const GET_DEAL = ProductGroupPromotionCustomizableCtaTypeEnum._(r'GET_DEAL');
-  static const BUY_ONLINE_PICKUP_IN_STORE = ProductGroupPromotionCustomizableCtaTypeEnum._(r'BUY_ONLINE_PICKUP_IN_STORE');
-
-  /// List of all possible values in this [enum][ProductGroupPromotionCustomizableCtaTypeEnum].
-  static const values = <ProductGroupPromotionCustomizableCtaTypeEnum>[
-    SHOP_NOW,
-    BOOK_NOW,
-    ON_SALE,
-    GET_DEAL,
-    BUY_ONLINE_PICKUP_IN_STORE,
-  ];
-
-  static ProductGroupPromotionCustomizableCtaTypeEnum? fromJson(dynamic value) => ProductGroupPromotionCustomizableCtaTypeEnumTypeTransformer().decode(value);
-
-  static List<ProductGroupPromotionCustomizableCtaTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductGroupPromotionCustomizableCtaTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ProductGroupPromotionCustomizableCtaTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ProductGroupPromotionCustomizableCtaTypeEnum] to String,
-/// and [decode] dynamic data back to [ProductGroupPromotionCustomizableCtaTypeEnum].
-class ProductGroupPromotionCustomizableCtaTypeEnumTypeTransformer {
-  factory ProductGroupPromotionCustomizableCtaTypeEnumTypeTransformer() => _instance ??= const ProductGroupPromotionCustomizableCtaTypeEnumTypeTransformer._();
-
-  const ProductGroupPromotionCustomizableCtaTypeEnumTypeTransformer._();
-
-  String encode(ProductGroupPromotionCustomizableCtaTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ProductGroupPromotionCustomizableCtaTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ProductGroupPromotionCustomizableCtaTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'SHOP_NOW': return ProductGroupPromotionCustomizableCtaTypeEnum.SHOP_NOW;
-        case r'BOOK_NOW': return ProductGroupPromotionCustomizableCtaTypeEnum.BOOK_NOW;
-        case r'ON_SALE': return ProductGroupPromotionCustomizableCtaTypeEnum.ON_SALE;
-        case r'GET_DEAL': return ProductGroupPromotionCustomizableCtaTypeEnum.GET_DEAL;
-        case r'BUY_ONLINE_PICKUP_IN_STORE': return ProductGroupPromotionCustomizableCtaTypeEnum.BUY_ONLINE_PICKUP_IN_STORE;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ProductGroupPromotionCustomizableCtaTypeEnumTypeTransformer] instance.
-  static ProductGroupPromotionCustomizableCtaTypeEnumTypeTransformer? _instance;
-}
-
-
-/// Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
-class ProductGroupPromotionPreferredMediaTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ProductGroupPromotionPreferredMediaTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const VIDEO = ProductGroupPromotionPreferredMediaTypeEnum._(r'VIDEO');
-  static const IMAGE = ProductGroupPromotionPreferredMediaTypeEnum._(r'IMAGE');
-
-  /// List of all possible values in this [enum][ProductGroupPromotionPreferredMediaTypeEnum].
-  static const values = <ProductGroupPromotionPreferredMediaTypeEnum>[
-    VIDEO,
-    IMAGE,
-  ];
-
-  static ProductGroupPromotionPreferredMediaTypeEnum? fromJson(dynamic value) => ProductGroupPromotionPreferredMediaTypeEnumTypeTransformer().decode(value);
-
-  static List<ProductGroupPromotionPreferredMediaTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductGroupPromotionPreferredMediaTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ProductGroupPromotionPreferredMediaTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ProductGroupPromotionPreferredMediaTypeEnum] to String,
-/// and [decode] dynamic data back to [ProductGroupPromotionPreferredMediaTypeEnum].
-class ProductGroupPromotionPreferredMediaTypeEnumTypeTransformer {
-  factory ProductGroupPromotionPreferredMediaTypeEnumTypeTransformer() => _instance ??= const ProductGroupPromotionPreferredMediaTypeEnumTypeTransformer._();
-
-  const ProductGroupPromotionPreferredMediaTypeEnumTypeTransformer._();
-
-  String encode(ProductGroupPromotionPreferredMediaTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ProductGroupPromotionPreferredMediaTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ProductGroupPromotionPreferredMediaTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'VIDEO': return ProductGroupPromotionPreferredMediaTypeEnum.VIDEO;
-        case r'IMAGE': return ProductGroupPromotionPreferredMediaTypeEnum.IMAGE;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ProductGroupPromotionPreferredMediaTypeEnumTypeTransformer] instance.
-  static ProductGroupPromotionPreferredMediaTypeEnumTypeTransformer? _instance;
-}
-
 

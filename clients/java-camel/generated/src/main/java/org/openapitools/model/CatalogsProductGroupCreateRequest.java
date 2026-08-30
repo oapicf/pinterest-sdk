@@ -2,31 +2,31 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsProductGroupFiltersRequest;
 import java.util.NoSuchElementException;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Request object for creating a product group.
  */
 
 @Schema(name = "CatalogsProductGroupCreateRequest", description = "Request object for creating a product group.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsInner {
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class CatalogsProductGroupCreateRequest implements BulkUpsertRequestCreateCatalogProductGroupsItems, CatalogsProductGroupsCreateManyRequestItems, CatalogsProductGroupsCreateRequestSchema {
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
@@ -35,7 +35,7 @@ public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsI
   private CatalogsProductGroupFiltersRequest filters;
 
   @Deprecated
-  private Boolean isFeatured = false;
+  private Boolean isFeatured;
 
   private String name;
 
@@ -208,10 +208,7 @@ public class CatalogsProductGroupCreateRequest implements MultipleProductGroupsI
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

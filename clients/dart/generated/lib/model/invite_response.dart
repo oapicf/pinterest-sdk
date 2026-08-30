@@ -13,16 +13,48 @@ part of openapi.api;
 class InviteResponse {
   /// Returns a new [InviteResponse] instance.
   InviteResponse({
-    this.id,
-    this.inviteData,
-    this.isReceivedInvite,
-    this.user,
     this.assetsSummary,
     this.businessRoles = const [],
     this.createdByBusiness,
     this.createdByUser,
     this.createdTime,
+    this.id,
+    this.inviteData,
+    this.isReceivedInvite,
+    this.user,
   });
+
+  InviteAssetsSummary? assetsSummary;
+
+  /// The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+  List<String> businessRoles;
+
+  /// Metadata for the business that created the invite/request.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  BusinessAccessUserSummary? createdByBusiness;
+
+  /// Metadata for the user that created the invite/request.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  BusinessAccessUserSummary? createdByUser;
+
+  /// The time the invite/request was created. Returned in milliseconds.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? createdTime;
 
   /// Unique identifier of the invite/request.
   ///
@@ -39,7 +71,7 @@ class InviteResponse {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  BaseInviteDataResponseInviteData? inviteData;
+  InviteDataResponse? inviteData;
 
   /// Indicates whether the invite/request was received.
   ///
@@ -59,76 +91,36 @@ class InviteResponse {
   ///
   BusinessAccessUserSummary? user;
 
-  InviteAssetsSummary? assetsSummary;
-
-  /// The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-  List<String> businessRoles;
-
-  /// Metadata for the business that created the invite/request.
-  Object? createdByBusiness;
-
-  /// Metadata for the user that created the invite/request.
-  Object? createdByUser;
-
-  /// The time the invite/request was created. Returned in milliseconds.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? createdTime;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is InviteResponse &&
-    other.id == id &&
-    other.inviteData == inviteData &&
-    other.isReceivedInvite == isReceivedInvite &&
-    other.user == user &&
     other.assetsSummary == assetsSummary &&
     _deepEquality.equals(other.businessRoles, businessRoles) &&
     other.createdByBusiness == createdByBusiness &&
     other.createdByUser == createdByUser &&
-    other.createdTime == createdTime;
+    other.createdTime == createdTime &&
+    other.id == id &&
+    other.inviteData == inviteData &&
+    other.isReceivedInvite == isReceivedInvite &&
+    other.user == user;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (inviteData == null ? 0 : inviteData!.hashCode) +
-    (isReceivedInvite == null ? 0 : isReceivedInvite!.hashCode) +
-    (user == null ? 0 : user!.hashCode) +
     (assetsSummary == null ? 0 : assetsSummary!.hashCode) +
     (businessRoles.hashCode) +
     (createdByBusiness == null ? 0 : createdByBusiness!.hashCode) +
     (createdByUser == null ? 0 : createdByUser!.hashCode) +
-    (createdTime == null ? 0 : createdTime!.hashCode);
+    (createdTime == null ? 0 : createdTime!.hashCode) +
+    (id == null ? 0 : id!.hashCode) +
+    (inviteData == null ? 0 : inviteData!.hashCode) +
+    (isReceivedInvite == null ? 0 : isReceivedInvite!.hashCode) +
+    (user == null ? 0 : user!.hashCode);
 
   @override
-  String toString() => 'InviteResponse[id=$id, inviteData=$inviteData, isReceivedInvite=$isReceivedInvite, user=$user, assetsSummary=$assetsSummary, businessRoles=$businessRoles, createdByBusiness=$createdByBusiness, createdByUser=$createdByUser, createdTime=$createdTime]';
+  String toString() => 'InviteResponse[assetsSummary=$assetsSummary, businessRoles=$businessRoles, createdByBusiness=$createdByBusiness, createdByUser=$createdByUser, createdTime=$createdTime, id=$id, inviteData=$inviteData, isReceivedInvite=$isReceivedInvite, user=$user]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
-      json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.inviteData != null) {
-      json[r'invite_data'] = this.inviteData;
-    } else {
-      json[r'invite_data'] = null;
-    }
-    if (this.isReceivedInvite != null) {
-      json[r'is_received_invite'] = this.isReceivedInvite;
-    } else {
-      json[r'is_received_invite'] = null;
-    }
-    if (this.user != null) {
-      json[r'user'] = this.user;
-    } else {
-      json[r'user'] = null;
-    }
     if (this.assetsSummary != null) {
       json[r'assets_summary'] = this.assetsSummary;
     } else {
@@ -150,6 +142,26 @@ class InviteResponse {
     } else {
       json[r'created_time'] = null;
     }
+    if (this.id != null) {
+      json[r'id'] = this.id;
+    } else {
+      json[r'id'] = null;
+    }
+    if (this.inviteData != null) {
+      json[r'invite_data'] = this.inviteData;
+    } else {
+      json[r'invite_data'] = null;
+    }
+    if (this.isReceivedInvite != null) {
+      json[r'is_received_invite'] = this.isReceivedInvite;
+    } else {
+      json[r'is_received_invite'] = null;
+    }
+    if (this.user != null) {
+      json[r'user'] = this.user;
+    } else {
+      json[r'user'] = null;
+    }
     return json;
   }
 
@@ -164,25 +176,21 @@ class InviteResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "InviteResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "InviteResponse[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return InviteResponse(
-        id: mapValueOfType<String>(json, r'id'),
-        inviteData: BaseInviteDataResponseInviteData.fromJson(json[r'invite_data']),
-        isReceivedInvite: mapValueOfType<bool>(json, r'is_received_invite'),
-        user: BusinessAccessUserSummary.fromJson(json[r'user']),
         assetsSummary: InviteAssetsSummary.fromJson(json[r'assets_summary']),
         businessRoles: json[r'business_roles'] is Iterable
             ? (json[r'business_roles'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        createdByBusiness: mapValueOfType<Object>(json, r'created_by_business'),
-        createdByUser: mapValueOfType<Object>(json, r'created_by_user'),
+        createdByBusiness: BusinessAccessUserSummary.fromJson(json[r'created_by_business']),
+        createdByUser: BusinessAccessUserSummary.fromJson(json[r'created_by_user']),
         createdTime: mapValueOfType<int>(json, r'created_time'),
+        id: mapValueOfType<String>(json, r'id'),
+        inviteData: InviteDataResponse.fromJson(json[r'invite_data']),
+        isReceivedInvite: mapValueOfType<bool>(json, r'is_received_invite'),
+        user: BusinessAccessUserSummary.fromJson(json[r'user']),
       );
     }
     return null;

@@ -84,10 +84,14 @@ class CatalogsCreativeAssetsBatchRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsCreativeAssetsBatchRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsCreativeAssetsBatchRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsCreativeAssetsBatchRequest[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsCreativeAssetsBatchRequest[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'country'), 'Required key "CatalogsCreativeAssetsBatchRequest[country]" is missing from JSON.');
+        assert(json[r'country'] != null, 'Required key "CatalogsCreativeAssetsBatchRequest[country]" has a null value in JSON.');
+        assert(json.containsKey(r'items'), 'Required key "CatalogsCreativeAssetsBatchRequest[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "CatalogsCreativeAssetsBatchRequest[items]" has a null value in JSON.');
+        assert(json.containsKey(r'language'), 'Required key "CatalogsCreativeAssetsBatchRequest[language]" is missing from JSON.');
+        assert(json[r'language'] != null, 'Required key "CatalogsCreativeAssetsBatchRequest[language]" has a null value in JSON.');
         return true;
       }());
 
@@ -152,27 +156,28 @@ class CatalogsCreativeAssetsBatchRequest {
 }
 
 
-class CatalogsCreativeAssetsBatchRequestCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsCreativeAssetsBatchRequestCatalogTypeEnum._(this.value);
+enum CatalogsCreativeAssetsBatchRequestCatalogTypeEnum {
+  CREATIVE_ASSETS._(r'CREATIVE_ASSETS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsCreativeAssetsBatchRequestCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CREATIVE_ASSETS = CatalogsCreativeAssetsBatchRequestCatalogTypeEnum._(r'CREATIVE_ASSETS');
-
-  /// List of all possible values in this [enum][CatalogsCreativeAssetsBatchRequestCatalogTypeEnum].
-  static const values = <CatalogsCreativeAssetsBatchRequestCatalogTypeEnum>[
-    CREATIVE_ASSETS,
-  ];
-
+  /// Returns the instance of [CatalogsCreativeAssetsBatchRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsCreativeAssetsBatchRequestCatalogTypeEnum? fromJson(dynamic value) => CatalogsCreativeAssetsBatchRequestCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsCreativeAssetsBatchRequestCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsCreativeAssetsBatchRequestCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsCreativeAssetsBatchRequestCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -194,9 +199,10 @@ class CatalogsCreativeAssetsBatchRequestCatalogTypeEnumTypeTransformer {
 
   const CatalogsCreativeAssetsBatchRequestCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsCreativeAssetsBatchRequestCatalogTypeEnum data) => data.value;
+  String encode(CatalogsCreativeAssetsBatchRequestCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsCreativeAssetsBatchRequestCatalogTypeEnum.
+  /// Returns the instance of [CatalogsCreativeAssetsBatchRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -205,6 +211,9 @@ class CatalogsCreativeAssetsBatchRequestCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsCreativeAssetsBatchRequestCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsCreativeAssetsBatchRequestCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CREATIVE_ASSETS': return CatalogsCreativeAssetsBatchRequestCatalogTypeEnum.CREATIVE_ASSETS;
@@ -217,7 +226,7 @@ class CatalogsCreativeAssetsBatchRequestCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsCreativeAssetsBatchRequestCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsCreativeAssetsBatchRequestCatalogTypeEnumTypeTransformer? _instance;
 }
 

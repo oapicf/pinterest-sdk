@@ -11,16 +11,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.GetBusinessAssetsResponse;
+import org.openapitools.model.BusinessAssets;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessAssetsGet200Response   {
   
   private String bookmark;
-  private List<@Valid GetBusinessAssetsResponse> items = new ArrayList<>();
+  private List<@Valid BusinessAssets> items = new ArrayList<>();
 
   /**
    **/
@@ -35,16 +35,15 @@ public class BusinessAssetsGet200Response   {
   }
 
   /**
-   * List of assets the requesting business has access to.
    **/
   
-  @ApiModelProperty(required = true, value = "List of assets the requesting business has access to.")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   @NotNull
-  public List<@Valid GetBusinessAssetsResponse> getItems() {
+  public List<@Valid BusinessAssets> getItems() {
     return items;
   }
-  public void setItems(List<@Valid GetBusinessAssetsResponse> items) {
+  public void setItems(List<@Valid BusinessAssets> items) {
     this.items = items;
   }
 
@@ -83,10 +82,7 @@ public class BusinessAssetsGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

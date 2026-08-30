@@ -54,9 +54,9 @@ end:
 
 // Get audience insights
 //
-// Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
+// Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 //
-audience_insights_response_t*
+audience_insights_t*
 AudienceInsightsAPI_audienceInsightsGet(apiClient_t *apiClient, char *ad_account_id, audience_insight_type_e audience_insight_type)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -115,17 +115,37 @@ AudienceInsightsAPI_audienceInsightsGet(apiClient_t *apiClient, char *ad_account
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    audience_insights_response_t *elementToReturn = NULL;
+    audience_insights_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *AudienceInsightsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = audience_insights_response_parseFromJSON(AudienceInsightsAPIlocalVarJSON);
+        elementToReturn = audience_insights_parseFromJSON(AudienceInsightsAPIlocalVarJSON);
         cJSON_Delete(AudienceInsightsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -164,7 +184,7 @@ end:
 //
 // Get the scope and type of available audiences, which along with a date, is an audience that has recently had an interaction (referred to here as a type) on pins. Interacted pins can belong to at least the most common **partner** or **Pinterest** scopes. This means that user interactions made on advertiser or partner pins will have the **partner** scope. You can also have user interactions performed in general on Pinterest with the **Pinterest** scope. In that case, you can then use the returned type and scope values together on requests to other endpoints to retrieve insight metrics for a desired audience.
 //
-audience_definition_response_t*
+audience_insights_scope_and_type_get_200_response_t*
 AudienceInsightsAPI_audienceInsightsScopeAndTypeGet(apiClient_t *apiClient, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -210,17 +230,37 @@ AudienceInsightsAPI_audienceInsightsScopeAndTypeGet(apiClient_t *apiClient, char
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    audience_definition_response_t *elementToReturn = NULL;
+    audience_insights_scope_and_type_get_200_response_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *AudienceInsightsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = audience_definition_response_parseFromJSON(AudienceInsightsAPIlocalVarJSON);
+        elementToReturn = audience_insights_scope_and_type_get_200_response_parseFromJSON(AudienceInsightsAPIlocalVarJSON);
         cJSON_Delete(AudienceInsightsAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;

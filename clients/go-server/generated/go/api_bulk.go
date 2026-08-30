@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -107,22 +108,27 @@ func (c *BulkAPIController) BulkDownloadCreate(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var bulkDownloadRequestParam BulkDownloadRequest
+	var bulkDownloadCreateParam BulkDownloadCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&bulkDownloadRequestParam); err != nil {
+	if err := d.Decode(&bulkDownloadCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertBulkDownloadRequestRequired(bulkDownloadRequestParam); err != nil {
+	if err := AssertBulkDownloadCreateRequired(bulkDownloadCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertBulkDownloadRequestConstraints(bulkDownloadRequestParam); err != nil {
+	if err := AssertBulkDownloadCreateConstraints(bulkDownloadCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.BulkDownloadCreate(r.Context(), adAccountIdParam, bulkDownloadRequestParam)
+	result, err := c.service.BulkDownloadCreate(r.Context(), adAccountIdParam, bulkDownloadCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -144,6 +150,11 @@ func (c *BulkAPIController) BulkUpsertCreate(w http.ResponseWriter, r *http.Requ
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&bulkUpsertRequestParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}

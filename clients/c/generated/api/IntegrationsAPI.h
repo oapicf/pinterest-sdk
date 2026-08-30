@@ -5,22 +5,22 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
-#include "../model/error.h"
-#include "../model/integration_logs_request.h"
+#include "../model/integration_logs_invalid_log_response.h"
+#include "../model/integration_logs_request_create.h"
 #include "../model/integration_logs_success_response.h"
 #include "../model/integration_metadata.h"
+#include "../model/integration_metadata_create.h"
+#include "../model/integration_metadata_update.h"
 #include "../model/integration_record.h"
-#include "../model/integration_request.h"
-#include "../model/integration_request_patch.h"
 #include "../model/integrations_get_list_200_response.h"
-#include "../model/integrations_logs_post_400_response.h"
+#include "../model/pinterest_lib_error.h"
 
 
 // Delete commerce integration
 //
 // Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 //
-void
+integration_metadata_t*
 IntegrationsAPI_integrationsCommerceDel(apiClient_t *apiClient, char *external_business_id);
 
 
@@ -37,7 +37,7 @@ IntegrationsAPI_integrationsCommerceGet(apiClient_t *apiClient, char *external_b
 // Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 //
 integration_metadata_t*
-IntegrationsAPI_integrationsCommercePatch(apiClient_t *apiClient, char *external_business_id, integration_request_patch_t *integration_request_patch);
+IntegrationsAPI_integrationsCommercePatch(apiClient_t *apiClient, char *external_business_id, integration_metadata_update_t *integration_metadata_update);
 
 
 // Create commerce integration
@@ -45,7 +45,7 @@ IntegrationsAPI_integrationsCommercePatch(apiClient_t *apiClient, char *external
 // Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 //
 integration_metadata_t*
-IntegrationsAPI_integrationsCommercePost(apiClient_t *apiClient, integration_request_t *integration_request);
+IntegrationsAPI_integrationsCommercePost(apiClient_t *apiClient, integration_metadata_create_t *integration_metadata_create);
 
 
 // Get integration metadata
@@ -69,6 +69,6 @@ IntegrationsAPI_integrationsGetList(apiClient_t *apiClient, char *bookmark, int 
 // This endpoint receives batched logs from integration applications on partner platforms. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 //
 integration_logs_success_response_t*
-IntegrationsAPI_integrationsLogsPost(apiClient_t *apiClient, integration_logs_request_t *integration_logs_request);
+IntegrationsAPI_integrationsLogsPost(apiClient_t *apiClient, integration_logs_request_create_t *integration_logs_request_create);
 
 

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -41,47 +49,47 @@ data class AssetGroupBinding (
 
     /* A list of ad account IDs under the asset group */
     @Json(name = "ad_accounts_ids")
-    val adAccountsIds: kotlin.collections.List<kotlin.String>? = null,
+    val adAccountsIds: kotlin.collections.List<kotlin.String>,
 
     /* Asset group description */
     @Json(name = "asset_group_description")
-    val assetGroupDescription: kotlin.String? = null,
+    val assetGroupDescription: kotlin.String?,
 
     /* Asset Group name */
     @Json(name = "asset_group_name")
-    val assetGroupName: kotlin.String? = null,
+    val assetGroupName: kotlin.String?,
 
     /* Asset group types */
     @Json(name = "asset_group_types")
-    val assetGroupTypes: kotlin.collections.List<kotlin.String>? = null,
+    val assetGroupTypes: kotlin.collections.List<kotlin.String>,
 
     /* A list of catalog IDs under asset group */
     @Json(name = "catalogs_ids")
-    val catalogsIds: kotlin.collections.List<kotlin.String>? = null,
+    val catalogsIds: kotlin.collections.List<kotlin.String>,
 
     /* The data of the user that created the asset group. */
     @Json(name = "created_by")
-    val createdBy: BusinessAccessUserSummary? = null,
+    val createdBy: BusinessAccessUserSummary,
 
     /* The creation time of the asset group */
     @Json(name = "created_time")
-    val createdTime: kotlin.Int? = null,
+    val createdTime: kotlin.Int?,
 
     /* Asset Group ID. */
     @Json(name = "id")
-    val id: kotlin.String? = null,
+    val id: kotlin.String,
 
     /* The data of the business that owns the asset group. */
     @Json(name = "owner")
-    val owner: BusinessAccessUserSummary? = null,
+    val owner: BusinessAccessUserSummary,
 
     /* A list of profile IDs under asset group */
     @Json(name = "profiles_ids")
-    val profilesIds: kotlin.collections.List<kotlin.String>? = null,
+    val profilesIds: kotlin.collections.List<kotlin.String>,
 
     /* The last update time of the asset group */
     @Json(name = "updated_time")
-    val updatedTime: kotlin.Int? = null
+    val updatedTime: kotlin.Int?
 
 ) {
 

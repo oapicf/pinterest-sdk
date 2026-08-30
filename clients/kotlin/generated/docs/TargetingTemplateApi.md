@@ -11,11 +11,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="targetingTemplateCreate"></a>
 # **targetingTemplateCreate**
-> TargetingTemplateGetResponseData targetingTemplateCreate(adAccountId, targetingTemplateCreate)
+> TargetingTemplate targetingTemplateCreate(adAccountId, targetingTemplateCreate)
 
 Create targeting templates
 
-&lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
+Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 
 ### Example
 ```kotlin
@@ -25,9 +25,9 @@ Create targeting templates
 
 val apiInstance = TargetingTemplateApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val targetingTemplateCreate : TargetingTemplateCreate =  // TargetingTemplateCreate | targeting template creation entity
+val targetingTemplateCreate : TargetingTemplateCreate =  // TargetingTemplateCreate | 
 try {
-    val result : TargetingTemplateGetResponseData = apiInstance.targetingTemplateCreate(adAccountId, targetingTemplateCreate)
+    val result : TargetingTemplate = apiInstance.targetingTemplateCreate(adAccountId, targetingTemplateCreate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling TargetingTemplateApi#targetingTemplateCreate")
@@ -42,17 +42,23 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **targetingTemplateCreate** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md)| targeting template creation entity | |
+| **targetingTemplateCreate** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md)|  | |
 
 ### Return type
 
-[**TargetingTemplateGetResponseData**](TargetingTemplateGetResponseData.md)
+[**TargetingTemplate**](TargetingTemplate.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -61,11 +67,11 @@ Configure pinterest_oauth2:
 
 <a id="targetingTemplateList"></a>
 # **targetingTemplateList**
-> TargetingTemplateList200Response targetingTemplateList(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark)
+> TargetingTemplateList200Response targetingTemplateList(adAccountId, bookmark, pageSize, order, includeSizing, searchQuery)
 
 List targeting templates
 
-Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
+Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;
 
 ### Example
 ```kotlin
@@ -75,13 +81,13 @@ Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id
 
 val apiInstance = TargetingTemplateApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-val includeSizing : kotlin.Boolean = true // kotlin.Boolean | Include audience sizing in result or not
-val searchQuery : kotlin.String = gaming // kotlin.String | Search keyword for targeting templates
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+val includeSizing : kotlin.Boolean = true // kotlin.Boolean | Include audience sizing in result or not
+val searchQuery : kotlin.String = searchQuery_example // kotlin.String | Search query. Can contain pin description keywords or comma-separated pin IDs.
 try {
-    val result : TargetingTemplateList200Response = apiInstance.targetingTemplateList(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark)
+    val result : TargetingTemplateList200Response = apiInstance.targetingTemplateList(adAccountId, bookmark, pageSize, order, includeSizing, searchQuery)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling TargetingTemplateApi#targetingTemplateList")
@@ -94,13 +100,13 @@ try {
 
 ### Parameters
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
-| **order** | **kotlin.String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
 | **includeSizing** | **kotlin.Boolean**| Include audience sizing in result or not | [optional] [default to false] |
-| **searchQuery** | **kotlin.String**| Search keyword for targeting templates | [optional] |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **searchQuery** | **kotlin.String**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] |
 
 ### Return type
 
@@ -109,10 +115,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -121,11 +139,11 @@ Configure client_credentials:
 
 <a id="targetingTemplateUpdate"></a>
 # **targetingTemplateUpdate**
-> targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest)
+> targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequestReadOrUpdate)
 
 Update targeting templates
 
-&lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
+Update the targeting template given advertiser ID and targeting template ID
 
 ### Example
 ```kotlin
@@ -135,9 +153,9 @@ Update targeting templates
 
 val apiInstance = TargetingTemplateApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val targetingTemplateUpdateRequest : TargetingTemplateUpdateRequest =  // TargetingTemplateUpdateRequest | Operation type and targeting template ID
+val targetingTemplateUpdateRequestReadOrUpdate : TargetingTemplateUpdateRequestReadOrUpdate =  // TargetingTemplateUpdateRequestReadOrUpdate | 
 try {
-    apiInstance.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest)
+    apiInstance.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequestReadOrUpdate)
 } catch (e: ClientException) {
     println("4xx response calling TargetingTemplateApi#targetingTemplateUpdate")
     e.printStackTrace()
@@ -151,7 +169,7 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **targetingTemplateUpdateRequest** | [**TargetingTemplateUpdateRequest**](TargetingTemplateUpdateRequest.md)| Operation type and targeting template ID | |
+| **targetingTemplateUpdateRequestReadOrUpdate** | [**TargetingTemplateUpdateRequestReadOrUpdate**](TargetingTemplateUpdateRequestReadOrUpdate.md)|  | |
 
 ### Return type
 
@@ -160,8 +178,14 @@ null (empty response body)
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

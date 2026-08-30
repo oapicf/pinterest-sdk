@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Create customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a>  <p>Create a customer list upload request for multipart S3 upload.</p> <p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p> <p><b>Please review the <u><a href=\"/docs/api/v5/customer_lists-update/\" target=\"_blank\">update customer list endpoint</a></u> documentation for additional information.</b></p>
+Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 
 ### Examples
 
@@ -29,9 +29,9 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CustomerListUploadsApi.new
-ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-customer_list_id = 'customer_list_id_example' # String | Unique identifier of a customer list
-customer_list_upload_create_request = PinterestSdkClient::CustomerListUploadCreateRequest.new({operation: PinterestSdkClient::UserListOperationType::ADD, total_parts: 2}) # CustomerListUploadCreateRequest | Parameters to create a customer list upload request
+ad_account_id = 'ad_account_id_example' # String | 
+customer_list_id = 'customer_list_id_example' # String | Customer list ID.
+customer_list_upload_create_request = PinterestSdkClient::CustomerListUploadCreateRequest.new({operation: PinterestSdkClient::UserListOperationType::ADD, total_parts: 2}) # CustomerListUploadCreateRequest | 
 
 begin
   # Create customer list upload
@@ -64,9 +64,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **customer_list_id** | **String** | Unique identifier of a customer list |  |
-| **customer_list_upload_create_request** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md) | Parameters to create a customer list upload request |  |
+| **ad_account_id** | **String** |  |  |
+| **customer_list_id** | **String** | Customer list ID. |  |
+| **customer_list_upload_create_request** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md) |  |  |
 
 ### Return type
 
@@ -84,11 +84,11 @@ end
 
 ## customer_list_uploads_get
 
-> <CustomerListUploadResponse> customer_list_uploads_get(ad_account_id, customer_list_id, customer_list_upload_id)
+> <CustomerListUpload> customer_list_uploads_get(ad_account_id, customer_list_id, customer_list_upload_id)
 
 Get customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Get the metadata for a given upload by its ID.</p>
+Get the metadata for a given upload by its ID.
 
 ### Examples
 
@@ -102,9 +102,9 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CustomerListUploadsApi.new
-ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-customer_list_id = 'customer_list_id_example' # String | Unique identifier of a customer list
-customer_list_upload_id = 'customer_list_upload_id_example' # String | Unique identifier of a customer list upload
+ad_account_id = 'ad_account_id_example' # String | 
+customer_list_id = 'customer_list_id_example' # String | Customer list ID.
+customer_list_upload_id = 'customer_list_upload_id_example' # String | Customer List Upload ID.
 
 begin
   # Get customer list upload
@@ -119,7 +119,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CustomerListUploadResponse>, Integer, Hash)> customer_list_uploads_get_with_http_info(ad_account_id, customer_list_id, customer_list_upload_id)
+> <Array(<CustomerListUpload>, Integer, Hash)> customer_list_uploads_get_with_http_info(ad_account_id, customer_list_id, customer_list_upload_id)
 
 ```ruby
 begin
@@ -127,7 +127,7 @@ begin
   data, status_code, headers = api_instance.customer_list_uploads_get_with_http_info(ad_account_id, customer_list_id, customer_list_upload_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CustomerListUploadResponse>
+  p data # => <CustomerListUpload>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling CustomerListUploadsApi->customer_list_uploads_get_with_http_info: #{e}"
 end
@@ -137,13 +137,13 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **customer_list_id** | **String** | Unique identifier of a customer list |  |
-| **customer_list_upload_id** | **String** | Unique identifier of a customer list upload |  |
+| **ad_account_id** | **String** |  |  |
+| **customer_list_id** | **String** | Customer list ID. |  |
+| **customer_list_upload_id** | **String** | Customer List Upload ID. |  |
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 
@@ -157,11 +157,11 @@ end
 
 ## customer_list_uploads_run
 
-> <CustomerListUploadResponse> customer_list_uploads_run(ad_account_id, customer_list_id, customer_list_upload_id)
+> <CustomerListUpload> customer_list_uploads_run(ad_account_id, customer_list_id, customer_list_upload_id)
 
 Run customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Begin processing a customer list upload.</p>
+Begin processing a customer list upload.
 
 ### Examples
 
@@ -175,9 +175,9 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CustomerListUploadsApi.new
-ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-customer_list_id = 'customer_list_id_example' # String | Unique identifier of a customer list
-customer_list_upload_id = 'customer_list_upload_id_example' # String | Unique identifier of a customer list upload
+ad_account_id = 'ad_account_id_example' # String | 
+customer_list_id = 'customer_list_id_example' # String | Customer list ID.
+customer_list_upload_id = 'customer_list_upload_id_example' # String | Customer List Upload ID.
 
 begin
   # Run customer list upload
@@ -192,7 +192,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CustomerListUploadResponse>, Integer, Hash)> customer_list_uploads_run_with_http_info(ad_account_id, customer_list_id, customer_list_upload_id)
+> <Array(<CustomerListUpload>, Integer, Hash)> customer_list_uploads_run_with_http_info(ad_account_id, customer_list_id, customer_list_upload_id)
 
 ```ruby
 begin
@@ -200,7 +200,7 @@ begin
   data, status_code, headers = api_instance.customer_list_uploads_run_with_http_info(ad_account_id, customer_list_id, customer_list_upload_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CustomerListUploadResponse>
+  p data # => <CustomerListUpload>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling CustomerListUploadsApi->customer_list_uploads_run_with_http_info: #{e}"
 end
@@ -210,13 +210,13 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **customer_list_id** | **String** | Unique identifier of a customer list |  |
-| **customer_list_upload_id** | **String** | Unique identifier of a customer list upload |  |
+| **ad_account_id** | **String** |  |  |
+| **customer_list_id** | **String** | Customer list ID. |  |
+| **customer_list_upload_id** | **String** | Customer List Upload ID. |  |
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 

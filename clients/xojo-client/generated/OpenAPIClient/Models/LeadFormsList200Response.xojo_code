@@ -7,7 +7,7 @@ Protected Class LeadFormsList200Response
 
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.LeadFormResponse
+		items() As OpenAPIClient.Models.LeadForm
 	#tag EndProperty
 
 
@@ -60,7 +60,7 @@ Protected Class LeadFormsList200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="LeadFormResponse"
+			Type="LeadForm"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

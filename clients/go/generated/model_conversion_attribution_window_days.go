@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -17,7 +17,7 @@ import (
 )
 
 // ConversionAttributionWindowDays the model 'ConversionAttributionWindowDays'
-type ConversionAttributionWindowDays int32
+type ConversionAttributionWindowDays float32
 
 // List of ConversionAttributionWindowDays
 const (
@@ -40,7 +40,7 @@ var AllowedConversionAttributionWindowDaysEnumValues = []ConversionAttributionWi
 }
 
 func (v *ConversionAttributionWindowDays) UnmarshalJSON(src []byte) error {
-	var value int32
+	var value float32
 	err := json.Unmarshal(src, &value)
 	if err != nil {
 		return err
@@ -58,7 +58,7 @@ func (v *ConversionAttributionWindowDays) UnmarshalJSON(src []byte) error {
 
 // NewConversionAttributionWindowDaysFromValue returns a pointer to a valid ConversionAttributionWindowDays
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
-func NewConversionAttributionWindowDaysFromValue(v int32) (*ConversionAttributionWindowDays, error) {
+func NewConversionAttributionWindowDaysFromValue(v float32) (*ConversionAttributionWindowDays, error) {
 	ev := ConversionAttributionWindowDays(v)
 	if ev.IsValid() {
 		return &ev, nil

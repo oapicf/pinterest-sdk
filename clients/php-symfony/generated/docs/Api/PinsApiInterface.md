@@ -30,7 +30,7 @@ services:
 
 Get multiple Pin analytics
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 
 ### Example Implementation
 ```php
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
  **pinIds** | [**string**](../Model/string.md)| List of Pin IDs. |
  **startDate** | **\DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
  **endDate** | **\DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
- **metricTypes** | [**string**](../Model/string.md)| Pin metric types to get data for. |
+ **metricTypes** | [**OpenAPI\Server\Model\MultiPinsAnalyticsMetricTypesItem**](../Model/OpenAPI\Server\Model\MultiPinsAnalyticsMetricTypesItem.md)| Pin metric types to get data for. |
  **appTypes** | **string**| Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 Get Pin analytics
 
-Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 
 ### Example Implementation
 ```php
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
  **pinId** | **string**| Unique identifier of a Pin. |
  **startDate** | **\DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
  **endDate** | **\DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
- **metricTypes** | [**string**](../Model/string.md)| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. |
+ **metricTypes** | [**OpenAPI\Server\Model\QuerypinanalyticsmetrictypesItems**](../Model/OpenAPI\Server\Model\QuerypinanalyticsmetrictypesItems.md)| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &#x60;2023-03-20&#x60;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &#x60;NO_SPLIT&#x60;. |
  **appTypes** | **string**| Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
  **splitField** | **string**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to &#39;NO_SPLIT&#39;]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **pinsDelete**
-> pinsDelete($pinId, $adAccountId)
+> OpenAPI\Server\Model\Pin pinsDelete($pinId, $adAccountId)
 
 Delete Pin
 
@@ -287,7 +287,7 @@ class PinsApi implements PinsApiInterface
     /**
      * Implementation of PinsApiInterface#pinsDelete
      */
-    public function pinsDelete(string $pinId, ?string $adAccountId, int &$responseCode, array &$responseHeaders): void
+    public function pinsDelete(string $pinId, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**OpenAPI\Server\Model\Pin**](../Model/Pin.md)
 
 ### Authorization
 
@@ -391,7 +391,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **pinsList**
-> OpenAPI\Server\Model\PinsList200Response pinsList($pinFilter, $pinMetrics, $includeProtectedPins, $pinType, $creativeTypes, $adAccountId, $bookmark, $pageSize)
+> OpenAPI\Server\Model\PinsList200Response pinsList($pinFilter, $pinMetrics, $includeProtectedPins, $pinType, $creativeTypes, $adAccountId, $domain, $domains, $includeProductTagObj, $bookmark, $pageSize)
 
 List Pins
 
@@ -430,7 +430,7 @@ class PinsApi implements PinsApiInterface
     /**
      * Implementation of PinsApiInterface#pinsList
      */
-    public function pinsList(?string $pinFilter, bool $pinMetrics, bool $includeProtectedPins, ?string $pinType, ?array $creativeTypes, ?string $adAccountId, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
+    public function pinsList(?PinFilter $pinFilter, bool $pinMetrics, bool $includeProtectedPins, ?PinType $pinType, ?array $creativeTypes, ?string $adAccountId, ?string $domain, ?array $domains, ?bool $includeProductTagObj, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -443,12 +443,15 @@ class PinsApi implements PinsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pinFilter** | **string**| The filter to apply to the pins | [optional]
+ **pinFilter** | [**PinFilter**](../Model/.md)| The filter to apply to the pins | [optional]
  **pinMetrics** | **bool**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
  **includeProtectedPins** | **bool**| Whether to include protected pins in the results | [optional] [default to false]
- **pinType** | **string**| The type of pins to return, currently only enabled for private pins | [optional]
+ **pinType** | [**PinType**](../Model/.md)| The type of pins to return, currently only enabled for private pins | [optional]
  **creativeTypes** | [**OpenAPI\Server\Model\CreativeType**](../Model/OpenAPI\Server\Model\CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
+ **domain** | **string**| Only return pins with links that match the exact domain. Domain should not include &#39;www.&#39; prefix. For example, &#39;pinterest.com&#39; is a valid domain, but &#39;www.pinterest.com&#39; is not (will not match any pins). | [optional]
+ **domains** | [**string**](../Model/string.md)| Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. &#x60;?domains&#x3D;instagram.com,jcpenney.com&#x60;). | [optional]
+ **includeProductTagObj** | **bool**| Include product tag objects in the response with their associated links. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
  **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
@@ -468,11 +471,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **pinsSave**
-> OpenAPI\Server\Model\Pin pinsSave($pinId, $pinsSaveRequest, $adAccountId)
+> OpenAPI\Server\Model\Pin pinsSave($pinId, $pinsSaveRequestCreate, $adAccountId)
 
 Save Pin
 
-Save a Pin on a board or board section owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  - Any Pin type can be saved: image Pin, video Pin, Idea Pin, product Pin, etc. - Any public Pin can be saved given a pin ID.
+Save a Pin on a board or board section owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  - Any Pin type can be saved: image Pin, video Pin, Idea Pin, product Pin, etc. - Any public Pin can be saved given a pin ID.
 
 ### Example Implementation
 ```php
@@ -499,7 +502,7 @@ class PinsApi implements PinsApiInterface
     /**
      * Implementation of PinsApiInterface#pinsSave
      */
-    public function pinsSave(string $pinId, PinsSaveRequest $pinsSaveRequest, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function pinsSave(string $pinId, PinsSaveRequestCreate $pinsSaveRequestCreate, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -513,7 +516,7 @@ class PinsApi implements PinsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinId** | **string**| Unique identifier of a Pin. |
- **pinsSaveRequest** | [**OpenAPI\Server\Model\PinsSaveRequest**](../Model/PinsSaveRequest.md)| Request object used to save an existing pin |
+ **pinsSaveRequestCreate** | [**OpenAPI\Server\Model\PinsSaveRequestCreate**](../Model/PinsSaveRequestCreate.md)|  |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type

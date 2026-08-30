@@ -2,28 +2,40 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Exception
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Exception {
 
   private Integer code;
 
   private String message;
+
+  public Exception() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public Exception(String message) {
+    this.message = message;
+  }
 
   public Exception code(Integer code) {
     this.code = code;
@@ -31,11 +43,11 @@ public class Exception {
   }
 
   /**
-   * Exception error code.
+   * Get code
    * @return code
    */
   
-  @Schema(name = "code", example = "2", description = "Exception error code.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "code", example = "2", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
   public Integer getCode() {
     return code;
@@ -51,11 +63,11 @@ public class Exception {
   }
 
   /**
-   * Exception message.
+   * Get message
    * @return message
    */
-  
-  @Schema(name = "message", example = "Advertiser not found.", description = "Exception message.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "message", example = "Advertiser not found.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("message")
   public String getMessage() {
     return message;
@@ -98,10 +110,7 @@ public class Exception {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -1,0 +1,285 @@
+#' Create a new AssetGroupInputCreate
+#'
+#' @description
+#' AssetGroupInputCreate Class
+#'
+#' @docType class
+#' @title AssetGroupInputCreate
+#' @description AssetGroupInputCreate Class
+#' @format An \code{R6Class} generator object
+#' @field asset_group  \link{AssetGroupBinding} [optional]
+#' @field asset_group_description Asset group description. character
+#' @field asset_group_name Asset Group name. character
+#' @field asset_group_types Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group. list(\link{AssetGroupType})
+#' @importFrom R6 R6Class
+#' @importFrom jsonlite fromJSON toJSON
+#' @export
+AssetGroupInputCreate <- R6::R6Class(
+  "AssetGroupInputCreate",
+  public = list(
+    `asset_group` = NULL,
+    `asset_group_description` = NULL,
+    `asset_group_name` = NULL,
+    `asset_group_types` = NULL,
+
+    #' @description
+    #' Initialize a new AssetGroupInputCreate class.
+    #'
+    #' @param asset_group_description Asset group description.
+    #' @param asset_group_name Asset Group name.
+    #' @param asset_group_types Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
+    #' @param asset_group asset_group
+    #' @param ... Other optional arguments.
+    initialize = function(`asset_group_description`, `asset_group_name`, `asset_group_types`, `asset_group` = NULL, ...) {
+      if (!missing(`asset_group_description`)) {
+        if (!(is.character(`asset_group_description`) && length(`asset_group_description`) == 1)) {
+          stop(paste("Error! Invalid data for `asset_group_description`. Must be a string:", `asset_group_description`))
+        }
+        self$`asset_group_description` <- `asset_group_description`
+      }
+      if (!missing(`asset_group_name`)) {
+        if (!(is.character(`asset_group_name`) && length(`asset_group_name`) == 1)) {
+          stop(paste("Error! Invalid data for `asset_group_name`. Must be a string:", `asset_group_name`))
+        }
+        self$`asset_group_name` <- `asset_group_name`
+      }
+      if (!missing(`asset_group_types`)) {
+        stopifnot(is.vector(`asset_group_types`), length(`asset_group_types`) != 0)
+        sapply(`asset_group_types`, function(x) stopifnot(R6::is.R6(x)))
+        self$`asset_group_types` <- `asset_group_types`
+      }
+      if (!is.null(`asset_group`)) {
+        stopifnot(R6::is.R6(`asset_group`))
+        self$`asset_group` <- `asset_group`
+      }
+    },
+
+    #' @description
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
+    toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return AssetGroupInputCreate as a base R list.
+    #' @examples
+    #' # convert array of AssetGroupInputCreate (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert AssetGroupInputCreate to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
+      AssetGroupInputCreateObject <- list()
+      if (!is.null(self$`asset_group`)) {
+        AssetGroupInputCreateObject[["asset_group"]] <-
+          self$extractSimpleType(self$`asset_group`)
+      }
+      if (!is.null(self$`asset_group_description`)) {
+        AssetGroupInputCreateObject[["asset_group_description"]] <-
+          self$`asset_group_description`
+      }
+      if (!is.null(self$`asset_group_name`)) {
+        AssetGroupInputCreateObject[["asset_group_name"]] <-
+          self$`asset_group_name`
+      }
+      if (!is.null(self$`asset_group_types`)) {
+        AssetGroupInputCreateObject[["asset_group_types"]] <-
+          self$extractSimpleType(self$`asset_group_types`)
+      }
+      return(AssetGroupInputCreateObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of AssetGroupInputCreate
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of AssetGroupInputCreate
+    fromJSON = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`asset_group`)) {
+        `asset_group_object` <- AssetGroupBinding$new()
+        `asset_group_object`$fromJSON(jsonlite::toJSON(this_object$`asset_group`, auto_unbox = TRUE, digits = NA))
+        self$`asset_group` <- `asset_group_object`
+      }
+      if (!is.null(this_object$`asset_group_description`)) {
+        self$`asset_group_description` <- this_object$`asset_group_description`
+      }
+      if (!is.null(this_object$`asset_group_name`)) {
+        self$`asset_group_name` <- this_object$`asset_group_name`
+      }
+      if (!is.null(this_object$`asset_group_types`)) {
+        self$`asset_group_types` <- ApiClient$new()$deserializeObj(this_object$`asset_group_types`, "array[AssetGroupType]", loadNamespace("openapi"))
+      }
+      self
+    },
+
+    #' @description
+    #' To JSON String
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
+    #' @return AssetGroupInputCreate in JSON format
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of AssetGroupInputCreate
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of AssetGroupInputCreate
+    fromJSONString = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      self$`asset_group` <- AssetGroupBinding$new()$fromJSON(jsonlite::toJSON(this_object$`asset_group`, auto_unbox = TRUE, digits = NA))
+      self$`asset_group_description` <- this_object$`asset_group_description`
+      self$`asset_group_name` <- this_object$`asset_group_name`
+      self$`asset_group_types` <- ApiClient$new()$deserializeObj(this_object$`asset_group_types`, "array[AssetGroupType]", loadNamespace("openapi"))
+      self
+    },
+
+    #' @description
+    #' Validate JSON input with respect to AssetGroupInputCreate and throw an exception if invalid
+    #'
+    #' @param input the JSON input
+    validateJSON = function(input) {
+      input_json <- jsonlite::fromJSON(input)
+      # check the required field `asset_group_description`
+      if (!is.null(input_json$`asset_group_description`)) {
+        if (!(is.character(input_json$`asset_group_description`) && length(input_json$`asset_group_description`) == 1)) {
+          stop(paste("Error! Invalid data for `asset_group_description`. Must be a string:", input_json$`asset_group_description`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssetGroupInputCreate: the required field `asset_group_description` is missing."))
+      }
+      # check the required field `asset_group_name`
+      if (!is.null(input_json$`asset_group_name`)) {
+        if (!(is.character(input_json$`asset_group_name`) && length(input_json$`asset_group_name`) == 1)) {
+          stop(paste("Error! Invalid data for `asset_group_name`. Must be a string:", input_json$`asset_group_name`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssetGroupInputCreate: the required field `asset_group_name` is missing."))
+      }
+      # check the required field `asset_group_types`
+      if (!is.null(input_json$`asset_group_types`)) {
+        stopifnot(is.vector(input_json$`asset_group_types`), length(input_json$`asset_group_types`) != 0)
+        tmp <- sapply(input_json$`asset_group_types`, function(x) stopifnot(R6::is.R6(x)))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssetGroupInputCreate: the required field `asset_group_types` is missing."))
+      }
+    },
+
+    #' @description
+    #' To string (JSON format)
+    #'
+    #' @return String representation of AssetGroupInputCreate
+    toString = function() {
+      self$toJSONString()
+    },
+
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    isValid = function() {
+      # check if the required `asset_group_description` is null
+      if (is.null(self$`asset_group_description`)) {
+        return(FALSE)
+      }
+
+      # check if the required `asset_group_name` is null
+      if (is.null(self$`asset_group_name`)) {
+        return(FALSE)
+      }
+
+      # check if the required `asset_group_types` is null
+      if (is.null(self$`asset_group_types`)) {
+        return(FALSE)
+      }
+
+      TRUE
+    },
+
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `asset_group_description` is null
+      if (is.null(self$`asset_group_description`)) {
+        invalid_fields["asset_group_description"] <- "Non-nullable required field `asset_group_description` cannot be null."
+      }
+
+      # check if the required `asset_group_name` is null
+      if (is.null(self$`asset_group_name`)) {
+        invalid_fields["asset_group_name"] <- "Non-nullable required field `asset_group_name` cannot be null."
+      }
+
+      # check if the required `asset_group_types` is null
+      if (is.null(self$`asset_group_types`)) {
+        invalid_fields["asset_group_types"] <- "Non-nullable required field `asset_group_types` cannot be null."
+      }
+
+      invalid_fields
+    },
+
+    #' @description
+    #' Print the object
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
+)
+## Uncomment below to unlock the class to allow modifications of the method or field
+# AssetGroupInputCreate$unlock()
+#
+## Below is an example to define the print function
+# AssetGroupInputCreate$set("public", "print", function(...) {
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
+# })
+## Uncomment below to lock the class to prevent modifications to the method or field
+# AssetGroupInputCreate$lock()
+

@@ -2,7 +2,7 @@
 /*
  * InviteStatus.h
  *
- * The current status of the invite.
+ * The current status of an invite or request.
  */
 
 #ifndef TINY_CPP_CLIENT_InviteStatus_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief The current status of the invite.
+/*! \brief The current status of an invite or request.
  *
  *  \ingroup Models
  *

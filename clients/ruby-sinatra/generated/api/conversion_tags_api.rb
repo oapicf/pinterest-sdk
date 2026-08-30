@@ -118,8 +118,15 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/conversion_tags/page_vis
   "notes" => "Get all page visit conversion tag events for an ad account.",
   "parameters" => [
     {
+      "name" => "bookmark",
+      "description" => "Cursor used to fetch the next page of items",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -127,16 +134,9 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/conversion_tags/page_vis
     },
     {
       "name" => "order",
-      "description" => "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.",
-      "dataType" => "String",
+      "description" => "The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.",
+      "dataType" => "PinterestLibPaginationOrder",
       "allowableValues" => "[ASCENDING, DESCENDING]",
-      "paramType" => "query",
-    },
-    {
-      "name" => "bookmark",
-      "description" => "Cursor used to fetch the next page of items",
-      "dataType" => "String",
-      "allowableValues" => "",
       "paramType" => "query",
     },
     {

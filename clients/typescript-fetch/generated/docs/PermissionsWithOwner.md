@@ -1,6 +1,7 @@
 
 # PermissionsWithOwner
 
+Permission levels including the OWNER role.
 
 ## Properties
 

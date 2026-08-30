@@ -13,7 +13,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## adAccountsSubscriptionsDelById
 
-> adAccountsSubscriptionsDelById(adAccountId, subscriptionId)
+> LeadSubscription adAccountsSubscriptionsDelById(adAccountId, subscriptionId)
 
 Delete lead ads subscription
 
@@ -65,7 +65,7 @@ example().catch(console.error);
 
 ### Return type
 
-`void` (Empty response body)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 
@@ -80,6 +80,7 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
 | **204** | Resource deleted successfully. |  -  |
 | **400** | The request could not be understood by the server due to unexpected data. |  -  |
 | **401** | Authentication is required and has either failed or not been provided. |  -  |

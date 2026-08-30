@@ -9,7 +9,7 @@ Name | Type
 ------------ | -------------
 `assetGroupInfo` | [AssetGroupBinding](AssetGroupBinding.md)
 `assetId` | string
-`assetType` | string
+`assetType` | [AssetTypeResponse](AssetTypeResponse.md)
 `permissions` | Array&lt;string&gt;
 
 ## Example
@@ -21,7 +21,7 @@ import type { AssetIdPermissions } from ''
 const example = {
   "assetGroupInfo": null,
   "assetId": 549755885175,
-  "assetType": AD_ACCOUNT,
+  "assetType": null,
   "permissions": ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"],
 } satisfies AssetIdPermissions
 

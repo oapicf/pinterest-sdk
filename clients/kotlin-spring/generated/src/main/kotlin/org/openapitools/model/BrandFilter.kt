@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class BrandFilter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("BRAND")
     @get:JsonProperty("BRAND", required = true) val BRAND: CatalogsProductGroupMultipleStringCriteria
 ) {
 

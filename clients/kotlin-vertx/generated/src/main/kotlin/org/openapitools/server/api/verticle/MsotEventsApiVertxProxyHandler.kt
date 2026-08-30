@@ -16,8 +16,8 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.ConversionMSOTEvents
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.ConversionMSOTEventsCreate
+import org.openapitools.server.api.model.PinterestLibError
 
 class MsotEventsApiVertxProxyHandler(private val vertx: Vertx, private val service: MsotEventsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -71,13 +71,13 @@ class MsotEventsApiVertxProxyHandler(private val vertx: Vertx, private val servi
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val conversionMSOTEventsParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (conversionMSOTEventsParam == null) {
-                        throw IllegalArgumentException("conversionMSOTEvents is required")
+                    val conversionMSOTEventsCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (conversionMSOTEventsCreateParam == null) {
+                        throw IllegalArgumentException("conversionMSOTEventsCreate is required")
                     }
-                    val conversionMSOTEvents = Gson().fromJson(conversionMSOTEventsParam.encode(), ConversionMSOTEvents::class.java)
+                    val conversionMSOTEventsCreate = Gson().fromJson(conversionMSOTEventsCreateParam.encode(), ConversionMSOTEventsCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.msotEventsCreate(adAccountId,conversionMSOTEvents,context)
+                        val result = service.msotEventsCreate(adAccountId,conversionMSOTEventsCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

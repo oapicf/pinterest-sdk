@@ -13,10 +13,14 @@ import org.openapitools.vertxweb.server.model.CatalogsReportFeedIngestionStats;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsReportStats   {
   
+  private String catalogId;
+  private Integer code;
+  private String codeLabel;
+  private String message;
+  private Integer occurrences;
 
 
   public enum ReportTypeEnum {
-    FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
     DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
 
     private String value;
@@ -33,11 +37,6 @@ public class CatalogsReportStats   {
   }
 
   private ReportTypeEnum reportType;
-  private String catalogId;
-  private Integer code;
-  private String codeLabel;
-  private String message;
-  private Integer occurrences;
 
 
   public enum SeverityEnum {
@@ -65,25 +64,16 @@ public class CatalogsReportStats   {
 
   }
 
-  public CatalogsReportStats (ReportTypeEnum reportType, String catalogId, Integer code, String codeLabel, String message, Integer occurrences, SeverityEnum severity, Boolean ineligibleForAds, Boolean ineligibleForOrganic) {
-    this.reportType = reportType;
+  public CatalogsReportStats (String catalogId, Integer code, String codeLabel, String message, Integer occurrences, ReportTypeEnum reportType, SeverityEnum severity, Boolean ineligibleForAds, Boolean ineligibleForOrganic) {
     this.catalogId = catalogId;
     this.code = code;
     this.codeLabel = codeLabel;
     this.message = message;
     this.occurrences = occurrences;
+    this.reportType = reportType;
     this.severity = severity;
     this.ineligibleForAds = ineligibleForAds;
     this.ineligibleForOrganic = ineligibleForOrganic;
-  }
-
-    
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
   }
 
     
@@ -132,6 +122,15 @@ public class CatalogsReportStats   {
   }
 
     
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+    
   @JsonProperty("severity")
   public SeverityEnum getSeverity() {
     return severity;
@@ -168,12 +167,12 @@ public class CatalogsReportStats   {
       return false;
     }
     CatalogsReportStats catalogsReportStats = (CatalogsReportStats) o;
-    return Objects.equals(reportType, catalogsReportStats.reportType) &&
-        Objects.equals(catalogId, catalogsReportStats.catalogId) &&
+    return Objects.equals(catalogId, catalogsReportStats.catalogId) &&
         Objects.equals(code, catalogsReportStats.code) &&
         Objects.equals(codeLabel, catalogsReportStats.codeLabel) &&
         Objects.equals(message, catalogsReportStats.message) &&
         Objects.equals(occurrences, catalogsReportStats.occurrences) &&
+        Objects.equals(reportType, catalogsReportStats.reportType) &&
         Objects.equals(severity, catalogsReportStats.severity) &&
         Objects.equals(ineligibleForAds, catalogsReportStats.ineligibleForAds) &&
         Objects.equals(ineligibleForOrganic, catalogsReportStats.ineligibleForOrganic);
@@ -181,7 +180,7 @@ public class CatalogsReportStats   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, severity, ineligibleForAds, ineligibleForOrganic);
+    return Objects.hash(catalogId, code, codeLabel, message, occurrences, reportType, severity, ineligibleForAds, ineligibleForOrganic);
   }
 
   @Override
@@ -189,12 +188,12 @@ public class CatalogsReportStats   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("    ineligibleForAds: ").append(toIndentedString(ineligibleForAds)).append("\n");
     sb.append("    ineligibleForOrganic: ").append(toIndentedString(ineligibleForOrganic)).append("\n");
@@ -207,9 +206,6 @@ public class CatalogsReportStats   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

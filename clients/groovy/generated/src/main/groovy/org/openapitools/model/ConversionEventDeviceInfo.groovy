@@ -5,6 +5,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.openapitools.model.FormFactor;
+import org.openapitools.model.NetworkType;
+import org.openapitools.model.OsFamily;
 
 @Canonical
 class ConversionEventDeviceInfo {
@@ -20,45 +23,8 @@ class ConversionEventDeviceInfo {
     Integer externalStorageFreeSpace
     /* External storage size in GB */
     Integer externalStorageSize
-
-    enum FormFactorEnum {
-    
-        DESKTOP("desktop"),
-        
-        LAPTOP("laptop"),
-        
-        CELLPHONE("cellphone"),
-        
-        TABLET("tablet"),
-        
-        SMARTWATCH("smartwatch"),
-        
-        TV("tv"),
-        
-        VR("vr"),
-        
-        CONSOLE("console"),
-        
-        OTHER("other")
-    
-        private final String value
-    
-        FormFactorEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
     /* Device form factor */
-    FormFactorEnum formFactor
+    FormFactor formFactor
     /* Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release */
     String kernelVersion
     /* List of user installed languages. ISO 639-1 format */
@@ -67,78 +33,10 @@ class ConversionEventDeviceInfo {
     String locale
     /* Device model name */
     String model
-
-    enum NetworkTypeEnum {
-    
-        WIFI("wifi"),
-        
-        CELLULAR_2G("cellular_2g"),
-        
-        CELLULAR_3G("cellular_3g"),
-        
-        CELLULAR_4G("cellular_4g"),
-        
-        CELLULAR_5G("cellular_5g"),
-        
-        CELLULAR_6G("cellular_6g"),
-        
-        ETHERNET("ethernet"),
-        
-        UNKNOWN("unknown")
-    
-        private final String value
-    
-        NetworkTypeEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
     /* Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities() */
-    NetworkTypeEnum networkType
-
-    enum OsFamilyEnum {
-    
-        IOS("ios"),
-        
-        ANDROID("android"),
-        
-        MACOS("macos"),
-        
-        WINDOWS("windows"),
-        
-        LINUX("linux"),
-        
-        BSD("bsd"),
-        
-        OTHER("other")
-    
-        private final String value
-    
-        OsFamilyEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
+    NetworkType networkType
     /* OS Family */
-    OsFamilyEnum osFamily
+    OsFamily osFamily
     /* Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch */
     String osName
     /* Marketing name for the release version iOS: Dawn Android: Baklava MacOS: Sequoia Ubuntu Linux: Plucky Puffin */

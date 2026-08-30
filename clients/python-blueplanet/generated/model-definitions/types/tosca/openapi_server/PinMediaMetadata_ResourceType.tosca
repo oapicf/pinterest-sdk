@@ -30,8 +30,9 @@ resourceTypes {
         }
         item_type {
           type =  string
-          description = ""
-          optional = false
+          description = "Discriminator literal identifying this as video metadata inside a &#x60;PinMediaMetadata&#x60; payload."
+          enum = ["video"]
+          optional = true
         }
         link {
           type =  string
@@ -61,6 +62,11 @@ resourceTypes {
         video_url {
           type =  string
           description = "Video url (720p).  **Note:** This field is limited and not available to all apps."
+          optional = false
+        }
+        video_url_hls {
+          type =  string
+          description = "Video url (HLS).  **Note:** This field is limited and not available to all apps."
           optional = false
         }
         width {

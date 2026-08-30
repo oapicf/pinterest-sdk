@@ -3,9 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/get_business_assets_response.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
+import 'package:openapi/src/model/business_assets.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -15,9 +14,15 @@ part 'business_assets_get200_response.g.dart';
 ///
 /// Properties:
 /// * [bookmark] 
-/// * [items] - List of assets the requesting business has access to.
+/// * [items] 
 @BuiltValue()
-abstract class BusinessAssetsGet200Response implements Paginated, Built<BusinessAssetsGet200Response, BusinessAssetsGet200ResponseBuilder> {
+abstract class BusinessAssetsGet200Response implements Built<BusinessAssetsGet200Response, BusinessAssetsGet200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<BusinessAssets> get items;
+
   BusinessAssetsGet200Response._();
 
   factory BusinessAssetsGet200Response([void updates(BusinessAssetsGet200ResponseBuilder b)]) = _$BusinessAssetsGet200Response;
@@ -51,7 +56,7 @@ class _$BusinessAssetsGet200ResponseSerializer implements PrimitiveSerializer<Bu
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(BusinessAssets)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$BusinessAssetsGet200ResponseSerializer implements PrimitiveSerializer<Bu
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(BusinessAssets)]),
+          ) as BuiltList<BusinessAssets>;
           result.items.replace(valueDes);
           break;
         default:

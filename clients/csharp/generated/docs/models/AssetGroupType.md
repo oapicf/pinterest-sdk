@@ -1,5 +1,5 @@
 # Org.OpenAPITools.Model.AssetGroupType
-Asset group type
+Asset group type.
 
 ## Properties
 

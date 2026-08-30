@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -23,14 +31,13 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param items SSIO order lines by ad acount id
+ * @param items 
  * @param bookmark 
  */
 
 
 data class SsioOrderLinesGetByAdAccount200Response (
 
-    /* SSIO order lines by ad acount id */
     @Json(name = "items")
     val items: kotlin.collections.List<SSIOOrderLine>,
 

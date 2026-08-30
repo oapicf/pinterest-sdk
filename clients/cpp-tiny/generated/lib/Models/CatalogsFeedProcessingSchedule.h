@@ -12,6 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include "CatalogsFeedProcessingScheduleTimezone.h"
 
 namespace Tiny {
 
@@ -51,19 +52,19 @@ public:
 
 	/*! \brief Set A time in format HH:MM with leading 0 (zero)
 	 */
-	void setTime(std::string  time);
+	void setTime(std::string time);
 	/*! \brief Get The timezone considered for the processing schedule time.
 	 */
-	std::string getTimezone();
+	CatalogsFeedProcessingScheduleTimezone getTimezone();
 
 	/*! \brief Set The timezone considered for the processing schedule time.
 	 */
-	void setTimezone(std::string  timezone);
+	void setTimezone(CatalogsFeedProcessingScheduleTimezone timezone);
 
 
     private:
     std::string time{};
-    std::string timezone{};
+    CatalogsFeedProcessingScheduleTimezone timezone;
 };
 }
 

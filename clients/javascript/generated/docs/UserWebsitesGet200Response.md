@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  | [optional] 
-**items** | [**[UserWebsiteSummary]**](UserWebsiteSummary.md) |  | 
+**items** | [**[UserWebsite]**](UserWebsite.md) |  | 
 
 

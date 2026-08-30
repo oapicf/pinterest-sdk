@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &InviteAssetsSummary{}
 // InviteAssetsSummary Ad accounts and profiles the member/partner will be granted access to with this invite/request.
 type InviteAssetsSummary struct {
 	// List of ad account IDs and respective permission levels that will be assigned.
-	AdAccounts []InviteAssetsSummaryAdAccountsInner `json:"ad_accounts,omitempty"`
+	AdAccounts []InviteAssetsSummaryItem `json:"ad_accounts,omitempty"`
 	// List of profile IDs and respective permission levels that will be assigned.
-	Profiles []InviteAssetsSummaryProfilesInner `json:"profiles,omitempty"`
+	Profiles []InviteAssetsSummaryItem `json:"profiles,omitempty"`
 }
 
 // NewInviteAssetsSummary instantiates a new InviteAssetsSummary object
@@ -44,9 +44,9 @@ func NewInviteAssetsSummaryWithDefaults() *InviteAssetsSummary {
 }
 
 // GetAdAccounts returns the AdAccounts field value if set, zero value otherwise.
-func (o *InviteAssetsSummary) GetAdAccounts() []InviteAssetsSummaryAdAccountsInner {
+func (o *InviteAssetsSummary) GetAdAccounts() []InviteAssetsSummaryItem {
 	if o == nil || IsNil(o.AdAccounts) {
-		var ret []InviteAssetsSummaryAdAccountsInner
+		var ret []InviteAssetsSummaryItem
 		return ret
 	}
 	return o.AdAccounts
@@ -54,7 +54,7 @@ func (o *InviteAssetsSummary) GetAdAccounts() []InviteAssetsSummaryAdAccountsInn
 
 // GetAdAccountsOk returns a tuple with the AdAccounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InviteAssetsSummary) GetAdAccountsOk() ([]InviteAssetsSummaryAdAccountsInner, bool) {
+func (o *InviteAssetsSummary) GetAdAccountsOk() ([]InviteAssetsSummaryItem, bool) {
 	if o == nil || IsNil(o.AdAccounts) {
 		return nil, false
 	}
@@ -70,15 +70,15 @@ func (o *InviteAssetsSummary) HasAdAccounts() bool {
 	return false
 }
 
-// SetAdAccounts gets a reference to the given []InviteAssetsSummaryAdAccountsInner and assigns it to the AdAccounts field.
-func (o *InviteAssetsSummary) SetAdAccounts(v []InviteAssetsSummaryAdAccountsInner) {
+// SetAdAccounts gets a reference to the given []InviteAssetsSummaryItem and assigns it to the AdAccounts field.
+func (o *InviteAssetsSummary) SetAdAccounts(v []InviteAssetsSummaryItem) {
 	o.AdAccounts = v
 }
 
 // GetProfiles returns the Profiles field value if set, zero value otherwise.
-func (o *InviteAssetsSummary) GetProfiles() []InviteAssetsSummaryProfilesInner {
+func (o *InviteAssetsSummary) GetProfiles() []InviteAssetsSummaryItem {
 	if o == nil || IsNil(o.Profiles) {
-		var ret []InviteAssetsSummaryProfilesInner
+		var ret []InviteAssetsSummaryItem
 		return ret
 	}
 	return o.Profiles
@@ -86,7 +86,7 @@ func (o *InviteAssetsSummary) GetProfiles() []InviteAssetsSummaryProfilesInner {
 
 // GetProfilesOk returns a tuple with the Profiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InviteAssetsSummary) GetProfilesOk() ([]InviteAssetsSummaryProfilesInner, bool) {
+func (o *InviteAssetsSummary) GetProfilesOk() ([]InviteAssetsSummaryItem, bool) {
 	if o == nil || IsNil(o.Profiles) {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *InviteAssetsSummary) HasProfiles() bool {
 	return false
 }
 
-// SetProfiles gets a reference to the given []InviteAssetsSummaryProfilesInner and assigns it to the Profiles field.
-func (o *InviteAssetsSummary) SetProfiles(v []InviteAssetsSummaryProfilesInner) {
+// SetProfiles gets a reference to the given []InviteAssetsSummaryItem and assigns it to the Profiles field.
+func (o *InviteAssetsSummary) SetProfiles(v []InviteAssetsSummaryItem) {
 	o.Profiles = v
 }
 

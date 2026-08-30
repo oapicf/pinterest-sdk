@@ -94,25 +94,48 @@ AudienceDemographics <- R6::R6Class(
       AudienceDemographicsObject <- list()
       if (!is.null(self$`ages`)) {
         AudienceDemographicsObject[["ages"]] <-
-          lapply(self$`ages`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`ages`)
       }
       if (!is.null(self$`countries`)) {
         AudienceDemographicsObject[["countries"]] <-
-          lapply(self$`countries`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`countries`)
       }
       if (!is.null(self$`devices`)) {
         AudienceDemographicsObject[["devices"]] <-
-          lapply(self$`devices`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`devices`)
       }
       if (!is.null(self$`genders`)) {
         AudienceDemographicsObject[["genders"]] <-
-          lapply(self$`genders`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`genders`)
       }
       if (!is.null(self$`metros`)) {
         AudienceDemographicsObject[["metros"]] <-
-          lapply(self$`metros`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`metros`)
       }
       return(AudienceDemographicsObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

@@ -21,7 +21,7 @@ typedef struct ads_analytics_create_async_response_t ads_analytics_create_async_
 
 typedef struct ads_analytics_create_async_response_t {
     char *message; // string
-    bulk_reporting_job_status_t *report_status; // custom
+    pinterest_rest_api_bulk_reporting_job_status__e report_status; //referenced enum
     char *token; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -29,7 +29,7 @@ typedef struct ads_analytics_create_async_response_t {
 
 __attribute__((deprecated)) ads_analytics_create_async_response_t *ads_analytics_create_async_response_create(
     char *message,
-    bulk_reporting_job_status_t *report_status,
+    pinterest_rest_api_bulk_reporting_job_status__e report_status,
     char *token
 );
 

@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CreateAssetAccessRequestBodyAssetRequestsInner;
+import org.openapitools.model.CreateAssetAccessRequestItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,23 +22,23 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "An object containing a list of all the asset access requests")
 @JsonTypeName("CreateAssetAccessRequestBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CreateAssetAccessRequestBody   {
-  private @Valid List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests = new ArrayList<>();
+  private @Valid List<@Valid CreateAssetAccessRequestItem> assetRequests = new ArrayList<>();
 
   public CreateAssetAccessRequestBody() {
   }
 
   @JsonCreator
   public CreateAssetAccessRequestBody(
-    @JsonProperty(required = true, value = "asset_requests") List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests
+    @JsonProperty(required = true, value = "asset_requests") List<@Valid CreateAssetAccessRequestItem> assetRequests
   ) {
     this.assetRequests = assetRequests;
   }
 
   /**
    **/
-  public CreateAssetAccessRequestBody assetRequests(List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
+  public CreateAssetAccessRequestBody assetRequests(List<@Valid CreateAssetAccessRequestItem> assetRequests) {
     this.assetRequests = assetRequests;
     return this;
   }
@@ -46,16 +46,16 @@ public class CreateAssetAccessRequestBody   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "asset_requests")
-  @NotNull @Valid  @Size(min=1,max=100)public List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> getAssetRequests() {
+  @NotNull @Valid  @Size(min=1,max=100)public List<@Valid CreateAssetAccessRequestItem> getAssetRequests() {
     return assetRequests;
   }
 
   @JsonProperty(required = true, value = "asset_requests")
-  public void setAssetRequests(List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
+  public void setAssetRequests(List<@Valid CreateAssetAccessRequestItem> assetRequests) {
     this.assetRequests = assetRequests;
   }
 
-  public CreateAssetAccessRequestBody addAssetRequestsItem(CreateAssetAccessRequestBodyAssetRequestsInner assetRequestsItem) {
+  public CreateAssetAccessRequestBody addAssetRequestsItem(CreateAssetAccessRequestItem assetRequestsItem) {
     if (this.assetRequests == null) {
       this.assetRequests = new ArrayList<>();
     }
@@ -64,7 +64,7 @@ public class CreateAssetAccessRequestBody   {
     return this;
   }
 
-  public CreateAssetAccessRequestBody removeAssetRequestsItem(CreateAssetAccessRequestBodyAssetRequestsInner assetRequestsItem) {
+  public CreateAssetAccessRequestBody removeAssetRequestsItem(CreateAssetAccessRequestItem assetRequestsItem) {
     if (assetRequestsItem != null && this.assetRequests != null) {
       this.assetRequests.remove(assetRequestsItem);
     }
@@ -104,12 +104,8 @@ public class CreateAssetAccessRequestBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

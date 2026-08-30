@@ -8,9 +8,10 @@
 #include "Helpers.h"
 #include <list>
 
-#include "Error.h"
 #include "OrderLine.h"
 #include "Order_lines_list_200_response.h"
+#include "Pinterest.Lib.Error.h"
+#include "Pinterest.Lib.PaginationOrder.h"
 
 namespace Tiny {
 
@@ -23,34 +24,34 @@ class OrderLinesApi : public Service {
 public:
     OrderLinesApi() = default;
 
-    virtual ~OrderLinesApi() = default;
+    virtual ~OrderLinesApi();
 
     /**
     * Get order line.
     *
     * Get a specific existing order line associated with an ad account.
+    * \param orderLineId Order line ID. *Required*
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param orderLineId Unique identifier of an order line. *Required*
     */
     Response<
                 OrderLine
         >
     orderLines_get(
             
-            std::string adAccountId
+            std::string orderLineId
             , 
             
-            std::string orderLineId
+            std::string adAccountId
             
     );
     /**
-    * Get order lines.
+    * Get order lines..
     *
     * List existing order lines associated with an ad account.
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
     * \param bookmark Cursor used to fetch the next page of items
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+    * \param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
     */
     Response<
                 Order_lines_list_200_response
@@ -60,13 +61,13 @@ public:
             std::string adAccountId
             , 
             
+            std::string bookmark
+            , 
+            
             int pageSize
             , 
             
-            std::string order
-            , 
-            
-            std::string bookmark
+            Pinterest.Lib.PaginationOrder order
             
     );
 }; 

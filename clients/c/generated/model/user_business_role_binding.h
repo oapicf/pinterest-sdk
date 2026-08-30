@@ -25,9 +25,9 @@ typedef struct user_business_role_binding_t {
     list_t *business_roles; //primitive container
     struct business_access_user_summary_t *created_by_business; //model
     struct business_access_user_summary_t *created_by_user; //model
-    int created_time; //numeric
+    int *created_time; //numeric
     char *id; // string
-    int is_shared_partner; //boolean
+    int *is_shared_partner; //boolean
     struct business_access_user_summary_t *user; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -38,9 +38,9 @@ __attribute__((deprecated)) user_business_role_binding_t *user_business_role_bin
     list_t *business_roles,
     business_access_user_summary_t *created_by_business,
     business_access_user_summary_t *created_by_user,
-    int created_time,
+    int *created_time,
     char *id,
-    int is_shared_partner,
+    int *is_shared_partner,
     business_access_user_summary_t *user
 );
 

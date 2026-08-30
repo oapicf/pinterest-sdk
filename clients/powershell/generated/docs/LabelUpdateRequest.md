@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Labels** | [**LabelUpdateRequestLabelsInner[]**](LabelUpdateRequestLabelsInner.md) | Labels that you are applying to the campaign. | 
+**Labels** | [**LabelUpdateItem[]**](LabelUpdateItem.md) | Labels that you are applying to the campaign. | 
 
 ## Examples
 

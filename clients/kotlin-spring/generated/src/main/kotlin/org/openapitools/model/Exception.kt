@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -15,16 +18,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param code Exception error code.
- * @param message Exception message.
+ * @param message 
+ * @param code 
  */
 data class Exception(
 
-    @Schema(example = "2", description = "Exception error code.")
-    @get:JsonProperty("code") val code: kotlin.Int? = null,
+    @Schema(example = "Advertiser not found.", required = true, description = "")
+    @param:JsonProperty("message")
+    @get:JsonProperty("message", required = true) val message: kotlin.String,
 
-    @Schema(example = "Advertiser not found.", description = "Exception message.")
-    @get:JsonProperty("message") val message: kotlin.String? = null
+    @Schema(example = "2", description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("code")
+    @get:JsonProperty("code") val code: kotlin.Int? = null
 ) {
 
 }

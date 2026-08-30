@@ -7,12 +7,14 @@ Product counts for a CatalogsProductGroup
 
 Name | Type
 ------------ | -------------
-`catalogType` | [CatalogsType](CatalogsType.md)
+`catalogType` | string
 `inStock` | number
 `outOfStock` | number
 `preorder` | number
 `total` | number
 `videos` | number
+`appLinks` | number
+`images` | number
 
 ## Example
 
@@ -27,6 +29,8 @@ const example = {
   "preorder": null,
   "total": null,
   "videos": null,
+  "appLinks": null,
+  "images": null,
 } satisfies CatalogsProductGroupProductCountsVertical
 
 console.log(example)

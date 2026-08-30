@@ -11,7 +11,7 @@ import org.openapitools.vertxweb.server.model.Gender;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupMultipleGenderCriteria   {
   
-  private Boolean negated = false;
+  private Boolean negated;
   private List<Gender> values = new ArrayList<>();
 
   public CatalogsProductGroupMultipleGenderCriteria () {
@@ -76,9 +76,6 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

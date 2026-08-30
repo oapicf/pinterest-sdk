@@ -1,7 +1,7 @@
 /*
  * base_invite_data_response.h
  *
- * 
+ * Common invite/request data returned by the business access endpoints.
  */
 
 #ifndef _base_invite_data_response_H_
@@ -15,15 +15,15 @@
 
 typedef struct base_invite_data_response_t base_invite_data_response_t;
 
-#include "base_invite_data_response_invite_data.h"
 #include "business_access_user_summary.h"
+#include "invite_data_response.h"
 
 
 
 typedef struct base_invite_data_response_t {
     char *id; // string
-    struct base_invite_data_response_invite_data_t *invite_data; //model
-    int is_received_invite; //boolean
+    struct invite_data_response_t *invite_data; //model
+    int *is_received_invite; //boolean
     struct business_access_user_summary_t *user; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -31,8 +31,8 @@ typedef struct base_invite_data_response_t {
 
 __attribute__((deprecated)) base_invite_data_response_t *base_invite_data_response_create(
     char *id,
-    base_invite_data_response_invite_data_t *invite_data,
-    int is_received_invite,
+    invite_data_response_t *invite_data,
+    int *is_received_invite,
     business_access_user_summary_t *user
 );
 

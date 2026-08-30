@@ -30,7 +30,7 @@ pinterest_rest_api_pin_media_source_image_base64_SOURCETYPE_e pin_media_source_i
 typedef struct pin_media_source_image_base64_t {
     pinterest_rest_api_content_type__e content_type; //referenced enum
     char *data; // string
-    int is_standard; //boolean
+    int *is_standard; //boolean
     pinterest_rest_api_pin_media_source_image_base64_SOURCETYPE_e source_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -39,7 +39,7 @@ typedef struct pin_media_source_image_base64_t {
 __attribute__((deprecated)) pin_media_source_image_base64_t *pin_media_source_image_base64_create(
     pinterest_rest_api_content_type__e content_type,
     char *data,
-    int is_standard,
+    int *is_standard,
     pinterest_rest_api_pin_media_source_image_base64_SOURCETYPE_e source_type
 );
 

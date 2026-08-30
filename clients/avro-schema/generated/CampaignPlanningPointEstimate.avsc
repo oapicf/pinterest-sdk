@@ -1,0 +1,34 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A JSON object that represents a single estimation point. An estimation point contains the expected budget used and the estimated result, Y, along with an expected range based for the budget.",
+  "name": "CampaignPlanningPointEstimate",
+  "fields": [
+    {
+      "name": "budget",
+      "type": "int",
+      "doc": "The budget value of the point."
+    },
+    {
+      "name": "double_y",
+      "type": "double",
+      "doc": "Y value as a decimal."
+    },
+    {
+      "name": "max_y",
+      "type": "int",
+      "doc": "The maximum Y value of the point."
+    },
+    {
+      "name": "min_y",
+      "type": "int",
+      "doc": "The minimum Y value of the point."
+    },
+    {
+      "name": "y",
+      "type": "int",
+      "doc": "The expected Y value of the point."
+    }
+  ]
+
+}

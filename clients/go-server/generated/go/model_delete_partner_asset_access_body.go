@@ -5,21 +5,81 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
+
+// DeletePartnerAssetAccessBody - An object with a list of partner asset accesses to delete.
 type DeletePartnerAssetAccessBody struct {
 
-	Accesses []DeletePartnerAssetAccessBodyAccessesInner `json:"accesses"`
+	// List of partner asset accesses to delete.
+	Accesses []DeletePartnerAssetAccessItem `json:"accesses"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into DeletePartnerAssetAccessBody
+func (o *DeletePartnerAssetAccessBody) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"accesses",
+	}
+
+	requiredNullableProperties := map[string]bool{
+		"accesses": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"accesses": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded DeletePartnerAssetAccessBody
+
+	if value, exists := allProperties["accesses"]; exists {
+		if err = json.Unmarshal(value, &decoded.Accesses); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
 }
 
-// AssertDeletePartnerAssetAccessBodyRequired checks if the required fields are not zero-ed
+// AssertDeletePartnerAssetAccessBodyRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertDeletePartnerAssetAccessBodyRequired(obj DeletePartnerAssetAccessBody) error {
 	elements := map[string]interface{}{
 		"accesses": obj.Accesses,
@@ -31,7 +91,7 @@ func AssertDeletePartnerAssetAccessBodyRequired(obj DeletePartnerAssetAccessBody
 	}
 
 	for _, el := range obj.Accesses {
-		if err := AssertDeletePartnerAssetAccessBodyAccessesInnerRequired(el); err != nil {
+		if err := AssertDeletePartnerAssetAccessItemRequired(el); err != nil {
 			return err
 		}
 	}
@@ -41,7 +101,7 @@ func AssertDeletePartnerAssetAccessBodyRequired(obj DeletePartnerAssetAccessBody
 // AssertDeletePartnerAssetAccessBodyConstraints checks if the values respects the defined constraints
 func AssertDeletePartnerAssetAccessBodyConstraints(obj DeletePartnerAssetAccessBody) error {
 	for _, el := range obj.Accesses {
-		if err := AssertDeletePartnerAssetAccessBodyAccessesInnerConstraints(el); err != nil {
+		if err := AssertDeletePartnerAssetAccessItemConstraints(el); err != nil {
 			return err
 		}
 	}

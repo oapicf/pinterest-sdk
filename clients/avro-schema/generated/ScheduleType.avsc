@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The schedule type",
+  "name": "ScheduleType",
+  "symbols": [
+    "CAMPAIGN_BUDGET_CHANGE",
+    "CAMPAIGN_BID_MULTIPLIERS"
+  ]
+}

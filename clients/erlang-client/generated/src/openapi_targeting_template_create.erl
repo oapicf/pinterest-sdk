@@ -9,7 +9,7 @@
        'keywords' => list(),
        'name' := binary(),
        'placement_group' => openapi_placement_group_type:openapi_placement_group_type(),
-       'targeting_attributes' := openapi_targeting_spec:openapi_targeting_spec(),
+       'targeting_attributes' := openapi_targeting_spec_optimal:openapi_targeting_spec_optimal(),
        'tracking_urls' => openapi_tracking_urls:openapi_tracking_urls()
      }.
 

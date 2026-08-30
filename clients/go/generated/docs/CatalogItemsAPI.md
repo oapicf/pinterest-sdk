@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-	batchId := "66753b9bb65c46c49bd8503b27fecf9e" // string | Id of a catalogs items batch to fetch
+	batchId := "batchId_example" // string | Id of a catalogs items batch to fetch
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## ItemsBatchPost
 
-> CatalogsItemsBatch ItemsBatchPost(ctx).ItemsBatchPostRequest(itemsBatchPostRequest).AdAccountId(adAccountId).Execute()
+> CatalogsItemsBatch ItemsBatchPost(ctx).CatalogsItemsBatchPostRequest(catalogsItemsBatchPostRequest).AdAccountId(adAccountId).Execute()
 
 Operate on item batch
 
@@ -103,12 +103,12 @@ import (
 )
 
 func main() {
-	itemsBatchPostRequest := openapiclient.items_batch_post_request{CatalogsItemsBatchRequest: openapiclient.CatalogsItemsBatchRequest{CatalogsItemsCreateBatchRequest: openapiclient.NewCatalogsItemsCreateBatchRequest(openapiclient.Country("AD"), []openapiclient.ItemCreateBatchRecord{*openapiclient.NewItemCreateBatchRecord()}, "Language_example", openapiclient.BatchOperation("UPDATE"))}} // ItemsBatchPostRequest | Request object used to create catalogs items in a batch
+	catalogsItemsBatchPostRequest := openapiclient.CatalogsItemsBatchPostRequest{CatalogsItemsBatchRequest: openapiclient.CatalogsItemsBatchRequest{CatalogsItemsCreateBatchRequest: openapiclient.NewCatalogsItemsCreateBatchRequest(openapiclient.Country("AD"), []openapiclient.ItemCreateBatchRecord{*openapiclient.NewItemCreateBatchRecord()}, "Language_example", "Operation_example")}} // CatalogsItemsBatchPostRequest | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CatalogItemsAPI.ItemsBatchPost(context.Background()).ItemsBatchPostRequest(itemsBatchPostRequest).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.CatalogItemsAPI.ItemsBatchPost(context.Background()).CatalogsItemsBatchPostRequest(catalogsItemsBatchPostRequest).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CatalogItemsAPI.ItemsBatchPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -129,7 +129,7 @@ Other parameters are passed through a pointer to a apiItemsBatchPostRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **itemsBatchPostRequest** | [**ItemsBatchPostRequest**](ItemsBatchPostRequest.md) | Request object used to create catalogs items in a batch | 
+ **catalogsItemsBatchPostRequest** | [**CatalogsItemsBatchPostRequest**](CatalogsItemsBatchPostRequest.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## ItemsPost
 
-> CatalogsItems ItemsPost(ctx).CatalogsItemsRequest(catalogsItemsRequest).AdAccountId(adAccountId).Execute()
+> ItemsPost200Response ItemsPost(ctx).CatalogsItemsRequest(catalogsItemsRequest).AdAccountId(adAccountId).Execute()
 
 Get catalogs items (POST)
 
@@ -171,7 +171,7 @@ import (
 )
 
 func main() {
-	catalogsItemsRequest := *openapiclient.NewCatalogsItemsRequest(openapiclient.Country("AD"), openapiclient.CatalogsItemsPostFilters{CatalogsCreativeAssetsItemsPostFilter: openapiclient.NewCatalogsCreativeAssetsItemsPostFilter("CatalogType_example", []string{"CreativeAssetsIds_example"})}, "Language_example") // CatalogsItemsRequest | Request object used to get catalogs items
+	catalogsItemsRequest := *openapiclient.NewCatalogsItemsRequest(openapiclient.Country("AD"), openapiclient.CatalogsItemsPostFilters{CatalogsCreativeAssetsItemsPostFilter: openapiclient.NewCatalogsCreativeAssetsItemsPostFilter("CatalogType_example", []string{"CreativeAssetsIds_example"})}, "Language_example") // CatalogsItemsRequest | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -181,7 +181,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CatalogItemsAPI.ItemsPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ItemsPost`: CatalogsItems
+	// response from `ItemsPost`: ItemsPost200Response
 	fmt.Fprintf(os.Stdout, "Response from `CatalogItemsAPI.ItemsPost`: %v\n", resp)
 }
 ```
@@ -197,12 +197,12 @@ Other parameters are passed through a pointer to a apiItemsPostRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogsItemsRequest** | [**CatalogsItemsRequest**](CatalogsItemsRequest.md) | Request object used to get catalogs items | 
+ **catalogsItemsRequest** | [**CatalogsItemsRequest**](CatalogsItemsRequest.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
 
-[**CatalogsItems**](CatalogsItems.md)
+[**ItemsPost200Response**](ItemsPost200Response.md)
 
 ### Authorization
 

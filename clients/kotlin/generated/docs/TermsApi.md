@@ -14,7 +14,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 List related terms
 
-Get a list of terms logically related to each input term. &lt;p/&gt; Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc.
+Get a list of terms logically related to each input term.  Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc.
 
 ### Example
 ```kotlin
@@ -48,8 +48,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -62,7 +68,7 @@ Configure pinterest_oauth2:
 
 List suggested terms
 
-Get popular search terms that begin with your input term. &lt;p/&gt; Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; and &#39;sportswear&#39;, but not &#39;motor sports&#39; since the phrase does not begin with the given term.
+Get popular search terms that begin with your input term.  Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; and &#39;sportswear&#39;, but not &#39;motor sports&#39; since the phrase does not begin with the given term.
 
 ### Example
 ```kotlin
@@ -71,8 +77,8 @@ Get popular search terms that begin with your input term. &lt;p/&gt; Example: &#
 //import org.openapitools.client.models.*
 
 val apiInstance = TermsApi()
-val term : kotlin.String = sports // kotlin.String | Input term.
-val limit : kotlin.Int = 4 // kotlin.Int | Max suggested terms to return.
+val term : kotlin.String = term_example // kotlin.String | Input term.
+val limit : kotlin.Int = 56 // kotlin.Int | Max suggested terms to return.
 try {
     val result : kotlin.collections.List<kotlin.String> = apiInstance.termsSuggestedList(term, limit)
     println(result)
@@ -98,8 +104,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

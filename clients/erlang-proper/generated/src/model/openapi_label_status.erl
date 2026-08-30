@@ -10,5 +10,5 @@
   binary().
 
 openapi_label_status() ->
-  elements([<<"ACTIVE">>, <<"ARCHIVED">>, <<"">>]).
+  elements([<<"ACTIVE">>, <<"ARCHIVED">>]).
 

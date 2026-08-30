@@ -18,6 +18,11 @@ resourceTypes {
     description = AdvancedAuctionItem
     derivedFrom = Root
     properties {
+        bid_options {
+          type = AdvancedAuctionBidOptions
+          description = ""
+          optional = true
+        }
         country {
           type = Country
           description = ""
@@ -30,11 +35,6 @@ resourceTypes {
         }
         language {
           type = Language
-          description = ""
-          optional = true
-        }
-        bid_options {
-          type = AdvancedAuctionBidOptions
           description = ""
           optional = true
         }

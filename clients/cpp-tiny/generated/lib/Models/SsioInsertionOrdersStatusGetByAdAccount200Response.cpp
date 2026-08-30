@@ -102,7 +102,7 @@ Ssio_insertion_orders_status_get_by_ad_account_200_response::getBookmark()
 }
 
 void
-Ssio_insertion_orders_status_get_by_ad_account_200_response::setBookmark(std::string  bookmark)
+Ssio_insertion_orders_status_get_by_ad_account_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Ssio_insertion_orders_status_get_by_ad_account_200_response::getItems()
 }
 
 void
-Ssio_insertion_orders_status_get_by_ad_account_200_response::setItems(std::list <SSIOInsertionOrderStatus> items)
+Ssio_insertion_orders_status_get_by_ad_account_200_response::setItems(std::list<SSIOInsertionOrderStatus> items)
 {
 	this->items = items;
 }

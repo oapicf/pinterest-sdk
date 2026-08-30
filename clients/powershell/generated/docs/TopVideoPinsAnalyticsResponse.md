@@ -3,9 +3,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DateAvailability** | [**TopPinsAnalyticsResponseDateAvailability**](TopPinsAnalyticsResponseDateAvailability.md) |  | [optional] 
-**Pins** | [**TopVideoPinsAnalyticsResponsePinsInner[]**](TopVideoPinsAnalyticsResponsePinsInner.md) |  | [optional] 
-**SortBy** | **String** |  | [optional] 
+**DateAvailability** | [**TopVideoPinsAnalyticsResponseDateAvailability**](TopVideoPinsAnalyticsResponseDateAvailability.md) |  | [optional] 
+**Pins** | [**TopVideoPinsAnalyticsResponsePinsItems[]**](TopVideoPinsAnalyticsResponsePinsItems.md) |  | [optional] 
+**SortBy** | [**TopVideoPinsSortBy**](TopVideoPinsSortBy.md) |  | [optional] 
 
 ## Examples
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ```powershell
 $TopVideoPinsAnalyticsResponse = Initialize-PSOpenAPIToolsTopVideoPinsAnalyticsResponse  -DateAvailability null `
  -Pins null `
- -SortBy IMPRESSION
+ -SortBy null
 ```
 
 - Convert the resource to JSON

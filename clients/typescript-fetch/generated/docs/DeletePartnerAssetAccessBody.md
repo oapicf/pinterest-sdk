@@ -1,12 +1,13 @@
 
 # DeletePartnerAssetAccessBody
 
+An object with a list of partner asset accesses to delete.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`accesses` | [Array&lt;DeletePartnerAssetAccessBodyAccessesInner&gt;](DeletePartnerAssetAccessBodyAccessesInner.md)
+`accesses` | [Array&lt;DeletePartnerAssetAccessItem&gt;](DeletePartnerAssetAccessItem.md)
 
 ## Example
 

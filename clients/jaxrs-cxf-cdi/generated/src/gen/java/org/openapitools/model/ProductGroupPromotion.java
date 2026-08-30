@@ -5,9 +5,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CollectionsHeaderType;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
+import org.openapitools.model.PreferredMediaType;
+import org.openapitools.model.ProductGroupPromotionCustomizableCTAType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -27,38 +30,7 @@ public class ProductGroupPromotion   {
 
   private String catalogProductGroupName;
 
-
-public enum CollectionsHeaderTypeEnum {
-
-    @JsonProperty("SHOP_THIS_COLLECTION") SHOP_THIS_COLLECTION(String.valueOf("SHOP_THIS_COLLECTION")), @JsonProperty("EXPLORE_THIS_COLLECTION") EXPLORE_THIS_COLLECTION(String.valueOf("EXPLORE_THIS_COLLECTION")), @JsonProperty("NO_HEADER") NO_HEADER(String.valueOf("NO_HEADER")), @JsonProperty("ON_SALE") ON_SALE(String.valueOf("ON_SALE")), @JsonProperty("GET_DEAL") GET_DEAL(String.valueOf("GET_DEAL"));
-
-
-    private String value;
-
-    CollectionsHeaderTypeEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static CollectionsHeaderTypeEnum fromValue(String value) {
-        for (CollectionsHeaderTypeEnum b : CollectionsHeaderTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        return null;
-    }
-}
-
-  private CollectionsHeaderTypeEnum collectionsHeaderType;
+  private CollectionsHeaderType collectionsHeaderType;
 
   private String collectionsHeroDestinationUrl;
 
@@ -66,38 +38,7 @@ public enum CollectionsHeaderTypeEnum {
 
   private CreativeType creativeType;
 
-
-public enum CustomizableCtaTypeEnum {
-
-    @JsonProperty("SHOP_NOW") SHOP_NOW(String.valueOf("SHOP_NOW")), @JsonProperty("BOOK_NOW") BOOK_NOW(String.valueOf("BOOK_NOW")), @JsonProperty("ON_SALE") ON_SALE(String.valueOf("ON_SALE")), @JsonProperty("GET_DEAL") GET_DEAL(String.valueOf("GET_DEAL")), @JsonProperty("BUY_ONLINE_PICKUP_IN_STORE") BUY_ONLINE_PICKUP_IN_STORE(String.valueOf("BUY_ONLINE_PICKUP_IN_STORE"));
-
-
-    private String value;
-
-    CustomizableCtaTypeEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static CustomizableCtaTypeEnum fromValue(String value) {
-        for (CustomizableCtaTypeEnum b : CustomizableCtaTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        return null;
-    }
-}
-
-  private CustomizableCtaTypeEnum customizableCtaType;
+  private ProductGroupPromotionCustomizableCTAType customizableCtaType;
 
   private String definition;
 
@@ -109,42 +50,13 @@ public enum CustomizableCtaTypeEnum {
 
   private Boolean isGenerateBackground;
 
+  private Boolean isImageAutoResizing;
+
   private Boolean isMdl;
 
   private String parentId;
 
-
-public enum PreferredMediaTypeEnum {
-
-    @JsonProperty("VIDEO") VIDEO(String.valueOf("VIDEO")), @JsonProperty("IMAGE") IMAGE(String.valueOf("IMAGE"));
-
-
-    private String value;
-
-    PreferredMediaTypeEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static PreferredMediaTypeEnum fromValue(String value) {
-        for (PreferredMediaTypeEnum b : PreferredMediaTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        return null;
-    }
-}
-
-  private PreferredMediaTypeEnum preferredMediaType;
+  private PreferredMediaType preferredMediaType;
 
   private String relativeDefinition;
 
@@ -199,7 +111,7 @@ public enum PreferredMediaTypeEnum {
 
 
   /**
-   * ID of the catalogs product group that this product group promotion references
+   * ID of the catalogs product group that this product group promotion references (required for create operations)
    **/
   public ProductGroupPromotion catalogProductGroupId(String catalogProductGroupId) {
     this.catalogProductGroupId = catalogProductGroupId;
@@ -207,7 +119,7 @@ public enum PreferredMediaTypeEnum {
   }
 
   
-  @ApiModelProperty(example = "1231235", value = "ID of the catalogs product group that this product group promotion references")
+  @ApiModelProperty(example = "1231235", value = "ID of the catalogs product group that this product group promotion references (required for create operations)")
   @JsonProperty("catalog_product_group_id")
  @Pattern(regexp="^\\d+$")  public String getCatalogProductGroupId() {
     return catalogProductGroupId;
@@ -237,20 +149,19 @@ public enum PreferredMediaTypeEnum {
 
 
   /**
-   * Collections ad header type
    **/
-  public ProductGroupPromotion collectionsHeaderType(CollectionsHeaderTypeEnum collectionsHeaderType) {
+  public ProductGroupPromotion collectionsHeaderType(CollectionsHeaderType collectionsHeaderType) {
     this.collectionsHeaderType = collectionsHeaderType;
     return this;
   }
 
   
-  @ApiModelProperty(example = "SHOP_THIS_COLLECTION", value = "Collections ad header type")
+  @ApiModelProperty(value = "")
   @JsonProperty("collections_header_type")
-  public CollectionsHeaderTypeEnum getCollectionsHeaderType() {
+  public CollectionsHeaderType getCollectionsHeaderType() {
     return collectionsHeaderType;
   }
-  public void setCollectionsHeaderType(CollectionsHeaderTypeEnum collectionsHeaderType) {
+  public void setCollectionsHeaderType(CollectionsHeaderType collectionsHeaderType) {
     this.collectionsHeaderType = collectionsHeaderType;
   }
 
@@ -312,20 +223,19 @@ public enum PreferredMediaTypeEnum {
 
 
   /**
-   * Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
    **/
-  public ProductGroupPromotion customizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
+  public ProductGroupPromotion customizableCtaType(ProductGroupPromotionCustomizableCTAType customizableCtaType) {
     this.customizableCtaType = customizableCtaType;
     return this;
   }
 
   
-  @ApiModelProperty(example = "SHOP_NOW", value = "Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE")
+  @ApiModelProperty(value = "")
   @JsonProperty("customizable_cta_type")
-  public CustomizableCtaTypeEnum getCustomizableCtaType() {
+  public ProductGroupPromotionCustomizableCTAType getCustomizableCtaType() {
     return customizableCtaType;
   }
-  public void setCustomizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
+  public void setCustomizableCtaType(ProductGroupPromotionCustomizableCTAType customizableCtaType) {
     this.customizableCtaType = customizableCtaType;
   }
 
@@ -368,7 +278,7 @@ public enum PreferredMediaTypeEnum {
 
 
   /**
-   * ID of the product group promotion.
+   * ID of the product group promotion (required for update operations).
    **/
   public ProductGroupPromotion id(String id) {
     this.id = id;
@@ -376,7 +286,7 @@ public enum PreferredMediaTypeEnum {
   }
 
   
-  @ApiModelProperty(example = "2680059592705", value = "ID of the product group promotion.")
+  @ApiModelProperty(example = "2680059592705", value = "ID of the product group promotion (required for update operations).")
   @JsonProperty("id")
  @Pattern(regexp="^\\d+$")  public String getId() {
     return id;
@@ -425,6 +335,25 @@ public enum PreferredMediaTypeEnum {
 
 
   /**
+   * Set to &#x60;TRUE&#x60; to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.
+   **/
+  public ProductGroupPromotion isImageAutoResizing(Boolean isImageAutoResizing) {
+    this.isImageAutoResizing = isImageAutoResizing;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "true", value = "Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.")
+  @JsonProperty("is_image_auto_resizing")
+  public Boolean getIsImageAutoResizing() {
+    return isImageAutoResizing;
+  }
+  public void setIsImageAutoResizing(Boolean isImageAutoResizing) {
+    this.isImageAutoResizing = isImageAutoResizing;
+  }
+
+
+  /**
    * If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
    **/
   public ProductGroupPromotion isMdl(Boolean isMdl) {
@@ -463,20 +392,19 @@ public enum PreferredMediaTypeEnum {
 
 
   /**
-   * Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
    **/
-  public ProductGroupPromotion preferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+  public ProductGroupPromotion preferredMediaType(PreferredMediaType preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
     return this;
   }
 
   
-  @ApiModelProperty(example = "VIDEO", value = "Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.")
+  @ApiModelProperty(value = "")
   @JsonProperty("preferred_media_type")
-  public PreferredMediaTypeEnum getPreferredMediaType() {
+  public PreferredMediaType getPreferredMediaType() {
     return preferredMediaType;
   }
-  public void setPreferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+  public void setPreferredMediaType(PreferredMediaType preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
   }
 
@@ -637,6 +565,7 @@ public enum PreferredMediaTypeEnum {
         Objects.equals(this.id, productGroupPromotion.id) &&
         Objects.equals(this.included, productGroupPromotion.included) &&
         Objects.equals(this.isGenerateBackground, productGroupPromotion.isGenerateBackground) &&
+        Objects.equals(this.isImageAutoResizing, productGroupPromotion.isImageAutoResizing) &&
         Objects.equals(this.isMdl, productGroupPromotion.isMdl) &&
         Objects.equals(this.parentId, productGroupPromotion.parentId) &&
         Objects.equals(this.preferredMediaType, productGroupPromotion.preferredMediaType) &&
@@ -651,7 +580,7 @@ public enum PreferredMediaTypeEnum {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroupId, bidInMicroCurrency, catalogProductGroupId, catalogProductGroupName, collectionsHeaderType, collectionsHeroDestinationUrl, collectionsHeroPinId, creativeType, customizableCtaType, definition, gridClickType, id, included, isGenerateBackground, isMdl, parentId, preferredMediaType, relativeDefinition, selectedImageTag, selectedVideoTag, slideshowCollectionsDescription, slideshowCollectionsTitle, status, trackingUrl);
+    return Objects.hash(adGroupId, bidInMicroCurrency, catalogProductGroupId, catalogProductGroupName, collectionsHeaderType, collectionsHeroDestinationUrl, collectionsHeroPinId, creativeType, customizableCtaType, definition, gridClickType, id, included, isGenerateBackground, isImageAutoResizing, isMdl, parentId, preferredMediaType, relativeDefinition, selectedImageTag, selectedVideoTag, slideshowCollectionsDescription, slideshowCollectionsTitle, status, trackingUrl);
   }
 
   @Override
@@ -673,6 +602,7 @@ public enum PreferredMediaTypeEnum {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    included: ").append(toIndentedString(included)).append("\n");
     sb.append("    isGenerateBackground: ").append(toIndentedString(isGenerateBackground)).append("\n");
+    sb.append("    isImageAutoResizing: ").append(toIndentedString(isImageAutoResizing)).append("\n");
     sb.append("    isMdl: ").append(toIndentedString(isMdl)).append("\n");
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    preferredMediaType: ").append(toIndentedString(preferredMediaType)).append("\n");
@@ -692,10 +622,7 @@ public enum PreferredMediaTypeEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

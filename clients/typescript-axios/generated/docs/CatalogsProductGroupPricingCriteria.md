@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **inclusion** | **boolean** |  | [optional] [default to true]
-**negated** | **boolean** |  | [optional] [default to false]
+**negated** | **boolean** |  | [optional] [default to undefined]
 **values** | **number** |  | [default to undefined]
 
 ## Example

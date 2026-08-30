@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 
 # **brand_accounts_create**
-> BrandAccountsCreate200Response brand_accounts_create(business_hierarchy_id => $business_hierarchy_id, brand_accounts_create_request => $brand_accounts_create_request)
+> BrandAccount brand_accounts_create(business_hierarchy_id => $business_hierarchy_id, brand_account_create => $brand_account_create)
 
 Create a Brand Account
 
@@ -37,11 +37,11 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessRelationshipsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_hierarchy_id = 7009386637860; # string | business hierarchy node id
-my $brand_accounts_create_request = WWW::OpenAPIClient::Object::BrandAccountsCreateRequest->new(); # BrandAccountsCreateRequest | 
+my $business_hierarchy_id = "business_hierarchy_id_example"; # string | business hierarchy node id
+my $brand_account_create = WWW::OpenAPIClient::Object::BrandAccountCreate->new(); # BrandAccountCreate | 
 
 eval {
-    my $result = $api_instance->brand_accounts_create(business_hierarchy_id => $business_hierarchy_id, brand_accounts_create_request => $brand_accounts_create_request);
+    my $result = $api_instance->brand_accounts_create(business_hierarchy_id => $business_hierarchy_id, brand_account_create => $brand_account_create);
     print Dumper($result);
 };
 if ($@) {
@@ -54,11 +54,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_hierarchy_id** | **string**| business hierarchy node id | 
- **brand_accounts_create_request** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md)|  | 
+ **brand_account_create** | [**BrandAccountCreate**](BrandAccountCreate.md)|  | 
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **brand_accounts_update**
-> BrandAccountsCreate200Response brand_accounts_update(business_hierarchy_id => $business_hierarchy_id, brand_account_id => $brand_account_id, brand_accounts_update_request => $brand_accounts_update_request)
+> BrandAccount brand_accounts_update(brand_account_id => $brand_account_id, business_hierarchy_id => $business_hierarchy_id, brand_account_update => $brand_account_update)
 
 Update a Brand Account
 
@@ -88,12 +88,12 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessRelationshipsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_hierarchy_id = 7009386637860; # string | business hierarchy node id
-my $brand_account_id = 729090764583391194; # string | Unique identifier of a brand account.
-my $brand_accounts_update_request = WWW::OpenAPIClient::Object::BrandAccountsUpdateRequest->new(); # BrandAccountsUpdateRequest | 
+my $brand_account_id = "brand_account_id_example"; # string | 
+my $business_hierarchy_id = "business_hierarchy_id_example"; # string | business hierarchy node id
+my $brand_account_update = WWW::OpenAPIClient::Object::BrandAccountUpdate->new(); # BrandAccountUpdate | 
 
 eval {
-    my $result = $api_instance->brand_accounts_update(business_hierarchy_id => $business_hierarchy_id, brand_account_id => $brand_account_id, brand_accounts_update_request => $brand_accounts_update_request);
+    my $result = $api_instance->brand_accounts_update(brand_account_id => $brand_account_id, business_hierarchy_id => $business_hierarchy_id, brand_account_update => $brand_account_update);
     print Dumper($result);
 };
 if ($@) {
@@ -105,13 +105,13 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **brand_account_id** | **string**|  | 
  **business_hierarchy_id** | **string**| business hierarchy node id | 
- **brand_account_id** | **string**| Unique identifier of a brand account. | 
- **brand_accounts_update_request** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md)|  | 
+ **brand_account_update** | [**BrandAccountUpdate**](BrandAccountUpdate.md)|  | 
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_business_membership**
-> DeletedMembersResponse delete_business_membership(business_id => $business_id, members_to_delete_body => $members_to_delete_body)
+> DeleteBusinessMembership200Response delete_business_membership(business_id => $business_id, delete_business_membership_body => $delete_business_membership_body)
 
 Terminate business memberships
 
@@ -141,11 +141,11 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessRelationshipsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Business id
-my $members_to_delete_body = WWW::OpenAPIClient::Object::MembersToDeleteBody->new(); # MembersToDeleteBody | List of members with role to delete.
+my $business_id = "business_id_example"; # string | Business id
+my $delete_business_membership_body = WWW::OpenAPIClient::Object::DeleteBusinessMembershipBody->new(); # DeleteBusinessMembershipBody | 
 
 eval {
-    my $result = $api_instance->delete_business_membership(business_id => $business_id, members_to_delete_body => $members_to_delete_body);
+    my $result = $api_instance->delete_business_membership(business_id => $business_id, delete_business_membership_body => $delete_business_membership_body);
     print Dumper($result);
 };
 if ($@) {
@@ -158,11 +158,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **string**| Business id | 
- **members_to_delete_body** | [**MembersToDeleteBody**](MembersToDeleteBody.md)| List of members with role to delete. | 
+ **delete_business_membership_body** | [**DeleteBusinessMembershipBody**](DeleteBusinessMembershipBody.md)|  | 
 
 ### Return type
 
-[**DeletedMembersResponse**](DeletedMembersResponse.md)
+[**DeleteBusinessMembership200Response**](DeleteBusinessMembership200Response.md)
 
 ### Authorization
 
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_business_partners**
-> DeletePartnersResponse delete_business_partners(business_id => $business_id, delete_partners_request => $delete_partners_request)
+> DeleteBusinessPartners delete_business_partners(business_id => $business_id, delete_business_partners_delete => $delete_business_partners_delete)
 
 Terminate business partnerships
 
@@ -192,11 +192,11 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessRelationshipsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
-my $delete_partners_request = WWW::OpenAPIClient::Object::DeletePartnersRequest->new(); # DeletePartnersRequest | An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
+my $business_id = "business_id_example"; # string | Unique identifier of the requesting business.
+my $delete_business_partners_delete = WWW::OpenAPIClient::Object::DeleteBusinessPartnersDelete->new(); # DeleteBusinessPartnersDelete | 
 
 eval {
-    my $result = $api_instance->delete_business_partners(business_id => $business_id, delete_partners_request => $delete_partners_request);
+    my $result = $api_instance->delete_business_partners(business_id => $business_id, delete_business_partners_delete => $delete_business_partners_delete);
     print Dumper($result);
 };
 if ($@) {
@@ -209,11 +209,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **string**| Unique identifier of the requesting business. | 
- **delete_partners_request** | [**DeletePartnersRequest**](DeletePartnersRequest.md)| An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete.  | 
+ **delete_business_partners_delete** | [**DeleteBusinessPartnersDelete**](DeleteBusinessPartnersDelete.md)|  | 
 
 ### Return type
 
-[**DeletePartnersResponse**](DeletePartnersResponse.md)
+[**DeleteBusinessPartners**](DeleteBusinessPartners.md)
 
 ### Authorization
 
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_business_employers**
-> GetBusinessEmployers200Response get_business_employers(page_size => $page_size, bookmark => $bookmark)
+> GetBusinessEmployers200Response get_business_employers(assets_summary => $assets_summary, bookmark => $bookmark, page_size => $page_size)
 
 List business employers for user
 
@@ -243,11 +243,12 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessRelationshipsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+my $assets_summary = true; # boolean | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
-    my $result = $api_instance->get_business_employers(page_size => $page_size, bookmark => $bookmark);
+    my $result = $api_instance->get_business_employers(assets_summary => $assets_summary, bookmark => $bookmark, page_size => $page_size);
     print Dumper($result);
 };
 if ($@) {
@@ -259,8 +260,9 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **assets_summary** | **boolean**| Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to true]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -278,7 +280,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_business_members**
-> GetBusinessMembers200Response get_business_members(business_id => $business_id, fetch_system_users => $fetch_system_users, assets_summary => $assets_summary, business_roles => $business_roles, member_ids => $member_ids, start_index => $start_index, bookmark => $bookmark, page_size => $page_size)
+> GetBusinessEmployers200Response get_business_members(business_id => $business_id, fetch_system_users => $fetch_system_users, assets_summary => $assets_summary, business_roles => $business_roles, member_ids => $member_ids, start_index => $start_index, bookmark => $bookmark, page_size => $page_size)
 
 Get business members
 
@@ -294,14 +296,14 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessRelationshipsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
+my $business_id = "business_id_example"; # string | Unique identifier of the requesting business.
 my $fetch_system_users = false; # boolean | Fetches system users if True. Fetches regular user employees if False.
 my $assets_summary = false; # boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
 my $business_roles = [(new WWW::OpenAPIClient.MemberBusinessRole())]; # ARRAY[MemberBusinessRole] | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
-my $member_ids = 00101010101,2222220101; # string | A list of business members ids separated by comma.
+my $member_ids = "member_ids_example"; # string | A list of business members ids separated by comma.
 my $start_index = 0; # int | An index to start fetching the results from. Only the results starting from this index will be returned.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
     my $result = $api_instance->get_business_members(business_id => $business_id, fetch_system_users => $fetch_system_users, assets_summary => $assets_summary, business_roles => $business_roles, member_ids => $member_ids, start_index => $start_index, bookmark => $bookmark, page_size => $page_size);
@@ -323,11 +325,11 @@ Name | Type | Description  | Notes
  **member_ids** | **string**| A list of business members ids separated by comma. | [optional] 
  **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**GetBusinessMembers200Response**](GetBusinessMembers200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -341,7 +343,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_business_partners**
-> GetBusinessPartners200Response get_business_partners(business_id => $business_id, assets_summary => $assets_summary, partner_type => $partner_type, partner_ids => $partner_ids, start_index => $start_index, page_size => $page_size, bookmark => $bookmark)
+> GetBusinessEmployers200Response get_business_partners(business_id => $business_id, assets_summary => $assets_summary, partner_type => $partner_type, partner_ids => $partner_ids, start_index => $start_index, sort_ascending => $sort_ascending, bookmark => $bookmark, page_size => $page_size)
 
 Get business partners
 
@@ -357,16 +359,17 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessRelationshipsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
+my $business_id = "business_id_example"; # string | Unique identifier of the requesting business.
 my $assets_summary = false; # boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
-my $partner_type = INTERNAL; # PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
-my $partner_ids = 00101010101,2222220101; # string | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
+my $partner_type = new WWW::OpenAPIClient.PartnerType(); # PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+my $partner_ids = "partner_ids_example"; # string | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
 my $start_index = 0; # int | An index to start fetching the results from. Only the results starting from this index will be returned.
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+my $sort_ascending = null; # boolean | Sort ascending.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
-    my $result = $api_instance->get_business_partners(business_id => $business_id, assets_summary => $assets_summary, partner_type => $partner_type, partner_ids => $partner_ids, start_index => $start_index, page_size => $page_size, bookmark => $bookmark);
+    my $result = $api_instance->get_business_partners(business_id => $business_id, assets_summary => $assets_summary, partner_type => $partner_type, partner_ids => $partner_ids, start_index => $start_index, sort_ascending => $sort_ascending, bookmark => $bookmark, page_size => $page_size);
     print Dumper($result);
 };
 if ($@) {
@@ -380,15 +383,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **string**| Unique identifier of the requesting business. | 
  **assets_summary** | **boolean**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false]
- **partner_type** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
+ **partner_type** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
  **partner_ids** | **string**| A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional] 
  **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **sort_ascending** | **boolean**| Sort ascending. | [optional] 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**GetBusinessPartners200Response**](GetBusinessPartners200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -402,7 +406,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **system_user_update**
-> system_user_update(business_id => $business_id, system_user_id => $system_user_id, system_user_update_request => $system_user_update_request)
+> system_user_update(business_id => $business_id, system_user_id => $system_user_id, system_user_update_with_required_body => $system_user_update_with_required_body)
 
 Update a system user information.
 
@@ -418,12 +422,12 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessRelationshipsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
-my $system_user_id = 729090764583391194; # string | Unique identifier of a system user.
-my $system_user_update_request = WWW::OpenAPIClient::Object::SystemUserUpdateRequest->new(); # SystemUserUpdateRequest | 
+my $business_id = "business_id_example"; # string | Unique identifier of the requesting business.
+my $system_user_id = "system_user_id_example"; # string | Unique identifier of a system user.
+my $system_user_update_with_required_body = WWW::OpenAPIClient::Object::SystemUserUpdateWithRequiredBody->new(); # SystemUserUpdateWithRequiredBody | 
 
 eval {
-    $api_instance->system_user_update(business_id => $business_id, system_user_id => $system_user_id, system_user_update_request => $system_user_update_request);
+    $api_instance->system_user_update(business_id => $business_id, system_user_id => $system_user_id, system_user_update_with_required_body => $system_user_update_with_required_body);
 };
 if ($@) {
     warn "Exception when calling BusinessAccessRelationshipsApi->system_user_update: $@\n";
@@ -436,7 +440,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **string**| Unique identifier of the requesting business. | 
  **system_user_id** | **string**| Unique identifier of a system user. | 
- **system_user_update_request** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md)|  | 
+ **system_user_update_with_required_body** | [**SystemUserUpdateWithRequiredBody**](SystemUserUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
@@ -454,7 +458,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_business_memberships**
-> UpdateMemberResultsResponseArray update_business_memberships(business_id => $business_id, update_member_business_role_body => $update_member_business_role_body)
+> UpdateBusinessMembershipsResponse update_business_memberships(business_id => $business_id, business_membership_member => $business_membership_member)
 
 Update member's business role
 
@@ -470,11 +474,11 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessRelationshipsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Business id
-my $update_member_business_role_body = [WWW::OpenAPIClient::Object::ARRAY[UpdateMemberBusinessRoleBody]->new()]; # ARRAY[UpdateMemberBusinessRoleBody] | List of objects with the member id and the business_role.
+my $business_id = "business_id_example"; # string | Business id
+my $business_membership_member = [WWW::OpenAPIClient::Object::ARRAY[BusinessMembershipMember]->new()]; # ARRAY[BusinessMembershipMember] | 
 
 eval {
-    my $result = $api_instance->update_business_memberships(business_id => $business_id, update_member_business_role_body => $update_member_business_role_body);
+    my $result = $api_instance->update_business_memberships(business_id => $business_id, business_membership_member => $business_membership_member);
     print Dumper($result);
 };
 if ($@) {
@@ -487,11 +491,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **string**| Business id | 
- **update_member_business_role_body** | [**ARRAY[UpdateMemberBusinessRoleBody]**](UpdateMemberBusinessRoleBody.md)| List of objects with the member id and the business_role. | 
+ **business_membership_member** | [**ARRAY[BusinessMembershipMember]**](BusinessMembershipMember.md)|  | 
 
 ### Return type
 
-[**UpdateMemberResultsResponseArray**](UpdateMemberResultsResponseArray.md)
+[**UpdateBusinessMembershipsResponse**](UpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 

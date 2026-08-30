@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PerformancePlusCampaignSettings"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PerformancePlusCampaignSettings"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  PerformancePlusCampaignSettings {
+    title = PerformancePlusCampaignSettings
+    description = PerformancePlusCampaignSettings
+    derivedFrom = Root
+    properties {
+        boost_prospecting_ad_group_bid {
+          type =  boolean
+          description = "Whether to boost prospecting ad group bid."
+          optional = false
+        }
+        pinner_list_exclusions {
+          type = array
+          items.type =  string
+          description = "List of campaign-level exclusion pinner list IDs."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PerformancePlusCampaignSettings {
+    title = PerformancePlusCampaignSettings
+    description = PerformancePlusCampaignSettings
+    implements = openapi_server.resourceTypes.PerformancePlusCampaignSettings
+
+  }
+}

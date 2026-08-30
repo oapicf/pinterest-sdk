@@ -12,9 +12,6 @@ import { InviteResponse } from './inviteResponse';
 
 export interface GetInvites200Response { 
     bookmark?: string | null;
-    /**
-     * List of invite and request data.
-     */
     items: Array<InviteResponse>;
 }
 

@@ -23,12 +23,12 @@ CatalogsHotelProductGroup::~CatalogsHotelProductGroup()
 void
 CatalogsHotelProductGroup::__init()
 {
-	//catalog_id = std::string();
+	//catalog_id = null;
 	//catalog_type = std::string();
 	//created_at = int(0);
 	//description = std::string();
 	//filters = new CatalogsHotelProductGroupFilters();
-	//id = std::string();
+	//id = null;
 	//name = std::string();
 	//type = new CatalogsHotelProductGroupType();
 	//updated_at = int(0);

@@ -10,11 +10,12 @@ Name | Type
 `createdTime` | number
 `exceptions` | object
 `id` | string
+`isNca` | boolean
 `name` | string
 `numBatches` | number
 `numRemovedUserRecords` | number
 `numUploadedUserRecords` | number
-`status` | string
+`status` | [CustomerListStatus](CustomerListStatus.md)
 `type` | string
 `updatedTime` | number
 
@@ -29,6 +30,7 @@ const example = {
   "createdTime": 1452208622,
   "exceptions": null,
   "id": 643,
+  "isNca": null,
   "name": The Glengarry Glen Ross leads,
   "numBatches": 2,
   "numRemovedUserRecords": 0,

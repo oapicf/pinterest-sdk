@@ -10,7 +10,7 @@ import javax.validation.Valid;
 /**
  * ConversionEventResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ConversionEventResponse   {
   @JsonProperty("ad_account_id")
@@ -31,6 +31,10 @@ public class ConversionEventResponse   {
   @JsonProperty("created_time")
   
   private Integer createdTime;
+
+  @JsonProperty("reporting_conversion_event")
+  
+  private String reportingConversionEvent;
 
   public ConversionEventResponse adAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
@@ -100,6 +104,23 @@ public class ConversionEventResponse   {
     this.createdTime = createdTime;
   }
 
+  public ConversionEventResponse reportingConversionEvent(String reportingConversionEvent) {
+    this.reportingConversionEvent = reportingConversionEvent;
+    return this;
+  }
+
+   /**
+   * For advertiser-defined events, the reporting event label shown in optimization UIs.
+   * @return reportingConversionEvent
+  **/
+  public String getReportingConversionEvent() {
+    return reportingConversionEvent;
+  }
+
+  public void setReportingConversionEvent(String reportingConversionEvent) {
+    this.reportingConversionEvent = reportingConversionEvent;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -113,12 +134,13 @@ public class ConversionEventResponse   {
     return Objects.equals(adAccountId, conversionEventResponse.adAccountId) &&
         Objects.equals(conversionEvent, conversionEventResponse.conversionEvent) &&
         Objects.equals(conversionTagId, conversionEventResponse.conversionTagId) &&
-        Objects.equals(createdTime, conversionEventResponse.createdTime);
+        Objects.equals(createdTime, conversionEventResponse.createdTime) &&
+        Objects.equals(reportingConversionEvent, conversionEventResponse.reportingConversionEvent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime);
+    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime, reportingConversionEvent);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -131,6 +153,7 @@ public class ConversionEventResponse   {
     sb.append("    conversionEvent: ").append(toIndentedString(conversionEvent)).append("\n");
     sb.append("    conversionTagId: ").append(toIndentedString(conversionTagId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    reportingConversionEvent: ").append(toIndentedString(reportingConversionEvent)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -140,10 +163,7 @@ public class ConversionEventResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

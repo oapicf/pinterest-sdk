@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -33,11 +33,113 @@ func (s *ConversionsAPIService) AdvertiserDefinedEventsGet(ctx context.Context, 
 	// TODO - update AdvertiserDefinedEventsGet with the required logic for this service method.
 	// Add api_conversions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, AdvertiserDefinedEventsResponse{}) or use other options such as http.Ok ...
-	// return Response(200, AdvertiserDefinedEventsResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, AdvertiserDefinedEventsGet200Response{}) or use other options such as http.Ok ...
+	// return Response(200, AdvertiserDefinedEventsGet200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AdvertiserDefinedEventsGet method not implemented")
+}
+
+// AdvertiserDefinedEventsCreate - Create advertiser defined events
+func (s *ConversionsAPIService) AdvertiserDefinedEventsCreate(ctx context.Context, adAccountId string, advertiserDefinedEventsCreateRequest AdvertiserDefinedEventsCreateRequest) (ImplResponse, error) {
+	// TODO - update AdvertiserDefinedEventsCreate with the required logic for this service method.
+	// Add api_conversions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, AdvertiserDefinedEventsCreate200Response{}) or use other options such as http.Ok ...
+	// return Response(200, AdvertiserDefinedEventsCreate200Response{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("AdvertiserDefinedEventsCreate method not implemented")
+}
+
+// AdvertiserDefinedEventsDelete - Delete advertiser defined events
+func (s *ConversionsAPIService) AdvertiserDefinedEventsDelete(ctx context.Context, adAccountId string, eventNames []string) (ImplResponse, error) {
+	// TODO - update AdvertiserDefinedEventsDelete with the required logic for this service method.
+	// Add api_conversions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, AdvertiserDefinedEventsCreate200Response{}) or use other options such as http.Ok ...
+	// return Response(200, AdvertiserDefinedEventsCreate200Response{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("AdvertiserDefinedEventsDelete method not implemented")
+}
+
+// AdvertiserDefinedEventsUpdate - Update advertiser defined events
+func (s *ConversionsAPIService) AdvertiserDefinedEventsUpdate(ctx context.Context, adAccountId string, advertiserDefinedEventsCreateRequest AdvertiserDefinedEventsCreateRequest) (ImplResponse, error) {
+	// TODO - update AdvertiserDefinedEventsUpdate with the required logic for this service method.
+	// Add api_conversions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, AdvertiserDefinedEventsCreate200Response{}) or use other options such as http.Ok ...
+	// return Response(200, AdvertiserDefinedEventsCreate200Response{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("AdvertiserDefinedEventsUpdate method not implemented")
 }

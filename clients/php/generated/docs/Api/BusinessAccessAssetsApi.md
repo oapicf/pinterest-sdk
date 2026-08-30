@@ -23,12 +23,12 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `assetGroupCreate()`
 
 ```php
-assetGroupCreate($business_id, $create_asset_group_body): \OpenAPI\Client\Model\CreateAssetGroupResponse
+assetGroupCreate($business_id, $asset_group_input_create): \OpenAPI\Client\Model\AssetGroupInput
 ```
 
 Create a new asset group.
 
-Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 
 ### Example
 
@@ -47,11 +47,11 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessAssetsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$create_asset_group_body = new \OpenAPI\Client\Model\CreateAssetGroupBody(); // \OpenAPI\Client\Model\CreateAssetGroupBody
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$asset_group_input_create = new \OpenAPI\Client\Model\AssetGroupInputCreate(); // \OpenAPI\Client\Model\AssetGroupInputCreate
 
 try {
-    $result = $apiInstance->assetGroupCreate($business_id, $create_asset_group_body);
+    $result = $apiInstance->assetGroupCreate($business_id, $asset_group_input_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessAssetsApi->assetGroupCreate: ', $e->getMessage(), PHP_EOL;
@@ -63,11 +63,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
-| **create_asset_group_body** | [**\OpenAPI\Client\Model\CreateAssetGroupBody**](../Model/CreateAssetGroupBody.md)|  | |
+| **asset_group_input_create** | [**\OpenAPI\Client\Model\AssetGroupInputCreate**](../Model/AssetGroupInputCreate.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CreateAssetGroupResponse**](../Model/CreateAssetGroupResponse.md)
+[**\OpenAPI\Client\Model\AssetGroupInput**](../Model/AssetGroupInput.md)
 
 ### Authorization
 
@@ -85,7 +85,7 @@ try {
 ## `assetGroupDelete()`
 
 ```php
-assetGroupDelete($business_id, $delete_asset_group_body): \OpenAPI\Client\Model\DeleteAssetGroupResponse
+assetGroupDelete($business_id, $asset_group_deletion_delete): \OpenAPI\Client\Model\AssetGroupDeletion
 ```
 
 Delete asset groups.
@@ -109,11 +109,11 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessAssetsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$delete_asset_group_body = new \OpenAPI\Client\Model\DeleteAssetGroupBody(); // \OpenAPI\Client\Model\DeleteAssetGroupBody
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$asset_group_deletion_delete = new \OpenAPI\Client\Model\AssetGroupDeletionDelete(); // \OpenAPI\Client\Model\AssetGroupDeletionDelete
 
 try {
-    $result = $apiInstance->assetGroupDelete($business_id, $delete_asset_group_body);
+    $result = $apiInstance->assetGroupDelete($business_id, $asset_group_deletion_delete);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessAssetsApi->assetGroupDelete: ', $e->getMessage(), PHP_EOL;
@@ -125,11 +125,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
-| **delete_asset_group_body** | [**\OpenAPI\Client\Model\DeleteAssetGroupBody**](../Model/DeleteAssetGroupBody.md)|  | |
+| **asset_group_deletion_delete** | [**\OpenAPI\Client\Model\AssetGroupDeletionDelete**](../Model/AssetGroupDeletionDelete.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DeleteAssetGroupResponse**](../Model/DeleteAssetGroupResponse.md)
+[**\OpenAPI\Client\Model\AssetGroupDeletion**](../Model/AssetGroupDeletion.md)
 
 ### Authorization
 
@@ -147,7 +147,7 @@ try {
 ## `assetGroupUpdate()`
 
 ```php
-assetGroupUpdate($business_id, $update_asset_group_body): \OpenAPI\Client\Model\UpdateAssetGroupResponse
+assetGroupUpdate($business_id, $asset_group_modification_read_or_update): \OpenAPI\Client\Model\AssetGroupModification
 ```
 
 Update asset groups.
@@ -171,11 +171,11 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessAssetsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$update_asset_group_body = new \OpenAPI\Client\Model\UpdateAssetGroupBody(); // \OpenAPI\Client\Model\UpdateAssetGroupBody
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$asset_group_modification_read_or_update = new \OpenAPI\Client\Model\AssetGroupModificationReadOrUpdate(); // \OpenAPI\Client\Model\AssetGroupModificationReadOrUpdate
 
 try {
-    $result = $apiInstance->assetGroupUpdate($business_id, $update_asset_group_body);
+    $result = $apiInstance->assetGroupUpdate($business_id, $asset_group_modification_read_or_update);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessAssetsApi->assetGroupUpdate: ', $e->getMessage(), PHP_EOL;
@@ -187,11 +187,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
-| **update_asset_group_body** | [**\OpenAPI\Client\Model\UpdateAssetGroupBody**](../Model/UpdateAssetGroupBody.md)|  | |
+| **asset_group_modification_read_or_update** | [**\OpenAPI\Client\Model\AssetGroupModificationReadOrUpdate**](../Model/AssetGroupModificationReadOrUpdate.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\UpdateAssetGroupResponse**](../Model/UpdateAssetGroupResponse.md)
+[**\OpenAPI\Client\Model\AssetGroupModification**](../Model/AssetGroupModification.md)
 
 ### Authorization
 
@@ -209,7 +209,7 @@ try {
 ## `businessAssetMembersGet()`
 
 ```php
-businessAssetMembersGet($business_id, $asset_id, $fetch_system_users, $bookmark, $page_size, $start_index): \OpenAPI\Client\Model\BusinessAssetMembersGet200Response
+businessAssetMembersGet($business_id, $asset_id, $start_index, $fetch_system_users, $bookmark, $page_size): \OpenAPI\Client\Model\BusinessAssetMembersGet200Response
 ```
 
 Get members with access to asset
@@ -233,15 +233,15 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessAssetsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$asset_id = 729090764583391194; // string | Unique identifier of a business asset.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$asset_id = 'asset_id_example'; // string | Unique identifier of a business asset.
+$start_index = 0; // int | An index to start fetching the results from. Only the results starting from this index will be returned.
 $fetch_system_users = false; // bool | Fetches system users if True. Fetches regular user employees if False.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-$start_index = 0; // int | An index to start fetching the results from. Only the results starting from this index will be returned.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
-    $result = $apiInstance->businessAssetMembersGet($business_id, $asset_id, $fetch_system_users, $bookmark, $page_size, $start_index);
+    $result = $apiInstance->businessAssetMembersGet($business_id, $asset_id, $start_index, $fetch_system_users, $bookmark, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessAssetsApi->businessAssetMembersGet: ', $e->getMessage(), PHP_EOL;
@@ -254,10 +254,10 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
 | **asset_id** | **string**| Unique identifier of a business asset. | |
+| **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **fetch_system_users** | **bool**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -279,7 +279,7 @@ try {
 ## `businessAssetPartnersGet()`
 
 ```php
-businessAssetPartnersGet($business_id, $asset_id, $start_index, $bookmark, $page_size): \OpenAPI\Client\Model\BusinessAssetPartnersGet200Response
+businessAssetPartnersGet($business_id, $asset_id, $start_index, $bookmark, $page_size): \OpenAPI\Client\Model\BusinessAssetMembersGet200Response
 ```
 
 Get partners with access to asset
@@ -303,11 +303,11 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessAssetsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$asset_id = 729090764583391194; // string | Unique identifier of a business asset.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$asset_id = 'asset_id_example'; // string | Unique identifier of a business asset.
 $start_index = 0; // int | An index to start fetching the results from. Only the results starting from this index will be returned.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
     $result = $apiInstance->businessAssetPartnersGet($business_id, $asset_id, $start_index, $bookmark, $page_size);
@@ -325,11 +325,11 @@ try {
 | **asset_id** | **string**| Unique identifier of a business asset. | |
 | **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BusinessAssetPartnersGet200Response**](../Model/BusinessAssetPartnersGet200Response.md)
+[**\OpenAPI\Client\Model\BusinessAssetMembersGet200Response**](../Model/BusinessAssetMembersGet200Response.md)
 
 ### Authorization
 
@@ -371,14 +371,14 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessAssetsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
 $permissions = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\PermissionsWithOwner()); // \OpenAPI\Client\Model\PermissionsWithOwner[] | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.
-$child_asset_id = 549764894835; // string | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
-$asset_group_id = 7078106104032; // string | An asset group unique identifier. Used to fetch assets contained within the specified asset group.
-$asset_type = AD_ACCOUNT; // string | A resource type to filter the assets by. Only assets of the specified type will be returned.
+$child_asset_id = 'child_asset_id_example'; // string | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
+$asset_group_id = 'asset_group_id_example'; // string | An asset group unique identifier. Used to fetch assets contained within the specified asset group.
+$asset_type = 'AD_ACCOUNT'; // string | A resource type to filter the assets by. Only assets of the specified type will be returned.
 $start_index = 0; // int | An index to start fetching the results from. Only the results starting from this index will be returned.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
     $result = $apiInstance->businessAssetsGet($business_id, $permissions, $child_asset_id, $asset_group_id, $asset_type, $start_index, $bookmark, $page_size);
@@ -399,7 +399,7 @@ try {
 | **asset_type** | **string**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &#39;AD_ACCOUNT&#39;] |
 | **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -421,7 +421,7 @@ try {
 ## `businessMemberAssetsGet()`
 
 ```php
-businessMemberAssetsGet($business_id, $member_id, $asset_type, $start_index, $bookmark, $page_size): \OpenAPI\Client\Model\BusinessMemberAssetsGet200Response
+businessMemberAssetsGet($business_id, $member_id, $asset_type, $start_index, $sort_by, $sort_ascending, $search_by, $search_value, $asset_permission_type, $ad_account_statuses, $bookmark, $page_size): \OpenAPI\Client\Model\BusinessMemberAssetsGetResponse
 ```
 
 Get assets assigned to a member
@@ -445,15 +445,21 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessAssetsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$member_id = 729090764583391194; // string | The member id to fetch assets for.
-$asset_type = AD_ACCOUNT; // string | A resource type to filter the assets by. Only assets of the specified type will be returned.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$member_id = 'member_id_example'; // string | The member id to fetch assets for.
+$asset_type = 'AD_ACCOUNT'; // string | A resource type to filter the assets by. Only assets of the specified type will be returned.
 $start_index = 0; // int | An index to start fetching the results from. Only the results starting from this index will be returned.
+$sort_by = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\AssetSortBy(); // \OpenAPI\Client\Model\AssetSortBy | The field to sort member assets by
+$sort_ascending = true; // bool | Sort assets in ascending order
+$search_by = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\AssetSearchBy(); // \OpenAPI\Client\Model\AssetSearchBy | The field to search member assets by
+$search_value = 'search_value_example'; // string | The value to search for
+$asset_permission_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\AssetPermissionType(); // \OpenAPI\Client\Model\AssetPermissionType | The type of asset permission to filter by
+$ad_account_statuses = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\NonDraftEntityStatus()); // \OpenAPI\Client\Model\NonDraftEntityStatus[] | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
-    $result = $apiInstance->businessMemberAssetsGet($business_id, $member_id, $asset_type, $start_index, $bookmark, $page_size);
+    $result = $apiInstance->businessMemberAssetsGet($business_id, $member_id, $asset_type, $start_index, $sort_by, $sort_ascending, $search_by, $search_value, $asset_permission_type, $ad_account_statuses, $bookmark, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessAssetsApi->businessMemberAssetsGet: ', $e->getMessage(), PHP_EOL;
@@ -468,12 +474,18 @@ try {
 | **member_id** | **string**| The member id to fetch assets for. | |
 | **asset_type** | **string**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &#39;AD_ACCOUNT&#39;] |
 | **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
+| **sort_by** | [**\OpenAPI\Client\Model\AssetSortBy**](../Model/.md)| The field to sort member assets by | [optional] |
+| **sort_ascending** | **bool**| Sort assets in ascending order | [optional] [default to true] |
+| **search_by** | [**\OpenAPI\Client\Model\AssetSearchBy**](../Model/.md)| The field to search member assets by | [optional] |
+| **search_value** | **string**| The value to search for | [optional] |
+| **asset_permission_type** | [**\OpenAPI\Client\Model\AssetPermissionType**](../Model/.md)| The type of asset permission to filter by | [optional] |
+| **ad_account_statuses** | [**\OpenAPI\Client\Model\NonDraftEntityStatus[]**](../Model/\OpenAPI\Client\Model\NonDraftEntityStatus.md)| A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | [optional] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BusinessMemberAssetsGet200Response**](../Model/BusinessMemberAssetsGet200Response.md)
+[**\OpenAPI\Client\Model\BusinessMemberAssetsGetResponse**](../Model/BusinessMemberAssetsGetResponse.md)
 
 ### Authorization
 
@@ -491,7 +503,7 @@ try {
 ## `businessMembersAssetAccessDelete()`
 
 ```php
-businessMembersAssetAccessDelete($business_id, $business_members_asset_access_delete_request): \OpenAPI\Client\Model\DeleteMemberAccessResultsResponseArray
+businessMembersAssetAccessDelete($business_id, $business_members_asset_access_delete_body): \OpenAPI\Client\Model\DeleteMemberAccessResultsResponseArray
 ```
 
 Delete member access to asset
@@ -515,11 +527,11 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessAssetsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$business_members_asset_access_delete_request = new \OpenAPI\Client\Model\BusinessMembersAssetAccessDeleteRequest(); // \OpenAPI\Client\Model\BusinessMembersAssetAccessDeleteRequest | List member assset permissions to delete.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$business_members_asset_access_delete_body = new \OpenAPI\Client\Model\BusinessMembersAssetAccessDeleteBody(); // \OpenAPI\Client\Model\BusinessMembersAssetAccessDeleteBody
 
 try {
-    $result = $apiInstance->businessMembersAssetAccessDelete($business_id, $business_members_asset_access_delete_request);
+    $result = $apiInstance->businessMembersAssetAccessDelete($business_id, $business_members_asset_access_delete_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessAssetsApi->businessMembersAssetAccessDelete: ', $e->getMessage(), PHP_EOL;
@@ -531,7 +543,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
-| **business_members_asset_access_delete_request** | [**\OpenAPI\Client\Model\BusinessMembersAssetAccessDeleteRequest**](../Model/BusinessMembersAssetAccessDeleteRequest.md)| List member assset permissions to delete. | |
+| **business_members_asset_access_delete_body** | [**\OpenAPI\Client\Model\BusinessMembersAssetAccessDeleteBody**](../Model/BusinessMembersAssetAccessDeleteBody.md)|  | |
 
 ### Return type
 
@@ -577,8 +589,8 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessAssetsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$update_member_asset_access_body = new \OpenAPI\Client\Model\UpdateMemberAssetAccessBody(); // \OpenAPI\Client\Model\UpdateMemberAssetAccessBody | List of member asset permissions to create or update.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$update_member_asset_access_body = new \OpenAPI\Client\Model\UpdateMemberAssetAccessBody(); // \OpenAPI\Client\Model\UpdateMemberAssetAccessBody
 
 try {
     $result = $apiInstance->businessMembersAssetAccessUpdate($business_id, $update_member_asset_access_body);
@@ -593,7 +605,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
-| **update_member_asset_access_body** | [**\OpenAPI\Client\Model\UpdateMemberAssetAccessBody**](../Model/UpdateMemberAssetAccessBody.md)| List of member asset permissions to create or update. | |
+| **update_member_asset_access_body** | [**\OpenAPI\Client\Model\UpdateMemberAssetAccessBody**](../Model/UpdateMemberAssetAccessBody.md)|  | |
 
 ### Return type
 
@@ -615,7 +627,7 @@ try {
 ## `businessPartnerAssetAccessGet()`
 
 ```php
-businessPartnerAssetAccessGet($business_id, $partner_id, $partner_type, $asset_type, $start_index, $page_size, $bookmark): \OpenAPI\Client\Model\BusinessPartnerAssetAccessGet200Response
+businessPartnerAssetAccessGet($business_id, $partner_id, $partner_type, $asset_type, $start_index, $sort_by, $sort_ascending, $search_by, $search_value, $bookmark, $page_size): \OpenAPI\Client\Model\BusinessPartnerAssetAccessGet200Response
 ```
 
 Get assets assigned to a partner or assets assigned by a partner
@@ -639,16 +651,20 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessAssetsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$partner_id = 729090764583391194; // string | The partner id to be bound to the Business
-$partner_type = INTERNAL; // \OpenAPIClientModelPartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
-$asset_type = AD_ACCOUNT; // string | A resource type to filter the assets by. Only assets of the specified type will be returned.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$partner_id = 'partner_id_example'; // string | The partner id to be bound to the Business
+$partner_type = 'INTERNAL'; // string | Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+$asset_type = 'AD_ACCOUNT'; // string | A resource type to filter the assets by. Only assets of the specified type will be returned.
 $start_index = 0; // int | An index to start fetching the results from. Only the results starting from this index will be returned.
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$sort_by = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\AssetSortBy(); // \OpenAPI\Client\Model\AssetSortBy | The field to sort member assets by
+$sort_ascending = true; // bool | Sort assets in ascending order
+$search_by = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\AssetSearchBy(); // \OpenAPI\Client\Model\AssetSearchBy | The field to search member assets by
+$search_value = 'search_value_example'; // string | The value to search for
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
-    $result = $apiInstance->businessPartnerAssetAccessGet($business_id, $partner_id, $partner_type, $asset_type, $start_index, $page_size, $bookmark);
+    $result = $apiInstance->businessPartnerAssetAccessGet($business_id, $partner_id, $partner_type, $asset_type, $start_index, $sort_by, $sort_ascending, $search_by, $search_value, $bookmark, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessAssetsApi->businessPartnerAssetAccessGet: ', $e->getMessage(), PHP_EOL;
@@ -661,11 +677,15 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
 | **partner_id** | **string**| The partner id to be bound to the Business | |
-| **partner_type** | [**\OpenAPIClientModelPartnerType**](../Model/.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] |
+| **partner_type** | **string**| Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to &#39;INTERNAL&#39;] |
 | **asset_type** | **string**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &#39;AD_ACCOUNT&#39;] |
 | **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **sort_by** | [**\OpenAPI\Client\Model\AssetSortBy**](../Model/.md)| The field to sort member assets by | [optional] |
+| **sort_ascending** | **bool**| Sort assets in ascending order | [optional] [default to true] |
+| **search_by** | [**\OpenAPI\Client\Model\AssetSearchBy**](../Model/.md)| The field to search member assets by | [optional] |
+| **search_value** | **string**| The value to search for | [optional] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -687,7 +707,7 @@ try {
 ## `deletePartnerAssetAccessHandlerImpl()`
 
 ```php
-deletePartnerAssetAccessHandlerImpl($business_id, $delete_partner_asset_access_body): \OpenAPI\Client\Model\DeletePartnerAssetsResultsResponseArray
+deletePartnerAssetAccessHandlerImpl($business_id, $delete_partner_asset_access_body): \OpenAPI\Client\Model\DeletePartnerAssetAccessResultsResponseArray
 ```
 
 Delete partner access to asset
@@ -711,7 +731,7 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessAssetsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
 $delete_partner_asset_access_body = new \OpenAPI\Client\Model\DeletePartnerAssetAccessBody(); // \OpenAPI\Client\Model\DeletePartnerAssetAccessBody
 
 try {
@@ -731,7 +751,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DeletePartnerAssetsResultsResponseArray**](../Model/DeletePartnerAssetsResultsResponseArray.md)
+[**\OpenAPI\Client\Model\DeletePartnerAssetAccessResultsResponseArray**](../Model/DeletePartnerAssetAccessResultsResponseArray.md)
 
 ### Authorization
 
@@ -773,8 +793,8 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessAssetsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$update_partner_asset_access_body = new \OpenAPI\Client\Model\UpdatePartnerAssetAccessBody(); // \OpenAPI\Client\Model\UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$update_partner_asset_access_body = new \OpenAPI\Client\Model\UpdatePartnerAssetAccessBody(); // \OpenAPI\Client\Model\UpdatePartnerAssetAccessBody
 
 try {
     $result = $apiInstance->updatePartnerAssetAccessHandlerImpl($business_id, $update_partner_asset_access_body);
@@ -789,7 +809,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
-| **update_partner_asset_access_body** | [**\OpenAPI\Client\Model\UpdatePartnerAssetAccessBody**](../Model/UpdatePartnerAssetAccessBody.md)| A list of assets and permissions to assign to your partners. | |
+| **update_partner_asset_access_body** | [**\OpenAPI\Client\Model\UpdatePartnerAssetAccessBody**](../Model/UpdatePartnerAssetAccessBody.md)|  | |
 
 ### Return type
 

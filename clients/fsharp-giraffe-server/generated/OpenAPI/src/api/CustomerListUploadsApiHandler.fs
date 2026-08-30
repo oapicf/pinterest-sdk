@@ -7,10 +7,10 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open CustomerListUploadsApiHandlerParams
 open CustomerListUploadsApiServiceInterface
 open CustomerListUploadsApiServiceImplementation
+open OpenAPI.Model.CustomerListUpload
 open OpenAPI.Model.CustomerListUploadCreateRequest
 open OpenAPI.Model.CustomerListUploadCreateResponse
-open OpenAPI.Model.CustomerListUploadResponse
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 
 module CustomerListUploadsApiHandler =
 
@@ -33,6 +33,16 @@ module CustomerListUploadsApiHandler =
           return! (match result with
                       | CustomerListUploadsCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | CustomerListUploadsCreateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | CustomerListUploadsCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CustomerListUploadsCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CustomerListUploadsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CustomerListUploadsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CustomerListUploadsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -52,6 +62,16 @@ module CustomerListUploadsApiHandler =
           return! (match result with
                       | CustomerListUploadsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | CustomerListUploadsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | CustomerListUploadsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CustomerListUploadsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CustomerListUploadsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CustomerListUploadsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CustomerListUploadsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -71,6 +91,16 @@ module CustomerListUploadsApiHandler =
           return! (match result with
                       | CustomerListUploadsRunStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | CustomerListUploadsRunStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | CustomerListUploadsRunStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CustomerListUploadsRunStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CustomerListUploadsRunStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CustomerListUploadsRunStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CustomerListUploadsRunDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

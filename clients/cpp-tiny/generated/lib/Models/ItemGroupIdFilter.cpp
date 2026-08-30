@@ -65,7 +65,7 @@ ItemGroupIdFilter::getITEMGROUPID()
 }
 
 void
-ItemGroupIdFilter::setITEMGROUPID(CatalogsProductGroupMultipleStringCriteria  iTEM_GROUP_ID)
+ItemGroupIdFilter::setITEMGROUPID(CatalogsProductGroupMultipleStringCriteria iTEM_GROUP_ID)
 {
 	this->iTEM_GROUP_ID = iTEM_GROUP_ID;
 }

@@ -10,13 +10,13 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CatalogsRetailBatchRequestItemsInner;
+import org.openapitools.model.CatalogsRetailBatchRequestItemsItems;
 import org.openapitools.model.Country;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="A request object that can have multiple operations on a single retail batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="A request object that can have multiple operations on a single retail batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailBatchRequest   {
   
   private String catalogId;
@@ -41,7 +41,7 @@ public class CatalogsRetailBatchRequest   {
 
   private CatalogTypeEnum catalogType;
   private Country country;
-  private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
+  private List<@Valid CatalogsRetailBatchRequestItemsItems> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -225,7 +225,7 @@ public class CatalogsRetailBatchRequest   {
 
         NL2("NL"),
 
-        NO("NO"),
+        FALSE("false"),
 
         PL("PL"),
 
@@ -321,10 +321,10 @@ public class CatalogsRetailBatchRequest   {
   @ApiModelProperty(required = true, value = "Array with catalogs item operations")
   @JsonProperty("items")
   @NotNull
- @Size(min=1,max=1000)  public List<CatalogsRetailBatchRequestItemsInner> getItems() {
+ @Size(min=1,max=1000)  public List<@Valid CatalogsRetailBatchRequestItemsItems> getItems() {
     return items;
   }
-  public void setItems(List<CatalogsRetailBatchRequestItemsInner> items) {
+  public void setItems(List<@Valid CatalogsRetailBatchRequestItemsItems> items) {
     this.items = items;
   }
 
@@ -383,10 +383,7 @@ public class CatalogsRetailBatchRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

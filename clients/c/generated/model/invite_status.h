@@ -1,7 +1,7 @@
 /*
  * invite_status.h
  *
- * The current status of the invite.
+ * The current status of an invite or request.
  */
 
 #ifndef _invite_status_H_

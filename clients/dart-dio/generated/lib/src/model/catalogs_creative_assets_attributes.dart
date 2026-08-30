@@ -3,6 +3,8 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/catalogs_ai_content_disclosure.dart';
 import 'package:openapi/src/model/catalogs_updatable_creative_assets_attributes.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -23,7 +25,8 @@ part 'catalogs_creative_assets_attributes.g.dart';
 /// * [iosDeepLink] - IOS deep link to the creative assets page.
 /// * [link] - Link to the creative assets page.
 /// * [title] - The name of the creative assets.
-/// * [visibility] - Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+/// * [visibility] - Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
+/// * [aiDisclosures] - AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
 /// * [imageLink] - The creative assets image.
 /// * [videoLink] - The creative assets video.
 @BuiltValue()
@@ -31,6 +34,10 @@ abstract class CatalogsCreativeAssetsAttributes implements CatalogsUpdatableCrea
   /// The creative assets image.
   @BuiltValueField(wireName: r'image_link')
   String? get imageLink;
+
+  /// AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
+  @BuiltValueField(wireName: r'ai_disclosures')
+  BuiltList<CatalogsAiContentDisclosure>? get aiDisclosures;
 
   /// The creative assets video.
   @BuiltValueField(wireName: r'video_link')
@@ -120,6 +127,13 @@ class _$CatalogsCreativeAssetsAttributesSerializer implements PrimitiveSerialize
       yield serializers.serialize(
         object.imageLink,
         specifiedType: const FullType(String),
+      );
+    }
+    if (object.aiDisclosures != null) {
+      yield r'ai_disclosures';
+      yield serializers.serialize(
+        object.aiDisclosures,
+        specifiedType: const FullType(BuiltList, [FullType(CatalogsAiContentDisclosure)]),
       );
     }
     if (object.customLabel2 != null) {
@@ -223,30 +237,42 @@ class _$CatalogsCreativeAssetsAttributesSerializer implements PrimitiveSerialize
         case r'link':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.link = valueDes;
           break;
         case r'description':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.description = valueDes;
           break;
         case r'title':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.title = valueDes;
           break;
         case r'image_link':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.imageLink = valueDes;
+          break;
+        case r'ai_disclosures':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(CatalogsAiContentDisclosure)]),
+          ) as BuiltList<CatalogsAiContentDisclosure>?;
+          if (valueDes == null) continue;
+          result.aiDisclosures.replace(valueDes);
           break;
         case r'custom_label_2':
           final valueDes = serializers.deserialize(
@@ -267,8 +293,9 @@ class _$CatalogsCreativeAssetsAttributesSerializer implements PrimitiveSerialize
         case r'video_link':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.videoLink = valueDes;
           break;
         case r'custom_label_0':

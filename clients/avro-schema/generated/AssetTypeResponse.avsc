@@ -1,0 +1,16 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.",
+  "name": "AssetTypeResponse",
+  "symbols": [
+    "AD_ACCOUNT",
+    "MERCHANT",
+    "PROFILE",
+    "ASSET_GROUP",
+    "PINNER_LIST",
+    "CONVERSION_TAG",
+    "CATALOG",
+    "CONVERSION_SEGMENT"
+  ]
+}

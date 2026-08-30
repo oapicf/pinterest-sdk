@@ -1,0 +1,11 @@
+## AudienceInsightsApi
+
+### Get audience insights
+## Get audience insights
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/audience_insights?audienceInsightType={{audienceInsightType}}
+Accept: application/json
+
+### Get audience insights scope and type
+## Get audience insights scope and type
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/insights/audiences
+Accept: application/json

@@ -363,7 +363,7 @@ case class CatalogsFeedValidationWarnings (
 /* Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date. */
   EXPIRATION_DATE_INVALID: Option[Integer],
 /* Ingestion completed early because there are no changes to your feed since the last successful update. */
-  FETCH_SAME_SIGNATURE: Option[FETCHSAMESIGNATURE],
+  FETCH_SAME_SIGNATURE: Option[Integer],
 /* Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences. */
   GENDER_INVALID: Option[Integer],
 /* Some items include incorrectly formatted GTINs. */
@@ -437,25 +437,6 @@ case class CatalogsFeedValidationWarnings (
 
 object CatalogsFeedValidationWarnings {
   import DateTimeCodecs._
-  sealed trait FETCHSAMESIGNATURE
-  case object `1` extends FETCHSAMESIGNATURE
-
-  object FETCHSAMESIGNATURE {
-    def toFETCHSAMESIGNATURE(s: String): Option[FETCHSAMESIGNATURE] = s match {
-      case "`1`" => Some(`1`)
-      case _ => None
-    }
-
-    def fromFETCHSAMESIGNATURE(x: FETCHSAMESIGNATURE): String = x match {
-      case `1` => "`1`"
-    }
-  }
-
-  implicit val FETCHSAMESIGNATUREEnumEncoder: EncodeJson[FETCHSAMESIGNATURE] =
-    EncodeJson[FETCHSAMESIGNATURE](is => StringEncodeJson(FETCHSAMESIGNATURE.fromFETCHSAMESIGNATURE(is)))
-
-  implicit val FETCHSAMESIGNATUREEnumDecoder: DecodeJson[FETCHSAMESIGNATURE] =
-    DecodeJson.optionDecoder[FETCHSAMESIGNATURE](n => n.string.flatMap(jStr => FETCHSAMESIGNATURE.toFETCHSAMESIGNATURE(jStr)), "FETCHSAMESIGNATURE failed to de-serialize")
 
   implicit val CatalogsFeedValidationWarningsCodecJson: CodecJson[CatalogsFeedValidationWarnings] = CodecJson.derive[CatalogsFeedValidationWarnings]
   implicit val CatalogsFeedValidationWarningsDecoder: EntityDecoder[CatalogsFeedValidationWarnings] = jsonOf[CatalogsFeedValidationWarnings]

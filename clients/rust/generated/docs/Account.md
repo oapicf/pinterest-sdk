@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **about** | Option<**String**> | Profile about description. | [optional]
-**account_type** | Option<**String**> | Type of account | [optional]
-**board_count** | Option<**i32**> | User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional][readonly]
+**account_type** | Option<[**models::UserAccountType**](UserAccountType.md)> | Type of account | [optional]
+**board_count** | Option<**i32**> |   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional][readonly]
 **business_name** | Option<**String**> |  | [optional]
 **follower_count** | Option<**i32**> | User account follower count. | [optional][readonly]
 **following_count** | Option<**i32**> | User account following count. | [optional][readonly]

@@ -10,7 +10,7 @@ import javax.validation.Valid;
 /**
  * AudienceSubcategory
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AudienceSubcategory   {
   @JsonProperty("id")
@@ -41,7 +41,7 @@ public class AudienceSubcategory   {
   }
 
    /**
-   * Subinterest ID.
+   * Get id
    * @return id
   **/
   public String getId() {
@@ -58,7 +58,7 @@ public class AudienceSubcategory   {
   }
 
    /**
-   * Subinterest affinity index.
+   * Get index
    * @return index
   **/
   public BigDecimal getIndex() {
@@ -75,7 +75,7 @@ public class AudienceSubcategory   {
   }
 
    /**
-   * Interest unique key (same as ID).
+   * Get key
    * @return key
   **/
   public String getKey() {
@@ -92,7 +92,7 @@ public class AudienceSubcategory   {
   }
 
    /**
-   * Subinterest name.
+   * Get name
    * @return name
   **/
   public String getName() {
@@ -109,7 +109,7 @@ public class AudienceSubcategory   {
   }
 
    /**
-   * Subinterest's percent of category's total audience.
+   * Get ratio
    * @return ratio
   **/
   public BigDecimal getRatio() {
@@ -162,10 +162,7 @@ public class AudienceSubcategory   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

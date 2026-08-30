@@ -13,13 +13,13 @@
 #' @field cpu_cores Number of CPU cores integer [optional]
 #' @field external_storage_free_space External storage size in GB integer [optional]
 #' @field external_storage_size External storage size in GB integer [optional]
-#' @field form_factor Device form factor character [optional]
+#' @field form_factor Device form factor \link{FormFactor} [optional]
 #' @field kernel_version Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release character [optional]
 #' @field languages List of user installed languages. ISO 639-1 format list(character) [optional]
 #' @field locale Device locale BCP-47 format character [optional]
 #' @field model Device model name character [optional]
-#' @field network_type Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities() character [optional]
-#' @field os_family OS Family character [optional]
+#' @field network_type Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities() \link{NetworkType} [optional]
+#' @field os_family OS Family \link{OsFamily} [optional]
 #' @field os_name Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch character [optional]
 #' @field os_release_name Marketing name for the release version iOS: Dawn Android: Baklava MacOS: Sequoia Ubuntu Linux: Plucky Puffin character [optional]
 #' @field os_version Full name of the version. Examples: iOS: 18.3 Android: 16.1 MacOS: 15.5 Windows: 24H2 Ubuntu Linux: 25.04 character [optional]
@@ -128,12 +128,10 @@ ConversionEventDeviceInfo <- R6::R6Class(
         self$`external_storage_size` <- `external_storage_size`
       }
       if (!is.null(`form_factor`)) {
-        if (!(`form_factor` %in% c("desktop", "laptop", "cellphone", "tablet", "smartwatch", "tv", "vr", "console", "other"))) {
-          stop(paste("Error! \"", `form_factor`, "\" cannot be assigned to `form_factor`. Must be \"desktop\", \"laptop\", \"cellphone\", \"tablet\", \"smartwatch\", \"tv\", \"vr\", \"console\", \"other\".", sep = ""))
+        if (!(`form_factor` %in% c())) {
+          stop(paste("Error! \"", `form_factor`, "\" cannot be assigned to `form_factor`. Must be .", sep = ""))
         }
-        if (!(is.character(`form_factor`) && length(`form_factor`) == 1)) {
-          stop(paste("Error! Invalid data for `form_factor`. Must be a string:", `form_factor`))
-        }
+        stopifnot(R6::is.R6(`form_factor`))
         self$`form_factor` <- `form_factor`
       }
       if (!is.null(`kernel_version`)) {
@@ -160,21 +158,17 @@ ConversionEventDeviceInfo <- R6::R6Class(
         self$`model` <- `model`
       }
       if (!is.null(`network_type`)) {
-        if (!(`network_type` %in% c("wifi", "cellular_2g", "cellular_3g", "cellular_4g", "cellular_5g", "cellular_6g", "ethernet", "unknown"))) {
-          stop(paste("Error! \"", `network_type`, "\" cannot be assigned to `network_type`. Must be \"wifi\", \"cellular_2g\", \"cellular_3g\", \"cellular_4g\", \"cellular_5g\", \"cellular_6g\", \"ethernet\", \"unknown\".", sep = ""))
+        if (!(`network_type` %in% c())) {
+          stop(paste("Error! \"", `network_type`, "\" cannot be assigned to `network_type`. Must be .", sep = ""))
         }
-        if (!(is.character(`network_type`) && length(`network_type`) == 1)) {
-          stop(paste("Error! Invalid data for `network_type`. Must be a string:", `network_type`))
-        }
+        stopifnot(R6::is.R6(`network_type`))
         self$`network_type` <- `network_type`
       }
       if (!is.null(`os_family`)) {
-        if (!(`os_family` %in% c("ios", "android", "macos", "windows", "linux", "bsd", "other"))) {
-          stop(paste("Error! \"", `os_family`, "\" cannot be assigned to `os_family`. Must be \"ios\", \"android\", \"macos\", \"windows\", \"linux\", \"bsd\", \"other\".", sep = ""))
+        if (!(`os_family` %in% c())) {
+          stop(paste("Error! \"", `os_family`, "\" cannot be assigned to `os_family`. Must be .", sep = ""))
         }
-        if (!(is.character(`os_family`) && length(`os_family`) == 1)) {
-          stop(paste("Error! Invalid data for `os_family`. Must be a string:", `os_family`))
-        }
+        stopifnot(R6::is.R6(`os_family`))
         self$`os_family` <- `os_family`
       }
       if (!is.null(`os_name`)) {
@@ -302,7 +296,7 @@ ConversionEventDeviceInfo <- R6::R6Class(
       }
       if (!is.null(self$`form_factor`)) {
         ConversionEventDeviceInfoObject[["form_factor"]] <-
-          self$`form_factor`
+          self$extractSimpleType(self$`form_factor`)
       }
       if (!is.null(self$`kernel_version`)) {
         ConversionEventDeviceInfoObject[["kernel_version"]] <-
@@ -322,11 +316,11 @@ ConversionEventDeviceInfo <- R6::R6Class(
       }
       if (!is.null(self$`network_type`)) {
         ConversionEventDeviceInfoObject[["network_type"]] <-
-          self$`network_type`
+          self$extractSimpleType(self$`network_type`)
       }
       if (!is.null(self$`os_family`)) {
         ConversionEventDeviceInfoObject[["os_family"]] <-
-          self$`os_family`
+          self$extractSimpleType(self$`os_family`)
       }
       if (!is.null(self$`os_name`)) {
         ConversionEventDeviceInfoObject[["os_name"]] <-
@@ -375,6 +369,29 @@ ConversionEventDeviceInfo <- R6::R6Class(
       return(ConversionEventDeviceInfoObject)
     },
 
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
+    },
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionEventDeviceInfo
     #'
@@ -401,10 +418,9 @@ ConversionEventDeviceInfo <- R6::R6Class(
         self$`external_storage_size` <- this_object$`external_storage_size`
       }
       if (!is.null(this_object$`form_factor`)) {
-        if (!is.null(this_object$`form_factor`) && !(this_object$`form_factor` %in% c("desktop", "laptop", "cellphone", "tablet", "smartwatch", "tv", "vr", "console", "other"))) {
-          stop(paste("Error! \"", this_object$`form_factor`, "\" cannot be assigned to `form_factor`. Must be \"desktop\", \"laptop\", \"cellphone\", \"tablet\", \"smartwatch\", \"tv\", \"vr\", \"console\", \"other\".", sep = ""))
-        }
-        self$`form_factor` <- this_object$`form_factor`
+        `form_factor_object` <- FormFactor$new()
+        `form_factor_object`$fromJSON(jsonlite::toJSON(this_object$`form_factor`, auto_unbox = TRUE, digits = NA))
+        self$`form_factor` <- `form_factor_object`
       }
       if (!is.null(this_object$`kernel_version`)) {
         self$`kernel_version` <- this_object$`kernel_version`
@@ -419,16 +435,14 @@ ConversionEventDeviceInfo <- R6::R6Class(
         self$`model` <- this_object$`model`
       }
       if (!is.null(this_object$`network_type`)) {
-        if (!is.null(this_object$`network_type`) && !(this_object$`network_type` %in% c("wifi", "cellular_2g", "cellular_3g", "cellular_4g", "cellular_5g", "cellular_6g", "ethernet", "unknown"))) {
-          stop(paste("Error! \"", this_object$`network_type`, "\" cannot be assigned to `network_type`. Must be \"wifi\", \"cellular_2g\", \"cellular_3g\", \"cellular_4g\", \"cellular_5g\", \"cellular_6g\", \"ethernet\", \"unknown\".", sep = ""))
-        }
-        self$`network_type` <- this_object$`network_type`
+        `network_type_object` <- NetworkType$new()
+        `network_type_object`$fromJSON(jsonlite::toJSON(this_object$`network_type`, auto_unbox = TRUE, digits = NA))
+        self$`network_type` <- `network_type_object`
       }
       if (!is.null(this_object$`os_family`)) {
-        if (!is.null(this_object$`os_family`) && !(this_object$`os_family` %in% c("ios", "android", "macos", "windows", "linux", "bsd", "other"))) {
-          stop(paste("Error! \"", this_object$`os_family`, "\" cannot be assigned to `os_family`. Must be \"ios\", \"android\", \"macos\", \"windows\", \"linux\", \"bsd\", \"other\".", sep = ""))
-        }
-        self$`os_family` <- this_object$`os_family`
+        `os_family_object` <- OsFamily$new()
+        `os_family_object`$fromJSON(jsonlite::toJSON(this_object$`os_family`, auto_unbox = TRUE, digits = NA))
+        self$`os_family` <- `os_family_object`
       }
       if (!is.null(this_object$`os_name`)) {
         self$`os_name` <- this_object$`os_name`
@@ -490,22 +504,13 @@ ConversionEventDeviceInfo <- R6::R6Class(
       self$`cpu_cores` <- this_object$`cpu_cores`
       self$`external_storage_free_space` <- this_object$`external_storage_free_space`
       self$`external_storage_size` <- this_object$`external_storage_size`
-      if (!is.null(this_object$`form_factor`) && !(this_object$`form_factor` %in% c("desktop", "laptop", "cellphone", "tablet", "smartwatch", "tv", "vr", "console", "other"))) {
-        stop(paste("Error! \"", this_object$`form_factor`, "\" cannot be assigned to `form_factor`. Must be \"desktop\", \"laptop\", \"cellphone\", \"tablet\", \"smartwatch\", \"tv\", \"vr\", \"console\", \"other\".", sep = ""))
-      }
-      self$`form_factor` <- this_object$`form_factor`
+      self$`form_factor` <- FormFactor$new()$fromJSON(jsonlite::toJSON(this_object$`form_factor`, auto_unbox = TRUE, digits = NA))
       self$`kernel_version` <- this_object$`kernel_version`
       self$`languages` <- ApiClient$new()$deserializeObj(this_object$`languages`, "array[character]", loadNamespace("openapi"))
       self$`locale` <- this_object$`locale`
       self$`model` <- this_object$`model`
-      if (!is.null(this_object$`network_type`) && !(this_object$`network_type` %in% c("wifi", "cellular_2g", "cellular_3g", "cellular_4g", "cellular_5g", "cellular_6g", "ethernet", "unknown"))) {
-        stop(paste("Error! \"", this_object$`network_type`, "\" cannot be assigned to `network_type`. Must be \"wifi\", \"cellular_2g\", \"cellular_3g\", \"cellular_4g\", \"cellular_5g\", \"cellular_6g\", \"ethernet\", \"unknown\".", sep = ""))
-      }
-      self$`network_type` <- this_object$`network_type`
-      if (!is.null(this_object$`os_family`) && !(this_object$`os_family` %in% c("ios", "android", "macos", "windows", "linux", "bsd", "other"))) {
-        stop(paste("Error! \"", this_object$`os_family`, "\" cannot be assigned to `os_family`. Must be \"ios\", \"android\", \"macos\", \"windows\", \"linux\", \"bsd\", \"other\".", sep = ""))
-      }
-      self$`os_family` <- this_object$`os_family`
+      self$`network_type` <- NetworkType$new()$fromJSON(jsonlite::toJSON(this_object$`network_type`, auto_unbox = TRUE, digits = NA))
+      self$`os_family` <- OsFamily$new()$fromJSON(jsonlite::toJSON(this_object$`os_family`, auto_unbox = TRUE, digits = NA))
       self$`os_name` <- this_object$`os_name`
       self$`os_release_name` <- this_object$`os_release_name`
       self$`os_version` <- this_object$`os_version`

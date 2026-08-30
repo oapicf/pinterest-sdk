@@ -1,12 +1,11 @@
 package apimodels;
 
-import apimodels.CreateAssetAccessRequestErrorMessageInner;
+import apimodels.AssetAccessRequestError;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -16,24 +15,24 @@ import javax.validation.Valid;
 /**
  * CreateAssetAccessRequestResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CreateAssetAccessRequestResponse   {
   @JsonProperty("exceptions")
   @Valid
 
-  private List<@Valid CreateAssetAccessRequestErrorMessageInner> exceptions = null;
+  private List<@Valid AssetAccessRequestError> exceptions = null;
 
   @JsonProperty("invites")
   
   private Map<String, String> invites = null;
 
-  public CreateAssetAccessRequestResponse exceptions(List<@Valid CreateAssetAccessRequestErrorMessageInner> exceptions) {
+  public CreateAssetAccessRequestResponse exceptions(List<@Valid AssetAccessRequestError> exceptions) {
     this.exceptions = exceptions;
     return this;
   }
 
-  public CreateAssetAccessRequestResponse addExceptionsItem(CreateAssetAccessRequestErrorMessageInner exceptionsItem) {
+  public CreateAssetAccessRequestResponse addExceptionsItem(AssetAccessRequestError exceptionsItem) {
     if (this.exceptions == null) {
       this.exceptions = new ArrayList<>();
     }
@@ -45,11 +44,11 @@ public class CreateAssetAccessRequestResponse   {
    * A list of errors associated with the asset access requests. Will be returned if there is an error.
    * @return exceptions
   **/
-  public List<@Valid CreateAssetAccessRequestErrorMessageInner> getExceptions() {
+  public List<@Valid AssetAccessRequestError> getExceptions() {
     return exceptions;
   }
 
-  public void setExceptions(List<@Valid CreateAssetAccessRequestErrorMessageInner> exceptions) {
+  public void setExceptions(List<@Valid AssetAccessRequestError> exceptions) {
     this.exceptions = exceptions;
   }
 
@@ -67,7 +66,7 @@ public class CreateAssetAccessRequestResponse   {
   }
 
    /**
-   * Get invites
+   * An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
    * @return invites
   **/
   public Map<String, String> getInvites() {
@@ -114,10 +113,7 @@ public class CreateAssetAccessRequestResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

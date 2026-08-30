@@ -10,7 +10,7 @@ TargetingTemplateCreate::TargetingTemplateCreate()
 	keywords = std::list<TargetingTemplateKeyword>();
 	name = std::string();
 	placement_group = PlacementGroupType();
-	targeting_attributes = TargetingSpec();
+	targeting_attributes = null;
 	tracking_urls = TrackingUrls();
 }
 
@@ -100,7 +100,7 @@ TargetingTemplateCreate::fromJson(std::string jsonObj)
 
 
 
-        TargetingSpec* obj = &targeting_attributes;
+        TargetingSpecOptimal* obj = &targeting_attributes;
 		obj->fromJson(value.dump());
 
     }
@@ -189,7 +189,7 @@ TargetingTemplateCreate::isAutoTargetingEnabled()
 }
 
 void
-TargetingTemplateCreate::setAutoTargetingEnabled(bool  auto_targeting_enabled)
+TargetingTemplateCreate::setAutoTargetingEnabled(bool auto_targeting_enabled)
 {
 	this->auto_targeting_enabled = auto_targeting_enabled;
 }
@@ -201,7 +201,7 @@ TargetingTemplateCreate::getKeywords()
 }
 
 void
-TargetingTemplateCreate::setKeywords(std::list <TargetingTemplateKeyword> keywords)
+TargetingTemplateCreate::setKeywords(std::list<TargetingTemplateKeyword> keywords)
 {
 	this->keywords = keywords;
 }
@@ -213,7 +213,7 @@ TargetingTemplateCreate::getName()
 }
 
 void
-TargetingTemplateCreate::setName(std::string  name)
+TargetingTemplateCreate::setName(std::string name)
 {
 	this->name = name;
 }
@@ -225,19 +225,19 @@ TargetingTemplateCreate::getPlacementGroup()
 }
 
 void
-TargetingTemplateCreate::setPlacementGroup(PlacementGroupType  placement_group)
+TargetingTemplateCreate::setPlacementGroup(PlacementGroupType placement_group)
 {
 	this->placement_group = placement_group;
 }
 
-TargetingSpec
+TargetingSpecOptimal
 TargetingTemplateCreate::getTargetingAttributes()
 {
 	return targeting_attributes;
 }
 
 void
-TargetingTemplateCreate::setTargetingAttributes(TargetingSpec  targeting_attributes)
+TargetingTemplateCreate::setTargetingAttributes(TargetingSpecOptimal targeting_attributes)
 {
 	this->targeting_attributes = targeting_attributes;
 }
@@ -249,7 +249,7 @@ TargetingTemplateCreate::getTrackingUrls()
 }
 
 void
-TargetingTemplateCreate::setTrackingUrls(TrackingUrls  tracking_urls)
+TargetingTemplateCreate::setTrackingUrls(TrackingUrls tracking_urls)
 {
 	this->tracking_urls = tracking_urls;
 }

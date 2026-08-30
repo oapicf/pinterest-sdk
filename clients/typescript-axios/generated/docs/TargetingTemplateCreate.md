@@ -1,15 +1,16 @@
 # TargetingTemplateCreate
 
+Resource create operation model.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**auto_targeting_enabled** | **boolean** | Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;. | [optional] [default to true]
+**auto_targeting_enabled** | **boolean** | Enable auto-targeting for ad group. Also known as [\&quot;expanded targeting\&quot;](https://help.pinterest.com/en/business/article/expanded-targeting). | [optional] [default to true]
 **keywords** | [**Array&lt;TargetingTemplateKeyword&gt;**](TargetingTemplateKeyword.md) |  | [optional] [default to undefined]
-**name** | **string** | Name of targeting template. | [default to undefined]
+**name** | **string** | targeting template name | [default to undefined]
 **placement_group** | [**PlacementGroupType**](PlacementGroupType.md) |  | [optional] [default to undefined]
-**targeting_attributes** | [**TargetingSpec**](TargetingSpec.md) |  | [default to undefined]
+**targeting_attributes** | [**TargetingSpecOptimal**](TargetingSpecOptimal.md) | targeting profile attributes | [default to undefined]
 **tracking_urls** | [**TrackingUrls**](TrackingUrls.md) |  | [optional] [default to undefined]
 
 ## Example

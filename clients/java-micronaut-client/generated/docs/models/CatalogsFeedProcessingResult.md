@@ -8,12 +8,12 @@ The class is defined in **[CatalogsFeedProcessingResult.java](../../src/main/jav
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | `OffsetDateTime` |  | 
-**id** | `String` |  | 
-**updatedAt** | `OffsetDateTime` |  | 
+**createdAt** | `OffsetDateTime` |  |  [readonly property]
+**id** | `String` | ID of the feed processing result. | 
 **ingestionDetails** | [`CatalogsFeedIngestionDetails`](CatalogsFeedIngestionDetails.md) |  | 
 **productCounts** | [`CatalogsFeedProductCounts`](CatalogsFeedProductCounts.md) |  | 
 **status** | `CatalogsFeedProcessingStatus` |  | 
+**updatedAt** | `OffsetDateTime` |  |  [readonly property]
 **validationDetails** | [`CatalogsFeedValidationDetails`](CatalogsFeedValidationDetails.md) |  | 
 **videoCounts** | [`CatalogsFeedVideoCounts`](CatalogsFeedVideoCounts.md) |  |  [optional property]
 

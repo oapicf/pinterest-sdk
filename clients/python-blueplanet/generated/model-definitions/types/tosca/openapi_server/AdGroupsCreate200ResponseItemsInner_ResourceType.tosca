@@ -1,0 +1,43 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdGroupsCreate200ResponseItemsInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdGroupsCreate200ResponseItemsInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdGroup = openapi_server.resourceTypes.AdGroup
+  PinterestLibBatchItemException = openapi_server.resourceTypes.PinterestLibBatchItemException
+}
+resourceTypes {
+
+  AdGroupsCreate200ResponseItemsInner {
+    title = AdGroupsCreate200ResponseItemsInner
+    description = AdGroupsCreate200ResponseItemsInner
+    derivedFrom = Root
+    properties {
+        data {
+          type = AdGroup
+          description = ""
+          optional = false
+        }
+        exceptions {
+          type = array
+          items.type = PinterestLibBatchItemException
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdGroupsCreate200ResponseItemsInner {
+    title = AdGroupsCreate200ResponseItemsInner
+    description = AdGroupsCreate200ResponseItemsInner
+    implements = openapi_server.resourceTypes.AdGroupsCreate200ResponseItemsInner
+
+  }
+}

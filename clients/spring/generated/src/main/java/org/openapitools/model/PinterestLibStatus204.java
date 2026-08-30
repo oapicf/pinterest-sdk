@@ -10,13 +10,13 @@ import java.math.BigDecimal;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * The resource was successfully deleted.
@@ -24,8 +24,8 @@ import javax.annotation.Generated;
 
 @Schema(name = "Pinterest.Lib.Status204", description = "The resource was successfully deleted.")
 @JsonTypeName("Pinterest.Lib.Status204")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class PinterestLibStatus204 {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class PinterestLibStatus204 implements CampaignAdPreviewDelete200ResponseInnerStatus {
 
   /**
    * Gets or Sets statusCode
@@ -89,6 +89,7 @@ public class PinterestLibStatus204 {
     return statusCode;
   }
 
+  @JsonProperty("statusCode")
   public void setStatusCode(StatusCodeEnum statusCode) {
     this.statusCode = statusCode;
   }
@@ -123,11 +124,8 @@ public class PinterestLibStatus204 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

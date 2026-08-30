@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request body for creating or updating advertiser defined events",
+  "name": "AdvertiserDefinedEventsCreateRequest",
+  "fields": [
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.AdvertiserDefinedEventInput"
+      },
+      "doc": "List of advertiser defined events to create or update"
+    }
+  ]
+
+}

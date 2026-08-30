@@ -13,7 +13,7 @@ Name | Type
 `id` | string
 `operation` | [UserListOperationType](UserListOperationType.md)
 `recordCounts` | [RecordCounts](RecordCounts.md)
-`state` | string
+`state` | [WorkloadState](WorkloadState.md)
 `updatedTime` | number
 
 ## Example

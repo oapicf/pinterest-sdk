@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class CatalogsProductGroupMultipleMediaTypesCriteria   {
   
-  private Boolean negated = false;
+  private Boolean negated;
 
   private List<MediaType> values = new ArrayList<>();
 
@@ -103,10 +103,7 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

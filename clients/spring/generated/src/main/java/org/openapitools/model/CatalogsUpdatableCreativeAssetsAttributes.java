@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -10,43 +11,55 @@ import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsUpdatableCreativeAssetsAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsUpdatableCreativeAssetsAttributes {
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> androidDeepLink = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel0 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel1 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel2 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel3 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel4 = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String description;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> googleProductCategory = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> iosDeepLink = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String link;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String title;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> visibility = JsonNullable.<String>undefined();
 
   public CatalogsUpdatableCreativeAssetsAttributes androidDeepLink(String androidDeepLink) {
@@ -185,6 +198,7 @@ public class CatalogsUpdatableCreativeAssetsAttributes {
     return description;
   }
 
+  @JsonProperty("description")
   public void setDescription(@Nullable String description) {
     this.description = description;
   }
@@ -245,6 +259,7 @@ public class CatalogsUpdatableCreativeAssetsAttributes {
     return link;
   }
 
+  @JsonProperty("link")
   public void setLink(@Nullable String link) {
     this.link = link;
   }
@@ -265,6 +280,7 @@ public class CatalogsUpdatableCreativeAssetsAttributes {
     return title;
   }
 
+  @JsonProperty("title")
   public void setTitle(@Nullable String title) {
     this.title = title;
   }
@@ -275,11 +291,11 @@ public class CatalogsUpdatableCreativeAssetsAttributes {
   }
 
   /**
-   * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+   * Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
    * @return visibility
    */
   
-  @Schema(name = "visibility", description = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "visibility", description = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("visibility")
   public JsonNullable<String> getVisibility() {
     return visibility;
@@ -352,11 +368,8 @@ public class CatalogsUpdatableCreativeAssetsAttributes {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

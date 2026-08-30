@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BusinessSearchBy"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BusinessSearchBy"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BusinessSearchBy {
+    title = BusinessSearchBy
+    description = BusinessSearchBy
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  BusinessSearchBy {
+    title = BusinessSearchBy
+    description = BusinessSearchBy
+    implements = openapi_server.resourceTypes.BusinessSearchBy
+
+  }
+}

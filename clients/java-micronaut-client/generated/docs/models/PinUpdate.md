@@ -10,6 +10,7 @@ The class is defined in **[PinUpdate.java](../../src/main/java/org/openapitools/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**aiDisclosures** | [`AiDisclosuresUpdate`](AiDisclosuresUpdate.md) | AI disclosure declarations the creator has made about this Pin. |  [optional property]
 **altText** | `String` |  |  [optional property]
 **boardId** | `String` | The board to which this Pin belongs. |  [optional property]
 **boardSectionId** | `String` | The board section to which this Pin belongs. |  [optional property]
@@ -17,6 +18,7 @@ Name | Type | Description | Notes
 **description** | `String` |  |  [optional property]
 **link** | `String` |  |  [optional property]
 **title** | `String` |  |  [optional property]
+
 
 
 

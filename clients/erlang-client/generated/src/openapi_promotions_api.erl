@@ -11,11 +11,11 @@
 %% @doc Create promotions
 %% Create multiple new promotions.
 -spec promotions/create(ctx:ctx(), binary(), list()) -> {ok, openapi_promotions_response:openapi_promotions_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-promotions/create(Ctx, AdAccountId, OpenapiPromotionCreateRequestArray) ->
-    promotions/create(Ctx, AdAccountId, OpenapiPromotionCreateRequestArray, #{}).
+promotions/create(Ctx, AdAccountId, OpenapiPromotionCreateArray) ->
+    promotions/create(Ctx, AdAccountId, OpenapiPromotionCreateArray, #{}).
 
 -spec promotions/create(ctx:ctx(), binary(), list(), maps:map()) -> {ok, openapi_promotions_response:openapi_promotions_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-promotions/create(Ctx, AdAccountId, OpenapiPromotionCreateRequestArray, Optional) ->
+promotions/create(Ctx, AdAccountId, OpenapiPromotionCreateArray, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -23,7 +23,7 @@ promotions/create(Ctx, AdAccountId, OpenapiPromotionCreateRequestArray, Optional
     Path = [?BASE_URL, "/ad_accounts/", AdAccountId, "/promotions"],
     QS = [],
     Headers = [],
-    Body1 = OpenapiPromotionCreateRequestArray,
+    Body1 = OpenapiPromotionCreateArray,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
@@ -31,12 +31,12 @@ promotions/create(Ctx, AdAccountId, OpenapiPromotionCreateRequestArray, Optional
 
 %% @doc Delete promotion by id
 %% Delete a promotion within Pinterest.
--spec promotions/delete(ctx:ctx(), binary(), binary()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-promotions/delete(Ctx, AdAccountId, PromotionId) ->
-    promotions/delete(Ctx, AdAccountId, PromotionId, #{}).
+-spec promotions/delete(ctx:ctx(), binary(), binary()) -> {ok, openapi_promotion:openapi_promotion(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+promotions/delete(Ctx, PromotionId, AdAccountId) ->
+    promotions/delete(Ctx, PromotionId, AdAccountId, #{}).
 
--spec promotions/delete(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-promotions/delete(Ctx, AdAccountId, PromotionId, Optional) ->
+-spec promotions/delete(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_promotion:openapi_promotion(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+promotions/delete(Ctx, PromotionId, AdAccountId, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -52,12 +52,12 @@ promotions/delete(Ctx, AdAccountId, PromotionId, Optional) ->
 
 %% @doc Get promotion by id
 %% Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
--spec promotions/get(ctx:ctx(), binary(), binary()) -> {ok, openapi_promotion_response:openapi_promotion_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-promotions/get(Ctx, AdAccountId, PromotionId) ->
-    promotions/get(Ctx, AdAccountId, PromotionId, #{}).
+-spec promotions/get(ctx:ctx(), binary(), binary()) -> {ok, openapi_promotion:openapi_promotion(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+promotions/get(Ctx, PromotionId, AdAccountId) ->
+    promotions/get(Ctx, PromotionId, AdAccountId, #{}).
 
--spec promotions/get(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_promotion_response:openapi_promotion_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-promotions/get(Ctx, AdAccountId, PromotionId, Optional) ->
+-spec promotions/get(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_promotion:openapi_promotion(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+promotions/get(Ctx, PromotionId, AdAccountId, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -84,7 +84,7 @@ promotions/list(Ctx, AdAccountId, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/ad_accounts/", AdAccountId, "/promotions"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['page_size', 'order', 'bookmark'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['bookmark', 'page_size', 'order'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),
@@ -95,11 +95,11 @@ promotions/list(Ctx, AdAccountId, Optional) ->
 %% @doc Update promotions
 %% Update multiple promotions.
 -spec promotions/update(ctx:ctx(), binary(), list()) -> {ok, openapi_promotions_response:openapi_promotions_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-promotions/update(Ctx, AdAccountId, OpenapiPromotionUpdateRequestArray) ->
-    promotions/update(Ctx, AdAccountId, OpenapiPromotionUpdateRequestArray, #{}).
+promotions/update(Ctx, AdAccountId, OpenapiPromotionBatchUpdateArray) ->
+    promotions/update(Ctx, AdAccountId, OpenapiPromotionBatchUpdateArray, #{}).
 
 -spec promotions/update(ctx:ctx(), binary(), list(), maps:map()) -> {ok, openapi_promotions_response:openapi_promotions_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-promotions/update(Ctx, AdAccountId, OpenapiPromotionUpdateRequestArray, Optional) ->
+promotions/update(Ctx, AdAccountId, OpenapiPromotionBatchUpdateArray, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -107,7 +107,7 @@ promotions/update(Ctx, AdAccountId, OpenapiPromotionUpdateRequestArray, Optional
     Path = [?BASE_URL, "/ad_accounts/", AdAccountId, "/promotions"],
     QS = [],
     Headers = [],
-    Body1 = OpenapiPromotionUpdateRequestArray,
+    Body1 = OpenapiPromotionBatchUpdateArray,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 

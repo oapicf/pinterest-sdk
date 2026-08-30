@@ -7,7 +7,7 @@
 #' @title CreateMembershipOrPartnershipInvitesBody
 #' @description CreateMembershipOrPartnershipInvitesBody Class
 #' @format An \code{R6Class} generator object
-#' @field business_role The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you. character
+#' @field business_role  \link{BusinessRoleForInvite}
 #' @field invite_type  \link{InviteType}
 #' @field members A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE list(character) [optional]
 #' @field partners A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST list(character) [optional]
@@ -25,19 +25,17 @@ CreateMembershipOrPartnershipInvitesBody <- R6::R6Class(
     #' @description
     #' Initialize a new CreateMembershipOrPartnershipInvitesBody class.
     #'
-    #' @param business_role The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
+    #' @param business_role business_role
     #' @param invite_type invite_type
     #' @param members A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
     #' @param partners A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST
     #' @param ... Other optional arguments.
     initialize = function(`business_role`, `invite_type`, `members` = NULL, `partners` = NULL, ...) {
       if (!missing(`business_role`)) {
-        if (!(`business_role` %in% c("EMPLOYEE", "BIZ_ADMIN", "PARTNER"))) {
-          stop(paste("Error! \"", `business_role`, "\" cannot be assigned to `business_role`. Must be \"EMPLOYEE\", \"BIZ_ADMIN\", \"PARTNER\".", sep = ""))
+        if (!(`business_role` %in% c())) {
+          stop(paste("Error! \"", `business_role`, "\" cannot be assigned to `business_role`. Must be .", sep = ""))
         }
-        if (!(is.character(`business_role`) && length(`business_role`) == 1)) {
-          stop(paste("Error! Invalid data for `business_role`. Must be a string:", `business_role`))
-        }
+        stopifnot(R6::is.R6(`business_role`))
         self$`business_role` <- `business_role`
       }
       if (!missing(`invite_type`)) {
@@ -92,11 +90,11 @@ CreateMembershipOrPartnershipInvitesBody <- R6::R6Class(
       CreateMembershipOrPartnershipInvitesBodyObject <- list()
       if (!is.null(self$`business_role`)) {
         CreateMembershipOrPartnershipInvitesBodyObject[["business_role"]] <-
-          self$`business_role`
+          self$extractSimpleType(self$`business_role`)
       }
       if (!is.null(self$`invite_type`)) {
         CreateMembershipOrPartnershipInvitesBodyObject[["invite_type"]] <-
-          self$`invite_type`$toSimpleType()
+          self$extractSimpleType(self$`invite_type`)
       }
       if (!is.null(self$`members`)) {
         CreateMembershipOrPartnershipInvitesBodyObject[["members"]] <-
@@ -109,6 +107,29 @@ CreateMembershipOrPartnershipInvitesBody <- R6::R6Class(
       return(CreateMembershipOrPartnershipInvitesBodyObject)
     },
 
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
+    },
+
     #' @description
     #' Deserialize JSON string into an instance of CreateMembershipOrPartnershipInvitesBody
     #'
@@ -117,10 +138,9 @@ CreateMembershipOrPartnershipInvitesBody <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`business_role`)) {
-        if (!is.null(this_object$`business_role`) && !(this_object$`business_role` %in% c("EMPLOYEE", "BIZ_ADMIN", "PARTNER"))) {
-          stop(paste("Error! \"", this_object$`business_role`, "\" cannot be assigned to `business_role`. Must be \"EMPLOYEE\", \"BIZ_ADMIN\", \"PARTNER\".", sep = ""))
-        }
-        self$`business_role` <- this_object$`business_role`
+        `business_role_object` <- BusinessRoleForInvite$new()
+        `business_role_object`$fromJSON(jsonlite::toJSON(this_object$`business_role`, auto_unbox = TRUE, digits = NA))
+        self$`business_role` <- `business_role_object`
       }
       if (!is.null(this_object$`invite_type`)) {
         `invite_type_object` <- InviteType$new()
@@ -154,10 +174,7 @@ CreateMembershipOrPartnershipInvitesBody <- R6::R6Class(
     #' @return the instance of CreateMembershipOrPartnershipInvitesBody
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`business_role`) && !(this_object$`business_role` %in% c("EMPLOYEE", "BIZ_ADMIN", "PARTNER"))) {
-        stop(paste("Error! \"", this_object$`business_role`, "\" cannot be assigned to `business_role`. Must be \"EMPLOYEE\", \"BIZ_ADMIN\", \"PARTNER\".", sep = ""))
-      }
-      self$`business_role` <- this_object$`business_role`
+      self$`business_role` <- BusinessRoleForInvite$new()$fromJSON(jsonlite::toJSON(this_object$`business_role`, auto_unbox = TRUE, digits = NA))
       self$`invite_type` <- InviteType$new()$fromJSON(jsonlite::toJSON(this_object$`invite_type`, auto_unbox = TRUE, digits = NA))
       self$`members` <- ApiClient$new()$deserializeObj(this_object$`members`, "array[character]", loadNamespace("openapi"))
       self$`partners` <- ApiClient$new()$deserializeObj(this_object$`partners`, "array[character]", loadNamespace("openapi"))
@@ -172,9 +189,7 @@ CreateMembershipOrPartnershipInvitesBody <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `business_role`
       if (!is.null(input_json$`business_role`)) {
-        if (!(is.character(input_json$`business_role`) && length(input_json$`business_role`) == 1)) {
-          stop(paste("Error! Invalid data for `business_role`. Must be a string:", input_json$`business_role`))
-        }
+        stopifnot(R6::is.R6(input_json$`business_role`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CreateMembershipOrPartnershipInvitesBody: the required field `business_role` is missing."))
       }

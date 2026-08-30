@@ -2,8 +2,6 @@ package org.openapitools.server.model
 
 
 /**
- * = LinkedBusiness =
- *
  * @param imageLargeUrl image_large_url for example: ''https://www.example.com/dj23454f53dfk2324.jpg''
  * @param imageMediumUrl image_medium_url for example: ''https://www.example.com/dj23454f53dfk2324.jpg''
  * @param imageSmallUrl image_small_url for example: ''https://www.example.com/dj23454f53dfk2324.jpg''

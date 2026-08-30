@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"engagementType": @"engagement_type", @"pctChangeMom": @"pct_change_mom", @"percentRelativeVolume": @"percent_relative_volume", @"productCategory": @"product_category", @"verticals": @"verticals" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"engagementType": @"engagement_type", @"pctChangeMom": @"pct_change_mom", @"percentRelativeVolume": @"percent_relative_volume", @"pinterestProductCategoryId": @"pinterest_product_category_id", @"productCategory": @"product_category", @"verticals": @"verticals" }];
 }
 
 /**

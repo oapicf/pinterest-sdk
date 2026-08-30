@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## boardSectionsCreate
 
-> BoardSection boardSectionsCreate(boardId, boardSection, opts)
+> BoardSection boardSectionsCreate(boardId, boardSectionCreate, opts)
 
 Create board section
 
@@ -37,11 +37,11 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BoardsApi();
 let boardId = "boardId_example"; // String | Unique identifier of a board.
-let boardSection = new PinterestSdk.BoardSection(); // BoardSection | Create a board section.
+let boardSectionCreate = new PinterestSdk.BoardSectionCreate(); // BoardSectionCreate | 
 let opts = {
   'adAccountId': "adAccountId_example" // String | Unique identifier of an ad account.
 };
-apiInstance.boardSectionsCreate(boardId, boardSection, opts, (error, data, response) => {
+apiInstance.boardSectionsCreate(boardId, boardSectionCreate, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -56,7 +56,7 @@ apiInstance.boardSectionsCreate(boardId, boardSection, opts, (error, data, respo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **String**| Unique identifier of a board. | 
- **boardSection** | [**BoardSection**](BoardSection.md)| Create a board section. | 
+ **boardSectionCreate** | [**BoardSectionCreate**](BoardSectionCreate.md)|  | 
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ## boardSectionsDelete
 
-> boardSectionsDelete(boardId, sectionId, opts)
+> BoardSection boardSectionsDelete(boardId, sectionId, opts)
 
 Delete board section
 
@@ -100,7 +100,7 @@ apiInstance.boardSectionsDelete(boardId, sectionId, opts, (error, data, response
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**BoardSection**](BoardSection.md)
 
 ### Authorization
 
@@ -153,7 +153,7 @@ let boardId = "boardId_example"; // String | Unique identifier of a board.
 let opts = {
   'adAccountId': "adAccountId_example", // String | Unique identifier of an ad account.
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.boardSectionsList(boardId, opts, (error, data, response) => {
   if (error) {
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
  **boardId** | **String**| Unique identifier of a board. | 
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -214,7 +214,7 @@ let sectionId = "sectionId_example"; // String | Unique identifier of a board se
 let opts = {
   'adAccountId': "adAccountId_example", // String | Unique identifier of an ad account.
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.boardSectionsListPins(boardId, sectionId, opts, (error, data, response) => {
   if (error) {
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
  **sectionId** | **String**| Unique identifier of a board section. | 
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 ## boardSectionsUpdate
 
-> BoardSection boardSectionsUpdate(boardId, sectionId, boardSection, opts)
+> BoardSection boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, opts)
 
 Update board section
 
@@ -270,11 +270,11 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.BoardsApi();
 let boardId = "boardId_example"; // String | Unique identifier of a board.
 let sectionId = "sectionId_example"; // String | Unique identifier of a board section.
-let boardSection = new PinterestSdk.BoardSection(); // BoardSection | Update a board section.
+let boardSectionUpdateWithRequiredBody = new PinterestSdk.BoardSectionUpdateWithRequiredBody(); // BoardSectionUpdateWithRequiredBody | 
 let opts = {
   'adAccountId': "adAccountId_example" // String | Unique identifier of an ad account.
 };
-apiInstance.boardSectionsUpdate(boardId, sectionId, boardSection, opts, (error, data, response) => {
+apiInstance.boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **String**| Unique identifier of a board. | 
  **sectionId** | **String**| Unique identifier of a board section. | 
- **boardSection** | [**BoardSection**](BoardSection.md)| Update a board section. | 
+ **boardSectionUpdateWithRequiredBody** | [**BoardSectionUpdateWithRequiredBody**](BoardSectionUpdateWithRequiredBody.md)|  | 
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## boardsDelete
 
-> boardsDelete(boardId, opts)
+> Board boardsDelete(boardId, opts)
 
 Delete board
 
@@ -389,7 +389,7 @@ apiInstance.boardsDelete(boardId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -404,7 +404,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**Board**](Board.md)
 
 ### Authorization
 
@@ -555,11 +555,11 @@ client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.BoardsApi();
 let boardId = "boardId_example"; // String | Unique identifier of a board.
 let opts = {
-  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   'creativeTypes': [new PinterestSdk.CreativeType()], // [CreativeType] | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
   'adAccountId': "adAccountId_example", // String | Unique identifier of an ad account.
-  'pinMetrics': false // Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+  'pinMetrics': false, // Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.boardsListPins(boardId, opts, (error, data, response) => {
   if (error) {
@@ -576,11 +576,11 @@ apiInstance.boardsListPins(boardId, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **String**| Unique identifier of a board. | 
- **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **creativeTypes** | [**[CreativeType]**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
  **pinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
+ **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

@@ -5,10 +5,10 @@ import org.openapitools.model.*;
 
 
 
-import org.openapitools.model.BrandAccountsCreate200Response;
-import org.openapitools.model.BrandAccountsCreateRequest;
-import org.openapitools.model.BrandAccountsUpdateRequest;
-import org.openapitools.model.Error;
+import org.openapitools.model.BrandAccount;
+import org.openapitools.model.BrandAccountCreate;
+import org.openapitools.model.BrandAccountUpdate;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 import org.openapitools.api.NotFoundException;
@@ -20,11 +20,11 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public interface BusinessAccessApiService {
-      Response brandAccountsCreate(String businessHierarchyId,BrandAccountsCreateRequest brandAccountsCreateRequest,SecurityContext securityContext)
+      Response brandAccountsCreate(String businessHierarchyId,BrandAccountCreate brandAccountCreate,SecurityContext securityContext)
       throws NotFoundException;
-      Response brandAccountsUpdate(String businessHierarchyId,String brandAccountId,BrandAccountsUpdateRequest brandAccountsUpdateRequest,SecurityContext securityContext)
+      Response brandAccountsUpdate(String brandAccountId,String businessHierarchyId,BrandAccountUpdate brandAccountUpdate,SecurityContext securityContext)
       throws NotFoundException;
 
 

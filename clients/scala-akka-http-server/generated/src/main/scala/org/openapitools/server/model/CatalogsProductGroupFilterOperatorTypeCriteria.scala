@@ -9,7 +9,7 @@ package org.openapitools.server.model
  * @param values  for example: ''null''
 */
 final case class CatalogsProductGroupFilterOperatorTypeCriteria (
-  filterOperatorType: Option[String] = None,
+  filterOperatorType: Option[FilterOperatorType] = None,
   negated: Option[Boolean] = None,
   values: Seq[String]
 )

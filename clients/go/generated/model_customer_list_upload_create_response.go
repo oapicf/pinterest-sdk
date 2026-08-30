@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,9 @@ var _ MappedNullable = &CustomerListUploadCreateResponse{}
 
 // CustomerListUploadCreateResponse struct for CustomerListUploadCreateResponse
 type CustomerListUploadCreateResponse struct {
+	// The Customer List Upload created.
 	CustomerListUpload CustomerListUpload `json:"customer_list_upload"`
+	// Pre-signed upload URLs corresponding to each part of the upload.
 	S3MultipartUploadData S3MultipartUploadData `json:"s3_multipart_upload_data"`
 }
 

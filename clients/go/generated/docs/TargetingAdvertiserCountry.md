@@ -45,7 +45,7 @@
 
 * `SG` (value: `"SG"`)
 
-* `NO` (value: `"NO"`)
+* `FALSE` (value: `"false"`)
 
 * `DK` (value: `"DK"`)
 

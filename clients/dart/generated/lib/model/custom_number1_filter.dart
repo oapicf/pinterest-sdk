@@ -13,26 +13,26 @@ part of openapi.api;
 class CustomNumber1Filter {
   /// Returns a new [CustomNumber1Filter] instance.
   CustomNumber1Filter({
-    required this.cUSTOMNUMBER1,
+    required this.CUSTOM_NUMBER_1,
   });
 
-  CatalogsProductGroupUint32Criteria cUSTOMNUMBER1;
+  CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_1;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CustomNumber1Filter &&
-    other.cUSTOMNUMBER1 == cUSTOMNUMBER1;
+    other.CUSTOM_NUMBER_1 == CUSTOM_NUMBER_1;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (cUSTOMNUMBER1.hashCode);
+    (CUSTOM_NUMBER_1.hashCode);
 
   @override
-  String toString() => 'CustomNumber1Filter[cUSTOMNUMBER1=$cUSTOMNUMBER1]';
+  String toString() => 'CustomNumber1Filter[CUSTOM_NUMBER_1=$CUSTOM_NUMBER_1]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'CUSTOM_NUMBER_1'] = this.cUSTOMNUMBER1;
+      json[r'CUSTOM_NUMBER_1'] = this.CUSTOM_NUMBER_1;
     return json;
   }
 
@@ -47,15 +47,13 @@ class CustomNumber1Filter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CustomNumber1Filter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CustomNumber1Filter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'CUSTOM_NUMBER_1'), 'Required key "CustomNumber1Filter[CUSTOM_NUMBER_1]" is missing from JSON.');
+        assert(json[r'CUSTOM_NUMBER_1'] != null, 'Required key "CustomNumber1Filter[CUSTOM_NUMBER_1]" has a null value in JSON.');
         return true;
       }());
 
       return CustomNumber1Filter(
-        cUSTOMNUMBER1: mapValueOfType<CatalogsProductGroupUint32Criteria>(json, r'CUSTOM_NUMBER_1')!,
+        CUSTOM_NUMBER_1: CatalogsProductGroupUint32Criteria.fromJson(json[r'CUSTOM_NUMBER_1'])!,
       );
     }
     return null;

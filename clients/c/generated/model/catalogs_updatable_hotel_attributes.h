@@ -32,9 +32,9 @@ typedef struct catalogs_updatable_hotel_attributes_t {
     char *custom_label_4; // string
     char *description; // string
     struct catalogs_hotel_guest_ratings_t *guest_ratings; //model
-    double latitude; //numeric
+    double *latitude; //numeric
     char *link; // string
-    double longitude; //numeric
+    double *longitude; //numeric
     char *name; // string
     list_t *neighborhood; //primitive container
     char *sale_price; // string
@@ -54,9 +54,9 @@ __attribute__((deprecated)) catalogs_updatable_hotel_attributes_t *catalogs_upda
     char *custom_label_4,
     char *description,
     catalogs_hotel_guest_ratings_t *guest_ratings,
-    double latitude,
+    double *latitude,
     char *link,
-    double longitude,
+    double *longitude,
     char *name,
     list_t *neighborhood,
     char *sale_price

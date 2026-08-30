@@ -5,62 +5,30 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.model.LabelStatusBulkUpdate;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * LabelBulkUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LabelBulkUpdateRequest {
 
   private String id;
 
-  /**
-   * Set status to `ARCHIVED` to remove the label from the parent entity.
-   */
-  public enum StatusEnum {
-    ARCHIVED("ARCHIVED");
+  private String parentId;
 
-    private final String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private @Nullable StatusEnum status;
-
-  private @Nullable String value;
+  private LabelStatusBulkUpdate status;
 
   public LabelBulkUpdateRequest() {
     super();
@@ -69,8 +37,10 @@ public class LabelBulkUpdateRequest {
   /**
    * Constructor with only required parameters
    */
-  public LabelBulkUpdateRequest(String id) {
+  public LabelBulkUpdateRequest(String id, String parentId, LabelStatusBulkUpdate status) {
     this.id = id;
+    this.parentId = parentId;
+    this.status = status;
   }
 
   public LabelBulkUpdateRequest id(String id) {
@@ -83,54 +53,57 @@ public class LabelBulkUpdateRequest {
    * @return id
    */
   @NotNull 
-  @Schema(name = "id", example = "1106385754497", description = "Label ID.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "id", description = "Label ID.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(String id) {
     this.id = id;
   }
 
-  public LabelBulkUpdateRequest status(@Nullable StatusEnum status) {
+  public LabelBulkUpdateRequest parentId(String parentId) {
+    this.parentId = parentId;
+    return this;
+  }
+
+  /**
+   * Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
+   * @return parentId
+   */
+  @NotNull 
+  @Schema(name = "parent_id", description = "Unique identifier of the asset you are labelling. Currently, you can only label campaigns.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("parent_id")
+  public String getParentId() {
+    return parentId;
+  }
+
+  @JsonProperty("parent_id")
+  public void setParentId(String parentId) {
+    this.parentId = parentId;
+  }
+
+  public LabelBulkUpdateRequest status(LabelStatusBulkUpdate status) {
     this.status = status;
     return this;
   }
 
   /**
-   * Set status to `ARCHIVED` to remove the label from the parent entity.
+   * Get status
    * @return status
    */
-  
-  @Schema(name = "status", example = "ARCHIVED", description = "Set status to `ARCHIVED` to remove the label from the parent entity.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "status", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("status")
-  public @Nullable StatusEnum getStatus() {
+  public LabelStatusBulkUpdate getStatus() {
     return status;
   }
 
-  public void setStatus(@Nullable StatusEnum status) {
+  @JsonProperty("status")
+  public void setStatus(LabelStatusBulkUpdate status) {
     this.status = status;
-  }
-
-  public LabelBulkUpdateRequest value(@Nullable String value) {
-    this.value = value;
-    return this;
-  }
-
-  /**
-   * </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
-   * @return value
-   */
-  @Size(max = 100) 
-  @Schema(name = "value", description = "</p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("value")
-  public @Nullable String getValue() {
-    return value;
-  }
-
-  public void setValue(@Nullable String value) {
-    this.value = value;
   }
 
   @Override
@@ -143,13 +116,13 @@ public class LabelBulkUpdateRequest {
     }
     LabelBulkUpdateRequest labelBulkUpdateRequest = (LabelBulkUpdateRequest) o;
     return Objects.equals(this.id, labelBulkUpdateRequest.id) &&
-        Objects.equals(this.status, labelBulkUpdateRequest.status) &&
-        Objects.equals(this.value, labelBulkUpdateRequest.value);
+        Objects.equals(this.parentId, labelBulkUpdateRequest.parentId) &&
+        Objects.equals(this.status, labelBulkUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, value);
+    return Objects.hash(id, parentId, status);
   }
 
   @Override
@@ -157,8 +130,8 @@ public class LabelBulkUpdateRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class LabelBulkUpdateRequest {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -167,11 +140,8 @@ public class LabelBulkUpdateRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

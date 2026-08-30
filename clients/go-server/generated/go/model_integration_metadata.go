@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -31,9 +31,10 @@ type IntegrationMetadata struct {
 
 	CreatedTimestamp float32 `json:"created_timestamp,omitempty"`
 
+	// External business ID for the integration.
 	ExternalBusinessId string `json:"external_business_id,omitempty"`
 
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 
 	PartnerAccessTokenExpiry float32 `json:"partner_access_token_expiry,omitempty"`
 
@@ -46,7 +47,8 @@ type IntegrationMetadata struct {
 	UpdatedTimestamp float32 `json:"updated_timestamp,omitempty"`
 }
 
-// AssertIntegrationMetadataRequired checks if the required fields are not zero-ed
+// AssertIntegrationMetadataRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertIntegrationMetadataRequired(obj IntegrationMetadata) error {
 	return nil
 }

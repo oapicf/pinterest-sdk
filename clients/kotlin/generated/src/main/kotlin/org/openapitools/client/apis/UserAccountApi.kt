@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -21,20 +29,23 @@ import okhttp3.HttpUrl
 
 import org.openapitools.client.models.Account
 import org.openapitools.client.models.AnalyticsMetricsResponse
-import org.openapitools.client.models.BoardsUserFollowsList200Response
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.FollowUserRequest
+import org.openapitools.client.models.BoardsList200Response
+import org.openapitools.client.models.FollowUser
+import org.openapitools.client.models.FollowUserCreate
 import org.openapitools.client.models.FollowersList200Response
 import org.openapitools.client.models.LinkedBusiness
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.QuerymetrictypesItems
+import org.openapitools.client.models.QueryvideopinmetrictypesItems
 import org.openapitools.client.models.TopPinsAnalyticsResponse
+import org.openapitools.client.models.TopPinsSortBy
 import org.openapitools.client.models.TopVideoPinsAnalyticsResponse
+import org.openapitools.client.models.TopVideoPinsSortBy
 import org.openapitools.client.models.UserAccountFollowedInterests200Response
 import org.openapitools.client.models.UserFollowingFeedType
-import org.openapitools.client.models.UserFollowingGet200Response
-import org.openapitools.client.models.UserSummary
-import org.openapitools.client.models.UserWebsiteSummary
-import org.openapitools.client.models.UserWebsiteVerificationCode
-import org.openapitools.client.models.UserWebsiteVerifyRequest
+import org.openapitools.client.models.UserWebsite
+import org.openapitools.client.models.UserWebsiteCreate
+import org.openapitools.client.models.UserWebsiteVerification
 import org.openapitools.client.models.UserWebsitesGet200Response
 
 import com.squareup.moshi.Json
@@ -57,7 +68,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
@@ -65,11 +76,11 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * GET /user_account/following/boards
      * List following boards
      * Get a list of the boards a user follows. The request returns a board summary object array.
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return BoardsUserFollowsList200Response
+     * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return BoardsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -78,11 +89,11 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun boardsUserFollowsList(bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, explicitFollowing: kotlin.Boolean? = false, adAccountId: kotlin.String? = null) : BoardsUserFollowsList200Response {
-        val localVarResponse = boardsUserFollowsListWithHttpInfo(bookmark = bookmark, pageSize = pageSize, explicitFollowing = explicitFollowing, adAccountId = adAccountId)
+    fun boardsUserFollowsList(adAccountId: kotlin.String? = null, explicitFollowing: kotlin.Boolean? = false, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : BoardsList200Response {
+        val localVarResponse = boardsUserFollowsListWithHttpInfo(adAccountId = adAccountId, explicitFollowing = explicitFollowing, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as BoardsUserFollowsList200Response
+            ResponseType.Success -> (localVarResponse as Success<*>).data as BoardsList200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -100,20 +111,20 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * GET /user_account/following/boards
      * List following boards
      * Get a list of the boards a user follows. The request returns a board summary object array.
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return ApiResponse<BoardsUserFollowsList200Response?>
+     * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return ApiResponse<BoardsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun boardsUserFollowsListWithHttpInfo(bookmark: kotlin.String?, pageSize: kotlin.Int?, explicitFollowing: kotlin.Boolean?, adAccountId: kotlin.String?) : ApiResponse<BoardsUserFollowsList200Response?> {
-        val localVariableConfig = boardsUserFollowsListRequestConfig(bookmark = bookmark, pageSize = pageSize, explicitFollowing = explicitFollowing, adAccountId = adAccountId)
+    fun boardsUserFollowsListWithHttpInfo(adAccountId: kotlin.String?, explicitFollowing: kotlin.Boolean?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<BoardsList200Response?> {
+        val localVariableConfig = boardsUserFollowsListRequestConfig(adAccountId = adAccountId, explicitFollowing = explicitFollowing, bookmark = bookmark, pageSize = pageSize)
 
-        return request<Unit, BoardsUserFollowsList200Response>(
+        return request<Unit, BoardsList200Response>(
             localVariableConfig
         )
     }
@@ -121,27 +132,27 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * To obtain the request config of the operation boardsUserFollowsList
      *
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun boardsUserFollowsListRequestConfig(bookmark: kotlin.String?, pageSize: kotlin.Int?, explicitFollowing: kotlin.Boolean?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
+    fun boardsUserFollowsListRequestConfig(adAccountId: kotlin.String?, explicitFollowing: kotlin.Boolean?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (adAccountId != null) {
+                    put("ad_account_id", listOf(adAccountId.toString()))
+                }
+                if (explicitFollowing != null) {
+                    put("explicit_following", listOf(explicitFollowing.toString()))
+                }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
                 }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
-                }
-                if (explicitFollowing != null) {
-                    put("explicit_following", listOf(explicitFollowing.toString()))
-                }
-                if (adAccountId != null) {
-                    put("ad_account_id", listOf(adAccountId.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -160,10 +171,10 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * POST /user_account/following/{username}
      * Follow user
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+     * **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
      * @param username A valid username
-     * @param followUserRequest Follow a user.
-     * @return UserSummary
+     * @param followUserCreate 
+     * @return FollowUser
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -172,11 +183,11 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun followUserUpdate(username: kotlin.String, followUserRequest: FollowUserRequest) : UserSummary {
-        val localVarResponse = followUserUpdateWithHttpInfo(username = username, followUserRequest = followUserRequest)
+    fun followUserUpdate(username: kotlin.String, followUserCreate: FollowUserCreate) : FollowUser {
+        val localVarResponse = followUserUpdateWithHttpInfo(username = username, followUserCreate = followUserCreate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as UserSummary
+            ResponseType.Success -> (localVarResponse as Success<*>).data as FollowUser
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -193,19 +204,19 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * POST /user_account/following/{username}
      * Follow user
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+     * **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
      * @param username A valid username
-     * @param followUserRequest Follow a user.
-     * @return ApiResponse<UserSummary?>
+     * @param followUserCreate 
+     * @return ApiResponse<FollowUser?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun followUserUpdateWithHttpInfo(username: kotlin.String, followUserRequest: FollowUserRequest) : ApiResponse<UserSummary?> {
-        val localVariableConfig = followUserUpdateRequestConfig(username = username, followUserRequest = followUserRequest)
+    fun followUserUpdateWithHttpInfo(username: kotlin.String, followUserCreate: FollowUserCreate) : ApiResponse<FollowUser?> {
+        val localVariableConfig = followUserUpdateRequestConfig(username = username, followUserCreate = followUserCreate)
 
-        return request<FollowUserRequest, UserSummary>(
+        return request<FollowUserCreate, FollowUser>(
             localVariableConfig
         )
     }
@@ -214,11 +225,11 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * To obtain the request config of the operation followUserUpdate
      *
      * @param username A valid username
-     * @param followUserRequest Follow a user.
+     * @param followUserCreate 
      * @return RequestConfig
      */
-    fun followUserUpdateRequestConfig(username: kotlin.String, followUserRequest: FollowUserRequest) : RequestConfig<FollowUserRequest> {
-        val localVariableBody = followUserRequest
+    fun followUserUpdateRequestConfig(username: kotlin.String, followUserCreate: FollowUserCreate) : RequestConfig<FollowUserCreate> {
+        val localVariableBody = followUserCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -239,7 +250,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * List followers
      * Get a list of your followers.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return FollowersList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -272,7 +283,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * List followers
      * Get a list of your followers.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<FollowersList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -291,7 +302,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * To obtain the request config of the operation followersList
      *
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun followersListRequestConfig(bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -391,21 +402,22 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * DELETE /user_account/websites
      * Unverify website
-     * Unverifu a website verified by the signed-in user.
+     * Unverify a website verified by the signed-in user.
      * @param website Website with path or domain only
-     * @return void
+     * @return UserWebsite
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun unverifyWebsiteDelete(website: kotlin.String) : Unit {
+    fun unverifyWebsiteDelete(website: kotlin.String) : UserWebsite {
         val localVarResponse = unverifyWebsiteDeleteWithHttpInfo(website = website)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as UserWebsite
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -422,17 +434,18 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * DELETE /user_account/websites
      * Unverify website
-     * Unverifu a website verified by the signed-in user.
+     * Unverify a website verified by the signed-in user.
      * @param website Website with path or domain only
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<UserWebsite?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun unverifyWebsiteDeleteWithHttpInfo(website: kotlin.String) : ApiResponse<Unit?> {
+    fun unverifyWebsiteDeleteWithHttpInfo(website: kotlin.String) : ApiResponse<UserWebsite?> {
         val localVariableConfig = unverifyWebsiteDeleteRequestConfig(website = website)
 
-        return request<Unit, Unit>(
+        return request<Unit, UserWebsite>(
             localVariableConfig
         )
     }
@@ -559,30 +572,6 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      }
 
     /**
-     * enum for parameter metricTypes
-     */
-     enum class MetricTypesUserAccountAnalytics(val value: kotlin.String) {
-         @Json(name = "ENGAGEMENT") ENGAGEMENT("ENGAGEMENT"),
-         @Json(name = "ENGAGEMENT_RATE") ENGAGEMENT_RATE("ENGAGEMENT_RATE"),
-         @Json(name = "IMPRESSION") IMPRESSION("IMPRESSION"),
-         @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK"),
-         @Json(name = "OUTBOUND_CLICK_RATE") OUTBOUND_CLICK_RATE("OUTBOUND_CLICK_RATE"),
-         @Json(name = "PIN_CLICK") PIN_CLICK("PIN_CLICK"),
-         @Json(name = "PIN_CLICK_RATE") PIN_CLICK_RATE("PIN_CLICK_RATE"),
-         @Json(name = "SAVE") SAVE("SAVE"),
-         @Json(name = "SAVE_RATE") SAVE_RATE("SAVE_RATE");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * enum for parameter splitField
      */
      enum class SplitFieldUserAccountAnalytics(val value: kotlin.String) {
@@ -613,7 +602,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
      * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
-     * @param metricTypes Metric types to get data for, default is all.  (optional)
+     * @param metricTypes Metric types to get data for, default is all. (optional)
      * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to SplitField.NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return kotlin.collections.Map<kotlin.String, AnalyticsMetricsResponse>
@@ -625,7 +614,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun userAccountAnalytics(startDate: java.time.LocalDate, endDate: java.time.LocalDate, fromClaimedContent: FromClaimedContentUserAccountAnalytics? = FromClaimedContentUserAccountAnalytics.BOTH, pinFormat: PinFormatUserAccountAnalytics? = PinFormatUserAccountAnalytics.ALL, appTypes: AppTypesUserAccountAnalytics? = AppTypesUserAccountAnalytics.ALL, contentType: ContentTypeUserAccountAnalytics? = ContentTypeUserAccountAnalytics.ALL, source: SourceUserAccountAnalytics? = SourceUserAccountAnalytics.ALL, metricTypes: kotlin.collections.List<MetricTypesUserAccountAnalytics>? = null, splitField: SplitFieldUserAccountAnalytics? = SplitFieldUserAccountAnalytics.NO_SPLIT, adAccountId: kotlin.String? = null) : kotlin.collections.Map<kotlin.String, AnalyticsMetricsResponse> {
+    fun userAccountAnalytics(startDate: java.time.LocalDate, endDate: java.time.LocalDate, fromClaimedContent: FromClaimedContentUserAccountAnalytics? = FromClaimedContentUserAccountAnalytics.BOTH, pinFormat: PinFormatUserAccountAnalytics? = PinFormatUserAccountAnalytics.ALL, appTypes: AppTypesUserAccountAnalytics? = AppTypesUserAccountAnalytics.ALL, contentType: ContentTypeUserAccountAnalytics? = ContentTypeUserAccountAnalytics.ALL, source: SourceUserAccountAnalytics? = SourceUserAccountAnalytics.ALL, metricTypes: kotlin.collections.List<QuerymetrictypesItems>? = null, splitField: SplitFieldUserAccountAnalytics? = SplitFieldUserAccountAnalytics.NO_SPLIT, adAccountId: kotlin.String? = null) : kotlin.collections.Map<kotlin.String, AnalyticsMetricsResponse> {
         val localVarResponse = userAccountAnalyticsWithHttpInfo(startDate = startDate, endDate = endDate, fromClaimedContent = fromClaimedContent, pinFormat = pinFormat, appTypes = appTypes, contentType = contentType, source = source, metricTypes = metricTypes, splitField = splitField, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
@@ -654,7 +643,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
      * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
-     * @param metricTypes Metric types to get data for, default is all.  (optional)
+     * @param metricTypes Metric types to get data for, default is all. (optional)
      * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to SplitField.NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<kotlin.collections.Map<kotlin.String, AnalyticsMetricsResponse>?>
@@ -663,7 +652,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun userAccountAnalyticsWithHttpInfo(startDate: java.time.LocalDate, endDate: java.time.LocalDate, fromClaimedContent: FromClaimedContentUserAccountAnalytics?, pinFormat: PinFormatUserAccountAnalytics?, appTypes: AppTypesUserAccountAnalytics?, contentType: ContentTypeUserAccountAnalytics?, source: SourceUserAccountAnalytics?, metricTypes: kotlin.collections.List<MetricTypesUserAccountAnalytics>?, splitField: SplitFieldUserAccountAnalytics?, adAccountId: kotlin.String?) : ApiResponse<kotlin.collections.Map<kotlin.String, AnalyticsMetricsResponse>?> {
+    fun userAccountAnalyticsWithHttpInfo(startDate: java.time.LocalDate, endDate: java.time.LocalDate, fromClaimedContent: FromClaimedContentUserAccountAnalytics?, pinFormat: PinFormatUserAccountAnalytics?, appTypes: AppTypesUserAccountAnalytics?, contentType: ContentTypeUserAccountAnalytics?, source: SourceUserAccountAnalytics?, metricTypes: kotlin.collections.List<QuerymetrictypesItems>?, splitField: SplitFieldUserAccountAnalytics?, adAccountId: kotlin.String?) : ApiResponse<kotlin.collections.Map<kotlin.String, AnalyticsMetricsResponse>?> {
         val localVariableConfig = userAccountAnalyticsRequestConfig(startDate = startDate, endDate = endDate, fromClaimedContent = fromClaimedContent, pinFormat = pinFormat, appTypes = appTypes, contentType = contentType, source = source, metricTypes = metricTypes, splitField = splitField, adAccountId = adAccountId)
 
         return request<Unit, kotlin.collections.Map<kotlin.String, AnalyticsMetricsResponse>>(
@@ -681,17 +670,17 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
      * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
-     * @param metricTypes Metric types to get data for, default is all.  (optional)
+     * @param metricTypes Metric types to get data for, default is all. (optional)
      * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to SplitField.NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun userAccountAnalyticsRequestConfig(startDate: java.time.LocalDate, endDate: java.time.LocalDate, fromClaimedContent: FromClaimedContentUserAccountAnalytics?, pinFormat: PinFormatUserAccountAnalytics?, appTypes: AppTypesUserAccountAnalytics?, contentType: ContentTypeUserAccountAnalytics?, source: SourceUserAccountAnalytics?, metricTypes: kotlin.collections.List<MetricTypesUserAccountAnalytics>?, splitField: SplitFieldUserAccountAnalytics?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
+    fun userAccountAnalyticsRequestConfig(startDate: java.time.LocalDate, endDate: java.time.LocalDate, fromClaimedContent: FromClaimedContentUserAccountAnalytics?, pinFormat: PinFormatUserAccountAnalytics?, appTypes: AppTypesUserAccountAnalytics?, contentType: ContentTypeUserAccountAnalytics?, source: SourceUserAccountAnalytics?, metricTypes: kotlin.collections.List<QuerymetrictypesItems>?, splitField: SplitFieldUserAccountAnalytics?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                put("start_date", listOf(parseDateToQueryString(startDate)))
-                put("end_date", listOf(parseDateToQueryString(endDate)))
+                put("start_date", listOf(parseDateToQueryString<java.time.LocalDate>(startDate)))
+                put("end_date", listOf(parseDateToQueryString<java.time.LocalDate>(endDate)))
                 if (fromClaimedContent != null) {
                     put("from_claimed_content", listOf(fromClaimedContent.value))
                 }
@@ -729,26 +718,6 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
             body = localVariableBody
         )
     }
-
-    /**
-     * enum for parameter sortBy
-     */
-     enum class SortByUserAccountAnalyticsTopPins(val value: kotlin.String) {
-         @Json(name = "ENGAGEMENT") ENGAGEMENT("ENGAGEMENT"),
-         @Json(name = "IMPRESSION") IMPRESSION("IMPRESSION"),
-         @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK"),
-         @Json(name = "PIN_CLICK") PIN_CLICK("PIN_CLICK"),
-         @Json(name = "SAVE") SAVE("SAVE");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
 
     /**
      * enum for parameter fromClaimedContent
@@ -847,34 +816,10 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      }
 
     /**
-     * enum for parameter metricTypes
-     */
-     enum class MetricTypesUserAccountAnalyticsTopPins(val value: kotlin.String) {
-         @Json(name = "ENGAGEMENT") ENGAGEMENT("ENGAGEMENT"),
-         @Json(name = "ENGAGEMENT_RATE") ENGAGEMENT_RATE("ENGAGEMENT_RATE"),
-         @Json(name = "IMPRESSION") IMPRESSION("IMPRESSION"),
-         @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK"),
-         @Json(name = "OUTBOUND_CLICK_RATE") OUTBOUND_CLICK_RATE("OUTBOUND_CLICK_RATE"),
-         @Json(name = "PIN_CLICK") PIN_CLICK("PIN_CLICK"),
-         @Json(name = "PIN_CLICK_RATE") PIN_CLICK_RATE("PIN_CLICK_RATE"),
-         @Json(name = "SAVE") SAVE("SAVE"),
-         @Json(name = "SAVE_RATE") SAVE_RATE("SAVE_RATE");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * enum for parameter createdInLastNDays
      */
-     enum class CreatedInLastNDaysUserAccountAnalyticsTopPins(val value: kotlin.Int) {
-         @Json(name = "30") _30(30);
+     enum class CreatedInLastNDaysUserAccountAnalyticsTopPins(val value: java.math.BigDecimal) {
+         @Json(name = ""30"") _30("30");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -898,7 +843,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
      * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
-     * @param metricTypes Metric types to get data for, default is all.  (optional)
+     * @param metricTypes Metric types to get data for, default is all. (optional)
      * @param numOfPins Number of pins to include, default is 10. Max is 50. (optional, default to 10)
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
@@ -911,7 +856,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun userAccountAnalyticsTopPins(startDate: java.time.LocalDate, endDate: java.time.LocalDate, sortBy: SortByUserAccountAnalyticsTopPins, fromClaimedContent: FromClaimedContentUserAccountAnalyticsTopPins? = FromClaimedContentUserAccountAnalyticsTopPins.BOTH, pinFormat: PinFormatUserAccountAnalyticsTopPins? = PinFormatUserAccountAnalyticsTopPins.ALL, appTypes: AppTypesUserAccountAnalyticsTopPins? = AppTypesUserAccountAnalyticsTopPins.ALL, contentType: ContentTypeUserAccountAnalyticsTopPins? = ContentTypeUserAccountAnalyticsTopPins.ALL, source: SourceUserAccountAnalyticsTopPins? = SourceUserAccountAnalyticsTopPins.ALL, metricTypes: kotlin.collections.List<MetricTypesUserAccountAnalyticsTopPins>? = null, numOfPins: kotlin.Int? = 10, createdInLastNDays: CreatedInLastNDaysUserAccountAnalyticsTopPins? = null, adAccountId: kotlin.String? = null) : TopPinsAnalyticsResponse {
+    fun userAccountAnalyticsTopPins(startDate: java.time.LocalDate, endDate: java.time.LocalDate, sortBy: TopPinsSortBy, fromClaimedContent: FromClaimedContentUserAccountAnalyticsTopPins? = FromClaimedContentUserAccountAnalyticsTopPins.BOTH, pinFormat: PinFormatUserAccountAnalyticsTopPins? = PinFormatUserAccountAnalyticsTopPins.ALL, appTypes: AppTypesUserAccountAnalyticsTopPins? = AppTypesUserAccountAnalyticsTopPins.ALL, contentType: ContentTypeUserAccountAnalyticsTopPins? = ContentTypeUserAccountAnalyticsTopPins.ALL, source: SourceUserAccountAnalyticsTopPins? = SourceUserAccountAnalyticsTopPins.ALL, metricTypes: kotlin.collections.List<QuerymetrictypesItems>? = null, numOfPins: kotlin.Int? = 10, createdInLastNDays: CreatedInLastNDaysUserAccountAnalyticsTopPins? = null, adAccountId: kotlin.String? = null) : TopPinsAnalyticsResponse {
         val localVarResponse = userAccountAnalyticsTopPinsWithHttpInfo(startDate = startDate, endDate = endDate, sortBy = sortBy, fromClaimedContent = fromClaimedContent, pinFormat = pinFormat, appTypes = appTypes, contentType = contentType, source = source, metricTypes = metricTypes, numOfPins = numOfPins, createdInLastNDays = createdInLastNDays, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
@@ -941,7 +886,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
      * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
-     * @param metricTypes Metric types to get data for, default is all.  (optional)
+     * @param metricTypes Metric types to get data for, default is all. (optional)
      * @param numOfPins Number of pins to include, default is 10. Max is 50. (optional, default to 10)
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
@@ -951,7 +896,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun userAccountAnalyticsTopPinsWithHttpInfo(startDate: java.time.LocalDate, endDate: java.time.LocalDate, sortBy: SortByUserAccountAnalyticsTopPins, fromClaimedContent: FromClaimedContentUserAccountAnalyticsTopPins?, pinFormat: PinFormatUserAccountAnalyticsTopPins?, appTypes: AppTypesUserAccountAnalyticsTopPins?, contentType: ContentTypeUserAccountAnalyticsTopPins?, source: SourceUserAccountAnalyticsTopPins?, metricTypes: kotlin.collections.List<MetricTypesUserAccountAnalyticsTopPins>?, numOfPins: kotlin.Int?, createdInLastNDays: CreatedInLastNDaysUserAccountAnalyticsTopPins?, adAccountId: kotlin.String?) : ApiResponse<TopPinsAnalyticsResponse?> {
+    fun userAccountAnalyticsTopPinsWithHttpInfo(startDate: java.time.LocalDate, endDate: java.time.LocalDate, sortBy: TopPinsSortBy, fromClaimedContent: FromClaimedContentUserAccountAnalyticsTopPins?, pinFormat: PinFormatUserAccountAnalyticsTopPins?, appTypes: AppTypesUserAccountAnalyticsTopPins?, contentType: ContentTypeUserAccountAnalyticsTopPins?, source: SourceUserAccountAnalyticsTopPins?, metricTypes: kotlin.collections.List<QuerymetrictypesItems>?, numOfPins: kotlin.Int?, createdInLastNDays: CreatedInLastNDaysUserAccountAnalyticsTopPins?, adAccountId: kotlin.String?) : ApiResponse<TopPinsAnalyticsResponse?> {
         val localVariableConfig = userAccountAnalyticsTopPinsRequestConfig(startDate = startDate, endDate = endDate, sortBy = sortBy, fromClaimedContent = fromClaimedContent, pinFormat = pinFormat, appTypes = appTypes, contentType = contentType, source = source, metricTypes = metricTypes, numOfPins = numOfPins, createdInLastNDays = createdInLastNDays, adAccountId = adAccountId)
 
         return request<Unit, TopPinsAnalyticsResponse>(
@@ -970,19 +915,19 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
      * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
-     * @param metricTypes Metric types to get data for, default is all.  (optional)
+     * @param metricTypes Metric types to get data for, default is all. (optional)
      * @param numOfPins Number of pins to include, default is 10. Max is 50. (optional, default to 10)
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun userAccountAnalyticsTopPinsRequestConfig(startDate: java.time.LocalDate, endDate: java.time.LocalDate, sortBy: SortByUserAccountAnalyticsTopPins, fromClaimedContent: FromClaimedContentUserAccountAnalyticsTopPins?, pinFormat: PinFormatUserAccountAnalyticsTopPins?, appTypes: AppTypesUserAccountAnalyticsTopPins?, contentType: ContentTypeUserAccountAnalyticsTopPins?, source: SourceUserAccountAnalyticsTopPins?, metricTypes: kotlin.collections.List<MetricTypesUserAccountAnalyticsTopPins>?, numOfPins: kotlin.Int?, createdInLastNDays: CreatedInLastNDaysUserAccountAnalyticsTopPins?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
+    fun userAccountAnalyticsTopPinsRequestConfig(startDate: java.time.LocalDate, endDate: java.time.LocalDate, sortBy: TopPinsSortBy, fromClaimedContent: FromClaimedContentUserAccountAnalyticsTopPins?, pinFormat: PinFormatUserAccountAnalyticsTopPins?, appTypes: AppTypesUserAccountAnalyticsTopPins?, contentType: ContentTypeUserAccountAnalyticsTopPins?, source: SourceUserAccountAnalyticsTopPins?, metricTypes: kotlin.collections.List<QuerymetrictypesItems>?, numOfPins: kotlin.Int?, createdInLastNDays: CreatedInLastNDaysUserAccountAnalyticsTopPins?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                put("start_date", listOf(parseDateToQueryString(startDate)))
-                put("end_date", listOf(parseDateToQueryString(endDate)))
-                put("sort_by", listOf(sortBy.value))
+                put("start_date", listOf(parseDateToQueryString<java.time.LocalDate>(startDate)))
+                put("end_date", listOf(parseDateToQueryString<java.time.LocalDate>(endDate)))
+                put("sort_by", listOf(sortBy.toString()))
                 if (fromClaimedContent != null) {
                     put("from_claimed_content", listOf(fromClaimedContent.value))
                 }
@@ -1023,30 +968,6 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
             body = localVariableBody
         )
     }
-
-    /**
-     * enum for parameter sortBy
-     */
-     enum class SortByUserAccountAnalyticsTopVideoPins(val value: kotlin.String) {
-         @Json(name = "IMPRESSION") IMPRESSION("IMPRESSION"),
-         @Json(name = "SAVE") SAVE("SAVE"),
-         @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK"),
-         @Json(name = "VIDEO_MRC_VIEW") VIDEO_MRC_VIEW("VIDEO_MRC_VIEW"),
-         @Json(name = "VIDEO_AVG_WATCH_TIME") VIDEO_AVG_WATCH_TIME("VIDEO_AVG_WATCH_TIME"),
-         @Json(name = "VIDEO_V50_WATCH_TIME") VIDEO_V50_WATCH_TIME("VIDEO_V50_WATCH_TIME"),
-         @Json(name = "QUARTILE_95_PERCENT_VIEW") QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
-         @Json(name = "VIDEO_10S_VIEW") VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
-         @Json(name = "VIDEO_START") VIDEO_START("VIDEO_START");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
 
     /**
      * enum for parameter fromClaimedContent
@@ -1145,34 +1066,10 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      }
 
     /**
-     * enum for parameter metricTypes
-     */
-     enum class MetricTypesUserAccountAnalyticsTopVideoPins(val value: kotlin.String) {
-         @Json(name = "IMPRESSION") IMPRESSION("IMPRESSION"),
-         @Json(name = "SAVE") SAVE("SAVE"),
-         @Json(name = "VIDEO_MRC_VIEW") VIDEO_MRC_VIEW("VIDEO_MRC_VIEW"),
-         @Json(name = "VIDEO_AVG_WATCH_TIME") VIDEO_AVG_WATCH_TIME("VIDEO_AVG_WATCH_TIME"),
-         @Json(name = "VIDEO_V50_WATCH_TIME") VIDEO_V50_WATCH_TIME("VIDEO_V50_WATCH_TIME"),
-         @Json(name = "QUARTILE_95_PERCENT_VIEW") QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
-         @Json(name = "VIDEO_10S_VIEW") VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
-         @Json(name = "VIDEO_START") VIDEO_START("VIDEO_START"),
-         @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * enum for parameter createdInLastNDays
      */
-     enum class CreatedInLastNDaysUserAccountAnalyticsTopVideoPins(val value: kotlin.Int) {
-         @Json(name = "30") _30(30);
+     enum class CreatedInLastNDaysUserAccountAnalyticsTopVideoPins(val value: java.math.BigDecimal) {
+         @Json(name = ""30"") _30("30");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -1196,7 +1093,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
      * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
-     * @param metricTypes Metric types to get video data for, default is all.  (optional)
+     * @param metricTypes Metric types to get video data for, default is all. (optional)
      * @param numOfPins Number of pins to include, default is 10. Max is 50. (optional, default to 10)
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
@@ -1209,7 +1106,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun userAccountAnalyticsTopVideoPins(startDate: java.time.LocalDate, endDate: java.time.LocalDate, sortBy: SortByUserAccountAnalyticsTopVideoPins, fromClaimedContent: FromClaimedContentUserAccountAnalyticsTopVideoPins? = FromClaimedContentUserAccountAnalyticsTopVideoPins.BOTH, pinFormat: PinFormatUserAccountAnalyticsTopVideoPins? = PinFormatUserAccountAnalyticsTopVideoPins.ALL, appTypes: AppTypesUserAccountAnalyticsTopVideoPins? = AppTypesUserAccountAnalyticsTopVideoPins.ALL, contentType: ContentTypeUserAccountAnalyticsTopVideoPins? = ContentTypeUserAccountAnalyticsTopVideoPins.ALL, source: SourceUserAccountAnalyticsTopVideoPins? = SourceUserAccountAnalyticsTopVideoPins.ALL, metricTypes: kotlin.collections.List<MetricTypesUserAccountAnalyticsTopVideoPins>? = null, numOfPins: kotlin.Int? = 10, createdInLastNDays: CreatedInLastNDaysUserAccountAnalyticsTopVideoPins? = null, adAccountId: kotlin.String? = null) : TopVideoPinsAnalyticsResponse {
+    fun userAccountAnalyticsTopVideoPins(startDate: java.time.LocalDate, endDate: java.time.LocalDate, sortBy: TopVideoPinsSortBy, fromClaimedContent: FromClaimedContentUserAccountAnalyticsTopVideoPins? = FromClaimedContentUserAccountAnalyticsTopVideoPins.BOTH, pinFormat: PinFormatUserAccountAnalyticsTopVideoPins? = PinFormatUserAccountAnalyticsTopVideoPins.ALL, appTypes: AppTypesUserAccountAnalyticsTopVideoPins? = AppTypesUserAccountAnalyticsTopVideoPins.ALL, contentType: ContentTypeUserAccountAnalyticsTopVideoPins? = ContentTypeUserAccountAnalyticsTopVideoPins.ALL, source: SourceUserAccountAnalyticsTopVideoPins? = SourceUserAccountAnalyticsTopVideoPins.ALL, metricTypes: kotlin.collections.List<QueryvideopinmetrictypesItems>? = null, numOfPins: kotlin.Int? = 10, createdInLastNDays: CreatedInLastNDaysUserAccountAnalyticsTopVideoPins? = null, adAccountId: kotlin.String? = null) : TopVideoPinsAnalyticsResponse {
         val localVarResponse = userAccountAnalyticsTopVideoPinsWithHttpInfo(startDate = startDate, endDate = endDate, sortBy = sortBy, fromClaimedContent = fromClaimedContent, pinFormat = pinFormat, appTypes = appTypes, contentType = contentType, source = source, metricTypes = metricTypes, numOfPins = numOfPins, createdInLastNDays = createdInLastNDays, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
@@ -1239,7 +1136,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
      * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
-     * @param metricTypes Metric types to get video data for, default is all.  (optional)
+     * @param metricTypes Metric types to get video data for, default is all. (optional)
      * @param numOfPins Number of pins to include, default is 10. Max is 50. (optional, default to 10)
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
@@ -1249,7 +1146,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun userAccountAnalyticsTopVideoPinsWithHttpInfo(startDate: java.time.LocalDate, endDate: java.time.LocalDate, sortBy: SortByUserAccountAnalyticsTopVideoPins, fromClaimedContent: FromClaimedContentUserAccountAnalyticsTopVideoPins?, pinFormat: PinFormatUserAccountAnalyticsTopVideoPins?, appTypes: AppTypesUserAccountAnalyticsTopVideoPins?, contentType: ContentTypeUserAccountAnalyticsTopVideoPins?, source: SourceUserAccountAnalyticsTopVideoPins?, metricTypes: kotlin.collections.List<MetricTypesUserAccountAnalyticsTopVideoPins>?, numOfPins: kotlin.Int?, createdInLastNDays: CreatedInLastNDaysUserAccountAnalyticsTopVideoPins?, adAccountId: kotlin.String?) : ApiResponse<TopVideoPinsAnalyticsResponse?> {
+    fun userAccountAnalyticsTopVideoPinsWithHttpInfo(startDate: java.time.LocalDate, endDate: java.time.LocalDate, sortBy: TopVideoPinsSortBy, fromClaimedContent: FromClaimedContentUserAccountAnalyticsTopVideoPins?, pinFormat: PinFormatUserAccountAnalyticsTopVideoPins?, appTypes: AppTypesUserAccountAnalyticsTopVideoPins?, contentType: ContentTypeUserAccountAnalyticsTopVideoPins?, source: SourceUserAccountAnalyticsTopVideoPins?, metricTypes: kotlin.collections.List<QueryvideopinmetrictypesItems>?, numOfPins: kotlin.Int?, createdInLastNDays: CreatedInLastNDaysUserAccountAnalyticsTopVideoPins?, adAccountId: kotlin.String?) : ApiResponse<TopVideoPinsAnalyticsResponse?> {
         val localVariableConfig = userAccountAnalyticsTopVideoPinsRequestConfig(startDate = startDate, endDate = endDate, sortBy = sortBy, fromClaimedContent = fromClaimedContent, pinFormat = pinFormat, appTypes = appTypes, contentType = contentType, source = source, metricTypes = metricTypes, numOfPins = numOfPins, createdInLastNDays = createdInLastNDays, adAccountId = adAccountId)
 
         return request<Unit, TopVideoPinsAnalyticsResponse>(
@@ -1268,19 +1165,19 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
      * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
-     * @param metricTypes Metric types to get video data for, default is all.  (optional)
+     * @param metricTypes Metric types to get video data for, default is all. (optional)
      * @param numOfPins Number of pins to include, default is 10. Max is 50. (optional, default to 10)
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun userAccountAnalyticsTopVideoPinsRequestConfig(startDate: java.time.LocalDate, endDate: java.time.LocalDate, sortBy: SortByUserAccountAnalyticsTopVideoPins, fromClaimedContent: FromClaimedContentUserAccountAnalyticsTopVideoPins?, pinFormat: PinFormatUserAccountAnalyticsTopVideoPins?, appTypes: AppTypesUserAccountAnalyticsTopVideoPins?, contentType: ContentTypeUserAccountAnalyticsTopVideoPins?, source: SourceUserAccountAnalyticsTopVideoPins?, metricTypes: kotlin.collections.List<MetricTypesUserAccountAnalyticsTopVideoPins>?, numOfPins: kotlin.Int?, createdInLastNDays: CreatedInLastNDaysUserAccountAnalyticsTopVideoPins?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
+    fun userAccountAnalyticsTopVideoPinsRequestConfig(startDate: java.time.LocalDate, endDate: java.time.LocalDate, sortBy: TopVideoPinsSortBy, fromClaimedContent: FromClaimedContentUserAccountAnalyticsTopVideoPins?, pinFormat: PinFormatUserAccountAnalyticsTopVideoPins?, appTypes: AppTypesUserAccountAnalyticsTopVideoPins?, contentType: ContentTypeUserAccountAnalyticsTopVideoPins?, source: SourceUserAccountAnalyticsTopVideoPins?, metricTypes: kotlin.collections.List<QueryvideopinmetrictypesItems>?, numOfPins: kotlin.Int?, createdInLastNDays: CreatedInLastNDaysUserAccountAnalyticsTopVideoPins?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                put("start_date", listOf(parseDateToQueryString(startDate)))
-                put("end_date", listOf(parseDateToQueryString(endDate)))
-                put("sort_by", listOf(sortBy.value))
+                put("start_date", listOf(parseDateToQueryString<java.time.LocalDate>(startDate)))
+                put("end_date", listOf(parseDateToQueryString<java.time.LocalDate>(endDate)))
+                put("sort_by", listOf(sortBy.toString()))
                 if (fromClaimedContent != null) {
                     put("from_claimed_content", listOf(fromClaimedContent.value))
                 }
@@ -1328,7 +1225,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * Get a list of a user&#39;s following interests in one place.
      * @param username A valid username
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return UserAccountFollowedInterests200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1338,9 +1235,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    @Deprecated(message = "This operation is deprecated.")
     fun userAccountFollowedInterests(username: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : UserAccountFollowedInterests200Response {
-        @Suppress("DEPRECATION")
         val localVarResponse = userAccountFollowedInterestsWithHttpInfo(username = username, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
@@ -1364,16 +1259,14 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * Get a list of a user&#39;s following interests in one place.
      * @param username A valid username
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<UserAccountFollowedInterests200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    @Deprecated(message = "This operation is deprecated.")
     fun userAccountFollowedInterestsWithHttpInfo(username: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<UserAccountFollowedInterests200Response?> {
-        @Suppress("DEPRECATION")
         val localVariableConfig = userAccountFollowedInterestsRequestConfig(username = username, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, UserAccountFollowedInterests200Response>(
@@ -1386,10 +1279,9 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      *
      * @param username A valid username
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    @Deprecated(message = "This operation is deprecated.")
     fun userAccountFollowedInterestsRequestConfig(username: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
@@ -1417,7 +1309,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * GET /user_account
      * Get user account
-     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return Account
      * @throws IllegalStateException If the request is not correctly configured
@@ -1449,7 +1341,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * GET /user_account
      * Get user account
-     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<Account?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -1496,12 +1388,12 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * GET /user_account/following
      * List following
      * Get a list of who a certain user follows.
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to UserFollowingFeedType.ALL)
-     * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return UserFollowingGet200Response
+     * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
+     * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to UserFollowingFeedType.ALL)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return FollowersList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -1510,11 +1402,11 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun userFollowingGet(bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, feedType: UserFollowingFeedType? = UserFollowingFeedType.ALL, explicitFollowing: kotlin.Boolean? = false, adAccountId: kotlin.String? = null) : UserFollowingGet200Response {
-        val localVarResponse = userFollowingGetWithHttpInfo(bookmark = bookmark, pageSize = pageSize, feedType = feedType, explicitFollowing = explicitFollowing, adAccountId = adAccountId)
+    fun userFollowingGet(adAccountId: kotlin.String? = null, explicitFollowing: kotlin.Boolean? = false, feedType: UserFollowingFeedType? = UserFollowingFeedType.ALL, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : FollowersList200Response {
+        val localVarResponse = userFollowingGetWithHttpInfo(adAccountId = adAccountId, explicitFollowing = explicitFollowing, feedType = feedType, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as UserFollowingGet200Response
+            ResponseType.Success -> (localVarResponse as Success<*>).data as FollowersList200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1532,21 +1424,21 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * GET /user_account/following
      * List following
      * Get a list of who a certain user follows.
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to UserFollowingFeedType.ALL)
-     * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return ApiResponse<UserFollowingGet200Response?>
+     * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
+     * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to UserFollowingFeedType.ALL)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return ApiResponse<FollowersList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun userFollowingGetWithHttpInfo(bookmark: kotlin.String?, pageSize: kotlin.Int?, feedType: UserFollowingFeedType?, explicitFollowing: kotlin.Boolean?, adAccountId: kotlin.String?) : ApiResponse<UserFollowingGet200Response?> {
-        val localVariableConfig = userFollowingGetRequestConfig(bookmark = bookmark, pageSize = pageSize, feedType = feedType, explicitFollowing = explicitFollowing, adAccountId = adAccountId)
+    fun userFollowingGetWithHttpInfo(adAccountId: kotlin.String?, explicitFollowing: kotlin.Boolean?, feedType: UserFollowingFeedType?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<FollowersList200Response?> {
+        val localVariableConfig = userFollowingGetRequestConfig(adAccountId = adAccountId, explicitFollowing = explicitFollowing, feedType = feedType, bookmark = bookmark, pageSize = pageSize)
 
-        return request<Unit, UserFollowingGet200Response>(
+        return request<Unit, FollowersList200Response>(
             localVariableConfig
         )
     }
@@ -1554,31 +1446,31 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * To obtain the request config of the operation userFollowingGet
      *
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to UserFollowingFeedType.ALL)
-     * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
+     * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to UserFollowingFeedType.ALL)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun userFollowingGetRequestConfig(bookmark: kotlin.String?, pageSize: kotlin.Int?, feedType: UserFollowingFeedType?, explicitFollowing: kotlin.Boolean?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
+    fun userFollowingGetRequestConfig(adAccountId: kotlin.String?, explicitFollowing: kotlin.Boolean?, feedType: UserFollowingFeedType?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (adAccountId != null) {
+                    put("ad_account_id", listOf(adAccountId.toString()))
+                }
+                if (explicitFollowing != null) {
+                    put("explicit_following", listOf(explicitFollowing.toString()))
+                }
+                if (feedType != null) {
+                    put("feed_type", listOf(feedType.toString()))
+                }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
                 }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
-                }
-                if (feedType != null) {
-                    put("feed_type", listOf(feedType.toString()))
-                }
-                if (explicitFollowing != null) {
-                    put("explicit_following", listOf(explicitFollowing.toString()))
-                }
-                if (adAccountId != null) {
-                    put("ad_account_id", listOf(adAccountId.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -1599,7 +1491,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * Get user websites
      * Get user websites, claimed or not
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return UserWebsitesGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1632,7 +1524,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * Get user websites
      * Get user websites, claimed or not
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<UserWebsitesGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1651,7 +1543,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * To obtain the request config of the operation userWebsitesGet
      *
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun userWebsitesGetRequestConfig(bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -1682,9 +1574,9 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * POST /user_account/websites
      * Verify website
      * Verify a website as a signed-in user.
-     * @param userWebsiteVerifyRequest Verify a website.
+     * @param userWebsiteCreate 
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return UserWebsiteSummary
+     * @return UserWebsite
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -1693,11 +1585,11 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: kotlin.String? = null) : UserWebsiteSummary {
-        val localVarResponse = verifyWebsiteUpdateWithHttpInfo(userWebsiteVerifyRequest = userWebsiteVerifyRequest, adAccountId = adAccountId)
+    fun verifyWebsiteUpdate(userWebsiteCreate: UserWebsiteCreate, adAccountId: kotlin.String? = null) : UserWebsite {
+        val localVarResponse = verifyWebsiteUpdateWithHttpInfo(userWebsiteCreate = userWebsiteCreate, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as UserWebsiteSummary
+            ResponseType.Success -> (localVarResponse as Success<*>).data as UserWebsite
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1715,18 +1607,18 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * POST /user_account/websites
      * Verify website
      * Verify a website as a signed-in user.
-     * @param userWebsiteVerifyRequest Verify a website.
+     * @param userWebsiteCreate 
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return ApiResponse<UserWebsiteSummary?>
+     * @return ApiResponse<UserWebsite?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun verifyWebsiteUpdateWithHttpInfo(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: kotlin.String?) : ApiResponse<UserWebsiteSummary?> {
-        val localVariableConfig = verifyWebsiteUpdateRequestConfig(userWebsiteVerifyRequest = userWebsiteVerifyRequest, adAccountId = adAccountId)
+    fun verifyWebsiteUpdateWithHttpInfo(userWebsiteCreate: UserWebsiteCreate, adAccountId: kotlin.String?) : ApiResponse<UserWebsite?> {
+        val localVariableConfig = verifyWebsiteUpdateRequestConfig(userWebsiteCreate = userWebsiteCreate, adAccountId = adAccountId)
 
-        return request<UserWebsiteVerifyRequest, UserWebsiteSummary>(
+        return request<UserWebsiteCreate, UserWebsite>(
             localVariableConfig
         )
     }
@@ -1734,12 +1626,12 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * To obtain the request config of the operation verifyWebsiteUpdate
      *
-     * @param userWebsiteVerifyRequest Verify a website.
+     * @param userWebsiteCreate 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun verifyWebsiteUpdateRequestConfig(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: kotlin.String?) : RequestConfig<UserWebsiteVerifyRequest> {
-        val localVariableBody = userWebsiteVerifyRequest
+    fun verifyWebsiteUpdateRequestConfig(userWebsiteCreate: UserWebsiteCreate, adAccountId: kotlin.String?) : RequestConfig<UserWebsiteCreate> {
+        val localVariableBody = userWebsiteCreate
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (adAccountId != null) {
@@ -1765,7 +1657,7 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * Get user verification code for website claiming
      * Get verification code for user to install on the website to claim it.
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return UserWebsiteVerificationCode
+     * @return UserWebsiteVerification
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -1774,11 +1666,11 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun websiteVerificationGet(adAccountId: kotlin.String? = null) : UserWebsiteVerificationCode {
+    fun websiteVerificationGet(adAccountId: kotlin.String? = null) : UserWebsiteVerification {
         val localVarResponse = websiteVerificationGetWithHttpInfo(adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as UserWebsiteVerificationCode
+            ResponseType.Success -> (localVarResponse as Success<*>).data as UserWebsiteVerification
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1797,16 +1689,16 @@ open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * Get user verification code for website claiming
      * Get verification code for user to install on the website to claim it.
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return ApiResponse<UserWebsiteVerificationCode?>
+     * @return ApiResponse<UserWebsiteVerification?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun websiteVerificationGetWithHttpInfo(adAccountId: kotlin.String?) : ApiResponse<UserWebsiteVerificationCode?> {
+    fun websiteVerificationGetWithHttpInfo(adAccountId: kotlin.String?) : ApiResponse<UserWebsiteVerification?> {
         val localVariableConfig = websiteVerificationGetRequestConfig(adAccountId = adAccountId)
 
-        return request<Unit, UserWebsiteVerificationCode>(
+        return request<Unit, UserWebsiteVerification>(
             localVariableConfig
         )
     }

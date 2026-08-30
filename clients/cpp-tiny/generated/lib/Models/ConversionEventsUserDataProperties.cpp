@@ -595,7 +595,7 @@ ConversionEventsUserDataProperties::getClickId()
 }
 
 void
-ConversionEventsUserDataProperties::setClickId(std::string  click_id)
+ConversionEventsUserDataProperties::setClickId(std::string click_id)
 {
 	this->click_id = click_id;
 }
@@ -607,7 +607,7 @@ ConversionEventsUserDataProperties::getClientIpAddress()
 }
 
 void
-ConversionEventsUserDataProperties::setClientIpAddress(std::string  client_ip_address)
+ConversionEventsUserDataProperties::setClientIpAddress(std::string client_ip_address)
 {
 	this->client_ip_address = client_ip_address;
 }
@@ -619,7 +619,7 @@ ConversionEventsUserDataProperties::getClientUserAgent()
 }
 
 void
-ConversionEventsUserDataProperties::setClientUserAgent(std::string  client_user_agent)
+ConversionEventsUserDataProperties::setClientUserAgent(std::string client_user_agent)
 {
 	this->client_user_agent = client_user_agent;
 }
@@ -631,7 +631,7 @@ ConversionEventsUserDataProperties::getCountry()
 }
 
 void
-ConversionEventsUserDataProperties::setCountry(std::list <std::string> country)
+ConversionEventsUserDataProperties::setCountry(std::list<std::string> country)
 {
 	this->country = country;
 }
@@ -643,7 +643,7 @@ ConversionEventsUserDataProperties::getCt()
 }
 
 void
-ConversionEventsUserDataProperties::setCt(std::list <std::string> ct)
+ConversionEventsUserDataProperties::setCt(std::list<std::string> ct)
 {
 	this->ct = ct;
 }
@@ -655,7 +655,7 @@ ConversionEventsUserDataProperties::getDb()
 }
 
 void
-ConversionEventsUserDataProperties::setDb(std::list <std::string> db)
+ConversionEventsUserDataProperties::setDb(std::list<std::string> db)
 {
 	this->db = db;
 }
@@ -667,7 +667,7 @@ ConversionEventsUserDataProperties::getEm()
 }
 
 void
-ConversionEventsUserDataProperties::setEm(std::list <std::string> em)
+ConversionEventsUserDataProperties::setEm(std::list<std::string> em)
 {
 	this->em = em;
 }
@@ -679,7 +679,7 @@ ConversionEventsUserDataProperties::getExternalId()
 }
 
 void
-ConversionEventsUserDataProperties::setExternalId(std::list <std::string> external_id)
+ConversionEventsUserDataProperties::setExternalId(std::list<std::string> external_id)
 {
 	this->external_id = external_id;
 }
@@ -691,7 +691,7 @@ ConversionEventsUserDataProperties::getFn()
 }
 
 void
-ConversionEventsUserDataProperties::setFn(std::list <std::string> fn)
+ConversionEventsUserDataProperties::setFn(std::list<std::string> fn)
 {
 	this->fn = fn;
 }
@@ -703,7 +703,7 @@ ConversionEventsUserDataProperties::getGe()
 }
 
 void
-ConversionEventsUserDataProperties::setGe(std::list <std::string> ge)
+ConversionEventsUserDataProperties::setGe(std::list<std::string> ge)
 {
 	this->ge = ge;
 }
@@ -715,7 +715,7 @@ ConversionEventsUserDataProperties::getHashedMaids()
 }
 
 void
-ConversionEventsUserDataProperties::setHashedMaids(std::list <std::string> hashed_maids)
+ConversionEventsUserDataProperties::setHashedMaids(std::list<std::string> hashed_maids)
 {
 	this->hashed_maids = hashed_maids;
 }
@@ -727,7 +727,7 @@ ConversionEventsUserDataProperties::getLn()
 }
 
 void
-ConversionEventsUserDataProperties::setLn(std::list <std::string> ln)
+ConversionEventsUserDataProperties::setLn(std::list<std::string> ln)
 {
 	this->ln = ln;
 }
@@ -739,7 +739,7 @@ ConversionEventsUserDataProperties::getPartnerId()
 }
 
 void
-ConversionEventsUserDataProperties::setPartnerId(std::string  partner_id)
+ConversionEventsUserDataProperties::setPartnerId(std::string partner_id)
 {
 	this->partner_id = partner_id;
 }
@@ -751,7 +751,7 @@ ConversionEventsUserDataProperties::getPh()
 }
 
 void
-ConversionEventsUserDataProperties::setPh(std::list <std::string> ph)
+ConversionEventsUserDataProperties::setPh(std::list<std::string> ph)
 {
 	this->ph = ph;
 }
@@ -763,7 +763,7 @@ ConversionEventsUserDataProperties::getSt()
 }
 
 void
-ConversionEventsUserDataProperties::setSt(std::list <std::string> st)
+ConversionEventsUserDataProperties::setSt(std::list<std::string> st)
 {
 	this->st = st;
 }
@@ -775,7 +775,7 @@ ConversionEventsUserDataProperties::getZp()
 }
 
 void
-ConversionEventsUserDataProperties::setZp(std::list <std::string> zp)
+ConversionEventsUserDataProperties::setZp(std::list<std::string> zp)
 {
 	this->zp = zp;
 }

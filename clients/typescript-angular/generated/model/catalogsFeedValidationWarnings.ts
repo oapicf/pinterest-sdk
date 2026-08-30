@@ -713,7 +713,7 @@ export interface CatalogsFeedValidationWarnings {
     /**
      * Ingestion completed early because there are no changes to your feed since the last successful update.
      */
-    FETCH_SAME_SIGNATURE?: CatalogsFeedValidationWarnings.FETCHSAMESIGNATUREEnum;
+    FETCH_SAME_SIGNATURE?: number;
     /**
      * Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
      */
@@ -855,11 +855,4 @@ export interface CatalogsFeedValidationWarnings {
      */
     WEIGHT_UNIT_INVALID?: number;
 }
-export namespace CatalogsFeedValidationWarnings {
-    export const FETCHSAMESIGNATUREEnum = {
-        NUMBER_1: 1
-    } as const;
-    export type FETCHSAMESIGNATUREEnum = typeof FETCHSAMESIGNATUREEnum[keyof typeof FETCHSAMESIGNATUREEnum];
-}
-
 

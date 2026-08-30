@@ -18,13 +18,13 @@
 -define(BASE_URL, <<"/v5">>).
 
 %% @doc Get ad account analytics
-%% Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
--spec ad_account/analytics(ctx:ctx(), binary(), calendar:date(), calendar:date(), list(), openapi_granularity) -> {ok, [openapi_ad_account_analytics_response_inner:openapi_ad_account_analytics_response_inner()], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-ad_account/analytics(Ctx, AdAccountId, StartDate, EndDate, Columns, Granularity) ->
-    ad_account/analytics(Ctx, AdAccountId, StartDate, EndDate, Columns, Granularity, #{}).
+%%   Get analytics for the specified `ad_account_id`, filtered by the specified options.    - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.    - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.    - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
+-spec ad_account/analytics(ctx:ctx(), calendar:date(), calendar:date(), list(), openapi_granularity, binary()) -> {ok, [openapi_ad_account_analytics_items:openapi_ad_account_analytics_items()], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+ad_account/analytics(Ctx, StartDate, EndDate, Columns, Granularity, AdAccountId) ->
+    ad_account/analytics(Ctx, StartDate, EndDate, Columns, Granularity, AdAccountId, #{}).
 
--spec ad_account/analytics(ctx:ctx(), binary(), calendar:date(), calendar:date(), list(), openapi_granularity, maps:map()) -> {ok, [openapi_ad_account_analytics_response_inner:openapi_ad_account_analytics_response_inner()], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-ad_account/analytics(Ctx, AdAccountId, StartDate, EndDate, Columns, Granularity, Optional) ->
+-spec ad_account/analytics(ctx:ctx(), calendar:date(), calendar:date(), list(), openapi_granularity, binary(), maps:map()) -> {ok, [openapi_ad_account_analytics_items:openapi_ad_account_analytics_items()], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+ad_account/analytics(Ctx, StartDate, EndDate, Columns, Granularity, AdAccountId, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -39,7 +39,7 @@ ad_account/analytics(Ctx, AdAccountId, StartDate, EndDate, Columns, Granularity,
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Get targeting analytics for an ad account
-%% Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+%% Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/>  * The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 -spec ad_account_targeting_analytics/get(ctx:ctx(), binary(), calendar:date(), calendar:date(), list(), list(), openapi_granularity) -> {ok, openapi_metrics_response:openapi_metrics_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 ad_account_targeting_analytics/get(Ctx, AdAccountId, StartDate, EndDate, TargetingTypes, Columns, Granularity) ->
     ad_account_targeting_analytics/get(Ctx, AdAccountId, StartDate, EndDate, TargetingTypes, Columns, Granularity, #{}).
@@ -123,13 +123,13 @@ ad_accounts/list(Ctx, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Create a request for a brand, category, SKU report
-%% <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
--spec analytics/create_conversion_product_report(ctx:ctx(), binary(), openapi_conversion_product_report_request:openapi_conversion_product_report_request()) -> {ok, openapi_ads_analytics_create_async_response:openapi_ads_analytics_create_async_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-analytics/create_conversion_product_report(Ctx, AdAccountId, OpenapiConversionProductReportRequest) ->
-    analytics/create_conversion_product_report(Ctx, AdAccountId, OpenapiConversionProductReportRequest, #{}).
+%%   [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
+-spec analytics/create_conversion_product_report(ctx:ctx(), binary(), openapi_conversion_product_report_create:openapi_conversion_product_report_create()) -> {ok, openapi_conversion_product_report:openapi_conversion_product_report(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+analytics/create_conversion_product_report(Ctx, AdAccountId, OpenapiConversionProductReportCreate) ->
+    analytics/create_conversion_product_report(Ctx, AdAccountId, OpenapiConversionProductReportCreate, #{}).
 
--spec analytics/create_conversion_product_report(ctx:ctx(), binary(), openapi_conversion_product_report_request:openapi_conversion_product_report_request(), maps:map()) -> {ok, openapi_ads_analytics_create_async_response:openapi_ads_analytics_create_async_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-analytics/create_conversion_product_report(Ctx, AdAccountId, OpenapiConversionProductReportRequest, Optional) ->
+-spec analytics/create_conversion_product_report(ctx:ctx(), binary(), openapi_conversion_product_report_create:openapi_conversion_product_report_create(), maps:map()) -> {ok, openapi_conversion_product_report:openapi_conversion_product_report(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+analytics/create_conversion_product_report(Ctx, AdAccountId, OpenapiConversionProductReportCreate, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -137,20 +137,20 @@ analytics/create_conversion_product_report(Ctx, AdAccountId, OpenapiConversionPr
     Path = [?BASE_URL, "/ad_accounts/", AdAccountId, "/reports/brand_category_sku"],
     QS = [],
     Headers = [],
-    Body1 = OpenapiConversionProductReportRequest,
+    Body1 = OpenapiConversionProductReportCreate,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Create a request for a Marketing Mix Modeling (MMM) report
-%% This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it's in beta release.
--spec analytics/create_mmm_report(ctx:ctx(), binary(), openapi_create_mmm_report_request:openapi_create_mmm_report_request()) -> {ok, openapi_create_mmm_report_response:openapi_create_mmm_report_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-analytics/create_mmm_report(Ctx, AdAccountId, OpenapiCreateMmmReportRequest) ->
-    analytics/create_mmm_report(Ctx, AdAccountId, OpenapiCreateMmmReportRequest, #{}).
+%%     This creates an asynchronous mmm report based on the given request.     It returns a token that you can use to download the report when it is     ready. NOTE: An additional limit of 5 queries per minute per advertiser     applies to this endpoint while it's in beta release.     For the ADVERTISER_PAID_SPEND_IN_DOLLAR,     ADVERTISER_PAID_ECPC_IN_DOLLAR, and ADVERTISER_PAID_ECPM_IN_DOLLAR     columns: if you receive bonus media, this value still includes that spend, and it will     need to be removed manually with support from your Pinterest account team for a     fully netted value. Over time, we'll also subtract bonus media and other incentives as     data becomes available. Production and other non-media fees are excluded.
+-spec analytics/create_mmm_report(ctx:ctx(), binary(), openapi_mmm_report_create:openapi_mmm_report_create()) -> {ok, openapi_m_mm_report:openapi_m_mm_report(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+analytics/create_mmm_report(Ctx, AdAccountId, OpenapiMmmReportCreate) ->
+    analytics/create_mmm_report(Ctx, AdAccountId, OpenapiMmmReportCreate, #{}).
 
--spec analytics/create_mmm_report(ctx:ctx(), binary(), openapi_create_mmm_report_request:openapi_create_mmm_report_request(), maps:map()) -> {ok, openapi_create_mmm_report_response:openapi_create_mmm_report_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-analytics/create_mmm_report(Ctx, AdAccountId, OpenapiCreateMmmReportRequest, Optional) ->
+-spec analytics/create_mmm_report(ctx:ctx(), binary(), openapi_mmm_report_create:openapi_mmm_report_create(), maps:map()) -> {ok, openapi_m_mm_report:openapi_m_mm_report(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+analytics/create_mmm_report(Ctx, AdAccountId, OpenapiMmmReportCreate, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -158,14 +158,14 @@ analytics/create_mmm_report(Ctx, AdAccountId, OpenapiCreateMmmReportRequest, Opt
     Path = [?BASE_URL, "/ad_accounts/", AdAccountId, "/mmm_reports"],
     QS = [],
     Headers = [],
-    Body1 = OpenapiCreateMmmReportRequest,
+    Body1 = OpenapiMmmReportCreate,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Create async request for an account analytics report
-%% This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
+%%   This returns a token that you can use to download the report when it is ready.   Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters.   - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days.   - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.   - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days.   - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
 -spec analytics/create_report(ctx:ctx(), binary(), openapi_ads_analytics_create_async_request:openapi_ads_analytics_create_async_request()) -> {ok, openapi_ads_analytics_create_async_response:openapi_ads_analytics_create_async_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 analytics/create_report(Ctx, AdAccountId, OpenapiAdsAnalyticsCreateAsyncRequest) ->
     analytics/create_report(Ctx, AdAccountId, OpenapiAdsAnalyticsCreateAsyncRequest, #{}).
@@ -186,7 +186,7 @@ analytics/create_report(Ctx, AdAccountId, OpenapiAdsAnalyticsCreateAsyncRequest,
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Create async request for an analytics report using a template
-%%    This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
+%%   This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
 -spec analytics/create_template_report(ctx:ctx(), binary(), binary()) -> {ok, openapi_template_based_report:openapi_template_based_report(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 analytics/create_template_report(Ctx, AdAccountId, TemplateId) ->
     analytics/create_template_report(Ctx, AdAccountId, TemplateId, #{}).
@@ -207,12 +207,12 @@ analytics/create_template_report(Ctx, AdAccountId, TemplateId, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Get advertiser brand, category, SKU report
-%% <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
--spec analytics/get_conversion_product_report(ctx:ctx(), binary(), binary()) -> {ok, openapi_ads_analytics_get_async_response:openapi_ads_analytics_get_async_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+%%   [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
+-spec analytics/get_conversion_product_report(ctx:ctx(), binary(), binary()) -> {ok, openapi_conversion_product_report:openapi_conversion_product_report(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 analytics/get_conversion_product_report(Ctx, AdAccountId, Token) ->
     analytics/get_conversion_product_report(Ctx, AdAccountId, Token, #{}).
 
--spec analytics/get_conversion_product_report(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_ads_analytics_get_async_response:openapi_ads_analytics_get_async_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec analytics/get_conversion_product_report(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_conversion_product_report:openapi_conversion_product_report(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 analytics/get_conversion_product_report(Ctx, AdAccountId, Token, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -228,12 +228,12 @@ analytics/get_conversion_product_report(Ctx, AdAccountId, Token, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Get advertiser Marketing Mix Modeling (MMM) report.
-%% Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the create mmm report endpoint.
--spec analytics/get_mmm_report(ctx:ctx(), binary(), binary()) -> {ok, openapi_get_mmm_report_response:openapi_get_mmm_report_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+%%     Get an mmm report for an ad account. This returns a URL to an     mmm metrics report given a token returned from the create mmm report endpoint.
+-spec analytics/get_mmm_report(ctx:ctx(), binary(), binary()) -> {ok, openapi_m_mm_report:openapi_m_mm_report(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 analytics/get_mmm_report(Ctx, AdAccountId, Token) ->
     analytics/get_mmm_report(Ctx, AdAccountId, Token, #{}).
 
--spec analytics/get_mmm_report(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_get_mmm_report_response:openapi_get_mmm_report_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec analytics/get_mmm_report(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_m_mm_report:openapi_m_mm_report(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 analytics/get_mmm_report(Ctx, AdAccountId, Token, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -249,7 +249,7 @@ analytics/get_mmm_report(Ctx, AdAccountId, Token, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Get the account analytics report created by the async call
-%% This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+%%   This returns a URL to an analytics report given a token returned from the post request report creation call.   You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour.   - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
 -spec analytics/get_report(ctx:ctx(), binary(), binary()) -> {ok, openapi_ads_analytics_get_async_response:openapi_ads_analytics_get_async_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 analytics/get_report(Ctx, AdAccountId, Token) ->
     analytics/get_report(Ctx, AdAccountId, Token, #{}).
@@ -303,7 +303,7 @@ templates/list(Ctx, AdAccountId, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/ad_accounts/", AdAccountId, "/templates"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['page_size', 'order', 'bookmark'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['bookmark', 'page_size', 'order'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),

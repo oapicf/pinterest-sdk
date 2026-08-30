@@ -53,21 +53,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setOptions(std::list <QuizPinOption> options);
+	void setOptions(std::list<QuizPinOption> options);
 	/*! \brief Get 
 	 */
 	long getQuestionId();
 
 	/*! \brief Set 
 	 */
-	void setQuestionId(long  question_id);
+	void setQuestionId(long question_id);
 	/*! \brief Get 
 	 */
 	std::string getQuestionText();
 
 	/*! \brief Set 
 	 */
-	void setQuestionText(std::string  question_text);
+	void setQuestionText(std::string question_text);
 
 
     private:

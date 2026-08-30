@@ -11,7 +11,6 @@ imports {
   CatalogsCreativeAssetsProductMetadata = openapi_server.resourceTypes.CatalogsCreativeAssetsProductMetadata
   CatalogsHotelProduct = openapi_server.resourceTypes.CatalogsHotelProduct
   CatalogsRetailProduct = openapi_server.resourceTypes.CatalogsRetailProduct
-  CatalogsType = openapi_server.resourceTypes.CatalogsType
   Pin = openapi_server.resourceTypes.Pin
 }
 resourceTypes {
@@ -22,8 +21,9 @@ resourceTypes {
     derivedFrom = Root
     properties {
         catalog_type {
-          type = CatalogsType
+          type =  string
           description = ""
+          enum = ["CREATIVE_ASSETS"]
           optional = true
         }
         metadata {

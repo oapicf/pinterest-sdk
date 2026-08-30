@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,8 +23,61 @@ type GoogleProductCategory6Filter struct {
 
 	GOOGLEPRODUCTCATEGORY6 CatalogsProductGroupMultipleStringListCriteria `json:"GOOGLE_PRODUCT_CATEGORY_6"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into GoogleProductCategory6Filter
+func (o *GoogleProductCategory6Filter) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"GOOGLE_PRODUCT_CATEGORY_6",
+	}
 
-// AssertGoogleProductCategory6FilterRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"GOOGLE_PRODUCT_CATEGORY_6": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"GOOGLE_PRODUCT_CATEGORY_6": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded GoogleProductCategory6Filter
+
+	if value, exists := allProperties["GOOGLE_PRODUCT_CATEGORY_6"]; exists {
+		if err = json.Unmarshal(value, &decoded.GOOGLEPRODUCTCATEGORY6); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertGoogleProductCategory6FilterRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertGoogleProductCategory6FilterRequired(obj GoogleProductCategory6Filter) error {
 	elements := map[string]interface{}{
 		"GOOGLE_PRODUCT_CATEGORY_6": obj.GOOGLEPRODUCTCATEGORY6,
@@ -30,10 +88,16 @@ func AssertGoogleProductCategory6FilterRequired(obj GoogleProductCategory6Filter
 		}
 	}
 
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaRequired(obj.GOOGLEPRODUCTCATEGORY6); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertGoogleProductCategory6FilterConstraints checks if the values respects the defined constraints
 func AssertGoogleProductCategory6FilterConstraints(obj GoogleProductCategory6Filter) error {
+	if err := AssertCatalogsProductGroupMultipleStringListCriteriaConstraints(obj.GOOGLEPRODUCTCATEGORY6); err != nil {
+		return err
+	}
 	return nil
 }

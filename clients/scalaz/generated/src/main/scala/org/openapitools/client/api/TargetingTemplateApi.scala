@@ -22,10 +22,11 @@ import scalaz.concurrent.Task
 import HelperCodecs._
 
 import org.openapitools.client.api.Error
+import org.openapitools.client.api.PaginationOrder
+import org.openapitools.client.api.TargetingTemplate
 import org.openapitools.client.api.TargetingTemplateCreate
-import org.openapitools.client.api.TargetingTemplateGetResponseData
 import org.openapitools.client.api.TargetingTemplateList200Response
-import org.openapitools.client.api.TargetingTemplateUpdateRequest
+import org.openapitools.client.api.TargetingTemplateUpdateRequestReadOrUpdate
 
 object TargetingTemplateApi {
 
@@ -33,8 +34,8 @@ object TargetingTemplateApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def targetingTemplateCreate(host: String, adAccountId: String, targetingTemplateCreate: TargetingTemplateCreate): Task[TargetingTemplateGetResponseData] = {
-    implicit val returnTypeDecoder: EntityDecoder[TargetingTemplateGetResponseData] = jsonOf[TargetingTemplateGetResponseData]
+  def targetingTemplateCreate(host: String, adAccountId: String, targetingTemplateCreate: TargetingTemplateCreate): Task[TargetingTemplate] = {
+    implicit val returnTypeDecoder: EntityDecoder[TargetingTemplate] = jsonOf[TargetingTemplate]
 
     val path = "/ad_accounts/{ad_account_id}/targeting_templates".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -49,12 +50,12 @@ object TargetingTemplateApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(targetingTemplateCreate)
-      resp          <- client.expect[TargetingTemplateGetResponseData](req)
+      resp          <- client.expect[TargetingTemplate](req)
 
     } yield resp
   }
 
-  def targetingTemplateList(host: String, adAccountId: String, order: String, includeSizing: Boolean = false, searchQuery: String, pageSize: Integer = 25, bookmark: String)(implicit orderQuery: QueryParam[String], includeSizingQuery: QueryParam[Boolean], searchQueryQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String]): Task[TargetingTemplateList200Response] = {
+  def targetingTemplateList(host: String, adAccountId: String, bookmark: String, pageSize: Integer = 25, order: PaginationOrder, includeSizing: Boolean = false, searchQuery: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[PaginationOrder], includeSizingQuery: QueryParam[Boolean], searchQueryQuery: QueryParam[String]): Task[TargetingTemplateList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[TargetingTemplateList200Response] = jsonOf[TargetingTemplateList200Response]
 
     val path = "/ad_accounts/{ad_account_id}/targeting_templates".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -64,7 +65,7 @@ object TargetingTemplateApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("order", Some(orderQuery.toParamString(order))), ("includeSizing", Some(include_sizingQuery.toParamString(include_sizing))), ("searchQuery", Some(search_queryQuery.toParamString(search_query))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("includeSizing", Some(include_sizingQuery.toParamString(include_sizing))), ("searchQuery", Some(search_queryQuery.toParamString(search_query))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -75,7 +76,7 @@ object TargetingTemplateApi {
     } yield resp
   }
 
-  def targetingTemplateUpdate(host: String, adAccountId: String, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest): Task[Unit] = {
+  def targetingTemplateUpdate(host: String, adAccountId: String, targetingTemplateUpdateRequestReadOrUpdate: TargetingTemplateUpdateRequestReadOrUpdate): Task[Unit] = {
     val path = "/ad_accounts/{ad_account_id}/targeting_templates".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
     val httpMethod = Method.PATCH
@@ -88,7 +89,7 @@ object TargetingTemplateApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(targetingTemplateUpdateRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(targetingTemplateUpdateRequestReadOrUpdate)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
@@ -101,8 +102,8 @@ class HttpServiceTargetingTemplateApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def targetingTemplateCreate(adAccountId: String, targetingTemplateCreate: TargetingTemplateCreate): Task[TargetingTemplateGetResponseData] = {
-    implicit val returnTypeDecoder: EntityDecoder[TargetingTemplateGetResponseData] = jsonOf[TargetingTemplateGetResponseData]
+  def targetingTemplateCreate(adAccountId: String, targetingTemplateCreate: TargetingTemplateCreate): Task[TargetingTemplate] = {
+    implicit val returnTypeDecoder: EntityDecoder[TargetingTemplate] = jsonOf[TargetingTemplate]
 
     val path = "/ad_accounts/{ad_account_id}/targeting_templates".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -117,12 +118,12 @@ class HttpServiceTargetingTemplateApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(targetingTemplateCreate)
-      resp          <- client.expect[TargetingTemplateGetResponseData](req)
+      resp          <- client.expect[TargetingTemplate](req)
 
     } yield resp
   }
 
-  def targetingTemplateList(adAccountId: String, order: String, includeSizing: Boolean = false, searchQuery: String, pageSize: Integer = 25, bookmark: String)(implicit orderQuery: QueryParam[String], includeSizingQuery: QueryParam[Boolean], searchQueryQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String]): Task[TargetingTemplateList200Response] = {
+  def targetingTemplateList(adAccountId: String, bookmark: String, pageSize: Integer = 25, order: PaginationOrder, includeSizing: Boolean = false, searchQuery: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[PaginationOrder], includeSizingQuery: QueryParam[Boolean], searchQueryQuery: QueryParam[String]): Task[TargetingTemplateList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[TargetingTemplateList200Response] = jsonOf[TargetingTemplateList200Response]
 
     val path = "/ad_accounts/{ad_account_id}/targeting_templates".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -132,7 +133,7 @@ class HttpServiceTargetingTemplateApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("order", Some(orderQuery.toParamString(order))), ("includeSizing", Some(include_sizingQuery.toParamString(include_sizing))), ("searchQuery", Some(search_queryQuery.toParamString(search_query))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("includeSizing", Some(include_sizingQuery.toParamString(include_sizing))), ("searchQuery", Some(search_queryQuery.toParamString(search_query))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -143,7 +144,7 @@ class HttpServiceTargetingTemplateApi(service: HttpService) {
     } yield resp
   }
 
-  def targetingTemplateUpdate(adAccountId: String, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest): Task[Unit] = {
+  def targetingTemplateUpdate(adAccountId: String, targetingTemplateUpdateRequestReadOrUpdate: TargetingTemplateUpdateRequestReadOrUpdate): Task[Unit] = {
     val path = "/ad_accounts/{ad_account_id}/targeting_templates".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
     val httpMethod = Method.PATCH
@@ -156,7 +157,7 @@ class HttpServiceTargetingTemplateApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(targetingTemplateUpdateRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(targetingTemplateUpdateRequestReadOrUpdate)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp

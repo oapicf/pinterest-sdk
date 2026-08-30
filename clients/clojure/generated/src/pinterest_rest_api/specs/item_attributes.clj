@@ -2,6 +2,7 @@
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
             [pinterest-rest-api.specs.updatable-item-attributes-gtin :refer :all]
+            [pinterest-rest-api.specs.catalogs-ai-content-disclosure :refer :all]
             )
   (:import (java.io File)))
 
@@ -112,6 +113,7 @@
    (ds/opt :variant_names) (s/coll-of string?)
    (ds/opt :variant_values) (s/coll-of string?)
    (ds/opt :additional_image_link) (s/coll-of string?)
+   (ds/opt :ai_disclosures) (s/coll-of catalogs-ai-content-disclosure-spec)
    (ds/opt :image_link) (s/coll-of string?)
    (ds/opt :video_link) string?
    })

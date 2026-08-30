@@ -1,0 +1,23 @@
+# BidOptionsAudienceMultipliers
+
+This represents a mapping from Audience ID to a bid price change value. This is paired with the bid_multipliers schedule type  Values represent the change in bid price and can be positive or negative. For percentage changes, a value of 500.0 means a 5% change. For value changes, the amount represents the direct bid adjustment. All audience multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 0 (no bid adjustment). The change must still remain between the range of 0 and 10.
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**audience_id** | **string** |  | [default to undefined]
+**multiplier** | **number** |  | [default to undefined]
+
+## Example
+
+```typescript
+import { BidOptionsAudienceMultipliers } from './api';
+
+const instance: BidOptionsAudienceMultipliers = {
+    audience_id,
+    multiplier,
+};
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

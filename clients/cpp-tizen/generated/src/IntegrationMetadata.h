@@ -94,11 +94,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setCreatedTimestamp(long long  created_timestamp);
-	/*! \brief Get 
+	/*! \brief Get External business ID for the integration.
 	 */
 	std::string getExternalBusinessId();
 
-	/*! \brief Set 
+	/*! \brief Set External business ID for the integration.
 	 */
 	void setExternalBusinessId(std::string  external_business_id);
 	/*! \brief Get 

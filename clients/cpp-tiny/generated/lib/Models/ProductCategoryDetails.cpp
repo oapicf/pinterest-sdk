@@ -195,7 +195,7 @@ ProductCategoryDetails::getDemographics()
 }
 
 void
-ProductCategoryDetails::setDemographics(ProductCategoriesDemographic  demographics)
+ProductCategoryDetails::setDemographics(ProductCategoriesDemographic demographics)
 {
 	this->demographics = demographics;
 }
@@ -207,7 +207,7 @@ ProductCategoryDetails::isHasPrediction()
 }
 
 void
-ProductCategoryDetails::setHasPrediction(bool  has_prediction)
+ProductCategoryDetails::setHasPrediction(bool has_prediction)
 {
 	this->has_prediction = has_prediction;
 }
@@ -219,19 +219,19 @@ ProductCategoryDetails::getMetricsHighlights()
 }
 
 void
-ProductCategoryDetails::setMetricsHighlights(ProductCategoriesMetricsHighlights  metrics_highlights)
+ProductCategoryDetails::setMetricsHighlights(ProductCategoriesMetricsHighlights metrics_highlights)
 {
 	this->metrics_highlights = metrics_highlights;
 }
 
-Map<string, string>
+std::map<std::string, long>
 ProductCategoryDetails::getPredictedTimeSeries()
 {
 	return predicted_time_series;
 }
 
 void
-ProductCategoryDetails::setPredictedTimeSeries(Map <string, string> predicted_time_series)
+ProductCategoryDetails::setPredictedTimeSeries(std::map<std::string, long> predicted_time_series)
 {
 	this->predicted_time_series = predicted_time_series;
 }
@@ -243,7 +243,7 @@ ProductCategoryDetails::getProductCategory()
 }
 
 void
-ProductCategoryDetails::setProductCategory(ProductCategoryEnum  product_category)
+ProductCategoryDetails::setProductCategory(ProductCategoryEnum product_category)
 {
 	this->product_category = product_category;
 }
@@ -255,19 +255,19 @@ ProductCategoryDetails::getRelatedSearches()
 }
 
 void
-ProductCategoryDetails::setRelatedSearches(std::list <std::string> related_searches)
+ProductCategoryDetails::setRelatedSearches(std::list<std::string> related_searches)
 {
 	this->related_searches = related_searches;
 }
 
-Map<string, string>
+std::map<std::string, long>
 ProductCategoryDetails::getTimeSeries()
 {
 	return time_series;
 }
 
 void
-ProductCategoryDetails::setTimeSeries(Map <string, string> time_series)
+ProductCategoryDetails::setTimeSeries(std::map<std::string, long> time_series)
 {
 	this->time_series = time_series;
 }

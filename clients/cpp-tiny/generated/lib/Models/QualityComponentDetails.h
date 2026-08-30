@@ -53,21 +53,21 @@ public:
 
 	/*! \brief Set Coverage percentage for this event type.
 	 */
-	void setCoverage(long  coverage);
+	void setCoverage(long coverage);
 	/*! \brief Get List of issues detected for this event type, if any.
 	 */
 	std::list<QualityComponentIssue> getIssues();
 
 	/*! \brief Set List of issues detected for this event type, if any.
 	 */
-	void setIssues(std::list <QualityComponentIssue> issues);
+	void setIssues(std::list<QualityComponentIssue> issues);
 	/*! \brief Get Overlap percentage for this event type. Only populated for external_event_id
 	 */
 	long getOverlap();
 
 	/*! \brief Set Overlap percentage for this event type. Only populated for external_event_id
 	 */
-	void setOverlap(long  overlap);
+	void setOverlap(long overlap);
 
 
     private:

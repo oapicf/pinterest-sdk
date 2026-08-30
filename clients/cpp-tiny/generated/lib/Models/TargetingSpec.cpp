@@ -12,9 +12,11 @@ TargetingSpec::TargetingSpec()
 	aUDIENCE_INCLUDE = std::list<std::string>();
 	gENDER = std::list<TargetingSpecGender>();
 	gEO = std::list<std::string>();
+	gEO_EXCLUDE = std::list<std::string>();
 	iNTEREST = std::list<std::string>();
 	lOCALE = std::list<std::string>();
 	lOCATION = std::list<std::string>();
+	lOCATION_EXCLUDE = std::list<std::string>();
 	mAXIMUM_AGE = std::string();
 	mINIMUM_AGE = std::string();
 	sHOPPING_RETARGETING = std::list<TargetingSpecShoppingRetargeting>();
@@ -168,6 +170,28 @@ TargetingSpec::fromJson(std::string jsonObj)
 
     }
 
+    const char *gEO_EXCLUDEKey = "GEO_EXCLUDE";
+
+    if(object.has_key(gEO_EXCLUDEKey))
+    {
+        bourne::json value = object[gEO_EXCLUDEKey];
+
+
+        std::list<std::string> gEO_EXCLUDE_list;
+        std::string element;
+        for(auto& var : value.array_range())
+        {
+
+            jsonToValue(&element, var, "std::string");
+
+
+            gEO_EXCLUDE_list.push_back(element);
+        }
+        gEO_EXCLUDE = gEO_EXCLUDE_list;
+
+
+    }
+
     const char *iNTERESTKey = "INTEREST";
 
     if(object.has_key(iNTERESTKey))
@@ -230,6 +254,28 @@ TargetingSpec::fromJson(std::string jsonObj)
             lOCATION_list.push_back(element);
         }
         lOCATION = lOCATION_list;
+
+
+    }
+
+    const char *lOCATION_EXCLUDEKey = "LOCATION_EXCLUDE";
+
+    if(object.has_key(lOCATION_EXCLUDEKey))
+    {
+        bourne::json value = object[lOCATION_EXCLUDEKey];
+
+
+        std::list<std::string> lOCATION_EXCLUDE_list;
+        std::string element;
+        for(auto& var : value.array_range())
+        {
+
+            jsonToValue(&element, var, "std::string");
+
+
+            lOCATION_EXCLUDE_list.push_back(element);
+        }
+        lOCATION_EXCLUDE = lOCATION_EXCLUDE_list;
 
 
     }
@@ -408,6 +454,22 @@ TargetingSpec::toJson()
 
 
 
+    std::list<std::string> gEO_EXCLUDE_list = getGEOEXCLUDE();
+    bourne::json gEO_EXCLUDE_arr = bourne::json::array();
+
+    for(auto& var : gEO_EXCLUDE_list)
+    {
+        gEO_EXCLUDE_arr.append(var);
+    }
+    object["gEO_EXCLUDE"] = gEO_EXCLUDE_arr;
+
+
+
+
+
+
+
+
     std::list<std::string> iNTEREST_list = getINTEREST();
     bourne::json iNTEREST_arr = bourne::json::array();
 
@@ -448,6 +510,22 @@ TargetingSpec::toJson()
         lOCATION_arr.append(var);
     }
     object["lOCATION"] = lOCATION_arr;
+
+
+
+
+
+
+
+
+    std::list<std::string> lOCATION_EXCLUDE_list = getLOCATIONEXCLUDE();
+    bourne::json lOCATION_EXCLUDE_arr = bourne::json::array();
+
+    for(auto& var : lOCATION_EXCLUDE_list)
+    {
+        lOCATION_EXCLUDE_arr.append(var);
+    }
+    object["lOCATION_EXCLUDE"] = lOCATION_EXCLUDE_arr;
 
 
 
@@ -510,7 +588,7 @@ TargetingSpec::getAGEBUCKET()
 }
 
 void
-TargetingSpec::setAGEBUCKET(std::list <TargetingSpecAgeBucket> aGE_BUCKET)
+TargetingSpec::setAGEBUCKET(std::list<TargetingSpecAgeBucket> aGE_BUCKET)
 {
 	this->aGE_BUCKET = aGE_BUCKET;
 }
@@ -522,7 +600,7 @@ TargetingSpec::getAPPTYPE()
 }
 
 void
-TargetingSpec::setAPPTYPE(std::list <TargetingSpecAppType> aPPTYPE)
+TargetingSpec::setAPPTYPE(std::list<TargetingSpecAppType> aPPTYPE)
 {
 	this->aPPTYPE = aPPTYPE;
 }
@@ -534,7 +612,7 @@ TargetingSpec::getAUDIENCEEXCLUDE()
 }
 
 void
-TargetingSpec::setAUDIENCEEXCLUDE(std::list <std::string> aUDIENCE_EXCLUDE)
+TargetingSpec::setAUDIENCEEXCLUDE(std::list<std::string> aUDIENCE_EXCLUDE)
 {
 	this->aUDIENCE_EXCLUDE = aUDIENCE_EXCLUDE;
 }
@@ -546,7 +624,7 @@ TargetingSpec::getAUDIENCEINCLUDE()
 }
 
 void
-TargetingSpec::setAUDIENCEINCLUDE(std::list <std::string> aUDIENCE_INCLUDE)
+TargetingSpec::setAUDIENCEINCLUDE(std::list<std::string> aUDIENCE_INCLUDE)
 {
 	this->aUDIENCE_INCLUDE = aUDIENCE_INCLUDE;
 }
@@ -558,7 +636,7 @@ TargetingSpec::getGENDER()
 }
 
 void
-TargetingSpec::setGENDER(std::list <TargetingSpecGender> gENDER)
+TargetingSpec::setGENDER(std::list<TargetingSpecGender> gENDER)
 {
 	this->gENDER = gENDER;
 }
@@ -570,9 +648,21 @@ TargetingSpec::getGEO()
 }
 
 void
-TargetingSpec::setGEO(std::list <std::string> gEO)
+TargetingSpec::setGEO(std::list<std::string> gEO)
 {
 	this->gEO = gEO;
+}
+
+std::list<std::string>
+TargetingSpec::getGEOEXCLUDE()
+{
+	return gEO_EXCLUDE;
+}
+
+void
+TargetingSpec::setGEOEXCLUDE(std::list<std::string> gEO_EXCLUDE)
+{
+	this->gEO_EXCLUDE = gEO_EXCLUDE;
 }
 
 std::list<std::string>
@@ -582,7 +672,7 @@ TargetingSpec::getINTEREST()
 }
 
 void
-TargetingSpec::setINTEREST(std::list <std::string> iNTEREST)
+TargetingSpec::setINTEREST(std::list<std::string> iNTEREST)
 {
 	this->iNTEREST = iNTEREST;
 }
@@ -594,7 +684,7 @@ TargetingSpec::getLOCALE()
 }
 
 void
-TargetingSpec::setLOCALE(std::list <std::string> lOCALE)
+TargetingSpec::setLOCALE(std::list<std::string> lOCALE)
 {
 	this->lOCALE = lOCALE;
 }
@@ -606,9 +696,21 @@ TargetingSpec::getLOCATION()
 }
 
 void
-TargetingSpec::setLOCATION(std::list <std::string> lOCATION)
+TargetingSpec::setLOCATION(std::list<std::string> lOCATION)
 {
 	this->lOCATION = lOCATION;
+}
+
+std::list<std::string>
+TargetingSpec::getLOCATIONEXCLUDE()
+{
+	return lOCATION_EXCLUDE;
+}
+
+void
+TargetingSpec::setLOCATIONEXCLUDE(std::list<std::string> lOCATION_EXCLUDE)
+{
+	this->lOCATION_EXCLUDE = lOCATION_EXCLUDE;
 }
 
 std::string
@@ -618,7 +720,7 @@ TargetingSpec::getMAXIMUMAGE()
 }
 
 void
-TargetingSpec::setMAXIMUMAGE(std::string  mAXIMUM_AGE)
+TargetingSpec::setMAXIMUMAGE(std::string mAXIMUM_AGE)
 {
 	this->mAXIMUM_AGE = mAXIMUM_AGE;
 }
@@ -630,7 +732,7 @@ TargetingSpec::getMINIMUMAGE()
 }
 
 void
-TargetingSpec::setMINIMUMAGE(std::string  mINIMUM_AGE)
+TargetingSpec::setMINIMUMAGE(std::string mINIMUM_AGE)
 {
 	this->mINIMUM_AGE = mINIMUM_AGE;
 }
@@ -642,7 +744,7 @@ TargetingSpec::getSHOPPINGRETARGETING()
 }
 
 void
-TargetingSpec::setSHOPPINGRETARGETING(std::list <TargetingSpecShoppingRetargeting> sHOPPING_RETARGETING)
+TargetingSpec::setSHOPPINGRETARGETING(std::list<TargetingSpecShoppingRetargeting> sHOPPING_RETARGETING)
 {
 	this->sHOPPING_RETARGETING = sHOPPING_RETARGETING;
 }
@@ -654,7 +756,7 @@ TargetingSpec::getTARGETINGSTRATEGY()
 }
 
 void
-TargetingSpec::setTARGETINGSTRATEGY(std::list <std::string> tARGETING_STRATEGY)
+TargetingSpec::setTARGETINGSTRATEGY(std::list<std::string> tARGETING_STRATEGY)
 {
 	this->tARGETING_STRATEGY = tARGETING_STRATEGY;
 }

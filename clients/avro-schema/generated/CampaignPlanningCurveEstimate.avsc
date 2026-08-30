@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CampaignPlanningCurveEstimate",
+  "fields": [
+    {
+      "name": "estimation_type",
+      "type": ["null", "model.CampaignPlanningEstimationType"],
+      "doc": "Estimation type for campaign planning estimated curve",
+      "default": null
+    },
+    {
+      "name": "points",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CampaignPlanningPointEstimate"
+      }],
+      "doc": "The estimation points that make up the estimated curve.",
+      "default": null
+    }
+  ]
+
+}

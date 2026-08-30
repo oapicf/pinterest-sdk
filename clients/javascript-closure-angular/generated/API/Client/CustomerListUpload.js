@@ -47,14 +47,14 @@ API.Client.CustomerListUpload.prototype.id;
 API.Client.CustomerListUpload.prototype.operation;
 
 /**
+ * Record processing counts
  * @type {!API.Client.RecordCounts}
  * @export
  */
 API.Client.CustomerListUpload.prototype.recordCounts;
 
 /**
- * Workload processing state
- * @type {!string}
+ * @type {!API.Client.WorkloadState}
  * @export
  */
 API.Client.CustomerListUpload.prototype.state;
@@ -66,11 +66,3 @@ API.Client.CustomerListUpload.prototype.state;
  */
 API.Client.CustomerListUpload.prototype.updatedTime;
 
-/** @enum {string} */
-API.Client.CustomerListUpload.StateEnum = { 
-  NOT_STARTED: 'NOT_STARTED',
-  RUNNING: 'RUNNING',
-  PAUSED: 'PAUSED',
-  SUCCEEDED: 'SUCCEEDED',
-  FAILED: 'FAILED',
-}

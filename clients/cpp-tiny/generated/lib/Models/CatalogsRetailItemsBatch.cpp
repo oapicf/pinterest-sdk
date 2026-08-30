@@ -6,8 +6,8 @@ using namespace Tiny;
 
 CatalogsRetailItemsBatch::CatalogsRetailItemsBatch()
 {
-	batch_id = std::string();
-	catalog_type = CatalogsType();
+	batch_id = null;
+	catalog_type = std::string();
 	completed_time = std::string();
 	created_time = std::string();
 	items = std::list<ItemProcessingRecord>();
@@ -50,9 +50,8 @@ CatalogsRetailItemsBatch::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -137,8 +136,8 @@ CatalogsRetailItemsBatch::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -188,19 +187,19 @@ CatalogsRetailItemsBatch::getBatchId()
 }
 
 void
-CatalogsRetailItemsBatch::setBatchId(std::string  batch_id)
+CatalogsRetailItemsBatch::setBatchId(std::string batch_id)
 {
 	this->batch_id = batch_id;
 }
 
-CatalogsType
+std::string
 CatalogsRetailItemsBatch::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsRetailItemsBatch::setCatalogType(CatalogsType  catalog_type)
+CatalogsRetailItemsBatch::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -212,7 +211,7 @@ CatalogsRetailItemsBatch::getCompletedTime()
 }
 
 void
-CatalogsRetailItemsBatch::setCompletedTime(std::string  completed_time)
+CatalogsRetailItemsBatch::setCompletedTime(std::string completed_time)
 {
 	this->completed_time = completed_time;
 }
@@ -224,7 +223,7 @@ CatalogsRetailItemsBatch::getCreatedTime()
 }
 
 void
-CatalogsRetailItemsBatch::setCreatedTime(std::string  created_time)
+CatalogsRetailItemsBatch::setCreatedTime(std::string created_time)
 {
 	this->created_time = created_time;
 }
@@ -236,7 +235,7 @@ CatalogsRetailItemsBatch::getItems()
 }
 
 void
-CatalogsRetailItemsBatch::setItems(std::list <ItemProcessingRecord> items)
+CatalogsRetailItemsBatch::setItems(std::list<ItemProcessingRecord> items)
 {
 	this->items = items;
 }
@@ -248,7 +247,7 @@ CatalogsRetailItemsBatch::getStatus()
 }
 
 void
-CatalogsRetailItemsBatch::setStatus(BatchOperationStatus  status)
+CatalogsRetailItemsBatch::setStatus(BatchOperationStatus status)
 {
 	this->status = status;
 }

@@ -5,21 +5,25 @@ type AdGroupCreateRequest struct {
 	// Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
 	AutoTargetingEnabled bool `json:"auto_targeting_enabled,omitempty"`
 
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+	BidMultiplier float32 `json:"bid_multiplier,omitempty"`
+
+	BudgetType BudgetType `json:"budget_type,omitempty"`
+
+	PacingDeliveryType PacingDeliveryType `json:"pacing_delivery_type,omitempty"`
+
 	// Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
 	BidInMicroCurrency *int32 `json:"bid_in_micro_currency,omitempty"`
 
-	// Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
-	BidStrategyType *string `json:"bid_strategy_type,omitempty"`
+	BidStrategyType *BidStrategyType `json:"bid_strategy_type,omitempty"`
 
 	BillableEvent ActionType `json:"billable_event"`
 
 	// Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
 	BudgetInMicroCurrency *int32 `json:"budget_in_micro_currency,omitempty"`
 
-	BudgetType BudgetType `json:"budget_type,omitempty"`
-
 	// Campaign ID of the ad group.
-	CampaignId string `json:"campaign_id" validate:"regexp=^[C]?\\\\d+$"`
+	CampaignId string `json:"campaign_id" validate:"regexp=^[C]?\\d+$"`
 
 	// Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
 	EndTime *int32 `json:"end_time,omitempty"`
@@ -34,9 +38,7 @@ type AdGroupCreateRequest struct {
 	Name string `json:"name"`
 
 	// Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
-	OptimizationGoalMetadata *OptimizationGoalMetadata `json:"optimization_goal_metadata,omitempty"`
-
-	PacingDeliveryType PacingDeliveryType `json:"pacing_delivery_type,omitempty"`
+	OptimizationGoalMetadata *map[string]interface{} `json:"optimization_goal_metadata,omitempty"`
 
 	// <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
 	PlacementGroup PlacementGroupType `json:"placement_group,omitempty"`
@@ -45,7 +47,10 @@ type AdGroupCreateRequest struct {
 	PromotionApplicationLevel *string `json:"promotion_application_level,omitempty"`
 
 	// Promotion ID. To clear this field, set to null.
-	PromotionId *string `json:"promotion_id,omitempty" validate:"regexp=^\\\\d+$"`
+	PromotionId *string `json:"promotion_id,omitempty" validate:"regexp=^\\d+$"`
+
+	// Promotion IDs list. To clear this field, set to an empty array [].
+	PromotionIds []string `json:"promotion_ids,omitempty"`
 
 	// Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
 	StartTime *int32 `json:"start_time,omitempty"`
@@ -58,9 +63,6 @@ type AdGroupCreateRequest struct {
 	// Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
 	TargetingTemplateIds *[]string `json:"targeting_template_ids,omitempty"`
 
-	// Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
-	TrackingUrls *TrackingUrls `json:"tracking_urls,omitempty"`
-
-	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
-	BidMultiplier float32 `json:"bid_multiplier,omitempty"`
+	// Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+	TrackingUrls *map[string]interface{} `json:"tracking_urls,omitempty"`
 }

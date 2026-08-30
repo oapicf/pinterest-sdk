@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -56,8 +56,8 @@ func NewAdsAnalyticsFilterColumnFromValue(v string) (AdsAnalyticsFilterColumn, e
 }
 
 
-
-// AssertAdsAnalyticsFilterColumnRequired checks if the required fields are not zero-ed
+// AssertAdsAnalyticsFilterColumnRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAdsAnalyticsFilterColumnRequired(obj AdsAnalyticsFilterColumn) error {
 	return nil
 }

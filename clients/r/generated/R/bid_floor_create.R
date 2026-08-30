@@ -1,0 +1,215 @@
+#' Create a new BidFloorCreate
+#'
+#' @description
+#' Resource create operation model.
+#'
+#' @docType class
+#' @title BidFloorCreate
+#' @description BidFloorCreate Class
+#' @format An \code{R6Class} generator object
+#' @field bid_floor_specs List of bid floor specifications. list(\link{BidFloorSpec})
+#' @field targeting_spec Ad group targeting specification defining the ad group target audience. \link{TargetingSpecOptimal} [optional]
+#' @importFrom R6 R6Class
+#' @importFrom jsonlite fromJSON toJSON
+#' @export
+BidFloorCreate <- R6::R6Class(
+  "BidFloorCreate",
+  public = list(
+    `bid_floor_specs` = NULL,
+    `targeting_spec` = NULL,
+
+    #' @description
+    #' Initialize a new BidFloorCreate class.
+    #'
+    #' @param bid_floor_specs List of bid floor specifications.
+    #' @param targeting_spec Ad group targeting specification defining the ad group target audience.
+    #' @param ... Other optional arguments.
+    initialize = function(`bid_floor_specs`, `targeting_spec` = NULL, ...) {
+      if (!missing(`bid_floor_specs`)) {
+        stopifnot(is.vector(`bid_floor_specs`), length(`bid_floor_specs`) != 0)
+        sapply(`bid_floor_specs`, function(x) stopifnot(R6::is.R6(x)))
+        self$`bid_floor_specs` <- `bid_floor_specs`
+      }
+      if (!is.null(`targeting_spec`)) {
+        stopifnot(R6::is.R6(`targeting_spec`))
+        self$`targeting_spec` <- `targeting_spec`
+      }
+    },
+
+    #' @description
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
+    toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return BidFloorCreate as a base R list.
+    #' @examples
+    #' # convert array of BidFloorCreate (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert BidFloorCreate to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
+      BidFloorCreateObject <- list()
+      if (!is.null(self$`bid_floor_specs`)) {
+        BidFloorCreateObject[["bid_floor_specs"]] <-
+          self$extractSimpleType(self$`bid_floor_specs`)
+      }
+      if (!is.null(self$`targeting_spec`)) {
+        BidFloorCreateObject[["targeting_spec"]] <-
+          self$extractSimpleType(self$`targeting_spec`)
+      }
+      return(BidFloorCreateObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of BidFloorCreate
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of BidFloorCreate
+    fromJSON = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`bid_floor_specs`)) {
+        self$`bid_floor_specs` <- ApiClient$new()$deserializeObj(this_object$`bid_floor_specs`, "array[BidFloorSpec]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`targeting_spec`)) {
+        `targeting_spec_object` <- TargetingSpecOptimal$new()
+        `targeting_spec_object`$fromJSON(jsonlite::toJSON(this_object$`targeting_spec`, auto_unbox = TRUE, digits = NA))
+        self$`targeting_spec` <- `targeting_spec_object`
+      }
+      self
+    },
+
+    #' @description
+    #' To JSON String
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
+    #' @return BidFloorCreate in JSON format
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of BidFloorCreate
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of BidFloorCreate
+    fromJSONString = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      self$`bid_floor_specs` <- ApiClient$new()$deserializeObj(this_object$`bid_floor_specs`, "array[BidFloorSpec]", loadNamespace("openapi"))
+      self$`targeting_spec` <- TargetingSpecOptimal$new()$fromJSON(jsonlite::toJSON(this_object$`targeting_spec`, auto_unbox = TRUE, digits = NA))
+      self
+    },
+
+    #' @description
+    #' Validate JSON input with respect to BidFloorCreate and throw an exception if invalid
+    #'
+    #' @param input the JSON input
+    validateJSON = function(input) {
+      input_json <- jsonlite::fromJSON(input)
+      # check the required field `bid_floor_specs`
+      if (!is.null(input_json$`bid_floor_specs`)) {
+        stopifnot(is.vector(input_json$`bid_floor_specs`), length(input_json$`bid_floor_specs`) != 0)
+        tmp <- sapply(input_json$`bid_floor_specs`, function(x) stopifnot(R6::is.R6(x)))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for BidFloorCreate: the required field `bid_floor_specs` is missing."))
+      }
+    },
+
+    #' @description
+    #' To string (JSON format)
+    #'
+    #' @return String representation of BidFloorCreate
+    toString = function() {
+      self$toJSONString()
+    },
+
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    isValid = function() {
+      # check if the required `bid_floor_specs` is null
+      if (is.null(self$`bid_floor_specs`)) {
+        return(FALSE)
+      }
+
+      TRUE
+    },
+
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `bid_floor_specs` is null
+      if (is.null(self$`bid_floor_specs`)) {
+        invalid_fields["bid_floor_specs"] <- "Non-nullable required field `bid_floor_specs` cannot be null."
+      }
+
+      invalid_fields
+    },
+
+    #' @description
+    #' Print the object
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
+)
+## Uncomment below to unlock the class to allow modifications of the method or field
+# BidFloorCreate$unlock()
+#
+## Below is an example to define the print function
+# BidFloorCreate$set("public", "print", function(...) {
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
+# })
+## Uncomment below to lock the class to prevent modifications to the method or field
+# BidFloorCreate$lock()
+

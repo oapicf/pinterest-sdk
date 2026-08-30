@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -11,33 +12,49 @@ import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Summarized pin information
  */
 
 @Schema(name = "SummaryPin", description = "Summarized pin information")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SummaryPin {
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 500) String> altText = JsonNullable.<String>undefined();
 
-  private JsonNullable<String> description = JsonNullable.<String>undefined();
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<@Size(max = 800) String> description = JsonNullable.<String>undefined();
 
-  private @Nullable String id;
+  private String id;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2048) String> link = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable PinMedia media;
 
-  private JsonNullable<String> title = JsonNullable.<String>undefined();
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<@Size(max = 100) String> title = JsonNullable.<String>undefined();
+
+  public SummaryPin() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public SummaryPin(String id) {
+    this.id = id;
+  }
 
   public SummaryPin altText(String altText) {
     this.altText = JsonNullable.of(altText);
@@ -68,10 +85,10 @@ public class SummaryPin {
    * Get description
    * @return description
    */
-  
+  @Size(max = 800) 
   @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
-  public JsonNullable<String> getDescription() {
+  public JsonNullable<@Size(max = 800) String> getDescription() {
     return description;
   }
 
@@ -79,7 +96,7 @@ public class SummaryPin {
     this.description = description;
   }
 
-  public SummaryPin id(@Nullable String id) {
+  public SummaryPin id(String id) {
     this.id = id;
     return this;
   }
@@ -88,14 +105,15 @@ public class SummaryPin {
    * Get id
    * @return id
    */
-  
-  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
-  public @Nullable String getId() {
+  public String getId() {
     return id;
   }
 
-  public void setId(@Nullable String id) {
+  @JsonProperty("id")
+  public void setId(String id) {
     this.id = id;
   }
 
@@ -109,7 +127,7 @@ public class SummaryPin {
    * @return link
    */
   @Size(max = 2048) 
-  @Schema(name = "link", example = "https://www.pinterest.com/", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
   public JsonNullable<@Size(max = 2048) String> getLink() {
     return link;
@@ -135,6 +153,7 @@ public class SummaryPin {
     return media;
   }
 
+  @JsonProperty("media")
   public void setMedia(@Nullable PinMedia media) {
     this.media = media;
   }
@@ -148,10 +167,10 @@ public class SummaryPin {
    * Get title
    * @return title
    */
-  
+  @Size(max = 100) 
   @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
-  public JsonNullable<String> getTitle() {
+  public JsonNullable<@Size(max = 100) String> getTitle() {
     return title;
   }
 
@@ -210,11 +229,8 @@ public class SummaryPin {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

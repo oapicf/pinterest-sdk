@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## IntegrationsCommerceDel
 
-> IntegrationsCommerceDel(ctx, externalBusinessId).Execute()
+> IntegrationMetadata IntegrationsCommerceDel(ctx, externalBusinessId).Execute()
 
 Delete commerce integration
 
@@ -39,11 +39,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.IntegrationsAPI.IntegrationsCommerceDel(context.Background(), externalBusinessId).Execute()
+	resp, r, err := apiClient.IntegrationsAPI.IntegrationsCommerceDel(context.Background(), externalBusinessId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsAPI.IntegrationsCommerceDel``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `IntegrationsCommerceDel`: IntegrationMetadata
+	fmt.Fprintf(os.Stdout, "Response from `IntegrationsAPI.IntegrationsCommerceDel`: %v\n", resp)
 }
 ```
 
@@ -66,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**IntegrationMetadata**](IntegrationMetadata.md)
 
 ### Authorization
 
@@ -154,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## IntegrationsCommercePatch
 
-> IntegrationMetadata IntegrationsCommercePatch(ctx, externalBusinessId).IntegrationRequestPatch(integrationRequestPatch).Execute()
+> IntegrationMetadata IntegrationsCommercePatch(ctx, externalBusinessId).IntegrationMetadataUpdate(integrationMetadataUpdate).Execute()
 
 Update commerce integration
 
@@ -174,11 +176,11 @@ import (
 
 func main() {
 	externalBusinessId := "externalBusinessId_example" // string | External business ID for the integration.
-	integrationRequestPatch := *openapiclient.NewIntegrationRequestPatch() // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
+	integrationMetadataUpdate := *openapiclient.NewIntegrationMetadataUpdate() // IntegrationMetadataUpdate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IntegrationsAPI.IntegrationsCommercePatch(context.Background(), externalBusinessId).IntegrationRequestPatch(integrationRequestPatch).Execute()
+	resp, r, err := apiClient.IntegrationsAPI.IntegrationsCommercePatch(context.Background(), externalBusinessId).IntegrationMetadataUpdate(integrationMetadataUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsAPI.IntegrationsCommercePatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -204,7 +206,7 @@ Other parameters are passed through a pointer to a apiIntegrationsCommercePatchR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata | 
+ **integrationMetadataUpdate** | [**IntegrationMetadataUpdate**](IntegrationMetadataUpdate.md) |  | 
 
 ### Return type
 
@@ -226,7 +228,7 @@ Name | Type | Description  | Notes
 
 ## IntegrationsCommercePost
 
-> IntegrationMetadata IntegrationsCommercePost(ctx).IntegrationRequest(integrationRequest).Execute()
+> IntegrationMetadata IntegrationsCommercePost(ctx).IntegrationMetadataCreate(integrationMetadataCreate).Execute()
 
 Create commerce integration
 
@@ -245,11 +247,11 @@ import (
 )
 
 func main() {
-	integrationRequest := *openapiclient.NewIntegrationRequest() // IntegrationRequest | Parameters to get create/update the Integration Metadata
+	integrationMetadataCreate := *openapiclient.NewIntegrationMetadataCreate() // IntegrationMetadataCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IntegrationsAPI.IntegrationsCommercePost(context.Background()).IntegrationRequest(integrationRequest).Execute()
+	resp, r, err := apiClient.IntegrationsAPI.IntegrationsCommercePost(context.Background()).IntegrationMetadataCreate(integrationMetadataCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsAPI.IntegrationsCommercePost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -270,7 +272,7 @@ Other parameters are passed through a pointer to a apiIntegrationsCommercePostRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata | 
+ **integrationMetadataCreate** | [**IntegrationMetadataCreate**](IntegrationMetadataCreate.md) |  | 
 
 ### Return type
 
@@ -311,7 +313,7 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | Integration ID.
+	id := "id_example" // string | Integration record ID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -331,7 +333,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Integration ID. | 
+**id** | **string** | Integration record ID. | 
 
 ### Other Parameters
 
@@ -382,7 +384,7 @@ import (
 
 func main() {
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -408,7 +410,7 @@ Other parameters are passed through a pointer to a apiIntegrationsGetListRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -430,7 +432,7 @@ Name | Type | Description  | Notes
 
 ## IntegrationsLogsPost
 
-> IntegrationLogsSuccessResponse IntegrationsLogsPost(ctx).IntegrationLogsRequest(integrationLogsRequest).Execute()
+> IntegrationLogsSuccessResponse IntegrationsLogsPost(ctx).IntegrationLogsRequestCreate(integrationLogsRequestCreate).Execute()
 
 Receives batched logs from integration applications.
 
@@ -449,11 +451,11 @@ import (
 )
 
 func main() {
-	integrationLogsRequest := *openapiclient.NewIntegrationLogsRequest([]openapiclient.IntegrationLog{*openapiclient.NewIntegrationLog(int32(123), "EventType_example", "LogLevel_example")}) // IntegrationLogsRequest | Ingest log information from external integration application.
+	integrationLogsRequestCreate := *openapiclient.NewIntegrationLogsRequestCreate([]openapiclient.IntegrationLog{*openapiclient.NewIntegrationLog(int32(123), openapiclient.IntegrationLogEventType("APP"), openapiclient.IntegrationLogLevel("INFO"))}) // IntegrationLogsRequestCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IntegrationsAPI.IntegrationsLogsPost(context.Background()).IntegrationLogsRequest(integrationLogsRequest).Execute()
+	resp, r, err := apiClient.IntegrationsAPI.IntegrationsLogsPost(context.Background()).IntegrationLogsRequestCreate(integrationLogsRequestCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsAPI.IntegrationsLogsPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -474,7 +476,7 @@ Other parameters are passed through a pointer to a apiIntegrationsLogsPostReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationLogsRequest** | [**IntegrationLogsRequest**](IntegrationLogsRequest.md) | Ingest log information from external integration application. | 
+ **integrationLogsRequestCreate** | [**IntegrationLogsRequestCreate**](IntegrationLogsRequestCreate.md) |  | 
 
 ### Return type
 

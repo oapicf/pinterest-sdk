@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionDeletionRequestUserEmailTargets"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionDeletionRequestUserEmailTargets"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ConversionDeletionRequestUserEmailTargets {
+    title = ConversionDeletionRequestUserEmailTargets
+    description = ConversionDeletionRequestUserEmailTargets
+    derivedFrom = Root
+    properties {
+        user_emails {
+          type = array
+          items.type =  string
+          description = "Array of plain text user emails."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionDeletionRequestUserEmailTargets {
+    title = ConversionDeletionRequestUserEmailTargets
+    description = ConversionDeletionRequestUserEmailTargets
+    implements = openapi_server.resourceTypes.ConversionDeletionRequestUserEmailTargets
+
+  }
+}

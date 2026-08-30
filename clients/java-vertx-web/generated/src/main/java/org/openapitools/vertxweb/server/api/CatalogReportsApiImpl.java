@@ -3,9 +3,9 @@ package org.openapitools.vertxweb.server.api;
 import org.openapitools.vertxweb.server.model.CatalogsCreateReportResponse;
 import org.openapitools.vertxweb.server.model.CatalogsReport;
 import org.openapitools.vertxweb.server.model.CatalogsReportParameters;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.CatalogsReportStatsParameters;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 import org.openapitools.vertxweb.server.model.ReportsStats200Response;
-import org.openapitools.vertxweb.server.model.ReportsStatsParametersParameter;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -27,7 +27,7 @@ public class CatalogReportsApiImpl implements CatalogReportsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<ReportsStats200Response>> reportsStats(ReportsStatsParametersParameter parameters, String adAccountId, Integer pageSize, String bookmark) {
+    public Future<ApiResponse<ReportsStats200Response>> reportsStats(CatalogsReportStatsParameters parameters, String adAccountId, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 

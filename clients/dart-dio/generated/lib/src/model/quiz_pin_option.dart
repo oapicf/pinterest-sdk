@@ -8,7 +8,7 @@ import 'package:built_value/serializer.dart';
 
 part 'quiz_pin_option.g.dart';
 
-///  This field contains multiple options to a quiz question.
+/// This field contains multiple options to a quiz question.
 ///
 /// Properties:
 /// * [id] 
@@ -84,15 +84,17 @@ class _$QuizPinOptionSerializer implements PrimitiveSerializer<QuizPinOption> {
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'text':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.text = valueDes;
           break;
         default:

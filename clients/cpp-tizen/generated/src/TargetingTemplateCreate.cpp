@@ -27,7 +27,7 @@ TargetingTemplateCreate::__init()
 	//new std::list()std::list> keywords;
 	//name = std::string();
 	//placement_group = new PlacementGroupType();
-	//targeting_attributes = new TargetingSpec();
+	//targeting_attributes = null;
 	//tracking_urls = new TrackingUrls();
 }
 
@@ -137,11 +137,11 @@ TargetingTemplateCreate::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("TargetingSpec")) {
-			jsonToValue(&targeting_attributes, node, "TargetingSpec", "TargetingSpec");
+		if (isprimitive("TargetingSpecOptimal")) {
+			jsonToValue(&targeting_attributes, node, "TargetingSpecOptimal", "TargetingSpecOptimal");
 		} else {
 			
-			TargetingSpec* obj = static_cast<TargetingSpec*> (&targeting_attributes);
+			TargetingSpecOptimal* obj = static_cast<TargetingSpecOptimal*> (&targeting_attributes);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -229,13 +229,13 @@ TargetingTemplateCreate::toJson()
 	}
 	const gchar *placement_groupKey = "placement_group";
 	json_object_set_member(pJsonObject, placement_groupKey, node);
-	if (isprimitive("TargetingSpec")) {
-		TargetingSpec obj = getTargetingAttributes();
-		node = converttoJson(&obj, "TargetingSpec", "");
+	if (isprimitive("TargetingSpecOptimal")) {
+		TargetingSpecOptimal obj = getTargetingAttributes();
+		node = converttoJson(&obj, "TargetingSpecOptimal", "");
 	}
 	else {
 		
-		TargetingSpec obj = static_cast<TargetingSpec> (getTargetingAttributes());
+		TargetingSpecOptimal obj = static_cast<TargetingSpecOptimal> (getTargetingAttributes());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -313,14 +313,14 @@ TargetingTemplateCreate::setPlacementGroup(PlacementGroupType  placement_group)
 	this->placement_group = placement_group;
 }
 
-TargetingSpec
+TargetingSpecOptimal
 TargetingTemplateCreate::getTargetingAttributes()
 {
 	return targeting_attributes;
 }
 
 void
-TargetingTemplateCreate::setTargetingAttributes(TargetingSpec  targeting_attributes)
+TargetingTemplateCreate::setTargetingAttributes(TargetingSpecOptimal  targeting_attributes)
 {
 	this->targeting_attributes = targeting_attributes;
 }

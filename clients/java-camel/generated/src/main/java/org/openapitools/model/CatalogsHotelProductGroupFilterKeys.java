@@ -8,7 +8,6 @@ import org.openapitools.model.BrandFilter;
 import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleCountriesCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
-import org.openapitools.model.CatalogsProductGroupPricingCurrencyCriteria;
 import org.openapitools.model.CountryFilter;
 import org.openapitools.model.CustomLabel0Filter;
 import org.openapitools.model.CustomLabel1Filter;
@@ -17,25 +16,26 @@ import org.openapitools.model.CustomLabel3Filter;
 import org.openapitools.model.CustomLabel4Filter;
 import org.openapitools.model.HotelIdFilter;
 import org.openapitools.model.PriceFilter;
+import org.openapitools.model.PriceFilterPrice;
 import org.openapitools.model.TitleKeywordsFilter;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsHotelProductGroupFilterKeys
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelProductGroupFilterKeys {
 
-  private CatalogsProductGroupPricingCurrencyCriteria PRICE;
+  private PriceFilterPrice PRICE;
 
   private CatalogsProductGroupMultipleStringCriteria HOTEL_ID;
 
@@ -62,7 +62,7 @@ public class CatalogsHotelProductGroupFilterKeys {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsHotelProductGroupFilterKeys(CatalogsProductGroupPricingCurrencyCriteria PRICE, CatalogsProductGroupMultipleStringCriteria HOTEL_ID, CatalogsProductGroupMultipleStringCriteria BRAND, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4, CatalogsProductGroupMultipleCountriesCriteria COUNTRY, CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS) {
+  public CatalogsHotelProductGroupFilterKeys(PriceFilterPrice PRICE, CatalogsProductGroupMultipleStringCriteria HOTEL_ID, CatalogsProductGroupMultipleStringCriteria BRAND, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4, CatalogsProductGroupMultipleCountriesCriteria COUNTRY, CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS) {
     this.PRICE = PRICE;
     this.HOTEL_ID = HOTEL_ID;
     this.BRAND = BRAND;
@@ -75,7 +75,7 @@ public class CatalogsHotelProductGroupFilterKeys {
     this.TITLE_KEYWORDS = TITLE_KEYWORDS;
   }
 
-  public CatalogsHotelProductGroupFilterKeys PRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public CatalogsHotelProductGroupFilterKeys PRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
     return this;
   }
@@ -87,11 +87,11 @@ public class CatalogsHotelProductGroupFilterKeys {
   @NotNull @Valid 
   @Schema(name = "PRICE", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("PRICE")
-  public CatalogsProductGroupPricingCurrencyCriteria getPRICE() {
+  public PriceFilterPrice getPRICE() {
     return PRICE;
   }
 
-  public void setPRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public void setPRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
   }
 
@@ -324,10 +324,7 @@ public class CatalogsHotelProductGroupFilterKeys {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

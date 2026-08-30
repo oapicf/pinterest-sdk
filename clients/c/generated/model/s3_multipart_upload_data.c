@@ -12,18 +12,21 @@ static s3_multipart_upload_data_t *s3_multipart_upload_data_create_internal(
     if (!s3_multipart_upload_data_local_var) {
         return NULL;
     }
-    s3_multipart_upload_data_local_var->file_parts = file_parts;
-
+    memset(s3_multipart_upload_data_local_var, 0, sizeof(s3_multipart_upload_data_t));
     s3_multipart_upload_data_local_var->_library_owned = 1;
+    s3_multipart_upload_data_local_var->file_parts = file_parts;
     return s3_multipart_upload_data_local_var;
 }
 
 __attribute__((deprecated)) s3_multipart_upload_data_t *s3_multipart_upload_data_create(
     list_t *file_parts
     ) {
-    return s3_multipart_upload_data_create_internal (
+    s3_multipart_upload_data_t *result = s3_multipart_upload_data_create_internal (
         file_parts
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void s3_multipart_upload_data_free(s3_multipart_upload_data_t *s3_multipart_upload_data) {
@@ -107,9 +110,14 @@ s3_multipart_upload_data_t *s3_multipart_upload_data_parseFromJSON(cJSON *s3_mul
     }
 
 
+
     s3_multipart_upload_data_local_var = s3_multipart_upload_data_create_internal (
         file_parts ? file_partsList : NULL
         );
+
+    if (!s3_multipart_upload_data_local_var) {
+        goto end;
+    }
 
     return s3_multipart_upload_data_local_var;
 end:

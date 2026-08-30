@@ -13,10 +13,10 @@ static catalogs_product_group_filters_request_t *catalogs_product_group_filters_
     if (!catalogs_product_group_filters_request_local_var) {
         return NULL;
     }
+    memset(catalogs_product_group_filters_request_local_var, 0, sizeof(catalogs_product_group_filters_request_t));
+    catalogs_product_group_filters_request_local_var->_library_owned = 1;
     catalogs_product_group_filters_request_local_var->any_of = any_of;
     catalogs_product_group_filters_request_local_var->all_of = all_of;
-
-    catalogs_product_group_filters_request_local_var->_library_owned = 1;
     return catalogs_product_group_filters_request_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) catalogs_product_group_filters_request_t *catalogs_p
     list_t *any_of,
     list_t *all_of
     ) {
-    return catalogs_product_group_filters_request_create_internal (
+    catalogs_product_group_filters_request_t *result = catalogs_product_group_filters_request_create_internal (
         any_of,
         all_of
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_product_group_filters_request_free(catalogs_product_group_filters_request_t *catalogs_product_group_filters_request) {
@@ -173,10 +176,15 @@ catalogs_product_group_filters_request_t *catalogs_product_group_filters_request
     }
 
 
+
     catalogs_product_group_filters_request_local_var = catalogs_product_group_filters_request_create_internal (
         any_ofList,
         all_ofList
         );
+
+    if (!catalogs_product_group_filters_request_local_var) {
+        goto end;
+    }
 
     return catalogs_product_group_filters_request_local_var;
 end:

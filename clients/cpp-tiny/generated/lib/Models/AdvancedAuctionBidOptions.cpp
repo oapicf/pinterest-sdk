@@ -101,14 +101,14 @@ AdvancedAuctionBidOptions::toJson()
 
 }
 
-AppTypeMultipliers
+AppTypeMultipliers&lt;std::string, double&gt;
 AdvancedAuctionBidOptions::getAppTypeMultipliers()
 {
 	return app_type_multipliers;
 }
 
 void
-AdvancedAuctionBidOptions::setAppTypeMultipliers(AppTypeMultipliers  app_type_multipliers)
+AdvancedAuctionBidOptions::setAppTypeMultipliers(AppTypeMultipliers&lt;std::string, double&gt; app_type_multipliers)
 {
 	this->app_type_multipliers = app_type_multipliers;
 }
@@ -120,19 +120,19 @@ AdvancedAuctionBidOptions::getBidInMicroCurrency()
 }
 
 void
-AdvancedAuctionBidOptions::setBidInMicroCurrency(long  bid_in_micro_currency)
+AdvancedAuctionBidOptions::setBidInMicroCurrency(long bid_in_micro_currency)
 {
 	this->bid_in_micro_currency = bid_in_micro_currency;
 }
 
-PlacementMultipliers
+PlacementMultipliers&lt;std::string, double&gt;
 AdvancedAuctionBidOptions::getPlacementMultipliers()
 {
 	return placement_multipliers;
 }
 
 void
-AdvancedAuctionBidOptions::setPlacementMultipliers(PlacementMultipliers  placement_multipliers)
+AdvancedAuctionBidOptions::setPlacementMultipliers(PlacementMultipliers&lt;std::string, double&gt; placement_multipliers)
 {
 	this->placement_multipliers = placement_multipliers;
 }

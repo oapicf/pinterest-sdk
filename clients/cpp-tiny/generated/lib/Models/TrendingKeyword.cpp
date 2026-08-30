@@ -6,14 +6,14 @@ using namespace Tiny;
 
 TrendingKeyword::TrendingKeyword()
 {
-	demographics = TrendingKeyword_demographics();
+	demographics = TrendingKeywordDemographics();
 	has_prediction = bool(false);
 	keyword = std::string();
 	pct_growth_mom = int(0);
 	pct_growth_wow = int(0);
 	pct_growth_yoy = int(0);
-	predicted_time_series = PredictedTimeSeries();
-	time_series = TimeSeries();
+	predicted_time_series = null;
+	time_series = null;
 }
 
 TrendingKeyword::TrendingKeyword(std::string jsonString)
@@ -40,7 +40,7 @@ TrendingKeyword::fromJson(std::string jsonObj)
 
 
 
-        TrendingKeyword_demographics* obj = &demographics;
+        TrendingKeywordDemographics* obj = &demographics;
 		obj->fromJson(value.dump());
 
     }
@@ -207,14 +207,14 @@ TrendingKeyword::toJson()
 
 }
 
-TrendingKeyword_demographics
+TrendingKeywordDemographics
 TrendingKeyword::getDemographics()
 {
 	return demographics;
 }
 
 void
-TrendingKeyword::setDemographics(TrendingKeyword_demographics  demographics)
+TrendingKeyword::setDemographics(TrendingKeywordDemographics demographics)
 {
 	this->demographics = demographics;
 }
@@ -226,7 +226,7 @@ TrendingKeyword::isHasPrediction()
 }
 
 void
-TrendingKeyword::setHasPrediction(bool  has_prediction)
+TrendingKeyword::setHasPrediction(bool has_prediction)
 {
 	this->has_prediction = has_prediction;
 }
@@ -238,7 +238,7 @@ TrendingKeyword::getKeyword()
 }
 
 void
-TrendingKeyword::setKeyword(std::string  keyword)
+TrendingKeyword::setKeyword(std::string keyword)
 {
 	this->keyword = keyword;
 }
@@ -250,7 +250,7 @@ TrendingKeyword::getPctGrowthMom()
 }
 
 void
-TrendingKeyword::setPctGrowthMom(int  pct_growth_mom)
+TrendingKeyword::setPctGrowthMom(int pct_growth_mom)
 {
 	this->pct_growth_mom = pct_growth_mom;
 }
@@ -262,7 +262,7 @@ TrendingKeyword::getPctGrowthWow()
 }
 
 void
-TrendingKeyword::setPctGrowthWow(int  pct_growth_wow)
+TrendingKeyword::setPctGrowthWow(int pct_growth_wow)
 {
 	this->pct_growth_wow = pct_growth_wow;
 }
@@ -274,31 +274,31 @@ TrendingKeyword::getPctGrowthYoy()
 }
 
 void
-TrendingKeyword::setPctGrowthYoy(int  pct_growth_yoy)
+TrendingKeyword::setPctGrowthYoy(int pct_growth_yoy)
 {
 	this->pct_growth_yoy = pct_growth_yoy;
 }
 
-PredictedTimeSeries
+PredictedTimeSeries&lt;std::string, int&gt;
 TrendingKeyword::getPredictedTimeSeries()
 {
 	return predicted_time_series;
 }
 
 void
-TrendingKeyword::setPredictedTimeSeries(PredictedTimeSeries  predicted_time_series)
+TrendingKeyword::setPredictedTimeSeries(PredictedTimeSeries&lt;std::string, int&gt; predicted_time_series)
 {
 	this->predicted_time_series = predicted_time_series;
 }
 
-TimeSeries
+TimeSeries&lt;std::string, int&gt;
 TrendingKeyword::getTimeSeries()
 {
 	return time_series;
 }
 
 void
-TrendingKeyword::setTimeSeries(TimeSeries  time_series)
+TrendingKeyword::setTimeSeries(TimeSeries&lt;std::string, int&gt; time_series)
 {
 	this->time_series = time_series;
 }

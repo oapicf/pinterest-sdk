@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -95,22 +96,27 @@ func (c *LeadsExportAPIController) LeadsExportCreate(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var leadsExportCreateRequestParam LeadsExportCreateRequest
+	var leadsExportsCreateParam LeadsExportsCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&leadsExportCreateRequestParam); err != nil {
+	if err := d.Decode(&leadsExportsCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertLeadsExportCreateRequestRequired(leadsExportCreateRequestParam); err != nil {
+	if err := AssertLeadsExportsCreateRequired(leadsExportsCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertLeadsExportCreateRequestConstraints(leadsExportCreateRequestParam); err != nil {
+	if err := AssertLeadsExportsCreateConstraints(leadsExportsCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.LeadsExportCreate(r.Context(), adAccountIdParam, leadsExportCreateRequestParam)
+	result, err := c.service.LeadsExportCreate(r.Context(), adAccountIdParam, leadsExportsCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

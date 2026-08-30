@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,8 +27,8 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.ConversionMSOTEvents
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.ConversionMSOTEventsCreate
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -42,16 +50,16 @@ open class MsotEventsApi(basePath: kotlin.String = defaultBasePath, client: Call
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * POST /ad_accounts/{ad_account_id}/msot/events
      * Send Measurement Source Of Truth (MSOT) attributed conversion events
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt; &lt;br&gt; &lt;p&gt;Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their &lt;code&gt;ad_account_id&lt;/code&gt;. The request body should be a JSON object.&lt;/p&gt; - These events will NOT be used in Reporting.
+     * **This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their &#x60;ad_account_id&#x60;. The request body should be a JSON object.  - These events will not be used in Reporting.
      * @param adAccountId Unique identifier of an ad account.
-     * @param conversionMSOTEvents Attributed MSOT conversion events
+     * @param conversionMSOTEventsCreate 
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -60,8 +68,8 @@ open class MsotEventsApi(basePath: kotlin.String = defaultBasePath, client: Call
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun msotEventsCreate(adAccountId: kotlin.String, conversionMSOTEvents: ConversionMSOTEvents) : Unit {
-        val localVarResponse = msotEventsCreateWithHttpInfo(adAccountId = adAccountId, conversionMSOTEvents = conversionMSOTEvents)
+    fun msotEventsCreate(adAccountId: kotlin.String, conversionMSOTEventsCreate: ConversionMSOTEventsCreate) : Unit {
+        val localVarResponse = msotEventsCreateWithHttpInfo(adAccountId = adAccountId, conversionMSOTEventsCreate = conversionMSOTEventsCreate)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -81,18 +89,18 @@ open class MsotEventsApi(basePath: kotlin.String = defaultBasePath, client: Call
     /**
      * POST /ad_accounts/{ad_account_id}/msot/events
      * Send Measurement Source Of Truth (MSOT) attributed conversion events
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt; &lt;br&gt; &lt;p&gt;Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their &lt;code&gt;ad_account_id&lt;/code&gt;. The request body should be a JSON object.&lt;/p&gt; - These events will NOT be used in Reporting.
+     * **This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their &#x60;ad_account_id&#x60;. The request body should be a JSON object.  - These events will not be used in Reporting.
      * @param adAccountId Unique identifier of an ad account.
-     * @param conversionMSOTEvents Attributed MSOT conversion events
+     * @param conversionMSOTEventsCreate 
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun msotEventsCreateWithHttpInfo(adAccountId: kotlin.String, conversionMSOTEvents: ConversionMSOTEvents) : ApiResponse<Unit?> {
-        val localVariableConfig = msotEventsCreateRequestConfig(adAccountId = adAccountId, conversionMSOTEvents = conversionMSOTEvents)
+    fun msotEventsCreateWithHttpInfo(adAccountId: kotlin.String, conversionMSOTEventsCreate: ConversionMSOTEventsCreate) : ApiResponse<Unit?> {
+        val localVariableConfig = msotEventsCreateRequestConfig(adAccountId = adAccountId, conversionMSOTEventsCreate = conversionMSOTEventsCreate)
 
-        return request<ConversionMSOTEvents, Unit>(
+        return request<ConversionMSOTEventsCreate, Unit>(
             localVariableConfig
         )
     }
@@ -101,11 +109,11 @@ open class MsotEventsApi(basePath: kotlin.String = defaultBasePath, client: Call
      * To obtain the request config of the operation msotEventsCreate
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param conversionMSOTEvents Attributed MSOT conversion events
+     * @param conversionMSOTEventsCreate 
      * @return RequestConfig
      */
-    fun msotEventsCreateRequestConfig(adAccountId: kotlin.String, conversionMSOTEvents: ConversionMSOTEvents) : RequestConfig<ConversionMSOTEvents> {
-        val localVariableBody = conversionMSOTEvents
+    fun msotEventsCreateRequestConfig(adAccountId: kotlin.String, conversionMSOTEventsCreate: ConversionMSOTEventsCreate) : RequestConfig<ConversionMSOTEventsCreate> {
+        val localVariableBody = conversionMSOTEventsCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"

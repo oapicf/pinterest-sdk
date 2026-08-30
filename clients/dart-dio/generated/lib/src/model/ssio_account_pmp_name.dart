@@ -8,7 +8,7 @@ import 'package:built_value/serializer.dart';
 
 part 'ssio_account_pmp_name.g.dart';
 
-/// SSIOAccountPMPName
+/// Pinterest marketing partner name.
 ///
 /// Properties:
 /// * [id] - Salesforce id for PMP
@@ -86,15 +86,17 @@ class _$SSIOAccountPMPNameSerializer implements PrimitiveSerializer<SSIOAccountP
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         default:

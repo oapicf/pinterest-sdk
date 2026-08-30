@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,10 +27,10 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.BoardsList200Response
+import org.openapitools.client.models.PinsList200Response
+import org.openapitools.client.models.PinterestLibError
 import org.openapitools.client.models.SearchPartnerPins200Response
-import org.openapitools.client.models.SearchUserBoardsGet200Response
-import org.openapitools.client.models.SearchUserPinsList200Response
 
 import com.squareup.moshi.Json
 
@@ -44,14 +52,14 @@ open class SearchApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * GET /search/partner/pins
      * Search pins by a given search term
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+     * **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
      * @param term Search term to look up pins.
      * @param countryCode Two letter country code (ISO 3166-1 alpha-2)
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -87,7 +95,7 @@ open class SearchApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /search/partner/pins
      * Search pins by a given search term
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+     * **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
      * @param term Search term to look up pins.
      * @param countryCode Two letter country code (ISO 3166-1 alpha-2)
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -149,12 +157,12 @@ open class SearchApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /search/boards
      * Search user&#39;s boards
-     * Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param query Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
-     * @return SearchUserBoardsGet200Response
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return BoardsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -163,11 +171,11 @@ open class SearchApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun searchUserBoardsGet(adAccountId: kotlin.String? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, query: kotlin.String? = null) : SearchUserBoardsGet200Response {
-        val localVarResponse = searchUserBoardsGetWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, query = query)
+    fun searchUserBoardsGet(adAccountId: kotlin.String? = null, query: kotlin.String? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : BoardsList200Response {
+        val localVarResponse = searchUserBoardsGetWithHttpInfo(adAccountId = adAccountId, query = query, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as SearchUserBoardsGet200Response
+            ResponseType.Success -> (localVarResponse as Success<*>).data as BoardsList200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -184,21 +192,21 @@ open class SearchApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /search/boards
      * Search user&#39;s boards
-     * Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param query Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
-     * @return ApiResponse<SearchUserBoardsGet200Response?>
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return ApiResponse<BoardsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun searchUserBoardsGetWithHttpInfo(adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?, query: kotlin.String?) : ApiResponse<SearchUserBoardsGet200Response?> {
-        val localVariableConfig = searchUserBoardsGetRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, query = query)
+    fun searchUserBoardsGetWithHttpInfo(adAccountId: kotlin.String?, query: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<BoardsList200Response?> {
+        val localVariableConfig = searchUserBoardsGetRequestConfig(adAccountId = adAccountId, query = query, bookmark = bookmark, pageSize = pageSize)
 
-        return request<Unit, SearchUserBoardsGet200Response>(
+        return request<Unit, BoardsList200Response>(
             localVariableConfig
         )
     }
@@ -207,26 +215,26 @@ open class SearchApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * To obtain the request config of the operation searchUserBoardsGet
      *
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param query Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun searchUserBoardsGetRequestConfig(adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?, query: kotlin.String?) : RequestConfig<Unit> {
+    fun searchUserBoardsGetRequestConfig(adAccountId: kotlin.String?, query: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (adAccountId != null) {
                     put("ad_account_id", listOf(adAccountId.toString()))
                 }
+                if (query != null) {
+                    put("query", listOf(query.toString()))
+                }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
                 }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
-                }
-                if (query != null) {
-                    put("query", listOf(query.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -245,11 +253,11 @@ open class SearchApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /search/pins
      * Search user&#39;s Pins
-     * Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
      * @param query Search query. Can contain pin description keywords or comma-separated pin IDs.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @return SearchUserPinsList200Response
+     * @return PinsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -258,11 +266,11 @@ open class SearchApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun searchUserPinsList(query: kotlin.String, adAccountId: kotlin.String? = null, bookmark: kotlin.String? = null) : SearchUserPinsList200Response {
+    fun searchUserPinsList(query: kotlin.String, adAccountId: kotlin.String? = null, bookmark: kotlin.String? = null) : PinsList200Response {
         val localVarResponse = searchUserPinsListWithHttpInfo(query = query, adAccountId = adAccountId, bookmark = bookmark)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as SearchUserPinsList200Response
+            ResponseType.Success -> (localVarResponse as Success<*>).data as PinsList200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -279,20 +287,20 @@ open class SearchApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /search/pins
      * Search user&#39;s Pins
-     * Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
      * @param query Search query. Can contain pin description keywords or comma-separated pin IDs.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @return ApiResponse<SearchUserPinsList200Response?>
+     * @return ApiResponse<PinsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun searchUserPinsListWithHttpInfo(query: kotlin.String, adAccountId: kotlin.String?, bookmark: kotlin.String?) : ApiResponse<SearchUserPinsList200Response?> {
+    fun searchUserPinsListWithHttpInfo(query: kotlin.String, adAccountId: kotlin.String?, bookmark: kotlin.String?) : ApiResponse<PinsList200Response?> {
         val localVariableConfig = searchUserPinsListRequestConfig(query = query, adAccountId = adAccountId, bookmark = bookmark)
 
-        return request<Unit, SearchUserPinsList200Response>(
+        return request<Unit, PinsList200Response>(
             localVariableConfig
         )
     }

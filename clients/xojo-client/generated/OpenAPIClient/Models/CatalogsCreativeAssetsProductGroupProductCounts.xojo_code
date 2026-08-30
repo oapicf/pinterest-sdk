@@ -2,7 +2,17 @@
 Protected Class CatalogsCreativeAssetsProductGroupProductCounts
 
 	#tag Property, Flags = &h0
+		app_links As Double
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		catalog_type As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		images As Double
 	#tag EndProperty
 
 
@@ -67,6 +77,22 @@ Protected Class CatalogsCreativeAssetsProductGroupProductCounts
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="app_links"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="images"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -5,10 +5,10 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
-#include "AudienceDefinitionResponse.h"
 #include "AudienceInsightType.h"
-#include "AudienceInsightsResponse.h"
-#include "Error.h"
+#include "AudienceInsights.h"
+#include "Audience_insights_scope_and_type_get_200_response.h"
+#include "Pinterest.Lib.Error.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -29,7 +29,7 @@ public:
 
 /*! \brief Get audience insights. *Synchronous*
  *
- * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
+ * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param audienceInsightType Type of audience insights. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -38,12 +38,12 @@ public:
  */
 bool audienceInsightsGetSync(char * accessToken,
 	std::string adAccountId, AudienceInsightType audienceInsightType, 
-	void(* handler)(AudienceInsightsResponse, Error, void* )
+	void(* handler)(AudienceInsights, Error, void* )
 	, void* userData);
 
 /*! \brief Get audience insights. *Asynchronous*
  *
- * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
+ * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param audienceInsightType Type of audience insights. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -52,7 +52,7 @@ bool audienceInsightsGetSync(char * accessToken,
  */
 bool audienceInsightsGetAsync(char * accessToken,
 	std::string adAccountId, AudienceInsightType audienceInsightType, 
-	void(* handler)(AudienceInsightsResponse, Error, void* )
+	void(* handler)(AudienceInsights, Error, void* )
 	, void* userData);
 
 
@@ -66,7 +66,7 @@ bool audienceInsightsGetAsync(char * accessToken,
  */
 bool audienceInsightsScopeAndTypeGetSync(char * accessToken,
 	std::string adAccountId, 
-	void(* handler)(AudienceDefinitionResponse, Error, void* )
+	void(* handler)(Audience_insights_scope_and_type_get_200_response, Error, void* )
 	, void* userData);
 
 /*! \brief Get audience insights scope and type. *Asynchronous*
@@ -79,7 +79,7 @@ bool audienceInsightsScopeAndTypeGetSync(char * accessToken,
  */
 bool audienceInsightsScopeAndTypeGetAsync(char * accessToken,
 	std::string adAccountId, 
-	void(* handler)(AudienceDefinitionResponse, Error, void* )
+	void(* handler)(Audience_insights_scope_and_type_get_200_response, Error, void* )
 	, void* userData);
 
 

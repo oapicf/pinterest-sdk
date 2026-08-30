@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -12,26 +13,28 @@ import org.openapitools.model.DataStatus;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * AnalyticsDailyMetrics
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AnalyticsDailyMetrics {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable DataStatus dataStatus;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String date;
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, BigDecimal> metrics = new HashMap<>();
 
   public AnalyticsDailyMetrics dataStatus(@Nullable DataStatus dataStatus) {
@@ -50,6 +53,7 @@ public class AnalyticsDailyMetrics {
     return dataStatus;
   }
 
+  @JsonProperty("data_status")
   public void setDataStatus(@Nullable DataStatus dataStatus) {
     this.dataStatus = dataStatus;
   }
@@ -70,6 +74,7 @@ public class AnalyticsDailyMetrics {
     return date;
   }
 
+  @JsonProperty("date")
   public void setDate(@Nullable String date) {
     this.date = date;
   }
@@ -88,16 +93,17 @@ public class AnalyticsDailyMetrics {
   }
 
   /**
-   * The metric name and daily value for each requested metric
+   * Get metrics
    * @return metrics
    */
   @Valid 
-  @Schema(name = "metrics", example = "{\"CLOSEUP\":1,\"CLOSEUP_RATE\":0,\"ENGAGEMENT\":1,\"ENGAGEMENT_RATE\":0,\"IMPRESSION\":240,\"OUTBOUND_CLICK\":20,\"OUTBOUND_CLICK_RATE\":0.08,\"PIN_CLICK\":37,\"PIN_CLICK_RATE\":0.15,\"QUARTILE_95_PERCENT_VIEW\":8,\"SAVE\":20,\"SAVE_RATE\":0.18,\"VIDEO_10S_VIEW\":2,\"VIDEO_AVG_WATCH_TIME\":2507.75,\"VIDEO_MRC_VIEW\":20,\"VIDEO_START\":29,\"VIDEO_V50_WATCH_TIME\":10031}", description = "The metric name and daily value for each requested metric", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "metrics", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("metrics")
   public Map<String, BigDecimal> getMetrics() {
     return metrics;
   }
 
+  @JsonProperty("metrics")
   public void setMetrics(Map<String, BigDecimal> metrics) {
     this.metrics = metrics;
   }
@@ -136,11 +142,8 @@ public class AnalyticsDailyMetrics {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

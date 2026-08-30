@@ -10,7 +10,7 @@ import javax.validation.Valid;
 /**
  * CatalogsItemValidationWarnings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsItemValidationWarnings   {
   @JsonProperty("AD_IMAGE_0_LINK_DUPLICATED")
@@ -1049,7 +1049,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_0_LINK_DUPLICATED
+   * ad_image_0_link is duplicated with another ad image link.
    * @return AD_IMAGE_0_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE0LINKDUPLICATED() {
@@ -1066,7 +1066,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_0_LINK_LENGTH_TOO_LONG
+   * Ad image link 0 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_0_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE0LINKLENGTHTOOLONG() {
@@ -1083,7 +1083,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_0_LINK_REQUIRED
+   * Ad image link 0 is required because an image tag was provided.
    * @return AD_IMAGE_0_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE0LINKREQUIRED() {
@@ -1100,7 +1100,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_0_LINK_WARNING
+   * Ad image link 0 format is unsupported.
    * @return AD_IMAGE_0_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE0LINKWARNING() {
@@ -1117,7 +1117,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_0_TAG_DUPLICATED
+   * ad_image_0_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_0_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE0TAGDUPLICATED() {
@@ -1134,7 +1134,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_0_TAG_LENGTH_TOO_LONG
+   * Ad image tag 0 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_0_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE0TAGLENGTHTOOLONG() {
@@ -1151,7 +1151,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_0_TAG_REQUIRED
+   * Ad image tag 0 is required because an image link was provided.
    * @return AD_IMAGE_0_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE0TAGREQUIRED() {
@@ -1168,7 +1168,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_10_LINK_DUPLICATED
+   * ad_image_10_link is duplicated with another ad image link.
    * @return AD_IMAGE_10_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE10LINKDUPLICATED() {
@@ -1185,7 +1185,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_10_LINK_LENGTH_TOO_LONG
+   * Ad image link 10 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_10_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE10LINKLENGTHTOOLONG() {
@@ -1202,7 +1202,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_10_LINK_REQUIRED
+   * Ad image link 10 is required because an image tag was provided.
    * @return AD_IMAGE_10_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE10LINKREQUIRED() {
@@ -1219,7 +1219,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_10_LINK_WARNING
+   * Ad image link 10 format is unsupported.
    * @return AD_IMAGE_10_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE10LINKWARNING() {
@@ -1236,7 +1236,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_10_TAG_DUPLICATED
+   * ad_image_10_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_10_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE10TAGDUPLICATED() {
@@ -1253,7 +1253,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_10_TAG_LENGTH_TOO_LONG
+   * Ad image tag 10 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_10_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE10TAGLENGTHTOOLONG() {
@@ -1270,7 +1270,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_10_TAG_REQUIRED
+   * Ad image tag 10 is required because an image link was provided.
    * @return AD_IMAGE_10_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE10TAGREQUIRED() {
@@ -1287,7 +1287,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_11_LINK_DUPLICATED
+   * ad_image_11_link is duplicated with another ad image link.
    * @return AD_IMAGE_11_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE11LINKDUPLICATED() {
@@ -1304,7 +1304,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_11_LINK_LENGTH_TOO_LONG
+   * Ad image link 11 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_11_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE11LINKLENGTHTOOLONG() {
@@ -1321,7 +1321,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_11_LINK_REQUIRED
+   * Ad image link 11 is required because an image tag was provided.
    * @return AD_IMAGE_11_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE11LINKREQUIRED() {
@@ -1338,7 +1338,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_11_LINK_WARNING
+   * Ad image link 11 format is unsupported.
    * @return AD_IMAGE_11_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE11LINKWARNING() {
@@ -1355,7 +1355,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_11_TAG_DUPLICATED
+   * ad_image_11_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_11_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE11TAGDUPLICATED() {
@@ -1372,7 +1372,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_11_TAG_LENGTH_TOO_LONG
+   * Ad image tag 11 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_11_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE11TAGLENGTHTOOLONG() {
@@ -1389,7 +1389,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_11_TAG_REQUIRED
+   * Ad image tag 11 is required because an image link was provided.
    * @return AD_IMAGE_11_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE11TAGREQUIRED() {
@@ -1406,7 +1406,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_12_LINK_DUPLICATED
+   * ad_image_12_link is duplicated with another ad image link.
    * @return AD_IMAGE_12_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE12LINKDUPLICATED() {
@@ -1423,7 +1423,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_12_LINK_LENGTH_TOO_LONG
+   * Ad image link 12 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_12_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE12LINKLENGTHTOOLONG() {
@@ -1440,7 +1440,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_12_LINK_REQUIRED
+   * Ad image link 12 is required because an image tag was provided.
    * @return AD_IMAGE_12_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE12LINKREQUIRED() {
@@ -1457,7 +1457,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_12_LINK_WARNING
+   * Ad image link 12 format is unsupported.
    * @return AD_IMAGE_12_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE12LINKWARNING() {
@@ -1474,7 +1474,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_12_TAG_DUPLICATED
+   * ad_image_12_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_12_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE12TAGDUPLICATED() {
@@ -1491,7 +1491,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_12_TAG_LENGTH_TOO_LONG
+   * Ad image tag 12 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_12_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE12TAGLENGTHTOOLONG() {
@@ -1508,7 +1508,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_12_TAG_REQUIRED
+   * Ad image tag 12 is required because an image link was provided.
    * @return AD_IMAGE_12_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE12TAGREQUIRED() {
@@ -1525,7 +1525,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_13_LINK_DUPLICATED
+   * ad_image_13_link is duplicated with another ad image link.
    * @return AD_IMAGE_13_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE13LINKDUPLICATED() {
@@ -1542,7 +1542,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_13_LINK_LENGTH_TOO_LONG
+   * Ad image link 13 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_13_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE13LINKLENGTHTOOLONG() {
@@ -1559,7 +1559,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_13_LINK_REQUIRED
+   * Ad image link 13 is required because an image tag was provided.
    * @return AD_IMAGE_13_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE13LINKREQUIRED() {
@@ -1576,7 +1576,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_13_LINK_WARNING
+   * Ad image link 13 format is unsupported.
    * @return AD_IMAGE_13_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE13LINKWARNING() {
@@ -1593,7 +1593,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_13_TAG_DUPLICATED
+   * ad_image_13_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_13_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE13TAGDUPLICATED() {
@@ -1610,7 +1610,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_13_TAG_LENGTH_TOO_LONG
+   * Ad image tag 13 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_13_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE13TAGLENGTHTOOLONG() {
@@ -1627,7 +1627,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_13_TAG_REQUIRED
+   * Ad image tag 13 is required because an image link was provided.
    * @return AD_IMAGE_13_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE13TAGREQUIRED() {
@@ -1644,7 +1644,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_14_LINK_DUPLICATED
+   * ad_image_14_link is duplicated with another ad image link.
    * @return AD_IMAGE_14_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE14LINKDUPLICATED() {
@@ -1661,7 +1661,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_14_LINK_LENGTH_TOO_LONG
+   * Ad image link 14 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_14_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE14LINKLENGTHTOOLONG() {
@@ -1678,7 +1678,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_14_LINK_REQUIRED
+   * Ad image link 14 is required because an image tag was provided.
    * @return AD_IMAGE_14_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE14LINKREQUIRED() {
@@ -1695,7 +1695,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_14_LINK_WARNING
+   * Ad image link 14 format is unsupported.
    * @return AD_IMAGE_14_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE14LINKWARNING() {
@@ -1712,7 +1712,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_14_TAG_DUPLICATED
+   * ad_image_14_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_14_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE14TAGDUPLICATED() {
@@ -1729,7 +1729,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_14_TAG_LENGTH_TOO_LONG
+   * Ad image tag 14 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_14_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE14TAGLENGTHTOOLONG() {
@@ -1746,7 +1746,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_14_TAG_REQUIRED
+   * Ad image tag 14 is required because an image link was provided.
    * @return AD_IMAGE_14_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE14TAGREQUIRED() {
@@ -1763,7 +1763,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_15_LINK_DUPLICATED
+   * ad_image_15_link is duplicated with another ad image link.
    * @return AD_IMAGE_15_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE15LINKDUPLICATED() {
@@ -1780,7 +1780,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_15_LINK_LENGTH_TOO_LONG
+   * Ad image link 15 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_15_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE15LINKLENGTHTOOLONG() {
@@ -1797,7 +1797,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_15_LINK_REQUIRED
+   * Ad image link 15 is required because an image tag was provided.
    * @return AD_IMAGE_15_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE15LINKREQUIRED() {
@@ -1814,7 +1814,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_15_LINK_WARNING
+   * Ad image link 15 format is unsupported.
    * @return AD_IMAGE_15_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE15LINKWARNING() {
@@ -1831,7 +1831,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_15_TAG_DUPLICATED
+   * ad_image_15_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_15_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE15TAGDUPLICATED() {
@@ -1848,7 +1848,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_15_TAG_LENGTH_TOO_LONG
+   * Ad image tag 15 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_15_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE15TAGLENGTHTOOLONG() {
@@ -1865,7 +1865,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_15_TAG_REQUIRED
+   * Ad image tag 15 is required because an image link was provided.
    * @return AD_IMAGE_15_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE15TAGREQUIRED() {
@@ -1882,7 +1882,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_16_LINK_DUPLICATED
+   * ad_image_16_link is duplicated with another ad image link.
    * @return AD_IMAGE_16_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE16LINKDUPLICATED() {
@@ -1899,7 +1899,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_16_LINK_LENGTH_TOO_LONG
+   * Ad image link 16 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_16_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE16LINKLENGTHTOOLONG() {
@@ -1916,7 +1916,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_16_LINK_REQUIRED
+   * Ad image link 16 is required because an image tag was provided.
    * @return AD_IMAGE_16_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE16LINKREQUIRED() {
@@ -1933,7 +1933,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_16_LINK_WARNING
+   * Ad image link 16 format is unsupported.
    * @return AD_IMAGE_16_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE16LINKWARNING() {
@@ -1950,7 +1950,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_16_TAG_DUPLICATED
+   * ad_image_16_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_16_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE16TAGDUPLICATED() {
@@ -1967,7 +1967,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_16_TAG_LENGTH_TOO_LONG
+   * Ad image tag 16 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_16_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE16TAGLENGTHTOOLONG() {
@@ -1984,7 +1984,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_16_TAG_REQUIRED
+   * Ad image tag 16 is required because an image link was provided.
    * @return AD_IMAGE_16_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE16TAGREQUIRED() {
@@ -2001,7 +2001,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_17_LINK_DUPLICATED
+   * ad_image_17_link is duplicated with another ad image link.
    * @return AD_IMAGE_17_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE17LINKDUPLICATED() {
@@ -2018,7 +2018,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_17_LINK_LENGTH_TOO_LONG
+   * Ad image link 17 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_17_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE17LINKLENGTHTOOLONG() {
@@ -2035,7 +2035,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_17_LINK_REQUIRED
+   * Ad image link 17 is required because an image tag was provided.
    * @return AD_IMAGE_17_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE17LINKREQUIRED() {
@@ -2052,7 +2052,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_17_LINK_WARNING
+   * Ad image link 17 format is unsupported.
    * @return AD_IMAGE_17_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE17LINKWARNING() {
@@ -2069,7 +2069,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_17_TAG_DUPLICATED
+   * ad_image_17_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_17_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE17TAGDUPLICATED() {
@@ -2086,7 +2086,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_17_TAG_LENGTH_TOO_LONG
+   * Ad image tag 17 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_17_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE17TAGLENGTHTOOLONG() {
@@ -2103,7 +2103,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_17_TAG_REQUIRED
+   * Ad image tag 17 is required because an image link was provided.
    * @return AD_IMAGE_17_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE17TAGREQUIRED() {
@@ -2120,7 +2120,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_18_LINK_DUPLICATED
+   * ad_image_18_link is duplicated with another ad image link.
    * @return AD_IMAGE_18_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE18LINKDUPLICATED() {
@@ -2137,7 +2137,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_18_LINK_LENGTH_TOO_LONG
+   * Ad image link 18 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_18_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE18LINKLENGTHTOOLONG() {
@@ -2154,7 +2154,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_18_LINK_REQUIRED
+   * Ad image link 18 is required because an image tag was provided.
    * @return AD_IMAGE_18_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE18LINKREQUIRED() {
@@ -2171,7 +2171,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_18_LINK_WARNING
+   * Ad image link 18 format is unsupported.
    * @return AD_IMAGE_18_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE18LINKWARNING() {
@@ -2188,7 +2188,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_18_TAG_DUPLICATED
+   * ad_image_18_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_18_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE18TAGDUPLICATED() {
@@ -2205,7 +2205,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_18_TAG_LENGTH_TOO_LONG
+   * Ad image tag 18 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_18_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE18TAGLENGTHTOOLONG() {
@@ -2222,7 +2222,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_18_TAG_REQUIRED
+   * Ad image tag 18 is required because an image link was provided.
    * @return AD_IMAGE_18_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE18TAGREQUIRED() {
@@ -2239,7 +2239,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_19_LINK_DUPLICATED
+   * ad_image_19_link is duplicated with another ad image link.
    * @return AD_IMAGE_19_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE19LINKDUPLICATED() {
@@ -2256,7 +2256,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_19_LINK_LENGTH_TOO_LONG
+   * Ad image link 19 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_19_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE19LINKLENGTHTOOLONG() {
@@ -2273,7 +2273,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_19_LINK_REQUIRED
+   * Ad image link 19 is required because an image tag was provided.
    * @return AD_IMAGE_19_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE19LINKREQUIRED() {
@@ -2290,7 +2290,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_19_LINK_WARNING
+   * Ad image link 19 format is unsupported.
    * @return AD_IMAGE_19_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE19LINKWARNING() {
@@ -2307,7 +2307,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_19_TAG_DUPLICATED
+   * ad_image_19_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_19_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE19TAGDUPLICATED() {
@@ -2324,7 +2324,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_19_TAG_LENGTH_TOO_LONG
+   * Ad image tag 19 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_19_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE19TAGLENGTHTOOLONG() {
@@ -2341,7 +2341,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_19_TAG_REQUIRED
+   * Ad image tag 19 is required because an image link was provided.
    * @return AD_IMAGE_19_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE19TAGREQUIRED() {
@@ -2358,7 +2358,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_1_LINK_DUPLICATED
+   * ad_image_1_link is duplicated with another ad image link.
    * @return AD_IMAGE_1_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE1LINKDUPLICATED() {
@@ -2375,7 +2375,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_1_LINK_LENGTH_TOO_LONG
+   * Ad image link 1 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_1_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE1LINKLENGTHTOOLONG() {
@@ -2392,7 +2392,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_1_LINK_REQUIRED
+   * Ad image link 1 is required because an image tag was provided.
    * @return AD_IMAGE_1_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE1LINKREQUIRED() {
@@ -2409,7 +2409,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_1_LINK_WARNING
+   * Ad image link 1 format is unsupported.
    * @return AD_IMAGE_1_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE1LINKWARNING() {
@@ -2426,7 +2426,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_1_TAG_DUPLICATED
+   * ad_image_1_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_1_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE1TAGDUPLICATED() {
@@ -2443,7 +2443,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_1_TAG_LENGTH_TOO_LONG
+   * Ad image tag 1 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_1_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE1TAGLENGTHTOOLONG() {
@@ -2460,7 +2460,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_1_TAG_REQUIRED
+   * Ad image tag 1 is required because an image link was provided.
    * @return AD_IMAGE_1_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE1TAGREQUIRED() {
@@ -2477,7 +2477,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_2_LINK_DUPLICATED
+   * ad_image_2_link is duplicated with another ad image link.
    * @return AD_IMAGE_2_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE2LINKDUPLICATED() {
@@ -2494,7 +2494,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_2_LINK_LENGTH_TOO_LONG
+   * Ad image link 2 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_2_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE2LINKLENGTHTOOLONG() {
@@ -2511,7 +2511,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_2_LINK_REQUIRED
+   * Ad image link 2 is required because an image tag was provided.
    * @return AD_IMAGE_2_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE2LINKREQUIRED() {
@@ -2528,7 +2528,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_2_LINK_WARNING
+   * Ad image link 2 format is unsupported.
    * @return AD_IMAGE_2_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE2LINKWARNING() {
@@ -2545,7 +2545,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_2_TAG_DUPLICATED
+   * ad_image_2_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_2_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE2TAGDUPLICATED() {
@@ -2562,7 +2562,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_2_TAG_LENGTH_TOO_LONG
+   * Ad image tag 2 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_2_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE2TAGLENGTHTOOLONG() {
@@ -2579,7 +2579,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_2_TAG_REQUIRED
+   * Ad image tag 2 is required because an image link was provided.
    * @return AD_IMAGE_2_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE2TAGREQUIRED() {
@@ -2596,7 +2596,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_3_LINK_DUPLICATED
+   * ad_image_3_link is duplicated with another ad image link.
    * @return AD_IMAGE_3_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE3LINKDUPLICATED() {
@@ -2613,7 +2613,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_3_LINK_LENGTH_TOO_LONG
+   * Ad image link 3 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_3_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE3LINKLENGTHTOOLONG() {
@@ -2630,7 +2630,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_3_LINK_REQUIRED
+   * Ad image link 3 is required because an image tag was provided.
    * @return AD_IMAGE_3_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE3LINKREQUIRED() {
@@ -2647,7 +2647,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_3_LINK_WARNING
+   * Ad image link 3 format is unsupported.
    * @return AD_IMAGE_3_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE3LINKWARNING() {
@@ -2664,7 +2664,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_3_TAG_DUPLICATED
+   * ad_image_3_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_3_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE3TAGDUPLICATED() {
@@ -2681,7 +2681,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_3_TAG_LENGTH_TOO_LONG
+   * Ad image tag 3 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_3_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE3TAGLENGTHTOOLONG() {
@@ -2698,7 +2698,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_3_TAG_REQUIRED
+   * Ad image tag 3 is required because an image link was provided.
    * @return AD_IMAGE_3_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE3TAGREQUIRED() {
@@ -2715,7 +2715,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_4_LINK_DUPLICATED
+   * ad_image_4_link is duplicated with another ad image link.
    * @return AD_IMAGE_4_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE4LINKDUPLICATED() {
@@ -2732,7 +2732,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_4_LINK_LENGTH_TOO_LONG
+   * Ad image link 4 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_4_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE4LINKLENGTHTOOLONG() {
@@ -2749,7 +2749,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_4_LINK_REQUIRED
+   * Ad image link 4 is required because an image tag was provided.
    * @return AD_IMAGE_4_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE4LINKREQUIRED() {
@@ -2766,7 +2766,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_4_LINK_WARNING
+   * Ad image link 4 format is unsupported.
    * @return AD_IMAGE_4_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE4LINKWARNING() {
@@ -2783,7 +2783,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_4_TAG_DUPLICATED
+   * ad_image_4_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_4_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE4TAGDUPLICATED() {
@@ -2800,7 +2800,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_4_TAG_LENGTH_TOO_LONG
+   * Ad image tag 4 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_4_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE4TAGLENGTHTOOLONG() {
@@ -2817,7 +2817,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_4_TAG_REQUIRED
+   * Ad image tag 4 is required because an image link was provided.
    * @return AD_IMAGE_4_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE4TAGREQUIRED() {
@@ -2834,7 +2834,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_5_LINK_DUPLICATED
+   * ad_image_5_link is duplicated with another ad image link.
    * @return AD_IMAGE_5_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE5LINKDUPLICATED() {
@@ -2851,7 +2851,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_5_LINK_LENGTH_TOO_LONG
+   * Ad image link 5 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_5_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE5LINKLENGTHTOOLONG() {
@@ -2868,7 +2868,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_5_LINK_REQUIRED
+   * Ad image link 5 is required because an image tag was provided.
    * @return AD_IMAGE_5_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE5LINKREQUIRED() {
@@ -2885,7 +2885,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_5_LINK_WARNING
+   * Ad image link 5 format is unsupported.
    * @return AD_IMAGE_5_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE5LINKWARNING() {
@@ -2902,7 +2902,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_5_TAG_DUPLICATED
+   * ad_image_5_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_5_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE5TAGDUPLICATED() {
@@ -2919,7 +2919,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_5_TAG_LENGTH_TOO_LONG
+   * Ad image tag 5 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_5_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE5TAGLENGTHTOOLONG() {
@@ -2936,7 +2936,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_5_TAG_REQUIRED
+   * Ad image tag 5 is required because an image link was provided.
    * @return AD_IMAGE_5_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE5TAGREQUIRED() {
@@ -2953,7 +2953,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_6_LINK_DUPLICATED
+   * ad_image_6_link is duplicated with another ad image link.
    * @return AD_IMAGE_6_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE6LINKDUPLICATED() {
@@ -2970,7 +2970,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_6_LINK_LENGTH_TOO_LONG
+   * Ad image link 6 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_6_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE6LINKLENGTHTOOLONG() {
@@ -2987,7 +2987,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_6_LINK_REQUIRED
+   * Ad image link 6 is required because an image tag was provided.
    * @return AD_IMAGE_6_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE6LINKREQUIRED() {
@@ -3004,7 +3004,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_6_LINK_WARNING
+   * Ad image link 6 format is unsupported.
    * @return AD_IMAGE_6_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE6LINKWARNING() {
@@ -3021,7 +3021,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_6_TAG_DUPLICATED
+   * ad_image_6_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_6_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE6TAGDUPLICATED() {
@@ -3038,7 +3038,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_6_TAG_LENGTH_TOO_LONG
+   * Ad image tag 6 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_6_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE6TAGLENGTHTOOLONG() {
@@ -3055,7 +3055,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_6_TAG_REQUIRED
+   * Ad image tag 6 is required because an image link was provided.
    * @return AD_IMAGE_6_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE6TAGREQUIRED() {
@@ -3072,7 +3072,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_7_LINK_DUPLICATED
+   * ad_image_7_link is duplicated with another ad image link.
    * @return AD_IMAGE_7_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE7LINKDUPLICATED() {
@@ -3089,7 +3089,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_7_LINK_LENGTH_TOO_LONG
+   * Ad image link 7 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_7_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE7LINKLENGTHTOOLONG() {
@@ -3106,7 +3106,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_7_LINK_REQUIRED
+   * Ad image link 7 is required because an image tag was provided.
    * @return AD_IMAGE_7_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE7LINKREQUIRED() {
@@ -3123,7 +3123,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_7_LINK_WARNING
+   * Ad image link 7 format is unsupported.
    * @return AD_IMAGE_7_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE7LINKWARNING() {
@@ -3140,7 +3140,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_7_TAG_DUPLICATED
+   * ad_image_7_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_7_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE7TAGDUPLICATED() {
@@ -3157,7 +3157,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_7_TAG_LENGTH_TOO_LONG
+   * Ad image tag 7 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_7_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE7TAGLENGTHTOOLONG() {
@@ -3174,7 +3174,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_7_TAG_REQUIRED
+   * Ad image tag 7 is required because an image link was provided.
    * @return AD_IMAGE_7_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE7TAGREQUIRED() {
@@ -3191,7 +3191,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_8_LINK_DUPLICATED
+   * ad_image_8_link is duplicated with another ad image link.
    * @return AD_IMAGE_8_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE8LINKDUPLICATED() {
@@ -3208,7 +3208,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_8_LINK_LENGTH_TOO_LONG
+   * Ad image link 8 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_8_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE8LINKLENGTHTOOLONG() {
@@ -3225,7 +3225,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_8_LINK_REQUIRED
+   * Ad image link 8 is required because an image tag was provided.
    * @return AD_IMAGE_8_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE8LINKREQUIRED() {
@@ -3242,7 +3242,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_8_LINK_WARNING
+   * Ad image link 8 format is unsupported.
    * @return AD_IMAGE_8_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE8LINKWARNING() {
@@ -3259,7 +3259,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_8_TAG_DUPLICATED
+   * ad_image_8_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_8_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE8TAGDUPLICATED() {
@@ -3276,7 +3276,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_8_TAG_LENGTH_TOO_LONG
+   * Ad image tag 8 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_8_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE8TAGLENGTHTOOLONG() {
@@ -3293,7 +3293,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_8_TAG_REQUIRED
+   * Ad image tag 8 is required because an image link was provided.
    * @return AD_IMAGE_8_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE8TAGREQUIRED() {
@@ -3310,7 +3310,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_9_LINK_DUPLICATED
+   * ad_image_9_link is duplicated with another ad image link.
    * @return AD_IMAGE_9_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE9LINKDUPLICATED() {
@@ -3327,7 +3327,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_9_LINK_LENGTH_TOO_LONG
+   * Ad image link 9 length is too long. The maximum length is 2047 characters.
    * @return AD_IMAGE_9_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE9LINKLENGTHTOOLONG() {
@@ -3344,7 +3344,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_9_LINK_REQUIRED
+   * Ad image link 9 is required because an image tag was provided.
    * @return AD_IMAGE_9_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE9LINKREQUIRED() {
@@ -3361,7 +3361,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_9_LINK_WARNING
+   * Ad image link 9 format is unsupported.
    * @return AD_IMAGE_9_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADIMAGE9LINKWARNING() {
@@ -3378,7 +3378,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_9_TAG_DUPLICATED
+   * ad_image_9_tag is duplicated with another ad image tag.
    * @return AD_IMAGE_9_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADIMAGE9TAGDUPLICATED() {
@@ -3395,7 +3395,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_9_TAG_LENGTH_TOO_LONG
+   * Ad image tag 9 length is too long. The maximum length is 511 characters.
    * @return AD_IMAGE_9_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADIMAGE9TAGLENGTHTOOLONG() {
@@ -3412,7 +3412,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_IMAGE_9_TAG_REQUIRED
+   * Ad image tag 9 is required because an image link was provided.
    * @return AD_IMAGE_9_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADIMAGE9TAGREQUIRED() {
@@ -3429,7 +3429,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_LINK_FORMAT_WARNING
+   * Item has an ad link that is formatted incorrectly.
    * @return AD_LINK_FORMAT_WARNING
   **/
   public CatalogsItemValidationDetails getADLINKFORMATWARNING() {
@@ -3446,7 +3446,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_LINK_SAME_AS_LINK
+   * Item has an ad link URL that is duplicate of the link URL.
    * @return AD_LINK_SAME_AS_LINK
   **/
   public CatalogsItemValidationDetails getADLINKSAMEASLINK() {
@@ -3463,7 +3463,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_0_LINK_DUPLICATED
+   * ad_video_0_link is duplicated with another ad video link.
    * @return AD_VIDEO_0_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADVIDEO0LINKDUPLICATED() {
@@ -3480,7 +3480,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_0_LINK_LENGTH_TOO_LONG
+   * ad_video_0_link length is too long. The maximum length is 511 characters.
    * @return AD_VIDEO_0_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADVIDEO0LINKLENGTHTOOLONG() {
@@ -3497,7 +3497,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_0_LINK_REQUIRED
+   * ad_video_0_link is required for this item because ad_video_0_tag was provided.
    * @return AD_VIDEO_0_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADVIDEO0LINKREQUIRED() {
@@ -3514,7 +3514,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_0_LINK_WARNING
+   * ad_video_0_link is formatted incorrectly and will not be published with your items.
    * @return AD_VIDEO_0_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADVIDEO0LINKWARNING() {
@@ -3531,7 +3531,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_0_TAG_DUPLICATED
+   * ad_video_0_tag is duplicated with another ad video tag.
    * @return AD_VIDEO_0_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADVIDEO0TAGDUPLICATED() {
@@ -3548,7 +3548,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_0_TAG_LENGTH_TOO_LONG
+   * ad_video_0_tag length is too long. The maximum length is 511 characters.
    * @return AD_VIDEO_0_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADVIDEO0TAGLENGTHTOOLONG() {
@@ -3565,7 +3565,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_0_TAG_REQUIRED
+   * ad_video_0_tag is required because ad_video_0_link was provided.
    * @return AD_VIDEO_0_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADVIDEO0TAGREQUIRED() {
@@ -3582,7 +3582,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_1_LINK_DUPLICATED
+   * ad_video_1_link is duplicated with another ad video link.
    * @return AD_VIDEO_1_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADVIDEO1LINKDUPLICATED() {
@@ -3599,7 +3599,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_1_LINK_LENGTH_TOO_LONG
+   * ad_video_1_link length is too long. The maximum length is 511 characters.
    * @return AD_VIDEO_1_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADVIDEO1LINKLENGTHTOOLONG() {
@@ -3616,7 +3616,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_1_LINK_REQUIRED
+   * ad_video_1_link is required for this item because ad_video_1_tag was provided.
    * @return AD_VIDEO_1_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADVIDEO1LINKREQUIRED() {
@@ -3633,7 +3633,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_1_LINK_WARNING
+   * ad_video_1_link is formatted incorrectly and will not be published with your items.
    * @return AD_VIDEO_1_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADVIDEO1LINKWARNING() {
@@ -3650,7 +3650,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_1_TAG_DUPLICATED
+   * ad_video_1_tag is duplicated with another ad video tag.
    * @return AD_VIDEO_1_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADVIDEO1TAGDUPLICATED() {
@@ -3667,7 +3667,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_1_TAG_LENGTH_TOO_LONG
+   * ad_video_1_tag length is too long. The maximum length is 511 characters.
    * @return AD_VIDEO_1_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADVIDEO1TAGLENGTHTOOLONG() {
@@ -3684,7 +3684,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_1_TAG_REQUIRED
+   * ad_video_1_tag is required because ad_video_1_link was provided.
    * @return AD_VIDEO_1_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADVIDEO1TAGREQUIRED() {
@@ -3701,7 +3701,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_2_LINK_DUPLICATED
+   * ad_video_2_link is duplicated with another ad video link.
    * @return AD_VIDEO_2_LINK_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADVIDEO2LINKDUPLICATED() {
@@ -3718,7 +3718,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_2_LINK_LENGTH_TOO_LONG
+   * ad_video_2_link length is too long. The maximum length is 511 characters.
    * @return AD_VIDEO_2_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADVIDEO2LINKLENGTHTOOLONG() {
@@ -3735,7 +3735,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_2_LINK_REQUIRED
+   * ad_video_2_link is required for this item because ad_video_2_tag was provided.
    * @return AD_VIDEO_2_LINK_REQUIRED
   **/
   public CatalogsItemValidationDetails getADVIDEO2LINKREQUIRED() {
@@ -3752,7 +3752,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_2_LINK_WARNING
+   * ad_video_2_link is formatted incorrectly and will not be published with your items.
    * @return AD_VIDEO_2_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADVIDEO2LINKWARNING() {
@@ -3769,7 +3769,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_2_TAG_DUPLICATED
+   * ad_video_2_tag is duplicated with another ad video tag.
    * @return AD_VIDEO_2_TAG_DUPLICATED
   **/
   public CatalogsItemValidationDetails getADVIDEO2TAGDUPLICATED() {
@@ -3786,7 +3786,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_2_TAG_LENGTH_TOO_LONG
+   * ad_video_2_tag length is too long. The maximum length is 511 characters.
    * @return AD_VIDEO_2_TAG_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADVIDEO2TAGLENGTHTOOLONG() {
@@ -3803,7 +3803,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AD_VIDEO_2_TAG_REQUIRED
+   * ad_video_2_tag is required because ad_video_2_link was provided.
    * @return AD_VIDEO_2_TAG_REQUIRED
   **/
   public CatalogsItemValidationDetails getADVIDEO2TAGREQUIRED() {
@@ -3820,7 +3820,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
+   * Item has an additional_image_link URL that contains too many characters, so the item will not be published.
    * @return ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getADDITIONALIMAGELINKLENGTHTOOLONG() {
@@ -3837,7 +3837,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get ADDITIONAL_IMAGE_LINK_WARNING
+   * Item has additional_image_link URLs that are formatted incorrectly and will not be published with your items.
    * @return ADDITIONAL_IMAGE_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getADDITIONALIMAGELINKWARNING() {
@@ -3854,7 +3854,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get ADWORDS_FORMAT_WARNING
+   * Item has an adwords_redirect link that is formatted incorrectly.
    * @return ADWORDS_FORMAT_WARNING
   **/
   public CatalogsItemValidationDetails getADWORDSFORMATWARNING() {
@@ -3871,7 +3871,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get ADWORDS_SAME_AS_LINK
+   * Item has an adwords_redirect URL that is duplicate of the link URL.
    * @return ADWORDS_SAME_AS_LINK
   **/
   public CatalogsItemValidationDetails getADWORDSSAMEASLINK() {
@@ -3888,7 +3888,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AGE_GROUP_INVALID
+   * Item has an age group value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return AGE_GROUP_INVALID
   **/
   public CatalogsItemValidationDetails getAGEGROUPINVALID() {
@@ -3905,7 +3905,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get ANDROID_DEEP_LINK_INVALID
+   * Item includes an invalid android_deep_link.
    * @return ANDROID_DEEP_LINK_INVALID
   **/
   public CatalogsItemValidationDetails getANDROIDDEEPLINKINVALID() {
@@ -3922,7 +3922,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get AVAILABILITY_DATE_INVALID
+   * Item has an availability_date value that is formatted incorrectly, this item will be published without an availability date.
    * @return AVAILABILITY_DATE_INVALID
   **/
   public CatalogsItemValidationDetails getAVAILABILITYDATEINVALID() {
@@ -3939,7 +3939,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get COUNTRY_DOES_NOT_MAP_TO_CURRENCY
+   * Item includes a currency that doesn't match the usual currency for the location where the product is sold or shipped.
    * @return COUNTRY_DOES_NOT_MAP_TO_CURRENCY
   **/
   public CatalogsItemValidationDetails getCOUNTRYDOESNOTMAPTOCURRENCY() {
@@ -3956,7 +3956,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get CUSTOM_LABEL_LENGTH_TOO_LONG
+   * Item has a custom_label value that is too long, this item will be published without that custom label.
    * @return CUSTOM_LABEL_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getCUSTOMLABELLENGTHTOOLONG() {
@@ -3973,7 +3973,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get DESCRIPTION_LENGTH_TOO_LONG
+   * The description for this item was truncated because it contains too many characters.
    * @return DESCRIPTION_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getDESCRIPTIONLENGTHTOOLONG() {
@@ -3990,7 +3990,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get EXPIRATION_DATE_INVALID
+   * Item has an expiration_date value that is formatted incorrectly, this item will be published without an expiration date.
    * @return EXPIRATION_DATE_INVALID
   **/
   public CatalogsItemValidationDetails getEXPIRATIONDATEINVALID() {
@@ -4007,7 +4007,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get GENDER_INVALID
+   * Item has a gender value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return GENDER_INVALID
   **/
   public CatalogsItemValidationDetails getGENDERINVALID() {
@@ -4024,7 +4024,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get GTIN_INVALID
+   * Item has a GTIN value that is formatted incorrectly.
    * @return GTIN_INVALID
   **/
   public CatalogsItemValidationDetails getGTININVALID() {
@@ -4041,7 +4041,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get IMAGE_LINK_WARNING
+   * Item has an image_link URL that is formatted incorrectly and will not be published.
    * @return IMAGE_LINK_WARNING
   **/
   public CatalogsItemValidationDetails getIMAGELINKWARNING() {
@@ -4058,7 +4058,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get IOS_DEEP_LINK_INVALID
+   * Item includes an invalid ios_deep_link value.
    * @return IOS_DEEP_LINK_INVALID
   **/
   public CatalogsItemValidationDetails getIOSDEEPLINKINVALID() {
@@ -4075,7 +4075,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get IS_BUNDLE_INVALID
+   * Item has an is_bundle value that is formatted incorrectly, this item will be published without being bundled with other products.
    * @return IS_BUNDLE_INVALID
   **/
   public CatalogsItemValidationDetails getISBUNDLEINVALID() {
@@ -4092,7 +4092,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
+   * Item includes additional_image_links that can't be found.
    * @return ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
   **/
   public CatalogsItemValidationDetails getITEMADDITIONALIMAGEDOWNLOADFAILURE() {
@@ -4109,7 +4109,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get LINK_FORMAT_WARNING
+   * Item has an invalid product link which contains invalid UTM tracking paramaters.
    * @return LINK_FORMAT_WARNING
   **/
   public CatalogsItemValidationDetails getLINKFORMATWARNING() {
@@ -4126,7 +4126,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get MIN_AD_PRICE_INVALID
+   * Item includes a min_ad_price value that is formatted incorrectly.
    * @return MIN_AD_PRICE_INVALID
   **/
   public CatalogsItemValidationDetails getMINADPRICEINVALID() {
@@ -4143,7 +4143,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get MPN_INVALID
+   * Item has a MPN value that is formatted incorrectly.
    * @return MPN_INVALID
   **/
   public CatalogsItemValidationDetails getMPNINVALID() {
@@ -4160,7 +4160,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get MULTIPACK_INVALID
+   * Item has an invalid multipack value.
    * @return MULTIPACK_INVALID
   **/
   public CatalogsItemValidationDetails getMULTIPACKINVALID() {
@@ -4177,7 +4177,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get OPTIONAL_CONDITION_INVALID
+   * Item includes a condition value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return OPTIONAL_CONDITION_INVALID
   **/
   public CatalogsItemValidationDetails getOPTIONALCONDITIONINVALID() {
@@ -4194,7 +4194,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get OPTIONAL_CONDITION_MISSING
+   * Item is missing condition value, which may limit visibility in recommendations, search results and shopping experiences.
    * @return OPTIONAL_CONDITION_MISSING
   **/
   public CatalogsItemValidationDetails getOPTIONALCONDITIONMISSING() {
@@ -4211,7 +4211,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get OPTIONAL_PRODUCT_CATEGORY_INVALID
+   * Item includes a google_product_category value that is not formatted correctly according to the GPC taxonomy.
    * @return OPTIONAL_PRODUCT_CATEGORY_INVALID
   **/
   public CatalogsItemValidationDetails getOPTIONALPRODUCTCATEGORYINVALID() {
@@ -4228,7 +4228,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get OPTIONAL_PRODUCT_CATEGORY_MISSING
+   * Item is missing google_product_category.
    * @return OPTIONAL_PRODUCT_CATEGORY_MISSING
   **/
   public CatalogsItemValidationDetails getOPTIONALPRODUCTCATEGORYMISSING() {
@@ -4245,7 +4245,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get PRODUCT_CATEGORY_DEPTH_WARNING
+   * Item only has 1 or 2 levels of google_product_category value, which may limit visibility in recommendations, search results and shopping experiences.
    * @return PRODUCT_CATEGORY_DEPTH_WARNING
   **/
   public CatalogsItemValidationDetails getPRODUCTCATEGORYDEPTHWARNING() {
@@ -4262,7 +4262,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get PRODUCT_TYPE_LENGTH_TOO_LONG
+   * Item has a product_type value that is too long, this item will be published without that product type.
    * @return PRODUCT_TYPE_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getPRODUCTTYPELENGTHTOOLONG() {
@@ -4279,7 +4279,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get SALE_DATE_INVALID
+   * Item has a sale_price_effective_date value that is formatted incorrectly, this item will be published without a sale date.
    * @return SALE_DATE_INVALID
   **/
   public CatalogsItemValidationDetails getSALEDATEINVALID() {
@@ -4296,7 +4296,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get SALES_PRICE_INVALID
+   * Item has an incorrectly formatted sales price.
    * @return SALES_PRICE_INVALID
   **/
   public CatalogsItemValidationDetails getSALESPRICEINVALID() {
@@ -4313,7 +4313,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get SALES_PRICE_TOO_HIGH
+   * Item has a sale price value that is higher than the original price of the item.
    * @return SALES_PRICE_TOO_HIGH
   **/
   public CatalogsItemValidationDetails getSALESPRICETOOHIGH() {
@@ -4330,7 +4330,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get SALES_PRICE_TOO_LOW
+   * Item has a sale price value that is discounted very low compared to the price.
    * @return SALES_PRICE_TOO_LOW
   **/
   public CatalogsItemValidationDetails getSALESPRICETOOLOW() {
@@ -4347,7 +4347,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get SHIPPING_HEIGHT_INVALID
+   * Item has an incorrectly formatted shipping_height value. The value must first contain a numeric value then a valid dimension unit type.
    * @return SHIPPING_HEIGHT_INVALID
   **/
   public CatalogsItemValidationDetails getSHIPPINGHEIGHTINVALID() {
@@ -4364,7 +4364,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get SHIPPING_INVALID
+   * Item has a shipping value that is formatted incorrectly.
    * @return SHIPPING_INVALID
   **/
   public CatalogsItemValidationDetails getSHIPPINGINVALID() {
@@ -4381,7 +4381,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get SHIPPING_WEIGHT_INVALID
+   * Item has an invalid shipping_weight value.
    * @return SHIPPING_WEIGHT_INVALID
   **/
   public CatalogsItemValidationDetails getSHIPPINGWEIGHTINVALID() {
@@ -4398,7 +4398,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get SHIPPING_WIDTH_INVALID
+   * Item has an incorrectly formatted shipping_width value. The value must first contain a numeric value then a valid dimension unit type.
    * @return SHIPPING_WIDTH_INVALID
   **/
   public CatalogsItemValidationDetails getSHIPPINGWIDTHINVALID() {
@@ -4415,7 +4415,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get SIZE_SYSTEM_INVALID
+   * Some items have size system values which are not one of the supported size systems.
    * @return SIZE_SYSTEM_INVALID
   **/
   public CatalogsItemValidationDetails getSIZESYSTEMINVALID() {
@@ -4432,7 +4432,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get SIZE_TYPE_INVALID
+   * Item has a size type value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return SIZE_TYPE_INVALID
   **/
   public CatalogsItemValidationDetails getSIZETYPEINVALID() {
@@ -4449,7 +4449,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get TAX_INVALID
+   * Item has a tax value that is formatted incorrectly.
    * @return TAX_INVALID
   **/
   public CatalogsItemValidationDetails getTAXINVALID() {
@@ -4466,7 +4466,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get TITLE_LENGTH_TOO_LONG
+   * The title for the item was truncated because it contains too many characters.
    * @return TITLE_LENGTH_TOO_LONG
   **/
   public CatalogsItemValidationDetails getTITLELENGTHTOOLONG() {
@@ -4483,7 +4483,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get TOO_MANY_ADDITIONAL_IMAGE_LINKS
+   * Item has a additional_image_link value that exceed the limit for additional images, this item will be published without some of your images.
    * @return TOO_MANY_ADDITIONAL_IMAGE_LINKS
   **/
   public CatalogsItemValidationDetails getTOOMANYADDITIONALIMAGELINKS() {
@@ -4500,7 +4500,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get UTM_SOURCE_AUTO_CORRECTED
+   * Item includes an utm_source value that is formatted incorrectly and has been automatically corrected.
    * @return UTM_SOURCE_AUTO_CORRECTED
   **/
   public CatalogsItemValidationDetails getUTMSOURCEAUTOCORRECTED() {
@@ -4517,7 +4517,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED
+   * A video is required in the item when ad_video fields are provided.
    * @return VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED
   **/
   public CatalogsItemValidationDetails getVIDEOREQUIREDWHENADVIDEOPROVIDED() {
@@ -4534,7 +4534,7 @@ public class CatalogsItemValidationWarnings   {
   }
 
    /**
-   * Get WEIGHT_UNIT_INVALID
+   * Item has a weight_unit value that is formatted incorrectly, this item will be published without a weight unit.
    * @return WEIGHT_UNIT_INVALID
   **/
   public CatalogsItemValidationDetails getWEIGHTUNITINVALID() {
@@ -4989,10 +4989,7 @@ public class CatalogsItemValidationWarnings   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::CatalogsHotelListProductsByCatalogBasedFilterReq
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **string** | Catalog id pertaining to the hotel product group. | 
+**catalog_id** | **string** | Catalog ID pertaining to the product group. | 
 **catalog_type** | **string** |  | 
 **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
 

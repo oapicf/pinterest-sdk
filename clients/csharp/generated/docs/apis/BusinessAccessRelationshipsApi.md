@@ -16,7 +16,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="brandaccountscreate"></a>
 # **BrandAccountsCreate**
-> BrandAccountsCreate200Response BrandAccountsCreate (string businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest)
+> BrandAccount BrandAccountsCreate (string businessHierarchyId, BrandAccountCreate brandAccountCreate)
 
 Create a Brand Account
 
@@ -28,11 +28,11 @@ Create a Brand Account that will be a child business of a business hierarchy. Re
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **businessHierarchyId** | **string** | business hierarchy node id |  |
-| **brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md) |  |  |
+| **brandAccountCreate** | [**BrandAccountCreate**](BrandAccountCreate.md) |  |  |
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -47,15 +47,20 @@ Create a Brand Account that will be a child business of a business hierarchy. Re
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="brandaccountsupdate"></a>
 # **BrandAccountsUpdate**
-> BrandAccountsCreate200Response BrandAccountsUpdate (string businessHierarchyId, string brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest)
+> BrandAccount BrandAccountsUpdate (string brandAccountId, string businessHierarchyId, BrandAccountUpdate brandAccountUpdate)
 
 Update a Brand Account
 
@@ -66,13 +71,13 @@ Update an existing Brand Account
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
+| **brandAccountId** | **string** |  |  |
 | **businessHierarchyId** | **string** | business hierarchy node id |  |
-| **brandAccountId** | **string** | Unique identifier of a brand account. |  |
-| **brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md) |  |  |
+| **brandAccountUpdate** | [**BrandAccountUpdate**](BrandAccountUpdate.md) |  |  |
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -87,20 +92,20 @@ Update an existing Brand Account
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **401** | Not authenticated to update Brand Account |  -  |
-| **403** | Not authorized to update Brand Account |  -  |
-| **404** | Brand account not found |  -  |
-| **409** | This account is not a brand account. |  -  |
-| **429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **409** | The request could not be processed because of a conflict in the current state of the resource. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="deletebusinessmembership"></a>
 # **DeleteBusinessMembership**
-> DeletedMembersResponse DeleteBusinessMembership (string businessId, MembersToDeleteBody membersToDeleteBody)
+> DeleteBusinessMembership200Response DeleteBusinessMembership (string businessId, DeleteBusinessMembershipBody deleteBusinessMembershipBody)
 
 Terminate business memberships
 
@@ -112,11 +117,11 @@ Terminate memberships between the specified members and your business.
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **businessId** | **string** | Business id |  |
-| **membersToDeleteBody** | [**MembersToDeleteBody**](MembersToDeleteBody.md) | List of members with role to delete. |  |
+| **deleteBusinessMembershipBody** | [**DeleteBusinessMembershipBody**](DeleteBusinessMembershipBody.md) |  |  |
 
 ### Return type
 
-[**DeletedMembersResponse**](DeletedMembersResponse.md)
+[**DeleteBusinessMembership200Response**](DeleteBusinessMembership200Response.md)
 
 ### Authorization
 
@@ -131,14 +136,14 @@ Terminate memberships between the specified members and your business.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="deletebusinesspartners"></a>
 # **DeleteBusinessPartners**
-> DeletePartnersResponse DeleteBusinessPartners (string businessId, DeletePartnersRequest deletePartnersRequest)
+> DeleteBusinessPartners DeleteBusinessPartners (string businessId, DeleteBusinessPartnersDelete deleteBusinessPartnersDelete)
 
 Terminate business partnerships
 
@@ -150,11 +155,11 @@ Terminate partnerships between the specified partners and your business. Note: Y
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **businessId** | **string** | Unique identifier of the requesting business. |  |
-| **deletePartnersRequest** | [**DeletePartnersRequest**](DeletePartnersRequest.md) | An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete.  |  |
+| **deleteBusinessPartnersDelete** | [**DeleteBusinessPartnersDelete**](DeleteBusinessPartnersDelete.md) |  |  |
 
 ### Return type
 
-[**DeletePartnersResponse**](DeletePartnersResponse.md)
+[**DeleteBusinessPartners**](DeleteBusinessPartners.md)
 
 ### Authorization
 
@@ -169,15 +174,15 @@ Terminate partnerships between the specified partners and your business. Note: Y
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | A supplied partner id doesn&#39;t exist |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="getbusinessemployers"></a>
 # **GetBusinessEmployers**
-> GetBusinessEmployers200Response GetBusinessEmployers (int pageSize = null, string bookmark = null)
+> GetBusinessEmployers200Response GetBusinessEmployers (bool assetsSummary = null, string bookmark = null, int pageSize = null)
 
 List business employers for user
 
@@ -188,8 +193,9 @@ Get all of the viewing user's business employers.
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **assetsSummary** | **bool** | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to true] |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -208,14 +214,19 @@ Get all of the viewing user's business employers.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="getbusinessmembers"></a>
 # **GetBusinessMembers**
-> GetBusinessMembers200Response GetBusinessMembers (string businessId, bool fetchSystemUsers = null, bool assetsSummary = null, List<MemberBusinessRole> businessRoles = null, string memberIds = null, int startIndex = null, string bookmark = null, int pageSize = null)
+> GetBusinessEmployers200Response GetBusinessMembers (string businessId, bool fetchSystemUsers = null, bool assetsSummary = null, List<MemberBusinessRole> businessRoles = null, string memberIds = null, int startIndex = null, string bookmark = null, int pageSize = null)
 
 Get business members
 
@@ -233,11 +244,11 @@ Get all members of the specified business. The return response will include the 
 | **memberIds** | **string** | A list of business members ids separated by comma. | [optional]  |
 | **startIndex** | **int** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**GetBusinessMembers200Response**](GetBusinessMembers200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -252,14 +263,19 @@ Get all members of the specified business. The return response will include the 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="getbusinesspartners"></a>
 # **GetBusinessPartners**
-> GetBusinessPartners200Response GetBusinessPartners (string businessId, bool assetsSummary = null, PartnerType partnerType = null, string partnerIds = null, int startIndex = null, int pageSize = null, string bookmark = null)
+> GetBusinessEmployers200Response GetBusinessPartners (string businessId, bool assetsSummary = null, PartnerType partnerType = null, string partnerIds = null, int startIndex = null, bool sortAscending = null, string bookmark = null, int pageSize = null)
 
 Get business partners
 
@@ -272,15 +288,16 @@ Get all partners of the specified business.  If the assets_summary=TRUE and: - p
 |------|------|-------------|-------|
 | **businessId** | **string** | Unique identifier of the requesting business. |  |
 | **assetsSummary** | **bool** | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false] |
-| **partnerType** | **PartnerType** | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional]  |
+| **partnerType** | **PartnerType** | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional]  |
 | **partnerIds** | **string** | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional]  |
 | **startIndex** | **int** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **sortAscending** | **bool** | Sort ascending. | [optional]  |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**GetBusinessPartners200Response**](GetBusinessPartners200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -295,14 +312,19 @@ Get all partners of the specified business.  If the assets_summary=TRUE and: - p
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="systemuserupdate"></a>
 # **SystemUserUpdate**
-> void SystemUserUpdate (string businessId, string systemUserId, SystemUserUpdateRequest systemUserUpdateRequest)
+> void SystemUserUpdate (string businessId, string systemUserId, SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody)
 
 Update a system user information.
 
@@ -315,7 +337,7 @@ Update a system user information such as name.
 |------|------|-------------|-------|
 | **businessId** | **string** | Unique identifier of the requesting business. |  |
 | **systemUserId** | **string** | Unique identifier of a system user. |  |
-| **systemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md) |  |  |
+| **systemUserUpdateWithRequiredBody** | [**SystemUserUpdateWithRequiredBody**](SystemUserUpdateWithRequiredBody.md) |  |  |
 
 ### Return type
 
@@ -334,15 +356,19 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | System user updated successfully. |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="updatebusinessmemberships"></a>
 # **UpdateBusinessMemberships**
-> UpdateMemberResultsResponseArray UpdateBusinessMemberships (string businessId, List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody)
+> UpdateBusinessMembershipsResponse UpdateBusinessMemberships (string businessId, List<BusinessMembershipMember> businessMembershipMember)
 
 Update member's business role
 
@@ -354,11 +380,11 @@ Update a member's business role within the business.
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **businessId** | **string** | Business id |  |
-| **updateMemberBusinessRoleBody** | [**List&lt;UpdateMemberBusinessRoleBody&gt;**](UpdateMemberBusinessRoleBody.md) | List of objects with the member id and the business_role. |  |
+| **businessMembershipMember** | [**List&lt;BusinessMembershipMember&gt;**](BusinessMembershipMember.md) |  |  |
 
 ### Return type
 
-[**UpdateMemberResultsResponseArray**](UpdateMemberResultsResponseArray.md)
+[**UpdateBusinessMembershipsResponse**](UpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 
@@ -373,8 +399,13 @@ Update a member's business role within the business.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

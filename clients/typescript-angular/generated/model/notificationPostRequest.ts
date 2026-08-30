@@ -10,12 +10,12 @@
 
 
 /**
- * Any valid JSON object
+ * Notification request body. Can be either a batch of notification objects or a single notification object.
  */
 /**
  * @type NotificationPostRequest
- * Any valid JSON object
+ * Notification request body. Can be either a batch of notification objects or a single notification object.
  * @export
  */
-export type NotificationPostRequest = Array<{ [key: string]: any; }> | object;
+export type NotificationPostRequest = Array<object> | object;
 

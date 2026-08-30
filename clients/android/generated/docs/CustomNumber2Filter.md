@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cUSTOMNUMBER2** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**cUSTOMNUMBER2** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
 
 
 

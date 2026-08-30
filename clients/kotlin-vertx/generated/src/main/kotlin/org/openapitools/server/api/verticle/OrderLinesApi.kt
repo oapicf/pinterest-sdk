@@ -1,8 +1,9 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.OrderLine
 import org.openapitools.server.api.model.OrderLinesList200Response
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -21,10 +22,10 @@ interface OrderLinesApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* orderLinesGet
      * Get order line */
-    suspend fun orderLinesGet(adAccountId:kotlin.String?,orderLineId:kotlin.String?,context:OperationRequest):Response<OrderLine>
+    suspend fun orderLinesGet(orderLineId:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<OrderLine>
     /* orderLinesList
-     * Get order lines */
-    suspend fun orderLinesList(adAccountId:kotlin.String?,pageSize:kotlin.Int?,order:kotlin.String?,bookmark:kotlin.String?,context:OperationRequest):Response<OrderLinesList200Response>
+     * Get order lines. */
+    suspend fun orderLinesList(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,order:PinterestLibPaginationOrder?,context:OperationRequest):Response<OrderLinesList200Response>
     companion object {
         const val address = "OrderLinesApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

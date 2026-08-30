@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Log event type for integration applications.",
+  "name": "IntegrationLogEventType",
+  "symbols": [
+    "APP",
+    "API"
+  ]
+}

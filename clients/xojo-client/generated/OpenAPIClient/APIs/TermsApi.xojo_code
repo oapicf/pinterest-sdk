@@ -10,7 +10,7 @@ Protected Class TermsApi
 		  // Invokes TermsApiCallbackHandler.TermsRelatedListCallback(RelatedTerms) on completion. 
 		  //
 		  // - GET /terms/related
-		  // - Get a list of terms logically related to each input term. <p/> Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
+		  // - Get a list of terms logically related to each input term.  Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -159,7 +159,7 @@ Protected Class TermsApi
 		  // Invokes TermsApiCallbackHandler.TermsSuggestedListCallback(String) on completion. 
 		  //
 		  // - GET /terms/suggested
-		  // - Get popular search terms that begin with your input term. <p/> Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
+		  // - Get popular search terms that begin with your input term.  Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:

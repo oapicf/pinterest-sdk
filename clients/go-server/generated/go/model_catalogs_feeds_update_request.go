@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -26,7 +26,7 @@ type CatalogsFeedsUpdateRequest struct {
 	Format CatalogsFormat `json:"format,omitempty"`
 
 	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	Location string `json:"location,omitempty" validate:"regexp=^(http|https|ftp|sftp):\\/\\/"`
+	Location string `json:"location,omitempty" validate:"regexp=^(http|https|ftp|sftp)://"`
 
 	// A human-friendly name associated to a given feed.
 	Name string `json:"name,omitempty"`
@@ -36,7 +36,8 @@ type CatalogsFeedsUpdateRequest struct {
 	Status CatalogsStatus `json:"status,omitempty"`
 }
 
-// AssertCatalogsFeedsUpdateRequestRequired checks if the required fields are not zero-ed
+// AssertCatalogsFeedsUpdateRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsFeedsUpdateRequestRequired(obj CatalogsFeedsUpdateRequest) error {
 	if obj.Credentials != nil {
 		if err := AssertCatalogsFeedCredentialsRequired(*obj.Credentials); err != nil {

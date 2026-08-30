@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/ai_disclosures_update.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/carousel_slot.dart';
 import 'package:built_value/built_value.dart';
@@ -13,6 +14,7 @@ part 'pin_update.g.dart';
 /// Resource create or update operation model.
 ///
 /// Properties:
+/// * [aiDisclosures] - AI disclosure declarations the creator has made about this Pin.
 /// * [altText] 
 /// * [boardId] - The board to which this Pin belongs.
 /// * [boardSectionId] - The board section to which this Pin belongs.
@@ -22,6 +24,10 @@ part 'pin_update.g.dart';
 /// * [title] 
 @BuiltValue()
 abstract class PinUpdate implements Built<PinUpdate, PinUpdateBuilder> {
+  /// AI disclosure declarations the creator has made about this Pin.
+  @BuiltValueField(wireName: r'ai_disclosures')
+  AiDisclosuresUpdate? get aiDisclosures;
+
   @BuiltValueField(wireName: r'alt_text')
   String? get altText;
 
@@ -69,6 +75,13 @@ class _$PinUpdateSerializer implements PrimitiveSerializer<PinUpdate> {
     PinUpdate object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.aiDisclosures != null) {
+      yield r'ai_disclosures';
+      yield serializers.serialize(
+        object.aiDisclosures,
+        specifiedType: const FullType(AiDisclosuresUpdate),
+      );
+    }
     if (object.altText != null) {
       yield r'alt_text';
       yield serializers.serialize(
@@ -141,6 +154,14 @@ class _$PinUpdateSerializer implements PrimitiveSerializer<PinUpdate> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'ai_disclosures':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(AiDisclosuresUpdate),
+          ) as AiDisclosuresUpdate?;
+          if (valueDes == null) continue;
+          result.aiDisclosures.replace(valueDes);
+          break;
         case r'alt_text':
           final valueDes = serializers.deserialize(
             value,
@@ -152,8 +173,9 @@ class _$PinUpdateSerializer implements PrimitiveSerializer<PinUpdate> {
         case r'board_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.boardId = valueDes;
           break;
         case r'board_section_id':
@@ -167,8 +189,9 @@ class _$PinUpdateSerializer implements PrimitiveSerializer<PinUpdate> {
         case r'carousel_slots':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CarouselSlot)]),
-          ) as BuiltList<CarouselSlot>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(CarouselSlot)]),
+          ) as BuiltList<CarouselSlot>?;
+          if (valueDes == null) continue;
           result.carouselSlots.replace(valueDes);
           break;
         case r'description':

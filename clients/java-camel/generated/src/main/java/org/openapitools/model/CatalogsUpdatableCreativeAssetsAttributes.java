@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -9,19 +10,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsUpdatableCreativeAssetsAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsUpdatableCreativeAssetsAttributes {
 
   private JsonNullable<String> androidDeepLink = JsonNullable.<String>undefined();
@@ -274,11 +275,11 @@ public class CatalogsUpdatableCreativeAssetsAttributes {
   }
 
   /**
-   * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+   * Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
    * @return visibility
    */
   
-  @Schema(name = "visibility", description = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "visibility", description = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("visibility")
   public JsonNullable<String> getVisibility() {
     return visibility;
@@ -352,10 +353,7 @@ public class CatalogsUpdatableCreativeAssetsAttributes {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

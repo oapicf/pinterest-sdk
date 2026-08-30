@@ -21,6 +21,7 @@
   | {'link', binary() }
   | {'title', binary() }
   | {'visibility', binary() }
+  | {'ai_disclosures', list(openapi_catalogs_ai_content_disclosure:openapi_catalogs_ai_content_disclosure()) }
   | {'image_link', binary() }
   | {'video_link', binary() }
   ].
@@ -42,6 +43,7 @@ openapi_catalogs_creative_assets_attributes(Fields) ->
             , {'link', binary() }
             , {'title', binary() }
             , {'visibility', binary() }
+            , {'ai_disclosures', list(openapi_catalogs_ai_content_disclosure:openapi_catalogs_ai_content_disclosure()) }
             , {'image_link', binary() }
             , {'video_link', binary() }
             ],

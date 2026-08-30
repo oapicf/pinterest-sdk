@@ -12,18 +12,21 @@ static bulk_upsert_response_t *bulk_upsert_response_create_internal(
     if (!bulk_upsert_response_local_var) {
         return NULL;
     }
-    bulk_upsert_response_local_var->request_id = request_id;
-
+    memset(bulk_upsert_response_local_var, 0, sizeof(bulk_upsert_response_t));
     bulk_upsert_response_local_var->_library_owned = 1;
+    bulk_upsert_response_local_var->request_id = request_id;
     return bulk_upsert_response_local_var;
 }
 
 __attribute__((deprecated)) bulk_upsert_response_t *bulk_upsert_response_create(
     char *request_id
     ) {
-    return bulk_upsert_response_create_internal (
+    bulk_upsert_response_t *result = bulk_upsert_response_create_internal (
         request_id
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void bulk_upsert_response_free(bulk_upsert_response_t *bulk_upsert_response) {
@@ -64,6 +67,8 @@ bulk_upsert_response_t *bulk_upsert_response_parseFromJSON(cJSON *bulk_upsert_re
 
     bulk_upsert_response_t *bulk_upsert_response_local_var = NULL;
 
+    char *request_id_local_str = NULL;
+
     // bulk_upsert_response->request_id
     cJSON *request_id = cJSON_GetObjectItemCaseSensitive(bulk_upsert_responseJSON, "request_id");
     if (cJSON_IsNull(request_id)) {
@@ -77,12 +82,22 @@ bulk_upsert_response_t *bulk_upsert_response_parseFromJSON(cJSON *bulk_upsert_re
     }
 
 
+    if (request_id && !cJSON_IsNull(request_id)) request_id_local_str = strdup(request_id->valuestring);
+
     bulk_upsert_response_local_var = bulk_upsert_response_create_internal (
-        request_id && !cJSON_IsNull(request_id) ? strdup(request_id->valuestring) : NULL
+        request_id_local_str
         );
+
+    if (!bulk_upsert_response_local_var) {
+        goto end;
+    }
 
     return bulk_upsert_response_local_var;
 end:
+    if (request_id_local_str) {
+        free(request_id_local_str);
+        request_id_local_str = NULL;
+    }
     return NULL;
 
 }

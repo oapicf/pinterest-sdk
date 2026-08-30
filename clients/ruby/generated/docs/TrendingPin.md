@@ -4,9 +4,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **color** | **String** | Dominant color of the pin image in hex format |  |
 | **height** | **Integer** | Height of the pin image in pixels |  |
 | **id** | **String** | Unique identifier for the pin |  |
 | **src** | **String** | URL of the pin image |  |
+| **vertical_offset** | **Float** | The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom. | [optional] |
 | **width** | **Integer** | Width of the pin image in pixels |  |
 
 ## Example
@@ -15,9 +17,11 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::TrendingPin.new(
+  color: null,
   height: null,
   id: null,
   src: null,
+  vertical_offset: null,
   width: null
 )
 ```

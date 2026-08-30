@@ -32,7 +32,7 @@ end
 
 api_instance = PinterestSdkClient::ConversionTagsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-conversion_tag_create = PinterestSdkClient::ConversionTagCreate.new({name: 'ACME Checkout Test Tag'}) # ConversionTagCreate | 
+conversion_tag_create = PinterestSdkClient::ConversionTagCreate.new({name: 'download_picture'}) # ConversionTagCreate | 
 
 begin
   # Create conversion tag
@@ -106,7 +106,7 @@ end
 
 api_instance = PinterestSdkClient::ConversionTagsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-conversion_tag_id = '2617998078212' # String | Id of the conversion tag.
+conversion_tag_id = 'conversion_tag_id_example' # String | Id of the conversion tag.
 
 begin
   # Get conversion tag
@@ -329,9 +329,9 @@ end
 api_instance = PinterestSdkClient::ConversionTagsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  order: 'ASCENDING', # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  bookmark: 'bookmark_example' # String | Cursor used to fetch the next page of items
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56, # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  order: PinterestSdkClient::PinterestLibPaginationOrder::ASCENDING # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 }
 
 begin
@@ -366,9 +366,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
-| **order** | **String** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
+| **order** | [**PinterestLibPaginationOrder**](.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 
 ### Return type
 

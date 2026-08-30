@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &UsersForIndividualAssetResponse{}
 // UsersForIndividualAssetResponse An object containing the permissions a business member has on the asset.
 type UsersForIndividualAssetResponse struct {
 	// Unique identifier of a business asset.
-	AssetId *string `json:"asset_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AssetId *string `json:"asset_id,omitempty" validate:"regexp=^\\d+$"`
 	// Unique identifier of the business member with asset access.
-	MemberId *string `json:"member_id,omitempty" validate:"regexp=^\\\\d+$"`
+	MemberId *string `json:"member_id,omitempty" validate:"regexp=^\\d+$"`
 	// Permission levels member or partner has on an asset.
 	Permissions []string `json:"permissions,omitempty"`
 }

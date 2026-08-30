@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * The new status you want to give the label, either `ACTIVE` (in use) or no longer in use (`ARCHIVED`).
+ * Label status values.
  */
 public enum LabelStatus {
   
@@ -34,7 +34,7 @@ public enum LabelStatus {
         return b;
       }
     }
-    return null;
+    throw new IllegalArgumentException("Unexpected value '" + text + "'");
   }
 }
 

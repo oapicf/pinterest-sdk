@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**PromotionResponse**](PromotionResponse.md) |  | [optional] [default to undefined]
+**data** | [**Promotion**](Promotion.md) |  | [optional] [default to undefined]
 **exception** | [**Exception**](Exception.md) |  | [optional] [default to undefined]
 
 ## Example

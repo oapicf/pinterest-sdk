@@ -11,12 +11,12 @@ Feature | HTTP request | Description
 
 
 # **audiences_create**
-> audiences_create (ad_account_id: STRING_32 ; audience_create_request: AUDIENCE_CREATE_REQUEST ): detachable AUDIENCE
+> audiences_create (ad_account_id: STRING_32 ; ad_accounts_audience_create: AD_ACCOUNTS_AUDIENCE_CREATE ): detachable AD_ACCOUNTS_AUDIENCE
 
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+Create a new audience for the ad account.
 
 
 ### Parameters
@@ -24,11 +24,11 @@ Create an audience you can use in targeting for specific ad groups. Targeting co
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **audience_create_request** | [**AUDIENCE_CREATE_REQUEST**](AUDIENCE_CREATE_REQUEST.md)| List of ads to create, size limit [1, 30] | 
+ **ad_accounts_audience_create** | [**AD_ACCOUNTS_AUDIENCE_CREATE**](AD_ACCOUNTS_AUDIENCE_CREATE.md)|  | 
 
 ### Return type
 
-[**AUDIENCE**](Audience.md)
+[**AD_ACCOUNTS_AUDIENCE**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -42,7 +42,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **audiences_get**
-> audiences_get (ad_account_id: STRING_32 ; audience_id: STRING_32 ): detachable AUDIENCE
+> audiences_get (audience_id: STRING_32 ; ad_account_id: STRING_32 ): detachable AD_ACCOUNTS_AUDIENCE
 
 
 Get audience
@@ -54,12 +54,12 @@ Get a specific audience given the audience ID.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audience_id** | **STRING_32**| Audience ID. | [default to null]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **audience_id** | **STRING_32**| Unique identifier of an audience | [default to null]
 
 ### Return type
 
-[**AUDIENCE**](Audience.md)
+[**AD_ACCOUNTS_AUDIENCE**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **audiences_list**
-> audiences_list (ad_account_id: STRING_32 ; bookmark:  detachable STRING_32 ; order:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; ownership_type:  detachable STRING_32 ): detachable AUDIENCES_LIST_200_RESPONSE
+> audiences_list (ad_account_id: STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; order:  detachable PINTEREST_LIB_PAGINATION_ORDER ; ownership_type:  detachable AUDIENCE_OWNERSHIP_TYPE ; exclude_nca:  detachable BOOLEAN ): detachable AUDIENCES_LIST_200_RESPONSE
 
 
 List audiences
@@ -87,9 +87,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **order** | **STRING_32**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **ownership_type** | **STRING_32**| Filter audiences by ownership type. | [optional] [default to OWNED]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PINTEREST_LIB_PAGINATION_ORDER**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
+ **ownership_type** | [**AUDIENCE_OWNERSHIP_TYPE**](.md)|  | [optional] [default to null]
+ **exclude_nca** | **BOOLEAN**| When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [optional] [default to false]
 
 ### Return type
 
@@ -107,25 +108,25 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **audiences_update**
-> audiences_update (ad_account_id: STRING_32 ; audience_id: STRING_32 ; audience_update_request: AUDIENCE_UPDATE_REQUEST ): detachable AUDIENCE
+> audiences_update (audience_id: STRING_32 ; ad_account_id: STRING_32 ; ad_accounts_audience_update: AD_ACCOUNTS_AUDIENCE_UPDATE ): detachable AD_ACCOUNTS_AUDIENCE
 
 
 Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audience_id** | **STRING_32**| Audience ID. | [default to null]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **audience_id** | **STRING_32**| Unique identifier of an audience | [default to null]
- **audience_update_request** | [**AUDIENCE_UPDATE_REQUEST**](AUDIENCE_UPDATE_REQUEST.md)| The audience to be updated. | 
+ **ad_accounts_audience_update** | [**AD_ACCOUNTS_AUDIENCE_UPDATE**](AD_ACCOUNTS_AUDIENCE_UPDATE.md)|  | 
 
 ### Return type
 
-[**AUDIENCE**](Audience.md)
+[**AD_ACCOUNTS_AUDIENCE**](AdAccountsAudience.md)
 
 ### Authorization
 

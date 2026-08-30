@@ -3,7 +3,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **accesses** | [**List**](UpdatePartnerAssetAccessBody_accesses_inner.md) |  | [default to null] |
+| **accesses** | [**List**](UpdatePartnerAssetAccessItem.md) | List of partner asset accesses to assign or update. | [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

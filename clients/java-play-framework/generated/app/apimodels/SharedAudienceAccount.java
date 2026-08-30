@@ -1,5 +1,6 @@
 package apimodels;
 
+import apimodels.AudienceAccountType;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -9,7 +10,7 @@ import javax.validation.Valid;
 /**
  * SharedAudienceAccount
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class SharedAudienceAccount   {
   @JsonProperty("account_id")
@@ -23,41 +24,11 @@ public class SharedAudienceAccount   {
 
   private String accountName;
 
-  /**
-   * account type
-   */
-  public enum AccountTypeEnum {
-    AD_ACCOUNT("AD_ACCOUNT"),
-    
-    BUSINESS_ACCOUNT("BUSINESS_ACCOUNT");
-
-    private final String value;
-
-    AccountTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static AccountTypeEnum fromValue(String value) {
-      for (AccountTypeEnum b : AccountTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @JsonProperty("account_type")
   @NotNull
+@Valid
 
-  private AccountTypeEnum accountType;
+  private AudienceAccountType accountType;
 
   @JsonProperty("shared_on_timestamp")
   @NotNull
@@ -98,7 +69,7 @@ public class SharedAudienceAccount   {
     this.accountName = accountName;
   }
 
-  public SharedAudienceAccount accountType(AccountTypeEnum accountType) {
+  public SharedAudienceAccount accountType(AudienceAccountType accountType) {
     this.accountType = accountType;
     return this;
   }
@@ -107,11 +78,11 @@ public class SharedAudienceAccount   {
    * account type
    * @return accountType
   **/
-  public AccountTypeEnum getAccountType() {
+  public AudienceAccountType getAccountType() {
     return accountType;
   }
 
-  public void setAccountType(AccountTypeEnum accountType) {
+  public void setAccountType(AudienceAccountType accountType) {
     this.accountType = accountType;
   }
 
@@ -172,10 +143,7 @@ public class SharedAudienceAccount   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

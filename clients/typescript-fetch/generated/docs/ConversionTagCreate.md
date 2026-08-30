@@ -32,7 +32,7 @@ const example = {
   "aemLocEnabled": null,
   "aemPhEnabled": null,
   "mdFrequency": 0.6,
-  "name": ACME Checkout Test Tag,
+  "name": download_picture,
 } satisfies ConversionTagCreate
 
 console.log(example)

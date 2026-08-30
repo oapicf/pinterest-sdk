@@ -9,9 +9,9 @@ from openapi_server.models.conversion_event_response import ConversionEventRespo
 from openapi_server.models.conversion_tag import ConversionTag
 from openapi_server.models.conversion_tag_create import ConversionTagCreate
 from openapi_server.models.conversion_tags_list200_response import ConversionTagsList200Response
-from openapi_server.models.error import Error
 from openapi_server.models.page_visit_conversion_tags_get200_response import PageVisitConversionTagsGet200Response
 from openapi_server.models.pinterest_lib_error import PinterestLibError
+from openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 class BaseConversionTagsApi:
@@ -49,9 +49,9 @@ class BaseConversionTagsApi:
     async def page_visit_conversion_tags_get(
         self,
         ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.")],
-        order: Annotated[Optional[StrictStr], Field(description="The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.")],
         bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        order: Annotated[Optional[PinterestLibPaginationOrder], Field(description="The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.")],
     ) -> PageVisitConversionTagsGet200Response:
         """Get all page visit conversion tag events for an ad account."""
         ...

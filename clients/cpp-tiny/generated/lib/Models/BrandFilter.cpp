@@ -65,7 +65,7 @@ BrandFilter::getBRAND()
 }
 
 void
-BrandFilter::setBRAND(CatalogsProductGroupMultipleStringCriteria  bRAND)
+BrandFilter::setBRAND(CatalogsProductGroupMultipleStringCriteria bRAND)
 {
 	this->bRAND = bRAND;
 }

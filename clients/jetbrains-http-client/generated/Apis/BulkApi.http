@@ -1,0 +1,33 @@
+## BulkApi
+
+### Get advertiser entities in bulk
+## Get advertiser entities in bulk
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/bulk/download
+Content-Type: application/json
+Accept: application/json
+
+{
+ "campaign_filter": "<string>",
+ "entity_ids": "<string>",
+ "entity_types": "<string>",
+ "output_format": "<string>",
+ "updated_since": "<string>"
+}
+
+
+### Download advertiser entities in bulk
+## Download advertiser entities in bulk
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/bulk/{{bulk_request_id}}?includeDetails={{includeDetails}}
+Accept: application/json
+
+### Create/update ad entities in bulk
+## Create/update ad entities in bulk
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/bulk/upsert
+Content-Type: application/json
+Accept: application/json
+
+{
+ "create": "<string>",
+ "update": "<string>"
+}
+

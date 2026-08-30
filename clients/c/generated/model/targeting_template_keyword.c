@@ -13,10 +13,10 @@ static targeting_template_keyword_t *targeting_template_keyword_create_internal(
     if (!targeting_template_keyword_local_var) {
         return NULL;
     }
+    memset(targeting_template_keyword_local_var, 0, sizeof(targeting_template_keyword_t));
+    targeting_template_keyword_local_var->_library_owned = 1;
     targeting_template_keyword_local_var->match_type = match_type;
     targeting_template_keyword_local_var->value = value;
-
-    targeting_template_keyword_local_var->_library_owned = 1;
     return targeting_template_keyword_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) targeting_template_keyword_t *targeting_template_key
     pinterest_rest_api_match_type__e match_type,
     char *value
     ) {
-    return targeting_template_keyword_create_internal (
+    targeting_template_keyword_t *result = targeting_template_keyword_create_internal (
         match_type,
         value
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void targeting_template_keyword_free(targeting_template_keyword_t *targeting_template_keyword) {
@@ -84,6 +87,8 @@ targeting_template_keyword_t *targeting_template_keyword_parseFromJSON(cJSON *ta
     // define the local variable for targeting_template_keyword->match_type
     pinterest_rest_api_match_type__e match_type_local_nonprim = 0;
 
+    char *value_local_str = NULL;
+
     // targeting_template_keyword->match_type
     cJSON *match_type = cJSON_GetObjectItemCaseSensitive(targeting_template_keywordJSON, "match_type");
     if (cJSON_IsNull(match_type)) {
@@ -106,15 +111,25 @@ targeting_template_keyword_t *targeting_template_keyword_parseFromJSON(cJSON *ta
     }
 
 
+    if (value && !cJSON_IsNull(value)) value_local_str = strdup(value->valuestring);
+
     targeting_template_keyword_local_var = targeting_template_keyword_create_internal (
         match_type ? match_type_local_nonprim : 0,
-        value && !cJSON_IsNull(value) ? strdup(value->valuestring) : NULL
+        value_local_str
         );
+
+    if (!targeting_template_keyword_local_var) {
+        goto end;
+    }
 
     return targeting_template_keyword_local_var;
 end:
     if (match_type_local_nonprim) {
         match_type_local_nonprim = 0;
+    }
+    if (value_local_str) {
+        free(value_local_str);
+        value_local_str = NULL;
     }
     return NULL;
 

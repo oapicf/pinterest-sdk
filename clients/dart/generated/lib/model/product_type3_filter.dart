@@ -13,26 +13,26 @@ part of openapi.api;
 class ProductType3Filter {
   /// Returns a new [ProductType3Filter] instance.
   ProductType3Filter({
-    required this.pRODUCTTYPE3,
+    required this.PRODUCT_TYPE_3,
   });
 
-  CatalogsProductGroupMultipleStringListCriteria pRODUCTTYPE3;
+  CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_3;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductType3Filter &&
-    other.pRODUCTTYPE3 == pRODUCTTYPE3;
+    other.PRODUCT_TYPE_3 == PRODUCT_TYPE_3;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (pRODUCTTYPE3.hashCode);
+    (PRODUCT_TYPE_3.hashCode);
 
   @override
-  String toString() => 'ProductType3Filter[pRODUCTTYPE3=$pRODUCTTYPE3]';
+  String toString() => 'ProductType3Filter[PRODUCT_TYPE_3=$PRODUCT_TYPE_3]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'PRODUCT_TYPE_3'] = this.pRODUCTTYPE3;
+      json[r'PRODUCT_TYPE_3'] = this.PRODUCT_TYPE_3;
     return json;
   }
 
@@ -47,15 +47,13 @@ class ProductType3Filter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProductType3Filter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProductType3Filter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'PRODUCT_TYPE_3'), 'Required key "ProductType3Filter[PRODUCT_TYPE_3]" is missing from JSON.');
+        assert(json[r'PRODUCT_TYPE_3'] != null, 'Required key "ProductType3Filter[PRODUCT_TYPE_3]" has a null value in JSON.');
         return true;
       }());
 
       return ProductType3Filter(
-        pRODUCTTYPE3: mapValueOfType<CatalogsProductGroupMultipleStringListCriteria>(json, r'PRODUCT_TYPE_3')!,
+        PRODUCT_TYPE_3: CatalogsProductGroupMultipleStringListCriteria.fromJson(json[r'PRODUCT_TYPE_3'])!,
       );
     }
     return null;

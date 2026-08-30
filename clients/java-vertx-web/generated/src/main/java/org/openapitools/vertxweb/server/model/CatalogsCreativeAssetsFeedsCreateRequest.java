@@ -5,12 +5,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
 import org.openapitools.vertxweb.server.model.CatalogsFeedCredentials;
 import org.openapitools.vertxweb.server.model.CatalogsFeedProcessingSchedule;
-import org.openapitools.vertxweb.server.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.vertxweb.server.model.CatalogsFormat;
 import org.openapitools.vertxweb.server.model.CatalogsStatus;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 import org.openapitools.vertxweb.server.model.Country;
 import org.openapitools.vertxweb.server.model.NullableCurrency;
 
@@ -21,22 +20,40 @@ import org.openapitools.vertxweb.server.model.NullableCurrency;
 public class CatalogsCreativeAssetsFeedsCreateRequest   {
   
   private String catalogId;
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private CatalogsFeedCredentials credentials;
   private Country defaultCountry;
   private NullableCurrency defaultCurrency;
-  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  private CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale;
   private CatalogsFormat format;
   private String location;
   private String name;
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-  private CatalogsStatus status = "ACTIVE";
+  private CatalogsStatus status;
 
   public CatalogsCreativeAssetsFeedsCreateRequest () {
 
   }
 
-  public CatalogsCreativeAssetsFeedsCreateRequest (String catalogId, CatalogsType catalogType, CatalogsFeedCredentials credentials, Country defaultCountry, NullableCurrency defaultCurrency, CatalogsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFormat format, String location, String name, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status) {
+  public CatalogsCreativeAssetsFeedsCreateRequest (String catalogId, CatalogTypeEnum catalogType, CatalogsFeedCredentials credentials, Country defaultCountry, NullableCurrency defaultCurrency, CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFormat format, String location, String name, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status) {
     this.catalogId = catalogId;
     this.catalogType = catalogType;
     this.credentials = credentials;
@@ -61,10 +78,10 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
 
     
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -97,10 +114,10 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
 
     
   @JsonProperty("default_locale")
-  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+  public CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
   }
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public void setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
 
@@ -202,9 +219,6 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

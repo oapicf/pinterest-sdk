@@ -1,7 +1,8 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Host};
+use axum_extra::extract::CookieJar;
 use bytes::Bytes;
+use headers::Host;
 use http::Method;
 use serde::{Deserialize, Serialize};
 
@@ -11,284 +12,336 @@ use crate::{models, types::*};
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum CatalogsProductGroupPinsSlashListResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::CatalogsProductGroupPinsList200Response)
     ,
-    /// Invalid parameters.
-    Status400_InvalidParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unauthorized access.
-    Status401_UnauthorizedAccess
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Catalogs product group not found.
-    Status404_CatalogsProductGroupNotFound
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum CatalogsProductGroupsSlashCreateResponse {
-    /// Success
-    Status201_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::CatalogsVerticalProductGroup)
     ,
-    /// Invalid body.
-    Status400_InvalidBody
-    (models::Error)
+    /// Resource create operation completed successfully.
+    Status201_ResourceCreateOperationCompletedSuccessfully
+    (models::CatalogsVerticalProductGroup)
     ,
-    /// Unauthorized access.
-    Status401_UnauthorizedAccess
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Forbidden. Account not approved for catalog product group mutations yet.
-    Status403_Forbidden
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Conflict. Can't create this catalogs product group with this value.
-    Status409_Conflict
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum CatalogsProductGroupsSlashCreateManyResponse {
-    /// Success
-    Status201_Success
-    (Vec<String>)
+    /// The request has succeeded and a new resource has been created as a result.
+    Status201_TheRequestHasSucceededAndANewResourceHasBeenCreatedAsAResult
+    (Vec<models::CatalogsProductGroupsCreateManyResponse201Items>)
     ,
-    /// Invalid body.
-    Status400_InvalidBody
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unauthorized access.
-    Status401_UnauthorizedAccess
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Forbidden. Account not approved for catalog product group mutations yet.
-    Status403_Forbidden
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Conflict. Can't create this catalogs product group with this value.
-    Status409_Conflict
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum CatalogsProductGroupsSlashDeleteResponse {
-    /// Catalogs Product Group deleted successfully.
-    Status204_CatalogsProductGroupDeletedSuccessfully
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::CatalogsVerticalProductGroup)
     ,
-    /// Invalid catalogs product group id parameters.
-    Status400_InvalidCatalogsProductGroupIdParameters
-    (models::Error)
+    /// Resource deleted successfully.
+    Status204_ResourceDeletedSuccessfully
     ,
-    /// Unauthorized access.
-    Status401_UnauthorizedAccess
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Forbidden. Account not approved for catalog product group mutations yet.
-    Status403_Forbidden
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Catalogs product group not found.
-    Status404_CatalogsProductGroupNotFound
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Conflict. Can't delete this catalogs product group.
-    Status409_Conflict
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum CatalogsProductGroupsSlashDeleteManyResponse {
-    /// Catalogs Product Groups deleted successfully.
-    Status204_CatalogsProductGroupsDeletedSuccessfully
+    /// Resource deleted successfully.
+    Status204_ResourceDeletedSuccessfully
     ,
-    /// Unauthorized access.
-    Status401_UnauthorizedAccess
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Forbidden. Account not approved for catalog product group mutations yet.
-    Status403_Forbidden
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Catalogs product group not found.
-    Status404_CatalogsProductGroupNotFound
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Conflict. Can't delete this catalogs product group.
-    Status409_Conflict
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum CatalogsProductGroupsSlashGetResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::CatalogsVerticalProductGroup)
     ,
-    /// Invalid catalogs product group id parameters.
-    Status400_InvalidCatalogsProductGroupIdParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unauthorized access.
-    Status401_UnauthorizedAccess
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Forbidden. Account not approved for catalog product group mutations yet.
-    Status403_Forbidden
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Catalogs product group not found.
-    Status404_CatalogsProductGroupNotFound
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
     ,
-    /// Conflict. Can't get a catalogs product group without an existing catalog.
-    Status409_Conflict
-    (models::Error)
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum CatalogsProductGroupsSlashListResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::CatalogsProductGroupsList200Response)
     ,
-    /// Invalid feed parameters.
-    Status400_InvalidFeedParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unauthorized access.
-    Status401_UnauthorizedAccess
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Forbidden. Account not approved for catalog product group mutations yet.
-    Status403_Forbidden
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Data feed not found.
-    Status404_DataFeedNotFound
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
     ,
-    /// Conflict. Can't create this catalogs product group with this value.
-    Status409_Conflict
-    (models::Error)
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum CatalogsProductGroupsSlashProductCountsGetResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::CatalogsProductGroupProductCountsVertical)
     ,
-    /// Product Group Not Found.
-    Status404_ProductGroupNotFound
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Can't access this feature without an existing catalog.
-    Status409_Can
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum CatalogsProductGroupsSlashUpdateResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::CatalogsVerticalProductGroup)
     ,
-    /// Invalid parameters.
-    Status400_InvalidParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unauthorized access.
-    Status401_UnauthorizedAccess
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Forbidden. Account not approved for catalog product group mutations yet.
-    Status403_Forbidden
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Catalogs product group not found.
-    Status404_CatalogsProductGroupNotFound
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
     ,
-    /// Conflict. Can't update this catalogs product group to this value.
-    Status409_Conflict
-    (models::Error)
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum ProductsByProductGroupFilterSlashListResponse {
-    /// Success
-    Status200_Success
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::CatalogsProductGroupPinsList200Response)
     ,
-    /// Unauthorized access.
-    Status401_UnauthorizedAccess
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Conflict. Can't get products.
-    Status409_Conflict
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Unexpected error.
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 
@@ -321,7 +374,7 @@ pub trait CatalogProductGroups<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     host: &Host,
     cookies: &CookieJar,
       query_params: &models::CatalogsProductGroupsSlashCreateQueryParams,
-            body: &models::MultipleProductGroupsInner,
+            body: &models::CatalogsProductGroupsCreateRequestSchema,
     ) -> Result<CatalogsProductGroupsSlashCreateResponse, E>;
 
     /// Create product groups.
@@ -334,7 +387,7 @@ pub trait CatalogProductGroups<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     host: &Host,
     cookies: &CookieJar,
       query_params: &models::CatalogsProductGroupsSlashCreateManyQueryParams,
-            body: &Vec<models::MultipleProductGroupsInner>,
+            body: &models::CatalogsProductGroupsCreateManyRequestSchema,
     ) -> Result<CatalogsProductGroupsSlashCreateManyResponse, E>;
 
     /// Delete product group.
@@ -411,7 +464,7 @@ pub trait CatalogProductGroups<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     cookies: &CookieJar,
       path_params: &models::CatalogsProductGroupsSlashUpdatePathParams,
       query_params: &models::CatalogsProductGroupsSlashUpdateQueryParams,
-            body: &models::CatalogsProductGroupsUpdateRequest,
+            body: &models::CatalogsProductGroupsUpdateRequestSchema,
     ) -> Result<CatalogsProductGroupsSlashUpdateResponse, E>;
 
     /// List products by filter.

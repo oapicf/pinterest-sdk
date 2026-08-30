@@ -4,12 +4,12 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
+import model.BoardsList200Response
 import model.Error
+import model.PinsList200Response
 import model.SearchPartnerPins200Response
-import model.SearchUserBoardsGet200Response
-import model.SearchUserPinsList200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class SearchApiController @Inject()(cc: ControllerComponents, api: SearchApi) extends AbstractController(cc) {
   /**
@@ -43,20 +43,20 @@ class SearchApiController @Inject()(cc: ControllerComponents, api: SearchApi) ex
   }
 
   /**
-    * GET /v5/search/boards?adAccountId=[value]&bookmark=[value]&pageSize=[value]&query=[value]
+    * GET /v5/search/boards?adAccountId=[value]&query=[value]&bookmark=[value]&pageSize=[value]
     */
   def searchUserBoardsGet(): Action[AnyContent] = Action { request =>
-    def executeApi(): SearchUserBoardsGet200Response = {
+    def executeApi(): BoardsList200Response = {
       val adAccountId = request.getQueryString("ad_account_id")
+        
+      val query = request.getQueryString("query")
         
       val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val query = request.getQueryString("query")
-        
-      api.searchUserBoardsGet(adAccountId, bookmark, pageSize, query)
+      api.searchUserBoardsGet(adAccountId, query, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -68,7 +68,7 @@ class SearchApiController @Inject()(cc: ControllerComponents, api: SearchApi) ex
     * GET /v5/search/pins?adAccountId=[value]&query=[value]&bookmark=[value]
     */
   def searchUserPinsList(): Action[AnyContent] = Action { request =>
-    def executeApi(): SearchUserPinsList200Response = {
+    def executeApi(): PinsList200Response = {
       val adAccountId = request.getQueryString("ad_account_id")
         
       val query = request.getQueryString("query")

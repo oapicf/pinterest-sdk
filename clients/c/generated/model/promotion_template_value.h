@@ -20,19 +20,19 @@ typedef struct promotion_template_value_t promotion_template_value_t;
 
 
 typedef struct promotion_template_value_t {
-    double amount; //numeric
+    double *amount; //numeric
     pinterest_rest_api_currency__e currency_code; //referenced enum
     char *custom_text; // string
-    double percent; //numeric
+    double *percent; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } promotion_template_value_t;
 
 __attribute__((deprecated)) promotion_template_value_t *promotion_template_value_create(
-    double amount,
+    double *amount,
     pinterest_rest_api_currency__e currency_code,
     char *custom_text,
-    double percent
+    double *percent
 );
 
 void promotion_template_value_free(promotion_template_value_t *promotion_template_value);

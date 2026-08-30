@@ -1,0 +1,102 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsFeedCreateRequestSchema"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsFeedCreateRequestSchema"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale = openapi_server.resourceTypes.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
+  CatalogsFeedCredentials = openapi_server.resourceTypes.CatalogsFeedCredentials
+  CatalogsFeedProcessingSchedule = openapi_server.resourceTypes.CatalogsFeedProcessingSchedule
+  CatalogsFeedsCreateRequest = openapi_server.resourceTypes.CatalogsFeedsCreateRequest
+  CatalogsFormat = openapi_server.resourceTypes.CatalogsFormat
+  CatalogsStatus = openapi_server.resourceTypes.CatalogsStatus
+  CatalogsVerticalFeedsCreateRequest = openapi_server.resourceTypes.CatalogsVerticalFeedsCreateRequest
+  Country = openapi_server.resourceTypes.Country
+  NullableCurrency = openapi_server.resourceTypes.NullableCurrency
+  ProductAvailabilityType = openapi_server.resourceTypes.ProductAvailabilityType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsFeedCreateRequestSchema {
+    title = CatalogsFeedCreateRequestSchema
+    description = CatalogsFeedCreateRequestSchema
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type."
+          optional = false
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["CREATIVE_ASSETS"]
+          optional = true
+        }
+        credentials {
+          type = CatalogsFeedCredentials
+          description = ""
+          optional = false
+        }
+        default_availability {
+          type = ProductAvailabilityType
+          description = ""
+          optional = false
+        }
+        default_country {
+          type = Country
+          description = ""
+          optional = true
+        }
+        default_currency {
+          type = NullableCurrency
+          description = ""
+          optional = false
+        }
+        default_locale {
+          type = CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
+          description = ""
+          optional = true
+        }
+        format {
+          type = CatalogsFormat
+          description = ""
+          optional = true
+        }
+        location {
+          type =  string
+          description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing."
+          optional = true
+        }
+        name {
+          type =  string
+          description = "A human-friendly name associated to a given feed."
+          optional = true
+        }
+        preferred_processing_schedule {
+          type = CatalogsFeedProcessingSchedule
+          description = ""
+          optional = false
+        }
+        status {
+          type = CatalogsStatus
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsFeedCreateRequestSchema {
+    title = CatalogsFeedCreateRequestSchema
+    description = CatalogsFeedCreateRequestSchema
+    implements = openapi_server.resourceTypes.CatalogsFeedCreateRequestSchema
+
+  }
+}

@@ -33,6 +33,7 @@
 | EcpmInMicroDollar | ECPM_IN_MICRO_DOLLAR |
 | RepinRate | REPIN_RATE |
 | Ctr2 | CTR_2 |
+| Campaign | CAMPAIGN |
 | CampaignId | CAMPAIGN_ID |
 | AdvertiserId | ADVERTISER_ID |
 | AdAccountId | AD_ACCOUNT_ID |
@@ -77,6 +78,12 @@
 | Repin2 | REPIN_2 |
 | Impression2 | IMPRESSION_2 |
 | OutboundClick2 | OUTBOUND_CLICK_2 |
+| CollectionPinItemImpression1 | COLLECTION_PIN_ITEM_IMPRESSION_1 |
+| CollectionPinItemImpression2 | COLLECTION_PIN_ITEM_IMPRESSION_2 |
+| TotalCollectionPinItemImpression | TOTAL_COLLECTION_PIN_ITEM_IMPRESSION |
+| CollectionPinItemClickthrough1 | COLLECTION_PIN_ITEM_CLICKTHROUGH_1 |
+| CollectionPinItemClickthrough2 | COLLECTION_PIN_ITEM_CLICKTHROUGH_2 |
+| TotalCollectionPinItemClickthrough | TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH |
 | TotalClickthrough | TOTAL_CLICKTHROUGH |
 | TotalImpression | TOTAL_IMPRESSION |
 | TotalImpressionUser | TOTAL_IMPRESSION_USER |
@@ -192,6 +199,7 @@
 | AdGroupOptimization | AD_GROUP_OPTIMIZATION |
 | CampaignDailySpendCap | CAMPAIGN_DAILY_SPEND_CAP |
 | CampaignBudgetOptimization | CAMPAIGN_BUDGET_OPTIMIZATION |
+| IsCatalogCreativeCampaign | IS_CATALOG_CREATIVE_CAMPAIGN |
 | IsPremiereCampaign | IS_PREMIERE_CAMPAIGN |
 | TotalPageVisitDesktopActionToDesktopConversion | TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_DESKTOP_CONVERSION |
 | TotalPageVisitDesktopActionToMobileConversion | TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_MOBILE_CONVERSION |
@@ -617,6 +625,11 @@
 | TotalUnknownConversionRate | TOTAL_UNKNOWN_CONVERSION_RATE |
 | TotalCustomConversionRate | TOTAL_CUSTOM_CONVERSION_RATE |
 | StandardAdFeedItemId | STANDARD_AD_FEED_ITEM_ID |
+| SpendOrderLineId | SPEND_ORDER_LINE_ID |
+| InappSkanAppInstall | INAPP_SKAN_APP_INSTALL |
+| InappSkanAssistedAppInstall | INAPP_SKAN_ASSISTED_APP_INSTALL |
+| InappSkanAppInstallCostPerAction | INAPP_SKAN_APP_INSTALL_COST_PER_ACTION |
+| InappSkanAppInstallConversionRate | INAPP_SKAN_APP_INSTALL_CONVERSION_RATE |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `bookmark` | string
-`items` | [Array&lt;LabelsResponse&gt;](LabelsResponse.md)
+`items` | [Array&lt;Label&gt;](Label.md)
 
 ## Example
 

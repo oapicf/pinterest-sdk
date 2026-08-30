@@ -1,7 +1,7 @@
 #tag Interface
 Protected Interface LeadAdsApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub AdAccountsSubscriptionsDelByIdCallback(status As OpenAPIClient.OpenAPIClientException)
+		Sub AdAccountsSubscriptionsDelByIdCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadSubscription)
 		  
 		End Sub
 	#tag EndMethod

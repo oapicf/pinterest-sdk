@@ -11,31 +11,30 @@
 part of openapi.api;
 
 /// Overall status of event quality score.
-class OverallStatusOptions {
-  /// Instantiate a new enum with the provided [value].
-  const OverallStatusOptions._(this.value);
+enum OverallStatusOptions {
+  NEEDS_IMPROVEMENT._(r'NEEDS_IMPROVEMENT'),
+  FAIR._(r'FAIR'),
+  GOOD._(r'GOOD'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const OverallStatusOptions._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const NEEDS_IMPROVEMENT = OverallStatusOptions._(r'NEEDS_IMPROVEMENT');
-  static const FAIR = OverallStatusOptions._(r'FAIR');
-  static const GOOD = OverallStatusOptions._(r'GOOD');
-
-  /// List of all possible values in this [enum][OverallStatusOptions].
-  static const values = <OverallStatusOptions>[
-    NEEDS_IMPROVEMENT,
-    FAIR,
-    GOOD,
-  ];
-
+  /// Returns the instance of [OverallStatusOptions] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static OverallStatusOptions? fromJson(dynamic value) => OverallStatusOptionsTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [OverallStatusOptions]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<OverallStatusOptions> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <OverallStatusOptions>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class OverallStatusOptionsTypeTransformer {
 
   const OverallStatusOptionsTypeTransformer._();
 
-  String encode(OverallStatusOptions data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(OverallStatusOptions data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a OverallStatusOptions.
+  /// Returns the instance of [OverallStatusOptions] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class OverallStatusOptionsTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   OverallStatusOptions? decode(dynamic data, {bool allowNull = true}) {
+    if (data is OverallStatusOptions) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'NEEDS_IMPROVEMENT': return OverallStatusOptions.NEEDS_IMPROVEMENT;
@@ -82,7 +86,7 @@ class OverallStatusOptionsTypeTransformer {
     return null;
   }
 
-  /// Singleton [OverallStatusOptionsTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static OverallStatusOptionsTypeTransformer? _instance;
 }
 

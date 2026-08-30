@@ -6,7 +6,7 @@ This represents a mapping from Audience ID to a bid price adjustment.  Multiplie
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AUDIENCE_ID** | **string** |  | [optional] [default to undefined]
+**AUDIENCE_ID** | **string** | Audience ID for the multiplier. | [optional] [default to undefined]
 
 ## Example
 

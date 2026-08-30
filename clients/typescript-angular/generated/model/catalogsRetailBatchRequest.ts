@@ -7,8 +7,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { CatalogsRetailBatchRequestItemsInner } from './catalogsRetailBatchRequestItemsInner';
 import { Country } from './country';
+import { CatalogsRetailBatchRequestItemsItems } from './catalogsRetailBatchRequestItemsItems';
 
 
 /**
@@ -24,7 +24,7 @@ export interface CatalogsRetailBatchRequest {
     /**
      * Array with catalogs item operations
      */
-    items: Array<CatalogsRetailBatchRequestItemsInner>;
+    items: Array<CatalogsRetailBatchRequestItemsItems>;
     /**
      * We recommend using the CatalogsLocale values.
      */
@@ -125,7 +125,7 @@ export namespace CatalogsRetailBatchRequest {
         Nb: 'NB',
         Ne: 'NE',
         Nl2: 'NL',
-        No: 'NO',
+        False: 'false',
         Pl: 'PL',
         Pt: 'PT',
         Ro: 'RO',

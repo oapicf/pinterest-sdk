@@ -7,13 +7,13 @@ Protected Interface CustomerListUploadsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub CustomerListUploadsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CustomerListUploadResponse)
+		Sub CustomerListUploadsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CustomerListUpload)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub CustomerListUploadsRunCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CustomerListUploadResponse)
+		Sub CustomerListUploadsRunCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CustomerListUpload)
 		  
 		End Sub
 	#tag EndMethod

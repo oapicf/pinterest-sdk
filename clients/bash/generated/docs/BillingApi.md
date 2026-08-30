@@ -24,7 +24,7 @@ Redeem ad credits
 
 Redeem ads credit on behalf of the ad account id and apply it towards billing.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+**This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -38,11 +38,11 @@ Redeem ads credit on behalf of the ad account id and apply it towards billing.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **adsCreditRedeemRequest** | [**AdsCreditRedeemRequest**](AdsCreditRedeemRequest.md) | Redeem ad credits request. |
+ **adsCreditRedeemCreate** | [**AdsCreditRedeemCreate**](AdsCreditRedeemCreate.md) |  |
 
 ### Return type
 
-[**AdsCreditRedeemResponse**](AdsCreditRedeemResponse.md)
+[**AdsCreditRedeem**](AdsCreditRedeem.md)
 
 ### Authorization
 
@@ -62,7 +62,7 @@ Get ads credit discounts
 
 Returns the list of discounts applied to the account.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+**This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -77,7 +77,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -140,7 +141,7 @@ Get billing invoices in the advertiser account.
 ### Example
 
 ```bash
- billingInvoicesGet ad_account_id=value  bookmark=value  page_size=value  sort=value  order=value  status=value  document_type=value  start_due_date=value  end_due_date=value
+ billingInvoicesGet ad_account_id=value  bookmark=value  page_size=value  order=value  sort=value  status=value  document_type=value  start_due_date=value  end_due_date=value
 ```
 
 ### Parameters
@@ -150,13 +151,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
- **sort** | **string** | Field of which to sort billing invoices | [optional] [default to DUE_DATE]
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
-by ID. Note that higher-value IDs are associated with more-recently added
-items. | [optional] [default to null]
- **status** | **string** | Status of billing invoices to filter by | [optional] [default to null]
- **documentType** | **string** | Document type of billing invoices to filter by | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md) | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID.
+Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
+ **sort** | [**BillingInvoiceSortField**](.md) | Field of which to sort billing invoices | [optional] [default to null]
+ **status** | [**BillingInvoiceStatus**](.md) | Status of billing invoices to filter by | [optional] [default to null]
+ **documentType** | [**BillingInvoiceDocumentType**](.md) | Document type of billing invoices to filter by | [optional] [default to null]
  **startDueDate** | **string** | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] [default to null]
  **endDueDate** | **string** | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] [default to null]
 
@@ -182,12 +183,12 @@ Get billing profiles
 
 Get billing profiles in the advertiser account.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+**This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
 ```bash
- billingProfilesGet ad_account_id=value  is_active=value  bookmark=value  page_size=value
+ billingProfilesGet  is_active=value ad_account_id=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -195,10 +196,11 @@ Get billing profiles in the advertiser account.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
  **isActive** | **boolean** | Return active billing profiles, if false return all billing profiles. | [default to null]
+ **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -220,8 +222,8 @@ Name | Type | Description  | Notes
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>.
-- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+Get Salesforce account details including bill-to information to be used in insertion orders process for 'ad_account_id'.
+  - The token's 'user_account' must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -238,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SSIOAccountResponse**](SSIOAccountResponse.md)
+[**SSIOAccount**](SSIOAccount.md)
 
 ### Authorization
 
@@ -256,8 +258,8 @@ Name | Type | Description  | Notes
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for <code>ad_account_id</code>.
-- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+Create insertion order through SSIO for 'ad_account_id'.
+  - The token's 'user_account' must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -271,11 +273,11 @@ Create insertion order through SSIO for <code>ad_account_id</code>.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **sSIOCreateInsertionOrderRequest** | [**SSIOCreateInsertionOrderRequest**](SSIOCreateInsertionOrderRequest.md) | Order line to create. |
+ **sSIOInsertionOrderCreate** | [**SSIOInsertionOrderCreate**](SSIOInsertionOrderCreate.md) |  |
 
 ### Return type
 
-[**SSIOCreateInsertionOrderResponse**](SSIOCreateInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -293,8 +295,8 @@ Name | Type | Description  | Notes
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for <code>ad_account_id</code>.
-- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+Edit insertion order through SSIO for 'ad_account_id'.
+  - The token's 'user_account' must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -308,11 +310,11 @@ Edit insertion order through SSIO for <code>ad_account_id</code>.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **sSIOEditInsertionOrderRequest** | [**SSIOEditInsertionOrderRequest**](SSIOEditInsertionOrderRequest.md) | Order line to create. |
+ **sSIOInsertionOrderUpdate** | [**SSIOInsertionOrderUpdate**](SSIOInsertionOrderUpdate.md) |  |
 
 ### Return type
 
-[**SSIOEditInsertionOrderResponse**](SSIOEditInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -330,8 +332,8 @@ Name | Type | Description  | Notes
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id <code>ad_account_id</code>.
-- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+Get insertion order status for 'ad_account_id'.
+  - The token's 'user_account' must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -346,7 +348,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -368,8 +371,8 @@ Name | Type | Description  | Notes
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id <code>pin_order_id</code>.
-- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+Get insertion order status for 'pin_order_id'.
+  - The token's 'user_account' must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -405,13 +408,13 @@ Name | Type | Description  | Notes
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id <code>ad_account_id</code>.
-- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+Get Salesforce order lines for account id 'ad_account_id'.
+  - The token's 'user_account' must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
 ```bash
- ssioOrderLinesGetByAdAccount ad_account_id=value  bookmark=value  page_size=value  pin_order_id=value
+ ssioOrderLinesGetByAdAccount ad_account_id=value  pin_order_id=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -420,9 +423,10 @@ Get Salesforce order lines for account id <code>ad_account_id</code>.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
+ **pinOrderId** | **string** | The pin order id associated with the SSIO insertion order | [optional] [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
- **pinOrderId** | **string** | The pin order id associated with the ssio insertino order | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

@@ -1,0 +1,21 @@
+package models
+
+// SsioAccount - Salesforce account details including bill-to information.
+type SsioAccount struct {
+
+	// An array of Salesforce account information that includes address, io terms, etc.
+	BilltoInfos []SsioAccountItem `json:"billto_infos,omitempty"`
+
+	// Advertiser eligible to update order lines
+	CanEdit bool `json:"can_edit,omitempty"`
+
+	Currency string `json:"currency,omitempty"`
+
+	// Advertiser eligible to create order lines
+	Eligible bool `json:"eligible,omitempty"`
+
+	// Error indicator from Salesforce which could be \"No Error\"
+	Error string `json:"error,omitempty"`
+
+	PmpNames []SsioAccountPmpName `json:"pmp_names,omitempty"`
+}

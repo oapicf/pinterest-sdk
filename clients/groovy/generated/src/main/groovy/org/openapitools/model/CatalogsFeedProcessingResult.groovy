@@ -13,16 +13,16 @@ import org.openapitools.model.CatalogsFeedVideoCounts;
 class CatalogsFeedProcessingResult {
     
     Date createdAt
-    
+    /* ID of the feed processing result. */
     String id
-    
-    Date updatedAt
     
     CatalogsFeedIngestionDetails ingestionDetails
     
     CatalogsFeedProductCounts productCounts
     
     CatalogsFeedProcessingStatus status
+    
+    Date updatedAt
     
     CatalogsFeedValidationDetails validationDetails
     

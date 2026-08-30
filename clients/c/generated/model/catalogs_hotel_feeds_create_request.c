@@ -4,13 +4,30 @@
 #include "catalogs_hotel_feeds_create_request.h"
 
 
+char* catalogs_hotel_feeds_create_request_catalog_type_ToString(pinterest_rest_api_catalogs_hotel_feeds_create_request_CATALOGTYPE_e catalog_type) {
+    char* catalog_typeArray[] =  { "NULL", "HOTEL" };
+    return catalog_typeArray[catalog_type];
+}
+
+pinterest_rest_api_catalogs_hotel_feeds_create_request_CATALOGTYPE_e catalogs_hotel_feeds_create_request_catalog_type_FromString(char* catalog_type){
+    int stringToReturn = 0;
+    char *catalog_typeArray[] =  { "NULL", "HOTEL" };
+    size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 static catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_create_internal(
     char *catalog_id,
-    pinterest_rest_api_catalogs_type__e catalog_type,
+    pinterest_rest_api_catalogs_hotel_feeds_create_request_CATALOGTYPE_e catalog_type,
     catalogs_feed_credentials_t *credentials,
     pinterest_rest_api_nullable_currency__e default_currency,
-    catalogs_feeds_create_request_default_locale_t *default_locale,
+    catalogs_creative_assets_feeds_create_request_default_locale_t *default_locale,
     pinterest_rest_api_catalogs_format__e format,
     char *location,
     char *name,
@@ -21,6 +38,8 @@ static catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_reques
     if (!catalogs_hotel_feeds_create_request_local_var) {
         return NULL;
     }
+    memset(catalogs_hotel_feeds_create_request_local_var, 0, sizeof(catalogs_hotel_feeds_create_request_t));
+    catalogs_hotel_feeds_create_request_local_var->_library_owned = 1;
     catalogs_hotel_feeds_create_request_local_var->catalog_id = catalog_id;
     catalogs_hotel_feeds_create_request_local_var->catalog_type = catalog_type;
     catalogs_hotel_feeds_create_request_local_var->credentials = credentials;
@@ -31,24 +50,22 @@ static catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_reques
     catalogs_hotel_feeds_create_request_local_var->name = name;
     catalogs_hotel_feeds_create_request_local_var->preferred_processing_schedule = preferred_processing_schedule;
     catalogs_hotel_feeds_create_request_local_var->status = status;
-
-    catalogs_hotel_feeds_create_request_local_var->_library_owned = 1;
     return catalogs_hotel_feeds_create_request_local_var;
 }
 
 __attribute__((deprecated)) catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_create(
     char *catalog_id,
-    pinterest_rest_api_catalogs_type__e catalog_type,
+    pinterest_rest_api_catalogs_hotel_feeds_create_request_CATALOGTYPE_e catalog_type,
     catalogs_feed_credentials_t *credentials,
     pinterest_rest_api_nullable_currency__e default_currency,
-    catalogs_feeds_create_request_default_locale_t *default_locale,
+    catalogs_creative_assets_feeds_create_request_default_locale_t *default_locale,
     pinterest_rest_api_catalogs_format__e format,
     char *location,
     char *name,
     catalogs_feed_processing_schedule_t *preferred_processing_schedule,
     catalogs_status_t *status
     ) {
-    return catalogs_hotel_feeds_create_request_create_internal (
+    catalogs_hotel_feeds_create_request_t *result = catalogs_hotel_feeds_create_request_create_internal (
         catalog_id,
         catalog_type,
         credentials,
@@ -60,6 +77,9 @@ __attribute__((deprecated)) catalogs_hotel_feeds_create_request_t *catalogs_hote
         preferred_processing_schedule,
         status
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_hotel_feeds_create_request_free(catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request) {
@@ -80,7 +100,7 @@ void catalogs_hotel_feeds_create_request_free(catalogs_hotel_feeds_create_reques
         catalogs_hotel_feeds_create_request->credentials = NULL;
     }
     if (catalogs_hotel_feeds_create_request->default_locale) {
-        catalogs_feeds_create_request_default_locale_free(catalogs_hotel_feeds_create_request->default_locale);
+        catalogs_creative_assets_feeds_create_request_default_locale_free(catalogs_hotel_feeds_create_request->default_locale);
         catalogs_hotel_feeds_create_request->default_locale = NULL;
     }
     if (catalogs_hotel_feeds_create_request->location) {
@@ -114,16 +134,12 @@ cJSON *catalogs_hotel_feeds_create_request_convertToJSON(catalogs_hotel_feeds_cr
 
 
     // catalogs_hotel_feeds_create_request->catalog_type
-    if (pinterest_rest_api_catalogs_type__NULL == catalogs_hotel_feeds_create_request->catalog_type) {
+    if (pinterest_rest_api_catalogs_hotel_feeds_create_request_CATALOGTYPE_NULL == catalogs_hotel_feeds_create_request->catalog_type) {
         goto fail;
     }
-    cJSON *catalog_type_local_JSON = catalogs_type_convertToJSON(catalogs_hotel_feeds_create_request->catalog_type);
-    if(catalog_type_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "catalog_type", catalog_type_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "catalog_type", catalogs_hotel_feeds_create_request_catalog_type_ToString(catalogs_hotel_feeds_create_request->catalog_type)) == NULL)
+    {
+    goto fail; //Enum
     }
 
 
@@ -157,7 +173,7 @@ cJSON *catalogs_hotel_feeds_create_request_convertToJSON(catalogs_hotel_feeds_cr
     if (!catalogs_hotel_feeds_create_request->default_locale) {
         goto fail;
     }
-    cJSON *default_locale_local_JSON = catalogs_feeds_create_request_default_locale_convertToJSON(catalogs_hotel_feeds_create_request->default_locale);
+    cJSON *default_locale_local_JSON = catalogs_creative_assets_feeds_create_request_default_locale_convertToJSON(catalogs_hotel_feeds_create_request->default_locale);
     if(default_locale_local_JSON == NULL) {
     goto fail; //model
     }
@@ -236,8 +252,7 @@ catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_parse
 
     catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_local_var = NULL;
 
-    // define the local variable for catalogs_hotel_feeds_create_request->catalog_type
-    pinterest_rest_api_catalogs_type__e catalog_type_local_nonprim = 0;
+    char *catalog_id_local_str = NULL;
 
     // define the local variable for catalogs_hotel_feeds_create_request->credentials
     catalogs_feed_credentials_t *credentials_local_nonprim = NULL;
@@ -246,10 +261,14 @@ catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_parse
     pinterest_rest_api_nullable_currency__e default_currency_local_nonprim = 0;
 
     // define the local variable for catalogs_hotel_feeds_create_request->default_locale
-    catalogs_feeds_create_request_default_locale_t *default_locale_local_nonprim = NULL;
+    catalogs_creative_assets_feeds_create_request_default_locale_t *default_locale_local_nonprim = NULL;
 
     // define the local variable for catalogs_hotel_feeds_create_request->format
     pinterest_rest_api_catalogs_format__e format_local_nonprim = 0;
+
+    char *location_local_str = NULL;
+
+    char *name_local_str = NULL;
 
     // define the local variable for catalogs_hotel_feeds_create_request->preferred_processing_schedule
     catalogs_feed_processing_schedule_t *preferred_processing_schedule_local_nonprim = NULL;
@@ -278,8 +297,13 @@ catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_parse
         goto end;
     }
 
+    pinterest_rest_api_catalogs_hotel_feeds_create_request_CATALOGTYPE_e catalog_typeVariable;
     
-    catalog_type_local_nonprim = catalogs_type_parseFromJSON(catalog_type); //custom
+    if(!cJSON_IsString(catalog_type))
+    {
+    goto end; //Enum
+    }
+    catalog_typeVariable = catalogs_hotel_feeds_create_request_catalog_type_FromString(catalog_type->valuestring);
 
     // catalogs_hotel_feeds_create_request->credentials
     cJSON *credentials = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_feeds_create_requestJSON, "credentials");
@@ -309,7 +333,7 @@ catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_parse
     }
 
     
-    default_locale_local_nonprim = catalogs_feeds_create_request_default_locale_parseFromJSON(default_locale); //nonprimitive
+    default_locale_local_nonprim = catalogs_creative_assets_feeds_create_request_default_locale_parseFromJSON(default_locale); //nonprimitive
 
     // catalogs_hotel_feeds_create_request->format
     cJSON *format = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_feeds_create_requestJSON, "format");
@@ -372,23 +396,32 @@ catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_parse
     }
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+    if (location && !cJSON_IsNull(location)) location_local_str = strdup(location->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     catalogs_hotel_feeds_create_request_local_var = catalogs_hotel_feeds_create_request_create_internal (
-        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
-        catalog_type_local_nonprim,
+        catalog_id_local_str,
+        catalog_typeVariable,
         credentials ? credentials_local_nonprim : NULL,
         default_currency ? default_currency_local_nonprim : 0,
         default_locale_local_nonprim,
         format_local_nonprim,
-        strdup(location->valuestring),
-        strdup(name->valuestring),
+        location_local_str,
+        name_local_str,
         preferred_processing_schedule ? preferred_processing_schedule_local_nonprim : NULL,
         status ? status_local_nonprim : NULL
         );
 
+    if (!catalogs_hotel_feeds_create_request_local_var) {
+        goto end;
+    }
+
     return catalogs_hotel_feeds_create_request_local_var;
 end:
-    if (catalog_type_local_nonprim) {
-        catalog_type_local_nonprim = 0;
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
     }
     if (credentials_local_nonprim) {
         catalogs_feed_credentials_free(credentials_local_nonprim);
@@ -398,11 +431,19 @@ end:
         default_currency_local_nonprim = 0;
     }
     if (default_locale_local_nonprim) {
-        catalogs_feeds_create_request_default_locale_free(default_locale_local_nonprim);
+        catalogs_creative_assets_feeds_create_request_default_locale_free(default_locale_local_nonprim);
         default_locale_local_nonprim = NULL;
     }
     if (format_local_nonprim) {
         format_local_nonprim = 0;
+    }
+    if (location_local_str) {
+        free(location_local_str);
+        location_local_str = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
     }
     if (preferred_processing_schedule_local_nonprim) {
         catalogs_feed_processing_schedule_free(preferred_processing_schedule_local_nonprim);

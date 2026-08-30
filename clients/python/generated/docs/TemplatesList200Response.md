@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[TemplateResponse]**](TemplateResponse.md) |  | 
+**items** | [**List[AccountTemplate]**](AccountTemplate.md) |  | 
 
 ## Example
 

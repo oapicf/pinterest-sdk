@@ -52,35 +52,35 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setDescription(std::string  description);
+	void setDescription(std::string description);
 	/*! \brief Get Catalog Feed id pertaining to the catalog product group.
 	 */
 	std::string getFeedId();
 
 	/*! \brief Set Catalog Feed id pertaining to the catalog product group.
 	 */
-	void setFeedId(std::string  feed_id);
+	void setFeedId(std::string feed_id);
 	/*! \brief Get 
 	 */
 	CatalogsProductGroupFiltersRequest getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsProductGroupFiltersRequest  filters);
+	void setFilters(CatalogsProductGroupFiltersRequest filters);
 	/*! \brief Get boolean indicator of whether the product group is being featured or not
 	 */
 	bool isIsFeatured();
 
 	/*! \brief Set boolean indicator of whether the product group is being featured or not
 	 */
-	void setIsFeatured(bool  is_featured);
+	void setIsFeatured(bool is_featured);
 	/*! \brief Get 
 	 */
 	std::string getName();
 
 	/*! \brief Set 
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 
 
     private:

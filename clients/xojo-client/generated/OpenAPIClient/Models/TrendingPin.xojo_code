@@ -3,6 +3,14 @@ Protected Class TrendingPin
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Dominant color of the pin image in hex format
+		#tag EndNote
+		color As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Height of the pin image in pixels
 		#tag EndNote
 		height As Integer
@@ -22,6 +30,14 @@ Protected Class TrendingPin
 			URL of the pin image
 		#tag EndNote
 		src As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.
+		#tag EndNote
+		vertical_offset As Xoson.O.OptionalDouble
 	#tag EndProperty
 
 
@@ -70,6 +86,14 @@ Protected Class TrendingPin
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="color"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="height"
 			Visible=false
 			Group="Behavior"
@@ -91,6 +115,14 @@ Protected Class TrendingPin
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="vertical_offset"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

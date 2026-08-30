@@ -17,7 +17,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## brand_accounts_create
 
-> <BrandAccountsCreate200Response> brand_accounts_create(business_hierarchy_id, brand_accounts_create_request)
+> <BrandAccount> brand_accounts_create(business_hierarchy_id, brand_account_create)
 
 Create a Brand Account
 
@@ -35,12 +35,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessRelationshipsApi.new
-business_hierarchy_id = '7009386637860' # String | business hierarchy node id
-brand_accounts_create_request = PinterestSdkClient::BrandAccountsCreateRequest.new({name: 'Canada Stores', username: 'canada_stores', country: PinterestSdkClient::Country::AD}) # BrandAccountsCreateRequest | 
+business_hierarchy_id = 'business_hierarchy_id_example' # String | business hierarchy node id
+brand_account_create = PinterestSdkClient::BrandAccountCreate.new({country: PinterestSdkClient::Country::AD, name: 'name_example', username: 'username_example'}) # BrandAccountCreate | 
 
 begin
   # Create a Brand Account
-  result = api_instance.brand_accounts_create(business_hierarchy_id, brand_accounts_create_request)
+  result = api_instance.brand_accounts_create(business_hierarchy_id, brand_account_create)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessRelationshipsApi->brand_accounts_create: #{e}"
@@ -51,15 +51,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BrandAccountsCreate200Response>, Integer, Hash)> brand_accounts_create_with_http_info(business_hierarchy_id, brand_accounts_create_request)
+> <Array(<BrandAccount>, Integer, Hash)> brand_accounts_create_with_http_info(business_hierarchy_id, brand_account_create)
 
 ```ruby
 begin
   # Create a Brand Account
-  data, status_code, headers = api_instance.brand_accounts_create_with_http_info(business_hierarchy_id, brand_accounts_create_request)
+  data, status_code, headers = api_instance.brand_accounts_create_with_http_info(business_hierarchy_id, brand_account_create)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <BrandAccountsCreate200Response>
+  p data # => <BrandAccount>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessRelationshipsApi->brand_accounts_create_with_http_info: #{e}"
 end
@@ -70,11 +70,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_hierarchy_id** | **String** | business hierarchy node id |  |
-| **brand_accounts_create_request** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md) |  |  |
+| **brand_account_create** | [**BrandAccountCreate**](BrandAccountCreate.md) |  |  |
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -88,7 +88,7 @@ end
 
 ## brand_accounts_update
 
-> <BrandAccountsCreate200Response> brand_accounts_update(business_hierarchy_id, brand_account_id, brand_accounts_update_request)
+> <BrandAccount> brand_accounts_update(brand_account_id, business_hierarchy_id, brand_account_update)
 
 Update a Brand Account
 
@@ -106,13 +106,13 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessRelationshipsApi.new
-business_hierarchy_id = '7009386637860' # String | business hierarchy node id
-brand_account_id = '729090764583391194' # String | Unique identifier of a brand account.
-brand_accounts_update_request = PinterestSdkClient::BrandAccountsUpdateRequest.new # BrandAccountsUpdateRequest | 
+brand_account_id = 'brand_account_id_example' # String | 
+business_hierarchy_id = 'business_hierarchy_id_example' # String | business hierarchy node id
+brand_account_update = PinterestSdkClient::BrandAccountUpdate.new # BrandAccountUpdate | 
 
 begin
   # Update a Brand Account
-  result = api_instance.brand_accounts_update(business_hierarchy_id, brand_account_id, brand_accounts_update_request)
+  result = api_instance.brand_accounts_update(brand_account_id, business_hierarchy_id, brand_account_update)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessRelationshipsApi->brand_accounts_update: #{e}"
@@ -123,15 +123,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BrandAccountsCreate200Response>, Integer, Hash)> brand_accounts_update_with_http_info(business_hierarchy_id, brand_account_id, brand_accounts_update_request)
+> <Array(<BrandAccount>, Integer, Hash)> brand_accounts_update_with_http_info(brand_account_id, business_hierarchy_id, brand_account_update)
 
 ```ruby
 begin
   # Update a Brand Account
-  data, status_code, headers = api_instance.brand_accounts_update_with_http_info(business_hierarchy_id, brand_account_id, brand_accounts_update_request)
+  data, status_code, headers = api_instance.brand_accounts_update_with_http_info(brand_account_id, business_hierarchy_id, brand_account_update)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <BrandAccountsCreate200Response>
+  p data # => <BrandAccount>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessRelationshipsApi->brand_accounts_update_with_http_info: #{e}"
 end
@@ -141,13 +141,13 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **brand_account_id** | **String** |  |  |
 | **business_hierarchy_id** | **String** | business hierarchy node id |  |
-| **brand_account_id** | **String** | Unique identifier of a brand account. |  |
-| **brand_accounts_update_request** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md) |  |  |
+| **brand_account_update** | [**BrandAccountUpdate**](BrandAccountUpdate.md) |  |  |
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -161,7 +161,7 @@ end
 
 ## delete_business_membership
 
-> <DeletedMembersResponse> delete_business_membership(business_id, members_to_delete_body)
+> <DeleteBusinessMembership200Response> delete_business_membership(business_id, delete_business_membership_body)
 
 Terminate business memberships
 
@@ -179,12 +179,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessRelationshipsApi.new
-business_id = '729090764583391194' # String | Business id
-members_to_delete_body = PinterestSdkClient::MembersToDeleteBody.new({members: [PinterestSdkClient::MembersToDeleteBodyMembersInner.new({business_role: PinterestSdkClient::BusinessRoleForMembers::EMPLOYEE, member_id: '140943737684417'})]}) # MembersToDeleteBody | List of members with role to delete.
+business_id = 'business_id_example' # String | Business id
+delete_business_membership_body = PinterestSdkClient::DeleteBusinessMembershipBody.new({members: [PinterestSdkClient::DeleteBusinessMembershipMember.new({business_role: PinterestSdkClient::BusinessRoleForMembers::EMPLOYEE, member_id: '140943737684417'})]}) # DeleteBusinessMembershipBody | 
 
 begin
   # Terminate business memberships
-  result = api_instance.delete_business_membership(business_id, members_to_delete_body)
+  result = api_instance.delete_business_membership(business_id, delete_business_membership_body)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessRelationshipsApi->delete_business_membership: #{e}"
@@ -195,15 +195,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DeletedMembersResponse>, Integer, Hash)> delete_business_membership_with_http_info(business_id, members_to_delete_body)
+> <Array(<DeleteBusinessMembership200Response>, Integer, Hash)> delete_business_membership_with_http_info(business_id, delete_business_membership_body)
 
 ```ruby
 begin
   # Terminate business memberships
-  data, status_code, headers = api_instance.delete_business_membership_with_http_info(business_id, members_to_delete_body)
+  data, status_code, headers = api_instance.delete_business_membership_with_http_info(business_id, delete_business_membership_body)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DeletedMembersResponse>
+  p data # => <DeleteBusinessMembership200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessRelationshipsApi->delete_business_membership_with_http_info: #{e}"
 end
@@ -214,11 +214,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Business id |  |
-| **members_to_delete_body** | [**MembersToDeleteBody**](MembersToDeleteBody.md) | List of members with role to delete. |  |
+| **delete_business_membership_body** | [**DeleteBusinessMembershipBody**](DeleteBusinessMembershipBody.md) |  |  |
 
 ### Return type
 
-[**DeletedMembersResponse**](DeletedMembersResponse.md)
+[**DeleteBusinessMembership200Response**](DeleteBusinessMembership200Response.md)
 
 ### Authorization
 
@@ -232,7 +232,7 @@ end
 
 ## delete_business_partners
 
-> <DeletePartnersResponse> delete_business_partners(business_id, delete_partners_request)
+> <DeleteBusinessPartners> delete_business_partners(business_id, delete_business_partners_delete)
 
 Terminate business partnerships
 
@@ -250,12 +250,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessRelationshipsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-delete_partners_request = PinterestSdkClient::DeletePartnersRequest.new({partner_ids: ['1234567890123']}) # DeletePartnersRequest | An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+delete_business_partners_delete = PinterestSdkClient::DeleteBusinessPartnersDelete.new({partner_ids: ['partner_ids_example']}) # DeleteBusinessPartnersDelete | 
 
 begin
   # Terminate business partnerships
-  result = api_instance.delete_business_partners(business_id, delete_partners_request)
+  result = api_instance.delete_business_partners(business_id, delete_business_partners_delete)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessRelationshipsApi->delete_business_partners: #{e}"
@@ -266,15 +266,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DeletePartnersResponse>, Integer, Hash)> delete_business_partners_with_http_info(business_id, delete_partners_request)
+> <Array(<DeleteBusinessPartners>, Integer, Hash)> delete_business_partners_with_http_info(business_id, delete_business_partners_delete)
 
 ```ruby
 begin
   # Terminate business partnerships
-  data, status_code, headers = api_instance.delete_business_partners_with_http_info(business_id, delete_partners_request)
+  data, status_code, headers = api_instance.delete_business_partners_with_http_info(business_id, delete_business_partners_delete)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DeletePartnersResponse>
+  p data # => <DeleteBusinessPartners>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessRelationshipsApi->delete_business_partners_with_http_info: #{e}"
 end
@@ -285,11 +285,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
-| **delete_partners_request** | [**DeletePartnersRequest**](DeletePartnersRequest.md) | An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete.  |  |
+| **delete_business_partners_delete** | [**DeleteBusinessPartnersDelete**](DeleteBusinessPartnersDelete.md) |  |  |
 
 ### Return type
 
-[**DeletePartnersResponse**](DeletePartnersResponse.md)
+[**DeleteBusinessPartners**](DeleteBusinessPartners.md)
 
 ### Authorization
 
@@ -322,8 +322,9 @@ end
 
 api_instance = PinterestSdkClient::BusinessAccessRelationshipsApi.new
 opts = {
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  bookmark: 'bookmark_example' # String | Cursor used to fetch the next page of items
+  assets_summary: true, # Boolean | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -357,8 +358,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **assets_summary** | **Boolean** | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional][default to true] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -376,7 +378,7 @@ end
 
 ## get_business_members
 
-> <GetBusinessMembers200Response> get_business_members(business_id, opts)
+> <GetBusinessEmployers200Response> get_business_members(business_id, opts)
 
 Get business members
 
@@ -394,15 +396,15 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessRelationshipsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
 opts = {
   fetch_system_users: true, # Boolean | Fetches system users if True. Fetches regular user employees if False.
   assets_summary: true, # Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
   business_roles: [PinterestSdkClient::MemberBusinessRole::EMPLOYEE], # Array<MemberBusinessRole> | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
-  member_ids: '00101010101,2222220101', # String | A list of business members ids separated by comma.
-  start_index: 0, # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
+  member_ids: 'member_ids_example', # String | A list of business members ids separated by comma.
+  start_index: 56, # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -418,7 +420,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<GetBusinessMembers200Response>, Integer, Hash)> get_business_members_with_http_info(business_id, opts)
+> <Array(<GetBusinessEmployers200Response>, Integer, Hash)> get_business_members_with_http_info(business_id, opts)
 
 ```ruby
 begin
@@ -426,7 +428,7 @@ begin
   data, status_code, headers = api_instance.get_business_members_with_http_info(business_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <GetBusinessMembers200Response>
+  p data # => <GetBusinessEmployers200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessRelationshipsApi->get_business_members_with_http_info: #{e}"
 end
@@ -443,11 +445,11 @@ end
 | **member_ids** | **String** | A list of business members ids separated by comma. | [optional] |
 | **start_index** | **Integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional][default to 0] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
-[**GetBusinessMembers200Response**](GetBusinessMembers200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -461,7 +463,7 @@ end
 
 ## get_business_partners
 
-> <GetBusinessPartners200Response> get_business_partners(business_id, opts)
+> <GetBusinessEmployers200Response> get_business_partners(business_id, opts)
 
 Get business partners
 
@@ -479,14 +481,15 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessRelationshipsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
 opts = {
   assets_summary: true, # Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
-  partner_type: PinterestSdkClient::PartnerType::INTERNAL, # PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
-  partner_ids: '00101010101,2222220101', # String | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
-  start_index: 0, # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  bookmark: 'bookmark_example' # String | Cursor used to fetch the next page of items
+  partner_type: PinterestSdkClient::PartnerType::INTERNAL, # PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+  partner_ids: 'partner_ids_example', # String | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
+  start_index: 56, # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
+  sort_ascending: true, # Boolean | Sort ascending.
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -502,7 +505,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<GetBusinessPartners200Response>, Integer, Hash)> get_business_partners_with_http_info(business_id, opts)
+> <Array(<GetBusinessEmployers200Response>, Integer, Hash)> get_business_partners_with_http_info(business_id, opts)
 
 ```ruby
 begin
@@ -510,7 +513,7 @@ begin
   data, status_code, headers = api_instance.get_business_partners_with_http_info(business_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <GetBusinessPartners200Response>
+  p data # => <GetBusinessEmployers200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessRelationshipsApi->get_business_partners_with_http_info: #{e}"
 end
@@ -522,15 +525,16 @@ end
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
 | **assets_summary** | **Boolean** | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional][default to false] |
-| **partner_type** | [**PartnerType**](.md) | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] |
+| **partner_type** | [**PartnerType**](.md) | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] |
 | **partner_ids** | **String** | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional] |
 | **start_index** | **Integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional][default to 0] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **sort_ascending** | **Boolean** | Sort ascending. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
-[**GetBusinessPartners200Response**](GetBusinessPartners200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -544,7 +548,7 @@ end
 
 ## system_user_update
 
-> system_user_update(business_id, system_user_id, system_user_update_request)
+> system_user_update(business_id, system_user_id, system_user_update_with_required_body)
 
 Update a system user information.
 
@@ -562,13 +566,13 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessRelationshipsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-system_user_id = '729090764583391194' # String | Unique identifier of a system user.
-system_user_update_request = PinterestSdkClient::SystemUserUpdateRequest.new({name: 'Billing API'}) # SystemUserUpdateRequest | 
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+system_user_id = 'system_user_id_example' # String | Unique identifier of a system user.
+system_user_update_with_required_body = PinterestSdkClient::SystemUserUpdateWithRequiredBody.new({name: 'name_example'}) # SystemUserUpdateWithRequiredBody | 
 
 begin
   # Update a system user information.
-  api_instance.system_user_update(business_id, system_user_id, system_user_update_request)
+  api_instance.system_user_update(business_id, system_user_id, system_user_update_with_required_body)
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessRelationshipsApi->system_user_update: #{e}"
 end
@@ -578,12 +582,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> system_user_update_with_http_info(business_id, system_user_id, system_user_update_request)
+> <Array(nil, Integer, Hash)> system_user_update_with_http_info(business_id, system_user_id, system_user_update_with_required_body)
 
 ```ruby
 begin
   # Update a system user information.
-  data, status_code, headers = api_instance.system_user_update_with_http_info(business_id, system_user_id, system_user_update_request)
+  data, status_code, headers = api_instance.system_user_update_with_http_info(business_id, system_user_id, system_user_update_with_required_body)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -598,7 +602,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
 | **system_user_id** | **String** | Unique identifier of a system user. |  |
-| **system_user_update_request** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md) |  |  |
+| **system_user_update_with_required_body** | [**SystemUserUpdateWithRequiredBody**](SystemUserUpdateWithRequiredBody.md) |  |  |
 
 ### Return type
 
@@ -616,7 +620,7 @@ nil (empty response body)
 
 ## update_business_memberships
 
-> <UpdateMemberResultsResponseArray> update_business_memberships(business_id, update_member_business_role_body)
+> <UpdateBusinessMembershipsResponse> update_business_memberships(business_id, business_membership_member)
 
 Update member's business role
 
@@ -634,12 +638,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessRelationshipsApi.new
-business_id = '729090764583391194' # String | Business id
-update_member_business_role_body = [PinterestSdkClient::UpdateMemberBusinessRoleBody.new({business_role: PinterestSdkClient::BusinessRoleForMembers::EMPLOYEE, member_id: '140943737684417'})] # Array<UpdateMemberBusinessRoleBody> | List of objects with the member id and the business_role.
+business_id = 'business_id_example' # String | Business id
+business_membership_member = [PinterestSdkClient::BusinessMembershipMember.new({business_role: PinterestSdkClient::BusinessRoleForMembers::EMPLOYEE, member_id: '140943737684417'})] # Array<BusinessMembershipMember> | 
 
 begin
   # Update member's business role
-  result = api_instance.update_business_memberships(business_id, update_member_business_role_body)
+  result = api_instance.update_business_memberships(business_id, business_membership_member)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessRelationshipsApi->update_business_memberships: #{e}"
@@ -650,15 +654,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UpdateMemberResultsResponseArray>, Integer, Hash)> update_business_memberships_with_http_info(business_id, update_member_business_role_body)
+> <Array(<UpdateBusinessMembershipsResponse>, Integer, Hash)> update_business_memberships_with_http_info(business_id, business_membership_member)
 
 ```ruby
 begin
   # Update member's business role
-  data, status_code, headers = api_instance.update_business_memberships_with_http_info(business_id, update_member_business_role_body)
+  data, status_code, headers = api_instance.update_business_memberships_with_http_info(business_id, business_membership_member)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <UpdateMemberResultsResponseArray>
+  p data # => <UpdateBusinessMembershipsResponse>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessRelationshipsApi->update_business_memberships_with_http_info: #{e}"
 end
@@ -669,11 +673,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Business id |  |
-| **update_member_business_role_body** | [**Array&lt;UpdateMemberBusinessRoleBody&gt;**](UpdateMemberBusinessRoleBody.md) | List of objects with the member id and the business_role. |  |
+| **business_membership_member** | [**Array&lt;BusinessMembershipMember&gt;**](BusinessMembershipMember.md) |  |  |
 
 ### Return type
 
-[**UpdateMemberResultsResponseArray**](UpdateMemberResultsResponseArray.md)
+[**UpdateBusinessMembershipsResponse**](UpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 

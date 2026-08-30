@@ -6,6 +6,7 @@ open Newtonsoft.Json
 open OpenAPI.Model.ErrorDetail
 open OpenAPI.Model.RecordCounts
 open OpenAPI.Model.UserListOperationType
+open OpenAPI.Model.WorkloadState
 
 module CustomerListUpload =
 
@@ -28,7 +29,7 @@ module CustomerListUpload =
     [<JsonProperty(PropertyName = "record_counts")>]
     RecordCounts : RecordCounts;
     [<JsonProperty(PropertyName = "state")>]
-    State : string;
+    State : WorkloadState;
     [<JsonProperty(PropertyName = "updated_time")>]
     UpdatedTime : int;
   }

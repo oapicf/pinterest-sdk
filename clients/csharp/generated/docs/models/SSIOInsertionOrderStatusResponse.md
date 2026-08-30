@@ -1,4 +1,5 @@
 # Org.OpenAPITools.Model.SSIOInsertionOrderStatusResponse
+SSIO insertion order status response for a single pin order id lookup.
 
 ## Properties
 

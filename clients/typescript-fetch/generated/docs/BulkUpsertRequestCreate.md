@@ -10,10 +10,11 @@ Name | Type
 `adGroups` | [Array&lt;AdGroupCreateRequest&gt;](AdGroupCreateRequest.md)
 `ads` | [Array&lt;AdCreateRequest&gt;](AdCreateRequest.md)
 `campaigns` | [Array&lt;CampaignCreateRequest&gt;](CampaignCreateRequest.md)
-`catalogProductGroups` | [Array&lt;MultipleProductGroupsInner&gt;](MultipleProductGroupsInner.md)
+`catalogProductGroups` | [Array&lt;BulkUpsertRequestCreateCatalogProductGroupsItems&gt;](BulkUpsertRequestCreateCatalogProductGroupsItems.md)
 `keywords` | [Array&lt;KeywordsRequest&gt;](KeywordsRequest.md)
-`labels` | [Array&lt;LabelCreateRequest&gt;](LabelCreateRequest.md)
+`labels` | [Array&lt;LabelBulkCreateRequest&gt;](LabelBulkCreateRequest.md)
 `productGroups` | [Array&lt;ProductGroupPromotionCreateRequest&gt;](ProductGroupPromotionCreateRequest.md)
+`schedules` | [Array&lt;ScheduleCreateRequest&gt;](ScheduleCreateRequest.md)
 
 ## Example
 
@@ -29,6 +30,7 @@ const example = {
   "keywords": null,
   "labels": null,
   "productGroups": null,
+  "schedules": null,
 } satisfies BulkUpsertRequestCreate
 
 console.log(example)

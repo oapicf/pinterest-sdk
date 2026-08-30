@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.MatchTypeResponse;
+import apimodels.MatchType;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -11,35 +11,32 @@ import javax.validation.Valid;
 /**
  * Keyword
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class Keyword   {
+  @JsonProperty("archived")
+  
+  private Boolean archived;
+
   @JsonProperty("bid")
   
   private Integer bid;
+
+  @JsonProperty("id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
+
+  private String id;
 
   @JsonProperty("match_type")
   @NotNull
 @Valid
 
-  private MatchTypeResponse matchType;
-
-  @JsonProperty("value")
-  @NotNull
-
-  private String value;
-
-  @JsonProperty("archived")
-  
-  private Boolean archived;
-
-  @JsonProperty("id")
-  @Pattern(regexp="^\\d+$")
-
-  private String id;
+  private MatchType matchType;
 
   @JsonProperty("parent_id")
-  @Pattern(regexp="^\\d+$")
+  @NotNull
+@Pattern(regexp="^\\d+$")
 
   private String parentId;
 
@@ -51,56 +48,10 @@ public class Keyword   {
   
   private String type;
 
-  public Keyword bid(Integer bid) {
-    this.bid = bid;
-    return this;
-  }
+  @JsonProperty("value")
+  @NotNull
 
-   /**
-   * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-   * @return bid
-  **/
-  public Integer getBid() {
-    return bid;
-  }
-
-  public void setBid(Integer bid) {
-    this.bid = bid;
-  }
-
-  public Keyword matchType(MatchTypeResponse matchType) {
-    this.matchType = matchType;
-    return this;
-  }
-
-   /**
-   * Get matchType
-   * @return matchType
-  **/
-  public MatchTypeResponse getMatchType() {
-    return matchType;
-  }
-
-  public void setMatchType(MatchTypeResponse matchType) {
-    this.matchType = matchType;
-  }
-
-  public Keyword value(String value) {
-    this.value = value;
-    return this;
-  }
-
-   /**
-   * Keyword value (120 chars max).
-   * @return value
-  **/
-  public String getValue() {
-    return value;
-  }
-
-  public void setValue(String value) {
-    this.value = value;
-  }
+  private String value;
 
   public Keyword archived(Boolean archived) {
     this.archived = archived;
@@ -119,6 +70,23 @@ public class Keyword   {
     this.archived = archived;
   }
 
+  public Keyword bid(Integer bid) {
+    this.bid = bid;
+    return this;
+  }
+
+   /**
+   * **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+   * @return bid
+  **/
+  public Integer getBid() {
+    return bid;
+  }
+
+  public void setBid(Integer bid) {
+    this.bid = bid;
+  }
+
   public Keyword id(String id) {
     this.id = id;
     return this;
@@ -134,6 +102,23 @@ public class Keyword   {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public Keyword matchType(MatchType matchType) {
+    this.matchType = matchType;
+    return this;
+  }
+
+   /**
+   * Keyword [match type](/docs/api-features/targeting-overview/)
+   * @return matchType
+  **/
+  public MatchType getMatchType() {
+    return matchType;
+  }
+
+  public void setMatchType(MatchType matchType) {
+    this.matchType = matchType;
   }
 
   public Keyword parentId(String parentId) {
@@ -159,7 +144,7 @@ public class Keyword   {
   }
 
    /**
-   * Parent entity type
+   * Parent entity type (advertiser, campaign, ad group).
    * @return parentType
   **/
   public String getParentType() {
@@ -187,6 +172,23 @@ public class Keyword   {
     this.type = type;
   }
 
+  public Keyword value(String value) {
+    this.value = value;
+    return this;
+  }
+
+   /**
+   * Keyword value (120 chars max).
+   * @return value
+  **/
+  public String getValue() {
+    return value;
+  }
+
+  public void setValue(String value) {
+    this.value = value;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -197,19 +199,19 @@ public class Keyword   {
       return false;
     }
     Keyword keyword = (Keyword) o;
-    return Objects.equals(bid, keyword.bid) &&
-        Objects.equals(matchType, keyword.matchType) &&
-        Objects.equals(value, keyword.value) &&
-        Objects.equals(archived, keyword.archived) &&
+    return Objects.equals(archived, keyword.archived) &&
+        Objects.equals(bid, keyword.bid) &&
         Objects.equals(id, keyword.id) &&
+        Objects.equals(matchType, keyword.matchType) &&
         Objects.equals(parentId, keyword.parentId) &&
         Objects.equals(parentType, keyword.parentType) &&
-        Objects.equals(type, keyword.type);
+        Objects.equals(type, keyword.type) &&
+        Objects.equals(value, keyword.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bid, matchType, value, archived, id, parentId, parentType, type);
+    return Objects.hash(archived, bid, id, matchType, parentId, parentType, type, value);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -218,14 +220,14 @@ public class Keyword   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Keyword {\n");
     
-    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
-    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
+    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    parentType: ").append(toIndentedString(parentType)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -235,10 +237,7 @@ public class Keyword   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

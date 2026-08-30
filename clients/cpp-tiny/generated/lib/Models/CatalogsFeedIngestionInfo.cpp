@@ -106,7 +106,7 @@ CatalogsFeedIngestionInfo::getINSTOCK()
 }
 
 void
-CatalogsFeedIngestionInfo::setINSTOCK(int  iN_STOCK)
+CatalogsFeedIngestionInfo::setINSTOCK(int iN_STOCK)
 {
 	this->iN_STOCK = iN_STOCK;
 }
@@ -118,7 +118,7 @@ CatalogsFeedIngestionInfo::getOUTOFSTOCK()
 }
 
 void
-CatalogsFeedIngestionInfo::setOUTOFSTOCK(int  oUT_OF_STOCK)
+CatalogsFeedIngestionInfo::setOUTOFSTOCK(int oUT_OF_STOCK)
 {
 	this->oUT_OF_STOCK = oUT_OF_STOCK;
 }
@@ -130,7 +130,7 @@ CatalogsFeedIngestionInfo::getPREORDER()
 }
 
 void
-CatalogsFeedIngestionInfo::setPREORDER(int  pREORDER)
+CatalogsFeedIngestionInfo::setPREORDER(int pREORDER)
 {
 	this->pREORDER = pREORDER;
 }

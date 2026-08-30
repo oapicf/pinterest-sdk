@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,6 +14,8 @@ package openapi
 
 import (
 	"errors"
+	"encoding/json"
+	"fmt"
 )
 
 
@@ -22,23 +24,80 @@ type CatalogsProductGroupUint32Criteria struct {
 
 	Negated bool `json:"negated,omitempty"`
 
-	Operator string `json:"operator"`
+	Operator NumericFilterOperatorType `json:"operator"`
 
 	Value int32 `json:"value"`
 }
-
-// AssertCatalogsProductGroupUint32CriteriaRequired checks if the required fields are not zero-ed
-func AssertCatalogsProductGroupUint32CriteriaRequired(obj CatalogsProductGroupUint32Criteria) error {
-	elements := map[string]interface{}{
-		"operator": obj.Operator,
-		"value": obj.Value,
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsProductGroupUint32Criteria
+func (o *CatalogsProductGroupUint32Criteria) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"operator",
+		"value",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"operator": false,
+		"value": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"negated": {},
+		"operator": {},
+		"value": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsProductGroupUint32Criteria
+
+	if value, exists := allProperties["negated"]; exists {
+		if err = json.Unmarshal(value, &decoded.Negated); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["operator"]; exists {
+		if err = json.Unmarshal(value, &decoded.Operator); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["value"]; exists {
+		if err = json.Unmarshal(value, &decoded.Value); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsProductGroupUint32CriteriaRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertCatalogsProductGroupUint32CriteriaRequired(obj CatalogsProductGroupUint32Criteria) error {
 	return nil
 }
 

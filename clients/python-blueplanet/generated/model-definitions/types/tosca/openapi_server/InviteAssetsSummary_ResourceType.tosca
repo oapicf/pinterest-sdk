@@ -7,8 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  InviteAssetsSummaryAdAccountsInner = openapi_server.resourceTypes.InviteAssetsSummaryAdAccountsInner
-  InviteAssetsSummaryProfilesInner = openapi_server.resourceTypes.InviteAssetsSummaryProfilesInner
+  InviteAssetsSummaryItem = openapi_server.resourceTypes.InviteAssetsSummaryItem
 }
 resourceTypes {
 
@@ -19,13 +18,13 @@ resourceTypes {
     properties {
         ad_accounts {
           type = array
-          items.type = InviteAssetsSummaryAdAccountsInner
+          items.type = InviteAssetsSummaryItem
           description = "List of ad account IDs and respective permission levels that will be assigned."
           optional = false
         }
         profiles {
           type = array
-          items.type = InviteAssetsSummaryProfilesInner
+          items.type = InviteAssetsSummaryItem
           description = "List of profile IDs and respective permission levels that will be assigned."
           optional = false
         }

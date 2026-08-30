@@ -32,12 +32,12 @@ asset_access_requests/create(Ctx, BusinessId, OpenapiCreateAssetAccessRequestBod
 
 %% @doc Cancel invites/requests
 %% Cancel membership/partnership invites and/or requests.
--spec cancel_invites_or_requests(ctx:ctx(), binary(), openapi_cancel_invites_body:openapi_cancel_invites_body()) -> {ok, openapi_delete_invites_results_response_array:openapi_delete_invites_results_response_array(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-cancel_invites_or_requests(Ctx, BusinessId, OpenapiCancelInvitesBody) ->
-    cancel_invites_or_requests(Ctx, BusinessId, OpenapiCancelInvitesBody, #{}).
+-spec cancel_invites_or_requests(ctx:ctx(), binary(), openapi_cancel_invites_request:openapi_cancel_invites_request()) -> {ok, openapi_cancel_invites_response:openapi_cancel_invites_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+cancel_invites_or_requests(Ctx, BusinessId, OpenapiCancelInvitesRequest) ->
+    cancel_invites_or_requests(Ctx, BusinessId, OpenapiCancelInvitesRequest, #{}).
 
--spec cancel_invites_or_requests(ctx:ctx(), binary(), openapi_cancel_invites_body:openapi_cancel_invites_body(), maps:map()) -> {ok, openapi_delete_invites_results_response_array:openapi_delete_invites_results_response_array(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-cancel_invites_or_requests(Ctx, BusinessId, OpenapiCancelInvitesBody, Optional) ->
+-spec cancel_invites_or_requests(ctx:ctx(), binary(), openapi_cancel_invites_request:openapi_cancel_invites_request(), maps:map()) -> {ok, openapi_cancel_invites_response:openapi_cancel_invites_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+cancel_invites_or_requests(Ctx, BusinessId, OpenapiCancelInvitesRequest, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -45,7 +45,7 @@ cancel_invites_or_requests(Ctx, BusinessId, OpenapiCancelInvitesBody, Optional) 
     Path = [?BASE_URL, "/businesses/", BusinessId, "/invites"],
     QS = [],
     Headers = [],
-    Body1 = OpenapiCancelInvitesBody,
+    Body1 = OpenapiCancelInvitesRequest,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 

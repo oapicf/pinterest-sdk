@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Response model for batch campaign write operations.",
+  "name": "CampaignBatchWriteResponseModel",
+  "fields": [
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.CampaignBatchItem"
+      },
+      "doc": ""
+    }
+  ]
+
+}

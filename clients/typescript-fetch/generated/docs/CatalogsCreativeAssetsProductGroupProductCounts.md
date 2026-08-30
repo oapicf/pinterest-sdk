@@ -7,7 +7,9 @@ Product counts for a Creative Assets CatalogsProductGroup
 
 Name | Type
 ------------ | -------------
+`appLinks` | number
 `catalogType` | string
+`images` | number
 `total` | number
 `videos` | number
 
@@ -18,7 +20,9 @@ import type { CatalogsCreativeAssetsProductGroupProductCounts } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "appLinks": null,
   "catalogType": null,
+  "images": null,
   "total": null,
   "videos": null,
 } satisfies CatalogsCreativeAssetsProductGroupProductCounts

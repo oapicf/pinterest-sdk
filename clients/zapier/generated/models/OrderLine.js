@@ -9,12 +9,20 @@ module.exports = {
             {
                 key: `${keyPrefix}ad_account_id`,
                 label: `Ad account ID. - [${labelPrefix}ad_account_id]`,
+                required: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}budget`,
                 label: `Order line budget in micro currency. - [${labelPrefix}budget]`,
                 type: 'number',
+            },
+            {
+                key: `${keyPrefix}campaign_ids`,
+                label: `Associated List of campaign IDs. - [${labelPrefix}campaign_ids]`,
+                required: true,
+                list: true,
+                type: 'string',
             },
             {
                 key: `${keyPrefix}end_time`,
@@ -24,6 +32,7 @@ module.exports = {
             {
                 key: `${keyPrefix}id`,
                 label: `Order line ID. - [${labelPrefix}id]`,
+                required: true,
                 type: 'string',
             },
             {
@@ -57,13 +66,7 @@ module.exports = {
             {
                 key: `${keyPrefix}type`,
                 label: `Always \"orderline\". - [${labelPrefix}type]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}campaign_ids`,
-                label: `Associated List of campaign IDs. - [${labelPrefix}campaign_ids]`,
                 required: true,
-                list: true,
                 type: 'string',
             },
         ]
@@ -73,6 +76,7 @@ module.exports = {
         return {
             'ad_account_id': bundle.inputData?.[`${keyPrefix}ad_account_id`],
             'budget': bundle.inputData?.[`${keyPrefix}budget`],
+            'campaign_ids': bundle.inputData?.[`${keyPrefix}campaign_ids`],
             'end_time': bundle.inputData?.[`${keyPrefix}end_time`],
             'id': bundle.inputData?.[`${keyPrefix}id`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
@@ -82,7 +86,6 @@ module.exports = {
             'start_time': bundle.inputData?.[`${keyPrefix}start_time`],
             'status': bundle.inputData?.[`${keyPrefix}status`],
             'type': bundle.inputData?.[`${keyPrefix}type`],
-            'campaign_ids': bundle.inputData?.[`${keyPrefix}campaign_ids`],
         }
     },
 }

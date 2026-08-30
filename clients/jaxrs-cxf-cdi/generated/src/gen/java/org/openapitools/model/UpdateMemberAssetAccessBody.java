@@ -7,42 +7,43 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.UpdateMemberAssetAccessBodyAccessesInner;
+import org.openapitools.model.UpdateMemberAssetAccessItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- * An object with a list of all the new accesses.
+ * An object with a list of all the new member asset accesses.
  **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-@ApiModel(description = "An object with a list of all the new accesses.")
+@ApiModel(description = "An object with a list of all the new member asset accesses.")
 public class UpdateMemberAssetAccessBody   {
   
-  private List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+  private List<@Valid UpdateMemberAssetAccessItem> accesses = new ArrayList<>();
 
   /**
+   * List of member asset accesses to assign or update.
    **/
-  public UpdateMemberAssetAccessBody accesses(List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+  public UpdateMemberAssetAccessBody accesses(List<@Valid UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "List of member asset accesses to assign or update.")
   @JsonProperty("accesses")
   @NotNull
- @Size(min=1,max=50)  public List<@Valid UpdateMemberAssetAccessBodyAccessesInner> getAccesses() {
+ @Size(min=1,max=50)  public List<@Valid UpdateMemberAssetAccessItem> getAccesses() {
     return accesses;
   }
-  public void setAccesses(List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<@Valid UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
-  public UpdateMemberAssetAccessBody addAccessesItem(UpdateMemberAssetAccessBodyAccessesInner accessesItem) {
+  public UpdateMemberAssetAccessBody addAccessesItem(UpdateMemberAssetAccessItem accessesItem) {
     if (this.accesses == null) {
       this.accesses = new ArrayList<>();
     }
@@ -84,10 +85,7 @@ public class UpdateMemberAssetAccessBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

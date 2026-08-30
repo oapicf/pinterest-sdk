@@ -8,10 +8,11 @@
  * Do not edit the class manually.
  */
 import { CampaignCreateRequest } from './campaignCreateRequest';
+import { LabelBulkCreateRequest } from './labelBulkCreateRequest';
 import { AdGroupCreateRequest } from './adGroupCreateRequest';
-import { LabelCreateRequest } from './labelCreateRequest';
-import { MultipleProductGroupsInner } from './multipleProductGroupsInner';
+import { ScheduleCreateRequest } from './scheduleCreateRequest';
 import { KeywordsRequest } from './keywordsRequest';
+import { BulkUpsertRequestCreateCatalogProductGroupsItems } from './bulkUpsertRequestCreateCatalogProductGroupsItems';
 import { AdCreateRequest } from './adCreateRequest';
 import { ProductGroupPromotionCreateRequest } from './productGroupPromotionCreateRequest';
 
@@ -23,9 +24,10 @@ export interface BulkUpsertRequestCreate {
     ad_groups?: Array<AdGroupCreateRequest>;
     ads?: Array<AdCreateRequest>;
     campaigns?: Array<CampaignCreateRequest>;
-    catalog_product_groups?: Array<MultipleProductGroupsInner>;
+    catalog_product_groups?: Array<BulkUpsertRequestCreateCatalogProductGroupsItems>;
     keywords?: Array<KeywordsRequest>;
-    labels?: Array<LabelCreateRequest>;
+    labels?: Array<LabelBulkCreateRequest>;
     product_groups?: Array<ProductGroupPromotionCreateRequest>;
+    schedules?: Array<ScheduleCreateRequest>;
 }
 

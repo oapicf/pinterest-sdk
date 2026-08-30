@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -23,13 +31,14 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param attributeName 
+ * @param attributeName Attribute that has a validation issue.
  * @param providedValue Provided value that caused the validation issue.
  */
 
 
 data class CatalogsItemValidationDetails (
 
+    /* Attribute that has a validation issue. */
     @Json(name = "attribute_name")
     val attributeName: NullableCatalogsItemFieldType?,
 

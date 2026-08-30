@@ -6,12 +6,11 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.catalogs_creative_assets_feeds_create_request_default_locale import CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale  # noqa: F401,E501
 from app.openapi_server.models.catalogs_feed_credentials import CatalogsFeedCredentials  # noqa: F401,E501
 from app.openapi_server.models.catalogs_feed_processing_schedule import CatalogsFeedProcessingSchedule  # noqa: F401,E501
-from app.openapi_server.models.catalogs_feeds_create_request_default_locale import CatalogsFeedsCreateRequestDefaultLocale  # noqa: F401,E501
 from app.openapi_server.models.catalogs_format import CatalogsFormat  # noqa: F401,E501
 from app.openapi_server.models.catalogs_status import CatalogsStatus  # noqa: F401,E501
-from app.openapi_server.models.catalogs_type import CatalogsType  # noqa: F401,E501
 from app.openapi_server.models.nullable_currency import NullableCurrency  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
@@ -23,19 +22,19 @@ class CatalogsHotelFeedsCreateRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, catalog_id: str=None, catalog_type: CatalogsType=None, credentials: CatalogsFeedCredentials=None, default_currency: NullableCurrency=None, default_locale: CatalogsFeedsCreateRequestDefaultLocale=None, format: CatalogsFormat=None, location: str=None, name: str=None, preferred_processing_schedule: CatalogsFeedProcessingSchedule=None, status: CatalogsStatus='ACTIVE'):  # noqa: E501
+    def __init__(self, catalog_id: str=None, catalog_type: str=None, credentials: CatalogsFeedCredentials=None, default_currency: NullableCurrency=None, default_locale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale=None, format: CatalogsFormat=None, location: str=None, name: str=None, preferred_processing_schedule: CatalogsFeedProcessingSchedule=None, status: CatalogsStatus=None):  # noqa: E501
         """CatalogsHotelFeedsCreateRequest - a model defined in Swagger
 
         :param catalog_id: The catalog_id of this CatalogsHotelFeedsCreateRequest.  # noqa: E501
         :type catalog_id: str
         :param catalog_type: The catalog_type of this CatalogsHotelFeedsCreateRequest.  # noqa: E501
-        :type catalog_type: CatalogsType
+        :type catalog_type: str
         :param credentials: The credentials of this CatalogsHotelFeedsCreateRequest.  # noqa: E501
         :type credentials: CatalogsFeedCredentials
         :param default_currency: The default_currency of this CatalogsHotelFeedsCreateRequest.  # noqa: E501
         :type default_currency: NullableCurrency
         :param default_locale: The default_locale of this CatalogsHotelFeedsCreateRequest.  # noqa: E501
-        :type default_locale: CatalogsFeedsCreateRequestDefaultLocale
+        :type default_locale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
         :param format: The format of this CatalogsHotelFeedsCreateRequest.  # noqa: E501
         :type format: CatalogsFormat
         :param location: The location of this CatalogsHotelFeedsCreateRequest.  # noqa: E501
@@ -49,10 +48,10 @@ class CatalogsHotelFeedsCreateRequest(Model):
         """
         self.swagger_types = {
             'catalog_id': str,
-            'catalog_type': CatalogsType,
+            'catalog_type': str,
             'credentials': CatalogsFeedCredentials,
             'default_currency': NullableCurrency,
-            'default_locale': CatalogsFeedsCreateRequestDefaultLocale,
+            'default_locale': CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale,
             'format': CatalogsFormat,
             'location': str,
             'name': str,
@@ -99,7 +98,7 @@ class CatalogsHotelFeedsCreateRequest(Model):
     def catalog_id(self) -> str:
         """Gets the catalog_id of this CatalogsHotelFeedsCreateRequest.
 
-        Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.  # noqa: E501
+        Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.  # noqa: E501
 
         :return: The catalog_id of this CatalogsHotelFeedsCreateRequest.
         :rtype: str
@@ -110,7 +109,7 @@ class CatalogsHotelFeedsCreateRequest(Model):
     def catalog_id(self, catalog_id: str):
         """Sets the catalog_id of this CatalogsHotelFeedsCreateRequest.
 
-        Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.  # noqa: E501
+        Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.  # noqa: E501
 
         :param catalog_id: The catalog_id of this CatalogsHotelFeedsCreateRequest.
         :type catalog_id: str
@@ -121,25 +120,29 @@ class CatalogsHotelFeedsCreateRequest(Model):
         self._catalog_id = catalog_id
 
     @property
-    def catalog_type(self) -> CatalogsType:
+    def catalog_type(self) -> str:
         """Gets the catalog_type of this CatalogsHotelFeedsCreateRequest.
 
 
         :return: The catalog_type of this CatalogsHotelFeedsCreateRequest.
-        :rtype: CatalogsType
+        :rtype: str
         """
         return self._catalog_type
 
     @catalog_type.setter
-    def catalog_type(self, catalog_type: CatalogsType):
+    def catalog_type(self, catalog_type: str):
         """Sets the catalog_type of this CatalogsHotelFeedsCreateRequest.
 
 
         :param catalog_type: The catalog_type of this CatalogsHotelFeedsCreateRequest.
-        :type catalog_type: CatalogsType
+        :type catalog_type: str
         """
-        if catalog_type is None:
-            raise ValueError("Invalid value for `catalog_type`, must not be `None`")  # noqa: E501
+        allowed_values = ["HOTEL"]  # noqa: E501
+        if catalog_type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `catalog_type` ({0}), must be one of {1}"
+                .format(catalog_type, allowed_values)
+            )
 
         self._catalog_type = catalog_type
 
@@ -186,22 +189,22 @@ class CatalogsHotelFeedsCreateRequest(Model):
         self._default_currency = default_currency
 
     @property
-    def default_locale(self) -> CatalogsFeedsCreateRequestDefaultLocale:
+    def default_locale(self) -> CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale:
         """Gets the default_locale of this CatalogsHotelFeedsCreateRequest.
 
 
         :return: The default_locale of this CatalogsHotelFeedsCreateRequest.
-        :rtype: CatalogsFeedsCreateRequestDefaultLocale
+        :rtype: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
         """
         return self._default_locale
 
     @default_locale.setter
-    def default_locale(self, default_locale: CatalogsFeedsCreateRequestDefaultLocale):
+    def default_locale(self, default_locale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale):
         """Sets the default_locale of this CatalogsHotelFeedsCreateRequest.
 
 
         :param default_locale: The default_locale of this CatalogsHotelFeedsCreateRequest.
-        :type default_locale: CatalogsFeedsCreateRequestDefaultLocale
+        :type default_locale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
         """
         if default_locale is None:
             raise ValueError("Invalid value for `default_locale`, must not be `None`")  # noqa: E501

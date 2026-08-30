@@ -7,6 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  TargetingSpecAppType = openapi_server.resourceTypes.TargetingSpecAppType
 }
 resourceTypes {
 
@@ -16,9 +17,8 @@ resourceTypes {
     derivedFrom = Root
     properties {
         app_type {
-          type =  string
-          description = ""
-          enum = ["android_mobile", "android_tablet", "ipad", "iphone", "web", "web_mobile"]
+          type = TargetingSpecAppType
+          description = "App type identifier."
           optional = false
         }
     }

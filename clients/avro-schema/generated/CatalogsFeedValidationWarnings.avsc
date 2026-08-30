@@ -1056,13 +1056,7 @@
     },
     {
       "name": "FETCH_SAME_SIGNATURE",
-      "type": ["null", {
-        "type": "enum",
-        "name": "CatalogsFeedValidationWarnings_FETCHUnderscoreSAMEUnderscoreSIGNATURE",
-        "symbols": [
-          "_1"
-        ]
-      }],
+      "type": ["null", "int"],
       "doc": "Ingestion completed early because there are no changes to your feed since the last successful update.",
       "default": null
     },

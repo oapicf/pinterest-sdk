@@ -12,14 +12,14 @@ import org.joda.time.DateTime
 import CatalogsRetailFeedsCreateRequest._
 
 case class CatalogsRetailFeedsCreateRequest (
-  /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect. */
+  /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
   catalogId: Option[String],
-catalogType: CatalogsType,
+catalogType: CatalogType,
 credentials: Option[CatalogsFeedCredentials],
 defaultAvailability: Option[ProductAvailabilityType],
 defaultCountry: Country,
 defaultCurrency: Option[NullableCurrency],
-defaultLocale: CatalogsFeedsCreateRequestDefaultLocale,
+defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale,
 format: CatalogsFormat,
 /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
   location: String,
@@ -30,6 +30,25 @@ status: Option[CatalogsStatus])
 
 object CatalogsRetailFeedsCreateRequest {
   import DateTimeCodecs._
+  sealed trait CatalogType
+  case object RETAIL extends CatalogType
+
+  object CatalogType {
+    def toCatalogType(s: String): Option[CatalogType] = s match {
+      case "RETAIL" => Some(RETAIL)
+      case _ => None
+    }
+
+    def fromCatalogType(x: CatalogType): String = x match {
+      case RETAIL => "RETAIL"
+    }
+  }
+
+  implicit val CatalogTypeEnumEncoder: EncodeJson[CatalogType] =
+    EncodeJson[CatalogType](is => StringEncodeJson(CatalogType.fromCatalogType(is)))
+
+  implicit val CatalogTypeEnumDecoder: DecodeJson[CatalogType] =
+    DecodeJson.optionDecoder[CatalogType](n => n.string.flatMap(jStr => CatalogType.toCatalogType(jStr)), "CatalogType failed to de-serialize")
 
   implicit val CatalogsRetailFeedsCreateRequestCodecJson: CodecJson[CatalogsRetailFeedsCreateRequest] = CodecJson.derive[CatalogsRetailFeedsCreateRequest]
   implicit val CatalogsRetailFeedsCreateRequestDecoder: EntityDecoder[CatalogsRetailFeedsCreateRequest] = jsonOf[CatalogsRetailFeedsCreateRequest]

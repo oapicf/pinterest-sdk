@@ -24,7 +24,7 @@ void
 BaseInviteDataResponse::__init()
 {
 	//id = std::string();
-	//invite_data = new BaseInviteDataResponse_invite_data();
+	//invite_data = new InviteDataResponse();
 	//is_received_invite = bool(false);
 	//user = null;
 }
@@ -76,11 +76,11 @@ BaseInviteDataResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("BaseInviteDataResponse_invite_data")) {
-			jsonToValue(&invite_data, node, "BaseInviteDataResponse_invite_data", "BaseInviteDataResponse_invite_data");
+		if (isprimitive("InviteDataResponse")) {
+			jsonToValue(&invite_data, node, "InviteDataResponse", "InviteDataResponse");
 		} else {
 			
-			BaseInviteDataResponse_invite_data* obj = static_cast<BaseInviteDataResponse_invite_data*> (&invite_data);
+			InviteDataResponse* obj = static_cast<InviteDataResponse*> (&invite_data);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -131,13 +131,13 @@ BaseInviteDataResponse::toJson()
 	}
 	const gchar *idKey = "id";
 	json_object_set_member(pJsonObject, idKey, node);
-	if (isprimitive("BaseInviteDataResponse_invite_data")) {
-		BaseInviteDataResponse_invite_data obj = getInviteData();
-		node = converttoJson(&obj, "BaseInviteDataResponse_invite_data", "");
+	if (isprimitive("InviteDataResponse")) {
+		InviteDataResponse obj = getInviteData();
+		node = converttoJson(&obj, "InviteDataResponse", "");
 	}
 	else {
 		
-		BaseInviteDataResponse_invite_data obj = static_cast<BaseInviteDataResponse_invite_data> (getInviteData());
+		InviteDataResponse obj = static_cast<InviteDataResponse> (getInviteData());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -188,14 +188,14 @@ BaseInviteDataResponse::setId(std::string  id)
 	this->id = id;
 }
 
-BaseInviteDataResponse_invite_data
+InviteDataResponse
 BaseInviteDataResponse::getInviteData()
 {
 	return invite_data;
 }
 
 void
-BaseInviteDataResponse::setInviteData(BaseInviteDataResponse_invite_data  invite_data)
+BaseInviteDataResponse::setInviteData(InviteDataResponse  invite_data)
 {
 	this->invite_data = invite_data;
 }

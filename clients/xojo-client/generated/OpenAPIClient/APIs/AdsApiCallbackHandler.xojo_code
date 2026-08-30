@@ -13,19 +13,19 @@ Protected Interface AdsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AdsAnalyticsCallback(status As OpenAPIClient.OpenAPIClientException, data() As AdsAnalyticsResponseInner)
+		Sub AdsAnalyticsCallback(status As OpenAPIClient.OpenAPIClientException, data() As OpenAPIClient.Models.AdsAnalytics)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AdsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdArrayResponse)
+		Sub AdsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdBatchWriteResponseModel)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AdsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdResponse)
+		Sub AdsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Ad)
 		  
 		End Sub
 	#tag EndMethod
@@ -37,7 +37,25 @@ Protected Interface AdsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AdsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdArrayResponse)
+		Sub AdsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdBatchWriteResponseModel)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub CampaignAdPreviewCreateCallback(status As OpenAPIClient.OpenAPIClientException, data() As OpenAPIClient.Models.CampaignAdPreviewCreate200ResponseInner)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub CampaignAdPreviewDeleteCallback(status As OpenAPIClient.OpenAPIClientException, data() As OpenAPIClient.Models.CampaignAdPreviewDelete200ResponseInner)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub CampaignAdPreviewReadCallback(status As OpenAPIClient.OpenAPIClientException, data() As OpenAPIClient.Models.CampaignAdPreview)
 		  
 		End Sub
 	#tag EndMethod

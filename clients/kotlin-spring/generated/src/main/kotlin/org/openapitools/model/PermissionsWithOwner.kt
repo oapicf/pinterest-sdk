@@ -16,7 +16,7 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
+* Permission levels including the OWNER role.
 * Values: ADMIN,ANALYST,FINANCE_MANAGER,FINANCE_EDIT,FINANCE_VIEW,AUDIENCE_MANAGER,CAMPAIGN_MANAGER,CATALOGS_MANAGER,CATALOGS_VIEWER,PROFILE_PUBLISHER,OWNER
 */
 enum class PermissionsWithOwner(@get:JsonValue val value: kotlin.String) {

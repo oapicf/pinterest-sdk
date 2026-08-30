@@ -1,7 +1,7 @@
 /*
  * SSIOInsertionOrderStatus.h
  *
- * 
+ * SSIO insertion order status item in a list response.
  */
 
 #ifndef _SSIOInsertionOrderStatus_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief SSIO insertion order status item in a list response.
  *
  *  \ingroup Models
  *

@@ -47,7 +47,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessInviteApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
     create_asset_access_request_body = pinterestsdk.CreateAssetAccessRequestBody() # CreateAssetAccessRequestBody | 
 
     try:
@@ -86,13 +86,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cancel_invites_or_requests**
-> DeleteInvitesResultsResponseArray cancel_invites_or_requests(business_id, cancel_invites_body)
+> CancelInvitesResponse cancel_invites_or_requests(business_id, cancel_invites_request)
 
 Cancel invites/requests
 
@@ -104,8 +110,8 @@ Cancel membership/partnership invites and/or requests.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.cancel_invites_body import CancelInvitesBody
-from pinterestsdk.models.delete_invites_results_response_array import DeleteInvitesResultsResponseArray
+from pinterestsdk.models.cancel_invites_request import CancelInvitesRequest
+from pinterestsdk.models.cancel_invites_response import CancelInvitesResponse
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -126,12 +132,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessInviteApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    cancel_invites_body = pinterestsdk.CancelInvitesBody() # CancelInvitesBody | A list with invite ids
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    cancel_invites_request = pinterestsdk.CancelInvitesRequest() # CancelInvitesRequest | 
 
     try:
         # Cancel invites/requests
-        api_response = api_instance.cancel_invites_or_requests(business_id, cancel_invites_body)
+        api_response = api_instance.cancel_invites_or_requests(business_id, cancel_invites_request)
         print("The response of BusinessAccessInviteApi->cancel_invites_or_requests:\n")
         pprint(api_response)
     except Exception as e:
@@ -146,11 +152,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
- **cancel_invites_body** | [**CancelInvitesBody**](CancelInvitesBody.md)| A list with invite ids | 
+ **cancel_invites_request** | [**CancelInvitesRequest**](CancelInvitesRequest.md)|  | 
 
 ### Return type
 
-[**DeleteInvitesResultsResponseArray**](DeleteInvitesResultsResponseArray.md)
+[**CancelInvitesResponse**](CancelInvitesResponse.md)
 
 ### Authorization
 
@@ -165,8 +171,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -219,8 +225,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessInviteApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    create_asset_invites_request = pinterestsdk.CreateAssetInvitesRequest() # CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    create_asset_invites_request = pinterestsdk.CreateAssetInvitesRequest() # CreateAssetInvitesRequest | 
 
     try:
         # Update invite/request with an asset permission
@@ -239,7 +245,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
- **create_asset_invites_request** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md)| A list of invites/requests together with the asset permissions to be assigned to the invite/request.  | 
+ **create_asset_invites_request** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md)|  | 
 
 ### Return type
 
@@ -258,8 +264,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -311,8 +323,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessInviteApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    create_membership_or_partnership_invites_body = pinterestsdk.CreateMembershipOrPartnershipInvitesBody() # CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    create_membership_or_partnership_invites_body = pinterestsdk.CreateMembershipOrPartnershipInvitesBody() # CreateMembershipOrPartnershipInvitesBody | 
 
     try:
         # Create invites or requests
@@ -331,7 +343,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
- **create_membership_or_partnership_invites_body** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | 
+ **create_membership_or_partnership_invites_body** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)|  | 
 
 ### Return type
 
@@ -350,8 +362,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -369,6 +387,7 @@ Get the membership/partnership invites and/or requests for the authorized user.
 ```python
 import pinterestsdk
 from pinterestsdk.models.get_invites200_response import GetInvites200Response
+from pinterestsdk.models.invite_filter_status import InviteFilterStatus
 from pinterestsdk.models.invite_type import InviteType
 from pinterestsdk.rest import ApiException
 from pprint import pprint
@@ -390,12 +409,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessInviteApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
     is_member = True # bool | A boolean field to indicate whether the invite is to create a partnership or a membership. (optional) (default to True)
-    invite_status = ['invite_status_example'] # List[str] | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. (optional)
+    invite_status = [pinterestsdk.InviteFilterStatus()] # List[InviteFilterStatus] | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. (optional)
     invite_type = pinterestsdk.InviteType() # InviteType | Invite type to filter invites by. Only invites of the specified type will be returned. (optional)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # Get invites/requests
@@ -415,10 +434,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
  **is_member** | **bool**| A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional] [default to True]
- **invite_status** | [**List[str]**](str.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] 
+ **invite_status** | [**List[InviteFilterStatus]**](InviteFilterStatus.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] 
  **invite_type** | [**InviteType**](.md)| Invite type to filter invites by. Only invites of the specified type will be returned. | [optional] 
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -437,8 +456,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -514,8 +538,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

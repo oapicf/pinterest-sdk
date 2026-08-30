@@ -2,8 +2,6 @@ package org.openapitools.server.model
 
 
 /**
- * = ProductGroupPromotionResponseItem =
- *
  * @param data  for example: ''null''
  * @param exceptions  for example: ''null''
 */

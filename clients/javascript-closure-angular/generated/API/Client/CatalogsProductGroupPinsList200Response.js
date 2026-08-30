@@ -12,7 +12,6 @@ API.Client.CatalogsProductGroupPinsList200Response = function() {}
 API.Client.CatalogsProductGroupPinsList200Response.prototype.bookmark;
 
 /**
- * Pins
  * @type {!Array<!API.Client.CatalogsProduct>}
  * @export
  */

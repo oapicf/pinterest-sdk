@@ -1,0 +1,25 @@
+
+
+export interface DeletePartnerAssetAccessItem { 
+  /**
+   * Unique identifier of the business asset.
+   */
+  asset_id: string;
+  /**
+   * Unique identifier of a business partner to update asset access to.
+   */
+  partner_id: string;
+  /**
+   * If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset. If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner\'s business asset.
+   */
+  partner_type?: DeletePartnerAssetAccessItem.PartnerTypeEnum;
+}
+export namespace DeletePartnerAssetAccessItem {
+  export const PartnerTypeEnum = {
+    Internal: 'INTERNAL',
+    External: 'EXTERNAL'
+  } as const;
+  export type PartnerTypeEnum = typeof PartnerTypeEnum[keyof typeof PartnerTypeEnum];
+}
+
+

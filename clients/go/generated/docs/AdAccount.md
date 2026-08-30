@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Ad account name. | [optional] 
 **Owner** | Pointer to [**AdAccountOwner**](AdAccountOwner.md) | Ad account owner | [optional] [readonly] 
 **Permissions** | Pointer to [**[]BusinessAccessRole**](BusinessAccessRole.md) |  | [optional] [readonly] 
+**TimeZone** | Pointer to **string** | The time zone of the ad account, in IANA format (e.g., \&quot;America/Los_Angeles\&quot;). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC. | [optional] 
 **UpdatedTime** | Pointer to **NullableInt32** |  | [optional] [readonly] 
 
 ## Methods
@@ -211,6 +212,31 @@ SetPermissions sets Permissions field to given value.
 `func (o *AdAccount) HasPermissions() bool`
 
 HasPermissions returns a boolean if a field has been set.
+
+### GetTimeZone
+
+`func (o *AdAccount) GetTimeZone() string`
+
+GetTimeZone returns the TimeZone field if non-nil, zero value otherwise.
+
+### GetTimeZoneOk
+
+`func (o *AdAccount) GetTimeZoneOk() (*string, bool)`
+
+GetTimeZoneOk returns a tuple with the TimeZone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimeZone
+
+`func (o *AdAccount) SetTimeZone(v string)`
+
+SetTimeZone sets TimeZone field to given value.
+
+### HasTimeZone
+
+`func (o *AdAccount) HasTimeZone() bool`
+
+HasTimeZone returns a boolean if a field has been set.
 
 ### GetUpdatedTime
 

@@ -1,0 +1,474 @@
+# ConversionTagsApi
+
+All URIs are relative to *https://api.pinterest.com/v5*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**conversionTagsCreate**](ConversionTagsApi.md#conversionTagsCreate) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag
+[**conversionTagsCreateWithHttpInfo**](ConversionTagsApi.md#conversionTagsCreateWithHttpInfo) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag
+[**conversionTagsGet**](ConversionTagsApi.md#conversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
+[**conversionTagsGetWithHttpInfo**](ConversionTagsApi.md#conversionTagsGetWithHttpInfo) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
+[**conversionTagsList**](ConversionTagsApi.md#conversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags
+[**conversionTagsListWithHttpInfo**](ConversionTagsApi.md#conversionTagsListWithHttpInfo) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags
+[**ocpmEligibleConversionTagsGet**](ConversionTagsApi.md#ocpmEligibleConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags
+[**ocpmEligibleConversionTagsGetWithHttpInfo**](ConversionTagsApi.md#ocpmEligibleConversionTagsGetWithHttpInfo) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags
+[**pageVisitConversionTagsGet**](ConversionTagsApi.md#pageVisitConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags
+[**pageVisitConversionTagsGetWithHttpInfo**](ConversionTagsApi.md#pageVisitConversionTagsGetWithHttpInfo) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags
+
+
+
+## conversionTagsCreate
+
+> conversionTagsCreate(conversionTagsCreateRequest): ApiRequest[ConversionTag]
+
+Create conversion tag
+
+Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account&#39;s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
+
+### Example
+
+```scala
+// Import classes:
+import 
+import 
+import 
+import org.openapitools.client.core._
+import org.openapitools.client.core.CollectionFormats._
+import org.openapitools.client.core.ApiKeyLocations._
+
+import org.apache.pekko.actor.ActorSystem
+import scala.concurrent.Future
+import scala.util.{Failure, Success}
+
+object Example extends App {
+    
+    implicit val system: ActorSystem = ActorSystem()
+    import system.dispatcher
+    
+    val apiInvoker = ApiInvoker()
+    val apiInstance = ConversionTagsApi("https://api.pinterest.com/v5")
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+
+    val conversionTagCreate: ConversionTagCreate =  // ConversionTagCreate | 
+    
+    val request = apiInstance.conversionTagsCreate(adAccountId, conversionTagCreate)
+    val response = apiInvoker.execute(request)
+
+    response.onComplete {
+        case Success(ApiResponse(code, content, headers)) =>
+            System.out.println(s"Status code: $code}")
+            System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
+        
+        case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
+            System.err.println("Exception when calling ConversionTagsApi#conversionTagsCreate")
+            System.err.println(s"Status code: $code}")
+            System.err.println(s"Reason: $responseContent")
+            System.err.println(s"Response headers: ${headers.mkString(", ")}")
+            error.printStackTrace();
+
+        case Failure(exception) => 
+            System.err.println("Exception when calling ConversionTagsApi#conversionTagsCreate")
+            exception.printStackTrace();
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **String**| Unique identifier of an ad account. |
+ **conversionTagCreate** | [**ConversionTagCreate**](ConversionTagCreate.md)|  |
+
+### Return type
+
+ApiRequest[[**ConversionTag**](ConversionTag.md)]
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
+
+
+## conversionTagsGet
+
+> conversionTagsGet(conversionTagsGetRequest): ApiRequest[ConversionTag]
+
+Get conversion tag
+
+Get information about an existing conversion tag.
+
+### Example
+
+```scala
+// Import classes:
+import 
+import 
+import org.openapitools.client.core._
+import org.openapitools.client.core.CollectionFormats._
+import org.openapitools.client.core.ApiKeyLocations._
+
+import org.apache.pekko.actor.ActorSystem
+import scala.concurrent.Future
+import scala.util.{Failure, Success}
+
+object Example extends App {
+    
+    implicit val system: ActorSystem = ActorSystem()
+    import system.dispatcher
+    
+    val apiInvoker = ApiInvoker()
+    val apiInstance = ConversionTagsApi("https://api.pinterest.com/v5")
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+
+    val conversionTagId: String = conversionTagId_example // String | Id of the conversion tag.
+    
+    val request = apiInstance.conversionTagsGet(adAccountId, conversionTagId)
+    val response = apiInvoker.execute(request)
+
+    response.onComplete {
+        case Success(ApiResponse(code, content, headers)) =>
+            System.out.println(s"Status code: $code}")
+            System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
+        
+        case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
+            System.err.println("Exception when calling ConversionTagsApi#conversionTagsGet")
+            System.err.println(s"Status code: $code}")
+            System.err.println(s"Reason: $responseContent")
+            System.err.println(s"Response headers: ${headers.mkString(", ")}")
+            error.printStackTrace();
+
+        case Failure(exception) => 
+            System.err.println("Exception when calling ConversionTagsApi#conversionTagsGet")
+            exception.printStackTrace();
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **String**| Unique identifier of an ad account. |
+ **conversionTagId** | **String**| Id of the conversion tag. |
+
+### Return type
+
+ApiRequest[[**ConversionTag**](ConversionTag.md)]
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
+
+
+## conversionTagsList
+
+> conversionTagsList(conversionTagsListRequest): ApiRequest[ConversionTagsList200Response]
+
+List conversion tags
+
+List conversion tags associated with an ad account.
+
+### Example
+
+```scala
+// Import classes:
+import 
+import 
+import org.openapitools.client.core._
+import org.openapitools.client.core.CollectionFormats._
+import org.openapitools.client.core.ApiKeyLocations._
+
+import org.apache.pekko.actor.ActorSystem
+import scala.concurrent.Future
+import scala.util.{Failure, Success}
+
+object Example extends App {
+    
+    implicit val system: ActorSystem = ActorSystem()
+    import system.dispatcher
+    
+    val apiInvoker = ApiInvoker()
+    val apiInstance = ConversionTagsApi("https://api.pinterest.com/v5")
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+
+    val filterDeleted: Boolean = true // Boolean | Filter by deleted status
+    
+    val request = apiInstance.conversionTagsList(adAccountId, filterDeleted)
+    val response = apiInvoker.execute(request)
+
+    response.onComplete {
+        case Success(ApiResponse(code, content, headers)) =>
+            System.out.println(s"Status code: $code}")
+            System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
+        
+        case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
+            System.err.println("Exception when calling ConversionTagsApi#conversionTagsList")
+            System.err.println(s"Status code: $code}")
+            System.err.println(s"Reason: $responseContent")
+            System.err.println(s"Response headers: ${headers.mkString(", ")}")
+            error.printStackTrace();
+
+        case Failure(exception) => 
+            System.err.println("Exception when calling ConversionTagsApi#conversionTagsList")
+            exception.printStackTrace();
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **String**| Unique identifier of an ad account. |
+ **filterDeleted** | **Boolean**| Filter by deleted status | [optional]
+
+### Return type
+
+ApiRequest[[**ConversionTagsList200Response**](ConversionTagsList200Response.md)]
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
+
+
+## ocpmEligibleConversionTagsGet
+
+> ocpmEligibleConversionTagsGet(ocpmEligibleConversionTagsGetRequest): ApiRequest[Map[String, Seq[ConversionEventResponse]]]
+
+Get Ocpm eligible conversion tags
+
+Get Ocpm eligible conversion tag events for an ad account.
+
+### Example
+
+```scala
+// Import classes:
+import 
+import 
+import org.openapitools.client.core._
+import org.openapitools.client.core.CollectionFormats._
+import org.openapitools.client.core.ApiKeyLocations._
+
+import org.apache.pekko.actor.ActorSystem
+import scala.concurrent.Future
+import scala.util.{Failure, Success}
+
+object Example extends App {
+    
+    implicit val system: ActorSystem = ActorSystem()
+    import system.dispatcher
+    
+    val apiInvoker = ApiInvoker()
+    val apiInstance = ConversionTagsApi("https://api.pinterest.com/v5")
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    
+    val request = apiInstance.ocpmEligibleConversionTagsGet(adAccountId)
+    val response = apiInvoker.execute(request)
+
+    response.onComplete {
+        case Success(ApiResponse(code, content, headers)) =>
+            System.out.println(s"Status code: $code}")
+            System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
+        
+        case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
+            System.err.println("Exception when calling ConversionTagsApi#ocpmEligibleConversionTagsGet")
+            System.err.println(s"Status code: $code}")
+            System.err.println(s"Reason: $responseContent")
+            System.err.println(s"Response headers: ${headers.mkString(", ")}")
+            error.printStackTrace();
+
+        case Failure(exception) => 
+            System.err.println("Exception when calling ConversionTagsApi#ocpmEligibleConversionTagsGet")
+            exception.printStackTrace();
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **String**| Unique identifier of an ad account. |
+
+### Return type
+
+ApiRequest[**Map[String, Seq[ConversionEventResponse]]**]
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
+
+
+## pageVisitConversionTagsGet
+
+> pageVisitConversionTagsGet(pageVisitConversionTagsGetRequest): ApiRequest[PageVisitConversionTagsGet200Response]
+
+Get page visit conversion tags
+
+Get all page visit conversion tag events for an ad account.
+
+### Example
+
+```scala
+// Import classes:
+import 
+import 
+import 
+import org.openapitools.client.core._
+import org.openapitools.client.core.CollectionFormats._
+import org.openapitools.client.core.ApiKeyLocations._
+
+import org.apache.pekko.actor.ActorSystem
+import scala.concurrent.Future
+import scala.util.{Failure, Success}
+
+object Example extends App {
+    
+    implicit val system: ActorSystem = ActorSystem()
+    import system.dispatcher
+    
+    val apiInvoker = ApiInvoker()
+    val apiInstance = ConversionTagsApi("https://api.pinterest.com/v5")
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+
+    val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+
+    val order: PaginationOrder =  // PaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+    
+    val request = apiInstance.pageVisitConversionTagsGet(adAccountId, bookmark, pageSize, order)
+    val response = apiInvoker.execute(request)
+
+    response.onComplete {
+        case Success(ApiResponse(code, content, headers)) =>
+            System.out.println(s"Status code: $code}")
+            System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
+        
+        case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
+            System.err.println("Exception when calling ConversionTagsApi#pageVisitConversionTagsGet")
+            System.err.println(s"Status code: $code}")
+            System.err.println(s"Reason: $responseContent")
+            System.err.println(s"Response headers: ${headers.mkString(", ")}")
+            error.printStackTrace();
+
+        case Failure(exception) => 
+            System.err.println("Exception when calling ConversionTagsApi#pageVisitConversionTagsGet")
+            exception.printStackTrace();
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **String**| Unique identifier of an ad account. |
+ **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
+ **order** | [**PaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
+
+### Return type
+
+ApiRequest[[**PageVisitConversionTagsGet200Response**](PageVisitConversionTagsGet200Response.md)]
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
+

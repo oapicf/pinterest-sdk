@@ -17,7 +17,7 @@ package org.openapitools.server.model
  * @param status  for example: ''null''
 */
 final case class CatalogsVerticalFeedsUpdateRequest (
-  catalogType: CatalogsType,
+  catalogType: String,
   credentials: Option[CatalogsFeedCredentials] = None,
   defaultAvailability: Option[ProductAvailabilityType] = None,
   defaultCurrency: Option[NullableCurrency] = None,

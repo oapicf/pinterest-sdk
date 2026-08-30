@@ -85,7 +85,7 @@ CatalogsDeleteHotelItem::getHotelId()
 }
 
 void
-CatalogsDeleteHotelItem::setHotelId(std::string  hotel_id)
+CatalogsDeleteHotelItem::setHotelId(std::string hotel_id)
 {
 	this->hotel_id = hotel_id;
 }
@@ -97,7 +97,7 @@ CatalogsDeleteHotelItem::getOperation()
 }
 
 void
-CatalogsDeleteHotelItem::setOperation(std::string  operation)
+CatalogsDeleteHotelItem::setOperation(std::string operation)
 {
 	this->operation = operation;
 }

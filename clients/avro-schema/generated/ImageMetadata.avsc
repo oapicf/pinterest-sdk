@@ -18,9 +18,14 @@
     },
     {
       "name": "item_type",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
+      "type": {
+        "type": "enum",
+        "name": "ImageMetadata_itemUnderscoretype",
+        "symbols": [
+          "image"
+        ]
+      },
+      "doc": "Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload."
     },
     {
       "name": "link",

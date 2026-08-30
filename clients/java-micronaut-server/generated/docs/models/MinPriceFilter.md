@@ -8,7 +8,7 @@ The class is defined in **[MinPriceFilter.java](../../src/main/java/org/openapit
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MIN_PRICE** | `CatalogsProductGroupPricingCriteria` |  | 
+**MIN_PRICE** | [`CatalogsProductGroupPricingCriteria`](CatalogsProductGroupPricingCriteria.md) |  | 
 
 
 

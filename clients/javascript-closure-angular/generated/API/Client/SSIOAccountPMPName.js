@@ -1,6 +1,7 @@
 goog.provide('API.Client.SSIOAccountPMPName');
 
 /**
+ * Pinterest marketing partner name.
  * @record
  */
 API.Client.SSIOAccountPMPName = function() {}

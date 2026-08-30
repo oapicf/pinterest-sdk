@@ -27,19 +27,20 @@ ProductGroupPromotion::__init()
 	//bid_in_micro_currency = int(0);
 	//catalog_product_group_id = std::string();
 	//catalog_product_group_name = std::string();
-	//collections_header_type = std::string();
+	//collections_header_type = new CollectionsHeaderType();
 	//collections_hero_destination_url = std::string();
 	//collections_hero_pin_id = std::string();
 	//creative_type = new CreativeType();
-	//customizable_cta_type = std::string();
+	//customizable_cta_type = new ProductGroupPromotionCustomizableCTAType();
 	//definition = std::string();
 	//grid_click_type = new GridClickType();
 	//id = std::string();
 	//included = bool(false);
 	//is_generate_background = bool(false);
+	//is_image_auto_resizing = bool(false);
 	//is_mdl = bool(false);
 	//parent_id = std::string();
-	//preferred_media_type = std::string();
+	//preferred_media_type = new PreferredMediaType();
 	//relative_definition = std::string();
 	//selected_image_tag = std::string();
 	//selected_video_tag = std::string();
@@ -121,6 +122,11 @@ ProductGroupPromotion::__cleanup()
 	//
 	//delete is_generate_background;
 	//is_generate_background = NULL;
+	//}
+	//if(is_image_auto_resizing != NULL) {
+	//
+	//delete is_image_auto_resizing;
+	//is_image_auto_resizing = NULL;
 	//}
 	//if(is_mdl != NULL) {
 	//
@@ -229,9 +235,12 @@ ProductGroupPromotion::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&collections_header_type, node, "std::string", "");
+		if (isprimitive("CollectionsHeaderType")) {
+			jsonToValue(&collections_header_type, node, "CollectionsHeaderType", "CollectionsHeaderType");
 		} else {
+			
+			CollectionsHeaderType* obj = static_cast<CollectionsHeaderType*> (&collections_header_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -276,9 +285,12 @@ ProductGroupPromotion::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&customizable_cta_type, node, "std::string", "");
+		if (isprimitive("ProductGroupPromotionCustomizableCTAType")) {
+			jsonToValue(&customizable_cta_type, node, "ProductGroupPromotionCustomizableCTAType", "ProductGroupPromotionCustomizableCTAType");
 		} else {
+			
+			ProductGroupPromotionCustomizableCTAType* obj = static_cast<ProductGroupPromotionCustomizableCTAType*> (&customizable_cta_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -340,6 +352,17 @@ ProductGroupPromotion::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *is_image_auto_resizingKey = "is_image_auto_resizing";
+	node = json_object_get_member(pJsonObject, is_image_auto_resizingKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_image_auto_resizing, node, "bool", "");
+		} else {
+			
+		}
+	}
 	const gchar *is_mdlKey = "is_mdl";
 	node = json_object_get_member(pJsonObject, is_mdlKey);
 	if (node !=NULL) {
@@ -367,9 +390,12 @@ ProductGroupPromotion::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&preferred_media_type, node, "std::string", "");
+		if (isprimitive("PreferredMediaType")) {
+			jsonToValue(&preferred_media_type, node, "PreferredMediaType", "PreferredMediaType");
 		} else {
+			
+			PreferredMediaType* obj = static_cast<PreferredMediaType*> (&preferred_media_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -501,11 +527,16 @@ ProductGroupPromotion::toJson()
 	}
 	const gchar *catalog_product_group_nameKey = "catalog_product_group_name";
 	json_object_set_member(pJsonObject, catalog_product_group_nameKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCollectionsHeaderType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("CollectionsHeaderType")) {
+		CollectionsHeaderType obj = getCollectionsHeaderType();
+		node = converttoJson(&obj, "CollectionsHeaderType", "");
 	}
 	else {
+		
+		CollectionsHeaderType obj = static_cast<CollectionsHeaderType> (getCollectionsHeaderType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *collections_header_typeKey = "collections_header_type";
@@ -542,11 +573,16 @@ ProductGroupPromotion::toJson()
 	}
 	const gchar *creative_typeKey = "creative_type";
 	json_object_set_member(pJsonObject, creative_typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCustomizableCtaType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("ProductGroupPromotionCustomizableCTAType")) {
+		ProductGroupPromotionCustomizableCTAType obj = getCustomizableCtaType();
+		node = converttoJson(&obj, "ProductGroupPromotionCustomizableCTAType", "");
 	}
 	else {
+		
+		ProductGroupPromotionCustomizableCTAType obj = static_cast<ProductGroupPromotionCustomizableCTAType> (getCustomizableCtaType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *customizable_cta_typeKey = "customizable_cta_type";
@@ -602,6 +638,15 @@ ProductGroupPromotion::toJson()
 	const gchar *is_generate_backgroundKey = "is_generate_background";
 	json_object_set_member(pJsonObject, is_generate_backgroundKey, node);
 	if (isprimitive("bool")) {
+		bool obj = getIsImageAutoResizing();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_image_auto_resizingKey = "is_image_auto_resizing";
+	json_object_set_member(pJsonObject, is_image_auto_resizingKey, node);
+	if (isprimitive("bool")) {
 		bool obj = getIsMdl();
 		node = converttoJson(&obj, "bool", "");
 	}
@@ -619,11 +664,16 @@ ProductGroupPromotion::toJson()
 	}
 	const gchar *parent_idKey = "parent_id";
 	json_object_set_member(pJsonObject, parent_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getPreferredMediaType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("PreferredMediaType")) {
+		PreferredMediaType obj = getPreferredMediaType();
+		node = converttoJson(&obj, "PreferredMediaType", "");
 	}
 	else {
+		
+		PreferredMediaType obj = static_cast<PreferredMediaType> (getPreferredMediaType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *preferred_media_typeKey = "preferred_media_type";
@@ -752,14 +802,14 @@ ProductGroupPromotion::setCatalogProductGroupName(std::string  catalog_product_g
 	this->catalog_product_group_name = catalog_product_group_name;
 }
 
-std::string
+CollectionsHeaderType
 ProductGroupPromotion::getCollectionsHeaderType()
 {
 	return collections_header_type;
 }
 
 void
-ProductGroupPromotion::setCollectionsHeaderType(std::string  collections_header_type)
+ProductGroupPromotion::setCollectionsHeaderType(CollectionsHeaderType  collections_header_type)
 {
 	this->collections_header_type = collections_header_type;
 }
@@ -800,14 +850,14 @@ ProductGroupPromotion::setCreativeType(CreativeType  creative_type)
 	this->creative_type = creative_type;
 }
 
-std::string
+ProductGroupPromotionCustomizableCTAType
 ProductGroupPromotion::getCustomizableCtaType()
 {
 	return customizable_cta_type;
 }
 
 void
-ProductGroupPromotion::setCustomizableCtaType(std::string  customizable_cta_type)
+ProductGroupPromotion::setCustomizableCtaType(ProductGroupPromotionCustomizableCTAType  customizable_cta_type)
 {
 	this->customizable_cta_type = customizable_cta_type;
 }
@@ -873,6 +923,18 @@ ProductGroupPromotion::setIsGenerateBackground(bool  is_generate_background)
 }
 
 bool
+ProductGroupPromotion::getIsImageAutoResizing()
+{
+	return is_image_auto_resizing;
+}
+
+void
+ProductGroupPromotion::setIsImageAutoResizing(bool  is_image_auto_resizing)
+{
+	this->is_image_auto_resizing = is_image_auto_resizing;
+}
+
+bool
 ProductGroupPromotion::getIsMdl()
 {
 	return is_mdl;
@@ -896,14 +958,14 @@ ProductGroupPromotion::setParentId(std::string  parent_id)
 	this->parent_id = parent_id;
 }
 
-std::string
+PreferredMediaType
 ProductGroupPromotion::getPreferredMediaType()
 {
 	return preferred_media_type;
 }
 
 void
-ProductGroupPromotion::setPreferredMediaType(std::string  preferred_media_type)
+ProductGroupPromotion::setPreferredMediaType(PreferredMediaType  preferred_media_type)
 {
 	this->preferred_media_type = preferred_media_type;
 }

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -14,12 +14,10 @@ package openapi
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
-// checks if the CatalogsCreativeAssetsBatchItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CatalogsCreativeAssetsBatchItem{}
-
-// CatalogsCreativeAssetsBatchItem Creative assets batch item
+// CatalogsCreativeAssetsBatchItem - Creative assets batch item
 type CatalogsCreativeAssetsBatchItem struct {
 	CatalogsCreateCreativeAssetsItem *CatalogsCreateCreativeAssetsItem
 	CatalogsDeleteCreativeAssetsItem *CatalogsDeleteCreativeAssetsItem
@@ -27,133 +25,139 @@ type CatalogsCreativeAssetsBatchItem struct {
 	CatalogsUpsertCreativeAssetsItem *CatalogsUpsertCreativeAssetsItem
 }
 
-// Unmarshal JSON data into any of the pointers in the struct
+// CatalogsCreateCreativeAssetsItemAsCatalogsCreativeAssetsBatchItem is a convenience function that returns CatalogsCreateCreativeAssetsItem wrapped in CatalogsCreativeAssetsBatchItem
+func CatalogsCreateCreativeAssetsItemAsCatalogsCreativeAssetsBatchItem(v *CatalogsCreateCreativeAssetsItem) CatalogsCreativeAssetsBatchItem {
+	return CatalogsCreativeAssetsBatchItem{
+		CatalogsCreateCreativeAssetsItem: v,
+	}
+}
+
+// CatalogsDeleteCreativeAssetsItemAsCatalogsCreativeAssetsBatchItem is a convenience function that returns CatalogsDeleteCreativeAssetsItem wrapped in CatalogsCreativeAssetsBatchItem
+func CatalogsDeleteCreativeAssetsItemAsCatalogsCreativeAssetsBatchItem(v *CatalogsDeleteCreativeAssetsItem) CatalogsCreativeAssetsBatchItem {
+	return CatalogsCreativeAssetsBatchItem{
+		CatalogsDeleteCreativeAssetsItem: v,
+	}
+}
+
+// CatalogsUpdateCreativeAssetsItemAsCatalogsCreativeAssetsBatchItem is a convenience function that returns CatalogsUpdateCreativeAssetsItem wrapped in CatalogsCreativeAssetsBatchItem
+func CatalogsUpdateCreativeAssetsItemAsCatalogsCreativeAssetsBatchItem(v *CatalogsUpdateCreativeAssetsItem) CatalogsCreativeAssetsBatchItem {
+	return CatalogsCreativeAssetsBatchItem{
+		CatalogsUpdateCreativeAssetsItem: v,
+	}
+}
+
+// CatalogsUpsertCreativeAssetsItemAsCatalogsCreativeAssetsBatchItem is a convenience function that returns CatalogsUpsertCreativeAssetsItem wrapped in CatalogsCreativeAssetsBatchItem
+func CatalogsUpsertCreativeAssetsItemAsCatalogsCreativeAssetsBatchItem(v *CatalogsUpsertCreativeAssetsItem) CatalogsCreativeAssetsBatchItem {
+	return CatalogsCreativeAssetsBatchItem{
+		CatalogsUpsertCreativeAssetsItem: v,
+	}
+}
+
+
+// Unmarshal JSON data into one of the pointers in the struct
 func (dst *CatalogsCreativeAssetsBatchItem) UnmarshalJSON(data []byte) error {
 	var err error
-	// use discriminator value to speed up the lookup
-	var jsonDict map[string]interface{}
-	err = json.Unmarshal(data, &jsonDict)
-	if err != nil {
-		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
-	}
-
-	// check if the discriminator value is 'CREATE'
-	if jsonDict["operation"] == "CREATE" {
-		// try to unmarshal JSON data into CatalogsCreateCreativeAssetsItem
-		err = json.Unmarshal(data, &dst.CatalogsCreateCreativeAssetsItem);
-		if err == nil {
-			jsonCatalogsCreateCreativeAssetsItem, _ := json.Marshal(dst.CatalogsCreateCreativeAssetsItem)
-			if string(jsonCatalogsCreateCreativeAssetsItem) == "{}" { // empty struct
-				dst.CatalogsCreateCreativeAssetsItem = nil
-			} else {
-				return nil // data stored in dst.CatalogsCreateCreativeAssetsItem, return on the first match
-			}
-		} else {
-			dst.CatalogsCreateCreativeAssetsItem = nil
-		}
-	}
-
-	// check if the discriminator value is 'DELETE'
-	if jsonDict["operation"] == "DELETE" {
-		// try to unmarshal JSON data into CatalogsDeleteCreativeAssetsItem
-		err = json.Unmarshal(data, &dst.CatalogsDeleteCreativeAssetsItem);
-		if err == nil {
-			jsonCatalogsDeleteCreativeAssetsItem, _ := json.Marshal(dst.CatalogsDeleteCreativeAssetsItem)
-			if string(jsonCatalogsDeleteCreativeAssetsItem) == "{}" { // empty struct
-				dst.CatalogsDeleteCreativeAssetsItem = nil
-			} else {
-				return nil // data stored in dst.CatalogsDeleteCreativeAssetsItem, return on the first match
-			}
-		} else {
-			dst.CatalogsDeleteCreativeAssetsItem = nil
-		}
-	}
-
-	// check if the discriminator value is 'UPDATE'
-	if jsonDict["operation"] == "UPDATE" {
-		// try to unmarshal JSON data into CatalogsUpdateCreativeAssetsItem
-		err = json.Unmarshal(data, &dst.CatalogsUpdateCreativeAssetsItem);
-		if err == nil {
-			jsonCatalogsUpdateCreativeAssetsItem, _ := json.Marshal(dst.CatalogsUpdateCreativeAssetsItem)
-			if string(jsonCatalogsUpdateCreativeAssetsItem) == "{}" { // empty struct
-				dst.CatalogsUpdateCreativeAssetsItem = nil
-			} else {
-				return nil // data stored in dst.CatalogsUpdateCreativeAssetsItem, return on the first match
-			}
-		} else {
-			dst.CatalogsUpdateCreativeAssetsItem = nil
-		}
-	}
-
-	// check if the discriminator value is 'UPSERT'
-	if jsonDict["operation"] == "UPSERT" {
-		// try to unmarshal JSON data into CatalogsUpsertCreativeAssetsItem
-		err = json.Unmarshal(data, &dst.CatalogsUpsertCreativeAssetsItem);
-		if err == nil {
-			jsonCatalogsUpsertCreativeAssetsItem, _ := json.Marshal(dst.CatalogsUpsertCreativeAssetsItem)
-			if string(jsonCatalogsUpsertCreativeAssetsItem) == "{}" { // empty struct
-				dst.CatalogsUpsertCreativeAssetsItem = nil
-			} else {
-				return nil // data stored in dst.CatalogsUpsertCreativeAssetsItem, return on the first match
-			}
-		} else {
-			dst.CatalogsUpsertCreativeAssetsItem = nil
-		}
-	}
-
-	// try to unmarshal JSON data into CatalogsCreateCreativeAssetsItem
-	err = json.Unmarshal(data, &dst.CatalogsCreateCreativeAssetsItem);
+	match := 0
+	// try to unmarshal data into CatalogsCreateCreativeAssetsItem
+	err = newStrictDecoder(data).Decode(&dst.CatalogsCreateCreativeAssetsItem)
 	if err == nil {
 		jsonCatalogsCreateCreativeAssetsItem, _ := json.Marshal(dst.CatalogsCreateCreativeAssetsItem)
 		if string(jsonCatalogsCreateCreativeAssetsItem) == "{}" { // empty struct
 			dst.CatalogsCreateCreativeAssetsItem = nil
 		} else {
-			return nil // data stored in dst.CatalogsCreateCreativeAssetsItem, return on the first match
+			if err = validator.Validate(dst.CatalogsCreateCreativeAssetsItem); err != nil {
+				dst.CatalogsCreateCreativeAssetsItem = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsCreateCreativeAssetsItem = nil
 	}
 
-	// try to unmarshal JSON data into CatalogsDeleteCreativeAssetsItem
-	err = json.Unmarshal(data, &dst.CatalogsDeleteCreativeAssetsItem);
+	// try to unmarshal data into CatalogsDeleteCreativeAssetsItem
+	err = newStrictDecoder(data).Decode(&dst.CatalogsDeleteCreativeAssetsItem)
 	if err == nil {
 		jsonCatalogsDeleteCreativeAssetsItem, _ := json.Marshal(dst.CatalogsDeleteCreativeAssetsItem)
 		if string(jsonCatalogsDeleteCreativeAssetsItem) == "{}" { // empty struct
 			dst.CatalogsDeleteCreativeAssetsItem = nil
 		} else {
-			return nil // data stored in dst.CatalogsDeleteCreativeAssetsItem, return on the first match
+			if err = validator.Validate(dst.CatalogsDeleteCreativeAssetsItem); err != nil {
+				dst.CatalogsDeleteCreativeAssetsItem = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsDeleteCreativeAssetsItem = nil
 	}
 
-	// try to unmarshal JSON data into CatalogsUpdateCreativeAssetsItem
-	err = json.Unmarshal(data, &dst.CatalogsUpdateCreativeAssetsItem);
+	// try to unmarshal data into CatalogsUpdateCreativeAssetsItem
+	err = newStrictDecoder(data).Decode(&dst.CatalogsUpdateCreativeAssetsItem)
 	if err == nil {
 		jsonCatalogsUpdateCreativeAssetsItem, _ := json.Marshal(dst.CatalogsUpdateCreativeAssetsItem)
 		if string(jsonCatalogsUpdateCreativeAssetsItem) == "{}" { // empty struct
 			dst.CatalogsUpdateCreativeAssetsItem = nil
 		} else {
-			return nil // data stored in dst.CatalogsUpdateCreativeAssetsItem, return on the first match
+			if err = validator.Validate(dst.CatalogsUpdateCreativeAssetsItem); err != nil {
+				dst.CatalogsUpdateCreativeAssetsItem = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsUpdateCreativeAssetsItem = nil
 	}
 
-	// try to unmarshal JSON data into CatalogsUpsertCreativeAssetsItem
-	err = json.Unmarshal(data, &dst.CatalogsUpsertCreativeAssetsItem);
+	// try to unmarshal data into CatalogsUpsertCreativeAssetsItem
+	err = newStrictDecoder(data).Decode(&dst.CatalogsUpsertCreativeAssetsItem)
 	if err == nil {
 		jsonCatalogsUpsertCreativeAssetsItem, _ := json.Marshal(dst.CatalogsUpsertCreativeAssetsItem)
 		if string(jsonCatalogsUpsertCreativeAssetsItem) == "{}" { // empty struct
 			dst.CatalogsUpsertCreativeAssetsItem = nil
 		} else {
-			return nil // data stored in dst.CatalogsUpsertCreativeAssetsItem, return on the first match
+			if err = validator.Validate(dst.CatalogsUpsertCreativeAssetsItem); err != nil {
+				dst.CatalogsUpsertCreativeAssetsItem = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsUpsertCreativeAssetsItem = nil
 	}
 
-	return fmt.Errorf("data failed to match schemas in anyOf(CatalogsCreativeAssetsBatchItem)")
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.CatalogsCreateCreativeAssetsItem = nil
+		dst.CatalogsDeleteCreativeAssetsItem = nil
+		dst.CatalogsUpdateCreativeAssetsItem = nil
+		dst.CatalogsUpsertCreativeAssetsItem = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(CatalogsCreativeAssetsBatchItem)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsCreativeAssetsBatchItem): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsCreativeAssetsBatchItem)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsCreativeAssetsBatchItem): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsCreativeAssetsBatchItem)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsCreativeAssetsBatchItem): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsCreativeAssetsBatchItem)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsCreativeAssetsBatchItem): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsCreativeAssetsBatchItem)")
+        }
+	}
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
@@ -174,27 +178,54 @@ func (src CatalogsCreativeAssetsBatchItem) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.CatalogsUpsertCreativeAssetsItem)
 	}
 
-	return nil, nil // no data in anyOf schemas
+	return nil, nil // no data in oneOf schemas
 }
 
-func (src CatalogsCreativeAssetsBatchItem) ToMap() (map[string]interface{}, error) {
-	if src.CatalogsCreateCreativeAssetsItem != nil {
-		return src.CatalogsCreateCreativeAssetsItem.ToMap()
+// Get the actual instance
+func (obj *CatalogsCreativeAssetsBatchItem) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.CatalogsCreateCreativeAssetsItem != nil {
+		return obj.CatalogsCreateCreativeAssetsItem
 	}
 
-	if src.CatalogsDeleteCreativeAssetsItem != nil {
-		return src.CatalogsDeleteCreativeAssetsItem.ToMap()
+	if obj.CatalogsDeleteCreativeAssetsItem != nil {
+		return obj.CatalogsDeleteCreativeAssetsItem
 	}
 
-	if src.CatalogsUpdateCreativeAssetsItem != nil {
-		return src.CatalogsUpdateCreativeAssetsItem.ToMap()
+	if obj.CatalogsUpdateCreativeAssetsItem != nil {
+		return obj.CatalogsUpdateCreativeAssetsItem
 	}
 
-	if src.CatalogsUpsertCreativeAssetsItem != nil {
-		return src.CatalogsUpsertCreativeAssetsItem.ToMap()
+	if obj.CatalogsUpsertCreativeAssetsItem != nil {
+		return obj.CatalogsUpsertCreativeAssetsItem
 	}
 
-    return nil, nil // no data in anyOf schemas
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CatalogsCreativeAssetsBatchItem) GetActualInstanceValue() (interface{}) {
+	if obj.CatalogsCreateCreativeAssetsItem != nil {
+		return *obj.CatalogsCreateCreativeAssetsItem
+	}
+
+	if obj.CatalogsDeleteCreativeAssetsItem != nil {
+		return *obj.CatalogsDeleteCreativeAssetsItem
+	}
+
+	if obj.CatalogsUpdateCreativeAssetsItem != nil {
+		return *obj.CatalogsUpdateCreativeAssetsItem
+	}
+
+	if obj.CatalogsUpsertCreativeAssetsItem != nil {
+		return *obj.CatalogsUpsertCreativeAssetsItem
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableCatalogsCreativeAssetsBatchItem struct {

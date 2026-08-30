@@ -14,11 +14,11 @@ Method | HTTP request | Description
 
 ## leadFormGet
 
-> LeadFormResponse leadFormGet(adAccountId, leadFormId)
+> LeadForm leadFormGet(leadFormId, adAccountId)
 
 Get lead form by id
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -30,9 +30,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.LeadFormsApi();
+let leadFormId = "leadFormId_example"; // String | The ID of this lead form
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let leadFormId = "1234567890123"; // String | Unique identifier of a lead form.
-apiInstance.leadFormGet(adAccountId, leadFormId, (error, data, response) => {
+apiInstance.leadFormGet(leadFormId, adAccountId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -46,12 +46,12 @@ apiInstance.leadFormGet(adAccountId, leadFormId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **leadFormId** | **String**| The ID of this lead form | 
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **leadFormId** | **String**| Unique identifier of a lead form. | 
 
 ### Return type
 
-[**LeadFormResponse**](LeadFormResponse.md)
+[**LeadForm**](LeadForm.md)
 
 ### Authorization
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ## leadFormTestCreate
 
-> LeadFormTestResponse leadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest)
+> LeadFormTest leadFormTestCreate(adAccountId, leadFormId, leadFormTestCreate)
 
 Create lead form test data
 
@@ -81,10 +81,10 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.LeadFormsApi();
-let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let leadFormId = "1234567890123"; // String | Unique identifier of a lead form.
-let leadFormTestRequest = new PinterestSdk.LeadFormTestRequest(); // LeadFormTestRequest | Subscription to create.
-apiInstance.leadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest, (error, data, response) => {
+let adAccountId = "adAccountId_example"; // String | 
+let leadFormId = "leadFormId_example"; // String | Unique identifier of a lead form.
+let leadFormTestCreate = new PinterestSdk.LeadFormTestCreate(); // LeadFormTestCreate | 
+apiInstance.leadFormTestCreate(adAccountId, leadFormId, leadFormTestCreate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -98,13 +98,13 @@ apiInstance.leadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest, (er
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. | 
+ **adAccountId** | **String**|  | 
  **leadFormId** | **String**| Unique identifier of a lead form. | 
- **leadFormTestRequest** | [**LeadFormTestRequest**](LeadFormTestRequest.md)| Subscription to create. | 
+ **leadFormTestCreate** | [**LeadFormTestCreate**](LeadFormTestCreate.md)|  | 
 
 ### Return type
 
-[**LeadFormTestResponse**](LeadFormTestResponse.md)
+[**LeadFormTest**](LeadFormTest.md)
 
 ### Authorization
 
@@ -118,11 +118,11 @@ Name | Type | Description  | Notes
 
 ## leadFormsCreate
 
-> LeadFormArrayResponse leadFormsCreate(adAccountId, leadFormCreateRequest)
+> LeadFormsCreate200Response leadFormsCreate(adAccountId, leadFormCreate)
 
 Create lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form&#39;s description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -135,8 +135,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.LeadFormsApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let leadFormCreateRequest = [new PinterestSdk.LeadFormCreateRequest()]; // [LeadFormCreateRequest] | List of lead forms to create, size limit [1, 30].
-apiInstance.leadFormsCreate(adAccountId, leadFormCreateRequest, (error, data, response) => {
+let leadFormCreate = [new PinterestSdk.LeadFormCreate()]; // [LeadFormCreate] | 
+apiInstance.leadFormsCreate(adAccountId, leadFormCreate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -151,11 +151,11 @@ apiInstance.leadFormsCreate(adAccountId, leadFormCreateRequest, (error, data, re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **leadFormCreateRequest** | [**[LeadFormCreateRequest]**](LeadFormCreateRequest.md)| List of lead forms to create, size limit [1, 30]. | 
+ **leadFormCreate** | [**[LeadFormCreate]**](LeadFormCreate.md)|  | 
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 List lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  List lead forms associated with an ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -187,9 +187,9 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.LeadFormsApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let opts = {
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  'order': "ASCENDING", // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  'bookmark': "bookmark_example" // String | Cursor used to fetch the next page of items
+  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
+  'pageSize': 25, // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  'order': new PinterestSdk.PinterestLibPaginationOrder() // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 };
 apiInstance.leadFormsList(adAccountId, opts, (error, data, response) => {
   if (error) {
@@ -206,9 +206,9 @@ apiInstance.leadFormsList(adAccountId, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 
@@ -226,11 +226,11 @@ Name | Type | Description  | Notes
 
 ## leadFormsUpdate
 
-> LeadFormArrayResponse leadFormsUpdate(adAccountId, leadFormUpdateRequest)
+> LeadFormsCreate200Response leadFormsUpdate(adAccountId, leadFormBatchUpdate)
 
 Update lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -243,8 +243,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.LeadFormsApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let leadFormUpdateRequest = [new PinterestSdk.LeadFormUpdateRequest()]; // [LeadFormUpdateRequest] | List of lead forms to update, size limit [1, 30].
-apiInstance.leadFormsUpdate(adAccountId, leadFormUpdateRequest, (error, data, response) => {
+let leadFormBatchUpdate = [new PinterestSdk.LeadFormBatchUpdate()]; // [LeadFormBatchUpdate] | 
+apiInstance.leadFormsUpdate(adAccountId, leadFormBatchUpdate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -259,11 +259,11 @@ apiInstance.leadFormsUpdate(adAccountId, leadFormUpdateRequest, (error, data, re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **leadFormUpdateRequest** | [**[LeadFormUpdateRequest]**](LeadFormUpdateRequest.md)| List of lead forms to update, size limit [1, 30]. | 
+ **leadFormBatchUpdate** | [**[LeadFormBatchUpdate]**](LeadFormBatchUpdate.md)|  | 
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 

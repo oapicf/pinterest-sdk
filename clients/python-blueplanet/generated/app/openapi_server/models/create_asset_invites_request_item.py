@@ -59,7 +59,7 @@ class CreateAssetInvitesRequestItem(Model):
     def asset_id_to_permissions(self) -> Dict[str, List[Permissions]]:
         """Gets the asset_id_to_permissions of this CreateAssetInvitesRequestItem.
 
-        An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.   # noqa: E501
+        An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  # noqa: E501
 
         :return: The asset_id_to_permissions of this CreateAssetInvitesRequestItem.
         :rtype: Dict[str, List[Permissions]]
@@ -70,15 +70,13 @@ class CreateAssetInvitesRequestItem(Model):
     def asset_id_to_permissions(self, asset_id_to_permissions: Dict[str, List[Permissions]]):
         """Sets the asset_id_to_permissions of this CreateAssetInvitesRequestItem.
 
-        An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.   # noqa: E501
+        An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  # noqa: E501
 
         :param asset_id_to_permissions: The asset_id_to_permissions of this CreateAssetInvitesRequestItem.
         :type asset_id_to_permissions: Dict[str, List[Permissions]]
         """
         if asset_id_to_permissions is None:
             raise ValueError("Invalid value for `asset_id_to_permissions`, must not be `None`")  # noqa: E501
-        if asset_id_to_permissions is not None and len(asset_id_to_permissions) < 1:
-            raise ValueError("Invalid value for `asset_id_to_permissions`, number of items must be greater than or equal to `1`")  # noqa: E501
 
         self._asset_id_to_permissions = asset_id_to_permissions
 

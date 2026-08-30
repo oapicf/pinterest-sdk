@@ -8,13 +8,12 @@
  * Do not edit the class manually.
  */
 import { ActionType } from './actionType';
-import { OptimizationGoalMetadata } from './optimizationGoalMetadata';
 import { EntityStatus } from './entityStatus';
-import { TrackingUrls } from './trackingUrls';
 import { TargetingSpec } from './targetingSpec';
 import { PlacementGroupType } from './placementGroupType';
 import { BudgetType } from './budgetType';
 import { PacingDeliveryType } from './pacingDeliveryType';
+import { BidStrategyType } from './bidStrategyType';
 
 
 export interface AdGroupCreateRequest { 
@@ -23,19 +22,21 @@ export interface AdGroupCreateRequest {
      */
     auto_targeting_enabled?: boolean;
     /**
+     * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+     */
+    bid_multiplier?: number;
+    budget_type?: BudgetType;
+    pacing_delivery_type?: PacingDeliveryType;
+    /**
      * Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
      */
     bid_in_micro_currency?: number | null;
-    /**
-     * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
-     */
-    bid_strategy_type?: AdGroupCreateRequest.BidStrategyTypeEnum | null;
+    bid_strategy_type?: BidStrategyType | null;
     billable_event: ActionType;
     /**
      * Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
      */
     budget_in_micro_currency?: number | null;
-    budget_type?: BudgetType;
     /**
      * Campaign ID of the ad group.
      */
@@ -59,8 +60,7 @@ export interface AdGroupCreateRequest {
     /**
      * Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign\'s `objective_type` is set to `\"WEB_CONVERSION\"`.
      */
-    optimization_goal_metadata?: OptimizationGoalMetadata | null;
-    pacing_delivery_type?: PacingDeliveryType;
+    optimization_goal_metadata?: object | null;
     /**
      * <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
      */
@@ -73,6 +73,10 @@ export interface AdGroupCreateRequest {
      * Promotion ID. To clear this field, set to null.
      */
     promotion_id?: string | null;
+    /**
+     * Promotion IDs list. To clear this field, set to an empty array [].
+     */
+    promotion_ids?: Array<string>;
     /**
      * Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign\'s `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
      */
@@ -87,21 +91,11 @@ export interface AdGroupCreateRequest {
      */
     targeting_template_ids?: Array<string> | null;
     /**
-     * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+     * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
      */
-    tracking_urls?: TrackingUrls | null;
-    /**
-     * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
-     */
-    bid_multiplier?: number;
+    tracking_urls?: object | null;
 }
 export namespace AdGroupCreateRequest {
-    export const BidStrategyTypeEnum = {
-        AutomaticBid: 'AUTOMATIC_BID',
-        MaxBid: 'MAX_BID',
-        TargetAvg: 'TARGET_AVG'
-    } as const;
-    export type BidStrategyTypeEnum = typeof BidStrategyTypeEnum[keyof typeof BidStrategyTypeEnum];
     export const PromotionApplicationLevelEnum = {
         None: 'NONE',
         Item: 'ITEM',

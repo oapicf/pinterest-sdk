@@ -12,18 +12,21 @@ static label_update_request_t *label_update_request_create_internal(
     if (!label_update_request_local_var) {
         return NULL;
     }
-    label_update_request_local_var->labels = labels;
-
+    memset(label_update_request_local_var, 0, sizeof(label_update_request_t));
     label_update_request_local_var->_library_owned = 1;
+    label_update_request_local_var->labels = labels;
     return label_update_request_local_var;
 }
 
 __attribute__((deprecated)) label_update_request_t *label_update_request_create(
     list_t *labels
     ) {
-    return label_update_request_create_internal (
+    label_update_request_t *result = label_update_request_create_internal (
         labels
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void label_update_request_free(label_update_request_t *label_update_request) {
@@ -37,7 +40,7 @@ void label_update_request_free(label_update_request_t *label_update_request) {
     listEntry_t *listEntry;
     if (label_update_request->labels) {
         list_ForEach(listEntry, label_update_request->labels) {
-            label_update_request_labels_inner_free(listEntry->data);
+            label_update_item_free(listEntry->data);
         }
         list_freeList(label_update_request->labels);
         label_update_request->labels = NULL;
@@ -60,7 +63,7 @@ cJSON *label_update_request_convertToJSON(label_update_request_t *label_update_r
     listEntry_t *labelsListEntry;
     if (label_update_request->labels) {
     list_ForEach(labelsListEntry, label_update_request->labels) {
-    cJSON *itemLocal = label_update_request_labels_inner_convertToJSON(labelsListEntry->data);
+    cJSON *itemLocal = label_update_item_convertToJSON(labelsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -105,22 +108,27 @@ label_update_request_t *label_update_request_parseFromJSON(cJSON *label_update_r
         if(!cJSON_IsObject(labels_local_nonprimitive)){
             goto end;
         }
-        label_update_request_labels_inner_t *labelsItem = label_update_request_labels_inner_parseFromJSON(labels_local_nonprimitive);
+        label_update_item_t *labelsItem = label_update_item_parseFromJSON(labels_local_nonprimitive);
 
         list_addElement(labelsList, labelsItem);
     }
+
 
 
     label_update_request_local_var = label_update_request_create_internal (
         labelsList
         );
 
+    if (!label_update_request_local_var) {
+        goto end;
+    }
+
     return label_update_request_local_var;
 end:
     if (labelsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, labelsList) {
-            label_update_request_labels_inner_free(listEntry->data);
+            label_update_item_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(labelsList);

@@ -19,46 +19,53 @@ typedef struct catalogs_creative_assets_feed_t catalogs_creative_assets_feed_t;
 #include "catalogs_feed_processing_schedule.h"
 #include "catalogs_format.h"
 #include "catalogs_status.h"
-#include "catalogs_type.h"
 #include "country.h"
 #include "nullable_currency.h"
+
+// Enum CATALOGTYPE for catalogs_creative_assets_feed
+
+typedef enum  { pinterest_rest_api_catalogs_creative_assets_feed_CATALOGTYPE_NULL = 0, pinterest_rest_api_catalogs_creative_assets_feed_CATALOGTYPE_CREATIVE_ASSETS } pinterest_rest_api_catalogs_creative_assets_feed_CATALOGTYPE_e;
+
+char* catalogs_creative_assets_feed_catalog_type_ToString(pinterest_rest_api_catalogs_creative_assets_feed_CATALOGTYPE_e catalog_type);
+
+pinterest_rest_api_catalogs_creative_assets_feed_CATALOGTYPE_e catalogs_creative_assets_feed_catalog_type_FromString(char* catalog_type);
 
 
 
 typedef struct catalogs_creative_assets_feed_t {
-    char *created_at; //date time
-    char *id; // string
-    char *updated_at; //date time
     char *catalog_id; // string
-    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
+    pinterest_rest_api_catalogs_creative_assets_feed_CATALOGTYPE_e catalog_type; //enum
+    char *created_at; //date time
     struct catalogs_feed_credentials_t *credentials; //model
     pinterest_rest_api_country__e default_country; //referenced enum
     pinterest_rest_api_nullable_currency__e default_currency; //referenced enum
     char *default_locale; // string
     pinterest_rest_api_catalogs_format__e format; //referenced enum
+    char *id; // string
     char *location; // string
     char *name; // string
     struct catalogs_feed_processing_schedule_t *preferred_processing_schedule; //model
     pinterest_rest_api_catalogs_status__e status; //referenced enum
+    char *updated_at; //date time
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_feed_t;
 
 __attribute__((deprecated)) catalogs_creative_assets_feed_t *catalogs_creative_assets_feed_create(
-    char *created_at,
-    char *id,
-    char *updated_at,
     char *catalog_id,
-    pinterest_rest_api_catalogs_type__e catalog_type,
+    pinterest_rest_api_catalogs_creative_assets_feed_CATALOGTYPE_e catalog_type,
+    char *created_at,
     catalogs_feed_credentials_t *credentials,
     pinterest_rest_api_country__e default_country,
     pinterest_rest_api_nullable_currency__e default_currency,
     char *default_locale,
     pinterest_rest_api_catalogs_format__e format,
+    char *id,
     char *location,
     char *name,
     catalogs_feed_processing_schedule_t *preferred_processing_schedule,
-    pinterest_rest_api_catalogs_status__e status
+    pinterest_rest_api_catalogs_status__e status,
+    char *updated_at
 );
 
 void catalogs_creative_assets_feed_free(catalogs_creative_assets_feed_t *catalogs_creative_assets_feed);

@@ -41,7 +41,7 @@ class InviteExceptionResponse {
   String? message;
 
   /// A list of users' usernames or emails OR a list of partner ids that caused the error.
-  List<String>? usersOrPartnerIds;
+  List<String> usersOrPartnerIds;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is InviteExceptionResponse &&
@@ -56,7 +56,7 @@ class InviteExceptionResponse {
     (code == null ? 0 : code!.hashCode) +
     (inviteOrRequestId == null ? 0 : inviteOrRequestId!.hashCode) +
     (message == null ? 0 : message!.hashCode) +
-    (usersOrPartnerIds == null ? 0 : usersOrPartnerIds!.hashCode);
+    (usersOrPartnerIds.hashCode);
 
   @override
   String toString() => 'InviteExceptionResponse[code=$code, inviteOrRequestId=$inviteOrRequestId, message=$message, usersOrPartnerIds=$usersOrPartnerIds]';
@@ -78,11 +78,7 @@ class InviteExceptionResponse {
     } else {
       json[r'message'] = null;
     }
-    if (this.usersOrPartnerIds != null) {
       json[r'users_or_partner_ids'] = this.usersOrPartnerIds;
-    } else {
-      json[r'users_or_partner_ids'] = null;
-    }
     return json;
   }
 
@@ -97,10 +93,6 @@ class InviteExceptionResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "InviteExceptionResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "InviteExceptionResponse[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

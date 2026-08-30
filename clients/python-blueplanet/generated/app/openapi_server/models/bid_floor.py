@@ -74,7 +74,7 @@ class BidFloor(Model):
     def type(self) -> str:
         """Gets the type of this BidFloor.
 
-        Always the string 'bidfloor'  # noqa: E501
+        Always the string 'bidfloor'.  # noqa: E501
 
         :return: The type of this BidFloor.
         :rtype: str
@@ -85,7 +85,7 @@ class BidFloor(Model):
     def type(self, type: str):
         """Sets the type of this BidFloor.
 
-        Always the string 'bidfloor'  # noqa: E501
+        Always the string 'bidfloor'.  # noqa: E501
 
         :param type: The type of this BidFloor.
         :type type: str

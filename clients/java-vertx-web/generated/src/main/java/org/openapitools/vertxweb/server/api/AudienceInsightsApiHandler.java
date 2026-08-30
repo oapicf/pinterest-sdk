@@ -1,9 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.AudienceDefinitionResponse;
 import org.openapitools.vertxweb.server.model.AudienceInsightType;
-import org.openapitools.vertxweb.server.model.AudienceInsightsResponse;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.AudienceInsights;
+import org.openapitools.vertxweb.server.model.AudienceInsightsScopeAndTypeGet200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -46,7 +46,7 @@ public class AudienceInsightsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
-        AudienceInsightType audienceInsightType = requestParameters.queryParameter("audience_insight_type") != null ? requestParameters.queryParameter("audience_insight_type").getAudienceInsightType() : ;
+        AudienceInsightType audienceInsightType = requestParameters.queryParameter("audience_insight_type") != null ? requestParameters.queryParameter("audience_insight_type").getAudienceInsightType() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter audienceInsightType is {}", audienceInsightType);

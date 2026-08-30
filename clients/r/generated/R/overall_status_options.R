@@ -29,9 +29,6 @@ OverallStatusOptions <- R6::R6Class(
           stop("Use one of the valid values: ",
             paste0(enumvec, collapse = ", "))
         }
-        warning("Initializing OverallStatusOptions with DUMMY_ENUM. Use one of the valid values: ",
-          paste0(enumvec, collapse = ", "),
-          ". If you did not manually initialize OverallStatusOptions, this may already be overwritten by an enum loaded from a JSON config.")
       }
       private$value <- val
     },

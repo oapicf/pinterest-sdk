@@ -7,10 +7,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { CatalogsProductGroupPricingCurrencyCriteria } from './catalogsProductGroupPricingCurrencyCriteria';
+import { PriceFilterPrice } from './priceFilterPrice';
 
 
 export interface PriceFilter { 
-    PRICE: CatalogsProductGroupPricingCurrencyCriteria;
+    PRICE: PriceFilterPrice;
 }
 

@@ -3,13 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | **string** | Catalog id pertaining to the hotel product group. | 
+**catalogId** | **string** | Catalog ID pertaining to the product group. | 
 **catalogType** | **string** |  | 
 **createdAt** | **int** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **description** | **string** |  | [optional] 
 **filters** | [**OpenAPI\Server\Model\CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
-**id** | **string** | ID of the hotel product group. | 
-**name** | **string** | Name of hotel product group | [optional] 
+**id** | **string** | ID of the catalog product group. | 
+**name** | **string** | Name of catalog product group | [optional] 
 **type** | [**OpenAPI\Server\Model\CatalogsHotelProductGroupType**](CatalogsHotelProductGroupType.md) |  | 
 **updatedAt** | **int** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
 

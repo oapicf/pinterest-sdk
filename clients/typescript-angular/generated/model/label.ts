@@ -7,35 +7,23 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { LabelStatus } from './labelStatus';
-import { LabelType } from './labelType';
+import { NullableLabelStatus } from './nullableLabelStatus';
+import { NullableLabelType } from './nullableLabelType';
 
 
 export interface Label { 
     /**
      * Label ID.
      */
-    id?: string;
-    label_type?: LabelType | null;
+    id: string;
+    label_type: NullableLabelType | null;
+    status?: NullableLabelStatus | null;
     /**
-     * Label parent entity ID.
+     * Label name. 100-character limit.
      */
-    parent_id?: string;
-    /**
-     * Label parent entity type.
-     */
-    parent_type?: Label.ParentTypeEnum | null;
-    status?: LabelStatus | null;
-    /**
-     * Label name.
-     */
-    value?: string;
+    value: string;
 }
 export namespace Label {
-    export const ParentTypeEnum = {
-        Campaign: 'CAMPAIGN'
-    } as const;
-    export type ParentTypeEnum = typeof ParentTypeEnum[keyof typeof ParentTypeEnum];
 }
 
 

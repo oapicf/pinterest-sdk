@@ -4,9 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BidMultiplier** | Pointer to **float32** | &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank&gt;Open beta&lt;/a&gt; Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the &#x60;bid_strategy&#x60; type for your ad group is set to &#x60;AUTOMATIC_BID&#x60;. - Not currently supported for &lt;a href&#x3D;\&quot;/docs/api-features/pinterest-performance-plus-setup/\&quot; target&#x3D;\&quot;blank\&quot;&gt;Pinterest Performance+ campaigns&lt;/a&gt;. | [optional] 
+**Id** | **string** | Ad group ID. | 
+**TargetingSpecOperations** | Pointer to [**[]TargetingSpecOperations**](TargetingSpecOperations.md) | &lt;div&gt;Targeting spec operations define modifications to apply to the targeting spec.&lt;/div&gt; &lt;br /&gt; &lt;div&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The &lt;code&gt;targeting_spec&lt;/code&gt; and &lt;code&gt;targeting_spec_operations&lt;/code&gt; cannot be sent at the same time.&lt;/div&gt; &lt;br /&gt; &lt;div&gt;The supported operations are:&lt;/div&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;SET&lt;/code&gt;: sets the field with the given values. If value is set to &lt;code&gt;null&lt;/code&gt;, the field will be removed.&lt;/li&gt; &lt;li&gt;&lt;code&gt;ADD&lt;/code&gt;: adds the given values to the field.&lt;/li&gt; &lt;li&gt;&lt;code&gt;REMOVE&lt;/code&gt;: removes the given values from the field.&lt;/li&gt; &lt;/ul&gt; &lt;div&gt;Note the following:&lt;/div&gt; &lt;ul&gt; &lt;li&gt;Same items are not added and removed at the same time.&lt;/li&gt; &lt;li&gt;For a given field, only &lt;code&gt;ADD&lt;/code&gt;/&lt;code&gt;REMOVE&lt;/code&gt; or &lt;code&gt;SET&lt;/code&gt; operations are allowed, not a mix of them.&lt;/li&gt; &lt;li&gt;Only one SET operation is allowed for a given field.&lt;/li&gt; &lt;li&gt;The &lt;code&gt;AGE_BUCKET&lt;/code&gt;, &lt;code&gt;MAXIMUM_AGE&lt;/code&gt;, &lt;code&gt;MINIMUM_AGE&lt;/code&gt; and &lt;code&gt;SHOPPING_RETARGETING&lt;/code&gt; fields only support the &lt;code&gt;SET&lt;/code&gt; operation.&lt;/li&gt; &lt;/ul&gt; | [optional] 
 **AutoTargetingEnabled** | Pointer to **NullableBool** | Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;. | [optional] 
 **BidInMicroCurrency** | Pointer to **NullableInt32** | Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH. | [optional] 
-**BidStrategyType** | Pointer to **NullableString** | Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \&quot;Pinterest Performance+ bidding\&quot;. | [optional] 
+**BidStrategyType** | Pointer to [**NullableBidStrategyType**](BidStrategyType.md) |  | [optional] 
 **BillableEvent** | Pointer to [**ActionType**](ActionType.md) |  | [optional] 
 **BudgetInMicroCurrency** | Pointer to **NullableInt32** | Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups. | [optional] 
 **BudgetType** | Pointer to [**BudgetType**](BudgetType.md) |  | [optional] 
@@ -15,18 +18,17 @@ Name | Type | Description | Notes
 **IsCreativeOptimization** | Pointer to **NullableBool** | Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale. | [optional] 
 **LifetimeFrequencyCap** | Pointer to **int32** | Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field. | [optional] 
 **Name** | Pointer to **string** | Ad group name. | [optional] 
-**OptimizationGoalMetadata** | Pointer to [**NullableOptimizationGoalMetadata**](OptimizationGoalMetadata.md) | Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;. | [optional] 
+**OptimizationGoalMetadata** | Pointer to **map[string]interface{}** | Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;. | [optional] 
 **PacingDeliveryType** | Pointer to [**PacingDeliveryType**](PacingDeliveryType.md) |  | [optional] 
 **PlacementGroup** | Pointer to [**PlacementGroupType**](PlacementGroupType.md) | &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;. | [optional] 
 **PromotionApplicationLevel** | Pointer to **NullableString** | Specify if the promotion is applied at ad group or item level | [optional] 
 **PromotionId** | Pointer to **NullableString** | Promotion ID. To clear this field, set to null. | [optional] [default to "0"]
+**PromotionIds** | Pointer to **[]string** | Promotion IDs list. To clear this field, set to an empty array []. | [optional] 
 **StartTime** | Pointer to **NullableInt32** | Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign&#39;s &#x60;start_time&#x60;. Cannot precede &#x60;start_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO. | [optional] 
 **Status** | Pointer to [**EntityStatus**](EntityStatus.md) | Ad group/entity status. | [optional] 
 **TargetingSpec** | Pointer to [**TargetingSpec**](TargetingSpec.md) |  | [optional] 
 **TargetingTemplateIds** | Pointer to **[]string** | Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to [&#39;0&#39;]. | [optional] 
-**TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) | Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;. | [optional] 
-**BidMultiplier** | Pointer to **float32** | &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank&gt;Open beta&lt;/a&gt; Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the &#x60;bid_strategy&#x60; type for your ad group is set to &#x60;AUTOMATIC_BID&#x60;. - Not currently supported for &lt;a href&#x3D;\&quot;/docs/api-features/pinterest-performance-plus-setup/\&quot; target&#x3D;\&quot;blank\&quot;&gt;Pinterest Performance+ campaigns&lt;/a&gt;. | [optional] 
-**Id** | **string** | Ad group ID. | 
+**TrackingUrls** | Pointer to **map[string]interface{}** | Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;. | [optional] 
 
 ## Methods
 
@@ -46,6 +48,76 @@ will change when the set of required properties is changed
 NewAdGroupUpdateRequestWithDefaults instantiates a new AdGroupUpdateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBidMultiplier
+
+`func (o *AdGroupUpdateRequest) GetBidMultiplier() float32`
+
+GetBidMultiplier returns the BidMultiplier field if non-nil, zero value otherwise.
+
+### GetBidMultiplierOk
+
+`func (o *AdGroupUpdateRequest) GetBidMultiplierOk() (*float32, bool)`
+
+GetBidMultiplierOk returns a tuple with the BidMultiplier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBidMultiplier
+
+`func (o *AdGroupUpdateRequest) SetBidMultiplier(v float32)`
+
+SetBidMultiplier sets BidMultiplier field to given value.
+
+### HasBidMultiplier
+
+`func (o *AdGroupUpdateRequest) HasBidMultiplier() bool`
+
+HasBidMultiplier returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *AdGroupUpdateRequest) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *AdGroupUpdateRequest) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *AdGroupUpdateRequest) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetTargetingSpecOperations
+
+`func (o *AdGroupUpdateRequest) GetTargetingSpecOperations() []TargetingSpecOperations`
+
+GetTargetingSpecOperations returns the TargetingSpecOperations field if non-nil, zero value otherwise.
+
+### GetTargetingSpecOperationsOk
+
+`func (o *AdGroupUpdateRequest) GetTargetingSpecOperationsOk() (*[]TargetingSpecOperations, bool)`
+
+GetTargetingSpecOperationsOk returns a tuple with the TargetingSpecOperations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetingSpecOperations
+
+`func (o *AdGroupUpdateRequest) SetTargetingSpecOperations(v []TargetingSpecOperations)`
+
+SetTargetingSpecOperations sets TargetingSpecOperations field to given value.
+
+### HasTargetingSpecOperations
+
+`func (o *AdGroupUpdateRequest) HasTargetingSpecOperations() bool`
+
+HasTargetingSpecOperations returns a boolean if a field has been set.
 
 ### GetAutoTargetingEnabled
 
@@ -119,20 +191,20 @@ HasBidInMicroCurrency returns a boolean if a field has been set.
 UnsetBidInMicroCurrency ensures that no value is present for BidInMicroCurrency, not even an explicit nil
 ### GetBidStrategyType
 
-`func (o *AdGroupUpdateRequest) GetBidStrategyType() string`
+`func (o *AdGroupUpdateRequest) GetBidStrategyType() BidStrategyType`
 
 GetBidStrategyType returns the BidStrategyType field if non-nil, zero value otherwise.
 
 ### GetBidStrategyTypeOk
 
-`func (o *AdGroupUpdateRequest) GetBidStrategyTypeOk() (*string, bool)`
+`func (o *AdGroupUpdateRequest) GetBidStrategyTypeOk() (*BidStrategyType, bool)`
 
 GetBidStrategyTypeOk returns a tuple with the BidStrategyType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBidStrategyType
 
-`func (o *AdGroupUpdateRequest) SetBidStrategyType(v string)`
+`func (o *AdGroupUpdateRequest) SetBidStrategyType(v BidStrategyType)`
 
 SetBidStrategyType sets BidStrategyType field to given value.
 
@@ -384,20 +456,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetOptimizationGoalMetadata
 
-`func (o *AdGroupUpdateRequest) GetOptimizationGoalMetadata() OptimizationGoalMetadata`
+`func (o *AdGroupUpdateRequest) GetOptimizationGoalMetadata() map[string]interface{}`
 
 GetOptimizationGoalMetadata returns the OptimizationGoalMetadata field if non-nil, zero value otherwise.
 
 ### GetOptimizationGoalMetadataOk
 
-`func (o *AdGroupUpdateRequest) GetOptimizationGoalMetadataOk() (*OptimizationGoalMetadata, bool)`
+`func (o *AdGroupUpdateRequest) GetOptimizationGoalMetadataOk() (*map[string]interface{}, bool)`
 
 GetOptimizationGoalMetadataOk returns a tuple with the OptimizationGoalMetadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOptimizationGoalMetadata
 
-`func (o *AdGroupUpdateRequest) SetOptimizationGoalMetadata(v OptimizationGoalMetadata)`
+`func (o *AdGroupUpdateRequest) SetOptimizationGoalMetadata(v map[string]interface{})`
 
 SetOptimizationGoalMetadata sets OptimizationGoalMetadata field to given value.
 
@@ -537,6 +609,31 @@ HasPromotionId returns a boolean if a field has been set.
 `func (o *AdGroupUpdateRequest) UnsetPromotionId()`
 
 UnsetPromotionId ensures that no value is present for PromotionId, not even an explicit nil
+### GetPromotionIds
+
+`func (o *AdGroupUpdateRequest) GetPromotionIds() []string`
+
+GetPromotionIds returns the PromotionIds field if non-nil, zero value otherwise.
+
+### GetPromotionIdsOk
+
+`func (o *AdGroupUpdateRequest) GetPromotionIdsOk() (*[]string, bool)`
+
+GetPromotionIdsOk returns a tuple with the PromotionIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPromotionIds
+
+`func (o *AdGroupUpdateRequest) SetPromotionIds(v []string)`
+
+SetPromotionIds sets PromotionIds field to given value.
+
+### HasPromotionIds
+
+`func (o *AdGroupUpdateRequest) HasPromotionIds() bool`
+
+HasPromotionIds returns a boolean if a field has been set.
+
 ### GetStartTime
 
 `func (o *AdGroupUpdateRequest) GetStartTime() int32`
@@ -659,20 +756,20 @@ HasTargetingTemplateIds returns a boolean if a field has been set.
 UnsetTargetingTemplateIds ensures that no value is present for TargetingTemplateIds, not even an explicit nil
 ### GetTrackingUrls
 
-`func (o *AdGroupUpdateRequest) GetTrackingUrls() TrackingUrls`
+`func (o *AdGroupUpdateRequest) GetTrackingUrls() map[string]interface{}`
 
 GetTrackingUrls returns the TrackingUrls field if non-nil, zero value otherwise.
 
 ### GetTrackingUrlsOk
 
-`func (o *AdGroupUpdateRequest) GetTrackingUrlsOk() (*TrackingUrls, bool)`
+`func (o *AdGroupUpdateRequest) GetTrackingUrlsOk() (*map[string]interface{}, bool)`
 
 GetTrackingUrlsOk returns a tuple with the TrackingUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrackingUrls
 
-`func (o *AdGroupUpdateRequest) SetTrackingUrls(v TrackingUrls)`
+`func (o *AdGroupUpdateRequest) SetTrackingUrls(v map[string]interface{})`
 
 SetTrackingUrls sets TrackingUrls field to given value.
 
@@ -692,51 +789,6 @@ HasTrackingUrls returns a boolean if a field has been set.
 `func (o *AdGroupUpdateRequest) UnsetTrackingUrls()`
 
 UnsetTrackingUrls ensures that no value is present for TrackingUrls, not even an explicit nil
-### GetBidMultiplier
-
-`func (o *AdGroupUpdateRequest) GetBidMultiplier() float32`
-
-GetBidMultiplier returns the BidMultiplier field if non-nil, zero value otherwise.
-
-### GetBidMultiplierOk
-
-`func (o *AdGroupUpdateRequest) GetBidMultiplierOk() (*float32, bool)`
-
-GetBidMultiplierOk returns a tuple with the BidMultiplier field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBidMultiplier
-
-`func (o *AdGroupUpdateRequest) SetBidMultiplier(v float32)`
-
-SetBidMultiplier sets BidMultiplier field to given value.
-
-### HasBidMultiplier
-
-`func (o *AdGroupUpdateRequest) HasBidMultiplier() bool`
-
-HasBidMultiplier returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *AdGroupUpdateRequest) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *AdGroupUpdateRequest) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *AdGroupUpdateRequest) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

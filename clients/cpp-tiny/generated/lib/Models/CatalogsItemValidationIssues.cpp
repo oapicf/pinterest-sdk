@@ -129,7 +129,7 @@ CatalogsItemValidationIssues::getErrors()
 }
 
 void
-CatalogsItemValidationIssues::setErrors(CatalogsItemValidationErrors  errors)
+CatalogsItemValidationIssues::setErrors(CatalogsItemValidationErrors errors)
 {
 	this->errors = errors;
 }
@@ -141,7 +141,7 @@ CatalogsItemValidationIssues::getItemId()
 }
 
 void
-CatalogsItemValidationIssues::setItemId(std::string  item_id)
+CatalogsItemValidationIssues::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
 }
@@ -153,7 +153,7 @@ CatalogsItemValidationIssues::getItemNumber()
 }
 
 void
-CatalogsItemValidationIssues::setItemNumber(int  item_number)
+CatalogsItemValidationIssues::setItemNumber(int item_number)
 {
 	this->item_number = item_number;
 }
@@ -165,7 +165,7 @@ CatalogsItemValidationIssues::getWarnings()
 }
 
 void
-CatalogsItemValidationIssues::setWarnings(CatalogsItemValidationWarnings  warnings)
+CatalogsItemValidationIssues::setWarnings(CatalogsItemValidationWarnings warnings)
 {
 	this->warnings = warnings;
 }

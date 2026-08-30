@@ -10,12 +10,12 @@ Method | HTTP request | Description
 
 
 # **bulk_download_create**
-> BulkDownloadResponse bulk_download_create(ad_account_id, bulk_download_request)
+> BulkDownload bulk_download_create(ad_account_id, bulk_download_create)
 
 Get advertiser entities in bulk
 
 Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads,
-keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused,
+keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused,
 only active entities will return data.
 
 ### Example
@@ -24,8 +24,8 @@ only active entities will return data.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.bulk_download_request import BulkDownloadRequest
-from pinterestsdk.models.bulk_download_response import BulkDownloadResponse
+from pinterestsdk.models.bulk_download import BulkDownload
+from pinterestsdk.models.bulk_download_create import BulkDownloadCreate
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -47,11 +47,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BulkApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    bulk_download_request = pinterestsdk.BulkDownloadRequest() # BulkDownloadRequest | Parameters to get ad entities in bulk
+    bulk_download_create = pinterestsdk.BulkDownloadCreate() # BulkDownloadCreate | 
 
     try:
         # Get advertiser entities in bulk
-        api_response = api_instance.bulk_download_create(ad_account_id, bulk_download_request)
+        api_response = api_instance.bulk_download_create(ad_account_id, bulk_download_create)
         print("The response of BulkApi->bulk_download_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,11 +66,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **bulk_download_request** | [**BulkDownloadRequest**](BulkDownloadRequest.md)| Parameters to get ad entities in bulk | 
+ **bulk_download_create** | [**BulkDownloadCreate**](BulkDownloadCreate.md)|  | 
 
 ### Return type
 
-[**BulkDownloadResponse**](BulkDownloadResponse.md)
+[**BulkDownload**](BulkDownload.md)
 
 ### Authorization
 
@@ -85,18 +85,24 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **bulk_request_get**
-> BulkUpsertStatusResponse bulk_request_get(ad_account_id, bulk_request_id, include_details=include_details)
+> BulkJobData bulk_request_get(ad_account_id, bulk_request_id, include_details=include_details)
 
 Download advertiser entities in bulk
 
-Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the
-new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the
+new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Example
 
@@ -105,7 +111,7 @@ new or updated entity data (campaigns, ad groups, product groups, ads, or keywor
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.bulk_upsert_status_response import BulkUpsertStatusResponse
+from pinterestsdk.models.bulk_job_data import BulkJobData
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -129,8 +135,8 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BulkApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    bulk_request_id = 'bulk_request_id_example' # str | Unique identifier of a bulk upsert request.
-    include_details = False # bool | if set to True then attach the errors/details to all the requests (optional) (default to False)
+    bulk_request_id = 'bulk_request_id_example' # str | Bulk request ID that is from one of the entities bulk endpoints
+    include_details = False # bool | If set to True then attach the errors/details to all the requests (optional) (default to False)
 
     try:
         # Download advertiser entities in bulk
@@ -149,12 +155,12 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **bulk_request_id** | **str**| Unique identifier of a bulk upsert request. | 
- **include_details** | **bool**| if set to True then attach the errors/details to all the requests | [optional] [default to False]
+ **bulk_request_id** | **str**| Bulk request ID that is from one of the entities bulk endpoints | 
+ **include_details** | **bool**| If set to True then attach the errors/details to all the requests | [optional] [default to False]
 
 ### Return type
 
-[**BulkUpsertStatusResponse**](BulkUpsertStatusResponse.md)
+[**BulkJobData**](BulkJobData.md)
 
 ### Authorization
 
@@ -169,8 +175,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -179,7 +190,7 @@ Name | Type | Description  | Notes
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels.
 Note that this request will be processed asynchronously; the response will include a <code>request_id</code>
 that can be used to obtain the status of the request.
 
@@ -250,7 +261,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The request has succeeded. |  -  |
 **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

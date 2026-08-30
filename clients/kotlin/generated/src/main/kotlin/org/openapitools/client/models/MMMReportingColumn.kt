@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,7 +30,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Marketing Mix Modeling (MMM) Reporting Columns
  *
- * Values: SPEND_IN_DOLLAR,SPEND_IN_MICRO_DOLLAR,ECPC_IN_DOLLAR,ECTR,CAMPAIGN_NAME,TOTAL_ENGAGEMENT,EENGAGEMENT_RATE,ECPM_IN_DOLLAR,CAMPAIGN_ID,ADVERTISER_ID,AD_GROUP_ID,AD_GROUP_NAME,CLICKTHROUGH_1,IMPRESSION_1,CLICKTHROUGH_2,IMPRESSION_2,TOTAL_CLICKTHROUGH,TOTAL_IMPRESSION,ADVERTISER_NAME,SPEND_ORDER_LINE_PAID_TYPE
+ * Values: SPEND_IN_DOLLAR,SPEND_IN_MICRO_DOLLAR,ECPC_IN_DOLLAR,ECTR,CAMPAIGN_NAME,TOTAL_ENGAGEMENT,EENGAGEMENT_RATE,ECPM_IN_DOLLAR,CAMPAIGN_ID,ADVERTISER_ID,AD_GROUP_ID,AD_GROUP_NAME,CLICKTHROUGH_1,IMPRESSION_1,CLICKTHROUGH_2,IMPRESSION_2,TOTAL_CLICKTHROUGH,TOTAL_IMPRESSION,ADVERTISER_NAME,SPEND_ORDER_LINE_PAID_TYPE,CAMPAIGN_OBJECTIVE_TYPE,PINNER_LIST_NAME,ADS_CREDIT_SPEND_IN_DOLLAR,ADVERTISER_PAID_SPEND_IN_DOLLAR,ADVERTISER_PAID_ECPC_IN_DOLLAR,ADVERTISER_PAID_ECPM_IN_DOLLAR
  */
 
 @JsonClass(generateAdapter = false)
@@ -86,7 +94,25 @@ enum class MMMReportingColumn(val value: kotlin.String) {
     ADVERTISER_NAME("ADVERTISER_NAME"),
 
     @Json(name = "SPEND_ORDER_LINE_PAID_TYPE")
-    SPEND_ORDER_LINE_PAID_TYPE("SPEND_ORDER_LINE_PAID_TYPE");
+    SPEND_ORDER_LINE_PAID_TYPE("SPEND_ORDER_LINE_PAID_TYPE"),
+
+    @Json(name = "CAMPAIGN_OBJECTIVE_TYPE")
+    CAMPAIGN_OBJECTIVE_TYPE("CAMPAIGN_OBJECTIVE_TYPE"),
+
+    @Json(name = "PINNER_LIST_NAME")
+    PINNER_LIST_NAME("PINNER_LIST_NAME"),
+
+    @Json(name = "ADS_CREDIT_SPEND_IN_DOLLAR")
+    ADS_CREDIT_SPEND_IN_DOLLAR("ADS_CREDIT_SPEND_IN_DOLLAR"),
+
+    @Json(name = "ADVERTISER_PAID_SPEND_IN_DOLLAR")
+    ADVERTISER_PAID_SPEND_IN_DOLLAR("ADVERTISER_PAID_SPEND_IN_DOLLAR"),
+
+    @Json(name = "ADVERTISER_PAID_ECPC_IN_DOLLAR")
+    ADVERTISER_PAID_ECPC_IN_DOLLAR("ADVERTISER_PAID_ECPC_IN_DOLLAR"),
+
+    @Json(name = "ADVERTISER_PAID_ECPM_IN_DOLLAR")
+    ADVERTISER_PAID_ECPM_IN_DOLLAR("ADVERTISER_PAID_ECPM_IN_DOLLAR");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -108,7 +134,7 @@ enum class MMMReportingColumn(val value: kotlin.String) {
          */
         fun decode(data: kotlin.Any?): MMMReportingColumn? = data?.let {
           val normalizedData = "$it".lowercase()
-          values().firstOrNull { value ->
+          entries.firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()
           }
         }

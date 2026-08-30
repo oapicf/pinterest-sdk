@@ -21,7 +21,7 @@ library(openapi)
 # Receive notifications from external partners.
 #
 # prepare function argument(s)
-var_notification_post_request <- notification_post_request$new() # NotificationPostRequest | notification event.
+var_notification_post_request <- NotificationPostRequest$new() # NotificationPostRequest | 
 
 api_instance <- NotificationApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -38,7 +38,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **notification_post_request** | [**NotificationPostRequest**](NotificationPostRequest.md)| notification event. | 
+ **notification_post_request** | [**NotificationPostRequest**](NotificationPostRequest.md)|  | 
 
 ### Return type
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully received notification |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **0** | An unexpected error response. |  -  |
 

@@ -6,7 +6,7 @@ package org.openapitools.server.model
  *
  * Request object for creating a feed.
  *
- * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. for example: ''null''
+ * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. for example: ''null''
  * @param catalogType  for example: ''null''
  * @param credentials  for example: ''null''
  * @param defaultCountry  for example: ''null''
@@ -20,11 +20,11 @@ package org.openapitools.server.model
 */
 final case class CatalogsCreativeAssetsFeedsCreateRequest (
   catalogId: Option[String] = None,
-  catalogType: CatalogsType,
+  catalogType: String,
   credentials: Option[CatalogsFeedCredentials] = None,
   defaultCountry: Country,
   defaultCurrency: Option[NullableCurrency] = None,
-  defaultLocale: CatalogsFeedsCreateRequestDefaultLocale,
+  defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale,
   format: CatalogsFormat,
   location: String,
   name: String,

@@ -5,7 +5,7 @@ package org.openapitools.client.model
 case class SummaryPin (
     _altText: Option[String],
     _description: Option[String],
-    _id: Option[String],
+    _id: String,
     _link: Option[String],
     _media: Option[PinMedia],
     _title: Option[String]

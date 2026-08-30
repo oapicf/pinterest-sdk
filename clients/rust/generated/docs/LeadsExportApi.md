@@ -11,10 +11,10 @@ Method | HTTP request | Description
 
 ## leads_export_slash_create
 
-> models::LeadsExportCreateResponse leads_export_slash_create(ad_account_id, leads_export_create_request)
+> models::LeadsExports leads_export_slash_create(ad_account_id, leads_exports_create)
 Create a request to export leads collected from a lead ad
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a `leads_export_id` token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Parameters
 
@@ -22,11 +22,11 @@ Create a request to export leads collected from a lead ad
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**leads_export_create_request** | [**LeadsExportCreateRequest**](LeadsExportCreateRequest.md) |  | [required] |
+**leads_exports_create** | [**LeadsExportsCreate**](LeadsExportsCreate.md) |  | [required] |
 
 ### Return type
 
-[**models::LeadsExportCreateResponse**](LeadsExportCreateResponse.md)
+[**models::LeadsExports**](LeadsExports.md)
 
 ### Authorization
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Required | Notes
 > models::LeadsExportResponseData leads_export_slash_get(ad_account_id, leads_export_id)
 Get the lead export from the lead export create call
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Parameters
 

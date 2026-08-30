@@ -24,7 +24,7 @@ class IntegrationLogClientRequest {
   /// HTTP request host from host header.
   String host;
 
-  IntegrationLogClientRequestMethodEnum method;
+  HttpMethod method;
 
   /// HTTP request path.
   String path;
@@ -91,16 +91,18 @@ class IntegrationLogClientRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "IntegrationLogClientRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "IntegrationLogClientRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'host'), 'Required key "IntegrationLogClientRequest[host]" is missing from JSON.');
+        assert(json[r'host'] != null, 'Required key "IntegrationLogClientRequest[host]" has a null value in JSON.');
+        assert(json.containsKey(r'method'), 'Required key "IntegrationLogClientRequest[method]" is missing from JSON.');
+        assert(json[r'method'] != null, 'Required key "IntegrationLogClientRequest[method]" has a null value in JSON.');
+        assert(json.containsKey(r'path'), 'Required key "IntegrationLogClientRequest[path]" is missing from JSON.');
+        assert(json[r'path'] != null, 'Required key "IntegrationLogClientRequest[path]" has a null value in JSON.');
         return true;
       }());
 
       return IntegrationLogClientRequest(
         host: mapValueOfType<String>(json, r'host')!,
-        method: IntegrationLogClientRequestMethodEnum.fromJson(json[r'method'])!,
+        method: HttpMethod.fromJson(json[r'method'])!,
         path: mapValueOfType<String>(json, r'path')!,
         requestHeaders: mapCastOfType<String, String>(json, r'request_headers') ?? const {},
         responseHeaders: mapCastOfType<String, String>(json, r'response_headers') ?? const {},
@@ -157,99 +159,4 @@ class IntegrationLogClientRequest {
     'path',
   };
 }
-
-
-class IntegrationLogClientRequestMethodEnum {
-  /// Instantiate a new enum with the provided [value].
-  const IntegrationLogClientRequestMethodEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const GET = IntegrationLogClientRequestMethodEnum._(r'GET');
-  static const HEAD = IntegrationLogClientRequestMethodEnum._(r'HEAD');
-  static const POST = IntegrationLogClientRequestMethodEnum._(r'POST');
-  static const PUT = IntegrationLogClientRequestMethodEnum._(r'PUT');
-  static const DELETE = IntegrationLogClientRequestMethodEnum._(r'DELETE');
-  static const CONNECT = IntegrationLogClientRequestMethodEnum._(r'CONNECT');
-  static const OPTIONS = IntegrationLogClientRequestMethodEnum._(r'OPTIONS');
-  static const TRACE = IntegrationLogClientRequestMethodEnum._(r'TRACE');
-  static const PATCH = IntegrationLogClientRequestMethodEnum._(r'PATCH');
-
-  /// List of all possible values in this [enum][IntegrationLogClientRequestMethodEnum].
-  static const values = <IntegrationLogClientRequestMethodEnum>[
-    GET,
-    HEAD,
-    POST,
-    PUT,
-    DELETE,
-    CONNECT,
-    OPTIONS,
-    TRACE,
-    PATCH,
-  ];
-
-  static IntegrationLogClientRequestMethodEnum? fromJson(dynamic value) => IntegrationLogClientRequestMethodEnumTypeTransformer().decode(value);
-
-  static List<IntegrationLogClientRequestMethodEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <IntegrationLogClientRequestMethodEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = IntegrationLogClientRequestMethodEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [IntegrationLogClientRequestMethodEnum] to String,
-/// and [decode] dynamic data back to [IntegrationLogClientRequestMethodEnum].
-class IntegrationLogClientRequestMethodEnumTypeTransformer {
-  factory IntegrationLogClientRequestMethodEnumTypeTransformer() => _instance ??= const IntegrationLogClientRequestMethodEnumTypeTransformer._();
-
-  const IntegrationLogClientRequestMethodEnumTypeTransformer._();
-
-  String encode(IntegrationLogClientRequestMethodEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a IntegrationLogClientRequestMethodEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  IntegrationLogClientRequestMethodEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'GET': return IntegrationLogClientRequestMethodEnum.GET;
-        case r'HEAD': return IntegrationLogClientRequestMethodEnum.HEAD;
-        case r'POST': return IntegrationLogClientRequestMethodEnum.POST;
-        case r'PUT': return IntegrationLogClientRequestMethodEnum.PUT;
-        case r'DELETE': return IntegrationLogClientRequestMethodEnum.DELETE;
-        case r'CONNECT': return IntegrationLogClientRequestMethodEnum.CONNECT;
-        case r'OPTIONS': return IntegrationLogClientRequestMethodEnum.OPTIONS;
-        case r'TRACE': return IntegrationLogClientRequestMethodEnum.TRACE;
-        case r'PATCH': return IntegrationLogClientRequestMethodEnum.PATCH;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [IntegrationLogClientRequestMethodEnumTypeTransformer] instance.
-  static IntegrationLogClientRequestMethodEnumTypeTransformer? _instance;
-}
-
 

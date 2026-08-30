@@ -12,21 +12,23 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Product counts for a Creative Assets CatalogsProductGroup
  */
 
 @Schema(name = "CatalogsCreativeAssetsProductGroupProductCounts", description = "Product counts for a Creative Assets CatalogsProductGroup")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsProductGroupProductCounts implements CatalogsProductGroupProductCountsVertical {
+
+  private BigDecimal appLinks;
 
   /**
    * Gets or Sets catalogType
@@ -63,6 +65,8 @@ public class CatalogsCreativeAssetsProductGroupProductCounts implements Catalogs
 
   private CatalogTypeEnum catalogType;
 
+  private BigDecimal images;
+
   private BigDecimal total;
 
   private BigDecimal videos;
@@ -74,10 +78,34 @@ public class CatalogsCreativeAssetsProductGroupProductCounts implements Catalogs
   /**
    * Constructor with only required parameters
    */
-  public CatalogsCreativeAssetsProductGroupProductCounts(CatalogTypeEnum catalogType, BigDecimal total, BigDecimal videos) {
+  public CatalogsCreativeAssetsProductGroupProductCounts(BigDecimal appLinks, CatalogTypeEnum catalogType, BigDecimal images, BigDecimal total, BigDecimal videos) {
+    this.appLinks = appLinks;
     this.catalogType = catalogType;
+    this.images = images;
     this.total = total;
     this.videos = videos;
+  }
+
+  public CatalogsCreativeAssetsProductGroupProductCounts appLinks(BigDecimal appLinks) {
+    this.appLinks = appLinks;
+    return this;
+  }
+
+  /**
+   * Get appLinks
+   * minimum: 0
+   * @return appLinks
+   */
+  @NotNull @Valid @DecimalMin(value = "0") 
+  @Schema(name = "app_links", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("app_links")
+  public BigDecimal getAppLinks() {
+    return appLinks;
+  }
+
+  @JsonProperty("app_links")
+  public void setAppLinks(BigDecimal appLinks) {
+    this.appLinks = appLinks;
   }
 
   public CatalogsCreativeAssetsProductGroupProductCounts catalogType(CatalogTypeEnum catalogType) {
@@ -96,8 +124,31 @@ public class CatalogsCreativeAssetsProductGroupProductCounts implements Catalogs
     return catalogType;
   }
 
+  @JsonProperty("catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
+  }
+
+  public CatalogsCreativeAssetsProductGroupProductCounts images(BigDecimal images) {
+    this.images = images;
+    return this;
+  }
+
+  /**
+   * Get images
+   * minimum: 0
+   * @return images
+   */
+  @NotNull @Valid @DecimalMin(value = "0") 
+  @Schema(name = "images", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("images")
+  public BigDecimal getImages() {
+    return images;
+  }
+
+  @JsonProperty("images")
+  public void setImages(BigDecimal images) {
+    this.images = images;
   }
 
   public CatalogsCreativeAssetsProductGroupProductCounts total(BigDecimal total) {
@@ -117,6 +168,7 @@ public class CatalogsCreativeAssetsProductGroupProductCounts implements Catalogs
     return total;
   }
 
+  @JsonProperty("total")
   public void setTotal(BigDecimal total) {
     this.total = total;
   }
@@ -138,6 +190,7 @@ public class CatalogsCreativeAssetsProductGroupProductCounts implements Catalogs
     return videos;
   }
 
+  @JsonProperty("videos")
   public void setVideos(BigDecimal videos) {
     this.videos = videos;
   }
@@ -151,21 +204,25 @@ public class CatalogsCreativeAssetsProductGroupProductCounts implements Catalogs
       return false;
     }
     CatalogsCreativeAssetsProductGroupProductCounts catalogsCreativeAssetsProductGroupProductCounts = (CatalogsCreativeAssetsProductGroupProductCounts) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupProductCounts.catalogType) &&
+    return Objects.equals(this.appLinks, catalogsCreativeAssetsProductGroupProductCounts.appLinks) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupProductCounts.catalogType) &&
+        Objects.equals(this.images, catalogsCreativeAssetsProductGroupProductCounts.images) &&
         Objects.equals(this.total, catalogsCreativeAssetsProductGroupProductCounts.total) &&
         Objects.equals(this.videos, catalogsCreativeAssetsProductGroupProductCounts.videos);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, total, videos);
+    return Objects.hash(appLinks, catalogType, images, total, videos);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroupProductCounts {\n");
+    sb.append("    appLinks: ").append(toIndentedString(appLinks)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    videos: ").append(toIndentedString(videos)).append("\n");
     sb.append("}");
@@ -176,11 +233,8 @@ public class CatalogsCreativeAssetsProductGroupProductCounts implements Catalogs
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

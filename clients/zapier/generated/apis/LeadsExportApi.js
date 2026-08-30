@@ -1,8 +1,8 @@
 const samples = require('../samples/LeadsExportApi');
-const Error = require('../models/Error');
-const LeadsExportCreateRequest = require('../models/LeadsExportCreateRequest');
-const LeadsExportCreateResponse = require('../models/LeadsExportCreateResponse');
 const LeadsExportResponseData = require('../models/LeadsExportResponseData');
+const LeadsExports = require('../models/LeadsExports');
+const LeadsExportsCreate = require('../models/LeadsExportsCreate');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
 const utils = require('../utils/utils');
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
         noun: 'leads_export',
         display: {
             label: 'Create a request to export leads collected from a lead ad',
-            description: '&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.',
+            description: '**This feature is currently in beta and not available to all apps. If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a &#x60;leads_export_id&#x60; token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).',
             hidden: false,
         },
         operation: {
@@ -22,10 +22,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...LeadsExportCreateRequest.fields(),
+                ...LeadsExportsCreate.fields(),
             ],
             outputFields: [
-                ...LeadsExportCreateResponse.fields('', false),
+                ...LeadsExports.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -39,7 +39,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...LeadsExportCreateRequest.mapping(bundle),
+                        ...LeadsExportsCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -48,7 +48,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['LeadsExportCreateResponseSample']
+            sample: samples['LeadsExportsSample']samples['LeadsExportsSample']
         }
     },
     leadsExport/get: {
@@ -56,7 +56,7 @@ module.exports = {
         noun: 'leads_export',
         display: {
             label: 'Get the lead export from the lead export create call',
-            description: '&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.',
+            description: '**This feature is currently in beta and not available to all apps. If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).',
             hidden: false,
         },
         operation: {

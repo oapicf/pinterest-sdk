@@ -1,0 +1,149 @@
+/*
+ * Pinterest REST API
+ *
+ * Pinterest's REST API
+ *
+ * OpenAPI document version: 5.28.0
+ * Maintained by: blah+oapicf@cliffano.com
+ *
+ * AUTO-GENERATED FILE, DO NOT MODIFY!
+ */
+package org.openapitools.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsLocale;
+import org.openapitools.model.CatalogsProductGroupFiltersRequest;
+import org.openapitools.model.CatalogsProductGroupUpdateRequest;
+import org.openapitools.model.CatalogsVerticalProductGroupUpdateRequest;
+import org.openapitools.model.Country;
+
+
+
+
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class BulkUpsertRequestUpdateCatalogProductGroupsItems   {
+  
+  private String description;
+  private CatalogsProductGroupFiltersRequest filters;
+  private Boolean isFeatured;
+  private String name;
+
+  /**
+   */
+  public BulkUpsertRequestUpdateCatalogProductGroupsItems description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  /**
+   */
+  public BulkUpsertRequestUpdateCatalogProductGroupsItems filters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("filters")
+  public CatalogsProductGroupFiltersRequest getFilters() {
+    return filters;
+  }
+  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+  }
+
+  /**
+   * boolean indicator of whether the product group is being featured or not
+   */
+  public BulkUpsertRequestUpdateCatalogProductGroupsItems isFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
+  @JsonProperty("is_featured")
+  public Boolean getIsFeatured() {
+    return isFeatured;
+  }
+  public void setIsFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+  }
+
+  /**
+   */
+  public BulkUpsertRequestUpdateCatalogProductGroupsItems name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    BulkUpsertRequestUpdateCatalogProductGroupsItems bulkUpsertRequestUpdateCatalogProductGroupsItems = (BulkUpsertRequestUpdateCatalogProductGroupsItems) o;
+    return Objects.equals(description, bulkUpsertRequestUpdateCatalogProductGroupsItems.description) &&
+        Objects.equals(filters, bulkUpsertRequestUpdateCatalogProductGroupsItems.filters) &&
+        Objects.equals(isFeatured, bulkUpsertRequestUpdateCatalogProductGroupsItems.isFeatured) &&
+        Objects.equals(name, bulkUpsertRequestUpdateCatalogProductGroupsItems.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(description, filters, isFeatured, name);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class BulkUpsertRequestUpdateCatalogProductGroupsItems {\n");
+    
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

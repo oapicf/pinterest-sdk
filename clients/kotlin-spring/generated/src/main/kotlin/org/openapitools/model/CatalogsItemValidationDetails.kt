@@ -18,16 +18,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param attributeName 
+ * @param attributeName Attribute that has a validation issue.
  * @param providedValue Provided value that caused the validation issue.
  */
 data class CatalogsItemValidationDetails(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "Attribute that has a validation issue.")
+    @param:JsonProperty("attribute_name")
     @get:JsonProperty("attribute_name", required = true) val attributeName: NullableCatalogsItemFieldType?,
 
-    @Schema(example = "null", required = true, description = "Provided value that caused the validation issue.")
+    @Schema(required = true, description = "Provided value that caused the validation issue.")
+    @param:JsonProperty("provided_value")
     @get:JsonProperty("provided_value", required = true) val providedValue: kotlin.String?
 ) {
 

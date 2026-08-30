@@ -11,351 +11,190 @@
 part of openapi.api;
 
 /// Currency Codes from ISO 4217.
-class NullableCurrency {
-  /// Instantiate a new enum with the provided [value].
-  const NullableCurrency._(this.value);
+enum NullableCurrency {
+  AED._(r'AED'),
+  AFN._(r'AFN'),
+  ALL._(r'ALL'),
+  AMD._(r'AMD'),
+  ANG._(r'ANG'),
+  AOA._(r'AOA'),
+  ARS._(r'ARS'),
+  AUD._(r'AUD'),
+  AWG._(r'AWG'),
+  AZN._(r'AZN'),
+  BAM._(r'BAM'),
+  BBD._(r'BBD'),
+  BDT._(r'BDT'),
+  BGN._(r'BGN'),
+  BHD._(r'BHD'),
+  BIF._(r'BIF'),
+  BMD._(r'BMD'),
+  BND._(r'BND'),
+  BOB._(r'BOB'),
+  BRL._(r'BRL'),
+  BSD._(r'BSD'),
+  BTN._(r'BTN'),
+  BWP._(r'BWP'),
+  BYN._(r'BYN'),
+  BYR._(r'BYR'),
+  BZD._(r'BZD'),
+  CAD._(r'CAD'),
+  CDF._(r'CDF'),
+  CHF._(r'CHF'),
+  CLP._(r'CLP'),
+  CNY._(r'CNY'),
+  COP._(r'COP'),
+  CRC._(r'CRC'),
+  CUC._(r'CUC'),
+  CUP._(r'CUP'),
+  CVE._(r'CVE'),
+  CZK._(r'CZK'),
+  DJF._(r'DJF'),
+  DKK._(r'DKK'),
+  DOP._(r'DOP'),
+  DZD._(r'DZD'),
+  EGP._(r'EGP'),
+  ERN._(r'ERN'),
+  ETB._(r'ETB'),
+  EUR._(r'EUR'),
+  FJD._(r'FJD'),
+  FKP._(r'FKP'),
+  GBP._(r'GBP'),
+  GEL._(r'GEL'),
+  GGP._(r'GGP'),
+  GHS._(r'GHS'),
+  GIP._(r'GIP'),
+  GMD._(r'GMD'),
+  GNF._(r'GNF'),
+  GTQ._(r'GTQ'),
+  GYD._(r'GYD'),
+  HKD._(r'HKD'),
+  HNL._(r'HNL'),
+  HRK._(r'HRK'),
+  HTG._(r'HTG'),
+  HUF._(r'HUF'),
+  IDR._(r'IDR'),
+  ILS._(r'ILS'),
+  IMP._(r'IMP'),
+  INR._(r'INR'),
+  IQD._(r'IQD'),
+  IRR._(r'IRR'),
+  ISK._(r'ISK'),
+  JEP._(r'JEP'),
+  JMD._(r'JMD'),
+  JOD._(r'JOD'),
+  JPY._(r'JPY'),
+  KES._(r'KES'),
+  KGS._(r'KGS'),
+  KHR._(r'KHR'),
+  KMF._(r'KMF'),
+  KPW._(r'KPW'),
+  KRW._(r'KRW'),
+  KWD._(r'KWD'),
+  KYD._(r'KYD'),
+  KZT._(r'KZT'),
+  LAK._(r'LAK'),
+  LBP._(r'LBP'),
+  LKR._(r'LKR'),
+  LRD._(r'LRD'),
+  LSL._(r'LSL'),
+  LYD._(r'LYD'),
+  MAD._(r'MAD'),
+  MDL._(r'MDL'),
+  MGA._(r'MGA'),
+  MKD._(r'MKD'),
+  MMK._(r'MMK'),
+  MNT._(r'MNT'),
+  MOP._(r'MOP'),
+  MRO._(r'MRO'),
+  MUR._(r'MUR'),
+  MVR._(r'MVR'),
+  MWK._(r'MWK'),
+  MXN._(r'MXN'),
+  MYR._(r'MYR'),
+  MZN._(r'MZN'),
+  NAD._(r'NAD'),
+  NGN._(r'NGN'),
+  NIO._(r'NIO'),
+  NOK._(r'NOK'),
+  NPR._(r'NPR'),
+  NZD._(r'NZD'),
+  OMR._(r'OMR'),
+  PAB._(r'PAB'),
+  PEN._(r'PEN'),
+  PGK._(r'PGK'),
+  PHP._(r'PHP'),
+  PKR._(r'PKR'),
+  PLN._(r'PLN'),
+  PYG._(r'PYG'),
+  QAR._(r'QAR'),
+  RON._(r'RON'),
+  RSD._(r'RSD'),
+  RUB._(r'RUB'),
+  RWF._(r'RWF'),
+  SAR._(r'SAR'),
+  SBD._(r'SBD'),
+  SCR._(r'SCR'),
+  SDG._(r'SDG'),
+  SEK._(r'SEK'),
+  SGD._(r'SGD'),
+  SHP._(r'SHP'),
+  SLL._(r'SLL'),
+  SOS._(r'SOS'),
+  SPL._(r'SPL'),
+  SRD._(r'SRD'),
+  STD._(r'STD'),
+  SVC._(r'SVC'),
+  SYP._(r'SYP'),
+  SZL._(r'SZL'),
+  THB._(r'THB'),
+  TJS._(r'TJS'),
+  TMT._(r'TMT'),
+  TND._(r'TND'),
+  TOP._(r'TOP'),
+  TRY._(r'TRY'),
+  TTD._(r'TTD'),
+  TVD._(r'TVD'),
+  TWD._(r'TWD'),
+  TZS._(r'TZS'),
+  UAH._(r'UAH'),
+  UGX._(r'UGX'),
+  USD._(r'USD'),
+  UYU._(r'UYU'),
+  UZS._(r'UZS'),
+  VEF._(r'VEF'),
+  VND._(r'VND'),
+  VUV._(r'VUV'),
+  WST._(r'WST'),
+  XAF._(r'XAF'),
+  XCD._(r'XCD'),
+  XDR._(r'XDR'),
+  XOF._(r'XOF'),
+  XPF._(r'XPF'),
+  YER._(r'YER'),
+  ZAR._(r'ZAR'),
+  ZMW._(r'ZMW'),
+  ZWD._(r'ZWD'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const NullableCurrency._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const AED = NullableCurrency._(r'AED');
-  static const AFN = NullableCurrency._(r'AFN');
-  static const ALL = NullableCurrency._(r'ALL');
-  static const AMD = NullableCurrency._(r'AMD');
-  static const ANG = NullableCurrency._(r'ANG');
-  static const AOA = NullableCurrency._(r'AOA');
-  static const ARS = NullableCurrency._(r'ARS');
-  static const AUD = NullableCurrency._(r'AUD');
-  static const AWG = NullableCurrency._(r'AWG');
-  static const AZN = NullableCurrency._(r'AZN');
-  static const BAM = NullableCurrency._(r'BAM');
-  static const BBD = NullableCurrency._(r'BBD');
-  static const BDT = NullableCurrency._(r'BDT');
-  static const BGN = NullableCurrency._(r'BGN');
-  static const BHD = NullableCurrency._(r'BHD');
-  static const BIF = NullableCurrency._(r'BIF');
-  static const BMD = NullableCurrency._(r'BMD');
-  static const BND = NullableCurrency._(r'BND');
-  static const BOB = NullableCurrency._(r'BOB');
-  static const BRL = NullableCurrency._(r'BRL');
-  static const BSD = NullableCurrency._(r'BSD');
-  static const BTN = NullableCurrency._(r'BTN');
-  static const BWP = NullableCurrency._(r'BWP');
-  static const BYN = NullableCurrency._(r'BYN');
-  static const BYR = NullableCurrency._(r'BYR');
-  static const BZD = NullableCurrency._(r'BZD');
-  static const CAD = NullableCurrency._(r'CAD');
-  static const CDF = NullableCurrency._(r'CDF');
-  static const CHF = NullableCurrency._(r'CHF');
-  static const CLP = NullableCurrency._(r'CLP');
-  static const CNY = NullableCurrency._(r'CNY');
-  static const COP = NullableCurrency._(r'COP');
-  static const CRC = NullableCurrency._(r'CRC');
-  static const CUC = NullableCurrency._(r'CUC');
-  static const CUP = NullableCurrency._(r'CUP');
-  static const CVE = NullableCurrency._(r'CVE');
-  static const CZK = NullableCurrency._(r'CZK');
-  static const DJF = NullableCurrency._(r'DJF');
-  static const DKK = NullableCurrency._(r'DKK');
-  static const DOP = NullableCurrency._(r'DOP');
-  static const DZD = NullableCurrency._(r'DZD');
-  static const EGP = NullableCurrency._(r'EGP');
-  static const ERN = NullableCurrency._(r'ERN');
-  static const ETB = NullableCurrency._(r'ETB');
-  static const EUR = NullableCurrency._(r'EUR');
-  static const FJD = NullableCurrency._(r'FJD');
-  static const FKP = NullableCurrency._(r'FKP');
-  static const GBP = NullableCurrency._(r'GBP');
-  static const GEL = NullableCurrency._(r'GEL');
-  static const GGP = NullableCurrency._(r'GGP');
-  static const GHS = NullableCurrency._(r'GHS');
-  static const GIP = NullableCurrency._(r'GIP');
-  static const GMD = NullableCurrency._(r'GMD');
-  static const GNF = NullableCurrency._(r'GNF');
-  static const GTQ = NullableCurrency._(r'GTQ');
-  static const GYD = NullableCurrency._(r'GYD');
-  static const HKD = NullableCurrency._(r'HKD');
-  static const HNL = NullableCurrency._(r'HNL');
-  static const HRK = NullableCurrency._(r'HRK');
-  static const HTG = NullableCurrency._(r'HTG');
-  static const HUF = NullableCurrency._(r'HUF');
-  static const IDR = NullableCurrency._(r'IDR');
-  static const ILS = NullableCurrency._(r'ILS');
-  static const IMP = NullableCurrency._(r'IMP');
-  static const INR = NullableCurrency._(r'INR');
-  static const IQD = NullableCurrency._(r'IQD');
-  static const IRR = NullableCurrency._(r'IRR');
-  static const ISK = NullableCurrency._(r'ISK');
-  static const JEP = NullableCurrency._(r'JEP');
-  static const JMD = NullableCurrency._(r'JMD');
-  static const JOD = NullableCurrency._(r'JOD');
-  static const JPY = NullableCurrency._(r'JPY');
-  static const KES = NullableCurrency._(r'KES');
-  static const KGS = NullableCurrency._(r'KGS');
-  static const KHR = NullableCurrency._(r'KHR');
-  static const KMF = NullableCurrency._(r'KMF');
-  static const KPW = NullableCurrency._(r'KPW');
-  static const KRW = NullableCurrency._(r'KRW');
-  static const KWD = NullableCurrency._(r'KWD');
-  static const KYD = NullableCurrency._(r'KYD');
-  static const KZT = NullableCurrency._(r'KZT');
-  static const LAK = NullableCurrency._(r'LAK');
-  static const LBP = NullableCurrency._(r'LBP');
-  static const LKR = NullableCurrency._(r'LKR');
-  static const LRD = NullableCurrency._(r'LRD');
-  static const LSL = NullableCurrency._(r'LSL');
-  static const LYD = NullableCurrency._(r'LYD');
-  static const MAD = NullableCurrency._(r'MAD');
-  static const MDL = NullableCurrency._(r'MDL');
-  static const MGA = NullableCurrency._(r'MGA');
-  static const MKD = NullableCurrency._(r'MKD');
-  static const MMK = NullableCurrency._(r'MMK');
-  static const MNT = NullableCurrency._(r'MNT');
-  static const MOP = NullableCurrency._(r'MOP');
-  static const MRO = NullableCurrency._(r'MRO');
-  static const MUR = NullableCurrency._(r'MUR');
-  static const MVR = NullableCurrency._(r'MVR');
-  static const MWK = NullableCurrency._(r'MWK');
-  static const MXN = NullableCurrency._(r'MXN');
-  static const MYR = NullableCurrency._(r'MYR');
-  static const MZN = NullableCurrency._(r'MZN');
-  static const NAD = NullableCurrency._(r'NAD');
-  static const NGN = NullableCurrency._(r'NGN');
-  static const NIO = NullableCurrency._(r'NIO');
-  static const NOK = NullableCurrency._(r'NOK');
-  static const NPR = NullableCurrency._(r'NPR');
-  static const NZD = NullableCurrency._(r'NZD');
-  static const OMR = NullableCurrency._(r'OMR');
-  static const PAB = NullableCurrency._(r'PAB');
-  static const PEN = NullableCurrency._(r'PEN');
-  static const PGK = NullableCurrency._(r'PGK');
-  static const PHP = NullableCurrency._(r'PHP');
-  static const PKR = NullableCurrency._(r'PKR');
-  static const PLN = NullableCurrency._(r'PLN');
-  static const PYG = NullableCurrency._(r'PYG');
-  static const QAR = NullableCurrency._(r'QAR');
-  static const RON = NullableCurrency._(r'RON');
-  static const RSD = NullableCurrency._(r'RSD');
-  static const RUB = NullableCurrency._(r'RUB');
-  static const RWF = NullableCurrency._(r'RWF');
-  static const SAR = NullableCurrency._(r'SAR');
-  static const SBD = NullableCurrency._(r'SBD');
-  static const SCR = NullableCurrency._(r'SCR');
-  static const SDG = NullableCurrency._(r'SDG');
-  static const SEK = NullableCurrency._(r'SEK');
-  static const SGD = NullableCurrency._(r'SGD');
-  static const SHP = NullableCurrency._(r'SHP');
-  static const SLL = NullableCurrency._(r'SLL');
-  static const SOS = NullableCurrency._(r'SOS');
-  static const SPL = NullableCurrency._(r'SPL');
-  static const SRD = NullableCurrency._(r'SRD');
-  static const STD = NullableCurrency._(r'STD');
-  static const SVC = NullableCurrency._(r'SVC');
-  static const SYP = NullableCurrency._(r'SYP');
-  static const SZL = NullableCurrency._(r'SZL');
-  static const THB = NullableCurrency._(r'THB');
-  static const TJS = NullableCurrency._(r'TJS');
-  static const TMT = NullableCurrency._(r'TMT');
-  static const TND = NullableCurrency._(r'TND');
-  static const TOP = NullableCurrency._(r'TOP');
-  static const TRY = NullableCurrency._(r'TRY');
-  static const TTD = NullableCurrency._(r'TTD');
-  static const TVD = NullableCurrency._(r'TVD');
-  static const TWD = NullableCurrency._(r'TWD');
-  static const TZS = NullableCurrency._(r'TZS');
-  static const UAH = NullableCurrency._(r'UAH');
-  static const UGX = NullableCurrency._(r'UGX');
-  static const USD = NullableCurrency._(r'USD');
-  static const UYU = NullableCurrency._(r'UYU');
-  static const UZS = NullableCurrency._(r'UZS');
-  static const VEF = NullableCurrency._(r'VEF');
-  static const VND = NullableCurrency._(r'VND');
-  static const VUV = NullableCurrency._(r'VUV');
-  static const WST = NullableCurrency._(r'WST');
-  static const XAF = NullableCurrency._(r'XAF');
-  static const XCD = NullableCurrency._(r'XCD');
-  static const XDR = NullableCurrency._(r'XDR');
-  static const XOF = NullableCurrency._(r'XOF');
-  static const XPF = NullableCurrency._(r'XPF');
-  static const YER = NullableCurrency._(r'YER');
-  static const ZAR = NullableCurrency._(r'ZAR');
-  static const ZMW = NullableCurrency._(r'ZMW');
-  static const ZWD = NullableCurrency._(r'ZWD');
-
-  /// List of all possible values in this [enum][NullableCurrency].
-  static const values = <NullableCurrency>[
-    AED,
-    AFN,
-    ALL,
-    AMD,
-    ANG,
-    AOA,
-    ARS,
-    AUD,
-    AWG,
-    AZN,
-    BAM,
-    BBD,
-    BDT,
-    BGN,
-    BHD,
-    BIF,
-    BMD,
-    BND,
-    BOB,
-    BRL,
-    BSD,
-    BTN,
-    BWP,
-    BYN,
-    BYR,
-    BZD,
-    CAD,
-    CDF,
-    CHF,
-    CLP,
-    CNY,
-    COP,
-    CRC,
-    CUC,
-    CUP,
-    CVE,
-    CZK,
-    DJF,
-    DKK,
-    DOP,
-    DZD,
-    EGP,
-    ERN,
-    ETB,
-    EUR,
-    FJD,
-    FKP,
-    GBP,
-    GEL,
-    GGP,
-    GHS,
-    GIP,
-    GMD,
-    GNF,
-    GTQ,
-    GYD,
-    HKD,
-    HNL,
-    HRK,
-    HTG,
-    HUF,
-    IDR,
-    ILS,
-    IMP,
-    INR,
-    IQD,
-    IRR,
-    ISK,
-    JEP,
-    JMD,
-    JOD,
-    JPY,
-    KES,
-    KGS,
-    KHR,
-    KMF,
-    KPW,
-    KRW,
-    KWD,
-    KYD,
-    KZT,
-    LAK,
-    LBP,
-    LKR,
-    LRD,
-    LSL,
-    LYD,
-    MAD,
-    MDL,
-    MGA,
-    MKD,
-    MMK,
-    MNT,
-    MOP,
-    MRO,
-    MUR,
-    MVR,
-    MWK,
-    MXN,
-    MYR,
-    MZN,
-    NAD,
-    NGN,
-    NIO,
-    NOK,
-    NPR,
-    NZD,
-    OMR,
-    PAB,
-    PEN,
-    PGK,
-    PHP,
-    PKR,
-    PLN,
-    PYG,
-    QAR,
-    RON,
-    RSD,
-    RUB,
-    RWF,
-    SAR,
-    SBD,
-    SCR,
-    SDG,
-    SEK,
-    SGD,
-    SHP,
-    SLL,
-    SOS,
-    SPL,
-    SRD,
-    STD,
-    SVC,
-    SYP,
-    SZL,
-    THB,
-    TJS,
-    TMT,
-    TND,
-    TOP,
-    TRY,
-    TTD,
-    TVD,
-    TWD,
-    TZS,
-    UAH,
-    UGX,
-    USD,
-    UYU,
-    UZS,
-    VEF,
-    VND,
-    VUV,
-    WST,
-    XAF,
-    XCD,
-    XDR,
-    XOF,
-    XPF,
-    YER,
-    ZAR,
-    ZMW,
-    ZWD,
-  ];
-
+  /// Returns the instance of [NullableCurrency] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static NullableCurrency? fromJson(dynamic value) => NullableCurrencyTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [NullableCurrency]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<NullableCurrency> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <NullableCurrency>[];
     if (json is List && json.isNotEmpty) {
@@ -377,9 +216,11 @@ class NullableCurrencyTypeTransformer {
 
   const NullableCurrencyTypeTransformer._();
 
-  String encode(NullableCurrency data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(NullableCurrency data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a NullableCurrency.
+  /// Returns the instance of [NullableCurrency] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -388,6 +229,9 @@ class NullableCurrencyTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   NullableCurrency? decode(dynamic data, {bool allowNull = true}) {
+    if (data is NullableCurrency) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'AED': return NullableCurrency.AED;
@@ -562,7 +406,7 @@ class NullableCurrencyTypeTransformer {
     return null;
   }
 
-  /// Singleton [NullableCurrencyTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static NullableCurrencyTypeTransformer? _instance;
 }
 

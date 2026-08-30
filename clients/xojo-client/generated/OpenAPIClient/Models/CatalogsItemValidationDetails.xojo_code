@@ -2,6 +2,9 @@
 Protected Class CatalogsItemValidationDetails
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Attribute that has a validation issue.
+		#tag EndNote
 		attribute_name As String
 	#tag EndProperty
 

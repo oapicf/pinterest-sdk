@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &DeleteMemberAccessResult{}
 // DeleteMemberAccessResult The terminated asset access.
 type DeleteMemberAccessResult struct {
 	// Unique identifier of the business asset.
-	AssetId *string `json:"asset_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AssetId *string `json:"asset_id,omitempty" validate:"regexp=^\\d+$"`
 	// Unique identifier of the business member.
-	MemberId *string `json:"member_id,omitempty" validate:"regexp=^\\\\d+$"`
+	MemberId *string `json:"member_id,omitempty" validate:"regexp=^\\d+$"`
 }
 
 // NewDeleteMemberAccessResult instantiates a new DeleteMemberAccessResult object

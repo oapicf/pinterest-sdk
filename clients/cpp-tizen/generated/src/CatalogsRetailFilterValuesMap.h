@@ -1,14 +1,18 @@
 /*
- * Catalogs_retail_filter_values_map.h
+ * CatalogsRetailFilterValuesMap.h
  *
  * A map of filter attributes to their available values.
  */
 
-#ifndef _Catalogs_retail_filter_values_map_H_
-#define _Catalogs_retail_filter_values_map_H_
+#ifndef _CatalogsRetailFilterValuesMap_H_
+#define _CatalogsRetailFilterValuesMap_H_
 
 
 #include <string>
+#include "Gender.h"
+#include "MediaType.h"
+#include "ProductAvailability.h"
+#include "ProductCondition.h"
 #include <list>
 #include "Object.h"
 
@@ -27,16 +31,16 @@ namespace ArtikCloud {
  *
  */
 
-class Catalogs_retail_filter_values_map : public Object {
+class CatalogsRetailFilterValuesMap : public Object {
 public:
 	/*! \brief Constructor.
 	 */
-	Catalogs_retail_filter_values_map();
-	Catalogs_retail_filter_values_map(char* str);
+	CatalogsRetailFilterValuesMap();
+	CatalogsRetailFilterValuesMap(char* str);
 
 	/*! \brief Destructor.
 	 */
-	virtual ~Catalogs_retail_filter_values_map();
+	virtual ~CatalogsRetailFilterValuesMap();
 
 	/*! \brief Retrieve a string JSON representation of this class.
 	 */
@@ -62,11 +66,11 @@ public:
 	void setAdVideoTags(std::list <std::string> ad_video_tags);
 	/*! \brief Get 
 	 */
-	std::list<std::string> getAvailability();
+	std::list<ProductAvailability> getAvailability();
 
 	/*! \brief Set 
 	 */
-	void setAvailability(std::list <std::string> availability);
+	void setAvailability(std::list <ProductAvailability> availability);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getBrand();
@@ -76,11 +80,11 @@ public:
 	void setBrand(std::list <std::string> brand);
 	/*! \brief Get 
 	 */
-	std::list<std::string> getCondition();
+	std::list<ProductCondition> getCondition();
 
 	/*! \brief Set 
 	 */
-	void setCondition(std::list <std::string> condition);
+	void setCondition(std::list <ProductCondition> condition);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getCustomLabel0();
@@ -118,11 +122,11 @@ public:
 	void setCustomLabel4(std::list <std::string> custom_label_4);
 	/*! \brief Get 
 	 */
-	std::list<std::string> getGender();
+	std::list<Gender> getGender();
 
 	/*! \brief Set 
 	 */
-	void setGender(std::list <std::string> gender);
+	void setGender(std::list <Gender> gender);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getGoogleProductCategory0();
@@ -174,11 +178,11 @@ public:
 	void setGoogleProductCategory6(std::list <std::string> google_product_category_6);
 	/*! \brief Get 
 	 */
-	std::list<std::string> getMediaType();
+	std::list<MediaType> getMediaType();
 
 	/*! \brief Set 
 	 */
-	void setMediaType(std::list <std::string> media_type);
+	void setMediaType(std::list <MediaType> media_type);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getProductType0();
@@ -218,15 +222,15 @@ public:
 private:
 	std::list <std::string>ad_image_tags;
 	std::list <std::string>ad_video_tags;
-	std::list <std::string>availability;
+	std::list <ProductAvailability>availability;
 	std::list <std::string>brand;
-	std::list <std::string>condition;
+	std::list <ProductCondition>condition;
 	std::list <std::string>custom_label_0;
 	std::list <std::string>custom_label_1;
 	std::list <std::string>custom_label_2;
 	std::list <std::string>custom_label_3;
 	std::list <std::string>custom_label_4;
-	std::list <std::string>gender;
+	std::list <Gender>gender;
 	std::list <std::string>google_product_category_0;
 	std::list <std::string>google_product_category_1;
 	std::list <std::string>google_product_category_2;
@@ -234,7 +238,7 @@ private:
 	std::list <std::string>google_product_category_4;
 	std::list <std::string>google_product_category_5;
 	std::list <std::string>google_product_category_6;
-	std::list <std::string>media_type;
+	std::list <MediaType>media_type;
 	std::list <std::string>product_type_0;
 	std::list <std::string>product_type_1;
 	std::list <std::string>product_type_2;
@@ -247,4 +251,4 @@ private:
 }
 }
 
-#endif /* _Catalogs_retail_filter_values_map_H_ */
+#endif /* _CatalogsRetailFilterValuesMap_H_ */

@@ -60,3 +60,11 @@ func (c *Container) CampaignsUpdate(ctx echo.Context) error {
 	})
 }
 
+
+// GetCampaignDeliveryEstimates - Get campaign delivery estimates
+func (c *Container) GetCampaignDeliveryEstimates(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+

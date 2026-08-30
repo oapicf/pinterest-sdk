@@ -64,7 +64,7 @@ Pinterest.Lib.Status204::getStatusCode()
 }
 
 void
-Pinterest.Lib.Status204::setStatusCode(long  statusCode)
+Pinterest.Lib.Status204::setStatusCode(long statusCode)
 {
 	this->statusCode = statusCode;
 }

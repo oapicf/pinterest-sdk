@@ -7,32 +7,33 @@ import play.api.mvc._
 import model.CatalogsListProductsByFilterRequest
 import model.CatalogsProductGroupPinsList200Response
 import model.CatalogsProductGroupProductCountsVertical
+import model.CatalogsProductGroupsCreateManyRequestItems
+import model.CatalogsProductGroupsCreateRequestSchema
 import model.CatalogsProductGroupsList200Response
-import model.CatalogsProductGroupsUpdateRequest
+import model.CatalogsProductGroupsUpdateRequestSchema
 import model.CatalogsVerticalProductGroup
 import model.Error
-import model.MultipleProductGroupsInner
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class CatalogProductGroupsApiController @Inject()(cc: ControllerComponents, api: CatalogProductGroupsApi) extends AbstractController(cc) {
   /**
-    * GET /v5/catalogs/product_groups/:productGroupId/products?bookmark=[value]&pageSize=[value]&adAccountId=[value]&pinMetrics=[value]
+    * GET /v5/catalogs/product_groups/:productGroupId/products?adAccountId=[value]&pinMetrics=[value]&bookmark=[value]&pageSize=[value]
     * @param productGroupId Unique identifier of a product group
     */
   def catalogsProductGroupPinsList(productGroupId: String): Action[AnyContent] = Action { request =>
     def executeApi(): CatalogsProductGroupPinsList200Response = {
-      val bookmark = request.getQueryString("bookmark")
-        
-      val pageSize = request.getQueryString("page_size")
-        .map(value => value.toInt)
-        
       val adAccountId = request.getQueryString("ad_account_id")
         
       val pinMetrics = request.getQueryString("pin_metrics")
         .map(value => value.toBoolean)
         
-      api.catalogsProductGroupPinsList(productGroupId, bookmark, pageSize, adAccountId, pinMetrics)
+      val bookmark = request.getQueryString("bookmark")
+        
+      val pageSize = request.getQueryString("page_size")
+        .map(value => value.toInt)
+        
+      api.catalogsProductGroupPinsList(productGroupId, adAccountId, pinMetrics, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -45,12 +46,12 @@ class CatalogProductGroupsApiController @Inject()(cc: ControllerComponents, api:
     */
   def catalogsProductGroupsCreate(): Action[AnyContent] = Action { request =>
     def executeApi(): CatalogsVerticalProductGroup = {
-      val multipleProductGroupsInner = request.body.asJson.map(_.as[MultipleProductGroupsInner]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "multipleProductGroupsInner")
+      val catalogsProductGroupsCreateRequestSchema = request.body.asJson.map(_.as[CatalogsProductGroupsCreateRequestSchema]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "catalogsProductGroupsCreateRequestSchema")
       }
       val adAccountId = request.getQueryString("ad_account_id")
         
-      api.catalogsProductGroupsCreate(multipleProductGroupsInner, adAccountId)
+      api.catalogsProductGroupsCreate(catalogsProductGroupsCreateRequestSchema, adAccountId)
     }
 
     val result = executeApi()
@@ -63,12 +64,12 @@ class CatalogProductGroupsApiController @Inject()(cc: ControllerComponents, api:
     */
   def catalogsProductGroupsCreateMany(): Action[AnyContent] = Action { request =>
     def executeApi(): List[String] = {
-      val multipleProductGroupsInner = request.body.asJson.map(_.as[List[MultipleProductGroupsInner]]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "multipleProductGroupsInner")
+      val catalogsProductGroupsCreateManyRequestItems = request.body.asJson.map(_.as[List[CatalogsProductGroupsCreateManyRequestItems]]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "catalogsProductGroupsCreateManyRequestItems")
       }
       val adAccountId = request.getQueryString("ad_account_id")
         
-      api.catalogsProductGroupsCreateMany(multipleProductGroupsInner, adAccountId)
+      api.catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems, adAccountId)
     }
 
     val result = executeApi()
@@ -81,14 +82,15 @@ class CatalogProductGroupsApiController @Inject()(cc: ControllerComponents, api:
     * @param productGroupId Unique identifier of a product group
     */
   def catalogsProductGroupsDelete(productGroupId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): Unit = {
+    def executeApi(): CatalogsVerticalProductGroup = {
       val adAccountId = request.getQueryString("ad_account_id")
         
       api.catalogsProductGroupsDelete(productGroupId, adAccountId)
     }
 
-    executeApi()
-    Ok
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
   }
 
   /**
@@ -129,7 +131,7 @@ class CatalogProductGroupsApiController @Inject()(cc: ControllerComponents, api:
   }
 
   /**
-    * GET /v5/catalogs/product_groups?id=[value]&feedId=[value]&catalogId=[value]&bookmark=[value]&pageSize=[value]&adAccountId=[value]
+    * GET /v5/catalogs/product_groups?id=[value]&feedId=[value]&catalogId=[value]&adAccountId=[value]&bookmark=[value]&pageSize=[value]
     */
   def catalogsProductGroupsList(): Action[AnyContent] = Action { request =>
     def executeApi(): CatalogsProductGroupsList200Response = {
@@ -141,14 +143,14 @@ class CatalogProductGroupsApiController @Inject()(cc: ControllerComponents, api:
         
       val catalogId = request.getQueryString("catalog_id")
         
+      val adAccountId = request.getQueryString("ad_account_id")
+        
       val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val adAccountId = request.getQueryString("ad_account_id")
-        
-      api.catalogsProductGroupsList(id, feedId, catalogId, bookmark, pageSize, adAccountId)
+      api.catalogsProductGroupsList(id, feedId, catalogId, adAccountId, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -178,12 +180,12 @@ class CatalogProductGroupsApiController @Inject()(cc: ControllerComponents, api:
     */
   def catalogsProductGroupsUpdate(productGroupId: String): Action[AnyContent] = Action { request =>
     def executeApi(): CatalogsVerticalProductGroup = {
-      val catalogsProductGroupsUpdateRequest = request.body.asJson.map(_.as[CatalogsProductGroupsUpdateRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "catalogsProductGroupsUpdateRequest")
+      val catalogsProductGroupsUpdateRequestSchema = request.body.asJson.map(_.as[CatalogsProductGroupsUpdateRequestSchema]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "catalogsProductGroupsUpdateRequestSchema")
       }
       val adAccountId = request.getQueryString("ad_account_id")
         
-      api.catalogsProductGroupsUpdate(productGroupId, catalogsProductGroupsUpdateRequest, adAccountId)
+      api.catalogsProductGroupsUpdate(productGroupId, catalogsProductGroupsUpdateRequestSchema, adAccountId)
     }
 
     val result = executeApi()

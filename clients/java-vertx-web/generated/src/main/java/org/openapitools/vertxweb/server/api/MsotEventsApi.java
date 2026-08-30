@@ -1,7 +1,7 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.ConversionMSOTEvents;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.ConversionMSOTEventsCreate;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -12,5 +12,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface MsotEventsApi  {
-    Future<ApiResponse<Void>> msotEventsCreate(String adAccountId, ConversionMSOTEvents conversionMSOTEvents);
+    Future<ApiResponse<Void>> msotEventsCreate(String adAccountId, ConversionMSOTEventsCreate conversionMSOTEventsCreate);
 }

@@ -4,7 +4,6 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.CatalogsCreativeAssetsAttributes
-open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.Pin
 
 module CatalogsCreativeAssetsItemResponse =
@@ -16,9 +15,11 @@ module CatalogsCreativeAssetsItemResponse =
     [<JsonProperty(PropertyName = "attributes")>]
     Attributes : CatalogsCreativeAssetsAttributes;
     [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : CatalogsType;
+    CatalogType : string;
     [<JsonProperty(PropertyName = "creative_assets_id")>]
     CreativeAssetsId : string;
+    [<JsonProperty(PropertyName = "item_response_kind")>]
+    ItemResponseKind : string;
     [<JsonProperty(PropertyName = "pins")>]
     Pins : Pin[];
   }

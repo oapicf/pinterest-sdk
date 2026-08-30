@@ -7,7 +7,7 @@ goog.provide('API.Client.CatalogsProductGroupProductCountsVertical');
 API.Client.CatalogsProductGroupProductCountsVertical = function() {}
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsProductGroupProductCountsVertical.prototype.catalogType;
@@ -42,3 +42,19 @@ API.Client.CatalogsProductGroupProductCountsVertical.prototype.total;
  */
 API.Client.CatalogsProductGroupProductCountsVertical.prototype.videos;
 
+/**
+ * @type {!number}
+ * @export
+ */
+API.Client.CatalogsProductGroupProductCountsVertical.prototype.appLinks;
+
+/**
+ * @type {!number}
+ * @export
+ */
+API.Client.CatalogsProductGroupProductCountsVertical.prototype.images;
+
+/** @enum {string} */
+API.Client.CatalogsProductGroupProductCountsVertical.CatalogTypeEnum = { 
+  CREATIVE_ASSETS: 'CREATIVE_ASSETS',
+}

@@ -14,11 +14,12 @@
 #include "Helpers.h"
 #include "AdGroupUpdateRequest.h"
 #include "AdUpdateRequest.h"
+#include "BulkUpsertRequestUpdateCatalogProductGroupsItems.h"
 #include "CampaignUpdateRequest.h"
-#include "Catalogs_product_groups_update_request.h"
-#include "KeywordUpdate.h"
+#include "KeywordUpdateGenerated.h"
 #include "LabelBulkUpdateRequest.h"
 #include "ProductGroupPromotionUpdateRequest.h"
+#include "ScheduleUpdateRequest.h"
 #include <list>
 
 namespace Tiny {
@@ -59,59 +60,67 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setAdGroups(std::list <AdGroupUpdateRequest> ad_groups);
+	void setAdGroups(std::list<AdGroupUpdateRequest> ad_groups);
 	/*! \brief Get 
 	 */
 	std::list<AdUpdateRequest> getAds();
 
 	/*! \brief Set 
 	 */
-	void setAds(std::list <AdUpdateRequest> ads);
+	void setAds(std::list<AdUpdateRequest> ads);
 	/*! \brief Get 
 	 */
 	std::list<CampaignUpdateRequest> getCampaigns();
 
 	/*! \brief Set 
 	 */
-	void setCampaigns(std::list <CampaignUpdateRequest> campaigns);
+	void setCampaigns(std::list<CampaignUpdateRequest> campaigns);
 	/*! \brief Get 
 	 */
-	std::list<Catalogs_product_groups_update_request> getCatalogProductGroups();
+	std::list<BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups();
 
 	/*! \brief Set 
 	 */
-	void setCatalogProductGroups(std::list <Catalogs_product_groups_update_request> catalog_product_groups);
+	void setCatalogProductGroups(std::list<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalog_product_groups);
 	/*! \brief Get 
 	 */
-	std::list<KeywordUpdate> getKeywords();
+	std::list<KeywordUpdateGenerated> getKeywords();
 
 	/*! \brief Set 
 	 */
-	void setKeywords(std::list <KeywordUpdate> keywords);
+	void setKeywords(std::list<KeywordUpdateGenerated> keywords);
 	/*! \brief Get 
 	 */
 	std::list<LabelBulkUpdateRequest> getLabels();
 
 	/*! \brief Set 
 	 */
-	void setLabels(std::list <LabelBulkUpdateRequest> labels);
+	void setLabels(std::list<LabelBulkUpdateRequest> labels);
 	/*! \brief Get 
 	 */
 	std::list<ProductGroupPromotionUpdateRequest> getProductGroups();
 
 	/*! \brief Set 
 	 */
-	void setProductGroups(std::list <ProductGroupPromotionUpdateRequest> product_groups);
+	void setProductGroups(std::list<ProductGroupPromotionUpdateRequest> product_groups);
+	/*! \brief Get 
+	 */
+	std::list<ScheduleUpdateRequest> getSchedules();
+
+	/*! \brief Set 
+	 */
+	void setSchedules(std::list<ScheduleUpdateRequest> schedules);
 
 
     private:
     std::list<AdGroupUpdateRequest> ad_groups;
     std::list<AdUpdateRequest> ads;
     std::list<CampaignUpdateRequest> campaigns;
-    std::list<Catalogs_product_groups_update_request> catalog_product_groups;
-    std::list<KeywordUpdate> keywords;
+    std::list<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalog_product_groups;
+    std::list<KeywordUpdateGenerated> keywords;
     std::list<LabelBulkUpdateRequest> labels;
     std::list<ProductGroupPromotionUpdateRequest> product_groups;
+    std::list<ScheduleUpdateRequest> schedules;
 };
 }
 

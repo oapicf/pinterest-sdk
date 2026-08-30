@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **accesses** | [**kotlin.collections.List&lt;UpdatePartnerAssetAccessBodyAccessesInner&gt;**](UpdatePartnerAssetAccessBodyAccessesInner.md) |  |  |
+| **accesses** | [**kotlin.collections.List&lt;UpdatePartnerAssetAccessItem&gt;**](UpdatePartnerAssetAccessItem.md) | List of partner asset accesses to assign or update. |  |
 
 
 

@@ -1,11 +1,11 @@
 /*
- * TargetingTemplateAudienceSizing_reach_estimate.h
+ * TargetingTemplateAudienceSizingReachEstimate.h
  *
  * 
  */
 
-#ifndef _TargetingTemplateAudienceSizing_reach_estimate_H_
-#define _TargetingTemplateAudienceSizing_reach_estimate_H_
+#ifndef _TargetingTemplateAudienceSizingReachEstimate_H_
+#define _TargetingTemplateAudienceSizingReachEstimate_H_
 
 
 #include <string>
@@ -26,16 +26,16 @@ namespace ArtikCloud {
  *
  */
 
-class TargetingTemplateAudienceSizing_reach_estimate : public Object {
+class TargetingTemplateAudienceSizingReachEstimate : public Object {
 public:
 	/*! \brief Constructor.
 	 */
-	TargetingTemplateAudienceSizing_reach_estimate();
-	TargetingTemplateAudienceSizing_reach_estimate(char* str);
+	TargetingTemplateAudienceSizingReachEstimate();
+	TargetingTemplateAudienceSizingReachEstimate(char* str);
 
 	/*! \brief Destructor.
 	 */
-	virtual ~TargetingTemplateAudienceSizing_reach_estimate();
+	virtual ~TargetingTemplateAudienceSizingReachEstimate();
 
 	/*! \brief Retrieve a string JSON representation of this class.
 	 */
@@ -78,4 +78,4 @@ private:
 }
 }
 
-#endif /* _TargetingTemplateAudienceSizing_reach_estimate_H_ */
+#endif /* _TargetingTemplateAudienceSizingReachEstimate_H_ */

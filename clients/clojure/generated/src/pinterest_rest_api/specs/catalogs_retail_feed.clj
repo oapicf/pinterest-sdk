@@ -1,7 +1,6 @@
 (ns pinterest-rest-api.specs.catalogs-retail-feed
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs.catalogs-type :refer :all]
             [pinterest-rest-api.specs.catalogs-feed-credentials :refer :all]
             [pinterest-rest-api.specs.product-availability-type :refer :all]
             [pinterest-rest-api.specs.country :refer :all]
@@ -15,20 +14,20 @@
 
 (def catalogs-retail-feed-data
   {
+   (ds/req :catalog_type) string?
    (ds/req :created_at) inst?
-   (ds/req :id) string?
-   (ds/req :updated_at) inst?
-   (ds/req :catalog_type) catalogs-type-spec
-   (ds/req :credentials) catalogs-feed-credentials-spec
-   (ds/req :default_availability) product-availability-type-spec
+   (ds/opt :credentials) catalogs-feed-credentials-spec
+   (ds/opt :default_availability) product-availability-type-spec
    (ds/req :default_country) country-spec
-   (ds/req :default_currency) nullable-currency-spec
+   (ds/opt :default_currency) nullable-currency-spec
    (ds/req :default_locale) string?
    (ds/req :format) catalogs-format-spec
+   (ds/req :id) string?
    (ds/req :location) string?
    (ds/req :name) string?
-   (ds/req :preferred_processing_schedule) catalogs-feed-processing-schedule-spec
+   (ds/opt :preferred_processing_schedule) catalogs-feed-processing-schedule-spec
    (ds/req :status) catalogs-status-spec
+   (ds/req :updated_at) inst?
    })
 
 (def catalogs-retail-feed-spec

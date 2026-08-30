@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const MetricsResponseDataItems = require('../models/MetricsResponseDataItems');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -7,15 +8,14 @@ module.exports = {
             {
                 key: `${keyPrefix}data`,
                 label: `[${labelPrefix}data]`,
-                list: true,
-                type: 'object',
+                children: MetricsResponseDataItems.fields(`${keyPrefix}data${!isInput ? '[]' : ''}`, isInput, true), 
             },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'data': bundle.inputData?.[`${keyPrefix}data`],
+            'data': utils.childMapping(bundle.inputData?.[`${keyPrefix}data`], `${keyPrefix}data`, MetricsResponseDataItems),
         }
     },
 }

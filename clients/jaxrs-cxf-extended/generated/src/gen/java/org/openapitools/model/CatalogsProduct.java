@@ -9,7 +9,6 @@ import org.openapitools.model.CatalogsCreativeAssetsProduct;
 import org.openapitools.model.CatalogsCreativeAssetsProductMetadata;
 import org.openapitools.model.CatalogsHotelProduct;
 import org.openapitools.model.CatalogsRetailProduct;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Pin;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -25,16 +24,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
   @JsonSubTypes.Type(value = CatalogsRetailProduct.class, name = "RETAIL"),
 })
 
-/**
- * Catalogs product for all verticals
- */
-@ApiModel(description="Catalogs product for all verticals")
-
 public class CatalogsProduct  {
   
+public enum CatalogTypeEnum {
+
+    @JsonProperty("CREATIVE_ASSETS") CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
+
+    private String value;
+
+    CatalogTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
   @ApiModelProperty(required = true, value = "")
-  @Valid
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
   @Valid
@@ -49,21 +71,21 @@ public class CatalogsProduct  {
   */
   @JsonProperty("catalog_type")
   @NotNull
-  public CatalogsType getCatalogType() {
-    return catalogType;
+  public String getCatalogType() {
+    return catalogType == null ? null : catalogType.value();
   }
 
   /**
    * Sets the <code>catalogType</code> property.
    */
- public void setCatalogType(CatalogsType catalogType) {
+ public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
   /**
    * Sets the <code>catalogType</code> property.
    */
-  public CatalogsProduct catalogType(CatalogsType catalogType) {
+  public CatalogsProduct catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -155,10 +177,7 @@ public class CatalogsProduct  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

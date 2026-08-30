@@ -1,0 +1,13 @@
+# BusinessMemberAssetsGetResponse
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**bookmark** | **string** |  | [optional] [default to null]
+**items** | [**array[AssetIdPermissions]**](AssetIdPermissions.md) |  | [default to null]
+**totalUnderscoredataUnderscorecount** | **integer** |  | [default to null]
+**totalUnderscoredataUnderscorecountUnderscorebyUnderscorestatus** | [**TotalCountByEntityStatus**](TotalCountByEntityStatus.md) |  | [optional] [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

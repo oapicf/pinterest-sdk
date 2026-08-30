@@ -4,39 +4,24 @@
 #include "customer_list_upload.h"
 
 
-char* customer_list_upload_state_ToString(pinterest_rest_api_customer_list_upload_STATE_e state) {
-    char* stateArray[] =  { "NULL", "NOT_STARTED", "RUNNING", "PAUSED", "SUCCEEDED", "FAILED" };
-    return stateArray[state];
-}
-
-pinterest_rest_api_customer_list_upload_STATE_e customer_list_upload_state_FromString(char* state){
-    int stringToReturn = 0;
-    char *stateArray[] =  { "NULL", "NOT_STARTED", "RUNNING", "PAUSED", "SUCCEEDED", "FAILED" };
-    size_t sizeofArray = sizeof(stateArray) / sizeof(stateArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(state, stateArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static customer_list_upload_t *customer_list_upload_create_internal(
     char *ad_account_id,
-    int creation_time,
+    int *creation_time,
     char *customer_list_id,
     list_t *error_counts,
     char *id,
     pinterest_rest_api_user_list_operation_type__e operation,
     record_counts_t *record_counts,
-    pinterest_rest_api_customer_list_upload_STATE_e state,
-    int updated_time
+    workload_state_t *state,
+    int *updated_time
     ) {
     customer_list_upload_t *customer_list_upload_local_var = malloc(sizeof(customer_list_upload_t));
     if (!customer_list_upload_local_var) {
         return NULL;
     }
+    memset(customer_list_upload_local_var, 0, sizeof(customer_list_upload_t));
+    customer_list_upload_local_var->_library_owned = 1;
     customer_list_upload_local_var->ad_account_id = ad_account_id;
     customer_list_upload_local_var->creation_time = creation_time;
     customer_list_upload_local_var->customer_list_id = customer_list_id;
@@ -46,33 +31,46 @@ static customer_list_upload_t *customer_list_upload_create_internal(
     customer_list_upload_local_var->record_counts = record_counts;
     customer_list_upload_local_var->state = state;
     customer_list_upload_local_var->updated_time = updated_time;
-
-    customer_list_upload_local_var->_library_owned = 1;
     return customer_list_upload_local_var;
 }
 
 __attribute__((deprecated)) customer_list_upload_t *customer_list_upload_create(
     char *ad_account_id,
-    int creation_time,
+    int *creation_time,
     char *customer_list_id,
     list_t *error_counts,
     char *id,
     pinterest_rest_api_user_list_operation_type__e operation,
     record_counts_t *record_counts,
-    pinterest_rest_api_customer_list_upload_STATE_e state,
-    int updated_time
+    workload_state_t *state,
+    int *updated_time
     ) {
-    return customer_list_upload_create_internal (
+    int *creation_time_copy = NULL;
+    if (creation_time) {
+        creation_time_copy = malloc(sizeof(int));
+        if (creation_time_copy) *creation_time_copy = *creation_time;
+    }
+    int *updated_time_copy = NULL;
+    if (updated_time) {
+        updated_time_copy = malloc(sizeof(int));
+        if (updated_time_copy) *updated_time_copy = *updated_time;
+    }
+    customer_list_upload_t *result = customer_list_upload_create_internal (
         ad_account_id,
-        creation_time,
+        creation_time_copy,
         customer_list_id,
         error_counts,
         id,
         operation,
         record_counts,
         state,
-        updated_time
+        updated_time_copy
         );
+    if (!result) {
+        free(creation_time_copy);
+        free(updated_time_copy);
+    }
+    return result;
 }
 
 void customer_list_upload_free(customer_list_upload_t *customer_list_upload) {
@@ -87,6 +85,10 @@ void customer_list_upload_free(customer_list_upload_t *customer_list_upload) {
     if (customer_list_upload->ad_account_id) {
         free(customer_list_upload->ad_account_id);
         customer_list_upload->ad_account_id = NULL;
+    }
+    if (customer_list_upload->creation_time) {
+        free(customer_list_upload->creation_time);
+        customer_list_upload->creation_time = NULL;
     }
     if (customer_list_upload->customer_list_id) {
         free(customer_list_upload->customer_list_id);
@@ -107,6 +109,14 @@ void customer_list_upload_free(customer_list_upload_t *customer_list_upload) {
         record_counts_free(customer_list_upload->record_counts);
         customer_list_upload->record_counts = NULL;
     }
+    if (customer_list_upload->state) {
+        workload_state_free(customer_list_upload->state);
+        customer_list_upload->state = NULL;
+    }
+    if (customer_list_upload->updated_time) {
+        free(customer_list_upload->updated_time);
+        customer_list_upload->updated_time = NULL;
+    }
     free(customer_list_upload);
 }
 
@@ -126,7 +136,7 @@ cJSON *customer_list_upload_convertToJSON(customer_list_upload_t *customer_list_
     if (!customer_list_upload->creation_time) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "creation_time", customer_list_upload->creation_time) == NULL) {
+    if(cJSON_AddNumberToObject(item, "creation_time", *customer_list_upload->creation_time) == NULL) {
     goto fail; //Numeric
     }
 
@@ -197,12 +207,16 @@ cJSON *customer_list_upload_convertToJSON(customer_list_upload_t *customer_list_
 
 
     // customer_list_upload->state
-    if (pinterest_rest_api_customer_list_upload_STATE_NULL == customer_list_upload->state) {
+    if (!customer_list_upload->state) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "state", customer_list_upload_state_ToString(customer_list_upload->state)) == NULL)
-    {
-    goto fail; //Enum
+    cJSON *state_local_JSON = workload_state_convertToJSON(customer_list_upload->state);
+    if(state_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "state", state_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
 
 
@@ -210,7 +224,7 @@ cJSON *customer_list_upload_convertToJSON(customer_list_upload_t *customer_list_
     if (!customer_list_upload->updated_time) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "updated_time", customer_list_upload->updated_time) == NULL) {
+    if(cJSON_AddNumberToObject(item, "updated_time", *customer_list_upload->updated_time) == NULL) {
     goto fail; //Numeric
     }
 
@@ -226,14 +240,29 @@ customer_list_upload_t *customer_list_upload_parseFromJSON(cJSON *customer_list_
 
     customer_list_upload_t *customer_list_upload_local_var = NULL;
 
+    char *ad_account_id_local_str = NULL;
+
+    // define the local variable for customer_list_upload->creation_time
+    int *creation_time_local_var = NULL;
+
+    char *customer_list_id_local_str = NULL;
+
     // define the local list for customer_list_upload->error_counts
     list_t *error_countsList = NULL;
+
+    char *id_local_str = NULL;
 
     // define the local variable for customer_list_upload->operation
     pinterest_rest_api_user_list_operation_type__e operation_local_nonprim = 0;
 
     // define the local variable for customer_list_upload->record_counts
     record_counts_t *record_counts_local_nonprim = NULL;
+
+    // define the local variable for customer_list_upload->state
+    workload_state_t *state_local_nonprim = NULL;
+
+    // define the local variable for customer_list_upload->updated_time
+    int *updated_time_local_var = NULL;
 
     // customer_list_upload->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(customer_list_uploadJSON, "ad_account_id");
@@ -264,6 +293,12 @@ customer_list_upload_t *customer_list_upload_parseFromJSON(cJSON *customer_list_
     {
     goto end; //Numeric
     }
+    creation_time_local_var = malloc(sizeof(int));
+    if(!creation_time_local_var)
+    {
+        goto end;
+    }
+    *creation_time_local_var = creation_time->valuedouble;
 
     // customer_list_upload->customer_list_id
     cJSON *customer_list_id = cJSON_GetObjectItemCaseSensitive(customer_list_uploadJSON, "customer_list_id");
@@ -349,13 +384,8 @@ customer_list_upload_t *customer_list_upload_parseFromJSON(cJSON *customer_list_
         goto end;
     }
 
-    pinterest_rest_api_customer_list_upload_STATE_e stateVariable;
     
-    if(!cJSON_IsString(state))
-    {
-    goto end; //Enum
-    }
-    stateVariable = customer_list_upload_state_FromString(state->valuestring);
+    state_local_nonprim = workload_state_parseFromJSON(state); //custom
 
     // customer_list_upload->updated_time
     cJSON *updated_time = cJSON_GetObjectItemCaseSensitive(customer_list_uploadJSON, "updated_time");
@@ -371,22 +401,48 @@ customer_list_upload_t *customer_list_upload_parseFromJSON(cJSON *customer_list_
     {
     goto end; //Numeric
     }
+    updated_time_local_var = malloc(sizeof(int));
+    if(!updated_time_local_var)
+    {
+        goto end;
+    }
+    *updated_time_local_var = updated_time->valuedouble;
 
+
+    if (ad_account_id && !cJSON_IsNull(ad_account_id)) ad_account_id_local_str = strdup(ad_account_id->valuestring);
+    if (customer_list_id && !cJSON_IsNull(customer_list_id)) customer_list_id_local_str = strdup(customer_list_id->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
 
     customer_list_upload_local_var = customer_list_upload_create_internal (
-        strdup(ad_account_id->valuestring),
-        creation_time->valuedouble,
-        strdup(customer_list_id->valuestring),
+        ad_account_id_local_str,
+        creation_time_local_var,
+        customer_list_id_local_str,
         error_counts ? error_countsList : NULL,
-        strdup(id->valuestring),
+        id_local_str,
         operation_local_nonprim,
         record_counts ? record_counts_local_nonprim : NULL,
-        stateVariable,
-        updated_time->valuedouble
+        state_local_nonprim,
+        updated_time_local_var
         );
+
+    if (!customer_list_upload_local_var) {
+        goto end;
+    }
 
     return customer_list_upload_local_var;
 end:
+    if (ad_account_id_local_str) {
+        free(ad_account_id_local_str);
+        ad_account_id_local_str = NULL;
+    }
+    if (creation_time_local_var) {
+        free(creation_time_local_var);
+        creation_time_local_var = NULL;
+    }
+    if (customer_list_id_local_str) {
+        free(customer_list_id_local_str);
+        customer_list_id_local_str = NULL;
+    }
     if (error_countsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, error_countsList) {
@@ -396,12 +452,24 @@ end:
         list_freeList(error_countsList);
         error_countsList = NULL;
     }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
     if (operation_local_nonprim) {
         operation_local_nonprim = 0;
     }
     if (record_counts_local_nonprim) {
         record_counts_free(record_counts_local_nonprim);
         record_counts_local_nonprim = NULL;
+    }
+    if (state_local_nonprim) {
+        workload_state_free(state_local_nonprim);
+        state_local_nonprim = NULL;
+    }
+    if (updated_time_local_var) {
+        free(updated_time_local_var);
+        updated_time_local_var = NULL;
     }
     return NULL;
 

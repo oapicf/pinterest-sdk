@@ -11,6 +11,7 @@ module CatalogsFormat =
   let TSVEnum = "TSV"
   let CSVEnum = "CSV"
   let XMLEnum = "XML"
+  let INTEGRATIONEnum = "INTEGRATION"
   type CatalogsFormat = string
 
   //#endregion

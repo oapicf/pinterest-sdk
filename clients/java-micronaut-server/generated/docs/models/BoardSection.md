@@ -10,7 +10,7 @@ The class is defined in **[BoardSection.java](../../src/main/java/org/openapitoo
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | `String` |  |  [optional property] [readonly property]
+**id** | `String` |  |  [optional property]
 **name** | `String` |  | 
 
 

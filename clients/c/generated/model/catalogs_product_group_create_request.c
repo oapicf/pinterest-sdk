@@ -9,20 +9,20 @@ static catalogs_product_group_create_request_t *catalogs_product_group_create_re
     char *description,
     char *feed_id,
     catalogs_product_group_filters_request_t *filters,
-    int is_featured,
+    int *is_featured,
     char *name
     ) {
     catalogs_product_group_create_request_t *catalogs_product_group_create_request_local_var = malloc(sizeof(catalogs_product_group_create_request_t));
     if (!catalogs_product_group_create_request_local_var) {
         return NULL;
     }
+    memset(catalogs_product_group_create_request_local_var, 0, sizeof(catalogs_product_group_create_request_t));
+    catalogs_product_group_create_request_local_var->_library_owned = 1;
     catalogs_product_group_create_request_local_var->description = description;
     catalogs_product_group_create_request_local_var->feed_id = feed_id;
     catalogs_product_group_create_request_local_var->filters = filters;
     catalogs_product_group_create_request_local_var->is_featured = is_featured;
     catalogs_product_group_create_request_local_var->name = name;
-
-    catalogs_product_group_create_request_local_var->_library_owned = 1;
     return catalogs_product_group_create_request_local_var;
 }
 
@@ -30,16 +30,25 @@ __attribute__((deprecated)) catalogs_product_group_create_request_t *catalogs_pr
     char *description,
     char *feed_id,
     catalogs_product_group_filters_request_t *filters,
-    int is_featured,
+    int *is_featured,
     char *name
     ) {
-    return catalogs_product_group_create_request_create_internal (
+    int *is_featured_copy = NULL;
+    if (is_featured) {
+        is_featured_copy = malloc(sizeof(int));
+        if (is_featured_copy) *is_featured_copy = *is_featured;
+    }
+    catalogs_product_group_create_request_t *result = catalogs_product_group_create_request_create_internal (
         description,
         feed_id,
         filters,
-        is_featured,
+        is_featured_copy,
         name
         );
+    if (!result) {
+        free(is_featured_copy);
+    }
+    return result;
 }
 
 void catalogs_product_group_create_request_free(catalogs_product_group_create_request_t *catalogs_product_group_create_request) {
@@ -62,6 +71,10 @@ void catalogs_product_group_create_request_free(catalogs_product_group_create_re
     if (catalogs_product_group_create_request->filters) {
         catalogs_product_group_filters_request_free(catalogs_product_group_create_request->filters);
         catalogs_product_group_create_request->filters = NULL;
+    }
+    if (catalogs_product_group_create_request->is_featured) {
+        free(catalogs_product_group_create_request->is_featured);
+        catalogs_product_group_create_request->is_featured = NULL;
     }
     if (catalogs_product_group_create_request->name) {
         free(catalogs_product_group_create_request->name);
@@ -106,7 +119,7 @@ cJSON *catalogs_product_group_create_request_convertToJSON(catalogs_product_grou
 
     // catalogs_product_group_create_request->is_featured
     if(catalogs_product_group_create_request->is_featured) {
-    if(cJSON_AddBoolToObject(item, "is_featured", catalogs_product_group_create_request->is_featured) == NULL) {
+    if(cJSON_AddBoolToObject(item, "is_featured", *catalogs_product_group_create_request->is_featured) == NULL) {
     goto fail; //Bool
     }
     }
@@ -132,8 +145,17 @@ catalogs_product_group_create_request_t *catalogs_product_group_create_request_p
 
     catalogs_product_group_create_request_t *catalogs_product_group_create_request_local_var = NULL;
 
+    char *description_local_str = NULL;
+
+    char *feed_id_local_str = NULL;
+
     // define the local variable for catalogs_product_group_create_request->filters
     catalogs_product_group_filters_request_t *filters_local_nonprim = NULL;
+
+    // define the local variable for catalogs_product_group_create_request->is_featured
+    int *is_featured_local_var = NULL;
+
+    char *name_local_str = NULL;
 
     // catalogs_product_group_create_request->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_create_requestJSON, "description");
@@ -184,6 +206,12 @@ catalogs_product_group_create_request_t *catalogs_product_group_create_request_p
     {
     goto end; //Bool
     }
+    is_featured_local_var = malloc(sizeof(int));
+    if(!is_featured_local_var)
+    {
+        goto end;
+    }
+    *is_featured_local_var = is_featured->valueint;
     }
 
     // catalogs_product_group_create_request->name
@@ -202,19 +230,43 @@ catalogs_product_group_create_request_t *catalogs_product_group_create_request_p
     }
 
 
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (feed_id && !cJSON_IsNull(feed_id)) feed_id_local_str = strdup(feed_id->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     catalogs_product_group_create_request_local_var = catalogs_product_group_create_request_create_internal (
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        strdup(feed_id->valuestring),
+        description_local_str,
+        feed_id_local_str,
         filters_local_nonprim,
-        is_featured ? is_featured->valueint : 0,
-        strdup(name->valuestring)
+        is_featured_local_var,
+        name_local_str
         );
+
+    if (!catalogs_product_group_create_request_local_var) {
+        goto end;
+    }
 
     return catalogs_product_group_create_request_local_var;
 end:
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (feed_id_local_str) {
+        free(feed_id_local_str);
+        feed_id_local_str = NULL;
+    }
     if (filters_local_nonprim) {
         catalogs_product_group_filters_request_free(filters_local_nonprim);
         filters_local_nonprim = NULL;
+    }
+    if (is_featured_local_var) {
+        free(is_featured_local_var);
+        is_featured_local_var = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
     }
     return NULL;
 

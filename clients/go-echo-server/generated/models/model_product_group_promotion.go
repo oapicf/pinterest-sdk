@@ -3,56 +3,56 @@ package models
 type ProductGroupPromotion struct {
 
 	// ID of the ad group the product group belongs to.
-	AdGroupId string `json:"ad_group_id,omitempty" validate:"regexp=^(AG)?\\\\d+$"`
+	AdGroupId string `json:"ad_group_id,omitempty" validate:"regexp=^(AG)?\\d+$"`
 
 	// The bid in micro currency.
-	BidInMicroCurrency *int32 `json:"bid_in_micro_currency,omitempty"`
+	BidInMicroCurrency int32 `json:"bid_in_micro_currency,omitempty"`
 
-	// ID of the catalogs product group that this product group promotion references
-	CatalogProductGroupId *string `json:"catalog_product_group_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// ID of the catalogs product group that this product group promotion references (required for create operations)
+	CatalogProductGroupId string `json:"catalog_product_group_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Catalogs product group name
-	CatalogProductGroupName *string `json:"catalog_product_group_name,omitempty"`
+	CatalogProductGroupName string `json:"catalog_product_group_name,omitempty"`
 
-	// Collections ad header type
-	CollectionsHeaderType *string `json:"collections_header_type,omitempty"`
+	CollectionsHeaderType *CollectionsHeaderType `json:"collections_header_type,omitempty"`
 
 	// Collections Hero Destination Url
 	CollectionsHeroDestinationUrl *string `json:"collections_hero_destination_url,omitempty"`
 
 	// Hero Pin ID if this PG is promoted as a Collection
-	CollectionsHeroPinId *string `json:"collections_hero_pin_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CollectionsHeroPinId *string `json:"collections_hero_pin_id,omitempty" validate:"regexp=^\\d+$"`
 
 	CreativeType CreativeType `json:"creative_type,omitempty"`
 
-	// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-	CustomizableCtaType *string `json:"customizable_cta_type,omitempty"`
+	CustomizableCtaType ProductGroupPromotionCustomizableCtaType `json:"customizable_cta_type,omitempty"`
 
 	// The full product group definition path
-	Definition *string `json:"definition,omitempty"`
+	Definition string `json:"definition,omitempty"`
 
 	GridClickType *GridClickType `json:"grid_click_type,omitempty"`
 
-	// ID of the product group promotion.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	// ID of the product group promotion (required for update operations).
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 
 	// True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
-	Included *bool `json:"included,omitempty"`
+	Included bool `json:"included,omitempty"`
 
 	// Enable generate backgrounds for the product group, default value is FALSE. When enabled, Pinterest will use generative AI to apply backgrounds for your product images that help drive user inspiration and engagement.
 	IsGenerateBackground *bool `json:"is_generate_background,omitempty"`
 
+	// Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.
+	IsImageAutoResizing *bool `json:"is_image_auto_resizing,omitempty"`
+
 	// If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
-	IsMdl *bool `json:"is_mdl,omitempty"`
+	IsMdl bool `json:"is_mdl,omitempty"`
 
 	// The parent Product Group ID of this Product Group
-	ParentId *string `json:"parent_id,omitempty" validate:"regexp=^\\\\d+$"`
+	ParentId string `json:"parent_id,omitempty" validate:"regexp=^\\d+$"`
 
-	// Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
-	PreferredMediaType *string `json:"preferred_media_type,omitempty"`
+	PreferredMediaType *PreferredMediaType `json:"preferred_media_type,omitempty"`
 
 	// The definition of the product group, relative to its parent - an attribute name/value pair
-	RelativeDefinition *string `json:"relative_definition,omitempty"`
+	RelativeDefinition string `json:"relative_definition,omitempty"`
 
 	// The ad image tag selected for the product group promotion.
 	SelectedImageTag *string `json:"selected_image_tag,omitempty"`
@@ -69,5 +69,5 @@ type ProductGroupPromotion struct {
 	Status EntityStatus `json:"status,omitempty"`
 
 	// Tracking template for proudct group promotions. 4000 limit
-	TrackingUrl *string `json:"tracking_url,omitempty"`
+	TrackingUrl string `json:"tracking_url,omitempty"`
 }

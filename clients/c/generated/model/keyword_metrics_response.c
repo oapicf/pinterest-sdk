@@ -13,10 +13,10 @@ static keyword_metrics_response_t *keyword_metrics_response_create_internal(
     if (!keyword_metrics_response_local_var) {
         return NULL;
     }
+    memset(keyword_metrics_response_local_var, 0, sizeof(keyword_metrics_response_t));
+    keyword_metrics_response_local_var->_library_owned = 1;
     keyword_metrics_response_local_var->keyword = keyword;
     keyword_metrics_response_local_var->metrics = metrics;
-
-    keyword_metrics_response_local_var->_library_owned = 1;
     return keyword_metrics_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) keyword_metrics_response_t *keyword_metrics_response
     char *keyword,
     keyword_metrics_t *metrics
     ) {
-    return keyword_metrics_response_create_internal (
+    keyword_metrics_response_t *result = keyword_metrics_response_create_internal (
         keyword,
         metrics
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void keyword_metrics_response_free(keyword_metrics_response_t *keyword_metrics_response) {
@@ -85,6 +88,8 @@ keyword_metrics_response_t *keyword_metrics_response_parseFromJSON(cJSON *keywor
 
     keyword_metrics_response_t *keyword_metrics_response_local_var = NULL;
 
+    char *keyword_local_str = NULL;
+
     // define the local variable for keyword_metrics_response->metrics
     keyword_metrics_t *metrics_local_nonprim = NULL;
 
@@ -110,13 +115,23 @@ keyword_metrics_response_t *keyword_metrics_response_parseFromJSON(cJSON *keywor
     }
 
 
+    if (keyword && !cJSON_IsNull(keyword)) keyword_local_str = strdup(keyword->valuestring);
+
     keyword_metrics_response_local_var = keyword_metrics_response_create_internal (
-        keyword && !cJSON_IsNull(keyword) ? strdup(keyword->valuestring) : NULL,
+        keyword_local_str,
         metrics ? metrics_local_nonprim : NULL
         );
 
+    if (!keyword_metrics_response_local_var) {
+        goto end;
+    }
+
     return keyword_metrics_response_local_var;
 end:
+    if (keyword_local_str) {
+        free(keyword_local_str);
+        keyword_local_str = NULL;
+    }
     if (metrics_local_nonprim) {
         keyword_metrics_free(metrics_local_nonprim);
         metrics_local_nonprim = NULL;

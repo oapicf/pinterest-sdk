@@ -21,11 +21,13 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
-import org.openapitools.client.api.AdAccountsCountryResponse
-import org.openapitools.client.api.BookClosedResponse
-import org.openapitools.client.api.DeliveryMetricsResponse
+import org.openapitools.client.api.AdAccountCountriesGet200Response
+import org.openapitools.client.api.BookClosed
+import org.openapitools.client.api.DeliveryMetricsGet200Response
 import org.openapitools.client.api.Error
-import org.openapitools.client.api.SingleInterestTargetingOptionResponse
+import org.openapitools.client.api.PublicTargetingType
+import org.openapitools.client.api.ReportType
+import org.openapitools.client.api.SingleInterestTargetingOption
 
 object ResourcesApi {
 
@@ -33,8 +35,8 @@ object ResourcesApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adAccountCountriesGet(host: String): Task[AdAccountsCountryResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[AdAccountsCountryResponse] = jsonOf[AdAccountsCountryResponse]
+  def adAccountCountriesGet(host: String): Task[AdAccountCountriesGet200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdAccountCountriesGet200Response] = jsonOf[AdAccountCountriesGet200Response]
 
     val path = "/resources/ad_account_countries"
 
@@ -49,13 +51,13 @@ object ResourcesApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[AdAccountsCountryResponse](req)
+      resp          <- client.expect[AdAccountCountriesGet200Response](req)
 
     } yield resp
   }
 
-  def deliveryMetricsGet(host: String, reportType: String)(implicit reportTypeQuery: QueryParam[String]): Task[DeliveryMetricsResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[DeliveryMetricsResponse] = jsonOf[DeliveryMetricsResponse]
+  def deliveryMetricsGet(host: String, reportType: ReportType)(implicit reportTypeQuery: QueryParam[ReportType]): Task[DeliveryMetricsGet200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[DeliveryMetricsGet200Response] = jsonOf[DeliveryMetricsGet200Response]
 
     val path = "/resources/delivery_metrics"
 
@@ -70,13 +72,13 @@ object ResourcesApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[DeliveryMetricsResponse](req)
+      resp          <- client.expect[DeliveryMetricsGet200Response](req)
 
     } yield resp
   }
 
-  def interestTargetingOptionsGet(host: String, interestId: String): Task[SingleInterestTargetingOptionResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[SingleInterestTargetingOptionResponse] = jsonOf[SingleInterestTargetingOptionResponse]
+  def interestTargetingOptionsGet(host: String, interestId: String): Task[SingleInterestTargetingOption] = {
+    implicit val returnTypeDecoder: EntityDecoder[SingleInterestTargetingOption] = jsonOf[SingleInterestTargetingOption]
 
     val path = "/resources/targeting/interests/{interest_id}".replaceAll("\\{" + "interest_id" + "\\}",escape(interestId.toString))
 
@@ -91,7 +93,7 @@ object ResourcesApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[SingleInterestTargetingOptionResponse](req)
+      resp          <- client.expect[SingleInterestTargetingOption](req)
 
     } yield resp
   }
@@ -115,8 +117,8 @@ object ResourcesApi {
     } yield resp
   }
 
-  def metricsReadyStateGet(host: String, date: String)(implicit dateQuery: QueryParam[String]): Task[BookClosedResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[BookClosedResponse] = jsonOf[BookClosedResponse]
+  def metricsReadyStateGet(host: String, date: String)(implicit dateQuery: QueryParam[String]): Task[BookClosed] = {
+    implicit val returnTypeDecoder: EntityDecoder[BookClosed] = jsonOf[BookClosed]
 
     val path = "/resources/metrics_ready_state"
 
@@ -131,12 +133,12 @@ object ResourcesApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[BookClosedResponse](req)
+      resp          <- client.expect[BookClosed](req)
 
     } yield resp
   }
 
-  def targetingOptionsGet(host: String, targetingType: String, clientId: String, oauthSignature: String, timestamp: String, adAccountId: String)(implicit clientIdQuery: QueryParam[String], oauthSignatureQuery: QueryParam[String], timestampQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[List[Any]] = {
+  def targetingOptionsGet(host: String, targetingType: PublicTargetingType, adAccountId: String, clientId: String, oauthSignature: String, timestamp: String)(implicit adAccountIdQuery: QueryParam[String], clientIdQuery: QueryParam[String], oauthSignatureQuery: QueryParam[String], timestampQuery: QueryParam[String]): Task[List[Any]] = {
     implicit val returnTypeDecoder: EntityDecoder[List[Any]] = jsonOf[List[Any]]
 
     val path = "/resources/targeting/{targeting_type}".replaceAll("\\{" + "targeting_type" + "\\}",escape(targetingType.toString))
@@ -146,7 +148,7 @@ object ResourcesApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("clientId", Some(client_idQuery.toParamString(client_id))), ("oauthSignature", Some(oauth_signatureQuery.toParamString(oauth_signature))), ("timestamp", Some(timestampQuery.toParamString(timestamp))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("clientId", Some(client_idQuery.toParamString(client_id))), ("oauthSignature", Some(oauth_signatureQuery.toParamString(oauth_signature))), ("timestamp", Some(timestampQuery.toParamString(timestamp))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -164,8 +166,8 @@ class HttpServiceResourcesApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adAccountCountriesGet(): Task[AdAccountsCountryResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[AdAccountsCountryResponse] = jsonOf[AdAccountsCountryResponse]
+  def adAccountCountriesGet(): Task[AdAccountCountriesGet200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdAccountCountriesGet200Response] = jsonOf[AdAccountCountriesGet200Response]
 
     val path = "/resources/ad_account_countries"
 
@@ -180,13 +182,13 @@ class HttpServiceResourcesApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[AdAccountsCountryResponse](req)
+      resp          <- client.expect[AdAccountCountriesGet200Response](req)
 
     } yield resp
   }
 
-  def deliveryMetricsGet(reportType: String)(implicit reportTypeQuery: QueryParam[String]): Task[DeliveryMetricsResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[DeliveryMetricsResponse] = jsonOf[DeliveryMetricsResponse]
+  def deliveryMetricsGet(reportType: ReportType)(implicit reportTypeQuery: QueryParam[ReportType]): Task[DeliveryMetricsGet200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[DeliveryMetricsGet200Response] = jsonOf[DeliveryMetricsGet200Response]
 
     val path = "/resources/delivery_metrics"
 
@@ -201,13 +203,13 @@ class HttpServiceResourcesApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[DeliveryMetricsResponse](req)
+      resp          <- client.expect[DeliveryMetricsGet200Response](req)
 
     } yield resp
   }
 
-  def interestTargetingOptionsGet(interestId: String): Task[SingleInterestTargetingOptionResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[SingleInterestTargetingOptionResponse] = jsonOf[SingleInterestTargetingOptionResponse]
+  def interestTargetingOptionsGet(interestId: String): Task[SingleInterestTargetingOption] = {
+    implicit val returnTypeDecoder: EntityDecoder[SingleInterestTargetingOption] = jsonOf[SingleInterestTargetingOption]
 
     val path = "/resources/targeting/interests/{interest_id}".replaceAll("\\{" + "interest_id" + "\\}",escape(interestId.toString))
 
@@ -222,7 +224,7 @@ class HttpServiceResourcesApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[SingleInterestTargetingOptionResponse](req)
+      resp          <- client.expect[SingleInterestTargetingOption](req)
 
     } yield resp
   }
@@ -246,8 +248,8 @@ class HttpServiceResourcesApi(service: HttpService) {
     } yield resp
   }
 
-  def metricsReadyStateGet(date: String)(implicit dateQuery: QueryParam[String]): Task[BookClosedResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[BookClosedResponse] = jsonOf[BookClosedResponse]
+  def metricsReadyStateGet(date: String)(implicit dateQuery: QueryParam[String]): Task[BookClosed] = {
+    implicit val returnTypeDecoder: EntityDecoder[BookClosed] = jsonOf[BookClosed]
 
     val path = "/resources/metrics_ready_state"
 
@@ -262,12 +264,12 @@ class HttpServiceResourcesApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[BookClosedResponse](req)
+      resp          <- client.expect[BookClosed](req)
 
     } yield resp
   }
 
-  def targetingOptionsGet(targetingType: String, clientId: String, oauthSignature: String, timestamp: String, adAccountId: String)(implicit clientIdQuery: QueryParam[String], oauthSignatureQuery: QueryParam[String], timestampQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[List[Any]] = {
+  def targetingOptionsGet(targetingType: PublicTargetingType, adAccountId: String, clientId: String, oauthSignature: String, timestamp: String)(implicit adAccountIdQuery: QueryParam[String], clientIdQuery: QueryParam[String], oauthSignatureQuery: QueryParam[String], timestampQuery: QueryParam[String]): Task[List[Any]] = {
     implicit val returnTypeDecoder: EntityDecoder[List[Any]] = jsonOf[List[Any]]
 
     val path = "/resources/targeting/{targeting_type}".replaceAll("\\{" + "targeting_type" + "\\}",escape(targetingType.toString))
@@ -277,7 +279,7 @@ class HttpServiceResourcesApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("clientId", Some(client_idQuery.toParamString(client_id))), ("oauthSignature", Some(oauth_signatureQuery.toParamString(oauth_signature))), ("timestamp", Some(timestampQuery.toParamString(timestamp))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("clientId", Some(client_idQuery.toParamString(client_id))), ("oauthSignature", Some(oauth_signatureQuery.toParamString(oauth_signature))), ("timestamp", Some(timestampQuery.toParamString(timestamp))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

@@ -5,11 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.AdCreateRequest;
 import org.openapitools.model.AdGroupCreateRequest;
+import org.openapitools.model.BulkUpsertRequestCreateCatalogProductGroupsItems;
 import org.openapitools.model.CampaignCreateRequest;
 import org.openapitools.model.KeywordsRequest;
-import org.openapitools.model.LabelCreateRequest;
-import org.openapitools.model.MultipleProductGroupsInner;
+import org.openapitools.model.LabelBulkCreateRequest;
 import org.openapitools.model.ProductGroupPromotionCreateRequest;
+import org.openapitools.model.ScheduleCreateRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -39,7 +40,7 @@ public class BulkUpsertRequestCreate  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<MultipleProductGroupsInner> catalogProductGroups = new ArrayList<>();
+  private List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   @Valid
@@ -47,11 +48,15 @@ public class BulkUpsertRequestCreate  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid LabelCreateRequest> labels = new ArrayList<>();
+  private List<@Valid LabelBulkCreateRequest> labels = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   @Valid
   private List<@Valid ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
+
+  @ApiModelProperty(value = "")
+  @Valid
+  private List<@Valid ScheduleCreateRequest> schedules = new ArrayList<>();
  /**
   * Get adGroups
   * @return adGroups
@@ -153,21 +158,21 @@ public class BulkUpsertRequestCreate  {
   * @return catalogProductGroups
   */
   @JsonProperty("catalog_product_groups")
-  public List<MultipleProductGroupsInner> getCatalogProductGroups() {
+  public List<BulkUpsertRequestCreateCatalogProductGroupsItems> getCatalogProductGroups() {
     return catalogProductGroups;
   }
 
   /**
    * Sets the <code>catalogProductGroups</code> property.
    */
- public void setCatalogProductGroups(List<MultipleProductGroupsInner> catalogProductGroups) {
+ public void setCatalogProductGroups(List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
   }
 
   /**
    * Sets the <code>catalogProductGroups</code> property.
    */
-  public BulkUpsertRequestCreate catalogProductGroups(List<MultipleProductGroupsInner> catalogProductGroups) {
+  public BulkUpsertRequestCreate catalogProductGroups(List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
     return this;
   }
@@ -175,7 +180,7 @@ public class BulkUpsertRequestCreate  {
   /**
    * Adds a new item to the <code>catalogProductGroups</code> list.
    */
-  public BulkUpsertRequestCreate addCatalogProductGroupsItem(MultipleProductGroupsInner catalogProductGroupsItem) {
+  public BulkUpsertRequestCreate addCatalogProductGroupsItem(BulkUpsertRequestCreateCatalogProductGroupsItems catalogProductGroupsItem) {
     this.catalogProductGroups.add(catalogProductGroupsItem);
     return this;
   }
@@ -217,21 +222,21 @@ public class BulkUpsertRequestCreate  {
   * @return labels
   */
   @JsonProperty("labels")
-  public List<@Valid LabelCreateRequest> getLabels() {
+  public List<@Valid LabelBulkCreateRequest> getLabels() {
     return labels;
   }
 
   /**
    * Sets the <code>labels</code> property.
    */
- public void setLabels(List<@Valid LabelCreateRequest> labels) {
+ public void setLabels(List<@Valid LabelBulkCreateRequest> labels) {
     this.labels = labels;
   }
 
   /**
    * Sets the <code>labels</code> property.
    */
-  public BulkUpsertRequestCreate labels(List<@Valid LabelCreateRequest> labels) {
+  public BulkUpsertRequestCreate labels(List<@Valid LabelBulkCreateRequest> labels) {
     this.labels = labels;
     return this;
   }
@@ -239,7 +244,7 @@ public class BulkUpsertRequestCreate  {
   /**
    * Adds a new item to the <code>labels</code> list.
    */
-  public BulkUpsertRequestCreate addLabelsItem(LabelCreateRequest labelsItem) {
+  public BulkUpsertRequestCreate addLabelsItem(LabelBulkCreateRequest labelsItem) {
     this.labels.add(labelsItem);
     return this;
   }
@@ -276,6 +281,38 @@ public class BulkUpsertRequestCreate  {
     return this;
   }
 
+ /**
+  * Get schedules
+  * @return schedules
+  */
+  @JsonProperty("schedules")
+  public List<@Valid ScheduleCreateRequest> getSchedules() {
+    return schedules;
+  }
+
+  /**
+   * Sets the <code>schedules</code> property.
+   */
+ public void setSchedules(List<@Valid ScheduleCreateRequest> schedules) {
+    this.schedules = schedules;
+  }
+
+  /**
+   * Sets the <code>schedules</code> property.
+   */
+  public BulkUpsertRequestCreate schedules(List<@Valid ScheduleCreateRequest> schedules) {
+    this.schedules = schedules;
+    return this;
+  }
+
+  /**
+   * Adds a new item to the <code>schedules</code> list.
+   */
+  public BulkUpsertRequestCreate addSchedulesItem(ScheduleCreateRequest schedulesItem) {
+    this.schedules.add(schedulesItem);
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -292,12 +329,13 @@ public class BulkUpsertRequestCreate  {
         Objects.equals(this.catalogProductGroups, bulkUpsertRequestCreate.catalogProductGroups) &&
         Objects.equals(this.keywords, bulkUpsertRequestCreate.keywords) &&
         Objects.equals(this.labels, bulkUpsertRequestCreate.labels) &&
-        Objects.equals(this.productGroups, bulkUpsertRequestCreate.productGroups);
+        Objects.equals(this.productGroups, bulkUpsertRequestCreate.productGroups) &&
+        Objects.equals(this.schedules, bulkUpsertRequestCreate.schedules);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroups, ads, campaigns, catalogProductGroups, keywords, labels, productGroups);
+    return Objects.hash(adGroups, ads, campaigns, catalogProductGroups, keywords, labels, productGroups, schedules);
   }
 
   @Override
@@ -312,6 +350,7 @@ public class BulkUpsertRequestCreate  {
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    productGroups: ").append(toIndentedString(productGroups)).append("\n");
+    sb.append("    schedules: ").append(toIndentedString(schedules)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -321,10 +360,7 @@ public class BulkUpsertRequestCreate  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -8,10 +8,11 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **adGroups** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdGroupUpdateRequest&gt;**](AdGroupUpdateRequest.md) |  |  [optional]
 **ads** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdUpdateRequest&gt;**](AdUpdateRequest.md) |  |  [optional]
 **campaigns** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;CampaignUpdateRequest&gt;**](CampaignUpdateRequest.md) |  |  [optional]
-**catalogProductGroups** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;CatalogsProductGroupsUpdateRequest&gt;**](CatalogsProductGroupsUpdateRequest.md) |  |  [optional]
-**keywords** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;KeywordUpdate&gt;**](KeywordUpdate.md) |  |  [optional]
+**catalogProductGroups** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;BulkUpsertRequestUpdateCatalogProductGroupsItems&gt;**](BulkUpsertRequestUpdateCatalogProductGroupsItems.md) |  |  [optional]
+**keywords** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;KeywordUpdateGenerated&gt;**](KeywordUpdateGenerated.md) |  |  [optional]
 **labels** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;LabelBulkUpdateRequest&gt;**](LabelBulkUpdateRequest.md) |  |  [optional]
 **productGroups** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ProductGroupPromotionUpdateRequest&gt;**](ProductGroupPromotionUpdateRequest.md) |  |  [optional]
+**schedules** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ScheduleUpdateRequest&gt;**](ScheduleUpdateRequest.md) |  |  [optional]
 
 
 # **Table `BulkUpsertRequestUpdateAdGroupUpdateRequest`**
@@ -47,25 +48,25 @@ campaignUpdateRequest | campaignUpdateRequest | long | | kotlin.Long | Foreign K
 
 
 
-# **Table `BulkUpsertRequestUpdateCatalogsProductGroupsUpdateRequest`**
-(mapped from: BulkUpsertRequestUpdateCatalogsProductGroupsUpdateRequest)
+# **Table `BulkUpsertRequestUpdateBulkUpsertRequestUpdateCatalogProductGroupsItems`**
+(mapped from: BulkUpsertRequestUpdateBulkUpsertRequestUpdateCatalogProductGroupsItems)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 bulkUpsertRequestUpdate | bulkUpsertRequestUpdate | long | | kotlin.Long | Primary Key | *one*
-catalogsProductGroupsUpdateRequest | catalogsProductGroupsUpdateRequest | long | | kotlin.Long | Foreign Key | *many*
+bulkUpsertRequestUpdateCatalogProductGroupsItems | bulkUpsertRequestUpdateCatalogProductGroupsItems | long | | kotlin.Long | Foreign Key | *many*
 
 
 
-# **Table `BulkUpsertRequestUpdateKeywordUpdate`**
-(mapped from: BulkUpsertRequestUpdateKeywordUpdate)
+# **Table `BulkUpsertRequestUpdateKeywordUpdateGenerated`**
+(mapped from: BulkUpsertRequestUpdateKeywordUpdateGenerated)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 bulkUpsertRequestUpdate | bulkUpsertRequestUpdate | long | | kotlin.Long | Primary Key | *one*
-keywordUpdate | keywordUpdate | long | | kotlin.Long | Foreign Key | *many*
+keywordUpdateGenerated | keywordUpdateGenerated | long | | kotlin.Long | Foreign Key | *many*
 
 
 
@@ -88,6 +89,17 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 bulkUpsertRequestUpdate | bulkUpsertRequestUpdate | long | | kotlin.Long | Primary Key | *one*
 productGroupPromotionUpdateRequest | productGroupPromotionUpdateRequest | long | | kotlin.Long | Foreign Key | *many*
+
+
+
+# **Table `BulkUpsertRequestUpdateScheduleUpdateRequest`**
+(mapped from: BulkUpsertRequestUpdateScheduleUpdateRequest)
+
+## Properties
+Name | Mapping | SQL Type | Default | Type | Description | Notes
+---- | ------- | -------- | ------- | ---- | ----------- | -----
+bulkUpsertRequestUpdate | bulkUpsertRequestUpdate | long | | kotlin.Long | Primary Key | *one*
+scheduleUpdateRequest | scheduleUpdateRequest | long | | kotlin.Long | Foreign Key | *many*
 
 
 

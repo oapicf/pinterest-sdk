@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **catalog_type** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | [optional] 
-**name** | **str** |  | [optional] 
+**name** | **str** | Name of catalog product group | [optional] 
 
 ## Example
 

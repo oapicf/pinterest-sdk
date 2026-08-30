@@ -2,24 +2,24 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsFeedValidationWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedValidationWarnings {
 
   private Integer AD_IMAGE_0_LINK_DUPLICATED;
@@ -372,40 +372,7 @@ public class CatalogsFeedValidationWarnings {
 
   private Integer EXPIRATION_DATE_INVALID;
 
-  /**
-   * Ingestion completed early because there are no changes to your feed since the last successful update.
-   */
-  public enum FETCHSAMESIGNATUREEnum {
-    NUMBER_1(1);
-
-    private final Integer value;
-
-    FETCHSAMESIGNATUREEnum(Integer value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public Integer getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FETCHSAMESIGNATUREEnum fromValue(Integer value) {
-      for (FETCHSAMESIGNATUREEnum b : FETCHSAMESIGNATUREEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE;
+  private Integer FETCH_SAME_SIGNATURE;
 
   private Integer GENDER_INVALID;
 
@@ -3977,7 +3944,7 @@ public class CatalogsFeedValidationWarnings {
     this.EXPIRATION_DATE_INVALID = EXPIRATION_DATE_INVALID;
   }
 
-  public CatalogsFeedValidationWarnings FETCH_SAME_SIGNATURE(FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
+  public CatalogsFeedValidationWarnings FETCH_SAME_SIGNATURE(Integer FETCH_SAME_SIGNATURE) {
     this.FETCH_SAME_SIGNATURE = FETCH_SAME_SIGNATURE;
     return this;
   }
@@ -3989,11 +3956,11 @@ public class CatalogsFeedValidationWarnings {
   
   @Schema(name = "FETCH_SAME_SIGNATURE", description = "Ingestion completed early because there are no changes to your feed since the last successful update.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("FETCH_SAME_SIGNATURE")
-  public FETCHSAMESIGNATUREEnum getFETCHSAMESIGNATURE() {
+  public Integer getFETCHSAMESIGNATURE() {
     return FETCH_SAME_SIGNATURE;
   }
 
-  public void setFETCHSAMESIGNATURE(FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
+  public void setFETCHSAMESIGNATURE(Integer FETCH_SAME_SIGNATURE) {
     this.FETCH_SAME_SIGNATURE = FETCH_SAME_SIGNATURE;
   }
 
@@ -5148,10 +5115,7 @@ public class CatalogsFeedValidationWarnings {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

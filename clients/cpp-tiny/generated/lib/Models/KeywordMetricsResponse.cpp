@@ -86,7 +86,7 @@ KeywordMetricsResponse::getKeyword()
 }
 
 void
-KeywordMetricsResponse::setKeyword(std::string  keyword)
+KeywordMetricsResponse::setKeyword(std::string keyword)
 {
 	this->keyword = keyword;
 }
@@ -98,7 +98,7 @@ KeywordMetricsResponse::getMetrics()
 }
 
 void
-KeywordMetricsResponse::setMetrics(KeywordMetrics  metrics)
+KeywordMetricsResponse::setMetrics(KeywordMetrics metrics)
 {
 	this->metrics = metrics;
 }

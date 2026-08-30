@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -19,12 +24,12 @@ type ProductCategoryDetails struct {
 
 	Demographics ProductCategoriesDemographic `json:"demographics,omitempty"`
 
-	//      Indicates whether the keyword has a prediction available for the next 90 days.     This field is only applicable when include_prediction query parameter is set to true.     By default, the value is false and no prediction data is included in the response.
+	//     Indicates whether the keyword has a prediction available for the next 90 days.     This field is only applicable when include_prediction query parameter is set to true.     By default, the value is false and no prediction data is included in the response.
 	HasPrediction bool `json:"has_prediction"`
 
 	MetricsHighlights ProductCategoriesMetricsHighlights `json:"metrics_highlights,omitempty"`
 
-	//      A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.     These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword.     Similar to the historical time_series, normalization is applied independently to the predicted time series of each keyword, but the normalize_against_group query parameter can be used in cases where you wish to compare relative predicted volume between keywords.     **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.     **Note**: The date of each observation is in ISO-8601 format and represents the end of the week. For example, a value of 2024-01-07 would include predicted searches for the week ending on 2024-01-07.
+	//     A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.     These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword.     Similar to the historical time_series, normalization is applied independently to the predicted time series of each keyword, but the normalize_against_group query parameter can be used in cases where you wish to compare relative predicted volume between keywords.     **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.     **Note**: The date of each observation is in ISO-8601 format and represents the end of the week. For example, a value of 2024-01-07 would include predicted searches for the week ending on 2024-01-07.
 	PredictedTimeSeries map[string]float32 `json:"predicted_time_series,omitempty"`
 
 	ProductCategory ProductCategoryEnum `json:"product_category"`
@@ -35,19 +40,100 @@ type ProductCategoryDetails struct {
 	// Time series data showing trend values over time, indexed between 0 and 100
 	TimeSeries map[string]float32 `json:"time_series,omitempty"`
 }
-
-// AssertProductCategoryDetailsRequired checks if the required fields are not zero-ed
-func AssertProductCategoryDetailsRequired(obj ProductCategoryDetails) error {
-	elements := map[string]interface{}{
-		"has_prediction": obj.HasPrediction,
-		"product_category": obj.ProductCategory,
+// UnmarshalJSON validates required property keys then unmarshals into ProductCategoryDetails
+func (o *ProductCategoryDetails) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"has_prediction",
+		"product_category",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"has_prediction": false,
+		"product_category": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"demographics": {},
+		"has_prediction": {},
+		"metrics_highlights": {},
+		"predicted_time_series": {},
+		"product_category": {},
+		"related_searches": {},
+		"time_series": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded ProductCategoryDetails
+
+	if value, exists := allProperties["demographics"]; exists {
+		if err = json.Unmarshal(value, &decoded.Demographics); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["has_prediction"]; exists {
+		if err = json.Unmarshal(value, &decoded.HasPrediction); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["metrics_highlights"]; exists {
+		if err = json.Unmarshal(value, &decoded.MetricsHighlights); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["predicted_time_series"]; exists {
+		if err = json.Unmarshal(value, &decoded.PredictedTimeSeries); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["product_category"]; exists {
+		if err = json.Unmarshal(value, &decoded.ProductCategory); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["related_searches"]; exists {
+		if err = json.Unmarshal(value, &decoded.RelatedSearches); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["time_series"]; exists {
+		if err = json.Unmarshal(value, &decoded.TimeSeries); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertProductCategoryDetailsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertProductCategoryDetailsRequired(obj ProductCategoryDetails) error {
 	if err := AssertProductCategoriesDemographicRequired(obj.Demographics); err != nil {
 		return err
 	}

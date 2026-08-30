@@ -4,13 +4,15 @@ package org.openapitools.client.model
 
 case class OrderLine (
     /* Ad account ID. */
-    _adAccountId: Option[String],
+    _adAccountId: String,
     /* Order line budget in micro currency. */
     _budget: Option[Number],
+    /* Associated List of campaign IDs. */
+    _campaignIds: List[String],
     /* End time. Unix timestamp. */
     _endTime: Option[Number],
     /* Order line ID. */
-    _id: Option[String],
+    _id: String,
     /* Order line name. */
     _name: Option[String],
     /* Order line paid budget in micro currency. */
@@ -22,17 +24,15 @@ case class OrderLine (
     /* Start time. Unix timestamp. */
     _startTime: Option[Number],
     /* Order line status. */
-    _status: Option[OrderLineStatus],
+    _status: OrderLineStatus,
     /* Always \"orderline\". */
-    _type: Option[String],
-    /* Associated List of campaign IDs. */
-    _campaignIds: List[String]
+    _type: String
 )
 object OrderLine {
-    def toStringBody(var_adAccountId: Object, var_budget: Object, var_endTime: Object, var_id: Object, var_name: Object, var_paidBudget: Object, var_paidType: Object, var_purchaseOrderId: Object, var_startTime: Object, var_status: Object, var_type: Object, var_campaignIds: Object) =
+    def toStringBody(var_adAccountId: Object, var_budget: Object, var_campaignIds: Object, var_endTime: Object, var_id: Object, var_name: Object, var_paidBudget: Object, var_paidType: Object, var_purchaseOrderId: Object, var_startTime: Object, var_status: Object, var_type: Object) =
         s"""
         | {
-        | "adAccountId":$var_adAccountId,"budget":$var_budget,"endTime":$var_endTime,"id":$var_id,"name":$var_name,"paidBudget":$var_paidBudget,"paidType":$var_paidType,"purchaseOrderId":$var_purchaseOrderId,"startTime":$var_startTime,"status":$var_status,"type":$var_type,"campaignIds":$var_campaignIds
+        | "adAccountId":$var_adAccountId,"budget":$var_budget,"campaignIds":$var_campaignIds,"endTime":$var_endTime,"id":$var_id,"name":$var_name,"paidBudget":$var_paidBudget,"paidType":$var_paidType,"purchaseOrderId":$var_purchaseOrderId,"startTime":$var_startTime,"status":$var_status,"type":$var_type
         | }
         """.stripMargin
 }

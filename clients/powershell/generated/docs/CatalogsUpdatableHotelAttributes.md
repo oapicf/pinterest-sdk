@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | [**CatalogsHotelAddress**](CatalogsHotelAddress.md) |  | [optional] 
+**Address** | [**CatalogsHotelAddress**](CatalogsHotelAddress.md) | Hotel address | [optional] 
 **BasePrice** | **String** | Base price of the hotel room per night followed by the ISO currency code | [optional] 
 **Brand** | **String** | The brand to which this hotel belongs to. | [optional] 
 **Category** | **String** | The type of property. The category can be any type of internal description desired. | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **CustomLabel3** | **String** | Custom grouping of hotels | [optional] 
 **CustomLabel4** | **String** | Custom grouping of hotels | [optional] 
 **Description** | **String** | Brief description of the hotel. | [optional] 
-**GuestRatings** | [**CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) |  | [optional] 
+**GuestRatings** | [**CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) | If specified, you must provide all properties | [optional] 
 **Latitude** | **Decimal** | Latitude of the hotel. | [optional] 
 **Link** | **String** | Link to the product page | [optional] 
 **Longitude** | **Decimal** | Longitude of the hotel. | [optional] 

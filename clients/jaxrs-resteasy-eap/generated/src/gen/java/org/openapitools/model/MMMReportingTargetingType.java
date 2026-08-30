@@ -11,5 +11,7 @@ public enum MMMReportingTargetingType {
   COUNTRY,
   CREATIVE_TYPE,
   GENDER,
-  LOCATION;
+  LOCATION,
+  PLACEMENT,
+  AUDIENCE_INCLUDE;
 }

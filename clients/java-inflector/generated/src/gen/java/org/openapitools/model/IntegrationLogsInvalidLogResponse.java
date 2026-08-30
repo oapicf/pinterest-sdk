@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.IntegrationLogsInvalidLogResponseRejectedLogsInner;
+import org.openapitools.model.IntegrationLogsInvalidLogResponseRejectedLogsItems;
 
 
 
@@ -17,14 +17,14 @@ import org.openapitools.model.IntegrationLogsInvalidLogResponseRejectedLogsInner
  **/
 
 @ApiModel(description = "Schema describing the response when a log has invalid fields.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationLogsInvalidLogResponse   {
   @JsonProperty("rejected_logs")
-  private List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = null;
+  private List<IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs = null;
 
   /**
    **/
-  public IntegrationLogsInvalidLogResponse rejectedLogs(List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
+  public IntegrationLogsInvalidLogResponse rejectedLogs(List<IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs) {
     this.rejectedLogs = rejectedLogs;
     return this;
   }
@@ -32,10 +32,10 @@ public class IntegrationLogsInvalidLogResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("rejected_logs")
-  public List<IntegrationLogsInvalidLogResponseRejectedLogsInner> getRejectedLogs() {
+  public List<IntegrationLogsInvalidLogResponseRejectedLogsItems> getRejectedLogs() {
     return rejectedLogs;
   }
-  public void setRejectedLogs(List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
+  public void setRejectedLogs(List<IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs) {
     this.rejectedLogs = rejectedLogs;
   }
 
@@ -72,10 +72,7 @@ public class IntegrationLogsInvalidLogResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

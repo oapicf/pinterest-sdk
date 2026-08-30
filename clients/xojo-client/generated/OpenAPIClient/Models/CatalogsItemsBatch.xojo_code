@@ -2,15 +2,15 @@
 Protected Class CatalogsItemsBatch
 
 	#tag Property, Flags = &h0
-		catalog_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			Id of the catalogs items batch
 		#tag EndNote
 		batch_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		catalog_type As String
 	#tag EndProperty
 
 
@@ -43,7 +43,24 @@ Protected Class CatalogsItemsBatch
 	#tag EndProperty
 
 
+    #tag Enum, Name = Catalog_typeEnum, Type = Integer, Flags = &h0
+        
+        CreativeAssets
+        
+    #tag EndEnum
 
+
+	#tag Method, Flags = &h0
+		Shared Function Catalog_typeEnumToString(value As Catalog_typeEnum) As String
+		  Select Case value
+		    
+		    Case Catalog_typeEnum.CreativeAssets
+		      Return "CREATIVE_ASSETS"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -77,14 +94,6 @@ Protected Class CatalogsItemsBatch
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="catalog_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

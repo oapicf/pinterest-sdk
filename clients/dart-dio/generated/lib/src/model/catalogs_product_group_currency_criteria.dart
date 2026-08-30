@@ -28,8 +28,7 @@ abstract class CatalogsProductGroupCurrencyCriteria implements Built<CatalogsPro
   factory CatalogsProductGroupCurrencyCriteria([void updates(CatalogsProductGroupCurrencyCriteriaBuilder b)]) = _$CatalogsProductGroupCurrencyCriteria;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CatalogsProductGroupCurrencyCriteriaBuilder b) => b
-      ..negated = false;
+  static void _defaults(CatalogsProductGroupCurrencyCriteriaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<CatalogsProductGroupCurrencyCriteria> get serializer => _$CatalogsProductGroupCurrencyCriteriaSerializer();
@@ -85,8 +84,9 @@ class _$CatalogsProductGroupCurrencyCriteriaSerializer implements PrimitiveSeria
         case r'negated':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.negated = valueDes;
           break;
         case r'values':

@@ -3,6 +3,7 @@ package org.openapitools.model;
 import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -14,7 +15,6 @@ import java.util.List;
 import org.openapitools.model.AdvancedAuctionBidOptions;
 import org.openapitools.model.AdvancedAuctionItemsSubmitDeleteRecord;
 import org.openapitools.model.AdvancedAuctionItemsSubmitUpsertRecord;
-import org.openapitools.model.AdvancedAuctionOperation;
 import org.openapitools.model.AdvancedAuctionOperationError;
 import org.openapitools.model.Country;
 import org.openapitools.model.Language;
@@ -22,13 +22,13 @@ import org.openapitools.model.UpdateMaskBidOptionField;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 
 @JsonIgnoreProperties(
@@ -41,7 +41,7 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = AdvancedAuctionItemsSubmitUpsertRecord.class, name = "UPSERT")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public interface AdvancedAuctionItemsSubmitRecord {
-    public AdvancedAuctionOperation getOperation();
+    public String getOperation();
 }

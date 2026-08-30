@@ -12,6 +12,7 @@ module TrendingTopic =
 
   type TrendingTopic = {
     Description : string;
+    Id : string;
     PercentGrowthMom : int;
     Pins : TrendingPin[];
     RelatedInterests : string[];

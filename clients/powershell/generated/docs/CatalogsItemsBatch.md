@@ -3,10 +3,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **BatchId** | **String** | Id of the catalogs items batch | [optional] 
-**CompletedTime** | **System.DateTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
-**CreatedTime** | **System.DateTime** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [readonly] 
+**CatalogType** | **String** |  | 
+**CompletedTime** | **System.DateTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] 
+**CreatedTime** | **System.DateTime** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | 
 **Items** | [**CreativeAssetsProcessingRecord[]**](CreativeAssetsProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] 
 **Status** | [**BatchOperationStatus**](BatchOperationStatus.md) |  | [optional] 
 
@@ -14,10 +14,10 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CatalogsItemsBatch = Initialize-PSOpenAPIToolsCatalogsItemsBatch  -CatalogType null `
- -BatchId 595953100599279259-66753b9bb65c46c49bd8503b27fecf9e `
- -CompletedTime null `
- -CreatedTime null `
+$CatalogsItemsBatch = Initialize-PSOpenAPIToolsCatalogsItemsBatch  -BatchId 595953100599279259 `
+ -CatalogType null `
+ -CompletedTime 2024-01-01T20:20Z `
+ -CreatedTime 2024-01-01T20:10:40Z `
  -Items null `
  -Status null
 ```

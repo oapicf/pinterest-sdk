@@ -1,13 +1,14 @@
 package controllers;
 
-import apimodels.Error;
-import apimodels.LeadFormArrayResponse;
-import apimodels.LeadFormCreateRequest;
-import apimodels.LeadFormResponse;
-import apimodels.LeadFormTestRequest;
-import apimodels.LeadFormTestResponse;
-import apimodels.LeadFormUpdateRequest;
+import apimodels.LeadForm;
+import apimodels.LeadFormBatchUpdate;
+import apimodels.LeadFormCreate;
+import apimodels.LeadFormTest;
+import apimodels.LeadFormTestCreate;
+import apimodels.LeadFormsCreate200Response;
 import apimodels.LeadFormsList200Response;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -31,7 +32,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LeadFormsApiController extends Controller {
     private final LeadFormsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -45,44 +46,51 @@ public class LeadFormsApiController extends Controller {
     }
 
     @ApiAction
-    public Result leadFormGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$")String leadFormId) throws Exception {
-        return imp.leadFormGetHttp(request, adAccountId, leadFormId);
+    public Result leadFormGet(Http.Request request,  @Pattern(regexp="^\\d+$")String leadFormId, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        return imp.leadFormGetHttp(request, leadFormId, adAccountId);
     }
 
     @ApiAction
     public Result leadFormTestCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$")String leadFormId) throws Exception {
-        JsonNode nodeleadFormTestRequest = request.body().asJson();
-        LeadFormTestRequest leadFormTestRequest;
-        if (nodeleadFormTestRequest != null) {
-            leadFormTestRequest = mapper.readValue(nodeleadFormTestRequest.toString(), LeadFormTestRequest.class);
+        JsonNode nodeleadFormTestCreate = request.body().asJson();
+        LeadFormTestCreate leadFormTestCreate;
+        if (nodeleadFormTestCreate != null) {
+            leadFormTestCreate = mapper.readValue(nodeleadFormTestCreate.toString(), LeadFormTestCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(leadFormTestRequest);
+                OpenAPIUtils.validate(leadFormTestCreate);
             }
         } else {
-            throw new IllegalArgumentException("'LeadFormTestRequest' parameter is required");
+            throw new IllegalArgumentException("'LeadFormTestCreate' parameter is required");
         }
-        return imp.leadFormTestCreateHttp(request, adAccountId, leadFormId, leadFormTestRequest);
+        return imp.leadFormTestCreateHttp(request, adAccountId, leadFormId, leadFormTestCreate);
     }
 
     @ApiAction
     public Result leadFormsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeleadFormCreateRequest = request.body().asJson();
-        List<@Valid LeadFormCreateRequest> leadFormCreateRequest;
-        if (nodeleadFormCreateRequest != null) {
-            leadFormCreateRequest = mapper.readValue(nodeleadFormCreateRequest.toString(), new TypeReference<List<@Valid LeadFormCreateRequest>>(){});
+        JsonNode nodeleadFormCreate = request.body().asJson();
+        List<@Valid LeadFormCreate> leadFormCreate;
+        if (nodeleadFormCreate != null) {
+            leadFormCreate = mapper.readValue(nodeleadFormCreate.toString(), new TypeReference<List<@Valid LeadFormCreate>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
-                for (LeadFormCreateRequest curItem : leadFormCreateRequest) {
+                for (LeadFormCreate curItem : leadFormCreate) {
                     OpenAPIUtils.validate(curItem);
                 }
             }
         } else {
-            throw new IllegalArgumentException("'LeadFormCreateRequest' parameter is required");
+            throw new IllegalArgumentException("'LeadFormCreate' parameter is required");
         }
-        return imp.leadFormsCreateHttp(request, adAccountId, leadFormCreateRequest);
+        return imp.leadFormsCreateHttp(request, adAccountId, leadFormCreate);
     }
 
     @ApiAction
     public Result leadFormsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
         String valuepageSize = request.getQueryString("page_size");
         Integer pageSize;
         if (valuepageSize != null) {
@@ -91,37 +99,30 @@ public class LeadFormsApiController extends Controller {
             pageSize = 25;
         }
         String valueorder = request.getQueryString("order");
-        String order;
+        PinterestLibPaginationOrder order;
         if (valueorder != null) {
             order = valueorder;
         } else {
             order = null;
         }
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
-        } else {
-            bookmark = null;
-        }
-        return imp.leadFormsListHttp(request, adAccountId, pageSize, order, bookmark);
+        return imp.leadFormsListHttp(request, adAccountId, bookmark, pageSize, order);
     }
 
     @ApiAction
     public Result leadFormsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeleadFormUpdateRequest = request.body().asJson();
-        List<@Valid LeadFormUpdateRequest> leadFormUpdateRequest;
-        if (nodeleadFormUpdateRequest != null) {
-            leadFormUpdateRequest = mapper.readValue(nodeleadFormUpdateRequest.toString(), new TypeReference<List<@Valid LeadFormUpdateRequest>>(){});
+        JsonNode nodeleadFormBatchUpdate = request.body().asJson();
+        List<@Valid LeadFormBatchUpdate> leadFormBatchUpdate;
+        if (nodeleadFormBatchUpdate != null) {
+            leadFormBatchUpdate = mapper.readValue(nodeleadFormBatchUpdate.toString(), new TypeReference<List<@Valid LeadFormBatchUpdate>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
-                for (LeadFormUpdateRequest curItem : leadFormUpdateRequest) {
+                for (LeadFormBatchUpdate curItem : leadFormBatchUpdate) {
                     OpenAPIUtils.validate(curItem);
                 }
             }
         } else {
-            throw new IllegalArgumentException("'LeadFormUpdateRequest' parameter is required");
+            throw new IllegalArgumentException("'LeadFormBatchUpdate' parameter is required");
         }
-        return imp.leadFormsUpdateHttp(request, adAccountId, leadFormUpdateRequest);
+        return imp.leadFormsUpdateHttp(request, adAccountId, leadFormBatchUpdate);
     }
 
 }

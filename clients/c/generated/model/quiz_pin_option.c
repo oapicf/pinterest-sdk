@@ -6,28 +6,37 @@
 
 
 static quiz_pin_option_t *quiz_pin_option_create_internal(
-    double id,
+    double *id,
     char *text
     ) {
     quiz_pin_option_t *quiz_pin_option_local_var = malloc(sizeof(quiz_pin_option_t));
     if (!quiz_pin_option_local_var) {
         return NULL;
     }
+    memset(quiz_pin_option_local_var, 0, sizeof(quiz_pin_option_t));
+    quiz_pin_option_local_var->_library_owned = 1;
     quiz_pin_option_local_var->id = id;
     quiz_pin_option_local_var->text = text;
-
-    quiz_pin_option_local_var->_library_owned = 1;
     return quiz_pin_option_local_var;
 }
 
 __attribute__((deprecated)) quiz_pin_option_t *quiz_pin_option_create(
-    double id,
+    double *id,
     char *text
     ) {
-    return quiz_pin_option_create_internal (
-        id,
+    double *id_copy = NULL;
+    if (id) {
+        id_copy = malloc(sizeof(double));
+        if (id_copy) *id_copy = *id;
+    }
+    quiz_pin_option_t *result = quiz_pin_option_create_internal (
+        id_copy,
         text
         );
+    if (!result) {
+        free(id_copy);
+    }
+    return result;
 }
 
 void quiz_pin_option_free(quiz_pin_option_t *quiz_pin_option) {
@@ -39,6 +48,10 @@ void quiz_pin_option_free(quiz_pin_option_t *quiz_pin_option) {
         return ;
     }
     listEntry_t *listEntry;
+    if (quiz_pin_option->id) {
+        free(quiz_pin_option->id);
+        quiz_pin_option->id = NULL;
+    }
     if (quiz_pin_option->text) {
         free(quiz_pin_option->text);
         quiz_pin_option->text = NULL;
@@ -51,7 +64,7 @@ cJSON *quiz_pin_option_convertToJSON(quiz_pin_option_t *quiz_pin_option) {
 
     // quiz_pin_option->id
     if(quiz_pin_option->id) {
-    if(cJSON_AddNumberToObject(item, "id", quiz_pin_option->id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "id", *quiz_pin_option->id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -76,6 +89,11 @@ quiz_pin_option_t *quiz_pin_option_parseFromJSON(cJSON *quiz_pin_optionJSON){
 
     quiz_pin_option_t *quiz_pin_option_local_var = NULL;
 
+    // define the local variable for quiz_pin_option->id
+    double *id_local_var = NULL;
+
+    char *text_local_str = NULL;
+
     // quiz_pin_option->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(quiz_pin_optionJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -86,6 +104,12 @@ quiz_pin_option_t *quiz_pin_option_parseFromJSON(cJSON *quiz_pin_optionJSON){
     {
     goto end; //Numeric
     }
+    id_local_var = malloc(sizeof(double));
+    if(!id_local_var)
+    {
+        goto end;
+    }
+    *id_local_var = id->valuedouble;
     }
 
     // quiz_pin_option->text
@@ -101,13 +125,27 @@ quiz_pin_option_t *quiz_pin_option_parseFromJSON(cJSON *quiz_pin_optionJSON){
     }
 
 
+    if (text && !cJSON_IsNull(text)) text_local_str = strdup(text->valuestring);
+
     quiz_pin_option_local_var = quiz_pin_option_create_internal (
-        id ? id->valuedouble : 0,
-        text && !cJSON_IsNull(text) ? strdup(text->valuestring) : NULL
+        id_local_var,
+        text_local_str
         );
+
+    if (!quiz_pin_option_local_var) {
+        goto end;
+    }
 
     return quiz_pin_option_local_var;
 end:
+    if (id_local_var) {
+        free(id_local_var);
+        id_local_var = NULL;
+    }
+    if (text_local_str) {
+        free(text_local_str);
+        text_local_str = NULL;
+    }
     return NULL;
 
 }

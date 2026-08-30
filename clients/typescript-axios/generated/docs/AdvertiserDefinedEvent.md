@@ -1,12 +1,13 @@
 # AdvertiserDefinedEvent
 
+Advertiser defined event
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | raw string name of the event, usually logged as raw_event_name in our dataset | [optional] [default to undefined]
-**mapped_conversion_type** | **string** | standard type mapped to ADE for optimization | [optional] [default to undefined]
+**mapped_conversion_type** | [**ConversionTagTypeOptimal**](ConversionTagTypeOptimal.md) | Standard type mapped to ADE for optimization | [optional] [default to undefined]
+**name** | **string** | Raw string name of the event, usually logged as raw_event_name in our dataset | [optional] [default to undefined]
 
 ## Example
 
@@ -14,8 +15,8 @@ Name | Type | Description | Notes
 import { AdvertiserDefinedEvent } from './api';
 
 const instance: AdvertiserDefinedEvent = {
-    name,
     mapped_conversion_type,
+    name,
 };
 ```
 

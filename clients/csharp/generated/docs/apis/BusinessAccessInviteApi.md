@@ -44,14 +44,20 @@ Create a request to access an existing partner's assets with the specified permi
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="cancelinvitesorrequests"></a>
 # **CancelInvitesOrRequests**
-> DeleteInvitesResultsResponseArray CancelInvitesOrRequests (string businessId, CancelInvitesBody cancelInvitesBody)
+> CancelInvitesResponse CancelInvitesOrRequests (string businessId, CancelInvitesRequest cancelInvitesRequest)
 
 Cancel invites/requests
 
@@ -63,11 +69,11 @@ Cancel membership/partnership invites and/or requests.
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **businessId** | **string** | Unique identifier of the requesting business. |  |
-| **cancelInvitesBody** | [**CancelInvitesBody**](CancelInvitesBody.md) | A list with invite ids |  |
+| **cancelInvitesRequest** | [**CancelInvitesRequest**](CancelInvitesRequest.md) |  |  |
 
 ### Return type
 
-[**DeleteInvitesResultsResponseArray**](DeleteInvitesResultsResponseArray.md)
+[**CancelInvitesResponse**](CancelInvitesResponse.md)
 
 ### Authorization
 
@@ -82,8 +88,8 @@ Cancel membership/partnership invites and/or requests.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -101,7 +107,7 @@ Assign asset permissions information to an existing invite/request. Can be used 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **businessId** | **string** | Unique identifier of the requesting business. |  |
-| **createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md) | A list of invites/requests together with the asset permissions to be assigned to the invite/request.  |  |
+| **createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md) |  |  |
 
 ### Return type
 
@@ -120,8 +126,14 @@ Assign asset permissions information to an existing invite/request. Can be used 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -139,7 +151,7 @@ Create batch invites or requests. Can create batch invites or requests as descri
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **businessId** | **string** | Unique identifier of the requesting business. |  |
-| **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md) | An object with the properties: invite_type, partners, members, business_role |  |
+| **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md) |  |  |
 
 ### Return type
 
@@ -158,14 +170,20 @@ Create batch invites or requests. Can create batch invites or requests as descri
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="getinvites"></a>
 # **GetInvites**
-> GetInvites200Response GetInvites (string businessId, bool isMember = null, List<string> inviteStatus = null, InviteType inviteType = null, string bookmark = null, int pageSize = null)
+> GetInvites200Response GetInvites (string businessId, bool isMember = null, List<InviteFilterStatus> inviteStatus = null, InviteType inviteType = null, string bookmark = null, int pageSize = null)
 
 Get invites/requests
 
@@ -178,10 +196,10 @@ Get the membership/partnership invites and/or requests for the authorized user.
 |------|------|-------------|-------|
 | **businessId** | **string** | Unique identifier of the requesting business. |  |
 | **isMember** | **bool** | A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional] [default to true] |
-| **inviteStatus** | [**List&lt;string&gt;**](string.md) | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional]  |
+| **inviteStatus** | [**List&lt;InviteFilterStatus&gt;**](InviteFilterStatus.md) | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional]  |
 | **inviteType** | **InviteType** | Invite type to filter invites by. Only invites of the specified type will be returned. | [optional]  |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -200,8 +218,13 @@ Get the membership/partnership invites and/or requests for the authorized user.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -237,8 +260,13 @@ Accept or decline invites or requests.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

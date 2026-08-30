@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCreate(BulkUpsertRequestCreate  create);
+	void setCreate(BulkUpsertRequestCreate create);
 	/*! \brief Get 
 	 */
 	BulkUpsertRequestUpdate getUpdate();
 
 	/*! \brief Set 
 	 */
-	void setUpdate(BulkUpsertRequestUpdate  update);
+	void setUpdate(BulkUpsertRequestUpdate update);
 
 
     private:

@@ -1,6 +1,6 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.UserAccountFollowedInterests200Response;
 
 import javax.ws.rs.*;
@@ -19,7 +19,7 @@ import javax.validation.Valid;
 */
 @Path("/users/{username}/interests/follow")
 @Api(description = "the users API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UsersApi {
 
     @GET
@@ -31,13 +31,13 @@ public class UsersApi {
             @AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers") })
          }, tags={ "user_account" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = UserAccountFollowedInterests200Response.class),
-        @ApiResponse(code = 400, message = "Invalid parameters", response = Error.class),
-        @ApiResponse(code = 401, message = "Authorization failed", response = Error.class),
-        @ApiResponse(code = 404, message = "User not found", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = UserAccountFollowedInterests200Response.class),
+        @ApiResponse(code = 400, message = "The server could not understand the request due to invalid syntax.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Access is unauthorized.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The server cannot find the requested resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = PinterestLibError.class)
     })
-    public Response userAccountFollowedInterests(@PathParam("username") @Pattern(regexp="(?!^\\d+$)^.+$") @ApiParam("A valid username") String username,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.")  Integer pageSize) {
+    public Response userAccountFollowedInterests(@PathParam("username") @Pattern(regexp="(?!^\\d+$)^.+$") @ApiParam("A valid username") String username,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
         return Response.ok().entity("magic!").build();
     }
 }

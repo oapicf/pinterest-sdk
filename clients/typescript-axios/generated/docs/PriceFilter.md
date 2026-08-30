@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PRICE** | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  | [default to undefined]
+**PRICE** | [**PriceFilterPrice**](PriceFilterPrice.md) |  | [default to undefined]
 
 ## Example
 

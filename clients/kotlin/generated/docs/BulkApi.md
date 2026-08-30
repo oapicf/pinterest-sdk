@@ -11,11 +11,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="bulkDownloadCreate"></a>
 # **bulkDownloadCreate**
-> BulkDownloadResponse bulkDownloadCreate(adAccountId, bulkDownloadRequest)
+> BulkDownload bulkDownloadCreate(adAccountId, bulkDownloadCreate)
 
 Get advertiser entities in bulk
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Example
 ```kotlin
@@ -25,9 +25,9 @@ Create an asynchronous report that may include information on campaigns, ad grou
 
 val apiInstance = BulkApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val bulkDownloadRequest : BulkDownloadRequest =  // BulkDownloadRequest | Parameters to get ad entities in bulk
+val bulkDownloadCreate : BulkDownloadCreate =  // BulkDownloadCreate | 
 try {
-    val result : BulkDownloadResponse = apiInstance.bulkDownloadCreate(adAccountId, bulkDownloadRequest)
+    val result : BulkDownload = apiInstance.bulkDownloadCreate(adAccountId, bulkDownloadCreate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BulkApi#bulkDownloadCreate")
@@ -42,17 +42,23 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **bulkDownloadRequest** | [**BulkDownloadRequest**](BulkDownloadRequest.md)| Parameters to get ad entities in bulk | |
+| **bulkDownloadCreate** | [**BulkDownloadCreate**](BulkDownloadCreate.md)|  | |
 
 ### Return type
 
-[**BulkDownloadResponse**](BulkDownloadResponse.md)
+[**BulkDownload**](BulkDownload.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -61,11 +67,11 @@ Configure pinterest_oauth2:
 
 <a id="bulkRequestGet"></a>
 # **bulkRequestGet**
-> BulkUpsertStatusResponse bulkRequestGet(adAccountId, bulkRequestId, includeDetails)
+> BulkJobData bulkRequestGet(adAccountId, bulkRequestId, includeDetails)
 
 Download advertiser entities in bulk
 
-Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by &#x60;request_id&#x60;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Example
 ```kotlin
@@ -75,10 +81,10 @@ Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along w
 
 val apiInstance = BulkApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val bulkRequestId : kotlin.String = bulkRequestId_example // kotlin.String | Unique identifier of a bulk upsert request.
-val includeDetails : kotlin.Boolean = true // kotlin.Boolean | if set to True then attach the errors/details to all the requests
+val bulkRequestId : kotlin.String = bulkRequestId_example // kotlin.String | Bulk request ID that is from one of the entities bulk endpoints
+val includeDetails : kotlin.Boolean = true // kotlin.Boolean | If set to True then attach the errors/details to all the requests
 try {
-    val result : BulkUpsertStatusResponse = apiInstance.bulkRequestGet(adAccountId, bulkRequestId, includeDetails)
+    val result : BulkJobData = apiInstance.bulkRequestGet(adAccountId, bulkRequestId, includeDetails)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BulkApi#bulkRequestGet")
@@ -91,22 +97,34 @@ try {
 
 ### Parameters
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
-| **bulkRequestId** | **kotlin.String**| Unique identifier of a bulk upsert request. | |
+| **bulkRequestId** | **kotlin.String**| Bulk request ID that is from one of the entities bulk endpoints | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **includeDetails** | **kotlin.Boolean**| if set to True then attach the errors/details to all the requests | [optional] [default to false] |
+| **includeDetails** | **kotlin.Boolean**| If set to True then attach the errors/details to all the requests | [optional] [default to false] |
 
 ### Return type
 
-[**BulkUpsertStatusResponse**](BulkUpsertStatusResponse.md)
+[**BulkJobData**](BulkJobData.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -119,7 +137,7 @@ Configure client_credentials:
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
 
 ### Example
 ```kotlin
@@ -155,8 +173,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,11 +27,12 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
+import org.openapitools.client.models.TargetingTemplate
 import org.openapitools.client.models.TargetingTemplateCreate
-import org.openapitools.client.models.TargetingTemplateGetResponseData
 import org.openapitools.client.models.TargetingTemplateList200Response
-import org.openapitools.client.models.TargetingTemplateUpdateRequest
+import org.openapitools.client.models.TargetingTemplateUpdateRequestReadOrUpdate
 
 import com.squareup.moshi.Json
 
@@ -45,17 +54,17 @@ open class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, clien
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * POST /ad_accounts/{ad_account_id}/targeting_templates
      * Create targeting templates
-     * &lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
+     * Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
      * @param adAccountId Unique identifier of an ad account.
-     * @param targetingTemplateCreate targeting template creation entity
-     * @return TargetingTemplateGetResponseData
+     * @param targetingTemplateCreate 
+     * @return TargetingTemplate
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -64,11 +73,11 @@ open class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, clien
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun targetingTemplateCreate(adAccountId: kotlin.String, targetingTemplateCreate: TargetingTemplateCreate) : TargetingTemplateGetResponseData {
+    fun targetingTemplateCreate(adAccountId: kotlin.String, targetingTemplateCreate: TargetingTemplateCreate) : TargetingTemplate {
         val localVarResponse = targetingTemplateCreateWithHttpInfo(adAccountId = adAccountId, targetingTemplateCreate = targetingTemplateCreate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as TargetingTemplateGetResponseData
+            ResponseType.Success -> (localVarResponse as Success<*>).data as TargetingTemplate
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -85,19 +94,19 @@ open class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, clien
     /**
      * POST /ad_accounts/{ad_account_id}/targeting_templates
      * Create targeting templates
-     * &lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
+     * Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
      * @param adAccountId Unique identifier of an ad account.
-     * @param targetingTemplateCreate targeting template creation entity
-     * @return ApiResponse<TargetingTemplateGetResponseData?>
+     * @param targetingTemplateCreate 
+     * @return ApiResponse<TargetingTemplate?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun targetingTemplateCreateWithHttpInfo(adAccountId: kotlin.String, targetingTemplateCreate: TargetingTemplateCreate) : ApiResponse<TargetingTemplateGetResponseData?> {
+    fun targetingTemplateCreateWithHttpInfo(adAccountId: kotlin.String, targetingTemplateCreate: TargetingTemplateCreate) : ApiResponse<TargetingTemplate?> {
         val localVariableConfig = targetingTemplateCreateRequestConfig(adAccountId = adAccountId, targetingTemplateCreate = targetingTemplateCreate)
 
-        return request<TargetingTemplateCreate, TargetingTemplateGetResponseData>(
+        return request<TargetingTemplateCreate, TargetingTemplate>(
             localVariableConfig
         )
     }
@@ -106,7 +115,7 @@ open class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, clien
      * To obtain the request config of the operation targetingTemplateCreate
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param targetingTemplateCreate targeting template creation entity
+     * @param targetingTemplateCreate 
      * @return RequestConfig
      */
     fun targetingTemplateCreateRequestConfig(adAccountId: kotlin.String, targetingTemplateCreate: TargetingTemplateCreate) : RequestConfig<TargetingTemplateCreate> {
@@ -127,32 +136,15 @@ open class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, clien
     }
 
     /**
-     * enum for parameter order
-     */
-     enum class OrderTargetingTemplateList(val value: kotlin.String) {
-         @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /ad_accounts/{ad_account_id}/targeting_templates
      * List targeting templates
-     * Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
+     * Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;
      * @param adAccountId Unique identifier of an ad account.
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-     * @param includeSizing Include audience sizing in result or not (optional, default to false)
-     * @param searchQuery Search keyword for targeting templates (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param includeSizing Include audience sizing in result or not (optional, default to false)
+     * @param searchQuery Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
      * @return TargetingTemplateList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -162,8 +154,8 @@ open class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, clien
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun targetingTemplateList(adAccountId: kotlin.String, order: OrderTargetingTemplateList? = null, includeSizing: kotlin.Boolean? = false, searchQuery: kotlin.String? = null, pageSize: kotlin.Int? = 25, bookmark: kotlin.String? = null) : TargetingTemplateList200Response {
-        val localVarResponse = targetingTemplateListWithHttpInfo(adAccountId = adAccountId, order = order, includeSizing = includeSizing, searchQuery = searchQuery, pageSize = pageSize, bookmark = bookmark)
+    fun targetingTemplateList(adAccountId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, order: PinterestLibPaginationOrder? = null, includeSizing: kotlin.Boolean? = false, searchQuery: kotlin.String? = null) : TargetingTemplateList200Response {
+        val localVarResponse = targetingTemplateListWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order, includeSizing = includeSizing, searchQuery = searchQuery)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as TargetingTemplateList200Response
@@ -183,21 +175,21 @@ open class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, clien
     /**
      * GET /ad_accounts/{ad_account_id}/targeting_templates
      * List targeting templates
-     * Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
+     * Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;
      * @param adAccountId Unique identifier of an ad account.
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-     * @param includeSizing Include audience sizing in result or not (optional, default to false)
-     * @param searchQuery Search keyword for targeting templates (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param includeSizing Include audience sizing in result or not (optional, default to false)
+     * @param searchQuery Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
      * @return ApiResponse<TargetingTemplateList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun targetingTemplateListWithHttpInfo(adAccountId: kotlin.String, order: OrderTargetingTemplateList?, includeSizing: kotlin.Boolean?, searchQuery: kotlin.String?, pageSize: kotlin.Int?, bookmark: kotlin.String?) : ApiResponse<TargetingTemplateList200Response?> {
-        val localVariableConfig = targetingTemplateListRequestConfig(adAccountId = adAccountId, order = order, includeSizing = includeSizing, searchQuery = searchQuery, pageSize = pageSize, bookmark = bookmark)
+    fun targetingTemplateListWithHttpInfo(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?, includeSizing: kotlin.Boolean?, searchQuery: kotlin.String?) : ApiResponse<TargetingTemplateList200Response?> {
+        val localVariableConfig = targetingTemplateListRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order, includeSizing = includeSizing, searchQuery = searchQuery)
 
         return request<Unit, TargetingTemplateList200Response>(
             localVariableConfig
@@ -208,31 +200,31 @@ open class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, clien
      * To obtain the request config of the operation targetingTemplateList
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-     * @param includeSizing Include audience sizing in result or not (optional, default to false)
-     * @param searchQuery Search keyword for targeting templates (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param includeSizing Include audience sizing in result or not (optional, default to false)
+     * @param searchQuery Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
      * @return RequestConfig
      */
-    fun targetingTemplateListRequestConfig(adAccountId: kotlin.String, order: OrderTargetingTemplateList?, includeSizing: kotlin.Boolean?, searchQuery: kotlin.String?, pageSize: kotlin.Int?, bookmark: kotlin.String?) : RequestConfig<Unit> {
+    fun targetingTemplateListRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?, includeSizing: kotlin.Boolean?, searchQuery: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (bookmark != null) {
+                    put("bookmark", listOf(bookmark.toString()))
+                }
+                if (pageSize != null) {
+                    put("page_size", listOf(pageSize.toString()))
+                }
                 if (order != null) {
-                    put("order", listOf(order.value))
+                    put("order", listOf(order.toString()))
                 }
                 if (includeSizing != null) {
                     put("include_sizing", listOf(includeSizing.toString()))
                 }
                 if (searchQuery != null) {
                     put("search_query", listOf(searchQuery.toString()))
-                }
-                if (pageSize != null) {
-                    put("page_size", listOf(pageSize.toString()))
-                }
-                if (bookmark != null) {
-                    put("bookmark", listOf(bookmark.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -251,9 +243,9 @@ open class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, clien
     /**
      * PATCH /ad_accounts/{ad_account_id}/targeting_templates
      * Update targeting templates
-     * &lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
+     * Update the targeting template given advertiser ID and targeting template ID
      * @param adAccountId Unique identifier of an ad account.
-     * @param targetingTemplateUpdateRequest Operation type and targeting template ID
+     * @param targetingTemplateUpdateRequestReadOrUpdate 
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -262,8 +254,8 @@ open class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, clien
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun targetingTemplateUpdate(adAccountId: kotlin.String, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest) : Unit {
-        val localVarResponse = targetingTemplateUpdateWithHttpInfo(adAccountId = adAccountId, targetingTemplateUpdateRequest = targetingTemplateUpdateRequest)
+    fun targetingTemplateUpdate(adAccountId: kotlin.String, targetingTemplateUpdateRequestReadOrUpdate: TargetingTemplateUpdateRequestReadOrUpdate) : Unit {
+        val localVarResponse = targetingTemplateUpdateWithHttpInfo(adAccountId = adAccountId, targetingTemplateUpdateRequestReadOrUpdate = targetingTemplateUpdateRequestReadOrUpdate)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -283,18 +275,18 @@ open class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, clien
     /**
      * PATCH /ad_accounts/{ad_account_id}/targeting_templates
      * Update targeting templates
-     * &lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
+     * Update the targeting template given advertiser ID and targeting template ID
      * @param adAccountId Unique identifier of an ad account.
-     * @param targetingTemplateUpdateRequest Operation type and targeting template ID
+     * @param targetingTemplateUpdateRequestReadOrUpdate 
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun targetingTemplateUpdateWithHttpInfo(adAccountId: kotlin.String, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest) : ApiResponse<Unit?> {
-        val localVariableConfig = targetingTemplateUpdateRequestConfig(adAccountId = adAccountId, targetingTemplateUpdateRequest = targetingTemplateUpdateRequest)
+    fun targetingTemplateUpdateWithHttpInfo(adAccountId: kotlin.String, targetingTemplateUpdateRequestReadOrUpdate: TargetingTemplateUpdateRequestReadOrUpdate) : ApiResponse<Unit?> {
+        val localVariableConfig = targetingTemplateUpdateRequestConfig(adAccountId = adAccountId, targetingTemplateUpdateRequestReadOrUpdate = targetingTemplateUpdateRequestReadOrUpdate)
 
-        return request<TargetingTemplateUpdateRequest, Unit>(
+        return request<TargetingTemplateUpdateRequestReadOrUpdate, Unit>(
             localVariableConfig
         )
     }
@@ -303,11 +295,11 @@ open class TargetingTemplateApi(basePath: kotlin.String = defaultBasePath, clien
      * To obtain the request config of the operation targetingTemplateUpdate
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param targetingTemplateUpdateRequest Operation type and targeting template ID
+     * @param targetingTemplateUpdateRequestReadOrUpdate 
      * @return RequestConfig
      */
-    fun targetingTemplateUpdateRequestConfig(adAccountId: kotlin.String, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest) : RequestConfig<TargetingTemplateUpdateRequest> {
-        val localVariableBody = targetingTemplateUpdateRequest
+    fun targetingTemplateUpdateRequestConfig(adAccountId: kotlin.String, targetingTemplateUpdateRequestReadOrUpdate: TargetingTemplateUpdateRequestReadOrUpdate) : RequestConfig<TargetingTemplateUpdateRequestReadOrUpdate> {
+        val localVariableBody = targetingTemplateUpdateRequestReadOrUpdate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"

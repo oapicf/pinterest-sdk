@@ -3,18 +3,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReportType** | **String** |  | [optional] 
 **FeedId** | **String** | ID of the feed entity. | 
 **ProcessingResultId** | **String** | Unique identifier of a feed processing result. It can be acquired from the &quot;&quot;id&quot;&quot; field of the &quot;&quot;items&quot;&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result. | [optional] 
+**ReportType** | **String** |  | 
 **CatalogId** | **String** | Unique identifier of a catalog. If not given, oldest catalog will be used | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsHotelReportParametersReport = Initialize-PSOpenAPIToolsCatalogsHotelReportParametersReport  -ReportType null `
- -FeedId null `
+$CatalogsHotelReportParametersReport = Initialize-PSOpenAPIToolsCatalogsHotelReportParametersReport  -FeedId null `
  -ProcessingResultId null `
+ -ReportType null `
  -CatalogId null
 ```
 

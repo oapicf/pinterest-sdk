@@ -1,0 +1,25 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "Keywords",
+  "fields": [
+    {
+      "name": "errors",
+      "type": {
+        "type": "array",
+        "items": "model.KeywordError"
+      },
+      "doc": "Keyword error"
+    },
+    {
+      "name": "keywords",
+      "type": {
+        "type": "array",
+        "items": "model.Keyword"
+      },
+      "doc": "Keywords"
+    }
+  ]
+
+}

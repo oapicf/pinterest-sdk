@@ -6,7 +6,7 @@ import model.Error
 import model.LeadSubscription
 import model.LeadSubscriptionPostParamsCreate
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 trait LeadAdsApi {
   /**
     * Delete lead ads subscription
@@ -14,7 +14,7 @@ trait LeadAdsApi {
     * @param adAccountId Unique identifier of an ad account.
     * @param subscriptionId Unique identifier of a subscription.
     */
-  def adAccountsSubscriptionsDelById(adAccountId: String, subscriptionId: String): Unit
+  def adAccountsSubscriptionsDelById(adAccountId: String, subscriptionId: String): LeadSubscription
 
   /**
     * Get lead ads subscription by ID

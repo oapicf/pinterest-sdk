@@ -16,33 +16,7 @@ Protected Class CatalogsProductGroupUint32Criteria
 	#tag EndProperty
 
 
-    #tag Enum, Name = OperatorEnum, Type = Integer, Flags = &h0
-        
-        GreaterThan
-        GreaterThanOrEquals
-        LessThan
-        LessThanOrEquals
-        
-    #tag EndEnum
 
-
-	#tag Method, Flags = &h0
-		Shared Function OperatorEnumToString(value As OperatorEnum) As String
-		  Select Case value
-		    
-		    Case OperatorEnum.GreaterThan
-		      Return "GREATER_THAN"
-		    Case OperatorEnum.GreaterThanOrEquals
-		      Return "GREATER_THAN_OR_EQUALS"
-		    Case OperatorEnum.LessThan
-		      Return "LESS_THAN"
-		    Case OperatorEnum.LessThanOrEquals
-		      Return "LESS_THAN_OR_EQUALS"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -84,6 +58,14 @@ Protected Class CatalogsProductGroupUint32Criteria
 			Group="Behavior"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="operator"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="NumericFilterOperatorType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

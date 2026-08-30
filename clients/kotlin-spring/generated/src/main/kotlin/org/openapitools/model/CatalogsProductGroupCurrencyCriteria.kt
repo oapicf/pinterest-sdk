@@ -2,8 +2,11 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.NonNullableCatalogsCurrency
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -24,11 +27,15 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsProductGroupCurrencyCriteria(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("values")
     @get:JsonProperty("values", required = true) val propertyValues: NonNullableCatalogsCurrency,
 
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("negated") val negated: kotlin.Boolean? = false
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("negated")
+    @get:JsonProperty("negated") val negated: kotlin.Boolean? = null
 ) {
 
 }

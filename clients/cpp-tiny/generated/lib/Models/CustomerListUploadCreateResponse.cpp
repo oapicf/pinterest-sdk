@@ -6,8 +6,8 @@ using namespace Tiny;
 
 CustomerListUploadCreateResponse::CustomerListUploadCreateResponse()
 {
-	customer_list_upload = CustomerListUpload();
-	s3_multipart_upload_data = S3MultipartUploadData();
+	customer_list_upload = null;
+	s3_multipart_upload_data = null;
 }
 
 CustomerListUploadCreateResponse::CustomerListUploadCreateResponse(std::string jsonString)
@@ -87,7 +87,7 @@ CustomerListUploadCreateResponse::getCustomerListUpload()
 }
 
 void
-CustomerListUploadCreateResponse::setCustomerListUpload(CustomerListUpload  customer_list_upload)
+CustomerListUploadCreateResponse::setCustomerListUpload(CustomerListUpload customer_list_upload)
 {
 	this->customer_list_upload = customer_list_upload;
 }
@@ -99,7 +99,7 @@ CustomerListUploadCreateResponse::getS3MultipartUploadData()
 }
 
 void
-CustomerListUploadCreateResponse::setS3MultipartUploadData(S3MultipartUploadData  s3_multipart_upload_data)
+CustomerListUploadCreateResponse::setS3MultipartUploadData(S3MultipartUploadData s3_multipart_upload_data)
 {
 	this->s3_multipart_upload_data = s3_multipart_upload_data;
 }

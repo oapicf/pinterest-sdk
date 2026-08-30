@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open OpenAPI.Model.TargetingSpecAppType
+open OpenAPI.Model.TargetingSpecListOperation
 
 module TargetingSpecOperationAppType =
 
@@ -11,13 +12,10 @@ module TargetingSpecOperationAppType =
   //#region enums
   type FieldEnum = APPTYPEEnum of string  
   //#endregion
-  //#region enums
-  type OperationEnum = SETEnum of string  |  ADDEnum of string  |  REMOVEEnum of string  
-  //#endregion
 
   type TargetingSpecOperationAppType = {
     Field : FieldEnum;
-    Operation : OperationEnum;
+    Operation : TargetingSpecListOperation;
     Values : TargetingSpecAppType[];
   }
   //#endregion

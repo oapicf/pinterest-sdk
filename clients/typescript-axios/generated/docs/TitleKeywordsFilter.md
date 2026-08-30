@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
+**TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
 
 ## Example
 

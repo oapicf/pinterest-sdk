@@ -2,7 +2,7 @@
 Protected Class MediaTypeFilter
 
 	#tag Property, Flags = &h0
-		MEDIA_TYPE As CatalogsProductGroupMultipleMediaTypesCriteria
+		MEDIA_TYPE As OpenAPIClient.Models.CatalogsProductGroupMultipleMediaTypesCriteria
 	#tag EndProperty
 
 

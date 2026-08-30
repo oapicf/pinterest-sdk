@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setInclusion(bool  inclusion);
+	void setInclusion(bool inclusion);
 	/*! \brief Get 
 	 */
 	bool isNegated();
 
 	/*! \brief Set 
 	 */
-	void setNegated(bool  negated);
+	void setNegated(bool negated);
 	/*! \brief Get 
 	 */
 	long getValues();
 
 	/*! \brief Set 
 	 */
-	void setValues(long  values);
+	void setValues(long values);
 
 
     private:

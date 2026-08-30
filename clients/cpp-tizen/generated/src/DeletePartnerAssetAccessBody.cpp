@@ -49,12 +49,12 @@ DeletePartnerAssetAccessBody::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<DeletePartnerAssetAccessBody_accesses_inner> new_list;
-			DeletePartnerAssetAccessBody_accesses_inner inst;
+			list<DeletePartnerAssetAccessItem> new_list;
+			DeletePartnerAssetAccessItem inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("DeletePartnerAssetAccessBody_accesses_inner")) {
-					jsonToValue(&inst, temp_json, "DeletePartnerAssetAccessBody_accesses_inner", "");
+				if (isprimitive("DeletePartnerAssetAccessItem")) {
+					jsonToValue(&inst, temp_json, "DeletePartnerAssetAccessItem", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -78,18 +78,18 @@ DeletePartnerAssetAccessBody::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("DeletePartnerAssetAccessBody_accesses_inner")) {
-		list<DeletePartnerAssetAccessBody_accesses_inner> new_list = static_cast<list <DeletePartnerAssetAccessBody_accesses_inner> > (getAccesses());
-		node = converttoJson(&new_list, "DeletePartnerAssetAccessBody_accesses_inner", "array");
+	if (isprimitive("DeletePartnerAssetAccessItem")) {
+		list<DeletePartnerAssetAccessItem> new_list = static_cast<list <DeletePartnerAssetAccessItem> > (getAccesses());
+		node = converttoJson(&new_list, "DeletePartnerAssetAccessItem", "array");
 	} else {
 		node = json_node_alloc();
-		list<DeletePartnerAssetAccessBody_accesses_inner> new_list = static_cast<list <DeletePartnerAssetAccessBody_accesses_inner> > (getAccesses());
+		list<DeletePartnerAssetAccessItem> new_list = static_cast<list <DeletePartnerAssetAccessItem> > (getAccesses());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<DeletePartnerAssetAccessBody_accesses_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<DeletePartnerAssetAccessItem>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			DeletePartnerAssetAccessBody_accesses_inner obj = *it;
+			DeletePartnerAssetAccessItem obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -111,14 +111,14 @@ DeletePartnerAssetAccessBody::toJson()
 	return ret;
 }
 
-std::list<DeletePartnerAssetAccessBody_accesses_inner>
+std::list<DeletePartnerAssetAccessItem>
 DeletePartnerAssetAccessBody::getAccesses()
 {
 	return accesses;
 }
 
 void
-DeletePartnerAssetAccessBody::setAccesses(std::list <DeletePartnerAssetAccessBody_accesses_inner> accesses)
+DeletePartnerAssetAccessBody::setAccesses(std::list <DeletePartnerAssetAccessItem> accesses)
 {
 	this->accesses = accesses;
 }

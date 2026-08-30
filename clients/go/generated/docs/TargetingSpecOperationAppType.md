@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Field** | **string** |  | 
-**Operation** | **string** |  | 
+**Operation** | [**TargetingSpecListOperation**](TargetingSpecListOperation.md) |  | 
 **Values** | [**[]TargetingSpecAppType**](TargetingSpecAppType.md) |  | 
 
 ## Methods
 
 ### NewTargetingSpecOperationAppType
 
-`func NewTargetingSpecOperationAppType(field string, operation string, values []TargetingSpecAppType, ) *TargetingSpecOperationAppType`
+`func NewTargetingSpecOperationAppType(field string, operation TargetingSpecListOperation, values []TargetingSpecAppType, ) *TargetingSpecOperationAppType`
 
 NewTargetingSpecOperationAppType instantiates a new TargetingSpecOperationAppType object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetField sets Field field to given value.
 
 ### GetOperation
 
-`func (o *TargetingSpecOperationAppType) GetOperation() string`
+`func (o *TargetingSpecOperationAppType) GetOperation() TargetingSpecListOperation`
 
 GetOperation returns the Operation field if non-nil, zero value otherwise.
 
 ### GetOperationOk
 
-`func (o *TargetingSpecOperationAppType) GetOperationOk() (*string, bool)`
+`func (o *TargetingSpecOperationAppType) GetOperationOk() (*TargetingSpecListOperation, bool)`
 
 GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperation
 
-`func (o *TargetingSpecOperationAppType) SetOperation(v string)`
+`func (o *TargetingSpecOperationAppType) SetOperation(v TargetingSpecListOperation)`
 
 SetOperation sets Operation field to given value.
 
@@ -87,16 +87,6 @@ and a boolean to check if the value has been set.
 SetValues sets Values field to given value.
 
 
-### SetValuesNil
-
-`func (o *TargetingSpecOperationAppType) SetValuesNil(b bool)`
-
- SetValuesNil sets the value for Values to be an explicit nil
-
-### UnsetValues
-`func (o *TargetingSpecOperationAppType) UnsetValues()`
-
-UnsetValues ensures that no value is present for Values, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

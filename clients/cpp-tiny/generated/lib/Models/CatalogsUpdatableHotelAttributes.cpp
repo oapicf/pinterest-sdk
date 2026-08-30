@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsUpdatableHotelAttributes::CatalogsUpdatableHotelAttributes()
 {
-	address = CatalogsHotelAddress();
+	address = null;
 	base_price = std::string();
 	brand = std::string();
 	category = std::string();
@@ -16,7 +16,7 @@ CatalogsUpdatableHotelAttributes::CatalogsUpdatableHotelAttributes()
 	custom_label_3 = std::string();
 	custom_label_4 = std::string();
 	description = std::string();
-	guest_ratings = CatalogsHotelGuestRatings();
+	guest_ratings = null;
 	latitude = float(0);
 	link = std::string();
 	longitude = float(0);
@@ -420,7 +420,7 @@ CatalogsUpdatableHotelAttributes::getAddress()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setAddress(CatalogsHotelAddress  address)
+CatalogsUpdatableHotelAttributes::setAddress(CatalogsHotelAddress address)
 {
 	this->address = address;
 }
@@ -432,7 +432,7 @@ CatalogsUpdatableHotelAttributes::getBasePrice()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setBasePrice(std::string  base_price)
+CatalogsUpdatableHotelAttributes::setBasePrice(std::string base_price)
 {
 	this->base_price = base_price;
 }
@@ -444,7 +444,7 @@ CatalogsUpdatableHotelAttributes::getBrand()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setBrand(std::string  brand)
+CatalogsUpdatableHotelAttributes::setBrand(std::string brand)
 {
 	this->brand = brand;
 }
@@ -456,7 +456,7 @@ CatalogsUpdatableHotelAttributes::getCategory()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setCategory(std::string  category)
+CatalogsUpdatableHotelAttributes::setCategory(std::string category)
 {
 	this->category = category;
 }
@@ -468,7 +468,7 @@ CatalogsUpdatableHotelAttributes::getCustomLabel0()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setCustomLabel0(std::string  custom_label_0)
+CatalogsUpdatableHotelAttributes::setCustomLabel0(std::string custom_label_0)
 {
 	this->custom_label_0 = custom_label_0;
 }
@@ -480,7 +480,7 @@ CatalogsUpdatableHotelAttributes::getCustomLabel1()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setCustomLabel1(std::string  custom_label_1)
+CatalogsUpdatableHotelAttributes::setCustomLabel1(std::string custom_label_1)
 {
 	this->custom_label_1 = custom_label_1;
 }
@@ -492,7 +492,7 @@ CatalogsUpdatableHotelAttributes::getCustomLabel2()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setCustomLabel2(std::string  custom_label_2)
+CatalogsUpdatableHotelAttributes::setCustomLabel2(std::string custom_label_2)
 {
 	this->custom_label_2 = custom_label_2;
 }
@@ -504,7 +504,7 @@ CatalogsUpdatableHotelAttributes::getCustomLabel3()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setCustomLabel3(std::string  custom_label_3)
+CatalogsUpdatableHotelAttributes::setCustomLabel3(std::string custom_label_3)
 {
 	this->custom_label_3 = custom_label_3;
 }
@@ -516,7 +516,7 @@ CatalogsUpdatableHotelAttributes::getCustomLabel4()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setCustomLabel4(std::string  custom_label_4)
+CatalogsUpdatableHotelAttributes::setCustomLabel4(std::string custom_label_4)
 {
 	this->custom_label_4 = custom_label_4;
 }
@@ -528,7 +528,7 @@ CatalogsUpdatableHotelAttributes::getDescription()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setDescription(std::string  description)
+CatalogsUpdatableHotelAttributes::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -540,7 +540,7 @@ CatalogsUpdatableHotelAttributes::getGuestRatings()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setGuestRatings(CatalogsHotelGuestRatings  guest_ratings)
+CatalogsUpdatableHotelAttributes::setGuestRatings(CatalogsHotelGuestRatings guest_ratings)
 {
 	this->guest_ratings = guest_ratings;
 }
@@ -552,7 +552,7 @@ CatalogsUpdatableHotelAttributes::getLatitude()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setLatitude(long  latitude)
+CatalogsUpdatableHotelAttributes::setLatitude(long latitude)
 {
 	this->latitude = latitude;
 }
@@ -564,7 +564,7 @@ CatalogsUpdatableHotelAttributes::getLink()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setLink(std::string  link)
+CatalogsUpdatableHotelAttributes::setLink(std::string link)
 {
 	this->link = link;
 }
@@ -576,7 +576,7 @@ CatalogsUpdatableHotelAttributes::getLongitude()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setLongitude(long  longitude)
+CatalogsUpdatableHotelAttributes::setLongitude(long longitude)
 {
 	this->longitude = longitude;
 }
@@ -588,7 +588,7 @@ CatalogsUpdatableHotelAttributes::getName()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setName(std::string  name)
+CatalogsUpdatableHotelAttributes::setName(std::string name)
 {
 	this->name = name;
 }
@@ -600,7 +600,7 @@ CatalogsUpdatableHotelAttributes::getNeighborhood()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setNeighborhood(std::list <std::string> neighborhood)
+CatalogsUpdatableHotelAttributes::setNeighborhood(std::list<std::string> neighborhood)
 {
 	this->neighborhood = neighborhood;
 }
@@ -612,7 +612,7 @@ CatalogsUpdatableHotelAttributes::getSalePrice()
 }
 
 void
-CatalogsUpdatableHotelAttributes::setSalePrice(std::string  sale_price)
+CatalogsUpdatableHotelAttributes::setSalePrice(std::string sale_price)
 {
 	this->sale_price = sale_price;
 }

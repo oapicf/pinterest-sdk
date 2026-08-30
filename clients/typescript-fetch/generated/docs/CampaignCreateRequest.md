@@ -6,22 +6,25 @@
 
 Name | Type
 ------------ | -------------
+`bidOptions` | [CampaignBidOptionsCreate](CampaignBidOptionsCreate.md)
+`intendedPromotionType` | [IntendedPromotionType](IntendedPromotionType.md)
+`isAutomatedCampaign` | boolean
+`isCampaignBudgetOptimization` | boolean
+`isFlexibleDailyBudgets` | boolean
+`isLtvOptimized` | boolean
+`isPerformancePlus` | boolean
+`isTopOfSearch` | boolean
+`objectiveType` | [ObjectiveType](ObjectiveType.md)
+`status` | [EntityStatus](EntityStatus.md)
 `adAccountId` | string
 `dailySpendCap` | number
+`defaultAdGroupBudgetInMicroCurrency` | number
 `endTime` | number
-`isAutomatedCampaign` | boolean
-`isFlexibleDailyBudgets` | boolean
 `lifetimeSpendCap` | number
 `name` | string
 `orderLineId` | string
 `startTime` | number
-`status` | [EntityStatus](EntityStatus.md)
-`trackingUrls` | [TrackingUrls](TrackingUrls.md)
-`defaultAdGroupBudgetInMicroCurrency` | number
-`isCampaignBudgetOptimization` | boolean
-`bidOptions` | [CampaignBidOptionsCreate](CampaignBidOptionsCreate.md)
-`isPerformancePlus` | boolean
-`objectiveType` | [ObjectiveType](ObjectiveType.md)
+`trackingUrls` | object
 
 ## Example
 
@@ -30,22 +33,25 @@ import type { CampaignCreateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "bidOptions": null,
+  "intendedPromotionType": null,
+  "isAutomatedCampaign": null,
+  "isCampaignBudgetOptimization": null,
+  "isFlexibleDailyBudgets": null,
+  "isLtvOptimized": null,
+  "isPerformancePlus": null,
+  "isTopOfSearch": null,
+  "objectiveType": null,
+  "status": null,
   "adAccountId": 549755885175,
   "dailySpendCap": 1432744744,
+  "defaultAdGroupBudgetInMicroCurrency": null,
   "endTime": 1644023526,
-  "isAutomatedCampaign": true,
-  "isFlexibleDailyBudgets": true,
   "lifetimeSpendCap": 1432744744,
   "name": ACME Tools,
   "orderLineId": 549755885175,
   "startTime": 1580865126,
-  "status": null,
   "trackingUrls": null,
-  "defaultAdGroupBudgetInMicroCurrency": 0,
-  "isCampaignBudgetOptimization": true,
-  "bidOptions": null,
-  "isPerformancePlus": true,
-  "objectiveType": null,
 } satisfies CampaignCreateRequest
 
 console.log(example)

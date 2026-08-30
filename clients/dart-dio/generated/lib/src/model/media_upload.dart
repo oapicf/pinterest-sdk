@@ -122,15 +122,17 @@ class _$MediaUploadSerializer implements PrimitiveSerializer<MediaUpload> {
         case r'upload_parameters':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(MediaUploadParameters),
-          ) as MediaUploadParameters;
+            specifiedType: const FullType.nullable(MediaUploadParameters),
+          ) as MediaUploadParameters?;
+          if (valueDes == null) continue;
           result.uploadParameters.replace(valueDes);
           break;
         case r'upload_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.uploadUrl = valueDes;
           break;
         default:

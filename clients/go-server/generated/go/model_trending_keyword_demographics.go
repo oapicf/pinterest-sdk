@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,15 +14,16 @@ package openapi
 
 
 
-// TrendingKeywordDemographics - A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. <br /> For each dimension: <br />   - Key: The category (e.g., \"female\", \"18-24\"). <br />   - Value: The proportion of search volume (e.g., 0.12 for 12%). <br />     Values less than 0.05 are set to 0.04 for privacy. <br />     The sum for all categories in a dimension will approximately equal 1. <br />     Only applicable when `include_demographics` query parameter is set to `true`.
+// TrendingKeywordDemographics - A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. For each dimension: Key: The category (e.g., \"female\", \"18-24\"). Value: The proportion of search volume (e.g., 0.12 for 12%). Values less than 0.05 are set to 0.04 for privacy. The sum for all categories in a dimension will approximately equal 1. Only applicable when `include_demographics` query parameter is set to `true`.
 type TrendingKeywordDemographics struct {
 
-	AgeDistribution *TrendingKeywordDemographicsAgeDistribution `json:"age_distribution,omitempty"`
+	AgeDistribution *TrendsAgeDistribution `json:"age_distribution,omitempty"`
 
-	GenderDistribution *TrendingKeywordDemographicsGenderDistribution `json:"gender_distribution,omitempty"`
+	GenderDistribution *TrendsGenderDistribution `json:"gender_distribution,omitempty"`
 }
 
-// AssertTrendingKeywordDemographicsRequired checks if the required fields are not zero-ed
+// AssertTrendingKeywordDemographicsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertTrendingKeywordDemographicsRequired(obj TrendingKeywordDemographics) error {
 	return nil
 }

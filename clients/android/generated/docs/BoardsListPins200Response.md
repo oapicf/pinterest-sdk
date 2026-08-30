@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  |  [optional]
-**items** | [**List&lt;Pin&gt;**](Pin.md) | Pins | 
+**items** | [**List&lt;PinRead&gt;**](PinRead.md) |  | 
 
 
 

@@ -10,9 +10,6 @@ Protected Class UpdatePartnerAssetsResult
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
-		#tag EndNote
 		asset_type As Xoson.O.OptionalString
 	#tag EndProperty
 
@@ -82,7 +79,7 @@ Protected Class UpdatePartnerAssetsResult
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="AssetTypeResponse"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

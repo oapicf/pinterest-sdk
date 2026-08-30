@@ -12,6 +12,7 @@ import org.joda.time.DateTime
 import CatalogsUpdatableHotelAttributes._
 
 case class CatalogsUpdatableHotelAttributes (
+  /* Hotel address */
   address: Option[CatalogsHotelAddress],
 /* Base price of the hotel room per night followed by the ISO currency code */
   basePrice: Option[String],
@@ -31,7 +32,8 @@ case class CatalogsUpdatableHotelAttributes (
   customLabel4: Option[String],
 /* Brief description of the hotel. */
   description: Option[String],
-guestRatings: Option[CatalogsHotelGuestRatings],
+/* If specified, you must provide all properties */
+  guestRatings: Option[CatalogsHotelGuestRatings],
 /* Latitude of the hotel. */
   latitude: Option[BigDecimal],
 /* Link to the product page */

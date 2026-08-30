@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,19 +18,19 @@ import (
 // checks if the InviteBusinessRoleBinding type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &InviteBusinessRoleBinding{}
 
-// InviteBusinessRoleBinding struct for InviteBusinessRoleBinding
+// InviteBusinessRoleBinding An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
 type InviteBusinessRoleBinding struct {
-	// Unique identifier of the invite/request.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-	InviteData *BaseInviteDataResponseInviteData `json:"invite_data,omitempty"`
-	// Indicates whether the invite/request was received.
-	IsReceivedInvite *bool `json:"is_received_invite,omitempty"`
-	// Metadata for the user that updated the invite/request.
-	User map[string]interface{} `json:"user,omitempty"`
 	// Unique identifier for the business that created the invite/request.
 	CreatedByBusinessId *string `json:"created_by_business_id,omitempty"`
 	// Unique identifier for the user that created the invite/request.
 	CreatedByUserId *string `json:"created_by_user_id,omitempty"`
+	// Unique identifier of the invite/request.
+	Id *string `json:"id,omitempty" validate:"regexp=^\\d+$"`
+	InviteData *InviteDataResponse `json:"invite_data,omitempty"`
+	// Indicates whether the invite/request was received.
+	IsReceivedInvite *bool `json:"is_received_invite,omitempty"`
+	// Metadata for the member/partner that was sent the invite/request.
+	User *BusinessAccessUserSummary `json:"user,omitempty"`
 }
 
 // NewInviteBusinessRoleBinding instantiates a new InviteBusinessRoleBinding object
@@ -48,134 +48,6 @@ func NewInviteBusinessRoleBinding() *InviteBusinessRoleBinding {
 func NewInviteBusinessRoleBindingWithDefaults() *InviteBusinessRoleBinding {
 	this := InviteBusinessRoleBinding{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *InviteBusinessRoleBinding) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InviteBusinessRoleBinding) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *InviteBusinessRoleBinding) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *InviteBusinessRoleBinding) SetId(v string) {
-	o.Id = &v
-}
-
-// GetInviteData returns the InviteData field value if set, zero value otherwise.
-func (o *InviteBusinessRoleBinding) GetInviteData() BaseInviteDataResponseInviteData {
-	if o == nil || IsNil(o.InviteData) {
-		var ret BaseInviteDataResponseInviteData
-		return ret
-	}
-	return *o.InviteData
-}
-
-// GetInviteDataOk returns a tuple with the InviteData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InviteBusinessRoleBinding) GetInviteDataOk() (*BaseInviteDataResponseInviteData, bool) {
-	if o == nil || IsNil(o.InviteData) {
-		return nil, false
-	}
-	return o.InviteData, true
-}
-
-// HasInviteData returns a boolean if a field has been set.
-func (o *InviteBusinessRoleBinding) HasInviteData() bool {
-	if o != nil && !IsNil(o.InviteData) {
-		return true
-	}
-
-	return false
-}
-
-// SetInviteData gets a reference to the given BaseInviteDataResponseInviteData and assigns it to the InviteData field.
-func (o *InviteBusinessRoleBinding) SetInviteData(v BaseInviteDataResponseInviteData) {
-	o.InviteData = &v
-}
-
-// GetIsReceivedInvite returns the IsReceivedInvite field value if set, zero value otherwise.
-func (o *InviteBusinessRoleBinding) GetIsReceivedInvite() bool {
-	if o == nil || IsNil(o.IsReceivedInvite) {
-		var ret bool
-		return ret
-	}
-	return *o.IsReceivedInvite
-}
-
-// GetIsReceivedInviteOk returns a tuple with the IsReceivedInvite field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InviteBusinessRoleBinding) GetIsReceivedInviteOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsReceivedInvite) {
-		return nil, false
-	}
-	return o.IsReceivedInvite, true
-}
-
-// HasIsReceivedInvite returns a boolean if a field has been set.
-func (o *InviteBusinessRoleBinding) HasIsReceivedInvite() bool {
-	if o != nil && !IsNil(o.IsReceivedInvite) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsReceivedInvite gets a reference to the given bool and assigns it to the IsReceivedInvite field.
-func (o *InviteBusinessRoleBinding) SetIsReceivedInvite(v bool) {
-	o.IsReceivedInvite = &v
-}
-
-// GetUser returns the User field value if set, zero value otherwise.
-func (o *InviteBusinessRoleBinding) GetUser() map[string]interface{} {
-	if o == nil || IsNil(o.User) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.User
-}
-
-// GetUserOk returns a tuple with the User field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InviteBusinessRoleBinding) GetUserOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.User) {
-		return map[string]interface{}{}, false
-	}
-	return o.User, true
-}
-
-// HasUser returns a boolean if a field has been set.
-func (o *InviteBusinessRoleBinding) HasUser() bool {
-	if o != nil && !IsNil(o.User) {
-		return true
-	}
-
-	return false
-}
-
-// SetUser gets a reference to the given map[string]interface{} and assigns it to the User field.
-func (o *InviteBusinessRoleBinding) SetUser(v map[string]interface{}) {
-	o.User = v
 }
 
 // GetCreatedByBusinessId returns the CreatedByBusinessId field value if set, zero value otherwise.
@@ -242,6 +114,134 @@ func (o *InviteBusinessRoleBinding) SetCreatedByUserId(v string) {
 	o.CreatedByUserId = &v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *InviteBusinessRoleBinding) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InviteBusinessRoleBinding) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *InviteBusinessRoleBinding) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *InviteBusinessRoleBinding) SetId(v string) {
+	o.Id = &v
+}
+
+// GetInviteData returns the InviteData field value if set, zero value otherwise.
+func (o *InviteBusinessRoleBinding) GetInviteData() InviteDataResponse {
+	if o == nil || IsNil(o.InviteData) {
+		var ret InviteDataResponse
+		return ret
+	}
+	return *o.InviteData
+}
+
+// GetInviteDataOk returns a tuple with the InviteData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InviteBusinessRoleBinding) GetInviteDataOk() (*InviteDataResponse, bool) {
+	if o == nil || IsNil(o.InviteData) {
+		return nil, false
+	}
+	return o.InviteData, true
+}
+
+// HasInviteData returns a boolean if a field has been set.
+func (o *InviteBusinessRoleBinding) HasInviteData() bool {
+	if o != nil && !IsNil(o.InviteData) {
+		return true
+	}
+
+	return false
+}
+
+// SetInviteData gets a reference to the given InviteDataResponse and assigns it to the InviteData field.
+func (o *InviteBusinessRoleBinding) SetInviteData(v InviteDataResponse) {
+	o.InviteData = &v
+}
+
+// GetIsReceivedInvite returns the IsReceivedInvite field value if set, zero value otherwise.
+func (o *InviteBusinessRoleBinding) GetIsReceivedInvite() bool {
+	if o == nil || IsNil(o.IsReceivedInvite) {
+		var ret bool
+		return ret
+	}
+	return *o.IsReceivedInvite
+}
+
+// GetIsReceivedInviteOk returns a tuple with the IsReceivedInvite field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InviteBusinessRoleBinding) GetIsReceivedInviteOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsReceivedInvite) {
+		return nil, false
+	}
+	return o.IsReceivedInvite, true
+}
+
+// HasIsReceivedInvite returns a boolean if a field has been set.
+func (o *InviteBusinessRoleBinding) HasIsReceivedInvite() bool {
+	if o != nil && !IsNil(o.IsReceivedInvite) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsReceivedInvite gets a reference to the given bool and assigns it to the IsReceivedInvite field.
+func (o *InviteBusinessRoleBinding) SetIsReceivedInvite(v bool) {
+	o.IsReceivedInvite = &v
+}
+
+// GetUser returns the User field value if set, zero value otherwise.
+func (o *InviteBusinessRoleBinding) GetUser() BusinessAccessUserSummary {
+	if o == nil || IsNil(o.User) {
+		var ret BusinessAccessUserSummary
+		return ret
+	}
+	return *o.User
+}
+
+// GetUserOk returns a tuple with the User field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InviteBusinessRoleBinding) GetUserOk() (*BusinessAccessUserSummary, bool) {
+	if o == nil || IsNil(o.User) {
+		return nil, false
+	}
+	return o.User, true
+}
+
+// HasUser returns a boolean if a field has been set.
+func (o *InviteBusinessRoleBinding) HasUser() bool {
+	if o != nil && !IsNil(o.User) {
+		return true
+	}
+
+	return false
+}
+
+// SetUser gets a reference to the given BusinessAccessUserSummary and assigns it to the User field.
+func (o *InviteBusinessRoleBinding) SetUser(v BusinessAccessUserSummary) {
+	o.User = &v
+}
+
 func (o InviteBusinessRoleBinding) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -252,6 +252,12 @@ func (o InviteBusinessRoleBinding) MarshalJSON() ([]byte, error) {
 
 func (o InviteBusinessRoleBinding) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CreatedByBusinessId) {
+		toSerialize["created_by_business_id"] = o.CreatedByBusinessId
+	}
+	if !IsNil(o.CreatedByUserId) {
+		toSerialize["created_by_user_id"] = o.CreatedByUserId
+	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
@@ -263,12 +269,6 @@ func (o InviteBusinessRoleBinding) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
-	}
-	if !IsNil(o.CreatedByBusinessId) {
-		toSerialize["created_by_business_id"] = o.CreatedByBusinessId
-	}
-	if !IsNil(o.CreatedByUserId) {
-		toSerialize["created_by_user_id"] = o.CreatedByUserId
 	}
 	return toSerialize, nil
 }

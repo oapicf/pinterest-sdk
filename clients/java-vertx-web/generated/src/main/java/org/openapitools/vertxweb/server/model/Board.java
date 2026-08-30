@@ -24,7 +24,7 @@ public class Board   {
   private String name;
   private BoardOwner owner;
   private Integer pinCount;
-  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
+  private BoardPrivacy privacy;
 
   public Board () {
 
@@ -208,9 +208,6 @@ public class Board   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

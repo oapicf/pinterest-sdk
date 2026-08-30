@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,33 +30,28 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param id Subinterest ID.
- * @param index Subinterest affinity index.
- * @param key Interest unique key (same as ID).
- * @param name Subinterest name.
- * @param ratio Subinterest's percent of category's total audience.
+ * @param id 
+ * @param index 
+ * @param key 
+ * @param name 
+ * @param ratio 
  */
 
 
 data class AudienceSubcategory (
 
-    /* Subinterest ID. */
     @Json(name = "id")
     val id: kotlin.String? = null,
 
-    /* Subinterest affinity index. */
     @Json(name = "index")
     val index: java.math.BigDecimal? = null,
 
-    /* Interest unique key (same as ID). */
     @Json(name = "key")
     val key: kotlin.String? = null,
 
-    /* Subinterest name. */
     @Json(name = "name")
     val name: kotlin.String? = null,
 
-    /* Subinterest's percent of category's total audience. */
     @Json(name = "ratio")
     val ratio: java.math.BigDecimal? = null
 

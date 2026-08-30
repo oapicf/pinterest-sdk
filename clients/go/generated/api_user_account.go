@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -27,21 +27,15 @@ type UserAccountAPIService service
 type ApiBoardsUserFollowsListRequest struct {
 	ctx context.Context
 	ApiService *UserAccountAPIService
+	adAccountId *string
+	explicitFollowing *bool
 	bookmark *string
 	pageSize *int32
-	explicitFollowing *bool
-	adAccountId *string
 }
 
-// Cursor used to fetch the next page of items
-func (r ApiBoardsUserFollowsListRequest) Bookmark(bookmark string) ApiBoardsUserFollowsListRequest {
-	r.bookmark = &bookmark
-	return r
-}
-
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-func (r ApiBoardsUserFollowsListRequest) PageSize(pageSize int32) ApiBoardsUserFollowsListRequest {
-	r.pageSize = &pageSize
+// Unique identifier of an ad account.
+func (r ApiBoardsUserFollowsListRequest) AdAccountId(adAccountId string) ApiBoardsUserFollowsListRequest {
+	r.adAccountId = &adAccountId
 	return r
 }
 
@@ -51,13 +45,19 @@ func (r ApiBoardsUserFollowsListRequest) ExplicitFollowing(explicitFollowing boo
 	return r
 }
 
-// Unique identifier of an ad account.
-func (r ApiBoardsUserFollowsListRequest) AdAccountId(adAccountId string) ApiBoardsUserFollowsListRequest {
-	r.adAccountId = &adAccountId
+// Cursor used to fetch the next page of items
+func (r ApiBoardsUserFollowsListRequest) Bookmark(bookmark string) ApiBoardsUserFollowsListRequest {
+	r.bookmark = &bookmark
 	return r
 }
 
-func (r ApiBoardsUserFollowsListRequest) Execute() (*BoardsUserFollowsList200Response, *http.Response, error) {
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+func (r ApiBoardsUserFollowsListRequest) PageSize(pageSize int32) ApiBoardsUserFollowsListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiBoardsUserFollowsListRequest) Execute() (*BoardsList200Response, *http.Response, error) {
 	return r.ApiService.BoardsUserFollowsListExecute(r)
 }
 
@@ -77,13 +77,13 @@ func (a *UserAccountAPIService) BoardsUserFollowsList(ctx context.Context) ApiBo
 }
 
 // Execute executes the request
-//  @return BoardsUserFollowsList200Response
-func (a *UserAccountAPIService) BoardsUserFollowsListExecute(r ApiBoardsUserFollowsListRequest) (*BoardsUserFollowsList200Response, *http.Response, error) {
+//  @return BoardsList200Response
+func (a *UserAccountAPIService) BoardsUserFollowsListExecute(r ApiBoardsUserFollowsListRequest) (*BoardsList200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BoardsUserFollowsList200Response
+		localVarReturnValue  *BoardsList200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAccountAPIService.BoardsUserFollowsList")
@@ -97,25 +97,25 @@ func (a *UserAccountAPIService) BoardsUserFollowsListExecute(r ApiBoardsUserFoll
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
+	if r.explicitFollowing != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", r.explicitFollowing, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", defaultValue, "form", "")
+		r.explicitFollowing = &defaultValue
+	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
-	}
-	if r.explicitFollowing != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", r.explicitFollowing, "form", "")
-	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", defaultValue, "form", "")
-        r.explicitFollowing = &defaultValue
-	}
-	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -157,7 +157,7 @@ func (a *UserAccountAPIService) BoardsUserFollowsListExecute(r ApiBoardsUserFoll
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -167,7 +167,51 @@ func (a *UserAccountAPIService) BoardsUserFollowsListExecute(r ApiBoardsUserFoll
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -194,23 +238,22 @@ type ApiFollowUserUpdateRequest struct {
 	ctx context.Context
 	ApiService *UserAccountAPIService
 	username string
-	followUserRequest *FollowUserRequest
+	followUserCreate *FollowUserCreate
 }
 
-// Follow a user.
-func (r ApiFollowUserUpdateRequest) FollowUserRequest(followUserRequest FollowUserRequest) ApiFollowUserUpdateRequest {
-	r.followUserRequest = &followUserRequest
+func (r ApiFollowUserUpdateRequest) FollowUserCreate(followUserCreate FollowUserCreate) ApiFollowUserUpdateRequest {
+	r.followUserCreate = &followUserCreate
 	return r
 }
 
-func (r ApiFollowUserUpdateRequest) Execute() (*UserSummary, *http.Response, error) {
+func (r ApiFollowUserUpdateRequest) Execute() (*FollowUser, *http.Response, error) {
 	return r.ApiService.FollowUserUpdateExecute(r)
 }
 
 /*
 FollowUserUpdate Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 Use this request, as a signed-in user, to follow another user.
 
@@ -227,13 +270,13 @@ func (a *UserAccountAPIService) FollowUserUpdate(ctx context.Context, username s
 }
 
 // Execute executes the request
-//  @return UserSummary
-func (a *UserAccountAPIService) FollowUserUpdateExecute(r ApiFollowUserUpdateRequest) (*UserSummary, *http.Response, error) {
+//  @return FollowUser
+func (a *UserAccountAPIService) FollowUserUpdateExecute(r ApiFollowUserUpdateRequest) (*FollowUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *UserSummary
+		localVarReturnValue  *FollowUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAccountAPIService.FollowUserUpdate")
@@ -247,8 +290,8 @@ func (a *UserAccountAPIService) FollowUserUpdateExecute(r ApiFollowUserUpdateReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.followUserRequest == nil {
-		return localVarReturnValue, nil, reportError("followUserRequest is required and must be specified")
+	if r.followUserCreate == nil {
+		return localVarReturnValue, nil, reportError("followUserCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -269,7 +312,7 @@ func (a *UserAccountAPIService) FollowUserUpdateExecute(r ApiFollowUserUpdateReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.followUserRequest
+	localVarPostBody = r.followUserCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -292,8 +335,8 @@ func (a *UserAccountAPIService) FollowUserUpdateExecute(r ApiFollowUserUpdateReq
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -303,7 +346,51 @@ func (a *UserAccountAPIService) FollowUserUpdateExecute(r ApiFollowUserUpdateReq
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -339,7 +426,7 @@ func (r ApiFollowersListRequest) Bookmark(bookmark string) ApiFollowersListReque
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiFollowersListRequest) PageSize(pageSize int32) ApiFollowersListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -391,9 +478,9 @@ func (a *UserAccountAPIService) FollowersListExecute(r ApiFollowersListRequest) 
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -435,7 +522,7 @@ func (a *UserAccountAPIService) FollowersListExecute(r ApiFollowersListRequest) 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -445,7 +532,51 @@ func (a *UserAccountAPIService) FollowersListExecute(r ApiFollowersListRequest) 
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -552,7 +683,62 @@ func (a *UserAccountAPIService) LinkedBusinessAccountsGetExecute(r ApiLinkedBusi
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -587,14 +773,14 @@ func (r ApiUnverifyWebsiteDeleteRequest) Website(website string) ApiUnverifyWebs
 	return r
 }
 
-func (r ApiUnverifyWebsiteDeleteRequest) Execute() (*http.Response, error) {
+func (r ApiUnverifyWebsiteDeleteRequest) Execute() (*UserWebsite, *http.Response, error) {
 	return r.ApiService.UnverifyWebsiteDeleteExecute(r)
 }
 
 /*
 UnverifyWebsiteDelete Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUnverifyWebsiteDeleteRequest
@@ -607,16 +793,18 @@ func (a *UserAccountAPIService) UnverifyWebsiteDelete(ctx context.Context) ApiUn
 }
 
 // Execute executes the request
-func (a *UserAccountAPIService) UnverifyWebsiteDeleteExecute(r ApiUnverifyWebsiteDeleteRequest) (*http.Response, error) {
+//  @return UserWebsite
+func (a *UserAccountAPIService) UnverifyWebsiteDeleteExecute(r ApiUnverifyWebsiteDeleteRequest) (*UserWebsite, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *UserWebsite
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAccountAPIService.UnverifyWebsiteDelete")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/user_account/websites"
@@ -625,7 +813,7 @@ func (a *UserAccountAPIService) UnverifyWebsiteDeleteExecute(r ApiUnverifyWebsit
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.website == nil {
-		return nil, reportError("website is required and must be specified")
+		return localVarReturnValue, nil, reportError("website is required and must be specified")
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "website", r.website, "form", "")
@@ -648,19 +836,19 @@ func (a *UserAccountAPIService) UnverifyWebsiteDeleteExecute(r ApiUnverifyWebsit
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -668,29 +856,82 @@ func (a *UserAccountAPIService) UnverifyWebsiteDeleteExecute(r ApiUnverifyWebsit
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-		return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiUserAccountAnalyticsRequest struct {
@@ -703,7 +944,7 @@ type ApiUserAccountAnalyticsRequest struct {
 	appTypes *string
 	contentType *string
 	source *string
-	metricTypes *[]string
+	metricTypes *[]QuerymetrictypesItems
 	splitField *string
 	adAccountId *string
 }
@@ -750,8 +991,8 @@ func (r ApiUserAccountAnalyticsRequest) Source(source string) ApiUserAccountAnal
 	return r
 }
 
-// Metric types to get data for, default is all. 
-func (r ApiUserAccountAnalyticsRequest) MetricTypes(metricTypes []string) ApiUserAccountAnalyticsRequest {
+// Metric types to get data for, default is all.
+func (r ApiUserAccountAnalyticsRequest) MetricTypes(metricTypes []QuerymetrictypesItems) ApiUserAccountAnalyticsRequest {
 	r.metricTypes = &metricTypes
 	return r
 }
@@ -822,37 +1063,37 @@ func (a *UserAccountAPIService) UserAccountAnalyticsExecute(r ApiUserAccountAnal
 	if r.fromClaimedContent != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", r.fromClaimedContent, "form", "")
 	} else {
-        var defaultValue string = "BOTH"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", defaultValue, "form", "")
-        r.fromClaimedContent = &defaultValue
+		var defaultValue string = "BOTH"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", defaultValue, "form", "")
+		r.fromClaimedContent = &defaultValue
 	}
 	if r.pinFormat != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", r.pinFormat, "form", "")
 	} else {
-        var defaultValue string = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", defaultValue, "form", "")
-        r.pinFormat = &defaultValue
+		var defaultValue string = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", defaultValue, "form", "")
+		r.pinFormat = &defaultValue
 	}
 	if r.appTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
 	} else {
-        var defaultValue string = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
-        r.appTypes = &defaultValue
+		var defaultValue string = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
+		r.appTypes = &defaultValue
 	}
 	if r.contentType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", r.contentType, "form", "")
 	} else {
-        var defaultValue string = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", defaultValue, "form", "")
-        r.contentType = &defaultValue
+		var defaultValue string = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", defaultValue, "form", "")
+		r.contentType = &defaultValue
 	}
 	if r.source != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "form", "")
 	} else {
-        var defaultValue string = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "source", defaultValue, "form", "")
-        r.source = &defaultValue
+		var defaultValue string = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source", defaultValue, "form", "")
+		r.source = &defaultValue
 	}
 	if r.metricTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
@@ -860,9 +1101,9 @@ func (a *UserAccountAPIService) UserAccountAnalyticsExecute(r ApiUserAccountAnal
 	if r.splitField != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "split_field", r.splitField, "form", "")
 	} else {
-        var defaultValue string = "NO_SPLIT"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "split_field", defaultValue, "form", "")
-        r.splitField = &defaultValue
+		var defaultValue string = "NO_SPLIT"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "split_field", defaultValue, "form", "")
+		r.splitField = &defaultValue
 	}
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
@@ -907,7 +1148,18 @@ func (a *UserAccountAPIService) UserAccountAnalyticsExecute(r ApiUserAccountAnal
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -918,7 +1170,7 @@ func (a *UserAccountAPIService) UserAccountAnalyticsExecute(r ApiUserAccountAnal
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -928,7 +1180,29 @@ func (a *UserAccountAPIService) UserAccountAnalyticsExecute(r ApiUserAccountAnal
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -956,15 +1230,15 @@ type ApiUserAccountAnalyticsTopPinsRequest struct {
 	ApiService *UserAccountAPIService
 	startDate *string
 	endDate *string
-	sortBy *string
+	sortBy *TopPinsSortBy
 	fromClaimedContent *string
 	pinFormat *string
 	appTypes *string
 	contentType *string
 	source *string
-	metricTypes *[]string
+	metricTypes *[]QuerymetrictypesItems
 	numOfPins *int32
-	createdInLastNDays *int32
+	createdInLastNDays *float32
 	adAccountId *string
 }
 
@@ -981,7 +1255,7 @@ func (r ApiUserAccountAnalyticsTopPinsRequest) EndDate(endDate string) ApiUserAc
 }
 
 // Specify sorting order for metrics
-func (r ApiUserAccountAnalyticsTopPinsRequest) SortBy(sortBy string) ApiUserAccountAnalyticsTopPinsRequest {
+func (r ApiUserAccountAnalyticsTopPinsRequest) SortBy(sortBy TopPinsSortBy) ApiUserAccountAnalyticsTopPinsRequest {
 	r.sortBy = &sortBy
 	return r
 }
@@ -1016,8 +1290,8 @@ func (r ApiUserAccountAnalyticsTopPinsRequest) Source(source string) ApiUserAcco
 	return r
 }
 
-// Metric types to get data for, default is all. 
-func (r ApiUserAccountAnalyticsTopPinsRequest) MetricTypes(metricTypes []string) ApiUserAccountAnalyticsTopPinsRequest {
+// Metric types to get data for, default is all.
+func (r ApiUserAccountAnalyticsTopPinsRequest) MetricTypes(metricTypes []QuerymetrictypesItems) ApiUserAccountAnalyticsTopPinsRequest {
 	r.metricTypes = &metricTypes
 	return r
 }
@@ -1029,7 +1303,7 @@ func (r ApiUserAccountAnalyticsTopPinsRequest) NumOfPins(numOfPins int32) ApiUse
 }
 
 // Get metrics for pins created in the last \&quot;n\&quot; days.
-func (r ApiUserAccountAnalyticsTopPinsRequest) CreatedInLastNDays(createdInLastNDays int32) ApiUserAccountAnalyticsTopPinsRequest {
+func (r ApiUserAccountAnalyticsTopPinsRequest) CreatedInLastNDays(createdInLastNDays float32) ApiUserAccountAnalyticsTopPinsRequest {
 	r.createdInLastNDays = &createdInLastNDays
 	return r
 }
@@ -1098,37 +1372,37 @@ func (a *UserAccountAPIService) UserAccountAnalyticsTopPinsExecute(r ApiUserAcco
 	if r.fromClaimedContent != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", r.fromClaimedContent, "form", "")
 	} else {
-        var defaultValue string = "BOTH"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", defaultValue, "form", "")
-        r.fromClaimedContent = &defaultValue
+		var defaultValue string = "BOTH"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", defaultValue, "form", "")
+		r.fromClaimedContent = &defaultValue
 	}
 	if r.pinFormat != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", r.pinFormat, "form", "")
 	} else {
-        var defaultValue string = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", defaultValue, "form", "")
-        r.pinFormat = &defaultValue
+		var defaultValue string = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", defaultValue, "form", "")
+		r.pinFormat = &defaultValue
 	}
 	if r.appTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
 	} else {
-        var defaultValue string = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
-        r.appTypes = &defaultValue
+		var defaultValue string = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
+		r.appTypes = &defaultValue
 	}
 	if r.contentType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", r.contentType, "form", "")
 	} else {
-        var defaultValue string = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", defaultValue, "form", "")
-        r.contentType = &defaultValue
+		var defaultValue string = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", defaultValue, "form", "")
+		r.contentType = &defaultValue
 	}
 	if r.source != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "form", "")
 	} else {
-        var defaultValue string = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "source", defaultValue, "form", "")
-        r.source = &defaultValue
+		var defaultValue string = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source", defaultValue, "form", "")
+		r.source = &defaultValue
 	}
 	if r.metricTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
@@ -1136,9 +1410,9 @@ func (a *UserAccountAPIService) UserAccountAnalyticsTopPinsExecute(r ApiUserAcco
 	if r.numOfPins != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "num_of_pins", r.numOfPins, "form", "")
 	} else {
-        var defaultValue int32 = 10
-        parameterAddToHeaderOrQuery(localVarQueryParams, "num_of_pins", defaultValue, "form", "")
-        r.numOfPins = &defaultValue
+		var defaultValue int32 = 10
+		parameterAddToHeaderOrQuery(localVarQueryParams, "num_of_pins", defaultValue, "form", "")
+		r.numOfPins = &defaultValue
 	}
 	if r.createdInLastNDays != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_in_last_n_days", r.createdInLastNDays, "form", "")
@@ -1185,8 +1459,8 @@ func (a *UserAccountAPIService) UserAccountAnalyticsTopPinsExecute(r ApiUserAcco
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1196,7 +1470,51 @@ func (a *UserAccountAPIService) UserAccountAnalyticsTopPinsExecute(r ApiUserAcco
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1224,15 +1542,15 @@ type ApiUserAccountAnalyticsTopVideoPinsRequest struct {
 	ApiService *UserAccountAPIService
 	startDate *string
 	endDate *string
-	sortBy *string
+	sortBy *TopVideoPinsSortBy
 	fromClaimedContent *string
 	pinFormat *string
 	appTypes *string
 	contentType *string
 	source *string
-	metricTypes *[]string
+	metricTypes *[]QueryvideopinmetrictypesItems
 	numOfPins *int32
-	createdInLastNDays *int32
+	createdInLastNDays *float32
 	adAccountId *string
 }
 
@@ -1249,7 +1567,7 @@ func (r ApiUserAccountAnalyticsTopVideoPinsRequest) EndDate(endDate string) ApiU
 }
 
 // Specify sorting order for video metrics
-func (r ApiUserAccountAnalyticsTopVideoPinsRequest) SortBy(sortBy string) ApiUserAccountAnalyticsTopVideoPinsRequest {
+func (r ApiUserAccountAnalyticsTopVideoPinsRequest) SortBy(sortBy TopVideoPinsSortBy) ApiUserAccountAnalyticsTopVideoPinsRequest {
 	r.sortBy = &sortBy
 	return r
 }
@@ -1284,8 +1602,8 @@ func (r ApiUserAccountAnalyticsTopVideoPinsRequest) Source(source string) ApiUse
 	return r
 }
 
-// Metric types to get video data for, default is all. 
-func (r ApiUserAccountAnalyticsTopVideoPinsRequest) MetricTypes(metricTypes []string) ApiUserAccountAnalyticsTopVideoPinsRequest {
+// Metric types to get video data for, default is all.
+func (r ApiUserAccountAnalyticsTopVideoPinsRequest) MetricTypes(metricTypes []QueryvideopinmetrictypesItems) ApiUserAccountAnalyticsTopVideoPinsRequest {
 	r.metricTypes = &metricTypes
 	return r
 }
@@ -1297,7 +1615,7 @@ func (r ApiUserAccountAnalyticsTopVideoPinsRequest) NumOfPins(numOfPins int32) A
 }
 
 // Get metrics for pins created in the last \&quot;n\&quot; days.
-func (r ApiUserAccountAnalyticsTopVideoPinsRequest) CreatedInLastNDays(createdInLastNDays int32) ApiUserAccountAnalyticsTopVideoPinsRequest {
+func (r ApiUserAccountAnalyticsTopVideoPinsRequest) CreatedInLastNDays(createdInLastNDays float32) ApiUserAccountAnalyticsTopVideoPinsRequest {
 	r.createdInLastNDays = &createdInLastNDays
 	return r
 }
@@ -1366,37 +1684,37 @@ func (a *UserAccountAPIService) UserAccountAnalyticsTopVideoPinsExecute(r ApiUse
 	if r.fromClaimedContent != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", r.fromClaimedContent, "form", "")
 	} else {
-        var defaultValue string = "BOTH"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", defaultValue, "form", "")
-        r.fromClaimedContent = &defaultValue
+		var defaultValue string = "BOTH"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", defaultValue, "form", "")
+		r.fromClaimedContent = &defaultValue
 	}
 	if r.pinFormat != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", r.pinFormat, "form", "")
 	} else {
-        var defaultValue string = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", defaultValue, "form", "")
-        r.pinFormat = &defaultValue
+		var defaultValue string = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", defaultValue, "form", "")
+		r.pinFormat = &defaultValue
 	}
 	if r.appTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
 	} else {
-        var defaultValue string = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
-        r.appTypes = &defaultValue
+		var defaultValue string = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
+		r.appTypes = &defaultValue
 	}
 	if r.contentType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", r.contentType, "form", "")
 	} else {
-        var defaultValue string = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", defaultValue, "form", "")
-        r.contentType = &defaultValue
+		var defaultValue string = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", defaultValue, "form", "")
+		r.contentType = &defaultValue
 	}
 	if r.source != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "form", "")
 	} else {
-        var defaultValue string = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "source", defaultValue, "form", "")
-        r.source = &defaultValue
+		var defaultValue string = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source", defaultValue, "form", "")
+		r.source = &defaultValue
 	}
 	if r.metricTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
@@ -1404,9 +1722,9 @@ func (a *UserAccountAPIService) UserAccountAnalyticsTopVideoPinsExecute(r ApiUse
 	if r.numOfPins != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "num_of_pins", r.numOfPins, "form", "")
 	} else {
-        var defaultValue int32 = 10
-        parameterAddToHeaderOrQuery(localVarQueryParams, "num_of_pins", defaultValue, "form", "")
-        r.numOfPins = &defaultValue
+		var defaultValue int32 = 10
+		parameterAddToHeaderOrQuery(localVarQueryParams, "num_of_pins", defaultValue, "form", "")
+		r.numOfPins = &defaultValue
 	}
 	if r.createdInLastNDays != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_in_last_n_days", r.createdInLastNDays, "form", "")
@@ -1453,8 +1771,8 @@ func (a *UserAccountAPIService) UserAccountAnalyticsTopVideoPinsExecute(r ApiUse
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1464,7 +1782,51 @@ func (a *UserAccountAPIService) UserAccountAnalyticsTopVideoPinsExecute(r ApiUse
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1501,7 +1863,7 @@ func (r ApiUserAccountFollowedInterestsRequest) Bookmark(bookmark string) ApiUse
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiUserAccountFollowedInterestsRequest) PageSize(pageSize int32) ApiUserAccountFollowedInterestsRequest {
 	r.pageSize = &pageSize
 	return r
@@ -1519,8 +1881,6 @@ Get a list of a user's following interests in one place.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param username A valid username
  @return ApiUserAccountFollowedInterestsRequest
-
-Deprecated
 */
 func (a *UserAccountAPIService) UserAccountFollowedInterests(ctx context.Context, username string) ApiUserAccountFollowedInterestsRequest {
 	return ApiUserAccountFollowedInterestsRequest{
@@ -1532,7 +1892,6 @@ func (a *UserAccountAPIService) UserAccountFollowedInterests(ctx context.Context
 
 // Execute executes the request
 //  @return UserAccountFollowedInterests200Response
-// Deprecated
 func (a *UserAccountAPIService) UserAccountFollowedInterestsExecute(r ApiUserAccountFollowedInterestsRequest) (*UserAccountFollowedInterests200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1559,9 +1918,9 @@ func (a *UserAccountAPIService) UserAccountFollowedInterestsExecute(r ApiUserAcc
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1603,7 +1962,7 @@ func (a *UserAccountAPIService) UserAccountFollowedInterestsExecute(r ApiUserAcc
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1614,7 +1973,7 @@ func (a *UserAccountAPIService) UserAccountFollowedInterestsExecute(r ApiUserAcc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1625,7 +1984,7 @@ func (a *UserAccountAPIService) UserAccountFollowedInterestsExecute(r ApiUserAcc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1635,7 +1994,7 @@ func (a *UserAccountAPIService) UserAccountFollowedInterestsExecute(r ApiUserAcc
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1680,7 +2039,8 @@ UserAccountGet Get user account
 Get account information for the "operation user_account"
 - By default, the "operation user_account" is the token user_account.
 
-If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+[Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ "Understanding Business Access"
+If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See [Understanding Business Access] for more information.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUserAccountGetRequest
@@ -1755,8 +2115,8 @@ func (a *UserAccountAPIService) UserAccountGetExecute(r ApiUserAccountGetRequest
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1766,7 +2126,51 @@ func (a *UserAccountAPIService) UserAccountGetExecute(r ApiUserAccountGetRequest
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1792,28 +2196,16 @@ func (a *UserAccountAPIService) UserAccountGetExecute(r ApiUserAccountGetRequest
 type ApiUserFollowingGetRequest struct {
 	ctx context.Context
 	ApiService *UserAccountAPIService
+	adAccountId *string
+	explicitFollowing *bool
+	feedType *UserFollowingFeedType
 	bookmark *string
 	pageSize *int32
-	feedType *UserFollowingFeedType
-	explicitFollowing *bool
-	adAccountId *string
 }
 
-// Cursor used to fetch the next page of items
-func (r ApiUserFollowingGetRequest) Bookmark(bookmark string) ApiUserFollowingGetRequest {
-	r.bookmark = &bookmark
-	return r
-}
-
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-func (r ApiUserFollowingGetRequest) PageSize(pageSize int32) ApiUserFollowingGetRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// Thrift param specifying what type of followees will be kept. Default to include all followees.
-func (r ApiUserFollowingGetRequest) FeedType(feedType UserFollowingFeedType) ApiUserFollowingGetRequest {
-	r.feedType = &feedType
+// Unique identifier of an ad account.
+func (r ApiUserFollowingGetRequest) AdAccountId(adAccountId string) ApiUserFollowingGetRequest {
+	r.adAccountId = &adAccountId
 	return r
 }
 
@@ -1823,13 +2215,25 @@ func (r ApiUserFollowingGetRequest) ExplicitFollowing(explicitFollowing bool) Ap
 	return r
 }
 
-// Unique identifier of an ad account.
-func (r ApiUserFollowingGetRequest) AdAccountId(adAccountId string) ApiUserFollowingGetRequest {
-	r.adAccountId = &adAccountId
+// Thrift param specifying what type of followees will be kept. Default to include all followees.
+func (r ApiUserFollowingGetRequest) FeedType(feedType UserFollowingFeedType) ApiUserFollowingGetRequest {
+	r.feedType = &feedType
 	return r
 }
 
-func (r ApiUserFollowingGetRequest) Execute() (*UserFollowingGet200Response, *http.Response, error) {
+// Cursor used to fetch the next page of items
+func (r ApiUserFollowingGetRequest) Bookmark(bookmark string) ApiUserFollowingGetRequest {
+	r.bookmark = &bookmark
+	return r
+}
+
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+func (r ApiUserFollowingGetRequest) PageSize(pageSize int32) ApiUserFollowingGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiUserFollowingGetRequest) Execute() (*FollowersList200Response, *http.Response, error) {
 	return r.ApiService.UserFollowingGetExecute(r)
 }
 
@@ -1849,13 +2253,13 @@ func (a *UserAccountAPIService) UserFollowingGet(ctx context.Context) ApiUserFol
 }
 
 // Execute executes the request
-//  @return UserFollowingGet200Response
-func (a *UserAccountAPIService) UserFollowingGetExecute(r ApiUserFollowingGetRequest) (*UserFollowingGet200Response, *http.Response, error) {
+//  @return FollowersList200Response
+func (a *UserAccountAPIService) UserFollowingGetExecute(r ApiUserFollowingGetRequest) (*FollowersList200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *UserFollowingGet200Response
+		localVarReturnValue  *FollowersList200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAccountAPIService.UserFollowingGet")
@@ -1869,32 +2273,32 @@ func (a *UserAccountAPIService) UserFollowingGetExecute(r ApiUserFollowingGetReq
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
+	if r.explicitFollowing != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", r.explicitFollowing, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", defaultValue, "form", "")
+		r.explicitFollowing = &defaultValue
+	}
+	if r.feedType != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "feed_type", r.feedType, "form", "")
+	} else {
+		var defaultValue UserFollowingFeedType = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "feed_type", defaultValue, "form", "")
+		r.feedType = &defaultValue
+	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
-	}
-	if r.feedType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "feed_type", r.feedType, "form", "")
-	} else {
-        var defaultValue UserFollowingFeedType = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "feed_type", defaultValue, "form", "")
-        r.feedType = &defaultValue
-	}
-	if r.explicitFollowing != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", r.explicitFollowing, "form", "")
-	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", defaultValue, "form", "")
-        r.explicitFollowing = &defaultValue
-	}
-	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1935,7 +2339,62 @@ func (a *UserAccountAPIService) UserFollowingGetExecute(r ApiUserFollowingGetReq
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1971,7 +2430,7 @@ func (r ApiUserWebsitesGetRequest) Bookmark(bookmark string) ApiUserWebsitesGetR
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiUserWebsitesGetRequest) PageSize(pageSize int32) ApiUserWebsitesGetRequest {
 	r.pageSize = &pageSize
 	return r
@@ -2023,9 +2482,9 @@ func (a *UserAccountAPIService) UserWebsitesGetExecute(r ApiUserWebsitesGetReque
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2066,8 +2525,8 @@ func (a *UserAccountAPIService) UserWebsitesGetExecute(r ApiUserWebsitesGetReque
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2077,7 +2536,51 @@ func (a *UserAccountAPIService) UserWebsitesGetExecute(r ApiUserWebsitesGetReque
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2103,13 +2606,12 @@ func (a *UserAccountAPIService) UserWebsitesGetExecute(r ApiUserWebsitesGetReque
 type ApiVerifyWebsiteUpdateRequest struct {
 	ctx context.Context
 	ApiService *UserAccountAPIService
-	userWebsiteVerifyRequest *UserWebsiteVerifyRequest
+	userWebsiteCreate *UserWebsiteCreate
 	adAccountId *string
 }
 
-// Verify a website.
-func (r ApiVerifyWebsiteUpdateRequest) UserWebsiteVerifyRequest(userWebsiteVerifyRequest UserWebsiteVerifyRequest) ApiVerifyWebsiteUpdateRequest {
-	r.userWebsiteVerifyRequest = &userWebsiteVerifyRequest
+func (r ApiVerifyWebsiteUpdateRequest) UserWebsiteCreate(userWebsiteCreate UserWebsiteCreate) ApiVerifyWebsiteUpdateRequest {
+	r.userWebsiteCreate = &userWebsiteCreate
 	return r
 }
 
@@ -2119,7 +2621,7 @@ func (r ApiVerifyWebsiteUpdateRequest) AdAccountId(adAccountId string) ApiVerify
 	return r
 }
 
-func (r ApiVerifyWebsiteUpdateRequest) Execute() (*UserWebsiteSummary, *http.Response, error) {
+func (r ApiVerifyWebsiteUpdateRequest) Execute() (*UserWebsite, *http.Response, error) {
 	return r.ApiService.VerifyWebsiteUpdateExecute(r)
 }
 
@@ -2139,13 +2641,13 @@ func (a *UserAccountAPIService) VerifyWebsiteUpdate(ctx context.Context) ApiVeri
 }
 
 // Execute executes the request
-//  @return UserWebsiteSummary
-func (a *UserAccountAPIService) VerifyWebsiteUpdateExecute(r ApiVerifyWebsiteUpdateRequest) (*UserWebsiteSummary, *http.Response, error) {
+//  @return UserWebsite
+func (a *UserAccountAPIService) VerifyWebsiteUpdateExecute(r ApiVerifyWebsiteUpdateRequest) (*UserWebsite, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *UserWebsiteSummary
+		localVarReturnValue  *UserWebsite
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAccountAPIService.VerifyWebsiteUpdate")
@@ -2158,8 +2660,8 @@ func (a *UserAccountAPIService) VerifyWebsiteUpdateExecute(r ApiVerifyWebsiteUpd
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.userWebsiteVerifyRequest == nil {
-		return localVarReturnValue, nil, reportError("userWebsiteVerifyRequest is required and must be specified")
+	if r.userWebsiteCreate == nil {
+		return localVarReturnValue, nil, reportError("userWebsiteCreate is required and must be specified")
 	}
 
 	if r.adAccountId != nil {
@@ -2183,7 +2685,7 @@ func (a *UserAccountAPIService) VerifyWebsiteUpdateExecute(r ApiVerifyWebsiteUpd
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.userWebsiteVerifyRequest
+	localVarPostBody = r.userWebsiteCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2206,7 +2708,62 @@ func (a *UserAccountAPIService) VerifyWebsiteUpdateExecute(r ApiVerifyWebsiteUpd
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2241,7 +2798,7 @@ func (r ApiWebsiteVerificationGetRequest) AdAccountId(adAccountId string) ApiWeb
 	return r
 }
 
-func (r ApiWebsiteVerificationGetRequest) Execute() (*UserWebsiteVerificationCode, *http.Response, error) {
+func (r ApiWebsiteVerificationGetRequest) Execute() (*UserWebsiteVerification, *http.Response, error) {
 	return r.ApiService.WebsiteVerificationGetExecute(r)
 }
 
@@ -2261,13 +2818,13 @@ func (a *UserAccountAPIService) WebsiteVerificationGet(ctx context.Context) ApiW
 }
 
 // Execute executes the request
-//  @return UserWebsiteVerificationCode
-func (a *UserAccountAPIService) WebsiteVerificationGetExecute(r ApiWebsiteVerificationGetRequest) (*UserWebsiteVerificationCode, *http.Response, error) {
+//  @return UserWebsiteVerification
+func (a *UserAccountAPIService) WebsiteVerificationGetExecute(r ApiWebsiteVerificationGetRequest) (*UserWebsiteVerification, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *UserWebsiteVerificationCode
+		localVarReturnValue  *UserWebsiteVerification
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAccountAPIService.WebsiteVerificationGet")
@@ -2323,8 +2880,8 @@ func (a *UserAccountAPIService) WebsiteVerificationGetExecute(r ApiWebsiteVerifi
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2334,7 +2891,51 @@ func (a *UserAccountAPIService) WebsiteVerificationGetExecute(r ApiWebsiteVerifi
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

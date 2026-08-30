@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignAdPreviewCreate200ResponseInnerDataOneOf"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignAdPreviewCreate200ResponseInnerDataOneOf"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  PinterestLibError = openapi_server.resourceTypes.PinterestLibError
+}
+resourceTypes {
+
+  CampaignAdPreviewCreate200ResponseInnerDataOneOf {
+    title = CampaignAdPreviewCreate200ResponseInnerDataOneOf
+    description = CampaignAdPreviewCreate200ResponseInnerDataOneOf
+    derivedFrom = Root
+    properties {
+        exceptions {
+          type = PinterestLibError
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignAdPreviewCreate200ResponseInnerDataOneOf {
+    title = CampaignAdPreviewCreate200ResponseInnerDataOneOf
+    description = CampaignAdPreviewCreate200ResponseInnerDataOneOf
+    implements = openapi_server.resourceTypes.CampaignAdPreviewCreate200ResponseInnerDataOneOf
+
+  }
+}

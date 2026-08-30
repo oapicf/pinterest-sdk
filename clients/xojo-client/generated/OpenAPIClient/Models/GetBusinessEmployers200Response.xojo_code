@@ -7,9 +7,6 @@ Protected Class GetBusinessEmployers200Response
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			List of employers.
-		#tag EndNote
 		items() As OpenAPIClient.Models.UserBusinessRoleBinding
 	#tag EndProperty
 

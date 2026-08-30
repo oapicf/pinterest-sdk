@@ -5,16 +5,16 @@
 -export_type([openapi_notification_response/0]).
 
 -type openapi_notification_response() ::
-    #{ 'success' => boolean(),
+    #{ 'error_msg' => binary(),
        'received_at' => integer(),
-       'error_msg' => binary()
+       'success' => boolean()
      }.
 
-encode(#{ 'success' := Success,
+encode(#{ 'error_msg' := ErrorMsg,
           'received_at' := ReceivedAt,
-          'error_msg' := ErrorMsg
+          'success' := Success
         }) ->
-    #{ 'success' => Success,
+    #{ 'error_msg' => ErrorMsg,
        'received_at' => ReceivedAt,
-       'error_msg' => ErrorMsg
+       'success' => Success
      }.

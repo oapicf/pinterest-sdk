@@ -3,12 +3,14 @@ package org.openapitools.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.AssetGroupBinding;
+import org.openapitools.model.AssetTypeResponse;
 
 
 
@@ -17,7 +19,7 @@ import org.openapitools.model.AssetGroupBinding;
  **/
 
 @ApiModel(description = "An object containing the permissions a business member has on the asset.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AssetIdPermissions   {
   @JsonProperty("asset_group_info")
   private AssetGroupBinding assetGroupInfo;
@@ -26,12 +28,13 @@ public class AssetIdPermissions   {
   private String assetId;
 
   @JsonProperty("asset_type")
-  private String assetType;
+  private AssetTypeResponse assetType;
 
   @JsonProperty("permissions")
-  private List<String> permissions = null;
+  private List<String> permissions = new ArrayList<>();
 
   /**
+   * An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
    **/
   public AssetIdPermissions assetGroupInfo(AssetGroupBinding assetGroupInfo) {
     this.assetGroupInfo = assetGroupInfo;
@@ -39,7 +42,7 @@ public class AssetIdPermissions   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.")
   @JsonProperty("asset_group_info")
   public AssetGroupBinding getAssetGroupInfo() {
     return assetGroupInfo;
@@ -57,7 +60,7 @@ public class AssetIdPermissions   {
   }
 
   
-  @ApiModelProperty(example = "549755885175", value = "Unique identifier of a business asset.")
+  @ApiModelProperty(example = "549755885175", required = true, value = "Unique identifier of a business asset.")
   @JsonProperty("asset_id")
   public String getAssetId() {
     return assetId;
@@ -67,20 +70,19 @@ public class AssetIdPermissions   {
   }
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    **/
-  public AssetIdPermissions assetType(String assetType) {
+  public AssetIdPermissions assetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
     return this;
   }
 
   
-  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("asset_type")
-  public String getAssetType() {
+  public AssetTypeResponse getAssetType() {
     return assetType;
   }
-  public void setAssetType(String assetType) {
+  public void setAssetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
   }
 
@@ -93,7 +95,7 @@ public class AssetIdPermissions   {
   }
 
   
-  @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", value = "Permission levels member or partner has on an asset.")
+  @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", required = true, value = "Permission levels member or partner has on an asset.")
   @JsonProperty("permissions")
   public List<String> getPermissions() {
     return permissions;
@@ -141,10 +143,7 @@ public class AssetIdPermissions   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

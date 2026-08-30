@@ -1,0 +1,176 @@
+# LeadFormsApi
+
+All URIs are relative to *https://api.pinterest.com/v5*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**lead_form_get**](LeadFormsApi.md#lead_form_get) | **GET** /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id} | Get lead form by id
+[**lead_form_test_create**](LeadFormsApi.md#lead_form_test_create) | **POST** /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test | Create lead form test data
+[**lead_forms_create**](LeadFormsApi.md#lead_forms_create) | **POST** /ad_accounts/{ad_account_id}/lead_forms | Create lead forms
+[**lead_forms_list**](LeadFormsApi.md#lead_forms_list) | **GET** /ad_accounts/{ad_account_id}/lead_forms | List lead forms
+[**lead_forms_update**](LeadFormsApi.md#lead_forms_update) | **PATCH** /ad_accounts/{ad_account_id}/lead_forms | Update lead forms
+
+
+# **lead_form_get**
+> `lead_form_get`(_api::`LeadFormsApi`, `lead_form_id`::`String`, `ad_account_id`::`String`; _mediaType=nothing) -> `LeadForm`, `OpenAPI.Clients.ApiResponse` <br/>
+> `lead_form_get`(_api::`LeadFormsApi`, response_stream::`Channel`, `lead_form_id`::`String`, `ad_account_id`::`String`; _mediaType=nothing) -> `Channel`{ `LeadForm` }, `OpenAPI.Clients.ApiResponse`
+
+Get lead form by id
+
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **`LeadFormsApi`** | API context | 
+**`lead_form_id`** | **`String`** | The ID of this lead form |
+**`ad_account_id`** | **`String`** | Unique identifier of an ad account. |
+
+### Return type
+
+[**`LeadForm`**](LeadForm.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+# **lead_form_test_create**
+> `lead_form_test_create`(_api::`LeadFormsApi`, `ad_account_id`::`String`, `lead_form_id`::`String`, `lead_form_test_create_param`::`LeadFormTestCreate`; _mediaType=nothing) -> `LeadFormTest`, `OpenAPI.Clients.ApiResponse` <br/>
+> `lead_form_test_create`(_api::`LeadFormsApi`, response_stream::`Channel`, `ad_account_id`::`String`, `lead_form_id`::`String`, `lead_form_test_create_param`::`LeadFormTestCreate`; _mediaType=nothing) -> `Channel`{ `LeadFormTest` }, `OpenAPI.Clients.ApiResponse`
+
+Create lead form test data
+
+Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **`LeadFormsApi`** | API context | 
+**`ad_account_id`** | **`String`** |  |
+**`lead_form_id`** | **`String`** | Unique identifier of a lead form. |
+**`lead_form_test_create_param`** | [**`LeadFormTestCreate`**](LeadFormTestCreate.md) |  |
+
+### Return type
+
+[**`LeadFormTest`**](LeadFormTest.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+# **lead_forms_create**
+> `lead_forms_create`(_api::`LeadFormsApi`, `ad_account_id`::`String`, `lead_form_create`::`Vector{LeadFormCreate}`; _mediaType=nothing) -> `LeadFormsCreate200Response`, `OpenAPI.Clients.ApiResponse` <br/>
+> `lead_forms_create`(_api::`LeadFormsApi`, response_stream::`Channel`, `ad_account_id`::`String`, `lead_form_create`::`Vector{LeadFormCreate}`; _mediaType=nothing) -> `Channel`{ `LeadFormsCreate200Response` }, `OpenAPI.Clients.ApiResponse`
+
+Create lead forms
+
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **`LeadFormsApi`** | API context | 
+**`ad_account_id`** | **`String`** | Unique identifier of an ad account. |
+**`lead_form_create`** | [**`Vector{LeadFormCreate}`**](LeadFormCreate.md) |  |
+
+### Return type
+
+[**`LeadFormsCreate200Response`**](LeadFormsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+# **lead_forms_list**
+> `lead_forms_list`(_api::`LeadFormsApi`, `ad_account_id`::`String`; `bookmark`=nothing, `page_size`=nothing, `order`=nothing, _mediaType=nothing) -> `LeadFormsList200Response`, `OpenAPI.Clients.ApiResponse` <br/>
+> `lead_forms_list`(_api::`LeadFormsApi`, response_stream::`Channel`, `ad_account_id`::`String`; `bookmark`=nothing, `page_size`=nothing, `order`=nothing, _mediaType=nothing) -> `Channel`{ `LeadFormsList200Response` }, `OpenAPI.Clients.ApiResponse`
+
+List lead forms
+
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **`LeadFormsApi`** | API context | 
+**`ad_account_id`** | **`String`** | Unique identifier of an ad account. |
+
+### Optional Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **`bookmark`** | **`String`** | Cursor used to fetch the next page of items | [default to nothing]
+ **`page_size`** | **`Int64`** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
+ **`order`** | [**`PinterestLibPaginationOrder`**](.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [default to nothing]
+
+### Return type
+
+[**`LeadFormsList200Response`**](LeadFormsList200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+# **lead_forms_update**
+> `lead_forms_update`(_api::`LeadFormsApi`, `ad_account_id`::`String`, `lead_form_batch_update`::`Vector{LeadFormBatchUpdate}`; _mediaType=nothing) -> `LeadFormsCreate200Response`, `OpenAPI.Clients.ApiResponse` <br/>
+> `lead_forms_update`(_api::`LeadFormsApi`, response_stream::`Channel`, `ad_account_id`::`String`, `lead_form_batch_update`::`Vector{LeadFormBatchUpdate}`; _mediaType=nothing) -> `Channel`{ `LeadFormsCreate200Response` }, `OpenAPI.Clients.ApiResponse`
+
+Update lead forms
+
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **`LeadFormsApi`** | API context | 
+**`ad_account_id`** | **`String`** | Unique identifier of an ad account. |
+**`lead_form_batch_update`** | [**`Vector{LeadFormBatchUpdate}`**](LeadFormBatchUpdate.md) |  |
+
+### Return type
+
+[**`LeadFormsCreate200Response`**](LeadFormsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+

@@ -4,6 +4,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MEDIA_TYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  | 
+**MEDIA_TYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](CatalogsProductGroupMultipleMediaTypesCriteria.md) |  | 
 
 

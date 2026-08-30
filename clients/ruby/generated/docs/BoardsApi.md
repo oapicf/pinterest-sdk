@@ -19,7 +19,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## board_sections_create
 
-> <BoardSection> board_sections_create(board_id, board_section, opts)
+> <BoardSection> board_sections_create(board_id, board_section_create, opts)
 
 Create board section
 
@@ -38,14 +38,14 @@ end
 
 api_instance = PinterestSdkClient::BoardsApi.new
 board_id = 'board_id_example' # String | Unique identifier of a board.
-board_section = PinterestSdkClient::BoardSection.new({name: 'Salads'}) # BoardSection | Create a board section.
+board_section_create = PinterestSdkClient::BoardSectionCreate.new({name: 'Salads'}) # BoardSectionCreate | 
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
 
 begin
   # Create board section
-  result = api_instance.board_sections_create(board_id, board_section, opts)
+  result = api_instance.board_sections_create(board_id, board_section_create, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BoardsApi->board_sections_create: #{e}"
@@ -56,12 +56,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BoardSection>, Integer, Hash)> board_sections_create_with_http_info(board_id, board_section, opts)
+> <Array(<BoardSection>, Integer, Hash)> board_sections_create_with_http_info(board_id, board_section_create, opts)
 
 ```ruby
 begin
   # Create board section
-  data, status_code, headers = api_instance.board_sections_create_with_http_info(board_id, board_section, opts)
+  data, status_code, headers = api_instance.board_sections_create_with_http_info(board_id, board_section_create, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <BoardSection>
@@ -75,7 +75,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **board_id** | **String** | Unique identifier of a board. |  |
-| **board_section** | [**BoardSection**](BoardSection.md) | Create a board section. |  |
+| **board_section_create** | [**BoardSectionCreate**](BoardSectionCreate.md) |  |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -94,7 +94,7 @@ end
 
 ## board_sections_delete
 
-> board_sections_delete(board_id, section_id, opts)
+> <BoardSection> board_sections_delete(board_id, section_id, opts)
 
 Delete board section
 
@@ -120,7 +120,8 @@ opts = {
 
 begin
   # Delete board section
-  api_instance.board_sections_delete(board_id, section_id, opts)
+  result = api_instance.board_sections_delete(board_id, section_id, opts)
+  p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BoardsApi->board_sections_delete: #{e}"
 end
@@ -128,9 +129,9 @@ end
 
 #### Using the board_sections_delete_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> board_sections_delete_with_http_info(board_id, section_id, opts)
+> <Array(<BoardSection>, Integer, Hash)> board_sections_delete_with_http_info(board_id, section_id, opts)
 
 ```ruby
 begin
@@ -138,7 +139,7 @@ begin
   data, status_code, headers = api_instance.board_sections_delete_with_http_info(board_id, section_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <BoardSection>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BoardsApi->board_sections_delete_with_http_info: #{e}"
 end
@@ -154,7 +155,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**BoardSection**](BoardSection.md)
 
 ### Authorization
 
@@ -193,7 +194,7 @@ board_id = 'board_id_example' # String | Unique identifier of a board.
 opts = {
   ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -230,7 +231,7 @@ end
 | **board_id** | **String** | Unique identifier of a board. |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -274,7 +275,7 @@ section_id = 'section_id_example' # String | Unique identifier of a board sectio
 opts = {
   ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -312,7 +313,7 @@ end
 | **section_id** | **String** | Unique identifier of a board section. |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -330,7 +331,7 @@ end
 
 ## board_sections_update
 
-> <BoardSection> board_sections_update(board_id, section_id, board_section, opts)
+> <BoardSection> board_sections_update(board_id, section_id, board_section_update_with_required_body, opts)
 
 Update board section
 
@@ -350,14 +351,14 @@ end
 api_instance = PinterestSdkClient::BoardsApi.new
 board_id = 'board_id_example' # String | Unique identifier of a board.
 section_id = 'section_id_example' # String | Unique identifier of a board section.
-board_section = PinterestSdkClient::BoardSection.new({name: 'Salads'}) # BoardSection | Update a board section.
+board_section_update_with_required_body = PinterestSdkClient::BoardSectionUpdateWithRequiredBody.new({name: 'Salads'}) # BoardSectionUpdateWithRequiredBody | 
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
 
 begin
   # Update board section
-  result = api_instance.board_sections_update(board_id, section_id, board_section, opts)
+  result = api_instance.board_sections_update(board_id, section_id, board_section_update_with_required_body, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BoardsApi->board_sections_update: #{e}"
@@ -368,12 +369,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BoardSection>, Integer, Hash)> board_sections_update_with_http_info(board_id, section_id, board_section, opts)
+> <Array(<BoardSection>, Integer, Hash)> board_sections_update_with_http_info(board_id, section_id, board_section_update_with_required_body, opts)
 
 ```ruby
 begin
   # Update board section
-  data, status_code, headers = api_instance.board_sections_update_with_http_info(board_id, section_id, board_section, opts)
+  data, status_code, headers = api_instance.board_sections_update_with_http_info(board_id, section_id, board_section_update_with_required_body, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <BoardSection>
@@ -388,7 +389,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **board_id** | **String** | Unique identifier of a board. |  |
 | **section_id** | **String** | Unique identifier of a board section. |  |
-| **board_section** | [**BoardSection**](BoardSection.md) | Update a board section. |  |
+| **board_section_update_with_required_body** | [**BoardSectionUpdateWithRequiredBody**](BoardSectionUpdateWithRequiredBody.md) |  |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -483,7 +484,7 @@ end
 
 ## boards_delete
 
-> boards_delete(board_id, opts)
+> <Board> boards_delete(board_id, opts)
 
 Delete board
 
@@ -508,7 +509,8 @@ opts = {
 
 begin
   # Delete board
-  api_instance.boards_delete(board_id, opts)
+  result = api_instance.boards_delete(board_id, opts)
+  p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BoardsApi->boards_delete: #{e}"
 end
@@ -516,9 +518,9 @@ end
 
 #### Using the boards_delete_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> boards_delete_with_http_info(board_id, opts)
+> <Array(<Board>, Integer, Hash)> boards_delete_with_http_info(board_id, opts)
 
 ```ruby
 begin
@@ -526,7 +528,7 @@ begin
   data, status_code, headers = api_instance.boards_delete_with_http_info(board_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <Board>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BoardsApi->boards_delete_with_http_info: #{e}"
 end
@@ -541,7 +543,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**Board**](Board.md)
 
 ### Authorization
 
@@ -734,11 +736,11 @@ end
 api_instance = PinterestSdkClient::BoardsApi.new
 board_id = 'board_id_example' # String | Unique identifier of a board.
 opts = {
-  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   creative_types: [PinterestSdkClient::CreativeType::REGULAR], # Array<CreativeType> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
   ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
-  pin_metrics: true # Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+  pin_metrics: true, # Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -773,11 +775,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **board_id** | **String** | Unique identifier of a board. |  |
-| **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 | **creative_types** | [**Array&lt;CreativeType&gt;**](CreativeType.md) | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 | **pin_metrics** | **Boolean** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional][default to false] |
+| **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 

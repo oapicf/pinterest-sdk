@@ -13,20 +13,45 @@ import org.openapitools.model.CatalogsCreativeAssetsProduct;
 import org.openapitools.model.CatalogsCreativeAssetsProductMetadata;
 import org.openapitools.model.CatalogsHotelProduct;
 import org.openapitools.model.CatalogsRetailProduct;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Pin;
 
 
 
-/**
- * Catalogs product for all verticals
- **/
 
-@ApiModel(description = "Catalogs product for all verticals")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProduct   {
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String text) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("metadata")
   private CatalogsCreativeAssetsProductMetadata metadata;
@@ -36,7 +61,7 @@ public class CatalogsProduct   {
 
   /**
    **/
-  public CatalogsProduct catalogType(CatalogsType catalogType) {
+  public CatalogsProduct catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -44,10 +69,10 @@ public class CatalogsProduct   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -122,10 +147,7 @@ public class CatalogsProduct   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

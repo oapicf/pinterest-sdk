@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Subinterest ID. | [optional] 
-**Index** | Pointer to **float32** | Subinterest affinity index. | [optional] 
-**Key** | Pointer to **string** | Interest unique key (same as ID). | [optional] 
-**Name** | Pointer to **string** | Subinterest name. | [optional] 
-**Ratio** | Pointer to **float32** | Subinterest&#39;s percent of category&#39;s total audience. | [optional] 
+**Id** | Pointer to **string** |  | [optional] 
+**Index** | Pointer to **float32** |  | [optional] 
+**Key** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
+**Ratio** | Pointer to **float32** |  | [optional] 
 
 ## Methods
 

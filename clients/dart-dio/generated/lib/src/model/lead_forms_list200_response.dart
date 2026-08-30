@@ -4,8 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
-import 'package:openapi/src/model/lead_form_response.dart';
+import 'package:openapi/src/model/lead_form.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,7 +16,13 @@ part 'lead_forms_list200_response.g.dart';
 /// * [bookmark] 
 /// * [items] 
 @BuiltValue()
-abstract class LeadFormsList200Response implements Paginated, Built<LeadFormsList200Response, LeadFormsList200ResponseBuilder> {
+abstract class LeadFormsList200Response implements Built<LeadFormsList200Response, LeadFormsList200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<LeadForm> get items;
+
   LeadFormsList200Response._();
 
   factory LeadFormsList200Response([void updates(LeadFormsList200ResponseBuilder b)]) = _$LeadFormsList200Response;
@@ -51,7 +56,7 @@ class _$LeadFormsList200ResponseSerializer implements PrimitiveSerializer<LeadFo
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(LeadForm)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$LeadFormsList200ResponseSerializer implements PrimitiveSerializer<LeadFo
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(LeadForm)]),
+          ) as BuiltList<LeadForm>;
           result.items.replace(valueDes);
           break;
         default:

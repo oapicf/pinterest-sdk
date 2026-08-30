@@ -2,29 +2,32 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * The terminated asset access.
  */
 
 @Schema(name = "DeleteMemberAccessResult", description = "The terminated asset access.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class DeleteMemberAccessResult {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String assetId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String memberId;
 
   public DeleteMemberAccessResult assetId(@Nullable String assetId) {
@@ -43,6 +46,7 @@ public class DeleteMemberAccessResult {
     return assetId;
   }
 
+  @JsonProperty("asset_id")
   public void setAssetId(@Nullable String assetId) {
     this.assetId = assetId;
   }
@@ -63,6 +67,7 @@ public class DeleteMemberAccessResult {
     return memberId;
   }
 
+  @JsonProperty("member_id")
   public void setMemberId(@Nullable String memberId) {
     this.memberId = memberId;
   }
@@ -99,11 +104,8 @@ public class DeleteMemberAccessResult {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

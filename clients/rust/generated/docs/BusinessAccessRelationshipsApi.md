@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## brand_accounts_slash_create
 
-> models::BrandAccountsCreate200Response brand_accounts_slash_create(business_hierarchy_id, brand_accounts_create_request)
+> models::BrandAccount brand_accounts_slash_create(business_hierarchy_id, brand_account_create)
 Create a Brand Account
 
 Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
@@ -29,11 +29,11 @@ Create a Brand Account that will be a child business of a business hierarchy. Re
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **business_hierarchy_id** | **String** | business hierarchy node id | [required] |
-**brand_accounts_create_request** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md) |  | [required] |
+**brand_account_create** | [**BrandAccountCreate**](BrandAccountCreate.md) |  | [required] |
 
 ### Return type
 
-[**models::BrandAccountsCreate200Response**](brand_accounts_create_200_response.md)
+[**models::BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -49,7 +49,7 @@ Name | Type | Description  | Required | Notes
 
 ## brand_accounts_slash_update
 
-> models::BrandAccountsCreate200Response brand_accounts_slash_update(business_hierarchy_id, brand_account_id, brand_accounts_update_request)
+> models::BrandAccount brand_accounts_slash_update(brand_account_id, business_hierarchy_id, brand_account_update)
 Update a Brand Account
 
 Update an existing Brand Account
@@ -59,13 +59,13 @@ Update an existing Brand Account
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**brand_account_id** | **String** |  | [required] |
 **business_hierarchy_id** | **String** | business hierarchy node id | [required] |
-**brand_account_id** | **String** | Unique identifier of a brand account. | [required] |
-**brand_accounts_update_request** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md) |  | [required] |
+**brand_account_update** | [**BrandAccountUpdate**](BrandAccountUpdate.md) |  | [required] |
 
 ### Return type
 
-[**models::BrandAccountsCreate200Response**](brand_accounts_create_200_response.md)
+[**models::BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Required | Notes
 
 ## delete_business_membership
 
-> models::DeletedMembersResponse delete_business_membership(business_id, members_to_delete_body)
+> models::DeleteBusinessMembership200Response delete_business_membership(business_id, delete_business_membership_body)
 Terminate business memberships
 
 Terminate memberships between the specified members and your business.
@@ -92,11 +92,11 @@ Terminate memberships between the specified members and your business.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **business_id** | **String** | Business id | [required] |
-**members_to_delete_body** | [**MembersToDeleteBody**](MembersToDeleteBody.md) | List of members with role to delete. | [required] |
+**delete_business_membership_body** | [**DeleteBusinessMembershipBody**](DeleteBusinessMembershipBody.md) |  | [required] |
 
 ### Return type
 
-[**models::DeletedMembersResponse**](DeletedMembersResponse.md)
+[**models::DeleteBusinessMembership200Response**](delete_business_membership_200_response.md)
 
 ### Authorization
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Required | Notes
 
 ## delete_business_partners
 
-> models::DeletePartnersResponse delete_business_partners(business_id, delete_partners_request)
+> models::DeleteBusinessPartners delete_business_partners(business_id, delete_business_partners_delete)
 Terminate business partnerships
 
 Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
@@ -123,11 +123,11 @@ Terminate partnerships between the specified partners and your business. Note: Y
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **business_id** | **String** | Unique identifier of the requesting business. | [required] |
-**delete_partners_request** | [**DeletePartnersRequest**](DeletePartnersRequest.md) | An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete.  | [required] |
+**delete_business_partners_delete** | [**DeleteBusinessPartnersDelete**](DeleteBusinessPartnersDelete.md) |  | [required] |
 
 ### Return type
 
-[**models::DeletePartnersResponse**](DeletePartnersResponse.md)
+[**models::DeleteBusinessPartners**](DeleteBusinessPartners.md)
 
 ### Authorization
 
@@ -143,7 +143,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_slash_business_employers
 
-> models::GetBusinessEmployers200Response get_slash_business_employers(page_size, bookmark)
+> models::GetBusinessEmployers200Response get_slash_business_employers(assets_summary, bookmark, page_size)
 List business employers for user
 
 Get all of the viewing user's business employers.
@@ -153,8 +153,9 @@ Get all of the viewing user's business employers.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**assets_summary** | Option<**bool**> | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are |  |[default to true]
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
 ### Return type
 
@@ -174,7 +175,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_slash_business_members
 
-> models::GetBusinessMembers200Response get_slash_business_members(business_id, fetch_system_users, assets_summary, business_roles, member_ids, start_index, bookmark, page_size)
+> models::GetBusinessEmployers200Response get_slash_business_members(business_id, fetch_system_users, assets_summary, business_roles, member_ids, start_index, bookmark, page_size)
 Get business members
 
 Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
@@ -187,15 +188,15 @@ Name | Type | Description  | Required | Notes
 **business_id** | **String** | Unique identifier of the requesting business. | [required] |
 **fetch_system_users** | Option<**bool**> | Fetches system users if True. Fetches regular user employees if False. |  |[default to false]
 **assets_summary** | Option<**bool**> | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are |  |[default to false]
-**business_roles** | Option<[**Vec<models::MemberBusinessRole>**](models::MemberBusinessRole.md)> | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. |  |
+**business_roles** | Option<[**Vec<models::MemberBusinessRole>**](Models__MemberBusinessRole.md)> | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. |  |
 **member_ids** | Option<**String**> | A list of business members ids separated by comma. |  |
 **start_index** | Option<**i32**> | An index to start fetching the results from. Only the results starting from this index will be returned. |  |[default to 0]
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
 ### Return type
 
-[**models::GetBusinessMembers200Response**](get_business_members_200_response.md)
+[**models::GetBusinessEmployers200Response**](get_business_employers_200_response.md)
 
 ### Authorization
 
@@ -211,7 +212,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_slash_business_partners
 
-> models::GetBusinessPartners200Response get_slash_business_partners(business_id, assets_summary, partner_type, partner_ids, start_index, page_size, bookmark)
+> models::GetBusinessEmployers200Response get_slash_business_partners(business_id, assets_summary, partner_type, partner_ids, start_index, sort_ascending, bookmark, page_size)
 Get business partners
 
 Get all partners of the specified business.  If the assets_summary=TRUE and: - partner_type=INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type=EXTERNAL, the business assets returned are your partner's business assets the partner has granted you   access to.
@@ -223,15 +224,16 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **business_id** | **String** | Unique identifier of the requesting business. | [required] |
 **assets_summary** | Option<**bool**> | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are |  |[default to false]
-**partner_type** | Option<[**PartnerType**](.md)> | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. |  |
+**partner_type** | Option<[**PartnerType**](PartnerType.md)> | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. |  |
 **partner_ids** | Option<**String**> | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. |  |
 **start_index** | Option<**i32**> | An index to start fetching the results from. Only the results starting from this index will be returned. |  |[default to 0]
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**sort_ascending** | Option<**bool**> | Sort ascending. |  |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
 ### Return type
 
-[**models::GetBusinessPartners200Response**](get_business_partners_200_response.md)
+[**models::GetBusinessEmployers200Response**](get_business_employers_200_response.md)
 
 ### Authorization
 
@@ -247,7 +249,7 @@ Name | Type | Description  | Required | Notes
 
 ## system_user_slash_update
 
-> system_user_slash_update(business_id, system_user_id, system_user_update_request)
+> system_user_slash_update(business_id, system_user_id, system_user_update_with_required_body)
 Update a system user information.
 
 Update a system user information such as name.
@@ -259,7 +261,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **business_id** | **String** | Unique identifier of the requesting business. | [required] |
 **system_user_id** | **String** | Unique identifier of a system user. | [required] |
-**system_user_update_request** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md) |  | [required] |
+**system_user_update_with_required_body** | [**SystemUserUpdateWithRequiredBody**](SystemUserUpdateWithRequiredBody.md) |  | [required] |
 
 ### Return type
 
@@ -279,7 +281,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_slash_business_memberships
 
-> models::UpdateMemberResultsResponseArray update_slash_business_memberships(business_id, update_member_business_role_body)
+> models::UpdateBusinessMembershipsResponse update_slash_business_memberships(business_id, business_membership_member)
 Update member's business role
 
 Update a member's business role within the business.
@@ -290,11 +292,11 @@ Update a member's business role within the business.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **business_id** | **String** | Business id | [required] |
-**update_member_business_role_body** | [**Vec<models::UpdateMemberBusinessRoleBody>**](UpdateMemberBusinessRoleBody.md) | List of objects with the member id and the business_role. | [required] |
+**business_membership_member** | [**Vec<models::BusinessMembershipMember>**](BusinessMembershipMember.md) |  | [required] |
 
 ### Return type
 
-[**models::UpdateMemberResultsResponseArray**](UpdateMemberResultsResponseArray.md)
+[**models::UpdateBusinessMembershipsResponse**](UpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 

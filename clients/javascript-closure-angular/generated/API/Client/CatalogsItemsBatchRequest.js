@@ -27,7 +27,7 @@ API.Client.CatalogsItemsBatchRequest.prototype.items;
 API.Client.CatalogsItemsBatchRequest.prototype.language;
 
 /**
- * @type {!API.Client.BatchOperation}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsItemsBatchRequest.prototype.operation;
@@ -123,7 +123,7 @@ API.Client.CatalogsItemsBatchRequest.LanguageEnum = {
   NB: 'NB',
   NE: 'NE',
   NL: 'NL',
-  NO: 'NO',
+  false: 'false',
   PL: 'PL',
   PT: 'PT',
   RO: 'RO',
@@ -141,4 +141,8 @@ API.Client.CatalogsItemsBatchRequest.LanguageEnum = {
   TR: 'TR',
   XX: 'XX',
   ZH: 'ZH',
+}
+/** @enum {string} */
+API.Client.CatalogsItemsBatchRequest.OperationEnum = { 
+  DELETE: 'DELETE',
 }

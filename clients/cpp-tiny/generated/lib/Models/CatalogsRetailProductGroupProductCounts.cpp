@@ -169,7 +169,7 @@ CatalogsRetailProductGroupProductCounts::getCatalogType()
 }
 
 void
-CatalogsRetailProductGroupProductCounts::setCatalogType(std::string  catalog_type)
+CatalogsRetailProductGroupProductCounts::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -181,7 +181,7 @@ CatalogsRetailProductGroupProductCounts::getInStock()
 }
 
 void
-CatalogsRetailProductGroupProductCounts::setInStock(long  in_stock)
+CatalogsRetailProductGroupProductCounts::setInStock(long in_stock)
 {
 	this->in_stock = in_stock;
 }
@@ -193,7 +193,7 @@ CatalogsRetailProductGroupProductCounts::getOutOfStock()
 }
 
 void
-CatalogsRetailProductGroupProductCounts::setOutOfStock(long  out_of_stock)
+CatalogsRetailProductGroupProductCounts::setOutOfStock(long out_of_stock)
 {
 	this->out_of_stock = out_of_stock;
 }
@@ -205,7 +205,7 @@ CatalogsRetailProductGroupProductCounts::getPreorder()
 }
 
 void
-CatalogsRetailProductGroupProductCounts::setPreorder(long  preorder)
+CatalogsRetailProductGroupProductCounts::setPreorder(long preorder)
 {
 	this->preorder = preorder;
 }
@@ -217,7 +217,7 @@ CatalogsRetailProductGroupProductCounts::getTotal()
 }
 
 void
-CatalogsRetailProductGroupProductCounts::setTotal(long  total)
+CatalogsRetailProductGroupProductCounts::setTotal(long total)
 {
 	this->total = total;
 }
@@ -229,7 +229,7 @@ CatalogsRetailProductGroupProductCounts::getVideos()
 }
 
 void
-CatalogsRetailProductGroupProductCounts::setVideos(long  videos)
+CatalogsRetailProductGroupProductCounts::setVideos(long videos)
 {
 	this->videos = videos;
 }

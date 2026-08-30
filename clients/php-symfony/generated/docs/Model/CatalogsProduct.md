@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**OpenAPI\Server\Model\CatalogsType**](CatalogsType.md) |  | 
+**catalogType** | **string** |  | 
 **metadata** | [**OpenAPI\Server\Model\CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  | 
 **pin** | [**OpenAPI\Server\Model\Pin**](Pin.md) |  | 
 

@@ -1,0 +1,13 @@
+
+# Table `AdGroupAudienceSizingKeyword`
+(mapped from: AdGroupAudienceSizingKeyword)
+
+## Properties
+Name | Mapping | SQL Type | Default | Type | Description | Notes
+---- | ------- | -------- | ------- | ---- | ----------- | -----
+**matchType** | match_type | long NOT NULL |  | [**MatchType**](MatchType.md) |  |  [foreignkey]
+**value** | value | text NOT NULL |  | **kotlin.String** | Keyword value (120 chars max). | 
+
+
+
+

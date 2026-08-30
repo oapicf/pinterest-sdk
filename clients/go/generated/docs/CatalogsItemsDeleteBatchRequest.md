@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Country** | [**Country**](Country.md) |  | 
 **Items** | [**[]ItemDeleteBatchRecord**](ItemDeleteBatchRecord.md) | Array with catalogs items | 
 **Language** | **string** | We recommend using the CatalogsLocale values. | 
-**Operation** | [**BatchOperation**](BatchOperation.md) |  | 
+**Operation** | **string** |  | 
 
 ## Methods
 
 ### NewCatalogsItemsDeleteBatchRequest
 
-`func NewCatalogsItemsDeleteBatchRequest(country Country, items []ItemDeleteBatchRecord, language string, operation BatchOperation, ) *CatalogsItemsDeleteBatchRequest`
+`func NewCatalogsItemsDeleteBatchRequest(country Country, items []ItemDeleteBatchRecord, language string, operation string, ) *CatalogsItemsDeleteBatchRequest`
 
 NewCatalogsItemsDeleteBatchRequest instantiates a new CatalogsItemsDeleteBatchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -90,20 +90,20 @@ SetLanguage sets Language field to given value.
 
 ### GetOperation
 
-`func (o *CatalogsItemsDeleteBatchRequest) GetOperation() BatchOperation`
+`func (o *CatalogsItemsDeleteBatchRequest) GetOperation() string`
 
 GetOperation returns the Operation field if non-nil, zero value otherwise.
 
 ### GetOperationOk
 
-`func (o *CatalogsItemsDeleteBatchRequest) GetOperationOk() (*BatchOperation, bool)`
+`func (o *CatalogsItemsDeleteBatchRequest) GetOperationOk() (*string, bool)`
 
 GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperation
 
-`func (o *CatalogsItemsDeleteBatchRequest) SetOperation(v BatchOperation)`
+`func (o *CatalogsItemsDeleteBatchRequest) SetOperation(v string)`
 
 SetOperation sets Operation field to given value.
 

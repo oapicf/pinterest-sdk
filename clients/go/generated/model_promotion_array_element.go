@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &PromotionArrayElement{}
 
 // PromotionArrayElement struct for PromotionArrayElement
 type PromotionArrayElement struct {
-	Data *PromotionResponse `json:"data,omitempty"`
+	Data *Promotion `json:"data,omitempty"`
 	Exception *Exception `json:"exception,omitempty"`
 }
 
@@ -42,9 +42,9 @@ func NewPromotionArrayElementWithDefaults() *PromotionArrayElement {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *PromotionArrayElement) GetData() PromotionResponse {
+func (o *PromotionArrayElement) GetData() Promotion {
 	if o == nil || IsNil(o.Data) {
-		var ret PromotionResponse
+		var ret Promotion
 		return ret
 	}
 	return *o.Data
@@ -52,7 +52,7 @@ func (o *PromotionArrayElement) GetData() PromotionResponse {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PromotionArrayElement) GetDataOk() (*PromotionResponse, bool) {
+func (o *PromotionArrayElement) GetDataOk() (*Promotion, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *PromotionArrayElement) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given PromotionResponse and assigns it to the Data field.
-func (o *PromotionArrayElement) SetData(v PromotionResponse) {
+// SetData gets a reference to the given Promotion and assigns it to the Data field.
+func (o *PromotionArrayElement) SetData(v Promotion) {
 	o.Data = &v
 }
 

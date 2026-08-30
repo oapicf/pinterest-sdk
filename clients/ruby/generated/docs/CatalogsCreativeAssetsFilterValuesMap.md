@@ -16,7 +16,7 @@
 | **google_product_category_4** | **Array&lt;String&gt;** |  | [optional] |
 | **google_product_category_5** | **Array&lt;String&gt;** |  | [optional] |
 | **google_product_category_6** | **Array&lt;String&gt;** |  | [optional] |
-| **media_type** | **Array&lt;String&gt;** |  | [optional] |
+| **media_type** | [**Array&lt;MediaType&gt;**](MediaType.md) |  | [optional] |
 
 ## Example
 

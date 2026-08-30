@@ -3,7 +3,7 @@ package org.openapitools.model;
 
 
 /**
- * The new status you want to give the label, either &#x60;ACTIVE&#x60; (in use) or no longer in use (&#x60;ARCHIVED&#x60;).
+ * Label status values.
  */
 public enum LabelStatus {
   
@@ -28,7 +28,7 @@ public enum LabelStatus {
         return b;
       }
     }
-    return null;
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
 }

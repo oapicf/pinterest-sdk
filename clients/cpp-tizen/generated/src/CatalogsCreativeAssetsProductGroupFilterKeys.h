@@ -26,6 +26,7 @@
 #include "GoogleProductCategory4Filter.h"
 #include "GoogleProductCategory5Filter.h"
 #include "GoogleProductCategory6Filter.h"
+#include "LinkFilter.h"
 #include "MediaTypeFilter.h"
 #include "TitleKeywordsFilter.h"
 #include "Object.h"
@@ -169,6 +170,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria  tITLE_KEYWORDS);
+	/*! \brief Get 
+	 */
+	CatalogsProductGroupFilterOperatorTypeCriteria getLINK();
+
+	/*! \brief Set 
+	 */
+	void setLINK(CatalogsProductGroupFilterOperatorTypeCriteria  lINK);
 
 private:
 	CatalogsProductGroupMultipleStringCriteria cREATIVE_ASSETS_ID;
@@ -186,6 +194,7 @@ private:
 	CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_0;
 	CatalogsProductGroupMultipleMediaTypesCriteria mEDIA_TYPE;
 	CatalogsProductGroupMultipleStringCriteria tITLE_KEYWORDS;
+	CatalogsProductGroupFilterOperatorTypeCriteria lINK;
 	void __init();
 	void __cleanup();
 

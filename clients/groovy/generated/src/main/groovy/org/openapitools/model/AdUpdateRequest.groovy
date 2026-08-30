@@ -11,11 +11,13 @@ import org.openapitools.model.CustomizableCTAType;
 import org.openapitools.model.DisclosureType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
-import org.openapitools.model.QuizPinData;
-import org.openapitools.model.TrackingUrls;
 
 @Canonical
 class AdUpdateRequest {
+    /* The ID of this ad. */
+    String id
+    /* Pin ID. This field may only be updated for draft ads. */
+    String pinId
     /* ID of the ad group that contains the ad. */
     String adGroupId
     /* Deep link URL for Android devices. */
@@ -42,6 +44,8 @@ class AdUpdateRequest {
     GridClickType gridClickType
     /* Deep link URL for iOS devices. */
     String iosDeepLink
+    /* Is the ad a carting/WTB ad? */
+    Boolean isCarting
     /* Is original pin deleted? */
     Boolean isPinDeleted
     /* Is pin repinnable? */
@@ -51,15 +55,11 @@ class AdUpdateRequest {
     /* Name of the ad - 255 chars max. */
     String name
     /* Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. */
-    QuizPinData quizPinData
+    Object quizPinData
     
     EntityStatus status
     
-    TrackingUrls trackingUrls
+    Object trackingUrls
     /* Tracking URL for ad impressions. */
     String viewTrackingUrl
-    /* The ID of this ad. */
-    String id
-    /* Pin ID. This field may only be updated for draft ads. */
-    String pinId
 }

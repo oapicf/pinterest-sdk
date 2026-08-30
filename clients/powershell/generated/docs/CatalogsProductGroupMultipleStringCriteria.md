@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Negated** | **Boolean** |  | [optional] [default to $false]
+**Negated** | **Boolean** |  | [optional] 
 **Values** | **String[]** |  | 
 
 ## Examples

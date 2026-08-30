@@ -1,36 +1,31 @@
 package org.openapitools.model;
 
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Record processing counts
- */
-@ApiModel(description="Record processing counts")
 
 public class RecordCounts  {
   
  /**
   * Number of invalid records processed
   */
-  @ApiModelProperty(example = "50", required = true, value = "Number of invalid records processed")
+  @ApiModelProperty(required = true, value = "Number of invalid records processed")
 
   private Integer invalid;
 
  /**
   * Number of records processed
   */
-  @ApiModelProperty(example = "1000", required = true, value = "Number of records processed")
+  @ApiModelProperty(required = true, value = "Number of records processed")
 
   private Integer processed;
 
  /**
   * Number of valid records processed
   */
-  @ApiModelProperty(example = "950", required = true, value = "Number of valid records processed")
+  @ApiModelProperty(required = true, value = "Number of valid records processed")
 
   private Integer valid;
  /**
@@ -123,10 +118,7 @@ public class RecordCounts  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

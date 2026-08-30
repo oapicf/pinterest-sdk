@@ -8,15 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.BatchOperationStatus
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.ItemProcessingRecord
 
 import com.squareup.moshi.Json
@@ -37,7 +44,7 @@ import com.squareup.moshi.JsonClass
 data class CatalogsRetailItemsBatch (
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
+    val catalogType: CatalogsRetailItemsBatch.CatalogType,
 
     /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion. */
     @Json(name = "created_time")
@@ -60,6 +67,15 @@ data class CatalogsRetailItemsBatch (
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: RETAIL
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "RETAIL") RETAIL("RETAIL");
+    }
 
 }
 

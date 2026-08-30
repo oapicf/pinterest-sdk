@@ -8,7 +8,6 @@ import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/country.dart';
 import 'package:openapi/src/model/advanced_auction_bid_options.dart';
 import 'package:openapi/src/model/language.dart';
-import 'package:openapi/src/model/advanced_auction_operation.dart';
 import 'package:openapi/src/model/advanced_auction_items_submit_delete_record.dart';
 import 'package:openapi/src/model/advanced_auction_items_submit_upsert_record.dart';
 import 'package:openapi/src/model/advanced_auction_operation_error.dart';
@@ -21,19 +20,15 @@ part 'advanced_auction_items_submit_record.g.dart';
 /// Object describing an item bid option operation
 ///
 /// Properties:
-/// * [operation] 
+/// * [bidOptions] 
 /// * [country] 
+/// * [errors] - Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
 /// * [itemId] - The catalog retail item id in the merchant namespace
 /// * [language] 
-/// * [bidOptions] 
-/// * [errors] - Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+/// * [operation] 
 /// * [updateMask] - The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
 @BuiltValue()
 abstract class AdvancedAuctionItemsSubmitRecord implements Built<AdvancedAuctionItemsSubmitRecord, AdvancedAuctionItemsSubmitRecordBuilder> {
-  @BuiltValueField(wireName: r'operation')
-  AdvancedAuctionOperation get operation;
-  // enum operationEnum {  UPSERT,  DELETE,  };
-
   /// One Of [AdvancedAuctionItemsSubmitDeleteRecord], [AdvancedAuctionItemsSubmitUpsertRecord]
   OneOf get oneOf;
 
@@ -90,11 +85,6 @@ class _$AdvancedAuctionItemsSubmitRecordSerializer implements PrimitiveSerialize
     AdvancedAuctionItemsSubmitRecord object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'operation';
-    yield serializers.serialize(
-      object.operation,
-      specifiedType: const FullType(AdvancedAuctionOperation),
-    );
   }
 
   @override
@@ -104,36 +94,7 @@ class _$AdvancedAuctionItemsSubmitRecordSerializer implements PrimitiveSerialize
     FullType specifiedType = FullType.unspecified,
   }) {
     final oneOf = object.oneOf;
-    final result = _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-    result.addAll(serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType)) as Iterable<Object?>);
-    return result;
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required AdvancedAuctionItemsSubmitRecordBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'operation':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(AdvancedAuctionOperation),
-          ) as AdvancedAuctionOperation;
-          result.operation = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
+    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
   }
 
   @override
@@ -172,5 +133,18 @@ class _$AdvancedAuctionItemsSubmitRecordSerializer implements PrimitiveSerialize
     result.oneOf = OneOfDynamic(typeIndex: oneOfTypes.indexOf(oneOfType), types: oneOfTypes, value: oneOfResult);
     return result.build();
   }
+}
+
+class AdvancedAuctionItemsSubmitRecordOperationEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'DELETE')
+  static const AdvancedAuctionItemsSubmitRecordOperationEnum DELETE = _$advancedAuctionItemsSubmitRecordOperationEnum_DELETE;
+
+  static Serializer<AdvancedAuctionItemsSubmitRecordOperationEnum> get serializer => _$advancedAuctionItemsSubmitRecordOperationEnumSerializer;
+
+  const AdvancedAuctionItemsSubmitRecordOperationEnum._(String name): super(name);
+
+  static BuiltSet<AdvancedAuctionItemsSubmitRecordOperationEnum> get values => _$advancedAuctionItemsSubmitRecordOperationEnumValues;
+  static AdvancedAuctionItemsSubmitRecordOperationEnum valueOf(String name) => _$advancedAuctionItemsSubmitRecordOperationEnumValueOf(name);
 }
 

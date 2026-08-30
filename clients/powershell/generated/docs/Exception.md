@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **Int32** | Exception error code. | [optional] 
-**Message** | **String** | Exception message. | [optional] 
+**Code** | **Int32** |  | [optional] 
+**Message** | **String** |  | 
 
 ## Examples
 

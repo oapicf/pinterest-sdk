@@ -1,9 +1,9 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.Error
 import org.openapitools.model.NotificationPostRequest
 import org.openapitools.model.NotificationResponse
+import org.openapitools.model.PinterestLibError
 
 class NotificationApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -17,6 +17,7 @@ class NotificationApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -30,7 +31,9 @@ class NotificationApi {
         bodyParams = notificationPostRequest
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     NotificationResponse.class )
 

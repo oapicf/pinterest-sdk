@@ -4,6 +4,7 @@ import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.LabelStatusBulkUpdate
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -18,39 +19,24 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * 
  * @param id Label ID.
- * @param status Set status to `ARCHIVED` to remove the label from the parent entity.
- * @param &#x60;value&#x60; </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
+ * @param parentId Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
+ * @param status 
  */
 data class LabelBulkUpdateRequest(
 
-    @Schema(example = "1106385754497", required = true, description = "Label ID.")
+    @Schema(required = true, description = "Label ID.")
+    @param:JsonProperty("id")
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
-    @Schema(example = "ARCHIVED", description = "Set status to `ARCHIVED` to remove the label from the parent entity.")
-    @get:JsonProperty("status") val status: LabelBulkUpdateRequest.Status? = null,
+    @Schema(required = true, description = "Unique identifier of the asset you are labelling. Currently, you can only label campaigns.")
+    @param:JsonProperty("parent_id")
+    @get:JsonProperty("parent_id", required = true) val parentId: kotlin.String,
 
-    @get:Size(max=100)
-    @Schema(example = "null", description = "</p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.")
-    @get:JsonProperty("value") val `value`: kotlin.String? = null
+    @field:Valid
+    @Schema(required = true, description = "")
+    @param:JsonProperty("status")
+    @get:JsonProperty("status", required = true) val status: LabelStatusBulkUpdate
 ) {
-
-    /**
-    * Set status to `ARCHIVED` to remove the label from the parent entity.
-    * Values: ARCHIVED
-    */
-    enum class Status(@get:JsonValue val value: kotlin.String) {
-
-        ARCHIVED("ARCHIVED");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): Status {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LabelBulkUpdateRequest'")
-            }
-        }
-    }
 
 }
 

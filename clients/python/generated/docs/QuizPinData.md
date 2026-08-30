@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **questions** | [**List[QuizPinQuestion]**](QuizPinQuestion.md) |  | [optional] 
 **results** | [**List[QuizPinResult]**](QuizPinResult.md) |  | [optional] 
 **tie_breaker_custom_result** | [**QuizPinResult**](QuizPinResult.md) |  | [optional] 
-**tie_breaker_type** | **str** | Quiz ad tie breaker type, default is RANDOM | [optional] 
+**tie_breaker_type** | [**TieBreakerType**](TieBreakerType.md) |  | [optional] 
 
 ## Example
 

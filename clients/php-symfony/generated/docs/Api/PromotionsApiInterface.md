@@ -23,7 +23,7 @@ services:
 ```
 
 ## **promotionsCreate**
-> OpenAPI\Server\Model\PromotionsResponse promotionsCreate($adAccountId, $promotionCreateRequest)
+> OpenAPI\Server\Model\PromotionsResponse promotionsCreate($adAccountId, $promotionCreate)
 
 Create promotions
 
@@ -54,7 +54,7 @@ class PromotionsApi implements PromotionsApiInterface
     /**
      * Implementation of PromotionsApiInterface#promotionsCreate
      */
-    public function promotionsCreate(string $adAccountId, array $promotionCreateRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function promotionsCreate(string $adAccountId, array $promotionCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -68,7 +68,7 @@ class PromotionsApi implements PromotionsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **promotionCreateRequest** | [**OpenAPI\Server\Model\PromotionCreateRequest**](../Model/PromotionCreateRequest.md)| List of promotions to create, size limit [1, 30]. |
+ **promotionCreate** | [**OpenAPI\Server\Model\PromotionCreate**](../Model/PromotionCreate.md)|  |
 
 ### Return type
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **promotionsDelete**
-> promotionsDelete($adAccountId, $promotionId)
+> OpenAPI\Server\Model\Promotion promotionsDelete($promotionId, $adAccountId)
 
 Delete promotion by id
 
@@ -117,7 +117,7 @@ class PromotionsApi implements PromotionsApiInterface
     /**
      * Implementation of PromotionsApiInterface#promotionsDelete
      */
-    public function promotionsDelete(string $adAccountId, string $promotionId, int &$responseCode, array &$responseHeaders): void
+    public function promotionsDelete(string $promotionId, string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -130,12 +130,12 @@ class PromotionsApi implements PromotionsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotionId** | **string**| Promotion ID |
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **promotionId** | **string**| Unique identifier of a promotion |
 
 ### Return type
 
-void (empty response body)
+[**OpenAPI\Server\Model\Promotion**](../Model/Promotion.md)
 
 ### Authorization
 
@@ -149,7 +149,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **promotionsGet**
-> OpenAPI\Server\Model\PromotionResponse promotionsGet($adAccountId, $promotionId)
+> OpenAPI\Server\Model\Promotion promotionsGet($promotionId, $adAccountId)
 
 Get promotion by id
 
@@ -180,7 +180,7 @@ class PromotionsApi implements PromotionsApiInterface
     /**
      * Implementation of PromotionsApiInterface#promotionsGet
      */
-    public function promotionsGet(string $adAccountId, string $promotionId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function promotionsGet(string $promotionId, string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -193,12 +193,12 @@ class PromotionsApi implements PromotionsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotionId** | **string**| Promotion ID |
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **promotionId** | **string**| Unique identifier of a promotion |
 
 ### Return type
 
-[**OpenAPI\Server\Model\PromotionResponse**](../Model/PromotionResponse.md)
+[**OpenAPI\Server\Model\Promotion**](../Model/Promotion.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **promotionsList**
-> OpenAPI\Server\Model\PromotionsList200Response promotionsList($adAccountId, $pageSize, $order, $bookmark)
+> OpenAPI\Server\Model\PromotionsList200Response promotionsList($adAccountId, $bookmark, $pageSize, $order)
 
 Get promotions
 
@@ -243,7 +243,7 @@ class PromotionsApi implements PromotionsApiInterface
     /**
      * Implementation of PromotionsApiInterface#promotionsList
      */
-    public function promotionsList(string $adAccountId, int $pageSize, ?string $order, ?string $bookmark, int &$responseCode, array &$responseHeaders): array|object|null
+    public function promotionsList(string $adAccountId, ?string $bookmark, int $pageSize, ?PinterestLibPaginationOrder $order, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -257,9 +257,9 @@ class PromotionsApi implements PromotionsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](../Model/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]
 
 ### Return type
 
@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **promotionsUpdate**
-> OpenAPI\Server\Model\PromotionsResponse promotionsUpdate($adAccountId, $promotionUpdateRequest)
+> OpenAPI\Server\Model\PromotionsResponse promotionsUpdate($adAccountId, $promotionBatchUpdate)
 
 Update promotions
 
@@ -308,7 +308,7 @@ class PromotionsApi implements PromotionsApiInterface
     /**
      * Implementation of PromotionsApiInterface#promotionsUpdate
      */
-    public function promotionsUpdate(string $adAccountId, array $promotionUpdateRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function promotionsUpdate(string $adAccountId, array $promotionBatchUpdate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -322,7 +322,7 @@ class PromotionsApi implements PromotionsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **promotionUpdateRequest** | [**OpenAPI\Server\Model\PromotionUpdateRequest**](../Model/PromotionUpdateRequest.md)| List of promotions to create, size limit [1, 30]. |
+ **promotionBatchUpdate** | [**OpenAPI\Server\Model\PromotionBatchUpdate**](../Model/PromotionBatchUpdate.md)|  |
 
 ### Return type
 

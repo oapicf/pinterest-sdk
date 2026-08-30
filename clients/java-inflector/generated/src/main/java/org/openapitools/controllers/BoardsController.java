@@ -14,17 +14,18 @@ import org.openapitools.model.Board;
 import org.openapitools.model.BoardCreate;
 import org.openapitools.model.BoardPrivacyFilter;
 import org.openapitools.model.BoardSection;
+import org.openapitools.model.BoardSectionCreate;
+import org.openapitools.model.BoardSectionUpdateWithRequiredBody;
 import org.openapitools.model.BoardSectionsList200Response;
 import org.openapitools.model.BoardWithUpdatePrivacy;
 import org.openapitools.model.BoardWithUpdatePrivacyUpdate;
 import org.openapitools.model.BoardsList200Response;
 import org.openapitools.model.BoardsListPins200Response;
 import org.openapitools.model.CreativeType;
-import org.openapitools.model.Error;
 import java.util.List;
 import org.openapitools.model.PinterestLibError;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BoardsController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map
@@ -33,7 +34,7 @@ public class BoardsController  {
    **/
 
   /*
-    public ResponseContext boardSectionsCreate(RequestContext request , String boardId, BoardSection boardSection, String adAccountId) {
+    public ResponseContext boardSectionsCreate(RequestContext request , String boardId, BoardSectionCreate boardSectionCreate, String adAccountId) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -57,7 +58,7 @@ public class BoardsController  {
   */
 
   /*
-    public ResponseContext boardSectionsUpdate(RequestContext request , String boardId, String sectionId, BoardSection boardSection, String adAccountId) {
+    public ResponseContext boardSectionsUpdate(RequestContext request , String boardId, String sectionId, BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody, String adAccountId) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -87,7 +88,7 @@ public class BoardsController  {
   */
 
   /*
-    public ResponseContext boardsListPins(RequestContext request , String boardId, String bookmark, Integer pageSize, List<CreativeType> creativeTypes, String adAccountId, Boolean pinMetrics) {
+    public ResponseContext boardsListPins(RequestContext request , String boardId, List<CreativeType> creativeTypes, String adAccountId, Boolean pinMetrics, String bookmark, Integer pageSize) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

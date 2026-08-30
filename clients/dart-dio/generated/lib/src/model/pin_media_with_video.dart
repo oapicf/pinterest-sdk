@@ -19,6 +19,7 @@ part 'pin_media_with_video.g.dart';
 /// * [images] 
 /// * [mediaType] 
 /// * [videoUrl] - Video url (720p).  **Note:** This field is limited and not available to all apps.
+/// * [videoUrlHls] - Video url (HLS).  **Note:** This field is limited and not available to all apps.
 /// * [width] - Width (in pixels). Field maybe null after creation due to video processing time.
 @BuiltValue()
 abstract class PinMediaWithVideo implements Built<PinMediaWithVideo, PinMediaWithVideoBuilder> {
@@ -43,6 +44,10 @@ abstract class PinMediaWithVideo implements Built<PinMediaWithVideo, PinMediaWit
   /// Video url (720p).  **Note:** This field is limited and not available to all apps.
   @BuiltValueField(wireName: r'video_url')
   String? get videoUrl;
+
+  /// Video url (HLS).  **Note:** This field is limited and not available to all apps.
+  @BuiltValueField(wireName: r'video_url_hls')
+  String? get videoUrlHls;
 
   /// Width (in pixels). Field maybe null after creation due to video processing time.
   @BuiltValueField(wireName: r'width')
@@ -111,6 +116,13 @@ class _$PinMediaWithVideoSerializer implements PrimitiveSerializer<PinMediaWithV
         specifiedType: const FullType.nullable(String),
       );
     }
+    if (object.videoUrlHls != null) {
+      yield r'video_url_hls';
+      yield serializers.serialize(
+        object.videoUrlHls,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
     if (object.width != null) {
       yield r'width';
       yield serializers.serialize(
@@ -144,8 +156,9 @@ class _$PinMediaWithVideoSerializer implements PrimitiveSerializer<PinMediaWithV
         case r'cover_image_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.coverImageUrl = valueDes;
           break;
         case r'duration':
@@ -167,8 +180,9 @@ class _$PinMediaWithVideoSerializer implements PrimitiveSerializer<PinMediaWithV
         case r'images':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ImageSize),
-          ) as ImageSize;
+            specifiedType: const FullType.nullable(ImageSize),
+          ) as ImageSize?;
+          if (valueDes == null) continue;
           result.images.replace(valueDes);
           break;
         case r'media_type':
@@ -185,6 +199,14 @@ class _$PinMediaWithVideoSerializer implements PrimitiveSerializer<PinMediaWithV
           ) as String?;
           if (valueDes == null) continue;
           result.videoUrl = valueDes;
+          break;
+        case r'video_url_hls':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.videoUrlHls = valueDes;
           break;
         case r'width':
           final valueDes = serializers.deserialize(

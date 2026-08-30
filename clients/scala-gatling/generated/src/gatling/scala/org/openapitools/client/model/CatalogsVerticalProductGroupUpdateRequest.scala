@@ -8,6 +8,7 @@ case class CatalogsVerticalProductGroupUpdateRequest (
     _description: Option[String],
     _filters: Option[CatalogsCreativeAssetsProductGroupFilters],
     _locale: Option[CatalogsLocale],
+    /* Name of catalog product group */
     _name: Option[String]
 )
 object CatalogsVerticalProductGroupUpdateRequest {

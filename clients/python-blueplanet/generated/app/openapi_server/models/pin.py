@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.ai_disclosures import AiDisclosures  # noqa: F401,E501
 from app.openapi_server.models.board_owner import BoardOwner  # noqa: F401,E501
 from app.openapi_server.models.creative_type import CreativeType  # noqa: F401,E501
 from app.openapi_server.models.pin_media import PinMedia  # noqa: F401,E501
@@ -19,11 +20,11 @@ class Pin(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, alt_text: str=None, board_id: str=None, board_owner: BoardOwner=None, board_section_id: str=None, created_at: datetime=None, creative_type: CreativeType=None, description: str=None, dominant_color: str=None, has_been_promoted: bool=None, id: str=None, is_owner: bool=None, is_standard: bool=None, link: str=None, media: PinMedia=None, parent_pin_id: str=None, pin_metrics: object=None, title: str=None):  # noqa: E501
+    def __init__(self, ai_disclosures: AiDisclosures=None, board_id: str=None, board_owner: BoardOwner=None, board_section_id: str=None, created_at: datetime=None, creative_type: CreativeType=None, dominant_color: str=None, has_been_promoted: bool=None, id: str=None, is_owner: bool=None, is_product: bool=None, is_standard: bool=None, media: PinMedia=None, parent_pin_id: str=None, pin_metrics: object=None, alt_text: str=None, description: str=None, link: str=None, title: str=None):  # noqa: E501
         """Pin - a model defined in Swagger
 
-        :param alt_text: The alt_text of this Pin.  # noqa: E501
-        :type alt_text: str
+        :param ai_disclosures: The ai_disclosures of this Pin.  # noqa: E501
+        :type ai_disclosures: AiDisclosures
         :param board_id: The board_id of this Pin.  # noqa: E501
         :type board_id: str
         :param board_owner: The board_owner of this Pin.  # noqa: E501
@@ -34,8 +35,6 @@ class Pin(Model):
         :type created_at: datetime
         :param creative_type: The creative_type of this Pin.  # noqa: E501
         :type creative_type: CreativeType
-        :param description: The description of this Pin.  # noqa: E501
-        :type description: str
         :param dominant_color: The dominant_color of this Pin.  # noqa: E501
         :type dominant_color: str
         :param has_been_promoted: The has_been_promoted of this Pin.  # noqa: E501
@@ -44,75 +43,87 @@ class Pin(Model):
         :type id: str
         :param is_owner: The is_owner of this Pin.  # noqa: E501
         :type is_owner: bool
+        :param is_product: The is_product of this Pin.  # noqa: E501
+        :type is_product: bool
         :param is_standard: The is_standard of this Pin.  # noqa: E501
         :type is_standard: bool
-        :param link: The link of this Pin.  # noqa: E501
-        :type link: str
         :param media: The media of this Pin.  # noqa: E501
         :type media: PinMedia
         :param parent_pin_id: The parent_pin_id of this Pin.  # noqa: E501
         :type parent_pin_id: str
         :param pin_metrics: The pin_metrics of this Pin.  # noqa: E501
         :type pin_metrics: object
+        :param alt_text: The alt_text of this Pin.  # noqa: E501
+        :type alt_text: str
+        :param description: The description of this Pin.  # noqa: E501
+        :type description: str
+        :param link: The link of this Pin.  # noqa: E501
+        :type link: str
         :param title: The title of this Pin.  # noqa: E501
         :type title: str
         """
         self.swagger_types = {
-            'alt_text': str,
+            'ai_disclosures': AiDisclosures,
             'board_id': str,
             'board_owner': BoardOwner,
             'board_section_id': str,
             'created_at': datetime,
             'creative_type': CreativeType,
-            'description': str,
             'dominant_color': str,
             'has_been_promoted': bool,
             'id': str,
             'is_owner': bool,
+            'is_product': bool,
             'is_standard': bool,
-            'link': str,
             'media': PinMedia,
             'parent_pin_id': str,
             'pin_metrics': object,
+            'alt_text': str,
+            'description': str,
+            'link': str,
             'title': str
         }
 
         self.attribute_map = {
-            'alt_text': 'alt_text',
+            'ai_disclosures': 'ai_disclosures',
             'board_id': 'board_id',
             'board_owner': 'board_owner',
             'board_section_id': 'board_section_id',
             'created_at': 'created_at',
             'creative_type': 'creative_type',
-            'description': 'description',
             'dominant_color': 'dominant_color',
             'has_been_promoted': 'has_been_promoted',
             'id': 'id',
             'is_owner': 'is_owner',
+            'is_product': 'is_product',
             'is_standard': 'is_standard',
-            'link': 'link',
             'media': 'media',
             'parent_pin_id': 'parent_pin_id',
             'pin_metrics': 'pin_metrics',
+            'alt_text': 'alt_text',
+            'description': 'description',
+            'link': 'link',
             'title': 'title'
         }
 
-        self._alt_text = alt_text
+        self._ai_disclosures = ai_disclosures
         self._board_id = board_id
         self._board_owner = board_owner
         self._board_section_id = board_section_id
         self._created_at = created_at
         self._creative_type = creative_type
-        self._description = description
         self._dominant_color = dominant_color
         self._has_been_promoted = has_been_promoted
         self._id = id
         self._is_owner = is_owner
+        self._is_product = is_product
         self._is_standard = is_standard
-        self._link = link
         self._media = media
         self._parent_pin_id = parent_pin_id
         self._pin_metrics = pin_metrics
+        self._alt_text = alt_text
+        self._description = description
+        self._link = link
         self._title = title
 
     @classmethod
@@ -127,27 +138,27 @@ class Pin(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def alt_text(self) -> str:
-        """Gets the alt_text of this Pin.
+    def ai_disclosures(self) -> AiDisclosures:
+        """Gets the ai_disclosures of this Pin.
 
+        AI disclosure declarations the creator has made about this Pin.  # noqa: E501
 
-        :return: The alt_text of this Pin.
-        :rtype: str
+        :return: The ai_disclosures of this Pin.
+        :rtype: AiDisclosures
         """
-        return self._alt_text
+        return self._ai_disclosures
 
-    @alt_text.setter
-    def alt_text(self, alt_text: str):
-        """Sets the alt_text of this Pin.
+    @ai_disclosures.setter
+    def ai_disclosures(self, ai_disclosures: AiDisclosures):
+        """Sets the ai_disclosures of this Pin.
 
+        AI disclosure declarations the creator has made about this Pin.  # noqa: E501
 
-        :param alt_text: The alt_text of this Pin.
-        :type alt_text: str
+        :param ai_disclosures: The ai_disclosures of this Pin.
+        :type ai_disclosures: AiDisclosures
         """
-        if alt_text is not None and len(alt_text) > 500:
-            raise ValueError("Invalid value for `alt_text`, length must be less than or equal to `500`")  # noqa: E501
 
-        self._alt_text = alt_text
+        self._ai_disclosures = ai_disclosures
 
     @property
     def board_id(self) -> str:
@@ -263,29 +274,6 @@ class Pin(Model):
         self._creative_type = creative_type
 
     @property
-    def description(self) -> str:
-        """Gets the description of this Pin.
-
-
-        :return: The description of this Pin.
-        :rtype: str
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description: str):
-        """Sets the description of this Pin.
-
-
-        :param description: The description of this Pin.
-        :type description: str
-        """
-        if description is not None and len(description) > 800:
-            raise ValueError("Invalid value for `description`, length must be less than or equal to `800`")  # noqa: E501
-
-        self._description = description
-
-    @property
     def dominant_color(self) -> str:
         """Gets the dominant_color of this Pin.
 
@@ -380,6 +368,29 @@ class Pin(Model):
         self._is_owner = is_owner
 
     @property
+    def is_product(self) -> bool:
+        """Gets the is_product of this Pin.
+
+        Whether the Pin is a product Pin.  # noqa: E501
+
+        :return: The is_product of this Pin.
+        :rtype: bool
+        """
+        return self._is_product
+
+    @is_product.setter
+    def is_product(self, is_product: bool):
+        """Sets the is_product of this Pin.
+
+        Whether the Pin is a product Pin.  # noqa: E501
+
+        :param is_product: The is_product of this Pin.
+        :type is_product: bool
+        """
+
+        self._is_product = is_product
+
+    @property
     def is_standard(self) -> bool:
         """Gets the is_standard of this Pin.
 
@@ -401,29 +412,6 @@ class Pin(Model):
         """
 
         self._is_standard = is_standard
-
-    @property
-    def link(self) -> str:
-        """Gets the link of this Pin.
-
-
-        :return: The link of this Pin.
-        :rtype: str
-        """
-        return self._link
-
-    @link.setter
-    def link(self, link: str):
-        """Sets the link of this Pin.
-
-
-        :param link: The link of this Pin.
-        :type link: str
-        """
-        if link is not None and len(link) > 2048:
-            raise ValueError("Invalid value for `link`, length must be less than or equal to `2048`")  # noqa: E501
-
-        self._link = link
 
     @property
     def media(self) -> PinMedia:
@@ -493,6 +481,75 @@ class Pin(Model):
         """
 
         self._pin_metrics = pin_metrics
+
+    @property
+    def alt_text(self) -> str:
+        """Gets the alt_text of this Pin.
+
+
+        :return: The alt_text of this Pin.
+        :rtype: str
+        """
+        return self._alt_text
+
+    @alt_text.setter
+    def alt_text(self, alt_text: str):
+        """Sets the alt_text of this Pin.
+
+
+        :param alt_text: The alt_text of this Pin.
+        :type alt_text: str
+        """
+        if alt_text is not None and len(alt_text) > 500:
+            raise ValueError("Invalid value for `alt_text`, length must be less than or equal to `500`")  # noqa: E501
+
+        self._alt_text = alt_text
+
+    @property
+    def description(self) -> str:
+        """Gets the description of this Pin.
+
+
+        :return: The description of this Pin.
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description: str):
+        """Sets the description of this Pin.
+
+
+        :param description: The description of this Pin.
+        :type description: str
+        """
+        if description is not None and len(description) > 800:
+            raise ValueError("Invalid value for `description`, length must be less than or equal to `800`")  # noqa: E501
+
+        self._description = description
+
+    @property
+    def link(self) -> str:
+        """Gets the link of this Pin.
+
+
+        :return: The link of this Pin.
+        :rtype: str
+        """
+        return self._link
+
+    @link.setter
+    def link(self, link: str):
+        """Sets the link of this Pin.
+
+
+        :param link: The link of this Pin.
+        :type link: str
+        """
+        if link is not None and len(link) > 2048:
+            raise ValueError("Invalid value for `link`, length must be less than or equal to `2048`")  # noqa: E501
+
+        self._link = link
 
     @property
     def title(self) -> str:

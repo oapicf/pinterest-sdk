@@ -1,0 +1,45 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "BulkDownloadCreate",
+  "fields": [
+    {
+      "name": "campaign_filter",
+      "type": ["null", "model.BulkDownloadCampaignFilter"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "entity_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.",
+      "default": null
+    },
+    {
+      "name": "entity_types",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.BulkEntityType"
+      }],
+      "doc": "All entity types specified will be downloaded. Fewer types result in faster downloads.",
+      "default": null
+    },
+    {
+      "name": "output_format",
+      "type": ["model.BulkOutputFormat", "null"],
+      "doc": "",
+      "default": JSON
+    },
+    {
+      "name": "updated_since",
+      "type": ["null", "string"],
+      "doc": "Unix UTC timestamp to retrieve all entities that have changed since this time.",
+      "default": null
+    }
+  ]
+
+}

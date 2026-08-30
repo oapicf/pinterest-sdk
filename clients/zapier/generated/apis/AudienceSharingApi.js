@@ -1,12 +1,17 @@
 const samples = require('../samples/AudienceSharingApi');
+const AdAccountToAdAccountSharedAudience = require('../models/AdAccountToAdAccountSharedAudience');
+const AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody = require('../models/AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody');
+const AdAccountToBusinessSharedAudience = require('../models/AdAccountToBusinessSharedAudience');
+const AdAccountToBusinessSharedAudienceUpdateWithRequiredBody = require('../models/AdAccountToBusinessSharedAudienceUpdateWithRequiredBody');
 const AudienceAccountType = require('../models/AudienceAccountType');
-const BusinessSharedAudience = require('../models/BusinessSharedAudience');
-const BusinessSharedAudienceResponse = require('../models/BusinessSharedAudienceResponse');
-const Error = require('../models/Error');
-const SharedAudience = require('../models/SharedAudience');
-const SharedAudienceResponse = require('../models/SharedAudienceResponse');
+const BusinessToAdAccountSharedAudience = require('../models/BusinessToAdAccountSharedAudience');
+const BusinessToAdAccountSharedAudienceUpdateWithRequiredBody = require('../models/BusinessToAdAccountSharedAudienceUpdateWithRequiredBody');
+const BusinessToBusinessSharedAudience = require('../models/BusinessToBusinessSharedAudience');
+const BusinessToBusinessSharedAudienceUpdateWithRequiredBody = require('../models/BusinessToBusinessSharedAudienceUpdateWithRequiredBody');
+const Order = require('../models/Order');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
 const ad_accounts_audiences_shared_accounts_list_200_response = require('../models/ad_accounts_audiences_shared_accounts_list_200_response');
-const audiences_list_200_response = require('../models/audiences_list_200_response');
+const shared_audiences_for_business_list_200_response = require('../models/shared_audiences_for_business_list_200_response');
 const utils = require('../utils/utils');
 
 module.exports = {
@@ -21,12 +26,6 @@ module.exports = {
         operation: {
             inputFields: [
                 {
-                    key: 'ad_account_id',
-                    label: 'Unique identifier of an ad account.',
-                    type: 'string',
-                    required: true,
-                },
-                {
                     key: 'audience_id',
                     label: 'Unique identifier of the audience to use to filter the results.',
                     type: 'string',
@@ -34,14 +33,20 @@ module.exports = {
                 },
                 ....fields(),
                 {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                    required: true,
                 },
                 {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
                     type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
                 },
             ],
             outputFields: [
@@ -59,8 +64,8 @@ module.exports = {
                     params: {
                         'audience_id': bundle.inputData?.['audience_id'],
                         'account_type': bundle.inputData?.['account_type'],
-                        'page_size': bundle.inputData?.['page_size'],
                         'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
                     },
                     body: {
                     },
@@ -98,14 +103,14 @@ module.exports = {
                 },
                 ....fields(),
                 {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
-                },
-                {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
                     type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
                 },
             ],
             outputFields: [
@@ -123,8 +128,8 @@ module.exports = {
                     params: {
                         'audience_id': bundle.inputData?.['audience_id'],
                         'account_type': bundle.inputData?.['account_type'],
-                        'page_size': bundle.inputData?.['page_size'],
                         'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
                     },
                     body: {
                     },
@@ -154,28 +159,20 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
+                ....fields(),
                 {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
                     type: 'string',
                 },
                 {
-                    key: 'order',
-                    label: 'The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.',
-                    type: 'string',
-                    choices: [
-                        'ASCENDING',
-                        'DESCENDING',
-                    ],
-                },
-                {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
             outputFields: [
-                ...audiences_list_200_response.fields('', false),
+                ...shared_audiences_for_business_list_200_response.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -187,8 +184,8 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
-                        'bookmark': bundle.inputData?.['bookmark'],
                         'order': bundle.inputData?.['order'],
+                        'bookmark': bundle.inputData?.['bookmark'],
                         'page_size': bundle.inputData?.['page_size'],
                     },
                     body: {
@@ -200,7 +197,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['audiences_list_200_responseSample']
+            sample: samples['shared_audiences_for_business_list_200_responseSample']
         }
     },
     updateAdAccountToAdAccountSharedAudience: {
@@ -208,7 +205,7 @@ module.exports = {
         noun: 'audience_sharing',
         display: {
             label: 'Update audience sharing between ad accounts',
-            description: 'From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.',
+            description: 'From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).',
             hidden: false,
         },
         operation: {
@@ -219,10 +216,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...SharedAudience.fields(),
+                ...AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.fields(),
             ],
             outputFields: [
-                ...SharedAudienceResponse.fields('', false),
+                ...AdAccountToAdAccountSharedAudience.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -236,7 +233,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...SharedAudience.mapping(bundle),
+                        ...AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -245,7 +242,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['SharedAudienceResponseSample']
+            sample: samples['AdAccountToAdAccountSharedAudienceSample']
         }
     },
     updateAdAccountToBusinessSharedAudience: {
@@ -253,7 +250,7 @@ module.exports = {
         noun: 'audience_sharing',
         display: {
             label: 'Update audience sharing from an ad account to businesses',
-            description: 'From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.',
+            description: 'From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).',
             hidden: false,
         },
         operation: {
@@ -264,10 +261,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...BusinessSharedAudience.fields(),
+                ...AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.fields(),
             ],
             outputFields: [
-                ...BusinessSharedAudienceResponse.fields('', false),
+                ...AdAccountToBusinessSharedAudience.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -281,7 +278,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...BusinessSharedAudience.mapping(bundle),
+                        ...AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -290,7 +287,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['BusinessSharedAudienceResponseSample']
+            sample: samples['AdAccountToBusinessSharedAudienceSample']
         }
     },
     updateBusinessToAdAccountSharedAudience: {
@@ -298,7 +295,7 @@ module.exports = {
         noun: 'audience_sharing',
         display: {
             label: 'Update audience sharing from a business to ad accounts',
-            description: 'From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.',
+            description: 'From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).',
             hidden: false,
         },
         operation: {
@@ -309,10 +306,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...SharedAudience.fields(),
+                ...BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.fields(),
             ],
             outputFields: [
-                ...SharedAudienceResponse.fields('', false),
+                ...BusinessToAdAccountSharedAudience.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -326,7 +323,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...SharedAudience.mapping(bundle),
+                        ...BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -335,7 +332,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['SharedAudienceResponseSample']
+            sample: samples['BusinessToAdAccountSharedAudienceSample']
         }
     },
     updateBusinessToBusinessSharedAudience: {
@@ -343,7 +340,7 @@ module.exports = {
         noun: 'audience_sharing',
         display: {
             label: 'Update audience sharing between businesses',
-            description: 'From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.',
+            description: 'From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).',
             hidden: false,
         },
         operation: {
@@ -354,10 +351,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...BusinessSharedAudience.fields(),
+                ...BusinessToBusinessSharedAudienceUpdateWithRequiredBody.fields(),
             ],
             outputFields: [
-                ...BusinessSharedAudienceResponse.fields('', false),
+                ...BusinessToBusinessSharedAudience.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -371,7 +368,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...BusinessSharedAudience.mapping(bundle),
+                        ...BusinessToBusinessSharedAudienceUpdateWithRequiredBody.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -380,7 +377,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['BusinessSharedAudienceResponseSample']
+            sample: samples['BusinessToBusinessSharedAudienceSample']
         }
     },
 }

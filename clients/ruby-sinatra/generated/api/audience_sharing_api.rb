@@ -21,15 +21,6 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/audiences/shared/account
       "description" => "Filter accounts by account type.",
       "dataType" => "AudienceAccountType",
       "allowableValues" => "[AD_ACCOUNT, BUSINESS_ACCOUNT]",
-      "defaultValue" => "'AD_ACCOUNT'",
-      "paramType" => "query",
-    },
-    {
-      "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
-      "dataType" => "Integer",
-      "allowableValues" => "",
-      "defaultValue" => "25",
       "paramType" => "query",
     },
     {
@@ -37,6 +28,14 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/audiences/shared/account
       "description" => "Cursor used to fetch the next page of items",
       "dataType" => "String",
       "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "page_size",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "defaultValue" => "25",
       "paramType" => "query",
     },
     {
@@ -73,15 +72,6 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/audiences/shared/accounts',
       "description" => "Filter accounts by account type.",
       "dataType" => "AudienceAccountType",
       "allowableValues" => "[AD_ACCOUNT, BUSINESS_ACCOUNT]",
-      "defaultValue" => "'AD_ACCOUNT'",
-      "paramType" => "query",
-    },
-    {
-      "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
-      "dataType" => "Integer",
-      "allowableValues" => "",
-      "defaultValue" => "25",
       "paramType" => "query",
     },
     {
@@ -89,6 +79,14 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/audiences/shared/accounts',
       "description" => "Cursor used to fetch the next page of items",
       "dataType" => "String",
       "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "page_size",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "defaultValue" => "25",
       "paramType" => "query",
     },
     {
@@ -109,10 +107,17 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/audiences', {
   "resourcePath" => "/AudienceSharing",
   "summary" => "List received audiences for a business",
   "nickname" => "shared_audiences_for_business/list",
-  "responseClass" => "audiences_list_200_response",
+  "responseClass" => "shared_audiences_for_business_list_200_response",
   "endpoint" => "/businesses/{business_id}/audiences",
   "notes" => "Get a list of received audiences for the given business.",
   "parameters" => [
+    {
+      "name" => "order",
+      "description" => "The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.",
+      "dataType" => "Order",
+      "allowableValues" => "[ASCENDING, DESCENDING]",
+      "paramType" => "query",
+    },
     {
       "name" => "bookmark",
       "description" => "Cursor used to fetch the next page of items",
@@ -121,15 +126,8 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/audiences', {
       "paramType" => "query",
     },
     {
-      "name" => "order",
-      "description" => "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.",
-      "dataType" => "String",
-      "allowableValues" => "[ASCENDING, DESCENDING]",
-      "paramType" => "query",
-    },
-    {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -153,9 +151,9 @@ MyApp.add_route('PATCH', '/v5/ad_accounts/{ad_account_id}/audiences/ad_accounts/
   "resourcePath" => "/AudienceSharing",
   "summary" => "Update audience sharing between ad accounts",
   "nickname" => "update_ad_account_to_ad_account_shared_audience",
-  "responseClass" => "SharedAudienceResponse",
+  "responseClass" => "AdAccountToAdAccountSharedAudience",
   "endpoint" => "/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared",
-  "notes" => "From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.",
+  "notes" => "From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -166,7 +164,7 @@ MyApp.add_route('PATCH', '/v5/ad_accounts/{ad_account_id}/audiences/ad_accounts/
     {
       "name" => "body",
       "description" => "",
-      "dataType" => "SharedAudience",
+      "dataType" => "AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody",
       "paramType" => "body",
     }
     ]}) do
@@ -181,9 +179,9 @@ MyApp.add_route('PATCH', '/v5/ad_accounts/{ad_account_id}/audiences/businesses/s
   "resourcePath" => "/AudienceSharing",
   "summary" => "Update audience sharing from an ad account to businesses",
   "nickname" => "update_ad_account_to_business_shared_audience",
-  "responseClass" => "BusinessSharedAudienceResponse",
+  "responseClass" => "AdAccountToBusinessSharedAudience",
   "endpoint" => "/ad_accounts/{ad_account_id}/audiences/businesses/shared",
-  "notes" => "From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.",
+  "notes" => "From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -194,7 +192,7 @@ MyApp.add_route('PATCH', '/v5/ad_accounts/{ad_account_id}/audiences/businesses/s
     {
       "name" => "body",
       "description" => "",
-      "dataType" => "BusinessSharedAudience",
+      "dataType" => "AdAccountToBusinessSharedAudienceUpdateWithRequiredBody",
       "paramType" => "body",
     }
     ]}) do
@@ -209,9 +207,9 @@ MyApp.add_route('PATCH', '/v5/businesses/{business_id}/audiences/ad_accounts/sha
   "resourcePath" => "/AudienceSharing",
   "summary" => "Update audience sharing from a business to ad accounts",
   "nickname" => "update_business_to_ad_account_shared_audience",
-  "responseClass" => "SharedAudienceResponse",
+  "responseClass" => "BusinessToAdAccountSharedAudience",
   "endpoint" => "/businesses/{business_id}/audiences/ad_accounts/shared",
-  "notes" => "From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.",
+  "notes" => "From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).",
   "parameters" => [
     {
       "name" => "business_id",
@@ -222,7 +220,7 @@ MyApp.add_route('PATCH', '/v5/businesses/{business_id}/audiences/ad_accounts/sha
     {
       "name" => "body",
       "description" => "",
-      "dataType" => "SharedAudience",
+      "dataType" => "BusinessToAdAccountSharedAudienceUpdateWithRequiredBody",
       "paramType" => "body",
     }
     ]}) do
@@ -237,9 +235,9 @@ MyApp.add_route('PATCH', '/v5/businesses/{business_id}/audiences/businesses/shar
   "resourcePath" => "/AudienceSharing",
   "summary" => "Update audience sharing between businesses",
   "nickname" => "update_business_to_business_shared_audience",
-  "responseClass" => "BusinessSharedAudienceResponse",
+  "responseClass" => "BusinessToBusinessSharedAudience",
   "endpoint" => "/businesses/{business_id}/audiences/businesses/shared",
-  "notes" => "From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.",
+  "notes" => "From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).",
   "parameters" => [
     {
       "name" => "business_id",
@@ -250,7 +248,7 @@ MyApp.add_route('PATCH', '/v5/businesses/{business_id}/audiences/businesses/shar
     {
       "name" => "body",
       "description" => "",
-      "dataType" => "BusinessSharedAudience",
+      "dataType" => "BusinessToBusinessSharedAudienceUpdateWithRequiredBody",
       "paramType" => "body",
     }
     ]}) do

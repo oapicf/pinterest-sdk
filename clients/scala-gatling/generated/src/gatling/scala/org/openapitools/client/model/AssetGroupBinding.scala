@@ -4,27 +4,27 @@ package org.openapitools.client.model
 
 case class AssetGroupBinding (
     /* A list of ad account IDs under the asset group */
-    _adAccountsIds: Option[List[String]],
+    _adAccountsIds: List[String],
     /* Asset group description */
-    _assetGroupDescription: Option[String],
+    _assetGroupDescription: String,
     /* Asset Group name */
-    _assetGroupName: Option[String],
+    _assetGroupName: String,
     /* Asset group types */
-    _assetGroupTypes: Option[List[String]],
+    _assetGroupTypes: List[String],
     /* A list of catalog IDs under asset group */
-    _catalogsIds: Option[List[String]],
+    _catalogsIds: List[String],
     /* The data of the user that created the asset group. */
-    _createdBy: Option[BusinessAccessUserSummary],
+    _createdBy: BusinessAccessUserSummary,
     /* The creation time of the asset group */
-    _createdTime: Option[Integer],
+    _createdTime: Integer,
     /* Asset Group ID. */
-    _id: Option[String],
+    _id: String,
     /* The data of the business that owns the asset group. */
-    _owner: Option[BusinessAccessUserSummary],
+    _owner: BusinessAccessUserSummary,
     /* A list of profile IDs under asset group */
-    _profilesIds: Option[List[String]],
+    _profilesIds: List[String],
     /* The last update time of the asset group */
-    _updatedTime: Option[Integer]
+    _updatedTime: Integer
 )
 object AssetGroupBinding {
     def toStringBody(var_adAccountsIds: Object, var_assetGroupDescription: Object, var_assetGroupName: Object, var_assetGroupTypes: Object, var_catalogsIds: Object, var_createdBy: Object, var_createdTime: Object, var_id: Object, var_owner: Object, var_profilesIds: Object, var_updatedTime: Object) =

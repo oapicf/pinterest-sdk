@@ -1,0 +1,10 @@
+
+
+# CampaignPlanningEstimationType
+
+## Enum
+
+
+
+
+

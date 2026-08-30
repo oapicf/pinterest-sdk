@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsProductGroupFilterOperatorTypeCriteria::CatalogsProductGroupFilterOperatorTypeCriteria()
 {
-	filter_operator_type = std::string();
+	filter_operator_type = FilterOperatorType();
 	negated = bool(false);
 	values = std::list<std::string>();
 }
@@ -34,8 +34,9 @@ CatalogsProductGroupFilterOperatorTypeCriteria::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&filter_operator_type, value, "std::string");
 
+        FilterOperatorType* obj = &filter_operator_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -86,8 +87,8 @@ CatalogsProductGroupFilterOperatorTypeCriteria::toJson()
 
 
 
-    object["filter_operator_type"] = getFilterOperatorType();
 
+	object["filter_operator_type"] = getFilterOperatorType().toJson();
 
 
 
@@ -117,14 +118,14 @@ CatalogsProductGroupFilterOperatorTypeCriteria::toJson()
 
 }
 
-std::string
+FilterOperatorType
 CatalogsProductGroupFilterOperatorTypeCriteria::getFilterOperatorType()
 {
 	return filter_operator_type;
 }
 
 void
-CatalogsProductGroupFilterOperatorTypeCriteria::setFilterOperatorType(std::string  filter_operator_type)
+CatalogsProductGroupFilterOperatorTypeCriteria::setFilterOperatorType(FilterOperatorType filter_operator_type)
 {
 	this->filter_operator_type = filter_operator_type;
 }
@@ -136,7 +137,7 @@ CatalogsProductGroupFilterOperatorTypeCriteria::isNegated()
 }
 
 void
-CatalogsProductGroupFilterOperatorTypeCriteria::setNegated(bool  negated)
+CatalogsProductGroupFilterOperatorTypeCriteria::setNegated(bool negated)
 {
 	this->negated = negated;
 }
@@ -148,7 +149,7 @@ CatalogsProductGroupFilterOperatorTypeCriteria::getValues()
 }
 
 void
-CatalogsProductGroupFilterOperatorTypeCriteria::setValues(std::list <std::string> values)
+CatalogsProductGroupFilterOperatorTypeCriteria::setValues(std::list<std::string> values)
 {
 	this->values = values;
 }

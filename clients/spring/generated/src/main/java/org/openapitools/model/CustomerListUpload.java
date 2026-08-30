@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -12,23 +13,24 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ErrorDetail;
 import org.openapitools.model.RecordCounts;
 import org.openapitools.model.UserListOperationType;
+import org.openapitools.model.WorkloadState;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CustomerListUpload
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CustomerListUpload {
 
   private String adAccountId;
@@ -37,57 +39,17 @@ public class CustomerListUpload {
 
   private String customerListId;
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<@Valid ErrorDetail>> errorCounts = JsonNullable.<List<@Valid ErrorDetail>>undefined();
 
   private String id;
 
   private UserListOperationType operation;
 
-  private JsonNullable<RecordCounts> recordCounts = JsonNullable.<RecordCounts>undefined();
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable RecordCounts recordCounts;
 
-  /**
-   * Workload processing state
-   */
-  public enum StateEnum {
-    NOT_STARTED("NOT_STARTED"),
-    
-    RUNNING("RUNNING"),
-    
-    PAUSED("PAUSED"),
-    
-    SUCCEEDED("SUCCEEDED"),
-    
-    FAILED("FAILED");
-
-    private final String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StateEnum fromValue(String value) {
-      for (StateEnum b : StateEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private StateEnum state;
+  private WorkloadState state;
 
   private Integer updatedTime;
 
@@ -98,7 +60,7 @@ public class CustomerListUpload {
   /**
    * Constructor with only required parameters
    */
-  public CustomerListUpload(String adAccountId, Integer creationTime, String customerListId, String id, UserListOperationType operation, StateEnum state, Integer updatedTime) {
+  public CustomerListUpload(String adAccountId, Integer creationTime, String customerListId, String id, UserListOperationType operation, WorkloadState state, Integer updatedTime) {
     this.adAccountId = adAccountId;
     this.creationTime = creationTime;
     this.customerListId = customerListId;
@@ -124,6 +86,7 @@ public class CustomerListUpload {
     return adAccountId;
   }
 
+  @JsonProperty("ad_account_id")
   public void setAdAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
   }
@@ -144,6 +107,7 @@ public class CustomerListUpload {
     return creationTime;
   }
 
+  @JsonProperty("creation_time")
   public void setCreationTime(Integer creationTime) {
     this.creationTime = creationTime;
   }
@@ -164,6 +128,7 @@ public class CustomerListUpload {
     return customerListId;
   }
 
+  @JsonProperty("customer_list_id")
   public void setCustomerListId(String customerListId) {
     this.customerListId = customerListId;
   }
@@ -205,13 +170,14 @@ public class CustomerListUpload {
    * Customer List Upload ID.
    * @return id
    */
-  @NotNull @Pattern(regexp = "^\\d+$") 
+  @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) 
   @Schema(name = "id", example = "1234567890", description = "Customer List Upload ID.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(String id) {
     this.id = id;
   }
@@ -232,47 +198,50 @@ public class CustomerListUpload {
     return operation;
   }
 
+  @JsonProperty("operation")
   public void setOperation(UserListOperationType operation) {
     this.operation = operation;
   }
 
-  public CustomerListUpload recordCounts(RecordCounts recordCounts) {
-    this.recordCounts = JsonNullable.of(recordCounts);
+  public CustomerListUpload recordCounts(@Nullable RecordCounts recordCounts) {
+    this.recordCounts = recordCounts;
     return this;
   }
 
   /**
-   * Get recordCounts
+   * Record processing counts
    * @return recordCounts
    */
   @Valid 
-  @Schema(name = "record_counts", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "record_counts", description = "Record processing counts", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("record_counts")
-  public JsonNullable<RecordCounts> getRecordCounts() {
+  public @Nullable RecordCounts getRecordCounts() {
     return recordCounts;
   }
 
-  public void setRecordCounts(JsonNullable<RecordCounts> recordCounts) {
+  @JsonProperty("record_counts")
+  public void setRecordCounts(@Nullable RecordCounts recordCounts) {
     this.recordCounts = recordCounts;
   }
 
-  public CustomerListUpload state(StateEnum state) {
+  public CustomerListUpload state(WorkloadState state) {
     this.state = state;
     return this;
   }
 
   /**
-   * Workload processing state
+   * Get state
    * @return state
    */
-  @NotNull 
-  @Schema(name = "state", example = "RUNNING", description = "Workload processing state", requiredMode = Schema.RequiredMode.REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "state", example = "RUNNING", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("state")
-  public StateEnum getState() {
+  public WorkloadState getState() {
     return state;
   }
 
-  public void setState(StateEnum state) {
+  @JsonProperty("state")
+  public void setState(WorkloadState state) {
     this.state = state;
   }
 
@@ -292,6 +261,7 @@ public class CustomerListUpload {
     return updatedTime;
   }
 
+  @JsonProperty("updated_time")
   public void setUpdatedTime(Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
@@ -311,7 +281,7 @@ public class CustomerListUpload {
         equalsNullable(this.errorCounts, customerListUpload.errorCounts) &&
         Objects.equals(this.id, customerListUpload.id) &&
         Objects.equals(this.operation, customerListUpload.operation) &&
-        equalsNullable(this.recordCounts, customerListUpload.recordCounts) &&
+        Objects.equals(this.recordCounts, customerListUpload.recordCounts) &&
         Objects.equals(this.state, customerListUpload.state) &&
         Objects.equals(this.updatedTime, customerListUpload.updatedTime);
   }
@@ -322,7 +292,7 @@ public class CustomerListUpload {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, creationTime, customerListId, hashCodeNullable(errorCounts), id, operation, hashCodeNullable(recordCounts), state, updatedTime);
+    return Objects.hash(adAccountId, creationTime, customerListId, hashCodeNullable(errorCounts), id, operation, recordCounts, state, updatedTime);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -353,11 +323,8 @@ public class CustomerListUpload {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

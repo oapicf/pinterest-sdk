@@ -1,0 +1,12 @@
+package org.openapitools.server.api.model
+
+import org.openapitools.server.api.model.AdvancedAuctionItemsSubmitRecord
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
+data class AdvancedAuctionItemsSubmitRequest(
+    /** Catalog id pertaining to all items */
+    val catalogId: kotlin.String,
+    /** Array of item bid option operations */
+    val items: kotlin.collections.List<AdvancedAuctionItemsSubmitRecord>
+)

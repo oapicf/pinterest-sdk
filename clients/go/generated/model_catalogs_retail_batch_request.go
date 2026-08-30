@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,11 +23,11 @@ var _ MappedNullable = &CatalogsRetailBatchRequest{}
 // CatalogsRetailBatchRequest A request object that can have multiple operations on a single retail batch
 type CatalogsRetailBatchRequest struct {
 	// Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\d+$"`
 	CatalogType string `json:"catalog_type"`
 	Country Country `json:"country"`
 	// Array with catalogs item operations
-	Items []CatalogsRetailBatchRequestItemsInner `json:"items"`
+	Items []CatalogsRetailBatchRequestItemsItems `json:"items"`
 	// We recommend using the CatalogsLocale values.
 	Language string `json:"language"`
 }
@@ -38,7 +38,7 @@ type _CatalogsRetailBatchRequest CatalogsRetailBatchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailBatchRequest(catalogType string, country Country, items []CatalogsRetailBatchRequestItemsInner, language string) *CatalogsRetailBatchRequest {
+func NewCatalogsRetailBatchRequest(catalogType string, country Country, items []CatalogsRetailBatchRequestItemsItems, language string) *CatalogsRetailBatchRequest {
 	this := CatalogsRetailBatchRequest{}
 	this.CatalogType = catalogType
 	this.Country = country
@@ -136,9 +136,9 @@ func (o *CatalogsRetailBatchRequest) SetCountry(v Country) {
 }
 
 // GetItems returns the Items field value
-func (o *CatalogsRetailBatchRequest) GetItems() []CatalogsRetailBatchRequestItemsInner {
+func (o *CatalogsRetailBatchRequest) GetItems() []CatalogsRetailBatchRequestItemsItems {
 	if o == nil {
-		var ret []CatalogsRetailBatchRequestItemsInner
+		var ret []CatalogsRetailBatchRequestItemsItems
 		return ret
 	}
 
@@ -147,7 +147,7 @@ func (o *CatalogsRetailBatchRequest) GetItems() []CatalogsRetailBatchRequestItem
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailBatchRequest) GetItemsOk() ([]CatalogsRetailBatchRequestItemsInner, bool) {
+func (o *CatalogsRetailBatchRequest) GetItemsOk() ([]CatalogsRetailBatchRequestItemsItems, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -155,7 +155,7 @@ func (o *CatalogsRetailBatchRequest) GetItemsOk() ([]CatalogsRetailBatchRequestI
 }
 
 // SetItems sets field value
-func (o *CatalogsRetailBatchRequest) SetItems(v []CatalogsRetailBatchRequestItemsInner) {
+func (o *CatalogsRetailBatchRequest) SetItems(v []CatalogsRetailBatchRequestItemsItems) {
 	o.Items = v
 }
 

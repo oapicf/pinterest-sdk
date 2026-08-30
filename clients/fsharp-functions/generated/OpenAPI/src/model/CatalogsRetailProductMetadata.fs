@@ -4,7 +4,7 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.NonNullableCatalogsCurrency
-open OpenAPI.Model.NonNullableProductAvailabilityType
+open OpenAPI.Model.ProductAvailability
 open OpenAPI.Model.decimal option
 open OpenAPI.Model.string option
 
@@ -15,7 +15,7 @@ module CatalogsRetailProductMetadata =
   [<CLIMutable>]
   type CatalogsRetailProductMetadata = {
     [<JsonProperty(PropertyName = "availability")>]
-    Availability : NonNullableProductAvailabilityType;
+    Availability : ProductAvailability;
     [<JsonProperty(PropertyName = "currency")>]
     Currency : NonNullableCatalogsCurrency;
     [<JsonProperty(PropertyName = "item_group_id")>]

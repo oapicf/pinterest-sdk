@@ -1,26 +1,26 @@
 --
 -- Pinterest REST API.
--- Prepared SQL queries for 'TrendingKeyword_demographics' definition.
+-- Prepared SQL queries for 'TrendingKeywordDemographics' definition.
 --
 
 
 --
--- SELECT template for table `TrendingKeyword_demographics`
+-- SELECT template for table `TrendingKeywordDemographics`
 --
-SELECT `age_distribution`, `gender_distribution` FROM `TrendingKeyword_demographics` WHERE 1;
+SELECT `age_distribution`, `gender_distribution` FROM `TrendingKeywordDemographics` WHERE 1;
 
 --
--- INSERT template for table `TrendingKeyword_demographics`
+-- INSERT template for table `TrendingKeywordDemographics`
 --
-INSERT INTO `TrendingKeyword_demographics`(`age_distribution`, `gender_distribution`) VALUES (?, ?);
+INSERT INTO `TrendingKeywordDemographics`(`age_distribution`, `gender_distribution`) VALUES (?, ?);
 
 --
--- UPDATE template for table `TrendingKeyword_demographics`
+-- UPDATE template for table `TrendingKeywordDemographics`
 --
-UPDATE `TrendingKeyword_demographics` SET `age_distribution` = ?, `gender_distribution` = ? WHERE 1;
+UPDATE `TrendingKeywordDemographics` SET `age_distribution` = ?, `gender_distribution` = ? WHERE 1;
 
 --
--- DELETE template for table `TrendingKeyword_demographics`
+-- DELETE template for table `TrendingKeywordDemographics`
 --
-DELETE FROM `TrendingKeyword_demographics` WHERE 0;
+DELETE FROM `TrendingKeywordDemographics` WHERE 0;
 

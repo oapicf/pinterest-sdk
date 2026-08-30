@@ -1,0 +1,51 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AssetGroupModificationReadOrUpdate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AssetGroupModificationReadOrUpdate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AssetGroupBinding = openapi_server.resourceTypes.AssetGroupBinding
+  AssetGroupUpdateError = openapi_server.resourceTypes.AssetGroupUpdateError
+  AssetGroupUpdateItemReadOrUpdateItem = openapi_server.resourceTypes.AssetGroupUpdateItemReadOrUpdateItem
+}
+resourceTypes {
+
+  AssetGroupModificationReadOrUpdate {
+    title = AssetGroupModificationReadOrUpdate
+    description = AssetGroupModificationReadOrUpdate
+    derivedFrom = Root
+    properties {
+        asset_groups_to_update {
+          type = array
+          items.type = AssetGroupUpdateItemReadOrUpdateItem
+          description = "A list of asset groups and the data that will be used to update them."
+          optional = false
+        }
+        exceptions {
+          type = array
+          items.type = AssetGroupUpdateError
+          description = "A list of errors associated with the asset groups. Will be returned if there is an error."
+          optional = false
+        }
+        updated_asset_groups {
+          type = array
+          items.type = AssetGroupBinding
+          description = "A list of successfully edited asset groups."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AssetGroupModificationReadOrUpdate {
+    title = AssetGroupModificationReadOrUpdate
+    description = AssetGroupModificationReadOrUpdate
+    implements = openapi_server.resourceTypes.AssetGroupModificationReadOrUpdate
+
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Discount status based on the current time and start and end time of discount",
+  "name": "DiscountStatus",
+  "symbols": [
+    "OTHER",
+    "ACTIVE",
+    "PAUSED",
+    "SCHEDULED",
+    "EXPIRED"
+  ]
+}

@@ -8,14 +8,9 @@
       "name": "labels",
       "type": {
         "type": "array",
-        "items": "model.LabelCreateRequestLabelsInner"
+        "items": "model.LabelCreateItem"
       },
       "doc": "Labels that you are applying to the campaign."
-    },
-    {
-      "name": "parent_id",
-      "type": "string",
-      "doc": "Unique identifier of the asset you are labelling. Currently, you can only label campaigns."
     }
   ]
 

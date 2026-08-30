@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CatalogType** | **string** |  | 
 **Credentials** | Pointer to [**NullableCatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
 **DefaultCurrency** | Pointer to [**NullableNullableCurrency**](NullableCurrency.md) |  | [optional] 
 **Format** | Pointer to [**CatalogsFormat**](CatalogsFormat.md) |  | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsHotelFeedsUpdateRequest
 
-`func NewCatalogsHotelFeedsUpdateRequest(catalogType CatalogsType, ) *CatalogsHotelFeedsUpdateRequest`
+`func NewCatalogsHotelFeedsUpdateRequest(catalogType string, ) *CatalogsHotelFeedsUpdateRequest`
 
 NewCatalogsHotelFeedsUpdateRequest instantiates a new CatalogsHotelFeedsUpdateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCatalogType
 
-`func (o *CatalogsHotelFeedsUpdateRequest) GetCatalogType() CatalogsType`
+`func (o *CatalogsHotelFeedsUpdateRequest) GetCatalogType() string`
 
 GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
 ### GetCatalogTypeOk
 
-`func (o *CatalogsHotelFeedsUpdateRequest) GetCatalogTypeOk() (*CatalogsType, bool)`
+`func (o *CatalogsHotelFeedsUpdateRequest) GetCatalogTypeOk() (*string, bool)`
 
 GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogType
 
-`func (o *CatalogsHotelFeedsUpdateRequest) SetCatalogType(v CatalogsType)`
+`func (o *CatalogsHotelFeedsUpdateRequest) SetCatalogType(v string)`
 
 SetCatalogType sets CatalogType field to given value.
 

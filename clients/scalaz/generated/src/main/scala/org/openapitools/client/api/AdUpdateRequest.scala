@@ -12,7 +12,11 @@ import org.joda.time.DateTime
 import AdUpdateRequest._
 
 case class AdUpdateRequest (
-  /* ID of the ad group that contains the ad. */
+  /* The ID of this ad. */
+  id: String,
+/* Pin ID. This field may only be updated for draft ads. */
+  pinId: Option[String],
+/* ID of the ad group that contains the ad. */
   adGroupId: Option[String],
 /* Deep link URL for Android devices. */
   androidDeepLink: Option[String],
@@ -34,6 +38,8 @@ disclosureType: Option[DisclosureType],
 gridClickType: Option[GridClickType],
 /* Deep link URL for iOS devices. */
   iosDeepLink: Option[String],
+/* Is the ad a carting/WTB ad? */
+  isCarting: Option[Boolean],
 /* Is original pin deleted? */
   isPinDeleted: Option[Boolean],
 /* Is pin repinnable? */
@@ -43,15 +49,11 @@ gridClickType: Option[GridClickType],
 /* Name of the ad - 255 chars max. */
   name: Option[String],
 /* Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. */
-  quizPinData: Option[QuizPinData],
+  quizPinData: Option[Any],
 status: Option[EntityStatus],
-trackingUrls: Option[TrackingUrls],
+trackingUrls: Option[Any],
 /* Tracking URL for ad impressions. */
-  viewTrackingUrl: Option[String],
-/* The ID of this ad. */
-  id: String,
-/* Pin ID. This field may only be updated for draft ads. */
-  pinId: Option[String])
+  viewTrackingUrl: Option[String])
 
 object AdUpdateRequest {
   import DateTimeCodecs._

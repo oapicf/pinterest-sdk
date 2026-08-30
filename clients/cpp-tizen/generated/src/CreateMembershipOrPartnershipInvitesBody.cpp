@@ -23,7 +23,7 @@ CreateMembershipOrPartnershipInvitesBody::~CreateMembershipOrPartnershipInvitesB
 void
 CreateMembershipOrPartnershipInvitesBody::__init()
 {
-	//business_role = std::string();
+	//business_role = null;
 	//invite_type = new InviteType();
 	//new std::list()std::list> members;
 	//new std::list()std::list> partners;
@@ -65,9 +65,12 @@ CreateMembershipOrPartnershipInvitesBody::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&business_role, node, "std::string", "");
+		if (isprimitive("BusinessRoleForInvite")) {
+			jsonToValue(&business_role, node, "BusinessRoleForInvite", "BusinessRoleForInvite");
 		} else {
+			
+			BusinessRoleForInvite* obj = static_cast<BusinessRoleForInvite*> (&business_role);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -141,11 +144,16 @@ CreateMembershipOrPartnershipInvitesBody::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getBusinessRole();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("BusinessRoleForInvite")) {
+		BusinessRoleForInvite obj = getBusinessRole();
+		node = converttoJson(&obj, "BusinessRoleForInvite", "");
 	}
 	else {
+		
+		BusinessRoleForInvite obj = static_cast<BusinessRoleForInvite> (getBusinessRole());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *business_roleKey = "business_role";
@@ -202,14 +210,14 @@ CreateMembershipOrPartnershipInvitesBody::toJson()
 	return ret;
 }
 
-std::string
+BusinessRoleForInvite
 CreateMembershipOrPartnershipInvitesBody::getBusinessRole()
 {
 	return business_role;
 }
 
 void
-CreateMembershipOrPartnershipInvitesBody::setBusinessRole(std::string  business_role)
+CreateMembershipOrPartnershipInvitesBody::setBusinessRole(BusinessRoleForInvite  business_role)
 {
 	this->business_role = business_role;
 }

@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 **appVersionNumber** | **string** | Version number of the integration application. | [optional] 
 **clientTimestamp** | **int** | Timestamp in milliseconds of when the log was executed at the client. | 
 **error** | [**OpenAPI\Server\Model\IntegrationLogClientError**](IntegrationLogClientError.md) |  | [optional] 
-**eventType** | **string** | Log event type | 
+**eventType** | [**OpenAPI\Server\Model\IntegrationLogEventType**](IntegrationLogEventType.md) | Log event type | 
 **externalBusinessId** | **string** |  | [optional] 
 **feedProfileId** | **string** |  | [optional] 
-**logLevel** | **string** | Log level type | 
+**logLevel** | [**OpenAPI\Server\Model\IntegrationLogLevel**](IntegrationLogLevel.md) | Log level type | 
 **merchantId** | **string** |  | [optional] 
 **message** | **string** | Explanation of the event that occured. | [optional] 
 **platformVersionNumber** | **string** | Version number of the platform the integration application is running on. | [optional] 

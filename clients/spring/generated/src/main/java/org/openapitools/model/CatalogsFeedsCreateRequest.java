@@ -2,14 +2,15 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
-import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.Country;
@@ -17,34 +18,38 @@ import org.openapitools.model.NullableCurrency;
 import org.openapitools.model.ProductAvailabilityType;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
  */
 
 @Schema(name = "CatalogsFeedsCreateRequest", description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class CatalogsFeedsCreateRequest implements CatalogsFeedCreateRequestSchema {
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CatalogsFeedCredentials> credentials = JsonNullable.<CatalogsFeedCredentials>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<ProductAvailabilityType> defaultAvailability = JsonNullable.<ProductAvailabilityType>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Country defaultCountry;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
 
-  private @Nullable CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale;
 
   private CatalogsFormat format;
 
@@ -52,9 +57,11 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
 
   private String name;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CatalogsFeedProcessingSchedule> preferredProcessingSchedule = JsonNullable.<CatalogsFeedProcessingSchedule>undefined();
 
-  private CatalogsStatus status = "ACTIVE";
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable CatalogsStatus status;
 
   public CatalogsFeedsCreateRequest() {
     super();
@@ -125,6 +132,7 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
     return defaultCountry;
   }
 
+  @JsonProperty("default_country")
   public void setDefaultCountry(@Nullable Country defaultCountry) {
     this.defaultCountry = defaultCountry;
   }
@@ -149,7 +157,7 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
     this.defaultCurrency = defaultCurrency;
   }
 
-  public CatalogsFeedsCreateRequest defaultLocale(@Nullable CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public CatalogsFeedsCreateRequest defaultLocale(@Nullable CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
     return this;
   }
@@ -161,11 +169,12 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
   @Valid 
   @Schema(name = "default_locale", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("default_locale")
-  public @Nullable CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+  public @Nullable CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
   }
 
-  public void setDefaultLocale(@Nullable CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  @JsonProperty("default_locale")
+  public void setDefaultLocale(@Nullable CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
 
@@ -185,6 +194,7 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
     return format;
   }
 
+  @JsonProperty("format")
   public void setFormat(CatalogsFormat format) {
     this.format = format;
   }
@@ -205,6 +215,7 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
     return location;
   }
 
+  @JsonProperty("location")
   public void setLocation(String location) {
     this.location = location;
   }
@@ -225,6 +236,7 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
     return name;
   }
 
+  @JsonProperty("name")
   public void setName(String name) {
     this.name = name;
   }
@@ -249,7 +261,7 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
     this.preferredProcessingSchedule = preferredProcessingSchedule;
   }
 
-  public CatalogsFeedsCreateRequest status(CatalogsStatus status) {
+  public CatalogsFeedsCreateRequest status(@Nullable CatalogsStatus status) {
     this.status = status;
     return this;
   }
@@ -261,11 +273,12 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public CatalogsStatus getStatus() {
+  public @Nullable CatalogsStatus getStatus() {
     return status;
   }
 
-  public void setStatus(CatalogsStatus status) {
+  @JsonProperty("status")
+  public void setStatus(@Nullable CatalogsStatus status) {
     this.status = status;
   }
 
@@ -328,11 +341,8 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

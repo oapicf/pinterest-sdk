@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CreateInvitesResultsResponseArrayItemsInner;
+import org.openapitools.model.InviteActionResultItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CreateInvitesResultsResponseArray")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CreateInvitesResultsResponseArray   {
-  private @Valid List<@Valid CreateInvitesResultsResponseArrayItemsInner> items = new ArrayList<>();
+  private @Valid List<@Valid InviteActionResultItem> items = new ArrayList<>();
 
   public CreateInvitesResultsResponseArray() {
   }
@@ -30,7 +30,7 @@ public class CreateInvitesResultsResponseArray   {
   /**
    * List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
    **/
-  public CreateInvitesResultsResponseArray items(List<@Valid CreateInvitesResultsResponseArrayItemsInner> items) {
+  public CreateInvitesResultsResponseArray items(List<@Valid InviteActionResultItem> items) {
     this.items = items;
     return this;
   }
@@ -38,16 +38,16 @@ public class CreateInvitesResultsResponseArray   {
   
   @ApiModelProperty(value = "List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.")
   @JsonProperty("items")
-  @Valid public List<@Valid CreateInvitesResultsResponseArrayItemsInner> getItems() {
+  @Valid public List<@Valid InviteActionResultItem> getItems() {
     return items;
   }
 
   @JsonProperty("items")
-  public void setItems(List<@Valid CreateInvitesResultsResponseArrayItemsInner> items) {
+  public void setItems(List<@Valid InviteActionResultItem> items) {
     this.items = items;
   }
 
-  public CreateInvitesResultsResponseArray addItemsItem(CreateInvitesResultsResponseArrayItemsInner itemsItem) {
+  public CreateInvitesResultsResponseArray addItemsItem(InviteActionResultItem itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -56,7 +56,7 @@ public class CreateInvitesResultsResponseArray   {
     return this;
   }
 
-  public CreateInvitesResultsResponseArray removeItemsItem(CreateInvitesResultsResponseArrayItemsInner itemsItem) {
+  public CreateInvitesResultsResponseArray removeItemsItem(InviteActionResultItem itemsItem) {
     if (itemsItem != null && this.items != null) {
       this.items.remove(itemsItem);
     }
@@ -96,12 +96,8 @@ public class CreateInvitesResultsResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

@@ -1,0 +1,75 @@
+## AdsApi
+
+### Create ad preview with pin or image
+## Create ad preview with pin or image
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ad_previews
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Get targeting analytics for ads
+## Get targeting analytics for ads
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ads/targeting_analytics?adIds={{adIds}}&startDate={{startDate}}&endDate={{endDate}}&targetingTypes={{targetingTypes}}&columns={{columns}}&granularity={{granularity}}&clickWindowDays={{clickWindowDays}}&engagementWindowDays={{engagementWindowDays}}&viewWindowDays={{viewWindowDays}}&conversionReportTime={{conversionReportTime}}&attributionTypes={{attributionTypes}}&reportingTimezone={{reportingTimezone}}&sortColumns={{sortColumns}}&sortAscending={{sortAscending}}
+Accept: application/json
+
+### Get ad analytics
+## Get ad analytics
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ads/analytics?pinIds={{pinIds}}&startDate={{startDate}}&endDate={{endDate}}&adIds={{adIds}}&columns={{columns}}&granularity={{granularity}}&clickWindowDays={{clickWindowDays}}&engagementWindowDays={{engagementWindowDays}}&viewWindowDays={{viewWindowDays}}&conversionReportTime={{conversionReportTime}}&campaignIds={{campaignIds}}&reportingTimezone={{reportingTimezone}}
+Accept: application/json
+
+### Create ads
+## Create ads
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ads
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Get ad
+## Get ad
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ads/{{ad_id}}
+Accept: application/json
+
+### List ads
+## List ads
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ads?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}&campaignIds={{campaignIds}}&adGroupIds={{adGroupIds}}&adIds={{adIds}}&entityStatuses={{entityStatuses}}
+Accept: application/json
+
+### Update ads
+## Update ads
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ads
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Create ad preview records for one or more ad groups
+## Create ad preview records for one or more ad groups
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/campaign_ad_preview
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Delete ad preview records for one or more ad groups
+## Delete ad preview records for one or more ad groups
+DELETE https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/campaign_ad_preview?adGroupIds={{adGroupIds}}
+Accept: application/json
+
+### Fetch ad preview records for one or more ad groups
+## Fetch ad preview records for one or more ad groups
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/campaign_ad_preview?adGroupIds={{adGroupIds}}
+Accept: application/json

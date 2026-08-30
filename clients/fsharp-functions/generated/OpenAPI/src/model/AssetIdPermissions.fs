@@ -4,6 +4,7 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.AssetGroupBinding
+open OpenAPI.Model.AssetTypeResponse
 
 module AssetIdPermissions =
 
@@ -16,7 +17,7 @@ module AssetIdPermissions =
     [<JsonProperty(PropertyName = "asset_id")>]
     AssetId : string;
     [<JsonProperty(PropertyName = "asset_type")>]
-    AssetType : string;
+    AssetType : AssetTypeResponse;
     [<JsonProperty(PropertyName = "permissions")>]
     Permissions : string[];
   }

@@ -15,7 +15,7 @@ class CatalogsProductGroupPricingCriteria(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, inclusion: bool=True, negated: bool=False, values: float=None):  # noqa: E501
+    def __init__(self, inclusion: bool=True, negated: bool=None, values: float=None):  # noqa: E501
         """CatalogsProductGroupPricingCriteria - a model defined in Swagger
 
         :param inclusion: The inclusion of this CatalogsProductGroupPricingCriteria.  # noqa: E501

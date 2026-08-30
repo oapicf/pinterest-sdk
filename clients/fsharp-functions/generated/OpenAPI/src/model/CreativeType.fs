@@ -21,6 +21,7 @@ module CreativeType =
   let COLLAGEEnum = "COLLAGE"
   let MAXWIDTHREGULARCOLLECTIONEnum = "MAX_WIDTH_REGULAR_COLLECTION"
   let MAXWIDTHVIDEOCOLLECTIONEnum = "MAX_WIDTH_VIDEO_COLLECTION"
+  let APPEnum = "APP"
   type CreativeType = string
 
   //#endregion

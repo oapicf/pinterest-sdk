@@ -4,11 +4,13 @@ import org.openapitools.api.*;
 import org.openapitools.model.*;
 
 
-import org.openapitools.model.AdAccountsCountryResponse;
-import org.openapitools.model.BookClosedResponse;
-import org.openapitools.model.DeliveryMetricsResponse;
-import org.openapitools.model.Error;
-import org.openapitools.model.SingleInterestTargetingOptionResponse;
+import org.openapitools.model.AdAccountCountriesGet200Response;
+import org.openapitools.model.BookClosed;
+import org.openapitools.model.DeliveryMetricsGet200Response;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PublicTargetingType;
+import org.openapitools.model.ReportType;
+import org.openapitools.model.SingleInterestTargetingOption;
 
 import java.util.List;
 
@@ -19,13 +21,13 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ResourcesApiServiceImpl implements ResourcesApi {
       public Response adAccountCountriesGet(SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response deliveryMetricsGet(String reportType,SecurityContext securityContext) {
+      public Response deliveryMetricsGet(ReportType reportType,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -41,7 +43,7 @@ public class ResourcesApiServiceImpl implements ResourcesApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response targetingOptionsGet(String targetingType,String clientId,String oauthSignature,String timestamp,String adAccountId,SecurityContext securityContext) {
+      public Response targetingOptionsGet(PublicTargetingType targetingType,String adAccountId,String clientId,String oauthSignature,String timestamp,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

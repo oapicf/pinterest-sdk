@@ -11,7 +11,7 @@ import javax.validation.Valid;
 /**
  * CatalogsFeedIngestion
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsFeedIngestion   {
   @JsonProperty("created_at")
@@ -22,11 +22,13 @@ public class CatalogsFeedIngestion   {
 
   @JsonProperty("feed_id")
   @NotNull
+@Pattern(regexp="^\\d+$")
 
   private String feedId;
 
   @JsonProperty("id")
   @NotNull
+@Pattern(regexp="^\\d+$")
 
   private String id;
 
@@ -42,7 +44,7 @@ public class CatalogsFeedIngestion   {
   }
 
    /**
-   * Get createdAt
+   * Timestamp of the feed ingestion.
    * @return createdAt
   **/
   public OffsetDateTime getCreatedAt() {
@@ -59,7 +61,7 @@ public class CatalogsFeedIngestion   {
   }
 
    /**
-   * Get feedId
+   * Catalog Feed id pertaining to the feed ingestion.
    * @return feedId
   **/
   public String getFeedId() {
@@ -76,7 +78,7 @@ public class CatalogsFeedIngestion   {
   }
 
    /**
-   * Get id
+   * Unique identifier of a feed ingestion.
    * @return id
   **/
   public String getId() {
@@ -93,7 +95,7 @@ public class CatalogsFeedIngestion   {
   }
 
    /**
-   * Get status
+   * Status of the feed ingestion.
    * @return status
   **/
   public CatalogsFeedProcessingStatus getStatus() {
@@ -144,10 +146,7 @@ public class CatalogsFeedIngestion   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

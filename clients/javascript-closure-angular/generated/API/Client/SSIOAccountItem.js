@@ -1,6 +1,7 @@
 goog.provide('API.Client.SSIOAccountItem');
 
 /**
+ * Salesforce account item with billing and terms information.
  * @record
  */
 API.Client.SSIOAccountItem = function() {}

@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "PinAnalyticsMetricsResponse_daily_metrics_inner.h"
+#include "PinAnalyticsDailyMetrics.h"
 #include <list>
 #include <map>
 #include "Object.h"
@@ -50,11 +50,11 @@ public:
 
 	/*! \brief Get Array with the requested daily metric records
 	 */
-	std::list<PinAnalyticsMetricsResponse_daily_metrics_inner> getDailyMetrics();
+	std::list<PinAnalyticsDailyMetrics> getDailyMetrics();
 
 	/*! \brief Set Array with the requested daily metric records
 	 */
-	void setDailyMetrics(std::list <PinAnalyticsMetricsResponse_daily_metrics_inner> daily_metrics);
+	void setDailyMetrics(std::list <PinAnalyticsDailyMetrics> daily_metrics);
 	/*! \brief Get The lifetime metric name and value.
 	 */
 	std::map<std::string, std::string> getLifetimeMetrics();
@@ -71,7 +71,7 @@ public:
 	void setSummaryMetrics(std::map <std::string, std::string> summary_metrics);
 
 private:
-	std::list <PinAnalyticsMetricsResponse_daily_metrics_inner>daily_metrics;
+	std::list <PinAnalyticsDailyMetrics>daily_metrics;
 	std::map <std::string, std::string>lifetime_metrics;
 	std::map <std::string, std::string>summary_metrics;
 	void __init();

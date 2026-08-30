@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  |  [optional]
-**items** | [**List&lt;AdGroupResponse&gt;**](AdGroupResponse.md) |  | 
+**items** | [**List&lt;AdGroup&gt;**](AdGroup.md) |  | 
 
 
 

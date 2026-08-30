@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "AdsCreditDiscountType.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -66,20 +67,20 @@ public:
 	/*! \brief Set Currency value for the discount.
 	 */
 	void setDiscountCurrency(std::string  discountCurrency);
-	/*! \brief Get The discount applied in the offer’s currency value.
+	/*! \brief Get The discount applied in the offer's currency value.
 	 */
 	long long getDiscountInMicroCurrency();
 
-	/*! \brief Set The discount applied in the offer’s currency value.
+	/*! \brief Set The discount applied in the offer's currency value.
 	 */
 	void setDiscountInMicroCurrency(long long  discountInMicroCurrency);
 	/*! \brief Get The type of discount of this credit
 	 */
-	std::string getDiscountType();
+	AdsCreditDiscountType getDiscountType();
 
 	/*! \brief Set The type of discount of this credit
 	 */
-	void setDiscountType(std::string  discountType);
+	void setDiscountType(AdsCreditDiscountType  discountType);
 	/*! \brief Get The credits left to spend.
 	 */
 	long long getRemainingDiscountInMicroCurrency();
@@ -100,7 +101,7 @@ private:
 	std::string advertiser_id;
 	std::string discountCurrency;
 	long long discountInMicroCurrency;
-	std::string discountType;
+	AdsCreditDiscountType discountType;
 	long long remainingDiscountInMicroCurrency;
 	std::string title;
 	void __init();

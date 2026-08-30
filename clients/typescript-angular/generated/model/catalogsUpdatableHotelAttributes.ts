@@ -12,6 +12,9 @@ import { CatalogsHotelGuestRatings } from './catalogsHotelGuestRatings';
 
 
 export interface CatalogsUpdatableHotelAttributes { 
+    /**
+     * Hotel address
+     */
     address?: CatalogsHotelAddress;
     /**
      * Base price of the hotel room per night followed by the ISO currency code
@@ -49,6 +52,9 @@ export interface CatalogsUpdatableHotelAttributes {
      * Brief description of the hotel.
      */
     description?: string | null;
+    /**
+     * If specified, you must provide all properties
+     */
     guest_ratings?: CatalogsHotelGuestRatings;
     /**
      * Latitude of the hotel.

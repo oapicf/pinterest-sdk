@@ -6,7 +6,7 @@ Protected Class ResourcesApi
 		  // Get ad accounts countries
 		  // - 
 		  //
-		  // Invokes ResourcesApiCallbackHandler.AdAccountCountriesGetCallback(AdAccountsCountryResponse) on completion. 
+		  // Invokes ResourcesApiCallbackHandler.AdAccountCountriesGetCallback(AdAccountCountriesGet200Response) on completion. 
 		  //
 		  // - GET /resources/ad_account_countries
 		  // - Get Ad Accounts countries
@@ -47,7 +47,7 @@ Protected Class ResourcesApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function AdAccountCountriesGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AdAccountsCountryResponse) As Boolean
+		Private Function AdAccountCountriesGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AdAccountCountriesGet200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -55,7 +55,7 @@ Protected Class ResourcesApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.AdAccountsCountryResponse
+			  outData = New OpenAPIClient.Models.AdAccountCountriesGet200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -108,7 +108,7 @@ Protected Class ResourcesApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.AdAccountsCountryResponse
+		  Dim data As OpenAPIClient.Models.AdAccountCountriesGet200Response
 		  CallbackHandler.AdAccountCountriesGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -122,7 +122,7 @@ Protected Class ResourcesApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.AdAccountsCountryResponse
+		  Dim data As OpenAPIClient.Models.AdAccountCountriesGet200Response
 		  Call AdAccountCountriesGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.AdAccountCountriesGetCallback(error, data)
@@ -133,16 +133,16 @@ Protected Class ResourcesApi
 
 
 	#tag Method, Flags = &h0
-		Sub DeliveryMetricsGet(, reportType As Report_typeEnum_DeliveryMetricsGet)
+		Sub DeliveryMetricsGet(, reportType As OpenAPIClient.Models.ReportTypeOptional)
 		  // Operation delivery_metrics/get
 		  // Get available metrics' definitions
 		  // - 
-		  // - parameter reportType: (query) Report type. (optional, default to Sample)
+		  // - parameter reportType: (query) Report type. (optional, default to Nil)
 		  //
-		  // Invokes ResourcesApiCallbackHandler.DeliveryMetricsGetCallback(DeliveryMetricsResponse) on completion. 
+		  // Invokes ResourcesApiCallbackHandler.DeliveryMetricsGetCallback(DeliveryMetricsGet200Response) on completion. 
 		  //
 		  // - GET /resources/delivery_metrics
-		  // - Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
+		  // - Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See [Organic Analytics](/docs/api-features/analytics-overview/) and [Ads Analytics](/docs/api-features/ads-reporting/) for more information.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -157,7 +157,7 @@ Protected Class ResourcesApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  localVarQueryParams = localVarQueryParams + EncodeURLComponent("report_type") + "=" + EncodeURLComponent(Report_typeEnum_DeliveryMetricsGetToString(reportType))
+		  If reportType <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("report_type") + "=" + EncodeURLComponent(Xoson.toJSON(reportType))
 		  
 
 		  
@@ -183,7 +183,7 @@ Protected Class ResourcesApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function DeliveryMetricsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.DeliveryMetricsResponse) As Boolean
+		Private Function DeliveryMetricsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.DeliveryMetricsGet200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -191,7 +191,7 @@ Protected Class ResourcesApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.DeliveryMetricsResponse
+			  outData = New OpenAPIClient.Models.DeliveryMetricsGet200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -244,7 +244,7 @@ Protected Class ResourcesApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.DeliveryMetricsResponse
+		  Dim data As OpenAPIClient.Models.DeliveryMetricsGet200Response
 		  CallbackHandler.DeliveryMetricsGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -258,7 +258,7 @@ Protected Class ResourcesApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.DeliveryMetricsResponse
+		  Dim data As OpenAPIClient.Models.DeliveryMetricsGet200Response
 		  Call DeliveryMetricsGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.DeliveryMetricsGetCallback(error, data)
@@ -267,19 +267,6 @@ Protected Class ResourcesApi
 
 
 
-	#tag Method, Flags = &h21
-		Private Function Report_typeEnum_DeliveryMetricsGetToString(value As Report_typeEnum_DeliveryMetricsGet) As String
-		  Select Case value
-		    
-		    Case Report_typeEnum_DeliveryMetricsGet.Sync
-		      Return "SYNC"
-		    Case Report_typeEnum_DeliveryMetricsGet.Escapedasync
-		      Return "ASYNC"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub InterestTargetingOptionsGet(, interestId As String)
@@ -288,10 +275,10 @@ Protected Class ResourcesApi
 		  // - 
 		  // - parameter interestId: (path) Unique identifier of an interest. 
 		  //
-		  // Invokes ResourcesApiCallbackHandler.InterestTargetingOptionsGetCallback(SingleInterestTargetingOptionResponse) on completion. 
+		  // Invokes ResourcesApiCallbackHandler.InterestTargetingOptionsGetCallback(SingleInterestTargetingOption) on completion. 
 		  //
 		  // - GET /resources/targeting/interests/{interest_id}
-		  // - <p>Get details of a specific interest given interest ID.</p> <p>Click <a href="https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875" target="_blank">here</a> for a spreadsheet listing interests and their IDs.</p>
+		  // - Get details of a specific interest given interest ID.  Click [here](https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875) for a spreadsheet listing interests and their IDs.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -332,7 +319,7 @@ Protected Class ResourcesApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function InterestTargetingOptionsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.SingleInterestTargetingOptionResponse) As Boolean
+		Private Function InterestTargetingOptionsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.SingleInterestTargetingOption) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -340,7 +327,7 @@ Protected Class ResourcesApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.SingleInterestTargetingOptionResponse
+			  outData = New OpenAPIClient.Models.SingleInterestTargetingOption
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -393,7 +380,7 @@ Protected Class ResourcesApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.SingleInterestTargetingOptionResponse
+		  Dim data As OpenAPIClient.Models.SingleInterestTargetingOption
 		  CallbackHandler.InterestTargetingOptionsGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -407,7 +394,7 @@ Protected Class ResourcesApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.SingleInterestTargetingOptionResponse
+		  Dim data As OpenAPIClient.Models.SingleInterestTargetingOption
 		  Call InterestTargetingOptionsGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.InterestTargetingOptionsGetCallback(error, data)
@@ -425,7 +412,7 @@ Protected Class ResourcesApi
 		  // Invokes ResourcesApiCallbackHandler.LeadFormQuestionsGetCallback() on completion. 
 		  //
 		  // - GET /resources/lead_form_questions
-		  // - Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+		  // - Get a list of all lead form question type names. Some questions might not be used.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -492,7 +479,7 @@ Protected Class ResourcesApi
 		  // - 
 		  // - parameter date: (query) Analytics reports request date (UTC). Format: YYYY-MM-DD 
 		  //
-		  // Invokes ResourcesApiCallbackHandler.MetricsReadyStateGetCallback(BookClosedResponse) on completion. 
+		  // Invokes ResourcesApiCallbackHandler.MetricsReadyStateGetCallback(BookClosed) on completion. 
 		  //
 		  // - GET /resources/metrics_ready_state
 		  // - Learn whether conversion or non-conversion metrics are finalized and ready to query.
@@ -532,7 +519,7 @@ Protected Class ResourcesApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function MetricsReadyStateGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BookClosedResponse) As Boolean
+		Private Function MetricsReadyStateGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BookClosed) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -540,7 +527,7 @@ Protected Class ResourcesApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.BookClosedResponse
+			  outData = New OpenAPIClient.Models.BookClosed
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -593,7 +580,7 @@ Protected Class ResourcesApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.BookClosedResponse
+		  Dim data As OpenAPIClient.Models.BookClosed
 		  CallbackHandler.MetricsReadyStateGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -607,7 +594,7 @@ Protected Class ResourcesApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.BookClosedResponse
+		  Dim data As OpenAPIClient.Models.BookClosed
 		  Call MetricsReadyStateGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.MetricsReadyStateGetCallback(error, data)
@@ -618,20 +605,20 @@ Protected Class ResourcesApi
 
 
 	#tag Method, Flags = &h0
-		Sub TargetingOptionsGet(, targetingType As Targeting_typeEnum_TargetingOptionsGet, Optional clientId As Xoson.O.OptionalString, Optional oauthSignature As Xoson.O.OptionalString, Optional timestamp As Xoson.O.OptionalString, Optional adAccountId As Xoson.O.OptionalString)
+		Sub TargetingOptionsGet(, targetingType As OpenAPIClient.Models.PublicTargetingType, Optional adAccountId As Xoson.O.OptionalString, Optional clientId As Xoson.O.OptionalString, Optional oauthSignature As Xoson.O.OptionalString, Optional timestamp As Xoson.O.OptionalString)
 		  // Operation targeting_options/get
 		  // Get targeting options
 		  // - 
-		  // - parameter targetingType: (path) Public targeting type. 
-		  // - parameter clientId: (query) Client ID. (optional, default to Sample)
-		  // - parameter oauthSignature: (query) Oauth signature (optional, default to Sample)
-		  // - parameter timestamp: (query) Timestamp (optional, default to Sample)
+		  // - parameter targetingType: (path) Public targeting type 
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
+		  // - parameter clientId: (query) Client ID (optional, default to Sample)
+		  // - parameter oauthSignature: (query) Oauth signature (optional, default to Sample)
+		  // - parameter timestamp: (query) Timestamp. (optional, default to Sample)
 		  //
 		  // Invokes ResourcesApiCallbackHandler.TargetingOptionsGetCallback(Object) on completion. 
 		  //
 		  // - GET /resources/targeting/{targeting_type}
-		  // - <p>You can use targeting values in ads placement to define your intended audience. </p> <p>Targeting metrics are organized around targeting specifications.</p> <p>For more information on ads targeting, see <a class="reference external" href="https://help.pinterest.com/en/business/article/audience-targeting" target="_blank">Audience targeting</a>.</p> <p><b>Sample return:</b></p> <pre class="literal-block"> [{&quot;36313&quot;: &quot;Australia: Moreton Bay - North&quot;, &quot;124735&quot;: &quot;Canada: North Battleford&quot;, &quot;36109&quot;: &quot;Australia: Murray&quot;, &quot;36108&quot;: &quot;Australia: Mid North Coast&quot;, &quot;36101&quot;: &quot;Australia: Capital Region&quot;, &quot;811&quot;: &quot;U.S.: Reno&quot;, &quot;36103&quot;: &quot;Australia: Central West&quot;, &quot;36102&quot;: &quot;Australia: Central Coast&quot;, &quot;36105&quot;: &quot;Australia: Far West and Orana&quot;, &quot;36104&quot;: &quot;Australia: Coffs Harbour - Grafton&quot;, &quot;36107&quot;: &quot;Australia: Illawarra&quot;, &quot;36106&quot;: &quot;Australia: Hunter Valley Exc Newcastle&quot;, &quot;554017&quot;: &quot;New Zealand: Wanganui&quot;, &quot;554016&quot;: &quot;New Zealand: Marlborough&quot;, &quot;554015&quot;: &quot;New Zealand: Gisborne&quot;, &quot;554014&quot;: &quot;New Zealand: Tararua&quot;, &quot;554013&quot;: &quot;New Zealand: Invercargill&quot;, &quot;GR&quot;: &quot;Greece&quot;, &quot;554011&quot;: &quot;New Zealand: Whangarei&quot;, &quot;554010&quot;: &quot;New Zealand: Far North&quot;, &quot;717&quot;: &quot;U.S.: Quincy-Hannibal-Keokuk&quot;, &quot;716&quot;: &quot;U.S.: Baton Rouge&quot;,...}] </pre>
+		  // -     You can use targeting values in ads placement to define your intended audience.      Targeting metrics are organized around targeting specifications.      For more information on ads targeting, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting).      **Sample return:**      ```     [{"36313": "Australia: Moreton Bay - North", "124735": "Canada: North Battleford", "36109": "Australia: Murray", "36108": "Australia: Mid North Coast", "36101": "Australia: Capital Region", "811": "U.S.: Reno", "36103": "Australia: Central West", "36102": "Australia: Central Coast", "36105": "Australia: Far West and Orana", "36104": "Australia: Coffs Harbour - Grafton", "36107": "Australia: Illawarra", "36106": "Australia: Hunter Valley Exc Newcastle", "554017": "New Zealand: Wanganui", "554016": "New Zealand: Marlborough", "554015": "New Zealand: Gisborne", "554014": "New Zealand: Tararua", "554013": "New Zealand: Invercargill", "GR": "Greece", "554011": "New Zealand: Whangarei", "554010": "New Zealand: Far North", "717": "U.S.: Quincy-Hannibal-Keokuk", "716": "U.S.: Baton Rouge",...}]     ```
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -646,13 +633,13 @@ Protected Class ResourcesApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If clientId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("client_id") + "=" + EncodeURLComponent(clientId)
+		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
+		  
+		  If clientId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("client_id") + "=" + EncodeURLComponent(clientId)
 		  
 		  If oauthSignature <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("oauth_signature") + "=" + EncodeURLComponent(oauthSignature)
 		  
 		  If timestamp <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("timestamp") + "=" + EncodeURLComponent(timestamp)
-		  
-		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
 		  
@@ -662,7 +649,7 @@ Protected Class ResourcesApi
 
 		  Dim localVarPath As String = "/resources/targeting/{targeting_type}"
 		  
-		  Dim localVarPathStringtargetingType As String = Targeting_typeEnum_TargetingOptionsGetToString(targetingType)
+		  Dim localVarPathStringtargetingType As String = Xoson.toJSON(targetingType)
 		  
 		  localVarPath = localVarPath.ReplaceAllB("{targeting_type}", localVarPathStringtargetingType)
 		  
@@ -763,35 +750,6 @@ Protected Class ResourcesApi
 
 
 
-	#tag Method, Flags = &h21
-		Private Function Targeting_typeEnum_TargetingOptionsGetToString(value As Targeting_typeEnum_TargetingOptionsGet) As String
-		  Select Case value
-		    
-		    Case Targeting_typeEnum_TargetingOptionsGet.Apptype
-		      Return "APPTYPE"
-		    Case Targeting_typeEnum_TargetingOptionsGet.Gender
-		      Return "GENDER"
-		    Case Targeting_typeEnum_TargetingOptionsGet.Locale
-		      Return "LOCALE"
-		    Case Targeting_typeEnum_TargetingOptionsGet.AgeBucket
-		      Return "AGE_BUCKET"
-		    Case Targeting_typeEnum_TargetingOptionsGet.Location
-		      Return "LOCATION"
-		    Case Targeting_typeEnum_TargetingOptionsGet.Geo
-		      Return "GEO"
-		    Case Targeting_typeEnum_TargetingOptionsGet.Interest
-		      Return "INTEREST"
-		    Case Targeting_typeEnum_TargetingOptionsGet.Keyword
-		      Return "KEYWORD"
-		    Case Targeting_typeEnum_TargetingOptionsGet.AudienceInclude
-		      Return "AUDIENCE_INCLUDE"
-		    Case Targeting_typeEnum_TargetingOptionsGet.AudienceExclude
-		      Return "AUDIENCE_EXCLUDE"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 
@@ -868,28 +826,6 @@ Protected Class ResourcesApi
 	#tag Property, Flags = &h0
 		UseHTTPS As Boolean = true
 	#tag EndProperty
-
-	#tag Enum, Name = Report_typeEnum_DeliveryMetricsGet, Type = Integer, Flags = &h0
-		
-        Sync
-        Escapedasync
-		
-	#tag EndEnum
-
-	#tag Enum, Name = Targeting_typeEnum_TargetingOptionsGet, Type = Integer, Flags = &h0
-		
-        Apptype
-        Gender
-        Locale
-        AgeBucket
-        Location
-        Geo
-        Interest
-        Keyword
-        AudienceInclude
-        AudienceExclude
-		
-	#tag EndEnum
 
 
 	#tag ViewBehavior

@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server EventProcessingStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a EventProcessingStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  EventProcessingStatus {
+    title = EventProcessingStatus
+    description = EventProcessingStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  EventProcessingStatus {
+    title = EventProcessingStatus
+    description = EventProcessingStatus
+    implements = openapi_server.resourceTypes.EventProcessingStatus
+
+  }
+}

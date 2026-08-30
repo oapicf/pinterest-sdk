@@ -8,7 +8,6 @@ authors     = ["F. Bar (foo@bar.baz)"]
 imports {
   Root = tosca.resourceTypes.Root
   CatalogsCreativeAssetsAttributes = openapi_server.resourceTypes.CatalogsCreativeAssetsAttributes
-  CatalogsType = openapi_server.resourceTypes.CatalogsType
   Pin = openapi_server.resourceTypes.Pin
 }
 resourceTypes {
@@ -24,14 +23,21 @@ resourceTypes {
           optional = false
         }
         catalog_type {
-          type = CatalogsType
+          type =  string
           description = ""
+          enum = ["CREATIVE_ASSETS"]
           optional = true
         }
         creative_assets_id {
           type =  string
           description = "The catalog creative assets id in the merchant namespace"
           optional = false
+        }
+        item_response_kind {
+          type =  string
+          description = "Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload."
+          enum = ["creative_assets_item"]
+          optional = true
         }
         pins {
           type = array

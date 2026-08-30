@@ -3,7 +3,6 @@ const BatchOperationStatus = require('../models/BatchOperationStatus');
 const CatalogsCreativeAssetsItemsBatch = require('../models/CatalogsCreativeAssetsItemsBatch');
 const CatalogsHotelItemsBatch = require('../models/CatalogsHotelItemsBatch');
 const CatalogsRetailItemsBatch = require('../models/CatalogsRetailItemsBatch');
-const CatalogsType = require('../models/CatalogsType');
 const CreativeAssetsProcessingRecord = require('../models/CreativeAssetsProcessingRecord');
 
 module.exports = {
@@ -11,13 +10,18 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}catalog_type`,
-                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
-            },
-            {
                 key: `${keyPrefix}batch_id`,
                 label: `Id of the catalogs items batch - [${labelPrefix}batch_id]`,
                 type: 'string',
+            },
+            {
+                key: `${keyPrefix}catalog_type`,
+                label: `[${labelPrefix}catalog_type]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'CREATIVE_ASSETS',
+                ],
             },
             {
                 key: `${keyPrefix}completed_time`,
@@ -44,8 +48,8 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'batch_id': bundle.inputData?.[`${keyPrefix}batch_id`],
+            'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'completed_time': bundle.inputData?.[`${keyPrefix}completed_time`],
             'created_time': bundle.inputData?.[`${keyPrefix}created_time`],
             'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, CreativeAssetsProcessingRecord),

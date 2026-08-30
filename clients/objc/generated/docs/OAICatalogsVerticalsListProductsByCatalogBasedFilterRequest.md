@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | **NSString*** | Catalog id pertaining to the creative assets product group. | 
+**catalogId** | **NSString*** | Catalog ID pertaining to the product group. | 
 **catalogType** | **NSString*** |  | 
 **country** | [**OAICountry***](OAICountry.md) |  | 
 **filters** | [**OAICatalogsCreativeAssetsProductGroupFilters***](OAICatalogsCreativeAssetsProductGroupFilters.md) |  | 

@@ -1,9 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.AudienceDefinitionResponse;
 import org.openapitools.vertxweb.server.model.AudienceInsightType;
-import org.openapitools.vertxweb.server.model.AudienceInsightsResponse;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.AudienceInsights;
+import org.openapitools.vertxweb.server.model.AudienceInsightsScopeAndTypeGet200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -17,11 +17,11 @@ import java.util.Map;
 // Implement this class
 
 public class AudienceInsightsApiImpl implements AudienceInsightsApi {
-    public Future<ApiResponse<AudienceInsightsResponse>> audienceInsightsGet(String adAccountId, AudienceInsightType audienceInsightType) {
+    public Future<ApiResponse<AudienceInsights>> audienceInsightsGet(String adAccountId, AudienceInsightType audienceInsightType) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<AudienceDefinitionResponse>> audienceInsightsScopeAndTypeGet(String adAccountId) {
+    public Future<ApiResponse<AudienceInsightsScopeAndTypeGet200Response>> audienceInsightsScopeAndTypeGet(String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 

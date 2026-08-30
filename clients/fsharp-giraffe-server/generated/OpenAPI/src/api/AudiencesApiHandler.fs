@@ -7,11 +7,13 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open AudiencesApiHandlerParams
 open AudiencesApiServiceInterface
 open AudiencesApiServiceImplementation
-open OpenAPI.Model.Audience
-open OpenAPI.Model.AudienceCreateRequest
-open OpenAPI.Model.AudienceUpdateRequest
+open OpenAPI.Model.AdAccountsAudience
+open OpenAPI.Model.AdAccountsAudienceCreate
+open OpenAPI.Model.AdAccountsAudienceUpdate
+open OpenAPI.Model.AudienceOwnershipType
 open OpenAPI.Model.AudiencesList200Response
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PinterestLibPaginationOrder
 
 module AudiencesApiHandler =
 
@@ -34,6 +36,18 @@ module AudiencesApiHandler =
           return! (match result with
                       | AudiencesCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AudiencesCreateStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
+                      | AudiencesCreateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AudiencesCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AudiencesCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AudiencesCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AudiencesCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AudiencesCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -53,8 +67,16 @@ module AudiencesApiHandler =
           return! (match result with
                       | AudiencesGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AudiencesGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AudiencesGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AudiencesGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | AudiencesGetStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | AudiencesGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AudiencesGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -77,6 +99,14 @@ module AudiencesApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | AudiencesListStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AudiencesListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AudiencesListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AudiencesListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AudiencesListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AudiencesListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -98,6 +128,16 @@ module AudiencesApiHandler =
           return! (match result with
                       | AudiencesUpdateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AudiencesUpdateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AudiencesUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AudiencesUpdateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AudiencesUpdateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AudiencesUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AudiencesUpdateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

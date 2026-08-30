@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -16,65 +16,41 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.ConversionTagTypeOptimal;
 
 
 
+/**
+ * Advertiser defined event
+ */
 
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "Advertiser defined event")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdvertiserDefinedEvent   {
   
+  private ConversionTagTypeOptimal mappedConversionType;
   private String name;
 
-
-  public enum MappedConversionTypeEnum {
-    PAGE_LOAD("PAGE_LOAD"),
-    UNKNOWN("UNKNOWN"),
-    INITIALIZED("INITIALIZED"),
-    PAGE_VISIT("PAGE_VISIT"),
-    SIGNUP("SIGNUP"),
-    CHECKOUT("CHECKOUT"),
-    CUSTOM("CUSTOM"),
-    VIEW_CATEGORY("VIEW_CATEGORY"),
-    SEARCH("SEARCH"),
-    ADD_TO_CART("ADD_TO_CART"),
-    WATCH_VIDEO("WATCH_VIDEO"),
-    LEAD("LEAD"),
-    APP_INSTALL("APP_INSTALL"),
-    WEB_SESSION("WEB_SESSION"),
-    EXTERNAL_MEASUREMENT("EXTERNAL_MEASUREMENT"),
-    ADD_PAYMENT_INFO("ADD_PAYMENT_INFO"),
-    ADD_TO_WISHLIST("ADD_TO_WISHLIST"),
-    INITIATE_CHECKOUT("INITIATE_CHECKOUT"),
-    SUBSCRIBE("SUBSCRIBE"),
-    VIEW_CONTENT("VIEW_CONTENT"),
-    ADVERTISER_DEFINED_EVENT("ADVERTISER_DEFINED_EVENT"),
-    APP_OPEN("APP_OPEN"),
-    CONTACT("CONTACT"),
-    SCHEDULE("SCHEDULE"),
-    FIND_LOCATION("FIND_LOCATION"),
-    CUSTOMIZE_PRODUCT("CUSTOMIZE_PRODUCT"),
-    SUBMIT_APPLICATION("SUBMIT_APPLICATION"),
-    START_TRIAL("START_TRIAL");
-
-    private String value;
-
-    MappedConversionTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
+  /**
+   * Standard type mapped to ADE for optimization
+   */
+  public AdvertiserDefinedEvent mappedConversionType(ConversionTagTypeOptimal mappedConversionType) {
+    this.mappedConversionType = mappedConversionType;
+    return this;
   }
 
-  private MappedConversionTypeEnum mappedConversionType;
+  
+  @ApiModelProperty(example = "SIGNUP", value = "Standard type mapped to ADE for optimization")
+  @JsonProperty("mapped_conversion_type")
+  public ConversionTagTypeOptimal getMappedConversionType() {
+    return mappedConversionType;
+  }
+  public void setMappedConversionType(ConversionTagTypeOptimal mappedConversionType) {
+    this.mappedConversionType = mappedConversionType;
+  }
 
   /**
-   * raw string name of the event, usually logged as raw_event_name in our dataset
+   * Raw string name of the event, usually logged as raw_event_name in our dataset
    */
   public AdvertiserDefinedEvent name(String name) {
     this.name = name;
@@ -82,31 +58,13 @@ public class AdvertiserDefinedEvent   {
   }
 
   
-  @ApiModelProperty(example = "download_picture", value = "raw string name of the event, usually logged as raw_event_name in our dataset")
+  @ApiModelProperty(example = "newsletter_signup", value = "Raw string name of the event, usually logged as raw_event_name in our dataset")
   @JsonProperty("name")
   public String getName() {
     return name;
   }
   public void setName(String name) {
     this.name = name;
-  }
-
-  /**
-   * standard type mapped to ADE for optimization
-   */
-  public AdvertiserDefinedEvent mappedConversionType(MappedConversionTypeEnum mappedConversionType) {
-    this.mappedConversionType = mappedConversionType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "standard type mapped to ADE for optimization")
-  @JsonProperty("mapped_conversion_type")
-  public MappedConversionTypeEnum getMappedConversionType() {
-    return mappedConversionType;
-  }
-  public void setMappedConversionType(MappedConversionTypeEnum mappedConversionType) {
-    this.mappedConversionType = mappedConversionType;
   }
 
 
@@ -119,13 +77,13 @@ public class AdvertiserDefinedEvent   {
       return false;
     }
     AdvertiserDefinedEvent advertiserDefinedEvent = (AdvertiserDefinedEvent) o;
-    return Objects.equals(name, advertiserDefinedEvent.name) &&
-        Objects.equals(mappedConversionType, advertiserDefinedEvent.mappedConversionType);
+    return Objects.equals(mappedConversionType, advertiserDefinedEvent.mappedConversionType) &&
+        Objects.equals(name, advertiserDefinedEvent.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, mappedConversionType);
+    return Objects.hash(mappedConversionType, name);
   }
 
   @Override
@@ -133,8 +91,8 @@ public class AdvertiserDefinedEvent   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvertiserDefinedEvent {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    mappedConversionType: ").append(toIndentedString(mappedConversionType)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -144,10 +102,7 @@ public class AdvertiserDefinedEvent   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

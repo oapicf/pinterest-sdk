@@ -1,19 +1,22 @@
 package controllers;
 
-import apimodels.AdsCreditRedeemRequest;
-import apimodels.AdsCreditRedeemResponse;
+import apimodels.AdsCreditRedeem;
+import apimodels.AdsCreditRedeemCreate;
 import apimodels.AdsCreditsDiscountsGet200Response;
+import apimodels.BillingInvoiceDocumentType;
 import apimodels.BillingInvoiceDownloadResponse;
+import apimodels.BillingInvoiceSortField;
+import apimodels.BillingInvoiceStatus;
 import apimodels.BillingInvoicesGet200Response;
 import apimodels.BillingProfilesGet200Response;
-import apimodels.Error;
 import java.time.LocalDate;
-import apimodels.SSIOAccountResponse;
-import apimodels.SSIOCreateInsertionOrderRequest;
-import apimodels.SSIOCreateInsertionOrderResponse;
-import apimodels.SSIOEditInsertionOrderRequest;
-import apimodels.SSIOEditInsertionOrderResponse;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.SSIOAccount;
+import apimodels.SSIOInsertionOrder;
+import apimodels.SSIOInsertionOrderCreate;
 import apimodels.SSIOInsertionOrderStatusResponse;
+import apimodels.SSIOInsertionOrderUpdate;
 import apimodels.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import apimodels.SsioOrderLinesGetByAdAccount200Response;
 
@@ -42,12 +45,12 @@ public abstract class BillingApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result adsCreditRedeemHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest) throws Exception {
+    public Result adsCreditRedeemHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdsCreditRedeemCreate adsCreditRedeemCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        AdsCreditRedeemResponse obj = adsCreditRedeem(request, adAccountId, adsCreditRedeemRequest);
+        AdsCreditRedeem obj = adsCreditRedeem(request, adAccountId, adsCreditRedeemCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -59,7 +62,7 @@ public abstract class BillingApiControllerImpInterface {
 
     }
 
-    public abstract AdsCreditRedeemResponse adsCreditRedeem(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest) throws Exception;
+    public abstract AdsCreditRedeem adsCreditRedeem(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdsCreditRedeemCreate adsCreditRedeemCreate) throws Exception;
 
     public Result adsCreditsDiscountsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -99,12 +102,12 @@ public abstract class BillingApiControllerImpInterface {
 
     public abstract BillingInvoiceDownloadResponse billingInvoiceDownloadGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String billingInvoiceId) throws Exception;
 
-    public Result billingInvoicesGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String sort, String order, String status, String documentType,  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")LocalDate startDueDate,  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")LocalDate endDueDate) throws Exception {
+    public Result billingInvoicesGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order, BillingInvoiceSortField sort, BillingInvoiceStatus status, BillingInvoiceDocumentType documentType, LocalDate startDueDate, LocalDate endDueDate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        BillingInvoicesGet200Response obj = billingInvoicesGet(request, adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate);
+        BillingInvoicesGet200Response obj = billingInvoicesGet(request, adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -116,14 +119,14 @@ public abstract class BillingApiControllerImpInterface {
 
     }
 
-    public abstract BillingInvoicesGet200Response billingInvoicesGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String sort, String order, String status, String documentType,  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")LocalDate startDueDate,  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")LocalDate endDueDate) throws Exception;
+    public abstract BillingInvoicesGet200Response billingInvoicesGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order, BillingInvoiceSortField sort, BillingInvoiceStatus status, BillingInvoiceDocumentType documentType, LocalDate startDueDate, LocalDate endDueDate) throws Exception;
 
-    public Result billingProfilesGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull Boolean isActive, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
+    public Result billingProfilesGetHttp(Http.Request request, @NotNull Boolean isActive,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        BillingProfilesGet200Response obj = billingProfilesGet(request, adAccountId, isActive, bookmark, pageSize);
+        BillingProfilesGet200Response obj = billingProfilesGet(request, isActive, adAccountId, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -135,14 +138,14 @@ public abstract class BillingApiControllerImpInterface {
 
     }
 
-    public abstract BillingProfilesGet200Response billingProfilesGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull Boolean isActive, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
+    public abstract BillingProfilesGet200Response billingProfilesGet(Http.Request request, @NotNull Boolean isActive,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
     public Result ssioAccountsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        SSIOAccountResponse obj = ssioAccountsGet(request, adAccountId);
+        SSIOAccount obj = ssioAccountsGet(request, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -154,14 +157,14 @@ public abstract class BillingApiControllerImpInterface {
 
     }
 
-    public abstract SSIOAccountResponse ssioAccountsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract SSIOAccount ssioAccountsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result ssioInsertionOrderCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest) throws Exception {
+    public Result ssioInsertionOrderCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SSIOInsertionOrderCreate ssIOInsertionOrderCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        SSIOCreateInsertionOrderResponse obj = ssioInsertionOrderCreate(request, adAccountId, ssIOCreateInsertionOrderRequest);
+        SSIOInsertionOrder obj = ssioInsertionOrderCreate(request, adAccountId, ssIOInsertionOrderCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -173,14 +176,14 @@ public abstract class BillingApiControllerImpInterface {
 
     }
 
-    public abstract SSIOCreateInsertionOrderResponse ssioInsertionOrderCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest) throws Exception;
+    public abstract SSIOInsertionOrder ssioInsertionOrderCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SSIOInsertionOrderCreate ssIOInsertionOrderCreate) throws Exception;
 
-    public Result ssioInsertionOrderEditHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest) throws Exception {
+    public Result ssioInsertionOrderEditHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        SSIOEditInsertionOrderResponse obj = ssioInsertionOrderEdit(request, adAccountId, ssIOEditInsertionOrderRequest);
+        SSIOInsertionOrder obj = ssioInsertionOrderEdit(request, adAccountId, ssIOInsertionOrderUpdate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -192,7 +195,7 @@ public abstract class BillingApiControllerImpInterface {
 
     }
 
-    public abstract SSIOEditInsertionOrderResponse ssioInsertionOrderEdit(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest) throws Exception;
+    public abstract SSIOInsertionOrder ssioInsertionOrderEdit(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate) throws Exception;
 
     public Result ssioInsertionOrdersStatusGetByAdAccountHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -232,12 +235,12 @@ public abstract class BillingApiControllerImpInterface {
 
     public abstract SSIOInsertionOrderStatusResponse ssioInsertionOrdersStatusGetByPinOrderId(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String pinOrderId) throws Exception;
 
-    public Result ssioOrderLinesGetByAdAccountHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String pinOrderId) throws Exception {
+    public Result ssioOrderLinesGetByAdAccountHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String pinOrderId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        SsioOrderLinesGetByAdAccount200Response obj = ssioOrderLinesGetByAdAccount(request, adAccountId, bookmark, pageSize, pinOrderId);
+        SsioOrderLinesGetByAdAccount200Response obj = ssioOrderLinesGetByAdAccount(request, adAccountId, pinOrderId, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -249,6 +252,6 @@ public abstract class BillingApiControllerImpInterface {
 
     }
 
-    public abstract SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String pinOrderId) throws Exception;
+    public abstract SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String pinOrderId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
 }

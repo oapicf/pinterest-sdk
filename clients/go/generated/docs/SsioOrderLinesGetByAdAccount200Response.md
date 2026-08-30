@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]SSIOOrderLine**](SSIOOrderLine.md) | SSIO order lines by ad acount id | 
+**Items** | [**[]SSIOOrderLine**](SSIOOrderLine.md) |  | 
 
 ## Methods
 

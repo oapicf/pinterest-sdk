@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest  {
   
  /**
-  * Catalog id pertaining to the creative assets product group.
+  * Catalog ID pertaining to the product group.
   */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog ID pertaining to the product group.")
 
   private String catalogId;
 
@@ -72,7 +72,7 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
   private CatalogsLocale locale;
  /**
-   * Catalog id pertaining to the creative assets product group.
+   * Catalog ID pertaining to the product group.
    * @return catalogId
   **/
   @JsonProperty("catalog_id")
@@ -204,10 +204,7 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

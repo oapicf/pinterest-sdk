@@ -11,7 +11,7 @@
 | **defaultAvailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  |  [optional] |
 | **defaultCountry** | [**Country**](Country.md) |  |  [optional] |
 | **defaultCurrency** | [**NullableCurrency**](NullableCurrency.md) |  |  [optional] |
-| **defaultLocale** | [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequestDefaultLocale.md) |  |  [optional] |
+| **defaultLocale** | [**CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale**](CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.md) |  |  [optional] |
 | **preferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  |  [optional] |
 | **status** | [**CatalogsStatus**](CatalogsStatus.md) |  |  [optional] |
 

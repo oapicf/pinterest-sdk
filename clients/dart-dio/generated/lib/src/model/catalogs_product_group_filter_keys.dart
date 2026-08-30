@@ -3,48 +3,17 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/custom_label3_filter.dart';
-import 'package:openapi/src/model/google_product_category0_filter.dart';
-import 'package:openapi/src/model/custom_label2_filter.dart';
-import 'package:openapi/src/model/custom_label4_filter.dart';
+import 'package:openapi/src/model/catalogs_product_group_filter_operator_type_criteria.dart';
 import 'package:openapi/src/model/product_group_reference_filter.dart';
 import 'package:openapi/src/model/catalogs_product_group_pricing_criteria.dart';
-import 'package:openapi/src/model/custom_label1_filter.dart';
-import 'package:openapi/src/model/google_product_category2_filter.dart';
-import 'package:openapi/src/model/catalogs_product_group_multiple_string_list_criteria.dart';
-import 'package:openapi/src/model/google_product_category3_filter.dart';
-import 'package:openapi/src/model/custom_label0_filter.dart';
-import 'package:openapi/src/model/catalogs_product_group_currency_criteria.dart';
-import 'package:openapi/src/model/google_product_category1_filter.dart';
-import 'package:openapi/src/model/brand_filter.dart';
-import 'package:openapi/src/model/catalogs_product_group_filter_operator_type_criteria.dart';
-import 'package:openapi/src/model/custom_number4_filter.dart';
 import 'package:openapi/src/model/catalogs_product_group_multiple_gender_criteria.dart';
-import 'package:openapi/src/model/condition_filter.dart';
-import 'package:openapi/src/model/custom_number3_filter.dart';
-import 'package:openapi/src/model/item_id_filter.dart';
-import 'package:openapi/src/model/currency_filter.dart';
-import 'package:openapi/src/model/product_type4_filter.dart';
 import 'package:openapi/src/model/catalogs_product_group_multiple_media_types_criteria.dart';
 import 'package:openapi/src/model/catalogs_product_group_multiple_string_criteria.dart';
-import 'package:openapi/src/model/media_type_filter.dart';
-import 'package:openapi/src/model/product_type2_filter.dart';
-import 'package:openapi/src/model/max_price_filter.dart';
-import 'package:openapi/src/model/custom_number0_filter.dart';
-import 'package:openapi/src/model/custom_number2_filter.dart';
-import 'package:openapi/src/model/gender_filter.dart';
-import 'package:openapi/src/model/item_group_id_filter.dart';
-import 'package:openapi/src/model/product_type3_filter.dart';
-import 'package:openapi/src/model/custom_number1_filter.dart';
-import 'package:openapi/src/model/availability_filter.dart';
-import 'package:openapi/src/model/title_keywords_filter.dart';
-import 'package:openapi/src/model/google_product_category6_filter.dart';
-import 'package:openapi/src/model/product_type0_filter.dart';
-import 'package:openapi/src/model/product_type1_filter.dart';
-import 'package:openapi/src/model/google_product_category4_filter.dart';
+import 'package:openapi/src/model/catalogs_product_group_multiple_string_list_criteria.dart';
+import 'package:openapi/src/model/catalogs_product_group_multiple_pinterest_product_category_criteria.dart';
+import 'package:openapi/src/model/catalogs_base_filter_keys.dart';
 import 'package:openapi/src/model/catalogs_product_group_uint32_criteria.dart';
-import 'package:openapi/src/model/google_product_category5_filter.dart';
-import 'package:openapi/src/model/min_price_filter.dart';
+import 'package:openapi/src/model/catalogs_product_group_currency_criteria.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/any_of.dart';
@@ -61,36 +30,37 @@ part 'catalogs_product_group_filter_keys.g.dart';
 /// * [AVAILABILITY] 
 /// * [BRAND] 
 /// * [CONDITION] 
-/// * [cUSTOMLABEL0] 
-/// * [cUSTOMLABEL1] 
-/// * [cUSTOMLABEL2] 
-/// * [cUSTOMLABEL3] 
-/// * [cUSTOMLABEL4] 
+/// * [CUSTOM_LABEL_0] 
+/// * [CUSTOM_LABEL_1] 
+/// * [CUSTOM_LABEL_2] 
+/// * [CUSTOM_LABEL_3] 
+/// * [CUSTOM_LABEL_4] 
 /// * [ITEM_GROUP_ID] 
 /// * [GENDER] 
 /// * [MEDIA_TYPE] 
-/// * [pRODUCTTYPE4] 
-/// * [pRODUCTTYPE3] 
-/// * [pRODUCTTYPE2] 
-/// * [pRODUCTTYPE1] 
-/// * [pRODUCTTYPE0] 
-/// * [gOOGLEPRODUCTCATEGORY6] 
-/// * [gOOGLEPRODUCTCATEGORY5] 
-/// * [gOOGLEPRODUCTCATEGORY4] 
-/// * [gOOGLEPRODUCTCATEGORY3] 
-/// * [gOOGLEPRODUCTCATEGORY2] 
-/// * [gOOGLEPRODUCTCATEGORY1] 
-/// * [gOOGLEPRODUCTCATEGORY0] 
-/// * [PRODUCT_GROUP] 
-/// * [cUSTOMNUMBER0] 
-/// * [cUSTOMNUMBER1] 
-/// * [cUSTOMNUMBER2] 
-/// * [cUSTOMNUMBER3] 
-/// * [cUSTOMNUMBER4] 
+/// * [PRODUCT_TYPE_4] 
+/// * [PRODUCT_TYPE_3] 
+/// * [PRODUCT_TYPE_2] 
+/// * [PRODUCT_TYPE_1] 
+/// * [PRODUCT_TYPE_0] 
+/// * [GOOGLE_PRODUCT_CATEGORY_6] 
+/// * [GOOGLE_PRODUCT_CATEGORY_5] 
+/// * [GOOGLE_PRODUCT_CATEGORY_4] 
+/// * [GOOGLE_PRODUCT_CATEGORY_3] 
+/// * [GOOGLE_PRODUCT_CATEGORY_2] 
+/// * [GOOGLE_PRODUCT_CATEGORY_1] 
+/// * [GOOGLE_PRODUCT_CATEGORY_0] 
+/// * [CUSTOM_NUMBER_0] 
+/// * [CUSTOM_NUMBER_1] 
+/// * [CUSTOM_NUMBER_2] 
+/// * [CUSTOM_NUMBER_3] 
+/// * [CUSTOM_NUMBER_4] 
 /// * [TITLE_KEYWORDS] 
+/// * [PINTEREST_PRODUCT_CATEGORIES] 
+/// * [PRODUCT_GROUP] 
 @BuiltValue()
 abstract class CatalogsProductGroupFilterKeys implements Built<CatalogsProductGroupFilterKeys, CatalogsProductGroupFilterKeysBuilder> {
-  /// Any Of [AvailabilityFilter], [BrandFilter], [ConditionFilter], [CurrencyFilter], [CustomLabel0Filter], [CustomLabel1Filter], [CustomLabel2Filter], [CustomLabel3Filter], [CustomLabel4Filter], [CustomNumber0Filter], [CustomNumber1Filter], [CustomNumber2Filter], [CustomNumber3Filter], [CustomNumber4Filter], [GenderFilter], [GoogleProductCategory0Filter], [GoogleProductCategory1Filter], [GoogleProductCategory2Filter], [GoogleProductCategory3Filter], [GoogleProductCategory4Filter], [GoogleProductCategory5Filter], [GoogleProductCategory6Filter], [ItemGroupIdFilter], [ItemIdFilter], [MaxPriceFilter], [MediaTypeFilter], [MinPriceFilter], [ProductGroupReferenceFilter], [ProductType0Filter], [ProductType1Filter], [ProductType2Filter], [ProductType3Filter], [ProductType4Filter], [TitleKeywordsFilter]
+  /// Any Of [CatalogsBaseFilterKeys], [ProductGroupReferenceFilter]
   AnyOf get anyOf;
 
   CatalogsProductGroupFilterKeys._();
@@ -136,7 +106,7 @@ class _$CatalogsProductGroupFilterKeysSerializer implements PrimitiveSerializer<
   }) {
     final result = CatalogsProductGroupFilterKeysBuilder();
     Object? anyOfDataSrc;
-    final targetType = const FullType(AnyOf, [FullType(MinPriceFilter), FullType(MaxPriceFilter), FullType(CurrencyFilter), FullType(ItemIdFilter), FullType(AvailabilityFilter), FullType(BrandFilter), FullType(ConditionFilter), FullType(CustomLabel0Filter), FullType(CustomLabel1Filter), FullType(CustomLabel2Filter), FullType(CustomLabel3Filter), FullType(CustomLabel4Filter), FullType(ItemGroupIdFilter), FullType(GenderFilter), FullType(MediaTypeFilter), FullType(ProductType4Filter), FullType(ProductType3Filter), FullType(ProductType2Filter), FullType(ProductType1Filter), FullType(ProductType0Filter), FullType(GoogleProductCategory6Filter), FullType(GoogleProductCategory5Filter), FullType(GoogleProductCategory4Filter), FullType(GoogleProductCategory3Filter), FullType(GoogleProductCategory2Filter), FullType(GoogleProductCategory1Filter), FullType(GoogleProductCategory0Filter), FullType(ProductGroupReferenceFilter), FullType(CustomNumber0Filter), FullType(CustomNumber1Filter), FullType(CustomNumber2Filter), FullType(CustomNumber3Filter), FullType(CustomNumber4Filter), FullType(TitleKeywordsFilter), ]);
+    final targetType = const FullType(AnyOf, [FullType(CatalogsBaseFilterKeys), FullType(ProductGroupReferenceFilter), ]);
     anyOfDataSrc = serialized;
     result.anyOf = serializers.deserialize(anyOfDataSrc, specifiedType: targetType) as AnyOf;
     return result.build();

@@ -13,7 +13,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## promotions_create
 
-> <PromotionsResponse> promotions_create(ad_account_id, promotion_create_request)
+> <PromotionsResponse> promotions_create(ad_account_id, promotion_create)
 
 Create promotions
 
@@ -32,11 +32,11 @@ end
 
 api_instance = PinterestSdkClient::PromotionsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-promotion_create_request = [PinterestSdkClient::PromotionCreateRequest.new({promotion_title: 'Black Friday 10% off', promotion_type: PinterestSdkClient::PromotionType::VARIABLE})] # Array<PromotionCreateRequest> | List of promotions to create, size limit [1, 30].
+promotion_create = [PinterestSdkClient::PromotionCreate.new({promotion_title: 'promotion_title_example', promotion_type: PinterestSdkClient::PromotionType::VARIABLE})] # Array<PromotionCreate> | 
 
 begin
   # Create promotions
-  result = api_instance.promotions_create(ad_account_id, promotion_create_request)
+  result = api_instance.promotions_create(ad_account_id, promotion_create)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling PromotionsApi->promotions_create: #{e}"
@@ -47,12 +47,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PromotionsResponse>, Integer, Hash)> promotions_create_with_http_info(ad_account_id, promotion_create_request)
+> <Array(<PromotionsResponse>, Integer, Hash)> promotions_create_with_http_info(ad_account_id, promotion_create)
 
 ```ruby
 begin
   # Create promotions
-  data, status_code, headers = api_instance.promotions_create_with_http_info(ad_account_id, promotion_create_request)
+  data, status_code, headers = api_instance.promotions_create_with_http_info(ad_account_id, promotion_create)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PromotionsResponse>
@@ -66,7 +66,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **promotion_create_request** | [**Array&lt;PromotionCreateRequest&gt;**](PromotionCreateRequest.md) | List of promotions to create, size limit [1, 30]. |  |
+| **promotion_create** | [**Array&lt;PromotionCreate&gt;**](PromotionCreate.md) |  |  |
 
 ### Return type
 
@@ -84,7 +84,7 @@ end
 
 ## promotions_delete
 
-> promotions_delete(ad_account_id, promotion_id)
+> <Promotion> promotions_delete(promotion_id, ad_account_id)
 
 Delete promotion by id
 
@@ -102,12 +102,13 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::PromotionsApi.new
+promotion_id = 'promotion_id_example' # String | Promotion ID
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-promotion_id = 'promotion_id_example' # String | Unique identifier of a promotion
 
 begin
   # Delete promotion by id
-  api_instance.promotions_delete(ad_account_id, promotion_id)
+  result = api_instance.promotions_delete(promotion_id, ad_account_id)
+  p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling PromotionsApi->promotions_delete: #{e}"
 end
@@ -115,17 +116,17 @@ end
 
 #### Using the promotions_delete_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> promotions_delete_with_http_info(ad_account_id, promotion_id)
+> <Array(<Promotion>, Integer, Hash)> promotions_delete_with_http_info(promotion_id, ad_account_id)
 
 ```ruby
 begin
   # Delete promotion by id
-  data, status_code, headers = api_instance.promotions_delete_with_http_info(ad_account_id, promotion_id)
+  data, status_code, headers = api_instance.promotions_delete_with_http_info(promotion_id, ad_account_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <Promotion>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling PromotionsApi->promotions_delete_with_http_info: #{e}"
 end
@@ -135,12 +136,12 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **promotion_id** | **String** | Promotion ID |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **promotion_id** | **String** | Unique identifier of a promotion |  |
 
 ### Return type
 
-nil (empty response body)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -154,7 +155,7 @@ nil (empty response body)
 
 ## promotions_get
 
-> <PromotionResponse> promotions_get(ad_account_id, promotion_id)
+> <Promotion> promotions_get(promotion_id, ad_account_id)
 
 Get promotion by id
 
@@ -172,12 +173,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::PromotionsApi.new
+promotion_id = 'promotion_id_example' # String | Promotion ID
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-promotion_id = 'promotion_id_example' # String | Unique identifier of a promotion
 
 begin
   # Get promotion by id
-  result = api_instance.promotions_get(ad_account_id, promotion_id)
+  result = api_instance.promotions_get(promotion_id, ad_account_id)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling PromotionsApi->promotions_get: #{e}"
@@ -188,15 +189,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PromotionResponse>, Integer, Hash)> promotions_get_with_http_info(ad_account_id, promotion_id)
+> <Array(<Promotion>, Integer, Hash)> promotions_get_with_http_info(promotion_id, ad_account_id)
 
 ```ruby
 begin
   # Get promotion by id
-  data, status_code, headers = api_instance.promotions_get_with_http_info(ad_account_id, promotion_id)
+  data, status_code, headers = api_instance.promotions_get_with_http_info(promotion_id, ad_account_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <PromotionResponse>
+  p data # => <Promotion>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling PromotionsApi->promotions_get_with_http_info: #{e}"
 end
@@ -206,12 +207,12 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **promotion_id** | **String** | Promotion ID |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **promotion_id** | **String** | Unique identifier of a promotion |  |
 
 ### Return type
 
-[**PromotionResponse**](PromotionResponse.md)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -245,9 +246,9 @@ end
 api_instance = PinterestSdkClient::PromotionsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  order: 'ASCENDING', # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  bookmark: 'bookmark_example' # String | Cursor used to fetch the next page of items
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56, # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  order: PinterestSdkClient::PinterestLibPaginationOrder::ASCENDING # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 }
 
 begin
@@ -282,9 +283,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
-| **order** | **String** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
+| **order** | [**PinterestLibPaginationOrder**](.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 
 ### Return type
 
@@ -302,7 +303,7 @@ end
 
 ## promotions_update
 
-> <PromotionsResponse> promotions_update(ad_account_id, promotion_update_request)
+> <PromotionsResponse> promotions_update(ad_account_id, promotion_batch_update)
 
 Update promotions
 
@@ -321,11 +322,11 @@ end
 
 api_instance = PinterestSdkClient::PromotionsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-promotion_update_request = [PinterestSdkClient::PromotionUpdateRequest.new({id: '7834020347906'})] # Array<PromotionUpdateRequest> | List of promotions to create, size limit [1, 30].
+promotion_batch_update = [PinterestSdkClient::PromotionBatchUpdate.new({id: 'id_example'})] # Array<PromotionBatchUpdate> | 
 
 begin
   # Update promotions
-  result = api_instance.promotions_update(ad_account_id, promotion_update_request)
+  result = api_instance.promotions_update(ad_account_id, promotion_batch_update)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling PromotionsApi->promotions_update: #{e}"
@@ -336,12 +337,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PromotionsResponse>, Integer, Hash)> promotions_update_with_http_info(ad_account_id, promotion_update_request)
+> <Array(<PromotionsResponse>, Integer, Hash)> promotions_update_with_http_info(ad_account_id, promotion_batch_update)
 
 ```ruby
 begin
   # Update promotions
-  data, status_code, headers = api_instance.promotions_update_with_http_info(ad_account_id, promotion_update_request)
+  data, status_code, headers = api_instance.promotions_update_with_http_info(ad_account_id, promotion_batch_update)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PromotionsResponse>
@@ -355,7 +356,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **promotion_update_request** | [**Array&lt;PromotionUpdateRequest&gt;**](PromotionUpdateRequest.md) | List of promotions to create, size limit [1, 30]. |  |
+| **promotion_batch_update** | [**Array&lt;PromotionBatchUpdate&gt;**](PromotionBatchUpdate.md) |  |  |
 
 ### Return type
 

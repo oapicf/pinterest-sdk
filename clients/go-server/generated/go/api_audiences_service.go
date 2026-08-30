@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -29,63 +29,120 @@ func NewAudiencesAPIService() *AudiencesAPIService {
 }
 
 // AudiencesList - List audiences
-func (s *AudiencesAPIService) AudiencesList(ctx context.Context, adAccountId string, bookmark string, order string, pageSize int32, ownershipType string) (ImplResponse, error) {
+func (s *AudiencesAPIService) AudiencesList(ctx context.Context, adAccountId string, bookmark string, pageSize int32, order PinterestLibPaginationOrder, ownershipType AudienceOwnershipType, excludeNca bool) (ImplResponse, error) {
 	// TODO - update AudiencesList with the required logic for this service method.
 	// Add api_audiences_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, AudiencesList200Response{}) or use other options such as http.Ok ...
 	// return Response(200, AudiencesList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AudiencesList method not implemented")
 }
 
 // AudiencesCreate - Create audience
-func (s *AudiencesAPIService) AudiencesCreate(ctx context.Context, adAccountId string, audienceCreateRequest AudienceCreateRequest) (ImplResponse, error) {
+func (s *AudiencesAPIService) AudiencesCreate(ctx context.Context, adAccountId string, adAccountsAudienceCreate AdAccountsAudienceCreate) (ImplResponse, error) {
 	// TODO - update AudiencesCreate with the required logic for this service method.
 	// Add api_audiences_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, Audience{}) or use other options such as http.Ok ...
-	// return Response(200, Audience{}), nil
+	// TODO: Uncomment the next line to return response Response(200, AdAccountsAudience{}) or use other options such as http.Ok ...
+	// return Response(200, AdAccountsAudience{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, AdAccountsAudience{}) or use other options such as http.Ok ...
+	// return Response(201, AdAccountsAudience{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AudiencesCreate method not implemented")
 }
 
 // AudiencesGet - Get audience
-func (s *AudiencesAPIService) AudiencesGet(ctx context.Context, adAccountId string, audienceId string) (ImplResponse, error) {
+func (s *AudiencesAPIService) AudiencesGet(ctx context.Context, audienceId string, adAccountId string) (ImplResponse, error) {
 	// TODO - update AudiencesGet with the required logic for this service method.
 	// Add api_audiences_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, Audience{}) or use other options such as http.Ok ...
-	// return Response(200, Audience{}), nil
+	// TODO: Uncomment the next line to return response Response(200, AdAccountsAudience{}) or use other options such as http.Ok ...
+	// return Response(200, AdAccountsAudience{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AudiencesGet method not implemented")
 }
 
 // AudiencesUpdate - Update audience
-func (s *AudiencesAPIService) AudiencesUpdate(ctx context.Context, adAccountId string, audienceId string, audienceUpdateRequest AudienceUpdateRequest) (ImplResponse, error) {
+func (s *AudiencesAPIService) AudiencesUpdate(ctx context.Context, audienceId string, adAccountId string, adAccountsAudienceUpdate AdAccountsAudienceUpdate) (ImplResponse, error) {
 	// TODO - update AudiencesUpdate with the required logic for this service method.
 	// Add api_audiences_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, Audience{}) or use other options such as http.Ok ...
-	// return Response(200, Audience{}), nil
+	// TODO: Uncomment the next line to return response Response(200, AdAccountsAudience{}) or use other options such as http.Ok ...
+	// return Response(200, AdAccountsAudience{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AudiencesUpdate method not implemented")
 }

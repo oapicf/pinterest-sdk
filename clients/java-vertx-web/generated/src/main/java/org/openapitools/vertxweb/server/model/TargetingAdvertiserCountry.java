@@ -55,7 +55,7 @@ public enum TargetingAdvertiserCountry {
   
   SG("SG"),
   
-  NO("NO"),
+  FALSE("false"),
   
   DK("DK"),
   

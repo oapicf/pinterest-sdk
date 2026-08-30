@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **DefaultAvailability** | Pointer to [**NullableProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
 **DefaultCountry** | Pointer to [**Country**](Country.md) |  | [optional] 
 **DefaultCurrency** | Pointer to [**NullableNullableCurrency**](NullableCurrency.md) |  | [optional] 
-**DefaultLocale** | Pointer to [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequestDefaultLocale.md) |  | [optional] 
+**DefaultLocale** | Pointer to [**CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale**](CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.md) |  | [optional] 
 **Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
 **Location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
 **Name** | **string** | A human-friendly name associated to a given feed. | 
@@ -166,20 +166,20 @@ HasDefaultCurrency returns a boolean if a field has been set.
 UnsetDefaultCurrency ensures that no value is present for DefaultCurrency, not even an explicit nil
 ### GetDefaultLocale
 
-`func (o *CatalogsFeedsCreateRequest) GetDefaultLocale() CatalogsFeedsCreateRequestDefaultLocale`
+`func (o *CatalogsFeedsCreateRequest) GetDefaultLocale() CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale`
 
 GetDefaultLocale returns the DefaultLocale field if non-nil, zero value otherwise.
 
 ### GetDefaultLocaleOk
 
-`func (o *CatalogsFeedsCreateRequest) GetDefaultLocaleOk() (*CatalogsFeedsCreateRequestDefaultLocale, bool)`
+`func (o *CatalogsFeedsCreateRequest) GetDefaultLocaleOk() (*CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale, bool)`
 
 GetDefaultLocaleOk returns a tuple with the DefaultLocale field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefaultLocale
 
-`func (o *CatalogsFeedsCreateRequest) SetDefaultLocale(v CatalogsFeedsCreateRequestDefaultLocale)`
+`func (o *CatalogsFeedsCreateRequest) SetDefaultLocale(v CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale)`
 
 SetDefaultLocale sets DefaultLocale field to given value.
 

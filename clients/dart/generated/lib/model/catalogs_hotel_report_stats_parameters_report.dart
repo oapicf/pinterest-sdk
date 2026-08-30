@@ -13,13 +13,11 @@ part of openapi.api;
 class CatalogsHotelReportStatsParametersReport {
   /// Returns a new [CatalogsHotelReportStatsParametersReport] instance.
   CatalogsHotelReportStatsParametersReport({
-    this.reportType,
     required this.feedId,
     this.processingResultId,
+    required this.reportType,
     this.catalogId,
   });
-
-  CatalogsHotelReportStatsParametersReportReportTypeEnum? reportType;
 
   /// ID of the feed entity.
   String feedId;
@@ -33,6 +31,8 @@ class CatalogsHotelReportStatsParametersReport {
   ///
   String? processingResultId;
 
+  CatalogsHotelReportStatsParametersReportReportTypeEnum reportType;
+
   /// Unique identifier of a catalog. If not given, oldest catalog will be used
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -44,35 +44,31 @@ class CatalogsHotelReportStatsParametersReport {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CatalogsHotelReportStatsParametersReport &&
-    other.reportType == reportType &&
     other.feedId == feedId &&
     other.processingResultId == processingResultId &&
+    other.reportType == reportType &&
     other.catalogId == catalogId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (reportType == null ? 0 : reportType!.hashCode) +
     (feedId.hashCode) +
     (processingResultId == null ? 0 : processingResultId!.hashCode) +
+    (reportType.hashCode) +
     (catalogId == null ? 0 : catalogId!.hashCode);
 
   @override
-  String toString() => 'CatalogsHotelReportStatsParametersReport[reportType=$reportType, feedId=$feedId, processingResultId=$processingResultId, catalogId=$catalogId]';
+  String toString() => 'CatalogsHotelReportStatsParametersReport[feedId=$feedId, processingResultId=$processingResultId, reportType=$reportType, catalogId=$catalogId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.reportType != null) {
-      json[r'report_type'] = this.reportType;
-    } else {
-      json[r'report_type'] = null;
-    }
       json[r'feed_id'] = this.feedId;
     if (this.processingResultId != null) {
       json[r'processing_result_id'] = this.processingResultId;
     } else {
       json[r'processing_result_id'] = null;
     }
+      json[r'report_type'] = this.reportType;
     if (this.catalogId != null) {
       json[r'catalog_id'] = this.catalogId;
     } else {
@@ -92,17 +88,17 @@ class CatalogsHotelReportStatsParametersReport {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsHotelReportStatsParametersReport[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsHotelReportStatsParametersReport[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'feed_id'), 'Required key "CatalogsHotelReportStatsParametersReport[feed_id]" is missing from JSON.');
+        assert(json[r'feed_id'] != null, 'Required key "CatalogsHotelReportStatsParametersReport[feed_id]" has a null value in JSON.');
+        assert(json.containsKey(r'report_type'), 'Required key "CatalogsHotelReportStatsParametersReport[report_type]" is missing from JSON.');
+        assert(json[r'report_type'] != null, 'Required key "CatalogsHotelReportStatsParametersReport[report_type]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsHotelReportStatsParametersReport(
-        reportType: CatalogsHotelReportStatsParametersReportReportTypeEnum.fromJson(json[r'report_type']),
         feedId: mapValueOfType<String>(json, r'feed_id')!,
         processingResultId: mapValueOfType<String>(json, r'processing_result_id'),
+        reportType: CatalogsHotelReportStatsParametersReportReportTypeEnum.fromJson(json[r'report_type'])!,
         catalogId: mapValueOfType<String>(json, r'catalog_id'),
       );
     }
@@ -152,33 +148,33 @@ class CatalogsHotelReportStatsParametersReport {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'feed_id',
+    'report_type',
   };
 }
 
 
-class CatalogsHotelReportStatsParametersReportReportTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsHotelReportStatsParametersReportReportTypeEnum._(this.value);
+enum CatalogsHotelReportStatsParametersReportReportTypeEnum {
+  DISTRIBUTION_ISSUES._(r'DISTRIBUTION_ISSUES'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsHotelReportStatsParametersReportReportTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const FEED_INGESTION_ISSUES = CatalogsHotelReportStatsParametersReportReportTypeEnum._(r'FEED_INGESTION_ISSUES');
-  static const DISTRIBUTION_ISSUES = CatalogsHotelReportStatsParametersReportReportTypeEnum._(r'DISTRIBUTION_ISSUES');
-
-  /// List of all possible values in this [enum][CatalogsHotelReportStatsParametersReportReportTypeEnum].
-  static const values = <CatalogsHotelReportStatsParametersReportReportTypeEnum>[
-    FEED_INGESTION_ISSUES,
-    DISTRIBUTION_ISSUES,
-  ];
-
+  /// Returns the instance of [CatalogsHotelReportStatsParametersReportReportTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsHotelReportStatsParametersReportReportTypeEnum? fromJson(dynamic value) => CatalogsHotelReportStatsParametersReportReportTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsHotelReportStatsParametersReportReportTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsHotelReportStatsParametersReportReportTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsHotelReportStatsParametersReportReportTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -200,9 +196,10 @@ class CatalogsHotelReportStatsParametersReportReportTypeEnumTypeTransformer {
 
   const CatalogsHotelReportStatsParametersReportReportTypeEnumTypeTransformer._();
 
-  String encode(CatalogsHotelReportStatsParametersReportReportTypeEnum data) => data.value;
+  String encode(CatalogsHotelReportStatsParametersReportReportTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsHotelReportStatsParametersReportReportTypeEnum.
+  /// Returns the instance of [CatalogsHotelReportStatsParametersReportReportTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -211,9 +208,11 @@ class CatalogsHotelReportStatsParametersReportReportTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsHotelReportStatsParametersReportReportTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsHotelReportStatsParametersReportReportTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
-        case r'FEED_INGESTION_ISSUES': return CatalogsHotelReportStatsParametersReportReportTypeEnum.FEED_INGESTION_ISSUES;
         case r'DISTRIBUTION_ISSUES': return CatalogsHotelReportStatsParametersReportReportTypeEnum.DISTRIBUTION_ISSUES;
         default:
           if (!allowNull) {
@@ -224,7 +223,7 @@ class CatalogsHotelReportStatsParametersReportReportTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsHotelReportStatsParametersReportReportTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsHotelReportStatsParametersReportReportTypeEnumTypeTransformer? _instance;
 }
 

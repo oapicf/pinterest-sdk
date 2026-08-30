@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ErrorDetail = Initialize-PSOpenAPIToolsErrorDetail  -Count 20 `
- -ErrorCode 42 `
- -Message Invalid email
+$ErrorDetail = Initialize-PSOpenAPIToolsErrorDetail  -Count null `
+ -ErrorCode null `
+ -Message null
 ```
 
 - Convert the resource to JSON

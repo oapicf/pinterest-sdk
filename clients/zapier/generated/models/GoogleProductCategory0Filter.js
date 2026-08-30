@@ -5,12 +5,13 @@ module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            ...CatalogsProductGroupMultipleStringListCriteria.fields(`${keyPrefix}GOOGLE_PRODUCT_CATEGORY_0`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'GOOGLE_PRODUCT_CATEGORY_0': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_0`)),
+            'GOOGLE_PRODUCT_CATEGORY_0': utils.removeIfEmpty(CatalogsProductGroupMultipleStringListCriteria.mapping(bundle, `${keyPrefix}GOOGLE_PRODUCT_CATEGORY_0`)),
         }
     },
 }

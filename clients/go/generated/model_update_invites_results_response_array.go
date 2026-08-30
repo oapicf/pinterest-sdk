@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &UpdateInvitesResultsResponseArray{}
 // UpdateInvitesResultsResponseArray struct for UpdateInvitesResultsResponseArray
 type UpdateInvitesResultsResponseArray struct {
 	// List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
-	Items []UpdateInvitesResultsResponseArrayItemsInner `json:"items,omitempty"`
+	Items []InviteActionResultItem `json:"items,omitempty"`
 }
 
 // NewUpdateInvitesResultsResponseArray instantiates a new UpdateInvitesResultsResponseArray object
@@ -42,9 +42,9 @@ func NewUpdateInvitesResultsResponseArrayWithDefaults() *UpdateInvitesResultsRes
 }
 
 // GetItems returns the Items field value if set, zero value otherwise.
-func (o *UpdateInvitesResultsResponseArray) GetItems() []UpdateInvitesResultsResponseArrayItemsInner {
+func (o *UpdateInvitesResultsResponseArray) GetItems() []InviteActionResultItem {
 	if o == nil || IsNil(o.Items) {
-		var ret []UpdateInvitesResultsResponseArrayItemsInner
+		var ret []InviteActionResultItem
 		return ret
 	}
 	return o.Items
@@ -52,7 +52,7 @@ func (o *UpdateInvitesResultsResponseArray) GetItems() []UpdateInvitesResultsRes
 
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateInvitesResultsResponseArray) GetItemsOk() ([]UpdateInvitesResultsResponseArrayItemsInner, bool) {
+func (o *UpdateInvitesResultsResponseArray) GetItemsOk() ([]InviteActionResultItem, bool) {
 	if o == nil || IsNil(o.Items) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *UpdateInvitesResultsResponseArray) HasItems() bool {
 	return false
 }
 
-// SetItems gets a reference to the given []UpdateInvitesResultsResponseArrayItemsInner and assigns it to the Items field.
-func (o *UpdateInvitesResultsResponseArray) SetItems(v []UpdateInvitesResultsResponseArrayItemsInner) {
+// SetItems gets a reference to the given []InviteActionResultItem and assigns it to the Items field.
+func (o *UpdateInvitesResultsResponseArray) SetItems(v []InviteActionResultItem) {
 	o.Items = v
 }
 

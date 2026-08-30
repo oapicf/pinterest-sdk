@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **googleProductCategory4** | **NSArray&lt;NSString*&gt;*** |  | [optional] 
 **googleProductCategory5** | **NSArray&lt;NSString*&gt;*** |  | [optional] 
 **googleProductCategory6** | **NSArray&lt;NSString*&gt;*** |  | [optional] 
-**mediaType** | **NSArray&lt;NSString*&gt;*** |  | [optional] 
+**mediaType** | [**NSArray&lt;OAIMediaType&gt;***](OAIMediaType.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

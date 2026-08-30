@@ -10,8 +10,8 @@
 | **error_counts** | [**Array&lt;ErrorDetail&gt;**](ErrorDetail.md) | Error counts by error code | [optional] |
 | **id** | **String** | Customer List Upload ID. |  |
 | **operation** | [**UserListOperationType**](UserListOperationType.md) |  |  |
-| **record_counts** | [**RecordCounts**](RecordCounts.md) |  | [optional] |
-| **state** | **String** | Workload processing state |  |
+| **record_counts** | [**RecordCounts**](RecordCounts.md) | Record processing counts | [optional] |
+| **state** | [**WorkloadState**](WorkloadState.md) |  |  |
 | **updated_time** | **Integer** | Customer List Upload updated_time. Epoch (seconds). |  |
 
 ## Example

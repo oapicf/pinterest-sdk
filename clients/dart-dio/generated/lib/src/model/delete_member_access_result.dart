@@ -86,15 +86,17 @@ class _$DeleteMemberAccessResultSerializer implements PrimitiveSerializer<Delete
         case r'asset_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.assetId = valueDes;
           break;
         case r'member_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.memberId = valueDes;
           break;
         default:

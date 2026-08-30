@@ -6,36 +6,37 @@
 
 Name | Type
 ------------ | -------------
-`attributionTypes` | [Array&lt;ConversionReportAttributionType&gt;](ConversionReportAttributionType.md)
-`clickWindowDays` | [ConversionAttributionWindowDays](ConversionAttributionWindowDays.md)
-`conversionReportTime` | [ConversionReportTimeType](ConversionReportTimeType.md)
-`endDate` | string
-`engagementWindowDays` | [ConversionAttributionWindowDays](ConversionAttributionWindowDays.md)
-`granularity` | [Granularity](Granularity.md)
-`startDate` | string
-`viewWindowDays` | [ConversionAttributionWindowDays](ConversionAttributionWindowDays.md)
-`campaignIds` | Array&lt;string&gt;
-`campaignStatuses` | [Array&lt;CampaignSummaryStatus&gt;](CampaignSummaryStatus.md)
-`campaignObjectiveTypes` | [Array&lt;ObjectiveType&gt;](ObjectiveType.md)
-`campaignBrandLabel` | string
 `adGroupIds` | Array&lt;string&gt;
 `adGroupStatuses` | [Array&lt;AdGroupSummaryStatus&gt;](AdGroupSummaryStatus.md)
 `adIds` | Array&lt;string&gt;
 `adStatuses` | [Array&lt;PinPromotionSummaryStatus&gt;](PinPromotionSummaryStatus.md)
+`attributionTypes` | [Array&lt;ConversionReportAttributionType&gt;](ConversionReportAttributionType.md)
+`campaignBrandLabel` | string
+`campaignCustomLabel` | string
+`campaignIds` | Array&lt;string&gt;
+`campaignObjectiveTypes` | [Array&lt;CampaignObjectiveType&gt;](CampaignObjectiveType.md)
+`campaignStatuses` | [Array&lt;CampaignSummaryStatus&gt;](CampaignSummaryStatus.md)
+`clickWindowDays` | [ConversionAttributionWindowDays](ConversionAttributionWindowDays.md)
+`columns` | [Array&lt;ReportingColumnAsync&gt;](ReportingColumnAsync.md)
+`combineTargetingTypes` | boolean
+`conversionReportTime` | [ConversionReportTimeType](ConversionReportTimeType.md)
+`customConversionEventMetrics` | [Array&lt;CustomConversionEventMetrics&gt;](CustomConversionEventMetrics.md)
+`endDate` | string
+`endHour` | number
+`engagementWindowDays` | [ConversionAttributionWindowDays](ConversionAttributionWindowDays.md)
+`granularity` | [Granularity](Granularity.md)
+`level` | [MetricsReportingLevel](MetricsReportingLevel.md)
+`metricsFilters` | [Array&lt;AdsAnalyticsMetricsFilter&gt;](AdsAnalyticsMetricsFilter.md)
+`primarySort` | [PrimarySort](PrimarySort.md)
 `productGroupIds` | Array&lt;string&gt;
 `productGroupStatuses` | [Array&lt;ProductGroupSummaryStatus&gt;](ProductGroupSummaryStatus.md)
 `productItemIds` | Array&lt;string&gt;
-`targetingTypes` | Array&lt;string&gt;
-`metricsFilters` | [Array&lt;AdsAnalyticsMetricsFilter&gt;](AdsAnalyticsMetricsFilter.md)
-`columns` | [Array&lt;ReportingColumnAsync&gt;](ReportingColumnAsync.md)
-`combineTargetingTypes` | boolean
-`customConversionEventMetrics` | [Array&lt;AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics&gt;](AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics.md)
-`endHour` | number
-`level` | [MetricsReportingLevel](MetricsReportingLevel.md)
-`primarySort` | string
 `reportFormat` | [DataOutputFormat](DataOutputFormat.md)
 `reportingTimezone` | [ReportingTimeZone](ReportingTimeZone.md)
+`startDate` | string
 `startHour` | number
+`targetingTypes` | [Array&lt;AdAdsAnalyticsAsyncTargetingTypes&gt;](AdAdsAnalyticsAsyncTargetingTypes.md)
+`viewWindowDays` | [ConversionAttributionWindowDays](ConversionAttributionWindowDays.md)
 
 ## Example
 
@@ -44,36 +45,37 @@ import type { AdsAnalyticsCreateAsyncRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "adGroupIds": null,
+  "adGroupStatuses": null,
+  "adIds": null,
+  "adStatuses": null,
   "attributionTypes": null,
+  "campaignBrandLabel": null,
+  "campaignCustomLabel": null,
+  "campaignIds": null,
+  "campaignObjectiveTypes": null,
+  "campaignStatuses": null,
   "clickWindowDays": null,
+  "columns": null,
+  "combineTargetingTypes": null,
   "conversionReportTime": null,
-  "endDate": 2020-12-20,
+  "customConversionEventMetrics": null,
+  "endDate": null,
+  "endHour": null,
   "engagementWindowDays": null,
   "granularity": null,
-  "startDate": 2020-12-20,
-  "viewWindowDays": null,
-  "campaignIds": ["12345678"],
-  "campaignStatuses": ["RUNNING","PAUSED"],
-  "campaignObjectiveTypes": ["AWARENESS"],
-  "campaignBrandLabel": Brand,
-  "adGroupIds": ["12345678"],
-  "adGroupStatuses": ["RUNNING","PAUSED"],
-  "adIds": ["12345678"],
-  "adStatuses": ["APPROVED","PAUSED"],
-  "productGroupIds": ["12345678"],
-  "productGroupStatuses": ["RUNNING","PAUSED"],
-  "productItemIds": ["12345678"],
-  "targetingTypes": null,
-  "metricsFilters": null,
-  "columns": null,
-  "combineTargetingTypes": false,
-  "customConversionEventMetrics": null,
-  "endHour": null,
   "level": null,
-  "primarySort": BY_ID,
+  "metricsFilters": null,
+  "primarySort": null,
+  "productGroupIds": null,
+  "productGroupStatuses": null,
+  "productItemIds": null,
   "reportFormat": null,
   "reportingTimezone": null,
+  "startDate": null,
   "startHour": null,
+  "targetingTypes": null,
+  "viewWindowDays": null,
 } satisfies AdsAnalyticsCreateAsyncRequest
 
 console.log(example)

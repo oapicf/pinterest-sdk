@@ -25,13 +25,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class KeywordsCommon(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("match_type")
     @get:JsonProperty("match_type", required = true) val matchType: MatchTypeResponse?,
 
-    @Schema(example = "null", required = true, description = "Keyword value (120 chars max).")
+    @Schema(required = true, description = "Keyword value (120 chars max).")
+    @param:JsonProperty("value")
     @get:JsonProperty("value", required = true) val `value`: kotlin.String,
 
-    @Schema(example = "null", description = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+    @Schema(description = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+    @param:JsonProperty("bid")
     @get:JsonProperty("bid") val bid: kotlin.Int? = null
 ) {
 

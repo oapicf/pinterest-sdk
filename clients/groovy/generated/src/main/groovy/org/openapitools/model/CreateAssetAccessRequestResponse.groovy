@@ -6,13 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CreateAssetAccessRequestErrorMessageInner;
+import org.openapitools.model.AssetAccessRequestError;
 
 @Canonical
 class CreateAssetAccessRequestResponse {
     /* A list of errors associated with the asset access requests. Will be returned if there is an error. */
-    List<CreateAssetAccessRequestErrorMessageInner> exceptions
-    
-    Map<String, String> invites
+    List<AssetAccessRequestError> exceptions = new ArrayList<>()
+    /* An object mapping each partner id to the asset access request id. Only one request id is returned per partner. */
+    Map<String, String> invites = new HashMap<>()
 }

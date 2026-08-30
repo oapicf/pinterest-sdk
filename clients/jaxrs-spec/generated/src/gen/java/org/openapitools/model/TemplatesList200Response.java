@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.TemplateResponse;
+import org.openapitools.model.AccountTemplate;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,17 +22,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("templates_list_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TemplatesList200Response   {
   private String bookmark;
-  private @Valid List<@Valid TemplateResponse> items = new ArrayList<>();
+  private @Valid List<@Valid AccountTemplate> items = new ArrayList<>();
 
   public TemplatesList200Response() {
   }
 
   @JsonCreator
   public TemplatesList200Response(
-    @JsonProperty(required = true, value = "items") List<@Valid TemplateResponse> items
+    @JsonProperty(required = true, value = "items") List<@Valid AccountTemplate> items
   ) {
     this.items = items;
   }
@@ -58,7 +58,7 @@ public class TemplatesList200Response   {
 
   /**
    **/
-  public TemplatesList200Response items(List<@Valid TemplateResponse> items) {
+  public TemplatesList200Response items(List<@Valid AccountTemplate> items) {
     this.items = items;
     return this;
   }
@@ -66,16 +66,16 @@ public class TemplatesList200Response   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "items")
-  @NotNull @Valid public List<@Valid TemplateResponse> getItems() {
+  @NotNull @Valid public List<@Valid AccountTemplate> getItems() {
     return items;
   }
 
   @JsonProperty(required = true, value = "items")
-  public void setItems(List<@Valid TemplateResponse> items) {
+  public void setItems(List<@Valid AccountTemplate> items) {
     this.items = items;
   }
 
-  public TemplatesList200Response addItemsItem(TemplateResponse itemsItem) {
+  public TemplatesList200Response addItemsItem(AccountTemplate itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -84,7 +84,7 @@ public class TemplatesList200Response   {
     return this;
   }
 
-  public TemplatesList200Response removeItemsItem(TemplateResponse itemsItem) {
+  public TemplatesList200Response removeItemsItem(AccountTemplate itemsItem) {
     if (itemsItem != null && this.items != null) {
       this.items.remove(itemsItem);
     }
@@ -126,12 +126,8 @@ public class TemplatesList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

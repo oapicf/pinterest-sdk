@@ -6,24 +6,33 @@
 
 
 static inner_product_categories_metrics_highlights_t *inner_product_categories_metrics_highlights_create_internal(
-    double pct_change_mom
+    double *pct_change_mom
     ) {
     inner_product_categories_metrics_highlights_t *inner_product_categories_metrics_highlights_local_var = malloc(sizeof(inner_product_categories_metrics_highlights_t));
     if (!inner_product_categories_metrics_highlights_local_var) {
         return NULL;
     }
-    inner_product_categories_metrics_highlights_local_var->pct_change_mom = pct_change_mom;
-
+    memset(inner_product_categories_metrics_highlights_local_var, 0, sizeof(inner_product_categories_metrics_highlights_t));
     inner_product_categories_metrics_highlights_local_var->_library_owned = 1;
+    inner_product_categories_metrics_highlights_local_var->pct_change_mom = pct_change_mom;
     return inner_product_categories_metrics_highlights_local_var;
 }
 
 __attribute__((deprecated)) inner_product_categories_metrics_highlights_t *inner_product_categories_metrics_highlights_create(
-    double pct_change_mom
+    double *pct_change_mom
     ) {
-    return inner_product_categories_metrics_highlights_create_internal (
-        pct_change_mom
+    double *pct_change_mom_copy = NULL;
+    if (pct_change_mom) {
+        pct_change_mom_copy = malloc(sizeof(double));
+        if (pct_change_mom_copy) *pct_change_mom_copy = *pct_change_mom;
+    }
+    inner_product_categories_metrics_highlights_t *result = inner_product_categories_metrics_highlights_create_internal (
+        pct_change_mom_copy
         );
+    if (!result) {
+        free(pct_change_mom_copy);
+    }
+    return result;
 }
 
 void inner_product_categories_metrics_highlights_free(inner_product_categories_metrics_highlights_t *inner_product_categories_metrics_highlights) {
@@ -35,6 +44,10 @@ void inner_product_categories_metrics_highlights_free(inner_product_categories_m
         return ;
     }
     listEntry_t *listEntry;
+    if (inner_product_categories_metrics_highlights->pct_change_mom) {
+        free(inner_product_categories_metrics_highlights->pct_change_mom);
+        inner_product_categories_metrics_highlights->pct_change_mom = NULL;
+    }
     free(inner_product_categories_metrics_highlights);
 }
 
@@ -45,7 +58,7 @@ cJSON *inner_product_categories_metrics_highlights_convertToJSON(inner_product_c
     if (!inner_product_categories_metrics_highlights->pct_change_mom) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "pct_change_mom", inner_product_categories_metrics_highlights->pct_change_mom) == NULL) {
+    if(cJSON_AddNumberToObject(item, "pct_change_mom", *inner_product_categories_metrics_highlights->pct_change_mom) == NULL) {
     goto fail; //Numeric
     }
 
@@ -61,6 +74,9 @@ inner_product_categories_metrics_highlights_t *inner_product_categories_metrics_
 
     inner_product_categories_metrics_highlights_t *inner_product_categories_metrics_highlights_local_var = NULL;
 
+    // define the local variable for inner_product_categories_metrics_highlights->pct_change_mom
+    double *pct_change_mom_local_var = NULL;
+
     // inner_product_categories_metrics_highlights->pct_change_mom
     cJSON *pct_change_mom = cJSON_GetObjectItemCaseSensitive(inner_product_categories_metrics_highlightsJSON, "pct_change_mom");
     if (cJSON_IsNull(pct_change_mom)) {
@@ -75,14 +91,29 @@ inner_product_categories_metrics_highlights_t *inner_product_categories_metrics_
     {
     goto end; //Numeric
     }
+    pct_change_mom_local_var = malloc(sizeof(double));
+    if(!pct_change_mom_local_var)
+    {
+        goto end;
+    }
+    *pct_change_mom_local_var = pct_change_mom->valuedouble;
+
 
 
     inner_product_categories_metrics_highlights_local_var = inner_product_categories_metrics_highlights_create_internal (
-        pct_change_mom->valuedouble
+        pct_change_mom_local_var
         );
+
+    if (!inner_product_categories_metrics_highlights_local_var) {
+        goto end;
+    }
 
     return inner_product_categories_metrics_highlights_local_var;
 end:
+    if (pct_change_mom_local_var) {
+        free(pct_change_mom_local_var);
+        pct_change_mom_local_var = NULL;
+    }
     return NULL;
 
 }

@@ -1,0 +1,53 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AssetGroupInputCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AssetGroupInputCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AssetGroupBinding = openapi_server.resourceTypes.AssetGroupBinding
+  AssetGroupType = openapi_server.resourceTypes.AssetGroupType
+}
+resourceTypes {
+
+  AssetGroupInputCreate {
+    title = AssetGroupInputCreate
+    description = AssetGroupInputCreate
+    derivedFrom = Root
+    properties {
+        asset_group {
+          type = AssetGroupBinding
+          description = ""
+          optional = false
+        }
+        asset_group_description {
+          type =  string
+          description = "Asset group description."
+          optional = true
+        }
+        asset_group_name {
+          type =  string
+          description = "Asset Group name."
+          optional = true
+        }
+        asset_group_types {
+          type = array
+          items.type = AssetGroupType
+          description = "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AssetGroupInputCreate {
+    title = AssetGroupInputCreate
+    description = AssetGroupInputCreate
+    implements = openapi_server.resourceTypes.AssetGroupInputCreate
+
+  }
+}

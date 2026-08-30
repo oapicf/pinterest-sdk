@@ -5,29 +5,30 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdGroupId** | Pointer to **string** | ID of the ad group the product group belongs to. | [optional] 
-**BidInMicroCurrency** | Pointer to **NullableInt32** | The bid in micro currency. | [optional] 
-**CatalogProductGroupId** | Pointer to **NullableString** | ID of the catalogs product group that this product group promotion references | [optional] 
-**CatalogProductGroupName** | Pointer to **NullableString** | Catalogs product group name | [optional] 
-**CollectionsHeaderType** | Pointer to **NullableString** | Collections ad header type | [optional] 
+**BidInMicroCurrency** | Pointer to **int32** | The bid in micro currency. | [optional] 
+**CatalogProductGroupId** | Pointer to **string** | ID of the catalogs product group that this product group promotion references (required for create operations) | [optional] 
+**CatalogProductGroupName** | Pointer to **string** | Catalogs product group name | [optional] 
+**CollectionsHeaderType** | Pointer to [**NullableCollectionsHeaderType**](CollectionsHeaderType.md) |  | [optional] 
 **CollectionsHeroDestinationUrl** | Pointer to **NullableString** | Collections Hero Destination Url | [optional] 
 **CollectionsHeroPinId** | Pointer to **NullableString** | Hero Pin ID if this PG is promoted as a Collection | [optional] 
 **CreativeType** | Pointer to [**CreativeType**](CreativeType.md) |  | [optional] 
-**CustomizableCtaType** | Pointer to **NullableString** | Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE | [optional] 
-**Definition** | Pointer to **NullableString** | The full product group definition path | [optional] 
+**CustomizableCtaType** | Pointer to [**ProductGroupPromotionCustomizableCTAType**](ProductGroupPromotionCustomizableCTAType.md) |  | [optional] 
+**Definition** | Pointer to **string** | The full product group definition path | [optional] 
 **GridClickType** | Pointer to [**NullableGridClickType**](GridClickType.md) |  | [optional] 
-**Id** | Pointer to **string** | ID of the product group promotion. | [optional] 
-**Included** | Pointer to **NullableBool** | True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads. | [optional] 
+**Id** | Pointer to **string** | ID of the product group promotion (required for update operations). | [optional] 
+**Included** | Pointer to **bool** | True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads. | [optional] 
 **IsGenerateBackground** | Pointer to **NullableBool** | Enable generate backgrounds for the product group, default value is FALSE. When enabled, Pinterest will use generative AI to apply backgrounds for your product images that help drive user inspiration and engagement. | [optional] 
-**IsMdl** | Pointer to **NullableBool** | If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog | [optional] 
-**ParentId** | Pointer to **NullableString** | The parent Product Group ID of this Product Group | [optional] 
-**PreferredMediaType** | Pointer to **NullableString** | Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only. | [optional] 
-**RelativeDefinition** | Pointer to **NullableString** | The definition of the product group, relative to its parent - an attribute name/value pair | [optional] 
+**IsImageAutoResizing** | Pointer to **NullableBool** | Set to &#x60;TRUE&#x60; to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance. | [optional] 
+**IsMdl** | Pointer to **bool** | If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog | [optional] 
+**ParentId** | Pointer to **string** | The parent Product Group ID of this Product Group | [optional] 
+**PreferredMediaType** | Pointer to [**NullablePreferredMediaType**](PreferredMediaType.md) |  | [optional] 
+**RelativeDefinition** | Pointer to **string** | The definition of the product group, relative to its parent - an attribute name/value pair | [optional] 
 **SelectedImageTag** | Pointer to **NullableString** | The ad image tag selected for the product group promotion. | [optional] 
 **SelectedVideoTag** | Pointer to **NullableString** | The ad video tag selected for the product group promotion. | [optional] 
 **SlideshowCollectionsDescription** | Pointer to **NullableString** | Slideshow Collections Description | [optional] 
 **SlideshowCollectionsTitle** | Pointer to **NullableString** | Slideshow Collections Title | [optional] 
 **Status** | Pointer to [**EntityStatus**](EntityStatus.md) |  | [optional] 
-**TrackingUrl** | Pointer to **NullableString** | Tracking template for proudct group promotions. 4000 limit | [optional] 
+**TrackingUrl** | Pointer to **string** | Tracking template for proudct group promotions. 4000 limit | [optional] 
 
 ## Methods
 
@@ -98,16 +99,6 @@ SetBidInMicroCurrency sets BidInMicroCurrency field to given value.
 
 HasBidInMicroCurrency returns a boolean if a field has been set.
 
-### SetBidInMicroCurrencyNil
-
-`func (o *ProductGroupPromotion) SetBidInMicroCurrencyNil(b bool)`
-
- SetBidInMicroCurrencyNil sets the value for BidInMicroCurrency to be an explicit nil
-
-### UnsetBidInMicroCurrency
-`func (o *ProductGroupPromotion) UnsetBidInMicroCurrency()`
-
-UnsetBidInMicroCurrency ensures that no value is present for BidInMicroCurrency, not even an explicit nil
 ### GetCatalogProductGroupId
 
 `func (o *ProductGroupPromotion) GetCatalogProductGroupId() string`
@@ -133,16 +124,6 @@ SetCatalogProductGroupId sets CatalogProductGroupId field to given value.
 
 HasCatalogProductGroupId returns a boolean if a field has been set.
 
-### SetCatalogProductGroupIdNil
-
-`func (o *ProductGroupPromotion) SetCatalogProductGroupIdNil(b bool)`
-
- SetCatalogProductGroupIdNil sets the value for CatalogProductGroupId to be an explicit nil
-
-### UnsetCatalogProductGroupId
-`func (o *ProductGroupPromotion) UnsetCatalogProductGroupId()`
-
-UnsetCatalogProductGroupId ensures that no value is present for CatalogProductGroupId, not even an explicit nil
 ### GetCatalogProductGroupName
 
 `func (o *ProductGroupPromotion) GetCatalogProductGroupName() string`
@@ -168,32 +149,22 @@ SetCatalogProductGroupName sets CatalogProductGroupName field to given value.
 
 HasCatalogProductGroupName returns a boolean if a field has been set.
 
-### SetCatalogProductGroupNameNil
-
-`func (o *ProductGroupPromotion) SetCatalogProductGroupNameNil(b bool)`
-
- SetCatalogProductGroupNameNil sets the value for CatalogProductGroupName to be an explicit nil
-
-### UnsetCatalogProductGroupName
-`func (o *ProductGroupPromotion) UnsetCatalogProductGroupName()`
-
-UnsetCatalogProductGroupName ensures that no value is present for CatalogProductGroupName, not even an explicit nil
 ### GetCollectionsHeaderType
 
-`func (o *ProductGroupPromotion) GetCollectionsHeaderType() string`
+`func (o *ProductGroupPromotion) GetCollectionsHeaderType() CollectionsHeaderType`
 
 GetCollectionsHeaderType returns the CollectionsHeaderType field if non-nil, zero value otherwise.
 
 ### GetCollectionsHeaderTypeOk
 
-`func (o *ProductGroupPromotion) GetCollectionsHeaderTypeOk() (*string, bool)`
+`func (o *ProductGroupPromotion) GetCollectionsHeaderTypeOk() (*CollectionsHeaderType, bool)`
 
 GetCollectionsHeaderTypeOk returns a tuple with the CollectionsHeaderType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCollectionsHeaderType
 
-`func (o *ProductGroupPromotion) SetCollectionsHeaderType(v string)`
+`func (o *ProductGroupPromotion) SetCollectionsHeaderType(v CollectionsHeaderType)`
 
 SetCollectionsHeaderType sets CollectionsHeaderType field to given value.
 
@@ -310,20 +281,20 @@ HasCreativeType returns a boolean if a field has been set.
 
 ### GetCustomizableCtaType
 
-`func (o *ProductGroupPromotion) GetCustomizableCtaType() string`
+`func (o *ProductGroupPromotion) GetCustomizableCtaType() ProductGroupPromotionCustomizableCTAType`
 
 GetCustomizableCtaType returns the CustomizableCtaType field if non-nil, zero value otherwise.
 
 ### GetCustomizableCtaTypeOk
 
-`func (o *ProductGroupPromotion) GetCustomizableCtaTypeOk() (*string, bool)`
+`func (o *ProductGroupPromotion) GetCustomizableCtaTypeOk() (*ProductGroupPromotionCustomizableCTAType, bool)`
 
 GetCustomizableCtaTypeOk returns a tuple with the CustomizableCtaType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomizableCtaType
 
-`func (o *ProductGroupPromotion) SetCustomizableCtaType(v string)`
+`func (o *ProductGroupPromotion) SetCustomizableCtaType(v ProductGroupPromotionCustomizableCTAType)`
 
 SetCustomizableCtaType sets CustomizableCtaType field to given value.
 
@@ -333,16 +304,6 @@ SetCustomizableCtaType sets CustomizableCtaType field to given value.
 
 HasCustomizableCtaType returns a boolean if a field has been set.
 
-### SetCustomizableCtaTypeNil
-
-`func (o *ProductGroupPromotion) SetCustomizableCtaTypeNil(b bool)`
-
- SetCustomizableCtaTypeNil sets the value for CustomizableCtaType to be an explicit nil
-
-### UnsetCustomizableCtaType
-`func (o *ProductGroupPromotion) UnsetCustomizableCtaType()`
-
-UnsetCustomizableCtaType ensures that no value is present for CustomizableCtaType, not even an explicit nil
 ### GetDefinition
 
 `func (o *ProductGroupPromotion) GetDefinition() string`
@@ -368,16 +329,6 @@ SetDefinition sets Definition field to given value.
 
 HasDefinition returns a boolean if a field has been set.
 
-### SetDefinitionNil
-
-`func (o *ProductGroupPromotion) SetDefinitionNil(b bool)`
-
- SetDefinitionNil sets the value for Definition to be an explicit nil
-
-### UnsetDefinition
-`func (o *ProductGroupPromotion) UnsetDefinition()`
-
-UnsetDefinition ensures that no value is present for Definition, not even an explicit nil
 ### GetGridClickType
 
 `func (o *ProductGroupPromotion) GetGridClickType() GridClickType`
@@ -463,16 +414,6 @@ SetIncluded sets Included field to given value.
 
 HasIncluded returns a boolean if a field has been set.
 
-### SetIncludedNil
-
-`func (o *ProductGroupPromotion) SetIncludedNil(b bool)`
-
- SetIncludedNil sets the value for Included to be an explicit nil
-
-### UnsetIncluded
-`func (o *ProductGroupPromotion) UnsetIncluded()`
-
-UnsetIncluded ensures that no value is present for Included, not even an explicit nil
 ### GetIsGenerateBackground
 
 `func (o *ProductGroupPromotion) GetIsGenerateBackground() bool`
@@ -508,6 +449,41 @@ HasIsGenerateBackground returns a boolean if a field has been set.
 `func (o *ProductGroupPromotion) UnsetIsGenerateBackground()`
 
 UnsetIsGenerateBackground ensures that no value is present for IsGenerateBackground, not even an explicit nil
+### GetIsImageAutoResizing
+
+`func (o *ProductGroupPromotion) GetIsImageAutoResizing() bool`
+
+GetIsImageAutoResizing returns the IsImageAutoResizing field if non-nil, zero value otherwise.
+
+### GetIsImageAutoResizingOk
+
+`func (o *ProductGroupPromotion) GetIsImageAutoResizingOk() (*bool, bool)`
+
+GetIsImageAutoResizingOk returns a tuple with the IsImageAutoResizing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsImageAutoResizing
+
+`func (o *ProductGroupPromotion) SetIsImageAutoResizing(v bool)`
+
+SetIsImageAutoResizing sets IsImageAutoResizing field to given value.
+
+### HasIsImageAutoResizing
+
+`func (o *ProductGroupPromotion) HasIsImageAutoResizing() bool`
+
+HasIsImageAutoResizing returns a boolean if a field has been set.
+
+### SetIsImageAutoResizingNil
+
+`func (o *ProductGroupPromotion) SetIsImageAutoResizingNil(b bool)`
+
+ SetIsImageAutoResizingNil sets the value for IsImageAutoResizing to be an explicit nil
+
+### UnsetIsImageAutoResizing
+`func (o *ProductGroupPromotion) UnsetIsImageAutoResizing()`
+
+UnsetIsImageAutoResizing ensures that no value is present for IsImageAutoResizing, not even an explicit nil
 ### GetIsMdl
 
 `func (o *ProductGroupPromotion) GetIsMdl() bool`
@@ -533,16 +509,6 @@ SetIsMdl sets IsMdl field to given value.
 
 HasIsMdl returns a boolean if a field has been set.
 
-### SetIsMdlNil
-
-`func (o *ProductGroupPromotion) SetIsMdlNil(b bool)`
-
- SetIsMdlNil sets the value for IsMdl to be an explicit nil
-
-### UnsetIsMdl
-`func (o *ProductGroupPromotion) UnsetIsMdl()`
-
-UnsetIsMdl ensures that no value is present for IsMdl, not even an explicit nil
 ### GetParentId
 
 `func (o *ProductGroupPromotion) GetParentId() string`
@@ -568,32 +534,22 @@ SetParentId sets ParentId field to given value.
 
 HasParentId returns a boolean if a field has been set.
 
-### SetParentIdNil
-
-`func (o *ProductGroupPromotion) SetParentIdNil(b bool)`
-
- SetParentIdNil sets the value for ParentId to be an explicit nil
-
-### UnsetParentId
-`func (o *ProductGroupPromotion) UnsetParentId()`
-
-UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
 ### GetPreferredMediaType
 
-`func (o *ProductGroupPromotion) GetPreferredMediaType() string`
+`func (o *ProductGroupPromotion) GetPreferredMediaType() PreferredMediaType`
 
 GetPreferredMediaType returns the PreferredMediaType field if non-nil, zero value otherwise.
 
 ### GetPreferredMediaTypeOk
 
-`func (o *ProductGroupPromotion) GetPreferredMediaTypeOk() (*string, bool)`
+`func (o *ProductGroupPromotion) GetPreferredMediaTypeOk() (*PreferredMediaType, bool)`
 
 GetPreferredMediaTypeOk returns a tuple with the PreferredMediaType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPreferredMediaType
 
-`func (o *ProductGroupPromotion) SetPreferredMediaType(v string)`
+`func (o *ProductGroupPromotion) SetPreferredMediaType(v PreferredMediaType)`
 
 SetPreferredMediaType sets PreferredMediaType field to given value.
 
@@ -638,16 +594,6 @@ SetRelativeDefinition sets RelativeDefinition field to given value.
 
 HasRelativeDefinition returns a boolean if a field has been set.
 
-### SetRelativeDefinitionNil
-
-`func (o *ProductGroupPromotion) SetRelativeDefinitionNil(b bool)`
-
- SetRelativeDefinitionNil sets the value for RelativeDefinition to be an explicit nil
-
-### UnsetRelativeDefinition
-`func (o *ProductGroupPromotion) UnsetRelativeDefinition()`
-
-UnsetRelativeDefinition ensures that no value is present for RelativeDefinition, not even an explicit nil
 ### GetSelectedImageTag
 
 `func (o *ProductGroupPromotion) GetSelectedImageTag() string`
@@ -838,16 +784,6 @@ SetTrackingUrl sets TrackingUrl field to given value.
 
 HasTrackingUrl returns a boolean if a field has been set.
 
-### SetTrackingUrlNil
-
-`func (o *ProductGroupPromotion) SetTrackingUrlNil(b bool)`
-
- SetTrackingUrlNil sets the value for TrackingUrl to be an explicit nil
-
-### UnsetTrackingUrl
-`func (o *ProductGroupPromotion) UnsetTrackingUrl()`
-
-UnsetTrackingUrl ensures that no value is present for TrackingUrl, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

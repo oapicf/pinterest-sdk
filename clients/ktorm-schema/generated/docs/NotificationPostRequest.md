@@ -1,5 +1,5 @@
 
-# Table `notification_post_request`
+# Table `NotificationPostRequest`
 (mapped from: NotificationPostRequest)
 
 ## Properties

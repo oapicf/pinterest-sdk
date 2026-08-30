@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MediaUploadCreate  {
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "video", required = true, value = "")
   @Valid
   private MediaUploadType mediaType;
  /**
@@ -79,10 +79,7 @@ public class MediaUploadCreate  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -36,7 +36,7 @@ import org.openapitools.model.PinMediaWithVideos;
  */
 
 @ApiModel(description = "Pin media that can be an image, video, or a mix of both.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PinMedia   {
   
   private ImageSize images;
@@ -63,6 +63,7 @@ public class PinMedia   {
   private BigDecimal duration;
   private Integer height;
   private String videoUrl;
+  private String videoUrlHls;
   private Integer width;
   private List<PinMediaMetadata> items = new ArrayList<>();
 
@@ -172,6 +173,24 @@ public class PinMedia   {
   }
 
   /**
+   * Video url (HLS).  **Note:** This field is limited and not available to all apps.
+   */
+  public PinMedia videoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Video url (HLS).  **Note:** This field is limited and not available to all apps.")
+  @JsonProperty("video_url_hls")
+  public String getVideoUrlHls() {
+    return videoUrlHls;
+  }
+  public void setVideoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+  }
+
+  /**
    * Width (in pixels). Field maybe null after creation due to video processing time.
    */
   public PinMedia width(Integer width) {
@@ -222,13 +241,14 @@ public class PinMedia   {
         Objects.equals(duration, pinMedia.duration) &&
         Objects.equals(height, pinMedia.height) &&
         Objects.equals(videoUrl, pinMedia.videoUrl) &&
+        Objects.equals(videoUrlHls, pinMedia.videoUrlHls) &&
         Objects.equals(width, pinMedia.width) &&
         Objects.equals(items, pinMedia.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(images, mediaType, coverImageUrl, duration, height, videoUrl, width, items);
+    return Objects.hash(images, mediaType, coverImageUrl, duration, height, videoUrl, videoUrlHls, width, items);
   }
 
   @Override
@@ -242,6 +262,7 @@ public class PinMedia   {
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    videoUrlHls: ").append(toIndentedString(videoUrlHls)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
@@ -253,10 +274,7 @@ public class PinMedia   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -19,7 +19,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.BatchOperation;
 import org.openapitools.model.CatalogsItemsCreateBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteDiscontinuedBatchRequest;
@@ -35,7 +34,7 @@ import org.openapitools.model.ItemDeleteBatchRecord;
  */
 
 @ApiModel(description = "Request object of catalogs items batch")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsItemsBatchRequest   {
   
   private Country country;
@@ -132,7 +131,7 @@ public class CatalogsItemsBatchRequest   {
     NB("NB"),
     NE("NE"),
     NL2("NL"),
-    NO("NO"),
+    FALSE("false"),
     PL("PL"),
     PT("PT"),
     RO("RO"),
@@ -165,7 +164,25 @@ public class CatalogsItemsBatchRequest   {
   }
 
   private LanguageEnum language;
-  private BatchOperation operation;
+
+
+  public enum OperationEnum {
+    DELETE("DELETE");
+
+    private String value;
+
+    OperationEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private OperationEnum operation;
 
   /**
    */
@@ -222,7 +239,7 @@ public class CatalogsItemsBatchRequest   {
 
   /**
    */
-  public CatalogsItemsBatchRequest operation(BatchOperation operation) {
+  public CatalogsItemsBatchRequest operation(OperationEnum operation) {
     this.operation = operation;
     return this;
   }
@@ -230,10 +247,10 @@ public class CatalogsItemsBatchRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operation")
-  public BatchOperation getOperation() {
+  public OperationEnum getOperation() {
     return operation;
   }
-  public void setOperation(BatchOperation operation) {
+  public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
 
@@ -276,10 +293,7 @@ public class CatalogsItemsBatchRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

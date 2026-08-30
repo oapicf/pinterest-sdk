@@ -7,6 +7,6 @@ package org.openapitools.server.model
  * @param rejectedLogs  for example: ''null''
 */
 final case class IntegrationLogsInvalidLogResponse (
-  rejectedLogs: Option[Seq[IntegrationLogsInvalidLogResponseRejectedLogsInner]] = None
+  rejectedLogs: Option[Seq[IntegrationLogsInvalidLogResponseRejectedLogsItems]] = None
 )
 
